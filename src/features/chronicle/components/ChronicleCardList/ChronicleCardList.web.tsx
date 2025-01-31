@@ -1,6 +1,8 @@
+import colorAlpha from 'color-alpha'
 import React, { FunctionComponent, useRef } from 'react'
-import { NativeScrollEvent, NativeSyntheticEvent, useWindowDimensions } from 'react-native'
+import { NativeScrollEvent, NativeSyntheticEvent, useWindowDimensions, View } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
+import LinearGradient from 'react-native-linear-gradient'
 import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 
@@ -48,21 +50,29 @@ export const ChronicleCardList: FunctionComponent<ChronicleCardListProps> = ({
   }
 
   return (
-    <Container onLayout={onContainerLayout} style={style}>
-      {horizontal && !isStart ? (
-        <PlaylistArrowButton
-          direction="left"
-          onPress={handleScrollPrevious}
-          testID="chronicle-list-left-arrow"
-        />
-      ) : null}
+    <View onLayout={onContainerLayout} style={style}>
+      {horizontal ? (
+        <React.Fragment>
+          <ArrowWrapper>
+            {isStart ? null : (
+              <PlaylistArrowButton
+                direction="left"
+                onPress={handleScrollPrevious}
+                testID="chronicle-list-left-arrow"
+              />
+            )}
 
-      {horizontal && !isEnd ? (
-        <PlaylistArrowButton
-          direction="right"
-          onPress={handleScrollNext}
-          testID="chronicle-list-right-arrow"
-        />
+            {isEnd ? null : (
+              <PlaylistArrowButton
+                direction="right"
+                onPress={handleScrollNext}
+                testID="chronicle-list-right-arrow"
+              />
+            )}
+          </ArrowWrapper>
+          {isDesktopViewport && !isEnd ? <GradientRight /> : null}
+          {isDesktopViewport && !isStart ? <GradientLeft /> : null}
+        </React.Fragment>
       ) : null}
 
       <ChronicleCardListBase
@@ -77,10 +87,36 @@ export const ChronicleCardList: FunctionComponent<ChronicleCardListProps> = ({
         contentContainerStyle={contentContainerStyle}
         snapToInterval={isDesktopViewport ? CHRONICLE_CARD_WIDTH : undefined}
       />
-    </Container>
+    </View>
   )
 }
 
-const Container = styled.View({
+const ArrowWrapper = styled.View.attrs({
+  pointerEvents: 'box-none',
+})({
+  zIndex: 2,
+  height: '100%',
+  position: 'absolute',
+  width: '100%',
   justifyContent: 'center',
 })
+
+const StyledLinearGradient = styled(LinearGradient).attrs(({ theme }) => ({
+  colors: [
+    theme.colors.white,
+    colorAlpha(theme.colors.white, 0.7),
+    colorAlpha(theme.colors.white, 0),
+  ],
+
+  start: { x: 0, y: 0 },
+  end: { x: 1, y: 0 },
+  pointerEvents: 'none',
+}))({
+  width: 100,
+  height: '100%',
+  position: 'absolute',
+  zIndex: 1,
+})
+
+const GradientLeft = StyledLinearGradient
+const GradientRight = styled(StyledLinearGradient)({ right: 0, transform: 'rotateZ(180deg)' })
