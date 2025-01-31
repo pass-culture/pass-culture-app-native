@@ -470,7 +470,11 @@ exports[`Home page should render correctly 1`] = `
                                 "padding": 16,
                                 "width": "100%",
                               },
-                              undefined,
+                              [
+                                {
+                                  "borderWidth": 0,
+                                },
+                              ],
                             ]
                           }
                         >

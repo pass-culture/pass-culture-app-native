@@ -59,11 +59,11 @@ export const BannerWithBackground: FunctionComponent<BannerWithBackgroundProps> 
         <ImageBackground
           source={backgroundSource || BACKGROUND_IMAGE_SOURCE}
           testID="module-background">
-          <GenericBanner
+          <GenericBannerWithoutBorder
             LeftIcon={StyledLeftIcon ? <StyledLeftIcon /> : undefined}
             RightIcon={StyledRightIcon}>
             {children}
-          </GenericBanner>
+          </GenericBannerWithoutBorder>
         </ImageBackground>
       </ImageContainer>
     </TouchableComponent>
@@ -85,3 +85,7 @@ const ImageBackground = styled.ImageBackground(({ theme }) => ({
   justifyContent: 'center',
   backgroundColor: theme.colors.primary,
 }))
+
+const GenericBannerWithoutBorder = styled(GenericBanner)({
+  borderWidth: 0,
+})
