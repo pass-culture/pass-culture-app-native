@@ -633,9 +633,8 @@ describe('<OfferContent />', () => {
         renderOfferContent({
           offer: { ...offerResponseSnap, subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER },
         })
-        await screen.findByText("L'avis du book club")
 
-        expect(screen.getByText('Voir tous les avis')).toBeOnTheScreen()
+        expect(await screen.findByText('Voir tous les avis')).toBeOnTheScreen()
       })
 
       it('should navigate to chronicles page when pressing "Voir tous les avis" button', async () => {
