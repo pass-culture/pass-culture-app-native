@@ -1,13 +1,13 @@
 import mockdate from 'mockdate'
-import React, { createRef } from 'react'
+import React, { ComponentProps, createRef } from 'react'
 import { ScrollView } from 'react-native'
 import { UseQueryResult } from 'react-query'
 
 import { push } from '__mocks__/@react-navigation/native'
-import { VenueResponse, VenueTypeCodeKey } from 'api/gen'
+import { VenueTypeCodeKey } from 'api/gen'
 import { gtlPlaylistAlgoliaSnapshot } from 'features/gtlPlaylist/fixtures/gtlPlaylistAlgoliaSnapshot'
 import * as useGTLPlaylists from 'features/gtlPlaylist/hooks/useGTLPlaylists'
-import { GtlPlaylistData } from 'features/gtlPlaylist/types'
+import { mockLabelMapping, mockMapping } from 'features/headlineOffer/fixtures/mockMapping'
 import { OfferCTAProvider } from 'features/offer/components/OfferContent/OfferCTAProvider'
 import { initialSearchState } from 'features/search/context/reducer'
 import * as useVenueOffers from 'features/venue/api/useVenueOffers'
@@ -18,11 +18,12 @@ import {
   VenueMoviesOffersResponseSnap,
   VenueOffersResponseSnap,
 } from 'features/venue/fixtures/venueOffersResponseSnap'
-import type { VenueOffersArtists, VenueOffers as VenueOffersType } from 'features/venue/types'
+import type { VenueOffers as VenueOffersType } from 'features/venue/types'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { LocationMode } from 'libs/location/types'
+import { Currency } from 'shared/currency/useGetCurrencyToDisplay'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
 import { AnchorProvider } from 'ui/components/anchor/AnchorContext'
@@ -293,17 +294,18 @@ describe('<VenueOffers />', () => {
   })
 })
 
+type RenderVenueOffersType = Partial<ComponentProps<typeof VenueOffers>>
+
 const renderVenueOffers = ({
-  venue,
+  venue = venueDataTest,
   venueOffers,
   venueArtists,
   playlists,
-}: {
-  venue: VenueResponse
-  venueOffers: VenueOffersType
-  venueArtists?: VenueOffersArtists
-  playlists?: GtlPlaylistData[]
-}) => {
+  mapping = mockMapping,
+  labelMapping = mockLabelMapping,
+  currency = Currency.EURO,
+  euroToPacificFrancRate = 10,
+}: RenderVenueOffersType) => {
   return render(
     reactQueryProviderHOC(
       <AnchorProvider scrollViewRef={createRef<ScrollView>()} handleCheckScrollY={() => 0}>
@@ -313,6 +315,10 @@ const renderVenueOffers = ({
             venueOffers={venueOffers}
             venueArtists={venueArtists}
             playlists={playlists}
+            mapping={mapping}
+            labelMapping={labelMapping}
+            currency={currency}
+            euroToPacificFrancRate={euroToPacificFrancRate}
           />
         </OfferCTAProvider>
       </AnchorProvider>
