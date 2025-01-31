@@ -1,9 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
-import { VenueResponse } from 'api/gen'
-import { useNavigateToSearchWithVenueOffers } from 'features/venue/helpers/useNavigateToSearchWithVenueOffers'
-import { analytics } from 'libs/analytics/provider'
+import { SearchNavConfig } from 'features/venue/types'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { StickyBottomWrapper } from 'ui/components/StickyBottomWrapper/StickyBottomWrapper'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
@@ -13,18 +11,18 @@ import { Spacer } from 'ui/theme'
 export const VENUE_CTA_HEIGHT_IN_SPACES = 6 + 10 + 6
 
 interface Props {
-  venue: VenueResponse
+  searchNavConfig: SearchNavConfig
+  onBeforeNavigate: () => void
 }
 
-export const VenueCTA: FunctionComponent<Props> = ({ venue }) => {
-  const searchNavConfig = useNavigateToSearchWithVenueOffers(venue)
+export const VenueCTA: FunctionComponent<Props> = ({ searchNavConfig, onBeforeNavigate }) => {
   return (
     <StickyBottomWrapper>
       <CallToActionContainer>
         <Spacer.Column numberOfSpaces={6} />
         <InternalTouchableLink
           navigateTo={searchNavConfig}
-          onBeforeNavigate={() => analytics.logVenueSeeAllOffersClicked(venue.id)}
+          onBeforeNavigate={onBeforeNavigate}
           as={ButtonPrimary}
           wording="Rechercher une offre"
           icon={SmallMagnifyingGlass}

@@ -18,7 +18,7 @@ import { CopyToClipboardButton } from 'shared/CopyToClipboardButton/CopyToClipbo
 import { Separator } from 'ui/components/Separator'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { InformationTags } from 'ui/InformationTags/InformationTags'
-import { getSpacing, Spacer, TypoDS } from 'ui/theme'
+import { getSpacing, TypoDS } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type Props = {
@@ -65,38 +65,39 @@ export const VenueTopComponentBase: React.FunctionComponent<Props> = ({
         handleImagePress={onPressBannerImage}
       />
       <MarginContainer>
-        <InformationTags tags={venueTags} />
-        <Spacer.Column numberOfSpaces={4} />
-        <ViewGap gap={1}>
-          <VenueTitle accessibilityLabel={`Nom du lieu\u00a0: ${venueName}`} adjustsFontSizeToFit>
-            {venueName}
-          </VenueTitle>
-          {isDynamicOpeningHoursDisplayed ? (
-            <OpeningHoursStatus
-              currentDate={currentDate}
-              openingHours={venue.openingHours}
-              timezone={venue.timezone}
-            />
-          ) : null}
-          <ViewGap gap={3}>
-            <View>
-              <TypoDS.BodyAccentXs>Adresse</TypoDS.BodyAccentXs>
-              <TypoDS.Body>{venueFullAddress}</TypoDS.Body>
-            </View>
-            <Separator.Horizontal />
-            <CopyToClipboardButton
-              wording="Copier l’adresse"
-              textToCopy={`${venueName}, ${venueFullAddress}`}
-              onCopy={() => analytics.logCopyAddress({ venueId: venue.id, from: 'venue' })}
-              snackBarMessage="L’adresse a bien été copiée."
-            />
-            <SeeItineraryButton
-              externalNav={{
-                url: getGoogleMapsItineraryUrl(venueFullAddress),
-                address: venueFullAddress,
-              }}
-              onPress={() => analytics.logConsultItinerary({ venueId: venue.id, from: 'venue' })}
-            />
+        <ViewGap gap={4}>
+          <InformationTags tags={venueTags} />
+          <ViewGap gap={1}>
+            <VenueTitle accessibilityLabel={`Nom du lieu\u00a0: ${venueName}`} adjustsFontSizeToFit>
+              {venueName}
+            </VenueTitle>
+            {isDynamicOpeningHoursDisplayed ? (
+              <OpeningHoursStatus
+                currentDate={currentDate}
+                openingHours={venue.openingHours}
+                timezone={venue.timezone}
+              />
+            ) : null}
+            <ViewGap gap={3}>
+              <View>
+                <TypoDS.BodyAccentXs>Adresse</TypoDS.BodyAccentXs>
+                <TypoDS.Body>{venueFullAddress}</TypoDS.Body>
+              </View>
+              <Separator.Horizontal />
+              <CopyToClipboardButton
+                wording="Copier l’adresse"
+                textToCopy={`${venueName}, ${venueFullAddress}`}
+                onCopy={() => analytics.logCopyAddress({ venueId: venue.id, from: 'venue' })}
+                snackBarMessage="L’adresse a bien été copiée."
+              />
+              <SeeItineraryButton
+                externalNav={{
+                  url: getGoogleMapsItineraryUrl(venueFullAddress),
+                  address: venueFullAddress,
+                }}
+                onPress={() => analytics.logConsultItinerary({ venueId: venue.id, from: 'venue' })}
+              />
+            </ViewGap>
           </ViewGap>
         </ViewGap>
       </MarginContainer>
@@ -110,6 +111,7 @@ const TopContainer = styled.View(({ theme }) => {
     flexDirection: isLargeScreen ? 'row' : 'column',
     marginTop: isLargeScreen ? getSpacing(8) : 0,
     marginHorizontal: isLargeScreen ? getSpacing(18) : 0,
+    marginBottom: isLargeScreen ? getSpacing(10) : getSpacing(6),
   }
 })
 

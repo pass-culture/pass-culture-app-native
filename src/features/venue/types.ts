@@ -1,5 +1,6 @@
 import { ReactNode } from 'react'
 
+import { RootNavigateParams } from 'features/navigation/RootNavigator/types'
 import { Geoloc } from 'libs/algolia/types'
 import { VenueTypeCode } from 'libs/parsers/venueType'
 import { Offer } from 'shared/offer/types'
@@ -68,3 +69,11 @@ export type Artist = {
 }
 
 export type VenueOffersArtists = { artists: Artist[] }
+
+export type SearchNavConfig = {
+  screen: RootNavigateParams[0]
+  params?: RootNavigateParams[1]
+  withPush?: boolean
+  withReset?: boolean
+  fromRef?: boolean
+}

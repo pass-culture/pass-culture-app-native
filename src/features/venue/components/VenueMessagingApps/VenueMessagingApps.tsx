@@ -1,10 +1,13 @@
 import React, { useCallback } from 'react'
 import { Social } from 'react-native-share'
+import styled from 'styled-components/native'
 
 import { VenueResponse } from 'api/gen'
 import { MessagingApps } from 'features/share/components/MessagingApps/MessagingApps'
 import { getShareVenue } from 'features/share/helpers/getShareVenue'
 import { analytics } from 'libs/analytics/provider'
+import { SectionWithDivider } from 'ui/components/SectionWithDivider'
+import { getSpacing } from 'ui/theme'
 
 type MessagingAppsProps = {
   venue: VenueResponse
@@ -23,10 +26,16 @@ export const VenueMessagingApps = ({ venue }: MessagingAppsProps) => {
   if (!shareContent?.url) return null
 
   return (
-    <MessagingApps
-      shareContent={shareContent}
-      share={share}
-      messagingAppAnalytics={messagingAppAnalytics}
-    />
+    <SectionWithDivider visible margin gap={6}>
+      <Container>
+        <MessagingApps
+          shareContent={shareContent}
+          share={share}
+          messagingAppAnalytics={messagingAppAnalytics}
+        />
+      </Container>
+    </SectionWithDivider>
   )
 }
+
+const Container = styled.View({ marginBottom: getSpacing(4) })
