@@ -1,4 +1,4 @@
-import { useRemoteBanner } from 'features/forceUpdate/helpers/useRemoteBanner'
+import { useRemoteBanner } from 'features/remoteBanner/helpers/useRemoteBanner'
 import { getRemoteBanner } from 'libs/firebase/firestore/getRemoteBanner/getRemoteBanner'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, waitFor } from 'tests/utils'
