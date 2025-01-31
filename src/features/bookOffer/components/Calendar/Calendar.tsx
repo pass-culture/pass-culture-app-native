@@ -17,7 +17,7 @@ import {
 import { OfferStatus } from 'features/bookOffer/helpers/utils'
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { analytics } from 'libs/analytics/provider'
-import { eventMonitoring } from 'libs/monitoring'
+import { eventMonitoring } from 'libs/monitoring/services'
 import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
 import { Currency, useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { DAYS, dayNamesShort } from 'shared/date/days'

@@ -12,12 +12,12 @@ import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import * as useRemoteConfigContext from 'libs/firebase/remoteConfig/RemoteConfigProvider'
-import { eventMonitoring } from 'libs/monitoring'
+import { eventMonitoring } from 'libs/monitoring/services'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen } from 'tests/utils'
 
-jest.mock('libs/monitoring')
+jest.mock('libs/monitoring/services')
 jest.mock('libs/react-native-device-info/getDeviceId')
 jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
   useSubscriptionContext: jest.fn(() => ({ dispatch: jest.fn() })),

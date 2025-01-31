@@ -8,14 +8,14 @@ import { useSearchHistory } from 'features/search/helpers/useSearchHistory/useSe
 import { CreateHistoryItem, HistoryItem } from 'features/search/types'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import * as useRemoteConfigContext from 'libs/firebase/remoteConfig/RemoteConfigProvider'
-import { eventMonitoring } from 'libs/monitoring'
+import { eventMonitoring } from 'libs/monitoring/services'
 import { act, renderHook } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 const TODAY_DATE = new Date('2023-09-26T00:00:00.000Z')
 
-jest.mock('libs/monitoring')
+jest.mock('libs/monitoring/services')
 
 const mockShowErrorSnackBar = jest.fn()
 jest.mock('ui/components/snackBar/SnackBarContext', () => ({

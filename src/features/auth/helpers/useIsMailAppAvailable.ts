@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Linking, Platform } from 'react-native'
 
-import { eventMonitoring } from 'libs/monitoring'
+import { eventMonitoring } from 'libs/monitoring/services'
 import { getErrorMessage } from 'shared/getErrorMessage/getErrorMessage'
 
 export const useIsMailAppAvailable = (): boolean => {

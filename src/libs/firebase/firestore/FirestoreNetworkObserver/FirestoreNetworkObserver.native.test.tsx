@@ -2,12 +2,13 @@ import React from 'react'
 
 import { firestoreRemoteStore } from 'libs/firebase/firestore/client'
 import { FirestoreNetworkObserver } from 'libs/firebase/firestore/FirestoreNetworkObserver/FirestoreNetworkObserver'
-import { captureMonitoringError } from 'libs/monitoring'
+import { captureMonitoringError } from 'libs/monitoring/errors'
 import { useNetInfo } from 'libs/network/useNetInfo'
 import { render } from 'tests/utils'
 
 jest.mock('libs/firebase/firestore/client')
-jest.mock('libs/monitoring')
+jest.mock('libs/monitoring/services')
+jest.mock('libs/monitoring/errors')
 
 const mockFirestoreEnableNetwork = firestoreRemoteStore.enableNetwork as jest.Mock
 const mockFirestoreDisableNetwork = firestoreRemoteStore.disableNetwork as jest.Mock

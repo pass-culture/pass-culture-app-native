@@ -7,14 +7,14 @@ import {
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import * as useRemoteConfigContext from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import firestore from 'libs/firebase/shims/firestore'
-import { eventMonitoring } from 'libs/monitoring'
+import { eventMonitoring } from 'libs/monitoring/services'
 import { getAppBuildVersion } from 'libs/packageJson'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, renderHook } from 'tests/utils'
 
 const buildVersion = getAppBuildVersion()
 
-jest.mock('libs/monitoring')
+jest.mock('libs/monitoring/services')
 jest.mock('@react-native-firebase/firestore')
 
 const { collection } = firestore()

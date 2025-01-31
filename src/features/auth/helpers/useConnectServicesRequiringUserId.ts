@@ -5,7 +5,7 @@ import { useCookies } from 'features/cookies/helpers/useCookies'
 import { firebaseAnalytics } from 'libs/firebase/analytics/analytics'
 import { getTokenExpirationDate } from 'libs/jwt/getTokenExpirationDate'
 import { getUserIdFromAccessToken } from 'libs/jwt/jwt'
-import { eventMonitoring } from 'libs/monitoring'
+import { eventMonitoring } from 'libs/monitoring/services'
 import { BatchProfile } from 'libs/react-native-batch'
 
 export const useConnectServicesRequiringUserId = (): ((accessToken: string | null) => void) => {

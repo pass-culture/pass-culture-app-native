@@ -6,7 +6,7 @@ import { LinkToScreen } from 'cheatcodes/components/LinkToScreen'
 import { CheatcodesButtonsWithSubscreensProps } from 'cheatcodes/types'
 import { ForceUpdateWithResetErrorBoundary } from 'features/forceUpdate/pages/ForceUpdateWithResetErrorBoundary'
 import { useLogTypeFromRemoteConfig } from 'libs/hooks/useLogTypeFromRemoteConfig'
-import { ScreenError } from 'libs/monitoring'
+import { ScreenError } from 'libs/monitoring/errors'
 
 export const cheatcodesNavigationForceUpdateButtons: [CheatcodesButtonsWithSubscreensProps] = [
   {

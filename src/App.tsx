@@ -35,7 +35,7 @@ import { AnalyticsInitializer } from 'libs/firebase/analytics/AnalyticsInitializ
 import { FirestoreNetworkObserver } from 'libs/firebase/firestore/FirestoreNetworkObserver/FirestoreNetworkObserver'
 import { RemoteConfigProvider } from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { LocationWrapper } from 'libs/location'
-import { eventMonitoring } from 'libs/monitoring'
+import { eventMonitoring } from 'libs/monitoring/services'
 import { NetInfoWrapper } from 'libs/network/NetInfoWrapper'
 import { OfflineModeContainer } from 'libs/network/OfflineModeContainer'
 import { BatchMessaging, BatchPush } from 'libs/react-native-batch'

@@ -21,7 +21,7 @@ import { thematicHighlightModuleFixture } from 'libs/contentful/fixtures/themati
 import { trendsModuleFixture } from 'libs/contentful/fixtures/trendsModule.fixture'
 import { venuesNatifModuleFixture } from 'libs/contentful/fixtures/venuesModule.fixture'
 import { videoCarouselFixture } from 'libs/contentful/fixtures/videoCarousel.fixture'
-import { eventMonitoring } from 'libs/monitoring'
+import { eventMonitoring } from 'libs/monitoring/services'
 
 describe('adaptHomepageModules', () => {
   it('should adapt a list of HomepageNatifModules', () => {

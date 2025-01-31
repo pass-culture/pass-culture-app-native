@@ -15,7 +15,8 @@ import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { useDeviceInfo } from 'features/trustedDevice/helpers/useDeviceInfo'
 import { analytics } from 'libs/analytics/provider'
-import { AsyncError, eventMonitoring } from 'libs/monitoring'
+import { AsyncError } from 'libs/monitoring/errors'
+import { eventMonitoring } from 'libs/monitoring/services'
 import { BlurHeader } from 'ui/components/headers/BlurHeader'
 import {
   PageHeaderWithoutPlaceholder,

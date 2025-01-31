@@ -21,7 +21,7 @@ import { cheatcodesNavigationErrorsButtons } from 'cheatcodes/pages/others/Cheat
 import { cheatcodesNavigationSignUpButtons } from 'cheatcodes/pages/others/CheatcodesNavigationSignUp'
 import { CheatcodesButtonsWithSubscreensProps } from 'cheatcodes/types'
 import { env } from 'libs/environment/env'
-import { eventMonitoring } from 'libs/monitoring'
+import { eventMonitoring } from 'libs/monitoring/services'
 import { SearchInput } from 'ui/components/inputs/SearchInput'
 import { SeparatorWithText } from 'ui/components/SeparatorWithText'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'

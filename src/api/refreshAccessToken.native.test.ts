@@ -5,7 +5,7 @@ import * as netInfo from '@react-native-community/netinfo'
 import { api } from 'api/api'
 import * as jwt from 'libs/jwt/jwt'
 import * as Keychain from 'libs/keychain/keychain'
-import { eventMonitoring } from 'libs/monitoring'
+import { eventMonitoring } from 'libs/monitoring/services'
 
 import { refreshAccessToken, removeRefreshedAccessToken } from './refreshAccessToken'
 

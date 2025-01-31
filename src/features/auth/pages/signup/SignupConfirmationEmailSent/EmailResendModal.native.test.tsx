@@ -5,7 +5,7 @@ import { EmailValidationRemainingResendsResponse } from 'api/gen'
 import { analytics } from 'libs/analytics/provider'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import * as useRemoteConfigContext from 'libs/firebase/remoteConfig/RemoteConfigProvider'
-import { eventMonitoring } from 'libs/monitoring'
+import { eventMonitoring } from 'libs/monitoring/services'
 import { MODAL_TO_SHOW_TIME } from 'tests/constants'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -15,7 +15,7 @@ import { EmailResendModal } from './EmailResendModal'
 
 jest.useFakeTimers()
 
-jest.mock('libs/monitoring')
+jest.mock('libs/monitoring/services')
 
 const resendEmailValidationSpy = jest.spyOn(api, 'postNativeV1ResendEmailValidation')
 

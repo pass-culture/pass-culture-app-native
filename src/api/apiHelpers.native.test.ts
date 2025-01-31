@@ -5,7 +5,7 @@ import * as NavigationRef from 'features/navigation/navigationRef'
 import { env } from 'libs/environment/env'
 import * as jwt from 'libs/jwt/jwt'
 import * as Keychain from 'libs/keychain/keychain'
-import { eventMonitoring } from 'libs/monitoring'
+import { eventMonitoring } from 'libs/monitoring/services'
 import * as PackageJson from 'libs/packageJson'
 import { mockServer } from 'tests/mswServer'
 

@@ -2,14 +2,15 @@ import AlgoliaSearchInsights from 'search-insights'
 
 import { getAcceptedCookieConsent } from 'features/cookies/helpers/getAcceptedCookieConsent'
 import { logOfferConversion } from 'libs/algolia/analytics/logOfferConversion'
-import { captureMonitoringError } from 'libs/monitoring'
+import { captureMonitoringError } from 'libs/monitoring/errors'
 
 jest.mock('search-insights')
 const mockAlgoliaSearchInsights = AlgoliaSearchInsights as jest.MockedFunction<
   typeof AlgoliaSearchInsights
 >
 
-jest.mock('libs/monitoring')
+jest.mock('libs/monitoring/services')
+jest.mock('libs/monitoring/errors')
 const mockCaptureMonitoringError = captureMonitoringError as jest.MockedFunction<
   typeof captureMonitoringError
 >

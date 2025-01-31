@@ -1,6 +1,6 @@
 import { Linking, Platform } from 'react-native'
 
-import { eventMonitoring } from 'libs/monitoring'
+import { eventMonitoring } from 'libs/monitoring/services'
 import { renderHook, waitFor } from 'tests/utils'
 
 import { useIsMailAppAvailable } from './useIsMailAppAvailable'

@@ -2,7 +2,7 @@ import React from 'react'
 
 import { EduConnectErrorBoundary } from 'features/identityCheck/pages/identification/errors/eduConnect/EduConnectErrorBoundary'
 import { EduConnectError } from 'features/identityCheck/pages/identification/errors/eduConnect/types'
-import { eventMonitoring } from 'libs/monitoring'
+import { eventMonitoring } from 'libs/monitoring/services'
 import { render } from 'tests/utils'
 
 jest.mock('libs/firebase/analytics/analytics')

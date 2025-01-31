@@ -3,7 +3,7 @@ import { Linking } from 'react-native'
 import Share, { Social } from 'react-native-share'
 
 import * as GetInstalledAppsAPI from 'features/offer/helpers/getInstalledApps/getInstalledApps'
-import { eventMonitoring } from 'libs/monitoring'
+import { eventMonitoring } from 'libs/monitoring/services'
 import { Network } from 'libs/share/types'
 import { act, fireEvent, render, screen } from 'tests/utils'
 
