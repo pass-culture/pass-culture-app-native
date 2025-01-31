@@ -3,11 +3,11 @@ import React, { ComponentType, FunctionComponent, useCallback, useMemo } from 'r
 import styled from 'styled-components/native'
 
 import { BannerName } from 'api/gen'
-import { ForceUpdateBanner } from 'features/forceUpdate/components/ForceUpdateBanner'
 import { useActivationBanner } from 'features/home/api/useActivationBanner'
 import { ActivationBanner } from 'features/home/components/banners/ActivationBanner'
 import { SignupBanner } from 'features/home/components/banners/SignupBanner'
 import { StepperOrigin, UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { RemoteBanner } from 'features/remoteBanner/components/RemoteBanner'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { SystemBanner as GenericSystemBanner } from 'ui/components/ModuleBanner/SystemBanner'
@@ -141,7 +141,7 @@ export const HomeBanner = ({ isLoggedIn }: HomeBannerProps) => {
   if (showForceUpdateBanner) {
     return (
       <BannerContainer>
-        <ForceUpdateBanner />
+        <RemoteBanner />
       </BannerContainer>
     )
   }

@@ -13,9 +13,12 @@ export function useResetOnMinimalBuild(resetErrorBoundary: () => void) {
   // This one is for when minimalBuildNumber gets back to an older value
   useEffect(() => {
     // it must be false and not null (which means not fetched)
-    if (!!minimalBuildNumber && getAppBuildVersion() >= minimalBuildNumber) {
+    if (
+      !!minimalBuildNumber?.minimalBuildNumber &&
+      getAppBuildVersion() >= minimalBuildNumber.minimalBuildNumber
+    ) {
       resetErrorBoundary()
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [minimalBuildNumber])
+  }, [minimalBuildNumber?.minimalBuildNumber])
 }

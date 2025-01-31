@@ -3,6 +3,8 @@ import React from 'react'
 import { BannerName, BannerResponse, SubscriptionStepperResponseV2 } from 'api/gen'
 import { HomeBanner } from 'features/home/components/modules/banners/HomeBanner'
 import { subscriptionStepperFixture } from 'features/identityCheck/fixtures/subscriptionStepperFixture'
+import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
+import { useRemoteBanner } from 'features/remoteBanner/helpers/useRemoteBanner'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { ILocationContext, useLocation } from 'libs/location'
@@ -11,7 +13,7 @@ import { useGetDepositAmountsByAge } from 'shared/user/useGetDepositAmountsByAge
 import { mockAuthContextWithoutUser } from 'tests/AuthContextUtils'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, render, screen } from 'tests/utils'
+import { act, render, screen, userEvent } from 'tests/utils'
 
 jest.mock('libs/network/NetInfoWrapper')
 jest.mock('libs/firebase/analytics/analytics')
@@ -26,26 +28,64 @@ const mockUseGeolocation = jest.mocked(useLocation)
 jest.mock('shared/user/useGetDepositAmountsByAge')
 const mockDepositAmounts = jest.mocked(useGetDepositAmountsByAge)
 
+jest.mock('@react-native-firebase/firestore')
+const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
+
+jest.mock('features/remoteBanner/helpers/useRemoteBanner')
+const mockUseRemoteBanner = useRemoteBanner as jest.Mock
+const bannerData = {
+  title: 'title 1',
+  subtitle: 'subtitle 1',
+  redirectionUrl: 'www.test.fr',
+  redirectionType: 'external',
+}
+mockUseRemoteBanner.mockReturnValue(bannerData)
+
+jest.useFakeTimers()
+const user = userEvent.setup()
+
 describe('<HomeBanner/>', () => {
   beforeEach(() => {
     setFeatureFlags()
   })
 
-  it('should display force update banner when feature flag showForceUpdateBanner is enable', async () => {
-    setFeatureFlags([RemoteStoreFeatureFlags.SHOW_FORCE_UPDATE_BANNER])
-    mockSubscriptionStepper()
-    mockBannerFromBackend({
-      banner: {
-        name: BannerName.retry_identity_check_banner,
-        title: 'Retente ubble',
-        text: 'pour débloquer ton crédit',
-      },
+  describe('when feature flag showForceUpdateBanner is enable', () => {
+    beforeEach(() => {
+      setFeatureFlags([RemoteStoreFeatureFlags.SHOW_FORCE_UPDATE_BANNER])
     })
 
-    renderHomeBanner({})
-    await act(async () => {})
+    it('should display force update banner', async () => {
+      mockSubscriptionStepper()
+      mockBannerFromBackend({
+        banner: {
+          name: BannerName.retry_identity_check_banner,
+          title: 'Retente ubble',
+          text: 'pour débloquer ton crédit',
+        },
+      })
+      renderHomeBanner({})
 
-    expect(screen.getByText('Mise à jour requise !')).toBeOnTheScreen()
+      const banner = await screen.findByText('title 1')
+
+      expect(banner).toBeOnTheScreen()
+    })
+
+    it('should go to external link when pressing on force update banner when firestore specifies it', async () => {
+      mockSubscriptionStepper()
+      mockBannerFromBackend({
+        banner: {
+          name: BannerName.retry_identity_check_banner,
+          title: 'Retente ubble',
+          text: 'pour débloquer ton crédit',
+        },
+      })
+      renderHomeBanner({})
+
+      const banner = await screen.findByText('title 1')
+      await user.press(banner)
+
+      expect(openUrl).toHaveBeenCalledWith('www.test.fr')
+    })
   })
 
   describe('When wipAppV2SystemBlock feature flag deactivated', () => {

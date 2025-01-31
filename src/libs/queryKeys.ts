@@ -40,6 +40,7 @@ export enum QueryKeys {
   PLACES = 'places',
   RECOMMENDATION_HITS = 'recommendationHits',
   RECOMMENDATION_OFFER_IDS = 'recommendationOfferIds',
+  REMOTE_BANNER = 'remoteBanner',
   RESET_PASSWORD_EXPIRED_LINK = 'resetPasswordExpiredLink',
   SEARCH_N1_BOOKS_GTL_PLAYLISTS = 'searchN1BooksGtlPlaylists',
   SEARCH_RESULTS = 'searchResults',
