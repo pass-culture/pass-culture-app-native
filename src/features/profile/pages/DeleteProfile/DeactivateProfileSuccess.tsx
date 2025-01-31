@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import styled from 'styled-components/native'
 
-import { useSettingsContext } from 'features/auth/context/SettingsContext'
+import { useSettings } from 'features/auth/context/useSettings'
 import { useLogoutRoutine } from 'features/auth/helpers/useLogoutRoutine'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
@@ -17,7 +17,7 @@ import { Spacer, TypoDS } from 'ui/theme'
 
 export function DeactivateProfileSuccess() {
   const signOut = useLogoutRoutine()
-  const { data: settings } = useSettingsContext()
+  const { data: settings } = useSettings()
   const reactivationLimit = settings?.accountUnsuspensionLimit
 
   useEffect(() => {

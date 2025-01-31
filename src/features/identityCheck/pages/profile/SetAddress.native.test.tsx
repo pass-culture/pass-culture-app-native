@@ -3,7 +3,6 @@ import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { SettingsResponse } from 'api/gen'
-import { SettingsWrapper } from 'features/auth/context/SettingsContext'
 import { defaultSettings } from 'features/auth/fixtures/fixtures'
 import { SetAddress } from 'features/identityCheck/pages/profile/SetAddress'
 import { analytics } from 'libs/analytics/provider'
@@ -115,11 +114,5 @@ describe('<SetAddress/>', () => {
 })
 
 function renderSetAddress() {
-  return render(
-    reactQueryProviderHOC(
-      <SettingsWrapper>
-        <SetAddress />
-      </SettingsWrapper>
-    )
-  )
+  return render(reactQueryProviderHOC(<SetAddress />))
 }

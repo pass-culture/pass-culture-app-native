@@ -7,7 +7,7 @@ import { api } from 'api/api'
 import { ApiError } from 'api/ApiError'
 import { isAPIExceptionCapturedAsInfo } from 'api/apiHelpers'
 import { SettingsResponse } from 'api/gen'
-import { useSettingsContext } from 'features/auth/context/SettingsContext'
+import { useSettings } from 'features/auth/context/useSettings'
 import { StepperOrigin, UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { captureMonitoringError } from 'libs/monitoring/errors'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
@@ -31,7 +31,7 @@ type FormValues = {
 }
 
 export const ForgottenPassword = () => {
-  const { data: settings, isLoading: areSettingsLoading } = useSettingsContext()
+  const { data: settings, isLoading: areSettingsLoading } = useSettings()
 
   const {
     control,

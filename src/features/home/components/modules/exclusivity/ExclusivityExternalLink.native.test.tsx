@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { setSettings } from 'features/auth/tests/setSettings'
 import { ExclusivityExternalLink } from 'features/home/components/modules/exclusivity/ExclusivityExternalLink'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { analytics } from 'libs/analytics/provider'
@@ -20,6 +21,7 @@ const props = {
 }
 
 jest.mock('libs/firebase/analytics/analytics')
+setSettings()
 
 describe('ExclusivityExternalLink component', () => {
   it('should trigger logEvent "ModuleDisplayedOnHomepage" on render', () => {

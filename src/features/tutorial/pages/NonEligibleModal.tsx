@@ -1,7 +1,7 @@
 import React, { useCallback } from 'react'
 import styled from 'styled-components/native'
 
-import { useSettingsContext } from 'features/auth/context/SettingsContext'
+import { useSettings } from 'features/auth/context/useSettings'
 import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import { openUrl } from 'features/navigation/helpers/openUrl'
 import { NonEligible, TutorialTypes } from 'features/tutorial/enums'
@@ -21,7 +21,7 @@ type Props = {
 }
 
 export const NonEligibleModal = ({ visible, userStatus, hideModal, type }: Props) => {
-  const { data: settings } = useSettingsContext()
+  const { data: settings } = useSettings()
   const enableCreditV3 = settings?.wipEnableCreditV3
   const subtitle = `Tu peux bénéficier de ton crédit sur l’application à partir de tes ${enableCreditV3 ? '17' : '15'} ans.`
 

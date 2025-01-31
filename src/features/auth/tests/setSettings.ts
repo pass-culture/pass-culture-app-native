@@ -1,10 +1,10 @@
 import { SettingsResponse } from 'api/gen'
-import * as SettingsContextAPI from 'features/auth/context/SettingsContext'
+import * as useSettingsModule from 'features/auth/context/useSettings'
 import { defaultSettings } from 'features/auth/fixtures/fixtures'
 
 export const setSettings = (settings: Partial<SettingsResponse> = {}) => {
-  const useSettingsContextSpy = jest.spyOn(SettingsContextAPI, 'useSettingsContext')
-  useSettingsContextSpy.mockImplementation(() => ({
+  const useSettingsSpy = jest.spyOn(useSettingsModule, 'useSettings')
+  useSettingsSpy.mockImplementation(() => ({
     data: { ...defaultSettings, ...settings },
     isLoading: false,
   }))

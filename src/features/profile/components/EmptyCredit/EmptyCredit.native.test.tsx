@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
+import { setSettings } from 'features/auth/tests/setSettings'
 import { EmptyCredit } from 'features/profile/components/EmptyCredit/EmptyCredit'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -11,6 +12,8 @@ jest.mock('libs/firebase/remoteConfig/RemoteConfigProvider', () => ({
     .fn()
     .mockReturnValue({ homeEntryIdFreeOffers: 'homeEntryIdFreeOffers' }),
 }))
+
+setSettings()
 
 describe('<EmptyCredit />', () => {
   beforeEach(() => {

@@ -1,6 +1,6 @@
 import { useCallback } from 'react'
 
-import { useSettingsContext } from 'features/auth/context/SettingsContext'
+import { useSettings } from 'features/auth/context/useSettings'
 import { AlgoliaHit, IncompleteSearchHit } from 'libs/algolia/types'
 import { convertEuroToCents } from 'libs/parsers/pricesConversion'
 
@@ -53,7 +53,7 @@ export const transformOfferHit =
   })
 
 export const useTransformOfferHits = () => {
-  const { data: settings } = useSettingsContext()
+  const { data: settings } = useSettings()
   const { objectStorageUrl: urlPrefix } = settings || {}
 
   // eslint-disable-next-line react-hooks/exhaustive-deps

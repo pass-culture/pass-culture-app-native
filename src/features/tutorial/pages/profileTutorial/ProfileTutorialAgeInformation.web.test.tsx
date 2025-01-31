@@ -2,6 +2,7 @@ import { StackScreenProps } from '@react-navigation/stack'
 import React from 'react'
 import { act } from 'react-dom/test-utils'
 
+import { setSettings } from 'features/auth/tests/setSettings'
 import { TutorialRootStackParamList } from 'features/navigation/RootNavigator/types'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -18,6 +19,8 @@ jest.mock('features/favorites/context/FavoritesWrapper')
 
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
+
+setSettings()
 
 describe('<ProfileTutorialAgeInformation/>', () => {
   describe('Accessibility', () => {
