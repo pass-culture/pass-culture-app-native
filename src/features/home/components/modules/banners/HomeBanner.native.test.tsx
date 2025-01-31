@@ -31,7 +31,7 @@ const mockDepositAmounts = jest.mocked(useGetDepositAmountsByAge)
 jest.mock('@react-native-firebase/firestore')
 const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
 
-jest.mock('features/forceUpdate/helpers/useRemoteBanner')
+jest.mock('features/remoteBanner/helpers/useRemoteBanner')
 const mockUseRemoteBanner = useRemoteBanner as jest.Mock
 const bannerData = {
   title: 'title 1',
