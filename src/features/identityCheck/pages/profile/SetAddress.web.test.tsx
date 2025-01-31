@@ -1,7 +1,6 @@
 import React from 'react'
 
 import { SetAddress } from 'features/identityCheck/pages/profile/SetAddress'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { checkAccessibilityFor, render, screen, waitFor } from 'tests/utils/web'
 
 jest.mock('uuid', () => ({
@@ -14,14 +13,14 @@ jest.mock('ui/theme/customFocusOutline/customFocusOutline')
 
 describe('<SetAddress/>', () => {
   it('should render correctly', () => {
-    const { container } = render(reactQueryProviderHOC(<SetAddress />))
+    const { container } = render(<SetAddress />)
 
     expect(container).toMatchSnapshot()
   })
 
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
-      const { container } = render(reactQueryProviderHOC(<SetAddress />))
+      const { container } = render(<SetAddress />)
 
       await waitFor(() => {
         expect(screen.getByTestId('Entrée pour l’adresse')).toHaveFocus()

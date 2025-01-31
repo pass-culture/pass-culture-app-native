@@ -6,7 +6,6 @@ import { EmailHistoryEventTypeEnum } from 'api/gen'
 import { RootStackParamList } from 'features/navigation/RootNavigator/types'
 import * as useEmailUpdateStatus from 'features/profile/helpers/useEmailUpdateStatus'
 import { SuspendAccountConfirmation } from 'features/profile/pages/SuspendAccountConfirmation/SuspendAccountConfirmation'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { checkAccessibilityFor, render } from 'tests/utils/web'
 
 type useEmailUpdateStatusMock = ReturnType<(typeof useEmailUpdateStatus)['useEmailUpdateStatus']>
@@ -37,7 +36,7 @@ describe('<SuspendAccountConfirmation />', () => {
 
     it('should not have basic accessibility issues', async () => {
       const { container } = render(
-        reactQueryProviderHOC(<SuspendAccountConfirmation navigation={navigation} route={route} />)
+        <SuspendAccountConfirmation navigation={navigation} route={route} />
       )
       const results = await checkAccessibilityFor(container)
 

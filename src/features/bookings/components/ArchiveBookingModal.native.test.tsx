@@ -6,7 +6,6 @@ import {
 } from 'features/bookings/components/ArchiveBookingModal'
 import * as useGoBack from 'features/navigation/useGoBack'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
@@ -115,5 +114,5 @@ describe('<ArchiveBookingModal />', () => {
 })
 
 function renderArchiveDigitalBookingOfferModal(props: ArchiveBookingModalProps) {
-  return render(reactQueryProviderHOC(<ArchiveBookingModal {...props} />))
+  return render(<ArchiveBookingModal {...props} />)
 }

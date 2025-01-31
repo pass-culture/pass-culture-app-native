@@ -16,7 +16,6 @@ import * as logOfferConversionAPI from 'libs/algolia/analytics/logOfferConversio
 import { analytics } from 'libs/analytics/provider'
 import { CampaignEvents, campaignTracker } from 'libs/campaign'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
@@ -136,7 +135,7 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 
 describe('<BookingOfferModalComponent />', () => {
   it('should dismiss modal when click on rightIconButton and reset state', async () => {
-    render(reactQueryProviderHOC(<BookingOfferModalComponent visible offerId={mockOffer.id} />))
+    render(<BookingOfferModalComponent visible offerId={mockOffer.id} />)
 
     const dismissModalButton = screen.getByTestId('Fermer la modale')
 
@@ -159,7 +158,7 @@ describe('<BookingOfferModalComponent />', () => {
   })
 
   it('should set offer consulted when dismiss modal and an other venue has been selected', async () => {
-    render(reactQueryProviderHOC(<BookingOfferModalComponent visible offerId={20} />))
+    render(<BookingOfferModalComponent visible offerId={20} />)
 
     const dismissModalButton = screen.getByTestId('Fermer la modale')
 
@@ -171,25 +170,21 @@ describe('<BookingOfferModalComponent />', () => {
   })
 
   it('should not log event ClickBookOffer when modal is not visible', () => {
-    render(reactQueryProviderHOC(<BookingOfferModalComponent visible={false} offerId={20} />))
+    render(<BookingOfferModalComponent visible={false} offerId={20} />)
 
     expect(analytics.logClickBookOffer).not.toHaveBeenCalled()
   })
 
   it('should log event ClickBookOffer when modal opens', () => {
     const offerId = 30
-    render(reactQueryProviderHOC(<BookingOfferModalComponent visible offerId={offerId} />))
+    render(<BookingOfferModalComponent visible offerId={offerId} />)
 
     expect(analytics.logClickBookOffer).toHaveBeenCalledWith({ offerId })
   })
 
   it('should show AlreadyBooked when isEndedUsedBooking is true', () => {
     const offerId = 30
-    render(
-      reactQueryProviderHOC(
-        <BookingOfferModalComponent visible offerId={offerId} isEndedUsedBooking />
-      )
-    )
+    render(<BookingOfferModalComponent visible offerId={offerId} isEndedUsedBooking />)
 
     expect(screen.getByText('Tu as déjà réservé :')).toBeOnTheScreen()
     expect(
@@ -198,7 +193,7 @@ describe('<BookingOfferModalComponent />', () => {
   })
 
   it('should log booking funnel cancellation event when closing the modal', async () => {
-    render(reactQueryProviderHOC(<BookingOfferModalComponent visible offerId={20} />))
+    render(<BookingOfferModalComponent visible offerId={20} />)
     const dismissModalButton = screen.getByTestId('Fermer la modale')
 
     await act(() => {
@@ -210,7 +205,7 @@ describe('<BookingOfferModalComponent />', () => {
 
   it('should display modal with prices by categories', () => {
     mockUseOffer.mockReturnValueOnce({ data: { ...mockOffer, stocks: mockStocks } })
-    render(reactQueryProviderHOC(<BookingOfferModalComponent visible offerId={20} />))
+    render(<BookingOfferModalComponent visible offerId={20} />)
 
     expect(screen.getByTestId('modalWithPricesByCategories')).toBeOnTheScreen()
   })
@@ -468,13 +463,11 @@ describe('<BookingOfferModalComponent />', () => {
 
       it('should update bookingState when bookingDataMovieScreening props is received', async () => {
         render(
-          reactQueryProviderHOC(
-            <BookingOfferModalComponent
-              visible
-              offerId={20}
-              bookingDataMovieScreening={bookingDataMovieScreening}
-            />
-          )
+          <BookingOfferModalComponent
+            visible
+            offerId={20}
+            bookingDataMovieScreening={bookingDataMovieScreening}
+          />
         )
 
         expect(mockDispatch).toHaveBeenNthCalledWith(2, {
@@ -485,13 +478,11 @@ describe('<BookingOfferModalComponent />', () => {
 
       it('should log HAS_BOOKED_CINE_SCREENING_OFFER', async () => {
         render(
-          reactQueryProviderHOC(
-            <BookingOfferModalComponent
-              visible
-              offerId={20}
-              bookingDataMovieScreening={bookingDataMovieScreening}
-            />
-          )
+          <BookingOfferModalComponent
+            visible
+            offerId={20}
+            bookingDataMovieScreening={bookingDataMovieScreening}
+          />
         )
 
         fireEvent.press(

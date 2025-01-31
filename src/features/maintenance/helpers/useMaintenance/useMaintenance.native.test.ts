@@ -1,7 +1,6 @@
 import { useMaintenance } from 'features/maintenance/helpers/useMaintenance/useMaintenance'
 import { getMaintenance } from 'libs/firebase/firestore/getMaintenance/getMaintenance'
 import { MAINTENANCE } from 'libs/firebase/firestore/types'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, waitFor } from 'tests/utils'
 
 jest.mock('@react-native-firebase/firestore')
@@ -68,7 +67,4 @@ describe('useMaintenance', () => {
   })
 })
 
-const renderUseMaintenance = () =>
-  renderHook(useMaintenance, {
-    wrapper: ({ children }) => reactQueryProviderHOC(children),
-  })
+const renderUseMaintenance = () => renderHook(useMaintenance)

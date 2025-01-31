@@ -3,7 +3,7 @@ import { QueryClient } from 'react-query'
 import { BookingsResponse, BookOfferResponse } from 'api/gen'
 import { useBookOfferMutation } from 'features/bookOffer/api/useBookOfferMutation'
 import { mockServer } from 'tests/mswServer'
-import { queryCache, reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { queryCache } from 'tests/reactQueryProviderHOC'
 import { renderHook, waitFor } from 'tests/utils'
 
 const props = { onError: jest.fn(), onSuccess: jest.fn() }
@@ -54,5 +54,6 @@ describe('useBookOfferMutation', () => {
 
 const renderUseBookOfferMutation = () =>
   renderHook(() => useBookOfferMutation(props), {
-    wrapper: ({ children }) => reactQueryProviderHOC(children, setup),
+    wrapper: ({ children }) => children,
+    setup,
   })

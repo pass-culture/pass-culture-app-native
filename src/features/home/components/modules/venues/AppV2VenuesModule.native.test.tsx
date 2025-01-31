@@ -6,7 +6,6 @@ import { venuesSearchFixture } from 'libs/algolia/fixtures/venuesSearchFixture'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils'
 
 const props = {
@@ -66,4 +65,4 @@ describe('<AppV2VenuesModule />', () => {
 
 const renderAppV2VenuesModule = (
   additionalProps: { data?: ModuleData; homeEntryId?: string } = {}
-) => render(reactQueryProviderHOC(<AppV2VenuesModule {...props} {...additionalProps} />))
+) => render(<AppV2VenuesModule {...props} {...additionalProps} />)

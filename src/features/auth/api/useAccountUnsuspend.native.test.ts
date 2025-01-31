@@ -1,5 +1,4 @@
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, waitFor } from 'tests/utils'
 
 import { useAccountUnsuspend } from './useAccountUnsuspend'
@@ -42,7 +41,4 @@ describe('useAccountUnsuspend', () => {
   })
 })
 
-const renderAccountUnsuspendHook = () =>
-  renderHook(() => useAccountUnsuspend(onSuccess, onError), {
-    wrapper: ({ children }) => reactQueryProviderHOC(children),
-  })
+const renderAccountUnsuspendHook = () => renderHook(() => useAccountUnsuspend(onSuccess, onError))

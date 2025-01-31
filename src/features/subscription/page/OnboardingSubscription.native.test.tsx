@@ -11,7 +11,6 @@ import { analytics } from 'libs/analytics/provider'
 import { storage } from 'libs/storage'
 import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
@@ -47,7 +46,7 @@ describe('OnboardingSubscription', () => {
   })
 
   it('should render correctly', async () => {
-    render(reactQueryProviderHOC(<OnboardingSubscription />))
+    render(<OnboardingSubscription />)
 
     await screen.findByText('Choisis des thèmes à suivre')
 
@@ -55,7 +54,7 @@ describe('OnboardingSubscription', () => {
   })
 
   it('should write to local storage that user has seen page', async () => {
-    render(reactQueryProviderHOC(<OnboardingSubscription />))
+    render(<OnboardingSubscription />)
 
     await waitFor(async () => {
       expect(await storage.readObject('has_seen_onboarding_subscription')).toEqual(true)
@@ -63,7 +62,7 @@ describe('OnboardingSubscription', () => {
   })
 
   it('should go back when user presses "Non merci"', async () => {
-    render(reactQueryProviderHOC(<OnboardingSubscription />))
+    render(<OnboardingSubscription />)
 
     fireEvent.press(await screen.findByLabelText('Ne pas suivre de thème'))
 
@@ -71,7 +70,7 @@ describe('OnboardingSubscription', () => {
   })
 
   it('should check theme when user presses a category button', async () => {
-    render(reactQueryProviderHOC(<OnboardingSubscription />))
+    render(<OnboardingSubscription />)
 
     fireEvent.press(await screen.findByLabelText('Activités créatives'))
 
@@ -91,13 +90,13 @@ describe('OnboardingSubscription', () => {
         subscribedThemes: [SubscriptionTheme.MUSIQUE],
       },
     })
-    render(reactQueryProviderHOC(<OnboardingSubscription />))
+    render(<OnboardingSubscription />)
 
     expect(await screen.findByLabelText('Musique')).toHaveAccessibilityState({ checked: true })
   })
 
   it('should disable validate button when no theme is selected', async () => {
-    render(reactQueryProviderHOC(<OnboardingSubscription />))
+    render(<OnboardingSubscription />)
 
     expect(await screen.findByLabelText('Suivre la sélection')).toBeDisabled()
   })
@@ -105,7 +104,7 @@ describe('OnboardingSubscription', () => {
   it('should subscribed to selected themes when user presses "Suivre la sélection"', async () => {
     mockServer.patchApi('/v1/profile', {})
 
-    render(reactQueryProviderHOC(<OnboardingSubscription />))
+    render(<OnboardingSubscription />)
 
     await act(async () => fireEvent.press(screen.getByLabelText('Activités créatives')))
 
@@ -126,7 +125,7 @@ describe('OnboardingSubscription', () => {
   it('should navigate to home on subscription success', async () => {
     mockServer.patchApi('/v1/profile', {})
 
-    render(reactQueryProviderHOC(<OnboardingSubscription />))
+    render(<OnboardingSubscription />)
 
     fireEvent.press(await screen.findByLabelText('Activités créatives'))
     fireEvent.press(screen.getByText('Suivre la sélection'))
@@ -139,7 +138,7 @@ describe('OnboardingSubscription', () => {
   it('should show success snackbar on subscription success', async () => {
     mockServer.patchApi('/v1/profile', {})
 
-    render(reactQueryProviderHOC(<OnboardingSubscription />))
+    render(<OnboardingSubscription />)
 
     fireEvent.press(await screen.findByLabelText('Activités créatives'))
     fireEvent.press(screen.getByText('Suivre la sélection'))
@@ -155,7 +154,7 @@ describe('OnboardingSubscription', () => {
   it('should log analytics on subscription success', async () => {
     mockServer.patchApi('/v1/profile', {})
 
-    render(reactQueryProviderHOC(<OnboardingSubscription />))
+    render(<OnboardingSubscription />)
 
     fireEvent.press(await screen.findByLabelText('Activités créatives'))
     fireEvent.press(screen.getByText('Suivre la sélection'))
@@ -179,7 +178,7 @@ describe('OnboardingSubscription', () => {
       { persist: true }
     )
 
-    render(reactQueryProviderHOC(<OnboardingSubscription />))
+    render(<OnboardingSubscription />)
 
     fireEvent.press(await screen.findByLabelText('Activités créatives'))
     fireEvent.press(screen.getByLabelText('Suivre la sélection'))
@@ -197,7 +196,7 @@ describe('OnboardingSubscription', () => {
       { persist: true }
     )
 
-    render(reactQueryProviderHOC(<OnboardingSubscription />))
+    render(<OnboardingSubscription />)
 
     fireEvent.press(await screen.findByLabelText('Activités créatives'))
     fireEvent.press(screen.getByLabelText('Suivre la sélection'))

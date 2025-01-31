@@ -4,7 +4,6 @@ import { MovieCalendarProvider } from 'features/offer/components/MoviesScreening
 import { OfferCineContent } from 'features/offer/components/OfferCine/OfferCineContent'
 import { LocationMode, Position } from 'libs/location/types'
 import { mockBuilder } from 'tests/mockBuilder'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils'
 
 jest.mock('features/offer/helpers/useGetVenueByDay/useGetVenuesByDay')
@@ -85,10 +84,8 @@ describe('OfferCineContent', () => {
 
 const renderOfferCineContent = () => {
   return render(
-    reactQueryProviderHOC(
-      <MovieCalendarProvider>
-        <OfferCineContent onSeeVenuePress={jest.fn()} offer={mockOffer} />
-      </MovieCalendarProvider>
-    )
+    <MovieCalendarProvider>
+      <OfferCineContent onSeeVenuePress={jest.fn()} offer={mockOffer} />
+    </MovieCalendarProvider>
   )
 }

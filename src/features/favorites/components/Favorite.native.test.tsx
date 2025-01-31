@@ -19,7 +19,6 @@ import { ILocationContext, LocationMode } from 'libs/location/types'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { Credit } from 'shared/user/useAvailableCredit'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { userEvent, render, screen, waitFor } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
@@ -211,9 +210,5 @@ type RenderFavoriteParams = {
 
 function renderFavorite(props: RenderFavoriteParams = DEFAULT_PROPS) {
   const { favorite, userProfile } = { ...DEFAULT_PROPS, ...props }
-  return render(
-    reactQueryProviderHOC(
-      <Favorite favorite={favorite} user={userProfile} onInAppBooking={onInAppBooking} />
-    )
-  )
+  return render(<Favorite favorite={favorite} user={userProfile} onInAppBooking={onInAppBooking} />)
 }

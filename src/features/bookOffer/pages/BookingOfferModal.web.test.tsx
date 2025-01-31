@@ -6,7 +6,6 @@ import { VenueListItem } from 'features/offer/components/VenueSelectionList/Venu
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { checkAccessibilityFor, render, screen } from 'tests/utils/web'
 
 import { BookingOfferModalComponent } from './BookingOfferModal'
@@ -143,5 +142,5 @@ describe('<BookingOfferModal/>', () => {
 const renderBookingOfferModalComponent = (
   props: ComponentProps<typeof BookingOfferModalComponent>
 ) => {
-  return render(reactQueryProviderHOC(<BookingOfferModalComponent {...props} />))
+  return render(<BookingOfferModalComponent {...props} />)
 }

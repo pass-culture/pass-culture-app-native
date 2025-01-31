@@ -6,7 +6,6 @@ import { ApiError } from 'api/ApiError'
 import { UserProfileResponse } from 'api/gen'
 import { initialSubscriptionState } from 'features/identityCheck/context/reducer'
 import * as SubscriptionContextProvider from 'features/identityCheck/context/SubscriptionContextProvider'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen } from 'tests/utils'
 
 import { SetPhoneNumberWithoutValidation } from './SetPhoneNumberWithoutValidation'
@@ -140,7 +139,7 @@ describe('SetPhoneNumberWithoutValidation', () => {
   })
 
   function renderSetPhoneNumberWithoutValidation() {
-    return render(reactQueryProviderHOC(<SetPhoneNumberWithoutValidation />))
+    return render(<SetPhoneNumberWithoutValidation />)
   }
 
   function updatePhoneNumberWillSucceed() {

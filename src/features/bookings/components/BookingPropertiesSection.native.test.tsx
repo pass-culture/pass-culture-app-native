@@ -7,7 +7,6 @@ import { Booking } from 'features/bookings/types'
 import { beneficiaryUser } from 'fixtures/user'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, waitFor } from 'tests/utils'
 
 jest.mock('features/auth/context/AuthContext')
@@ -92,5 +91,5 @@ describe('<BookingPropertiesSection />', () => {
 })
 
 function renderBookingProperties(booking: Booking) {
-  return render(reactQueryProviderHOC(<BookingPropertiesSection booking={booking} />))
+  return render(<BookingPropertiesSection booking={booking} />)
 }

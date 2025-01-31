@@ -5,7 +5,6 @@ import { ConsentState } from 'features/cookies/enums'
 import * as Cookies from 'features/cookies/helpers/useCookies'
 import * as CookiesUpToDate from 'features/cookies/helpers/useIsCookiesListUpToDate'
 import { ConsentStatus } from 'features/cookies/types'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils'
 
 import { PrivacyPolicy } from './PrivacyPolicy'
@@ -105,7 +104,5 @@ describe('<PrivacyPolicy />', () => {
 })
 
 const renderPrivacyPolicy = async () => {
-  render(<PrivacyPolicy />, {
-    wrapper: ({ children }) => reactQueryProviderHOC(children),
-  })
+  render(<PrivacyPolicy />)
 }

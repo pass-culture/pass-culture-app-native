@@ -12,7 +12,6 @@ import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/
 import { ThemeProvider } from 'libs/styled'
 import { Offer } from 'shared/offer/types'
 import { computedTheme } from 'tests/computedTheme'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen } from 'tests/utils'
 
 import { OffersModule, OffersModuleProps } from './OffersModule'
@@ -242,9 +241,7 @@ describe('OffersModule', () => {
 
 const renderOffersModule = (additionalProps: Partial<OffersModuleProps> = {}) =>
   render(
-    reactQueryProviderHOC(
-      <ThemeProvider theme={computedTheme}>
-        <OffersModule {...props} {...additionalProps} />
-      </ThemeProvider>
-    )
+    <ThemeProvider theme={computedTheme}>
+      <OffersModule {...props} {...additionalProps} />
+    </ThemeProvider>
   )

@@ -6,7 +6,6 @@ import * as useVenueOffers from 'features/venue/api/useVenueOffers'
 import { useVenueOffersArtists } from 'features/venue/api/useVenueOffersArtists/useVenueOffersArtists'
 import { VenueOffers } from 'features/venue/types'
 import mockVenueResponse from 'fixtures/venueResponse'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, waitFor } from 'tests/utils'
 
 const useVenueOffersSpy = jest.spyOn(useVenueOffers, 'useVenueOffers').mockReturnValue({
@@ -19,17 +18,13 @@ const useVenueOffersSpy = jest.spyOn(useVenueOffers, 'useVenueOffers').mockRetur
 
 describe('useVenueOffersArtists', () => {
   it('should return empty artists array when useVenueOffers hook data is undefined', () => {
-    const { result } = renderHook(() => useVenueOffersArtists(), {
-      wrapper: ({ children }) => reactQueryProviderHOC(children),
-    })
+    const { result } = renderHook(() => useVenueOffersArtists())
 
     expect(result.current.data).toEqual({ artists: [] })
   })
 
   it('should return empty artists array when there are no offers', async () => {
-    const { result } = renderHook(() => useVenueOffersArtists(mockVenueResponse), {
-      wrapper: ({ children }) => reactQueryProviderHOC(children),
-    })
+    const { result } = renderHook(() => useVenueOffersArtists(mockVenueResponse))
 
     await waitFor(async () => {
       expect(result.current.data).toEqual({ artists: [] })
@@ -92,9 +87,7 @@ describe('useVenueOffersArtists', () => {
       },
     } as unknown as UseQueryResult<VenueOffers, unknown>)
 
-    const { result } = renderHook(() => useVenueOffersArtists(mockVenueResponse), {
-      wrapper: ({ children }) => reactQueryProviderHOC(children),
-    })
+    const { result } = renderHook(() => useVenueOffersArtists(mockVenueResponse))
 
     await waitFor(async () => {
       expect(result.current.data).toEqual({
@@ -135,9 +128,7 @@ describe('useVenueOffersArtists', () => {
       },
     } as unknown as UseQueryResult<VenueOffers, unknown>)
 
-    const { result } = renderHook(() => useVenueOffersArtists(mockVenueResponse), {
-      wrapper: ({ children }) => reactQueryProviderHOC(children),
-    })
+    const { result } = renderHook(() => useVenueOffersArtists(mockVenueResponse))
 
     const expectedArtistsList = Array.from({ length: 4 }, (_, index) => ({
       id: index + 1,

@@ -7,7 +7,6 @@ import { videoModuleFixture } from 'features/home/fixtures/videoModule.fixture'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { analytics } from 'libs/analytics/provider'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 const mockOffer = mockedAlgoliaResponse.hits[0]
@@ -105,16 +104,14 @@ describe('VideoPlayer', () => {
 
 function renderVideoPlayer() {
   render(
-    reactQueryProviderHOC(
-      <VideoPlayer
-        youtubeVideoId={videoModuleFixture.youtubeVideoId}
-        offer={mockOffer}
-        onPressSeeOffer={hideModalMock}
-        moduleId="abcd"
-        moduleName="lujipeka"
-        homeEntryId="xyz"
-        playerRef={mockRef}
-      />
-    )
+    <VideoPlayer
+      youtubeVideoId={videoModuleFixture.youtubeVideoId}
+      offer={mockOffer}
+      onPressSeeOffer={hideModalMock}
+      moduleId="abcd"
+      moduleName="lujipeka"
+      homeEntryId="xyz"
+      playerRef={mockRef}
+    />
   )
 }

@@ -12,7 +12,6 @@ import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { ILocationContext, LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, render, screen, userEvent } from 'tests/utils'
 import { AnchorProvider } from 'ui/components/anchor/AnchorContext'
 import * as useModalAPI from 'ui/components/modals/useModal'
@@ -648,11 +647,9 @@ const renderOfferPlace = ({
   isDesktopViewport,
 }: RenderOfferPlaceType) =>
   render(
-    reactQueryProviderHOC(
-      <OfferCTAProvider>
-        <OfferPlace offer={offer} subcategory={subcategory} />
-      </OfferCTAProvider>
-    ),
+    <OfferCTAProvider>
+      <OfferPlace offer={offer} subcategory={subcategory} />
+    </OfferCTAProvider>,
     {
       theme: { isDesktopViewport: isDesktopViewport ?? false },
       wrapper: AnchorProvider,

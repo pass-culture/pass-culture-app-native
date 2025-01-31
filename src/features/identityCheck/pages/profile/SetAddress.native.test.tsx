@@ -12,7 +12,6 @@ import { mockedSuggestedPlaces } from 'libs/place/fixtures/mockedSuggestedPlaces
 import { Properties } from 'libs/place/types'
 import { storage } from 'libs/storage'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, waitFor, screen } from 'tests/utils'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
@@ -116,10 +115,8 @@ describe('<SetAddress/>', () => {
 
 function renderSetAddress() {
   return render(
-    reactQueryProviderHOC(
-      <SettingsWrapper>
-        <SetAddress />
-      </SettingsWrapper>
-    )
+    <SettingsWrapper>
+      <SetAddress />
+    </SettingsWrapper>
   )
 }

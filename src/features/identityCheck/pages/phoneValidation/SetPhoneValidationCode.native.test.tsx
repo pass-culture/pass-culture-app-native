@@ -8,7 +8,6 @@ import {
 } from 'features/identityCheck/pages/phoneValidation/SetPhoneValidationCode'
 import { analytics } from 'libs/analytics/provider'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 
 jest.mock('libs/jwt/jwt')
@@ -194,7 +193,5 @@ describe('SetPhoneValidationCode', () => {
 })
 
 function renderSetPhoneValidationCode() {
-  return render(<SetPhoneValidationCode />, {
-    wrapper: ({ children }) => reactQueryProviderHOC(children),
-  })
+  return render(<SetPhoneValidationCode />)
 }

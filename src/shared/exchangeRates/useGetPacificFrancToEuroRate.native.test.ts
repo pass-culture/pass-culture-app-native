@@ -1,7 +1,6 @@
 import { setSettings } from 'features/auth/tests/setSettings'
 import { DEFAULT_PACIFIC_FRANC_TO_EURO_RATE } from 'shared/exchangeRates/defaultRateValues'
 import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, renderHook } from 'tests/utils'
 
 describe('useGetPacificFrancToEuroRate', () => {
@@ -28,7 +27,4 @@ describe('useGetPacificFrancToEuroRate', () => {
   })
 })
 
-const renderUseGetPacificFrancToEuroRate = () =>
-  renderHook(useGetPacificFrancToEuroRate, {
-    wrapper: ({ children }) => reactQueryProviderHOC(children),
-  })
+const renderUseGetPacificFrancToEuroRate = () => renderHook(useGetPacificFrancToEuroRate)

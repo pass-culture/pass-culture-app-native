@@ -3,7 +3,6 @@ import React from 'react'
 import { PhoneValidationRemainingAttemptsRequest } from 'api/gen'
 import { phoneValidationRemainingAttemptsFixture } from 'features/identityCheck/fixtures/phoneValidationRemainingAttemptsFixture'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, checkAccessibilityFor, act } from 'tests/utils/web'
 
 import { SetPhoneNumber } from './SetPhoneNumber'
@@ -42,7 +41,7 @@ describe('<SetPhoneNumber/>', () => {
 
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
-      const { container } = render(reactQueryProviderHOC(<SetPhoneNumber />))
+      const { container } = render(<SetPhoneNumber />)
 
       await act(async () => {
         const results = await checkAccessibilityFor(container)

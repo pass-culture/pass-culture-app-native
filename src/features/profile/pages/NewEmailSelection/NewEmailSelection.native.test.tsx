@@ -4,7 +4,6 @@ import { replace, useRoute } from '__mocks__/@react-navigation/native'
 import { NewEmailSelection } from 'features/profile/pages/NewEmailSelection/NewEmailSelection'
 import { EmptyResponse } from 'libs/fetch'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen } from 'tests/utils'
 import { SUGGESTION_DELAY_IN_MS } from 'ui/components/inputs/EmailInputWithSpellingHelp/useEmailSpellingHelp'
 import * as SnackBarContextModule from 'ui/components/snackBar/SnackBarContext'
@@ -31,13 +30,13 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 
 describe('<NewEmailSelection />', () => {
   it('should match snapshot', () => {
-    render(reactQueryProviderHOC(<NewEmailSelection />))
+    render(<NewEmailSelection />)
 
     expect(screen).toMatchSnapshot()
   })
 
   it('should enable submit button when email input is filled', async () => {
-    render(reactQueryProviderHOC(<NewEmailSelection />))
+    render(<NewEmailSelection />)
 
     const emailInput = screen.getByPlaceholderText('email@exemple.com')
     fireEvent.changeText(emailInput, 'john.doe@gmail.com')
@@ -46,7 +45,7 @@ describe('<NewEmailSelection />', () => {
   })
 
   it('should disable submit button when email input is invalid', async () => {
-    render(reactQueryProviderHOC(<NewEmailSelection />))
+    render(<NewEmailSelection />)
 
     const emailInput = screen.getByPlaceholderText('email@exemple.com')
     fireEvent.changeText(emailInput, 'john.doe')
@@ -60,7 +59,7 @@ describe('<NewEmailSelection />', () => {
         statusCode: 204,
       },
     })
-    render(reactQueryProviderHOC(<NewEmailSelection />))
+    render(<NewEmailSelection />)
 
     const emailInput = screen.getByPlaceholderText('email@exemple.com')
     await act(async () => {
@@ -77,7 +76,7 @@ describe('<NewEmailSelection />', () => {
         statusCode: 204,
       },
     })
-    render(reactQueryProviderHOC(<NewEmailSelection />))
+    render(<NewEmailSelection />)
 
     const emailInput = screen.getByPlaceholderText('email@exemple.com')
     await act(async () => {
@@ -98,7 +97,7 @@ describe('<NewEmailSelection />', () => {
         statusCode: 400,
       },
     })
-    render(reactQueryProviderHOC(<NewEmailSelection />))
+    render(<NewEmailSelection />)
 
     const emailInput = screen.getByPlaceholderText('email@exemple.com')
     await act(async () => {
@@ -114,7 +113,7 @@ describe('<NewEmailSelection />', () => {
 
   describe('email format', () => {
     it('should show email suggestion', async () => {
-      render(reactQueryProviderHOC(<NewEmailSelection />))
+      render(<NewEmailSelection />)
 
       const emailInput = screen.getByPlaceholderText('email@exemple.com')
       fireEvent.changeText(emailInput, 'john.doe@gmal.com')
@@ -124,7 +123,7 @@ describe('<NewEmailSelection />', () => {
     })
 
     it('should not display invalid email format when email format is valid', async () => {
-      render(reactQueryProviderHOC(<NewEmailSelection />))
+      render(<NewEmailSelection />)
 
       const emailInput = screen.getByPlaceholderText('email@exemple.com')
       await act(() => fireEvent.changeText(emailInput, 'john.doe@example.com'))
@@ -138,7 +137,7 @@ describe('<NewEmailSelection />', () => {
     })
 
     it('should display invalid email format when email format is invalid', async () => {
-      render(reactQueryProviderHOC(<NewEmailSelection />))
+      render(<NewEmailSelection />)
 
       const emailInput = screen.getByPlaceholderText('email@exemple.com')
       await act(() => fireEvent.changeText(emailInput, 'john.doe'))

@@ -7,7 +7,6 @@ import mockVenueResponse from 'fixtures/venueResponse'
 import { fetchMultipleOffers } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/fetchMultipleOffers'
 import { LocationMode, Position } from 'libs/location/types'
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, waitFor } from 'tests/utils'
 
 const mockLocationMode = LocationMode.AROUND_ME
@@ -136,9 +135,7 @@ const EXPECTED_CALL_PARAM = {
 
 describe('useVenueOffers', () => {
   it('should call multiple fetch offers algolia request', async () => {
-    renderHook(() => useVenueOffers(mockVenueResponse), {
-      wrapper: ({ children }) => reactQueryProviderHOC(children),
-    })
+    renderHook(() => useVenueOffers(mockVenueResponse))
     await waitFor(() => expect(mockFetchMultipleOffers).toHaveBeenCalledWith(EXPECTED_CALL_PARAM))
   })
 
@@ -148,9 +145,7 @@ describe('useVenueOffers', () => {
       nbHits: 0,
     })
 
-    const { result } = renderHook(() => useVenueOffers(mockVenueResponse), {
-      wrapper: ({ children }) => reactQueryProviderHOC(children),
-    })
+    const { result } = renderHook(() => useVenueOffers(mockVenueResponse))
 
     await waitFor(async () => {
       expect(result.current.data).toEqual({ hits: [], nbHits: 0 })
@@ -187,9 +182,7 @@ describe('useVenueOffers', () => {
       nbHits: 1,
     })
 
-    const { result } = renderHook(() => useVenueOffers(mockVenueResponse), {
-      wrapper: ({ children }) => reactQueryProviderHOC(children),
-    })
+    const { result } = renderHook(() => useVenueOffers(mockVenueResponse))
 
     await waitFor(async () => {
       expect(result.current.data).toEqual({

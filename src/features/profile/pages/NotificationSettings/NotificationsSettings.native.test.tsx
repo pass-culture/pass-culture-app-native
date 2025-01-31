@@ -9,7 +9,6 @@ import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics/provider'
 import { mockAuthContextWithoutUser, mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 
@@ -51,21 +50,21 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 
 describe('NotificationsSettings', () => {
   it('should render correctly when user is logged in', () => {
-    render(reactQueryProviderHOC(<NotificationsSettings />))
+    render(<NotificationsSettings />)
 
     expect(screen).toMatchSnapshot()
   })
 
   it('should render correctly when user is not logged in', () => {
     mockAuthContextWithoutUser()
-    render(reactQueryProviderHOC(<NotificationsSettings />))
+    render(<NotificationsSettings />)
 
     expect(screen).toMatchSnapshot()
   })
 
   it('should disabled save button when user is not logged in', () => {
     mockAuthContextWithoutUser()
-    render(reactQueryProviderHOC(<NotificationsSettings />))
+    render(<NotificationsSettings />)
 
     expect(screen.getByText('Enregistrer')).toBeDisabled()
   })
@@ -73,13 +72,13 @@ describe('NotificationsSettings', () => {
   it('should disabled save button when user hasn‘t changed any parameters', () => {
     mockAuthContextWithUser(beneficiaryUser)
 
-    render(reactQueryProviderHOC(<NotificationsSettings />))
+    render(<NotificationsSettings />)
 
     expect(screen.getByText('Enregistrer')).toBeDisabled()
   })
 
   it('should enable save button when user has changed a parameter', () => {
-    render(reactQueryProviderHOC(<NotificationsSettings />))
+    render(<NotificationsSettings />)
 
     const toggleSwitch = screen.getByTestId('Interrupteur Autoriser l’envoi d’e-mails')
     fireEvent.press(toggleSwitch)
@@ -98,7 +97,7 @@ describe('NotificationsSettings', () => {
         subscribedThemes: [SubscriptionTheme.MUSIQUE],
       },
     })
-    render(reactQueryProviderHOC(<NotificationsSettings />))
+    render(<NotificationsSettings />)
 
     expect(screen.getByTestId('Interrupteur Autoriser l’envoi d’e-mails')).toHaveAccessibilityState(
       {
@@ -115,7 +114,7 @@ describe('NotificationsSettings', () => {
   })
 
   it('should switch on all thematic toggles when the "Suivre tous les thèmes" toggle is pressed', async () => {
-    render(reactQueryProviderHOC(<NotificationsSettings />))
+    render(<NotificationsSettings />)
 
     const toggleEmail = screen.getByTestId('Interrupteur Autoriser l’envoi d’e-mails')
     fireEvent.press(toggleEmail)
@@ -138,7 +137,7 @@ describe('NotificationsSettings', () => {
   })
 
   it('should switch off all thematic toggles when the "Suivre tous les thèmes" toggle is pressed when active', async () => {
-    render(reactQueryProviderHOC(<NotificationsSettings />))
+    render(<NotificationsSettings />)
 
     const toggleEmail = screen.getByTestId('Interrupteur Autoriser l’envoi d’e-mails')
     fireEvent.press(toggleEmail)
@@ -162,7 +161,7 @@ describe('NotificationsSettings', () => {
   })
 
   it('should toggle on specific theme when its toggle is pressed', async () => {
-    render(reactQueryProviderHOC(<NotificationsSettings />))
+    render(<NotificationsSettings />)
 
     const toggleEmail = screen.getByTestId('Interrupteur Autoriser l’envoi d’e-mails')
     fireEvent.press(toggleEmail)
@@ -174,7 +173,7 @@ describe('NotificationsSettings', () => {
   })
 
   it('should disabled all thematic toggles when email toggle and push toggle are inactive', () => {
-    render(reactQueryProviderHOC(<NotificationsSettings />))
+    render(<NotificationsSettings />)
 
     expect(screen.getByTestId('Interrupteur Cinéma')).toBeDisabled()
     expect(screen.getByTestId('Interrupteur Lecture')).toBeDisabled()
@@ -185,7 +184,7 @@ describe('NotificationsSettings', () => {
   })
 
   it('should switch off thematic toggle when disabling email and push toggle at the same time', () => {
-    render(reactQueryProviderHOC(<NotificationsSettings />))
+    render(<NotificationsSettings />)
 
     const toggleEmail = screen.getByTestId('Interrupteur Autoriser l’envoi d’e-mails')
     fireEvent.press(toggleEmail)
@@ -197,7 +196,7 @@ describe('NotificationsSettings', () => {
   })
 
   it('should display help message when the email toggle is inactive and user is logged in', () => {
-    render(reactQueryProviderHOC(<NotificationsSettings />))
+    render(<NotificationsSettings />)
 
     expect(
       screen.getByText(
@@ -207,7 +206,7 @@ describe('NotificationsSettings', () => {
   })
 
   it('should display info banner when email and push toggles are inactive', () => {
-    render(reactQueryProviderHOC(<NotificationsSettings />))
+    render(<NotificationsSettings />)
 
     expect(
       screen.getByText(
@@ -217,7 +216,7 @@ describe('NotificationsSettings', () => {
   })
 
   it('should not display info banner when at least email or push toggles is active', () => {
-    render(reactQueryProviderHOC(<NotificationsSettings />))
+    render(<NotificationsSettings />)
 
     const toggleEmail = screen.getByTestId('Interrupteur Autoriser l’envoi d’e-mails')
     fireEvent.press(toggleEmail)
@@ -231,7 +230,7 @@ describe('NotificationsSettings', () => {
 
   it('should not display info banner when user is not logged in', () => {
     mockAuthContextWithoutUser()
-    render(reactQueryProviderHOC(<NotificationsSettings />))
+    render(<NotificationsSettings />)
 
     expect(
       screen.queryByText(
@@ -247,7 +246,7 @@ describe('NotificationsSettings', () => {
         subscriptions: { marketingEmail: true, marketingPush: false },
       })
 
-      render(reactQueryProviderHOC(<NotificationsSettings />))
+      render(<NotificationsSettings />)
 
       const toggleEmail = screen.getByTestId('Interrupteur Autoriser l’envoi d’e-mails')
       await act(async () => fireEvent.press(toggleEmail))
@@ -270,7 +269,7 @@ describe('NotificationsSettings', () => {
     it('should show snackbar on success', async () => {
       mockServer.patchApi<UserProfileResponse>('/v1/profile', beneficiaryUser)
 
-      render(reactQueryProviderHOC(<NotificationsSettings />))
+      render(<NotificationsSettings />)
 
       const toggleEmail = screen.getByTestId('Interrupteur Autoriser l’envoi d’e-mails')
       fireEvent.press(toggleEmail)
@@ -289,7 +288,7 @@ describe('NotificationsSettings', () => {
         responseOptions: { statusCode: 400, data: {} },
       })
 
-      render(reactQueryProviderHOC(<NotificationsSettings />))
+      render(<NotificationsSettings />)
 
       const toggleEmail = screen.getByTestId('Interrupteur Autoriser l’envoi d’e-mails')
       fireEvent.press(toggleEmail)
@@ -308,7 +307,7 @@ describe('NotificationsSettings', () => {
         responseOptions: { statusCode: 400, data: {} },
       })
 
-      render(reactQueryProviderHOC(<NotificationsSettings />))
+      render(<NotificationsSettings />)
 
       const toggleEmail = screen.getByTestId('Interrupteur Autoriser l’envoi d’e-mails')
       fireEvent.press(toggleEmail)
@@ -326,7 +325,7 @@ describe('NotificationsSettings', () => {
         pushPermission: 'blocked',
         refreshPermission: jest.fn(),
       })
-      render(reactQueryProviderHOC(<NotificationsSettings />))
+      render(<NotificationsSettings />)
 
       const toggleSwitch = screen.getByTestId('Interrupteur Autoriser les notifications')
       fireEvent.press(toggleSwitch)
@@ -339,7 +338,7 @@ describe('NotificationsSettings', () => {
         pushPermission: 'blocked',
         refreshPermission: jest.fn(),
       })
-      render(reactQueryProviderHOC(<NotificationsSettings />))
+      render(<NotificationsSettings />)
 
       const toggleSwitch = screen.getByTestId('Interrupteur Autoriser les notifications')
       fireEvent.press(toggleSwitch)
@@ -355,7 +354,7 @@ describe('NotificationsSettings', () => {
         pushPermission: 'granted',
         refreshPermission: jest.fn(),
       })
-      render(reactQueryProviderHOC(<NotificationsSettings />))
+      render(<NotificationsSettings />)
 
       const toggleSwitch = screen.getByTestId('Interrupteur Autoriser les notifications')
       fireEvent.press(toggleSwitch)
@@ -366,7 +365,7 @@ describe('NotificationsSettings', () => {
 
   describe('When user has unsaved changes and attempts to go back', () => {
     it('should display a modal', async () => {
-      render(reactQueryProviderHOC(<NotificationsSettings />))
+      render(<NotificationsSettings />)
 
       const toggleEmail = screen.getByTestId('Interrupteur Autoriser l’envoi d’e-mails')
       fireEvent.press(toggleEmail)
@@ -381,7 +380,7 @@ describe('NotificationsSettings', () => {
   describe('Analytics', () => {
     it('should log subscription update when user changes their subscription', async () => {
       mockServer.patchApi('/v1/profile', {})
-      render(reactQueryProviderHOC(<NotificationsSettings />))
+      render(<NotificationsSettings />)
 
       const toggleEmail = screen.getByTestId('Interrupteur Autoriser l’envoi d’e-mails')
       await act(async () => fireEvent.press(toggleEmail))
@@ -402,7 +401,7 @@ describe('NotificationsSettings', () => {
 
     it('should log notification toggle update when user changes their settings', async () => {
       mockServer.patchApi('/v1/profile', {})
-      render(reactQueryProviderHOC(<NotificationsSettings />))
+      render(<NotificationsSettings />)
 
       const toggleEmail = screen.getByTestId('Interrupteur Autoriser l’envoi d’e-mails')
       await act(async () => fireEvent.press(toggleEmail))
@@ -417,7 +416,7 @@ describe('NotificationsSettings', () => {
 
     it('should log notification toggle update when user changes their settings from save modal', async () => {
       mockServer.patchApi('/v1/profile', {})
-      render(reactQueryProviderHOC(<NotificationsSettings />))
+      render(<NotificationsSettings />)
 
       const toggleEmail = screen.getByTestId('Interrupteur Autoriser l’envoi d’e-mails')
       await act(async () => fireEvent.press(toggleEmail))
@@ -435,7 +434,7 @@ describe('NotificationsSettings', () => {
 
     it('should not log subscription update when user only changes their notifications settings', async () => {
       mockServer.patchApi<UserProfileResponse>('/v1/profile', {})
-      render(reactQueryProviderHOC(<NotificationsSettings />))
+      render(<NotificationsSettings />)
 
       const toggleEmail = screen.getByTestId('Interrupteur Autoriser l’envoi d’e-mails')
       await act(async () => fireEvent.press(toggleEmail))

@@ -4,7 +4,6 @@ import { VenueTopComponent } from 'features/venue/components/VenueTopComponent/V
 import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { useLocation } from 'libs/location'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen } from 'tests/utils/web'
 
 jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
@@ -18,15 +17,13 @@ jest.mock('@react-native-clipboard/clipboard')
 describe('<VenueTopComponent />', () => {
   it('should display preview in modal', async () => {
     render(
-      reactQueryProviderHOC(
-        <VenueTopComponent
-          venue={{
-            ...venueDataTest,
-            bannerUrl: 'https://image.com',
-            bannerMeta: { is_from_google: false, image_credit: 'François Boulo' },
-          }}
-        />
-      ),
+      <VenueTopComponent
+        venue={{
+          ...venueDataTest,
+          bannerUrl: 'https://image.com',
+          bannerMeta: { is_from_google: false, image_credit: 'François Boulo' },
+        }}
+      />,
       { theme: { isDesktopViewport: true } }
     )
 
@@ -38,15 +35,13 @@ describe('<VenueTopComponent />', () => {
 
   it('should not display preview in modal if breakpoint is not desktop', async () => {
     render(
-      reactQueryProviderHOC(
-        <VenueTopComponent
-          venue={{
-            ...venueDataTest,
-            bannerUrl: 'https://image.com',
-            bannerMeta: { is_from_google: false, image_credit: 'François Boulo' },
-          }}
-        />
-      ),
+      <VenueTopComponent
+        venue={{
+          ...venueDataTest,
+          bannerUrl: 'https://image.com',
+          bannerMeta: { is_from_google: false, image_credit: 'François Boulo' },
+        }}
+      />,
       { theme: { isDesktopViewport: false } }
     )
 

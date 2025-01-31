@@ -9,7 +9,6 @@ import * as useRemoteConfigContext from 'libs/firebase/remoteConfig/RemoteConfig
 import firestore from 'libs/firebase/shims/firestore'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { getAppBuildVersion } from 'libs/packageJson'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, renderHook } from 'tests/utils'
 
 const buildVersion = getAppBuildVersion()
@@ -234,6 +233,4 @@ describe('useFeatureFlag', () => {
 })
 
 const renderUseFeatureFlag = (featureFlag: RemoteStoreFeatureFlags) =>
-  renderHook(() => useFeatureFlag(featureFlag), {
-    wrapper: ({ children }) => reactQueryProviderHOC(children),
-  })
+  renderHook(() => useFeatureFlag(featureFlag))

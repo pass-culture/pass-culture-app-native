@@ -9,7 +9,7 @@ import { simulateBackend } from 'features/favorites/helpers/simulateBackend'
 import { PlaylistType } from 'features/offer/enums'
 import { analytics } from 'libs/analytics/provider'
 import { mockAuthContextWithoutUser } from 'tests/AuthContextUtils'
-import { queryCache, reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { queryCache } from 'tests/reactQueryProviderHOC'
 import { act, render, screen, userEvent, waitFor } from 'tests/utils'
 import { FavoriteButton } from 'ui/components/buttons/FavoriteButton'
 import {
@@ -283,5 +283,5 @@ function renderFavoriteButton(options: Options = defaultOptions) {
     hasTooManyFavorites,
   })
 
-  return render(reactQueryProviderHOC(<FavoriteButton offerId={id} animationState={undefined} />))
+  return render(<FavoriteButton offerId={id} animationState={undefined} />)
 }

@@ -11,7 +11,6 @@ import { OnboardingAgeInformation } from 'features/tutorial/pages/onboarding/Onb
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { userEvent, render, screen } from 'tests/utils'
 
 jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
@@ -146,5 +145,5 @@ const renderOnboardingAgeInformation = (navigationParams: { age: number }) => {
     TutorialRootStackParamList,
     'OnboardingAgeInformation'
   >
-  return render(reactQueryProviderHOC(<OnboardingAgeInformation {...navProps} />))
+  return render(<OnboardingAgeInformation {...navProps} />)
 }

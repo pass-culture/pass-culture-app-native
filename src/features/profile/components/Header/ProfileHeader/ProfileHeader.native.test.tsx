@@ -15,7 +15,6 @@ import { domains_credit_v1 } from 'features/profile/fixtures/domainsCredit'
 import { isUserUnderageBeneficiary } from 'features/profile/helpers/isUserUnderageBeneficiary'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils'
 
 jest.mock('libs/network/NetInfoWrapper')
@@ -216,4 +215,4 @@ const renderProfileHeader = ({
     enablePassForAll: boolean
   }
   user?: UserProfileResponse
-}) => render(reactQueryProviderHOC(<ProfileHeader featureFlags={featureFlags} user={user} />))
+}) => render(<ProfileHeader featureFlags={featureFlags} user={user} />)

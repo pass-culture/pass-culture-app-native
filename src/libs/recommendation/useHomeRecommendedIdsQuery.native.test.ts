@@ -4,7 +4,6 @@ import { EmptyResponse } from 'libs/fetch'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { mockUseAuthContext } from 'tests/AuthContextUtils'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, waitFor } from 'tests/utils'
 
 import { useHomeRecommendedIdsQuery } from './useHomeRecommendedIdsQuery'
@@ -20,17 +19,13 @@ describe('useHomeRecommendedIdsQuery', () => {
       responseOptions: { statusCode: 400, data: {} },
     })
 
-    renderHook(
-      () =>
-        useHomeRecommendedIdsQuery({
-          playlistRequestBody: {},
-          playlistRequestQuery: {},
-          userId: 1,
-          shouldFetch: true,
-        }),
-      {
-        wrapper: ({ children }) => reactQueryProviderHOC(children),
-      }
+    renderHook(() =>
+      useHomeRecommendedIdsQuery({
+        playlistRequestBody: {},
+        playlistRequestQuery: {},
+        userId: 1,
+        shouldFetch: true,
+      })
     )
 
     await waitFor(() => {
@@ -52,17 +47,13 @@ describe('useHomeRecommendedIdsQuery', () => {
   it('should capture an unknown exception when fetch call fails for unknown reasons', async () => {
     jest.spyOn(api, 'postNativeV1RecommendationPlaylist').mockRejectedValueOnce('some error')
 
-    renderHook(
-      () =>
-        useHomeRecommendedIdsQuery({
-          playlistRequestBody: {},
-          playlistRequestQuery: {},
-          userId: 1,
-          shouldFetch: true,
-        }),
-      {
-        wrapper: ({ children }) => reactQueryProviderHOC(children),
-      }
+    renderHook(() =>
+      useHomeRecommendedIdsQuery({
+        playlistRequestBody: {},
+        playlistRequestQuery: {},
+        userId: 1,
+        shouldFetch: true,
+      })
     )
 
     await waitFor(() => {
@@ -85,17 +76,13 @@ describe('useHomeRecommendedIdsQuery', () => {
       .spyOn(api, 'postNativeV1RecommendationPlaylist')
       .mockRejectedValueOnce(new Error('Network request failed'))
 
-    renderHook(
-      () =>
-        useHomeRecommendedIdsQuery({
-          playlistRequestBody: {},
-          playlistRequestQuery: {},
-          userId: 1,
-          shouldFetch: true,
-        }),
-      {
-        wrapper: ({ children }) => reactQueryProviderHOC(children),
-      }
+    renderHook(() =>
+      useHomeRecommendedIdsQuery({
+        playlistRequestBody: {},
+        playlistRequestQuery: {},
+        userId: 1,
+        shouldFetch: true,
+      })
     )
 
     await waitFor(() => {
@@ -125,17 +112,13 @@ describe('useHomeRecommendedIdsQuery', () => {
         responseOptions: { statusCode, data: {} },
       })
 
-      renderHook(
-        () =>
-          useHomeRecommendedIdsQuery({
-            playlistRequestBody: {},
-            playlistRequestQuery: {},
-            userId: 1,
-            shouldFetch: true,
-          }),
-        {
-          wrapper: ({ children }) => reactQueryProviderHOC(children),
-        }
+      renderHook(() =>
+        useHomeRecommendedIdsQuery({
+          playlistRequestBody: {},
+          playlistRequestQuery: {},
+          userId: 1,
+          shouldFetch: true,
+        })
       )
 
       await waitFor(() => {
@@ -154,17 +137,13 @@ describe('useHomeRecommendedIdsQuery', () => {
         },
       },
     })
-    const { result } = renderHook(
-      () =>
-        useHomeRecommendedIdsQuery({
-          playlistRequestBody: {},
-          playlistRequestQuery: {},
-          userId: 1,
-          shouldFetch: true,
-        }),
-      {
-        wrapper: ({ children }) => reactQueryProviderHOC(children),
-      }
+    const { result } = renderHook(() =>
+      useHomeRecommendedIdsQuery({
+        playlistRequestBody: {},
+        playlistRequestQuery: {},
+        userId: 1,
+        shouldFetch: true,
+      })
     )
 
     await waitFor(() => {
@@ -197,7 +176,7 @@ describe('useHomeRecommendedIdsQuery', () => {
           shouldFetch: true,
         }),
       {
-        wrapper: (props) => reactQueryProviderHOC(props.children),
+        wrapper: (props) => props.children,
       }
     )
     await waitFor(() => {
@@ -224,7 +203,7 @@ describe('useHomeRecommendedIdsQuery', () => {
           shouldFetch: false,
         }),
       {
-        wrapper: (props) => reactQueryProviderHOC(props.children),
+        wrapper: (props) => props.children,
       }
     )
     await waitFor(() => {

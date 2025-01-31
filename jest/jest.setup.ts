@@ -5,8 +5,6 @@ import 'cross-fetch/polyfill'
 // We can see it
 import mockRNDeviceInfo from 'react-native-device-info/jest/react-native-device-info-mock'
 
-jest.unmock('react-query')
-
 /* See the corresponding mocks in libs/analytics/__mocks__ */
 /* Tests passed but there is a console error in web files */
 /* console.error

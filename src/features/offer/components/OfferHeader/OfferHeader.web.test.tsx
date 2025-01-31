@@ -5,7 +5,6 @@ import { PaginatedFavoritesResponse } from 'api/gen'
 import { paginatedFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedFavoritesResponseSnap'
 import { offerResponseSnap as mockOffer } from 'features/offer/fixtures/offerResponse'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, render, screen, userEvent } from 'tests/utils/web'
 
 import { OfferHeader } from '../OfferHeader/OfferHeader'
@@ -27,13 +26,11 @@ describe('<OfferHeader />', () => {
     const animatedValue = new Animated.Value(0)
 
     render(
-      reactQueryProviderHOC(
-        <OfferHeader
-          title="Some very nice offer"
-          headerTransition={animatedValue}
-          offer={mockOffer}
-        />
-      )
+      <OfferHeader
+        title="Some very nice offer"
+        headerTransition={animatedValue}
+        offer={mockOffer}
+      />
     )
 
     const offerHeaderName = screen.getByTestId('offerHeaderName')
@@ -52,13 +49,11 @@ describe('<OfferHeader />', () => {
     const animatedValue = new Animated.Value(0)
 
     render(
-      reactQueryProviderHOC(
-        <OfferHeader
-          title="Some very nice offer"
-          headerTransition={animatedValue}
-          offer={mockOffer}
-        />
-      )
+      <OfferHeader
+        title="Some very nice offer"
+        headerTransition={animatedValue}
+        offer={mockOffer}
+      />
     )
 
     const shareButton = screen.getByLabelText('Partager')

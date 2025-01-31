@@ -10,7 +10,6 @@ import { mockedSuggestedCities } from 'libs/place/fixtures/mockedSuggestedCities
 import { CitiesResponse, CITIES_API_URL } from 'libs/place/useCities'
 import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 
@@ -43,7 +42,7 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 
 describe('<SetCity/>', () => {
   it('should render correctly', () => {
-    render(reactQueryProviderHOC(<ChangeCity />))
+    render(<ChangeCity />)
 
     expect(screen).toMatchSnapshot()
   })
@@ -53,7 +52,7 @@ describe('<SetCity/>', () => {
     mockServer.universalGet<CitiesResponse>(CITIES_API_URL, mockedSuggestedCities)
     mockServer.patchApi<UserProfileResponse>('/v1/profile', beneficiaryUser)
 
-    render(reactQueryProviderHOC(<ChangeCity />))
+    render(<ChangeCity />)
 
     const input = screen.getByPlaceholderText('Ex\u00a0: 75017')
     await act(async () => {
@@ -81,7 +80,7 @@ describe('<SetCity/>', () => {
     mockServer.universalGet<CitiesResponse>(CITIES_API_URL, mockedSuggestedCities)
     mockServer.patchApi<UserProfileResponse>('/v1/profile', beneficiaryUser)
 
-    render(reactQueryProviderHOC(<ChangeCity />))
+    render(<ChangeCity />)
 
     const input = screen.getByPlaceholderText('Ex\u00a0: 75017')
     await act(async () => {
@@ -106,7 +105,7 @@ describe('<SetCity/>', () => {
     mockServer.universalGet<CitiesResponse>(CITIES_API_URL, mockedSuggestedCities)
     mockServer.patchApi<UserProfileResponse>('/v1/profile', beneficiaryUser)
 
-    render(reactQueryProviderHOC(<ChangeCity />))
+    render(<ChangeCity />)
 
     const input = screen.getByPlaceholderText('Ex\u00a0: 75017')
     await act(async () => {
@@ -132,7 +131,7 @@ describe('<SetCity/>', () => {
     mockServer.universalGet<CitiesResponse>(CITIES_API_URL, mockedSuggestedCities)
     mockServer.patchApi<UserProfileResponse>('/v1/profile', beneficiaryUser)
 
-    render(reactQueryProviderHOC(<ChangeCity />))
+    render(<ChangeCity />)
 
     const input = screen.getByPlaceholderText('Ex\u00a0: 75017')
     await act(async () => {
@@ -161,7 +160,7 @@ describe('<SetCity/>', () => {
     mockServer.patchApi<UserProfileResponse>('/v1/profile', {
       responseOptions: { statusCode: 400 },
     })
-    render(reactQueryProviderHOC(<ChangeCity />))
+    render(<ChangeCity />)
 
     const input = screen.getByPlaceholderText('Ex\u00a0: 75017')
     await act(async () => {

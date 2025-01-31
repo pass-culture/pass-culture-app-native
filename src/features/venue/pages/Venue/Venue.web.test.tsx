@@ -13,7 +13,6 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { Offer } from 'shared/offer/types'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, checkAccessibilityFor, fireEvent, render, screen } from 'tests/utils/web'
 
 mockdate.set(new Date('2021-08-15T00:00:00Z'))
@@ -87,7 +86,7 @@ describe('<Venue />', () => {
   })
 
   it('should not have basic accessibility issues', async () => {
-    const { container } = render(reactQueryProviderHOC(<Venue />))
+    const { container } = render(<Venue />)
 
     await screen.findAllByText('Gratuit')
 
@@ -100,7 +99,7 @@ describe('<Venue />', () => {
   })
 
   it('should show offers section', async () => {
-    render(reactQueryProviderHOC(<Venue />))
+    render(<Venue />)
 
     await screen.findAllByText('Gratuit')
 
@@ -110,7 +109,7 @@ describe('<Venue />', () => {
   })
 
   it('should show practical information when switching tabs', async () => {
-    render(reactQueryProviderHOC(<Venue />))
+    render(<Venue />)
 
     await screen.findAllByText('Gratuit')
 

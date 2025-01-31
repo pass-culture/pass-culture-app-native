@@ -5,7 +5,6 @@ import { OfferResponseV2 } from 'api/gen'
 import { RootStack } from 'features/navigation/RootNavigator/Stack'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { Offer } from 'features/offer/pages/Offer/Offer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render } from 'tests/utils'
 
 jest.mock('libs/location')
@@ -61,16 +60,14 @@ export function renderOfferPage({
   mockedIsLoading = mockIsLoading
 
   render(
-    reactQueryProviderHOC(
-      <NavigationContainer>
-        <RootStack.Navigator initialRouteName="Offer">
-          <RootStack.Screen
-            name="Offer"
-            component={Offer}
-            initialParams={{ id: offerId, fromOfferId, openModalOnNavigation }}
-          />
-        </RootStack.Navigator>
-      </NavigationContainer>
-    )
+    <NavigationContainer>
+      <RootStack.Navigator initialRouteName="Offer">
+        <RootStack.Screen
+          name="Offer"
+          component={Offer}
+          initialParams={{ id: offerId, fromOfferId, openModalOnNavigation }}
+        />
+      </RootStack.Navigator>
+    </NavigationContainer>
   )
 }

@@ -5,7 +5,6 @@ import { mockOffer } from 'features/bookOffer/fixtures/offer'
 import { mockedAlgoliaOffersWithSameArtistResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils'
 
 jest.mock('@shopify/flash-list', () => {
@@ -31,13 +30,11 @@ describe('ArtistPlaylist', () => {
 
   it('should display artist playlist when there is some offer from this artist', () => {
     render(
-      reactQueryProviderHOC(
-        <ArtistPlaylist
-          offer={mockOffer}
-          artistName="Céline Dion"
-          items={mockedAlgoliaOffersWithSameArtistResponse}
-        />
-      )
+      <ArtistPlaylist
+        offer={mockOffer}
+        artistName="Céline Dion"
+        items={mockedAlgoliaOffersWithSameArtistResponse}
+      />
     )
 
     expect(screen.getByText('Toutes ses offres disponibles')).toBeOnTheScreen()
@@ -45,11 +42,7 @@ describe('ArtistPlaylist', () => {
   })
 
   it('should not display artist playlist when there is not some offer from this artist', async () => {
-    render(
-      reactQueryProviderHOC(
-        <ArtistPlaylist offer={mockOffer} artistName="Céline Dion" items={[]} />
-      )
-    )
+    render(<ArtistPlaylist offer={mockOffer} artistName="Céline Dion" items={[]} />)
 
     expect(screen.queryByText('Toutes ses offres disponibles')).not.toBeOnTheScreen()
     expect(screen.queryByText('Manga Série "One piece" - Tome 5')).not.toBeOnTheScreen()
@@ -57,13 +50,11 @@ describe('ArtistPlaylist', () => {
 
   it('should use bookFormat if available in playlist item', () => {
     render(
-      reactQueryProviderHOC(
-        <ArtistPlaylist
-          offer={mockOffer}
-          artistName="Céline Dion"
-          items={mockedAlgoliaOffersWithSameArtistResponse}
-        />
-      )
+      <ArtistPlaylist
+        offer={mockOffer}
+        artistName="Céline Dion"
+        items={mockedAlgoliaOffersWithSameArtistResponse}
+      />
     )
 
     expect(screen.getByText('Poche')).toBeOnTheScreen()
@@ -71,13 +62,11 @@ describe('ArtistPlaylist', () => {
 
   it('should not use bookFormat if is not in playlist item', () => {
     render(
-      reactQueryProviderHOC(
-        <ArtistPlaylist
-          offer={mockOffer}
-          artistName="Céline Dion"
-          items={mockedAlgoliaOffersWithSameArtistResponse}
-        />
-      )
+      <ArtistPlaylist
+        offer={mockOffer}
+        artistName="Céline Dion"
+        items={mockedAlgoliaOffersWithSameArtistResponse}
+      />
     )
 
     expect(screen.getAllByText('Évènement et atelier patrimoine')[1]).toBeOnTheScreen()

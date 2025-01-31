@@ -7,7 +7,6 @@ import * as OpenUrlAPI from 'features/navigation/helpers/openUrl'
 import * as useGoBack from 'features/navigation/useGoBack'
 import { nonBeneficiaryUser } from 'fixtures/user'
 import { env } from 'libs/environment/fixtures'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 
@@ -122,7 +121,7 @@ describe('DeleteProfileConfirmation', () => {
   })
 
   function renderDeleteProfileConfirmation() {
-    return render(reactQueryProviderHOC(<DeleteProfileConfirmation />))
+    return render(<DeleteProfileConfirmation />)
   }
 
   function whenAnonymizeAccount() {

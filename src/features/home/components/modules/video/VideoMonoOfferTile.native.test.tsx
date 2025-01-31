@@ -11,7 +11,6 @@ import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { Offer } from 'shared/offer/types'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
 
 jest.mock('libs/network/NetInfoWrapper')
@@ -78,9 +77,6 @@ function renderOfferVideoModule(offer?: Offer) {
       color=""
       hideModal={hideModalMock}
       analyticsParams={mockAnalyticsParams}
-    />,
-    {
-      wrapper: ({ children }) => reactQueryProviderHOC(children),
-    }
+    />
   )
 }

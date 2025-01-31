@@ -12,7 +12,6 @@ import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics/provider'
 import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, waitFor, act, fireEvent } from 'tests/utils'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
@@ -134,5 +133,5 @@ describe('<ChangeStatus/>', () => {
 })
 
 function renderChangedStatus() {
-  return render(reactQueryProviderHOC(<ChangeStatus />))
+  return render(<ChangeStatus />)
 }

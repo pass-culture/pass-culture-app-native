@@ -6,7 +6,6 @@ import { AutocompleteOffer } from 'features/search/components/AutocompleteOffer/
 import { initialSearchState } from 'features/search/context/reducer'
 import { mockSuggestionHits } from 'features/search/fixtures/algolia'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, render, screen } from 'tests/utils'
 
 let mockHits: Hit<BaseHit>[] = []
@@ -41,9 +40,7 @@ describe('AutocompleteOffer component', () => {
     })
 
     it('should display "Suggestions"', async () => {
-      render(<AutocompleteOffer addSearchHistory={jest.fn()} />, {
-        wrapper: ({ children }) => reactQueryProviderHOC(children),
-      })
+      render(<AutocompleteOffer addSearchHistory={jest.fn()} />)
 
       await act(() => {})
 
@@ -57,9 +54,7 @@ describe('AutocompleteOffer component', () => {
     })
 
     it('should not display "Suggestions"', () => {
-      render(<AutocompleteOffer addSearchHistory={jest.fn()} />, {
-        wrapper: ({ children }) => reactQueryProviderHOC(children),
-      })
+      render(<AutocompleteOffer addSearchHistory={jest.fn()} />)
 
       expect(screen.queryByText('Suggestions')).not.toBeOnTheScreen()
     })

@@ -12,7 +12,6 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { decodedTokenWithRemainingLifetime } from 'libs/jwt/fixtures'
 import { storage } from 'libs/storage'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { measurePerformance, screen } from 'tests/utils'
 
 jest.mock('libs/firebase/analytics/analytics')
@@ -49,11 +48,9 @@ describe('<Favorites />', () => {
     storage.saveString('access_token', 'token')
     storage.saveString('PASSCULTURE_REFRESH_TOKEN', 'token')
     await measurePerformance(
-      reactQueryProviderHOC(
-        <AuthWrapper>
-          <Favorites />
-        </AuthWrapper>
-      ),
+      <AuthWrapper>
+        <Favorites />
+      </AuthWrapper>,
       {
         scenario: async () => {
           await screen.findByText(`4 favoris`, {}, { timeout: TEST_TIMEOUT_IN_MS })

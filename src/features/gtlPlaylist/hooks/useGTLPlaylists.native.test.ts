@@ -6,7 +6,6 @@ import { LocationMode, Position } from 'libs/location/types'
 import { QueryKeys } from 'libs/queryKeys'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, waitFor } from 'tests/utils'
 
 jest.mock('libs/network/NetInfoWrapper')
@@ -184,6 +183,4 @@ describe('useGTLPlaylists', () => {
 })
 
 const renderHookWithParams = (queryKey: keyof typeof QueryKeys, venue?: VenueResponse) =>
-  renderHook(() => useGTLPlaylists({ queryKey, venue }), {
-    wrapper: ({ children }) => reactQueryProviderHOC(children),
-  })
+  renderHook(() => useGTLPlaylists({ queryKey, venue }))

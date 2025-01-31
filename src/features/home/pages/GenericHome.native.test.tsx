@@ -15,7 +15,6 @@ import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
 import { BatchProfile } from 'libs/react-native-batch'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, render, screen, waitFor, within } from 'tests/utils'
 import { TypoDS } from 'ui/theme'
 const useShowSkeletonSpy = jest.spyOn(showSkeletonAPI, 'useShowSkeleton').mockReturnValue(false)
@@ -117,11 +116,7 @@ describe('GenericHome', () => {
 
       useShowSkeletonSpy.mockReturnValueOnce(false)
       // home component creation performance transaction + home loading performance transaction
-      screen.rerender(
-        reactQueryProviderHOC(
-          <GenericHome modules={defaultModules} Header={Header} homeId={homeId} />
-        )
-      )
+      screen.rerender(<GenericHome modules={defaultModules} Header={Header} homeId={homeId} />)
 
       await act(async () => {})
 
@@ -321,13 +316,11 @@ function renderGenericHome({
   thematicHeader,
 }: Partial<ComponentProps<typeof GenericHome>>) {
   return render(
-    reactQueryProviderHOC(
-      <GenericHome
-        modules={modules}
-        Header={Header}
-        homeId={homeId}
-        thematicHeader={thematicHeader}
-      />
-    )
+    <GenericHome
+      modules={modules}
+      Header={Header}
+      homeId={homeId}
+      thematicHeader={thematicHeader}
+    />
   )
 }

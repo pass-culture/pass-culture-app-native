@@ -6,7 +6,6 @@ import { analytics } from 'libs/analytics/provider'
 import * as Keychain from 'libs/keychain/keychain'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { googleLogout } from 'libs/react-native-google-sso/googleLogout'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook } from 'tests/utils'
 
 import { LoggedInQueryKeys, useLogoutRoutine } from './useLogoutRoutine'
@@ -111,9 +110,7 @@ describe('useLogoutRoutine', () => {
 })
 
 const renderUseLogoutRoutine = async () => {
-  const { result } = renderHook(useLogoutRoutine, {
-    wrapper: ({ children }) => reactQueryProviderHOC(children),
-  })
+  const { result } = renderHook(useLogoutRoutine)
   const logout = result.current
   await logout()
 }

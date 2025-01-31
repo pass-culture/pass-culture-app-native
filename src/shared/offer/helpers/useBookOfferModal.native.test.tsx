@@ -6,7 +6,6 @@ import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { OfferModal } from 'shared/offer/enums'
 import { OfferModalProps, useBookOfferModal } from 'shared/offer/helpers/useBookOfferModal'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, renderHook, screen } from 'tests/utils'
 import { LINE_BREAK } from 'ui/theme/constants'
 
@@ -51,13 +50,11 @@ describe('useOfferModal', () => {
 
   it('should return application processing modal when asked', () => {
     render(
-      reactQueryProviderHOC(
-        <TestOfferModal
-          modalToDisplay={OfferModal.APPLICATION_PROCESSING}
-          offerId={1000}
-          from={StepperOrigin.OFFER}
-        />
-      )
+      <TestOfferModal
+        modalToDisplay={OfferModal.APPLICATION_PROCESSING}
+        offerId={1000}
+        from={StepperOrigin.OFFER}
+      />
     )
 
     expect(screen.getByText('C’est pour bientôt\u00a0!')).toBeOnTheScreen()
@@ -91,13 +88,11 @@ describe('useOfferModal', () => {
 
   it('should return error application modal when asked', () => {
     render(
-      reactQueryProviderHOC(
-        <TestOfferModal
-          modalToDisplay={OfferModal.ERROR_APPLICATION}
-          offerId={1000}
-          from={StepperOrigin.OFFER}
-        />
-      )
+      <TestOfferModal
+        modalToDisplay={OfferModal.ERROR_APPLICATION}
+        offerId={1000}
+        from={StepperOrigin.OFFER}
+      />
     )
 
     expect(
@@ -107,13 +102,11 @@ describe('useOfferModal', () => {
 
   it('should return finish subscription modal when asked', async () => {
     render(
-      reactQueryProviderHOC(
-        <TestOfferModal
-          modalToDisplay={OfferModal.FINISH_SUBSCRIPTION}
-          offerId={1000}
-          from={StepperOrigin.OFFER}
-        />
-      )
+      <TestOfferModal
+        modalToDisplay={OfferModal.FINISH_SUBSCRIPTION}
+        offerId={1000}
+        from={StepperOrigin.OFFER}
+      />
     )
 
     expect(

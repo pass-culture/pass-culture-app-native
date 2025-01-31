@@ -8,7 +8,6 @@ import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { userEvent, render, screen } from 'tests/utils'
 
 const mockShowModal = jest.fn()
@@ -133,9 +132,7 @@ const offerFixture2 = {
 
 function renderVideoModule(isDesktopViewport?: boolean) {
   render(
-    reactQueryProviderHOC(
-      <VideoModule {...videoModuleFixture} index={1} homeEntryId="abcd" shouldShowModal={false} />
-    ),
+    <VideoModule {...videoModuleFixture} index={1} homeEntryId="abcd" shouldShowModal={false} />,
     {
       theme: { isDesktopViewport: isDesktopViewport ?? false },
     }

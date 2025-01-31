@@ -1,7 +1,6 @@
 import React from 'react'
 
 import * as useGoBack from 'features/navigation/useGoBack'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, checkAccessibilityFor, render } from 'tests/utils/web'
 
 import { ConsentSettings } from './ConsentSettings'
@@ -33,7 +32,7 @@ jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 describe('<ConsentSettings/>', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
-      const { container } = render(reactQueryProviderHOC(<ConsentSettings />))
+      const { container } = render(<ConsentSettings />)
 
       await act(async () => {
         const results = await checkAccessibilityFor(container)

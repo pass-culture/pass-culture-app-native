@@ -4,7 +4,6 @@ import { View } from 'react-native'
 import { FavoritesWrapper } from 'features/favorites/context/FavoritesWrapper'
 import { paginatedFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedFavoritesResponseSnap'
 import { simulateBackend } from 'features/favorites/helpers/simulateBackend'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, renderHook, waitFor } from 'tests/utils'
 
 import { useRemoveFavorite } from './useRemoveFavorite'
@@ -26,12 +25,11 @@ describe('useRemoveFavorite hook', () => {
 
     const onError = jest.fn()
     const { result } = renderHook(() => useRemoveFavorite({ onError }), {
-      wrapper: (props) =>
-        reactQueryProviderHOC(
-          <FavoritesWrapper>
-            <View>{props.children}</View>
-          </FavoritesWrapper>
-        ),
+      wrapper: (props) => (
+        <FavoritesWrapper>
+          <View>{props.children}</View>
+        </FavoritesWrapper>
+      ),
     })
 
     expect(result.current.isLoading).toBeFalsy()
@@ -54,12 +52,11 @@ describe('useRemoveFavorite hook', () => {
 
     const onError = jest.fn()
     const { result } = renderHook(() => useRemoveFavorite({ onError }), {
-      wrapper: (props) =>
-        reactQueryProviderHOC(
-          <FavoritesWrapper>
-            <View>{props.children}</View>
-          </FavoritesWrapper>
-        ),
+      wrapper: (props) => (
+        <FavoritesWrapper>
+          <View>{props.children}</View>
+        </FavoritesWrapper>
+      ),
     })
 
     expect(result.current.isLoading).toBeFalsy()

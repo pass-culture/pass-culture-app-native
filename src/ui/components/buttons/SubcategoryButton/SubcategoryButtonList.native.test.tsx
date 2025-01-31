@@ -2,7 +2,6 @@ import React from 'react'
 
 import { initialSearchState } from 'features/search/context/reducer'
 import { BooksNativeCategoriesEnum } from 'features/search/types'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils'
 import { theme } from 'theme'
 import {
@@ -43,12 +42,10 @@ jest.mock('features/navigation/TabBar/routes')
 describe('<SubcategoryButtonList/>', () => {
   it('should render SubcategoryButtonList', async () => {
     render(
-      reactQueryProviderHOC(
-        <SubcategoryButtonList
-          onPress={jest.fn()}
-          subcategoryButtonContent={subcategoryButtonContent}
-        />
-      )
+      <SubcategoryButtonList
+        onPress={jest.fn()}
+        subcategoryButtonContent={subcategoryButtonContent}
+      />
     )
 
     expect(await screen.findByText('Romans et littérature')).toBeOnTheScreen()

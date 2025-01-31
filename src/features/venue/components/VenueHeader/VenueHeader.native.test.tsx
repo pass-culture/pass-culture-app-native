@@ -5,7 +5,6 @@ import * as useGoBack from 'features/navigation/useGoBack'
 import { VenueHeader } from 'features/venue/components/VenueHeader/VenueHeader'
 import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
 import { analytics } from 'libs/analytics/provider'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen } from 'tests/utils'
 
 jest.unmock('react-native/Libraries/Animated/createAnimatedComponent')
@@ -71,9 +70,7 @@ describe('<VenueHeader />', () => {
 
   it('should display venue name if venue has no public name', async () => {
     const venue = { ...venueDataTest, publicName: null, name: 'venueNameWithoutPublicName' }
-    render(
-      reactQueryProviderHOC(<VenueHeader headerTransition={new Animated.Value(0)} venue={venue} />)
-    )
+    render(<VenueHeader headerTransition={new Animated.Value(0)} venue={venue} />)
 
     expect(await screen.findByText('venueNameWithoutPublicName')).toBeOnTheScreen()
   })
@@ -81,8 +78,6 @@ describe('<VenueHeader />', () => {
 
 function renderVenueHeader() {
   const animatedValue = new Animated.Value(0)
-  render(
-    reactQueryProviderHOC(<VenueHeader headerTransition={animatedValue} venue={venueDataTest} />)
-  )
+  render(<VenueHeader headerTransition={animatedValue} venue={venueDataTest} />)
   return { animatedValue }
 }

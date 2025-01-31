@@ -10,7 +10,6 @@ import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeature
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { Offer } from 'shared/offer/types'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, measurePerformance } from 'tests/utils'
 
 jest.mock('libs/firebase/analytics/analytics')
@@ -70,7 +69,7 @@ describe('<Venue />', () => {
   })
 
   it('Performance test for Venue page', async () => {
-    await measurePerformance(reactQueryProviderHOC(<Venue />), {
+    await measurePerformance(<Venue />, {
       scenario: async () => {
         await act(async () => {})
       },

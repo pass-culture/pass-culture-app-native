@@ -1,6 +1,5 @@
 import * as useMinimalBuildNumberModule from 'features/forceUpdate/helpers/useMinimalBuildNumber'
 import * as packageJson from 'libs/packageJson'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook } from 'tests/utils'
 
 import { useResetOnMinimalBuild } from './useResetOnMinimalBuild'
@@ -19,10 +18,7 @@ describe('useResetOnMinimalBuild', () => {
     jest.restoreAllMocks()
   })
 
-  const renderHookWithProvider = (hook: () => void) =>
-    renderHook(hook, {
-      wrapper: ({ children }) => reactQueryProviderHOC(children),
-    })
+  const renderHookWithProvider = (hook: () => void) => renderHook(hook)
 
   it('should call resetErrorBoundary on component unmount', () => {
     const { unmount } = renderHookWithProvider(() => useResetOnMinimalBuild(mockResetErrorBoundary))

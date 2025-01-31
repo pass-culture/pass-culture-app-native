@@ -8,7 +8,6 @@ import { SearchLanding } from 'features/search/pages/SearchLanding/SearchLanding
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, measurePerformance } from 'tests/utils'
 
 jest.mock('libs/firebase/analytics/analytics')
@@ -54,9 +53,8 @@ describe('<SearchLanding />', () => {
   })
 })
 
-const SearchPage = () =>
-  reactQueryProviderHOC(
-    <SearchWrapper>
-      <SearchLanding />
-    </SearchWrapper>
-  )
+const SearchPage = () => (
+  <SearchWrapper>
+    <SearchLanding />
+  </SearchWrapper>
+)

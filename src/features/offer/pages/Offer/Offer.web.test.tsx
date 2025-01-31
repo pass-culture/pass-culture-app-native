@@ -7,7 +7,6 @@ import { Offer } from 'features/offer/pages/Offer/Offer'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { checkAccessibilityFor, render, screen, act } from 'tests/utils/web'
 
 jest.setTimeout(20000) // to avoid exceeded timeout
@@ -75,7 +74,7 @@ describe('<Offer/>', () => {
     })
 
     it('should not have basic accessibility issues', async () => {
-      const { container } = render(reactQueryProviderHOC(<Offer />))
+      const { container } = render(<Offer />)
       await screen.findByTestId('sticky-booking-button')
 
       await act(async () => {

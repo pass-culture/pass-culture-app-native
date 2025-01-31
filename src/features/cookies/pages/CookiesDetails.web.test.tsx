@@ -1,7 +1,6 @@
 import React from 'react'
 
 import { CookiesDetails } from 'features/cookies/pages/CookiesDetails'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, checkAccessibilityFor, render } from 'tests/utils/web'
 
 jest.mock('features/profile/api/useUpdateProfileMutation')
@@ -22,16 +21,14 @@ describe('<CookiesDetails/>', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
       const { container } = render(
-        reactQueryProviderHOC(
-          <CookiesDetails
-            settingsCookiesChoice={{
-              marketing: false,
-              performance: false,
-              customization: false,
-            }}
-            setSettingsCookiesChoice={jest.fn()}
-          />
-        )
+        <CookiesDetails
+          settingsCookiesChoice={{
+            marketing: false,
+            performance: false,
+            customization: false,
+          }}
+          setSettingsCookiesChoice={jest.fn()}
+        />
       )
 
       await act(async () => {

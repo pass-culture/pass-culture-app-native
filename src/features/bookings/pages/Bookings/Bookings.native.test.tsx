@@ -11,7 +11,6 @@ import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, render, screen, userEvent } from 'tests/utils'
 
 import { Bookings } from './Bookings'
@@ -222,5 +221,5 @@ describe('Bookings', () => {
 })
 
 const renderBookings = () => {
-  return render(reactQueryProviderHOC(<Bookings />))
+  return render(<Bookings />)
 }

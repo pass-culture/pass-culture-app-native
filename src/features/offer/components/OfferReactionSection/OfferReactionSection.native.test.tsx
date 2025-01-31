@@ -7,7 +7,6 @@ import { OfferReactionSection } from 'features/offer/components/OfferReactionSec
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 const mockBookingsWithoutReaction = {
@@ -199,5 +198,5 @@ describe('<OfferReactionSection />', () => {
 type RenderOfferReactionSectionType = Partial<ComponentProps<typeof OfferReactionSection>>
 
 function renderOfferReactionSection({ offer = offerResponseSnap }: RenderOfferReactionSectionType) {
-  render(reactQueryProviderHOC(<OfferReactionSection offer={offer} />))
+  render(<OfferReactionSection offer={offer} />)
 }

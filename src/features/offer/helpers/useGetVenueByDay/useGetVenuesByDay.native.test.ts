@@ -5,7 +5,6 @@ import * as getStocksByOfferIdsModule from 'features/offer/api/getStocksByOfferI
 import { useGetVenuesByDay } from 'features/offer/helpers/useGetVenueByDay/useGetVenuesByDay'
 import { LocationMode, Position } from 'libs/location/types'
 import { dateBuilder, mockBuilder } from 'tests/mockBuilder'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, renderHook } from 'tests/utils'
 
 const TODAY = dateBuilder().withDay(2).withHours(6)
@@ -111,7 +110,7 @@ describe('useGetVenuesByDay', () => {
 
 const renderUseGetVenueByDay = (...params: Parameters<typeof useGetVenuesByDay>) =>
   renderHook(({ date }) => useGetVenuesByDay(date, params[1]), {
-    wrapper: ({ children }) => reactQueryProviderHOC(children),
+    wrapper: ({ children }) => children,
     initialProps: { date: params[0] },
   })
 

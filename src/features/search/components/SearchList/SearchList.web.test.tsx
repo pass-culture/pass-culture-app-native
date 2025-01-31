@@ -7,7 +7,6 @@ import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { Offer } from 'shared/offer/types'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils/web'
 
 const mockHits: Offer[] = mockedAlgoliaResponse.hits
@@ -51,7 +50,7 @@ describe('<SearchList />', () => {
   })
 
   it('should display search list header when number of offer results > 0', async () => {
-    render(reactQueryProviderHOC(<SearchList {...props} />))
+    render(<SearchList {...props} />)
 
     expect(screen.getByTestId('searchListHeader')).toBeInTheDocument()
   })
@@ -62,7 +61,7 @@ describe('<SearchList />', () => {
       nbHits: 0,
       hits: { offers: [], venues: [], duplicatedOffers: [] },
     }
-    render(reactQueryProviderHOC(<SearchList {...propsWithoutHits} />))
+    render(<SearchList {...propsWithoutHits} />)
 
     expect(screen.queryByTestId('searchListHeader')).not.toBeInTheDocument()
   })

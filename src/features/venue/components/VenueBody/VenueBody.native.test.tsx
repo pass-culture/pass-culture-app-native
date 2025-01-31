@@ -15,7 +15,6 @@ import { VenueOffers } from 'features/venue/types'
 import { analytics } from 'libs/analytics/provider'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { Network } from 'libs/share/types'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen } from 'tests/utils'
 
 jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
@@ -51,7 +50,7 @@ describe('<VenueBody />', () => {
   })
 
   it('should display withdrawal details', async () => {
-    render(reactQueryProviderHOC(<VenueBody venue={venueDataTest} />))
+    render(<VenueBody venue={venueDataTest} />)
     await waitUntilRendered()
 
     fireEvent.press(screen.getByText('Infos pratiques'))
@@ -60,7 +59,7 @@ describe('<VenueBody />', () => {
   })
 
   it('should share on Instagram', async () => {
-    render(reactQueryProviderHOC(<VenueBody venue={venueDataTest} />))
+    render(<VenueBody venue={venueDataTest} />)
 
     const instagramButton = await screen.findByText(`Envoyer sur ${Network.instagram}`)
 
@@ -77,7 +76,7 @@ describe('<VenueBody />', () => {
   })
 
   it('should log event when pressing on Infos pratiques tab', async () => {
-    render(reactQueryProviderHOC(<VenueBody venue={venueDataTest} />))
+    render(<VenueBody venue={venueDataTest} />)
     await waitUntilRendered()
 
     fireEvent.press(screen.getByText('Infos pratiques'))
@@ -88,7 +87,7 @@ describe('<VenueBody />', () => {
   })
 
   it('should log event when pressing on Offres disponibles tab', async () => {
-    render(reactQueryProviderHOC(<VenueBody venue={venueDataTest} />))
+    render(<VenueBody venue={venueDataTest} />)
     await waitUntilRendered()
 
     fireEvent.press(screen.getByText('Offres disponibles'))

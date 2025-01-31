@@ -5,7 +5,7 @@ import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { useReactionMutation } from 'features/reactions/api/useReactionMutation'
 import { QueryKeys } from 'libs/queryKeys'
 import { mockServer } from 'tests/mswServer'
-import { queryCache, reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { queryCache } from 'tests/reactQueryProviderHOC'
 import { renderHook, waitFor } from 'tests/utils'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
@@ -79,5 +79,6 @@ describe('useReactionMutation', () => {
 
 const renderUseReactionMutation = () =>
   renderHook(() => useReactionMutation(), {
-    wrapper: ({ children }) => reactQueryProviderHOC(children, setup),
+    wrapper: ({ children }) => children,
+    setup,
   })

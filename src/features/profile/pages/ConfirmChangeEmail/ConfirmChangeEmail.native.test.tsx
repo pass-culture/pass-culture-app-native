@@ -1,7 +1,6 @@
 import React from 'react'
 
 import { ConfirmChangeEmail } from 'features/profile/pages/ConfirmChangeEmail/ConfirmChangeEmail'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils'
 
 jest.mock('features/identityCheck/context/SubscriptionContextProvider')
@@ -22,7 +21,7 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 
 describe('<ConfirmChangeEmail />', () => {
   it('should render correctly', async () => {
-    render(reactQueryProviderHOC(<ConfirmChangeEmail />))
+    render(<ConfirmChangeEmail />)
 
     await screen.findByText('Confirmer la demande')
 

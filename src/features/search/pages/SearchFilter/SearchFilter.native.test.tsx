@@ -12,7 +12,6 @@ import { ILocationContext, LocationMode } from 'libs/location/types'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent, waitFor } from 'tests/utils'
 
 import { SearchFilter } from './SearchFilter'
@@ -203,4 +202,4 @@ describe('<SearchFilter/>', () => {
   })
 })
 
-const renderSearchFilter = () => render(reactQueryProviderHOC(<SearchFilter />))
+const renderSearchFilter = () => render(<SearchFilter />)

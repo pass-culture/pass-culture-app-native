@@ -6,7 +6,6 @@ import { FILTERS_VENUE_TYPE_MAPPING } from 'features/venueMap/constant'
 import { VenueMap } from 'features/venueMap/pages/VenueMap/VenueMap'
 import { useVenueTypeCode, venueTypeCodeActions } from 'features/venueMap/store/venueTypeCodeStore'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen } from 'tests/utils'
 
 jest.mock('features/venue/api/useVenueOffers')
@@ -51,7 +50,7 @@ describe('<VenueMap />', () => {
   })
 
   it('Should display venue map header', async () => {
-    render(reactQueryProviderHOC(<VenueMap />))
+    render(<VenueMap />)
 
     await screen.findAllByTestId(/[A-Z]+Label/)
 
@@ -63,7 +62,7 @@ describe('<VenueMap />', () => {
   })
 
   it('Should handle go back action when pressing go back button', async () => {
-    render(reactQueryProviderHOC(<VenueMap />))
+    render(<VenueMap />)
 
     fireEvent.press(await screen.findByTestId('Revenir en arrière'))
 
@@ -71,7 +70,7 @@ describe('<VenueMap />', () => {
   })
 
   it('Should reset venue type code in store when pressing go back button', async () => {
-    render(reactQueryProviderHOC(<VenueMap />))
+    render(<VenueMap />)
 
     fireEvent.press(await screen.findByTestId('Revenir en arrière'))
 

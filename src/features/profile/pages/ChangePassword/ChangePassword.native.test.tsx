@@ -5,7 +5,6 @@ import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics/provider'
 import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 import { showSuccessSnackBar } from 'ui/components/snackBar/__mocks__/SnackBarContext'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
@@ -27,7 +26,7 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
 jest.mock('libs/jwt/jwt')
 
 function renderChangePassword() {
-  render(reactQueryProviderHOC(<ChangePassword />))
+  render(<ChangePassword />)
 }
 
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
@@ -70,7 +69,7 @@ describe('ChangePassword', () => {
       ...beneficiaryUser,
       hasPassword: false,
     })
-    render(reactQueryProviderHOC(<ChangePassword />))
+    render(<ChangePassword />)
 
     await waitFor(() => {
       expect(navigate).toHaveBeenCalledWith('TabNavigator', { screen: 'Home' })

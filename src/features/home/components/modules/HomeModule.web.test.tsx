@@ -23,7 +23,6 @@ import { GeoCoordinates, Position } from 'libs/location'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { offersFixture } from 'shared/offer/offer.fixture'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, checkAccessibilityFor, render, screen, waitFor } from 'tests/utils/web'
 
 import { HomeModule } from './HomeModule'
@@ -203,10 +202,7 @@ describe('<HomeModule />', () => {
 })
 
 function renderHomeModule(item: HomepageModule, data?: ModuleData) {
-  return render(
-    reactQueryProviderHOC(
-      <HomeModule item={item} index={index} homeEntryId={homeEntryId} data={data} />
-    ),
-    { theme: { isDesktopViewport: true } }
-  )
+  return render(<HomeModule item={item} index={index} homeEntryId={homeEntryId} data={data} />, {
+    theme: { isDesktopViewport: true },
+  })
 }

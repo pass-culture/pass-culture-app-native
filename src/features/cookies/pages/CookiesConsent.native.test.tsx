@@ -13,7 +13,6 @@ import { EmptyResponse } from 'libs/fetch'
 import * as PackageJson from 'libs/packageJson'
 import { storage } from 'libs/storage'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen } from 'tests/utils'
 
 jest.mock('libs/campaign')
@@ -362,7 +361,5 @@ describe('<CookiesConsent/>', () => {
 })
 
 const renderCookiesConsent = () => {
-  render(<CookiesConsent visible hideModal={hideModal} />, {
-    wrapper: ({ children }) => reactQueryProviderHOC(children),
-  })
+  render(<CookiesConsent visible hideModal={hideModal} />)
 }

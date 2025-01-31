@@ -11,7 +11,6 @@ import { LocationMode } from 'libs/location/types'
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { checkAccessibilityFor, render, screen } from 'tests/utils/web'
 
 jest.mock('libs/firebase/analytics/analytics')
@@ -71,7 +70,7 @@ describe('<ThematicSearch/>', () => {
   })
 
   it('should render', async () => {
-    render(reactQueryProviderHOC(<ThematicSearch />))
+    render(<ThematicSearch />)
 
     await screen.findByText('Romans et littérature')
 
@@ -79,7 +78,7 @@ describe('<ThematicSearch/>', () => {
   })
 
   it('should dispatch action with offerCategories when params change', async () => {
-    render(reactQueryProviderHOC(<ThematicSearch />))
+    render(<ThematicSearch />)
 
     await screen.findByText('Romans et littérature')
 
@@ -94,7 +93,7 @@ describe('<ThematicSearch/>', () => {
   it('should not have basic accessibility issues', async () => {
     mockUseNetInfoContext.mockReturnValueOnce({ isConnected: true })
 
-    const { container } = render(reactQueryProviderHOC(<ThematicSearch />))
+    const { container } = render(<ThematicSearch />)
 
     await screen.findByText('Romans et littérature')
 
@@ -106,7 +105,7 @@ describe('<ThematicSearch/>', () => {
   it('should not have basic accessibility issues when offline', async () => {
     mockUseNetInfoContext.mockReturnValueOnce({ isConnected: false })
 
-    const { container } = render(reactQueryProviderHOC(<ThematicSearch />))
+    const { container } = render(<ThematicSearch />)
 
     await screen.findByText('Romans et littérature')
 

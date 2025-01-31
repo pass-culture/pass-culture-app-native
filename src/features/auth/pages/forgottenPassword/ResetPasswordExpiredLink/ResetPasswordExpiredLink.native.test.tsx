@@ -9,7 +9,6 @@ import { navigateFromRef } from 'features/navigation/navigationRef'
 import { RootStackParamList } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 
 import { ResetPasswordExpiredLink } from './ResetPasswordExpiredLink'
@@ -66,7 +65,7 @@ describe('<ResetPasswordExpiredLink/>', () => {
     })
 
     const ResetPasswordExpiredLinkWithBoundary = withAsyncErrorBoundary(ResetPasswordExpiredLink)
-    render(reactQueryProviderHOC(<ResetPasswordExpiredLinkWithBoundary {...navigationProps} />))
+    render(<ResetPasswordExpiredLinkWithBoundary {...navigationProps} />)
 
     await act(async () => {
       fireEvent.press(screen.getByText(`Renvoyer l’email`))
@@ -81,5 +80,5 @@ const navigationProps = {
 } as StackScreenProps<RootStackParamList, 'ResetPasswordExpiredLink'>
 
 function renderResetPasswordExpiredLink() {
-  render(reactQueryProviderHOC(<ResetPasswordExpiredLink {...navigationProps} />))
+  render(<ResetPasswordExpiredLink {...navigationProps} />)
 }

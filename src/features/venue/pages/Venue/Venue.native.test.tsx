@@ -13,7 +13,6 @@ import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { Offer } from 'shared/offer/types'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 const getItemSpy = jest.spyOn(AsyncStorage, 'getItem')
@@ -141,5 +140,5 @@ describe('<Venue />', () => {
 
 async function renderVenue(id: number, from?: Referrals) {
   useRoute.mockImplementation(() => ({ params: { id, from } }))
-  render(reactQueryProviderHOC(<Venue />))
+  render(<Venue />)
 }

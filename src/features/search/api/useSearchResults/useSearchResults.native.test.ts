@@ -19,7 +19,6 @@ import {
 } from 'libs/algolia/fixtures/algoliaFixtures'
 import { AlgoliaVenue } from 'libs/algolia/types'
 import { GeoCoordinates, GeolocPermissionState, GeolocationError } from 'libs/location'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, renderHook, waitFor } from 'tests/utils'
 
 const { multipleQueries } = algoliasearch()
@@ -248,7 +247,7 @@ const renderUseSearchResults = (newSearchState?: SearchState) =>
     ({ searchState, dispatch }: { searchState: SearchState; dispatch: Dispatch<Action> }) =>
       useSearchInfiniteQuery(searchState, dispatch),
     {
-      wrapper: ({ children }) => reactQueryProviderHOC(children),
+      wrapper: ({ children }) => children,
       initialProps: { searchState: newSearchState ?? initialSearchState, dispatch: mockDispatch },
     }
   )

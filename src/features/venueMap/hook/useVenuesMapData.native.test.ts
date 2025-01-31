@@ -2,7 +2,6 @@ import { VenueTypeCodeKey } from 'api/gen'
 import { Venue } from 'features/venue/types'
 import { useVenuesMapData } from 'features/venueMap/hook/useVenuesMapData'
 import { venuesFixture } from 'libs/algolia/fetchAlgolia/fetchVenues/fixtures/venuesFixture'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook } from 'tests/utils'
 
 jest.mock('features/venueMap/store/venueTypeCodeStore')
@@ -11,9 +10,7 @@ jest.mock('features/venueMap/store/venuesStore')
 
 describe('useVenuesMapData', () => {
   it('should return default values without transformVenues', () => {
-    const { result } = renderHook(() => useVenuesMapData(venuesFixture), {
-      wrapper: ({ children }) => reactQueryProviderHOC(children),
-    })
+    const { result } = renderHook(() => useVenuesMapData(venuesFixture))
 
     expect(result.current).toEqual({
       currentRegion: {
@@ -46,9 +43,7 @@ describe('useVenuesMapData', () => {
       },
     ]
 
-    const { result } = renderHook(() => useVenuesMapData(transformedVenues), {
-      wrapper: ({ children }) => reactQueryProviderHOC(children),
-    })
+    const { result } = renderHook(() => useVenuesMapData(transformedVenues))
 
     expect(result.current.venuesMap).toEqual(transformedVenues)
   })

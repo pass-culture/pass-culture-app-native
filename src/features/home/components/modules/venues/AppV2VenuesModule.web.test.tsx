@@ -5,7 +5,6 @@ import { venuesSearchFixture } from 'libs/algolia/fixtures/venuesSearchFixture'
 import { Layout } from 'libs/contentful/types'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils/web'
 
 const props = {
@@ -62,6 +61,6 @@ const renderAppV2VenuesModule = ({
   isDesktopViewport,
   ...additionalProps
 }: RenderAppV2VenuesModuleType = {}) =>
-  render(reactQueryProviderHOC(<AppV2VenuesModule {...props} {...additionalProps} />), {
+  render(<AppV2VenuesModule {...props} {...additionalProps} />, {
     theme: { isDesktopViewport: isDesktopViewport ?? false },
   })

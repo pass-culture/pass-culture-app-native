@@ -2,7 +2,6 @@ import mockdate from 'mockdate'
 
 import { OffersStocksResponseV2 } from 'api/gen'
 import { mockBuilder } from 'tests/mockBuilder'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook } from 'tests/utils'
 
 import { getVenueMovieOffers } from './getVenueMovieOffers'
@@ -181,6 +180,4 @@ describe('useVenueMovieOffers', () => {
 })
 
 const renderUseVenueMovieOffers = (selectedDate: Date, offers: OffersStocksResponseV2) =>
-  renderHook(() => getVenueMovieOffers(selectedDate, offers), {
-    wrapper: ({ children }) => reactQueryProviderHOC(children),
-  })
+  renderHook(() => getVenueMovieOffers(selectedDate, offers))

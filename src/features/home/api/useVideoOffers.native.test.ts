@@ -8,7 +8,6 @@ import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { offersFixture } from 'shared/offer/offer.fixture'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, act } from 'tests/utils'
 
 jest.mock('libs/algolia/fetchAlgolia/fetchOffersByIds', () => ({
@@ -40,11 +39,8 @@ describe('useVideoOffers', () => {
   it('should return offers when asking for specific ids', async () => {
     mockfetchOffersByIds.mockResolvedValueOnce([mockOffers[0], mockOffers[1]])
 
-    const { result } = renderHook(
-      () => useVideoOffers([{}] as OffersModuleParameters[], 'moduleId', ['offerId1', 'offerId2']),
-      {
-        wrapper: ({ children }) => reactQueryProviderHOC(children),
-      }
+    const { result } = renderHook(() =>
+      useVideoOffers([{}] as OffersModuleParameters[], 'moduleId', ['offerId1', 'offerId2'])
     )
 
     await act(async () => {})
@@ -55,12 +51,8 @@ describe('useVideoOffers', () => {
   it('should return offers when asking for specific EANs', async () => {
     mockFetchOffersByEan.mockResolvedValueOnce([mockOffers[0], mockOffers[1]])
 
-    const { result } = renderHook(
-      () =>
-        useVideoOffers([{}] as OffersModuleParameters[], 'moduleId', undefined, ['ean1', 'ean2']),
-      {
-        wrapper: ({ children }) => reactQueryProviderHOC(children),
-      }
+    const { result } = renderHook(() =>
+      useVideoOffers([{}] as OffersModuleParameters[], 'moduleId', undefined, ['ean1', 'ean2'])
     )
 
     await act(async () => {})
@@ -72,11 +64,8 @@ describe('useVideoOffers', () => {
   it('should return offers when only OffersModuleParameters are provided', async () => {
     mockFetchMultipleOffers.mockResolvedValueOnce({ hits: mockOffers, nbHits: 6 })
 
-    const { result } = renderHook(
-      () => useVideoOffers([{}] as OffersModuleParameters[], 'moduleId', undefined, undefined),
-      {
-        wrapper: ({ children }) => reactQueryProviderHOC(children),
-      }
+    const { result } = renderHook(() =>
+      useVideoOffers([{}] as OffersModuleParameters[], 'moduleId', undefined, undefined)
     )
 
     await act(async () => {})

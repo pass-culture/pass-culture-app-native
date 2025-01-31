@@ -2,7 +2,6 @@ import React from 'react'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 
 import * as LoginRoutine from 'features/auth/helpers/useLoginRoutine'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, checkAccessibilityFor, render } from 'tests/utils/web'
 
 import { ReinitializePassword } from './ReinitializePassword'
@@ -37,10 +36,8 @@ describe('<ReinitializePassword/>', () => {
 
 function renderReinitializePassword() {
   return render(
-    reactQueryProviderHOC(
-      <SafeAreaProvider>
-        <ReinitializePassword />
-      </SafeAreaProvider>
-    )
+    <SafeAreaProvider>
+      <ReinitializePassword />
+    </SafeAreaProvider>
   )
 }

@@ -5,7 +5,6 @@ import {
   BusinessModuleProps,
 } from 'features/home/components/modules/business/BusinessModule'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils'
 
 const props: BusinessModuleProps = {
@@ -45,5 +44,4 @@ describe('BusinessModule component', () => {
   })
 })
 
-const renderBusinessModule = (props: BusinessModuleProps) =>
-  render(reactQueryProviderHOC(<BusinessModule {...props} />))
+const renderBusinessModule = (props: BusinessModuleProps) => render(<BusinessModule {...props} />)

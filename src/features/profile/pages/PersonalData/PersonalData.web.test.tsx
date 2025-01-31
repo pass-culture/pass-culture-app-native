@@ -2,7 +2,6 @@ import React from 'react'
 
 import { UpdateEmailTokenExpiration } from 'api/gen'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, checkAccessibilityFor, render } from 'tests/utils/web'
 
 import { PersonalData } from './PersonalData'
@@ -18,7 +17,7 @@ describe('<PersonalData/>', () => {
       mockServer.getApi<UpdateEmailTokenExpiration>('/v1/profile/token_expiration', {
         expiration: null,
       })
-      const { container } = render(reactQueryProviderHOC(<PersonalData />))
+      const { container } = render(<PersonalData />)
 
       await act(async () => {
         const results = await checkAccessibilityFor(container)

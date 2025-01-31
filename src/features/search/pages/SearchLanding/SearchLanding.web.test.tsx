@@ -10,7 +10,6 @@ import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockedSuggestedVenue } from 'libs/venue/fixtures/mockedSuggestedVenues'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { checkAccessibilityFor, render, screen } from 'tests/utils/web'
 
 jest.setTimeout(20000) // to avoid exceeded timeout
@@ -92,7 +91,7 @@ describe('<SearchLanding />', () => {
     it('should not have basic accessibility issues', async () => {
       mockUseNetInfoContext.mockReturnValueOnce({ isConnected: true })
 
-      const { container } = render(reactQueryProviderHOC(<SearchLanding />))
+      const { container } = render(<SearchLanding />)
 
       await screen.findByText('Rechercher')
 
@@ -104,7 +103,7 @@ describe('<SearchLanding />', () => {
     it('should not have basic accessibility issues when offline', async () => {
       mockUseNetInfoContext.mockReturnValueOnce({ isConnected: false })
 
-      const { container } = render(reactQueryProviderHOC(<SearchLanding />))
+      const { container } = render(<SearchLanding />)
 
       await screen.findByText('Rechercher')
 

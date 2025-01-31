@@ -7,7 +7,6 @@ import * as useGoBack from 'features/navigation/useGoBack'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { analytics } from 'libs/analytics/provider'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 import {
   hideSnackBar,
@@ -127,13 +126,7 @@ function renderOfferHeader() {
 
   const animatedValue = new Animated.Value(0)
   render(
-    reactQueryProviderHOC(
-      <OfferHeader
-        title="Some very nice offer"
-        headerTransition={animatedValue}
-        offer={mockOffer}
-      />
-    )
+    <OfferHeader title="Some very nice offer" headerTransition={animatedValue} offer={mockOffer} />
   )
   return { animatedValue }
 }

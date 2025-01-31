@@ -7,7 +7,6 @@ import { navigateFromRef } from 'features/navigation/navigationRef'
 import { RootStackParamList } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 
 import { SignupConfirmationExpiredLink } from './SignupConfirmationExpiredLink'
@@ -19,14 +18,12 @@ const navigationProps = { route: { params: { email: 'test@email.com' } } }
 
 function renderSignupConfirmationExpiredLink() {
   return render(
-    reactQueryProviderHOC(
-      <SignupConfirmationExpiredLink
-        {...(navigationProps as StackScreenProps<
-          RootStackParamList,
-          'SignupConfirmationExpiredLink'
-        >)}
-      />
-    )
+    <SignupConfirmationExpiredLink
+      {...(navigationProps as StackScreenProps<
+        RootStackParamList,
+        'SignupConfirmationExpiredLink'
+      >)}
+    />
   )
 }
 

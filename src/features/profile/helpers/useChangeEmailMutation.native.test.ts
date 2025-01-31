@@ -1,7 +1,6 @@
 import { replace } from '__mocks__/@react-navigation/native'
 import { useChangeEmailMutation } from 'features/profile/helpers/useChangeEmailMutation'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, renderHook } from 'tests/utils'
 import * as SnackBarContextModule from 'ui/components/snackBar/SnackBarContext'
 
@@ -67,8 +66,6 @@ const renderuseChangeEmailMutation = () => {
     result: {
       current: { changeEmail },
     },
-  } = renderHook(() => useChangeEmailMutation(), {
-    wrapper: ({ children }) => reactQueryProviderHOC(children),
-  })
+  } = renderHook(() => useChangeEmailMutation())
   return changeEmail
 }

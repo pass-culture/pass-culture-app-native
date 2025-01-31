@@ -8,7 +8,6 @@ import { env } from 'libs/environment/fixtures'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { GoogleOAuthProvider } from 'libs/react-native-google-sso/GoogleOAuthProvider'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, checkAccessibilityFor, render } from 'tests/utils/web'
 import { SnackBarProvider } from 'ui/components/snackBar/SnackBarContext'
 
@@ -61,22 +60,20 @@ describe('<Login/>', () => {
 
 function renderLogin() {
   return render(
-    reactQueryProviderHOC(
-      <SafeAreaProvider>
-        <SnackBarProvider>
-          <AuthContext.Provider
-            value={{
-              isLoggedIn: true,
-              setIsLoggedIn: jest.fn(),
-              isUserLoading: false,
-              refetchUser: jest.fn(),
-            }}>
-            <GoogleOAuthProvider clientId={env.GOOGLE_CLIENT_ID}>
-              <Login />
-            </GoogleOAuthProvider>
-          </AuthContext.Provider>
-        </SnackBarProvider>
-      </SafeAreaProvider>
-    )
+    <SafeAreaProvider>
+      <SnackBarProvider>
+        <AuthContext.Provider
+          value={{
+            isLoggedIn: true,
+            setIsLoggedIn: jest.fn(),
+            isUserLoading: false,
+            refetchUser: jest.fn(),
+          }}>
+          <GoogleOAuthProvider clientId={env.GOOGLE_CLIENT_ID}>
+            <Login />
+          </GoogleOAuthProvider>
+        </AuthContext.Provider>
+      </SnackBarProvider>
+    </SafeAreaProvider>
   )
 }

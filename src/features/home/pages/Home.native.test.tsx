@@ -9,7 +9,6 @@ import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/
 import { storage } from 'libs/storage'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils'
 
 import { Home } from './Home'
@@ -170,7 +169,5 @@ describe('Home page', () => {
 })
 
 function renderHome() {
-  render(<Home />, {
-    wrapper: ({ children }) => reactQueryProviderHOC(children),
-  })
+  render(<Home />)
 }

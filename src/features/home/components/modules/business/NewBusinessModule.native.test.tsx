@@ -8,7 +8,6 @@ import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics/provider'
 import { ContentTypes } from 'libs/contentful/types'
 import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT_LONG } from 'ui/components/snackBar/SnackBarContext'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
@@ -151,6 +150,6 @@ describe('NewBusinessModule component', () => {
 })
 
 const renderModule = (props: BusinessModuleProps, isDesktopViewport?: boolean) =>
-  render(reactQueryProviderHOC(<NewBusinessModule {...props} />), {
+  render(<NewBusinessModule {...props} />, {
     theme: { isDesktopViewport: isDesktopViewport ?? false },
   })

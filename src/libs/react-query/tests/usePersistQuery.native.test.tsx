@@ -2,7 +2,6 @@ import AsyncStorage from '@react-native-async-storage/async-storage'
 import { QueryFunction } from 'react-query/types/core/types'
 
 import { eventMonitoring } from 'libs/monitoring/services'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, waitFor } from 'tests/utils'
 
 import { usePersistQuery } from '../usePersistQuery'
@@ -27,9 +26,7 @@ describe('usePersistQuery', () => {
 
   describe('without initial local data', () => {
     it('should save distant data locally', async () => {
-      renderHook(() => usePersistQuery(queryKey, queryFn), {
-        wrapper: ({ children }) => reactQueryProviderHOC(children),
-      })
+      renderHook(() => usePersistQuery(queryKey, queryFn))
 
       await waitFor(async () => {
         const persistDataStr = await AsyncStorage.getItem(queryKey)
@@ -42,9 +39,7 @@ describe('usePersistQuery', () => {
     it('should fail to save distant data locally and log to sentry', async () => {
       const error = new Error('WRITING_REJECTED')
       jest.spyOn(AsyncStorage, 'setItem').mockRejectedValueOnce(error)
-      renderHook(() => usePersistQuery(queryKey, queryFn), {
-        wrapper: ({ children }) => reactQueryProviderHOC(children),
-      })
+      renderHook(() => usePersistQuery(queryKey, queryFn))
 
       await waitFor(async () => {
         const persistDataStr = await AsyncStorage.getItem(queryKey)
@@ -69,9 +64,7 @@ describe('usePersistQuery', () => {
 
       expect(persistDataStr).toBeTruthy()
 
-      renderHook(() => usePersistQuery(queryKey, queryFn), {
-        wrapper: ({ children }) => reactQueryProviderHOC(children),
-      })
+      renderHook(() => usePersistQuery(queryKey, queryFn))
 
       // Console error displayed when offline mode
       jest.spyOn(global.console, 'error').mockImplementationOnce(() => null)
@@ -90,9 +83,7 @@ describe('usePersistQuery', () => {
       expect(persistDataStr).toBeTruthy()
 
       jest.spyOn(AsyncStorage, 'getItem').mockRejectedValueOnce(error)
-      renderHook(() => usePersistQuery(queryKey, queryFn), {
-        wrapper: ({ children }) => reactQueryProviderHOC(children),
-      })
+      renderHook(() => usePersistQuery(queryKey, queryFn))
 
       await waitFor(() => {
         expect(eventMonitoring.captureException).toHaveBeenCalledWith(error, {
@@ -116,7 +107,7 @@ describe('usePersistQuery', () => {
               },
             }),
           {
-            wrapper: ({ children }) => reactQueryProviderHOC(children),
+            wrapper: ({ children }) => children,
           }
         )
 

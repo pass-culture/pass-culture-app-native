@@ -2,7 +2,6 @@ import { SearchGroupNameEnumv2 } from 'api/gen'
 import { useArtistResults } from 'features/offer/helpers/useArtistResults/useArtistResults'
 import { mockedAlgoliaOffersWithSameArtistResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { Position } from 'libs/location/types'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, waitFor } from 'tests/utils'
 
 import * as fetchOffersByArtist from '../../api/fetchOffersByArtist/fetchOffersByArtist'
@@ -27,15 +26,11 @@ jest.mock('libs/location/LocationWrapper', () => ({
 
 describe('useArtistResults', () => {
   it('should fetch same artist playlist when user has Internet connection', async () => {
-    renderHook(
-      () =>
-        useArtistResults({
-          artists: 'Eiichiro Oda',
-          searchGroupName: SearchGroupNameEnumv2.LIVRES,
-        }),
-      {
-        wrapper: ({ children }) => reactQueryProviderHOC(children),
-      }
+    renderHook(() =>
+      useArtistResults({
+        artists: 'Eiichiro Oda',
+        searchGroupName: SearchGroupNameEnumv2.LIVRES,
+      })
     )
 
     await waitFor(() => {
@@ -50,15 +45,11 @@ describe('useArtistResults', () => {
   it('should return an empty array for artist playlist when no data returned', async () => {
     fetchOffersByArtistSpy.mockResolvedValueOnce({ playlistHits: [], topOffersHits: [] })
 
-    const { result } = renderHook(
-      () =>
-        useArtistResults({
-          artists: 'Eiichiro Oda',
-          searchGroupName: SearchGroupNameEnumv2.LIVRES,
-        }),
-      {
-        wrapper: ({ children }) => reactQueryProviderHOC(children),
-      }
+    const { result } = renderHook(() =>
+      useArtistResults({
+        artists: 'Eiichiro Oda',
+        searchGroupName: SearchGroupNameEnumv2.LIVRES,
+      })
     )
 
     await waitFor(() => {
@@ -69,15 +60,11 @@ describe('useArtistResults', () => {
   it('should return an empty array for artist top offers when no data returned', async () => {
     fetchOffersByArtistSpy.mockResolvedValueOnce({ playlistHits: [], topOffersHits: [] })
 
-    const { result } = renderHook(
-      () =>
-        useArtistResults({
-          artists: 'Eiichiro Oda',
-          searchGroupName: SearchGroupNameEnumv2.LIVRES,
-        }),
-      {
-        wrapper: ({ children }) => reactQueryProviderHOC(children),
-      }
+    const { result } = renderHook(() =>
+      useArtistResults({
+        artists: 'Eiichiro Oda',
+        searchGroupName: SearchGroupNameEnumv2.LIVRES,
+      })
     )
 
     await waitFor(() => {

@@ -4,7 +4,6 @@ import { View } from 'react-native'
 import { FavoritesWrapper } from 'features/favorites/context/FavoritesWrapper'
 import { paginatedFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedFavoritesResponseSnap'
 import { simulateBackend } from 'features/favorites/helpers/simulateBackend'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, waitFor } from 'tests/utils'
 
 import { useFavorite } from './useFavorite'
@@ -23,12 +22,11 @@ describe('useFavorite hook', () => {
       hasRemoveFavoriteError: false,
     })
     const { result } = renderHook(() => useFavorite({ offerId: favorite.offer.id }), {
-      wrapper: (props) =>
-        reactQueryProviderHOC(
-          <FavoritesWrapper>
-            <View>{props.children}</View>
-          </FavoritesWrapper>
-        ),
+      wrapper: (props) => (
+        <FavoritesWrapper>
+          <View>{props.children}</View>
+        </FavoritesWrapper>
+      ),
     })
 
     await waitFor(() => {
@@ -51,12 +49,11 @@ describe('useFavorite hook', () => {
     })
 
     const { result } = renderHook(() => useFavorite({ offerId: 99999 }), {
-      wrapper: (props) =>
-        reactQueryProviderHOC(
-          <FavoritesWrapper>
-            <View>{props.children}</View>
-          </FavoritesWrapper>
-        ),
+      wrapper: (props) => (
+        <FavoritesWrapper>
+          <View>{props.children}</View>
+        </FavoritesWrapper>
+      ),
     })
 
     await waitFor(() => {

@@ -5,7 +5,6 @@ import { nonBeneficiaryUser } from 'fixtures/user'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { storage } from 'libs/storage'
 import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen } from 'tests/utils'
 
 import { EighteenBirthday } from './EighteenBirthday'
@@ -28,7 +27,7 @@ describe('<EighteenBirthday />', () => {
   })
 
   it('should render eighteen birthday', () => {
-    render(reactQueryProviderHOC(<EighteenBirthday />))
+    render(<EighteenBirthday />)
 
     expect(screen).toMatchSnapshot()
   })
@@ -36,13 +35,13 @@ describe('<EighteenBirthday />', () => {
   it('should set `has_seen_eligible_card` to true in storage', async () => {
     expect(await storage.readObject('has_seen_eligible_card')).toBe(null)
 
-    render(reactQueryProviderHOC(<EighteenBirthday />))
+    render(<EighteenBirthday />)
 
     expect(await storage.readObject('has_seen_eligible_card')).toBe(true)
   })
 
   it('should navigate to Stepper on button press', () => {
-    render(reactQueryProviderHOC(<EighteenBirthday />))
+    render(<EighteenBirthday />)
 
     fireEvent.press(screen.getByText('Confirmer mes informations'))
 
@@ -52,7 +51,7 @@ describe('<EighteenBirthday />', () => {
   it('should render right wording when user require IdCheck', () => {
     mockAuthContextWithUser({ ...nonBeneficiaryUser, requiresIdCheck: true })
 
-    render(reactQueryProviderHOC(<EighteenBirthday />))
+    render(<EighteenBirthday />)
 
     expect(screen.getByText('Vérifie ton identité pour débloquer tes 300 €.')).toBeOnTheScreen()
     expect(screen.getByText('Vérifier mon identité')).toBeOnTheScreen()

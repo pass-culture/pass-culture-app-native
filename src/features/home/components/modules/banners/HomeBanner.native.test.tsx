@@ -10,7 +10,6 @@ import { LocationMode } from 'libs/location/types'
 import { useGetDepositAmountsByAge } from 'shared/user/useGetDepositAmountsByAge'
 import { mockAuthContextWithoutUser } from 'tests/AuthContextUtils'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, render, screen } from 'tests/utils'
 
 jest.mock('libs/network/NetInfoWrapper')
@@ -208,9 +207,7 @@ describe('<HomeBanner/>', () => {
 })
 
 function renderHomeBanner({ isLoggedIn = true }: { isLoggedIn?: boolean }) {
-  return render(<HomeBanner isLoggedIn={isLoggedIn} />, {
-    wrapper: ({ children }) => reactQueryProviderHOC(children),
-  })
+  return render(<HomeBanner isLoggedIn={isLoggedIn} />)
 }
 const mockBannerFromBackend = (banner: BannerResponse) => {
   mockServer.getApi<BannerResponse>('/v1/banner', {

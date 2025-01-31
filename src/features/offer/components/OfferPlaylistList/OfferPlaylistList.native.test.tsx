@@ -12,7 +12,6 @@ import {
   moreHitsForSimilarOffersPlaylist,
 } from 'libs/algolia/fixtures/algoliaFixtures'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { userEvent, render, screen } from 'tests/utils'
 
 jest.mock('libs/subcategories/useSubcategories')
@@ -122,11 +121,9 @@ const renderOfferPlaylistList = ({
   otherCategoriesSimilarOffers,
 }: OfferPlaylistListProps) =>
   render(
-    reactQueryProviderHOC(
-      <OfferPlaylistList
-        offer={offer}
-        sameCategorySimilarOffers={sameCategorySimilarOffers}
-        otherCategoriesSimilarOffers={otherCategoriesSimilarOffers}
-      />
-    )
+    <OfferPlaylistList
+      offer={offer}
+      sameCategorySimilarOffers={sameCategorySimilarOffers}
+      otherCategoriesSimilarOffers={otherCategoriesSimilarOffers}
+    />
   )

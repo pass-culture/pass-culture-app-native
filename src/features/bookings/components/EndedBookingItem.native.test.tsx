@@ -6,7 +6,6 @@ import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
 
 import { EndedBookingItem } from './EndedBookingItem'
@@ -229,12 +228,10 @@ function renderEndedBookingItem({
   booking = bookingsSnap.ended_bookings[0],
 }: RenderEndedBookingItemType) {
   return render(
-    reactQueryProviderHOC(
-      <EndedBookingItem
-        booking={booking}
-        handleShowReactionModal={mockHandleShowReactionModal}
-        handleShowShareOfferModal={mockHandleShowShareOfferModal}
-      />
-    )
+    <EndedBookingItem
+      booking={booking}
+      handleShowReactionModal={mockHandleShowReactionModal}
+      handleShowShareOfferModal={mockHandleShowShareOfferModal}
+    />
   )
 }

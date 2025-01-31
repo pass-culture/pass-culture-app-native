@@ -11,7 +11,6 @@ import { useName } from 'features/identityCheck/pages/profile/store/nameStore'
 import * as UnderageUserAPI from 'features/profile/helpers/useIsUserUnderage'
 import { analytics } from 'libs/analytics/provider'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
@@ -135,5 +134,5 @@ describe('<SetStatus/>', () => {
 })
 
 function renderSetStatus() {
-  return render(reactQueryProviderHOC(<SetStatus />))
+  return render(<SetStatus />)
 }

@@ -7,7 +7,6 @@ import { SetPhoneNumber } from 'features/identityCheck/pages/phoneValidation/Set
 import * as useGoBack from 'features/navigation/useGoBack'
 import { analytics } from 'libs/analytics/provider'
 import { MODAL_TO_SHOW_TIME } from 'tests/constants'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 import { theme } from 'theme'
 import * as useModalAPI from 'ui/components/modals/useModal'
@@ -218,7 +217,5 @@ describe('SetPhoneNumber', () => {
 })
 
 function renderSetPhoneNumber() {
-  return render(<SetPhoneNumber />, {
-    wrapper: ({ children }) => reactQueryProviderHOC(children),
-  })
+  return render(<SetPhoneNumber />)
 }

@@ -8,7 +8,6 @@ import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
@@ -49,11 +48,7 @@ describe('<CancelBookingModal />', () => {
 
   it('should dismiss modal on press rightIconButton', () => {
     const booking = bookingsSnap.ongoing_bookings[0]
-    render(
-      reactQueryProviderHOC(
-        <CancelBookingModal visible dismissModal={mockDismissModal} booking={booking} />
-      )
-    )
+    render(<CancelBookingModal visible dismissModal={mockDismissModal} booking={booking} />)
 
     const dismissModalButton = screen.getByTestId('Ne pas annuler')
 
@@ -65,11 +60,7 @@ describe('<CancelBookingModal />', () => {
   it('should dismiss modal on press "retourner à ma réservation', () => {
     const booking = bookingsSnap.ongoing_bookings[0]
 
-    render(
-      reactQueryProviderHOC(
-        <CancelBookingModal visible dismissModal={mockDismissModal} booking={booking} />
-      )
-    )
+    render(<CancelBookingModal visible dismissModal={mockDismissModal} booking={booking} />)
 
     const goBackButton = screen.getByText('Retourner à ma réservation')
 
@@ -83,11 +74,7 @@ describe('<CancelBookingModal />', () => {
 
     mockServer.postApi(`/v1/bookings/${booking.id}/cancel`, {})
 
-    render(
-      reactQueryProviderHOC(
-        <CancelBookingModal visible dismissModal={mockDismissModal} booking={booking} />
-      )
-    )
+    render(<CancelBookingModal visible dismissModal={mockDismissModal} booking={booking} />)
 
     await act(async () => {
       fireEvent.press(screen.getByText('Annuler ma réservation'))
@@ -101,11 +88,7 @@ describe('<CancelBookingModal />', () => {
 
     mockServer.postApi(`/v1/bookings/${booking.id}/cancel`, {})
 
-    render(
-      reactQueryProviderHOC(
-        <CancelBookingModal visible dismissModal={mockDismissModal} booking={booking} />
-      )
-    )
+    render(<CancelBookingModal visible dismissModal={mockDismissModal} booking={booking} />)
 
     await act(async () => {
       fireEvent.press(screen.getByText('Annuler ma réservation'))
@@ -118,11 +101,7 @@ describe('<CancelBookingModal />', () => {
     mockUseNetInfoContext.mockReturnValueOnce({ isConnected: false })
     const booking = bookingsSnap.ongoing_bookings[0]
 
-    render(
-      reactQueryProviderHOC(
-        <CancelBookingModal visible dismissModal={mockDismissModal} booking={booking} />
-      )
-    )
+    render(<CancelBookingModal visible dismissModal={mockDismissModal} booking={booking} />)
 
     await act(async () => {
       fireEvent.press(screen.getByText('Annuler ma réservation'))
@@ -138,11 +117,7 @@ describe('<CancelBookingModal />', () => {
   it('should display offer name', () => {
     const booking = bookingsSnap.ongoing_bookings[0]
 
-    render(
-      reactQueryProviderHOC(
-        <CancelBookingModal visible dismissModal={mockDismissModal} booking={booking} />
-      )
-    )
+    render(<CancelBookingModal visible dismissModal={mockDismissModal} booking={booking} />)
 
     expect(screen.getByText('Avez-vous déjà vu ?')).toBeOnTheScreen()
   })
@@ -150,11 +125,7 @@ describe('<CancelBookingModal />', () => {
   it('should display refund rule if user is beneficiary and offer is not free', () => {
     const booking = bookingsSnap.ongoing_bookings[0]
 
-    render(
-      reactQueryProviderHOC(
-        <CancelBookingModal visible dismissModal={mockDismissModal} booking={booking} />
-      )
-    )
+    render(<CancelBookingModal visible dismissModal={mockDismissModal} booking={booking} />)
 
     expect(screen.getByText('19\u00a0€ seront recrédités sur ton pass Culture.')).toBeOnTheScreen()
   })
@@ -163,11 +134,7 @@ describe('<CancelBookingModal />', () => {
     mockIsCreditExpired = true
     const booking = bookingsSnap.ongoing_bookings[0]
 
-    render(
-      reactQueryProviderHOC(
-        <CancelBookingModal visible dismissModal={mockDismissModal} booking={booking} />
-      )
-    )
+    render(<CancelBookingModal visible dismissModal={mockDismissModal} booking={booking} />)
 
     expect(
       screen.getByText(
@@ -187,11 +154,7 @@ describe('<CancelBookingModal />', () => {
       responseOptions: { statusCode: 401, data: response },
     })
 
-    render(
-      reactQueryProviderHOC(
-        <CancelBookingModal visible dismissModal={mockDismissModal} booking={booking} />
-      )
-    )
+    render(<CancelBookingModal visible dismissModal={mockDismissModal} booking={booking} />)
 
     const cancelButton = screen.getByText('Annuler ma réservation')
 

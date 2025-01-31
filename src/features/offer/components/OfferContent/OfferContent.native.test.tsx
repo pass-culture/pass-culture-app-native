@@ -31,7 +31,6 @@ import { BatchEvent, BatchProfile } from 'libs/react-native-batch'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockAuthContextWithoutUser } from 'tests/AuthContextUtils'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, cleanup, fireEvent, render, screen, userEvent, waitFor } from 'tests/utils'
 import * as AnchorContextModule from 'ui/components/anchor/AnchorContext'
 
@@ -669,16 +668,14 @@ function renderOfferContent({
   const chroniclesData =
     chronicles || offer.chronicles.map((data) => chroniclePreviewToChronicalCardData(data))
   render(
-    reactQueryProviderHOC(
-      <NavigationContainer>
-        <OfferContent
-          offer={offer}
-          searchGroupList={subcategoriesDataTest.searchGroups}
-          subcategory={subcategory}
-          chronicles={chroniclesData}
-        />
-      </NavigationContainer>
-    ),
+    <NavigationContainer>
+      <OfferContent
+        offer={offer}
+        searchGroupList={subcategoriesDataTest.searchGroups}
+        subcategory={subcategory}
+        chronicles={chroniclesData}
+      />
+    </NavigationContainer>,
     {
       theme: { isDesktopViewport: isDesktopViewport ?? false },
     }

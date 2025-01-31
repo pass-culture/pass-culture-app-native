@@ -1,7 +1,6 @@
 import React from 'react'
 
 import { CookiesConsent } from 'features/cookies/pages/CookiesConsent'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, checkAccessibilityFor, render } from 'tests/utils/web'
 
 jest.mock('features/navigation/navigationRef')
@@ -23,8 +22,6 @@ describe('<CookiesConsent/>', () => {
 })
 
 const renderCookiesConsent = async () => {
-  const renderAPI = render(<CookiesConsent visible hideModal={jest.fn()} />, {
-    wrapper: ({ children }) => reactQueryProviderHOC(children),
-  })
+  const renderAPI = render(<CookiesConsent visible hideModal={jest.fn()} />)
   return renderAPI
 }

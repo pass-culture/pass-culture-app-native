@@ -10,7 +10,6 @@ import { EmptyResponse } from 'libs/fetch'
 import * as PackageJson from 'libs/packageJson'
 import { storage } from 'libs/storage'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
@@ -165,7 +164,4 @@ describe('<ConsentSettings/>', () => {
   })
 })
 
-const renderConsentSettings = () =>
-  render(<ConsentSettings />, {
-    wrapper: ({ children }) => reactQueryProviderHOC(children),
-  })
+const renderConsentSettings = () => render(<ConsentSettings />)

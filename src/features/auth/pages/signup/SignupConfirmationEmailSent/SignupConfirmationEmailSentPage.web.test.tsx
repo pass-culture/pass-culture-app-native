@@ -4,7 +4,6 @@ import React from 'react'
 import { EmailValidationRemainingResendsResponse } from 'api/gen'
 import { RootStackParamList } from 'features/navigation/RootNavigator/types'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, checkAccessibilityFor, render } from 'tests/utils/web'
 
 import { SignupConfirmationEmailSentPage } from './SignupConfirmationEmailSentPage'
@@ -25,9 +24,7 @@ describe('<SignupConfirmationEmailSentPage/>', () => {
           remainingResends: 3,
         }
       )
-      const { container } = render(
-        reactQueryProviderHOC(<SignupConfirmationEmailSentPage {...navigationProps} />)
-      )
+      const { container } = render(<SignupConfirmationEmailSentPage {...navigationProps} />)
       await act(async () => {})
 
       const results = await checkAccessibilityFor(container)

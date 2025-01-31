@@ -7,7 +7,6 @@ import { openUrl } from 'features/navigation/helpers/openUrl'
 import { usePreviousRoute } from 'features/navigation/helpers/usePreviousRoute'
 import { analytics } from 'libs/analytics/provider'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen } from 'tests/utils'
 
 import { SignupConfirmationEmailSent } from './SignupConfirmationEmailSent'
@@ -106,4 +105,4 @@ describe('<SignupConfirmationEmailSent />', () => {
 })
 
 const renderSignupConfirmationEmailSent = () =>
-  render(reactQueryProviderHOC(<SignupConfirmationEmailSent email="john.doe@gmail.com" />))
+  render(<SignupConfirmationEmailSent email="john.doe@gmail.com" />)

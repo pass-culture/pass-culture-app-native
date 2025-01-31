@@ -1,6 +1,5 @@
 import React from 'react'
 
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils'
 
 import { BannedCountryError } from './BannedCountryError'
@@ -13,7 +12,7 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 
 describe('BannedCountryError', () => {
   it('should render correctly', () => {
-    render(reactQueryProviderHOC(<BannedCountryError />))
+    render(<BannedCountryError />)
 
     expect(screen).toMatchSnapshot()
   })

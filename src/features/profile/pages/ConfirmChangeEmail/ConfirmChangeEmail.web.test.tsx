@@ -1,7 +1,6 @@
 import React from 'react'
 
 import { ConfirmChangeEmail } from 'features/profile/pages/ConfirmChangeEmail/ConfirmChangeEmail'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, checkAccessibilityFor, render } from 'tests/utils/web'
 
 jest.mock('features/search/context/SearchWrapper', () => ({
@@ -21,7 +20,7 @@ jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 describe('<ConfirmChangeEmail />', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
-      const { container } = render(reactQueryProviderHOC(<ConfirmChangeEmail />))
+      const { container } = render(<ConfirmChangeEmail />)
 
       let results
       await act(async () => {

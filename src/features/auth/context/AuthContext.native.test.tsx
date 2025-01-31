@@ -18,7 +18,6 @@ import * as PackageJson from 'libs/packageJson'
 import { QueryKeys } from 'libs/queryKeys'
 import { StorageKey, storage } from 'libs/storage'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, renderHook } from 'tests/utils'
 
 import { useAuthContext } from './AuthContext'
@@ -278,12 +277,11 @@ describe('AuthContext', () => {
 
 const renderUseAuthContext = () => {
   const { result } = renderHook(useAuthContext, {
-    wrapper: ({ children }) =>
-      reactQueryProviderHOC(
-        <NetInfoWrapper>
-          <AuthWrapper>{children}</AuthWrapper>
-        </NetInfoWrapper>
-      ),
+    wrapper: ({ children }) => (
+      <NetInfoWrapper>
+        <AuthWrapper>{children}</AuthWrapper>
+      </NetInfoWrapper>
+    ),
   })
 
   return result

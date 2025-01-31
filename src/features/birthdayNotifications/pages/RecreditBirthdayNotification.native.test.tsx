@@ -5,7 +5,6 @@ import { setSettings } from 'features/auth/tests/setSettings'
 import { underageBeneficiaryUser } from 'fixtures/user'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils'
 
 import { RecreditBirthdayNotification } from './RecreditBirthdayNotification'
@@ -35,7 +34,7 @@ describe('<RecreditBirthdayNotification />', () => {
   })
 
   it('should have correct credit text', async () => {
-    render(reactQueryProviderHOC(<RecreditBirthdayNotification />))
+    render(<RecreditBirthdayNotification />)
 
     const recreditText = screen.getByText(
       'Pour tes 16 ans, 50\u00a0€ ont été ajoutés à ton compte. Tu disposes maintenant de :'
@@ -45,7 +44,7 @@ describe('<RecreditBirthdayNotification />', () => {
   })
 
   it('should have correct credit information text', async () => {
-    render(reactQueryProviderHOC(<RecreditBirthdayNotification />))
+    render(<RecreditBirthdayNotification />)
 
     const recreditText = screen.getByText(
       'Tu as jusqu’à la veille de tes 18 ans pour profiter de ton crédit.'
@@ -60,7 +59,7 @@ describe('<RecreditBirthdayNotification />', () => {
     })
 
     it('should have correct credit information text', async () => {
-      render(reactQueryProviderHOC(<RecreditBirthdayNotification />))
+      render(<RecreditBirthdayNotification />)
 
       const recreditText = screen.getByText(
         'Tu as jusqu’à la veille de tes 21 ans pour utiliser tout ton crédit.'

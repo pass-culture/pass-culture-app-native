@@ -10,7 +10,6 @@ import * as useRemoteConfigContext from 'libs/firebase/remoteConfig/RemoteConfig
 import { FetchError, MonitoringError } from 'libs/monitoring/errors'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 
@@ -178,9 +177,7 @@ describe('<SuspensionChoice/>', () => {
 })
 
 function renderSuspensionChoice() {
-  return render(<SuspensionChoice />, {
-    wrapper: ({ children }) => reactQueryProviderHOC(children),
-  })
+  return render(<SuspensionChoice />)
 }
 
 function simulateSuspendForSuspiciousLoginSuccess() {

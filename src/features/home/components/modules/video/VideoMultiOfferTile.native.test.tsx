@@ -10,7 +10,6 @@ import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
 
 jest.mock('libs/network/NetInfoWrapper')
@@ -76,9 +75,6 @@ function renderMultiOfferTile() {
       offer={mockOffer}
       hideModal={hideModalMock}
       analyticsParams={mockAnalyticsParams}
-    />,
-    {
-      wrapper: ({ children }) => reactQueryProviderHOC(children),
-    }
+    />
   )
 }

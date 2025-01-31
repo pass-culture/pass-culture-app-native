@@ -31,7 +31,6 @@ import {
   subcategoriesDataTest,
 } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook } from 'tests/utils'
 
 let mockSearchState: SearchState = {
@@ -544,9 +543,7 @@ describe('categoriesHelpers', () => {
     it('should return subcategories of one given searchGroup', () => {
       const searchGroups = [SearchGroupNameEnumv2.LIVRES]
 
-      const { result } = renderHook(() => useSubcategoryIdsFromSearchGroups(searchGroups), {
-        wrapper: ({ children }) => reactQueryProviderHOC(children),
-      })
+      const { result } = renderHook(() => useSubcategoryIdsFromSearchGroups(searchGroups))
 
       expect(result.current).toEqual([
         'ABO_BIBLIOTHEQUE',
@@ -563,9 +560,7 @@ describe('categoriesHelpers', () => {
     it('should return subcategories of several given searchGroups', () => {
       const searchGroups = [SearchGroupNameEnumv2.CINEMA, SearchGroupNameEnumv2.LIVRES]
 
-      const { result } = renderHook(() => useSubcategoryIdsFromSearchGroups(searchGroups), {
-        wrapper: ({ children }) => reactQueryProviderHOC(children),
-      })
+      const { result } = renderHook(() => useSubcategoryIdsFromSearchGroups(searchGroups))
 
       expect(result.current).toEqual(
         expect.arrayContaining([
@@ -589,9 +584,7 @@ describe('categoriesHelpers', () => {
     })
 
     it('should return empty array when no searchgroup is provided', () => {
-      const { result } = renderHook(() => useSubcategoryIdsFromSearchGroups([]), {
-        wrapper: ({ children }) => reactQueryProviderHOC(children),
-      })
+      const { result } = renderHook(() => useSubcategoryIdsFromSearchGroups([]))
 
       expect(result.current).toEqual([])
     })
@@ -601,9 +594,7 @@ describe('categoriesHelpers', () => {
 
       mockData = undefined
 
-      const { result } = renderHook(() => useSubcategoryIdsFromSearchGroups(searchGroups), {
-        wrapper: ({ children }) => reactQueryProviderHOC(children),
-      })
+      const { result } = renderHook(() => useSubcategoryIdsFromSearchGroups(searchGroups))
 
       expect(result.current).toEqual([])
     })

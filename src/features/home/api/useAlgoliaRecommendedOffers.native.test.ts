@@ -3,7 +3,6 @@ import * as fetchOffersByIdsAPI from 'libs/algolia/fetchAlgolia/fetchOffersByIds
 import * as filterOfferHitAPI from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import * as getSimilarOrRecoOffersInOrder from 'shared/offer/getSimilarOrRecoOffersInOrder'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, renderHook, waitFor } from 'tests/utils'
 
 const getSimilarOffersInOrderSpy = jest.spyOn(
@@ -26,18 +25,14 @@ describe('useAlgoliaRecommendedOffers', () => {
     .mockImplementation(jest.fn())
 
   it('should fetch algolia when ids are provided', async () => {
-    renderHook(() => useAlgoliaRecommendedOffers(ids, 'abcd'), {
-      wrapper: ({ children }) => reactQueryProviderHOC(children),
-    })
+    renderHook(() => useAlgoliaRecommendedOffers(ids, 'abcd'))
     await waitFor(() => {
       expect(fetchAlgoliaHitsSpy).toHaveBeenCalledWith({ objectIds: ids, isUserUnderage: false })
     })
   })
 
   it('should filter algolia hits', async () => {
-    renderHook(() => useAlgoliaRecommendedOffers(ids, 'abcd'), {
-      wrapper: ({ children }) => reactQueryProviderHOC(children),
-    })
+    renderHook(() => useAlgoliaRecommendedOffers(ids, 'abcd'))
     await waitFor(() => {
       expect(filterAlgoliaHitSpy).toHaveBeenCalledTimes(mockedAlgoliaResponse.hits.length)
     })
@@ -45,9 +40,7 @@ describe('useAlgoliaRecommendedOffers', () => {
 
   it('should return undefined when algolia does not return any hit', async () => {
     jest.spyOn(fetchOffersByIdsAPI, 'fetchOffersByIds').mockResolvedValueOnce([])
-    const { result } = renderHook(() => useAlgoliaRecommendedOffers(ids, 'abcd'), {
-      wrapper: ({ children }) => reactQueryProviderHOC(children),
-    })
+    const { result } = renderHook(() => useAlgoliaRecommendedOffers(ids, 'abcd'))
     await waitFor(() => {
       expect(result.current).toBeUndefined()
       expect(filterAlgoliaHitSpy).not.toHaveBeenCalled()
@@ -55,35 +48,27 @@ describe('useAlgoliaRecommendedOffers', () => {
   })
 
   it('should return undefined when ids are not provided', async () => {
-    const { result } = renderHook(() => useAlgoliaRecommendedOffers([], 'abcd'), {
-      wrapper: ({ children }) => reactQueryProviderHOC(children),
-    })
+    const { result } = renderHook(() => useAlgoliaRecommendedOffers([], 'abcd'))
 
     expect(result.current).toBeUndefined()
   })
 
   it('should call function to preserve ids offer order when shouldPreserveIdsOrder is true', async () => {
-    renderHook(() => useAlgoliaRecommendedOffers(ids, 'abcd', true), {
-      wrapper: ({ children }) => reactQueryProviderHOC(children),
-    })
+    renderHook(() => useAlgoliaRecommendedOffers(ids, 'abcd', true))
     await act(async () => {})
 
     expect(getSimilarOffersInOrderSpy).toHaveBeenCalledTimes(1)
   })
 
   it('should not call function to preserve ids offer order when shouldPreserveIdsOrder is undefined', async () => {
-    renderHook(() => useAlgoliaRecommendedOffers(ids, 'abcd'), {
-      wrapper: ({ children }) => reactQueryProviderHOC(children),
-    })
+    renderHook(() => useAlgoliaRecommendedOffers(ids, 'abcd'))
     await act(async () => {})
 
     expect(getSimilarOffersInOrderSpy).not.toHaveBeenCalled()
   })
 
   it('should not call function to preserve ids offer order when shouldPreserveIdsOrder is false', async () => {
-    renderHook(() => useAlgoliaRecommendedOffers(ids, 'abcd', false), {
-      wrapper: ({ children }) => reactQueryProviderHOC(children),
-    })
+    renderHook(() => useAlgoliaRecommendedOffers(ids, 'abcd', false))
     await act(async () => {})
 
     expect(getSimilarOffersInOrderSpy).not.toHaveBeenCalled()

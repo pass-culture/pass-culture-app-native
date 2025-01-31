@@ -5,7 +5,6 @@ import { EmailValidationRemainingResendsResponse } from 'api/gen'
 import { SignupConfirmationEmailSentPage } from 'features/auth/pages/signup/SignupConfirmationEmailSent/SignupConfirmationEmailSentPage'
 import { RootStackParamList } from 'features/navigation/RootNavigator/types'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils'
 
 const navigationProps = {
@@ -28,7 +27,7 @@ describe('<SignupConfirmationEmailSentPage />', () => {
         remainingResends: 3,
       }
     )
-    render(reactQueryProviderHOC(<SignupConfirmationEmailSentPage {...navigationProps} />))
+    render(<SignupConfirmationEmailSentPage {...navigationProps} />)
     await screen.findByText('Inscription')
 
     expect(screen).toMatchSnapshot()

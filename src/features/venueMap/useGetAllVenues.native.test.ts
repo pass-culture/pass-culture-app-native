@@ -5,7 +5,6 @@ import { venuesActions } from 'features/venueMap/store/venuesStore'
 import { useVenueTypeCode } from 'features/venueMap/store/venueTypeCodeStore'
 import { adaptAlgoliaVenues } from 'libs/algolia/fetchAlgolia/fetchVenues/adaptAlgoliaVenues'
 import { Region } from 'libs/maps/maps'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, waitFor } from 'tests/utils'
 
 import { useGetAllVenues } from './useGetAllVenues'
@@ -42,9 +41,7 @@ describe('useGetAllVenues', () => {
     })
 
     it('should fetch all venues when initial venues not defined', async () => {
-      renderHook(() => useGetAllVenues({ region, radius: 10 }), {
-        wrapper: ({ children }) => reactQueryProviderHOC(children),
-      })
+      renderHook(() => useGetAllVenues({ region, radius: 10 }))
 
       await waitFor(() => {
         expect(search).toHaveBeenCalledWith('', {
@@ -58,63 +55,47 @@ describe('useGetAllVenues', () => {
     })
 
     it('should not fetch all venues when initial venues defined', () => {
-      renderHook(
-        () =>
-          useGetAllVenues({
-            region,
-            radius: 10,
-            initialVenues,
-          }),
-        {
-          wrapper: ({ children }) => reactQueryProviderHOC(children),
-        }
+      renderHook(() =>
+        useGetAllVenues({
+          region,
+          radius: 10,
+          initialVenues,
+        })
       )
 
       expect(search).not.toHaveBeenCalled()
     })
 
     it('should return initial venues when defined', () => {
-      const { result } = renderHook(
-        () =>
-          useGetAllVenues({
-            region,
-            radius: 10,
-            initialVenues,
-          }),
-        {
-          wrapper: ({ children }) => reactQueryProviderHOC(children),
-        }
+      const { result } = renderHook(() =>
+        useGetAllVenues({
+          region,
+          radius: 10,
+          initialVenues,
+        })
       )
 
       expect(result.current.venues).toEqual(initialVenues)
     })
 
     it('should dispatch in context initial venues when defined', () => {
-      renderHook(
-        () =>
-          useGetAllVenues({
-            region,
-            radius: 10,
-            initialVenues,
-          }),
-        {
-          wrapper: ({ children }) => reactQueryProviderHOC(children),
-        }
+      renderHook(() =>
+        useGetAllVenues({
+          region,
+          radius: 10,
+          initialVenues,
+        })
       )
 
       expect(mockSetVenues).toHaveBeenNthCalledWith(1, initialVenues)
     })
 
     it('should not dispatch in context when initial venues not defined', async () => {
-      renderHook(
-        () =>
-          useGetAllVenues({
-            region,
-            radius: 10,
-          }),
-        {
-          wrapper: ({ children }) => reactQueryProviderHOC(children),
-        }
+      renderHook(() =>
+        useGetAllVenues({
+          region,
+          radius: 10,
+        })
       )
 
       await waitFor(() => {
@@ -123,15 +104,11 @@ describe('useGetAllVenues', () => {
     })
 
     it('should not return initial venues when not defined', async () => {
-      const { result } = renderHook(
-        () =>
-          useGetAllVenues({
-            region,
-            radius: 10,
-          }),
-        {
-          wrapper: ({ children }) => reactQueryProviderHOC(children),
-        }
+      const { result } = renderHook(() =>
+        useGetAllVenues({
+          region,
+          radius: 10,
+        })
       )
 
       await waitFor(() => {

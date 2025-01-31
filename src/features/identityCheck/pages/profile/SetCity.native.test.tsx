@@ -7,7 +7,6 @@ import { mockedSuggestedCities } from 'libs/place/fixtures/mockedSuggestedCities
 import { CitiesResponse, CITIES_API_URL } from 'libs/place/useCities'
 import { storage } from 'libs/storage'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 
 jest.mock('libs/subcategories/useSubcategory')
@@ -109,5 +108,5 @@ describe('<SetCity/>', () => {
 })
 
 function renderSetCity() {
-  return render(reactQueryProviderHOC(<SetCity />))
+  return render(<SetCity />)
 }

@@ -3,7 +3,6 @@ import React from 'react'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { NotificationsLoggedOutModal } from 'features/subscription/NotificationsLoggedOutModal'
 import { analytics } from 'libs/analytics/provider'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 jest.mock('features/profile/pages/NotificationSettings/usePushPermission', () => ({
@@ -102,12 +101,10 @@ describe('<NotificationsLoggedOutModal />', () => {
 
 const renderModal = (visible: boolean) => {
   render(
-    reactQueryProviderHOC(
-      <NotificationsLoggedOutModal
-        visible={visible}
-        dismissModal={mockDismissModal}
-        from="ThematicHome"
-      />
-    )
+    <NotificationsLoggedOutModal
+      visible={visible}
+      dismissModal={mockDismissModal}
+      from="ThematicHome"
+    />
   )
 }

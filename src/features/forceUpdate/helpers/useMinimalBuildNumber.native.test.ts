@@ -2,7 +2,6 @@ import { onlineManager } from 'react-query'
 
 import { useMinimalBuildNumber } from 'features/forceUpdate/helpers/useMinimalBuildNumber'
 import { getMinimalBuildNumber } from 'libs/firebase/firestore/getMinimalBuildNumber/getMinimalBuildNumber'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, waitFor } from 'tests/utils'
 
 jest.mock('@react-native-firebase/firestore')
@@ -32,7 +31,4 @@ describe('useMinimalBuildNumber', () => {
   })
 })
 
-const renderUseMinimalBuildNumber = () =>
-  renderHook(useMinimalBuildNumber, {
-    wrapper: ({ children }) => reactQueryProviderHOC(children),
-  })
+const renderUseMinimalBuildNumber = () => renderHook(useMinimalBuildNumber)

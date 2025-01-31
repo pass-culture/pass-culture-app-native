@@ -6,7 +6,6 @@ import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { analytics } from 'libs/analytics/provider'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen } from 'tests/utils'
 
 const mockReplay = jest.fn()
@@ -65,9 +64,6 @@ const renderVideoEndView = async () => {
       moduleId="abcd"
       moduleName="salut à tous c’est lujipeka"
       homeEntryId="xyz"
-    />,
-    {
-      wrapper: ({ children }) => reactQueryProviderHOC(children),
-    }
+    />
   )
 }

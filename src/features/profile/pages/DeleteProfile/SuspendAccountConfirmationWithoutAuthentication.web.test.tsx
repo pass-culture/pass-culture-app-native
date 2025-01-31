@@ -1,7 +1,6 @@
 import React from 'react'
 
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, checkAccessibilityFor } from 'tests/utils/web'
 
 import { SuspendAccountConfirmationWithoutAuthentication } from './SuspendAccountConfirmationWithoutAuthentication'
@@ -14,9 +13,7 @@ jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 describe('SuspendAccountConfirmationWithoutAuthentication', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
-      const { container } = render(
-        reactQueryProviderHOC(<SuspendAccountConfirmationWithoutAuthentication />)
-      )
+      const { container } = render(<SuspendAccountConfirmationWithoutAuthentication />)
       const results = await checkAccessibilityFor(container)
 
       expect(results).toHaveNoViolations()

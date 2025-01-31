@@ -12,7 +12,6 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, checkAccessibilityFor, render } from 'tests/utils/web'
 
 import { BookingDetails as BookingDetailsDefault } from './BookingDetails'
@@ -59,5 +58,5 @@ function renderBookingDetails(booking: Booking) {
     isError: false,
     error: undefined,
   } as unknown as UseQueryResult<BookingReponse | null>)
-  return render(reactQueryProviderHOC(<BookingDetails />))
+  return render(<BookingDetails />)
 }

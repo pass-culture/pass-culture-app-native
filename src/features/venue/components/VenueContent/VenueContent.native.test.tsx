@@ -16,7 +16,6 @@ import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.c
 import * as useRemoteConfigContextModule from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { LocationMode } from 'libs/location/types'
 import { BatchEvent, BatchProfile } from 'libs/react-native-batch'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, userEvent, waitFor } from 'tests/utils'
 import * as AnchorContextModule from 'ui/components/anchor/AnchorContext'
 import { AnchorProvider } from 'ui/components/anchor/AnchorContext'
@@ -98,13 +97,11 @@ jest.spyOn(useModalAPI, 'useModal').mockReturnValue({
 
 const renderVenueContent = (props?: Partial<React.ComponentProps<typeof VenueContent>>) => {
   return render(
-    reactQueryProviderHOC(
-      <AnchorProvider scrollViewRef={createRef<ScrollView>()} handleCheckScrollY={() => 0}>
-        <OfferCTAProvider>
-          <VenueContent venue={venueDataTest} {...props} />
-        </OfferCTAProvider>
-      </AnchorProvider>
-    )
+    <AnchorProvider scrollViewRef={createRef<ScrollView>()} handleCheckScrollY={() => 0}>
+      <OfferCTAProvider>
+        <VenueContent venue={venueDataTest} {...props} />
+      </OfferCTAProvider>
+    </AnchorProvider>
   )
 }
 

@@ -8,7 +8,6 @@ import { eventMonitoring } from 'libs/monitoring/services'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { NetworkErrorFixture, UnknownErrorFixture } from 'libs/recaptcha/fixtures'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, simulateWebviewMessage, waitFor } from 'tests/utils'
 import * as emailCheck from 'ui/components/inputs/emailCheck'
 import { SUGGESTION_DELAY_IN_MS } from 'ui/components/inputs/EmailInputWithSpellingHelp/useEmailSpellingHelp'
@@ -283,7 +282,5 @@ function simulateConnectedNetwork() {
 }
 
 function renderForgottenPassword() {
-  return render(<ForgottenPassword />, {
-    wrapper: ({ children }) => reactQueryProviderHOC(children),
-  })
+  return render(<ForgottenPassword />)
 }

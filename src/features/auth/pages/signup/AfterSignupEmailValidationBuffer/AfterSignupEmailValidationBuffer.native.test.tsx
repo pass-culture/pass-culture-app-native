@@ -11,7 +11,6 @@ import { nonBeneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics/provider'
 import * as datesLib from 'libs/dates'
 import { mockServer } from 'tests/mswServer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, render, waitFor } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
@@ -36,7 +35,7 @@ jest.spyOn(DeviceInfo, 'getSystemName').mockReturnValue('iOS')
 const apiValidateEmailSpy = jest.spyOn(api, 'postNativeV1ValidateEmail')
 jest.useFakeTimers()
 
-const renderPage = () => render(reactQueryProviderHOC(<AfterSignupEmailValidationBuffer />))
+const renderPage = () => render(<AfterSignupEmailValidationBuffer />)
 
 jest.mock('libs/firebase/analytics/analytics')
 

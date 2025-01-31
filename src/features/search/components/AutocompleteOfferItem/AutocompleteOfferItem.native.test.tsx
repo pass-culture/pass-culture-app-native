@@ -22,7 +22,6 @@ import {
 } from 'features/search/fixtures/autocompleteHits'
 import { SearchState } from 'features/search/types'
 import { mockedSuggestedVenue } from 'libs/venue/fixtures/mockedSuggestedVenues'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen } from 'tests/utils'
 
 const venue = mockedSuggestedVenue
@@ -67,10 +66,7 @@ describe('AutocompleteOfferItem component', () => {
         sendEvent={mockSendEvent}
         shouldShowCategory
         addSearchHistory={jest.fn()}
-      />,
-      {
-        wrapper: ({ children }) => reactQueryProviderHOC(children),
-      }
+      />
     )
 
     await screen.findByText('Films à l’affiche')
@@ -80,14 +76,7 @@ describe('AutocompleteOfferItem component', () => {
 
   it('should create a suggestion clicked event when pressing a hit', async () => {
     render(
-      <AutocompleteOfferItem
-        hit={mockHit}
-        sendEvent={mockSendEvent}
-        addSearchHistory={jest.fn()}
-      />,
-      {
-        wrapper: ({ children }) => reactQueryProviderHOC(children),
-      }
+      <AutocompleteOfferItem hit={mockHit} sendEvent={mockSendEvent} addSearchHistory={jest.fn()} />
     )
 
     await fireEvent.press(screen.getByTestId('autocompleteOfferItem_1'))
@@ -106,10 +95,7 @@ describe('AutocompleteOfferItem component', () => {
           shouldShowCategory
           addSearchHistory={jest.fn()}
           offerCategories={[SearchGroupNameEnumv2.LIVRES]}
-        />,
-        {
-          wrapper: ({ children }) => reactQueryProviderHOC(children),
-        }
+        />
       )
 
       expect(await screen.findByText('E-books')).toBeOnTheScreen()
@@ -123,10 +109,7 @@ describe('AutocompleteOfferItem component', () => {
           shouldShowCategory
           addSearchHistory={jest.fn()}
           offerCategories={[SearchGroupNameEnumv2.LIVRES]}
-        />,
-        {
-          wrapper: ({ children }) => reactQueryProviderHOC(children),
-        }
+        />
       )
 
       expect(await screen.findByText('Livres')).toBeOnTheScreen()
@@ -140,10 +123,7 @@ describe('AutocompleteOfferItem component', () => {
           shouldShowCategory
           addSearchHistory={jest.fn()}
           offerCategories={[SearchGroupNameEnumv2.LIVRES]}
-        />,
-        {
-          wrapper: ({ children }) => reactQueryProviderHOC(children),
-        }
+        />
       )
 
       fireEvent.press(screen.getByTestId('autocompleteOfferItem_1'))
@@ -166,10 +146,7 @@ describe('AutocompleteOfferItem component', () => {
           hit={mockHit}
           sendEvent={mockSendEvent}
           addSearchHistory={jest.fn()}
-        />,
-        {
-          wrapper: ({ children }) => reactQueryProviderHOC(children),
-        }
+        />
       )
 
       await screen.findByText('cinéma')
@@ -183,10 +160,7 @@ describe('AutocompleteOfferItem component', () => {
           hit={mockHit}
           sendEvent={mockSendEvent}
           addSearchHistory={jest.fn()}
-        />,
-        {
-          wrapper: ({ children }) => reactQueryProviderHOC(children),
-        }
+        />
       )
 
       await screen.findByText('cinéma')
@@ -208,10 +182,7 @@ describe('AutocompleteOfferItem component', () => {
           hit={mockHit}
           sendEvent={mockSendEvent}
           addSearchHistory={jest.fn()}
-        />,
-        {
-          wrapper: ({ children }) => reactQueryProviderHOC(children),
-        }
+        />
       )
       fireEvent.press(screen.getByTestId('autocompleteOfferItem_1'))
 
@@ -243,10 +214,7 @@ describe('AutocompleteOfferItem component', () => {
           shouldShowCategory
           addSearchHistory={jest.fn()}
           offerCategories={[SearchGroupNameEnumv2.LIVRES]}
-        />,
-        {
-          wrapper: ({ children }) => reactQueryProviderHOC(children),
-        }
+        />
       )
 
       await screen.findByText('cinéma')
@@ -268,7 +236,7 @@ describe('AutocompleteOfferItem component', () => {
             addSearchHistory={jest.fn()}
           />,
           {
-            wrapper: ({ children }) => reactQueryProviderHOC(children),
+            wrapper: ({ children }) => children,
           }
         )
         fireEvent.press(screen.getByTestId('autocompleteOfferItem_1'))
@@ -300,7 +268,7 @@ describe('AutocompleteOfferItem component', () => {
             addSearchHistory={jest.fn()}
           />,
           {
-            wrapper: ({ children }) => reactQueryProviderHOC(children),
+            wrapper: ({ children }) => children,
           }
         )
         fireEvent.press(screen.getByTestId('autocompleteOfferItem_1'))
@@ -332,7 +300,7 @@ describe('AutocompleteOfferItem component', () => {
             addSearchHistory={jest.fn()}
           />,
           {
-            wrapper: ({ children }) => reactQueryProviderHOC(children),
+            wrapper: ({ children }) => children,
           }
         )
         fireEvent.press(screen.getByTestId('autocompleteOfferItem_1'))
@@ -363,7 +331,7 @@ describe('AutocompleteOfferItem component', () => {
             addSearchHistory={jest.fn()}
           />,
           {
-            wrapper: ({ children }) => reactQueryProviderHOC(children),
+            wrapper: ({ children }) => children,
           }
         )
         fireEvent.press(screen.getByTestId('autocompleteOfferItem_1'))
@@ -394,7 +362,7 @@ describe('AutocompleteOfferItem component', () => {
             addSearchHistory={jest.fn()}
           />,
           {
-            wrapper: ({ children }) => reactQueryProviderHOC(children),
+            wrapper: ({ children }) => children,
           }
         )
 
@@ -426,7 +394,7 @@ describe('AutocompleteOfferItem component', () => {
             addSearchHistory={jest.fn()}
           />,
           {
-            wrapper: ({ children }) => reactQueryProviderHOC(children),
+            wrapper: ({ children }) => children,
           }
         )
         fireEvent.press(screen.getByTestId('autocompleteOfferItem_1'))
@@ -457,7 +425,7 @@ describe('AutocompleteOfferItem component', () => {
             addSearchHistory={jest.fn()}
           />,
           {
-            wrapper: ({ children }) => reactQueryProviderHOC(children),
+            wrapper: ({ children }) => children,
           }
         )
         fireEvent.press(screen.getByTestId('autocompleteOfferItem_1'))
@@ -491,7 +459,7 @@ describe('AutocompleteOfferItem component', () => {
             addSearchHistory={jest.fn()}
           />,
           {
-            wrapper: ({ children }) => reactQueryProviderHOC(children),
+            wrapper: ({ children }) => children,
           }
         )
 
@@ -507,7 +475,7 @@ describe('AutocompleteOfferItem component', () => {
             addSearchHistory={jest.fn()}
           />,
           {
-            wrapper: ({ children }) => reactQueryProviderHOC(children),
+            wrapper: ({ children }) => children,
           }
         )
 
@@ -525,7 +493,7 @@ describe('AutocompleteOfferItem component', () => {
             addSearchHistory={jest.fn()}
           />,
           {
-            wrapper: ({ children }) => reactQueryProviderHOC(children),
+            wrapper: ({ children }) => children,
           }
         )
 
@@ -543,7 +511,7 @@ describe('AutocompleteOfferItem component', () => {
             addSearchHistory={jest.fn()}
           />,
           {
-            wrapper: ({ children }) => reactQueryProviderHOC(children),
+            wrapper: ({ children }) => children,
           }
         )
 
@@ -563,7 +531,7 @@ describe('AutocompleteOfferItem component', () => {
             addSearchHistory={jest.fn()}
           />,
           {
-            wrapper: ({ children }) => reactQueryProviderHOC(children),
+            wrapper: ({ children }) => children,
           }
         )
 
@@ -581,7 +549,7 @@ describe('AutocompleteOfferItem component', () => {
             addSearchHistory={jest.fn()}
           />,
           {
-            wrapper: ({ children }) => reactQueryProviderHOC(children),
+            wrapper: ({ children }) => children,
           }
         )
 
@@ -601,7 +569,7 @@ describe('AutocompleteOfferItem component', () => {
             addSearchHistory={jest.fn()}
           />,
           {
-            wrapper: ({ children }) => reactQueryProviderHOC(children),
+            wrapper: ({ children }) => children,
           }
         )
 
@@ -619,7 +587,7 @@ describe('AutocompleteOfferItem component', () => {
             addSearchHistory={jest.fn()}
           />,
           {
-            wrapper: ({ children }) => reactQueryProviderHOC(children),
+            wrapper: ({ children }) => children,
           }
         )
 
@@ -637,7 +605,7 @@ describe('AutocompleteOfferItem component', () => {
             addSearchHistory={jest.fn()}
           />,
           {
-            wrapper: ({ children }) => reactQueryProviderHOC(children),
+            wrapper: ({ children }) => children,
           }
         )
 
@@ -657,7 +625,7 @@ describe('AutocompleteOfferItem component', () => {
             addSearchHistory={jest.fn()}
           />,
           {
-            wrapper: ({ children }) => reactQueryProviderHOC(children),
+            wrapper: ({ children }) => children,
           }
         )
 
@@ -673,7 +641,7 @@ describe('AutocompleteOfferItem component', () => {
             addSearchHistory={jest.fn()}
           />,
           {
-            wrapper: ({ children }) => reactQueryProviderHOC(children),
+            wrapper: ({ children }) => children,
           }
         )
 
@@ -689,7 +657,7 @@ describe('AutocompleteOfferItem component', () => {
             addSearchHistory={jest.fn()}
           />,
           {
-            wrapper: ({ children }) => reactQueryProviderHOC(children),
+            wrapper: ({ children }) => children,
           }
         )
 
@@ -705,7 +673,7 @@ describe('AutocompleteOfferItem component', () => {
             addSearchHistory={jest.fn()}
           />,
           {
-            wrapper: ({ children }) => reactQueryProviderHOC(children),
+            wrapper: ({ children }) => children,
           }
         )
 
@@ -720,10 +688,7 @@ describe('AutocompleteOfferItem component', () => {
           sendEvent={mockSendEvent}
           shouldShowCategory
           addSearchHistory={jest.fn()}
-        />,
-        {
-          wrapper: ({ children }) => reactQueryProviderHOC(children),
-        }
+        />
       )
 
       await screen.findByText('cinéma')
@@ -739,10 +704,7 @@ describe('AutocompleteOfferItem component', () => {
           shouldShowCategory
           addSearchHistory={jest.fn()}
           offerCategories={[]}
-        />,
-        {
-          wrapper: ({ children }) => reactQueryProviderHOC(children),
-        }
+        />
       )
 
       expect(await screen.findByText('Films à l’affiche')).toBeOnTheScreen()
