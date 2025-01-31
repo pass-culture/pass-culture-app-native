@@ -3,7 +3,7 @@ import { useCallback } from 'react'
 import { useQueryClient } from 'react-query'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { clearRefreshToken } from 'libs/keychain/keychain'
 import { eventMonitoring } from 'libs/monitoring'
 import { QueryKeys } from 'libs/queryKeys'

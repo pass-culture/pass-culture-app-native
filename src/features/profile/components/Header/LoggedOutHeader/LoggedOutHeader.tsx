@@ -5,7 +5,7 @@ import { AuthenticationButton } from 'features/auth/components/AuthenticationBut
 import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { HeaderWithGreyContainer } from 'features/profile/components/Header/HeaderWithGreyContainer/HeaderWithGreyContainer'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { ButtonWithLinearGradient } from 'ui/components/buttons/buttonWithLinearGradient/ButtonWithLinearGradient'

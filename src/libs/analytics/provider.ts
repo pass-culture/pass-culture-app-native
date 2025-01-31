@@ -4,7 +4,7 @@ import { logEventAnalytics } from 'libs/analytics/logEventAnalytics'
 import { AnalyticsProvider } from 'libs/analytics/types'
 import { getIsMaestro } from 'libs/e2e/getIsMaestro'
 // eslint-disable-next-line no-restricted-imports
-import { firebaseAnalytics } from 'libs/firebase/analytics'
+import { firebaseAnalytics } from 'libs/firebase/analytics/analytics'
 import { storage } from 'libs/storage'
 
 export const analytics: AnalyticsProvider = {

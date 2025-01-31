@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { SecondButtonList } from 'features/identityCheck/components/SecondButtonList'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { AccessibleUnorderedList } from 'ui/components/accessibility/AccessibleUnorderedList'
 import { HeroButtonList } from 'ui/components/buttons/HeroButtonList'
 import { SeparatorWithText } from 'ui/components/SeparatorWithText'

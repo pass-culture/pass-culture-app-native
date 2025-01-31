@@ -9,7 +9,7 @@ import { SearchSuggestions } from 'features/search/components/SearchSuggestions/
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { getSearchClient } from 'features/search/helpers/getSearchClient'
 import { useSearchHistory } from 'features/search/helpers/useSearchHistory/useSearchHistory'
-import { env } from 'libs/environment'
+import { env } from 'libs/environment/env'
 import { Spacer } from 'ui/theme'
 
 const searchInputID = uuidv4()

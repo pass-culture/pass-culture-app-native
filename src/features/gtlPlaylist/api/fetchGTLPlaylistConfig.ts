@@ -4,7 +4,7 @@ import { GtlPlaylistRequest } from 'features/gtlPlaylist/types'
 import { adaptGtlPlaylist } from 'libs/contentful/adapters/adaptGtlPlaylist'
 import { CONTENTFUL_BASE_URL } from 'libs/contentful/constants'
 import { GtlPlaylist } from 'libs/contentful/types'
-import { env } from 'libs/environment'
+import { env } from 'libs/environment/env'
 import { getExternal } from 'libs/fetch'
 
 const DEPTH_LEVEL = 2 // We need this to be able to fetch contentTypes referenced in our contentModel

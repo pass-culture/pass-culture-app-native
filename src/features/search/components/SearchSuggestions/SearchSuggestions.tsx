@@ -14,7 +14,7 @@ import { useNavigateToSearch } from 'features/search/helpers/useNavigateToSearch
 import { CreateHistoryItem, Highlighted, HistoryItem, SearchState } from 'features/search/types'
 import { buildSearchVenuePosition } from 'libs/algolia/fetchAlgolia/fetchSearchResults/helpers/buildSearchVenuePosition'
 import { getCurrentVenuesIndex } from 'libs/algolia/fetchAlgolia/helpers/getCurrentVenuesIndex'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { useLocation } from 'libs/location'
 import { getSpacing } from 'ui/theme'
 

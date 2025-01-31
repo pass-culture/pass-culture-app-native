@@ -1,6 +1,6 @@
 import { NativeCategoryIdEnumv2, SearchGroupNameEnumv2 } from 'api/gen'
 import { AlgoliaSuggestionHit } from 'libs/algolia/types'
-import { env } from 'libs/environment'
+import { env } from 'libs/environment/env'
 
 export const mockHit = {
   objectID: '1',

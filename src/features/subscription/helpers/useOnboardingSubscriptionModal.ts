@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 
 import { YoungStatusType } from 'api/gen'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { storage } from 'libs/storage'
 
 interface Args {

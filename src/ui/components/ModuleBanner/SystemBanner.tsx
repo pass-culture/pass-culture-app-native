@@ -2,7 +2,7 @@ import React, { FunctionComponent, ReactElement, useEffect } from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { Touchable } from 'ui/components/touchable/Touchable'

@@ -2,7 +2,7 @@ import React from 'react'
 import { Platform } from 'react-native'
 import styled from 'styled-components/native'
 
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { GeolocPermissionState } from 'libs/location/geolocation/enums'
 import { useLocation } from 'libs/location/LocationWrapper'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'

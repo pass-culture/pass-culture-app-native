@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { contactSupport } from 'features/auth/helpers/contactSupport'
-import { WEBAPP_V2_URL } from 'libs/environment'
+import { WEBAPP_V2_URL } from 'libs/environment/useWebAppUrl'
 import { BulletListItem } from 'ui/components/BulletListItem'
 import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonInsideText'
 import { Separator } from 'ui/components/Separator'

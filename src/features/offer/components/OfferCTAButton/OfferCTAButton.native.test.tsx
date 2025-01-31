@@ -8,7 +8,7 @@ import { mockSubcategory, mockSubcategoryNotEvent } from 'features/offer/fixture
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { mockedBookingApi } from 'fixtures/booking'
 import { beneficiaryUser } from 'fixtures/user'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { mockAuthContextWithoutUser, mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { mockServer } from 'tests/mswServer'

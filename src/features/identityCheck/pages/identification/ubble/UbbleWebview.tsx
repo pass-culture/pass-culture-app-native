@@ -9,7 +9,7 @@ import { REDIRECT_URL_UBBLE } from 'features/identityCheck/constants'
 import { parseUrlParams } from 'features/identityCheck/pages/helpers/parseUrlParams'
 import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { LoadingPage } from 'ui/components/LoadingPage'
 import { Spacer } from 'ui/theme'
 

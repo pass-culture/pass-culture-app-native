@@ -1,7 +1,7 @@
 import { ValidationError } from 'yup'
 
 import { setBirthdaySchema } from 'features/auth/pages/signup/SetBirthday/schema/setBirthdaySchema'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 
 const today = new Date()
 const lessThanFifteenYearsOldBirthdate = new Date()

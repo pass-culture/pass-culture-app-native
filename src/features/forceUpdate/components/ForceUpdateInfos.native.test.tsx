@@ -1,7 +1,7 @@
 import React from 'react'
 import { Linking } from 'react-native'
 
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { WEBAPP_V2_URL } from 'libs/environment/useWebAppUrl'
 import * as PackageJson from 'libs/packageJson'
 import { userEvent, render, screen } from 'tests/utils'

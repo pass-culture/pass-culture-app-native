@@ -6,7 +6,7 @@ import {
   ThematicHighlightModuleProps,
 } from 'features/home/components/modules/ThematicHighlightModule'
 import { formattedThematicHighlightModule } from 'features/home/fixtures/homepage.fixture'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { render, screen, userEvent } from 'tests/utils'
 
 jest.useFakeTimers()

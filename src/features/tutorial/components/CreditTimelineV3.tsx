@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 
 import { DURATION_IN_MS, customEaseInOut } from 'features/tutorial/helpers/animationProps'
 import { TutorialType } from 'features/tutorial/types'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { AnimatedView, NAV_DELAY_IN_MS } from 'libs/react-native-animatable'
 import { useDepositAmountsByAge } from 'shared/user/useDepositAmountsByAge'
 import { InternalStep } from 'ui/components/InternalStep/InternalStep'

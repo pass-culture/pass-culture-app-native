@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { dispatch, useRoute } from '__mocks__/@react-navigation/native'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { fireEvent, render, waitFor, screen } from 'tests/utils'
 
 import { EduConnectValidation } from './EduConnectValidation'

@@ -2,7 +2,7 @@ import { useCallback } from 'react'
 
 import { shareApp } from 'features/share/helpers/shareApp'
 import { ShareAppModalType } from 'features/share/types'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { useRemoteConfigContext } from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 
 export type ShareAppModalSelectorViewmodelParams = {

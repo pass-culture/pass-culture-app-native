@@ -4,7 +4,7 @@ import { useSearch } from 'features/search/context/SearchWrapper'
 import { VenueModalHook, VenueModalHookProps } from 'features/search/pages/modals/VenueModal/type'
 import { SearchState } from 'features/search/types'
 import { Venue } from 'features/venue/types'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { useDebounceValue } from 'ui/hooks/useDebounceValue'
 
 /**

@@ -1,6 +1,6 @@
 import { Platform } from 'react-native'
 
-import { env } from 'libs/environment'
+import { env } from 'libs/environment/env'
 
 const ANDROID_STORE_LINK = `https://play.google.com/store/apps/details?id=${env.ANDROID_APP_ID}`
 const IOS_STORE_LINK = `https://apps.apple.com/fr/app/pass-culture/id${env.IOS_APP_STORE_ID}`

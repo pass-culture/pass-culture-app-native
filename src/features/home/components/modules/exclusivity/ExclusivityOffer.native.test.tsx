@@ -6,7 +6,7 @@ import { OfferResponseV2 } from 'api/gen'
 import * as excluOfferAPI from 'features/home/api/useExcluOffer'
 import { ExclusivityOffer } from 'features/home/components/modules/exclusivity/ExclusivityOffer'
 import { offerResponseSnap as mockOffer } from 'features/offer/fixtures/offerResponse'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { ContentTypes } from 'libs/contentful/types'
 import { fireEvent, render, screen } from 'tests/utils'
 

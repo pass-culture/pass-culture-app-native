@@ -18,7 +18,7 @@ import { TutorialTimelineEighteen } from 'features/tutorial/components/profileTu
 import { TutorialTimelineFifteen } from 'features/tutorial/components/profileTutorial/Timelines/TutorialTimelineFifteen'
 import { TutorialTimelineSeventeen } from 'features/tutorial/components/profileTutorial/Timelines/TutorialTimelineSeventeen'
 import { TutorialTimelineSixteen } from 'features/tutorial/components/profileTutorial/Timelines/TutorialTimelineSixteen'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { ButtonWithLinearGradient } from 'ui/components/buttons/buttonWithLinearGradient/ButtonWithLinearGradient'
 import { ContentHeader } from 'ui/components/headers/ContentHeader'

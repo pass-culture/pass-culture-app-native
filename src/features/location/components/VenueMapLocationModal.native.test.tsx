@@ -8,7 +8,7 @@ import { VenueMapLocationModal } from 'features/location/components/VenueMapLoca
 import { DEFAULT_RADIUS } from 'features/search/constants'
 import { initialVenuesActions } from 'features/venueMap/store/initialVenuesStore'
 import { selectedVenueActions } from 'features/venueMap/store/selectedVenueStore'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { checkGeolocPermission, GeolocPermissionState, LocationWrapper } from 'libs/location'
 import { getGeolocPosition } from 'libs/location/geolocation/getGeolocPosition/getGeolocPosition'
 import { requestGeolocPermission } from 'libs/location/geolocation/requestGeolocPermission/requestGeolocPermission'

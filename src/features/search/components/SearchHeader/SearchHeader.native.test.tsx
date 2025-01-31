@@ -11,7 +11,7 @@ import { render, screen, waitFor, within } from 'tests/utils'
 
 jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
 
-jest.mock('libs/firebase/analytics')
+jest.mock('libs/firebase/analytics/analytics')
 
 const mockData = { pages: [{ nbHits: 0, hits: [], page: 0 }] }
 const mockHasNextPage = true

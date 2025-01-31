@@ -14,7 +14,7 @@ import { addressActions, useAddress } from 'features/identityCheck/pages/profile
 import { useCity } from 'features/identityCheck/pages/profile/store/cityStore'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { eventMonitoring } from 'libs/monitoring'
 import { useAddresses } from 'libs/place/useAddresses'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'

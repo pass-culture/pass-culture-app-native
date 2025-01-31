@@ -2,8 +2,8 @@ import React from 'react'
 
 import { DMSModal } from 'features/identityCheck/components/modals/DMSModal'
 import { openUrl } from 'features/navigation/helpers/openUrl'
-import { analytics } from 'libs/analytics'
-import { env } from 'libs/environment'
+import { analytics } from 'libs/analytics/provider'
+import { env } from 'libs/environment/env'
 import { fireEvent, render, screen } from 'tests/utils'
 
 const hideModalMock = jest.fn()

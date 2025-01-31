@@ -7,7 +7,7 @@ import {
 } from 'features/cookies/helpers/startTrackingAcceptedCookies'
 import { amplitude } from 'libs/amplitude'
 import { campaignTracker } from 'libs/campaign'
-import { firebaseAnalytics } from 'libs/firebase/analytics'
+import { firebaseAnalytics } from 'libs/firebase/analytics/analytics'
 import { Batch } from 'libs/react-native-batch'
 
 jest.mock('libs/amplitude/amplitude')

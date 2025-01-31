@@ -1,7 +1,7 @@
 import { Platform, Share } from 'react-native'
 
 import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
-import { WEBAPP_V2_URL } from 'libs/environment'
+import { WEBAPP_V2_URL } from 'libs/environment/useWebAppUrl'
 
 import { getShareVenue } from './getShareVenue'
 

@@ -1,7 +1,7 @@
 import { RecommendationApiParams } from 'api/gen'
 import { PlaylistType } from 'features/offer/enums'
 import { useLogPlaylist } from 'features/offer/helpers/useLogPlaylistVertical/useLogPlaylistVertical'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { renderHook } from 'tests/utils'
 
 const apiRecoParams: RecommendationApiParams = {

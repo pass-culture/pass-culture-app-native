@@ -1,4 +1,4 @@
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { ConsultOfferLogParams } from 'libs/analytics/types'
 import { eventMonitoring } from 'libs/monitoring'
 

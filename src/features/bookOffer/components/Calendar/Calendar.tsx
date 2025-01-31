@@ -16,7 +16,7 @@ import {
 } from 'features/bookOffer/components/Calendar/useMarkedDates'
 import { OfferStatus } from 'features/bookOffer/helpers/utils'
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { eventMonitoring } from 'libs/monitoring'
 import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
 import { Currency, useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'

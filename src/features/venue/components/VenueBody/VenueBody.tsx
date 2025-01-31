@@ -12,7 +12,7 @@ import { VenueOffers } from 'features/venue/components/VenueOffers/VenueOffers'
 import { VenueThematicSection } from 'features/venue/components/VenueThematicSection/VenueThematicSection'
 import type { VenueOffersArtists, VenueOffers as VenueOffersType } from 'features/venue/types'
 import { Tab } from 'features/venue/types'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 import { Spacer } from 'ui/theme'
 

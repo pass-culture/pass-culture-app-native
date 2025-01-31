@@ -13,7 +13,7 @@ jest.unmock('libs/firebase/analytics/analytics')
 jest.unmock('libs/analytics/provider')
 jest.unmock('libs/analytics/logEventAnalytics')
 
-const { analytics } = jest.requireActual('libs/analytics')
+const { analytics } = jest.requireActual('libs/analytics/provider')
 
 describe('analytics - logEvent', () => {
   it('should cast offerId and bookingId from number to string', async () => {

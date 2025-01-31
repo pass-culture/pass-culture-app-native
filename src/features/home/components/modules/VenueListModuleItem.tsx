@@ -3,7 +3,7 @@ import { Platform } from 'react-native'
 import styled from 'styled-components/native'
 
 import { VenueHit } from 'libs/algolia/types'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { useLocation } from 'libs/location'
 import { getDistance } from 'libs/location/getDistance'
 import { Tag } from 'ui/components/Tag/Tag'

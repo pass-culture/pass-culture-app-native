@@ -9,7 +9,7 @@ import {
 } from 'api/gen'
 import { PlaylistType } from 'features/offer/enums'
 import { offerResponseSnap as baseOffer } from 'features/offer/fixtures/offerResponse'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { Subcategory } from 'libs/subcategories/types'
 import { OfferModal } from 'shared/offer/enums'

@@ -1,7 +1,7 @@
 import { Platform } from 'react-native'
 
 import { fetchWithTimeout } from 'libs/e2e/fetchWithTimeout'
-import { env } from 'libs/environment'
+import { env } from 'libs/environment/env'
 
 export const getIsMaestroNotMemoized = async () => {
   if (env.ENV === 'production') return false

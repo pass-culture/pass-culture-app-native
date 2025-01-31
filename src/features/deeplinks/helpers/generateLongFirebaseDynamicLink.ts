@@ -1,4 +1,4 @@
-import { env } from 'libs/environment'
+import { env } from 'libs/environment/env'
 
 const FIREBASE_DYNAMIC_LINK_URL = `https://${env.FIREBASE_DYNAMIC_LINK_DOMAIN}`
 

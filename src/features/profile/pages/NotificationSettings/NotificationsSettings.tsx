@@ -21,7 +21,7 @@ import {
   SUSBCRIPTION_THEMES,
   TOTAL_NUMBER_OF_THEME,
 } from 'features/subscription/types'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { InfoBanner } from 'ui/components/banners/InfoBanner'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'

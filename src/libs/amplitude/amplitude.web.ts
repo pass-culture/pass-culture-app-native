@@ -1,7 +1,7 @@
 import Amplitude from 'amplitude-js'
 
 import { removeGeneratedStorageKey } from 'features/cookies/helpers/removeGeneratedStorageKey'
-import { env } from 'libs/environment'
+import { env } from 'libs/environment/env'
 
 import { AmplitudeClient } from './types'
 

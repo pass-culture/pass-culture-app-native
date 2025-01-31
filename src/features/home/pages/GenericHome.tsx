@@ -35,7 +35,8 @@ import {
   ThematicHeader,
 } from 'features/home/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
-import { analytics, isCloseToBottom } from 'libs/analytics'
+import { isCloseToBottom } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { OfflinePage } from 'libs/network/OfflinePage'

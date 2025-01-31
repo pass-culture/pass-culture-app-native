@@ -6,7 +6,7 @@ import { BookingsTab } from 'features/bookings/enum'
 import { mockOffer } from 'features/bookOffer/fixtures/offer'
 import { ReactionChoiceModal } from 'features/reactions/components/ReactionChoiceModal/ReactionChoiceModal'
 import { ReactionChoiceModalBodyEnum, ReactionFromEnum } from 'features/reactions/enum'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { fireEvent, render, screen } from 'tests/utils'
 
 const mockCloseModal = jest.fn()

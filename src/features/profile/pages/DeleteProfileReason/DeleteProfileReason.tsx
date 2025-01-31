@@ -6,7 +6,7 @@ import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useOnViewableItemsChanged } from 'features/subscription/helpers/useOnViewableItemsChanged'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { AnimatedViewRefType, createAnimatableComponent } from 'libs/react-native-animatable'
 import { getAge } from 'shared/user/getAge'
 import { theme } from 'theme'

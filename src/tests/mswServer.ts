@@ -10,7 +10,7 @@ import {
 import { type HttpRequestResolverExtras } from 'msw/lib/core/handlers/HttpHandler'
 import { setupServer } from 'msw/node'
 
-import { env } from 'libs/environment'
+import { env } from 'libs/environment/env'
 import {
   MockOptions,
   MockReturnType,

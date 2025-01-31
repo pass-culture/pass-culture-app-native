@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 import { CookiesSettings } from 'features/cookies/components/CookiesSettings'
 import { CookiesChoiceSettings } from 'features/cookies/types'
-import { env } from 'libs/environment'
+import { env } from 'libs/environment/env'
 import { Accordion } from 'ui/components/Accordion'
 import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonInsideText'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'

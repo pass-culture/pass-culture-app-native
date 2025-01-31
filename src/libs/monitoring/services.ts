@@ -1,4 +1,3 @@
-import { User, Breadcrumb, Hub } from '@sentry/types'
 import { Platform } from 'react-native'
 
 import { getSentryConfig } from 'libs/monitoring/config'
@@ -16,27 +15,15 @@ import {
   wrap,
 } from './sentry'
 
-type EventMonitoring = {
-  addBreadcrumb: (breadcrumb: Breadcrumb) => ReturnType<Hub['addBreadcrumb']>
-  captureException: typeof captureException
-  configureScope: typeof configureScope
-  init: ({ enabled }: { enabled: boolean }) => Promise<void>
-  setUser: (user: User | Record<string, unknown> | null) => void
-  setExtras: typeof setExtras
-  startTransaction: typeof startTransaction
-  withProfiler: typeof withProfiler
-  wrap: typeof wrap
-}
-
-export const eventMonitoring: EventMonitoring = {
-  addBreadcrumb: addBreadcrumb,
-  captureException: captureException,
-  configureScope: configureScope,
-  setUser: setUser,
-  setExtras: setExtras,
-  startTransaction: startTransaction,
-  withProfiler: withProfiler,
-  wrap: wrap,
+export const eventMonitoring = {
+  addBreadcrumb,
+  captureException,
+  configureScope,
+  setUser,
+  setExtras,
+  startTransaction,
+  withProfiler,
+  wrap,
   async init({ enabled } = { enabled: true }) {
     if (!enabled) return
     const config = await getSentryConfig()

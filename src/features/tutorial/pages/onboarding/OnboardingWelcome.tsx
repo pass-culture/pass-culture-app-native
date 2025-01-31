@@ -7,7 +7,7 @@ import { AuthenticationButton } from 'features/auth/components/AuthenticationBut
 import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { WELCOME_BACKGROUND_SOURCE } from 'features/tutorial/components/onboarding/welcomeBackground'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { storage } from 'libs/storage'

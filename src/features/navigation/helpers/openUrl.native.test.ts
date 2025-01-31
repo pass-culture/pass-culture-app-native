@@ -5,7 +5,7 @@ import { DeeplinkParts } from 'features/deeplinks/types'
 import { openUrl } from 'features/navigation/helpers/openUrl'
 import { navigateFromRef } from 'features/navigation/navigationRef'
 import { getScreenPath } from 'features/navigation/RootNavigator/linking/getScreenPath'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { act } from 'tests/utils'
 
 jest.mock('libs/monitoring')

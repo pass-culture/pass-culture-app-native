@@ -21,7 +21,7 @@ import { getOfferPrices } from 'features/offer/helpers/getOfferPrice/getOfferPri
 import { getOfferTags } from 'features/offer/helpers/getOfferTags/getOfferTags'
 import { useArtistResults } from 'features/offer/helpers/useArtistResults/useArtistResults'
 import { useOfferSummaryInfoList } from 'features/offer/helpers/useOfferSummaryInfoList/useOfferSummaryInfoList'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { getDisplayedPrice } from 'libs/parsers/getDisplayedPrice'

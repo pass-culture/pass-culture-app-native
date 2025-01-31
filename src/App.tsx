@@ -30,7 +30,7 @@ import { initAlgoliaAnalytics } from 'libs/algolia/analytics/initAlgoliaAnalytic
 import { SearchAnalyticsWrapper } from 'libs/algolia/analytics/SearchAnalyticsWrapper'
 import { AutoImmediate, NextResume } from 'libs/codepush/options'
 import { getIsMaestro } from 'libs/e2e/getIsMaestro'
-import { env } from 'libs/environment'
+import { env } from 'libs/environment/env'
 import { AnalyticsInitializer } from 'libs/firebase/analytics/AnalyticsInitializer'
 import { FirestoreNetworkObserver } from 'libs/firebase/firestore/FirestoreNetworkObserver/FirestoreNetworkObserver'
 import { RemoteConfigProvider } from 'libs/firebase/remoteConfig/RemoteConfigProvider'

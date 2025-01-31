@@ -4,7 +4,7 @@ import { Platform } from 'react-native'
 import { addScreenshotListener } from 'react-native-detector'
 
 import { ScreenNames, UseRouteType } from 'features/navigation/RootNavigator/types'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 
 export const useScreenshotListener = () => {
   const isFocused = useIsFocused()

@@ -4,7 +4,7 @@ import { FavoritesWrapper } from 'features/favorites/context/FavoritesWrapper'
 import { FavoritesSorts } from 'features/favorites/pages/FavoritesSorts'
 import { FavoriteSortBy } from 'features/favorites/types'
 import * as useGoBack from 'features/navigation/useGoBack'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import {
   GeolocPositionError,
   GeolocPermissionState,

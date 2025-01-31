@@ -9,7 +9,7 @@ import {
 import { mockVenueHits } from 'features/search/fixtures/algolia'
 import { mockedSearchHistory } from 'features/search/fixtures/mockedSearchHistory'
 import { AlgoliaSuggestionHit } from 'libs/algolia/types'
-import { env } from 'libs/environment'
+import { env } from 'libs/environment/env'
 import { render, screen } from 'tests/utils'
 
 describe('Highlight component for a offer suggestion', () => {

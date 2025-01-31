@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 import { VenueResponse } from 'api/gen'
 import { useNavigateToSearchWithVenueOffers } from 'features/venue/helpers/useNavigateToSearchWithVenueOffers'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { StickyBottomWrapper } from 'ui/components/StickyBottomWrapper/StickyBottomWrapper'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'

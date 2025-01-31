@@ -5,7 +5,7 @@ import { SearchState } from 'features/search/types'
 import { VenueCTA } from 'features/venue/components/VenueCTA/VenueCTA'
 import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
 import * as useNavigateToSearchWithVenueOffers from 'features/venue/helpers/useNavigateToSearchWithVenueOffers'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { LocationMode } from 'libs/location/types'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 

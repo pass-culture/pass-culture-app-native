@@ -2,7 +2,7 @@ import { useCallback } from 'react'
 
 import { useCookies } from 'features/cookies/helpers/useCookies'
 // eslint-disable-next-line no-restricted-imports
-import { firebaseAnalytics } from 'libs/firebase/analytics'
+import { firebaseAnalytics } from 'libs/firebase/analytics/analytics'
 import { getTokenExpirationDate } from 'libs/jwt/getTokenExpirationDate'
 import { getUserIdFromAccessToken } from 'libs/jwt/jwt'
 import { eventMonitoring } from 'libs/monitoring'

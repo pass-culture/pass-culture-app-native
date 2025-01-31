@@ -19,7 +19,7 @@ import { useAvailableCategories } from 'features/search/helpers/useAvailableCate
 import { useNavigateToSearch } from 'features/search/helpers/useNavigateToSearch/useNavigateToSearch'
 import { CreateHistoryItem, SearchState, SearchView } from 'features/search/types'
 import { AlgoliaSuggestionHit } from 'libs/algolia/types'
-import { env } from 'libs/environment'
+import { env } from 'libs/environment/env'
 import { useSearchGroupLabel } from 'libs/subcategories'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
 import { MagnifyingGlassFilled } from 'ui/svg/icons/MagnifyingGlassFilled'

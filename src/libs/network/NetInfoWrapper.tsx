@@ -4,7 +4,7 @@ import React, { PropsWithChildren, createContext, memo, useContext, useEffect } 
 import { Platform } from 'react-native'
 import { onlineManager } from 'react-query'
 
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { useNetInfo } from 'libs/network/useNetInfo'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 

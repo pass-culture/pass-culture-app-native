@@ -4,7 +4,7 @@ import { cheatcodesStackNavigatorConfig } from 'features/navigation/CheatcodesSt
 import { CheatcodesStackParamList } from 'features/navigation/CheatcodesStackNavigator/types'
 import { rootScreensConfig } from 'features/navigation/RootNavigator/screens'
 import { RootStackParamList } from 'features/navigation/RootNavigator/types'
-import { WEBAPP_V2_URL } from 'libs/environment'
+import { WEBAPP_V2_URL } from 'libs/environment/useWebAppUrl'
 import { RequireField } from 'libs/typesUtils/typeHelpers'
 
 import { getInitialURL } from './getInitialUrl'

@@ -8,7 +8,7 @@ import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { SSOType } from 'libs/analytics/logEventAnalytics'
 import { CampaignEvents, campaignTracker } from 'libs/campaign'
 // eslint-disable-next-line no-restricted-imports
-import { firebaseAnalytics } from 'libs/firebase/analytics'
+import { firebaseAnalytics } from 'libs/firebase/analytics/analytics'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { getAge } from 'shared/user/getAge'

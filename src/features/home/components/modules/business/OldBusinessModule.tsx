@@ -8,7 +8,7 @@ import { getBusinessUrl } from 'features/home/components/modules/business/helper
 import { useShouldDisplayBusinessModule } from 'features/home/components/modules/business/helpers/useShouldDisplayBusinessModule'
 import { openUrl } from 'features/navigation/helpers/openUrl'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { ContentTypes } from 'libs/contentful/types'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { ImageBackground } from 'libs/resizing-image-on-demand/ImageBackground'

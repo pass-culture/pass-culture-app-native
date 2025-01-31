@@ -2,7 +2,7 @@ import React from 'react'
 
 import { QuitIdentityCheckModal } from 'features/identityCheck/components/modals/QuitIdentityCheckModal'
 import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { fireEvent, render, screen } from 'tests/utils'
 
 jest.mock('features/navigation/helpers/navigateToHome')

@@ -3,7 +3,7 @@ import { getStateFromPath } from '@react-navigation/native'
 import { isScreen, RootNavigateParams } from 'features/navigation/RootNavigator/types'
 import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
 // eslint-disable-next-line no-restricted-imports
-import { firebaseAnalytics } from 'libs/firebase/analytics'
+import { firebaseAnalytics } from 'libs/firebase/analytics/analytics'
 import { storeUtmParams } from 'libs/utm'
 import { getUtmParamsConsent } from 'libs/utm/getUtmParamsConsent'
 

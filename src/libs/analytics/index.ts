@@ -1,4 +1,3 @@
-export { analytics } from './provider'
 export {
   buildLocationFilterParam,
   buildPerformSearchState,

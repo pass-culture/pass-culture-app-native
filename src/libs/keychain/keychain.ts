@@ -1,7 +1,7 @@
 import { Platform } from 'react-native'
 import * as Keychain from 'react-native-keychain'
 
-import { env } from 'libs/environment'
+import { env } from 'libs/environment/env'
 
 const REFRESH_TOKEN_KEY = 'PASSCULTURE_REFRESH_TOKEN'
 
