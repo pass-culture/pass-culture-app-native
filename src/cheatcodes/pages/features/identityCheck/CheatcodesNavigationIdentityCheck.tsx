@@ -11,7 +11,6 @@ import { PhoneValidationTipsModal } from 'features/identityCheck/pages/phoneVali
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { useLogTypeFromRemoteConfig } from 'libs/hooks/useLogTypeFromRemoteConfig'
 import { ScreenError } from 'libs/monitoring/errors'
-import { Spacer } from 'ui/theme'
 
 export const cheatcodesNavigationIdentityCheckButtons: [CheatcodesButtonsWithSubscreensProps] = [
   {
@@ -38,6 +37,12 @@ export const cheatcodesNavigationIdentityCheckButtons: [CheatcodesButtonsWithSub
       { screen: 'VerifyEligibility' },
       { screen: 'BeneficiaryRequestSent' },
       { screen: 'IdentificationFork' },
+      { title: 'PhoneValidationTipsModal', showOnlyInSearch: true },
+      { title: 'UserAgeNotValid Educonnect Error', showOnlyInSearch: true },
+      { title: 'UserAgeNotValid18YearsOld Error', showOnlyInSearch: true },
+      { title: 'UserTypeNotStudent Error', showOnlyInSearch: true },
+      { title: 'DuplicateUser Error', showOnlyInSearch: true },
+      { title: 'Generic Error', showOnlyInSearch: true },
       {
         screen: 'EduConnectValidation',
         navigationParams: {
@@ -105,7 +110,6 @@ export function CheatcodesNavigationIdentityCheck(): React.JSX.Element {
         title="Generic Error"
         onPress={() => trigger(EduConnectErrorMessageEnum.GenericError)}
       />
-      <Spacer.BottomScreen />
     </CheatcodesTemplateScreen>
   )
 }

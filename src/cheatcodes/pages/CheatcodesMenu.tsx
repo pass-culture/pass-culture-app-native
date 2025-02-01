@@ -53,20 +53,20 @@ export function CheatcodesMenu(): React.JSX.Element {
     ...cheatcodesNavigationTrustedDeviceButtons,
     ...cheatcodesNavigationTutorialButtons,
     ...cheatcodesNavigationForceUpdateButtons,
-    { title: 'Share 🔗', screen: 'CheatcodesNavigationShare' },
+    { title: 'Share 🔗', screen: 'CheatcodesNavigationShare', subscreens: [] },
   ]
 
   const otherButtons: CheatcodesButtonsWithSubscreensProps[] = [
     ...cheatcodesNavigationAccountManagementButtons,
     ...cheatcodesNavigationErrorsButtons,
     ...cheatcodesNavigationSignUpButtons,
-    { title: 'AccesLibre 🌈', screen: 'CheatcodesScreenAccesLibre' },
-    { title: 'Debug informations 🪲', screen: 'CheatcodesScreenDebugInformations' },
-    { title: 'Envoyer une erreur Sentry 📤', onPress: onPressSentry },
-    { title: 'Features flags 🏳️', screen: 'CheatcodesScreenFeatureFlags' },
-    { title: 'Nouvelle-Calédonie 🇳🇨', screen: 'CheatcodesScreenNewCaledonia' },
-    { title: 'Pages non écrans ❌', screen: 'CheatcodesNavigationNotScreensPages' },
-    { title: 'Remote config 📊', screen: 'CheatcodesScreenRemoteConfig' },
+    { title: 'AccesLibre 🌈', screen: 'CheatcodesScreenAccesLibre', subscreens: [] },
+    { title: 'Debug informations 🪲', screen: 'CheatcodesScreenDebugInformations', subscreens: [] },
+    { title: 'Envoyer une erreur Sentry 📤', onPress: onPressSentry, subscreens: [] },
+    { title: 'Features flags 🏳️', screen: 'CheatcodesScreenFeatureFlags', subscreens: [] },
+    { title: 'Nouvelle-Calédonie 🇳🇨', screen: 'CheatcodesScreenNewCaledonia', subscreens: [] },
+    { title: 'Pages non écrans ❌', screen: 'CheatcodesNavigationNotScreensPages', subscreens: [] },
+    { title: 'Remote config 📊', screen: 'CheatcodesScreenRemoteConfig', subscreens: [] },
   ]
 
   const filteredFeaturesButtons = filterAndSortCheatcodesButtons(searchValue, featuresButtons)
