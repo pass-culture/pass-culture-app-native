@@ -20,8 +20,8 @@ export const CheatcodesButtonList: React.FC<Props> = ({ buttons }) => (
         {button.subscreens?.map((subscreen, subIndex) => (
           <LinkToScreen
             key={`${index}-${subIndex}`}
-            title={`↳ ${subscreen.title ?? subscreen.screen ?? '[sans titre]'}`}
-            screen={subscreen.screen}
+            title={`${subscreen.showOnlyInSearch ? '↳ ' : ''} ${subscreen.title ?? subscreen.screen ?? '[sans titre]'}`}
+            screen={subscreen.showOnlyInSearch ? button.screen : subscreen.screen}
             onPress={subscreen.onPress}
             navigationParams={subscreen.navigationParams}
             buttonHeight="extraSmall"

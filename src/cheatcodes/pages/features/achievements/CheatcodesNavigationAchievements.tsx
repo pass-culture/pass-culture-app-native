@@ -15,7 +15,11 @@ export const cheatcodesNavigationAchievementsButtons: [CheatcodesButtonsWithSubs
   {
     title: 'Achievements 🏆',
     screen: 'CheatcodesNavigationAchievements',
-    subscreens: [{ screen: 'Achievements', navigationParams: { from: 'cheatcodes' } }],
+    subscreens: [
+      { screen: 'Achievements', navigationParams: { from: 'cheatcodes' } },
+      { title: 'AchievementSuccessModal (1 unlocked)', showOnlyInSearch: true },
+      { title: 'AchievementSuccessModal (2+ unlocked)', showOnlyInSearch: true },
+    ],
   },
 ]
 

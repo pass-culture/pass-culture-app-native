@@ -19,7 +19,13 @@ export const cheatcodesNavigationErrorsButtons: [CheatcodesButtonsWithSubscreens
   {
     title: 'Errors 👾',
     screen: 'CheatcodesNavigationErrors',
-    subscreens: [{ screen: 'BannedCountryError' }],
+    subscreens: [
+      { screen: 'BannedCountryError' },
+      { title: 'Contentful KO error', showOnlyInSearch: true },
+      { title: 'Offre inexistante', showOnlyInSearch: true },
+      { title: 'Maintenance', showOnlyInSearch: true },
+      { title: 'Error rendering', showOnlyInSearch: true },
+    ],
   },
 ]
 
@@ -85,7 +91,7 @@ export const CheatcodesNavigationErrors: FunctionComponent = () => {
       />
 
       <LinkToScreen
-        title="Maintenance Page"
+        title="Maintenance"
         onPress={() =>
           setScreenError(
             new ScreenError('Test maintenance page', {
@@ -99,7 +105,7 @@ export const CheatcodesNavigationErrors: FunctionComponent = () => {
       />
 
       <LinkToScreen
-        title="Erreur rendering"
+        title="Error rendering"
         onPress={() => {
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
           // @ts-expect-error

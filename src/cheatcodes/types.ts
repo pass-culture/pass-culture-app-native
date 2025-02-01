@@ -5,9 +5,13 @@ type CheatcodesButtonProps = {
   screen?: RootScreenNames
   onPress?: () => void
   navigationParams?: RootStackParamList[RootScreenNames]
+  showOnlyInSearch?: boolean
 }
 
-export type CheatcodesButtonsWithSubscreensProps = Omit<CheatcodesButtonProps, 'title'> & {
+export type CheatcodesButtonsWithSubscreensProps = Omit<
+  CheatcodesButtonProps,
+  'title' | 'showOnlyInSearch'
+> & {
   title: string
-  subscreens?: CheatcodesButtonProps[]
+  subscreens: CheatcodesButtonProps[]
 }
