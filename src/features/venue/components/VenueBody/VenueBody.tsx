@@ -4,7 +4,7 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { VenueResponse } from 'api/gen'
 import { GtlPlaylistData } from 'features/gtlPlaylist/types'
-import { offerToHeadlineOfferData } from 'features/headlineOffer/adapters/headlineOfferData'
+import { offerToHeadlineOfferData } from 'features/headlineOffer/adapters/offerToHeadlineOfferData'
 import { HeadlineOffer } from 'features/headlineOffer/components/HeadlineOffer/HeadlineOffer'
 import { PracticalInformation } from 'features/venue/components/PracticalInformation/PracticalInformation'
 import { TabLayout } from 'features/venue/components/TabLayout/TabLayout'

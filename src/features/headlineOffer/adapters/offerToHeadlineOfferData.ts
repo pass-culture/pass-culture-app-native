@@ -15,7 +15,7 @@ type OfferToHeadlineOfferData = {
 }
 
 type OfferToHeadlineParams = {
-  offer: Offer
+  offer: Offer | null
   transformParameters: OfferToHeadlineOfferData
 }
 
@@ -38,8 +38,6 @@ export function offerToHeadlineOfferData({
     categoryId: mapping[hitOffer.subcategoryId],
     category: labelMapping[hitOffer.subcategoryId] ?? '',
     price: displayedPrice,
-    distance: _geoloc
-      ? formatDistance({ lat: _geoloc?.lat, lng: _geoloc?.lng }, userLocation)
-      : undefined,
+    distance: formatDistance({ lat: _geoloc?.lat, lng: _geoloc?.lng }, userLocation),
   }
 }
