@@ -4,10 +4,10 @@ import { push } from '__mocks__/@react-navigation/native'
 import { SearchState } from 'features/search/types'
 import { VenueCTA } from 'features/venue/components/VenueCTA/VenueCTA'
 import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
-import * as useNavigateToSearchWithVenueOffers from 'features/venue/helpers/useNavigateToSearchWithVenueOffers'
+import { SearchNavConfig } from 'features/venue/types'
 import { analytics } from 'libs/analytics/provider'
 import { LocationMode } from 'libs/location/types'
-import { fireEvent, render, screen, waitFor } from 'tests/utils'
+import { render, screen, userEvent, waitFor } from 'tests/utils'
 
 const defaultParams: SearchState = {
   beginningDatetime: undefined,
@@ -34,27 +34,28 @@ const defaultParams: SearchState = {
   },
 } as SearchState
 
-jest
-  .spyOn(useNavigateToSearchWithVenueOffers, 'useNavigateToSearchWithVenueOffers')
-  .mockReturnValue({
-    screen: 'TabNavigator',
+const searchNavConfigMock: SearchNavConfig = {
+  screen: 'TabNavigator',
+  params: {
+    screen: 'SearchStackNavigator',
     params: {
-      screen: 'SearchStackNavigator',
-      params: {
-        screen: 'SearchResults',
-        params: defaultParams,
-      },
+      screen: 'SearchResults',
+      params: defaultParams,
     },
-    withPush: true,
-  })
+  },
+  withPush: true,
+}
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.useFakeTimers()
+const user = userEvent.setup()
+
 describe('<VenueCTA />', () => {
   it('should navigate to the search page when pressed on', async () => {
-    render(<VenueCTA venue={venueDataTest} />)
+    render(<VenueCTA searchNavConfig={searchNavConfigMock} onBeforeNavigate={jest.fn()} />)
 
-    fireEvent.press(screen.getByText('Rechercher une offre'))
+    await user.press(await screen.findByText('Rechercher une offre'))
 
     await waitFor(() => {
       expect(push).toHaveBeenCalledWith('TabNavigator', {
@@ -76,9 +77,14 @@ describe('<VenueCTA />', () => {
   })
 
   it('should log event when pressed on', async () => {
-    render(<VenueCTA venue={venueDataTest} />)
+    render(
+      <VenueCTA
+        searchNavConfig={searchNavConfigMock}
+        onBeforeNavigate={() => analytics.logVenueSeeAllOffersClicked(venueDataTest.id)}
+      />
+    )
 
-    fireEvent.press(screen.getByText('Rechercher une offre'))
+    await user.press(await screen.findByText('Rechercher une offre'))
 
     expect(analytics.logVenueSeeAllOffersClicked).toHaveBeenCalledWith(venueDataTest.id)
   })
