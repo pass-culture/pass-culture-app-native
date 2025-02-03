@@ -6,9 +6,9 @@ import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 export type ChronicleSectionProps = {
   data: ChronicleCardData[]
   title: string
-  offerId: number
   subtitle?: string
   ctaLabel: string
   navigateTo: InternalNavigationProps['navigateTo']
+  onSeeMoreButtonPress?: (chronicleId: number) => void
   style?: StyleProp<ViewStyle>
 }

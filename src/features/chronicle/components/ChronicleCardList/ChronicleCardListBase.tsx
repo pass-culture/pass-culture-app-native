@@ -13,7 +13,6 @@ import styled from 'styled-components/native'
 import { ChronicleCardData } from 'features/chronicle/type'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { styledButton } from 'ui/components/buttons/styledButton'
-import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { PlainMore } from 'ui/svg/icons/PlainMore'
 import { getSpacing } from 'ui/theme'
 
@@ -38,8 +37,7 @@ export type ChronicleCardListProps = Pick<
   separatorSize?: number
   headerComponent?: ReactElement
   style?: StyleProp<ViewStyle>
-  shouldShowSeeMoreButton?: boolean
-  offerId?: number
+  onSeeMoreButtonPress?: (chronicleId: number) => void
 }
 
 export const ChronicleCardListBase = forwardRef<
@@ -58,8 +56,7 @@ export const ChronicleCardListBase = forwardRef<
     onContentSizeChange,
     style,
     separatorSize = SEPARATOR_DEFAULT_VALUE,
-    shouldShowSeeMoreButton,
-    offerId,
+    onSeeMoreButtonPress,
     onLayout,
   },
   ref
@@ -96,19 +93,18 @@ export const ChronicleCardListBase = forwardRef<
           description={item.description}
           date={item.date}
           cardWidth={cardWidth}>
-          {shouldShowSeeMoreButton && offerId ? (
+          {onSeeMoreButtonPress ? (
             <View>
-              <InternalTouchableLink
-                as={StyledButtonTertiaryBlack}
+              <StyledButtonTertiaryBlack
                 wording="Voir plus"
-                navigateTo={{ screen: 'Chronicles', params: { offerId, chronicleId: item.id } }}
+                onPress={() => onSeeMoreButtonPress(item.id)}
               />
             </View>
           ) : null}
         </ChronicleCard>
       )
     },
-    [cardWidth, offerId, shouldShowSeeMoreButton]
+    [cardWidth, onSeeMoreButtonPress]
   )
 
   return (

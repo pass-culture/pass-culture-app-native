@@ -30,8 +30,7 @@ export const ChronicleCardList = forwardRef<
     headerComponent,
     style,
     separatorSize = SEPARATOR_DEFAULT_VALUE,
-    shouldShowSeeMoreButton,
-    offerId,
+    onSeeMoreButtonPress,
     onLayout,
   },
   ref
@@ -101,8 +100,7 @@ export const ChronicleCardList = forwardRef<
         separatorSize={separatorSize}
         contentContainerStyle={contentContainerStyle}
         snapToInterval={isDesktopViewport ? CHRONICLE_CARD_WIDTH : undefined}
-        offerId={offerId}
-        shouldShowSeeMoreButton={shouldShowSeeMoreButton}
+        onSeeMoreButtonPress={onSeeMoreButtonPress}
         onLayout={onLayout}
       />
     </View>

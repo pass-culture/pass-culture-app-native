@@ -10,9 +10,11 @@ import { TypoDS, getShadow, getSpacing } from 'ui/theme'
 
 const CHRONICLE_THUMBNAIL_SIZE = getSpacing(14)
 
-type Props = ChronicleCardData & {
-  cardWidth?: number
-} & PropsWithChildren
+type Props = PropsWithChildren<
+  ChronicleCardData & {
+    cardWidth?: number
+  }
+>
 
 export const ChronicleCard: FunctionComponent<Props> = ({
   id,
