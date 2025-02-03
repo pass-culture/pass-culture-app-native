@@ -173,6 +173,7 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
                 data={chronicles}
                 navigateTo={{ screen: 'Chronicles', params: { offerId: offer.id } }}
                 onSeeMoreButtonPress={onSeeMoreButtonPress}
+                fromOfferId={offer.id}
               />
             </StyledSectionWithDivider>
           ) : null}

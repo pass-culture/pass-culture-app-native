@@ -4,6 +4,7 @@ import { ReactTestInstance } from 'react-test-renderer'
 
 import { CHRONICLE_CARD_WIDTH } from 'features/chronicle/constant'
 import { chroniclesSnap } from 'features/chronicle/fixtures/chroniclesSnap'
+import { analytics } from 'libs/analytics/provider'
 import { render, screen, userEvent } from 'tests/utils'
 
 import { ChronicleCardListBase } from './ChronicleCardListBase'
@@ -85,5 +86,29 @@ describe('ChronicleCardListBase', () => {
     await user.press(seeMoreButtons[2] as ReactTestInstance)
 
     expect(mockOnSeeMoreButtonPress).toHaveBeenCalledTimes(1)
+  })
+
+  it('should log consultChronicle when pressing "Voir plus" button', async () => {
+    const mockOnSeeMoreButtonPress = jest.fn()
+    render(
+      <ChronicleCardListBase
+        data={chroniclesSnap}
+        offset={CHRONICLE_CARD_WIDTH}
+        horizontal
+        ref={ref}
+        onSeeMoreButtonPress={mockOnSeeMoreButtonPress}
+        fromOfferId={123}
+      />
+    )
+
+    const seeMoreButtons = screen.getAllByText('Voir plus')
+
+    // Using as because links is never undefined and the typing is not correct
+    await user.press(seeMoreButtons[2] as ReactTestInstance)
+
+    expect(analytics.logConsultChronicle).toHaveBeenNthCalledWith(1, {
+      chronicleId: 3,
+      offerId: 123,
+    })
   })
 })

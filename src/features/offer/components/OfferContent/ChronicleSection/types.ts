@@ -11,4 +11,5 @@ export type ChronicleSectionProps = {
   navigateTo: InternalNavigationProps['navigateTo']
   onSeeMoreButtonPress?: (chronicleId: number) => void
   style?: StyleProp<ViewStyle>
+  fromOfferId?: number
 }

@@ -16,7 +16,8 @@ import { ChronicleSectionProps } from './types'
 
 export const ChronicleSection = (props: ChronicleSectionProps) => {
   const { isDesktopViewport } = useTheme()
-  const { data, title, subtitle, ctaLabel, navigateTo, style, onSeeMoreButtonPress } = props
+  const { data, title, subtitle, ctaLabel, navigateTo, style, onSeeMoreButtonPress, fromOfferId } =
+    props
 
   return isDesktopViewport ? (
     <View style={style}>
@@ -35,7 +36,11 @@ export const ChronicleSection = (props: ChronicleSectionProps) => {
         </Row>
         {subtitle ? <StyledSubtitle>{subtitle}</StyledSubtitle> : null}
       </Gutter>
-      <StyledChronicleCardlist data={data} onSeeMoreButtonPress={onSeeMoreButtonPress} />
+      <StyledChronicleCardlist
+        data={data}
+        onSeeMoreButtonPress={onSeeMoreButtonPress}
+        fromOfferId={fromOfferId}
+      />
     </View>
   ) : (
     <ChronicleSectionBase {...props} />
