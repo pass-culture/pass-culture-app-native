@@ -1,3 +1,4 @@
+import { HeadlineOfferData } from 'features/headlineOffer/type'
 import { Position } from 'libs/location'
 import { formatDistance } from 'libs/parsers/formatDistance'
 import { getDisplayedPrice } from 'libs/parsers/getDisplayedPrice'
@@ -5,8 +6,7 @@ import { CategoryHomeLabelMapping, CategoryIdMapping } from 'libs/subcategories/
 import { Currency } from 'shared/currency/useGetCurrencyToDisplay'
 import { Offer } from 'shared/offer/types'
 
-type HeadlineOfferData = {
-  offer: Offer
+type OfferToHeadlineOfferData = {
   mapping: CategoryIdMapping
   labelMapping: CategoryHomeLabelMapping
   currency: Currency
@@ -14,26 +14,27 @@ type HeadlineOfferData = {
   userLocation?: Position
 }
 
-export function headlineOfferData({
+type OfferToHeadlineParams = {
+  offer: Offer
+  transformParameters: OfferToHeadlineOfferData
+}
+
+export function offerToHeadlineOfferData({
   offer,
-  mapping,
-  labelMapping,
-  currency,
-  euroToPacificFrancRate,
-  userLocation,
-}: HeadlineOfferData) {
-  if (!offer) return
+  transformParameters,
+}: OfferToHeadlineParams): HeadlineOfferData | null {
+  if (!offer) return null
 
   const { offer: hitOffer, objectID, _geoloc } = offer
-
-  if (!hitOffer.thumbUrl) return
+  const { mapping, labelMapping, currency, euroToPacificFrancRate, userLocation } =
+    transformParameters
 
   const displayedPrice = getDisplayedPrice(hitOffer.prices, currency, euroToPacificFrancRate)
 
   return {
     id: objectID,
     offerTitle: hitOffer.name,
-    imageUrl: hitOffer.thumbUrl,
+    imageUrl: hitOffer.thumbUrl ?? '',
     categoryId: mapping[hitOffer.subcategoryId],
     category: labelMapping[hitOffer.subcategoryId] ?? '',
     price: displayedPrice,

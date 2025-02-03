@@ -4,7 +4,7 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { VenueResponse } from 'api/gen'
 import { GtlPlaylistData } from 'features/gtlPlaylist/types'
-import { headlineOfferData } from 'features/headlineOffer/adapters/headlineOfferData'
+import { offerToHeadlineOfferData } from 'features/headlineOffer/adapters/headlineOfferData'
 import { HeadlineOffer } from 'features/headlineOffer/components/HeadlineOffer/HeadlineOffer'
 import { PracticalInformation } from 'features/venue/components/PracticalInformation/PracticalInformation'
 import { TabLayout } from 'features/venue/components/TabLayout/TabLayout'
@@ -46,14 +46,16 @@ export const VenueBody: FunctionComponent<Props> = ({
 
   const SectionContainer = isLargeScreen ? View : SectionWithDivider
 
-  const headlineData = headlineOfferData({
+  const headlineData = offerToHeadlineOfferData({
     // Fake data to remove
     offer: offersFixture[0],
-    currency,
-    euroToPacificFrancRate,
-    mapping,
-    labelMapping,
-    userLocation,
+    transformParameters: {
+      currency,
+      euroToPacificFrancRate,
+      mapping,
+      labelMapping,
+      userLocation,
+    },
   })
 
   const tabPanels = {

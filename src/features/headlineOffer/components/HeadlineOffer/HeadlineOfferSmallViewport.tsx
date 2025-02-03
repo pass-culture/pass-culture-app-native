@@ -6,12 +6,12 @@ import {
   LightGreyText,
   Title,
 } from 'features/headlineOffer/components/HeadlineOffer/CommonHeadlineOffer.styles'
-import { HeadlineOfferBaseProps } from 'features/headlineOffer/components/HeadlineOffer/HeadlineOffer'
+import { HeadlineOfferData } from 'features/headlineOffer/type'
 import { Tag } from 'ui/components/Tag/Tag'
 import { HorizontalTile } from 'ui/components/tiles/HorizontalTile'
 import { getSpacing } from 'ui/theme'
 
-export const HeadlineOfferSmallViewport: FunctionComponent<HeadlineOfferBaseProps> = ({
+export const HeadlineOfferSmallViewport: FunctionComponent<HeadlineOfferData> = ({
   imageUrl,
   distance,
   categoryId,

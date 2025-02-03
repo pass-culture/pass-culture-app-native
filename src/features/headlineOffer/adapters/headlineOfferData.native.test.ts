@@ -1,17 +1,19 @@
-import { headlineOfferData } from 'features/headlineOffer/adapters/headlineOfferData'
+import { offerToHeadlineOfferData } from 'features/headlineOffer/adapters/headlineOfferData'
 import { mockLabelMapping, mockMapping } from 'features/headlineOffer/fixtures/mockMapping'
 import { Currency } from 'shared/currency/useGetCurrencyToDisplay'
 import { offersFixture } from 'shared/offer/offer.fixture'
 
 describe('headlineOfferData', () => {
   it('should transform headline offer data correctly', () => {
-    const result = headlineOfferData({
+    const result = offerToHeadlineOfferData({
       offer: offersFixture[0],
-      mapping: mockMapping,
-      labelMapping: mockLabelMapping,
-      currency: Currency.EURO,
-      euroToPacificFrancRate: 10,
-      userLocation: { latitude: 1, longitude: 1 },
+      transformParameters: {
+        mapping: mockMapping,
+        labelMapping: mockLabelMapping,
+        currency: Currency.EURO,
+        euroToPacificFrancRate: 10,
+        userLocation: { latitude: 1, longitude: 1 },
+      },
     })
 
     expect(result).toEqual({

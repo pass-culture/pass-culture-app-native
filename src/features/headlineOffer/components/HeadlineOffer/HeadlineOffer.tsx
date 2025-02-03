@@ -3,7 +3,7 @@ import React, { FunctionComponent } from 'react'
 import LinearGradient from 'react-native-linear-gradient'
 import styled, { useTheme } from 'styled-components/native'
 
-import { CategoryIdEnum } from 'api/gen'
+import { HeadlineOfferData } from 'features/headlineOffer/type'
 import { Image } from 'libs/resizing-image-on-demand/Image'
 
 import { HeadlineOfferLargeViewport } from './HeadlineOfferLargeViewport'
@@ -12,16 +12,7 @@ import { HeadlineOfferSmallViewport } from './HeadlineOfferSmallViewport'
 const HEADLINE_OFFER_LARGE_VIEWPORT = 327
 const HEADLINE_OFFER_SMALL_VIEWPORT = 245
 
-export type HeadlineOfferBaseProps = {
-  imageUrl: string
-  categoryId: CategoryIdEnum
-  category: string
-  price: string
-  offerTitle?: string
-  distance?: string
-}
-
-export const HeadlineOffer: FunctionComponent<HeadlineOfferBaseProps> = (props) => {
+export const HeadlineOffer: FunctionComponent<HeadlineOfferData> = (props) => {
   const { isDesktopViewport } = useTheme()
   const HeadlineOfferContent = isDesktopViewport
     ? HeadlineOfferLargeViewport
