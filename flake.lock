@@ -1,5 +1,48 @@
 {
   "nodes": {
+    "brew-api": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1732790140,
+        "narHash": "sha256-ZJJAfRIb9AqiZLuHEYXu32DcSxB8U8RdtiCAdGTWcew=",
+        "owner": "BatteredBunny",
+        "repo": "brew-api",
+        "rev": "7d188bf724a01adcabc4e4b5ce5d8265af7c578c",
+        "type": "github"
+      },
+      "original": {
+        "owner": "BatteredBunny",
+        "repo": "brew-api",
+        "type": "github"
+      }
+    },
+    "brew-nix": {
+      "inputs": {
+        "brew-api": [
+          "brew-api"
+        ],
+        "flake-utils": [
+          "flake-utils"
+        ],
+        "nix-darwin": "nix-darwin",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1724407874,
+        "narHash": "sha256-3nw5O0wLkeTeBXJTyY2pZ57JaRtouLva1a6nVx2syLU=",
+        "owner": "BatteredBunny",
+        "repo": "brew-nix",
+        "rev": "d3d3a2666e5330e83b6a64b1eb3e1e9380f6da9b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "BatteredBunny",
+        "repo": "brew-nix",
+        "type": "github"
+      }
+    },
     "flake-utils": {
       "inputs": {
         "systems": "systems"
@@ -15,6 +58,27 @@
       "original": {
         "owner": "numtide",
         "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "nix-darwin": {
+      "inputs": {
+        "nixpkgs": [
+          "brew-nix",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1722500642,
+        "narHash": "sha256-Vls0TQRdplex1JslnBxEk3M26Q1vR+OSg+sk5rBG4DA=",
+        "owner": "LnL7",
+        "repo": "nix-darwin",
+        "rev": "b47af8628624856ad6853168298f1f96364d92d6",
+        "type": "github"
+      },
+      "original": {
+        "owner": "LnL7",
+        "repo": "nix-darwin",
         "type": "github"
       }
     },
@@ -36,6 +100,8 @@
     },
     "root": {
       "inputs": {
+        "brew-api": "brew-api",
+        "brew-nix": "brew-nix",
         "flake-utils": "flake-utils",
         "nixpkgs": "nixpkgs"
       }
