@@ -94,7 +94,7 @@ export const VenueMapTypeFilter: FunctionComponent<Props> = ({ navigation, route
                 key={venueType}
                 label={MAP_VENUE_TYPE_TO_LABEL[venueType]}
                 isChecked={isChecked}
-                LabelComponent={isChecked ? TypoDS.Button : undefined}
+                LabelComponent={isChecked ? LabelCheckbox : undefined}
                 onPress={() => {
                   handleCheckboxPress(venueType)
                 }}
@@ -119,4 +119,9 @@ const StyledCheckbox = styled(Checkbox)({
 
 const SelectAllCheckBox = styled(StyledCheckbox)({
   marginBottom: getSpacing(2),
+})
+
+const LabelCheckbox = styled(TypoDS.Button)({
+  alignSelf: 'center',
+  flex: 1,
 })
