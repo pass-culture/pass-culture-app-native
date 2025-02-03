@@ -21,6 +21,8 @@ export const cheatcodesNavigationTrustedDeviceButtons: [CheatcodesButtonsWithSub
       { screen: 'SuspensionChoice' },
       { screen: 'SuspensionChoiceExpiredLink' },
       { screen: 'SuspiciousLoginSuspendedAccount' },
+      { title: 'AccountSecurity', showOnlyInSearch: true },
+      { title: 'AccountSecurityBuffer', showOnlyInSearch: true },
     ],
   },
 ]

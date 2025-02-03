@@ -21,6 +21,7 @@ export const cheatcodesNavigationProfileButtons: [CheatcodesButtonsWithSubscreen
       { screen: 'ConsentSettings' },
       { screen: 'NotificationsSettings' },
       { screen: 'ChangeEmailExpiredLink' },
+      { title: 'ExpiredCreditModal', showOnlyInSearch: true },
     ],
   },
 ]
@@ -36,7 +37,7 @@ export function CheatcodesNavigationProfile(): React.JSX.Element {
     <CheatcodesTemplateScreen title={cheatcodesNavigationProfileButtons[0].title}>
       <CheatcodesSubscreensButtonList buttons={cheatcodesNavigationProfileButtons} />
 
-      <LinkToScreen title="Modal Crédit Expiré" onPress={showExpiredCreditModal} />
+      <LinkToScreen title="ExpiredCreditModal" onPress={showExpiredCreditModal} />
       <ExpiredCreditModal visible={expiredCreditModalVisible} hideModal={hideExpiredCreditModal} />
     </CheatcodesTemplateScreen>
   )
