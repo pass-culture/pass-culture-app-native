@@ -1,5 +1,6 @@
 import { NavigationContainer } from '@react-navigation/native'
 import React, { ComponentProps } from 'react'
+import { ReactTestInstance } from 'react-test-renderer'
 
 import {
   OfferResponseV2,
@@ -645,6 +646,22 @@ describe('<OfferContent />', () => {
         await user.press(await screen.findByText('Voir tous les avis'))
 
         expect(mockNavigate).toHaveBeenNthCalledWith(1, 'Chronicles', { offerId: 116656 })
+      })
+
+      it('should navigate to chronicles page with anchor on the selected chronicle when pressing "Voir plus" button on a card', async () => {
+        renderOfferContent({
+          offer: { ...offerResponseSnap, subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER },
+        })
+
+        const seeMoreButtons = screen.getAllByText('Voir plus')
+
+        // Using as because links is never undefined and the typing is not correct
+        await user.press(seeMoreButtons[2] as ReactTestInstance)
+
+        expect(mockNavigate).toHaveBeenNthCalledWith(1, 'Chronicles', {
+          offerId: 116656,
+          chronicleId: 3,
+        })
       })
     })
 

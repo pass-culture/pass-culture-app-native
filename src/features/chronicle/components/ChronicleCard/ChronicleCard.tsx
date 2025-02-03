@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, PropsWithChildren } from 'react'
 import styled from 'styled-components/native'
 
 import { ChronicleCardData } from 'features/chronicle/type'
@@ -10,9 +10,11 @@ import { TypoDS, getShadow, getSpacing } from 'ui/theme'
 
 const CHRONICLE_THUMBNAIL_SIZE = getSpacing(14)
 
-type Props = ChronicleCardData & {
-  cardWidth?: number
-}
+type Props = PropsWithChildren<
+  ChronicleCardData & {
+    cardWidth?: number
+  }
+>
 
 export const ChronicleCard: FunctionComponent<Props> = ({
   id,
@@ -21,6 +23,7 @@ export const ChronicleCard: FunctionComponent<Props> = ({
   description,
   date,
   cardWidth,
+  children,
 }) => {
   return (
     <Container gap={3} testID={`chronicle-card-${id.toString()}`} width={cardWidth}>
@@ -32,7 +35,10 @@ export const ChronicleCard: FunctionComponent<Props> = ({
       />
       <Separator.Horizontal />
       <Description>{description}</Description>
-      <PublicationDate>{date}</PublicationDate>
+      <BottomCardContainer>
+        <PublicationDate>{date}</PublicationDate>
+        {children}
+      </BottomCardContainer>
     </Container>
   )
 }
@@ -58,6 +64,12 @@ const Description = styled(TypoDS.BodyAccentS)(({ theme }) => ({
   flexGrow: 1,
 }))
 
+const BottomCardContainer = styled.View({
+  flexDirection: 'row',
+  justifyContent: 'space-between',
+})
+
 const PublicationDate = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
   color: theme.colors.greyDark,
+  alignSelf: 'center',
 }))

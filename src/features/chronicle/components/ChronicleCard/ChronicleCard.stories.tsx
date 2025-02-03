@@ -1,7 +1,9 @@
 import { ComponentMeta } from '@storybook/react'
 import React from 'react'
+import { View } from 'react-native'
 
 import { ChronicleCard } from 'features/chronicle/components/ChronicleCard/ChronicleCard'
+import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 
 const meta: ComponentMeta<typeof ChronicleCard> = {
@@ -23,6 +25,17 @@ const variantConfig: Variants<typeof ChronicleCard> = [
   {
     label: 'ChronicleCard default',
     props: { ...baseProps },
+  },
+  {
+    label: 'ChronicleCard with see more button',
+    props: {
+      ...baseProps,
+      children: (
+        <View>
+          <ButtonTertiaryBlack wording="Voir plus" />
+        </View>
+      ),
+    },
   },
 ]
 

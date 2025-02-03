@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native'
 import React, {
   FunctionComponent,
   ReactElement,
@@ -19,6 +20,7 @@ import styled from 'styled-components/native'
 
 import { OfferImageResponse, OfferResponseV2 } from 'api/gen'
 import { ChronicleCardData } from 'features/chronicle/type'
+import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { OfferBody } from 'features/offer/components/OfferBody/OfferBody'
 import { CineContentCTA } from 'features/offer/components/OfferCine/CineContentCTA'
 import { ChronicleSection } from 'features/offer/components/OfferContent/ChronicleSection/ChronicleSection'
@@ -62,6 +64,7 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
   contentContainerStyle,
   BodyWrapper = React.Fragment,
 }) => {
+  const { navigate } = useNavigation<UseNavigationType>()
   const {
     sameCategorySimilarOffers,
     apiRecoParamsSameCategory,
@@ -131,6 +134,10 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
     [onScroll]
   )
 
+  const onSeeMoreButtonPress = (chronicleId: number) => {
+    navigate('Chronicles', { offerId: offer.id, chronicleId })
+  }
+
   return (
     <Container>
       <AnchorProvider scrollViewRef={scrollViewRef} handleCheckScrollY={handleCheckScrollY}>
@@ -165,6 +172,7 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
                 subtitle="Des avis de jeunes passionnés sélectionnés par le pass Culture&nbsp;!"
                 data={chronicles}
                 navigateTo={{ screen: 'Chronicles', params: { offerId: offer.id } }}
+                onSeeMoreButtonPress={onSeeMoreButtonPress}
               />
             </StyledSectionWithDivider>
           ) : null}

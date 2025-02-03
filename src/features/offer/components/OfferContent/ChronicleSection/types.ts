@@ -9,5 +9,6 @@ export type ChronicleSectionProps = {
   subtitle?: string
   ctaLabel: string
   navigateTo: InternalNavigationProps['navigateTo']
+  onSeeMoreButtonPress?: (chronicleId: number) => void
   style?: StyleProp<ViewStyle>
 }
