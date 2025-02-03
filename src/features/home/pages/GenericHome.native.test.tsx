@@ -264,7 +264,6 @@ describe('GenericHome page - Analytics', () => {
       expect(BatchProfile.trackEvent).toHaveBeenCalledWith('has_seen_all_the_homepage', {
         home_id: 'fake-id',
         home_type: 'thematicHome - Highlight',
-        home_name: 'Bloc temps fort',
       })
     })
   })
