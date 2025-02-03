@@ -80,7 +80,6 @@ describe('<VenueBody />', () => {
 
   it('should display the "À la une" section if headlineData is present', async () => {
     render(reactQueryProviderHOC(<VenueBody venue={venueDataTest} />))
-    await waitUntilRendered()
 
     expect(screen.getByText('À la une')).toBeOnTheScreen()
   })
