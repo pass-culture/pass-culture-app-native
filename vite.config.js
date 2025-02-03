@@ -4,6 +4,7 @@ import { createHtmlPlugin } from 'vite-plugin-html'
 import { sentryVitePlugin } from '@sentry/vite-plugin'
 import { whiteListEnv } from './whiteListEnv'
 import { execSync } from 'child_process'
+import { analyzer } from 'vite-bundle-analyzer'
 
 const defaultExtensions = ['.mjs', '.js', '.mts', '.ts', '.jsx', '.tsx', '.json']
 const allExtensions = [...defaultExtensions.map((ext) => `.web${ext}`), ...defaultExtensions]
@@ -54,6 +55,7 @@ export default ({ mode }) => {
     },
     plugins: [
       react(),
+      env.ANALYZE_BUNDLE ? analyzer() : null,
       {
         apply: 'build', // This plugin runs only when building (not serve)
         name: 'treat-js-files-as-jsx',
