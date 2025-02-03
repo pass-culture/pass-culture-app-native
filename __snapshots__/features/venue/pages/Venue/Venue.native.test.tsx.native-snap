@@ -787,6 +787,295 @@ exports[`<Venue /> should match snapshot 1`] = `
                 }
               >
                 <View
+                  gap={2}
+                  style={
+                    [
+                      {
+                        "gap": 8,
+                        "marginHorizontal": 24,
+                        "marginTop": 40,
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 19,
+                          "lineHeight": 30.4,
+                        },
+                      ]
+                    }
+                  >
+                    À la une
+                  </Text>
+                  <View
+                    style={
+                      [
+                        {
+                          "borderRadius": 12,
+                          "height": 245,
+                          "justifyContent": "end",
+                          "overflow": "hidden",
+                          "width": "100%",
+                        },
+                      ]
+                    }
+                  >
+                    <Image
+                      resizeMode="cover"
+                      source={
+                        {
+                          "uri": "https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDNQ",
+                        }
+                      }
+                      style={
+                        [
+                          {
+                            "height": "100%",
+                            "left": 0,
+                            "position": "absolute",
+                            "top": 0,
+                            "width": "100%",
+                            "zIndex": 0,
+                          },
+                        ]
+                      }
+                    />
+                    <BVLinearGradient
+                      colors={
+                        [
+                          2894894,
+                          4281084974,
+                        ]
+                      }
+                      endPoint={
+                        {
+                          "x": 0,
+                          "y": 1,
+                        }
+                      }
+                      locations={
+                        [
+                          0,
+                          0.6,
+                        ]
+                      }
+                      startPoint={
+                        {
+                          "x": 0,
+                          "y": 0,
+                        }
+                      }
+                      style={
+                        [
+                          {
+                            "bottom": 0,
+                            "height": "100%",
+                            "left": 0,
+                            "position": "absolute",
+                            "right": 0,
+                            "width": "100%",
+                            "zIndex": 1,
+                          },
+                        ]
+                      }
+                    />
+                    <View
+                      style={
+                        [
+                          {
+                            "height": "100%",
+                            "position": "relative",
+                            "zIndex": 2,
+                          },
+                        ]
+                      }
+                    >
+                      <View
+                        style={
+                          [
+                            {
+                              "flexBasis": 0,
+                              "flexDirection": "column",
+                              "flexGrow": 1,
+                              "flexShrink": 1,
+                              "paddingBottom": 16,
+                              "paddingLeft": 16,
+                              "paddingRight": 16,
+                              "paddingTop": 16,
+                            },
+                          ]
+                        }
+                      >
+                        <View
+                          style={
+                            [
+                              {
+                                "alignItems": "center",
+                                "flexDirection": "row",
+                                "gap": 16,
+                              },
+                              {
+                                "marginTop": "auto",
+                              },
+                            ]
+                          }
+                        >
+                          <View
+                            size="small"
+                            style={
+                              [
+                                {
+                                  "backgroundColor": "#ffffff",
+                                  "borderRadius": 4,
+                                  "height": 96,
+                                  "shadowColor": "#696A6F",
+                                  "shadowOffset": {
+                                    "height": 4,
+                                    "width": 0,
+                                  },
+                                  "shadowOpacity": 0.2,
+                                  "shadowRadius": 4,
+                                  "width": 64,
+                                },
+                              ]
+                            }
+                            withShadow={true}
+                          >
+                            <View
+                              style={
+                                [
+                                  {
+                                    "overflow": "hidden",
+                                  },
+                                  [
+                                    {
+                                      "backgroundColor": "#F1F1F4",
+                                      "borderRadius": 4,
+                                      "height": 96,
+                                      "width": 64,
+                                    },
+                                  ],
+                                ]
+                              }
+                            >
+                              <FastImageView
+                                defaultSource={null}
+                                resizeMode="cover"
+                                size="small"
+                                source={
+                                  {
+                                    "uri": "https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDNQ",
+                                  }
+                                }
+                                style={
+                                  {
+                                    "bottom": 0,
+                                    "left": 0,
+                                    "position": "absolute",
+                                    "right": 0,
+                                    "top": 0,
+                                  }
+                                }
+                              />
+                            </View>
+                          </View>
+                          <View
+                            style={
+                              [
+                                {
+                                  "alignItems": "center",
+                                  "flexBasis": 0,
+                                  "flexDirection": "row",
+                                  "flexGrow": 1,
+                                  "flexShrink": 1,
+                                  "justifyContent": "space-between",
+                                },
+                              ]
+                            }
+                          >
+                            <View
+                              style={
+                                [
+                                  {
+                                    "justifyContent": "center",
+                                  },
+                                ]
+                              }
+                            >
+                              <Text
+                                style={
+                                  [
+                                    {
+                                      "color": "#CBCDD2",
+                                      "fontFamily": "Montserrat-SemiBold",
+                                      "fontSize": 12,
+                                      "lineHeight": 19.2,
+                                    },
+                                  ]
+                                }
+                              >
+                                Livre
+                              </Text>
+                              <Text
+                                numberOfLines={2}
+                                style={
+                                  [
+                                    {
+                                      "color": "#ffffff",
+                                      "fontFamily": "Montserrat-SemiBold",
+                                      "fontSize": 16,
+                                      "lineHeight": 25.6,
+                                    },
+                                  ]
+                                }
+                              >
+                                La nuit des temps
+                              </Text>
+                              <Text
+                                style={
+                                  [
+                                    {
+                                      "color": "#CBCDD2",
+                                      "fontFamily": "Montserrat-SemiBold",
+                                      "fontSize": 12,
+                                      "lineHeight": 19.2,
+                                    },
+                                  ]
+                                }
+                              >
+                                Dès 28 €
+                              </Text>
+                            </View>
+                          </View>
+                          <View
+                            style={
+                              [
+                                {
+                                  "alignSelf": "flex-end",
+                                },
+                              ]
+                            }
+                          >
+                            <View
+                              height={24}
+                              width={24}
+                            >
+                              <Text>
+                                undefined-SVG-Mock
+                              </Text>
+                            </View>
+                          </View>
+                        </View>
+                      </View>
+                    </View>
+                  </View>
+                </View>
+                <View
                   numberOfSpaces={6}
                   style={
                     [

@@ -77,4 +77,10 @@ describe('<VenueBody />', () => {
 
     expect(analytics.logConsultVenueOffers).toHaveBeenCalledWith({ venueId: venueDataTest.id })
   })
+
+  it('should display the "À la une" section if headlineData is present', async () => {
+    render(reactQueryProviderHOC(<VenueBody venue={venueDataTest} />))
+
+    expect(screen.getByText('À la une')).toBeOnTheScreen()
+  })
 })
