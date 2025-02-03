@@ -1,26 +1,18 @@
-import React, { FunctionComponent } from 'react'
-import { View } from 'react-native'
+import React, { FunctionComponent, PropsWithChildren } from 'react'
 import styled from 'styled-components/native'
 
 import { ChronicleCardData } from 'features/chronicle/type'
-import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
-import { styledButton } from 'ui/components/buttons/styledButton'
 import { InfoHeader } from 'ui/components/InfoHeader/InfoHeader'
 import { Separator } from 'ui/components/Separator'
-import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { BookClubCertification } from 'ui/svg/BookClubCertification'
-import { PlainMore } from 'ui/svg/icons/PlainMore'
 import { TypoDS, getShadow, getSpacing } from 'ui/theme'
 
 const CHRONICLE_THUMBNAIL_SIZE = getSpacing(14)
 
 type Props = ChronicleCardData & {
   cardWidth?: number
-  shouldShowSeeMoreButton?: boolean
-  navigateTo?: InternalNavigationProps['navigateTo']
-}
+} & PropsWithChildren
 
 export const ChronicleCard: FunctionComponent<Props> = ({
   id,
@@ -29,8 +21,7 @@ export const ChronicleCard: FunctionComponent<Props> = ({
   description,
   date,
   cardWidth,
-  shouldShowSeeMoreButton,
-  navigateTo,
+  children,
 }) => {
   return (
     <Container gap={3} testID={`chronicle-card-${id.toString()}`} width={cardWidth}>
@@ -44,15 +35,7 @@ export const ChronicleCard: FunctionComponent<Props> = ({
       <Description>{description}</Description>
       <BottomCardContainer>
         <PublicationDate>{date}</PublicationDate>
-        {shouldShowSeeMoreButton && navigateTo ? (
-          <View>
-            <InternalTouchableLink
-              as={StyledButtonTertiaryBlack}
-              wording="Voir plus"
-              navigateTo={navigateTo}
-            />
-          </View>
-        ) : null}
+        {children}
       </BottomCardContainer>
     </Container>
   )
@@ -88,13 +71,3 @@ const PublicationDate = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
   color: theme.colors.greyDark,
   alignSelf: 'center',
 }))
-
-const StyledPlainMore = styled(PlainMore).attrs(({ theme }) => ({
-  size: theme.icons.sizes.extraSmall,
-}))``
-
-const StyledButtonTertiaryBlack = styledButton(ButtonTertiaryBlack).attrs({
-  icon: StyledPlainMore,
-  iconPosition: 'right',
-  buttonHeight: 'extraSmall',
-})``

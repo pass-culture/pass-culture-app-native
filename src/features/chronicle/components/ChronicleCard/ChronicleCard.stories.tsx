@@ -1,20 +1,14 @@
-import { NavigationContainer } from '@react-navigation/native'
 import { ComponentMeta } from '@storybook/react'
 import React from 'react'
+import { View } from 'react-native'
 
 import { ChronicleCard } from 'features/chronicle/components/ChronicleCard/ChronicleCard'
+import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 
 const meta: ComponentMeta<typeof ChronicleCard> = {
   title: 'ui/ChronicleCard',
   component: ChronicleCard,
-  decorators: [
-    (Story) => (
-      <NavigationContainer>
-        <Story />
-      </NavigationContainer>
-    ),
-  ],
 }
 export default meta
 
@@ -34,7 +28,14 @@ const variantConfig: Variants<typeof ChronicleCard> = [
   },
   {
     label: 'ChronicleCard with see more button',
-    props: { ...baseProps, shouldShowSeeMoreButton: true, navigateTo: { screen: 'Chronicles' } },
+    props: {
+      ...baseProps,
+      children: (
+        <View>
+          <ButtonTertiaryBlack wording="Voir plus" />
+        </View>
+      ),
+    },
   },
 ]
 
