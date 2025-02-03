@@ -4,7 +4,7 @@ import { tabNavigatorPathConfig } from 'features/navigation/TabBar/__mocks__/rou
 import { RootRoute } from '../types'
 
 const MockComponent = () => null
-export const routes: Array<RootRoute> = [
+export const routes: RootRoute[] = [
   { name: 'PageNotFound', component: MockComponent, path: '*' },
   { name: 'TabNavigator', component: MockComponent, pathConfig: tabNavigatorPathConfig },
   {
