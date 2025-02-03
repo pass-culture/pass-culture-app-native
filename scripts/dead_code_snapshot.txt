@@ -1,4 +1,4 @@
-vite.config.js:32 - default
+vite.config.js:33 - default
 src/features/venueMap/constant.ts:22 - satisfies
 src/features/venueMap/constant.ts:22 - Record
 src/shared/credits/defaultCreditByAge.ts:22 - satisfies
