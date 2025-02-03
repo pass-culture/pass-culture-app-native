@@ -163,6 +163,7 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
                 title="L’avis du book club"
                 ctaLabel="Voir tous les avis"
                 subtitle="Des avis de jeunes passionnés sélectionnés par le pass Culture&nbsp;!"
+                offerId={offer.id}
                 data={chronicles}
                 navigateTo={{ screen: 'Chronicles', params: { offerId: offer.id } }}
               />

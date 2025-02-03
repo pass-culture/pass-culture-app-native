@@ -20,6 +20,7 @@ describe('ChroniclesSection', () => {
         data={chroniclesSnap}
         subtitle="subtitle"
         navigateTo={{ screen: 'Offer' }}
+        offerId={1}
       />
     )
 
@@ -37,6 +38,7 @@ describe('ChroniclesSection', () => {
         data={chroniclesSnap}
         subtitle="subtitle"
         navigateTo={{ screen: 'Offer' }}
+        offerId={1}
       />,
       { theme: { isDesktopViewport: true } }
     )
@@ -55,6 +57,7 @@ describe('ChroniclesSection', () => {
         data={chroniclesSnap}
         subtitle="subtitle"
         navigateTo={{ screen: 'Offer' }}
+        offerId={1}
       />
     )
 

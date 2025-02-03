@@ -1,15 +1,20 @@
 import React, {
   ReactElement,
   forwardRef,
+  useCallback,
   useEffect,
   useImperativeHandle,
   useMemo,
   useRef,
 } from 'react'
-import { FlatList, FlatListProps, StyleProp, ViewStyle } from 'react-native'
+import { FlatList, FlatListProps, ListRenderItem, StyleProp, View, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
 import { ChronicleCardData } from 'features/chronicle/type'
+import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
+import { styledButton } from 'ui/components/buttons/styledButton'
+import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
+import { PlainMore } from 'ui/svg/icons/PlainMore'
 import { getSpacing } from 'ui/theme'
 
 import { ChronicleCard } from '../ChronicleCard/ChronicleCard'
@@ -35,31 +40,6 @@ export type ChronicleCardListProps = Pick<
   style?: StyleProp<ViewStyle>
   shouldShowSeeMoreButton?: boolean
   offerId?: number
-}
-
-const renderItem = ({
-  item,
-  cardWidth,
-  shouldShowSeeMoreButton,
-  offerId,
-}: {
-  item: ChronicleCardData
-  cardWidth?: number
-  shouldShowSeeMoreButton?: boolean
-  offerId?: number
-}) => {
-  return (
-    <ChronicleCard
-      id={item.id}
-      title={item.title}
-      subtitle={item.subtitle}
-      description={item.description}
-      date={item.date}
-      cardWidth={cardWidth}
-      navigateTo={{ screen: 'Chronicles', params: { offerId, chronicleId: item.id } }}
-      shouldShowSeeMoreButton={shouldShowSeeMoreButton}
-    />
-  )
 }
 
 export const ChronicleCardListBase = forwardRef<
@@ -106,13 +86,38 @@ export const ChronicleCardListBase = forwardRef<
     [separatorSize, horizontal]
   )
 
+  const renderItem = useCallback<ListRenderItem<ChronicleCardData>>(
+    ({ item }) => {
+      return (
+        <ChronicleCard
+          id={item.id}
+          title={item.title}
+          subtitle={item.subtitle}
+          description={item.description}
+          date={item.date}
+          cardWidth={cardWidth}>
+          {shouldShowSeeMoreButton && offerId ? (
+            <View>
+              <InternalTouchableLink
+                as={StyledButtonTertiaryBlack}
+                wording="Voir plus"
+                navigateTo={{ screen: 'Chronicles', params: { offerId, chronicleId: item.id } }}
+              />
+            </View>
+          ) : null}
+        </ChronicleCard>
+      )
+    },
+    [cardWidth, offerId, shouldShowSeeMoreButton]
+  )
+
   return (
     <FlatList
       ref={listRef}
       data={data}
       style={style}
       ListHeaderComponent={headerComponent}
-      renderItem={({ item }) => renderItem({ item, cardWidth, shouldShowSeeMoreButton, offerId })}
+      renderItem={renderItem}
       keyExtractor={keyExtractor}
       ItemSeparatorComponent={Separator}
       contentContainerStyle={contentContainerStyle}
@@ -128,3 +133,13 @@ export const ChronicleCardListBase = forwardRef<
     />
   )
 })
+
+const StyledPlainMore = styled(PlainMore).attrs(({ theme }) => ({
+  size: theme.icons.sizes.extraSmall,
+}))``
+
+const StyledButtonTertiaryBlack = styledButton(ButtonTertiaryBlack).attrs({
+  icon: StyledPlainMore,
+  iconPosition: 'right',
+  buttonHeight: 'extraSmall',
+})``

@@ -14,6 +14,7 @@ import { ChronicleSectionProps } from './types'
 export const ChronicleSectionBase = ({
   data,
   title,
+  offerId,
   subtitle,
   ctaLabel,
   navigateTo,
@@ -25,7 +26,7 @@ export const ChronicleSectionBase = ({
         <TypoDS.Title3 {...getHeadingAttrs(3)}>{title}</TypoDS.Title3>
         {subtitle ? <StyledSubtitle>{subtitle}</StyledSubtitle> : null}
       </Gutter>
-      <StyledChronicleCardlist data={data} />
+      <StyledChronicleCardlist data={data} shouldShowSeeMoreButton offerId={offerId} />
       <Gutter>
         <InternalTouchableLink
           as={ButtonSecondaryBlack}
