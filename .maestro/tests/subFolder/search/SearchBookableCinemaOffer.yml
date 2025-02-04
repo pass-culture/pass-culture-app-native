@@ -1,4 +1,6 @@
 appId: ${MAESTRO_APP_ID}
+env:
+    hasSwipeOnDatePicker: false
 ---
 - assertVisible: 'Rechercher'
 - tapOn: 'Cinéma'
@@ -31,8 +33,16 @@ appId: ${MAESTRO_APP_ID}
             index: 1
           start: 47%, 73%
           end: 47%, 65%
+      - swipe:
+          from:
+            id: 'android:id/numberpicker_input'
+          start: 29%, 73%
+          end: 29%, 45%
+      - evalScript: ${hasSwipeOnDatePicker = true}
 
 - runFlow:
+    when:
+      true: ${!hasSwipeOnDatePicker}
     file: ../../subFolder/cloud/commands/SwipeOnDatePicker.yml
 - tapOn: 'Valider la date'
 
