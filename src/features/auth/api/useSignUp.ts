@@ -8,21 +8,14 @@ import { campaignTracker } from 'libs/campaign'
 import { EmptyResponse } from 'libs/fetch'
 // eslint-disable-next-line no-restricted-imports
 import { firebaseAnalytics } from 'libs/firebase/analytics/analytics'
+import { eventMonitoring } from 'libs/monitoring/services'
+import { getErrorMessage } from 'shared/getErrorMessage/getErrorMessage'
 
 type AppAccountRequest = AccountRequest | GoogleAccountRequest
 
 type SignUpResponse =
-  | {
-      isSuccess: true
-      content: undefined
-    }
-  | {
-      isSuccess: false
-      content?: {
-        code: 'NETWORK_REQUEST_FAILED'
-        general: string[]
-      }
-    }
+  | { isSuccess: true; content: undefined }
+  | { isSuccess: false; content?: { code: 'NETWORK_REQUEST_FAILED'; general: string[] } }
 
 function isSSOSignupRequest(body: AppAccountRequest): body is GoogleAccountRequest {
   return 'accountCreationToken' in body && !!body.accountCreationToken
@@ -37,7 +30,10 @@ export function useSignUp(): (
   analyticsType?: SSOType
 ) => Promise<SignUpResponse> {
   const loginAndRedirect = useLoginAndRedirect()
+
   return async (body, analyticsType) => {
+    const isSSOSignup = isSSOSignupRequest(body)
+
     try {
       const commonBody = {
         birthdate: body.birthdate,
@@ -49,22 +45,14 @@ export function useSignUp(): (
         firebasePseudoId: await firebaseAnalytics.getAppInstanceId(),
       }
       const requestOptions = { credentials: 'omit' }
-      const isSSOSignup = isSSOSignupRequest(body)
 
       const response = isSSOSignup
         ? await api.postNativeV1OauthGoogleAccount(
-            {
-              ...commonBody,
-              accountCreationToken: body.accountCreationToken,
-            },
+            { ...commonBody, accountCreationToken: body.accountCreationToken },
             requestOptions
           )
         : await api.postNativeV1Account(
-            {
-              ...commonBody,
-              email: body.email,
-              password: body.password,
-            },
+            { ...commonBody, email: body.email, password: body.password },
             requestOptions
           )
 
@@ -77,9 +65,15 @@ export function useSignUp(): (
 
       return { isSuccess: !!response }
     } catch (error) {
+      const errorMessage = getErrorMessage(error)
+      eventMonitoring.captureException(`SignUpError: ${errorMessage}`, {
+        level: 'error',
+        extra: { error, isSSOSignup },
+      })
+
       return {
         isSuccess: false,
-        content: { code: 'NETWORK_REQUEST_FAILED', general: [] },
+        content: { code: 'NETWORK_REQUEST_FAILED', general: [errorMessage] },
       }
     }
   }
