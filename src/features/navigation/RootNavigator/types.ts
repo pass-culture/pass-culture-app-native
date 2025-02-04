@@ -19,6 +19,7 @@ export type Referrals =
   | Lowercase<keyof AllNavParamList>
   | 'artist'
   | 'bookingimpossible'
+  | 'chronicles'
   | 'deeplink'
   | 'exclusivity'
   | 'highlightOffer'
@@ -207,7 +208,7 @@ export type RootStackParamList = {
   ConfirmChangeEmail: { token: string; expiration_timestamp: number }
   ConfirmDeleteProfile: undefined
   ConsentSettings: { onGoBack?: () => void } | undefined
-  Chronicles: { offerId: number; chronicleId?: number }
+  Chronicles: { offerId: number; chronicleId?: number; from?: Referrals }
   CulturalSurvey: undefined
   DeactivateProfileSuccess: undefined
   DeeplinksGenerator: undefined
