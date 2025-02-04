@@ -45,7 +45,7 @@ Lastly, we have to define `__DEV__`.
 You can run the `vite-bundle-analyzer` by adding a local environnement variable like this:
 
 ```sh
-export ANALYZE_BUNDLE=toto yarn vite build
+export ANALYZE_BUNDLE=toto && yarn vite build
 ```
 
 You can set `ANALYZE_BUNDLE` to any value, as long as it's set it will start the bundler analyzer at `localhost:8888`. It can be useful to see what assets/files are bulking up your web app, and use this information to split files from the main bundle with dynamic imports (using `Suspense` and `lazy` from `react`).
