@@ -11,7 +11,6 @@ import { FlatList, FlatListProps, ListRenderItem, StyleProp, View, ViewStyle } f
 import styled from 'styled-components/native'
 
 import { ChronicleCardData } from 'features/chronicle/type'
-import { analytics } from 'libs/analytics/provider'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { PlainMore } from 'ui/svg/icons/PlainMore'
@@ -33,7 +32,6 @@ export type ChronicleCardListProps = Pick<
   | 'onContentSizeChange'
   | 'onLayout'
 > & {
-  fromOfferId?: number
   offset?: number
   cardWidth?: number
   separatorSize?: number
@@ -60,7 +58,6 @@ export const ChronicleCardListBase = forwardRef<
     separatorSize = SEPARATOR_DEFAULT_VALUE,
     onSeeMoreButtonPress,
     onLayout,
-    fromOfferId,
   },
   ref
 ) {
@@ -100,17 +97,14 @@ export const ChronicleCardListBase = forwardRef<
             <View>
               <StyledButtonTertiaryBlack
                 wording="Voir plus"
-                onPress={() => {
-                  onSeeMoreButtonPress(item.id)
-                  analytics.logConsultChronicle({ offerId: fromOfferId, chronicleId: item.id })
-                }}
+                onPress={() => onSeeMoreButtonPress(item.id)}
               />
             </View>
           ) : null}
         </ChronicleCard>
       )
     },
-    [cardWidth, fromOfferId, onSeeMoreButtonPress]
+    [cardWidth, onSeeMoreButtonPress]
   )
 
   return (

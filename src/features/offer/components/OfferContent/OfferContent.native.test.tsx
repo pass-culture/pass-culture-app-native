@@ -663,6 +663,22 @@ describe('<OfferContent />', () => {
           chronicleId: 3,
         })
       })
+
+      it('should log consultChronicle when pressing "Voir plus" button', async () => {
+        renderOfferContent({
+          offer: { ...offerResponseSnap, subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER },
+        })
+
+        const seeMoreButtons = screen.getAllByText('Voir plus')
+
+        // Using as because links is never undefined and the typing is not correct
+        await user.press(seeMoreButtons[2] as ReactTestInstance)
+
+        expect(analytics.logConsultChronicle).toHaveBeenNthCalledWith(1, {
+          offerId: 116656,
+          chronicleId: 3,
+        })
+      })
     })
 
     it('should display social network section', async () => {

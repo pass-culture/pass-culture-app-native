@@ -19,7 +19,6 @@ export const ChronicleSectionBase = ({
   navigateTo,
   onSeeMoreButtonPress,
   style,
-  fromOfferId,
 }: ChronicleSectionProps) => {
   return (
     <View style={style}>
@@ -27,11 +26,7 @@ export const ChronicleSectionBase = ({
         <TypoDS.Title3 {...getHeadingAttrs(3)}>{title}</TypoDS.Title3>
         {subtitle ? <StyledSubtitle>{subtitle}</StyledSubtitle> : null}
       </Gutter>
-      <StyledChronicleCardlist
-        data={data}
-        onSeeMoreButtonPress={onSeeMoreButtonPress}
-        fromOfferId={fromOfferId}
-      />
+      <StyledChronicleCardlist data={data} onSeeMoreButtonPress={onSeeMoreButtonPress} />
       <Gutter>
         <InternalTouchableLink
           as={ButtonSecondaryBlack}

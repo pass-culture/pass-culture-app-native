@@ -32,7 +32,6 @@ export const ChronicleCardList = forwardRef<
     separatorSize = SEPARATOR_DEFAULT_VALUE,
     onSeeMoreButtonPress,
     onLayout,
-    fromOfferId,
   },
   ref
 ) {
@@ -103,7 +102,6 @@ export const ChronicleCardList = forwardRef<
         snapToInterval={isDesktopViewport ? CHRONICLE_CARD_WIDTH : undefined}
         onSeeMoreButtonPress={onSeeMoreButtonPress}
         onLayout={onLayout}
-        fromOfferId={fromOfferId}
       />
     </View>
   )

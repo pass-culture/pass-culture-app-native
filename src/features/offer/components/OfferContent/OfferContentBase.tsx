@@ -136,6 +136,7 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
 
   const onSeeMoreButtonPress = (chronicleId: number) => {
     navigate('Chronicles', { offerId: offer.id, chronicleId })
+    analytics.logConsultChronicle({ offerId: offer.id, chronicleId })
   }
 
   return (
@@ -173,7 +174,6 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
                 data={chronicles}
                 navigateTo={{ screen: 'Chronicles', params: { offerId: offer.id } }}
                 onSeeMoreButtonPress={onSeeMoreButtonPress}
-                fromOfferId={offer.id}
               />
             </StyledSectionWithDivider>
           ) : null}
