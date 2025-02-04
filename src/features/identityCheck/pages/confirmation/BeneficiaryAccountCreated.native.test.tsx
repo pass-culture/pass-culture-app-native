@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { setSettings } from 'features/auth/tests/setSettings'
+import { setSettings } from 'features/auth/context/setSettings'
 import { BeneficiaryAccountCreated } from 'features/identityCheck/pages/confirmation/BeneficiaryAccountCreated'
 import * as ShareAppWrapperModule from 'features/share/context/ShareAppWrapper'
 import { ShareAppWrapper } from 'features/share/context/ShareAppWrapper'

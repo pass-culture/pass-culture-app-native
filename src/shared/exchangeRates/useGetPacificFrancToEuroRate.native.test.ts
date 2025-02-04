@@ -1,4 +1,4 @@
-import { setSettings } from 'features/auth/tests/setSettings'
+import { setSettings } from 'features/auth/context/setSettings'
 import { DEFAULT_PACIFIC_FRANC_TO_EURO_RATE } from 'shared/exchangeRates/defaultRateValues'
 import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'

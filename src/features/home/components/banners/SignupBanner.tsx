@@ -2,7 +2,7 @@ import { useNavigation } from '@react-navigation/native'
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
-import { useSettingsContext } from 'features/auth/context/SettingsContext'
+import { useSettings } from 'features/auth/context/useSettings'
 import { StepperOrigin, UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
 import { BannerWithBackground } from 'ui/components/ModuleBanner/BannerWithBackground'
@@ -18,7 +18,7 @@ type Props = {
 
 export const SignupBanner: FunctionComponent<Props> = ({ hasGraphicRedesign }) => {
   const { navigate } = useNavigation<UseNavigationType>()
-  const { data: settings } = useSettingsContext()
+  const { data: settings } = useSettings()
   const enableCreditV3 = settings?.wipEnableCreditV3
 
   const title = 'Débloque ton crédit'

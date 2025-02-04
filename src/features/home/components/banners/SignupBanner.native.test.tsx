@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { setSettings } from 'features/auth/tests/setSettings'
+import { setSettings } from 'features/auth/context/setSettings'
 import { SignupBanner } from 'features/home/components/banners/SignupBanner'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'

@@ -9,7 +9,6 @@ import { ErrorBoundary } from 'react-error-boundary'
 
 import { AccessibilityFiltersWrapper } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { AuthWrapper } from 'features/auth/context/AuthWrapper'
-import { SettingsWrapper } from 'features/auth/context/SettingsContext'
 import { CulturalSurveyContextProvider } from 'features/culturalSurvey/context/CulturalSurveyContextProvider'
 import { AsyncErrorBoundaryWithoutNavigation } from 'features/errors/pages/AsyncErrorBoundary'
 import { ScreenErrorProvider } from 'features/errors/pages/ScreenErrorProvider'
@@ -62,38 +61,36 @@ export function App() {
         <ThemeProvider theme={theme}>
           <SupportedBrowsersGate>
             <SafeAreaProvider>
-              <SettingsWrapper>
-                <GoogleOAuthProvider clientId={env.GOOGLE_CLIENT_ID}>
-                  <AuthWrapper>
-                    <ErrorBoundary FallbackComponent={AsyncErrorBoundaryWithoutNavigation}>
-                      <LocationWrapper>
-                        <AccessibilityFiltersWrapper>
-                          <FavoritesWrapper>
-                            <SearchAnalyticsWrapper>
-                              <SearchWrapper>
-                                <SnackBarProvider>
-                                  <CulturalSurveyContextProvider>
-                                    <SubscriptionContextProvider>
-                                      <AppWebHead />
-                                      <OnboardingWrapper>
-                                        <ScreenErrorProvider>
-                                          <Suspense fallback={<LoadingPage />}>
-                                            <AppNavigationContainer />
-                                          </Suspense>
-                                        </ScreenErrorProvider>
-                                      </OnboardingWrapper>
-                                    </SubscriptionContextProvider>
-                                  </CulturalSurveyContextProvider>
-                                </SnackBarProvider>
-                              </SearchWrapper>
-                            </SearchAnalyticsWrapper>
-                          </FavoritesWrapper>
-                        </AccessibilityFiltersWrapper>
-                      </LocationWrapper>
-                    </ErrorBoundary>
-                  </AuthWrapper>
-                </GoogleOAuthProvider>
-              </SettingsWrapper>
+              <GoogleOAuthProvider clientId={env.GOOGLE_CLIENT_ID}>
+                <AuthWrapper>
+                  <ErrorBoundary FallbackComponent={AsyncErrorBoundaryWithoutNavigation}>
+                    <LocationWrapper>
+                      <AccessibilityFiltersWrapper>
+                        <FavoritesWrapper>
+                          <SearchAnalyticsWrapper>
+                            <SearchWrapper>
+                              <SnackBarProvider>
+                                <CulturalSurveyContextProvider>
+                                  <SubscriptionContextProvider>
+                                    <AppWebHead />
+                                    <OnboardingWrapper>
+                                      <ScreenErrorProvider>
+                                        <Suspense fallback={<LoadingPage />}>
+                                          <AppNavigationContainer />
+                                        </Suspense>
+                                      </ScreenErrorProvider>
+                                    </OnboardingWrapper>
+                                  </SubscriptionContextProvider>
+                                </CulturalSurveyContextProvider>
+                              </SnackBarProvider>
+                            </SearchWrapper>
+                          </SearchAnalyticsWrapper>
+                        </FavoritesWrapper>
+                      </AccessibilityFiltersWrapper>
+                    </LocationWrapper>
+                  </ErrorBoundary>
+                </AuthWrapper>
+              </GoogleOAuthProvider>
             </SafeAreaProvider>
           </SupportedBrowsersGate>
         </ThemeProvider>

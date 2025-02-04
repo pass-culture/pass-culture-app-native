@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { AccountState } from 'api/gen'
-import { setSettings } from 'features/auth/tests/setSettings'
+import { setSettings } from 'features/auth/context/setSettings'
 import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import { useCurrentRoute } from 'features/navigation/helpers/useCurrentRoute'
 import { render, screen } from 'tests/utils'

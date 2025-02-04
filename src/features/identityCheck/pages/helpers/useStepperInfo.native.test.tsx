@@ -1,7 +1,7 @@
 import { UseQueryResult } from 'react-query'
 
 import { SubscriptionStepperResponseV2 } from 'api/gen'
-import { setSettings } from 'features/auth/tests/setSettings'
+import { setSettings } from 'features/auth/context/setSettings'
 import { useGetStepperInfo } from 'features/identityCheck/api/useGetStepperInfo'
 import { usePhoneValidationRemainingAttempts } from 'features/identityCheck/api/usePhoneValidationRemainingAttempts'
 import { initialSubscriptionState as mockState } from 'features/identityCheck/context/reducer'

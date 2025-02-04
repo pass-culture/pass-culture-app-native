@@ -8,7 +8,7 @@ import styled from 'styled-components/native'
 import { useSignIn } from 'features/auth/api/useSignIn'
 import { AuthenticationButton } from 'features/auth/components/AuthenticationButton/AuthenticationButton'
 import { SSOButtonBase } from 'features/auth/components/SSOButton/SSOButtonBase'
-import { useSettingsContext } from 'features/auth/context/SettingsContext'
+import { useSettings } from 'features/auth/context/useSettings'
 import { loginSchema } from 'features/auth/pages/login/schema/loginSchema'
 import { SignInResponseFailure } from 'features/auth/types'
 import {
@@ -48,7 +48,7 @@ type Props = {
 
 export const Login: FunctionComponent<Props> = memo(function Login(props) {
   const enableGoogleSSO = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_GOOGLE_SSO)
-  const { data: settings } = useSettingsContext()
+  const { data: settings } = useSettings()
   const { params } = useRoute<UseRouteType<'Login'>>()
   const { navigate } = useNavigation<UseNavigationType>()
   const { showInfoSnackBar, showErrorSnackBar } = useSnackBarContext()

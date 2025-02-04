@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 
 import { useAccountSuspensionDate } from 'features/auth/api/useAccountSuspensionDate'
 import { useAccountUnsuspend } from 'features/auth/api/useAccountUnsuspend'
-import { useSettingsContext } from 'features/auth/context/SettingsContext'
+import { useSettings } from 'features/auth/context/useSettings'
 import { useLogoutRoutine } from 'features/auth/helpers/useLogoutRoutine'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
@@ -26,7 +26,7 @@ const addDaysToDate = (date: Date, days: number) => {
 
 export const SuspendedAccountUponUserRequest = () => {
   const { replace } = useNavigation<UseNavigationType>()
-  const { data: settings } = useSettingsContext()
+  const { data: settings } = useSettings()
   const { data: accountSuspensionDate } = useAccountSuspensionDate()
   const signOut = useLogoutRoutine()
   const { showErrorSnackBar } = useSnackBarContext()

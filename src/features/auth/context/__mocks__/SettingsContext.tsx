@@ -1,6 +1,6 @@
 import { defaultSettings } from 'features/auth/fixtures/fixtures'
 
-import { useSettingsContext as actualUseSettingsContext } from '../SettingsContext'
+import { useSettings as actualUseSettingsContext } from '../useSettings'
 
 export const useSettingsContext = jest.fn().mockReturnValue({
   data: defaultSettings,

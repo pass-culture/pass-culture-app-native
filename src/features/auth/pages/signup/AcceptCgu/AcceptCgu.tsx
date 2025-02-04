@@ -5,7 +5,7 @@ import { Text } from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
-import { useSettingsContext } from 'features/auth/context/SettingsContext'
+import { useSettings } from 'features/auth/context/useSettings'
 import { useSignupRecaptcha } from 'features/auth/helpers/useSignupRecaptcha'
 import { acceptCGUSchema } from 'features/auth/pages/signup/AcceptCgu/acceptCguSchema'
 import { PreValidationSignupLastStepProps } from 'features/auth/types'
@@ -35,7 +35,7 @@ export const AcceptCgu: FunctionComponent<PreValidationSignupLastStepProps> = ({
   isSSOSubscription,
   signUp,
 }) => {
-  const { data: settings, isLoading: areSettingsLoading } = useSettingsContext()
+  const { data: settings, isLoading: areSettingsLoading } = useSettings()
   const networkInfo = useNetInfoContext()
   const checkCGUErrorId = uuidv4()
 

@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { navigate, replace } from '__mocks__/@react-navigation/native'
-import { setSettings } from 'features/auth/tests/setSettings'
+import { setSettings } from 'features/auth/context/setSettings'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { captureMonitoringError } from 'libs/monitoring/errors'
 import { eventMonitoring } from 'libs/monitoring/services'

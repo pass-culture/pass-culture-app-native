@@ -2,7 +2,7 @@ import { StackScreenProps } from '@react-navigation/stack'
 import React, { FunctionComponent, useCallback } from 'react'
 import styled from 'styled-components/native'
 
-import { useSettingsContext } from 'features/auth/context/SettingsContext'
+import { useSettings } from 'features/auth/context/useSettings'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { TutorialRootStackParamList } from 'features/navigation/RootNavigator/types'
 import { AgeButton } from 'features/tutorial/components/AgeButton'
@@ -26,7 +26,7 @@ type AgeButtonProps = {
 type Props = StackScreenProps<TutorialRootStackParamList, 'AgeSelectionFork'>
 
 export const AgeSelectionFork: FunctionComponent<Props> = ({ route }: Props) => {
-  const { data: settings } = useSettingsContext()
+  const { data: settings } = useSettings()
   const enableCreditV3 = settings?.wipEnableCreditV3
 
   const type = route.params.type

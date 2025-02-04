@@ -2,7 +2,7 @@ import React from 'react'
 
 import { CurrencyEnum, SubscriptionStepCompletionState } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { useSettingsContext } from 'features/auth/context/SettingsContext'
+import { useSettings } from 'features/auth/context/useSettings'
 import { useGetStepperInfo } from 'features/identityCheck/api/useGetStepperInfo'
 import { usePhoneValidationRemainingAttempts } from 'features/identityCheck/api/usePhoneValidationRemainingAttempts'
 import { IconRetryStep } from 'features/identityCheck/components/IconRetryStep'
@@ -40,7 +40,7 @@ export const useStepperInfo = (): StepperInfo => {
 
   const { remainingAttempts } = usePhoneValidationRemainingAttempts()
   const { data } = useGetStepperInfo()
-  const { data: settings } = useSettingsContext()
+  const { data: settings } = useSettings()
 
   if (!data) {
     return {

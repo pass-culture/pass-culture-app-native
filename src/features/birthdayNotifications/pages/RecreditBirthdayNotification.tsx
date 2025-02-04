@@ -2,7 +2,7 @@ import React, { useCallback, useEffect } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { useSettingsContext } from 'features/auth/context/SettingsContext'
+import { useSettings } from 'features/auth/context/useSettings'
 import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import { useResetRecreditAmountToShow } from 'features/profile/api/useResetRecreditAmountToShow'
 import { useAppStateChange } from 'libs/appState'
@@ -26,7 +26,7 @@ import { getNoHeadingAttrs } from 'ui/theme/typographyAttrs/getNoHeadingAttrs'
 export const RecreditBirthdayNotification = () => {
   const { user } = useAuthContext()
   const { uniqueColors } = useTheme()
-  const { data: settings } = useSettingsContext()
+  const { data: settings } = useSettings()
 
   const age = getAge(user?.birthDate)
 

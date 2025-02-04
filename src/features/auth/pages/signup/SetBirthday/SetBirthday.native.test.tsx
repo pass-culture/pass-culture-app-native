@@ -7,7 +7,7 @@ import {
   DEFAULT_SELECTED_DATE,
   ELIGIBLE_AGE_DATE,
 } from 'features/auth/fixtures/fixtures'
-import { setSettings } from 'features/auth/tests/setSettings'
+import { setSettings } from 'features/auth/context/setSettings'
 import { NonEligible } from 'features/tutorial/enums'
 import { formatDateToISOStringWithoutTime } from 'libs/parsers/formatDates'
 import { storage } from 'libs/storage'

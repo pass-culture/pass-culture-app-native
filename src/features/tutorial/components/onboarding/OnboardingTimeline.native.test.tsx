@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { setSettings } from 'features/auth/tests/setSettings'
+import { setSettings } from 'features/auth/context/setSettings'
 import { OnboardingTimeline } from 'features/tutorial/components/onboarding/OnboardingTimeline'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { useDepositAmountsByAge } from 'shared/user/useDepositAmountsByAge'

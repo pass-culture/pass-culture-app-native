@@ -2,7 +2,7 @@ import mockdate from 'mockdate'
 import React from 'react'
 
 import { CURRENT_DATE } from 'features/auth/fixtures/fixtures'
-import { setSettings } from 'features/auth/tests/setSettings'
+import { setSettings } from 'features/auth/context/setSettings'
 import { act, fireEvent, render, screen } from 'tests/utils/web'
 
 import { SetBirthday } from './SetBirthday'

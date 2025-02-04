@@ -7,7 +7,7 @@ import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 import { object, string } from 'yup'
 
-import { useSettingsContext } from 'features/auth/context/SettingsContext'
+import { useSettings } from 'features/auth/context/useSettings'
 import { AddressOption } from 'features/identityCheck/components/AddressOption'
 import { IdentityCheckError } from 'features/identityCheck/pages/profile/errors'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
@@ -36,7 +36,7 @@ type PostalCodeForm = { postalCode: string }
 
 export const CitySearchInput = ({ city, onCitySelected }: CitySearchInputProps) => {
   const { showErrorSnackBar } = useSnackBarContext()
-  const { data: settings } = useSettingsContext()
+  const { data: settings } = useSettings()
   const [postalCodeQuery, setPostalCodeQuery] = useState<string>(city?.postalCode ?? '')
   const [isPostalCodeIneligible, setIsPostalCodeIneligible] = useState(false)
   const debouncedSetPostalCode = useRef(debounce(setPostalCodeQuery, 500)).current

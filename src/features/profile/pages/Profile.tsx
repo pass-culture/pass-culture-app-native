@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { useSettingsContext } from 'features/auth/context/SettingsContext'
+import { useSettings } from 'features/auth/context/useSettings'
 import { useLogoutRoutine } from 'features/auth/helpers/useLogoutRoutine'
 import { useFavoritesState } from 'features/favorites/context/FavoritesWrapper'
 import { ProfileHeader } from 'features/profile/components/Header/ProfileHeader/ProfileHeader'
@@ -65,7 +65,7 @@ const OnlineProfile: React.FC = () => {
 
   const { dispatch: favoritesDispatch } = useFavoritesState()
   const { isLoggedIn, user } = useAuthContext()
-  const { data: settings } = useSettingsContext()
+  const { data: settings } = useSettings()
   const enableCreditV3 = settings?.wipEnableCreditV3
   const signOut = useLogoutRoutine()
   const version = useVersion()

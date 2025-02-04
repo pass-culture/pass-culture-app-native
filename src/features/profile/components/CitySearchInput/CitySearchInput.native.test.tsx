@@ -1,7 +1,6 @@
 import React from 'react'
 
-import * as SettingsContextAPI from 'features/auth/context/SettingsContext'
-import { defaultSettings } from 'features/auth/fixtures/fixtures'
+import { setSettings } from 'features/auth/context/setSettings'
 import { CitySearchInput } from 'features/profile/components/CitySearchInput/CitySearchInput'
 import { mockedSuggestedCities } from 'libs/place/fixtures/mockedSuggestedCities'
 import { CitiesResponse, CITIES_API_URL } from 'libs/place/useCities'
@@ -19,13 +18,7 @@ jest.useFakeTimers()
 
 describe('<CitySearchInput />', () => {
   beforeEach(() => {
-    jest.spyOn(SettingsContextAPI, 'useSettingsContext').mockReturnValue({
-      data: {
-        ...defaultSettings,
-        ineligiblePostalCodes: [NEW_CALEDONIA_NORTHERN_PROVINCE_POSTAL_CODE],
-      },
-      isLoading: false,
-    })
+    setSettings({ ineligiblePostalCodes: [NEW_CALEDONIA_NORTHERN_PROVINCE_POSTAL_CODE] })
   })
 
   it('should display error message when the user enters a valid postal code but no city found', async () => {

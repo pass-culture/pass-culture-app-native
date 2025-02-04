@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
-import { useSettingsContext } from 'features/auth/context/SettingsContext'
+import { useSettings } from 'features/auth/context/useSettings'
 import { ExpiredCreditModal } from 'features/profile/components/Modals/ExpiredCreditModal'
 import { TutorialTypes } from 'features/tutorial/enums'
 import { analytics } from 'libs/analytics/provider'
@@ -21,7 +21,7 @@ interface Props {
 
 export const CreditExplanation: FunctionComponent<Props> = ({ age, isDepositExpired }) => {
   const { visible, showModal, hideModal } = useModal(false)
-  const { data: settings } = useSettingsContext()
+  const { data: settings } = useSettings()
   const enableCreditV3 = settings?.wipEnableCreditV3
 
   const navigateTo15to18: InternalNavigationProps['navigateTo'] = enableCreditV3
