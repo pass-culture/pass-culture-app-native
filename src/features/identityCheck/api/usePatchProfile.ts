@@ -17,7 +17,12 @@ export function usePatchProfile() {
       if (body) {
         return api.postNativeV1SubscriptionProfile(body)
       } else {
-        return Promise.reject(new Error('No body was provided for subscription profile'))
+        const profileWithMissingFileds = JSON.stringify(profile, (_, value) => value ?? null, 2)
+        return Promise.reject(
+          new Error(
+            `No body was provided for subscription profile. "getCompleteProfile()" return null because: ${profileWithMissingFileds}`
+          )
+        )
       }
     },
     {
