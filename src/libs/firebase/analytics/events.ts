@@ -40,6 +40,7 @@ export enum AnalyticsEvent {
   CONSULT_ARTIST_FAKE_DOOR = 'ConsultArtistFakeDoor',
   CONSULT_AUTHENTICATION_MODAL = 'ConsultAuthenticationModal',
   CONSULT_AVAILABLE_DATES = 'ConsultAvailableDates',
+  CONSULT_CHRONICLE = 'ConsultChronicle',
   CONSULT_DESCRIPTION_DETAILS = 'ConsultDescriptionDetails',
   CONSULT_DISCLAIMER_VALIDATION_MAIL = 'ConsultDisclaimerValidationMail',
   CONSULT_ERROR_APPLICATION_MODAL = 'ConsultErrorApplicationModal',

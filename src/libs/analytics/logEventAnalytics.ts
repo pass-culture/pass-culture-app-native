@@ -213,6 +213,8 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_AUTHENTICATION_MODAL }, { offerId }),
   logConsultAvailableDates: (offerId: number) =>
     analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_AVAILABLE_DATES }, { offerId }),
+  logConsultChronicle: (params: { offerId?: number; chronicleId?: number }) =>
+    analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_CHRONICLE }, params),
   logConsultDescriptionDetails: (offerId: number) =>
     analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_DESCRIPTION_DETAILS }, { offerId }),
   logConsultDisclaimerValidationMail: () =>

@@ -136,6 +136,7 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
 
   const onSeeMoreButtonPress = (chronicleId: number) => {
     navigate('Chronicles', { offerId: offer.id, chronicleId })
+    analytics.logConsultChronicle({ offerId: offer.id, chronicleId })
   }
 
   return (
