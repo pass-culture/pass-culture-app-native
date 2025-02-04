@@ -42,6 +42,14 @@ Lastly, we have to define `__DEV__`.
 
 ### Plugins
 
+You can run the `vite-bundle-analyzer` by adding a local environnement variable like this:
+
+```sh
+export ANALYZE_BUNDLE=toto yarn vite build
+```
+
+You can set `ANALYZE_BUNDLE` to any value, as long as it's set it will start the bundler analyzer at `localhost:8888`. It can be useful to see what assets/files are bulking up your web app, and use this information to split files from the main bundle with dynamic imports (using `Suspense` and `lazy` from `react`).
+
 We of course use the `@vitejs/plugin-react` plugin. It enables fast refresh in development and sets a custom Babel configuration.
 
 Then we wrote a custom plugin to handle libraries with files with a `.js` extension that actually contained `jsx` components. This plugin is only necessary during builds, so we set `apply: 'build'` in the plugin's configuration.

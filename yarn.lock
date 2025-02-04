@@ -13080,6 +13080,7 @@ __metadata:
     url-loader: ^4.1.1
     uuid: ^8.3.2
     vite: ^5.3.1
+    vite-bundle-analyzer: ^0.16.2
     vite-plugin-html: ^3.2.2
     yup: ^0.32.11
     zustand: ^4.5.2
@@ -33830,6 +33831,15 @@ __metadata:
     unist-util-stringify-position: ^2.0.0
     vfile-message: ^2.0.0
   checksum: ee5726e10d170472cde778fc22e0f7499caa096eb85babea5d0ce0941455b721037ee1c9e6ae506ca2803250acd313d0f464328ead0b55cfe7cb6315f1b462d6
+  languageName: node
+  linkType: hard
+
+"vite-bundle-analyzer@npm:^0.16.2":
+  version: 0.16.2
+  resolution: "vite-bundle-analyzer@npm:0.16.2"
+  bin:
+    analyze: dist/bin.js
+  checksum: 0171efe988dccb68aeb9ae4e75703e32bdaf38f6592a0fc5f1e03bd27dc528163cc9901fa5d648ef1889a9c38a951581521556aebfd8a39c5f55a84ad2fc1ede
   languageName: node
   linkType: hard
 
