@@ -167,9 +167,9 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
           {chronicles?.length ? (
             <StyledSectionWithDivider visible testID="chronicles-section" gap={8}>
               <ChronicleSection
-                title="L’avis du book club"
+                title="La reco du Book Club"
                 ctaLabel="Voir tous les avis"
-                subtitle="Des avis de jeunes passionnés sélectionnés par le pass Culture&nbsp;!"
+                subtitle="Notre communauté de lecteurs te partagent leurs avis sur ce livre&nbsp;!"
                 data={chronicles}
                 navigateTo={{ screen: 'Chronicles', params: { offerId: offer.id } }}
                 onSeeMoreButtonPress={onSeeMoreButtonPress}

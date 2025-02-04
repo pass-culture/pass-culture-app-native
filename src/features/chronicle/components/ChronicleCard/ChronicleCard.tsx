@@ -53,7 +53,7 @@ const Container = styled(ViewGap)<{ width?: number }>(({ theme, width }) => ({
   backgroundColor: theme.colors.white,
   ...getShadow({
     shadowOffset: { width: 0, height: getSpacing(1) },
-    shadowRadius: getSpacing(6),
+    shadowRadius: getSpacing(1),
     shadowColor: theme.colors.black,
     shadowOpacity: 0.15,
   }),
