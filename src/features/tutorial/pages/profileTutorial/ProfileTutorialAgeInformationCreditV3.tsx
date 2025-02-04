@@ -8,14 +8,21 @@ import { CreditTimelineV3 } from 'features/tutorial/components/CreditTimelineV3'
 import { BlockDescriptionItem } from 'features/tutorial/components/profileTutorial/BlockDescriptionItem'
 import { InformationStepContent } from 'features/tutorial/components/profileTutorial/InformationStepContent'
 import { TutorialTypes } from 'features/tutorial/enums'
+import { analytics } from 'libs/analytics/provider'
+import { env } from 'libs/environment/env'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { AccessibleUnorderedList } from 'ui/components/accessibility/AccessibleUnorderedList'
+import { InfoBanner } from 'ui/components/banners/InfoBanner'
+import { ButtonQuaternarySecondary } from 'ui/components/buttons/ButtonQuaternarySecondary'
 import { ContentHeader } from 'ui/components/headers/ContentHeader'
 import { useGetHeaderHeight } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
+import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { BicolorClock } from 'ui/svg/icons/BicolorClock'
 import { BicolorLock } from 'ui/svg/icons/BicolorLock'
+import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Offers } from 'ui/svg/icons/Offers'
 import { Spacer, TypoDS, getSpacing } from 'ui/theme'
+import { LINE_BREAK } from 'ui/theme/constants'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const ProfileTutorialAgeInformationCreditV3: FunctionComponent = () => {
@@ -47,6 +54,10 @@ export const ProfileTutorialAgeInformationCreditV3: FunctionComponent = () => {
                 <React.Fragment>
                   <CreditProgressBar progress={0.5} />
                   <Spacer.Column numberOfSpaces={4} />
+                  <BlockDescriptionItem
+                    icon={<SmallLock bicolor={false} />}
+                    text="Tu as jusqu’à la veille de tes 18 ans pour confirmer ton identité et activer ton crédit."
+                  />
                 </React.Fragment>
               ),
             },
@@ -78,19 +89,30 @@ export const ProfileTutorialAgeInformationCreditV3: FunctionComponent = () => {
               creditStep: 'information',
               iconComponent: <GreyOffers />,
               children: (
-                <React.Fragment>
-                  <Spacer.Column numberOfSpaces={6} />
-                  <InformationStepContent
-                    title="Découvre tout ce que la culture a à offrir, avec ou sans crédit&nbsp;!"
-                    subtitle="Tu peux continuer à réserver des offres gratuites autour de chez toi."
-                  />
-                </React.Fragment>
+                <InformationStepContent
+                  title="Découvre tout ce que la culture a à offrir, avec ou sans crédit&nbsp;!"
+                  subtitle="Tu peux continuer à réserver des offres gratuites autour de chez toi."
+                />
               ),
             },
           ]}
           type={TutorialTypes.PROFILE_TUTORIAL}
           testID="seventeen-timeline"
         />
+        <Spacer.Column numberOfSpaces={4} />
+        <InfoBanner
+          message={`Des questions sur ton crédit\u00a0?${LINE_BREAK}La réforme récente du pass Culture pourrait en être la raison.`}>
+          <Spacer.Column numberOfSpaces={2} />
+          <ExternalTouchableLink
+            as={ButtonQuaternarySecondary}
+            externalNav={{ url: env.FAQ_CREDIT_V3 }}
+            wording="Plus d’infos dans notre FAQ"
+            icon={ExternalSiteFilled}
+            justifyContent="flex-start"
+            onBeforeNavigate={() => analytics.logHasClickedFAQCreditV3({ from: 'Tutorial' })}
+            inline
+          />
+        </InfoBanner>
         <Spacer.Column numberOfSpaces={12} />
       </StyledScrollView>
       <ContentHeader

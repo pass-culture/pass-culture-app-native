@@ -431,6 +431,53 @@ exports[`<ProfileTutorialAgeInformationCreditV3 /> should render correctly 1`] =
                         ]
                       }
                     />
+                    <View
+                      style={
+                        [
+                          {
+                            "alignItems": "center",
+                            "flexDirection": "row",
+                            "flexShrink": 1,
+                          },
+                        ]
+                      }
+                    >
+                      <View
+                        style={
+                          [
+                            {
+                              "height": 16,
+                              "marginRight": 8,
+                              "width": 16,
+                            },
+                          ]
+                        }
+                      >
+                        <View
+                          height={16}
+                          width={16}
+                        >
+                          <Text>
+                            undefined-SVG-Mock
+                          </Text>
+                        </View>
+                      </View>
+                      <Text
+                        style={
+                          [
+                            {
+                              "color": "#161617",
+                              "flexShrink": 1,
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 12,
+                              "lineHeight": 19.2,
+                            },
+                          ]
+                        }
+                      >
+                        Tu as jusqu’à la veille de tes 18 ans pour confirmer ton identité et activer ton crédit.
+                      </Text>
+                    </View>
                   </View>
                 </View>
               </View>
@@ -1034,16 +1081,6 @@ exports[`<ProfileTutorialAgeInformationCreditV3 /> should render correctly 1`] =
                 ]
               }
             />
-            <View
-              numberOfSpaces={6}
-              style={
-                [
-                  {
-                    "height": 24,
-                  },
-                ]
-              }
-            />
             <Text
               numberOfLines={3}
               style={
@@ -1097,6 +1134,184 @@ exports[`<ProfileTutorialAgeInformationCreditV3 /> should render correctly 1`] =
                 ]
               }
             />
+          </View>
+        </View>
+      </View>
+      <View
+        numberOfSpaces={4}
+        style={
+          [
+            {
+              "height": 16,
+            },
+          ]
+        }
+      />
+      <View
+        backgroundColor="#f3ecff"
+        style={
+          [
+            {
+              "alignItems": "center",
+              "backgroundColor": "#f3ecff",
+              "borderRadius": 8,
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+              "paddingBottom": 16,
+              "paddingLeft": 16,
+              "paddingRight": 16,
+              "paddingTop": 16,
+            },
+          ]
+        }
+      >
+        <View
+          style={
+            [
+              {
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 12,
+                  "lineHeight": 19.2,
+                },
+              ]
+            }
+            textColor="#161617"
+          >
+            Des questions sur ton crédit ?
+La réforme récente du pass Culture pourrait en être la raison.
+          </Text>
+          <View
+            numberOfSpaces={2}
+            style={
+              [
+                {
+                  "height": 8,
+                },
+              ]
+            }
+          />
+          <View
+            accessibilityLabel="Plus d’infos dans notre FAQ"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              {
+                "alignItems": "center",
+                "backgroundColor": "transparent",
+                "borderRadius": 0,
+                "borderWidth": 0,
+                "flexDirection": "row",
+                "justifyContent": "flex-start",
+                "marginTop": 0,
+                "maxWidth": 500,
+                "minHeight": 20,
+                "opacity": 1,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "userSelect": "auto",
+                "width": "auto",
+              }
+            }
+            testID="Plus d’infos dans notre FAQ"
+          >
+            <View
+              style={
+                [
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                  },
+                ]
+              }
+            >
+              <View
+                style={
+                  [
+                    {
+                      "flexDirection": "row",
+                      "flexShrink": 0,
+                    },
+                  ]
+                }
+              >
+                <View
+                  accessibilityLabel="Nouvelle fenêtre"
+                  height={16}
+                  testID="button-icon-left"
+                  width={16}
+                >
+                  <Text>
+                    button-icon-left-SVG-Mock
+                  </Text>
+                </View>
+                <View
+                  numberOfSpaces={2}
+                  style={
+                    [
+                      {
+                        "width": 8,
+                      },
+                    ]
+                  }
+                />
+              </View>
+              <Text
+                adjustsFontSizeToFit={false}
+                numberOfLines={1}
+                style={
+                  [
+                    {
+                      "color": "#320096",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 19.2,
+                      "maxWidth": "100%",
+                    },
+                  ]
+                }
+              >
+                Plus d’infos dans notre FAQ
+              </Text>
+            </View>
           </View>
         </View>
       </View>
