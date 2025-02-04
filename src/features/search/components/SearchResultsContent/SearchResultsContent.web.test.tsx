@@ -77,10 +77,6 @@ jest.mock('features/venue/api/useVenueOffers')
 jest.mock('features/venueMap/helpers/zoomOutIfMapEmpty')
 jest.mock('ui/theme/customFocusOutline/customFocusOutline')
 
-jest.mock('features/search/helpers/useSearchAndPlaylistVenues/useSearchAndPlaylistVenues', () => ({
-  useSearchAndPlaylistVenues: jest.fn(),
-}))
-
 describe('SearchResultsContent component', () => {
   beforeEach(() => {
     mockUseGetAllVenues.mockReturnValue({ venues: venuesFixture })
