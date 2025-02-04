@@ -25,7 +25,6 @@ import {
 } from 'features/search/helpers/useAppliedFilters/useAppliedFilters'
 import { useFilterCount } from 'features/search/helpers/useFilterCount/useFilterCount'
 import { usePrevious } from 'features/search/helpers/usePrevious'
-import { useSearchAndPlaylistVenues } from 'features/search/helpers/useSearchAndPlaylistVenues/useSearchAndPlaylistVenues'
 import { CategoriesModal } from 'features/search/pages/modals/CategoriesModal/CategoriesModal'
 import { DatesHoursModal } from 'features/search/pages/modals/DatesHoursModal/DatesHoursModal'
 import { OfferDuoModal } from 'features/search/pages/modals/OfferDuoModal/OfferDuoModal'
@@ -84,7 +83,6 @@ export const SearchResultsContent: React.FC = () => {
     facets,
     offerVenues,
   } = useSearchResults()
-  const searchAndPlaylistVenues = useSearchAndPlaylistVenues({ hits, offerVenues })
 
   const { disabilities } = useAccessibilityFiltersContext()
   const { searchState } = useSearch()
@@ -290,7 +288,7 @@ export const SearchResultsContent: React.FC = () => {
     setCurrentRegion,
     setLastRegionSearched,
     venuesMap,
-  } = useVenuesMapData(searchAndPlaylistVenues)
+  } = useVenuesMapData(offerVenues)
 
   if (showSkeleton) return <SearchResultsPlaceHolder />
 
