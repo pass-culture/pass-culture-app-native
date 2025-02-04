@@ -140,7 +140,6 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = ({
       'home_type',
       thematicHeader ? `thematicHome - ${thematicHeader.type}` : 'mainHome'
     )
-    thematicHeader && attributes.put('home_name', thematicHeader.title)
     BatchProfile.trackEvent(BatchEvent.hasSeenAllTheHomepage, attributes)
   })
 
@@ -200,7 +199,7 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = ({
   const { isLoggedIn } = useAuthContext()
   const { current: triggerStorage } = useRef(createInMemoryScreenSeenCountTriggerStorage())
 
-  const triggerBatchAttrakdiffModal = async (screenSeenCount: ScreenSeenCount) => {
+  const triggerHasSeenEnoughHomeContent = async (screenSeenCount: ScreenSeenCount) => {
     const attributes = new BatchEventAttributes()
     attributes.put('screen_seen_count', screenSeenCount)
     attributes.put('home_id', homeId)
@@ -208,15 +207,13 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = ({
       'home_type',
       thematicHeader ? `thematicHome - ${thematicHeader.type}` : 'mainHome'
     )
-    attributes.put('home_name', thematicHeader ? thematicHeader.title : 'mainHome')
-
     BatchProfile.trackEvent(BatchEvent.hasSeenEnoughHomeContent, attributes)
   }
 
   const { checkTrigger } = useScreenSeenCount({
     isLoggedIn,
     screenHeight: height,
-    onTrigger: triggerBatchAttrakdiffModal,
+    onTrigger: triggerHasSeenEnoughHomeContent,
     triggerStorage,
   })
 

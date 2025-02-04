@@ -13,7 +13,7 @@ const createStubTriggerStorage = () => {
   }
 }
 
-describe('useAttrakdiffModal', () => {
+describe('useScreenSeenCount', () => {
   it('should call batch  when user has seen 3 times their screen of 500px height', async () => {
     const triggerStorage = createStubTriggerStorage()
     const onTrigger = jest.fn()
@@ -31,14 +31,14 @@ describe('useAttrakdiffModal', () => {
   })
 
   it('should call batch when user has seen 5 times their screen of 500px height', async () => {
-    const attrakdiff = createStubTriggerStorage()
-    attrakdiff.givenHasTriggered(3)
+    const hasSeenEnoughHomeContent = createStubTriggerStorage()
+    hasSeenEnoughHomeContent.givenHasTriggered(3)
     const onTrigger = jest.fn()
 
     const { checkTrigger } = useScreenSeenCount({
       screenHeight: 500,
       onTrigger,
-      triggerStorage: attrakdiff,
+      triggerStorage: hasSeenEnoughHomeContent,
       isLoggedIn: true,
     })
 
@@ -48,13 +48,13 @@ describe('useAttrakdiffModal', () => {
   })
 
   it('should NOT call batch when user has seen 2 times their screen height', async () => {
-    const attrakdiff = createStubTriggerStorage()
+    const hasSeenEnoughHomeContent = createStubTriggerStorage()
     const onTrigger = jest.fn()
 
     const { checkTrigger } = useScreenSeenCount({
       screenHeight: 500,
       onTrigger,
-      triggerStorage: attrakdiff,
+      triggerStorage: hasSeenEnoughHomeContent,
       isLoggedIn: true,
     })
 
@@ -64,13 +64,13 @@ describe('useAttrakdiffModal', () => {
   })
 
   it('should call batch when user has seen 5 times their screen of 300px height', async () => {
-    const attrakdiff = createStubTriggerStorage()
+    const hasSeenEnoughHomeContent = createStubTriggerStorage()
     const onTrigger = jest.fn()
 
     const { checkTrigger } = useScreenSeenCount({
       screenHeight: 300,
       onTrigger,
-      triggerStorage: attrakdiff,
+      triggerStorage: hasSeenEnoughHomeContent,
       isLoggedIn: true,
     })
 
@@ -80,13 +80,13 @@ describe('useAttrakdiffModal', () => {
   })
 
   it('should call batch when user has seen more than 5 times their screen of 300px height', async () => {
-    const attrakdiff = createStubTriggerStorage()
+    const hasSeenEnoughHomeContent = createStubTriggerStorage()
     const onTrigger = jest.fn()
 
     const { checkTrigger } = useScreenSeenCount({
       screenHeight: 300,
       onTrigger,
-      triggerStorage: attrakdiff,
+      triggerStorage: hasSeenEnoughHomeContent,
       isLoggedIn: true,
     })
 
@@ -96,15 +96,15 @@ describe('useAttrakdiffModal', () => {
   })
 
   it('should NOT trigger 3 screen seen  when already triggered', async () => {
-    const attrakdiff = createStubTriggerStorage()
-    attrakdiff.givenHasTriggered(3)
+    const hasSeenEnoughHomeContent = createStubTriggerStorage()
+    hasSeenEnoughHomeContent.givenHasTriggered(3)
 
     const onTrigger = jest.fn()
 
     const { checkTrigger } = useScreenSeenCount({
       screenHeight: 300,
       onTrigger,
-      triggerStorage: attrakdiff,
+      triggerStorage: hasSeenEnoughHomeContent,
       isLoggedIn: true,
     })
 
@@ -113,45 +113,45 @@ describe('useAttrakdiffModal', () => {
     expect(onTrigger).not.toHaveBeenCalled()
   })
 
-  it('should save that attrakdiff has been seen when triggered', async () => {
-    const attrakdiff = createStubTriggerStorage()
+  it('should save that hasSeenEnoughHomeContent when triggered', async () => {
+    const hasSeenEnoughHomeContent = createStubTriggerStorage()
 
     const { checkTrigger } = useScreenSeenCount({
       screenHeight: 300,
       onTrigger: jest.fn(),
-      triggerStorage: attrakdiff,
+      triggerStorage: hasSeenEnoughHomeContent,
       isLoggedIn: true,
     })
 
     await checkTrigger(1500)
 
-    expect(attrakdiff.hasSetTriggered()).toBe(true)
+    expect(hasSeenEnoughHomeContent.hasSetTriggered()).toBe(true)
   })
 
-  it('should NOT save that attrakdiff has been seen when not triggered', async () => {
-    const attrakdiff = createStubTriggerStorage()
+  it('should NOT save that hasSeenEnoughHomeContent when not triggered', async () => {
+    const hasSeenEnoughHomeContent = createStubTriggerStorage()
 
     const { checkTrigger } = useScreenSeenCount({
       screenHeight: 300,
       onTrigger: jest.fn(),
-      triggerStorage: attrakdiff,
+      triggerStorage: hasSeenEnoughHomeContent,
       isLoggedIn: true,
     })
 
     await checkTrigger(600)
 
-    expect(attrakdiff.hasSetTriggered()).toBe(false)
+    expect(hasSeenEnoughHomeContent.hasSetTriggered()).toBe(false)
   })
 
   it('should NOT trigger when user is not logged in', async () => {
-    const attrakdiff = createStubTriggerStorage()
+    const hasSeenEnoughHomeContent = createStubTriggerStorage()
 
     const onTrigger = jest.fn()
 
     const { checkTrigger } = useScreenSeenCount({
       screenHeight: 300,
       onTrigger,
-      triggerStorage: attrakdiff,
+      triggerStorage: hasSeenEnoughHomeContent,
       isLoggedIn: false,
     })
 
