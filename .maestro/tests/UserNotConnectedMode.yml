@@ -7,6 +7,7 @@ tags:
 
 - runFlow: subFolder/cookies/AcceptCookies.yml
 - runFlow: subFolder/tutorial/onboarding/Onboard18.yml
+- runFlow: subFolder/cloud/commands/SetLocalizationFromEverywhereToParis.yml
 - runFlow: subFolder/commons/GoToFavouritesFromTabBar.yml
 
 - runFlow: subFolder/commons/GoToProfileFromTabBar.yml
