@@ -1190,7 +1190,7 @@ exports[`<ProfileTutorialAgeInformationCreditV3 /> should render correctly 1`] =
             textColor="#161617"
           >
             Des questions sur ton crédit ?
-La réforme récente du pass Culture pourrait en être la raison.
+Les récents ajustements du dispositif peuvent en être la raison.
           </Text>
           <View
             numberOfSpaces={2}

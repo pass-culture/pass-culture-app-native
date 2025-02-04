@@ -101,7 +101,7 @@ export const ProfileTutorialAgeInformationCreditV3: FunctionComponent = () => {
         />
         <Spacer.Column numberOfSpaces={4} />
         <InfoBanner
-          message={`Des questions sur ton crédit\u00a0?${LINE_BREAK}La réforme récente du pass Culture pourrait en être la raison.`}>
+          message={`Des questions sur ton crédit\u00a0?${LINE_BREAK}Les récents ajustements du dispositif peuvent en être la raison.`}>
           <Spacer.Column numberOfSpaces={2} />
           <ExternalTouchableLink
             as={ButtonQuaternarySecondary}
