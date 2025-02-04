@@ -2,7 +2,7 @@ import { defaultDisabilitiesProperties } from 'features/accessibility/context/Ac
 import { DisabilitiesProperties } from 'features/accessibility/types'
 import { buildFilters } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildFilters'
 import {
-  buildLocationParameter,
+  buildLocationParameterForSearch,
   BuildLocationParameterParams,
 } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildLocationParameter'
 import { SearchQueryParameters } from 'libs/algolia/types'
@@ -52,7 +52,7 @@ export const buildOfferSearchParameters = (
   const locationParameter =
     venue || isFullyDigitalOffersCategory
       ? {}
-      : buildLocationParameter(buildLocationParameterParams)
+      : buildLocationParameterForSearch(buildLocationParameterParams)
 
   return {
     ...buildFacetFilters({
