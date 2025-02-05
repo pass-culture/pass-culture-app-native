@@ -22,6 +22,7 @@ const kourou: SuggestedPlace = {
   type: 'street',
   geolocation: { longitude: -52.669726, latitude: 5.16176 },
 }
+const query = 'searched query'
 
 const venue = mockedSuggestedVenue
 
@@ -67,8 +68,6 @@ const aroundPlaceGeolocatedParams = {
 
 describe('fetchSearchResults', () => {
   it('should execute multi query with venues playlist search newest index when there is not location filter', () => {
-    const query = 'searched query'
-
     fetchSearchResults({
       parameters: { query } as SearchQueryParameters,
       buildLocationParameterParams: everywhereParams,
@@ -131,8 +130,6 @@ describe('fetchSearchResults', () => {
   })
 
   it('should execute multi query with venues playlist search newest index when location type is EVERYWHERE and user is not sharing its position', () => {
-    const query = 'searched query'
-
     fetchSearchResults({
       parameters: { query } as SearchQueryParameters,
       buildLocationParameterParams: everywhereParams,
@@ -195,8 +192,6 @@ describe('fetchSearchResults', () => {
   })
 
   it('should execute multi query with venues playlist search index when location type is EVERYWHERE and user shares his position', () => {
-    const query = 'searched query'
-
     fetchSearchResults({
       parameters: { query } as SearchQueryParameters,
       buildLocationParameterParams: everywhereGeolocatedParams,
@@ -270,8 +265,6 @@ describe('fetchSearchResults', () => {
   })
 
   it('should execute multi query with venues playlist search index when location type is AROUND_ME and user shares his position', () => {
-    const query = 'searched query'
-
     fetchSearchResults({
       parameters: { query } as SearchQueryParameters,
       buildLocationParameterParams: aroundMeParams,
@@ -346,8 +339,6 @@ describe('fetchSearchResults', () => {
   })
 
   it('should execute multi query with venues playlist search index when location type is PLACE and user shares his position', () => {
-    const query = 'searched query'
-
     fetchSearchResults({
       parameters: { query } as SearchQueryParameters,
       buildLocationParameterParams: aroundPlaceGeolocatedParams,
@@ -422,8 +413,6 @@ describe('fetchSearchResults', () => {
   })
 
   it('should execute multi query with venues playlist search index when location type is PLACE and user not share his position', () => {
-    const query = 'searched query'
-
     fetchSearchResults({
       parameters: { query } as SearchQueryParameters,
       buildLocationParameterParams: aroundPlaceParams,
@@ -498,8 +487,6 @@ describe('fetchSearchResults', () => {
   })
 
   it('should execute multi query with venues playlist search index when location type is VENUE and user shares his position', () => {
-    const query = 'searched query'
-
     fetchSearchResults({
       parameters: {
         query,
@@ -571,8 +558,6 @@ describe('fetchSearchResults', () => {
   })
 
   it('should execute multi query with venues playlist search index newest when venue is defined and user not share his position', () => {
-    const query = 'searched query'
-
     fetchSearchResults({
       parameters: {
         query,
@@ -644,8 +629,6 @@ describe('fetchSearchResults', () => {
   })
 
   it('should execute multi query with accessibilities filters when user has selected accessibility filters', () => {
-    const query = 'searched query'
-
     fetchSearchResults({
       parameters: { query } as SearchQueryParameters,
       buildLocationParameterParams: everywhereParams,
@@ -731,8 +714,6 @@ describe('fetchSearchResults', () => {
   })
 
   it('should execute multi query with aroundPrecision param if provided', () => {
-    const query = 'searched query'
-
     fetchSearchResults({
       parameters: { query } as SearchQueryParameters,
       buildLocationParameterParams: everywhereParams,
@@ -805,8 +786,6 @@ describe('fetchSearchResults', () => {
   })
 
   it('should execute multi query without aroundPrecision param if aroundPrecision is 0 (eq: O or not provided)', () => {
-    const query = 'searched query'
-
     fetchSearchResults({
       parameters: { query } as SearchQueryParameters,
       buildLocationParameterParams: everywhereParams,
