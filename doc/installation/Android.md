@@ -30,7 +30,7 @@ Then open the Android Virtual Devices Manager and select (or create) a Virtual D
 In the `.env.local` file, add
 
 ```sh
-KEYTOOL_PASSWORD=THE_PASSWORD # replace THE_PASSWORD with the one from Keeper search for "Android keytool password"
+SECRET_KEYTOOL_PASSWORD=THE_PASSWORD # replace THE_PASSWORD with the one from Keeper search for "Android keytool password"
 ```
 
 ```sh
