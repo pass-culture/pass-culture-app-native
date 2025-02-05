@@ -12,12 +12,12 @@ remove_certificate_bundle_safe() {
 }
 
 has_certificate() {
-	echo "${KEYTOOL_PASSWORD}" |
+	echo "${SECRET_KEYTOOL_PASSWORD}" |
 		sudo keytool -cacerts -list -alias "mykey"
 }
 
 remove_certificate() {
-	echo "${KEYTOOL_PASSWORD}" |
+	echo "${SECRET_KEYTOOL_PASSWORD}" |
 		sudo keytool -delete -cacerts -alias "mykey" >/dev/null
 }
 
@@ -30,7 +30,7 @@ remove_certificate_safe() {
 }
 
 set_password_and_accept_trusting_the_certificate() {
-	echo "${KEYTOOL_PASSWORD}"
+	echo "${SECRET_KEYTOOL_PASSWORD}"
 	echo "oui"
 }
 
