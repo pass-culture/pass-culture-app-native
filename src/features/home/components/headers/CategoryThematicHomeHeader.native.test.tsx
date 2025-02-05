@@ -2,17 +2,16 @@ import React from 'react'
 
 import { CategoryThematicHomeHeader } from 'features/home/components/headers/CategoryThematicHomeHeader'
 import { Color } from 'features/home/types'
-import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { render, screen } from 'tests/utils'
-
-const mockUseFeatureFlag = jest.spyOn(useFeatureFlag, 'useFeatureFlag')
 
 jest.mock('libs/firebase/analytics/analytics')
 
 describe('CategoryThematicHomeHeader', () => {
   describe('when WIP_APP_V2_THEMATIC_HOME_HEADER is on', () => {
-    beforeAll(() => {
-      mockUseFeatureFlag.mockReturnValue(true)
+    beforeEach(() => {
+      setFeatureFlags([RemoteStoreFeatureFlags.WIP_APP_V2_THEMATIC_HOME_HEADER])
     })
 
     it('should render the v1 header and not the v2', async () => {
@@ -45,8 +44,8 @@ describe('CategoryThematicHomeHeader', () => {
   })
 
   describe('when WIP_APP_V2_THEMATIC_HOME_HEADER is off', () => {
-    beforeAll(() => {
-      mockUseFeatureFlag.mockReturnValue(false)
+    beforeEach(() => {
+      setFeatureFlags()
     })
 
     it('should render the v2 header and not the v1', async () => {

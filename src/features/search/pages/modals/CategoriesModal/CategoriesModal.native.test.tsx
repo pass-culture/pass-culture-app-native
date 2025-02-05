@@ -8,7 +8,8 @@ import { FilterBehaviour } from 'features/search/enums'
 import { BooksNativeCategoriesEnum, SearchState } from 'features/search/types'
 import { algoliaFacets } from 'libs/algolia/fixtures/algoliaFacets'
 import { FacetData } from 'libs/algolia/types'
-import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
@@ -36,8 +37,6 @@ jest.mock('libs/subcategories/useSubcategories', () => ({
 
 const mockHideModal = jest.fn()
 
-const mockUseFeatureFlag = jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(true)
-
 jest.mock('libs/firebase/analytics/analytics')
 
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
@@ -47,6 +46,10 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 })
 
 describe('<CategoriesModal/>', () => {
+  beforeEach(() => {
+    setFeatureFlags()
+  })
+
   afterEach(() => {
     mockData = PLACEHOLDER_DATA
   })
@@ -266,8 +269,8 @@ describe('<CategoriesModal/>', () => {
     })
 
     describe('When wipDisplaySearchNbFacetResults feature flag is activated', () => {
-      beforeAll(() => {
-        mockUseFeatureFlag.mockReturnValue(true)
+      beforeEach(() => {
+        setFeatureFlags([RemoteStoreFeatureFlags.WIP_DISPLAY_SEARCH_NB_FACET_RESULTS])
       })
 
       it('should display number of results on each category', () => {
@@ -281,8 +284,8 @@ describe('<CategoriesModal/>', () => {
     })
 
     describe('When wipDisplaySearchNbFacetResults feature flag is not activated', () => {
-      beforeAll(() => {
-        mockUseFeatureFlag.mockReturnValue(false)
+      beforeEach(() => {
+        setFeatureFlags()
       })
 
       it('should not display number of results on each category', () => {

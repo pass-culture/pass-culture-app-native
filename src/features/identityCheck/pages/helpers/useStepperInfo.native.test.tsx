@@ -12,7 +12,8 @@ import {
 import { useStepperInfo } from 'features/identityCheck/pages/helpers/useStepperInfo'
 import { IdentityCheckStep } from 'features/identityCheck/types'
 import { beneficiaryUser } from 'fixtures/user'
-import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
 
 const mockIdentityCheckState = mockState
@@ -53,11 +54,9 @@ jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
   })),
 }))
 
-const useFeatureFlagSpy = jest.spyOn(useFeatureFlag, 'useFeatureFlag')
-useFeatureFlagSpy.mockReturnValue(false)
-
 describe('useStepperInfo', () => {
   beforeEach(() => {
+    setFeatureFlags()
     setSettings({ enablePhoneValidation: true })
   })
 
@@ -182,7 +181,7 @@ describe('useStepperInfo', () => {
 
     it('should have firstScreen to "CulturalSurveyIntro" when feature flag FF enableCulturalSurveyMandatory is enabled and user needsToFillCulturalSurvey', () => {
       mockAuthContextWithUser({ ...beneficiaryUser, needsToFillCulturalSurvey: true })
-      useFeatureFlagSpy.mockReturnValueOnce(true)
+      setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_CULTURAL_SURVEY_MANDATORY])
       const { stepsDetails } = useStepperInfo()
       const confirmationStep = stepsDetails.find(
         (step) => step.name === IdentityCheckStep.CONFIRMATION

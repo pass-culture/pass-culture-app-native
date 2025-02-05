@@ -11,7 +11,7 @@ import { SearchResults } from 'features/search/pages/SearchResults/SearchResults
 import { SearchState } from 'features/search/types'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
-import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { ILocationContext, Position } from 'libs/location'
 import { LocationMode } from 'libs/location/types'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
@@ -19,8 +19,6 @@ import { SuggestedPlace } from 'libs/place/types'
 import { mockedSuggestedVenue } from 'libs/venue/fixtures/mockedSuggestedVenues'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent, waitFor } from 'tests/utils'
-
-jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
 
 const venue = mockedSuggestedVenue
 
@@ -224,6 +222,10 @@ const user = userEvent.setup()
 jest.useFakeTimers()
 
 describe('<SearchResults/>', () => {
+  beforeEach(() => {
+    setFeatureFlags()
+  })
+
   mockUseNetInfoContext.mockReturnValue({ isConnected: true })
 
   afterEach(() => {

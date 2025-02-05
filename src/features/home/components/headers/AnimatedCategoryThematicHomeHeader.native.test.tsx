@@ -2,11 +2,10 @@ import React from 'react'
 
 import { AnimatedCategoryThematicHomeHeader } from 'features/home/components/headers/AnimatedCategoryThematicHomeHeader'
 import { Color } from 'features/home/types'
-import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils'
-
-const mockUseFeatureFlag = jest.spyOn(useFeatureFlag, 'useFeatureFlag')
 
 jest.mock('features/profile/pages/NotificationSettings/usePushPermission', () => ({
   usePushPermission: jest.fn(() => ({
@@ -18,8 +17,8 @@ jest.mock('libs/firebase/analytics/analytics')
 
 describe('AnimatedCategoryThematicHomeHeader', () => {
   describe('when WIP_APP_V2_THEMATIC_HOME_HEADER is on', () => {
-    beforeAll(() => {
-      mockUseFeatureFlag.mockReturnValue(true)
+    beforeEach(() => {
+      setFeatureFlags([RemoteStoreFeatureFlags.WIP_APP_V2_THEMATIC_HOME_HEADER])
     })
 
     it('should render the v1 header and not the v2', async () => {
@@ -38,8 +37,8 @@ describe('AnimatedCategoryThematicHomeHeader', () => {
   })
 
   describe('when WIP_APP_V2_THEMATIC_HOME_HEADER is off', () => {
-    beforeAll(() => {
-      mockUseFeatureFlag.mockReturnValue(false)
+    beforeEach(() => {
+      setFeatureFlags()
     })
 
     it('should render the v2 header and not the v1', async () => {

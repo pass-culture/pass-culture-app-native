@@ -3,14 +3,17 @@ import React from 'react'
 
 import { LocationWidget } from 'features/location/components/LocationWidget'
 import { ScreenOrigin } from 'features/location/enums'
-import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { act, fireEvent, render, screen } from 'tests/utils/web'
 
 jest.unmock('@react-navigation/native')
-jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(true)
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 describe('LocationWidget', () => {
+  beforeEach(() => {
+    setFeatureFlags() // TODO(PC-34435): add tests for WIP_APP_V2_LOCATION_WIDGET
+  })
+
   afterEach(async () => {
     await act(async () => {
       jest.runOnlyPendingTimers()

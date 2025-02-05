@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { VenueListItem } from 'features/offer/components/VenueSelectionList/VenueSelectionList'
-import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { GeoCoordinates, GeolocPermissionState } from 'libs/location'
 import { fireEvent, render, screen } from 'tests/utils'
 import * as useModalAPI from 'ui/components/modals/useModal'
@@ -21,8 +21,6 @@ jest.mock('libs/location/LocationWrapper', () => ({
   useLocation: () => mockUseLocation(),
 }))
 
-jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
-
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   return function createAnimatedComponent(Component: unknown) {
     return Component
@@ -30,6 +28,10 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 })
 
 describe('<VenueSelectionModal />', () => {
+  beforeEach(() => {
+    setFeatureFlags()
+  })
+
   const items: VenueListItem[] = [
     {
       title: 'Envie de lire',

@@ -15,7 +15,7 @@ import { beneficiaryUser } from 'fixtures/user'
 import * as logOfferConversionAPI from 'libs/algolia/analytics/logOfferConversion'
 import { analytics } from 'libs/analytics/provider'
 import { CampaignEvents, campaignTracker } from 'libs/campaign'
-import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
@@ -26,8 +26,6 @@ jest.mock('libs/campaign')
 
 const mockDismissModal = jest.fn()
 const mockDispatch = jest.fn()
-
-jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
 
 const mockOffer = { ...baseOffer, subcategoryId: SubcategoryIdEnum.SEANCE_CINE }
 
@@ -135,6 +133,10 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 })
 
 describe('<BookingOfferModalComponent />', () => {
+  beforeEach(() => {
+    setFeatureFlags()
+  })
+
   it('should dismiss modal when click on rightIconButton and reset state', async () => {
     render(reactQueryProviderHOC(<BookingOfferModalComponent visible offerId={mockOffer.id} />))
 

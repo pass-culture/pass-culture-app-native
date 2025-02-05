@@ -2,11 +2,9 @@ import React from 'react'
 import InAppReview from 'react-native-in-app-review'
 
 import { useReviewInAppInformation } from 'features/bookOffer/helpers/useReviewInAppInformation'
-import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { useShowReview } from 'libs/hooks/useShowReview'
 import { render } from 'tests/utils/web'
-
-jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
 
 const mockRequestInAppReview = InAppReview.RequestInAppReview as jest.Mock
 
@@ -21,6 +19,7 @@ const TestReviewComponent = () => {
 
 describe('useShowReview', () => {
   it('should not show the review in web even if it should be requested in native', () => {
+    setFeatureFlags()
     mockUseReviewInAppInformation.mockReturnValueOnce({ shouldReviewBeRequested: true })
 
     render(<TestReviewComponent />)

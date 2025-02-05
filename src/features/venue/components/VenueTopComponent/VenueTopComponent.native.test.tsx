@@ -7,12 +7,11 @@ import { VenueResponse, VenueTypeCodeKey } from 'api/gen'
 import { VenueTopComponent } from 'features/venue/components/VenueTopComponent/VenueTopComponent'
 import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
 import { analytics } from 'libs/analytics/provider'
-import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { ILocationContext, useLocation } from 'libs/location'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
-
-jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
 
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/location')
@@ -24,6 +23,10 @@ const user = userEvent.setup()
 jest.useFakeTimers()
 
 describe('<VenueTopComponent />', () => {
+  beforeEach(() => {
+    setFeatureFlags()
+  })
+
   it('should display full venue address', async () => {
     render(<VenueTopComponent venue={venueDataTest} />)
 
@@ -89,8 +92,8 @@ describe('<VenueTopComponent />', () => {
   })
 
   it('should render dynamics opening hours when feature flag is enabled', async () => {
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_DYNAMIC_OPENING_HOURS])
     mockdate.set(new Date('2024-05-31T08:31:00'))
-    jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValueOnce(true)
 
     render(reactQueryProviderHOC(<VenueTopComponent venue={venueDataTest} />))
 
@@ -104,7 +107,6 @@ describe('<VenueTopComponent />', () => {
   })
 
   it('should NOT render dynamics opening hours when venue doesn t have openingHours', async () => {
-    jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValueOnce(true)
     const venue = {
       ...venueDataTest,
       openingHours: undefined,

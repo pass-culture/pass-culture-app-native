@@ -6,7 +6,6 @@ import { SearchList } from 'features/search/components/SearchList/SearchList'
 import { initialSearchState } from 'features/search/context/reducer'
 import { SearchListProps } from 'features/search/types'
 import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
-import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { Offer } from 'shared/offer/types'
 import { render } from 'tests/utils'
 
@@ -14,8 +13,6 @@ const mockHits: Offer[] = mockedAlgoliaResponse.hits
 const mockNbHits = mockedAlgoliaResponse.nbHits
 
 const mockUsePreviousRoute: jest.Mock<Route<string> | null> = usePreviousRoute
-
-jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(true)
 
 const mockSearchState = initialSearchState
 jest.mock('features/search/context/SearchWrapper', () => ({

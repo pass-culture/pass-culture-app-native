@@ -17,7 +17,6 @@ import { HomepageModule, ModuleData } from 'features/home/types'
 import { SimilarOffersResponse } from 'features/offer/types'
 import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { GeoCoordinates, Position } from 'libs/location'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
@@ -32,9 +31,6 @@ const index = 1
 const homeEntryId = '7tfixfH64pd5TMZeEKfNQ'
 
 const highlightOfferFixture = offersFixture[0]
-
-jest.mock('libs/firebase/firestore/featureFlags/useFeatureFlag')
-const mockedUseFeatureFlag = useFeatureFlag as jest.Mock
 
 jest.mock('features/home/api/useHighlightOffer')
 const mockUseHighlightOffer = useHighlightOffer as jest.Mock
@@ -81,7 +77,6 @@ describe('<HomeModule />', () => {
   // because it's easier to test them one by one
   describe('Accessibility', () => {
     it('OldBusiness module should not have basic accessibility issues', async () => {
-      mockedUseFeatureFlag.mockReturnValueOnce(false)
       const { container } = renderHomeModule(formattedBusinessModule)
 
       expect(screen.getByText('Débloque ton crédit !')).toBeInTheDocument()
@@ -92,7 +87,7 @@ describe('<HomeModule />', () => {
     })
 
     it('NewBusiness module should not have basic accessibility issues', async () => {
-      mockedUseFeatureFlag.mockReturnValueOnce(true)
+      setFeatureFlags([RemoteStoreFeatureFlags.WIP_APP_V2_BUSINESS_BLOCK])
 
       const { container } = renderHomeModule(formattedNewBusinessModule)
 
@@ -107,7 +102,6 @@ describe('<HomeModule />', () => {
     })
 
     it('Highlight module should not have basic accessibility issues', async () => {
-      mockedUseFeatureFlag.mockReturnValueOnce(true)
       mockUseHighlightOffer.mockReturnValueOnce(highlightOfferFixture)
 
       const { container } = renderHomeModule(highlightOfferModuleFixture)

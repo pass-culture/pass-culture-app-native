@@ -1,15 +1,14 @@
 import React from 'react'
 
 import { VenueSelectionListHeader } from 'features/offer/components/VenueSelectionListHeader/VenueSelectionListHeader'
-import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { render, screen } from 'tests/utils'
-
-const useFeatureFlagSpy = jest.spyOn(useFeatureFlag, 'useFeatureFlag')
 
 describe('<VenueSelectionListHeader />', () => {
   describe('When wipAppV2SystemBlock feature flag activated', () => {
-    beforeAll(() => {
-      useFeatureFlagSpy.mockReturnValue(true)
+    beforeEach(() => {
+      setFeatureFlags([RemoteStoreFeatureFlags.WIP_APP_V2_SYSTEM_BLOCK])
     })
 
     it('should display geolocation system banner when user has not a location', () => {
@@ -26,8 +25,8 @@ describe('<VenueSelectionListHeader />', () => {
   })
 
   describe('When wipAppV2SystemBlock feature flag deactivated', () => {
-    beforeAll(() => {
-      useFeatureFlagSpy.mockReturnValue(false)
+    beforeEach(() => {
+      setFeatureFlags()
     })
 
     it('should display geolocation banner when user has not a location', () => {

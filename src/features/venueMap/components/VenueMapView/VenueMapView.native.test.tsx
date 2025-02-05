@@ -16,7 +16,6 @@ import { initialVenuesActions } from 'features/venueMap/store/initialVenuesStore
 import { useGetAllVenues } from 'features/venueMap/useGetAllVenues'
 import { venuesFixture } from 'libs/algolia/fetchAlgolia/fetchVenues/fixtures/venuesFixture'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
-import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, userEvent, waitFor } from 'tests/utils'
@@ -31,8 +30,6 @@ jest.mock('@react-navigation/native', () => ({
   useNavigation: () => ({ navigate: mockNavigate, push: jest.fn() }),
   useFocusEffect: jest.fn(),
 }))
-
-const useFeatureFlagSpy = jest.spyOn(useFeatureFlag, 'useFeatureFlag')
 
 jest.mock('features/venueMap/useGetAllVenues')
 const mockUseGetAllVenues = useGetAllVenues as jest.Mock
@@ -103,8 +100,7 @@ describe('<VenueMapView />', () => {
   beforeEach(() => {
     jest.useFakeTimers()
     mockUseVenueOffers()
-
-    useFeatureFlagSpy.mockReturnValue(true)
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_OFFERS_IN_BOTTOM_SHEET])
     Object.assign(constants.MARKER_LABEL_VISIBILITY_LIMIT, {
       zoom: 1,
       altitude: Infinity,
