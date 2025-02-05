@@ -34,7 +34,7 @@ export const env: Environment = {
     'https://docs.passculture.app/textes-normatifs/charte-des-donnees-personnelles',
   EDUCONNECT_ALLOWED_DOMAIN: 'https://educoco_alloweddodo',
   ENV: 'testing',
-  FAQ_CREDIT_V3: 'https://passculture-credit.faq',
+  FAQ_LINK_CREDIT_V3: 'https://passculture-credit-v3.faq',
   FAQ_LINK_CREDIT: 'https://passculture-credit.faq',
   FAQ_LINK_DELETE_ACCOUNT: 'https://passculture-delete-account.faq',
   FAQ_LINK_EDUCONNECT_URL: 'https://passculture-educonnect.faq',

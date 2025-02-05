@@ -73,12 +73,12 @@ export const ProfileTutorialAgeInformationCreditV3: FunctionComponent = () => {
                       <BlockDescriptionItem
                         key={1}
                         icon={<SmallLock bicolor={false} />}
-                        text="Tu as 1 an pour confirmer ton identité et activer ce crédit."
+                        text="Tu as jusqu’à la veille de tes 19 ans pour confirmer ton identité et activer ton crédit."
                       />,
                       <BlockDescriptionItem
                         key={2}
                         icon={<SmallClock bicolor={false} />}
-                        text="Après activation, tu as jusqu’à la veille de tes 21 ans pour utiliser tout ton crédit."
+                        text="Une fois activé, ton crédit expirera la veille de ton 21ème anniversaire."
                       />,
                     ]}
                   />
@@ -90,7 +90,7 @@ export const ProfileTutorialAgeInformationCreditV3: FunctionComponent = () => {
               iconComponent: <GreyOffers />,
               children: (
                 <InformationStepContent
-                  title="Découvre tout ce que la culture a à offrir, avec ou sans crédit&nbsp;!"
+                  title="Explore tout ce que la culture peut offrir, avec ou sans crédit&nbsp;!"
                   subtitle="Tu peux continuer à réserver des offres gratuites autour de chez toi."
                 />
               ),
@@ -105,7 +105,7 @@ export const ProfileTutorialAgeInformationCreditV3: FunctionComponent = () => {
           <Spacer.Column numberOfSpaces={2} />
           <ExternalTouchableLink
             as={ButtonQuaternarySecondary}
-            externalNav={{ url: env.FAQ_CREDIT_V3 }}
+            externalNav={{ url: env.FAQ_LINK_CREDIT_V3 }}
             wording="Plus d’infos dans notre FAQ"
             icon={ExternalSiteFilled}
             justifyContent="flex-start"
