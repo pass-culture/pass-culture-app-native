@@ -1,12 +1,8 @@
 import React from 'react'
 import { Platform, useWindowDimensions } from 'react-native'
 
-import { getNavigateToConfig } from 'features/navigation/SearchStackNavigator/helpers'
-import { NativeCategoryEnum, SearchState } from 'features/search/types'
-import { useHandleFocus } from 'libs/hooks/useHandleFocus'
-import { useHandleHover } from 'libs/hooks/useHandleHover'
 import { styledButton } from 'ui/components/buttons/styledButton'
-import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
+import { Touchable } from 'ui/components/touchable/Touchable'
 import { getShadow, TypoDS } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
 import type { ColorsEnum } from 'ui/theme/colors'
@@ -14,50 +10,39 @@ import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutli
 import { getHoverStyle } from 'ui/theme/getHoverStyle/getHoverStyle'
 import { getSpacing } from 'ui/theme/spacing'
 
-export const SUBCATEGORY_BUTTON_HEIGHT = getSpacing(14)
-export const SUBCATEGORY_BUTTON_WIDTH = getSpacing(45.6)
-
-export type SubcategoryButtonItem = SubcategoryButtonProps & {
-  nativeCategory: NativeCategoryEnum
-}
-
-type SubcategoryButtonProps = {
+export type SubcategoryButtonProps = {
   label: string
   backgroundColor: ColorsEnum
   borderColor: ColorsEnum
+  onPress: VoidFunction
   position?: number
-  searchParams: Partial<SearchState>
 }
+
+export const SUBCATEGORY_BUTTON_HEIGHT = getSpacing(14)
+export const SUBCATEGORY_BUTTON_WIDTH = getSpacing(45.6)
 
 export const SubcategoryButton = ({
   label,
   backgroundColor,
   borderColor,
-  searchParams,
+  onPress,
 }: SubcategoryButtonProps) => {
   const windowWidth = useWindowDimensions().width
-  const focusProps = useHandleFocus()
-  const hoverProps = useHandleHover()
-
-  const searchConfig = getNavigateToConfig('SearchResults', searchParams)
 
   return (
-    <StyledInternalTouchable
-      {...focusProps}
-      {...hoverProps}
-      onMouseDown={(e: Event) => e.preventDefault()} // Prevent focus on click
-      navigateTo={{ ...searchConfig, withPush: true }}
+    <StyledTouchable
+      onPress={onPress}
       testID={`SubcategoryButton ${label}`}
       accessibilityLabel={label}
       windowWidth={windowWidth}
       backgroundColor={backgroundColor}
       borderColor={borderColor}>
       <StyledText>{label}</StyledText>
-    </StyledInternalTouchable>
+    </StyledTouchable>
   )
 }
 
-const StyledInternalTouchable: typeof InternalTouchableLink = styledButton(InternalTouchableLink)<{
+const StyledTouchable = styledButton(Touchable)<{
   isFocus?: boolean
   windowWidth: number
   backgroundColor: ColorsEnum
