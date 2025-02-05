@@ -103,6 +103,7 @@ export const Chronicles: FunctionComponent = () => {
             imageUrl={offer.images?.[0]?.url ?? ''}
             title={offer.name}
             price={displayedPrice}
+            categoryId={subcategory.categoryId}
             paddingTop={headerHeight}>
             <OfferCTAButton
               offer={offer}
