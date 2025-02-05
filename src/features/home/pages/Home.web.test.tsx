@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { SubcategoriesResponseModelv2 } from 'api/gen'
+import { mockSettings } from 'features/auth/context/mockSettings'
 import * as CookiesUpToDate from 'features/cookies/helpers/useIsCookiesListUpToDate'
 import { useHomepageData } from 'features/home/api/useHomepageData'
 import { formattedBusinessModule } from 'features/home/fixtures/homepage.fixture'
@@ -14,6 +15,7 @@ import { act, checkAccessibilityFor, render } from 'tests/utils/web'
 import { Home } from './Home'
 
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
+mockSettings()
 
 const mockShouldShowSkeleton = false
 jest.mock('features/home/api/useShowSkeleton', () => ({

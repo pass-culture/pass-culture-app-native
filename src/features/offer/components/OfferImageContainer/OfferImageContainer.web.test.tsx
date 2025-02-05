@@ -1,10 +1,12 @@
 import React from 'react'
 
 import { CategoryIdEnum } from 'api/gen'
+import { mockSettings } from 'features/auth/context/mockSettings'
 import { OfferImageContainer } from 'features/offer/components/OfferImageContainer/OfferImageContainer'
 import { render, screen } from 'tests/utils/web'
 
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
+mockSettings()
 
 const mockOnPress = jest.fn()
 

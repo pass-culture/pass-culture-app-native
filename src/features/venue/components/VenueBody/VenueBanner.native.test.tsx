@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { mockSettings } from 'features/auth/context/mockSettings'
 import { VenueBanner } from 'features/venue/components/VenueBody/VenueBanner'
 import { render, screen, userEvent } from 'tests/utils'
 
@@ -7,6 +8,7 @@ const mockHandleImagePress = jest.fn()
 const user = userEvent.setup()
 
 jest.useFakeTimers()
+mockSettings()
 
 describe('<VenueBanner />', () => {
   it('should display the Google watermark if the image is from Google', () => {

@@ -1,7 +1,7 @@
 import { UseQueryResult } from 'react-query'
 
 import { SubscriptionStepperResponseV2 } from 'api/gen'
-import { setSettings } from 'features/auth/context/setSettings'
+import { mockSettings } from 'features/auth/context/mockSettings'
 import { useGetStepperInfo } from 'features/identityCheck/api/useGetStepperInfo'
 import { usePhoneValidationRemainingAttempts } from 'features/identityCheck/api/usePhoneValidationRemainingAttempts'
 import { initialSubscriptionState as mockState } from 'features/identityCheck/context/reducer'
@@ -57,7 +57,7 @@ jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
 describe('useStepperInfo', () => {
   beforeEach(() => {
     setFeatureFlags()
-    setSettings({ enablePhoneValidation: true })
+    mockSettings({ enablePhoneValidation: true })
   })
 
   it('should return title and subtitle', () => {
@@ -106,7 +106,7 @@ describe('useStepperInfo', () => {
         },
       })
 
-      setSettings({ enablePhoneValidation: false })
+      mockSettings({ enablePhoneValidation: false })
 
       const { stepsDetails } = useStepperInfo()
       const phoneValidationStep = stepsDetails.find(

@@ -1,6 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import { Text } from 'react-native'
 
+import { mockSettings } from 'features/auth/context/mockSettings'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -14,6 +15,8 @@ const mockBookingOfferModal = <Text>BookingOfferModal</Text>
 jest.mock('features/bookOffer/pages/BookingOfferModal', () => ({
   BookingOfferModal: () => mockBookingOfferModal,
 }))
+
+mockSettings()
 
 jest.mock('ui/components/modals/useModal.ts', () => ({
   useModal: jest.fn().mockReturnValue({

@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { mockSettings } from 'features/auth/context/mockSettings'
 import { checkAccessibilityFor, render } from 'tests/utils/web'
 
 import { AccessibilityActionPlan } from './AccessibilityActionPlan'
@@ -14,6 +15,7 @@ jest.mock('react-native/Libraries/Animated/NativeAnimatedHelper')
 jest.mock('react-native/Libraries/Alert/Alert', () => ({
   alert: jest.fn(),
 }))
+mockSettings()
 
 const TEST_TIMEOUT_IN_MS = 15000
 jest.setTimeout(TEST_TIMEOUT_IN_MS)

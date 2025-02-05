@@ -1,11 +1,13 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
+import { mockSettings } from 'features/auth/context/mockSettings'
 import { EmptyCredit } from 'features/profile/components/EmptyCredit/EmptyCredit'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { fireEvent, render, screen } from 'tests/utils'
 
+mockSettings()
 jest.mock('libs/firebase/remoteConfig/RemoteConfigProvider', () => ({
   useRemoteConfigContext: jest
     .fn()

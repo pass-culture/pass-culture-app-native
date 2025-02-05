@@ -1,6 +1,7 @@
 import React from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
+import { mockSettings } from 'features/auth/context/mockSettings'
 import { VenuePlaylist } from 'features/search/components/VenuePlaylist/VenuePlaylist'
 import { initialSearchState } from 'features/search/context/reducer'
 import { mockAlgoliaVenues } from 'features/search/fixtures/mockAlgoliaVenues'
@@ -20,6 +21,8 @@ jest.mock('react-native-safe-area-context', () => ({
   ...(jest.requireActual('react-native-safe-area-context') as Record<string, unknown>),
   useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
 }))
+
+mockSettings()
 
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 

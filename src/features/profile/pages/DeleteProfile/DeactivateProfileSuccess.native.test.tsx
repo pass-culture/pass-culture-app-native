@@ -1,8 +1,8 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
+import { mockSettings } from 'features/auth/context/mockSettings'
 import * as LogoutRoutine from 'features/auth/helpers/useLogoutRoutine'
-import { setSettings } from 'features/auth/context/setSettings'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { navigateFromRef } from 'features/navigation/navigationRef'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
@@ -27,7 +27,7 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 
 describe('DeactivateProfileSuccess component', () => {
   beforeEach(() => {
-    setSettings()
+    mockSettings()
   })
 
   it('should render delete profile success', () => {

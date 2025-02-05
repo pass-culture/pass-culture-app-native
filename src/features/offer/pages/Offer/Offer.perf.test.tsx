@@ -2,6 +2,7 @@ import React from 'react'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
 import { OfferResponseV2, SimilarOffersResponse, SubcategoriesResponseModelv2 } from 'api/gen'
+import { mockSettings } from 'features/auth/context/mockSettings'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import * as GetInstalledAppsAPI from 'features/offer/helpers/getInstalledApps/getInstalledApps'
 import * as useArtistResults from 'features/offer/helpers/useArtistResults/useArtistResults'
@@ -43,6 +44,8 @@ jest.unmock('react-native/Libraries/Animated/createAnimatedComponent')
 jest.useFakeTimers()
 
 jest.mock('libs/network/NetInfoWrapper')
+
+mockSettings()
 
 useRoute.mockReturnValue({
   params: {

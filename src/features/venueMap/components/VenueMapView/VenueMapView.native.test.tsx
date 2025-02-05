@@ -5,6 +5,7 @@ import { UseQueryResult } from 'react-query'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { VenueTypeCodeKey } from 'api/gen'
+import { mockSettings } from 'features/auth/context/mockSettings'
 import { PlaylistType } from 'features/offer/enums'
 import * as useVenueOffers from 'features/venue/api/useVenueOffers'
 import { VenueOffersResponseSnap } from 'features/venue/fixtures/venueOffersResponseSnap'
@@ -24,6 +25,7 @@ import { act, fireEvent, render, screen, userEvent, waitFor } from 'tests/utils'
 import * as constants from '../../constant'
 
 const mockSetInitialVenues = jest.spyOn(initialVenuesActions, 'setInitialVenues')
+mockSettings()
 
 jest.mock('features/venueMap/useGetAllVenues')
 const mockUseGetAllVenues = useGetAllVenues as jest.Mock

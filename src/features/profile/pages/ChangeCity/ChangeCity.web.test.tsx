@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { mockSettings } from 'features/auth/context/mockSettings'
 import { ChangeCity } from 'features/profile/pages/ChangeCity/ChangeCity'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { checkAccessibilityFor, render, screen, waitFor } from 'tests/utils/web'
@@ -12,6 +13,7 @@ jest.mock('uuid', () => ({
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 jest.mock('ui/theme/customFocusOutline/customFocusOutline')
+mockSettings()
 
 describe('<ChangeCity/>', () => {
   it('should render correctly', () => {

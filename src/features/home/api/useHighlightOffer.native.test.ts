@@ -1,3 +1,4 @@
+import { mockSettings } from 'features/auth/context/mockSettings'
 import { useHighlightOffer } from 'features/home/api/useHighlightOffer'
 import { fetchOffersByEan } from 'libs/algolia/fetchAlgolia/fetchOffersByEan'
 import { fetchOffersByIds } from 'libs/algolia/fetchAlgolia/fetchOffersByIds'
@@ -6,6 +7,7 @@ import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { useLocation } from 'libs/location'
 import { ILocationContext } from 'libs/location/types'
 import { offersFixture } from 'shared/offer/offer.fixture'
+import { Offer } from 'shared/offer/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, waitFor } from 'tests/utils'
 
@@ -26,34 +28,45 @@ const mockFetchOffersByEan = fetchOffersByEan as jest.MockedFunction<typeof fetc
 
 const mockOffers = mockedAlgoliaResponse.hits
 
+const mockOffer = mockOffers[0]
+const mockOfferFixture: Offer = {
+  ...offersFixture[0],
+  offer: {
+    ...offersFixture[0].offer,
+    thumbUrl: 'https://localhost-storage/thumbs/mediations/CDNQ',
+  },
+}
+
 jest.mock('libs/location')
 const mockUseLocation = jest.mocked(useLocation)
 
 jest.mock('libs/firebase/analytics/analytics')
 
+mockSettings()
+
 describe('useHighlightOffer', () => {
   it('should return offer when offerId is provided', async () => {
-    mockFetchOffersByIds.mockResolvedValueOnce([mockOffers[0]])
+    mockFetchOffersByIds.mockResolvedValueOnce([mockOffer])
 
     const { result } = renderUseHighlightOfferHook({ offerId: 'offerId1' })
 
-    await waitFor(() => expect(result.current).toEqual(offersFixture[0]))
+    await waitFor(() => expect(result.current).toEqual(mockOfferFixture))
   })
 
   it('should return offer when offerTag is provided', async () => {
-    mockFetchOffersByTags.mockResolvedValueOnce([mockOffers[0]])
+    mockFetchOffersByTags.mockResolvedValueOnce([mockOffer])
 
     const { result } = renderUseHighlightOfferHook({ offerTag: 'test-tag' })
 
-    await waitFor(() => expect(result.current).toEqual(offersFixture[0]))
+    await waitFor(() => expect(result.current).toEqual(mockOfferFixture))
   })
 
   it('should return offer when offerEan is provided', async () => {
-    mockFetchOffersByEan.mockResolvedValueOnce([mockOffers[0]])
+    mockFetchOffersByEan.mockResolvedValueOnce([mockOffer])
 
     const { result } = renderUseHighlightOfferHook({ offerEan: '1234567891234' })
 
-    await waitFor(() => expect(result.current).toEqual(offersFixture[0]))
+    await waitFor(() => expect(result.current).toEqual(mockOfferFixture))
   })
 
   it('should return undefined when no offer id or tag or ean is provided', async () => {
@@ -64,7 +77,6 @@ describe('useHighlightOffer', () => {
 
   describe('geolocation', () => {
     it('should return offer when isGeolocated is true and the distance to the offer is within the radius', async () => {
-      const mockOffer = mockOffers[0]
       // eslint-disable-next-line local-rules/independent-mocks
       mockUseLocation.mockReturnValue({
         geolocPosition: { latitude: mockOffer._geoloc.lat, longitude: mockOffer._geoloc.lng },
@@ -78,11 +90,10 @@ describe('useHighlightOffer', () => {
         aroundRadius: 100,
       })
 
-      await waitFor(() => expect(result.current).toEqual(offersFixture[0]))
+      await waitFor(() => expect(result.current).toEqual(mockOfferFixture))
     })
 
     it('should not return offer when isGeolocated is true and the distance to the offer is beyond radius', async () => {
-      const mockOffer = mockOffers[0]
       // eslint-disable-next-line local-rules/independent-mocks
       mockUseLocation.mockReturnValue({
         geolocPosition: { latitude: 1, longitude: 1 },
@@ -99,7 +110,6 @@ describe('useHighlightOffer', () => {
     })
 
     it('should not return offer when isGeolocated is true and the user position is not defined', async () => {
-      const mockOffer = mockOffers[0]
       // eslint-disable-next-line local-rules/independent-mocks
       mockUseLocation.mockReturnValue({
         geolocPosition: undefined,
@@ -116,7 +126,6 @@ describe('useHighlightOffer', () => {
     })
 
     it('should return offer when isGeolocated is true and around radius is not defined', async () => {
-      const mockOffer = mockOffers[0]
       // eslint-disable-next-line local-rules/independent-mocks
       mockUseLocation.mockReturnValue({
         geolocPosition: { latitude: mockOffer._geoloc.lat, longitude: mockOffer._geoloc.lng },
@@ -128,7 +137,7 @@ describe('useHighlightOffer', () => {
         isGeolocated: true,
       })
 
-      await waitFor(() => expect(result.current).toEqual(offersFixture[0]))
+      await waitFor(() => expect(result.current).toEqual(mockOfferFixture))
     })
   })
 })

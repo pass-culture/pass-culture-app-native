@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { SubcategoriesResponseModelv2 } from 'api/gen'
+import { mockSettings } from 'features/auth/context/mockSettings'
 import { initialSearchState } from 'features/search/context/reducer'
 import { ISearchContext } from 'features/search/context/SearchWrapper'
 import * as useFilterCountAPI from 'features/search/helpers/useFilterCount/useFilterCount'
@@ -19,6 +20,7 @@ import { act, checkAccessibilityFor, render } from 'tests/utils/web'
 jest.mock('libs/network/NetInfoWrapper')
 
 jest.mock('features/auth/context/AuthContext')
+mockSettings()
 
 const mockStateDispatch = jest.fn()
 const initialMockUseSearchResults = { searchState: initialSearchState, dispatch: mockStateDispatch }

@@ -3,7 +3,7 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { SearchGroupNameEnumv2 } from 'api/gen'
-import { setSettings } from 'features/auth/context/setSettings'
+import { mockSettings } from 'features/auth/context/mockSettings'
 import { navigationRef } from 'features/navigation/navigationRef'
 import * as useGoBack from 'features/navigation/useGoBack'
 import { initialSearchState } from 'features/search/context/reducer'
@@ -37,6 +37,7 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
     showErrorSnackBar: jest.fn((props: SnackBarHelperSettings) => mockShowErrorSnackBar(props)),
   }),
 }))
+mockSettings()
 const queryWithMoreThan150characters =
   'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam non aliquet quam, at ultrices purus. Morbi velit orci, tincidunt sed erat sed efficitur.'
 
@@ -261,7 +262,7 @@ describe('SearchBox component', () => {
 
     describe('Without autocomplete', () => {
       beforeAll(() => {
-        setSettings({ appEnableAutocomplete: false })
+        mockSettings({ appEnableAutocomplete: false })
       })
 
       it('should stay on the current view when focusing search input and being on the %s view', async () => {
@@ -324,11 +325,11 @@ describe('SearchBox component', () => {
 
     describe('With autocomplete', () => {
       beforeAll(() => {
-        setSettings({ appEnableAutocomplete: true })
+        mockSettings({ appEnableAutocomplete: true })
       })
 
       afterAll(() => {
-        setSettings()
+        mockSettings()
       })
 
       it('should unfocus from suggestion when being focus on the suggestions and press back button', async () => {

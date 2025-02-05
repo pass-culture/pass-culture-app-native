@@ -1,9 +1,12 @@
 import React from 'react'
 
+import { mockSettings } from 'features/auth/context/mockSettings'
 import { render, screen } from 'tests/utils'
 import { VenueInfoHeader } from 'ui/components/VenueInfoHeader/VenueInfoHeader'
 
 const VENUE_THUMBNAIL_SIZE = 48
+
+mockSettings()
 
 describe('<VenueInfoHeader />', () => {
   it('should display venue name', () => {

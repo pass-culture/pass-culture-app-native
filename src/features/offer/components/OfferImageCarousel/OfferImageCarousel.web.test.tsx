@@ -1,9 +1,12 @@
 import React from 'react'
 import { SharedValue } from 'react-native-reanimated'
 
+import { mockSettings } from 'features/auth/context/mockSettings'
 import { act, render, screen, userEvent } from 'tests/utils/web'
 
 import { OfferImageCarousel } from './OfferImageCarousel'
+
+mockSettings()
 
 describe('OfferImageCarousel', () => {
   const user = userEvent.setup({ delay: 50 })

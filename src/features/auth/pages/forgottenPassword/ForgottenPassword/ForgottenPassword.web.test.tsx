@@ -1,6 +1,7 @@
 import React from 'react'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 
+import { mockSettings } from 'features/auth/context/mockSettings'
 import { render, checkAccessibilityFor, screen, waitFor } from 'tests/utils/web'
 
 import { ForgottenPassword } from './ForgottenPassword'
@@ -13,6 +14,7 @@ jest.mock('uuid', () => {
     v4: jest.fn(() => value++),
   }
 })
+mockSettings()
 
 describe('<ForgottenPassword/>', () => {
   describe('Accessibility', () => {

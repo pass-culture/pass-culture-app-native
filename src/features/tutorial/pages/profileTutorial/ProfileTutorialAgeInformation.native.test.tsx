@@ -4,6 +4,7 @@ import mockdate from 'mockdate'
 import React from 'react'
 
 import { SubscriptionStatus, UserProfileResponse, YoungStatusType } from 'api/gen'
+import { mockSettings } from 'features/auth/context/mockSettings'
 import { CURRENT_DATE, SIXTEEN_AGE_DATE } from 'features/auth/fixtures/fixtures'
 import { TutorialRootStackParamList } from 'features/navigation/RootNavigator/types'
 import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
@@ -17,6 +18,7 @@ import { ProfileTutorialAgeInformation } from './ProfileTutorialAgeInformation'
 
 jest.mock('features/auth/context/AuthContext')
 jest.unmock('react-native/Libraries/Animated/createAnimatedComponent')
+mockSettings()
 
 const sixteenUser = { ...beneficiaryUser, birthDate: format(SIXTEEN_AGE_DATE, 'yyyy-MM-dd') }
 

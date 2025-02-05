@@ -3,6 +3,7 @@ import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { SettingsResponse } from 'api/gen'
+import { mockSettings } from 'features/auth/context/mockSettings'
 import { defaultSettings } from 'features/auth/fixtures/fixtures'
 import { SetAddress } from 'features/identityCheck/pages/profile/SetAddress'
 import { analytics } from 'libs/analytics/provider'
@@ -16,6 +17,8 @@ import { fireEvent, render, waitFor, screen } from 'tests/utils'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 const QUERY_ADDRESS = '1 rue Poissonnière'
+
+mockSettings()
 
 const mockShowErrorSnackBar = jest.fn()
 jest.mock('ui/components/snackBar/SnackBarContext', () => ({
@@ -100,6 +103,7 @@ describe('<SetAddress/>', () => {
   })
 
   it('should log analytics on press Continuer', async () => {
+    mockSettings({ idCheckAddressAutocompletion: false })
     renderSetAddress()
 
     const input = screen.getByPlaceholderText('Ex\u00a0: 34 avenue de l’Opéra')
@@ -107,7 +111,7 @@ describe('<SetAddress/>', () => {
 
     fireEvent.press(screen.getByText('Continuer'))
 
-    await screen.findByText('Recherche et sélectionne ton adresse')
+    await screen.findByText('Entre ton adresse')
 
     await waitFor(() => expect(analytics.logSetAddressClicked).toHaveBeenCalledTimes(1))
   })

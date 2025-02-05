@@ -1,7 +1,10 @@
 import React from 'react'
 
+import { mockSettings } from 'features/auth/context/mockSettings'
 import { render, screen } from 'tests/utils'
 import { AvatarListItem } from 'ui/components/Avatar/AvatarListItem'
+
+mockSettings()
 
 describe('<AvatarListItem />', () => {
   it('should display artist avatar name', () => {

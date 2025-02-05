@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { mockSettings } from 'features/auth/context/mockSettings'
 import { initialSubscriptionState as mockState } from 'features/identityCheck/context/reducer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, checkAccessibilityFor, waitFor, screen } from 'tests/utils/web'
@@ -7,6 +8,7 @@ import { render, checkAccessibilityFor, waitFor, screen } from 'tests/utils/web'
 import { SetName } from './SetName'
 
 jest.mock('libs/subcategories/useSubcategory')
+mockSettings()
 
 jest.mock('uuid', () => ({
   v1: jest.fn(),

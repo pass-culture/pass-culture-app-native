@@ -2,6 +2,7 @@ import React from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
 import * as Auth from 'features/auth/context/AuthContext'
+import { mockSettings } from 'features/auth/context/mockSettings'
 import { initialSearchState } from 'features/search/context/reducer'
 import { FilterBehaviour } from 'features/search/enums'
 import { MAX_PRICE_IN_CENTS } from 'features/search/helpers/reducer.helpers'
@@ -14,6 +15,7 @@ import { render, screen, userEvent, waitFor } from 'tests/utils'
 import { PriceModal, PriceModalProps } from './PriceModal'
 
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
+mockSettings()
 
 const searchId = uuidv4()
 const searchState: SearchState = { ...initialSearchState, searchId }

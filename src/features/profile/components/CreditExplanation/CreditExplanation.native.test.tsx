@@ -1,10 +1,12 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { setSettings } from 'features/auth/context/setSettings'
+import { mockSettings } from 'features/auth/context/mockSettings'
 import { CreditExplanation } from 'features/profile/components/CreditExplanation/CreditExplanation'
 import { analytics } from 'libs/analytics/provider'
 import { act, fireEvent, render, screen } from 'tests/utils'
+
+mockSettings()
 
 describe('<CreditExplanation/>', () => {
   it('should render correctly for expired deposit', () => {
@@ -37,7 +39,7 @@ describe('<CreditExplanation/>', () => {
 
   describe('With redirection to tutorial', () => {
     beforeEach(() => {
-      setSettings()
+      mockSettings()
     })
 
     it('should navigate to tutorial when button is triggered', async () => {
@@ -49,7 +51,7 @@ describe('<CreditExplanation/>', () => {
     })
 
     it('should navigate to tutorial CreditV3 when button is triggered and enableCreditV3 is true', async () => {
-      setSettings({ wipEnableCreditV3: true })
+      mockSettings({ wipEnableCreditV3: true })
 
       render(<CreditExplanation isDepositExpired={false} age={18} />)
       const explanationButton = screen.getByTestId('Comment ça marche\u00a0?')

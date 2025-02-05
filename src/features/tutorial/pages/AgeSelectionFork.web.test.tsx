@@ -2,7 +2,7 @@ import { StackScreenProps } from '@react-navigation/stack'
 import React from 'react'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
-import { setSettings } from 'features/auth/context/setSettings'
+import { mockSettings } from 'features/auth/context/mockSettings'
 import { TutorialRootStackParamList } from 'features/navigation/RootNavigator/types'
 import { TutorialTypes } from 'features/tutorial/enums'
 import { AgeSelectionFork } from 'features/tutorial/pages/AgeSelectionFork'
@@ -11,6 +11,7 @@ import { checkAccessibilityFor, render } from 'tests/utils/web'
 
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
+mockSettings()
 
 describe('AgeSelectionFork', () => {
   beforeEach(() => {
@@ -28,7 +29,7 @@ describe('AgeSelectionFork', () => {
 
   describe('when enableCreditV3 activated', () => {
     beforeEach(() => {
-      setSettings({ wipEnableCreditV3: true })
+      mockSettings({ wipEnableCreditV3: true })
     })
 
     it('should not have basic accessibility', async () => {

@@ -2,6 +2,7 @@ import { useQuery } from 'react-query'
 
 import { api } from 'api/api'
 import { SettingsResponse } from 'api/gen'
+import { defaultSettings } from 'features/auth/fixtures/fixtures'
 import { QueryKeys } from 'libs/queryKeys'
 
 // arbitrary. Should not change that often though
@@ -13,6 +14,7 @@ export const useSettings = () => {
     () => api.getNativeV1Settings(),
     {
       staleTime: STALE_TIME_APP_SETTINGS,
+      initialData: defaultSettings,
     }
   )
 

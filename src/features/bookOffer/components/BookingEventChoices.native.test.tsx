@@ -1,6 +1,7 @@
 import * as React from 'react'
 
 import { OfferResponseV2 } from 'api/gen'
+import { mockSettings } from 'features/auth/context/mockSettings'
 import { Step } from 'features/bookOffer/context/reducer'
 import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
@@ -13,6 +14,7 @@ import { render, screen, waitFor } from 'tests/utils'
 
 import { BookingEventChoices } from './BookingEventChoices'
 
+mockSettings()
 jest.mock('features/auth/context/AuthContext')
 
 const mockUseBooking = useBookingContext as jest.Mock

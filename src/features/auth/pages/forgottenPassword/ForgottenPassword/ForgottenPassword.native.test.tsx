@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { navigate, replace } from '__mocks__/@react-navigation/native'
-import { setSettings } from 'features/auth/context/setSettings'
+import { mockSettings } from 'features/auth/context/mockSettings'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { captureMonitoringError } from 'libs/monitoring/errors'
 import { eventMonitoring } from 'libs/monitoring/services'
@@ -38,7 +38,7 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 
 describe('<ForgottenPassword />', () => {
   beforeEach(() => {
-    setSettings()
+    mockSettings()
   })
 
   it('should match snapshot', () => {

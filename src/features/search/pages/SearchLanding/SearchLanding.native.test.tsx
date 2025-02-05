@@ -4,6 +4,7 @@ import { Keyboard } from 'react-native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { NativeCategoryIdEnumv2, SearchGroupNameEnumv2 } from 'api/gen'
+import { mockSettings } from 'features/auth/context/mockSettings'
 import * as useGoBack from 'features/navigation/useGoBack'
 import { initialSearchState } from 'features/search/context/reducer'
 import { mockedSearchHistory } from 'features/search/fixtures/mockedSearchHistory'
@@ -21,6 +22,7 @@ import { mockedSuggestedVenue } from 'libs/venue/fixtures/mockedSuggestedVenues'
 import { act, fireEvent, render, screen } from 'tests/utils'
 
 const venue = mockedSuggestedVenue
+mockSettings()
 
 let mockSearchState: SearchState = {
   ...initialSearchState,

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { setSettings } from 'features/auth/context/setSettings'
+import { mockSettings } from 'features/auth/context/mockSettings'
 import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { NonEligible, TutorialTypes } from 'features/tutorial/enums'
@@ -20,6 +20,7 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
     return Component
   }
 })
+mockSettings()
 
 const user = userEvent.setup()
 jest.useFakeTimers()
@@ -103,7 +104,7 @@ describe('NonEligibleModal', () => {
 
     describe('when enableCreditV3 activated', () => {
       beforeEach(() => {
-        setSettings({ wipEnableCreditV3: true })
+        mockSettings({ wipEnableCreditV3: true })
       })
 
       it('should display subtitle with credit V3', () => {

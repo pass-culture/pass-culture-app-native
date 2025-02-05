@@ -2,6 +2,7 @@ import { StackScreenProps } from '@react-navigation/stack'
 import React from 'react'
 
 import { reset } from '__mocks__/@react-navigation/native'
+import { mockSettings } from 'features/auth/context/mockSettings'
 import { TutorialRootStackParamList } from 'features/navigation/RootNavigator/types'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import * as useGoBack from 'features/navigation/useGoBack'
@@ -21,6 +22,7 @@ jest.mock('ui/components/modals/useModal', () => ({
     hideModal: jest.fn(),
   }),
 }))
+mockSettings()
 
 jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
   goBack: jest.fn(),

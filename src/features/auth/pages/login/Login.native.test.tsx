@@ -13,7 +13,7 @@ import {
   UserProfileResponse,
 } from 'api/gen'
 import { AuthContext } from 'features/auth/context/AuthContext'
-import { setSettings } from 'features/auth/context/setSettings'
+import { mockSettings } from 'features/auth/context/mockSettings'
 import { SignInResponseFailure } from 'features/auth/types'
 import { favoriteOfferResponseSnap } from 'features/favorites/fixtures/favoriteOfferResponseSnap'
 import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteResponseSnap'
@@ -84,6 +84,8 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
     return Component
   }
 })
+
+mockSettings({ isRecaptchaEnabled: false })
 
 describe('<Login/>', () => {
   beforeEach(() => {
@@ -644,7 +646,11 @@ describe('<Login/>', () => {
 
   describe('Login with ReCatpcha', () => {
     beforeAll(() => {
-      setSettings()
+      mockSettings({ isRecaptchaEnabled: true })
+    })
+
+    afterAll(() => {
+      mockSettings({ isRecaptchaEnabled: false })
     })
 
     it('should not open reCAPTCHA challenge modal before clicking on login button', async () => {

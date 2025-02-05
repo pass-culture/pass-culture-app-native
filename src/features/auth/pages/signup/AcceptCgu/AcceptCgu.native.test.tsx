@@ -2,7 +2,7 @@ import React from 'react'
 import { Linking } from 'react-native'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { setSettings } from 'features/auth/context/setSettings'
+import { mockSettings } from 'features/auth/context/mockSettings'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
@@ -50,7 +50,7 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 
 describe('<AcceptCgu/>', () => {
   beforeEach(() => {
-    setSettings()
+    mockSettings()
   })
 
   it('should render correctly', () => {

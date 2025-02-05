@@ -1,6 +1,7 @@
 import * as React from 'react'
 
 import { OfferResponseV2, SubcategoryIdEnum } from 'api/gen'
+import { mockSettings } from 'features/auth/context/mockSettings'
 import { initialBookingState } from 'features/bookOffer/context/reducer'
 import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
 import { mockOffer as baseOffer } from 'features/bookOffer/fixtures/offer'
@@ -17,6 +18,7 @@ const randomDatetime = '2020-12-01T00:00:00Z'
 jest.mock('features/bookOffer/context/useBookingContext')
 jest.mock('features/bookOffer/helpers/useBookingStock')
 jest.mock('libs/address/useFormatFullAddress')
+mockSettings()
 const mockedUseBooking = jest.mocked(useBookingContext)
 const mockedUseBookingStock = jest.mocked(useBookingStock)
 

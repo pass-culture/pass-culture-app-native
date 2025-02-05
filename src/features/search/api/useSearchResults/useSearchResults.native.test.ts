@@ -3,6 +3,7 @@ import { Dispatch } from 'react'
 
 import algoliasearch from '__mocks__/algoliasearch'
 import { defaultDisabilitiesProperties } from 'features/accessibility/context/AccessibilityFiltersWrapper'
+import { mockSettings } from 'features/auth/context/mockSettings'
 import { useSearchInfiniteQuery } from 'features/search/api/useSearchResults/useSearchResults'
 import { Action, initialSearchState } from 'features/search/context/reducer'
 import { SearchState } from 'features/search/types'
@@ -25,6 +26,7 @@ import { act, renderHook, waitFor } from 'tests/utils'
 const { multipleQueries } = algoliasearch()
 
 jest.mock('libs/firebase/analytics/analytics')
+mockSettings()
 
 const DEFAULT_POSITION = { latitude: 66, longitude: 66 } as GeoCoordinates | null
 const mockPositionError = null as GeolocationError | null

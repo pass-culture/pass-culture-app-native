@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { setSettings } from 'features/auth/context/setSettings'
+import { mockSettings } from 'features/auth/context/mockSettings'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
@@ -11,6 +11,7 @@ import { render, userEvent, screen } from 'tests/utils'
 import { LoggedOutHeader } from './LoggedOutHeader'
 
 jest.mock('libs/firebase/analytics/analytics')
+mockSettings()
 
 const user = userEvent.setup()
 jest.useFakeTimers()
@@ -60,7 +61,7 @@ describe('LoggedOutHeader', () => {
 
   describe('when enableCreditV3 activated', () => {
     beforeEach(() => {
-      setSettings({ wipEnableCreditV3: true })
+      mockSettings({ wipEnableCreditV3: true })
     })
 
     it('should display subtitle with credit V3', () => {

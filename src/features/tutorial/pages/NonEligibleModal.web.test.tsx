@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { mockSettings } from 'features/auth/context/mockSettings'
 import { NonEligible, TutorialTypes } from 'features/tutorial/enums'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { checkAccessibilityFor, render } from 'tests/utils/web'
@@ -8,6 +9,7 @@ import { NonEligibleModal } from './NonEligibleModal'
 
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
+mockSettings()
 
 describe('<NonEligibleModal/>', () => {
   beforeEach(() => setFeatureFlags())

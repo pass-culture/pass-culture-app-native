@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { setSettings } from 'features/auth/context/setSettings'
+import { mockSettings } from 'features/auth/context/mockSettings'
 import { CitySearchInput } from 'features/profile/components/CitySearchInput/CitySearchInput'
 import { mockedSuggestedCities } from 'libs/place/fixtures/mockedSuggestedCities'
 import { CitiesResponse, CITIES_API_URL } from 'libs/place/useCities'
@@ -18,7 +18,7 @@ jest.useFakeTimers()
 
 describe('<CitySearchInput />', () => {
   beforeEach(() => {
-    setSettings({ ineligiblePostalCodes: [NEW_CALEDONIA_NORTHERN_PROVINCE_POSTAL_CODE] })
+    mockSettings({ ineligiblePostalCodes: [NEW_CALEDONIA_NORTHERN_PROVINCE_POSTAL_CODE] })
   })
 
   it('should display error message when the user enters a valid postal code but no city found', async () => {

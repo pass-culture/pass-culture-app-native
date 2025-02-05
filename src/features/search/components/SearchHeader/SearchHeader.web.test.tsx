@@ -2,6 +2,7 @@ import userEvent from '@testing-library/user-event'
 import React from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
+import { mockSettings } from 'features/auth/context/mockSettings'
 import { initialSearchState } from 'features/search/context/reducer'
 import { ISearchContext } from 'features/search/context/SearchWrapper'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
@@ -39,6 +40,8 @@ jest.mock('features/search/context/SearchWrapper', () => ({
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 jest.mock('features/navigation/TabBar/routes')
+
+mockSettings()
 
 describe('SearchHeader component', () => {
   beforeEach(() => {

@@ -2,12 +2,12 @@ import mockdate from 'mockdate'
 import React from 'react'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
+import { mockSettings } from 'features/auth/context/mockSettings'
 import {
   CURRENT_DATE,
   DEFAULT_SELECTED_DATE,
   ELIGIBLE_AGE_DATE,
 } from 'features/auth/fixtures/fixtures'
-import { setSettings } from 'features/auth/context/setSettings'
 import { NonEligible } from 'features/tutorial/enums'
 import { formatDateToISOStringWithoutTime } from 'libs/parsers/formatDates'
 import { storage } from 'libs/storage'
@@ -49,7 +49,7 @@ describe('<SetBirthday />', () => {
   beforeEach(async () => {
     mockdate.set(CURRENT_DATE)
     await storage.clear(USER_AGE_KEY)
-    setSettings()
+    mockSettings()
   })
 
   it('should render correctly', () => {

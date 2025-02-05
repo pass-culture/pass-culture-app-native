@@ -6,6 +6,7 @@ import {
   defaultDisabilitiesProperties,
   useAccessibilityFiltersContext,
 } from 'features/accessibility/context/AccessibilityFiltersWrapper'
+import { mockSettings } from 'features/auth/context/mockSettings'
 import { SearchResultsContent } from 'features/search/components/SearchResultsContent/SearchResultsContent'
 import { initialSearchState } from 'features/search/context/reducer'
 import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
@@ -38,6 +39,8 @@ const mockUseSearch = jest.fn(() => ({
 jest.mock('features/search/context/SearchWrapper', () => ({
   useSearch: () => mockUseSearch(),
 }))
+
+mockSettings()
 
 jest.mock('features/venueMap/useGetAllVenues')
 const mockUseGetAllVenues = useGetAllVenues as jest.Mock

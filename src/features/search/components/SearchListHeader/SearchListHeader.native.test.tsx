@@ -5,6 +5,7 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { useAccessibilityFiltersContext } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { DisplayedDisabilitiesEnum } from 'features/accessibility/enums'
+import { mockSettings } from 'features/auth/context/mockSettings'
 import { usePreviousRoute } from 'features/navigation/helpers/__mocks__/usePreviousRoute'
 import { initialSearchState } from 'features/search/context/reducer'
 import { mockAlgoliaVenues } from 'features/search/fixtures/mockAlgoliaVenues'
@@ -20,6 +21,8 @@ import { SuggestedPlace } from 'libs/place/types'
 import { act, render, screen } from 'tests/utils'
 
 import { SearchListHeader } from './SearchListHeader'
+
+mockSettings()
 
 const searchId = uuidv4()
 

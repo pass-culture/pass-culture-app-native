@@ -1,4 +1,5 @@
 import { SubcategoryIdEnum } from 'api/gen'
+import { mockSettings } from 'features/auth/context/mockSettings'
 import * as UnderageUserAPI from 'features/profile/helpers/useIsUserUnderage'
 import { SearchState } from 'features/search/types'
 import { useVenueOffers } from 'features/venue/api/useVenueOffers'
@@ -14,6 +15,7 @@ import { renderHook, waitFor } from 'tests/utils'
 
 const mockLocationMode = LocationMode.AROUND_ME
 const mockUserLocation: Position = { latitude: 48.90374, longitude: 2.48171 }
+mockSettings()
 jest.mock('libs/location/LocationWrapper', () => ({
   useLocation: () => ({
     userLocation: mockUserLocation,
@@ -316,8 +318,7 @@ describe('useVenueOffers', () => {
               name: 'I want something more',
               prices: [2800],
               subcategoryId: SubcategoryIdEnum.CONCERT,
-              thumbUrl:
-                'https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDZQ',
+              thumbUrl: 'https://localhost-storage/thumbs/mediations/CDZQ',
               artist: 'Céline Dion',
             },
             _geoloc: { lat: 4.90339, lng: -52.31663 },

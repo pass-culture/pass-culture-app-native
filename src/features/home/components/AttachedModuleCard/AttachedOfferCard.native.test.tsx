@@ -3,6 +3,7 @@ import React from 'react'
 import { UseQueryResult } from 'react-query'
 
 import { SubcategoriesResponseModelv2 } from 'api/gen'
+import { mockSettings } from 'features/auth/context/mockSettings'
 import { AttachedOfferCard } from 'features/home/components/AttachedModuleCard/AttachedOfferCard'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -34,6 +35,7 @@ const AROUND_ME_POSITION = {
 const mockUseLocation: jest.Mock<Partial<ILocationContext>> = jest.fn(
   () => EVERYWHERE_USER_POSITION
 )
+mockSettings()
 jest.mock('libs/location/LocationWrapper', () => ({
   useLocation: () => mockUseLocation(),
 }))

@@ -3,6 +3,7 @@ import { UseQueryResult } from 'react-query'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
 import { BookingReponse, SubcategoriesResponseModelv2 } from 'api/gen'
+import { mockSettings } from 'features/auth/context/mockSettings'
 import * as ongoingOrEndedBookingAPI from 'features/bookings/api/useOngoingOrEndedBooking'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { Booking } from 'features/bookings/types'
@@ -28,6 +29,7 @@ const mockUseNetInfoContext = jest.spyOn(useNetInfoContextDefault, 'useNetInfoCo
 
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
+mockSettings()
 
 describe('BookingDetails', () => {
   mockUseNetInfoContext.mockReturnValue({ isConnected: true })

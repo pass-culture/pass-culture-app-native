@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { SearchGroupNameEnumv2, SubcategoriesResponseModelv2 } from 'api/gen'
+import { mockSettings } from 'features/auth/context/mockSettings'
 import { initialSearchState } from 'features/search/context/reducer'
 import * as useFilterCountAPI from 'features/search/helpers/useFilterCount/useFilterCount'
 import { SearchLanding } from 'features/search/pages/SearchLanding/SearchLanding'
@@ -16,6 +17,7 @@ import { checkAccessibilityFor, render, screen } from 'tests/utils/web'
 jest.setTimeout(20000) // to avoid exceeded timeout
 
 jest.mock('libs/network/NetInfoWrapper')
+mockSettings()
 
 const venue = mockedSuggestedVenue
 

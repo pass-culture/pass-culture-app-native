@@ -1,10 +1,13 @@
 import React from 'react'
 
+import { mockSettings } from 'features/auth/context/mockSettings'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { render, screen } from 'tests/utils'
 import { VenuePreview } from 'ui/components/VenuePreview/VenuePreview'
 
 const VENUE_THUMBNAIL_SIZE = 48
+
+mockSettings()
 
 describe('<VenuePreview />', () => {
   it('should display venue name', () => {

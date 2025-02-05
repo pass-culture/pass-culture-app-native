@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { UserSuspensionDateResponse } from 'api/gen'
+import { mockSettings } from 'features/auth/context/mockSettings'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { checkAccessibilityFor, render, screen } from 'tests/utils/web'
@@ -11,6 +12,7 @@ jest.mock('libs/jwt/jwt')
 
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
+mockSettings()
 
 describe('<SuspendedAccountUponUserRequest/>', () => {
   describe('Accessibility', () => {

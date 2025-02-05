@@ -3,6 +3,7 @@ import React from 'react'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
 import { SubcategoriesResponseModelv2, SubcategoryIdEnum, VenueResponse } from 'api/gen'
+import { mockSettings } from 'features/auth/context/mockSettings'
 import { useGTLPlaylists } from 'features/gtlPlaylist/hooks/useGTLPlaylists'
 import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
 import { Venue } from 'features/venue/pages/Venue/Venue'
@@ -18,6 +19,8 @@ jest.mock('libs/firebase/analytics/analytics')
 jest.mock('react-native/Libraries/Animated/NativeAnimatedHelper')
 
 jest.mock('features/search/context/SearchWrapper')
+
+mockSettings()
 
 useRoute.mockImplementation(() => ({ params: { id: venueDataTest.id } }))
 

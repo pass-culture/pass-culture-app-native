@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { mockSettings } from 'features/auth/context/mockSettings'
 import { ExclusivityExternalLink } from 'features/home/components/modules/exclusivity/ExclusivityExternalLink'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { analytics } from 'libs/analytics/provider'
@@ -7,6 +8,7 @@ import { ContentTypes } from 'libs/contentful/types'
 import { fireEvent, render, screen } from 'tests/utils'
 
 const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
+mockSettings()
 
 const props = {
   title: 'Image d’Adèle',

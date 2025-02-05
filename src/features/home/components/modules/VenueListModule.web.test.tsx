@@ -1,12 +1,14 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
+import { mockSettings } from 'features/auth/context/mockSettings'
 import { VenueListModule } from 'features/home/components/modules/VenueListModule.web'
 import { venuesSearchFixture } from 'libs/algolia/fixtures/venuesSearchFixture'
 import { analytics } from 'libs/analytics/provider'
 import { fireEvent, render, screen, waitFor } from 'tests/utils/web'
 
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
+mockSettings()
 
 describe('<VenueListModule />', () => {
   it('should redirect to thematic home', async () => {

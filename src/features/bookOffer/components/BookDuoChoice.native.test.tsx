@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { mockSettings } from 'features/auth/context/mockSettings'
 import { BookingState, Step } from 'features/bookOffer/context/reducer'
 import { mockOffer } from 'features/bookOffer/fixtures/offer'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
@@ -23,6 +24,7 @@ jest.mock('features/bookOffer/context/useBookingContext', () => ({
     dismissModal: mockDismissModal,
   })),
 }))
+mockSettings()
 
 jest.mock('features/bookOffer/helpers/useBookingStock', () => ({
   useBookingStock: jest.fn(() => ({

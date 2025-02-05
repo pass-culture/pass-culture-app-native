@@ -4,6 +4,7 @@ import React from 'react'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
 import { SubcategoriesResponseModelv2 } from 'api/gen'
+import { mockSettings } from 'features/auth/context/mockSettings'
 import { useGTLPlaylists } from 'features/gtlPlaylist/hooks/useGTLPlaylists'
 import { initialSearchState } from 'features/search/context/reducer'
 import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
@@ -22,8 +23,9 @@ jest.mock('libs/subcategories/useSubcategory')
 jest.mock('features/venue/api/useVenue')
 jest.mock('features/venue/api/useVenueOffers')
 jest.mock('libs/itinerary/useItinerary')
-
 jest.mock('features/auth/context/AuthContext')
+
+mockSettings()
 
 jest.mock('uuid', () => ({
   v1: jest.fn(),

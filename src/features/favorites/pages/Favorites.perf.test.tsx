@@ -3,6 +3,7 @@ import React from 'react'
 import * as jwt from '__mocks__/jwt-decode'
 import { UserProfileResponse } from 'api/gen'
 import { AuthWrapper } from 'features/auth/context/AuthWrapper'
+import { mockSettings } from 'features/auth/context/mockSettings'
 import { paginatedFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedFavoritesResponseSnap'
 import { simulateBackend } from 'features/favorites/helpers/simulateBackend'
 import { Favorites } from 'features/favorites/pages/Favorites'
@@ -20,6 +21,8 @@ jest.mock('libs/firebase/analytics/analytics')
 jest.mock('features/favorites/context/FavoritesWrapper')
 
 jest.mock('react-native/Libraries/Animated/NativeAnimatedHelper')
+
+mockSettings()
 
 // Performance measuring is run multiple times so we need to increase the timeout
 const TEST_TIMEOUT_IN_MS = 30000

@@ -1,6 +1,7 @@
 import React from 'react'
 
 import type { BookingsResponse } from 'api/gen'
+import { mockSettings } from 'features/auth/context/mockSettings'
 import { BookingPropertiesSection } from 'features/bookings/components/BookingPropertiesSection'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { Booking } from 'features/bookings/types'
@@ -13,6 +14,7 @@ import { render, screen, waitFor } from 'tests/utils'
 jest.mock('features/auth/context/AuthContext')
 
 jest.mock('libs/firebase/analytics/analytics')
+mockSettings()
 
 describe('<BookingPropertiesSection />', () => {
   beforeEach(() => {

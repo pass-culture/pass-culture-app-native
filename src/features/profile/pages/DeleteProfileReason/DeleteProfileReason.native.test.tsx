@@ -1,8 +1,8 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
+import { mockSettings } from 'features/auth/context/mockSettings'
 import * as LogoutRoutine from 'features/auth/helpers/useLogoutRoutine'
-import { setSettings } from 'features/auth/context/setSettings'
 import { DeleteProfileReason } from 'features/profile/pages/DeleteProfileReason/DeleteProfileReason'
 import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics/provider'
@@ -30,7 +30,7 @@ jest.useFakeTimers()
 describe('<DeleteProfileReason />', () => {
   beforeEach(() => {
     jest.setSystemTime(new Date('2020-01-01'))
-    setSettings()
+    mockSettings()
   })
 
   it('should match snapshot', () => {

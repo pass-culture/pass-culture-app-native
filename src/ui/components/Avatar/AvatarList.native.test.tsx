@@ -1,8 +1,11 @@
 import React from 'react'
 
 import { push } from '__mocks__/@react-navigation/native'
+import { mockSettings } from 'features/auth/context/mockSettings'
 import { render, screen, userEvent } from 'tests/utils'
 import { AvatarsList } from 'ui/components/Avatar/AvatarList'
+
+mockSettings()
 
 const avatarsData = [
   { id: 1, image: 'url1', name: 'Oda' },

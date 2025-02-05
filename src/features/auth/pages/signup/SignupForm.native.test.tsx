@@ -12,6 +12,7 @@ import {
   SigninResponse,
   UserProfileResponse,
 } from 'api/gen'
+import { mockSettings } from 'features/auth/context/mockSettings'
 import { PreValidationSignupStep } from 'features/auth/enums'
 import { CURRENT_DATE, ELIGIBLE_AGE_DATE } from 'features/auth/fixtures/fixtures'
 import * as LoginAndRedirectAPI from 'features/auth/pages/signup/helpers/useLoginAndRedirect'
@@ -33,6 +34,7 @@ import { SignupForm } from './SignupForm'
 jest.mock('libs/campaign')
 jest.mock('libs/react-native-device-info/getDeviceId')
 jest.mock('libs/network/NetInfoWrapper')
+mockSettings({ isRecaptchaEnabled: false })
 
 const getModelSpy = jest.spyOn(DeviceInfo, 'getModel')
 const getSystemNameSpy = jest.spyOn(DeviceInfo, 'getSystemName')

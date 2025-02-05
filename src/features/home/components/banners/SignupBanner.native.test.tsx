@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { setSettings } from 'features/auth/context/setSettings'
+import { mockSettings } from 'features/auth/context/mockSettings'
 import { SignupBanner } from 'features/home/components/banners/SignupBanner'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
@@ -11,6 +11,7 @@ import { userEvent, render, screen } from 'tests/utils'
 
 const user = userEvent.setup()
 jest.useFakeTimers()
+mockSettings()
 
 describe('SignupBanner', () => {
   beforeEach(() => setFeatureFlags())
@@ -87,7 +88,7 @@ describe('SignupBanner', () => {
 
   describe('when enableCreditV3 activated', () => {
     beforeEach(() => {
-      setSettings({ wipEnableCreditV3: true })
+      mockSettings({ wipEnableCreditV3: true })
     })
 
     it('should display banner with credit V3 subtitle', () => {

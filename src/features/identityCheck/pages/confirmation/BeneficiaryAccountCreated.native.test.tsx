@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { setSettings } from 'features/auth/context/setSettings'
+import { mockSettings } from 'features/auth/context/mockSettings'
 import { BeneficiaryAccountCreated } from 'features/identityCheck/pages/confirmation/BeneficiaryAccountCreated'
 import * as ShareAppWrapperModule from 'features/share/context/ShareAppWrapper'
 import { ShareAppWrapper } from 'features/share/context/ShareAppWrapper'
@@ -16,6 +16,7 @@ import { userEvent, render, screen, act } from 'tests/utils'
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 jest.mock('features/auth/context/AuthContext')
+mockSettings()
 
 const mockShowAppModal = jest.fn()
 jest
@@ -129,7 +130,7 @@ describe('<BeneficiaryAccountCreated/>', () => {
 
   describe('when enableCreditV3 activated', () => {
     beforeEach(() => {
-      setSettings({ wipEnableCreditV3: true })
+      mockSettings({ wipEnableCreditV3: true })
     })
 
     it('should have correct credit information text', async () => {

@@ -1,4 +1,4 @@
-import { setSettings } from 'features/auth/context/setSettings'
+import { mockSettings } from 'features/auth/context/mockSettings'
 import { DEFAULT_PACIFIC_FRANC_TO_EURO_RATE } from 'shared/exchangeRates/defaultRateValues'
 import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -7,7 +7,7 @@ import { act, renderHook } from 'tests/utils'
 describe('useGetPacificFrancToEuroRate', () => {
   beforeEach(() => {
     jest.clearAllMocks()
-    setSettings()
+    mockSettings()
   })
 
   it('should initialize with the default rate', async () => {
@@ -19,7 +19,7 @@ describe('useGetPacificFrancToEuroRate', () => {
   })
 
   it('should return exchange rate from backend', async () => {
-    setSettings({ rates: { pacificFrancToEuro: 0.05 } })
+    mockSettings({ rates: { pacificFrancToEuro: 0.05 } })
     const { result } = renderUseGetPacificFrancToEuroRate()
 
     await act(async () => {})

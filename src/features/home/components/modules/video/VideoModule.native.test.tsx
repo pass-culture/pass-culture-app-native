@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { SubcategoriesResponseModelv2 } from 'api/gen'
+import { mockSettings } from 'features/auth/context/mockSettings'
 import { useVideoOffers } from 'features/home/api/useVideoOffers'
 import { VideoModule } from 'features/home/components/modules/video/VideoModule'
 import { videoModuleFixture } from 'features/home/fixtures/videoModule.fixture'
@@ -12,6 +13,7 @@ import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { userEvent, render, screen } from 'tests/utils'
 
 const mockShowModal = jest.fn()
+mockSettings()
 jest.mock('ui/components/modals/useModal', () => ({
   useModal: () => ({
     visible: false,

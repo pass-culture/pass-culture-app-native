@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { AccountState } from 'api/gen'
-import { setSettings } from 'features/auth/context/setSettings'
+import { mockSettings } from 'features/auth/context/mockSettings'
 import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import { useCurrentRoute } from 'features/navigation/helpers/useCurrentRoute'
 import { render, screen } from 'tests/utils'
@@ -34,7 +34,7 @@ jest.mock('libs/firebase/analytics/analytics')
 
 describe('<AccountStatusScreenHandler />', () => {
   beforeEach(() => {
-    setSettings()
+    mockSettings()
   })
 
   it('should display SuspendedAccountUponUserRequest component if account is suspended upon user request', () => {

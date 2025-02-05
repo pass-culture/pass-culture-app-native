@@ -3,6 +3,7 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { SearchGroupNameEnumv2, VenueTypeCodeKey } from 'api/gen'
+import { mockSettings } from 'features/auth/context/mockSettings'
 import { VenuePlaylist } from 'features/search/components/VenuePlaylist/VenuePlaylist'
 import { initialSearchState } from 'features/search/context/reducer'
 import { mockAlgoliaVenues } from 'features/search/fixtures/mockAlgoliaVenues'
@@ -13,6 +14,7 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { render, screen, userEvent } from 'tests/utils'
 import * as useModalAPI from 'ui/components/modals/useModal'
 
+mockSettings()
 const searchId = uuidv4()
 const mockUseSearch = jest.fn(() => ({
   searchState: { ...initialSearchState, searchId },

@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { setSettings } from 'features/auth/context/setSettings'
+import { mockSettings } from 'features/auth/context/mockSettings'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { OnboardingWelcome } from 'features/tutorial/pages/onboarding/OnboardingWelcome'
 import { analytics } from 'libs/analytics/provider'
@@ -15,6 +15,8 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
     return Component
   }
 })
+
+mockSettings()
 
 const user = userEvent.setup()
 jest.useFakeTimers()
@@ -103,7 +105,7 @@ describe('OnboardingWelcome', () => {
 
   describe('when enableCreditV3 activated', () => {
     beforeEach(() => {
-      setSettings({ wipEnableCreditV3: true })
+      mockSettings({ wipEnableCreditV3: true })
     })
 
     it('should display subtitle with credit V3', () => {

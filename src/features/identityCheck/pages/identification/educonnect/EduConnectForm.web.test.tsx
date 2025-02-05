@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { mockSettings } from 'features/auth/context/mockSettings'
 import * as useEduConnectLoginAPI from 'features/identityCheck/api/useEduConnectLogin'
 import { checkAccessibilityFor, fireEvent, render, screen } from 'tests/utils/web'
 
@@ -14,6 +15,7 @@ jest.spyOn(useEduConnectLoginAPI, 'useEduConnectLogin').mockReturnValue({
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 jest.mock('ui/theme/customFocusOutline/customFocusOutline')
+mockSettings()
 
 describe('<EduConnectForm />', () => {
   it('should render EduConnectForm', () => {

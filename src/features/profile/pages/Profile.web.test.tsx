@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { setSettings } from 'features/auth/context/setSettings'
+import { mockSettings } from 'features/auth/context/mockSettings'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { checkAccessibilityFor, render, screen } from 'tests/utils/web'
@@ -14,6 +14,7 @@ jest.mock('features/favorites/context/FavoritesWrapper')
 
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('ui/theme/customFocusOutline/customFocusOutline')
+mockSettings()
 
 jest.spyOn(useVersion, 'useVersion').mockReturnValue('Version\u00A01.10.5')
 
@@ -65,7 +66,7 @@ describe('<Profile/>', () => {
 
   describe('if enableCreditV3 is true', () => {
     beforeEach(() => {
-      setSettings({ wipEnableCreditV3: true })
+      mockSettings({ wipEnableCreditV3: true })
     })
 
     it('should see "17 ou 18"', async () => {
@@ -83,7 +84,7 @@ describe('<Profile/>', () => {
 
   describe('if enableCreditV3 is false', () => {
     beforeEach(() => {
-      setSettings()
+      mockSettings()
     })
 
     it('should see "15 et 18"', async () => {

@@ -1,9 +1,12 @@
 import React from 'react'
 import { Button } from 'react-native'
 
+import { mockSettings } from 'features/auth/context/mockSettings'
 import { render, screen } from 'tests/utils/web'
 
 import { ChronicleOfferInfo } from './ChronicleOfferInfo.web'
+
+mockSettings()
 
 describe('ChronicleOfferInfo', () => {
   it('should render correctly', () => {

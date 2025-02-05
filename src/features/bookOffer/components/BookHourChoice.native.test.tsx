@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { OfferResponseV2 } from 'api/gen'
+import { mockSettings } from 'features/auth/context/mockSettings'
 import { BookingState, Step } from 'features/bookOffer/context/reducer'
 import { mockOffer as mockBaseOffer } from 'features/bookOffer/fixtures/offer'
 import { stock1, stock2, stock3, stock4 } from 'features/bookOffer/fixtures/stocks'
@@ -14,6 +15,7 @@ const mockStep = Step.HOUR
 const mockDuoStep = Step.DUO
 
 const mockDispatch = jest.fn()
+mockSettings()
 
 const mockUseBookingContext: jest.Mock<IBookingContext> = jest.fn()
 mockUseBookingContext.mockReturnValue({

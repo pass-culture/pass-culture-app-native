@@ -1,3 +1,4 @@
+import { mockSettings } from 'features/auth/context/mockSettings'
 import {
   OnboardingWrapper,
   useOnboardingContext,
@@ -8,6 +9,7 @@ import { renderHook, act } from 'tests/utils'
 
 const mockShowModal = jest.fn()
 
+mockSettings()
 jest.mock('ui/components/modals/useModal', () => ({
   useModal: () => ({
     visible: false,

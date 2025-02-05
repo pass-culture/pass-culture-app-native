@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { mockSettings } from 'features/auth/context/mockSettings'
 import { BeneficiaryCeilings } from 'features/profile/components/BeneficiaryCeilings/BeneficiaryCeilings'
 import {
   domains_credit_underage,
@@ -16,6 +17,7 @@ const mockUseIsUserUnderageBeneficiary = jest
   .mockReturnValue(false)
 
 jest.mock('libs/firebase/analytics/analytics')
+mockSettings()
 
 describe('BeneficiaryCeilings', () => {
   beforeEach(() => {

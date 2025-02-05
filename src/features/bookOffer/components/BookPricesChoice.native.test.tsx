@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { mockSettings } from 'features/auth/context/mockSettings'
 import { BookPricesChoice } from 'features/bookOffer/components/BookPricesChoice'
 import { BookingState, initialBookingState } from 'features/bookOffer/context/reducer'
 import { mockStocks } from 'features/bookOffer/fixtures/stocks'
@@ -25,6 +26,7 @@ const mockCreditOffer = 50000
 jest.mock('features/offer/helpers/useHasEnoughCredit/useHasEnoughCredit', () => ({
   useCreditForOffer: jest.fn(() => mockCreditOffer),
 }))
+mockSettings()
 
 describe('BookPricesChoice', () => {
   beforeEach(() => {

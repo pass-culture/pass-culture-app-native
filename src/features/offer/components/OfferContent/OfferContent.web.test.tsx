@@ -2,6 +2,7 @@ import React, { ComponentProps } from 'react'
 import * as ReactQueryAPI from 'react-query'
 
 import { OfferResponseV2, SubcategoriesResponseModelv2 } from 'api/gen'
+import { mockSettings } from 'features/auth/context/mockSettings'
 import * as useSimilarOffers from 'features/offer/api/useSimilarOffers'
 import { mockSubcategory } from 'features/offer/fixtures/mockSubcategory'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
@@ -20,6 +21,7 @@ import * as useModalAPI from 'ui/components/modals/useModal'
 import { OfferContent } from './OfferContent.web'
 
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
+mockSettings()
 
 const mockShowModal = jest.fn()
 jest.spyOn(useModalAPI, 'useModal').mockReturnValue({

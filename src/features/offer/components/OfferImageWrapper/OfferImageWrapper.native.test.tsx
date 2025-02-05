@@ -1,8 +1,11 @@
 import React, { ComponentProps } from 'react'
 
+import { mockSettings } from 'features/auth/context/mockSettings'
 import { OfferBodyImage } from 'features/offer/components/OfferBodyImage'
 import { OfferImageWrapper } from 'features/offer/components/OfferImageWrapper/OfferImageWrapper'
 import { render, screen } from 'tests/utils'
+
+mockSettings()
 
 describe('<OfferImageBody />', () => {
   it('should display image gradient when offer preview feature flag activated and image url defined', () => {

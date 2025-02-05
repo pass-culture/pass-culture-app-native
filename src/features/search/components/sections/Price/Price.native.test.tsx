@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { mockSettings } from 'features/auth/context/mockSettings'
 import { Price } from 'features/search/components/sections/Price/Price'
 import { initialSearchState } from 'features/search/context/reducer'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
@@ -10,6 +11,7 @@ import { render, screen, userEvent } from 'tests/utils'
 let mockSearchState = initialSearchState
 
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
+mockSettings()
 
 jest.mock('features/search/context/SearchWrapper', () => ({
   useSearch: () => ({

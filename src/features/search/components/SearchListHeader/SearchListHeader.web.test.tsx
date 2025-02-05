@@ -1,6 +1,7 @@
 import React from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
+import { mockSettings } from 'features/auth/context/mockSettings'
 import { SearchListHeader } from 'features/search/components/SearchListHeader/SearchListHeader'
 import { initialSearchState } from 'features/search/context/reducer'
 import { mockAlgoliaVenues } from 'features/search/fixtures/mockAlgoliaVenues'
@@ -25,6 +26,8 @@ const mockUseLocation: jest.Mock<Partial<ILocationContext>> = jest.fn(() => ({
 jest.mock('libs/location/LocationWrapper', () => ({
   useLocation: () => mockUseLocation(),
 }))
+
+mockSettings()
 
 const kourou: SuggestedPlace = {
   label: 'Kourou',

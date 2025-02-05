@@ -4,6 +4,7 @@ import { Keyboard } from 'react-native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { NativeCategoryIdEnumv2, SearchGroupNameEnumv2 } from 'api/gen'
+import { mockSettings } from 'features/auth/context/mockSettings'
 import { initialSearchState } from 'features/search/context/reducer'
 import { mockedSearchHistory } from 'features/search/fixtures/mockedSearchHistory'
 import * as useFilterCountAPI from 'features/search/helpers/useFilterCount/useFilterCount'
@@ -19,6 +20,8 @@ import { SuggestedPlace } from 'libs/place/types'
 import { mockedSuggestedVenue } from 'libs/venue/fixtures/mockedSuggestedVenues'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent, waitFor } from 'tests/utils'
+
+mockSettings()
 
 const venue = mockedSuggestedVenue
 

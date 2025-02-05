@@ -3,6 +3,7 @@ import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { DepositType } from 'api/gen'
+import { mockSettings } from 'features/auth/context/mockSettings'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { beneficiaryUser } from 'fixtures/user'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
@@ -14,6 +15,7 @@ import { fireEvent, render, screen } from 'tests/utils'
 import { FinishSubscriptionModal } from './FinishSubscriptionModal'
 
 jest.mock('features/auth/context/AuthContext')
+mockSettings()
 
 jest.mock('shared/user/useGetDepositAmountsByAge')
 const mockDepositAmounts = useGetDepositAmountsByAge as jest.Mock

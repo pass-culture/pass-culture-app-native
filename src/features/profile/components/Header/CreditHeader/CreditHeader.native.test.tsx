@@ -3,6 +3,7 @@ import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { DomainsCredit } from 'api/gen'
+import { mockSettings } from 'features/auth/context/mockSettings'
 import {
   CreditHeader,
   CreditHeaderProps,
@@ -34,6 +35,7 @@ const today = '2023-02-10T21:00:00'
 const tomorrow = '2023-02-11T21:00:00'
 
 jest.mock('libs/firebase/analytics/analytics')
+mockSettings()
 
 describe('CreditHeader', () => {
   beforeEach(() => {

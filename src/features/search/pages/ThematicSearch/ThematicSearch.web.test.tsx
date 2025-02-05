@@ -2,6 +2,7 @@ import React from 'react'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
 import { SearchGroupNameEnumv2, SubcategoriesResponseModelv2 } from 'api/gen'
+import { mockSettings } from 'features/auth/context/mockSettings'
 import { contentfulGtlPlaylistSnap } from 'features/gtlPlaylist/fixtures/contentfulGtlPlaylistSnap'
 import { initialSearchState } from 'features/search/context/reducer'
 import * as useSearch from 'features/search/context/SearchWrapper'
@@ -17,6 +18,7 @@ import { checkAccessibilityFor, render, screen } from 'tests/utils/web'
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 jest.mock('features/navigation/TabBar/routes')
+mockSettings()
 
 const mockDispatch = jest.fn()
 

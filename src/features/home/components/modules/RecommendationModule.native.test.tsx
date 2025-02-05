@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { RecommendationApiParams, SubcategoriesResponseModelv2 } from 'api/gen'
+import { mockSettings } from 'features/auth/context/mockSettings'
 import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { analytics } from 'libs/analytics/provider'
 import { ContentTypes, DisplayParametersFields } from 'libs/contentful/types'
@@ -32,6 +33,8 @@ const mockUseHomeRecommendedOffers = jest.fn().mockReturnValue({
 jest.mock('features/home/api/useHomeRecommendedOffers', () => ({
   useHomeRecommendedOffers: () => mockUseHomeRecommendedOffers(),
 }))
+
+mockSettings()
 
 jest.mock('libs/firebase/analytics/analytics')
 

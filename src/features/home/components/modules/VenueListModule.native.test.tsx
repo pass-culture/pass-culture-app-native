@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
+import { mockSettings } from 'features/auth/context/mockSettings'
 import { VenueListModule } from 'features/home/components/modules/VenueListModule'
 import { selectedVenueActions } from 'features/venueMap/store/selectedVenueStore'
 import { venuesSearchFixture } from 'libs/algolia/fixtures/venuesSearchFixture'
@@ -14,6 +15,7 @@ import * as useModalAPI from 'ui/components/modals/useModal'
 
 const mockShowModal = jest.fn()
 const useModalAPISpy = jest.spyOn(useModalAPI, 'useModal')
+mockSettings()
 
 const mockedPlace: SuggestedPlace = {
   label: 'Kourou',

@@ -2,6 +2,7 @@ import mockdate from 'mockdate'
 import React from 'react'
 
 import { NextSubscriptionStepResponse } from 'api/gen'
+import { mockSettings } from 'features/auth/context/mockSettings'
 import { stepsDetailsFixture } from 'features/identityCheck/pages/helpers/stepDetails.fixture'
 import { useRehydrateProfile } from 'features/identityCheck/pages/helpers/useRehydrateProfile'
 import { useStepperInfo } from 'features/identityCheck/pages/helpers/useStepperInfo'
@@ -12,6 +13,7 @@ import { Stepper } from './Stepper'
 
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
+mockSettings()
 
 mockdate.set(new Date('2020-12-01T00:00:00.000Z'))
 
