@@ -42,7 +42,7 @@ export const SubcategoryButton = ({
   const searchConfig = getNavigateToConfig('SearchResults', searchParams)
 
   return (
-    <StyledTouchable
+    <StyledInternalTouchable
       {...focusProps}
       {...hoverProps}
       onMouseDown={(e: Event) => e.preventDefault()} // Prevent focus on click
@@ -53,11 +53,11 @@ export const SubcategoryButton = ({
       backgroundColor={backgroundColor}
       borderColor={borderColor}>
       <StyledText>{label}</StyledText>
-    </StyledTouchable>
+    </StyledInternalTouchable>
   )
 }
 
-const StyledTouchable: typeof InternalTouchableLink = styledButton(InternalTouchableLink)<{
+const StyledInternalTouchable: typeof InternalTouchableLink = styledButton(InternalTouchableLink)<{
   isFocus?: boolean
   windowWidth: number
   backgroundColor: ColorsEnum

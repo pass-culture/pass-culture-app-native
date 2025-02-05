@@ -20,42 +20,25 @@ jest.mock('features/search/context/SearchWrapper', () => ({
   }),
 }))
 
+const defaultSearchParams = {
+  ...mockSearchState,
+  offerCategories: [SearchGroupNameEnumv2.LIVRES],
+  offerNativeCategories: [BooksNativeCategoriesEnum.MANGAS],
+}
+
 const user = userEvent.setup()
 jest.useFakeTimers()
 
 describe('<SubcategoryButton/>', () => {
-  const defaultSearchParams = {
-    ...mockSearchState,
-    offerCategories: [SearchGroupNameEnumv2.LIVRES],
-    offerNativeCategories: [BooksNativeCategoriesEnum.MANGAS],
-  }
-
   it('should render SubcategoryButton', async () => {
-    render(
-      reactQueryProviderHOC(
-        <SubcategoryButton
-          label="Mangas"
-          backgroundColor={theme.colors.deepPink}
-          borderColor={theme.colors.deepPinkDark}
-          searchParams={defaultSearchParams}
-        />
-      )
-    )
+    renderSubcategoryButton()
 
     expect(await screen.findByText('Mangas')).toBeOnTheScreen()
   })
 
   it('should navigate to searchResults with correct params', async () => {
-    render(
-      reactQueryProviderHOC(
-        <SubcategoryButton
-          label="Mangas"
-          backgroundColor={theme.colors.deepPink}
-          borderColor={theme.colors.deepPinkDark}
-          searchParams={defaultSearchParams}
-        />
-      )
-    )
+    renderSubcategoryButton()
+
     const button = await screen.findByText('Mangas')
 
     await user.press(button)
@@ -69,3 +52,15 @@ describe('<SubcategoryButton/>', () => {
     })
   })
 })
+
+const renderSubcategoryButton = () =>
+  render(
+    reactQueryProviderHOC(
+      <SubcategoryButton
+        label="Mangas"
+        backgroundColor={theme.colors.deepPink}
+        borderColor={theme.colors.deepPinkDark}
+        searchParams={defaultSearchParams}
+      />
+    )
+  )
