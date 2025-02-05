@@ -75,7 +75,7 @@ describe('<ThematicSearch/>', () => {
 
     await screen.findByText('Romans et littérature')
 
-    expect(true).toBe(true)
+    expect(screen).toMatchSnapshot()
   })
 
   it('should dispatch action with offerCategories when params change', async () => {
