@@ -16,7 +16,6 @@ describe('buildLocationParameters', () => {
     ${LocationMode.AROUND_PLACE} | ${DEFAULT_USER_POSITION} | ${'all'}       | ${10}             | ${{ aroundLatLng: EXPECTED_AROUND_LAT_LNG, aroundRadius: 10_000 }}
     ${LocationMode.AROUND_PLACE} | ${DEFAULT_USER_POSITION} | ${20}          | ${'all'}          | ${{ aroundLatLng: EXPECTED_AROUND_LAT_LNG, aroundRadius: 'all' }}
     ${LocationMode.EVERYWHERE}   | ${undefined}             | ${'all'}       | ${'all'}          | ${undefined}
-    ${LocationMode.EVERYWHERE}   | ${undefined}             | ${'all'}       | ${'all'}          | ${undefined}
   `(
     'when selectedLocation is $selectedLocationMode, userLocation is $userLocation, aroundMeRadius is $aroundMeRadius, aroundPlaceRadius is $aroundPlaceRadius',
     ({ selectedLocationMode, userLocation, aroundMeRadius, aroundPlaceRadius, expected }) => {

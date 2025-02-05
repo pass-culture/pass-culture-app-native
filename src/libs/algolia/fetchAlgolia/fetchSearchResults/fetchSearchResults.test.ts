@@ -171,11 +171,11 @@ describe('fetchSearchResults', () => {
     fetchSearchResults({
       parameters: { query } as SearchQueryParameters,
       buildLocationParameterParams: {
-        userLocation,
+        userLocation: undefined,
         selectedLocationMode: LocationMode.EVERYWHERE,
         aroundMeRadius: MAX_RADIUS,
         aroundPlaceRadius: MAX_RADIUS,
-        geolocPosition: null,
+        geolocPosition: userLocation,
       },
       isUserUnderage: false,
       disabilitiesProperties: defaultDisabilitiesProperties,
@@ -199,7 +199,6 @@ describe('fetchSearchResults', () => {
       {
         indexName: env.ALGOLIA_VENUES_INDEX_PLAYLIST_SEARCH,
         params: {
-          aroundLatLng: '42, 43',
           aroundRadius: 'all',
           clickAnalytics: true,
           hitsPerPage: 35,
@@ -502,11 +501,11 @@ describe('fetchSearchResults', () => {
         venue,
       } as SearchQueryParameters,
       buildLocationParameterParams: {
-        userLocation,
+        userLocation: undefined,
         selectedLocationMode: LocationMode.EVERYWHERE,
         aroundMeRadius: MAX_RADIUS,
         aroundPlaceRadius: MAX_RADIUS,
-        geolocPosition: null,
+        geolocPosition: userLocation,
       },
       isUserUnderage: false,
       disabilitiesProperties: defaultDisabilitiesProperties,
