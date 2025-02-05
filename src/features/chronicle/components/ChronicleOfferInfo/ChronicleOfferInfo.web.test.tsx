@@ -11,6 +11,7 @@ describe('ChronicleOfferInfo', () => {
 
     expect(screen.getByText('12€')).toBeInTheDocument()
     expect(screen.getByText('lorem ipsum')).toBeInTheDocument()
+    expect(screen.getByTestId('imagePlaceholder')).toBeInTheDocument()
   })
 
   it('should render correctly with custom children', () => {
@@ -23,5 +24,6 @@ describe('ChronicleOfferInfo', () => {
     expect(screen.getByText('12€')).toBeInTheDocument()
     expect(screen.getByText('lorem ipsum')).toBeInTheDocument()
     expect(screen.getByTestId('button')).toBeInTheDocument()
+    expect(screen.getByTestId('imagePlaceholder')).toBeInTheDocument()
   })
 })
