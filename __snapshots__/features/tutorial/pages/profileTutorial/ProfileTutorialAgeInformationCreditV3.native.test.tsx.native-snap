@@ -890,7 +890,7 @@ exports[`<ProfileTutorialAgeInformationCreditV3 /> should render correctly 1`] =
                               ]
                             }
                           >
-                            Tu as 1 an pour confirmer ton identité et activer ce crédit.
+                            Tu as jusqu’à la veille de tes 19 ans pour confirmer ton identité et activer ton crédit.
                           </Text>
                         </View>
                         <View
@@ -958,7 +958,7 @@ exports[`<ProfileTutorialAgeInformationCreditV3 /> should render correctly 1`] =
                               ]
                             }
                           >
-                            Après activation, tu as jusqu’à la veille de tes 21 ans pour utiliser tout ton crédit.
+                            Une fois activé, ton crédit expirera la veille de ton 21ème anniversaire.
                           </Text>
                         </View>
                       </View>
@@ -1096,7 +1096,7 @@ exports[`<ProfileTutorialAgeInformationCreditV3 /> should render correctly 1`] =
                 ]
               }
             >
-              Découvre tout ce que la culture a à offrir, avec ou sans crédit !
+              Explore tout ce que la culture peut offrir, avec ou sans crédit !
             </Text>
             <View
               numberOfSpaces={1}
