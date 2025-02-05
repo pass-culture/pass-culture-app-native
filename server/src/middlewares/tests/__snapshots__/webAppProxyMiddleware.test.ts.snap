@@ -7,26 +7,43 @@ exports[`metasResponseInterceptor with real backend should request the real test
     <meta charset=\\"utf-8\\">
     <title>Relais culturel La Nef | pass Culture</title>
     <meta name=\\"title\\" content=\\"Relais culturel La Nef | pass Culture\\" />
-    <meta name=\\"description\\"
-          content=\\"Dispositif porté par le ministère de la Culture, a pour but de faciliter l’accès des jeunes de 18 ans à la culture en leur offrant un crédit de 300€ à dépenser sur l’application pass Culture.\\"/>
+    <meta name=\\"description\\" content=\\"Créé en 1981, le Relais Culturel La Nef de Wissembourg, propose chaque année une programmation pluridisciplinaire placée sous le signe de l’exigence artistique.
+
+Plus de vingt-cinq spectacles vivants sont proposés chaque saison en théâtre, musique, cirque, humour et jeune public.
+
+Côté cinéma, la Nef offre toute l’année une programmation éclectique destinée aux petits et grands.\\" />
     <meta name=\\"author\\" content=\\"pass Culture\\"/>
     <meta name=\\"keywords\\" content=\\"pass Culture\\" />
     <meta property=\\"og:type\\" content=\\"website\\"/>
     <meta property=\\"og:url\\" content=\\"http://localhost:8080/lieu/9\\" />
     <meta property=\\"og:title\\" content=\\"Relais culturel La Nef | pass Culture\\" />
-    <meta property=\\"og:description\\"
-          content=\\"Dispositif porté par le ministère de la Culture, a pour but de faciliter l’accès des jeunes de 18 ans à la culture en leur offrant un crédit de 300€ à dépenser sur l’application pass Culture.\\"/>
-    <meta property=\\"og:image\\" content=\\"https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/google_places/9.jpeg\\" />
-    <meta property=\\"og:image:alt\\" content=\\"pass Culture\\"/>
+    <meta property=\\"og:description\\" content=\\"Créé en 1981, le Relais Culturel La Nef de Wissembourg, propose chaque année une programmation pluridisciplinaire placée sous le signe de l’exigence artistique.
+
+Plus de vingt-cinq spectacles vivants sont proposés chaque saison en théâtre, musique, cirque, humour et jeune public.
+
+Côté cinéma, la Nef offre toute l’année une programmation éclectique destinée aux petits et grands.\\" />
+    <meta property=\\"og:image\\" content=\\"https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/venues/BE_1737707633\\" />
+    <meta property=\\"og:image:alt\\" content=\\"Créé en 1981, le Relais Culturel La Nef de Wissembourg, propose chaque année une programmation pluridisciplinaire placée sous le signe de l’exigence artistique.
+
+Plus de vingt-cinq spectacles vivants sont proposés chaque saison en théâtre, musique, cirque, humour et jeune public.
+
+Côté cinéma, la Nef offre toute l’année une programmation éclectique destinée aux petits et grands.\\" />
     <meta property=\\"og:locale\\" content=\\"fr_FR\\"/>
     <meta property=\\"og:site_name\\" content=\\"pass Culture\\"/>
     <meta name=\\"twitter:card\\" content=\\"summary_large_image\\" />
     <meta name=\\"twitter:url\\" content=\\"http://localhost:8080/lieu/9\\" />
     <meta name=\\"twitter:title\\" content=\\"Relais culturel La Nef | pass Culture\\" />
-    <meta name=\\"twitter:description\\"
-          content=\\"Dispositif porté par le ministère de la Culture, a pour but de faciliter l’accès des jeunes de 18 ans à la culture en leur offrant un crédit de 300€ à dépenser sur l’application pass Culture.\\"/>
-    <meta name=\\"twitter:image\\" content=\\"https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/google_places/9.jpeg\\" />
-    <meta name=\\"twitter:image:alt\\" content=\\"claus sandy\\" />
+    <meta name=\\"twitter:description\\" content=\\"Créé en 1981, le Relais Culturel La Nef de Wissembourg, propose chaque année une programmation pluridisciplinaire placée sous le signe de l’exigence artistique.
+
+Plus de vingt-cinq spectacles vivants sont proposés chaque saison en théâtre, musique, cirque, humour et jeune public.
+
+Côté cinéma, la Nef offre toute l’année une programmation éclectique destinée aux petits et grands.\\" />
+    <meta name=\\"twitter:image\\" content=\\"https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/venues/BE_1737707633\\" />
+    <meta name=\\"twitter:image:alt\\" content=\\"Créé en 1981, le Relais Culturel La Nef de Wissembourg, propose chaque année une programmation pluridisciplinaire placée sous le signe de l’exigence artistique.
+
+Plus de vingt-cinq spectacles vivants sont proposés chaque saison en théâtre, musique, cirque, humour et jeune public.
+
+Côté cinéma, la Nef offre toute l’année une programmation éclectique destinée aux petits et grands.\\" />
     <meta name=\\"twitter:site\\" content=\\"@pass_Culture\\"/>
     <meta name=\\"twitter:app:country\\" content=\\"FR\\"/>
     <meta name=\\"twitter:app:name:iphone\\" content=\\"pass Culture\\"/>
