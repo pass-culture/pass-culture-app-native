@@ -7,6 +7,7 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { checkAccessibilityFor, render } from 'tests/utils/web'
 
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
+jest.mock('libs/firebase/analytics/analytics')
 
 describe('<ProfileTutorialAgeInformationCreditV3/>', () => {
   describe('Accessibility', () => {
