@@ -5,11 +5,9 @@ import { setSettings } from 'features/auth/tests/setSettings'
 import { SearchHeader } from 'features/search/components/SearchHeader/SearchHeader'
 import { initialSearchState } from 'features/search/context/reducer'
 import * as useFilterCountAPI from 'features/search/helpers/useFilterCount/useFilterCount'
-import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { LocationLabel } from 'libs/location/types'
 import { render, screen, waitFor, within } from 'tests/utils'
-
-jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
 
 jest.mock('libs/firebase/analytics/analytics')
 
@@ -58,6 +56,7 @@ jest.mock('features/navigation/TabBar/routes')
 describe('SearchHeader component', () => {
   beforeEach(() => {
     setSettings()
+    setFeatureFlags()
   })
 
   it('should render SearchHeader', async () => {

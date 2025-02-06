@@ -2,12 +2,10 @@ import React from 'react'
 
 import { VenueTopComponent } from 'features/venue/components/VenueTopComponent/VenueTopComponent'
 import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
-import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { useLocation } from 'libs/location'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen } from 'tests/utils/web'
-
-jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
 
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
@@ -16,6 +14,10 @@ jest.mocked(useLocation)
 jest.mock('@react-native-clipboard/clipboard')
 
 describe('<VenueTopComponent />', () => {
+  beforeEach(() => {
+    setFeatureFlags()
+  })
+
   it('should display preview in modal', async () => {
     render(
       reactQueryProviderHOC(

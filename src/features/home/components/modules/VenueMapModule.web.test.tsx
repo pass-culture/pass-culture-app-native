@@ -1,15 +1,14 @@
 import React from 'react'
 
 import { VenueMapModule } from 'features/home/components/modules/VenueMapModule'
-import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { render, screen } from 'tests/utils/web'
-
-jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(true)
 
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 describe('VenueMapModule', () => {
   it('should not display venue map block on web', () => {
+    setFeatureFlags()
     render(<VenueMapModule />)
 
     expect(screen.queryByText('Explorer les lieux')).not.toBeOnTheScreen()

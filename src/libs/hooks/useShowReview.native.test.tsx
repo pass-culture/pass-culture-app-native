@@ -2,11 +2,10 @@ import { AppState } from 'react-native'
 import InAppReview from 'react-native-in-app-review'
 
 import { useReviewInAppInformation } from 'features/bookOffer/helpers/useReviewInAppInformation'
-import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useShowReview } from 'libs/hooks/useShowReview'
 import { renderHook, waitFor } from 'tests/utils'
-
-const useFeatureFlagSpy = jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
 
 jest.unmock('libs/appState')
 const appStateSpy = jest.spyOn(AppState, 'addEventListener')
@@ -23,6 +22,10 @@ const mockUpdateInformationWhenReviewHasBeenRequested = jest.fn()
 jest.useFakeTimers()
 
 describe('useShowReview', () => {
+  beforeEach(() => {
+    setFeatureFlags()
+  })
+
   it('should show the review when it is available and we want to show it', () => {
     mockIsAvailable.mockReturnValueOnce(true)
     mockUseReviewInAppInformation.mockReturnValueOnce({ shouldReviewBeRequested: true })
@@ -97,7 +100,7 @@ describe('useShowReview', () => {
     })
 
     it('should show the review when we enable store review', () => {
-      useFeatureFlagSpy.mockReturnValueOnce(false)
+      setFeatureFlags()
 
       renderHook(useShowReview)
 
@@ -107,7 +110,7 @@ describe('useShowReview', () => {
     })
 
     it('should not show the review when app is running in the background', () => {
-      useFeatureFlagSpy.mockReturnValueOnce(false)
+      setFeatureFlags()
 
       renderHook(useShowReview)
 
@@ -121,7 +124,7 @@ describe('useShowReview', () => {
     })
 
     it('should not show review when we disable store review', () => {
-      useFeatureFlagSpy.mockReturnValueOnce(true)
+      setFeatureFlags([RemoteStoreFeatureFlags.WIP_DISABLE_STORE_REVIEW])
 
       renderHook(useShowReview)
 

@@ -12,7 +12,7 @@ import { MoviesScreeningCalendar } from 'features/offer/components/MoviesScreeni
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { offersStocksResponseSnap } from 'features/offer/fixtures/offersStocksResponse'
 import { VenueOffers } from 'features/venue/types'
-import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -20,7 +20,6 @@ import { act, render, screen } from 'tests/utils'
 import { AnchorProvider } from 'ui/components/anchor/AnchorContext'
 
 jest.mock('libs/network/NetInfoWrapper')
-jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(true)
 jest.mock('libs/firebase/analytics/analytics')
 
 const MOCK_TIMESTAMP = '2024-05-08T12:50:00Z'
@@ -58,6 +57,7 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 
 describe('MoviesScreeningCalendar', () => {
   beforeEach(() => {
+    setFeatureFlags()
     mockdate.set(MOCK_DATE)
     mockServer.postApi<OffersStocksResponseV2>(`/v2/offers/stocks`, mockedOfferStockResponse)
     mockServer.getApi<OfferResponseV2>(`/v2/offer/${ID}`, {

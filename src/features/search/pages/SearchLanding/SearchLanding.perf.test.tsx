@@ -5,7 +5,7 @@ import { SubcategoriesResponseModelv2 } from 'api/gen'
 import { SearchWrapper } from 'features/search/context/SearchWrapper'
 import { mockSuggestionHits } from 'features/search/fixtures/algolia'
 import { SearchLanding } from 'features/search/pages/SearchLanding/SearchLanding'
-import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -15,8 +15,6 @@ jest.mock('libs/firebase/analytics/analytics')
 jest.mock('features/navigation/TabBar/routes')
 
 jest.mock('react-native/Libraries/Animated/NativeAnimatedHelper')
-
-jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(true)
 
 jest.mock('features/favorites/context/FavoritesWrapper')
 
@@ -37,6 +35,7 @@ jest.setTimeout(TEST_TIMEOUT_IN_MS)
 describe('<SearchLanding />', () => {
   describe('Search Landing Page -', () => {
     beforeAll(() => {
+      setFeatureFlags()
       useRoute.mockReturnValue({ params: {} })
     })
 

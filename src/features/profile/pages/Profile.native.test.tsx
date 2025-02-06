@@ -17,7 +17,7 @@ import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
-import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import * as useRemoteConfigContext from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import {
@@ -97,7 +97,6 @@ const useVersionSpy = jest.spyOn(useVersion, 'useVersion').mockReturnValue('Vers
 
 const shareSpy = jest.spyOn(Share, 'share').mockResolvedValue({ action: Share.sharedAction })
 
-const mockUseFeatureFlag = jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
 const useRemoteConfigContextSpy = jest.spyOn(useRemoteConfigContext, 'useRemoteConfigContext')
 
 jest.mock('libs/firebase/analytics/analytics')
@@ -162,7 +161,7 @@ describe('Profile component', () => {
 
   describe('achievements banner', () => {
     beforeEach(() => {
-      mockUseFeatureFlag.mockReturnValue(true)
+      setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_ACHIEVEMENTS])
     })
 
     it('should show banner when FF is enabled and user is a beneficiary', () => {

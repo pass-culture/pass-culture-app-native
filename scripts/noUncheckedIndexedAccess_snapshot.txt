@@ -20,7 +20,7 @@
 ./src/features/venueMap/store/selectedVenueStore.native.test.ts:16
 ./src/features/venueMap/store/selectedVenueStore.native.test.ts:26
 ./src/libs/algolia/fetchAlgolia/buildAlgoliaParameters/getCategoriesFacetFilters.ts:26
-./src/libs/hooks/useShowReview.native.test.tsx:114
+./src/libs/hooks/useShowReview.native.test.tsx:117
 ./src/libs/itinerary/useItinerary.native.test.ts:61
 ./src/libs/parsers/highlightLinks.native.test.tsx:34
 ./src/libs/parsers/highlightLinks.tsx:18

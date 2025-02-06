@@ -2,15 +2,18 @@ import React from 'react'
 
 import { OfferAccessibility } from 'features/offer/components/OfferAccessibility/OfferAccessibility'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
-import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { render, screen } from 'tests/utils'
 
 jest.mock('libs/firebase/analytics/analytics')
-jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
 
 const accessibility = offerResponseSnap.accessibility
 
 describe('<OfferAccessibility />', () => {
+  beforeEach(() => {
+    setFeatureFlags()
+  })
+
   it('should display section title when there is at least one handicap information', () => {
     render(<OfferAccessibility accessibility={accessibility} />)
 

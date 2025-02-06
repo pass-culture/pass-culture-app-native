@@ -2,14 +2,12 @@ import React from 'react'
 
 import { initialSearchState } from 'features/search/context/reducer'
 import { FilterBehaviour } from 'features/search/enums'
-import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { checkAccessibilityFor, render, screen } from 'tests/utils/web'
 
 import { CategoriesModal } from './CategoriesModal'
 
 jest.mock('libs/subcategories/useSubcategories')
-
-jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(true)
 
 const mockSearchState = initialSearchState
 jest.mock('features/search/context/SearchWrapper', () => ({
@@ -23,6 +21,10 @@ jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 describe('<CategoriesModal/>', () => {
+  beforeEach(() => {
+    setFeatureFlags()
+  })
+
   it('should display mobile header modal if mobile viewport', () => {
     render(
       <CategoriesModal

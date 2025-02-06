@@ -5,12 +5,12 @@ import * as useGoBack from 'features/navigation/useGoBack'
 import { FILTERS_VENUE_TYPE_MAPPING } from 'features/venueMap/constant'
 import { VenueMap } from 'features/venueMap/pages/VenueMap/VenueMap'
 import { useVenueTypeCode, venueTypeCodeActions } from 'features/venueMap/store/venueTypeCodeStore'
-import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen } from 'tests/utils'
 
 jest.mock('features/venue/api/useVenueOffers')
-jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(true)
 
 const mockGoBack = jest.fn()
 jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
@@ -47,6 +47,10 @@ const VENUE_TYPE = VenueTypeCodeKey.MOVIE
 
 describe('<VenueMap />', () => {
   beforeEach(() => {
+    setFeatureFlags([
+      RemoteStoreFeatureFlags.WIP_OFFERS_IN_BOTTOM_SHEET,
+      RemoteStoreFeatureFlags.WIP_VENUE_MAP_TYPE_FILTER_V2,
+    ]) // TODO(PC-34435): add tests for WIP_VENUE_MAP_HIDDEN_POI and when the wipOffersInBottomSheet and wipVenueMapTypeFilterV2 are off
     mockUseVenueTypeCode.mockReturnValue(VENUE_TYPE)
   })
 

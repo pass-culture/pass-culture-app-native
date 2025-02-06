@@ -7,7 +7,7 @@ import { SearchWrapper } from 'features/search/context/SearchWrapper'
 import { mockSuggestionHits } from 'features/search/fixtures/algolia'
 import { SearchResults } from 'features/search/pages/SearchResults/SearchResults'
 import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
-import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -17,8 +17,6 @@ jest.mock('libs/firebase/analytics/analytics')
 jest.mock('features/navigation/TabBar/routes')
 
 jest.mock('react-native/Libraries/Animated/NativeAnimatedHelper')
-
-jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
 
 jest.mock('react-instantsearch-core', () => ({
   ...jest.requireActual('react-instantsearch-core'),
@@ -42,6 +40,7 @@ describe('<SearchResults />', () => {
     })
 
     beforeEach(() => {
+      setFeatureFlags()
       mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
     })
 

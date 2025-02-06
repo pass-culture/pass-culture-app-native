@@ -1,18 +1,16 @@
 import React from 'react'
 import { View } from 'react-native'
 
-import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { FeatureFlag } from 'shared/FeatureFlag/FeatureFlag'
 import { render, screen } from 'tests/utils'
-
-const useFeatureFlagSpy = jest.spyOn(useFeatureFlag, 'useFeatureFlag')
 
 describe('<FeatureFlag />', () => {
   const children = <View testID="children" />
 
   it('should display children when feature flag activated', () => {
-    useFeatureFlagSpy.mockReturnValueOnce(true)
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_STEPPER_RETRY_UBBLE])
     render(
       <FeatureFlag featureFlag={RemoteStoreFeatureFlags.WIP_STEPPER_RETRY_UBBLE}>
         {children}
@@ -23,7 +21,7 @@ describe('<FeatureFlag />', () => {
   })
 
   it('should not display childen when feature flag deactivated', () => {
-    useFeatureFlagSpy.mockReturnValueOnce(false)
+    setFeatureFlags()
     render(
       <FeatureFlag featureFlag={RemoteStoreFeatureFlags.WIP_STEPPER_RETRY_UBBLE}>
         {children}

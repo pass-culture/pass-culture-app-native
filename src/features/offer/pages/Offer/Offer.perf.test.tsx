@@ -10,7 +10,7 @@ import {
   mockedAlgoliaOffersWithSameArtistResponse,
   mockedAlgoliaResponse,
 } from 'libs/algolia/fixtures/algoliaFixtures'
-import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { Network } from 'libs/share/types'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'
@@ -42,7 +42,6 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 jest.unmock('react-native/Libraries/Animated/createAnimatedComponent')
 jest.useFakeTimers()
 
-jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
 jest.mock('libs/network/NetInfoWrapper')
 
 useRoute.mockReturnValue({
@@ -61,6 +60,7 @@ jest.setTimeout(TEST_TIMEOUT_IN_MS)
 
 describe('<Offer />', () => {
   beforeEach(() => {
+    setFeatureFlags()
     // We mock server instead of hooks to test the real behavior of the component.
     mockServer.getApi<OfferResponseV2>(`/v2/offer/${offerResponseSnap.id}`, {
       requestOptions: { persist: true },

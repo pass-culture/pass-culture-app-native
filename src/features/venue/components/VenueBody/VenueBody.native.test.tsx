@@ -10,11 +10,9 @@ import { VenueBody } from 'features/venue/components/VenueBody/VenueBody'
 import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
 import { VenueOffersResponseSnap } from 'features/venue/fixtures/venueOffersResponseSnap'
 import { analytics } from 'libs/analytics/provider'
-import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen } from 'tests/utils'
-
-jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
 
 mockdate.set(new Date('2021-08-15T00:00:00Z'))
 
@@ -40,6 +38,7 @@ jest.mock('libs/firebase/analytics/analytics')
 
 describe('<VenueBody />', () => {
   beforeEach(() => {
+    setFeatureFlags()
     // We mock only the first call to canOpenURL so we can wait for instagram to be displayed
     // This way we avoid act warning when the calls to openURL are made
     canOpenURLSpy.mockResolvedValueOnce(true)
