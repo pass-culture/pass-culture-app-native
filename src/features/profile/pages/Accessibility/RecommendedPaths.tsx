@@ -11,7 +11,7 @@ import { DOUBLE_LINE_BREAK, LINE_BREAK } from 'ui/theme/constants'
 
 export function RecommendedPaths() {
   return (
-    <SecondaryPageWithBlurHeader title="Parcours recommandés" enableMaxWidth={false}>
+    <SecondaryPageWithBlurHeader title="Parcours recommandés web" enableMaxWidth={false}>
       <TypoDS.Body>
         En complément de la mise en conformité du pass Culture au regard des critères du RGAA qui
         reste partielle, les équipes du pass Culture se sont attachées à travailler des parcours

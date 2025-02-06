@@ -1,7 +1,7 @@
 import { UseQueryResult } from 'react-query'
 
 import { SubscriptionStepperResponseV2 } from 'api/gen'
-import * as SettingsContext from 'features/auth/context/SettingsContext'
+import { setSettings } from 'features/auth/tests/setSettings'
 import { useGetStepperInfo } from 'features/identityCheck/api/useGetStepperInfo'
 import { usePhoneValidationRemainingAttempts } from 'features/identityCheck/api/usePhoneValidationRemainingAttempts'
 import { initialSubscriptionState as mockState } from 'features/identityCheck/context/reducer'
@@ -27,8 +27,6 @@ jest.mock('features/auth/context/AuthContext')
 jest.mock('features/identityCheck/api/useGetStepperInfo', () => ({
   useGetStepperInfo: jest.fn(() => mockUseGetStepperInfo),
 }))
-
-const mockUseSettingContext = jest.spyOn(SettingsContext, 'useSettingsContext')
 
 const mockUseGetStepperInfo = (
   useGetStepperInfo as jest.Mock<
@@ -60,11 +58,7 @@ useFeatureFlagSpy.mockReturnValue(false)
 
 describe('useStepperInfo', () => {
   beforeEach(() => {
-    mockUseSettingContext.mockReturnValue({
-      data: {
-        enablePhoneValidation: true,
-      },
-    } as SettingsContext.ISettingsContext)
+    setSettings({ enablePhoneValidation: true })
   })
 
   it('should return title and subtitle', () => {
@@ -113,11 +107,7 @@ describe('useStepperInfo', () => {
         },
       })
 
-      mockUseSettingContext.mockReturnValueOnce({
-        data: {
-          enablePhoneValidation: false,
-        },
-      } as SettingsContext.ISettingsContext)
+      setSettings({ enablePhoneValidation: false })
 
       const { stepsDetails } = useStepperInfo()
       const phoneValidationStep = stepsDetails.find(

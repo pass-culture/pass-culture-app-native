@@ -499,8 +499,8 @@ exports[`<CodeNotReceivedModal /> should have a different color if one attempt r
                         {
                           "color": "#ffffff",
                           "fontFamily": "Montserrat-Bold",
-                          "fontSize": 15,
-                          "lineHeight": 20,
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
                           "maxWidth": "100%",
                         },
                       ]
@@ -1018,8 +1018,8 @@ exports[`<CodeNotReceivedModal /> should match snapshot 1`] = `
                         {
                           "color": "#ffffff",
                           "fontFamily": "Montserrat-Bold",
-                          "fontSize": 15,
-                          "lineHeight": 20,
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
                           "maxWidth": "100%",
                         },
                       ]

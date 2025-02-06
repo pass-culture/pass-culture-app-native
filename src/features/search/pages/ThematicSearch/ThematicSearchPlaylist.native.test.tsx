@@ -3,9 +3,8 @@ import React from 'react'
 import { Referrals, ScreenNames } from 'features/navigation/RootNavigator/types'
 import { ThematicSearchPlaylist } from 'features/search/pages/ThematicSearch/ThematicSearchPlaylist'
 import { ThematicSearchPlaylistData } from 'features/search/pages/ThematicSearch/types'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { mockBuilder } from 'tests/mockBuilder'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen, act } from 'tests/utils'
@@ -31,7 +30,7 @@ const DEFAULT_PLAYLIST = { title: DEFAULT_PLAYLIST_TITLE, offers: DEFAULT_PLAYLI
 
 describe('ThematicSearchPlaylist', () => {
   beforeEach(() => {
-    setFeatureFlags([RemoteStoreFeatureFlags.WIP_NEW_OFFER_TILE])
+    setFeatureFlags([])
   })
 
   it('should log ConsultOffer when pressing an item', async () => {

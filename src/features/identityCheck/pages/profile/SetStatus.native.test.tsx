@@ -9,7 +9,7 @@ import { useAddress } from 'features/identityCheck/pages/profile/store/addressSt
 import { useCity } from 'features/identityCheck/pages/profile/store/cityStore'
 import { useName } from 'features/identityCheck/pages/profile/store/nameStore'
 import * as UnderageUserAPI from 'features/profile/helpers/useIsUserUnderage'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'

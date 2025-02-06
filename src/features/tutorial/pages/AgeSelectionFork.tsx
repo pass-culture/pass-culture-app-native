@@ -2,14 +2,13 @@ import { StackScreenProps } from '@react-navigation/stack'
 import React, { FunctionComponent, useCallback } from 'react'
 import styled from 'styled-components/native'
 
+import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { TutorialRootStackParamList } from 'features/navigation/RootNavigator/types'
 import { AgeButton } from 'features/tutorial/components/AgeButton'
 import { useOnboardingContext } from 'features/tutorial/context/OnboardingWrapper'
 import { NonEligible, TutorialTypes } from 'features/tutorial/enums'
 import { TutorialPage } from 'features/tutorial/pages/TutorialPage'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { storage } from 'libs/storage'
 import { AccessibleUnorderedList } from 'ui/components/accessibility/AccessibleUnorderedList'
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
@@ -27,7 +26,8 @@ type AgeButtonProps = {
 type Props = StackScreenProps<TutorialRootStackParamList, 'AgeSelectionFork'>
 
 export const AgeSelectionFork: FunctionComponent<Props> = ({ route }: Props) => {
-  const enableCreditV3 = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_CREDIT_V3)
+  const { data: settings } = useSettingsContext()
+  const enableCreditV3 = settings?.wipEnableCreditV3
 
   const type = route.params.type
   const isOnboarding = type === TutorialTypes.ONBOARDING

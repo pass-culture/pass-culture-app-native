@@ -8,7 +8,7 @@ import {
   highlightHeaderFixture,
 } from 'features/home/fixtures/homepage.fixture'
 import { GenericHome } from 'features/home/pages/GenericHome'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
@@ -17,7 +17,7 @@ import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategories
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, render, screen, waitFor, within } from 'tests/utils'
-import { Typo } from 'ui/theme'
+import { TypoDS } from 'ui/theme'
 const useShowSkeletonSpy = jest.spyOn(showSkeletonAPI, 'useShowSkeleton').mockReturnValue(false)
 
 const mockUseNetInfoContext = jest.spyOn(useNetInfoContextDefault, 'useNetInfoContext') as jest.Mock
@@ -28,7 +28,7 @@ jest.mock('features/auth/context/AuthContext', () => ({
 
 const defaultModules = [formattedVenuesModule]
 const homeId = 'fake-id'
-const Header = <Typo.Title1>Header</Typo.Title1>
+const Header = <TypoDS.Title1>Header</TypoDS.Title1>
 
 const mockStartTransaction = jest.fn()
 const mockFinishTransaction = jest.fn()
@@ -264,7 +264,6 @@ describe('GenericHome page - Analytics', () => {
       expect(BatchProfile.trackEvent).toHaveBeenCalledWith('has_seen_all_the_homepage', {
         home_id: 'fake-id',
         home_type: 'thematicHome - Highlight',
-        home_name: 'Bloc temps fort',
       })
     })
   })

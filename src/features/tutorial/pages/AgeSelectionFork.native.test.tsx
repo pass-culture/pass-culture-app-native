@@ -2,12 +2,12 @@ import { StackScreenProps } from '@react-navigation/stack'
 import React from 'react'
 
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
+import { setSettings } from 'features/auth/tests/setSettings'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { TutorialRootStackParamList } from 'features/navigation/RootNavigator/types'
 import { TutorialTypes, NonEligible } from 'features/tutorial/enums'
 import { AgeSelectionFork } from 'features/tutorial/pages/AgeSelectionFork'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { storage } from 'libs/storage'
 import { render, screen, userEvent } from 'tests/utils'
 
@@ -132,7 +132,9 @@ describe('AgeSelectionFork', () => {
   })
 
   describe('when enableCreditV3 activated', () => {
-    beforeEach(() => setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_CREDIT_V3]))
+    beforeEach(() => {
+      setSettings({ wipEnableCreditV3: true })
+    })
 
     describe('onboarding', () => {
       beforeEach(() => {

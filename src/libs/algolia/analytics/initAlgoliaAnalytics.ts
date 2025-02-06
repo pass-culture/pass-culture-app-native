@@ -1,7 +1,7 @@
 import AlgoliaSearchInsights from 'search-insights'
 import { v1 as uuid } from 'uuid'
 
-import { env } from 'libs/environment'
+import { env } from 'libs/environment/env'
 
 export const initAlgoliaAnalytics = () => {
   AlgoliaSearchInsights('init', {

@@ -4,7 +4,7 @@ import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import { ROUTE_PARAMS } from 'features/trustedDevice/fixtures/fixtures'
 import { beneficiaryUser } from 'fixtures/user'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { mockAuthContextWithoutUser, mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { fireEvent, render, screen } from 'tests/utils'
 

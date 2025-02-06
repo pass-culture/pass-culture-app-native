@@ -19,11 +19,11 @@ import { useAvailableCategories } from 'features/search/helpers/useAvailableCate
 import { useNavigateToSearch } from 'features/search/helpers/useNavigateToSearch/useNavigateToSearch'
 import { CreateHistoryItem, SearchState, SearchView } from 'features/search/types'
 import { AlgoliaSuggestionHit } from 'libs/algolia/types'
-import { env } from 'libs/environment'
+import { env } from 'libs/environment/env'
 import { useSearchGroupLabel } from 'libs/subcategories'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
 import { MagnifyingGlassFilled } from 'ui/svg/icons/MagnifyingGlassFilled'
-import { getSpacing, Typo, TypoDS } from 'ui/theme'
+import { getSpacing, TypoDS } from 'ui/theme'
 
 type AutocompleteOfferItemProps = {
   hit: AlgoliaSuggestionHit
@@ -174,7 +174,7 @@ export function AutocompleteOfferItem({
       offerNativeCategories:
         shouldFilterOnNativeCategory && orderedNativeCategories[0]?.value
           ? [orderedNativeCategories[0].value]
-          : undefined,
+          : [],
       offerCategories: shouldShowCategory ? mostPopularCategory : [],
       isFromHistory: undefined,
       gtls: [],
@@ -233,7 +233,7 @@ const SuggestionContainer: FunctionComponent<{
 const Suggestion: FunctionComponent<{ categoryToDisplay: string }> = ({ categoryToDisplay }) => (
   <React.Fragment>
     <TypoDS.Body> dans </TypoDS.Body>
-    <Typo.ButtonTextPrimary>{categoryToDisplay}</Typo.ButtonTextPrimary>
+    <StyledBodyAccent>{categoryToDisplay}</StyledBodyAccent>
   </React.Fragment>
 )
 
@@ -253,3 +253,7 @@ const MagnifyingGlassFilledIcon = styled(MagnifyingGlassFilled).attrs(({ theme }
 const StyledText = styled(Text)({
   marginLeft: getSpacing(2),
 })
+
+const StyledBodyAccent = styled(TypoDS.BodyAccent)(({ theme }) => ({
+  color: theme.colors.primary,
+}))

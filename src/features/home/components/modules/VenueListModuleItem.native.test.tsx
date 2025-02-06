@@ -3,7 +3,7 @@ import React from 'react'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { VenueListModule } from 'features/home/components/modules/VenueListModule'
 import { venuesSearchFixture } from 'libs/algolia/fixtures/venuesSearchFixture'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 

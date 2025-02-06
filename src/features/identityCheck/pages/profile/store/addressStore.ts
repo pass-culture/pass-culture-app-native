@@ -13,9 +13,12 @@ const addressStore = createStore({
     setAddress: (address: string) => set({ address }),
     resetAddress: () => set(defaultState),
   }),
+  selectors: {
+    selectAddress: () => (state) => state.address,
+  },
   options: { persist: true },
 })
 
 export const addressActions = addressStore.actions
 
-export const useAddress = () => addressStore.useStore((state) => state.address)
+export const { useAddress } = addressStore.hooks

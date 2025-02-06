@@ -1,5 +1,5 @@
 // eslint-disable-next-line no-restricted-imports
-import { firebaseAnalytics } from 'libs/firebase/analytics'
+import { firebaseAnalytics } from 'libs/firebase/analytics/analytics'
 
 jest.mock('libs/firebase/analytics/analytics')
 

@@ -7,7 +7,7 @@ import { isAPIExceptionNotCaptured } from 'api/apiHelpers'
 import { SearchGroupNameEnumv2, SearchGroupResponseModelv2 } from 'api/gen'
 import { useAlgoliaSimilarOffers } from 'features/offer/api/useAlgoliaSimilarOffers'
 import { Position } from 'libs/location'
-import { eventMonitoring } from 'libs/monitoring'
+import { eventMonitoring } from 'libs/monitoring/services'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { QueryKeys } from 'libs/queryKeys'
 

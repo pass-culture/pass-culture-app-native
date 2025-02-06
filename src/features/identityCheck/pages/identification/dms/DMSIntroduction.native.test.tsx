@@ -4,8 +4,8 @@ import { useRoute } from '__mocks__/@react-navigation/native'
 import { DMSIntroduction } from 'features/identityCheck/pages/identification/dms/DMSIntroduction'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import * as useGoBack from 'features/navigation/useGoBack'
-import { analytics } from 'libs/analytics'
-import { env } from 'libs/environment'
+import { analytics } from 'libs/analytics/provider'
+import { env } from 'libs/environment/env'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')

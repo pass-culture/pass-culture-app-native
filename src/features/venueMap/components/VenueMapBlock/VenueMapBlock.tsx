@@ -8,7 +8,7 @@ import { VENUE_MAP_BACKGROUND } from 'features/venueMap/components/VenueMapBlock
 import { VENUE_MAP_BACKGROUND_APP_V2 } from 'features/venueMap/components/VenueMapBlock/VenueMapBackgroundAppV2'
 import { initialVenuesActions } from 'features/venueMap/store/initialVenuesStore'
 import { selectedVenueActions } from 'features/venueMap/store/selectedVenueStore'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'

@@ -5,7 +5,7 @@ import { VenueTypeModal } from 'features/venueMap/pages/modals/VenueTypeModal/Ve
 import { useVenues } from 'features/venueMap/store/venuesStore'
 import { useVenueTypeCode, venueTypeCodeActions } from 'features/venueMap/store/venueTypeCodeStore'
 import { venuesFixture } from 'libs/algolia/fetchAlgolia/fetchVenues/fixtures/venuesFixture'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 
 const mockHideModal = jest.fn()

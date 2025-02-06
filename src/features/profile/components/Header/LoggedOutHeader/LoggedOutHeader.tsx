@@ -1,30 +1,41 @@
-import React from 'react'
+import React, { FunctionComponent } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
 import { AuthenticationButton } from 'features/auth/components/AuthenticationButton/AuthenticationButton'
+import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { HeaderWithGreyContainer } from 'features/profile/components/Header/HeaderWithGreyContainer/HeaderWithGreyContainer'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { ButtonWithLinearGradient } from 'ui/components/buttons/buttonWithLinearGradient/ButtonWithLinearGradient'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 
+type Props = {
+  showForceUpdateBanner: boolean
+}
+
 const onBeforeNavigate = () => {
   analytics.logProfilSignUp()
   analytics.logSignUpClicked({ from: 'profile' })
 }
 
-export function LoggedOutHeader() {
-  const enableCreditV3 = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_CREDIT_V3)
+export const LoggedOutHeader: FunctionComponent<Props> = ({ showForceUpdateBanner }) => {
+  const isPassForAllEnabled = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_PASS_FOR_ALL)
+  const { data: settings } = useSettingsContext()
+  const enableCreditV3 = settings?.wipEnableCreditV3
   const subtitle = `Tu as ${enableCreditV3 ? '17 ou 18' : 'entre 15 et 18'} ans\u00a0?`
+  const bodyText = `Identifie-toi pour découvrir des offres culturelles et bénéficier de ton crédit si tu as ${enableCreditV3 ? '17 ou 18' : 'entre 15 et 18'} ans.`
 
   const { isDesktopViewport, colors } = useTheme()
 
   return (
-    <HeaderWithGreyContainer title="Mon profil" subtitle={subtitle}>
-      <TypoDS.Body>Identifie-toi pour bénéficier de ton crédit pass Culture</TypoDS.Body>
+    <HeaderWithGreyContainer
+      showForceUpdateBanner={showForceUpdateBanner}
+      title="Mon profil"
+      subtitle={isPassForAllEnabled ? undefined : subtitle}>
+      <TypoDS.Body>{bodyText}</TypoDS.Body>
       <Spacer.Column numberOfSpaces={5} />
       <Container>
         <InternalTouchableLink

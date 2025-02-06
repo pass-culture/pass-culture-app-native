@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { BatchProfile, BatchUser } from '__mocks__/@batch.com/react-native-plugin'
-import { env } from 'libs/environment'
+import { env } from 'libs/environment/env'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils'
 

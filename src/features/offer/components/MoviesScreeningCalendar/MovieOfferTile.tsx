@@ -8,9 +8,10 @@ import {
   getMovieScreenings,
 } from 'features/offer/components/MovieScreeningCalendar/useMovieScreeningCalendar'
 import { useSelectedDateScreening } from 'features/offer/components/MovieScreeningCalendar/useSelectedDateScreenings'
-import { MovieOffer } from 'features/offer/components/MoviesScreeningCalendar/getNextMoviesByDate'
 import { useMovieCalendar } from 'features/offer/components/MoviesScreeningCalendar/MovieCalendarContext'
+import { isDateNotWithinNextNbDays } from 'features/offer/components/MoviesScreeningCalendar/moviesOffer.builder'
 import { NextScreeningButton } from 'features/offer/components/MoviesScreeningCalendar/NextScreeningButton'
+import { MovieOffer } from 'features/offer/components/MoviesScreeningCalendar/types'
 import { useOfferCTAButton } from 'features/offer/components/OfferCTAButton/useOfferCTAButton'
 import { formatDuration } from 'features/offer/helpers/formatDuration/formatDuration'
 import { VenueOffers } from 'features/venue/types'
@@ -57,10 +58,12 @@ export const MovieOfferTile: FC<MovieOfferTileProps> = ({
     () => selectedDateScreenings(offer.venue.id, onPressOfferCTA, movieScreeningUserData),
     [movieScreeningUserData, offer.venue.id, onPressOfferCTA, selectedDateScreenings]
   )
+
   const offerScreeningOnSelectedDates = useMemo(
     () => venueOffers.hits.find((item) => Number(item.objectID) === offer.id),
     [offer.id, venueOffers.hits]
   )
+
   return (
     <React.Fragment>
       <View>
@@ -81,7 +84,11 @@ export const MovieOfferTile: FC<MovieOfferTileProps> = ({
         <View>
           <NextScreeningButton
             date={nextScreeningDate}
-            onPress={() => goToDate(nextScreeningDate)}
+            onPress={
+              isDateNotWithinNextNbDays(new Date(), nextScreeningDate, 15)
+                ? () => onPressOfferCTA()
+                : () => goToDate(nextScreeningDate)
+            }
           />
         </View>
       ) : (

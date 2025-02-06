@@ -32,7 +32,7 @@ export const PlaylistCardOffer: FC<Props> = ({
   distance,
 }) => {
   return (
-    <Container maxWidth={width} testID="playlist-card-offer-v2">
+    <Container maxWidth={width}>
       <NewOfferCaption name={name} date={date} price={price} categoryLabel={categoryLabel} />
       <ImageContainer>
         {distance ? <DistanceTag label={`à ${distance}`} /> : null}

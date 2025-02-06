@@ -1,10 +1,10 @@
 import { ValidationError } from 'yup'
 
-import { eventMonitoring } from 'libs/monitoring'
+import { eventMonitoring } from 'libs/monitoring/services'
 
 import { parseBooleanVariables, parseEnvironment } from './parseEnvironment'
 
-jest.mock('libs/monitoring')
+jest.mock('libs/monitoring/services')
 const mockCaptureException = eventMonitoring.captureException as jest.Mock
 
 const mockedConfig = {

@@ -1,7 +1,7 @@
 import { ALL_OPTIONAL_COOKIES, COOKIES_BY_CATEGORY } from 'features/cookies/CookiesPolicy'
 import { setMarketingParams } from 'features/cookies/helpers/setMarketingParams'
 // eslint-disable-next-line no-restricted-imports
-import { firebaseAnalytics } from 'libs/firebase/analytics'
+import { firebaseAnalytics } from 'libs/firebase/analytics/analytics'
 import { storage, StorageKey } from 'libs/storage'
 import * as getUtmParamsConsentAPI from 'libs/utm/getUtmParamsConsent'
 import { act } from 'tests/utils'

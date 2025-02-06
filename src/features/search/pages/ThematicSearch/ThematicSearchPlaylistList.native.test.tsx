@@ -3,7 +3,6 @@ import React from 'react'
 import { ThematicSearchPlaylistList } from 'features/search/pages/ThematicSearch/ThematicSearchPlaylistList'
 import { ThematicSearchPlaylistData } from 'features/search/pages/ThematicSearch/types'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { mockBuilder } from 'tests/mockBuilder'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, cleanup } from 'tests/utils'
@@ -36,7 +35,7 @@ const DEFAULT_PLAYLIST_WITHOUT_HITS = {
 
 describe('ThematicSearchPlaylistList', () => {
   beforeEach(() => {
-    setFeatureFlags([RemoteStoreFeatureFlags.WIP_NEW_OFFER_TILE])
+    setFeatureFlags([])
   })
 
   afterEach(cleanup)

@@ -9,7 +9,7 @@ import { DisabilitiesProperties } from 'features/accessibility/types'
 import { BooksNativeCategoriesEnum, OfferGenreType } from 'features/search/types'
 import { FACETS_FILTERS_ENUM } from 'libs/algolia/enums/facetsEnums'
 import { FiltersArray, SearchQueryParameters } from 'libs/algolia/types'
-import { eventMonitoring } from 'libs/monitoring'
+import { eventMonitoring } from 'libs/monitoring/services'
 import { GtlLevel } from 'shared/gtl/types'
 
 export const buildOfferCategoriesPredicate = (searchGroups: SearchGroupNameEnumv2[]): string[] =>

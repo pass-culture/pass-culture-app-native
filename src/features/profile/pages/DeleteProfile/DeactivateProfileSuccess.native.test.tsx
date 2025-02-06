@@ -2,17 +2,17 @@ import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import * as LogoutRoutine from 'features/auth/helpers/useLogoutRoutine'
+import { setSettings } from 'features/auth/tests/setSettings'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { navigateFromRef } from 'features/navigation/navigationRef'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 import { DeactivateProfileSuccess } from './DeactivateProfileSuccess'
 
 jest.mock('features/navigation/helpers/navigateToHome')
 jest.mock('features/navigation/navigationRef')
-jest.mock('features/auth/context/SettingsContext')
 
 const signOutMock = jest.fn()
 jest.spyOn(LogoutRoutine, 'useLogoutRoutine').mockReturnValue(signOutMock)
@@ -26,6 +26,10 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 })
 
 describe('DeactivateProfileSuccess component', () => {
+  beforeEach(() => {
+    setSettings()
+  })
+
   it('should render delete profile success', () => {
     render(<DeactivateProfileSuccess />)
 

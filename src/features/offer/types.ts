@@ -7,6 +7,7 @@ import {
   SearchGroupResponseModelv2,
   SubcategoryIdEnum,
 } from 'api/gen'
+import { ChronicleCardData } from 'features/chronicle/type'
 import { Referrals } from 'features/navigation/RootNavigator/types'
 import { PlaylistType } from 'features/offer/enums'
 import { Subcategory } from 'libs/subcategories/types'
@@ -36,7 +37,6 @@ export interface OfferTileProps {
   searchId?: string
   apiRecoParams?: RecommendationApiParams
   index?: number
-  variant?: 'default' | 'new'
   artistName?: string
 }
 
@@ -61,4 +61,5 @@ export type OfferContentProps = {
   offer: OfferResponseV2
   searchGroupList: SearchGroupResponseModelv2[]
   subcategory: Subcategory
+  chronicles?: ChronicleCardData[]
 }

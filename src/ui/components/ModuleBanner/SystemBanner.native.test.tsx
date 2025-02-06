@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { render } from 'tests/utils'
 import { SystemBanner } from 'ui/components/ModuleBanner/SystemBanner'
 

@@ -169,6 +169,42 @@
         }
       }
     },
+    "jdk@17": {
+      "last_modified": "2024-12-23T21:10:33Z",
+      "resolved": "github:NixOS/nixpkgs/de1864217bfa9b5845f465e771e0ecb48b30e02d#jdk17",
+      "source": "devbox-search",
+      "version": "17.0.13+11",
+      "systems": {
+        "aarch64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/wk2l2v2r2srpdlhfx01b3l6x6gx3xk73-openjdk-17.0.13+11",
+              "default": true
+            },
+            {
+              "name": "debug",
+              "path": "/nix/store/v8izxd2k8l8nwgixqhgg3qy5w7pdrh1w-openjdk-17.0.13+11-debug"
+            }
+          ],
+          "store_path": "/nix/store/wk2l2v2r2srpdlhfx01b3l6x6gx3xk73-openjdk-17.0.13+11"
+        },
+        "x86_64-linux": {
+          "outputs": [
+            {
+              "name": "out",
+              "path": "/nix/store/k4877vrvzk3pf4k44g1r6k454vjs8f17-openjdk-17.0.13+11",
+              "default": true
+            },
+            {
+              "name": "debug",
+              "path": "/nix/store/k230kdlpj6zj5hsqvm72jfq28frl1dkq-openjdk-17.0.13+11-debug"
+            }
+          ],
+          "store_path": "/nix/store/k4877vrvzk3pf4k44g1r6k454vjs8f17-openjdk-17.0.13+11"
+        }
+      }
+    },
     "jq@latest": {
       "last_modified": "2024-11-07T05:50:23Z",
       "resolved": "github:NixOS/nixpkgs/85f7e662eda4fa3a995556527c87b2524b691933#jq",

@@ -2,6 +2,7 @@ import React, { useCallback } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { creditActions } from 'features/identityCheck/api/useCreditStore'
 import { navigateToHome, navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { isUserUnderageBeneficiary } from 'features/profile/helpers/isUserUnderageBeneficiary'
@@ -27,6 +28,8 @@ export function BeneficiaryAccountCreated() {
   const maxPriceInCents = useMaxPrice()
   const { uniqueColors } = useTheme()
   const { user } = useAuthContext()
+  const { data: settings } = useSettingsContext()
+
   const isUnderageBeneficiary = isUserUnderageBeneficiary(user)
   const shouldShowCulturalSurvey = useShouldShowCulturalSurveyForBeneficiaryUser()
   const shouldNavigateToCulturalSurvey = shouldShowCulturalSurvey(user)
@@ -37,9 +40,15 @@ export function BeneficiaryAccountCreated() {
   const maxPrice = formatCurrencyFromCents(maxPriceInCents, currency, euroToPacificFrancRate)
   const subtitle = `${maxPrice} viennent d’être crédités sur ton compte pass Culture`
 
-  const text = isUnderageBeneficiary
-    ? 'Tu as jusqu’à la veille de tes 18 ans pour profiter de ton budget.'
-    : 'Tu as deux ans pour profiter de ton budget.'
+  const enableCreditV3 = settings?.wipEnableCreditV3
+
+  const unnderageBeneficiaryText = isUnderageBeneficiary
+    ? 'Tu as jusqu’à la veille de tes 18 ans pour profiter de ton crédit.'
+    : 'Tu as deux ans pour profiter de ton crédit.'
+
+  const text = enableCreditV3
+    ? 'Tu as jusqu’à la veille de tes 21 ans pour utiliser tout ton crédit.'
+    : unnderageBeneficiaryText
 
   const onBeforeNavigate = useCallback(() => {
     BatchProfile.trackEvent(BatchEvent.hasValidatedSubscription)

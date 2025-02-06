@@ -8,7 +8,7 @@ import { VideoMonoOfferTile } from 'features/home/components/modules/video/Video
 import { VideoMultiOfferList } from 'features/home/components/modules/video/VideoMultiOfferList'
 import { VideoPlayerWeb } from 'features/home/components/modules/video/VideoPlayerWeb.web'
 import { VideoModule } from 'features/home/types'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { OfferAnalyticsParams } from 'libs/analytics/types'
 import { ContentTypes } from 'libs/contentful/types'
 import { formatToFrenchDate } from 'libs/parsers/formatDates'

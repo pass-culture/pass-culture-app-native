@@ -2,7 +2,7 @@ import mockdate from 'mockdate'
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { offersFixture } from 'shared/offer/offer.fixture'
@@ -23,11 +23,6 @@ const propsWithPublicationDateTomorrow = {
   moduleId: '1',
   offer: { ...offersFixture[0], offer: { ...offersFixture[0].offer, publicationDate: tomorrow } },
 }
-
-const mockDistance: string | null = null
-jest.mock('libs/location/hooks/useDistance', () => ({
-  useDistance: () => mockDistance,
-}))
 
 jest.mock('libs/subcategories/useSubcategory')
 const mockSubcategories = PLACEHOLDER_DATA.subcategories

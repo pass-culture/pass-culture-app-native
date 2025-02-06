@@ -404,8 +404,8 @@ exports[`NonEligibleModal for user under 15 years old should render correctly fo
                 {
                   "color": "#161617",
                   "fontFamily": "Montserrat-Bold",
-                  "fontSize": 15,
-                  "lineHeight": 20,
+                  "fontSize": 16,
+                  "lineHeight": 25.6,
                   "maxWidth": "100%",
                 },
               ]
@@ -525,8 +525,8 @@ exports[`NonEligibleModal for user under 15 years old should render correctly fo
                 {
                   "color": "#ffffff",
                   "fontFamily": "Montserrat-Bold",
-                  "fontSize": 15,
-                  "lineHeight": 20,
+                  "fontSize": 16,
+                  "lineHeight": 25.6,
                   "maxWidth": "100%",
                 },
               ]
@@ -950,8 +950,8 @@ exports[`NonEligibleModal for user under 15 years old should render correctly fo
                 {
                   "color": "#ffffff",
                   "fontFamily": "Montserrat-Bold",
-                  "fontSize": 15,
-                  "lineHeight": 20,
+                  "fontSize": 16,
+                  "lineHeight": 25.6,
                   "maxWidth": "100%",
                 },
               ]

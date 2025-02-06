@@ -1,4 +1,4 @@
-import { env } from 'libs/environment'
+import { env } from 'libs/environment/env'
 
 import { Configuration } from './gen'
 import { DefaultApi } from './gen/api'

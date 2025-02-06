@@ -5,8 +5,7 @@ import { ApiError } from 'api/ApiError'
 import { OfferResponseV2 } from 'api/gen'
 import { OfferNotFound } from 'features/offer/pages/OfferNotFound/OfferNotFound'
 import { useLogTypeFromRemoteConfig } from 'libs/hooks/useLogTypeFromRemoteConfig'
-import { OfferNotFoundError } from 'libs/monitoring'
-import { LogTypeEnum } from 'libs/monitoring/errors'
+import { OfferNotFoundError, LogTypeEnum } from 'libs/monitoring/errors'
 import { QueryKeys } from 'libs/queryKeys'
 
 async function getOfferById(offerId: number, logType: LogTypeEnum) {

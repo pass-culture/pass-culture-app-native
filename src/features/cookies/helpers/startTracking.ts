@@ -2,7 +2,7 @@
 import { amplitude } from 'libs/amplitude'
 import { campaignTracker } from 'libs/campaign'
 // eslint-disable-next-line no-restricted-imports
-import { firebaseAnalytics } from 'libs/firebase/analytics'
+import { firebaseAnalytics } from 'libs/firebase/analytics/analytics'
 import { Batch } from 'libs/react-native-batch'
 
 const enableTracking = () => {

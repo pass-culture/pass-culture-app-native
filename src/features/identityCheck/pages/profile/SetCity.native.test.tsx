@@ -2,7 +2,7 @@ import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { SetCity } from 'features/identityCheck/pages/profile/SetCity'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { mockedSuggestedCities } from 'libs/place/fixtures/mockedSuggestedCities'
 import { CitiesResponse, CITIES_API_URL } from 'libs/place/useCities'
 import { storage } from 'libs/storage'

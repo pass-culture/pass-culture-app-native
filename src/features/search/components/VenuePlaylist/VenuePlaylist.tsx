@@ -12,7 +12,7 @@ import { SearchVenueItem } from 'features/search/components/SearchVenueItems/Sea
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { venueTypeCodeActions } from 'features/venueMap/store/venueTypeCodeStore'
 import { AlgoliaVenue } from 'libs/algolia/types'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'

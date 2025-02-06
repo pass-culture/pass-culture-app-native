@@ -19,6 +19,7 @@ export type Referrals =
   | Lowercase<keyof AllNavParamList>
   | 'artist'
   | 'bookingimpossible'
+  | 'chronicles'
   | 'deeplink'
   | 'exclusivity'
   | 'highlightOffer'
@@ -65,7 +66,8 @@ export type ThematicHomeParams = BaseThematicHome &
 export type AccessibilityRootStackParamList = {
   Accessibility: undefined
   AccessibilityActionPlan: undefined
-  AccessibilityDeclaration: undefined
+  AccessibilityDeclarationMobile: undefined
+  AccessibilityDeclarationWeb: undefined
   AccessibilityEngagement: undefined
   RecommendedPaths: undefined
 }
@@ -86,6 +88,7 @@ export type TutorialRootStackParamList = {
   OnboardingGeolocation: undefined
   OnboardingWelcome: undefined
   ProfileTutorialAgeInformation: { age: 15 | 16 | 17 | 18 }
+  ProfileTutorialAgeInformationCreditV3: undefined
 }
 
 export type TrustedDeviceRootStackParamList = {
@@ -205,7 +208,7 @@ export type RootStackParamList = {
   ConfirmChangeEmail: { token: string; expiration_timestamp: number }
   ConfirmDeleteProfile: undefined
   ConsentSettings: { onGoBack?: () => void } | undefined
-  Chronicles: { offerId: number; chronicleId?: number }
+  Chronicles: { offerId: number; chronicleId?: number; from?: Referrals }
   CulturalSurvey: undefined
   DeactivateProfileSuccess: undefined
   DeeplinksGenerator: undefined
@@ -220,6 +223,7 @@ export type RootStackParamList = {
   EndedBookings: undefined
   FavoritesSorts: undefined
   FeedbackInApp: undefined
+  ForceUpdate: undefined
   ForgottenPassword: undefined
   FraudulentSuspendedAccount: undefined
   LegalNotices: undefined

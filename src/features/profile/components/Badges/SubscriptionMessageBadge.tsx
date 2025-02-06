@@ -3,6 +3,7 @@ import { openInbox } from 'react-native-email-link'
 
 import { SubscriptionMessage } from 'api/gen'
 import { useIsMailAppAvailable } from 'features/auth/helpers/useIsMailAppAvailable'
+import { ForceUpdateBanner } from 'features/forceUpdate/components/ForceUpdateBanner'
 import { Subtitle } from 'features/profile/components/Subtitle/Subtitle'
 import { formatDateToLastUpdatedAtMessage } from 'features/profile/helpers/formatDateToLastUpdatedAtMessage'
 import { matchSubscriptionMessageIconToSvg } from 'features/profile/helpers/matchSubscriptionMessageIconToSvg'
@@ -16,10 +17,11 @@ import { EmailFilled } from 'ui/svg/icons/EmailFilled'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Spacer } from 'ui/theme'
 
-type Props = {
+type CallToActionProps = {
   subscriptionMessage: SubscriptionMessage
 }
-const CallToAction = ({ subscriptionMessage }: Props) => {
+
+const CallToAction = ({ subscriptionMessage }: CallToActionProps) => {
   const isMailAppAvailable = useIsMailAppAvailable()
   const { callToActionTitle, callToActionLink, callToActionIcon } =
     subscriptionMessage.callToAction ?? {}
@@ -57,7 +59,15 @@ const CallToAction = ({ subscriptionMessage }: Props) => {
   )
 }
 
-export const SubscriptionMessageBadge = ({ subscriptionMessage }: Props) => {
+type SubscriptionMessageBadgeProps = {
+  disableActivation: boolean
+  subscriptionMessage: SubscriptionMessage
+}
+
+export const SubscriptionMessageBadge = ({
+  disableActivation,
+  subscriptionMessage,
+}: SubscriptionMessageBadgeProps) => {
   const { callToAction, popOverIcon, userMessage, updatedAt } = subscriptionMessage
 
   const icon = callToAction?.callToActionIcon
@@ -76,6 +86,12 @@ export const SubscriptionMessageBadge = ({ subscriptionMessage }: Props) => {
         </React.Fragment>
       ) : null}
       <Spacer.Column numberOfSpaces={2} />
+      {disableActivation ? (
+        <React.Fragment>
+          <ForceUpdateBanner />
+          <Spacer.Column numberOfSpaces={6} />
+        </React.Fragment>
+      ) : null}
       <InfoBanner
         icon={icon}
         message={userMessage}

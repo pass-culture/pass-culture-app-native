@@ -15,8 +15,8 @@ import {
   UseNavigationType,
 } from 'features/navigation/RootNavigator/types'
 import { useDeviceInfo } from 'features/trustedDevice/helpers/useDeviceInfo'
-import { analytics } from 'libs/analytics'
 import { LoginRoutineMethod, SSOType } from 'libs/analytics/logEventAnalytics'
+import { analytics } from 'libs/analytics/provider'
 import { storage } from 'libs/storage'
 import { useShouldShowCulturalSurveyForBeneficiaryUser } from 'shared/culturalSurvey/useShouldShowCulturalSurveyForBeneficiaryUser'
 

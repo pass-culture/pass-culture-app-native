@@ -1,9 +1,10 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
+import { setSettings } from 'features/auth/tests/setSettings'
 import { SignupBanner } from 'features/home/components/banners/SignupBanner'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { userEvent, render, screen } from 'tests/utils'
@@ -85,7 +86,9 @@ describe('SignupBanner', () => {
   })
 
   describe('when enableCreditV3 activated', () => {
-    beforeEach(() => setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_CREDIT_V3]))
+    beforeEach(() => {
+      setSettings({ wipEnableCreditV3: true })
+    })
 
     it('should display banner with credit V3 subtitle', () => {
       render(<SignupBanner hasGraphicRedesign={false} />)

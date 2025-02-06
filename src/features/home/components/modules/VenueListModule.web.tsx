@@ -4,7 +4,7 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { VenueListModuleItem } from 'features/home/components/modules/VenueListModuleItem'
 import { VenueHit } from 'libs/algolia/types'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { SeeMoreWithEye } from 'ui/components/SeeMoreWithEye'
 import { getSpacing, Spacer, TypoDS } from 'ui/theme'

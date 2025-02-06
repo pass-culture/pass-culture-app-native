@@ -6,7 +6,7 @@ import { offerAttributesToRetrieve } from 'libs/algolia/fetchAlgolia/buildAlgoli
 import { multipleQueries } from 'libs/algolia/fetchAlgolia/multipleQueries'
 import { searchResponsePredicate } from 'libs/algolia/fetchAlgolia/searchResponsePredicate'
 import { buildHitsPerPage } from 'libs/algolia/fetchAlgolia/utils'
-import { env } from 'libs/environment'
+import { env } from 'libs/environment/env'
 import { Offer } from 'shared/offer/types'
 
 export async function fetchOffersByGTL(

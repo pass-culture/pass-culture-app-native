@@ -7,7 +7,7 @@ import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteRespon
 import { useHighlightOffer } from 'features/home/api/useHighlightOffer'
 import { HighlightOfferModule } from 'features/home/components/modules/HighlightOfferModule'
 import { highlightOfferModuleFixture } from 'features/home/fixtures/highlightOfferModule.fixture'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'

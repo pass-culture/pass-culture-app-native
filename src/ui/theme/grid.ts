@@ -2,12 +2,11 @@ import { useCallback } from 'react'
 import { PixelRatio, useWindowDimensions } from 'react-native'
 import { useTheme } from 'styled-components/native'
 
-import { getSpacing } from 'ui/theme/spacing'
-
 export enum BorderRadiusEnum {
   BUTTON = 24,
   BORDER_RADIUS = 8,
-  CHECKBOX_RADIUS = getSpacing(1),
+  CHECKBOX_RADIUS = 4,
+  TILE = 12,
 }
 
 // Horizontal constants

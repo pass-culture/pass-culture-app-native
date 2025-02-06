@@ -1,16 +1,15 @@
-import React, { FunctionComponent, PropsWithChildren, useRef } from 'react'
-import { Platform } from 'react-native'
+import React, { FunctionComponent } from 'react'
 import { useSharedValue } from 'react-native-reanimated'
-import { useTheme } from 'styled-components/native'
 
 import { CategoryIdEnum } from 'api/gen'
-import { OfferImageRenderer } from 'features/offer/components/OfferImageRenderer'
 import {
   offerImageContainerMarginTop,
   useOfferImageContainerDimensions,
 } from 'features/offer/helpers/useOfferImageContainerDimensions'
-import { HeaderWithImage } from 'ui/components/headers/HeaderWithImage'
-import { Spacer } from 'ui/theme'
+import { getSpacing } from 'ui/theme'
+
+import { OfferImageHeaderWrapper } from './OfferImageHeaderWrapper'
+import { OfferImageRenderer } from './OfferImageRenderer'
 
 type Props = {
   categoryId: CategoryIdEnum | null
@@ -19,8 +18,6 @@ type Props = {
   placeholderImage?: string
 }
 
-const isWeb = Platform.OS === 'web'
-
 export const OfferImageContainer: FunctionComponent<Props> = ({
   imageUrls = [],
   onPress,
@@ -28,23 +25,14 @@ export const OfferImageContainer: FunctionComponent<Props> = ({
   placeholderImage,
 }) => {
   const { backgroundHeight } = useOfferImageContainerDimensions()
-  const { isDesktopViewport } = useTheme()
 
   const progressValue = useSharedValue<number>(0)
 
-  const Wrapper = useRef(({ children }: PropsWithChildren) =>
-    isWeb && isDesktopViewport ? (
-      <React.Fragment>{children}</React.Fragment>
-    ) : (
-      <HeaderWithImage imageHeight={backgroundHeight} imageUrl={placeholderImage}>
-        <Spacer.Column numberOfSpaces={offerImageContainerMarginTop} />
-        {children}
-      </HeaderWithImage>
-    )
-  ).current
-
   return (
-    <Wrapper>
+    <OfferImageHeaderWrapper
+      imageHeight={backgroundHeight}
+      imageUrl={placeholderImage}
+      paddingTop={getSpacing(offerImageContainerMarginTop)}>
       <OfferImageRenderer
         offerImages={imageUrls}
         placeholderImage={placeholderImage}
@@ -52,6 +40,6 @@ export const OfferImageContainer: FunctionComponent<Props> = ({
         onPress={onPress}
         categoryId={categoryId}
       />
-    </Wrapper>
+    </OfferImageHeaderWrapper>
   )
 }

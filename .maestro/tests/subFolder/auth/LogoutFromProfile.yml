@@ -5,4 +5,4 @@ appId: ${MAESTRO_APP_ID}
       text: 'République Française - Liberté Égalité Fraternité'
 - tapOn: 'Déconnexion'
 
-- assertVisible: 'Identifie-toi pour bénéficier de ton crédit pass Culture'
+- assertVisible: 'Identifie-toi pour découvrir des offres'

@@ -1,7 +1,7 @@
 import { getAllFeatureFlags } from 'libs/firebase/firestore/featureFlags/getAllFeatureFlags'
 import { FIRESTORE_ROOT_COLLECTION, RemoteStoreDocuments } from 'libs/firebase/firestore/types'
 import firestore from 'libs/firebase/shims/firestore'
-import { eventMonitoring } from 'libs/monitoring'
+import { eventMonitoring } from 'libs/monitoring/services'
 import { waitFor } from 'tests/utils'
 
 jest.mock('@react-native-firebase/firestore')

@@ -1,5 +1,6 @@
 import { NavigationContainer } from '@react-navigation/native'
 import React, { ComponentProps } from 'react'
+import { ReactTestInstance } from 'react-test-renderer'
 
 import {
   OfferResponseV2,
@@ -9,6 +10,7 @@ import {
   SubcategoryIdEnumv2,
 } from 'api/gen'
 import * as useGoBack from 'features/navigation/useGoBack'
+import { chroniclePreviewToChronicalCardData } from 'features/offer/adapters/chroniclePreviewToChronicleCardData'
 import * as useSimilarOffers from 'features/offer/api/useSimilarOffers'
 import { CineContentCTAID } from 'features/offer/components/OfferCine/CineContentCTA'
 import { PlaylistType } from 'features/offer/enums'
@@ -19,7 +21,7 @@ import {
   mockedAlgoliaOffersWithSameArtistResponse,
   mockedAlgoliaResponse,
 } from 'libs/algolia/fixtures/algoliaFixtures'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
@@ -612,6 +614,82 @@ describe('<OfferContent />', () => {
         expect(screen.queryByTestId(CineContentCTAID)).not.toBeOnTheScreen()
       })
     })
+
+    describe('Chronicles section', () => {
+      it('should not display chronicles section when there are no chronicles', async () => {
+        renderOfferContent({
+          offer: {
+            ...offerResponseSnap,
+            subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
+            chronicles: [],
+          },
+        })
+
+        await screen.findByText('Passe le bon plan\u00a0!')
+
+        expect(screen.queryByText("L'avis du book club")).not.toBeOnTheScreen()
+      })
+
+      it('should display "Voir tous les avis" button', async () => {
+        renderOfferContent({
+          offer: { ...offerResponseSnap, subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER },
+        })
+
+        expect(await screen.findByText('Voir tous les avis')).toBeOnTheScreen()
+      })
+
+      it('should navigate to chronicles page when pressing "Voir tous les avis" button', async () => {
+        renderOfferContent({
+          offer: { ...offerResponseSnap, subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER },
+        })
+
+        await user.press(await screen.findByText('Voir tous les avis'))
+
+        expect(mockNavigate).toHaveBeenNthCalledWith(1, 'Chronicles', {
+          offerId: 116656,
+          from: 'chronicles',
+        })
+      })
+
+      it('should navigate to chronicles page with anchor on the selected chronicle when pressing "Voir plus" button on a card', async () => {
+        renderOfferContent({
+          offer: { ...offerResponseSnap, subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER },
+        })
+
+        const seeMoreButtons = screen.getAllByText('Voir plus')
+
+        // Using as because links is never undefined and the typing is not correct
+        await user.press(seeMoreButtons[2] as ReactTestInstance)
+
+        expect(mockNavigate).toHaveBeenNthCalledWith(1, 'Chronicles', {
+          offerId: 116656,
+          chronicleId: 3,
+          from: 'chronicles',
+        })
+      })
+
+      it('should log consultChronicle when pressing "Voir plus" button', async () => {
+        renderOfferContent({
+          offer: { ...offerResponseSnap, subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER },
+        })
+
+        const seeMoreButtons = screen.getAllByText('Voir plus')
+
+        // Using as because links is never undefined and the typing is not correct
+        await user.press(seeMoreButtons[2] as ReactTestInstance)
+
+        expect(analytics.logConsultChronicle).toHaveBeenNthCalledWith(1, {
+          offerId: 116656,
+          chronicleId: 3,
+        })
+      })
+    })
+
+    it('should display social network section', async () => {
+      renderOfferContent({})
+
+      expect(await screen.findByText('Passe le bon plan\u00a0!')).toBeOnTheScreen()
+    })
   })
 })
 
@@ -623,7 +701,10 @@ function renderOfferContent({
   offer = offerResponseSnap,
   subcategory = mockSubcategory,
   isDesktopViewport,
+  chronicles,
 }: RenderOfferContentType) {
+  const chroniclesData =
+    chronicles || offer.chronicles.map((data) => chroniclePreviewToChronicalCardData(data))
   render(
     reactQueryProviderHOC(
       <NavigationContainer>
@@ -631,6 +712,7 @@ function renderOfferContent({
           offer={offer}
           searchGroupList={subcategoriesDataTest.searchGroups}
           subcategory={subcategory}
+          chronicles={chroniclesData}
         />
       </NavigationContainer>
     ),

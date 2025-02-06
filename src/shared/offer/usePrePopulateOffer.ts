@@ -39,6 +39,7 @@ const mergeOfferData =
     reactionsCount: {
       likes: 0,
     },
+    chronicles: [],
     ...(prevData ?? {}),
   })
 

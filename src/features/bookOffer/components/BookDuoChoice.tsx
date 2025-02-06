@@ -4,7 +4,7 @@ import { DuoChoiceSelector } from 'features/bookOffer/components/DuoChoiceSelect
 import { Step } from 'features/bookOffer/context/reducer'
 import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
-import { Spacer, Typo, TypoDS } from 'ui/theme'
+import { Spacer, TypoDS } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const BookDuoChoice = () => {
@@ -27,7 +27,7 @@ export const BookDuoChoice = () => {
         <DuoChoiceSelector />
       ) : (
         <TouchableOpacity onPress={updateBookingStepToDuo}>
-          <Typo.ButtonText>{buttonTitle}</Typo.ButtonText>
+          <TypoDS.Button>{buttonTitle}</TypoDS.Button>
         </TouchableOpacity>
       )}
     </React.Fragment>

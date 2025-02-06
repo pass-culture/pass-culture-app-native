@@ -10,9 +10,10 @@ import { useFavoriteFormattedDate } from 'features/favorites/helpers/useFavorite
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { getShareOffer } from 'features/share/helpers/getShareOffer'
 import { WebShareModal } from 'features/share/pages/WebShareModal'
-import { analytics } from 'libs/analytics'
 import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
-import { useDistance } from 'libs/location/hooks/useDistance'
+import { analytics } from 'libs/analytics/provider'
+import { useLocation } from 'libs/location'
+import { getDistance } from 'libs/location/getDistance'
 import { useSearchGroupLabel, useSubcategory } from 'libs/subcategories'
 import { TileContentType, tileAccessibilityLabel } from 'libs/tileAccessibilityLabel'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
@@ -29,7 +30,7 @@ import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouch
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { useLayout } from 'ui/hooks/useLayout'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
-import { Spacer, Typo, TypoDS, getSpacing } from 'ui/theme'
+import { Spacer, TypoDS, getSpacing } from 'ui/theme'
 
 interface Props {
   favorite: FavoriteResponse
@@ -45,10 +46,15 @@ export const Favorite: React.FC<Props> = (props) => {
   const animatedOpacity = useRef(new Animated.Value(1)).current
   const animatedCollapse = useRef(new Animated.Value(1)).current
   const prePopulateOffer = usePrePopulateOffer()
-  const distanceToOffer = useDistance({
-    lat: offer.coordinates?.latitude,
-    lng: offer.coordinates?.longitude,
-  })
+  const { userLocation, selectedPlace, selectedLocationMode } = useLocation()
+
+  const distanceToOffer = getDistance(
+    {
+      lat: offer.coordinates?.latitude,
+      lng: offer.coordinates?.longitude,
+    },
+    { userLocation, selectedPlace, selectedLocationMode }
+  )
   const currency = useGetCurrencyToDisplay()
   const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
 
@@ -197,7 +203,7 @@ export const Favorite: React.FC<Props> = (props) => {
               <Spacer.Row numberOfSpaces={SPACER_BETWEEN_IMAGE_AND_CONTENT} />
               <ContentContainer>
                 <LeftContent>
-                  <Typo.ButtonText numberOfLines={2}>{offer.name}</Typo.ButtonText>
+                  <TypoDS.BodyAccent numberOfLines={2}>{offer.name}</TypoDS.BodyAccent>
                   <Spacer.Column numberOfSpaces={1} />
                   <Body>{searchGroupLabel}</Body>
                   {formattedDate ? <Body>{formattedDate}</Body> : null}

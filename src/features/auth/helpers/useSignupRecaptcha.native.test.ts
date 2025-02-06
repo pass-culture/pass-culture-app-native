@@ -1,10 +1,11 @@
-import { captureMonitoringError } from 'libs/monitoring'
+import { captureMonitoringError } from 'libs/monitoring/errors'
 import { ReCaptchaInternalError } from 'libs/recaptcha/errors'
 import { renderHook } from 'tests/utils'
 
 import { useSignupRecaptcha } from './useSignupRecaptcha'
 
-jest.mock('libs/monitoring')
+jest.mock('libs/monitoring/services')
+jest.mock('libs/monitoring/errors')
 
 describe('useSignupRecaptcha', () => {
   it('should return isDoingReCaptchaChallenge to false when there is no network', () => {

@@ -2,28 +2,23 @@ import React from 'react'
 import { Animated } from 'react-native'
 
 import { ChroniclesHeader } from 'features/chronicle/components/ChroniclesHeader/ChroniclesHeader'
-import * as useGoBack from 'features/navigation/useGoBack'
 import { act, render, screen, userEvent } from 'tests/utils'
 
 jest.unmock('react-native/Libraries/Animated/createAnimatedComponent')
 
-const mockGoBack = jest.fn()
-jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
-  goBack: mockGoBack,
-  canGoBack: jest.fn(() => true),
-})
+const mockHandleGoBack = jest.fn()
 
 const user = userEvent.setup()
 
 jest.useFakeTimers()
 
 describe('<ChroniclesHeader />', () => {
-  it('should goBack when we press on the back button', async () => {
+  it('should handle goBack when pressing back button', async () => {
     renderChroniclesHeader()
 
     await user.press(screen.getByTestId('animated-icon-back'))
 
-    expect(mockGoBack).toHaveBeenCalledTimes(1)
+    expect(mockHandleGoBack).toHaveBeenCalledTimes(1)
   })
 
   it('should fully display the title at the end of the animation', () => {
@@ -48,6 +43,7 @@ function renderChroniclesHeader() {
     <ChroniclesHeader
       title='Tous les avis de "Mon oeuvre incroyable"'
       headerTransition={animatedValue}
+      handleGoBack={mockHandleGoBack}
     />
   )
   return { animatedValue }

@@ -9,7 +9,7 @@ import { PageWithHeader } from 'features/identityCheck/components/layout/PageWit
 import { setNameSchema } from 'features/identityCheck/pages/profile/schemas/setNameSchema'
 import { nameActions, useName } from 'features/identityCheck/pages/profile/store/nameStore'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { InfoBanner } from 'ui/components/banners/InfoBanner'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'

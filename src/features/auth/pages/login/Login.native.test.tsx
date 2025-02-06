@@ -13,8 +13,7 @@ import {
   UserProfileResponse,
 } from 'api/gen'
 import { AuthContext } from 'features/auth/context/AuthContext'
-import * as SettingsContextAPI from 'features/auth/context/SettingsContext'
-import { defaultSettings } from 'features/auth/fixtures/fixtures'
+import { setSettings } from 'features/auth/tests/setSettings'
 import { SignInResponseFailure } from 'features/auth/types'
 import { favoriteOfferResponseSnap } from 'features/favorites/fixtures/favoriteOfferResponseSnap'
 import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteResponseSnap'
@@ -23,12 +22,12 @@ import { usePreviousRoute } from 'features/navigation/helpers/usePreviousRoute'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { FAKE_USER_ID } from 'fixtures/fakeUserId'
 import { beneficiaryUser } from 'fixtures/user'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 // eslint-disable-next-line no-restricted-imports
-import { firebaseAnalytics } from 'libs/firebase/analytics'
+import { firebaseAnalytics } from 'libs/firebase/analytics/analytics'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { captureMonitoringError } from 'libs/monitoring'
+import * as monitoringErrorsModule from 'libs/monitoring/errors'
 import { NetworkErrorFixture, UnknownErrorFixture } from 'libs/recaptcha/fixtures'
 import { storage } from 'libs/storage'
 import { mockServer } from 'tests/mswServer'
@@ -43,7 +42,7 @@ jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 jest.mock('libs/network/NetInfoWrapper')
 
-jest.mock('libs/monitoring')
+jest.mock('libs/monitoring/services')
 jest.mock('libs/react-native-device-info/getDeviceId')
 jest.mock('features/navigation/helpers/navigateToHome')
 jest.mock('features/navigation/helpers/usePreviousRoute')
@@ -55,6 +54,8 @@ jest.mock('features/search/context/SearchWrapper', () => ({
 jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
   useSubscriptionContext: jest.fn(() => ({ dispatch: mockIdentityCheckDispatch })),
 }))
+
+const captureMonitoringError = jest.spyOn(monitoringErrorsModule, 'captureMonitoringError')
 
 const mockShowErrorSnackBar = jest.fn()
 const mockShowInfoSnackBar = jest.fn()
@@ -643,9 +644,7 @@ describe('<Login/>', () => {
 
   describe('Login with ReCatpcha', () => {
     beforeAll(() => {
-      return jest
-        .spyOn(SettingsContextAPI, 'useSettingsContext')
-        .mockReturnValue({ data: defaultSettings, isLoading: false })
+      setSettings()
     })
 
     it('should not open reCAPTCHA challenge modal before clicking on login button', async () => {

@@ -5,6 +5,7 @@ import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { useLogoutRoutine } from 'features/auth/helpers/useLogoutRoutine'
 import { useFavoritesState } from 'features/favorites/context/FavoritesWrapper'
 import { ProfileHeader } from 'features/profile/components/Header/ProfileHeader/ProfileHeader'
@@ -14,8 +15,11 @@ import { SHARE_APP_BANNER_IMAGE_SOURCE } from 'features/share/components/shareAp
 import { shareApp } from 'features/share/helpers/shareApp'
 import { TutorialTypes } from 'features/tutorial/enums'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
-import { analytics, isCloseToBottom } from 'libs/analytics'
-import { env } from 'libs/environment'
+import { isCloseToBottom } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
+import { env } from 'libs/environment/env'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useRemoteConfigContext } from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { GeolocPermissionState, useLocation } from 'libs/location'
@@ -53,8 +57,16 @@ const isWeb = Platform.OS === 'web'
 const DEBOUNCE_TOGGLE_DELAY_MS = 5000
 
 const OnlineProfile: React.FC = () => {
+  const enableAchievements = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_ACHIEVEMENTS)
+  const enableSystemBanner = useFeatureFlag(RemoteStoreFeatureFlags.WIP_APP_V2_SYSTEM_BLOCK)
+  const disableActivation = useFeatureFlag(RemoteStoreFeatureFlags.DISABLE_ACTIVATION)
+  const showForceUpdateBanner = useFeatureFlag(RemoteStoreFeatureFlags.SHOW_FORCE_UPDATE_BANNER)
+  const enablePassForAll = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_PASS_FOR_ALL)
+
   const { dispatch: favoritesDispatch } = useFavoritesState()
   const { isLoggedIn, user } = useAuthContext()
+  const { data: settings } = useSettingsContext()
+  const enableCreditV3 = settings?.wipEnableCreditV3
   const signOut = useLogoutRoutine()
   const version = useVersion()
   const scrollViewRef = useRef<ScrollView | null>(null)
@@ -80,10 +92,14 @@ const OnlineProfile: React.FC = () => {
 
   const shouldDisplayTutorial = !user?.isBeneficiary || isExpiredOrCreditEmptyWithNoUpcomingCredit
 
-  const tutorialNavigateTo: InternalNavigationProps['navigateTo'] =
-    userAge && userAge < 19 && userAge > 14
-      ? { screen: 'ProfileTutorialAgeInformation', params: { age: userAge } }
-      : { screen: 'EligibleUserAgeSelection', params: { type: TutorialTypes.PROFILE_TUTORIAL } }
+  const navigateTo15to18: InternalNavigationProps['navigateTo'] = enableCreditV3
+    ? { screen: 'ProfileTutorialAgeInformationCreditV3' }
+    : { screen: 'ProfileTutorialAgeInformation', params: { age: userAge } }
+  const navigateToUnder15AndAbove18: InternalNavigationProps['navigateTo'] = enableCreditV3
+    ? { screen: 'ProfileTutorialAgeInformationCreditV3' }
+    : { screen: 'EligibleUserAgeSelection', params: { type: TutorialTypes.PROFILE_TUTORIAL } }
+  const tutorialNavigateTo =
+    userAge && userAge < 19 && userAge > 14 ? navigateTo15to18 : navigateToUnder15AndAbove18
 
   useFocusEffect(
     useCallback(() => {
@@ -150,7 +166,16 @@ const OnlineProfile: React.FC = () => {
         testID="profile-scrollview">
         <ScrollViewContentContainer>
           <View accessibilityRole={AccessibilityRole.MAIN}>
-            <ProfileHeader user={user} />
+            <ProfileHeader
+              featureFlags={{
+                enableAchievements,
+                enableSystemBanner,
+                disableActivation,
+                showForceUpdateBanner,
+                enablePassForAll,
+              }}
+              user={user}
+            />
             <ProfileContainer>
               <Spacer.Column numberOfSpaces={4} />
               <Section title={isLoggedIn ? 'Paramètres du compte' : 'Paramètres de l’application'}>

@@ -3,7 +3,7 @@ import { View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { ExternalAccessibilityDataModel } from 'api/gen'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { getDetailedAccessibilityInfo } from 'shared/accessibility/getDetailedAccessibilityInfo'
 import { AccessibilityFrame } from 'ui/components/accessibility/AccessibilityFrame'
 import { Accordion } from 'ui/components/Accordion'

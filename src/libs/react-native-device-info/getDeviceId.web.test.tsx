@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from 'uuid'
 
-import { eventMonitoring } from 'libs/monitoring'
+import { eventMonitoring } from 'libs/monitoring/services'
 import { getDeviceId } from 'libs/react-native-device-info/getDeviceId.web'
 import { storage } from 'libs/storage'
 

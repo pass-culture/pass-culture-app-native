@@ -16,7 +16,7 @@ import { mapSubscriptionThemeToName } from 'features/subscription/helpers/mapSub
 import { useOnViewableItemsChanged } from 'features/subscription/helpers/useOnViewableItemsChanged'
 import { NotificationsSettingsModal } from 'features/subscription/NotificationsSettingsModal'
 import { SubscriptionTheme, SUSBCRIPTION_THEMES } from 'features/subscription/types'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { createAnimatableComponent, AnimatedViewRefType } from 'libs/react-native-animatable'
 import { storage } from 'libs/storage'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'

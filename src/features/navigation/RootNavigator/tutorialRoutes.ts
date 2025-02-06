@@ -7,6 +7,7 @@ import { OnboardingGeneralPublicWelcome } from 'features/tutorial/pages/onboardi
 import { OnboardingGeolocation } from 'features/tutorial/pages/onboarding/OnboardingGeolocation'
 import { OnboardingWelcome } from 'features/tutorial/pages/onboarding/OnboardingWelcome'
 import { ProfileTutorialAgeInformation } from 'features/tutorial/pages/profileTutorial/ProfileTutorialAgeInformation'
+import { ProfileTutorialAgeInformationCreditV3 } from 'features/tutorial/pages/profileTutorial/ProfileTutorialAgeInformationCreditV3'
 
 export const tutorialRoutes: GenericRoute<TutorialRootStackParamList>[] = [
   {
@@ -55,6 +56,12 @@ export const tutorialRoutes: GenericRoute<TutorialRootStackParamList>[] = [
     name: 'ProfileTutorialAgeInformation',
     component: ProfileTutorialAgeInformation,
     path: 'tutoriel/selection-age/eligible',
+    options: { title: 'Information d’âge' },
+  },
+  {
+    name: 'ProfileTutorialAgeInformationCreditV3',
+    component: ProfileTutorialAgeInformationCreditV3,
+    path: 'tutoriel/selection-age/generique',
     options: { title: 'Information d’âge' },
   },
 ]

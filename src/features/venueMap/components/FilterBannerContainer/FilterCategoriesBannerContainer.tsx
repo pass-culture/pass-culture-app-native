@@ -24,7 +24,10 @@ export const FilterCategoriesBannerContainer = () => {
 
   return (
     <Container>
-      <FilterButton navigateTo={{ screen: 'VenueMapFiltersStackNavigator' }} />
+      <FilterButton
+        navigateTo={{ screen: 'VenueMapFiltersStackNavigator' }}
+        activeFilters={selectedGroups.length}
+      />
       {filterGroups.map(({ color, id, label }) => (
         <SingleFilterButton
           key={id}

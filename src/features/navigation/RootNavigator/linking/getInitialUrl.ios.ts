@@ -1,4 +1,4 @@
-import { WEBAPP_V2_URL } from 'libs/environment'
+import { WEBAPP_V2_URL } from 'libs/environment/useWebAppUrl'
 import dynamicLinks from 'libs/firebase/shims/dynamic-links'
 import { BatchPush } from 'libs/react-native-batch'
 

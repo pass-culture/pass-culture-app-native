@@ -16,10 +16,8 @@ describe('<StepDots />', () => {
 
       const firstDot = dots[0]
 
-      // @ts-expect-error: because of noUncheckedIndexedAccess
-      expect(firstDot.props.borderColor).toEqual(theme.colors.primary)
-      // @ts-expect-error: because of noUncheckedIndexedAccess
-      expect(firstDot.props.width).toEqual(12)
+      expect(firstDot?.props.borderColor).toEqual(theme.colors.primary)
+      expect(firstDot?.props.width).toEqual(12)
     })
 
     it('should render second and third steps properly', () => {
@@ -37,30 +35,24 @@ describe('<StepDots />', () => {
       renderThreeStepsSecondIsCurrent()
       const firstDot = screen.getAllByTestId('dot-icon')[0]
 
-      // @ts-expect-error: because of noUncheckedIndexedAccess
-      expect(firstDot.props.borderColor).toEqual(theme.colors.greenValid)
-      // @ts-expect-error: because of noUncheckedIndexedAccess
-      expect(firstDot.props.width).toEqual(8)
+      expect(firstDot?.props.borderColor).toEqual(theme.colors.greenValid)
+      expect(firstDot?.props.width).toEqual(8)
     })
 
     it('should render second step properly', () => {
       renderThreeStepsSecondIsCurrent()
       const secondDot = screen.getAllByTestId('dot-icon')[1]
 
-      // @ts-expect-error: because of noUncheckedIndexedAccess
-      expect(secondDot.props.borderColor).toEqual(theme.colors.primary)
-      // @ts-expect-error: because of noUncheckedIndexedAccess
-      expect(secondDot.props.width).toEqual(12)
+      expect(secondDot?.props.borderColor).toEqual(theme.colors.primary)
+      expect(secondDot?.props.width).toEqual(12)
     })
 
     it('should render third step properly', () => {
       renderThreeStepsSecondIsCurrent()
       const thirdDot = screen.getAllByTestId('dot-icon')[2]
 
-      // @ts-expect-error: because of noUncheckedIndexedAccess
-      expect(thirdDot.props.borderColor).toEqual(theme.colors.greyDark)
-      // @ts-expect-error: because of noUncheckedIndexedAccess
-      expect(thirdDot.props.width).toEqual(8)
+      expect(thirdDot?.props.borderColor).toEqual(theme.colors.greyDark)
+      expect(thirdDot?.props.width).toEqual(8)
     })
   })
 
@@ -78,10 +70,8 @@ describe('<StepDots />', () => {
       renderThreeStepsLastIsCurrent()
       const thirdDot = screen.getAllByTestId('dot-icon')[2]
 
-      // @ts-expect-error: because of noUncheckedIndexedAccess
-      expect(thirdDot.props.borderColor).toEqual(theme.colors.primary)
-      // @ts-expect-error: because of noUncheckedIndexedAccess
-      expect(thirdDot.props.width).toEqual(12)
+      expect(thirdDot?.props.borderColor).toEqual(theme.colors.primary)
+      expect(thirdDot?.props.width).toEqual(12)
     })
   })
 

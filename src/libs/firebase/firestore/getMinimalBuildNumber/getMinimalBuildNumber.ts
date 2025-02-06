@@ -4,7 +4,7 @@ import {
   RemoteStoreAppVersion,
   RemoteStoreDocuments,
 } from 'libs/firebase/firestore/types'
-import { captureMonitoringError } from 'libs/monitoring'
+import { captureMonitoringError } from 'libs/monitoring/errors'
 import { getErrorMessage } from 'shared/getErrorMessage/getErrorMessage'
 
 export const getMinimalBuildNumber = async (): Promise<number | undefined> => {

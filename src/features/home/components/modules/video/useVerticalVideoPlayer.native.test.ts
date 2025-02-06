@@ -1,5 +1,5 @@
 import { useVerticalVideoPlayer } from 'features/home/components/modules/video/useVerticalVideoPlayer'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { renderHook, waitFor } from 'tests/utils'
 
 const mockProps = {

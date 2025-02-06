@@ -1,7 +1,7 @@
 import { mockLocationState } from 'features/location/fixtures/mockLocationState'
 import { mockPlaces } from 'features/location/fixtures/mockPlaces'
 import { DEFAULT_RADIUS } from 'features/search/constants'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { LocationMode } from 'libs/location/types'
 import { renderHook } from 'tests/utils'
 

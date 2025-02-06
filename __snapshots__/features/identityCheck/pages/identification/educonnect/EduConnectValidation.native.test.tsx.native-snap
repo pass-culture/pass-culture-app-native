@@ -527,8 +527,8 @@ exports[`<EduConnectValidation /> should render EduConnectValidation component c
                     {
                       "color": "#ffffff",
                       "fontFamily": "Montserrat-Bold",
-                      "fontSize": 15,
-                      "lineHeight": 20,
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
                       "maxWidth": "100%",
                     },
                   ]

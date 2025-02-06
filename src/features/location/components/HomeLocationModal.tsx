@@ -3,7 +3,7 @@ import React from 'react'
 import { LocationModal } from 'features/location/components/LocationModal'
 import { useLocationMode } from 'features/location/helpers/useLocationMode'
 import { useLocationState } from 'features/location/helpers/useLocationState'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 
 interface HomeLocationModalProps {
   visible: boolean

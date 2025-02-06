@@ -2,7 +2,7 @@ import { useCallback } from 'react'
 
 import { RecommendationApiParams } from 'api/gen'
 import { PlaylistType } from 'features/offer/enums'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { useFunctionOnce } from 'libs/hooks'
 
 type Props = {

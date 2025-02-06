@@ -1,9 +1,8 @@
-import { onlineManager, useQuery } from 'react-query'
+import { useEffect, useState } from 'react'
 
 import { getCookiesChoice } from 'features/cookies/helpers/useCookies'
 import { getCookiesLastUpdate } from 'libs/firebase/firestore/getCookiesLastUpdate'
 import { getAppBuildVersion } from 'libs/packageJson'
-import { QueryKeys } from 'libs/queryKeys'
 
 export interface CookiesLastUpdate {
   lastUpdated: Date
@@ -11,20 +10,29 @@ export interface CookiesLastUpdate {
 }
 
 export const useIsCookiesListUpToDate = () => {
-  const fetchCookiesData = async () => {
-    const [consent, lastUpdate] = await Promise.all([getCookiesChoice(), getCookiesLastUpdate()])
-    return { consent, lastUpdate }
-  }
+  const [cookiesLastUpdate, setCookiesLastUpdate] = useState<CookiesLastUpdate>()
+  const [consentBuildVersion, setConsentBuildVersion] = useState<number>()
+  const [consentChoiceDatetime, setConsentChoiceDatetime] = useState<string>()
+  const [isLoading, setIsLoading] = useState<boolean>(false)
 
-  const { data, isLoading } = useQuery(QueryKeys.COOKIES_DATA, fetchCookiesData, {
-    staleTime: 1000 * 30,
-    cacheTime: 1000 * 30,
-    enabled: onlineManager.isOnline(),
-  })
+  // TODO(PC-34248): refacto cookies management
+  useEffect(() => {
+    const fetchData = async () => {
+      setIsLoading(true)
+      const [consent, lastUpdate] = await Promise.all([getCookiesChoice(), getCookiesLastUpdate()])
+      setIsLoading(false)
 
-  const cookiesLastUpdate = data?.lastUpdate
-  const consentBuildVersion = data?.consent?.buildVersion
-  const consentChoiceDatetime = data?.consent?.choiceDatetime
+      if (consent) {
+        setConsentBuildVersion(consent.buildVersion)
+        setConsentChoiceDatetime(consent.choiceDatetime)
+      }
+      if (lastUpdate) {
+        setCookiesLastUpdate(lastUpdate)
+      }
+    }
+
+    fetchData()
+  }, [])
 
   const isUpToDate = () => {
     // If no data from Firestore, consider that the cookie list is up to date
@@ -51,7 +59,6 @@ export const useIsCookiesListUpToDate = () => {
         return choiceTime >= lastUpdated
       }
     }
-
     return true
   }
 

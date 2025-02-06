@@ -23,6 +23,7 @@ export const Artist: FunctionComponent = () => {
 
   if (!offer) return null
 
+  // TODO(PC-33464): point of vigilance when we will use a hook which get the artists from Algolia
   const subcategory = subcategoriesMapping[offer?.subcategoryId]
   const artists = getOfferArtists(subcategory.categoryId, offer)
 

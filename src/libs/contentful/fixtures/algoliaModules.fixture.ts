@@ -130,7 +130,6 @@ export const additionalAlgoliaParametersWithOffersFixture: AlgoliaParameters[] =
       title: 'Musique',
       algoliaCategories: categoriesFixture,
       hitsPerPage: 2,
-      enrichPlaylistWithRecoOffers: false,
     },
   },
 ]

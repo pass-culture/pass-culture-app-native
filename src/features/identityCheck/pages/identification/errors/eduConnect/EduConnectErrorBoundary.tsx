@@ -2,7 +2,7 @@ import React, { ComponentType, memo, useEffect } from 'react'
 import { withErrorBoundary, FallbackProps } from 'react-error-boundary'
 
 import { NotEligibleEduConnect } from 'features/identityCheck/pages/identification/errors/eduConnect/NotEligibleEduConnect'
-import { eventMonitoring } from 'libs/monitoring'
+import { eventMonitoring } from 'libs/monitoring/services'
 
 import { EduConnectError } from './types'
 

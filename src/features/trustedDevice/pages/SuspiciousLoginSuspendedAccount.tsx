@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { GenericSuspendedAccount } from 'features/auth/pages/suspendedAccount/GenericSuspendedAccount/GenericSuspendedAccount'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { Spacer, TypoDS } from 'ui/theme'
 
 export const SuspiciousLoginSuspendedAccount = () => {

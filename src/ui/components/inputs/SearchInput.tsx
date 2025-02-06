@@ -9,7 +9,7 @@ import { LabelContainer } from 'ui/components/inputs/LabelContainer'
 import { RequiredLabel } from 'ui/components/inputs/RequiredLabel'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { Invalidate as DefaultInvalidate } from 'ui/svg/icons/Invalidate'
-import { getSpacing, Spacer, TypoDS } from 'ui/theme'
+import { getSpacing, TypoDS } from 'ui/theme'
 
 import { BaseTextInput as DefaultBaseTextInput } from './BaseTextInput'
 import { InputContainer } from './InputContainer'
@@ -53,27 +53,23 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
   return (
     <React.Fragment>
       {label ? (
-        <React.Fragment>
+        <StyledView>
           <FlexInputLabel htmlFor={searchInputID}>
             <LabelContainer>
               <TypoDS.Body>{label}</TypoDS.Body>
               {isRequiredField ? <RequiredLabel /> : null}
             </LabelContainer>
           </FlexInputLabel>
-          <Spacer.Column numberOfSpaces={2} />
-        </React.Fragment>
+        </StyledView>
       ) : null}
       <StyledInputContainer
         inputHeight={props.inputHeight}
         isFocus={isFocus}
         style={inputContainerStyle}>
         {LeftIcon ? (
-          <React.Fragment>
-            <LeftIconContainer>
-              <LeftIcon />
-            </LeftIconContainer>
-            <Spacer.Row numberOfSpaces={2} />
-          </React.Fragment>
+          <LeftIconContainer>
+            <LeftIcon />
+          </LeftIconContainer>
         ) : null}
         <BaseTextInput
           {...nativeProps}
@@ -110,7 +106,7 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
 
 export const SearchInput = forwardRef<RNTextInput, SearchInputProps>(WithRefSearchInput)
 
-const LeftIconContainer = styled.View({ flexShrink: 0 })
+const LeftIconContainer = styled.View({ flexShrink: 0, marginRight: getSpacing(2) })
 
 const Invalidate = styled(DefaultInvalidate).attrs(({ theme }) => ({
   color: theme.colors.greyDark,
@@ -123,4 +119,8 @@ const BaseTextInput = styled(DefaultBaseTextInput).attrs(({ theme }) => ({
 const StyledInputContainer = styled(InputContainer)({
   outlineOffset: 0,
   borderRadius: getSpacing(6),
+})
+
+const StyledView = styled.View({
+  marginBottom: getSpacing(2),
 })

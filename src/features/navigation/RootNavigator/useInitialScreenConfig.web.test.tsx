@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { SplashScreenProvider } from 'libs/splashscreen'
 import { storage } from 'libs/storage'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'

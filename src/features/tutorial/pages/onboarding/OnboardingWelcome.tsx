@@ -4,9 +4,10 @@ import LinearGradient from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
 
 import { AuthenticationButton } from 'features/auth/components/AuthenticationButton/AuthenticationButton'
+import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { WELCOME_BACKGROUND_SOURCE } from 'features/tutorial/components/onboarding/welcomeBackground'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { storage } from 'libs/storage'
@@ -28,9 +29,12 @@ const onLoginPress = () => {
 }
 
 export const OnboardingWelcome: FunctionComponent = () => {
-  const enableCreditV3 = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_CREDIT_V3)
-  const subtitle = `Plus de 3 millions d’offres culturelles et un crédit à dépenser sur l’application si tu as
-  ${enableCreditV3 ? '17 ou 18' : 'entre 15 et 18'} ans.`
+  const disableActivation = useFeatureFlag(RemoteStoreFeatureFlags.DISABLE_ACTIVATION)
+  const navigateToScreen = disableActivation ? 'ForceUpdate' : 'OnboardingGeolocation'
+
+  const { data: settings } = useSettingsContext()
+  const enableCreditV3 = settings?.wipEnableCreditV3
+  const subtitle = `Plus de 3 millions d’offres culturelles et un crédit à dépenser sur l’application si tu as ${enableCreditV3 ? '17 ou 18' : 'entre 15 et 18'} ans.`
 
   return (
     <Container>
@@ -47,7 +51,7 @@ export const OnboardingWelcome: FunctionComponent = () => {
           wording="C’est parti&nbsp;!"
           icon={PlainArrowNext}
           iconAfterWording
-          navigateTo={{ screen: 'OnboardingGeolocation' }}
+          navigateTo={{ screen: navigateToScreen }}
           onBeforeNavigate={onStartPress}
         />
         <Spacer.Column numberOfSpaces={4} />

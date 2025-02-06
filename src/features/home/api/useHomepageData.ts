@@ -6,8 +6,7 @@ import { NoContentError } from 'features/home/pages/NoContentError'
 import { Homepage } from 'features/home/types'
 import { fetchHomepageNatifContent } from 'libs/contentful/fetchHomepageNatifContent'
 import { useLogTypeFromRemoteConfig } from 'libs/hooks/useLogTypeFromRemoteConfig'
-import { ScreenError } from 'libs/monitoring'
-import { LogTypeEnum } from 'libs/monitoring/errors'
+import { ScreenError, LogTypeEnum } from 'libs/monitoring/errors'
 import { QueryKeys } from 'libs/queryKeys'
 
 const STALE_TIME_CONTENTFUL = 5 * 60 * 1000

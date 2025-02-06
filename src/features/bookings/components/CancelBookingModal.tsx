@@ -11,7 +11,7 @@ import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { isUserBeneficiary } from 'features/profile/helpers/isUserBeneficiary'
 import { isUserExBeneficiary } from 'features/profile/helpers/isUserExBeneficiary'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { convertCentsToEuros } from 'libs/parsers/pricesConversion'
 import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
@@ -23,7 +23,7 @@ import { AppModal } from 'ui/components/modals/AppModal'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Close } from 'ui/svg/icons/Close'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
-import { getSpacing, Spacer, Typo, TypoDS } from 'ui/theme'
+import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 
 interface Props {
   visible: boolean
@@ -113,7 +113,7 @@ const ModalContent = styled.View({
   width: '100%',
 })
 
-const OfferName = styled(Typo.ButtonText)({
+const OfferName = styled(TypoDS.BodyAccent)({
   textAlign: 'center',
 })
 

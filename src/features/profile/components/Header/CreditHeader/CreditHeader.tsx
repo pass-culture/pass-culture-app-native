@@ -17,9 +17,10 @@ import { useDepositAmountsByAge } from 'shared/user/useDepositAmountsByAge'
 import { GenericBanner } from 'ui/components/ModuleBanner/GenericBanner'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { BicolorOffers } from 'ui/svg/icons/BicolorOffers'
-import { Spacer, Typo, TypoDS } from 'ui/theme'
+import { Spacer, TypoDS } from 'ui/theme'
 
 export type CreditHeaderProps = {
+  showForceUpdateBanner: boolean
   firstName?: string | null
   lastName?: string | null
   age?: number
@@ -28,6 +29,7 @@ export type CreditHeaderProps = {
 }
 
 export function CreditHeader({
+  showForceUpdateBanner,
   firstName,
   lastName,
   age,
@@ -78,6 +80,7 @@ export function CreditHeader({
 
   return (
     <HeaderWithGreyContainer
+      showForceUpdateBanner={showForceUpdateBanner}
       title={name}
       bannerText={bannerText}
       subtitle={<Subtitle {...subtitleProps} />}
@@ -89,7 +92,7 @@ export function CreditHeader({
             params: { homeId: homeEntryIdFreeOffers, from: 'profile' },
           }}>
           <GenericBanner LeftIcon={<BicolorOffers />}>
-            <Typo.ButtonText>L’aventure continue&nbsp;!</Typo.ButtonText>
+            <TypoDS.BodyAccent>L’aventure continue&nbsp;!</TypoDS.BodyAccent>
             <Spacer.Column numberOfSpaces={1} />
             <StyledBody numberOfLines={3}>
               Tu peux profiter d’offres gratuites autour de toi.

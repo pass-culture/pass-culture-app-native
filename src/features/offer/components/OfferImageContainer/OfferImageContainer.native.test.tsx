@@ -60,6 +60,7 @@ describe('<OfferImageContainer />', () => {
   it('should display image placeholder outside carousel when image url defined', () => {
     render(
       <OfferImageContainer
+        imageUrls={undefined}
         categoryId={CategoryIdEnum.CINEMA}
         onPress={jest.fn()}
         placeholderImage="placeholder_image"
@@ -67,5 +68,24 @@ describe('<OfferImageContainer />', () => {
     )
 
     expect(screen.getByTestId('placeholderImage')).toBeOnTheScreen()
+  })
+
+  it('should not set sticky position in native', () => {
+    render(
+      <OfferImageContainer
+        categoryId={CategoryIdEnum.CINEMA}
+        onPress={jest.fn()}
+        placeholderImage="placeholder_image"
+      />,
+      {
+        theme: { isNative: true, isDesktopViewport: true },
+      }
+    )
+
+    const container = screen.getByTestId('imageRenderer')
+
+    expect(container).not.toHaveStyle({
+      position: 'sticky',
+    })
   })
 })

@@ -40,7 +40,6 @@ exports[`Home page should render correctly 1`] = `
             />
             <Styled(View)>
               <HomeBanner
-                hasGeolocPosition={true}
                 isLoggedIn={false}
               />
             </Styled(View)>
@@ -471,7 +470,11 @@ exports[`Home page should render correctly 1`] = `
                                 "padding": 16,
                                 "width": "100%",
                               },
-                              undefined,
+                              [
+                                {
+                                  "borderWidth": 0,
+                                },
+                              ],
                             ]
                           }
                         >
@@ -512,9 +515,9 @@ exports[`Home page should render correctly 1`] = `
                                 [
                                   {
                                     "color": "#ffffff",
-                                    "fontFamily": "Montserrat-Bold",
-                                    "fontSize": 15,
-                                    "lineHeight": 20,
+                                    "fontFamily": "Montserrat-SemiBold",
+                                    "fontSize": 16,
+                                    "lineHeight": 25.6,
                                   },
                                 ]
                               }

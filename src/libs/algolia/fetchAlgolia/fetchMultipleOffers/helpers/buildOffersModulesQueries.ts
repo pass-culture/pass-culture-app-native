@@ -5,7 +5,7 @@ import { buildOfferSearchParameters } from 'libs/algolia/fetchAlgolia/buildAlgol
 import { offerAttributesToRetrieve } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/offerAttributesToRetrieve'
 import { buildHitsPerPage } from 'libs/algolia/fetchAlgolia/utils'
 import { OfferModuleQuery } from 'libs/algolia/types'
-import { env } from 'libs/environment'
+import { env } from 'libs/environment/env'
 
 type buildOffersModuleQueriesArgs = {
   paramsList: OffersPlaylistParameters[]

@@ -4,7 +4,7 @@ import { Animated, Share } from 'react-native'
 import * as useGoBack from 'features/navigation/useGoBack'
 import { VenueHeader } from 'features/venue/components/VenueHeader/VenueHeader'
 import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen } from 'tests/utils'
 

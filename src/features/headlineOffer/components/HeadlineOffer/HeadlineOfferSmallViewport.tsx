@@ -1,0 +1,62 @@
+import React, { FunctionComponent } from 'react'
+import styled from 'styled-components/native'
+
+import {
+  ArrowRightIcon,
+  LightGreyText,
+  Title,
+} from 'features/headlineOffer/components/HeadlineOffer/CommonHeadlineOffer.styles'
+import { HeadlineOfferData } from 'features/headlineOffer/type'
+import { Tag } from 'ui/components/Tag/Tag'
+import { HorizontalTile } from 'ui/components/tiles/HorizontalTile'
+import { getSpacing } from 'ui/theme'
+
+export const HeadlineOfferSmallViewport: FunctionComponent<HeadlineOfferData> = ({
+  imageUrl,
+  distance,
+  categoryId,
+  category,
+  price,
+  offerTitle,
+}) => (
+  <Container>
+    {distance ? <Tag label={`à ${distance}`} /> : null}
+    <StyledHorizontalTile categoryId={categoryId} imageUrl={imageUrl}>
+      <TileContent>
+        <ContentContainer>
+          <LightGreyText>{category}</LightGreyText>
+          <Title numberOfLines={2}>{offerTitle}</Title>
+          <LightGreyText>{price}</LightGreyText>
+        </ContentContainer>
+      </TileContent>
+      <IconContainer>
+        <ArrowRightIcon />
+      </IconContainer>
+    </StyledHorizontalTile>
+  </Container>
+)
+
+const Container = styled.View({
+  flexDirection: 'column',
+  padding: getSpacing(4),
+  flex: 1,
+})
+
+const StyledHorizontalTile = styled(HorizontalTile)({
+  marginTop: 'auto',
+})
+
+const TileContent = styled.View({
+  flex: 1,
+  flexDirection: 'row',
+  alignItems: 'center',
+  justifyContent: 'space-between',
+})
+
+const ContentContainer = styled.View({
+  justifyContent: 'center',
+})
+
+const IconContainer = styled.View({
+  alignSelf: 'flex-end',
+})

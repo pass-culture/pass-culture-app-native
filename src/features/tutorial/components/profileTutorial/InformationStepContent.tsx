@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { Spacer, Typo, TypoDS, getSpacing } from 'ui/theme'
+import { Spacer, TypoDS, getSpacing } from 'ui/theme'
 
 interface Props {
   title: string
@@ -18,7 +18,7 @@ export const InformationStepContent = ({ title, subtitle }: Props) => {
   )
 }
 
-const StyledButtonText = styled(Typo.ButtonText).attrs({ numberOfLines: 3 })({
+const StyledButtonText = styled(TypoDS.BodyAccent).attrs({ numberOfLines: 3 })({
   marginLeft: getSpacing(1.5),
   justifyContent: 'center',
 })

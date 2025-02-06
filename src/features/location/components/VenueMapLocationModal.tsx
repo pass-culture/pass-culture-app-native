@@ -10,7 +10,7 @@ import { useRadiusChange } from 'features/location/helpers/useRadiusChange'
 import { Referrals, UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { initialVenuesActions } from 'features/venueMap/store/initialVenuesStore'
 import { selectedVenueActions } from 'features/venueMap/store/selectedVenueStore'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { LocationMode } from 'libs/location/types'
 
 interface LocationModalProps {

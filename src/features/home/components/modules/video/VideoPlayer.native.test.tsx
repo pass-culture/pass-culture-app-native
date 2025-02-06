@@ -6,7 +6,7 @@ import { VideoPlayer } from 'features/home/components/modules/video/VideoPlayer'
 import { videoModuleFixture } from 'features/home/fixtures/videoModule.fixture'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 

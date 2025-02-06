@@ -4,7 +4,7 @@ import { Homepage } from 'features/home/types'
 import { adaptHomepageEntries } from 'libs/contentful/adapters/adaptHomepageEntries'
 import { CONTENTFUL_BASE_URL } from 'libs/contentful/constants'
 import { ContentTypes, EntryCollection, HomepageNatifEntry } from 'libs/contentful/types'
-import { env } from 'libs/environment'
+import { env } from 'libs/environment/env'
 import { getExternal } from 'libs/fetch'
 
 const DEPTH_LEVEL = 3

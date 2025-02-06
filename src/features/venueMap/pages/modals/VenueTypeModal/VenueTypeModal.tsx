@@ -14,7 +14,7 @@ import { venueTypesMapping } from 'features/venueMap/helpers/venueTypesMapping/v
 import { useSelectedVenue } from 'features/venueMap/store/selectedVenueStore'
 import { useVenues } from 'features/venueMap/store/venuesStore'
 import { useVenueTypeCode, venueTypeCodeActions } from 'features/venueMap/store/venueTypeCodeStore'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { MAP_VENUE_TYPE_TO_LABEL, VenueTypeCode } from 'libs/parsers/venueType'
 import { Form } from 'ui/components/Form'
 import { Li } from 'ui/components/Li'

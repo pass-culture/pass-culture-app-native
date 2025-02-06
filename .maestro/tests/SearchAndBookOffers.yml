@@ -3,24 +3,24 @@ tags:
   - local
   - cloud
 ---
-- runFlow: subFolder/LaunchApp.yml
+- runFlow: subFolder/commons/LaunchApp.yml
 
 - runFlow: subFolder/cookies/AcceptCookies.yml
 - runFlow: subFolder/tutorial/onboarding/Onboard18.yml
 
-- runFlow: subFolder/GoToProfileFromTabBar.yml
+- runFlow: subFolder/commons/GoToProfileFromTabBar.yml
 - runFlow: subFolder/auth/LoginFromProfileForBeneficiaryUser.yml
 
-- runFlow: subFolder/GoToSearchFromTabBar.yml
+- runFlow: subFolder/commons/GoToSearchFromTabBar.yml
 - runFlow: subFolder/search/SearchBookableMusicalOffer.yml
 - runFlow: subFolder/booking/BookMusicalOffer.yml
 
-- runFlow: subFolder/GoToSearchFromBooking.yml
+- runFlow: subFolder/commons/GoToSearchFromBooking.yml
 - runFlow: subFolder/search/SearchBookablePhysicalOffer.yml
 - runFlow: subFolder/booking/BookPhysicalOffer.yml
 
-- runFlow: subFolder/GoToSearchFromBooking.yml
+- runFlow: subFolder/commons/GoToSearchFromBooking.yml
 - runFlow: subFolder/search/SearchBookableDigitalOffer.yml
 - runFlow: subFolder/booking/BookDigitalOffer.yml
 
-- runFlow: subFolder/StopApp.yml
+- runFlow: subFolder/commons/StopApp.yml

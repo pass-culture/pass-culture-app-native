@@ -4,18 +4,18 @@
 
 #### Install `nix` package manager
 
-If you have a pass Culture's computer, which has a proxy that adds a custom certificate, the install may fail.
+You can install it from [Nix installation page](https://docs.determinate.systems/getting-started/).
 
-In that case, you will need to install Nix as follows :
+If you have a pass Culture's computer, which has a proxy that adds a custom certificate, the install may fail. In that case, you will need to install Nix as follows :
 
 ```sh
 curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix | sh -s -- install --determinate --ssl-cert-file '/Library/Application Support'/*/*/data/*cacert.pem
 ```
 
-_If you want more information or if you have a problem you can consult [`nix` package manager installation](https://docs.determinate.systems/getting-started/)._
-
 #### Install DirEnv
+( can be done while waiting for direnv installation )
 
+1. If you don't already have it, install [brew](https://brew.sh/).
 1. Install the executable
 
    ```sh
@@ -24,9 +24,9 @@ _If you want more information or if you have a problem you can consult [`nix` pa
 
    _If you want more information or if you have a problem you can consult [DirEnv installation](https://direnv.net/)._
 
-2. You will need to add [hook into your user configuration (example: `~/.zshrc`)](https://direnv.net/docs/hook.html).
+1. You will need to add [hook into your user configuration (example: `~/.zshrc`)](https://direnv.net/docs/hook.html).
 
-3. Start a new terminal to load the new configuration.
+1. Start a new terminal to load the new configuration.
 
 ### Load project environment
 
@@ -39,7 +39,7 @@ The last step can take several tens of minutes, especially the first time.
 
 #### Troubleshooting
 
-🚨 If you got this error when executing `direnv allow` 🚨
+🚨 If you got the following error when executing `direnv allow` 🚨 
 
 ```txt
 /nix/store/559pz0w6zlvw8yyxah9s10fhaz400vaj-stdenv-darwin/setup: line 138: pop_var_context: head of shell_variables not a function context

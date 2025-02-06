@@ -6,7 +6,7 @@ import { Touchable } from 'ui/components/touchable/Touchable'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { EyeSophisticated as DefaultEyeSophisticated } from 'ui/svg/icons/EyeSophisticated'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 import { getHoverStyle } from 'ui/theme/getHoverStyle/getHoverStyle'
 
 type Props = {
@@ -69,7 +69,7 @@ const StyledTouchable = styledButton(Touchable)(({ theme }) => ({
   ...getHoverStyle(theme.colors.black),
 }))
 
-const StyledButtonText = styled(Typo.ButtonText)(({ theme }) => ({
+const StyledButtonText = styled(TypoDS.BodyAccent)(({ theme }) => ({
   color: theme.colors.black,
 }))
 

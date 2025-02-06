@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { ExclusivityBanner } from 'features/home/components/modules/exclusivity/ExclusivityBanner'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { ContentTypes } from 'libs/contentful/types'
 import { render } from 'tests/utils'
 

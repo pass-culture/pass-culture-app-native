@@ -3,7 +3,7 @@ import { fetch as fetchNetInfo } from '@react-native-community/netinfo'
 
 import { computeTokenRemainingLifetimeInMs } from 'libs/jwt/jwt'
 import { clearRefreshToken, getRefreshToken } from 'libs/keychain/keychain'
-import { eventMonitoring } from 'libs/monitoring'
+import { eventMonitoring } from 'libs/monitoring/services'
 import { storage } from 'libs/storage'
 
 import { ApiError } from './ApiError'

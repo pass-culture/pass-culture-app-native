@@ -1,7 +1,7 @@
 import { InvalidTokenError } from 'jwt-decode'
 
 import { getTokenInfo } from 'features/trustedDevice/helpers/getTokenInfo'
-import { eventMonitoring } from 'libs/monitoring'
+import { eventMonitoring } from 'libs/monitoring/services'
 
 jest.unmock('jwt-decode')
 

@@ -1,17 +1,20 @@
 import React, { FunctionComponent, PropsWithChildren } from 'react'
-import { ScrollView } from 'react-native'
+import { Platform, ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
+import { FilterPageButtons } from 'features/search/components/FilterPageButtons/FilterPageButtons'
 import { SearchCustomModalHeader } from 'features/search/components/SearchCustomModalHeader'
+import { FilterBehaviour } from 'features/search/enums'
+import { venuesFilterActions } from 'features/venueMap/store/venuesFilterStore'
 
-type Props = {
+type Props = PropsWithChildren<{
   titleId: string
   title: string
   shouldDisplayBackButton: boolean
   shouldDisplayCloseButton: boolean
   handleOnClose: VoidFunction
   handleGoBack?: VoidFunction
-} & PropsWithChildren
+}>
 
 export const VenueMapFiltersModal: FunctionComponent<Props> = ({
   titleId,
@@ -22,6 +25,8 @@ export const VenueMapFiltersModal: FunctionComponent<Props> = ({
   handleGoBack,
   children,
 }) => {
+  const { reset } = venuesFilterActions
+
   return (
     <React.Fragment>
       <HeaderContainer>
@@ -35,6 +40,13 @@ export const VenueMapFiltersModal: FunctionComponent<Props> = ({
         />
       </HeaderContainer>
       <StyledScrollView>{children}</StyledScrollView>
+      <ButtonsContainer>
+        <FilterPageButtons
+          onResetPress={reset}
+          onSearchPress={handleOnClose}
+          filterBehaviour={FilterBehaviour.SEARCH}
+        />
+      </ButtonsContainer>
     </React.Fragment>
   )
 }
@@ -48,4 +60,8 @@ const StyledScrollView = styled(ScrollView)(({ theme }) => ({
   width: '100%',
   flex: 1,
   paddingHorizontal: theme.modal.spacing.MD,
+}))
+
+const ButtonsContainer = styled.View(({ theme }) => ({
+  paddingBottom: Platform.OS === 'ios' ? theme.modal.spacing.MD : theme.modal.spacing.SM,
 }))

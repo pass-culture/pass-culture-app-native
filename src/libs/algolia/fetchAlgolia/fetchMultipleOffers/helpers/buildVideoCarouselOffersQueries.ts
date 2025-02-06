@@ -3,7 +3,7 @@ import { BuildLocationParameterParams } from 'libs/algolia/fetchAlgolia/buildAlg
 import { buildOfferSearchParameters } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildOfferSearchParameters'
 import { offerAttributesToRetrieve } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/offerAttributesToRetrieve'
 import { OfferModuleQuery, SearchQueryParameters } from 'libs/algolia/types'
-import { env } from 'libs/environment'
+import { env } from 'libs/environment/env'
 
 type buildVideoCarouselOffersQueriesArgs = {
   tag?: string

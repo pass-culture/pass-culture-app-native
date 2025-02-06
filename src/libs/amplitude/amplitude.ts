@@ -1,6 +1,6 @@
 import * as amplitudeRN from '@amplitude/analytics-react-native'
 
-import { env } from 'libs/environment'
+import { env } from 'libs/environment/env'
 
 import { AmplitudeClient } from './types'
 

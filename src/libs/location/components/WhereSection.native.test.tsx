@@ -10,11 +10,6 @@ jest.mock('libs/itinerary/useItinerary', () => ({
   useItinerary: jest.fn(() => ({ availableApps: ['waze'], navigateTo: jest.fn() })),
 }))
 
-const mockDistance: string | null = null
-jest.mock('libs/location/hooks/useDistance', () => ({
-  useDistance: () => mockDistance,
-}))
-
 const beforeNavigateToItinerary = jest.fn()
 
 jest.mock('libs/firebase/analytics/analytics')

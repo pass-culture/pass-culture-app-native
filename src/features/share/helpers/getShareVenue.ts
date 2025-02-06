@@ -1,6 +1,6 @@
 import { VenueResponse } from 'api/gen'
 import { getScreenPath } from 'features/navigation/RootNavigator/linking/getScreenPath'
-import { WEBAPP_V2_URL } from 'libs/environment'
+import { WEBAPP_V2_URL } from 'libs/environment/useWebAppUrl'
 import { share } from 'libs/share/share'
 import { ShareContent } from 'libs/share/types'
 

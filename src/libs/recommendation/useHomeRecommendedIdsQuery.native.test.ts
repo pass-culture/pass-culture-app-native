@@ -1,7 +1,7 @@
 import { api } from 'api/api'
 import { PlaylistResponse } from 'api/gen'
 import { EmptyResponse } from 'libs/fetch'
-import { eventMonitoring } from 'libs/monitoring'
+import { eventMonitoring } from 'libs/monitoring/services'
 import { mockUseAuthContext } from 'tests/AuthContextUtils'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -9,7 +9,7 @@ import { renderHook, waitFor } from 'tests/utils'
 
 import { useHomeRecommendedIdsQuery } from './useHomeRecommendedIdsQuery'
 
-jest.mock('libs/monitoring')
+jest.mock('libs/monitoring/services')
 jest.mock('libs/jwt/jwt')
 jest.mock('features/auth/context/AuthContext')
 jest.mock('libs/network/NetInfoWrapper')

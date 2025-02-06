@@ -29,7 +29,8 @@ import { ShareAppModalType } from 'features/share/types'
 import { SubscriptionAnalyticsParams } from 'features/subscription/types'
 import { TutorialTypes } from 'features/tutorial/enums'
 import { AmplitudeEvent } from 'libs/amplitude/events'
-import { analytics, buildPerformSearchState, urlWithValueMaxLength } from 'libs/analytics'
+import { buildPerformSearchState, urlWithValueMaxLength } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { ConsultOfferLogParams } from 'libs/analytics/types'
 import { buildAccessibilityFilterParam, buildModuleDisplayedOnHomepage } from 'libs/analytics/utils'
 import { ContentTypes } from 'libs/contentful/types'
@@ -186,8 +187,11 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_ACCESSIBILITY_MODALITIES }, params),
   logConsultAchievementModal: (params: { achievementName: string; state: 'unlocked' | 'locked' }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_ACHIEVEMENT_MODAL }, params),
-  logConsultAchievementsSuccessModal: (name: AchievementEnum[]) =>
-    analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_ACHIEVEMENTS_SUCCESS_MODAL }, { name }),
+  logConsultAchievementsSuccessModal: (achievementName: AchievementEnum[]) =>
+    analytics.logEvent(
+      { firebase: AnalyticsEvent.CONSULT_ACHIEVEMENTS_SUCCESS_MODAL },
+      { achievementName }
+    ),
   logConsultApplicationProcessingModal: (offerId: number) =>
     analytics.logEvent(
       { firebase: AnalyticsEvent.CONSULT_APPLICATION_PROCESSING_MODAL },
@@ -209,6 +213,8 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_AUTHENTICATION_MODAL }, { offerId }),
   logConsultAvailableDates: (offerId: number) =>
     analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_AVAILABLE_DATES }, { offerId }),
+  logConsultChronicle: (params: { offerId?: number; chronicleId?: number }) =>
+    analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_CHRONICLE }, params),
   logConsultDescriptionDetails: (offerId: number) =>
     analytics.logEvent({ firebase: AnalyticsEvent.CONSULT_DESCRIPTION_DETAILS }, { offerId }),
   logConsultDisclaimerValidationMail: () =>
@@ -348,6 +354,8 @@ export const logEventAnalytics = {
   logHasChosenPrice: () => analytics.logEvent({ firebase: AnalyticsEvent.HAS_CHOSEN_PRICE }),
   logHasChosenTime: () => analytics.logEvent({ firebase: AnalyticsEvent.HAS_CHOSEN_TIME }),
   logHasClickedDuoStep: () => analytics.logEvent({ firebase: AnalyticsEvent.HAS_CLICKED_DUO_STEP }),
+  logHasClickedFAQCreditV3: (params: { from: string }) =>
+    analytics.logEvent({ firebase: AnalyticsEvent.HAS_CLICKED_FAQ_CREDIT_V3 }, params),
   logHasClickedMissingCode: () =>
     analytics.logEvent({ firebase: AnalyticsEvent.HAS_CLICKED_MISSING_CODE }),
   logHasCorrectedEmail: ({ from }: { from: Referrals }) =>

@@ -20,7 +20,7 @@ import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigat
 import { useOffer } from 'features/offer/api/useOffer'
 import { MovieScreeningBookingData } from 'features/offer/components/MovieScreeningCalendar/types'
 import { useLogOfferConversion } from 'libs/algolia/analytics/logOfferConversion'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { CampaignEvents, campaignTracker } from 'libs/campaign'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { ModalLeftIconProps } from 'ui/components/modals/types'

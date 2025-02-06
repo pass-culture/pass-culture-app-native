@@ -4,7 +4,7 @@ import { Social } from 'react-native-share'
 import { OfferResponseV2 } from 'api/gen'
 import { MessagingApps } from 'features/share/components/MessagingApps/MessagingApps'
 import { getShareOffer } from 'features/share/helpers/getShareOffer'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 
 type MessagingAppsProps = {
   offer: OfferResponseV2

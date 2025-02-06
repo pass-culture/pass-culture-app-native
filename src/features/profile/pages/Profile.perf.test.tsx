@@ -5,6 +5,7 @@ import { UserProfileResponse } from 'api/gen'
 import { AuthWrapper } from 'features/auth/context/AuthWrapper'
 import { Profile } from 'features/profile/pages/Profile'
 import { beneficiaryUser } from 'fixtures/user'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { decodedTokenWithRemainingLifetime } from 'libs/jwt/fixtures'
 import { storage } from 'libs/storage'
 import { mockServer } from 'tests/mswServer'
@@ -29,6 +30,7 @@ jest.useFakeTimers()
 
 describe('<Profile />', () => {
   it('Performance test for Profile page', async () => {
+    setFeatureFlags()
     storage.saveString('access_token', 'token')
     storage.saveString('PASSCULTURE_REFRESH_TOKEN', 'token')
     await measurePerformance(

@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from 'uuid'
 
-import { eventMonitoring } from 'libs/monitoring'
+import { eventMonitoring } from 'libs/monitoring/services'
 import { storage } from 'libs/storage'
 import { getErrorMessage } from 'shared/getErrorMessage/getErrorMessage'
 

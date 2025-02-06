@@ -10,11 +10,9 @@ import {
 import { getNavigateToConfig } from 'features/navigation/SearchStackNavigator/helpers'
 import { OfferTileWrapper } from 'features/offer/components/OfferTile/OfferTileWrapper'
 import { useAdaptOffersPlaylistParameters } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/helpers/useAdaptOffersPlaylistParameters'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { ContentTypes } from 'libs/contentful/types'
 import { usePlaylistItemDimensionsFromLayout } from 'libs/contentful/usePlaylistItemDimensionsFromLayout'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { useLocation } from 'libs/location'
 import { Offer } from 'shared/offer/types'
@@ -35,7 +33,6 @@ export type OffersModuleProps = {
 const keyExtractor = (item: Offer) => item.objectID
 
 export const OffersModule = (props: OffersModuleProps) => {
-  const isNewOfferTileDisplayed = useFeatureFlag(RemoteStoreFeatureFlags.WIP_NEW_OFFER_TILE)
   const {
     displayParameters,
     offersModuleParameters,
@@ -107,13 +104,12 @@ export const OffersModule = (props: OffersModuleProps) => {
           homeEntryId={homeEntryId}
           width={width}
           height={height}
-          variant={isNewOfferTileDisplayed ? 'new' : 'default'}
           analyticsFrom="home"
         />
       )
     },
 
-    [moduleName, moduleId, homeEntryId, isNewOfferTileDisplayed]
+    [moduleName, moduleId, homeEntryId]
   )
 
   const { itemWidth, itemHeight } = usePlaylistItemDimensionsFromLayout(displayParameters.layout)

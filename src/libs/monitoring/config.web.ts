@@ -1,6 +1,6 @@
 import { Integrations } from '@sentry/tracing'
 
-import { env } from 'libs/environment'
+import { env } from 'libs/environment/env'
 
 export async function getSentryConfig() {
   return {

@@ -5,7 +5,7 @@ import { ApiError } from 'api/ApiError'
 import { isAPIExceptionNotCaptured } from 'api/apiHelpers'
 import { PlaylistRequestBody, PlaylistRequestQuery } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { eventMonitoring } from 'libs/monitoring'
+import { eventMonitoring } from 'libs/monitoring/services'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { QueryKeys } from 'libs/queryKeys'
 

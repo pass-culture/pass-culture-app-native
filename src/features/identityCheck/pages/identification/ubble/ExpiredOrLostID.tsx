@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
-import { env } from 'libs/environment'
+import { env } from 'libs/environment/env'
 import { BatchEvent, BatchProfile } from 'libs/react-native-batch'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'

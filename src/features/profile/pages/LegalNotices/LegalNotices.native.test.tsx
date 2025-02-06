@@ -1,7 +1,7 @@
 import React from 'react'
 
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
-import { env } from 'libs/environment'
+import { env } from 'libs/environment/env'
 import { render, fireEvent, screen } from 'tests/utils'
 
 import { LegalNotices } from './LegalNotices'

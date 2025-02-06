@@ -1,6 +1,6 @@
 import { FIRESTORE_ROOT_COLLECTION, RemoteStoreCookies } from 'libs/firebase/firestore/types'
 import firestore from 'libs/firebase/shims/firestore'
-import { captureMonitoringError } from 'libs/monitoring'
+import { captureMonitoringError } from 'libs/monitoring/errors'
 
 import { getCookiesLastUpdate } from './getCookiesLastUpdate'
 

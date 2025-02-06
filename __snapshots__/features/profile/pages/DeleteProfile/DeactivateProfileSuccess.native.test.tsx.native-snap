@@ -317,8 +317,8 @@ exports[`DeactivateProfileSuccess component should render delete profile success
                 {
                   "color": "#eb0055",
                   "fontFamily": "Montserrat-Bold",
-                  "fontSize": 15,
-                  "lineHeight": 20,
+                  "fontSize": 16,
+                  "lineHeight": 25.6,
                   "maxWidth": "100%",
                 },
               ]
@@ -444,8 +444,8 @@ exports[`DeactivateProfileSuccess component should render delete profile success
                 {
                   "color": "#ffffff",
                   "fontFamily": "Montserrat-Bold",
-                  "fontSize": 15,
-                  "lineHeight": 20,
+                  "fontSize": 16,
+                  "lineHeight": 25.6,
                   "maxWidth": "100%",
                 },
               ]

@@ -1,6 +1,6 @@
 import * as SentryModule from '@sentry/react'
 
-import { env } from 'libs/environment'
+import { env } from 'libs/environment/env'
 
 import { eventMonitoring } from './services'
 

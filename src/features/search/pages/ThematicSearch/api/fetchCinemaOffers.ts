@@ -4,7 +4,7 @@ import { subDays } from 'date-fns'
 import { NativeCategoryIdEnumv2, SubcategoryIdEnum } from 'api/gen'
 import { fetchThematicSearchPlaylists } from 'features/search/pages/ThematicSearch/api/fetchThematicSearchPlaylists'
 import { buildQuery } from 'features/search/pages/ThematicSearch/api/utils'
-import { env } from 'libs/environment'
+import { env } from 'libs/environment/env'
 import { Position } from 'libs/location/types'
 
 export const fetchCinemaOffers = async (userLocation?: Position) => {

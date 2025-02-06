@@ -26,15 +26,15 @@ jest.mock('ui/components/anchor/AnchorContext', () => ({
   useRegisterAnchor: jest.fn,
 }))
 
-let mockIsloading = false
-
+const defaultOffersStocksFromOfferQuery = {
+  isLoading: false,
+  data: mockBuilder.offerResponseV2({}),
+}
+const mockuseOffersStocksFromOfferQuery = jest.fn(() => defaultOffersStocksFromOfferQuery)
 jest.mock(
   'features/offer/helpers/useOffersStocksFromOfferQuery/useOffersStocksFromOfferQuery',
   () => ({
-    useOffersStocksFromOfferQuery: () => ({
-      isLoading: mockIsloading,
-      data: mockBuilder.offerResponseV2({}),
-    }),
+    useOffersStocksFromOfferQuery: () => mockuseOffersStocksFromOfferQuery(),
   })
 )
 
@@ -57,30 +57,38 @@ const mockOffer = mockBuilder.offerResponseV2({})
 
 describe('OfferCineContent', () => {
   it('should display skeleton when data is loading', async () => {
-    mockIsloading = true
+    mockuseOffersStocksFromOfferQuery
+      .mockReturnValueOnce({
+        ...defaultOffersStocksFromOfferQuery,
+        isLoading: true,
+      })
+      .mockReturnValueOnce({
+        ...defaultOffersStocksFromOfferQuery,
+        isLoading: true,
+      })
 
-    render(
-      reactQueryProviderHOC(
-        <MovieCalendarProvider>
-          <OfferCineContent onSeeVenuePress={jest.fn()} offer={mockOffer} />
-        </MovieCalendarProvider>
-      )
-    )
+    renderOfferCineContent()
 
     expect(await screen.findAllByTestId('cine-block-skeleton')).toBeDefined()
   })
 
   it('should not display skeleton when data is loaded', async () => {
-    mockIsloading = false
-
-    render(
-      reactQueryProviderHOC(
-        <MovieCalendarProvider>
-          <OfferCineContent onSeeVenuePress={jest.fn()} offer={mockOffer} />
-        </MovieCalendarProvider>
-      )
-    )
+    mockuseOffersStocksFromOfferQuery.mockReturnValueOnce({
+      ...defaultOffersStocksFromOfferQuery,
+      isLoading: false,
+    })
+    renderOfferCineContent()
 
     expect(screen.queryByTestId('cine-block-skeleton')).not.toBeOnTheScreen()
   })
 })
+
+const renderOfferCineContent = () => {
+  return render(
+    reactQueryProviderHOC(
+      <MovieCalendarProvider>
+        <OfferCineContent onSeeVenuePress={jest.fn()} offer={mockOffer} />
+      </MovieCalendarProvider>
+    )
+  )
+}

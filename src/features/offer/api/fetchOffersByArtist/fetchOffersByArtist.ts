@@ -5,7 +5,7 @@ import { EXCLUDED_ARTISTS } from 'features/offer/helpers/constants'
 import { captureAlgoliaError } from 'libs/algolia/fetchAlgolia/AlgoliaError'
 import { offerAttributesToRetrieve } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/offerAttributesToRetrieve'
 import { multipleQueries } from 'libs/algolia/fetchAlgolia/multipleQueries'
-import { env } from 'libs/environment'
+import { env } from 'libs/environment/env'
 import { Position } from 'libs/location'
 import { HitOffer, Offer } from 'shared/offer/types'
 
@@ -65,6 +65,7 @@ export const fetchOffersByArtist = async ({
     },
   ]
 
+  // TODO(PC-33464): point of vigilance when we will use a hook which get the artists from Algolia
   if (
     !artists ||
     EXCLUDED_ARTISTS.includes(artists.toLowerCase()) ||

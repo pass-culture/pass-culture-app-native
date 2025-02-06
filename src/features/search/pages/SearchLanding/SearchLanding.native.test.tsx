@@ -10,8 +10,8 @@ import { mockedSearchHistory } from 'features/search/fixtures/mockedSearchHistor
 import * as useFilterCountAPI from 'features/search/helpers/useFilterCount/useFilterCount'
 import { SearchLanding } from 'features/search/pages/SearchLanding/SearchLanding'
 import { SearchState } from 'features/search/types'
-import { analytics } from 'libs/analytics'
-import { env } from 'libs/environment'
+import { analytics } from 'libs/analytics/provider'
+import { env } from 'libs/environment/env'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { LocationMode } from 'libs/location/types'
@@ -65,10 +65,6 @@ jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
 
 const mockUseNetInfoContext = jest.spyOn(useNetInfoContextDefault, 'useNetInfoContext') as jest.Mock
 
-const mockSettings = jest.fn().mockReturnValue({ data: {} })
-jest.mock('features/auth/context/SettingsContext', () => ({
-  useSettingsContext: jest.fn(() => mockSettings()),
-}))
 jest.mock('features/search/helpers/useSearchHistory/useSearchHistory', () => ({
   useSearchHistory: () => ({
     filteredHistory: [],

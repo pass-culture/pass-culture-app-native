@@ -16,7 +16,7 @@ import { ReactionChoiceModalBodyWithRedirection } from 'features/reactions/compo
 import { ReactionChoiceModalBodyWithValidation } from 'features/reactions/components/ReactionChoiceModalBodyWithValidation/ReactionChoiceModalBodyWithValidation'
 import { ReactionChoiceModalBodyEnum, ReactionFromEnum } from 'features/reactions/enum'
 import { OfferImageBasicProps } from 'features/reactions/types'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { AppModal } from 'ui/components/modals/AppModal'

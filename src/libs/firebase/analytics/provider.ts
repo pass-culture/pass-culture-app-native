@@ -1,7 +1,7 @@
 import { Platform } from 'react-native'
 
 import { prepareLogEventParams } from 'libs/analytics'
-import { env } from 'libs/environment'
+import { env } from 'libs/environment/env'
 import {
   AGENT_TYPE,
   EVENT_PAGE_VIEW_NAME,

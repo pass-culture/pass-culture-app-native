@@ -3,28 +3,17 @@ import React, { createRef } from 'react'
 import { ScrollView } from 'react-native'
 
 import { push } from '__mocks__/@react-navigation/native'
-import { VenueTypeCodeKey } from 'api/gen'
-import { CineContentCTAID } from 'features/offer/components/OfferCine/CineContentCTA'
 import { OfferCTAProvider } from 'features/offer/components/OfferContent/OfferCTAProvider'
 import { VenueContent } from 'features/venue/components/VenueContent/VenueContent'
 import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
-import {
-  VenueMoviesOffersResponseSnap,
-  VenueOffersResponseSnap,
-} from 'features/venue/fixtures/venueOffersResponseSnap'
-import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
-import * as useRemoteConfigContextModule from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { LocationMode } from 'libs/location/types'
 import { BatchEvent, BatchProfile } from 'libs/react-native-batch'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render, screen, userEvent, waitFor } from 'tests/utils'
-import * as AnchorContextModule from 'ui/components/anchor/AnchorContext'
+import { act, render, screen, userEvent, waitFor } from 'tests/utils'
 import { AnchorProvider } from 'ui/components/anchor/AnchorContext'
 import * as useModalAPI from 'ui/components/modals/useModal'
 
-const useScrollToAnchorSpy = jest.spyOn(AnchorContextModule, 'useScrollToAnchor')
-
-let mockFFValue = false
+const mockFFValue = false
 jest.mock('libs/firebase/firestore/featureFlags/useFeatureFlag', () => ({
   useFeatureFlag: () => mockFFValue,
 }))
@@ -46,28 +35,6 @@ jest.mock('libs/subcategories/useSubcategories')
 jest.mock('libs/location')
 jest.mock('features/search/context/SearchWrapper')
 jest.mock('libs/firebase/analytics/analytics')
-
-const mockInView = jest.fn()
-const InViewMock = ({
-  onChange,
-  children,
-}: {
-  onChange: VoidFunction
-  children: React.ReactNode
-}) => {
-  mockInView.mockImplementation(onChange)
-  return <React.Fragment>{children}</React.Fragment>
-}
-
-jest.mock('react-native-intersection-observer', () => {
-  return {
-    ...jest.requireActual('react-native-intersection-observer'),
-    InView: InViewMock,
-    mockInView,
-  }
-})
-
-const useRemoteConfigContextSpy = jest.spyOn(useRemoteConfigContextModule, 'useRemoteConfigContext')
 
 const defaultSearchParams = {
   beginningDatetime: undefined,
@@ -101,20 +68,22 @@ const renderVenueContent = (props?: Partial<React.ComponentProps<typeof VenueCon
     reactQueryProviderHOC(
       <AnchorProvider scrollViewRef={createRef<ScrollView>()} handleCheckScrollY={() => 0}>
         <OfferCTAProvider>
-          <VenueContent venue={venueDataTest} {...props} />
+          <VenueContent venue={venueDataTest} {...props}>
+            <React.Fragment></React.Fragment>
+          </VenueContent>
         </OfferCTAProvider>
       </AnchorProvider>
     )
   )
 }
 
+const user = userEvent.setup()
+
 describe('<VenueContent />', () => {
   it('should search the offers associated when pressing "Rechercher une offre"', async () => {
-    renderVenueContent({
-      venueOffers: { hits: VenueOffersResponseSnap, nbHits: 4 },
-    })
+    renderVenueContent({ isCTADisplayed: true })
 
-    fireEvent.press(screen.getByText('Rechercher une offre'))
+    await user.press(screen.getByText('Rechercher une offre'))
 
     await waitFor(() => {
       expect(push).toHaveBeenCalledWith('TabNavigator', {
@@ -161,99 +130,6 @@ describe('<VenueContent />', () => {
       })
 
       expect(BatchProfile.trackEvent).not.toHaveBeenCalled()
-    })
-  })
-
-  it('should display default background image when no banner for venue', async () => {
-    renderVenueContent()
-
-    expect(await screen.findByTestId('defaultVenueBackground')).toBeOnTheScreen()
-  })
-
-  describe('movie screening access button', () => {
-    beforeAll(() => {
-      useRemoteConfigContextSpy.mockReturnValue({
-        ...DEFAULT_REMOTE_CONFIG,
-        showAccessScreeningButton: true,
-      })
-    })
-
-    const venueMoviesOffersMock = { hits: VenueMoviesOffersResponseSnap, nbHits: 4 }
-    mockFFValue = true
-
-    // TODO(PC-33563): fix flaky tests
-    // eslint-disable-next-line jest/no-disabled-tests
-    it.skip('should show button', async () => {
-      renderVenueContent({
-        venue: { ...venueDataTest, venueTypeCode: VenueTypeCodeKey.MOVIE },
-        venueOffers: venueMoviesOffersMock,
-      })
-      await act(async () => {
-        mockInView(false)
-      })
-
-      await screen.findByText('Les films à l’affiche')
-
-      expect(await screen.findByTestId(CineContentCTAID)).toBeOnTheScreen()
-    })
-
-    it('should not show button', async () => {
-      renderVenueContent({
-        venue: { ...venueDataTest, venueTypeCode: VenueTypeCodeKey.MOVIE },
-        venueOffers: venueMoviesOffersMock,
-      })
-      await act(async () => {
-        mockInView(true)
-      })
-
-      await screen.findByText('Les films à l’affiche')
-
-      expect(screen.queryByTestId(CineContentCTAID)).not.toBeOnTheScreen()
-    })
-
-    // TODO(PC-33563): fix flaky tests
-    // eslint-disable-next-line jest/no-disabled-tests
-    it.skip('should scroll to anchor', async () => {
-      renderVenueContent({
-        venue: { ...venueDataTest, venueTypeCode: VenueTypeCodeKey.MOVIE },
-        venueOffers: venueMoviesOffersMock,
-      })
-
-      await act(async () => {
-        mockInView(false)
-      })
-
-      const button = await screen.findByTestId(CineContentCTAID)
-
-      await userEvent.press(button)
-
-      expect(useScrollToAnchorSpy).toHaveBeenCalledWith()
-    })
-
-    // TODO(PC-33563): fix flaky tests
-    // eslint-disable-next-line jest/no-disabled-tests
-    describe.skip('remote config flag is deactivated', () => {
-      beforeAll(() => {
-        useRemoteConfigContextSpy.mockReturnValue({
-          ...DEFAULT_REMOTE_CONFIG,
-          showAccessScreeningButton: false,
-        })
-      })
-
-      it('should not display the button if the remote config flag is deactivated', async () => {
-        renderVenueContent({
-          venue: { ...venueDataTest, venueTypeCode: VenueTypeCodeKey.MOVIE },
-          venueOffers: venueMoviesOffersMock,
-        })
-
-        await act(async () => {
-          mockInView(false)
-        })
-
-        await screen.findByText('Les films à l’affiche')
-
-        expect(screen.queryByTestId(CineContentCTAID)).not.toBeOnTheScreen()
-      })
     })
   })
 })

@@ -57,4 +57,23 @@ describe('FilterCategoriesBannerContainer', () => {
 
     jest.useRealTimers()
   })
+
+  it('should not display a badge with number of group filters selected when no group selected', async () => {
+    render(<FilterCategoriesBannerContainer />)
+
+    await screen.findAllByTestId(/[A-Z]+Label/)
+
+    expect(screen.getByLabelText('Voir tous les filtres')).toBeOnTheScreen()
+  })
+
+  it('should display a badge with number of group filters selected when group selected', async () => {
+    jest.useFakeTimers()
+    render(<FilterCategoriesBannerContainer />)
+
+    await user.press(screen.getByTestId('OUTINGSLabel'))
+
+    expect(screen.getByLabelText('Voir tous les filtres\u00a0: 1 filtre actif')).toBeOnTheScreen()
+
+    jest.useRealTimers()
+  })
 })

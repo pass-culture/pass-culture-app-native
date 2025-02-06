@@ -3,7 +3,7 @@ tags:
   - cloud
   - local
 ---
-- runFlow: subFolder/LaunchApp.yml
+- runFlow: subFolder/commons/LaunchApp.yml
 
 - runFlow: subFolder/cookies/AcceptCookies.yml
 - runFlow: subFolder/tutorial/onboarding/Onboard18.yml
@@ -11,4 +11,4 @@ tags:
 - runFlow: subFolder/home/AccessOfferFromCarousel.yml
 - runFlow: subFolder/home/OpenActivationModuleFromHome.yml
 
-- runFlow: subFolder/StopApp.yml
+- runFlow: subFolder/commons/StopApp.yml

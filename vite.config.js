@@ -4,6 +4,7 @@ import { createHtmlPlugin } from 'vite-plugin-html'
 import { sentryVitePlugin } from '@sentry/vite-plugin'
 import { whiteListEnv } from './whiteListEnv'
 import { execSync } from 'child_process'
+import { analyzer } from 'vite-bundle-analyzer'
 
 const defaultExtensions = ['.mjs', '.js', '.mts', '.ts', '.jsx', '.tsx', '.json']
 const allExtensions = [...defaultExtensions.map((ext) => `.web${ext}`), ...defaultExtensions]
@@ -33,7 +34,6 @@ export default ({ mode }) => {
   const isDevMode = mode === 'development'
   const isProdMode = mode === 'production'
   const env = loadEnv(isDevMode ? 'testing' : mode, process.cwd(), '')
-  console.log(process.env.SENTRY_AUTH_TOKEN ? process.env.SENTRY_AUTH_TOKEN.length : 0)
   const proxyConfig = {
     host: true, // This allows VSCode live share port forwarding
     proxy: {
@@ -55,6 +55,7 @@ export default ({ mode }) => {
     },
     plugins: [
       react(),
+      env.ANALYZE_BUNDLE ? analyzer() : null,
       {
         apply: 'build', // This plugin runs only when building (not serve)
         name: 'treat-js-files-as-jsx',
@@ -92,7 +93,7 @@ export default ({ mode }) => {
         url: 'https://sentry.passculture.team/',
         org: 'sentry',
         project: 'application-native',
-        authToken: process.env.SENTRY_AUTH_TOKEN,
+        authToken: env.SENTRY_AUTH_TOKEN ?? process.env.SENTRY_AUTH_TOKEN, // First case is for local dev, second for CI
         release: {
           uploadLegacySourcemaps: {
             paths: ['./dist'],

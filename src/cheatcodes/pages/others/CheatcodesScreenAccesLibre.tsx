@@ -9,7 +9,7 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { TextInput } from 'ui/components/inputs/TextInput'
 import { Separator } from 'ui/components/Separator'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { Spacer, Typo, TypoDS } from 'ui/theme'
+import { Spacer, TypoDS } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
@@ -49,7 +49,7 @@ export const CheatcodesScreenAccesLibre = () => {
                 </StyledView>
                 {Object.entries(detail.description).map(([key, value]) => (
                   <View key={key}>
-                    <Typo.ButtonText>{key}</Typo.ButtonText>
+                    <TypoDS.BodyAccent>{key}</TypoDS.BodyAccent>
                     <TypoDS.Body>{value}</TypoDS.Body>
                   </View>
                 ))}

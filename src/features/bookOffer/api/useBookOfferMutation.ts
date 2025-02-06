@@ -4,7 +4,7 @@ import { api } from 'api/api'
 import { ApiError } from 'api/ApiError'
 import { isAPIExceptionCapturedAsInfo } from 'api/apiHelpers'
 import { BookingsResponse, BookOfferRequest, BookOfferResponse } from 'api/gen'
-import { eventMonitoring } from 'libs/monitoring'
+import { eventMonitoring } from 'libs/monitoring/services'
 import { QueryKeys } from 'libs/queryKeys'
 
 interface BookingMutationContext {

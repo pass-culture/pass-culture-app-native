@@ -229,8 +229,8 @@ exports[`CulturalSurveyIntro page When FF is disabled should render the page wit
               {
                 "color": "#161617",
                 "fontFamily": "Montserrat-Bold",
-                "fontSize": 15,
-                "lineHeight": 20,
+                "fontSize": 16,
+                "lineHeight": 25.6,
                 "maxWidth": "100%",
               },
             ]
@@ -329,8 +329,8 @@ exports[`CulturalSurveyIntro page When FF is disabled should render the page wit
               {
                 "color": "#ffffff",
                 "fontFamily": "Montserrat-Bold",
-                "fontSize": 15,
-                "lineHeight": 20,
+                "fontSize": 16,
+                "lineHeight": 25.6,
                 "maxWidth": "100%",
               },
             ]
@@ -456,8 +456,8 @@ exports[`CulturalSurveyIntro page When FF is disabled should render the page wit
               {
                 "color": "#161617",
                 "fontFamily": "Montserrat-Bold",
-                "fontSize": 15,
-                "lineHeight": 20,
+                "fontSize": 16,
+                "lineHeight": 25.6,
                 "maxWidth": "100%",
               },
             ]
@@ -702,8 +702,8 @@ exports[`CulturalSurveyIntro page When FF is enabled should render the page with
               {
                 "color": "#ffffff",
                 "fontFamily": "Montserrat-Bold",
-                "fontSize": 15,
-                "lineHeight": 20,
+                "fontSize": 16,
+                "lineHeight": 25.6,
                 "maxWidth": "100%",
               },
             ]
@@ -829,8 +829,8 @@ exports[`CulturalSurveyIntro page When FF is enabled should render the page with
               {
                 "color": "#161617",
                 "fontFamily": "Montserrat-Bold",
-                "fontSize": 15,
-                "lineHeight": 20,
+                "fontSize": 16,
+                "lineHeight": 25.6,
                 "maxWidth": "100%",
               },
             ]

@@ -14,12 +14,26 @@ import { render, screen } from 'tests/utils'
 
 const offer = offersFixture[2]
 
-const userNotLocated = {
-  userLocation: undefined,
+const DEFAULT_USER_LOCATION = { latitude: 4, longitude: -52 }
+
+const EVERYWHERE_USER_POSITION = {
+  userLocation: null,
+  selectedPlace: null,
   selectedLocationMode: LocationMode.EVERYWHERE,
+  geolocPosition: undefined,
 }
 
-const mockUseLocation: jest.Mock<Partial<ILocationContext>> = jest.fn(() => userNotLocated)
+const AROUND_ME_POSITION = {
+  userLocation: DEFAULT_USER_LOCATION,
+  selectedPlace: null,
+  selectedLocationMode: LocationMode.AROUND_ME,
+  geolocPosition: DEFAULT_USER_LOCATION,
+  place: null,
+}
+
+const mockUseLocation: jest.Mock<Partial<ILocationContext>> = jest.fn(
+  () => EVERYWHERE_USER_POSITION
+)
 jest.mock('libs/location/LocationWrapper', () => ({
   useLocation: () => mockUseLocation(),
 }))
@@ -35,11 +49,6 @@ mockUseSubcategories.mockReturnValue({
 
 mockdate.set(new Date('2019-12-01T00:00:00.000Z'))
 
-const mockDistance: string | null = '10 km'
-jest.mock('libs/location/hooks/useDistance', () => ({
-  useDistance: () => mockDistance,
-}))
-
 describe('AttachedOfferCard', () => {
   beforeEach(() => {
     setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])
@@ -54,9 +63,10 @@ describe('AttachedOfferCard', () => {
   })
 
   it('should display distance if offer and user has location', () => {
+    mockUseLocation.mockReturnValueOnce(AROUND_ME_POSITION)
     render(<AttachedOfferCard offer={offer} />)
 
-    const distance = screen.getByText(`à 10 km`)
+    const distance = screen.getByText('à 107 km')
 
     expect(distance).toBeOnTheScreen()
   })
@@ -78,9 +88,10 @@ describe('AttachedOfferCard', () => {
   })
 
   it('should have accessibility label', () => {
+    mockUseLocation.mockReturnValueOnce(AROUND_ME_POSITION)
     render(<AttachedOfferCard offer={offer} />)
     const accessibilityLabel = screen.getByLabelText(
-      'Découvre l’offre exclusive "Un lit sous une rivière" de la catégorie "Concert". Date\u00a0: 17 novembre 2020. Prix\u00a0: Dès 34 €. Distance : à 10 km.'
+      'Découvre l’offre exclusive "Un lit sous une rivière" de la catégorie "Concert". Date\u00a0: 17 novembre 2020. Prix\u00a0: Dès 34 €. Distance : à 107 km.'
     )
 
     expect(accessibilityLabel).toBeOnTheScreen()

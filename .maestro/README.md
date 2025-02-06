@@ -165,7 +165,7 @@ yarn test:e2e:ios:testing
 yarn test:e2e:web:testing
 
 # Commande pour lancer un test spécifique
-yarn test:e2e:android:staging .maestro/tests/subFolder/LaunchApp.yml
+yarn test:e2e:android:staging .maestro/tests/subFolder/commons/LaunchApp.yml
 yarn test:e2e:android:staging:cloud --app-file <Path of your ipa/app or apk> .maestro/tests/
 ```
 
@@ -279,7 +279,7 @@ Ajouter ceci dans le scenario de test
       true: ${MAESTRO_RUN_TRACKING_TESTS}
       label: 'Verify needed analytics is in the list'
     commands:
-    - assertTrue: ${output.analyticsHasBeenCalled}
+      - assertTrue: ${output.analyticsHasBeenCalled}
 - runScript:
     when:
       true: ${MAESTRO_RUN_TRACKING_TESTS}

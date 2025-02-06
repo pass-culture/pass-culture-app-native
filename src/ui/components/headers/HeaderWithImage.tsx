@@ -56,6 +56,7 @@ const Container = styled.View<{ minHeight?: number }>(({ minHeight = 0 }) => ({
 const ImageContainer = styled.View({
   alignItems: 'center',
   position: 'absolute',
+  top: 0,
 })
 
 const DefaultImagePlaceholderOfferV2 = styled.View<{ width: number; height: number }>(

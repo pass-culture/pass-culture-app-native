@@ -6,7 +6,7 @@ import { VenueListModuleItem } from 'features/home/components/modules/VenueListM
 import { VenueMapLocationModal } from 'features/location/components/VenueMapLocationModal'
 import { selectedVenueActions } from 'features/venueMap/store/selectedVenueStore'
 import { VenueHit } from 'libs/algolia/types'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'

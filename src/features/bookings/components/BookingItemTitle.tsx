@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { getSpacing, Typo } from 'ui/theme'
+import { getSpacing, TypoDS } from 'ui/theme'
 
 type Props = {
   title: string
@@ -10,12 +10,12 @@ type Props = {
 export function BookingItemTitle(props: Props) {
   return (
     <TitleContainer>
-      <ButtonText>{props.title}</ButtonText>
+      <BodyAccent>{props.title}</BodyAccent>
     </TitleContainer>
   )
 }
 
-const ButtonText = styled(Typo.ButtonText).attrs(() => ({
+const BodyAccent = styled(TypoDS.BodyAccent).attrs(() => ({
   numberOfLines: 2,
   shrink: true,
 }))``

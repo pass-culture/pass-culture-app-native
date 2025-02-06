@@ -285,8 +285,8 @@ Tu peux faire une nouvelle demande de modification dans ton profil.
                 {
                   "color": "#eb0055",
                   "fontFamily": "Montserrat-Bold",
-                  "fontSize": 15,
-                  "lineHeight": 20,
+                  "fontSize": 16,
+                  "lineHeight": 25.6,
                   "maxWidth": "100%",
                 },
               ]
@@ -412,8 +412,8 @@ Tu peux faire une nouvelle demande de modification dans ton profil.
                 {
                   "color": "#ffffff",
                   "fontFamily": "Montserrat-Bold",
-                  "fontSize": 15,
-                  "lineHeight": 20,
+                  "fontSize": 16,
+                  "lineHeight": 25.6,
                   "maxWidth": "100%",
                 },
               ]
@@ -724,8 +724,8 @@ Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de
                 {
                   "color": "#eb0055",
                   "fontFamily": "Montserrat-Bold",
-                  "fontSize": 15,
-                  "lineHeight": 20,
+                  "fontSize": 16,
+                  "lineHeight": 25.6,
                   "maxWidth": "100%",
                 },
               ]
@@ -851,8 +851,8 @@ Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de
                 {
                   "color": "#ffffff",
                   "fontFamily": "Montserrat-Bold",
-                  "fontSize": 15,
-                  "lineHeight": 20,
+                  "fontSize": 16,
+                  "lineHeight": 25.6,
                   "maxWidth": "100%",
                 },
               ]

@@ -22,6 +22,15 @@ const variantConfig: Variants<typeof SubscriptionMessageBadge> = [
     },
   },
   {
+    label: 'SubscriptionMessageBadgeWithForceUpdateBanner',
+    props: {
+      disableActivation: true,
+      subscriptionMessage: {
+        userMessage: 'Dossier déposé, nous sommes en train de le traiter',
+      },
+    },
+  },
+  {
     label: 'SubscriptionMessageBadge with UpdatedAt',
     props: {
       subscriptionMessage: {

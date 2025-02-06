@@ -10,7 +10,7 @@ import { cityActions, useCity } from 'features/identityCheck/pages/profile/store
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { useUpdateProfileMutation } from 'features/profile/api/useUpdateProfileMutation'
 import { CitySearchInput } from 'features/profile/components/CitySearchInput/CitySearchInput'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Spacer, TypoDS } from 'ui/theme'

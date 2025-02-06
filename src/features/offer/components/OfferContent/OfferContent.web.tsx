@@ -18,6 +18,7 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
   offer,
   searchGroupList,
   subcategory,
+  chronicles,
 }) => {
   const { visible, showModal, hideModal } = useModal(false)
   const { isDesktopViewport } = useTheme()
@@ -66,6 +67,7 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
           offer={offer}
           searchGroupList={searchGroupList}
           subcategory={subcategory}
+          chronicles={chronicles}
           onOfferPreviewPress={handlePress}
           BodyWrapper={BodyWrapper}
           footer={footer}

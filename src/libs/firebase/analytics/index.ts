@@ -1,1 +1,0 @@
-export { firebaseAnalytics } from './analytics'

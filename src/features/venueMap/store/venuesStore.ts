@@ -13,7 +13,10 @@ const venuesStore = createStore({
   actions: (set) => ({
     setVenues: (venues: Venue[]) => set({ venues }),
   }),
+  selectors: {
+    selectVenues: () => (state) => state.venues,
+  },
 })
 
 export const venuesActions = venuesStore.actions
-export const useVenues = () => venuesStore.useStore((state) => state.venues)
+export const { useVenues } = venuesStore.hooks

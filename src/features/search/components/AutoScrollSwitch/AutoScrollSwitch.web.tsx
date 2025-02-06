@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from 'uuid'
 
 import FilterSwitch from 'ui/components/FilterSwitch'
 import { InputLabel } from 'ui/components/InputLabel/InputLabel'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 
 export const AutoScrollSwitch = ({
   title,
@@ -29,7 +29,7 @@ export const AutoScrollSwitch = ({
         />
         <Spacer.Row numberOfSpaces={5} />
         <InputLabel id={labelID} htmlFor={checkboxID}>
-          <Typo.ButtonText>{title}</Typo.ButtonText>
+          <TypoDS.BodyAccent>{title}</TypoDS.BodyAccent>
         </InputLabel>
         <Spacer.Column numberOfSpaces={2} />
       </FlexContainer>

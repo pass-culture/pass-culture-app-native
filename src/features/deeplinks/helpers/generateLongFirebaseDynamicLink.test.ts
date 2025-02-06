@@ -1,5 +1,5 @@
 import { generateLongFirebaseDynamicLink } from 'features/deeplinks/helpers'
-import { env } from 'libs/environment'
+import { env } from 'libs/environment/env'
 
 jest.mock('libs/firebase/analytics/analytics')
 

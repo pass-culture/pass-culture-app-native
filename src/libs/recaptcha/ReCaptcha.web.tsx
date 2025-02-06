@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react'
 
-import { env } from 'libs/environment'
+import { env } from 'libs/environment/env'
 import { ReCaptchaInternalError } from 'libs/recaptcha/errors'
 
 import { useCaptcha } from './useCaptcha'

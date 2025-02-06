@@ -1,4 +1,4 @@
-import { env } from 'libs/environment'
+import { env } from 'libs/environment/env'
 
 export const FIREBASE_CONFIG = {
   apiKey: env.FIREBASE_API_PUBLIC_KEY,

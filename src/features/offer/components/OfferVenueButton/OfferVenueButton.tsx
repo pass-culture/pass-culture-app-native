@@ -3,7 +3,7 @@ import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 
 import { OfferVenueResponse } from 'api/gen'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { HeroButtonList } from 'ui/components/buttons/HeroButtonList'
 import { LocationPointer } from 'ui/svg/icons/LocationPointer'
 import { TypoDS } from 'ui/theme'

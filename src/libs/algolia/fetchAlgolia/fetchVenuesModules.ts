@@ -8,10 +8,9 @@ import { AlgoliaVenue } from 'libs/algolia/types'
 import { VenueTypeCode } from 'libs/parsers/venueType'
 
 export const fetchVenuesModules = async (
-  paramsList: VenuesModuleParameters[],
-  buildLocationParameterParams: BuildLocationParameterParams
+  paramsList: (VenuesModuleParameters & BuildLocationParameterParams)[]
 ): Promise<Venue[][]> => {
-  const queries = buildVenuesModulesQueries({ paramsList, buildLocationParameterParams })
+  const queries = buildVenuesModulesQueries({ paramsList })
 
   try {
     const results = await multipleQueries<AlgoliaVenue>(queries)

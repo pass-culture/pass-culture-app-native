@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { fireEvent, render, screen } from 'tests/utils'
 import { EventCard, EventCardProps } from 'ui/components/eventCard/EventCard'
 

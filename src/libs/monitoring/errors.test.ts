@@ -1,7 +1,7 @@
 import { CaptureContext, Extras } from '@sentry/types'
 
 import { PageNotFound } from 'features/navigation/pages/PageNotFound'
-import { eventMonitoring } from 'libs/monitoring'
+import { eventMonitoring } from 'libs/monitoring/services'
 
 import { LogTypeEnum, MonitoringError, OfferNotFoundError, VenueNotFoundError } from './errors'
 

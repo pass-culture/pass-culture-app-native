@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import styled from 'styled-components/native'
 
 import { CategoryBlock as CategoryBlockData } from 'features/home/types'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { ContentTypes } from 'libs/contentful/types'
 import { CategoryButton } from 'shared/categoryButton/CategoryButton'
 import { getSpacing, TypoDS } from 'ui/theme'

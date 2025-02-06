@@ -1,6 +1,7 @@
 import mockdate from 'mockdate'
 import React from 'react'
 
+import { setSettings } from 'features/auth/tests/setSettings'
 import { underageBeneficiaryUser } from 'fixtures/user'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
@@ -11,9 +12,7 @@ import { RecreditBirthdayNotification } from './RecreditBirthdayNotification'
 
 jest.mock('features/auth/context/AuthContext')
 jest.mock('features/profile/api/useUpdateProfileMutation', () => ({
-  useResetRecreditAmountToShow: jest.fn().mockReturnValue({
-    mutate: jest.fn(),
-  }),
+  useResetRecreditAmountToShow: jest.fn().mockReturnValue({ mutate: jest.fn() }),
 }))
 
 const birthdate = new Date('2006-10-11')
@@ -22,12 +21,7 @@ mockAuthContextWithUser({
   ...underageBeneficiaryUser,
   birthDate: birthdate.toISOString(),
   recreditAmountToShow: 5000,
-  domainsCredit: {
-    all: {
-      initial: 5000,
-      remaining: 5000,
-    },
-  },
+  domainsCredit: { all: { initial: 5000, remaining: 5000 } },
 })
 
 describe('<RecreditBirthdayNotification />', () => {
@@ -37,9 +31,10 @@ describe('<RecreditBirthdayNotification />', () => {
 
   beforeEach(() => {
     setFeatureFlags()
+    setSettings()
   })
 
-  it('should have correct text', async () => {
+  it('should have correct credit text', async () => {
     render(reactQueryProviderHOC(<RecreditBirthdayNotification />))
 
     const recreditText = screen.getByText(
@@ -47,5 +42,31 @@ describe('<RecreditBirthdayNotification />', () => {
     )
 
     expect(recreditText).toBeOnTheScreen()
+  })
+
+  it('should have correct credit information text', async () => {
+    render(reactQueryProviderHOC(<RecreditBirthdayNotification />))
+
+    const recreditText = screen.getByText(
+      'Tu as jusqu’à la veille de tes 18 ans pour profiter de ton crédit.'
+    )
+
+    expect(recreditText).toBeOnTheScreen()
+  })
+
+  describe('when enableCreditV3 activated', () => {
+    beforeEach(() => {
+      setSettings({ wipEnableCreditV3: true })
+    })
+
+    it('should have correct credit information text', async () => {
+      render(reactQueryProviderHOC(<RecreditBirthdayNotification />))
+
+      const recreditText = screen.getByText(
+        'Tu as jusqu’à la veille de tes 21 ans pour utiliser tout ton crédit.'
+      )
+
+      expect(recreditText).toBeOnTheScreen()
+    })
   })
 })

@@ -3,21 +3,21 @@ tags:
   - cloud
   - local
 ---
-- runFlow: subFolder/LaunchApp.yml
+- runFlow: subFolder/commons/LaunchApp.yml
 
 - runFlow: subFolder/cookies/AcceptCookies.yml
 - runFlow: subFolder/tutorial/onboarding/Onboard18.yml
 
-- runFlow: subFolder/GoToProfileFromTabBar.yml
+- runFlow: subFolder/commons/GoToProfileFromTabBar.yml
 - runFlow: subFolder/auth/AgeStepInfoLoss.yml
 
-- runFlow: subFolder/GoToProfileFromTabBar.yml
+- runFlow: subFolder/commons/GoToProfileFromTabBar.yml
 - runFlow: subFolder/auth/PasswordStepInfoLoss.yml
 
-- runFlow: subFolder/GoToProfileFromTabBar.yml
+- runFlow: subFolder/commons/GoToProfileFromTabBar.yml
 - runFlow: subFolder/auth/SignupFromProfile.yml
 
-- runFlow: subFolder/GoToProfileFromTabBar.yml
+- runFlow: subFolder/commons/GoToProfileFromTabBar.yml
 - runFlow: subFolder/auth/LoginFromProfileAfterSignup.yml
 
 # - runFlow: subFolder/features/auth/GoToActivationFromProfile.yml
@@ -25,4 +25,4 @@ tags:
 # - runFlow: subFolder/features/auth/ActivationProfileStep.yml
 # TODO: Trouver un moyen d'utiliser le mock ubble, bypass pattern ou récupérer jdd educonnect pour l'activation
 
-- runFlow: subFolder/StopApp.yml
+- runFlow: subFolder/commons/StopApp.yml

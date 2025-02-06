@@ -2293,8 +2293,8 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                     {
                       "color": "#696A6F",
                       "fontFamily": "Montserrat-Bold",
-                      "fontSize": 15,
-                      "lineHeight": 20,
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
                       "maxWidth": "100%",
                     },
                   ]
@@ -4670,8 +4670,8 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                     {
                       "color": "#696A6F",
                       "fontFamily": "Montserrat-Bold",
-                      "fontSize": 15,
-                      "lineHeight": 20,
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
                       "maxWidth": "100%",
                     },
                   ]

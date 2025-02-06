@@ -13,7 +13,7 @@ import { ProfileTutorialAgeButtonOther } from 'features/tutorial/components/prof
 import { useOnboardingContext } from 'features/tutorial/context/OnboardingWrapper'
 import { NonEligible, TutorialTypes } from 'features/tutorial/enums'
 import { TutorialPage } from 'features/tutorial/pages/TutorialPage'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { storage } from 'libs/storage'
 import { Spacer, TypoDS } from 'ui/theme'
 import { getNoHeadingAttrs } from 'ui/theme/typographyAttrs/getNoHeadingAttrs'

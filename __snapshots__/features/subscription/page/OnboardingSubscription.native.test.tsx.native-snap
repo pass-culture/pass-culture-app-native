@@ -391,9 +391,9 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                     [
                       {
                         "color": "#161617",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
                       },
                     ]
                   }
@@ -577,9 +577,9 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                     [
                       {
                         "color": "#161617",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
                       },
                     ]
                   }
@@ -763,9 +763,9 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                     [
                       {
                         "color": "#161617",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
                       },
                     ]
                   }
@@ -949,9 +949,9 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                     [
                       {
                         "color": "#161617",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
                       },
                     ]
                   }
@@ -1135,9 +1135,9 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                     [
                       {
                         "color": "#161617",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
                       },
                     ]
                   }
@@ -1321,9 +1321,9 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                     [
                       {
                         "color": "#161617",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 15,
-                        "lineHeight": 20,
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
                       },
                     ]
                   }
@@ -1490,8 +1490,8 @@ exports[`OnboardingSubscription should render correctly 1`] = `
               {
                 "color": "#696A6F",
                 "fontFamily": "Montserrat-Bold",
-                "fontSize": 15,
-                "lineHeight": 20,
+                "fontSize": 16,
+                "lineHeight": 25.6,
                 "maxWidth": "100%",
               },
             ]
@@ -1608,8 +1608,8 @@ exports[`OnboardingSubscription should render correctly 1`] = `
               {
                 "color": "#161617",
                 "fontFamily": "Montserrat-Bold",
-                "fontSize": 15,
-                "lineHeight": 20,
+                "fontSize": 16,
+                "lineHeight": 25.6,
                 "maxWidth": "100%",
               },
             ]

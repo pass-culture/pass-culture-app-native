@@ -5,7 +5,7 @@ import { adaptAlgoliaVenues } from 'libs/algolia/fetchAlgolia/fetchVenues/adaptA
 import { buildFetchVenuesQueryParameters } from 'libs/algolia/fetchAlgolia/fetchVenues/buildFetchVenuesQueryParameters'
 import { adaptGenericAlgoliaTypes } from 'libs/algolia/fetchAlgolia/helpers/adaptGenericAlgoliaTypes'
 import { AlgoliaVenue, FetchVenuesParameters } from 'libs/algolia/types'
-import { env } from 'libs/environment'
+import { env } from 'libs/environment/env'
 
 export const fetchVenues = async ({
   query,

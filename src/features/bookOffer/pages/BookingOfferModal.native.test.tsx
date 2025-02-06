@@ -13,7 +13,7 @@ import { VenueListItem } from 'features/offer/components/VenueSelectionList/Venu
 import { PlaylistType } from 'features/offer/enums'
 import { beneficiaryUser } from 'fixtures/user'
 import * as logOfferConversionAPI from 'libs/algolia/analytics/logOfferConversion'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { CampaignEvents, campaignTracker } from 'libs/campaign'
 import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'

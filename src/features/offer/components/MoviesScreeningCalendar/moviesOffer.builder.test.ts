@@ -1,4 +1,4 @@
-import { addDays } from 'date-fns'
+import { addDays, addSeconds } from 'date-fns'
 import mockdate from 'mockdate'
 
 import { mockBuilder } from 'tests/mockBuilder'
@@ -31,6 +31,31 @@ describe('moviesOfferBuilder', () => {
 
       expect(result).toHaveLength(1)
       expect(result[0]?.id).toBe(offer1.id)
+    })
+  })
+
+  describe('withoutMoviesOnDay', () => {
+    it('should not return movies of the selected day', () => {
+      const selectedDatePlus1Second = addSeconds(selectedDate, 1)
+      const offer1 = mockBuilder.offerResponseV2({
+        stocks: [
+          mockBuilder.offerStockResponse({ beginningDatetime: selectedDatePlus1Second.toString() }),
+        ],
+      })
+      const offer2 = mockBuilder.offerResponseV2({
+        stocks: [
+          mockBuilder.offerStockResponse({
+            beginningDatetime: addDays(selectedDate, 1).toString(),
+          }),
+        ],
+      })
+
+      const result = moviesOfferBuilder([offer1, offer2])
+        .withoutScreeningsOnDay(selectedDate)
+        .buildOfferResponse()
+
+      expect(result).toHaveLength(1)
+      expect(result[0]?.id).toBe(offer2.id)
     })
   })
 
@@ -125,6 +150,38 @@ describe('moviesOfferBuilder', () => {
         .buildOfferResponse()
 
       expect(result.map((o) => o.id)).toEqual([offer1.id, offer3.id, offer2.id])
+    })
+  })
+
+  describe('sortedByDate', () => {
+    it('should sort offers by earliest next date', () => {
+      const offer1 = mockBuilder.offerResponseV2({
+        stocks: [
+          mockBuilder.offerStockResponse({
+            beginningDatetime: addDays(selectedDate, 3).toString(),
+          }),
+        ],
+      })
+      const offer2 = mockBuilder.offerResponseV2({
+        stocks: [
+          mockBuilder.offerStockResponse({
+            beginningDatetime: addDays(selectedDate, 4).toString(),
+          }),
+        ],
+      })
+      const offer3 = mockBuilder.offerResponseV2({
+        stocks: [
+          mockBuilder.offerStockResponse({
+            beginningDatetime: addDays(selectedDate, 2).toString(),
+          }),
+        ],
+      })
+
+      const result = moviesOfferBuilder([offer1, offer2, offer3])
+        .sortedByDate()
+        .buildOfferResponse()
+
+      expect(result.map((o) => o.id)).toEqual([offer3.id, offer1.id, offer2.id])
     })
   })
 

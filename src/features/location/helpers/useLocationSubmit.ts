@@ -1,7 +1,7 @@
 import { LocationState, LocationSubmit } from 'features/location/types'
 import { DEFAULT_RADIUS } from 'features/search/constants'
 import { Action } from 'features/search/context/reducer'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { LocationMode } from 'libs/location/types'
 
 type Props = {

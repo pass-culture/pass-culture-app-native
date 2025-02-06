@@ -3,6 +3,7 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { SearchGroupNameEnumv2 } from 'api/gen'
+import { setSettings } from 'features/auth/tests/setSettings'
 import { navigationRef } from 'features/navigation/navigationRef'
 import * as useGoBack from 'features/navigation/useGoBack'
 import { initialSearchState } from 'features/search/context/reducer'
@@ -53,7 +54,7 @@ jest.mock('features/search/context/SearchWrapper', () => ({
   }),
 }))
 
-jest.mock('libs/firebase/analytics')
+jest.mock('libs/firebase/analytics/analytics')
 jest.mock('features/navigation/TabBar/routes')
 
 const mockData = { pages: [{ nbHits: 0, hits: [], page: 0 }] }
@@ -81,11 +82,6 @@ jest.mock('react-instantsearch-core', () => ({
     refine: jest.fn,
     clear: mockClear,
   }),
-}))
-
-const mockSettings = jest.fn().mockReturnValue({ data: {} })
-jest.mock('features/auth/context/SettingsContext', () => ({
-  useSettingsContext: jest.fn(() => mockSettings()),
 }))
 
 const DEFAULT_POSITION: GeoCoordinates = { latitude: 2, longitude: 40 }
@@ -265,7 +261,7 @@ describe('SearchBox component', () => {
 
     describe('Without autocomplete', () => {
       beforeAll(() => {
-        mockSettings.mockReturnValue({ data: { appEnableAutocomplete: false } })
+        setSettings({ appEnableAutocomplete: false })
       })
 
       it('should stay on the current view when focusing search input and being on the %s view', async () => {
@@ -328,11 +324,11 @@ describe('SearchBox component', () => {
 
     describe('With autocomplete', () => {
       beforeAll(() => {
-        mockSettings.mockReturnValue({ data: { appEnableAutocomplete: true } })
+        setSettings({ appEnableAutocomplete: true })
       })
 
       afterAll(() => {
-        mockSettings.mockReturnValue({ data: { appEnableAutocomplete: false } })
+        setSettings()
       })
 
       it('should unfocus from suggestion when being focus on the suggestions and press back button', async () => {
@@ -562,7 +558,6 @@ describe('SearchBox component', () => {
               ...initialSearchState,
               query: queryText.trim(),
               offerCategories: [SearchGroupNameEnumv2.LIVRES],
-              offerNativeCategories: undefined,
               searchId,
               accessibilityFilter: {
                 isAudioDisabilityCompliant: undefined,
@@ -580,7 +575,7 @@ describe('SearchBox component', () => {
       }
     )
 
-    it('should not log HasSearchedCinemaQuery analytic when shouldRedirectToThematicSearch is disabled', async () => {
+    it('should log HasSearchedCinemaQuery analytic when shouldRedirectToThematicSearch is disabled', async () => {
       // TODO(PC-32646): useRoute & useRemoteConfigContext are called every time a letter is inputted +1
       useRoute.mockReturnValueOnce({ name: SearchView.Landing })
 
@@ -590,7 +585,7 @@ describe('SearchBox component', () => {
 
       await user.type(searchInput, 'cinéma', { submitEditing: true })
 
-      expect(analytics.logHasSearchedCinemaQuery).toHaveBeenCalledTimes(0)
+      expect(analytics.logHasSearchedCinemaQuery).toHaveBeenCalledTimes(1)
     })
 
     it('should reset searchState when user go goBack to Landing', async () => {
@@ -840,7 +835,6 @@ describe('SearchBox component', () => {
             ...initialSearchState,
             query: 'HP',
             offerCategories: BOOK_OFFER_CATEGORIES,
-            offerNativeCategories: undefined,
             gtls: [],
             priceRange: mockSearchState.priceRange,
             searchId,

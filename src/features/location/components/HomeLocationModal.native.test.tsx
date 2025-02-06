@@ -2,7 +2,7 @@ import React from 'react'
 import { Button } from 'react-native'
 
 import { HomeLocationModal } from 'features/location/components/HomeLocationModal'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { checkGeolocPermission, GeolocPermissionState, LocationWrapper } from 'libs/location'
 import { getGeolocPosition } from 'libs/location/geolocation/getGeolocPosition/getGeolocPosition'
 import { requestGeolocPermission } from 'libs/location/geolocation/requestGeolocPermission/requestGeolocPermission'

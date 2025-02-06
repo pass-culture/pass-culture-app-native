@@ -3,7 +3,7 @@ import React from 'react'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { NoFavoritesResult } from 'features/favorites/components/NoFavoritesResult'
 import { initialFavoritesState } from 'features/favorites/context/reducer'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 const mockFavoritesState = initialFavoritesState

@@ -2,7 +2,7 @@ import React from 'react'
 import { ActivityIndicator } from 'react-native'
 import styled from 'styled-components/native'
 
-import { Spacer, Typo } from 'ui/theme'
+import { Spacer, TypoDS } from 'ui/theme'
 
 type Props = {
   message?: string
@@ -16,7 +16,7 @@ export function Loader({ message }: Props) {
       {message ? (
         <React.Fragment>
           <Spacer.Column numberOfSpaces={4} />
-          <Typo.ButtonText>{message}</Typo.ButtonText>
+          <TypoDS.BodyAccent>{message}</TypoDS.BodyAccent>
         </React.Fragment>
       ) : null}
       <Spacer.Column numberOfSpaces={50} />

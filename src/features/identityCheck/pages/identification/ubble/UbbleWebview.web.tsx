@@ -6,7 +6,7 @@ import { useIdentificationUrl } from 'features/identityCheck/api/useIdentificati
 import { REDIRECT_URL_UBBLE } from 'features/identityCheck/constants'
 import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { Helmet } from 'libs/react-helmet/Helmet'
 import { LoadingPage } from 'ui/components/LoadingPage'
 

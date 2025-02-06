@@ -275,7 +275,6 @@ export interface SearchParametersFields {
   bookTypes?: BookTypes
   gtlLevel?: GtlLevel
   gtlLabel?: string
-  enrichPlaylistWithRecoOffers?: boolean
 }
 
 // Taken from https://app.contentful.com/spaces/2bg01iqy0isv/environments/testing/content_types/venuesSearchParameters/fields
@@ -284,6 +283,8 @@ interface VenuesParametersFields {
   venueTypes?: string[]
   tags?: string[]
   hitsPerPage: number
+  isGeolocated?: boolean
+  aroundRadius?: number
 }
 
 // Taken from https://app.contentful.com/spaces/2bg01iqy0isv/content_types/displayParameters/fields

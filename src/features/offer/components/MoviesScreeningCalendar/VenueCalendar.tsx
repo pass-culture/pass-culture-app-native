@@ -2,7 +2,12 @@ import React, { FunctionComponent, useCallback } from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
-import { useMoviesScreeningsList } from 'features/offer/components/MoviesScreeningCalendar/hook/useMoviesScreeningsList'
+import { useOffersStocks } from 'features/offer/api/useOffersStocks'
+import { getVenueMovieOffers } from 'features/offer/components/MoviesScreeningCalendar/hook/getVenueMovieOffers'
+import {
+  useDisplayCalendar,
+  useMovieCalendar,
+} from 'features/offer/components/MoviesScreeningCalendar/MovieCalendarContext'
 import { MovieOfferTile } from 'features/offer/components/MoviesScreeningCalendar/MovieOfferTile'
 import { VenueOffers } from 'features/venue/types'
 import { Spacer } from 'ui/theme'
@@ -13,20 +18,29 @@ type Props = {
 }
 
 export const VenueCalendar: FunctionComponent<Props> = ({ venueOffers, offerIds }) => {
-  const { moviesOffers } = useMoviesScreeningsList(offerIds)
+  const { data: offersWithStocks } = useOffersStocks({ offerIds })
+
+  const { selectedDate } = useMovieCalendar()
+
+  const { venueMovieOffers, hasStocksOnlyAfter15Days } = getVenueMovieOffers(
+    selectedDate,
+    offersWithStocks
+  )
+
+  useDisplayCalendar(!hasStocksOnlyAfter15Days)
 
   const getIsLast = useCallback(
     (index: number) => {
-      const length = moviesOffers.length ?? 0
+      const length = venueMovieOffers?.length ?? 0
       return index === length - 1
     },
-    [moviesOffers.length]
+    [venueMovieOffers?.length]
   )
 
   return (
     <Container>
       <Spacer.Column numberOfSpaces={4} />
-      {moviesOffers.map((movie, index) => (
+      {venueMovieOffers?.map((movie, index) => (
         <MovieOfferTile
           key={movie.offer.id}
           movieOffer={movie}

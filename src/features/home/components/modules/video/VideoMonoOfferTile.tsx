@@ -20,7 +20,7 @@ import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
 import { OfferImage } from 'ui/components/tiles/OfferImage'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
-import { Typo, TypoDS, getShadow, getSpacing } from 'ui/theme'
+import { TypoDS, getShadow, getSpacing } from 'ui/theme'
 
 type Props = {
   offer: Offer
@@ -165,7 +165,7 @@ const CategoryText = styled(TypoDS.BodyAccentXs)<{ color: string }>(({ color }) 
   marginBottom: getSpacing(1),
 }))
 
-const TitleText = styled(Typo.ButtonText)({
+const TitleText = styled(TypoDS.BodyAccent)({
   marginBottom: getSpacing(1),
 })
 

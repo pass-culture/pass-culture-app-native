@@ -5,6 +5,6 @@ export const InputLabel = styled.label.attrs<{ accessibilityDescribedBy?: string
     ['aria-describedby']: accessibilityDescribedBy,
   })
 )(({ theme }) => ({
-  ...theme.typography?.body,
+  ...theme.designSystem.typography?.body,
   cursor: 'pointer',
 }))

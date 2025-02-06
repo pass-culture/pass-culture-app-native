@@ -10,7 +10,7 @@ import { FAKE_USER_ID } from 'fixtures/fakeUserId'
 import { beneficiaryUser } from 'fixtures/user'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import * as useRemoteConfigContext from 'libs/firebase/remoteConfig/RemoteConfigProvider'
-import { eventMonitoring } from 'libs/monitoring'
+import { eventMonitoring } from 'libs/monitoring/services'
 import * as PackageJson from 'libs/packageJson'
 import { getDeviceId } from 'libs/react-native-device-info/getDeviceId'
 import { storage } from 'libs/storage'
@@ -22,7 +22,7 @@ const buildVersion = 10010005
 jest.spyOn(PackageJson, 'getAppBuildVersion').mockReturnValue(buildVersion)
 
 jest.mock('libs/campaign')
-jest.mock('libs/monitoring')
+jest.mock('libs/monitoring/services')
 jest.mock('libs/react-native-device-info/getDeviceId')
 
 jest.mock('features/auth/context/AuthContext')

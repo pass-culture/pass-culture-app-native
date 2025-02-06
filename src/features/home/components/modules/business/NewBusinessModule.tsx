@@ -9,14 +9,14 @@ import { getBusinessUrl } from 'features/home/components/modules/business/helper
 import { useShouldDisplayBusinessModule } from 'features/home/components/modules/business/helpers/useShouldDisplayBusinessModule'
 import { openUrl } from 'features/navigation/helpers/openUrl'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { ContentTypes } from 'libs/contentful/types'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { ImageBackground } from 'libs/resizing-image-on-demand/ImageBackground'
 import { SNACK_BAR_TIME_OUT_LONG, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { ArrowRight } from 'ui/svg/icons/ArrowRight'
-import { getSpacing, Spacer, Typo, TypoDS } from 'ui/theme'
+import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 
 const FIXED_SIZE = getSpacing(81.75)
@@ -256,7 +256,7 @@ const StyledTitle4 = styled(TypoDS.Title4)(({ theme }) => ({
   color: theme.colors.white,
 }))
 
-const StyledButtonText = styled(Typo.ButtonText)(({ theme }) => ({
+const StyledButtonText = styled(TypoDS.BodyAccent)(({ theme }) => ({
   color: theme.colors.white,
 }))
 

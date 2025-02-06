@@ -1,4 +1,4 @@
-import { eventMonitoring } from 'libs/monitoring'
+import { eventMonitoring } from 'libs/monitoring/services'
 
 import { startTransaction } from './transactions'
 

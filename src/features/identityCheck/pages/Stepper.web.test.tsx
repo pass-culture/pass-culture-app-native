@@ -5,10 +5,12 @@ import { NextSubscriptionStepResponse } from 'api/gen'
 import { stepsDetailsFixture } from 'features/identityCheck/pages/helpers/stepDetails.fixture'
 import { useRehydrateProfile } from 'features/identityCheck/pages/helpers/useRehydrateProfile'
 import { useStepperInfo } from 'features/identityCheck/pages/helpers/useStepperInfo'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { checkAccessibilityFor, render } from 'tests/utils/web'
 
 import { Stepper } from './Stepper'
 
+jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 mockdate.set(new Date('2020-12-01T00:00:00.000Z'))
@@ -39,6 +41,8 @@ const mockUseRehydrateProfile = useRehydrateProfile as jest.Mock
 mockUseRehydrateProfile.mockImplementation(jest.fn())
 
 describe('<Stepper/>', () => {
+  beforeEach(() => setFeatureFlags())
+
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
       const { container } = render(<Stepper />)

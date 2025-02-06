@@ -1,6 +1,6 @@
 import { AchievementEnum, AchievementResponse } from 'api/gen'
 import { Achievement, AchievementCategory } from 'features/achievements/data/AchievementData'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 
 type Categories = {

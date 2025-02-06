@@ -11,8 +11,7 @@ import { NoContentError } from 'features/home/pages/NoContentError'
 import { Maintenance } from 'features/maintenance/pages/Maintenance'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { useLogTypeFromRemoteConfig } from 'libs/hooks/useLogTypeFromRemoteConfig'
-import { AsyncError, ScreenError } from 'libs/monitoring'
-import { LogTypeEnum } from 'libs/monitoring/errors'
+import { AsyncError, ScreenError, LogTypeEnum } from 'libs/monitoring/errors'
 import { QueryKeys } from 'libs/queryKeys'
 import { TypoDS } from 'ui/theme'
 
@@ -20,7 +19,13 @@ export const cheatcodesNavigationErrorsButtons: [CheatcodesButtonsWithSubscreens
   {
     title: 'Errors 👾',
     screen: 'CheatcodesNavigationErrors',
-    subscreens: [{ screen: 'BannedCountryError' }],
+    subscreens: [
+      { screen: 'BannedCountryError' },
+      { title: 'Contentful KO error', showOnlyInSearch: true },
+      { title: 'Offre inexistante', showOnlyInSearch: true },
+      { title: 'Maintenance', showOnlyInSearch: true },
+      { title: 'Error rendering', showOnlyInSearch: true },
+    ],
   },
 ]
 
@@ -86,7 +91,7 @@ export const CheatcodesNavigationErrors: FunctionComponent = () => {
       />
 
       <LinkToScreen
-        title="Maintenance Page"
+        title="Maintenance"
         onPress={() =>
           setScreenError(
             new ScreenError('Test maintenance page', {
@@ -100,7 +105,7 @@ export const CheatcodesNavigationErrors: FunctionComponent = () => {
       />
 
       <LinkToScreen
-        title="Erreur rendering"
+        title="Error rendering"
         onPress={() => {
           // eslint-disable-next-line @typescript-eslint/ban-ts-comment
           // @ts-expect-error

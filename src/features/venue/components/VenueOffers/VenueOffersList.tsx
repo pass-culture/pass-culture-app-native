@@ -1,5 +1,5 @@
 import { useRoute } from '@react-navigation/native'
-import React from 'react'
+import React, { FunctionComponent } from 'react'
 import { Platform } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -10,15 +10,14 @@ import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { OfferTile } from 'features/offer/components/OfferTile/OfferTile'
 import { VenueOffersProps } from 'features/venue/components/VenueOffers/VenueOffers'
 import { useNavigateToSearchWithVenueOffers } from 'features/venue/helpers/useNavigateToSearchWithVenueOffers'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { formatDates, getTimeStampInMillis } from 'libs/parsers/formatDates'
 import { getDisplayedPrice } from 'libs/parsers/getDisplayedPrice'
 import { VenueTypeCode } from 'libs/parsers/venueType'
-import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
-import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
-import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
+import { CategoryHomeLabelMapping, CategoryIdMapping } from 'libs/subcategories/types'
+import { Currency } from 'shared/currency/useGetCurrencyToDisplay'
 import { Offer } from 'shared/offer/types'
 import { AvatarsList } from 'ui/components/Avatar/AvatarList'
 import { PassPlaylist } from 'ui/components/PassPlaylist'
@@ -32,16 +31,24 @@ const keyExtractor = (item: Offer) => item.objectID
 
 const OFFERS_PLAYLIST_SIMILAR_SPACING = Platform.OS === 'android' ? getSpacing(8) : getSpacing(14)
 
-export const VenueOffersList: React.FC<VenueOffersProps> = ({
+type VenueOffersListProps = VenueOffersProps & {
+  mapping: CategoryIdMapping
+  labelMapping: CategoryHomeLabelMapping
+  currency: Currency
+  euroToPacificFrancRate: number
+}
+
+export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
   venue,
   venueArtists,
   venueOffers,
   playlists,
+  mapping,
+  labelMapping,
+  currency,
+  euroToPacificFrancRate,
 }) => {
-  const currency = useGetCurrencyToDisplay()
-  const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
   const { user } = useAuthContext()
-  const isNewOfferTileDisplayed = useFeatureFlag(RemoteStoreFeatureFlags.WIP_NEW_OFFER_TILE)
   const artistsPlaylistEnabled = useFeatureFlag(RemoteStoreFeatureFlags.WIP_VENUE_ARTISTS_PLAYLIST)
   const { params: routeParams } = useRoute<UseRouteType<'Offer'>>()
   const searchNavConfig = useNavigateToSearchWithVenueOffers(venue)
@@ -54,9 +61,6 @@ export const VenueOffersList: React.FC<VenueOffersProps> = ({
     [VenueTypeCodeKey.DISTRIBUTION_STORE, VenueTypeCodeKey.BOOKSTORE].includes(
       venue?.venueTypeCode as VenueTypeCode
     ) && !!playlists?.length
-
-  const mapping = useCategoryIdMapping()
-  const labelMapping = useCategoryHomeLabelMapping()
 
   const showSeeMore = nbHits > hits.length && !shouldDisplayGtlPlaylist
   const onPressSeeMore = showSeeMore ? () => analytics.logVenueSeeMoreClicked(venue.id) : undefined
@@ -93,7 +97,6 @@ export const VenueOffersList: React.FC<VenueOffersProps> = ({
         width={width}
         height={height}
         searchId={routeParams?.searchId}
-        variant={isNewOfferTileDisplayed ? 'new' : 'default'}
       />
     )
   }

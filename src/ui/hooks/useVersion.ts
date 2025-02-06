@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import CodePush from 'react-native-code-push'
 
-import { eventMonitoring } from 'libs/monitoring'
+import { eventMonitoring } from 'libs/monitoring/services'
 import { getAppVersion } from 'libs/packageJson'
 
 export function useVersion() {

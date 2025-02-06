@@ -2,7 +2,7 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 import { AppState } from 'react-native'
 import { YoutubeIframeRef } from 'react-native-youtube-iframe'
 
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 
 import { PlayerState } from './types'
 

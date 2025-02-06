@@ -14,7 +14,7 @@ import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, render, screen } from 'tests/utils'
 
 jest.mock('libs/network/NetInfoWrapper')
-
+jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/jwt/jwt')
 jest.mock('features/auth/context/AuthContext', () => ({
   useAuthContext: jest.fn(() => ({ isLoggedIn: true })),
@@ -27,16 +27,33 @@ jest.mock('shared/user/useGetDepositAmountsByAge')
 const mockDepositAmounts = jest.mocked(useGetDepositAmountsByAge)
 
 describe('<HomeBanner/>', () => {
+  beforeEach(() => {
+    setFeatureFlags()
+  })
+
+  it('should display force update banner when feature flag showForceUpdateBanner is enable', async () => {
+    setFeatureFlags([RemoteStoreFeatureFlags.SHOW_FORCE_UPDATE_BANNER])
+    mockSubscriptionStepper()
+    mockBannerFromBackend({
+      banner: {
+        name: BannerName.retry_identity_check_banner,
+        title: 'Retente ubble',
+        text: 'pour débloquer ton crédit',
+      },
+    })
+
+    renderHomeBanner({})
+    await act(async () => {})
+
+    expect(screen.getByText('Mise à jour requise !')).toBeOnTheScreen()
+  })
+
   describe('When wipAppV2SystemBlock feature flag deactivated', () => {
     beforeEach(() => {
       mockDepositAmounts.mockReturnValue(undefined)
       mockUseGeolocation.mockReturnValue({
         selectedLocationMode: LocationMode.EVERYWHERE,
       } as ILocationContext)
-    })
-
-    beforeAll(() => {
-      setFeatureFlags()
     })
 
     it('should display SignupBanner when user is not logged in', async () => {
@@ -190,14 +207,8 @@ describe('<HomeBanner/>', () => {
   })
 })
 
-function renderHomeBanner({
-  hasGeolocPosition = true,
-  isLoggedIn = true,
-}: {
-  hasGeolocPosition?: boolean
-  isLoggedIn?: boolean
-}) {
-  return render(<HomeBanner hasGeolocPosition={hasGeolocPosition} isLoggedIn={isLoggedIn} />, {
+function renderHomeBanner({ isLoggedIn = true }: { isLoggedIn?: boolean }) {
+  return render(<HomeBanner isLoggedIn={isLoggedIn} />, {
     wrapper: ({ children }) => reactQueryProviderHOC(children),
   })
 }

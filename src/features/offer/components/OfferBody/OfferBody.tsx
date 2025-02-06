@@ -9,7 +9,6 @@ import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { OfferAbout } from 'features/offer/components/OfferAbout/OfferAbout'
 import { OfferArtists } from 'features/offer/components/OfferArtists/OfferArtists'
 import { OfferCTAButton } from 'features/offer/components/OfferCTAButton/OfferCTAButton'
-import { OfferMessagingApps } from 'features/offer/components/OfferMessagingApps/OfferMessagingApps'
 import { OfferPlace } from 'features/offer/components/OfferPlace/OfferPlace'
 import { OfferReactionSection } from 'features/offer/components/OfferReactionSection/OfferReactionSection'
 import { OfferSummaryInfoList } from 'features/offer/components/OfferSummaryInfoList/OfferSummaryInfoList'
@@ -22,7 +21,7 @@ import { getOfferPrices } from 'features/offer/helpers/getOfferPrice/getOfferPri
 import { getOfferTags } from 'features/offer/helpers/getOfferTags/getOfferTags'
 import { useArtistResults } from 'features/offer/helpers/useArtistResults/useArtistResults'
 import { useOfferSummaryInfoList } from 'features/offer/helpers/useOfferSummaryInfoList/useOfferSummaryInfoList'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { getDisplayedPrice } from 'libs/parsers/getDisplayedPrice'
@@ -30,13 +29,10 @@ import { Subcategory } from 'libs/subcategories/types'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
 import { isNullOrUndefined } from 'shared/isNullOrUndefined/isNullOrUndefined'
-import { ButtonSecondaryBlack } from 'ui/components/buttons/ButtonSecondaryBlack'
-import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 import { Separator } from 'ui/components/Separator'
-import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { InformationTags } from 'ui/InformationTags/InformationTags'
-import { getSpacing, Spacer, TypoDS } from 'ui/theme'
+import { getSpacing, TypoDS } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type Props = {
@@ -54,9 +50,6 @@ export const OfferBody: FunctionComponent<Props> = ({
   const { navigate } = useNavigation<UseNavigationType>()
 
   const hasArtistPage = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ARTIST_PAGE)
-  const hasOfferChronicleSection = useFeatureFlag(
-    RemoteStoreFeatureFlags.WIP_OFFER_CHRONICLE_SECTION
-  )
 
   const { user } = useAuthContext()
   const currency = useGetCurrencyToDisplay()
@@ -159,29 +152,7 @@ export const OfferBody: FunctionComponent<Props> = ({
           />
         </MarginContainer>
       ) : null}
-
       <OfferPlace offer={offer} subcategory={subcategory} />
-
-      {hasOfferChronicleSection && !isDesktopViewport ? (
-        <SectionWithDivider visible margin gap={8}>
-          <InternalTouchableLink
-            as={ButtonSecondaryBlack}
-            wording="Voir tous les avis"
-            navigateTo={{ screen: 'Chronicles', params: { offerId: offer.id } }}
-          />
-        </SectionWithDivider>
-      ) : null}
-
-      {isDesktopViewport ? (
-        <View testID="messagingApp-container-without-divider">
-          <OfferMessagingApps offer={offer} />
-        </View>
-      ) : (
-        <SectionWithDivider visible margin testID="messagingApp-container-with-divider" gap={8}>
-          <OfferMessagingApps offer={offer} />
-          <Spacer.Column numberOfSpaces={4} />
-        </SectionWithDivider>
-      )}
     </Container>
   )
 }
@@ -190,6 +161,7 @@ const Container = styled.View(({ theme }) => ({
   flexShrink: 1,
   width: '100%',
   gap: theme.isDesktopViewport ? getSpacing(16) : getSpacing(8),
+  marginBottom: theme.isDesktopViewport ? 0 : getSpacing(8),
 }))
 
 const MarginContainer = styled(ViewGap)(({ theme }) =>

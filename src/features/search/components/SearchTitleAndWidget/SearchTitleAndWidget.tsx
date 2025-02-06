@@ -48,7 +48,7 @@ export const SearchTitleAndWidget: FunctionComponent<Props> = ({
 }
 
 const StyledTitleMainText = styledInputLabel(InputLabel)(({ theme }) => ({
-  ...theme.typography.title1,
+  ...theme.designSystem.typography.title1,
 }))
 
 const CaptionSubtitle = styled(TypoDS.BodyAccentXs)(({ theme }) => ({

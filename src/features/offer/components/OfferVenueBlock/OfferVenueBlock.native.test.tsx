@@ -3,6 +3,8 @@ import React from 'react'
 import { SubcategoryIdEnum } from 'api/gen'
 import { useVenueBlock } from 'features/offer/components/OfferVenueBlock/useVenueBlock'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
+import { ILocationContext } from 'libs/location'
+import { LocationMode } from 'libs/location/types'
 import { userEvent, render, screen } from 'tests/utils'
 
 import { OfferVenueBlock } from './OfferVenueBlock'
@@ -21,12 +23,27 @@ jest.mock('libs/itinerary/useItinerary', () => ({
 
 const cinemaOffer = { ...offerResponseSnap, subcategoryId: SubcategoryIdEnum.SEANCE_CINE }
 
-jest.mock('libs/firebase/analytics/analytics')
+const DEFAULT_USER_LOCATION = { latitude: 20, longitude: 3 }
 
-let mockDistance: string | null = null
-jest.mock('libs/location/hooks/useDistance', () => ({
-  useDistance: () => mockDistance,
+const EVERYWHERE_USER_POSITION = {
+  userLocation: null,
+  selectedPlace: null,
+  selectedLocationMode: LocationMode.EVERYWHERE,
+  geolocPosition: undefined,
+}
+const AROUND_ME_POSITION = {
+  userLocation: DEFAULT_USER_LOCATION,
+  selectedPlace: null,
+  selectedLocationMode: LocationMode.AROUND_ME,
+  geolocPosition: DEFAULT_USER_LOCATION,
+}
+
+const mockUseLocation = jest.fn((): Partial<ILocationContext> => EVERYWHERE_USER_POSITION)
+jest.mock('libs/location/LocationWrapper', () => ({
+  useLocation: () => mockUseLocation(),
 }))
+
+jest.mock('libs/firebase/analytics/analytics')
 
 const user = userEvent.setup()
 jest.useFakeTimers()
@@ -39,15 +56,10 @@ describe('<OfferVenueBlock />', () => {
     onCopyAddressPress: mockOnCopyAddressPress,
   })
 
-  afterEach(() => (mockDistance = null))
-
-  it('should display title and distance', () => {
-    mockDistance = '1,1 km'
-
+  it('should display title', () => {
     render(<OfferVenueBlock title="Lieu de retrait" offer={offerResponseSnap} />)
 
     expect(screen.getByText('Lieu de retrait')).toBeOnTheScreen()
-    expect(screen.getByText('à 1,1 km')).toBeOnTheScreen()
   })
 
   it('should render venue name', () => {
@@ -62,18 +74,20 @@ describe('<OfferVenueBlock />', () => {
     expect(screen.getByText('75008 PARIS 8, 2 RUE LAMENNAIS')).toBeOnTheScreen()
   })
 
-  it('should render distance', () => {
-    mockDistance = '1,1 km'
+  it('should render distance when user chose geolocation', () => {
+    mockUseLocation.mockReturnValueOnce(AROUND_ME_POSITION)
 
     render(<OfferVenueBlock title="Lieu de retrait" offer={offerResponseSnap} />)
 
-    expect(screen.getByText('à 1,1 km')).toBeOnTheScreen()
+    expect(screen.getByText('à 105 km')).toBeOnTheScreen()
   })
 
-  it('should not render distance when not informed', () => {
+  it("should not render distance when user chose 'France entière'", () => {
+    mockUseLocation.mockReturnValueOnce(EVERYWHERE_USER_POSITION)
+
     render(<OfferVenueBlock title="Lieu de retrait" offer={offerResponseSnap} />)
 
-    expect(screen.queryByText('à 1,1 km')).not.toBeOnTheScreen()
+    expect(screen.queryByText('à 105 km')).not.toBeOnTheScreen()
   })
 
   it("should render placeholder instead of thumbnail when venue doesn't have any image", () => {

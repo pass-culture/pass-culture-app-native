@@ -9,10 +9,10 @@ import { SuggestedVenues } from 'features/search/pages/SuggestedPlacesOrVenues/S
 import { SearchInput } from 'ui/components/inputs/SearchInput'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
-import { Spacer } from 'ui/components/spacer/Spacer'
 import { Close } from 'ui/svg/icons/Close'
 import { MagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
 import { MagnifyingGlassFilled } from 'ui/svg/icons/MagnifyingGlassFilled'
+import { getSpacing } from 'ui/theme'
 import { TypoDS } from 'ui/theme/designSystemTypographie'
 
 interface Props extends VenueModalHookProps {
@@ -62,29 +62,24 @@ export const VenueModal = ({ visible, dismissModal }: Props) => {
         />
       }>
       <StyledScrollView>
-        <Spacer.Column numberOfSpaces={6} />
         <SubtitleContainer>
           <SearchIcon />
-          <Spacer.Row numberOfSpaces={2} />
           <TypoDS.BodyAccent>Trouver un lieu culturel</TypoDS.BodyAccent>
         </SubtitleContainer>
-        <Spacer.Column numberOfSpaces={4} />
-        <SearchInput
-          autoFocus
-          LeftIcon={StyledMagnifyingGlass}
-          inputHeight="regular"
-          onChangeText={doChangeVenue}
-          onPressRightIcon={doResetVenue}
-          placeholder="Cinéma, librairie, magasin…"
-          value={venueQuery}
-        />
-        {shouldShowSuggestedVenues ? (
-          <React.Fragment>
-            <Spacer.Column numberOfSpaces={4} />
+        <Container>
+          <SearchInput
+            autoFocus
+            LeftIcon={StyledMagnifyingGlass}
+            inputHeight="regular"
+            onChangeText={doChangeVenue}
+            onPressRightIcon={doResetVenue}
+            placeholder="Cinéma, librairie, magasin…"
+            value={venueQuery}
+          />
+          {shouldShowSuggestedVenues ? (
             <SuggestedVenues query={venueQuery} setSelectedVenue={doSetSelectedVenue} />
-          </React.Fragment>
-        ) : null}
-        <Spacer.Column numberOfSpaces={4} />
+          ) : null}
+        </Container>
       </StyledScrollView>
     </AppModal>
   )
@@ -93,6 +88,7 @@ export const VenueModal = ({ visible, dismissModal }: Props) => {
 const SubtitleContainer = styled.View({
   flexDirection: 'row',
   alignItems: 'center',
+  gap: getSpacing(2),
 })
 
 const SearchIcon = styled(MagnifyingGlassFilled).attrs(({ theme }) => ({
@@ -105,9 +101,14 @@ const StyledMagnifyingGlass = styled(MagnifyingGlass).attrs(({ theme }) => ({
 
 const StyledScrollView = styled.ScrollView(({ theme }) => ({
   paddingHorizontal: theme.modal.spacing.MD,
+  marginTop: getSpacing(6),
 }))
 
 const HeaderContainer = styled.View(({ theme }) => ({
   padding: theme.modal.spacing.SM,
   width: '100%',
 }))
+
+const Container = styled.View({
+  marginVertical: getSpacing(4),
+})

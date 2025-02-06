@@ -5,7 +5,7 @@ import { AppButton } from 'ui/components/buttons/AppButton/AppButton'
 import { BaseButtonProps } from 'ui/components/buttons/AppButton/types'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { Logo as InitialLoadingIndicator } from 'ui/svg/icons/Logo'
-import { Typo } from 'ui/theme'
+import { TypoDS } from 'ui/theme'
 
 export const ButtonTertiaryWhite = styledButton(AppButton).attrs<BaseButtonProps>(
   ({ disabled, icon, textSize, theme, ...rest }) => {
@@ -25,7 +25,7 @@ export const ButtonTertiaryWhite = styledButton(AppButton).attrs<BaseButtonProps
       size: theme.buttons.tertiaryWhite.iconSize,
     })``
 
-    const Title = styled(Typo.ButtonText)({
+    const Title = styled(TypoDS.Button)({
       maxWidth: '100%',
       color: disabled
         ? theme.buttons.disabled.tertiaryWhite.textColor

@@ -4,16 +4,17 @@ import styled from 'styled-components/native'
 
 import { Coordinates, OfferVenueResponse, VenueResponse } from 'api/gen'
 import { formatFullAddress } from 'libs/address/useFormatFullAddress'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { SeeItineraryButton } from 'libs/itinerary/components/SeeItineraryButton'
 import { getGoogleMapsItineraryUrl } from 'libs/itinerary/openGoogleMapsItinerary'
-import { useDistance } from 'libs/location/hooks/useDistance'
+import { getDistance } from 'libs/location/getDistance'
+import { useLocation } from 'libs/location/LocationWrapper'
 import { QueryKeys } from 'libs/queryKeys'
 import { Spacer } from 'ui/components/spacer/Spacer'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { ArrowNext as DefaultArrowNext } from 'ui/svg/icons/ArrowNext'
 import { BicolorLocationBuilding as LocationBuilding } from 'ui/svg/icons/BicolorLocationBuilding'
-import { Typo, TypoDS, getSpacing } from 'ui/theme'
+import { TypoDS, getSpacing } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type Props = {
@@ -50,9 +51,15 @@ export const WhereSection: React.FC<Props> = ({
   showVenueBanner,
   locationCoordinates,
 }) => {
+  const { userLocation, selectedPlace, selectedLocationMode } = useLocation()
+
   const queryClient = useQueryClient()
   const { latitude: lat, longitude: lng } = locationCoordinates
-  const distanceToLocation = useDistance({ lat, lng })
+
+  const distanceToLocation = getDistance(
+    { lat, lng },
+    { userLocation, selectedPlace, selectedLocationMode }
+  )
   const venueFullAddress = venue.address
     ? formatFullAddress(venue.address, venue.postalCode, venue.city)
     : undefined
@@ -135,7 +142,7 @@ const StyledAddress = styled(TypoDS.Body)({
 const iconSize = getSpacing(8)
 const iconSpacing = Math.round(iconSize / 5)
 
-const StyledVenueName = styled(Typo.ButtonText)({
+const StyledVenueName = styled(TypoDS.BodyAccent)({
   textTransform: 'capitalize',
   flexShrink: 1,
   left: -iconSpacing,

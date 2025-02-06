@@ -17,11 +17,6 @@ import { userEvent, render, screen } from 'tests/utils'
 
 jest.mock('libs/subcategories/useSubcategories')
 
-const mockDistance: string | null = null
-jest.mock('libs/location/hooks/useDistance', () => ({
-  useDistance: () => mockDistance,
-}))
-
 const mockSearchHits = [...mockedAlgoliaResponse.hits, ...moreHitsForSimilarOffersPlaylist]
 
 const offerPlaylistListProps: OfferPlaylistListProps = {

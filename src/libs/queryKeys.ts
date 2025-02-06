@@ -34,6 +34,7 @@ export enum QueryKeys {
   NEXT_SUBSCRIPTION_STEP = 'nextSubscriptionStep',
   OAUTH_STATE = 'oauthState',
   OFFER = 'offer',
+  OFFER_CHRONICLES = 'offerChronicles',
   PHONE_VALIDATION_CODE = 'phoneValidationCode',
   PHONE_VALIDATION_REMAINING_ATTEMPTS = 'phoneValidationRemainingAttempts',
   PLACES = 'places',

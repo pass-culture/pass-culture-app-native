@@ -7,7 +7,7 @@ import { getSearchStackConfig } from 'features/navigation/SearchStackNavigator/h
 import { useGoBack } from 'features/navigation/useGoBack'
 import { getShareOffer } from 'features/share/helpers/getShareOffer'
 import { WebShareModal } from 'features/share/pages/WebShareModal'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { getAnimationState } from 'ui/animations/helpers/getAnimationState'
 import { FavoriteButton } from 'ui/components/buttons/FavoriteButton'
 import { RoundedButton } from 'ui/components/buttons/RoundedButton'

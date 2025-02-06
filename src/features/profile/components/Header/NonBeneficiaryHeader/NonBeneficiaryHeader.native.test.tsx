@@ -11,8 +11,6 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { subscriptionStepperFixture as mockStep } from 'features/identityCheck/fixtures/subscriptionStepperFixture'
 import { NonBeneficiaryHeader } from 'features/profile/components/Header/NonBeneficiaryHeader/NonBeneficiaryHeader'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
-import * as useFeatureFlag from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { ILocationContext, useLocation } from 'libs/location'
 import { LocationMode } from 'libs/location/types'
 import { useGetDepositAmountsByAge } from 'shared/user/useGetDepositAmountsByAge'
@@ -49,6 +47,7 @@ const mockDepositAmounts = jest.mocked(useGetDepositAmountsByAge)
 
 describe('<NonBeneficiaryHeader/>', () => {
   beforeEach(() => {
+    setFeatureFlags()
     mockDepositAmounts.mockReturnValue(undefined)
     mockUseGeolocation.mockReturnValue({
       selectedLocationMode: LocationMode.EVERYWHERE,
@@ -65,10 +64,6 @@ describe('<NonBeneficiaryHeader/>', () => {
   afterAll(mockdate.reset)
 
   describe('When wipAppV2SystemBlock feature flag activated', () => {
-    beforeAll(() => {
-      setFeatureFlags([RemoteStoreFeatureFlags.WIP_APP_V2_SYSTEM_BLOCK])
-    })
-
     it('should render the activation banner when user is eligible and api call returns activation banner', async () => {
       mockServer.getApi<SubscriptionStepperResponseV2>('/v2/subscription/stepper', mockStep)
       mockServer.getApi<BannerResponse>('/v1/banner', {
@@ -80,6 +75,7 @@ describe('<NonBeneficiaryHeader/>', () => {
       })
 
       renderNonBeneficiaryHeader({
+        featureFlags: { enableSystemBanner: true, disableActivation: false },
         startDatetime: '2021-03-30T00:00Z',
         endDatetime: '2022-02-30T00:00Z',
       })
@@ -102,6 +98,7 @@ describe('<NonBeneficiaryHeader/>', () => {
       })
 
       renderNonBeneficiaryHeader({
+        featureFlags: { enableSystemBanner: true, disableActivation: false },
         startDatetime: '2021-03-30T00:00Z',
         endDatetime: '2022-02-30T00:00Z',
       })
@@ -121,6 +118,7 @@ describe('<NonBeneficiaryHeader/>', () => {
       mockServer.getApi<BannerResponse>('/v1/banner', {})
 
       renderNonBeneficiaryHeader({
+        featureFlags: { enableSystemBanner: true, disableActivation: false },
         startDatetime: '2021-03-30T00:00Z',
         endDatetime: '2022-02-30T00:00Z',
       })
@@ -133,10 +131,6 @@ describe('<NonBeneficiaryHeader/>', () => {
   })
 
   describe('When wipAppV2SystemBlock feature flag deactivated', () => {
-    beforeAll(() => {
-      jest.spyOn(useFeatureFlag, 'useFeatureFlag').mockReturnValue(false)
-    })
-
     it('should render the activation banner when user is eligible and api call returns activation banner', async () => {
       mockServer.getApi<SubscriptionStepperResponseV2>('/v2/subscription/stepper', mockStep)
       mockServer.getApi<BannerResponse>('/v1/banner', {
@@ -148,6 +142,7 @@ describe('<NonBeneficiaryHeader/>', () => {
       })
 
       renderNonBeneficiaryHeader({
+        featureFlags: { enableSystemBanner: false, disableActivation: false },
         startDatetime: '2021-03-30T00:00Z',
         endDatetime: '2022-02-30T00:00Z',
       })
@@ -170,6 +165,7 @@ describe('<NonBeneficiaryHeader/>', () => {
       })
 
       renderNonBeneficiaryHeader({
+        featureFlags: { enableSystemBanner: false, disableActivation: false },
         startDatetime: '2021-03-30T00:00Z',
         endDatetime: '2022-02-30T00:00Z',
       })
@@ -189,6 +185,7 @@ describe('<NonBeneficiaryHeader/>', () => {
       mockServer.getApi<BannerResponse>('/v1/banner', {})
 
       renderNonBeneficiaryHeader({
+        featureFlags: { enableSystemBanner: false, disableActivation: false },
         startDatetime: '2021-03-30T00:00Z',
         endDatetime: '2022-02-30T00:00Z',
       })
@@ -208,6 +205,7 @@ describe('<NonBeneficiaryHeader/>', () => {
     mockServer.getApi<BannerResponse>('/v1/banner', {})
 
     renderNonBeneficiaryHeader({
+      featureFlags: { enableSystemBanner: false, disableActivation: false },
       startDatetime: '2021-03-30T00:00Z',
       endDatetime: '2022-02-30T00:00Z',
     })
@@ -221,6 +219,7 @@ describe('<NonBeneficiaryHeader/>', () => {
     mockServer.getApi<SubscriptionStepperResponseV2>('/v2/subscription/stepper', mockStep)
     mockServer.getApi<BannerResponse>('/v1/banner', {})
     renderNonBeneficiaryHeader({
+      featureFlags: { enableSystemBanner: false, disableActivation: false },
       startDatetime: '2021-03-31T00:00Z',
       endDatetime: '2022-03-31T00:00Z',
     })
@@ -238,6 +237,7 @@ describe('<NonBeneficiaryHeader/>', () => {
     mockServer.getApi<BannerResponse>('/v1/banner', {})
 
     renderNonBeneficiaryHeader({
+      featureFlags: { enableSystemBanner: false, disableActivation: false },
       startDatetime: '2021-03-30T00:00Z',
       endDatetime: '2022-02-30T00:00Z',
     })
@@ -252,14 +252,17 @@ describe('<NonBeneficiaryHeader/>', () => {
 })
 
 function renderNonBeneficiaryHeader({
+  featureFlags,
   startDatetime,
   endDatetime,
 }: {
+  featureFlags: { enableSystemBanner: boolean; disableActivation: boolean }
   startDatetime: string
   endDatetime: string
 }) {
   return render(
     <NonBeneficiaryHeader
+      featureFlags={featureFlags}
       eligibilityStartDatetime={startDatetime}
       eligibilityEndDatetime={endDatetime}
     />,

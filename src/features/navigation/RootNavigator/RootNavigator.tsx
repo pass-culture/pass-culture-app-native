@@ -14,7 +14,7 @@ import { withWebWrapper } from 'features/navigation/RootNavigator/withWebWrapper
 import { TabNavigationStateProvider } from 'features/navigation/TabBar/TabNavigationStateContext'
 import { VenueMapFiltersStackNavigator } from 'features/navigation/VenueMapFiltersStackNavigator/VenueMapFiltersStackNavigator'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
-import { env } from 'libs/environment'
+import { env } from 'libs/environment/env'
 import { useSplashScreenContext } from 'libs/splashscreen'
 import { storage } from 'libs/storage'
 import { IconFactoryProvider } from 'ui/components/icons/IconFactoryProvider'

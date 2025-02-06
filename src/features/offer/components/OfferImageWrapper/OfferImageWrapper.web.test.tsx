@@ -6,30 +6,6 @@ import { render, screen, waitFor } from 'tests/utils/web'
 import { theme } from 'theme'
 
 describe('<OfferImageBody />', () => {
-  it('should apply sticky styles when on web and isDesktopViewport is true', () => {
-    renderOfferImageWrapper({ isDesktopViewport: true })
-
-    const container = screen.getByTestId('imageContainer')
-
-    expect(container).toHaveStyle({
-      position: 'sticky',
-      top: '113px',
-      zIndex: 1,
-    })
-  })
-
-  it('should not apply sticky styles when on web and isDesktopViewport is false', () => {
-    renderOfferImageWrapper({ isDesktopViewport: false })
-
-    const container = screen.getByTestId('imageContainer')
-
-    expect(container).not.toHaveStyle({
-      position: 'sticky',
-      top: '113px',
-      zIndex: 1,
-    })
-  })
-
   it('should apply borderRadius when not in carousel', async () => {
     renderOfferImageWrapper({
       isDesktopViewport: false,

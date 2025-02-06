@@ -3,13 +3,13 @@ tags:
   - wip
   - local
 ---
-- runFlow: subFolder/LaunchApp.yml
+- runFlow: subFolder/commons/LaunchApp.yml
 - runFlow: subFolder/cookies/AcceptCookies.yml
 - runFlow: subFolder/tutorial/onboarding/Onboard18.yml
 
-- runFlow: subFolder/GoToProfileFromTabBar.yml
+- runFlow: subFolder/commons/GoToProfileFromTabBar.yml
 - runFlow: subFolder/auth/LoginFromProfileForBeneficiaryUser.yml
-- runFlow: subFolder/GoToSearchFromTabBar.yml
+- runFlow: subFolder/commons/GoToSearchFromTabBar.yml
 
 - runFlow: subFolder/search/SearchBookablePhysicalOffer.yml
 - runFlow: subFolder/venue/VerifyOfferInfo.yml
@@ -17,7 +17,7 @@ tags:
 - runFlow: subFolder/venue/VerifyVenueInfo.yml
 
 # Retourner sur la Search ou la Home + go dans les bookings
-- runFlow: subFolder/GoToBookingFromVenue.yml
+- runFlow: subFolder/commons/GoToBookingFromVenue.yml
 - runFlow: subFolder/booking/CheckBookingSection.yml
 
-- runFlow: subFolder/StopApp.yml
+- runFlow: subFolder/commons/StopApp.yml

@@ -1,14 +1,13 @@
 import React, { FunctionComponent, ReactElement, useCallback, useRef } from 'react'
-import { Platform, StyleProp, ViewStyle } from 'react-native'
+import { Platform, StyleProp, View, ViewStyle } from 'react-native'
 import Animated, { FadeIn, SharedValue } from 'react-native-reanimated'
 import Carousel, { ICarouselInstance } from 'react-native-reanimated-carousel'
-import styled, { useTheme } from 'styled-components/native'
+import { useTheme } from 'styled-components/native'
 
 import { OfferImageCarouselItem } from 'features/offer/components/OfferImageCarousel/OfferImageCarouselItem'
 import { OfferImageCarouselPagination } from 'features/offer/components/OfferImageCarouselPagination/OfferImageCarouselPagination'
 import { calculateCarouselIndex } from 'features/offer/helpers/calculateCarouselIndex/calculateCarouselIndex'
 import { useOfferImageContainerDimensions } from 'features/offer/helpers/useOfferImageContainerDimensions'
-import { useGetHeaderHeight } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
 import { Spacer } from 'ui/theme'
 
 type Props = {
@@ -29,13 +28,11 @@ export const OfferImageCarousel: FunctionComponent<Props> = ({
   style,
 }) => {
   const { imageStyle } = useOfferImageContainerDimensions()
-  const headerHeight = useGetHeaderHeight()
   const { borderRadius, isDesktopViewport } = useTheme()
   const carouselRef = useRef<ICarouselInstance>(null)
   const carouselStyle = useRef({
     borderRadius: borderRadius.radius,
   }).current
-  const isSticky = isWeb && isDesktopViewport
   const imagesLoadedCount = useRef(0)
 
   // TODO(PC-000): this method should be excluded in a dedicated .web file
@@ -74,7 +71,7 @@ export const OfferImageCarousel: FunctionComponent<Props> = ({
     )
 
   return (
-    <CarouselContainer style={style} headerHeight={headerHeight} isSticky={isSticky}>
+    <View style={style}>
       <Carousel
         ref={carouselRef}
         testID="offerImageContainerCarousel"
@@ -102,12 +99,6 @@ export const OfferImageCarousel: FunctionComponent<Props> = ({
           />
         </React.Fragment>
       ) : null}
-    </CarouselContainer>
+    </View>
   )
 }
-
-const CarouselContainer = styled(Animated.View)<{ headerHeight: number; isSticky?: boolean }>(
-  ({ headerHeight, isSticky }) => ({
-    ...(isSticky ? { position: 'sticky', top: 48 + headerHeight, zIndex: 1 } : {}),
-  })
-)

@@ -19,7 +19,7 @@ import { FilmsPlaylist } from 'features/search/pages/ThematicSearch/Films/FilmsP
 import { MusicPlaylist } from 'features/search/pages/ThematicSearch/Music/MusicPlaylist'
 import { ThematicSearchBar } from 'features/search/pages/ThematicSearch/ThematicSearchBar'
 import { ThematicSearchSkeleton } from 'features/search/pages/ThematicSearch/ThematicSearchSkeleton'
-import { env } from 'libs/environment'
+import { env } from 'libs/environment/env'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useLocation } from 'libs/location'
@@ -37,7 +37,7 @@ export const ThematicSearch: React.FC = () => {
   const isReplicaAlgoliaIndexActive = useFeatureFlag(
     RemoteStoreFeatureFlags.ENABLE_REPLICA_ALGOLIA_INDEX
   )
-  const { gtlPlaylists, isLoading: arePlaylistsLoading } = useGTLPlaylists({
+  const { gtlPlaylists: bookGtlPlaylists, isLoading: arePlaylistsLoading } = useGTLPlaylists({
     queryKey: 'SEARCH_N1_BOOKS_GTL_PLAYLISTS',
     searchIndex: isReplicaAlgoliaIndexActive
       ? env.ALGOLIA_OFFERS_INDEX_NAME_B
@@ -111,9 +111,9 @@ export const ThematicSearch: React.FC = () => {
             />
           ) : null}
           <PlaylistContainer>
-            {isBookCategory && gtlPlaylists.length > 0 ? (
+            {isBookCategory && bookGtlPlaylists.length > 0 ? (
               <GtlPlaylistContainer>
-                {gtlPlaylists.map((playlist) => (
+                {bookGtlPlaylists.map((playlist) => (
                   <GtlPlaylist
                     key={playlist.entryId}
                     playlist={playlist}

@@ -315,8 +315,8 @@ Tu peux toujours contacter le service fraude pour sécuriser ton compte.
                 {
                   "color": "#eb0055",
                   "fontFamily": "Montserrat-Bold",
-                  "fontSize": 15,
-                  "lineHeight": 20,
+                  "fontSize": 16,
+                  "lineHeight": 25.6,
                   "maxWidth": "100%",
                 },
               ]
@@ -442,8 +442,8 @@ Tu peux toujours contacter le service fraude pour sécuriser ton compte.
                 {
                   "color": "#ffffff",
                   "fontFamily": "Montserrat-Bold",
-                  "fontSize": 15,
-                  "lineHeight": 20,
+                  "fontSize": 16,
+                  "lineHeight": 25.6,
                   "maxWidth": "100%",
                 },
               ]

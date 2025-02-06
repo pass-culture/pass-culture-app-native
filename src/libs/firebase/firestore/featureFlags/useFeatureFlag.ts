@@ -4,8 +4,8 @@ import { getAllFeatureFlags } from 'libs/firebase/firestore/featureFlags/getAllF
 import { FeatureFlagConfig } from 'libs/firebase/firestore/featureFlags/types'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useLogTypeFromRemoteConfig } from 'libs/hooks/useLogTypeFromRemoteConfig'
-import { eventMonitoring } from 'libs/monitoring'
 import { LogTypeEnum } from 'libs/monitoring/errors'
+import { eventMonitoring } from 'libs/monitoring/services'
 import { getAppBuildVersion } from 'libs/packageJson'
 import { QueryKeys } from 'libs/queryKeys'
 

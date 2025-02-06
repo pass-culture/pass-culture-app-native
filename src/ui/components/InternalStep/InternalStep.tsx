@@ -17,6 +17,7 @@ export function InternalStep({
   isFirst,
   isLast,
   iconComponent,
+  addMoreSpacingToIcons = false,
 }: InternalStepProps) {
   return (
     <Wrapper>
@@ -26,6 +27,7 @@ export function InternalStep({
           isFirst={isFirst}
           isLast={isLast}
           iconComponent={iconComponent}
+          addMoreSpacingToIcons={addMoreSpacingToIcons}
         />
       </View>
       <Content>{children}</Content>

@@ -2,7 +2,7 @@
 import { NetInfoStateType } from '@react-native-community/netinfo'
 import React from 'react'
 
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { NetInfoWrapper, useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { useNetInfo } from 'libs/network/useNetInfo'
 import { render } from 'tests/utils'

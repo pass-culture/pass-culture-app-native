@@ -6,9 +6,8 @@ appId: ${MAESTRO_APP_ID}
     commands:
     - swipe:
         from:
-          childOf:  
-              id: 'playlist-card-offer-v2'
-              index: 1
+          below: "Playlist hybride 3"
+          index: 1
         direction: LEFT
     - tapOn: "En voir plus"
     - assertVisible: "Rechercher"

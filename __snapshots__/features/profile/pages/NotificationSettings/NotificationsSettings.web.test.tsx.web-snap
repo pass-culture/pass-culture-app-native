@@ -95,9 +95,9 @@ exports[`NotificationsSettings should render correctly 1`] = `
 }
 
 .c3 {
-  font-family: Montserrat-Regular;
-  font-size: 15px;
-  line-height: 20px;
+  font-family: Montserrat-Medium;
+  font-size: 1rem;
+  line-height: 1.6rem;
   color: #161617;
   cursor: pointer;
 }
@@ -928,7 +928,7 @@ exports[`NotificationsSettings should render correctly 1`] = `
               class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
             >
               <div
-                class="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-fontFamily-1gknse6 r-fontSize-a023e6 r-lineHeight-rjixqe r-maxWidth-dnmrzs"
+                class="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-fontFamily-1gknse6 r-fontSize-cygvgh r-lineHeight-u6qrkm r-maxWidth-dnmrzs"
                 dir="ltr"
               >
                 Enregistrer

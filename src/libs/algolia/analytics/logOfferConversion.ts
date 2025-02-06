@@ -4,8 +4,8 @@ import AlgoliaSearchInsights from 'search-insights'
 import { CookieNameEnum } from 'features/cookies/enums'
 import { getAcceptedCookieConsent } from 'features/cookies/helpers/getAcceptedCookieConsent'
 import { useSearchAnalyticsState } from 'libs/algolia/analytics/SearchAnalyticsWrapper'
-import { env } from 'libs/environment'
-import { captureMonitoringError } from 'libs/monitoring'
+import { env } from 'libs/environment/env'
+import { captureMonitoringError } from 'libs/monitoring/errors'
 
 export const logOfferConversion = (queryID?: string) => async (objectID: string) => {
   const hasAcceptedAlogliaInsights = await getAcceptedCookieConsent(CookieNameEnum.ALGOLIA_INSIGHTS)

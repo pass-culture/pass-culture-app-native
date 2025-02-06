@@ -35,11 +35,6 @@ jest.mock('features/search/api/useSearchResults/useSearchResults', () => ({
   useSearchResults: () => mockUseSearchResult(),
 }))
 
-const mockSettings = jest.fn().mockReturnValue({ data: {} })
-jest.mock('features/auth/context/SettingsContext', () => ({
-  useSettingsContext: jest.fn(() => mockSettings()),
-}))
-
 const DEFAULT_POSITION = { latitude: 2, longitude: 40 } as GeoCoordinates
 const mockPosition: Position = DEFAULT_POSITION
 const mockShowGeolocPermissionModal = jest.fn()
@@ -81,10 +76,6 @@ const mockUseCenterOnLocation = useCenterOnLocation as jest.Mock
 jest.mock('features/venue/api/useVenueOffers')
 jest.mock('features/venueMap/helpers/zoomOutIfMapEmpty')
 jest.mock('ui/theme/customFocusOutline/customFocusOutline')
-
-jest.mock('features/search/helpers/useSearchAndPlaylistVenues/useSearchAndPlaylistVenues', () => ({
-  useSearchAndPlaylistVenues: jest.fn(),
-}))
 
 describe('SearchResultsContent component', () => {
   beforeEach(() => {

@@ -3,7 +3,6 @@ env:
   LOCATION: 'Ma position'
 ---
 - assertVisible: 'Rechercher'
-- runFlow: ../../subFolder/cloud/commands/SetLocalizationFromEverywhereToParis.yml
 - swipe:
     from:
       text: 'Les offres'

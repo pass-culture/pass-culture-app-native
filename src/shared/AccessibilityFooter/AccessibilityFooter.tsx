@@ -2,7 +2,7 @@ import React from 'react'
 import { Platform } from 'react-native'
 import styled from 'styled-components/native'
 
-import { env } from 'libs/environment'
+import { env } from 'libs/environment/env'
 import { ButtonQuaternaryGrey } from 'ui/components/buttons/ButtonQuaternaryGrey'
 import { Separator } from 'ui/components/Separator'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'

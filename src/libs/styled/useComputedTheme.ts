@@ -1,13 +1,10 @@
 import { useMemo } from 'react'
 import { useWindowDimensions } from 'react-native'
 
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useMediaQuery } from 'libs/react-responsive/useMediaQuery'
 import { BaseAppThemeType, AppThemeType } from 'theme'
 
 export function useComputedTheme(theme: BaseAppThemeType) {
-  const enableNewOfferTile = useFeatureFlag(RemoteStoreFeatureFlags.WIP_NEW_OFFER_TILE)
   const { width: windowWidth } = useWindowDimensions()
   const tabletMinWidth = theme.breakpoints.md
   const desktopMinWidth = theme.breakpoints.lg
@@ -42,7 +39,6 @@ export function useComputedTheme(theme: BaseAppThemeType) {
       showLabels,
       showTabBar,
       appContentWidth,
-      enableNewOfferTile,
     ]
   )
 }

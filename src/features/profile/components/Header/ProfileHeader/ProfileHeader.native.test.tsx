@@ -14,7 +14,6 @@ import { ProfileHeader } from 'features/profile/components/Header/ProfileHeader/
 import { domains_credit_v1 } from 'features/profile/fixtures/domainsCredit'
 import { isUserUnderageBeneficiary } from 'features/profile/helpers/isUserUnderageBeneficiary'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils'
@@ -55,6 +54,7 @@ const notBeneficiaryUser = {
   ...user,
   isBeneficiary: false,
 }
+
 const exUnderageBeneficiaryUser: UserProfileResponse = {
   ...user,
   depositExpirationDate: '2020-01-01T03:04:05',
@@ -74,7 +74,7 @@ jest.mock('libs/firebase/analytics/analytics')
 
 describe('ProfileHeader', () => {
   beforeEach(() => {
-    setFeatureFlags([RemoteStoreFeatureFlags.WIP_APP_V2_SYSTEM_BLOCK])
+    setFeatureFlags()
     mockdate.set('2021-07-01T00:00:00Z')
     mockServer.getApi<SubscriptionStepperResponseV2>(
       '/v2/subscription/stepper',
@@ -82,29 +82,84 @@ describe('ProfileHeader', () => {
     )
   })
 
+  it('should not display subtitle with passForAll enabled', () => {
+    renderProfileHeader({
+      featureFlags: {
+        enableAchievements: false,
+        enableSystemBanner: true,
+        disableActivation: false,
+        showForceUpdateBanner: false,
+        enablePassForAll: true,
+      },
+      user: undefined,
+    })
+
+    const subtitle = 'Tu as 17 ou 18 ans\u00a0?'
+
+    expect(screen.queryByText(subtitle)).not.toBeOnTheScreen()
+  })
+
   it('should display the LoggedOutHeader if no user', () => {
-    renderProfileHeader({ user: undefined })
+    renderProfileHeader({
+      featureFlags: {
+        enableAchievements: false,
+        enableSystemBanner: true,
+        disableActivation: false,
+        showForceUpdateBanner: false,
+        enablePassForAll: false,
+      },
+      user: undefined,
+    })
 
     expect(
-      screen.getByText('Identifie-toi pour bénéficier de ton crédit pass Culture')
+      screen.getByText(
+        'Identifie-toi pour découvrir des offres culturelles et bénéficier de ton crédit si tu as entre 15 et 18 ans.'
+      )
     ).toBeOnTheScreen()
   })
 
   it('should display the BeneficiaryHeader if user is beneficiary', () => {
-    renderProfileHeader({ user })
+    renderProfileHeader({
+      featureFlags: {
+        enableAchievements: false,
+        enableSystemBanner: true,
+        disableActivation: false,
+        showForceUpdateBanner: false,
+        enablePassForAll: false,
+      },
+      user,
+    })
 
     expect(screen.getByText('Profite de ton crédit jusqu’au')).toBeOnTheScreen()
   })
 
   it('should display the BeneficiaryHeader if user is underage beneficiary', () => {
     mockedisUserUnderageBeneficiary.mockReturnValueOnce(true)
-    renderProfileHeader({ user })
+    renderProfileHeader({
+      featureFlags: {
+        enableAchievements: false,
+        enableSystemBanner: true,
+        disableActivation: false,
+        showForceUpdateBanner: false,
+        enablePassForAll: false,
+      },
+      user,
+    })
 
     expect(screen.getByText('Profite de ton crédit jusqu’au')).toBeOnTheScreen()
   })
 
   it('should display the ExBeneficiary Header if credit is expired', () => {
-    renderProfileHeader({ user: exBeneficiaryUser })
+    renderProfileHeader({
+      featureFlags: {
+        enableAchievements: false,
+        enableSystemBanner: true,
+        disableActivation: false,
+        showForceUpdateBanner: false,
+        enablePassForAll: false,
+      },
+      user: exBeneficiaryUser,
+    })
 
     expect(screen.getByText('Ton crédit a expiré le')).toBeOnTheScreen()
   })
@@ -118,18 +173,47 @@ describe('ProfileHeader', () => {
       },
     })
 
-    renderProfileHeader({ user: notBeneficiaryUser })
+    renderProfileHeader({
+      featureFlags: {
+        enableAchievements: false,
+        enableSystemBanner: true,
+        disableActivation: false,
+        showForceUpdateBanner: false,
+        enablePassForAll: false,
+      },
+      user: notBeneficiaryUser,
+    })
 
     expect(await screen.findByText('Débloque tes 1000\u00a0€')).toBeOnTheScreen()
   })
 
   it('should display the NonBeneficiaryHeader Header if user is eligible exunderage beneficiary', async () => {
     mockServer.getApi<BannerResponse>('/v1/banner', {})
-    renderProfileHeader({ user: exUnderageBeneficiaryUser })
+    renderProfileHeader({
+      featureFlags: {
+        enableAchievements: false,
+        enableSystemBanner: false,
+        disableActivation: false,
+        showForceUpdateBanner: false,
+        enablePassForAll: false,
+      },
+      user: exUnderageBeneficiaryUser,
+    })
 
     expect(await screen.findByText('Mon profil')).toBeOnTheScreen()
   })
 })
 
-const renderProfileHeader = ({ user }: { user?: UserProfileResponse }) =>
-  render(reactQueryProviderHOC(<ProfileHeader user={user} />))
+const renderProfileHeader = ({
+  featureFlags,
+  user,
+}: {
+  featureFlags: {
+    enableAchievements: boolean
+    enableSystemBanner: boolean
+    disableActivation: boolean
+    showForceUpdateBanner: boolean
+    enablePassForAll: boolean
+  }
+  user?: UserProfileResponse
+}) => render(reactQueryProviderHOC(<ProfileHeader featureFlags={featureFlags} user={user} />))

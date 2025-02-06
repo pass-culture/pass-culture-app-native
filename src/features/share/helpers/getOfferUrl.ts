@@ -1,5 +1,5 @@
 import { getScreenPath } from 'features/navigation/RootNavigator/linking/getScreenPath'
-import { WEBAPP_V2_URL } from 'libs/environment'
+import { WEBAPP_V2_URL } from 'libs/environment/useWebAppUrl'
 
 export function getOfferUrl(id: number, utmMedium: string): string {
   const path = getScreenPath('Offer', { id })

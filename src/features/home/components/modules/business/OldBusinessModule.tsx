@@ -8,13 +8,13 @@ import { getBusinessUrl } from 'features/home/components/modules/business/helper
 import { useShouldDisplayBusinessModule } from 'features/home/components/modules/business/helpers/useShouldDisplayBusinessModule'
 import { openUrl } from 'features/navigation/helpers/openUrl'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { ContentTypes } from 'libs/contentful/types'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { ImageBackground } from 'libs/resizing-image-on-demand/ImageBackground'
 import { SNACK_BAR_TIME_OUT_LONG, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
-import { LENGTH_XS, MARGIN_DP, RATIO_BUSINESS, Typo, TypoDS, getSpacing } from 'ui/theme'
+import { LENGTH_XS, MARGIN_DP, RATIO_BUSINESS, TypoDS, getSpacing } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 
 const UnmemoizedBusinessModule = (props: BusinessModuleProps) => {
@@ -180,7 +180,7 @@ const IconContainer = styled.View({
   alignItems: 'center',
 })
 
-const ButtonText = styled(Typo.ButtonText)(({ theme }) => ({
+const ButtonText = styled(TypoDS.BodyAccent)(({ theme }) => ({
   color: theme.colors.white,
 }))
 

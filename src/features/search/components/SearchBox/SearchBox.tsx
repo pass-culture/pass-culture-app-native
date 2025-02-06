@@ -23,7 +23,7 @@ import { initialSearchState } from 'features/search/context/reducer'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { useNavigateToSearch } from 'features/search/helpers/useNavigateToSearch/useNavigateToSearch'
 import { CreateHistoryItem, SearchView, SearchState } from 'features/search/types'
-import { analytics } from 'libs/analytics'
+import { analytics } from 'libs/analytics/provider'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useRemoteConfigContext } from 'libs/firebase/remoteConfig/RemoteConfigProvider'
@@ -239,7 +239,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
         partialSearchState = {
           ...partialSearchState,
           offerCategories,
-          offerNativeCategories: undefined,
+          offerNativeCategories: [],
           gtls: [],
         }
       }
@@ -256,8 +256,9 @@ export const SearchBox: React.FunctionComponent<Props> = ({
             query: queryText.trim(),
             offerCategories: [SearchGroupNameEnumv2.LIVRES],
           }
-        } else if (
-          shouldRedirectToThematicSearch &&
+        }
+
+        if (
           CINEMA_KEYWORD_PATTERN.test(
             queryText
               .normalize('NFD')
@@ -286,7 +287,6 @@ export const SearchBox: React.FunctionComponent<Props> = ({
       hideSuggestions,
       showErrorSnackBar,
       offerCategories,
-      shouldRedirectToThematicSearch,
     ]
   )
 

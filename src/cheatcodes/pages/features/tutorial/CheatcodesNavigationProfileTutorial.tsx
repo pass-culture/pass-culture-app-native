@@ -39,6 +39,7 @@ export function CheatcodesNavigationProfileTutorial(): React.JSX.Element {
         title="Page 18 ans"
         navigationParams={{ age: 18 }}
       />
+      <LinkToScreen screen="ProfileTutorialAgeInformationCreditV3" title="Page 17-18 ans (V3)" />
     </CheatcodesTemplateScreen>
   )
 }

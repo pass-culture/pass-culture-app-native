@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { CheatMenuButton } from 'cheatcodes/components/CheatMenuButton'
-import { env } from 'libs/environment'
+import { env } from 'libs/environment/env'
 import { act, render, screen } from 'tests/utils'
 
 describe('CheatMenuButton', () => {

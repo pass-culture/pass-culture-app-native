@@ -17,6 +17,10 @@ export const cheatcodesNavigationSignUpButtons: [CheatcodesButtonsWithSubscreens
     title: 'SignUp 🎨',
     screen: 'CheatcodesNavigationSignUp',
     subscreens: [
+      { title: 'FinishSubscriptionModal', showOnlyInSearch: true },
+      { title: 'AuthenticationModal', showOnlyInSearch: true },
+      { title: 'ApplicationProcessingModal', showOnlyInSearch: true },
+      { title: 'ErrorApplicationModal', showOnlyInSearch: true },
       { screen: 'AccountCreated' },
       { screen: 'BeneficiaryAccountCreated' },
       { screen: 'SignupConfirmationExpiredLink', navigationParams: { email: 'john@wick.com' } },
@@ -26,7 +30,6 @@ export const cheatcodesNavigationSignUpButtons: [CheatcodesButtonsWithSubscreens
           eligibilityStartDatetime: new Date('2019-12-01T00:00:00Z').toString(),
         },
       },
-
       {
         screen: 'AfterSignupEmailValidationBuffer',
         navigationParams: {
@@ -70,14 +73,14 @@ export function CheatcodesNavigationSignUp(): React.JSX.Element {
     <CheatcodesTemplateScreen title={cheatcodesNavigationSignUpButtons[0].title}>
       <CheatcodesSubscreensButtonList buttons={cheatcodesNavigationSignUpButtons} />
 
-      <LinkToScreen title="Finish subscription modal" onPress={showFinishSubscriptionModal} />
+      <LinkToScreen title="FinishSubscriptionModal" onPress={showFinishSubscriptionModal} />
       <FinishSubscriptionModal
         visible={finishSubscriptionModalVisible}
         hideModal={hideFinishSubscriptionModal}
         from={StepperOrigin.OFFER}
       />
 
-      <LinkToScreen title="Authentication modal from offer" onPress={showAuthenticationModal} />
+      <LinkToScreen title="AuthenticationModal" onPress={showAuthenticationModal} />
       <AuthenticationModal
         visible={authenticationModalVisible}
         hideModal={hideAuthenticationModal}
@@ -85,14 +88,14 @@ export function CheatcodesNavigationSignUp(): React.JSX.Element {
         from={StepperOrigin.FAVORITE}
       />
 
-      <LinkToScreen title="Application Processing Modal" onPress={showApplicationProcessingModal} />
+      <LinkToScreen title="ApplicationProcessingModal" onPress={showApplicationProcessingModal} />
       <ApplicationProcessingModal
         visible={applicationProcessingModalVisible}
         hideModal={hideApplicationProcessingModal}
         offerId={offerId}
       />
 
-      <LinkToScreen title="Error Application Modal" onPress={showErrorApplicationModal} />
+      <LinkToScreen title="ErrorApplicationModal" onPress={showErrorApplicationModal} />
       <ErrorApplicationModal
         visible={errorApplicationModalVisible}
         hideModal={hideErrorApplicationModal}
