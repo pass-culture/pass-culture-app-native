@@ -1,7 +1,7 @@
 import { NavigationContainer } from '@react-navigation/native'
 import React from 'react'
 
-import { useMustUpdateApp } from 'features/forceUpdate/helpers/useMustUpdateApp'
+import { MustUpdateAppState, useMustUpdateApp } from 'features/forceUpdate/helpers/useMustUpdateApp'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { useSplashScreenContext } from 'libs/splashscreen'
 import { storage } from 'libs/storage'
@@ -50,12 +50,12 @@ describe('<RootNavigator />', () => {
   })
 
   beforeEach(() => {
-    mockedUseMustUpdateApp.mockReturnValue(true)
+    mockedUseMustUpdateApp.mockReturnValue(MustUpdateAppState.SHOULD_NOT_UPDATE)
     storage.clear('logged_in_session_count')
   })
 
   it('should NOT display PrivacyPolicy if splash screen is not yet hidden', async () => {
-    mockedUseMustUpdateApp.mockReturnValueOnce(false)
+    mockedUseMustUpdateApp.mockReturnValueOnce(MustUpdateAppState.SHOULD_NOT_UPDATE)
     mockUseSplashScreenContext.mockReturnValueOnce({ isSplashScreenHidden: false })
     renderRootNavigator()
 
@@ -65,7 +65,7 @@ describe('<RootNavigator />', () => {
   })
 
   it('should display PrivacyPolicy if splash screen is hidden', async () => {
-    mockedUseMustUpdateApp.mockReturnValueOnce(false)
+    mockedUseMustUpdateApp.mockReturnValueOnce(MustUpdateAppState.SHOULD_NOT_UPDATE)
     mockUseSplashScreenContext.mockReturnValueOnce({ isSplashScreenHidden: true })
 
     renderRootNavigator()

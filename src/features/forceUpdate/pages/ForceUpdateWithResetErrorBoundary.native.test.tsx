@@ -1,5 +1,6 @@
 import React from 'react'
 
+import * as useMinimalBuildNumberModule from 'features/forceUpdate/helpers/useMinimalBuildNumber'
 import { render, screen } from 'tests/utils'
 
 import { ForceUpdateWithResetErrorBoundary } from './ForceUpdateWithResetErrorBoundary'
@@ -14,6 +15,11 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 
 describe('<ForceUpdateWithResetErrorBoundary/>', () => {
   it('should match snapshot', async () => {
+    jest.spyOn(useMinimalBuildNumberModule, 'useMinimalBuildNumber').mockReturnValueOnce({
+      minimalBuildNumber: 10_304_000,
+      isLoading: false,
+    })
+
     await render(<ForceUpdateWithResetErrorBoundary resetErrorBoundary={() => null} />)
 
     expect(screen).toMatchSnapshot()

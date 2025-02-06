@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react'
+import { useEffect } from 'react'
 
 import { useMinimalBuildNumber } from 'features/forceUpdate/helpers/useMinimalBuildNumber'
 import { eventMonitoring } from 'libs/monitoring/services'
@@ -6,20 +6,23 @@ import { getAppBuildVersion } from 'libs/packageJson'
 
 const DELAY_BEFORE_VALUE_SHOULD_BE_SET_IN_MS = 15000
 
-export const useMustUpdateApp = () => {
-  const minimalBuildNumber = useRef<number | undefined>(undefined)
-  minimalBuildNumber.current = useMinimalBuildNumber()
-  const mustUpdateApp =
-    !!minimalBuildNumber.current && getAppBuildVersion() < minimalBuildNumber.current
+export enum MustUpdateAppState {
+  PENDING = 'pending',
+  SHOULD_UPDATE = 'shouldUpdate',
+  SHOULD_NOT_UPDATE = 'shouldNotUpdate',
+}
+
+export const useMustUpdateApp: () => MustUpdateAppState = () => {
+  const { minimalBuildNumber, isLoading } = useMinimalBuildNumber()
+  const appBuildVersion = getAppBuildVersion()
 
   useEffect(() => {
     const timer = globalThis.setTimeout(() => {
       if (!minimalBuildNumber) {
         eventMonitoring.captureException(new Error('MustUpdateNoMinimalBuildNumberError'), {
           extra: {
-            mustUpdateApp,
             minimalBuildNumber,
-            build: getAppBuildVersion(),
+            build: appBuildVersion,
           },
         })
       }
@@ -27,7 +30,16 @@ export const useMustUpdateApp = () => {
     return () => {
       clearInterval(timer)
     }
-  }, [mustUpdateApp])
+  }, [appBuildVersion, minimalBuildNumber])
+
+  if (isLoading) return MustUpdateAppState.PENDING
+
+  const isLocalBuildSmallerThanMinimalBuild =
+    !!minimalBuildNumber && appBuildVersion < minimalBuildNumber
+
+  const mustUpdateApp = isLocalBuildSmallerThanMinimalBuild
+    ? MustUpdateAppState.SHOULD_UPDATE
+    : MustUpdateAppState.SHOULD_NOT_UPDATE
 
   return mustUpdateApp
 }
