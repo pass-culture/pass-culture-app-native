@@ -2,7 +2,7 @@ import React, { FunctionComponent, PropsWithChildren, useRef } from 'react'
 import { useSharedValue } from 'react-native-reanimated'
 import styled, { useTheme } from 'styled-components/native'
 
-import { CategoryIdEnum } from 'api/gen'
+import { CategoryIdEnum, OfferImageResponse } from 'api/gen'
 import { OfferImageRenderer } from 'features/offer/components/OfferImageContainer/OfferImageRenderer'
 import {
   offerImageContainerMarginTop,
@@ -15,13 +15,13 @@ import { OfferImageHeaderWrapper } from './OfferImageHeaderWrapper'
 
 type Props = {
   categoryId: CategoryIdEnum | null
-  imageUrls?: string[]
+  images?: OfferImageResponse[]
   onPress?: (defaultIndex?: number) => void
   placeholderImage?: string
 }
 
 export const OfferImageContainer: FunctionComponent<Props> = ({
-  imageUrls = [],
+  images = [],
   onPress,
   categoryId,
   placeholderImage,
@@ -48,7 +48,7 @@ export const OfferImageContainer: FunctionComponent<Props> = ({
   return (
     <Wrapper>
       <StyledOfferImageRenderer
-        offerImages={imageUrls}
+        offerImages={images}
         headerHeight={headerHeight}
         placeholderImage={placeholderImage}
         progressValue={progressValue}

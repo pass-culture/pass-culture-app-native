@@ -1,18 +1,26 @@
-import React, { FunctionComponent, ReactElement, useCallback, useRef } from 'react'
+import React, {
+  FunctionComponent,
+  ReactElement,
+  useCallback,
+  useMemo,
+  useRef,
+  useState,
+} from 'react'
 import { Platform, StyleProp, View, ViewStyle } from 'react-native'
 import Animated, { FadeIn, SharedValue } from 'react-native-reanimated'
 import Carousel, { ICarouselInstance } from 'react-native-reanimated-carousel'
-import { useTheme } from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
+import { OfferImageResponse } from 'api/gen'
 import { OfferImageCarouselItem } from 'features/offer/components/OfferImageCarousel/OfferImageCarouselItem'
 import { OfferImageCarouselPagination } from 'features/offer/components/OfferImageCarouselPagination/OfferImageCarouselPagination'
 import { calculateCarouselIndex } from 'features/offer/helpers/calculateCarouselIndex/calculateCarouselIndex'
 import { useOfferImageContainerDimensions } from 'features/offer/helpers/useOfferImageContainerDimensions'
-import { Spacer } from 'ui/theme'
+import { TypoDS, getSpacing } from 'ui/theme'
 
 type Props = {
   progressValue: SharedValue<number>
-  offerImages: string[]
+  offerImages: OfferImageResponse[]
   onItemPress?: (index: number) => void
   onLoad?: () => void
   style?: StyleProp<ViewStyle>
@@ -28,12 +36,13 @@ export const OfferImageCarousel: FunctionComponent<Props> = ({
   style,
 }) => {
   const { imageStyle } = useOfferImageContainerDimensions()
-  const { borderRadius, isDesktopViewport } = useTheme()
+  const { borderRadius } = useTheme()
   const carouselRef = useRef<ICarouselInstance>(null)
   const carouselStyle = useRef({
     borderRadius: borderRadius.radius,
   }).current
   const imagesLoadedCount = useRef(0)
+  const [currentIndex, setCurrentIndex] = useState(0)
 
   // TODO(PC-000): this method should be excluded in a dedicated .web file
   const handlePressButton = (direction: 1 | -1) => {
@@ -54,13 +63,13 @@ export const OfferImageCarousel: FunctionComponent<Props> = ({
     }
   }, [offerImages.length, onLoad])
 
-  const renderItem: ({ item, index }: { item: string; index: number }) => ReactElement =
+  const renderItem: ({ item, index }: { item: OfferImageResponse; index: number }) => ReactElement =
     useCallback(
       ({ index, item }) => (
         <Animated.View entering={FadeIn}>
           <OfferImageCarouselItem
             index={index}
-            imageURL={item}
+            imageURL={item.url}
             onLoad={handleImageLoad}
             onPress={onItemPress}
             isInCarousel
@@ -69,6 +78,15 @@ export const OfferImageCarousel: FunctionComponent<Props> = ({
       ),
       [onItemPress, handleImageLoad]
     )
+
+  const { offerImagesUrl, offerImagesCredit } = useMemo(
+    () => ({
+      offerImagesUrl: offerImages.map((image) => image.url),
+      offerImagesCredit: offerImages.map((image) => image.credit),
+    }),
+    [offerImages]
+  )
+  const currentCredit = offerImagesCredit[Math.round(currentIndex)]
 
   return (
     <View style={style}>
@@ -83,22 +101,34 @@ export const OfferImageCarousel: FunctionComponent<Props> = ({
         scrollAnimationDuration={500}
         onProgressChange={(_, absoluteProgress) => {
           progressValue.value = absoluteProgress
+          setCurrentIndex(absoluteProgress)
         }}
         data={offerImages}
         renderItem={renderItem}
         style={carouselStyle}
       />
-      {offerImages.length > 1 && progressValue ? (
-        <React.Fragment>
-          <Spacer.Column numberOfSpaces={isDesktopViewport ? 6 : 4} />
 
-          <OfferImageCarouselPagination
-            progressValue={progressValue}
-            offerImages={offerImages}
-            handlePressButton={handlePressButton}
-          />
-        </React.Fragment>
+      <Container>
+        {currentCredit ? <CopyrightText>© {currentCredit}</CopyrightText> : null}
+      </Container>
+
+      {offerImages.length > 1 && progressValue ? (
+        <OfferImageCarouselPagination
+          progressValue={progressValue}
+          offerImages={offerImagesUrl}
+          handlePressButton={handlePressButton}
+        />
       ) : null}
     </View>
   )
 }
+
+const CopyrightText = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
+  color: theme.colors.greySemiDark,
+  textAlign: 'right',
+}))
+
+const Container = styled.View(({ theme }) => ({
+  height: getSpacing(5),
+  marginBottom: theme.isDesktopViewport ? getSpacing(2) : 0,
+}))

@@ -38,7 +38,7 @@ import { analytics } from 'libs/analytics/provider'
 import { useRemoteConfigContext } from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { useFunctionOnce } from 'libs/hooks'
 import { QueryKeys } from 'libs/queryKeys'
-import { getImagesUrls } from 'shared/getImagesUrls/getImagesUrls'
+import { getImagesUrlsWithCredit } from 'shared/getImagesUrlsWithCredit/getImagesUrlsWithCredit'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { AnchorProvider } from 'ui/components/anchor/AnchorContext'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
@@ -84,8 +84,11 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
     useOfferBatchTracking(subcategory.id)
 
   // We want to show images from offer when it's loaded. Not the one preloaded in query cache...
-  const offerImages = useMemo(
-    () => (offer.metadata && offer.images ? getImagesUrls<OfferImageResponse>(offer.images) : []),
+  const offerImages: OfferImageResponse[] = useMemo(
+    () =>
+      offer.metadata && offer.images
+        ? getImagesUrlsWithCredit<OfferImageResponse>(offer.images)
+        : [],
     [offer]
   )
 
@@ -154,11 +157,12 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
           onScroll={handleScroll}>
           <BodyWrapper>
             <OfferImageContainer
-              imageUrls={offerImages}
+              images={offerImages}
               categoryId={subcategory.categoryId}
               onPress={onOfferPreviewPress}
               placeholderImage={placeholderImage}
             />
+
             <OfferBody
               offer={offer}
               subcategory={subcategory}

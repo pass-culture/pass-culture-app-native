@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import { useSharedValue } from 'react-native-reanimated'
 
-import { CategoryIdEnum } from 'api/gen'
+import { CategoryIdEnum, OfferImageResponse } from 'api/gen'
 import {
   offerImageContainerMarginTop,
   useOfferImageContainerDimensions,
@@ -13,13 +13,13 @@ import { OfferImageRenderer } from './OfferImageRenderer'
 
 type Props = {
   categoryId: CategoryIdEnum | null
-  imageUrls?: string[]
+  images?: OfferImageResponse[]
   onPress?: (defaultIndex?: number) => void
   placeholderImage?: string
 }
 
 export const OfferImageContainer: FunctionComponent<Props> = ({
-  imageUrls = [],
+  images = [],
   onPress,
   categoryId,
   placeholderImage,
@@ -34,7 +34,7 @@ export const OfferImageContainer: FunctionComponent<Props> = ({
       imageUrl={placeholderImage}
       paddingTop={getSpacing(offerImageContainerMarginTop)}>
       <OfferImageRenderer
-        offerImages={imageUrls}
+        offerImages={images}
         placeholderImage={placeholderImage}
         progressValue={progressValue}
         onPress={onPress}

@@ -13,7 +13,7 @@ describe('OfferImageCarousel', () => {
     render(
       <OfferImageCarousel
         progressValue={1 as unknown as SharedValue<number>}
-        offerImages={['https://image1.jpg']}
+        offerImages={[{ url: 'https://image1.jpg' }]}
         onItemPress={jest.fn()}
         onLoad={mockOnload}
       />
@@ -32,7 +32,11 @@ describe('OfferImageCarousel', () => {
     render(
       <OfferImageCarousel
         progressValue={1 as unknown as SharedValue<number>}
-        offerImages={['https://image1.jpg', 'https://image2.jpg', 'https://image3.jpg']}
+        offerImages={[
+          { url: 'https://image1.jpg' },
+          { url: 'https://image2.jpg' },
+          { url: 'https://image3.jpg' },
+        ]}
         onItemPress={jest.fn()}
         onLoad={mockOnload}
       />
@@ -52,7 +56,11 @@ describe('OfferImageCarousel', () => {
     render(
       <OfferImageCarousel
         progressValue={1 as unknown as SharedValue<number>}
-        offerImages={['https://image1.jpg', 'https://image2.jpg', 'https://image3.jpg']}
+        offerImages={[
+          { url: 'https://image1.jpg' },
+          { url: 'https://image2.jpg' },
+          { url: 'https://image3.jpg' },
+        ]}
         onItemPress={mockOnItemPress}
         onLoad={jest.fn()}
       />
@@ -63,5 +71,18 @@ describe('OfferImageCarousel', () => {
     expect(mockOnItemPress).toHaveBeenCalledWith(2)
 
     jest.useRealTimers()
+  })
+
+  it('should display image credit when defined', async () => {
+    render(
+      <OfferImageCarousel
+        progressValue={1 as unknown as SharedValue<number>}
+        offerImages={[{ url: 'https://image1.jpg', credit: 'Cédric' }]}
+        onItemPress={jest.fn()}
+        onLoad={jest.fn()}
+      />
+    )
+
+    expect(await screen.findByText('© Cédric')).toBeOnTheScreen()
   })
 })

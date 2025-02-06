@@ -8,7 +8,7 @@ import { OfferCTAProvider } from 'features/offer/components/OfferContent/OfferCT
 import { OfferCTAButton } from 'features/offer/components/OfferCTAButton/OfferCTAButton'
 import { useOfferBatchTracking } from 'features/offer/helpers/useOfferBatchTracking/useOfferBatchTracking'
 import { OfferContentProps } from 'features/offer/types'
-import { getImagesUrls } from 'shared/getImagesUrls/getImagesUrls'
+import { getImagesUrlsWithCredit } from 'shared/getImagesUrlsWithCredit/getImagesUrlsWithCredit'
 import { useGetHeaderHeight } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
 import { ImagesCarouselModal } from 'ui/components/ImagesCarouselModal/ImagesCarouselModal'
 import { useModal } from 'ui/components/modals/useModal'
@@ -25,10 +25,12 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
   const headerHeight = useGetHeaderHeight()
   const [carouselDefaultIndex, setCarouselDefaultIndex] = useState(0)
 
-  const offerImages = useMemo(
-    () => (offer.images ? getImagesUrls<OfferImageResponse>(offer.images) : []),
+  const offerImages: OfferImageResponse[] = useMemo(
+    () => (offer.images ? getImagesUrlsWithCredit<OfferImageResponse>(offer.images) : []),
     [offer.images]
   )
+
+  const offerImagesUrl = useMemo(() => offerImages.map((image) => image.url), [offerImages])
 
   const { trackEventHasSeenOfferOnce } = useOfferBatchTracking(subcategory.id)
 
@@ -60,7 +62,7 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
         <ImagesCarouselModal
           hideModal={hideModal}
           isVisible={visible}
-          imagesURL={offerImages}
+          imagesURL={offerImagesUrl}
           defaultIndex={carouselDefaultIndex}
         />
         <StyledOfferContentBase

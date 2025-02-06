@@ -3,14 +3,14 @@ import { StyleProp, ViewStyle } from 'react-native'
 import Animated, { FadeIn, FadeOut, SharedValue } from 'react-native-reanimated'
 import styled from 'styled-components/native'
 
-import { CategoryIdEnum } from 'api/gen'
+import { CategoryIdEnum, OfferImageResponse } from 'api/gen'
 import { OfferBodyImagePlaceholder } from 'features/offer/components/OfferBodyImagePlaceholder'
 import { OfferImageCarousel } from 'features/offer/components/OfferImageCarousel/OfferImageCarousel'
 import { OfferImageCarouselItem } from 'features/offer/components/OfferImageCarousel/OfferImageCarouselItem'
 
 type Props = {
   categoryId: CategoryIdEnum | null
-  offerImages?: string[]
+  offerImages?: OfferImageResponse[]
   placeholderImage?: string
   progressValue: SharedValue<number>
   onPress?: (index: number) => void
