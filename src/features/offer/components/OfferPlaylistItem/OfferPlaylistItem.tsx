@@ -43,8 +43,8 @@ export const OfferPlaylistItem = ({
 }: OfferPlaylistItemProps) => {
   return function RenderItem({ item, width, height, playlistType }: RenderOfferPlaylistItemProps) {
     const timestampsInMillis = item.offer.dates && getTimeStampInMillis(item.offer.dates)
-    const categoryLabel = item.offer.bookFormat || labelMapping[offer.subcategoryId] || ''
-    const categoryId = categoryMapping[offer.subcategoryId]
+    const categoryLabel = item.offer.bookFormat || labelMapping[item.offer.subcategoryId] || ''
+    const categoryId = categoryMapping[item.offer.subcategoryId]
 
     return (
       <OfferTile

@@ -80,6 +80,6 @@ describe('ArtistPlaylist', () => {
       )
     )
 
-    expect(screen.getAllByText('Évènement et atelier patrimoine')[1]).toBeOnTheScreen()
+    expect(screen.getAllByText('Livre')[1]).toBeOnTheScreen()
   })
 })
