@@ -354,10 +354,10 @@ export const logEventAnalytics = {
   logHasChosenPrice: () => analytics.logEvent({ firebase: AnalyticsEvent.HAS_CHOSEN_PRICE }),
   logHasChosenTime: () => analytics.logEvent({ firebase: AnalyticsEvent.HAS_CHOSEN_TIME }),
   logHasClickedDuoStep: () => analytics.logEvent({ firebase: AnalyticsEvent.HAS_CLICKED_DUO_STEP }),
-  logHasClickedFAQCreditV3: (params: { from: string }) =>
-    analytics.logEvent({ firebase: AnalyticsEvent.HAS_CLICKED_FAQ_CREDIT_V3 }, params),
   logHasClickedMissingCode: () =>
     analytics.logEvent({ firebase: AnalyticsEvent.HAS_CLICKED_MISSING_CODE }),
+  logHasClickedTutorialFAQ: () =>
+    analytics.logEvent({ firebase: AnalyticsEvent.HAS_CLICKED_TUTORIAL_FAQ }),
   logHasCorrectedEmail: ({ from }: { from: Referrals }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.HAS_CORRECTED_EMAIL }, { from }),
   logHasDismissedAppSharingModal: () =>

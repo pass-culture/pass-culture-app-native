@@ -109,7 +109,7 @@ export const ProfileTutorialAgeInformationCreditV3: FunctionComponent = () => {
             wording="Plus d’infos dans notre FAQ"
             icon={ExternalSiteFilled}
             justifyContent="flex-start"
-            onBeforeNavigate={() => analytics.logHasClickedFAQCreditV3({ from: 'Tutorial' })}
+            onBeforeNavigate={() => analytics.logHasClickedTutorialFAQ()}
             inline
           />
         </InfoBanner>

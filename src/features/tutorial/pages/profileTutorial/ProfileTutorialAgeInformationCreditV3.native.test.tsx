@@ -28,6 +28,6 @@ describe('<ProfileTutorialAgeInformationCreditV3 />', () => {
     const link = screen.getByText('Plus d’infos dans notre FAQ')
     await userEvent.press(link)
 
-    expect(analytics.logHasClickedFAQCreditV3).toHaveBeenCalledWith({ from: 'Tutorial' })
+    expect(analytics.logHasClickedTutorialFAQ).toHaveBeenCalledTimes(1)
   })
 })
