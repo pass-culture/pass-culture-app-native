@@ -73,7 +73,6 @@ jest.setTimeout(30000) // to avoid exceeded timeout
 
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
-jest.mock('features/navigation/RootNavigator/routes')
 jest.mock('features/navigation/TabBar/routes')
 jest.mock('features/navigation/RootNavigator/linking/withAuthProtection')
 jest.mock('ui/theme/customFocusOutline/customFocusOutline')
