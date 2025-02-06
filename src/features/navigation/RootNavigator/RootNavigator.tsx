@@ -14,7 +14,6 @@ import { withWebWrapper } from 'features/navigation/RootNavigator/withWebWrapper
 import { TabNavigationStateProvider } from 'features/navigation/TabBar/TabNavigationStateContext'
 import { VenueMapFiltersStackNavigator } from 'features/navigation/VenueMapFiltersStackNavigator/VenueMapFiltersStackNavigator'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
-import { env } from 'libs/environment/env'
 import { useSplashScreenContext } from 'libs/splashscreen'
 import { storage } from 'libs/storage'
 import { IconFactoryProvider } from 'ui/components/icons/IconFactoryProvider'
@@ -45,15 +44,13 @@ const RootStackNavigator = withWebWrapper(
         <RootStack.Navigator
           initialRouteName={initialRouteName}
           screenOptions={ROOT_NAVIGATOR_SCREEN_OPTIONS}>
-          {env.FEATURE_FLIPPING_ONLY_VISIBLE_ON_TESTING ? (
-            <RootStack.Screen name="CheatcodesStackNavigator">
-              {() => (
-                <Suspense fallback={<LoadingPage />}>
-                  <CheatcodesStackNavigator />
-                </Suspense>
-              )}
-            </RootStack.Screen>
-          ) : null}
+          <RootStack.Screen name="CheatcodesStackNavigator">
+            {() => (
+              <Suspense fallback={<LoadingPage />}>
+                <CheatcodesStackNavigator />
+              </Suspense>
+            )}
+          </RootStack.Screen>
           {isWeb ? null : (
             <RootStack.Screen
               name="VenueMapFiltersStackNavigator"
@@ -61,11 +58,7 @@ const RootStackNavigator = withWebWrapper(
               options={{
                 presentation: 'modal',
                 ...FILTERS_MODAL_NAV_OPTIONS,
-                cardStyle: {
-                  marginTop: top,
-                  borderTopLeftRadius: 20,
-                  borderTopRightRadius: 20,
-                },
+                cardStyle: { marginTop: top, borderTopLeftRadius: 20, borderTopRightRadius: 20 },
               }}
             />
           )}
