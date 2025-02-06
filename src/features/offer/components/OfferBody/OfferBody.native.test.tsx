@@ -78,8 +78,6 @@ describe('<OfferBody />', () => {
     setFeatureFlags([
       RemoteStoreFeatureFlags.WIP_ARTIST_PAGE,
       RemoteStoreFeatureFlags.WIP_REACTION_FEATURE,
-      RemoteStoreFeatureFlags.WIP_REACTION_FAKE_DOOR,
-      RemoteStoreFeatureFlags.WIP_CINEMA_OFFER_VENUE_BLOCK,
       RemoteStoreFeatureFlags.WIP_OFFER_CHRONICLE_SECTION,
     ])
   })
