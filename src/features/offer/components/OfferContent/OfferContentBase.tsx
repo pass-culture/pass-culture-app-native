@@ -18,7 +18,7 @@ import { IOScrollView as IntersectionObserverScrollView } from 'react-native-int
 import { useQueryClient } from 'react-query'
 import styled from 'styled-components/native'
 
-import { OfferImageResponse, OfferResponseV2 } from 'api/gen'
+import { OfferResponseV2 } from 'api/gen'
 import { ChronicleCardData } from 'features/chronicle/type'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { OfferBody } from 'features/offer/components/OfferBody/OfferBody'
@@ -39,6 +39,7 @@ import { useRemoteConfigContext } from 'libs/firebase/remoteConfig/RemoteConfigP
 import { useFunctionOnce } from 'libs/hooks'
 import { QueryKeys } from 'libs/queryKeys'
 import { getImagesUrlsWithCredit } from 'shared/getImagesUrlsWithCredit/getImagesUrlsWithCredit'
+import { ImageWithCredit } from 'shared/types'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { AnchorProvider } from 'ui/components/anchor/AnchorContext'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
@@ -84,11 +85,9 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
     useOfferBatchTracking(subcategory.id)
 
   // We want to show images from offer when it's loaded. Not the one preloaded in query cache...
-  const offerImages: OfferImageResponse[] = useMemo(
+  const offerImages: ImageWithCredit[] = useMemo(
     () =>
-      offer.metadata && offer.images
-        ? getImagesUrlsWithCredit<OfferImageResponse>(offer.images)
-        : [],
+      offer.metadata && offer.images ? getImagesUrlsWithCredit<ImageWithCredit>(offer.images) : [],
     [offer]
   )
 

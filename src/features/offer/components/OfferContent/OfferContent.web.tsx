@@ -2,13 +2,13 @@ import React, { FunctionComponent, useMemo, useState } from 'react'
 import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 
-import { OfferImageResponse } from 'api/gen'
 import { OfferContentBase } from 'features/offer/components/OfferContent/OfferContentBase'
 import { OfferCTAProvider } from 'features/offer/components/OfferContent/OfferCTAProvider'
 import { OfferCTAButton } from 'features/offer/components/OfferCTAButton/OfferCTAButton'
 import { useOfferBatchTracking } from 'features/offer/helpers/useOfferBatchTracking/useOfferBatchTracking'
 import { OfferContentProps } from 'features/offer/types'
 import { getImagesUrlsWithCredit } from 'shared/getImagesUrlsWithCredit/getImagesUrlsWithCredit'
+import { ImageWithCredit } from 'shared/types'
 import { useGetHeaderHeight } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
 import { ImagesCarouselModal } from 'ui/components/ImagesCarouselModal/ImagesCarouselModal'
 import { useModal } from 'ui/components/modals/useModal'
@@ -25,8 +25,8 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
   const headerHeight = useGetHeaderHeight()
   const [carouselDefaultIndex, setCarouselDefaultIndex] = useState(0)
 
-  const offerImages: OfferImageResponse[] = useMemo(
-    () => (offer.images ? getImagesUrlsWithCredit<OfferImageResponse>(offer.images) : []),
+  const offerImages: ImageWithCredit[] = useMemo(
+    () => (offer.images ? getImagesUrlsWithCredit<ImageWithCredit>(offer.images) : []),
     [offer.images]
   )
 

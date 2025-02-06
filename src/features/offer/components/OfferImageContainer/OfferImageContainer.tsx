@@ -1,11 +1,12 @@
 import React, { FunctionComponent } from 'react'
 import { useSharedValue } from 'react-native-reanimated'
 
-import { CategoryIdEnum, OfferImageResponse } from 'api/gen'
+import { CategoryIdEnum } from 'api/gen'
 import {
   offerImageContainerMarginTop,
   useOfferImageContainerDimensions,
 } from 'features/offer/helpers/useOfferImageContainerDimensions'
+import { ImageWithCredit } from 'shared/types'
 import { getSpacing } from 'ui/theme'
 
 import { OfferImageHeaderWrapper } from './OfferImageHeaderWrapper'
@@ -13,7 +14,7 @@ import { OfferImageRenderer } from './OfferImageRenderer'
 
 type Props = {
   categoryId: CategoryIdEnum | null
-  images?: OfferImageResponse[]
+  images?: ImageWithCredit[]
   onPress?: (defaultIndex?: number) => void
   placeholderImage?: string
 }

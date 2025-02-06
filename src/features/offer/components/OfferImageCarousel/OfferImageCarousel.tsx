@@ -1,26 +1,19 @@
-import React, {
-  FunctionComponent,
-  ReactElement,
-  useCallback,
-  useMemo,
-  useRef,
-  useState,
-} from 'react'
+import React, { FunctionComponent, ReactElement, useCallback, useRef, useState } from 'react'
 import { Platform, StyleProp, View, ViewStyle } from 'react-native'
 import Animated, { FadeIn, SharedValue } from 'react-native-reanimated'
 import Carousel, { ICarouselInstance } from 'react-native-reanimated-carousel'
 import styled, { useTheme } from 'styled-components/native'
 
-import { OfferImageResponse } from 'api/gen'
 import { OfferImageCarouselItem } from 'features/offer/components/OfferImageCarousel/OfferImageCarouselItem'
 import { OfferImageCarouselPagination } from 'features/offer/components/OfferImageCarouselPagination/OfferImageCarouselPagination'
 import { calculateCarouselIndex } from 'features/offer/helpers/calculateCarouselIndex/calculateCarouselIndex'
 import { useOfferImageContainerDimensions } from 'features/offer/helpers/useOfferImageContainerDimensions'
+import { ImageWithCredit } from 'shared/types'
 import { TypoDS, getSpacing } from 'ui/theme'
 
 type Props = {
   progressValue: SharedValue<number>
-  offerImages: OfferImageResponse[]
+  offerImages: ImageWithCredit[]
   onItemPress?: (index: number) => void
   onLoad?: () => void
   style?: StyleProp<ViewStyle>
@@ -63,7 +56,7 @@ export const OfferImageCarousel: FunctionComponent<Props> = ({
     }
   }, [offerImages.length, onLoad])
 
-  const renderItem: ({ item, index }: { item: OfferImageResponse; index: number }) => ReactElement =
+  const renderItem: ({ item, index }: { item: ImageWithCredit; index: number }) => ReactElement =
     useCallback(
       ({ index, item }) => (
         <Animated.View entering={FadeIn}>
@@ -79,14 +72,8 @@ export const OfferImageCarousel: FunctionComponent<Props> = ({
       [onItemPress, handleImageLoad]
     )
 
-  const { offerImagesUrl, offerImagesCredit } = useMemo(
-    () => ({
-      offerImagesUrl: offerImages.map((image) => image.url),
-      offerImagesCredit: offerImages.map((image) => image.credit),
-    }),
-    [offerImages]
-  )
-  const currentCredit = offerImagesCredit[Math.round(currentIndex)]
+  const offerImagesUrl = offerImages.map((image) => image.url)
+  const currentCredit = offerImages[Math.round(currentIndex)]?.credit
 
   return (
     <View style={style}>

@@ -2,12 +2,13 @@ import React, { FunctionComponent, PropsWithChildren, useRef } from 'react'
 import { useSharedValue } from 'react-native-reanimated'
 import styled, { useTheme } from 'styled-components/native'
 
-import { CategoryIdEnum, OfferImageResponse } from 'api/gen'
+import { CategoryIdEnum } from 'api/gen'
 import { OfferImageRenderer } from 'features/offer/components/OfferImageContainer/OfferImageRenderer'
 import {
   offerImageContainerMarginTop,
   useOfferImageContainerDimensions,
 } from 'features/offer/helpers/useOfferImageContainerDimensions'
+import { ImageWithCredit } from 'shared/types'
 import { useGetHeaderHeight } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
 import { getSpacing } from 'ui/theme'
 
@@ -15,7 +16,7 @@ import { OfferImageHeaderWrapper } from './OfferImageHeaderWrapper'
 
 type Props = {
   categoryId: CategoryIdEnum | null
-  images?: OfferImageResponse[]
+  images?: ImageWithCredit[]
   onPress?: (defaultIndex?: number) => void
   placeholderImage?: string
 }
