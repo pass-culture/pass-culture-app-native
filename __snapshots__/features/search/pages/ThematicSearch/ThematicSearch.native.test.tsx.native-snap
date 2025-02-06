@@ -531,7 +531,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
         <View>
           <View
             accessibilityLabel="Romans et littérature"
-            accessibilityRole="link"
+            accessibilityRole="button"
             accessibilityState={
               {
                 "busy": undefined,
@@ -564,7 +564,6 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                   {
                     "userSelect": "auto",
                   },
-                  {},
                   {
                     "alignItems": "center",
                     "backgroundColor": "#FFDECC",
@@ -616,7 +615,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
           </View>
           <View
             accessibilityLabel="Mangas"
-            accessibilityRole="link"
+            accessibilityRole="button"
             accessibilityState={
               {
                 "busy": undefined,
@@ -649,7 +648,6 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                   {
                     "userSelect": "auto",
                   },
-                  {},
                   {
                     "alignItems": "center",
                     "backgroundColor": "#FFDECC",
@@ -701,7 +699,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
           </View>
           <View
             accessibilityLabel="BD & Comics"
-            accessibilityRole="link"
+            accessibilityRole="button"
             accessibilityState={
               {
                 "busy": undefined,
@@ -734,7 +732,6 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                   {
                     "userSelect": "auto",
                   },
-                  {},
                   {
                     "alignItems": "center",
                     "backgroundColor": "#FFDECC",
@@ -786,7 +783,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
           </View>
           <View
             accessibilityLabel="Loisirs & Bien-être"
-            accessibilityRole="link"
+            accessibilityRole="button"
             accessibilityState={
               {
                 "busy": undefined,
@@ -819,7 +816,6 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                   {
                     "userSelect": "auto",
                   },
-                  {},
                   {
                     "alignItems": "center",
                     "backgroundColor": "#FFDECC",
@@ -871,7 +867,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
           </View>
           <View
             accessibilityLabel="Société & Politique"
-            accessibilityRole="link"
+            accessibilityRole="button"
             accessibilityState={
               {
                 "busy": undefined,
@@ -904,7 +900,6 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                   {
                     "userSelect": "auto",
                   },
-                  {},
                   {
                     "alignItems": "center",
                     "backgroundColor": "#FFDECC",
@@ -956,7 +951,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
           </View>
           <View
             accessibilityLabel="Théâtre, Poésie & Essais"
-            accessibilityRole="link"
+            accessibilityRole="button"
             accessibilityState={
               {
                 "busy": undefined,
@@ -989,7 +984,6 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                   {
                     "userSelect": "auto",
                   },
-                  {},
                   {
                     "alignItems": "center",
                     "backgroundColor": "#FFDECC",
@@ -1041,7 +1035,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
           </View>
           <View
             accessibilityLabel="Compétences générales"
-            accessibilityRole="link"
+            accessibilityRole="button"
             accessibilityState={
               {
                 "busy": undefined,
@@ -1074,7 +1068,6 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                   {
                     "userSelect": "auto",
                   },
-                  {},
                   {
                     "alignItems": "center",
                     "backgroundColor": "#FFDECC",
@@ -1126,7 +1119,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
           </View>
           <View
             accessibilityLabel="Mode et Art"
-            accessibilityRole="link"
+            accessibilityRole="button"
             accessibilityState={
               {
                 "busy": undefined,
@@ -1159,7 +1152,6 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                   {
                     "userSelect": "auto",
                   },
-                  {},
                   {
                     "alignItems": "center",
                     "backgroundColor": "#FFDECC",
@@ -1211,7 +1203,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
           </View>
           <View
             accessibilityLabel="Tourisme & Voyages"
-            accessibilityRole="link"
+            accessibilityRole="button"
             accessibilityState={
               {
                 "busy": undefined,
@@ -1244,7 +1236,6 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                   {
                     "userSelect": "auto",
                   },
-                  {},
                   {
                     "alignItems": "center",
                     "backgroundColor": "#FFDECC",
@@ -1296,7 +1287,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
           </View>
           <View
             accessibilityLabel="Abonnements aux médiathèques et bibliothèques"
-            accessibilityRole="link"
+            accessibilityRole="button"
             accessibilityState={
               {
                 "busy": undefined,
@@ -1329,7 +1320,6 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                   {
                     "userSelect": "auto",
                   },
-                  {},
                   {
                     "alignItems": "center",
                     "backgroundColor": "#FFDECC",
@@ -1381,7 +1371,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
           </View>
           <View
             accessibilityLabel="E-books"
-            accessibilityRole="link"
+            accessibilityRole="button"
             accessibilityState={
               {
                 "busy": undefined,
@@ -1414,7 +1404,6 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                   {
                     "userSelect": "auto",
                   },
-                  {},
                   {
                     "alignItems": "center",
                     "backgroundColor": "#FFDECC",
@@ -1466,7 +1455,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
           </View>
           <View
             accessibilityLabel="Évènements autour du livre"
-            accessibilityRole="link"
+            accessibilityRole="button"
             accessibilityState={
               {
                 "busy": undefined,
@@ -1499,7 +1488,6 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                   {
                     "userSelect": "auto",
                   },
-                  {},
                   {
                     "alignItems": "center",
                     "backgroundColor": "#FFDECC",
@@ -1551,7 +1539,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
           </View>
           <View
             accessibilityLabel="Livres audio"
-            accessibilityRole="link"
+            accessibilityRole="button"
             accessibilityState={
               {
                 "busy": undefined,
@@ -1584,7 +1572,6 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                   {
                     "userSelect": "auto",
                   },
-                  {},
                   {
                     "alignItems": "center",
                     "backgroundColor": "#FFDECC",
