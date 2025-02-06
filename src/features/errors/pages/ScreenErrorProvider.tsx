@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { useMustUpdateApp } from 'features/forceUpdate/helpers/useMustUpdateApp'
+import { MustUpdateAppState, useMustUpdateApp } from 'features/forceUpdate/helpers/useMustUpdateApp'
 import { ForceUpdateWithResetErrorBoundary } from 'features/forceUpdate/pages/ForceUpdateWithResetErrorBoundary'
 import { useMaintenance } from 'features/maintenance/helpers/useMaintenance/useMaintenance'
 import { MaintenanceErrorPage } from 'features/maintenance/pages/MaintenanceErrorPage'
@@ -17,7 +17,7 @@ export const ScreenErrorProvider = ({
   const mustUpdateApp = useMustUpdateApp()
   const { logType } = useLogTypeFromRemoteConfig()
 
-  if (mustUpdateApp) {
+  if (mustUpdateApp === MustUpdateAppState.SHOULD_UPDATE) {
     throw new ScreenError('Must update app', {
       Screen: ForceUpdateWithResetErrorBoundary,
       logType,

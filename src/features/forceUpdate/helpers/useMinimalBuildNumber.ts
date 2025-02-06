@@ -4,7 +4,7 @@ import { getMinimalBuildNumber } from 'libs/firebase/firestore/getMinimalBuildNu
 import { QueryKeys } from 'libs/queryKeys'
 
 export const useMinimalBuildNumber = () => {
-  const { data: minimalBuildNumber } = useQuery(
+  const { data: minimalBuildNumber, isLoading } = useQuery(
     QueryKeys.MINIMAL_BUILD_NUMBER,
     getMinimalBuildNumber,
     {
@@ -14,5 +14,5 @@ export const useMinimalBuildNumber = () => {
     }
   )
 
-  return minimalBuildNumber
+  return { minimalBuildNumber, isLoading }
 }
