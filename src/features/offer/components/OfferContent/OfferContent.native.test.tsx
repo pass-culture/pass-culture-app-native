@@ -645,7 +645,10 @@ describe('<OfferContent />', () => {
 
         await user.press(await screen.findByText('Voir tous les avis'))
 
-        expect(mockNavigate).toHaveBeenNthCalledWith(1, 'Chronicles', { offerId: 116656 })
+        expect(mockNavigate).toHaveBeenNthCalledWith(1, 'Chronicles', {
+          offerId: 116656,
+          from: 'chronicles',
+        })
       })
 
       it('should navigate to chronicles page with anchor on the selected chronicle when pressing "Voir plus" button on a card', async () => {
@@ -661,6 +664,7 @@ describe('<OfferContent />', () => {
         expect(mockNavigate).toHaveBeenNthCalledWith(1, 'Chronicles', {
           offerId: 116656,
           chronicleId: 3,
+          from: 'chronicles',
         })
       })
 

@@ -135,7 +135,8 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
   )
 
   const onSeeMoreButtonPress = (chronicleId: number) => {
-    navigate('Chronicles', { offerId: offer.id, chronicleId })
+    // It's dirty but necessary to use from parameter for the logs
+    navigate('Chronicles', { offerId: offer.id, chronicleId, from: 'chronicles' })
     analytics.logConsultChronicle({ offerId: offer.id, chronicleId })
   }
 
@@ -172,7 +173,11 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
                 ctaLabel="Voir tous les avis"
                 subtitle="Notre communauté de lecteurs te partagent leurs avis sur ce livre&nbsp;!"
                 data={chronicles}
-                navigateTo={{ screen: 'Chronicles', params: { offerId: offer.id } }}
+                // It's dirty but necessary to use from parameter for the logs
+                navigateTo={{
+                  screen: 'Chronicles',
+                  params: { offerId: offer.id, from: 'chronicles' },
+                }}
                 onSeeMoreButtonPress={onSeeMoreButtonPress}
               />
             </StyledSectionWithDivider>

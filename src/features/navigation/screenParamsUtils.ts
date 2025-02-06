@@ -98,6 +98,7 @@ export const screenParamsParser: ParamsParsers = {
   Chronicles: {
     offerId: Number,
     chronicleId: Number,
+    from: identityFn,
   },
   Login: {
     displayForcedLoginHelpMessage: parseObject,
