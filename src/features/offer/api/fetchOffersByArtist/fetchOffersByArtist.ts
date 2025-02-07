@@ -5,10 +5,9 @@ import { EXCLUDED_ARTISTS } from 'features/offer/helpers/constants'
 import { captureAlgoliaError } from 'libs/algolia/fetchAlgolia/AlgoliaError'
 import { offerAttributesToRetrieve } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/offerAttributesToRetrieve'
 import { multipleQueries } from 'libs/algolia/fetchAlgolia/multipleQueries'
-import { HitOffer } from 'libs/algolia/types'
+import { AlgoliaOfferWithArtistAndEan } from 'libs/algolia/types'
 import { env } from 'libs/environment/env'
 import { Position } from 'libs/location'
-import { Offer } from 'shared/offer/types'
 
 type BuildAlgoliaFilterType = {
   artists?: string | null
@@ -17,13 +16,6 @@ type BuildAlgoliaFilterType = {
 export type FetchOfferByArtist = BuildAlgoliaFilterType & {
   searchGroupName: SearchGroupNameEnumv2
   userLocation: Position
-}
-
-export type HitOfferWithArtistAndEan = Offer & {
-  offer: HitOffer & {
-    artist: string
-    ean: string
-  }
 }
 
 export const fetchOffersByArtist = async ({
@@ -76,9 +68,11 @@ export const fetchOffersByArtist = async ({
     return { playlistHits: [], topOffersHits: [] }
 
   try {
-    const [playlistResponse, topOffersResponse] = (await multipleQueries<HitOfferWithArtistAndEan>(
-      queries
-    )) as [SearchResponse<HitOfferWithArtistAndEan>, SearchResponse<HitOfferWithArtistAndEan>]
+    const [playlistResponse, topOffersResponse] =
+      (await multipleQueries<AlgoliaOfferWithArtistAndEan>(queries)) as [
+        SearchResponse<AlgoliaOfferWithArtistAndEan>,
+        SearchResponse<AlgoliaOfferWithArtistAndEan>,
+      ]
 
     return { playlistHits: playlistResponse.hits, topOffersHits: topOffersResponse.hits }
   } catch (error) {
