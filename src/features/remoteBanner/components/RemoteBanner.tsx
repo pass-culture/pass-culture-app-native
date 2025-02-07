@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { TITLE, BUTTON_TEXT_BANNER, STORE_LINK } from 'features/forceUpdate/constants'
+import { STORE_LINK } from 'features/forceUpdate/constants'
 import { onPressStoreLink } from 'features/forceUpdate/helpers/onPressStoreLink'
 import { openUrl } from 'features/navigation/helpers/openUrl'
 import {
@@ -41,8 +41,8 @@ export const RemoteBanner = () => {
       leftIcon={ArrowAgain}
       onPress={onPress}
       {...accessibilityAndTestId(accessibilityLabel)}>
-      <StyledButtonText>{title ?? TITLE}</StyledButtonText>
-      <StyledBodyText>{subtitle ?? BUTTON_TEXT_BANNER}</StyledBodyText>
+      <StyledButtonText>{title}</StyledButtonText>
+      <StyledBodyText>{subtitle}</StyledBodyText>
     </BannerWithBackground>
   )
 }
