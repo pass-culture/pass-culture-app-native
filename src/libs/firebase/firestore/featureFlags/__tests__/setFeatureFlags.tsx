@@ -1,7 +1,13 @@
-import * as useFeatureFlagAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import * as useFeatureFlagOptionsAPI from 'libs/firebase/firestore/featureFlags/useFeatureFlagOptions'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 
-export const setFeatureFlags = (activeFeatureFlags: RemoteStoreFeatureFlags[] = []) => {
-  const useFeatureFlagSpy = jest.spyOn(useFeatureFlagAPI, 'useFeatureFlag')
-  useFeatureFlagSpy.mockImplementation((flag) => activeFeatureFlags.includes(flag))
+export const setFeatureFlags = (
+  activeFeatureFlags: RemoteStoreFeatureFlags[] = [],
+  options?: Record<string, unknown>
+) => {
+  const useFeatureFlagSpy = jest.spyOn(useFeatureFlagOptionsAPI, 'useFeatureFlagOptions')
+  useFeatureFlagSpy.mockImplementation((flag) => ({
+    isFeatureFlagActive: activeFeatureFlags.includes(flag),
+    options,
+  }))
 }

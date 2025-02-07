@@ -38,6 +38,7 @@ import {
   render,
   screen,
   userEvent,
+  waitFor,
 } from 'tests/utils'
 import * as useVersion from 'ui/hooks/useVersion'
 
@@ -164,18 +165,24 @@ describe('Profile component', () => {
       setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_ACHIEVEMENTS])
     })
 
-    it('should show banner when FF is enabled and user is a beneficiary', () => {
+    it('should show banner when FF is enabled and user is a beneficiary', async () => {
       mockedUseAuthContext.mockReturnValueOnce({ user: beneficiaryUser })
       renderProfile()
 
-      expect(screen.getByText('Mes succès')).toBeOnTheScreen()
+      await waitFor(() => {
+        // this banner is not shown if the force update banner is shown (which needs to wait for firestore, thus the achievement banner must wait for firestore as well).
+        expect(screen.getByText('Mes succès')).toBeOnTheScreen()
+      })
     })
 
     it('should not show banner if user is not a beneficiary', async () => {
       renderProfile()
       await screen.findByText('Mon profil')
 
-      expect(screen.queryByText('Mes succès')).not.toBeOnTheScreen()
+      await waitFor(() => {
+        // same comment as above
+        expect(screen.queryByText('Mes succès')).not.toBeOnTheScreen()
+      })
     })
 
     it('should not show banner when FF is disabled', async () => {

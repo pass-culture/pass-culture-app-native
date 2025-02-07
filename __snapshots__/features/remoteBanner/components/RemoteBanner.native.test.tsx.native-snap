@@ -1,0 +1,183 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`RemoteBanner matches the snapshot 1`] = `
+<View
+  accessibilityLabel="Nouvelle fenêtre : https://www.test.fr"
+  accessibilityState={
+    {
+      "busy": undefined,
+      "checked": undefined,
+      "disabled": false,
+      "expanded": undefined,
+      "selected": undefined,
+    }
+  }
+  accessibilityValue={
+    {
+      "max": undefined,
+      "min": undefined,
+      "now": undefined,
+      "text": undefined,
+    }
+  }
+  accessible={true}
+  collapsable={false}
+  focusable={true}
+  onClick={[Function]}
+  onResponderGrant={[Function]}
+  onResponderMove={[Function]}
+  onResponderRelease={[Function]}
+  onResponderTerminate={[Function]}
+  onResponderTerminationRequest={[Function]}
+  onStartShouldSetResponder={[Function]}
+  style={
+    {
+      "opacity": 1,
+      "userSelect": "auto",
+    }
+  }
+  testID="Nouvelle fenêtre : https://www.test.fr"
+>
+  <View
+    style={
+      [
+        {
+          "borderRadius": 7,
+          "overflow": "hidden",
+        },
+      ]
+    }
+  >
+    <View
+      accessibilityIgnoresInvertColors={true}
+      style={
+        [
+          {
+            "backgroundColor": "#eb0055",
+            "justifyContent": "center",
+            "width": "100%",
+          },
+        ]
+      }
+    >
+      <Image
+        source={
+          {
+            "testUri": "../../../public/images/BannerRectangle.png",
+          }
+        }
+        style={
+          [
+            {
+              "bottom": 0,
+              "left": 0,
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
+            },
+            {
+              "height": undefined,
+              "width": "100%",
+            },
+            undefined,
+          ]
+        }
+        testID="module-background"
+      />
+      <View
+        style={
+          [
+            {
+              "alignItems": "center",
+              "borderColor": "#90949D",
+              "borderRadius": 7,
+              "borderStyle": "solid",
+              "borderWidth": 1,
+              "flexDirection": "row",
+              "padding": 16,
+              "width": "100%",
+            },
+            [
+              {
+                "borderWidth": 0,
+              },
+            ],
+          ]
+        }
+      >
+        <View
+          style={
+            [
+              {
+                "alignContent": "center",
+                "marginRight": 16,
+              },
+            ]
+          }
+        >
+          <View
+            height={32}
+            testID="ArrowAgain"
+            width={32}
+          >
+            <Text>
+              ArrowAgain-SVG-Mock
+            </Text>
+          </View>
+        </View>
+        <View
+          style={
+            [
+              {
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "marginRight": 16,
+                "textAlign": "start",
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "color": "#ffffff",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 16,
+                  "lineHeight": 25.6,
+                },
+              ]
+            }
+          >
+            title 1
+          </Text>
+          <Text
+            style={
+              [
+                {
+                  "color": "#ffffff",
+                  "fontFamily": "Montserrat-Medium",
+                  "fontSize": 16,
+                  "lineHeight": 25.6,
+                },
+              ]
+            }
+          >
+            subtitle 1
+          </Text>
+        </View>
+        <View>
+          <View
+            height={24}
+            width={24}
+          >
+            <Text>
+              undefined-SVG-Mock
+            </Text>
+          </View>
+        </View>
+      </View>
+    </View>
+  </View>
+</View>
+`;

@@ -1,7 +1,7 @@
 import React, { FunctionComponent, ReactNode } from 'react'
 import styled from 'styled-components/native'
 
-import { ForceUpdateBanner } from 'features/forceUpdate/components/ForceUpdateBanner'
+import { RemoteBanner } from 'features/remoteBanner/components/RemoteBanner'
 import { InfoBanner } from 'ui/components/banners/InfoBanner'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { Info } from 'ui/svg/icons/Info'
@@ -37,7 +37,7 @@ export const HeaderWithGreyContainer: FunctionComponent<PropsWithChildren> = ({
       )}
       {showForceUpdateBanner ? (
         <BannerContainer>
-          <ForceUpdateBanner />
+          <RemoteBanner />
           <Spacer.Column numberOfSpaces={6} />
         </BannerContainer>
       ) : null}

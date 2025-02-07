@@ -26,26 +26,40 @@ const mockUseGeolocation = jest.mocked(useLocation)
 jest.mock('shared/user/useGetDepositAmountsByAge')
 const mockDepositAmounts = jest.mocked(useGetDepositAmountsByAge)
 
+jest.mock('@react-native-firebase/firestore')
+
+jest.useFakeTimers()
+
 describe('<HomeBanner/>', () => {
   beforeEach(() => {
     setFeatureFlags()
   })
 
-  it('should display force update banner when feature flag showForceUpdateBanner is enable', async () => {
-    setFeatureFlags([RemoteStoreFeatureFlags.SHOW_FORCE_UPDATE_BANNER])
-    mockSubscriptionStepper()
-    mockBannerFromBackend({
-      banner: {
-        name: BannerName.retry_identity_check_banner,
-        title: 'Retente ubble',
-        text: 'pour débloquer ton crédit',
-      },
+  describe('when feature flag showForceUpdateBanner is enable', () => {
+    beforeEach(() => {
+      setFeatureFlags([RemoteStoreFeatureFlags.SHOW_FORCE_UPDATE_BANNER], {
+        title: 'title 1',
+        subtitle: 'subtitle 1',
+        redirectionUrl: 'https://www.test.fr',
+        redirectionType: 'external',
+      })
     })
 
-    renderHomeBanner({})
-    await act(async () => {})
+    it('should display force update banner', async () => {
+      mockSubscriptionStepper()
+      mockBannerFromBackend({
+        banner: {
+          name: BannerName.retry_identity_check_banner,
+          title: 'Retente ubble',
+          text: 'pour débloquer ton crédit',
+        },
+      })
+      renderHomeBanner({})
 
-    expect(screen.getByText('Mise à jour requise !')).toBeOnTheScreen()
+      const banner = await screen.findByText('title 1')
+
+      expect(banner).toBeOnTheScreen()
+    })
   })
 
   describe('When wipAppV2SystemBlock feature flag deactivated', () => {
@@ -124,7 +138,7 @@ describe('<HomeBanner/>', () => {
   })
 
   describe('When wipAppV2SystemBlock feature flag activated', () => {
-    beforeAll(() => {
+    beforeEach(() => {
       setFeatureFlags([RemoteStoreFeatureFlags.WIP_APP_V2_SYSTEM_BLOCK])
     })
 
