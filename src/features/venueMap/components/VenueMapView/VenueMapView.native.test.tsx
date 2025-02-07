@@ -1,9 +1,9 @@
+import { useNavigation } from '@react-navigation/native'
 import React, { ComponentPropsWithRef } from 'react'
 import { State } from 'react-native-gesture-handler'
 import { fireGestureHandler, getByGestureTestId } from 'react-native-gesture-handler/jest-utils'
 import { UseQueryResult } from 'react-query'
 
-import { navigate } from '__mocks__/@react-navigation/native'
 import { VenueTypeCodeKey } from 'api/gen'
 import { PlaylistType } from 'features/offer/enums'
 import * as useVenueOffers from 'features/venue/api/useVenueOffers'
@@ -24,6 +24,13 @@ import { act, fireEvent, render, screen, userEvent, waitFor } from 'tests/utils'
 import * as constants from '../../constant'
 
 const mockSetInitialVenues = jest.spyOn(initialVenuesActions, 'setInitialVenues')
+
+jest.mock('@react-navigation/native')
+
+const mockNavigate = jest.fn()
+const mockUseNavigation = useNavigation as jest.Mock
+
+mockUseNavigation.mockReturnValue({ navigate: mockNavigate })
 
 jest.mock('features/venueMap/useGetAllVenues')
 const mockUseGetAllVenues = useGetAllVenues as jest.Mock
@@ -216,7 +223,7 @@ describe('<VenueMapView />', () => {
       { state: State.END, absoluteY: -30 },
     ])
 
-    expect(navigate).toHaveBeenCalledWith('Venue', { id: venuesFixture[0].venueId })
+    expect(mockNavigate).toHaveBeenCalledWith('Venue', { id: venuesFixture[0].venueId })
   })
 
   it('should deactivate navigation to Venue page when bottom sheet is open, pressing venue button, wipIsOpenToPublic feature flag is true and venue is not open to public', async () => {

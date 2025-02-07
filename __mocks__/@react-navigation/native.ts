@@ -40,7 +40,7 @@ export const navigation = {
   setParams,
   useLinkProps,
 }
-export const useNavigation = () => navigation
+export const useNavigation = jest.fn().mockReturnValue(navigation)
 export const createNavigationContainerRef = () => ({
   ...navigation,
   isReady: () => true,

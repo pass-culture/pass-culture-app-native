@@ -2,7 +2,7 @@ import React from 'react'
 import { Text } from 'react-native'
 
 import { analytics } from 'libs/analytics/provider'
-import { act, render, screen, userEvent } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 
 import { TouchableLink } from './TouchableLink'
@@ -71,57 +71,6 @@ describe('<TouchableLink />', () => {
 
       expect(screen.getByText(buttonText)).toBeOnTheScreen()
       expect(link.props.style).toEqual(expectedStyle)
-    })
-
-    it('should trigger handleNavigation only once in case of press spamming with correct cooldown delay', async () => {
-      render(
-        <TouchableLink handleNavigation={handleNavigationMock} pressCooldownDelay={300}>
-          <TouchableLinkContent />
-        </TouchableLink>
-      )
-
-      await user.press(screen.getByText(linkText))
-      await user.press(screen.getByText(linkText))
-      await user.press(screen.getByText(linkText))
-
-      expect(handleNavigationMock).toHaveBeenCalledTimes(1)
-    })
-
-    it('should trigger handleNavigation multiple time if cooldown delay is respected', async () => {
-      render(
-        <TouchableLink handleNavigation={handleNavigationMock} pressCooldownDelay={300}>
-          <TouchableLinkContent />
-        </TouchableLink>
-      )
-
-      await act(async () => {
-        await user.press(screen.getByText(linkText))
-
-        jest.advanceTimersByTime(300)
-
-        await user.press(screen.getByText(linkText))
-
-        jest.advanceTimersByTime(300)
-
-        await user.press(screen.getByText(linkText))
-      })
-
-      expect(handleNavigationMock).toHaveBeenCalledTimes(3)
-    })
-
-    it('should trigger handleNavigation with multiple press when no cooldown delay is set', async () => {
-      jest.useFakeTimers()
-      render(
-        <TouchableLink handleNavigation={handleNavigationMock}>
-          <TouchableLinkContent />
-        </TouchableLink>
-      )
-
-      await user.press(screen.getByText(linkText))
-      await user.press(screen.getByText(linkText))
-      await user.press(screen.getByText(linkText))
-
-      expect(handleNavigationMock).toHaveBeenCalledTimes(3)
     })
 
     it('should not trigger handleNavigation when Link is disabled', async () => {
