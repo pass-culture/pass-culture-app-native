@@ -2,7 +2,8 @@ import { InferType, object, string } from 'yup'
 
 const remoteBannerSchema = object({
   title: string().required(),
-  subtitle: string().nullable(),
+  subtitleWeb: string().nullable(),
+  subtitleMobile: string().nullable(),
   redirectionUrl: string().url().nullable(),
   redirectionType: string().oneOf(['external', 'store']).required(),
 })

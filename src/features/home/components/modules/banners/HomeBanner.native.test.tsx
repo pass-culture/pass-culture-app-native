@@ -39,9 +39,10 @@ describe('<HomeBanner/>', () => {
     beforeEach(() => {
       setFeatureFlags([RemoteStoreFeatureFlags.SHOW_REMOTE_BANNER], {
         title: 'title 1',
-        subtitle: 'subtitle 1',
+        subtitleMobile: 'subtitleMobile 1',
+        subtitleWeb: 'subtitleWeb 1',
         redirectionUrl: 'https://www.test.fr',
-        redirectionType: 'external',
+        redirectionType: 'store',
       })
     })
 

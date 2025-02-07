@@ -163,7 +163,7 @@ exports[`RemoteBanner matches the snapshot 1`] = `
               ]
             }
           >
-            subtitle 1
+            subtitleMobile 1
           </Text>
         </View>
         <View>

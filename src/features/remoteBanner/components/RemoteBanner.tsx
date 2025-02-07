@@ -1,4 +1,5 @@
 import React from 'react'
+import { Platform } from 'react-native'
 import styled from 'styled-components/native'
 
 import { STORE_LINK } from 'features/forceUpdate/constants'
@@ -15,11 +16,13 @@ import { BannerWithBackground } from 'ui/components/ModuleBanner/BannerWithBackg
 import { ArrowAgain } from 'ui/svg/icons/ArrowAgain'
 import { TypoDS } from 'ui/theme'
 
+const isWeb = Platform.OS === 'web'
+
 export const RemoteBanner = () => {
   const { options } = useFeatureFlagOptions(RemoteStoreFeatureFlags.SHOW_REMOTE_BANNER)
   const validatedOptions = validateRemoteBanner(options)
   if (!validatedOptions) return null
-  const { title, subtitle, redirectionUrl, redirectionType } = validatedOptions
+  const { title, subtitleMobile, subtitleWeb, redirectionUrl, redirectionType } = validatedOptions
 
   const isStoreRedirection = redirectionType === RemoteBannerRedirectionType.STORE
   const isExternalRedirection = redirectionType === RemoteBannerRedirectionType.EXTERNAL
@@ -42,7 +45,7 @@ export const RemoteBanner = () => {
       onPress={onPress}
       {...accessibilityAndTestId(accessibilityLabel)}>
       <StyledButtonText>{title}</StyledButtonText>
-      <StyledBodyText>{subtitle}</StyledBodyText>
+      <StyledBodyText>{isWeb ? subtitleWeb : subtitleMobile}</StyledBodyText>
     </BannerWithBackground>
   )
 }

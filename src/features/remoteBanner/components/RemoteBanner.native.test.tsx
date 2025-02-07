@@ -88,28 +88,32 @@ describe('RemoteBanner', () => {
 
 const bannerAppStore: RemoteBannerType = {
   title: 'title 1',
-  subtitle: 'subtitle 1',
+  subtitleMobile: 'subtitleMobile 1',
+  subtitleWeb: 'subtitleWeb 1',
   redirectionUrl: 'https://www.test.fr',
   redirectionType: RemoteBannerRedirectionType.STORE,
 }
 
 const bannerExternalUrl: RemoteBannerType = {
   title: 'title 1',
-  subtitle: 'subtitle 1',
+  subtitleMobile: 'subtitleMobile 1',
+  subtitleWeb: 'subtitleWeb 1',
   redirectionUrl: 'https://www.test.fr',
   redirectionType: RemoteBannerRedirectionType.EXTERNAL,
 }
 
 const bannerExternalUrlWithMissingUrl: Partial<RemoteBannerType> = {
   title: 'title 1',
-  subtitle: 'subtitle 1',
+  subtitleMobile: 'subtitleMobile 1',
+  subtitleWeb: 'subtitleWeb 1',
   redirectionUrl: '',
   redirectionType: RemoteBannerRedirectionType.EXTERNAL,
 }
 
 const bannerBadType: Partial<RemoteBannerType> = {
   title: 'title 1',
-  subtitle: 'subtitle 1',
+  subtitleMobile: 'subtitleMobile 1',
+  subtitleWeb: 'subtitleWeb 1',
   redirectionUrl: 'https://www.test.fr',
   redirectionType: 'other',
 }
