@@ -8505,13 +8505,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-native-community/blur@npm:^4.3.2":
-  version: 4.3.2
-  resolution: "@react-native-community/blur@npm:4.3.2"
+"@react-native-community/blur@npm:^4.4.1":
+  version: 4.4.1
+  resolution: "@react-native-community/blur@npm:4.4.1"
   peerDependencies:
     react: "*"
     react-native: "*"
-  checksum: 4f7ed6a3bb58cd53346bb7d5755bb2733e8401fdae86334fde4f2fa0c554734e9bb52175c1f9ef1d99766aeb7a4991ac5dfe428c92da518d0353a1a6e5c3d39c
+  checksum: 1e47144b0c00dce562e72ea9f6c3e93d3bb392ec0ea001ce37ff801d9a496c9801927033ee4800bf92ea2ece9de0abe596715add3b7afe3c5d1533e260f5e09e
   languageName: node
   linkType: hard
 
@@ -12865,7 +12865,7 @@ __metadata:
     "@ptomasroos/react-native-multi-slider": ^2.2.2
     "@react-native-async-storage/async-storage": ^1.17.11
     "@react-native-clipboard/clipboard": ^1.12.1
-    "@react-native-community/blur": ^4.3.2
+    "@react-native-community/blur": ^4.4.1
     "@react-native-community/netinfo": ^9.0.0
     "@react-native-firebase/analytics": ^14.9.0
     "@react-native-firebase/app": ^14.9.0
