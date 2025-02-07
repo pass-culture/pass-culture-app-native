@@ -70,7 +70,7 @@ describe('useVideoOffers', () => {
   })
 
   it('should return offers when only OffersModuleParameters are provided', async () => {
-    mockFetchMultipleOffers.mockResolvedValueOnce({ hits: mockOffers, nbHits: 6 })
+    mockFetchMultipleOffers.mockResolvedValueOnce([{ hits: mockOffers, nbHits: 6 }])
 
     const { result } = renderHook(
       () => useVideoOffers([{}] as OffersModuleParameters[], 'moduleId', undefined, undefined),

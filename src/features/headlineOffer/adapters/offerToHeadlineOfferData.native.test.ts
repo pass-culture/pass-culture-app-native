@@ -28,9 +28,9 @@ describe('offerToHeadlineOfferData', () => {
     })
   })
 
-  it('should return null if offer is null', () => {
+  it('should return null if offer is undefined', () => {
     const result = offerToHeadlineOfferData({
-      offer: null,
+      offer: undefined,
       transformParameters: {
         mapping: mockMapping,
         labelMapping: mockLabelMapping,

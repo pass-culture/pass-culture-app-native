@@ -131,6 +131,7 @@ export type SearchQueryParameters = {
   maxPrice?: string
   minBookingsThreshold?: number
   minPrice?: string
+  isHeadline?: boolean
   offerCategories: SearchGroupNameEnumv2[]
   offerGenreTypes?: OfferGenreType[]
   offerGtlLabel?: string
@@ -251,3 +252,8 @@ export type NativeCategoryFacetData = Record<
 type GenreTypeFacetData = Record<FacetKeys, GenreTypeFacets>
 
 export type FacetData = NativeCategoryFacetData | GenreTypeFacetData
+
+export type MultipleOffersResult = {
+  hits: AlgoliaOffer[]
+  nbHits: number
+}[]

@@ -60,6 +60,7 @@ export type TabType<TabKeyType extends string> = {
 export type VenueOffers = {
   hits: Offer[]
   nbHits: number
+  headlineOffer?: Offer
 }
 
 export type Artist = {

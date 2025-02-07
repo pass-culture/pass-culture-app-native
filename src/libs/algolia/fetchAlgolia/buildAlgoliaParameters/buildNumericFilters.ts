@@ -1,5 +1,6 @@
 import {
   buildDatePredicate,
+  buildHeadlineUntilPredicate,
   buildHomepageDatePredicate,
   buildOfferLast30DaysBookings,
   buildOfferPriceRangePredicate,
@@ -17,6 +18,7 @@ export const buildNumericFilters = ({
   maxPrice,
   maxPossiblePrice,
   minBookingsThreshold,
+  isHeadline,
 }: Pick<
   SearchQueryParameters,
   | 'beginningDatetime'
@@ -29,6 +31,7 @@ export const buildNumericFilters = ({
   | 'maxPrice'
   | 'maxPossiblePrice'
   | 'minBookingsThreshold'
+  | 'isHeadline'
 >): null | {
   numericFilters: FiltersArray
 } => {
@@ -42,12 +45,14 @@ export const buildNumericFilters = ({
   const datePredicate = buildDatePredicate({ date, timeRange })
   const homepageDatePredicate = buildHomepageDatePredicate({ beginningDatetime, endingDatetime })
   const last30DaysBookingsPredicate = buildOfferLast30DaysBookings(minBookingsThreshold)
+  const headlineUntilPredicate = buildHeadlineUntilPredicate(isHeadline)
   const numericFilters: FiltersArray = []
 
   if (priceRangePredicate) numericFilters.push(priceRangePredicate)
   if (datePredicate) numericFilters.push(datePredicate)
   if (homepageDatePredicate) numericFilters.push(homepageDatePredicate)
   if (last30DaysBookingsPredicate) numericFilters.push(last30DaysBookingsPredicate)
+  if (headlineUntilPredicate) numericFilters.push(headlineUntilPredicate)
 
   return numericFilters.length > 0 ? { numericFilters } : null
 }
