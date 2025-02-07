@@ -37,7 +37,7 @@ export type HitOffer = {
   publicationDate?: number
 }
 
-export type AlgoliaOfferWithArtistAndEan = AlgoliaHit<
+export type AlgoliaOfferWithArtistAndEan = AlgoliaOffer<
   HitOffer & {
     artist: NonNullable<HitOffer['artist']>
     ean: NonNullable<HitOffer['ean']>
@@ -49,7 +49,7 @@ export interface AlgoliaGeoloc {
   lng?: number | null
 }
 
-export interface AlgoliaHit<T = HitOffer> {
+export interface AlgoliaOffer<T = HitOffer> {
   offer: T
   _geoloc: Geoloc
   objectID: string

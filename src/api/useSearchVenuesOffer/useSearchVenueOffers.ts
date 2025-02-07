@@ -10,7 +10,7 @@ import { formatFullAddressStartsWithPostalCode } from 'libs/address/useFormatFul
 import { useSearchAnalyticsState } from 'libs/algolia/analytics/SearchAnalyticsWrapper'
 import { FetchOffersResponse, fetchOffers } from 'libs/algolia/fetchAlgolia/fetchOffers'
 import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
-import { AlgoliaHit, Geoloc } from 'libs/algolia/types'
+import { AlgoliaOffer, Geoloc } from 'libs/algolia/types'
 import { Position, useLocation } from 'libs/location'
 import { LocationMode } from 'libs/location/types'
 import { formatDistance } from 'libs/parsers/formatDistance'
@@ -39,7 +39,7 @@ type OfferVenueType = VenueListItem & {
 }
 
 type FilterVenueOfferType = {
-  hit: AlgoliaHit
+  hit: AlgoliaOffer
   offerId: number
   venueId: number | undefined
 }

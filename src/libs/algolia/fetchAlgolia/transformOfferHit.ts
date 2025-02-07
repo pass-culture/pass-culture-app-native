@@ -1,7 +1,7 @@
 import { useCallback } from 'react'
 
 import { useSettingsContext } from 'features/auth/context/SettingsContext'
-import { AlgoliaHit, HitOffer } from 'libs/algolia/types'
+import { AlgoliaOffer, HitOffer } from 'libs/algolia/types'
 import { convertEuroToCents } from 'libs/parsers/pricesConversion'
 
 // Go to https://github.com/pass-culture/pass-culture-api/blob/master/src/pcapi/algolia/infrastructure/builder.py
@@ -30,16 +30,16 @@ export const parseThumbUrl = (
 // The _geoloc is hardcoded for digital offers (without position) so that the results appear in the Search:
 // original PR: https://github.com/pass-culture/pass-culture-api/pull/1334
 // Here we dehardcode those coordinates, so that we don't show a wrong distance to the user.
-const parseGeoloc = (hit: AlgoliaHit): AlgoliaHit['_geoloc'] =>
+const parseGeoloc = (hit: AlgoliaOffer): AlgoliaOffer['_geoloc'] =>
   hit.offer.isDigital ? { lat: null, lng: null } : hit._geoloc
 
 // We don't want to display offers without image nor subcategoryId
-export const filterOfferHit = (hit: AlgoliaHit): boolean =>
-  hit?.offer && !!hit.offer.thumbUrl && typeof hit.offer.subcategoryId !== 'undefined'
+export const filterOfferHit = (hit?: AlgoliaOffer): hit is AlgoliaOffer =>
+  !!hit && hit?.offer && !!hit.offer.thumbUrl && typeof hit.offer.subcategoryId !== 'undefined'
 
 export const transformOfferHit =
   (urlPrefix?: string) =>
-  (hit: AlgoliaHit): AlgoliaHit => ({
+  (hit: AlgoliaOffer): AlgoliaOffer => ({
     ...hit,
     offer: {
       ...hit.offer,
