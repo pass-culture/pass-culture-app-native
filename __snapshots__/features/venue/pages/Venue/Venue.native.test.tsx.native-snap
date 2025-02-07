@@ -787,6 +787,4773 @@ exports[`<Venue /> should match snapshot 1`] = `
                 }
               >
                 <View
+                  numberOfSpaces={6}
+                  style={
+                    [
+                      {
+                        "height": 24,
+                      },
+                    ]
+                  }
+                />
+                <View
+                  gap={4}
+                  style={
+                    [
+                      {
+                        "gap": 16,
+                        "paddingBottom": 24,
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    gap={1}
+                    style={
+                      [
+                        {
+                          "gap": 4,
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      style={
+                        [
+                          {
+                            "flexDirection": "row",
+                          },
+                        ]
+                      }
+                    >
+                      <Text
+                        numberOfLines={2}
+                        style={
+                          [
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-Bold",
+                              "fontSize": 19,
+                              "lineHeight": 30.4,
+                              "marginHorizontal": 24,
+                            },
+                          ]
+                        }
+                        testID="playlistTitle"
+                      >
+                        Toutes les offres
+                      </Text>
+                    </View>
+                  </View>
+                  <View
+                    onLayout={[Function]}
+                    style={
+                      [
+                        {
+                          "position": "relative",
+                          "width": "100%",
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      style={{}}
+                    >
+                      <RCTScrollView
+                        ItemSeparatorComponent={
+                          {
+                            "$$typeof": Symbol(react.forward_ref),
+                            "attrs": [
+                              {
+                                "width": 16,
+                              },
+                            ],
+                            "inlineStyle": InlineStyle {
+                              "rules": [
+                                [Function],
+                                "",
+                              ],
+                            },
+                            "render": [Function],
+                            "shouldForwardProp": undefined,
+                            "styledComponentId": "StyledNativeComponent",
+                            "target": [Function],
+                            "withComponent": [Function],
+                          }
+                        }
+                        ListFooterComponent={
+                          {
+                            "$$typeof": Symbol(react.forward_ref),
+                            "attrs": [
+                              {
+                                "width": 24,
+                              },
+                            ],
+                            "inlineStyle": InlineStyle {
+                              "rules": [
+                                [Function],
+                                "",
+                              ],
+                            },
+                            "render": [Function],
+                            "shouldForwardProp": undefined,
+                            "styledComponentId": "StyledNativeComponent",
+                            "target": [Function],
+                            "withComponent": [Function],
+                          }
+                        }
+                        ListHeaderComponent={
+                          {
+                            "$$typeof": Symbol(react.forward_ref),
+                            "attrs": [
+                              {
+                                "width": 24,
+                              },
+                            ],
+                            "inlineStyle": InlineStyle {
+                              "rules": [
+                                [Function],
+                                "",
+                              ],
+                            },
+                            "render": [Function],
+                            "shouldForwardProp": undefined,
+                            "styledComponentId": "StyledNativeComponent",
+                            "target": [Function],
+                            "withComponent": [Function],
+                          }
+                        }
+                        applyWindowCorrection={[Function]}
+                        canChangeSize={true}
+                        contentContainerStyle={
+                          {
+                            "backgroundColor": undefined,
+                            "minHeight": 1,
+                            "minWidth": 1,
+                            "paddingBottom": 0,
+                            "paddingTop": 0,
+                          }
+                        }
+                        contentHeight={250}
+                        contentWidth={432}
+                        data={
+                          [
+                            {
+                              "_geoloc": {
+                                "lat": 47.8898,
+                                "lng": -2.83593,
+                              },
+                              "objectID": "223342",
+                              "offer": {
+                                "dates": [
+                                  1629312300,
+                                  1629485100,
+                                  1629657900,
+                                ],
+                                "isDigital": false,
+                                "isDuo": true,
+                                "name": "Titane - VF",
+                                "prices": [
+                                  0,
+                                  0,
+                                  0,
+                                ],
+                                "subcategoryId": "CINE_PLEIN_AIR",
+                                "thumbUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
+                              },
+                              "venue": {},
+                            },
+                            {
+                              "_geoloc": {
+                                "lat": 47.8898,
+                                "lng": -2.83593,
+                              },
+                              "objectID": "223338",
+                              "offer": {
+                                "dates": [
+                                  1629312300,
+                                  1629485100,
+                                  1629657900,
+                                ],
+                                "isDigital": false,
+                                "isDuo": true,
+                                "name": "Bac Nord - VF",
+                                "prices": [
+                                  0,
+                                  0,
+                                  0,
+                                ],
+                                "subcategoryId": "CINE_PLEIN_AIR",
+                                "thumbUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
+                              },
+                              "venue": {},
+                            },
+                            {
+                              "_geoloc": {
+                                "lat": 47.8898,
+                                "lng": -2.83593,
+                              },
+                              "objectID": "223339",
+                              "offer": {
+                                "dates": [
+                                  1629312300,
+                                  1629485100,
+                                  1629657900,
+                                ],
+                                "isDigital": false,
+                                "isDuo": true,
+                                "name": "Black Widow - VF",
+                                "prices": [
+                                  0,
+                                  0,
+                                  0,
+                                ],
+                                "subcategoryId": "CINE_PLEIN_AIR",
+                                "thumbUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMA",
+                              },
+                              "venue": {},
+                            },
+                          ]
+                        }
+                        dataProvider={
+                          DataProvider {
+                            "_data": [
+                              {
+                                "_geoloc": {
+                                  "lat": 47.8898,
+                                  "lng": -2.83593,
+                                },
+                                "objectID": "223342",
+                                "offer": {
+                                  "dates": [
+                                    1629312300,
+                                    1629485100,
+                                    1629657900,
+                                  ],
+                                  "isDigital": false,
+                                  "isDuo": true,
+                                  "name": "Titane - VF",
+                                  "prices": [
+                                    0,
+                                    0,
+                                    0,
+                                  ],
+                                  "subcategoryId": "CINE_PLEIN_AIR",
+                                  "thumbUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
+                                },
+                                "venue": {},
+                              },
+                              {
+                                "_geoloc": {
+                                  "lat": 47.8898,
+                                  "lng": -2.83593,
+                                },
+                                "objectID": "223338",
+                                "offer": {
+                                  "dates": [
+                                    1629312300,
+                                    1629485100,
+                                    1629657900,
+                                  ],
+                                  "isDigital": false,
+                                  "isDuo": true,
+                                  "name": "Bac Nord - VF",
+                                  "prices": [
+                                    0,
+                                    0,
+                                    0,
+                                  ],
+                                  "subcategoryId": "CINE_PLEIN_AIR",
+                                  "thumbUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
+                                },
+                                "venue": {},
+                              },
+                              {
+                                "_geoloc": {
+                                  "lat": 47.8898,
+                                  "lng": -2.83593,
+                                },
+                                "objectID": "223339",
+                                "offer": {
+                                  "dates": [
+                                    1629312300,
+                                    1629485100,
+                                    1629657900,
+                                  ],
+                                  "isDigital": false,
+                                  "isDuo": true,
+                                  "name": "Black Widow - VF",
+                                  "prices": [
+                                    0,
+                                    0,
+                                    0,
+                                  ],
+                                  "subcategoryId": "CINE_PLEIN_AIR",
+                                  "thumbUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMA",
+                                },
+                                "venue": {},
+                              },
+                            ],
+                            "_firstIndexToProcess": 0,
+                            "_hasStableIds": true,
+                            "_requiresDataChangeHandling": false,
+                            "_size": 3,
+                            "getStableId": [Function],
+                            "rowHasChanged": [Function],
+                          }
+                        }
+                        disableRecycling={false}
+                        estimatedItemSize={144}
+                        extendedState={{}}
+                        externalScrollView={[Function]}
+                        finalRenderAheadOffset={187.5}
+                        forceNonDeterministicRendering={true}
+                        horizontal={true}
+                        initialOffset={0}
+                        initialRenderIndex={0}
+                        isHorizontal={true}
+                        keyExtractor={[Function]}
+                        layoutProvider={
+                          GridLayoutProviderWithProps {
+                            "_acceptableRelayoutDelta": 1,
+                            "_getHeightOrWidth": [Function],
+                            "_getLayoutTypeForIndex": [Function],
+                            "_getSpan": [Function],
+                            "_hasExpired": false,
+                            "_isHorizontal": true,
+                            "_lastLayoutManager": GridLayoutManager {
+                              "_acceptableRelayoutDelta": 1,
+                              "_getSpan": [Function],
+                              "_isGridHorizontal": true,
+                              "_isHorizontal": true,
+                              "_layoutProvider": [Circular],
+                              "_layouts": [
+                                {
+                                  "height": 250,
+                                  "type": 0,
+                                  "width": 144,
+                                  "x": 0,
+                                  "y": 0,
+                                },
+                                {
+                                  "height": 250,
+                                  "type": 0,
+                                  "width": 144,
+                                  "x": 144,
+                                  "y": 0,
+                                },
+                                {
+                                  "height": 250,
+                                  "type": 0,
+                                  "width": 144,
+                                  "x": 288,
+                                  "y": 0,
+                                },
+                              ],
+                              "_maxSpan": 1,
+                              "_renderWindowSize": {
+                                "height": 250,
+                                "width": 800,
+                              },
+                              "_totalHeight": 250,
+                              "_totalWidth": 432,
+                              "_window": {
+                                "height": 250,
+                                "width": 800,
+                              },
+                            },
+                            "_maxSpan": 1,
+                            "_renderWindowSize": {
+                              "height": 250,
+                              "width": 800,
+                            },
+                            "_setLayoutForType": [Function],
+                            "_tempDim": {
+                              "height": 0,
+                              "width": 0,
+                            },
+                            "averageWindow": AverageWindow {
+                              "currentAverage": 144,
+                              "currentCount": 1,
+                              "inputValues": [
+                                144,
+                                ,
+                                ,
+                                ,
+                                ,
+                                ,
+                                ,
+                                ,
+                                ,
+                                ,
+                                ,
+                                ,
+                              ],
+                              "nextIndex": 1,
+                            },
+                            "defaultEstimatedItemSize": 100,
+                            "layoutObject": {
+                              "size": undefined,
+                              "span": undefined,
+                            },
+                            "props": {
+                              "ItemSeparatorComponent": {
+                                "$$typeof": Symbol(react.forward_ref),
+                                "attrs": [
+                                  {
+                                    "width": 16,
+                                  },
+                                ],
+                                "inlineStyle": InlineStyle {
+                                  "rules": [
+                                    [Function],
+                                    "",
+                                  ],
+                                },
+                                "render": [Function],
+                                "shouldForwardProp": undefined,
+                                "styledComponentId": "StyledNativeComponent",
+                                "target": [Function],
+                                "withComponent": [Function],
+                              },
+                              "ListFooterComponent": {
+                                "$$typeof": Symbol(react.forward_ref),
+                                "attrs": [
+                                  {
+                                    "width": 24,
+                                  },
+                                ],
+                                "inlineStyle": InlineStyle {
+                                  "rules": [
+                                    [Function],
+                                    "",
+                                  ],
+                                },
+                                "render": [Function],
+                                "shouldForwardProp": undefined,
+                                "styledComponentId": "StyledNativeComponent",
+                                "target": [Function],
+                                "withComponent": [Function],
+                              },
+                              "ListHeaderComponent": {
+                                "$$typeof": Symbol(react.forward_ref),
+                                "attrs": [
+                                  {
+                                    "width": 24,
+                                  },
+                                ],
+                                "inlineStyle": InlineStyle {
+                                  "rules": [
+                                    [Function],
+                                    "",
+                                  ],
+                                },
+                                "render": [Function],
+                                "shouldForwardProp": undefined,
+                                "styledComponentId": "StyledNativeComponent",
+                                "target": [Function],
+                                "withComponent": [Function],
+                              },
+                              "data": [
+                                {
+                                  "_geoloc": {
+                                    "lat": 47.8898,
+                                    "lng": -2.83593,
+                                  },
+                                  "objectID": "223342",
+                                  "offer": {
+                                    "dates": [
+                                      1629312300,
+                                      1629485100,
+                                      1629657900,
+                                    ],
+                                    "isDigital": false,
+                                    "isDuo": true,
+                                    "name": "Titane - VF",
+                                    "prices": [
+                                      0,
+                                      0,
+                                      0,
+                                    ],
+                                    "subcategoryId": "CINE_PLEIN_AIR",
+                                    "thumbUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
+                                  },
+                                  "venue": {},
+                                },
+                                {
+                                  "_geoloc": {
+                                    "lat": 47.8898,
+                                    "lng": -2.83593,
+                                  },
+                                  "objectID": "223338",
+                                  "offer": {
+                                    "dates": [
+                                      1629312300,
+                                      1629485100,
+                                      1629657900,
+                                    ],
+                                    "isDigital": false,
+                                    "isDuo": true,
+                                    "name": "Bac Nord - VF",
+                                    "prices": [
+                                      0,
+                                      0,
+                                      0,
+                                    ],
+                                    "subcategoryId": "CINE_PLEIN_AIR",
+                                    "thumbUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
+                                  },
+                                  "venue": {},
+                                },
+                                {
+                                  "_geoloc": {
+                                    "lat": 47.8898,
+                                    "lng": -2.83593,
+                                  },
+                                  "objectID": "223339",
+                                  "offer": {
+                                    "dates": [
+                                      1629312300,
+                                      1629485100,
+                                      1629657900,
+                                    ],
+                                    "isDigital": false,
+                                    "isDuo": true,
+                                    "name": "Black Widow - VF",
+                                    "prices": [
+                                      0,
+                                      0,
+                                      0,
+                                    ],
+                                    "subcategoryId": "CINE_PLEIN_AIR",
+                                    "thumbUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMA",
+                                  },
+                                  "venue": {},
+                                },
+                              ],
+                              "drawDistance": 187.5,
+                              "estimatedItemSize": 144,
+                              "horizontal": true,
+                              "keyExtractor": [Function],
+                              "numColumns": 1,
+                              "onContentSizeChange": [Function],
+                              "onEndReached": undefined,
+                              "onEndReachedThreshold": 0.2,
+                              "onScroll": [Function],
+                              "renderItem": [Function],
+                              "scrollEnabled": true,
+                              "scrollEventThrottle": 16,
+                              "showsHorizontalScrollIndicator": false,
+                              "testID": "offersModuleList",
+                            },
+                            "renderWindowInsets": {
+                              "height": 0,
+                              "width": 0,
+                            },
+                            "shouldRefreshWithAnchoring": true,
+                          }
+                        }
+                        maxRenderAhead={562.5}
+                        numColumns={1}
+                        onContentSizeChange={[Function]}
+                        onEndReached={[Function]}
+                        onEndReachedThreshold={0}
+                        onEndReachedThresholdRelative={0.2}
+                        onItemLayout={[Function]}
+                        onLayout={[Function]}
+                        onScroll={[Function]}
+                        onScrollBeginDrag={[Function]}
+                        onSizeChanged={[Function]}
+                        onVisibleIndicesChanged={[Function]}
+                        removeClippedSubviews={false}
+                        renderAheadOffset={0}
+                        renderAheadStep={187.5}
+                        renderContentContainer={[Function]}
+                        renderItem={[Function]}
+                        renderItemContainer={[Function]}
+                        rowRenderer={[Function]}
+                        scrollEnabled={true}
+                        scrollEventThrottle={16}
+                        scrollThrottle={16}
+                        scrollViewProps={
+                          {
+                            "contentContainerStyle": {
+                              "backgroundColor": undefined,
+                              "minHeight": 1,
+                              "minWidth": 1,
+                              "paddingBottom": 0,
+                              "paddingTop": 0,
+                            },
+                            "onLayout": [Function],
+                            "onScrollBeginDrag": [Function],
+                            "refreshControl": undefined,
+                            "style": {
+                              "minHeight": 1,
+                              "minWidth": 1,
+                            },
+                          }
+                        }
+                        showsHorizontalScrollIndicator={false}
+                        style={
+                          {
+                            "minHeight": 1,
+                            "minWidth": 1,
+                          }
+                        }
+                        suppressBoundedSizeException={true}
+                        testID="offersModuleList"
+                        windowCorrectionConfig={
+                          {
+                            "applyToInitialOffset": true,
+                            "applyToItemScroll": true,
+                            "value": {
+                              "endCorrection": 0,
+                              "startCorrection": 0,
+                              "windowShift": -1,
+                            },
+                          }
+                        }
+                      >
+                        <View>
+                          <View
+                            style={
+                              {
+                                "flexDirection": "row",
+                              }
+                            }
+                          >
+                            <View
+                              style={
+                                {
+                                  "paddingLeft": 0,
+                                  "paddingTop": 0,
+                                }
+                              }
+                            />
+                            <View
+                              style={
+                                [
+                                  undefined,
+                                  undefined,
+                                ]
+                              }
+                            >
+                              <View
+                                style={
+                                  [
+                                    {
+                                      "width": 24,
+                                    },
+                                  ]
+                                }
+                                width={24}
+                              />
+                            </View>
+                            <AutoLayoutView
+                              enableInstrumentation={false}
+                              horizontal={true}
+                              onBlankAreaEvent={[Function]}
+                              onLayout={[Function]}
+                              renderAheadOffset={0}
+                              scrollOffset={0}
+                              style={
+                                {
+                                  "height": 250,
+                                  "width": 432,
+                                }
+                              }
+                              windowSize={800}
+                            >
+                              <CellContainer
+                                index={1}
+                                onLayout={[Function]}
+                                style={
+                                  {
+                                    "alignItems": "stretch",
+                                    "flexDirection": "row",
+                                    "height": 250,
+                                    "left": 144,
+                                    "position": "absolute",
+                                    "top": 0,
+                                  }
+                                }
+                              >
+                                <View
+                                  style={
+                                    {
+                                      "flexDirection": "column",
+                                    }
+                                  }
+                                >
+                                  <View>
+                                    <View
+                                      accessibilityLabel="Offre Bac Nord - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
+                                      accessibilityRole="link"
+                                      accessibilityValue={
+                                        {
+                                          "max": undefined,
+                                          "min": undefined,
+                                          "now": undefined,
+                                          "text": undefined,
+                                        }
+                                      }
+                                      accessible={true}
+                                      focusable={true}
+                                      onClick={[Function]}
+                                      onResponderGrant={[Function]}
+                                      onResponderMove={[Function]}
+                                      onResponderRelease={[Function]}
+                                      onResponderTerminate={[Function]}
+                                      onResponderTerminationRequest={[Function]}
+                                      onStartShouldSetResponder={[Function]}
+                                      style={
+                                        [
+                                          {
+                                            "textDecorationColor": "black",
+                                            "textDecorationLine": "none",
+                                            "textDecorationStyle": "solid",
+                                          },
+                                          {
+                                            "borderRadius": 8,
+                                            "height": 344,
+                                            "marginVertical": 4,
+                                          },
+                                        ]
+                                      }
+                                      testID="Offre Bac Nord - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
+                                    >
+                                      <View
+                                        gap={2}
+                                        maxWidth={144}
+                                        style={
+                                          [
+                                            {
+                                              "flexDirection": "column-reverse",
+                                              "gap": 8,
+                                              "maxWidth": 144,
+                                            },
+                                          ]
+                                        }
+                                      >
+                                        <View
+                                          gap={1}
+                                          style={
+                                            [
+                                              {
+                                                "gap": 4,
+                                              },
+                                            ]
+                                          }
+                                        >
+                                          <Text
+                                            numberOfLines={1}
+                                            style={
+                                              [
+                                                {
+                                                  "color": "#696A6F",
+                                                  "fontFamily": "Montserrat-SemiBold",
+                                                  "fontSize": 12,
+                                                  "lineHeight": 19.2,
+                                                },
+                                              ]
+                                            }
+                                          >
+                                            Cinéma
+                                          </Text>
+                                          <View>
+                                            <Text
+                                              numberOfLines={2}
+                                              style={
+                                                [
+                                                  {
+                                                    "color": "#161617",
+                                                    "fontFamily": "Montserrat-SemiBold",
+                                                    "fontSize": 12,
+                                                    "lineHeight": 19.2,
+                                                  },
+                                                ]
+                                              }
+                                            >
+                                              Bac Nord - VF
+                                            </Text>
+                                            <Text
+                                              numberOfLines={1}
+                                              style={
+                                                [
+                                                  {
+                                                    "color": "#161617",
+                                                    "fontFamily": "Montserrat-SemiBold",
+                                                    "fontSize": 12,
+                                                    "lineHeight": 19.2,
+                                                  },
+                                                ]
+                                              }
+                                            >
+                                              Dès le 18 août 2021
+                                            </Text>
+                                            <Text
+                                              style={
+                                                [
+                                                  {
+                                                    "color": "#161617",
+                                                    "fontFamily": "Montserrat-SemiBold",
+                                                    "fontSize": 12,
+                                                    "lineHeight": 19.2,
+                                                  },
+                                                ]
+                                              }
+                                              testID="priceIsDuo"
+                                            >
+                                              Gratuit
+                                            </Text>
+                                          </View>
+                                        </View>
+                                        <View
+                                          style={
+                                            [
+                                              {},
+                                            ]
+                                          }
+                                        >
+                                          <View
+                                            style={
+                                              [
+                                                {
+                                                  "overflow": "hidden",
+                                                },
+                                                [
+                                                  {
+                                                    "backgroundColor": "#F1F1F4",
+                                                  },
+                                                  {
+                                                    "borderRadius": 8,
+                                                    "height": 216,
+                                                    "width": 144,
+                                                  },
+                                                ],
+                                              ]
+                                            }
+                                          >
+                                            <FastImageView
+                                              defaultSource={null}
+                                              resizeMode="cover"
+                                              source={
+                                                {
+                                                  "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
+                                                }
+                                              }
+                                              style={
+                                                {
+                                                  "bottom": 0,
+                                                  "left": 0,
+                                                  "position": "absolute",
+                                                  "right": 0,
+                                                  "top": 0,
+                                                }
+                                              }
+                                              testID="tileImage"
+                                            />
+                                          </View>
+                                        </View>
+                                      </View>
+                                    </View>
+                                  </View>
+                                </View>
+                                <View
+                                  leadingItem={
+                                    {
+                                      "_geoloc": {
+                                        "lat": 47.8898,
+                                        "lng": -2.83593,
+                                      },
+                                      "objectID": "223338",
+                                      "offer": {
+                                        "dates": [
+                                          1629312300,
+                                          1629485100,
+                                          1629657900,
+                                        ],
+                                        "isDigital": false,
+                                        "isDuo": true,
+                                        "name": "Bac Nord - VF",
+                                        "prices": [
+                                          0,
+                                          0,
+                                          0,
+                                        ],
+                                        "subcategoryId": "CINE_PLEIN_AIR",
+                                        "thumbUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
+                                      },
+                                      "venue": {},
+                                    }
+                                  }
+                                  style={
+                                    [
+                                      {
+                                        "width": 16,
+                                      },
+                                    ]
+                                  }
+                                  trailingItem={
+                                    {
+                                      "_geoloc": {
+                                        "lat": 47.8898,
+                                        "lng": -2.83593,
+                                      },
+                                      "objectID": "223339",
+                                      "offer": {
+                                        "dates": [
+                                          1629312300,
+                                          1629485100,
+                                          1629657900,
+                                        ],
+                                        "isDigital": false,
+                                        "isDuo": true,
+                                        "name": "Black Widow - VF",
+                                        "prices": [
+                                          0,
+                                          0,
+                                          0,
+                                        ],
+                                        "subcategoryId": "CINE_PLEIN_AIR",
+                                        "thumbUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMA",
+                                      },
+                                      "venue": {},
+                                    }
+                                  }
+                                  width={16}
+                                />
+                              </CellContainer>
+                              <CellContainer
+                                index={2}
+                                onLayout={[Function]}
+                                style={
+                                  {
+                                    "alignItems": "stretch",
+                                    "flexDirection": "row",
+                                    "height": 250,
+                                    "left": 288,
+                                    "position": "absolute",
+                                    "top": 0,
+                                  }
+                                }
+                              >
+                                <View
+                                  style={
+                                    {
+                                      "flexDirection": "column",
+                                    }
+                                  }
+                                >
+                                  <View>
+                                    <View
+                                      accessibilityLabel="Offre Black Widow - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
+                                      accessibilityRole="link"
+                                      accessibilityValue={
+                                        {
+                                          "max": undefined,
+                                          "min": undefined,
+                                          "now": undefined,
+                                          "text": undefined,
+                                        }
+                                      }
+                                      accessible={true}
+                                      focusable={true}
+                                      onClick={[Function]}
+                                      onResponderGrant={[Function]}
+                                      onResponderMove={[Function]}
+                                      onResponderRelease={[Function]}
+                                      onResponderTerminate={[Function]}
+                                      onResponderTerminationRequest={[Function]}
+                                      onStartShouldSetResponder={[Function]}
+                                      style={
+                                        [
+                                          {
+                                            "textDecorationColor": "black",
+                                            "textDecorationLine": "none",
+                                            "textDecorationStyle": "solid",
+                                          },
+                                          {
+                                            "borderRadius": 8,
+                                            "height": 344,
+                                            "marginVertical": 4,
+                                          },
+                                        ]
+                                      }
+                                      testID="Offre Black Widow - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
+                                    >
+                                      <View
+                                        gap={2}
+                                        maxWidth={144}
+                                        style={
+                                          [
+                                            {
+                                              "flexDirection": "column-reverse",
+                                              "gap": 8,
+                                              "maxWidth": 144,
+                                            },
+                                          ]
+                                        }
+                                      >
+                                        <View
+                                          gap={1}
+                                          style={
+                                            [
+                                              {
+                                                "gap": 4,
+                                              },
+                                            ]
+                                          }
+                                        >
+                                          <Text
+                                            numberOfLines={1}
+                                            style={
+                                              [
+                                                {
+                                                  "color": "#696A6F",
+                                                  "fontFamily": "Montserrat-SemiBold",
+                                                  "fontSize": 12,
+                                                  "lineHeight": 19.2,
+                                                },
+                                              ]
+                                            }
+                                          >
+                                            Cinéma
+                                          </Text>
+                                          <View>
+                                            <Text
+                                              numberOfLines={2}
+                                              style={
+                                                [
+                                                  {
+                                                    "color": "#161617",
+                                                    "fontFamily": "Montserrat-SemiBold",
+                                                    "fontSize": 12,
+                                                    "lineHeight": 19.2,
+                                                  },
+                                                ]
+                                              }
+                                            >
+                                              Black Widow - VF
+                                            </Text>
+                                            <Text
+                                              numberOfLines={1}
+                                              style={
+                                                [
+                                                  {
+                                                    "color": "#161617",
+                                                    "fontFamily": "Montserrat-SemiBold",
+                                                    "fontSize": 12,
+                                                    "lineHeight": 19.2,
+                                                  },
+                                                ]
+                                              }
+                                            >
+                                              Dès le 18 août 2021
+                                            </Text>
+                                            <Text
+                                              style={
+                                                [
+                                                  {
+                                                    "color": "#161617",
+                                                    "fontFamily": "Montserrat-SemiBold",
+                                                    "fontSize": 12,
+                                                    "lineHeight": 19.2,
+                                                  },
+                                                ]
+                                              }
+                                              testID="priceIsDuo"
+                                            >
+                                              Gratuit
+                                            </Text>
+                                          </View>
+                                        </View>
+                                        <View
+                                          style={
+                                            [
+                                              {},
+                                            ]
+                                          }
+                                        >
+                                          <View
+                                            style={
+                                              [
+                                                {
+                                                  "overflow": "hidden",
+                                                },
+                                                [
+                                                  {
+                                                    "backgroundColor": "#F1F1F4",
+                                                  },
+                                                  {
+                                                    "borderRadius": 8,
+                                                    "height": 216,
+                                                    "width": 144,
+                                                  },
+                                                ],
+                                              ]
+                                            }
+                                          >
+                                            <FastImageView
+                                              defaultSource={null}
+                                              resizeMode="cover"
+                                              source={
+                                                {
+                                                  "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMA",
+                                                }
+                                              }
+                                              style={
+                                                {
+                                                  "bottom": 0,
+                                                  "left": 0,
+                                                  "position": "absolute",
+                                                  "right": 0,
+                                                  "top": 0,
+                                                }
+                                              }
+                                              testID="tileImage"
+                                            />
+                                          </View>
+                                        </View>
+                                      </View>
+                                    </View>
+                                  </View>
+                                </View>
+                              </CellContainer>
+                              <CellContainer
+                                index={0}
+                                onLayout={[Function]}
+                                style={
+                                  {
+                                    "alignItems": "stretch",
+                                    "flexDirection": "row",
+                                    "height": 250,
+                                    "left": 0,
+                                    "position": "absolute",
+                                    "top": 0,
+                                  }
+                                }
+                              >
+                                <View
+                                  style={
+                                    {
+                                      "flexDirection": "column",
+                                    }
+                                  }
+                                >
+                                  <View>
+                                    <View
+                                      accessibilityLabel="Offre Titane - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
+                                      accessibilityRole="link"
+                                      accessibilityValue={
+                                        {
+                                          "max": undefined,
+                                          "min": undefined,
+                                          "now": undefined,
+                                          "text": undefined,
+                                        }
+                                      }
+                                      accessible={true}
+                                      focusable={true}
+                                      onClick={[Function]}
+                                      onResponderGrant={[Function]}
+                                      onResponderMove={[Function]}
+                                      onResponderRelease={[Function]}
+                                      onResponderTerminate={[Function]}
+                                      onResponderTerminationRequest={[Function]}
+                                      onStartShouldSetResponder={[Function]}
+                                      style={
+                                        [
+                                          {
+                                            "textDecorationColor": "black",
+                                            "textDecorationLine": "none",
+                                            "textDecorationStyle": "solid",
+                                          },
+                                          {
+                                            "borderRadius": 8,
+                                            "height": 344,
+                                            "marginVertical": 4,
+                                          },
+                                        ]
+                                      }
+                                      testID="Offre Titane - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
+                                    >
+                                      <View
+                                        gap={2}
+                                        maxWidth={144}
+                                        style={
+                                          [
+                                            {
+                                              "flexDirection": "column-reverse",
+                                              "gap": 8,
+                                              "maxWidth": 144,
+                                            },
+                                          ]
+                                        }
+                                      >
+                                        <View
+                                          gap={1}
+                                          style={
+                                            [
+                                              {
+                                                "gap": 4,
+                                              },
+                                            ]
+                                          }
+                                        >
+                                          <Text
+                                            numberOfLines={1}
+                                            style={
+                                              [
+                                                {
+                                                  "color": "#696A6F",
+                                                  "fontFamily": "Montserrat-SemiBold",
+                                                  "fontSize": 12,
+                                                  "lineHeight": 19.2,
+                                                },
+                                              ]
+                                            }
+                                          >
+                                            Cinéma
+                                          </Text>
+                                          <View>
+                                            <Text
+                                              numberOfLines={2}
+                                              style={
+                                                [
+                                                  {
+                                                    "color": "#161617",
+                                                    "fontFamily": "Montserrat-SemiBold",
+                                                    "fontSize": 12,
+                                                    "lineHeight": 19.2,
+                                                  },
+                                                ]
+                                              }
+                                            >
+                                              Titane - VF
+                                            </Text>
+                                            <Text
+                                              numberOfLines={1}
+                                              style={
+                                                [
+                                                  {
+                                                    "color": "#161617",
+                                                    "fontFamily": "Montserrat-SemiBold",
+                                                    "fontSize": 12,
+                                                    "lineHeight": 19.2,
+                                                  },
+                                                ]
+                                              }
+                                            >
+                                              Dès le 18 août 2021
+                                            </Text>
+                                            <Text
+                                              style={
+                                                [
+                                                  {
+                                                    "color": "#161617",
+                                                    "fontFamily": "Montserrat-SemiBold",
+                                                    "fontSize": 12,
+                                                    "lineHeight": 19.2,
+                                                  },
+                                                ]
+                                              }
+                                              testID="priceIsDuo"
+                                            >
+                                              Gratuit
+                                            </Text>
+                                          </View>
+                                        </View>
+                                        <View
+                                          style={
+                                            [
+                                              {},
+                                            ]
+                                          }
+                                        >
+                                          <View
+                                            style={
+                                              [
+                                                {
+                                                  "overflow": "hidden",
+                                                },
+                                                [
+                                                  {
+                                                    "backgroundColor": "#F1F1F4",
+                                                  },
+                                                  {
+                                                    "borderRadius": 8,
+                                                    "height": 216,
+                                                    "width": 144,
+                                                  },
+                                                ],
+                                              ]
+                                            }
+                                          >
+                                            <FastImageView
+                                              defaultSource={null}
+                                              resizeMode="cover"
+                                              source={
+                                                {
+                                                  "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
+                                                }
+                                              }
+                                              style={
+                                                {
+                                                  "bottom": 0,
+                                                  "left": 0,
+                                                  "position": "absolute",
+                                                  "right": 0,
+                                                  "top": 0,
+                                                }
+                                              }
+                                              testID="tileImage"
+                                            />
+                                          </View>
+                                        </View>
+                                      </View>
+                                    </View>
+                                  </View>
+                                </View>
+                                <View
+                                  leadingItem={
+                                    {
+                                      "_geoloc": {
+                                        "lat": 47.8898,
+                                        "lng": -2.83593,
+                                      },
+                                      "objectID": "223342",
+                                      "offer": {
+                                        "dates": [
+                                          1629312300,
+                                          1629485100,
+                                          1629657900,
+                                        ],
+                                        "isDigital": false,
+                                        "isDuo": true,
+                                        "name": "Titane - VF",
+                                        "prices": [
+                                          0,
+                                          0,
+                                          0,
+                                        ],
+                                        "subcategoryId": "CINE_PLEIN_AIR",
+                                        "thumbUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
+                                      },
+                                      "venue": {},
+                                    }
+                                  }
+                                  style={
+                                    [
+                                      {
+                                        "width": 16,
+                                      },
+                                    ]
+                                  }
+                                  trailingItem={
+                                    {
+                                      "_geoloc": {
+                                        "lat": 47.8898,
+                                        "lng": -2.83593,
+                                      },
+                                      "objectID": "223338",
+                                      "offer": {
+                                        "dates": [
+                                          1629312300,
+                                          1629485100,
+                                          1629657900,
+                                        ],
+                                        "isDigital": false,
+                                        "isDuo": true,
+                                        "name": "Bac Nord - VF",
+                                        "prices": [
+                                          0,
+                                          0,
+                                          0,
+                                        ],
+                                        "subcategoryId": "CINE_PLEIN_AIR",
+                                        "thumbUrl": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
+                                      },
+                                      "venue": {},
+                                    }
+                                  }
+                                  width={16}
+                                />
+                              </CellContainer>
+                            </AutoLayoutView>
+                            <CellContainer
+                              index={-1}
+                              style={
+                                [
+                                  undefined,
+                                  undefined,
+                                ]
+                              }
+                            >
+                              <View
+                                style={
+                                  [
+                                    {
+                                      "width": 24,
+                                    },
+                                  ]
+                                }
+                                width={24}
+                              />
+                            </CellContainer>
+                            <View
+                              style={
+                                {
+                                  "paddingBottom": 0,
+                                  "paddingRight": 0,
+                                }
+                              }
+                            />
+                            <View
+                              pointerEvents="none"
+                              style={
+                                {
+                                  "opacity": 0,
+                                }
+                              }
+                            >
+                              <View>
+                                <View
+                                  accessibilityLabel="Offre Bac Nord - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
+                                  accessibilityRole="link"
+                                  accessibilityValue={
+                                    {
+                                      "max": undefined,
+                                      "min": undefined,
+                                      "now": undefined,
+                                      "text": undefined,
+                                    }
+                                  }
+                                  accessible={true}
+                                  focusable={true}
+                                  onClick={[Function]}
+                                  onResponderGrant={[Function]}
+                                  onResponderMove={[Function]}
+                                  onResponderRelease={[Function]}
+                                  onResponderTerminate={[Function]}
+                                  onResponderTerminationRequest={[Function]}
+                                  onStartShouldSetResponder={[Function]}
+                                  style={
+                                    [
+                                      {
+                                        "textDecorationColor": "black",
+                                        "textDecorationLine": "none",
+                                        "textDecorationStyle": "solid",
+                                      },
+                                      {
+                                        "borderRadius": 8,
+                                        "height": 344,
+                                        "marginVertical": 4,
+                                      },
+                                    ]
+                                  }
+                                  testID="Offre Bac Nord - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
+                                >
+                                  <View
+                                    gap={2}
+                                    maxWidth={144}
+                                    style={
+                                      [
+                                        {
+                                          "flexDirection": "column-reverse",
+                                          "gap": 8,
+                                          "maxWidth": 144,
+                                        },
+                                      ]
+                                    }
+                                  >
+                                    <View
+                                      gap={1}
+                                      style={
+                                        [
+                                          {
+                                            "gap": 4,
+                                          },
+                                        ]
+                                      }
+                                    >
+                                      <Text
+                                        numberOfLines={1}
+                                        style={
+                                          [
+                                            {
+                                              "color": "#696A6F",
+                                              "fontFamily": "Montserrat-SemiBold",
+                                              "fontSize": 12,
+                                              "lineHeight": 19.2,
+                                            },
+                                          ]
+                                        }
+                                      >
+                                        Cinéma
+                                      </Text>
+                                      <View>
+                                        <Text
+                                          numberOfLines={2}
+                                          style={
+                                            [
+                                              {
+                                                "color": "#161617",
+                                                "fontFamily": "Montserrat-SemiBold",
+                                                "fontSize": 12,
+                                                "lineHeight": 19.2,
+                                              },
+                                            ]
+                                          }
+                                        >
+                                          Bac Nord - VF
+                                        </Text>
+                                        <Text
+                                          numberOfLines={1}
+                                          style={
+                                            [
+                                              {
+                                                "color": "#161617",
+                                                "fontFamily": "Montserrat-SemiBold",
+                                                "fontSize": 12,
+                                                "lineHeight": 19.2,
+                                              },
+                                            ]
+                                          }
+                                        >
+                                          Dès le 18 août 2021
+                                        </Text>
+                                        <Text
+                                          style={
+                                            [
+                                              {
+                                                "color": "#161617",
+                                                "fontFamily": "Montserrat-SemiBold",
+                                                "fontSize": 12,
+                                                "lineHeight": 19.2,
+                                              },
+                                            ]
+                                          }
+                                          testID="priceIsDuo"
+                                        >
+                                          Gratuit
+                                        </Text>
+                                      </View>
+                                    </View>
+                                    <View
+                                      style={
+                                        [
+                                          {},
+                                        ]
+                                      }
+                                    >
+                                      <View
+                                        style={
+                                          [
+                                            {
+                                              "overflow": "hidden",
+                                            },
+                                            [
+                                              {
+                                                "backgroundColor": "#F1F1F4",
+                                              },
+                                              {
+                                                "borderRadius": 8,
+                                                "height": 216,
+                                                "width": 144,
+                                              },
+                                            ],
+                                          ]
+                                        }
+                                      >
+                                        <FastImageView
+                                          defaultSource={null}
+                                          resizeMode="cover"
+                                          source={
+                                            {
+                                              "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
+                                            }
+                                          }
+                                          style={
+                                            {
+                                              "bottom": 0,
+                                              "left": 0,
+                                              "position": "absolute",
+                                              "right": 0,
+                                              "top": 0,
+                                            }
+                                          }
+                                          testID="tileImage"
+                                        />
+                                      </View>
+                                    </View>
+                                  </View>
+                                </View>
+                              </View>
+                            </View>
+                          </View>
+                        </View>
+                      </RCTScrollView>
+                    </View>
+                  </View>
+                </View>
+                <View
+                  style={
+                    [
+                      {
+                        "position": "relative",
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    onChange={[Function]}
+                    onLayout={[Function]}
+                    style={
+                      [
+                        {
+                          "bottom": 0,
+                          "left": 0,
+                          "position": "absolute",
+                          "right": 0,
+                          "top": "50%",
+                        },
+                      ]
+                    }
+                    testID="intersectionObserver"
+                    threshold="50%"
+                    triggerOnce={false}
+                  />
+                  <View
+                    gap={4}
+                    style={
+                      [
+                        {
+                          "gap": 16,
+                          "paddingBottom": 24,
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      gap={1}
+                      style={
+                        [
+                          {
+                            "gap": 4,
+                          },
+                        ]
+                      }
+                    >
+                      <View
+                        style={
+                          [
+                            {
+                              "flexDirection": "row",
+                            },
+                          ]
+                        }
+                      >
+                        <Text
+                          numberOfLines={2}
+                          style={
+                            [
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-Bold",
+                                "fontSize": 19,
+                                "lineHeight": 30.4,
+                                "marginHorizontal": 24,
+                              },
+                            ]
+                          }
+                          testID="playlistTitle"
+                        >
+                          Test
+                        </Text>
+                      </View>
+                    </View>
+                    <View
+                      onLayout={[Function]}
+                      style={
+                        [
+                          {
+                            "position": "relative",
+                            "width": "100%",
+                          },
+                        ]
+                      }
+                    >
+                      <View
+                        style={{}}
+                      >
+                        <RCTScrollView
+                          ItemSeparatorComponent={
+                            {
+                              "$$typeof": Symbol(react.forward_ref),
+                              "attrs": [
+                                {
+                                  "width": 16,
+                                },
+                              ],
+                              "inlineStyle": InlineStyle {
+                                "rules": [
+                                  [Function],
+                                  "",
+                                ],
+                              },
+                              "render": [Function],
+                              "shouldForwardProp": undefined,
+                              "styledComponentId": "StyledNativeComponent",
+                              "target": [Function],
+                              "withComponent": [Function],
+                            }
+                          }
+                          ListFooterComponent={
+                            {
+                              "$$typeof": Symbol(react.forward_ref),
+                              "attrs": [
+                                {
+                                  "width": 24,
+                                },
+                              ],
+                              "inlineStyle": InlineStyle {
+                                "rules": [
+                                  [Function],
+                                  "",
+                                ],
+                              },
+                              "render": [Function],
+                              "shouldForwardProp": undefined,
+                              "styledComponentId": "StyledNativeComponent",
+                              "target": [Function],
+                              "withComponent": [Function],
+                            }
+                          }
+                          ListHeaderComponent={
+                            {
+                              "$$typeof": Symbol(react.forward_ref),
+                              "attrs": [
+                                {
+                                  "width": 24,
+                                },
+                              ],
+                              "inlineStyle": InlineStyle {
+                                "rules": [
+                                  [Function],
+                                  "",
+                                ],
+                              },
+                              "render": [Function],
+                              "shouldForwardProp": undefined,
+                              "styledComponentId": "StyledNativeComponent",
+                              "target": [Function],
+                              "withComponent": [Function],
+                            }
+                          }
+                          applyWindowCorrection={[Function]}
+                          canChangeSize={true}
+                          contentContainerStyle={
+                            {
+                              "backgroundColor": undefined,
+                              "minHeight": 1,
+                              "minWidth": 1,
+                              "paddingBottom": 0,
+                              "paddingTop": 0,
+                            }
+                          }
+                          contentHeight={250}
+                          contentWidth={192}
+                          data={
+                            [
+                              {
+                                "_geoloc": {
+                                  "lat": 2,
+                                  "lng": 2,
+                                },
+                                "objectID": "12",
+                                "offer": {
+                                  "name": "Test",
+                                  "subcategoryId": "ABO_BIBLIOTHEQUE",
+                                },
+                                "venue": {
+                                  "address": "Avenue des Tests",
+                                  "city": "Jest",
+                                },
+                              },
+                            ]
+                          }
+                          dataProvider={
+                            DataProvider {
+                              "_data": [
+                                {
+                                  "_geoloc": {
+                                    "lat": 2,
+                                    "lng": 2,
+                                  },
+                                  "objectID": "12",
+                                  "offer": {
+                                    "name": "Test",
+                                    "subcategoryId": "ABO_BIBLIOTHEQUE",
+                                  },
+                                  "venue": {
+                                    "address": "Avenue des Tests",
+                                    "city": "Jest",
+                                  },
+                                },
+                              ],
+                              "_firstIndexToProcess": 0,
+                              "_hasStableIds": true,
+                              "_requiresDataChangeHandling": false,
+                              "_size": 1,
+                              "getStableId": [Function],
+                              "rowHasChanged": [Function],
+                            }
+                          }
+                          disableRecycling={false}
+                          estimatedItemSize={192}
+                          extendedState={{}}
+                          externalScrollView={[Function]}
+                          finalRenderAheadOffset={187.5}
+                          forceNonDeterministicRendering={true}
+                          horizontal={true}
+                          initialOffset={0}
+                          initialRenderIndex={0}
+                          isHorizontal={true}
+                          keyExtractor={[Function]}
+                          layoutProvider={
+                            GridLayoutProviderWithProps {
+                              "_acceptableRelayoutDelta": 1,
+                              "_getHeightOrWidth": [Function],
+                              "_getLayoutTypeForIndex": [Function],
+                              "_getSpan": [Function],
+                              "_hasExpired": false,
+                              "_isHorizontal": true,
+                              "_lastLayoutManager": GridLayoutManager {
+                                "_acceptableRelayoutDelta": 1,
+                                "_getSpan": [Function],
+                                "_isGridHorizontal": true,
+                                "_isHorizontal": true,
+                                "_layoutProvider": [Circular],
+                                "_layouts": [
+                                  {
+                                    "height": 250,
+                                    "type": 0,
+                                    "width": 192,
+                                    "x": 0,
+                                    "y": 0,
+                                  },
+                                ],
+                                "_maxSpan": 1,
+                                "_renderWindowSize": {
+                                  "height": 250,
+                                  "width": 800,
+                                },
+                                "_totalHeight": 250,
+                                "_totalWidth": 192,
+                                "_window": {
+                                  "height": 250,
+                                  "width": 800,
+                                },
+                              },
+                              "_maxSpan": 1,
+                              "_renderWindowSize": {
+                                "height": 250,
+                                "width": 800,
+                              },
+                              "_setLayoutForType": [Function],
+                              "_tempDim": {
+                                "height": 0,
+                                "width": 0,
+                              },
+                              "averageWindow": AverageWindow {
+                                "currentAverage": 192,
+                                "currentCount": 1,
+                                "inputValues": [
+                                  192,
+                                  ,
+                                  ,
+                                  ,
+                                  ,
+                                  ,
+                                  ,
+                                  ,
+                                ],
+                                "nextIndex": 1,
+                              },
+                              "defaultEstimatedItemSize": 100,
+                              "layoutObject": {
+                                "size": undefined,
+                                "span": undefined,
+                              },
+                              "props": {
+                                "ItemSeparatorComponent": {
+                                  "$$typeof": Symbol(react.forward_ref),
+                                  "attrs": [
+                                    {
+                                      "width": 16,
+                                    },
+                                  ],
+                                  "inlineStyle": InlineStyle {
+                                    "rules": [
+                                      [Function],
+                                      "",
+                                    ],
+                                  },
+                                  "render": [Function],
+                                  "shouldForwardProp": undefined,
+                                  "styledComponentId": "StyledNativeComponent",
+                                  "target": [Function],
+                                  "withComponent": [Function],
+                                },
+                                "ListFooterComponent": {
+                                  "$$typeof": Symbol(react.forward_ref),
+                                  "attrs": [
+                                    {
+                                      "width": 24,
+                                    },
+                                  ],
+                                  "inlineStyle": InlineStyle {
+                                    "rules": [
+                                      [Function],
+                                      "",
+                                    ],
+                                  },
+                                  "render": [Function],
+                                  "shouldForwardProp": undefined,
+                                  "styledComponentId": "StyledNativeComponent",
+                                  "target": [Function],
+                                  "withComponent": [Function],
+                                },
+                                "ListHeaderComponent": {
+                                  "$$typeof": Symbol(react.forward_ref),
+                                  "attrs": [
+                                    {
+                                      "width": 24,
+                                    },
+                                  ],
+                                  "inlineStyle": InlineStyle {
+                                    "rules": [
+                                      [Function],
+                                      "",
+                                    ],
+                                  },
+                                  "render": [Function],
+                                  "shouldForwardProp": undefined,
+                                  "styledComponentId": "StyledNativeComponent",
+                                  "target": [Function],
+                                  "withComponent": [Function],
+                                },
+                                "data": [
+                                  {
+                                    "_geoloc": {
+                                      "lat": 2,
+                                      "lng": 2,
+                                    },
+                                    "objectID": "12",
+                                    "offer": {
+                                      "name": "Test",
+                                      "subcategoryId": "ABO_BIBLIOTHEQUE",
+                                    },
+                                    "venue": {
+                                      "address": "Avenue des Tests",
+                                      "city": "Jest",
+                                    },
+                                  },
+                                ],
+                                "drawDistance": 187.5,
+                                "estimatedItemSize": 192,
+                                "horizontal": true,
+                                "keyExtractor": [Function],
+                                "numColumns": 1,
+                                "onContentSizeChange": [Function],
+                                "onEndReached": [Function],
+                                "onEndReachedThreshold": 0.2,
+                                "onScroll": [Function],
+                                "renderItem": [Function],
+                                "scrollEnabled": true,
+                                "scrollEventThrottle": 16,
+                                "showsHorizontalScrollIndicator": false,
+                                "testID": "offersModuleList",
+                              },
+                              "renderWindowInsets": {
+                                "height": 0,
+                                "width": 0,
+                              },
+                              "shouldRefreshWithAnchoring": true,
+                            }
+                          }
+                          maxRenderAhead={562.5}
+                          numColumns={1}
+                          onContentSizeChange={[Function]}
+                          onEndReached={[Function]}
+                          onEndReachedThreshold={0}
+                          onEndReachedThresholdRelative={0.2}
+                          onItemLayout={[Function]}
+                          onLayout={[Function]}
+                          onScroll={[Function]}
+                          onScrollBeginDrag={[Function]}
+                          onSizeChanged={[Function]}
+                          onVisibleIndicesChanged={[Function]}
+                          removeClippedSubviews={false}
+                          renderAheadOffset={0}
+                          renderAheadStep={187.5}
+                          renderContentContainer={[Function]}
+                          renderItem={[Function]}
+                          renderItemContainer={[Function]}
+                          rowRenderer={[Function]}
+                          scrollEnabled={true}
+                          scrollEventThrottle={16}
+                          scrollThrottle={16}
+                          scrollViewProps={
+                            {
+                              "contentContainerStyle": {
+                                "backgroundColor": undefined,
+                                "minHeight": 1,
+                                "minWidth": 1,
+                                "paddingBottom": 0,
+                                "paddingTop": 0,
+                              },
+                              "onLayout": [Function],
+                              "onScrollBeginDrag": [Function],
+                              "refreshControl": undefined,
+                              "style": {
+                                "minHeight": 1,
+                                "minWidth": 1,
+                              },
+                            }
+                          }
+                          showsHorizontalScrollIndicator={false}
+                          style={
+                            {
+                              "minHeight": 1,
+                              "minWidth": 1,
+                            }
+                          }
+                          suppressBoundedSizeException={true}
+                          testID="offersModuleList"
+                          windowCorrectionConfig={
+                            {
+                              "applyToInitialOffset": true,
+                              "applyToItemScroll": true,
+                              "value": {
+                                "endCorrection": 0,
+                                "startCorrection": 0,
+                                "windowShift": -1,
+                              },
+                            }
+                          }
+                        >
+                          <View>
+                            <View
+                              style={
+                                {
+                                  "flexDirection": "row",
+                                }
+                              }
+                            >
+                              <View
+                                style={
+                                  {
+                                    "paddingLeft": 0,
+                                    "paddingTop": 0,
+                                  }
+                                }
+                              />
+                              <View
+                                style={
+                                  [
+                                    undefined,
+                                    undefined,
+                                  ]
+                                }
+                              >
+                                <View
+                                  style={
+                                    [
+                                      {
+                                        "width": 24,
+                                      },
+                                    ]
+                                  }
+                                  width={24}
+                                />
+                              </View>
+                              <AutoLayoutView
+                                enableInstrumentation={false}
+                                horizontal={true}
+                                onBlankAreaEvent={[Function]}
+                                onLayout={[Function]}
+                                renderAheadOffset={0}
+                                scrollOffset={0}
+                                style={
+                                  {
+                                    "height": 250,
+                                    "width": 192,
+                                  }
+                                }
+                                windowSize={800}
+                              >
+                                <CellContainer
+                                  index={0}
+                                  onLayout={[Function]}
+                                  style={
+                                    {
+                                      "alignItems": "stretch",
+                                      "flexDirection": "row",
+                                      "height": 250,
+                                      "left": 0,
+                                      "position": "absolute",
+                                      "top": 0,
+                                    }
+                                  }
+                                >
+                                  <View
+                                    style={
+                                      {
+                                        "flexDirection": "column",
+                                      }
+                                    }
+                                  >
+                                    <View>
+                                      <View
+                                        accessibilityLabel="Offre Test de la catégorie Livre,   prix . "
+                                        accessibilityRole="link"
+                                        accessibilityValue={
+                                          {
+                                            "max": undefined,
+                                            "min": undefined,
+                                            "now": undefined,
+                                            "text": undefined,
+                                          }
+                                        }
+                                        accessible={true}
+                                        focusable={true}
+                                        onClick={[Function]}
+                                        onResponderGrant={[Function]}
+                                        onResponderMove={[Function]}
+                                        onResponderRelease={[Function]}
+                                        onResponderTerminate={[Function]}
+                                        onResponderTerminationRequest={[Function]}
+                                        onStartShouldSetResponder={[Function]}
+                                        style={
+                                          [
+                                            {
+                                              "textDecorationColor": "black",
+                                              "textDecorationLine": "none",
+                                              "textDecorationStyle": "solid",
+                                            },
+                                            {
+                                              "borderRadius": 8,
+                                              "height": 416,
+                                              "marginVertical": 4,
+                                            },
+                                          ]
+                                        }
+                                        testID="Offre Test de la catégorie Livre,   prix . "
+                                      >
+                                        <View
+                                          gap={2}
+                                          maxWidth={192}
+                                          style={
+                                            [
+                                              {
+                                                "flexDirection": "column-reverse",
+                                                "gap": 8,
+                                                "maxWidth": 192,
+                                              },
+                                            ]
+                                          }
+                                        >
+                                          <View
+                                            gap={1}
+                                            style={
+                                              [
+                                                {
+                                                  "gap": 4,
+                                                },
+                                              ]
+                                            }
+                                          >
+                                            <Text
+                                              numberOfLines={1}
+                                              style={
+                                                [
+                                                  {
+                                                    "color": "#696A6F",
+                                                    "fontFamily": "Montserrat-SemiBold",
+                                                    "fontSize": 12,
+                                                    "lineHeight": 19.2,
+                                                  },
+                                                ]
+                                              }
+                                            >
+                                              Livre
+                                            </Text>
+                                            <View>
+                                              <Text
+                                                numberOfLines={2}
+                                                style={
+                                                  [
+                                                    {
+                                                      "color": "#161617",
+                                                      "fontFamily": "Montserrat-SemiBold",
+                                                      "fontSize": 12,
+                                                      "lineHeight": 19.2,
+                                                    },
+                                                  ]
+                                                }
+                                              >
+                                                Test
+                                              </Text>
+                                              <Text
+                                                style={
+                                                  [
+                                                    {
+                                                      "color": "#161617",
+                                                      "fontFamily": "Montserrat-SemiBold",
+                                                      "fontSize": 12,
+                                                      "lineHeight": 19.2,
+                                                    },
+                                                  ]
+                                                }
+                                                testID="priceIsDuo"
+                                              />
+                                            </View>
+                                          </View>
+                                          <View
+                                            style={
+                                              [
+                                                {},
+                                              ]
+                                            }
+                                          >
+                                            <View
+                                              height={288}
+                                              style={
+                                                [
+                                                  {
+                                                    "height": 288,
+                                                    "width": 192,
+                                                  },
+                                                ]
+                                              }
+                                              width={192}
+                                            >
+                                              <BVLinearGradient
+                                                borderRadius={8}
+                                                colors={
+                                                  [
+                                                    4294046196,
+                                                    4291546578,
+                                                  ]
+                                                }
+                                                endPoint={
+                                                  {
+                                                    "x": 0.5,
+                                                    "y": 1,
+                                                  }
+                                                }
+                                                locations={null}
+                                                onlyTopBorderRadius={false}
+                                                startPoint={
+                                                  {
+                                                    "x": 0.5,
+                                                    "y": 0,
+                                                  }
+                                                }
+                                                style={
+                                                  [
+                                                    {
+                                                      "alignItems": "center",
+                                                      "backgroundColor": "#F1F1F4",
+                                                      "borderRadius": 8,
+                                                      "height": "100%",
+                                                      "justifyContent": "center",
+                                                      "width": "100%",
+                                                    },
+                                                    {
+                                                      "borderRadius": 8,
+                                                      "borderTopLeftRadius": 8,
+                                                      "borderTopRightRadius": 8,
+                                                    },
+                                                  ]
+                                                }
+                                                testID="imagePlaceholder"
+                                              >
+                                                <View
+                                                  height={64}
+                                                  testID="categoryIcon"
+                                                  width={64}
+                                                >
+                                                  <Text>
+                                                    categoryIcon-SVG-Mock
+                                                  </Text>
+                                                </View>
+                                              </BVLinearGradient>
+                                            </View>
+                                          </View>
+                                        </View>
+                                      </View>
+                                    </View>
+                                  </View>
+                                </CellContainer>
+                              </AutoLayoutView>
+                              <CellContainer
+                                index={-1}
+                                style={
+                                  [
+                                    undefined,
+                                    undefined,
+                                  ]
+                                }
+                              >
+                                <View
+                                  style={
+                                    [
+                                      {
+                                        "width": 24,
+                                      },
+                                    ]
+                                  }
+                                  width={24}
+                                />
+                              </CellContainer>
+                              <View
+                                style={
+                                  {
+                                    "paddingBottom": 0,
+                                    "paddingRight": 0,
+                                  }
+                                }
+                              />
+                              <View
+                                pointerEvents="none"
+                                style={
+                                  {
+                                    "opacity": 0,
+                                  }
+                                }
+                              >
+                                <View>
+                                  <View
+                                    accessibilityLabel="Offre Test de la catégorie Livre,   prix . "
+                                    accessibilityRole="link"
+                                    accessibilityValue={
+                                      {
+                                        "max": undefined,
+                                        "min": undefined,
+                                        "now": undefined,
+                                        "text": undefined,
+                                      }
+                                    }
+                                    accessible={true}
+                                    focusable={true}
+                                    onClick={[Function]}
+                                    onResponderGrant={[Function]}
+                                    onResponderMove={[Function]}
+                                    onResponderRelease={[Function]}
+                                    onResponderTerminate={[Function]}
+                                    onResponderTerminationRequest={[Function]}
+                                    onStartShouldSetResponder={[Function]}
+                                    style={
+                                      [
+                                        {
+                                          "textDecorationColor": "black",
+                                          "textDecorationLine": "none",
+                                          "textDecorationStyle": "solid",
+                                        },
+                                        {
+                                          "borderRadius": 8,
+                                          "height": 416,
+                                          "marginVertical": 4,
+                                        },
+                                      ]
+                                    }
+                                    testID="Offre Test de la catégorie Livre,   prix . "
+                                  >
+                                    <View
+                                      gap={2}
+                                      maxWidth={192}
+                                      style={
+                                        [
+                                          {
+                                            "flexDirection": "column-reverse",
+                                            "gap": 8,
+                                            "maxWidth": 192,
+                                          },
+                                        ]
+                                      }
+                                    >
+                                      <View
+                                        gap={1}
+                                        style={
+                                          [
+                                            {
+                                              "gap": 4,
+                                            },
+                                          ]
+                                        }
+                                      >
+                                        <Text
+                                          numberOfLines={1}
+                                          style={
+                                            [
+                                              {
+                                                "color": "#696A6F",
+                                                "fontFamily": "Montserrat-SemiBold",
+                                                "fontSize": 12,
+                                                "lineHeight": 19.2,
+                                              },
+                                            ]
+                                          }
+                                        >
+                                          Livre
+                                        </Text>
+                                        <View>
+                                          <Text
+                                            numberOfLines={2}
+                                            style={
+                                              [
+                                                {
+                                                  "color": "#161617",
+                                                  "fontFamily": "Montserrat-SemiBold",
+                                                  "fontSize": 12,
+                                                  "lineHeight": 19.2,
+                                                },
+                                              ]
+                                            }
+                                          >
+                                            Test
+                                          </Text>
+                                          <Text
+                                            style={
+                                              [
+                                                {
+                                                  "color": "#161617",
+                                                  "fontFamily": "Montserrat-SemiBold",
+                                                  "fontSize": 12,
+                                                  "lineHeight": 19.2,
+                                                },
+                                              ]
+                                            }
+                                            testID="priceIsDuo"
+                                          />
+                                        </View>
+                                      </View>
+                                      <View
+                                        style={
+                                          [
+                                            {},
+                                          ]
+                                        }
+                                      >
+                                        <View
+                                          height={288}
+                                          style={
+                                            [
+                                              {
+                                                "height": 288,
+                                                "width": 192,
+                                              },
+                                            ]
+                                          }
+                                          width={192}
+                                        >
+                                          <BVLinearGradient
+                                            borderRadius={8}
+                                            colors={
+                                              [
+                                                4294046196,
+                                                4291546578,
+                                              ]
+                                            }
+                                            endPoint={
+                                              {
+                                                "x": 0.5,
+                                                "y": 1,
+                                              }
+                                            }
+                                            locations={null}
+                                            onlyTopBorderRadius={false}
+                                            startPoint={
+                                              {
+                                                "x": 0.5,
+                                                "y": 0,
+                                              }
+                                            }
+                                            style={
+                                              [
+                                                {
+                                                  "alignItems": "center",
+                                                  "backgroundColor": "#F1F1F4",
+                                                  "borderRadius": 8,
+                                                  "height": "100%",
+                                                  "justifyContent": "center",
+                                                  "width": "100%",
+                                                },
+                                                {
+                                                  "borderRadius": 8,
+                                                  "borderTopLeftRadius": 8,
+                                                  "borderTopRightRadius": 8,
+                                                },
+                                              ]
+                                            }
+                                            testID="imagePlaceholder"
+                                          >
+                                            <View
+                                              height={64}
+                                              testID="categoryIcon"
+                                              width={64}
+                                            >
+                                              <Text>
+                                                categoryIcon-SVG-Mock
+                                              </Text>
+                                            </View>
+                                          </BVLinearGradient>
+                                        </View>
+                                      </View>
+                                    </View>
+                                  </View>
+                                </View>
+                              </View>
+                            </View>
+                          </View>
+                        </RCTScrollView>
+                      </View>
+                    </View>
+                  </View>
+                </View>
+              </View>
+            </View>
+          </View>
+          <View
+            gap={6}
+            style={
+              [
+                {
+                  "gap": 24,
+                },
+              ]
+            }
+          >
+            <View
+              style={
+                [
+                  {
+                    "backgroundColor": "#F1F1F4",
+                    "height": 8,
+                  },
+                ]
+              }
+            />
+            <View
+              style={
+                [
+                  {
+                    "flexDirection": "row",
+                    "gap": 16,
+                    "marginHorizontal": 16,
+                    "marginVertical": 24,
+                  },
+                ]
+              }
+            >
+              <View
+                size="medium"
+                style={
+                  [
+                    {
+                      "borderRadius": 8,
+                      "height": 48,
+                      "overflow": "hidden",
+                      "width": 48,
+                    },
+                  ]
+                }
+              >
+                <BVLinearGradient
+                  colors={
+                    [
+                      4294614806,
+                      4290271489,
+                    ]
+                  }
+                  endPoint={
+                    {
+                      "x": 0.5,
+                      "y": 1,
+                    }
+                  }
+                  locations={null}
+                  startPoint={
+                    {
+                      "x": 0.5,
+                      "y": 0,
+                    }
+                  }
+                  style={
+                    [
+                      {
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    size="medium"
+                    style={
+                      [
+                        {
+                          "position": "absolute",
+                          "top": -20,
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      fill="none"
+                      height={92}
+                      width={82}
+                    >
+                      <Text>
+                        undefined-SVG-Mock
+                      </Text>
+                    </View>
+                  </View>
+                </BVLinearGradient>
+              </View>
+              <View
+                style={
+                  [
+                    {
+                      "flexShrink": 1,
+                    },
+                  ]
+                }
+              >
+                <Text
+                  style={
+                    [
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
+                      },
+                    ]
+                  }
+                >
+                  Fan de lecture ?
+                </Text>
+                <Text
+                  style={
+                    [
+                      {
+                        "color": "#696A6F",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 19.2,
+                      },
+                    ]
+                  }
+                >
+                  Reçois nos recos lecture, nos jeux-concours et le meilleur de l’actu littéraire !
+                </Text>
+                <View
+                  numberOfSpaces={2}
+                  style={
+                    [
+                      {
+                        "height": 8,
+                      },
+                    ]
+                  }
+                />
+                <View
+                  accessibilityLabel="Suivre le thème"
+                  accessibilityRole="button"
+                  accessibilityState={
+                    {
+                      "busy": undefined,
+                      "checked": undefined,
+                      "disabled": undefined,
+                      "expanded": undefined,
+                      "selected": undefined,
+                    }
+                  }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
+                    }
+                  }
+                  accessible={true}
+                  collapsable={false}
+                  focusable={true}
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    {
+                      "alignItems": "center",
+                      "alignSelf": "flex-start",
+                      "backgroundColor": "#ffffff",
+                      "borderColor": "#90949D",
+                      "borderRadius": 24,
+                      "borderWidth": 1,
+                      "flexDirection": "row",
+                      "height": "auto",
+                      "justifyContent": "center",
+                      "opacity": 1,
+                      "paddingHorizontal": 12,
+                      "paddingVertical": 4,
+                      "userSelect": "auto",
+                      "width": "auto",
+                    }
+                  }
+                  testID="Suivre le thème"
+                >
+                  <View>
+                    undefined-Lottie-Mock
+                  </View>
+                  <View
+                    numberOfSpaces={2}
+                    style={
+                      [
+                        {
+                          "width": 8,
+                        },
+                      ]
+                    }
+                  />
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 19.2,
+                        },
+                      ]
+                    }
+                  >
+                    Suivre le thème
+                  </Text>
+                </View>
+              </View>
+            </View>
+            <Modal
+              accessibilityLabelledBy="testUuidV4"
+              accessibilityModal={true}
+              animationType="none"
+              deviceHeight={1334}
+              deviceWidth={750}
+              hardwareAccelerated={false}
+              hideModalContentWhileAnimating={false}
+              onBackdropPress={[Function]}
+              onModalHide={[Function]}
+              onModalWillHide={[Function]}
+              onModalWillShow={[Function]}
+              onRequestClose={[Function]}
+              panResponderThreshold={4}
+              scrollHorizontal={false}
+              scrollOffset={0}
+              scrollOffsetMax={0}
+              scrollTo={null}
+              statusBarTranslucent={true}
+              supportedOrientations={
+                [
+                  "portrait",
+                  "landscape",
+                ]
+              }
+              swipeThreshold={100}
+              testID="modal"
+              transparent={true}
+              visible={false}
+            />
+            <Modal
+              accessibilityLabelledBy="testUuidV4"
+              accessibilityModal={true}
+              animationType="none"
+              deviceHeight={1334}
+              deviceWidth={750}
+              hardwareAccelerated={false}
+              hideModalContentWhileAnimating={false}
+              onBackdropPress={[Function]}
+              onModalHide={[Function]}
+              onModalWillHide={[Function]}
+              onModalWillShow={[Function]}
+              onRequestClose={[Function]}
+              panResponderThreshold={4}
+              scrollHorizontal={false}
+              scrollOffset={0}
+              scrollOffsetMax={0}
+              scrollTo={null}
+              statusBarTranslucent={true}
+              supportedOrientations={
+                [
+                  "portrait",
+                  "landscape",
+                ]
+              }
+              swipeThreshold={100}
+              testID="modal"
+              transparent={true}
+              visible={false}
+            />
+            <Modal
+              accessibilityLabelledBy="testUuidV4"
+              accessibilityModal={true}
+              animationType="none"
+              deviceHeight={1334}
+              deviceWidth={750}
+              hardwareAccelerated={false}
+              hideModalContentWhileAnimating={false}
+              onBackdropPress={[Function]}
+              onModalHide={[Function]}
+              onModalWillHide={[Function]}
+              onModalWillShow={[Function]}
+              onRequestClose={[Function]}
+              panResponderThreshold={4}
+              scrollHorizontal={false}
+              scrollOffset={0}
+              scrollOffsetMax={0}
+              scrollTo={null}
+              statusBarTranslucent={true}
+              supportedOrientations={
+                [
+                  "portrait",
+                  "landscape",
+                ]
+              }
+              swipeThreshold={100}
+              testID="modal"
+              transparent={true}
+              visible={false}
+            />
+          </View>
+          <View
+            gap={6}
+            style={
+              [
+                {
+                  "gap": 24,
+                },
+              ]
+            }
+          >
+            <View
+              style={
+                [
+                  {
+                    "backgroundColor": "#F1F1F4",
+                    "height": 8,
+                  },
+                ]
+              }
+            />
+            <View
+              style={
+                [
+                  {
+                    "paddingHorizontal": 24,
+                  },
+                ]
+              }
+            >
+              <View
+                style={
+                  [
+                    {
+                      "marginBottom": 16,
+                    },
+                  ]
+                }
+              >
+                <View
+                  gap={4}
+                  style={
+                    [
+                      {
+                        "gap": 16,
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 19,
+                          "lineHeight": 30.4,
+                        },
+                      ]
+                    }
+                  >
+                    Passe le bon plan !
+                  </Text>
+                  <View
+                    style={
+                      [
+                        {
+                          "flexDirection": "row",
+                          "maxWidth": 500,
+                          "width": "100%",
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      accessibilityRole="list"
+                      style={
+                        [
+                          {
+                            "flexBasis": 0,
+                            "flexDirection": "row",
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                            "flexWrap": "wrap",
+                            "justifyContent": "flex-start",
+                            "paddingLeft": 0,
+                          },
+                        ]
+                      }
+                    >
+                      <View
+                        accessibilityRole="none"
+                        style={
+                          [
+                            {
+                              "alignItems": "center",
+                              "display": "flex",
+                              "flexBasis": "8.333333333333334%",
+                              "flexGrow": 1,
+                              "flexShrink": 0,
+                              "marginBottom": 20,
+                              "marginHorizontal": 4,
+                              "maxWidth": 76,
+                            },
+                          ]
+                        }
+                      >
+                        <View
+                          accessibilityRole="button"
+                          accessibilityState={
+                            {
+                              "busy": undefined,
+                              "checked": undefined,
+                              "disabled": undefined,
+                              "expanded": undefined,
+                              "selected": undefined,
+                            }
+                          }
+                          accessibilityValue={
+                            {
+                              "max": undefined,
+                              "min": undefined,
+                              "now": undefined,
+                              "text": undefined,
+                            }
+                          }
+                          accessible={false}
+                          collapsable={false}
+                          focusable={true}
+                          onClick={[Function]}
+                          onResponderGrant={[Function]}
+                          onResponderMove={[Function]}
+                          onResponderRelease={[Function]}
+                          onResponderTerminate={[Function]}
+                          onResponderTerminationRequest={[Function]}
+                          onStartShouldSetResponder={[Function]}
+                          style={
+                            {
+                              "alignItems": "center",
+                              "height": 96,
+                              "opacity": 1,
+                              "userSelect": "auto",
+                              "width": 76,
+                            }
+                          }
+                        >
+                          <View
+                            style={
+                              [
+                                {
+                                  "alignItems": "center",
+                                  "flexBasis": 0,
+                                  "flexGrow": 1,
+                                  "flexShrink": 1,
+                                },
+                              ]
+                            }
+                          >
+                            <View
+                              style={
+                                [
+                                  {
+                                    "paddingBottom": 4,
+                                    "paddingLeft": 4,
+                                    "paddingRight": 4,
+                                    "paddingTop": 4,
+                                  },
+                                ]
+                              }
+                            >
+                              <View
+                                height={48}
+                                width={48}
+                              >
+                                <Text>
+                                  undefined-SVG-Mock
+                                </Text>
+                              </View>
+                            </View>
+                            <View
+                              numberOfSpaces={2}
+                              style={
+                                [
+                                  {
+                                    "height": 8,
+                                  },
+                                ]
+                              }
+                            />
+                            <Text
+                              disabled={false}
+                              style={
+                                [
+                                  {
+                                    "color": "#161617",
+                                    "fontFamily": "Montserrat-SemiBold",
+                                    "fontSize": 12,
+                                    "lineHeight": 19.2,
+                                    "textAlign": "center",
+                                  },
+                                ]
+                              }
+                            >
+                              Envoyer sur
+Instagram
+                            </Text>
+                          </View>
+                        </View>
+                      </View>
+                      <View
+                        accessibilityRole="none"
+                        style={
+                          [
+                            {
+                              "alignItems": "center",
+                              "display": "flex",
+                              "flexBasis": "8.333333333333334%",
+                              "flexGrow": 1,
+                              "flexShrink": 0,
+                              "marginBottom": 20,
+                              "marginHorizontal": 4,
+                              "maxWidth": 76,
+                            },
+                          ]
+                        }
+                      >
+                        <View
+                          accessibilityRole="button"
+                          accessibilityState={
+                            {
+                              "busy": undefined,
+                              "checked": undefined,
+                              "disabled": undefined,
+                              "expanded": undefined,
+                              "selected": undefined,
+                            }
+                          }
+                          accessibilityValue={
+                            {
+                              "max": undefined,
+                              "min": undefined,
+                              "now": undefined,
+                              "text": undefined,
+                            }
+                          }
+                          accessible={false}
+                          collapsable={false}
+                          focusable={true}
+                          onClick={[Function]}
+                          onResponderGrant={[Function]}
+                          onResponderMove={[Function]}
+                          onResponderRelease={[Function]}
+                          onResponderTerminate={[Function]}
+                          onResponderTerminationRequest={[Function]}
+                          onStartShouldSetResponder={[Function]}
+                          style={
+                            {
+                              "alignItems": "center",
+                              "height": 96,
+                              "opacity": 1,
+                              "userSelect": "auto",
+                              "width": 76,
+                            }
+                          }
+                        >
+                          <View
+                            style={
+                              [
+                                {
+                                  "alignItems": "center",
+                                  "flexBasis": 0,
+                                  "flexGrow": 1,
+                                  "flexShrink": 1,
+                                },
+                              ]
+                            }
+                          >
+                            <View
+                              style={
+                                [
+                                  {
+                                    "paddingBottom": 4,
+                                    "paddingLeft": 4,
+                                    "paddingRight": 4,
+                                    "paddingTop": 4,
+                                  },
+                                ]
+                              }
+                            >
+                              <View
+                                height={48}
+                                width={48}
+                              >
+                                <Text>
+                                  undefined-SVG-Mock
+                                </Text>
+                              </View>
+                            </View>
+                            <View
+                              numberOfSpaces={2}
+                              style={
+                                [
+                                  {
+                                    "height": 8,
+                                  },
+                                ]
+                              }
+                            />
+                            <Text
+                              disabled={false}
+                              style={
+                                [
+                                  {
+                                    "color": "#161617",
+                                    "fontFamily": "Montserrat-SemiBold",
+                                    "fontSize": 12,
+                                    "lineHeight": 19.2,
+                                    "textAlign": "center",
+                                  },
+                                ]
+                              }
+                            >
+                              Envoyer sur
+WhatsApp
+                            </Text>
+                          </View>
+                        </View>
+                      </View>
+                      <View
+                        accessibilityRole="none"
+                        style={
+                          [
+                            {
+                              "alignItems": "center",
+                              "display": "flex",
+                              "flexBasis": "8.333333333333334%",
+                              "flexGrow": 1,
+                              "flexShrink": 0,
+                              "marginBottom": 20,
+                              "marginHorizontal": 4,
+                              "maxWidth": 76,
+                            },
+                          ]
+                        }
+                      >
+                        <View
+                          accessibilityRole="button"
+                          accessibilityState={
+                            {
+                              "busy": undefined,
+                              "checked": undefined,
+                              "disabled": undefined,
+                              "expanded": undefined,
+                              "selected": undefined,
+                            }
+                          }
+                          accessibilityValue={
+                            {
+                              "max": undefined,
+                              "min": undefined,
+                              "now": undefined,
+                              "text": undefined,
+                            }
+                          }
+                          accessible={false}
+                          collapsable={false}
+                          focusable={true}
+                          onClick={[Function]}
+                          onResponderGrant={[Function]}
+                          onResponderMove={[Function]}
+                          onResponderRelease={[Function]}
+                          onResponderTerminate={[Function]}
+                          onResponderTerminationRequest={[Function]}
+                          onStartShouldSetResponder={[Function]}
+                          style={
+                            {
+                              "alignItems": "center",
+                              "height": 96,
+                              "opacity": 1,
+                              "userSelect": "auto",
+                              "width": 76,
+                            }
+                          }
+                        >
+                          <View
+                            style={
+                              [
+                                {
+                                  "alignItems": "center",
+                                  "flexBasis": 0,
+                                  "flexGrow": 1,
+                                  "flexShrink": 1,
+                                },
+                              ]
+                            }
+                          >
+                            <View
+                              style={
+                                [
+                                  {
+                                    "paddingBottom": 4,
+                                    "paddingLeft": 4,
+                                    "paddingRight": 4,
+                                    "paddingTop": 4,
+                                  },
+                                ]
+                              }
+                            >
+                              <View
+                                height={48}
+                                width={48}
+                              >
+                                <Text>
+                                  undefined-SVG-Mock
+                                </Text>
+                              </View>
+                            </View>
+                            <View
+                              numberOfSpaces={2}
+                              style={
+                                [
+                                  {
+                                    "height": 8,
+                                  },
+                                ]
+                              }
+                            />
+                            <Text
+                              disabled={false}
+                              style={
+                                [
+                                  {
+                                    "color": "#161617",
+                                    "fontFamily": "Montserrat-SemiBold",
+                                    "fontSize": 12,
+                                    "lineHeight": 19.2,
+                                    "textAlign": "center",
+                                  },
+                                ]
+                              }
+                            >
+                              Envoyer sur
+iMessage
+                            </Text>
+                          </View>
+                        </View>
+                      </View>
+                      <View
+                        accessibilityRole="none"
+                        style={
+                          [
+                            {
+                              "alignItems": "center",
+                              "display": "flex",
+                              "flexBasis": "8.333333333333334%",
+                              "flexGrow": 1,
+                              "flexShrink": 0,
+                              "marginBottom": 20,
+                              "marginHorizontal": 4,
+                              "maxWidth": 76,
+                            },
+                          ]
+                        }
+                      >
+                        <View
+                          accessibilityRole="button"
+                          accessibilityState={
+                            {
+                              "busy": undefined,
+                              "checked": undefined,
+                              "disabled": undefined,
+                              "expanded": undefined,
+                              "selected": undefined,
+                            }
+                          }
+                          accessibilityValue={
+                            {
+                              "max": undefined,
+                              "min": undefined,
+                              "now": undefined,
+                              "text": undefined,
+                            }
+                          }
+                          accessible={false}
+                          collapsable={false}
+                          focusable={true}
+                          onClick={[Function]}
+                          onResponderGrant={[Function]}
+                          onResponderMove={[Function]}
+                          onResponderRelease={[Function]}
+                          onResponderTerminate={[Function]}
+                          onResponderTerminationRequest={[Function]}
+                          onStartShouldSetResponder={[Function]}
+                          style={
+                            {
+                              "alignItems": "center",
+                              "height": 96,
+                              "opacity": 1,
+                              "userSelect": "auto",
+                              "width": 76,
+                            }
+                          }
+                        >
+                          <View
+                            style={
+                              [
+                                {
+                                  "alignItems": "center",
+                                  "flexBasis": 0,
+                                  "flexGrow": 1,
+                                  "flexShrink": 1,
+                                },
+                              ]
+                            }
+                          >
+                            <View
+                              style={
+                                [
+                                  {
+                                    "paddingBottom": 4,
+                                    "paddingLeft": 4,
+                                    "paddingRight": 4,
+                                    "paddingTop": 4,
+                                  },
+                                ]
+                              }
+                            >
+                              <View
+                                style={
+                                  [
+                                    {
+                                      "alignItems": "center",
+                                      "borderColor": "#CBCDD2",
+                                      "borderRadius": 24,
+                                      "borderWidth": 1,
+                                      "height": 48,
+                                      "justifyContent": "center",
+                                      "width": 48,
+                                    },
+                                  ]
+                                }
+                              >
+                                <View
+                                  height={28}
+                                  width={28}
+                                >
+                                  <Text>
+                                    undefined-SVG-Mock
+                                  </Text>
+                                </View>
+                              </View>
+                            </View>
+                            <View
+                              numberOfSpaces={2}
+                              style={
+                                [
+                                  {
+                                    "height": 8,
+                                  },
+                                ]
+                              }
+                            />
+                            <Text
+                              disabled={false}
+                              style={
+                                [
+                                  {
+                                    "color": "#161617",
+                                    "fontFamily": "Montserrat-SemiBold",
+                                    "fontSize": 12,
+                                    "lineHeight": 19.2,
+                                    "textAlign": "center",
+                                  },
+                                ]
+                              }
+                            >
+                              Plus
+d’options
+                            </Text>
+                          </View>
+                        </View>
+                      </View>
+                    </View>
+                  </View>
+                </View>
+              </View>
+            </View>
+          </View>
+          <View
+            gap={22}
+            style={
+              [
+                {
+                  "gap": 88,
+                },
+              ]
+            }
+          >
+            <View
+              style={
+                [
+                  {
+                    "backgroundColor": "#F1F1F4",
+                    "height": 8,
+                  },
+                ]
+              }
+            />
+            <View
+              style={
+                [
+                  {
+                    "marginBottom": 24,
+                  },
+                ]
+              }
+            />
+          </View>
+        </View>
+      </View>
+    </View>
+  </RCTScrollView>
+  <View
+    collapsable={false}
+    height={80}
+    style={
+      {
+        "backdropFilter": "blur(0px)",
+        "backgroundColor": "rgba(255, 255, 255, 0)",
+        "borderBottomColor": "#F1F1F4",
+        "borderBottomWidth": 0,
+        "height": 80,
+        "left": 0,
+        "position": "absolute",
+        "right": 0,
+        "top": 0,
+        "zIndex": 1,
+      }
+    }
+  >
+    <View
+      collapsable={false}
+      height={80}
+      style={
+        {
+          "height": 80,
+          "left": 0,
+          "opacity": 0,
+          "overflow": "hidden",
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        }
+      }
+    >
+      <BlurView
+        blurAmount={8}
+        blurType="light"
+        style={
+          [
+            {
+              "backgroundColor": "transparent",
+            },
+            [
+              {
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
+              },
+            ],
+          ]
+        }
+      />
+    </View>
+    <View
+      marginRight={24}
+      marginTop={16}
+      style={
+        [
+          {
+            "alignItems": "center",
+            "flexDirection": "row",
+            "justifyContent": "space-between",
+            "marginBottom": 8,
+            "marginLeft": 24,
+            "marginRight": 24,
+            "marginTop": 16,
+          },
+        ]
+      }
+    >
+      <View
+        accessibilityLabel="Revenir en arrière"
+        accessibilityRole="button"
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          {
+            "borderRadius": 40,
+            "opacity": 1,
+            "userSelect": "auto",
+          }
+        }
+        testID="Revenir en arrière"
+      >
+        <View
+          collapsable={false}
+          style={
+            {
+              "alignItems": "center",
+              "aspectRatio": 1,
+              "backgroundColor": "rgba(255, 255, 255, 1)",
+              "borderColor": "rgba(241, 241, 244, 1)",
+              "borderRadius": 40,
+              "borderStyle": "solid",
+              "borderWidth": 1,
+              "height": 40,
+              "justifyContent": "center",
+              "transform": undefined,
+              "width": 40,
+            }
+          }
+          testID="AnimatedHeaderIconRoundContainer"
+        >
+          <View
+            size={24}
+            style={
+              [
+                {
+                  "height": 24,
+                  "width": 24,
+                },
+              ]
+            }
+          >
+            <View
+              collapsable={false}
+              style={
+                {
+                  "opacity": 1,
+                  "position": "absolute",
+                }
+              }
+              testID="initial-icon-container"
+            >
+              <View
+                height={24}
+                testID="animated-icon-back"
+                width={24}
+              >
+                <Text>
+                  animated-icon-back-SVG-Mock
+                </Text>
+              </View>
+            </View>
+            <View
+              collapsable={false}
+              style={
+                {
+                  "opacity": 0,
+                  "position": "absolute",
+                }
+              }
+              testID="final-icon-container"
+            >
+              <View
+                height={24}
+                testID="final-animated-icon-back"
+                width={24}
+              >
+                <Text>
+                  final-animated-icon-back-SVG-Mock
+                </Text>
+              </View>
+            </View>
+          </View>
+        </View>
+      </View>
+      <View
+        style={
+          [
+            {
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
+            },
+          ]
+        }
+      >
+        <Text
+          accessibilityHidden={true}
+          collapsable={false}
+          numberOfLines={2}
+          style={
+            {
+              "color": "#ffffff",
+              "flexShrink": 1,
+              "opacity": 0,
+              "textAlign": "center",
+            }
+          }
+          testID="venueHeaderName"
+        >
+          <Text
+            style={
+              [
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Medium",
+                  "fontSize": 16,
+                  "lineHeight": 25.6,
+                },
+              ]
+            }
+          >
+            Le Petit Rintintin 1
+          </Text>
+        </Text>
+      </View>
+      <View
+        accessibilityLabel="Partager"
+        accessibilityRole="button"
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          {
+            "borderRadius": 40,
+            "opacity": 1,
+            "userSelect": "auto",
+          }
+        }
+        testID="Partager"
+      >
+        <View
+          collapsable={false}
+          style={
+            {
+              "alignItems": "center",
+              "aspectRatio": 1,
+              "backgroundColor": "rgba(255, 255, 255, 1)",
+              "borderColor": "rgba(241, 241, 244, 1)",
+              "borderRadius": 40,
+              "borderStyle": "solid",
+              "borderWidth": 1,
+              "height": 40,
+              "justifyContent": "center",
+              "transform": undefined,
+              "width": 40,
+            }
+          }
+          testID="AnimatedHeaderIconRoundContainer"
+        >
+          <View
+            size={24}
+            style={
+              [
+                {
+                  "height": 24,
+                  "width": 24,
+                },
+              ]
+            }
+          >
+            <View
+              collapsable={false}
+              style={
+                {
+                  "opacity": 1,
+                  "position": "absolute",
+                }
+              }
+              testID="initial-icon-container"
+            >
+              <View
+                height={24}
+                testID="animated-icon-share"
+                width={24}
+              >
+                <Text>
+                  animated-icon-share-SVG-Mock
+                </Text>
+              </View>
+            </View>
+            <View
+              collapsable={false}
+              style={
+                {
+                  "opacity": 0,
+                  "position": "absolute",
+                }
+              }
+              testID="final-icon-container"
+            >
+              <View
+                height={24}
+                testID="final-animated-icon-share"
+                width={24}
+              >
+                <Text>
+                  final-animated-icon-share-SVG-Mock
+                </Text>
+              </View>
+            </View>
+          </View>
+        </View>
+      </View>
+    </View>
+  </View>
+  <View
+    style={
+      [
+        {
+          "bottom": 0,
+          "position": "absolute",
+          "width": "100%",
+        },
+      ]
+    }
+  >
+    <View
+      style={
+        [
+          {
+            "alignItems": "center",
+            "alignSelf": "center",
+            "paddingHorizontal": 24,
+            "width": "100%",
+          },
+        ]
+      }
+    >
+      <View
+        numberOfSpaces={6}
+        style={
+          [
+            {
+              "height": 24,
+            },
+          ]
+        }
+      />
+      <View
+        accessibilityLabel="Rechercher une offre"
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          {
+            "alignItems": "center",
+            "backgroundColor": "#eb0055",
+            "borderRadius": 24,
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "minHeight": 40,
+            "opacity": 1,
+            "paddingBottom": 2,
+            "paddingLeft": 20,
+            "paddingRight": 20,
+            "paddingTop": 2,
+            "userSelect": "auto",
+            "width": "100%",
+          }
+        }
+        testID="Rechercher une offre"
+      >
+        <View
+          style={
+            [
+              {
+                "alignItems": "center",
+                "flexDirection": "row",
+              },
+            ]
+          }
+        >
+          <View
+            style={
+              [
+                {
+                  "flexDirection": "row",
+                  "flexShrink": 0,
+                },
+              ]
+            }
+          >
+            <View
+              fill="none"
+              height={24}
+              testID="button-icon-left"
+              width={24}
+            >
+              <Text>
+                button-icon-left-SVG-Mock
+              </Text>
+            </View>
+            <View
+              numberOfSpaces={2}
+              style={
+                [
+                  {
+                    "width": 8,
+                  },
+                ]
+              }
+            />
+          </View>
+          <Text
+            adjustsFontSizeToFit={false}
+            numberOfLines={1}
+            style={
+              [
+                {
+                  "color": "#ffffff",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 16,
+                  "lineHeight": 25.6,
+                  "maxWidth": "100%",
+                },
+              ]
+            }
+          >
+            Rechercher une offre
+          </Text>
+        </View>
+      </View>
+      <View
+        numberOfSpaces={6}
+        style={
+          [
+            {
+              "height": 24,
+            },
+          ]
+        }
+      />
+    </View>
+    <View
+      customHeight={8}
+      enable={true}
+      style={
+        [
+          {
+            "height": 8,
+          },
+        ]
+      }
+    />
+  </View>
+</View>
+`;
+
+exports[`<Venue /> should match snapshot with headline offer 1`] = `
+<View
+  style={
+    [
+      {
+        "backgroundColor": "#ffffff",
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+      },
+    ]
+  }
+>
+  <RCTScrollView
+    bounces={false}
+    onContentSizeChange={[Function]}
+    onLayout={[Function]}
+    onScroll={[Function]}
+    scrollEventThrottle={16}
+    scrollIndicatorInsets={
+      {
+        "right": 1,
+      }
+    }
+    style={
+      [
+        {
+          "overflow": "visible",
+        },
+      ]
+    }
+  >
+    <View>
+      <View
+        style={
+          [
+            {
+              "flexDirection": "column",
+              "marginBottom": 24,
+              "marginHorizontal": 0,
+              "marginTop": 0,
+            },
+          ]
+        }
+      >
+        <View
+          hasGoogleCredit={null}
+          style={
+            [
+              {
+                "alignItems": "center",
+                "marginBottom": 24,
+              },
+            ]
+          }
+        >
+          <View
+            style={
+              [
+                {
+                  "alignItems": "center",
+                  "backgroundColor": "#F1F1F4",
+                  "justifyContent": "center",
+                },
+                {
+                  "height": 188,
+                  "width": 960,
+                },
+              ]
+            }
+            testID="defaultVenueBackground"
+          >
+            <View
+              customHeight={16}
+              enable={true}
+              style={
+                [
+                  {
+                    "height": 16,
+                  },
+                ]
+              }
+            />
+            <View
+              height={120}
+              width={120}
+            >
+              <Text>
+                undefined-SVG-Mock
+              </Text>
+            </View>
+          </View>
+        </View>
+        <View
+          style={
+            [
+              {
+                "flexShrink": 1,
+                "marginHorizontal": 24,
+              },
+            ]
+          }
+        >
+          <View
+            gap={4}
+            style={
+              [
+                {
+                  "gap": 16,
+                },
+              ]
+            }
+          >
+            <View
+              maxHeight={56}
+              style={
+                [
+                  {
+                    "flexDirection": "row",
+                    "flexWrap": "wrap",
+                    "gap": 8,
+                    "maxHeight": 56,
+                    "overflow": "hidden",
+                  },
+                ]
+              }
+              testID="tagsContainer"
+            >
+              <View
+                style={
+                  [
+                    {
+                      "alignSelf": "baseline",
+                      "backgroundColor": "#F1F1F4",
+                      "borderRadius": 6,
+                      "flexDirection": "row",
+                      "paddingHorizontal": 8,
+                      "paddingVertical": 4,
+                    },
+                  ]
+                }
+              >
+                <Text
+                  style={
+                    [
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 16,
+                      },
+                    ]
+                  }
+                >
+                  Librairie
+                </Text>
+              </View>
+            </View>
+            <View
+              gap={1}
+              style={
+                [
+                  {
+                    "gap": 4,
+                  },
+                ]
+              }
+            >
+              <Text
+                accessibilityLabel="Nom du lieu : Le Petit Rintintin 1"
+                adjustsFontSizeToFit={true}
+                style={
+                  [
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 19,
+                      "lineHeight": 30.4,
+                    },
+                  ]
+                }
+              >
+                Le Petit Rintintin 1
+              </Text>
+              <View
+                gap={3}
+                style={
+                  [
+                    {
+                      "gap": 12,
+                    },
+                  ]
+                }
+              >
+                <View>
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 19.2,
+                        },
+                      ]
+                    }
+                  >
+                    Adresse
+                  </Text>
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                        },
+                      ]
+                    }
+                  >
+                    1 boulevard Poissonnière, 75000 Paris
+                  </Text>
+                </View>
+                <View
+                  style={
+                    [
+                      {
+                        "backgroundColor": "#F1F1F4",
+                        "height": 1,
+                        "width": "100%",
+                      },
+                    ]
+                  }
+                />
+                <View
+                  accessibilityLabel="Copier l’adresse"
+                  accessibilityState={
+                    {
+                      "busy": undefined,
+                      "checked": undefined,
+                      "disabled": undefined,
+                      "expanded": undefined,
+                      "selected": undefined,
+                    }
+                  }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
+                    }
+                  }
+                  accessible={true}
+                  collapsable={false}
+                  focusable={true}
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    {
+                      "alignItems": "center",
+                      "backgroundColor": "transparent",
+                      "borderRadius": 24,
+                      "flexDirection": "row",
+                      "justifyContent": "flex-start",
+                      "maxWidth": 500,
+                      "minHeight": 40,
+                      "opacity": 1,
+                      "paddingBottom": 2,
+                      "paddingLeft": 2,
+                      "paddingRight": 2,
+                      "paddingTop": 2,
+                      "userSelect": "auto",
+                      "width": "100%",
+                    }
+                  }
+                  testID="Copier l’adresse"
+                >
+                  <View
+                    style={
+                      [
+                        {
+                          "alignItems": "center",
+                          "flexDirection": "row",
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      style={
+                        [
+                          {
+                            "flexDirection": "row",
+                            "flexShrink": 0,
+                          },
+                        ]
+                      }
+                    >
+                      <View
+                        height={20}
+                        testID="button-icon-left"
+                        width={20}
+                      >
+                        <Text>
+                          button-icon-left-SVG-Mock
+                        </Text>
+                      </View>
+                      <View
+                        numberOfSpaces={2}
+                        style={
+                          [
+                            {
+                              "width": 8,
+                            },
+                          ]
+                        }
+                      />
+                    </View>
+                    <Text
+                      adjustsFontSizeToFit={false}
+                      numberOfLines={1}
+                      style={
+                        [
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                            "maxWidth": "100%",
+                          },
+                        ]
+                      }
+                    >
+                      Copier l’adresse
+                    </Text>
+                  </View>
+                </View>
+                <View
+                  style={
+                    [
+                      {
+                        "alignItems": "flex-start",
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    accessibilityLabel="Voir l’itinéraire"
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": undefined,
+                        "disabled": undefined,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={true}
+                    collapsable={false}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      {
+                        "alignItems": "center",
+                        "backgroundColor": "transparent",
+                        "borderRadius": 0,
+                        "borderWidth": 0,
+                        "flexDirection": "row",
+                        "justifyContent": "center",
+                        "marginTop": 0,
+                        "maxWidth": 500,
+                        "minHeight": 20,
+                        "opacity": 1,
+                        "paddingBottom": 0,
+                        "paddingLeft": 0,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
+                        "userSelect": "auto",
+                        "width": "auto",
+                      }
+                    }
+                    testID="Voir l’itinéraire"
+                  >
+                    <View
+                      style={
+                        [
+                          {
+                            "alignItems": "center",
+                            "flexDirection": "row",
+                          },
+                        ]
+                      }
+                    >
+                      <View
+                        style={
+                          [
+                            {
+                              "flexDirection": "row",
+                              "flexShrink": 0,
+                            },
+                          ]
+                        }
+                      >
+                        <View
+                          accessibilityLabel="Nouvelle fenêtre"
+                          height={20}
+                          testID="button-icon-left"
+                          width={20}
+                        >
+                          <Text>
+                            button-icon-left-SVG-Mock
+                          </Text>
+                        </View>
+                        <View
+                          numberOfSpaces={2}
+                          style={
+                            [
+                              {
+                                "width": 8,
+                              },
+                            ]
+                          }
+                        />
+                      </View>
+                      <Text
+                        adjustsFontSizeToFit={false}
+                        numberOfLines={1}
+                        style={
+                          [
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-Bold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                              "maxWidth": "100%",
+                            },
+                          ]
+                        }
+                      >
+                        Voir l’itinéraire
+                      </Text>
+                    </View>
+                  </View>
+                </View>
+              </View>
+            </View>
+          </View>
+        </View>
+      </View>
+      <View
+        gap={6}
+        style={
+          [
+            {
+              "gap": 24,
+            },
+          ]
+        }
+      >
+        <View
+          animatedStyle={
+            {
+              "value": {},
+            }
+          }
+          collapsable={false}
+          layout={
+            LinearTransition {
+              "build": [Function],
+              "callbackV": undefined,
+              "dampingV": undefined,
+              "delayV": undefined,
+              "durationV": 200,
+              "easingV": undefined,
+              "initialValues": undefined,
+              "massV": undefined,
+              "overshootClampingV": undefined,
+              "randomizeDelay": false,
+              "restDisplacementThresholdV": undefined,
+              "restSpeedThresholdV": undefined,
+              "rotateV": undefined,
+              "stiffnessV": undefined,
+              "type": undefined,
+            }
+          }
+        >
+          <View
+            gap={6}
+            style={
+              [
+                {
+                  "gap": 24,
+                },
+              ]
+            }
+          >
+            <View
+              style={
+                [
+                  {
+                    "backgroundColor": "#F1F1F4",
+                    "height": 8,
+                  },
+                ]
+              }
+            />
+            <View
+              style={
+                [
+                  {
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "width": "100%",
+                  },
+                ]
+              }
+            >
+              <View
+                accessibilityRole="tablist"
+                style={
+                  [
+                    {
+                      "flexDirection": "row",
+                    },
+                  ]
+                }
+              >
+                <View
+                  style={
+                    [
+                      {
+                        "backgroundColor": "#F1F1F4",
+                        "bottom": 0,
+                        "height": 4,
+                        "position": "absolute",
+                        "width": "100%",
+                      },
+                    ]
+                  }
+                />
+                <View
+                  numberOfSpaces={6}
+                  style={
+                    [
+                      {
+                        "width": 24,
+                      },
+                    ]
+                  }
+                />
+                <View
+                  accessibilityRole="tab"
+                  accessibilityState={
+                    {
+                      "busy": undefined,
+                      "checked": undefined,
+                      "disabled": undefined,
+                      "expanded": undefined,
+                      "selected": true,
+                    }
+                  }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
+                    }
+                  }
+                  accessible={false}
+                  collapsable={false}
+                  focusable={true}
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    {
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "maxWidth": 180,
+                      "opacity": 1,
+                      "userSelect": "auto",
+                    }
+                  }
+                >
+                  <View
+                    gap={2}
+                    style={
+                      [
+                        {
+                          "alignItems": "center",
+                          "flexDirection": "row",
+                          "flexGrow": 1,
+                          "gap": 8,
+                          "justifyContent": "center",
+                        },
+                      ]
+                    }
+                  >
+                    <Text
+                      isHover={false}
+                      isSelected={true}
+                      style={
+                        [
+                          {
+                            "color": "#eb0055",
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                            "textAlign": "center",
+                          },
+                        ]
+                      }
+                    >
+                      Offres disponibles
+                    </Text>
+                  </View>
+                  <View
+                    numberOfSpaces={2}
+                    style={
+                      [
+                        {
+                          "height": 8,
+                        },
+                      ]
+                    }
+                  />
+                  <View
+                    isSelected={true}
+                    style={
+                      [
+                        {
+                          "backgroundColor": "#eb0055",
+                          "borderRadius": 4,
+                          "bottom": 0,
+                          "height": 4,
+                          "width": "100%",
+                        },
+                      ]
+                    }
+                  />
+                </View>
+                <View
+                  accessibilityRole="tab"
+                  accessibilityState={
+                    {
+                      "busy": undefined,
+                      "checked": undefined,
+                      "disabled": undefined,
+                      "expanded": undefined,
+                      "selected": false,
+                    }
+                  }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
+                    }
+                  }
+                  accessible={false}
+                  collapsable={false}
+                  focusable={true}
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    {
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "maxWidth": 180,
+                      "opacity": 1,
+                      "userSelect": "auto",
+                    }
+                  }
+                >
+                  <View
+                    gap={2}
+                    style={
+                      [
+                        {
+                          "alignItems": "center",
+                          "flexDirection": "row",
+                          "flexGrow": 1,
+                          "gap": 8,
+                          "justifyContent": "center",
+                        },
+                      ]
+                    }
+                  >
+                    <Text
+                      isHover={false}
+                      isSelected={false}
+                      style={
+                        [
+                          {
+                            "color": "#696A6F",
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                            "textAlign": "center",
+                          },
+                        ]
+                      }
+                    >
+                      Infos pratiques
+                    </Text>
+                  </View>
+                  <View
+                    numberOfSpaces={2}
+                    style={
+                      [
+                        {
+                          "height": 8,
+                        },
+                      ]
+                    }
+                  />
+                  <View
+                    isSelected={false}
+                    style={
+                      [
+                        {
+                          "backgroundColor": "transparent",
+                          "borderRadius": 4,
+                          "bottom": 0,
+                          "height": 4,
+                          "width": "100%",
+                        },
+                      ]
+                    }
+                  />
+                </View>
+                <View
+                  numberOfSpaces={6}
+                  style={
+                    [
+                      {
+                        "width": 24,
+                      },
+                    ]
+                  }
+                />
+              </View>
+              <View
+                accessibilityRole="none"
+                style={
+                  [
+                    {
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                    },
+                  ]
+                }
+              >
+                <View
                   gap={2}
                   style={
                     [

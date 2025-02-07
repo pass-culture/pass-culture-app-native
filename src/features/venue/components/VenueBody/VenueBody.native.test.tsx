@@ -3,6 +3,7 @@ import React from 'react'
 import { Linking } from 'react-native'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
+import { CategoryIdEnum } from 'api/gen'
 import { gtlPlaylistAlgoliaSnapshot } from 'features/gtlPlaylist/fixtures/gtlPlaylistAlgoliaSnapshot'
 import * as useGTLPlaylists from 'features/gtlPlaylist/hooks/useGTLPlaylists'
 import { useVenueOffers } from 'features/venue/api/useVenueOffers'
@@ -37,6 +38,16 @@ const venueId = venueDataTest.id
 useRoute.mockImplementation(() => ({ params: { id: venueId } }))
 
 jest.mock('libs/firebase/analytics/analytics')
+
+const HEADLINE_OFFER_DATA = {
+  id: '1',
+  categoryId: CategoryIdEnum.LIVRE,
+  category: 'Livre',
+  offerTitle: 'One Piece Tome 108',
+  imageUrl: 'http://offer.jpg',
+  price: '7,20€',
+  distance: '500m',
+}
 
 describe('<VenueBody />', () => {
   beforeEach(() => {
@@ -79,7 +90,11 @@ describe('<VenueBody />', () => {
   })
 
   it('should display the "À la une" section if headlineData is present', async () => {
-    render(reactQueryProviderHOC(<VenueBody venue={venueDataTest} />))
+    render(
+      reactQueryProviderHOC(
+        <VenueBody venue={venueDataTest} headlineOfferData={HEADLINE_OFFER_DATA} />
+      )
+    )
 
     expect(screen.getByText('À la une')).toBeOnTheScreen()
   })

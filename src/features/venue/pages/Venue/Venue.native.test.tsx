@@ -132,6 +132,15 @@ describe('<Venue />', () => {
     expect(screen).toMatchSnapshot()
   })
 
+  it('should match snapshot with headline offer', async () => {
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_VENUE_HEADLINE_OFFER])
+    renderVenue(venueId)
+
+    await screen.findByText('À la une')
+
+    expect(screen).toMatchSnapshot()
+  })
+
   it('should display default background image when no banner for venue', async () => {
     renderVenue(venueId)
 
