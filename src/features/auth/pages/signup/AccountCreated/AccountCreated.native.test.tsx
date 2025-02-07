@@ -1,6 +1,6 @@
-import { BatchProfile } from '@batch.com/react-native-plugin'
 import React from 'react'
 
+import { BatchProfile } from '__mocks__/@batch.com/react-native-plugin'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { navigateFromRef } from 'features/navigation/navigationRef'

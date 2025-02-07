@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { BatchProfile } from '__mocks__/@batch.com/react-native-plugin'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { navigateFromRef } from 'features/navigation/navigationRef'
@@ -50,5 +51,13 @@ describe('<VerifyEligibility />', () => {
     await user.press(startButton)
 
     expect(navigate).toHaveBeenCalledWith('Stepper', { from: StepperOrigin.VERIFY_ELIGIBILITY })
+  })
+
+  it('should track Batch event when "Vérifier mon identité plus tard" button is clicked', async () => {
+    render(<VerifyEligibility />)
+
+    await user.press(await screen.findByLabelText('Vérifier mon identité plus tard'))
+
+    expect(BatchProfile.trackEvent).toHaveBeenCalledWith('has_validated_eligible_account')
   })
 })

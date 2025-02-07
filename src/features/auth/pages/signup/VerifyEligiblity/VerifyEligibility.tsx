@@ -5,6 +5,8 @@ import styled from 'styled-components/native'
 import { useShowForceUpdateWhenDisableActivation } from 'features/forceUpdate/helpers/useShowForceUpdateWhenDisableActivation'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
+import { useFunctionOnce } from 'libs/hooks'
+import { BatchEvent, BatchProfile } from 'libs/react-native-batch'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
@@ -14,6 +16,10 @@ import { Spacer, TypoDS } from 'ui/theme'
 
 export const VerifyEligibility: FunctionComponent = () => {
   useShowForceUpdateWhenDisableActivation()
+
+  const triggerBatch = useFunctionOnce(() =>
+    BatchProfile.trackEvent(BatchEvent.hasValidatedEligibleAccount)
+  )
 
   return (
     <GenericOfficialPage
@@ -31,6 +37,7 @@ export const VerifyEligibility: FunctionComponent = () => {
           icon={PlainArrowNext}
           wording="Vérifier mon identité plus tard"
           navigateTo={navigateToHomeConfig}
+          onBeforeNavigate={triggerBatch}
         />,
       ]}>
       <View>
