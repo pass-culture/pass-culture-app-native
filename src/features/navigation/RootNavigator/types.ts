@@ -86,6 +86,7 @@ export type TutorialRootStackParamList = {
   OnboardingAgeInformation: { age: 15 | 16 | 17 | 18 }
   OnboardingGeneralPublicWelcome: undefined
   OnboardingGeolocation: undefined
+  OnboardingNonEligible: undefined
   OnboardingWelcome: undefined
   ProfileTutorialAgeInformation: { age: 15 | 16 | 17 | 18 }
   ProfileTutorialAgeInformationCreditV3: undefined
@@ -110,22 +111,24 @@ export type TrustedDeviceRootStackParamList = {
 }
 
 export enum StepperOrigin {
-  HOME = 'home',
-  FAVORITE = 'favorite',
-  PROFILE = 'profile',
-  DEEPLINK = 'deeplink',
-  OFFER = 'offer',
-  TUTORIAL = 'Tutorial',
-  VERIFY_ELIGIBILITY = 'verifyEligibility',
-  LOGIN = 'login',
   BOOKING = 'booking',
   DEACTIVATE_PROFILE_SUCCESS = 'DeactivateProfileSuccess',
+  DEEPLINK = 'deeplink',
+  FAVORITE = 'favorite',
   FORGOTTEN_PASSWORD = 'forgottenPassword',
-  ONBOARDING = 'onboarding',
+  HOME = 'home',
+  LOGIN = 'login',
+  OFFER = 'offer',
+  ONBOARDING_GENERAL_PUBLIC_WELCOME = 'OnboardingGeneralPublicWelcome',
+  ONBOARDING_NON_ELIGIBLE = 'onboardingNonEligible',
+  ONBOARDING_WELCOME = 'onboardingWelcome',
+  PROFILE = 'profile',
   RESET_PASSWORD_EMAIL_SENT = 'resetPasswordEmailSent',
   SIGNUP = 'signup',
-  VALIDATE_EMAIL_CHANGE = 'validateEmailChange',
   THEMATIC_HOME = 'thematicHome',
+  TUTORIAL = 'Tutorial',
+  VALIDATE_EMAIL_CHANGE = 'validateEmailChange',
+  VERIFY_ELIGIBILITY = 'verifyEligibility',
 }
 
 export type SubscriptionRootStackParamList = {

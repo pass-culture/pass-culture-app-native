@@ -16,6 +16,7 @@ export function CheatcodesNavigationOnboarding(): React.JSX.Element {
 
   return (
     <CheatcodesTemplateScreen title="Onboarding 🛶">
+      <LinkToScreen screen="OnboardingNonEligible" />
       <LinkToScreen screen="OnboardingGeneralPublicWelcome" />
       <LinkToScreen screen="OnboardingWelcome" />
       <LinkToScreen screen="OnboardingGeolocation" />

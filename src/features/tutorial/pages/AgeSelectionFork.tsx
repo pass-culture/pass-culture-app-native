@@ -77,7 +77,7 @@ export const AgeSelectionFork: FunctionComponent<Props> = ({ route }: Props) => 
       startButtonTitle: 'J’ai ',
       age: '16 ans',
       endButtonTitle: ' ou moins',
-      navigateTo: navigateToHomeConfig,
+      navigateTo: { screen: 'OnboardingNonEligible' },
       onBeforeNavigate: onUnder17Press,
     },
     {

@@ -58,7 +58,7 @@ export const OnboardingWelcome: FunctionComponent = () => {
         <StyledAuthenticationButton
           type="login"
           onAdditionalPress={onLoginPress}
-          params={{ from: StepperOrigin.ONBOARDING }}
+          params={{ from: StepperOrigin.ONBOARDING_WELCOME }}
         />
         <Spacer.BottomScreen />
       </Content>
