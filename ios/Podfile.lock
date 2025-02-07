@@ -571,7 +571,8 @@ PODS:
   - react-native-appsflyer (6.14.3):
     - AppsFlyerFramework (= 6.14.3)
     - React
-  - react-native-blur (4.3.2):
+  - react-native-blur (4.4.1):
+    - RCT-Folly (= 2021.07.22.00)
     - React-Core
   - react-native-config (1.4.5):
     - react-native-config/App (= 1.4.5)
@@ -1228,7 +1229,7 @@ SPEC CHECKSUMS:
   React-jsinspector: 8e291ed0ab371314de269001d6b9b25db6aabf42
   React-logger: d4010de0b0564e63637ad08373bc73b5d919974b
   react-native-appsflyer: 37a0053df435bb76c330c5c15488dca29a3baa9b
-  react-native-blur: cfdad7b3c01d725ab62a8a729f42ea463998afa2
+  react-native-blur: caa61c22f4b7b0a031b861aada567c20e7027f97
   react-native-config: 5e2fe7217716b5472ed7901477620b1370335d67
   react-native-date-picker: 90d1d60802a20085125657940b944f2bb4e5c113
   react-native-detector: 751696a5534f6bbc11be87515cca3d8d32593d73
