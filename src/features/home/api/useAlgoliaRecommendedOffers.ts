@@ -4,7 +4,7 @@ import { useQuery } from 'react-query'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { fetchOffersByIds } from 'libs/algolia/fetchAlgolia/fetchOffersByIds'
 import { filterOfferHit, useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
-import { IncompleteSearchHit } from 'libs/algolia/types'
+import { AlgoliaHit } from 'libs/algolia/types'
 import { QueryKeys } from 'libs/queryKeys'
 import { getSimilarOrRecoOffersInOrder } from 'shared/offer/getSimilarOrRecoOffersInOrder'
 import { Offer } from 'shared/offer/types'
@@ -29,9 +29,9 @@ export const useAlgoliaRecommendedOffers = (
 
     if (shouldPreserveIdsOrder) {
       const offers = getSimilarOrRecoOffersInOrder(ids, hits)
-      return (offers as IncompleteSearchHit[]).filter(filterOfferHit).map(transformHits) as Offer[]
+      return (offers as AlgoliaHit[]).filter(filterOfferHit).map(transformHits) as Offer[]
     }
 
-    return (hits as IncompleteSearchHit[]).filter(filterOfferHit).map(transformHits) as Offer[]
+    return (hits as AlgoliaHit[]).filter(filterOfferHit).map(transformHits) as Offer[]
   }, [hits, shouldPreserveIdsOrder, ids, transformHits])
 }

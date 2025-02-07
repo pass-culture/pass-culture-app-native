@@ -89,9 +89,7 @@ export function getVenueList(hits: Offer[], userLocation: Position) {
 }
 
 export const filterVenueOfferHit = ({ hit, offerId, venueId }: FilterVenueOfferType): boolean =>
-  typeof hit.offer.subcategoryId !== 'undefined' &&
-  hit.objectID !== String(offerId) &&
-  hit.venue.id !== venueId
+  hit.objectID !== String(offerId) && hit.venue.id !== venueId
 
 export const useSearchVenueOffers = ({
   allocineId,

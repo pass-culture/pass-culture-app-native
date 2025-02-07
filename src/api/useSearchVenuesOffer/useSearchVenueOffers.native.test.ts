@@ -116,19 +116,6 @@ describe('useSearchVenueOffers', () => {
   })
 
   describe('filterVenueOfferHit', () => {
-    it('should return false when subcategory hit is undefined', () => {
-      const shouldFilterVenueOfferHit = filterVenueOfferHit({
-        hit: {
-          ...mockedAlgoliaResponse.hits[0],
-          offer: { ...mockedAlgoliaResponse.hits[0].offer, subcategoryId: undefined },
-        },
-        offerId: 102283,
-        venueId: 2,
-      })
-
-      expect(shouldFilterVenueOfferHit).toEqual(false)
-    })
-
     it('should return false when object id hit = offerId param', () => {
       const shouldFilterVenueOfferHit = filterVenueOfferHit({
         hit: toMutable(mockedAlgoliaResponse.hits)[0],

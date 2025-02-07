@@ -1,40 +1,8 @@
-import { RecommendationApiParams, SubcategoryIdEnum } from 'api/gen'
+import { RecommendationApiParams } from 'api/gen'
 import { PlaylistType } from 'features/offer/enums'
+import { AlgoliaHit } from 'libs/algolia/types'
 
-export type OfferLocation = {
-  lat?: number | null
-  lng?: number | null
-}
-
-export type HitOffer = {
-  dates?: number[]
-  isDigital?: boolean
-  isDuo?: boolean
-  isEducational?: boolean
-  name?: string
-  prices?: number[]
-  subcategoryId: SubcategoryIdEnum
-  thumbUrl?: string
-  releaseDate?: number | string
-  bookFormat?: string | null
-  artist?: string
-  publicationDate?: number
-}
-
-export interface Offer {
-  offer: HitOffer
-  objectID: string
-  _geoloc: OfferLocation
-  venue: {
-    departmentCode?: string
-    id?: number
-    name?: string
-    publicName?: string
-    address?: string
-    postalCode?: string
-    city?: string
-  }
-}
+export type Offer = AlgoliaHit
 
 export type SimilarOfferPlaylist = {
   type: PlaylistType
