@@ -16,7 +16,7 @@ import { ArrowAgain } from 'ui/svg/icons/ArrowAgain'
 import { TypoDS } from 'ui/theme'
 
 export const RemoteBanner = () => {
-  const { options } = useFeatureFlagOptions(RemoteStoreFeatureFlags.SHOW_FORCE_UPDATE_BANNER)
+  const { options } = useFeatureFlagOptions(RemoteStoreFeatureFlags.SHOW_REMOTE_BANNER)
   const validatedOptions = validateRemoteBanner(options)
   if (!validatedOptions) return null
   const { title, subtitle, redirectionUrl, redirectionType } = validatedOptions

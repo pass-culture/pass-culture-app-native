@@ -37,7 +37,7 @@ describe('<HomeBanner/>', () => {
 
   describe('when feature flag showForceUpdateBanner is enable', () => {
     beforeEach(() => {
-      setFeatureFlags([RemoteStoreFeatureFlags.SHOW_FORCE_UPDATE_BANNER], {
+      setFeatureFlags([RemoteStoreFeatureFlags.SHOW_REMOTE_BANNER], {
         title: 'title 1',
         subtitle: 'subtitle 1',
         redirectionUrl: 'https://www.test.fr',

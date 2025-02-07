@@ -20,14 +20,14 @@ const appStoreUrl = 'https://apps.apple.com/fr/app/pass-culture/id1557887412'
 
 describe('RemoteBanner', () => {
   it('matches the snapshot', () => {
-    setFeatureFlags([RemoteStoreFeatureFlags.SHOW_FORCE_UPDATE_BANNER], bannerExternalUrl)
+    setFeatureFlags([RemoteStoreFeatureFlags.SHOW_REMOTE_BANNER], bannerExternalUrl)
     render(<RemoteBanner />)
 
     expect(screen).toMatchSnapshot()
   })
 
   it('when redirection type is an expected value, banner should appear', async () => {
-    setFeatureFlags([RemoteStoreFeatureFlags.SHOW_FORCE_UPDATE_BANNER], bannerExternalUrl)
+    setFeatureFlags([RemoteStoreFeatureFlags.SHOW_REMOTE_BANNER], bannerExternalUrl)
     render(<RemoteBanner />)
 
     const banner = screen.queryByText('title 1')
@@ -36,7 +36,7 @@ describe('RemoteBanner', () => {
   })
 
   it('when redirection type is an unexpected value, banner should not appear', async () => {
-    setFeatureFlags([RemoteStoreFeatureFlags.SHOW_FORCE_UPDATE_BANNER], bannerBadType)
+    setFeatureFlags([RemoteStoreFeatureFlags.SHOW_REMOTE_BANNER], bannerBadType)
     render(<RemoteBanner />)
 
     const banner = screen.queryByText('title 1')
@@ -45,7 +45,7 @@ describe('RemoteBanner', () => {
   })
 
   it('when redirection is to app store, should navigate to store and a11y label should be correct', async () => {
-    setFeatureFlags([RemoteStoreFeatureFlags.SHOW_FORCE_UPDATE_BANNER], bannerAppStore)
+    setFeatureFlags([RemoteStoreFeatureFlags.SHOW_REMOTE_BANNER], bannerAppStore)
     render(<RemoteBanner />)
 
     const banner = await screen.findByText('title 1')
@@ -58,7 +58,7 @@ describe('RemoteBanner', () => {
   })
 
   it('when redirection is external, should navigate to url and a11y label should be correct', async () => {
-    setFeatureFlags([RemoteStoreFeatureFlags.SHOW_FORCE_UPDATE_BANNER], bannerExternalUrl)
+    setFeatureFlags([RemoteStoreFeatureFlags.SHOW_REMOTE_BANNER], bannerExternalUrl)
     render(<RemoteBanner />)
 
     const banner = await screen.findByText('title 1')
@@ -73,10 +73,7 @@ describe('RemoteBanner', () => {
   })
 
   it('when redirection is external, but url is an empty string, button should be disabled and there should not be an a11y label', async () => {
-    setFeatureFlags(
-      [RemoteStoreFeatureFlags.SHOW_FORCE_UPDATE_BANNER],
-      bannerExternalUrlWithMissingUrl
-    )
+    setFeatureFlags([RemoteStoreFeatureFlags.SHOW_REMOTE_BANNER], bannerExternalUrlWithMissingUrl)
     render(<RemoteBanner />)
 
     const banner = await screen.findByText('title 1')
