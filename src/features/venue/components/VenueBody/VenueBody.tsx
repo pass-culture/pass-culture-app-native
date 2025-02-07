@@ -4,19 +4,17 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { VenueResponse } from 'api/gen'
 import { GtlPlaylistData } from 'features/gtlPlaylist/types'
-import { offerToHeadlineOfferData } from 'features/headlineOffer/adapters/offerToHeadlineOfferData'
 import { HeadlineOffer } from 'features/headlineOffer/components/HeadlineOffer/HeadlineOffer'
+import { HeadlineOfferData } from 'features/headlineOffer/type'
 import { PracticalInformation } from 'features/venue/components/PracticalInformation/PracticalInformation'
 import { TabLayout } from 'features/venue/components/TabLayout/TabLayout'
 import { VenueOffers } from 'features/venue/components/VenueOffers/VenueOffers'
 import type { VenueOffersArtists, VenueOffers as VenueOffersType } from 'features/venue/types'
 import { Tab } from 'features/venue/types'
 import { analytics } from 'libs/analytics/provider'
-import { useLocation } from 'libs/location'
 import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
-import { offersFixture } from 'shared/offer/offer.fixture'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { TypoDS, getSpacing } from 'ui/theme'
@@ -27,6 +25,7 @@ interface Props {
   venueArtists?: VenueOffersArtists
   venueOffers?: VenueOffersType
   playlists?: GtlPlaylistData[]
+  headlineOfferData?: HeadlineOfferData | null
 }
 
 export const VenueBody: FunctionComponent<Props> = ({
@@ -34,8 +33,8 @@ export const VenueBody: FunctionComponent<Props> = ({
   venueArtists,
   venueOffers,
   playlists,
+  headlineOfferData,
 }) => {
-  const { userLocation } = useLocation()
   const currency = useGetCurrencyToDisplay()
   const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
 
@@ -46,25 +45,13 @@ export const VenueBody: FunctionComponent<Props> = ({
 
   const SectionContainer = isLargeScreen ? View : SectionWithDivider
 
-  const headlineData = offerToHeadlineOfferData({
-    // Fake data to remove
-    offer: offersFixture[0],
-    transformParameters: {
-      currency,
-      euroToPacificFrancRate,
-      mapping,
-      labelMapping,
-      userLocation,
-    },
-  })
-
   const tabPanels = {
     [Tab.OFFERS]: (
       <React.Fragment>
-        {headlineData ? (
+        {headlineOfferData ? (
           <MarginContainer gap={2}>
             <TypoDS.Title3 {...getHeadingAttrs(2)}>À la une</TypoDS.Title3>
-            <HeadlineOffer {...headlineData} />
+            <HeadlineOffer {...headlineOfferData} />
           </MarginContainer>
         ) : null}
         <VenueOffers

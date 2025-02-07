@@ -5,6 +5,7 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { VenueTypeCodeKey } from 'api/gen'
 import { useGTLPlaylists } from 'features/gtlPlaylist/hooks/useGTLPlaylists'
+import { offerToHeadlineOfferData } from 'features/headlineOffer/adapters/offerToHeadlineOfferData'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { OfferCTAProvider } from 'features/offer/components/OfferContent/OfferCTAProvider'
 import { useVenue } from 'features/venue/api/useVenue'
@@ -17,6 +18,13 @@ import { VenueMessagingApps } from 'features/venue/components/VenueMessagingApps
 import { VenueThematicSection } from 'features/venue/components/VenueThematicSection/VenueThematicSection'
 import { VenueTopComponent } from 'features/venue/components/VenueTopComponent/VenueTopComponent'
 import { analytics } from 'libs/analytics/provider'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { useLocation } from 'libs/location'
+import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
+import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
+import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
+import { offersFixture } from 'shared/offer/offer.fixture'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { getSpacing } from 'ui/theme'
@@ -28,6 +36,29 @@ export const Venue: FunctionComponent = () => {
   const { data: venueOffers } = useVenueOffers(venue)
   const { data: venueArtists } = useVenueOffersArtists(venue)
   const { isDesktopViewport } = useTheme()
+
+  const { userLocation } = useLocation()
+  const currency = useGetCurrencyToDisplay()
+  const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
+  const mapping = useCategoryIdMapping()
+  const labelMapping = useCategoryHomeLabelMapping()
+  const isVenueHeadlineOfferActive = useFeatureFlag(
+    RemoteStoreFeatureFlags.WIP_VENUE_HEADLINE_OFFER
+  )
+
+  const headlineOfferData = isVenueHeadlineOfferActive
+    ? offerToHeadlineOfferData({
+        // Fake data to remove
+        offer: offersFixture[0],
+        transformParameters: {
+          currency,
+          euroToPacificFrancRate,
+          mapping,
+          labelMapping,
+          userLocation,
+        },
+      })
+    : null
 
   useEffect(() => {
     if ((params.from === 'deeplink' || params.from === 'venueMap') && venue?.id) {
@@ -50,6 +81,7 @@ export const Venue: FunctionComponent = () => {
               playlists={gtlPlaylists}
               venueOffers={venueOffers}
               venueArtists={venueArtists}
+              headlineOfferData={headlineOfferData}
             />
 
             <VenueThematicSection venue={venue} />
