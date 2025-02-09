@@ -1,6 +1,6 @@
 import { InferType, object, string } from 'yup'
 
-const remoteBannerSchema = object({
+export const remoteBannerSchema = object({
   title: string().required(),
   subtitleWeb: string().nullable(),
   subtitleMobile: string().nullable(),
