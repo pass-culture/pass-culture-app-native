@@ -31,6 +31,8 @@ Finally, open the Android Virtual Devices Manager and select (or create) a Virtu
   keyPassword=
   ```
 
+- Do the same for staging and production.
+
 ### Install
 
 In the `.env.local` file, add
