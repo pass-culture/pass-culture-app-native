@@ -18,7 +18,7 @@ import { IOScrollView as IntersectionObserverScrollView } from 'react-native-int
 import { useQueryClient } from 'react-query'
 import styled from 'styled-components/native'
 
-import { OfferImageResponse, OfferResponseV2 } from 'api/gen'
+import { OfferResponseV2 } from 'api/gen'
 import { ChronicleCardData } from 'features/chronicle/type'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { OfferBody } from 'features/offer/components/OfferBody/OfferBody'
@@ -38,7 +38,8 @@ import { analytics } from 'libs/analytics/provider'
 import { useRemoteConfigContext } from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { useFunctionOnce } from 'libs/hooks'
 import { QueryKeys } from 'libs/queryKeys'
-import { getImagesUrls } from 'shared/getImagesUrls/getImagesUrls'
+import { getImagesUrlsWithCredit } from 'shared/getImagesUrlsWithCredit/getImagesUrlsWithCredit'
+import { ImageWithCredit } from 'shared/types'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { AnchorProvider } from 'ui/components/anchor/AnchorContext'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
@@ -84,8 +85,9 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
     useOfferBatchTracking(subcategory.id)
 
   // We want to show images from offer when it's loaded. Not the one preloaded in query cache...
-  const offerImages = useMemo(
-    () => (offer.metadata && offer.images ? getImagesUrls<OfferImageResponse>(offer.images) : []),
+  const offerImages: ImageWithCredit[] = useMemo(
+    () =>
+      offer.metadata && offer.images ? getImagesUrlsWithCredit<ImageWithCredit>(offer.images) : [],
     [offer]
   )
 
@@ -155,11 +157,12 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
           onScroll={handleScroll}>
           <BodyWrapper>
             <OfferImageContainer
-              imageUrls={offerImages}
+              images={offerImages}
               categoryId={subcategory.categoryId}
               onPress={onOfferPreviewPress}
               placeholderImage={placeholderImage}
             />
+
             <OfferBody
               offer={offer}
               subcategory={subcategory}

@@ -1,7 +1,7 @@
 import React from 'react'
 import { SharedValue } from 'react-native-reanimated'
 
-import { render, screen, userEvent, act } from 'tests/utils/web'
+import { act, render, screen, userEvent } from 'tests/utils/web'
 
 import { OfferImageCarousel } from './OfferImageCarousel'
 
@@ -17,7 +17,7 @@ describe('OfferImageCarousel', () => {
     render(
       <OfferImageCarousel
         progressValue={1 as unknown as SharedValue<number>}
-        offerImages={['https://image1.jpg']}
+        offerImages={[{ url: 'https://image1.jpg' }]}
         onItemPress={jest.fn()}
         onLoad={mockOnload}
       />
@@ -36,7 +36,11 @@ describe('OfferImageCarousel', () => {
     render(
       <OfferImageCarousel
         progressValue={1 as unknown as SharedValue<number>}
-        offerImages={['https://image1.jpg', 'https://image2.jpg', 'https://image3.jpg']}
+        offerImages={[
+          { url: 'https://image1.jpg' },
+          { url: 'https://image2.jpg' },
+          { url: 'https://image3.jpg' },
+        ]}
         onItemPress={jest.fn()}
         onLoad={mockOnload}
       />
@@ -55,7 +59,11 @@ describe('OfferImageCarousel', () => {
     render(
       <OfferImageCarousel
         progressValue={1 as unknown as SharedValue<number>}
-        offerImages={['https://image1.jpg', 'https://image2.jpg', 'https://image3.jpg']}
+        offerImages={[
+          { url: 'https://image1.jpg' },
+          { url: 'https://image2.jpg' },
+          { url: 'https://image3.jpg' },
+        ]}
         onItemPress={mockOnItemPress}
         onLoad={jest.fn()}
       />

@@ -6,6 +6,7 @@ import {
   offerImageContainerMarginTop,
   useOfferImageContainerDimensions,
 } from 'features/offer/helpers/useOfferImageContainerDimensions'
+import { ImageWithCredit } from 'shared/types'
 import { getSpacing } from 'ui/theme'
 
 import { OfferImageHeaderWrapper } from './OfferImageHeaderWrapper'
@@ -13,13 +14,13 @@ import { OfferImageRenderer } from './OfferImageRenderer'
 
 type Props = {
   categoryId: CategoryIdEnum | null
-  imageUrls?: string[]
+  images?: ImageWithCredit[]
   onPress?: (defaultIndex?: number) => void
   placeholderImage?: string
 }
 
 export const OfferImageContainer: FunctionComponent<Props> = ({
-  imageUrls = [],
+  images = [],
   onPress,
   categoryId,
   placeholderImage,
@@ -34,7 +35,7 @@ export const OfferImageContainer: FunctionComponent<Props> = ({
       imageUrl={placeholderImage}
       paddingTop={getSpacing(offerImageContainerMarginTop)}>
       <OfferImageRenderer
-        offerImages={imageUrls}
+        offerImages={images}
         placeholderImage={placeholderImage}
         progressValue={progressValue}
         onPress={onPress}
