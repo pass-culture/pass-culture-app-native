@@ -1,5 +1,5 @@
 import { useMemo } from 'react'
-import { useQuery } from 'react-query'
+import { UseQueryOptions, useQuery } from 'react-query'
 
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { fetchOffersByIds } from 'libs/algolia/fetchAlgolia/fetchOffersByIds'
@@ -11,13 +11,14 @@ import { Offer } from 'shared/offer/types'
 
 export const useAlgoliaSimilarOffers = (
   ids: string[],
-  shouldPreserveIdsOrder?: boolean
+  shouldPreserveIdsOrder?: boolean,
+  queryKey?: UseQueryOptions['queryKey']
 ): Offer[] | undefined => {
   const isUserUnderage = useIsUserUnderage()
   const transformHits = useTransformOfferHits()
 
   const { data: hits } = useQuery(
-    [QueryKeys.ALGOLIA_SIMILAR_OFFERS, JSON.stringify(ids)],
+    queryKey ?? [QueryKeys.ALGOLIA_SIMILAR_OFFERS, JSON.stringify(ids)],
     () => fetchOffersByIds({ objectIds: ids, isUserUnderage }),
     { enabled: ids.length > 0 }
   )
