@@ -5,6 +5,8 @@ import { useVenueOffers } from 'features/venue/api/useVenueOffers'
 import * as useVenueSearchParameters from 'features/venue/helpers/useVenueSearchParameters'
 import mockVenueResponse from 'fixtures/venueResponse'
 import { fetchMultipleOffers } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/fetchMultipleOffers'
+import { transformOfferHit, filterOfferHit } from 'libs/algolia/fetchAlgolia/transformOfferHit'
+import { AlgoliaOffer, HitOffer } from 'libs/algolia/types'
 import { LocationMode, Position } from 'libs/location/types'
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -166,11 +168,88 @@ const EXPECTED_CALL_PARAM = {
 }
 
 describe('useVenueOffers', () => {
-  it('should call multiple fetch offers algolia request', async () => {
-    renderHook(() => useVenueOffers(mockVenueResponse), {
+  it('should call multiple fetch offers algolia request and return correct response object', async () => {
+    const FETCH_MULTIPLE_OFFERS_RESPONSE = [
+      {
+        hits: [
+          {
+            offer: {
+              dates: [],
+              isDigital: false,
+              isDuo: false,
+              name: 'I want something more',
+              prices: [28.0],
+              subcategoryId: SubcategoryIdEnum.CONCERT,
+              thumbUrl:
+                'https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDZQ',
+              artist: 'Céline Dion',
+            },
+            _geoloc: { lat: 4.90339, lng: -52.31663 },
+            objectID: '102310',
+            venue: {
+              id: 4,
+              name: 'Lieu 4',
+              publicName: 'Lieu 4',
+              address: '4 rue de la paix',
+              postalCode: '75000',
+              city: 'Paris',
+            },
+          },
+        ],
+        nbHits: 1,
+      },
+      {
+        hits: [],
+        nbHits: 0,
+      },
+      {
+        hits: [
+          {
+            offer: {
+              dates: [],
+              isDigital: false,
+              isDuo: false,
+              name: 'Naruto T3',
+              prices: [28.0],
+              subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
+              thumbUrl:
+                'https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDZQ',
+              artist: 'Masashi Kishimoto',
+            },
+            _geoloc: { lat: 4.90339, lng: -52.31663 },
+            objectID: '102310',
+            venue: {
+              id: 4,
+              name: 'Lieu 4',
+              publicName: 'Lieu 4',
+              address: '4 rue de la paix',
+              postalCode: '75000',
+              city: 'Paris',
+            },
+          },
+        ],
+        nbHits: 1,
+      },
+    ]
+    mockFetchMultipleOffers.mockResolvedValueOnce(FETCH_MULTIPLE_OFFERS_RESPONSE)
+
+    const { result } = renderHook(() => useVenueOffers(mockVenueResponse), {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
     await waitFor(() => expect(mockFetchMultipleOffers).toHaveBeenCalledWith(EXPECTED_CALL_PARAM))
+
+    expect(result.current.data?.hits).toMatchObject(
+      FETCH_MULTIPLE_OFFERS_RESPONSE.slice(0, 2)
+        .flatMap((result) => result?.hits)
+        .filter(filterOfferHit)
+        .map(transformOfferHit())
+    )
+
+    const headlineOffer = FETCH_MULTIPLE_OFFERS_RESPONSE.at(-1)?.hits[0]
+
+    expect(result.current.data?.headlineOffer).toMatchObject(
+      transformOfferHit()(headlineOffer ?? ({} as AlgoliaOffer<HitOffer>))
+    )
   })
 
   it('should return empty artists when there are no offers', async () => {

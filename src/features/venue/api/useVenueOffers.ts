@@ -63,6 +63,8 @@ export const useVenueOffers = (venue?: VenueResponse): UseQueryResult<VenueOffer
           .map(transformHits)
 
         const headlineOffer = headlineOfferResults?.hits[0]
+          ? transformHits(headlineOfferResults?.hits[0])
+          : undefined
 
         return {
           hits: uniqBy(hits, 'objectID'),
