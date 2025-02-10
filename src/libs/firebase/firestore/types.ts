@@ -75,6 +75,7 @@ export enum RemoteStoreFeatureFlags {
   WIP_ENABLE_GOOGLE_SSO = 'wipEnableGoogleSSO',
   WIP_ENABLE_NEW_XP_CINE_FROM_VENUE = 'wipEnableNewXpCineFromVenue',
   WIP_FLING_BOTTOM_SHEET_NAVIGATE_TO_VENUE = 'wipFlingBottomSheetNavigateToVenue',
+  WIP_IS_OPEN_TO_PUBLIC = 'wipIsOpenToPublic',
   WIP_NEW_BOOKING_PAGE = 'wipNewBookingPage',
   WIP_NEW_HOME_MODULE_SIZES = 'wipNewHomeModuleSizes',
   WIP_OFFER_CHRONICLE_SECTION = 'wipOfferChronicleSection',
