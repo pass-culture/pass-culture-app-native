@@ -5,7 +5,7 @@ import { EligibleUserAgeSelection } from 'features/tutorial/pages/EligibleUserAg
 import { OnboardingAgeInformation } from 'features/tutorial/pages/onboarding/OnboardingAgeInformation'
 import { OnboardingGeneralPublicWelcome } from 'features/tutorial/pages/onboarding/OnboardingGeneralPublicWelcome'
 import { OnboardingGeolocation } from 'features/tutorial/pages/onboarding/OnboardingGeolocation'
-import { OnboardingNonEligible } from 'features/tutorial/pages/onboarding/OnboardingNonEligible'
+import { OnboardingNotEligible } from 'features/tutorial/pages/onboarding/OnboardingNotEligible'
 import { OnboardingWelcome } from 'features/tutorial/pages/onboarding/OnboardingWelcome'
 import { ProfileTutorialAgeInformation } from 'features/tutorial/pages/profileTutorial/ProfileTutorialAgeInformation'
 import { ProfileTutorialAgeInformationCreditV3 } from 'features/tutorial/pages/profileTutorial/ProfileTutorialAgeInformationCreditV3'
@@ -48,8 +48,8 @@ export const tutorialRoutes: GenericRoute<TutorialRootStackParamList>[] = [
     options: { title: 'Bienvenue' },
   },
   {
-    name: 'OnboardingNonEligible',
-    component: OnboardingNonEligible,
+    name: 'OnboardingNotEligible',
+    component: OnboardingNotEligible,
     path: 'non-eligible',
     options: { title: 'Encore un peu de patience' },
   },

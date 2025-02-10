@@ -11,7 +11,7 @@ import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouch
 import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
 import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 
-export const OnboardingNonEligible = () => {
+export const OnboardingNotEligible = () => {
   const { reset } = useNavigation<UseNavigationType>()
   const navigateToHomeWithReset = () => {
     reset({ index: 0, routes: [{ name: homeNavConfig[0] }] })
@@ -35,7 +35,7 @@ export const OnboardingNonEligible = () => {
           wording="Créer un compte"
           navigateTo={{
             screen: 'SignupForm',
-            params: { from: StepperOrigin.ONBOARDING_NON_ELIGIBLE },
+            params: { from: StepperOrigin.ONBOARDING_NOT_ELIGIBLE },
           }}
         />
         <Spacer.Column numberOfSpaces={4} />

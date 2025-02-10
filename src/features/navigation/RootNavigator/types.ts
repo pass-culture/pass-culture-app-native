@@ -86,7 +86,7 @@ export type TutorialRootStackParamList = {
   OnboardingAgeInformation: { age: 15 | 16 | 17 | 18 }
   OnboardingGeneralPublicWelcome: undefined
   OnboardingGeolocation: undefined
-  OnboardingNonEligible: undefined
+  OnboardingNotEligible: undefined
   OnboardingWelcome: undefined
   ProfileTutorialAgeInformation: { age: 15 | 16 | 17 | 18 }
   ProfileTutorialAgeInformationCreditV3: undefined
@@ -120,7 +120,7 @@ export enum StepperOrigin {
   LOGIN = 'login',
   OFFER = 'offer',
   ONBOARDING_GENERAL_PUBLIC_WELCOME = 'OnboardingGeneralPublicWelcome',
-  ONBOARDING_NON_ELIGIBLE = 'onboardingNonEligible',
+  ONBOARDING_NOT_ELIGIBLE = 'onboardingNotEligible',
   ONBOARDING_WELCOME = 'onboardingWelcome',
   PROFILE = 'profile',
   RESET_PASSWORD_EMAIL_SENT = 'resetPasswordEmailSent',

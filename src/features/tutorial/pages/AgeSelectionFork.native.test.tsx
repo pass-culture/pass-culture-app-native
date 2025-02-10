@@ -147,13 +147,13 @@ describe('AgeSelectionFork', () => {
         expect(screen).toMatchSnapshot()
       })
 
-      it('should navigate to OnboardingNonEligible page when pressing "J’ai 16 ans ou moins"', async () => {
+      it('should navigate to OnboardingNotEligible page when pressing "J’ai 16 ans ou moins"', async () => {
         renderAgeSelectionFork({ type: TutorialTypes.ONBOARDING })
 
         const button = screen.getByLabelText('J’ai 16 ans ou moins')
         await user.press(button)
 
-        expect(navigate).toHaveBeenCalledWith('OnboardingNonEligible', {
+        expect(navigate).toHaveBeenCalledWith('OnboardingNotEligible', {
           type: TutorialTypes.ONBOARDING,
         })
       })
