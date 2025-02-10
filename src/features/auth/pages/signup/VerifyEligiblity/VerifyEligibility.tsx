@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, useEffect } from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -15,6 +15,10 @@ import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
 import { Spacer, TypoDS } from 'ui/theme'
 
 export const VerifyEligibility: FunctionComponent = () => {
+  useEffect(() => {
+    BatchProfile.trackEvent(BatchEvent.screenViewVerifyEligibility)
+  }, [])
+
   useShowForceUpdateWhenDisableActivation()
 
   const triggerBatch = useFunctionOnce(() =>

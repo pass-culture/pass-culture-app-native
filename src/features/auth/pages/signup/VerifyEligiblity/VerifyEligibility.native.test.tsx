@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { BatchProfile } from '__mocks__/@batch.com/react-native-plugin'
+import { BatchEvent, BatchProfile } from '__mocks__/@batch.com/react-native-plugin'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { navigateFromRef } from 'features/navigation/navigationRef'
@@ -59,5 +59,13 @@ describe('<VerifyEligibility />', () => {
     await user.press(await screen.findByLabelText('Vérifier mon identité plus tard'))
 
     expect(BatchProfile.trackEvent).toHaveBeenCalledWith('has_validated_eligible_account')
+  })
+
+  it('should track Batch event when the screen is mounted', async () => {
+    render(<VerifyEligibility />)
+
+    await screen.findByText('Vérifie ton identité pour débloquer ton crédit')
+
+    expect(BatchProfile.trackEvent).toHaveBeenCalledWith(BatchEvent.screenViewVerifyEligibility)
   })
 })

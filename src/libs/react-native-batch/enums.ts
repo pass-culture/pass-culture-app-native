@@ -12,6 +12,8 @@ export enum BatchEvent {
   hasValidatedAccount = 'has_validated_account',
   hasValidatedEligibleAccount = 'has_validated_eligible_account',
   hasValidatedSubscription = 'has_validated_subscription',
+  screenViewAccountCreated = 'screen_view_account_created',
   screenViewComeBackLater = 'screen_view_come_back_later',
   screenViewExpiredOrLostId = 'screen_view_expired_or_lost_id',
+  screenViewVerifyEligibility = 'screen_view_verify_eligiblity',
 }
