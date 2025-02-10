@@ -11729,6 +11729,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/node@npm:18":
+  version: 18.18.0
+  resolution: "@types/node@npm:18.18.0"
+  checksum: 61bcffa28eb713e7a4c66fd369df603369c3f834a783faeced95fe3e78903faa25f1a704d49e054f41d71b7915eeb066d10a37cc699421fcf5dd267f96ad5808
+  languageName: node
+  linkType: hard
+
 "@types/node@npm:>=12.12.47, @types/node@npm:>=13.7.0":
   version: 17.0.38
   resolution: "@types/node@npm:17.0.38"
@@ -11749,15 +11756,6 @@ __metadata:
   dependencies:
     undici-types: ~5.26.4
   checksum: 5e9eda1ac8c6cc6bcd1063903ae195eaede9aad1bdad00408a919409cfbcdd2d6535aa3d50346f0d385528f9e03dafc7d1b3bad25aedb1dcd79a6ad39d06c35d
-  languageName: node
-  linkType: hard
-
-"@types/node@npm:^22.13.1":
-  version: 22.13.1
-  resolution: "@types/node@npm:22.13.1"
-  dependencies:
-    undici-types: ~6.20.0
-  checksum: a0759e4bedc3fe892c3ddef5fa9cb5251f9c5b24defc1a389438ea3b5b727c481c1a9bc94bae4ecc7426c89ad293cd66633d163da1ab14d74d358cbec9e1ce31
   languageName: node
   linkType: hard
 
@@ -12944,7 +12942,7 @@ __metadata:
     "@types/jest-axe": ^3.5.9
     "@types/lodash": ^4.14.182
     "@types/mailparser": ^3.4.0
-    "@types/node": ^22.13.1
+    "@types/node": 18
     "@types/react": 18.2.21
     "@types/react-dom": ^18.0.0
     "@types/react-helmet": ^6.1.2
@@ -13106,7 +13104,7 @@ __metadata:
     timezone-mock: ^1.2.1
     ts-node: ^10.8.0
     type-fest: ^4.15.0
-    typescript: ^5.7.3
+    typescript: 5.0.4
     url-loader: ^4.1.1
     uuid: ^8.3.2
     vite: ^5.3.1
@@ -33262,23 +33260,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@npm:^5.7.3":
-  version: 5.7.3
-  resolution: "typescript@npm:5.7.3"
+"typescript@npm:5.0.4":
+  version: 5.0.4
+  resolution: "typescript@npm:5.0.4"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: 6c38b1e989918e576f0307e6ee013522ea480dfce5f3ca85c9b2d8adb1edeffd37f4f30cd68de0c38a44563d12ba922bdb7e36aa2dac9c51de5d561e6e9a2e9c
+  checksum: 82b94da3f4604a8946da585f7d6c3025fff8410779e5bde2855ab130d05e4fd08938b9e593b6ebed165bda6ad9292b230984f10952cf82f0a0ca07bbeaa08172
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@^5.7.3#~builtin<compat/typescript>":
-  version: 5.7.3
-  resolution: "typescript@patch:typescript@npm%3A5.7.3#~builtin<compat/typescript>::version=5.7.3&hash=29ae49"
+"typescript@patch:typescript@5.0.4#~builtin<compat/typescript>":
+  version: 5.0.4
+  resolution: "typescript@patch:typescript@npm%3A5.0.4#~builtin<compat/typescript>::version=5.0.4&hash=b5f058"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: 633cd749d6cd7bc842c6b6245847173bba99742a60776fae3c0fbcc0d1733cd51a733995e5f4dadd8afb0e64e57d3c7dbbeae953a072ee303940eca69e22f311
+  checksum: d26b6ba97b6d163c55dbdffd9bbb4c211667ebebc743accfeb2c8c0154aace7afd097b51165a72a5bad2cf65a4612259344ff60f8e642362aa1695c760d303ac
   languageName: node
   linkType: hard
 
@@ -33352,13 +33350,6 @@ __metadata:
   version: 5.26.5
   resolution: "undici-types@npm:5.26.5"
   checksum: 3192ef6f3fd5df652f2dc1cd782b49d6ff14dc98e5dced492aa8a8c65425227da5da6aafe22523c67f035a272c599bb89cfe803c1db6311e44bed3042fc25487
-  languageName: node
-  linkType: hard
-
-"undici-types@npm:~6.20.0":
-  version: 6.20.0
-  resolution: "undici-types@npm:6.20.0"
-  checksum: b7bc50f012dc6afbcce56c9fd62d7e86b20a62ff21f12b7b5cbf1973b9578d90f22a9c7fe50e638e96905d33893bf2f9f16d98929c4673c2480de05c6c96ea8b
   languageName: node
   linkType: hard
 
