@@ -6,9 +6,15 @@
 
 If you encounter errors during this setup, refer to the Troubleshooting section at the end of this document.
 
-First download Android Studio and open [the folder `android`](./android/) in Android Studio.
+First download Android Studio :
 
-Then open the Android Virtual Devices Manager and select (or create) a Virtual Device with the android version you want to run.
+```sh
+brew install --cask android-studio
+```
+
+Then open [the folder `android`](./android/) in Android Studio.
+
+Finally, open the Android Virtual Devices Manager and select (or create) a Virtual Device with the android version you want to run.
 
 ### ✍️ Code signing
 
