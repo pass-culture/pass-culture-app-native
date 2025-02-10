@@ -34,6 +34,8 @@ export default ({ mode }) => {
   const isDevMode = mode === 'development'
   const isProdMode = mode === 'production'
   const env = loadEnv(isDevMode ? 'testing' : mode, process.cwd(), '')
+  const authToken = env.SENTRY_AUTH_TOKEN ?? process.env.SENTRY_AUTH_TOKEN // First case is for local dev, second for CI
+
   const proxyConfig = {
     host: true, // This allows VSCode live share port forwarding
     proxy: {
@@ -89,27 +91,29 @@ export default ({ mode }) => {
         },
       }),
       // Put the Sentry vite plugin after all other plugins as specified in plugin's documentation
-      sentryVitePlugin({
-        url: 'https://sentry.passculture.team/',
-        org: 'sentry',
-        project: 'application-native',
-        authToken: env.SENTRY_AUTH_TOKEN ?? process.env.SENTRY_AUTH_TOKEN, // First case is for local dev, second for CI
-        release: {
-          uploadLegacySourcemaps: {
-            paths: ['./dist'],
-            ignore: ['node_modules'],
+      authToken ??
+        sentryVitePlugin({
+          url: 'https://sentry.passculture.team/',
+          org: 'sentry',
+          project: 'application-native',
+          disable: !authToken,
+          authToken,
+          release: {
+            uploadLegacySourcemaps: {
+              paths: ['./dist'],
+              ignore: ['node_modules'],
+            },
+            finalize: env.ENV !== 'testing',
+            cleanArtifacts: false,
+            name: `${packageJson.version}-web`,
+            dist: `${packageJson.build}-web-${commitHash}`,
+            deploy: {
+              env: isDevMode ? 'development' : env.ENV,
+              name: isDevMode ? 'development' : env.ENV,
+              url: env.APP_PUBLIC_URL,
+            },
           },
-          finalize: env.ENV !== 'testing',
-          cleanArtifacts: false,
-          name: `${packageJson.version}-web`,
-          dist: `${packageJson.build}-web-${commitHash}`,
-          deploy: {
-            env: isDevMode ? 'development' : env.ENV,
-            name: isDevMode ? 'development' : env.ENV,
-            url: env.APP_PUBLIC_URL,
-          },
-        },
-      }),
+        }),
     ],
     resolve: {
       extensions: allExtensions,
