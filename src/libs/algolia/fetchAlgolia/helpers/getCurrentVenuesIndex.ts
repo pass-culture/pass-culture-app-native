@@ -4,15 +4,15 @@ import { Position } from 'libs/location'
 
 export function getCurrentVenuesIndex({
   selectedLocationMode,
-  userLocation,
+  geolocPosition,
 }: {
   selectedLocationMode: LocationMode
-  userLocation: Position
+  geolocPosition: Position
 }) {
   const venuesIndexSearch = env.ALGOLIA_VENUES_INDEX_PLAYLIST_SEARCH
   const venuesIndexSearchNewest = env.ALGOLIA_VENUES_INDEX_PLAYLIST_SEARCH_NEWEST
 
-  if (selectedLocationMode === LocationMode.EVERYWHERE && !userLocation) {
+  if (selectedLocationMode === LocationMode.EVERYWHERE && !geolocPosition) {
     return venuesIndexSearchNewest
   }
 

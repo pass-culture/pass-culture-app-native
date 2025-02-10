@@ -44,7 +44,7 @@ export const fetchSearchResults = async ({
 }: FetchOfferAndVenuesArgs) => {
   const currentVenuesIndex = getCurrentVenuesIndex({
     selectedLocationMode: buildLocationParameterParams.selectedLocationMode,
-    userLocation: buildLocationParameterParams.userLocation,
+    geolocPosition: buildLocationParameterParams.geolocPosition,
   })
 
   const queries = [
