@@ -78,6 +78,7 @@ export enum RemoteStoreFeatureFlags {
   WIP_ENABLE_GTL_PLAYLISTS_IN_BOOKSTORE_VENUES = 'wipEnableGTLPlaylistsInBookstoreVenues',
   WIP_ENABLE_NEW_XP_CINE_FROM_VENUE = 'wipEnableNewXpCineFromVenue',
   WIP_FLING_BOTTOM_SHEET_NAVIGATE_TO_VENUE = 'wipFlingBottomSheetNavigateToVenue',
+  WIP_NEW_BOOKING_PAGE = 'wipNewBookingPage',
   WIP_NEW_HOME_MODULE_SIZES = 'wipNewHomeModuleSizes',
   WIP_OFFER_CHRONICLE_SECTION = 'wipOfferChronicleSection',
   WIP_OFFERS_IN_BOTTOM_SHEET = 'wipOffersInBottomSheet',
