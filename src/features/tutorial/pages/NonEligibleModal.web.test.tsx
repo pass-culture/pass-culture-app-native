@@ -1,8 +1,8 @@
 import React from 'react'
 
-import { mockSettings } from 'features/auth/context/mockSettings'
 import { NonEligible, TutorialTypes } from 'features/tutorial/enums'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { mockSettings } from 'tests/mockSettings'
 import { checkAccessibilityFor, render } from 'tests/utils/web'
 
 import { NonEligibleModal } from './NonEligibleModal'

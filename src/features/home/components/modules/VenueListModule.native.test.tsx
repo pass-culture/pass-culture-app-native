@@ -1,7 +1,6 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { mockSettings } from 'features/auth/context/mockSettings'
 import { VenueListModule } from 'features/home/components/modules/VenueListModule'
 import { selectedVenueActions } from 'features/venueMap/store/selectedVenueStore'
 import { venuesSearchFixture } from 'libs/algolia/fixtures/venuesSearchFixture'
@@ -10,6 +9,7 @@ import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
+import { mockSettings } from 'tests/mockSettings'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 import * as useModalAPI from 'ui/components/modals/useModal'
 

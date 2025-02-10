@@ -1,10 +1,10 @@
 import React from 'react'
 
-import { mockSettings } from 'features/auth/context/mockSettings'
 import { initialSearchState } from 'features/search/context/reducer'
 import { FilterBehaviour } from 'features/search/enums'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { mockSettings } from 'tests/mockSettings'
 import { act, checkAccessibilityFor, render, screen } from 'tests/utils/web'
 
 import { PriceModal } from './PriceModal'

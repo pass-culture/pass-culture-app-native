@@ -2,10 +2,10 @@ import userEvent from '@testing-library/user-event'
 import React from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
-import { mockSettings } from 'features/auth/context/mockSettings'
 import { initialSearchState } from 'features/search/context/reducer'
 import { ISearchContext } from 'features/search/context/SearchWrapper'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { mockSettings } from 'tests/mockSettings'
 import { act, render, screen, waitFor } from 'tests/utils/web'
 
 import { SearchHeader } from './SearchHeader'

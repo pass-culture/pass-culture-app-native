@@ -1,9 +1,9 @@
 import React, { ComponentProps } from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { mockSettings } from 'features/auth/context/mockSettings'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { VenueMapPreview } from 'features/venueMap/components/VenueMapPreview/VenueMapPreview'
+import { mockSettings } from 'tests/mockSettings'
 import { fireEvent, render, screen } from 'tests/utils'
 
 mockSettings()

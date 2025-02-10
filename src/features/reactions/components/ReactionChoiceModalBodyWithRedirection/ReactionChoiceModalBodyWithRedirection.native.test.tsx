@@ -1,8 +1,8 @@
 import React from 'react'
 
 import { CategoryIdEnum } from 'api/gen'
-import { mockSettings } from 'features/auth/context/mockSettings'
 import { ReactionChoiceModalBodyWithRedirection } from 'features/reactions/components/ReactionChoiceModalBodyWithRedirection/ReactionChoiceModalBodyWithRedirection'
+import { mockSettings } from 'tests/mockSettings'
 import { render, screen } from 'tests/utils'
 
 mockSettings()

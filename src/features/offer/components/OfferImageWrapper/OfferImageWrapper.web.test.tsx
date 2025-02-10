@@ -1,8 +1,8 @@
 import React, { ComponentProps } from 'react'
 
-import { mockSettings } from 'features/auth/context/mockSettings'
 import { OfferBodyImage } from 'features/offer/components/OfferBodyImage'
 import { OfferImageWrapper } from 'features/offer/components/OfferImageWrapper/OfferImageWrapper'
+import { mockSettings } from 'tests/mockSettings'
 import { render, screen, waitFor } from 'tests/utils/web'
 import { theme } from 'theme'
 

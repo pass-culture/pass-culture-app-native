@@ -1,7 +1,6 @@
 import React from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
-import { mockSettings } from 'features/auth/context/mockSettings'
 import { SearchListHeader } from 'features/search/components/SearchListHeader/SearchListHeader'
 import { initialSearchState } from 'features/search/context/reducer'
 import { mockAlgoliaVenues } from 'features/search/fixtures/mockAlgoliaVenues'
@@ -12,6 +11,7 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { GeoCoordinates } from 'libs/location'
 import { ILocationContext, LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
+import { mockSettings } from 'tests/mockSettings'
 import { render, screen } from 'tests/utils/web'
 
 const searchId = uuidv4()

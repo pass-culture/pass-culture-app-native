@@ -1,7 +1,7 @@
 import React from 'react'
 import { SharedValue } from 'react-native-reanimated'
 
-import { mockSettings } from 'features/auth/context/mockSettings'
+import { mockSettings } from 'tests/mockSettings'
 import { render, screen, userEvent } from 'tests/utils'
 
 import { OfferImageCarousel } from './OfferImageCarousel'

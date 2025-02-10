@@ -1,9 +1,9 @@
 import React from 'react'
 
 import { AccountState } from 'api/gen'
-import { mockSettings } from 'features/auth/context/mockSettings'
 import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import { useCurrentRoute } from 'features/navigation/helpers/useCurrentRoute'
+import { mockSettings } from 'tests/mockSettings'
 import { render, screen } from 'tests/utils'
 
 import { AccountStatusScreenHandler } from './AccountStatusScreenHandler'

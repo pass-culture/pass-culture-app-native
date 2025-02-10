@@ -2,7 +2,6 @@ import { StackScreenProps } from '@react-navigation/stack'
 import React from 'react'
 
 import { reset } from '__mocks__/@react-navigation/native'
-import { mockSettings } from 'features/auth/context/mockSettings'
 import { TutorialRootStackParamList } from 'features/navigation/RootNavigator/types'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import * as useGoBack from 'features/navigation/useGoBack'
@@ -12,6 +11,7 @@ import { AgeSelectionOther } from 'features/tutorial/pages/AgeSelectionOther'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { storage } from 'libs/storage'
+import { mockSettings } from 'tests/mockSettings'
 import { render, screen, userEvent } from 'tests/utils'
 
 const mockShowModal = jest.fn()

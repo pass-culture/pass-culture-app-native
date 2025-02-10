@@ -1,9 +1,9 @@
 import React from 'react'
 
-import { mockSettings } from 'features/auth/context/mockSettings'
 import { ExclusivityBanner } from 'features/home/components/modules/exclusivity/ExclusivityBanner'
 import { analytics } from 'libs/analytics/provider'
 import { ContentTypes } from 'libs/contentful/types'
+import { mockSettings } from 'tests/mockSettings'
 import { render } from 'tests/utils'
 
 const props = {

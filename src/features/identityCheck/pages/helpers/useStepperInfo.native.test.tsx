@@ -1,7 +1,6 @@
 import { UseQueryResult } from 'react-query'
 
 import { SubscriptionStepperResponseV2 } from 'api/gen'
-import { mockSettings } from 'features/auth/context/mockSettings'
 import { useGetStepperInfo } from 'features/identityCheck/api/useGetStepperInfo'
 import { usePhoneValidationRemainingAttempts } from 'features/identityCheck/api/usePhoneValidationRemainingAttempts'
 import { initialSubscriptionState as mockState } from 'features/identityCheck/context/reducer'
@@ -15,6 +14,7 @@ import { beneficiaryUser } from 'fixtures/user'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
+import { mockSettings } from 'tests/mockSettings'
 
 const mockIdentityCheckState = mockState
 const mockRemainingAttempts = {

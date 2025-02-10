@@ -1,12 +1,12 @@
 import React from 'react'
 
 import { OfferResponseV2 } from 'api/gen'
-import { mockSettings } from 'features/auth/context/mockSettings'
 import { BookingState, Step } from 'features/bookOffer/context/reducer'
 import { mockOffer as mockBaseOffer } from 'features/bookOffer/fixtures/offer'
 import { stock1, stock2, stock3, stock4 } from 'features/bookOffer/fixtures/stocks'
 import { IBookingContext } from 'features/bookOffer/types'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { mockSettings } from 'tests/mockSettings'
 import { fireEvent, render, screen } from 'tests/utils'
 
 import { BookHourChoice } from './BookHourChoice'

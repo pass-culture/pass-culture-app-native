@@ -1,7 +1,7 @@
 import React from 'react'
 
-import { mockSettings } from 'features/auth/context/mockSettings'
 import * as useEduConnectLoginAPI from 'features/identityCheck/api/useEduConnectLogin'
+import { mockSettings } from 'tests/mockSettings'
 import { checkAccessibilityFor, fireEvent, render, screen } from 'tests/utils/web'
 
 import { EduConnectForm } from './EduConnectForm'

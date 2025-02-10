@@ -1,9 +1,9 @@
 import React from 'react'
 
-import { mockSettings } from 'features/auth/context/mockSettings'
 import { OnboardingTimeline } from 'features/tutorial/components/onboarding/OnboardingTimeline'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { useDepositAmountsByAge } from 'shared/user/useDepositAmountsByAge'
+import { mockSettings } from 'tests/mockSettings'
 import { render, screen } from 'tests/utils'
 
 jest.mock('shared/user/useDepositAmountsByAge')

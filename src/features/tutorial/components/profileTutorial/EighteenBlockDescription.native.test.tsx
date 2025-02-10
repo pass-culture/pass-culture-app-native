@@ -1,10 +1,10 @@
 import React from 'react'
 
-import { mockSettings } from 'features/auth/context/mockSettings'
 import { EighteenBlockDescription } from 'features/tutorial/components/profileTutorial/EighteenBlockDescription'
 import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { mockSettings } from 'tests/mockSettings'
 import { render, screen } from 'tests/utils'
 
 mockSettings()

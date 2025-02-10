@@ -1,9 +1,9 @@
 import React from 'react'
 
-import { mockSettings } from 'features/auth/context/mockSettings'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useDepositAmountsByAge } from 'shared/user/useDepositAmountsByAge'
+import { mockSettings } from 'tests/mockSettings'
 import { checkAccessibilityFor, render } from 'tests/utils/web'
 
 import { EighteenBirthday } from './EighteenBirthday'

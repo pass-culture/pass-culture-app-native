@@ -1,4 +1,3 @@
-import { mockSettings } from 'features/auth/context/mockSettings'
 import { useHighlightOffer } from 'features/home/api/useHighlightOffer'
 import { fetchOffersByEan } from 'libs/algolia/fetchAlgolia/fetchOffersByEan'
 import { fetchOffersByIds } from 'libs/algolia/fetchAlgolia/fetchOffersByIds'
@@ -8,6 +7,7 @@ import { useLocation } from 'libs/location'
 import { ILocationContext } from 'libs/location/types'
 import { offersFixture } from 'shared/offer/offer.fixture'
 import { Offer } from 'shared/offer/types'
+import { mockSettings } from 'tests/mockSettings'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, waitFor } from 'tests/utils'
 

@@ -2,10 +2,10 @@ import { StackScreenProps } from '@react-navigation/stack'
 import React from 'react'
 import { act } from 'react-dom/test-utils'
 
-import { mockSettings } from 'features/auth/context/mockSettings'
 import { TutorialRootStackParamList } from 'features/navigation/RootNavigator/types'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { mockSettings } from 'tests/mockSettings'
 import { checkAccessibilityFor, render } from 'tests/utils/web'
 
 import { ProfileTutorialAgeInformation } from './ProfileTutorialAgeInformation'

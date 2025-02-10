@@ -6,7 +6,6 @@ import {
   defaultDisabilitiesProperties,
   useAccessibilityFiltersContext,
 } from 'features/accessibility/context/AccessibilityFiltersWrapper'
-import { mockSettings } from 'features/auth/context/mockSettings'
 import { SearchResultsContent } from 'features/search/components/SearchResultsContent/SearchResultsContent'
 import { initialSearchState } from 'features/search/context/reducer'
 import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
@@ -25,6 +24,7 @@ import { SuggestedPlace } from 'libs/place/types'
 import { mockedSuggestedVenue } from 'libs/venue/fixtures/mockedSuggestedVenues'
 import { Offer } from 'shared/offer/types'
 import { mockAuthContextWithUser, mockAuthContextWithoutUser } from 'tests/AuthContextUtils'
+import { mockSettings } from 'tests/mockSettings'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, render, screen, userEvent, waitFor } from 'tests/utils'
 import { theme } from 'theme'

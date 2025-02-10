@@ -5,20 +5,15 @@ import { useWindowDimensions } from 'react-native'
 import { useTheme } from 'styled-components/native'
 
 import { useSettings } from 'features/auth/context/__mocks__/useSettings'
-import { mockSettings } from 'features/auth/context/mockSettings'
 import { useResizeImageURL } from 'libs/resizing-image-on-demand/useResizeImageURL'
+import { mockSettings } from 'tests/mockSettings'
 
 jest.mock('libs/environment/env')
 jest.mock('react-native', () => {
   const { Platform } = jest.requireActual('react-native')
   return {
     Platform,
-    useWindowDimensions: jest.fn(() => ({
-      width: 375,
-      height: 667,
-      scale: 2,
-      fontScale: 2,
-    })),
+    useWindowDimensions: jest.fn(),
   }
 })
 jest.mock('styled-components/native')

@@ -1,12 +1,12 @@
 import React, { FunctionComponent } from 'react'
 import { Text } from 'react-native'
 
-import { mockSettings } from 'features/auth/context/mockSettings'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { OfferModal } from 'shared/offer/enums'
 import { OfferModalProps, useBookOfferModal } from 'shared/offer/helpers/useBookOfferModal'
+import { mockSettings } from 'tests/mockSettings'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, renderHook, screen } from 'tests/utils'
 import { LINE_BREAK } from 'ui/theme/constants'

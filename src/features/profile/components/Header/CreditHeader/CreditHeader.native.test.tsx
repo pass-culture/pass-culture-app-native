@@ -3,7 +3,6 @@ import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { DomainsCredit } from 'api/gen'
-import { mockSettings } from 'features/auth/context/mockSettings'
 import {
   CreditHeader,
   CreditHeaderProps,
@@ -16,6 +15,7 @@ import * as ProfileUtils from 'features/profile/helpers/useIsUserUnderageBenefic
 import { formatToSlashedFrenchDate, setDateOneDayEarlier } from 'libs/dates'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { mockSettings } from 'tests/mockSettings'
 import { fireEvent, render, screen } from 'tests/utils'
 
 jest.mock('features/profile/api/useResetRecreditAmountToShow')

@@ -4,7 +4,6 @@ import { Keyboard } from 'react-native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { NativeCategoryIdEnumv2, SearchGroupNameEnumv2 } from 'api/gen'
-import { mockSettings } from 'features/auth/context/mockSettings'
 import * as useGoBack from 'features/navigation/useGoBack'
 import { initialSearchState } from 'features/search/context/reducer'
 import { mockedSearchHistory } from 'features/search/fixtures/mockedSearchHistory'
@@ -19,6 +18,7 @@ import { LocationMode } from 'libs/location/types'
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
 import { SuggestedPlace } from 'libs/place/types'
 import { mockedSuggestedVenue } from 'libs/venue/fixtures/mockedSuggestedVenues'
+import { mockSettings } from 'tests/mockSettings'
 import { act, fireEvent, render, screen } from 'tests/utils'
 
 const venue = mockedSuggestedVenue

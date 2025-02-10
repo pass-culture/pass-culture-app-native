@@ -1,11 +1,11 @@
 import React from 'react'
 
-import { mockSettings } from 'features/auth/context/mockSettings'
 import { BookPricesChoice } from 'features/bookOffer/components/BookPricesChoice'
 import { BookingState, initialBookingState } from 'features/bookOffer/context/reducer'
 import { mockStocks } from 'features/bookOffer/fixtures/stocks'
 import { IBookingContext } from 'features/bookOffer/types'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { mockSettings } from 'tests/mockSettings'
 import { fireEvent, render, screen } from 'tests/utils'
 
 const mockInitialBookingState = initialBookingState

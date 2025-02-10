@@ -1,12 +1,12 @@
 import React from 'react'
 
-import { mockSettings } from 'features/auth/context/mockSettings'
 import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { NonEligible, TutorialTypes } from 'features/tutorial/enums'
 import { NonEligibleModal } from 'features/tutorial/pages/NonEligibleModal'
 import { env } from 'libs/environment/fixtures'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { mockSettings } from 'tests/mockSettings'
 import { userEvent, render, screen } from 'tests/utils'
 
 jest.mock('features/navigation/helpers/navigateToHome')

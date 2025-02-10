@@ -1,9 +1,9 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { mockSettings } from 'features/auth/context/mockSettings'
 import { CreditExplanation } from 'features/profile/components/CreditExplanation/CreditExplanation'
 import { analytics } from 'libs/analytics/provider'
+import { mockSettings } from 'tests/mockSettings'
 import { act, fireEvent, render, screen } from 'tests/utils'
 
 mockSettings()

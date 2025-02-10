@@ -3,8 +3,8 @@ import { NavigationContainer, createNavigationContainerRef } from '@react-naviga
 import { createStackNavigator } from '@react-navigation/stack'
 import React from 'react'
 
-import { mockSettings } from 'features/auth/context/mockSettings'
 import { analytics } from 'libs/analytics/provider'
+import { mockSettings } from 'tests/mockSettings'
 import { act, render } from 'tests/utils/web'
 
 import { onNavigationStateChange } from './services'

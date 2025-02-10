@@ -2,11 +2,11 @@ import mockdate from 'mockdate'
 import React from 'react'
 
 import { NextSubscriptionStepResponse } from 'api/gen'
-import { mockSettings } from 'features/auth/context/mockSettings'
 import { stepsDetailsFixture } from 'features/identityCheck/pages/helpers/stepDetails.fixture'
 import { useRehydrateProfile } from 'features/identityCheck/pages/helpers/useRehydrateProfile'
 import { useStepperInfo } from 'features/identityCheck/pages/helpers/useStepperInfo'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { mockSettings } from 'tests/mockSettings'
 import { checkAccessibilityFor, render } from 'tests/utils/web'
 
 import { Stepper } from './Stepper'

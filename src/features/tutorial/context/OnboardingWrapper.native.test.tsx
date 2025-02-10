@@ -1,10 +1,10 @@
-import { mockSettings } from 'features/auth/context/mockSettings'
 import {
   OnboardingWrapper,
   useOnboardingContext,
 } from 'features/tutorial/context/OnboardingWrapper'
 import { NonEligible, TutorialTypes } from 'features/tutorial/enums'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { mockSettings } from 'tests/mockSettings'
 import { renderHook, act } from 'tests/utils'
 
 const mockShowModal = jest.fn()

@@ -1,7 +1,7 @@
 import React from 'react'
 
-import { mockSettings } from 'features/auth/context/mockSettings'
 import { SetAddress } from 'features/identityCheck/pages/profile/SetAddress'
+import { mockSettings } from 'tests/mockSettings'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { checkAccessibilityFor, render, screen, waitFor } from 'tests/utils/web'
 

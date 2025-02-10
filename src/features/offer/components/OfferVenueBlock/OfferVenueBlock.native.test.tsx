@@ -1,11 +1,11 @@
 import React from 'react'
 
 import { SubcategoryIdEnum } from 'api/gen'
-import { mockSettings } from 'features/auth/context/mockSettings'
 import { useVenueBlock } from 'features/offer/components/OfferVenueBlock/useVenueBlock'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { ILocationContext } from 'libs/location'
 import { LocationMode } from 'libs/location/types'
+import { mockSettings } from 'tests/mockSettings'
 import { userEvent, render, screen } from 'tests/utils'
 
 import { OfferVenueBlock } from './OfferVenueBlock'

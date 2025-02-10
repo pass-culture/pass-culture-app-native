@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { mockSettings } from 'features/auth/context/mockSettings'
+import { mockSettings } from 'tests/mockSettings'
 import { checkAccessibilityFor, render } from 'tests/utils/web'
 
 import { AccessibilityActionPlan } from './AccessibilityActionPlan'

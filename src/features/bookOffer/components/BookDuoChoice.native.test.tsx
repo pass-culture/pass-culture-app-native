@@ -1,9 +1,9 @@
 import React from 'react'
 
-import { mockSettings } from 'features/auth/context/mockSettings'
 import { BookingState, Step } from 'features/bookOffer/context/reducer'
 import { mockOffer } from 'features/bookOffer/fixtures/offer'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { mockSettings } from 'tests/mockSettings'
 import { fireEvent, render, screen } from 'tests/utils'
 
 import { BookDuoChoice } from './BookDuoChoice'

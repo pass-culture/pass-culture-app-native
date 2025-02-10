@@ -1,5 +1,4 @@
 import { SubcategoryIdEnum } from 'api/gen'
-import { mockSettings } from 'features/auth/context/mockSettings'
 import * as UnderageUserAPI from 'features/profile/helpers/useIsUserUnderage'
 import { SearchState } from 'features/search/types'
 import { useVenueOffers } from 'features/venue/api/useVenueOffers'
@@ -10,6 +9,7 @@ import { transformOfferHit, filterOfferHit } from 'libs/algolia/fetchAlgolia/tra
 import { AlgoliaOffer, HitOffer } from 'libs/algolia/types'
 import { LocationMode, Position } from 'libs/location/types'
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
+import { mockSettings } from 'tests/mockSettings'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, waitFor } from 'tests/utils'
 

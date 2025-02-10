@@ -3,12 +3,12 @@ import { UseQueryResult } from 'react-query'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { OfferResponseV2 } from 'api/gen'
-import { mockSettings } from 'features/auth/context/mockSettings'
 import * as excluOfferAPI from 'features/home/api/useExcluOffer'
 import { ExclusivityOffer } from 'features/home/components/modules/exclusivity/ExclusivityOffer'
 import { offerResponseSnap as mockOffer } from 'features/offer/fixtures/offerResponse'
 import { analytics } from 'libs/analytics/provider'
 import { ContentTypes } from 'libs/contentful/types'
+import { mockSettings } from 'tests/mockSettings'
 import { fireEvent, render, screen } from 'tests/utils'
 
 jest.mock('features/search/helpers/useMaxPrice/useMaxPrice', () => ({

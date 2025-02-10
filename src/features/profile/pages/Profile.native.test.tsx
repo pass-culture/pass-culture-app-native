@@ -5,7 +5,6 @@ import { Share } from 'react-native'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { SubscriptionStepperResponseV2 } from 'api/gen'
 import * as Auth from 'features/auth/context/AuthContext'
-import { mockSettings } from 'features/auth/context/mockSettings'
 import { CURRENT_DATE } from 'features/auth/fixtures/fixtures'
 import { FavoritesWrapper } from 'features/favorites/context/FavoritesWrapper'
 import { initialFavoritesState } from 'features/favorites/context/reducer'
@@ -28,6 +27,7 @@ import {
   GeolocPositionError,
 } from 'libs/location'
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
+import { mockSettings } from 'tests/mockSettings'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import {

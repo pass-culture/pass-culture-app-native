@@ -1,10 +1,10 @@
 import mockdate from 'mockdate'
 import React from 'react'
 
-import { mockSettings } from 'features/auth/context/mockSettings'
 import { underageBeneficiaryUser } from 'fixtures/user'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
+import { mockSettings } from 'tests/mockSettings'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils'
 

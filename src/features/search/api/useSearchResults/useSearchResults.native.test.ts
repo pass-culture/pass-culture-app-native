@@ -3,7 +3,6 @@ import { Dispatch } from 'react'
 
 import algoliasearch from '__mocks__/algoliasearch'
 import { defaultDisabilitiesProperties } from 'features/accessibility/context/AccessibilityFiltersWrapper'
-import { mockSettings } from 'features/auth/context/mockSettings'
 import { useSearchInfiniteQuery } from 'features/search/api/useSearchResults/useSearchResults'
 import { Action, initialSearchState } from 'features/search/context/reducer'
 import { SearchState } from 'features/search/types'
@@ -20,6 +19,7 @@ import {
 } from 'libs/algolia/fixtures/algoliaFixtures'
 import { AlgoliaVenue } from 'libs/algolia/types'
 import { GeoCoordinates, GeolocPermissionState, GeolocationError } from 'libs/location'
+import { mockSettings } from 'tests/mockSettings'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, renderHook, waitFor } from 'tests/utils'
 

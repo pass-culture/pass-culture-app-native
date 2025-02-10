@@ -1,7 +1,6 @@
 import * as React from 'react'
 
 import { OfferResponseV2, SubcategoryIdEnum } from 'api/gen'
-import { mockSettings } from 'features/auth/context/mockSettings'
 import { initialBookingState } from 'features/bookOffer/context/reducer'
 import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
 import { mockOffer as baseOffer } from 'features/bookOffer/fixtures/offer'
@@ -9,6 +8,7 @@ import { useBookingStock } from 'features/bookOffer/helpers/useBookingStock'
 import { offerStockResponseSnap } from 'features/offer/fixtures/offerStockResponse'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { formatDateTimezone } from 'libs/parsers/formatDates'
+import { mockSettings } from 'tests/mockSettings'
 import { render, screen } from 'tests/utils'
 
 import { BookingInformations } from './BookingInformations'

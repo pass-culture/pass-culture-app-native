@@ -1,7 +1,7 @@
 import React from 'react'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 
-import { mockSettings } from 'features/auth/context/mockSettings'
+import { mockSettings } from 'tests/mockSettings'
 import { render, checkAccessibilityFor, screen, waitFor } from 'tests/utils/web'
 
 import { ForgottenPassword } from './ForgottenPassword'

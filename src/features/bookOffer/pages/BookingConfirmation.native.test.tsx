@@ -3,11 +3,11 @@ import { Share } from 'react-native'
 
 import { reset, useRoute } from '__mocks__/@react-navigation/native'
 import reactNativeInAppReview from '__mocks__/react-native-in-app-review'
-import { mockSettings } from 'features/auth/context/mockSettings'
 import { useReviewInAppInformation } from 'features/bookOffer/helpers/useReviewInAppInformation'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { BatchProfile } from 'libs/react-native-batch'
+import { mockSettings } from 'tests/mockSettings'
 import { act, render, screen, userEvent } from 'tests/utils'
 
 import { BookingConfirmation } from './BookingConfirmation'

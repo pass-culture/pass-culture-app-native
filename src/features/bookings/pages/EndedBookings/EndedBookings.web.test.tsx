@@ -1,9 +1,9 @@
 import React from 'react'
 
 import { CategoryIdEnum, NativeCategoryIdEnumv2, SubcategoryIdEnum } from 'api/gen'
-import { mockSettings } from 'features/auth/context/mockSettings'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { mockSettings } from 'tests/mockSettings'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { checkAccessibilityFor, render } from 'tests/utils/web'
 

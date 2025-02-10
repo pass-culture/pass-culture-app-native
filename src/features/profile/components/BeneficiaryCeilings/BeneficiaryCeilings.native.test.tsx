@@ -1,6 +1,5 @@
 import React from 'react'
 
-import { mockSettings } from 'features/auth/context/mockSettings'
 import { BeneficiaryCeilings } from 'features/profile/components/BeneficiaryCeilings/BeneficiaryCeilings'
 import {
   domains_credit_underage,
@@ -10,6 +9,7 @@ import {
 } from 'features/profile/fixtures/domainsCredit'
 import * as ProfileUtils from 'features/profile/helpers/useIsUserUnderageBeneficiary'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { mockSettings } from 'tests/mockSettings'
 import { render, screen, waitFor } from 'tests/utils'
 
 const mockUseIsUserUnderageBeneficiary = jest

@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { UserSuspensionDateResponse } from 'api/gen'
-import { mockSettings } from 'features/auth/context/mockSettings'
+import { mockSettings } from 'tests/mockSettings'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { checkAccessibilityFor, render, screen } from 'tests/utils/web'

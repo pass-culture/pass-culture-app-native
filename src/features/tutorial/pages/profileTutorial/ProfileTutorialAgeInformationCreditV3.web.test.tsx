@@ -1,10 +1,10 @@
 import React from 'react'
 import { act } from 'react-dom/test-utils'
 
-import { mockSettings } from 'features/auth/context/mockSettings'
 import { ProfileTutorialAgeInformationCreditV3 } from 'features/tutorial/pages/profileTutorial/ProfileTutorialAgeInformationCreditV3'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { mockSettings } from 'tests/mockSettings'
 import { checkAccessibilityFor, render } from 'tests/utils/web'
 
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')

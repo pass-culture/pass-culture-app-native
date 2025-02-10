@@ -1,7 +1,7 @@
 import React from 'react'
 
-import { mockSettings } from 'features/auth/context/mockSettings'
 import { initialSubscriptionState as mockState } from 'features/identityCheck/context/reducer'
+import { mockSettings } from 'tests/mockSettings'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, checkAccessibilityFor, waitFor, screen } from 'tests/utils/web'
 

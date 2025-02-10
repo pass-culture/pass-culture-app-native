@@ -1,9 +1,9 @@
 import React from 'react'
 
-import { mockSettings } from 'features/auth/context/mockSettings'
 import { CitySearchInput } from 'features/profile/components/CitySearchInput/CitySearchInput'
 import { mockedSuggestedCities } from 'libs/place/fixtures/mockedSuggestedCities'
 import { CitiesResponse, CITIES_API_URL } from 'libs/place/useCities'
+import { mockSettings } from 'tests/mockSettings'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'

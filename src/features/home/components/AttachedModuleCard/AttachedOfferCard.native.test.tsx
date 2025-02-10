@@ -3,7 +3,6 @@ import React from 'react'
 import { UseQueryResult } from 'react-query'
 
 import { SubcategoriesResponseModelv2 } from 'api/gen'
-import { mockSettings } from 'features/auth/context/mockSettings'
 import { AttachedOfferCard } from 'features/home/components/AttachedModuleCard/AttachedOfferCard'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -11,6 +10,7 @@ import { ILocationContext, LocationMode } from 'libs/location/types'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
 import { offersFixture } from 'shared/offer/offer.fixture'
+import { mockSettings } from 'tests/mockSettings'
 import { render, screen } from 'tests/utils'
 
 const offer = offersFixture[2]

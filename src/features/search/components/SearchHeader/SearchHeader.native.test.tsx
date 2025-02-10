@@ -1,12 +1,12 @@
 import React from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
-import { mockSettings } from 'features/auth/context/mockSettings'
 import { SearchHeader } from 'features/search/components/SearchHeader/SearchHeader'
 import { initialSearchState } from 'features/search/context/reducer'
 import * as useFilterCountAPI from 'features/search/helpers/useFilterCount/useFilterCount'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { LocationLabel } from 'libs/location/types'
+import { mockSettings } from 'tests/mockSettings'
 import { render, screen, waitFor, within } from 'tests/utils'
 
 jest.mock('libs/firebase/analytics/analytics')

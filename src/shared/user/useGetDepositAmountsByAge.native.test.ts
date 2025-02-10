@@ -1,8 +1,8 @@
 import mockdate from 'mockdate'
 
-import { mockSettings } from 'features/auth/context/mockSettings'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { mockSettings } from 'tests/mockSettings'
 import { renderHook } from 'tests/utils'
 
 import { useGetDepositAmountsByAge } from './useGetDepositAmountsByAge'

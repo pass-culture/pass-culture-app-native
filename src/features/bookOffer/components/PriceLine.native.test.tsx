@@ -1,8 +1,8 @@
 import React from 'react'
 
-import { mockSettings } from 'features/auth/context/mockSettings'
 import { PriceLine } from 'features/bookOffer/components/PriceLine'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { mockSettings } from 'tests/mockSettings'
 import { render, screen } from 'tests/utils'
 
 const attributes = ['VOSTFR', '3D', 'IMAX']

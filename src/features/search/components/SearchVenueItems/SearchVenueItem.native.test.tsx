@@ -3,11 +3,11 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { VenueTypeCodeKey } from 'api/gen'
-import { mockSettings } from 'features/auth/context/mockSettings'
 import { AlgoliaVenue, LocationMode } from 'libs/algolia/types'
 import { analytics } from 'libs/analytics/provider'
 import { ILocationContext } from 'libs/location'
 import { SuggestedPlace } from 'libs/place/types'
+import { mockSettings } from 'tests/mockSettings'
 import { userEvent, render, screen } from 'tests/utils'
 
 import { SearchVenueItem } from './SearchVenueItem'

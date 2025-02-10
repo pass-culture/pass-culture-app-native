@@ -1,7 +1,7 @@
 import React from 'react'
 
-import { mockSettings } from 'features/auth/context/mockSettings'
 import { CookiesDetails } from 'features/cookies/pages/CookiesDetails'
+import { mockSettings } from 'tests/mockSettings'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, checkAccessibilityFor, render } from 'tests/utils/web'
 

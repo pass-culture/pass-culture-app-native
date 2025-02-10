@@ -2,7 +2,6 @@ import mockdate from 'mockdate'
 import React from 'react'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
-import { mockSettings } from 'features/auth/context/mockSettings'
 import {
   CURRENT_DATE,
   DEFAULT_SELECTED_DATE,
@@ -11,6 +10,7 @@ import {
 import { NonEligible } from 'features/tutorial/enums'
 import { formatDateToISOStringWithoutTime } from 'libs/parsers/formatDates'
 import { storage } from 'libs/storage'
+import { mockSettings } from 'tests/mockSettings'
 import { act, fireEvent, render, screen } from 'tests/utils'
 
 import { SetBirthday } from './SetBirthday'

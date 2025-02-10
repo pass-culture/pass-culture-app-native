@@ -1,6 +1,6 @@
 import { Platform } from 'react-native'
 
-import { mockSettings } from 'features/auth/context/mockSettings'
+import { mockSettings } from 'tests/mockSettings'
 
 Platform.OS = 'android'
 jest.mock('./Marker/Marker', () => require('./Marker/Marker.android'))

@@ -1,8 +1,8 @@
 import mockdate from 'mockdate'
 import React from 'react'
 
-import { mockSettings } from 'features/auth/context/mockSettings'
 import { CURRENT_DATE } from 'features/auth/fixtures/fixtures'
+import { mockSettings } from 'tests/mockSettings'
 import { act, fireEvent, render, screen } from 'tests/utils/web'
 
 import { SetBirthday } from './SetBirthday'

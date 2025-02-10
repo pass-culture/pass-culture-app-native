@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { push } from '__mocks__/@react-navigation/native'
-import { mockSettings } from 'features/auth/context/mockSettings'
+import { mockSettings } from 'tests/mockSettings'
 import { render, screen, userEvent } from 'tests/utils'
 import { AvatarsList } from 'ui/components/Avatar/AvatarList'
 

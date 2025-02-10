@@ -1,13 +1,13 @@
 import React from 'react'
 
 import type { BookingsResponse } from 'api/gen'
-import { mockSettings } from 'features/auth/context/mockSettings'
 import { BookingPropertiesSection } from 'features/bookings/components/BookingPropertiesSection'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { Booking } from 'features/bookings/types'
 import { beneficiaryUser } from 'fixtures/user'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
+import { mockSettings } from 'tests/mockSettings'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, waitFor } from 'tests/utils'
 

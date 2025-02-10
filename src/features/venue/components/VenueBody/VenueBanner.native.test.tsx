@@ -1,7 +1,7 @@
 import React from 'react'
 
-import { mockSettings } from 'features/auth/context/mockSettings'
 import { VenueBanner } from 'features/venue/components/VenueBody/VenueBanner'
+import { mockSettings } from 'tests/mockSettings'
 import { render, screen, userEvent } from 'tests/utils'
 
 const mockHandleImagePress = jest.fn()
