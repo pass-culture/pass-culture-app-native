@@ -80,8 +80,6 @@ export const AppNavigationContainer = () => {
   )
 }
 
-export default AppNavigationContainer
-
 function hasWindowReloaded() {
   if (Platform.OS !== 'web') return false
 
