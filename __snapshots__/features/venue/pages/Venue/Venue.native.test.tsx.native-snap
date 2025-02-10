@@ -5596,7 +5596,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                       resizeMode="cover"
                       source={
                         {
-                          "uri": "https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDNQ",
+                          "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
                         }
                       }
                       style={
@@ -5736,7 +5736,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                 size="small"
                                 source={
                                   {
-                                    "uri": "https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDNQ",
+                                    "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
                                   }
                                 }
                                 style={
@@ -5786,7 +5786,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                   ]
                                 }
                               >
-                                Livre
+                                Cinéma
                               </Text>
                               <Text
                                 numberOfLines={2}
@@ -5801,7 +5801,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                   ]
                                 }
                               >
-                                La nuit des temps
+                                Titane - VF
                               </Text>
                               <Text
                                 style={
@@ -5815,7 +5815,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                   ]
                                 }
                               >
-                                Dès 28 €
+                                Gratuit
                               </Text>
                             </View>
                           </View>
