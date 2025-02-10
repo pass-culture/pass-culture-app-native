@@ -5,7 +5,11 @@ import { OfferVenueResponse } from 'api/gen'
 import { OfferVenueButton } from 'features/offer/components/OfferVenueButton/OfferVenueButton'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { analytics } from 'libs/analytics/provider'
-import { fireEvent, render, screen, waitFor } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
+
+const user = userEvent.setup()
+
+jest.useFakeTimers()
 
 describe('<OfferVenueButton />', () => {
   it('should display public name when informed', () => {
@@ -63,17 +67,15 @@ describe('<OfferVenueButton />', () => {
   it('should redirect to venue page when pressing button', async () => {
     render(<OfferVenueButton venue={offerResponseSnap.venue} />)
 
-    fireEvent.press(screen.getByTestId('Accéder à la page du lieu PATHE BEAUGRENELLE'))
+    await user.press(screen.getByTestId('Accéder à la page du lieu PATHE BEAUGRENELLE'))
 
-    await waitFor(() =>
-      expect(navigate).toHaveBeenCalledWith('Venue', { id: offerResponseSnap.venue.id })
-    )
+    expect(navigate).toHaveBeenCalledWith('Venue', { id: offerResponseSnap.venue.id })
   })
 
-  it('should track the venue redirection when the pressing button', () => {
+  it('should track the venue redirection when the pressing button', async () => {
     render(<OfferVenueButton venue={offerResponseSnap.venue} />)
 
-    fireEvent.press(screen.getByTestId('Accéder à la page du lieu PATHE BEAUGRENELLE'))
+    await user.press(screen.getByTestId('Accéder à la page du lieu PATHE BEAUGRENELLE'))
 
     expect(analytics.logConsultVenue).toHaveBeenCalledWith({
       venueId: offerResponseSnap.venue.id,
