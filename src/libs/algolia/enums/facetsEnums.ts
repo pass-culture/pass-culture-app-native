@@ -11,6 +11,8 @@ export enum FACETS_FILTERS_ENUM {
   OFFER_IS_DUO = 'offer.isDuo',
   OFFER_IS_EDUCATIONAL = 'offer.isEducational',
   OFFER_IS_HEADLINE = 'offer.isHeadline',
+  OFFER_MOVIE_GENRES = 'offer.movieGenres',
+  OFFER_MUSIC_TYPE = 'offer.musicType',
   OFFER_NATIVE_CATEGORY = 'offer.nativeCategoryId',
   OFFER_SEARCH_GROUP_NAME = 'offer.searchGroupNamev2',
   OFFER_SHOW_TYPE = 'offer.showType',
