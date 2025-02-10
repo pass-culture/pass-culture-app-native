@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`OnboardingGeneralPublicWelcome should render correctly 1`] = `
+exports[`OnboardingNotEligible should render correctly 1`] = `
 [
   <View
     style={
@@ -164,7 +164,7 @@ exports[`OnboardingGeneralPublicWelcome should render correctly 1`] = `
         ]
       }
     >
-      Explore, découvre, profite
+      Encore un peu de patience !
     </Text>
     <View
       flex={0.5}
@@ -191,7 +191,7 @@ exports[`OnboardingGeneralPublicWelcome should render correctly 1`] = `
         ]
       }
     >
-      Et si tu créais un compte pour des suggestions à venir ? Sinon, explore librement le catalogue dès maintenant !
+      Ton crédit t’attend à partir de tes 17 ans. En attendant, crée-toi un compte pour explorer les offres autour de toi.
     </Text>
     <View
       flex={1}

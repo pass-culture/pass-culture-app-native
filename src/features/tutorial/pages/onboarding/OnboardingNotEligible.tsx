@@ -4,38 +4,39 @@ import styled from 'styled-components/native'
 
 import { StepperOrigin, UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
-import QpiThanks from 'ui/animations/qpi_thanks.json'
+import BirthdayCakeAnimation from 'ui/animations/onboarding_birthday_cake.json'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
 import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 
-export const OnboardingGeneralPublicWelcome = () => {
+export const OnboardingNotEligible = () => {
   const { reset } = useNavigation<UseNavigationType>()
   const navigateToHomeWithReset = () => {
     reset({ index: 0, routes: [{ name: homeNavConfig[0] }] })
   }
+
   return (
     <GenericInfoPageWhite
       mobileBottomFlex={0.1}
-      animation={QpiThanks}
-      onSkip={navigateToHomeWithReset}
-      title="Explore, découvre, profite">
+      animation={BirthdayCakeAnimation}
+      title="Encore un peu de patience&nbsp;!"
+      onSkip={navigateToHomeWithReset}>
       <StyledBody>
-        Et si tu créais un compte pour des suggestions à venir&nbsp;? Sinon, explore librement le
-        catalogue dès maintenant&nbsp;!
+        Ton crédit t’attend à partir de tes 17 ans. En attendant, crée-toi un compte pour explorer
+        les offres autour de toi.
       </StyledBody>
       <Spacer.Flex flex={1} />
       <ButtonContainer>
         <InternalTouchableLink
+          key={1}
           as={ButtonPrimary}
           wording="Créer un compte"
           navigateTo={{
             screen: 'SignupForm',
-            params: { from: StepperOrigin.ONBOARDING_GENERAL_PUBLIC_WELCOME },
+            params: { from: StepperOrigin.ONBOARDING_NOT_ELIGIBLE },
           }}
-          key={1}
         />
         <Spacer.Column numberOfSpaces={4} />
         <InternalTouchableLink
@@ -52,10 +53,10 @@ export const OnboardingGeneralPublicWelcome = () => {
   )
 }
 
-const ButtonContainer = styled.View({
-  paddingBottom: getSpacing(10),
-})
-
 const StyledBody = styled(TypoDS.Body)({
   textAlign: 'center',
+})
+
+const ButtonContainer = styled.View({
+  paddingBottom: getSpacing(10),
 })

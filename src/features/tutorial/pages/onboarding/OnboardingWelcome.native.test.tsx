@@ -62,7 +62,7 @@ describe('OnboardingWelcome', () => {
     const loginButton = screen.getByText('Se connecter')
     await user.press(loginButton)
 
-    expect(navigate).toHaveBeenCalledWith('Login', { from: StepperOrigin.ONBOARDING })
+    expect(navigate).toHaveBeenCalledWith('Login', { from: StepperOrigin.ONBOARDING_WELCOME })
   })
 
   it('should set has_seen_tutorials to true in local storage when "C’est parti !" is clicked', async () => {

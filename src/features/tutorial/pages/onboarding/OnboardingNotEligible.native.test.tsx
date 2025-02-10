@@ -3,32 +3,31 @@ import React from 'react'
 import { navigate, reset } from '__mocks__/@react-navigation/native'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
-import { userEvent, render, screen } from 'tests/utils'
-
-import { OnboardingGeneralPublicWelcome } from './OnboardingGeneralPublicWelcome'
+import { OnboardingNotEligible } from 'features/tutorial/pages/onboarding/OnboardingNotEligible'
+import { render, screen, userEvent } from 'tests/utils'
 
 jest.useFakeTimers()
 
-describe('OnboardingGeneralPublicWelcome', () => {
+describe('OnboardingNotEligible', () => {
   it('should render correctly', () => {
-    render(<OnboardingGeneralPublicWelcome />)
+    render(<OnboardingNotEligible />)
 
     expect(screen).toMatchSnapshot()
   })
 
   it('should navigate to SignupForm when pressing "Créer un compte"', async () => {
-    render(<OnboardingGeneralPublicWelcome />)
+    render(<OnboardingNotEligible />)
 
     const signupButton = screen.getByText('Créer un compte')
     await userEvent.press(signupButton)
 
     expect(navigate).toHaveBeenCalledWith('SignupForm', {
-      from: StepperOrigin.ONBOARDING_GENERAL_PUBLIC_WELCOME,
+      from: StepperOrigin.ONBOARDING_NOT_ELIGIBLE,
     })
   })
 
   it('should reset navigation on go to Home when pressing "Accéder au catalogue"', async () => {
-    render(<OnboardingGeneralPublicWelcome />)
+    render(<OnboardingNotEligible />)
 
     const signupButton = screen.getByText('Accéder au catalogue')
     await userEvent.press(signupButton)
@@ -40,7 +39,7 @@ describe('OnboardingGeneralPublicWelcome', () => {
   })
 
   it('should reset navigation on go to Home when pressing "Plus tard"', async () => {
-    render(<OnboardingGeneralPublicWelcome />)
+    render(<OnboardingNotEligible />)
 
     const signupButton = screen.getByText('Passer')
     await userEvent.press(signupButton)
