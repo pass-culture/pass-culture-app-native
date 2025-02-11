@@ -14,7 +14,6 @@ import { SearchQueryParameters } from 'libs/algolia/types'
 import { env } from 'libs/environment/env'
 import { useLocation } from 'libs/location'
 import { QueryKeys } from 'libs/queryKeys'
-import { Offer } from 'shared/offer/types'
 
 export const useVenueOffers = (venue?: VenueResponse): UseQueryResult<VenueOffers> => {
   // TODO(PC-33493): hook refacto
@@ -24,7 +23,7 @@ export const useVenueOffers = (venue?: VenueResponse): UseQueryResult<VenueOffer
   const { searchState } = useSearch()
   const isUserUnderage = useIsUserUnderage()
 
-  const buildPlaylistOfferParams = useCallback(
+  const buildVenueOffersQueryParams = useCallback(
     (offerParams: SearchQueryParameters) => ({
       locationParams: {
         userLocation,
@@ -37,31 +36,40 @@ export const useVenueOffers = (venue?: VenueResponse): UseQueryResult<VenueOffer
     [userLocation, selectedLocationMode]
   )
 
+  const venueSearchedOffers = buildVenueOffersQueryParams({
+    ...searchState,
+    venue: venueSearchParams.venue,
+    hitsPerPage: venueSearchParams.hitsPerPage,
+  })
+  const venueTopOffers = buildVenueOffersQueryParams(venueSearchParams)
+  const headlineOffer = buildVenueOffersQueryParams({ ...venueSearchParams, isHeadline: true })
+
+  const paramsList = [venueSearchedOffers, venueTopOffers, headlineOffer]
+
   return useQuery(
     [QueryKeys.VENUE_OFFERS, venue?.id, userLocation, selectedLocationMode],
     () =>
       fetchMultipleOffers({
-        paramsList: [
-          buildPlaylistOfferParams({
-            ...searchState,
-            venue: venueSearchParams.venue,
-            hitsPerPage: venueSearchParams.hitsPerPage,
-          }),
-          buildPlaylistOfferParams(venueSearchParams),
-        ],
+        paramsList,
         isUserUnderage,
         indexName: env.ALGOLIA_TOP_OFFERS_INDEX_NAME,
       }),
     {
       enabled: !!venue,
-      select: ({ hits, nbHits }) => {
-        const filteredHits = hits.filter(filterOfferHit).map(transformHits)
+      select: ([venueSearchedOffersResults, venueTopOffersResults, headlineOfferResults]) => {
+        const hits = [venueSearchedOffersResults, venueTopOffersResults]
+          .flatMap((result) => result?.hits)
+          .filter(filterOfferHit)
+          .map(transformHits)
 
-        const offers = filteredHits.filter((hit): hit is Offer => hit !== null)
+        const headlineOffer = headlineOfferResults?.hits[0]
+          ? transformHits(headlineOfferResults?.hits[0])
+          : undefined
 
         return {
-          hits: uniqBy(offers, 'objectID'),
-          nbHits,
+          hits: uniqBy(hits, 'objectID'),
+          nbHits: hits.length,
+          headlineOffer,
         }
       },
     }

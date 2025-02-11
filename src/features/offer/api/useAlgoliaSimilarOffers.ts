@@ -1,23 +1,24 @@
 import { useMemo } from 'react'
-import { useQuery } from 'react-query'
+import { UseQueryOptions, useQuery } from 'react-query'
 
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { fetchOffersByIds } from 'libs/algolia/fetchAlgolia/fetchOffersByIds'
 import { filterOfferHit, useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
-import { IncompleteSearchHit } from 'libs/algolia/types'
+import { AlgoliaOffer } from 'libs/algolia/types'
 import { QueryKeys } from 'libs/queryKeys'
 import { getSimilarOrRecoOffersInOrder } from 'shared/offer/getSimilarOrRecoOffersInOrder'
 import { Offer } from 'shared/offer/types'
 
 export const useAlgoliaSimilarOffers = (
   ids: string[],
-  shouldPreserveIdsOrder?: boolean
+  shouldPreserveIdsOrder?: boolean,
+  queryKey?: UseQueryOptions['queryKey']
 ): Offer[] | undefined => {
   const isUserUnderage = useIsUserUnderage()
   const transformHits = useTransformOfferHits()
 
   const { data: hits } = useQuery(
-    [QueryKeys.ALGOLIA_SIMILAR_OFFERS, JSON.stringify(ids)],
+    queryKey ?? [QueryKeys.ALGOLIA_SIMILAR_OFFERS, JSON.stringify(ids)],
     () => fetchOffersByIds({ objectIds: ids, isUserUnderage }),
     { enabled: ids.length > 0 }
   )
@@ -27,9 +28,9 @@ export const useAlgoliaSimilarOffers = (
 
     if (shouldPreserveIdsOrder) {
       const offers = getSimilarOrRecoOffersInOrder(ids, hits)
-      return (offers as IncompleteSearchHit[]).filter(filterOfferHit).map(transformHits) as Offer[]
+      return (offers as AlgoliaOffer[]).filter(filterOfferHit).map(transformHits) as Offer[]
     }
 
-    return (hits as IncompleteSearchHit[]).filter(filterOfferHit).map(transformHits) as Offer[]
+    return (hits as AlgoliaOffer[]).filter(filterOfferHit).map(transformHits) as Offer[]
   }, [hits, ids, shouldPreserveIdsOrder, transformHits])
 }

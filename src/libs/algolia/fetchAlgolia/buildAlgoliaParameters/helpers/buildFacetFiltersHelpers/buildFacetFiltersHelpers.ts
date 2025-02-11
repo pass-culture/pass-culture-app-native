@@ -82,6 +82,10 @@ export const buildTagsPredicate = (
   return undefined
 }
 
+export const buildHeadlinePredicate = (isHeadline: boolean) => [
+  `${FACETS_FILTERS_ENUM.OFFER_IS_HEADLINE}:${isHeadline.toString()}`,
+]
+
 export const buildAccessibiltyFiltersPredicate = ({
   isAudioDisabilityCompliant,
   isMentalDisabilityCompliant,

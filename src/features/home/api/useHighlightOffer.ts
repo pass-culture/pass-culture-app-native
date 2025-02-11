@@ -5,11 +5,12 @@ import { fetchOffersByEan } from 'libs/algolia/fetchAlgolia/fetchOffersByEan'
 import { fetchOffersByIds } from 'libs/algolia/fetchAlgolia/fetchOffersByIds'
 import { fetchOffersByTags } from 'libs/algolia/fetchAlgolia/fetchOffersByTags'
 import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
+import { AlgoliaGeoloc } from 'libs/algolia/types'
 import { useLocation } from 'libs/location'
 import { Position } from 'libs/location/types'
 import { computeDistanceInMeters } from 'libs/parsers/formatDistance'
 import { QueryKeys } from 'libs/queryKeys'
-import { Offer, OfferLocation } from 'shared/offer/types'
+import { Offer } from 'shared/offer/types'
 
 type UseHightlightOfferParams = {
   id: string
@@ -104,7 +105,7 @@ export const useHighlightOffer = ({
 
 const shouldDisplayHighlightOffer = (
   position: Position,
-  offerLocation?: OfferLocation,
+  offerLocation?: AlgoliaGeoloc,
   isGeolocated?: boolean,
   aroundRadius?: number
 ) => {

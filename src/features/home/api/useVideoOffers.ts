@@ -74,7 +74,7 @@ export const useVideoOffers = (
       isUserUnderage,
     })
 
-    return result.hits
+    return result.flatMap((data) => data.hits)
   }
   const queryByQueryMode = {
     [QueryMode.OFFER_IDS]: offersByIdsQuery,

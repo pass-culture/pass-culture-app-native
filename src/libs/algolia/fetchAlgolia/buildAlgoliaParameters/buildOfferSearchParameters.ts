@@ -25,6 +25,7 @@ export const buildOfferSearchParameters = (
     endingDatetime = undefined,
     excludedObjectIds = [],
     isFullyDigitalOffersCategory = false,
+    isHeadline = false,
     maxPossiblePrice = '',
     maxPrice = '',
     minBookingsThreshold = 0,
@@ -72,6 +73,7 @@ export const buildOfferSearchParameters = (
       tags,
       gtls,
       disabilitiesProperties,
+      isHeadline,
     }),
     ...buildNumericFilters({
       beginningDatetime,
@@ -84,6 +86,7 @@ export const buildOfferSearchParameters = (
       offerIsFree,
       priceRange,
       timeRange,
+      isHeadline,
     }),
     ...locationParameter,
     ...buildFilters({ excludedObjectIds }),

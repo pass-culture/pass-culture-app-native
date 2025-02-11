@@ -2,12 +2,12 @@ import { SearchResponse } from '@algolia/client-search'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import {
-  HitOfferWithArtistAndEan,
   buildAlgoliaFilter,
   fetchOffersByArtist,
 } from 'features/offer/api/fetchOffersByArtist/fetchOffersByArtist'
 import { offerAttributesToRetrieve } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/offerAttributesToRetrieve'
 import * as multipleQueries from 'libs/algolia/fetchAlgolia/multipleQueries'
+import { AlgoliaOfferWithArtistAndEan } from 'libs/algolia/types'
 import { Position } from 'libs/location'
 
 const mockMultipleQueries = jest.spyOn(multipleQueries, 'multipleQueries')
@@ -19,10 +19,10 @@ describe('fetchOffersByArtist', () => {
     mockMultipleQueries.mockResolvedValueOnce([
       {
         hits: [],
-      } as unknown as SearchResponse<HitOfferWithArtistAndEan>,
+      } as unknown as SearchResponse<AlgoliaOfferWithArtistAndEan>,
       {
         hits: [],
-      } as unknown as SearchResponse<HitOfferWithArtistAndEan>,
+      } as unknown as SearchResponse<AlgoliaOfferWithArtistAndEan>,
     ])
     await fetchOffersByArtist({
       artists: 'Eiichiro Oda',

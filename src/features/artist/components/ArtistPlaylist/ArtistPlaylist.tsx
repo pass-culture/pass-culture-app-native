@@ -1,9 +1,9 @@
 import React, { FunctionComponent } from 'react'
 
 import { OfferResponseV2 } from 'api/gen'
-import { HitOfferWithArtistAndEan } from 'features/offer/api/fetchOffersByArtist/fetchOffersByArtist'
 import { OfferPlaylistItem } from 'features/offer/components/OfferPlaylistItem/OfferPlaylistItem'
 import { PlaylistType } from 'features/offer/enums'
+import { AlgoliaOfferWithArtistAndEan } from 'libs/algolia/types'
 import { usePlaylistItemDimensionsFromLayout } from 'libs/contentful/usePlaylistItemDimensionsFromLayout'
 import { getDisplayedPrice } from 'libs/parsers/getDisplayedPrice'
 import { useCategoryIdMapping } from 'libs/subcategories'
@@ -16,10 +16,10 @@ import { PassPlaylist } from 'ui/components/PassPlaylist'
 type ArtistPlaylistProps = {
   offer: OfferResponseV2
   artistName: string
-  items: HitOfferWithArtistAndEan[]
+  items: AlgoliaOfferWithArtistAndEan[]
 }
 
-const keyExtractor = (item: Offer | HitOfferWithArtistAndEan) => item.objectID
+const keyExtractor = (item: Offer | AlgoliaOfferWithArtistAndEan) => item.objectID
 
 export const ArtistPlaylist: FunctionComponent<ArtistPlaylistProps> = ({
   offer,

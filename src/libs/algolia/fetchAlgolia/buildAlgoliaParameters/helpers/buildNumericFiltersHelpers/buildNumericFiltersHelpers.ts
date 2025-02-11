@@ -137,3 +137,8 @@ export const buildDateOnlyPredicate = (
 
 export const getDatePredicate = (lowerDate: number, higherDate: number): string =>
   `${NUMERIC_FILTERS_ENUM.OFFER_DATES}: ${lowerDate} TO ${higherDate}`
+
+export const buildHeadlineUntilPredicate = (isHeadline?: boolean) =>
+  isHeadline
+    ? [`${NUMERIC_FILTERS_ENUM.OFFER_IS_HEADLINE_UNTIL} >= ${TIMESTAMP.getFromDate(new Date())}`]
+    : undefined

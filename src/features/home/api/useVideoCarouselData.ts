@@ -9,7 +9,7 @@ import { fetchCarouselVideoOffers } from 'libs/algolia/fetchAlgolia/fetchCarouse
 import { buildVideoCarouselOffersQueries } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/helpers/buildVideoCarouselOffersQueries'
 import { searchResponsePredicate } from 'libs/algolia/fetchAlgolia/searchResponsePredicate'
 import { filterOfferHit, useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
-import { AlgoliaHit, OfferModuleQuery } from 'libs/algolia/types'
+import { AlgoliaOffer, OfferModuleQuery } from 'libs/algolia/types'
 import { useLocation } from 'libs/location'
 import { QueryKeys } from 'libs/queryKeys'
 import { Offer } from 'shared/offer/types'
@@ -31,7 +31,7 @@ const getRedirectionMode = (item: VideoCarouselItem): RedirectionMode => {
 
 const mapDataAndItem = (
   offersResultList: UseQueryResult<SearchResponse<Offer>[], unknown>,
-  transformOfferHits: (hit: AlgoliaHit) => AlgoliaHit
+  transformOfferHits: (hit: AlgoliaOffer) => AlgoliaOffer
 ) => {
   const { data } = offersResultList
 

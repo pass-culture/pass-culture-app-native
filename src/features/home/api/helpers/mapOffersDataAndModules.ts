@@ -4,7 +4,7 @@ import { UseQueryResult } from 'react-query'
 
 import { ModuleData, OfferModuleParamsInfo } from 'features/home/types'
 import { filterOfferHit } from 'libs/algolia/fetchAlgolia/transformOfferHit'
-import { AlgoliaHit } from 'libs/algolia/types'
+import { AlgoliaOffer } from 'libs/algolia/types'
 import { Offer } from 'shared/offer/types'
 
 const isOfferModuleParamsInfo = (module: unknown): module is OfferModuleParamsInfo =>
@@ -15,7 +15,7 @@ const hasParams = (module: OfferModuleParamsInfo) => module.adaptedPlaylistParam
 interface MapProps {
   results: UseQueryResult<SearchResponse<Offer>[], unknown>
   modulesParams: (OfferModuleParamsInfo | undefined)[]
-  transformHits: (hit: AlgoliaHit) => AlgoliaHit
+  transformHits: (hit: AlgoliaOffer) => AlgoliaOffer
 }
 
 export const mapOffersDataAndModules = ({ results, modulesParams, transformHits }: MapProps) => {
