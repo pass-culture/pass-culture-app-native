@@ -14,7 +14,7 @@ export const venuesFixture = toMutable([
     postalCode: '75000',
     isPermanent: true,
     venue_type: VenueTypeCodeKey.VISUAL_ARTS,
-    isOpenToPublic: false,
+    isOpenToPublic: true,
   },
   {
     label: 'La librairie quantique',

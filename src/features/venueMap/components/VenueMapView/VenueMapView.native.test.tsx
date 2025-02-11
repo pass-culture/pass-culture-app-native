@@ -222,7 +222,9 @@ describe('<VenueMapView />', () => {
   it('should deactivate navigation to Venue page when bottom sheet is open, pressing venue button, wipIsOpenToPublic feature flag is true and venue is not open to public', async () => {
     mockUseVenueOffers(true)
     setFeatureFlags([RemoteStoreFeatureFlags.WIP_IS_OPEN_TO_PUBLIC])
-    render(getVenueMapViewComponent({ selectedVenue: venuesFixture[0] }))
+    render(
+      getVenueMapViewComponent({ selectedVenue: { ...venuesFixture[0], isOpenToPublic: false } })
+    )
     await screen.findByTestId(`marker-${venuesFixture[0].venueId}`)
 
     await pressVenueMarker(venuesFixture[0])
