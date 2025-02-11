@@ -51,5 +51,6 @@ export const algoliaVenuesFixture: AlgoliaVenue[] = [
     venue_type: VenueTypeCodeKey.VISUAL_ARTS,
     visual_disability: false,
     website: 'https://my.website.com',
+    isOpenToPublic: false,
   },
 ]

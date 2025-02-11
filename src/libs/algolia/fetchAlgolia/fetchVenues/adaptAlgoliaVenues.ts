@@ -11,4 +11,5 @@ export const adaptAlgoliaVenues = (venues: AlgoliaVenue[]): Venue[] =>
     venue_type: venue.venue_type,
     postalCode: venue.postalCode,
     isPermanent: venue.isPermanent === undefined ? true : venue.isPermanent,
+    isOpenToPublic: venue.isOpenToPublic ?? false,
   }))

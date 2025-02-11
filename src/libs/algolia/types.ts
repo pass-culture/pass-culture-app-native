@@ -221,6 +221,7 @@ export interface AlgoliaVenue {
   snapchat: string | null
   banner_url: string | null
   isPermanent: boolean | null
+  isOpenToPublic?: boolean | null
   _geoloc: Geoloc
   _highlightResult?: AlgoliaVenueHighlightResult
 }

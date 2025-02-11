@@ -14,6 +14,7 @@ export const venuesFixture = toMutable([
     postalCode: '75000',
     isPermanent: true,
     venue_type: VenueTypeCodeKey.VISUAL_ARTS,
+    isOpenToPublic: false,
   },
   {
     label: 'La librairie quantique',
@@ -25,5 +26,6 @@ export const venuesFixture = toMutable([
     postalCode: '',
     isPermanent: true,
     venue_type: VenueTypeCodeKey.VISUAL_ARTS,
+    isOpenToPublic: false,
   },
 ] as const satisfies ReadonlyDeep<GeolocatedVenue[]>)
