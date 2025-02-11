@@ -3,6 +3,7 @@ import { State } from 'react-native-gesture-handler'
 import { fireGestureHandler, getByGestureTestId } from 'react-native-gesture-handler/jest-utils'
 import { UseQueryResult } from 'react-query'
 
+import { navigate } from '__mocks__/@react-navigation/native'
 import { VenueTypeCodeKey } from 'api/gen'
 import { PlaylistType } from 'features/offer/enums'
 import * as useVenueOffers from 'features/venue/api/useVenueOffers'
@@ -23,13 +24,6 @@ import { act, fireEvent, render, screen, userEvent, waitFor } from 'tests/utils'
 import * as constants from '../../constant'
 
 const mockSetInitialVenues = jest.spyOn(initialVenuesActions, 'setInitialVenues')
-
-const mockNavigate = jest.fn()
-jest.mock('@react-navigation/native', () => ({
-  ...jest.requireActual('@react-navigation/native'),
-  useNavigation: () => ({ navigate: mockNavigate, push: jest.fn() }),
-  useFocusEffect: jest.fn(),
-}))
 
 jest.mock('features/venueMap/useGetAllVenues')
 const mockUseGetAllVenues = useGetAllVenues as jest.Mock
@@ -94,9 +88,10 @@ const pressVenueMarker = (venue: GeolocatedVenue) => {
   })
 }
 
-describe('<VenueMapView />', () => {
-  const user = userEvent.setup()
+const user = userEvent.setup()
+jest.useFakeTimers()
 
+describe('<VenueMapView />', () => {
   beforeEach(() => {
     jest.useFakeTimers()
     mockUseVenueOffers()
@@ -221,7 +216,37 @@ describe('<VenueMapView />', () => {
       { state: State.END, absoluteY: -30 },
     ])
 
-    expect(mockNavigate).toHaveBeenCalledWith('Venue', { id: venuesFixture[0].venueId })
+    expect(navigate).toHaveBeenCalledWith('Venue', { id: venuesFixture[0].venueId })
+  })
+
+  it('should deactivate navigation to Venue page when bottom sheet is open, pressing venue button, wipIsOpenToPublic feature flag is true and venue is not open to public', async () => {
+    mockUseVenueOffers(true)
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_IS_OPEN_TO_PUBLIC])
+    render(getVenueMapViewComponent({ selectedVenue: venuesFixture[0] }))
+    await screen.findByTestId(`marker-${venuesFixture[0].venueId}`)
+
+    await pressVenueMarker(venuesFixture[0])
+    await waitFor(() => expect(screen.getByTestId('venueMapPreview')).toBeOnTheScreen())
+
+    await user.press(screen.getByText(venuesFixture[0].label))
+
+    expect(screen.queryByTestId('RightFilled')).not.toBeOnTheScreen()
+  })
+
+  it('should activate navigation to Venue page when bottom sheet is open, pressing venue button, wipIsOpenToPublic feature flag is true and venue is open to public', async () => {
+    mockUseVenueOffers(true)
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_IS_OPEN_TO_PUBLIC])
+    render(
+      getVenueMapViewComponent({ selectedVenue: { ...venuesFixture[0], isOpenToPublic: true } })
+    )
+    await screen.findByTestId(`marker-${venuesFixture[0].venueId}`)
+
+    await pressVenueMarker(venuesFixture[0])
+    await waitFor(() => expect(screen.getByTestId('venueMapPreview')).toBeOnTheScreen())
+
+    await user.press(screen.getByText(venuesFixture[0].label))
+
+    expect(screen.getByTestId('RightFilled')).toBeOnTheScreen()
   })
 
   // TODO(PC-33564): fix flaky tests
