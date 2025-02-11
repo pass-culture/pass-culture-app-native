@@ -16,6 +16,7 @@
         pkgs.mkShellNoCC {
           packages = [
             pkgs.devbox
+            pkgs.jdk17 # needed by Android
           ];
         };
     });
