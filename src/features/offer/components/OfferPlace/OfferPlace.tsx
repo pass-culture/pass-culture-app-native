@@ -60,6 +60,7 @@ export function OfferPlace({ offer, subcategory }: Readonly<OfferPlaceProps>) {
   const { isDesktopViewport } = useTheme()
 
   const enableCineFromOffer = useFeatureFlag(RemoteStoreFeatureFlags.TARGET_XP_CINE_FROM_OFFER)
+  const shouldUseIsOpenToPublic = useFeatureFlag(RemoteStoreFeatureFlags.WIP_IS_OPEN_TO_PUBLIC)
 
   const venueSectionTitle = getVenueSectionTitle(offer.subcategoryId, subcategory.isEvent)
 
@@ -147,6 +148,10 @@ export function OfferPlace({ offer, subcategory }: Readonly<OfferPlaceProps>) {
 
   const isOfferAMovieScreening = offer.subcategoryId === SubcategoryIdEnum.SEANCE_CINE
 
+  const isOpenToPublicVenue = offer.venue.isOpenToPublic ?? false
+
+  const canSeeVenue = shouldUseIsOpenToPublic ? isOpenToPublicVenue : offer.venue.isPermanent
+
   const renderOfferVenueBlock = () => {
     return (
       <ViewGap gap={8}>
@@ -154,14 +159,14 @@ export function OfferPlace({ offer, subcategory }: Readonly<OfferPlaceProps>) {
           <OfferCineBlock
             title={venueSectionTitle}
             offer={offer}
-            onSeeVenuePress={offer.venue.isPermanent ? handleOnSeeVenuePress : undefined}
+            onSeeVenuePress={canSeeVenue ? handleOnSeeVenuePress : undefined}
           />
         ) : (
           <OfferVenueBlock
             title={venueSectionTitle}
             offer={offer}
             onChangeVenuePress={shouldDisplayChangeVenueButton ? onShowChangeVenueModal : undefined}
-            onSeeVenuePress={offer.venue.isPermanent ? handleOnSeeVenuePress : undefined}
+            onSeeVenuePress={canSeeVenue ? handleOnSeeVenuePress : undefined}
             onSeeItineraryPress={
               shouldDisplaySeeItineraryButton ? handleBeforeNavigateToItinerary : undefined
             }
