@@ -163,7 +163,7 @@ function NonBeneficiaryBanner({
       return (
         <BannerContainer>
           <Spacer.Column numberOfSpaces={2} />
-          <RemoteBanner />
+          <RemoteBanner from="Profile" />
         </BannerContainer>
       )
     }

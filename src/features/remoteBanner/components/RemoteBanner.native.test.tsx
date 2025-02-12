@@ -23,14 +23,14 @@ describe('RemoteBanner', () => {
     setFeatureFlags([
       { featureFlag: RemoteStoreFeatureFlags.SHOW_REMOTE_BANNER, options: bannerExternalUrl },
     ])
-    render(<RemoteBanner />)
+    render(<RemoteBanner from="Profile" />)
 
     expect(screen).toMatchSnapshot()
   })
 
   it('when the showRemoteBanner FF is off, the banner should not be displayed', () => {
     setFeatureFlags()
-    render(<RemoteBanner />)
+    render(<RemoteBanner from="Profile" />)
 
     expect(screen).toMatchSnapshot()
   })
@@ -39,7 +39,7 @@ describe('RemoteBanner', () => {
     setFeatureFlags([
       { featureFlag: RemoteStoreFeatureFlags.SHOW_REMOTE_BANNER, options: bannerExternalUrl },
     ])
-    render(<RemoteBanner />)
+    render(<RemoteBanner from="Profile" />)
 
     const banner = screen.queryByText('title 1')
 
@@ -50,7 +50,7 @@ describe('RemoteBanner', () => {
     setFeatureFlags([
       { featureFlag: RemoteStoreFeatureFlags.SHOW_REMOTE_BANNER, options: bannerBadType },
     ])
-    render(<RemoteBanner />)
+    render(<RemoteBanner from="Profile" />)
 
     const banner = screen.queryByText('title 1')
 
@@ -61,7 +61,7 @@ describe('RemoteBanner', () => {
     setFeatureFlags([
       { featureFlag: RemoteStoreFeatureFlags.SHOW_REMOTE_BANNER, options: bannerAppStore },
     ])
-    render(<RemoteBanner />)
+    render(<RemoteBanner from="Profile" />)
 
     const banner = await screen.findByText('title 1')
     await user.press(banner)
@@ -76,7 +76,7 @@ describe('RemoteBanner', () => {
     setFeatureFlags([
       { featureFlag: RemoteStoreFeatureFlags.SHOW_REMOTE_BANNER, options: bannerExternalUrl },
     ])
-    render(<RemoteBanner />)
+    render(<RemoteBanner from="Profile" />)
 
     const banner = await screen.findByText('title 1')
     await user.press(banner)
@@ -96,7 +96,7 @@ describe('RemoteBanner', () => {
         options: bannerExternalUrlWithMissingUrl,
       },
     ])
-    render(<RemoteBanner />)
+    render(<RemoteBanner from="Profile" />)
 
     const banner = await screen.findByText('title 1')
     await user.press(banner)

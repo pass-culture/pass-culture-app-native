@@ -10,6 +10,7 @@ import {
   validateRemoteBanner,
 } from 'features/remoteBanner/components/remoteBannerSchema'
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
+import { analytics } from 'libs/analytics/provider'
 import { useFeatureFlagOptions } from 'libs/firebase/firestore/featureFlags/useFeatureFlagOptions'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { BannerWithBackground } from 'ui/components/ModuleBanner/BannerWithBackground'
@@ -18,7 +19,9 @@ import { TypoDS } from 'ui/theme'
 
 const isWeb = Platform.OS === 'web'
 
-export const RemoteBanner = () => {
+export type RemoteBannerOrigin = 'Profile' | 'Home' | 'Cheatcodes'
+
+export const RemoteBanner = ({ from }: { from: RemoteBannerOrigin }) => {
   const { options } = useFeatureFlagOptions(RemoteStoreFeatureFlags.SHOW_REMOTE_BANNER)
   const validatedOptions = validateRemoteBanner(options)
   if (!validatedOptions) return null
@@ -34,6 +37,7 @@ export const RemoteBanner = () => {
     : storeAccessibilityLabel
 
   const onPress = () => {
+    analytics.logHasClickedRemoteBanner(from, validatedOptions)
     if (isStoreRedirection) onPressStoreLink()
     if (isExternalAndDefined) openUrl(redirectionUrl)
   }

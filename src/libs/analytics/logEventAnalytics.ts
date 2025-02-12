@@ -24,6 +24,8 @@ import {
 } from 'features/navigation/RootNavigator/types'
 import { SearchStackRouteName } from 'features/navigation/SearchStackNavigator/types'
 import { PlaylistType } from 'features/offer/enums'
+import { RemoteBannerOrigin } from 'features/remoteBanner/components/RemoteBanner'
+import { RemoteBannerType } from 'features/remoteBanner/components/remoteBannerSchema'
 import { SearchState } from 'features/search/types'
 import { ShareAppModalType } from 'features/share/types'
 import { SubscriptionAnalyticsParams } from 'features/subscription/types'
@@ -356,6 +358,8 @@ export const logEventAnalytics = {
   logHasClickedDuoStep: () => analytics.logEvent({ firebase: AnalyticsEvent.HAS_CLICKED_DUO_STEP }),
   logHasClickedMissingCode: () =>
     analytics.logEvent({ firebase: AnalyticsEvent.HAS_CLICKED_MISSING_CODE }),
+  logHasClickedRemoteBanner: (from: RemoteBannerOrigin, options: RemoteBannerType) =>
+    analytics.logEvent({ firebase: AnalyticsEvent.HAS_CLICKED_REMOTE_BANNER }, { from, options }),
   logHasClickedTutorialFAQ: () =>
     analytics.logEvent({ firebase: AnalyticsEvent.HAS_CLICKED_TUTORIAL_FAQ }),
   logHasCorrectedEmail: ({ from }: { from: Referrals }) =>

@@ -24,7 +24,7 @@ export const CheatcodesScreenRemoteBanner = () => {
   return (
     <CheatcodesTemplateScreen title="RemoteBanner 🆒" flexDirection="column">
       <ViewGap gap={getSpacing(3)}>
-        <RemoteBanner />
+        <RemoteBanner from="Cheatcodes" />
         {error ? (
           <ErrorBanner
             message={`La bannière ne s‘affichera pas à cause de l’erreur suivante:\n${error}`}

@@ -37,7 +37,7 @@ export const HeaderWithGreyContainer: FunctionComponent<PropsWithChildren> = ({
       )}
       {showForceUpdateBanner ? (
         <BannerContainer>
-          <RemoteBanner />
+          <RemoteBanner from="Profile" />
           <Spacer.Column numberOfSpaces={6} />
         </BannerContainer>
       ) : null}

@@ -17,7 +17,7 @@ describe('RemoteBanner', () => {
     setFeatureFlags([
       { featureFlag: RemoteStoreFeatureFlags.SHOW_REMOTE_BANNER, options: bannerExternalUrl },
     ])
-    render(<RemoteBanner />)
+    render(<RemoteBanner from="Profile" />)
 
     const subtitle = screen.queryByText('subtitleWeb')
 
@@ -28,7 +28,7 @@ describe('RemoteBanner', () => {
     setFeatureFlags([
       { featureFlag: RemoteStoreFeatureFlags.SHOW_REMOTE_BANNER, options: bannerExternalUrl },
     ])
-    render(<RemoteBanner />)
+    render(<RemoteBanner from="Profile" />)
 
     const subtitle = screen.queryByText('subtitleMobile')
 

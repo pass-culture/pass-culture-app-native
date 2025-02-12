@@ -141,7 +141,7 @@ export const HomeBanner = ({ isLoggedIn }: HomeBannerProps) => {
   if (showForceUpdateBanner) {
     return (
       <BannerContainer>
-        <RemoteBanner />
+        <RemoteBanner from="Home" />
       </BannerContainer>
     )
   }
