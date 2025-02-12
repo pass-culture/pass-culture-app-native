@@ -3,6 +3,7 @@ import React from 'react'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useDepositAmountsByAge } from 'shared/user/useDepositAmountsByAge'
+import { mockSettings } from 'tests/mockSettings'
 import { checkAccessibilityFor, render } from 'tests/utils/web'
 
 import { EighteenBirthday } from './EighteenBirthday'
@@ -13,6 +14,7 @@ mockUseDepositAmountsByAge.mockReturnValue({ eighteenYearsOldDeposit: '300 €' 
 
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
+mockSettings()
 
 describe('<EighteenBirthday/>', () => {
   describe('Accessibility', () => {

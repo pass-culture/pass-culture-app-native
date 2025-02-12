@@ -19,12 +19,14 @@ import {
 } from 'libs/algolia/fixtures/algoliaFixtures'
 import { AlgoliaVenue } from 'libs/algolia/types'
 import { GeoCoordinates, GeolocPermissionState, GeolocationError } from 'libs/location'
+import { mockSettings } from 'tests/mockSettings'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, renderHook, waitFor } from 'tests/utils'
 
 const { multipleQueries } = algoliasearch()
 
 jest.mock('libs/firebase/analytics/analytics')
+mockSettings()
 
 const DEFAULT_POSITION = { latitude: 66, longitude: 66 } as GeoCoordinates | null
 const mockPositionError = null as GeolocationError | null

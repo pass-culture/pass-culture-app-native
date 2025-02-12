@@ -4,6 +4,7 @@ import { createStackNavigator } from '@react-navigation/stack'
 import React from 'react'
 
 import { analytics } from 'libs/analytics/provider'
+import { mockSettings } from 'tests/mockSettings'
 import { act, render } from 'tests/utils/web'
 
 import { onNavigationStateChange } from './services'
@@ -16,6 +17,8 @@ jest.mock('react-native-safe-area-context', () => ({
   ...jest.requireActual('react-native-safe-area-context'),
   useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
 }))
+
+mockSettings()
 
 describe('onNavigationStateChange()', () => {
   it('should log screen view on navigation change', async () => {

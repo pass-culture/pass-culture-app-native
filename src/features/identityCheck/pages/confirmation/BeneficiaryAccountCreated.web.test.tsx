@@ -2,6 +2,7 @@ import React from 'react'
 
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { mockSettings } from 'tests/mockSettings'
 import { render, checkAccessibilityFor, screen } from 'tests/utils/web'
 
 import { BeneficiaryAccountCreated } from './BeneficiaryAccountCreated'
@@ -9,6 +10,7 @@ import { BeneficiaryAccountCreated } from './BeneficiaryAccountCreated'
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 jest.mock('features/auth/context/AuthContext')
+mockSettings()
 
 describe('<BeneficiaryAccountCreated/>', () => {
   describe('Accessibility', () => {

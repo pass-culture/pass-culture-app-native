@@ -2,9 +2,12 @@ import React from 'react'
 
 import { PriceLine } from 'features/bookOffer/components/PriceLine'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { mockSettings } from 'tests/mockSettings'
 import { render, screen } from 'tests/utils'
 
 const attributes = ['VOSTFR', '3D', 'IMAX']
+
+mockSettings()
 
 describe('<PriceLine />', () => {
   beforeEach(() => {

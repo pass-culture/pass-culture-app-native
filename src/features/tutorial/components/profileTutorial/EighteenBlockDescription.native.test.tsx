@@ -4,8 +4,10 @@ import { EighteenBlockDescription } from 'features/tutorial/components/profileTu
 import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { mockSettings } from 'tests/mockSettings'
 import { render, screen } from 'tests/utils'
 
+mockSettings()
 const mockUseAuthContext = jest.fn().mockReturnValue({ isLoggedIn: false, user: undefined })
 jest.mock('features/auth/context/AuthContext', () => ({
   useAuthContext: () => mockUseAuthContext(),

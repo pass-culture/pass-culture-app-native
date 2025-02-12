@@ -12,6 +12,7 @@ import { SuggestedPlace } from 'libs/place/types'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { mockAuthContextWithoutUser } from 'tests/AuthContextUtils'
+import { mockSettings } from 'tests/mockSettings'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, waitFor, userEvent } from 'tests/utils/web'
@@ -20,6 +21,7 @@ import * as useModalAPI from 'ui/components/modals/useModal'
 import { OfferContent } from './OfferContent.web'
 
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
+mockSettings()
 
 const mockShowModal = jest.fn()
 jest.spyOn(useModalAPI, 'useModal').mockReturnValue({

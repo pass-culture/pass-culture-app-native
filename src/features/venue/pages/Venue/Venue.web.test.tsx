@@ -12,6 +12,7 @@ import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { Offer } from 'shared/offer/types'
+import { mockSettings } from 'tests/mockSettings'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, checkAccessibilityFor, fireEvent, render, screen } from 'tests/utils/web'
@@ -22,8 +23,9 @@ jest.mock('libs/subcategories/useSubcategory')
 jest.mock('features/venue/api/useVenue')
 jest.mock('features/venue/api/useVenueOffers')
 jest.mock('libs/itinerary/useItinerary')
-
 jest.mock('features/auth/context/AuthContext')
+
+mockSettings()
 
 jest.mock('uuid', () => ({
   v1: jest.fn(),

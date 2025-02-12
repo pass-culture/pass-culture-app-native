@@ -7,12 +7,14 @@ import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { beneficiaryUser } from 'fixtures/user'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
+import { mockSettings } from 'tests/mockSettings'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, waitFor } from 'tests/utils'
 
 import { BookingEventChoices } from './BookingEventChoices'
 
+mockSettings()
 jest.mock('features/auth/context/AuthContext')
 
 const mockUseBooking = useBookingContext as jest.Mock

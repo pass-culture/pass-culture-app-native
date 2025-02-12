@@ -15,6 +15,7 @@ import * as ProfileUtils from 'features/profile/helpers/useIsUserUnderageBenefic
 import { formatToSlashedFrenchDate, setDateOneDayEarlier } from 'libs/dates'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { mockSettings } from 'tests/mockSettings'
 import { fireEvent, render, screen } from 'tests/utils'
 
 jest.mock('features/profile/api/useResetRecreditAmountToShow')
@@ -34,6 +35,7 @@ const today = '2023-02-10T21:00:00'
 const tomorrow = '2023-02-11T21:00:00'
 
 jest.mock('libs/firebase/analytics/analytics')
+mockSettings()
 
 describe('CreditHeader', () => {
   beforeEach(() => {

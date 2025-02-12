@@ -9,11 +9,13 @@ import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
+import { mockSettings } from 'tests/mockSettings'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 import * as useModalAPI from 'ui/components/modals/useModal'
 
 const mockShowModal = jest.fn()
 const useModalAPISpy = jest.spyOn(useModalAPI, 'useModal')
+mockSettings()
 
 const mockedPlace: SuggestedPlace = {
   label: 'Kourou',

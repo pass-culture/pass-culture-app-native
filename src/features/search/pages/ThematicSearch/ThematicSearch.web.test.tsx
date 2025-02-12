@@ -10,6 +10,7 @@ import { env } from 'libs/environment/env'
 import { LocationMode } from 'libs/location/types'
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
+import { mockSettings } from 'tests/mockSettings'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { checkAccessibilityFor, render, screen } from 'tests/utils/web'
@@ -17,6 +18,7 @@ import { checkAccessibilityFor, render, screen } from 'tests/utils/web'
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 jest.mock('features/navigation/TabBar/routes')
+mockSettings()
 
 const mockDispatch = jest.fn()
 

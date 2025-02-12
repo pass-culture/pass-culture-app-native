@@ -14,7 +14,7 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { defaultDisabilitiesProperties } from 'features/accessibility/context/AccessibilityFiltersWrapper'
-import { useSettingsContext } from 'features/auth/context/SettingsContext'
+import { useSettings } from 'features/auth/context/useSettings'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { HiddenSuggestionsButton } from 'features/search/components/Buttons/HiddenSuggestionsButton'
@@ -78,7 +78,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
   const debounceSetAutocompleteQuery = useRef(
     debounce(setAutocompleteQuery, SEARCH_DEBOUNCE_MS)
   ).current
-  const { data: appSettings } = useSettingsContext()
+  const { data: appSettings } = useSettings()
   const appEnableAutocomplete = appSettings?.appEnableAutocomplete
 
   const setQuery = useCallback(

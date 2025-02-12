@@ -10,9 +10,11 @@ import { venueTypeCodeActions } from 'features/venueMap/store/venueTypeCodeStore
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { mockSettings } from 'tests/mockSettings'
 import { render, screen, userEvent } from 'tests/utils'
 import * as useModalAPI from 'ui/components/modals/useModal'
 
+mockSettings()
 const searchId = uuidv4()
 const mockUseSearch = jest.fn(() => ({
   searchState: { ...initialSearchState, searchId },

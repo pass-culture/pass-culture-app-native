@@ -11,6 +11,7 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { GeoCoordinates } from 'libs/location'
 import { ILocationContext, LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
+import { mockSettings } from 'tests/mockSettings'
 import { render, screen } from 'tests/utils/web'
 
 const searchId = uuidv4()
@@ -25,6 +26,8 @@ const mockUseLocation: jest.Mock<Partial<ILocationContext>> = jest.fn(() => ({
 jest.mock('libs/location/LocationWrapper', () => ({
   useLocation: () => mockUseLocation(),
 }))
+
+mockSettings()
 
 const kourou: SuggestedPlace = {
   label: 'Kourou',

@@ -11,6 +11,7 @@ import { AgeSelectionOther } from 'features/tutorial/pages/AgeSelectionOther'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { storage } from 'libs/storage'
+import { mockSettings } from 'tests/mockSettings'
 import { render, screen, userEvent } from 'tests/utils'
 
 const mockShowModal = jest.fn()
@@ -21,6 +22,7 @@ jest.mock('ui/components/modals/useModal', () => ({
     hideModal: jest.fn(),
   }),
 }))
+mockSettings()
 
 jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
   goBack: jest.fn(),

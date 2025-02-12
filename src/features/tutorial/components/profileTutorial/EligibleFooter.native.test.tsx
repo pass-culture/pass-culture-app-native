@@ -4,7 +4,10 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { EligibleFooter } from 'features/tutorial/components/profileTutorial/EligibleFooter'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { mockSettings } from 'tests/mockSettings'
 import { fireEvent, render, screen } from 'tests/utils'
+
+mockSettings()
 
 describe('<EligibleFooter />', () => {
   beforeEach(() => {

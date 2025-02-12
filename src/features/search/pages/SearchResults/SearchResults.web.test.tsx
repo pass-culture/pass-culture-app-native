@@ -12,6 +12,7 @@ import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
+import { mockSettings } from 'tests/mockSettings'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, checkAccessibilityFor, render } from 'tests/utils/web'
@@ -19,6 +20,7 @@ import { act, checkAccessibilityFor, render } from 'tests/utils/web'
 jest.mock('libs/network/NetInfoWrapper')
 
 jest.mock('features/auth/context/AuthContext')
+mockSettings()
 
 const mockStateDispatch = jest.fn()
 const initialMockUseSearchResults = { searchState: initialSearchState, dispatch: mockStateDispatch }

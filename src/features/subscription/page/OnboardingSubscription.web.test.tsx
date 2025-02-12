@@ -1,12 +1,14 @@
 import React from 'react'
 
 import { OnboardingSubscription } from 'features/subscription/page/OnboardingSubscription'
+import { mockSettings } from 'tests/mockSettings'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, checkAccessibilityFor, render, screen } from 'tests/utils/web'
 
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 jest.mock('ui/theme/customFocusOutline/customFocusOutline')
+mockSettings()
 
 describe('OnboardingSubscription', () => {
   describe('Accessibility', () => {

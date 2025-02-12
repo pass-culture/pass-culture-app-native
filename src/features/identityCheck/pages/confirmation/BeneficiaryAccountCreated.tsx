@@ -2,7 +2,7 @@ import React, { useCallback } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { useSettingsContext } from 'features/auth/context/SettingsContext'
+import { useSettings } from 'features/auth/context/useSettings'
 import { creditActions } from 'features/identityCheck/api/useCreditStore'
 import { navigateToHome, navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { isUserUnderageBeneficiary } from 'features/profile/helpers/isUserUnderageBeneficiary'
@@ -28,7 +28,7 @@ export function BeneficiaryAccountCreated() {
   const maxPriceInCents = useMaxPrice()
   const { uniqueColors } = useTheme()
   const { user } = useAuthContext()
-  const { data: settings } = useSettingsContext()
+  const { data: settings } = useSettings()
 
   const isUnderageBeneficiary = isUserUnderageBeneficiary(user)
   const shouldShowCulturalSurvey = useShouldShowCulturalSurveyForBeneficiaryUser()

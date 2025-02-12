@@ -7,6 +7,7 @@ import { AlgoliaVenue, LocationMode } from 'libs/algolia/types'
 import { analytics } from 'libs/analytics/provider'
 import { ILocationContext } from 'libs/location'
 import { SuggestedPlace } from 'libs/place/types'
+import { mockSettings } from 'tests/mockSettings'
 import { userEvent, render, screen } from 'tests/utils'
 
 import { SearchVenueItem } from './SearchVenueItem'
@@ -71,6 +72,7 @@ const MUNICIPALITY_AROUND_PLACE_POSITION = {
   geolocPosition: undefined,
 }
 
+mockSettings()
 const mockUseLocation = jest.fn((): Partial<ILocationContext> => EVERYWHERE_USER_POSITION)
 jest.mock('libs/location', () => ({
   useLocation: () => mockUseLocation(),

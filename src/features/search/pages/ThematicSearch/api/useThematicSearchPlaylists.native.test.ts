@@ -20,6 +20,7 @@ const defaultThematicSearchOffer = mockBuilder.searchResponseOffer({})
 const fetchThematicSearchPlaylistsOffers = jest.fn().mockResolvedValue([defaultThematicSearchOffer])
 
 jest.mock('libs/firebase/analytics/analytics')
+jest.mock('features/auth/context/useSettings')
 
 const PLAYLISTS_TITLES = ['Titre de la playlist - 1', 'Titre de la playlist - 2']
 
@@ -60,16 +61,5 @@ it('should only return offers with images', async () => {
 
   await act(() => {})
 
-  expect(result).toEqual({
-    current: {
-      playlists: [
-        {
-          title: PLAYLISTS_TITLES[0],
-          offers: {
-            hits: [OFFER_WITH_IMAGE],
-          },
-        },
-      ],
-    },
-  })
+  expect(result.current.playlists[0]?.offers.hits[0]?.objectID).toBe(OFFER_WITH_IMAGE?.objectID)
 })

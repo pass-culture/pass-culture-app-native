@@ -9,6 +9,7 @@ import {
 } from 'features/profile/fixtures/domainsCredit'
 import * as ProfileUtils from 'features/profile/helpers/useIsUserUnderageBeneficiary'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { mockSettings } from 'tests/mockSettings'
 import { render, screen, waitFor } from 'tests/utils'
 
 const mockUseIsUserUnderageBeneficiary = jest
@@ -16,6 +17,7 @@ const mockUseIsUserUnderageBeneficiary = jest
   .mockReturnValue(false)
 
 jest.mock('libs/firebase/analytics/analytics')
+mockSettings()
 
 describe('BeneficiaryCeilings', () => {
   beforeEach(() => {

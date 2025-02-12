@@ -13,7 +13,6 @@ import {
   UserProfileResponse,
 } from 'api/gen'
 import { AuthContext } from 'features/auth/context/AuthContext'
-import { setSettings } from 'features/auth/tests/setSettings'
 import { SignInResponseFailure } from 'features/auth/types'
 import { favoriteOfferResponseSnap } from 'features/favorites/fixtures/favoriteOfferResponseSnap'
 import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteResponseSnap'
@@ -30,6 +29,7 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import * as monitoringErrorsModule from 'libs/monitoring/errors'
 import { NetworkErrorFixture, UnknownErrorFixture } from 'libs/recaptcha/fixtures'
 import { storage } from 'libs/storage'
+import { mockSettings } from 'tests/mockSettings'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, simulateWebviewMessage } from 'tests/utils'
@@ -84,6 +84,8 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
     return Component
   }
 })
+
+mockSettings({ isRecaptchaEnabled: false })
 
 describe('<Login/>', () => {
   beforeEach(() => {
@@ -644,7 +646,11 @@ describe('<Login/>', () => {
 
   describe('Login with ReCatpcha', () => {
     beforeAll(() => {
-      setSettings()
+      mockSettings({ isRecaptchaEnabled: true })
+    })
+
+    afterAll(() => {
+      mockSettings({ isRecaptchaEnabled: false })
     })
 
     it('should not open reCAPTCHA challenge modal before clicking on login button', async () => {

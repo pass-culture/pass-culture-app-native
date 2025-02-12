@@ -5,6 +5,7 @@ import { BookingState, initialBookingState } from 'features/bookOffer/context/re
 import { mockStocks } from 'features/bookOffer/fixtures/stocks'
 import { IBookingContext } from 'features/bookOffer/types'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { mockSettings } from 'tests/mockSettings'
 import { fireEvent, render, screen } from 'tests/utils'
 
 const mockInitialBookingState = initialBookingState
@@ -25,6 +26,7 @@ const mockCreditOffer = 50000
 jest.mock('features/offer/helpers/useHasEnoughCredit/useHasEnoughCredit', () => ({
   useCreditForOffer: jest.fn(() => mockCreditOffer),
 }))
+mockSettings()
 
 describe('BookPricesChoice', () => {
   beforeEach(() => {

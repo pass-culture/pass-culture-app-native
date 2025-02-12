@@ -5,10 +5,12 @@ import { useVenueBlock } from 'features/offer/components/OfferVenueBlock/useVenu
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { ILocationContext } from 'libs/location'
 import { LocationMode } from 'libs/location/types'
+import { mockSettings } from 'tests/mockSettings'
 import { userEvent, render, screen } from 'tests/utils'
 
 import { OfferVenueBlock } from './OfferVenueBlock'
 
+mockSettings()
 jest.mock('features/offer/components/OfferVenueBlock/useVenueBlock')
 const mockOnCopyAddressPress = jest.fn()
 const mockUseVenueBlock = jest.mocked(useVenueBlock)

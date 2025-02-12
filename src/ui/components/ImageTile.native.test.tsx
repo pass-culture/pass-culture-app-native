@@ -1,7 +1,10 @@
 import React from 'react'
 
+import { mockSettings } from 'tests/mockSettings'
 import { render, screen } from 'tests/utils'
 import { ImageTile } from 'ui/components/ImageTile'
+
+mockSettings()
 
 const props = {
   height: 100,

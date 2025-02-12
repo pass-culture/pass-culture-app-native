@@ -2,7 +2,7 @@ import mockdate from 'mockdate'
 import React from 'react'
 
 import { CURRENT_DATE } from 'features/auth/fixtures/fixtures'
-import { setSettings } from 'features/auth/tests/setSettings'
+import { mockSettings } from 'tests/mockSettings'
 import { act, fireEvent, render, screen } from 'tests/utils/web'
 
 import { SetBirthday } from './SetBirthday'
@@ -26,7 +26,7 @@ jest.mock('ui/theme/customFocusOutline/customFocusOutline')
 describe('<SetBirthday />', () => {
   beforeEach(() => {
     mockdate.set(CURRENT_DATE)
-    setSettings()
+    mockSettings()
   })
 
   describe('submit button behavior', () => {

@@ -9,11 +9,13 @@ import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useGetDepositAmountsByAge } from 'shared/user/useGetDepositAmountsByAge'
 import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
+import { mockSettings } from 'tests/mockSettings'
 import { fireEvent, render, screen } from 'tests/utils'
 
 import { FinishSubscriptionModal } from './FinishSubscriptionModal'
 
 jest.mock('features/auth/context/AuthContext')
+mockSettings()
 
 jest.mock('shared/user/useGetDepositAmountsByAge')
 const mockDepositAmounts = useGetDepositAmountsByAge as jest.Mock

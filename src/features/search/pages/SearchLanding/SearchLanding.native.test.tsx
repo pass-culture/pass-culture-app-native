@@ -18,9 +18,11 @@ import { LocationMode } from 'libs/location/types'
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
 import { SuggestedPlace } from 'libs/place/types'
 import { mockedSuggestedVenue } from 'libs/venue/fixtures/mockedSuggestedVenues'
+import { mockSettings } from 'tests/mockSettings'
 import { act, fireEvent, render, screen } from 'tests/utils'
 
 const venue = mockedSuggestedVenue
+mockSettings()
 
 let mockSearchState: SearchState = {
   ...initialSearchState,

@@ -7,6 +7,7 @@ import { formattedBusinessModule } from 'features/home/fixtures/homepage.fixture
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
+import { mockSettings } from 'tests/mockSettings'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, checkAccessibilityFor, render } from 'tests/utils/web'
@@ -14,6 +15,7 @@ import { act, checkAccessibilityFor, render } from 'tests/utils/web'
 import { Home } from './Home'
 
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
+mockSettings()
 
 const mockShouldShowSkeleton = false
 jest.mock('features/home/api/useShowSkeleton', () => ({

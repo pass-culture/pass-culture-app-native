@@ -2,12 +2,14 @@ import mockdate from 'mockdate'
 
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { mockSettings } from 'tests/mockSettings'
 import { renderHook } from 'tests/utils'
 
 import { useGetDepositAmountsByAge } from './useGetDepositAmountsByAge'
 
 const TODAY = '2022-10-24'
 mockdate.set(new Date(TODAY))
+mockSettings()
 
 describe('useGetDepositAmountsByAge', () => {
   beforeEach(() => {

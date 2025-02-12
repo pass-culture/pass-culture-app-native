@@ -11,12 +11,14 @@ import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { mockAuthContextWithUser, mockAuthContextWithoutUser } from 'tests/AuthContextUtils'
+import { mockSettings } from 'tests/mockSettings'
 import { fireEvent, render, screen } from 'tests/utils'
 
 import { ProfileTutorialAgeInformation } from './ProfileTutorialAgeInformation'
 
 jest.mock('features/auth/context/AuthContext')
 jest.unmock('react-native/Libraries/Animated/createAnimatedComponent')
+mockSettings()
 
 const sixteenUser = { ...beneficiaryUser, birthDate: format(SIXTEEN_AGE_DATE, 'yyyy-MM-dd') }
 

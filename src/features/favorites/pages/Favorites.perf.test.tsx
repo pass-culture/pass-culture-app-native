@@ -11,6 +11,7 @@ import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { decodedTokenWithRemainingLifetime } from 'libs/jwt/fixtures'
 import { storage } from 'libs/storage'
+import { mockSettings } from 'tests/mockSettings'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { measurePerformance, screen } from 'tests/utils'
@@ -20,6 +21,8 @@ jest.mock('libs/firebase/analytics/analytics')
 jest.mock('features/favorites/context/FavoritesWrapper')
 
 jest.mock('react-native/Libraries/Animated/NativeAnimatedHelper')
+
+mockSettings()
 
 // Performance measuring is run multiple times so we need to increase the timeout
 const TEST_TIMEOUT_IN_MS = 30000

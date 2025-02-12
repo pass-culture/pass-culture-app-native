@@ -7,6 +7,7 @@ import { ContentTypes, DisplayParametersFields } from 'libs/contentful/types'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
+import { mockSettings } from 'tests/mockSettings'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, waitFor } from 'tests/utils'
@@ -32,6 +33,8 @@ const mockUseHomeRecommendedOffers = jest.fn().mockReturnValue({
 jest.mock('features/home/api/useHomeRecommendedOffers', () => ({
   useHomeRecommendedOffers: () => mockUseHomeRecommendedOffers(),
 }))
+
+mockSettings()
 
 jest.mock('libs/firebase/analytics/analytics')
 

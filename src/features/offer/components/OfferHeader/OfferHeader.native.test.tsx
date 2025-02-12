@@ -6,6 +6,7 @@ import { paginatedFavoritesResponseSnap } from 'features/favorites/fixtures/pagi
 import * as useGoBack from 'features/navigation/useGoBack'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { analytics } from 'libs/analytics/provider'
+import { mockSettings } from 'tests/mockSettings'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
@@ -19,6 +20,7 @@ import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
 import { OfferHeader } from '../OfferHeader/OfferHeader'
 
+mockSettings()
 jest.unmock('react-native/Libraries/Animated/createAnimatedComponent')
 const mockShare = jest.spyOn(Share, 'share').mockImplementation(jest.fn())
 

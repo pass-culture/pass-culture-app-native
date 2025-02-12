@@ -6,6 +6,7 @@ import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { offersFixture } from 'shared/offer/offer.fixture'
+import { mockSettings } from 'tests/mockSettings'
 import { render, screen, userEvent } from 'tests/utils'
 
 import { MarketingBlockExclusivity } from './MarketingBlockExclusivity'
@@ -24,6 +25,7 @@ const propsWithPublicationDateTomorrow = {
   offer: { ...offersFixture[0], offer: { ...offersFixture[0].offer, publicationDate: tomorrow } },
 }
 
+mockSettings()
 jest.mock('libs/subcategories/useSubcategory')
 const mockSubcategories = PLACEHOLDER_DATA.subcategories
 jest.mock('libs/subcategories/useSubcategories', () => ({

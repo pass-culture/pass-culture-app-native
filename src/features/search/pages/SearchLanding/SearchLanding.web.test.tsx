@@ -9,6 +9,7 @@ import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockedSuggestedVenue } from 'libs/venue/fixtures/mockedSuggestedVenues'
+import { mockSettings } from 'tests/mockSettings'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { checkAccessibilityFor, render, screen } from 'tests/utils/web'
@@ -16,6 +17,7 @@ import { checkAccessibilityFor, render, screen } from 'tests/utils/web'
 jest.setTimeout(20000) // to avoid exceeded timeout
 
 jest.mock('libs/network/NetInfoWrapper')
+mockSettings()
 
 const venue = mockedSuggestedVenue
 

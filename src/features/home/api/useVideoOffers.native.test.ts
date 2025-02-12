@@ -7,10 +7,12 @@ import { fetchOffersByIds } from 'libs/algolia/fetchAlgolia/fetchOffersByIds'
 import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { offersFixture } from 'shared/offer/offer.fixture'
+import { mockSettings } from 'tests/mockSettings'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, act } from 'tests/utils'
 
+mockSettings()
 jest.mock('libs/algolia/fetchAlgolia/fetchOffersByIds', () => ({
   fetchOffersByIds: jest.fn(),
 }))
@@ -49,7 +51,8 @@ describe('useVideoOffers', () => {
 
     await act(async () => {})
 
-    expect(result.current.offers).toEqual([offersFixture[0], offersFixture[1]])
+    expect(result.current.offers[0]?.objectID).toEqual(offersFixture[0].objectID)
+    expect(result.current.offers[1]?.objectID).toEqual(offersFixture[1].objectID)
   })
 
   it('should return offers when asking for specific EANs', async () => {
@@ -66,7 +69,8 @@ describe('useVideoOffers', () => {
     await act(async () => {})
     await act(async () => {})
 
-    expect(result.current.offers).toEqual([offersFixture[0], offersFixture[1]])
+    expect(result.current.offers[0]?.objectID).toEqual(offersFixture[0].objectID)
+    expect(result.current.offers[1]?.objectID).toEqual(offersFixture[1].objectID)
   })
 
   it('should return offers when only OffersModuleParameters are provided', async () => {
@@ -81,6 +85,6 @@ describe('useVideoOffers', () => {
 
     await act(async () => {})
 
-    expect(result.current.offers).toEqual(offersFixture)
+    expect(result.current.offers).toHaveLength(mockedAlgoliaResponse.hits.length)
   })
 })

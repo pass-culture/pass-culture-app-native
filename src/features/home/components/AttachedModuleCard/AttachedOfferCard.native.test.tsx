@@ -10,6 +10,7 @@ import { ILocationContext, LocationMode } from 'libs/location/types'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
 import { offersFixture } from 'shared/offer/offer.fixture'
+import { mockSettings } from 'tests/mockSettings'
 import { render, screen } from 'tests/utils'
 
 const offer = offersFixture[2]
@@ -34,6 +35,7 @@ const AROUND_ME_POSITION = {
 const mockUseLocation: jest.Mock<Partial<ILocationContext>> = jest.fn(
   () => EVERYWHERE_USER_POSITION
 )
+mockSettings()
 jest.mock('libs/location/LocationWrapper', () => ({
   useLocation: () => mockUseLocation(),
 }))

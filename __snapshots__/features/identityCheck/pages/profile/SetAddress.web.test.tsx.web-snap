@@ -239,7 +239,7 @@ exports[`<SetAddress/> should render correctly 1`] = `
                       class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm"
                       dir="ltr"
                     >
-                      Entre ton adresse
+                      Recherche et sélectionne ton adresse
                     </div>
                   </div>
                 </label>

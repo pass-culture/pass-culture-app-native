@@ -1,9 +1,11 @@
 import React from 'react'
 
 import { VenueBanner } from 'features/venue/components/VenueBody/VenueBanner'
+import { mockSettings } from 'tests/mockSettings'
 import { fireEvent, render, screen } from 'tests/utils/web'
 
 const mockHandleImagePress = jest.fn()
+mockSettings()
 
 describe('<VenueBanner />', () => {
   it('should call press handler when pressing image not from google', () => {

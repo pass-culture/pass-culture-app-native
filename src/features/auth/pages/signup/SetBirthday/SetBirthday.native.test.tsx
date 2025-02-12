@@ -7,10 +7,10 @@ import {
   DEFAULT_SELECTED_DATE,
   ELIGIBLE_AGE_DATE,
 } from 'features/auth/fixtures/fixtures'
-import { setSettings } from 'features/auth/tests/setSettings'
 import { NonEligible } from 'features/tutorial/enums'
 import { formatDateToISOStringWithoutTime } from 'libs/parsers/formatDates'
 import { storage } from 'libs/storage'
+import { mockSettings } from 'tests/mockSettings'
 import { act, fireEvent, render, screen } from 'tests/utils'
 
 import { SetBirthday } from './SetBirthday'
@@ -49,7 +49,7 @@ describe('<SetBirthday />', () => {
   beforeEach(async () => {
     mockdate.set(CURRENT_DATE)
     await storage.clear(USER_AGE_KEY)
-    setSettings()
+    mockSettings()
   })
 
   it('should render correctly', () => {

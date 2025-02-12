@@ -16,12 +16,14 @@ import * as logOfferConversionAPI from 'libs/algolia/analytics/logOfferConversio
 import { analytics } from 'libs/analytics/provider'
 import { CampaignEvents, campaignTracker } from 'libs/campaign'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { mockSettings } from 'tests/mockSettings'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 import { BookingOfferModalComponent } from './BookingOfferModal'
 
+mockSettings()
 jest.mock('libs/campaign')
 
 const mockDismissModal = jest.fn()

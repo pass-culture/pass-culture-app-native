@@ -17,9 +17,12 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { GeoCoordinates } from 'libs/location'
 import { ILocationContext, LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
+import { mockSettings } from 'tests/mockSettings'
 import { act, render, screen } from 'tests/utils'
 
 import { SearchListHeader } from './SearchListHeader'
+
+mockSettings()
 
 const searchId = uuidv4()
 

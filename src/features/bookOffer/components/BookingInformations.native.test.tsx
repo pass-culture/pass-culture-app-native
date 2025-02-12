@@ -8,6 +8,7 @@ import { useBookingStock } from 'features/bookOffer/helpers/useBookingStock'
 import { offerStockResponseSnap } from 'features/offer/fixtures/offerStockResponse'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { formatDateTimezone } from 'libs/parsers/formatDates'
+import { mockSettings } from 'tests/mockSettings'
 import { render, screen } from 'tests/utils'
 
 import { BookingInformations } from './BookingInformations'
@@ -17,6 +18,7 @@ const randomDatetime = '2020-12-01T00:00:00Z'
 jest.mock('features/bookOffer/context/useBookingContext')
 jest.mock('features/bookOffer/helpers/useBookingStock')
 jest.mock('libs/address/useFormatFullAddress')
+mockSettings()
 const mockedUseBooking = jest.mocked(useBookingContext)
 const mockedUseBookingStock = jest.mocked(useBookingStock)
 

@@ -5,6 +5,7 @@ import { act } from 'react-dom/test-utils'
 import { TutorialRootStackParamList } from 'features/navigation/RootNavigator/types'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { mockSettings } from 'tests/mockSettings'
 import { checkAccessibilityFor, render } from 'tests/utils/web'
 
 import { ProfileTutorialAgeInformation } from './ProfileTutorialAgeInformation'
@@ -15,6 +16,7 @@ const navProps = { route: { params: { age: 15 } } } as StackScreenProps<
 >
 
 jest.mock('features/favorites/context/FavoritesWrapper')
+mockSettings()
 
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')

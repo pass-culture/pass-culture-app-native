@@ -4,13 +4,20 @@ import { renderHook } from '@testing-library/react-native'
 import { useWindowDimensions } from 'react-native'
 import { useTheme } from 'styled-components/native'
 
-import { useSettingsContext } from 'features/auth/context/SettingsContext'
+import { useSettings } from 'features/auth/context/__mocks__/useSettings'
 import { useResizeImageURL } from 'libs/resizing-image-on-demand/useResizeImageURL'
+import { mockSettings } from 'tests/mockSettings'
 
 jest.mock('libs/environment/env')
-jest.mock('react-native', () => ({ useWindowDimensions: jest.fn() }))
+jest.mock('react-native', () => {
+  const { Platform } = jest.requireActual('react-native')
+  return {
+    Platform,
+    useWindowDimensions: jest.fn(),
+  }
+})
 jest.mock('styled-components/native')
-jest.mock('features/auth/context/SettingsContext')
+jest.mock('libs/monitoring/services')
 
 const mockUseWindowDimensions = useWindowDimensions as jest.Mock
 mockUseWindowDimensions.mockReturnValue({ scale: 1 })
@@ -22,8 +29,10 @@ const mockDefaultSettings = {
   enableFrontImageResizing: true,
   objectStorageUrl: 'https://localhost-storage',
 }
-const mockUseSettingsContext = useSettingsContext as jest.Mock
+const mockUseSettingsContext = useSettings
 mockUseSettingsContext.mockReturnValue({ data: mockDefaultSettings })
+
+mockSettings()
 
 describe('useResizeImageURL hook', () => {
   it('should return a smaller resized image URL on a small screen', () => {
@@ -67,7 +76,10 @@ describe('useResizeImageURL hook', () => {
     const imageURL = 'https://localhost-storage/thumbs/mediations/BF6Q'
     const { result } = renderHook(() => useResizeImageURL({ imageURL }))
 
-    expect(result.current).toEqual(imageURL)
+    const expectedImageURL =
+      'https://image-resizing-dot-passculture-metier-ehp.ew.r.appspot.com/?size=327&filename=localhost-storage-v2/thumbs/mediations/BF6Q'
+
+    expect(result.current).toEqual(expectedImageURL)
   })
 
   it('should return the resized image URL with custom dimensions when provided and height > width', () => {

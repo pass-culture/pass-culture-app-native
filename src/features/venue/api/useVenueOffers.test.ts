@@ -9,11 +9,13 @@ import { transformOfferHit, filterOfferHit } from 'libs/algolia/fetchAlgolia/tra
 import { AlgoliaOffer, HitOffer } from 'libs/algolia/types'
 import { LocationMode, Position } from 'libs/location/types'
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
+import { mockSettings } from 'tests/mockSettings'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, waitFor } from 'tests/utils'
 
 const mockLocationMode = LocationMode.AROUND_ME
 const mockUserLocation: Position = { latitude: 48.90374, longitude: 2.48171 }
+mockSettings()
 jest.mock('libs/location/LocationWrapper', () => ({
   useLocation: () => ({
     userLocation: mockUserLocation,
@@ -316,8 +318,7 @@ describe('useVenueOffers', () => {
               name: 'I want something more',
               prices: [2800],
               subcategoryId: SubcategoryIdEnum.CONCERT,
-              thumbUrl:
-                'https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDZQ',
+              thumbUrl: 'https://localhost-storage/thumbs/mediations/CDZQ',
               artist: 'Céline Dion',
             },
             _geoloc: { lat: 4.90339, lng: -52.31663 },

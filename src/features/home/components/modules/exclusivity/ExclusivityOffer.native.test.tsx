@@ -8,11 +8,14 @@ import { ExclusivityOffer } from 'features/home/components/modules/exclusivity/E
 import { offerResponseSnap as mockOffer } from 'features/offer/fixtures/offerResponse'
 import { analytics } from 'libs/analytics/provider'
 import { ContentTypes } from 'libs/contentful/types'
+import { mockSettings } from 'tests/mockSettings'
 import { fireEvent, render, screen } from 'tests/utils'
 
 jest.mock('features/search/helpers/useMaxPrice/useMaxPrice', () => ({
   useMaxPrice: jest.fn(() => 300_00),
 }))
+
+mockSettings()
 
 const props = {
   title: 'Image d’Adèle',

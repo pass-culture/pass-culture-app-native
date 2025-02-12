@@ -1,9 +1,12 @@
 import React from 'react'
 import { SharedValue } from 'react-native-reanimated'
 
+import { mockSettings } from 'tests/mockSettings'
 import { render, screen, userEvent } from 'tests/utils'
 
 import { OfferImageCarousel } from './OfferImageCarousel'
+
+mockSettings()
 
 describe('OfferImageCarousel', () => {
   const user = userEvent.setup()

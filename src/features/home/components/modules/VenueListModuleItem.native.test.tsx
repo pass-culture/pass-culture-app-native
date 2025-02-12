@@ -5,7 +5,10 @@ import { VenueListModule } from 'features/home/components/modules/VenueListModul
 import { venuesSearchFixture } from 'libs/algolia/fixtures/venuesSearchFixture'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { mockSettings } from 'tests/mockSettings'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
+
+mockSettings()
 
 describe('<VenueListModule />', () => {
   beforeEach(() => {

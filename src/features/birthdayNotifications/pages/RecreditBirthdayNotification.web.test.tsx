@@ -2,6 +2,7 @@ import React from 'react'
 
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { mockSettings } from 'tests/mockSettings'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { checkAccessibilityFor, render, screen } from 'tests/utils/web'
 
@@ -9,6 +10,7 @@ import { RecreditBirthdayNotification } from './RecreditBirthdayNotification'
 
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
+mockSettings()
 
 describe('<RecreditBirthdayNotification/>', () => {
   describe('Accessibility', () => {

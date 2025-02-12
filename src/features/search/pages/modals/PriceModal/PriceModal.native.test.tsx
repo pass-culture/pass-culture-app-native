@@ -9,11 +9,13 @@ import { SearchState } from 'features/search/types'
 import { beneficiaryUser } from 'fixtures/user'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { convertCentsToEuros } from 'libs/parsers/pricesConversion'
+import { mockSettings } from 'tests/mockSettings'
 import { render, screen, userEvent, waitFor } from 'tests/utils'
 
 import { PriceModal, PriceModalProps } from './PriceModal'
 
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
+mockSettings()
 
 const searchId = uuidv4()
 const searchState: SearchState = { ...initialSearchState, searchId }

@@ -2,12 +2,12 @@ import React from 'react'
 import { Linking } from 'react-native'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { setSettings } from 'features/auth/tests/setSettings'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { UnknownErrorFixture } from 'libs/recaptcha/fixtures'
 import { mockAuthContextWithoutUser } from 'tests/AuthContextUtils'
+import { mockSettings } from 'tests/mockSettings'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, simulateWebviewMessage, waitFor } from 'tests/utils'
 
@@ -50,7 +50,7 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 
 describe('<AcceptCgu/>', () => {
   beforeEach(() => {
-    setSettings()
+    mockSettings()
   })
 
   it('should render correctly', () => {

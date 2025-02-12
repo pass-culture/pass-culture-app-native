@@ -6,6 +6,7 @@ import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { OfferModal } from 'shared/offer/enums'
 import { OfferModalProps, useBookOfferModal } from 'shared/offer/helpers/useBookOfferModal'
+import { mockSettings } from 'tests/mockSettings'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, renderHook, screen } from 'tests/utils'
 import { LINE_BREAK } from 'ui/theme/constants'
@@ -14,6 +15,8 @@ const mockBookingOfferModal = <Text>BookingOfferModal</Text>
 jest.mock('features/bookOffer/pages/BookingOfferModal', () => ({
   BookingOfferModal: () => mockBookingOfferModal,
 }))
+
+mockSettings()
 
 jest.mock('ui/components/modals/useModal.ts', () => ({
   useModal: jest.fn().mockReturnValue({

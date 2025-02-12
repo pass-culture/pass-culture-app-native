@@ -6,6 +6,7 @@ import { mockOffer as mockBaseOffer } from 'features/bookOffer/fixtures/offer'
 import { stock1, stock2, stock3, stock4 } from 'features/bookOffer/fixtures/stocks'
 import { IBookingContext } from 'features/bookOffer/types'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { mockSettings } from 'tests/mockSettings'
 import { fireEvent, render, screen } from 'tests/utils'
 
 import { BookHourChoice } from './BookHourChoice'
@@ -14,6 +15,7 @@ const mockStep = Step.HOUR
 const mockDuoStep = Step.DUO
 
 const mockDispatch = jest.fn()
+mockSettings()
 
 const mockUseBookingContext: jest.Mock<IBookingContext> = jest.fn()
 mockUseBookingContext.mockReturnValue({

@@ -2,9 +2,11 @@ import React from 'react'
 
 import { CategoryIdEnum } from 'api/gen'
 import { OfferImageContainer } from 'features/offer/components/OfferImageContainer/OfferImageContainer'
+import { mockSettings } from 'tests/mockSettings'
 import { render, screen } from 'tests/utils'
 
 jest.mock('libs/subcategories/useCategoryId')
+mockSettings()
 
 describe('<OfferImageContainer />', () => {
   it('should display image inside carousel when offer has only one image with no pagination', () => {

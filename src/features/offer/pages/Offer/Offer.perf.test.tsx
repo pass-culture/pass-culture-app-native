@@ -13,6 +13,7 @@ import {
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { Network } from 'libs/share/types'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
+import { mockSettings } from 'tests/mockSettings'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, measurePerformance, screen } from 'tests/utils'
@@ -43,6 +44,8 @@ jest.unmock('react-native/Libraries/Animated/createAnimatedComponent')
 jest.useFakeTimers()
 
 jest.mock('libs/network/NetInfoWrapper')
+
+mockSettings()
 
 useRoute.mockReturnValue({
   params: {

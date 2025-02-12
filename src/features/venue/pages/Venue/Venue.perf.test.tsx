@@ -9,6 +9,7 @@ import { Venue } from 'features/venue/pages/Venue/Venue'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { Offer } from 'shared/offer/types'
+import { mockSettings } from 'tests/mockSettings'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, measurePerformance } from 'tests/utils'
@@ -18,6 +19,8 @@ jest.mock('libs/firebase/analytics/analytics')
 jest.mock('react-native/Libraries/Animated/NativeAnimatedHelper')
 
 jest.mock('features/search/context/SearchWrapper')
+
+mockSettings()
 
 useRoute.mockImplementation(() => ({ params: { id: venueDataTest.id } }))
 

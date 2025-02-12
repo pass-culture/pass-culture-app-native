@@ -1,14 +1,15 @@
 import React from 'react'
 
-import { setSettings } from 'features/auth/tests/setSettings'
 import { OnboardingTimeline } from 'features/tutorial/components/onboarding/OnboardingTimeline'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { useDepositAmountsByAge } from 'shared/user/useDepositAmountsByAge'
+import { mockSettings } from 'tests/mockSettings'
 import { render, screen } from 'tests/utils'
 
 jest.mock('shared/user/useDepositAmountsByAge')
 const mockUseDepositAmountsByAge = useDepositAmountsByAge as jest.Mock
 mockUseDepositAmountsByAge.mockReturnValue({ eighteenYearsOldDeposit: '300 €' })
+mockSettings()
 
 describe('OnboardingTimeline', () => {
   describe('when enableCreditV3 not activated', () => {
@@ -57,7 +58,7 @@ describe('OnboardingTimeline', () => {
 
   describe('when enableCreditV3 activated', () => {
     beforeEach(() => {
-      setSettings({ wipEnableCreditV3: true })
+      mockSettings({ wipEnableCreditV3: true })
     })
 
     it('should not display fifteen years old block', () => {
