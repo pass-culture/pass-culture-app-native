@@ -14,7 +14,9 @@ jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 describe('RemoteBanner', () => {
   it('should show web specific subtitle', async () => {
-    setFeatureFlags([RemoteStoreFeatureFlags.SHOW_REMOTE_BANNER], bannerExternalUrl)
+    setFeatureFlags([
+      { featureFlag: RemoteStoreFeatureFlags.SHOW_REMOTE_BANNER, options: bannerExternalUrl },
+    ])
     render(<RemoteBanner />)
 
     const subtitle = screen.queryByText('subtitleWeb')
@@ -23,7 +25,9 @@ describe('RemoteBanner', () => {
   })
 
   it('should not show mobile specific subtitle', async () => {
-    setFeatureFlags([RemoteStoreFeatureFlags.SHOW_REMOTE_BANNER], bannerExternalUrl)
+    setFeatureFlags([
+      { featureFlag: RemoteStoreFeatureFlags.SHOW_REMOTE_BANNER, options: bannerExternalUrl },
+    ])
     render(<RemoteBanner />)
 
     const subtitle = screen.queryByText('subtitleMobile')

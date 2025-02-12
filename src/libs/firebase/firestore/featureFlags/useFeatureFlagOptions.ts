@@ -11,11 +11,15 @@ import { QueryKeys } from 'libs/queryKeys'
 
 const appBuildVersion = getAppBuildVersion()
 
+export type FeatureFlagOptions = {
+  isFeatureFlagActive: boolean
+  owner?: squads
+  options?: Record<string, unknown>
+}
+
 // firestore feature flag documentation:
 // https://www.notion.so/passcultureapp/Feature-Flag-e7b0da7946f64020b8403e3581b4ed42#fff5fb17737240c9996c432117acacd8
-export const useFeatureFlagOptions = (
-  featureFlag: RemoteStoreFeatureFlags
-): { isFeatureFlagActive: boolean; owner?: squads; options?: unknown } => {
+export const useFeatureFlagOptions = (featureFlag: RemoteStoreFeatureFlags): FeatureFlagOptions => {
   const { data: docSnapshot, isLoading } = useQuery(QueryKeys.FEATURE_FLAGS, getAllFeatureFlags, {
     staleTime: 1000 * 30, // 30 seconds
     enabled: onlineManager.isOnline(),

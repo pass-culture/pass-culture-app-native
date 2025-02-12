@@ -37,13 +37,18 @@ describe('<HomeBanner/>', () => {
 
   describe('when feature flag showForceUpdateBanner is enable', () => {
     beforeEach(() => {
-      setFeatureFlags([RemoteStoreFeatureFlags.SHOW_REMOTE_BANNER], {
-        title: 'title 1',
-        subtitleMobile: 'subtitleMobile 1',
-        subtitleWeb: 'subtitleWeb 1',
-        redirectionUrl: 'https://www.test.fr',
-        redirectionType: 'store',
-      })
+      setFeatureFlags([
+        {
+          featureFlag: RemoteStoreFeatureFlags.SHOW_REMOTE_BANNER,
+          options: {
+            title: 'title 1',
+            subtitleMobile: 'subtitleMobile 1',
+            subtitleWeb: 'subtitleWeb 1',
+            redirectionUrl: 'https://www.test.fr',
+            redirectionType: 'store',
+          },
+        },
+      ])
     })
 
     it('should display force update banner', async () => {

@@ -181,3 +181,5 @@ exports[`RemoteBanner matches the snapshot 1`] = `
   </View>
 </View>
 `;
+
+exports[`RemoteBanner when the showRemoteBanner FF is off, the banner should not be displayed 1`] = `null`;
