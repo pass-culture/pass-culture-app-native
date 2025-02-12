@@ -40,14 +40,14 @@ export const navigation = {
   setParams,
   useLinkProps,
 }
-export const useNavigation = () => navigation
+export const useNavigation = jest.fn().mockReturnValue(navigation)
 export const createNavigationContainerRef = () => ({
   ...navigation,
   isReady: () => true,
   current: navigation,
 })
 
-export const useIsFocused = jest.fn()
+export const useIsFocused = jest.fn().mockReturnValue(true)
 export const useRoute = jest.fn().mockReturnValue({ params: {} })
 export const useFocusEffect = useEffect
 export const NavigationContainer = jest.fn()

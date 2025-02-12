@@ -9,7 +9,7 @@ export const handleNavigationWrapper = ({
 }: HandleNavigationWrapperProps) => {
   const onClick = async (event: GestureResponderEvent) => {
     if (onBeforeNavigate) await onBeforeNavigate(event)
-    handleNavigation()
+    handleNavigation?.()
     if (onAfterNavigate) await onAfterNavigate(event)
   }
 

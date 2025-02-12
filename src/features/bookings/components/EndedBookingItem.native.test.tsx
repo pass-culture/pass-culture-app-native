@@ -1,3 +1,4 @@
+import * as reactNavigationNative from '@react-navigation/native'
 import React, { ComponentProps } from 'react'
 import { Share } from 'react-native'
 
@@ -23,10 +24,10 @@ jest.mock('libs/firebase/remoteConfig/remoteConfig.services', () => ({
 jest.mock('libs/network/NetInfoWrapper')
 
 const mockNavigate = jest.fn()
-jest.mock('@react-navigation/native', () => ({
-  ...jest.requireActual('@react-navigation/native'),
-  useNavigation: () => ({ navigate: mockNavigate, push: jest.fn() }),
-}))
+jest.spyOn(reactNavigationNative, 'useNavigation').mockReturnValue({
+  navigate: mockNavigate,
+  push: jest.fn(),
+})
 
 jest.mock('libs/subcategories/useSubcategory')
 

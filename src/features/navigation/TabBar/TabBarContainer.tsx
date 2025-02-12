@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
-import { getShadow, getSpacing, Spacer } from 'ui/theme'
+import { getShadow, getSpacing } from 'ui/theme'
 
 import { useCustomSafeInsets } from '../../../ui/theme/useCustomSafeInsets'
 
@@ -11,11 +11,7 @@ export const TabBarContainer = ({ children }: { children: React.ReactNode }) => 
   const netInfo = useNetInfoContext()
   return (
     <MainContainer>
-      <RowContainer>
-        <Spacer.Row numberOfSpaces={4} />
-        {children}
-        <Spacer.Row numberOfSpaces={4} />
-      </RowContainer>
+      <RowContainer>{children}</RowContainer>
       <SafeAreaPlaceholder safeHeight={netInfo.isConnected ? bottom : 0} />
     </MainContainer>
   )
@@ -23,7 +19,8 @@ export const TabBarContainer = ({ children }: { children: React.ReactNode }) => 
 
 const RowContainer = styled.View({
   flexDirection: 'row',
-  width: '100%',
+  justifyContent: 'space-evenly',
+  paddingHorizontal: getSpacing(4),
 })
 
 const SafeAreaPlaceholder = styled.View<{ safeHeight: number }>(({ safeHeight }) => ({
@@ -31,12 +28,11 @@ const SafeAreaPlaceholder = styled.View<{ safeHeight: number }>(({ safeHeight })
 }))
 
 const MainContainer = styled.View(({ theme }) => ({
-  alignItems: 'center',
   borderTopStyle: 'solid',
   borderTopWidth: getSpacing(1 / 4),
   borderTopColor: theme.colors.greyMedium,
-  backgroundColor: theme.uniqueColors.tabBar,
   width: '100%',
+  backgroundColor: theme.uniqueColors.tabBar,
   position: 'absolute',
   bottom: 0,
   ...getShadow({

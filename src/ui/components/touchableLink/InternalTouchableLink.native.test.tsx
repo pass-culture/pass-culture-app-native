@@ -1,12 +1,19 @@
+import * as reactNavigationNative from '@react-navigation/native'
 import React from 'react'
 import { Text } from 'react-native'
 
-import { navigate, push } from '__mocks__/@react-navigation/native'
 import { navigateFromRef, pushFromRef } from 'features/navigation/navigationRef'
 import { render, screen, userEvent } from 'tests/utils'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 
 jest.mock('features/navigation/navigationRef')
+
+const mockPush = jest.fn()
+const mockNavigate = jest.fn()
+jest.spyOn(reactNavigationNative, 'useNavigation').mockReturnValue({
+  navigate: mockNavigate,
+  push: mockPush,
+})
 
 const navigateToItineraryMock = jest.fn()
 const useItinerary = () => ({
@@ -39,7 +46,7 @@ describe('<InternalTouchableLink />', () => {
 
     await user.press(screen.getByText(linkText))
 
-    expect(navigate).toHaveBeenCalledWith('TabNavigator', { screen: 'Home', params: undefined })
+    expect(mockNavigate).toHaveBeenCalledWith('TabNavigator', { screen: 'Home', params: undefined })
   })
 
   it('should push right screen with expected params if withPush={true}', async () => {
@@ -52,13 +59,13 @@ describe('<InternalTouchableLink />', () => {
 
     await user.press(screen.getByText(linkText))
 
-    expect(push).toHaveBeenCalledWith('TabNavigator', {
+    expect(mockPush).toHaveBeenCalledWith('TabNavigator', {
       screen: 'Home',
       params: undefined,
     })
   })
 
-  it('should push screen only once in case of press spamming when withPush={true}', async () => {
+  it('should push screen only once in case of press spamming', async () => {
     render(
       <InternalTouchableLink
         navigateTo={{ screen: 'TabNavigator', params: { screen: 'Home' }, withPush: true }}>
@@ -70,7 +77,7 @@ describe('<InternalTouchableLink />', () => {
     await user.press(screen.getByText(linkText))
     await user.press(screen.getByText(linkText))
 
-    expect(push).toHaveBeenNthCalledWith(1, 'TabNavigator', {
+    expect(mockPush).toHaveBeenNthCalledWith(1, 'TabNavigator', {
       screen: 'Home',
       params: undefined,
     })
@@ -129,7 +136,7 @@ describe('<InternalTouchableLink />', () => {
 
     await user.press(screen.getByText(linkText))
 
-    expect(navigate).not.toHaveBeenCalledWith('TabNavigator', {
+    expect(mockNavigate).not.toHaveBeenCalledWith('TabNavigator', {
       screen: 'Home',
       params: undefined,
     })

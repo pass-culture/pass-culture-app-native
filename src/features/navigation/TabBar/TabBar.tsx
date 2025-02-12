@@ -75,7 +75,6 @@ export const TabBar: React.FC<Props> = ({ navigation, state }) => {
         return (
           <TabBarComponent
             navigateTo={{ screen: tabNavConfig[0], params: tabNavConfig[1] }}
-            enableNavigate={false}
             key={`key-tab-nav-${route.key}`}
             tabName={route.name}
             isSelected={route.isSelected}
