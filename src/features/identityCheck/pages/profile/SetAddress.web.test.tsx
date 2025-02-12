@@ -10,8 +10,6 @@ jest.mock('uuid', () => ({
   v4: jest.fn(),
 }))
 
-mockSettings()
-
 jest.mock('features/identityCheck/context/SubscriptionContextProvider')
 jest.mock('ui/theme/customFocusOutline/customFocusOutline')
 mockSettings()
