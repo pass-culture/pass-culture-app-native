@@ -27,9 +27,9 @@ export const RemoteBannerDumb: React.FC<{
   accessibilityLabel: string
   isStoreRedirection: boolean
   onPress: () => void
-  redirectionUrl?: string | null | undefined
-  subtitleMobile?: string | null | undefined
-  subtitleWeb?: string | null | undefined
+  redirectionUrl: string | null | undefined
+  subtitleMobile: string | null | undefined
+  subtitleWeb: string | null | undefined
   title: string
 }> = ({
   showWebAlternative,

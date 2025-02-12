@@ -180,7 +180,7 @@ describe('Profile component', () => {
       await screen.findByText('Mon profil')
 
       await waitFor(() => {
-        // same comment as above
+        // this banner is not shown if the force update banner is shown (which needs to wait for firestore, thus the achievement banner must wait for firestore as well).
         expect(screen.queryByText('Mes succès')).not.toBeOnTheScreen()
       })
     })
