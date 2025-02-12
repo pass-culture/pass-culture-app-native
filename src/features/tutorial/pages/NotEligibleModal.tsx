@@ -1,7 +1,6 @@
 import React, { useCallback } from 'react'
 import styled from 'styled-components/native'
 
-import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import { openUrl } from 'features/navigation/helpers/openUrl'
 import { NonEligible, TutorialTypes } from 'features/tutorial/enums'
@@ -20,11 +19,7 @@ type Props = {
   type: TutorialTypes
 }
 
-export const NonEligibleModal = ({ visible, userStatus, hideModal, type }: Props) => {
-  const { data: settings } = useSettingsContext()
-  const enableCreditV3 = settings?.wipEnableCreditV3
-  const subtitle = `Tu peux bénéficier de ton crédit sur l’application à partir de tes ${enableCreditV3 ? '17' : '15'} ans.`
-
+export const NotEligibleModal = ({ visible, userStatus, hideModal, type }: Props) => {
   const withFAQLink = type === TutorialTypes.ONBOARDING
 
   const onPress = useCallback(() => {
@@ -36,7 +31,7 @@ export const NonEligibleModal = ({ visible, userStatus, hideModal, type }: Props
     if (type === TutorialTypes.PROFILE_TUTORIAL) navigateToHome()
   }
 
-  if (userStatus === NonEligible.UNDER_15 || userStatus === NonEligible.UNDER_17)
+  if (userStatus === NonEligible.UNDER_15)
     return (
       <AppInformationModal
         visible={visible}
@@ -45,7 +40,9 @@ export const NonEligibleModal = ({ visible, userStatus, hideModal, type }: Props
         <Spacer.Column numberOfSpaces={2} />
         <StyledIllustration />
         <Spacer.Column numberOfSpaces={4} />
-        <StyledBody>{subtitle}</StyledBody>
+        <StyledBody>
+          Tu peux bénéficier de ton crédit sur l’application à partir de tes 15 ans.
+        </StyledBody>
         {withFAQLink ? (
           <React.Fragment>
             <Spacer.Column numberOfSpaces={4} />
