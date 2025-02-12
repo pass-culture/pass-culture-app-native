@@ -6,8 +6,10 @@ import {
   RemoteBannerRedirectionType,
   RemoteBannerType,
 } from 'features/remoteBanner/components/remoteBannerSchema'
+import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { eventMonitoring } from 'libs/monitoring/services'
 import { render, screen, userEvent } from 'tests/utils'
 
 jest.mock('libs/firebase/analytics/analytics')
@@ -48,6 +50,26 @@ describe('RemoteBanner', () => {
     const banner = screen.queryByText('title 1')
 
     expect(banner).not.toBeOnTheScreen()
+  })
+
+  it('when redirection type is an unexpected value, should log to sentry', () => {
+    setFeatureFlags([
+      { featureFlag: RemoteStoreFeatureFlags.SHOW_REMOTE_BANNER, options: bannerBadType },
+    ])
+    render(<RemoteBanner from="Profile" />)
+
+    expect(eventMonitoring.captureException).toHaveBeenCalledWith(
+      new Error(
+        'RemoteBanner validation issue: ValidationError: redirectionType must be one of the following values: external, store'
+      ),
+      {
+        extra: {
+          objectToValidate: {
+            ...bannerBadType,
+          },
+        },
+      }
+    )
   })
 
   it('when redirection is to app store, should navigate to store and a11y label should be correct', async () => {
@@ -98,6 +120,23 @@ describe('RemoteBanner', () => {
 
     expect(accessibilityLabel).toBeFalsy()
     expect(openUrl).not.toHaveBeenCalled()
+  })
+
+  it('when user presses banner, should log analytics', async () => {
+    setFeatureFlags([
+      {
+        featureFlag: RemoteStoreFeatureFlags.SHOW_REMOTE_BANNER,
+        options: bannerAppStore,
+      },
+    ])
+    render(<RemoteBanner from="Profile" />)
+
+    const banner = await screen.findByText('title 1')
+    await user.press(banner)
+
+    expect(analytics.logHasClickedRemoteBanner).toHaveBeenCalledWith('Profile', {
+      ...bannerAppStore,
+    })
   })
 })
 
