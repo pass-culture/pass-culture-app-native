@@ -88,7 +88,7 @@ describe('ProfileHeader', () => {
         enableAchievements: false,
         enableSystemBanner: true,
         disableActivation: false,
-        showForceUpdateBanner: false,
+        showRemoteBanner: false,
         enablePassForAll: true,
       },
       user: undefined,
@@ -105,7 +105,7 @@ describe('ProfileHeader', () => {
         enableAchievements: false,
         enableSystemBanner: true,
         disableActivation: false,
-        showForceUpdateBanner: false,
+        showRemoteBanner: false,
         enablePassForAll: false,
       },
       user: undefined,
@@ -124,7 +124,7 @@ describe('ProfileHeader', () => {
         enableAchievements: false,
         enableSystemBanner: true,
         disableActivation: false,
-        showForceUpdateBanner: false,
+        showRemoteBanner: false,
         enablePassForAll: false,
       },
       user,
@@ -140,7 +140,7 @@ describe('ProfileHeader', () => {
         enableAchievements: false,
         enableSystemBanner: true,
         disableActivation: false,
-        showForceUpdateBanner: false,
+        showRemoteBanner: false,
         enablePassForAll: false,
       },
       user,
@@ -155,7 +155,7 @@ describe('ProfileHeader', () => {
         enableAchievements: false,
         enableSystemBanner: true,
         disableActivation: false,
-        showForceUpdateBanner: false,
+        showRemoteBanner: false,
         enablePassForAll: false,
       },
       user: exBeneficiaryUser,
@@ -178,7 +178,7 @@ describe('ProfileHeader', () => {
         enableAchievements: false,
         enableSystemBanner: true,
         disableActivation: false,
-        showForceUpdateBanner: false,
+        showRemoteBanner: false,
         enablePassForAll: false,
       },
       user: notBeneficiaryUser,
@@ -194,7 +194,7 @@ describe('ProfileHeader', () => {
         enableAchievements: false,
         enableSystemBanner: false,
         disableActivation: false,
-        showForceUpdateBanner: false,
+        showRemoteBanner: false,
         enablePassForAll: false,
       },
       user: exUnderageBeneficiaryUser,
@@ -212,7 +212,7 @@ const renderProfileHeader = ({
     enableAchievements: boolean
     enableSystemBanner: boolean
     disableActivation: boolean
-    showForceUpdateBanner: boolean
+    showRemoteBanner: boolean
     enablePassForAll: boolean
   }
   user?: UserProfileResponse

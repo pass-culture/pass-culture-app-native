@@ -219,7 +219,7 @@ describe('CreditHeader', () => {
 const renderCreditHeader = (props?: Partial<CreditHeaderProps>) => {
   render(
     <CreditHeader
-      showForceUpdateBanner={false}
+      showRemoteBanner={false}
       firstName="Rosa"
       lastName="Bonheur"
       depositExpirationDate={dateInFuture}

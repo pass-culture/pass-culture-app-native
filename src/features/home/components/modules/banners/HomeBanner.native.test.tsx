@@ -35,7 +35,7 @@ describe('<HomeBanner/>', () => {
     setFeatureFlags()
   })
 
-  describe('when feature flag showForceUpdateBanner is enable', () => {
+  describe('when feature flag showRemoteBanner is enable', () => {
     beforeEach(() => {
       setFeatureFlags([
         {

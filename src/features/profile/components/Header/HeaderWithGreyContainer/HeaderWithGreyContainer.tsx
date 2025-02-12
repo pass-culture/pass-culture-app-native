@@ -8,7 +8,7 @@ import { Info } from 'ui/svg/icons/Info'
 import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 
 type PropsWithChildren = {
-  showForceUpdateBanner: boolean
+  showRemoteBanner: boolean
   title: string
   subtitle?: ReactNode | string
   withGreyContainer?: boolean
@@ -17,7 +17,7 @@ type PropsWithChildren = {
 }
 
 export const HeaderWithGreyContainer: FunctionComponent<PropsWithChildren> = ({
-  showForceUpdateBanner,
+  showRemoteBanner,
   title,
   subtitle,
   bannerText,
@@ -35,7 +35,7 @@ export const HeaderWithGreyContainer: FunctionComponent<PropsWithChildren> = ({
       ) : (
         <Spacer.Column numberOfSpaces={6} />
       )}
-      {showForceUpdateBanner ? (
+      {showRemoteBanner ? (
         <BannerContainer>
           <RemoteBanner from="Profile" />
           <Spacer.Column numberOfSpaces={6} />
