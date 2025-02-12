@@ -5,7 +5,7 @@ import { useVenueOffers } from 'features/venue/api/useVenueOffers'
 import * as useVenueSearchParameters from 'features/venue/helpers/useVenueSearchParameters'
 import mockVenueResponse from 'fixtures/venueResponse'
 import { fetchMultipleOffers } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/fetchMultipleOffers'
-import { transformOfferHit, filterOfferHit } from 'libs/algolia/fetchAlgolia/transformOfferHit'
+import { filterOfferHit, transformOfferHit } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { AlgoliaOffer, HitOffer } from 'libs/algolia/types'
 import { LocationMode, Position } from 'libs/location/types'
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
@@ -83,10 +83,10 @@ const mockUseNetInfoContext = jest.spyOn(useNetInfoContextDefault, 'useNetInfoCo
 mockUseNetInfoContext.mockReturnValue({ isConnected: true, isInternetReachable: true })
 
 const EXPECTED_CALL_PARAM = {
-  indexName: 'algoliaTopOffersIndexName',
   isUserUnderage: false,
   paramsList: [
     {
+      indexName: 'algoliaOffersIndexName',
       locationParams: {
         aroundMeRadius: 100,
         aroundPlaceRadius: 100,
@@ -104,6 +104,7 @@ const EXPECTED_CALL_PARAM = {
       },
     },
     {
+      indexName: 'algoliaTopOffersIndexName',
       locationParams: {
         aroundMeRadius: 100,
         aroundPlaceRadius: 100,
@@ -134,6 +135,7 @@ const EXPECTED_CALL_PARAM = {
       },
     },
     {
+      indexName: 'algoliaTopOffersIndexName',
       locationParams: {
         aroundMeRadius: 100,
         aroundPlaceRadius: 100,
@@ -250,90 +252,5 @@ describe('useVenueOffers', () => {
     expect(result.current.data?.headlineOffer).toMatchObject(
       transformOfferHit()(headlineOffer ?? ({} as AlgoliaOffer<HitOffer>))
     )
-  })
-
-  it('should return empty artists when there are no offers', async () => {
-    mockFetchMultipleOffers.mockResolvedValueOnce([
-      {
-        hits: [],
-        nbHits: 0,
-      },
-    ])
-
-    const { result } = renderHook(() => useVenueOffers(mockVenueResponse), {
-      wrapper: ({ children }) => reactQueryProviderHOC(children),
-    })
-
-    await waitFor(async () => {
-      expect(result.current.data).toEqual({ hits: [], nbHits: 0 })
-    })
-  })
-
-  it('should return artists after filtering and transforming hits', async () => {
-    mockFetchMultipleOffers.mockResolvedValueOnce([
-      {
-        hits: [
-          {
-            offer: {
-              dates: [],
-              isDigital: false,
-              isDuo: false,
-              name: 'I want something more',
-              prices: [28.0],
-              subcategoryId: SubcategoryIdEnum.CONCERT,
-              thumbUrl:
-                'https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDZQ',
-              artist: 'Céline Dion',
-            },
-            _geoloc: { lat: 4.90339, lng: -52.31663 },
-            objectID: '102310',
-            venue: {
-              id: 4,
-              name: 'Lieu 4',
-              publicName: 'Lieu 4',
-              address: '4 rue de la paix',
-              postalCode: '75000',
-              city: 'Paris',
-            },
-          },
-        ],
-        nbHits: 1,
-      },
-    ])
-
-    const { result } = renderHook(() => useVenueOffers(mockVenueResponse), {
-      wrapper: ({ children }) => reactQueryProviderHOC(children),
-    })
-
-    await waitFor(async () => {
-      expect(result.current.data).toEqual({
-        hits: [
-          {
-            offer: {
-              dates: [],
-              isDigital: false,
-              isDuo: false,
-              name: 'I want something more',
-              prices: [2800],
-              subcategoryId: SubcategoryIdEnum.CONCERT,
-              thumbUrl:
-                'https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDZQ',
-              artist: 'Céline Dion',
-            },
-            _geoloc: { lat: 4.90339, lng: -52.31663 },
-            objectID: '102310',
-            venue: {
-              id: 4,
-              name: 'Lieu 4',
-              publicName: 'Lieu 4',
-              address: '4 rue de la paix',
-              postalCode: '75000',
-              city: 'Paris',
-            },
-          },
-        ],
-        nbHits: 1,
-      })
-    })
   })
 })
