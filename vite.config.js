@@ -91,29 +91,28 @@ export default ({ mode }) => {
         },
       }),
       // Put the Sentry vite plugin after all other plugins as specified in plugin's documentation
-      authToken ??
-        sentryVitePlugin({
-          url: 'https://sentry.passculture.team/',
-          org: 'sentry',
-          project: 'application-native',
-          disable: !authToken,
-          authToken,
-          release: {
-            uploadLegacySourcemaps: {
-              paths: ['./dist'],
-              ignore: ['node_modules'],
-            },
-            finalize: env.ENV !== 'testing',
-            cleanArtifacts: false,
-            name: `${packageJson.version}-web`,
-            dist: `${packageJson.build}-web-${commitHash}`,
-            deploy: {
-              env: isDevMode ? 'development' : env.ENV,
-              name: isDevMode ? 'development' : env.ENV,
-              url: env.APP_PUBLIC_URL,
-            },
+      sentryVitePlugin({
+        url: 'https://sentry.passculture.team/',
+        org: 'sentry',
+        project: 'application-native',
+        disable: !authToken,
+        authToken,
+        release: {
+          uploadLegacySourcemaps: {
+            paths: ['./dist'],
+            ignore: ['node_modules'],
           },
-        }),
+          finalize: env.ENV !== 'testing',
+          cleanArtifacts: false,
+          name: `${packageJson.version}-web`,
+          dist: `${packageJson.build}-web-${commitHash}`,
+          deploy: {
+            env: isDevMode ? 'development' : env.ENV,
+            name: isDevMode ? 'development' : env.ENV,
+            url: env.APP_PUBLIC_URL,
+          },
+        },
+      }),
     ],
     resolve: {
       extensions: allExtensions,
