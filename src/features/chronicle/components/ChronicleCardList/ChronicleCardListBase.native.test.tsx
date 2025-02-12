@@ -4,9 +4,17 @@ import { ReactTestInstance } from 'react-test-renderer'
 
 import { CHRONICLE_CARD_WIDTH } from 'features/chronicle/constant'
 import { chroniclesSnap } from 'features/chronicle/fixtures/chroniclesSnap'
-import { render, screen, userEvent } from 'tests/utils'
+import { act, render, screen, userEvent } from 'tests/utils'
 
 import { ChronicleCardListBase } from './ChronicleCardListBase'
+
+const mockOnLayoutWithButton = {
+  nativeEvent: {
+    layout: {
+      height: 157,
+    },
+  },
+}
 
 const user = userEvent.setup()
 
@@ -40,7 +48,7 @@ describe('ChronicleCardListBase', () => {
     expect(screen.getByText('La Nature Sauvage')).toBeOnTheScreen()
   })
 
-  it('should display "Voir plus" button on all cards when onPressSeeMoreButton defined', () => {
+  it('should display "Voir plus" button on all cards when onPressSeeMoreButton defined', async () => {
     render(
       <ChronicleCardListBase
         data={chroniclesSnap}
@@ -51,7 +59,13 @@ describe('ChronicleCardListBase', () => {
       />
     )
 
-    expect(screen.getAllByText('Voir plus')).toHaveLength(10)
+    const descriptions = screen.getAllByTestId('description')
+
+    await act(async () => {
+      descriptions[0]?.props.onLayout(mockOnLayoutWithButton)
+    })
+
+    expect(screen.getAllByText('Voir plus')).toHaveLength(1)
   })
 
   it('should not display "Voir plus" button on all cards when onSeeMoreButtonPress not defined', () => {
@@ -79,10 +93,16 @@ describe('ChronicleCardListBase', () => {
       />
     )
 
+    const descriptions = screen.getAllByTestId('description')
+
+    await act(async () => {
+      descriptions[0]?.props.onLayout(mockOnLayoutWithButton)
+    })
+
     const seeMoreButtons = screen.getAllByText('Voir plus')
 
     // Using as because links is never undefined and the typing is not correct
-    await user.press(seeMoreButtons[2] as ReactTestInstance)
+    await user.press(seeMoreButtons[0] as ReactTestInstance)
 
     expect(mockOnSeeMoreButtonPress).toHaveBeenCalledTimes(1)
   })
