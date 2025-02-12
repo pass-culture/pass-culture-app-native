@@ -86,6 +86,7 @@ describe('fetchVenues', () => {
   isPermanent: true,
   postalCode: '86280',
   venue_type: VenueTypeCodeKey.PERFORMING_ARTS,
+  isOpenToPublic: true,
 }}
     ${{ hits: [{ ...venueFixture, city: undefined }] }} | ${{
   label: '[EAC] Le lieu de Moz’Art 50',
@@ -96,6 +97,7 @@ describe('fetchVenues', () => {
   postalCode: '86280',
   isPermanent: true,
   venue_type: VenueTypeCodeKey.PERFORMING_ARTS,
+  isOpenToPublic: true,
 }}
   `('should fetch venues and format them correctly', async ({ fixture, expectedResult }) => {
     search.mockResolvedValueOnce(fixture)

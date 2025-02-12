@@ -15,6 +15,8 @@ import { VenueMapOfferPlaylist } from 'features/venueMap/components/VenueMapBott
 import { VenueMapPreview } from 'features/venueMap/components/VenueMapPreview/VenueMapPreview'
 import { GeolocatedVenue } from 'features/venueMap/components/VenueMapView/types'
 import { getVenueTags } from 'features/venueMap/helpers/getVenueTags/getVenueTags'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useLocation } from 'libs/location'
 import { getDistance } from 'libs/location/getDistance'
 import { parseType } from 'libs/parsers/venueType'
@@ -54,6 +56,7 @@ export const VenueMapBottomSheet = forwardRef<BottomSheetMethods, VenueMapBottom
       { userLocation, selectedPlace, selectedLocationMode }
     )
     const { navigate } = useNavigation<UseNavigationType>()
+    const shouldUseIsOpenToPublic = useFeatureFlag(RemoteStoreFeatureFlags.WIP_IS_OPEN_TO_PUBLIC)
 
     const venueTags = useMemo(() => {
       if (!venue) {
@@ -87,6 +90,9 @@ export const VenueMapBottomSheet = forwardRef<BottomSheetMethods, VenueMapBottom
     const venueMapPreview = useMemo(() => {
       if (venue) {
         const address = venue.postalCode ? `${venue.info}, ${venue.postalCode}` : venue.info
+        const isOpenToPublicVenue = venue.isOpenToPublic ?? false
+        const enableNavigate = shouldUseIsOpenToPublic ? isOpenToPublicVenue : venue.isPermanent
+
         return (
           <VenueMapPreview
             venueName={venue.label}
@@ -100,14 +106,14 @@ export const VenueMapBottomSheet = forwardRef<BottomSheetMethods, VenueMapBottom
             navigateTo={{ screen: 'Venue', params: { id: venue.venueId, from: 'venueMap' } }}
             noBorder
             testID="venueMapPreview"
-            enableNavigate={venue.isPermanent}
-            withRightArrow={venue.isPermanent}
+            enableNavigate={enableNavigate}
+            withRightArrow={enableNavigate}
             style={{ paddingHorizontal: getSpacing(4) }}
           />
         )
       }
       return null
-    }, [venue, onClose, venueTags])
+    }, [venue, shouldUseIsOpenToPublic, onClose, venueTags])
 
     return (
       <StyledBottomSheet
