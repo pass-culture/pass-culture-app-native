@@ -7,3 +7,4 @@ src/ui/theme/constants.ts:25 - AVATAR_MEDIUM
 src/ui/theme/index.ts:5 - Typo
 src/features/auth/helpers/contactSupport.ts:38 - satisfies
 src/features/auth/helpers/contactSupport.ts:38 - ContactSupport (used in module)
+src/features/remoteBanner/components/RemoteBanner.tsx:25 - RemoteBannerDumb (used in module)
