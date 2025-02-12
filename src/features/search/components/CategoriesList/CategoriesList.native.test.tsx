@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { push } from '__mocks__/@react-navigation/native'
+import { navigate } from '__mocks__/@react-navigation/native'
 import { initialSearchState } from 'features/search/context/reducer'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -69,7 +69,7 @@ describe('CategoriesList', () => {
     })
   })
 
-  it('should navigate with push to search results with search params on press', async () => {
+  it('should navigate to search results with search params on press', async () => {
     render(<CategoriesList />)
 
     const categoryButton = screen.getByText('Spectacles'.toUpperCase())
@@ -77,7 +77,7 @@ describe('CategoriesList', () => {
       fireEvent.press(categoryButton)
     })
     await waitFor(async () => {
-      expect(push).toHaveBeenCalledWith('TabNavigator', {
+      expect(navigate).toHaveBeenCalledWith('TabNavigator', {
         params: {
           params: {
             searchId: 'testUuidV4',
