@@ -1,4 +1,4 @@
-import { useRoute } from '@react-navigation/native'
+import { useNavigation, useRoute } from '@react-navigation/native'
 import React, { FunctionComponent, useCallback, useRef } from 'react'
 import { FlatList, InteractionManager } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
@@ -13,8 +13,7 @@ import { ChronicleOfferInfo } from 'features/chronicle/components/ChronicleOffer
 import { ChroniclesHeader } from 'features/chronicle/components/ChroniclesHeader/ChroniclesHeader'
 import { ChroniclesWebMetaHeader } from 'features/chronicle/components/ChroniclesWebMetaHeader/ChroniclesWebMetaHeader'
 import { ChronicleCardData } from 'features/chronicle/type'
-import { UseRouteType } from 'features/navigation/RootNavigator/types'
-import { useGoBack } from 'features/navigation/useGoBack'
+import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { useOffer } from 'features/offer/api/useOffer'
 import { OfferCTAButton } from 'features/offer/components/OfferCTAButton/OfferCTAButton'
 import { getOfferPrices } from 'features/offer/helpers/getOfferPrice/getOfferPrice'
@@ -30,7 +29,7 @@ export const Chronicles: FunctionComponent = () => {
   const route = useRoute<UseRouteType<'Chronicles'>>()
   const offerId = route.params?.offerId
   const chronicleId = route.params?.chronicleId
-  const { goBack } = useGoBack('Offer', { id: offerId })
+  const { navigate } = useNavigation<UseNavigationType>()
   const { data: offer } = useOffer({ offerId })
   const subcategoriesMapping = useSubcategoriesMapping()
 
@@ -77,6 +76,10 @@ export const Chronicles: FunctionComponent = () => {
     }
   }, [selectedChronicle, headerHeight])
 
+  const handleGoBack = () => {
+    navigate('Offer', { id: offerId, openModalOnNavigation: undefined })
+  }
+
   if (!offer || !chronicleCardsData) return null
 
   const title = `Tous les avis sur "${offer.name}"`
@@ -95,7 +98,11 @@ export const Chronicles: FunctionComponent = () => {
   return (
     <Container>
       <ChroniclesWebMetaHeader title={title} />
-      <ChroniclesHeader handleGoBack={goBack} headerTransition={headerTransition} title={title} />
+      <ChroniclesHeader
+        handleGoBack={handleGoBack}
+        headerTransition={headerTransition}
+        title={title}
+      />
 
       {isDesktopViewport ? (
         <FullFlexRow>
