@@ -33,7 +33,7 @@ export const useSortedSearchCategories = (): ListCategoryButtonProps => {
         searchId: uuidv4(),
       }
     )
-    return { ...searchTabConfig, withPush: true }
+    return searchTabConfig
   }
   return categories
     .map<MappingOutput>((category) => ({
