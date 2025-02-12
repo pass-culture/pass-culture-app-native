@@ -19,23 +19,16 @@ const user = userEvent.setup()
 const appStoreUrl = 'https://apps.apple.com/fr/app/pass-culture/id1557887412'
 
 describe('RemoteBanner', () => {
-  it('matches the snapshot', () => {
-    setFeatureFlags([
-      { featureFlag: RemoteStoreFeatureFlags.SHOW_REMOTE_BANNER, options: bannerExternalUrl },
-    ])
-    render(<RemoteBanner from="Profile" />)
-
-    expect(screen).toMatchSnapshot()
-  })
-
   it('when the showRemoteBanner FF is off, the banner should not be displayed', () => {
     setFeatureFlags()
     render(<RemoteBanner from="Profile" />)
 
-    expect(screen).toMatchSnapshot()
+    const banner = screen.queryByText('title 1')
+
+    expect(banner).not.toBeOnTheScreen()
   })
 
-  it('when redirection type is an expected value, banner should appear', async () => {
+  it('when redirection type is an expected value, banner should appear', () => {
     setFeatureFlags([
       { featureFlag: RemoteStoreFeatureFlags.SHOW_REMOTE_BANNER, options: bannerExternalUrl },
     ])
@@ -46,7 +39,7 @@ describe('RemoteBanner', () => {
     expect(banner).toBeOnTheScreen()
   })
 
-  it('when redirection type is an unexpected value, banner should not appear', async () => {
+  it('when redirection type is an unexpected value, banner should not appear', () => {
     setFeatureFlags([
       { featureFlag: RemoteStoreFeatureFlags.SHOW_REMOTE_BANNER, options: bannerBadType },
     ])
