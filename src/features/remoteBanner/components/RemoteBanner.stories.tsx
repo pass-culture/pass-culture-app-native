@@ -1,15 +1,46 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react'
+import { ComponentMeta } from '@storybook/react'
 import React from 'react'
 
-import { RemoteBanner } from 'features/remoteBanner/components/RemoteBanner'
+import { STORE_LINK } from 'features/forceUpdate/constants'
+import { RemoteBannerDumb } from 'features/remoteBanner/components/RemoteBanner'
+import { Variants, VariantsStory, VariantsTemplate } from 'ui/storybook/VariantsTemplate'
 
-const meta: ComponentMeta<typeof RemoteBanner> = {
-  title: 'ui/banners/RemoteBanner',
-  component: RemoteBanner,
+const meta: ComponentMeta<typeof RemoteBannerDumb> = {
+  title: 'ui/banners/RemoteBannerStoryBookComponent',
+  component: RemoteBannerDumb,
 }
 export default meta
 
-const Template: ComponentStory<typeof RemoteBanner> = () => <RemoteBanner from="Profile" />
+const variantConfig: Variants<typeof RemoteBannerDumb> = [
+  {
+    label: 'Link to stores',
+    props: {
+      accessibilityLabel: `Nouvelle fenêtre\u00a0: ${STORE_LINK}`,
+      isStoreRedirection: true,
+      redirectionUrl: '',
+      showWebAlternative: false,
+      subtitleMobile: 'Go to the store',
+      subtitleWeb: 'Refresh the web app',
+      title: 'You must update your app',
+    },
+  },
+  {
+    label: 'External link',
+    props: {
+      accessibilityLabel: `Nouvelle fenêtre\u00a0: https://www.google.fr`,
+      isStoreRedirection: false,
+      redirectionUrl: 'https://www.google.fr',
+      showWebAlternative: false,
+      subtitleMobile: 'This is a mobile link',
+      subtitleWeb: 'This is a web link',
+      title: 'This will take you to an external link',
+    },
+  },
+]
 
-export const RemoteBannerStory = Template.bind({})
-RemoteBannerStory.storyName = 'RemoteBanner'
+const Template: VariantsStory<typeof RemoteBannerDumb> = (args) => (
+  <VariantsTemplate variants={variantConfig} Component={RemoteBannerDumb} defaultProps={args} />
+)
+
+export const AllVariants = Template.bind({})
+AllVariants.storyName = 'RemoteBanner'
