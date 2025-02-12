@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
+import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { useRemoteConfigContext } from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { useDepositAmountsByAge } from 'shared/user/useDepositAmountsByAge'
 import { ButtonWithLinearGradient } from 'ui/components/buttons/buttonWithLinearGradient/ButtonWithLinearGradient'
@@ -13,6 +14,9 @@ export const EmptyCredit = ({ age }: { age: number }) => {
   const { sixteenYearsOldDeposit, seventeenYearsOldDeposit, eighteenYearsOldDeposit } =
     useDepositAmountsByAge()
 
+  const { data: settings } = useSettingsContext()
+  const enableCreditV3 = settings?.wipEnableCreditV3
+
   const incomingCreditMap: Record<number, string> = {
     15: sixteenYearsOldDeposit,
     16: seventeenYearsOldDeposit,
@@ -21,12 +25,21 @@ export const EmptyCredit = ({ age }: { age: number }) => {
 
   if (!incomingCreditMap[age]) return null
 
+  const ageToShowCreditV3 = age === 17 ? 17 : 16
   return (
     <React.Fragment>
-      <TypoDS.Body>
-        Ton prochain crédit de <HighlightedBody>{incomingCreditMap[age]}</HighlightedBody> sera
-        débloqué à {age + 1} ans. En attendant…
-      </TypoDS.Body>
+      {enableCreditV3 ? (
+        <TypoDS.Body>
+          Ton prochain crédit de{' '}
+          <HighlightedBody>{incomingCreditMap[ageToShowCreditV3]}</HighlightedBody> sera débloqué à{' '}
+          {ageToShowCreditV3 + 1} ans. En attendant…
+        </TypoDS.Body>
+      ) : (
+        <TypoDS.Body>
+          Ton prochain crédit de <HighlightedBody>{incomingCreditMap[age]}</HighlightedBody> sera
+          débloqué à {age + 1} ans. En attendant…
+        </TypoDS.Body>
+      )}
       <Spacer.Column numberOfSpaces={4} />
       <InternalTouchableLink
         as={ButtonWithLinearGradient}
