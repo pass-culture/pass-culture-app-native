@@ -32,22 +32,22 @@ export const AgeSelectionFork: FunctionComponent<Props> = ({ route }: Props) => 
   const type = route.params.type
   const isOnboarding = type === TutorialTypes.ONBOARDING
 
-  const { showNonEligibleModal } = useOnboardingContext()
+  const { showNotEligibleModal } = useOnboardingContext()
 
   const onUnder15Press = useCallback(async () => {
-    showNonEligibleModal(NonEligible.UNDER_15, type)
+    showNotEligibleModal(NonEligible.UNDER_15, type)
     if (isOnboarding) await storage.saveObject('user_age', NonEligible.UNDER_15)
-  }, [type, isOnboarding, showNonEligibleModal])
+  }, [type, isOnboarding, showNotEligibleModal])
 
   const onUnder17Press = useCallback(async () => {
-    showNonEligibleModal(NonEligible.UNDER_17, type)
+    showNotEligibleModal(NonEligible.UNDER_17, type)
     if (isOnboarding) await storage.saveObject('user_age', NonEligible.UNDER_17)
-  }, [type, isOnboarding, showNonEligibleModal])
+  }, [type, isOnboarding, showNotEligibleModal])
 
   const onOver18Press = useCallback(async () => {
-    showNonEligibleModal(NonEligible.OVER_18, type)
+    showNotEligibleModal(NonEligible.OVER_18, type)
     if (isOnboarding) await storage.saveObject('user_age', NonEligible.OVER_18)
-  }, [type, isOnboarding, showNonEligibleModal])
+  }, [type, isOnboarding, showNotEligibleModal])
 
   const ageButtonsV2: AgeButtonProps[] = [
     {

@@ -21,11 +21,11 @@ jest.mock('libs/firebase/analytics/analytics')
 describe('useOnboardingContext()', () => {
   beforeEach(() => setFeatureFlags())
 
-  it('should show modal when showNonEligibleModal is called', () => {
+  it('should show modal when showNotEligibleModal is called', () => {
     const { result } = renderOnboardingHook()
 
     act(() => {
-      result.current.showNonEligibleModal(NonEligible.UNDER_15, TutorialTypes.PROFILE_TUTORIAL)
+      result.current.showNotEligibleModal(NonEligible.UNDER_15, TutorialTypes.PROFILE_TUTORIAL)
     })
 
     expect(mockShowModal).toHaveBeenCalledTimes(1)
