@@ -135,7 +135,7 @@ const EXPECTED_CALL_PARAM = {
       },
     },
     {
-      indexName: 'algoliaTopOffersIndexName',
+      indexName: 'algoliaOffersIndexName',
       locationParams: {
         aroundMeRadius: 100,
         aroundPlaceRadius: 100,

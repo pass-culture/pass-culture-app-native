@@ -12,7 +12,6 @@ const mockMultipleQueries = jest.spyOn(multipleQueries, 'multipleQueries')
 const mockCaptureAlgoliaError = jest.spyOn(captureAlgoliaError, 'captureAlgoliaError')
 
 const mockParams1: PlaylistOffersParams = {
-  indexName: 'custom_index',
   offerParams: {
     beginningDatetime: undefined,
     date: null,
@@ -42,35 +41,7 @@ const mockParams1: PlaylistOffersParams = {
   },
 }
 
-const mockParams2: PlaylistOffersParams = {
-  offerParams: {
-    beginningDatetime: undefined,
-    date: null,
-    endingDatetime: undefined,
-    hitsPerPage: 5,
-    isDigital: false,
-    offerCategories: [],
-    offerIsDuo: false,
-    offerIsFree: false,
-    offerSubcategories: [],
-    priceRange: [0, 300],
-    query: 'another',
-    tags: [],
-    timeRange: null,
-    venue: {
-      _geoloc: { lat: 48.8536, lng: 2.34199 },
-      info: 'PARIS 6',
-      label: 'Cinéma St André des Arts',
-      venueId: 26235,
-    },
-  },
-  locationParams: {
-    aroundMeRadius: 100,
-    aroundPlaceRadius: 100,
-    selectedLocationMode: LocationMode.AROUND_ME,
-    userLocation: { latitude: 48.90374, longitude: 2.48171 },
-  },
-}
+const mockParams2: PlaylistOffersParams = { ...mockParams1, indexName: 'customIndex' }
 
 const mockParamsList = [mockParams1, mockParams2]
 
@@ -87,7 +58,7 @@ describe('fetchMultipleOffers', () => {
 
     expect(mockMultipleQueries).toHaveBeenCalledWith([
       {
-        indexName: 'custom_index',
+        indexName: env.ALGOLIA_OFFERS_INDEX_NAME, // default indexName,
         query: 'test',
         params: {
           ...buildHitsPerPage(10),
@@ -97,10 +68,10 @@ describe('fetchMultipleOffers', () => {
         },
       },
       {
-        indexName: env.ALGOLIA_OFFERS_INDEX_NAME, // default indexName
-        query: 'another',
+        indexName: 'customIndex',
+        query: 'test',
         params: {
-          ...buildHitsPerPage(5),
+          ...buildHitsPerPage(10),
           ...buildOfferSearchParameters(mockParams2.offerParams, mockParams2.locationParams, false),
           attributesToHighlight: [],
           attributesToRetrieve: [...offerAttributesToRetrieve, 'offer.isHeadline'],

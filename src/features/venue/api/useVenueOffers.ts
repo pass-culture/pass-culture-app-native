@@ -50,7 +50,7 @@ export const useVenueOffers = (venue?: VenueResponse): UseQueryResult<VenueOffer
   }
   const headlineOfferQueryParams = {
     ...buildVenueOffersQueryParams({ ...venueSearchParams, isHeadline: true }),
-    indexName: env.ALGOLIA_TOP_OFFERS_INDEX_NAME,
+    indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
   }
 
   const venueOffersQueriesParamsList = [
