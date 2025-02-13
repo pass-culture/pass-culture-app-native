@@ -71,7 +71,7 @@ describe('<ImagesCarouselModal />', () => {
 
     await forceOnLayout()
 
-    await screen.findByTestId('imagesCarouselContainer')
+    await screen.findByTestId('carousel')
 
     expect(screen.getByRole('button', { name: 'Image précédente' })).toBeInTheDocument()
     expect(screen.getByRole('button', { name: 'Image suivante' })).toBeInTheDocument()
@@ -86,7 +86,7 @@ describe('<ImagesCarouselModal />', () => {
 
     expect(screen.queryByRole('button', { name: 'Image précédente' })).not.toBeInTheDocument()
     expect(screen.queryByRole('button', { name: 'Image suivante' })).not.toBeInTheDocument()
-    expect(screen.queryByTestId('imagesCarouselContainer')).not.toBeInTheDocument()
+    expect(screen.queryByTestId('carousel')).not.toBeInTheDocument()
   })
 
   it('should start at specific index', async () => {
@@ -120,7 +120,7 @@ describe('<ImagesCarouselModal />', () => {
     )
 
     await forceOnLayout()
-    await screen.findByTestId('imagesCarouselContainer')
+    await screen.findByTestId('carousel')
 
     fireEvent.click(await screen.findByTestId('Image suivante'))
 

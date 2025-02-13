@@ -76,7 +76,7 @@ export const Carousel = (props: CarouselProps) => {
     <Animated.FlatList
       ref={carouselRef}
       horizontal
-      testID="carousel-base-list"
+      testID="carousel"
       keyExtractor={(_, index) => index.toString()}
       style={style}
       snapToInterval={width}
