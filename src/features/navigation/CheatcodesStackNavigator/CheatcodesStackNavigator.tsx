@@ -35,7 +35,7 @@ import { withAsyncErrorBoundary } from 'features/errors/hocs/withAsyncErrorBound
 import { CheatcodesStackParamList } from 'features/navigation/CheatcodesStackNavigator/types'
 import { ROOT_NAVIGATOR_SCREEN_OPTIONS } from 'features/navigation/RootNavigator/navigationOptions'
 import { GenericRoute } from 'features/navigation/RootNavigator/types'
-import { LoadingPage } from 'ui/components/LoadingPage'
+import { LoadingPage } from 'ui/pages/LoadingPage'
 
 export type CheatcodesStackRoute = GenericRoute<CheatcodesStackParamList>
 
