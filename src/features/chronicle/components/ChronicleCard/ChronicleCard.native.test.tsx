@@ -64,7 +64,7 @@ describe('ChronicleCard (Mobile)', () => {
     expect(screen.getByText('Voir plus')).toBeOnTheScreen()
   })
 
-  it('should not display the "Voir plus" button', async () => {
+  it('should not display the "Voir plus" button if not content overflows', async () => {
     render(
       <ChronicleCard {...chroniclesSnap[0]} shouldTruncate>
         <View>

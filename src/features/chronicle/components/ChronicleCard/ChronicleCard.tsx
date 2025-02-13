@@ -68,7 +68,7 @@ export const ChronicleCard: FunctionComponent<Props> = ({
         <Description
           testID="description"
           onLayout={shouldTruncate ? handleOnLayout : undefined}
-          numberOfLines={shouldTruncate ? currentNumberOfLines : undefined}>
+          numberOfLines={currentNumberOfLines}>
           {description}
         </Description>
       </DescriptionContainer>
