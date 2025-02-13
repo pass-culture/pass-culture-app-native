@@ -3,9 +3,10 @@
   inputs.flake-utils.url = "github:numtide/flake-utils";
 
   outputs =
-    { self
-    , nixpkgs
-    , flake-utils
+    {
+      self,
+      nixpkgs,
+      flake-utils,
     }:
     flake-utils.lib.eachDefaultSystem (system: {
       devShells.default =
@@ -15,6 +16,7 @@
         pkgs.mkShellNoCC {
           packages = [
             pkgs.devbox
+            pkgs.jdk17
           ];
         };
     });
