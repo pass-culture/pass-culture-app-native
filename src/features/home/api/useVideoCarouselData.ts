@@ -8,7 +8,10 @@ import { BuildLocationParameterParams } from 'libs/algolia/fetchAlgolia/buildAlg
 import { fetchCarouselVideoOffers } from 'libs/algolia/fetchAlgolia/fetchCarouselVideoOffers'
 import { buildVideoCarouselOffersQueries } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/helpers/buildVideoCarouselOffersQueries'
 import { searchResponsePredicate } from 'libs/algolia/fetchAlgolia/searchResponsePredicate'
-import { filterOfferHit, useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
+import {
+  filterOfferHitWithImage,
+  useTransformOfferHits,
+} from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { AlgoliaOffer, OfferModuleQuery } from 'libs/algolia/types'
 import { useLocation } from 'libs/location'
 import { QueryKeys } from 'libs/queryKeys'
@@ -37,7 +40,7 @@ const mapDataAndItem = (
 
   if (data) {
     return data
-      .map((hits) => hits.hits.filter(filterOfferHit).map(transformOfferHits))
+      .map((hits) => hits.hits.filter(filterOfferHitWithImage).map(transformOfferHits))
       .map((hits) => (hits.length ? (hits[0] as Offer) : undefined))
   }
   return [] as Offer[]

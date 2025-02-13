@@ -34,7 +34,7 @@ const parseGeoloc = (hit: AlgoliaOffer): AlgoliaOffer['_geoloc'] =>
   hit.offer.isDigital ? { lat: null, lng: null } : hit._geoloc
 
 // We don't want to display offers without image nor subcategoryId
-export const filterOfferHit = (hit?: AlgoliaOffer): hit is AlgoliaOffer =>
+export const filterOfferHitWithImage = (hit?: AlgoliaOffer): hit is AlgoliaOffer =>
   !!hit && hit.offer && !!hit.offer.thumbUrl
 
 export const transformOfferHit =
