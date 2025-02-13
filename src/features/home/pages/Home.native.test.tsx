@@ -106,7 +106,7 @@ describe('Home page', () => {
     })
 
     renderHome()
-    await screen.findByText('Bienvenue !')
+    await screen.findByText('Bienvenido !')
 
     expect(mockFinishTransaction).toHaveBeenNthCalledWith(1, 'HOME:CREATION')
     expect(mockFinishTransaction).toHaveBeenNthCalledWith(2, 'HOME:LOADING')
