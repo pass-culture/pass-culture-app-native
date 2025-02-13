@@ -15,6 +15,7 @@ const CHRONICLE_THUMBNAIL_SIZE = getSpacing(14)
 type Props = PropsWithChildren<
   ChronicleCardData & {
     cardWidth?: number
+    shouldTruncate?: boolean
   }
 >
 
@@ -29,6 +30,7 @@ export const ChronicleCard: FunctionComponent<Props> = ({
   date,
   cardWidth,
   children,
+  shouldTruncate = false,
 }) => {
   const theme = useTheme()
 
@@ -65,8 +67,8 @@ export const ChronicleCard: FunctionComponent<Props> = ({
       <DescriptionContainer defaultHeight={getDefaultHeight}>
         <Description
           testID="description"
-          onLayout={handleOnLayout}
-          numberOfLines={currentNumberOfLines}>
+          onLayout={shouldTruncate ? handleOnLayout : undefined}
+          numberOfLines={shouldTruncate ? currentNumberOfLines : undefined}>
           {description}
         </Description>
       </DescriptionContainer>
@@ -78,21 +80,23 @@ export const ChronicleCard: FunctionComponent<Props> = ({
   )
 }
 
-const Container = styled(ViewGap)<{ width?: number }>(({ theme, width }) => ({
-  padding: getSpacing(6),
-  borderRadius: getSpacing(2),
-  border: 1,
-  borderColor: theme.colors.greyMedium,
-  ...(width === undefined ? undefined : { width }),
-  height: CHRONICLE_CARD_HEIGHT,
-  backgroundColor: theme.colors.white,
-  ...getShadow({
-    shadowOffset: { width: 0, height: getSpacing(1) },
-    shadowRadius: getSpacing(1),
-    shadowColor: theme.colors.black,
-    shadowOpacity: 0.15,
-  }),
-}))
+const Container = styled(ViewGap)<{ width?: number; shouldTruncate?: boolean }>(
+  ({ theme, width, shouldTruncate }) => ({
+    padding: getSpacing(6),
+    borderRadius: getSpacing(2),
+    border: 1,
+    borderColor: theme.colors.greyMedium,
+    ...(width === undefined ? undefined : { width }),
+    height: shouldTruncate ? CHRONICLE_CARD_HEIGHT : undefined,
+    backgroundColor: theme.colors.white,
+    ...getShadow({
+      shadowOffset: { width: 0, height: getSpacing(1) },
+      shadowRadius: getSpacing(1),
+      shadowColor: theme.colors.black,
+      shadowOpacity: 0.15,
+    }),
+  })
+)
 
 const DescriptionContainer = styled.View<{ defaultHeight: number }>(({ defaultHeight }) => ({
   maxHeight: MAX_LINES * defaultHeight,

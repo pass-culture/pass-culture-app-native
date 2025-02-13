@@ -56,6 +56,7 @@ describe('ChronicleCardListBase', () => {
         horizontal
         ref={ref}
         onSeeMoreButtonPress={jest.fn()}
+        shouldTruncate
       />
     )
 
@@ -90,6 +91,7 @@ describe('ChronicleCardListBase', () => {
         horizontal
         ref={ref}
         onSeeMoreButtonPress={mockOnSeeMoreButtonPress}
+        shouldTruncate
       />
     )
 

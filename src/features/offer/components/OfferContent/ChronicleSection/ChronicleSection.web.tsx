@@ -35,7 +35,11 @@ export const ChronicleSection = (props: ChronicleSectionProps) => {
         </Row>
         {subtitle ? <StyledSubtitle>{subtitle}</StyledSubtitle> : null}
       </Gutter>
-      <StyledChronicleCardlist data={data} onSeeMoreButtonPress={onSeeMoreButtonPress} />
+      <StyledChronicleCardlist
+        data={data}
+        onSeeMoreButtonPress={onSeeMoreButtonPress}
+        shouldTruncate
+      />
     </View>
   ) : (
     <ChronicleSectionBase {...props} />

@@ -30,7 +30,7 @@ jest.useFakeTimers()
 describe('ChronicleCard (Mobile)', () => {
   it('should render the ChronicleCard component with correct title', () => {
     render(
-      <ChronicleCard {...chroniclesSnap[0]}>
+      <ChronicleCard {...chroniclesSnap[0]} shouldTruncate>
         <View>
           <ButtonTertiaryBlack
             wording="Voir plus"
@@ -45,7 +45,7 @@ describe('ChronicleCard (Mobile)', () => {
 
   it('should display the "Voir plus" button if content overflows', async () => {
     render(
-      <ChronicleCard {...chroniclesSnap[0]}>
+      <ChronicleCard {...chroniclesSnap[0]} shouldTruncate>
         <View>
           <ButtonTertiaryBlack
             wording="Voir plus"
@@ -66,7 +66,7 @@ describe('ChronicleCard (Mobile)', () => {
 
   it('should not display the "Voir plus" button', async () => {
     render(
-      <ChronicleCard {...chroniclesSnap[0]}>
+      <ChronicleCard {...chroniclesSnap[0]} shouldTruncate>
         <View>
           <ButtonTertiaryBlack
             wording="Voir plus"
@@ -87,7 +87,7 @@ describe('ChronicleCard (Mobile)', () => {
 
   it('should call onSeeMoreButtonPress when "Voir plus" is clicked', async () => {
     render(
-      <ChronicleCard {...chroniclesSnap[0]}>
+      <ChronicleCard {...chroniclesSnap[0]} shouldTruncate>
         <View>
           <ButtonTertiaryBlack
             wording="Voir plus"
