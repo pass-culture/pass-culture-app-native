@@ -18,6 +18,7 @@ export const useSync = (shouldUpdate = true) => {
   const disabilitiesParams: Partial<DisabilitiesProperties> = accessibilityFilter || {}
   const { setParams } = useNavigation<UseNavigationType>()
   const { searchState, dispatch } = useSearch()
+
   const {
     setPlace,
     setSelectedLocationMode,

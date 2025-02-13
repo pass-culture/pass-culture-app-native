@@ -27,7 +27,7 @@ type Props = {
 
 export const SubcategoryButtonListWrapper: React.FC<Props> = ({ offerCategory }) => {
   const { data: subcategories = PLACEHOLDER_DATA } = useSubcategories()
-  const { searchState } = useSearch()
+  const { searchState, dispatch } = useSearch()
 
   const { colors } = useTheme()
   const nativeCategories = useNativeCategories(offerCategory)
@@ -42,25 +42,34 @@ export const SubcategoryButtonListWrapper: React.FC<Props> = ({ offerCategory })
   const subcategoryButtonContent = useMemo(
     () =>
       nativeCategories
-        .map(
-          (nativeCategory): SubcategoryButtonItem => ({
+        .map((nativeCategory): SubcategoryButtonItem => {
+          const searchParams = getSearchParams(
+            nativeCategory[0] as NativeCategoryEnum,
+            offerCategory,
+            subcategories,
+            searchState
+          )
+          const onBeforeNavigate = () => {
+            dispatch({ type: 'SET_STATE', payload: searchParams })
+          }
+
+          return {
             label: nativeCategory[1].label,
             backgroundColor: offerCategoryTheme.backgroundColor || colors.white,
             borderColor: offerCategoryTheme.borderColor || colors.black,
             nativeCategory: nativeCategory[0] as NativeCategoryEnum,
             position: nativeCategory[1].position,
-            searchParams: getSearchParams(
-              nativeCategory[0] as NativeCategoryEnum,
-              subcategories,
-              searchState
-            ),
-          })
-        )
+            searchParams,
+            onBeforeNavigate,
+          }
+        })
         .sort((a, b) => sortCategoriesPredicate(a, b)),
     [
       colors.black,
       colors.white,
+      dispatch,
       nativeCategories,
+      offerCategory,
       offerCategoryTheme.backgroundColor,
       offerCategoryTheme.borderColor,
       searchState,

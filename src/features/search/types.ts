@@ -37,7 +37,7 @@ export type OfferGenreType = { key: GenreType } & GenreTypeContentModel
 
 export interface SearchState {
   beginningDatetime?: string
-  date: SelectedDate | null
+  date?: SelectedDate | null
   endingDatetime?: string
   hitsPerPage: number | null
   locationFilter: LocationFilter

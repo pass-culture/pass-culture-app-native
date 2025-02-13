@@ -1,8 +1,6 @@
 import { theme } from 'theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 
-jest.unmock('ui/theme/customFocusOutline/customFocusOutline')
-
 const color = theme.colors.white
 
 describe('customWebFocusOutline', () => {

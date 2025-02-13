@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { push } from '__mocks__/@react-navigation/native'
+import { navigate } from '__mocks__/@react-navigation/native'
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { initialSearchState } from 'features/search/context/reducer'
 import { BooksNativeCategoriesEnum } from 'features/search/types'
@@ -43,7 +43,7 @@ describe('<SubcategoryButton/>', () => {
 
     await user.press(button)
 
-    expect(push).toHaveBeenCalledWith('TabNavigator', {
+    expect(navigate).toHaveBeenCalledWith('TabNavigator', {
       screen: 'SearchStackNavigator',
       params: {
         screen: 'SearchResults',
