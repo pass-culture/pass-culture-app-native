@@ -37,6 +37,8 @@ const parseGeoloc = (hit: AlgoliaOffer): AlgoliaOffer['_geoloc'] =>
 export const filterOfferHitWithImage = (hit?: AlgoliaOffer): hit is AlgoliaOffer =>
   !!hit && hit.offer && !!hit.offer.thumbUrl
 
+export const filterValidOfferHit = (hit?: AlgoliaOffer): hit is AlgoliaOffer => !!hit && !!hit.offer
+
 export const transformOfferHit =
   (urlPrefix?: string) =>
   (hit: AlgoliaOffer): AlgoliaOffer => ({
