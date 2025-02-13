@@ -23,13 +23,14 @@ export type CheatcodesStackParamList = {
   CheatcodesScreenRemoteBanner: undefined
   CheatcodesScreenTrustedDeviceInfos: undefined
   // Others
-  CheatcodesScreenDebugInformations: undefined
-  CheatcodesScreenFeatureFlags: undefined
-  CheatcodesScreenRemoteConfig: undefined
-  CheatcodesScreenNewCaledonia: undefined
+  CheatcodeScreenLoadingPage: undefined
+  CheatcodesNavigationAccountManagement: undefined
   CheatcodesNavigationErrors: undefined
   CheatcodesNavigationNotScreensPages: undefined
-  CheatcodesScreenAccesLibre: undefined
   CheatcodesNavigationSignUp: undefined
-  CheatcodesNavigationAccountManagement: undefined
+  CheatcodesScreenAccesLibre: undefined
+  CheatcodesScreenDebugInformations: undefined
+  CheatcodesScreenFeatureFlags: undefined
+  CheatcodesScreenNewCaledonia: undefined
+  CheatcodesScreenRemoteConfig: undefined
 }

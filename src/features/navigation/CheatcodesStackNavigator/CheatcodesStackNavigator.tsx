@@ -35,6 +35,7 @@ import { withAsyncErrorBoundary } from 'features/errors/hocs/withAsyncErrorBound
 import { CheatcodesStackParamList } from 'features/navigation/CheatcodesStackNavigator/types'
 import { ROOT_NAVIGATOR_SCREEN_OPTIONS } from 'features/navigation/RootNavigator/navigationOptions'
 import { GenericRoute } from 'features/navigation/RootNavigator/types'
+import { LoadingPage } from 'ui/components/LoadingPage'
 
 export type CheatcodesStackRoute = GenericRoute<CheatcodesStackParamList>
 
@@ -131,8 +132,8 @@ const routes: CheatcodesStackRoute[] = [
     component: CheatcodesScreenFeatureFlags,
   },
   {
-    name: 'CheatcodesScreenRemoteConfig',
-    component: CheatcodesScreenRemoteConfig,
+    name: 'CheatcodeScreenLoadingPage',
+    component: LoadingPage,
   },
   {
     name: 'CheatcodesScreenNewCaledonia',
@@ -141,6 +142,10 @@ const routes: CheatcodesStackRoute[] = [
   {
     name: 'CheatcodesScreenRemoteBanner',
     component: CheatcodesScreenRemoteBanner,
+  },
+  {
+    name: 'CheatcodesScreenRemoteConfig',
+    component: CheatcodesScreenRemoteConfig,
   },
   {
     name: 'CheatcodesNavigationErrors',
