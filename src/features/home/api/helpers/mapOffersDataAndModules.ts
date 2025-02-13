@@ -3,7 +3,7 @@ import { flatten, uniqBy } from 'lodash'
 import { UseQueryResult } from 'react-query'
 
 import { ModuleData, OfferModuleParamsInfo } from 'features/home/types'
-import { filterOfferHit } from 'libs/algolia/fetchAlgolia/transformOfferHit'
+import { filterOfferHitWithImage } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { AlgoliaOffer } from 'libs/algolia/types'
 import { Offer } from 'shared/offer/types'
 
@@ -32,7 +32,7 @@ export const mapOffersDataAndModules = ({ results, modulesParams, transformHits 
 
         const moduleOffers = data.slice(moduleIterator, moduleIterator + nbParams)
         const hits = flatten(moduleOffers.map((hits) => hits.hits))
-          .filter(filterOfferHit)
+          .filter(filterOfferHitWithImage)
           .map(transformHits)
 
         const value: ModuleData = {

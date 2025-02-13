@@ -3,7 +3,10 @@ import { useEffect } from 'react'
 import { useQuery } from 'react-query'
 
 import { ThematicSearchPlaylistListProps } from 'features/search/pages/ThematicSearch/ThematicSearchPlaylistList'
-import { filterOfferHit, useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
+import {
+  filterOfferHitWithImage,
+  useTransformOfferHits,
+} from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { Position, useLocation } from 'libs/location'
 import { Offer } from 'shared/offer/types'
 
@@ -46,7 +49,7 @@ export function useThematicSearchPlaylists({
         ? data
             .map((item, index) => ({
               title: playlistTitles[index] || '',
-              offers: { hits: item.hits.filter(filterOfferHit).map(transformHits) },
+              offers: { hits: item.hits.filter(filterOfferHitWithImage).map(transformHits) },
             }))
             .filter((playlist) => playlist.offers.hits.length > 0)
         : [{ title: '', offers: { hits: [] } }],
