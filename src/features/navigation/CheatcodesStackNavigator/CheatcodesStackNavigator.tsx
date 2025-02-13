@@ -37,7 +37,7 @@ import { ROOT_NAVIGATOR_SCREEN_OPTIONS } from 'features/navigation/RootNavigator
 import { GenericRoute } from 'features/navigation/RootNavigator/types'
 import { LoadingPage } from 'ui/pages/LoadingPage'
 
-export type CheatcodesStackRoute = GenericRoute<CheatcodesStackParamList>
+type CheatcodesStackRoute = GenericRoute<CheatcodesStackParamList>
 
 const routes: CheatcodesStackRoute[] = [
   /**** MENU ****/

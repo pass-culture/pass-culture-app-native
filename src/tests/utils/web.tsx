@@ -3,23 +3,14 @@
 // https://github.com/prisma/prisma/issues/8558#issuecomment-1040378575
 
 // eslint-disable-next-line no-restricted-imports
-import { act, render, RenderOptions } from '@testing-library/react'
+import { render, RenderOptions } from '@testing-library/react'
 import deepmerge from 'deepmerge'
 import React, { ReactNode } from 'react'
-import { ReactTestInstance } from 'react-test-renderer'
 import { ThemeProvider as ThemeProviderWeb, DefaultTheme } from 'styled-components'
 import { ThemeProvider } from 'styled-components/native'
 
 import { computedTheme } from 'tests/computedTheme'
 import { IconFactoryProvider } from 'ui/components/icons/IconFactoryProvider'
-
-export function simulateWebviewMessage(webview: ReactTestInstance, message: string) {
-  act(() => {
-    webview.props.onMessage({
-      nativeEvent: { data: message },
-    })
-  })
-}
 
 type PropsWithTheme = {
   theme?: Partial<DefaultTheme>
@@ -37,7 +28,7 @@ const DefaultWrapper = ({ children, theme }: PropsWithTheme) => {
   )
 }
 
-export type CustomRenderOptions = {
+type CustomRenderOptions = {
   theme?: Partial<DefaultTheme>
 } & RenderOptions
 

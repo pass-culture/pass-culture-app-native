@@ -1,9 +1,0 @@
-vite.config.js:33 - default
-src/features/venueMap/constant.ts:22 - satisfies
-src/features/venueMap/constant.ts:22 - Record
-src/shared/credits/defaultCreditByAge.ts:22 - satisfies
-src/shared/credits/defaultCreditByAge.ts:22 - ReadonlyDeep (used in module)
-src/ui/theme/constants.ts:25 - AVATAR_MEDIUM
-src/ui/theme/index.ts:5 - Typo
-src/features/auth/helpers/contactSupport.ts:38 - satisfies
-src/features/auth/helpers/contactSupport.ts:38 - ContactSupport (used in module)

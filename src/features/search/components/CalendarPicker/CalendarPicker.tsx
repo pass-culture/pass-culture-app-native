@@ -7,11 +7,11 @@ import { AppModal } from 'ui/components/modals/AppModal'
 import { Close } from 'ui/svg/icons/Close'
 import { getSpacing, Spacer } from 'ui/theme'
 
-import { Props } from './CalendarPicker.d'
+import { CalendarPickerProps } from './CalendarPickerProps'
 
 const CURRENT_DATE = new Date()
 
-export const CalendarPicker: React.FC<Props> = ({
+export const CalendarPicker: React.FC<CalendarPickerProps> = ({
   setSelectedDate,
   selectedDate,
   visible,

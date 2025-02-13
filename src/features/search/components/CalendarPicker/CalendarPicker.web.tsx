@@ -22,7 +22,7 @@ import { ArrowPrevious as DefaultArrowPrevious } from 'ui/svg/icons/ArrowPreviou
 import { Close } from 'ui/svg/icons/Close'
 import { getSpacing } from 'ui/theme'
 
-import { Props } from './CalendarPicker.d'
+import { CalendarPickerProps } from './CalendarPickerProps'
 
 LocaleConfig.locales['fr'] = {
   monthNames: CAPITALIZED_MONTHS,
@@ -43,7 +43,7 @@ const RN_CALENDAR_STYLE: React.ComponentProps<typeof RNCalendar>['style'] = {
   marginHorizontal: getSpacing(-2),
 }
 
-export const CalendarPicker: React.FC<Props> = ({
+export const CalendarPicker: React.FC<CalendarPickerProps> = ({
   selectedDate,
   visible,
   hideCalendar,
