@@ -45,6 +45,7 @@ export function CheatcodesMenu(): React.JSX.Element {
     ...cheatcodesNavigationAchievementsButtons,
     ...cheatcodesNavigationBookOfferButtons,
     ...cheatcodesNavigationCulturalSurveyButtons,
+    ...cheatcodesNavigationForceUpdateButtons,
     ...cheatcodesNavigationHomeButtons,
     ...cheatcodesNavigationIdentityCheckButtons,
     ...cheatcodesNavigationInternalButtons,
@@ -52,9 +53,8 @@ export function CheatcodesMenu(): React.JSX.Element {
     ...cheatcodesNavigationSubscriptionButtons,
     ...cheatcodesNavigationTrustedDeviceButtons,
     ...cheatcodesNavigationTutorialButtons,
-    ...cheatcodesNavigationForceUpdateButtons,
-    { title: 'Share 🔗', screen: 'CheatcodesNavigationShare', subscreens: [] },
     { title: 'RemoteBanner 🆒', screen: 'CheatcodesScreenRemoteBanner', subscreens: [] },
+    { title: 'Share 🔗', screen: 'CheatcodesNavigationShare', subscreens: [] },
   ]
 
   const otherButtons: CheatcodesButtonsWithSubscreensProps[] = [
@@ -65,6 +65,7 @@ export function CheatcodesMenu(): React.JSX.Element {
     { title: 'Debug informations 🪲', screen: 'CheatcodesScreenDebugInformations', subscreens: [] },
     { title: 'Envoyer une erreur Sentry 📤', onPress: onPressSentry, subscreens: [] },
     { title: 'Features flags 🏳️', screen: 'CheatcodesScreenFeatureFlags', subscreens: [] },
+    { title: 'Loading page ⌛', screen: 'CheatcodeScreenLoadingPage', subscreens: [] },
     { title: 'Nouvelle-Calédonie 🇳🇨', screen: 'CheatcodesScreenNewCaledonia', subscreens: [] },
     { title: 'Pages non écrans ❌', screen: 'CheatcodesNavigationNotScreensPages', subscreens: [] },
     { title: 'Remote config 📊', screen: 'CheatcodesScreenRemoteConfig', subscreens: [] },
