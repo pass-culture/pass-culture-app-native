@@ -36,23 +36,35 @@ export const useVenueOffers = (venue?: VenueResponse): UseQueryResult<VenueOffer
     [userLocation, selectedLocationMode]
   )
 
-  const venueSearchedOffers = buildVenueOffersQueryParams({
-    ...searchState,
-    venue: venueSearchParams.venue,
-    hitsPerPage: venueSearchParams.hitsPerPage,
-  })
-  const venueTopOffers = buildVenueOffersQueryParams(venueSearchParams)
-  const headlineOffer = buildVenueOffersQueryParams({ ...venueSearchParams, isHeadline: true })
+  const venueSearchedOffersQueryParams = {
+    ...buildVenueOffersQueryParams({
+      ...searchState,
+      venue: venueSearchParams.venue,
+      hitsPerPage: venueSearchParams.hitsPerPage,
+    }),
+    indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
+  }
+  const venueTopOffersQueryParams = {
+    ...buildVenueOffersQueryParams(venueSearchParams),
+    indexName: env.ALGOLIA_TOP_OFFERS_INDEX_NAME,
+  }
+  const headlineOfferQueryParams = {
+    ...buildVenueOffersQueryParams({ ...venueSearchParams, isHeadline: true }),
+    indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
+  }
 
-  const paramsList = [venueSearchedOffers, venueTopOffers, headlineOffer]
+  const venueOffersQueriesParamsList = [
+    venueSearchedOffersQueryParams,
+    venueTopOffersQueryParams,
+    headlineOfferQueryParams,
+  ]
 
   return useQuery(
     [QueryKeys.VENUE_OFFERS, venue?.id, userLocation, selectedLocationMode],
     () =>
       fetchMultipleOffers({
-        paramsList,
+        paramsList: venueOffersQueriesParamsList,
         isUserUnderage,
-        indexName: env.ALGOLIA_TOP_OFFERS_INDEX_NAME,
       }),
     {
       enabled: !!venue,
@@ -62,9 +74,8 @@ export const useVenueOffers = (venue?: VenueResponse): UseQueryResult<VenueOffer
           .filter(filterOfferHit)
           .map(transformHits)
 
-        const headlineOffer = headlineOfferResults?.hits[0]
-          ? transformHits(headlineOfferResults?.hits[0])
-          : undefined
+        const headlineOfferHit = headlineOfferResults?.hits[0]
+        const headlineOffer = headlineOfferHit ? transformHits(headlineOfferHit) : undefined
 
         return {
           hits: uniqBy(hits, 'objectID'),
