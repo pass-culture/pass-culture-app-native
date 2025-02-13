@@ -7,7 +7,7 @@ import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteRespon
 import { analytics } from 'libs/analytics/provider'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
+import { userEvent, render, screen } from 'tests/utils'
 
 import { BookingImpossible } from './BookingImpossible'
 
@@ -44,6 +44,11 @@ const mockPostNativeV1SendOfferLinkByPushofferId = jest.spyOn(
 const generalConditionText =
   'Les conditions générales d’utilisation de l’App Store iOS ne permettent pas de réserver cette offre sur l’application.'
 
+const favoriteButtonText = 'Mettre en favori'
+
+jest.useFakeTimers()
+const user = userEvent.setup()
+
 describe('<BookingImpossible />', () => {
   describe('When offer is already favorite', () => {
     beforeEach(() => {
@@ -63,7 +68,7 @@ describe('<BookingImpossible />', () => {
 
       await screen.findByText(generalConditionText)
 
-      expect(screen.queryByText('Mettre en favoris')).not.toBeOnTheScreen()
+      expect(screen.queryByText(favoriteButtonText)).not.toBeOnTheScreen()
     })
 
     it("should log 'BookingImpossibleiOS' on mount", async () => {
@@ -77,7 +82,7 @@ describe('<BookingImpossible />', () => {
     it("should dismiss modal when clicking on 'Voir le détail de l’offre'", async () => {
       render(reactQueryProviderHOC(<BookingImpossible />))
 
-      fireEvent.press(await screen.findByText('Voir le détail de l’offre'))
+      await user.press(await screen.findByText('Voir le détail de l’offre'))
 
       expect(mockDismissModal).toHaveBeenCalledTimes(1)
     })
@@ -107,17 +112,15 @@ describe('<BookingImpossible />', () => {
 
       await screen.findByText(generalConditionText)
 
-      expect(screen.getByText('Mettre en favoris')).toBeOnTheScreen()
+      expect(screen.getByText(favoriteButtonText)).toBeOnTheScreen()
     })
 
     it('should send email/push notification when adding to favorites', async () => {
       render(reactQueryProviderHOC(<BookingImpossible />))
 
-      await act(async () => {
-        const addToFavoriteButton = await screen.findByLabelText('Mettre en favoris')
+      const addToFavoriteButton = await screen.findByLabelText(favoriteButtonText)
 
-        fireEvent.press(addToFavoriteButton)
-      })
+      await user.press(addToFavoriteButton)
 
       expect(mockPostNativeV1SendOfferWebappLinkByEmailofferId).toHaveBeenCalledWith(mockOfferId)
       expect(mockPostNativeV1SendOfferLinkByPushofferId).toHaveBeenCalledWith(mockOfferId)
@@ -126,15 +129,13 @@ describe('<BookingImpossible />', () => {
     it('should log analytics event when adding to favorites', async () => {
       render(reactQueryProviderHOC(<BookingImpossible />))
 
-      fireEvent.press(screen.getByText('Mettre en favoris'))
+      await user.press(screen.getByText(favoriteButtonText))
 
-      await waitFor(() => {
-        expect(analytics.logHasAddedOfferToFavorites).toHaveBeenNthCalledWith(1, {
-          from: 'bookingimpossible',
-          offerId: mockOfferId,
-        })
-        expect(mockDismissModal).toHaveBeenCalledTimes(1)
+      expect(analytics.logHasAddedOfferToFavorites).toHaveBeenNthCalledWith(1, {
+        from: 'bookingimpossible',
+        offerId: mockOfferId,
       })
+      expect(mockDismissModal).toHaveBeenCalledTimes(1)
     })
 
     it('should change booking step from date to confirmation', async () => {
@@ -151,7 +152,7 @@ describe('<BookingImpossible />', () => {
       render(reactQueryProviderHOC(<BookingImpossible />))
       await screen.findByText(generalConditionText)
 
-      fireEvent.press(await screen.findByText('Retourner à l’offre'))
+      await user.press(await screen.findByText('Retourner à l’offre'))
 
       expect(mockDismissModal).toHaveBeenCalledTimes(1)
     })
