@@ -1,11 +1,8 @@
 import React, { FunctionComponent, useMemo, useState } from 'react'
-import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 
 import { OfferContentBase } from 'features/offer/components/OfferContent/OfferContentBase'
 import { OfferCTAProvider } from 'features/offer/components/OfferContent/OfferCTAProvider'
-import { OfferCTAButton } from 'features/offer/components/OfferCTAButton/OfferCTAButton'
-import { useOfferBatchTracking } from 'features/offer/helpers/useOfferBatchTracking/useOfferBatchTracking'
 import { OfferContentProps } from 'features/offer/types'
 import { getImagesUrlsWithCredit } from 'shared/getImagesUrlsWithCredit/getImagesUrlsWithCredit'
 import { ImageWithCredit } from 'shared/types'
@@ -21,7 +18,6 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
   chronicles,
 }) => {
   const { visible, showModal, hideModal } = useModal(false)
-  const { isDesktopViewport } = useTheme()
   const headerHeight = useGetHeaderHeight()
   const [carouselDefaultIndex, setCarouselDefaultIndex] = useState(0)
 
@@ -32,20 +28,10 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
 
   const offerImagesUrl = useMemo(() => offerImages.map((image) => image.url), [offerImages])
 
-  const { trackEventHasSeenOfferOnce } = useOfferBatchTracking(subcategory.id)
-
   const handlePress = (defaultIndex = 0) => {
     setCarouselDefaultIndex(defaultIndex)
     showModal()
   }
-
-  const footer = isDesktopViewport ? null : (
-    <OfferCTAButton
-      offer={offer}
-      subcategory={subcategory}
-      trackEventHasSeenOfferOnce={trackEventHasSeenOfferOnce}
-    />
-  )
 
   const BodyWrapper = useMemo(
     () =>
@@ -72,7 +58,6 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
           chronicles={chronicles}
           onOfferPreviewPress={handlePress}
           BodyWrapper={BodyWrapper}
-          footer={footer}
         />
       </React.Fragment>
     </OfferCTAProvider>

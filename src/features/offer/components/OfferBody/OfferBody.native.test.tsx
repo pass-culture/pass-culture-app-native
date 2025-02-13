@@ -619,10 +619,13 @@ describe('<OfferBody />', () => {
     offer = offerResponseSnap,
     subcategory = mockSubcategory,
     isDesktopViewport,
+    children,
   }: RenderOfferBodyType) {
     render(
       reactQueryProviderHOC(
-        <OfferBody offer={offer} subcategory={subcategory} trackEventHasSeenOfferOnce={jest.fn()} />
+        <OfferBody offer={offer} subcategory={subcategory}>
+          {children}
+        </OfferBody>
       ),
       {
         theme: { isDesktopViewport: isDesktopViewport ?? false },
