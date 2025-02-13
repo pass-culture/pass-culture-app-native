@@ -21,36 +21,6 @@ const isWeb = Platform.OS === 'web'
 
 export type RemoteBannerOrigin = 'Profile' | 'Home' | 'Cheatcodes'
 
-// Created this "dumb" component for Storybook
-export const RemoteBannerDumb: React.FC<{
-  showWebAlternative: boolean
-  accessibilityLabel: string
-  isStoreRedirection: boolean
-  onPress: () => void
-  redirectionUrl: string | null | undefined
-  subtitleMobile: string | null | undefined
-  subtitleWeb: string | null | undefined
-  title: string
-}> = ({
-  showWebAlternative,
-  accessibilityLabel,
-  isStoreRedirection,
-  onPress,
-  redirectionUrl,
-  subtitleMobile,
-  subtitleWeb,
-  title,
-}) => (
-  <BannerWithBackground
-    disabled={!isStoreRedirection && !redirectionUrl}
-    leftIcon={ArrowAgain}
-    onPress={onPress}
-    {...accessibilityAndTestId(accessibilityLabel)}>
-    <StyledButtonText>{title}</StyledButtonText>
-    <StyledBodyText>{showWebAlternative ? subtitleWeb : subtitleMobile}</StyledBodyText>
-  </BannerWithBackground>
-)
-
 export const RemoteBanner = ({ from }: { from: RemoteBannerOrigin }) => {
   const { options } = useFeatureFlagOptions(RemoteStoreFeatureFlags.SHOW_REMOTE_BANNER)
   const validatedOptions = validateRemoteBanner(options)
@@ -73,16 +43,14 @@ export const RemoteBanner = ({ from }: { from: RemoteBannerOrigin }) => {
   }
 
   return (
-    <RemoteBannerDumb
-      showWebAlternative={isWeb}
-      accessibilityLabel={accessibilityLabel}
-      isStoreRedirection={isStoreRedirection}
+    <BannerWithBackground
+      disabled={!isStoreRedirection && !redirectionUrl}
+      leftIcon={ArrowAgain}
       onPress={onPress}
-      redirectionUrl={redirectionUrl}
-      subtitleMobile={subtitleMobile}
-      subtitleWeb={subtitleWeb}
-      title={title}
-    />
+      {...accessibilityAndTestId(accessibilityLabel)}>
+      <StyledButtonText>{title}</StyledButtonText>
+      <StyledBodyText>{isWeb ? subtitleWeb : subtitleMobile}</StyledBodyText>
+    </BannerWithBackground>
   )
 }
 
