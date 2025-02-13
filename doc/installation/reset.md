@@ -1,65 +1,100 @@
 # Pour repartir de zéro avec une installation propre de React Native, sans impacter le reste de ton système, voici les étapes à suivre. L’objectif est de nettoyer ton environnement de développement actuel et de réinstaller les outils nécessaires
 
-🚩 1. Identifier l’environnement actuel
+*made by chatgpt*
 
-Avant de supprimer quoi que ce soit, vérifie quelles versions de Node, npm, React Native CLI, etc., sont installées :
+## 1. Identify the current environment
 
-node -v
-npm -v
+Before removing anything, check which versions of Node, npm, React Native CLI, etc. are installed:
+
+```bash
+node --version
+npm --version
 npx react-native --version
 watchman --version
 java -version
+```
 
-🔄 2. Supprimer les outils existants
+## 2. Delete existing tools
 
-Cela dépend de la manière dont tu as installé les outils (via Homebrew, nvm, etc.).
+It depends on how you have installed the tools (via Homebrew, nvm, etc.).
 
-a) Désinstallation des packages globaux :
+First make a quick cache and react native process clean:
 
-npm uninstall -g react-native-cli
-npm uninstall -g react-native
+```bash
+npx rn-game-over --all
+```
 
-b) Supprimer Node.js et npm :
+### a) Uninstalling global packages
 
-Si installé via Homebrew :
+Adapt if installed with Yarn.
 
+```bash
+npm uninstall -global react-native-cli
+npm uninstall -global react-native
+```
+
+If you use nvm, you can delete versions of Node :
+
+```bash
+nvm uninstall <version>
+```
+
+### b) Remove Node.js and npm
+
+[The long way : How do I completely uninstall Node.js, and reinstall from begining](https://stackoverflow.com/questions/11177954/how-do-i-completely-uninstall-node-js-and-reinstall-from-beginning-mac-os-x)
+
+It installed itself via Homebrew :
+
+```bash
 brew uninstall node
+```
 
-Si via un package officiel : supprime-le depuis le dossier /usr/local/bin :
+If via an official package, delete it from the`/usr/local/bin` :
 
+```bash
 sudo rm -rf /usr/local/bin/node
 sudo rm -rf /usr/local/lib/node_modules
+```
 
-c) Supprimer Watchman (si installé) :
+### c) Remove Watchman (if installed)
 
+```bash
 brew uninstall watchman
+```
 
-d) Supprimer Java (si besoin de réinstaller proprement) :
+### d) Remove Java (if you need to reinstall properly)
 
-brew uninstall --cask temurin
+```bash
+brew uninstall --cask zulu
+```
 
-📦 3. Nettoyer les caches
+## 3. Clean folders
 
-npm cache clean --force
-watchman watch-del-all
+```bash
 rm -rf ~/.watchmanconfig
 rm -rf ~/.npm
 rm -rf ~/.metro-cache
 rm -rf node_modules
 rm -rf package-lock.json
+```
 
-Si tu utilises nvm, tu peux supprimer les versions de Node :
+## 4. Reinstall a clean environment
 
-nvm uninstall <version>
+**PLEASE !!! by default follow our [general instructions](https://github.com/pass-culture/pass-culture-app-native/blob/master/doc/installation/setup.md)**
 
-🚀 4. Réinstaller un environnement propre
+---
 
-a) Installer Homebrew (si non présent) :
+If you encounter any problem then you may follow those steps...
 
+### a) Install Homebrew (if not present)
+
+```bash
 /bin/bash -c "$(curl -fsSL <https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh>)"
+```
 
-b) Installer Node via nvm (recommandé) :
+### b) Install Node via nvm (recommended)
 
+```bash
 brew install nvm
 mkdir ~/.nvm
 echo 'export NVM_DIR="$HOME/.nvm"' >> ~/.zshrc
@@ -69,27 +104,37 @@ source ~/.zshrc
 nvm install --lts
 nvm use --lts
 sudo ln -s $(which node) /usr/local/bin/node
+```
 
-c) Installer Watchman :
+### c) Install Watchman
 
+```bash
 brew install watchman
+```
 
-d) Installer React Native CLI :
+### d) Install React Native CLI
 
+```bash
 npm install -g react-native-cli
+```
 
-e) Installer Java (si nécessaire pour Android) :
+### e) Install Java (if necessary for Android)
 
-brew install --cask temurin
+```bash
+brew install --cask zulu
+```
 
-f) Installer Android Studio (si nécessaire) :
- • Télécharge Android Studio depuis le site officiel ou via brew
- • Installe les SDK nécessaires via le SDK Manager.
+### f) Install Android Studio (if necessary)
 
-⚡ 5. Vérification de l’installation
+- Download Android Studio from the official site or via brew
+- Install the necessary SDKs via the SDK Manager.
 
-Crée un projet de test :
+## 5. Checking the installation
 
+Creates a test project :
+
+```bash
 npx react-native init TestProject
 cd TestProject
-npx react-native run-ios # ou run-android
+npx react-native run-ios # or run-android
+```
