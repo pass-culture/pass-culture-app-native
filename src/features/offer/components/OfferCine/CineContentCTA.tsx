@@ -26,5 +26,5 @@ const CallToActionContainer = styled.View(({ theme }) => ({
   ...(!theme.isMobileViewport && {
     maxWidth: theme.contentPage.maxWidth,
   }),
-  gap: getSpacing(6),
+  marginBottom: getSpacing(6),
 }))

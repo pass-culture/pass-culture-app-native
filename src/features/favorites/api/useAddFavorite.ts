@@ -16,7 +16,6 @@ import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/S
 export function useAddFavorite({ onSuccess }: { onSuccess?: (data?: FavoriteResponse) => void }) {
   const queryClient = useQueryClient()
   const { showErrorSnackBar } = useSnackBarContext()
-
   return useMutation((body: FavoriteRequest) => api.postNativeV1MeFavorites(body), {
     onSuccess: (data: FavoriteResponse) => {
       const previousFavorites = queryClient.getQueryData<PaginatedFavoritesResponse>([

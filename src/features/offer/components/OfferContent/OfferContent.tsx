@@ -1,12 +1,10 @@
 import { useNavigation } from '@react-navigation/native'
-import React, { FunctionComponent, useMemo } from 'react'
+import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { OfferContentBase } from 'features/offer/components/OfferContent/OfferContentBase'
 import { OfferCTAProvider } from 'features/offer/components/OfferContent/OfferCTAProvider'
-import { OfferCTAButton } from 'features/offer/components/OfferCTAButton/OfferCTAButton'
-import { useOfferBatchTracking } from 'features/offer/helpers/useOfferBatchTracking/useOfferBatchTracking'
 import { OfferContentProps } from 'features/offer/types'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { getSpacing } from 'ui/theme'
@@ -23,18 +21,6 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
   const handlePress = (defaultIndex = 0) => {
     navigate('OfferPreview', { id: offer.id, defaultIndex })
   }
-  const { trackEventHasSeenOfferOnce } = useOfferBatchTracking(subcategory.id)
-
-  const footer = useMemo(
-    () => (
-      <OfferCTAButton
-        offer={offer}
-        subcategory={subcategory}
-        trackEventHasSeenOfferOnce={trackEventHasSeenOfferOnce}
-      />
-    ),
-    [offer, subcategory, trackEventHasSeenOfferOnce]
-  )
 
   return (
     <OfferCTAProvider>
@@ -44,7 +30,6 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
         contentContainerStyle={CONTENT_CONTAINER_STYLE}
         onOfferPreviewPress={handlePress}
         BodyWrapper={BodyWrapper}
-        footer={footer}
         chronicles={chronicles}
         subcategory={subcategory}
       />
