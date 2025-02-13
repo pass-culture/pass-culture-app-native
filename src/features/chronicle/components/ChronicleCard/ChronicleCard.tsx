@@ -42,12 +42,12 @@ export const ChronicleCard: FunctionComponent<Props> = ({
     parseFloat(theme.designSystem.typography.bodyAccentS.lineHeight) * MAX_LINES * REM_TO_PX
   const DEFAULT_HEIGHT_MOBILE =
     parseFloat(theme.designSystem.typography.bodyAccentS.lineHeight) * MAX_LINES
-  const getDefaultHeight = Platform.OS === 'web' ? DEFAULT_HEIGHT_WEB : DEFAULT_HEIGHT_MOBILE
+  const defaultHeight = Platform.OS === 'web' ? DEFAULT_HEIGHT_WEB : DEFAULT_HEIGHT_MOBILE
 
   const handleOnLayout = (event: LayoutChangeEvent) => {
     // We use Math.floor to avoid floating-point precision issues when comparing heights
     const actualHeight = Math.floor(event.nativeEvent.layout.height)
-    const expectedMaxHeight = Math.floor(getDefaultHeight)
+    const expectedMaxHeight = Math.floor(defaultHeight)
 
     if (actualHeight > expectedMaxHeight) {
       setShouldDisplayButton(true)
@@ -64,7 +64,7 @@ export const ChronicleCard: FunctionComponent<Props> = ({
         thumbnailComponent={<BookClubCertification />}
       />
       <Separator.Horizontal />
-      <DescriptionContainer defaultHeight={getDefaultHeight}>
+      <DescriptionContainer defaultHeight={defaultHeight}>
         <Description
           testID="description"
           onLayout={shouldTruncate ? handleOnLayout : undefined}
