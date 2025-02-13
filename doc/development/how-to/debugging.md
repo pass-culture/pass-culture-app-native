@@ -1,21 +1,21 @@
-## Debugging
+# Debugging
 
-### react-error-overlay
+## Create a 0 project
 
-In development, the Web application by default does not show the react error overlay, you can re-enable it by using `ERROR_OVERLAY=true`, ex:
+## Set up VSCode for debugging
 
-```bash
-ERROR_OVERLAY=true npm run start:web:testing
-``` 
+## On the simulator
 
-### Flipper
+## Then on the device
 
-You can install [Flipper](https://fbflipper.com/) that will help you visualize the application's logs and network information.
+## How to use XCode logs
 
-We recommend installing the **plugin** `react-query-native-devtools` to analyze react query. This plugin is available through `Manage Plugins` > `Install Plugins`: `react-query-native-devtools`. This should work without further configuration for both platforms.
+## How to use Android Studio logs
 
-### Detailed logs
+## How to profile in XCode
 
-If you want more detailed application logs, you can still access the logs with ADB: `adb logcat` on **Android**, or use the **Logcat** tab in Android Studio.
+## How to profile in Android Studio
 
-For **iOS**, you can use the console logs in Xcode.
+## How to create a Flame Graph
+
+## How to analyse a Flame Graph
