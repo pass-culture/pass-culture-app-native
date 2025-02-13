@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { setSettings } from 'features/auth/tests/setSettings'
 import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { NonEligible, TutorialTypes } from 'features/tutorial/enums'
@@ -23,78 +24,106 @@ const user = userEvent.setup()
 jest.useFakeTimers()
 
 describe('NotEligibleModal', () => {
-  it('should display subtitle with credit V2', () => {
-    renderNotEligibleModal(NonEligible.UNDER_15, TutorialTypes.ONBOARDING)
+  describe('with credit V3', () => {
+    beforeEach(() => {
+      setSettings({ wipEnableCreditV3: true })
+    })
 
-    const subtitle = 'Tu peux bénéficier de ton crédit sur l’application à partir de tes 15 ans.'
+    it('for under 15, should display "Ton crédit t‘attend à partir de tes 17 ans."', async () => {
+      renderNotEligibleModal(NonEligible.UNDER_15, TutorialTypes.ONBOARDING)
 
-    expect(screen.getByText(subtitle)).toBeOnTheScreen()
+      const text = await screen.findByText('Ton crédit t’attend à partir de tes 17 ans.')
+
+      expect(text).toBeTruthy()
+    })
+
+    it('for under 17, should display "Ton crédit t‘attend à partir de tes 17 ans."', async () => {
+      renderNotEligibleModal(NonEligible.UNDER_17, TutorialTypes.ONBOARDING)
+
+      const text = await screen.findByText('Ton crédit t’attend à partir de tes 17 ans.')
+
+      expect(text).toBeTruthy()
+    })
   })
 
-  describe('for user over 18 years old', () => {
-    it('should return null', () => {
-      renderNotEligibleModal(NonEligible.OVER_18, TutorialTypes.ONBOARDING)
-
-      expect(screen.toJSON()).toBeNull()
+  describe('without credit V3', () => {
+    beforeEach(() => {
+      setSettings()
     })
-  })
 
-  describe('for user under 15 years old', () => {
-    it('should render correctly for onboarding', () => {
+    it('should display subtitle with credit V2', () => {
       renderNotEligibleModal(NonEligible.UNDER_15, TutorialTypes.ONBOARDING)
 
-      expect(screen).toMatchSnapshot()
+      const subtitle = 'Tu peux bénéficier de ton crédit sur l’application à partir de tes 15 ans.'
+
+      expect(screen.getByText(subtitle)).toBeOnTheScreen()
     })
 
-    it('should render correctly for profile tutorial', () => {
-      renderNotEligibleModal(NonEligible.UNDER_15, TutorialTypes.PROFILE_TUTORIAL)
+    describe('for user over 18 years old', () => {
+      it('should return null', () => {
+        renderNotEligibleModal(NonEligible.OVER_18, TutorialTypes.ONBOARDING)
 
-      expect(screen).toMatchSnapshot()
+        expect(screen.toJSON()).toBeNull()
+      })
     })
 
-    it('should close modal when pressing right header icon', async () => {
-      renderNotEligibleModal(NonEligible.UNDER_15, TutorialTypes.ONBOARDING)
+    describe('for user under 15 years old', () => {
+      it('should render correctly for onboarding', () => {
+        renderNotEligibleModal(NonEligible.UNDER_15, TutorialTypes.ONBOARDING)
 
-      const button = screen.getByTestId('Fermer la modale')
-      await user.press(button)
+        expect(screen).toMatchSnapshot()
+      })
 
-      expect(hideModal).toHaveBeenCalledTimes(1)
-    })
+      it('should render correctly for profile tutorial', () => {
+        renderNotEligibleModal(NonEligible.UNDER_15, TutorialTypes.PROFILE_TUTORIAL)
 
-    it('should close modal when pressing "Explorer le catalogue" on onboarding', async () => {
-      renderNotEligibleModal(NonEligible.UNDER_15, TutorialTypes.ONBOARDING)
+        expect(screen).toMatchSnapshot()
+      })
 
-      const button = screen.getByText('Explorer le catalogue')
-      await user.press(button)
+      it('should close modal when pressing right header icon', async () => {
+        renderNotEligibleModal(NonEligible.UNDER_15, TutorialTypes.ONBOARDING)
 
-      expect(hideModal).toHaveBeenCalledTimes(1)
-    })
+        const button = screen.getByTestId('Fermer la modale')
+        await user.press(button)
 
-    it('should navigate to home when pressing "Explorer le catalogue" on profile tutorial', async () => {
-      renderNotEligibleModal(NonEligible.UNDER_15, TutorialTypes.PROFILE_TUTORIAL)
+        expect(hideModal).toHaveBeenCalledTimes(1)
+      })
 
-      const button = screen.getByText('Explorer le catalogue')
-      await user.press(button)
+      it('should close modal when pressing "Explorer le catalogue" on onboarding', async () => {
+        renderNotEligibleModal(NonEligible.UNDER_15, TutorialTypes.ONBOARDING)
 
-      expect(navigateToHome).toHaveBeenCalledTimes(1)
-    })
+        const button = screen.getByText('Explorer le catalogue')
+        await user.press(button)
 
-    it('should not navigate to home when pressing "Explorer le catalogue" on onboarding', async () => {
-      renderNotEligibleModal(NonEligible.UNDER_15, TutorialTypes.ONBOARDING)
+        expect(hideModal).toHaveBeenCalledTimes(1)
+      })
 
-      const button = screen.getByText('Explorer le catalogue')
-      await user.press(button)
+      it('should navigate to home when pressing "Explorer le catalogue" on profile tutorial', async () => {
+        renderNotEligibleModal(NonEligible.UNDER_15, TutorialTypes.PROFILE_TUTORIAL)
 
-      expect(navigateToHome).not.toHaveBeenCalled()
-    })
+        const button = screen.getByText('Explorer le catalogue')
+        await user.press(button)
 
-    it('should redirect to FAQ when pressing "comment ça marche ?" on onboarding', async () => {
-      renderNotEligibleModal(NonEligible.UNDER_15, TutorialTypes.ONBOARDING)
+        expect(navigateToHome).toHaveBeenCalledTimes(1)
+      })
 
-      const button = screen.getByText('comment ça marche\u00a0?')
-      await user.press(button)
+      it('should not navigate to home when pressing "Explorer le catalogue" on onboarding', async () => {
+        renderNotEligibleModal(NonEligible.UNDER_15, TutorialTypes.ONBOARDING)
 
-      expect(openUrl).toHaveBeenCalledWith(env.FAQ_LINK_CREDIT)
+        const button = screen.getByText('Explorer le catalogue')
+        await user.press(button)
+
+        expect(navigateToHome).not.toHaveBeenCalled()
+      })
+
+      it('should redirect to FAQ when pressing "comment ça marche ?" on onboarding', async () => {
+        renderNotEligibleModal(NonEligible.UNDER_15, TutorialTypes.ONBOARDING)
+
+        const button = screen.getByText('comment ça marche\u00a0?')
+        await user.press(button)
+
+        expect(openUrl).toHaveBeenCalledWith(env.FAQ_LINK_CREDIT)
+      })
     })
   })
 })
