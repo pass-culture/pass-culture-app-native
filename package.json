@@ -16,7 +16,7 @@
   "homepage": ".",
   "scripts": {
     "preandroid": "./scripts/start_android_emulator_with_certificate.sh",
-    "android": "yarn preandroid && react-native run-android",
+    "android": "yarn react-native run-android",
     "android:prod": "yarn android --variant=productionDebug --appId=app.passculture.webapp",
     "android:staging": "yarn android --variant=stagingDebug --appId=app.passculture.staging",
     "android:testing": "yarn android --variant=apptestingDebug --appId=app.passculture.testing",
@@ -152,7 +152,7 @@
     "react-native-animatable": "^1.3.3",
     "react-native-appsflyer": "^6.14.3",
     "react-native-calendars": "^1.1284.0",
-    "react-native-code-push": "^8.1.0",
+    "react-native-code-push": "^8.3.1",
     "react-native-date-picker": "^4.3.5",
     "react-native-detector": "^0.2.3",
     "react-native-device-info": "^11.1.0",
