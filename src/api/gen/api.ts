@@ -1828,6 +1828,7 @@ export enum HomepageLabelNameEnumv2 {
   'PLATEFORME' = 'PLATEFORME',
   'RENCONTRES' = 'RENCONTRES',
   'SPECTACLES' = 'SPECTACLES',
+  'STAGE_ATELIER' = 'STAGE_ATELIER',
   'VISITES' = 'VISITES',
 }
 /**
@@ -2545,6 +2546,11 @@ export interface OfferResponse {
    */
   name: string
   /**
+   * @type {string}
+   * @memberof OfferResponse
+   */
+  publicationDate?: string | null
+  /**
    * @type {ReactionCount}
    * @memberof OfferResponse
    */
@@ -2675,6 +2681,11 @@ export interface OfferResponseV2 {
    * @memberof OfferResponseV2
    */
   name: string
+  /**
+   * @type {string}
+   * @memberof OfferResponseV2
+   */
+  publicationDate?: string | null
   /**
    * @type {ReactionCount}
    * @memberof OfferResponseV2
