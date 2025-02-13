@@ -171,7 +171,7 @@ const OnlineProfile: React.FC = () => {
                 enableAchievements,
                 enableSystemBanner,
                 disableActivation,
-                showRemoteBanner: showRemoteBanner,
+                showRemoteBanner,
                 enablePassForAll,
               }}
               user={user}
