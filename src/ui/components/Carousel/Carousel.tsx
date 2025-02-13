@@ -50,7 +50,7 @@ export const Carousel = (props: CarouselProps) => {
   }
 
   const viewabilityConfig = {
-    itemVisiblePercentThreshold: 50,
+    itemVisiblePercentThreshold: 100,
   }
 
   const viewabilityConfigCallbackPairs = useRef([{ viewabilityConfig, onViewableItemsChanged }])
@@ -94,9 +94,9 @@ export const Carousel = (props: CarouselProps) => {
       viewabilityConfigCallbackPairs={
         viewabilityConfigCallbackPairs.current as ViewabilityConfigCallbackPairs
       }
+      nestedScrollEnabled
+      disableIntervalMomentum
       {...props}
     />
   )
 }
-
-Carousel.displayName = 'CarouselBase'
