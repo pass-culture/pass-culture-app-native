@@ -1,14 +1,14 @@
 import React, { FunctionComponent, ReactNode } from 'react'
 import styled from 'styled-components/native'
 
-import { ForceUpdateBanner } from 'features/forceUpdate/components/ForceUpdateBanner'
+import { RemoteBanner } from 'features/remoteBanner/components/RemoteBanner'
 import { InfoBanner } from 'ui/components/banners/InfoBanner'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { Info } from 'ui/svg/icons/Info'
 import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 
 type PropsWithChildren = {
-  showForceUpdateBanner: boolean
+  showRemoteBanner: boolean
   title: string
   subtitle?: ReactNode | string
   withGreyContainer?: boolean
@@ -17,7 +17,7 @@ type PropsWithChildren = {
 }
 
 export const HeaderWithGreyContainer: FunctionComponent<PropsWithChildren> = ({
-  showForceUpdateBanner,
+  showRemoteBanner,
   title,
   subtitle,
   bannerText,
@@ -35,9 +35,9 @@ export const HeaderWithGreyContainer: FunctionComponent<PropsWithChildren> = ({
       ) : (
         <Spacer.Column numberOfSpaces={6} />
       )}
-      {showForceUpdateBanner ? (
+      {showRemoteBanner ? (
         <BannerContainer>
-          <ForceUpdateBanner />
+          <RemoteBanner from="Profile" />
           <Spacer.Column numberOfSpaces={6} />
         </BannerContainer>
       ) : null}

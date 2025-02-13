@@ -17,7 +17,7 @@ type ProfileHeaderProps = {
     enableAchievements: boolean
     enableSystemBanner: boolean
     disableActivation: boolean
-    showForceUpdateBanner: boolean
+    showRemoteBanner: boolean
     enablePassForAll: boolean
   }
   user?: UserProfileResponse
@@ -33,7 +33,7 @@ export function ProfileHeader(props: ProfileHeaderProps) {
 
   const ProfileHeader = useMemo(() => {
     if (!isLoggedIn || !user) {
-      return <LoggedOutHeader showForceUpdateBanner={featureFlags.showForceUpdateBanner} />
+      return <LoggedOutHeader showRemoteBanner={featureFlags.showRemoteBanner} />
     }
 
     if (!user.isBeneficiary || user.isEligibleForBeneficiaryUpgrade) {
@@ -49,7 +49,7 @@ export function ProfileHeader(props: ProfileHeaderProps) {
     return (
       <React.Fragment>
         <CreditHeader
-          showForceUpdateBanner={featureFlags.showForceUpdateBanner}
+          showRemoteBanner={featureFlags.showRemoteBanner}
           firstName={user.firstName}
           lastName={user.lastName}
           age={getAge(user.birthDate)}

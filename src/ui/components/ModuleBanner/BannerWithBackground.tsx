@@ -25,6 +25,7 @@ type BannerWithBackgroundProps = TouchableProps & {
   rightIcon?: FunctionComponent<AccessibleIcon>
   backgroundSource?: ImageSourcePropType
   testID?: string
+  disabled?: boolean
   children: React.ReactNode
 }
 
@@ -34,6 +35,7 @@ export const BannerWithBackground: FunctionComponent<BannerWithBackgroundProps> 
   children,
   backgroundSource,
   testID,
+  disabled = false,
   ...touchableProps
 }) => {
   const StyledLeftIcon =
@@ -54,7 +56,7 @@ export const BannerWithBackground: FunctionComponent<BannerWithBackgroundProps> 
   const TouchableComponent = 'navigateTo' in touchableProps ? StyledTouchableLink : TouchableOpacity
 
   return (
-    <TouchableComponent {...touchableProps} testID={testID}>
+    <TouchableComponent {...touchableProps} testID={testID} disabled={disabled}>
       <ImageContainer>
         <ImageBackground
           source={backgroundSource || BACKGROUND_IMAGE_SOURCE}
