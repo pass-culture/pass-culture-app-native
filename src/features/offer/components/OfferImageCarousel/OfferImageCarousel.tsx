@@ -8,8 +8,8 @@ import { OfferImageCarouselPagination } from 'features/offer/components/OfferIma
 import { calculateCarouselIndex } from 'features/offer/helpers/calculateCarouselIndex/calculateCarouselIndex'
 import { useOfferImageContainerDimensions } from 'features/offer/helpers/useOfferImageContainerDimensions'
 import { ImageWithCredit } from 'shared/types'
-import { TypoDS, getSpacing } from 'ui/theme'
 import { Carousel } from 'ui/components/Carousel/Carousel'
+import { TypoDS, getSpacing } from 'ui/theme'
 
 type Props = {
   progressValue: SharedValue<number>
