@@ -5,7 +5,10 @@ import { useVenueOffers } from 'features/venue/api/useVenueOffers'
 import * as useVenueSearchParameters from 'features/venue/helpers/useVenueSearchParameters'
 import mockVenueResponse from 'fixtures/venueResponse'
 import { fetchMultipleOffers } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/fetchMultipleOffers'
-import { filterOfferHit, transformOfferHit } from 'libs/algolia/fetchAlgolia/transformOfferHit'
+import {
+  filterOfferHitWithImage,
+  transformOfferHit,
+} from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { AlgoliaOffer, HitOffer } from 'libs/algolia/types'
 import { LocationMode, Position } from 'libs/location/types'
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
@@ -243,7 +246,7 @@ describe('useVenueOffers', () => {
     expect(result.current.data?.hits).toMatchObject(
       FETCH_MULTIPLE_OFFERS_RESPONSE.slice(0, 2)
         .flatMap((result) => result?.hits)
-        .filter(filterOfferHit)
+        .filter(filterOfferHitWithImage)
         .map(transformOfferHit())
     )
 
