@@ -3,7 +3,7 @@ set -o errexit -o nounset -o pipefail
 
 SSL_CERT_FILE="$(realpath '/Library/Application Support'/*/*/data/*cacert.pem 2>/dev/null || echo '')"
 
-SCRIPT_FOLDER="$(dirname "$(realpath "$0")")"
+SCRIPT_FOLDER="$(dirname "$(realpath "${BASH_SOURCE[0]}")")"
 
 choose_an_emulator() {
 	emulator -list-avds |
