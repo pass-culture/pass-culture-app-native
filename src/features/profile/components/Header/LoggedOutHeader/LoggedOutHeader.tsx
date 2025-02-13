@@ -26,7 +26,7 @@ export const LoggedOutHeader: FunctionComponent<Props> = ({ showRemoteBanner }) 
   const { data: settings } = useSettingsContext()
   const enableCreditV3 = settings?.wipEnableCreditV3
   const subtitle = `Tu as ${enableCreditV3 ? '17 ou 18' : 'entre 15 et 18'} ans\u00a0?`
-  const bodyText = `Identifie-toi pour découvrir des offres culturelles et bénéficier de ton crédit si tu as ${enableCreditV3 ? '17 ou 18' : 'entre 15 et 18'} ans.`
+  const bodyText = `Envie d’explorer des offres culturelles ou de débloquer ton crédit si tu as ${enableCreditV3 ? '17 ou 18' : 'entre 15 et 18'} ans\u00a0?`
 
   const { isDesktopViewport, colors } = useTheme()
 
