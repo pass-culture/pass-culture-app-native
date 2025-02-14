@@ -1,3 +1,4 @@
+import mockDate from 'mockdate'
 import React from 'react'
 import { Button } from 'react-native'
 
@@ -63,19 +64,22 @@ describe('OfferFooter', () => {
     })
   })
 
-  describe('Content when offer has a publication date', () => {
-    beforeEach(() => {
-      useRemoteConfigContextSpy.mockReturnValue({
-        ...DEFAULT_REMOTE_CONFIG,
-        showAccessScreeningButton: false,
-      })
-    })
+  describe('Content when offer has a publication date in the future', () => {
+    const CURRENT_DATE = new Date('2025-01-01T00:00:00.000Z')
 
     const offerWithPublicationDate = {
       ...offerResponseSnap,
       isReleased: false,
       publicationDate: '2025-04-01T14:15:00Z',
     }
+
+    beforeEach(() => {
+      mockDate.set(CURRENT_DATE)
+      useRemoteConfigContextSpy.mockReturnValue({
+        ...DEFAULT_REMOTE_CONFIG,
+        showAccessScreeningButton: false,
+      })
+    })
 
     it('should display coming soon banner', async () => {
       renderOfferFooter({ offer: offerWithPublicationDate })
@@ -162,9 +166,22 @@ describe('OfferFooter', () => {
     })
   })
 
-  describe('Content when offer is not a movie screening and does not have a publicationDate', () => {
+  describe('Content when offer is not a movie screening and does not have a publicationDate in the future', () => {
+    const CURRENT_DATE = new Date('2025-04-01T14:15:00Z')
+
+    const offerWithPublicationDate = {
+      ...offerResponseSnap,
+      isReleased: false,
+      publicationDate: CURRENT_DATE.toString(),
+    }
+
+    beforeEach(() => {
+      mockDate.set(CURRENT_DATE)
+    })
+
     it('should display CTA received as props', async () => {
       renderOfferFooter({
+        offer: offerWithPublicationDate,
         children: <Button title="Réserver l’offre" />,
       })
 
@@ -172,7 +189,7 @@ describe('OfferFooter', () => {
     })
   })
 
-  describe('Content when offer is not a movie screening, does not have a publicationDate and viewport is desktop', () => {
+  describe('Content when offer is not a movie screening, does not have a publicationDate in the future and viewport is desktop', () => {
     it('should return null', async () => {
       renderOfferFooter({
         children: <Button title="Réserver l’offre" />,

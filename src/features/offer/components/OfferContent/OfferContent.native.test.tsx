@@ -415,7 +415,7 @@ describe('<OfferContent />', () => {
   })
 
   describe('Offer footer', () => {
-    describe('favorite button 1', () => {
+    describe('favorite button', () => {
       const comingSoonOffer = {
         ...offerResponseSnap,
         isReleased: false,
