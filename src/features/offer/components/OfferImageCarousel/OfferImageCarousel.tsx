@@ -1,5 +1,5 @@
 import React, { FunctionComponent, ReactElement, useCallback, useRef, useState } from 'react'
-import { Platform, StyleProp, View, ViewStyle } from 'react-native'
+import { Platform, View } from 'react-native'
 import Animated, { FadeIn, SharedValue } from 'react-native-reanimated'
 import styled, { useTheme } from 'styled-components/native'
 
@@ -16,7 +16,6 @@ type Props = {
   offerImages: ImageWithCredit[]
   onItemPress?: (index: number) => void
   onLoad?: () => void
-  style?: StyleProp<ViewStyle>
 }
 
 const isWeb = Platform.OS === 'web'
