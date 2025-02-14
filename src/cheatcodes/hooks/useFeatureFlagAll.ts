@@ -41,9 +41,9 @@ export const useFeatureFlagAll = () => {
   const featureFlags = Object.values(RemoteStoreFeatureFlags).reduce(
     (flags, key) => {
       const config = docSnapshot.get<FeatureFlagConfig>(key)
-      const owner = config.owner ?? 'squad non-definie'
+      const owner = (config.owner?.toLowerCase() as squads) ?? 'squad non-definie'
       if (!flags[owner]) {
-        flags[owner] = [] // can't push an array that doesn't exist so we create it.
+        flags[owner] = []
       }
       flags[owner].push({
         featureFlag: key,
