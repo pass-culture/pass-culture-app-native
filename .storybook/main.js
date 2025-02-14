@@ -3,7 +3,6 @@ const path = require('path')
 const appSrc = path.resolve('./src/')
 module.exports = {
   stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
-  jest: { testTimeout: 10000 },
   addons: [
     '@storybook/addon-links',
     '@storybook/addon-essentials',
