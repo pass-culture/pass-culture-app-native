@@ -85,6 +85,7 @@ export enum RemoteStoreFeatureFlags {
   WIP_SEARCH_N1_CINEMA = 'wipSearchN1Cinema',
   WIP_SEARCH_N1_FILMS_DOCUMENTAIRES_ET_SERIES = 'wipSearchN1FilmsDocumentairesEtSeries',
   WIP_THEMATIC_SEARCH_MUSIC = 'wipThematicSearchMusic',
+  WIP_THEMATIC_SEARCH_CONCERTS_AND_FESTIVALS = 'wipThematicSearchConcertsAndFestivals',
   WIP_THEMATIC_SEARCH_THEATRE = 'wipThematicSearchTheatre',
   WIP_VENUE_ARTISTS_PLAYLIST = 'wipVenueArtistsPlaylist',
   WIP_VENUE_HEADLINE_OFFER = 'wipVenueHeadlineOffer',

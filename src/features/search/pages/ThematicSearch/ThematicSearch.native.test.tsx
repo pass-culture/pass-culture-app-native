@@ -184,12 +184,20 @@ describe('<ThematicSearch/>', () => {
       })
     })
 
-    describe('gtl playlists', () => {
+    describe('book playlists', () => {
       it('should render gtl playlists when offerCategory is `LIVRES`', async () => {
         render(reactQueryProviderHOC(<ThematicSearch />))
         await screen.findByText('Romans et littérature')
 
         expect(await screen.findByText('GTL playlist')).toBeOnTheScreen()
+      })
+
+      it('should not render gtl playlists when offerCategory is not `LIVRES`', async () => {
+        MockOfferCategoriesParams({ offerCategories: [SearchGroupNameEnumv2.CONCERTS_FESTIVALS] })
+        render(reactQueryProviderHOC(<ThematicSearch />))
+        await screen.findByText('Festivals')
+
+        expect(screen.queryByText('GTL playlist')).not.toBeOnTheScreen()
       })
 
       it('should call useGTLPlaylists with env.ALGOLIA_OFFERS_INDEX_NAME_B if FF ENABLE_REPLICA_ALGOLIA_INDEX is on', async () => {
@@ -202,16 +210,6 @@ describe('<ThematicSearch/>', () => {
           searchIndex: env.ALGOLIA_OFFERS_INDEX_NAME_B,
         })
       })
-    })
-  })
-
-  describe('gtl playlists', () => {
-    it('should not render gtl playlists when offerCategory is not `LIVRES`', async () => {
-      MockOfferCategoriesParams({ offerCategories: [SearchGroupNameEnumv2.CONCERTS_FESTIVALS] })
-      render(reactQueryProviderHOC(<ThematicSearch />))
-      await screen.findByText('Festivals')
-
-      expect(screen.queryByText('GTL playlist')).not.toBeOnTheScreen()
     })
   })
 
@@ -270,6 +268,26 @@ describe('<ThematicSearch/>', () => {
       await screen.findByText('Livres')
 
       expect(screen.queryByText('Achat & location d‘instrument')).not.toBeOnTheScreen()
+    })
+  })
+
+  describe('concerts and festivals playlists', () => {
+    it('should render concerts and festivals playlists when offerCategory is `CONCERTS_FESTIVALS`', async () => {
+      MockOfferCategoriesParams({
+        offerCategories: [SearchGroupNameEnumv2.CONCERTS_FESTIVALS],
+      })
+      render(reactQueryProviderHOC(<ThematicSearch />))
+      await screen.findByText('Concerts & festivals')
+
+      expect(await screen.findByText('Concerts, évènements')).toBeOnTheScreen()
+    })
+
+    it('should not render concerts and festivals when offerCategory is not `CONCERTS_FESTIVALS`', async () => {
+      MockOfferCategoriesParams({ offerCategories: [SearchGroupNameEnumv2.LIVRES] })
+      render(reactQueryProviderHOC(<ThematicSearch />))
+      await screen.findByText('Livres')
+
+      expect(screen.queryByText('Concerts, évènements')).not.toBeOnTheScreen()
     })
   })
 })
