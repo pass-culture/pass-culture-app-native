@@ -26,7 +26,6 @@ export enum FACETS_FILTERS_ENUM {
 }
 
 export enum NUMERIC_FILTERS_ENUM {
-  OFFER_IS_HEADLINE_UNTIL = 'offer.isHeadlineUntil',
   OFFER_PRICES = 'offer.prices',
   OFFER_DATES = 'offer.dates',
   OFFER_TIMES = 'offer.times',
