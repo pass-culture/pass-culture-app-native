@@ -272,6 +272,26 @@ describe('<ThematicSearch/>', () => {
       expect(screen.queryByText('Achat & location d‘instrument')).not.toBeOnTheScreen()
     })
   })
+
+  describe('concerts and festivals playlists', () => {
+    it('should render concerts and festivals playlists when offerCategory is `CONCERTS_FESTIVALS`', async () => {
+      MockOfferCategoriesParams({
+        offerCategories: [SearchGroupNameEnumv2.CONCERTS_FESTIVALS],
+      })
+      render(reactQueryProviderHOC(<ThematicSearch />))
+      await screen.findByText('Concerts & festivals')
+
+      expect(await screen.findByText('Concerts, évènements')).toBeOnTheScreen()
+    })
+
+    it('should not render concerts and festivals when offerCategory is not `CONCERTS_FESTIVALS`', async () => {
+      MockOfferCategoriesParams({ offerCategories: [SearchGroupNameEnumv2.LIVRES] })
+      render(reactQueryProviderHOC(<ThematicSearch />))
+      await screen.findByText('Livres')
+
+      expect(screen.queryByText('Concerts, évènements')).not.toBeOnTheScreen()
+    })
+  })
 })
 
 function MockOfferCategoriesParams(offerCategoriesParams: {

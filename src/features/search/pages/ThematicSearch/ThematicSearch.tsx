@@ -15,6 +15,7 @@ import { VenuePlaylist } from 'features/search/components/VenuePlaylist/VenuePla
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { getSearchVenuePlaylistTitle } from 'features/search/helpers/getSearchVenuePlaylistTitle/getSearchVenuePlaylistTitle'
 import { CinemaPlaylist } from 'features/search/pages/ThematicSearch/Cinema/CinemaPlaylist'
+import { ConcertsAndFestivalsPlaylist } from 'features/search/pages/ThematicSearch/ConcertsAndFestivals/ConcertsAndFestivals'
 import { FilmsPlaylist } from 'features/search/pages/ThematicSearch/Films/FilmsPlaylist'
 import { MusicPlaylist } from 'features/search/pages/ThematicSearch/Music/MusicPlaylist'
 import { ThematicSearchBar } from 'features/search/pages/ThematicSearch/ThematicSearchBar'
@@ -67,6 +68,7 @@ export const ThematicSearch: React.FC = () => {
   const isCinemaCategory = offerCategory === SearchGroupNameEnumv2.CINEMA
   const isFilmsCategory = offerCategory === SearchGroupNameEnumv2.FILMS_DOCUMENTAIRES_SERIES
   const isMusicCategory = offerCategory === SearchGroupNameEnumv2.MUSIQUE
+  const isConcertsAndFestivalsCategory = offerCategory === SearchGroupNameEnumv2.CONCERTS_FESTIVALS
 
   const shouldDisplayAccessibilityContent =
     Object.values(disabilities).filter((disability) => disability).length > 0
@@ -127,6 +129,7 @@ export const ThematicSearch: React.FC = () => {
             {isCinemaCategory ? <CinemaPlaylist /> : null}
             {isFilmsCategory ? <FilmsPlaylist /> : null}
             {isMusicCategory ? <MusicPlaylist /> : null}
+            {isConcertsAndFestivalsCategory ? <ConcertsAndFestivalsPlaylist /> : null}
           </PlaylistContainer>
         </ScrollView>
       )}
