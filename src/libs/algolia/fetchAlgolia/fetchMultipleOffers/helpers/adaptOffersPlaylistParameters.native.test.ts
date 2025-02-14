@@ -1,4 +1,4 @@
-import omit from 'lodash/omit'
+import { omit } from 'lodash'
 import mockdate from 'mockdate'
 
 import * as computeBeginningAndEndingDatetimes from 'features/home/api/helpers/computeBeginningAndEndingDatetimes'

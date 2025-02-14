@@ -1,4 +1,4 @@
-import isEmpty from 'lodash/isEmpty'
+import { isEmpty } from 'lodash'
 
 import { HomepageModule } from 'features/home/types'
 import { adaptAppV2VenuesModule } from 'libs/contentful/adapters/modules/adaptAppV2VenuesModule'

@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native'
-import debounce from 'lodash/debounce'
+import { debounce } from 'lodash'
 import React, { useEffect, useRef, useState } from 'react'
 import { Keyboard, Platform } from 'react-native'
 import styled from 'styled-components/native'

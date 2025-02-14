@@ -1,6 +1,6 @@
 import { useIsFocused } from '@react-navigation/native'
 import { FlashList } from '@shopify/flash-list'
-import debounce from 'lodash/debounce'
+import { debounce } from 'lodash'
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { FlatList, Platform, ScrollView, View } from 'react-native'
 import styled from 'styled-components/native'

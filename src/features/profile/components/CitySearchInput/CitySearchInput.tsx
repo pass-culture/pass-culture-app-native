@@ -1,5 +1,5 @@
 import { yupResolver } from '@hookform/resolvers/yup'
-import debounce from 'lodash/debounce'
+import { debounce } from 'lodash'
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import { Keyboard, Platform } from 'react-native'

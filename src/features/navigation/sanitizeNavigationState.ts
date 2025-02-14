@@ -1,5 +1,5 @@
 import { NavigationState } from '@react-navigation/native'
-import cloneDeep from 'lodash/cloneDeep'
+import { cloneDeep } from 'lodash'
 
 function limitStateSize(newState: Writable<NavigationState>) {
   // @ts-expect-error: because of noUncheckedIndexedAccess
