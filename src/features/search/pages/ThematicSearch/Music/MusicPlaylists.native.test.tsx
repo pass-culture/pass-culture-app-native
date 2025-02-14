@@ -1,7 +1,7 @@
 import React from 'react'
 
 import * as useThematicSearchPlaylistsAPI from 'features/search/pages/ThematicSearch/api/useThematicSearchPlaylists'
-import { MusicPlaylist } from 'features/search/pages/ThematicSearch/Music/MusicPlaylist'
+import { MusicPlaylists } from 'features/search/pages/ThematicSearch/Music/MusicPlaylists'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { LocationMode, Position } from 'libs/location/types'
 import { mockBuilder } from 'tests/mockBuilder'
@@ -29,9 +29,10 @@ const useThematicSearchPlaylistsSpy = jest
   .spyOn(useThematicSearchPlaylistsAPI, 'useThematicSearchPlaylists')
   .mockReturnValue({
     playlists: [{ title: DEFAULT_PLAYLIST_TITLE, offers: DEFAULT_PLAYLIST_OFFERS }],
+    isLoading: false,
   })
 
-describe('MusicPlaylist', () => {
+describe('MusicPlaylists', () => {
   beforeEach(() => {
     setFeatureFlags([])
   })
@@ -43,11 +44,11 @@ describe('MusicPlaylist', () => {
   })
 
   it('should not render playlist when algolia does not return offers', async () => {
-    useThematicSearchPlaylistsSpy.mockReturnValueOnce({ playlists: [] })
+    useThematicSearchPlaylistsSpy.mockReturnValueOnce({ playlists: [], isLoading: false })
     renderMusic()
 
     expect(screen.queryByText(DEFAULT_PLAYLIST_TITLE)).not.toBeOnTheScreen()
   })
 })
 
-const renderMusic = () => render(reactQueryProviderHOC(<MusicPlaylist />))
+const renderMusic = () => render(reactQueryProviderHOC(<MusicPlaylists />))

@@ -1,7 +1,7 @@
 import React from 'react'
 
 import * as useThematicSearchPlaylistsAPI from 'features/search/pages/ThematicSearch/api/useThematicSearchPlaylists'
-import { ConcertsAndFestivalsPlaylist } from 'features/search/pages/ThematicSearch/ConcertsAndFestivals/ConcertsAndFestivals'
+import { FilmsPlaylists } from 'features/search/pages/ThematicSearch/Films/FilmsPlaylists'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { LocationMode, Position } from 'libs/location/types'
 import { mockBuilder } from 'tests/mockBuilder'
@@ -22,33 +22,33 @@ jest.mock('libs/location/LocationWrapper', () => ({
   }),
 }))
 
-const DEFAULT_PLAYLIST_OFFERS = mockBuilder.searchResponseOffer({})
-const DEFAULT_PLAYLIST_TITLE = 'Festivals'
+const DEFAULT_OFFERS = mockBuilder.searchResponseOffer({})
+const DEFAULT_PLAYLIST_TITLE = 'Vidéos et documentaires'
 
 const useThematicSearchPlaylistsSpy = jest
   .spyOn(useThematicSearchPlaylistsAPI, 'useThematicSearchPlaylists')
   .mockReturnValue({
-    playlists: [{ title: DEFAULT_PLAYLIST_TITLE, offers: DEFAULT_PLAYLIST_OFFERS }],
+    playlists: [{ title: DEFAULT_PLAYLIST_TITLE, offers: DEFAULT_OFFERS }],
+    isLoading: false,
   })
 
-describe('Festivals playlist', () => {
+describe('FilmsPlaylists', () => {
   beforeEach(() => {
     setFeatureFlags([])
   })
 
   it('should render playlist when algolia returns offers', async () => {
-    renderConcertsAndFestivals()
+    renderFilms()
 
     expect(await screen.findByText(DEFAULT_PLAYLIST_TITLE)).toBeOnTheScreen()
   })
 
   it('should not render playlist when algolia does not return offers', async () => {
-    useThematicSearchPlaylistsSpy.mockReturnValueOnce({ playlists: [] })
-    renderConcertsAndFestivals()
+    useThematicSearchPlaylistsSpy.mockReturnValueOnce({ playlists: [], isLoading: false })
+    renderFilms()
 
     expect(screen.queryByText(DEFAULT_PLAYLIST_TITLE)).not.toBeOnTheScreen()
   })
 })
 
-const renderConcertsAndFestivals = () =>
-  render(reactQueryProviderHOC(<ConcertsAndFestivalsPlaylist />))
+const renderFilms = () => render(reactQueryProviderHOC(<FilmsPlaylists />))
