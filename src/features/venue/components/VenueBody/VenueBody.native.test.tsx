@@ -2,7 +2,7 @@ import mockdate from 'mockdate'
 import React from 'react'
 import { Linking } from 'react-native'
 
-import { useRoute } from '__mocks__/@react-navigation/native'
+import { useRoute, navigate } from '__mocks__/@react-navigation/native'
 import { CategoryIdEnum } from 'api/gen'
 import { gtlPlaylistAlgoliaSnapshot } from 'features/gtlPlaylist/fixtures/gtlPlaylistAlgoliaSnapshot'
 import * as useGTLPlaylists from 'features/gtlPlaylist/hooks/useGTLPlaylists'
@@ -13,7 +13,7 @@ import { VenueOffersResponseSnap } from 'features/venue/fixtures/venueOffersResp
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render, screen } from 'tests/utils'
+import { fireEvent, render, screen, userEvent } from 'tests/utils'
 
 mockdate.set(new Date('2021-08-15T00:00:00Z'))
 
@@ -46,6 +46,9 @@ const HEADLINE_OFFER_DATA = {
   price: '7,20€',
   distance: '500m',
 }
+
+jest.useFakeTimers()
+const user = userEvent.setup()
 
 describe('<VenueBody />', () => {
   beforeEach(() => {
@@ -96,5 +99,17 @@ describe('<VenueBody />', () => {
     )
 
     expect(screen.getByText('À la une')).toBeOnTheScreen()
+  })
+
+  it('should navigate to headline offer when pressing on it', async () => {
+    render(
+      reactQueryProviderHOC(
+        <VenueBody venue={venueDataTest} headlineOfferData={HEADLINE_OFFER_DATA} />
+      )
+    )
+
+    await user.press(screen.getByText('One Piece Tome 108'))
+
+    expect(navigate).toHaveBeenCalledWith('Offer', { id: HEADLINE_OFFER_DATA.id })
   })
 })
