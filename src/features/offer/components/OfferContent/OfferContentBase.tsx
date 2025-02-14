@@ -1,12 +1,5 @@
-import { useNavigation } from '@react-navigation/native'
-import React, {
-  FunctionComponent,
-  ReactElement,
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-} from 'react'
+import { useNavigation, useRoute } from '@react-navigation/native'
+import React, { FunctionComponent, useCallback, useEffect, useMemo, useRef } from 'react'
 import {
   NativeScrollEvent,
   NativeSyntheticEvent,
@@ -16,26 +9,27 @@ import {
 } from 'react-native'
 import { IOScrollView as IntersectionObserverScrollView } from 'react-native-intersection-observer'
 import { useQueryClient } from 'react-query'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
-import { OfferResponseV2 } from 'api/gen'
+import { OfferResponseV2, RecommendationApiParams } from 'api/gen'
 import { ChronicleCardData } from 'features/chronicle/type'
-import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { useAddFavorite, useFavorite, useRemoveFavorite } from 'features/favorites/api'
+import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { OfferBody } from 'features/offer/components/OfferBody/OfferBody'
-import { CineContentCTA } from 'features/offer/components/OfferCine/CineContentCTA'
 import { ChronicleSection } from 'features/offer/components/OfferContent/ChronicleSection/ChronicleSection'
-import { useOfferCTA } from 'features/offer/components/OfferContent/OfferCTAProvider'
+import { OfferCTAButton } from 'features/offer/components/OfferCTAButton/OfferCTAButton'
+import { OfferFooter } from 'features/offer/components/OfferFooter/OfferFooter'
 import { OfferHeader } from 'features/offer/components/OfferHeader/OfferHeader'
 import { OfferImageContainer } from 'features/offer/components/OfferImageContainer/OfferImageContainer'
 import { OfferMessagingApps } from 'features/offer/components/OfferMessagingApps/OfferMessagingApps'
 import { OfferPlaylistList } from 'features/offer/components/OfferPlaylistList/OfferPlaylistList'
 import { OfferWebMetaHeader } from 'features/offer/components/OfferWebMetaHeader'
+import { getIsAComingSoonOffer } from 'features/offer/helpers/getIsAComingSoonOffer'
 import { useOfferBatchTracking } from 'features/offer/helpers/useOfferBatchTracking/useOfferBatchTracking'
 import { useOfferPlaylist } from 'features/offer/helpers/useOfferPlaylist/useOfferPlaylist'
 import { OfferContentProps } from 'features/offer/types'
 import { isCloseToBottom } from 'libs/analytics'
 import { analytics } from 'libs/analytics/provider'
-import { useRemoteConfigContext } from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { useFunctionOnce } from 'libs/hooks'
 import { QueryKeys } from 'libs/queryKeys'
 import { getImagesUrlsWithCredit } from 'shared/getImagesUrlsWithCredit/getImagesUrlsWithCredit'
@@ -43,12 +37,12 @@ import { ImageWithCredit } from 'shared/types'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { AnchorProvider } from 'ui/components/anchor/AnchorContext'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
+import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { getSpacing } from 'ui/theme'
 
 type OfferContentBaseProps = OfferContentProps & {
   BodyWrapper: FunctionComponent
   onOfferPreviewPress: (index?: number) => void
-  footer?: ReactElement | null
   chronicles?: ChronicleCardData[]
   contentContainerStyle?: StyleProp<ViewStyle>
 }
@@ -59,13 +53,21 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
   offer,
   searchGroupList,
   subcategory,
-  footer,
   chronicles,
   onOfferPreviewPress,
   contentContainerStyle,
   BodyWrapper = React.Fragment,
 }) => {
+  const { isDesktopViewport } = useTheme()
+
   const { navigate } = useNavigation<UseNavigationType>()
+  const { params } = useRoute<UseRouteType<'Offer'>>()
+
+  const apiRecoParams: RecommendationApiParams = params?.apiRecoParams
+    ? JSON.parse(params?.apiRecoParams)
+    : undefined
+  const { showErrorSnackBar } = useSnackBarContext()
+
   const {
     sameCategorySimilarOffers,
     apiRecoParamsSameCategory,
@@ -74,8 +76,6 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
   } = useOfferPlaylist({ offer, offerSearchGroup: subcategory.searchGroupName, searchGroupList })
   const scrollViewRef = useRef<ScrollView>(null)
   const scrollYRef = useRef<number>(0)
-  const { isButtonVisible } = useOfferCTA()
-  const { showAccessScreeningButton } = useRemoteConfigContext()
 
   const logConsultWholeOffer = useFunctionOnce(() => {
     analytics.logConsultWholeOffer(offer.id)
@@ -136,17 +136,66 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
     [onScroll]
   )
 
+  const { mutate: addFavorite, isLoading: isAddFavoriteLoading } = useAddFavorite({
+    onSuccess: () => {
+      if (typeof offer.id === 'number' && params) {
+        const { from, moduleName, moduleId, searchId, playlistType } = params
+        analytics.logHasAddedOfferToFavorites({
+          from: getIsAComingSoonOffer(offer) ? 'comingSoonOffer' : from,
+          offerId: offer.id,
+          moduleName,
+          moduleId,
+          searchId,
+          ...apiRecoParams,
+          playlistType,
+        })
+      }
+    },
+  })
+
+  const { mutate: removeFavorite, isLoading: isRemoveFavoriteLoading } = useRemoveFavorite({
+    onError: () => {
+      showErrorSnackBar({
+        message: 'L’offre n’a pas été retirée de tes favoris',
+        timeout: SNACK_BAR_TIME_OUT,
+      })
+    },
+  })
+
+  const favorite = useFavorite({ offerId: offer.id })
+
+  const favoriteButtonProps = {
+    addFavorite,
+    isAddFavoriteLoading,
+    removeFavorite,
+    isRemoveFavoriteLoading,
+    favorite,
+  }
+
   const onSeeMoreButtonPress = (chronicleId: number) => {
     // It's dirty but necessary to use from parameter for the logs
     navigate('Chronicles', { offerId: offer.id, chronicleId, from: 'chronicles' })
     analytics.logConsultChronicle({ offerId: offer.id, chronicleId })
   }
 
+  const offerCtaButton = (
+    <OfferCTAButton
+      offer={offer}
+      subcategory={subcategory}
+      trackEventHasSeenOfferOnce={trackEventHasSeenOfferOnce}
+    />
+  )
+
   return (
     <Container>
       <AnchorProvider scrollViewRef={scrollViewRef} handleCheckScrollY={handleCheckScrollY}>
         <OfferWebMetaHeader offer={offer} />
-        <OfferHeader title={offer.name} headerTransition={headerTransition} offer={offer} />
+        <OfferHeader
+          title={offer.name}
+          headerTransition={headerTransition}
+          offer={offer}
+          {...favoriteButtonProps}
+        />
         <ScrollViewContainer
           testID="offerv2-container"
           scrollEventThrottle={16}
@@ -162,12 +211,9 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
               onPress={onOfferPreviewPress}
               placeholderImage={placeholderImage}
             />
-
-            <OfferBody
-              offer={offer}
-              subcategory={subcategory}
-              trackEventHasSeenOfferOnce={trackEventHasSeenOfferOnce}
-            />
+            <OfferBody offer={offer} subcategory={subcategory}>
+              {isDesktopViewport ? offerCtaButton : null}
+            </OfferBody>
           </BodyWrapper>
           {chronicles?.length ? (
             <StyledSectionWithDivider visible testID="chronicles-section" gap={8}>
@@ -200,7 +246,9 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
             apiRecoParamsOtherCategories={apiRecoParamsOtherCategories}
           />
         </ScrollViewContainer>
-        {showAccessScreeningButton && isButtonVisible ? <CineContentCTA /> : footer}
+        <OfferFooter offer={offer} {...favoriteButtonProps}>
+          {offerCtaButton}
+        </OfferFooter>
       </AnchorProvider>
     </Container>
   )

@@ -38,6 +38,7 @@ export type Referrals =
   | 'video'
   | 'videoModal'
   | 'video_carousel_block'
+  | 'comingSoonOffer'
 
 type BaseThematicHome = {
   homeId: string
