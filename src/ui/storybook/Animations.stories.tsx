@@ -5,12 +5,12 @@ import styled from 'styled-components/native'
 import LottieView from 'libs/lottie'
 import { Spacer, TypoDS, getSpacing } from 'ui/theme'
 
-// Increase the timeout for animations
-jest.setTimeout(10000)
-
 export default {
   title: 'Fondations/Animations',
-  parameters: { chromatic: { disable: true } },
+  parameters: {
+    chromatic: { disable: true },
+    axe: { timeout: 5000 }, // Increase timeout for animations to finish
+  },
 }
 
 const LottieAnimations = {
