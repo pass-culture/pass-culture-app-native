@@ -85,9 +85,9 @@ export const CheatcodesScreenFeatureFlags = () => {
         )}
         renderSectionHeader={({ section: { title, data } }) => (
           <React.Fragment>
-            <TypoDS.Title1>
+            <TypoDS.Title2>
               {title} ({data.length})
-            </TypoDS.Title1>
+            </TypoDS.Title2>
             <Spacer.Column numberOfSpaces={5} />
           </React.Fragment>
         )}
