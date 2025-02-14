@@ -994,6 +994,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                   dir="ltr"
                 >
                   Version 1.10.5
+                  -13371337
                 </div>
               </div>
             </div>
@@ -2152,6 +2153,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                   dir="ltr"
                 >
                   Version 1.10.5
+                  -13371337
                 </div>
               </div>
             </div>
