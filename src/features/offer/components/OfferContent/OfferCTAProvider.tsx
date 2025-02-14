@@ -48,7 +48,7 @@ export const OfferCTAProvider: React.FC<OfferCTAProviderProps> = ({ children }) 
 export const useOfferCTA = (): OfferCTAContextValue => {
   const context = useContext(OfferCTAContext)
   if (!context) {
-    throw new Error('useOfferCTAButton must be used within an OfferCTAProvider')
+    throw new Error('useOfferCTA must be used within an OfferCTAProvider')
   }
   return context
 }

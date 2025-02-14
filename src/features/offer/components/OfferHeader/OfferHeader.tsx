@@ -2,7 +2,7 @@ import React, { useCallback } from 'react'
 import { Animated } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
-import { OfferResponseV2 } from 'api/gen'
+import { FavoriteResponse, OfferResponseV2 } from 'api/gen'
 import { getSearchStackConfig } from 'features/navigation/SearchStackNavigator/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { getShareOffer } from 'features/share/helpers/getShareOffer'
@@ -16,16 +16,33 @@ import { useModal } from 'ui/components/modals/useModal'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Spacer } from 'ui/theme'
 
-interface Props {
+export type FavoriteProps = {
+  addFavorite: ({ offerId }: { offerId: number }) => void
+  isAddFavoriteLoading: boolean
+  removeFavorite: (id: number) => void
+  isRemoveFavoriteLoading: boolean
+  favorite?: FavoriteResponse | null
+}
+
+type OfferHeaderProps = {
   headerTransition: Animated.AnimatedInterpolation<string | number>
   title: string
   offer: OfferResponseV2
-}
+} & FavoriteProps
 
 /**
  * @param props.headerTransition should be between animated between 0 and 1
  */
-export function OfferHeader({ headerTransition, title, offer }: Readonly<Props>) {
+export function OfferHeader({
+  headerTransition,
+  title,
+  offer,
+  addFavorite,
+  isAddFavoriteLoading,
+  removeFavorite,
+  isRemoveFavoriteLoading,
+  favorite,
+}: Readonly<OfferHeaderProps>) {
   const theme = useTheme()
 
   const {
@@ -66,7 +83,15 @@ export function OfferHeader({ headerTransition, title, offer }: Readonly<Props>)
               accessibilityLabel="Partager"
               finalColor={theme.colors.black}
             />
-            <FavoriteButton animationState={animationState} offerId={offer.id} />
+            <FavoriteButton
+              animationState={animationState}
+              offerId={offer.id}
+              addFavorite={addFavorite}
+              isAddFavoriteLoading={isAddFavoriteLoading}
+              removeFavorite={removeFavorite}
+              isRemoveFavoriteLoading={isRemoveFavoriteLoading}
+              favorite={favorite}
+            />
           </ButtonsWrapper>
         }
       />
