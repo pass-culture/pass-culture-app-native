@@ -42,6 +42,10 @@ const variantConfig: Variants<typeof GenericBanner> = [
     label: 'GenericBanner active',
     props: { children: textExample({ withSubtitle: false }) },
   },
+  {
+    label: 'GenericBanner without right icon',
+    props: { children: textExample({}), noRightIcon: true },
+  },
 ]
 
 const Template: VariantsStory<typeof GenericBanner> = (args) => (
