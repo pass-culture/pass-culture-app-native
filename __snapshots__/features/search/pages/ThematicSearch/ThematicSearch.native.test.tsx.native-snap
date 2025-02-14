@@ -521,6 +521,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
           }
         }
         horizontal={true}
+        itemsNumber={13}
         showsHorizontalScrollIndicator={false}
         style={
           [
