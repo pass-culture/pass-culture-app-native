@@ -44,7 +44,7 @@ export function OfferVenueBlock({
       <Spacer.Column numberOfSpaces={4} />
 
       <React.Fragment>
-        <VenueBlock offer={offer} onSeeVenuePress={onSeeVenuePress} />
+        <VenueBlock venue={offer.venue} address={offer.address} onSeeVenuePress={onSeeVenuePress} />
 
         {onChangeVenuePress ? (
           <React.Fragment>

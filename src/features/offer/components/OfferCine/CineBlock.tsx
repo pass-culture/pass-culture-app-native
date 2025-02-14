@@ -36,7 +36,8 @@ export const CineBlock: FunctionComponent<CineBlockProps> = ({
   return (
     <React.Fragment>
       <CineBlockContainer>
-        <VenueBlock offer={offer} onSeeVenuePress={onSeeVenuePress} />
+        <VenueBlock venue={offer.venue} address={offer.address} onSeeVenuePress={onSeeVenuePress} />
+
         <React.Fragment>
           {nextDate ? (
             <NextScreeningButton
