@@ -313,7 +313,10 @@ const OnlineProfile: React.FC = () => {
                 </Section>
               ) : null}
               <Section>
-                <Version>{version}</Version>
+                <Version>
+                  {version}
+                  {isWeb ? `-${String(env.COMMIT_HASH)}` : ''}
+                </Version>
                 {isWeb ? null : (
                   <LogoMinistereContainer>
                     <LogoMinistere />
