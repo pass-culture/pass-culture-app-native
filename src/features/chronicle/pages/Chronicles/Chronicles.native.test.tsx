@@ -1,13 +1,13 @@
 import React from 'react'
 import { FlatList } from 'react-native'
 
-import { useRoute } from '__mocks__/@react-navigation/native'
+import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { offerChroniclesFixture } from 'features/chronicle/fixtures/offerChronicles.fixture'
 import { Chronicles } from 'features/chronicle/pages/Chronicles/Chronicles'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render, screen } from 'tests/utils'
+import { act, fireEvent, render, screen, userEvent } from 'tests/utils'
 
 const mockOnLayout = {
   nativeEvent: {
@@ -26,6 +26,8 @@ jest.mock('features/chronicle/api/useChronicles/useChronicles', () => ({
   useChronicles: () => ({ data: mockChronicles, isLoading: false }),
 }))
 
+const user = userEvent.setup()
+
 describe('Chronicles', () => {
   beforeEach(() => {
     mockServer.getApi(`/v2/offer/${offerResponseSnap.id}`, offerResponseSnap)
@@ -37,6 +39,7 @@ describe('Chronicles', () => {
       useRoute.mockReturnValue({
         params: {
           offerId: offerResponseSnap.id,
+          openModalOnNavigation: true,
         },
       })
     })
@@ -45,6 +48,20 @@ describe('Chronicles', () => {
       render(reactQueryProviderHOC(<Chronicles />))
 
       expect(await screen.findByText('Tous les avis')).toBeOnTheScreen()
+    })
+
+    it('should navigate to offer page without openModalOnNavigation param when pressing back button', async () => {
+      jest.useFakeTimers()
+      render(reactQueryProviderHOC(<Chronicles />))
+
+      await user.press(await screen.findByLabelText('Revenir en arrière'))
+
+      expect(navigate).toHaveBeenNthCalledWith(1, 'Offer', {
+        id: offerResponseSnap.id,
+        openModalOnNavigation: undefined,
+      })
+
+      jest.useRealTimers()
     })
 
     it('should not scroll to selected chronicle on layout', async () => {
