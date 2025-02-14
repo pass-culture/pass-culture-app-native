@@ -10,7 +10,7 @@ describe('<OfferImageContainer />', () => {
   it('should display image inside carousel when offer has only one image with no pagination', () => {
     render(
       <OfferImageContainer
-        imageUrls={['some_url_to_some_resource']}
+        images={[{ url: 'some_url_to_some_resource' }]}
         categoryId={CategoryIdEnum.CINEMA}
         onPress={jest.fn()}
       />
@@ -23,7 +23,7 @@ describe('<OfferImageContainer />', () => {
   it('should not display carousel dots when offer has only one', () => {
     render(
       <OfferImageContainer
-        imageUrls={['some_url_to_some_resource']}
+        images={[{ url: 'some_url_to_some_resource' }]}
         categoryId={CategoryIdEnum.CINEMA}
         onPress={jest.fn()}
       />
@@ -35,7 +35,7 @@ describe('<OfferImageContainer />', () => {
   it('should display image inside carousel when offer has several images', async () => {
     render(
       <OfferImageContainer
-        imageUrls={['some_url_to_some_resource', 'some_url2_to_some_resource']}
+        images={[{ url: 'some_url_to_some_resource' }, { url: 'some_url2_to_some_resource' }]}
         categoryId={CategoryIdEnum.CINEMA}
         onPress={jest.fn()}
       />
@@ -47,7 +47,7 @@ describe('<OfferImageContainer />', () => {
   it('should display carousel dots when offer has several images', async () => {
     render(
       <OfferImageContainer
-        imageUrls={['some_url_to_some_resource', 'some_url2_to_some_resource']}
+        images={[{ url: 'some_url_to_some_resource' }, { url: 'some_url2_to_some_resource' }]}
         categoryId={CategoryIdEnum.CINEMA}
         onPress={jest.fn()}
       />
@@ -60,7 +60,7 @@ describe('<OfferImageContainer />', () => {
   it('should display image placeholder outside carousel when image url defined', () => {
     render(
       <OfferImageContainer
-        imageUrls={undefined}
+        images={undefined}
         categoryId={CategoryIdEnum.CINEMA}
         onPress={jest.fn()}
         placeholderImage="placeholder_image"

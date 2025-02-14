@@ -3,11 +3,9 @@ import { useCallback, useMemo } from 'react'
 import { useQuery } from 'react-query'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
-import {
-  HitOfferWithArtistAndEan,
-  fetchOffersByArtist,
-} from 'features/offer/api/fetchOffersByArtist/fetchOffersByArtist'
+import { fetchOffersByArtist } from 'features/offer/api/fetchOffersByArtist/fetchOffersByArtist'
 import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
+import { AlgoliaOfferWithArtistAndEan } from 'libs/algolia/types'
 import { useLocation } from 'libs/location'
 import { formatDistance } from 'libs/parsers/formatDistance'
 import { QueryKeys } from 'libs/queryKeys'
@@ -37,7 +35,7 @@ export const useArtistResults = ({ artists, searchGroupName }: UseArtistResultsP
   )
 
   const getSortedHits = useCallback(
-    (hits: Hit<HitOfferWithArtistAndEan>[]) => {
+    (hits: Hit<AlgoliaOfferWithArtistAndEan>[]) => {
       if (hits.length === 0) return []
 
       const transformedHitsWithDistance = hits.map((hit) => {
@@ -54,7 +52,7 @@ export const useArtistResults = ({ artists, searchGroupName }: UseArtistResultsP
 
       return sortedHits.map(
         ({ distance: _distance, ...rest }) => rest
-      ) as HitOfferWithArtistAndEan[]
+      ) as AlgoliaOfferWithArtistAndEan[]
     },
     [transformHits, userLocation]
   )

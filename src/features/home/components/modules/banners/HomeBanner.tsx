@@ -3,11 +3,11 @@ import React, { ComponentType, FunctionComponent, useCallback, useMemo } from 'r
 import styled from 'styled-components/native'
 
 import { BannerName } from 'api/gen'
-import { ForceUpdateBanner } from 'features/forceUpdate/components/ForceUpdateBanner'
 import { useActivationBanner } from 'features/home/api/useActivationBanner'
 import { ActivationBanner } from 'features/home/components/banners/ActivationBanner'
 import { SignupBanner } from 'features/home/components/banners/SignupBanner'
 import { StepperOrigin, UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { RemoteBanner } from 'features/remoteBanner/components/RemoteBanner'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { SystemBanner as GenericSystemBanner } from 'ui/components/ModuleBanner/SystemBanner'
@@ -54,7 +54,7 @@ const bannersToRender = [
 ]
 
 export const HomeBanner = ({ isLoggedIn }: HomeBannerProps) => {
-  const showForceUpdateBanner = useFeatureFlag(RemoteStoreFeatureFlags.SHOW_FORCE_UPDATE_BANNER)
+  const showRemoteBanner = useFeatureFlag(RemoteStoreFeatureFlags.SHOW_REMOTE_BANNER)
   const { banner } = useActivationBanner()
   const { navigate } = useNavigation<UseNavigationType>()
   const enableSystemBanner = useFeatureFlag(RemoteStoreFeatureFlags.WIP_APP_V2_SYSTEM_BLOCK)
@@ -138,10 +138,10 @@ export const HomeBanner = ({ isLoggedIn }: HomeBannerProps) => {
     return null
   }, [isLoggedIn, shouldRenderSystemBanner, renderSystemBanner, banner, enableSystemBanner])
 
-  if (showForceUpdateBanner) {
+  if (showRemoteBanner) {
     return (
       <BannerContainer>
-        <ForceUpdateBanner />
+        <RemoteBanner from="Home" />
       </BannerContainer>
     )
   }

@@ -106,7 +106,7 @@ describe('<Venue />', () => {
   beforeAll(() => {
     mockUseVenueOffers.mockReturnValue({
       isLoading: false,
-      data: { hits: VenueOffersResponseSnap, nbHits: 3 },
+      data: { hits: VenueOffersResponseSnap, nbHits: 3, headlineOffer: VenueOffersResponseSnap[0] },
     })
   })
 

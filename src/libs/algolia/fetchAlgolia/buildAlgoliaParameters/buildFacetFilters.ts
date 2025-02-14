@@ -4,6 +4,7 @@ import {
   buildAccessibiltyFiltersPredicate,
   buildAllocineIdPredicate,
   buildEanPredicate,
+  buildHeadlinePredicate,
   buildObjectIdsPredicate,
   buildOfferCategoriesPredicate,
   buildOfferGenreTypesPredicate,
@@ -25,6 +26,7 @@ export const buildFacetFilters = ({
   allocineId,
   isUserUnderage,
   objectIds,
+  isHeadline,
   offerCategories,
   offerGenreTypes,
   offerGtlLabel,
@@ -49,6 +51,7 @@ export const buildFacetFilters = ({
   | 'isDigital'
   | 'tags'
   | 'gtls'
+  | 'isHeadline'
 > & {
   isUserUnderage: boolean
   objectIds?: string[]
@@ -124,5 +127,11 @@ export const buildFacetFilters = ({
     const accessibilityFilters = buildAccessibiltyFiltersPredicate(disabilitiesProperties)
     facetFilters.push(...accessibilityFilters)
   }
+
+  if (isHeadline) {
+    const isHeadlineFilter = buildHeadlinePredicate(isHeadline)
+    facetFilters.push(isHeadlineFilter)
+  }
+
   return { facetFilters }
 }

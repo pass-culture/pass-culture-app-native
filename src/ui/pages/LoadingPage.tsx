@@ -1,25 +1,14 @@
 import React, { FunctionComponent, memo } from 'react'
 import styled from 'styled-components/native'
 
-import { useWhiteStatusBarWithoutReactNavigation } from 'libs/hooks/useWhiteStatusBarWithoutReactNavigation'
 import LottieView from 'libs/lottie'
 import LoadingAnimation from 'ui/animations/lottie_loading.json'
-import { BackgroundWithDefaultStatusBar } from 'ui/svg/Background'
 import { TypoDS } from 'ui/theme'
 
 const UnmemoizedLoadingPage: FunctionComponent = () => {
-  useWhiteStatusBarWithoutReactNavigation()
-
   return (
     <Container>
-      {/**
-       * BackgroundWithWhiteStatusBar set the light theme
-       * to do it, it use `useFocusEffect` that is provided by `react-navigation` that is not mounted at this moment
-       *
-       * BackgroundWithDefaultStatusBar is the same background but don't set the light nor dark theme
-       */}
-      <BackgroundWithDefaultStatusBar />
-      <StyledLottieView testID="Loading-Animation" source={LoadingAnimation} autoPlay loop />
+      <StyledLottieView source={LoadingAnimation} autoPlay loop />
       <LoadingText>Chargement en cours...</LoadingText>
     </Container>
   )
@@ -44,5 +33,5 @@ const StyledLottieView = styled(LottieView)({
 const LoadingText = styled(TypoDS.Body)(({ theme }) => ({
   top: -16,
   textAlign: 'center',
-  color: theme.colors.white,
+  color: theme.uniqueColors.brand,
 }))

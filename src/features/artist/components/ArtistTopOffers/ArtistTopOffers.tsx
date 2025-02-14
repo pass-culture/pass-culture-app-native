@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react'
 import { FlatList } from 'react-native'
 import styled from 'styled-components/native'
 
-import { HitOfferWithArtistAndEan } from 'features/offer/api/fetchOffersByArtist/fetchOffersByArtist'
+import { AlgoliaOfferWithArtistAndEan } from 'libs/algolia/types'
 import { Offer } from 'shared/offer/types'
 import { theme } from 'theme'
 import { Separator } from 'ui/components/Separator'
@@ -11,16 +11,16 @@ import { Spacer, TypoDS, getSpacing } from 'ui/theme'
 
 type Props = {
   artistName: string
-  items: HitOfferWithArtistAndEan[]
+  items: AlgoliaOfferWithArtistAndEan[]
 }
 
-const keyExtractor = (item: Offer | HitOfferWithArtistAndEan) => item.objectID
+const keyExtractor = (item: Offer | AlgoliaOfferWithArtistAndEan) => item.objectID
 
 const renderItem = ({
   item,
   artistName,
 }: {
-  item: HitOfferWithArtistAndEan
+  item: AlgoliaOfferWithArtistAndEan
   artistName: string
 }) => {
   const subtitles = item.offer.bookFormat ? [item.offer.bookFormat] : undefined

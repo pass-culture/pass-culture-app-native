@@ -194,12 +194,12 @@ exports[`OnboardingGeneralPublicWelcome should render correctly 1`] = `
       Et si tu créais un compte pour des suggestions à venir ? Sinon, explore librement le catalogue dès maintenant !
     </Text>
     <View
-      flex={2}
+      flex={1}
       style={
         [
           {
             "flexBasis": 0,
-            "flexGrow": 2,
+            "flexGrow": 1,
             "flexShrink": 1,
           },
         ]

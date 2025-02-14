@@ -1,3 +1,4 @@
+import * as reactNavigationNative from '@react-navigation/native'
 import React from 'react'
 
 import { chroniclesSnap } from 'features/chronicle/fixtures/chroniclesSnap'
@@ -6,12 +7,12 @@ import { fireEvent, render, screen } from 'tests/utils/web'
 import { ChronicleSection } from './ChronicleSection'
 
 const mockNavigate = jest.fn()
-jest.mock('@react-navigation/native', () => ({
-  ...jest.requireActual('@react-navigation/native'),
-  useNavigation: () => ({ navigate: mockNavigate, push: jest.fn() }),
-}))
+jest.spyOn(reactNavigationNative, 'useNavigation').mockReturnValue({
+  navigate: mockNavigate,
+  push: jest.fn(),
+})
 
-describe('ChroniclesSection', () => {
+describe('ChronicleSection', () => {
   it('should render correctly in mobile', () => {
     render(
       <ChronicleSection

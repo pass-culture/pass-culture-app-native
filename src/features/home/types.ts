@@ -157,6 +157,7 @@ export type OffersModuleParameters = {
 export type PlaylistOffersParams = {
   offerParams: SearchQueryParameters
   locationParams: BuildLocationParameterParams
+  indexName?: string
 }
 
 export type BusinessModule = {

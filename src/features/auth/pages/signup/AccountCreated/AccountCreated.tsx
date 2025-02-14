@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react'
+import React, { useCallback, useEffect } from 'react'
 import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
@@ -15,6 +15,10 @@ import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { TypoDS } from 'ui/theme'
 
 export function AccountCreated() {
+  useEffect(() => {
+    BatchProfile.trackEvent(BatchEvent.screenViewAccountCreated)
+  }, [])
+
   const { user } = useAuthContext()
   const { showShareAppModal } = useShareAppContext()
   const shouldShowCulturalSurvey = useShouldShowCulturalSurveyForBeneficiaryUser()

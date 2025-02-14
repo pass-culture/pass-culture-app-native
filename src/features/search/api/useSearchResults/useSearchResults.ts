@@ -37,7 +37,8 @@ export type SearchOfferHits = {
 }
 
 export const useSearchInfiniteQuery = (searchState: SearchState, dispatch: Dispatch<Action>) => {
-  const { userLocation, selectedLocationMode, aroundPlaceRadius, aroundMeRadius } = useLocation()
+  const { userLocation, selectedLocationMode, aroundPlaceRadius, aroundMeRadius, geolocPosition } =
+    useLocation()
   const { disabilities } = useAccessibilityFiltersContext()
   const isUserUnderage = useIsUserUnderage()
   const transformHits = useTransformOfferHits()
@@ -72,6 +73,7 @@ export const useSearchInfiniteQuery = (searchState: SearchState, dispatch: Dispa
           selectedLocationMode,
           aroundPlaceRadius,
           aroundMeRadius,
+          geolocPosition,
         },
         isUserUnderage,
         storeQueryID: setCurrentQueryID,

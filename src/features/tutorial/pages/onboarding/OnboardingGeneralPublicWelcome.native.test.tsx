@@ -1,10 +1,13 @@
 import React from 'react'
 
 import { navigate, reset } from '__mocks__/@react-navigation/native'
+import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
-import { fireEvent, render, screen } from 'tests/utils'
+import { userEvent, render, screen } from 'tests/utils'
 
 import { OnboardingGeneralPublicWelcome } from './OnboardingGeneralPublicWelcome'
+
+jest.useFakeTimers()
 
 describe('OnboardingGeneralPublicWelcome', () => {
   it('should render correctly', () => {
@@ -13,22 +16,22 @@ describe('OnboardingGeneralPublicWelcome', () => {
     expect(screen).toMatchSnapshot()
   })
 
-  it('should navigate to SignupForm when pressing "Créer un compte"', () => {
+  it('should navigate to SignupForm when pressing "Créer un compte"', async () => {
     render(<OnboardingGeneralPublicWelcome />)
 
     const signupButton = screen.getByText('Créer un compte')
-    fireEvent.press(signupButton)
+    await userEvent.press(signupButton)
 
     expect(navigate).toHaveBeenCalledWith('SignupForm', {
-      from: 'OnboardingGeneralPublicWelcome',
+      from: StepperOrigin.ONBOARDING_GENERAL_PUBLIC_WELCOME,
     })
   })
 
-  it('should reset navigation on go to Home when pressing "Accéder au catalogue"', () => {
+  it('should reset navigation on go to Home when pressing "Accéder au catalogue"', async () => {
     render(<OnboardingGeneralPublicWelcome />)
 
     const signupButton = screen.getByText('Accéder au catalogue')
-    fireEvent.press(signupButton)
+    await userEvent.press(signupButton)
 
     expect(reset).toHaveBeenCalledWith({
       index: 0,
@@ -36,11 +39,11 @@ describe('OnboardingGeneralPublicWelcome', () => {
     })
   })
 
-  it('should reset navigation on go to Home when pressing "Plus tard"', () => {
+  it('should reset navigation on go to Home when pressing "Plus tard"', async () => {
     render(<OnboardingGeneralPublicWelcome />)
 
     const signupButton = screen.getByText('Passer')
-    fireEvent.press(signupButton)
+    await userEvent.press(signupButton)
 
     expect(reset).toHaveBeenCalledWith({
       index: 0,

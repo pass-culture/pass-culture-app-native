@@ -11,10 +11,6 @@ import { AnimatableProperties, Animation, View as AnimatedView } from 'react-nat
 
 export const NAV_DELAY_IN_MS = 200 // Standard delay to wait before triggering animation, to avoid animation component during navigation
 
-export const pxToPercent = ({ startSize, endSize }: { startSize: number; endSize: number }) => {
-  return startSize / endSize
-}
-
 export type AnimatedViewRefType = AnimatedView & View
 
 type AnimatedMethods = Partial<{

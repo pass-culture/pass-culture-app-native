@@ -31,8 +31,8 @@ import { ReactQueryClientProvider } from 'libs/react-query/ReactQueryClientProvi
 import { ThemeProvider } from 'libs/styled'
 import 'resize-observer-polyfill/dist/ResizeObserver.global'
 import { theme } from 'theme'
-import { LoadingPage } from 'ui/components/LoadingPage'
 import { SnackBarProvider } from 'ui/components/snackBar/SnackBarContext'
+import { LoadingPage } from 'ui/pages/LoadingPage'
 import { SupportedBrowsersGate } from 'web/SupportedBrowsersGate'
 import 'reset-css'
 

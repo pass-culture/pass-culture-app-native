@@ -26,7 +26,7 @@ const depositExpirationDate = '2023-02-16T17:16:04.735235'
 // TODO(PC-17931): Fix this stories
 const WithDomainCreditV1 = Template.bind({})
 WithDomainCreditV1.args = {
-  showForceUpdateBanner: false,
+  showRemoteBanner: false,
   firstName: 'Rosa',
   lastName: 'Bonheur',
   depositExpirationDate: depositExpirationDate,
@@ -36,7 +36,7 @@ WithDomainCreditV1.args = {
 // TODO(PC-17931): Fix this stories
 const WithDomainCreditV2 = Template.bind({})
 WithDomainCreditV2.args = {
-  showForceUpdateBanner: false,
+  showRemoteBanner: false,
   firstName: 'Rosa',
   lastName: 'Bonheur',
   depositExpirationDate: depositExpirationDate,

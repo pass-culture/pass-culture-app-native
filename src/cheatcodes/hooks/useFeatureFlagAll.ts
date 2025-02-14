@@ -1,7 +1,7 @@
 import { onlineManager, useQuery } from 'react-query'
 
 import { getAllFeatureFlags } from 'libs/firebase/firestore/featureFlags/getAllFeatureFlags'
-import { FeatureFlagConfig } from 'libs/firebase/firestore/featureFlags/types'
+import { FeatureFlagConfig, squads } from 'libs/firebase/firestore/featureFlags/types'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { getAppBuildVersion } from 'libs/packageJson'
 
@@ -16,6 +16,11 @@ const isFeatureFlagActive = (
     (!minimalBuildNumber || minimalBuildNumber <= appBuildVersion) &&
     (!maximalBuildNumber || maximalBuildNumber >= appBuildVersion)
   )
+}
+
+export type FeatureFlagAll = {
+  featureFlag: RemoteStoreFeatureFlags
+  isFeatureFlagActive: boolean
 }
 
 export const useFeatureFlagAll = () => {
@@ -36,10 +41,17 @@ export const useFeatureFlagAll = () => {
   const featureFlags = Object.values(RemoteStoreFeatureFlags).reduce(
     (flags, key) => {
       const config = docSnapshot.get<FeatureFlagConfig>(key)
-      flags[key] = isFeatureFlagActive(config, appBuildVersion)
+      const owner = (config.owner?.toLowerCase() as squads) ?? 'squad non-definie'
+      if (!flags[owner]) {
+        flags[owner] = []
+      }
+      flags[owner].push({
+        featureFlag: key,
+        isFeatureFlagActive: isFeatureFlagActive(config, appBuildVersion),
+      })
       return flags
     },
-    {} as Record<RemoteStoreFeatureFlags, boolean>
+    {} as Record<squads | 'squad non-definie', FeatureFlagAll[]>
   )
 
   return featureFlags

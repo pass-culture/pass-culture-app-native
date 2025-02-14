@@ -15,7 +15,7 @@ type OfferToHeadlineOfferData = {
 }
 
 type OfferToHeadlineParams = {
-  offer: Offer | null
+  offer?: Offer
   transformParameters: OfferToHeadlineOfferData
 }
 

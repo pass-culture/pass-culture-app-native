@@ -24,28 +24,28 @@ export const AgeSelectionOther: FunctionComponent<Props> = ({ route }: Props) =>
   const type = route.params.type
   const isOnboarding = type === TutorialTypes.ONBOARDING
 
-  const { showNonEligibleModal } = useOnboardingContext()
+  const { showNotEligibleModal } = useOnboardingContext()
   const { reset } = useNavigation<UseNavigationType>()
 
   const onUnder15Press = useCallback(async () => {
     analytics.logSelectAge({ age: NonEligible.UNDER_15, from: type })
-    showNonEligibleModal(NonEligible.UNDER_15, type)
+    showNotEligibleModal(NonEligible.UNDER_15, type)
 
     if (isOnboarding) {
       reset({ index: 0, routes: [{ name: homeNavConfig[0] }] })
       await storage.saveObject('user_age', NonEligible.UNDER_15)
     }
-  }, [type, isOnboarding, showNonEligibleModal, reset])
+  }, [type, isOnboarding, showNotEligibleModal, reset])
 
   const onOver18Press = useCallback(async () => {
     analytics.logSelectAge({ age: NonEligible.OVER_18, from: type })
-    showNonEligibleModal(NonEligible.OVER_18, type)
+    showNotEligibleModal(NonEligible.OVER_18, type)
 
     if (isOnboarding) {
       reset({ index: 0, routes: [{ name: homeNavConfig[0] }] })
       await storage.saveObject('user_age', NonEligible.OVER_18)
     }
-  }, [type, isOnboarding, showNonEligibleModal, reset])
+  }, [type, isOnboarding, showNotEligibleModal, reset])
 
   const title = isOnboarding ? 'Quel âge as-tu\u00a0?' : 'Comment ça marche\u00a0?'
   const startButtonTitle = isOnboarding ? 'j’ai' : 'à'

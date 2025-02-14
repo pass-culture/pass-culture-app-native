@@ -2,6 +2,7 @@ import algoliasearch from 'algoliasearch'
 
 import { defaultDisabilitiesProperties } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
+import { BuildLocationParameterParams } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildLocationParameter'
 import { offerAttributesToRetrieve } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/offerAttributesToRetrieve'
 import { fetchSearchResults } from 'libs/algolia/fetchAlgolia/fetchSearchResults/fetchSearchResults'
 import { LocationMode, SearchQueryParameters } from 'libs/algolia/types'
@@ -13,7 +14,7 @@ jest.mock('algoliasearch')
 
 const mockMultipleQueries = algoliasearch('', '').multipleQueries
 
-const userLocation = { latitude: 42, longitude: 43 }
+const userPosition = { latitude: 42, longitude: 43 }
 
 const kourou: SuggestedPlace = {
   label: 'Kourou',
@@ -21,21 +22,55 @@ const kourou: SuggestedPlace = {
   type: 'street',
   geolocation: { longitude: -52.669726, latitude: 5.16176 },
 }
+const query = 'searched query'
 
 const venue = mockedSuggestedVenue
 
+const everywhereParams: BuildLocationParameterParams = {
+  userLocation: null,
+  selectedLocationMode: LocationMode.EVERYWHERE,
+  aroundMeRadius: 'all',
+  aroundPlaceRadius: 'all',
+  geolocPosition: null,
+}
+
+const everywhereGeolocatedParams: BuildLocationParameterParams = {
+  userLocation: undefined,
+  selectedLocationMode: LocationMode.EVERYWHERE,
+  aroundMeRadius: MAX_RADIUS,
+  aroundPlaceRadius: 'all',
+  geolocPosition: userPosition,
+}
+
+const aroundMeParams: BuildLocationParameterParams = {
+  userLocation: userPosition,
+  selectedLocationMode: LocationMode.AROUND_ME,
+  aroundMeRadius: MAX_RADIUS,
+  aroundPlaceRadius: 'all',
+  geolocPosition: userPosition,
+}
+
+const aroundPlaceParams: BuildLocationParameterParams = {
+  userLocation: kourou.geolocation,
+  selectedLocationMode: LocationMode.AROUND_PLACE,
+  aroundMeRadius: 'all',
+  aroundPlaceRadius: MAX_RADIUS,
+  geolocPosition: null,
+}
+
+const aroundPlaceGeolocatedParams = {
+  userLocation: kourou.geolocation,
+  selectedLocationMode: LocationMode.AROUND_PLACE,
+  aroundMeRadius: MAX_RADIUS,
+  aroundPlaceRadius: MAX_RADIUS,
+  geolocPosition: userPosition,
+}
+
 describe('fetchSearchResults', () => {
   it('should execute multi query with venues playlist search newest index when there is not location filter', () => {
-    const query = 'searched query'
-
     fetchSearchResults({
       parameters: { query } as SearchQueryParameters,
-      buildLocationParameterParams: {
-        userLocation: null,
-        selectedLocationMode: LocationMode.EVERYWHERE,
-        aroundMeRadius: 'all',
-        aroundPlaceRadius: 'all',
-      },
+      buildLocationParameterParams: everywhereParams,
       isUserUnderage: false,
       disabilitiesProperties: defaultDisabilitiesProperties,
     })
@@ -94,17 +129,10 @@ describe('fetchSearchResults', () => {
     expect(mockMultipleQueries).toHaveBeenCalledWith(expectedResult)
   })
 
-  it('should execute multi query with venues playlist search newest index when location type is EVERYWHERE and user not share his position', () => {
-    const query = 'searched query'
-
+  it('should execute multi query with venues playlist search newest index when location type is EVERYWHERE and user is not sharing its position', () => {
     fetchSearchResults({
       parameters: { query } as SearchQueryParameters,
-      buildLocationParameterParams: {
-        userLocation: null,
-        selectedLocationMode: LocationMode.EVERYWHERE,
-        aroundMeRadius: MAX_RADIUS,
-        aroundPlaceRadius: MAX_RADIUS,
-      },
+      buildLocationParameterParams: everywhereParams,
       isUserUnderage: false,
       disabilitiesProperties: defaultDisabilitiesProperties,
     })
@@ -164,16 +192,9 @@ describe('fetchSearchResults', () => {
   })
 
   it('should execute multi query with venues playlist search index when location type is EVERYWHERE and user shares his position', () => {
-    const query = 'searched query'
-
     fetchSearchResults({
       parameters: { query } as SearchQueryParameters,
-      buildLocationParameterParams: {
-        userLocation,
-        selectedLocationMode: LocationMode.EVERYWHERE,
-        aroundMeRadius: MAX_RADIUS,
-        aroundPlaceRadius: MAX_RADIUS,
-      },
+      buildLocationParameterParams: everywhereGeolocatedParams,
       isUserUnderage: false,
       disabilitiesProperties: defaultDisabilitiesProperties,
     })
@@ -196,7 +217,6 @@ describe('fetchSearchResults', () => {
       {
         indexName: env.ALGOLIA_VENUES_INDEX_PLAYLIST_SEARCH,
         params: {
-          aroundLatLng: '42, 43',
           aroundRadius: 'all',
           clickAnalytics: true,
           hitsPerPage: 35,
@@ -245,16 +265,9 @@ describe('fetchSearchResults', () => {
   })
 
   it('should execute multi query with venues playlist search index when location type is AROUND_ME and user shares his position', () => {
-    const query = 'searched query'
-
     fetchSearchResults({
       parameters: { query } as SearchQueryParameters,
-      buildLocationParameterParams: {
-        userLocation,
-        selectedLocationMode: LocationMode.AROUND_ME,
-        aroundMeRadius: MAX_RADIUS,
-        aroundPlaceRadius: 'all',
-      },
+      buildLocationParameterParams: aroundMeParams,
       isUserUnderage: false,
       disabilitiesProperties: defaultDisabilitiesProperties,
     })
@@ -326,16 +339,9 @@ describe('fetchSearchResults', () => {
   })
 
   it('should execute multi query with venues playlist search index when location type is PLACE and user shares his position', () => {
-    const query = 'searched query'
-
     fetchSearchResults({
       parameters: { query } as SearchQueryParameters,
-      buildLocationParameterParams: {
-        userLocation: kourou.geolocation,
-        selectedLocationMode: LocationMode.AROUND_PLACE,
-        aroundMeRadius: MAX_RADIUS,
-        aroundPlaceRadius: MAX_RADIUS,
-      },
+      buildLocationParameterParams: aroundPlaceGeolocatedParams,
       isUserUnderage: false,
       disabilitiesProperties: defaultDisabilitiesProperties,
     })
@@ -407,16 +413,9 @@ describe('fetchSearchResults', () => {
   })
 
   it('should execute multi query with venues playlist search index when location type is PLACE and user not share his position', () => {
-    const query = 'searched query'
-
     fetchSearchResults({
       parameters: { query } as SearchQueryParameters,
-      buildLocationParameterParams: {
-        userLocation: kourou.geolocation,
-        selectedLocationMode: LocationMode.AROUND_PLACE,
-        aroundMeRadius: 'all',
-        aroundPlaceRadius: MAX_RADIUS,
-      },
+      buildLocationParameterParams: aroundPlaceParams,
       isUserUnderage: false,
       disabilitiesProperties: defaultDisabilitiesProperties,
     })
@@ -488,19 +487,12 @@ describe('fetchSearchResults', () => {
   })
 
   it('should execute multi query with venues playlist search index when location type is VENUE and user shares his position', () => {
-    const query = 'searched query'
-
     fetchSearchResults({
       parameters: {
         query,
         venue,
       } as SearchQueryParameters,
-      buildLocationParameterParams: {
-        userLocation,
-        selectedLocationMode: LocationMode.EVERYWHERE,
-        aroundMeRadius: MAX_RADIUS,
-        aroundPlaceRadius: MAX_RADIUS,
-      },
+      buildLocationParameterParams: everywhereGeolocatedParams,
       isUserUnderage: false,
       disabilitiesProperties: defaultDisabilitiesProperties,
     })
@@ -566,19 +558,12 @@ describe('fetchSearchResults', () => {
   })
 
   it('should execute multi query with venues playlist search index newest when venue is defined and user not share his position', () => {
-    const query = 'searched query'
-
     fetchSearchResults({
       parameters: {
         query,
         venue,
       } as SearchQueryParameters,
-      buildLocationParameterParams: {
-        userLocation: null,
-        selectedLocationMode: LocationMode.EVERYWHERE,
-        aroundMeRadius: 'all',
-        aroundPlaceRadius: 'all',
-      },
+      buildLocationParameterParams: everywhereParams,
       isUserUnderage: false,
       disabilitiesProperties: defaultDisabilitiesProperties,
     })
@@ -644,16 +629,9 @@ describe('fetchSearchResults', () => {
   })
 
   it('should execute multi query with accessibilities filters when user has selected accessibility filters', () => {
-    const query = 'searched query'
-
     fetchSearchResults({
       parameters: { query } as SearchQueryParameters,
-      buildLocationParameterParams: {
-        userLocation: null,
-        selectedLocationMode: LocationMode.EVERYWHERE,
-        aroundMeRadius: 'all',
-        aroundPlaceRadius: 'all',
-      },
+      buildLocationParameterParams: everywhereParams,
       isUserUnderage: false,
       disabilitiesProperties: {
         isMentalDisabilityCompliant: true,
@@ -736,16 +714,9 @@ describe('fetchSearchResults', () => {
   })
 
   it('should execute multi query with aroundPrecision param if provided', () => {
-    const query = 'searched query'
-
     fetchSearchResults({
       parameters: { query } as SearchQueryParameters,
-      buildLocationParameterParams: {
-        userLocation: null,
-        selectedLocationMode: LocationMode.EVERYWHERE,
-        aroundMeRadius: 'all',
-        aroundPlaceRadius: 'all',
-      },
+      buildLocationParameterParams: everywhereParams,
       isUserUnderage: false,
       disabilitiesProperties: defaultDisabilitiesProperties,
       aroundPrecision: [
@@ -815,16 +786,9 @@ describe('fetchSearchResults', () => {
   })
 
   it('should execute multi query without aroundPrecision param if aroundPrecision is 0 (eq: O or not provided)', () => {
-    const query = 'searched query'
-
     fetchSearchResults({
       parameters: { query } as SearchQueryParameters,
-      buildLocationParameterParams: {
-        userLocation: null,
-        selectedLocationMode: LocationMode.EVERYWHERE,
-        aroundMeRadius: 'all',
-        aroundPlaceRadius: 'all',
-      },
+      buildLocationParameterParams: everywhereParams,
       isUserUnderage: false,
       disabilitiesProperties: defaultDisabilitiesProperties,
       aroundPrecision: 0,

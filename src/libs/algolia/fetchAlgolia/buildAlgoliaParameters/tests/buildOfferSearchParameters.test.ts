@@ -15,6 +15,7 @@ describe('buildOfferSearchParameters', () => {
     selectedLocationMode: LocationMode.AROUND_ME,
     aroundMeRadius: 'all',
     aroundPlaceRadius: 'all',
+    geolocPosition: userLocation,
   }
 
   const isUserUnderage = false
@@ -131,6 +132,10 @@ describe('buildOfferSearchParameters', () => {
       },
       aroundMeRadius: 'all',
       aroundPlaceRadius: 10,
+      geolocPosition: {
+        latitude: 43.2965,
+        longitude: 5.3698,
+      },
     }
 
     const parameters = {

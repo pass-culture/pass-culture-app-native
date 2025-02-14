@@ -1,6 +1,6 @@
-import { AlgoliaHit } from 'libs/algolia/types'
+import { AlgoliaOffer } from 'libs/algolia/types'
 
 export type ThematicSearchPlaylistData = {
   title: string
-  offers: { hits: AlgoliaHit[] }
+  offers: { hits: AlgoliaOffer[] }
 }

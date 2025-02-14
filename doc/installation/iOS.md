@@ -30,6 +30,12 @@ If you encounter errors during this setup, refer to the Troubleshooting section 
 
 If `bundle exec pod install` didn't work, check in Xcode -> Settings -> Locations if you have a Command line tools installed, then revalidate the Command line tools by clicking it.
 
+- **install jq for some xcode scripts**
+
+  ```sh
+  brew install jq
+  ```
+
 ### 🔥 Firebase setup
 
 You will need to add the `GoogleService-Info.plist` file in the `ios` directory. You can get a copy of the testing configuration one through the password manager, or directly through the Firebase console inside `Project Settings`.
@@ -130,6 +136,8 @@ This error means that the sentry token you generated is invalid. Please run thro
 Make sure you installed jq so the CFBundleVersion can be automatically filled.
 
 If it is installed but you still have the error, maybe Xcode doesn't find it: run `which jq`. If it does NOT print `/usr/local/bin/jq`, run `ln -s (which jq) /usr/local/bin/jq` to create a sym-link that Xcode will find.
+
+Drawback ❌: This sym-link will be obsolete as soon as the path of your jq instance changes.
 
 </details>
 

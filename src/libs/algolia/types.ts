@@ -16,30 +16,41 @@ import { BooksNativeCategoriesEnum } from 'features/search/types'
 import { Venue } from 'features/venue/types'
 import { FACETS_FILTERS_ENUM } from 'libs/algolia/enums/facetsEnums'
 import { BuildLocationParameterParams } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildLocationParameter'
-import { AlgoliaHit as BaseAlgoliaHit } from 'libs/algolia/types'
 import { VenueTypeCode } from 'libs/parsers/venueType'
 import { Range } from 'libs/typesUtils/typeHelpers'
 import { GtlLevel } from 'shared/gtl/types'
 
-interface AlgoliaGeoloc {
+export type HitOffer = {
+  dates?: number[]
+  isDigital?: boolean
+  isDuo?: boolean
+  isEducational?: boolean
+  name?: string
+  prices?: number[]
+  subcategoryId: SubcategoryIdEnum
+  thumbUrl?: string
+  searchGroupName?: SearchGroupNameEnumv2
+  releaseDate?: number | string
+  bookFormat?: string | null
+  artist?: string
+  ean?: string
+  publicationDate?: number
+}
+
+export type AlgoliaOfferWithArtistAndEan = AlgoliaOffer<
+  HitOffer & {
+    artist: NonNullable<HitOffer['artist']>
+    ean: NonNullable<HitOffer['ean']>
+  }
+>
+
+export interface AlgoliaGeoloc {
   lat?: number | null
   lng?: number | null
 }
 
-export interface AlgoliaHit {
-  offer: {
-    dates?: number[]
-    isDigital?: boolean
-    isDuo?: boolean
-    isEducational?: boolean
-    name?: string
-    prices?: number[]
-    subcategoryId?: SubcategoryIdEnum
-    thumbUrl?: string
-    searchGroupName?: SearchGroupNameEnumv2
-    bookFormat?: string | null
-    artist?: string
-  }
+export interface AlgoliaOffer<T = HitOffer> {
+  offer: T
   _geoloc: Geoloc
   objectID: string
   venue: {
@@ -120,6 +131,7 @@ export type SearchQueryParameters = {
   maxPrice?: string
   minBookingsThreshold?: number
   minPrice?: string
+  isHeadline?: boolean
   offerCategories: SearchGroupNameEnumv2[]
   offerGenreTypes?: OfferGenreType[]
   offerGtlLabel?: string
@@ -140,9 +152,6 @@ export type SearchQueryParameters = {
   distinct?: boolean
   objectIds?: string[]
 }
-
-// An incomplete search hit may not have a subcategoryId (for retrocompatibility)
-export type IncompleteSearchHit = BaseAlgoliaHit
 
 export type Geoloc = AlgoliaGeoloc
 
@@ -221,6 +230,7 @@ export interface AlgoliaVenue {
   snapchat: string | null
   banner_url: string | null
   isPermanent: boolean | null
+  isOpenToPublic?: boolean | null
   _geoloc: Geoloc
   _highlightResult?: AlgoliaVenueHighlightResult
 }
@@ -243,3 +253,8 @@ export type NativeCategoryFacetData = Record<
 type GenreTypeFacetData = Record<FacetKeys, GenreTypeFacets>
 
 export type FacetData = NativeCategoryFacetData | GenreTypeFacetData
+
+export type MultipleOffersResult = {
+  hits: AlgoliaOffer[]
+  nbHits: number
+}[]

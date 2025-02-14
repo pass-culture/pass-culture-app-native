@@ -252,12 +252,56 @@ describe('<OfferBody />', () => {
         ).toBeOnTheScreen()
       })
 
+      it('should display venue button from isOpenToPublic when wipIsOpenToPublic feature flag activated and this is not a cinema offer', async () => {
+        setFeatureFlags([
+          RemoteStoreFeatureFlags.WIP_ARTIST_PAGE,
+          RemoteStoreFeatureFlags.WIP_REACTION_FEATURE,
+          RemoteStoreFeatureFlags.WIP_OFFER_CHRONICLE_SECTION,
+          RemoteStoreFeatureFlags.WIP_IS_OPEN_TO_PUBLIC,
+        ])
+        const offer: OfferResponseV2 = {
+          ...offerResponseSnap,
+          venue: {
+            ...offerResponseSnap.venue,
+            isPermanent: false,
+            isOpenToPublic: true,
+          },
+        }
+        const subcategory: Subcategory = {
+          ...mockSubcategory,
+          categoryId: CategoryIdEnum.LIVRE,
+        }
+        renderOfferBody({ offer, subcategory })
+
+        expect(
+          await screen.findByTestId('Accéder à la page du lieu PATHE BEAUGRENELLE')
+        ).toBeOnTheScreen()
+      })
+
       it('should not display venue button when venue is not permanent', async () => {
         const offer: OfferResponseV2 = {
           ...offerResponseSnap,
           venue: {
             ...offerResponseSnap.venue,
             isPermanent: false,
+          },
+        }
+        renderOfferBody({ offer })
+
+        await screen.findByText(offer.name)
+
+        expect(
+          screen.queryByTestId('Accéder à la page du lieu PATHE BEAUGRENELLE')
+        ).not.toBeOnTheScreen()
+      })
+
+      it('should not display venue button when wipIsOpenToPublic feature flag activated and isOpenToPublic is false', async () => {
+        const offer: OfferResponseV2 = {
+          ...offerResponseSnap,
+          venue: {
+            ...offerResponseSnap.venue,
+            isPermanent: true,
+            isOpenToPublic: false,
           },
         }
         renderOfferBody({ offer })

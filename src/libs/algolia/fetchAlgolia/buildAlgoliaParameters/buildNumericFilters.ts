@@ -29,6 +29,7 @@ export const buildNumericFilters = ({
   | 'maxPrice'
   | 'maxPossiblePrice'
   | 'minBookingsThreshold'
+  | 'isHeadline'
 >): null | {
   numericFilters: FiltersArray
 } => {

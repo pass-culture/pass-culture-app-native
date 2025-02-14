@@ -90,6 +90,7 @@ export enum AnalyticsEvent {
   HAS_CHOSEN_TIME = 'HasChosenTime',
   HAS_CLICKED_DUO_STEP = 'HasClickedDuoStep',
   HAS_CLICKED_MISSING_CODE = 'HasClickedMissingCode',
+  HAS_CLICKED_REMOTE_BANNER = 'HasClickedRemoteBanner',
   HAS_CLICKED_TUTORIAL_FAQ = 'HasClickedTutorialFAQ',
   HAS_CORRECTED_EMAIL = 'HasCorrectedEmail',
   HAS_DISMISSED_APP_SHARING_MODAL = 'HasDismissedAppSharingModal',

@@ -14,6 +14,7 @@ import { CheatcodesNavigationIdentityCheck } from 'cheatcodes/pages/features/ide
 import { CheatcodesNavigationNewIdentificationFlow } from 'cheatcodes/pages/features/identityCheck/CheatcodesNavigationNewIdentificationFlow'
 import { CheatcodesNavigationInternal } from 'cheatcodes/pages/features/internal/CheatcodesNavigationInternal'
 import { CheatcodesNavigationProfile } from 'cheatcodes/pages/features/profile/CheatcodesNavigationProfile'
+import { CheatcodesScreenRemoteBanner } from 'cheatcodes/pages/features/remoteBanner/CheatcodesScreenRemoteBanner'
 import { CheatcodesNavigationShare } from 'cheatcodes/pages/features/share/CheatcodesNavigationShare'
 import { CheatcodesNavigationSubscription } from 'cheatcodes/pages/features/subscription/CheatcodesNavigationSubscription'
 import { CheatcodesNavigationTrustedDevice } from 'cheatcodes/pages/features/trustedDevice/CheatcodesNavigationTrustedDevice'
@@ -34,8 +35,9 @@ import { withAsyncErrorBoundary } from 'features/errors/hocs/withAsyncErrorBound
 import { CheatcodesStackParamList } from 'features/navigation/CheatcodesStackNavigator/types'
 import { ROOT_NAVIGATOR_SCREEN_OPTIONS } from 'features/navigation/RootNavigator/navigationOptions'
 import { GenericRoute } from 'features/navigation/RootNavigator/types'
+import { LoadingPage } from 'ui/pages/LoadingPage'
 
-export type CheatcodesStackRoute = GenericRoute<CheatcodesStackParamList>
+type CheatcodesStackRoute = GenericRoute<CheatcodesStackParamList>
 
 const routes: CheatcodesStackRoute[] = [
   /**** MENU ****/
@@ -130,12 +132,20 @@ const routes: CheatcodesStackRoute[] = [
     component: CheatcodesScreenFeatureFlags,
   },
   {
-    name: 'CheatcodesScreenRemoteConfig',
-    component: CheatcodesScreenRemoteConfig,
+    name: 'CheatcodeScreenLoadingPage',
+    component: LoadingPage,
   },
   {
     name: 'CheatcodesScreenNewCaledonia',
     component: CheatcodesScreenNewCaledonia,
+  },
+  {
+    name: 'CheatcodesScreenRemoteBanner',
+    component: CheatcodesScreenRemoteBanner,
+  },
+  {
+    name: 'CheatcodesScreenRemoteConfig',
+    component: CheatcodesScreenRemoteConfig,
   },
   {
     name: 'CheatcodesNavigationErrors',

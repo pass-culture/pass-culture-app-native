@@ -10,14 +10,14 @@ import {
 import { ChronicleCardData } from 'features/chronicle/type'
 import { Referrals } from 'features/navigation/RootNavigator/types'
 import { PlaylistType } from 'features/offer/enums'
+import { AlgoliaGeoloc } from 'libs/algolia/types'
 import { Subcategory } from 'libs/subcategories/types'
-import { OfferLocation } from 'shared/offer/types'
 
 export interface OfferTileProps {
   categoryId: CategoryIdEnum | null | undefined
   categoryLabel: string | null
   subcategoryId: SubcategoryIdEnum
-  offerLocation: OfferLocation
+  offerLocation: AlgoliaGeoloc
   date?: string
   name?: string
   isDuo?: boolean

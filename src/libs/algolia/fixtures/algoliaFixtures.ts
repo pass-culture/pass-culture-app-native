@@ -2,8 +2,7 @@ import { SearchResponse } from '@algolia/client-search'
 import type { ReadonlyDeep } from 'type-fest'
 
 import { SubcategoryIdEnum, VenueTypeCodeKey } from 'api/gen'
-import { HitOfferWithArtistAndEan } from 'features/offer/api/fetchOffersByArtist/fetchOffersByArtist'
-import { AlgoliaVenue } from 'libs/algolia/types'
+import { AlgoliaOfferWithArtistAndEan, AlgoliaVenue } from 'libs/algolia/types'
 import { Offer } from 'shared/offer/types'
 import { toMutable } from 'shared/types/toMutable'
 
@@ -1103,4 +1102,4 @@ export const mockedAlgoliaOffersWithSameArtistResponse = toMutable([
     },
     objectID: '12759',
   },
-] as const satisfies ReadonlyDeep<HitOfferWithArtistAndEan[]>)
+] as const satisfies ReadonlyDeep<AlgoliaOfferWithArtistAndEan[]>)

@@ -3,7 +3,6 @@ import React, { FunctionComponent, memo, PropsWithChildren } from 'react'
 import styled from 'styled-components/native'
 
 import { Banner, BannerName } from 'api/gen'
-import { ForceUpdateBanner } from 'features/forceUpdate/components/ForceUpdateBanner'
 import { useActivationBanner } from 'features/home/api/useActivationBanner'
 import { ActivationBanner } from 'features/home/components/banners/ActivationBanner'
 import { useGetStepperInfo } from 'features/identityCheck/api/useGetStepperInfo'
@@ -12,6 +11,7 @@ import { IdentityCheckPendingBadge } from 'features/profile/components/Badges/Id
 import { SubscriptionMessageBadge } from 'features/profile/components/Badges/SubscriptionMessageBadge'
 import { YoungerBadge } from 'features/profile/components/Badges/YoungerBadge'
 import { EligibilityMessage } from 'features/profile/components/Header/NonBeneficiaryHeader/EligibilityMessage'
+import { RemoteBanner } from 'features/remoteBanner/components/RemoteBanner'
 import { formatToSlashedFrenchDate } from 'libs/dates'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { SystemBanner as GenericSystemBanner } from 'ui/components/ModuleBanner/SystemBanner'
@@ -163,7 +163,7 @@ function NonBeneficiaryBanner({
       return (
         <BannerContainer>
           <Spacer.Column numberOfSpaces={2} />
-          <ForceUpdateBanner />
+          <RemoteBanner from="Profile" />
         </BannerContainer>
       )
     }

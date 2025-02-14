@@ -12,7 +12,7 @@ describe('<OfferImageContainer />', () => {
   it('should display carousel with one image', () => {
     render(
       <OfferImageContainer
-        imageUrls={['some_url_to_some_resource']}
+        images={[{ url: 'some_url_to_some_resource' }]}
         categoryId={CategoryIdEnum.CINEMA}
         onPress={mockOnPress}
       />,
@@ -27,7 +27,7 @@ describe('<OfferImageContainer />', () => {
   it('should display carousel with several images', () => {
     render(
       <OfferImageContainer
-        imageUrls={['some_url_to_some_resource', 'some_url2_to_some_resource']}
+        images={[{ url: 'some_url_to_some_resource' }, { url: 'some_url2_to_some_resource' }]}
         categoryId={CategoryIdEnum.CINEMA}
         onPress={mockOnPress}
       />,
@@ -40,7 +40,7 @@ describe('<OfferImageContainer />', () => {
   it('should apply sticky styles when on desktop', () => {
     render(
       <OfferImageContainer
-        imageUrls={['some_url_to_some_resource', 'some_url2_to_some_resource']}
+        images={[{ url: 'some_url_to_some_resource' }, { url: 'some_url2_to_some_resource' }]}
         categoryId={CategoryIdEnum.CINEMA}
         onPress={mockOnPress}
       />,
@@ -57,7 +57,7 @@ describe('<OfferImageContainer />', () => {
   it('should not have sticky position on mobile', () => {
     render(
       <OfferImageContainer
-        imageUrls={['some_url_to_some_resource', 'some_url2_to_some_resource']}
+        images={[{ url: 'some_url_to_some_resource' }, { url: 'some_url2_to_some_resource' }]}
         categoryId={CategoryIdEnum.CINEMA}
         onPress={mockOnPress}
       />,

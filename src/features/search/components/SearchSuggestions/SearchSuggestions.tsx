@@ -35,7 +35,8 @@ export const SearchSuggestions = ({
   offerCategories,
 }: SearchSuggestionsParams) => {
   const { searchState, dispatch, hideSuggestions } = useSearch()
-  const { userLocation, selectedLocationMode, aroundMeRadius, aroundPlaceRadius } = useLocation()
+  const { userLocation, selectedLocationMode, aroundMeRadius, aroundPlaceRadius, geolocPosition } =
+    useLocation()
   const { venue } = searchState
   const { navigateToSearch: navigateToSearchResults } = useNavigateToSearch('SearchResults')
 
@@ -48,9 +49,9 @@ export const SearchSuggestions = ({
     () =>
       getCurrentVenuesIndex({
         selectedLocationMode,
-        userLocation,
+        geolocPosition,
       }),
-    [selectedLocationMode, userLocation]
+    [selectedLocationMode, geolocPosition]
   )
 
   const onPressHistoryItem = useCallback(

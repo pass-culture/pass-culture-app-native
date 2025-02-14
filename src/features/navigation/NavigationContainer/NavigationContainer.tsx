@@ -12,7 +12,7 @@ import { RootNavigator } from 'features/navigation/RootNavigator'
 import { linking } from 'features/navigation/RootNavigator/linking'
 import { useSplashScreenContext } from 'libs/splashscreen'
 import { storage } from 'libs/storage'
-import { LoadingPage } from 'ui/components/LoadingPage'
+import { LoadingPage } from 'ui/pages/LoadingPage'
 
 import { author } from '../../../../package.json'
 import { navigationRef } from '../navigationRef'
@@ -79,8 +79,6 @@ export const AppNavigationContainer = () => {
     </NavigationContainer>
   )
 }
-
-export default AppNavigationContainer
 
 function hasWindowReloaded() {
   if (Platform.OS !== 'web') return false

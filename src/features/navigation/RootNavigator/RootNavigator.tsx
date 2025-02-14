@@ -17,7 +17,7 @@ import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { useSplashScreenContext } from 'libs/splashscreen'
 import { storage } from 'libs/storage'
 import { IconFactoryProvider } from 'ui/components/icons/IconFactoryProvider'
-import { LoadingPage } from 'ui/components/LoadingPage'
+import { LoadingPage } from 'ui/pages/LoadingPage'
 import { QuickAccess } from 'ui/web/link/QuickAccess'
 
 import { determineAccessibilityRole } from './determineAccessibilityRole'

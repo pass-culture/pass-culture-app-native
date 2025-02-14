@@ -1,9 +1,9 @@
 import React from 'react'
-import { FlatList } from 'react-native'
+import { SectionList } from 'react-native'
 import styled from 'styled-components/native'
 
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
-import { useFeatureFlagAll } from 'cheatcodes/hooks/useFeatureFlagAll'
+import { FeatureFlagAll, useFeatureFlagAll } from 'cheatcodes/hooks/useFeatureFlagAll'
 import { env } from 'libs/environment/env'
 import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonInsideText'
 import { Separator } from 'ui/components/Separator'
@@ -13,7 +13,18 @@ import { Spacer, TypoDS, getSpacing } from 'ui/theme'
 
 export const CheatcodesScreenFeatureFlags = () => {
   const featureFlags = useFeatureFlagAll()
-  const featureFlagsArray = Object.entries(featureFlags)
+
+  type Section = {
+    title: string
+    data: { featureFlag: string; isFeatureFlagActive: boolean }[]
+  }
+
+  const sections: Section[] = Object.entries(featureFlags).map(([owner, data]) => ({
+    title: owner,
+    data: data as FeatureFlagAll[], // "as" to avoid typing error
+  }))
+
+  const totalFeatureFlags = sections.reduce((sum, section) => sum + section.data.length, 0)
 
   const title = `Feature Flags ${env.ENV} 🏳️`
   const showTestingFeatureFlags = env.ENV !== 'testing'
@@ -55,17 +66,30 @@ export const CheatcodesScreenFeatureFlags = () => {
       ) : null}
       <Spacer.Column numberOfSpaces={6} />
       <TypoDS.BodyItalicAccent>
-        Nombre de feature flags&nbsp;: {featureFlagsArray.length}
+        Nombre de feature flags&nbsp;: {totalFeatureFlags}
       </TypoDS.BodyItalicAccent>
       <StyledSeparator />
-      <FlatList
-        data={featureFlagsArray}
-        keyExtractor={([featureFlag]) => featureFlag}
-        renderItem={({ item: [featureFlag, isActive] }) => (
-          <StyledFeatureFlag>
-            <TypoDS.Body numberOfLines={1}>{featureFlag}</TypoDS.Body>
-            <StyledTitle4 active={!!isActive}>{isActive ? 'Actif' : 'Inactif'}</StyledTitle4>
-          </StyledFeatureFlag>
+      <SectionList
+        sections={sections}
+        keyExtractor={(item) => item.featureFlag}
+        renderItem={({ item, index, section }) => (
+          <React.Fragment>
+            <StyledFeatureFlag>
+              <TypoDS.Body numberOfLines={1}>{item.featureFlag}</TypoDS.Body>
+              <StyledTitle4 active={!!item.isFeatureFlagActive}>
+                {item.isFeatureFlagActive ? 'Actif' : 'Inactif'}
+              </StyledTitle4>
+            </StyledFeatureFlag>
+            {index === section.data.length - 1 ? <Spacer.Column numberOfSpaces={10} /> : null}
+          </React.Fragment>
+        )}
+        renderSectionHeader={({ section: { title, data } }) => (
+          <React.Fragment>
+            <TypoDS.Title2>
+              {title} ({data.length})
+            </TypoDS.Title2>
+            <Spacer.Column numberOfSpaces={5} />
+          </React.Fragment>
         )}
         ItemSeparatorComponent={() => <StyledSeparator />}
       />

@@ -155,6 +155,15 @@ const nativeEventBottom = {
     contentSize: { height: 1900 },
   },
 }
+
+const mockOnLayoutWithButton = {
+  nativeEvent: {
+    layout: {
+      height: 157,
+    },
+  },
+}
+
 const BATCH_TRIGGER_DELAY_IN_MS = 5000
 
 jest.useFakeTimers()
@@ -656,14 +665,20 @@ describe('<OfferContent />', () => {
           offer: { ...offerResponseSnap, subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER },
         })
 
+        const descriptions = screen.getAllByTestId('description')
+
+        await act(async () => {
+          descriptions[0]?.props.onLayout(mockOnLayoutWithButton)
+        })
+
         const seeMoreButtons = screen.getAllByText('Voir plus')
 
         // Using as because links is never undefined and the typing is not correct
-        await user.press(seeMoreButtons[2] as ReactTestInstance)
+        await user.press(seeMoreButtons[0] as ReactTestInstance)
 
         expect(mockNavigate).toHaveBeenNthCalledWith(1, 'Chronicles', {
           offerId: 116656,
-          chronicleId: 3,
+          chronicleId: 1,
           from: 'chronicles',
         })
       })
@@ -673,14 +688,20 @@ describe('<OfferContent />', () => {
           offer: { ...offerResponseSnap, subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER },
         })
 
+        const descriptions = screen.getAllByTestId('description')
+
+        await act(async () => {
+          descriptions[0]?.props.onLayout(mockOnLayoutWithButton)
+        })
+
         const seeMoreButtons = screen.getAllByText('Voir plus')
 
         // Using as because links is never undefined and the typing is not correct
-        await user.press(seeMoreButtons[2] as ReactTestInstance)
+        await user.press(seeMoreButtons[0] as ReactTestInstance)
 
         expect(analytics.logConsultChronicle).toHaveBeenNthCalledWith(1, {
           offerId: 116656,
-          chronicleId: 3,
+          chronicleId: 1,
         })
       })
     })

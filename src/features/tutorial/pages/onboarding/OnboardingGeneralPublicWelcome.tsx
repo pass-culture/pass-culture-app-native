@@ -2,7 +2,7 @@ import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { StepperOrigin, UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import QpiThanks from 'ui/animations/qpi_thanks.json'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -26,12 +26,15 @@ export const OnboardingGeneralPublicWelcome = () => {
         Et si tu créais un compte pour des suggestions à venir&nbsp;? Sinon, explore librement le
         catalogue dès maintenant&nbsp;!
       </StyledBody>
-      <Spacer.Flex flex={2} />
+      <Spacer.Flex flex={1} />
       <ButtonContainer>
         <InternalTouchableLink
           as={ButtonPrimary}
           wording="Créer un compte"
-          navigateTo={{ screen: 'SignupForm', params: { from: 'OnboardingGeneralPublicWelcome' } }}
+          navigateTo={{
+            screen: 'SignupForm',
+            params: { from: StepperOrigin.ONBOARDING_GENERAL_PUBLIC_WELCOME },
+          }}
           key={1}
         />
         <Spacer.Column numberOfSpaces={4} />

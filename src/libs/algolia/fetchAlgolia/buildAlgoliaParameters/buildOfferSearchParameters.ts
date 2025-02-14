@@ -2,7 +2,7 @@ import { defaultDisabilitiesProperties } from 'features/accessibility/context/Ac
 import { DisabilitiesProperties } from 'features/accessibility/types'
 import { buildFilters } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildFilters'
 import {
-  buildLocationParameter,
+  buildLocationParameterForSearch,
   BuildLocationParameterParams,
 } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildLocationParameter'
 import { SearchQueryParameters } from 'libs/algolia/types'
@@ -25,6 +25,7 @@ export const buildOfferSearchParameters = (
     endingDatetime = undefined,
     excludedObjectIds = [],
     isFullyDigitalOffersCategory = false,
+    isHeadline = false,
     maxPossiblePrice = '',
     maxPrice = '',
     minBookingsThreshold = 0,
@@ -52,7 +53,7 @@ export const buildOfferSearchParameters = (
   const locationParameter =
     venue || isFullyDigitalOffersCategory
       ? {}
-      : buildLocationParameter(buildLocationParameterParams)
+      : buildLocationParameterForSearch(buildLocationParameterParams)
 
   return {
     ...buildFacetFilters({
@@ -72,6 +73,7 @@ export const buildOfferSearchParameters = (
       tags,
       gtls,
       disabilitiesProperties,
+      isHeadline,
     }),
     ...buildNumericFilters({
       beginningDatetime,
@@ -84,6 +86,7 @@ export const buildOfferSearchParameters = (
       offerIsFree,
       priceRange,
       timeRange,
+      isHeadline,
     }),
     ...locationParameter,
     ...buildFilters({ excludedObjectIds }),

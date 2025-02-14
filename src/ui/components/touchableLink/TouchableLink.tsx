@@ -1,4 +1,3 @@
-import { throttle } from 'lodash'
 import React, { createRef, ElementType, useCallback, useEffect, useMemo } from 'react'
 import { NativeSyntheticEvent, Platform, TargetedEvent } from 'react-native'
 import styled from 'styled-components/native'
@@ -28,7 +27,6 @@ export function TouchableLink({
   hoverUnderlineColor,
   accessibilityLabel,
   testID,
-  pressCooldownDelay = 0,
   ...rest
 }: TouchableLinkProps) {
   const TouchableComponent = (
@@ -73,7 +71,7 @@ export function TouchableLink({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  const pressFn = useMemo(
+  const handlePress = useMemo(
     () =>
       handleNavigationWrapper({
         onBeforeNavigate,
@@ -81,11 +79,6 @@ export function TouchableLink({
         handleNavigation,
       }),
     [onBeforeNavigate, onAfterNavigate, handleNavigation]
-  )
-
-  const throttledPressFn = useMemo(
-    () => throttle(pressFn, pressCooldownDelay, { leading: true, trailing: false }),
-    [pressCooldownDelay, pressFn]
   )
 
   return (
@@ -100,7 +93,7 @@ export function TouchableLink({
       onBlur={onLinkBlur}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
-      onPress={disabled ? undefined : throttledPressFn}
+      onPress={disabled ? undefined : handlePress}
       {...accessibilityAndTestId(accessibilityLabel, testID)}>
       {children}
     </TouchableLinkComponent>

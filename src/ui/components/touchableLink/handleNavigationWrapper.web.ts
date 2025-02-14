@@ -11,7 +11,7 @@ export const handleNavigationWrapper = ({
     event.preventDefault()
 
     if (onBeforeNavigate) await onBeforeNavigate(event)
-    handleNavigation()
+    handleNavigation?.()
     if (onAfterNavigate) await onAfterNavigate(event)
   }
 

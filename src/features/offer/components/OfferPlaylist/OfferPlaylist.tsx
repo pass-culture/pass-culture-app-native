@@ -2,13 +2,13 @@ import React from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
-import { HitOfferWithArtistAndEan } from 'features/offer/api/fetchOffersByArtist/fetchOffersByArtist'
 import { PlaylistType } from 'features/offer/enums'
+import { AlgoliaOfferWithArtistAndEan } from 'libs/algolia/types'
 import { Offer } from 'shared/offer/types'
 import { PassPlaylist } from 'ui/components/PassPlaylist'
 
 interface OfferPlaylistProps {
-  items: Offer[] | HitOfferWithArtistAndEan[]
+  items: Offer[] | AlgoliaOfferWithArtistAndEan[]
   renderItem: (props: {
     item: Offer
     width: number
@@ -22,7 +22,7 @@ interface OfferPlaylistProps {
   onEndReached?: () => void
 }
 
-const keyExtractor = (item: Offer | HitOfferWithArtistAndEan) => item.objectID
+const keyExtractor = (item: Offer | AlgoliaOfferWithArtistAndEan) => item.objectID
 
 export function OfferPlaylist({
   items,

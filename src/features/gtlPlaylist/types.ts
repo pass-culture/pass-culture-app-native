@@ -1,5 +1,5 @@
 import { OffersModuleParameters } from 'features/home/types'
-import { AlgoliaHit } from 'libs/algolia/types'
+import { AlgoliaOffer } from 'libs/algolia/types'
 import { Layout, DisplayParametersFields } from 'libs/contentful/types'
 
 export type GtlPlaylistRequest = {
@@ -10,7 +10,7 @@ export type GtlPlaylistRequest = {
 
 export type GtlPlaylistData = {
   title: string
-  offers: { hits: AlgoliaHit[] }
+  offers: { hits: AlgoliaOffer[] }
   layout: Layout
   minNumberOfOffers: number
   entryId: string

@@ -1,6 +1,6 @@
-import { BatchProfile } from '@batch.com/react-native-plugin'
 import React from 'react'
 
+import { BatchEvent, BatchProfile } from '__mocks__/@batch.com/react-native-plugin'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { navigateFromRef } from 'features/navigation/navigationRef'
@@ -93,6 +93,14 @@ describe('<AccountCreated />', () => {
     fireEvent.press(await screen.findByLabelText('On y va\u00a0!'))
 
     expect(BatchProfile.trackEvent).toHaveBeenCalledWith('has_validated_account')
+  })
+
+  it('should track Batch event when the screen is mounted', async () => {
+    renderAccountCreated()
+
+    await screen.findByText('Ton compte a été activé !')
+
+    expect(BatchProfile.trackEvent).toHaveBeenCalledWith(BatchEvent.screenViewAccountCreated)
   })
 
   it('should show non eligible share app modal when "On y va !" button is clicked', async () => {

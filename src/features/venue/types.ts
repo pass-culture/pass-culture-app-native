@@ -15,6 +15,7 @@ export interface Venue {
   venue_type?: VenueTypeCode | null
   postalCode?: string | null
   isPermanent?: boolean | null
+  isOpenToPublic?: boolean | null
 }
 
 export enum Tab {
@@ -60,6 +61,7 @@ export type TabType<TabKeyType extends string> = {
 export type VenueOffers = {
   hits: Offer[]
   nbHits: number
+  headlineOffer?: Offer
 }
 
 export type Artist = {

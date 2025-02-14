@@ -24,7 +24,6 @@ import { useLocation } from 'libs/location'
 import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
-import { offersFixture } from 'shared/offer/offer.fixture'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { getSpacing } from 'ui/theme'
@@ -48,8 +47,7 @@ export const Venue: FunctionComponent = () => {
 
   const headlineOfferData = isVenueHeadlineOfferActive
     ? offerToHeadlineOfferData({
-        // Fake data to remove
-        offer: offersFixture[0],
+        offer: venueOffers?.headlineOffer,
         transformParameters: {
           currency,
           euroToPacificFrancRate,

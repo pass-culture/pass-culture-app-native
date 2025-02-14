@@ -50,6 +50,7 @@ export const OfferBody: FunctionComponent<Props> = ({
   const { navigate } = useNavigation<UseNavigationType>()
 
   const hasArtistPage = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ARTIST_PAGE)
+  const shouldUseIsOpenToPublic = useFeatureFlag(RemoteStoreFeatureFlags.WIP_IS_OPEN_TO_PUBLIC)
 
   const { user } = useAuthContext()
   const currency = useGetCurrencyToDisplay()
@@ -104,6 +105,8 @@ export const OfferBody: FunctionComponent<Props> = ({
     navigate('Artist', { fromOfferId: offer.id })
   }
 
+  const isOpenToPublicVenue = offer.venue.isOpenToPublic ?? false
+
   return (
     <Container>
       <MarginContainer gap={6}>
@@ -127,7 +130,7 @@ export const OfferBody: FunctionComponent<Props> = ({
         <OfferReactionSection offer={offer} />
 
         <GroupWithSeparator
-          showTopComponent={offer.venue.isPermanent}
+          showTopComponent={shouldUseIsOpenToPublic ? isOpenToPublicVenue : offer.venue.isPermanent}
           TopComponent={isCinemaOffer ? null : <OfferVenueButton venue={offer.venue} />}
           showBottomComponent={summaryInfoItems.length > 0}
           BottomComponent={<OfferSummaryInfoList summaryInfoItems={summaryInfoItems} />}

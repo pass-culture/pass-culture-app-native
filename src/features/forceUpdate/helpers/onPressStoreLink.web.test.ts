@@ -3,20 +3,44 @@ import { onPressStoreLink } from './onPressStoreLink'
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 jest.mock('libs/firebase/analytics/analytics')
 
-const mockReload = jest.fn()
+const mockAssign = jest.fn()
 
 describe('onPressStoreLink', () => {
   beforeEach(() => {
-    Object.defineProperty(globalThis, 'window', {
-      value: { location: { reload: mockReload } },
+    Object.defineProperty(global, 'sessionStorage', {
+      value: { clear: jest.fn() },
       writable: true,
     })
-    jest.resetAllMocks()
+
+    Object.defineProperty(global, 'localStorage', {
+      value: { clear: jest.fn() },
+      writable: true,
+    })
+
+    Object.defineProperty(globalThis, 'window', {
+      value: { location: { href: 'https://example.com', assign: mockAssign } },
+      writable: true,
+    })
+
+    jest.spyOn(global.Math, 'random').mockReturnValue(0.123456)
   })
 
-  it('should reload the page on web', () => {
+  it('should clear session storage', () => {
     onPressStoreLink()
 
-    expect(mockReload).toHaveBeenCalledWith()
+    expect(global.sessionStorage.clear).toHaveBeenCalledTimes(1)
+  })
+
+  it('should clear local storage', () => {
+    onPressStoreLink()
+
+    expect(global.localStorage.clear).toHaveBeenCalledTimes(1)
+  })
+
+  it('should reload the page with a fixed URL parameter', () => {
+    onPressStoreLink()
+    const assignedUrlCall = mockAssign.mock.calls[0][0].toString()
+
+    expect(assignedUrlCall).toBe('https://example.com/?force=0.123456')
   })
 })

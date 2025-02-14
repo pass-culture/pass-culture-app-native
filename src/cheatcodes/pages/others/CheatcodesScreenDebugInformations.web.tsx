@@ -3,7 +3,7 @@ import React, { useCallback } from 'react'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
-import { LoadingPage } from 'ui/components/LoadingPage'
+import { LoadingPage } from 'ui/pages/LoadingPage'
 
 export const CheatcodesScreenDebugInformations: React.FC = () => {
   const { navigate } = useNavigation<UseNavigationType>()
