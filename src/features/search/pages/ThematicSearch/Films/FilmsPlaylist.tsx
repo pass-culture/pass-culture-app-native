@@ -5,14 +5,21 @@ import { useThematicSearchPlaylists } from 'features/search/pages/ThematicSearch
 import { ThematicSearchPlaylistList } from 'features/search/pages/ThematicSearch/ThematicSearchPlaylistList'
 import { QueryKeys } from 'libs/queryKeys'
 
-const FILMS_PLAYLIST_TITLES = ['Abonnements streaming', 'Vidéos et documentaires', 'DVD et Blu-ray']
+const FILMS_PLAYLISTS_TITLES = [
+  'Abonnements streaming',
+  'Vidéos et documentaires',
+  'DVD et Blu-ray',
+]
 
-export const FilmsPlaylist: React.FC = () => {
-  const { playlists: filmsPlaylists } = useThematicSearchPlaylists({
-    playlistTitles: FILMS_PLAYLIST_TITLES,
-    fetchMethod: fetchFilmsOffers,
-    queryKey: QueryKeys.FILMS_OFFERS,
-  })
+export const FilmsPlaylists: React.FC = () => {
+  const { playlists: filmsPlaylists, isLoading: areFilmsPlaylistsLoading } =
+    useThematicSearchPlaylists({
+      playlistTitles: FILMS_PLAYLISTS_TITLES,
+      fetchMethod: fetchFilmsOffers,
+      queryKey: QueryKeys.FILMS_OFFERS,
+    })
 
-  return <ThematicSearchPlaylistList playlists={filmsPlaylists} />
+  return (
+    <ThematicSearchPlaylistList playlists={filmsPlaylists} isLoading={areFilmsPlaylistsLoading} />
+  )
 }

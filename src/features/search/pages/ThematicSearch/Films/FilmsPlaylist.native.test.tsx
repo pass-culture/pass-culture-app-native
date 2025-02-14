@@ -1,7 +1,7 @@
 import React from 'react'
 
 import * as useThematicSearchPlaylistsAPI from 'features/search/pages/ThematicSearch/api/useThematicSearchPlaylists'
-import { FilmsPlaylist } from 'features/search/pages/ThematicSearch/Films/FilmsPlaylist'
+import { FilmsPlaylists } from 'features/search/pages/ThematicSearch/Films/FilmsPlaylist'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { LocationMode, Position } from 'libs/location/types'
 import { mockBuilder } from 'tests/mockBuilder'
@@ -29,6 +29,7 @@ const useThematicSearchPlaylistsSpy = jest
   .spyOn(useThematicSearchPlaylistsAPI, 'useThematicSearchPlaylists')
   .mockReturnValue({
     playlists: [{ title: DEFAULT_PLAYLIST_TITLE, offers: DEFAULT_OFFERS }],
+    isLoading: false,
   })
 
 describe('FilmsPlaylist', () => {
@@ -43,11 +44,11 @@ describe('FilmsPlaylist', () => {
   })
 
   it('should not render playlist when algolia does not return offers', async () => {
-    useThematicSearchPlaylistsSpy.mockReturnValueOnce({ playlists: [] })
+    useThematicSearchPlaylistsSpy.mockReturnValueOnce({ playlists: [], isLoading: false })
     renderFilms()
 
     expect(screen.queryByText(DEFAULT_PLAYLIST_TITLE)).not.toBeOnTheScreen()
   })
 })
 
-const renderFilms = () => render(reactQueryProviderHOC(<FilmsPlaylist />))
+const renderFilms = () => render(reactQueryProviderHOC(<FilmsPlaylists />))
