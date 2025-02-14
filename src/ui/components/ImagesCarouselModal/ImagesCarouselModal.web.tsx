@@ -89,7 +89,7 @@ export const ImagesCarouselModal = ({
               width={carouselSize.width}
               scrollEnabled={false}
               progressValue={progressValue}
-              renderItem={({ item: image, index }: { item: string; index: number }) => (
+              renderItem={({ item: image, index }) => (
                 <CarouselImage
                   source={{ uri: image }}
                   accessibilityLabel={`Image ${index + 1}`}
