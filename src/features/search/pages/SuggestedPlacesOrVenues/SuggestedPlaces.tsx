@@ -1,5 +1,4 @@
-import isEqual from 'lodash/isEqual'
-import uniqWith from 'lodash/uniqWith'
+import { isEqual, uniqWith } from 'lodash'
 import React, { FunctionComponent } from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'

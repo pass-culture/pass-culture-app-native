@@ -1,4 +1,4 @@
-import omit from 'lodash/omit'
+import { omit } from 'lodash'
 import { useCallback } from 'react'
 
 import { UserProfileResponse } from 'api/gen'

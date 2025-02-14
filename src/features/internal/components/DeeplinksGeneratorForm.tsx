@@ -1,4 +1,4 @@
-import omit from 'lodash/omit'
+import { omit } from 'lodash'
 import React, { useMemo, useState } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 

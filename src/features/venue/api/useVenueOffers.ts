@@ -1,4 +1,4 @@
-import uniqBy from 'lodash/uniqBy'
+import { uniqBy } from 'lodash'
 import { useCallback } from 'react'
 import { useQuery, UseQueryResult } from 'react-query'
 
