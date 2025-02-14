@@ -63,10 +63,7 @@ export const NotEligibleModal = ({ visible, userStatus, hideModal, type }: Props
           </React.Fragment>
         ) : null}
         <Spacer.Column numberOfSpaces={4} />
-        <StyledBody>
-          En attendant, tu peux explorer le catalogue des offres et découvrir des lieux culturels
-          autour de toi.
-        </StyledBody>
+        <StyledBody>En attendant, crée-toi un compte pour des suggestions à venir.</StyledBody>
         <Spacer.Column numberOfSpaces={8} />
         <ButtonPrimary onPress={onButtonPress} wording="Explorer le catalogue" />
       </AppInformationModal>

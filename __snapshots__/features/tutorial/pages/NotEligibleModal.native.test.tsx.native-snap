@@ -438,7 +438,7 @@ exports[`NotEligibleModal without credit V3 for user under 15 years old should r
           ]
         }
       >
-        En attendant, tu peux explorer le catalogue des offres et découvrir des lieux culturels autour de toi.
+        En attendant, crée-toi un compte pour des suggestions à venir.
       </Text>
       <View
         numberOfSpaces={8}
@@ -863,7 +863,7 @@ exports[`NotEligibleModal without credit V3 for user under 15 years old should r
           ]
         }
       >
-        En attendant, tu peux explorer le catalogue des offres et découvrir des lieux culturels autour de toi.
+        En attendant, crée-toi un compte pour des suggestions à venir.
       </Text>
       <View
         numberOfSpaces={8}
