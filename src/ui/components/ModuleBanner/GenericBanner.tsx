@@ -10,6 +10,7 @@ import { getSpacing } from 'ui/theme'
 type GenericBannerProps = {
   LeftIcon?: ReactElement
   RightIcon?: FunctionComponent<AccessibleIcon>
+  noRightIcon?: boolean
   children: React.ReactNode
   style?: StyleProp<ViewStyle>
   testID?: string
@@ -18,6 +19,7 @@ type GenericBannerProps = {
 export const GenericBanner: FunctionComponent<GenericBannerProps> = ({
   LeftIcon,
   RightIcon,
+  noRightIcon = false,
   style,
   children,
   testID,
@@ -26,7 +28,7 @@ export const GenericBanner: FunctionComponent<GenericBannerProps> = ({
     <View style={[styles.container, style]} testID={testID}>
       {LeftIcon ? <IconContainer>{LeftIcon}</IconContainer> : null}
       <DescriptionContainer>{children}</DescriptionContainer>
-      <View>{RightIcon ? <RightIcon /> : <StyledArrowNextIcon />}</View>
+      {noRightIcon ? null : <View>{RightIcon ? <RightIcon /> : <StyledArrowNextIcon />}</View>}
     </View>
   )
 }

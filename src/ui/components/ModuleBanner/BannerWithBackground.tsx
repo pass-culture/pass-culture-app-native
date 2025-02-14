@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from 'react'
-import { ImageSourcePropType } from 'react-native'
+import { AccessibilityRole, ImageSourcePropType } from 'react-native'
 import styled from 'styled-components/native'
 
 import { BANNER_BORDER_WIDTH, GenericBanner } from 'ui/components/ModuleBanner/GenericBanner'
@@ -24,8 +24,10 @@ type BannerWithBackgroundProps = TouchableProps & {
   leftIcon?: FunctionComponent<AccessibleIcon>
   rightIcon?: FunctionComponent<AccessibleIcon>
   backgroundSource?: ImageSourcePropType
+  noRightIcon?: boolean
   testID?: string
   disabled?: boolean
+  accessibilityRole?: AccessibilityRole
   children: React.ReactNode
 }
 
@@ -36,6 +38,7 @@ export const BannerWithBackground: FunctionComponent<BannerWithBackgroundProps> 
   backgroundSource,
   testID,
   disabled = false,
+  accessibilityRole,
   ...touchableProps
 }) => {
   const StyledLeftIcon =
@@ -56,14 +59,19 @@ export const BannerWithBackground: FunctionComponent<BannerWithBackgroundProps> 
   const TouchableComponent = 'navigateTo' in touchableProps ? StyledTouchableLink : TouchableOpacity
 
   return (
-    <TouchableComponent {...touchableProps} testID={testID} disabled={disabled}>
+    <TouchableComponent
+      {...touchableProps}
+      testID={testID}
+      disabled={disabled}
+      accessibilityRole={accessibilityRole}>
       <ImageContainer>
         <ImageBackground
           source={backgroundSource || BACKGROUND_IMAGE_SOURCE}
           testID="module-background">
           <GenericBannerWithoutBorder
             LeftIcon={StyledLeftIcon ? <StyledLeftIcon /> : undefined}
-            RightIcon={StyledRightIcon}>
+            RightIcon={StyledRightIcon}
+            noRightIcon={touchableProps.noRightIcon}>
             {children}
           </GenericBannerWithoutBorder>
         </ImageBackground>
