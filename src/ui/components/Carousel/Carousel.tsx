@@ -1,4 +1,3 @@
-import { ViewToken } from '@shopify/flash-list'
 import React, { useEffect, useRef } from 'react'
 import {
   ViewabilityConfigCallbackPairs,
@@ -7,6 +6,7 @@ import {
   Platform,
   StyleProp,
   ViewStyle,
+  ViewToken,
 } from 'react-native'
 import Animated, {
   SharedValue,
@@ -31,6 +31,10 @@ type CarouselProps = {
 }
 
 const isWeb = Platform.OS === 'web'
+
+export const calculateProgress = (contentOffsetX: number, width: number) => {
+  return Math.abs(contentOffsetX / width)
+}
 
 export const Carousel = (props: CarouselProps) => {
   const carouselRef = useAnimatedRef<Animated.FlatList<string>>()
@@ -57,8 +61,7 @@ export const Carousel = (props: CarouselProps) => {
 
   const onScroll = useAnimatedScrollHandler({
     onScroll: (e) => {
-      const absoluteProgress = Math.abs(e.contentOffset.x / width)
-      progressValue.value = absoluteProgress
+      progressValue.value = calculateProgress(e.contentOffset.x, width)
     },
   })
 
