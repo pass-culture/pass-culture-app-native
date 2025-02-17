@@ -34,6 +34,17 @@ describe('RemoteBanner', () => {
 
     expect(subtitle).not.toBeInTheDocument()
   })
+
+  it('should have noRightIcon for store redirection on web', async () => {
+    setFeatureFlags([
+      { featureFlag: RemoteStoreFeatureFlags.SHOW_REMOTE_BANNER, options: bannerStoreRedirection },
+    ])
+    render(<RemoteBanner from="Profile" />)
+
+    const rightIcon = screen.queryByTestId('ArrowNext')
+
+    expect(rightIcon).not.toBeInTheDocument()
+  })
 })
 
 const bannerExternalUrl: RemoteBannerType = {
@@ -42,4 +53,12 @@ const bannerExternalUrl: RemoteBannerType = {
   subtitleWeb: 'subtitleWeb',
   redirectionUrl: 'https://www.test.fr',
   redirectionType: RemoteBannerRedirectionType.EXTERNAL,
+}
+
+const bannerStoreRedirection: RemoteBannerType = {
+  title: 'title',
+  subtitleMobile: 'subtitleMobile',
+  subtitleWeb: 'subtitleWeb',
+  redirectionUrl: 'https://www.test.fr',
+  redirectionType: RemoteBannerRedirectionType.STORE,
 }
