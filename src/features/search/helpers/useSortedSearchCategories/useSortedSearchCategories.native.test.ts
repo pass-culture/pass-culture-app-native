@@ -85,14 +85,14 @@ describe('useSortedSearchCategories', () => {
 
   describe('Category has a ThematicSearch', () => {
     it('should navigate to ThematicSearch when FF on', () => {
-      setFeatureFlags([RemoteStoreFeatureFlags.WIP_PAGE_SEARCH_N1])
+      setFeatureFlags([RemoteStoreFeatureFlags.WIP_THEMATIC_SEARCH_CONCERTS_AND_FESTIVALS])
       const { result } = renderHook(useSortedSearchCategories)
 
-      expect(result.current[3]?.navigateTo.params).toEqual({
+      expect(result.current[0]?.navigateTo.params).toEqual({
         params: {
           params: {
             isFullyDigitalOffersCategory: false,
-            offerCategories: ['LIVRES'],
+            offerCategories: ['CONCERTS_FESTIVALS'],
             searchId: 'testUuidV4',
           },
           screen: 'ThematicSearch',
@@ -105,11 +105,11 @@ describe('useSortedSearchCategories', () => {
       setFeatureFlags()
       const { result } = renderHook(useSortedSearchCategories)
 
-      expect(result.current[3]?.navigateTo.params).toEqual({
+      expect(result.current[0]?.navigateTo.params).toEqual({
         params: {
           params: {
             isFullyDigitalOffersCategory: false,
-            offerCategories: ['LIVRES'],
+            offerCategories: ['CONCERTS_FESTIVALS'],
             searchId: 'testUuidV4',
           },
           screen: 'SearchResults',

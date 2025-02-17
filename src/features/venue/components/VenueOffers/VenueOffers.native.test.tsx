@@ -224,10 +224,6 @@ describe('<VenueOffers />', () => {
   })
 
   describe('Cinema venue', () => {
-    beforeEach(() => {
-      setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_NEW_XP_CINE_FROM_VENUE])
-    })
-
     it('should display movie screening calendar if at least one offer is a movie screening', async () => {
       renderVenueOffers({
         venue: venueDataTest,
