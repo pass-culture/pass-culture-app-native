@@ -7,4 +7,5 @@ SCRIPT_FOLDER="$(dirname "$(realpath "${BASH_SOURCE[0]}")")"
 
 if sh "$SCRIPT_FOLDER/is_proxy_enabled.sh"; then
 	xcrun simctl keychain booted add-root-cert "$SSL_CERT_FILE"
+	echo "Certificate added to simulator"
 fi
