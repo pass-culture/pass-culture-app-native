@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import { Defs, LinearGradient, Stop, Rect, Path } from 'react-native-svg'
 import { useTheme } from 'styled-components/native'
 import { v1 as uuidv1 } from 'uuid'

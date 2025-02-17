@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import { Path, G, Defs, Stop, ClipPath, Rect, RadialGradient } from 'react-native-svg'
 
 import { AccessibleSvg } from 'ui/svg/AccessibleSvg'

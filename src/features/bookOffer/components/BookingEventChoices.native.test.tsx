@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 
 import { OfferResponseV2 } from 'api/gen'
 import { Step } from 'features/bookOffer/context/reducer'
