@@ -2,7 +2,11 @@ import React, { useEffect } from 'react'
 import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { storage } from 'libs/storage'
+import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
+import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
+import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
 import { useDepositAmountsByAge } from 'shared/user/useDepositAmountsByAge'
 import TutorialPassLogo from 'ui/animations/eighteen_birthday.json'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -11,7 +15,7 @@ import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouch
 import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
 import { ClockFilled } from 'ui/svg/icons/ClockFilled'
 import { Spacer, TypoDS, getSpacing } from 'ui/theme'
-import { TextProps } from 'ui/theme/typography'
+import { CaptionNeutralInfo, TextProps } from 'ui/theme/typography'
 
 const useGetPageWording = (userRequiresIdCheck?: boolean) => {
   const { eighteenYearsOldDeposit } = useDepositAmountsByAge()
@@ -58,9 +62,22 @@ export function EighteenBirthday() {
 }
 
 function SubtitleComponent(props: TextProps) {
+  const { data: settings } = useSettingsContext()
+  const enableCreditV3 = settings?.wipEnableCreditV3
+
+  const currency = useGetCurrencyToDisplay()
+  const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
+  const zero = formatCurrencyFromCents(0, currency, euroToPacificFrancRate)
+
   return (
     <Wrapper>
       <TypoDS.Body {...props} />
+      <Spacer.Column numberOfSpaces={4} />
+      {enableCreditV3 ? null : (
+        <StyledCaptionNeutralInfo>
+          Ton crédit précédent a été remis à {zero}.
+        </StyledCaptionNeutralInfo>
+      )}
     </Wrapper>
   )
 }
@@ -68,4 +85,8 @@ function SubtitleComponent(props: TextProps) {
 const Wrapper = styled.View({
   marginTop: getSpacing(4),
   alignItems: 'center',
+})
+
+const StyledCaptionNeutralInfo = styled(CaptionNeutralInfo)({
+  textAlign: 'center',
 })
