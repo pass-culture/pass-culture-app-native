@@ -11,7 +11,6 @@ import * as useFilterCountAPI from 'features/search/helpers/useFilterCount/useFi
 import { BooksNativeCategoriesEnum, SearchState, SearchView } from 'features/search/types'
 import { analytics } from 'libs/analytics/__mocks__/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import * as useRemoteConfigContextModule from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { GeoCoordinates, Position } from 'libs/location'
@@ -179,10 +178,6 @@ describe('SearchBox component', () => {
         ...DEFAULT_REMOTE_CONFIG,
         shouldRedirectToThematicSearch: true,
       })
-    })
-
-    beforeEach(() => {
-      setFeatureFlags([RemoteStoreFeatureFlags.WIP_PAGE_SEARCH_N1])
     })
 
     afterAll(() => {
@@ -545,7 +540,6 @@ describe('SearchBox component', () => {
       async (queryText) => {
         // TODO(PC-32646): useRoute is called every time a letter is inputted +1 (sic!)
         useRoute.mockReturnValue({ name: SearchView.Landing })
-        setFeatureFlags([RemoteStoreFeatureFlags.WIP_PAGE_SEARCH_N1])
 
         renderSearchBox()
 
