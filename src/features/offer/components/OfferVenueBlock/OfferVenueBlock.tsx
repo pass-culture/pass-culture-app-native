@@ -5,6 +5,7 @@ import styled from 'styled-components/native'
 import { OfferResponseV2, SubcategoryIdEnum } from 'api/gen'
 import { useVenueBlock } from 'features/offer/components/OfferVenueBlock/useVenueBlock'
 import { VenueBlock } from 'features/offer/components/OfferVenueBlock/VenueBlock'
+import { getAddress, getVenue } from 'features/offer/helpers/getVenueBlockProps'
 import { SeeItineraryButton } from 'libs/itinerary/components/SeeItineraryButton'
 import { getGoogleMapsItineraryUrl } from 'libs/itinerary/openGoogleMapsItinerary'
 import { ButtonSecondaryBlack } from 'ui/components/buttons/ButtonSecondaryBlack'
@@ -30,10 +31,11 @@ export function OfferVenueBlock({
   title,
   offer,
 }: Readonly<Props>) {
-  const { venue, address } = offer
+  const venueBlockVenue = getVenue(offer.venue)
+  const venueBlockAddress = getAddress(offer.address)
   const { onCopyAddressPress, venueAddress } = useVenueBlock({
-    venue,
-    offerAddress: address,
+    venue: venueBlockVenue,
+    offerAddress: venueBlockAddress,
   })
 
   const isCinema = offer.subcategoryId === SubcategoryIdEnum.SEANCE_CINE
@@ -44,7 +46,11 @@ export function OfferVenueBlock({
       <Spacer.Column numberOfSpaces={4} />
 
       <React.Fragment>
-        <VenueBlock offer={offer} onSeeVenuePress={onSeeVenuePress} />
+        <VenueBlock
+          venue={venueBlockVenue}
+          address={venueBlockAddress}
+          onSeeVenuePress={onSeeVenuePress}
+        />
 
         {onChangeVenuePress ? (
           <React.Fragment>
