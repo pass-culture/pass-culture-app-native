@@ -5,6 +5,7 @@ export const cheatcodesStackNavigatorConfig = {
       CheatcodesMenu: 'cheatcodes',
       CheatcodesNavigationAccountManagement: 'cheatcodes/other/account-management',
       CheatcodesNavigationAchievements: 'cheatcodes/achievements',
+      CheatcodesNavigationBirthdayNotifications: 'cheatcodes/birthday-notifications',
       CheatcodesNavigationBookOffer: 'cheatcodes/book-offer',
       CheatcodesNavigationCulturalSurvey: 'cheatcodes/cultural-survey',
       CheatcodesNavigationErrors: 'cheatcodes/other/errors',

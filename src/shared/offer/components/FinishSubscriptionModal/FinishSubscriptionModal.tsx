@@ -4,6 +4,7 @@ import styled from 'styled-components/native'
 
 import { DepositType } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { StepperOrigin, UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
@@ -24,8 +25,13 @@ type Props = {
 }
 
 export const FinishSubscriptionModal: FunctionComponent<Props> = ({ visible, hideModal, from }) => {
+  const { data: settings } = useSettingsContext()
+  const enableCreditV3 = settings?.wipEnableCreditV3
+
   const { user } = useAuthContext()
+
   const { navigate } = useNavigation<UseNavigationType>()
+
   const currency = useGetCurrencyToDisplay()
   const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
   const zero = formatCurrencyFromCents(0, currency, euroToPacificFrancRate)
@@ -66,7 +72,7 @@ export const FinishSubscriptionModal: FunctionComponent<Props> = ({ visible, hid
         </StyledBody>
       )}
       <Spacer.Column numberOfSpaces={6} />
-      {isUserTransitioningTo18 ? (
+      {!enableCreditV3 && isUserTransitioningTo18 ? (
         <React.Fragment>
           <CaptionNeutralInfo>Ton crédit précédent a été remis à {zero}.</CaptionNeutralInfo>
           <Spacer.Column numberOfSpaces={6} />

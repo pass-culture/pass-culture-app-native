@@ -3,6 +3,7 @@ import React from 'react'
 
 import { CheatcodesMenu } from 'cheatcodes/pages/CheatcodesMenu'
 import { CheatcodesNavigationAchievements } from 'cheatcodes/pages/features/achievements/CheatcodesNavigationAchievements'
+import { CheatcodesNavigationBirthdayNotifications } from 'cheatcodes/pages/features/birthdayNotifications/CheatcodesNavigationBirthdayNotifications'
 import { CheatcodesNavigationBookOffer } from 'cheatcodes/pages/features/bookOffer/CheatcodesNavigationBookOffer'
 import { CheatcodesNavigationCulturalSurvey } from 'cheatcodes/pages/features/culturalSurvey/CheatcodesNavigationCulturalSurvey'
 import { CheatcodesNavigationForceUpdate } from 'cheatcodes/pages/features/forceUpdate/cheatcodesNavigationForceUpdate'
@@ -46,6 +47,10 @@ const routes: CheatcodesStackRoute[] = [
     component: CheatcodesMenu,
   },
   /**** FEATURES ****/
+  {
+    name: 'CheatcodesNavigationBirthdayNotifications',
+    component: CheatcodesNavigationBirthdayNotifications,
+  },
   {
     name: 'CheatcodesNavigationHome',
     component: CheatcodesNavigationHome,
