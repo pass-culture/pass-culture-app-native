@@ -15,6 +15,7 @@ describe('eventMonitoring', () => {
         integrations: [expect.anything()],
         tracesSampleRate: '1.0',
         sampleRate: '1.0',
+        ignoreErrors: ['Non-Error promise rejection captured with value: Timeout'],
       })
     })
 
