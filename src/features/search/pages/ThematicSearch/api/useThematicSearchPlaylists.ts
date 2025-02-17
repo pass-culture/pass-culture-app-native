@@ -24,7 +24,7 @@ export function useThematicSearchPlaylists({
   const transformHits = useTransformOfferHits()
 
   const { userLocation } = useLocation()
-  const { data, refetch } = useQuery({
+  const { data, refetch, isLoading } = useQuery({
     queryKey: [queryKey],
     queryFn: async (): Promise<SearchResponse<Offer>[]> => {
       return fetchMethod(userLocation)
@@ -41,7 +41,8 @@ export function useThematicSearchPlaylists({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userLocation?.latitude, userLocation?.longitude])
 
-  if (!data || data.length === 0) return { playlists: [{ title: '', offers: { hits: [] } }] }
+  if (!data || data.length === 0)
+    return { playlists: [{ title: '', offers: { hits: [] } }], isLoading }
 
   return {
     playlists:
@@ -53,5 +54,6 @@ export function useThematicSearchPlaylists({
             }))
             .filter((playlist) => playlist.offers.hits.length > 0)
         : [{ title: '', offers: { hits: [] } }],
+    isLoading,
   }
 }

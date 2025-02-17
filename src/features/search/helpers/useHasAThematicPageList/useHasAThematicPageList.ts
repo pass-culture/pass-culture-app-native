@@ -15,6 +15,9 @@ export const useHasAThematicPageList = () => {
   const enableWipPageThematicSearchMusic = useFeatureFlag(
     RemoteStoreFeatureFlags.WIP_THEMATIC_SEARCH_MUSIC
   )
+  const enableWipPageThematicSearchConcertsAndFestivals = useFeatureFlag(
+    RemoteStoreFeatureFlags.WIP_THEMATIC_SEARCH_CONCERTS_AND_FESTIVALS
+  )
   return [
     enableWipPageThematicSearchBooks ? SearchGroupNameEnumv2.LIVRES : undefined,
     enableWipPageThematicSearchCinema ? SearchGroupNameEnumv2.CINEMA : undefined,
@@ -22,5 +25,8 @@ export const useHasAThematicPageList = () => {
       ? SearchGroupNameEnumv2.FILMS_DOCUMENTAIRES_SERIES
       : undefined,
     enableWipPageThematicSearchMusic ? SearchGroupNameEnumv2.MUSIQUE : undefined,
+    enableWipPageThematicSearchConcertsAndFestivals
+      ? SearchGroupNameEnumv2.CONCERTS_FESTIVALS
+      : undefined,
   ]
 }

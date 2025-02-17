@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1`] = `
+exports[`<ThematicSearch/> should render <ThematicSearch /> 1`] = `
 [
   <View
     customHeight={16}
@@ -521,6 +521,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
           }
         }
         horizontal={true}
+        itemsNumber={13}
         showsHorizontalScrollIndicator={false}
         style={
           [
@@ -6608,16 +6609,6 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
               </View>
             </View>
           </View>
-          <View
-            numberOfSpaces={6}
-            style={
-              [
-                {
-                  "height": 24,
-                },
-              ]
-            }
-          />
         </View>
       </View>
     </View>
