@@ -3,6 +3,7 @@ export type CheatcodesStackParamList = {
   CheatcodesMenu: undefined
   // Features
   CheatcodesNavigationAchievements: undefined
+  CheatcodesNavigationBirthdayNotifications: undefined
   CheatcodesNavigationBookOffer: undefined
   CheatcodesNavigationCulturalSurvey: undefined
   CheatcodesNavigationForceUpdate: undefined

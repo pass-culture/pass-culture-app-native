@@ -74,6 +74,34 @@ exports[`<EighteenBirthday /> should render eighteen birthday 1`] = `
     Tu as 18 ans !
   </Text>
   <View
+    style={
+      [
+        {
+          "alignItems": "center",
+          "marginTop": 16,
+        },
+      ]
+    }
+  >
+    <Text
+      style={
+        [
+          {
+            "color": "#161617",
+            "fontFamily": "Montserrat-Medium",
+            "fontSize": 16,
+            "lineHeight": 25.6,
+          },
+          {
+            "textAlign": "center",
+          },
+        ]
+      }
+    >
+      Confirme tes informations personnelles pour débloquer tes 300 €.
+    </Text>
+  </View>
+  <View
     flex={0.5}
     style={
       [
@@ -81,58 +109,6 @@ exports[`<EighteenBirthday /> should render eighteen birthday 1`] = `
           "flexBasis": 0,
           "flexGrow": 0.5,
           "flexShrink": 1,
-        },
-      ]
-    }
-  />
-  <Text
-    style={
-      [
-        {
-          "color": "#161617",
-          "fontFamily": "Montserrat-Bold",
-          "fontSize": 17,
-          "lineHeight": 27.2,
-          "textAlign": "center",
-        },
-      ]
-    }
-  >
-    Confirme tes informations personnelles pour débloquer tes 300 €.
-  </Text>
-  <View
-    numberOfSpaces={4}
-    style={
-      [
-        {
-          "height": 16,
-        },
-      ]
-    }
-  />
-  <Text
-    style={
-      [
-        {
-          "color": "#696A6F",
-          "fontFamily": "Montserrat-SemiBold",
-          "fontSize": 12,
-          "lineHeight": 16,
-          "textAlign": "center",
-        },
-      ]
-    }
-  >
-    Ton crédit précédent a été remis à 
-    0 €
-    .
-  </Text>
-  <View
-    numberOfSpaces={8}
-    style={
-      [
-        {
-          "height": 32,
         },
       ]
     }
