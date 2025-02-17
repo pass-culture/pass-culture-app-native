@@ -951,32 +951,6 @@ pour réserver cette offre
                   ]
                 }
               />
-              <Text
-                style={
-                  [
-                    {
-                      "color": "#696A6F",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 12,
-                      "lineHeight": 19.2,
-                    },
-                  ]
-                }
-              >
-                Ton crédit précédent a été remis à 
-                0 €
-                .
-              </Text>
-              <View
-                numberOfSpaces={6}
-                style={
-                  [
-                    {
-                      "height": 24,
-                    },
-                  ]
-                }
-              />
               <View
                 accessibilityLabel="Aller vers la section profil"
                 accessibilityState={
