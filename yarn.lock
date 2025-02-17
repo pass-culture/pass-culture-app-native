@@ -13019,6 +13019,8 @@ __metadata:
     "@welldone-software/why-did-you-render": ^7.0.1
     "@zootools/email-spell-checker": ^1.11.0
     algoliasearch: ^4.24.0
+    allure-jest: ^3.2.0
+    allure-js-commons: ^3.2.0
     amplitude-js: ^8.16.1
     appcenter-cli: ^2.14.0
     babel-jest: 29.6.3
@@ -13478,6 +13480,46 @@ __metadata:
     "@algolia/requester-node-http": 4.24.0
     "@algolia/transporter": 4.24.0
   checksum: 13cae6ea7ff05e068906dcb101b940bcf1a4ea41008757554c16a7951cdaa3af3094e547e3e51f9e751f68906b5654506e1dd4a1debb1b9d54cbb227ca83e8db
+  languageName: node
+  linkType: hard
+
+"allure-jest@npm:^3.2.0":
+  version: 3.2.0
+  resolution: "allure-jest@npm:3.2.0"
+  dependencies:
+    allure-js-commons: 3.2.0
+  peerDependencies:
+    jest: ">=24.8.0"
+    jest-circus: ">=24.8.0"
+    jest-cli: ">=24.8.0"
+    jest-environment-jsdom: ">=24.8.0"
+    jest-environment-node: ">=24.8.0"
+  peerDependenciesMeta:
+    jest:
+      optional: true
+    jest-circus:
+      optional: true
+    jest-cli:
+      optional: true
+    jest-environment-jsdom:
+      optional: true
+    jest-environment-node:
+      optional: true
+  checksum: 916eb144b60066d63f98d99e5acc310db8fa149b72faccb5fee68baba7799f9dd351b5afab901b828bbdfd67a14d5424d92712c0a241fefe9b7da417c29e35bb
+  languageName: node
+  linkType: hard
+
+"allure-js-commons@npm:3.2.0, allure-js-commons@npm:^3.2.0":
+  version: 3.2.0
+  resolution: "allure-js-commons@npm:3.2.0"
+  dependencies:
+    md5: ^2.3.0
+  peerDependencies:
+    allure-playwright: 3.2.0
+  peerDependenciesMeta:
+    allure-playwright:
+      optional: true
+  checksum: 6d8c1fbc1692f4d18663e35c7cd636aa379ae740f81114ec6470b2de2fb18a51ef9baa64b0898c9c8c5c283bf93ce1389cd0a3c3883804834bda814ba3d245ee
   languageName: node
   linkType: hard
 
@@ -15602,6 +15644,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"charenc@npm:0.0.2":
+  version: 0.0.2
+  resolution: "charenc@npm:0.0.2"
+  checksum: 81dcadbe57e861d527faf6dd3855dc857395a1c4d6781f4847288ab23cffb7b3ee80d57c15bba7252ffe3e5e8019db767757ee7975663ad2ca0939bb8fcaf2e5
+  languageName: node
+  linkType: hard
+
 "chokidar@npm:3.5.3, chokidar@npm:^3.4.2":
   version: 3.5.3
   resolution: "chokidar@npm:3.5.3"
@@ -16705,6 +16754,13 @@ __metadata:
     shebang-command: ^2.0.0
     which: ^2.0.1
   checksum: 8d306efacaf6f3f60e0224c287664093fa9185680b2d195852ba9a863f85d02dcc737094c6e512175f8ee0161f9b87c73c6826034c2422e39de7d6569cf4503b
+  languageName: node
+  linkType: hard
+
+"crypt@npm:0.0.2":
+  version: 0.0.2
+  resolution: "crypt@npm:0.0.2"
+  checksum: baf4c7bbe05df656ec230018af8cf7dbe8c14b36b98726939cef008d473f6fe7a4fad906cfea4062c93af516f1550a3f43ceb4d6615329612c6511378ed9fe34
   languageName: node
   linkType: hard
 
@@ -22324,7 +22380,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"is-buffer@npm:^1.1.5, is-buffer@npm:^1.1.6":
+"is-buffer@npm:^1.1.5, is-buffer@npm:^1.1.6, is-buffer@npm:~1.1.6":
   version: 1.1.6
   resolution: "is-buffer@npm:1.1.6"
   checksum: 4a186d995d8bbf9153b4bd9ff9fd04ae75068fe695d29025d25e592d9488911eeece84eefbd8fa41b8ddcc0711058a71d4c466dcf6f1f6e1d83830052d8ca707
@@ -25156,6 +25212,17 @@ __metadata:
     inherits: ^2.0.1
     safe-buffer: ^5.1.2
   checksum: 098494d885684bcc4f92294b18ba61b7bd353c23147fbc4688c75b45cb8590f5a95fd4584d742415dcc52487f7a1ef6ea611cfa1543b0dc4492fe026357f3f0c
+  languageName: node
+  linkType: hard
+
+"md5@npm:^2.3.0":
+  version: 2.3.0
+  resolution: "md5@npm:2.3.0"
+  dependencies:
+    charenc: 0.0.2
+    crypt: 0.0.2
+    is-buffer: ~1.1.6
+  checksum: a63cacf4018dc9dee08c36e6f924a64ced735b37826116c905717c41cebeb41a522f7a526ba6ad578f9c80f02cb365033ccd67fe186ffbcc1a1faeb75daa9b6e
   languageName: node
   linkType: hard
 
