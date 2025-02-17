@@ -1,7 +1,17 @@
 appId: ${MAESTRO_APP_ID}
 ---
 - assertVisible: 'Rechercher'
-- tapOn: 'Cinéma'
+- runFlow:
+    when:
+      platform: iOS
+    commands:
+    - tapOn: "Catégories Cinéma.*"
+
+- runFlow:
+    when:
+      platform: Android
+    commands:
+    - tapOn: 'Cinéma'
 
 - tapOn: "Films à l'affiche"
 

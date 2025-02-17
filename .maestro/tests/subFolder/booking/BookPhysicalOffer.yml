@@ -1,9 +1,19 @@
 appId: ${MAESTRO_APP_ID}
 ---
 - assertVisible: 'Rechercher'
-- tapOn:
-    text: 'Livres papier'
-    index: 0
+- runFlow:
+    when:
+      platform: Android
+    commands:
+    - tapOn:
+        text: 'Livres papier'
+        index: 0
+
+- runFlow:
+    when:
+      platform: iOS
+    commands:
+    - tapOn: ".*catégorie Livres.*"
 
 - waitForAnimationToEnd
 
@@ -11,14 +21,39 @@ appId: ${MAESTRO_APP_ID}
 
 - assertVisible: 'Détails de la réservation'
 - tapOn: "J’ai lu et j’accepte les conditions générales d’utilisation"
-- scrollUntilVisible:
-    element: 'Confirmer la réservation'
+- runFlow:
+    when:
+      platform: Android
+    commands:
+    - scrollUntilVisible:
+        element: 'Confirmer la réservation'
+- runFlow:
+    when:
+      platform: iOS
+    commands:
+    - scroll
+    
 - tapOn: 
     text: 'Confirmer la réservation'
     retryTapIfNoChange: false
 
 - assertVisible: "Réservation confirmée\_!"
-- tapOn: 'Voir ma réservation'
+- runFlow:
+    when:
+      platform: iOS
+      visible: "Plus tard"
+    commands:
+    - tapOn: "Plus tard"
+    - tapOn: 
+        text: 'Voir ma réservation'
+        optional: true
+
+- runFlow:
+    when:
+      platform: Android
+    commands:
+    - tapOn: 'Voir ma réservation'
+
 
 - scrollUntilVisible:
     element: 'Annuler ma réservation'

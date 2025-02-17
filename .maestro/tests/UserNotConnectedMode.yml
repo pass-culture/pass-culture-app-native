@@ -1,6 +1,7 @@
 appId: ${MAESTRO_APP_ID}
 tags:
   - cloud
+  - nightlyIOS
   - local
 ---
 - runFlow: subFolder/commons/LaunchApp.yml
@@ -17,6 +18,7 @@ tags:
 - runFlow: subFolder/profil/CantSetNotification.yml
 
 - runFlow: subFolder/commons/GoToSearchFromTabBar.yml
+- runFlow: subFolder/cloud/commands/SetLocalizationToParis.yml
 - runFlow: subFolder/search/SearchOfferFromText.yml
 - runFlow: subFolder/auth/LoginFromPhysicalOffer.yml
 - runFlow: subFolder/auth/LoginFromModal.yml

@@ -1,12 +1,27 @@
 appId: ${MAESTRO_APP_ID}
 ---
 - assertVisible: 'Rechercher'
-- scrollUntilVisible:
-    element:
-      text: 'Médias & presse'
-- tapOn: 'Médias & presse'
+- runFlow:
+    when:
+      platform: iOS
+    commands:
+    - scrollUntilVisible:
+        element:
+          text: "Catégorie Médias & presse"
+    - tapOn: "Catégorie Médias & presse"
+    - assertVisible: 
+        text: "Catégories"
+        enabled: true
 
-# TODO(e2e): Attendre que "Catégories soit check"
+- runFlow:
+    when:
+      platform: Android
+    commands:
+    - scrollUntilVisible:
+        element:
+          text: 'Médias & presse'
+    - tapOn: 'Médias & presse'
+
 - tapOn: 'Catégories'
 
 - assertVisible: 'Médias & presse'

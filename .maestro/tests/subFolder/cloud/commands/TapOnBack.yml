@@ -3,8 +3,16 @@ appId: ${MAESTRO_APP_ID}
 - runFlow: # Permet de retourner sur la page précédente (cloud)
     when:
       true: ${MAESTRO_RUN_CLOUD_COMMANDS}
+      platform: Android
     commands:
       - pressKey: back
+
+- runFlow: # Permet de retourner sur la page précédente (cloud)
+    when:
+      true: ${MAESTRO_RUN_CLOUD_COMMANDS}
+      platform: iOS
+    commands:
+    - tapOn: "Revenir en arrière"
 
 - tapOn: # Permet de retourner sur la page précédente (local)
     id: 'com.android.systemui:id/back'

@@ -1,5 +1,11 @@
 appId: ${MAESTRO_APP_ID}
 ---
+- runFlow:
+    when:
+      visible: 'Autorisez-vous.*'
+      platform: iOS
+    commands:
+    - tapOn: "Autoriser"
 - assertVisible: 'Respect de ta vie privée'
 - tapOn: 'Choisir les cookies'
 
