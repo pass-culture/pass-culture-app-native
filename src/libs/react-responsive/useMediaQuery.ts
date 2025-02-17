@@ -1,5 +1,4 @@
-// eslint-disable-next-line no-restricted-imports
-import * as RN from 'react-native'
+import { Platform, useWindowDimensions } from 'react-native'
 
 interface MediaQuery {
   minWidth?: number
@@ -23,8 +22,8 @@ export function useMediaQuery(
   { minWidth, maxWidth, minHeight, maxHeight }: MediaQuery,
   platform?: 'ios' | 'android' | 'web'
 ) {
-  const { width: windowWidth, height: windowHeight } = RN.useWindowDimensions()
-  if (platform !== undefined && platform !== RN.Platform.OS) {
+  const { width: windowWidth, height: windowHeight } = useWindowDimensions()
+  if (platform !== undefined && platform !== Platform.OS) {
     return false
   }
 
