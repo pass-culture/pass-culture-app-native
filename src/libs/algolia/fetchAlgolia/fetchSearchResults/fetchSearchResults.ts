@@ -118,7 +118,7 @@ export const fetchSearchResults = async ({
       query: parameters.query || '',
       params: {
         page: parameters.page || 0,
-        ...buildHitsPerPage(1000),
+        ...buildHitsPerPage(100),
         ...buildOfferSearchParameters(
           parameters,
           buildLocationParameterParams,

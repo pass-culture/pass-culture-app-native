@@ -148,7 +148,7 @@ export const useSearchInfiniteQuery = (searchState: SearchState, dispatch: Dispa
         venueMap.set(id, venue)
       }
     })
-    return Array.from(venueMap.values()).slice(0, 50)
+    return Array.from(venueMap.values())
   }, [hits.duplicatedOffers])
 
   return {
