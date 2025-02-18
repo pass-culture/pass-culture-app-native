@@ -11,7 +11,13 @@ describe('getBookingLabels', () => {
 
     const labels = getBookingLabels(booking, properties)
 
-    expect(labels).toEqual({ dateLabel: 'Permanent', locationLabel: '', withdrawLabel: '' })
+    expect(labels).toEqual({
+      dateLabel: 'Permanent',
+      dayLabel: '',
+      hourLabel: '',
+      locationLabel: '',
+      withdrawLabel: '',
+    })
   })
 
   it('should not return the location for digital bookings', () => {
@@ -31,6 +37,8 @@ describe('getBookingLabels', () => {
 
     expect(labels).toEqual({
       dateLabel: 'Le 15 mars 2021 à 21h00',
+      dayLabel: '15 mars 2021',
+      hourLabel: '21h00',
       locationLabel: 'Maison de la Brique, Drancy',
       withdrawLabel: '',
     })
@@ -45,6 +53,8 @@ describe('getBookingLabels', () => {
 
     expect(labels).toEqual({
       dateLabel: 'Le 15 mars 2021 à 21h00',
+      dayLabel: '15 mars 2021',
+      hourLabel: '21h00',
       locationLabel: 'Maison de la Brique, Drancy',
       withdrawLabel: 'Aujourd’hui',
     })
@@ -59,6 +69,8 @@ describe('getBookingLabels', () => {
 
     expect(labels).toEqual({
       dateLabel: 'Le 15 mars 2021 à 21h00',
+      dayLabel: '15 mars 2021',
+      hourLabel: '21h00',
       locationLabel: 'Maison de la Brique, Drancy',
       withdrawLabel: 'Demain',
     })
@@ -75,6 +87,8 @@ describe('getBookingLabels', () => {
 
     expect(labels).toEqual({
       dateLabel: 'À retirer avant le 16 mars 2021',
+      dayLabel: '',
+      hourLabel: '',
       locationLabel: 'Maison de la Brique, Drancy',
       withdrawLabel: 'Dernier jour pour retirer',
     })
@@ -91,6 +105,8 @@ describe('getBookingLabels', () => {
 
     expect(labels).toEqual({
       dateLabel: 'À retirer avant le 16 mars 2021',
+      dayLabel: '',
+      hourLabel: '',
       locationLabel: 'Maison de la Brique, Drancy',
       withdrawLabel: 'Avant dernier jour pour retirer',
     })
@@ -102,7 +118,13 @@ describe('getBookingLabels', () => {
 
     const labels = getBookingLabels(booking, properties)
 
-    expect(labels).toEqual({ dateLabel: 'À activer', locationLabel: '', withdrawLabel: '' })
+    expect(labels).toEqual({
+      dateLabel: 'À activer',
+      dayLabel: '',
+      hourLabel: '',
+      locationLabel: '',
+      withdrawLabel: '',
+    })
   })
 
   it('should return the correct dateLabel for digital bookings with activation codes with expiration date', () => {
@@ -115,6 +137,8 @@ describe('getBookingLabels', () => {
 
     expect(labels).toEqual({
       dateLabel: 'À activer avant le 15 mars 2021',
+      dayLabel: '',
+      hourLabel: '',
       locationLabel: '',
       withdrawLabel: '',
     })
