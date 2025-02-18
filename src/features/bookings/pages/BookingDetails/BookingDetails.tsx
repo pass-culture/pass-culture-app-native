@@ -1,125 +1,34 @@
-import { useNavigation, useRoute } from '@react-navigation/native'
+import { useRoute } from '@react-navigation/native'
 import React from 'react'
-import { Platform, useWindowDimensions } from 'react-native'
-import styled from 'styled-components/native'
+import { Platform } from 'react-native'
 
-import { BookingReponse } from 'api/gen'
-import { useBookings, useOngoingOrEndedBooking } from 'features/bookings/api'
-import { ArchiveBookingModal } from 'features/bookings/components/ArchiveBookingModal'
-import { BookingDetailsCancelButton } from 'features/bookings/components/BookingDetailsCancelButton'
-import { BookingDetailsHeader } from 'features/bookings/components/BookingDetailsHeader'
-import { BookingPropertiesSection } from 'features/bookings/components/BookingPropertiesSection'
-import { CancelBookingModal } from 'features/bookings/components/CancelBookingModal'
-import { TicketSwiper } from 'features/bookings/components/Ticket/TicketSwiper'
-import { getBookingProperties, getOfferRules } from 'features/bookings/helpers'
-import { isEligibleBookingsForArchive } from 'features/bookings/helpers/expirationDateUtils'
+import { useOngoingOrEndedBooking } from 'features/bookings/api'
+import { BookingDetailsContent } from 'features/bookings/components/BookingDetailsContent'
+import { OldBookingDetailsContent } from 'features/bookings/components/OldBookingDetailsContent'
+import { getBookingProperties } from 'features/bookings/helpers'
 import { BookingNotFound } from 'features/bookings/pages/BookingNotFound/BookingNotFound'
-import { Booking } from 'features/bookings/types'
-import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
-import {
-  blurImageHeight,
-  offerImageContainerMarginTop,
-} from 'features/offer/helpers/useOfferImageContainerDimensions'
-import { formatFullAddress } from 'libs/address/useFormatFullAddress'
-import { isCloseToBottom } from 'libs/analytics'
-import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
-import { analytics } from 'libs/analytics/provider'
+import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { useLogTypeFromRemoteConfig } from 'libs/hooks/useLogTypeFromRemoteConfig'
-import { SeeItineraryButton } from 'libs/itinerary/components/SeeItineraryButton'
-import { getGoogleMapsItineraryUrl } from 'libs/itinerary/openGoogleMapsItinerary'
 import { ScreenError } from 'libs/monitoring/errors'
 import { eventMonitoring } from 'libs/monitoring/services'
-import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { useSubcategoriesMapping } from 'libs/subcategories'
-import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
-import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
-import { HeaderWithImage } from 'ui/components/headers/HeaderWithImage'
-import { useModal } from 'ui/components/modals/useModal'
-import { SectionWithDivider } from 'ui/components/SectionWithDivider'
-import { Separator } from 'ui/components/Separator'
-import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
-import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
-import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { LoadingPage } from 'ui/pages/LoadingPage'
-import { EmailFilled } from 'ui/svg/icons/EmailFilled'
-import { getSpacing, TypoDS } from 'ui/theme'
-import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
-import { Helmet } from 'ui/web/global/Helmet'
 
-const scrollIndicatorInsets = { right: 1 }
-const emptyBookings: Booking[] = []
-
-export function BookingDetails() {
-  const enableBookingImprove = useFeatureFlag(RemoteStoreFeatureFlags.WIP_BOOKING_IMPROVE)
-  const windowHeight = useWindowDimensions().height - blurImageHeight
-  const netInfo = useNetInfoContext()
-  const { logType } = useLogTypeFromRemoteConfig()
+export const BookingDetails = () => {
+  const enableNewBookingPage = useFeatureFlag(RemoteStoreFeatureFlags.WIP_NEW_BOOKING_PAGE)
   const { params } = useRoute<UseRouteType<'BookingDetails'>>()
   const {
-    status,
     data: booking,
+    status,
     isLoading,
     isError,
     error,
     dataUpdatedAt,
   } = useOngoingOrEndedBooking(params.id)
-
-  const prePopulateOffer = usePrePopulateOffer()
-  const { visible: cancelModalVisible, showModal: showCancelModal, hideModal } = useModal(false)
-  const {
-    visible: archiveModalVisible,
-    showModal: showArchiveModal,
-    hideModal: hideArchiveModal,
-  } = useModal(false)
-
   const mapping = useSubcategoriesMapping()
-
-  const { id: offerId, address } = booking?.stock.offer ?? {}
-  const offerFullAddress = address
-    ? formatFullAddress(address.street, address.postalCode, address.city)
-    : undefined
-
-  const { data: bookings } = useBookings()
-  const { ended_bookings: endedBookings = emptyBookings } = bookings ?? {}
-
-  const { showInfoSnackBar, showErrorSnackBar } = useSnackBarContext()
-
-  const { navigate } = useNavigation<UseNavigationType>()
-
-  // Allows to display a message in case of refresh specifying the cancellation
-  // of the reservation being consulted if it is made via Flask Admin
-  // and booking is not archived
-  const cancellationConsultedBooking: BookingReponse[] = endedBookings.filter(
-    (item) => item.id === params.id && !isEligibleBookingsForArchive(item)
-  )
-  const nameCanceledBooking = cancellationConsultedBooking[0]?.stock.offer.name
-
-  if (nameCanceledBooking) {
-    showInfoSnackBar({
-      message: `Ta réservation "${nameCanceledBooking}" a été annulée`,
-      timeout: SNACK_BAR_TIME_OUT,
-    })
-    if (enableBookingImprove) {
-      navigate('Bookings')
-    } else {
-      navigate('EndedBookings')
-    }
-  }
-  const logConsultWholeBooking = useFunctionOnce(
-    () => offerId && analytics.logBookingDetailsScrolledToBottom(offerId)
-  )
-
-  const { headerTransition, onScroll } = useOpacityTransition({
-    listener: ({ nativeEvent }) => {
-      if (isCloseToBottom(nativeEvent)) logConsultWholeBooking()
-    },
-  })
+  const { logType } = useLogTypeFromRemoteConfig()
 
   if ((isLoading || !dataUpdatedAt) && !booking) {
     return <LoadingPage />
@@ -147,180 +56,18 @@ export function BookingDetails() {
     return null
   }
 
-  const { offer } = booking.stock
-  const properties = getBookingProperties(booking, mapping[offer.subcategoryId].isEvent)
-  const shouldDisplayItineraryButton =
-    !!offerFullAddress && (properties.isEvent || (properties.isPhysical && !properties.isDigital))
-
-  const offerRules = getOfferRules(properties, booking)
-
-  const cancelBooking = () => {
-    showCancelModal()
-    analytics.logCancelBooking(offer.id)
-  }
-  const onEmailPress = () => {
-    analytics.logClickEmailOrganizer()
-  }
-  const onNavigateToOfferPress = () => {
-    if (netInfo.isConnected) {
-      prePopulateOffer({
-        ...offer,
-        categoryId: mapping[offer.subcategoryId].categoryId,
-        thumbUrl: offer.image?.url,
-        name: offer.name,
-        offerId: offer.id,
-      })
-
-      triggerConsultOfferLog({ offerId: offer.id, from: 'bookings' })
-    } else {
-      showErrorSnackBar({
-        message:
-          'Impossible d’afficher le détail de l’offre. Connecte-toi à internet avant de réessayer.',
-        timeout: SNACK_BAR_TIME_OUT,
-      })
-    }
-  }
-
-  const helmetTitle = `Ma réservation pour ${booking.stock.offer.name} | pass Culture`
-
-  const bookingContactEmail = booking.stock.offer.bookingContact
-
-  return (
-    <Container>
-      <Helmet title={helmetTitle} />
-      <StyledScrollView
-        onScroll={onScroll}
-        scrollEventThrottle={16}
-        scrollIndicatorInsets={scrollIndicatorInsets}
-        onContentSizeChange={(_w: number, h: number) => {
-          if (h <= windowHeight) {
-            logConsultWholeBooking()
-          }
-        }}
-        testID="BookingDetailsScrollView"
-        bounces={false}>
-        <StyledHeaderWithImage imageHeight={blurImageHeight} imageUrl={offer.image?.url} />
-        <TicketSwiper booking={booking} />
-        <ViewGap gap={6}>
-          <InfoContainer gap={6}>
-            {offerRules === '' ? null : <OfferRules>{offerRules}</OfferRules>}
-
-            {bookingContactEmail ? (
-              <React.Fragment>
-                <ViewGap gap={2.5}>
-                  <TypoDS.Title4 {...getHeadingAttrs(2)}>Contact de l’organisateur</TypoDS.Title4>
-
-                  <CaptionNeutralInfo>
-                    Si tu n’as pas reçu tes billets, contacte l’organisateur
-                  </CaptionNeutralInfo>
-
-                  <SendEmailContainer>
-                    <ExternalTouchableLink
-                      as={ButtonTertiaryBlack}
-                      inline
-                      wording={bookingContactEmail}
-                      accessibilityLabel="Ouvrir le gestionnaire mail pour contacter l’organisateur"
-                      externalNav={{ url: `mailto:${bookingContactEmail}` }}
-                      icon={EmailFilled}
-                      onBeforeNavigate={onEmailPress}
-                    />
-                  </SendEmailContainer>
-                </ViewGap>
-
-                <Separator.Horizontal />
-              </React.Fragment>
-            ) : null}
-            <BookingPropertiesSection booking={booking} />
-            {shouldDisplayItineraryButton ? (
-              <React.Fragment>
-                <Separator.Horizontal />
-                <SeeItineraryButton
-                  externalNav={{
-                    url: getGoogleMapsItineraryUrl(offerFullAddress),
-                    address: offerFullAddress,
-                  }}
-                  onPress={() =>
-                    offerId && analytics.logConsultItinerary({ offerId, from: 'bookingdetails' })
-                  }
-                />
-              </React.Fragment>
-            ) : null}
-          </InfoContainer>
-
-          {offer.withdrawalDetails ? (
-            <SectionWithDivider visible={!!offer.withdrawalDetails} gap={8}>
-              <InfoContainer gap={4}>
-                <TypoDS.Title4 {...getHeadingAttrs(2)}>Modalités de retrait</TypoDS.Title4>
-                <TypoDS.Body testID="withdrawalDetails">{offer.withdrawalDetails}</TypoDS.Body>
-              </InfoContainer>
-            </SectionWithDivider>
-          ) : null}
-
-          <InfoButtonsContainer gap={4}>
-            <InternalTouchableLink
-              enableNavigate={!!netInfo.isConnected}
-              as={ButtonPrimary}
-              wording="Voir le détail de l’offre"
-              navigateTo={{ screen: 'Offer', params: { id: offer.id, from: 'bookingdetails' } }}
-              onBeforeNavigate={onNavigateToOfferPress}
-              fullWidth
-            />
-            <BookingDetailsCancelButton
-              booking={booking}
-              onCancel={cancelBooking}
-              onTerminate={showArchiveModal}
-              fullWidth
-            />
-          </InfoButtonsContainer>
-        </ViewGap>
-      </StyledScrollView>
-      {/* BookingDetailsHeader is called after Body to implement the BlurView for iOS */}
-      <BookingDetailsHeader headerTransition={headerTransition} title={offer.name} />
-
-      <CancelBookingModal visible={cancelModalVisible} dismissModal={hideModal} booking={booking} />
-      <ArchiveBookingModal
-        visible={archiveModalVisible}
-        bookingId={booking.id}
-        bookingTitle={offer.name}
-        onDismiss={hideArchiveModal}
-      />
-    </Container>
+  const properties = getBookingProperties(
+    booking,
+    mapping[booking.stock.offer.subcategoryId].isEvent
+  )
+  return enableNewBookingPage && properties.isEvent === true ? (
+    <BookingDetailsContent properties={properties} booking={booking} />
+  ) : (
+    <OldBookingDetailsContent
+      properties={properties}
+      booking={booking}
+      paramsId={params.id}
+      mapping={mapping}
+    />
   )
 }
-
-const Container = styled.View(({ theme }) => ({
-  flex: 1,
-  backgroundColor: theme.colors.white,
-}))
-
-const StyledScrollView = styled.ScrollView.attrs({
-  contentContainerStyle: {
-    paddingBottom: getSpacing(5),
-  },
-})``
-
-const OfferRules = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
-  color: theme.colors.greyDark,
-  textAlign: 'center',
-}))
-
-const InfoContainer = styled(ViewGap)({
-  paddingHorizontal: getSpacing(6),
-})
-
-const InfoButtonsContainer = styled(ViewGap)({
-  paddingHorizontal: getSpacing(6),
-  marginTop: getSpacing(2),
-})
-
-const SendEmailContainer = styled.View({
-  alignItems: 'flex-start',
-})
-
-const StyledHeaderWithImage = styled(HeaderWithImage)({
-  marginBottom: getSpacing(offerImageContainerMarginTop),
-})
-
-const CaptionNeutralInfo = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
-  color: theme.colors.greyDark,
-}))
