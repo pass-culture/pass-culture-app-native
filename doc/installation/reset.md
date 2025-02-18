@@ -1,6 +1,4 @@
-# Pour repartir de zéro avec une installation propre de React Native, sans impacter le reste de ton système, voici les étapes à suivre. L’objectif est de nettoyer ton environnement de développement actuel et de réinstaller les outils nécessaires
-
-*made by chatgpt*
+# To start from scratch with a clean installation of React Native, without impacting the rest of your system, here are the steps to follow. The aim is to clean up your current development environment and reinstall the necessary tools
 
 ## 1. Identify the current environment
 
@@ -11,7 +9,7 @@ node --version
 npm --version
 npx react-native --version
 watchman --version
-java -version
+java --version
 ```
 
 ## 2. Delete existing tools
