@@ -110,21 +110,15 @@ sudo ln -s $(which node) /usr/local/bin/node
 brew install watchman
 ```
 
-### d) Install React Native CLI
-
-```bash
-npm install -g react-native-cli
-```
-
-### e) Install Java (if necessary for Android)
+### d) Install Java (if necessary for Android)
 
 ```bash
 brew install --cask zulu
 ```
 
-### f) Install Android Studio (if necessary)
+### e) Install Android Studio (if necessary)
 
-- Download Android Studio from the official site or via brew
+- Use brew [see general instructions](https://github.com/pass-culture/pass-culture-app-native/blob/master/doc/installation/setup.md) or Download Android Studio from the official site
 - Install the necessary SDKs via the SDK Manager.
 
 ## 5. Checking the installation
