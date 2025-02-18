@@ -10,21 +10,20 @@ export const hasAThematicSearch = [
   SearchGroupNameEnumv2.LIVRES,
   SearchGroupNameEnumv2.MUSIQUE,
   SearchGroupNameEnumv2.FILMS_DOCUMENTAIRES_SERIES,
+  SearchGroupNameEnumv2.CONCERTS_FESTIVALS,
 ] as const
 
 type HasAThematicSearch = typeof hasAThematicSearch
 
-type ThematicSearchCategories = Extract<SearchGroupNameEnumv2, HasAThematicSearch[number]>
+export type ThematicSearchCategories = Extract<SearchGroupNameEnumv2, HasAThematicSearch[number]>
 
 export type SearchStackParamList = {
-  SearchLanding?: Partial<SearchState & { accessibilityFilter: Partial<DisabilitiesProperties> }>
-  SearchResults?: Partial<SearchState & { accessibilityFilter: Partial<DisabilitiesProperties> }>
-  ThematicSearch?: Partial<
-    SearchState & {
-      offerCategories: ThematicSearchCategories[]
-      accessibilityFilter: Partial<DisabilitiesProperties>
-    }
-  >
+  SearchLanding: Partial<SearchState & { accessibilityFilter: Partial<DisabilitiesProperties> }>
+  SearchResults: Partial<SearchState & { accessibilityFilter: Partial<DisabilitiesProperties> }>
+  ThematicSearch: Omit<SearchState, 'offerCategories'> & {
+    offerCategories: ThematicSearchCategories[]
+    accessibilityFilter: Partial<DisabilitiesProperties>
+  }
 }
 
 export type SearchStackScreenNames = keyof SearchStackParamList

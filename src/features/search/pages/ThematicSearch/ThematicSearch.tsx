@@ -7,7 +7,10 @@ import styled from 'styled-components/native'
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { useAccessibilityFiltersContext } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
-import { SearchStackRouteName } from 'features/navigation/SearchStackNavigator/types'
+import {
+  SearchStackRouteName,
+  ThematicSearchCategories,
+} from 'features/navigation/SearchStackNavigator/types'
 import { useSearchResults } from 'features/search/api/useSearchResults/useSearchResults'
 import { VenuePlaylist } from 'features/search/components/VenuePlaylist/VenuePlaylist'
 import { useSearch } from 'features/search/context/SearchWrapper'
@@ -24,12 +27,22 @@ import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { SubcategoryButtonListWrapper } from 'ui/components/buttons/SubcategoryButton/SubcategoryButtonListWrapper'
 import { getSpacing } from 'ui/theme'
 
+const playlistsComponent: Record<ThematicSearchCategories | SearchGroupNameEnumv2.NONE, ReactNode> =
+  {
+    [SearchGroupNameEnumv2.LIVRES]: <BookPlaylists />,
+    [SearchGroupNameEnumv2.CINEMA]: <CinemaPlaylists />,
+    [SearchGroupNameEnumv2.FILMS_DOCUMENTAIRES_SERIES]: <FilmsPlaylists />,
+    [SearchGroupNameEnumv2.MUSIQUE]: <MusicPlaylists />,
+    [SearchGroupNameEnumv2.CONCERTS_FESTIVALS]: <ConcertsAndFestivalsPlaylists />,
+    [SearchGroupNameEnumv2.NONE]: null,
+  }
+
 const titles = PLACEHOLDER_DATA.searchGroups.reduce((previousValue, currentValue) => {
   return { ...previousValue, [currentValue.name]: currentValue.value }
-}, {}) as Record<SearchGroupNameEnumv2, string>
+}, {}) as Record<ThematicSearchCategories | SearchGroupNameEnumv2.NONE, string>
 
 export const ThematicSearch: React.FC = () => {
-  const { params, name: currentView } = useRoute<UseRouteType<SearchStackRouteName>>()
+  const { params, name: currentView } = useRoute<UseRouteType<'ThematicSearch'>>()
 
   const isWeb = Platform.OS === 'web'
   const { disabilities } = useAccessibilityFiltersContext()
@@ -63,18 +76,8 @@ export const ThematicSearch: React.FC = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dispatch, isWeb, params?.offerCategories])
 
-  const offerCategories = params?.offerCategories as SearchGroupNameEnumv2[]
-  const offerCategory = offerCategories[0]
-
-  if (!offerCategory) return null
-
-  const playlistsComponent: Partial<Record<SearchGroupNameEnumv2, ReactNode>> = {
-    [SearchGroupNameEnumv2.LIVRES]: <BookPlaylists />,
-    [SearchGroupNameEnumv2.CINEMA]: <CinemaPlaylists />,
-    [SearchGroupNameEnumv2.FILMS_DOCUMENTAIRES_SERIES]: <FilmsPlaylists />,
-    [SearchGroupNameEnumv2.MUSIQUE]: <MusicPlaylists />,
-    [SearchGroupNameEnumv2.CONCERTS_FESTIVALS]: <ConcertsAndFestivalsPlaylists />,
-  }
+  const offerCategories = params?.offerCategories
+  const offerCategory = offerCategories[0] || SearchGroupNameEnumv2.NONE
 
   const shouldDisplayAccessibilityContent =
     Object.values(disabilities).filter((disability) => disability).length > 0

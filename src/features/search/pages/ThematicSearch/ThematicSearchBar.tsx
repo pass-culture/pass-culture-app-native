@@ -11,13 +11,14 @@ import { getSearchClient } from 'features/search/helpers/getSearchClient'
 import { useSearchHistory } from 'features/search/helpers/useSearchHistory/useSearchHistory'
 import { env } from 'libs/environment/env'
 import { Spacer } from 'ui/theme'
+import { ThematicSearchCategories } from 'features/navigation/SearchStackNavigator/types'
 
 const searchInputID = uuidv4()
 
 const suggestionsIndex = env.ALGOLIA_SUGGESTIONS_INDEX_NAME
 
 type Props = {
-  offerCategories: SearchGroupNameEnumv2[]
+  offerCategories: ThematicSearchCategories[]
   title: string
   placeholder?: string
 }
