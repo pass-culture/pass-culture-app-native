@@ -3,7 +3,17 @@ env:
     hasSwipeOnDatePicker: false
 ---
 - assertVisible: 'Rechercher'
-- tapOn: 'Cinéma'
+- runFlow:
+    when:
+      platform: iOS
+    commands:
+    - tapOn: "Catégorie Cinéma.*"
+
+- runFlow:
+    when:
+      platform: Android
+    commands:
+    - tapOn: 'Cinéma'
 
 - tapOn: "Films à l'affiche"
 

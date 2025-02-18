@@ -1,10 +1,25 @@
 appId: ${MAESTRO_APP_ID}
 ---
 - assertVisible: 'Rechercher'
-- scrollUntilVisible:
-    element:
-      text: "MUSIQUE"
-- tapOn: "MUSIQUE"
+- runFlow:
+    when:
+      platform: iOS
+    commands:
+    - scrollUntilVisible:
+        element:
+          text: "Catégorie Musique.*"
+    - tapOn: "Catégorie Musique.*"
+    - tapOn: "CDs"
 
-- tapOn: 'CDs'
+
+- runFlow:
+    when:
+      platform: Android
+    commands:
+    - scrollUntilVisible:
+        element:
+          text: "MUSIQUE"
+    - tapOn: "MUSIQUE"
+    - tapOn: 'CDs'
+
 

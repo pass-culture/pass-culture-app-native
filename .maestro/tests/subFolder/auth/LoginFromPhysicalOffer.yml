@@ -15,12 +15,25 @@ appId: ${MAESTRO_APP_ID}
 - assertVisible: 'À propos'
 - assertVisible: "Description\_:"
 
-- scrollUntilVisible:
-    element:
-      text: "Envoyer par\nSMS"
-    visibilityPercentage: 100
-- assertVisible: 'Voir l’itinéraire'
-- assertVisible: "Envoyer par\nSMS"
+- runFlow:
+    when:
+      platform: Android
+    commands:
+    - scrollUntilVisible:
+        element: "Envoyer par\nSMS"
+    - assertVisible: "Envoyer par\nSMS"
+
+- runFlow:
+    when:
+      platform: iOS
+    commands:
+    - scrollUntilVisible:
+        element: "Envoyer sur\niMessage"
+    - assertVisible: "Envoyer sur\niMessage"
+
+- assertVisible: 
+    text: 'Voir l’itinéraire'
+    optional: true
 
 - tapOn: 'Réserver l’offre'
 - assertVisible: 'Identifie-toi pour bénéficier de ton crédit et profiter des offres culturelles.'

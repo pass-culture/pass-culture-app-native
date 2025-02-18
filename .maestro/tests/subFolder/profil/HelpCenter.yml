@@ -13,4 +13,12 @@ appId: ${MAESTRO_APP_ID}
       - pressKey: back
 
 - runFlow:
+    when:
+      platform: Android
     file: ../../subFolder/cloud/commands/TapOnBack.yml
+
+- runFlow:
+    when:
+      platform: iOS
+    commands:
+    - tapOn: "Revenir à pass Culture S"

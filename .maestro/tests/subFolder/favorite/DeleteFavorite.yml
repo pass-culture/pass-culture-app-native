@@ -5,15 +5,36 @@ appId: ${MAESTRO_APP_ID}
     index: 1
 - assertVisible: "3 favoris"
 
-- tapOn:
-    text: "Supprimer"
-    index: 0
-- assertVisible: "2 favoris"
-- tapOn:
-    text: "Supprimer"
-    index: 0
-- assertVisible: "1 favori"
-- tapOn:
-    text: "Supprimer"
-    index: 0
-- assertVisible: "Retrouve toutes tes offres en un clin d’oeil"
+- runFlow:
+    when:
+      platform: Android
+    commands:
+    - tapOn:
+        text: "Supprimer"
+        index: 0
+    - assertVisible: "2 favoris"
+    - tapOn:
+        text: "Supprimer"
+        index: 0
+    - assertVisible: "1 favori"
+    - tapOn:
+        text: "Supprimer"
+        index: 0
+    - assertVisible: "Retrouve toutes tes offres en un clin d’oeil"
+
+- runFlow:
+    when:
+      platform: iOS
+    commands:
+    - tapOn:
+        text: "Supprimer.*"
+        index: 0
+    - assertVisible: "2 favoris"
+    - tapOn:
+        text: "Supprimer.*"
+        index: 0
+    - assertVisible: "1 favori"
+    - tapOn:
+        text: "Supprimer.*"
+        index: 0
+    - assertVisible: "Retrouve toutes tes offres en un clin d’oeil"
