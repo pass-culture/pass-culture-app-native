@@ -161,6 +161,9 @@ GEM
       xcpretty (~> 0.3.0)
       xcpretty-travis-formatter (>= 0.0.3)
     fastlane-plugin-appcenter (2.1.1)
+    fastlane-plugin-firebase_app_distribution (0.10.0)
+      google-apis-firebaseappdistribution_v1 (~> 0.3.0)
+      google-apis-firebaseappdistribution_v1alpha (~> 0.2.0)
     ffi (1.15.5)
     fourflusher (2.3.1)
     fuzzy_match (2.0.4)
@@ -176,6 +179,10 @@ GEM
       retriable (>= 2.0, < 4.a)
       rexml
       webrick
+    google-apis-firebaseappdistribution_v1 (0.3.0)
+      google-apis-core (>= 0.11.0, < 2.a)
+    google-apis-firebaseappdistribution_v1alpha (0.2.0)
+      google-apis-core (>= 0.11.0, < 2.a)
     google-apis-iamcredentials_v1 (0.17.0)
       google-apis-core (>= 0.11.0, < 2.a)
     google-apis-playcustomapp_v1 (0.13.0)
@@ -283,10 +290,11 @@ DEPENDENCIES
   cocoapods (>= 1.11.3)
   fastlane
   fastlane-plugin-appcenter
+  fastlane-plugin-firebase_app_distribution
   fastlane-plugin-load_json!
 
 RUBY VERSION
    ruby 2.7.5p203
 
 BUNDLED WITH
-   2.2.22
+   2.4.12
