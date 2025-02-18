@@ -1,0 +1,123 @@
+name: '0 [on_workflow] Dev on workflow call e2e iOS'
+on:
+  push:
+    branches:
+      - PC-34693
+
+permissions:
+  contents: read
+  id-token: write
+  
+jobs:
+  build_e2e:
+    name: 'Build E2E Staging'
+    runs-on: macos-14
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+      - name: Setup yarn
+        run: npm install -g yarn
+      - name: Enable Corepack
+        run: corepack enable
+      - name: Setup java
+        uses: actions/setup-java@v4
+        with:
+          java-version: '11'
+          distribution: 'temurin'
+      - uses: pass-culture-github-actions/cache@v1.0.0
+        id: yarn-modules-cache
+        with:
+          path: |
+            node_modules
+            ~/.cache/yarn
+          key: v1-yarn-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            v1-yarn-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+          bucket: ${{ secrets.CACHE_BUCKET_NAME }}
+          workload-identity-provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+          service-account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+      - name: Yarn install
+        run: yarn install
+      - uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+      - name: Install cocoapods
+        run: cd ios/ && bundle exec pod install
+      - name: Authentification to Google
+        uses: 'google-github-actions/auth@v2'
+        with:
+          workload_identity_provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+      - name: Get Secret from Secret Manager
+        id: 'secrets'
+        uses: 'google-github-actions/get-secretmanager-secrets@v2'
+        with:
+          secrets: |-
+            FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD:passculture-metier-ehp/passculture-app-native-ios-fastlane-password
+            IOS_APPCENTER_API_TOKEN:passculture-metier-ehp/passculture-app-native-ios-staging-token
+            IOS_GOOGLE_SERVICES_PLIST:passculture-metier-ehp/pc-native-ios-google-service-staging
+            MATCH_GIT_URL:passculture-metier-ehp/passculture-app-native-match-git-url
+            MATCH_PASSWORD:passculture-metier-ehp/passculture-app-native-match-password
+            MATCH_SSH_KEY:passculture-metier-ehp/passculture-app-native-match-ssh-key
+            MATCH_USERNAME:passculture-metier-ehp/passculture-app-native-match-username
+            SENTRY_AUTH_TOKEN:passculture-metier-ehp/passculture-app-native-sentry-token
+            ROBIN_API_KEY:passculture-metier-ehp/passculture-app-native-e2e-robin-api-key
+            MAESTRO_PASSWORD:passculture-metier-ehp/passculture-app-native-e2e-maestro-password
+      - name: 'Render Template'
+        run: |
+          cp templates_github_ci/.sentryclirc .sentryclirc
+          sed '$d' .sentryclirc
+          echo "token=${{ steps.secrets.outputs.SENTRY_AUTH_TOKEN }}" >> .sentryclirc
+      - name: Setup iOS Google services config
+        run: echo '${{ steps.secrets.outputs.IOS_GOOGLE_SERVICES_PLIST }}' > ios/GoogleService-Info.plist
+      - name: Add ssh key needed
+        uses: webfactory/ssh-agent@v0.8.0
+        with:
+          ssh-private-key: ${{  steps.secrets.outputs.MATCH_SSH_KEY }}
+      - name: Build E2E IOS Staging
+        id: build_e2e
+        run: |
+          bundle exec fastlane ios build_e2e --env staging --verbose
+        env:
+          LC_ALL: en_US.UTF-8
+          LANG: en_US.UTF-8
+          FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD: ${{ steps.secrets.outputs.FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD }}
+          IOS_APPCENTER_API_TOKEN: ${{ steps.secrets.outputs.IOS_APPCENTER_API_TOKEN }}
+          MATCH_PASSWORD: ${{ steps.secrets.outputs.MATCH_PASSWORD }}
+          MATCH_USERNAME: ${{ steps.secrets.outputs.MATCH_USERNAME }}
+          MATCH_GIT_URL: ${{ steps.secrets.outputs.MATCH_GIT_URL }}
+      - name: Find .app build
+        id: find_app
+        run: |
+          APP_PATH=$(find /Users/runner/Library/Developer/Xcode/Archives/ -name "*.app" | head -n 1)
+          echo "::set-output name=APP_PATH::$APP_PATH"
+      - name: Generate Robin upload name
+        id: generate_name
+        run: |
+          DATE=$(date +"%d-%m-%Y")
+          COMMIT_HASH=$(git rev-parse --short=8 HEAD)
+          CUSTOM_NAME="[Nightly] - ${DATE} - ${COMMIT_HASH}"
+          echo "::set-output name=CUSTOM_NAME::$CUSTOM_NAME"
+      - name: Upload to Robin
+        uses: mobile-dev-inc/action-maestro-cloud@v1.9.6
+        with:
+          api-key: ${{ steps.secrets.outputs.ROBIN_API_KEY }}
+          project-id: proj_01javz1ncreqb9dcshv3y4da44
+          app-file: ${{ steps.find_app.outputs.APP_PATH }}
+          name: ${{ steps.generate_name.outputs.CUSTOM_NAME }}
+          workspace: .maestro/tests/
+          device-locale: fr_FR
+          ios-version: 17
+          include-tags: nightlyIOS
+          env: |
+            MAESTRO_APP_ID=app.passculture.staging
+            MAESTRO_PASSWORD=${{ steps.secrets.outputs.MAESTRO_PASSWORD }}
+            MAESTRO_VALID_EMAIL=dev-tests-e2e@passculture.team
+            MAESTRO_INVALID_EMAIL=dev-tests-e2e-invalid@passculture.team
+            MAESTRO_UNREGISTERED_EMAIL=dev-tests-unregistered+e2e@passculture.team
+            MAESTRO_MOCK_ANALYTICS_SERVER=http://localhost:$MOCK_ANALYTICS_SERVER_PORT
+            MAESTRO_NUMBER_PHONE=0607080910
+            MAESTRO_RUN_TRACKING_TESTS=false
+            MAESTRO_RUN_CLOUD_COMMANDS=true
