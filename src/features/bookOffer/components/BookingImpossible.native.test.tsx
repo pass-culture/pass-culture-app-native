@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 
 import { api } from 'api/api'
 import { FavoriteResponse, PaginatedFavoritesResponse } from 'api/gen'
