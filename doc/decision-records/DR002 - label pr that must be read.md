@@ -1,10 +1,10 @@
-# Title : DR000 - template
+# Title : DR002 - Provide a label on PRs to help understand the codebase or our practices better
 
-> Status : Projcet ~~-Proposed - Adopted - Replaced - Withdrawn~~
+> Status : Draft ~~- Proposed - Adopted - Replaced - Withdrawn~~
 
 ## Decision
 
-_Explain the decision taken, specifying the choices made and why this solution was chosen._
+Add a specific wording ("To Read" for ex) to new PRs, which must be read by all developers, even those who are not yet here.
 
 ## Context
 
@@ -20,8 +20,7 @@ _List the reasons why this choice fits the context and stands out from the alter
 
 ## Consequences
 
-_Describe the impact of this decision, both positive and negative. Mention the short- and long-term implications.
-_
+_Describe the impact of this decision, both positive and negative. Mention the short- and long-term implications._
 
 ## Actions to be implemented
 
