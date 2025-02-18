@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`BookingDetails should render correctly 1`] = `
+exports[`BookingDetails OldBookingDetails : when FF WIP_NEW_BOOKING_PAGE is off should render correctly 1`] = `
 <View
   style={
     [

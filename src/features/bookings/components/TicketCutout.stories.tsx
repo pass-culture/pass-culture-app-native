@@ -5,13 +5,13 @@ import { SubcategoryIdEnum, WithdrawalTypeEnum } from 'api/gen'
 import { TicketBody } from 'features/bookings/components/TicketBody/TicketBody'
 import { TicketCutout } from 'features/bookings/components/TicketCutout'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
-import { VenueBlock } from 'features/offer/components/OfferVenueBlock/VenueBlock'
+import { VenueBlockWithItinerary } from 'features/offer/components/OfferVenueBlock/VenueBlockWithItinerary'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { InfoBanner } from 'ui/components/banners/InfoBanner'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 import { IdCard } from 'ui/svg/icons/IdCard'
-import { TypoDS } from 'ui/theme'
+import { getSpacing, TypoDS } from 'ui/theme'
 
 const meta: ComponentMeta<typeof TicketCutout> = {
   title: 'Features/bookings/TicketCutout',
@@ -24,6 +24,8 @@ const meta: ComponentMeta<typeof TicketCutout> = {
   },
 }
 export default meta
+
+const VENUE_THUMBNAIL_SIZE = getSpacing(15)
 
 const variantConfig: Variants<typeof TicketCutout> = [
   {
@@ -54,7 +56,16 @@ const variantConfig: Variants<typeof TicketCutout> = [
           <TypoDS.Body>Présente ce billet pour accéder à l’évènement</TypoDS.Body>
         </ViewGap>
       ),
-      venueInfo: <VenueBlock offer={offerResponseSnap} />,
+      venueInfo: (
+        <VenueBlockWithItinerary
+          shouldDisplayItineraryButton
+          offerFullAddress="71 Rue du Temple, 75003 PARIS"
+          venue={bookingsSnap.ongoing_bookings[0].stock.offer.venue}
+          address={bookingsSnap.ongoing_bookings[0].stock.offer.address}
+          offerId={bookingsSnap.ongoing_bookings[0].stock.offer.id}
+          thumbnailSize={VENUE_THUMBNAIL_SIZE}
+        />
+      ),
     },
   },
   {
@@ -83,7 +94,16 @@ const variantConfig: Variants<typeof TicketCutout> = [
           />
         </ViewGap>
       ),
-      venueInfo: <VenueBlock offer={offerResponseSnap} />,
+      venueInfo: (
+        <VenueBlockWithItinerary
+          shouldDisplayItineraryButton={false}
+          offerFullAddress="71 Rue du Temple, 75003 PARIS"
+          venue={bookingsSnap.ongoing_bookings[0].stock.offer.venue}
+          address={bookingsSnap.ongoing_bookings[0].stock.offer.address}
+          offerId={bookingsSnap.ongoing_bookings[0].stock.offer.id}
+          thumbnailSize={VENUE_THUMBNAIL_SIZE}
+        />
+      ),
     },
   },
 ]
