@@ -24,6 +24,6 @@ describe('FilterBannerConainer', () => {
 
     render(<FilterBannerContainer />)
 
-    expect(await screen.findByLabelText('Tous les lieux')).toBeOnTheScreen()
+    expect(await screen.findByText('Tous les lieux')).toBeOnTheScreen()
   })
 })

@@ -3,7 +3,7 @@ import React from 'react'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { TrendsModule } from 'features/home/components/modules/TrendsModule'
 import { formattedTrendsModule } from 'features/home/fixtures/homepage.fixture'
-import { selectedVenueActions } from 'features/venueMap/store/selectedVenueStore'
+import * as useVenueMapStore from 'features/venueMap/store/venueMapStore'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { LocationMode } from 'libs/location/types'
@@ -36,7 +36,7 @@ jest.mock('libs/location', () => ({
   useLocation: () => mockUseLocation(),
 }))
 
-const mockRemoveSelectedVenue = jest.spyOn(selectedVenueActions, 'removeSelectedVenue')
+const removeSelectedVenueSpy = jest.spyOn(useVenueMapStore, 'removeSelectedVenue')
 
 const mockShowModal = jest.fn()
 const useModalAPISpy = jest.spyOn(useModalAPI, 'useModal')
@@ -79,7 +79,7 @@ describe('TrendsModule', () => {
 
     await user.press(screen.getByText('Accès carte des lieux'))
 
-    expect(mockRemoveSelectedVenue).toHaveBeenCalledTimes(1)
+    expect(removeSelectedVenueSpy).toHaveBeenCalledTimes(1)
   })
 
   it('should open venue map location modal when pressing venue map block content type and user location is everywhere', async () => {
