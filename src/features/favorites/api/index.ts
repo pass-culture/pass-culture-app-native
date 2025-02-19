@@ -1,4 +1,4 @@
 export { useAddFavorite } from './useAddFavorite'
-export { useFavorite } from './useFavorite'
-export { useFavorites } from './useFavorites'
+export { useFavorite } from './useFavoriteQuery'
+export { useFavorites } from './useFavoritesQuery'
 export { useRemoveFavorite } from './useRemoveFavorite'

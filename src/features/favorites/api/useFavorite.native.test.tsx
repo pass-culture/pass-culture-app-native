@@ -7,7 +7,7 @@ import { simulateBackend } from 'features/favorites/helpers/simulateBackend'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, waitFor } from 'tests/utils'
 
-import { useFavorite } from './useFavorite'
+import { useFavorite } from './useFavoriteQuery'
 
 jest.mock('libs/network/NetInfoWrapper')
 

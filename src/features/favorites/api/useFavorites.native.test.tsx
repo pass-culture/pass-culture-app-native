@@ -8,7 +8,7 @@ import { mockAuthContextWithoutUser } from 'tests/AuthContextUtils'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, renderHook } from 'tests/utils'
 
-import { useFavorites } from './useFavorites'
+import { useFavorites } from './useFavoritesQuery'
 
 jest.mock('features/auth/context/AuthContext')
 jest.mock('libs/jwt/jwt')
