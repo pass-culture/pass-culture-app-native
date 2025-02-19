@@ -50,7 +50,7 @@ export const OnboardingSubscription = () => {
     Platform.OS === 'web'
       ? user?.subscriptions?.marketingEmail
       : (isPushPermissionGranted && user?.subscriptions?.marketingPush) ||
-      user?.subscriptions?.marketingEmail
+        user?.subscriptions?.marketingEmail
 
   const initialSubscribedThemes: SubscriptionTheme[] = (user?.subscriptions?.subscribedThemes ??
     []) as SubscriptionTheme[]

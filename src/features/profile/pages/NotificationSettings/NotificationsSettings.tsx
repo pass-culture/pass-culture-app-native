@@ -45,11 +45,11 @@ export const NotificationsSettings = () => {
 
   const initialState = user?.subscriptions
     ? {
-      allowEmails: user?.subscriptions.marketingEmail,
-      allowPush: user?.subscriptions.marketingPush,
-      themePreferences:
-        (user?.subscriptions.subscribedThemes as unknown as SubscriptionTheme[]) || [],
-    }
+        allowEmails: user?.subscriptions.marketingEmail,
+        allowPush: user?.subscriptions.marketingPush,
+        themePreferences:
+          (user?.subscriptions.subscribedThemes as unknown as SubscriptionTheme[]) || [],
+      }
     : { allowEmails: false, allowPush: false, themePreferences: [] }
 
   const [state, dispatch] = useReducer(settingsReducer, initialState)
