@@ -10,7 +10,7 @@ import { SearchStackParamList } from 'features/navigation/SearchStackNavigator/t
 import { NumberOfResults } from 'features/search/components/NumberOfResults/NumberOfResults'
 import { SearchVenueItem } from 'features/search/components/SearchVenueItems/SearchVenueItem'
 import { useSearch } from 'features/search/context/SearchWrapper'
-import { venueTypeCodeActions } from 'features/venueMap/store/venueTypeCodeStore'
+import { setVenueTypeCode } from 'features/venueMap/store/venueMapStore'
 import { AlgoliaVenue } from 'libs/algolia/types'
 import { analytics } from 'libs/analytics/provider'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -60,7 +60,6 @@ export const VenuePlaylist: React.FC<Props> = ({
   shouldDisplaySeparator = true,
 }) => {
   const { navigate } = useNavigation<UseNavigationType>()
-  const { setVenueTypeCode } = venueTypeCodeActions
   const {
     searchState: { searchId },
   } = useSearch()
