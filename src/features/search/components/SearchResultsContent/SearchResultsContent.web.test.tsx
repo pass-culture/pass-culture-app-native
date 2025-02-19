@@ -2,7 +2,7 @@ import React from 'react'
 
 import { initialSearchState } from 'features/search/context/reducer'
 import { useCenterOnLocation } from 'features/venueMap/hook/useCenterOnLocation'
-import { useGetAllVenues } from 'features/venueMap/useGetAllVenues'
+import { useVenuesInRegionQuery } from 'features/venueMap/useVenuesInRegionQuery'
 import { venuesFixture } from 'libs/algolia/fetchAlgolia/fetchVenues/fixtures/venuesFixture'
 import {
   mockedAlgoliaResponse,
@@ -46,6 +46,9 @@ jest.mock('libs/location/LocationWrapper', () => ({
   }),
 }))
 
+jest.mock('features/venueMap/useVenuesInRegionQuery')
+const mockUseVenuesInRegionQuery = useVenuesInRegionQuery as jest.Mock
+
 const mockSearchState = initialSearchState
 jest.mock('features/search/context/SearchWrapper', () => ({
   useSearch: () => ({
@@ -67,9 +70,6 @@ jest.mock('features/location/helpers/useLocationState', () => ({
   }),
 }))
 
-jest.mock('features/venueMap/useGetAllVenues')
-const mockUseGetAllVenues = useGetAllVenues as jest.Mock
-
 jest.mock('features/venueMap/hook/useCenterOnLocation')
 const mockUseCenterOnLocation = useCenterOnLocation as jest.Mock
 
@@ -79,7 +79,7 @@ jest.mock('ui/theme/customFocusOutline/customFocusOutline')
 
 describe('SearchResultsContent component', () => {
   beforeEach(() => {
-    mockUseGetAllVenues.mockReturnValue({ venues: venuesFixture })
+    mockUseVenuesInRegionQuery.mockReturnValue({ data: venuesFixture })
     mockUseCenterOnLocation.mockReturnValue(jest.fn())
   })
 

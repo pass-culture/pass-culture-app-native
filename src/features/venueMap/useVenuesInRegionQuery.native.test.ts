@@ -30,7 +30,7 @@ describe('useVenuesInRegionQuery', () => {
   })
 
   it('should fetch all venues', async () => {
-    renderHook(() => useVenuesInRegionQuery({ region, radius: 10 }), {
+    renderHook(() => useVenuesInRegionQuery({ region }), {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
 
@@ -38,7 +38,7 @@ describe('useVenuesInRegionQuery', () => {
       expect(mockFetchVenues).toHaveBeenCalledWith({
         buildLocationParameterParams: {
           aroundMeRadius: 'all',
-          aroundPlaceRadius: 10,
+          aroundPlaceRadius: 50,
           selectedLocationMode: 'AROUND_PLACE',
           userLocation: {
             latitude: 48.866667,
@@ -92,7 +92,7 @@ describe('useVenuesInRegionQuery', () => {
         useVenuesInRegionQuery({
           region,
           radius: 10,
-          select: (data) => data.map((value) => value.venueId),
+          select: (data) => data?.map((value) => value.venueId),
         }),
       {
         wrapper: ({ children }) => reactQueryProviderHOC(children),

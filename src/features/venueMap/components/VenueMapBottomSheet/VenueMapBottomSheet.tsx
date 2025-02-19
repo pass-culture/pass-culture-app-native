@@ -5,8 +5,14 @@ import BottomSheet, {
 } from '@gorhom/bottom-sheet'
 import { BottomSheetMethods } from '@gorhom/bottom-sheet/lib/typescript/types'
 import { useNavigation } from '@react-navigation/native'
-import React, { Fragment, FunctionComponent, forwardRef, useMemo } from 'react'
-import { ScrollView } from 'react-native-gesture-handler'
+import React, { Fragment, FunctionComponent, forwardRef, useMemo, useRef } from 'react'
+import {
+  Directions,
+  FlingGesture,
+  Gesture,
+  GestureDetector,
+  ScrollView,
+} from 'react-native-gesture-handler'
 import styled from 'styled-components/native'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
@@ -26,24 +32,22 @@ import { getSpacing } from 'ui/theme'
 
 const VENUE_THUMBNAIL_SIZE = getSpacing(12)
 
+const FLING_GESTURE = Gesture.Fling()
+  .withTestId('flingGesture')
+  .runOnJS(true)
+  .direction(Directions.UP)
+
 interface VenueMapBottomSheetProps extends Omit<BottomSheetProps, 'children'> {
-  playlistType: PlaylistType
   onClose?: () => void
+  onFlingUp?: () => void
   venue?: GeolocatedVenue | null
   venueOffers?: Offer[] | null
-  PlaylistContainer?: FunctionComponent
+  offersPlaylistType: PlaylistType
 }
 
 export const VenueMapBottomSheet = forwardRef<BottomSheetMethods, VenueMapBottomSheetProps>(
   function VenueMapBottomSheet(
-    {
-      onClose,
-      venue,
-      venueOffers,
-      PlaylistContainer = Fragment,
-      playlistType,
-      ...bottomSheetProps
-    },
+    { onClose, venue, venueOffers, onFlingUp, offersPlaylistType, ...bottomSheetProps },
     ref
   ) {
     const { userLocation, selectedPlace, selectedLocationMode } = useLocation()
@@ -70,7 +74,7 @@ export const VenueMapBottomSheet = forwardRef<BottomSheetMethods, VenueMapBottom
       if (venueOffers?.length) {
         const handlePressMore = venue ? () => navigate('Venue', { id: venue.venueId }) : undefined
         return (
-          <PlaylistContainer>
+          <Fragment>
             <StyledView>
               <StyledSeparator />
             </StyledView>
@@ -78,14 +82,14 @@ export const VenueMapBottomSheet = forwardRef<BottomSheetMethods, VenueMapBottom
               <VenueMapOfferPlaylist
                 offers={venueOffers}
                 onPressMore={handlePressMore}
-                playlistType={playlistType}
+                playlistType={offersPlaylistType}
               />
             </ScrollView>
-          </PlaylistContainer>
+          </Fragment>
         )
       }
       return null
-    }, [venueOffers, venue, PlaylistContainer, playlistType, navigate])
+    }, [venueOffers, venue, navigate, offersPlaylistType])
 
     const venueMapPreview = useMemo(() => {
       if (venue) {
@@ -115,18 +119,27 @@ export const VenueMapBottomSheet = forwardRef<BottomSheetMethods, VenueMapBottom
       return null
     }, [venue, shouldUseIsOpenToPublic, onClose, venueTags])
 
+    const flingRef = useRef<FlingGesture>()
+
+    FLING_GESTURE.withRef(flingRef)
+      .enabled(!!onFlingUp)
+      .onEnd(() => onFlingUp?.())
+
     return (
-      <StyledBottomSheet
-        ref={ref}
-        index={-1}
-        enablePanDownToClose
-        {...bottomSheetProps}
-        handleComponent={HandleComponent}>
-        <StyledBottomSheetView>
-          {venueMapPreview}
-          {offersPlaylist}
-        </StyledBottomSheetView>
-      </StyledBottomSheet>
+      <GestureDetector gesture={FLING_GESTURE}>
+        <StyledBottomSheet
+          ref={ref}
+          index={-1}
+          enablePanDownToClose
+          simultaneousHandlers={flingRef}
+          {...bottomSheetProps}
+          handleComponent={HandleComponent}>
+          <StyledBottomSheetView>
+            {venueMapPreview}
+            {offersPlaylist}
+          </StyledBottomSheetView>
+        </StyledBottomSheet>
+      </GestureDetector>
     )
   }
 )
