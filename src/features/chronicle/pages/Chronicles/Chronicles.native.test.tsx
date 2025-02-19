@@ -8,6 +8,7 @@ import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, userEvent } from 'tests/utils'
+import * as useModal from 'ui/components/modals/useModal'
 
 const mockOnLayout = {
   nativeEvent: {
@@ -74,6 +75,26 @@ describe('Chronicles', () => {
       })
 
       expect(mockScrollToIndex).not.toHaveBeenCalled()
+    })
+
+    it('should open chronicle modal when pressing "Qui écrit les avis ?" button', async () => {
+      jest.useFakeTimers()
+      const mockShowModal = jest.fn()
+      jest.spyOn(useModal, 'useModal').mockReturnValueOnce({
+        visible: false,
+        showModal: mockShowModal,
+        hideModal: jest.fn(),
+        toggleModal: jest.fn(),
+      })
+      render(reactQueryProviderHOC(<Chronicles />))
+
+      await screen.findByText('Tous les avis')
+
+      await user.press(screen.getByText('Qui écrit les avis ?'))
+
+      expect(mockShowModal).toHaveBeenCalledTimes(1)
+
+      jest.useRealTimers()
     })
   })
 

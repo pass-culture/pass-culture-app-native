@@ -6,12 +6,15 @@ import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 
 import { ChronicleCardList } from 'features/chronicle/components/ChronicleCardList/ChronicleCardList'
+import { ChronicleCardListHeader } from 'features/chronicle/components/ChronicleCardListHeader/ChronicleCardListHeader'
 import { ChroniclesHeader } from 'features/chronicle/components/ChroniclesHeader/ChroniclesHeader'
 import { ChroniclesWebMetaHeader } from 'features/chronicle/components/ChroniclesWebMetaHeader/ChroniclesWebMetaHeader'
+import { ChroniclesWritersModal } from 'features/chronicle/pages/ChroniclesWritersModal/ChroniclesWritersModal'
 import { ChronicleCardData } from 'features/chronicle/type'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
-import { TypoDS, getSpacing } from 'ui/theme'
+import { useModal } from 'ui/components/modals/useModal'
+import { getSpacing } from 'ui/theme'
 
 type Props = PropsWithChildren<{
   offerId: number
@@ -33,6 +36,7 @@ export const ChroniclesBase: FunctionComponent<Props> = ({
   const headerHeight = appBarHeight + top
 
   const { headerTransition, onScroll } = useOpacityTransition()
+  const { visible, showModal, hideModal } = useModal(false)
 
   const chroniclesListRef = useRef<FlatList<ChronicleCardData>>(null)
 
@@ -71,7 +75,7 @@ export const ChroniclesBase: FunctionComponent<Props> = ({
           data={chronicleCardsData}
           horizontal={false}
           separatorSize={6}
-          headerComponent={<StyledTitle2>Tous les avis</StyledTitle2>}
+          headerComponent={<ChronicleCardListHeader onPressMoreInfo={showModal} />}
           ref={chroniclesListRef}
           onScroll={onScroll}
           contentContainerStyle={{
@@ -87,6 +91,7 @@ export const ChroniclesBase: FunctionComponent<Props> = ({
           onLayout={handleLayout}
         />
       </FullFlexRow>
+      <ChroniclesWritersModal closeModal={hideModal} isVisible={visible} />
     </React.Fragment>
   )
 }
@@ -102,8 +107,4 @@ const FullFlexView = styled.View({
 const FullFlexRow = styled(FullFlexView)({
   flexDirection: 'row',
   columnGap: getSpacing(18),
-})
-
-const StyledTitle2 = styled(TypoDS.Title2)({
-  marginBottom: getSpacing(6),
 })
