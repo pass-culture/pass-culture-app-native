@@ -1,8 +1,7 @@
-import { useEffect } from 'react'
 import { useQuery } from 'react-query'
 
+import { DEFAULT_RADIUS } from 'features/search/constants'
 import { Venue } from 'features/venue/types'
-import { venuesActions } from 'features/venueMap/store/venuesStore'
 import { fetchVenues } from 'libs/algolia/fetchAlgolia/fetchVenues/fetchVenues'
 import { LocationMode } from 'libs/location/types'
 import { Region } from 'libs/maps/maps'
@@ -10,15 +9,16 @@ import { QueryKeys } from 'libs/queryKeys'
 
 type Props = {
   region: Region
-  radius: number
-  initialVenues?: Venue[]
+  radius?: number
 }
 
-export const useGetAllVenues = ({ region, radius, initialVenues }: Props) => {
-  const { setVenues } = venuesActions
-
-  const { data: fetchedVenues } = useQuery<Venue[]>(
-    [QueryKeys.VENUES, region],
+export function useVenuesInRegionQuery<TData = Awaited<ReturnType<typeof fetchVenues>>>({
+  region,
+  radius = DEFAULT_RADIUS,
+  select,
+}: Props & { select?: (data: Venue[]) => TData }) {
+  return useQuery(
+    [QueryKeys.VENUES, JSON.stringify(region), radius],
     () =>
       fetchVenues({
         query: '',
@@ -33,18 +33,8 @@ export const useGetAllVenues = ({ region, radius, initialVenues }: Props) => {
         },
       }),
     {
-      enabled: !initialVenues?.length,
+      enabled: Object.keys(region).length > 0,
+      select,
     }
   )
-
-  const venues = initialVenues?.length ? initialVenues : fetchedVenues
-
-  useEffect(() => {
-    if (venues) {
-      // TODO(PC-33101) maybe store venues by venue type codes ?
-      setVenues(venues)
-    }
-  }, [venues, setVenues, initialVenues])
-
-  return { venues }
 }
