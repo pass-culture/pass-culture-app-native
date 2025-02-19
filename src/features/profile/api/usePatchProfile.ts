@@ -9,7 +9,7 @@ type Options = {
   onError?: (error: unknown) => void
 }
 
-export function useUpdateProfileMutation({ onError, onSuccess }: Options) {
+export function usePatchProfile({ onError, onSuccess }: Options) {
   const client = useQueryClient()
   return useMutation((body: UserProfilePatchRequest) => api.patchNativeV1Profile(body), {
     onSuccess(response: UserProfileResponse, variables) {
