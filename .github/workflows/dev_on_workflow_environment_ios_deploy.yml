@@ -23,10 +23,10 @@ jobs:
       - name: Is deployment targeting ehp or production
         id: cloudenv
         run: |
-          if [ "${{ inputs.ENV }}" == "production" ]; then
-            echo "cloud_env=prod" >> $GITHUB_OUTPUT
-          else
+          if [ "${{ inputs.ENV }}" != "production" ]; then
             echo "cloud_env=ehp" >> $GITHUB_OUTPUT
+          else
+            echo "cloud_env=prod" >> $GITHUB_OUTPUT
           fi
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -78,7 +78,6 @@ jobs:
             MATCH_SSH_KEY:passculture-metier-ehp/passculture-app-native-match-ssh-key
             MATCH_USERNAME:passculture-metier-ehp/passculture-app-native-match-username
             SENTRY_AUTH_TOKEN:passculture-metier-ehp/passculture-app-native-sentry-token
-            FIREBASE_TOKEN:passculture-metier-ehp/pc_native_${{ inputs.ENV }}_firebase_json
       - name: 'Render Template'
         run: |
           cp templates_github_ci/.sentryclirc .sentryclirc
@@ -92,11 +91,7 @@ jobs:
           ssh-private-key: ${{  steps.secrets.outputs.MATCH_SSH_KEY }}
       - name: Deploy hard ios for ${{ inputs.ENV }}
         run: |
-          if [ "${{ inputs.ENV }}" == "production" ]; then
-            bundle exec fastlane ios deploy --env ${{ inputs.ENV }} --verbose
-          else
-            bundle exec fastlane ios deploy firebase_token:${{ steps.secrets.outputs.FIREBASE_TOKEN }} --env ${{ inputs.ENV }} --verbose
-          fi
+          bundle exec fastlane ios deploy --env ${{ inputs.ENV }} --verbose
         env:
           LC_ALL: en_US.UTF-8
           LANG: en_US.UTF-8
