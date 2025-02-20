@@ -1,10 +1,7 @@
 import React, { FunctionComponent } from 'react'
 
-import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
-import { env } from 'libs/environment/env'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppModal } from 'ui/components/modals/AppModal'
-import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Close } from 'ui/svg/icons/Close'
 import { TypoDS } from 'ui/theme'
@@ -12,11 +9,17 @@ import { TypoDS } from 'ui/theme'
 type Props = {
   isVisible: boolean
   closeModal: VoidFunction
+  onShowRecoButtonPress: VoidFunction
 }
 
-export const ChroniclesWritersModal: FunctionComponent<Props> = ({ isVisible, closeModal }) => {
+export const ChroniclesWritersModal: FunctionComponent<Props> = ({
+  isVisible,
+  closeModal,
+  onShowRecoButtonPress,
+}) => {
   return (
     <AppModal
+      animationOutTiming={1}
       visible={isVisible}
       title="Qui écrit les avis&nbsp;?"
       rightIconAccessibilityLabel="Fermer la modale"
@@ -30,21 +33,10 @@ export const ChroniclesWritersModal: FunctionComponent<Props> = ({ isVisible, cl
           Ils sont sélectionnés par le pass Culture pour te faire leurs meilleures recos tous les
           mois.
         </TypoDS.Body>
-        <InternalTouchableLink
-          as={ButtonPrimary}
+
+        <ButtonPrimary
           wording="Voir toutes les recos du book club"
-          navigateTo={
-            env.ENV === 'production'
-              ? {
-                  screen: 'ThematicHome',
-                  params: {
-                    homeId: '4mlVpAZySUZO6eHazWKZeV',
-                    from: 'chronicles',
-                  },
-                }
-              : navigateToHomeConfig
-          }
-          onBeforeNavigate={closeModal}
+          onPress={onShowRecoButtonPress}
         />
       </ViewGap>
     </AppModal>
