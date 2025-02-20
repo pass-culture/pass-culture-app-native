@@ -65,6 +65,8 @@ jobs:
       fail-fast: false
       matrix:
         shard: [1, 2, 3, 4, 5, 6, 7]
+    env:
+      RUN_ALLURE: ${{ github.ref == 'refs/heads/master' && 'true' || 'false' }}
     steps:
       - name: Enable Corepack
         run: corepack enable
