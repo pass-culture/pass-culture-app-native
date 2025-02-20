@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { navigate, useRoute, push } from '__mocks__/@react-navigation/native'
+import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { SearchGroupNameEnumv2, SubcategoriesResponseModelv2 } from 'api/gen'
 import { gtlPlaylistAlgoliaSnapshot } from 'features/gtlPlaylist/fixtures/gtlPlaylistAlgoliaSnapshot'
 import * as useGTLPlaylists from 'features/gtlPlaylist/hooks/useGTLPlaylists'
@@ -161,7 +161,7 @@ describe('<ThematicSearch/>', () => {
         const subcategoryButton = await screen.findByText('Romans et littérature')
         await user.press(subcategoryButton)
 
-        expect(push).toHaveBeenCalledWith('TabNavigator', {
+        expect(navigate).toHaveBeenCalledWith('TabNavigator', {
           screen: 'SearchStackNavigator',
           params: {
             screen: 'SearchResults',
