@@ -8,7 +8,7 @@ import { getScreensAndConfig } from 'features/navigation/RootNavigator/linking/g
 import { ScreenNames } from 'features/navigation/RootNavigator/types'
 import { screenParamsParser } from 'features/navigation/screenParamsUtils'
 import { searchNavigatorPathConfig } from 'features/navigation/SearchStackNavigator/routes'
-import { SearchStackNavigator } from 'features/navigation/SearchStackNavigator/SearchStackNavigator'
+import { SuspenseSearchStackNavigator } from 'features/navigation/SearchStackNavigator/SuspenseSearchStackNavigator'
 import { Profile } from 'features/profile/pages/Profile'
 
 import { TabStack } from './Stack'
@@ -27,7 +27,7 @@ const routes: TabRoute[] = [
   },
   {
     name: 'SearchStackNavigator',
-    component: SearchStackNavigator,
+    component: SuspenseSearchStackNavigator,
     pathConfig: searchNavigatorPathConfig,
   },
   {

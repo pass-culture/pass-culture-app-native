@@ -3,10 +3,8 @@ import { LinkingOptions } from '@react-navigation/native'
 import { getScreensAndConfig } from 'features/navigation/RootNavigator/linking/getScreensConfig'
 import { ScreenNames } from 'features/navigation/RootNavigator/types'
 import { screenParamsParser, screenParamsStringifier } from 'features/navigation/screenParamsUtils'
+import { ComponentForPathConfig } from 'features/navigation/SearchStackNavigator/ComponentForPathConfig'
 import { SearchStack } from 'features/navigation/SearchStackNavigator/Stack'
-import { SearchLanding } from 'features/search/pages/SearchLanding/SearchLanding'
-import { SearchResults } from 'features/search/pages/SearchResults/SearchResults'
-import { ThematicSearch } from 'features/search/pages/ThematicSearch/ThematicSearch'
 
 import { SearchStackRoute, SearchStackParamList, SearchStackRouteName } from './types'
 
@@ -15,7 +13,7 @@ const initialSearchStackRouteName: SearchStackRouteName = 'SearchLanding'
 const routes: SearchStackRoute[] = [
   {
     name: 'SearchLanding',
-    component: SearchLanding,
+    component: ComponentForPathConfig,
     pathConfig: {
       path: 'recherche/accueil',
       parse: screenParamsParser['SearchLanding'],
@@ -25,7 +23,7 @@ const routes: SearchStackRoute[] = [
   },
   {
     name: 'SearchResults',
-    component: SearchResults,
+    component: ComponentForPathConfig,
     pathConfig: {
       path: 'recherche/resultats',
       parse: screenParamsParser['SearchResults'],
@@ -35,7 +33,7 @@ const routes: SearchStackRoute[] = [
   },
   {
     name: 'ThematicSearch',
-    component: ThematicSearch,
+    component: ComponentForPathConfig,
     pathConfig: {
       path: 'recherche/thematique',
       parse: screenParamsParser['ThematicSearch'],
@@ -45,11 +43,7 @@ const routes: SearchStackRoute[] = [
   },
 ]
 
-const { screensConfig: searchScreensConfig, Screens: SearchScreens } = getScreensAndConfig(
-  routes,
-  SearchStack.Screen
-)
-export { SearchScreens }
+const { screensConfig: searchScreensConfig } = getScreensAndConfig(routes, SearchStack.Screen)
 
 export const searchNavigatorPathConfig: LinkingOptions<SearchStackParamList>['config'] = {
   initialRouteName: initialSearchStackRouteName,
