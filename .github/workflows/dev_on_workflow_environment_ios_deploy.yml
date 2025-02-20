@@ -23,10 +23,10 @@ jobs:
       - name: Is deployment targeting ehp or production
         id: cloudenv
         run: |
-          if [ "${{ inputs.ENV }}" == "production" ]; then
-            echo "cloud_env=prod" >> $GITHUB_OUTPUT
-          else
+          if [ "${{ inputs.ENV }}" != "production" ]; then
             echo "cloud_env=ehp" >> $GITHUB_OUTPUT
+          else
+            echo "cloud_env=prod" >> $GITHUB_OUTPUT
           fi
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -65,7 +65,7 @@ jobs:
         with:
           workload_identity_provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
           service_account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
-      - name: Get Secret from Secret Manager (Without FIREBASE_TOKEN for Production)
+      - name: Get Secret from Secret Manager
         id: 'secrets'
         uses: 'google-github-actions/get-secretmanager-secrets@v2'
         with:
@@ -78,22 +78,6 @@ jobs:
             MATCH_SSH_KEY:passculture-metier-ehp/passculture-app-native-match-ssh-key
             MATCH_USERNAME:passculture-metier-ehp/passculture-app-native-match-username
             SENTRY_AUTH_TOKEN:passculture-metier-ehp/passculture-app-native-sentry-token
-        if: inputs.ENV == 'production'
-      - name: Get Secret from Secret Manager (Including FIREBASE_TOKEN for Non-Production)
-        id: 'secrets'
-        uses: 'google-github-actions/get-secretmanager-secrets@v2'
-        with:
-          secrets: |-
-            FASTLANE_APPLE_APPLICATION_SPECIFIC_PASSWORD:passculture-metier-ehp/passculture-app-native-ios-fastlane-password
-            IOS_APPCENTER_API_TOKEN:passculture-metier-ehp/passculture-app-native-ios-${{ inputs.ENV }}-token
-            IOS_GOOGLE_SERVICES_PLIST:passculture-metier-${{ steps.cloudenv.outputs.cloud_env }}/pc-native-ios-google-service-${{ inputs.ENV }}
-            MATCH_GIT_URL:passculture-metier-ehp/passculture-app-native-match-git-url
-            MATCH_PASSWORD:passculture-metier-ehp/passculture-app-native-match-password
-            MATCH_SSH_KEY:passculture-metier-ehp/passculture-app-native-match-ssh-key
-            MATCH_USERNAME:passculture-metier-ehp/passculture-app-native-match-username
-            SENTRY_AUTH_TOKEN:passculture-metier-ehp/passculture-app-native-sentry-token
-            FIREBASE_TOKEN:passculture-metier-ehp/pc_native_${{ inputs.ENV }}_firebase_json
-        if: inputs.ENV != 'production'
       - name: 'Render Template'
         run: |
           cp templates_github_ci/.sentryclirc .sentryclirc
@@ -107,11 +91,7 @@ jobs:
           ssh-private-key: ${{  steps.secrets.outputs.MATCH_SSH_KEY }}
       - name: Deploy hard ios for ${{ inputs.ENV }}
         run: |
-          if [ "${{ inputs.ENV }}" == "testing" ]; then
-            bundle exec fastlane ios deploy firebase_token:"${{ steps.secrets.outputs.FIREBASE_TOKEN }}" --env ${{ inputs.ENV }} --verbose
-          else
-            bundle exec fastlane ios deploy --env ${{ inputs.ENV }} --verbose
-          fi
+          bundle exec fastlane ios deploy --env ${{ inputs.ENV }} --verbose
         env:
           LC_ALL: en_US.UTF-8
           LANG: en_US.UTF-8
