@@ -25,7 +25,7 @@ export type SearchStackParamList = {
       accessibilityFilter: Partial<DisabilitiesProperties>
     }
   >
-  SearchFilter: Partial<SearchState & { accessibilityFilter: Partial<DisabilitiesProperties> }>
+  SearchFilter?: Partial<SearchState & { accessibilityFilter: Partial<DisabilitiesProperties> }>
 }
 
 export type SearchStackScreenNames = keyof SearchStackParamList
