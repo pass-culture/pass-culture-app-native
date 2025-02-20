@@ -92,10 +92,10 @@ jobs:
           ssh-private-key: ${{  steps.secrets.outputs.MATCH_SSH_KEY }}
       - name: Deploy hard ios for ${{ inputs.ENV }}
         run: |
-          if [ "${{ inputs.ENV }}" == "production" ]; then
-            bundle exec fastlane ios deploy --env ${{ inputs.ENV }} --verbose
+          if [ "${{ inputs.ENV }}" == "testing" ]; then
+            bundle exec fastlane ios deploy firebase_token:"${{ steps.secrets.outputs.FIREBASE_TOKEN }}" --env ${{ inputs.ENV }} --verbose
           else
-            bundle exec fastlane ios deploy firebase_token:${{ steps.secrets.outputs.FIREBASE_TOKEN }} --env ${{ inputs.ENV }} --verbose
+            bundle exec fastlane ios deploy --env ${{ inputs.ENV }} --verbose
           fi
         env:
           LC_ALL: en_US.UTF-8
