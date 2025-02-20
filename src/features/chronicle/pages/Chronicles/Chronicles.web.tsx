@@ -62,7 +62,7 @@ export const Chronicles: FunctionComponent = () => {
         chronicleCardsData={chronicleCardsData}>
         {isDesktopViewport ? (
           <StyledChronicleOfferInfo
-            imageUrl={offer.images?.[0]?.url ?? ''}
+            imageUrl={offer.images?.recto?.url ?? ''}
             title={offer.name}
             price={displayedPrice}
             categoryId={subcategory.categoryId}
