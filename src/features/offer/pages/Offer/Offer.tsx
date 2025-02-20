@@ -6,8 +6,6 @@ import { chroniclePreviewToChronicalCardData } from 'features/offer/adapters/chr
 import { useOffer } from 'features/offer/api/useOffer'
 import { OfferContent } from 'features/offer/components/OfferContent/OfferContent'
 import { OfferContentPlaceholder } from 'features/offer/components/OfferContentPlaceholder/OfferContentPlaceholder'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
 import { useSubcategoriesMapping } from 'libs/subcategories/mappings'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
@@ -22,9 +20,7 @@ export function Offer() {
   const showSkeleton = useIsFalseWithDelay(isLoading, ANIMATION_DURATION)
   const { data: subcategories } = useSubcategories()
   const subcategoriesMapping = useSubcategoriesMapping()
-  const hasOfferChronicleSection = useFeatureFlag(
-    RemoteStoreFeatureFlags.WIP_OFFER_CHRONICLE_SECTION
-  )
+  const hasOfferChronicleSection = true
 
   if (!offer || !subcategories) return null
 

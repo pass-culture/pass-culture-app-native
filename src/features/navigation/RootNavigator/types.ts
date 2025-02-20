@@ -61,8 +61,16 @@ type HighlightThematicBlockThematicHome = {
   moduleId: string
   moduleListId?: never
 }
+type ChroniclesWritersModalThematicHome = {
+  from: 'chronicles'
+}
 export type ThematicHomeParams = BaseThematicHome &
-  (OtherThematicBlockHome | CategoryBlockThematicHome | HighlightThematicBlockThematicHome)
+  (
+    | OtherThematicBlockHome
+    | CategoryBlockThematicHome
+    | HighlightThematicBlockThematicHome
+    | ChroniclesWritersModalThematicHome
+  )
 
 export type AccessibilityRootStackParamList = {
   Accessibility: undefined
