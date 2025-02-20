@@ -32,6 +32,7 @@ const createSubcategoryButtonItem = (label: string, nativeCategory: NativeCatego
   label,
   nativeCategory,
   searchParams: initialSearchState,
+  onBeforeNavigate: () => ({}),
 })
 
 Default.args = {

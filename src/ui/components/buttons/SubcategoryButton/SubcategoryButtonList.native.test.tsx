@@ -14,6 +14,7 @@ const createSubcategoryButtonItem = (label: string, nativeCategory: NativeCatego
   label,
   nativeCategory,
   searchParams: initialSearchState,
+  onBeforeNavigate: jest.fn(),
 })
 
 const subcategoryButtonContent: SubcategoryButtonItem[] = [

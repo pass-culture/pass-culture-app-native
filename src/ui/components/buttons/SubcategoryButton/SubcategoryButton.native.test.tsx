@@ -37,19 +37,6 @@ describe('<SubcategoryButton/>', () => {
     expect(await screen.findByText('Mangas')).toBeOnTheScreen()
   })
 
-  it('should update searchState with correct params', async () => {
-    renderSubcategoryButton()
-
-    const button = await screen.findByText('Mangas')
-
-    await user.press(button)
-
-    expect(mockDispatch).toHaveBeenNthCalledWith(1, {
-      type: 'SET_STATE',
-      payload: defaultSearchParams,
-    })
-  })
-
   it('should navigate to searchResults with correct params', async () => {
     renderSubcategoryButton()
 
@@ -75,6 +62,7 @@ const renderSubcategoryButton = () =>
         backgroundColor={theme.colors.deepPink}
         borderColor={theme.colors.deepPinkDark}
         searchParams={defaultSearchParams}
+        onBeforeNavigate={jest.fn()}
       />
     )
   )
