@@ -13,10 +13,11 @@ jest.mock('libs/firebase/analytics/analytics')
 jest.mock('features/navigation/TabBar/routes')
 
 const mockSearchState = initialSearchState
+const mockDispatch = jest.fn()
 jest.mock('features/search/context/SearchWrapper', () => ({
   useSearch: () => ({
     searchState: mockSearchState,
-    dispatch: jest.fn(),
+    dispatch: mockDispatch,
   }),
 }))
 
@@ -34,6 +35,19 @@ describe('<SubcategoryButton/>', () => {
     renderSubcategoryButton()
 
     expect(await screen.findByText('Mangas')).toBeOnTheScreen()
+  })
+
+  it('should update searchState with correct params', async () => {
+    renderSubcategoryButton()
+
+    const button = await screen.findByText('Mangas')
+
+    await user.press(button)
+
+    expect(mockDispatch).toHaveBeenNthCalledWith(1, {
+      type: 'SET_STATE',
+      payload: defaultSearchParams,
+    })
   })
 
   it('should navigate to searchResults with correct params', async () => {

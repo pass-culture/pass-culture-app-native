@@ -13,7 +13,7 @@ const createSubcategoryButtonItem = (label: string, nativeCategory: NativeCatego
   borderColor: theme.colors.deepPinkDark,
   label,
   nativeCategory,
-  searchParams: {},
+  searchParams: initialSearchState,
 })
 
 const subcategoryButtonContent: SubcategoryButtonItem[] = [

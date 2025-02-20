@@ -2,6 +2,7 @@ import { NavigationContainer } from '@react-navigation/native'
 import { ComponentMeta, ComponentStory } from '@storybook/react'
 import React from 'react'
 
+import { initialSearchState } from 'features/search/context/reducer'
 import { BooksNativeCategoriesEnum, NativeCategoryEnum } from 'features/search/types'
 import { theme } from 'theme'
 import { SubcategoryButtonList } from 'ui/components/buttons/SubcategoryButton/SubcategoryButtonList'
@@ -30,7 +31,7 @@ const createSubcategoryButtonItem = (label: string, nativeCategory: NativeCatego
   borderColor: theme.colors.aquamarineDark,
   label,
   nativeCategory,
-  searchParams: {},
+  searchParams: initialSearchState,
 })
 
 Default.args = {

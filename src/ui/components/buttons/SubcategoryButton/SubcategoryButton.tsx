@@ -3,6 +3,7 @@ import { Platform, useWindowDimensions } from 'react-native'
 import styled from 'styled-components/native'
 
 import { getNavigateToConfig } from 'features/navigation/SearchStackNavigator/helpers'
+import { useSearch } from 'features/search/context/SearchWrapper'
 import { NativeCategoryEnum, SearchState } from 'features/search/types'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { useHandleHover } from 'libs/hooks/useHandleHover'
@@ -28,7 +29,6 @@ type SubcategoryButtonProps = {
   borderColor: ColorsEnum
   position?: number
   searchParams: SearchState
-  onBeforeNavigate: VoidFunction
 }
 
 export const SubcategoryButton = ({
@@ -36,20 +36,21 @@ export const SubcategoryButton = ({
   backgroundColor,
   borderColor,
   searchParams,
-  onBeforeNavigate,
 }: SubcategoryButtonProps) => {
   const windowWidth = useWindowDimensions().width
   const focusProps = useHandleFocus()
   const hoverProps = useHandleHover()
-  const searchConfig = getNavigateToConfig('SearchResults', searchParams)
+  const { dispatch } = useSearch()
 
   return (
     <StyledInternalTouchable
       {...focusProps}
       {...hoverProps}
       onMouseDown={(e: Event) => e.preventDefault()} // Prevent focus on click
-      onBeforeNavigate={onBeforeNavigate}
-      navigateTo={{ ...searchConfig }}
+      onBeforeNavigate={() => {
+        dispatch({ type: 'SET_STATE', payload: searchParams })
+      }}
+      navigateTo={getNavigateToConfig('SearchResults', searchParams)}
       testID={`SubcategoryButton ${label}`}
       accessibilityLabel={label}
       windowWidth={windowWidth}
