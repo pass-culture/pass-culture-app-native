@@ -94,7 +94,7 @@ describe('Bookings', () => {
   it('should display the right number of ongoing bookings', async () => {
     renderBookings(bookingsSnap)
 
-    expect(await screen.findByText('2 réservations en cours')).toBeInTheDocument()
+    expect(await screen.findByText('3 réservations en cours')).toBeInTheDocument()
   })
 
   it('should display the empty bookings dedicated view', async () => {

@@ -80,7 +80,7 @@ describe('Bookings', () => {
     renderBookings()
     await screen.findByText('Mes réservations')
 
-    expect(screen.getByText('2 réservations en cours')).toBeOnTheScreen()
+    expect(screen.getByText('3 réservations en cours')).toBeOnTheScreen()
   })
 
   it('should display the empty bookings dedicated view', async () => {
