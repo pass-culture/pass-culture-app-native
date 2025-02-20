@@ -7,6 +7,7 @@ import {
   SearchStackRoute,
   SearchStackScreenNames,
 } from 'features/navigation/SearchStackNavigator/types'
+import { SearchFilter } from 'features/search/pages/SearchFilter/SearchFilter'
 import { SearchLanding } from 'features/search/pages/SearchLanding/SearchLanding'
 import { SearchResults } from 'features/search/pages/SearchResults/SearchResults'
 import { ThematicSearch } from 'features/search/pages/ThematicSearch/ThematicSearch'
@@ -57,5 +58,15 @@ const routes: SearchStackRoute[] = [
       stringify: screenParamsStringifier['ThematicSearch'],
     },
     options: { title: 'recherche dans les sous-catégories' },
+  },
+  {
+    name: 'SearchFilter',
+    component: SearchFilter,
+    pathConfig: {
+      path: 'recherche/filtres',
+      parse: screenParamsParser['SearchFilter'],
+      stringify: screenParamsStringifier['SearchFilter'],
+    },
+    options: { title: 'Filtres de recherche' },
   },
 ]

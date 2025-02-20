@@ -3,12 +3,10 @@ import { StackNavigationProp } from '@react-navigation/stack'
 import { ComponentType } from 'react'
 
 import { CulturalSurveyQuestionEnum } from 'api/gen/api'
-import { DisabilitiesProperties } from 'features/accessibility/types'
 import { BookingsTab } from 'features/bookings/enum'
 import { CheatcodesStackParamList } from 'features/navigation/CheatcodesStackNavigator/types'
 import { SearchStackParamList } from 'features/navigation/SearchStackNavigator/types'
 import { PlaylistType } from 'features/offer/enums'
-import { SearchState } from 'features/search/types'
 import { TutorialType } from 'features/tutorial/types'
 import { Venue } from 'features/venue/types'
 import { SuggestedPlace } from 'libs/place/types'
@@ -272,7 +270,6 @@ export type RootStackParamList = {
   }
   ResetPasswordEmailSent: { email: string }
   ResetPasswordExpiredLink: { email: string }
-  SearchFilter: Partial<SearchState & { accessibilityFilter: Partial<DisabilitiesProperties> }>
   SignupConfirmationEmailSent: { email: string }
   SignupConfirmationExpiredLink: { email: string }
   SignupForm:

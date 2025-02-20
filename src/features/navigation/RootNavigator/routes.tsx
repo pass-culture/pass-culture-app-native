@@ -35,7 +35,7 @@ import { culturalSurveyRoutes } from 'features/navigation/RootNavigator/cultural
 import { subscriptionRoutes } from 'features/navigation/RootNavigator/subscriptionRoutes'
 import { trustedDeviceRoutes } from 'features/navigation/RootNavigator/trustedDeviceRoutes'
 import { tutorialRoutes } from 'features/navigation/RootNavigator/tutorialRoutes'
-import { screenParamsParser, screenParamsStringifier } from 'features/navigation/screenParamsUtils'
+import { screenParamsParser } from 'features/navigation/screenParamsUtils'
 import { tabNavigatorPathConfig } from 'features/navigation/TabBar/routes'
 import { TabNavigator } from 'features/navigation/TabBar/TabNavigator'
 import { Offer } from 'features/offer/pages/Offer/Offer'
@@ -66,7 +66,6 @@ import { PersonalData } from 'features/profile/pages/PersonalData/PersonalData'
 import { SuspendAccountConfirmation } from 'features/profile/pages/SuspendAccountConfirmation/SuspendAccountConfirmation'
 import { TrackEmailChange } from 'features/profile/pages/TrackEmailChange/TrackEmailChange'
 import { ValidateEmailChange } from 'features/profile/pages/ValidateEmailChange/ValidateEmailChange'
-import { SearchFilter } from 'features/search/pages/SearchFilter/SearchFilter'
 import { OnboardingSubscription } from 'features/subscription/page/OnboardingSubscription'
 import { ProfileTutorialAgeInformation } from 'features/tutorial/pages/profileTutorial/ProfileTutorialAgeInformation'
 import { Venue } from 'features/venue/pages/Venue/Venue'
@@ -422,16 +421,6 @@ export const routes: RootRoute[] = [
     component: SuspendAccountConfirmation,
     path: 'suspension-compte/confirmation',
     options: { title: 'Suspension de compte' },
-  },
-  {
-    name: 'SearchFilter',
-    component: SearchFilter,
-    pathConfig: {
-      path: 'recherche/filtres',
-      parse: screenParamsParser['SearchFilter'],
-      stringify: screenParamsStringifier['SearchFilter'],
-    },
-    options: { title: 'Filtres de recherche' },
   },
   {
     name: 'SignupForm',
