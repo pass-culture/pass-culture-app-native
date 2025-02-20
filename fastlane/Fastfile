@@ -83,9 +83,11 @@ platform :ios do
         readonly: true
       )
       build
-      if ENV['DEPLOYMENT_PLATFORM'] === 'appcenter' then
+      if ENV['DEPLOYMENT_PLATFORM'] === 'appcenter'
         deploy_appCenter
-        deploy_appDistribution(firebase_token: options[:firebase_token])
+        if ENV['ENV'] == 'testing'
+          deploy_appDistribution(firebase_token: options[:firebase_token])
+        end
       else
         # after upgrading fastlane to version 2.212.2, an error occured "Could not determine the package’s bundle ID. The package is missing an Info.plist
         # or the CFBundlePackageType is not ‘APPL’ or ‘FMWK’. Unable to validate your application.".
