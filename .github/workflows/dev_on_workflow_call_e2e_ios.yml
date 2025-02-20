@@ -1,8 +1,12 @@
 name: '0 [on_workflow] Dev on workflow call e2e iOS'
+
 on:
-  push:
-    branches:
-      - PC-34693
+  workflow_call:
+    secrets:
+      GCP_EHP_SERVICE_ACCOUNT:
+        required: true
+      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER:
+        required: true
 
 permissions:
   contents: read
@@ -100,7 +104,7 @@ jobs:
           COMMIT_HASH=$(git rev-parse --short=8 HEAD)
           CUSTOM_NAME="[Nightly] - ${DATE} - ${COMMIT_HASH}"
           echo "::set-output name=CUSTOM_NAME::$CUSTOM_NAME"
-      - name: Upload to Robin
+      - name: Upload and run ios tests with Robin
         uses: mobile-dev-inc/action-maestro-cloud@v1.9.6
         with:
           api-key: ${{ steps.secrets.outputs.ROBIN_API_KEY }}
