@@ -1,6 +1,7 @@
 import React from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
+import { navigate } from '__mocks__/@react-navigation/native'
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import {
   defaultDisabilitiesProperties,
@@ -786,44 +787,143 @@ describe('SearchResultsContent component', () => {
     })
   })
 
-  it('should not log NoSearchResult when there is not search query execution', async () => {
-    render(<SearchResultsContent />)
-    await screen.findByText('Lieu culturel')
+  describe('when search returns no results', () => {
+    it('should render NoSearchResults component', async () => {
+      render(<SearchResultsContent />)
 
-    expect(analytics.logNoSearchResult).not.toHaveBeenCalled()
-  })
-
-  it('should log NoSearchResult only one time when there is search query execution, nbHits = 0 and several re-render', async () => {
-    mockUseSearchResults.mockReturnValueOnce({ ...initialSearchResults, isLoading: true })
-
-    render(<SearchResultsContent />)
-
-    mockUseSearchResults.mockReturnValueOnce({ ...initialSearchResults, isLoading: false })
-
-    screen.rerender(<SearchResultsContent />)
-
-    screen.rerender(<SearchResultsContent />)
-
-    await waitFor(() => {
-      expect(analytics.logNoSearchResult).toHaveBeenCalledTimes(1)
+      expect(await screen.findByText(`Pas de résultat`)).toBeOnTheScreen()
+      expect(
+        await screen.findByText(
+          'Vérifie ta localisation ou modifie tes filtres pour trouver plus de résultats.'
+        )
+      ).toBeOnTheScreen()
     })
-  })
 
-  it('should log NoSearchResult with search result when there is search query execution and nbHits = 0', async () => {
-    mockUseSearchResults.mockReturnValueOnce({ ...initialSearchResults, isLoading: true })
+    it('should render NoSearchResults component with query', async () => {
+      const query = 'cinéma'
+      const newSearchState = { ...mockSearchState, query }
+      mockUseSearch.mockReturnValueOnce({
+        searchState: newSearchState,
+        dispatch: mockDispatch,
+      })
 
-    render(<SearchResultsContent />)
+      render(<SearchResultsContent />)
 
-    mockUseSearchResults.mockReturnValueOnce({ ...initialSearchResults, isLoading: false })
-
-    mockUseSearch.mockReturnValueOnce({
-      searchState: mockSearchState,
-      dispatch: mockDispatch,
+      expect(await screen.findByText(`pour "${query}"`)).toBeOnTheScreen()
+      expect(
+        await screen.findByText(
+          'Essaye un autre mot-clé, vérifie ta localisation ou modifie tes filtres pour trouver plus de résultats.'
+        )
+      ).toBeOnTheScreen()
     })
-    screen.rerender(<SearchResultsContent />)
 
-    await waitFor(() => {
-      expect(analytics.logNoSearchResult).toHaveBeenNthCalledWith(1, '', searchId)
+    it('should render NoSearchResults when location is not everywhere', async () => {
+      const newSearchState = {
+        ...mockSearchState,
+        locationFilter: {
+          locationType: LocationMode.AROUND_ME,
+          aroundRadius: MAX_RADIUS,
+          place: mockedPlace,
+        },
+        query: 'cinéma',
+      }
+
+      mockUseSearch.mockReturnValueOnce({
+        searchState: newSearchState,
+        dispatch: mockDispatch,
+      })
+      render(<SearchResultsContent />)
+
+      expect(
+        await screen.findByText('Élargis la zone de recherche pour plus de résultats.')
+      ).toBeOnTheScreen()
+    })
+
+    it('should navigate to SearchFilter when location is everywhere', async () => {
+      const newSearchState = { ...mockSearchState, query: 'cinéma' }
+      mockUseSearch.mockReturnValueOnce({
+        searchState: newSearchState,
+        dispatch: mockDispatch,
+      })
+
+      render(<SearchResultsContent />)
+
+      const cta = await screen.findByText('Modifier mes filtres')
+      await user.press(cta)
+
+      expect(navigate).toHaveBeenNthCalledWith(1, 'SearchFilter', newSearchState)
+    })
+
+    it('should navigate to SearchResults when location is not EVERYWHERE', async () => {
+      const query = 'cinéma'
+      const newSearchState = {
+        ...mockSearchState,
+        locationFilter: {
+          locationType: LocationMode.AROUND_ME,
+          aroundRadius: MAX_RADIUS,
+          place: mockedPlace,
+        },
+        query,
+      }
+
+      mockUseSearch.mockReturnValueOnce({
+        searchState: newSearchState,
+        dispatch: mockDispatch,
+      })
+
+      render(<SearchResultsContent />)
+
+      const cta = await screen.findByText('Élargir la zone de recherche')
+      await user.press(cta)
+
+      expect(navigate).toHaveBeenNthCalledWith(1, 'TabNavigator', {
+        params: {
+          params: expect.objectContaining({ ...mockSearchState, query }),
+          screen: 'SearchResults',
+        },
+        screen: 'SearchStackNavigator',
+      })
+    })
+
+    it('should not log NoSearchResult when there is not search query execution', async () => {
+      render(<SearchResultsContent />)
+      await screen.findByText('Lieu culturel')
+
+      expect(analytics.logNoSearchResult).not.toHaveBeenCalled()
+    })
+
+    it('should log NoSearchResult only one time when there is search query execution, nbHits = 0 and several re-render', async () => {
+      mockUseSearchResults.mockReturnValueOnce({ ...initialSearchResults, isLoading: true })
+
+      render(<SearchResultsContent />)
+
+      mockUseSearchResults.mockReturnValueOnce({ ...initialSearchResults, isLoading: false })
+
+      screen.rerender(<SearchResultsContent />)
+
+      screen.rerender(<SearchResultsContent />)
+
+      await waitFor(() => {
+        expect(analytics.logNoSearchResult).toHaveBeenCalledTimes(1)
+      })
+    })
+
+    it('should log NoSearchResult with search result when there is search query execution and nbHits = 0', async () => {
+      mockUseSearchResults.mockReturnValueOnce({ ...initialSearchResults, isLoading: true })
+
+      render(<SearchResultsContent />)
+
+      mockUseSearchResults.mockReturnValueOnce({ ...initialSearchResults, isLoading: false })
+
+      mockUseSearch.mockReturnValueOnce({
+        searchState: mockSearchState,
+        dispatch: mockDispatch,
+      })
+      screen.rerender(<SearchResultsContent />)
+
+      await waitFor(() => {
+        expect(analytics.logNoSearchResult).toHaveBeenNthCalledWith(1, '', searchId)
+      })
     })
   })
 
