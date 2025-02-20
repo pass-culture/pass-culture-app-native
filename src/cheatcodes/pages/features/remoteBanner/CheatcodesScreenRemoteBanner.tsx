@@ -7,7 +7,6 @@ import { useFeatureFlagOptions } from 'libs/firebase/firestore/featureFlags/useF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { ErrorBanner } from 'ui/components/banners/ErrorBanner'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { getSpacing } from 'ui/theme'
 
 export const CheatcodesScreenRemoteBanner = () => {
   const { options } = useFeatureFlagOptions(RemoteStoreFeatureFlags.SHOW_REMOTE_BANNER)
@@ -23,7 +22,7 @@ export const CheatcodesScreenRemoteBanner = () => {
 
   return (
     <CheatcodesTemplateScreen title="RemoteBanner 🆒" flexDirection="column">
-      <ViewGap gap={getSpacing(3)}>
+      <ViewGap gap={3}>
         <RemoteBanner from="Cheatcodes" />
         {error ? (
           <ErrorBanner
