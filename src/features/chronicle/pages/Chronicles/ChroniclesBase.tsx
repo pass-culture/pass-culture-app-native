@@ -12,6 +12,8 @@ import { ChroniclesWebMetaHeader } from 'features/chronicle/components/Chronicle
 import { ChroniclesWritersModal } from 'features/chronicle/pages/ChroniclesWritersModal/ChroniclesWritersModal'
 import { ChronicleCardData } from 'features/chronicle/type'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
+import { homeNavConfig } from 'features/navigation/TabBar/helpers'
+import { env } from 'libs/environment/env'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { useModal } from 'ui/components/modals/useModal'
 import { getSpacing } from 'ui/theme'
@@ -60,6 +62,17 @@ export const ChroniclesBase: FunctionComponent<Props> = ({
     navigate('Offer', { id: offerId, openModalOnNavigation: undefined })
   }
 
+  const handleOnShowRecoButtonPress = () => {
+    hideModal()
+    InteractionManager.runAfterInteractions(() => {
+      if (env.ENV === 'production') {
+        navigate('ThematicHome', { homeId: '4mlVpAZySUZO6eHazWKZeV', from: 'chronicles' })
+      } else {
+        navigate(...homeNavConfig)
+      }
+    })
+  }
+
   return (
     <React.Fragment>
       <ChroniclesWebMetaHeader title={title} />
@@ -91,7 +104,11 @@ export const ChroniclesBase: FunctionComponent<Props> = ({
           onLayout={handleLayout}
         />
       </FullFlexRow>
-      <ChroniclesWritersModal closeModal={hideModal} isVisible={visible} />
+      <ChroniclesWritersModal
+        closeModal={hideModal}
+        isVisible={visible}
+        onShowRecoButtonPress={handleOnShowRecoButtonPress}
+      />
     </React.Fragment>
   )
 }
