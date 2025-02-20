@@ -26,7 +26,7 @@ import { mockedSuggestedVenue } from 'libs/venue/fixtures/mockedSuggestedVenues'
 import { Offer } from 'shared/offer/types'
 import { mockAuthContextWithUser, mockAuthContextWithoutUser } from 'tests/AuthContextUtils'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, render, screen, userEvent, waitFor } from 'tests/utils'
+import { act, render, screen, userEvent } from 'tests/utils'
 import { theme } from 'theme'
 
 const searchId = uuidv4()
@@ -709,9 +709,7 @@ describe('SearchResultsContent component', () => {
 
     screen.rerender(<SearchResultsContent />)
 
-    await waitFor(() => {
-      expect(analytics.logPerformSearch).toHaveBeenCalledTimes(1)
-    })
+    expect(analytics.logPerformSearch).toHaveBeenCalledTimes(1)
   })
 
   it('should log PerformSearch with search result when there is search query execution', async () => {
@@ -733,15 +731,13 @@ describe('SearchResultsContent component', () => {
     }
     screen.rerender(<SearchResultsContent />)
 
-    await waitFor(() => {
-      expect(analytics.logPerformSearch).toHaveBeenNthCalledWith(
-        1,
-        mockSearchState,
-        mockAccessibilityFilter,
-        0,
-        'SearchResults'
-      )
-    })
+    expect(analytics.logPerformSearch).toHaveBeenNthCalledWith(
+      1,
+      mockSearchState,
+      mockAccessibilityFilter,
+      0,
+      'SearchResults'
+    )
   })
 
   it('should log PerformSearch with accessibilityFilter when there is search query execution', async () => {
@@ -776,15 +772,13 @@ describe('SearchResultsContent component', () => {
 
     screen.rerender(<SearchResultsContent />)
 
-    await waitFor(() => {
-      expect(analytics.logPerformSearch).toHaveBeenNthCalledWith(
-        1,
-        mockSearchState,
-        mockDisabilitesPropertiesTruthy,
-        0,
-        'SearchResults'
-      )
-    })
+    expect(analytics.logPerformSearch).toHaveBeenNthCalledWith(
+      1,
+      mockSearchState,
+      mockDisabilitesPropertiesTruthy,
+      0,
+      'SearchResults'
+    )
   })
 
   describe('when search returns no results', () => {
@@ -903,9 +897,7 @@ describe('SearchResultsContent component', () => {
 
       screen.rerender(<SearchResultsContent />)
 
-      await waitFor(() => {
-        expect(analytics.logNoSearchResult).toHaveBeenCalledTimes(1)
-      })
+      expect(analytics.logNoSearchResult).toHaveBeenCalledTimes(1)
     })
 
     it('should log NoSearchResult with search result when there is search query execution and nbHits = 0', async () => {
@@ -921,9 +913,7 @@ describe('SearchResultsContent component', () => {
       })
       screen.rerender(<SearchResultsContent />)
 
-      await waitFor(() => {
-        expect(analytics.logNoSearchResult).toHaveBeenNthCalledWith(1, '', searchId)
-      })
+      expect(analytics.logNoSearchResult).toHaveBeenNthCalledWith(1, '', searchId)
     })
   })
 
