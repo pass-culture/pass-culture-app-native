@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { Platform } from 'react-native'
 
 import { UserProfileResponse } from 'api/gen'
-import { useUpdateProfileMutation } from 'features/profile/api/useUpdateProfileMutation'
+import { usePatchProfile } from 'features/profile/api/usePatchProfile'
 import { usePushPermission } from 'features/profile/pages/NotificationSettings/usePushPermission'
 import { SubscriptionAnalyticsParams, SubscriptionTheme } from 'features/subscription/types'
 import { analytics } from 'libs/analytics/provider'
@@ -53,7 +53,7 @@ export const useThematicSubscription = ({
 
   const isSubscribeButtonActive = isAtLeastOneNotificationTypeActivated && isThemeSubscribed
 
-  const { mutate: updateProfile, isLoading: isUpdatingProfile } = useUpdateProfileMutation({
+  const { mutate: updateProfile, isLoading: isUpdatingProfile } = usePatchProfile({
     onSuccess: async () => {
       analytics.logNotificationToggle(!!state.allowEmails, !!state.allowPush)
       const analyticsParams = homeId

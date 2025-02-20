@@ -7,7 +7,7 @@ import { SubscriptionState } from 'features/identityCheck/context/types'
 import { resetProfileStores } from 'features/identityCheck/pages/profile/store/resetProfileStores'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
-export function usePatchProfile() {
+export function usePostProfile() {
   const { showErrorSnackBar } = useSnackBarContext()
   const { refetchUser } = useAuthContext()
 
@@ -26,7 +26,7 @@ export function usePatchProfile() {
       }
     },
     {
-      onSuccess: async () => {
+      onSuccess: () => {
         resetProfileStores()
         refetchUser()
       },
