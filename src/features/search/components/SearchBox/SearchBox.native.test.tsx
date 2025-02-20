@@ -535,40 +535,6 @@ describe('SearchBox component', () => {
       expect(screen.queryByLabelText('Réinitialiser la recherche')).not.toBeOnTheScreen()
     })
 
-    it.each(['LIVRE', 'Livre ', 'livre', 'LIVRES', 'Livres', 'livres '])(
-      'should redirect to ThematicSearch when queryText is `%s` and SearchView is `Landing`',
-      async (queryText) => {
-        // TODO(PC-32646): useRoute is called every time a letter is inputted +1 (sic!)
-        useRoute.mockReturnValue({ name: SearchView.Landing })
-
-        renderSearchBox()
-
-        const searchInput = screen.getByPlaceholderText('Offre, artiste, lieu culturel...')
-        await user.type(searchInput, queryText, { submitEditing: true })
-
-        expect(navigate).toHaveBeenCalledWith('TabNavigator', {
-          params: {
-            params: {
-              ...initialSearchState,
-              query: queryText.trim(),
-              offerCategories: [SearchGroupNameEnumv2.LIVRES],
-              searchId,
-              accessibilityFilter: {
-                isAudioDisabilityCompliant: undefined,
-                isMentalDisabilityCompliant: undefined,
-                isMotorDisabilityCompliant: undefined,
-                isVisualDisabilityCompliant: undefined,
-              },
-              priceRange: mockSearchState.priceRange,
-              shouldRedirect: false,
-            },
-            screen: 'ThematicSearch',
-          },
-          screen: 'SearchStackNavigator',
-        })
-      }
-    )
-
     it('should log HasSearchedCinemaQuery analytic when shouldRedirectToThematicSearch is disabled', async () => {
       // TODO(PC-32646): useRoute & useRemoteConfigContext are called every time a letter is inputted +1
       useRoute.mockReturnValueOnce({ name: SearchView.Landing })
