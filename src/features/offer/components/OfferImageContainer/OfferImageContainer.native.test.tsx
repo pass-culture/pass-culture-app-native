@@ -16,7 +16,7 @@ describe('<OfferImageContainer />', () => {
       />
     )
 
-    expect(screen.getByTestId('offerImageContainerCarousel')).toBeOnTheScreen()
+    expect(screen.getByTestId('carousel')).toBeOnTheScreen()
     expect(screen.queryByTestId('onlyDotsContainer')).not.toBeOnTheScreen()
   })
 
@@ -41,7 +41,7 @@ describe('<OfferImageContainer />', () => {
       />
     )
 
-    expect(await screen.findByTestId('offerImageContainerCarousel')).toBeOnTheScreen()
+    expect(await screen.findByTestId('carousel')).toBeOnTheScreen()
   })
 
   it('should display carousel dots when offer has several images', async () => {
@@ -52,7 +52,7 @@ describe('<OfferImageContainer />', () => {
         onPress={jest.fn()}
       />
     )
-    await screen.findByTestId('offerImageContainerCarousel')
+    await screen.findByTestId('carousel')
 
     expect(await screen.findByTestId('onlyDotsContainer')).toBeOnTheScreen()
   })

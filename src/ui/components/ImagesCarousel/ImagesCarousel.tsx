@@ -1,13 +1,13 @@
 import colorAlpha from 'color-alpha'
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, useEffect } from 'react'
 import { useWindowDimensions } from 'react-native'
 import { useSharedValue } from 'react-native-reanimated'
-import Carousel from 'react-native-reanimated-carousel'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { PinchableBox } from 'features/offer/components/PinchableBox/PinchableBox'
 import { CarouselDot } from 'ui/CarouselDot/CarouselDot'
+import { Carousel } from 'ui/components/Carousel/Carousel'
 import { BlurFooter } from 'ui/components/headers/BlurFooter'
 import { BlurHeader } from 'ui/components/headers/BlurHeader'
 import {
@@ -36,28 +36,29 @@ export const ImagesCarousel: FunctionComponent<Props> = ({
 
   const progressValue = useSharedValue<number>(defaultIndex)
   const [index, setIndex] = React.useState(defaultIndex)
-  const { height: screenHeight, width: screenWidth } = useWindowDimensions()
+  const { width: screenWidth } = useWindowDimensions()
 
   const carouselDotId = uuidv4()
+
+  useEffect(() => {
+    progressValue.value = index
+  }, [index, progressValue])
 
   return (
     <Container>
       <StyledHeader title={`${index + 1}/${images.length}`} onGoBack={goBack} />
 
       <Carousel
-        vertical={false}
-        height={screenHeight}
+        currentIndex={index}
         width={screenWidth}
-        loop={false}
-        scrollAnimationDuration={500}
-        onProgressChange={(_, absoluteProgress) => {
-          progressValue.value = absoluteProgress
-          setIndex(Math.round(absoluteProgress))
-        }}
-        defaultIndex={defaultIndex}
+        setIndex={setIndex}
         data={images}
-        renderItem={({ item: image }) => <PinchableBox imageUrl={image} />}
+        progressValue={progressValue}
+        renderItem={({ item: image }) => (
+          <StyledPinchableBox imageUrl={image} width={screenWidth} />
+        )}
       />
+
       {images.length > 1 ? (
         <React.Fragment>
           <BlurFooter height={footerHeight} />
@@ -107,3 +108,8 @@ const PaginationContainer = styled(ViewGap)({
   alignSelf: 'center',
   alignItems: 'center',
 })
+
+const StyledPinchableBox = styled(PinchableBox)<{ width: number }>(({ width }) => ({
+  flex: 1,
+  width,
+}))
