@@ -1,6 +1,6 @@
 # DR000 - template
 
-> Status : Projcet ~~-Proposed - Adopted - Replaced - Withdrawn~~
+> Status : Adopted or Replaced or Withdrawn
 
 ## Decision
 
