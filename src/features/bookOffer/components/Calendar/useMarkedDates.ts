@@ -1,4 +1,4 @@
-import groupBy from 'lodash/groupBy'
+import { groupBy } from 'lodash'
 
 import { OfferStockResponse } from 'api/gen'
 import { useBookingContext } from 'features/bookOffer/context/useBookingContext'

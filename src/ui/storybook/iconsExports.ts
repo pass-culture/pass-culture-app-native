@@ -64,6 +64,7 @@ import { HandicapAudio } from 'ui/svg/icons/HandicapAudio'
 import { HandicapMental } from 'ui/svg/icons/HandicapMental'
 import { HandicapMotor } from 'ui/svg/icons/HandicapMotor'
 import { HandicapVisual } from 'ui/svg/icons/HandicapVisual'
+import { IdCard } from 'ui/svg/icons/IdCard'
 import { Info } from 'ui/svg/icons/Info'
 import { InfoPlain } from 'ui/svg/icons/InfoPlain'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
@@ -204,6 +205,7 @@ export const SecondaryAndBiggerIcons = {
   HandicapMental,
   HandicapMotor,
   HandicapVisual,
+  IdCard,
   Info,
   LegalNotices,
   LifeBuoy,

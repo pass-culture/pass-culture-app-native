@@ -1,9 +1,26 @@
 appId: ${MAESTRO_APP_ID}
 ---
 - assertVisible: 'Rechercher'
-- tapOn: 'Livres'
+- runFlow:
+    when:
+      platform: iOS
+    commands:
+    - scrollUntilVisible:
+        element:
+          text: "Catégorie livre.*"
+    - tapOn: 'Catégorie livre.*'
+    - tapOn: 'Romans & littérature'
 
-- tapOn: "Romans & littérature"
+
+- runFlow:
+    when:
+      platform: Android
+    commands:
+    - scrollUntilVisible:
+        element:
+          text: "LIVRES"
+    - tapOn: 'LIVRES'
+    - tapOn: 'Romans & littérature'
 
 - assertVisible: 'Liste'
 - assertVisible: "Carte"

@@ -62,7 +62,7 @@ const exUnderageBeneficiaryUser: UserProfileResponse = {
 }
 
 jest.mock('libs/jwt/jwt')
-jest.mock('features/profile/api/useUpdateProfileMutation')
+jest.mock('features/profile/api/usePatchProfile')
 jest.mock('features/profile/helpers/isUserUnderageBeneficiary')
 const mockedisUserUnderageBeneficiary = jest.mocked(isUserUnderageBeneficiary)
 
@@ -88,7 +88,7 @@ describe('ProfileHeader', () => {
         enableAchievements: false,
         enableSystemBanner: true,
         disableActivation: false,
-        showForceUpdateBanner: false,
+        showRemoteBanner: false,
         enablePassForAll: true,
       },
       user: undefined,
@@ -105,7 +105,7 @@ describe('ProfileHeader', () => {
         enableAchievements: false,
         enableSystemBanner: true,
         disableActivation: false,
-        showForceUpdateBanner: false,
+        showRemoteBanner: false,
         enablePassForAll: false,
       },
       user: undefined,
@@ -113,7 +113,7 @@ describe('ProfileHeader', () => {
 
     expect(
       screen.getByText(
-        'Identifie-toi pour découvrir des offres culturelles et bénéficier de ton crédit si tu as entre 15 et 18 ans.'
+        'Envie d’explorer des offres culturelles ou de débloquer ton crédit si tu as entre 15 et 18 ans ?'
       )
     ).toBeOnTheScreen()
   })
@@ -124,7 +124,7 @@ describe('ProfileHeader', () => {
         enableAchievements: false,
         enableSystemBanner: true,
         disableActivation: false,
-        showForceUpdateBanner: false,
+        showRemoteBanner: false,
         enablePassForAll: false,
       },
       user,
@@ -140,7 +140,7 @@ describe('ProfileHeader', () => {
         enableAchievements: false,
         enableSystemBanner: true,
         disableActivation: false,
-        showForceUpdateBanner: false,
+        showRemoteBanner: false,
         enablePassForAll: false,
       },
       user,
@@ -155,7 +155,7 @@ describe('ProfileHeader', () => {
         enableAchievements: false,
         enableSystemBanner: true,
         disableActivation: false,
-        showForceUpdateBanner: false,
+        showRemoteBanner: false,
         enablePassForAll: false,
       },
       user: exBeneficiaryUser,
@@ -178,7 +178,7 @@ describe('ProfileHeader', () => {
         enableAchievements: false,
         enableSystemBanner: true,
         disableActivation: false,
-        showForceUpdateBanner: false,
+        showRemoteBanner: false,
         enablePassForAll: false,
       },
       user: notBeneficiaryUser,
@@ -194,7 +194,7 @@ describe('ProfileHeader', () => {
         enableAchievements: false,
         enableSystemBanner: false,
         disableActivation: false,
-        showForceUpdateBanner: false,
+        showRemoteBanner: false,
         enablePassForAll: false,
       },
       user: exUnderageBeneficiaryUser,
@@ -212,7 +212,7 @@ const renderProfileHeader = ({
     enableAchievements: boolean
     enableSystemBanner: boolean
     disableActivation: boolean
-    showForceUpdateBanner: boolean
+    showRemoteBanner: boolean
     enablePassForAll: boolean
   }
   user?: UserProfileResponse

@@ -5,7 +5,6 @@ import { ListOnScrollProps, VariableSizeList } from 'react-window'
 import styled from 'styled-components/native'
 
 import { usePreviousRoute } from 'features/navigation/helpers/usePreviousRoute'
-import { NoSearchResult } from 'features/search/components/NoSearchResults/NoSearchResult'
 import {
   footerPlaceholder,
   headerPlaceholder,
@@ -191,35 +190,31 @@ export const SearchList = forwardRef<never, SearchListProps>(
 
     return (
       <SearchResultList onLayout={onLayout} testID="searchResultsList">
-        {nbHits ? (
-          <React.Fragment>
-            <VariableSizeList
-              ref={listRef}
-              key={rerenderKey}
-              innerElementType="ul"
-              itemData={data}
-              itemSize={itemSizeFn}
-              height={availableHeight}
-              itemCount={data.items.length}
-              outerRef={outerListRef}
-              onScroll={handleScroll}
-              width="100%">
-              {SearchListItem}
-            </VariableSizeList>
+        <React.Fragment>
+          <VariableSizeList
+            ref={listRef}
+            key={rerenderKey}
+            innerElementType="ul"
+            itemData={data}
+            itemSize={itemSizeFn}
+            height={availableHeight}
+            itemCount={data.items.length}
+            outerRef={outerListRef}
+            onScroll={handleScroll}
+            width="100%">
+            {SearchListItem}
+          </VariableSizeList>
 
-            <ScrollToTopContainer style={{ opacity }}>
-              <Container onPress={handleScrollToTopPress}>
-                <StyledLinearGradient
-                  start={SCROLL_TO_TOP_BUTTON_LINEAR_GRADIENT_START}
-                  end={SCROLL_TO_TOP_BUTTON_LINEAR_GRADIENT_END}>
-                  <ScrollToTopIcon />
-                </StyledLinearGradient>
-              </Container>
-            </ScrollToTopContainer>
-          </React.Fragment>
-        ) : (
-          <NoSearchResult />
-        )}
+          <ScrollToTopContainer style={{ opacity }}>
+            <Container onPress={handleScrollToTopPress}>
+              <StyledLinearGradient
+                start={SCROLL_TO_TOP_BUTTON_LINEAR_GRADIENT_START}
+                end={SCROLL_TO_TOP_BUTTON_LINEAR_GRADIENT_END}>
+                <ScrollToTopIcon />
+              </StyledLinearGradient>
+            </Container>
+          </ScrollToTopContainer>
+        </React.Fragment>
       </SearchResultList>
     )
   }

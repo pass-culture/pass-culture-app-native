@@ -1,14 +1,13 @@
 import { useNavigation } from '@react-navigation/native'
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, ReactNode } from 'react'
 import { View } from 'react-native'
-import styled, { useTheme } from 'styled-components/native'
+import styled from 'styled-components/native'
 
 import { CategoryIdEnum, OfferResponseV2 } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { OfferAbout } from 'features/offer/components/OfferAbout/OfferAbout'
 import { OfferArtists } from 'features/offer/components/OfferArtists/OfferArtists'
-import { OfferCTAButton } from 'features/offer/components/OfferCTAButton/OfferCTAButton'
 import { OfferPlace } from 'features/offer/components/OfferPlace/OfferPlace'
 import { OfferReactionSection } from 'features/offer/components/OfferReactionSection/OfferReactionSection'
 import { OfferSummaryInfoList } from 'features/offer/components/OfferSummaryInfoList/OfferSummaryInfoList'
@@ -38,15 +37,10 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 type Props = {
   offer: OfferResponseV2
   subcategory: Subcategory
-  trackEventHasSeenOfferOnce: VoidFunction
+  children: ReactNode
 }
 
-export const OfferBody: FunctionComponent<Props> = ({
-  offer,
-  subcategory,
-  trackEventHasSeenOfferOnce,
-}) => {
-  const { isDesktopViewport } = useTheme()
+export const OfferBody: FunctionComponent<Props> = ({ offer, subcategory, children }) => {
   const { navigate } = useNavigation<UseNavigationType>()
 
   const hasArtistPage = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ARTIST_PAGE)
@@ -135,14 +129,7 @@ export const OfferBody: FunctionComponent<Props> = ({
           showBottomComponent={summaryInfoItems.length > 0}
           BottomComponent={<OfferSummaryInfoList summaryInfoItems={summaryInfoItems} />}
         />
-
-        {isDesktopViewport ? (
-          <OfferCTAButton
-            offer={offer}
-            subcategory={subcategory}
-            trackEventHasSeenOfferOnce={trackEventHasSeenOfferOnce}
-          />
-        ) : null}
+        {children}
       </MarginContainer>
 
       {shouldDisplayAboutSection ? (

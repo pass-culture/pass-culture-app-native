@@ -3,11 +3,11 @@ import { openInbox } from 'react-native-email-link'
 
 import { SubscriptionMessage } from 'api/gen'
 import { useIsMailAppAvailable } from 'features/auth/helpers/useIsMailAppAvailable'
-import { ForceUpdateBanner } from 'features/forceUpdate/components/ForceUpdateBanner'
 import { Subtitle } from 'features/profile/components/Subtitle/Subtitle'
 import { formatDateToLastUpdatedAtMessage } from 'features/profile/helpers/formatDateToLastUpdatedAtMessage'
 import { matchSubscriptionMessageIconToSvg } from 'features/profile/helpers/matchSubscriptionMessageIconToSvg'
 import { shouldOpenInbox as checkShouldOpenInbox } from 'features/profile/helpers/shouldOpenInbox'
+import { RemoteBanner } from 'features/remoteBanner/components/RemoteBanner'
 import { InfoBanner } from 'ui/components/banners/InfoBanner'
 import { BaseButtonProps } from 'ui/components/buttons/AppButton/types'
 import { ButtonQuaternarySecondary } from 'ui/components/buttons/ButtonQuaternarySecondary'
@@ -88,7 +88,7 @@ export const SubscriptionMessageBadge = ({
       <Spacer.Column numberOfSpaces={2} />
       {disableActivation ? (
         <React.Fragment>
-          <ForceUpdateBanner />
+          <RemoteBanner from="Profile" />
           <Spacer.Column numberOfSpaces={6} />
         </React.Fragment>
       ) : null}

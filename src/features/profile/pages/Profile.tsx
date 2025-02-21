@@ -60,7 +60,7 @@ const OnlineProfile: React.FC = () => {
   const enableAchievements = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_ACHIEVEMENTS)
   const enableSystemBanner = useFeatureFlag(RemoteStoreFeatureFlags.WIP_APP_V2_SYSTEM_BLOCK)
   const disableActivation = useFeatureFlag(RemoteStoreFeatureFlags.DISABLE_ACTIVATION)
-  const showForceUpdateBanner = useFeatureFlag(RemoteStoreFeatureFlags.SHOW_FORCE_UPDATE_BANNER)
+  const showRemoteBanner = useFeatureFlag(RemoteStoreFeatureFlags.SHOW_REMOTE_BANNER)
   const enablePassForAll = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_PASS_FOR_ALL)
 
   const { dispatch: favoritesDispatch } = useFavoritesState()
@@ -171,7 +171,7 @@ const OnlineProfile: React.FC = () => {
                 enableAchievements,
                 enableSystemBanner,
                 disableActivation,
-                showForceUpdateBanner,
+                showRemoteBanner,
                 enablePassForAll,
               }}
               user={user}
@@ -313,7 +313,10 @@ const OnlineProfile: React.FC = () => {
                 </Section>
               ) : null}
               <Section>
-                <Version>{version}</Version>
+                <Version>
+                  {version}
+                  {isWeb ? `-${String(env.COMMIT_HASH)}` : ''}
+                </Version>
                 {isWeb ? null : (
                   <LogoMinistereContainer>
                     <LogoMinistere />

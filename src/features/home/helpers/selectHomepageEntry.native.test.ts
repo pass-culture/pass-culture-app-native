@@ -1,4 +1,4 @@
-import shuffle from 'lodash/shuffle'
+import { shuffle } from 'lodash'
 import { UseQueryResult } from 'react-query'
 
 import { BookingsResponse, EligibilityType, UserProfileResponse, UserRole } from 'api/gen'

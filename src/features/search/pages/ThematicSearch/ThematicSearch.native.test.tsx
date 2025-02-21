@@ -7,9 +7,7 @@ import * as useGTLPlaylists from 'features/gtlPlaylist/hooks/useGTLPlaylists'
 import { initialSearchState } from 'features/search/context/reducer'
 import * as useSearch from 'features/search/context/SearchWrapper'
 import { ThematicSearch } from 'features/search/pages/ThematicSearch/ThematicSearch'
-import { env } from 'libs/environment/env'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { LocationMode } from 'libs/location/types'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { mockServer } from 'tests/mswServer'
@@ -89,102 +87,105 @@ describe('<ThematicSearch/>', () => {
   jest.useFakeTimers()
 
   beforeEach(() => {
-    mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', PLACEHOLDER_DATA)
     setFeatureFlags()
+    mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', PLACEHOLDER_DATA)
+    MockOfferCategoriesParams({ offerCategories: [SearchGroupNameEnumv2.LIVRES] })
+    mockUseLocation.mockReturnValue(defaultUseLocation)
+    mockUseSearchResults.mockReturnValue(defaultUseSearchResults)
   })
 
-  describe('book offerCategory', () => {
-    beforeEach(() => {
-      MockOfferCategoriesParams({ offerCategories: [SearchGroupNameEnumv2.LIVRES] })
-      mockUseLocation.mockReturnValue(defaultUseLocation)
-      mockUseSearchResults.mockReturnValue(defaultUseSearchResults)
+  it('should render <ThematicSearch />', async () => {
+    render(reactQueryProviderHOC(<ThematicSearch />))
+
+    await screen.findByText('Romans et littérature')
+
+    expect(screen).toMatchSnapshot()
+  })
+
+  it('should render not <ThematicSearch /> when no offerCategory is provided', async () => {
+    MockOfferCategoriesParams({ offerCategories: [] })
+
+    render(reactQueryProviderHOC(<ThematicSearch />))
+
+    expect(screen.queryAllByText(/.*/)).toHaveLength(0)
+  })
+
+  it('should render skeleton when playlists are loading', async () => {
+    mockUseGtlPlaylist.mockReturnValueOnce({
+      gtlPlaylists: [],
+      isLoading: true,
     })
 
-    it('should render <ThematicSearch />', async () => {
+    render(reactQueryProviderHOC(<ThematicSearch />))
+
+    await screen.findByText('Livres')
+
+    expect(screen.getByTestId('ThematicSearchSkeleton')).toBeOnTheScreen()
+  })
+
+  describe('Search bar', () => {
+    it('should navigate to search results with the corresponding parameters', async () => {
+      const QUERY = 'Harry'
       render(reactQueryProviderHOC(<ThematicSearch />))
+      const searchInput = screen.getByPlaceholderText('Livres...')
+      fireEvent(searchInput, 'onSubmitEditing', { nativeEvent: { text: QUERY } })
 
       await screen.findByText('Romans et littérature')
 
-      expect(screen).toMatchSnapshot()
-    })
-
-    it('should render skeleton when playlists are loading', async () => {
-      mockUseGtlPlaylist.mockReturnValueOnce({
-        gtlPlaylists: [],
-        isLoading: true,
-      })
-
-      render(reactQueryProviderHOC(<ThematicSearch />))
-
-      await screen.findByText('Livres')
-
-      expect(screen.getByTestId('ThematicSearchSkeleton')).toBeOnTheScreen()
-    })
-
-    describe('Search bar', () => {
-      it('should navigate to search results with the corresponding parameters', async () => {
-        const QUERY = 'Harry'
-        render(reactQueryProviderHOC(<ThematicSearch />))
-        const searchInput = screen.getByPlaceholderText('Livres...')
-        fireEvent(searchInput, 'onSubmitEditing', { nativeEvent: { text: QUERY } })
-
-        await screen.findByText('Romans et littérature')
-
-        expect(navigate).toHaveBeenCalledWith(
-          'TabNavigator',
-          expect.objectContaining({
-            screen: 'SearchStackNavigator',
+      expect(navigate).toHaveBeenCalledWith(
+        'TabNavigator',
+        expect.objectContaining({
+          screen: 'SearchStackNavigator',
+          params: expect.objectContaining({
             params: expect.objectContaining({
-              params: expect.objectContaining({
-                offerCategories: ['LIVRES'],
-                query: QUERY,
-              }),
+              offerCategories: ['LIVRES'],
+              query: QUERY,
             }),
-          })
-        )
-      })
+          }),
+        })
+      )
+    })
+  })
+
+  describe('Subcategory buttons', () => {
+    it('should update SearchState with correct data', async () => {
+      render(reactQueryProviderHOC(<ThematicSearch />))
+      const subcategoryButton = await screen.findByText('Romans et littérature')
+      await user.press(subcategoryButton)
+      await screen.findByText('Romans et littérature')
+
+      expect(mockDispatch).toHaveBeenCalledWith(
+        expect.objectContaining({
+          payload: expect.objectContaining({
+            offerCategories: [SearchGroupNameEnumv2.LIVRES],
+            offerNativeCategories: ['ROMANS_ET_LITTERATURE'],
+          }),
+          type: 'SET_STATE',
+        })
+      )
     })
 
-    describe('Subcategory buttons', () => {
-      it('should update SearchState with correct data', async () => {
-        render(reactQueryProviderHOC(<ThematicSearch />))
-        const subcategoryButton = await screen.findByText('Romans et littérature')
-        await user.press(subcategoryButton)
-        await screen.findByText('Romans et littérature')
+    it('should navigate to search results with the corresponding parameters', async () => {
+      render(reactQueryProviderHOC(<ThematicSearch />))
+      const subcategoryButton = await screen.findByText('Romans et littérature')
+      await user.press(subcategoryButton)
+      await screen.findByText('Romans et littérature')
 
-        expect(mockDispatch).toHaveBeenCalledWith(
-          expect.objectContaining({
-            payload: expect.objectContaining({
-              offerCategories: [SearchGroupNameEnumv2.LIVRES],
+      expect(navigate).toHaveBeenCalledWith(
+        'TabNavigator',
+        expect.objectContaining({
+          screen: 'SearchStackNavigator',
+          params: expect.objectContaining({
+            params: expect.objectContaining({
+              offerCategories: ['LIVRES'],
               offerNativeCategories: ['ROMANS_ET_LITTERATURE'],
             }),
-            type: 'SET_STATE',
-          })
-        )
-      })
-
-      it('should navigate to search results with the corresponding parameters', async () => {
-        render(reactQueryProviderHOC(<ThematicSearch />))
-        const subcategoryButton = await screen.findByText('Romans et littérature')
-        await user.press(subcategoryButton)
-        await screen.findByText('Romans et littérature')
-
-        expect(navigate).toHaveBeenCalledWith(
-          'TabNavigator',
-          expect.objectContaining({
-            screen: 'SearchStackNavigator',
-            params: expect.objectContaining({
-              params: expect.objectContaining({
-                offerCategories: ['LIVRES'],
-                offerNativeCategories: ['ROMANS_ET_LITTERATURE'],
-              }),
-            }),
-          })
-        )
-      })
+          }),
+        })
+      )
     })
 
-    describe('gtl playlists', () => {
+    describe('book playlists', () => {
       it('should render gtl playlists when offerCategory is `LIVRES`', async () => {
         render(reactQueryProviderHOC(<ThematicSearch />))
         await screen.findByText('Romans et littérature')
@@ -192,26 +193,13 @@ describe('<ThematicSearch/>', () => {
         expect(await screen.findByText('GTL playlist')).toBeOnTheScreen()
       })
 
-      it('should call useGTLPlaylists with env.ALGOLIA_OFFERS_INDEX_NAME_B if FF ENABLE_REPLICA_ALGOLIA_INDEX is on', async () => {
-        setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_REPLICA_ALGOLIA_INDEX])
+      it('should not render gtl playlists when offerCategory is not `LIVRES`', async () => {
+        MockOfferCategoriesParams({ offerCategories: [SearchGroupNameEnumv2.CONCERTS_FESTIVALS] })
         render(reactQueryProviderHOC(<ThematicSearch />))
-        await screen.findByText('Romans et littérature')
+        await screen.findByText('Festivals')
 
-        expect(mockUseGtlPlaylist).toHaveBeenCalledWith({
-          queryKey: 'SEARCH_N1_BOOKS_GTL_PLAYLISTS',
-          searchIndex: env.ALGOLIA_OFFERS_INDEX_NAME_B,
-        })
+        expect(screen.queryByText('GTL playlist')).not.toBeOnTheScreen()
       })
-    })
-  })
-
-  describe('gtl playlists', () => {
-    it('should not render gtl playlists when offerCategory is not `LIVRES`', async () => {
-      MockOfferCategoriesParams({ offerCategories: [SearchGroupNameEnumv2.CONCERTS_FESTIVALS] })
-      render(reactQueryProviderHOC(<ThematicSearch />))
-      await screen.findByText('Festivals')
-
-      expect(screen.queryByText('GTL playlist')).not.toBeOnTheScreen()
     })
   })
 
@@ -270,6 +258,26 @@ describe('<ThematicSearch/>', () => {
       await screen.findByText('Livres')
 
       expect(screen.queryByText('Achat & location d‘instrument')).not.toBeOnTheScreen()
+    })
+  })
+
+  describe('concerts and festivals playlists', () => {
+    it('should render concerts and festivals playlists when offerCategory is `CONCERTS_FESTIVALS`', async () => {
+      MockOfferCategoriesParams({
+        offerCategories: [SearchGroupNameEnumv2.CONCERTS_FESTIVALS],
+      })
+      render(reactQueryProviderHOC(<ThematicSearch />))
+      await screen.findByText('Concerts & festivals')
+
+      expect(await screen.findByText('Concerts, évènements')).toBeOnTheScreen()
+    })
+
+    it('should not render concerts and festivals when offerCategory is not `CONCERTS_FESTIVALS`', async () => {
+      MockOfferCategoriesParams({ offerCategories: [SearchGroupNameEnumv2.LIVRES] })
+      render(reactQueryProviderHOC(<ThematicSearch />))
+      await screen.findByText('Livres')
+
+      expect(screen.queryByText('Concerts, évènements')).not.toBeOnTheScreen()
     })
   })
 })

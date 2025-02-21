@@ -74,7 +74,7 @@ describe('<Profile/>', () => {
       })
 
       const text = await screen.findByText(
-        'Identifie-toi pour découvrir des offres culturelles et bénéficier de ton crédit si tu as 17 ou 18 ans.'
+        'Envie d’explorer des offres culturelles ou de débloquer ton crédit si tu as 17 ou 18 ans ?'
       )
 
       expect(text).toBeTruthy()
@@ -92,7 +92,7 @@ describe('<Profile/>', () => {
       })
 
       const text = await screen.findByText(
-        'Identifie-toi pour découvrir des offres culturelles et bénéficier de ton crédit si tu as entre 15 et 18 ans.'
+        'Envie d’explorer des offres culturelles ou de débloquer ton crédit si tu as entre 15 et 18 ans ?'
       )
 
       expect(text).toBeTruthy()

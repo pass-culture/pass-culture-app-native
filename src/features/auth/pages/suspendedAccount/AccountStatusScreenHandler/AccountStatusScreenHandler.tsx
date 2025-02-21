@@ -10,7 +10,7 @@ import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import { useCurrentRoute } from 'features/navigation/helpers/useCurrentRoute'
 import { DeleteProfileSuccess } from 'features/profile/pages/DeleteProfile/DeleteProfileSuccess'
 import { SuspiciousLoginSuspendedAccount } from 'features/trustedDevice/pages/SuspiciousLoginSuspendedAccount'
-import { LoadingPage } from 'ui/components/LoadingPage'
+import { LoadingPage } from 'ui/pages/LoadingPage'
 
 export const AccountStatusScreenHandler = () => {
   const { data: accountSuspensionStatus, isLoading } = useAccountSuspensionStatus()

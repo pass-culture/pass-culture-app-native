@@ -1,4 +1,4 @@
-import range from 'lodash/range'
+import { range } from 'lodash'
 
 export function getYears(startYear: number, numberOfYears: number) {
   const endYear = startYear + numberOfYears

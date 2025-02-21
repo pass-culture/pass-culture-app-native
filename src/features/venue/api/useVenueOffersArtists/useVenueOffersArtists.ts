@@ -1,4 +1,4 @@
-import _ from 'lodash'
+import { chain } from 'lodash'
 import { UseQueryResult } from 'react-query'
 
 import { VenueResponse } from 'api/gen'
@@ -16,7 +16,7 @@ export const useVenueOffersArtists = (
     return { data: { artists: [] } }
   }
 
-  const artists: Artist[] = _.chain(
+  const artists: Artist[] = chain(
     // `flatMap` is used to map over `venueOffers.hits`, transforming each offer into an artist object if the artist exists,
     // and flattening the results into a single array. If no artist is found, it returns an empty array, effectively filtering out
     // offers without an artist in a single step.

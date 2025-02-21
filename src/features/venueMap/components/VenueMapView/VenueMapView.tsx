@@ -28,7 +28,7 @@ import { initialVenuesActions } from 'features/venueMap/store/initialVenuesStore
 import { analytics } from 'libs/analytics/provider'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import MapView, { MapViewProps, Map, MarkerPressEvent, Region } from 'libs/maps/maps'
+import MapView, { Map, MapViewProps, MarkerPressEvent, Region } from 'libs/maps/maps'
 import { VenueTypeCode } from 'libs/parsers/venueType'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { LENGTH_L, getSpacing } from 'ui/theme'
@@ -123,7 +123,8 @@ export const VenueMapView: FunctionComponent<Props> = ({
   useTrackMapSeenDuration()
 
   const { data: selectedVenueOffers } = useVenueOffers(
-    bottomSheetOffersEnabled ? transformGeoLocatedVenueToVenueResponse(selectedVenue) : undefined
+    bottomSheetOffersEnabled ? transformGeoLocatedVenueToVenueResponse(selectedVenue) : undefined,
+    bottomSheetOffersEnabled
   )
 
   const hasOffers = !!selectedVenueOffers && selectedVenueOffers.hits?.length

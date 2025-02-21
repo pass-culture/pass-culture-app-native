@@ -1,4 +1,4 @@
-import isPlainObject from 'lodash'
+import { isPlainObject } from 'lodash'
 import React from 'react'
 import { FlatList } from 'react-native'
 import styled from 'styled-components/native'

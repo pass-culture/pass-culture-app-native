@@ -1,4 +1,4 @@
-import uniqBy from 'lodash/uniqBy'
+import { uniqBy } from 'lodash'
 import { useCallback } from 'react'
 import { useQuery, UseQueryResult } from 'react-query'
 
@@ -9,13 +9,20 @@ import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
 import { useVenueSearchParameters } from 'features/venue/helpers/useVenueSearchParameters'
 import { VenueOffers } from 'features/venue/types'
 import { fetchMultipleOffers } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/fetchMultipleOffers'
-import { filterOfferHit, useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
+import {
+  filterOfferHitWithImage,
+  filterValidOfferHit,
+  useTransformOfferHits,
+} from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { SearchQueryParameters } from 'libs/algolia/types'
 import { env } from 'libs/environment/env'
 import { useLocation } from 'libs/location'
 import { QueryKeys } from 'libs/queryKeys'
 
-export const useVenueOffers = (venue?: VenueResponse): UseQueryResult<VenueOffers> => {
+export const useVenueOffers = (
+  venue?: VenueResponse,
+  includeHitsWithoutImage?: boolean
+): UseQueryResult<VenueOffers> => {
   // TODO(PC-33493): hook refacto
   const { userLocation, selectedLocationMode } = useLocation()
   const transformHits = useTransformOfferHits()
@@ -69,9 +76,10 @@ export const useVenueOffers = (venue?: VenueResponse): UseQueryResult<VenueOffer
     {
       enabled: !!venue,
       select: ([venueSearchedOffersResults, venueTopOffersResults, headlineOfferResults]) => {
+        const filterFn = includeHitsWithoutImage ? filterValidOfferHit : filterOfferHitWithImage
         const hits = [venueSearchedOffersResults, venueTopOffersResults]
           .flatMap((result) => result?.hits)
-          .filter(filterOfferHit)
+          .filter(filterFn)
           .map(transformHits)
 
         const headlineOfferHit = headlineOfferResults?.hits[0]

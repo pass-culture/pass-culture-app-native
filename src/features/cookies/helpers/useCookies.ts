@@ -1,4 +1,4 @@
-import omit from 'lodash/omit'
+import { omit } from 'lodash'
 import { Dispatch, SetStateAction, useEffect, useState } from 'react'
 import { useMutation } from 'react-query'
 

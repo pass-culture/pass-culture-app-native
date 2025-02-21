@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 import { G, Path, Defs, RadialGradient, Stop, Circle, ClipPath } from 'react-native-svg'
 import styled from 'styled-components/native'
 

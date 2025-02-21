@@ -2,6 +2,7 @@ appId: ${MAESTRO_APP_ID}
 ---
 - runFlow:
     when:
+      platform: Android
       visible: "Ma position"
     commands:
       - tapOn: "Ma position"
@@ -10,3 +11,13 @@ appId: ${MAESTRO_APP_ID}
       - hideKeyboard
       - tapOn: "Paris0Paris"
       - tapOn: "Valider la localisation"
+
+- runFlow:
+    when:
+      platform: iOS
+    commands:
+    - tapOn: "Ouvrir la modale de localisation depuis le widget"
+    - tapOn: "Choisir une localisation"
+    - inputText: "Paris"
+    - tapOn: "Paris Paris"
+    - tapOn: "Valider la localisation"

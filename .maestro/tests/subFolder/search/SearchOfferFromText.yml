@@ -37,6 +37,20 @@ appId: ${MAESTRO_APP_ID}
             text: Les offres
           direction: UP
 
-- tapOn:
-    text: 'One piece.*'
-    index: 1
+- runFlow:
+    when:
+      platform: Android
+    commands:
+    - swipe:
+        from:
+          text: Les offres
+        direction: UP
+    - tapOn:
+        text: 'One piece.*'
+        index: 1
+
+- runFlow:
+    when:
+      platform: iOS
+    commands:
+    - tapOn: 'Offre One Piece.*'

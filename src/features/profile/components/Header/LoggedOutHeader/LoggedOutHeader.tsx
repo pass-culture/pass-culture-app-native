@@ -13,7 +13,7 @@ import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouch
 import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 
 type Props = {
-  showForceUpdateBanner: boolean
+  showRemoteBanner: boolean
 }
 
 const onBeforeNavigate = () => {
@@ -21,18 +21,18 @@ const onBeforeNavigate = () => {
   analytics.logSignUpClicked({ from: 'profile' })
 }
 
-export const LoggedOutHeader: FunctionComponent<Props> = ({ showForceUpdateBanner }) => {
+export const LoggedOutHeader: FunctionComponent<Props> = ({ showRemoteBanner }) => {
   const isPassForAllEnabled = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_PASS_FOR_ALL)
   const { data: settings } = useSettingsContext()
   const enableCreditV3 = settings?.wipEnableCreditV3
   const subtitle = `Tu as ${enableCreditV3 ? '17 ou 18' : 'entre 15 et 18'} ans\u00a0?`
-  const bodyText = `Identifie-toi pour découvrir des offres culturelles et bénéficier de ton crédit si tu as ${enableCreditV3 ? '17 ou 18' : 'entre 15 et 18'} ans.`
+  const bodyText = `Envie d’explorer des offres culturelles ou de débloquer ton crédit si tu as ${enableCreditV3 ? '17 ou 18' : 'entre 15 et 18'} ans\u00a0?`
 
   const { isDesktopViewport, colors } = useTheme()
 
   return (
     <HeaderWithGreyContainer
-      showForceUpdateBanner={showForceUpdateBanner}
+      showRemoteBanner={showRemoteBanner}
       title="Mon profil"
       subtitle={isPassForAllEnabled ? undefined : subtitle}>
       <TypoDS.Body>{bodyText}</TypoDS.Body>

@@ -3,6 +3,7 @@ import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { DepositType } from 'api/gen'
+import { setSettings } from 'features/auth/tests/setSettings'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { beneficiaryUser } from 'fixtures/user'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
@@ -39,6 +40,7 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 
 describe('<FinishSubscriptionModal />', () => {
   beforeEach(() => {
+    setSettings({ wipEnableCreditV3: false })
     setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])
   })
 
@@ -64,14 +66,6 @@ describe('<FinishSubscriptionModal />', () => {
     expect(screen).toMatchSnapshot()
   })
 
-  it('should display correct body when user turned eighteen and their previous deposit has been reset', async () => {
-    mockAuthContextWithUser({ ...beneficiaryUser, depositType: DepositType.GRANT_15_17 })
-
-    render(<FinishSubscriptionModal {...modalProps} />)
-
-    expect(screen).toMatchSnapshot()
-  })
-
   it('should close modal and navigate to stepper when pressing "Confirmer mes informations" button', () => {
     render(<FinishSubscriptionModal {...modalProps} />)
 
@@ -87,5 +81,36 @@ describe('<FinishSubscriptionModal />', () => {
     fireEvent.press(screen.getByTestId('Fermer la modale'))
 
     expect(hideModal).toHaveBeenCalledTimes(1)
+  })
+
+  it('should not display reset message', () => {
+    render(<FinishSubscriptionModal {...modalProps} />)
+
+    const subtitle = 'Ton crédit précédent a été remis à 0 €.'
+
+    expect(screen.queryByText(subtitle)).not.toBeOnTheScreen()
+  })
+
+  it('should display reset message', () => {
+    mockAuthContextWithUser({ ...beneficiaryUser, depositType: DepositType.GRANT_15_17 })
+    render(<FinishSubscriptionModal {...modalProps} />)
+
+    const subtitle = 'Ton crédit précédent a été remis à 0 €.'
+
+    expect(screen.getByText(subtitle)).toBeOnTheScreen()
+  })
+
+  describe('when enableCreditV3 activated', () => {
+    beforeEach(() => {
+      setSettings({ wipEnableCreditV3: true })
+    })
+
+    it('should not display reset message', () => {
+      render(<FinishSubscriptionModal {...modalProps} />)
+
+      const subtitle = 'Ton crédit précédent a été remis à 0 €.'
+
+      expect(screen.queryByText(subtitle)).not.toBeOnTheScreen()
+    })
   })
 })

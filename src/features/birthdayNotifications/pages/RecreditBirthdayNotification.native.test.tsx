@@ -11,7 +11,7 @@ import { render, screen } from 'tests/utils'
 import { RecreditBirthdayNotification } from './RecreditBirthdayNotification'
 
 jest.mock('features/auth/context/AuthContext')
-jest.mock('features/profile/api/useUpdateProfileMutation', () => ({
+jest.mock('features/profile/api/usePatchProfile', () => ({
   useResetRecreditAmountToShow: jest.fn().mockReturnValue({ mutate: jest.fn() }),
 }))
 

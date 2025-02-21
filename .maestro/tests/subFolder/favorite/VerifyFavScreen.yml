@@ -7,6 +7,6 @@ appId: ${MAESTRO_APP_ID}
     while:
       notVisible: "Découvrir le catalogue"
     commands:
-      - tapOn: "Supprimer"
+      - tapOn: "Supprimer.*"
       
 - tapOn: "Découvrir le catalogue"

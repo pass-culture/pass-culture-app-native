@@ -7,8 +7,8 @@ import {
   AccountSecurityStatus,
   useAccountSuspendTokenValidation,
 } from 'features/trustedDevice/api/useAccountSuspendTokenValidation'
-import { LoadingPage } from 'ui/components/LoadingPage'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import { LoadingPage } from 'ui/pages/LoadingPage'
 
 export const AccountSecurityBuffer = () => {
   const { replace } = useNavigation<UseNavigationType>()

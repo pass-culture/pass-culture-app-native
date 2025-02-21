@@ -18,7 +18,7 @@ jest.mock('features/search/context/SearchWrapper', () => ({
   }),
 }))
 
-jest.mock('features/profile/api/useUpdateProfileMutation')
+jest.mock('features/profile/api/usePatchProfile')
 
 jest.mock('libs/firebase/analytics/analytics')
 

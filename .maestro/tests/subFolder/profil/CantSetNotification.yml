@@ -1,8 +1,18 @@
 appId: ${MAESTRO_APP_ID}
 ---
-- tapOn:
-    text: 'Notifications'
-    index: 1
+- runFlow:
+    when:
+      platform: iOS
+    commands:
+    - tapOn: 'Notifications'
+
+- runFlow:
+    when:
+      platform: Android
+    commands:
+    - tapOn:
+        text: 'Notifications'
+        index: 1
 
 - assertVisible:
     id: 'Interrupteur Autoriser l’envoi d’e-mails'

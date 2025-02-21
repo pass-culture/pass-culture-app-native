@@ -2,8 +2,6 @@
 // import './why-did-you-render'
 import globalThisShim from 'globalthis/shim'
 import React, { Suspense, useEffect } from 'react'
-import 'react-app-polyfill/ie11'
-import 'react-app-polyfill/ie9'
 import 'react-app-polyfill/stable'
 import { ErrorBoundary } from 'react-error-boundary'
 
@@ -31,8 +29,8 @@ import { ReactQueryClientProvider } from 'libs/react-query/ReactQueryClientProvi
 import { ThemeProvider } from 'libs/styled'
 import 'resize-observer-polyfill/dist/ResizeObserver.global'
 import { theme } from 'theme'
-import { LoadingPage } from 'ui/components/LoadingPage'
 import { SnackBarProvider } from 'ui/components/snackBar/SnackBarContext'
+import { LoadingPage } from 'ui/pages/LoadingPage'
 import { SupportedBrowsersGate } from 'web/SupportedBrowsersGate'
 import 'reset-css'
 

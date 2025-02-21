@@ -1,5 +1,5 @@
 import { useNavigation, useRoute } from '@react-navigation/native'
-import isEqual from 'lodash/isEqual'
+import { isEqual } from 'lodash'
 import { useEffect, useState } from 'react'
 
 import { useAccessibilityFiltersContext } from 'features/accessibility/context/AccessibilityFiltersWrapper'

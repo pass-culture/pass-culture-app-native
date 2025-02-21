@@ -228,8 +228,6 @@ describe('<Venue />', () => {
     })
 
     beforeEach(() => {
-      setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_NEW_XP_CINE_FROM_VENUE])
-
       // Mock API Calls
       const mockedVenue = { ...venueDataTest, venueTypeCode: VenueTypeCodeKey.MOVIE }
       mockServer.getApi<VenueResponse>(`/v1/venue/${venueId}`, mockedVenue)

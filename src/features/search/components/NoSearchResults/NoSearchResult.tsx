@@ -1,48 +1,45 @@
-import React, { useCallback } from 'react'
+import React from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
-import { useSearch } from 'features/search/context/SearchWrapper'
-import { useNavigateToSearchFilter } from 'features/search/helpers/useNavigateToSearchFilter/useNavigateToSearchFilter'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { NoOffer } from 'ui/svg/icons/NoOffer'
 import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
-export function NoSearchResult() {
-  const { searchState } = useSearch()
-  const { navigateToSearchFilter } = useNavigateToSearchFilter()
+type NoSearchResultProps = {
+  title: string
+  subtitle?: string
+  errorDescription: string
+  ctaWording: string
+  onPress: VoidFunction
+}
 
-  const onPressUpdateFilters = useCallback(() => {
-    navigateToSearchFilter(searchState)
-  }, [navigateToSearchFilter, searchState])
-
-  const mainTitle = 'Pas de résultat'
-  const mainTitleComplement = `pour "${searchState.query}"`
-  const descriptionErrorText = searchState.query
-    ? 'Essaye un autre mot-clé, vérifie ta localisation ou modifie tes filtres pour trouver plus de résultats.'
-    : 'Vérifie ta localisation ou modifie tes filtres pour trouver plus de résultats.'
-
+export const NoSearchResult: React.FC<NoSearchResultProps> = ({
+  title,
+  subtitle,
+  errorDescription,
+  ctaWording,
+  onPress,
+}) => {
   return (
     <Container accessibilityRole={AccessibilityRole.STATUS}>
       <ContainerNoOffer>
         <StyledNoOffer />
       </ContainerNoOffer>
       <ContainerText>
-        <MainTitle>{mainTitle}</MainTitle>
-        {searchState.query ? (
-          <MainTitleComplement>{mainTitleComplement}</MainTitleComplement>
-        ) : null}
-        <DescriptionErrorTextContainer>
-          <DescriptionErrorText accessibilityLiveRegion="assertive">
-            {descriptionErrorText}
-          </DescriptionErrorText>
-        </DescriptionErrorTextContainer>
+        <Title>{title}</Title>
+        {subtitle ? <Subtitle>{subtitle}</Subtitle> : null}
+        <ErrorDescriptionContainer>
+          <ErrorDescription accessibilityLiveRegion="assertive">
+            {errorDescription}
+          </ErrorDescription>
+        </ErrorDescriptionContainer>
       </ContainerText>
       <Spacer.Column numberOfSpaces={6} />
       <View>
-        <ButtonPrimary wording="Modifier mes filtres" onPress={onPressUpdateFilters} />
+        <ButtonPrimary wording={ctaWording} onPress={onPress} />
       </View>
     </Container>
   )
@@ -76,22 +73,22 @@ const ContainerText = styled.View(({ theme }) => ({
     : {}),
 }))
 
-const MainTitle = styled(TypoDS.Title4).attrs({
+const Title = styled(TypoDS.Title4).attrs({
   ...getHeadingAttrs(2),
 })(({ theme }) => ({
   color: theme.colors.black,
   marginTop: getSpacing(4),
 }))
 
-const MainTitleComplement = styled(TypoDS.Body)(({ theme }) => ({
+const Subtitle = styled(TypoDS.Body)(({ theme }) => ({
   color: theme.colors.black,
 }))
 
-const DescriptionErrorText = styled(TypoDS.Body)(({ theme }) => ({
+const ErrorDescription = styled(TypoDS.Body)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))
 
-const DescriptionErrorTextContainer = styled(TypoDS.Body)({
+const ErrorDescriptionContainer = styled(TypoDS.Body)({
   marginTop: getSpacing(6),
   textAlign: 'center',
 })

@@ -9,7 +9,7 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getTabNavConfig, homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
-import { useUpdateProfileMutation } from 'features/profile/api/useUpdateProfileMutation'
+import { usePatchProfile } from 'features/profile/api/usePatchProfile'
 import { usePushPermission } from 'features/profile/pages/NotificationSettings/usePushPermission'
 import { SubscriptionThematicButton } from 'features/subscription/components/buttons/SubscriptionThematicButton'
 import { mapSubscriptionThemeToName } from 'features/subscription/helpers/mapSubscriptionThemeToName'
@@ -65,7 +65,7 @@ export const OnboardingSubscription = () => {
     initialSubscribedThemes
   )
 
-  const { mutate: updateProfile, isLoading: isUpdatingProfile } = useUpdateProfileMutation({
+  const { mutate: updateProfile, isLoading: isUpdatingProfile } = usePatchProfile({
     onSuccess: () => {
       analytics.logSubscriptionUpdate({ type: 'update', from: 'home' })
       showSuccessSnackBar({

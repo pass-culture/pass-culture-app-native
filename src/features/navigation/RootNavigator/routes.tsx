@@ -74,7 +74,7 @@ import { Venue } from 'features/venue/pages/Venue/Venue'
 import { VenuePreviewCarousel } from 'features/venue/pages/VenuePreviewCarousel/VenuePreviewCarousel'
 import { VenueMap } from 'features/venueMap/pages/VenueMap/VenueMap'
 import { ABTestingPOC } from 'libs/firebase/remoteConfig/ABTestingPOC'
-import { LoadingPage } from 'ui/components/LoadingPage'
+import { LoadingPage } from 'ui/pages/LoadingPage'
 
 import { RootRoute } from './types'
 

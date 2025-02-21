@@ -51,7 +51,10 @@ export const VenueBody: FunctionComponent<Props> = ({
         {headlineOfferData ? (
           <MarginContainer gap={2}>
             <TypoDS.Title3 {...getHeadingAttrs(2)}>À la une</TypoDS.Title3>
-            <HeadlineOffer {...headlineOfferData} />
+            <HeadlineOffer
+              navigateTo={{ screen: 'Offer', params: { id: headlineOfferData.id } }}
+              {...headlineOfferData}
+            />
           </MarginContainer>
         ) : null}
         <VenueOffers

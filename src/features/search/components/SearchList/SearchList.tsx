@@ -2,7 +2,6 @@ import { FlashList } from '@shopify/flash-list'
 import React from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
-import { NoSearchResult } from 'features/search/components/NoSearchResults/NoSearchResult'
 import { SearchListHeader } from 'features/search/components/SearchListHeader/SearchListHeader'
 import { LIST_ITEM_HEIGHT } from 'features/search/constants'
 import { SearchListProps } from 'features/search/types'
@@ -32,7 +31,7 @@ export const SearchList: React.FC<SearchListProps> = React.forwardRef<
   ) => {
     const theme = useTheme()
 
-    return nbHits > 0 ? (
+    return (
       <FlashList
         estimatedItemSize={LIST_ITEM_HEIGHT}
         ref={ref}
@@ -58,10 +57,6 @@ export const SearchList: React.FC<SearchListProps> = React.forwardRef<
         keyboardShouldPersistTaps="handled"
         keyboardDismissMode="on-drag"
       />
-    ) : (
-      <NoSearchResultsWrapper>
-        <NoSearchResult />
-      </NoSearchResultsWrapper>
     )
   }
 )
@@ -73,8 +68,3 @@ const Separator = styled.View(({ theme }) => ({
   marginHorizontal: getSpacing(6),
   marginVertical: getSpacing(4),
 }))
-
-const NoSearchResultsWrapper = styled.View({
-  flex: 1,
-  flexDirection: 'row',
-})

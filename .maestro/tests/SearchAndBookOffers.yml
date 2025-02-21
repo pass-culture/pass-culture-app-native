@@ -1,6 +1,7 @@
 appId: ${MAESTRO_APP_ID}
 tags:
   - local
+  - nightlyIOS
   - cloud
 ---
 - runFlow: subFolder/commons/LaunchApp.yml

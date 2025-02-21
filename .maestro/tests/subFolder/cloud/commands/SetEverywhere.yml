@@ -1,0 +1,9 @@
+appId: ${MAESTRO_APP_ID}
+---
+- runFlow:
+    when:
+      platform: iOS
+    commands:
+    - tapOn: "Ouvrir la modale de localisation depuis le widget"
+    - hideKeyboard
+    - tapOn: 'France entière'

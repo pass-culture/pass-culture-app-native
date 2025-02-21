@@ -2,6 +2,12 @@ appId: app.passculture.webapp
 ---
 - runFlow:
     when:
+      visible: 'Autorisez-vous.*'
+      platform: iOS
+    commands:
+    - tapOn: "Autoriser"
+- runFlow:
+    when:
       visible: "Respect de ta vie privée"
     commands:
       - tapOn:

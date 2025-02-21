@@ -70,9 +70,9 @@ jobs:
     secrets:
       GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
       GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
-  yarn-ts-prune:
+  check-deadcode:
     needs: yarn-install
-    uses: ./.github/workflows/dev_on_workflow_ts_prune.yml
+    uses: ./.github/workflows/dev_on_workflow_check_deadcode.yml
     with:
       CACHE_BUCKET_NAME: passculture-infra-prod-github-runner-cache
     secrets:

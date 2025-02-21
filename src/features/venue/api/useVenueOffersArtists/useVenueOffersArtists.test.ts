@@ -1,4 +1,4 @@
-import _ from 'lodash'
+import { orderBy, shuffle } from 'lodash'
 import { UseQueryResult } from 'react-query'
 
 import { SubcategoryIdEnum } from 'api/gen'
@@ -130,7 +130,7 @@ describe('useVenueOffersArtists', () => {
     useVenueOffersSpy.mockReturnValueOnce({
       isLoading: false,
       data: {
-        hits: _.shuffle(mockedArtistList),
+        hits: shuffle(mockedArtistList),
         nbHits: mockedArtistList.length,
       },
     } as unknown as UseQueryResult<VenueOffers, unknown>)
@@ -145,7 +145,7 @@ describe('useVenueOffersArtists', () => {
         'https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDZQ',
       name: `Artist ${index + 1}`,
     })).concat(
-      _.orderBy(
+      orderBy(
         Array.from({ length: 24 }, (_, index) => ({
           id: index + 11,
           image:
