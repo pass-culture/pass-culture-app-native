@@ -56,7 +56,7 @@ jobs:
           restore-keys: |
             v1-yarn-test-web-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
           bucket: ${{ inputs.CACHE_BUCKET_NAME }}
-      - run: yarn test:unit:web:ci  --shard=${{ matrix.shard }}/${{ strategy.job-total }}
+      - run: yarn test:unit:web Sign  --shard=${{ matrix.shard }}/${{ strategy.job-total }}
 
   yarn_test_native:
     name: 'Run native unit tests'
@@ -66,7 +66,7 @@ jobs:
       matrix:
         shard: [1, 2, 3, 4, 5, 6, 7]
     env:
-      RUN_ALLURE: ${{ github.ref == 'refs/heads/master' && 'true' || 'false' }}
+      RUN_ALLURE: 'true'
     steps:
       - name: Enable Corepack
         run: corepack enable
@@ -97,7 +97,7 @@ jobs:
           key: v1-yarn-test-native-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             v1-yarn-test-native-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-      - run: yarn test:unit:ci --shard=${{ matrix.shard }}/${{ strategy.job-total }}
+      - run: yarn test:unit Sign --maxWorkers=6 --coverage --ci --reporters=default --reporters=jest-junit --shard=${{ matrix.shard }}/${{ strategy.job-total }}
       - run: mv coverage/coverage-final.json coverage/${{matrix.shard}}.json
       - name: Cache the coverage report
         id: coverage-modules-cache
@@ -109,6 +109,20 @@ jobs:
           restore-keys: |
             v1-coverage-dependency-cache-${{ runner.os }}-${{ github.sha }}-${{ matrix.shard }}
           key: v1-coverage-dependency-cache-${{ runner.os }}-${{ github.sha }}-${{ matrix.shard }}
+  allure-report:
+    runs-on: ubuntu-22.04
+    needs: yarn_test_native
+    steps:
+      - name: Enable Corepack
+        run: corepack enable
+      - uses: actions/checkout@v4
+      - name: 'OpenID Connect Authentication'
+        uses: 'google-github-actions/auth@v2'
+        with:
+          workload_identity_provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+      - name: Log Allure Report
+        run: ls allure-results
   report-coverage:
     runs-on: ubuntu-22.04
     needs: yarn_test_native

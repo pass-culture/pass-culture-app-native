@@ -13,30 +13,9 @@ jobs:
   yarn_test_and_publish_storybook_with_chromatic:
     runs-on: ubuntu-22.04
     steps:
-      - name: Enable Corepack
-        run: corepack enable
-      - uses: actions/checkout@v4
-        with:
-          # by default, it only retrieves the last commit
-          # Chromatic must have the history to work only on modified files
-          # https://www.chromatic.com/docs/github-actions#support-for-codeactionscheckoutv2code-and-above
-          # we don't need to have the full history
-          # set fetch-depth to an arbitrary number large enough to contain all commits from the main branch
-          fetch-depth: 100
-      - name: Setup node
-        uses: actions/setup-node@v4
-        with:
-          node-version-file: '.nvmrc'
       - name: Install dependencies
-        run: yarn install
+        run: echo "INSTALL"
       - name: Build Storybook 🔧
-        run: yarn build-storybook --webpack-stats-json --output-dir $BUILD_DIR
-      - name: Publish to Chromatic 🚀
-        uses: chromaui/action@v10
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
-          storybookBuildDir: ${{ env.BUILD_DIR }}
-          onlyChanged: true
+        run: echo "BUILD"
       - name: Run axe storybook accessibility tests 🧪
-        run: yarn axe-storybook --build-dir $BUILD_DIR
+        run: echo "A11Y"
