@@ -1,10 +1,8 @@
 // eslint-disable-next-line no-restricted-imports
 import { isSafari, browserVersion } from 'react-device-detect'
-import { Platform } from 'react-native'
 
 import { theme } from 'theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
+import { Argument } from 'ui/theme/customFocusOutline/type'
 
 /*
  * The ':focus-visible' pseudo-class support starting with Safari 15.4 (https://caniuse.com/css-focus-visible)
@@ -13,17 +11,7 @@ import { ColorsEnum } from 'ui/theme/colors'
  */
 const focus = isSafari && Number(browserVersion) < 15.4 ? '&:focus' : '&:focus-visible'
 
-export function customFocusOutline({
-  color,
-  width,
-  isFocus,
-  noOffset = false,
-}: {
-  color?: ColorsEnum
-  width?: number
-  isFocus?: boolean
-  noOffset?: boolean
-}) {
+export function customFocusOutline({ color, width, isFocus, noOffset = false }: Argument) {
   const outlineRules = {
     outlineColor: color ?? theme.outline.color,
     outlineWidth: width ?? theme.outline.width,
@@ -31,12 +19,10 @@ export function customFocusOutline({
     outlineOffset: noOffset ? 0 : theme.outline.offSet,
   }
 
-  const outlineFocusWeb = isFocus
+  return isFocus
     ? outlineRules
     : {
         [focus]: outlineRules,
         ['&:active']: { outline: 'none', opacity: theme.activeOpacity },
       }
-
-  return Platform.OS === 'web' ? outlineFocusWeb : {}
 }

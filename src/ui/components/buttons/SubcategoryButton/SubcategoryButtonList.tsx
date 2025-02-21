@@ -1,33 +1,26 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { NativeCategoryEnum } from 'features/search/types'
 import {
   SubcategoryButton,
-  SubcategoryButtonProps,
   SUBCATEGORY_BUTTON_HEIGHT,
+  SubcategoryButtonItem,
 } from 'ui/components/buttons/SubcategoryButton/SubcategoryButton'
 import { getSpacing } from 'ui/theme'
 
-export type SubcategoryButtonItem = Omit<SubcategoryButtonProps, 'onPress'> & {
-  nativeCategory: NativeCategoryEnum
-}
-
 type SubcategoryButtonListProps = {
   subcategoryButtonContent: SubcategoryButtonItem[]
-  onPress: (nativeCategory: NativeCategoryEnum) => void
 }
 
 export const SubcategoryButtonList: React.FC<SubcategoryButtonListProps> = ({
   subcategoryButtonContent,
-  onPress,
 }) => (
   <StyledScrollView
     horizontal
     showsHorizontalScrollIndicator={false}
     itemsNumber={subcategoryButtonContent.length}>
     {subcategoryButtonContent.map((item) => (
-      <SubcategoryButton key={item.label} {...item} onPress={() => onPress(item.nativeCategory)} />
+      <SubcategoryButton key={item.label} {...item} />
     ))}
   </StyledScrollView>
 )
