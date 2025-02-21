@@ -102,10 +102,12 @@ const useHandleSigninSuccess = (
         case StepperOrigin.BOOKING:
           navigate('Offer', { id: offerId, openModalOnNavigation: true })
           return
-
         case StepperOrigin.FAVORITE:
-        case StepperOrigin.OFFER:
           addFavorite({ offerId })
+          navigate('Offer', { id: offerId })
+          return
+        case StepperOrigin.OFFER:
+        case StepperOrigin.NOTIFICATION:
           navigate('Offer', { id: offerId })
           return
         default:
