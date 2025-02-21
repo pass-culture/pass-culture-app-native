@@ -30,7 +30,7 @@ export const ChronicleOfferInfo = ({
     <View style={[style, { maxWidth: imageStyle.width }]}>
       <View style={imageStyle}>
         <OfferBodyImagePlaceholder categoryId={categoryId ?? CategoryIdEnum.LIVRE} />
-        <OfferImage style={imageStyle} url={imageUrl} />
+        {imageUrl ? <OfferImage style={imageStyle} url={imageUrl} testID="offerImage" /> : null}
       </View>
       <TextWrapper>
         <TypoDS.Title3 numberOfLines={1}>{title}</TypoDS.Title3>
