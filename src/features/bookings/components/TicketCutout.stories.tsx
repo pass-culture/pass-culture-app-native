@@ -1,17 +1,18 @@
 import { ComponentMeta } from '@storybook/react'
 import React from 'react'
+import styled from 'styled-components/native'
 
 import { SubcategoryIdEnum, WithdrawalTypeEnum } from 'api/gen'
 import { TicketBody } from 'features/bookings/components/TicketBody/TicketBody'
 import { TicketCutout } from 'features/bookings/components/TicketCutout'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
-import { VenueBlockWithItinerary } from 'features/offer/components/OfferVenueBlock/VenueBlockWithItinerary'
+import { VenueBlock } from 'features/offer/components/OfferVenueBlock/VenueBlock'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { InfoBanner } from 'ui/components/banners/InfoBanner'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 import { IdCard } from 'ui/svg/icons/IdCard'
-import { getSpacing, TypoDS } from 'ui/theme'
+import { TypoDS } from 'ui/theme'
 
 const meta: ComponentMeta<typeof TicketCutout> = {
   title: 'Features/bookings/TicketCutout',
@@ -25,7 +26,9 @@ const meta: ComponentMeta<typeof TicketCutout> = {
 }
 export default meta
 
-const VENUE_THUMBNAIL_SIZE = getSpacing(15)
+const StyledBody = styled(TypoDS.Body)({
+  textAlign: 'center',
+})
 
 const variantConfig: Variants<typeof TicketCutout> = [
   {
@@ -53,19 +56,10 @@ const variantConfig: Variants<typeof TicketCutout> = [
             venue={bookingsSnap.ongoing_bookings[0].stock.offer.venue}
             isEvent
           />
-          <TypoDS.Body>Présente ce billet pour accéder à l’évènement</TypoDS.Body>
+          <StyledBody>Présente ce billet pour accéder à l’évènement</StyledBody>
         </ViewGap>
       ),
-      venueInfo: (
-        <VenueBlockWithItinerary
-          shouldDisplayItineraryButton
-          offerFullAddress="71 Rue du Temple, 75003 PARIS"
-          venue={bookingsSnap.ongoing_bookings[0].stock.offer.venue}
-          address={bookingsSnap.ongoing_bookings[0].stock.offer.address}
-          offerId={bookingsSnap.ongoing_bookings[0].stock.offer.id}
-          thumbnailSize={VENUE_THUMBNAIL_SIZE}
-        />
-      ),
+      venueInfo: <VenueBlock venue={bookingsSnap.ongoing_bookings[0].stock.offer.venue} />,
     },
   },
   {
@@ -94,16 +88,7 @@ const variantConfig: Variants<typeof TicketCutout> = [
           />
         </ViewGap>
       ),
-      venueInfo: (
-        <VenueBlockWithItinerary
-          shouldDisplayItineraryButton={false}
-          offerFullAddress="71 Rue du Temple, 75003 PARIS"
-          venue={bookingsSnap.ongoing_bookings[0].stock.offer.venue}
-          address={bookingsSnap.ongoing_bookings[0].stock.offer.address}
-          offerId={bookingsSnap.ongoing_bookings[0].stock.offer.id}
-          thumbnailSize={VENUE_THUMBNAIL_SIZE}
-        />
-      ),
+      venueInfo: <VenueBlock venue={bookingsSnap.ongoing_bookings[0].stock.offer.venue} />,
     },
   },
 ]
