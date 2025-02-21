@@ -1,6 +1,6 @@
-# Title : DR001 - Drawing up Decision Records to track structuring decisions
+# DR001 - Drawing up Decision Records to track structuring decisions
 
-> Status : ~~Projet-~~ Proposé ~~- Adopté - Remplacé - Retiré~~
+> Adopté
 
 ## Context
 
