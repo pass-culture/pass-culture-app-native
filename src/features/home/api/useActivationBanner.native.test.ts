@@ -79,7 +79,7 @@ describe('useActivationBanner', () => {
       await act(async () => {})
 
       expect(result.current.banner).toEqual({
-        title: 'Débloque tes 300\u00a0€',
+        title: 'API - Débloque tes 300\u00a0€',
         text: 'API - Bénéficie de ton crédit maintenant !',
         name: BannerName.activation_banner,
       })
@@ -103,7 +103,7 @@ describe('useActivationBanner', () => {
       await act(async () => {})
 
       expect(result.current.banner).toEqual({
-        title: 'Débloque tes 300\u00a0€',
+        title: 'API - Débloque tes 300\u00a0€',
         text: 'API - Bénéficie de ton crédit maintenant !',
         name: BannerName.activation_banner,
       })
@@ -119,7 +119,7 @@ describe('useActivationBanner', () => {
       await act(async () => {})
 
       expect(result.current.banner).toEqual({
-        title: 'Débloque tes 300\u00a0€',
+        title: 'API - Débloque tes 300\u00a0€',
         text: 'API - Bénéficie de ton crédit maintenant !',
         name: BannerName.activation_banner,
       })
@@ -142,7 +142,7 @@ describe('useActivationBanner', () => {
       await act(async () => {})
 
       expect(result.current.banner).toEqual({
-        title: 'Débloque tes 300\u00a0€',
+        title: 'API - Débloque tes 300\u00a0€',
         text: 'API - Bénéficie de ton crédit maintenant !',
         name: BannerName.activation_banner,
       })
@@ -159,7 +159,7 @@ describe('useActivationBanner', () => {
       await act(async () => {})
 
       expect(result.current.banner).toEqual({
-        title: 'Débloque ton crédit',
+        title: 'API - Débloque tes 300\u00a0€',
         text: 'API - Bénéficie de ton crédit maintenant !',
         name: BannerName.activation_banner,
       })
