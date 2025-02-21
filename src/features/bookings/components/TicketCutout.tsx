@@ -108,7 +108,6 @@ const Row = styled.View({
 })
 
 const ContentBlock = styled.View(({ theme }) => ({
-  paddingVertical: getSpacing(6),
   marginHorizontal: getSpacing(6),
   backgroundColor: 'white',
   gap: getSpacing(6),
@@ -128,8 +127,10 @@ const BottomBlock = styled(ContentBlock)({
   borderBottomLeftRadius: getSpacing(6),
   borderBottomRightRadius: getSpacing(6),
   justifyContent: 'center',
+  paddingBottom: getSpacing(6),
 })
 const TopBlock = styled(ContentBlock)({
   borderTopLeftRadius: getSpacing(6),
   borderTopRightRadius: getSpacing(6),
+  paddingTop: getSpacing(6),
 })
