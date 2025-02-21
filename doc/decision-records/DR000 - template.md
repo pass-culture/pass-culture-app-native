@@ -1,4 +1,4 @@
-# Title : DR000 - template
+# DR000 - template
 
 > Status : Projcet ~~-Proposed - Adopted - Replaced - Withdrawn~~
 
