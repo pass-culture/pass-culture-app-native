@@ -38,12 +38,12 @@ appId: ${MAESTRO_APP_ID}
 
 - tapOn: 'Facebook'
 - waitForAnimationToEnd
-- tapOn: "Fermer"
-- assertVisible:
-    text: "Pass Culture"
-    index: 1
-- runFlow:
-    file: ../../subFolder/cloud/commands/DoubleTapOnBack.yml
+# - TODO: Investiguer la 429 à l'ouverture du lien externe
+# - tapOn: "Fermer"
+# - assertVisible:
+#     text: "Pass Culture"
+#     index: 1
+- pressKey: back
 
 - scrollUntilVisible:
     element:

@@ -3,12 +3,15 @@ import React, { ComponentProps } from 'react'
 import { ReactTestInstance } from 'react-test-renderer'
 
 import {
+  FavoriteResponse,
   OfferResponseV2,
+  PaginatedFavoritesResponse,
   RecommendationApiParams,
   SubcategoriesResponseModelv2,
   SubcategoryIdEnum,
   SubcategoryIdEnumv2,
 } from 'api/gen'
+import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteResponseSnap'
 import * as useGoBack from 'features/navigation/useGoBack'
 import { chroniclePreviewToChronicalCardData } from 'features/offer/adapters/chroniclePreviewToChronicleCardData'
 import * as useSimilarOffers from 'features/offer/api/useSimilarOffers'
@@ -17,6 +20,7 @@ import { PlaylistType } from 'features/offer/enums'
 import { mockSubcategory } from 'features/offer/fixtures/mockSubcategory'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import * as useArtistResults from 'features/offer/helpers/useArtistResults/useArtistResults'
+import { beneficiaryUser } from 'fixtures/user'
 import {
   mockedAlgoliaOffersWithSameArtistResponse,
   mockedAlgoliaResponse,
@@ -30,16 +34,17 @@ import { Position } from 'libs/location'
 import { SuggestedPlace } from 'libs/place/types'
 import { BatchEvent, BatchProfile } from 'libs/react-native-batch'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
-import { mockAuthContextWithoutUser } from 'tests/AuthContextUtils'
+import { mockAuthContextWithoutUser, mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, cleanup, fireEvent, render, screen, userEvent, waitFor } from 'tests/utils'
+import { cleanup, act, render, screen, fireEvent, userEvent, waitFor } from 'tests/utils'
 import * as AnchorContextModule from 'ui/components/anchor/AnchorContext'
 
 import { OfferContent } from './OfferContent'
 
 jest.unmock('react-native/Libraries/Animated/createAnimatedComponent')
-jest.useFakeTimers()
+
+jest.mock('libs/jwt/jwt')
 
 const Kourou: SuggestedPlace = {
   label: 'Kourou',
@@ -155,6 +160,15 @@ const nativeEventBottom = {
     contentSize: { height: 1900 },
   },
 }
+
+const mockOnLayoutWithButton = {
+  nativeEvent: {
+    layout: {
+      height: 157,
+    },
+  },
+}
+
 const BATCH_TRIGGER_DELAY_IN_MS = 5000
 
 jest.useFakeTimers()
@@ -409,6 +423,52 @@ describe('<OfferContent />', () => {
     })
   })
 
+  describe('Offer footer', () => {
+    describe('favorite button', () => {
+      const comingSoonOffer = {
+        ...offerResponseSnap,
+        isReleased: false,
+        publicationDate: '2025-04-01T14:15:00Z',
+      }
+
+      it('should display "Mettre en favori" button', async () => {
+        renderOfferContent({ offer: comingSoonOffer })
+
+        expect(await screen.findByText('Mettre en favori')).toBeOnTheScreen()
+      })
+
+      describe('analytics', () => {
+        beforeEach(() => {
+          mockAuthContextWithUser(beneficiaryUser, { persist: true })
+          const favoritesResponseWithoutOfferIn: PaginatedFavoritesResponse = {
+            page: 1,
+            nbFavorites: 0,
+            favorites: [],
+          }
+          const favoriteResponse: FavoriteResponse = favoriteResponseSnap
+          mockServer.getApi<PaginatedFavoritesResponse>(
+            '/v1/me/favorites',
+            favoritesResponseWithoutOfferIn
+          )
+          mockServer.postApi('/v1/me/favorites', favoriteResponse)
+        })
+
+        it('should send logHasAddedOfferToFavorites event with correct params', async () => {
+          renderOfferContent({ offer: comingSoonOffer })
+
+          await screen.findAllByText(comingSoonOffer.name)
+
+          await user.press(await screen.findByText('Mettre en favori'))
+
+          expect(analytics.logHasAddedOfferToFavorites).toHaveBeenNthCalledWith(
+            1,
+            expect.objectContaining({ offerId: comingSoonOffer.id, from: 'comingSoonOffer' })
+          )
+        })
+      })
+    })
+  })
+
   describe('Batch trigger', () => {
     it('should trigger has_seen_offer_for_survey event after 5 seconds', async () => {
       renderOfferContent({})
@@ -656,14 +716,20 @@ describe('<OfferContent />', () => {
           offer: { ...offerResponseSnap, subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER },
         })
 
+        const descriptions = screen.getAllByTestId('description')
+
+        await act(async () => {
+          descriptions[0]?.props.onLayout(mockOnLayoutWithButton)
+        })
+
         const seeMoreButtons = screen.getAllByText('Voir plus')
 
         // Using as because links is never undefined and the typing is not correct
-        await user.press(seeMoreButtons[2] as ReactTestInstance)
+        await user.press(seeMoreButtons[0] as ReactTestInstance)
 
         expect(mockNavigate).toHaveBeenNthCalledWith(1, 'Chronicles', {
           offerId: 116656,
-          chronicleId: 3,
+          chronicleId: 1,
           from: 'chronicles',
         })
       })
@@ -673,14 +739,20 @@ describe('<OfferContent />', () => {
           offer: { ...offerResponseSnap, subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER },
         })
 
+        const descriptions = screen.getAllByTestId('description')
+
+        await act(async () => {
+          descriptions[0]?.props.onLayout(mockOnLayoutWithButton)
+        })
+
         const seeMoreButtons = screen.getAllByText('Voir plus')
 
         // Using as because links is never undefined and the typing is not correct
-        await user.press(seeMoreButtons[2] as ReactTestInstance)
+        await user.press(seeMoreButtons[0] as ReactTestInstance)
 
         expect(analytics.logConsultChronicle).toHaveBeenNthCalledWith(1, {
           offerId: 116656,
-          chronicleId: 3,
+          chronicleId: 1,
         })
       })
     })

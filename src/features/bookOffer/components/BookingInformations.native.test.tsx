@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React from 'react'
 
 import { OfferResponseV2, SubcategoryIdEnum } from 'api/gen'
 import { initialBookingState } from 'features/bookOffer/context/reducer'

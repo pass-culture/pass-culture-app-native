@@ -6,6 +6,7 @@ import {
   RemoteBannerRedirectionType,
   RemoteBannerType,
 } from 'features/remoteBanner/components/remoteBannerSchema'
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -136,6 +137,77 @@ describe('RemoteBanner', () => {
 
     expect(analytics.logHasClickedRemoteBanner).toHaveBeenCalledWith('Profile', {
       ...bannerAppStore,
+    })
+  })
+
+  describe('accessibility', () => {
+    it('should have correct accessibilityRole for store redirection', async () => {
+      setFeatureFlags([
+        { featureFlag: RemoteStoreFeatureFlags.SHOW_REMOTE_BANNER, options: bannerAppStore },
+      ])
+      render(<RemoteBanner from="Profile" />)
+
+      const buttonBanner = await screen.findByRole(AccessibilityRole.BUTTON)
+
+      expect(buttonBanner).toBeTruthy()
+    })
+
+    it('should have correct accessibilityRole for external redirection', async () => {
+      setFeatureFlags([
+        { featureFlag: RemoteStoreFeatureFlags.SHOW_REMOTE_BANNER, options: bannerExternalUrl },
+      ])
+      render(<RemoteBanner from="Profile" />)
+
+      const linkBanner = await screen.findByRole(AccessibilityRole.LINK)
+
+      expect(linkBanner).toBeTruthy()
+    })
+
+    it('should have correct accessibilityLabel for store redirection', async () => {
+      setFeatureFlags([
+        { featureFlag: RemoteStoreFeatureFlags.SHOW_REMOTE_BANNER, options: bannerAppStore },
+      ])
+      render(<RemoteBanner from="Profile" />)
+
+      const banner = await screen.findByText('title 1')
+      await user.press(banner)
+
+      const accessibilityLabel = await screen.findByLabelText(`Nouvelle fenêtre : ${appStoreUrl}`)
+
+      expect(accessibilityLabel).toBeTruthy()
+    })
+
+    it('should have correct accessibilityLabel for external redirection', async () => {
+      setFeatureFlags([
+        { featureFlag: RemoteStoreFeatureFlags.SHOW_REMOTE_BANNER, options: bannerExternalUrl },
+      ])
+      render(<RemoteBanner from="Profile" />)
+
+      const banner = await screen.findByText('title 1')
+      await user.press(banner)
+
+      const accessibilityLabel = await screen.findByLabelText(
+        'Nouvelle fenêtre : https://www.test.fr'
+      )
+
+      expect(accessibilityLabel).toBeTruthy()
+    })
+
+    it('should not have accessibilityLabel if external URL is missing', async () => {
+      setFeatureFlags([
+        {
+          featureFlag: RemoteStoreFeatureFlags.SHOW_REMOTE_BANNER,
+          options: bannerExternalUrlWithMissingUrl,
+        },
+      ])
+      render(<RemoteBanner from="Profile" />)
+
+      const banner = await screen.findByText('title 1')
+      await user.press(banner)
+
+      const accessibilityLabel = screen.queryByLabelText('Nouvelle fenêtre : https://www.test.fr')
+
+      expect(accessibilityLabel).toBeFalsy()
     })
   })
 })

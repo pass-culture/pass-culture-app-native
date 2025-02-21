@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { storage } from 'libs/storage'
 import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
@@ -13,9 +14,8 @@ import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
 import { ClockFilled } from 'ui/svg/icons/ClockFilled'
-import { Spacer, TypoDS } from 'ui/theme'
-import { CaptionNeutralInfo } from 'ui/theme/typography'
-import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
+import { Spacer, TypoDS, getSpacing } from 'ui/theme'
+import { CaptionNeutralInfo, TextProps } from 'ui/theme/typography'
 
 const useGetPageWording = (userRequiresIdCheck?: boolean) => {
   const { eighteenYearsOldDeposit } = useDepositAmountsByAge()
@@ -34,29 +34,23 @@ const useGetPageWording = (userRequiresIdCheck?: boolean) => {
 export function EighteenBirthday() {
   const { user } = useAuthContext()
   const pageWording = useGetPageWording(user?.requiresIdCheck)
-  const currency = useGetCurrencyToDisplay()
-  const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
-  const zero = formatCurrencyFromCents(0, currency, euroToPacificFrancRate)
 
   useEffect(() => {
     storage.saveObject('has_seen_eligible_card', true)
   }, [])
 
   return (
-    <GenericInfoPageWhite animation={TutorialPassLogo} title="Tu as 18 ans&nbsp;!">
-      <StyledTitle>{pageWording.text}</StyledTitle>
-      <Spacer.Column numberOfSpaces={4} />
-      <StyledCaptionNeutralInfo>
-        Ton crédit précédent a été remis à {zero}.
-      </StyledCaptionNeutralInfo>
-      <Spacer.Column numberOfSpaces={8} />
+    <GenericInfoPageWhite
+      animation={TutorialPassLogo}
+      title="Tu as 18 ans&nbsp;!"
+      subtitle={pageWording.text}
+      subtitleComponent={SubtitleComponent}>
       <InternalTouchableLink
         as={ButtonPrimary}
         wording={pageWording.buttonText}
         navigateTo={{ screen: 'Stepper' }}
       />
       <Spacer.Column numberOfSpaces={2} />
-
       <InternalTouchableLink
         as={ButtonTertiaryBlack}
         wording="Plus tard"
@@ -67,10 +61,32 @@ export function EighteenBirthday() {
   )
 }
 
-const StyledCaptionNeutralInfo = styled(CaptionNeutralInfo)({
-  textAlign: 'center',
+function SubtitleComponent(props: TextProps) {
+  const { data: settings } = useSettingsContext()
+  const enableCreditV3 = settings?.wipEnableCreditV3
+
+  const currency = useGetCurrencyToDisplay()
+  const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
+  const zero = formatCurrencyFromCents(0, currency, euroToPacificFrancRate)
+
+  return (
+    <Wrapper>
+      <TypoDS.Body {...props} />
+      <Spacer.Column numberOfSpaces={4} />
+      {enableCreditV3 ? null : (
+        <StyledCaptionNeutralInfo>
+          Ton crédit précédent a été remis à {zero}.
+        </StyledCaptionNeutralInfo>
+      )}
+    </Wrapper>
+  )
+}
+
+const Wrapper = styled.View({
+  marginTop: getSpacing(4),
+  alignItems: 'center',
 })
 
-const StyledTitle = styled(TypoDS.Title4).attrs(getHeadingAttrs(2))({
+const StyledCaptionNeutralInfo = styled(CaptionNeutralInfo)({
   textAlign: 'center',
 })

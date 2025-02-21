@@ -5,7 +5,18 @@ appId: ${MAESTRO_APP_ID}
 - tapOn: "Choisir une localisation"
 - inputText: "Paris"
 - hideKeyboard
-- tapOn: "Paris0Paris"
+
+- runFlow:
+    when:
+      platform: iOS
+    commands:
+    - tapOn: "Paris Paris"
+
+- runFlow:
+    when:
+      platform: Android
+    commands:
+    - tapOn: "Paris0Paris"
 - tapOn: "Valider et voir sur la carte"
 
 - tapOn: 

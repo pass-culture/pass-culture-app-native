@@ -1,6 +1,6 @@
 import { useIsFocused } from '@react-navigation/native'
 import { FlashList } from '@shopify/flash-list'
-import debounce from 'lodash/debounce'
+import { debounce } from 'lodash'
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { FlatList, Platform, ScrollView, View } from 'react-native'
 import styled from 'styled-components/native'
@@ -24,6 +24,8 @@ import {
   useAppliedFilters,
 } from 'features/search/helpers/useAppliedFilters/useAppliedFilters'
 import { useFilterCount } from 'features/search/helpers/useFilterCount/useFilterCount'
+import { useNavigateToSearch } from 'features/search/helpers/useNavigateToSearch/useNavigateToSearch'
+import { useNavigateToSearchFilter } from 'features/search/helpers/useNavigateToSearchFilter/useNavigateToSearchFilter'
 import { usePrevious } from 'features/search/helpers/usePrevious'
 import { CategoriesModal } from 'features/search/pages/modals/CategoriesModal/CategoriesModal'
 import { DatesHoursModal } from 'features/search/pages/modals/DatesHoursModal/DatesHoursModal'
@@ -86,11 +88,14 @@ export const SearchResultsContent: React.FC = () => {
 
   const { disabilities } = useAccessibilityFiltersContext()
   const { searchState } = useSearch()
+  const { navigateToSearchFilter } = useNavigateToSearchFilter()
+  const { navigateToSearch: navigateToSearchResults } = useNavigateToSearch('SearchResults')
+
   const showSkeleton = useIsFalseWithDelay(isLoading, ANIMATION_DURATION)
   const isRefreshing = useIsFalseWithDelay(isFetching, ANIMATION_DURATION)
   const isFocused = useIsFocused()
   const { user } = useAuthContext()
-  const { geolocPosition, selectedLocationMode } = useLocation()
+  const { geolocPosition, selectedLocationMode, onResetPlace } = useLocation()
   const previousGeolocPosition = usePrevious(geolocPosition)
   const shouldDisplayVenueMapInSearch = useFeatureFlag(
     RemoteStoreFeatureFlags.WIP_VENUE_MAP_IN_SEARCH
@@ -362,15 +367,55 @@ export const SearchResultsContent: React.FC = () => {
     />
   )
 
-  const renderSearchList = () => {
-    if (nbHits === 0) {
+  const renderNoSearchResults = () => {
+    const isEverywhereSearch = searchState.locationFilter.locationType === LocationMode.EVERYWHERE
+
+    const noResultsProps = {
+      title: 'Pas de résultat',
+      subtitle: searchState.query ? `pour "${searchState.query}"` : '',
+      errorDescription: searchState.query
+        ? 'Essaye un autre mot-clé, vérifie ta localisation ou modifie tes filtres pour trouver plus de résultats.'
+        : 'Vérifie ta localisation ou modifie tes filtres pour trouver plus de résultats.',
+    }
+
+    if (isEverywhereSearch) {
       return (
         <NoSearchResultsWrapper>
-          <NoSearchResult />
+          <NoSearchResult
+            {...noResultsProps}
+            ctaWording="Modifier mes filtres"
+            onPress={() => navigateToSearchFilter(searchState)}
+          />
         </NoSearchResultsWrapper>
       )
     }
-    return shouldDisplayTabLayout ? renderTabLayout() : tabPanels[Tab.SEARCHLIST]
+
+    return (
+      <NoSearchResultsWrapper>
+        <NoSearchResult
+          {...noResultsProps}
+          errorDescription="Élargis la zone de recherche pour plus de résultats."
+          ctaWording="Élargir la zone de recherche"
+          onPress={() => {
+            onResetPlace()
+            navigateToSearchResults({
+              ...searchState,
+              locationFilter: {
+                locationType: LocationMode.EVERYWHERE,
+              },
+            })
+          }}
+        />
+      </NoSearchResultsWrapper>
+    )
+  }
+
+  const renderSearchList = () => {
+    if (nbHits > 0) {
+      return shouldDisplayTabLayout ? renderTabLayout() : tabPanels[Tab.SEARCHLIST]
+    }
+
+    return renderNoSearchResults()
   }
 
   return (

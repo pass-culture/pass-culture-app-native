@@ -55,15 +55,4 @@ describe('<SearchList />', () => {
 
     expect(screen.getByTestId('searchListHeader')).toBeInTheDocument()
   })
-
-  it('should not display search list header when number of offer results = 0', async () => {
-    const propsWithoutHits = {
-      ...props,
-      nbHits: 0,
-      hits: { offers: [], venues: [], duplicatedOffers: [] },
-    }
-    render(reactQueryProviderHOC(<SearchList {...propsWithoutHits} />))
-
-    expect(screen.queryByTestId('searchListHeader')).not.toBeInTheDocument()
-  })
 })

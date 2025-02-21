@@ -13,7 +13,7 @@ on:
         required: true
 
 jobs:
-  yarn-ts-prune:
+  check-deadcode:
     runs-on: ubuntu-22.04
     steps:
       - name: Enable Corepack
@@ -36,4 +36,4 @@ jobs:
           restore-keys: |
             v1-yarn-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
       - name: Run script for dead code check
-        run: ./scripts/check_dead_code_introduced.sh
+        run: yarn test:deadcode

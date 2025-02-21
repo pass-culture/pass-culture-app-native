@@ -6,6 +6,7 @@ import { CheatcodesButtonList } from 'cheatcodes/components/CheatcodesButtonList
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
 import { filterAndSortCheatcodesButtons } from 'cheatcodes/hooks/filterAndSortCheatcodesButtons'
 import { cheatcodesNavigationAchievementsButtons } from 'cheatcodes/pages/features/achievements/CheatcodesNavigationAchievements'
+import { cheatcodesNavigationBirthdayNotificationsButtons } from 'cheatcodes/pages/features/birthdayNotifications/CheatcodesNavigationBirthdayNotifications'
 import { cheatcodesNavigationBookOfferButtons } from 'cheatcodes/pages/features/bookOffer/CheatcodesNavigationBookOffer'
 import { cheatcodesNavigationCulturalSurveyButtons } from 'cheatcodes/pages/features/culturalSurvey/CheatcodesNavigationCulturalSurvey'
 import { cheatcodesNavigationForceUpdateButtons } from 'cheatcodes/pages/features/forceUpdate/cheatcodesNavigationForceUpdate'
@@ -43,6 +44,7 @@ export function CheatcodesMenu(): React.JSX.Element {
 
   const featuresButtons: CheatcodesButtonsWithSubscreensProps[] = [
     ...cheatcodesNavigationAchievementsButtons,
+    ...cheatcodesNavigationBirthdayNotificationsButtons,
     ...cheatcodesNavigationBookOfferButtons,
     ...cheatcodesNavigationCulturalSurveyButtons,
     ...cheatcodesNavigationForceUpdateButtons,

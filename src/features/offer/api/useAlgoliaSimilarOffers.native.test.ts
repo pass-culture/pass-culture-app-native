@@ -1,6 +1,6 @@
 import { useAlgoliaSimilarOffers } from 'features/offer/api/useAlgoliaSimilarOffers'
 import * as fetchOffersByIdsAPI from 'libs/algolia/fetchAlgolia/fetchOffersByIds'
-import * as filterOfferHitAPI from 'libs/algolia/fetchAlgolia/transformOfferHit'
+import * as filterOfferHitWithImageAPI from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import * as getSimilarOrRecoOffersInOrder from 'shared/offer/getSimilarOrRecoOffersInOrder'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -22,7 +22,7 @@ describe('useAlgoliaSimilarOffers', () => {
     .mockImplementation(mockFetchAlgoliaHits)
 
   const filterAlgoliaHitSpy = jest
-    .spyOn(filterOfferHitAPI, 'filterOfferHit')
+    .spyOn(filterOfferHitWithImageAPI, 'filterOfferHitWithImage')
     .mockImplementation(jest.fn())
 
   it('should fetch algolia when ids are provided', async () => {

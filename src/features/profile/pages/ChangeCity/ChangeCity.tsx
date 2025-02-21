@@ -8,7 +8,7 @@ import { PageWithHeader } from 'features/identityCheck/components/layout/PageWit
 import { CityForm, cityResolver } from 'features/identityCheck/pages/profile/SetCity'
 import { cityActions, useCity } from 'features/identityCheck/pages/profile/store/cityStore'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { useUpdateProfileMutation } from 'features/profile/api/useUpdateProfileMutation'
+import { usePatchProfile } from 'features/profile/api/usePatchProfile'
 import { CitySearchInput } from 'features/profile/components/CitySearchInput/CitySearchInput'
 import { analytics } from 'libs/analytics/provider'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -31,7 +31,7 @@ export const ChangeCity = () => {
     resolver: yupResolver(cityResolver),
     defaultValues: { city: storedCity ?? undefined },
   })
-  const { mutate: updateProfile } = useUpdateProfileMutation({
+  const { mutate: updateProfile } = usePatchProfile({
     onSuccess: (_, variables) => {
       analytics.logUpdatePostalCode({
         newCity: variables.city ?? '',

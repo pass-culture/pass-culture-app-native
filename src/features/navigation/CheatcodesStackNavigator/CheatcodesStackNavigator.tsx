@@ -3,6 +3,7 @@ import React from 'react'
 
 import { CheatcodesMenu } from 'cheatcodes/pages/CheatcodesMenu'
 import { CheatcodesNavigationAchievements } from 'cheatcodes/pages/features/achievements/CheatcodesNavigationAchievements'
+import { CheatcodesNavigationBirthdayNotifications } from 'cheatcodes/pages/features/birthdayNotifications/CheatcodesNavigationBirthdayNotifications'
 import { CheatcodesNavigationBookOffer } from 'cheatcodes/pages/features/bookOffer/CheatcodesNavigationBookOffer'
 import { CheatcodesNavigationCulturalSurvey } from 'cheatcodes/pages/features/culturalSurvey/CheatcodesNavigationCulturalSurvey'
 import { CheatcodesNavigationForceUpdate } from 'cheatcodes/pages/features/forceUpdate/cheatcodesNavigationForceUpdate'
@@ -37,7 +38,7 @@ import { ROOT_NAVIGATOR_SCREEN_OPTIONS } from 'features/navigation/RootNavigator
 import { GenericRoute } from 'features/navigation/RootNavigator/types'
 import { LoadingPage } from 'ui/pages/LoadingPage'
 
-export type CheatcodesStackRoute = GenericRoute<CheatcodesStackParamList>
+type CheatcodesStackRoute = GenericRoute<CheatcodesStackParamList>
 
 const routes: CheatcodesStackRoute[] = [
   /**** MENU ****/
@@ -46,6 +47,10 @@ const routes: CheatcodesStackRoute[] = [
     component: CheatcodesMenu,
   },
   /**** FEATURES ****/
+  {
+    name: 'CheatcodesNavigationBirthdayNotifications',
+    component: CheatcodesNavigationBirthdayNotifications,
+  },
   {
     name: 'CheatcodesNavigationHome',
     component: CheatcodesNavigationHome,

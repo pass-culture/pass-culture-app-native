@@ -8,14 +8,7 @@ import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { analytics } from 'libs/analytics/provider'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
-import {
-  hideSnackBar,
-  showErrorSnackBar,
-  showInfoSnackBar,
-  showSuccessSnackBar,
-} from 'ui/components/snackBar/__mocks__/SnackBarContext'
-import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import { act, userEvent, render, screen } from 'tests/utils'
 
 import { OfferHeader } from '../OfferHeader/OfferHeader'
 
@@ -24,20 +17,7 @@ const mockShare = jest.spyOn(Share, 'share').mockImplementation(jest.fn())
 
 jest.mock('libs/jwt/jwt')
 jest.mock('features/auth/context/AuthContext')
-
-jest.mock('ui/components/snackBar/SnackBarContext', () => ({
-  useSnackBarContext: jest.fn(() => ({})),
-}))
-const mockedUseSnackBarContext = useSnackBarContext as jest.MockedFunction<
-  typeof useSnackBarContext
->
-
-mockedUseSnackBarContext.mockReturnValue({
-  hideSnackBar,
-  showInfoSnackBar,
-  showSuccessSnackBar,
-  showErrorSnackBar,
-})
+jest.mock('libs/firebase/analytics/analytics')
 
 const mockGoBack = jest.fn()
 jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
@@ -46,13 +26,11 @@ jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
 })
 
 jest.useFakeTimers()
-
-jest.mock('libs/firebase/analytics/analytics')
+const user = userEvent.setup()
 
 describe('<OfferHeader />', () => {
   it('should render all the icons', async () => {
     renderOfferHeader()
-    await act(async () => {})
 
     expect(screen.getByTestId('animated-icon-back')).toBeOnTheScreen()
     expect(screen.getByTestId('animated-icon-share')).toBeOnTheScreen()
@@ -61,9 +39,8 @@ describe('<OfferHeader />', () => {
 
   it('should goBack when we press on the back button', async () => {
     renderOfferHeader()
-    await act(async () => {})
 
-    fireEvent.press(await screen.findByTestId('animated-icon-back'))
+    await user.press(await screen.findByTestId('animated-icon-back'))
 
     expect(mockGoBack).toHaveBeenCalledTimes(1)
   })
@@ -79,24 +56,21 @@ describe('<OfferHeader />', () => {
       jest.advanceTimersByTime(100)
     })
 
-    await waitFor(() => {
-      expect(screen.getByTestId('offerHeaderName').props.accessibilityHidden).toBe(false)
-      expect(screen.getByTestId('offerHeaderName').props.style.opacity).toBe(1)
-    })
+    expect(screen.getByTestId('offerHeaderName').props.accessibilityHidden).toBe(false)
+    expect(screen.getByTestId('offerHeaderName').props.style.opacity).toBe(1)
   })
 
   it('should log analytics when clicking on the share button', async () => {
     renderOfferHeader()
 
     const shareButton = screen.getByLabelText('Partager')
-    await act(async () => {
-      fireEvent.press(shareButton)
-    })
+
+    await user.press(shareButton)
 
     expect(analytics.logShare).toHaveBeenNthCalledWith(1, {
       type: 'Offer',
       from: 'offer',
-      offerId: mockOffer.id,
+      offerId: offerResponseSnap.id,
     })
   })
 
@@ -104,9 +78,8 @@ describe('<OfferHeader />', () => {
     renderOfferHeader()
 
     const shareButton = screen.getByLabelText('Partager')
-    await act(async () => {
-      fireEvent.press(shareButton)
-    })
+
+    await user.press(shareButton)
 
     expect(mockShare).toHaveBeenCalledWith(
       {
@@ -119,11 +92,9 @@ describe('<OfferHeader />', () => {
   })
 })
 
-const mockOffer = offerResponseSnap
-
 function renderOfferHeader() {
   mockServer.getApi<PaginatedFavoritesResponse>('/v1/me/favorites', paginatedFavoritesResponseSnap)
-  mockServer.getApi<OfferResponseV2>(`/v1/offer/${mockOffer.id}`, offerResponseSnap)
+  mockServer.getApi<OfferResponseV2>(`/v1/offer/${offerResponseSnap.id}`, offerResponseSnap)
 
   const animatedValue = new Animated.Value(0)
   render(
@@ -131,7 +102,12 @@ function renderOfferHeader() {
       <OfferHeader
         title="Some very nice offer"
         headerTransition={animatedValue}
-        offer={mockOffer}
+        offer={offerResponseSnap}
+        addFavorite={jest.fn()}
+        isAddFavoriteLoading={false}
+        removeFavorite={jest.fn()}
+        isRemoveFavoriteLoading={false}
+        favorite={null}
       />
     )
   )

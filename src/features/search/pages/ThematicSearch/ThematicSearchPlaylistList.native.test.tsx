@@ -25,6 +25,12 @@ jest.mock('@shopify/flash-list', () => {
 
 jest.mock('libs/firebase/analytics/analytics')
 
+jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
+  return function createAnimatedComponent(Component: unknown) {
+    return Component
+  }
+})
+
 const DEFAULT_PLAYLIST_OFFERS = mockBuilder.searchResponseOffer({})
 const DEFAULT_PLAYLIST_TITLE = 'Titre de la playlist'
 const DEFAULT_PLAYLIST = { title: DEFAULT_PLAYLIST_TITLE, offers: DEFAULT_PLAYLIST_OFFERS }
@@ -53,8 +59,22 @@ describe('ThematicSearchPlaylistList', () => {
 
     expect(screen.queryByText(DEFAULT_PLAYLIST_TITLE)).not.toBeOnTheScreen()
   })
+
+  it('should return skeleton when playlist is loading', async () => {
+    const isPlaylistLoading = true
+    renderThematicSearchPlaylistList([DEFAULT_PLAYLIST_WITHOUT_HITS], isPlaylistLoading)
+
+    expect(screen.getByTestId('ThematicSearchSkeleton')).toBeOnTheScreen()
+  })
 })
 
-function renderThematicSearchPlaylistList(playlists: ThematicSearchPlaylistData[]) {
-  return render(reactQueryProviderHOC(<ThematicSearchPlaylistList playlists={playlists} />))
+function renderThematicSearchPlaylistList(
+  playlists: ThematicSearchPlaylistData[],
+  isLoading = false
+) {
+  return render(
+    reactQueryProviderHOC(
+      <ThematicSearchPlaylistList playlists={playlists} isLoading={isLoading} />
+    )
+  )
 }

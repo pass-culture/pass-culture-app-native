@@ -2,8 +2,6 @@
 // import './why-did-you-render'
 import globalThisShim from 'globalthis/shim'
 import React, { Suspense, useEffect } from 'react'
-import 'react-app-polyfill/ie11'
-import 'react-app-polyfill/ie9'
 import 'react-app-polyfill/stable'
 import { ErrorBoundary } from 'react-error-boundary'
 

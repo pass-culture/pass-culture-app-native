@@ -10,9 +10,7 @@ export enum FACETS_FILTERS_ENUM {
   OFFER_IS_DIGITAL = 'offer.isDigital',
   OFFER_IS_DUO = 'offer.isDuo',
   OFFER_IS_EDUCATIONAL = 'offer.isEducational',
-  OFFER_IS_EVENT = 'offer.isEvent',
   OFFER_IS_HEADLINE = 'offer.isHeadline',
-  OFFER_IS_THING = 'offer.isThing',
   OFFER_MOVIE_GENRES = 'offer.movieGenres',
   OFFER_MUSIC_TYPE = 'offer.musicType',
   OFFER_NATIVE_CATEGORY = 'offer.nativeCategoryId',
@@ -28,7 +26,6 @@ export enum FACETS_FILTERS_ENUM {
 }
 
 export enum NUMERIC_FILTERS_ENUM {
-  OFFER_IS_HEADLINE_UNTIL = 'offer.isHeadlineUntil',
   OFFER_PRICES = 'offer.prices',
   OFFER_DATES = 'offer.dates',
   OFFER_TIMES = 'offer.times',

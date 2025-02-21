@@ -47,25 +47,32 @@ export const fetchSearchResults = async ({
     geolocPosition: buildLocationParameterParams.geolocPosition,
   })
 
+  const offersQuery = {
+    indexName: offersIndex,
+    query: parameters.query || '',
+    params: {
+      page: parameters.page || 0,
+      ...buildOfferSearchParameters(
+        parameters,
+        buildLocationParameterParams,
+        isUserUnderage,
+        disabilitiesProperties
+      ),
+      attributesToRetrieve: offerAttributesToRetrieve,
+      attributesToHighlight: [], // We disable highlighting because we don't need it
+      /* Is needed to get a queryID, in order to send analytics events
+       https://www.algolia.com/doc/api-reference/api-parameters/clickAnalytics/ */
+      clickAnalytics: true,
+    },
+  }
+
   const queries = [
     // Offers
     {
-      indexName: offersIndex,
-      query: parameters.query || '',
+      ...offersQuery,
       params: {
-        page: parameters.page || 0,
+        ...offersQuery.params,
         ...buildHitsPerPage(parameters.hitsPerPage),
-        ...buildOfferSearchParameters(
-          parameters,
-          buildLocationParameterParams,
-          isUserUnderage,
-          disabilitiesProperties
-        ),
-        attributesToRetrieve: offerAttributesToRetrieve,
-        attributesToHighlight: [], // We disable highlighting because we don't need it
-        /* Is needed to get a queryID, in order to send analytics events
-         https://www.algolia.com/doc/api-reference/api-parameters/clickAnalytics/ */
-        clickAnalytics: true,
         ...(aroundPrecision && { aroundPrecision }),
       },
     },
@@ -114,22 +121,10 @@ export const fetchSearchResults = async ({
     },
     // Offers without duplication limit
     {
-      indexName: offersIndex,
-      query: parameters.query || '',
+      ...offersQuery,
       params: {
-        page: parameters.page || 0,
-        ...buildHitsPerPage(1000),
-        ...buildOfferSearchParameters(
-          parameters,
-          buildLocationParameterParams,
-          isUserUnderage,
-          disabilitiesProperties
-        ),
-        attributesToRetrieve: offerAttributesToRetrieve,
-        attributesToHighlight: [], // We disable highlighting because we don't need it
-        /* Is needed to get a queryID, in order to send analytics events
-             https://www.algolia.com/doc/api-reference/api-parameters/clickAnalytics/ */
-        clickAnalytics: true,
+        ...offersQuery.params,
+        ...buildHitsPerPage(100),
         // To use exactly the query and not limit the duplicate offers
         distinct: false,
         typoTolerance: false,

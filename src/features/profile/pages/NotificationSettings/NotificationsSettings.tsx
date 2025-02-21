@@ -7,7 +7,7 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { PushNotificationsModal } from 'features/notifications/pages/PushNotificationsModal'
-import { useUpdateProfileMutation } from 'features/profile/api/useUpdateProfileMutation'
+import { usePatchProfile } from 'features/profile/api/usePatchProfile'
 import { SectionWithSwitch } from 'features/profile/components/SectionWithSwitch/SectionWithSwitch'
 import { UnsavedSettingsModal } from 'features/profile/pages/NotificationSettings/components/UnsavedSettingsModal'
 import {
@@ -64,7 +64,7 @@ export const NotificationsSettings = () => {
 
   const { pushPermission } = usePushPermission(updatePushPermissionFromSettings)
 
-  const { mutate: updateProfile, isLoading: isUpdatingProfile } = useUpdateProfileMutation({
+  const { mutate: updateProfile, isLoading: isUpdatingProfile } = usePatchProfile({
     onSuccess: () => {
       showSuccessSnackBar({
         message: 'Tes modifications ont été enregistrées\u00a0!',

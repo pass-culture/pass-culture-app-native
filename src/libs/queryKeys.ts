@@ -11,6 +11,7 @@ export enum QueryKeys {
   CINEMA_OFFERS = 'cinemaOffers',
   CITIES = 'cities',
   COOKIES_DATA = 'cookiesData',
+  CONCERTS_AND_FESTIVALS = 'concertsAndFestivals',
   CULTURAL_SURVEY_ANSWERS = 'culturalSurveyAnswers',
   CULTURAL_SURVEY_QUESTIONS = 'culturalSurveyQuestions',
   EMAIL_CHANGE_EXPIRATION_TIMESTAMP = 'emailChangeExpirationTimestamp',

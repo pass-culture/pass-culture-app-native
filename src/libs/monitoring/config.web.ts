@@ -10,5 +10,8 @@ export async function getSentryConfig() {
     integrations: [new Integrations.BrowserTracing()],
     tracesSampleRate: env.SENTRY_TRACES_SAMPLE_RATE as unknown as number,
     sampleRate: env.SENTRY_SAMPLE_RATE as unknown as number,
+    ignoreErrors: [
+      'Non-Error promise rejection captured with value: Timeout', // Sentry Issue: APPLICATION-NATIVE-77ZQ
+    ],
   }
 }

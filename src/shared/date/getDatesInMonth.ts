@@ -1,4 +1,4 @@
-import range from 'lodash/range'
+import { range } from 'lodash'
 
 /**
  * Returns a list of dates in string such as ["1", "2", ..., "31"].

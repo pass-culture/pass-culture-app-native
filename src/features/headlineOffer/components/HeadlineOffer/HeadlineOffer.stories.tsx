@@ -1,3 +1,4 @@
+import { NavigationContainer } from '@react-navigation/native'
 import { ComponentMeta } from '@storybook/react'
 import React from 'react'
 
@@ -8,6 +9,13 @@ import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storyboo
 const meta: ComponentMeta<typeof HeadlineOffer> = {
   title: 'ui/HeadlineOffer',
   component: HeadlineOffer,
+  decorators: [
+    (Story) => (
+      <NavigationContainer>
+        <Story />
+      </NavigationContainer>
+    ),
+  ],
 }
 export default meta
 
@@ -15,6 +23,7 @@ const variantConfig: Variants<typeof HeadlineOffer> = [
   {
     label: 'HeadlineOffer default',
     props: {
+      navigateTo: { screen: 'Offer' },
       category: 'Livre',
       offerTitle: 'One Piece Tome 108',
       imageUrl: SHARE_APP_IMAGE_SOURCE,

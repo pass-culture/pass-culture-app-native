@@ -2,8 +2,32 @@ appId: ${MAESTRO_APP_ID}
 ---
 - tapOn: 'Se connecter'
 - assertVisible: 'Connecte-toi'
-- pressKey: back
+
+- runFlow:
+    when:
+      platform: Android
+    commands:
+    - pressKey: back
+
+- runFlow:
+    when:
+      platform: iOS
+    commands:
+    - tapOn: "Revenir en arrière"
+
 
 - tapOn: 'Créer un compte'
 - assertVisible: 'Crée-toi un compte'
-- pressKey: back
+- runFlow:
+    when:
+      platform: Android
+    commands:
+    - pressKey: back
+
+- runFlow:
+    when:
+      platform: iOS
+    commands:
+    - tapOn: "Revenir en arrière"
+    
+- waitForAnimationToEnd

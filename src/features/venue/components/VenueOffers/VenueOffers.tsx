@@ -8,8 +8,6 @@ import { NoOfferPlaceholder } from 'features/venue/components/Placeholders/NoOff
 import { VenueMovies } from 'features/venue/components/VenueOffers/VenueMovies'
 import { VenueOffersList } from 'features/venue/components/VenueOffers/VenueOffersList'
 import type { VenueOffersArtists, VenueOffers } from 'features/venue/types'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { CategoryHomeLabelMapping, CategoryIdMapping } from 'libs/subcategories/types'
 import { Currency } from 'shared/currency/useGetCurrencyToDisplay'
 import { OfferPlaylistSkeleton, TileSize } from 'ui/components/placeholders/OfferPlaylistSkeleton'
@@ -51,7 +49,6 @@ export function VenueOffers({
   const isOfferAMovieScreening = venueOffers?.hits.some(
     (offer) => offer.offer.subcategoryId === SubcategoryIdEnum.SEANCE_CINE
   )
-  const enableCine = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_NEW_XP_CINE_FROM_VENUE)
 
   if (areVenueOffersLoading || arePlaylistsLoading) {
     return <LoadingState />
@@ -61,7 +58,7 @@ export function VenueOffers({
     return <NoOfferPlaceholder />
   }
 
-  if (isOfferAMovieScreening && enableCine) {
+  if (isOfferAMovieScreening) {
     return <VenueMovies venueOffers={venueOffers} />
   }
 

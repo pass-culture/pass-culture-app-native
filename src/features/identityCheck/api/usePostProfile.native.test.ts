@@ -6,7 +6,7 @@ import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, renderHook, waitFor } from 'tests/utils'
 
-import { usePatchProfile } from './usePatchProfile'
+import { usePostProfile } from './usePostProfile'
 
 jest.mock('features/auth/context/AuthContext')
 
@@ -30,13 +30,13 @@ const postSubscriptionProfileSpy = jest
   .spyOn(API.api, 'postNativeV1SubscriptionProfile')
   .mockImplementation()
 
-describe('usePatchProfile', () => {
+describe('usePostProfile', () => {
   beforeEach(() => {
     mockAuthContextWithUser(beneficiaryUser, { persist: true })
   })
 
   it('should call api when profile is complete', async () => {
-    const { result } = renderHook(() => usePatchProfile(), {
+    const { result } = renderHook(() => usePostProfile(), {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
 
@@ -62,7 +62,7 @@ describe('usePatchProfile', () => {
     storage.saveObject('profile-city', profile.city)
     storage.saveObject('profile-address', profile.address)
 
-    const { result } = renderHook(() => usePatchProfile(), {
+    const { result } = renderHook(() => usePostProfile(), {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
 
@@ -85,7 +85,7 @@ describe('usePatchProfile', () => {
     const refetchUserSpy = jest.fn()
     mockAuthContextWithUser(beneficiaryUser, { refetchUser: refetchUserSpy })
 
-    const { result } = renderHook(() => usePatchProfile(), {
+    const { result } = renderHook(() => usePostProfile(), {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
 

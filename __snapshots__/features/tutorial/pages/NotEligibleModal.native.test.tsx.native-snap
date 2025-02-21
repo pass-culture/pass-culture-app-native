@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`NotEligibleModal without credit V3 for user under 15 years old should render correctly for onboarding 1`] = `
+exports[`NotEligibleModal for user under 15 years old should render correctly for onboarding 1`] = `
 <Modal
   animationType="fade"
   hardwareAccelerated={false}
@@ -553,7 +553,7 @@ exports[`NotEligibleModal without credit V3 for user under 15 years old should r
 </Modal>
 `;
 
-exports[`NotEligibleModal without credit V3 for user under 15 years old should render correctly for profile tutorial 1`] = `
+exports[`NotEligibleModal for user under 15 years old should render correctly for profile tutorial 1`] = `
 <Modal
   animationType="fade"
   hardwareAccelerated={false}

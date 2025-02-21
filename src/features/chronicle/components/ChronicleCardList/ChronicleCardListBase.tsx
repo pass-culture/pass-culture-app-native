@@ -38,6 +38,7 @@ export type ChronicleCardListProps = Pick<
   headerComponent?: ReactElement
   style?: StyleProp<ViewStyle>
   onSeeMoreButtonPress?: (chronicleId: number) => void
+  shouldTruncate?: boolean
 }
 
 export const ChronicleCardListBase = forwardRef<
@@ -58,6 +59,7 @@ export const ChronicleCardListBase = forwardRef<
     separatorSize = SEPARATOR_DEFAULT_VALUE,
     onSeeMoreButtonPress,
     onLayout,
+    shouldTruncate,
   },
   ref
 ) {
@@ -92,7 +94,8 @@ export const ChronicleCardListBase = forwardRef<
           subtitle={item.subtitle}
           description={item.description}
           date={item.date}
-          cardWidth={cardWidth}>
+          cardWidth={cardWidth}
+          shouldTruncate={shouldTruncate}>
           {onSeeMoreButtonPress ? (
             <View>
               <StyledButtonTertiaryBlack
@@ -104,7 +107,7 @@ export const ChronicleCardListBase = forwardRef<
         </ChronicleCard>
       )
     },
-    [cardWidth, onSeeMoreButtonPress]
+    [cardWidth, onSeeMoreButtonPress, shouldTruncate]
   )
 
   return (

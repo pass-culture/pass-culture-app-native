@@ -38,5 +38,8 @@ export async function getSentryConfig() {
       profilesSampleRate: env.SENTRY_PROFILES_SAMPLE_RATE as unknown as number,
     },
     enableAppHangTracking: false,
+    ignoreErrors: [
+      'Non-Error promise rejection captured with value: Timeout', // Sentry Issue: APPLICATION-NATIVE-77ZQ
+    ],
   }
 }

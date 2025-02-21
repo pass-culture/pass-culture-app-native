@@ -1,4 +1,4 @@
-import range from 'lodash/range'
+import { range } from 'lodash'
 
 export const dayNumbers = range(1, 31 + 1).map((num) => String(num))
 export const DAYS = [

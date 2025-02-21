@@ -4,7 +4,9 @@ import LinearGradient from 'react-native-linear-gradient'
 import styled, { useTheme } from 'styled-components/native'
 
 import { HeadlineOfferData } from 'features/headlineOffer/type'
-import { Image } from 'libs/resizing-image-on-demand/Image'
+import { FastImage } from 'libs/resizing-image-on-demand/FastImage'
+import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
+import { InternalTouchableLinkProps } from 'ui/components/touchableLink/types'
 
 import { HeadlineOfferLargeViewport } from './HeadlineOfferLargeViewport'
 import { HeadlineOfferSmallViewport } from './HeadlineOfferSmallViewport'
@@ -12,23 +14,31 @@ import { HeadlineOfferSmallViewport } from './HeadlineOfferSmallViewport'
 const HEADLINE_OFFER_LARGE_VIEWPORT = 327
 const HEADLINE_OFFER_SMALL_VIEWPORT = 245
 
-export const HeadlineOffer: FunctionComponent<HeadlineOfferData> = (props) => {
+type HeadlineOfferProps = HeadlineOfferData &
+  Pick<InternalTouchableLinkProps, 'navigateTo' | 'onBeforeNavigate'>
+
+export const HeadlineOffer: FunctionComponent<HeadlineOfferProps> = ({
+  navigateTo,
+  onBeforeNavigate,
+  imageUrl,
+  ...otherProps
+}) => {
   const { isDesktopViewport } = useTheme()
   const HeadlineOfferContent = isDesktopViewport
     ? HeadlineOfferLargeViewport
     : HeadlineOfferSmallViewport
   return (
-    <Container>
-      <BackgroundImage url={props.imageUrl} />
+    <Container navigateTo={navigateTo} onBeforeNavigate={onBeforeNavigate}>
+      <BackgroundImage url={imageUrl} />
       <Gradient />
       <StyledView>
-        <HeadlineOfferContent {...props} />
+        <HeadlineOfferContent imageUrl={imageUrl} {...otherProps} />
       </StyledView>
     </Container>
   )
 }
 
-const Container = styled.View(({ theme }) => ({
+const Container = styled(InternalTouchableLink)(({ theme }) => ({
   borderRadius: theme.borderRadius.tile,
   overflow: 'hidden',
   height: theme.isDesktopViewport ? HEADLINE_OFFER_LARGE_VIEWPORT : HEADLINE_OFFER_SMALL_VIEWPORT,
@@ -57,7 +67,7 @@ const StyledView = styled.View({
   zIndex: 2,
 })
 
-const BackgroundImage = styled(Image).attrs({
+const BackgroundImage = styled(FastImage).attrs({
   resizeMode: 'cover',
 })({
   width: '100%',

@@ -117,7 +117,7 @@ describe('useSearchResults', () => {
               clickAnalytics: true,
               distinct: false,
               facetFilters: [['offer.isEducational:false']],
-              hitsPerPage: 1000,
+              hitsPerPage: 100,
               numericFilters: [['offer.prices: 0 TO 300']],
               page: 0,
               typoTolerance: false,

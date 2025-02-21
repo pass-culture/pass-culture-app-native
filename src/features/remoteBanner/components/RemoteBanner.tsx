@@ -10,6 +10,7 @@ import {
   validateRemoteBanner,
 } from 'features/remoteBanner/components/remoteBannerSchema'
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/analytics/provider'
 import { useFeatureFlagOptions } from 'libs/firebase/firestore/featureFlags/useFeatureFlagOptions'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -31,9 +32,14 @@ export const RemoteBanner = ({ from }: { from: RemoteBannerOrigin }) => {
   const isExternalRedirection = redirectionType === RemoteBannerRedirectionType.EXTERNAL
   const isExternalAndDefined = isExternalRedirection && redirectionUrl
 
-  const storeAccessibilityLabel = isStoreRedirection ? `Nouvelle fenêtre\u00a0: ${STORE_LINK}` : ''
+  const isWebStoreBanner = isStoreRedirection && !isWeb
+  const accessibilityRole = isWebStoreBanner ? AccessibilityRole.BUTTON : AccessibilityRole.LINK
+
+  const externalAccessiblityLabel = `Nouvelle fenêtre\u00a0: ${String(redirectionUrl)}`
+  const storeAccessibilityLabel = isWebStoreBanner ? `Nouvelle fenêtre\u00a0: ${STORE_LINK}` : ''
+
   const accessibilityLabel = isExternalAndDefined
-    ? `Nouvelle fenêtre\u00a0: ${String(redirectionUrl)}`
+    ? externalAccessiblityLabel
     : storeAccessibilityLabel
 
   const onPress = () => {
@@ -44,8 +50,10 @@ export const RemoteBanner = ({ from }: { from: RemoteBannerOrigin }) => {
 
   return (
     <BannerWithBackground
+      accessibilityRole={accessibilityRole}
       disabled={!isStoreRedirection && !redirectionUrl}
       leftIcon={ArrowAgain}
+      noRightIcon={isStoreRedirection && isWeb}
       onPress={onPress}
       {...accessibilityAndTestId(accessibilityLabel)}>
       <StyledButtonText>{title}</StyledButtonText>

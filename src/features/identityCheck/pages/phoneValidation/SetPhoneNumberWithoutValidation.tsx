@@ -15,7 +15,7 @@ import { useSubscriptionContext } from 'features/identityCheck/context/Subscript
 import { useNavigateForwardToStepper } from 'features/identityCheck/helpers/useNavigateForwardToStepper'
 import { useSaveStep } from 'features/identityCheck/pages/helpers/useSaveStep'
 import { IdentityCheckStep } from 'features/identityCheck/types'
-import { useUpdateProfileMutation } from 'features/profile/api/useUpdateProfileMutation'
+import { usePatchProfile } from 'features/profile/api/usePatchProfile'
 import { InfoBanner } from 'ui/components/banners/InfoBanner'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
@@ -60,7 +60,7 @@ export const SetPhoneNumberWithoutValidation = () => {
 
   const { navigateForwardToStepper } = useNavigateForwardToStepper()
   const saveStep = useSaveStep()
-  const { mutate: updateProfile } = useUpdateProfileMutation({
+  const { mutate: updateProfile } = usePatchProfile({
     onSuccess: () => {
       const { phoneNumber, countryId } = getValues()
       const country = findCountry(countryId)

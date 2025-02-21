@@ -1,5 +1,5 @@
 import { useRoute } from '@react-navigation/native'
-import debounce from 'lodash/debounce'
+import { debounce } from 'lodash'
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { useSearchBox, UseSearchBoxProps } from 'react-instantsearch-core'
 import {
@@ -24,8 +24,6 @@ import { useSearch } from 'features/search/context/SearchWrapper'
 import { useNavigateToSearch } from 'features/search/helpers/useNavigateToSearch/useNavigateToSearch'
 import { CreateHistoryItem, SearchView, SearchState } from 'features/search/types'
 import { analytics } from 'libs/analytics/provider'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useRemoteConfigContext } from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { BackButton } from 'ui/components/headers/BackButton'
 import { HiddenAccessibleText } from 'ui/components/HiddenAccessibleText'
@@ -68,7 +66,6 @@ export const SearchBox: React.FunctionComponent<Props> = ({
   const route = useRoute()
   const { navigateToSearch: navigateToSearchResults } = useNavigateToSearch('SearchResults')
   const { navigateToSearch: navigateToThematicSearch } = useNavigateToSearch('ThematicSearch')
-  const enableWipPageThematicSearch = useFeatureFlag(RemoteStoreFeatureFlags.WIP_PAGE_SEARCH_N1)
   const { shouldRedirectToThematicSearch } = useRemoteConfigContext()
   const currentView = route.name
 
@@ -247,8 +244,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
       let hasSearchedForBookKeyword = false
 
       if (currentView === SearchView.Landing) {
-        hasSearchedForBookKeyword =
-          enableWipPageThematicSearch && BOOK_KEYWORD_PATTERN.test(queryText.trim())
+        hasSearchedForBookKeyword = BOOK_KEYWORD_PATTERN.test(queryText.trim())
 
         if (hasSearchedForBookKeyword) {
           partialSearchState = {
@@ -275,7 +271,6 @@ export const SearchBox: React.FunctionComponent<Props> = ({
     },
     [
       addSearchHistory,
-      enableWipPageThematicSearch,
       currentView,
       searchState.locationFilter,
       searchState.venue,

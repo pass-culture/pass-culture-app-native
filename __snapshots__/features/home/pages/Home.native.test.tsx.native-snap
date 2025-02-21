@@ -368,7 +368,6 @@ exports[`Home page should render correctly 1`] = `
                   }
                 >
                   <View
-                    accessibilityRole="link"
                     accessibilityState={
                       {
                         "busy": undefined,

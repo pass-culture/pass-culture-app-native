@@ -1,10 +1,10 @@
 import { yupResolver } from '@hookform/resolvers/yup'
-import React, { useCallback } from 'react'
+import React, { useCallback, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { v4 as uuidv4 } from 'uuid'
 import * as yup from 'yup'
 
-import { usePatchProfile } from 'features/identityCheck/api/usePatchProfile'
+import { usePostProfile } from 'features/identityCheck/api/usePostProfile'
 import { useNavigateForwardToStepper } from 'features/identityCheck/helpers/useNavigateForwardToStepper'
 import { useSaveStep } from 'features/identityCheck/pages/helpers/useSaveStep'
 import { useAddress } from 'features/identityCheck/pages/profile/store/addressStore'
@@ -29,7 +29,10 @@ export const SetStatus = () => {
   const storedCity = useCity()
   const storedAddress = useAddress()
 
-  const { mutateAsync: patchProfile, isLoading } = usePatchProfile()
+  const { mutateAsync: patchProfile } = usePostProfile()
+  // isLoading from react-query is not support with mutateAsync
+  const [isLoading, setIsLoading] = useState<boolean>(false)
+
   const { navigateForwardToStepper } = useNavigateForwardToStepper()
   const titleID = uuidv4()
   const {
@@ -57,8 +60,10 @@ export const SetStatus = () => {
         hasSchoolTypes: false,
         schoolType: null,
       }
+      setIsLoading(true)
       await patchProfile(profile)
       await saveStep(IdentityCheckStep.PROFILE)
+      setIsLoading(false)
       navigateForwardToStepper()
     },
     [storedName, storedCity, storedAddress, patchProfile, saveStep, navigateForwardToStepper]
