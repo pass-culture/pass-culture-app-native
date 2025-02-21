@@ -1,4 +1,6 @@
-# To start from scratch with a clean installation of React Native, without impacting the rest of your system, here are the steps to follow. The aim is to clean up your current development environment and reinstall the necessary tools
+# Reset installation
+
+To start from scratch with a clean installation of React Native, without impacting the rest of your system, here are the steps to follow. The aim is to clean up your current development environment and reinstall the necessary tools
 
 ## 1. Identify the current environment
 
