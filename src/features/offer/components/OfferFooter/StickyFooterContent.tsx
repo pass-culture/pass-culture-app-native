@@ -2,8 +2,9 @@ import React, { useState } from 'react'
 import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { FavoriteAuthModal } from 'features/offer/components/FavoriteAuthModal/FavoriteAuthModal'
+import { NotificationAuthModal } from 'features/offer/components/NotificationAuthModal/NotificationAuthModal'
 import { FavoriteProps } from 'features/offer/components/OfferHeader/OfferHeader'
-import { SignUpSignInChoiceOfferModal } from 'features/offer/components/SignUpSignInChoiceOfferModal/SignUpSignInChoiceOfferModal'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
@@ -34,21 +35,34 @@ export const StickyFooterContent = ({
   const [hasEnabledNotifications, setHasEnabledNotifications] = useState(false)
 
   const {
-    visible: signInModalVisible,
-    showModal: showSignInModal,
-    hideModal: hideSignInModal,
+    visible: isFavoriteAuthModalVisible,
+    showModal: showFavoriteAuthModal,
+    hideModal: hideFavoriteAuthModal,
+  } = useModal(false)
+
+  const {
+    visible: isNotificationAuthModalVisible,
+    showModal: showNotificationAuthModal,
+    hideModal: hideNotificationAuthModal,
   } = useModal(false)
 
   const handleAddToFavorites = () => {
     if (isLoggedIn) {
       addFavorite({ offerId })
-    } else {
-      showSignInModal()
     }
+    showFavoriteAuthModal()
   }
 
   const handleRemoveFromFavorites = () => {
     if (favorite) removeFavorite(favorite?.id)
+  }
+
+  const handleEnableNotifications = () => {
+    if (isLoggedIn) {
+      setHasEnabledNotifications(!hasEnabledNotifications)
+    } else {
+      showNotificationAuthModal()
+    }
   }
 
   return (
@@ -69,18 +83,25 @@ export const StickyFooterContent = ({
             icon={Favorite}
             isLoading={isAddFavoriteLoading}
           />
-          <SignUpSignInChoiceOfferModal
-            visible={signInModalVisible}
+          <FavoriteAuthModal
+            visible={isFavoriteAuthModalVisible}
             offerId={offerId}
-            dismissModal={hideSignInModal}
+            dismissModal={hideFavoriteAuthModal}
           />
         </React.Fragment>
       )}
-      <ButtonTertiaryBlack
-        wording={hasEnabledNotifications ? 'Désactiver le rappel' : 'Ajouter un rappel'}
-        onPress={() => setHasEnabledNotifications(!hasEnabledNotifications)}
-        icon={hasEnabledNotifications ? BellFilled : Bell}
-      />
+      <React.Fragment>
+        <ButtonTertiaryBlack
+          wording={hasEnabledNotifications ? 'Désactiver le rappel' : 'Ajouter un rappel'}
+          onPress={handleEnableNotifications}
+          icon={hasEnabledNotifications ? BellFilled : Bell}
+        />
+        <NotificationAuthModal
+          visible={isNotificationAuthModalVisible}
+          offerId={offerId}
+          dismissModal={hideNotificationAuthModal}
+        />
+      </React.Fragment>
     </StickyFooterWrapper>
   )
 }

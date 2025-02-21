@@ -119,6 +119,7 @@ export enum StepperOrigin {
   FORGOTTEN_PASSWORD = 'forgottenPassword',
   HOME = 'home',
   LOGIN = 'login',
+  NOTIFICATION = 'notification',
   OFFER = 'offer',
   ONBOARDING_GENERAL_PUBLIC_WELCOME = 'OnboardingGeneralPublicWelcome',
   ONBOARDING_NOT_ELIGIBLE = 'onboardingNotEligible',
