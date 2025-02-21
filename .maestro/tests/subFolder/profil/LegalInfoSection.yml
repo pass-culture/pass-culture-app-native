@@ -32,7 +32,7 @@ appId: ${MAESTRO_APP_ID}
 
 - runFlow: # Fallback si problème de retour
     when:
-      visible: 'Bonjour Test-e2e'
+      visible: 'Bonjour Test-e2e.*'
     commands:
       - tapOn:
           id: 'Mon profil'

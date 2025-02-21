@@ -1,4 +1,4 @@
-name: '[Nightly] Run E2E tests on Android'
+name: '[Nightly] Run E2E tests on iOS'
 
 on:
   schedule:
@@ -10,8 +10,8 @@ permissions:
   id-token: write
 
 jobs:
-  e2e-tests-android:
-    uses: ./.github/workflows/dev_on_workflow_call_e2e_android.yml
+  e2e-tests-ios:
+    uses: ./.github/workflows/dev_on_workflow_call_e2e_ios.yml
     secrets:
       GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
       GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
