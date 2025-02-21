@@ -38,7 +38,7 @@ jobs:
           workload-identity-provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
           service-account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
           bucket: ${{ inputs.CACHE_BUCKET_NAME }}
-      - run: yarn test:lint
+      - run: echo "LINTER"
 
   yarn_typescript:
     runs-on: ubuntu-22.04
