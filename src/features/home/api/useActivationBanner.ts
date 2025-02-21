@@ -6,13 +6,11 @@ import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureF
 import { RemoteStoreFeatureFlags as featureFlags } from 'libs/firebase/firestore/types'
 import { GeolocPermissionState, useLocation } from 'libs/location'
 import { LocationMode } from 'libs/location/types'
-import { useGetDepositAmountsByAge } from 'shared/user/useGetDepositAmountsByAge'
 
 export function useActivationBanner() {
   const enablePacificFrancCurrency = useFeatureFlag(featureFlags.ENABLE_PACIFIC_FRANC_CURRENCY)
   const { user } = useAuthContext()
   const { selectedLocationMode, permissionState } = useLocation()
-  const amount = useGetDepositAmountsByAge(user?.birthDate)
   const { data: subscription } = useGetStepperInfo()
 
   const nextSubscriptionStepEnable = !!subscription?.nextSubscriptionStep
@@ -30,7 +28,7 @@ export function useActivationBanner() {
     if (isActivationProcessEnable || isUserInRelevantLocation) {
       return {
         banner: {
-          title: amount ? `Débloque tes ${amount}` : 'Débloque ton crédit',
+          title: data?.banner?.title,
           text: data?.banner?.text,
           name: data?.banner?.name,
         },
