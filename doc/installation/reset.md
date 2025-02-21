@@ -78,7 +78,7 @@ rm -rf package-lock.json
 
 ## 4. Reinstall a clean environment
 
-**PLEASE !!! by default follow our [general instructions](https://github.com/pass-culture/pass-culture-app-native/blob/master/doc/installation/setup.md)**
+**PLEASE !!! by default follow our [general instructions](./setup.md)**
 
 ---
 
@@ -118,7 +118,7 @@ brew install --cask zulu
 
 ### e) Install Android Studio (if necessary)
 
-- Use brew [see general instructions](https://github.com/pass-culture/pass-culture-app-native/blob/master/doc/installation/setup.md) or Download Android Studio from the official site
+- Use brew [see general instructions](./Android.md) or Download Android Studio from the official site
 - Install the necessary SDKs via the SDK Manager.
 
 ## 5. Checking the installation
