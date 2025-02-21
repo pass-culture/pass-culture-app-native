@@ -3,7 +3,7 @@ import { Animated } from 'react-native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { FavoriteProps } from 'features/offer/components/OfferHeader/OfferHeader'
-import { SignUpSignInChoiceOfferModal } from 'features/offer/components/SignUpSignInChoiceOfferModal/SignUpSignInChoiceOfferModal'
+import { FavoriteAuthModal } from 'features/offer/components/FavoriteAuthModal/FavoriteAuthModal'
 import { accessibleCheckboxProps } from 'shared/accessibilityProps/accessibleCheckboxProps'
 import { theme } from 'theme'
 import { RoundedButton } from 'ui/components/buttons/RoundedButton'
@@ -61,7 +61,7 @@ export const FavoriteButton: React.FC<FavoriteButtonProps> = (props) => {
         disabled={isRemoveFavoriteLoading || isAddFavoriteLoading}
         {...accessibleCheckboxProps({ checked: !!favorite, label: 'Mettre en favori' })}
       />
-      <SignUpSignInChoiceOfferModal
+      <FavoriteAuthModal
         visible={signInModalVisible}
         offerId={offerId}
         dismissModal={hideSignInModal}

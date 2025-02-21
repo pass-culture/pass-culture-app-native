@@ -35,22 +35,22 @@ export const StickyFooterContent = ({
   const [hasEnabledNotifications, setHasEnabledNotifications] = useState(false)
 
   const {
-    visible: isAddToFavoritesSignInModalVisible,
-    showModal: showAddToFavoritesSignInModal,
-    hideModal: hideAddToFavoritesSignInModal,
+    visible: isFavoriteAuthModalVisible,
+    showModal: showFavoriteAuthModal,
+    hideModal: hideFavoriteAuthModal,
   } = useModal(false)
 
   const {
-    visible: isNotificationsSignInModalVisible,
-    showModal: showNotificationsSignInModal,
-    hideModal: hideNotificationsSignInModal,
+    visible: isNotificationAuthModalVisible,
+    showModal: showNotificationAuthModal,
+    hideModal: hideNotificationAuthModal,
   } = useModal(false)
 
   const handleAddToFavorites = () => {
     if (isLoggedIn) {
       addFavorite({ offerId })
     }
-    showAddToFavoritesSignInModal()
+    showFavoriteAuthModal()
   }
 
   const handleRemoveFromFavorites = () => {
@@ -61,7 +61,7 @@ export const StickyFooterContent = ({
     if (isLoggedIn) {
       setHasEnabledNotifications(!hasEnabledNotifications)
     } else {
-      showNotificationsSignInModal()
+      showNotificationAuthModal()
     }
   }
 
@@ -84,9 +84,9 @@ export const StickyFooterContent = ({
             isLoading={isAddFavoriteLoading}
           />
           <FavoriteAuthModal
-            visible={isAddToFavoritesSignInModalVisible}
+            visible={isFavoriteAuthModalVisible}
             offerId={offerId}
-            dismissModal={hideAddToFavoritesSignInModal}
+            dismissModal={hideFavoriteAuthModal}
           />
         </React.Fragment>
       )}
@@ -97,9 +97,9 @@ export const StickyFooterContent = ({
           icon={hasEnabledNotifications ? BellFilled : Bell}
         />
         <NotificationAuthModal
-          visible={isNotificationsSignInModalVisible}
+          visible={isNotificationAuthModalVisible}
           offerId={offerId}
-          dismissModal={hideNotificationsSignInModal}
+          dismissModal={hideNotificationAuthModal}
         />
       </React.Fragment>
     </StickyFooterWrapper>
