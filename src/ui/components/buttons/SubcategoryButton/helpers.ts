@@ -33,7 +33,7 @@ export const getSearchParams = (
   }
 }
 
-// TODO(PC-000) : reprendre le typage de offerNativeCategories dans le searchSate NativeCategoryEnum
+// TODO(PC-34768) : typing of field offerNativeCategories in SearchState should be rethink to avoid having to write code that corrects invalid type
 const getOfferNativeCategories = (category: NativeCategoryEnum) => {
   if (isBookNativeCategory(category)) {
     const bookNativeCategory: BooksNativeCategoriesEnum[] = [category]
