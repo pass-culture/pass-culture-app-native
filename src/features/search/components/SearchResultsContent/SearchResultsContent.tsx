@@ -1,8 +1,8 @@
-import { useIsFocused } from '@react-navigation/native'
+import { useFocusEffect, useIsFocused } from '@react-navigation/native'
 import { FlashList } from '@shopify/flash-list'
 import { debounce } from 'lodash'
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import { FlatList, Platform, ScrollView, View } from 'react-native'
+import { FlatList, Platform, ScrollView, View, useWindowDimensions } from 'react-native'
 import styled from 'styled-components/native'
 
 import { AccessibilityFiltersModal } from 'features/accessibility/components/AccessibilityFiltersModal'
@@ -33,8 +33,18 @@ import { OfferDuoModal } from 'features/search/pages/modals/OfferDuoModal/OfferD
 import { PriceModal } from 'features/search/pages/modals/PriceModal/PriceModal'
 import { VenueModal } from 'features/search/pages/modals/VenueModal/VenueModal'
 import { TabLayout } from 'features/venue/components/TabLayout/TabLayout'
-import { VenueMapView } from 'features/venueMap/components/VenueMapView/VenueMapView'
-import { useVenuesMapData } from 'features/venueMap/hook/useVenuesMapData'
+import { GeolocatedVenue } from 'features/venueMap/components/VenueMapView/types'
+import { VenueMapViewContainer } from 'features/venueMap/components/VenueMapView/VenueMapViewContainer'
+import { getRegionFromPosition } from 'features/venueMap/helpers/getRegionFromPosition/getRegionFromPosition'
+import { isGeolocValid } from 'features/venueMap/helpers/isGeolocValid'
+import {
+  removeSelectedVenue,
+  setInitialRegion,
+  setOffersPlaylistType,
+  setRegion,
+  setVenues,
+  useVenueMapStore,
+} from 'features/venueMap/store/venueMapStore'
 import { analytics } from 'libs/analytics/provider'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -95,22 +105,58 @@ export const SearchResultsContent: React.FC = () => {
   const isRefreshing = useIsFalseWithDelay(isFetching, ANIMATION_DURATION)
   const isFocused = useIsFocused()
   const { user } = useAuthContext()
-  const { geolocPosition, selectedLocationMode, onResetPlace } = useLocation()
+  const { geolocPosition, selectedLocationMode, selectedPlace, onResetPlace } = useLocation()
   const previousGeolocPosition = usePrevious(geolocPosition)
+  const { width, height } = useWindowDimensions()
   const shouldDisplayVenueMapInSearch = useFeatureFlag(
     RemoteStoreFeatureFlags.WIP_VENUE_MAP_IN_SEARCH
   )
-  const venueMapHiddenPOI = useFeatureFlag(RemoteStoreFeatureFlags.WIP_VENUE_MAP_HIDDEN_POI)
 
   const [isSearchListTab, setIsSearchListTab] = useState(true)
   const [defaultTab, setDefaultTab] = useState(Tab.SEARCHLIST)
   const [tempLocationMode, setTempLocationMode] = useState<LocationMode>(selectedLocationMode)
+
+  const initialRegion = useVenueMapStore((state) => state.initialRegion)
 
   const isVenue = !!searchState.venue
 
   // Initial copy of location filters
   const stringifySearchStateWithoutLocation = useRef(
     getStringifySearchStateWithoutLocation(searchState)
+  )
+
+  useFocusEffect(
+    useCallback(() => {
+      const location = selectedPlace?.geolocation ?? geolocPosition
+      if (location) {
+        const region = getRegionFromPosition(location, width / height)
+        if (!initialRegion) {
+          setInitialRegion(region)
+        }
+        setRegion(region)
+      }
+    }, [geolocPosition, selectedPlace, width, height, initialRegion])
+  )
+
+  useFocusEffect(
+    useCallback(() => {
+      const playlistType =
+        hits.venues && hits.venues.length > 0
+          ? PlaylistType.TOP_OFFERS
+          : PlaylistType.SEARCH_RESULTS
+      setOffersPlaylistType(playlistType)
+    }, [hits.venues])
+  )
+
+  useFocusEffect(
+    useCallback(() => {
+      const geolocatedVenues = offerVenues?.filter(
+        (venue): venue is GeolocatedVenue => !!(venue.venueId && isGeolocValid(venue._geoloc))
+      )
+      if (geolocatedVenues) {
+        setVenues(geolocatedVenues)
+      }
+    }, [offerVenues])
   )
 
   // Execute log only on initial search fetch
@@ -278,23 +324,6 @@ export const SearchResultsContent: React.FC = () => {
     hideVenueMapLocationModal()
   }
 
-  const venueMapBottomSheetPlaylistType = useMemo(() => {
-    return hits.venues && hits.venues.length > 0
-      ? PlaylistType.TOP_OFFERS
-      : PlaylistType.SEARCH_RESULTS
-  }, [hits.venues])
-
-  const {
-    selectedVenue,
-    venueTypeCode,
-    setSelectedVenue,
-    removeSelectedVenue,
-    currentRegion,
-    setCurrentRegion,
-    setLastRegionSearched,
-    venuesMap,
-  } = useVenuesMapData(offerVenues)
-
   if (showSkeleton) return <SearchResultsPlaceHolder />
 
   const numberOfResults =
@@ -332,22 +361,7 @@ export const SearchResultsContent: React.FC = () => {
         venuesUserData={venuesUserData}
       />
     ),
-    [Tab.MAP]:
-      selectedLocationMode === LocationMode.EVERYWHERE ? null : (
-        <VenueMapView
-          from="searchResults"
-          venues={venuesMap}
-          selectedVenue={selectedVenue}
-          venueTypeCode={venueTypeCode}
-          setSelectedVenue={setSelectedVenue}
-          removeSelectedVenue={removeSelectedVenue}
-          currentRegion={currentRegion}
-          setCurrentRegion={setCurrentRegion}
-          setLastRegionSearched={setLastRegionSearched}
-          playlistType={venueMapBottomSheetPlaylistType}
-          hidePointsOfInterest={venueMapHiddenPOI}
-        />
-      ),
+    [Tab.MAP]: selectedLocationMode === LocationMode.EVERYWHERE ? null : <VenueMapViewContainer />,
   }
 
   const shouldDisplayTabLayout = shouldDisplayVenueMapInSearch && !isWeb

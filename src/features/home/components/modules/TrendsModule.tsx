@@ -6,7 +6,7 @@ import { Trend } from 'features/home/components/Trend'
 import { TrendBlock, TrendNavigationProps } from 'features/home/types'
 import { VenueMapLocationModal } from 'features/location/components/VenueMapLocationModal'
 import { useShouldDisplayVenueMap } from 'features/venueMap/hook/useShouldDisplayVenueMap'
-import { selectedVenueActions } from 'features/venueMap/store/selectedVenueStore'
+import { removeSelectedVenue } from 'features/venueMap/store/venueMapStore'
 import { analytics } from 'libs/analytics/provider'
 import { ContentTypes } from 'libs/contentful/types'
 import { LocationMode } from 'libs/location/types'
@@ -30,7 +30,6 @@ export const TrendsModule = ({ index, moduleId, homeEntryId, items }: Trends) =>
     visible: venueMapLocationModalVisible,
     hideModal: hideVenueMapLocationModal,
   } = useModal()
-  const { removeSelectedVenue } = selectedVenueActions
 
   const isSmallScreen = width < 375
   const shouldOpenMapDirectly = selectedLocationMode !== LocationMode.EVERYWHERE && !isWeb

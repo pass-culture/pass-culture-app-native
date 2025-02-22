@@ -21,7 +21,7 @@ export const Marker = ({ venue, isSelected, showLabel, ...otherProps }: MarkerPr
       image={{
         uri: getVenueTypeIconName(isSelected, venue.venue_type),
       }}
-      testID={`marker-${venue.venueId}`}
+      testID={`marker-${venue.venueId}${isSelected ? '-selected' : ''}`}
       zIndex={isSelected ? PIN_MAX_Z_INDEX : undefined}
       {...otherProps}>
       {showLabel ? <VenueMapLabel venue={venue} /> : null}

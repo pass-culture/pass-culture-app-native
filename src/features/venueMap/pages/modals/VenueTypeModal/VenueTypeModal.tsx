@@ -11,9 +11,7 @@ import { getGeolocatedVenues } from 'features/venueMap/helpers/getGeolocatedVenu
 import { getVenuesNumberByType } from 'features/venueMap/helpers/getVenuesNumberByType/getVenuesNumberByType'
 import { getVenueTypeLabel } from 'features/venueMap/helpers/getVenueTypeLabel/getVenueTypeLabel'
 import { venueTypesMapping } from 'features/venueMap/helpers/venueTypesMapping/venueTypesMapping'
-import { useSelectedVenue } from 'features/venueMap/store/selectedVenueStore'
-import { useVenues } from 'features/venueMap/store/venuesStore'
-import { useVenueTypeCode, venueTypeCodeActions } from 'features/venueMap/store/venueTypeCodeStore'
+import { setVenueTypeCode, useVenueMapStore } from 'features/venueMap/store/venueMapStore'
 import { analytics } from 'libs/analytics/provider'
 import { MAP_VENUE_TYPE_TO_LABEL, VenueTypeCode } from 'libs/parsers/venueType'
 import { Form } from 'ui/components/Form'
@@ -40,10 +38,9 @@ const MODAL_TITLE = 'Type de lieu'
 export const VenueTypeModal: FunctionComponent<Props> = ({ hideModal, isVisible = false }) => {
   const { modal } = useTheme()
 
-  const venues = useVenues()
-  const selectedVenue = useSelectedVenue()
-  const defaultVenueTypeCode = useVenueTypeCode()
-  const { setVenueTypeCode } = venueTypeCodeActions
+  const venues = useVenueMapStore((state) => state.venues)
+  const selectedVenue = useVenueMapStore((state) => state.selectedVenue)
+  const defaultVenueTypeCode = useVenueMapStore((state) => state.venueTypeCode)
 
   const {
     formState: { isSubmitting },
@@ -88,7 +85,7 @@ export const VenueTypeModal: FunctionComponent<Props> = ({ hideModal, isVisible 
         analytics.logApplyVenueMapFilter({ venueType: MAP_VENUE_TYPE_TO_LABEL[form.venueTypeCode] })
       hideModal()
     },
-    [setVenueTypeCode, hideModal]
+    [hideModal]
   )
 
   return (

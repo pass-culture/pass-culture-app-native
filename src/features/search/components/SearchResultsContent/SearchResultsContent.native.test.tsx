@@ -1,3 +1,4 @@
+import { useRoute } from '@react-navigation/native'
 import React from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -11,8 +12,8 @@ import { SearchResultsContent } from 'features/search/components/SearchResultsCo
 import { initialSearchState } from 'features/search/context/reducer'
 import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
 import { SearchState, UserData } from 'features/search/types'
-import { selectedVenueActions } from 'features/venueMap/store/selectedVenueStore'
-import { useGetAllVenues } from 'features/venueMap/useGetAllVenues'
+import * as useVenueMapStore from 'features/venueMap/store/venueMapStore'
+import { useVenuesInRegionQuery } from 'features/venueMap/useVenuesInRegionQuery'
 import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 import { venuesFixture } from 'libs/algolia/fetchAlgolia/fetchVenues/fixtures/venuesFixture'
 import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
@@ -39,9 +40,6 @@ const mockUseSearch = jest.fn(() => ({
 jest.mock('features/search/context/SearchWrapper', () => ({
   useSearch: () => mockUseSearch(),
 }))
-
-jest.mock('features/venueMap/useGetAllVenues')
-const mockUseGetAllVenues = useGetAllVenues as jest.Mock
 
 jest.mock('features/venueMap/helpers/zoomOutIfMapEmpty')
 
@@ -165,7 +163,14 @@ jest.mock('libs/location/LocationWrapper', () => ({
   useLocation: () => mockUseLocation(),
 }))
 
-const mockRemoveSelectedVenue = jest.spyOn(selectedVenueActions, 'removeSelectedVenue')
+jest.mock('features/venueMap/useVenuesInRegionQuery')
+const mockUseVenuesInRegionQuery = useVenuesInRegionQuery as jest.Mock
+
+jest.mock('@react-navigation/native')
+const mockUseRoute = useRoute as jest.Mock
+mockUseRoute.mockReturnValue({ name: 'venueMap' })
+
+const removeSelectedVenueSpy = jest.spyOn(useVenueMapStore, 'removeSelectedVenue')
 
 jest.mock('libs/subcategories/useSubcategories')
 
@@ -212,6 +217,17 @@ jest.mock('@gorhom/bottom-sheet', () => {
   }
 })
 
+const mockUseSearchResultsQuery = (
+  params = {
+    ...initialSearchResults,
+    hits: [],
+    nbHits: 0,
+    userData: [],
+  }
+) => {
+  mockUseSearchResults.mockReturnValue(params)
+}
+
 describe('SearchResultsContent component', () => {
   beforeEach(() => {
     setFeatureFlags()
@@ -220,17 +236,12 @@ describe('SearchResultsContent component', () => {
   const user = userEvent.setup()
 
   beforeAll(() => {
-    mockUseSearchResults.mockReturnValue({ ...initialSearchResults, hits: [], nbHits: 0 })
-    mockUseGetAllVenues.mockReturnValue({ venues: venuesFixture })
+    mockUseSearchResultsQuery()
+    mockUseVenuesInRegionQuery.mockReturnValue({ data: venuesFixture })
   })
 
   afterEach(() => {
-    mockUseSearchResults.mockReturnValue({
-      ...initialSearchResults,
-      hits: [],
-      nbHits: 0,
-      userData: [],
-    })
+    mockUseSearchResultsQuery()
     mockUseSearch.mockReturnValue({
       searchState: mockSearchState,
       dispatch: mockDispatch,
@@ -1082,15 +1093,11 @@ describe('SearchResultsContent component', () => {
       await user.press(await screen.findByText('Carte'))
       await screen.findByTestId('venue-map-view')
 
-      expect(mockRemoveSelectedVenue).toHaveBeenCalledTimes(1)
+      expect(removeSelectedVenueSpy).toHaveBeenCalledTimes(1)
     })
 
     it('should display empty state view when there is no search result', async () => {
-      mockUseSearchResults.mockReturnValueOnce({
-        ...initialSearchResults,
-        hits: [],
-        nbHits: 0,
-      })
+      mockUseSearchResultsQuery()
       render(<SearchResultsContent />)
 
       expect(await screen.findByText('Pas de résultat')).toBeOnTheScreen()

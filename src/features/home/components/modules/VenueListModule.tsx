@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 
 import { VenueListModuleItem } from 'features/home/components/modules/VenueListModuleItem'
 import { VenueMapLocationModal } from 'features/location/components/VenueMapLocationModal'
-import { selectedVenueActions } from 'features/venueMap/store/selectedVenueStore'
+import { removeSelectedVenue } from 'features/venueMap/store/venueMapStore'
 import { VenueHit } from 'libs/algolia/types'
 import { analytics } from 'libs/analytics/provider'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -25,7 +25,6 @@ type HeaderProps = {
 
 const ListHeaderComponent: FunctionComponent<HeaderProps> = ({ onPress }) => {
   const focusProps = useHandleFocus()
-  const { removeSelectedVenue } = selectedVenueActions
 
   const handleOnBeforeNavigate = () => {
     removeSelectedVenue()

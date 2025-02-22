@@ -7,7 +7,7 @@ import { getSpacing } from 'ui/theme'
 const CENTER_PIN_THRESHOLD = getSpacing(4)
 
 type Params = {
-  currentRegion: Region
+  currentRegion?: Region
   mapViewRef: RefObject<Map>
   mapHeight: number
 }
@@ -17,7 +17,7 @@ export const useCenterOnLocation = ({ currentRegion, mapViewRef, mapHeight }: Pa
 
   return useCallback(
     async (latitude: number, longitude: number, previewHeight = 0) => {
-      if (!mapViewRef?.current) return
+      if (!currentRegion || !mapViewRef?.current) return
 
       const region = { ...currentRegion, latitude, longitude }
       const point = await mapViewRef.current.pointForCoordinate({ latitude, longitude })

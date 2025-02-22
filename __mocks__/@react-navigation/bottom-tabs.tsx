@@ -1,4 +1,4 @@
-import React, { PropsWithChildren } from 'react'
+import React, { PropsWithChildren, createContext } from 'react'
 import { View } from 'react-native'
 
 const Navigator: React.FC<PropsWithChildren> = ({ children }) => {
@@ -7,3 +7,4 @@ const Navigator: React.FC<PropsWithChildren> = ({ children }) => {
 const Screen = () => null
 
 export const createBottomTabNavigator = () => ({ Navigator, Screen })
+export const BottomTabBarHeightContext = createContext({ height: 0 })

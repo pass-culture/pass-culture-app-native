@@ -22,11 +22,13 @@ const mockMapRef: React.MutableRefObject<MockMapRef> = {
 // Étendre les props de MapView pour inclure onMapReady
 interface ExtendedMapViewProps extends MapViewProps {
   onMapReady?: () => void
+  onRegionChange?: () => void
 }
 
 const MapViewMock = forwardRef<MockMapRef, ExtendedMapViewProps>(function MapViewMock(props, ref) {
   useEffect(() => {
     props.onMapReady?.()
+    props.onRegionChange?.()
   }, [props])
 
   useImperativeHandle(ref, () => mockMapRef.current, [])

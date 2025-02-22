@@ -1,50 +1,67 @@
-import React, { FunctionComponent } from 'react'
-import styled from 'styled-components/native'
+import { useFocusEffect } from '@react-navigation/native'
+import React, { FunctionComponent, useCallback, useEffect, useMemo } from 'react'
+import { useWindowDimensions } from 'react-native'
 
 import { PlaylistType } from 'features/offer/enums'
-import { VenueMapView } from 'features/venueMap/components/VenueMapView/VenueMapView'
-import { useVenuesMapData } from 'features/venueMap/hook/useVenuesMapData'
+import { VenueMapViewContainer } from 'features/venueMap/components/VenueMapView/VenueMapViewContainer'
+import { getRegionFromPosition } from 'features/venueMap/helpers/getRegionFromPosition/getRegionFromPosition'
+import { useGetVenuesInRegion } from 'features/venueMap/hook/useGetVenuesInRegion'
 import { VenueMapBase } from 'features/venueMap/pages/VenueMap/VenueMapBase'
-import { useInitialVenues } from 'features/venueMap/store/initialVenuesStore'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import {
+  clearVenueMapStore,
+  setInitialRegion,
+  setOffersPlaylistType,
+  setRegion,
+  setVenues,
+} from 'features/venueMap/store/venueMapStore'
+import { venuesFilterActions } from 'features/venueMap/store/venuesFilterStore'
+import { useLocation } from 'libs/location'
 
 export const VenueMap: FunctionComponent = () => {
-  const venueMapHiddenPOI = useFeatureFlag(RemoteStoreFeatureFlags.WIP_VENUE_MAP_HIDDEN_POI)
+  const { geolocPosition, selectedPlace } = useLocation()
+  const { width, height } = useWindowDimensions()
+  const { reset } = venuesFilterActions
 
-  const initialVenues = useInitialVenues()
-  const {
-    selectedVenue,
-    venueTypeCode,
-    setSelectedVenue,
-    removeSelectedVenue,
-    currentRegion,
-    setCurrentRegion,
-    setLastRegionSearched,
-    venuesMap,
-  } = useVenuesMapData(initialVenues)
+  const location = selectedPlace?.geolocation ?? geolocPosition
+
+  const ratio = width / height
+  const region = useMemo(() => getRegionFromPosition(location, ratio), [ratio, location])
+
+  const venues = useGetVenuesInRegion(region)
+
+  useFocusEffect(
+    useCallback(() => {
+      setInitialRegion(region)
+      setRegion(region)
+    }, [region])
+  )
+
+  useFocusEffect(
+    useCallback(() => {
+      if (venues) {
+        setVenues(venues)
+      }
+    }, [venues])
+  )
+
+  useFocusEffect(
+    useCallback(() => {
+      setOffersPlaylistType(PlaylistType.TOP_OFFERS)
+    }, [])
+  )
+
+  useEffect(
+    () => () => {
+      clearVenueMapStore()
+      reset()
+    },
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    []
+  )
 
   return (
     <VenueMapBase>
-      <MapContainer>
-        <VenueMapView
-          from="venueMap"
-          venues={venuesMap}
-          selectedVenue={selectedVenue}
-          venueTypeCode={venueTypeCode}
-          setSelectedVenue={setSelectedVenue}
-          removeSelectedVenue={removeSelectedVenue}
-          currentRegion={currentRegion}
-          setCurrentRegion={setCurrentRegion}
-          setLastRegionSearched={setLastRegionSearched}
-          playlistType={PlaylistType.TOP_OFFERS}
-          hidePointsOfInterest={venueMapHiddenPOI}
-        />
-      </MapContainer>
+      <VenueMapViewContainer />
     </VenueMapBase>
   )
 }
-
-const MapContainer = styled.View({
-  flex: 1,
-})
