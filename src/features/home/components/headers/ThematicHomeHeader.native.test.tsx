@@ -6,7 +6,7 @@ import { ThematicHomeHeader } from 'features/home/components/headers/ThematicHom
 import { CategoryThematicHeader, Color, ThematicHeaderType } from 'features/home/types'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render, screen } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 
 jest.unmock('react-native/Libraries/Animated/createAnimatedComponent')
 
@@ -27,8 +27,12 @@ const categoryThematicHeader: CategoryThematicHeader = {
     'https://images.ctfassets.net/2bg01iqy0isv/5PmtxKY77rq0nYpkCFCbrg/4daa8767efa35827f22bb86e5fc65094/photo-lion_noir-et-blanc_laurent-breillat-610x610.jpeg',
 }
 
+const user = userEvent.setup()
+
+jest.useFakeTimers()
+
 describe('ThematicHomeHeader', () => {
-  it('should navigate to home page on press go back button', async () => {
+  it('should navigate to home page on press go back button when go back not defined', async () => {
     render(
       reactQueryProviderHOC(
         <ThematicHomeHeader
@@ -40,10 +44,27 @@ describe('ThematicHomeHeader', () => {
     )
     const backButton = screen.getByTestId('Revenir en arrière')
 
-    await act(async () => {
-      fireEvent.press(backButton)
-    })
+    await user.press(backButton)
 
     expect(navigate).toHaveBeenCalledWith(navigateToHomeConfig.screen, navigateToHomeConfig.params)
+  })
+
+  it('should execute go back on press go back button when go back defined', async () => {
+    const mockOnBackPress = jest.fn()
+    render(
+      reactQueryProviderHOC(
+        <ThematicHomeHeader
+          thematicHeader={categoryThematicHeader}
+          headerTransition={HeaderInterpolation}
+          homeId="fakeEntryId"
+          onBackPress={mockOnBackPress}
+        />
+      )
+    )
+    const backButton = screen.getByTestId('Revenir en arrière')
+
+    await user.press(backButton)
+
+    expect(mockOnBackPress).toHaveBeenCalledTimes(1)
   })
 })

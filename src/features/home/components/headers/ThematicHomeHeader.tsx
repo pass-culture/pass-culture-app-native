@@ -13,12 +13,14 @@ type Props = {
   thematicHeader?: ThematicHeader
   headerTransition: Animated.AnimatedInterpolation<string | number>
   homeId: string
+  onBackPress?: VoidFunction
 }
 
 export const ThematicHomeHeader: FunctionComponent<Props> = ({
   thematicHeader,
   headerTransition,
   homeId,
+  onBackPress,
 }) => {
   const [showSmallSubscriptionButton, setShowSmallSubscriptionButton] = useState(false)
   const { navigate } = useNavigation<UseNavigationType>()
@@ -50,7 +52,7 @@ export const ThematicHomeHeader: FunctionComponent<Props> = ({
       headerTitle={thematicHeader?.title}
       headerTransition={headerTransition}
       customHeaderTitleTransition={smallSubscribeButtonOpacity}
-      onBackPress={onGoBack}
+      onBackPress={onBackPress ?? onGoBack}
       RightElement={
         thematicHeader?.type === ThematicHeaderType.Category ? (
           <React.Fragment>
