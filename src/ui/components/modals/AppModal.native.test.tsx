@@ -2,7 +2,7 @@ import React from 'react'
 import { DeviceEventEmitter } from 'react-native'
 import { ReactNativeModal } from 'react-native-modal'
 
-import { act, fireEvent, render, screen } from 'tests/utils'
+import { act, render, screen, userEvent } from 'tests/utils'
 
 import { AppModal } from './AppModal'
 import {
@@ -19,6 +19,9 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
     return Component
   }
 })
+
+const user = userEvent.setup()
+jest.useFakeTimers()
 
 describe('<AppModal />', () => {
   it('with minimal props', () => {
@@ -127,11 +130,11 @@ describe('<AppModal />', () => {
       expect(screen).toMatchSnapshot()
     })
 
-    it('should call the callback when clicking on left icon', () => {
+    it('should call the callback when clicking on left icon', async () => {
       render(<AppModal {...defaultProps} {...leftIconProps} />)
       const leftIcon = screen.getByTestId(leftIconProps.leftIconAccessibilityLabel)
 
-      fireEvent.press(leftIcon)
+      await user.press(leftIcon)
 
       expect(leftIconCallbackMock).toHaveBeenCalledTimes(1)
     })
@@ -149,11 +152,11 @@ describe('<AppModal />', () => {
       expect(screen).toMatchSnapshot()
     })
 
-    it('should call the callback when clicking on right icon', () => {
+    it('should call the callback when clicking on right icon', async () => {
       render(<AppModal {...defaultProps} {...rightIconProps} />)
       const rightIcon = screen.getByTestId(rightIconProps.rightIconAccessibilityLabel)
 
-      fireEvent.press(rightIcon)
+      await user.press(rightIcon)
 
       expect(rightIconCallbackMock).toHaveBeenCalledTimes(1)
     })

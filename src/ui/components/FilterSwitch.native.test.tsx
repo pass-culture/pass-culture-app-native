@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { fireEvent, render, screen } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 import FilterSwitch from 'ui/components/FilterSwitch'
 
 const active = false
@@ -12,13 +12,16 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
+const user = userEvent.setup()
+jest.useFakeTimers()
+
 describe('<FilterSwitch />', () => {
-  it('should call toggle when press on switch', () => {
+  it('should call toggle when press on switch', async () => {
     render(<FilterSwitch active={active} toggle={toggle} />)
 
     const Switch = screen.getByTestId('Interrupteur')
 
-    fireEvent.press(Switch)
+    await user.press(Switch)
 
     expect(toggle).toHaveBeenCalledTimes(1)
   })
@@ -28,7 +31,7 @@ describe('<FilterSwitch />', () => {
 
     const Switch = screen.getByTestId('Interrupteur')
 
-    fireEvent.press(Switch)
+    user.press(Switch)
 
     expect(toggle).not.toHaveBeenCalledTimes(1)
   })

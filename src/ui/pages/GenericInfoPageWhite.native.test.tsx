@@ -1,10 +1,12 @@
 import React from 'react'
 
-import { fireEvent, render, screen } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
 import { BicolorPhonePending } from 'ui/svg/icons/BicolorPhonePending'
 
 const onSkip = jest.fn()
+const user = userEvent.setup()
+jest.useFakeTimers()
 
 describe('<GenericInfoPageWhite />', () => {
   it('should render correctly', () => {
@@ -13,7 +15,7 @@ describe('<GenericInfoPageWhite />', () => {
     expect(screen).toMatchSnapshot()
   })
 
-  it('should call skip when onSkip is provided', () => {
+  it('should call skip when onSkip is provided', async () => {
     render(
       <GenericInfoPageWhite
         title="GenericInfoPageWhite"
@@ -23,7 +25,7 @@ describe('<GenericInfoPageWhite />', () => {
     )
 
     const skipButton = screen.getByText('Passer')
-    fireEvent.press(skipButton)
+    await user.press(skipButton)
 
     expect(onSkip).toHaveBeenCalledTimes(1)
   })

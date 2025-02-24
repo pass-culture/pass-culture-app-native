@@ -9,7 +9,7 @@ import { analytics } from 'libs/analytics/provider'
 import { ContentTypes } from 'libs/contentful/types'
 import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render, screen, waitFor } from 'tests/utils'
+import { render, screen, userEvent, waitFor } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT_LONG } from 'ui/components/snackBar/SnackBarContext'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
@@ -42,12 +42,15 @@ const props: BusinessModuleProps = {
 
 jest.mock('libs/firebase/analytics/analytics')
 
+const user = userEvent.setup()
+jest.useFakeTimers()
+
 describe('NewBusinessModule component', () => {
   const openURLSpy = jest.spyOn(Linking, 'openURL')
 
-  it('should log "BusinessBlockClicked" when clicking on the image', () => {
+  it('should log "BusinessBlockClicked" when clicking on the image', async () => {
     renderModule(props)
-    fireEvent.press(screen.getByTestId('imageBusiness'))
+    await user.press(screen.getByTestId('imageBusiness'))
 
     expect(analytics.logBusinessBlockClicked).toHaveBeenCalledWith({
       moduleName: props.analyticsTitle,
@@ -76,7 +79,7 @@ describe('NewBusinessModule component', () => {
 
   it('should open url when clicking on the image', async () => {
     renderModule(props)
-    fireEvent.press(screen.getByTestId('imageBusiness'))
+    user.press(screen.getByTestId('imageBusiness'))
 
     await waitFor(() => {
       expect(openURLSpy).toHaveBeenCalledWith('url')
@@ -95,7 +98,7 @@ describe('NewBusinessModule component', () => {
       url: 'some_url_with_email={email}',
     })
 
-    fireEvent.press(screen.getByTestId('imageBusiness'))
+    user.press(screen.getByTestId('imageBusiness'))
 
     await waitFor(() => {
       expect(mockShowInfoSnackBar).toHaveBeenCalledWith({
@@ -117,7 +120,7 @@ describe('NewBusinessModule component', () => {
       url: 'some_url_with_email={email}',
     })
 
-    fireEvent.press(screen.getByTestId('imageBusiness'))
+    user.press(screen.getByTestId('imageBusiness'))
     await waitFor(() =>
       expect(openURLSpy).toHaveBeenCalledWith('some_url_with_email=email2@domain.ext')
     )
@@ -141,7 +144,7 @@ describe('NewBusinessModule component', () => {
       url: 'some_url_with_no_email',
     })
 
-    fireEvent.press(screen.getByTestId('imageBusiness'))
+    user.press(screen.getByTestId('imageBusiness'))
     await waitFor(() => expect(openURLSpy).toHaveBeenCalledWith('some_url_with_no_email'))
 
     expect(mockShowInfoSnackBar).not.toHaveBeenCalled()

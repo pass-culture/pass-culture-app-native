@@ -8,7 +8,7 @@ import { useVenueTypeCode, venueTypeCodeActions } from 'features/venueMap/store/
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render, screen } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 
 jest.mock('features/venue/api/useVenueOffers')
 
@@ -45,6 +45,9 @@ jest.mock('@gorhom/bottom-sheet', () => {
 
 const VENUE_TYPE = VenueTypeCodeKey.MOVIE
 
+const user = userEvent.setup()
+jest.useFakeTimers()
+
 describe('<VenueMap />', () => {
   beforeEach(() => {
     setFeatureFlags([
@@ -69,7 +72,8 @@ describe('<VenueMap />', () => {
   it('Should handle go back action when pressing go back button', async () => {
     render(reactQueryProviderHOC(<VenueMap />))
 
-    fireEvent.press(await screen.findByTestId('Revenir en arrière'))
+    const goBackButton = screen.getByTestId('Revenir en arrière')
+    await user.press(goBackButton)
 
     expect(mockGoBack).toHaveBeenCalledTimes(1)
   })
@@ -77,7 +81,8 @@ describe('<VenueMap />', () => {
   it('Should reset venue type code in store when pressing go back button', async () => {
     render(reactQueryProviderHOC(<VenueMap />))
 
-    fireEvent.press(await screen.findByTestId('Revenir en arrière'))
+    const goBackButton = screen.getByTestId('Revenir en arrière')
+    await user.press(goBackButton)
 
     expect(mockSetVenueTypeCode).toHaveBeenNthCalledWith(1, null)
   })

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { fireEvent, render, screen } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Close } from 'ui/svg/icons/Close'
 
@@ -15,6 +15,9 @@ const props = {
   rightIcon: Close,
   onRightIconPress: jest.fn(),
 }
+
+const user = userEvent.setup()
+jest.useFakeTimers()
 
 describe('ModalHeader component', () => {
   describe('left icon', () => {
@@ -37,7 +40,7 @@ describe('ModalHeader component', () => {
       expect(screen.getByTestId('Revenir en arrière')).toBeOnTheScreen()
 
       const leftIconButton = await screen.findByTestId(props.leftIconAccessibilityLabel)
-      fireEvent.press(leftIconButton)
+      await user.press(leftIconButton)
 
       expect(props.onLeftIconPress).toHaveBeenCalledTimes(1)
     })
@@ -63,7 +66,7 @@ describe('ModalHeader component', () => {
       expect(screen.getByTestId('Fermer la modale')).toBeOnTheScreen()
 
       const rightIconButton = await screen.findByTestId(props.rightIconAccessibilityLabel)
-      fireEvent.press(rightIconButton)
+      await user.press(rightIconButton)
 
       expect(props.onRightIconPress).toHaveBeenCalledTimes(1)
     })

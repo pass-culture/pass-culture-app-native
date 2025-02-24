@@ -3,7 +3,7 @@ import React from 'react'
 import { Animated, TouchableOpacity } from 'react-native'
 import { ReactTestInstance } from 'react-test-renderer'
 
-import { fireEvent, render, screen, waitFor } from 'tests/utils'
+import { render, screen, userEvent, waitFor } from 'tests/utils'
 
 import { RoundedButton } from './RoundedButton'
 
@@ -34,6 +34,8 @@ const DummyComponent: React.FC = () => {
     </TouchableOpacity>
   )
 }
+const user = userEvent.setup()
+jest.useFakeTimers()
 
 describe('RoundedButton', () => {
   describe('Icon', () => {
@@ -71,7 +73,7 @@ describe('RoundedButton', () => {
     it('should display final colors after animation', async () => {
       render(<DummyComponent />)
 
-      fireEvent.press(screen.getByTestId('dummyPressable'))
+      user.press(screen.getByTestId('dummyPressable'))
 
       const roundContainer = screen.getByTestId('AnimatedHeaderIconRoundContainer')
       await waitFor(() => {

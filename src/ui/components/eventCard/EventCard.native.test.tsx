@@ -1,8 +1,11 @@
 import React from 'react'
 
 import { analytics } from 'libs/analytics/provider'
-import { fireEvent, render, screen } from 'tests/utils'
+import { userEvent, render, screen } from 'tests/utils'
 import { EventCard, EventCardProps } from 'ui/components/eventCard/EventCard'
+
+const user = userEvent.setup()
+jest.useFakeTimers()
 
 describe('EventCard', () => {
   const defaultEventCardProps: EventCardProps = {
@@ -17,7 +20,7 @@ describe('EventCard', () => {
     it('should send log ConsultOffer event when on venue page and user clicks on an eventCard', async () => {
       render(<EventCard {...defaultEventCardProps} analyticsFrom="venue" offerId={1} />)
       const eventCard = await screen.findByLabelText('Film 1')
-      fireEvent.press(eventCard)
+      await user.press(eventCard)
 
       expect(analytics.logConsultOffer).toHaveBeenNthCalledWith(1, {
         offerId: 1,
@@ -28,7 +31,7 @@ describe('EventCard', () => {
     it('should not send log ConsultOffer event when not on venue page and user clicks on an eventCard', async () => {
       render(<EventCard {...defaultEventCardProps} analyticsFrom="offer" offerId={1} />)
       const eventCard = await screen.findByLabelText('Film 1')
-      fireEvent.press(eventCard)
+      user.press(eventCard)
 
       expect(analytics.logConsultOffer).not.toHaveBeenCalled()
     })

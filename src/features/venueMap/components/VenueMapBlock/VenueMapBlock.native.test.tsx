@@ -7,11 +7,13 @@ import { selectedVenueActions } from 'features/venueMap/store/selectedVenueStore
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { fireEvent, render, screen, waitFor } from 'tests/utils'
+import { userEvent, render, screen, waitFor } from 'tests/utils'
 
 const mockRemoveSelectedVenue = jest.spyOn(selectedVenueActions, 'removeSelectedVenue')
 
 const mockSetInitialVenues = jest.spyOn(initialVenuesActions, 'setInitialVenues')
+const user = userEvent.setup()
+jest.useFakeTimers()
 
 describe('<VenueMapBlock />', () => {
   describe('When wipAppV2VenueMapBlock feature flag activated', () => {
@@ -65,7 +67,7 @@ describe('<VenueMapBlock />', () => {
   it('should reset selected venue in store', async () => {
     render(<VenueMapBlock from="searchLanding" />)
 
-    fireEvent.press(screen.getByText('Explorer les lieux'))
+    user.press(screen.getByText('Explorer les lieux'))
 
     await waitFor(() => {
       expect(mockRemoveSelectedVenue).toHaveBeenCalledTimes(1)
@@ -75,7 +77,7 @@ describe('<VenueMapBlock />', () => {
   it('should reset initial venues in store', async () => {
     render(<VenueMapBlock from="searchLanding" />)
 
-    fireEvent.press(screen.getByText('Explorer les lieux'))
+    user.press(screen.getByText('Explorer les lieux'))
 
     await waitFor(() => {
       expect(mockSetInitialVenues).toHaveBeenCalledTimes(1)
@@ -85,7 +87,7 @@ describe('<VenueMapBlock />', () => {
   it('should navigate to venue map screen', async () => {
     render(<VenueMapBlock from="searchLanding" />)
 
-    fireEvent.press(screen.getByText('Explorer les lieux'))
+    user.press(screen.getByText('Explorer les lieux'))
 
     await waitFor(() => {
       expect(navigate).toHaveBeenNthCalledWith(1, 'VenueMap', undefined)
@@ -95,7 +97,7 @@ describe('<VenueMapBlock />', () => {
   it('should trigger log ConsultVenueMap', async () => {
     render(<VenueMapBlock from="searchLanding" />)
 
-    fireEvent.press(screen.getByText('Explorer les lieux'))
+    user.press(screen.getByText('Explorer les lieux'))
 
     await waitFor(() => {
       expect(analytics.logConsultVenueMap).toHaveBeenNthCalledWith(1, { from: 'searchLanding' })

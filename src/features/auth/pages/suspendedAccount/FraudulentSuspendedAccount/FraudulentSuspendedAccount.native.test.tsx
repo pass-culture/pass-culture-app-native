@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { analytics } from 'libs/analytics/provider'
-import { fireEvent, render, screen } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 
 import { FraudulentSuspendedAccount } from './FraudulentSuspendedAccount'
 
@@ -15,6 +15,9 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
+const user = userEvent.setup()
+jest.useFakeTimers()
+
 describe('<FraudulentSuspendedAccount />', () => {
   it('should match snapshot', () => {
     render(<FraudulentSuspendedAccount />)
@@ -22,11 +25,11 @@ describe('<FraudulentSuspendedAccount />', () => {
     expect(screen).toMatchSnapshot()
   })
 
-  it('should log analytics when clicking on "Contacter le service fraude" button', () => {
+  it('should log analytics when clicking on "Contacter le service fraude" button', async () => {
     render(<FraudulentSuspendedAccount />)
 
     const contactSupportButton = screen.getByText('Contacter le service fraude')
-    fireEvent.press(contactSupportButton)
+    await user.press(contactSupportButton)
 
     expect(analytics.logContactFraudTeam).toHaveBeenCalledWith({
       from: 'fraudulentsuspendedaccount',

@@ -3,7 +3,7 @@ import React from 'react'
 import { NativeCategoryIdEnumv2, SearchGroupNameEnumv2 } from 'api/gen'
 import { SearchHistoryItem } from 'features/search/components/SearchHistoryItem/SearchHistoryItem'
 import { Highlighted, HistoryItem } from 'features/search/types'
-import { fireEvent, render, screen } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 
 const defaultItem: Highlighted<HistoryItem> = {
   createdAt: new Date('2023-09-25T09:01:00.000Z').getTime(),
@@ -11,6 +11,8 @@ const defaultItem: Highlighted<HistoryItem> = {
   label: 'manga',
   _highlightResult: { query: { value: 'manga' } },
 }
+const user = userEvent.setup()
+jest.useFakeTimers()
 
 describe('SearchHistoryItem', () => {
   it('should not display "dans" a category or a native category when item has not it', () => {
@@ -57,12 +59,12 @@ describe('SearchHistoryItem', () => {
     expect(screen.getByText('Livres papier')).toBeOnTheScreen()
   })
 
-  it('should execute onPress when pressing item', () => {
+  it('should execute onPress when pressing item', async () => {
     const mockOnPress = jest.fn()
 
     render(<SearchHistoryItem item={defaultItem} queryHistory="" onPress={mockOnPress} />)
 
-    fireEvent.press(screen.getByText('manga'))
+    await user.press(screen.getByText('manga'))
 
     expect(mockOnPress).toHaveBeenNthCalledWith(1, defaultItem)
   })

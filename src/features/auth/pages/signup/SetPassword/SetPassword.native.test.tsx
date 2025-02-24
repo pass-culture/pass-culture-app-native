@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { act, fireEvent, render, screen } from 'tests/utils'
+import { act, render, screen, userEvent } from 'tests/utils'
 
 import { SetPassword } from './SetPassword'
 
@@ -23,6 +23,8 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
     return Component
   }
 })
+const user = userEvent.setup()
+jest.useFakeTimers()
 
 describe('SetPassword Page', () => {
   it('should render correctly', () => {
@@ -54,7 +56,7 @@ describe('SetPassword Page', () => {
 
     const passwordInput = screen.getByPlaceholderText('Ton mot de passe')
     await act(async () => {
-      fireEvent.changeText(passwordInput, 'user@AZERTY123')
+      user.type(passwordInput, 'user@AZERTY123')
     })
 
     expect(await screen.findByTestId('Continuer')).toBeEnabled()
@@ -65,11 +67,11 @@ describe('SetPassword Page', () => {
 
     await act(async () => {
       const passwordInput = screen.getByPlaceholderText('Ton mot de passe')
-      fireEvent.changeText(passwordInput, 'user@AZERTY123')
+      user.type(passwordInput, 'user@AZERTY123')
     })
 
     await act(async () => {
-      fireEvent.press(screen.getByTestId('Continuer'))
+      user.press(screen.getByTestId('Continuer'))
     })
 
     expect(props.goToNextStep).toHaveBeenCalledWith({ password: 'user@AZERTY123' })
