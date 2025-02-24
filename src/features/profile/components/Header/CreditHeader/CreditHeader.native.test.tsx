@@ -3,6 +3,7 @@ import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { DomainsCredit } from 'api/gen'
+import { setSettings } from 'features/auth/tests/setSettings'
 import {
   CreditHeader,
   CreditHeaderProps,
@@ -156,62 +157,100 @@ describe('CreditHeader', () => {
   })
 
   describe('Beneficiary is underage', () => {
-    beforeEach(() => {
-      mockUseIsUserUnderageBeneficiary.mockReturnValueOnce(true)
-      mockUseIsUserUnderageBeneficiary.mockReturnValueOnce(true)
+    describe('when enableCreditV3 disable', () => {
+      beforeEach(() => {
+        setSettings({ wipEnableCreditV3: false })
+        mockUseIsUserUnderageBeneficiary.mockReturnValueOnce(true)
+        mockUseIsUserUnderageBeneficiary.mockReturnValueOnce(true)
+      })
+
+      it.each([15, 16, 17])('should render correctly for %s year-old', (age) => {
+        renderCreditHeader({ age })
+
+        expect(screen.getByText('Profite de ton crédit jusqu’au')).toBeOnTheScreen()
+      })
+
+      it.each([15, 16, 17])('should not display credit ceilings for %s year-old', (age) => {
+        renderCreditHeader({ age })
+        const digitalCredit = screen.queryByTestId('domains-credit-digital')
+        const physicalCredit = screen.queryByTestId('domains-credit-physical')
+
+        expect(digitalCredit).not.toBeOnTheScreen()
+        expect(physicalCredit).not.toBeOnTheScreen()
+      })
+
+      it.each([15, 16, 17])(
+        'should render correctly with exhausted credit for %s year-old',
+        (age) => {
+          renderCreditHeader({ domainsCredit: domains_exhausted_credit_v1, age })
+
+          expect(screen.getByText('Tu as dépensé tout ton crédit')).toBeOnTheScreen()
+        }
+      )
+
+      it('should display coming credit for 15-year-old beneficiary', () => {
+        renderCreditHeader({ age: 15 })
+
+        expect(screen.getByText('À venir pour tes 16 ans : + 30 €')).toBeOnTheScreen()
+      })
+
+      it('should display coming credit for 16-year-old beneficiary', () => {
+        renderCreditHeader({ age: 16 })
+
+        expect(screen.getByText('À venir pour tes 17 ans : + 30 €')).toBeOnTheScreen()
+      })
+
+      it('should display coming credit for 17-year-old beneficiary', () => {
+        renderCreditHeader({ age: 17 })
+
+        expect(screen.getByText('À venir pour tes 18 ans : 300 €')).toBeOnTheScreen()
+      })
+
+      it('should display time left when credit expires soon', () => {
+        mockdate.set(new Date(today))
+        renderCreditHeader({ depositExpirationDate: tomorrow, age: 17 })
+
+        expect(
+          screen.getByText(
+            'Ton crédit sera remis à 0 aujourd’hui. Profite rapidement de ton crédit restant\u00a0!'
+          )
+        ).toBeOnTheScreen()
+      })
     })
 
-    it.each([15, 16, 17])('should render correctly for %s year-old', (age) => {
-      renderCreditHeader({ age })
+    describe('when enableCreditV3 enable', () => {
+      beforeEach(() => {
+        setSettings({ wipEnableCreditV3: true })
+      })
 
-      expect(screen.getByText('Profite de ton crédit jusqu’au')).toBeOnTheScreen()
-    })
+      it('should display coming credit for 15-year-old beneficiary', () => {
+        renderCreditHeader({ age: 15 })
 
-    it.each([15, 16, 17])('should not display credit ceilings for %s year-old', (age) => {
-      renderCreditHeader({ age })
-      const digitalCredit = screen.queryByTestId('domains-credit-digital')
-      const physicalCredit = screen.queryByTestId('domains-credit-physical')
+        expect(screen.getByText('À venir pour tes 17 ans : + 50 €')).toBeOnTheScreen()
+      })
 
-      expect(digitalCredit).not.toBeOnTheScreen()
-      expect(physicalCredit).not.toBeOnTheScreen()
-    })
+      it('should display coming credit for 16-year-old beneficiary', () => {
+        renderCreditHeader({ age: 16 })
 
-    it('should display coming credit for 17-year-old beneficiary', () => {
-      renderCreditHeader({ age: 17 })
+        expect(screen.getByText('À venir pour tes 17 ans : + 50 €')).toBeOnTheScreen()
+      })
 
-      expect(screen.getByText('À venir pour tes 18 ans : 300 €')).toBeOnTheScreen()
-    })
+      it('should display coming credit for 17-year-old beneficiary', () => {
+        renderCreditHeader({ age: 17 })
 
-    it.each([15, 16, 17])(
-      'should render correctly with exhausted credit for %s year-old',
-      (age) => {
-        renderCreditHeader({ domainsCredit: domains_exhausted_credit_v1, age })
+        expect(screen.getByText('À venir pour tes 18 ans : 150 €')).toBeOnTheScreen()
+      })
 
-        expect(screen.getByText('Tu as dépensé tout ton crédit')).toBeOnTheScreen()
-      }
-    )
+      it('should not display time left when credit expires soon', () => {
+        mockdate.set(new Date(today))
+        renderCreditHeader({ depositExpirationDate: tomorrow, age: 17 })
 
-    it('should display coming credit for 16-year-old beneficiary', () => {
-      renderCreditHeader({ age: 16 })
-
-      expect(screen.getByText('À venir pour tes 17 ans : + 30 €')).toBeOnTheScreen()
-    })
-
-    it('should display coming credit for 15-year-old beneficiary', () => {
-      renderCreditHeader({ age: 15 })
-
-      expect(screen.getByText('À venir pour tes 16 ans : + 30 €')).toBeOnTheScreen()
-    })
-
-    it('should display time left when credit expires soon', () => {
-      mockdate.set(new Date(today))
-      renderCreditHeader({ depositExpirationDate: tomorrow, age: 17 })
-
-      expect(
-        screen.getByText(
-          'Ton crédit sera remis à 0 aujourd’hui. Profite rapidement de ton crédit restant\u00a0!'
-        )
-      ).toBeOnTheScreen()
+        expect(
+          screen.queryByText(
+            'Ton crédit sera remis à 0 aujourd’hui. Profite rapidement de ton crédit restant\u00a0!'
+          )
+        ).not.toBeOnTheScreen()
+      })
     })
   })
 })
