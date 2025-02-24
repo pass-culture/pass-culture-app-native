@@ -2,7 +2,7 @@ import React from 'react'
 
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { env } from 'libs/environment/env'
-import { render, fireEvent, screen } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 
 import { LegalNotices } from './LegalNotices'
 
@@ -15,6 +15,8 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
     return Component
   }
 })
+const user = userEvent.setup()
+jest.useFakeTimers()
 
 describe('LegalNotices', () => {
   it('should render correctly', async () => {
@@ -27,7 +29,7 @@ describe('LegalNotices', () => {
     render(<LegalNotices />)
 
     const row = screen.getByText('Conditions Générales d’Utilisation')
-    fireEvent.press(row)
+    await user.press(row)
 
     expect(openUrl).toHaveBeenCalledWith(env.CGU_LINK, undefined, true)
   })
@@ -36,7 +38,7 @@ describe('LegalNotices', () => {
     render(<LegalNotices />)
 
     const row = screen.getByText('Charte de protection des données personnelles')
-    fireEvent.press(row)
+    await user.press(row)
 
     expect(openUrl).toHaveBeenCalledWith(env.PRIVACY_POLICY_LINK, undefined, true)
   })
