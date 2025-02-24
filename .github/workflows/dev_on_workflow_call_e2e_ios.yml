@@ -1,6 +1,9 @@
 name: '0 [on_workflow] Dev on workflow call e2e iOS'
 
 on:
+  push:
+    branches:
+      - PC-34693
   workflow_call:
     secrets:
       GCP_EHP_SERVICE_ACCOUNT:
@@ -21,8 +24,6 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version-file: '.nvmrc'
-      - name: Setup yarn
-        run: npm install -g yarn
       - name: Enable Corepack
         run: corepack enable
       - name: Setup java
@@ -72,7 +73,6 @@ jobs:
       - name: 'Render Template'
         run: |
           cp templates_github_ci/.sentryclirc .sentryclirc
-          sed '$d' .sentryclirc
           echo "token=${{ steps.secrets.outputs.SENTRY_AUTH_TOKEN }}" >> .sentryclirc
       - name: Setup iOS Google services config
         run: echo '${{ steps.secrets.outputs.IOS_GOOGLE_SERVICES_PLIST }}' > ios/GoogleService-Info.plist
@@ -96,14 +96,14 @@ jobs:
         id: find_app
         run: |
           APP_PATH=$(find /Users/runner/Library/Developer/Xcode/Archives/ -name "*.app" | head -n 1)
-          echo "::set-output name=APP_PATH::$APP_PATH"
-      - name: Generate Robin upload name
+          echo "APP_PATH=$APP_PATH" >> $GITHUB_OUTPUT
+      - name: Generate Robin iOS upload name
         id: generate_name
         run: |
           DATE=$(date +"%d-%m-%Y")
           COMMIT_HASH=$(git rev-parse --short=8 HEAD)
           CUSTOM_NAME="[Nightly] - ${DATE} - ${COMMIT_HASH}"
-          echo "::set-output name=CUSTOM_NAME::$CUSTOM_NAME"
+          echo "CUSTOM_NAME=$CUSTOM_NAME" >> $GITHUB_OUTPUT
       - name: Upload and run ios tests with Robin
         uses: mobile-dev-inc/action-maestro-cloud@v1.9.6
         with:

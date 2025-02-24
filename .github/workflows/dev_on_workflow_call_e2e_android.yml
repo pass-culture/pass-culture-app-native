@@ -82,13 +82,13 @@ jobs:
       - name: Build android apk
         run: cd android && for i in {1..3}; do ENVFILE=.env.staging ./gradlew assembleDebug && break || sleep 2; done
 
-      - name: Generate Robin upload name
+      - name: Generate Robin Android upload name
         id: generate_name
         run: |
           DATE=$(date +"%d-%m-%Y")
           COMMIT_HASH=$(git rev-parse --short=8 HEAD)
           CUSTOM_NAME="[Nightly] - ${DATE} - ${COMMIT_HASH}"
-          echo "::set-output name=CUSTOM_NAME::$CUSTOM_NAME"
+          echo "CUSTOM_NAME=$CUSTOM_NAME" >> $GITHUB_OUTPUT
 
       - name: Upload and run android tests with Robin
         uses: mobile-dev-inc/action-maestro-cloud@v1.9.6
