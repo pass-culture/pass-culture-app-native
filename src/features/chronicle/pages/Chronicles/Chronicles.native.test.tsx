@@ -6,10 +6,9 @@ import { useRoute } from '__mocks__/@react-navigation/native'
 import { offerChroniclesFixture } from 'features/chronicle/fixtures/offerChronicles.fixture'
 import { Chronicles } from 'features/chronicle/pages/Chronicles/Chronicles'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
-import { env } from 'libs/environment/env'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render, screen, userEvent } from 'tests/utils'
+import { act, fireEvent, render, screen, userEvent, waitFor } from 'tests/utils'
 import * as useModal from 'ui/components/modals/useModal'
 
 const mockOnLayout = {
@@ -37,18 +36,12 @@ jest.spyOn(reactNavigationNative, 'useNavigation').mockReturnValue({
 const mockShowModal = jest.fn()
 const mockCloseModal = jest.fn()
 
-const defaultEnvironment = env.ENV
-
 const user = userEvent.setup()
 
 describe('Chronicles', () => {
   beforeEach(() => {
     mockServer.getApi(`/v2/offer/${offerResponseSnap.id}`, offerResponseSnap)
     mockServer.getApi(`/v1/offer/${offerResponseSnap.id}/chronicles`, offerChroniclesFixture)
-  })
-
-  afterEach(() => {
-    env.ENV = defaultEnvironment
   })
 
   describe('When chronicle id defined', () => {
@@ -129,47 +122,37 @@ describe('Chronicles', () => {
 
       expect(mockShowModal).toHaveBeenCalledTimes(1)
     })
-  })
 
-  describe('When modale is visible', () => {
-    beforeEach(() => {
-      jest.spyOn(useModal, 'useModal').mockReturnValueOnce({
-        visible: true,
-        showModal: jest.fn(),
-        hideModal: mockCloseModal,
-        toggleModal: jest.fn(),
+    describe('When modal is open', () => {
+      beforeEach(() => {
+        jest.spyOn(useModal, 'useModal').mockReturnValueOnce({
+          visible: true,
+          showModal: jest.fn(),
+          hideModal: mockCloseModal,
+          toggleModal: jest.fn(),
+        })
       })
-    })
 
-    it('should navigate to recommandation thematic home when pressing button in production', async () => {
-      env.ENV = 'production'
+      it('should close the modal when pressing close button', async () => {
+        render(reactQueryProviderHOC(<Chronicles />))
 
-      render(reactQueryProviderHOC(<Chronicles />))
+        await user.press(await screen.findByLabelText('Fermer la modale'))
 
-      await user.press(await screen.findByText('Voir toutes les recos du book club'))
-
-      expect(mockNavigate).toHaveBeenNthCalledWith(1, 'ThematicHome', {
-        homeId: '4mlVpAZySUZO6eHazWKZeV',
-        from: 'chronicles',
+        expect(mockCloseModal).toHaveBeenCalledTimes(1)
       })
-    })
 
-    it('should navigate to home when pressing button when environment is not production', async () => {
-      env.ENV = 'testing'
+      it('should navigate to recommandation thematic home when pressing button', async () => {
+        render(reactQueryProviderHOC(<Chronicles />))
 
-      render(reactQueryProviderHOC(<Chronicles />))
+        await user.press(await screen.findByText('Voir toutes les recos du book club'))
 
-      await user.press(await screen.findByText('Voir toutes les recos du book club'))
-
-      expect(mockNavigate).toHaveBeenNthCalledWith(1, 'TabNavigator', { screen: 'Home' })
-    })
-
-    it('should close the modal when pressing close button', async () => {
-      render(reactQueryProviderHOC(<Chronicles />))
-
-      await user.press(await screen.findByLabelText('Fermer la modale'))
-
-      expect(mockCloseModal).toHaveBeenCalledTimes(1)
+        await waitFor(async () => {
+          expect(mockNavigate).toHaveBeenNthCalledWith(1, 'ThematicHome', {
+            homeId: '4mlVpAZySUZO6eHazWKZeV',
+            from: 'chronicles',
+          })
+        })
+      })
     })
   })
 })

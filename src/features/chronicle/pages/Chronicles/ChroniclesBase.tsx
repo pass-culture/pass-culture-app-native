@@ -12,8 +12,6 @@ import { ChroniclesWebMetaHeader } from 'features/chronicle/components/Chronicle
 import { ChroniclesWritersModal } from 'features/chronicle/pages/ChroniclesWritersModal/ChroniclesWritersModal'
 import { ChronicleCardData } from 'features/chronicle/type'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
-import { homeNavConfig } from 'features/navigation/TabBar/helpers'
-import { env } from 'libs/environment/env'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { useModal } from 'ui/components/modals/useModal'
 import { getSpacing } from 'ui/theme'
@@ -65,11 +63,7 @@ export const ChroniclesBase: FunctionComponent<Props> = ({
   const handleOnShowRecoButtonPress = () => {
     hideModal()
     InteractionManager.runAfterInteractions(() => {
-      if (env.ENV === 'production') {
-        navigate('ThematicHome', { homeId: '4mlVpAZySUZO6eHazWKZeV', from: 'chronicles' })
-      } else {
-        navigate(...homeNavConfig)
-      }
+      navigate('ThematicHome', { homeId: '4mlVpAZySUZO6eHazWKZeV', from: 'chronicles' })
     })
   }
 
