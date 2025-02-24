@@ -1,6 +1,5 @@
 import React, { useEffect, useRef } from 'react'
 import {
-  ViewabilityConfigCallbackPairs,
   NativeScrollEvent,
   NativeSyntheticEvent,
   Platform,
@@ -32,22 +31,13 @@ type CarouselProps = {
 
 const isWeb = Platform.OS === 'web'
 
-export const calculateProgress = (contentOffsetX: number, width: number) => {
-  return Math.abs(contentOffsetX / width)
-}
-
 export const Carousel = (props: CarouselProps) => {
   const carouselRef = useAnimatedRef<Animated.FlatList<string>>()
 
   const { style, width, setIndex, progressValue, data, shouldHandleAutoScroll, currentIndex } =
     props
 
-  const onViewableItemsChanged = ({
-    viewableItems,
-  }: {
-    changed: ViewToken[]
-    viewableItems: ViewToken[]
-  }) => {
+  const onViewableItemsChanged = ({ viewableItems }: { viewableItems: ViewToken[] }) => {
     if (viewableItems[0]?.index != null) {
       setIndex(viewableItems[0].index)
     }
@@ -61,7 +51,7 @@ export const Carousel = (props: CarouselProps) => {
 
   const onScroll = useAnimatedScrollHandler({
     onScroll: (e) => {
-      progressValue.value = calculateProgress(e.contentOffset.x, width)
+      progressValue.value = Math.abs(e.contentOffset.x / width)
     },
   })
 
@@ -94,9 +84,7 @@ export const Carousel = (props: CarouselProps) => {
       onScroll={onScroll}
       bounces={false}
       pagingEnabled
-      viewabilityConfigCallbackPairs={
-        viewabilityConfigCallbackPairs.current as ViewabilityConfigCallbackPairs
-      }
+      viewabilityConfigCallbackPairs={viewabilityConfigCallbackPairs.current}
       nestedScrollEnabled
       disableIntervalMomentum
       {...props}

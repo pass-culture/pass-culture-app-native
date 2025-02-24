@@ -3,7 +3,7 @@ import { SharedValue } from 'react-native-reanimated'
 
 import { act, fireEvent, render, screen } from 'tests/utils'
 
-import { Carousel, calculateProgress } from './Carousel'
+import { Carousel } from './Carousel'
 
 const PROGRESS_VALUE = { value: 0 } as SharedValue<number>
 const MOCKED_CAROUSEL_WIDTH = 300
@@ -72,11 +72,5 @@ describe('Carousel', () => {
     })
 
     expect(mockSetIndex).toHaveBeenCalledTimes(1)
-  })
-})
-
-describe('calculateProgress', () => {
-  it('should calculate correctly progress value', () => {
-    expect(calculateProgress(MOCKED_CAROUSEL_WIDTH / 2, MOCKED_CAROUSEL_WIDTH)).toBe(0.5)
   })
 })

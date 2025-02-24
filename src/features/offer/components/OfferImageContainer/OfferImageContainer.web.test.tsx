@@ -8,7 +8,8 @@ jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 const mockOnPress = jest.fn()
 
-// TODO(PC-34650) : react-native-web bump needed becasue of "setNativeProps is deprecated" warning making the test to fail
+// TODO(PC-34650) : react-native-web bump needed because of "setNativeProps is deprecated" warning making the test to fail
+// eslint-disable-next-line jest/no-disabled-tests
 describe.skip('<OfferImageContainer />', () => {
   it('should display carousel with one image', () => {
     render(
