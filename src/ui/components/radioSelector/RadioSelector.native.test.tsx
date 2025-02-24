@@ -1,8 +1,11 @@
 import React from 'react'
 
-import { fireEvent, render, screen } from 'tests/utils'
+import { userEvent, render, screen } from 'tests/utils'
 
 import { RadioSelector } from './RadioSelector'
+
+const user = userEvent.setup()
+jest.useFakeTimers()
 
 describe('<RadioSelector />', () => {
   const defaultProps = {
@@ -11,16 +14,16 @@ describe('<RadioSelector />', () => {
     onPress: jest.fn(),
   }
 
-  it('should call onPress when pressed', () => {
+  it('should call onPress when pressed', async () => {
     render(<RadioSelector {...defaultProps} />)
-    fireEvent.press(screen.getByText('Test Label'))
+    await user.press(screen.getByText('Test Label'))
 
     expect(defaultProps.onPress).toHaveBeenCalledWith()
   })
 
   it('should not call onPress when disabled', () => {
     render(<RadioSelector {...defaultProps} disabled />)
-    fireEvent.press(screen.getByText('Test Label'))
+    user.press(screen.getByText('Test Label'))
 
     expect(defaultProps.onPress).not.toHaveBeenCalled()
   })

@@ -8,7 +8,7 @@ import { usePreviousRoute } from 'features/navigation/helpers/usePreviousRoute'
 import { analytics } from 'libs/analytics/provider'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render, screen } from 'tests/utils'
+import { act, render, screen, userEvent } from 'tests/utils'
 
 import { SignupConfirmationEmailSent } from './SignupConfirmationEmailSent'
 
@@ -28,6 +28,8 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
     return Component
   }
 })
+const user = userEvent.setup()
+jest.useFakeTimers()
 
 describe('<SignupConfirmationEmailSent />', () => {
   beforeEach(() => {
@@ -46,7 +48,7 @@ describe('<SignupConfirmationEmailSent />', () => {
     await screen.findByText('Confirme ton adresse e-mail')
 
     const consultHelpSupportButton = screen.getByText('Consulter notre centre d’aide')
-    await act(async () => fireEvent.press(consultHelpSupportButton))
+    await act(async () => user.press(consultHelpSupportButton))
 
     expect(analytics.logHelpCenterContactSignupConfirmationEmailSent).toHaveBeenCalledTimes(1)
     expect(mockedOpenUrl).toHaveBeenCalledWith(
@@ -62,7 +64,7 @@ describe('<SignupConfirmationEmailSent />', () => {
 
     const checkEmailsButton = screen.getByText('Consulter mes e-mails')
     await act(async () => {
-      fireEvent.press(checkEmailsButton)
+      user.press(checkEmailsButton)
     })
 
     expect(openInbox).toHaveBeenCalledTimes(1)
@@ -83,7 +85,7 @@ describe('<SignupConfirmationEmailSent />', () => {
     await screen.findByText('Confirme ton adresse e-mail')
 
     const checkEmailsButton = screen.getByText('Consulter mes e-mails')
-    await act(async () => fireEvent.press(checkEmailsButton))
+    await act(async () => user.press(checkEmailsButton))
 
     expect(analytics.logEmailConfirmationConsultEmailClicked).toHaveBeenCalledTimes(1)
   })
@@ -99,7 +101,7 @@ describe('<SignupConfirmationEmailSent />', () => {
     renderSignupConfirmationEmailSent()
     await screen.findByText('Confirme ton adresse e-mail')
 
-    fireEvent.press(screen.getByText('Recevoir un nouveau lien'))
+    await user.press(screen.getByText('Recevoir un nouveau lien'))
 
     expect(screen.getByText('Demander un nouveau lien')).toBeOnTheScreen()
   })

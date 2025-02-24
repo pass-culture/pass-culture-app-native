@@ -3,7 +3,7 @@ import { Linking } from 'react-native'
 
 import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
 import { analytics } from 'libs/analytics/provider'
-import { fireEvent, render, screen, waitFor } from 'tests/utils'
+import { render, screen, userEvent, waitFor } from 'tests/utils'
 
 import { DetailedAccessibilityInfo } from './DetailedAccessibilityInfo'
 
@@ -16,6 +16,8 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
     return Component
   }
 })
+const user = userEvent.setup()
+jest.useFakeTimers()
 
 describe('DetailedAccessibilityInfo', () => {
   it('should redirect to acceslibre when clicking on the banner link', async () => {
@@ -28,7 +30,7 @@ describe('DetailedAccessibilityInfo', () => {
     )
 
     const accesLibreLink = screen.getByText('Voir plus d’infos sur l’accessibilité du lieu')
-    fireEvent.press(accesLibreLink)
+    user.press(accesLibreLink)
 
     await waitFor(() => expect(Linking.openURL).toHaveBeenCalledWith(fakeAccesLibreUrl))
   })
@@ -43,7 +45,7 @@ describe('DetailedAccessibilityInfo', () => {
     )
 
     const accesLibreLink = screen.getByText('Voir plus d’infos sur l’accessibilité du lieu')
-    fireEvent.press(accesLibreLink)
+    user.press(accesLibreLink)
 
     await waitFor(() =>
       expect(analytics.logAccessibilityBannerClicked).toHaveBeenCalledWith(
@@ -61,7 +63,7 @@ describe('DetailedAccessibilityInfo', () => {
     )
 
     const accesLibreLink = screen.getByText('Voir plus d’infos sur l’accessibilité du lieu')
-    fireEvent.press(accesLibreLink)
+    user.press(accesLibreLink)
 
     await waitFor(() =>
       expect(analytics.logAccessibilityBannerClicked).toHaveBeenCalledWith(undefined)
@@ -82,7 +84,7 @@ describe('DetailedAccessibilityInfo', () => {
     expect(screen.getByLabelText('Handicap visuel: Non accessible')).toBeOnTheScreen()
   })
 
-  it('should display multiple description info on separate lines', () => {
+  it('should display multiple description info on separate lines', async () => {
     render(
       <DetailedAccessibilityInfo
         url={fakeAccesLibreUrl}
@@ -90,7 +92,7 @@ describe('DetailedAccessibilityInfo', () => {
       />
     )
 
-    fireEvent.press(screen.getByText('Handicap auditif'))
+    await user.press(screen.getByText('Handicap auditif'))
 
     expect(screen.getByText('Boucle à induction magnétique portative')).toBeOnTheScreen()
     expect(screen.getByText('Autre système non renseigné')).toBeOnTheScreen()
@@ -115,7 +117,7 @@ describe('DetailedAccessibilityInfo', () => {
       />
     )
 
-    fireEvent.press(screen.getByText('Handicap auditif'))
+    user.press(screen.getByText('Handicap auditif'))
 
     await waitFor(() =>
       expect(analytics.logHasOpenedAccessibilityAccordion).toHaveBeenCalledWith('Handicap auditif')

@@ -3,7 +3,10 @@ import React, { ComponentProps } from 'react'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { VenueMapPreview } from 'features/venueMap/components/VenueMapPreview/VenueMapPreview'
-import { fireEvent, render, screen } from 'tests/utils'
+import { userEvent, render, screen } from 'tests/utils'
+
+const user = userEvent.setup()
+jest.useFakeTimers()
 
 describe('<VenueMapPreview />', () => {
   it('should render correctly with border by default', () => {
@@ -42,12 +45,12 @@ describe('<VenueMapPreview />', () => {
     expect(screen.getByLabelText('Fermer')).toBeOnTheScreen()
   })
 
-  it('should navigate to Venue when pressing on the preview', () => {
+  it('should navigate to Venue when pressing on the preview', async () => {
     renderVenueMapPreview({
       navigateTo: { screen: 'Venue', params: { id: offerResponseSnap.venue.id } },
     })
 
-    fireEvent.press(screen.getByText(offerResponseSnap.venue.name))
+    await user.press(screen.getByText(offerResponseSnap.venue.name))
 
     expect(navigate).toHaveBeenCalledWith('Venue', { id: 1664 })
   })

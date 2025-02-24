@@ -1,6 +1,6 @@
 import React, { ComponentProps } from 'react'
 
-import { act, fireEvent, render, screen } from 'tests/utils'
+import { act, render, screen, userEvent } from 'tests/utils'
 import { SUGGESTION_DELAY_IN_MS } from 'ui/components/inputs/EmailInputWithSpellingHelp/useEmailSpellingHelp'
 
 import { EmailInputWithSpellingHelp } from './EmailInputWithSpellingHelp'
@@ -14,6 +14,7 @@ const props: ComponentProps<typeof EmailInputWithSpellingHelp> = {
 }
 
 jest.useFakeTimers()
+const user = userEvent.setup()
 
 describe('<EmailInputWithSpellingHelp />', () => {
   it('should not display suggestion for empty email', () => {
@@ -54,7 +55,7 @@ describe('<EmailInputWithSpellingHelp />', () => {
     })
 
     const suggestionButton = screen.getByText('Appliquer la modification')
-    fireEvent.press(suggestionButton)
+    await user.press(suggestionButton)
 
     expect(props.onEmailChange).toHaveBeenNthCalledWith(1, 'firstname.lastname@gmail.com')
   })
@@ -71,7 +72,7 @@ describe('<EmailInputWithSpellingHelp />', () => {
     })
 
     const suggestionButton = screen.getByText('Appliquer la modification')
-    fireEvent.press(suggestionButton)
+    await user.press(suggestionButton)
 
     expect(mockOnSpellingHelpPress).toHaveBeenCalledTimes(1)
   })

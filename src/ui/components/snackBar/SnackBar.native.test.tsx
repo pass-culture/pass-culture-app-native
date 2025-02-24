@@ -1,7 +1,7 @@
 import React from 'react'
 import { Animated } from 'react-native'
 
-import { fireEvent, render, waitFor, screen } from 'tests/utils'
+import { render, waitFor, screen, userEvent } from 'tests/utils'
 import { theme } from 'theme'
 import { Check } from 'ui/svg/icons/Check'
 
@@ -17,6 +17,9 @@ jest.mock('react-native-safe-area-context', () => ({
   ...(jest.requireActual('react-native-safe-area-context') as Record<string, unknown>),
   useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
 }))
+
+const user = userEvent.setup()
+jest.useFakeTimers()
 
 describe('SnackBar Component', () => {
   afterEach(async () => {
@@ -119,7 +122,7 @@ describe('SnackBar Component', () => {
 
       const touchable = screen.getByTestId(`Supprimer le message\u00a0: ${snackBarMessage}`)
 
-      fireEvent.press(touchable)
+      user.press(touchable)
 
       await waitFor(async () => expect(onClose).toHaveBeenCalledTimes(1))
     })

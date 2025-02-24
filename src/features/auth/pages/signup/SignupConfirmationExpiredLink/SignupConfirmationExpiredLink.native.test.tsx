@@ -8,7 +8,7 @@ import { RootStackParamList } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
+import { act, render, screen, userEvent, waitFor } from 'tests/utils'
 
 import { SignupConfirmationExpiredLink } from './SignupConfirmationExpiredLink'
 
@@ -38,12 +38,15 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
+const user = userEvent.setup()
+jest.useFakeTimers()
+
 describe('<SignupConfirmationExpiredLink/>', () => {
   it('should redirect to home page WHEN go back to home button is clicked', async () => {
     renderSignupConfirmationExpiredLink()
 
     const button = screen.getByText('Retourner à l’accueil')
-    fireEvent.press(button)
+    user.press(button)
 
     await waitFor(() => {
       expect(navigateFromRef).toHaveBeenCalledWith(
@@ -57,7 +60,7 @@ describe('<SignupConfirmationExpiredLink/>', () => {
     mockServer.postApi('/v1/resend_email_validation', {})
     renderSignupConfirmationExpiredLink()
 
-    fireEvent.press(screen.getByText(`Renvoyer l’email`))
+    user.press(screen.getByText(`Renvoyer l’email`))
 
     await waitFor(() => {
       expect(navigate).toHaveBeenCalledTimes(1)
@@ -76,7 +79,7 @@ describe('<SignupConfirmationExpiredLink/>', () => {
     renderSignupConfirmationExpiredLink()
 
     await act(async () => {
-      fireEvent.press(screen.getByText(`Renvoyer l’email`))
+      user.press(screen.getByText(`Renvoyer l’email`))
     })
 
     expect(navigate).not.toHaveBeenCalled()

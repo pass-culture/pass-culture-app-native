@@ -2,13 +2,15 @@ import React from 'react'
 
 import { FilterPageButtons } from 'features/search/components/FilterPageButtons/FilterPageButtons'
 import { FilterBehaviour } from 'features/search/enums'
-import { fireEvent, render, screen } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 
 const onResetPress = jest.fn()
 const onSearchPress = jest.fn()
+const user = userEvent.setup()
+jest.useFakeTimers()
 
 describe('FilterPageButtons', () => {
-  it('should call button action when pressing reset button', () => {
+  it('should call button action when pressing reset button', async () => {
     render(
       <FilterPageButtons
         onSearchPress={onSearchPress}
@@ -18,12 +20,12 @@ describe('FilterPageButtons', () => {
     )
 
     const resetButton = screen.getByText('Réinitialiser')
-    fireEvent.press(resetButton)
+    await user.press(resetButton)
 
     expect(onResetPress).toHaveBeenCalledTimes(1)
   })
 
-  it('should call button action when pressing search button', () => {
+  it('should call button action when pressing search button', async () => {
     render(
       <FilterPageButtons
         onSearchPress={onSearchPress}
@@ -33,12 +35,12 @@ describe('FilterPageButtons', () => {
     )
 
     const searchButton = screen.getByText('Rechercher')
-    fireEvent.press(searchButton)
+    await user.press(searchButton)
 
     expect(onSearchPress).toHaveBeenCalledTimes(1)
   })
 
-  it('should call button action when pressing apply filter button', () => {
+  it('should call button action when pressing apply filter button', async () => {
     render(
       <FilterPageButtons
         onSearchPress={onSearchPress}
@@ -48,7 +50,7 @@ describe('FilterPageButtons', () => {
     )
 
     const searchButton = screen.getByText('Appliquer le filtre')
-    fireEvent.press(searchButton)
+    await user.press(searchButton)
 
     expect(onSearchPress).toHaveBeenCalledTimes(1)
   })

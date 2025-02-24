@@ -5,10 +5,13 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { GeolocPermissionState, useLocation } from 'libs/location'
 import { requestGeolocPermission, showGeolocPermissionModal } from 'libs/location/__mocks__'
 import { GeolocationBanner } from 'shared/Banners/GeolocationBanner'
-import { fireEvent, render, screen } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 
 jest.mock('libs/location')
 const mockUseLocation = useLocation as jest.Mock
+
+const user = userEvent.setup()
+jest.useFakeTimers()
 
 describe('<GeolocationBanner />', () => {
   describe('When wipAppV2SystemBlock feature flag activated', () => {
@@ -55,7 +58,7 @@ describe('<GeolocationBanner />', () => {
     })
   })
 
-  it('should open "Paramètres de localisation" modal when pressing button and permission is never ask again', () => {
+  it('should open "Paramètres de localisation" modal when pressing button and permission is never ask again', async () => {
     mockUseLocation.mockReturnValueOnce({
       permissionState: GeolocPermissionState.NEVER_ASK_AGAIN,
       showGeolocPermissionModal,
@@ -69,12 +72,12 @@ describe('<GeolocationBanner />', () => {
     )
     const button = screen.getByText('Géolocalise-toi')
 
-    fireEvent.press(button)
+    await user.press(button)
 
     expect(showGeolocPermissionModal).toHaveBeenCalledWith()
   })
 
-  it('should ask for permission when pressing button and permission is denied', () => {
+  it('should ask for permission when pressing button and permission is denied', async () => {
     mockUseLocation.mockReturnValueOnce({
       permissionState: GeolocPermissionState.DENIED,
       requestGeolocPermission,
@@ -88,12 +91,12 @@ describe('<GeolocationBanner />', () => {
     )
     const button = screen.getByText('Géolocalise-toi')
 
-    fireEvent.press(button)
+    await user.press(button)
 
     expect(requestGeolocPermission).toHaveBeenCalledWith()
   })
 
-  it('should call onPress externaly when specified', () => {
+  it('should call onPress externaly when specified', async () => {
     const mockOnPress = jest.fn()
     render(
       <GeolocationBanner
@@ -106,7 +109,7 @@ describe('<GeolocationBanner />', () => {
 
     const button = screen.getByText('Géolocalise-toi')
 
-    fireEvent.press(button)
+    await user.press(button)
 
     expect(mockOnPress).toHaveBeenCalledTimes(1)
   })

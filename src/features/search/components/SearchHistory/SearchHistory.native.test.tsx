@@ -3,13 +3,15 @@ import React from 'react'
 
 import { SearchHistory } from 'features/search/components/SearchHistory/SearchHistory'
 import { mockedSearchHistory } from 'features/search/fixtures/mockedSearchHistory'
-import { fireEvent, render, screen } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 
 const TODAY_DATE = new Date('2023-09-26T00:00:00.000Z')
 
 const mockRemoveItem = jest.fn()
 
 const mockHistory = [mockedSearchHistory[0]]
+const user = userEvent.setup()
+jest.useFakeTimers()
 
 describe('SearchHistory', () => {
   beforeEach(() => {
@@ -37,7 +39,7 @@ describe('SearchHistory', () => {
     expect(screen.getByTestId('Supprimer manga de l’historique')).toBeOnTheScreen()
   })
 
-  it('should execute remove history item when pressing delete button', () => {
+  it('should execute remove history item when pressing delete button', async () => {
     render(
       <SearchHistory
         history={mockHistory}
@@ -47,7 +49,7 @@ describe('SearchHistory', () => {
       />
     )
 
-    fireEvent.press(screen.getByTestId('Supprimer manga de l’historique'))
+    await user.press(screen.getByTestId('Supprimer manga de l’historique'))
 
     expect(mockRemoveItem).toHaveBeenNthCalledWith(1, mockHistory[0])
   })
@@ -65,7 +67,7 @@ describe('SearchHistory', () => {
     expect(screen.queryByTestId('Supprimer manga de l’historique')).not.toBeOnTheScreen()
   })
 
-  it('should execute onPress when pressing history item', () => {
+  it('should execute onPress when pressing history item', async () => {
     const mockOnPress = jest.fn()
 
     render(
@@ -77,7 +79,7 @@ describe('SearchHistory', () => {
       />
     )
 
-    fireEvent.press(screen.getByText('manga'))
+    await user.press(screen.getByText('manga'))
 
     expect(mockOnPress).toHaveBeenNthCalledWith(1, {
       ...mockHistory[0],
