@@ -66,12 +66,20 @@ describe('<VenueMap />', () => {
       RemoteStoreFeatureFlags.WIP_OFFERS_IN_BOTTOM_SHEET,
       RemoteStoreFeatureFlags.WIP_VENUE_MAP_TYPE_FILTER_V2,
       RemoteStoreFeatureFlags.WIP_VENUE_MAP,
-    ]) // TODO(PC-34435): add tests for WIP_VENUE_MAP_HIDDEN_POI and when the wipOffersInBottomSheet and wipVenueMapTypeFilterV2 are off
+    ])
     venueMapStore.setVenueTypeCode(VENUE_TYPE)
   })
 
   afterEach(() => {
     jest.useRealTimers()
+  })
+
+  it('should render without FF', async () => {
+    setFeatureFlags()
+
+    render(reactQueryProviderHOC(<VenueMap />))
+
+    expect(await screen.findByTestId('venue-map-view')).toBeOnTheScreen()
   })
 
   it('Should display venue map header', async () => {
@@ -84,6 +92,15 @@ describe('<VenueMap />', () => {
     })
 
     expect(screen.getByText('Carte des lieux')).toBeOnTheScreen()
+    expect(await screen.findByTestId('venue-map-view')).toHaveProp('showsPointsOfInterest', true)
+  })
+
+  it('should hide POI when FF is active', async () => {
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_VENUE_MAP_HIDDEN_POI])
+
+    render(reactQueryProviderHOC(<VenueMap />))
+
+    expect(await screen.findByTestId('venue-map-view')).toHaveProp('showsPointsOfInterest', false)
   })
 
   it('Should handle go back action when pressing go back button', async () => {
