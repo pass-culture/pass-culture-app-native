@@ -5,7 +5,7 @@ import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { analytics } from 'libs/analytics/__mocks__/provider'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render, screen, waitFor } from 'tests/utils'
+import { userEvent, render, screen } from 'tests/utils'
 
 import { SuspendAccountConfirmationWithoutAuthentication } from './SuspendAccountConfirmationWithoutAuthentication'
 
@@ -24,6 +24,9 @@ const confirmationSuccessResponse = {
   refreshToken: 'refreshToken',
 }
 
+const user = userEvent.setup()
+jest.useFakeTimers()
+
 describe('SuspendAccountConfirmationWithoutAuthentication', () => {
   it('should render correctly', () => {
     renderSuspendAccountConfirmationWithoutAuthentication()
@@ -31,11 +34,11 @@ describe('SuspendAccountConfirmationWithoutAuthentication', () => {
     expect(screen).toMatchSnapshot()
   })
 
-  it('should send analytics event when clicking on "Contacter le support" button', () => {
+  it('should send analytics event when clicking on "Contacter le support" button', async () => {
     renderSuspendAccountConfirmationWithoutAuthentication()
 
     const contactSupportButton = screen.getByText('Contacter le service fraude')
-    fireEvent.press(contactSupportButton)
+    await user.press(contactSupportButton)
 
     expect(analytics.logContactFraudTeam).toHaveBeenCalledWith({
       from: 'suspendaccountconfirmation',
@@ -47,11 +50,9 @@ describe('SuspendAccountConfirmationWithoutAuthentication', () => {
     renderSuspendAccountConfirmationWithoutAuthentication()
 
     const suspendAccountButton = screen.getByText('Oui, suspendre mon compte')
-    fireEvent.press(suspendAccountButton)
+    await user.press(suspendAccountButton)
 
-    await waitFor(() => {
-      expect(navigate).toHaveBeenNthCalledWith(1, 'SuspiciousLoginSuspendedAccount')
-    })
+    expect(navigate).toHaveBeenNthCalledWith(1, 'SuspiciousLoginSuspendedAccount')
   })
 
   it('should show error snackbar when an error occur during account suspension', async () => {
@@ -59,13 +60,11 @@ describe('SuspendAccountConfirmationWithoutAuthentication', () => {
     renderSuspendAccountConfirmationWithoutAuthentication()
 
     const suspendAccountButton = screen.getByText('Oui, suspendre mon compte')
-    fireEvent.press(suspendAccountButton)
+    await user.press(suspendAccountButton)
 
-    await waitFor(() => {
-      expect(mockShowErrorSnackBar).toHaveBeenNthCalledWith(1, {
-        message:
-          'Une erreur est survenue. Pour suspendre ton compte, contacte le support par e-mail.',
-      })
+    expect(mockShowErrorSnackBar).toHaveBeenNthCalledWith(1, {
+      message:
+        'Une erreur est survenue. Pour suspendre ton compte, contacte le support par e-mail.',
     })
   })
 
