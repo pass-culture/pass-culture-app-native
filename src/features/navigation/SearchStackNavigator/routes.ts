@@ -1,9 +1,9 @@
 import { LinkingOptions } from '@react-navigation/native'
 
+import { ComponentForPathConfig } from 'features/navigation/ComponentForPathConfig'
 import { getScreensAndConfig } from 'features/navigation/RootNavigator/linking/getScreensConfig'
 import { ScreenNames } from 'features/navigation/RootNavigator/types'
 import { screenParamsParser, screenParamsStringifier } from 'features/navigation/screenParamsUtils'
-import { ComponentForPathConfig } from 'features/navigation/SearchStackNavigator/ComponentForPathConfig'
 import { SearchStack } from 'features/navigation/SearchStackNavigator/Stack'
 import { SearchView } from 'features/search/types'
 
