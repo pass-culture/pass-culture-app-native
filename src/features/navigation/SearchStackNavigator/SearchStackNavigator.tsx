@@ -1,6 +1,5 @@
 import React from 'react'
 
-import { screenParamsParser, screenParamsStringifier } from 'features/navigation/screenParamsUtils'
 import { SEARCH_STACK_NAVIGATOR_SCREEN_OPTIONS } from 'features/navigation/SearchStackNavigator/searchStackNavigationOptions'
 import { SearchStack } from 'features/navigation/SearchStackNavigator/Stack'
 import {
@@ -32,41 +31,17 @@ const routes: SearchStackRoute[] = [
   {
     name: 'SearchLanding',
     component: SearchLanding,
-    pathConfig: {
-      path: 'recherche/accueil',
-      parse: screenParamsParser['SearchLanding'],
-      stringify: screenParamsStringifier['SearchLanding'],
-    },
-    options: { title: 'Rechercher des offres' },
   },
   {
     name: 'SearchResults',
     component: SearchResults,
-    pathConfig: {
-      path: 'recherche/resultats',
-      parse: screenParamsParser['SearchResults'],
-      stringify: screenParamsStringifier['SearchResults'],
-    },
-    options: { title: 'Résultats de recherche' },
   },
   {
     name: 'ThematicSearch',
     component: ThematicSearch,
-    pathConfig: {
-      path: 'recherche/thematique',
-      parse: screenParamsParser['ThematicSearch'],
-      stringify: screenParamsStringifier['ThematicSearch'],
-    },
-    options: { title: 'recherche dans les sous-catégories' },
   },
   {
     name: 'SearchFilter',
     component: SearchFilter,
-    pathConfig: {
-      path: 'recherche/filtres',
-      parse: screenParamsParser['SearchFilter'],
-      stringify: screenParamsStringifier['SearchFilter'],
-    },
-    options: { title: 'Filtres de recherche' },
   },
 ]
