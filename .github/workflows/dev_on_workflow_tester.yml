@@ -17,6 +17,7 @@ concurrency:
   cancel-in-progress: true
 
 env:
+  RUN_ALLURE: ${{ github.ref == 'refs/heads/master' && 'true' || 'false' }}
   JEST_JUNIT_OUTPUT_DIR: ./reports/junit/
 
 jobs:
@@ -57,7 +58,23 @@ jobs:
           restore-keys: |
             v1-yarn-test-web-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
           bucket: ${{ inputs.CACHE_BUCKET_NAME }}
-      - run: yarn test:unit:web Sign  --shard=${{ matrix.shard }}/${{ strategy.job-total }}
+      - run: yarn test:unit:web Sign --shard=${{ matrix.shard }}/${{ strategy.job-total }}
+
+      - name: Rename allure reports folder
+        if: github.ref == 'refs/heads/master'
+        run: mv allure-results allure-results-web-${{matrix.shard}}
+
+      - name: Cache the allure reports
+        id: allure-report-cache-web
+        if: github.ref == 'refs/heads/master'
+        uses: pass-culture-github-actions/gcs-cache@v1.0.0
+        with:
+          bucket: ${{ inputs.CACHE_BUCKET_NAME }}
+          path: |
+            allure-results-web-${{matrix.shard}}
+          restore-keys: |
+            v1-allure-dependency-cache-web-${{ runner.os }}-${{ github.sha }}-${{ matrix.shard }}
+          key: v1-allure-dependency-cache-web-${{ runner.os }}-${{ github.sha }}-${{ matrix.shard }}
 
   yarn_test_native:
     name: 'Run native unit tests'
@@ -66,8 +83,6 @@ jobs:
       fail-fast: false
       matrix:
         shard: [1, 2, 3, 4, 5, 6, 7]
-    env:
-      RUN_ALLURE: 'true'
     steps:
       - name: Enable Corepack
         run: corepack enable
@@ -100,6 +115,11 @@ jobs:
             v1-yarn-test-native-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
       - run: yarn test:unit Sign --maxWorkers=6 --coverage --ci --reporters=default --reporters=jest-junit --shard=${{ matrix.shard }}/${{ strategy.job-total }}
       - run: mv coverage/coverage-final.json coverage/${{matrix.shard}}.json
+
+      - name: Rename allure reports folder
+        if: github.ref == 'refs/heads/master'
+        run: mv allure-results allure-results-${{matrix.shard}}
+
       - name: Cache the coverage report
         id: coverage-modules-cache
         uses: pass-culture-github-actions/gcs-cache@v1.0.0
@@ -110,29 +130,80 @@ jobs:
           restore-keys: |
             v1-coverage-dependency-cache-${{ runner.os }}-${{ github.sha }}-${{ matrix.shard }}
           key: v1-coverage-dependency-cache-${{ runner.os }}-${{ github.sha }}-${{ matrix.shard }}
+
+      - name: Cache the allure reports
+        id: allure-report-cache-native
+        if: github.ref == 'refs/heads/master'
+        uses: pass-culture-github-actions/gcs-cache@v1.0.0
+        with:
+          bucket: ${{ inputs.CACHE_BUCKET_NAME }}
+          path: |
+            allure-results-${{matrix.shard}}
+          restore-keys: |
+            v1-allure-dependency-cache-${{ runner.os }}-${{ github.sha }}-${{ matrix.shard }}
+          key: v1-allure-dependency-cache-${{ runner.os }}-${{ github.sha }}-${{ matrix.shard }}
+
   allure-report:
+    name: Update Allure report
+    if: github.ref == 'refs/heads/master'
     runs-on: ubuntu-22.04
-    needs: yarn_test_native
     permissions:
-      contents: write
+      id-token: write
+      contents: read
+    needs: yarn_test_native
+
     steps:
-      - name: Enable Corepack
-        run: corepack enable
-      - uses: actions/checkout@v4
-      - name: 'OpenID Connect Authentication'
+      - uses: actions/checkout@v4.2.1
+      - name: 'Authentification to Google'
         uses: 'google-github-actions/auth@v2'
         with:
           workload_identity_provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
           service_account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
-      - name: Log Allure Report
-        run: ls
-      - name: Checkout target repository
+
+      - name: 'Get secrets (github)'
+        id: 'secrets'
+        uses: 'google-github-actions/get-secretmanager-secrets@v2'
+        with:
+          secrets: |-
+            API_TOKEN_GITHUB:passculture-metier-ehp/passculture-main-sa-access-token
+
+      - uses: actions/checkout@v4.2.1
+        with:
+          repository: pass-culture/allure-report-native
+          token: ${{ steps.secrets.outputs.API_TOKEN_GITHUB }}
+          ref: main
+          path: ./allure-report-native
+
+      - name: Set up Cloud SDK to get gsutils
+        uses: 'google-github-actions/setup-gcloud@v2'
+        with:
+          version: '>= 416.0.0'
+
+      - name: 'Retrieve reports from bucket'
         run: |
-          git clone https://x-access-token:${{ secrets.GITHUB_TOKEN }}github.com/pass-culture/allure-report-native.git target-repo
-          cd target-repo
-          git config user.name "github-actions"
-          git config user.email "github-actions@github.com"
-          ls
+          mkdir allure-results
+          gsutil cp 'gs://${{ inputs.CACHE_BUCKET_NAME }}/pass-culture/pass-culture-app-native/v1-allure-dependency-cache-${{ runner.os }}-${{ github.sha }}-*' allure-results
+          gsutil cp 'gs://${{ inputs.CACHE_BUCKET_NAME }}/pass-culture/pass-culture-app-native/v1-allure-dependency-cache-web-${{ runner.os }}-${{ github.sha }}-*' allure-results
+          for file in `ls allure-results/*tar`; do tar --use-compress-program='zstd --long=30' -xf $file; done
+          rm -f allure-results/*.tar
+          find . -maxdepth 1 -type d -name "allure-results-*" | while read dir; do
+          cp -r "$dir"/* allure-report-native/allure-results
+          done
+          rm -rf allure-results-*
+
+      - name: 'Author'
+        run: |
+          git config --global user.email PassCulture-SA@users.noreply.github.com
+          git config --global user.name ${{ github.actor }}
+        working-directory: allure-report-native
+
+      - name: Update Report
+        run: |
+          git add .
+          git commit -m "feat: update report"
+          git push
+        working-directory: allure-report-native
+
   report-coverage:
     runs-on: ubuntu-22.04
     needs: yarn_test_native
