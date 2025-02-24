@@ -5,12 +5,12 @@ import styled from 'styled-components/native'
 
 import { useHomepageData } from 'features/home/api/useHomepageData'
 import {
-  AnimatedCategoryThematicHomeHeader,
   MOBILE_HEADER_HEIGHT as ANIMATED_CATEGORY_HEADER_PLACEHOLDER_HEIGHT,
+  AnimatedCategoryThematicHomeHeader,
 } from 'features/home/components/headers/AnimatedCategoryThematicHomeHeader'
 import {
-  AnimatedHighlightThematicHomeHeader,
   MOBILE_HEADER_HEIGHT as ANIMATED_HIGHLIGHT_HEADER_PLACEHOLDER_HEIGHT,
+  AnimatedHighlightThematicHomeHeader,
 } from 'features/home/components/headers/AnimatedHighlightThematicHomeHeader'
 import { CategoryThematicHomeHeader } from 'features/home/components/headers/CategoryThematicHomeHeader'
 import { DefaultThematicHomeHeader } from 'features/home/components/headers/DefaultThematicHomeHeader'
@@ -21,6 +21,7 @@ import { PERFORMANCE_HOME_CREATION, PERFORMANCE_HOME_LOADING } from 'features/ho
 import { GenericHome } from 'features/home/pages/GenericHome'
 import { ThematicHeader, ThematicHeaderType } from 'features/home/types'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
+import { useGoBack } from 'features/navigation/useGoBack'
 import { analytics } from 'libs/analytics/provider'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { useLocation } from 'libs/location/LocationWrapper'
@@ -107,6 +108,7 @@ export const ThematicHome: FunctionComponent = () => {
   startPerfHomeCreationOnce()
   startPerfHomeLoadingOnce()
   const { params } = useRoute<UseRouteType<'ThematicHome'>>()
+  const { goBack } = useGoBack('Chronicles')
   const isFromDeeplink = params.from === 'deeplink'
   const { modules, id, thematicHeader } = useHomepageData(params.homeId) || {}
   const {
@@ -182,6 +184,7 @@ export const ThematicHome: FunctionComponent = () => {
         thematicHeader={thematicHeader}
         headerTransition={headerTransition}
         homeId={params.homeId}
+        onBackPress={params.from === 'chronicles' ? goBack : undefined}
       />
       {/* Animated header is called only for iOS */}
       {Platform.OS === 'ios' ? (
