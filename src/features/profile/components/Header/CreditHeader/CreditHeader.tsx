@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { DomainsCredit } from 'api/gen/api'
+import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { BeneficiaryCeilings } from 'features/profile/components/BeneficiaryCeilings/BeneficiaryCeilings'
 import { CreditExplanation } from 'features/profile/components/CreditExplanation/CreditExplanation'
 import { CreditInfo } from 'features/profile/components/CreditInfo/CreditInfo'
@@ -38,15 +39,24 @@ export function CreditHeader({
 }: CreditHeaderProps) {
   const { homeEntryIdFreeOffers } = useRemoteConfigContext()
   const depositAmount = useDepositAmountsByAge()
+
+  const sixteenYearsOldIncomingDeposit = {
+    label: 'À venir pour tes 17 ans\u00a0: ',
+    highlightedLabel: `+ ${depositAmount.seventeenYearsOldDeposit}`,
+  }
+
+  const { data: settings } = useSettingsContext()
+  const enableCreditV3 = settings?.wipEnableCreditV3
+  const fifteenYearsOldIncomingDeposit = enableCreditV3
+    ? sixteenYearsOldIncomingDeposit
+    : {
+        label: 'À venir pour tes 16 ans\u00a0: ',
+        highlightedLabel: `+ ${depositAmount.sixteenYearsOldDeposit}`,
+      }
+
   const incomingCreditLabelsMap: Record<number, { label: string; highlightedLabel: string }> = {
-    15: {
-      label: 'À venir pour tes 16 ans\u00a0: ',
-      highlightedLabel: `+ ${depositAmount.sixteenYearsOldDeposit}`,
-    },
-    16: {
-      label: 'À venir pour tes 17 ans\u00a0: ',
-      highlightedLabel: `+ ${depositAmount.seventeenYearsOldDeposit}`,
-    },
+    15: fifteenYearsOldIncomingDeposit,
+    16: sixteenYearsOldIncomingDeposit,
     17: {
       label: 'À venir pour tes 18 ans\u00a0: ',
       highlightedLabel: `${depositAmount.eighteenYearsOldDeposit}`,
