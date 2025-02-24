@@ -41,7 +41,7 @@ export function useTabNavigationContext() {
 }
 
 export const TabNavigationStateProvider: React.FC<PropsWithChildren> = memo(
-  function _TabNavigationStateProvider(props) {
+  function TabNavigationStateProviderImplementation(props) {
     const { isLoggedIn, user } = useAuthContext()
     const isBeneficiary = user ? user.isBeneficiary : false
     const shouldDisplayTab = getShouldDisplayTab({ isLoggedIn, isBeneficiary })

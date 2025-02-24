@@ -26,7 +26,7 @@ export type SnackBarProps = {
   refresher: number
 }
 
-const _SnackBar = (props: SnackBarProps) => {
+const SnackBarBase = (props: SnackBarProps) => {
   const firstRender = useRef(true)
   const animationDuration = props.animationDuration || 500
 
@@ -136,7 +136,7 @@ const _SnackBar = (props: SnackBarProps) => {
   )
 }
 
-export const SnackBar = memo(_SnackBar)
+export const SnackBar = memo(SnackBarBase)
 
 /*
   Display rules :
