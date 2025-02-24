@@ -147,9 +147,9 @@ describe('RemoteBanner', () => {
       ])
       render(<RemoteBanner from="Profile" />)
 
-      const buttonBanner = await screen.findByRole(AccessibilityRole.BUTTON)
+      const linkBanner = await screen.findByRole(AccessibilityRole.LINK)
 
-      expect(buttonBanner).toBeTruthy()
+      expect(linkBanner).toBeTruthy()
     })
 
     it('should have correct accessibilityRole for external redirection', async () => {
