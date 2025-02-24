@@ -60,6 +60,13 @@ export const ChroniclesBase: FunctionComponent<Props> = ({
     navigate('Offer', { id: offerId, openModalOnNavigation: undefined })
   }
 
+  const handleOnShowRecoButtonPress = () => {
+    hideModal()
+    InteractionManager.runAfterInteractions(() => {
+      navigate('ThematicHome', { homeId: '4mlVpAZySUZO6eHazWKZeV', from: 'chronicles' })
+    })
+  }
+
   return (
     <React.Fragment>
       <ChroniclesWebMetaHeader title={title} />
@@ -91,7 +98,11 @@ export const ChroniclesBase: FunctionComponent<Props> = ({
           onLayout={handleLayout}
         />
       </FullFlexRow>
-      <ChroniclesWritersModal closeModal={hideModal} isVisible={visible} />
+      <ChroniclesWritersModal
+        closeModal={hideModal}
+        isVisible={visible}
+        onShowRecoButtonPress={handleOnShowRecoButtonPress}
+      />
     </React.Fragment>
   )
 }

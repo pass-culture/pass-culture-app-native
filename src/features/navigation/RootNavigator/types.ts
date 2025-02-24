@@ -46,7 +46,7 @@ type BaseThematicHome = {
 }
 
 type OtherThematicBlockHome = {
-  from?: 'deeplink'
+  from?: 'deeplink' | 'chronicles'
   moduleId?: string
   moduleListId?: string
 }
@@ -61,6 +61,7 @@ type HighlightThematicBlockThematicHome = {
   moduleId: string
   moduleListId?: never
 }
+
 export type ThematicHomeParams = BaseThematicHome &
   (OtherThematicBlockHome | CategoryBlockThematicHome | HighlightThematicBlockThematicHome)
 
