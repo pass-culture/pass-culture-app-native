@@ -13,8 +13,8 @@ describe('eventMonitoring', () => {
         dsn: env.SENTRY_DSN,
         environment: 'development',
         integrations: [expect.anything()],
-        tracesSampleRate: '1.0',
-        sampleRate: '1.0',
+        tracesSampleRate: 1,
+        sampleRate: 1,
         ignoreErrors: ['Non-Error promise rejection captured with value: Timeout'],
       })
     })
