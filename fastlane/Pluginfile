@@ -4,3 +4,4 @@
 
 gem 'fastlane-plugin-appcenter'
 gem 'fastlane-plugin-load_json', git: 'https://github.com/KrauseFx/fastlane-plugin-load_json'
+gem 'fastlane-plugin-firebase_app_distribution'
