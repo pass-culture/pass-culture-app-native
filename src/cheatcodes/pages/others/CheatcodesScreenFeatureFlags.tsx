@@ -19,10 +19,12 @@ export const CheatcodesScreenFeatureFlags = () => {
     data: { featureFlag: string; isFeatureFlagActive: boolean }[]
   }
 
-  const sections: Section[] = Object.entries(featureFlags).map(([owner, data]) => ({
-    title: owner,
-    data: data as FeatureFlagAll[], // "as" to avoid typing error
-  }))
+  const sections: Section[] = Object.entries(featureFlags)
+    .map(([owner, data]) => ({
+      title: owner,
+      data: data as FeatureFlagAll[], // "as" to avoid typing error
+    }))
+    .sort((a, b) => a.title.localeCompare(b.title))
 
   const totalFeatureFlags = sections.reduce((sum, section) => sum + section.data.length, 0)
 
@@ -72,6 +74,14 @@ export const CheatcodesScreenFeatureFlags = () => {
       <SectionList
         sections={sections}
         keyExtractor={(item) => item.featureFlag}
+        renderSectionHeader={({ section: { title, data } }) => (
+          <React.Fragment>
+            <TypoDS.Title2>
+              {title} ({data.length})
+            </TypoDS.Title2>
+            <Spacer.Column numberOfSpaces={5} />
+          </React.Fragment>
+        )}
         renderItem={({ item, index, section }) => (
           <React.Fragment>
             <StyledFeatureFlag>
@@ -81,14 +91,6 @@ export const CheatcodesScreenFeatureFlags = () => {
               </StyledTitle4>
             </StyledFeatureFlag>
             {index === section.data.length - 1 ? <Spacer.Column numberOfSpaces={10} /> : null}
-          </React.Fragment>
-        )}
-        renderSectionHeader={({ section: { title, data } }) => (
-          <React.Fragment>
-            <TypoDS.Title2>
-              {title} ({data.length})
-            </TypoDS.Title2>
-            <Spacer.Column numberOfSpaces={5} />
           </React.Fragment>
         )}
         ItemSeparatorComponent={() => <StyledSeparator />}
