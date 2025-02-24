@@ -45,6 +45,7 @@ If you consider correcting the issue is too time consuming/complex: create a tic
 - Use `gap` (`ViewGap`) instead of `<Spacer.Column />`, `<Spacer.Row />` or `<Spacer.Flex />`.
 - Don't add new "alias hooks" (hooks created to group other hooks together). When adding new logic, this hook will progressively become more complex and harder to maintain.
 - Remove logic from components that should be dumb.
+- undefined != null : undefined should be used for optionals and null when no value
 
 Test specific:
 
