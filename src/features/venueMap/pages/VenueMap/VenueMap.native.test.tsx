@@ -1,26 +1,38 @@
+import { useRoute } from '@react-navigation/native'
 import React from 'react'
+import { UseQueryResult } from 'react-query'
 
 import { VenueTypeCodeKey } from 'api/gen'
 import * as useGoBack from 'features/navigation/useGoBack'
+import * as useVenueOffers from 'features/venue/api/useVenueOffers'
+import { VenueOffers } from 'features/venue/types'
 import { FILTERS_VENUE_TYPE_MAPPING } from 'features/venueMap/constant'
 import { VenueMap } from 'features/venueMap/pages/VenueMap/VenueMap'
-import { useVenueTypeCode, venueTypeCodeActions } from 'features/venueMap/store/venueTypeCodeStore'
+import * as venueMapStore from 'features/venueMap/store/venueMapStore'
+import { venuesFilterActions } from 'features/venueMap/store/venuesFilterStore'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render, screen } from 'tests/utils'
+import { render, screen, userEvent, waitFor } from 'tests/utils'
 
-jest.mock('features/venue/api/useVenueOffers')
+jest.mock('@react-navigation/native')
+jest.mock('react-native-map-clustering')
+jest.mock('features/venueMap/helpers/zoomOutIfMapEmpty')
+jest.mock('react-native-gesture-handler/lib/commonjs/handlers/gestures/GestureDetector')
+
+const mockUseRoute = useRoute as jest.Mock
+mockUseRoute.mockReturnValue({ name: 'venueMap' })
+
+jest.spyOn(useVenueOffers, 'useVenueOffers').mockReturnValue({
+  isLoading: false,
+  data: { hits: [], nbHits: 0 },
+} as unknown as UseQueryResult<VenueOffers, unknown>)
 
 const mockGoBack = jest.fn()
 jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
   goBack: mockGoBack,
   canGoBack: jest.fn(() => true),
 })
-
-jest.mock('features/venueMap/store/venueTypeCodeStore')
-const mockSetVenueTypeCode = jest.spyOn(venueTypeCodeActions, 'setVenueTypeCode')
-const mockUseVenueTypeCode = useVenueTypeCode as jest.Mock
 
 jest.mock('@gorhom/bottom-sheet', () => {
   const ActualBottomSheet = jest.requireActual('@gorhom/bottom-sheet/mock').default
@@ -46,12 +58,28 @@ jest.mock('@gorhom/bottom-sheet', () => {
 const VENUE_TYPE = VenueTypeCodeKey.MOVIE
 
 describe('<VenueMap />', () => {
+  const user = userEvent.setup()
+
   beforeEach(() => {
+    jest.useFakeTimers()
     setFeatureFlags([
       RemoteStoreFeatureFlags.WIP_OFFERS_IN_BOTTOM_SHEET,
       RemoteStoreFeatureFlags.WIP_VENUE_MAP_TYPE_FILTER_V2,
-    ]) // TODO(PC-34435): add tests for WIP_VENUE_MAP_HIDDEN_POI and when the wipOffersInBottomSheet and wipVenueMapTypeFilterV2 are off
-    mockUseVenueTypeCode.mockReturnValue(VENUE_TYPE)
+      RemoteStoreFeatureFlags.WIP_VENUE_MAP,
+    ])
+    venueMapStore.setVenueTypeCode(VENUE_TYPE)
+  })
+
+  afterEach(() => {
+    jest.useRealTimers()
+  })
+
+  it('should render without FF', async () => {
+    setFeatureFlags()
+
+    render(reactQueryProviderHOC(<VenueMap />))
+
+    expect(await screen.findByTestId('venue-map-view')).toBeOnTheScreen()
   })
 
   it('Should display venue map header', async () => {
@@ -64,21 +92,44 @@ describe('<VenueMap />', () => {
     })
 
     expect(screen.getByText('Carte des lieux')).toBeOnTheScreen()
+    expect(await screen.findByTestId('venue-map-view')).toHaveProp('showsPointsOfInterest', true)
+  })
+
+  it('should hide POI when FF is active', async () => {
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_VENUE_MAP_HIDDEN_POI])
+
+    render(reactQueryProviderHOC(<VenueMap />))
+
+    expect(await screen.findByTestId('venue-map-view')).toHaveProp('showsPointsOfInterest', false)
   })
 
   it('Should handle go back action when pressing go back button', async () => {
     render(reactQueryProviderHOC(<VenueMap />))
 
-    fireEvent.press(await screen.findByTestId('Revenir en arrière'))
+    await user.press(await screen.findByTestId('Revenir en arrière'))
 
     expect(mockGoBack).toHaveBeenCalledTimes(1)
   })
 
   it('Should reset venue type code in store when pressing go back button', async () => {
+    const spy = jest.spyOn(venueMapStore, 'setVenueTypeCode')
     render(reactQueryProviderHOC(<VenueMap />))
 
-    fireEvent.press(await screen.findByTestId('Revenir en arrière'))
+    await user.press(await screen.findByTestId('Revenir en arrière'))
 
-    expect(mockSetVenueTypeCode).toHaveBeenNthCalledWith(1, null)
+    await waitFor(() => expect(spy).toHaveBeenNthCalledWith(1, null))
+  })
+
+  it('Should reset store + filters when unmounting', async () => {
+    const spyClearStore = jest.spyOn(venueMapStore, 'clearVenueMapStore')
+    const spyResetFilters = jest.spyOn(venuesFilterActions, 'reset')
+
+    const { unmount } = render(reactQueryProviderHOC(<VenueMap />))
+
+    unmount()
+
+    await waitFor(() => expect(spyClearStore).toHaveBeenCalledWith())
+
+    expect(spyResetFilters).toHaveBeenCalledWith()
   })
 })

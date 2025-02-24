@@ -6,7 +6,7 @@ import { SearchGroupNameEnumv2, VenueTypeCodeKey } from 'api/gen'
 import { VenuePlaylist } from 'features/search/components/VenuePlaylist/VenuePlaylist'
 import { initialSearchState } from 'features/search/context/reducer'
 import { mockAlgoliaVenues } from 'features/search/fixtures/mockAlgoliaVenues'
-import { venueTypeCodeActions } from 'features/venueMap/store/venueTypeCodeStore'
+import * as useVenueMapStore from 'features/venueMap/store/venueMapStore'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -21,7 +21,7 @@ jest.mock('features/search/context/SearchWrapper', () => ({
   useSearch: () => mockUseSearch(),
 }))
 
-const mockSetVenueTypeCode = jest.spyOn(venueTypeCodeActions, 'setVenueTypeCode')
+const setVenueTypeCodeSpy = jest.spyOn(useVenueMapStore, 'setVenueTypeCode')
 
 const user = userEvent.setup()
 
@@ -92,7 +92,7 @@ describe('<VenuePlaylist />', () => {
 
       await user.press(screen.getByText('Voir sur la carte'))
 
-      expect(mockSetVenueTypeCode).toHaveBeenNthCalledWith(1, VenueTypeCodeKey.BOOKSTORE)
+      expect(setVenueTypeCodeSpy).toHaveBeenNthCalledWith(1, VenueTypeCodeKey.BOOKSTORE)
     })
 
     it('should not set filter on bookstore venue type when pressing Voir sur la carte button and offer category is not Livres', async () => {
@@ -107,7 +107,7 @@ describe('<VenuePlaylist />', () => {
 
       await user.press(screen.getByText('Voir sur la carte'))
 
-      expect(mockSetVenueTypeCode).not.toHaveBeenCalled()
+      expect(setVenueTypeCodeSpy).not.toHaveBeenCalled()
     })
 
     it('should open venue map location modal when pressing Voir sur la carte button and user location is not located', async () => {

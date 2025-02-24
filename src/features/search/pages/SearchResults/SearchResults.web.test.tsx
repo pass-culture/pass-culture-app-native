@@ -6,7 +6,7 @@ import { ISearchContext } from 'features/search/context/SearchWrapper'
 import * as useFilterCountAPI from 'features/search/helpers/useFilterCount/useFilterCount'
 import { SearchResults } from 'features/search/pages/SearchResults/SearchResults'
 import { useCenterOnLocation } from 'features/venueMap/hook/useCenterOnLocation'
-import { useGetAllVenues } from 'features/venueMap/useGetAllVenues'
+import { useVenuesInRegionQuery } from 'features/venueMap/useVenuesInRegionQuery'
 import { venuesFixture } from 'libs/algolia/fetchAlgolia/fetchVenues/fixtures/venuesFixture'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -64,15 +64,15 @@ jest.mock('uuid', () => ({
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
-jest.mock('features/venueMap/useGetAllVenues')
-const mockUseGetAllVenues = useGetAllVenues as jest.Mock
-
 jest.mock('features/venueMap/hook/useCenterOnLocation')
 const mockUseCenterOnLocation = useCenterOnLocation as jest.Mock
 
 jest.mock('features/venue/api/useVenueOffers')
 jest.mock('features/venueMap/helpers/zoomOutIfMapEmpty')
 jest.mock('features/navigation/TabBar/routes')
+
+jest.mock('features/venueMap/useVenuesInRegionQuery')
+const mockUseVenuesInRegionQuery = useVenuesInRegionQuery as jest.Mock
 
 describe('<SearchResults/>', () => {
   describe('Accessibility', () => {
@@ -82,15 +82,13 @@ describe('<SearchResults/>', () => {
     })
 
     beforeAll(() => {
-      mockUseGetAllVenues.mockReturnValue({ venues: venuesFixture })
+      mockUseVenuesInRegionQuery.mockReturnValue({ data: venuesFixture })
       mockUseCenterOnLocation.mockReturnValue(jest.fn())
     })
 
     it('should not have basic accessibility issues', async () => {
       mockUseNetInfoContext.mockReturnValueOnce({ isConnected: true })
       const { container } = render(reactQueryProviderHOC(<SearchResults />))
-
-      await act(async () => {})
 
       await act(async () => {
         const results = await checkAccessibilityFor(container)

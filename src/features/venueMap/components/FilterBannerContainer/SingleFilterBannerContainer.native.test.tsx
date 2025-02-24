@@ -1,21 +1,18 @@
 import React from 'react'
 
 import { VenueTypeCodeKey } from 'api/gen'
-import { useVenueTypeCode } from 'features/venueMap/store/venueTypeCodeStore'
+import { setVenueTypeCode } from 'features/venueMap/store/venueMapStore'
 import { parseType } from 'libs/parsers/venueType'
 import { ellipseString } from 'shared/string/ellipseString'
 import { render, screen } from 'tests/utils'
 
 import { SingleFilterBannerContainer } from './SingleFilterBannerContainer'
 
-jest.mock('features/venueMap/store/venueTypeCodeStore')
-const mockUseVenueTypeCode = useVenueTypeCode as jest.Mock
-
 const VENUE_TYPE = VenueTypeCodeKey.MOVIE
 
 describe('SingleFilterBannerContainer', () => {
   beforeEach(() => {
-    mockUseVenueTypeCode.mockReturnValue(VENUE_TYPE)
+    setVenueTypeCode(VENUE_TYPE)
   })
 
   it('should render correctly', async () => {
@@ -25,7 +22,7 @@ describe('SingleFilterBannerContainer', () => {
   })
 
   it('Should filter with no venueCode', async () => {
-    mockUseVenueTypeCode.mockReturnValueOnce(null)
+    setVenueTypeCode(null)
 
     render(<SingleFilterBannerContainer />)
 

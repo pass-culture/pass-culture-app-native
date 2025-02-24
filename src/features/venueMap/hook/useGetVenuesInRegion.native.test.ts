@@ -1,11 +1,13 @@
-import { useGetVenuesInRegion } from 'features/venueMap/hook/useGetVenuesInRegion'
-import { useGetAllVenues } from 'features/venueMap/useGetAllVenues'
 import { venuesFixture } from 'libs/algolia/fetchAlgolia/fetchVenues/fixtures/venuesFixture'
-import { renderHook } from 'tests/utils'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { renderHook, waitFor } from 'tests/utils'
 
-jest.mock('features/venueMap/useGetAllVenues')
-const mockUseGetAllVenues = useGetAllVenues as jest.Mock
-mockUseGetAllVenues.mockReturnValue({ venues: venuesFixture })
+import { useGetVenuesInRegion } from './useGetVenuesInRegion'
+
+const mockFetchVenues = jest.fn()
+jest.mock('libs/algolia/fetchAlgolia/fetchVenues/fetchVenues', () => ({
+  fetchVenues: (params: unknown) => mockFetchVenues(params),
+}))
 
 const mockRegion = {
   latitude: 48.8566,
@@ -15,22 +17,48 @@ const mockRegion = {
 }
 
 describe('useGetVenuesInRegion', () => {
-  it('should return venues in region when no venue is selected', () => {
-    const { result } = renderHook(() => useGetVenuesInRegion(mockRegion, null))
-
-    expect(result.current).toEqual(venuesFixture)
+  beforeEach(() => {
+    mockFetchVenues.mockResolvedValue(venuesFixture)
   })
 
-  it('should return venues in region when a venue is selected and is in region', () => {
-    const { result } = renderHook(() => useGetVenuesInRegion(mockRegion, venuesFixture[0]))
+  it('should return venues in specific region', async () => {
+    const { result } = renderHook(() => useGetVenuesInRegion(mockRegion), {
+      wrapper: ({ children }) => reactQueryProviderHOC(children),
+    })
 
-    expect(result.current).toEqual(venuesFixture)
+    await waitFor(() => expect(result.current).toStrictEqual(venuesFixture))
   })
 
-  it('should return venues in region + selected venue when a venue is selected and is out of region', () => {
-    mockUseGetAllVenues.mockReturnValueOnce({ venues: venuesFixture.slice(1) })
-    const { result } = renderHook(() => useGetVenuesInRegion(mockRegion, venuesFixture[0]))
+  it('should return undefined when region is not specified', async () => {
+    const { result } = renderHook(() => useGetVenuesInRegion(), {
+      wrapper: ({ children }) => reactQueryProviderHOC(children),
+    })
 
-    expect(result.current).toEqual([...venuesFixture.slice(1), venuesFixture[0]])
+    await waitFor(() => expect(result.current).toBeUndefined())
+  })
+
+  it('should return undefined if no venues are retrieved', async () => {
+    mockFetchVenues.mockResolvedValueOnce(undefined)
+
+    const { result } = renderHook(() => useGetVenuesInRegion(mockRegion), {
+      wrapper: ({ children }) => reactQueryProviderHOC(children),
+    })
+
+    await waitFor(() => expect(result.current).toBeUndefined())
+  })
+
+  it('should return an empty list if geoloc data are not good', async () => {
+    mockFetchVenues.mockReturnValueOnce(
+      venuesFixture.map((venue) => ({
+        ...venue,
+        _geoloc: { ...venue._geoloc, lat: undefined, lng: undefined },
+      }))
+    )
+
+    const { result } = renderHook(() => useGetVenuesInRegion(mockRegion), {
+      wrapper: ({ children }) => reactQueryProviderHOC(children),
+    })
+
+    await waitFor(() => expect(result.current).toStrictEqual([]))
   })
 })

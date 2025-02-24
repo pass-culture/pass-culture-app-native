@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native'
-import React, { useEffect } from 'react'
+import React from 'react'
 
 import { LocationModal } from 'features/location/components/LocationModal'
 import { useLocationMode } from 'features/location/helpers/useLocationMode'
@@ -8,8 +8,7 @@ import { useLocationSubmit } from 'features/location/helpers/useLocationSubmit'
 import { usePlaceSelection } from 'features/location/helpers/usePlaceSelection'
 import { useRadiusChange } from 'features/location/helpers/useRadiusChange'
 import { Referrals, UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { initialVenuesActions } from 'features/venueMap/store/initialVenuesStore'
-import { selectedVenueActions } from 'features/venueMap/store/selectedVenueStore'
+import { removeSelectedVenue } from 'features/venueMap/store/venueMapStore'
 import { analytics } from 'libs/analytics/provider'
 import { LocationMode } from 'libs/location/types'
 
@@ -68,13 +67,6 @@ export const VenueMapLocationModal = ({
     ...locationStateProps,
     ...locationSubmitProps,
   })
-
-  const { removeSelectedVenue } = selectedVenueActions
-  const { setInitialVenues } = initialVenuesActions
-
-  useEffect(() => {
-    setInitialVenues([])
-  }, [setInitialVenues])
 
   const handleSubmit = () => {
     removeSelectedVenue()

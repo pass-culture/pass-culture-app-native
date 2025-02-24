@@ -24,7 +24,7 @@ export const Marker = ({ venue, isSelected, showLabel, ...otherProps }: MarkerPr
       identifier={venue.venueId.toString()}
       anchor={{ x: 0.5, y: showLabel ? 0.6 : 1 }}
       tracksViewChanges={false}
-      testID={`marker-${venue.venueId}`}
+      testID={`marker-${venue.venueId}${isSelected ? '-selected' : ''}`}
       zIndex={isSelected ? PIN_MAX_Z_INDEX : undefined}
       {...otherProps}>
       <MarkerImage

@@ -1,13 +1,12 @@
+import * as reactNavigationNative from '@react-navigation/native'
 import React, { useState } from 'react'
 import { Button } from 'react-native'
 import { ReactTestInstance } from 'react-test-renderer'
 
-import { navigate } from '__mocks__/@react-navigation/native'
 import { SearchLocationModal } from 'features/location/components/SearchLocationModal'
 import { VenueMapLocationModal } from 'features/location/components/VenueMapLocationModal'
 import { DEFAULT_RADIUS } from 'features/search/constants'
-import { initialVenuesActions } from 'features/venueMap/store/initialVenuesStore'
-import { selectedVenueActions } from 'features/venueMap/store/selectedVenueStore'
+import * as useVenueMapStore from 'features/venueMap/store/venueMapStore'
 import { analytics } from 'libs/analytics/provider'
 import { checkGeolocPermission, GeolocPermissionState, LocationWrapper } from 'libs/location'
 import { getGeolocPosition } from 'libs/location/geolocation/getGeolocPosition/getGeolocPosition'
@@ -64,9 +63,12 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
-const mockRemoveSelectedVenue = jest.spyOn(selectedVenueActions, 'removeSelectedVenue')
+const mockNavigate = jest.fn()
+jest.spyOn(reactNavigationNative, 'useNavigation').mockReturnValue({
+  navigate: mockNavigate,
+})
 
-const mockSetInitialVenues = jest.spyOn(initialVenuesActions, 'setInitialVenues')
+const removeSelectedVenueSpy = jest.spyOn(useVenueMapStore, 'removeSelectedVenue')
 
 const user = userEvent.setup()
 jest.useFakeTimers()
@@ -169,7 +171,7 @@ describe('VenueMapLocationModal', () => {
     const validateButon = screen.getByText('Valider et voir sur la carte')
     fireEvent.press(validateButon)
 
-    expect(navigate).toHaveBeenNthCalledWith(1, 'VenueMap')
+    expect(mockNavigate).toHaveBeenNthCalledWith(1, 'VenueMap')
   })
 
   it('should trigger ConsultVenueMap log on submit when we choose a location, shouldOpenMapInTab is not true and openedFrom defined', async () => {
@@ -231,20 +233,7 @@ describe('VenueMapLocationModal', () => {
     const validateButon = screen.getByText('Valider et voir sur la carte')
     fireEvent.press(validateButon)
 
-    expect(mockRemoveSelectedVenue).toHaveBeenCalledTimes(1)
-  })
-
-  it('should reset initial venues in store on modal openning', async () => {
-    getGeolocPositionMock.mockResolvedValueOnce({ latitude: 0, longitude: 0 })
-    mockRequestGeolocPermission.mockResolvedValueOnce(GeolocPermissionState.GRANTED)
-    mockCheckGeolocPermission.mockResolvedValueOnce(GeolocPermissionState.GRANTED)
-
-    renderVenueMapLocationModal({})
-    await act(async () => {
-      jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
-    })
-
-    expect(mockSetInitialVenues).toHaveBeenCalledTimes(1)
+    expect(removeSelectedVenueSpy).toHaveBeenCalledTimes(1)
   })
 
   it('should not navigate to venue map on submit when we choose a location and shouldOpenMapInTab is true', async () => {
@@ -275,7 +264,7 @@ describe('VenueMapLocationModal', () => {
     const validateButon = screen.getByText('Valider et voir sur la carte')
     fireEvent.press(validateButon)
 
-    expect(navigate).not.toHaveBeenCalled()
+    expect(mockNavigate).not.toHaveBeenCalled()
   })
 
   it('should set temp location mode when submit if setTempLocationMode defined', async () => {

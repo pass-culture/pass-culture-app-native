@@ -10,8 +10,9 @@ import { useSearch } from 'features/search/context/SearchWrapper'
 import { useNavigateToSearch } from 'features/search/helpers/useNavigateToSearch/useNavigateToSearch'
 import { SearchState } from 'features/search/types'
 import { Venue } from 'features/venue/types'
-import { initialVenuesActions } from 'features/venueMap/store/initialVenuesStore'
-import { selectedVenueActions } from 'features/venueMap/store/selectedVenueStore'
+import { GeolocatedVenue } from 'features/venueMap/components/VenueMapView/types'
+import { isGeolocValid } from 'features/venueMap/helpers/isGeolocValid'
+import { removeSelectedVenue, setVenues } from 'features/venueMap/store/venueMapStore'
 import { useSearchAnalyticsState } from 'libs/algolia/analytics/SearchAnalyticsWrapper'
 import { doAlgoliaRedirect } from 'libs/algolia/doAlgoliaRedirect'
 import { fetchSearchResults } from 'libs/algolia/fetchAlgolia/fetchSearchResults/fetchSearchResults'
@@ -44,8 +45,6 @@ export const useSearchInfiniteQuery = (searchState: SearchState, dispatch: Dispa
   const transformHits = useTransformOfferHits()
   const { setCurrentQueryID } = useSearchAnalyticsState()
   const previousPageObjectIds = useRef<string[]>([])
-  const { setInitialVenues } = initialVenuesActions
-  const { removeSelectedVenue } = selectedVenueActions
   const { replaceToSearch: navigateToThematicSearch } = useNavigateToSearch('ThematicSearch')
   const { aroundPrecision } = useRemoteConfigContext()
 
@@ -113,9 +112,13 @@ export const useSearchInfiniteQuery = (searchState: SearchState, dispatch: Dispa
     removeSelectedVenue()
     const venues = flatten(data?.pages?.[0]?.venues.hits)
     if (userLocation && venues.length) {
-      setInitialVenues(adaptAlgoliaVenues(venues))
+      setVenues(
+        adaptAlgoliaVenues(venues).filter((venue): venue is GeolocatedVenue =>
+          isGeolocValid(venue._geoloc)
+        )
+      )
     } else {
-      setInitialVenues([])
+      setVenues([])
     }
     return {
       offers: flatten(data?.pages.map((page) => page.offers.hits.map(transformHits))).filter(
@@ -126,7 +129,7 @@ export const useSearchInfiniteQuery = (searchState: SearchState, dispatch: Dispa
         data?.pages.map((page) => page.duplicatedOffers.hits.map(transformHits))
       ).filter((hit) => typeof hit.offer.subcategoryId !== 'undefined') as Offer[],
     }
-  }, [data?.pages, removeSelectedVenue, setInitialVenues, transformHits, userLocation])
+  }, [data?.pages, transformHits, userLocation])
 
   const offersData = data?.pages[0]?.offers
   const { nbHits, userData } = offersData ?? { nbHits: 0, userData: [] }
@@ -165,6 +168,5 @@ export const useSearchInfiniteQuery = (searchState: SearchState, dispatch: Dispa
 
 export const useSearchResults = () => {
   const { searchState, dispatch } = useSearch()
-
   return useSearchInfiniteQuery(searchState, dispatch)
 }
