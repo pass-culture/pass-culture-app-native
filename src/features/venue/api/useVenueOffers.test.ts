@@ -27,6 +27,7 @@ jest.mock('libs/location/LocationWrapper', () => ({
 jest.mock('features/search/context/SearchWrapper', () => ({
   useSearch: () => ({
     resetSearch: jest.fn(),
+    dispatch: jest.fn(),
   }),
 }))
 
@@ -236,7 +237,9 @@ describe('useVenueOffers', () => {
         nbHits: 1,
       },
     ]
-    mockFetchMultipleOffers.mockResolvedValueOnce(FETCH_MULTIPLE_OFFERS_RESPONSE)
+    mockFetchMultipleOffers
+      .mockResolvedValueOnce(FETCH_MULTIPLE_OFFERS_RESPONSE)
+      .mockResolvedValueOnce(FETCH_MULTIPLE_OFFERS_RESPONSE)
 
     const { result } = renderHook(() => useVenueOffers(mockVenueResponse), {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
