@@ -33,7 +33,6 @@ export const AvatarListItem: FunctionComponent<AvatarListItemProps> = ({
         params: {
           fromOfferId: id,
         },
-        withPush: true,
       }}
       onBeforeNavigate={() => onItemPress(name)}>
       <StyledView gap={2}>

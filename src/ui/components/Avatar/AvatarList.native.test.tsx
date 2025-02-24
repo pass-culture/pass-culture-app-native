@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { push } from '__mocks__/@react-navigation/native'
+import { navigate } from '__mocks__/@react-navigation/native'
 import { render, screen, userEvent } from 'tests/utils'
 import { AvatarsList } from 'ui/components/Avatar/AvatarList'
 
@@ -41,7 +41,7 @@ describe('<AvatarsList />', () => {
 
     await user.press(screen.getByText('Oda'))
 
-    expect(push).toHaveBeenCalledWith('Artist', {
+    expect(navigate).toHaveBeenCalledWith('Artist', {
       fromOfferId: 1,
     })
   })
