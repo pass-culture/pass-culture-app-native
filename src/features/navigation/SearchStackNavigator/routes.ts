@@ -5,49 +5,50 @@ import { ScreenNames } from 'features/navigation/RootNavigator/types'
 import { screenParamsParser, screenParamsStringifier } from 'features/navigation/screenParamsUtils'
 import { ComponentForPathConfig } from 'features/navigation/SearchStackNavigator/ComponentForPathConfig'
 import { SearchStack } from 'features/navigation/SearchStackNavigator/Stack'
+import { SearchView } from 'features/search/types'
 
 import { SearchStackRoute, SearchStackParamList, SearchStackRouteName } from './types'
 
-const initialSearchStackRouteName: SearchStackRouteName = 'SearchLanding'
+const initialSearchStackRouteName: SearchStackRouteName = SearchView.Landing
 
 const routes: SearchStackRoute[] = [
   {
-    name: 'SearchLanding',
+    name: SearchView.Landing,
     component: ComponentForPathConfig,
     pathConfig: {
       path: 'recherche/accueil',
-      parse: screenParamsParser['SearchLanding'],
-      stringify: screenParamsStringifier['SearchLanding'],
+      parse: screenParamsParser[SearchView.Landing],
+      stringify: screenParamsStringifier[SearchView.Landing],
     },
     options: { title: 'Rechercher des offres' },
   },
   {
-    name: 'SearchResults',
+    name: SearchView.Results,
     component: ComponentForPathConfig,
     pathConfig: {
       path: 'recherche/resultats',
-      parse: screenParamsParser['SearchResults'],
-      stringify: screenParamsStringifier['SearchResults'],
+      parse: screenParamsParser[SearchView.Results],
+      stringify: screenParamsStringifier[SearchView.Results],
     },
     options: { title: 'Résultats de recherche' },
   },
   {
-    name: 'ThematicSearch',
+    name: SearchView.Thematic,
     component: ComponentForPathConfig,
     pathConfig: {
       path: 'recherche/thematique',
-      parse: screenParamsParser['ThematicSearch'],
-      stringify: screenParamsStringifier['ThematicSearch'],
+      parse: screenParamsParser[SearchView.Thematic],
+      stringify: screenParamsStringifier[SearchView.Thematic],
     },
     options: { title: 'recherche dans les sous-catégories' },
   },
   {
-    name: 'SearchFilter',
+    name: SearchView.Filter,
     component: ComponentForPathConfig,
     pathConfig: {
       path: 'recherche/filtres',
-      parse: screenParamsParser['SearchFilter'],
-      stringify: screenParamsStringifier['SearchFilter'],
+      parse: screenParamsParser[SearchView.Filter],
+      stringify: screenParamsStringifier[SearchView.Filter],
     },
     options: { title: 'Filtres de recherche' },
   },

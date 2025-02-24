@@ -10,6 +10,7 @@ import { SearchFilter } from 'features/search/pages/SearchFilter/SearchFilter'
 import { SearchLanding } from 'features/search/pages/SearchLanding/SearchLanding'
 import { SearchResults } from 'features/search/pages/SearchResults/SearchResults'
 import { ThematicSearch } from 'features/search/pages/ThematicSearch/ThematicSearch'
+import { SearchView } from 'features/search/types'
 
 export const SearchStackNavigator = ({
   initialRouteName,
@@ -29,19 +30,19 @@ export const SearchStackNavigator = ({
 
 const routes: SearchStackRoute[] = [
   {
-    name: 'SearchLanding',
+    name: SearchView.Landing,
     component: SearchLanding,
   },
   {
-    name: 'SearchResults',
+    name: SearchView.Results,
     component: SearchResults,
   },
   {
-    name: 'ThematicSearch',
+    name: SearchView.Thematic,
     component: ThematicSearch,
   },
   {
-    name: 'SearchFilter',
+    name: SearchView.Filter,
     component: SearchFilter,
   },
 ]

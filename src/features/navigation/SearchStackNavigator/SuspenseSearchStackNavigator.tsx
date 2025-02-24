@@ -1,5 +1,6 @@
 import React, { lazy, Suspense } from 'react'
 
+import { SearchView } from 'features/search/types'
 import { LoadingPage } from 'ui/pages/LoadingPage'
 
 const LazySearchStackNavigator = lazy(async () => {
@@ -10,7 +11,7 @@ const LazySearchStackNavigator = lazy(async () => {
 export const SuspenseSearchStackNavigator = () => {
   return (
     <Suspense fallback={<LoadingPage />}>
-      <LazySearchStackNavigator initialRouteName="SearchLanding" />
+      <LazySearchStackNavigator initialRouteName={SearchView.Landing} />
     </Suspense>
   )
 }
