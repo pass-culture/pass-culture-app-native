@@ -1,7 +1,7 @@
 import colorAlpha from 'color-alpha'
 import React, { useState, useRef, useEffect } from 'react'
 import { Modal, Platform } from 'react-native'
-import WebView, { WebViewMessageEvent } from 'react-native-webview'
+import { WebView, WebViewMessageEvent } from 'react-native-webview'
 import { ShouldStartLoadRequest } from 'react-native-webview/lib/WebViewTypes'
 import styled from 'styled-components/native'
 import { v1 as uuidv1 } from 'uuid'

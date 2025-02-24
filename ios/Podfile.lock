@@ -605,7 +605,7 @@ PODS:
     - React-Core
   - react-native-tracking-transparency (0.1.2):
     - React
-  - react-native-webview (11.23.0):
+  - react-native-webview (11.26.1):
     - React-Core
   - React-NativeModulesApple (0.72.12):
     - hermes-engine
@@ -1243,7 +1243,7 @@ SPEC CHECKSUMS:
   react-native-netinfo: 5b664b2945a8f02102b296f0f812bddd6827ed9c
   react-native-safe-area-context: 9e40fb181dac02619414ba1294d6c2a807056ab9
   react-native-tracking-transparency: 25ff1ff866e338c137c818bdec20526bb05ffcc1
-  react-native-webview: e771bc375f789ebfa02a26939a57dbc6fa897336
+  react-native-webview: 9f111dfbcfc826084d6c507f569e5e03342ee1c1
   React-NativeModulesApple: 694679e4193a49c09f0a76ee27ec09b2c466d59c
   React-perflogger: 63606aeab27683112e1bd4ef25bd099ec1cb03f8
   React-RCTActionSheet: 5b39fc2b479d47325e5ac95193c482044bfebbc6

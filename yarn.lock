@@ -13084,7 +13084,7 @@ __metadata:
     react-native-web-linear-gradient: ^1.1.2
     react-native-web-lottie: ^1.4.4
     react-native-web-swiper: 2.2.4
-    react-native-webview: ^11.23.0
+    react-native-webview: ^11.26.1
     react-native-youtube-iframe: ^2.2.2
     react-query: 3.39.3
     react-query-native-devtools: ^3.0.1
@@ -29650,16 +29650,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-webview@npm:^11.23.0":
-  version: 11.23.0
-  resolution: "react-native-webview@npm:11.23.0"
+"react-native-webview@npm:^11.26.1":
+  version: 11.26.1
+  resolution: "react-native-webview@npm:11.26.1"
   dependencies:
     escape-string-regexp: 2.0.0
     invariant: 2.2.4
   peerDependencies:
     react: "*"
     react-native: "*"
-  checksum: 2db9fabd79a604436e8cac22cd6ceb62a790e4db71bc65baa23f5e1499b4d781c867fec41c6d7983da46ed5689e2241360025c97522d191332092df08e384e12
+  checksum: d2f95a89e944a2f1e8cf402e4e274f3568edae42e7ef190915e9fba8004a01d699c962459bdc9688c159060538e90aea3017cab24e6f4112021cbbc10ef57104
   languageName: node
   linkType: hard
 
