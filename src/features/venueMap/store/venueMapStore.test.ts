@@ -26,7 +26,7 @@ describe('VenueMapStore', () => {
     expect(result.current.venueTypeCode).toBeUndefined()
   })
 
-  it('should set venues', async () => {
+  it('should set venues', () => {
     const { result } = renderHook(() => useVenueMapStore())
 
     act(() => {

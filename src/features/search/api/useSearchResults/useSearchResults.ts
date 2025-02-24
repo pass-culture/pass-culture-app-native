@@ -49,7 +49,15 @@ export const useSearchInfiniteQuery = (searchState: SearchState, dispatch: Dispa
   const { aroundPrecision } = useRemoteConfigContext()
 
   const { data, ...infiniteQuery } = useInfiniteQuery<SearchOfferResponse>(
-    [QueryKeys.SEARCH_RESULTS, JSON.stringify(searchState)],
+    [
+      QueryKeys.SEARCH_RESULTS,
+      searchState,
+      userLocation,
+      selectedLocationMode,
+      aroundPlaceRadius,
+      aroundMeRadius,
+      disabilities,
+    ],
     async ({ pageParam: page = 0 }) => {
       const {
         offersResponse,
