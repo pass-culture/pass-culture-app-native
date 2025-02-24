@@ -1,4 +1,4 @@
-import { useRoute } from '@react-navigation/native'
+import { useNavigation, useRoute } from '@react-navigation/native'
 import React, { FunctionComponent, useEffect } from 'react'
 import { Animated, Platform } from 'react-native'
 import styled from 'styled-components/native'
@@ -20,7 +20,8 @@ import { ThematicHomeHeader } from 'features/home/components/headers/ThematicHom
 import { PERFORMANCE_HOME_CREATION, PERFORMANCE_HOME_LOADING } from 'features/home/constants'
 import { GenericHome } from 'features/home/pages/GenericHome'
 import { ThematicHeader, ThematicHeaderType } from 'features/home/types'
-import { UseRouteType } from 'features/navigation/RootNavigator/types'
+import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
+import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { analytics } from 'libs/analytics/provider'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
@@ -109,6 +110,7 @@ export const ThematicHome: FunctionComponent = () => {
   startPerfHomeLoadingOnce()
   const { params } = useRoute<UseRouteType<'ThematicHome'>>()
   const { goBack } = useGoBack('Chronicles')
+  const { navigate } = useNavigation<UseNavigationType>()
   const isFromDeeplink = params.from === 'deeplink'
   const { modules, id, thematicHeader } = useHomepageData(params.homeId) || {}
   const {
@@ -166,6 +168,10 @@ export const ThematicHome: FunctionComponent = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [hasGeolocPosition, isFromDeeplink])
 
+  const handleBackPress = () => {
+    params.from === 'chronicles' ? goBack() : navigate(...homeNavConfig)
+  }
+
   return (
     <Container>
       <GenericHome
@@ -184,7 +190,7 @@ export const ThematicHome: FunctionComponent = () => {
         thematicHeader={thematicHeader}
         headerTransition={headerTransition}
         homeId={params.homeId}
-        onBackPress={params.from === 'chronicles' ? goBack : undefined}
+        onBackPress={handleBackPress}
       />
       {/* Animated header is called only for iOS */}
       {Platform.OS === 'ios' ? (

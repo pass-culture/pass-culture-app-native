@@ -1,3 +1,4 @@
+import * as reactNavigationNative from '@react-navigation/native'
 import React from 'react'
 import { Platform } from 'react-native'
 
@@ -10,6 +11,7 @@ import {
 } from 'features/home/fixtures/homepage.fixture'
 import { ThematicHome } from 'features/home/pages/ThematicHome'
 import { Color, ThematicHeaderType } from 'features/home/types'
+import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import * as useGoBack from 'features/navigation/useGoBack'
 import * as useMapSubscriptionHomeIdsToThematic from 'features/subscription/helpers/useMapSubscriptionHomeIdsToThematic'
 import { SubscriptionTheme } from 'features/subscription/types'
@@ -74,6 +76,12 @@ const mockGoBack = jest.fn()
 jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
   goBack: mockGoBack,
   canGoBack: jest.fn(() => true),
+})
+
+const mockNavigate = jest.fn()
+jest.spyOn(reactNavigationNative, 'useNavigation').mockReturnValue({
+  navigate: mockNavigate,
+  push: jest.fn(),
 })
 
 const user = userEvent.setup()
@@ -195,7 +203,7 @@ describe('ThematicHome', () => {
       expect(mockGoBack).toHaveBeenCalledTimes(1)
     })
 
-    it('should not execute go back when pressing back button and url has not chronicles from parameter', async () => {
+    it('should navigate to home when pressing back button and url has not chronicles from parameter', async () => {
       useRoute.mockReturnValueOnce({
         params: {
           entryId: 'fakeEntryId',
@@ -206,7 +214,10 @@ describe('ThematicHome', () => {
 
       await user.press(await screen.findByLabelText('Revenir en arrière'))
 
-      expect(mockGoBack).not.toHaveBeenCalled()
+      expect(mockNavigate).toHaveBeenCalledWith(
+        navigateToHomeConfig.screen,
+        navigateToHomeConfig.params
+      )
     })
   })
 

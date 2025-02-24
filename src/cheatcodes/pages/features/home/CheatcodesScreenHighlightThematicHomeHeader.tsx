@@ -1,13 +1,18 @@
+import { useNavigation } from '@react-navigation/native'
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
 import { HighlightThematicHomeHeader } from 'features/home/components/headers/HighlightThematicHomeHeader'
 import { ThematicHomeHeader } from 'features/home/components/headers/ThematicHomeHeader'
 import { CategoryThematicHeader, Color, ThematicHeaderType } from 'features/home/types'
+import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 
 export const CheatcodesScreenHighlightThematicHomeHeader: FunctionComponent = () => {
   const { headerTransition } = useOpacityTransition()
+  const { navigate } = useNavigation<UseNavigationType>()
+  const handleBackPress = () => navigate(...homeNavConfig)
 
   const thematicHomeHeader: CategoryThematicHeader = {
     type: ThematicHeaderType.Category,
@@ -24,6 +29,7 @@ export const CheatcodesScreenHighlightThematicHomeHeader: FunctionComponent = ()
         headerTransition={headerTransition}
         thematicHeader={thematicHomeHeader}
         homeId="fakeEntryId"
+        onBackPress={handleBackPress}
       />
       <HighlightThematicHomeHeader
         imageUrl={thematicHomeHeader.imageUrl}
