@@ -5,6 +5,7 @@ import {
   RemoteBannerRedirectionType,
   RemoteBannerType,
 } from 'features/remoteBanner/components/remoteBannerSchema'
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { render, screen } from 'tests/utils/web'
@@ -44,6 +45,28 @@ describe('RemoteBanner', () => {
     const rightIcon = screen.queryByTestId('ArrowNext')
 
     expect(rightIcon).not.toBeInTheDocument()
+  })
+
+  it('should have correct accessibilityRole for store redirection', async () => {
+    setFeatureFlags([
+      { featureFlag: RemoteStoreFeatureFlags.SHOW_REMOTE_BANNER, options: bannerStoreRedirection },
+    ])
+    render(<RemoteBanner from="Profile" />)
+
+    const buttonBanner = await screen.findByRole(AccessibilityRole.BUTTON)
+
+    expect(buttonBanner).toBeTruthy()
+  })
+
+  it('should have correct accessibilityRole for external redirection', async () => {
+    setFeatureFlags([
+      { featureFlag: RemoteStoreFeatureFlags.SHOW_REMOTE_BANNER, options: bannerExternalUrl },
+    ])
+    render(<RemoteBanner from="Profile" />)
+
+    const linkBanner = await screen.findByRole(AccessibilityRole.LINK)
+
+    expect(linkBanner).toBeTruthy()
   })
 })
 

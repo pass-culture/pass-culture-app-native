@@ -32,11 +32,11 @@ export const RemoteBanner = ({ from }: { from: RemoteBannerOrigin }) => {
   const isExternalRedirection = redirectionType === RemoteBannerRedirectionType.EXTERNAL
   const isExternalAndDefined = isExternalRedirection && redirectionUrl
 
-  const isWebStoreBanner = isStoreRedirection && !isWeb
+  const isWebStoreBanner = isStoreRedirection && isWeb
   const accessibilityRole = isWebStoreBanner ? AccessibilityRole.BUTTON : AccessibilityRole.LINK
 
   const externalAccessiblityLabel = `Nouvelle fenêtre\u00a0: ${String(redirectionUrl)}`
-  const storeAccessibilityLabel = isWebStoreBanner ? `Nouvelle fenêtre\u00a0: ${STORE_LINK}` : ''
+  const storeAccessibilityLabel = isWebStoreBanner ? '' : `Nouvelle fenêtre\u00a0: ${STORE_LINK}`
 
   const accessibilityLabel = isExternalAndDefined
     ? externalAccessiblityLabel
@@ -53,7 +53,7 @@ export const RemoteBanner = ({ from }: { from: RemoteBannerOrigin }) => {
       accessibilityRole={accessibilityRole}
       disabled={!isStoreRedirection && !redirectionUrl}
       leftIcon={ArrowAgain}
-      noRightIcon={isStoreRedirection && isWeb}
+      noRightIcon={isWebStoreBanner}
       onPress={onPress}
       {...accessibilityAndTestId(accessibilityLabel)}>
       <StyledButtonText>{title}</StyledButtonText>
