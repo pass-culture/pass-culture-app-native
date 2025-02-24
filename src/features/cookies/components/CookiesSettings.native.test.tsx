@@ -5,7 +5,7 @@ import { CookiesSettings } from 'features/cookies/components/CookiesSettings'
 import { CookieCategoriesEnum } from 'features/cookies/enums'
 import { analytics } from 'libs/analytics/provider'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render, screen, waitFor } from 'tests/utils'
+import { render, screen, userEvent, waitFor } from 'tests/utils'
 
 jest.mock('features/profile/api/usePatchProfile')
 
@@ -16,6 +16,8 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
     return Component
   }
 })
+
+jest.useFakeTimers()
 
 describe('<CookiesSettings/>', () => {
   it('should disable and check essential cookies switch', async () => {
@@ -34,7 +36,7 @@ describe('<CookiesSettings/>', () => {
 
     const cookieCategory = CookieCategoriesEnum.customization
     const customizationAccordion = screen.getByText(cookiesInfo[cookieCategory].title)
-    fireEvent.press(customizationAccordion)
+    await userEvent.setup().press(customizationAccordion)
 
     await waitFor(() =>
       expect(analytics.logHasOpenedCookiesAccordion).toHaveBeenCalledWith(cookieCategory)

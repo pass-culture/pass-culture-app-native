@@ -4,7 +4,7 @@ import Share, { Social } from 'react-native-share'
 
 import { MessagingApps } from 'features/share/components/MessagingApps/MessagingApps'
 import { ShareContent } from 'libs/share/types'
-import { fireEvent, render, screen } from 'tests/utils'
+import { userEvent, render, screen } from 'tests/utils'
 
 const mockShareSingle = jest.spyOn(Share, 'shareSingle')
 const canOpenURLSpy = jest.spyOn(Linking, 'canOpenURL').mockResolvedValue(false)
@@ -14,6 +14,8 @@ const defaultShareContent: ShareContent = {
   subject: 'title',
   url: 'url',
 }
+const user = userEvent.setup()
+jest.useFakeTimers()
 
 describe('<MessagingApps />', () => {
   it('should use share on other press', async () => {
@@ -27,7 +29,7 @@ describe('<MessagingApps />', () => {
     )
     const otherButton = await screen.findByText('Plus\nd’options')
 
-    fireEvent.press(otherButton)
+    await user.press(otherButton)
 
     expect(mockShare).toHaveBeenCalledTimes(1)
   })
@@ -45,7 +47,7 @@ describe('<MessagingApps />', () => {
 
     const whatsappButton = await screen.findByText('Envoyer sur WhatsApp')
 
-    fireEvent.press(whatsappButton)
+    await user.press(whatsappButton)
 
     expect(mockShareSingle).toHaveBeenCalledWith({
       message: 'message\u00a0:\n',
@@ -66,7 +68,7 @@ describe('<MessagingApps />', () => {
     )
     const otherButton = await screen.findByText('Plus\nd’options')
 
-    fireEvent.press(otherButton)
+    await user.press(otherButton)
 
     expect(mockAnalytics).toHaveBeenCalledTimes(1)
   })

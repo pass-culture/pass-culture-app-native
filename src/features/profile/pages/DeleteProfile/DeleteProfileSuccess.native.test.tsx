@@ -3,7 +3,7 @@ import React from 'react'
 import * as LogoutRoutine from 'features/auth/helpers/useLogoutRoutine'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { navigateFromRef } from 'features/navigation/navigationRef'
-import { fireEvent, render, screen } from 'tests/utils'
+import { userEvent, render, screen } from 'tests/utils'
 
 import { DeleteProfileSuccess } from './DeleteProfileSuccess'
 
@@ -21,6 +21,8 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
+jest.useFakeTimers()
+
 describe('DeleteProfileSuccess component', () => {
   it('should render delete profile success', () => {
     render(<DeleteProfileSuccess />)
@@ -34,10 +36,10 @@ describe('DeleteProfileSuccess component', () => {
     expect(signOutMock).toHaveBeenCalledTimes(1)
   })
 
-  it('should redirect to Home page when clicking on "Retourner à l’accueil" button', () => {
+  it('should redirect to Home page when clicking on "Retourner à l’accueil" button', async () => {
     render(<DeleteProfileSuccess />)
 
-    fireEvent.press(screen.getByText(`Retourner à l’accueil`))
+    await userEvent.setup().press(screen.getByText(`Retourner à l’accueil`))
 
     expect(navigateFromRef).toHaveBeenCalledWith(
       navigateToHomeConfig.screen,

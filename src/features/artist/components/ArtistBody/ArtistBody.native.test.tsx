@@ -11,7 +11,7 @@ import * as useArtistResults from 'features/offer/helpers/useArtistResults/useAr
 import { mockedAlgoliaOffersWithSameArtistResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render, screen } from 'tests/utils'
+import { userEvent, render, screen } from 'tests/utils'
 
 jest.unmock('react-native/Libraries/Animated/createAnimatedComponent')
 jest.mock('libs/firebase/analytics/analytics')
@@ -47,6 +47,8 @@ const mockArtist = {
   bio: 'chanteuse',
 }
 
+jest.useFakeTimers()
+
 describe('<ArtistBody />', () => {
   beforeEach(() => {
     setFeatureFlags()
@@ -66,14 +68,14 @@ describe('<ArtistBody />', () => {
     expect(screen.getAllByText('Céline Dion')[0]).toBeOnTheScreen()
   })
 
-  it('should call goBack when pressing the back button', () => {
+  it('should call goBack when pressing the back button', async () => {
     render(
       reactQueryProviderHOC(
         <ArtistBody offer={offerResponseSnap} subcategory={mockSubcategory} artist={mockArtist} />
       )
     )
     const backButton = screen.getByTestId('Revenir en arrière')
-    fireEvent.press(backButton)
+    await userEvent.setup().press(backButton)
 
     expect(mockGoBack).toHaveBeenCalledTimes(1)
   })

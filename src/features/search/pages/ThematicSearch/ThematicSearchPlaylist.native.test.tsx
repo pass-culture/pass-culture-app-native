@@ -7,7 +7,7 @@ import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { mockBuilder } from 'tests/mockBuilder'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render, screen, act } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 
 jest.mock('@shopify/flash-list', () => {
   const ActualFlashList = jest.requireActual('@shopify/flash-list').FlashList
@@ -28,6 +28,8 @@ const DEFAULT_PLAYLIST_OFFERS = mockBuilder.searchResponseOffer({})
 const DEFAULT_PLAYLIST_TITLE = 'Titre de la playlist'
 const DEFAULT_PLAYLIST = { title: DEFAULT_PLAYLIST_TITLE, offers: DEFAULT_PLAYLIST_OFFERS }
 
+jest.useFakeTimers()
+
 describe('ThematicSearchPlaylist', () => {
   beforeEach(() => {
     setFeatureFlags([])
@@ -38,9 +40,7 @@ describe('ThematicSearchPlaylist', () => {
 
     const offer = await screen.findByText('Harry potter à l’école des sorciers')
 
-    await act(async () => {
-      fireEvent.press(offer)
-    })
+    await userEvent.setup().press(offer)
 
     expect(analytics.logConsultOffer).toHaveBeenNthCalledWith(1, {
       from: 'thematicsearch',
