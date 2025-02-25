@@ -2,7 +2,7 @@ import { useFocusEffect, useNavigation } from '@react-navigation/native'
 import React, { useCallback, useRef, useState } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
 import 'react-native-url-polyfill/auto'
-import WebView, { WebViewNavigation } from 'react-native-webview'
+import { WebView, WebViewNavigation } from 'react-native-webview'
 import { WebViewSource } from 'react-native-webview/lib/WebViewTypes'
 import styled from 'styled-components/native'
 
@@ -99,6 +99,8 @@ export const EduConnectForm = () => {
               source={webViewSource}
               onNavigationStateChange={onNavigationStateChange}
               renderError={renderError}
+              cacheEnabled={false}
+              cacheMode="LOAD_NO_CACHE"
               incognito
             />
           ) : (
