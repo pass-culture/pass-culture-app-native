@@ -1,7 +1,7 @@
 import React, { FunctionComponent, PropsWithChildren } from 'react'
 import styled from 'styled-components/native'
 
-import { getSearchStackConfig } from 'features/navigation/SearchStackNavigator/helpers'
+import { getSearchStackConfig } from 'features/navigation/SearchStackNavigator/searchStackHelpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { FilterCategoriesBannerContainer } from 'features/venueMap/components/FilterBannerContainer/FilterCategoriesBannerContainer'
 import { venuesFilterActions } from 'features/venueMap/store/venuesFilterStore'
