@@ -33,8 +33,13 @@ export function VenueBlock({
     offerAddress: address,
   })
 
-  const { latitude: lat, longitude: lng } = venue.coordinates
-  const distance = getDistance({ lat, lng }, { userLocation, selectedPlace, selectedLocationMode })
+  const distance = venue.coordinates
+    ? getDistance(
+        { lat: venue.coordinates.latitude, lng: venue.coordinates.longitude },
+        { userLocation, selectedPlace, selectedLocationMode }
+      )
+    : null
+
   const shouldDisplayDistanceTag = shouldShowDistances && distance
   const hasVenuePage = !!onSeeVenuePress && !isOfferAddressDifferent
   const TouchableContainer: FunctionComponent<ComponentProps<typeof InternalTouchableLink>> =

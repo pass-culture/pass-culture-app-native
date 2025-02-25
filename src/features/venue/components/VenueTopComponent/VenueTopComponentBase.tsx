@@ -3,6 +3,8 @@ import { View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { VenueResponse, VenueTypeCodeKey } from 'api/gen'
+import { VenueBlockVenue } from 'features/offer/components/OfferVenueBlock/type'
+import { useVenueBlock } from 'features/offer/components/OfferVenueBlock/useVenueBlock'
 import { OpeningHoursStatus } from 'features/venue/components/OpeningHoursStatus/OpeningHoursStatus'
 import { VenueBanner } from 'features/venue/components/VenueBody/VenueBanner'
 import { analytics } from 'libs/analytics/provider'
@@ -30,12 +32,12 @@ export const VenueTopComponentBase: React.FunctionComponent<Props> = ({
   venue,
   onPressBannerImage,
 }) => {
+  const { venueAddress, venueName } = useVenueBlock({
+    venue: getVenue(venue),
+  })
   const { userLocation, selectedPlace, selectedLocationMode } = useLocation()
 
-  const { bannerUrl, publicName, name, address, postalCode, city, bannerMeta } = venue
-
-  const venueFullAddress = formatFullAddress(address, postalCode, city)
-  const venueName = publicName || name
+  const { bannerUrl, bannerMeta } = venue
 
   const distanceToVenue = getDistance(
     { lat: venue.latitude, lng: venue.longitude },
@@ -128,3 +130,7 @@ const MarginContainer = styled.View({
   marginHorizontal: getSpacing(6),
   flexShrink: 1,
 })
+
+export function getVenue(venue: VenueResponse): VenueBlockVenue {
+  return { ...venue, bannerUrl: venue.bannerUrl ?? undefined }
+}

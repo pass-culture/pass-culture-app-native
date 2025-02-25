@@ -3,7 +3,7 @@ import { Coordinates } from 'api/gen'
 export type VenueBlockVenue = {
   address?: string | null
   city?: string | null
-  coordinates: Coordinates
+  coordinates?: Coordinates
   id: number
   name: string
   postalCode?: string | null
