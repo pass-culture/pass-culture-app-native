@@ -18,6 +18,7 @@ concurrency:
 
 env:
   JEST_JUNIT_OUTPUT_DIR: ./reports/junit/
+  
 jobs:
   yarn_test_web:
     name: 'Run Web unit tests'
@@ -107,6 +108,7 @@ jobs:
           restore-keys: |
             v1-coverage-dependency-cache-${{ runner.os }}-${{ github.sha }}-${{ matrix.shard }}
           key: v1-coverage-dependency-cache-${{ runner.os }}-${{ github.sha }}-${{ matrix.shard }}
+
   report-coverage:
     runs-on: ubuntu-22.04
     needs: yarn_test_native
@@ -143,13 +145,14 @@ jobs:
           npx nyc merge coverage coverage/coverage-final.json
           npx nyc report -t coverage --report-dir coverage --reporter=clover --reporter=lcov
           rm coverage/[0-9].json
-      - name: SonarCloud scan
+      - name: SonarCloud scan - App & Webapp
         uses: SonarSource/sonarcloud-github-action@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ steps.sonar_secrets.outputs.SONAR_TOKEN }}
         with:
           projectBaseDir: .
+
   yarn_test_proxy:
     runs-on: ubuntu-22.04
     steps:
@@ -186,13 +189,14 @@ jobs:
         with:
           secrets: |-
             SONAR_TOKEN:passculture-metier-ehp/passculture-app-native-sonar-token
-      - name: SonarCloud scan
+      - name: SonarCloud scan - Proxy
         uses: SonarSource/sonarcloud-github-action@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ steps.sonar_secrets.outputs.SONAR_TOKEN }}
         with:
           projectBaseDir: server
+
   slack_notify:
     runs-on: ubuntu-22.04
     if: ${{ always() && github.ref == 'refs/heads/master' }}
