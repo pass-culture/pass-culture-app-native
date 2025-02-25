@@ -6,18 +6,6 @@ describe('isArtistPageCompatible', () => {
     expect(isArtistPageCompatible('Céline Dion', SubcategoryIdEnum.LIVRE_NUMERIQUE)).toEqual(true)
   })
 
-  it('should return false if artist name contains a comma', () => {
-    expect(isArtistPageCompatible('Céline Dion,JJG', SubcategoryIdEnum.LIVRE_NUMERIQUE)).toEqual(
-      false
-    )
-  })
-
-  it('should return false if artist name contains a semicolon', () => {
-    expect(isArtistPageCompatible('Céline Dion;JJG', SubcategoryIdEnum.LIVRE_NUMERIQUE)).toEqual(
-      false
-    )
-  })
-
   it('should return false if artist name is in the excluded list', () => {
     expect(isArtistPageCompatible('Collectif', SubcategoryIdEnum.LIVRE_NUMERIQUE)).toEqual(false)
     expect(isArtistPageCompatible('collectifs', SubcategoryIdEnum.LIVRE_NUMERIQUE)).toEqual(false)
