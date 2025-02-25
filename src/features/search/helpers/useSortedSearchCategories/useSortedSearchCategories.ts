@@ -41,7 +41,7 @@ export const useSortedSearchCategories = (): ListCategoryButtonProps => {
     dispatch({
       type: 'SET_STATE',
       payload: { ...searchState, offerCategories: [facetFilter] },
-    })
+    }) // we'd rather have it in url params but URL is not the only source of truth. When it is, this dispatch should be removed.
   }
   return categories
     .map<MappingOutput>((category) => ({
