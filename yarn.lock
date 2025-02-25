@@ -13071,7 +13071,7 @@ __metadata:
     react-native-modal: ^13.0.0
     react-native-permissions: ^3.8.0
     react-native-qrcode-svg: ^6.1.2
-    react-native-reanimated: 3.3.0
+    react-native-reanimated: 3.6.3
     react-native-reanimated-carousel: ^4.0.2
     react-native-safe-area-context: 3.4.1
     react-native-screens: ^3.32.0
@@ -29487,9 +29487,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-reanimated@npm:3.3.0":
-  version: 3.3.0
-  resolution: "react-native-reanimated@npm:3.3.0"
+"react-native-reanimated@npm:3.6.3":
+  version: 3.6.3
+  resolution: "react-native-reanimated@npm:3.6.3"
   dependencies:
     "@babel/plugin-transform-object-assign": ^7.16.7
     "@babel/preset-typescript": ^7.16.7
@@ -29504,7 +29504,7 @@ __metadata:
     "@babel/plugin-transform-template-literals": ^7.0.0-0
     react: "*"
     react-native: "*"
-  checksum: 58096b28caef8af261c446eccb91a5a74caa303ba3520b1a2767c5b922b3d19b9a58612ab9b517a959c1b562b2e76e4cf4a8ffb21136960ed63375f6a4c37d1e
+  checksum: 5094beff09bbeaa13101aca9dfb7be7749ccdea72f240751a2a3f23a354cfc6fdf701549fa6c5dff32d03dc1ed4e404a29db3729519c7098d94ae6c8821a32bd
   languageName: node
   linkType: hard
 
