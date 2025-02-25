@@ -26,7 +26,7 @@ export const fetchMultipleOffers = async ({
       ...buildHitsPerPage(params.offerParams.hitsPerPage),
       ...buildOfferSearchParameters(params.offerParams, params.locationParams, isUserUnderage),
       attributesToHighlight: [], // We disable highlighting because we don't need it
-      attributesToRetrieve: [...offerAttributesToRetrieve, 'offer.isHeadline'],
+      attributesToRetrieve: [...offerAttributesToRetrieve, 'offer.isHeadline', 'artists'],
     },
   }))
 

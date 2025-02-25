@@ -13,7 +13,7 @@ import {
 } from 'api/gen'
 import { DATE_FILTER_OPTIONS } from 'features/search/enums'
 import { BooksNativeCategoriesEnum } from 'features/search/types'
-import { Venue } from 'features/venue/types'
+import { Artist, Venue } from 'features/venue/types'
 import { FACETS_FILTERS_ENUM } from 'libs/algolia/enums/facetsEnums'
 import { BuildLocationParameterParams } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildLocationParameter'
 import { VenueTypeCode } from 'libs/parsers/venueType'
@@ -62,6 +62,7 @@ export interface AlgoliaOffer<T = HitOffer> {
     postalCode?: string
     city?: string
   }
+  artists?: Artist[]
 }
 
 interface AlgoliaFacetsAnalyticsKey {
