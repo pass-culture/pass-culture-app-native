@@ -1,3 +1,4 @@
+import { ReactNativeOptions } from '@sentry/react-native'
 import { Platform } from 'react-native'
 import CodePush from 'react-native-code-push'
 
@@ -28,18 +29,18 @@ export async function getSentryConfig() {
     environment: __DEV__ ? 'development' : env.ENV,
     release,
     dist,
-    tracesSampleRate: env.SENTRY_TRACES_SAMPLE_RATE as unknown as number,
-    sampleRate: env.SENTRY_SAMPLE_RATE as unknown as number,
+    tracesSampleRate: Number(env.SENTRY_TRACES_SAMPLE_RATE || 1),
+    sampleRate: Number(env.SENTRY_SAMPLE_RATE || 1),
     attachScreenshot: true,
     integrations: [new ReactNativeTracing({ routingInstrumentation })],
     _experiments: {
       // profilesSampleRate is relative to tracesSampleRate.
       // Here, we'll capture profiles for 1% of transactions.
-      profilesSampleRate: env.SENTRY_PROFILES_SAMPLE_RATE as unknown as number,
+      profilesSampleRate: Number(env.SENTRY_PROFILES_SAMPLE_RATE || 1),
     },
     enableAppHangTracking: false,
     ignoreErrors: [
       'Non-Error promise rejection captured with value: Timeout', // Sentry Issue: APPLICATION-NATIVE-77ZQ
     ],
-  }
+  } satisfies ReactNativeOptions
 }
