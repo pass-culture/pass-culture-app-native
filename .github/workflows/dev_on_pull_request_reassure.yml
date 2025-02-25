@@ -8,5 +8,19 @@ jobs:
   test-performance:
     runs-on: ubuntu-22.04
     steps:
+      - name: Enable Corepack
+        run: corepack enable
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+      - name: Install dependencies
+        run: yarn install
+      - name: Run performance testing script
+        run: yarn test:perf
+      - name: Run Danger.js to publish scores in PR
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: yarn danger ci
       - name: Check if render count increased, fail if so
-        run: echo "PERF"
+        run: ./scripts/reassure_test_check.sh

@@ -9,7 +9,7 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
-describe('Accessibility component', () => {
+describe('Category component', () => {
   it('should render correctly', () => {
     expect(render(<Accessibility />)).toMatchSnapshot()
   })

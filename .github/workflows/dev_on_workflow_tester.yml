@@ -58,7 +58,7 @@ jobs:
           restore-keys: |
             v1-yarn-test-web-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
           bucket: ${{ inputs.CACHE_BUCKET_NAME }}
-      - run: yarn test:unit:web Sign --shard=${{ matrix.shard }}/${{ strategy.job-total }}
+      - run: yarn test:unit:web:ci --shard=${{ matrix.shard }}/${{ strategy.job-total }}
 
       - name: Rename allure reports folder
         if: github.ref == 'refs/heads/master'
@@ -113,7 +113,7 @@ jobs:
           key: v1-yarn-test-native-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
           restore-keys: |
             v1-yarn-test-native-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
-      - run: yarn test:unit Sign --maxWorkers=6 --coverage --ci --reporters=default --reporters=jest-junit --shard=${{ matrix.shard }}/${{ strategy.job-total }}
+      - run: yarn test:unit:ci --shard=${{ matrix.shard }}/${{ strategy.job-total }}
       - run: mv coverage/coverage-final.json coverage/${{matrix.shard}}.json
 
       - name: Rename allure reports folder
