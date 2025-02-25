@@ -14,6 +14,7 @@ module.exports = {
     'android.jsx',
     'android.js',
   ],
+  testEnvironment: process.env.RUN_ALLURE === 'true' ? 'allure-jest/node' : undefined,
   testEnvironmentOptions: { customExportConditions: [''] },
   moduleNameMapper: {
     '^__mocks__(.*)$': '<rootDir>/__mocks__$1',
