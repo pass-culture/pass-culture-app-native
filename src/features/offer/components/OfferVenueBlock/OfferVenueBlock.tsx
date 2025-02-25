@@ -13,7 +13,7 @@ import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { Separator } from 'ui/components/Separator'
 import { Duplicate } from 'ui/svg/icons/Duplicate'
 import { EditPen } from 'ui/svg/icons/EditPen'
-import { getSpacing, Spacer, TypoDS } from 'ui/theme'
+import { getSpacing, TypoDS } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type Props = {
@@ -41,11 +41,10 @@ export function OfferVenueBlock({
   const isCinema = offer.subcategoryId === SubcategoryIdEnum.SEANCE_CINE
 
   return (
-    <Container>
+    <Wrapper>
       <TypoDS.Title3 {...getHeadingAttrs(2)}>{title}</TypoDS.Title3>
-      <Spacer.Column numberOfSpaces={4} />
 
-      <React.Fragment>
+      <Container>
         <VenueBlock
           venue={venueBlockVenue}
           address={venueBlockAddress}
@@ -53,24 +52,19 @@ export function OfferVenueBlock({
         />
 
         {onChangeVenuePress ? (
-          <React.Fragment>
-            <Spacer.Column numberOfSpaces={4} />
+          <Container>
             <ButtonSecondaryBlack
               icon={EditPen}
               wording={isCinema ? 'Changer de cinéma' : 'Changer le lieu de retrait'}
               onPress={onChangeVenuePress}
             />
-          </React.Fragment>
+          </Container>
         ) : null}
-      </React.Fragment>
+      </Container>
 
       {isCinema ? null : (
         <Fragment>
-          <Spacer.Column numberOfSpaces={6} />
-          <Separator.Horizontal />
-          <Spacer.Column numberOfSpaces={4} />
-
-          <Spacer.Column numberOfSpaces={2} />
+          <StyledHorizontalSeparator />
           <TertiaryButtonWrapper>
             <ButtonTertiaryBlack
               inline
@@ -81,8 +75,7 @@ export function OfferVenueBlock({
           </TertiaryButtonWrapper>
 
           {onSeeItineraryPress ? (
-            <React.Fragment>
-              <Spacer.Column numberOfSpaces={6} />
+            <ItineraryContainer>
               <SeeItineraryButton
                 externalNav={{
                   url: getGoogleMapsItineraryUrl(venueAddress),
@@ -90,18 +83,28 @@ export function OfferVenueBlock({
                 }}
                 onPress={onSeeItineraryPress}
               />
-            </React.Fragment>
+            </ItineraryContainer>
           ) : null}
         </Fragment>
       )}
-    </Container>
+    </Wrapper>
   )
 }
 
-const Container = styled(View)(({ theme }) => ({
+const Wrapper = styled(View)(({ theme }) => ({
   marginHorizontal: theme.isDesktopViewport ? undefined : getSpacing(6),
 }))
 
 const TertiaryButtonWrapper = styled.View({
   alignItems: 'flex-start',
 })
+
+const ItineraryContainer = styled.View({
+  marginTop: getSpacing(6),
+})
+
+const StyledHorizontalSeparator = styled(Separator.Horizontal)({
+  marginVertical: getSpacing(6),
+})
+
+const Container = styled.View({ marginTop: getSpacing(4) })

@@ -1,4 +1,4 @@
-import React, { Fragment, FunctionComponent } from 'react'
+import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
 import { VenueResponse } from 'api/gen'
@@ -6,7 +6,7 @@ import { ContactBlock } from 'features/venue/components/ContactBlock/ContactBloc
 import { NoInformationPlaceholder } from 'features/venue/components/Placeholders/NoInformationPlaceholder'
 import { AccessibilityBlock } from 'shared/accessibility/AccessibilityBlock'
 import { Separator } from 'ui/components/Separator'
-import { Spacer, TypoDS } from 'ui/theme'
+import { TypoDS, getSpacing } from 'ui/theme'
 
 import { OpeningHours } from '../OpeningHours/OpeningHours'
 
@@ -60,31 +60,32 @@ export const PracticalInformation: FunctionComponent<Props> = ({ venue }) => {
 
   return (
     <Container>
-      <Spacer.Column numberOfSpaces={2} />
       {sectionsToDisplay.map((section, index) => (
         <React.Fragment key={`${section.title}-${index}`}>
           <Section title={section.title}>{section.body}</Section>
           <Separator.Horizontal />
         </React.Fragment>
       ))}
-      <Spacer.Column numberOfSpaces={2} />
     </Container>
   )
 }
 
 const Container = styled.View(({ theme }) => ({
   marginHorizontal: theme.contentPage.marginHorizontal,
+  marginVertical: getSpacing(2),
 }))
 
 const Section: FunctionComponent<{ title: string; children?: React.JSX.Element }> = ({
   title,
   children,
 }) => (
-  <Fragment>
-    <Spacer.Column numberOfSpaces={4} />
+  <StyledViewGap>
     <TypoDS.BodyAccentXs>{title}</TypoDS.BodyAccentXs>
-    <Spacer.Column numberOfSpaces={4} />
     {children}
-    <Spacer.Column numberOfSpaces={4} />
-  </Fragment>
+  </StyledViewGap>
 )
+
+const StyledViewGap = styled.View({
+  marginVertical: getSpacing(4),
+  gap: getSpacing(4),
+})
