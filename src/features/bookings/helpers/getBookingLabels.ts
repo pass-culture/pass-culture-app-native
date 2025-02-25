@@ -13,38 +13,31 @@ import {
   isTomorrow,
 } from 'libs/parsers/formatDates'
 
-function getDateLabel(booking: Booking, properties: BookingProperties): string {
+const getDateLabel = (booking: Booking, properties: BookingProperties): string => {
   if (properties.isPermanent) return 'Permanent'
 
   if (properties.hasActivationCode) {
     return getBookingLabelForActivationCode(booking)
   }
 
-  const {
-    stock: {
-      beginningDatetime,
-      offer: { venue },
-    },
-  } = booking
-
-  if (properties.isEvent) {
-    if (!beginningDatetime) return ''
-    const timezonedDate = getTimeZonedDate(beginningDatetime, venue.timezone)
-    const day = formatToCompleteFrenchDateTime(timezonedDate, false)
-    return `Le ${day}`
-  }
+  if (properties.isEvent) 
+    return getLabel(booking, booking.stock.beginningDatetime, booking.stock.offer.venue.timezone, 'Le')
+  
 
   if (properties.isPhysical) {
-    if (!booking.expirationDate) return ''
-    const dateLimit = formatToCompleteFrenchDate(
-      getTimeZonedDate(booking.expirationDate, venue.timezone),
-      false
-    )
-    return `À retirer avant le ${dateLimit}`
+    return getLabel(booking, booking.expirationDate, booking.stock.offer.venue.timezone, 'À retirer avant le')
   }
 
   return ''
 }
+
+const getPropertyLabel = ( booking: Booking, date: string, timezone: string, prefix: string ) =>
+  `${prefix} ${formatToCompleteFrenchDateTime(getTimeZonedDate(date, timezone), false)}`
+
+
+const getLabel = (booking: Booking, date: string | null | undefined, timezone: string, prefix: string) =>
+  !!date ? getPropertyLabel(booking, date, timezone, prefix) : ''
+
 
 function getWithdrawLabel(booking: Booking, properties: BookingProperties): string {
   if (properties.isEvent)
