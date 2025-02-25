@@ -1,9 +1,6 @@
 name: '0 [on_workflow] Dev on workflow call e2e iOS'
 
 on:
-  push:
-    branches:
-      - PC-34693
   workflow_call:
     secrets:
       GCP_EHP_SERVICE_ACCOUNT:
