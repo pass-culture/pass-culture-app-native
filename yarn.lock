@@ -13072,7 +13072,7 @@ __metadata:
     react-native-permissions: ^3.8.0
     react-native-qrcode-svg: ^6.1.2
     react-native-reanimated: 3.3.0
-    react-native-reanimated-carousel: ^3.5.1
+    react-native-reanimated-carousel: ^4.0.2
     react-native-safe-area-context: 3.4.1
     react-native-screens: ^3.32.0
     react-native-share: ^8.2.2
@@ -29475,15 +29475,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-reanimated-carousel@npm:^3.5.1":
-  version: 3.5.1
-  resolution: "react-native-reanimated-carousel@npm:3.5.1"
+"react-native-reanimated-carousel@npm:^4.0.2":
+  version: 4.0.2
+  resolution: "react-native-reanimated-carousel@npm:4.0.2"
   peerDependencies:
-    react: ">=16.8.0"
-    react-native: ">=0.6.0"
-    react-native-gesture-handler: ">=2.0.0"
+    react: ">=18.0.0"
+    react-native: ">=0.70.3"
+    react-native-gesture-handler: ">=2.9.0"
     react-native-reanimated: ">=3.0.0"
-  checksum: a2eb640453fa35f659c1fb5575f903364d513fb7f621104afa14fee2284132674dfaf0d87cb29e8c119f7513094a5967d5193f3dfa24043af167c6f26abcfe73
+  checksum: 1f3d0434410a9e365420d2aa029d7af087a7dee6edd9be62019cbb3e14b13bb25a5ea4790fcc9a158208b027a3e7203ff02e62184753e6c3cb692392f8dcfdf4
   languageName: node
   linkType: hard
 
