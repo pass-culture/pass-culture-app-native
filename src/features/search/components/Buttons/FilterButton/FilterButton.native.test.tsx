@@ -1,11 +1,11 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
+import { getNavigateToConfig } from 'features/navigation/SearchStackNavigator/helpers'
+import { SearchView } from 'features/search/types'
 import { userEvent, render, screen } from 'tests/utils'
 
 import { FilterButton } from './FilterButton'
-import { getNavigateToConfig } from 'features/navigation/SearchStackNavigator/helpers'
-import { SearchView } from 'features/search/types'
 
 const user = userEvent.setup()
 jest.useFakeTimers()
