@@ -117,7 +117,8 @@ ts-node --compilerOptions '{"module": "commonjs"}' ./scripts/enableNativeAppReca
 # shellcheck disable=SC2086
 maestro "$target" \
   --env MAESTRO_APP_ID="$app_id" \
-  --env MAESTRO_VALID_EMAIL="dev-tests-e2e@passculture.team" \
+  --env MAESTRO_VALID_IOS_EMAIL="dev-tests-e2e-ios@passculture.team" \
+  --env MAESTRO_VALID_ANDROID_EMAIL="dev-tests-e2e-android@passculture.team" \
   --env MAESTRO_INVALID_EMAIL="dev-tests-e2e-invalid@passculture.team" \
   --env MAESTRO_UNREGISTERED_EMAIL="dev-tests-unregistered+e2e@passculture.team" \
   --env MAESTRO_MOCK_ANALYTICS_SERVER="http://localhost:$MOCK_ANALYTICS_SERVER_PORT" \

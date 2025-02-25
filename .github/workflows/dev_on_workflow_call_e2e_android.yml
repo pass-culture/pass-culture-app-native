@@ -84,12 +84,21 @@ jobs:
       - name: Build android apk
         run: cd android && for i in {1..3}; do ENVFILE=.env.staging ./gradlew assembleDebug && break || sleep 2; done
 
-      - name: Run Maestro Tests
+      - name: Generate Robin Android upload name
+        id: generate_name
+        run: |
+          DATE=$(date +"%d-%m-%Y")
+          COMMIT_HASH=$(git rev-parse --short=8 HEAD)
+          CUSTOM_NAME="[Nightly] - ${DATE} - ${COMMIT_HASH}"
+          echo "CUSTOM_NAME=$CUSTOM_NAME" >> $GITHUB_OUTPUT
+
+      - name: Upload and run android tests with Robin
         uses: mobile-dev-inc/action-maestro-cloud@v1.9.6
         with:
           api-key: ${{ steps.secrets.outputs.ROBIN_API_KEY }}
           project-id: proj_01javz1ncreqb9dcshv3y4da44
           app-file: android/app/build/outputs/apk/staging/debug/app-staging-debug.apk
+          name: ${{ steps.generate_name.outputs.CUSTOM_NAME }}
           device-locale: fr_FR
           android-api-level: 34
           workspace: .maestro/tests/
@@ -97,10 +106,10 @@ jobs:
           env: |
             MAESTRO_APP_ID=app.passculture.staging
             MAESTRO_PASSWORD=${{ steps.secrets.outputs.MAESTRO_PASSWORD }}
-            MAESTRO_VALID_EMAIL=dev-tests-e2e@passculture.team
+            MAESTRO_VALID_IOS_EMAIL=dev-tests-e2e-ios@passculture.team
+            MAESTRO_VALID_ANDROID_EMAIL=dev-tests-e2e-android@passculture.team
             MAESTRO_INVALID_EMAIL=dev-tests-e2e-invalid@passculture.team
             MAESTRO_UNREGISTERED_EMAIL=dev-tests-unregistered+e2e@passculture.team
             MAESTRO_MOCK_ANALYTICS_SERVER=http://localhost:$MOCK_ANALYTICS_SERVER_PORT
-            MAESTRO_NUMBER_PHONE=0607080910
             MAESTRO_RUN_TRACKING_TESTS=false
             MAESTRO_RUN_CLOUD_COMMANDS=true

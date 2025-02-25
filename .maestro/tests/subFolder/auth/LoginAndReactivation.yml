@@ -5,7 +5,7 @@ appId: ${MAESTRO_APP_ID}
 
 - assertVisible: 'Connecte-toi'
 - tapOn: 'tonadresse@email.com'
-- inputText: ${MAESTRO_VALID_EMAIL}
+- runFlow: InputEmail.yml
 - tapOn: 'Ton mot de passe'
 - inputText: ${MAESTRO_PASSWORD}
 - hideKeyboard
