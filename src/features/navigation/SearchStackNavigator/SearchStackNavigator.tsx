@@ -12,7 +12,7 @@ import { SearchView } from 'features/search/types'
 export const SearchStackNavigator = () => {
   return (
     <SearchStack.Navigator
-      initialRouteName={SearchView.Filter}
+      initialRouteName={SearchView.Landing}
       screenOptions={SEARCH_STACK_NAVIGATOR_SCREEN_OPTIONS}>
       {routes.map(({ name, component }) => (
         <SearchStack.Screen name={name} key={name} component={component} />
