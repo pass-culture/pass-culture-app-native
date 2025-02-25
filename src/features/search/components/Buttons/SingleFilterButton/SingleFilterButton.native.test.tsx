@@ -1,10 +1,13 @@
 import React from 'react'
 
 import { SingleFilterButton } from 'features/search/components/Buttons/SingleFilterButton/SingleFilterButton'
-import { fireEvent, render, screen } from 'tests/utils'
+import { userEvent, render, screen } from 'tests/utils'
+
+const user = userEvent.setup()
+jest.useFakeTimers()
 
 describe('SingleFilterButton', () => {
-  it('should execute onPress function when the button is clicked', () => {
+  it('should execute onPress function when the button is clicked', async () => {
     const mockedOnPress = jest.fn()
 
     render(
@@ -17,7 +20,7 @@ describe('SingleFilterButton', () => {
     )
 
     const button = screen.getByTestId('CD, vinyles, musique en ligne\u00a0: Filtre sélectionné')
-    fireEvent.press(button)
+    await user.press(button)
 
     expect(mockedOnPress).toHaveBeenCalledTimes(1)
   })

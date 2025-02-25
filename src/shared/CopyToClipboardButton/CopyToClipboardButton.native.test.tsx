@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { CopyToClipboardButton } from 'shared/CopyToClipboardButton/CopyToClipboardButton'
-import { act, fireEvent, render, screen } from 'tests/utils'
+import { userEvent, render, screen } from 'tests/utils'
 
 const mockCopyToClipboard = jest.fn()
 jest.mock('libs/useCopyToClipboard/useCopyToClipboard', () => ({
@@ -11,6 +11,9 @@ jest.mock('libs/useCopyToClipboard/useCopyToClipboard', () => ({
 const successSnackBarMessage = 'Copié avec succès\u00a0!'
 const wording = 'Copier l’adresse'
 const textToCopy = 'Le sucre, 69002 LYON'
+
+const user = userEvent.setup()
+jest.useFakeTimers()
 
 describe('CopyToClipboardButton', () => {
   it('should show right text', async () => {
@@ -25,9 +28,7 @@ describe('CopyToClipboardButton', () => {
     renderCopyToClipboardButton()
     const button = screen.getByText(wording)
 
-    await act(async () => {
-      fireEvent.press(button)
-    })
+    await user.press(button)
 
     expect(mockCopyToClipboard).toHaveBeenCalledTimes(1)
   })

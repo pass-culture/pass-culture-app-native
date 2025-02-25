@@ -1,12 +1,15 @@
 import React from 'react'
 import { Text } from 'react-native'
 
-import { fireEvent, render, screen } from 'tests/utils'
+import { userEvent, render, screen } from 'tests/utils'
 
 import { Touchable } from './Touchable'
 
+const user = userEvent.setup()
+jest.useFakeTimers()
+
 describe('<Touchable />', () => {
-  it('should execute callback on press', () => {
+  it('should execute callback on press', async () => {
     const handleClick = jest.fn()
     render(
       <Touchable onPress={handleClick} accessibilityLabel="accessibility label">
@@ -15,7 +18,7 @@ describe('<Touchable />', () => {
     )
 
     const button = screen.getByRole('button')
-    fireEvent.press(button)
+    await user.press(button)
 
     expect(handleClick).toHaveBeenCalledTimes(1)
   })

@@ -6,7 +6,7 @@ import { VenueHeader } from 'features/venue/components/VenueHeader/VenueHeader'
 import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
 import { analytics } from 'libs/analytics/provider'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render, screen } from 'tests/utils'
+import { act, userEvent, render, screen } from 'tests/utils'
 
 jest.unmock('react-native/Libraries/Animated/createAnimatedComponent')
 jest.mock('features/venue/api/useVenue')
@@ -21,6 +21,8 @@ jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
 })
 
 jest.mock('libs/firebase/analytics/analytics')
+const user = userEvent.setup()
+jest.useFakeTimers()
 
 describe('<VenueHeader />', () => {
   it('should render all icons', () => {
@@ -30,9 +32,9 @@ describe('<VenueHeader />', () => {
     expect(screen.getByTestId('animated-icon-share')).toBeOnTheScreen()
   })
 
-  it('should goBack when we press on the back button', () => {
+  it('should goBack when we press on the back button', async () => {
     renderVenueHeader()
-    fireEvent.press(screen.getByTestId('animated-icon-back'))
+    await user.press(screen.getByTestId('animated-icon-back'))
 
     expect(mockGoBack).toHaveBeenCalledTimes(1)
   })
@@ -56,11 +58,11 @@ describe('<VenueHeader />', () => {
     expect(screen.getByTestId('venueHeaderName').props.style.opacity).toBe(1)
   })
 
-  it('should log analytics when clicking on the share button', () => {
+  it('should log analytics when clicking on the share button', async () => {
     renderVenueHeader()
 
     const shareButton = screen.getByLabelText('Partager')
-    fireEvent.press(shareButton)
+    await user.press(shareButton)
 
     expect(analytics.logShare).toHaveBeenNthCalledWith(1, {
       type: 'Venue',

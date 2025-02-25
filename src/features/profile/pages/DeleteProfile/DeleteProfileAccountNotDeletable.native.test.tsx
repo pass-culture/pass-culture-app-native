@@ -3,7 +3,7 @@ import React from 'react'
 import { navigate } from '__mocks__/@react-navigation/native'
 import * as OpenUrlAPI from 'features/navigation/helpers/openUrl'
 import { env } from 'libs/environment/fixtures'
-import { fireEvent, render, screen } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 
 import { DeleteProfileAccountNotDeletable } from './DeleteProfileAccountNotDeletable'
 
@@ -16,6 +16,8 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
     return Component
   }
 })
+const user = userEvent.setup()
+jest.useFakeTimers()
 
 describe('DeleteProfileAccountNotDeletable', () => {
   it('should render correctly', () => {
@@ -28,7 +30,7 @@ describe('DeleteProfileAccountNotDeletable', () => {
     render(<DeleteProfileAccountNotDeletable />)
 
     const button = screen.getByText('Retourner sur mon profil')
-    fireEvent.press(button)
+    await user.press(button)
 
     expect(navigate).toHaveBeenCalledWith('TabNavigator', { params: undefined, screen: 'Profile' })
   })
@@ -37,16 +39,16 @@ describe('DeleteProfileAccountNotDeletable', () => {
     render(<DeleteProfileAccountNotDeletable />)
 
     const button = screen.getByText('Désactiver mes notifications')
-    fireEvent.press(button)
+    await user.press(button)
 
     expect(navigate).toHaveBeenCalledWith('NotificationsSettings')
   })
 
-  it('should open FAQ link when clicking on "consultant cette page" button', () => {
+  it('should open FAQ link when clicking on "consultant cette page" button', async () => {
     render(<DeleteProfileAccountNotDeletable />)
 
     const faqButton = screen.getByText('consultant cette page.')
-    fireEvent.press(faqButton)
+    await user.press(faqButton)
 
     expect(openUrl).toHaveBeenNthCalledWith(1, env.FAQ_LINK_RIGHT_TO_ERASURE, undefined, true)
   })

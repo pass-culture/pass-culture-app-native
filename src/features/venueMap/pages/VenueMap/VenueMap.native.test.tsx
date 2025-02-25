@@ -106,7 +106,8 @@ describe('<VenueMap />', () => {
   it('Should handle go back action when pressing go back button', async () => {
     render(reactQueryProviderHOC(<VenueMap />))
 
-    await user.press(await screen.findByTestId('Revenir en arrière'))
+    const goBackButton = screen.getByTestId('Revenir en arrière')
+    await user.press(goBackButton)
 
     expect(mockGoBack).toHaveBeenCalledTimes(1)
   })
@@ -115,7 +116,8 @@ describe('<VenueMap />', () => {
     const spy = jest.spyOn(venueMapStore, 'setVenueTypeCode')
     render(reactQueryProviderHOC(<VenueMap />))
 
-    await user.press(await screen.findByTestId('Revenir en arrière'))
+    const goBackButton = screen.getByTestId('Revenir en arrière')
+    await user.press(goBackButton)
 
     await waitFor(() => expect(spy).toHaveBeenNthCalledWith(1, null))
   })

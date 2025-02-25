@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { fireEvent, render, screen } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 
 import { DeleteProfileEmailHacked } from './DeleteProfileEmailHacked'
 
@@ -10,6 +10,9 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
     return Component
   }
 })
+
+const user = userEvent.setup()
+jest.useFakeTimers()
 
 describe('DeleteProfileEmailHacked', () => {
   it('should render correctly', () => {
@@ -22,7 +25,7 @@ describe('DeleteProfileEmailHacked', () => {
     render(<DeleteProfileEmailHacked />)
     const button = screen.getByText('Ne pas sécuriser mon compte')
 
-    fireEvent.press(button)
+    await user.press(button)
 
     expect(navigate).toHaveBeenCalledWith('TabNavigator', { params: undefined, screen: 'Profile' })
   })
@@ -31,7 +34,7 @@ describe('DeleteProfileEmailHacked', () => {
     render(<DeleteProfileEmailHacked />)
     const button = screen.getByText('Modifier mon adresse e-mail')
 
-    fireEvent.press(button)
+    await user.press(button)
 
     expect(navigate).toHaveBeenCalledWith('ChangeEmail')
   })
@@ -40,7 +43,7 @@ describe('DeleteProfileEmailHacked', () => {
     render(<DeleteProfileEmailHacked />)
     const button = screen.getByText('Suspendre mon compte')
 
-    fireEvent.press(button)
+    await user.press(button)
 
     expect(navigate).toHaveBeenCalledWith('SuspendAccountConfirmationWithoutAuthentication')
   })

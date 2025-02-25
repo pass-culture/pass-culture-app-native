@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { fireEvent, render, screen } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 
 import { MarketingModal } from './MarketingModal'
 
@@ -16,6 +16,8 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
     return Component
   }
 })
+const user = userEvent.setup()
+jest.useFakeTimers()
 
 describe('MarketingModal', () => {
   it('should render correctly', () => {
@@ -27,7 +29,7 @@ describe('MarketingModal', () => {
   it('should call onBackdropPress when clicking outside modal', async () => {
     render(<MarketingModal {...props} />)
     const clickAwayArea = screen.getByTestId('clickaway-area')
-    fireEvent.press(clickAwayArea)
+    await user.press(clickAwayArea)
 
     expect(props.onBackdropPress).toHaveBeenCalledTimes(1)
   })

@@ -2,11 +2,14 @@ import React from 'react'
 
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { analytics } from 'libs/analytics/provider'
-import { fireEvent, render, screen, waitFor } from 'tests/utils'
+import { render, screen, userEvent, waitFor } from 'tests/utils'
 
 import { SocialNetworkCard } from './SocialNetworkCard'
 
 jest.mock('libs/firebase/analytics/analytics')
+
+const user = userEvent.setup()
+jest.useFakeTimers()
 
 describe('SocialNetworkCard', () => {
   it('should openUrl onClick and track analytics', async () => {
@@ -16,7 +19,7 @@ describe('SocialNetworkCard', () => {
     render(<SocialNetworkCard network="facebook" />)
 
     const button = screen.getByText('Facebook')
-    fireEvent.press(button)
+    user.press(button)
 
     await waitFor(() => {
       expect(analytics.logClickSocialNetwork).toHaveBeenCalledWith('Facebook')
@@ -31,7 +34,7 @@ describe('SocialNetworkCard', () => {
     render(<SocialNetworkCard network="x" />)
 
     const button = screen.getByText('X')
-    fireEvent.press(button)
+    user.press(button)
 
     await waitFor(() => {
       expect(analytics.logClickSocialNetwork).toHaveBeenCalledWith('Twitter')

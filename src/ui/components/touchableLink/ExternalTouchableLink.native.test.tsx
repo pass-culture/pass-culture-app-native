@@ -7,7 +7,7 @@ import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { mockedFullAddress } from 'libs/address/fixtures/mockedFormatFullAddress'
 import { WEBAPP_V2_URL } from 'libs/environment/useWebAppUrl'
 import { getGoogleMapsItineraryUrl } from 'libs/itinerary/openGoogleMapsItinerary'
-import { render, fireEvent, screen, waitFor } from 'tests/utils'
+import { render, screen, waitFor, userEvent } from 'tests/utils'
 import { SocialNetworkIconsMap } from 'ui/components/socials/types'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 
@@ -34,6 +34,9 @@ const externalNav = {
 
 jest.mock('libs/firebase/analytics/analytics')
 
+const user = userEvent.setup()
+jest.useFakeTimers()
+
 describe('<ExternalTouchableLink />', () => {
   describe('External Navigation', () => {
     it('should open url with expected parameters (nominal case)', async () => {
@@ -43,7 +46,7 @@ describe('<ExternalTouchableLink />', () => {
         </ExternalTouchableLink>
       )
 
-      fireEvent.press(screen.getByText(linkText))
+      user.press(screen.getByText(linkText))
 
       await waitFor(() => {
         expect(openUrl).toHaveBeenCalledWith(externalNav.url, externalNav.params, true)
@@ -61,7 +64,7 @@ describe('<ExternalTouchableLink />', () => {
         </ExternalTouchableLink>
       )
 
-      fireEvent.press(screen.getByText(linkText))
+      user.press(screen.getByText(linkText))
 
       await waitFor(() => {
         expect(mockNavigateToItinerary).toHaveBeenCalledWith(mockedFullAddress)
@@ -78,7 +81,7 @@ describe('<ExternalTouchableLink />', () => {
         </ExternalTouchableLink>
       )
 
-      fireEvent.press(screen.getByText(linkText))
+      user.press(screen.getByText(linkText))
 
       await waitFor(() => {
         expect(openUrl).toHaveBeenCalledWith(WEBAPP_V2_URL, undefined, true)
@@ -96,7 +99,7 @@ describe('<ExternalTouchableLink />', () => {
         </ExternalTouchableLink>
       )
 
-      fireEvent.press(screen.getByText(linkText))
+      user.press(screen.getByText(linkText))
 
       await waitFor(() => {
         expect(navigateFromRef).toHaveBeenCalledWith(...homeNavConfig)

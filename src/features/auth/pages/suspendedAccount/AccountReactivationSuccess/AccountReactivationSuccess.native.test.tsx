@@ -2,7 +2,7 @@ import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
-import { fireEvent, render, screen } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 
 import { AccountReactivationSuccess } from './AccountReactivationSuccess'
 
@@ -13,6 +13,8 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
     return Component
   }
 })
+const user = userEvent.setup()
+jest.useFakeTimers()
 
 describe('<AccountReactivationSuccess />', () => {
   it('should match snapshot', () => {
@@ -21,11 +23,11 @@ describe('<AccountReactivationSuccess />', () => {
     expect(screen).toMatchSnapshot()
   })
 
-  it('should go to home page when clicking on go to home button', () => {
+  it('should go to home page when clicking on go to home button', async () => {
     render(<AccountReactivationSuccess />)
 
     const homeButton = screen.getByText('Découvrir le catalogue')
-    fireEvent.press(homeButton)
+    await user.press(homeButton)
 
     expect(navigate).toHaveBeenNthCalledWith(
       1,

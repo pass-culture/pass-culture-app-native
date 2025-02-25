@@ -1,12 +1,15 @@
 import React from 'react'
 import { TextInput as RNTextInput } from 'react-native'
 
-import { fireEvent, render, screen } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 
 import { PasswordInput } from './PasswordInput'
 
+const user = userEvent.setup()
+jest.useFakeTimers()
+
 describe('<PasswordInput />', () => {
-  it('should change accessibilityLabel when password is hidden or it was displayed', () => {
+  it('should change accessibilityLabel when password is hidden or it was displayed', async () => {
     render(<PasswordInput />)
 
     expect(screen.getByLabelText('Afficher le mot de passe')).toBeOnTheScreen()
@@ -14,7 +17,7 @@ describe('<PasswordInput />', () => {
 
     const switchPasswordVisibilityButton = screen.getByTestId('Afficher le mot de passe')
 
-    fireEvent.press(switchPasswordVisibilityButton)
+    await user.press(switchPasswordVisibilityButton)
 
     expect(screen.getByLabelText('Cacher le mot de passe')).toBeOnTheScreen()
     expect(screen.queryByLabelText('Afficher le mot de passe')).not.toBeOnTheScreen()

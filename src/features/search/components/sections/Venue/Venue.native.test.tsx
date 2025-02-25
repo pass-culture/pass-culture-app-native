@@ -2,7 +2,7 @@ import React from 'react'
 
 import { Venue } from 'features/search/components/sections/Venue/Venue'
 import { initialSearchState } from 'features/search/context/reducer'
-import { act, fireEvent, render, screen } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 
 let mockSearchState = initialSearchState
 
@@ -18,6 +18,9 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
     return Component
   }
 })
+
+const user = userEvent.setup()
+jest.useFakeTimers()
 
 describe('Venue component', () => {
   it('should display the venue label when a venue is selected', async () => {
@@ -36,9 +39,7 @@ describe('Venue component', () => {
     })
     const searchVenueButton = screen.getByTestId('FilterRow')
 
-    await act(async () => {
-      fireEvent.press(searchVenueButton)
-    })
+    await user.press(searchVenueButton)
 
     const modalButton = screen.getByText('Rechercher')
 
