@@ -11,24 +11,24 @@ import { TypoDS, getSpacing } from 'ui/theme'
 import { OpeningHours } from '../OpeningHours/OpeningHours'
 
 type Props = { venue: VenueResponse }
-type Section = { title: string; body: React.JSX.Element; isDisplayed: boolean }
+type Section = { title: string; body: React.JSX.Element; shouldBeDisplayed: boolean }
 
 export const PracticalInformation: FunctionComponent<Props> = ({ venue }) => {
   const sections: Section[] = [
     {
       title: 'Modalités de retrait',
       body: <TypoDS.Body>{venue.withdrawalDetails}</TypoDS.Body>,
-      isDisplayed: !!venue.withdrawalDetails,
+      shouldBeDisplayed: !!venue.withdrawalDetails,
     },
     {
       title: 'Description',
       body: <TypoDS.Body>{venue.description}</TypoDS.Body>,
-      isDisplayed: !!venue.description,
+      shouldBeDisplayed: !!venue.description,
     },
     {
       title: 'Contact',
       body: <ContactBlock venue={venue} />,
-      isDisplayed:
+      shouldBeDisplayed:
         !!venue.contact &&
         !!(venue.contact.phoneNumber || venue.contact.email || venue.contact.website),
     },
@@ -42,7 +42,7 @@ export const PracticalInformation: FunctionComponent<Props> = ({ venue }) => {
           detailedAccessibilityId={venue.externalAccessibilityId}
         />
       ),
-      isDisplayed:
+      shouldBeDisplayed:
         !!venue.isOpenToPublic &&
         !!venue.accessibility &&
         Object.values(venue.accessibility).some((value) => value !== null && value !== undefined),
@@ -50,10 +50,10 @@ export const PracticalInformation: FunctionComponent<Props> = ({ venue }) => {
     {
       title: 'Horaires d’ouverture',
       body: <OpeningHours openingHours={venue.openingHours} />,
-      isDisplayed: !!venue.isOpenToPublic && !!venue.openingHours,
+      shouldBeDisplayed: !!venue.isOpenToPublic && !!venue.openingHours,
     },
   ]
-  const sectionsToDisplay = sections.filter((section) => section.isDisplayed)
+  const sectionsToDisplay = sections.filter((section) => section.shouldBeDisplayed)
 
   if (sectionsToDisplay.length === 0) {
     return <NoInformationPlaceholder />
