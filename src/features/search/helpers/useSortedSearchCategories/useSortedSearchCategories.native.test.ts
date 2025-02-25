@@ -1,3 +1,4 @@
+import { initialSearchState } from 'features/search/context/reducer'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { renderHook } from 'tests/utils'
@@ -9,6 +10,14 @@ import {
 } from './useSortedSearchCategories'
 
 jest.mock('libs/subcategories/useSubcategories')
+
+const mockUseSearch = jest.fn(() => ({
+  searchState: initialSearchState,
+  dispatch: jest.fn(),
+}))
+jest.mock('features/search/context/SearchWrapper', () => ({
+  useSearch: () => mockUseSearch(),
+}))
 
 describe('useSortedSearchCategories', () => {
   beforeEach(() => {

@@ -69,6 +69,21 @@ describe('CategoriesList', () => {
     })
   })
 
+  it('should dispatch with offerCategory before navigation', async () => {
+    render(<CategoriesList />)
+    const categoryButton = screen.getByText('Spectacles'.toUpperCase())
+    await act(async () => {
+      fireEvent.press(categoryButton)
+    })
+
+    await waitFor(async () => {
+      expect(mockDispatch).toHaveBeenCalledWith({
+        type: 'SET_STATE',
+        payload: { ...initialSearchState, offerCategories: ['SPECTACLES'] },
+      })
+    })
+  })
+
   it('should navigate to search results with search params on press', async () => {
     render(<CategoriesList />)
 
