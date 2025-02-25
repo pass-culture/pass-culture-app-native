@@ -1,11 +1,8 @@
-import { useNavigation } from '@react-navigation/native'
-import React, { FunctionComponent, useCallback, useEffect, useState } from 'react'
+import React, { FunctionComponent, useEffect, useState } from 'react'
 import { Animated } from 'react-native'
 
 import { SubscribeButtonWithModals } from 'features/home/components/SubscribeButtonWithModals'
 import { ThematicHeader, ThematicHeaderType } from 'features/home/types'
-import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { ToggleButtonSize } from 'ui/components/buttons/ToggleButton'
 import { ContentHeader } from 'ui/components/headers/ContentHeader'
 
@@ -13,16 +10,16 @@ type Props = {
   thematicHeader?: ThematicHeader
   headerTransition: Animated.AnimatedInterpolation<string | number>
   homeId: string
+  onBackPress: VoidFunction
 }
 
 export const ThematicHomeHeader: FunctionComponent<Props> = ({
   thematicHeader,
   headerTransition,
   homeId,
+  onBackPress,
 }) => {
   const [showSmallSubscriptionButton, setShowSmallSubscriptionButton] = useState(false)
-  const { navigate } = useNavigation<UseNavigationType>()
-  const onGoBack = useCallback(() => navigate(...homeNavConfig), [navigate])
 
   useEffect(() => {
     const listenerId = headerTransition.addListener(({ value }) => {
@@ -50,7 +47,7 @@ export const ThematicHomeHeader: FunctionComponent<Props> = ({
       headerTitle={thematicHeader?.title}
       headerTransition={headerTransition}
       customHeaderTitleTransition={smallSubscribeButtonOpacity}
-      onBackPress={onGoBack}
+      onBackPress={onBackPress}
       RightElement={
         thematicHeader?.type === ThematicHeaderType.Category ? (
           <React.Fragment>

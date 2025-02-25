@@ -1,16 +1,16 @@
-import { useRoute } from '@react-navigation/native'
+import { useNavigation, useRoute } from '@react-navigation/native'
 import React, { FunctionComponent, useEffect } from 'react'
 import { Animated, Platform } from 'react-native'
 import styled from 'styled-components/native'
 
 import { useHomepageData } from 'features/home/api/useHomepageData'
 import {
-  AnimatedCategoryThematicHomeHeader,
   MOBILE_HEADER_HEIGHT as ANIMATED_CATEGORY_HEADER_PLACEHOLDER_HEIGHT,
+  AnimatedCategoryThematicHomeHeader,
 } from 'features/home/components/headers/AnimatedCategoryThematicHomeHeader'
 import {
-  AnimatedHighlightThematicHomeHeader,
   MOBILE_HEADER_HEIGHT as ANIMATED_HIGHLIGHT_HEADER_PLACEHOLDER_HEIGHT,
+  AnimatedHighlightThematicHomeHeader,
 } from 'features/home/components/headers/AnimatedHighlightThematicHomeHeader'
 import { CategoryThematicHomeHeader } from 'features/home/components/headers/CategoryThematicHomeHeader'
 import { DefaultThematicHomeHeader } from 'features/home/components/headers/DefaultThematicHomeHeader'
@@ -20,7 +20,9 @@ import { ThematicHomeHeader } from 'features/home/components/headers/ThematicHom
 import { PERFORMANCE_HOME_CREATION, PERFORMANCE_HOME_LOADING } from 'features/home/constants'
 import { GenericHome } from 'features/home/pages/GenericHome'
 import { ThematicHeader, ThematicHeaderType } from 'features/home/types'
-import { UseRouteType } from 'features/navigation/RootNavigator/types'
+import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
+import { homeNavConfig } from 'features/navigation/TabBar/helpers'
+import { useGoBack } from 'features/navigation/useGoBack'
 import { analytics } from 'libs/analytics/provider'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { useLocation } from 'libs/location/LocationWrapper'
@@ -107,6 +109,8 @@ export const ThematicHome: FunctionComponent = () => {
   startPerfHomeCreationOnce()
   startPerfHomeLoadingOnce()
   const { params } = useRoute<UseRouteType<'ThematicHome'>>()
+  const { goBack } = useGoBack('Chronicles')
+  const { navigate } = useNavigation<UseNavigationType>()
   const isFromDeeplink = params.from === 'deeplink'
   const { modules, id, thematicHeader } = useHomepageData(params.homeId) || {}
   const {
@@ -164,6 +168,10 @@ export const ThematicHome: FunctionComponent = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [hasGeolocPosition, isFromDeeplink])
 
+  const handleBackPress = () => {
+    params.from === 'chronicles' ? goBack() : navigate(...homeNavConfig)
+  }
+
   return (
     <Container>
       <GenericHome
@@ -182,6 +190,7 @@ export const ThematicHome: FunctionComponent = () => {
         thematicHeader={thematicHeader}
         headerTransition={headerTransition}
         homeId={params.homeId}
+        onBackPress={handleBackPress}
       />
       {/* Animated header is called only for iOS */}
       {Platform.OS === 'ios' ? (
