@@ -165,7 +165,7 @@ jobs:
         uses: 'google-github-actions/get-secretmanager-secrets@v2'
         with:
           secrets: |-
-            API_TOKEN_GITHUB:passculture-metier-ehp/passculture-main-sa-access-token
+            API_TOKEN_GITHUB:passculture-metier-ehp/passculture-app-native-sa-access-token
 
       - uses: actions/checkout@v4.2.1
         with:
