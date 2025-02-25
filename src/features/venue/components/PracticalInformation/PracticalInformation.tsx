@@ -43,13 +43,14 @@ export const PracticalInformation: FunctionComponent<Props> = ({ venue }) => {
         />
       ),
       isDisplayed:
+        !!venue.isOpenToPublic &&
         !!venue.accessibility &&
         Object.values(venue.accessibility).some((value) => value !== null && value !== undefined),
     },
     {
       title: 'Horaires d’ouverture',
       body: <OpeningHours openingHours={venue.openingHours} />,
-      isDisplayed: !!venue.openingHours,
+      isDisplayed: !!venue.isOpenToPublic && !!venue.openingHours,
     },
   ]
   const sectionsToDisplay = sections.filter((section) => section.isDisplayed)

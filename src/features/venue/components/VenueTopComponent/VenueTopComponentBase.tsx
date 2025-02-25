@@ -55,7 +55,10 @@ export const VenueTopComponentBase: React.FunctionComponent<Props> = ({
     RemoteStoreFeatureFlags.WIP_ENABLE_DYNAMIC_OPENING_HOURS
   )
 
-  const isDynamicOpeningHoursDisplayed = isDynamicOpeningHoursEnabled && venue.openingHours
+  const isDynamicOpeningHoursDisplayed =
+    isDynamicOpeningHoursEnabled && venue.openingHours && venue.isOpenToPublic
+
+  // TO-DO(PC-0000): CopyToClipboardButton should be used on other components
 
   return (
     <TopContainer>
@@ -78,26 +81,30 @@ export const VenueTopComponentBase: React.FunctionComponent<Props> = ({
                 timezone={venue.timezone}
               />
             ) : null}
-            <ViewGap gap={3}>
-              <View>
-                <TypoDS.BodyAccentXs>Adresse</TypoDS.BodyAccentXs>
-                <TypoDS.Body>{venueFullAddress}</TypoDS.Body>
-              </View>
-              <Separator.Horizontal />
-              <CopyToClipboardButton
-                wording="Copier l’adresse"
-                textToCopy={`${venueName}, ${venueFullAddress}`}
-                onCopy={() => analytics.logCopyAddress({ venueId: venue.id, from: 'venue' })}
-                snackBarMessage="L’adresse a bien été copiée."
-              />
-              <SeeItineraryButton
-                externalNav={{
-                  url: getGoogleMapsItineraryUrl(venueFullAddress),
-                  address: venueFullAddress,
-                }}
-                onPress={() => analytics.logConsultItinerary({ venueId: venue.id, from: 'venue' })}
-              />
-            </ViewGap>
+            {venue.isOpenToPublic ? (
+              <ViewGap gap={3}>
+                <View>
+                  <TypoDS.BodyAccentXs>Adresse</TypoDS.BodyAccentXs>
+                  <TypoDS.Body>{venueAddress}</TypoDS.Body>
+                </View>
+                <Separator.Horizontal />
+                <CopyToClipboardButton
+                  wording="Copier l’adresse"
+                  textToCopy={`${venueName}, ${venueAddress}`}
+                  onCopy={() => analytics.logCopyAddress({ venueId: venue.id, from: 'venue' })}
+                  snackBarMessage="L’adresse a bien été copiée."
+                />
+                <SeeItineraryButton
+                  externalNav={{
+                    url: getGoogleMapsItineraryUrl(venueAddress),
+                    address: venueAddress,
+                  }}
+                  onPress={() =>
+                    analytics.logConsultItinerary({ venueId: venue.id, from: 'venue' })
+                  }
+                />
+              </ViewGap>
+            ) : null}
           </ViewGap>
         </ViewGap>
       </MarginContainer>
