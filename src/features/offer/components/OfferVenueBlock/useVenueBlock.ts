@@ -2,7 +2,7 @@ import Clipboard from '@react-native-clipboard/clipboard'
 import { useMemo } from 'react'
 
 import { VenueBlockAddress, VenueBlockVenue } from 'features/offer/components/OfferVenueBlock/type'
-import { formatFullAddressStartsWithPostalCode } from 'shared/address/addressFormatter'
+import { formatFullAddress } from 'shared/address/addressFormatter'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
 export function useVenueBlock({
@@ -19,12 +19,13 @@ export function useVenueBlock({
   const city = offerAddress?.city || venue.city
 
   const venueName = offerAddress?.label || venue.publicName || venue.name
+
   const address = useMemo(
-    () => formatFullAddressStartsWithPostalCode(street, postalCode, city),
+    () => formatFullAddress(street, postalCode, city),
     [street, postalCode, city]
   )
   const venueAddress = useMemo(
-    () => formatFullAddressStartsWithPostalCode(venue.address, venue.postalCode, venue.city),
+    () => formatFullAddress(venue.address, venue.postalCode, venue.city),
     [venue.address, venue.postalCode, venue.city]
   )
 

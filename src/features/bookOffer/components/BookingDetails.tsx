@@ -24,7 +24,7 @@ import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
 import { useLocation } from 'libs/location'
 import { useSubcategoriesMapping } from 'libs/subcategories'
-import { formatFullAddressStartsWithPostalCode } from 'shared/address/addressFormatter'
+import { formatFullAddress } from 'shared/address/addressFormatter'
 import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
@@ -83,7 +83,7 @@ export function BookingDetails({ stocks, onPressBookOffer, isLoading }: BookingD
 
   const { onScroll: onScrollModal } = useOpacityTransition()
   const { userLocation, selectedLocationMode, place } = useLocation()
-  const venueName = offer?.address?.label || offer?.venue.publicName || offer?.venue.name
+  const venueName = offer?.address?.label ?? offer?.venue.publicName ?? offer?.venue.name
 
   const headerMessage = getVenueSelectionHeaderMessage(selectedLocationMode, place, venueName)
 
@@ -127,11 +127,7 @@ export function BookingDetails({ stocks, onPressBookOffer, isLoading }: BookingD
   const venuePostalCode = offer?.address?.postalCode || offer?.venue.postalCode
   const venueCity = offer?.address?.city || offer?.venue.city
 
-  const venueFullAddress = formatFullAddressStartsWithPostalCode(
-    venueStreet,
-    venuePostalCode,
-    venueCity
-  )
+  const venueFullAddress = formatFullAddress(venueStreet, venuePostalCode, venueCity)
 
   const { visible, hideModal, showModal } = useModal(false)
 
