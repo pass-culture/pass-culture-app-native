@@ -29,7 +29,10 @@ describe('FilterButton', () => {
     const filterButton = screen.getByTestId('searchFilterBadge')
     await user.press(filterButton)
 
-    expect(navigate).toHaveBeenCalledWith('SearchFilter', undefined)
+    expect(navigate).toHaveBeenCalledWith('TabNavigator', {
+      params: { params: undefined, screen: 'SearchFilter' },
+      screen: 'SearchStackNavigator',
+    })
   })
 
   describe('Accessibility', () => {
