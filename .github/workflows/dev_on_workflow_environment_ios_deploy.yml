@@ -84,7 +84,7 @@ jobs:
         with:
           secrets: |-
             FIREBASE_TOKEN:passculture-metier-ehp/pc_native_${{ inputs.ENV }}_firebase_json
-        if: inputs.ENV != 'production'
+        if: ${{ inputs.ENV != 'production' }}
       - name: 'Render Template'
         run: |
           cp templates_github_ci/.sentryclirc .sentryclirc
