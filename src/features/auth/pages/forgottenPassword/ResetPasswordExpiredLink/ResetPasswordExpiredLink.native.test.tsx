@@ -10,7 +10,7 @@ import { RootStackParamList } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
+import { userEvent, render, screen } from 'tests/utils'
 
 import { ResetPasswordExpiredLink } from './ResetPasswordExpiredLink'
 
@@ -27,19 +27,20 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
+const user = userEvent.setup()
+jest.useFakeTimers()
+
 describe('<ResetPasswordExpiredLink/>', () => {
   it('should redirect to home page WHEN go back to home button is clicked', async () => {
     mockServer.postApi('/v1/request_password_reset', {})
     renderResetPasswordExpiredLink()
 
-    fireEvent.press(screen.getByText(`Retourner à l’accueil`))
+    await user.press(screen.getByText(`Retourner à l’accueil`))
 
-    await waitFor(() => {
-      expect(navigateFromRef).toHaveBeenCalledWith(
-        navigateToHomeConfig.screen,
-        navigateToHomeConfig.params
-      )
-    })
+    expect(navigateFromRef).toHaveBeenCalledWith(
+      navigateToHomeConfig.screen,
+      navigateToHomeConfig.params
+    )
   })
 
   it('should redirect to reset password link sent page WHEN clicking on resend email and response is success', async () => {
@@ -48,11 +49,9 @@ describe('<ResetPasswordExpiredLink/>', () => {
     })
     renderResetPasswordExpiredLink()
 
-    fireEvent.press(screen.getByText(`Renvoyer l’email`))
+    await user.press(screen.getByText(`Renvoyer l’email`))
 
-    await waitFor(() => {
-      expect(navigate).toHaveBeenCalledTimes(1)
-    })
+    expect(navigate).toHaveBeenCalledTimes(1)
 
     expect(analytics.logResendEmailResetPasswordExpiredLink).toHaveBeenCalledTimes(1)
     expect(navigate).toHaveBeenCalledWith('ResetPasswordEmailSent', {
@@ -68,9 +67,7 @@ describe('<ResetPasswordExpiredLink/>', () => {
     const ResetPasswordExpiredLinkWithBoundary = withAsyncErrorBoundary(ResetPasswordExpiredLink)
     render(reactQueryProviderHOC(<ResetPasswordExpiredLinkWithBoundary {...navigationProps} />))
 
-    await act(async () => {
-      fireEvent.press(screen.getByText(`Renvoyer l’email`))
-    })
+    await user.press(screen.getByText(`Renvoyer l’email`))
 
     expect(useQuerySpy).toThrow()
   })

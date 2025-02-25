@@ -7,7 +7,7 @@ import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/
 import { storage } from 'libs/storage'
 import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render, screen } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 
 import { EighteenBirthday } from './EighteenBirthday'
 
@@ -22,6 +22,8 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
     return Component
   }
 })
+
+jest.useFakeTimers()
 
 describe('<EighteenBirthday />', () => {
   beforeEach(() => {
@@ -43,10 +45,10 @@ describe('<EighteenBirthday />', () => {
     expect(await storage.readObject('has_seen_eligible_card')).toBe(true)
   })
 
-  it('should navigate to Stepper on button press', () => {
+  it('should navigate to Stepper on button press', async () => {
     render(reactQueryProviderHOC(<EighteenBirthday />))
 
-    fireEvent.press(screen.getByText('Confirmer mes informations'))
+    await userEvent.setup().press(screen.getByText('Confirmer mes informations'))
 
     expect(navigate).toHaveBeenCalledWith('Stepper', undefined)
   })
