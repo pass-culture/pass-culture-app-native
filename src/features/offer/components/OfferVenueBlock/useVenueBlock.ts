@@ -1,24 +1,22 @@
-import Clipboard from '@react-native-clipboard/clipboard'
 import { useMemo } from 'react'
 
 import { VenueBlockAddress, VenueBlockVenue } from 'features/offer/components/OfferVenueBlock/type'
+import { useCopyToClipboard } from 'libs/useCopyToClipboard/useCopyToClipboard'
 import { formatFullAddress } from 'shared/address/addressFormatter'
-import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
 export function useVenueBlock({
   venue,
   offerAddress,
+  onCopy,
 }: {
   venue: VenueBlockVenue
   offerAddress?: VenueBlockAddress
+  onCopy?: () => void
 }) {
-  const { showSuccessSnackBar, showErrorSnackBar } = useSnackBarContext()
-
-  const street = offerAddress?.street || venue.address
-  const postalCode = offerAddress?.postalCode || venue.postalCode
-  const city = offerAddress?.city || venue.city
-
   const venueName = offerAddress?.label || venue.publicName || venue.name
+  const street = offerAddress?.street ?? venue.address
+  const postalCode = offerAddress?.postalCode ?? venue.postalCode
+  const city = offerAddress?.city ?? venue.city
 
   const address = useMemo(
     () => formatFullAddress(street, postalCode, city),
@@ -28,27 +26,19 @@ export function useVenueBlock({
     () => formatFullAddress(venue.address, venue.postalCode, venue.city),
     [venue.address, venue.postalCode, venue.city]
   )
+  const onCopyAddressPress = useCopyToClipboard({
+    textToCopy: address,
+    snackBarMessage: 'L’adresse a bien été copiée',
+    onCopy,
+  })
 
   return useMemo(
     () => ({
       venueName,
       venueAddress: address,
       isOfferAddressDifferent: address !== venueAddress,
-      onCopyAddressPress: async () => {
-        Clipboard.setString(address)
-        if ((await Clipboard.getString()) === address) {
-          showSuccessSnackBar({
-            message: 'L’adresse a bien été copiée',
-            timeout: SNACK_BAR_TIME_OUT,
-          })
-        } else {
-          showErrorSnackBar({
-            message: 'Une erreur est survenue, veuillez réessayer',
-            timeout: SNACK_BAR_TIME_OUT,
-          })
-        }
-      },
+      onCopyAddressPress,
     }),
-    [address, venueAddress, showErrorSnackBar, showSuccessSnackBar, venueName]
+    [address, onCopyAddressPress, venueAddress, venueName]
   )
 }

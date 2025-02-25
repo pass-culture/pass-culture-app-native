@@ -15,7 +15,6 @@ import { getGoogleMapsItineraryUrl } from 'libs/itinerary/openGoogleMapsItinerar
 import { useLocation } from 'libs/location'
 import { getDistance } from 'libs/location/getDistance'
 import { MAP_VENUE_TYPE_TO_LABEL } from 'libs/parsers/venueType'
-import { formatFullAddress } from 'shared/address/addressFormatter'
 import { CopyToClipboardButton } from 'shared/CopyToClipboardButton/CopyToClipboardButton'
 import { Separator } from 'ui/components/Separator'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
@@ -59,8 +58,6 @@ export const VenueTopComponentBase: React.FunctionComponent<Props> = ({
 
   const isDynamicOpeningHoursDisplayed =
     isDynamicOpeningHoursEnabled && venue.openingHours && venue.isOpenToPublic
-
-  // TO-DO(PC-0000): CopyToClipboardButton should be used on other components
 
   return (
     <TopContainer>
@@ -131,6 +128,10 @@ const MarginContainer = styled.View({
   flexShrink: 1,
 })
 
-export function getVenue(venue: VenueResponse): VenueBlockVenue {
-  return { ...venue, bannerUrl: venue.bannerUrl ?? undefined }
+const getVenue = (venue: VenueResponse): VenueBlockVenue => {
+  return {
+    ...venue,
+    bannerUrl: venue.bannerUrl ?? undefined,
+    coordinates: {},
+  }
 }

@@ -33,6 +33,16 @@ describe('CopyToClipboardButton', () => {
     expect(onCopyMock).toHaveBeenCalledTimes(1)
   })
 
+  it('should show success snack bar with default text when no snackBarMessage is given', async () => {
+    clipboard.getString.mockResolvedValueOnce(textToCopy)
+    await renderHook(() => useCopyToClipboard({ textToCopy })).result.current()
+
+    expect(mockShowSuccessSnackBar).toHaveBeenCalledWith({
+      message: 'Copié\u00a0!',
+      timeout: SNACK_BAR_TIME_OUT,
+    })
+  })
+
   it('should show success snack bar when text is copied', async () => {
     clipboard.getString.mockResolvedValueOnce(textToCopy)
     await renderUseCopyToClipboard().result.current()
