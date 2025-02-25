@@ -39,7 +39,7 @@ platform :ios do
   end
 
   lane :deploy_appDistribution do |options|
-    release = firebase_app_distribution(
+    firebase_app_distribution(
         app: ENV['FIREBASE_PUBLIC_IOS_APP_ID'],
         release_notes: escaped_release_notes,
         ipa_path: "#{ENV['IOS_IPA_DIRECTORY']}/#{ENV['IOS_IPA_NAME']}",
