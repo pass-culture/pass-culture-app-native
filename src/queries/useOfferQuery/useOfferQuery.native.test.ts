@@ -4,7 +4,7 @@ import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, renderHook } from 'tests/utils'
 
-import { useOffer } from './useOffer'
+import { useOfferQuery } from './useOfferQuery'
 
 jest.mock('libs/network/NetInfoWrapper')
 
@@ -14,7 +14,7 @@ describe('useOffer', () => {
   )
 
   it('should call API otherwise', async () => {
-    const { result } = renderHook(() => useOffer({ offerId: offerResponseSnap.id }), {
+    const { result } = renderHook(() => useOfferQuery({ offerId: offerResponseSnap.id }), {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
 

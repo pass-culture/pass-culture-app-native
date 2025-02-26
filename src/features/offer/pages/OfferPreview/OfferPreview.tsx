@@ -3,7 +3,7 @@ import React, { FunctionComponent } from 'react'
 
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { useGoBack } from 'features/navigation/useGoBack'
-import { useOffer } from 'features/offer/api/useOffer'
+import { useOfferQuery } from 'queries/useOfferQuery/useOfferQuery'
 import { getImagesUrlsWithCredit } from 'shared/getImagesUrlsWithCredit/getImagesUrlsWithCredit'
 import { ImageWithCredit } from 'shared/types'
 import { ImagesCarousel } from 'ui/components/ImagesCarousel/ImagesCarousel'
@@ -11,7 +11,7 @@ import { ImagesCarousel } from 'ui/components/ImagesCarousel/ImagesCarousel'
 export const OfferPreview: FunctionComponent = () => {
   const { params } = useRoute<UseRouteType<'OfferPreview'>>()
   const { goBack } = useGoBack('Offer', { id: params.id })
-  const { data: offer } = useOffer({ offerId: params.id })
+  const { data: offer } = useOfferQuery({ offerId: params.id })
 
   const defaultIndex = params.defaultIndex ?? 0
 

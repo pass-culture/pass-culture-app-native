@@ -3,7 +3,7 @@ import React from 'react'
 
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { chroniclePreviewToChronicalCardData } from 'features/offer/adapters/chroniclePreviewToChronicleCardData'
-import { useOffer } from 'features/offer/api/useOffer'
+import { useOfferQuery } from 'queries/useOfferQuery/useOfferQuery'
 import { OfferContent } from 'features/offer/components/OfferContent/OfferContent'
 import { OfferContentPlaceholder } from 'features/offer/components/OfferContentPlaceholder/OfferContentPlaceholder'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -18,7 +18,7 @@ export function Offer() {
   const route = useRoute<UseRouteType<'Offer'>>()
   const offerId = route.params?.id
 
-  const { data: offer, isLoading } = useOffer({ offerId })
+  const { data: offer, isLoading } = useOfferQuery({ offerId })
   const showSkeleton = useIsFalseWithDelay(isLoading, ANIMATION_DURATION)
   const { data: subcategories } = useSubcategories()
   const subcategoriesMapping = useSubcategoriesMapping()

@@ -5,7 +5,7 @@ import { MovieScreeningBookingData } from 'features/offer/components/MovieScreen
 import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
 import { Currency } from 'shared/currency/useGetCurrencyToDisplay'
 
-export function getButtonState(bookingState: BookingState) {
+export const getButtonState = (bookingState: BookingState) => {
   const { step, stockId, quantity, date, hour } = bookingState
 
   switch (step) {
@@ -22,7 +22,7 @@ export function getButtonState(bookingState: BookingState) {
   }
 }
 
-export function getButtonWording(step: Step) {
+export const getButtonWording = (step: Step) => {
   switch (step) {
     case Step.DATE:
       return 'Valider la date'
@@ -39,7 +39,7 @@ export function getButtonWording(step: Step) {
     default:
       return ''
   }
-}
+};
 
 export function getHourWording(
   price: number,

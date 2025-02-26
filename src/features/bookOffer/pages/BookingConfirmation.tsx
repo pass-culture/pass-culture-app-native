@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
-import { useOffer } from 'features/offer/api/useOffer'
+import { useOfferQuery } from 'queries/useOfferQuery/useOfferQuery'
 import { getShareOffer } from 'features/share/helpers/getShareOffer'
 import { WebShareModal } from 'features/share/pages/WebShareModal'
 import { analytics } from 'libs/analytics/provider'
@@ -26,7 +26,7 @@ import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 
 export function BookingConfirmation() {
   const { params } = useRoute<UseRouteType<'BookingConfirmation'>>()
-  const { data: offer } = useOffer({ offerId: params.offerId })
+  const { data: offer } = useOfferQuery({ offerId: params.offerId })
   const { share: shareOffer, shareContent } = getShareOffer({
     offer,
     utmMedium: 'post_booking',

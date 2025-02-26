@@ -4,7 +4,7 @@ import React, { FunctionComponent } from 'react'
 import { ArtistBody } from 'features/artist/components/ArtistBody/ArtistBody'
 import { PageNotFound } from 'features/navigation/pages/PageNotFound'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
-import { useOffer } from 'features/offer/api/useOffer'
+import { useOfferQuery } from 'queries/useOfferQuery/useOfferQuery'
 import { getOfferArtists } from 'features/offer/helpers/getOfferArtists/getOfferArtists'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -18,7 +18,7 @@ export type Artist = {
 export const Artist: FunctionComponent = () => {
   const enableArtistPage = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ARTIST_PAGE)
   const { params } = useRoute<UseRouteType<'Artist'>>()
-  const { data: offer } = useOffer({ offerId: params.fromOfferId })
+  const { data: offer } = useOfferQuery({ offerId: params.fromOfferId })
   const subcategoriesMapping = useSubcategoriesMapping()
 
   if (!offer) return null

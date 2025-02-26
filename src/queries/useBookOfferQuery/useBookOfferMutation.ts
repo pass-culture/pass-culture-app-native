@@ -20,7 +20,7 @@ interface BookOffer {
   ) => void
 }
 
-export function useBookOfferMutation({ onSuccess, onError }: BookOffer) {
+export const useBookOfferMutation = ({ onSuccess, onError }: BookOffer) => {
   const queryClient = useQueryClient()
 
   return useMutation((body: BookOfferRequest) => api.postNativeV1Bookings(body), {

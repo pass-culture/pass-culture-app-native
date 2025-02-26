@@ -8,7 +8,7 @@ import { useLogTypeFromRemoteConfig } from 'libs/hooks/useLogTypeFromRemoteConfi
 import { OfferNotFoundError, LogTypeEnum } from 'libs/monitoring/errors'
 import { QueryKeys } from 'libs/queryKeys'
 
-async function getOfferById(offerId: number, logType: LogTypeEnum) {
+const getOfferById = async (offerId: number, logType: LogTypeEnum) => {
   if (!offerId) {
     throw new OfferNotFoundError(offerId, {
       Screen: OfferNotFound,
@@ -30,7 +30,7 @@ async function getOfferById(offerId: number, logType: LogTypeEnum) {
   }
 }
 
-export const useOffer = ({ offerId }: { offerId: number }) => {
+export const useOfferQuery = ({ offerId }: { offerId: number }) => {
   const { logType } = useLogTypeFromRemoteConfig()
 
   return useQuery<OfferResponseV2 | undefined>([QueryKeys.OFFER, offerId], () =>

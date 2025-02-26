@@ -2,7 +2,7 @@ import { useNavigation } from '@react-navigation/native'
 import React, { useEffect } from 'react'
 import styled from 'styled-components/native'
 
-import { useNotifyWebappLinkSent } from 'features/bookOffer/api/useNotifyWebappLinkSent'
+import { useNotifyWebappLinkSent } from 'features/bookOffer/queries/useNotifyWebappLinkSent'
 import { Step } from 'features/bookOffer/context/reducer'
 import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
 import { useAddFavorite, useFavorite } from 'features/favorites/api'

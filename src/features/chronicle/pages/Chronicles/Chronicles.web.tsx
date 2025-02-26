@@ -11,7 +11,7 @@ import { ChronicleOfferInfo } from 'features/chronicle/components/ChronicleOffer
 import { ChroniclesBase } from 'features/chronicle/pages/Chronicles/ChroniclesBase'
 import { ChronicleCardData } from 'features/chronicle/type'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
-import { useOffer } from 'features/offer/api/useOffer'
+import { useOfferQuery } from 'queries/useOfferQuery/useOfferQuery'
 import { OfferCTAButton } from 'features/offer/components/OfferCTAButton/OfferCTAButton'
 import { getOfferPrices } from 'features/offer/helpers/getOfferPrice/getOfferPrice'
 import { useOfferBatchTracking } from 'features/offer/helpers/useOfferBatchTracking/useOfferBatchTracking'
@@ -23,7 +23,7 @@ import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacific
 export const Chronicles: FunctionComponent = () => {
   const route = useRoute<UseRouteType<'Chronicles'>>()
   const offerId = route.params?.offerId
-  const { data: offer } = useOffer({ offerId })
+  const { data: offer } = useOfferQuery({ offerId })
   const subcategoriesMapping = useSubcategoriesMapping()
 
   const { data: chronicleCardsData } = useChronicles<ChronicleCardData[]>({
