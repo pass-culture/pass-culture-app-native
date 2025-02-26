@@ -1,7 +1,10 @@
 import { MarkdownPartProps } from 'ui/components/types'
 
 // Regular expression to detect bold and italic
-const STYLES_REGEXP = /\*\*(.*?)\*\*|_(.*?)_/g
+const MARKDOWN_REGEXP = /\*\*(.*?)\*\*|_(.*?)_/g
+
+// Regular expression to detect URL
+const URL_REGEX = /https?:\/\/[^\s]+/g
 
 type TextStyle = Record<string, boolean>
 
@@ -11,10 +14,18 @@ export function parseMarkdown(markdown: string, styles: TextStyle = {}): Markdow
 
   if (!markdown) return parts
 
-  markdown.replace(STYLES_REGEXP, (match, isBold, isItalic, offset) => {
+  // Temporarily replace URLs with a unique marker
+  const urls: string[] = []
+  const textWithoutUrls = markdown.replace(URL_REGEX, (match) => {
+    urls.push(match) // Store URL
+    return `{URL-${urls.length}}` // Temporary marker
+  })
+
+  // Replace Markdown
+  textWithoutUrls.replace(MARKDOWN_REGEXP, (match, isBold, isItalic, offset) => {
     // Add plain text before the styled match
     if (lastIndex < offset) {
-      parts.push({ text: markdown.slice(lastIndex, offset), ...styles })
+      parts.push({ text: textWithoutUrls.slice(lastIndex, offset), ...styles })
     }
 
     // Determine the styles for the current match
@@ -32,9 +43,21 @@ export function parseMarkdown(markdown: string, styles: TextStyle = {}): Markdow
   })
 
   // Add the rest of the plain text
-  if (lastIndex < markdown.length) {
-    parts.push({ text: markdown.slice(lastIndex), ...styles })
+  if (lastIndex < textWithoutUrls.length) {
+    parts.push({ text: textWithoutUrls.slice(lastIndex), ...styles })
   }
 
-  return parts
+  // Restore URLs
+  return parts.map((partObject) => {
+    const regex = /{URL-(\d+)}/g
+    if (!partObject.text.match(regex)) {
+      return partObject
+    }
+
+    const url = urls.shift() ?? ''
+    return {
+      ...partObject,
+      text: partObject.text.replace(/{URL-(\d+)}/g, url),
+    }
+  })
 }

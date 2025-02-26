@@ -78,6 +78,18 @@ describe('parseMarkdown', () => {
     ])
   })
 
+  it('should not transform url pattern', () => {
+    const input = '**Bold text** https://test_url_1 _italic text_ http://test_url_2'
+    const output = parseMarkdown(input)
+
+    expect(output).toEqual([
+      { text: 'Bold text', isBold: true },
+      { text: ' https://test_url_1 ' },
+      { text: 'italic text', isItalic: true },
+      { text: ' http://test_url_2' },
+    ])
+  })
+
   it('should return an empty array when style text is empty', () => {
     const input = '****'
     const output = parseMarkdown(input)
