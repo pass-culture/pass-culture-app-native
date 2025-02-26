@@ -65,8 +65,8 @@ jobs:
         run: mv allure-results allure-results-web-${{matrix.shard}}
 
       - name: Cache the allure reports
-        id: allure-report-cache-web
         if: github.ref == 'refs/heads/master'
+        id: allure-report-cache-web
         uses: pass-culture-github-actions/gcs-cache@v1.0.0
         with:
           bucket: ${{ inputs.CACHE_BUCKET_NAME }}
@@ -132,8 +132,8 @@ jobs:
           key: v1-coverage-dependency-cache-${{ runner.os }}-${{ github.sha }}-${{ matrix.shard }}
 
       - name: Cache the allure reports
-        id: allure-report-cache-native
         if: github.ref == 'refs/heads/master'
+        id: allure-report-cache-native
         uses: pass-culture-github-actions/gcs-cache@v1.0.0
         with:
           bucket: ${{ inputs.CACHE_BUCKET_NAME }}
@@ -153,26 +153,13 @@ jobs:
     needs: yarn_test_native
 
     steps:
-      - uses: actions/checkout@v4.2.1
+      - uses: actions/checkout@v4
+
       - name: 'Authentification to Google'
         uses: 'google-github-actions/auth@v2'
         with:
           workload_identity_provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
           service_account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
-
-      - name: 'Get secrets (github)'
-        id: 'secrets'
-        uses: 'google-github-actions/get-secretmanager-secrets@v2'
-        with:
-          secrets: |-
-            API_TOKEN_GITHUB:passculture-metier-ehp/passculture-app-native-sa-access-token
-
-      - uses: actions/checkout@v4.2.1
-        with:
-          repository: pass-culture/allure-report-native
-          token: ${{ steps.secrets.outputs.API_TOKEN_GITHUB }}
-          ref: main
-          path: ./allure-report-native
 
       - name: Set up Cloud SDK to get gsutils
         uses: 'google-github-actions/setup-gcloud@v2'
@@ -187,22 +174,41 @@ jobs:
           for file in `ls allure-results/*tar`; do tar --use-compress-program='zstd --long=30' -xf $file; done
           rm -f allure-results/*.tar
           find . -maxdepth 1 -type d -name "allure-results-*" | while read dir; do
-          cp -r "$dir"/* allure-report-native/allure-results
+          cp -r "$dir"/* allure-results
           done
           rm -rf allure-results-*
+
+      - name: Install Allure
+        run: |
+          ALLURE_VERSION=$(curl -s https://api.github.com/repos/allure-framework/allure2/releases/latest | jq -r .tag_name | tr -d v)
+          wget -q https://github.com/allure-framework/allure2/releases/download/${ALLURE_VERSION}/allure-${ALLURE_VERSION}.tgz
+          tar -xzvf allure-${ALLURE_VERSION}.tgz -C /opt/
+          echo "/opt/allure-${ALLURE_VERSION}/bin" >> $GITHUB_PATH
+
+      - name: Generate Allure Report
+        run: |
+          allure generate allure-results --clean -o allure-report
+
+      - name: 'Get secrets (github)'
+        id: 'secrets'
+        uses: 'google-github-actions/get-secretmanager-secrets@v2'
+        with:
+          secrets: |-
+            API_TOKEN_GITHUB:passculture-metier-ehp/passculture-main-sa-access-token
 
       - name: 'Author'
         run: |
           git config --global user.email PassCulture-SA@users.noreply.github.com
           git config --global user.name ${{ github.actor }}
-        working-directory: allure-report-native
 
-      - name: Update Report
-        run: |
-          git add .
-          git commit -m "feat: update report"
-          git push
-        working-directory: allure-report-native
+      - name: Deploy to GitHub Pages on gh
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ steps.secrets.outputs.API_TOKEN_GITHUB }}
+          publish_dir: ./allure-report
+          publish_branch: allure-report
+          user_name: ${{ github.actor }}
+          user_email: 'PassCulture-SA@users.noreply.github.com'
 
   report-coverage:
     runs-on: ubuntu-22.04
