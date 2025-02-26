@@ -8,7 +8,7 @@ import { useShouldShowCulturalSurveyForBeneficiaryUser } from 'shared/culturalSu
 
 const STALE_TIME_CULTURAL_SURVEY_QUESTIONS = 5 * 60 * 1000
 
-export function useCulturalSurveyQuestions() {
+export function useCulturalSurveyQuestionsQuery() {
   const { user, isLoggedIn } = useAuthContext()
   const shouldShowCulturalSurvey = useShouldShowCulturalSurveyForBeneficiaryUser()
   const shouldRequestCulturalSurveyQuestions = shouldShowCulturalSurvey(user)

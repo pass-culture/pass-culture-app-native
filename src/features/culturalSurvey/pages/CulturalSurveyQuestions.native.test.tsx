@@ -3,8 +3,8 @@ import React from 'react'
 
 import { push, reset } from '__mocks__/@react-navigation/native'
 import { CulturalSurveyQuestionEnum } from 'api/gen'
-import { useCulturalSurveyQuestions as mockedUseCulturalSurveyQuestions } from 'features/culturalSurvey/api/__mocks__/useCulturalSurveyQuestions'
-import { useCulturalSurveyAnswersMutation } from 'features/culturalSurvey/api/useCulturalSurveyAnswers'
+import { useCulturalSurveyQuestionsQuery as mockedUseCulturalSurveyQuestions } from 'features/culturalSurvey/api/__mocks__/useCulturalSurveyQuestionsQuery'
+import { useCulturalSurveyAnswersMutation } from 'features/culturalSurvey/api/useCulturalSurveyAnswersMutation'
 import {
   useCulturalSurveyContext,
   dispatch,

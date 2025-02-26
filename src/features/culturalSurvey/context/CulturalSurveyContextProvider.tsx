@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useMemo, useReducer } from 'react'
 
 import { CulturalSurveyAnswerEnum } from 'api/gen'
-import { useCulturalSurveyQuestions } from 'features/culturalSurvey/api/useCulturalSurveyQuestions'
+import { useCulturalSurveyQuestionsQuery } from 'features/culturalSurvey/api/useCulturalSurveyQuestionsQuery'
 import {
   culturalSurveyReducer,
   initialCulturalSurveyState,
@@ -20,7 +20,7 @@ export const CulturalSurveyContextProvider = ({
 }: {
   children: React.JSX.Element | React.JSX.Element[]
 }) => {
-  const { data: culturalSurveyQuestionsData } = useCulturalSurveyQuestions()
+  const { data: culturalSurveyQuestionsData } = useCulturalSurveyQuestionsQuery()
 
   const [culturalSurveyState, dispatch] = useReducer(
     culturalSurveyReducer,
