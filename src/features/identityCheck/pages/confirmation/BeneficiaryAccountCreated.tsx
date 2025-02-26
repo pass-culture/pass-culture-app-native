@@ -10,6 +10,7 @@ import { useMaxPrice } from 'features/search/helpers/useMaxPrice/useMaxPrice'
 import { useShareAppContext } from 'features/share/context/ShareAppWrapper'
 import { ShareAppModalType } from 'features/share/types'
 import { BatchEvent, BatchProfile } from 'libs/react-native-batch'
+import { defaultCreditByAge } from 'shared/credits/defaultCreditByAge'
 import { useShouldShowCulturalSurveyForBeneficiaryUser } from 'shared/culturalSurvey/useShouldShowCulturalSurveyForBeneficiaryUser'
 import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
@@ -28,6 +29,7 @@ export function BeneficiaryAccountCreated() {
   const maxPriceInCents = useMaxPrice()
   const { uniqueColors } = useTheme()
   const { user } = useAuthContext()
+
   const { data: settings } = useSettingsContext()
 
   const isUnderageBeneficiary = isUserUnderageBeneficiary(user)
@@ -38,7 +40,13 @@ export function BeneficiaryAccountCreated() {
   const currency = useGetCurrencyToDisplay()
   const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
   const maxPrice = formatCurrencyFromCents(maxPriceInCents, currency, euroToPacificFrancRate)
+  const recreditAmount = formatCurrencyFromCents(
+    user?.recreditAmountToShow || defaultCreditByAge.v3.age_18,
+    currency,
+    euroToPacificFrancRate
+  )
   const subtitle = `${maxPrice} viennent d’être crédités sur ton compte pass Culture`
+  const subtitleV3 = `${recreditAmount} viennent d’être crédités sur ton compte pass Culture`
 
   const enableCreditV3 = settings?.wipEnableCreditV3
 
@@ -60,7 +68,7 @@ export function BeneficiaryAccountCreated() {
 
   return (
     <GenericInfoPageWhite animation={TutorialPassLogo} title="Bonne nouvelle&nbsp;!">
-      <StyledSubtitle>{subtitle}</StyledSubtitle>
+      <StyledSubtitle>{enableCreditV3 ? subtitleV3 : subtitle}</StyledSubtitle>
 
       <Spacer.Column numberOfSpaces={4} />
       <ProgressBarContainer>
@@ -70,7 +78,7 @@ export function BeneficiaryAccountCreated() {
           icon={categoriesIcons.Show}
           isAnimated
         />
-        <Amount>{maxPrice}</Amount>
+        <Amount>{enableCreditV3 ? recreditAmount : maxPrice}</Amount>
       </ProgressBarContainer>
       <Spacer.Column numberOfSpaces={4} />
       <StyledBody>{text}</StyledBody>

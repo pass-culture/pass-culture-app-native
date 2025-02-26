@@ -127,9 +127,29 @@ describe('<BeneficiaryAccountCreated/>', () => {
     })
   })
 
+  it('should show correct amount', async () => {
+    renderBeneficiaryAccountCreated()
+
+    const recreditAmount = screen.getByText('300 €')
+
+    await act(() => {
+      expect(recreditAmount).toBeOnTheScreen()
+    })
+  })
+
   describe('when enableCreditV3 activated', () => {
     beforeEach(() => {
       setSettings({ wipEnableCreditV3: true })
+    })
+
+    it('should have correct amount', async () => {
+      renderBeneficiaryAccountCreated()
+
+      const recreditAmount = screen.getByText('150 €')
+
+      await act(() => {
+        expect(recreditAmount).toBeOnTheScreen()
+      })
     })
 
     it('should have correct credit information text', async () => {
