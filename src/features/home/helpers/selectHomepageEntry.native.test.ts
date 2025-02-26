@@ -2,8 +2,6 @@ import { shuffle } from 'lodash'
 import { UseQueryResult } from 'react-query'
 
 import { BookingsResponse, EligibilityType, UserProfileResponse, UserRole } from 'api/gen'
-import { useBookings } from 'features/bookings/api'
-import { useUserHasBookings } from 'features/bookings/api/useUserHasBookings'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { adaptedHomepage } from 'features/home/fixtures/homepage.fixture'
 import { useSelectHomepageEntry } from 'features/home/helpers/selectHomepageEntry'
@@ -13,6 +11,8 @@ import * as OnboardingRoleAPI from 'features/tutorial/helpers/useUserRoleFromOnb
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import { CustomRemoteConfig } from 'libs/firebase/remoteConfig/remoteConfig.types'
 import { useRemoteConfigContext } from 'libs/firebase/remoteConfig/RemoteConfigProvider'
+import { useBookingsQuery } from 'queries/useBookingsQuery'
+import { useUserHasBookingsQuery } from 'queries/useUserHasBookingsQuery'
 import { Credit, getAvailableCredit } from 'shared/user/useAvailableCredit'
 import {
   mockAuthContextWithoutUser,
@@ -127,10 +127,12 @@ jest.mock('features/bookings/api', () => ({
 }))
 
 jest.mock('features/bookings/api/useUserHasBookings')
-const mockUseUserHasBookings = useUserHasBookings as jest.MockedFunction<typeof useUserHasBookings>
+const mockUseUserHasBookings = useUserHasBookingsQuery as jest.MockedFunction<
+  typeof useUserHasBookingsQuery
+>
 
 jest.mock('features/bookings/api')
-const mockUseBookings = useBookings as jest.MockedFunction<typeof useBookings>
+const mockUseBookings = useBookingsQuery as jest.MockedFunction<typeof useBookingsQuery>
 mockUseBookings.mockReturnValue({
   data: bookingsSnap,
   isLoading: false,

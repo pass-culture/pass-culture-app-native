@@ -3,7 +3,6 @@ import React, { useCallback, useState } from 'react'
 import styled from 'styled-components/native'
 
 import { ReactionTypeEnum } from 'api/gen'
-import { useBookings } from 'features/bookings/api'
 import { OnGoingBookingsList } from 'features/bookings/components/OnGoingBookingsList'
 import { BookingsTab } from 'features/bookings/enum'
 import { EndedBookings } from 'features/bookings/pages/EndedBookings/EndedBookings'
@@ -13,6 +12,7 @@ import { useReactionMutation } from 'features/reactions/api/useReactionMutation'
 import { TabLayout } from 'features/venue/components/TabLayout/TabLayout'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { useBookingsQuery } from 'queries/useBookingsQuery'
 import { createLabels } from 'shared/handleTooManyCount/countUtils'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
@@ -23,7 +23,7 @@ export function Bookings() {
   const enableReactionFeature = useFeatureFlag(RemoteStoreFeatureFlags.WIP_REACTION_FEATURE)
   const [activeTab, setActiveTab] = useState<BookingsTab>(params?.activeTab ?? BookingsTab.CURRENT)
   const [previousTab, setPreviousTab] = useState(activeTab)
-  const { data: bookings } = useBookings()
+  const { data: bookings } = useBookingsQuery()
   const { mutate: addReaction } = useReactionMutation()
 
   const { ended_bookings: endedBookings = [] } = bookings ?? {}

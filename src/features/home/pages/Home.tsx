@@ -5,7 +5,6 @@ import styled from 'styled-components/native'
 
 import { AchievementSuccessModal } from 'features/achievements/pages/AchievementSuccessModal'
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { useBookings } from 'features/bookings/api'
 import { useHomepageData } from 'features/home/api/useHomepageData'
 import { HomeHeader } from 'features/home/components/headers/HomeHeader'
 import { IncomingReactionModalContainer } from 'features/home/components/IncomingReactionModalContainer/IncomingReactionModalContainer'
@@ -20,6 +19,7 @@ import { useLocation } from 'libs/location'
 import { LocationMode } from 'libs/location/types'
 import { getAppVersion } from 'libs/packageJson'
 import { BatchProfile } from 'libs/react-native-batch'
+import { useBookingsQuery } from 'queries/useBookingsQuery'
 import { useModal } from 'ui/components/modals/useModal'
 import { StatusBarBlurredBackground } from 'ui/components/statusBar/statusBarBlurredBackground'
 
@@ -46,7 +46,7 @@ export const Home: FunctionComponent = () => {
     userStatus: user?.status?.statusType,
     showOnboardingSubscriptionModal,
   })
-  const { data: bookings, isLoading: isBookingsLoading } = useBookings()
+  const { data: bookings, isLoading: isBookingsLoading } = useBookingsQuery()
 
   const { achievementsToShow, bookingsEligibleToReaction, modalToShow } = useWhichModalToShow(
     bookings,

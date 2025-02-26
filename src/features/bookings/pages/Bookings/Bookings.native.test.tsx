@@ -3,13 +3,13 @@ import { QueryObserverResult } from 'react-query'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { BookingsResponse, ReactionTypeEnum, SubcategoriesResponseModelv2 } from 'api/gen'
-import * as bookingsAPI from 'features/bookings/api/useBookings'
 import { availableReactionsSnap } from 'features/bookings/fixtures/availableReactionSnap'
 import { bookingsSnap, emptyBookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { useAvailableReaction } from 'features/reactions/api/useAvailableReaction'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
+import * as bookingsAPI from 'queries/useBookingsQuery'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, render, screen, userEvent } from 'tests/utils'
@@ -18,7 +18,7 @@ import { Bookings } from './Bookings'
 
 jest.mock('libs/network/NetInfoWrapper')
 
-const useBookingsSpy = jest.spyOn(bookingsAPI, 'useBookings')
+const useBookingsSpy = jest.spyOn(bookingsAPI, 'useBookingsQuery')
 
 useBookingsSpy.mockReturnValue({
   data: bookingsSnap,

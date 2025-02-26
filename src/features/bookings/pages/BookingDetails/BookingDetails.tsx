@@ -2,7 +2,7 @@ import { useRoute } from '@react-navigation/native'
 import React from 'react'
 import { Platform } from 'react-native'
 
-import { useOngoingOrEndedBooking } from 'features/bookings/api'
+import { useOngoingOrEndedBookingQuery } from 'features/bookings/api'
 import { BookingDetailsContent } from 'features/bookings/components/BookingDetailsContent'
 import { OldBookingDetailsContent } from 'features/bookings/components/OldBookingDetailsContent'
 import { getBookingProperties } from 'features/bookings/helpers'
@@ -26,7 +26,7 @@ export const BookingDetails = () => {
     isError,
     error,
     dataUpdatedAt,
-  } = useOngoingOrEndedBooking(params.id)
+  } = useOngoingOrEndedBookingQuery(params.id)
   const mapping = useSubcategoriesMapping()
   const { logType } = useLogTypeFromRemoteConfig()
 

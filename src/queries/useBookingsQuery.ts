@@ -8,7 +8,7 @@ import { usePersistQuery } from 'libs/react-query/usePersistQuery'
 // Arbitrary. Make sure the cache is invalidated after each booking
 const STALE_TIME_BOOKINGS = 5 * 60 * 1000
 
-export function useBookings(options = {}) {
+export function useBookingsQuery(options = {}) {
   const { isLoggedIn } = useAuthContext()
   const netInfo = useNetInfoContext()
   return usePersistQuery<BookingsResponse>([QueryKeys.BOOKINGS], () => api.getNativeV1Bookings(), {

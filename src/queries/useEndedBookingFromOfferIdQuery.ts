@@ -1,10 +1,12 @@
 import { UseQueryResult } from 'react-query'
 
 import { BookingReponse, BookingsResponse } from 'api/gen'
-import { useBookings } from 'features/bookings/api/useBookings'
+import { useBookingsQuery } from 'queries/useBookingsQuery'
 
-export function useEndedBookingFromOfferId(offerId: number): UseQueryResult<BookingReponse | null> {
-  return useBookings({
+export function useEndedBookingFromOfferIdQuery(
+  offerId: number
+): UseQueryResult<BookingReponse | null> {
+  return useBookingsQuery({
     select(bookings: BookingsResponse | null) {
       if (!bookings) {
         return null

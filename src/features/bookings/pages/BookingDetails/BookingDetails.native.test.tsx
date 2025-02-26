@@ -9,7 +9,7 @@ import {
   SubcategoryIdEnum,
   WithdrawalTypeEnum,
 } from 'api/gen'
-import * as ongoingOrEndedBookingAPI from 'features/bookings/api/useOngoingOrEndedBooking'
+import * as ongoingOrEndedBookingAPI from 'features/bookings/api/useOngoingOrEndedBookingQuery'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import * as bookingPropertiesAPI from 'features/bookings/helpers/getBookingProperties'
 import { Booking } from 'features/bookings/types'
@@ -812,7 +812,7 @@ describe('BookingDetails', () => {
 })
 
 function renderBookingDetails(booking?: Booking, options = {}) {
-  jest.spyOn(ongoingOrEndedBookingAPI, 'useOngoingOrEndedBooking').mockReturnValue({
+  jest.spyOn(ongoingOrEndedBookingAPI, 'useOngoingOrEndedBookingQuery').mockReturnValue({
     data: booking,
     isLoading: false,
     isSuccess: true,

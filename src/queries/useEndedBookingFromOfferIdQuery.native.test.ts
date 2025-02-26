@@ -1,7 +1,7 @@
 import { BookingsResponse } from 'api/gen'
-import { useEndedBookingFromOfferId } from 'features/bookings/api'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
+import { useEndedBookingFromOfferIdQuery } from 'queries/useEndedBookingFromOfferIdQuery'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, renderHook } from 'tests/utils'
@@ -19,14 +19,14 @@ jest.mock('features/auth/context/AuthContext', () => ({
 
 jest.mock('libs/jwt/jwt')
 
-describe('useEndedBookingFromOfferId', () => {
+describe('useEndedBookingFromOfferIdQuery', () => {
   beforeEach(() => {
     mockServer.getApi<BookingsResponse>('/v1/bookings', bookingsSnap)
   })
 
   it('should return an ended booking if existing', async () => {
     const booking = bookingsSnap.ended_bookings[0]
-    const { result } = renderHook(() => useEndedBookingFromOfferId(booking.stock.offer.id), {
+    const { result } = renderHook(() => useEndedBookingFromOfferIdQuery(booking.stock.offer.id), {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
 
@@ -38,7 +38,7 @@ describe('useEndedBookingFromOfferId', () => {
 
   it('should not return an ended booking if not existing', async () => {
     const unknownOfferId = 91919191
-    const { result } = renderHook(() => useEndedBookingFromOfferId(unknownOfferId), {
+    const { result } = renderHook(() => useEndedBookingFromOfferIdQuery(unknownOfferId), {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
     await act(async () => {})

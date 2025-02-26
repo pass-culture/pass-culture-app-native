@@ -3,8 +3,6 @@ import { useCallback } from 'react'
 
 import { UserProfileResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { useBookings } from 'features/bookings/api'
-import { useUserHasBookings } from 'features/bookings/api/useUserHasBookings'
 import { Homepage } from 'features/home/types'
 import { isUserBeneficiary18 } from 'features/profile/helpers/isUserBeneficiary18'
 import { isUserUnderage } from 'features/profile/helpers/isUserUnderage'
@@ -13,6 +11,8 @@ import { UserOnboardingRole } from 'features/tutorial/enums'
 import { useUserRoleFromOnboarding } from 'features/tutorial/helpers/useUserRoleFromOnboarding'
 import { CustomRemoteConfig } from 'libs/firebase/remoteConfig/remoteConfig.types'
 import { useRemoteConfigContext } from 'libs/firebase/remoteConfig/RemoteConfigProvider'
+import { useBookingsQuery } from 'queries/useBookingsQuery'
+import { useUserHasBookingsQuery } from 'queries/useUserHasBookingsQuery'
 import { getAvailableCredit } from 'shared/user/useAvailableCredit'
 
 const scoreHomepageByTags = (
@@ -34,8 +34,8 @@ export const useSelectHomepageEntry = (
   homepageEntryId?: string
 ): ((homepageList: Homepage[]) => Homepage | undefined) => {
   const { isLoggedIn, user } = useAuthContext()
-  const userHasBookings = useUserHasBookings()
-  const { data: userBookings } = useBookings()
+  const userHasBookings = useUserHasBookingsQuery()
+  const { data: userBookings } = useBookingsQuery()
   const onboardingRole = useUserRoleFromOnboarding()
   const {
     homeEntryIdGeneral,
