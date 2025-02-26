@@ -8,7 +8,7 @@ import { useOfferQuery } from './useOfferQuery'
 
 jest.mock('libs/network/NetInfoWrapper')
 
-describe('useOffer', () => {
+describe('useOfferQuery', () => {
   beforeEach(() =>
     mockServer.getApi<OfferResponseV2>(`/v2/offer/${offerResponseSnap.id}`, offerResponseSnap)
   )

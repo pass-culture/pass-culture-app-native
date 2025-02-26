@@ -22,16 +22,16 @@ jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
   canGoBack: jest.fn(() => true),
 })
 
-const mockUseOffer = jest.fn()
-mockUseOffer.mockReturnValue({
+const mockUseOfferQuery = jest.fn()
+mockUseOfferQuery.mockReturnValue({
   data: {
     ...mockOffer,
     subcategoryId: SubcategoryIdEnum.SUPPORT_PHYSIQUE_MUSIQUE_CD,
     extraData: { performer: 'Céline Dion, Sia' },
   },
 })
-jest.mock('features/offer/api/useOffer', () => ({
-  useOffer: () => mockUseOffer(),
+jest.mock('queries/useOfferQuery/useOfferQuery', () => ({
+  useOffer: () => mockUseOfferQuery(),
 }))
 
 useRoute.mockReturnValue({

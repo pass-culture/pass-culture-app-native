@@ -38,12 +38,12 @@ jest.mock('features/bookOffer/context/useBookingContext', () => ({
   useBookingContext: () => mockUseBookingContext(),
 }))
 
-const mockUseOffer = jest.fn()
-mockUseOffer.mockReturnValue({
+const mockUseOfferQuery = jest.fn()
+mockUseOfferQuery.mockReturnValue({
   data: mockOffer,
 })
-jest.mock('features/offer/api/useOffer', () => ({
-  useOffer: () => mockUseOffer(),
+jest.mock('queries/useOfferQuery/useOfferQuery', () => ({
+  useOfferQuery: () => mockUseOfferQuery(),
 }))
 
 jest.mock('features/bookOffer/helpers/useBookingOffer', () => ({
@@ -103,7 +103,7 @@ const mockData = {
 }
 const mockOfferVenues: VenueListItem[] = []
 const mockNbOfferVenues = 0
-jest.mock('api/useSearchVenuesOffer/useSearchVenueOffers', () => ({
+jest.mock('queries/useSearchVenuesOfferInfiniteQuery/useSearchVenueOffersInfiniteQuery', () => ({
   useSearchVenueOffers: () => ({
     hasNextPage: mockHasNextPage,
     fetchNextPage: mockFetchNextPage,
@@ -211,7 +211,7 @@ describe('<BookingOfferModalComponent />', () => {
   })
 
   it('should display modal with prices by categories', () => {
-    mockUseOffer.mockReturnValueOnce({ data: { ...mockOffer, stocks: mockStocks } })
+    mockUseOfferQuery.mockReturnValueOnce({ data: { ...mockOffer, stocks: mockStocks } })
     render(reactQueryProviderHOC(<BookingOfferModalComponent visible offerId={20} />))
 
     expect(screen.getByTestId('modalWithPricesByCategories')).toBeOnTheScreen()

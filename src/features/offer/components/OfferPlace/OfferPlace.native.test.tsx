@@ -66,7 +66,7 @@ const searchVenueOfferWithVenues = {
   nbVenueItems: 2,
 }
 const mockUseSearchVenueOffers = jest.fn(() => searchVenueOfferWithVenues)
-jest.mock('api/useSearchVenuesOffer/useSearchVenueOffers', () => ({
+jest.mock('queries/useSearchVenuesOfferInfiniteQuery/useSearchVenueOffersInfiniteQuery', () => ({
   useSearchVenueOffers: () => mockUseSearchVenueOffers(),
 }))
 

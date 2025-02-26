@@ -1,3 +1,3 @@
 import { mockOffer } from 'features/bookOffer/fixtures/offer'
 
-export const useOffer = () => ({ data: mockOffer })
+export const useOfferQuery = () => ({ data: mockOffer })

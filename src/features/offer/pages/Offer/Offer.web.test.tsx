@@ -10,13 +10,13 @@ import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { checkAccessibilityFor, render, screen, act } from 'tests/utils/web'
 
-jest.setTimeout(20000) // to avoid exceeded timeout
+jest.setTimeout(20_000) // to avoid exceeded timeout
 
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 const mockedOffer: Partial<OfferResponseV2> | undefined = offerResponseSnap
-jest.mock('features/offer/api/useOffer', () => ({
-  useOffer: () => ({
+jest.mock('queries/useOfferQuery/useOfferQuery', () => ({
+  useOfferQuery: () => ({
     data: mockedOffer,
     isLoading: false,
   }),
@@ -46,7 +46,7 @@ const mockData = {
 }
 const mockVenueList: VenueListItem[] = []
 const mockNbVenueItems = 0
-jest.mock('api/useSearchVenuesOffer/useSearchVenueOffers', () => ({
+jest.mock('queries/useSearchVenuesOfferInfiniteQuery/useSearchVenueOffersInfiniteQuery', () => ({
   useSearchVenueOffers: () => ({
     hasNextPage: mockHasNextPage,
     fetchNextPage: mockFetchNextPage,
