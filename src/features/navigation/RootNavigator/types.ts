@@ -134,6 +134,8 @@ export enum StepperOrigin {
 }
 
 export type SubscriptionRootStackParamList = {
+  // Other
+  DisableActivation: undefined
   // Stepper
   Stepper: { from: StepperOrigin } | undefined
   // PhoneValidation
@@ -228,7 +230,6 @@ export type RootStackParamList = {
   EndedBookings: undefined
   FavoritesSorts: undefined
   FeedbackInApp: undefined
-  ForceUpdate: undefined
   ForgottenPassword: undefined
   FraudulentSuspendedAccount: undefined
   LegalNotices: undefined

@@ -26,7 +26,6 @@ import { Chronicles } from 'features/chronicle/pages/Chronicles/Chronicles'
 import { withAsyncErrorBoundary } from 'features/errors/hocs/withAsyncErrorBoundary'
 import { BannedCountryError } from 'features/errors/pages/BannedCountryError'
 import { FavoritesSorts } from 'features/favorites/pages/FavoritesSorts'
-import { ForceUpdate } from 'features/forceUpdate/pages/ForceUpdate'
 import { ThematicHome } from 'features/home/pages/ThematicHome'
 import { DeeplinksGenerator } from 'features/internal/pages/DeeplinksGenerator'
 import { UTMParameters } from 'features/internal/pages/UTMParameters'
@@ -559,10 +558,5 @@ export const routes: RootRoute[] = [
       parse: screenParamsParser['Chronicles'],
     },
     options: { title: 'Avis du book club' },
-  },
-  {
-    name: 'ForceUpdate',
-    component: ForceUpdate,
-    path: 'update',
   },
 ]

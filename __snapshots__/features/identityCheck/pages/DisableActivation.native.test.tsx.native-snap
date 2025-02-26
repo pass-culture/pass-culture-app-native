@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<ForceUpdate/> should match snapshot 1`] = `
+exports[`<DisableActivation/> should render correctly 1`] = `
 <View
   style={
     [
@@ -120,7 +120,8 @@ exports[`<ForceUpdate/> should match snapshot 1`] = `
         ]
       }
     >
-      Mise à jour requise !
+      Tu as 17 ou 18 ans ?
+Reviens lundi pour débloquer ton crédit !
     </Text>
     <View
       numberOfSpaces={5}
@@ -132,22 +133,6 @@ exports[`<ForceUpdate/> should match snapshot 1`] = `
         ]
       }
     />
-    <Text
-      style={
-        [
-          {
-            "color": "#ffffff",
-            "fontFamily": "Montserrat-Medium",
-            "fontSize": 16,
-            "lineHeight": 25.6,
-            "textAlign": "center",
-          },
-        ]
-      }
-    >
-      Le pass Culture ne semble plus à jour sur ton téléphone !
-  Pour des questions de performance et de sécurité merci de télécharger la dernière version disponible.
-    </Text>
     <View
       numberOfSpaces={30}
       style={
@@ -185,7 +170,7 @@ exports[`<ForceUpdate/> should match snapshot 1`] = `
       }
     >
       <View
-        accessibilityLabel="Télécharger la dernière version"
+        accessibilityLabel="Retourner à l’accueil"
         accessibilityState={
           {
             "busy": undefined,
@@ -204,6 +189,7 @@ exports[`<ForceUpdate/> should match snapshot 1`] = `
           }
         }
         accessible={true}
+        collapsable={false}
         focusable={true}
         onClick={[Function]}
         onResponderGrant={[Function]}
@@ -213,33 +199,24 @@ exports[`<ForceUpdate/> should match snapshot 1`] = `
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          [
-            [
-              {
-                "userSelect": "auto",
-              },
-              {
-                "alignItems": "center",
-                "backgroundColor": "#ffffff",
-                "borderRadius": 24,
-                "flexDirection": "row",
-                "justifyContent": "center",
-                "maxWidth": 500,
-                "minHeight": 40,
-                "paddingBottom": 2,
-                "paddingLeft": 20,
-                "paddingRight": 20,
-                "paddingTop": 2,
-                "width": "100%",
-              },
-              {},
-            ],
-            {
-              "opacity": 1,
-            },
-          ]
+          {
+            "alignItems": "center",
+            "backgroundColor": "#ffffff",
+            "borderRadius": 24,
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "maxWidth": 500,
+            "minHeight": 40,
+            "opacity": 1,
+            "paddingBottom": 2,
+            "paddingLeft": 20,
+            "paddingRight": 20,
+            "paddingTop": 2,
+            "userSelect": "auto",
+            "width": "100%",
+          }
         }
-        testID="Télécharger la dernière version"
+        testID="Retourner à l’accueil"
       >
         <View
           style={
@@ -266,7 +243,7 @@ exports[`<ForceUpdate/> should match snapshot 1`] = `
               ]
             }
           >
-            Télécharger la dernière version
+            Retourner à l’accueil
           </Text>
         </View>
       </View>
@@ -281,7 +258,7 @@ exports[`<ForceUpdate/> should match snapshot 1`] = `
         }
       />
       <View
-        accessibilityLabel="Utiliser la version web"
+        accessibilityLabel="Plus d’infos dans notre FAQ"
         accessibilityState={
           {
             "busy": undefined,
@@ -300,6 +277,7 @@ exports[`<ForceUpdate/> should match snapshot 1`] = `
           }
         }
         accessible={true}
+        collapsable={false}
         focusable={true}
         onClick={[Function]}
         onResponderGrant={[Function]}
@@ -309,34 +287,24 @@ exports[`<ForceUpdate/> should match snapshot 1`] = `
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          [
-            [
-              {
-                "userSelect": "auto",
-              },
-              {
-                "alignItems": "center",
-                "borderRadius": 24,
-                "flexDirection": "row",
-                "justifyContent": "center",
-                "maxWidth": 500,
-                "minHeight": 40,
-                "paddingBottom": 2,
-                "paddingLeft": 2,
-                "paddingRight": 2,
-                "paddingTop": 2,
-                "width": "100%",
-              },
-              {
-                "backgroundColor": "transparent",
-              },
-            ],
-            {
-              "opacity": 1,
-            },
-          ]
+          {
+            "alignItems": "center",
+            "backgroundColor": "transparent",
+            "borderRadius": 24,
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "maxWidth": 500,
+            "minHeight": 40,
+            "opacity": 1,
+            "paddingBottom": 2,
+            "paddingLeft": 2,
+            "paddingRight": 2,
+            "paddingTop": 2,
+            "userSelect": "auto",
+            "width": "100%",
+          }
         }
-        testID="Utiliser la version web"
+        testID="Plus d’infos dans notre FAQ"
       >
         <View
           style={
@@ -394,7 +362,7 @@ exports[`<ForceUpdate/> should match snapshot 1`] = `
               ]
             }
           >
-            Utiliser la version web
+            Plus d’infos dans notre FAQ
           </Text>
         </View>
       </View>

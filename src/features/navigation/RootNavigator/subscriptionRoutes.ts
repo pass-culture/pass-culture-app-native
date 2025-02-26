@@ -1,6 +1,7 @@
 import { BeneficiaryAccountCreated } from 'features/identityCheck/pages/confirmation/BeneficiaryAccountCreated'
 import { BeneficiaryRequestSent } from 'features/identityCheck/pages/confirmation/BeneficiaryRequestSent'
 import { IdentityCheckHonor } from 'features/identityCheck/pages/confirmation/IdentityCheckHonor'
+import { DisableActivation } from 'features/identityCheck/pages/DisableActivation'
 import { DMSIntroduction } from 'features/identityCheck/pages/identification/dms/DMSIntroduction'
 import { IdentityCheckDMS } from 'features/identityCheck/pages/identification/dms/IdentityCheckDMS'
 import { EduConnectForm } from 'features/identityCheck/pages/identification/educonnect/EduConnectForm'
@@ -41,6 +42,13 @@ export const subscriptionRoutes: GenericRoute<SubscriptionRootStackParamList>[] 
     path: 'verification-identite',
     options: { title: 'Vérification d’identité' },
     secure: true,
+  },
+  // Other
+  {
+    name: 'DisableActivation',
+    component: DisableActivation,
+    path: 'creation-compte/desactivation',
+    options: { title: 'Création de compte désactivé' },
   },
   // Phone Validation
   {
