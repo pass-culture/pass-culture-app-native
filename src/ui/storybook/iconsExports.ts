@@ -64,6 +64,7 @@ import { HandicapAudio } from 'ui/svg/icons/HandicapAudio'
 import { HandicapMental } from 'ui/svg/icons/HandicapMental'
 import { HandicapMotor } from 'ui/svg/icons/HandicapMotor'
 import { HandicapVisual } from 'ui/svg/icons/HandicapVisual'
+import { Hourglass } from 'ui/svg/icons/Hourglass'
 import { IdCard } from 'ui/svg/icons/IdCard'
 import { Info } from 'ui/svg/icons/Info'
 import { InfoPlain } from 'ui/svg/icons/InfoPlain'
@@ -205,6 +206,7 @@ export const SecondaryAndBiggerIcons = {
   HandicapMental,
   HandicapMotor,
   HandicapVisual,
+  Hourglass,
   IdCard,
   Info,
   LegalNotices,
@@ -237,9 +239,9 @@ export const SecondaryAndBiggerIcons = {
 
 export const TertiaryAndSmallerIcons = {
   Again,
+  Bulb,
   ClockFilled,
   Connect,
-  Bulb,
   Digital,
   Duplicate,
   EditPen,
@@ -251,9 +253,9 @@ export const TertiaryAndSmallerIcons = {
   Location: LocationPointerAppV2,
   LocationPointer,
   LocationPointerWithBorder,
+  Lock,
   MagnifyingGlass,
   Map,
-  Lock,
   Parameters,
   PhoneFilled,
   PlainArrowNext,

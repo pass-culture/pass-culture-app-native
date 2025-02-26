@@ -7,14 +7,14 @@ import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
-import { AgainIllustration } from 'ui/svg/icons/AgainIllustration'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
+import { Hourglass } from 'ui/svg/icons/Hourglass'
 import { LINE_BREAK } from 'ui/theme/constants'
 
 export const DisableActivation = () => {
   return (
     <GenericInfoPage
-      icon={AgainIllustration}
+      icon={Hourglass}
       title={`Tu as 17 ou 18 ans\u00a0?${LINE_BREAK}Reviens lundi pour débloquer ton crédit\u00a0!`}
       buttons={[
         <InternalTouchableLink
