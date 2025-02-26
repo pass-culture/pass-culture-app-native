@@ -49,14 +49,14 @@ describe('useLoginAndRedirect', () => {
     expect(loginRoutine).toHaveBeenCalledTimes(1)
   })
 
-  it('should redirect to ForceUpdate when disableActivation is true', async () => {
+  it('should redirect to DisableActivation when disableActivation is true', async () => {
     setFeatureFlags([RemoteStoreFeatureFlags.DISABLE_ACTIVATION])
     mockServer.getApi<UserProfileResponse>('/v1/me', nonBeneficiaryUser)
     await loginAndRedirect()
 
     jest.advanceTimersByTime(2000)
 
-    expect(replace).toHaveBeenCalledWith('ForceUpdate')
+    expect(replace).toHaveBeenCalledWith('DisableActivation')
   })
 
   it('should redirect to AccountCreated when isEligibleForBeneficiaryUpgrade is false', async () => {
