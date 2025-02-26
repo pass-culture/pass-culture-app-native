@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react'
 import styled from 'styled-components/native'
 
 import { AchievementEnum, AchievementResponse } from 'api/gen'
-import { useAchievementsMarkAsSeen } from 'features/achievements/api/useMarkAchievementsAsSeen'
+import { useAchievementsMarkAsSeenQuery } from 'features/achievements/queries/useMarkAchievementsAsSeenQuery'
 import { analytics } from 'libs/analytics/provider'
 import LottieView from 'libs/lottie'
 import success from 'ui/animations/achievements_success.json'
@@ -25,7 +25,7 @@ const ANIMATION_END_FRAME = 62
 
 export const AchievementSuccessModal = ({ visible, hideModal, achievementsToShow }: Props) => {
   const logoRef = useRef<LottieView>(null)
-  const { mutate: markAchievementsAsSeen } = useAchievementsMarkAsSeen()
+  const { mutate: markAchievementsAsSeen } = useAchievementsMarkAsSeenQuery()
 
   const achievementNames: AchievementEnum[] = achievementsToShow.map(
     (achievement) => achievement.name

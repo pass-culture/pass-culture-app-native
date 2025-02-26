@@ -3,7 +3,7 @@ import { useMutation, useQueryClient } from 'react-query'
 import { api } from 'api/api'
 import { QueryKeys } from 'libs/queryKeys'
 
-export function useAchievementsMarkAsSeen(
+export function useAchievementsMarkAsSeenQuery(
   onSuccess?: () => void,
   onError?: (error: unknown) => void
 ) {
