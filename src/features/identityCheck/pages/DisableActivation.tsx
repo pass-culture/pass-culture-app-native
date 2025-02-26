@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
+import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
@@ -28,6 +29,7 @@ export const DisableActivation = () => {
           as={ButtonTertiaryWhite}
           externalNav={{ url: env.FAQ_LINK_CREDIT_V3 }}
           wording="Plus d’infos dans notre FAQ"
+          onBeforeNavigate={() => analytics.logHasClickedTutorialFAQ()}
           icon={ExternalSiteFilled}
         />,
       ]}
