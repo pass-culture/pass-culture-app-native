@@ -5,6 +5,7 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { creditActions } from 'features/identityCheck/api/useCreditStore'
 import { navigateToHome, navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
+import { useResetRecreditAmountToShow } from 'features/profile/api/useResetRecreditAmountToShow'
 import { isUserUnderageBeneficiary } from 'features/profile/helpers/isUserUnderageBeneficiary'
 import { useMaxPrice } from 'features/search/helpers/useMaxPrice/useMaxPrice'
 import { useShareAppContext } from 'features/share/context/ShareAppWrapper'
@@ -50,6 +51,8 @@ export function BeneficiaryAccountCreated() {
 
   const enableCreditV3 = settings?.wipEnableCreditV3
 
+  const { mutate: resetRecreditAmountToShow } = useResetRecreditAmountToShow({})
+
   const unnderageBeneficiaryText = isUnderageBeneficiary
     ? 'Tu as jusqu’à la veille de tes 18 ans pour profiter de ton crédit.'
     : 'Tu as deux ans pour profiter de ton crédit.'
@@ -62,7 +65,8 @@ export function BeneficiaryAccountCreated() {
     BatchProfile.trackEvent(BatchEvent.hasValidatedSubscription)
     if (!user?.needsToFillCulturalSurvey) showShareAppModal(ShareAppModalType.BENEFICIARY)
     creditActions.setActivationDate(new Date())
-  }, [showShareAppModal, user?.needsToFillCulturalSurvey])
+    resetRecreditAmountToShow()
+  }, [resetRecreditAmountToShow, showShareAppModal, user?.needsToFillCulturalSurvey])
 
   useEnterKeyAction(navigateToHome)
 

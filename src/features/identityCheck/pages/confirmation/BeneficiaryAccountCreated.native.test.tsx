@@ -11,6 +11,7 @@ import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { BatchProfile } from 'libs/react-native-batch'
 import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { userEvent, render, screen, act } from 'tests/utils'
 
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
@@ -166,5 +167,13 @@ describe('<BeneficiaryAccountCreated/>', () => {
   })
 })
 
-const renderBeneficiaryAccountCreated = () =>
-  render(<BeneficiaryAccountCreated />, { wrapper: ShareAppWrapper })
+function renderBeneficiaryAccountCreated() {
+  return render(<BeneficiaryAccountCreated />, {
+    wrapper: (props) =>
+      reactQueryProviderHOC(
+        <ShareAppWrapper>
+          <React.Fragment>{props.children}</React.Fragment>
+        </ShareAppWrapper>
+      ),
+  })
+}
