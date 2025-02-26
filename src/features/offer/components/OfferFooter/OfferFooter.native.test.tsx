@@ -109,6 +109,8 @@ describe('OfferFooter', () => {
     })
 
     it('should display disableNotifications button', async () => {
+      useAuthContextSpy.mockReturnValueOnce({ ...mockAuthContextReturnValue, isLoggedIn: true })
+
       renderOfferFooter({ offer: offerWithPublicationDate })
 
       await user.press(await screen.findByText('Ajouter un rappel'))

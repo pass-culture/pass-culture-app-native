@@ -17,11 +17,7 @@ interface Props {
   dismissModal: () => void
 }
 
-export const SignUpSignInChoiceOfferModal: FunctionComponent<Props> = ({
-  visible,
-  offerId,
-  dismissModal,
-}) => {
+export const FavoriteAuthModal: FunctionComponent<Props> = ({ visible, offerId, dismissModal }) => {
   const closeModal = useCallback(() => {
     analytics.logQuitFavoriteModalForSignIn(offerId)
     dismissModal()
@@ -54,7 +50,7 @@ export const SignUpSignInChoiceOfferModal: FunctionComponent<Props> = ({
           wording="Créer un compte"
           navigateTo={{
             screen: 'SignupForm',
-            params: { from: StepperOrigin.OFFER, offerId },
+            params: { from: StepperOrigin.FAVORITE, offerId },
           }}
           onBeforeNavigate={signUp}
         />
@@ -62,7 +58,7 @@ export const SignUpSignInChoiceOfferModal: FunctionComponent<Props> = ({
       <Spacer.Column numberOfSpaces={4} />
       <StyledAuthenticationButton
         type="login"
-        params={{ from: StepperOrigin.OFFER, offerId }}
+        params={{ from: StepperOrigin.FAVORITE, offerId }}
         onAdditionalPress={signIn}
       />
     </AppModalWithIllustration>
