@@ -1,4 +1,3 @@
-import * as useBookOfferMutation from 'queries/useBookOfferQuery/useBookOfferMutation'
 import React from 'react'
 
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
@@ -16,6 +15,7 @@ import * as logOfferConversionAPI from 'libs/algolia/analytics/logOfferConversio
 import { analytics } from 'libs/analytics/provider'
 import { CampaignEvents, campaignTracker } from 'libs/campaign'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import * as useBookOfferMutation from 'queries/useBookOfferQuery/useBookOfferMutation'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'

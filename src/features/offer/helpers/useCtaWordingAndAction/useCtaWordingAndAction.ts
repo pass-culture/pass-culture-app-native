@@ -1,5 +1,4 @@
 import { useRoute } from '@react-navigation/native'
-import { useBookOfferMutation } from 'queries/useBookOfferQuery/useBookOfferMutation'
 import { UseMutateFunction } from 'react-query'
 
 import { ApiError } from 'api/ApiError'
@@ -29,6 +28,7 @@ import { isUserUnderageBeneficiary } from 'features/profile/helpers/isUserUndera
 import { analytics } from 'libs/analytics/provider'
 import { Subcategory } from 'libs/subcategories/types'
 import { useBookingsQuery } from 'queries/useBookingsQuery'
+import { useBookOfferMutation } from 'queries/useBookOfferQuery/useBookOfferMutation'
 import { useEndedBookingFromOfferIdQuery } from 'queries/useEndedBookingFromOfferIdQuery'
 import { getDigitalOfferBookingWording } from 'shared/getDigitalOfferBookingWording/getDigitalOfferBookingWording'
 import { OfferModal } from 'shared/offer/enums'
