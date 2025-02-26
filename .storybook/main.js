@@ -18,6 +18,7 @@ module.exports = {
           features: './src/features',
           fixtures: './src/fixtures',
           libs: './src/libs',
+          queries: './src/queries',
           shared: './src/shared',
           tests: './src/tests',
           theme: './src/theme',

@@ -6,7 +6,7 @@ import { LocationMode } from 'libs/location/types'
 
 const fakeOfferId = 283
 
-// TODO (PC-34760) should use React Query
+// TODO(PC-34760): should use React Query
 export const useSomeOfferIdQuery = () => {
   const [offerId, setOfferId] = useState<number>(fakeOfferId)
 

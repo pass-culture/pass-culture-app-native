@@ -118,7 +118,7 @@ export default ({ mode }) => {
       extensions: allExtensions,
       alias: [
         {
-          find: /^((api|cheatcodes|features|fixtures|libs|shared|theme|ui|web).*)/,
+          find: /^((api|cheatcodes|features|fixtures|libs|queries|shared|theme|ui|web).*)/,
           replacement: '/src/$1',
         },
         { find: 'react-native', replacement: 'react-native-web' },
