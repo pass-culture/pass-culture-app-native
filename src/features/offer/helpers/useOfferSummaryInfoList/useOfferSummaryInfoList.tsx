@@ -4,12 +4,14 @@ import { useTheme } from 'styled-components/native'
 import { OfferResponseV2 } from 'api/gen'
 import { extractStockDates } from 'features/offer/helpers/extractStockDates/extractStockDates'
 import { formatDuration } from 'features/offer/helpers/formatDuration/formatDuration'
+import { formatFullAddress } from 'libs/address/useFormatFullAddress'
 import { capitalizeFirstLetter, getFormattedDates } from 'libs/parsers/formatDates'
 import { getOfferLocationName } from 'shared/offer/helpers/getOfferLocationName'
 import { SummaryInfoProps } from 'ui/components/SummaryInfo'
 import { CalendarS } from 'ui/svg/icons/CalendarS'
 import { ClockFilled } from 'ui/svg/icons/ClockFilled'
 import { Digital } from 'ui/svg/icons/Digital'
+import { MapPin } from 'ui/svg/icons/MapPin'
 import { Stock } from 'ui/svg/icons/Stock'
 
 type Props = {
@@ -23,7 +25,7 @@ export type SummaryInfoItem = SummaryInfoProps & {
 
 export const useOfferSummaryInfoList = ({ offer, isCinemaOffer }: Props) => {
   const theme = useTheme()
-  const { venue, isDigital, isDuo, extraData } = offer
+  const { venue, isDigital, isDuo, extraData, address } = offer
   const dates = extractStockDates(offer)
   const formattedDate = capitalizeFirstLetter(getFormattedDates(dates))
   const locationName = getOfferLocationName(venue, isDigital)
@@ -31,7 +33,15 @@ export const useOfferSummaryInfoList = ({ offer, isCinemaOffer }: Props) => {
     ? formatDuration(extraData.durationMinutes)
     : undefined
 
+  const fullAddress = formatFullAddress(address?.street, address?.postalCode, address?.city)
+
   const summaryInfoItems: SummaryInfoItem[] = [
+    {
+      isDisplayed: !!fullAddress && address?.street !== venue.address,
+      Icon: <MapPin size={theme.icons.sizes.small} />,
+      title: address?.label ?? 'Adresse',
+      subtitle: fullAddress,
+    },
     {
       isDisplayed: !!formattedDate && !isCinemaOffer,
       Icon: <CalendarS size={theme.icons.sizes.small} />,

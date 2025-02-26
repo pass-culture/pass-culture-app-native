@@ -189,4 +189,40 @@ describe('useOfferSummaryInfoList', () => {
 
     expect(result.current.summaryInfoItems).toEqual([])
   })
+
+  it('should return adress summary info when there is one and the offer address is not the same as venue address', () => {
+    const offer: OfferResponseV2 = {
+      ...offerResponseSnap,
+      address: {
+        coordinates: {
+          latitude: 0.1,
+          longitude: 0.1,
+        },
+        label: 'C’est pas la même adresse',
+        postalCode: '75001',
+        city: 'Paris',
+        street: '13 rue saint-denis',
+        timezone: '',
+      },
+      isDuo: false,
+    }
+    const { result } = renderHook(
+      () =>
+        useOfferSummaryInfoList({
+          offer,
+        }),
+      {
+        wrapper: ({ children }) => <ThemeProvider theme={computedTheme}>{children}</ThemeProvider>,
+      }
+    )
+
+    expect(result.current.summaryInfoItems).toEqual([
+      {
+        Icon: expect.anything(),
+        isDisplayed: true,
+        subtitle: '13 rue saint-denis, 75001 Paris',
+        title: 'C’est pas la même adresse',
+      },
+    ])
+  })
 })
