@@ -49,7 +49,6 @@ export const subscriptionRoutes: GenericRoute<SubscriptionRootStackParamList>[] 
     component: DisableActivation,
     path: 'creation-compte/desactivation',
     options: { title: 'Création de compte désactivé' },
-    secure: true,
   },
   // Phone Validation
   {
