@@ -16,17 +16,17 @@ import { getStockWithCategory } from 'features/bookOffer/helpers/bookingHelpers/
 import { useBookingStock } from 'features/bookOffer/helpers/useBookingStock'
 import { useModalContent } from 'features/bookOffer/helpers/useModalContent'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
-import { useOfferQuery } from 'queries/useOfferQuery/useOfferQuery'
 import { MovieScreeningBookingData } from 'features/offer/components/MovieScreeningCalendar/types'
 import { useLogOfferConversion } from 'libs/algolia/analytics/logOfferConversion'
 import { analytics } from 'libs/analytics/provider'
 import { CampaignEvents, campaignTracker } from 'libs/campaign'
+import { useBookOfferMutation } from 'queries/useBookOfferQuery/useBookOfferMutation'
+import { useOfferQuery } from 'queries/useOfferQuery/useOfferQuery'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { ModalLeftIconProps } from 'ui/components/modals/types'
 import { useModal } from 'ui/components/modals/useModal'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
-import { useBookOfferMutation } from 'queries/useBookOfferQuery/useBookOfferMutation'
 
 interface BookingOfferModalComponentProps {
   visible: boolean

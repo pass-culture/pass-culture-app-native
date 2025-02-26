@@ -4,11 +4,11 @@ import React, { FunctionComponent } from 'react'
 import { ArtistBody } from 'features/artist/components/ArtistBody/ArtistBody'
 import { PageNotFound } from 'features/navigation/pages/PageNotFound'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
-import { useOfferQuery } from 'queries/useOfferQuery/useOfferQuery'
 import { getOfferArtists } from 'features/offer/helpers/getOfferArtists/getOfferArtists'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useSubcategoriesMapping } from 'libs/subcategories'
+import { useOfferQuery } from 'queries/useOfferQuery/useOfferQuery'
 
 export type Artist = {
   name: string

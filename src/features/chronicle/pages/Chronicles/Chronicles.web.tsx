@@ -11,12 +11,12 @@ import { ChronicleOfferInfo } from 'features/chronicle/components/ChronicleOffer
 import { ChroniclesBase } from 'features/chronicle/pages/Chronicles/ChroniclesBase'
 import { ChronicleCardData } from 'features/chronicle/type'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
-import { useOfferQuery } from 'queries/useOfferQuery/useOfferQuery'
 import { OfferCTAButton } from 'features/offer/components/OfferCTAButton/OfferCTAButton'
 import { getOfferPrices } from 'features/offer/helpers/getOfferPrice/getOfferPrice'
 import { useOfferBatchTracking } from 'features/offer/helpers/useOfferBatchTracking/useOfferBatchTracking'
 import { getDisplayedPrice } from 'libs/parsers/getDisplayedPrice'
 import { useSubcategoriesMapping } from 'libs/subcategories'
+import { useOfferQuery } from 'queries/useOfferQuery/useOfferQuery'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
 

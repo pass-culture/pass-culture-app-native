@@ -1,10 +1,10 @@
+import * as useBookOfferMutation from 'queries/useBookOfferQuery/useBookOfferMutation'
 import React from 'react'
 
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { ApiError } from 'api/ApiError'
 import { RecommendationApiParams, SubcategoryIdEnum } from 'api/gen'
 import * as Auth from 'features/auth/context/AuthContext'
-import * as useBookOfferMutation from 'features/bookOffer/api/useBookOfferMutation'
 import { BookingState, Step } from 'features/bookOffer/context/reducer'
 import { mockOffer as baseOffer } from 'features/bookOffer/fixtures/offer'
 import { mockStocks } from 'features/bookOffer/fixtures/stocks'

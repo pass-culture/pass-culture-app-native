@@ -1,10 +1,10 @@
 import { QueryClient } from 'react-query'
 
 import { BookingsResponse, BookOfferResponse } from 'api/gen'
+import { useBookOfferMutation } from 'queries/useBookOfferQuery/useBookOfferMutation'
 import { mockServer } from 'tests/mswServer'
 import { queryCache, reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, waitFor } from 'tests/utils'
-import { useBookOfferMutation } from 'queries/useBookOfferQuery/useBookOfferMutation'
 
 const props = { onError: jest.fn(), onSuccess: jest.fn() }
 

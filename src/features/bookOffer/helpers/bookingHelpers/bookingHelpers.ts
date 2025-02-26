@@ -39,7 +39,7 @@ export const getButtonWording = (step: Step) => {
     default:
       return ''
   }
-};
+}
 
 export function getHourWording(
   price: number,

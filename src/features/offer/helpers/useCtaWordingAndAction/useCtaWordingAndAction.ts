@@ -1,4 +1,5 @@
 import { useRoute } from '@react-navigation/native'
+import { useBookOfferMutation } from 'queries/useBookOfferQuery/useBookOfferMutation'
 import { UseMutateFunction } from 'react-query'
 
 import { ApiError } from 'api/ApiError'
@@ -17,7 +18,6 @@ import {
 } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useOngoingOrEndedBookingQuery } from 'features/bookings/api'
-import { useBookOfferMutation } from 'features/bookOffer/api/useBookOfferMutation'
 import { openUrl } from 'features/navigation/helpers/openUrl'
 import { Referrals, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { BottomBannerTextEnum } from 'features/offer/components/MovieScreeningCalendar/enums'
