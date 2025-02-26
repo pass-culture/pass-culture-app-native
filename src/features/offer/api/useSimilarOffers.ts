@@ -1,5 +1,5 @@
 import { useMemo } from 'react'
-import { useQuery } from 'react-query'
+import { onlineManager, useQuery } from 'react-query'
 
 import { api } from 'api/api'
 import { ApiError } from 'api/ApiError'
@@ -8,7 +8,6 @@ import { SearchGroupNameEnumv2, SearchGroupResponseModelv2 } from 'api/gen'
 import { useAlgoliaSimilarOffers } from 'features/offer/api/useAlgoliaSimilarOffers'
 import { Position } from 'libs/location'
 import { eventMonitoring } from 'libs/monitoring/services'
-import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { QueryKeys } from 'libs/queryKeys'
 
 type WithIncludeCategoryProps = {
@@ -57,8 +56,6 @@ export const useSimilarOffers = ({
   categoryExcluded,
   searchGroupList,
 }: Props) => {
-  const netInfo = useNetInfoContext()
-
   const categories: SearchGroupNameEnumv2[] = useMemo(
     () => getCategories(searchGroupList, categoryIncluded, categoryExcluded),
     [categoryExcluded, categoryIncluded, searchGroupList]
@@ -102,8 +99,7 @@ export const useSimilarOffers = ({
     },
     {
       staleTime: 1000 * 60 * 5,
-      enabled:
-        !!categories && !!netInfo.isConnected && !!netInfo.isInternetReachable && shouldFetch,
+      enabled: !!categories && onlineManager.isOnline() && shouldFetch,
     }
   )
 

@@ -1,3 +1,5 @@
+import { onlineManager } from 'react-query'
+
 import { SearchGroupNameEnumv2, SimilarOffersResponse } from 'api/gen'
 import * as useAlgoliaSimilarOffers from 'features/offer/api/useAlgoliaSimilarOffers'
 import { getCategories, useSimilarOffers } from 'features/offer/api/useSimilarOffers'
@@ -19,7 +21,6 @@ const position = {
 
 jest.mock('features/auth/context/AuthContext')
 jest.mock('libs/subcategories/useSubcategories')
-jest.mock('libs/network/NetInfoWrapper')
 
 const algoliaSpy = jest
   .spyOn(useAlgoliaSimilarOffers, 'useAlgoliaSimilarOffers')
@@ -247,6 +248,25 @@ describe('useSimilarOffers', () => {
       })
     }
   )
+
+  it('should not call API reco when connection is disabled', () => {
+    onlineManager.setOnline(false)
+
+    renderHook(
+      () =>
+        useSimilarOffers({
+          offerId: mockOfferId,
+          shouldFetch: true,
+          categoryIncluded: SearchGroupNameEnumv2.CINEMA,
+          position: { latitude: 10, longitude: 15 },
+        }),
+      {
+        wrapper: ({ children }) => reactQueryProviderHOC(children),
+      }
+    )
+
+    expect(fetchApiRecoSpy).not.toHaveBeenCalled()
+  })
 })
 
 describe('getCategories', () => {
