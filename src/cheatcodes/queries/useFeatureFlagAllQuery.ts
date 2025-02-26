@@ -23,7 +23,7 @@ export type FeatureFlagAll = {
   isFeatureFlagActive: boolean
 }
 
-export const useFeatureFlagAll = () => {
+export const useFeatureFlagAllQuery = () => {
   const appBuildVersion = getAppBuildVersion()
   const {
     data: docSnapshot,

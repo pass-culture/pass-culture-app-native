@@ -6,8 +6,8 @@ import { LocationMode } from 'libs/location/types'
 
 const fakeOfferId = 283
 
-export const useSomeOfferId = () => {
-  // We don't use react-query as this is a query only used on the cheatcodes to debug
+// TODO (PC-34760) should use React Query
+export const useSomeOfferIdQuery = () => {
   const [offerId, setOfferId] = useState<number>(fakeOfferId)
 
   useEffect(() => {

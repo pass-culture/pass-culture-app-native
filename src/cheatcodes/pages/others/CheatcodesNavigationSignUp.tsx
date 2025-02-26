@@ -3,7 +3,7 @@ import React from 'react'
 import { CheatcodesSubscreensButtonList } from 'cheatcodes/components/CheatcodesSubscreenButtonList'
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
 import { LinkToScreen } from 'cheatcodes/components/LinkToScreen'
-import { useSomeOfferId } from 'cheatcodes/hooks/useSomeOfferId'
+import { useSomeOfferIdQuery } from 'cheatcodes/queries/useSomeOfferIdQuery'
 import { CheatcodesButtonsWithSubscreensProps } from 'cheatcodes/types'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { ApplicationProcessingModal } from 'shared/offer/components/ApplicationProcessingModal/ApplicationProcessingModal'
@@ -43,7 +43,7 @@ export const cheatcodesNavigationSignUpButtons: [CheatcodesButtonsWithSubscreens
 ]
 
 export function CheatcodesNavigationSignUp(): React.JSX.Element {
-  const offerId = useSomeOfferId()
+  const offerId = useSomeOfferIdQuery()
 
   const {
     visible: finishSubscriptionModalVisible,
