@@ -1,9 +1,12 @@
-
 import { SubcategoryIdEnum } from 'api/gen'
 import * as fetchAlgoliaOffer from 'libs/algolia/fetchAlgolia/fetchOffers'
 import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { Position, LocationMode } from 'libs/location/types'
-import { getVenueList, filterVenueOfferHit, useSearchVenueOffersInfiniteQuery } from 'queries/useSearchVenuesOfferInfiniteQuery/useSearchVenueOffersInfiniteQuery'
+import {
+  getVenueList,
+  filterVenueOfferHit,
+  useSearchVenueOffersInfiniteQuery,
+} from 'queries/useSearchVenuesOfferInfiniteQuery/useSearchVenueOffersInfiniteQuery'
 import { toMutable } from 'shared/types/toMutable'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, waitFor } from 'tests/utils'
