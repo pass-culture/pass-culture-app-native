@@ -2,8 +2,8 @@ import { SubcategoryIdEnum } from 'api/gen'
 import {
   filterVenueOfferHit,
   getVenueList,
-  useSearchVenueOffers,
-} from 'api/useSearchVenuesOffer/useSearchVenueOffers'
+  useSearchVenueOffersInfiniteQuery,
+} from 'queries/useSearchVenuesOffer/useSearchVenueOffersInfiniteQuery'
 import * as fetchAlgoliaOffer from 'libs/algolia/fetchAlgolia/fetchOffers'
 import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { Position, LocationMode } from 'libs/location/types'
@@ -22,7 +22,7 @@ jest.mock('libs/location/LocationWrapper', () => ({
   }),
 }))
 
-describe('useSearchVenueOffers', () => {
+describe('useSearchVenueOffersInfiniteQuery', () => {
   describe('getVenueList', () => {
     it('should return an offer venues list', () => {
       const offerVenues = getVenueList(mockedAlgoliaResponse.hits, mockUserLocation)
@@ -155,7 +155,7 @@ describe('useSearchVenueOffers', () => {
     it('should fetch offers when queryOptions.enabled is true', async () => {
       renderHook(
         () =>
-          useSearchVenueOffers({
+          useSearchVenueOffersInfiniteQuery({
             offerId: 10000,
             venueId: 1,
             query: '9782070584628',
@@ -174,7 +174,7 @@ describe('useSearchVenueOffers', () => {
     it('should not fetch offers when queryOptions.enabled is false', async () => {
       renderHook(
         () =>
-          useSearchVenueOffers({
+          useSearchVenueOffersInfiniteQuery({
             offerId: 10000,
             venueId: 1,
             query: '9782070584628',

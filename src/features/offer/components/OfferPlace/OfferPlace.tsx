@@ -5,7 +5,7 @@ import { useQueryClient } from 'react-query'
 import { useTheme } from 'styled-components/native'
 
 import { OfferResponseV2, SubcategoryIdEnum, VenueResponse } from 'api/gen'
-import { useSearchVenueOffers } from 'api/useSearchVenuesOffer/useSearchVenueOffers'
+import { useSearchVenueOffersInfiniteQuery } from 'queries/useSearchVenuesOfferInfiniteQuery/useSearchVenueOffersInfiniteQuery'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { MovieScreeningCalendar } from 'features/offer/components/MovieScreeningCalendar/MovieScreeningCalendar'
 import { OfferCineBlock } from 'features/offer/components/OfferCine/OfferCineBlock'
@@ -87,7 +87,7 @@ export function OfferPlace({ offer, subcategory }: Readonly<OfferPlaceProps>) {
     nbLoadedHits,
     nbHits,
     isFetchingNextPage,
-  } = useSearchVenueOffers({
+  } = useSearchVenueOffersInfiniteQuery({
     offerId: offer.id,
     venueId: offer.venue.id,
     geolocation: userLocation ?? {
