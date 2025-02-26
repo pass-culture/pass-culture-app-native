@@ -235,9 +235,9 @@ export const SecondaryAndBiggerIcons = {
 
 export const TertiaryAndSmallerIcons = {
   Again,
+  Bulb,
   ClockFilled,
   Connect,
-  Bulb,
   Digital,
   Duplicate,
   EditPen,
@@ -249,9 +249,9 @@ export const TertiaryAndSmallerIcons = {
   Location: LocationPointerAppV2,
   LocationPointer,
   LocationPointerWithBorder,
+  Lock,
   MagnifyingGlass,
   Map,
-  Lock,
   Parameters,
   PhoneFilled,
   PlainArrowNext,

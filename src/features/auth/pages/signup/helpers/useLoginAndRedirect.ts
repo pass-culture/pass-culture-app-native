@@ -51,7 +51,7 @@ export const useLoginAndRedirect = () => {
         }
 
         if (disableActivation) {
-          delayedReplace('ForceUpdate')
+          delayedReplace('DisableActivation')
           return
         }
 

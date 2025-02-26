@@ -15,7 +15,7 @@ import { analytics } from 'libs/analytics/provider'
 import { useFeatureFlagOptions } from 'libs/firebase/firestore/featureFlags/useFeatureFlagOptions'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { BannerWithBackground } from 'ui/components/ModuleBanner/BannerWithBackground'
-import { ArrowAgain } from 'ui/svg/icons/ArrowAgain'
+import { Hourglass } from 'ui/svg/icons/Hourglass'
 import { TypoDS } from 'ui/theme'
 
 const isWeb = Platform.OS === 'web'
@@ -52,8 +52,8 @@ export const RemoteBanner = ({ from }: { from: RemoteBannerOrigin }) => {
     <BannerWithBackground
       accessibilityRole={accessibilityRole}
       disabled={!isStoreRedirection && !redirectionUrl}
-      leftIcon={ArrowAgain}
-      noRightIcon={isStoreRedirection && isWeb}
+      leftIcon={Hourglass}
+      noRightIcon={isWebStoreBanner}
       onPress={onPress}
       {...accessibilityAndTestId(accessibilityLabel)}>
       <StyledButtonText>{title}</StyledButtonText>

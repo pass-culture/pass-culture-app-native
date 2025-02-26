@@ -12,10 +12,7 @@ export const cheatcodesNavigationForceUpdateButtons: [CheatcodesButtonsWithSubsc
   {
     title: 'ForceUpdate 🆙',
     screen: 'CheatcodesNavigationForceUpdate',
-    subscreens: [
-      { screen: 'ForceUpdate' },
-      { title: 'ForceUpdateWithResetErrorBoundary', showOnlyInSearch: true },
-    ],
+    subscreens: [{ title: 'ForceUpdateWithResetErrorBoundary', showOnlyInSearch: true }],
   },
 ]
 

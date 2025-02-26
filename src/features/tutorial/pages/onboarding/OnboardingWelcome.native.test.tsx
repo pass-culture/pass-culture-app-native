@@ -5,8 +5,6 @@ import { setSettings } from 'features/auth/tests/setSettings'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { OnboardingWelcome } from 'features/tutorial/pages/onboarding/OnboardingWelcome'
 import { analytics } from 'libs/analytics/provider'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { storage } from 'libs/storage'
 import { userEvent, render, screen } from 'tests/utils'
 
@@ -20,8 +18,6 @@ const user = userEvent.setup()
 jest.useFakeTimers()
 
 describe('OnboardingWelcome', () => {
-  beforeEach(() => setFeatureFlags())
-
   it('should render correctly', () => {
     render(<OnboardingWelcome />)
 
@@ -44,16 +40,6 @@ describe('OnboardingWelcome', () => {
     await user.press(button)
 
     expect(navigate).toHaveBeenCalledWith('OnboardingGeolocation', undefined)
-  })
-
-  it('should redirect to ForceUpdate when "C’est parti !" is clicked', async () => {
-    setFeatureFlags([RemoteStoreFeatureFlags.DISABLE_ACTIVATION])
-    render(<OnboardingWelcome />)
-
-    const button = screen.getByText('C’est parti\u00a0!')
-    await user.press(button)
-
-    expect(navigate).toHaveBeenCalledWith('ForceUpdate', undefined)
   })
 
   it('should redirect to login when "Se connecter" is clicked', async () => {
