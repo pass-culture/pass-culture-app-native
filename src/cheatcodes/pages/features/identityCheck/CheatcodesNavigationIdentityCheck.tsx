@@ -18,6 +18,7 @@ export const cheatcodesNavigationIdentityCheckButtons: [CheatcodesButtonsWithSub
     screen: 'CheatcodesNavigationIdentityCheck',
     subscreens: [
       { title: 'NewIdentificationFlow 🎨', screen: 'CheatcodesNavigationNewIdentificationFlow' },
+      { screen: 'DisableActivation' },
       { screen: 'Stepper' },
       { screen: 'PhoneValidationTooManyAttempts' },
       { screen: 'PhoneValidationTooManySMSSent' },
