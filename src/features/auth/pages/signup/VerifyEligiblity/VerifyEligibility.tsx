@@ -2,7 +2,7 @@ import React, { FunctionComponent, useEffect } from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
-import { useShowForceUpdateWhenDisableActivation } from 'features/forceUpdate/helpers/useShowForceUpdateWhenDisableActivation'
+import { useShowDisableActivation } from 'features/forceUpdate/helpers/useShowDisableActivation'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { useFunctionOnce } from 'libs/hooks'
@@ -19,7 +19,7 @@ export const VerifyEligibility: FunctionComponent = () => {
     BatchProfile.trackEvent(BatchEvent.screenViewVerifyEligibility)
   }, [])
 
-  useShowForceUpdateWhenDisableActivation()
+  useShowDisableActivation()
 
   const triggerBatch = useFunctionOnce(() =>
     BatchProfile.trackEvent(BatchEvent.hasValidatedEligibleAccount)
