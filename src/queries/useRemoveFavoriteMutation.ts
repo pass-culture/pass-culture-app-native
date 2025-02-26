@@ -9,7 +9,7 @@ interface RemoveFavorite {
   onError?: (error?: Error, favoriteId?: number, context?: FavoriteMutationContext) => void
 }
 
-export function useRemoveFavorite({ onError }: RemoveFavorite) {
+export function useRemoveFavoriteMutation({ onError }: RemoveFavorite) {
   const queryClient = useQueryClient()
 
   return useMutation((favoriteId: number) => api.deleteNativeV1MeFavoritesfavoriteId(favoriteId), {

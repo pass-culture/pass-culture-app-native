@@ -1,5 +1,5 @@
 import { favoriteOfferResponseSnap } from 'features/favorites/fixtures/favoriteOfferResponseSnap'
-import { useFavoriteFormattedDate } from 'features/favorites/helpers/useFavoriteFormattedDate'
+import { useFavoriteFormattedDate } from 'features/favorites/hooks/useFavoriteFormattedDate'
 import { renderHook } from 'tests/utils'
 
 describe('useFavoriteFormattedDate', () => {

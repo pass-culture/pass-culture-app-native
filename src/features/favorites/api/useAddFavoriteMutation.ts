@@ -13,7 +13,11 @@ import { FavoriteMutationContext } from 'features/favorites/api/types'
 import { QueryKeys } from 'libs/queryKeys'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
-export function useAddFavorite({ onSuccess }: { onSuccess?: (data?: FavoriteResponse) => void }) {
+export function useAddFavoriteMutation({
+  onSuccess,
+}: {
+  onSuccess?: (data?: FavoriteResponse) => void
+}) {
   const queryClient = useQueryClient()
   const { showErrorSnackBar } = useSnackBarContext()
   return useMutation((body: FavoriteRequest) => api.postNativeV1MeFavorites(body), {

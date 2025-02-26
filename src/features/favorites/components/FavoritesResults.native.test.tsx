@@ -3,7 +3,7 @@ import { Text as MockText } from 'react-native'
 import { QueryObserverSuccessResult, UseMutationResult } from 'react-query'
 
 import { FavoriteResponse, PaginatedFavoritesResponse } from 'api/gen'
-import { useFavorites, useRemoveFavorite } from 'features/favorites/api'
+import { useFavoritesQuery, useRemoveFavoriteMutation } from 'features/favorites/api'
 import { FavoriteMutationContext } from 'features/favorites/api/types'
 import { initialFavoritesState } from 'features/favorites/context/reducer'
 import { paginatedFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedFavoritesResponseSnap'
@@ -23,9 +23,11 @@ jest.mock('features/favorites/context/FavoritesWrapper', () => ({
 }))
 
 jest.mock('features/favorites/api/useFavorites')
-const mockUseFavorites = useFavorites as jest.MockedFunction<typeof useFavorites>
+const mockUseFavorites = useFavoritesQuery as jest.MockedFunction<typeof useFavoritesQuery>
 jest.mock('features/favorites/api/useRemoveFavorite')
-const mockUseRemoveFavorites = useRemoveFavorite as jest.MockedFunction<typeof useRemoveFavorite>
+const mockUseRemoveFavorites = useRemoveFavoriteMutation as jest.MockedFunction<
+  typeof useRemoveFavoriteMutation
+>
 
 jest.mock('features/bookOffer/pages/BookingOfferModal', () => ({
   BookingOfferModal() {

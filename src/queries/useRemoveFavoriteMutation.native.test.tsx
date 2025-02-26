@@ -7,14 +7,14 @@ import { simulateBackend } from 'features/favorites/helpers/simulateBackend'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, renderHook, waitFor } from 'tests/utils'
 
-import { useRemoveFavorite } from './useRemoveFavorite'
+import { useRemoveFavoriteMutation } from './useRemoveFavoriteMutation'
 
 jest.mock('features/auth/context/AuthContext')
 jest.mock('libs/jwt/jwt')
 
 jest.unmock('react-query')
 
-describe('useRemoveFavorite hook', () => {
+describe('useRemoveFavoriteMutation', () => {
   it('should remove favorite', async () => {
     const favorite = paginatedFavoritesResponseSnap.favorites[0]
     const favoriteId = favorite.id
@@ -25,7 +25,7 @@ describe('useRemoveFavorite hook', () => {
     })
 
     const onError = jest.fn()
-    const { result } = renderHook(() => useRemoveFavorite({ onError }), {
+    const { result } = renderHook(() => useRemoveFavoriteMutation({ onError }), {
       wrapper: (props) =>
         reactQueryProviderHOC(
           <FavoritesWrapper>
@@ -53,7 +53,7 @@ describe('useRemoveFavorite hook', () => {
     })
 
     const onError = jest.fn()
-    const { result } = renderHook(() => useRemoveFavorite({ onError }), {
+    const { result } = renderHook(() => useRemoveFavoriteMutation({ onError }), {
       wrapper: (props) =>
         reactQueryProviderHOC(
           <FavoritesWrapper>

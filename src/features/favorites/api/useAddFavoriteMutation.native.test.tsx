@@ -15,7 +15,7 @@ import {
 } from 'ui/components/snackBar/__mocks__/SnackBarContext'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
-import { useAddFavorite } from './useAddFavorite'
+import { useAddFavoriteMutation } from './useAddFavoriteMutation'
 
 jest.mock('features/auth/context/AuthContext')
 jest.mock('libs/jwt/jwt')
@@ -35,7 +35,7 @@ mockedUseSnackBarContext.mockReturnValue({
   showErrorSnackBar,
 })
 
-describe('useAddFavorite hook', () => {
+describe('useAddFavoriteMutation', () => {
   it('should add favorite', async () => {
     simulateBackend({
       id: offerId,
@@ -104,7 +104,7 @@ it('should show snack bar when too many favorites when trying to add favorite', 
 })
 
 const renderUseAddFavorite = (onSuccess?: (data?: FavoriteResponse | undefined) => void) => {
-  const { result } = renderHook(() => useAddFavorite({ onSuccess }), {
+  const { result } = renderHook(() => useAddFavoriteMutation({ onSuccess }), {
     wrapper: (props) =>
       reactQueryProviderHOC(
         <FavoritesWrapper>

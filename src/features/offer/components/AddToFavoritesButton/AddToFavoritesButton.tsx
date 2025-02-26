@@ -1,7 +1,8 @@
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
-import { useAddFavorite, useFavorite } from 'features/favorites/api'
+import { useFavorite } from 'features/favorites/api'
+import { useAddFavoriteMutation } from 'features/favorites/api/useAddFavoriteMutation'
 import { ButtonTertiaryPrimary } from 'ui/components/buttons/ButtonTertiaryPrimary'
 import { FavoriteFilled } from 'ui/svg/icons/FavoriteFilled'
 import { Spacer } from 'ui/theme'
@@ -17,7 +18,7 @@ export const AddToFavoritesButton: FunctionComponent<Props> = ({
 }) => {
   const isFavorite = useFavorite({ offerId })
 
-  const { mutate: addFavorite } = useAddFavorite({})
+  const { mutate: addFavorite } = useAddFavoriteMutation({})
 
   const addToFavorite = () => {
     addFavorite({ offerId })

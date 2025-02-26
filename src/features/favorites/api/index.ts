@@ -1,4 +1,3 @@
-export { useAddFavorite } from './useAddFavorite'
-export { useFavorite } from './useFavorite'
-export { useFavorites } from './useFavorites'
-export { useRemoveFavorite } from './useRemoveFavorite'
+export { useFavorite } from '../hooks/useFavorite'
+export { useFavoritesQuery } from './useFavoritesQuery'
+export { useRemoveFavoriteMutation } from '../../../queries/useRemoveFavoriteMutation'

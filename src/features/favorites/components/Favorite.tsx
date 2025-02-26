@@ -3,10 +3,10 @@ import { Animated } from 'react-native'
 import styled from 'styled-components/native'
 
 import { FavoriteOfferResponse, FavoriteResponse, UserProfileResponse } from 'api/gen'
-import { useRemoveFavorite } from 'features/favorites/api'
+import { useRemoveFavoriteMutation } from 'features/favorites/api'
 import { getBookingButtonProperties } from 'features/favorites/helpers/getBookingButtonProperties'
 import { getFavoriteDisplayPrice } from 'features/favorites/helpers/getFavoriteDisplayPrice'
-import { useFavoriteFormattedDate } from 'features/favorites/helpers/useFavoriteFormattedDate'
+import { useFavoriteFormattedDate } from 'features/favorites/hooks/useFavoriteFormattedDate'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { getShareOffer } from 'features/share/helpers/getShareOffer'
 import { WebShareModal } from 'features/share/pages/WebShareModal'
@@ -81,7 +81,7 @@ export const Favorite: React.FC<Props> = (props) => {
     from: StepperOrigin.FAVORITE,
   })
 
-  const { mutate: removeFavorite, isLoading } = useRemoveFavorite({
+  const { mutate: removeFavorite, isLoading } = useRemoveFavoriteMutation({
     onError: () => {
       showErrorSnackBar({
         message: 'L’offre n’a pas été retirée de tes favoris',

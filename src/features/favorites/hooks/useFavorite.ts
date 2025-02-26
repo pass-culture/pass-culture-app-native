@@ -1,13 +1,13 @@
 import { FavoriteResponse } from 'api/gen'
 
-import { useFavorites } from './useFavorites'
+import { useFavoritesQuery } from '../api/useFavoritesQuery'
 
 export function useFavorite({
   offerId,
 }: {
   offerId?: number
 }): FavoriteResponse | undefined | null {
-  const { data, isLoading } = useFavorites()
+  const { data, isLoading } = useFavoritesQuery()
   if (isLoading) return undefined
   const favorites = data?.favorites ?? []
   return favorites.find((favorite) => favorite.offer.id === offerId) ?? null

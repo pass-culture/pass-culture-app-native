@@ -5,7 +5,8 @@ import styled from 'styled-components/native'
 import { useNotifyWebappLinkSent } from 'features/bookOffer/queries/useNotifyWebappLinkSent'
 import { Step } from 'features/bookOffer/context/reducer'
 import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
-import { useAddFavorite, useFavorite } from 'features/favorites/api'
+import { useFavorite } from 'features/favorites/api'
+import { useAddFavoriteMutation } from 'features/favorites/api/useAddFavoriteMutation'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
 import { analytics } from 'libs/analytics/provider'
@@ -34,7 +35,7 @@ export const BookingImpossible: React.FC = () => {
     }
   }, [bookingState.step, dispatch])
 
-  const { mutate: addFavorite } = useAddFavorite({
+  const { mutate: addFavorite } = useAddFavoriteMutation({
     onSuccess: () => {
       if (typeof offerId == 'undefined') return
       analytics.logHasAddedOfferToFavorites({ from: 'bookingimpossible', offerId })

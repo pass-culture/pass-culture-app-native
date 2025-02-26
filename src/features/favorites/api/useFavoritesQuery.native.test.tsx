@@ -8,7 +8,7 @@ import { mockAuthContextWithoutUser } from 'tests/AuthContextUtils'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, renderHook } from 'tests/utils'
 
-import { useFavorites } from './useFavorites'
+import { useFavoritesQuery } from './useFavoritesQuery'
 
 jest.mock('features/auth/context/AuthContext')
 jest.mock('libs/jwt/jwt')
@@ -16,7 +16,7 @@ jest.mock('libs/jwt/jwt')
 describe('useFavorites hook', () => {
   it('should retrieve favorite data when logged in', async () => {
     simulateBackend()
-    const { result } = renderHook(useFavorites, {
+    const { result } = renderHook(useFavoritesQuery, {
       wrapper: (props) =>
         reactQueryProviderHOC(
           <FavoritesWrapper>
@@ -36,7 +36,7 @@ describe('useFavorites hook', () => {
 
   it('should fail to fetch when not logged in', async () => {
     mockAuthContextWithoutUser()
-    const { result } = renderHook(useFavorites, {
+    const { result } = renderHook(useFavoritesQuery, {
       wrapper: (props) =>
         reactQueryProviderHOC(
           <FavoritesWrapper>

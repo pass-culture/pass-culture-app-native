@@ -7,7 +7,7 @@ import { isApiError } from 'api/apiHelpers'
 import { AccountState, FavoriteResponse } from 'api/gen'
 import { useLoginRoutine } from 'features/auth/helpers/useLoginRoutine'
 import { LoginRequest, SignInResponseFailure } from 'features/auth/types'
-import { useAddFavorite } from 'features/favorites/api'
+import { useAddFavoriteMutation } from 'features/favorites/api/useAddFavoriteMutation'
 import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import {
   RootStackParamList,
@@ -81,7 +81,7 @@ const useHandleSigninSuccess = (
     }
   }, [])
 
-  const { mutate: addFavorite } = useAddFavorite({
+  const { mutate: addFavorite } = useAddFavoriteMutation({
     onSuccess: onAddFavoriteSuccess,
   })
 
