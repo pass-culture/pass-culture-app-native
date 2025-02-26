@@ -33,14 +33,15 @@ export const useOfferSummaryInfoList = ({ offer, isCinemaOffer }: Props) => {
     ? formatDuration(extraData.durationMinutes)
     : undefined
 
-  const fullAddress = formatFullAddress(address?.street, address?.postalCode, address?.city)
+  const fullAddressOffer = formatFullAddress(address?.street, address?.postalCode, address?.city)
+  const fullAddressVenue = formatFullAddress(venue.address, venue.postalCode, venue.city)
 
   const summaryInfoItems: SummaryInfoItem[] = [
     {
-      isDisplayed: !!fullAddress && address?.street !== venue.address,
+      isDisplayed: !!fullAddressOffer && fullAddressOffer !== fullAddressVenue,
       Icon: <MapPin size={theme.icons.sizes.small} />,
       title: address?.label ?? 'Adresse',
-      subtitle: fullAddress,
+      subtitle: fullAddressOffer,
     },
     {
       isDisplayed: !!formattedDate && !isCinemaOffer,
