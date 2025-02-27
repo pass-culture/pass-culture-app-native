@@ -41,8 +41,11 @@ export function BeneficiaryAccountCreated() {
   const currency = useGetCurrencyToDisplay()
   const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
   const maxPrice = formatCurrencyFromCents(maxPriceInCents, currency, euroToPacificFrancRate)
+  const fallbackAmount = isUnderageBeneficiary
+    ? defaultCreditByAge.v3.age_17
+    : defaultCreditByAge.v3.age_18
   const recreditAmount = formatCurrencyFromCents(
-    user?.recreditAmountToShow || defaultCreditByAge.v3.age_18,
+    user?.recreditAmountToShow || fallbackAmount,
     currency,
     euroToPacificFrancRate
   )

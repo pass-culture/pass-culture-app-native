@@ -143,7 +143,18 @@ describe('<BeneficiaryAccountCreated/>', () => {
       setSettings({ wipEnableCreditV3: true })
     })
 
-    it('should have correct amount', async () => {
+    it('should have correct amount for underage users', async () => {
+      renderBeneficiaryAccountCreated()
+
+      const recreditAmount = screen.getByText('50 €')
+
+      await act(() => {
+        expect(recreditAmount).toBeOnTheScreen()
+      })
+    })
+
+    it('should have correct amount for 18 year old users', async () => {
+      mockAuthContextWithUser(beneficiaryUser, { persist: true })
       renderBeneficiaryAccountCreated()
 
       const recreditAmount = screen.getByText('150 €')
