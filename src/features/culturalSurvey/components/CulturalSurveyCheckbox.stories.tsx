@@ -1,16 +1,16 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { StoryObj, Meta } from '@storybook/react'
 import React from 'react'
 
 import { CulturalSurveyCheckbox } from 'features/culturalSurvey/components/CulturalSurveyCheckbox'
 import { culturalSurveyIcons } from 'ui/svg/icons/bicolor/exports/culturalSurveyIcons'
 
-const meta: ComponentMeta<typeof CulturalSurveyCheckbox> = {
+const meta: Meta<typeof CulturalSurveyCheckbox> = {
   title: 'Features/culturalSurvey/CulturalSurveyCheckbox',
   component: CulturalSurveyCheckbox,
 }
 export default meta
 
-const Template: ComponentStory<typeof CulturalSurveyCheckbox> = (props) => (
+const Template: StoryObj<typeof CulturalSurveyCheckbox> = (props) => (
   <CulturalSurveyCheckbox {...props} />
 )
 

@@ -1,4 +1,4 @@
-import { ComponentMeta } from '@storybook/react'
+import { Meta } from '@storybook/react'
 import { Story } from '@storybook/react/dist/ts3.9/client/preview/types-6-0'
 import React, { ComponentProps } from 'react'
 import { StyleSheet, View } from 'react-native'
@@ -13,7 +13,7 @@ import { StepVariant } from '../VerticalStepper/types'
 
 import { InternalStep } from './InternalStep'
 
-const meta: ComponentMeta<typeof InternalStep> = {
+const meta: Meta<typeof InternalStep> = {
   title: 'features/profile/InternalStep',
   component: InternalStep,
   argTypes: {},

@@ -1,4 +1,4 @@
-import { ComponentMeta } from '@storybook/react'
+import { Meta } from '@storybook/react'
 import React from 'react'
 import { View } from 'react-native'
 
@@ -6,7 +6,7 @@ import { ChronicleCard } from 'features/chronicle/components/ChronicleCard/Chron
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 
-const meta: ComponentMeta<typeof ChronicleCard> = {
+const meta: Meta<typeof ChronicleCard> = {
   title: 'ui/ChronicleCard',
   component: ChronicleCard,
 }

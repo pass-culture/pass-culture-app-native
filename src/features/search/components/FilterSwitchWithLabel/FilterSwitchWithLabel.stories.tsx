@@ -1,10 +1,10 @@
 import { NavigationContainer } from '@react-navigation/native'
-import { ComponentMeta, ComponentStory } from '@storybook/react'
+import { Meta, StoryObj } from '@storybook/react'
 import React from 'react'
 
 import { FilterSwitchWithLabel } from 'features/search/components/FilterSwitchWithLabel/FilterSwitchWithLabel'
 
-const meta: ComponentMeta<typeof FilterSwitchWithLabel> = {
+const meta: Meta<typeof FilterSwitchWithLabel> = {
   title: 'Features/search/FilterSwitchWithLabel',
   component: FilterSwitchWithLabel,
   decorators: [
@@ -17,7 +17,7 @@ const meta: ComponentMeta<typeof FilterSwitchWithLabel> = {
 }
 export default meta
 
-const Template: ComponentStory<typeof FilterSwitchWithLabel> = (props) => (
+const Template: StoryObj<typeof FilterSwitchWithLabel> = (props) => (
   <FilterSwitchWithLabel {...props} />
 )
 

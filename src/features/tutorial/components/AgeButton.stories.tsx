@@ -1,5 +1,5 @@
 import { NavigationContainer } from '@react-navigation/native'
-import { ComponentMeta } from '@storybook/react'
+import { Meta } from '@storybook/react'
 import React from 'react'
 import styled from 'styled-components/native'
 
@@ -29,7 +29,7 @@ const StyledBodyAccent = styled(TypoDS.BodyAccent)(({ theme }) => ({
   color: theme.colors.secondary,
 }))
 
-const meta: ComponentMeta<typeof AgeButton> = {
+const meta: Meta<typeof AgeButton> = {
   title: 'features/tutorial/AgeButton',
   component: AgeButton,
   argTypes: {

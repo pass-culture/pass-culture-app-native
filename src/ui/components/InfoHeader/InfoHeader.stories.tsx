@@ -1,4 +1,4 @@
-import { ComponentMeta } from '@storybook/react'
+import { Meta } from '@storybook/react'
 import React from 'react'
 import styled from 'styled-components/native'
 
@@ -9,7 +9,7 @@ import { RightFilled } from 'ui/svg/icons/RightFilled'
 
 import { InfoHeader } from './InfoHeader'
 
-const meta: ComponentMeta<typeof InfoHeader> = {
+const meta: Meta<typeof InfoHeader> = {
   title: 'ui/InfoHeader',
   component: InfoHeader,
 }

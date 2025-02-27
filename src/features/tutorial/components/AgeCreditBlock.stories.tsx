@@ -1,4 +1,4 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { StoryObj, Meta } from '@storybook/react'
 import React from 'react'
 import styled from 'styled-components/native'
 
@@ -8,7 +8,7 @@ import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 import { AgeCreditBlock } from './AgeCreditBlock'
 
 const ANIMATION_DELAY = 2
-const meta: ComponentMeta<typeof AgeCreditBlock> = {
+const meta: Meta<typeof AgeCreditBlock> = {
   title: 'features/tutorial/AgeCreditBlock',
   component: AgeCreditBlock,
   parameters: {
@@ -18,8 +18,8 @@ const meta: ComponentMeta<typeof AgeCreditBlock> = {
 }
 export default meta
 
-const Template: ComponentStory<typeof AgeCreditBlock> = (props) => <AgeCreditBlock {...props} />
-const List: ComponentStory<typeof AgeCreditBlock> = (props) => (
+const Template: StoryObj<typeof AgeCreditBlock> = (props) => <AgeCreditBlock {...props} />
+const List: StoryObj<typeof AgeCreditBlock> = (props) => (
   <ListContainer>
     <AgeCreditBlock {...props} creditStatus={CreditStatus.GONE}>
       <TypoDS.Title3>30&nbsp;€</TypoDS.Title3>

@@ -1,5 +1,5 @@
 import { NavigationContainer } from '@react-navigation/native'
-import { ComponentMeta } from '@storybook/react'
+import { Meta } from '@storybook/react'
 import React from 'react'
 
 import { selectArgTypeFromObject } from 'libs/storybook/selectArgTypeFromObject'
@@ -10,7 +10,7 @@ import { Email } from 'ui/svg/icons/Email'
 
 import { RadioButton } from './RadioButton'
 
-const meta: ComponentMeta<typeof RadioButton> = {
+const meta: Meta<typeof RadioButton> = {
   title: 'ui/inputs/RadioButton',
   component: RadioButton,
   decorators: [

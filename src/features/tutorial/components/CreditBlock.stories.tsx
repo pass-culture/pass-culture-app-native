@@ -1,4 +1,4 @@
-import { ComponentMeta } from '@storybook/react'
+import { Meta } from '@storybook/react'
 import React from 'react'
 
 import { CreditStatus } from 'features/tutorial/enums'
@@ -7,7 +7,7 @@ import { TypoDS } from 'ui/theme'
 
 import { CreditBlock } from './CreditBlock'
 
-const meta: ComponentMeta<typeof CreditBlock> = {
+const meta: Meta<typeof CreditBlock> = {
   title: 'features/tutorial/CreditBlock',
   component: CreditBlock,
 }

@@ -1,11 +1,11 @@
-import { ComponentMeta } from '@storybook/react'
+import { Meta } from '@storybook/react'
 import React from 'react'
 
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 
 import { CreditProgressBar } from './CreditProgressBar'
 
-const meta: ComponentMeta<typeof CreditProgressBar> = {
+const meta: Meta<typeof CreditProgressBar> = {
   title: 'Features/Profile/CreditProgressBar',
   component: CreditProgressBar,
 }

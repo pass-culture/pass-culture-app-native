@@ -1,4 +1,4 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { StoryObj, Meta } from '@storybook/react'
 import React from 'react'
 import styled from 'styled-components/native'
 
@@ -6,13 +6,13 @@ import { getSpacing } from 'ui/theme'
 
 import { EighteenBlockDescription } from './EighteenBlockDescription'
 
-const meta: ComponentMeta<typeof EighteenBlockDescription> = {
+const meta: Meta<typeof EighteenBlockDescription> = {
   title: 'features/tutorial/EighteenBlockDescription',
   component: EighteenBlockDescription,
 }
 export default meta
 
-const Template: ComponentStory<typeof EighteenBlockDescription> = () => (
+const Template: StoryObj<typeof EighteenBlockDescription> = () => (
   <GreyContainer>
     <EighteenBlockDescription />
   </GreyContainer>

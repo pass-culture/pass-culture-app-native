@@ -1,11 +1,11 @@
-import { ComponentMeta } from '@storybook/react'
+import { Meta } from '@storybook/react'
 import React from 'react'
 
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 
 import { Subtitle } from './Subtitle'
 
-const meta: ComponentMeta<typeof Subtitle> = {
+const meta: Meta<typeof Subtitle> = {
   title: 'features/profile/Subtitle',
   component: Subtitle,
 }

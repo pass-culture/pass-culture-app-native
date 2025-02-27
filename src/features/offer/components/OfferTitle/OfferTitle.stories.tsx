@@ -1,10 +1,10 @@
-import { ComponentMeta } from '@storybook/react'
+import { Meta } from '@storybook/react'
 import React from 'react'
 
 import { OfferTitle } from 'features/offer/components/OfferTitle/OfferTitle'
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 
-const meta: ComponentMeta<typeof OfferTitle> = {
+const meta: Meta<typeof OfferTitle> = {
   title: 'features/offer/OfferTitle',
   component: OfferTitle,
 }

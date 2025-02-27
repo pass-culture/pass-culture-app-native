@@ -1,5 +1,5 @@
 import { NavigationContainer } from '@react-navigation/native'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { StoryObj, Meta } from '@storybook/react'
 import React from 'react'
 
 import { venuesSearchFixture } from 'libs/algolia/fixtures/venuesSearchFixture'
@@ -8,7 +8,7 @@ import { LENGTH_S } from 'ui/theme'
 
 import { VenueTile } from './VenueTile'
 
-const meta: ComponentMeta<typeof VenueTile> = {
+const meta: Meta<typeof VenueTile> = {
   title: 'Features/Home/VenueTile',
   component: VenueTile,
   decorators: [
@@ -23,7 +23,7 @@ const meta: ComponentMeta<typeof VenueTile> = {
 }
 export default meta
 
-const Template: ComponentStory<typeof VenueTile> = (props) => <VenueTile {...props} />
+const Template: StoryObj<typeof VenueTile> = (props) => <VenueTile {...props} />
 
 const props = {
   moduleId: 'module-id',

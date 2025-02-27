@@ -1,12 +1,12 @@
 import { NavigationContainer } from '@react-navigation/native'
-import { ComponentMeta } from '@storybook/react'
+import { Meta } from '@storybook/react'
 import React from 'react'
 
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 
 import { VenueMapPreview } from './VenueMapPreview'
 
-const meta: ComponentMeta<typeof VenueMapPreview> = {
+const meta: Meta<typeof VenueMapPreview> = {
   title: 'features/search/VenueMapPreview',
   component: VenueMapPreview,
   decorators: [

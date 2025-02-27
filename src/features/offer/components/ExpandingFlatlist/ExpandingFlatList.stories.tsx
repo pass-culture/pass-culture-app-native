@@ -1,4 +1,4 @@
-import { ComponentMeta } from '@storybook/react'
+import { Meta } from '@storybook/react'
 import React from 'react'
 import styled from 'styled-components/native'
 
@@ -6,7 +6,7 @@ import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storyboo
 
 import { ExpandingFlatList } from './ExpandingFlatList'
 
-const meta: ComponentMeta<typeof ExpandingFlatList> = {
+const meta: Meta<typeof ExpandingFlatList> = {
   title: 'features/offer/ExpandingFlatList',
   component: ExpandingFlatList,
   argTypes: {

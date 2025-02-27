@@ -1,16 +1,16 @@
 import { action } from '@storybook/addon-actions'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { StoryObj, Meta } from '@storybook/react'
 import React from 'react'
 
 import { SearchMainInput } from './SearchMainInput'
 
-const meta: ComponentMeta<typeof SearchMainInput> = {
+const meta: Meta<typeof SearchMainInput> = {
   title: 'Features/search/SearchMainInput',
   component: SearchMainInput,
 }
 export default meta
 
-const Template: ComponentStory<typeof SearchMainInput> = (args) => <SearchMainInput {...args} />
+const Template: StoryObj<typeof SearchMainInput> = (args) => <SearchMainInput {...args} />
 
 const baseProps = {
   setQuery: action('setQuery'),

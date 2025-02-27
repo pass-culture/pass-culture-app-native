@@ -3,14 +3,14 @@
 import { useQueryDecorator } from '/.storybook/mocks/react-query'
 
 import { NavigationContainer } from '@react-navigation/native'
-import { ComponentMeta, ComponentStory } from '@storybook/react'
+import { Meta, StoryObj } from '@storybook/react'
 import React from 'react'
 
 import { formattedTrendsModule } from 'features/home/fixtures/homepage.fixture'
 
 import { TrendsModule } from './TrendsModule'
 
-const meta: ComponentMeta<typeof TrendsModule> = {
+const meta: Meta<typeof TrendsModule> = {
   title: 'features/home/TrendsModule',
   component: TrendsModule,
   decorators: [
@@ -30,7 +30,7 @@ const meta: ComponentMeta<typeof TrendsModule> = {
 
 export default meta
 
-const Template: ComponentStory<typeof TrendsModule> = (props) => <TrendsModule {...props} />
+const Template: StoryObj<typeof TrendsModule> = (props) => <TrendsModule {...props} />
 //TODO(PC-30279): Fix this stories
 const Default = Template.bind({})
 Default.args = formattedTrendsModule

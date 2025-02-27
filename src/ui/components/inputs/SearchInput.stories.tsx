@@ -1,5 +1,5 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
-import { userEvent, screen } from '@storybook/testing-library'
+import { StoryObj, Meta } from '@storybook/react'
+import { userEvent, screen } from '@storybook/test'
 import React, { Fragment } from 'react'
 
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -8,13 +8,13 @@ import { MagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
 
 import { SearchInput } from './SearchInput'
 
-const meta: ComponentMeta<typeof SearchInput> = {
+const meta: Meta<typeof SearchInput> = {
   title: 'ui/inputs/SearchInput',
   component: SearchInput,
 }
 export default meta
 
-export const NotFocusable: ComponentStory<typeof SearchInput> = (args) => (
+export const NotFocusable: StoryObj<typeof SearchInput> = (args) => (
   <Fragment>
     <SearchInput {...args} />
     <ButtonPrimary wording="This is button should be automatically focused" />

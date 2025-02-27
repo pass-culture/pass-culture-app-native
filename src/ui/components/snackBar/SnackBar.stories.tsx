@@ -1,4 +1,4 @@
-import { ComponentMeta } from '@storybook/react'
+import { Meta } from '@storybook/react'
 import React from 'react'
 
 import { computedTheme } from 'tests/computedTheme'
@@ -9,7 +9,7 @@ import { getSpacing } from 'ui/theme'
 
 import { SnackBar } from './SnackBar'
 
-const meta: ComponentMeta<typeof SnackBar> = {
+const meta: Meta<typeof SnackBar> = {
   title: 'ui/SnackBar',
   component: SnackBar,
 }

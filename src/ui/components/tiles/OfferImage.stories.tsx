@@ -1,4 +1,4 @@
-import { ComponentMeta } from '@storybook/react'
+import { Meta } from '@storybook/react'
 import React from 'react'
 
 import { CategoryIdEnum } from 'api/gen'
@@ -11,7 +11,7 @@ import { OfferImage } from './OfferImage'
 // eslint-disable-next-line import/no-unresolved
 import { useQueryDecorator } from '/.storybook/mocks/react-query'
 
-const meta: ComponentMeta<typeof OfferImage> = {
+const meta: Meta<typeof OfferImage> = {
   title: 'ui/tiles/OfferImage',
   component: OfferImage,
   argTypes: {

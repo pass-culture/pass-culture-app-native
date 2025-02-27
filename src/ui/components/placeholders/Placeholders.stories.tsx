@@ -1,4 +1,4 @@
-import { ComponentStory } from '@storybook/react'
+import { StoryObj } from '@storybook/react'
 import React from 'react'
 
 import { HomeBodyPlaceholder } from 'features/home/components/HomeBodyPlaceholder'
@@ -15,7 +15,7 @@ export default {
   title: 'ui/Placeholders',
 }
 
-const Template: ComponentStory<typeof VariantsTemplate> = () => (
+const Template: StoryObj<typeof VariantsTemplate> = () => (
   <React.Fragment>
     <VariantsTemplate variants={[{ label: 'HitPlaceholder' }]} Component={HitPlaceholder} />
     <VariantsTemplate

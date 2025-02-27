@@ -1,4 +1,4 @@
-import { ComponentMeta } from '@storybook/react'
+import { Meta } from '@storybook/react'
 import React from 'react'
 
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
@@ -6,7 +6,7 @@ import { Email } from 'ui/svg/icons/Email'
 
 import { ButtonTertiaryPrimary } from './ButtonTertiaryPrimary'
 
-const meta: ComponentMeta<typeof ButtonTertiaryPrimary> = {
+const meta: Meta<typeof ButtonTertiaryPrimary> = {
   title: 'ui/buttons/ButtonTertiaryPrimary',
   component: ButtonTertiaryPrimary,
 }

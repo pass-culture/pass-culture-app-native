@@ -1,4 +1,4 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { StoryObj, Meta } from '@storybook/react'
 import React from 'react'
 import { ScrollView, View } from 'react-native'
 import styled from 'styled-components/native'
@@ -9,7 +9,7 @@ import { Spacer, TypoDS } from 'ui/theme'
 
 import { ContentHeader } from './ContentHeader'
 
-const meta: ComponentMeta<typeof ContentHeader> = {
+const meta: Meta<typeof ContentHeader> = {
   title: 'ui/headers/AnimatedBlurHeaderTitle',
   component: ContentHeader,
   parameters: {
@@ -22,7 +22,7 @@ const meta: ComponentMeta<typeof ContentHeader> = {
 }
 export default meta
 
-const Template: ComponentStory<typeof ContentHeader> = (props) => {
+const Template: StoryObj<typeof ContentHeader> = (props) => {
   const { onScroll, headerTransition } = useOpacityTransition()
 
   const headerHeight = useGetHeaderHeight()

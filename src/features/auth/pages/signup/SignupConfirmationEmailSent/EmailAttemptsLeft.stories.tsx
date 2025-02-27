@@ -1,11 +1,11 @@
-import { ComponentMeta } from '@storybook/react'
+import { Meta } from '@storybook/react'
 import React from 'react'
 
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 
 import { EmailAttemptsLeft } from './EmailAttemptsLeft'
 
-const meta: ComponentMeta<typeof EmailAttemptsLeft> = {
+const meta: Meta<typeof EmailAttemptsLeft> = {
   title: 'features/auth/EmailAttemptsLeft',
   component: EmailAttemptsLeft,
 }

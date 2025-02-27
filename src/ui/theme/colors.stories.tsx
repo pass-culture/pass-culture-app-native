@@ -1,5 +1,5 @@
 import Clipboard from '@react-native-clipboard/clipboard'
-import { ComponentStory } from '@storybook/react'
+import { Meta, StoryObj } from '@storybook/react'
 import colorAlpha from 'color-alpha'
 import React, { FunctionComponent, useState } from 'react'
 import styled from 'styled-components/native'
@@ -8,9 +8,10 @@ import { TypoDS, getSpacing } from 'ui/theme'
 
 import { ColorsEnum, UniqueColors } from './colors'
 
-export default {
+const meta: Meta = {
   title: 'Fondations/Colors',
 }
+export default meta
 
 type RectangleProps = {
   color: string
@@ -20,16 +21,19 @@ type ColorProps = RectangleProps & {
   name: string
 }
 
-const Template: ComponentStory<React.FC> = () => (
-  <React.Fragment>
-    <TypoDS.Title2>ColorsEnum</TypoDS.Title2>
-    <ColorsSection colorsPalette={ColorsEnum} />
-    <TypoDS.Title2>UniqueColors</TypoDS.Title2>
-    <ColorsSection colorsPalette={UniqueColors} />
-  </React.Fragment>
-)
-export const AllColors = Template.bind({})
-AllColors.storyName = 'Colors'
+type Story = StoryObj<React.FC>
+
+export const AllColors: Story = {
+  name: 'Colors',
+  render: () => (
+    <React.Fragment>
+      <TypoDS.Title2>ColorsEnum</TypoDS.Title2>
+      <ColorsSection colorsPalette={ColorsEnum} />
+      <TypoDS.Title2>UniqueColors</TypoDS.Title2>
+      <ColorsSection colorsPalette={UniqueColors} />
+    </React.Fragment>
+  ),
+}
 
 const Color: FunctionComponent<ColorProps> = ({ name, color }) => {
   const [copiedColor, setCopiedColor] = useState<string | null>(null)

@@ -1,5 +1,5 @@
 import { NavigationContainer } from '@react-navigation/native'
-import { ComponentMeta } from '@storybook/react'
+import { Meta } from '@storybook/react'
 import React from 'react'
 
 import FilterSwitch from 'ui/components/FilterSwitch'
@@ -8,7 +8,7 @@ import { TypoDS } from 'ui/theme'
 
 import { Accordion } from './Accordion'
 
-const meta: ComponentMeta<typeof Accordion> = {
+const meta: Meta<typeof Accordion> = {
   title: 'ui/Accordion',
   component: Accordion,
   decorators: [

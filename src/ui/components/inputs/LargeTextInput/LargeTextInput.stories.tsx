@@ -1,11 +1,11 @@
-import { ComponentMeta } from '@storybook/react'
+import { Meta } from '@storybook/react'
 import React from 'react'
 
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 
 import { LargeTextInput } from './LargeTextInput'
 
-const meta: ComponentMeta<typeof LargeTextInput> = {
+const meta: Meta<typeof LargeTextInput> = {
   title: 'ui/inputs/LargeTextInput',
   component: LargeTextInput,
 }

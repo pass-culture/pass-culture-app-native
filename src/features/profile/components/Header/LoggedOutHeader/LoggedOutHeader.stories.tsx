@@ -1,12 +1,12 @@
 import { NavigationContainer } from '@react-navigation/native'
-import { ComponentMeta } from '@storybook/react'
+import { Meta } from '@storybook/react'
 import React from 'react'
 
 import { LoggedOutHeader } from 'features/profile/components/Header/LoggedOutHeader/LoggedOutHeader'
 import { theme } from 'theme'
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 
-const meta: ComponentMeta<typeof LoggedOutHeader> = {
+const meta: Meta<typeof LoggedOutHeader> = {
   title: 'features/Profile/Headers/LoggedOutHeader',
   component: LoggedOutHeader,
   decorators: [

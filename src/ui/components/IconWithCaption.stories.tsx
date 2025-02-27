@@ -1,4 +1,4 @@
-import { ComponentMeta } from '@storybook/react'
+import { Meta } from '@storybook/react'
 import React from 'react'
 
 import { selectArgTypeFromObject } from 'libs/storybook/selectArgTypeFromObject'
@@ -8,7 +8,7 @@ import { getSpacing } from 'ui/theme'
 
 import { IconWithCaption } from './IconWithCaption'
 
-const meta: ComponentMeta<typeof IconWithCaption> = {
+const meta: Meta<typeof IconWithCaption> = {
   title: 'ui/IconWithCaption',
   component: IconWithCaption,
   argTypes: {

@@ -1,11 +1,11 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { StoryObj, Meta } from '@storybook/react'
 import React from 'react'
 
 import { ANIMATION_DELAY } from 'features/home/api/useShowSkeleton'
 
 import { OnboardingTimeline } from './OnboardingTimeline'
 
-const meta: ComponentMeta<typeof OnboardingTimeline> = {
+const meta: Meta<typeof OnboardingTimeline> = {
   title: 'features/tutorial/OnboardingTimeline',
   component: OnboardingTimeline,
   parameters: {
@@ -15,7 +15,7 @@ const meta: ComponentMeta<typeof OnboardingTimeline> = {
 }
 export default meta
 
-const Template: ComponentStory<typeof OnboardingTimeline> = (props) => (
+const Template: StoryObj<typeof OnboardingTimeline> = (props) => (
   <OnboardingTimeline {...props} />
 )
 //TODO(PC-28526): Fix this stories

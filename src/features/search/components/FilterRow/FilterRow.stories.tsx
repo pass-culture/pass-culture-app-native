@@ -1,4 +1,4 @@
-import { ComponentMeta } from '@storybook/react'
+import { Meta } from '@storybook/react'
 import React from 'react'
 
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
@@ -10,7 +10,7 @@ import { Sort as SortIconDefault } from 'ui/svg/icons/Sort'
 
 import { FilterRow } from './FilterRow'
 
-const meta: ComponentMeta<typeof FilterRow> = {
+const meta: Meta<typeof FilterRow> = {
   title: 'Features/search/FilterRow',
   component: FilterRow,
 }

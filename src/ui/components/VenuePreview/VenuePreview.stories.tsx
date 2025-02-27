@@ -1,4 +1,4 @@
-import { ComponentMeta } from '@storybook/react'
+import { Meta } from '@storybook/react'
 import React from 'react'
 
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
@@ -9,7 +9,7 @@ import { VenuePreview } from './VenuePreview'
 
 const VENUE_THUMBNAIL_SIZE = getSpacing(14)
 
-const meta: ComponentMeta<typeof VenuePreview> = {
+const meta: Meta<typeof VenuePreview> = {
   title: 'ui/VenuePreview',
   component: VenuePreview,
 }

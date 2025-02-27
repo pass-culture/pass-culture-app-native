@@ -1,15 +1,15 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { StoryObj, Meta } from '@storybook/react'
 import React from 'react'
 
 import { InformationStepContent } from './InformationStepContent'
 
-const meta: ComponentMeta<typeof InformationStepContent> = {
+const meta: Meta<typeof InformationStepContent> = {
   title: 'features/tutorial/InformationStepContent',
   component: InformationStepContent,
 }
 export default meta
 
-const Template: ComponentStory<typeof InformationStepContent> = (props) => (
+const Template: StoryObj<typeof InformationStepContent> = (props) => (
   <InformationStepContent {...props} />
 )
 export const Default = Template.bind({})

@@ -1,15 +1,15 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react'
+import { Meta, StoryObj } from '@storybook/react'
 import React from 'react'
 
 import { OfferAccessibility } from 'features/offer/components/OfferAccessibility/OfferAccessibility'
 
-const meta: ComponentMeta<typeof OfferAccessibility> = {
+const meta: Meta<typeof OfferAccessibility> = {
   title: 'features/offer/OfferAccessibility',
   component: OfferAccessibility,
 }
 export default meta
 
-const Template: ComponentStory<typeof OfferAccessibility> = (props) => (
+const Template: StoryObj<typeof OfferAccessibility> = (props) => (
   <OfferAccessibility {...props} />
 )
 

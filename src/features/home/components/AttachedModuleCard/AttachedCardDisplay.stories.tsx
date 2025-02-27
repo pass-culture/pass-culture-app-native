@@ -1,4 +1,4 @@
-import { ComponentMeta } from '@storybook/react'
+import { Meta } from '@storybook/react'
 import React, { type ComponentProps } from 'react'
 
 import { CategoryIdEnum } from 'api/gen'
@@ -8,7 +8,7 @@ import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storyboo
 import { ArrowRight } from 'ui/svg/icons/ArrowRight'
 
 import { AttachedCardDisplay } from './AttachedCardDisplay'
-const meta: ComponentMeta<typeof AttachedCardDisplay> = {
+const meta: Meta<typeof AttachedCardDisplay> = {
   title: 'ui/AttachedCardDisplay',
   component: AttachedCardDisplay,
 }

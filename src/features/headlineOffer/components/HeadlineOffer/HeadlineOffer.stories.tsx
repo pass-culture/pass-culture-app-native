@@ -1,12 +1,12 @@
 import { NavigationContainer } from '@react-navigation/native'
-import { ComponentMeta } from '@storybook/react'
+import { Meta } from '@storybook/react'
 import React from 'react'
 
 import { HeadlineOffer } from 'features/headlineOffer/components/HeadlineOffer/HeadlineOffer'
 import { SHARE_APP_IMAGE_SOURCE } from 'features/share/components/shareAppImage'
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 
-const meta: ComponentMeta<typeof HeadlineOffer> = {
+const meta: Meta<typeof HeadlineOffer> = {
   title: 'ui/HeadlineOffer',
   component: HeadlineOffer,
   decorators: [

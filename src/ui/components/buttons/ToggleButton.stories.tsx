@@ -1,5 +1,5 @@
 import { action } from '@storybook/addon-actions'
-import { ComponentMeta } from '@storybook/react'
+import { Meta } from '@storybook/react'
 import React from 'react'
 import styled from 'styled-components/native'
 
@@ -8,7 +8,7 @@ import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storyboo
 import { Bell } from 'ui/svg/icons/Bell'
 import { BellFilled } from 'ui/svg/icons/BellFilled'
 
-const meta: ComponentMeta<typeof ToggleButton> = {
+const meta: Meta<typeof ToggleButton> = {
   title: 'ui/buttons/ToggleButton',
   component: ToggleButton,
 }

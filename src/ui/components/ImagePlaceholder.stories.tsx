@@ -1,4 +1,4 @@
-import { ComponentStory } from '@storybook/react'
+import { StoryObj } from '@storybook/react'
 import React from 'react'
 
 import { CategoryIdEnum } from 'api/gen'
@@ -16,7 +16,7 @@ export default {
   },
 }
 
-export const Default: ComponentStory<typeof ImagePlaceholder> = (props) => (
+export const Default: StoryObj<typeof ImagePlaceholder> = (props) => (
   <ImagePlaceholder {...props} />
 )
 Default.storyName = 'ImagePlaceholder'

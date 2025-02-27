@@ -1,5 +1,5 @@
 import { NavigationContainer } from '@react-navigation/native'
-import { ComponentMeta } from '@storybook/react'
+import { Meta } from '@storybook/react'
 import React from 'react'
 import { Text } from 'react-native'
 
@@ -13,7 +13,7 @@ import { TypoDS } from 'ui/theme'
 import { ColorsEnum } from 'ui/theme/colors'
 import { iconSizes } from 'ui/theme/iconSizes'
 
-const meta: ComponentMeta<typeof HeroButtonList> = {
+const meta: Meta<typeof HeroButtonList> = {
   title: 'ui/buttons/HeroButtonList',
   component: HeroButtonList,
   decorators: [

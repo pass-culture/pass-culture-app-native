@@ -7,7 +7,7 @@ import { ArrowNext } from 'ui/svg/icons/ArrowNext'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 import { getSpacing } from 'ui/theme'
 
-type GenericBannerProps = {
+export type GenericBannerProps = {
   LeftIcon?: ReactElement
   RightIcon?: FunctionComponent<AccessibleIcon>
   noRightIcon?: boolean

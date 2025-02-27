@@ -1,15 +1,15 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react'
+import { Meta, StoryObj } from '@storybook/react'
 import React from 'react'
 
 import { MapPinWithCounter } from 'features/venueMap/components/MapPinWithCounter/MapPinWithCounter'
 
-const meta: ComponentMeta<typeof MapPinWithCounter> = {
+const meta: Meta<typeof MapPinWithCounter> = {
   title: 'features/search/MapPinWithCounter',
   component: MapPinWithCounter,
 }
 export default meta
 
-const Template: ComponentStory<typeof MapPinWithCounter> = (props) => (
+const Template: StoryObj<typeof MapPinWithCounter> = (props) => (
   <MapPinWithCounter {...props} />
 )
 

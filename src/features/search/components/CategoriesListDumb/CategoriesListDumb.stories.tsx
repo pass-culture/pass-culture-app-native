@@ -1,5 +1,5 @@
 import { NavigationContainer } from '@react-navigation/native'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { StoryObj, Meta } from '@storybook/react'
 import React from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
@@ -10,7 +10,7 @@ import { getSpacing } from 'ui/theme'
 
 import { CategoriesListDumb } from './CategoriesListDumb'
 
-const meta: ComponentMeta<typeof CategoriesListDumb> = {
+const meta: Meta<typeof CategoriesListDumb> = {
   title: 'Features/search/CategoriesButtons',
   component: CategoriesListDumb,
 }
@@ -20,7 +20,7 @@ const BodyWrapper = styled.View({
   marginHorizontal: -getSpacing(4),
 })
 
-export const Default: ComponentStory<typeof CategoriesListDumb> = (props) => (
+export const Default: StoryObj<typeof CategoriesListDumb> = (props) => (
   <BodyWrapper>
     <NavigationContainer>
       <Container>

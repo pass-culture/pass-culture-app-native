@@ -1,4 +1,4 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { StoryObj, Meta } from '@storybook/react'
 import React from 'react'
 
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
@@ -6,7 +6,7 @@ import { ReactQueryClientProvider } from 'libs/react-query/ReactQueryClientProvi
 
 import { OfferMessagingApps } from './OfferMessagingApps'
 
-const meta: ComponentMeta<typeof OfferMessagingApps> = {
+const meta: Meta<typeof OfferMessagingApps> = {
   title: 'features/offer/MessagingApps',
   component: OfferMessagingApps,
   decorators: [
@@ -19,7 +19,7 @@ const meta: ComponentMeta<typeof OfferMessagingApps> = {
 }
 export default meta
 
-const Template: ComponentStory<typeof OfferMessagingApps> = (args) => (
+const Template: StoryObj<typeof OfferMessagingApps> = (args) => (
   <OfferMessagingApps {...args} />
 )
 

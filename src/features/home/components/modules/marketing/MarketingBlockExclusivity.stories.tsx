@@ -1,5 +1,5 @@
 import { NavigationContainer } from '@react-navigation/native'
-import { ComponentMeta } from '@storybook/react'
+import { Meta } from '@storybook/react'
 import React from 'react'
 
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
@@ -13,7 +13,7 @@ import { MarketingBlockExclusivity } from './MarketingBlockExclusivity'
 // eslint-disable-next-line import/no-unresolved
 import { useQueryDecorator } from '/.storybook/mocks/react-query'
 
-const meta: ComponentMeta<typeof MarketingBlockExclusivity> = {
+const meta: Meta<typeof MarketingBlockExclusivity> = {
   title: 'features/home/MarketingBlock/MarketingBlockExclusivity',
   component: MarketingBlockExclusivity,
   decorators: [

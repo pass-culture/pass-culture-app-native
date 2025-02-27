@@ -1,18 +1,17 @@
-import { ComponentMeta } from '@storybook/react'
+import { Meta } from '@storybook/react'
 import React from 'react'
 
-import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
+import { VariantsTemplate, Variants, VariantsStory } from 'ui/storybook/VariantsTemplate'
 import { BicolorEverywhere } from 'ui/svg/icons/BicolorEverywhere'
 import { Bulb } from 'ui/svg/icons/Bulb'
 import { Spacer, TypoDS } from 'ui/theme'
 
-import { GenericBanner } from './GenericBanner'
+import { GenericBanner, GenericBannerProps } from './GenericBanner'
 
-const meta: ComponentMeta<typeof GenericBanner> = {
+const meta: Meta<typeof GenericBanner> = {
   title: 'ui/banners/GenericBanner',
   component: GenericBanner,
 }
-
 export default meta
 
 const textExample = ({ withSubtitle = true }) => (
@@ -25,7 +24,7 @@ const textExample = ({ withSubtitle = true }) => (
   </React.Fragment>
 )
 
-const variantConfig: Variants<typeof GenericBanner> = [
+const variantConfig: Variants<typeof GenericBanner, GenericBannerProps> = [
   {
     label: 'GenericBanner default',
     props: { children: textExample({}) },
@@ -48,9 +47,12 @@ const variantConfig: Variants<typeof GenericBanner> = [
   },
 ]
 
-const Template: VariantsStory<typeof GenericBanner> = (args) => (
-  <VariantsTemplate variants={variantConfig} Component={GenericBanner} defaultProps={args} />
-)
+type Story = VariantsStory<typeof GenericBanner>
 
-export const AllVariants = Template.bind({})
-AllVariants.storyName = 'GenericBanner'
+export const AllVariants: Story = {
+  name: 'GenericBanner',
+  args: {},
+  render: (args) => (
+    <VariantsTemplate variants={variantConfig} Component={GenericBanner} defaultProps={args} />
+  ),
+}

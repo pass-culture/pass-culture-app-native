@@ -1,4 +1,4 @@
-import { ComponentMeta } from '@storybook/react'
+import { Meta } from '@storybook/react'
 import React from 'react'
 
 import { beneficiaryUser } from 'fixtures/user'
@@ -9,7 +9,7 @@ import { CreditInfo } from './CreditInfo'
 export default {
   title: 'Features/Profile/CreditInfo',
   component: CreditInfo,
-} as ComponentMeta<typeof CreditInfo>
+} as Meta<typeof CreditInfo>
 
 const variantConfig: Variants<typeof CreditInfo> = [
   {

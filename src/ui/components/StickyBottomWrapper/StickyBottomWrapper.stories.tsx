@@ -1,4 +1,4 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { StoryObj, Meta } from '@storybook/react'
 import React from 'react'
 import styled from 'styled-components/native'
 
@@ -9,13 +9,13 @@ import { BicolorWarning } from 'ui/svg/icons/BicolorWarning'
 
 import { StickyBottomWrapper } from './StickyBottomWrapper'
 
-const meta: ComponentMeta<typeof StickyBottomWrapper> = {
+const meta: Meta<typeof StickyBottomWrapper> = {
   title: 'ui/StickyBottomWrapper',
   component: StickyBottomWrapper,
 }
 export default meta
 
-const Template: ComponentStory<typeof StickyBottomWrapper> = (props) => (
+const Template: StoryObj<typeof StickyBottomWrapper> = (props) => (
   <React.Fragment>
     <InformationWithIcon
       Icon={BicolorWarning}

@@ -2,7 +2,8 @@ const path = require('path')
 
 const appSrc = path.resolve('./src/')
 module.exports = {
-  stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
+  stories: ['../src/**/*.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
+
   addons: [
     '@storybook/addon-links',
     '@storybook/addon-essentials',
@@ -33,12 +34,22 @@ module.exports = {
         modulesToTranspile: ['@ptomasroos/react-native-multi-slider'],
       },
     },
+    '@chromatic-com/storybook'
   ],
-  framework: '@storybook/react',
+
+  framework: {
+    name: '@storybook/react-vite',
+    options: {}
+  },
+
   webpackFinal: async (config) => {
     config.resolve.alias['react-query'] = require.resolve('./mocks/react-query.js')
     config.resolve.alias['firebase/compat/app'] = require.resolve('./mocks/firebase.js')
     config.resolve.alias['firebase/remote-config'] = require.resolve('./mocks/remote-config.js')
     return config
   },
+
+  docs: {
+    autodocs: true
+  }
 }

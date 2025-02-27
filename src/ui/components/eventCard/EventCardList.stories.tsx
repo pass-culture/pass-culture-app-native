@@ -1,18 +1,18 @@
 import { action } from '@storybook/addon-actions'
-import { ComponentMeta, ComponentStory } from '@storybook/react'
+import { Meta, StoryObj } from '@storybook/react'
 import React from 'react'
 
 import { theme } from 'theme'
 
 import { EventCardList } from './EventCardList'
 
-const meta: ComponentMeta<typeof EventCardList> = {
+const meta: Meta<typeof EventCardList> = {
   title: 'ui/EventCard/EventCardList',
   component: EventCardList,
 }
 export default meta
 
-const Template: ComponentStory<typeof EventCardList> = (props) => <EventCardList {...props} />
+const Template: StoryObj<typeof EventCardList> = (props) => <EventCardList {...props} />
 
 export const Default = Template.bind({})
 Default.storyName = 'EventCardList'

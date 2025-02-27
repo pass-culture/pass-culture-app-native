@@ -1,5 +1,5 @@
 import { NavigationContainer } from '@react-navigation/native'
-import { ComponentMeta } from '@storybook/react'
+import { Meta } from '@storybook/react'
 import React from 'react'
 
 import { theme } from 'theme'
@@ -7,7 +7,7 @@ import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storyboo
 
 import { MarketingBlockHighlight } from './MarketingBlockHighlight'
 
-const meta: ComponentMeta<typeof MarketingBlockHighlight> = {
+const meta: Meta<typeof MarketingBlockHighlight> = {
   title: 'features/home/MarketingBlock/MarketingBlockHighlight',
   component: MarketingBlockHighlight,
   decorators: [

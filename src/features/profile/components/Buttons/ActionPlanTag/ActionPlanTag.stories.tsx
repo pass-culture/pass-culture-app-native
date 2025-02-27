@@ -1,11 +1,11 @@
-import { ComponentMeta } from '@storybook/react'
+import { Meta } from '@storybook/react'
 import React from 'react'
 
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 
 import { ActionPlanStatus, ActionPlanTag } from './ActionPlanTag'
 
-const meta: ComponentMeta<typeof ActionPlanTag> = {
+const meta: Meta<typeof ActionPlanTag> = {
   title: 'features/profile/buttons/ActionPlanTag',
   component: ActionPlanTag,
 }

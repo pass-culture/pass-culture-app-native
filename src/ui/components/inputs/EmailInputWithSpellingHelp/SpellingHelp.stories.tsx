@@ -1,11 +1,11 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { StoryObj, Meta } from '@storybook/react'
 import React from 'react'
 
 import { theme } from 'theme'
 
 import { SpellingHelp } from './SpellingHelp'
 
-const meta: ComponentMeta<typeof SpellingHelp> = {
+const meta: Meta<typeof SpellingHelp> = {
   title: 'ui/inputs/EmailInputWithSpellingHelp/SpellingHelp',
   component: SpellingHelp,
   parameters: {
@@ -14,7 +14,7 @@ const meta: ComponentMeta<typeof SpellingHelp> = {
 }
 export default meta
 
-const Template: ComponentStory<typeof SpellingHelp> = (props) => <SpellingHelp {...props} />
+const Template: StoryObj<typeof SpellingHelp> = (props) => <SpellingHelp {...props} />
 
 export const Default = Template.bind({})
 Default.args = {

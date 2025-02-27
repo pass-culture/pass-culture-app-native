@@ -1,15 +1,15 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react'
+import { Meta, StoryObj } from '@storybook/react'
 import React from 'react'
 
 import { DeviceInformationsBanner } from './DeviceInformationsBanner'
 
-const meta: ComponentMeta<typeof DeviceInformationsBanner> = {
+const meta: Meta<typeof DeviceInformationsBanner> = {
   title: 'features/trustedDevice/DeviceInformationsBanner',
   component: DeviceInformationsBanner,
 }
 export default meta
 
-const Template: ComponentStory<typeof DeviceInformationsBanner> = (props) => (
+const Template: StoryObj<typeof DeviceInformationsBanner> = (props) => (
   <DeviceInformationsBanner {...props} />
 )
 export const Default = Template.bind({})

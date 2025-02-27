@@ -1,4 +1,4 @@
-import { ComponentMeta } from '@storybook/react'
+import { Meta } from '@storybook/react'
 import React from 'react'
 import QRCode from 'react-native-qrcode-svg'
 
@@ -7,7 +7,7 @@ import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storyboo
 
 import { ThreeShapesTicket } from './ThreeShapesTicket'
 
-const meta: ComponentMeta<typeof ThreeShapesTicket> = {
+const meta: Meta<typeof ThreeShapesTicket> = {
   title: 'Features/bookings/ThreeShapesTicket',
   component: ThreeShapesTicket,
 }

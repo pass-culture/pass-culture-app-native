@@ -1,5 +1,5 @@
 import { NavigationContainer } from '@react-navigation/native'
-import { ComponentMeta, ComponentStory } from '@storybook/react'
+import { Meta, StoryObj } from '@storybook/react'
 import mockDate from 'mockdate'
 import React from 'react'
 
@@ -9,7 +9,7 @@ import { ThematicHighlightModule } from './ThematicHighlightModule'
 
 mockDate.set(CURRENT_DATE)
 
-const componentMeta: ComponentMeta<typeof ThematicHighlightModule> = {
+const componentMeta: Meta<typeof ThematicHighlightModule> = {
   title: 'Features/Home/ThematicHighlightModule',
   component: ThematicHighlightModule,
   decorators: [
@@ -22,7 +22,7 @@ const componentMeta: ComponentMeta<typeof ThematicHighlightModule> = {
 }
 export default componentMeta
 
-const Template: ComponentStory<typeof ThematicHighlightModule> = (props) => (
+const Template: StoryObj<typeof ThematicHighlightModule> = (props) => (
   <ThematicHighlightModule {...props} />
 )
 

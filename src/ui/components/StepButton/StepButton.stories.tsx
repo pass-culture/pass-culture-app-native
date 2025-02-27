@@ -1,5 +1,5 @@
 import { NavigationContainer } from '@react-navigation/native'
-import { ComponentMeta } from '@storybook/react'
+import { Meta } from '@storybook/react'
 import React from 'react'
 
 import { IconRetryStep } from 'features/identityCheck/components/IconRetryStep'
@@ -20,7 +20,7 @@ const DisabledIdCardIcon: React.FC<AccessibleIcon> = () => (
   />
 )
 
-const meta: ComponentMeta<typeof StepButton> = {
+const meta: Meta<typeof StepButton> = {
   title: 'ui/StepButton',
   component: StepButton,
   decorators: [

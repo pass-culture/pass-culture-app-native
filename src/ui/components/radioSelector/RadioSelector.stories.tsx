@@ -1,12 +1,12 @@
 import { NavigationContainer } from '@react-navigation/native'
-import { ComponentMeta } from '@storybook/react'
+import { Meta } from '@storybook/react'
 import React from 'react'
 
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 
 import { RadioSelector } from './RadioSelector'
 
-const meta: ComponentMeta<typeof RadioSelector> = {
+const meta: Meta<typeof RadioSelector> = {
   title: 'ui/inputs/RadioSelector',
   component: RadioSelector,
   parameters: {

@@ -1,4 +1,4 @@
-import { ComponentStory } from '@storybook/react'
+import { StoryObj } from '@storybook/react'
 import React, { ComponentProps } from 'react'
 
 import { SearchCategoriesIllustrations } from 'features/search/enums'
@@ -43,7 +43,7 @@ const illustrationSets: ComponentProps<typeof Illustrations>[] = [
   },
 ]
 
-const Template: ComponentStory<typeof Illustrations> = () => (
+const Template: StoryObj<typeof Illustrations> = () => (
   <React.Fragment>
     {illustrationSets.map((illustration) => (
       <Illustrations

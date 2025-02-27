@@ -1,5 +1,5 @@
 import { NavigationContainer } from '@react-navigation/native'
-import { ComponentMeta, ComponentStory } from '@storybook/react'
+import { Meta, StoryObj } from '@storybook/react'
 import React from 'react'
 
 import { initialSearchState } from 'features/search/context/reducer'
@@ -7,7 +7,7 @@ import { BooksNativeCategoriesEnum, NativeCategoryEnum } from 'features/search/t
 import { theme } from 'theme'
 import { SubcategoryButtonList } from 'ui/components/buttons/SubcategoryButton/SubcategoryButtonList'
 
-const meta: ComponentMeta<typeof SubcategoryButtonList> = {
+const meta: Meta<typeof SubcategoryButtonList> = {
   title: 'ui/buttons/SubcategoryButtonList',
   component: SubcategoryButtonList,
   decorators: [
@@ -20,7 +20,7 @@ const meta: ComponentMeta<typeof SubcategoryButtonList> = {
 }
 export default meta
 
-const Template: ComponentStory<typeof SubcategoryButtonList> = (props) => (
+const Template: StoryObj<typeof SubcategoryButtonList> = (props) => (
   <SubcategoryButtonList {...props} />
 )
 

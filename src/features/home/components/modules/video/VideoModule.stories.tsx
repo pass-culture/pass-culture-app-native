@@ -1,5 +1,5 @@
 import { NavigationContainer } from '@react-navigation/native'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { StoryObj, Meta } from '@storybook/react'
 import React from 'react'
 
 import { videoModuleFixture } from 'features/home/fixtures/videoModule.fixture'
@@ -7,7 +7,7 @@ import { ReactQueryClientProvider } from 'libs/react-query/ReactQueryClientProvi
 
 import { VideoModule } from './VideoModule'
 
-const meta: ComponentMeta<typeof VideoModule> = {
+const meta: Meta<typeof VideoModule> = {
   title: 'Features/home/VideoModule',
   component: VideoModule,
   decorators: [
@@ -22,7 +22,7 @@ const meta: ComponentMeta<typeof VideoModule> = {
 }
 export default meta
 
-const Template: ComponentStory<typeof VideoModule> = (props) => <VideoModule {...props} />
+const Template: StoryObj<typeof VideoModule> = (props) => <VideoModule {...props} />
 
 const defaultArgs = videoModuleFixture
 

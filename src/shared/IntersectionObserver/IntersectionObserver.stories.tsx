@@ -1,5 +1,5 @@
 import { action } from '@storybook/addon-actions'
-import { ComponentMeta, ComponentStory } from '@storybook/react'
+import { Meta, StoryObj } from '@storybook/react'
 import React, { useState } from 'react'
 import { StyleSheet, View } from 'react-native'
 import { IOScrollView as IntersectionObserverScrollView } from 'react-native-intersection-observer'
@@ -9,7 +9,7 @@ import { TypoDS } from 'ui/theme'
 
 import { IntersectionObserver } from './IntersectionObserver'
 
-const meta: ComponentMeta<typeof IntersectionObserver> = {
+const meta: Meta<typeof IntersectionObserver> = {
   title: 'features/shared/IntersectionObserver',
   component: IntersectionObserver,
   parameters: {
@@ -21,7 +21,7 @@ const meta: ComponentMeta<typeof IntersectionObserver> = {
 }
 export default meta
 
-const Template: ComponentStory<typeof IntersectionObserver> = (props) => {
+const Template: StoryObj<typeof IntersectionObserver> = (props) => {
   const [inView, setInView] = useState<boolean>(false)
 
   const handleChange = (inView: boolean) => {

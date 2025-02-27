@@ -1,5 +1,5 @@
 import { action } from '@storybook/addon-actions'
-import { ComponentMeta } from '@storybook/react'
+import { Meta } from '@storybook/react'
 import React from 'react'
 
 import { NativeCategoryIdEnumv2, SearchGroupNameEnumv2 } from 'api/gen'
@@ -7,7 +7,7 @@ import { SearchHistoryItem } from 'features/search/components/SearchHistoryItem/
 import { Highlighted, HistoryItem } from 'features/search/types'
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 
-const meta: ComponentMeta<typeof SearchHistoryItem> = {
+const meta: Meta<typeof SearchHistoryItem> = {
   title: 'features/search/SearchHistoryItem',
   component: SearchHistoryItem,
   decorators: [(Story) => <Story />],

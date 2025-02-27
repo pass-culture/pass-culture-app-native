@@ -1,4 +1,4 @@
-import { ComponentMeta } from '@storybook/react'
+import { Meta } from '@storybook/react'
 import React from 'react'
 
 import { SubcategoryIdEnum, WithdrawalTypeEnum } from 'api/gen'
@@ -7,7 +7,7 @@ import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storyboo
 
 import { TicketBody } from './TicketBody'
 
-const meta: ComponentMeta<typeof TicketBody> = {
+const meta: Meta<typeof TicketBody> = {
   title: 'features/bookings/TicketBody',
   component: TicketBody,
   parameters: {

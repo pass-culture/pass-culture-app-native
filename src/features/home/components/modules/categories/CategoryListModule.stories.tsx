@@ -1,12 +1,12 @@
 import { NavigationContainer } from '@react-navigation/native'
-import { ComponentMeta, ComponentStory } from '@storybook/react'
+import { Meta, StoryObj } from '@storybook/react'
 import React from 'react'
 
 import { categoryBlockList } from 'features/home/fixtures/categoryBlockList.fixture'
 
 import { CategoryListModule } from './CategoryListModule'
 
-const componentMeta: ComponentMeta<typeof CategoryListModule> = {
+const componentMeta: Meta<typeof CategoryListModule> = {
   title: 'features/home/CategoryListModule',
   component: CategoryListModule,
   decorators: [
@@ -19,7 +19,7 @@ const componentMeta: ComponentMeta<typeof CategoryListModule> = {
 }
 export default componentMeta
 
-const Template: ComponentStory<typeof CategoryListModule> = (props) => (
+const Template: StoryObj<typeof CategoryListModule> = (props) => (
   <CategoryListModule {...props} />
 )
 //TODO(PC-30279): Fix this stories

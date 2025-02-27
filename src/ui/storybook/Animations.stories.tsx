@@ -1,4 +1,4 @@
-import { ComponentStory } from '@storybook/react'
+import { StoryObj } from '@storybook/react'
 import React, { useState } from 'react'
 import styled from 'styled-components/native'
 
@@ -66,7 +66,7 @@ const LottieAnimations = {
   },
 }
 
-const Template: ComponentStory<typeof LottieView> = () => (
+const Template: StoryObj<typeof LottieView> = () => (
   <GridContainer>
     {Object.entries(LottieAnimations)
       .sort(([nameA], [nameB]) => nameA.localeCompare(nameB))

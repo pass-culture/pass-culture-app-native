@@ -1,4 +1,4 @@
-import { ComponentMeta } from '@storybook/react'
+import { Meta } from '@storybook/react'
 import React from 'react'
 
 import { SubcategoryIdEnum, WithdrawalTypeEnum } from 'api/gen'
@@ -13,7 +13,7 @@ import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storyboo
 import { IdCard } from 'ui/svg/icons/IdCard'
 import { TypoDS } from 'ui/theme'
 
-const meta: ComponentMeta<typeof TicketCutout> = {
+const meta: Meta<typeof TicketCutout> = {
   title: 'Features/bookings/TicketCutout',
   component: TicketCutout,
   parameters: {

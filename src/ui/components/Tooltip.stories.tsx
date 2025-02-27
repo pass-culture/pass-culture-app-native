@@ -1,5 +1,5 @@
 import { NavigationContainer } from '@react-navigation/native'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { StoryObj, Meta } from '@storybook/react'
 import React from 'react'
 
 import { getSpacing } from 'ui/theme'
@@ -8,7 +8,7 @@ import { Tooltip } from './Tooltip'
 
 const TOOLTIP_WIDTH = getSpacing(58)
 
-const meta: ComponentMeta<typeof Tooltip> = {
+const meta: Meta<typeof Tooltip> = {
   title: 'ui/Tooltip',
   component: Tooltip,
   decorators: [
@@ -21,7 +21,7 @@ const meta: ComponentMeta<typeof Tooltip> = {
 }
 export default meta
 
-const Template: ComponentStory<typeof Tooltip> = (props) => <Tooltip {...props} />
+const Template: StoryObj<typeof Tooltip> = (props) => <Tooltip {...props} />
 
 //TODO(PC-28526): Fix this stories
 const Default = Template.bind({})

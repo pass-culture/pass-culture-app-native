@@ -1,4 +1,4 @@
-import { ComponentMeta } from '@storybook/react'
+import { Meta } from '@storybook/react'
 import React from 'react'
 
 import { theme } from 'theme'
@@ -11,7 +11,7 @@ import { AVATAR_LARGE, AVATAR_MEDIUM, AVATAR_SMALL } from 'ui/theme/constants'
 
 import { Avatar } from './Avatar'
 
-const meta: ComponentMeta<typeof Avatar> = {
+const meta: Meta<typeof Avatar> = {
   title: 'ui/Avatar',
   component: Avatar,
 }

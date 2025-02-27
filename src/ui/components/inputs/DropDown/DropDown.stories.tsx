@@ -1,11 +1,11 @@
-import { ComponentMeta } from '@storybook/react'
+import { Meta } from '@storybook/react'
 import React from 'react'
 
 import { CAPITALIZED_MONTHS } from 'shared/date/months'
 import { DropDown } from 'ui/components/inputs/DropDown/DropDown'
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 
-const meta: ComponentMeta<typeof DropDown> = {
+const meta: Meta<typeof DropDown> = {
   title: 'ui/inputs/DropDown',
   component: DropDown,
 }

@@ -1,12 +1,12 @@
 import { NavigationContainer } from '@react-navigation/native'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { StoryObj, Meta } from '@storybook/react'
 import React from 'react'
 
 import { domains_credit_v1, domains_credit_v2 } from 'features/profile/fixtures/domainsCredit'
 
 import { CreditHeader } from './CreditHeader'
 
-const meta: ComponentMeta<typeof CreditHeader> = {
+const meta: Meta<typeof CreditHeader> = {
   title: 'ui/CreditHeader',
   component: CreditHeader,
   decorators: [
@@ -19,7 +19,7 @@ const meta: ComponentMeta<typeof CreditHeader> = {
 }
 export default meta
 
-const Template: ComponentStory<typeof CreditHeader> = (props) => <CreditHeader {...props} />
+const Template: StoryObj<typeof CreditHeader> = (props) => <CreditHeader {...props} />
 
 const depositExpirationDate = '2023-02-16T17:16:04.735235'
 

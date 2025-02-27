@@ -1,5 +1,5 @@
 import { NavigationContainer } from '@react-navigation/native'
-import { ComponentMeta } from '@storybook/react'
+import { Meta } from '@storybook/react'
 import React from 'react'
 
 import { SubscriptionTheme } from 'features/subscription/types'
@@ -7,7 +7,7 @@ import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storyboo
 
 import { SubscriptionThematicButton } from './SubscriptionThematicButton'
 
-const meta: ComponentMeta<typeof SubscriptionThematicButton> = {
+const meta: Meta<typeof SubscriptionThematicButton> = {
   title: 'Features/subscription/SubscriptionThematicButton',
   component: SubscriptionThematicButton,
   decorators: [

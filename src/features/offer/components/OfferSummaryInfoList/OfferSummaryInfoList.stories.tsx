@@ -1,4 +1,4 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react'
+import { Meta, StoryObj } from '@storybook/react'
 import React from 'react'
 
 import { OfferSummaryInfoList } from 'features/offer/components/OfferSummaryInfoList/OfferSummaryInfoList'
@@ -7,13 +7,13 @@ import { ClockFilled } from 'ui/svg/icons/ClockFilled'
 import { Digital } from 'ui/svg/icons/Digital'
 import { Stock } from 'ui/svg/icons/Stock'
 
-const meta: ComponentMeta<typeof OfferSummaryInfoList> = {
+const meta: Meta<typeof OfferSummaryInfoList> = {
   title: 'features/offer/OfferSummaryInfoList',
   component: OfferSummaryInfoList,
 }
 export default meta
 
-const Template: ComponentStory<typeof OfferSummaryInfoList> = (props) => (
+const Template: StoryObj<typeof OfferSummaryInfoList> = (props) => (
   <OfferSummaryInfoList {...props} />
 )
 

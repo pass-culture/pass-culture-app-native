@@ -1,4 +1,4 @@
-import { ComponentMeta } from '@storybook/react'
+import { Meta } from '@storybook/react'
 import React from 'react'
 import styled from 'styled-components/native'
 
@@ -9,7 +9,7 @@ import { getSpacing, TypoDS } from 'ui/theme'
 
 import { HorizontalTile } from './HorizontalTile'
 
-const meta: ComponentMeta<typeof HorizontalTile> = {
+const meta: Meta<typeof HorizontalTile> = {
   title: 'ui/tiles/HorizontalTile',
   component: HorizontalTile,
 }

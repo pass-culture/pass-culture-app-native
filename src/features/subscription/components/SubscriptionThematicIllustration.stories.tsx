@@ -1,5 +1,5 @@
 import { NavigationContainer } from '@react-navigation/native'
-import { ComponentMeta, ComponentStory } from '@storybook/react'
+import { Meta, StoryObj } from '@storybook/react'
 import React from 'react'
 import styled from 'styled-components/native'
 
@@ -8,7 +8,7 @@ import { getSpacing } from 'ui/theme'
 
 import { SubscriptionThematicIllustration } from './SubscriptionThematicIllustration'
 
-const meta: ComponentMeta<typeof SubscriptionThematicIllustration> = {
+const meta: Meta<typeof SubscriptionThematicIllustration> = {
   title: 'Features/subscription/SubscriptionThematicIllustration',
   component: SubscriptionThematicIllustration,
   decorators: [
@@ -21,7 +21,7 @@ const meta: ComponentMeta<typeof SubscriptionThematicIllustration> = {
 }
 export default meta
 
-const Template: ComponentStory<typeof SubscriptionThematicIllustration> = () => (
+const Template: StoryObj<typeof SubscriptionThematicIllustration> = () => (
   <React.Fragment>
     <ThematicContainer>
       <SubscriptionThematicIllustration thematic={SubscriptionTheme.CINEMA} />

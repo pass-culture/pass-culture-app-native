@@ -1,12 +1,12 @@
 import { NavigationContainer } from '@react-navigation/native'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { StoryObj, Meta } from '@storybook/react'
 import React from 'react'
 
 import { theme } from 'theme'
 
 import { SectionWithSwitch } from './SectionWithSwitch'
 
-const meta: ComponentMeta<typeof SectionWithSwitch> = {
+const meta: Meta<typeof SectionWithSwitch> = {
   title: 'ui/sections/SectionWithSwitch',
   component: SectionWithSwitch,
   parameters: {
@@ -22,7 +22,7 @@ const meta: ComponentMeta<typeof SectionWithSwitch> = {
 }
 export default meta
 
-export const Template: ComponentStory<typeof SectionWithSwitch> = () => (
+export const Template: StoryObj<typeof SectionWithSwitch> = () => (
   <SectionWithSwitch title="Section with switch title" toggleLabel="Toggle label" />
 )
 Template.storyName = 'SectionWithSwitch'

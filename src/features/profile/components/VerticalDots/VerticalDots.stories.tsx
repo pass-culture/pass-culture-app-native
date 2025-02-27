@@ -1,4 +1,4 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react'
+import { Meta, StoryObj } from '@storybook/react'
 import React from 'react'
 import { StyleSheet, View } from 'react-native'
 
@@ -6,19 +6,19 @@ import { theme } from 'theme'
 
 import { VerticalDots } from './VerticalDots'
 
-const meta: ComponentMeta<typeof VerticalDots> = {
+const meta: Meta<typeof VerticalDots> = {
   title: 'features/profile/VerticalDots',
   component: VerticalDots,
 }
 export default meta
 
-const Template: ComponentStory<typeof VerticalDots> = (props) => (
+const Template: StoryObj<typeof VerticalDots> = (props) => (
   <View style={{ width: props.parentWidth, height: props.parentHeight }}>
     <VerticalDots {...props} />
   </View>
 )
 
-const Multiple: ComponentStory<typeof VerticalDots> = (props) => {
+const Multiple: StoryObj<typeof VerticalDots> = (props) => {
   return (
     <View>
       <Template {...props} />
@@ -27,7 +27,7 @@ const Multiple: ComponentStory<typeof VerticalDots> = (props) => {
   )
 }
 
-const Automatic: ComponentStory<typeof VerticalDots.Auto> = (props) => (
+const Automatic: StoryObj<typeof VerticalDots.Auto> = (props) => (
   <View style={styles.automaticWrapper}>
     <VerticalDots.Auto {...props} />
   </View>

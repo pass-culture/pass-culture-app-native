@@ -1,11 +1,11 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { StoryObj, Meta } from '@storybook/react'
 import React from 'react'
 
 import { ProgressBar } from './ProgressBar'
 
 const ANIMATION_DURATION_IN_S = 1000
 
-const meta: ComponentMeta<typeof ProgressBar> = {
+const meta: Meta<typeof ProgressBar> = {
   title: 'features/auth/ProgressBar',
   component: ProgressBar,
   parameters: {
@@ -15,7 +15,7 @@ const meta: ComponentMeta<typeof ProgressBar> = {
 }
 export default meta
 
-const Template: ComponentStory<typeof ProgressBar> = (props) => <ProgressBar {...props} />
+const Template: StoryObj<typeof ProgressBar> = (props) => <ProgressBar {...props} />
 //TODO(PC-28526): Fix this stories
 const FirstStep = Template.bind({})
 FirstStep.args = {

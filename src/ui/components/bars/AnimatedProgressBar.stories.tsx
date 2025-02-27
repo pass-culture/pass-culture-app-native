@@ -1,4 +1,4 @@
-import { ComponentMeta } from '@storybook/react'
+import { Meta } from '@storybook/react'
 import React from 'react'
 
 import { theme } from 'theme'
@@ -8,7 +8,7 @@ import { Email } from 'ui/svg/icons/Email'
 
 import { AnimatedProgressBar } from './AnimatedProgressBar'
 
-const meta: ComponentMeta<typeof AnimatedProgressBar> = {
+const meta: Meta<typeof AnimatedProgressBar> = {
   title: 'ui/AnimatedProgressBar',
   component: AnimatedProgressBar,
 }

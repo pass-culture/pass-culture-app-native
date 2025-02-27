@@ -1,15 +1,15 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react'
+import { Meta, StoryObj } from '@storybook/react'
 import React from 'react'
 
 import { EventCard } from './EventCard'
 
-const meta: ComponentMeta<typeof EventCard> = {
+const meta: Meta<typeof EventCard> = {
   title: 'ui/EventCard/EventCard',
   component: EventCard,
 }
 export default meta
 
-const Template: ComponentStory<typeof EventCard> = (props) => <EventCard {...props} />
+const Template: StoryObj<typeof EventCard> = (props) => <EventCard {...props} />
 
 export const Default = Template.bind({})
 Default.storyName = 'EventCard'

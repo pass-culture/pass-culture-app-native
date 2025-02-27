@@ -1,15 +1,15 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react'
+import { Meta, StoryObj } from '@storybook/react'
 import React from 'react'
 
 import { VenueBlockSkeleton } from './VenueBlockSkeleton'
 
-const meta: ComponentMeta<typeof VenueBlockSkeleton> = {
+const meta: Meta<typeof VenueBlockSkeleton> = {
   title: 'features/offer/VenueBlockSkeleton',
   component: VenueBlockSkeleton,
 }
 export default meta
 
-export const Default: ComponentStory<typeof VenueBlockSkeleton> = () => <VenueBlockSkeleton />
+export const Default: StoryObj<typeof VenueBlockSkeleton> = () => <VenueBlockSkeleton />
 
 Default.args = {}
 Default.storyName = 'VenueBlockSkeleton'

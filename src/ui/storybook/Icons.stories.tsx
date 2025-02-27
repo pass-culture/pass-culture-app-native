@@ -1,4 +1,4 @@
-import { ComponentStory } from '@storybook/react'
+import { StoryObj } from '@storybook/react'
 import React from 'react'
 
 import {
@@ -51,7 +51,7 @@ const iconSets = [
   },
 ]
 
-const Template: ComponentStory<typeof Icons> = () => (
+const Template: StoryObj<typeof Icons> = () => (
   <React.Fragment>
     {iconSets.map((icon) => (
       <Icons key={icon.title} title={icon.title} icons={icon.icons} isBicolor={icon.isBicolor} />

@@ -1,4 +1,4 @@
-import { ComponentMeta } from '@storybook/react'
+import { Meta } from '@storybook/react'
 import React from 'react'
 
 import { VerticalUl } from 'ui/components/Ul'
@@ -6,7 +6,7 @@ import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storyboo
 
 import { BulletListItem } from './BulletListItem'
 
-const meta: ComponentMeta<typeof BulletListItem> = {
+const meta: Meta<typeof BulletListItem> = {
   title: 'ui/BulletListItem',
   component: BulletListItem,
 }

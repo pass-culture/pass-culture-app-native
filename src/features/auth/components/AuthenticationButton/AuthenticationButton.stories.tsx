@@ -1,12 +1,12 @@
 import { NavigationContainer } from '@react-navigation/native'
-import { ComponentMeta } from '@storybook/react'
+import { Meta } from '@storybook/react'
 import React from 'react'
 
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 
 import { AuthenticationButton } from './AuthenticationButton'
 
-const meta: ComponentMeta<typeof AuthenticationButton> = {
+const meta: Meta<typeof AuthenticationButton> = {
   title: 'Features/auth/AuthenticationButton',
   component: AuthenticationButton,
   decorators: [

@@ -1,4 +1,4 @@
-import { ComponentMeta } from '@storybook/react'
+import { Meta } from '@storybook/react'
 import React from 'react'
 import styled from 'styled-components/native'
 
@@ -7,7 +7,7 @@ import { ArrowRight } from 'ui/svg/icons/ArrowRight'
 
 import { Tag } from './Tag'
 
-const meta: ComponentMeta<typeof Tag> = {
+const meta: Meta<typeof Tag> = {
   title: 'ui/Tag',
   component: Tag,
 }

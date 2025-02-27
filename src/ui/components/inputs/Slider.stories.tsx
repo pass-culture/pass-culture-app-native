@@ -1,11 +1,11 @@
-import { ComponentMeta } from '@storybook/react'
+import { Meta } from '@storybook/react'
 import React from 'react'
 
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 
 import { Slider } from './Slider'
 
-const meta: ComponentMeta<typeof Slider> = {
+const meta: Meta<typeof Slider> = {
   title: 'ui/inputs/Slider',
   component: Slider,
 }

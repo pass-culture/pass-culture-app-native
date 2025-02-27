@@ -1,4 +1,4 @@
-import { ComponentStory } from '@storybook/react'
+import { StoryObj } from '@storybook/react'
 import React, { useMemo } from 'react'
 import { Text } from 'react-native'
 import styled from 'styled-components/native'
@@ -11,7 +11,7 @@ export default {
   title: 'Fondations',
 }
 
-export const Emojis: ComponentStory<React.FC> = () => {
+export const Emojis: StoryObj<React.FC> = () => {
   const sortedEmojis = useMemo(() => {
     return Object.entries(Emoji).sort(([name1], [name2]) => {
       if (name1 < name2) return -1

@@ -1,4 +1,4 @@
-import { ComponentMeta } from '@storybook/react'
+import { Meta } from '@storybook/react'
 import React from 'react'
 import styled from 'styled-components/native'
 
@@ -9,7 +9,7 @@ import { TypoDS } from 'ui/theme'
 
 import { BannerWithBackground } from './BannerWithBackground'
 
-const meta: ComponentMeta<typeof BannerWithBackground> = {
+const meta: Meta<typeof BannerWithBackground> = {
   title: 'ui/banners/BannerWithBackground',
   component: BannerWithBackground,
 }

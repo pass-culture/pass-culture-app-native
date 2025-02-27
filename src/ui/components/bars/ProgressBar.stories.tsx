@@ -1,17 +1,17 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { StoryObj, Meta } from '@storybook/react'
 import React from 'react'
 
 import { theme } from 'theme'
 
 import { ProgressBar } from './ProgressBar'
 
-const meta: ComponentMeta<typeof ProgressBar> = {
+const meta: Meta<typeof ProgressBar> = {
   title: 'ui/progressBars/ProgressBar',
   component: ProgressBar,
 }
 export default meta
 
-const Template: ComponentStory<typeof ProgressBar> = (props) => <ProgressBar {...props} />
+const Template: StoryObj<typeof ProgressBar> = (props) => <ProgressBar {...props} />
 
 //TODO(PC-28526): Fix this stories
 const Default = Template.bind({})

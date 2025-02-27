@@ -1,10 +1,10 @@
 import { NavigationContainer } from '@react-navigation/native'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { StoryObj, Meta } from '@storybook/react'
 import React from 'react'
 
 import { AchievementBanner } from './AchievementBanner'
 
-const meta: ComponentMeta<typeof AchievementBanner> = {
+const meta: Meta<typeof AchievementBanner> = {
   title: 'features/profile/achievements/AchievementBanner',
   component: AchievementBanner,
   decorators: [
@@ -17,7 +17,7 @@ const meta: ComponentMeta<typeof AchievementBanner> = {
 }
 export default meta
 
-const Template: ComponentStory<typeof AchievementBanner> = (props) => (
+const Template: StoryObj<typeof AchievementBanner> = (props) => (
   <AchievementBanner {...props} />
 )
 export const Default = Template.bind({})

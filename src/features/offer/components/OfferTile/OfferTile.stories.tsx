@@ -1,11 +1,11 @@
 import { NavigationContainer } from '@react-navigation/native'
-import { ComponentMeta, ComponentStory } from '@storybook/react'
+import { Meta, StoryObj } from '@storybook/react'
 import React from 'react'
 import { View } from 'react-native'
 
 import { OfferTile } from './OfferTile'
 
-const meta: ComponentMeta<typeof OfferTile> = {
+const meta: Meta<typeof OfferTile> = {
   title: 'ui/tiles/OfferTile',
   component: OfferTile,
   decorators: [
@@ -19,7 +19,7 @@ const meta: ComponentMeta<typeof OfferTile> = {
 
 export default meta
 
-const Template: ComponentStory<typeof OfferTile> = (props) => <OfferTile {...props} />
+const Template: StoryObj<typeof OfferTile> = (props) => <OfferTile {...props} />
 
 export const Default = Template.bind({})
 Default.args = {

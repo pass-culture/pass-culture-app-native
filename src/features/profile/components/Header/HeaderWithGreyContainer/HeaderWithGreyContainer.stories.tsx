@@ -1,5 +1,5 @@
 import { NavigationContainer } from '@react-navigation/native'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { StoryObj, Meta } from '@storybook/react'
 import React from 'react'
 import styled from 'styled-components/native'
 
@@ -9,7 +9,7 @@ import { TypoDS } from 'ui/theme'
 
 import { HeaderWithGreyContainer } from './HeaderWithGreyContainer'
 
-const meta: ComponentMeta<typeof HeaderWithGreyContainer> = {
+const meta: Meta<typeof HeaderWithGreyContainer> = {
   title: 'features/Profile/HeaderWithGreyContainer',
   component: HeaderWithGreyContainer,
   decorators: [
@@ -22,7 +22,7 @@ const meta: ComponentMeta<typeof HeaderWithGreyContainer> = {
 }
 export default meta
 
-const Template: ComponentStory<typeof HeaderWithGreyContainer> = (props) => (
+const Template: StoryObj<typeof HeaderWithGreyContainer> = (props) => (
   <HeaderWithGreyContainer {...props} />
 )
 

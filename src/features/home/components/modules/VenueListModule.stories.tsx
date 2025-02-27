@@ -1,5 +1,5 @@
 import { NavigationContainer } from '@react-navigation/native'
-import { ComponentMeta } from '@storybook/react'
+import { Meta } from '@storybook/react'
 import React from 'react'
 
 import { venuesSearchFixture } from 'libs/algolia/fixtures/venuesSearchFixture'
@@ -7,7 +7,7 @@ import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storyboo
 
 import { VenueListModule } from './VenueListModule'
 
-const meta: ComponentMeta<typeof VenueListModule> = {
+const meta: Meta<typeof VenueListModule> = {
   title: 'Features/Home/VenueListModule',
   component: VenueListModule,
   decorators: [

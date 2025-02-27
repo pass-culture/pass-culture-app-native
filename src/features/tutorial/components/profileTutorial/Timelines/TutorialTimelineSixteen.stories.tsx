@@ -1,15 +1,15 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { StoryObj, Meta } from '@storybook/react'
 import React from 'react'
 
 import { TutorialTimelineSixteen } from './TutorialTimelineSixteen'
 
-const meta: ComponentMeta<typeof TutorialTimelineSixteen> = {
+const meta: Meta<typeof TutorialTimelineSixteen> = {
   title: 'features/tutorial/TutorialTimelineSixteen',
   component: TutorialTimelineSixteen,
 }
 export default meta
 
-const Template: ComponentStory<typeof TutorialTimelineSixteen> = (props) => (
+const Template: StoryObj<typeof TutorialTimelineSixteen> = (props) => (
   <TutorialTimelineSixteen {...props} />
 )
 

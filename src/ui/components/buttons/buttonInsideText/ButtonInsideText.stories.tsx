@@ -1,4 +1,4 @@
-import { ComponentMeta } from '@storybook/react'
+import { Meta } from '@storybook/react'
 import React from 'react'
 
 import { ButtonInsideTexteProps } from 'ui/components/buttons/buttonInsideText/types'
@@ -8,7 +8,7 @@ import { TypoDS } from 'ui/theme'
 
 import { ButtonInsideText } from './ButtonInsideText'
 
-const meta: ComponentMeta<typeof ButtonInsideText> = {
+const meta: Meta<typeof ButtonInsideText> = {
   title: 'ui/buttons/ButtonInsideText',
   component: ButtonInsideText,
 }

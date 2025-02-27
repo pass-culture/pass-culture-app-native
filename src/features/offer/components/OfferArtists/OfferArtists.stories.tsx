@@ -1,4 +1,4 @@
-import { ComponentMeta } from '@storybook/react'
+import { Meta } from '@storybook/react'
 import React from 'react'
 
 import { CategoryIdEnum } from 'api/gen'
@@ -7,7 +7,7 @@ import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { getOfferArtists } from 'features/offer/helpers/getOfferArtists/getOfferArtists'
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 
-const meta: ComponentMeta<typeof OfferArtists> = {
+const meta: Meta<typeof OfferArtists> = {
   title: 'features/offer/OfferArtists',
   component: OfferArtists,
 }

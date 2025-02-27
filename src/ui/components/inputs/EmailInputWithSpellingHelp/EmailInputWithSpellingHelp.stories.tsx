@@ -1,16 +1,16 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { StoryObj, Meta } from '@storybook/react'
 import React from 'react'
 import { Controller, useForm } from 'react-hook-form'
 
 import { EmailInputWithSpellingHelp } from './EmailInputWithSpellingHelp'
 
-const meta: ComponentMeta<typeof EmailInputWithSpellingHelp> = {
+const meta: Meta<typeof EmailInputWithSpellingHelp> = {
   title: 'ui/inputs/EmailInputWithSpellingHelp',
   component: EmailInputWithSpellingHelp,
 }
 export default meta
 
-const Template: ComponentStory<typeof EmailInputWithSpellingHelp> = (props) => {
+const Template: StoryObj<typeof EmailInputWithSpellingHelp> = (props) => {
   const { control } = useForm<{ email: string }>({
     defaultValues: {
       email: props.email,

@@ -1,5 +1,5 @@
-import { ComponentStory } from '@storybook/react'
-import { userEvent, screen } from '@storybook/testing-library'
+import { Meta, StoryObj } from '@storybook/react'
+import { userEvent, screen } from '@storybook/test'
 import React, { Fragment, FunctionComponent, PropsWithChildren } from 'react'
 import styled from 'styled-components'
 
@@ -7,9 +7,10 @@ import { TypoDS } from 'ui/theme'
 
 import { displayOnFocus } from './displayOnFocus'
 
-export default {
+const meta: Meta = {
   title: 'ui/accessibility/displayOnFocus',
 }
+export default meta
 
 const body1 = 'a component wrapped with '
 const caption = 'displayOnFocus'
@@ -31,23 +32,24 @@ const SomeNormalComponent = styled.button({
 const SomeComponentThatDisplayOnFocus: React.FC<PropsWithChildren> =
   displayOnFocus(SomeNormalComponent)
 
-const Template: ComponentStory<FunctionComponent> = () => (
-  <Fragment>
-    <TypoDS.Body>
-      {body1}
-      <TypoDS.BodyAccentXs>{caption}</TypoDS.BodyAccentXs>
-      {body2}
-    </TypoDS.Body>
-    <RelativeWrapper>
-      <SomeComponentThatDisplayOnFocus>{buttonText}</SomeComponentThatDisplayOnFocus>
-    </RelativeWrapper>
-  </Fragment>
-)
+type Story = StoryObj<FunctionComponent>
 
-export const Default = Template.bind({})
-Default.storyName = 'displayOnFocus'
-Default.play = async () => {
-  await screen.findByRole('button') // wait first render
-
-  userEvent.tab()
+export const Default: Story = {
+  name: 'displayOnFocus',
+  render: () => (
+    <Fragment>
+      <TypoDS.Body>
+        {body1}
+        <TypoDS.BodyAccentXs>{caption}</TypoDS.BodyAccentXs>
+        {body2}
+      </TypoDS.Body>
+      <RelativeWrapper>
+        <SomeComponentThatDisplayOnFocus>{buttonText}</SomeComponentThatDisplayOnFocus>
+      </RelativeWrapper>
+    </Fragment>
+  ),
+  play: async () => {
+    await screen.findByRole('button') // Wait for first render
+    userEvent.tab()
+  },
 }
