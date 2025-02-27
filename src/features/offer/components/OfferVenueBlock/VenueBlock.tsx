@@ -35,6 +35,7 @@ export function VenueBlock({
 
   const { latitude: lat, longitude: lng } = venue.coordinates
   const distance = getDistance({ lat, lng }, { userLocation, selectedPlace, selectedLocationMode })
+  const shouldDisplayDistanceTag = shouldShowDistances && distance
   const hasVenuePage = !!onSeeVenuePress && !isOfferAddressDifferent
   const TouchableContainer: FunctionComponent<ComponentProps<typeof InternalTouchableLink>> =
     useMemo(
@@ -48,7 +49,7 @@ export function VenueBlock({
 
   return (
     <React.Fragment>
-      {shouldShowDistances && distance ? (
+      {shouldDisplayDistanceTag ? (
         <React.Fragment>
           <Tag label={`à ${distance}`} />
           <Spacer.Column numberOfSpaces={4} />

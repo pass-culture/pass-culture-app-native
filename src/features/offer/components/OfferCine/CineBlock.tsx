@@ -26,6 +26,8 @@ export const CineBlock: FunctionComponent<CineBlockProps> = ({
   withDivider,
 }) => {
   const { selectedDate, goToDate } = useMovieCalendar()
+  const venueBlockVenue = getVenue(offer.venue)
+  const venueBlockAddress = getAddress(offer.address)
 
   const subcategoriesMapping = useSubcategoriesMapping()
 
@@ -38,8 +40,8 @@ export const CineBlock: FunctionComponent<CineBlockProps> = ({
     <React.Fragment>
       <CineBlockContainer>
         <VenueBlock
-          venue={getVenue(offer.venue)}
-          address={getAddress(offer.address)}
+          venue={venueBlockVenue}
+          address={venueBlockAddress}
           onSeeVenuePress={onSeeVenuePress}
         />
 
