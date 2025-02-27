@@ -2,7 +2,7 @@ import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { useAccountSuspend } from 'features/auth/api/useAccountSuspend'
+import { useAccountSuspendMutation } from 'features/auth/queries/useAccountSuspendMutation'
 import { getProfileStackConfig } from 'features/navigation/ProfileStackNavigator/getProfileStackConfig'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
@@ -24,7 +24,7 @@ export function ConfirmDeleteProfile() {
   const { reset } = useNavigation<UseNavigationType>()
   const { showErrorSnackBar } = useSnackBarContext()
 
-  const { suspendAccount, isLoading } = useAccountSuspend({
+  const { suspendAccount, isLoading } = useAccountSuspendMutation({
     onSuccess: () => {
       reset({
         index: 0,

@@ -2,7 +2,7 @@ import { useNavigation } from '@react-navigation/native'
 import React, { FC } from 'react'
 import styled from 'styled-components/native'
 
-import { useAccountSuspendForHackSuspicion } from 'features/auth/api/useAccountSuspendForHackSuspicion'
+import { useAccountSuspendForHackSuspicion } from 'features/auth/queries/useAccountSuspendForHackSuspicion'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'

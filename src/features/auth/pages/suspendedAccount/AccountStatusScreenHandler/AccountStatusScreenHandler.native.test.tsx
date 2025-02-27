@@ -9,14 +9,14 @@ import { render, screen } from 'tests/utils'
 import { AccountStatusScreenHandler } from './AccountStatusScreenHandler'
 
 const mockSuspensionStatus = { status: AccountState.SUSPENDED_UPON_USER_REQUEST }
-jest.mock('features/auth/api/useAccountSuspensionStatus', () => ({
-  useAccountSuspensionStatus: jest.fn(() => ({ data: mockSuspensionStatus })),
+jest.mock('features/auth/queries/useAccountSuspensionStatusQuery', () => ({
+  useAccountSuspensionStatusQuery: jest.fn(() => ({ data: mockSuspensionStatus })),
 }))
-jest.mock('features/auth/api/useAccountSuspensionDate', () => ({
-  useAccountSuspensionDate: jest.fn(() => ({ data: { date: '2022-05-11T10:29:25.332786Z' } })),
+jest.mock('features/auth/queries/useAccountSuspensionDateQuery', () => ({
+  useAccountSuspensionDateQuery: jest.fn(() => ({ data: { date: '2022-05-11T10:29:25.332786Z' } })),
 }))
-jest.mock('features/auth/api/useAccountUnsuspend', () => ({
-  useAccountUnsuspend: jest.fn(() => ({ mutate: jest.fn() })),
+jest.mock('features/auth/queries/useAccountUnsuspendMutation', () => ({
+  useAccountUnsuspendMutation: jest.fn(() => ({ mutate: jest.fn() })),
 }))
 jest.mock('features/navigation/helpers/useCurrentRoute')
 
