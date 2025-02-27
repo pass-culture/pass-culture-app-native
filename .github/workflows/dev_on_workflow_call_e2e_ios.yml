@@ -1,6 +1,9 @@
 name: '0 [on_workflow] Dev on workflow call e2e iOS'
 
 on:
+  push:
+    branches:
+      - PC-34867
   workflow_call:
     secrets:
       GCP_EHP_SERVICE_ACCOUNT:
@@ -11,7 +14,7 @@ on:
 permissions:
   contents: read
   id-token: write
-  
+
 jobs:
   build_e2e:
     name: 'Build E2E Staging'
@@ -67,6 +70,7 @@ jobs:
             SENTRY_AUTH_TOKEN:passculture-metier-ehp/passculture-app-native-sentry-token
             ROBIN_API_KEY:passculture-metier-ehp/passculture-app-native-e2e-robin-api-key
             MAESTRO_PASSWORD:passculture-metier-ehp/passculture-app-native-e2e-maestro-password
+            SLACK_BOT_TOKEN:passculture-metier-ehp/passculture-ci-slack-bot-token
       - name: 'Render Template'
         run: |
           cp templates_github_ci/.sentryclirc .sentryclirc
@@ -94,7 +98,7 @@ jobs:
         run: |
           APP_PATH=$(find /Users/runner/Library/Developer/Xcode/Archives/ -name "*.app" | head -n 1)
           echo "APP_PATH=$APP_PATH" >> $GITHUB_OUTPUT
-      - name: Generate Robin iOS upload name
+      - name: Generate Robin upload name
         id: generate_name
         run: |
           DATE=$(date +"%d-%m-%Y")
@@ -102,6 +106,7 @@ jobs:
           CUSTOM_NAME="[Nightly] - ${DATE} - ${COMMIT_HASH}"
           echo "CUSTOM_NAME=$CUSTOM_NAME" >> $GITHUB_OUTPUT
       - name: Upload and run ios tests with Robin
+        id: upload
         uses: mobile-dev-inc/action-maestro-cloud@v1.9.6
         with:
           api-key: ${{ steps.secrets.outputs.ROBIN_API_KEY }}
@@ -122,3 +127,55 @@ jobs:
             MAESTRO_MOCK_ANALYTICS_SERVER=http://localhost:$MOCK_ANALYTICS_SERVER_PORT
             MAESTRO_RUN_TRACKING_TESTS=false
             MAESTRO_RUN_CLOUD_COMMANDS=true
+      - name: Access Outputs
+        if: always()
+        run: |
+          echo "Console URL: ${{ steps.upload.outputs.ROBIN_CONSOLE_URL }}"
+          echo "Flow Results: ${{ steps.upload.outputs.MAESTRO_CLOUD_FLOW_RESULTS }}"
+          echo "Upload Status: ${{ steps.upload.outputs.MAESTRO_CLOUD_UPLOAD_STATUS }}"
+          echo "App Binary ID: ${{ steps.upload.outputs.ROBIN_APP_BINARY_ID }}"
+      - name: Format Maestro results
+        id: format_results
+        if: always()
+        run: |
+          echo '${{ steps.upload.outputs.MAESTRO_CLOUD_FLOW_RESULTS }}' | jq '.' > flow_results.json
+          SUCCESS_COUNT=$(jq '[.[] | select(.status == "SUCCESS")] | length' flow_results.json)
+          ERROR_COUNT=$(jq '[.[] | select(.status == "ERROR")] | length' flow_results.json)
+          CANCELED_COUNT=$(jq '[.[] | select(.status == "CANCELED")] | length' flow_results.json)
+          RESULTS=$(jq -r '.[] | "- \(.name): \(.status)"' flow_results.json | sed 's/"/\\"/g')
+
+          echo "SUCCESS_COUNT=$SUCCESS_COUNT" >> $GITHUB_ENV
+          echo "ERROR_COUNT=$ERROR_COUNT" >> $GITHUB_ENV
+          echo "CANCELED_COUNT=$CANCELED_COUNT" >> $GITHUB_ENV
+          echo "RESULTS=\"$RESULTS\"" >> $GITHUB_ENV
+
+      - name: Debug Maestro results
+        if: always()
+        run: |
+          echo "SUCCESS_COUNT: ${{ env.SUCCESS_COUNT }}"
+          echo "ERROR_COUNT: ${{ env.ERROR_COUNT }}"
+          echo "CANCELED_COUNT: ${{ env.CANCELED_COUNT }}"
+          echo "RESULTS: ${{ env.RESULTS }}"
+      - uses: technote-space/workflow-conclusion-action@v3
+        if: ${{ always() }}
+      - name: Post to a Slack channel
+        id: slack
+        if: always()
+        uses: slackapi/slack-github-action@v1.27.0
+        with:
+          channel-id: 'C04EU7U4JTE'
+          payload: |
+            {
+              "attachments": [
+                  {
+                      "color": "#36a64f",
+                      "title": "PCAPPNATIVE Nightly iOS",
+                      "text": "Résultats des tests E2E :\n- :white_check_mark: Succès: ${{ env.SUCCESS_COUNT }}\n- :x: Erreurs: ${{ env.ERROR_COUNT }}\n- :warning: Annulés: ${{ env.CANCELED_COUNT }}\n\n[Voir les détails](${{ steps.upload.outputs.ROBIN_CONSOLE_URL }})"
+                  }
+              ],
+              "unfurl_links": false,
+              "unfurl_media": false
+            }
+        env:
+          SLACK_BOT_TOKEN: ${{ steps.secrets.outputs.SLACK_BOT_TOKEN }}
+
