@@ -1,55 +1,60 @@
 import { LinkingOptions } from '@react-navigation/native'
 
+import { ComponentForPathConfig } from 'features/navigation/ComponentForPathConfig'
 import { getScreensAndConfig } from 'features/navigation/RootNavigator/linking/getScreensConfig'
 import { ScreenNames } from 'features/navigation/RootNavigator/types'
 import { screenParamsParser, screenParamsStringifier } from 'features/navigation/screenParamsUtils'
 import { SearchStack } from 'features/navigation/SearchStackNavigator/Stack'
-import { SearchLanding } from 'features/search/pages/SearchLanding/SearchLanding'
-import { SearchResults } from 'features/search/pages/SearchResults/SearchResults'
-import { ThematicSearch } from 'features/search/pages/ThematicSearch/ThematicSearch'
+import { SearchView } from 'features/search/types'
 
 import { SearchStackRoute, SearchStackParamList, SearchStackRouteName } from './types'
 
-const initialSearchStackRouteName: SearchStackRouteName = 'SearchLanding'
+const initialSearchStackRouteName: SearchStackRouteName = SearchView.Landing
 
 const routes: SearchStackRoute[] = [
   {
-    name: 'SearchLanding',
-    component: SearchLanding,
+    name: SearchView.Landing,
+    component: ComponentForPathConfig,
     pathConfig: {
       path: 'recherche/accueil',
-      parse: screenParamsParser['SearchLanding'],
-      stringify: screenParamsStringifier['SearchLanding'],
+      parse: screenParamsParser[SearchView.Landing],
+      stringify: screenParamsStringifier[SearchView.Landing],
     },
     options: { title: 'Rechercher des offres' },
   },
   {
-    name: 'SearchResults',
-    component: SearchResults,
+    name: SearchView.Results,
+    component: ComponentForPathConfig,
     pathConfig: {
       path: 'recherche/resultats',
-      parse: screenParamsParser['SearchResults'],
-      stringify: screenParamsStringifier['SearchResults'],
+      parse: screenParamsParser[SearchView.Results],
+      stringify: screenParamsStringifier[SearchView.Results],
     },
     options: { title: 'Résultats de recherche' },
   },
   {
-    name: 'ThematicSearch',
-    component: ThematicSearch,
+    name: SearchView.Thematic,
+    component: ComponentForPathConfig,
     pathConfig: {
       path: 'recherche/thematique',
-      parse: screenParamsParser['ThematicSearch'],
-      stringify: screenParamsStringifier['ThematicSearch'],
+      parse: screenParamsParser[SearchView.Thematic],
+      stringify: screenParamsStringifier[SearchView.Thematic],
     },
     options: { title: 'recherche dans les sous-catégories' },
   },
+  {
+    name: SearchView.Filter,
+    component: ComponentForPathConfig,
+    pathConfig: {
+      path: 'recherche/filtres',
+      parse: screenParamsParser[SearchView.Filter],
+      stringify: screenParamsStringifier[SearchView.Filter],
+    },
+    options: { title: 'Filtres de recherche' },
+  },
 ]
 
-const { screensConfig: searchScreensConfig, Screens: SearchScreens } = getScreensAndConfig(
-  routes,
-  SearchStack.Screen
-)
-export { SearchScreens }
+const { screensConfig: searchScreensConfig } = getScreensAndConfig(routes, SearchStack.Screen)
 
 export const searchNavigatorPathConfig: LinkingOptions<SearchStackParamList>['config'] = {
   initialRouteName: initialSearchStackRouteName,
