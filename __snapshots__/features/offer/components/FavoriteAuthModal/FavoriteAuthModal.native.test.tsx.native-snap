@@ -386,19 +386,11 @@ retrouver tes favoris
                 Ton compte te permettra de retrouver tous tes bons plans en un clin d’oeil !
               </Text>
               <View
-                numberOfSpaces={6}
                 style={
                   [
                     {
-                      "height": 24,
-                    },
-                  ]
-                }
-              />
-              <View
-                style={
-                  [
-                    {
+                      "marginBottom": 16,
+                      "marginTop": 24,
                       "width": "100%",
                     },
                   ]
@@ -500,16 +492,6 @@ retrouver tes favoris
                   </View>
                 </View>
               </View>
-              <View
-                numberOfSpaces={4}
-                style={
-                  [
-                    {
-                      "height": 16,
-                    },
-                  ]
-                }
-              />
               <View
                 style={
                   [
