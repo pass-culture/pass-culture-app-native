@@ -7,10 +7,8 @@ appId: ${MAESTRO_APP_ID}
 - tapOn: 'Utiliser ma position'
 
 - assertVisible: "Pour commencer, peux-tu nous dire ton âge\_?"
-- tapOn: "J’ai entre 15 et 18 ans"
-- tapOn: 'J’ai 16 ans'
+- tapOn: "J’ai 16 ans ou moins"
 
-- assertVisible: "À 16 ans, profite de ton pass Culture\_!"
-- tapOn: 'Plus tard'
+- tapOn: 'Accéder au catalogue'
 
 - waitForAnimationToEnd
