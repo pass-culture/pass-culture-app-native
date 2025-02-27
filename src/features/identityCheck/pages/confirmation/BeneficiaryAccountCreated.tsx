@@ -29,7 +29,7 @@ import { getNoHeadingAttrs } from 'ui/theme/typographyAttrs/getNoHeadingAttrs'
 export function BeneficiaryAccountCreated() {
   const maxPriceInCents = useMaxPrice()
   const { uniqueColors } = useTheme()
-  const { user } = useAuthContext()
+  const { user, refetchUser } = useAuthContext()
 
   const { data: settings } = useSettingsContext()
 
@@ -51,7 +51,11 @@ export function BeneficiaryAccountCreated() {
 
   const enableCreditV3 = settings?.wipEnableCreditV3
 
-  const { mutate: resetRecreditAmountToShow } = useResetRecreditAmountToShow({})
+  const { mutate: resetRecreditAmountToShow } = useResetRecreditAmountToShow({
+    onSuccess: () => {
+      refetchUser()
+    },
+  })
 
   const unnderageBeneficiaryText = isUnderageBeneficiary
     ? 'Tu as jusqu’à la veille de tes 18 ans pour profiter de ton crédit.'
