@@ -2,6 +2,7 @@ import React from 'react'
 
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, checkAccessibilityFor, screen } from 'tests/utils/web'
 
 import { BeneficiaryAccountCreated } from './BeneficiaryAccountCreated'
@@ -14,7 +15,7 @@ describe('<BeneficiaryAccountCreated/>', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
       setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])
-      const { container } = render(<BeneficiaryAccountCreated />)
+      const { container } = render(reactQueryProviderHOC(<BeneficiaryAccountCreated />))
 
       await screen.findByLabelText('C’est parti !')
 
