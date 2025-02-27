@@ -11,6 +11,7 @@ import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { BatchProfile } from 'libs/react-native-batch'
 import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { userEvent, render, screen, act } from 'tests/utils'
 
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
@@ -127,9 +128,29 @@ describe('<BeneficiaryAccountCreated/>', () => {
     })
   })
 
+  it('should show correct amount', async () => {
+    renderBeneficiaryAccountCreated()
+
+    const recreditAmount = screen.getByText('300 €')
+
+    await act(() => {
+      expect(recreditAmount).toBeOnTheScreen()
+    })
+  })
+
   describe('when enableCreditV3 activated', () => {
     beforeEach(() => {
       setSettings({ wipEnableCreditV3: true })
+    })
+
+    it('should have correct amount', async () => {
+      renderBeneficiaryAccountCreated()
+
+      const recreditAmount = screen.getByText('150 €')
+
+      await act(() => {
+        expect(recreditAmount).toBeOnTheScreen()
+      })
     })
 
     it('should have correct credit information text', async () => {
@@ -146,5 +167,13 @@ describe('<BeneficiaryAccountCreated/>', () => {
   })
 })
 
-const renderBeneficiaryAccountCreated = () =>
-  render(<BeneficiaryAccountCreated />, { wrapper: ShareAppWrapper })
+function renderBeneficiaryAccountCreated() {
+  return render(<BeneficiaryAccountCreated />, {
+    wrapper: (props) =>
+      reactQueryProviderHOC(
+        <ShareAppWrapper>
+          <React.Fragment>{props.children}</React.Fragment>
+        </ShareAppWrapper>
+      ),
+  })
+}

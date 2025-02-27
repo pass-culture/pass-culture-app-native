@@ -5,11 +5,13 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { creditActions } from 'features/identityCheck/api/useCreditStore'
 import { navigateToHome, navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
+import { useResetRecreditAmountToShow } from 'features/profile/api/useResetRecreditAmountToShow'
 import { isUserUnderageBeneficiary } from 'features/profile/helpers/isUserUnderageBeneficiary'
 import { useMaxPrice } from 'features/search/helpers/useMaxPrice/useMaxPrice'
 import { useShareAppContext } from 'features/share/context/ShareAppWrapper'
 import { ShareAppModalType } from 'features/share/types'
 import { BatchEvent, BatchProfile } from 'libs/react-native-batch'
+import { defaultCreditByAge } from 'shared/credits/defaultCreditByAge'
 import { useShouldShowCulturalSurveyForBeneficiaryUser } from 'shared/culturalSurvey/useShouldShowCulturalSurveyForBeneficiaryUser'
 import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
@@ -27,7 +29,8 @@ import { getNoHeadingAttrs } from 'ui/theme/typographyAttrs/getNoHeadingAttrs'
 export function BeneficiaryAccountCreated() {
   const maxPriceInCents = useMaxPrice()
   const { uniqueColors } = useTheme()
-  const { user } = useAuthContext()
+  const { user, refetchUser } = useAuthContext()
+
   const { data: settings } = useSettingsContext()
 
   const isUnderageBeneficiary = isUserUnderageBeneficiary(user)
@@ -38,9 +41,21 @@ export function BeneficiaryAccountCreated() {
   const currency = useGetCurrencyToDisplay()
   const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
   const maxPrice = formatCurrencyFromCents(maxPriceInCents, currency, euroToPacificFrancRate)
+  const recreditAmount = formatCurrencyFromCents(
+    user?.recreditAmountToShow || defaultCreditByAge.v3.age_18,
+    currency,
+    euroToPacificFrancRate
+  )
   const subtitle = `${maxPrice} viennent d’être crédités sur ton compte pass Culture`
+  const subtitleV3 = `${recreditAmount} viennent d’être crédités sur ton compte pass Culture`
 
   const enableCreditV3 = settings?.wipEnableCreditV3
+
+  const { mutate: resetRecreditAmountToShow } = useResetRecreditAmountToShow({
+    onSuccess: () => {
+      refetchUser()
+    },
+  })
 
   const unnderageBeneficiaryText = isUnderageBeneficiary
     ? 'Tu as jusqu’à la veille de tes 18 ans pour profiter de ton crédit.'
@@ -54,13 +69,14 @@ export function BeneficiaryAccountCreated() {
     BatchProfile.trackEvent(BatchEvent.hasValidatedSubscription)
     if (!user?.needsToFillCulturalSurvey) showShareAppModal(ShareAppModalType.BENEFICIARY)
     creditActions.setActivationDate(new Date())
-  }, [showShareAppModal, user?.needsToFillCulturalSurvey])
+    resetRecreditAmountToShow()
+  }, [resetRecreditAmountToShow, showShareAppModal, user?.needsToFillCulturalSurvey])
 
   useEnterKeyAction(navigateToHome)
 
   return (
     <GenericInfoPageWhite animation={TutorialPassLogo} title="Bonne nouvelle&nbsp;!">
-      <StyledSubtitle>{subtitle}</StyledSubtitle>
+      <StyledSubtitle>{enableCreditV3 ? subtitleV3 : subtitle}</StyledSubtitle>
 
       <Spacer.Column numberOfSpaces={4} />
       <ProgressBarContainer>
@@ -70,7 +86,7 @@ export function BeneficiaryAccountCreated() {
           icon={categoriesIcons.Show}
           isAnimated
         />
-        <Amount>{maxPrice}</Amount>
+        <Amount>{enableCreditV3 ? recreditAmount : maxPrice}</Amount>
       </ProgressBarContainer>
       <Spacer.Column numberOfSpaces={4} />
       <StyledBody>{text}</StyledBody>
