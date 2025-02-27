@@ -5,7 +5,7 @@ import { useForm } from 'react-hook-form'
 import { Keyboard } from 'react-native'
 import styled from 'styled-components/native'
 
-import { useSignIn } from 'features/auth/api/useSignIn'
+import { useSignInMutation } from 'features/auth/queries/useSignInMutation'
 import { AuthenticationButton } from 'features/auth/components/AuthenticationButton/AuthenticationButton'
 import { SSOButtonBase } from 'features/auth/components/SSOButton/SSOButtonBase'
 import { useSettingsContext } from 'features/auth/context/SettingsContext'
@@ -126,7 +126,7 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
     [showErrorSnackBar, navigate, email, setFormErrors, setErrorMessage]
   )
 
-  const { mutate: signIn, isLoading } = useSignIn({
+  const { mutate: signIn, isLoading } = useSignInMutation({
     doNotNavigateOnSigninSuccess: props.doNotNavigateOnSigninSuccess,
     params,
     setErrorMessage,

@@ -5,6 +5,7 @@ import { ReactTestInstance } from 'react-test-renderer'
 
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { api } from 'api/api'
+import { ApiError } from 'api/ApiError'
 import {
   AccountState,
   EmailValidationRemainingResendsResponse,
@@ -42,9 +43,6 @@ const apiSSOSignUpSpy = jest.spyOn(api, 'postNativeV1OauthGoogleAccount')
 const loginAndRedirectMock = jest.fn()
 jest.spyOn(LoginAndRedirectAPI, 'useLoginAndRedirect').mockReturnValue(loginAndRedirectMock)
 
-const realUseState = React.useState
-const mockUseState = jest.spyOn(React, 'useState')
-
 const apiPostGoogleAuthorize = jest.spyOn(api, 'postNativeV1OauthGoogleAuthorize')
 
 jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
@@ -75,6 +73,37 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
+const gotoStep2 = async () => {
+  await act(async () => {
+    fireEvent.changeText(
+      await screen.findByPlaceholderText('tonadresse@email.com'),
+      'email@gmail.com'
+    )
+  })
+  fireEvent.press(screen.getByLabelText('Continuer vers l’étape Mot de passe'))
+  await screen.findByText('Étape 2 sur 5', { includeHiddenElements: true })
+}
+
+const gotoStep3 = async () => {
+  await act(async () => {
+    fireEvent.changeText(await screen.findByPlaceholderText('Ton mot de passe'), 'user@AZERTY123')
+  })
+  fireEvent.press(screen.getByLabelText('Continuer vers l’étape Date de naissance'))
+  await screen.findByText('Étape 3 sur 5', { includeHiddenElements: true })
+}
+
+const gotoStep4 = async () => {
+  await act(async () =>
+    fireEvent(await screen.findByTestId('date-picker-spinner-native'), 'onChange', {
+      nativeEvent: { timestamp: ELIGIBLE_AGE_DATE },
+    })
+  )
+
+  fireEvent.press(screen.getByLabelText('Continuer vers l’étape CGU & Données'))
+
+  await screen.findByText('Étape 4 sur 5', { includeHiddenElements: true })
+}
+
 describe('Signup Form', () => {
   beforeEach(() => {
     mockServer.getApi<EmailValidationRemainingResendsResponse>(
@@ -87,28 +116,23 @@ describe('Signup Form', () => {
     setFeatureFlags()
   })
 
-  it.each`
-    stepIndex | component
-    ${0}      | ${'SetEmail'}
-    ${1}      | ${'SetPassword'}
-    ${2}      | ${'SetBirthday'}
-    ${3}      | ${'AcceptCgu'}
-  `('should render correctly for $component', async ({ stepIndex }) => {
-    mockUseState.mockImplementationOnce(() => realUseState(stepIndex))
-    mockUseState.mockImplementationOnce(() => realUseState(stepIndex))
-    renderSignupForm()
+  describe('For each step', () => {
+    const stepValidationMap = [() => Promise.resolve(), gotoStep2, gotoStep3, gotoStep4]
 
-    await screen.findByText('Inscription')
+    it.each([1, 2, 3, 4])('should render correctly for step %i/5', async (step: number) => {
+      renderSignupForm()
 
-    expect(screen).toMatchSnapshot()
-  })
+      await screen.findByText('Inscription')
 
-  it('should have accessibility label indicating current step and total steps', async () => {
-    renderSignupForm()
+      await stepValidationMap
+        .slice(0, step)
+        .reduce((prev, current) => prev.then(() => current()), Promise.resolve())
 
-    const step = await screen.findByText('Étape 1 sur 5', { includeHiddenElements: true })
-
-    expect(step).toBeOnTheScreen()
+      expect(
+        await screen.findByText(`Étape ${step} sur 5`, { includeHiddenElements: true })
+      ).toBeOnTheScreen()
+      expect(screen).toMatchSnapshot()
+    })
   })
 
   describe('Quit button', () => {
@@ -138,23 +162,9 @@ describe('Signup Form', () => {
       simulateSignupSuccess()
       renderSignupForm()
 
-      const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
-      fireEvent.changeText(emailInput, 'email@gmail.com')
-      await act(() => fireEvent.press(screen.getByLabelText('Continuer vers l’étape Mot de passe')))
-
-      const passwordInput = screen.getByPlaceholderText('Ton mot de passe')
-      await act(async () => fireEvent.changeText(passwordInput, 'user@AZERTY123'))
-      await act(async () =>
-        fireEvent.press(screen.getByLabelText('Continuer vers l’étape Date de naissance'))
-      )
-
-      const datePicker = screen.getByTestId('date-picker-spinner-native')
-      await act(async () =>
-        fireEvent(datePicker, 'onChange', { nativeEvent: { timestamp: ELIGIBLE_AGE_DATE } })
-      )
-      await act(async () =>
-        fireEvent.press(screen.getByLabelText('Continuer vers l’étape CGU & Données'))
-      )
+      await gotoStep2()
+      await gotoStep3()
+      await gotoStep4()
 
       fireEvent.press(
         screen.getByText('J’ai lu et j’accepte les conditions générales d’utilisation*')
@@ -164,8 +174,7 @@ describe('Signup Form', () => {
       })
       await act(() => fireEvent.press(screen.getByText('S’inscrire')))
 
-      const closeButton = screen.getByText('Fermer')
-      fireEvent.press(closeButton)
+      fireEvent.press(await screen.findByText('Fermer'))
 
       expect(navigate).toHaveBeenCalledWith(
         navigateToHomeConfig.screen,
@@ -459,7 +468,7 @@ describe('Signup Form', () => {
       await act(() => fireEvent.press(screen.getByText('S’inscrire')))
 
       expect(eventMonitoring.captureException).toHaveBeenCalledWith(
-        new Error('NETWORK_REQUEST_FAILED')
+        new ApiError(400, '', 'Échec de la requête https://localhost/native/v1/account, code: 400')
       )
     })
   })

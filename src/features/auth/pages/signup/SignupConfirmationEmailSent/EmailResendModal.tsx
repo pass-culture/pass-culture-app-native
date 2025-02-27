@@ -2,9 +2,9 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { ApiError } from 'api/ApiError'
-import { useEmailValidationRemainingResends } from 'features/auth/api/useEmailValidationRemainingResend'
-import { useResendEmailValidation } from 'features/auth/api/useResendEmailValidation'
 import { EmailAttemptsLeft } from 'features/auth/pages/signup/SignupConfirmationEmailSent/EmailAttemptsLeft'
+import { useEmailValidationRemainingResendsQuery } from 'features/auth/queries/useEmailValidationRemainingResendQuery'
+import { useResendEmailValidationMutation } from 'features/auth/queries/useResendEmailValidationMutation'
 import { analytics } from 'libs/analytics/provider'
 import { formatToSlashedFrenchDate } from 'libs/dates'
 import { useLogTypeFromRemoteConfig } from 'libs/hooks/useLogTypeFromRemoteConfig'
@@ -48,7 +48,7 @@ export const EmailResendModal = ({ email, visible, onDismiss }: Props) => {
   }
 
   const { data: remainingResendsResponse, refetch: refetchRemainingResends } =
-    useEmailValidationRemainingResends({
+    useEmailValidationRemainingResendsQuery({
       email,
       onError,
     })
@@ -57,7 +57,7 @@ export const EmailResendModal = ({ email, visible, onDismiss }: Props) => {
     refetchRemainingResends()
     setTimeLeft(60)
   }
-  const { mutate: resendEmail, isLoading } = useResendEmailValidation({
+  const { mutate: resendEmail, isLoading } = useResendEmailValidationMutation({
     onError,
     onSuccess: onResendEmailSuccess,
   })

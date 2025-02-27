@@ -6,7 +6,7 @@ import { Platform } from 'react-native'
 import styled from 'styled-components/native'
 
 import { ApiError } from 'api/ApiError'
-import { useChangePasswordMutation } from 'features/auth/api/useChangePasswordMutation'
+import { useChangePasswordMutation } from 'features/auth/queries/useChangePasswordMutation'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import { getProfileStackConfig } from 'features/navigation/ProfileStackNavigator/getProfileStackConfig'

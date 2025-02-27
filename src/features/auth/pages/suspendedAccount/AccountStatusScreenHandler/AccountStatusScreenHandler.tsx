@@ -2,7 +2,7 @@ import { useFocusEffect } from '@react-navigation/native'
 import React, { useCallback, useEffect } from 'react'
 
 import { AccountState } from 'api/gen'
-import { useAccountSuspensionStatus } from 'features/auth/api/useAccountSuspensionStatus'
+import { useAccountSuspensionStatusQuery } from 'features/auth/queries/useAccountSuspensionStatusQuery'
 import { useLogoutRoutine } from 'features/auth/helpers/useLogoutRoutine'
 import { FraudulentSuspendedAccount } from 'features/auth/pages/suspendedAccount/FraudulentSuspendedAccount/FraudulentSuspendedAccount'
 import { SuspendedAccountUponUserRequest } from 'features/auth/pages/suspendedAccount/SuspendedAccountUponUserRequest/SuspendedAccountUponUserRequest'
@@ -13,7 +13,7 @@ import { SuspiciousLoginSuspendedAccount } from 'features/trustedDevice/pages/Su
 import { LoadingPage } from 'ui/pages/LoadingPage'
 
 export const AccountStatusScreenHandler = () => {
-  const { data: accountSuspensionStatus, isLoading } = useAccountSuspensionStatus()
+  const { data: accountSuspensionStatus, isLoading } = useAccountSuspensionStatusQuery()
   const suspensionStatus = accountSuspensionStatus?.status
   const currentRoute = useCurrentRoute()
   const signOut = useLogoutRoutine()

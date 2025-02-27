@@ -4,7 +4,7 @@ import React, { useCallback, useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 
 import { AccountState, ResetPasswordResponse } from 'api/gen'
-import { useResetPasswordMutation } from 'features/auth/api/useResetPasswordMutation'
+import { useResetPasswordMutation } from 'features/auth/queries/useResetPasswordMutation'
 import { useLoginRoutine } from 'features/auth/helpers/useLoginRoutine'
 import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'

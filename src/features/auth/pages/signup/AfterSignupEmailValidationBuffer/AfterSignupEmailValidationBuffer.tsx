@@ -2,7 +2,7 @@ import { useNavigation, useRoute } from '@react-navigation/native'
 import React, { useEffect } from 'react'
 
 import { ValidateEmailResponse } from 'api/gen'
-import { useValidateEmailMutation } from 'features/auth/api/useValidateEmailMutation'
+import { useValidateEmailMutation } from 'features/auth/queries/useValidateEmailMutation'
 import { useLoginAndRedirect } from 'features/auth/pages/signup/helpers/useLoginAndRedirect'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
