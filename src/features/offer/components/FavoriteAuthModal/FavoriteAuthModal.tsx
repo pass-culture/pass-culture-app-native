@@ -8,7 +8,7 @@ import { ButtonWithLinearGradient } from 'ui/components/buttons/buttonWithLinear
 import { AppModalWithIllustration } from 'ui/components/modals/AppModalWithIllustration'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { BicolorUserFavorite } from 'ui/svg/icons/BicolorUserFavorite'
-import { Spacer, TypoDS } from 'ui/theme'
+import { getSpacing, TypoDS } from 'ui/theme'
 import { LINE_BREAK } from 'ui/theme/constants'
 
 interface Props {
@@ -43,7 +43,6 @@ export const FavoriteAuthModal: FunctionComponent<Props> = ({ visible, offerId, 
       <StyledBody>
         Ton compte te permettra de retrouver tous tes bons plans en un clin d’oeil&nbsp;!
       </StyledBody>
-      <Spacer.Column numberOfSpaces={6} />
       <StyledButtonContainer>
         <InternalTouchableLink
           as={ButtonWithLinearGradient}
@@ -55,7 +54,6 @@ export const FavoriteAuthModal: FunctionComponent<Props> = ({ visible, offerId, 
           onBeforeNavigate={signUp}
         />
       </StyledButtonContainer>
-      <Spacer.Column numberOfSpaces={4} />
       <StyledAuthenticationButton
         type="login"
         params={{ from: StepperOrigin.FAVORITE, offerId }}
@@ -71,6 +69,8 @@ const StyledAuthenticationButton = styled(AuthenticationButton).attrs(({ theme }
 
 const StyledButtonContainer = styled.View({
   width: '100%',
+  marginTop: getSpacing(6),
+  marginBottom: getSpacing(4),
 })
 
 const StyledBody = styled(TypoDS.Body)({
