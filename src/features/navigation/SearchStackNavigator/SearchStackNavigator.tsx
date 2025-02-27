@@ -2,7 +2,6 @@ import React from 'react'
 
 import { SEARCH_STACK_NAVIGATOR_SCREEN_OPTIONS } from 'features/navigation/SearchStackNavigator/searchStackNavigationOptions'
 import { SearchStack } from 'features/navigation/SearchStackNavigator/Stack'
-import { SearchStackRoute } from 'features/navigation/SearchStackNavigator/types'
 import { SearchFilter } from 'features/search/pages/SearchFilter/SearchFilter'
 import { SearchLanding } from 'features/search/pages/SearchLanding/SearchLanding'
 import { SearchResults } from 'features/search/pages/SearchResults/SearchResults'
@@ -14,28 +13,10 @@ export const SearchStackNavigator = () => {
     <SearchStack.Navigator
       initialRouteName={SearchView.Landing}
       screenOptions={SEARCH_STACK_NAVIGATOR_SCREEN_OPTIONS}>
-      {routes.map(({ name, component }) => (
-        <SearchStack.Screen name={name} key={name} component={component} />
-      ))}
+      <SearchStack.Screen name={SearchView.Landing} component={SearchLanding} />
+      <SearchStack.Screen name={SearchView.Results} component={SearchResults} />
+      <SearchStack.Screen name={SearchView.Thematic} component={ThematicSearch} />
+      <SearchStack.Screen name={SearchView.Filter} component={SearchFilter} />
     </SearchStack.Navigator>
   )
 }
-
-const routes: SearchStackRoute[] = [
-  {
-    name: SearchView.Landing,
-    component: SearchLanding,
-  },
-  {
-    name: SearchView.Results,
-    component: SearchResults,
-  },
-  {
-    name: SearchView.Thematic,
-    component: ThematicSearch,
-  },
-  {
-    name: SearchView.Filter,
-    component: SearchFilter,
-  },
-]
