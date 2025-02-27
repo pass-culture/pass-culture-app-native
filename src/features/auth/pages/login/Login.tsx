@@ -5,11 +5,11 @@ import { useForm } from 'react-hook-form'
 import { Keyboard } from 'react-native'
 import styled from 'styled-components/native'
 
-import { useSignInMutation } from 'features/auth/queries/useSignInMutation'
 import { AuthenticationButton } from 'features/auth/components/AuthenticationButton/AuthenticationButton'
 import { SSOButtonBase } from 'features/auth/components/SSOButton/SSOButtonBase'
 import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { loginSchema } from 'features/auth/pages/login/schema/loginSchema'
+import { useSignInMutation } from 'features/auth/queries/useSignInMutation'
 import { SignInResponseFailure } from 'features/auth/types'
 import {
   StepperOrigin,
