@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useCallback, useState } from 'react'
 import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
@@ -46,23 +46,21 @@ export const StickyFooterContent = ({
     hideModal: hideNotificationAuthModal,
   } = useModal(false)
 
-  const handleAddToFavorites = () => {
-    if (isLoggedIn) {
+  const pressFavoriteCTA = useCallback(() => {
+    if (!isLoggedIn) {
+      showFavoriteAuthModal()
+    } else if (favorite) {
+      removeFavorite(favorite.id)
+    } else {
       addFavorite({ offerId })
     }
-    showFavoriteAuthModal()
-  }
+  }, [addFavorite, favorite, isLoggedIn, offerId, removeFavorite, showFavoriteAuthModal])
 
-  const handleRemoveFromFavorites = () => {
-    if (favorite) removeFavorite(favorite?.id)
-  }
-
-  const handleEnableNotifications = () => {
-    if (isLoggedIn) {
-      setHasEnabledNotifications(!hasEnabledNotifications)
-    } else {
+  const pressNotificationsCTA = () => {
+    if (!isLoggedIn) {
       showNotificationAuthModal()
     }
+    setHasEnabledNotifications(!hasEnabledNotifications)
   }
 
   return (
@@ -71,7 +69,7 @@ export const StickyFooterContent = ({
       {favorite ? (
         <ButtonSecondary
           wording="Retirer des favoris"
-          onPress={handleRemoveFromFavorites}
+          onPress={pressFavoriteCTA}
           icon={FavoriteFilled}
           isLoading={isRemoveFavoriteLoading}
         />
@@ -79,7 +77,7 @@ export const StickyFooterContent = ({
         <React.Fragment>
           <ButtonPrimary
             wording="Mettre en favori"
-            onPress={handleAddToFavorites}
+            onPress={pressFavoriteCTA}
             icon={Favorite}
             isLoading={isAddFavoriteLoading}
           />
@@ -93,7 +91,7 @@ export const StickyFooterContent = ({
       <React.Fragment>
         <ButtonTertiaryBlack
           wording={hasEnabledNotifications ? 'Désactiver le rappel' : 'Ajouter un rappel'}
-          onPress={handleEnableNotifications}
+          onPress={pressNotificationsCTA}
           icon={hasEnabledNotifications ? BellFilled : Bell}
         />
         <NotificationAuthModal
