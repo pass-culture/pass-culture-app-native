@@ -7,7 +7,7 @@ import { BatchMessaging, BatchPush } from 'libs/react-native-batch'
 import { configureGoogleSignin } from 'libs/react-native-google-sso/configureGoogleSignin'
 import { render, waitFor } from 'tests/utils'
 
-import { AppWithoutMonitoring } from './App'
+import { App } from './App'
 
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
@@ -70,4 +70,4 @@ describe('<App /> with mocked RootNavigator', () => {
   })
 })
 
-const renderApp = () => render(<AppWithoutMonitoring />)
+const renderApp = () => render(<App />)

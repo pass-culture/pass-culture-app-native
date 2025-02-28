@@ -1,14 +1,8 @@
 export {
   addBreadcrumb,
   captureException,
-  configureScope,
   init,
   setUser,
   setExtras,
-  startTransaction,
-  withProfiler,
-  wrap,
-  getCurrentHub,
-  ReactNavigationInstrumentation,
-  ReactNativeTracing,
+  reactNavigationIntegration,
 } from '@sentry/react-native'

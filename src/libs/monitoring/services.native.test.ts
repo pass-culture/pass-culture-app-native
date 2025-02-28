@@ -22,7 +22,7 @@ describe('eventMonitoring', () => {
       eventMonitoring.init({ enabled: true })
 
       await waitFor(() => {
-        expect(SentryModule.configureScope).toHaveBeenCalledTimes(1)
+        expect(SentryModule.setExtras).toHaveBeenCalledTimes(1)
       })
     })
   })
