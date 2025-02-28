@@ -19,7 +19,6 @@ import {
   blurImageHeight,
   offerImageContainerMarginTop,
 } from 'features/offer/helpers/useOfferImageContainerDimensions'
-import { formatFullAddress } from 'libs/address/useFormatFullAddress'
 import { isCloseToBottom } from 'libs/analytics'
 import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
 import { analytics } from 'libs/analytics/provider'
@@ -30,6 +29,7 @@ import { SeeItineraryButton } from 'libs/itinerary/components/SeeItineraryButton
 import { getGoogleMapsItineraryUrl } from 'libs/itinerary/openGoogleMapsItinerary'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { SubcategoriesMapping } from 'libs/subcategories/types'
+import { formatFullAddress } from 'shared/address/addressFormatter'
 import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'

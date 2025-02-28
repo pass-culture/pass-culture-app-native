@@ -7,7 +7,7 @@ import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storyboo
 import { BicolorProfile } from 'ui/svg/icons/BicolorProfile'
 import { Profile } from 'ui/svg/icons/Profile'
 import { TypoDS } from 'ui/theme'
-import { AVATAR_LARGE, AVATAR_MEDIUM, AVATAR_SMALL } from 'ui/theme/constants'
+import { AVATAR_LARGE, AVATAR_MEDIUM, AVATAR_SMALL, AVATAR_XSMALL } from 'ui/theme/constants'
 
 import { Avatar } from './Avatar'
 
@@ -19,6 +19,10 @@ const meta: ComponentMeta<typeof Avatar> = {
 export default meta
 
 const variantConfig: Variants<typeof Avatar> = [
+  {
+    label: 'Avatar xsmall',
+    props: { size: AVATAR_XSMALL, children: <TypoDS.Title3>M</TypoDS.Title3> },
+  },
   {
     label: 'Avatar small',
     props: { size: AVATAR_SMALL, children: <TypoDS.Title3>M</TypoDS.Title3> },
