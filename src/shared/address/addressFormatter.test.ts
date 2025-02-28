@@ -2,7 +2,7 @@ import {
   formatFullAddress,
   formatFullAddressStartsWithPostalCode,
   formatFullAddressWithVenueName,
-} from 'libs/address/useFormatFullAddress'
+} from 'shared/address/addressFormatter'
 
 jest.mock('libs/react-query/usePersistQuery', () => ({
   usePersistQuery: jest.requireActual('react-query').useQuery,

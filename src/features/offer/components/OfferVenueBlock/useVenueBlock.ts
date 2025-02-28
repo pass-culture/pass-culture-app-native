@@ -2,7 +2,7 @@ import Clipboard from '@react-native-clipboard/clipboard'
 import { useMemo } from 'react'
 
 import { VenueBlockAddress, VenueBlockVenue } from 'features/offer/components/OfferVenueBlock/type'
-import { formatFullAddressStartsWithPostalCode } from 'libs/address/useFormatFullAddress'
+import { formatFullAddressStartsWithPostalCode } from 'shared/address/addressFormatter'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
 export function useVenueBlock({
