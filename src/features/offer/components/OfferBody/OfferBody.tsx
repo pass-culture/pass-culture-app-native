@@ -8,6 +8,7 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { OfferAbout } from 'features/offer/components/OfferAbout/OfferAbout'
 import { OfferArtists } from 'features/offer/components/OfferArtists/OfferArtists'
+import { ProposedBySection } from 'features/offer/components/OfferBody/ProposedBySection/ProposedBySection'
 import { OfferPlace } from 'features/offer/components/OfferPlace/OfferPlace'
 import { OfferReactionSection } from 'features/offer/components/OfferReactionSection/OfferReactionSection'
 import { OfferSummaryInfoList } from 'features/offer/components/OfferSummaryInfoList/OfferSummaryInfoList'
@@ -25,6 +26,7 @@ import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { getDisplayedPrice } from 'libs/parsers/getDisplayedPrice'
 import { Subcategory } from 'libs/subcategories/types'
+import { formatFullAddress } from 'shared/address/addressFormatter'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
 import { isNullOrUndefined } from 'shared/isNullOrUndefined/isNullOrUndefined'
@@ -101,6 +103,19 @@ export const OfferBody: FunctionComponent<Props> = ({ offer, subcategory, childr
 
   const isOpenToPublicVenue = offer.venue.isOpenToPublic ?? false
 
+  const fullAddressOffer = formatFullAddress(
+    offer.address?.street,
+    offer.address?.postalCode,
+    offer.address?.city
+  )
+  const fullAddressVenue = formatFullAddress(
+    offer.venue.address,
+    offer.venue.postalCode,
+    offer.venue.city
+  )
+
+  const hasSameAddress = fullAddressOffer === fullAddressVenue
+
   return (
     <Container>
       <MarginContainer gap={6}>
@@ -125,7 +140,9 @@ export const OfferBody: FunctionComponent<Props> = ({ offer, subcategory, childr
 
         <GroupWithSeparator
           showTopComponent={shouldUseIsOpenToPublic ? isOpenToPublicVenue : offer.venue.isPermanent}
-          TopComponent={isCinemaOffer ? null : <OfferVenueButton venue={offer.venue} />}
+          TopComponent={
+            isCinemaOffer || !hasSameAddress ? null : <OfferVenueButton venue={offer.venue} />
+          }
           showBottomComponent={summaryInfoItems.length > 0}
           BottomComponent={<OfferSummaryInfoList summaryInfoItems={summaryInfoItems} />}
         />
@@ -142,6 +159,15 @@ export const OfferBody: FunctionComponent<Props> = ({ offer, subcategory, childr
           />
         </MarginContainer>
       ) : null}
+
+      {hasSameAddress ? null : (
+        <ProposedBySection
+          name={offer.venue.name}
+          imageUrl={offer.venue.bannerUrl}
+          navigateTo={{ screen: 'Venue', params: { id: offer.venue.id } }}
+        />
+      )}
+
       <OfferPlace offer={offer} subcategory={subcategory} />
     </Container>
   )

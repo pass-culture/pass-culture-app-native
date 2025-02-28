@@ -418,6 +418,39 @@ describe('<OfferBody />', () => {
     })
   })
 
+  describe('ProposedBy section', () => {
+    it('should display proposed section', async () => {
+      const offerWithDifferentAddress: OfferResponseV2 = {
+        ...offerResponseSnap,
+        address: {
+          label: 'Lieu différent',
+          city: 'Paris',
+          postalCode: '75001',
+          coordinates: {
+            latitude: 0.1,
+            longitude: 0.1,
+          },
+          street: 'rue saint-denis',
+          timezone: '',
+        },
+      }
+
+      renderOfferBody({ offer: offerWithDifferentAddress })
+
+      await screen.findByText(offerResponseSnap.name)
+
+      expect(screen.getByText('Proposé par')).toBeOnTheScreen()
+    })
+
+    it('should not display proposed section', async () => {
+      renderOfferBody({})
+
+      await screen.findByText(offerResponseSnap.name)
+
+      expect(screen.queryByText('Proposé par')).not.toBeOnTheScreen()
+    })
+  })
+
   describe('MovieScreeningCalendar', () => {
     const offer: OfferResponseV2 = {
       ...offerResponseSnap,

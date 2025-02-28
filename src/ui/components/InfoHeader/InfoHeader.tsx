@@ -1,4 +1,5 @@
 import React, { FunctionComponent, PropsWithChildren, ReactNode } from 'react'
+import { StyleProp, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
 import { ThumbnailPlaceholder } from 'ui/components/InfoHeader/ThumbnailPlaceHolder'
@@ -10,6 +11,7 @@ type InfoHeaderProps = PropsWithChildren<{
   subtitle?: string
   thumbnailComponent?: ReactNode
   rightComponent?: ReactNode
+  style?: StyleProp<ViewStyle>
 }>
 
 export const InfoHeader: FunctionComponent<InfoHeaderProps> = ({
@@ -19,8 +21,9 @@ export const InfoHeader: FunctionComponent<InfoHeaderProps> = ({
   defaultThumbnailSize,
   thumbnailComponent,
   children,
+  style,
 }) => (
-  <StyledView>
+  <StyledView style={style}>
     {thumbnailComponent || (
       <ThumbnailPlaceholder
         width={defaultThumbnailSize}
