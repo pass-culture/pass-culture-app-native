@@ -118,6 +118,7 @@ export function OfferPlaylistList({
                 categoryMapping,
                 currency,
                 euroToPacificFrancRate,
+                navigationMethod: 'push',
                 apiRecoParams: playlist.apiRecoParams,
                 priceDisplay: (item: Offer) =>
                   getDisplayedPrice(item.offer.prices, currency, euroToPacificFrancRate),

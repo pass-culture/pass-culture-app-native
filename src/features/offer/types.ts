@@ -12,6 +12,10 @@ import { Referrals } from 'features/navigation/RootNavigator/types'
 import { PlaylistType } from 'features/offer/enums'
 import { AlgoliaGeoloc } from 'libs/algolia/types'
 import { Subcategory } from 'libs/subcategories/types'
+import { NAVIGATION_METHOD } from 'shared/constants'
+
+type ValueOf<T> = T[keyof T]
+type NavigationMethod = ValueOf<typeof NAVIGATION_METHOD>
 
 export interface OfferTileProps {
   categoryId: CategoryIdEnum | null | undefined
@@ -38,6 +42,7 @@ export interface OfferTileProps {
   apiRecoParams?: RecommendationApiParams
   index?: number
   artistName?: string
+  navigationMethod?: NavigationMethod
 }
 
 export interface SimilarOffersResponse {

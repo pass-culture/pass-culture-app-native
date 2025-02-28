@@ -8,6 +8,7 @@ import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { useLocation } from 'libs/location'
 import { getDistance } from 'libs/location/getDistance'
 import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
+import { NAVIGATION_METHOD } from 'shared/constants'
 import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
@@ -31,6 +32,7 @@ const UnmemoizedOfferTile = (props: OfferTileProps) => {
     apiRecoParams,
     index,
     artistName,
+    navigationMethod = NAVIGATION_METHOD.NAVIGATE,
     ...offer
   } = props
 
@@ -94,7 +96,7 @@ const UnmemoizedOfferTile = (props: OfferTileProps) => {
             apiRecoParams: JSON.stringify(apiRecoParams),
             playlistType,
           },
-          withPush: true,
+          withPush: navigationMethod === NAVIGATION_METHOD.PUSH,
         }}
         onBeforeNavigate={handlePressOffer}
         onFocus={onFocus}
