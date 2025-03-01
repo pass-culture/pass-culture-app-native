@@ -1,6 +1,8 @@
 import { getScreenFromDeeplink } from 'features/deeplinks/helpers'
+import { getProfileStackConfig } from 'features/navigation/ProfileStackNavigator/profileStackHelpers'
 import { getScreenPath } from 'features/navigation/RootNavigator/linking/getScreenPath'
-import { getTabNavConfig, homeNavConfig } from 'features/navigation/TabBar/helpers'
+import { getSearchStackConfig } from 'features/navigation/SearchStackNavigator/searchStackHelpers'
+import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { WEBAPP_V2_URL } from 'libs/environment/useWebAppUrl'
 
 // To see the linking config used in the tests, check the file :
@@ -43,12 +45,30 @@ describe('getScreenFromDeeplink()', () => {
     expect(screenFromDeeplink.params).toEqual({ screen: 'Home', params: undefined })
   })
 
-  it('should return Profil when url = /profil', () => {
-    const url = getFullUrl(getScreenPath(...getTabNavConfig('Profile', undefined)))
+  it('should return ProfileStackNavigator when url = /profil', () => {
+    const url = getFullUrl(getScreenPath(...getProfileStackConfig('Profile')))
     const { screen, params } = getScreenFromDeeplink(url)
 
     expect(screen).toEqual('TabNavigator')
-    expect(params).toEqual({ screen: 'Profile', params: undefined })
+    expect(params).toEqual({ screen: 'ProfileStackNavigator', params: undefined })
+  })
+
+  it('should return SearchStackNavigator when url = /recherche/resultats', () => {
+    const url = getFullUrl(getScreenPath(...getSearchStackConfig('SearchResults')))
+    const { screen, params } = getScreenFromDeeplink(url)
+
+    expect(screen).toEqual('TabNavigator')
+    expect(params).toEqual({ screen: 'SearchStackNavigator', params: undefined })
+  })
+
+  // investigate why SearchResults works, but not ThematicSearch, SearchLanding, SearchFilters
+  // eslint-disable-next-line jest/no-disabled-tests
+  it.skip('should return SearchStackNavigator when url = /recherche/thematique', () => {
+    const url = getFullUrl(getScreenPath(...getSearchStackConfig('ThematicSearch')))
+    const { screen, params } = getScreenFromDeeplink(url)
+
+    expect(screen).toEqual('TabNavigator')
+    expect(params).toEqual({ screen: 'SearchStackNavigator', params: undefined })
   })
 
   it('should return Offer with id=666', () => {

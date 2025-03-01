@@ -12,6 +12,8 @@ import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/S
 
 import { ChangePassword } from './ChangePassword'
 
+jest.mock('libs/firebase/analytics/analytics')
+
 jest.mock('features/auth/context/AuthContext')
 mockAuthContextWithUser(beneficiaryUser, { persist: true })
 
@@ -123,7 +125,13 @@ describe('ChangePassword', () => {
       message: 'Ton mot de passe est modifié',
       timeout: SNACK_BAR_TIME_OUT,
     })
-    expect(navigate).toHaveBeenCalledWith('TabNavigator', { screen: 'Profile' })
+    expect(navigate).toHaveBeenCalledWith('TabNavigator', {
+      params: {
+        params: undefined,
+        screen: 'Profile',
+      },
+      screen: 'ProfileStackNavigator',
+    })
     expect(analytics.logHasChangedPassword).toHaveBeenCalledWith({
       from: 'personaldata',
       reason: 'changePassword',

@@ -5,6 +5,8 @@ import { render, screen, userEvent } from 'tests/utils'
 
 import { DeleteProfileEmailHacked } from './DeleteProfileEmailHacked'
 
+jest.mock('libs/firebase/analytics/analytics')
+
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   return function createAnimatedComponent(Component: unknown) {
     return Component
@@ -27,7 +29,13 @@ describe('DeleteProfileEmailHacked', () => {
 
     await user.press(button)
 
-    expect(navigate).toHaveBeenCalledWith('TabNavigator', { params: undefined, screen: 'Profile' })
+    expect(navigate).toHaveBeenCalledWith('TabNavigator', {
+      params: {
+        params: undefined,
+        screen: 'Profile',
+      },
+      screen: 'ProfileStackNavigator',
+    })
   })
 
   it('should navigate to change email on press Modifier mon adresse e-mail', async () => {

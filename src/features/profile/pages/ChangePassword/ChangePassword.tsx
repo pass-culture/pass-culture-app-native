@@ -9,8 +9,8 @@ import { ApiError } from 'api/ApiError'
 import { useChangePasswordMutation } from 'features/auth/api/useChangePasswordMutation'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
+import { getProfileStackConfig } from 'features/navigation/ProfileStackNavigator/profileStackHelpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { changePasswordSchema } from 'features/profile/pages/ChangePassword/schema/changePasswordSchema'
 import { analytics } from 'libs/analytics/provider'
 import { eventMonitoring } from 'libs/monitoring/services'
@@ -81,7 +81,7 @@ export function ChangePassword() {
               message: 'Ton mot de passe est modifié',
               timeout: SNACK_BAR_TIME_OUT,
             })
-            navigate(...getTabNavConfig('Profile'))
+            navigate(...getProfileStackConfig('Profile'))
             analytics.logHasChangedPassword({ from: 'personaldata', reason: 'changePassword' })
             resolve()
           },

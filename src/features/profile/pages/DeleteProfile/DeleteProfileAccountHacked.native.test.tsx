@@ -5,6 +5,8 @@ import { fireEvent, render, screen } from 'tests/utils'
 
 import { DeleteProfileAccountHacked } from './DeleteProfileAccountHacked'
 
+jest.mock('libs/firebase/analytics/analytics')
+
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   return function createAnimatedComponent(Component: unknown) {
     return Component
@@ -24,7 +26,13 @@ describe('DeleteProfileAccountHacked', () => {
 
     fireEvent.press(button)
 
-    expect(navigate).toHaveBeenCalledWith('TabNavigator', { params: undefined, screen: 'Profile' })
+    expect(navigate).toHaveBeenCalledWith('TabNavigator', {
+      params: {
+        params: undefined,
+        screen: 'Profile',
+      },
+      screen: 'ProfileStackNavigator',
+    })
   })
 
   it('should navigate to confirm delete profile on press Susprendre mon compte', async () => {

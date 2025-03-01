@@ -4,6 +4,8 @@ import { UnsavedSettingsModal } from 'features/profile/pages/NotificationSetting
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen, act } from 'tests/utils'
 
+jest.mock('libs/firebase/analytics/analytics')
+
 const mockDismissModal = jest.fn()
 const mockOnPressSaveChanges = jest.fn()
 

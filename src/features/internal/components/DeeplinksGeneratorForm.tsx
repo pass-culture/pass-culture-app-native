@@ -19,6 +19,10 @@ import {
   SCREENS_CONFIG,
   ScreensUsedByMarketing,
 } from 'features/internal/config/deeplinksExportConfig'
+import {
+  getProfileStackConfig,
+  isProfileStackScreen,
+} from 'features/navigation/ProfileStackNavigator/profileStackHelpers'
 import { getScreenPath } from 'features/navigation/RootNavigator/linking/getScreenPath'
 import { isSearchStackScreen } from 'features/navigation/SearchStackNavigator/routes'
 import { getSearchStackConfig } from 'features/navigation/SearchStackNavigator/searchStackHelpers'
@@ -309,6 +313,11 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
     if (isSearchStackScreen(selectedScreen)) {
       const searchStackConfig = getSearchStackConfig(selectedScreen, appAndMarketingParams)
       screenPath = getScreenPath(...searchStackConfig)
+    }
+
+    if (isProfileStackScreen(selectedScreen)) {
+      const profileStackConfig = getProfileStackConfig(selectedScreen, appAndMarketingParams)
+      screenPath = getScreenPath(...profileStackConfig)
     }
 
     let universalLink = `https://${env.WEBAPP_V2_DOMAIN}${screenPath}`

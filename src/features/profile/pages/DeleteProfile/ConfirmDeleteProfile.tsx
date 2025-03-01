@@ -3,8 +3,8 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { useAccountSuspend } from 'features/auth/api/useAccountSuspend'
+import { getProfileStackConfig } from 'features/navigation/ProfileStackNavigator/profileStackHelpers'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { BulletListItem } from 'ui/components/BulletListItem'
@@ -42,7 +42,7 @@ export function ConfirmDeleteProfile() {
   return (
     <GenericInfoPageWhite
       headerGoBack
-      goBackParams={getTabNavConfig('Profile')}
+      goBackParams={getProfileStackConfig('Profile')}
       separateIconFromTitle={false}
       icon={BicolorError}
       titleComponent={TypoDS.Title2}

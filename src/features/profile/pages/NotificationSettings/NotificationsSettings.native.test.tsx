@@ -15,6 +15,8 @@ import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 
 import { NotificationsSettings } from './NotificationsSettings'
 
+jest.mock('libs/firebase/analytics/analytics')
+
 jest.mock('libs/jwt/jwt')
 jest.mock('features/auth/context/AuthContext')
 const userWithoutNotificationsOn = {

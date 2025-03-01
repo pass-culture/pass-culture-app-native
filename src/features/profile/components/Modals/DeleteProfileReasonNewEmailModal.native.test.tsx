@@ -3,6 +3,8 @@ import React from 'react'
 import { DeleteProfileReasonNewEmailModal } from 'features/profile/components/Modals/DeleteProfileReasonNewEmailModal'
 import { fireEvent, render, screen } from 'tests/utils'
 
+jest.mock('libs/firebase/analytics/analytics')
+
 const hideModalMock = jest.fn()
 
 describe('<DeleteProfileReasonNewEmailModal/>', () => {
