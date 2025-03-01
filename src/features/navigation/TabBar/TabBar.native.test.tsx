@@ -208,7 +208,7 @@ describe('TabBar', () => {
       setTabNavigationState: jest.fn(),
       tabRoutes: DEFAULT_TAB_ROUTES.map((route) => ({
         ...route,
-        isSelected: route.name === 'Profile',
+        isSelected: route.name === 'ProfileStackNavigator',
       })),
     })
     renderTabBar(mockTabNavigationState)
@@ -275,7 +275,7 @@ describe('TabBar', () => {
     await user.press(profileTab)
 
     expect(navigation.navigate).toHaveBeenCalledWith('TabNavigator', {
-      screen: 'Profile',
+      screen: 'ProfileStackNavigator',
       params: undefined,
     })
   })
