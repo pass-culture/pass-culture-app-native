@@ -1,4 +1,5 @@
 import { ComponentForPathConfig } from 'features/navigation/ComponentForPathConfig'
+import { ProfileStackRouteName } from 'features/navigation/ProfileStackNavigator/ProfileStack'
 import { GenericRoute } from 'features/navigation/RootNavigator/types'
 
 type ProfileStackParamList = {
@@ -16,4 +17,7 @@ export const routes: ProfileStackRoute[] = [
   },
 ]
 
-export const profileStackRouteNames = routes.map((route): string => route.name)
+export function isProfileStackScreen(screen: string): screen is ProfileStackRouteName {
+  const profileStackRouteNames = routes.map((route): string => route.name)
+  return profileStackRouteNames.includes(screen)
+}
