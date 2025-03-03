@@ -7,7 +7,7 @@ import { analytics } from 'libs/analytics/provider'
 import { storage } from 'libs/storage'
 
 export function onNavigationStateChange(state?: NavigationState): void {
-  if (!state || !state.routes) {
+  if (!state?.routes) {
     return
   }
   if (Platform.OS === 'web') {

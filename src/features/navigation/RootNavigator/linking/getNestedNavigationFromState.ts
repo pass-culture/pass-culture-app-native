@@ -5,7 +5,7 @@ import { NavigationResultState, RootNavigateParams } from 'features/navigation/R
 export function getNestedNavigationFromState(
   state: NavigationResultState | NavigationState
 ): RootNavigateParams {
-  if (!state || !state.routes) {
+  if (!state?.routes) {
     return ['PageNotFound', undefined]
   }
   const { routes, index } = state
