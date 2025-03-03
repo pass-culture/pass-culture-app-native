@@ -1,5 +1,5 @@
 import { getScreenFromDeeplink } from 'features/deeplinks/helpers'
-import { getProfileStackConfig } from 'features/navigation/ProfileStackNavigator/profileStackHelpers'
+import { getProfileStackConfig } from 'features/navigation/ProfileStackNavigator/getProfileStackConfig'
 import { getScreenPath } from 'features/navigation/RootNavigator/linking/getScreenPath'
 import { getSearchStackConfig } from 'features/navigation/SearchStackNavigator/searchStackHelpers'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'

@@ -2,7 +2,7 @@ import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 
 import { useLogoutRoutine } from 'features/auth/helpers/useLogoutRoutine'
-import { getProfileStackConfig } from 'features/navigation/ProfileStackNavigator/profileStackHelpers'
+import { getProfileStackConfig } from 'features/navigation/ProfileStackNavigator/getProfileStackConfig'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { useAnonymizeAccount } from 'features/profile/api/useAnonymizeAccount'
 import { env } from 'libs/environment/env'

@@ -3,7 +3,7 @@ import React, { FC } from 'react'
 import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 
-import { getProfileStackConfig } from 'features/navigation/ProfileStackNavigator/profileStackHelpers'
+import { getProfileStackConfig } from 'features/navigation/ProfileStackNavigator/getProfileStackConfig'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { env } from 'libs/environment/env'
 import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonInsideText'

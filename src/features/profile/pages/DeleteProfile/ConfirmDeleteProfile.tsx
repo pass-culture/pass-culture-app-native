@@ -3,7 +3,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { useAccountSuspend } from 'features/auth/api/useAccountSuspend'
-import { getProfileStackConfig } from 'features/navigation/ProfileStackNavigator/profileStackHelpers'
+import { getProfileStackConfig } from 'features/navigation/ProfileStackNavigator/getProfileStackConfig'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
