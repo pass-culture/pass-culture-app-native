@@ -1,16 +1,26 @@
+import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
-import { push } from '__mocks__/@react-navigation/native'
 import { CategoryIdEnum, HomepageLabelNameEnumv2, RecommendationApiParams } from 'api/gen'
 import { Referrals } from 'features/navigation/RootNavigator/types'
 import { PlaylistType } from 'features/offer/enums'
 import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { analytics } from 'libs/analytics/provider'
+import { NAVIGATION_METHOD } from 'shared/constants'
 import { queryCache, reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 import { OfferTile } from './OfferTile'
+
+jest.mock('@react-navigation/native')
+const mockUseNavigation = useNavigation as jest.Mock
+const mockNavigate = jest.fn()
+const mockPush = jest.fn()
+mockUseNavigation.mockReturnValue({
+  navigate: mockNavigate,
+  push: mockPush,
+})
 
 const OFFER = mockedAlgoliaResponse.hits[0].offer
 const OFFER_LOCATION = mockedAlgoliaResponse.hits[0]._geoloc
@@ -48,12 +58,29 @@ const props = {
 describe('OfferTile component', () => {
   afterAll(() => jest.resetAllMocks())
 
-  it('should navigate to the offer when clicking on the image', async () => {
-    render(reactQueryProviderHOC(<OfferTile {...props} />))
+  it('should navigate to the offer page when clicking on the image', async () => {
+    render(
+      reactQueryProviderHOC(<OfferTile {...props} navigationMethod={NAVIGATION_METHOD.NAVIGATE} />)
+    )
     fireEvent.press(screen.getByTestId('tileImage'))
 
     await waitFor(() => {
-      expect(push).toHaveBeenCalledWith('Offer', {
+      expect(mockNavigate).toHaveBeenCalledWith('Offer', {
+        id: OFFER_ID,
+        from: 'home',
+        moduleName: 'Module Name',
+      })
+    })
+  })
+
+  it('should push the offer page when clicking on the image', async () => {
+    render(
+      reactQueryProviderHOC(<OfferTile {...props} navigationMethod={NAVIGATION_METHOD.PUSH} />)
+    )
+    fireEvent.press(screen.getByTestId('tileImage'))
+
+    await waitFor(() => {
+      expect(mockPush).toHaveBeenCalledWith('Offer', {
         id: OFFER_ID,
         from: 'home',
         moduleName: 'Module Name',

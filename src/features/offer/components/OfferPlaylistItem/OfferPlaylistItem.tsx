@@ -4,6 +4,7 @@ import { OfferResponseV2, RecommendationApiParams } from 'api/gen'
 import { Referrals } from 'features/navigation/RootNavigator/types'
 import { OfferTile } from 'features/offer/components/OfferTile/OfferTile'
 import { PlaylistType } from 'features/offer/enums'
+import { OfferTileProps } from 'features/offer/types'
 import { formatDates, getTimeStampInMillis } from 'libs/parsers/formatDates'
 import {
   CategoryHomeLabelMapping,
@@ -23,6 +24,7 @@ type OfferPlaylistItemProps = {
   apiRecoParams?: RecommendationApiParams
   analyticsFrom?: Referrals
   priceDisplay: (item: Offer) => string
+  navigationMethod?: OfferTileProps['navigationMethod']
 }
 
 type RenderOfferPlaylistItemProps = {
@@ -39,6 +41,7 @@ export const OfferPlaylistItem = ({
   artistName,
   apiRecoParams,
   analyticsFrom = 'offer',
+  navigationMethod,
   priceDisplay,
 }: OfferPlaylistItemProps) => {
   return function RenderItem({ item, width, height, playlistType }: RenderOfferPlaylistItemProps) {
@@ -64,6 +67,7 @@ export const OfferPlaylistItem = ({
         playlistType={playlistType}
         apiRecoParams={apiRecoParams}
         artistName={artistName}
+        navigationMethod={navigationMethod}
       />
     )
   }
