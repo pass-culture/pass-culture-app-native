@@ -17,7 +17,6 @@ import { act, render, screen, userEvent } from 'tests/utils'
 import { AnchorProvider } from 'ui/components/anchor/AnchorContext'
 import * as useModalAPI from 'ui/components/modals/useModal'
 
-jest.mock('libs/address/useFormatFullAddress')
 const offerVenues = [
   {
     title: 'Envie de lire',

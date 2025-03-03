@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { PropsWithChildren } from 'react'
 import { LayoutChangeEvent, StyleProp, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -6,7 +6,6 @@ import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { getSpacing } from 'ui/theme'
 interface SectionProps {
   visible: boolean
-  children?: React.JSX.Element | (React.JSX.Element | null)[]
   margin?: boolean
   onLayout?: (event: LayoutChangeEvent) => void
   testID?: string
@@ -22,7 +21,7 @@ export const SectionWithDivider = ({
   testID,
   style,
   gap,
-}: SectionProps) => {
+}: PropsWithChildren<SectionProps>) => {
   if (!visible) return null
 
   return (

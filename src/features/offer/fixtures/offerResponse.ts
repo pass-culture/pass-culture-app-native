@@ -27,6 +27,17 @@ export const offerResponseSnap = toMutable({
   reactionsCount: {
     likes: 1,
   },
+  address: {
+    label: 'PATHE BEAUGRENELLE',
+    city: 'PARIS 8',
+    postalCode: '75008',
+    coordinates: {
+      latitude: 0.1,
+      longitude: 0.1,
+    },
+    street: '2 RUE LAMENNAIS',
+    timezone: 'Europe/Paris',
+  },
   chronicles: [
     {
       id: 1,
