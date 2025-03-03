@@ -14,21 +14,7 @@ export const tabNavigatorPathConfig: LinkingOptions<TabParamList>['config'] = {
       path: 'accueil',
       parse: {},
     },
-    SearchStackNavigator: {
-      initialRouteName: 'SearchLanding',
-      screens: {
-        SearchLanding: {
-          path: 'recherche/accueil',
-          parse: {},
-          stringify: {},
-        },
-        SearchResults: {
-          path: 'recherche/resultats',
-          parse: {},
-          stringify: {},
-        },
-      },
-    },
+    SearchStackNavigator: searchNavigatorPathConfig,
     Bookings: {
       path: 'reservations',
     },
