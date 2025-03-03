@@ -1,21 +1,10 @@
 import { orderBy, shuffle } from 'lodash'
-import { UseQueryResult } from 'react-query'
 
 import { SubcategoryIdEnum } from 'api/gen'
-import * as useVenueOffers from 'features/venue/api/useVenueOffers'
 import { useVenueOffersArtists } from 'features/venue/api/useVenueOffersArtists/useVenueOffersArtists'
-import { VenueOffers } from 'features/venue/types'
-import mockVenueResponse from 'fixtures/venueResponse'
+import { Offer } from 'shared/offer/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, waitFor } from 'tests/utils'
-
-const useVenueOffersSpy = jest.spyOn(useVenueOffers, 'useVenueOffers').mockReturnValue({
-  isLoading: false,
-  data: {
-    hits: [],
-    nbHits: 0,
-  },
-} as unknown as UseQueryResult<VenueOffers, unknown>)
 
 describe('useVenueOffersArtists', () => {
   it('should return empty artists array when useVenueOffers hook data is undefined', () => {
@@ -27,7 +16,7 @@ describe('useVenueOffersArtists', () => {
   })
 
   it('should return empty artists array when there are no offers', async () => {
-    const { result } = renderHook(() => useVenueOffersArtists(mockVenueResponse), {
+    const { result } = renderHook(() => useVenueOffersArtists([]), {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
 
@@ -37,10 +26,9 @@ describe('useVenueOffersArtists', () => {
   })
 
   it('should return artists when there are offers', async () => {
-    useVenueOffersSpy.mockReturnValueOnce({
-      isLoading: false,
-      data: {
-        hits: [
+    const { result } = renderHook(
+      () =>
+        useVenueOffersArtists([
           {
             offer: {
               dates: [],
@@ -87,14 +75,11 @@ describe('useVenueOffersArtists', () => {
               city: 'Paris',
             },
           },
-        ],
-        nbHits: 2,
-      },
-    } as unknown as UseQueryResult<VenueOffers, unknown>)
-
-    const { result } = renderHook(() => useVenueOffersArtists(mockVenueResponse), {
-      wrapper: ({ children }) => reactQueryProviderHOC(children),
-    })
+        ]),
+      {
+        wrapper: ({ children }) => reactQueryProviderHOC(children),
+      }
+    )
 
     await waitFor(async () => {
       expect(result.current.data).toEqual({
@@ -111,13 +96,22 @@ describe('useVenueOffersArtists', () => {
   })
 
   it('should return 30 artists max / unique by name / with at list one offer / ordered by number of offers / ordered by names', async () => {
-    const mockedArtistList = Array.from({ length: 75 }, (_, index) => ({
+    const mockedArtistList: Offer[] = Array.from({ length: 75 }, (_, index) => ({
       objectID: (index % 35).toString(),
       offer: {
         artist: `Artist ${index % 35}`,
         thumbUrl:
           'https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDZQ',
         subcategoryId: SubcategoryIdEnum.SUPPORT_PHYSIQUE_MUSIQUE_VINYLE,
+      },
+      _geoloc: { lat: 4.90339, lng: -52.31663 },
+      venue: {
+        id: 4,
+        name: 'Lieu 4',
+        publicName: 'Lieu 4',
+        address: '4 rue de la paix',
+        postalCode: '75000',
+        city: 'Paris',
       },
     }))
 
@@ -127,15 +121,7 @@ describe('useVenueOffersArtists', () => {
     if (mockedArtistList[10]) mockedArtistList[10].offer.artist = 'collectif MI6'
     if (mockedArtistList[45]) mockedArtistList[45].offer.artist = 'collectif MI6'
 
-    useVenueOffersSpy.mockReturnValueOnce({
-      isLoading: false,
-      data: {
-        hits: shuffle(mockedArtistList),
-        nbHits: mockedArtistList.length,
-      },
-    } as unknown as UseQueryResult<VenueOffers, unknown>)
-
-    const { result } = renderHook(() => useVenueOffersArtists(mockVenueResponse), {
+    const { result } = renderHook(() => useVenueOffersArtists(shuffle(mockedArtistList)), {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
 

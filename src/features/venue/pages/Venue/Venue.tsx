@@ -32,8 +32,7 @@ export const Venue: FunctionComponent = () => {
   const { params } = useRoute<UseRouteType<'Venue'>>()
   const { data: venue } = useVenue(params.id)
   const { gtlPlaylists } = useGTLPlaylists({ venue, queryKey: 'VENUE_GTL_PLAYLISTS' })
-  const { data: venueOffers } = useVenueOffers(venue)
-  const { data: venueArtists } = useVenueOffersArtists(venue)
+  const { data: venueArtists } = useVenueOffersArtists(venueOffers?.hits)
   const { isDesktopViewport } = useTheme()
 
   const { userLocation } = useLocation()
