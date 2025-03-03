@@ -5,11 +5,13 @@ import { UseQueryResult } from 'react-query'
 import { VenueTypeCodeKey } from 'api/gen'
 import * as useGoBack from 'features/navigation/useGoBack'
 import * as useVenueOffers from 'features/venue/api/useVenueOffers'
+import * as useVenueSearchParameters from 'features/venue/helpers/useVenueSearchParameters'
 import { VenueOffers } from 'features/venue/types'
 import { FILTERS_VENUE_TYPE_MAPPING } from 'features/venueMap/constant'
 import { VenueMap } from 'features/venueMap/pages/VenueMap/VenueMap'
 import * as venueMapStore from 'features/venueMap/store/venueMapStore'
 import { venuesFilterActions } from 'features/venueMap/store/venuesFilterStore'
+import mockVenueSearchParams from 'fixtures/venueSearchParams'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -54,6 +56,12 @@ jest.mock('@gorhom/bottom-sheet', () => {
     default: MockBottomSheet,
   }
 })
+
+jest
+  .spyOn(useVenueSearchParameters, 'useVenueSearchParameters')
+  .mockReturnValue(mockVenueSearchParams)
+
+jest.mock('features/search/context/SearchWrapper')
 
 const VENUE_TYPE = VenueTypeCodeKey.MOVIE
 

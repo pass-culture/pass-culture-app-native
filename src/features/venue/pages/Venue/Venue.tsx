@@ -8,6 +8,8 @@ import { useGTLPlaylists } from 'features/gtlPlaylist/hooks/useGTLPlaylists'
 import { offerToHeadlineOfferData } from 'features/headlineOffer/adapters/offerToHeadlineOfferData'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { OfferCTAProvider } from 'features/offer/components/OfferContent/OfferCTAProvider'
+import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
+import { useSearch } from 'features/search/context/SearchWrapper'
 import { useVenue } from 'features/venue/api/useVenue'
 import { useVenueOffers } from 'features/venue/api/useVenueOffers'
 import { useVenueOffersArtists } from 'features/venue/api/useVenueOffersArtists/useVenueOffersArtists'
@@ -17,6 +19,8 @@ import { VENUE_CTA_HEIGHT_IN_SPACES } from 'features/venue/components/VenueCTA/V
 import { VenueMessagingApps } from 'features/venue/components/VenueMessagingApps/VenueMessagingApps'
 import { VenueThematicSection } from 'features/venue/components/VenueThematicSection/VenueThematicSection'
 import { VenueTopComponent } from 'features/venue/components/VenueTopComponent/VenueTopComponent'
+import { useVenueSearchParameters } from 'features/venue/helpers/useVenueSearchParameters'
+import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { analytics } from 'libs/analytics/provider'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -32,10 +36,23 @@ export const Venue: FunctionComponent = () => {
   const { params } = useRoute<UseRouteType<'Venue'>>()
   const { data: venue } = useVenue(params.id)
   const { gtlPlaylists } = useGTLPlaylists({ venue, queryKey: 'VENUE_GTL_PLAYLISTS' })
+  const { userLocation, selectedLocationMode } = useLocation()
+  const transformHits = useTransformOfferHits()
+  const venueSearchParams = useVenueSearchParameters(venue)
+  const { searchState } = useSearch()
+  const isUserUnderage = useIsUserUnderage()
+  const { data: venueOffers } = useVenueOffers({
+    userLocation,
+    selectedLocationMode,
+    isUserUnderage,
+    venueSearchParams,
+    searchState,
+    transformHits,
+    venue,
+  })
   const { data: venueArtists } = useVenueOffersArtists(venueOffers?.hits)
   const { isDesktopViewport } = useTheme()
 
-  const { userLocation } = useLocation()
   const currency = useGetCurrencyToDisplay()
   const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
   const mapping = useCategoryIdMapping()

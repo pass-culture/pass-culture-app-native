@@ -9,6 +9,7 @@ import { VenueTypeCodeKey } from 'api/gen'
 import { PlaylistType } from 'features/offer/enums'
 import * as useVenueOffers from 'features/venue/api/useVenueOffers'
 import { VenueOffersResponseSnap } from 'features/venue/fixtures/venueOffersResponseSnap'
+import * as useVenueSearchParameters from 'features/venue/helpers/useVenueSearchParameters'
 import { VenueOffers } from 'features/venue/types'
 import { GeolocatedVenue } from 'features/venueMap/components/VenueMapView/types'
 import { VenueMapViewContainer } from 'features/venueMap/components/VenueMapView/VenueMapViewContainer'
@@ -16,6 +17,7 @@ import { useCenterOnLocation } from 'features/venueMap/hook/useCenterOnLocation'
 import * as useVenueMapFilters from 'features/venueMap/hook/useVenueMapFilters'
 import * as useVenueMapStore from 'features/venueMap/store/venueMapStore'
 import { useVenuesInRegionQuery } from 'features/venueMap/useVenuesInRegionQuery'
+import mockVenueSearchParams from 'fixtures/venueSearchParams'
 import { venuesFixture } from 'libs/algolia/fetchAlgolia/fetchVenues/fixtures/venuesFixture'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -75,6 +77,12 @@ jest.mock('@gorhom/bottom-sheet', () => {
     default: MockBottomSheet,
   }
 })
+
+jest
+  .spyOn(useVenueSearchParameters, 'useVenueSearchParameters')
+  .mockReturnValue(mockVenueSearchParams)
+
+jest.mock('features/search/context/SearchWrapper')
 
 const mockUseVenueOffers = (emptyResponse = false) => {
   useVenueOffersSpy.mockReturnValue({
