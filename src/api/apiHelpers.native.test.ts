@@ -401,6 +401,28 @@ describe('[api] helpers', () => {
       await expect(getResult).rejects.toThrow(error)
     })
 
+    it('should capture a detailed error on Sentry when status is 401', async () => {
+      const response = await respondWith('apiResponse', 401)
+
+      const getResult = () => {
+        return handleGeneratedApiResponse(response)
+      }
+      const error = new ApiError(
+        401,
+        'apiResponse',
+        `Échec de la requête ${response.url}, code: ${response.status}`
+      )
+
+      await expect(getResult).rejects.toThrow(error)
+
+      expect(eventMonitoring.captureException).toHaveBeenCalledWith(
+        new Error('handleGeneratedApiResponse'),
+        {
+          extra: { responseBody: 'apiResponse' },
+        }
+      )
+    })
+
     it('should navigate to login when access and refresh tokens are invalid', async () => {
       const result = await handleGeneratedApiResponse(createNeedsAuthenticationResponse(apiUrl))
 

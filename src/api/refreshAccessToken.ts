@@ -5,6 +5,7 @@ import { computeTokenRemainingLifetimeInMs } from 'libs/jwt/jwt'
 import { clearRefreshToken, getRefreshToken } from 'libs/keychain/keychain'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { storage } from 'libs/storage'
+import { getErrorMessage } from 'shared/getErrorMessage/getErrorMessage'
 
 import { ApiError } from './ApiError'
 import { DefaultApi } from './gen'
@@ -84,7 +85,13 @@ export const refreshAccessTokenWithRetriesOnError = async (
     const { isInternetReachable } = await fetchNetInfo()
     if (!isInternetReachable) return { error: LIMITED_CONNECTIVITY_WHILE_REFRESHING_ACCESS_TOKEN }
 
-    eventMonitoring.captureException(error)
+    const errorMessage = getErrorMessage(error)
+    eventMonitoring.captureException(
+      new Error(`refreshAccessToken ${errorMessage}`, { cause: error }),
+      {
+        extra: { error },
+      }
+    )
     return { error: UNKNOWN_ERROR_WHILE_REFRESHING_ACCESS_TOKEN }
   }
 }

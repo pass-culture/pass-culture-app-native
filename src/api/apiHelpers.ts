@@ -159,6 +159,12 @@ export async function handleGeneratedApiResponse(response: Response): Promise<an
   const responseBody = await extractResponseBody(response)
 
   if (!response.ok) {
+    if (response.status === 401) {
+      eventMonitoring.captureException(new Error(`handleGeneratedApiResponse`), {
+        extra: { responseBody },
+      })
+    }
+
     throw new ApiError(
       response.status,
       responseBody,
