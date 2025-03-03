@@ -4,9 +4,6 @@ import { checkAccessibilityFor, render } from 'tests/utils/web'
 
 import { DeleteProfileAccountHacked } from './DeleteProfileAccountHacked'
 
-jest.mock('libs/firebase/analytics/analytics')
-jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
-
 describe('DeleteProfileAccountHacked', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {

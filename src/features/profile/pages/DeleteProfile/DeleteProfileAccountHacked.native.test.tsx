@@ -5,8 +5,6 @@ import { fireEvent, render, screen } from 'tests/utils'
 
 import { DeleteProfileAccountHacked } from './DeleteProfileAccountHacked'
 
-jest.mock('libs/firebase/analytics/analytics')
-
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   return function createAnimatedComponent(Component: unknown) {
     return Component

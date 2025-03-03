@@ -1,6 +1,6 @@
 import { LinkingOptions } from '@react-navigation/native'
 
-import { profileNavigatorPathConfig } from 'features/navigation/ProfileStackNavigator/routes'
+import { profileNavigatorPathConfig } from 'features/navigation/ProfileStackNavigator/profileNavigatorPathConfig'
 import { ScreenNames } from 'features/navigation/RootNavigator/types'
 import { screenParamsParser } from 'features/navigation/screenParamsUtils'
 import { searchNavigatorPathConfig } from 'features/navigation/SearchStackNavigator/__mocks__/routes'
