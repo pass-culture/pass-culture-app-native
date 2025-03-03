@@ -83,12 +83,12 @@ const mockUseVenueOffers = (emptyResponse = false) => {
   } as unknown as UseQueryResult<VenueOffers, unknown>)
 }
 
-const pressVenueMarker = (venue: GeolocatedVenue) => {
+const pressVenueMarker = (venue: GeolocatedVenue, forcedVenueId?: string) => {
   return act(() => {
     fireEvent.press(screen.getByTestId(`marker-${venue.venueId}`), {
       stopPropagation: () => false,
       nativeEvent: {
-        id: venue.venueId.toString(),
+        id: forcedVenueId ?? venue.venueId.toString(),
         coordinate: {
           latitude: venue._geoloc.lat,
           longitude: venue._geoloc.lng,
@@ -194,9 +194,7 @@ describe('VenueMapViewContainer', () => {
     expect(screen.getByText('Rechercher dans cette zone')).toBeOnTheScreen()
   })
 
-  // TODO(PC-33564): fix flaky tests
-  // eslint-disable-next-line jest/no-disabled-tests
-  it.skip('should not display search button after search press', async () => {
+  it('should not display search button after search press', async () => {
     renderVenueMapViewContainer()
     const mapView = await screen.findByTestId('venue-map-view')
 
@@ -208,9 +206,7 @@ describe('VenueMapViewContainer', () => {
       longitudeDelta: 1,
     })
 
-    await act(async () => {
-      await user.press(await screen.findByText('Rechercher dans cette zone'))
-    })
+    await user.press(await screen.findByText('Rechercher dans cette zone'))
 
     await waitFor(() =>
       expect(screen.queryByText('Rechercher dans cette zone')).not.toBeOnTheScreen()
@@ -246,6 +242,29 @@ describe('VenueMapViewContainer', () => {
     expect(await screen.findByTestId('venueMapPreview')).toBeOnTheScreen()
     expect(await screen.findByTestId('venueOfferPlaylist')).toBeOnTheScreen()
     expect(await screen.findByText('Voir les offres du lieu')).toBeOnTheScreen()
+  })
+
+  it('should not display venueMapPreview in bottom sheet if selected marker is not found in venue list', async () => {
+    renderVenueMapViewContainer()
+    await screen.findByTestId(`marker-${venuesFixture[0].venueId}`)
+
+    await pressVenueMarker(venuesFixture[0], '666')
+
+    expect(screen.queryByTestId('venueMapPreview')).not.toBeOnTheScreen()
+  })
+
+  it('should remove selected venue when map is pressed', async () => {
+    renderVenueMapViewContainer()
+    const mockRemoveSelectedVenue = jest.spyOn(useVenueMapStore, 'removeSelectedVenue')
+    await screen.findByTestId(`marker-${venuesFixture[0].venueId}`)
+
+    await pressVenueMarker(venuesFixture[0])
+
+    await user.press(screen.getByTestId('venue-map-view'))
+
+    await waitFor(() => {
+      expect(mockRemoveSelectedVenue).toHaveBeenCalledTimes(1)
+    })
   })
 
   it('should navigate to Venue page when bottom sheet is open and fling gesture detected', async () => {
@@ -311,16 +330,6 @@ describe('VenueMapViewContainer', () => {
     expect(screen.getByTestId('RightFilled')).toBeOnTheScreen()
   })
 
-  // TODO(PC-33564): fix flaky tests
-  // eslint-disable-next-line jest/no-disabled-tests
-  it.skip('should not display preview if marker id has not been found in venue list', async () => {
-    renderVenueMapViewContainer()
-    await screen.findByTestId(`marker-${venuesFixture[0].venueId}`)
-    await pressVenueMarker(venuesFixture[0])
-
-    expect(screen.queryByTestId('venueMapPreview')).not.toBeOnTheScreen()
-  })
-
   it('should not display preview if wipOffersInBottomSheet FF disabled', async () => {
     setFeatureFlags([])
 
@@ -344,19 +353,13 @@ describe('VenueMapViewContainer', () => {
     expect(screen.queryByText('Voir les offres du lieu')).not.toBeOnTheScreen()
   })
 
-  // TODO(PC-33564): fix flaky tests
-  // eslint-disable-next-line jest/no-disabled-tests
-  it.skip('should center map on bottom sheet animation', async () => {
+  it('should center map on bottom sheet animation', async () => {
     renderVenueMapViewContainer()
     await screen.findByTestId(`marker-${venuesFixture[0].venueId}`)
 
-    await act(async () => {
-      await user.press(screen.getByTestId('venue-map-view'))
-    })
+    await user.press(screen.getByTestId('venue-map-view'))
 
-    await act(async () => {
-      await pressVenueMarker(venuesFixture[0])
-    })
+    await pressVenueMarker(venuesFixture[0])
 
     await waitFor(() => expect(mockUseCenterOnLocation).toHaveBeenCalledWith(expect.any(Object)))
   })
