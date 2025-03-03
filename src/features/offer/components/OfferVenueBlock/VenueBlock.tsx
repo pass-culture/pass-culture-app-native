@@ -9,7 +9,7 @@ import { getDistance } from 'libs/location/getDistance'
 import { Tag } from 'ui/components/Tag/Tag'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { VenueInfoHeader } from 'ui/components/VenueInfoHeader/VenueInfoHeader'
-import { getSpacing, Spacer } from 'ui/theme'
+import { getSpacing } from 'ui/theme'
 
 type Props = {
   venue: VenueBlockVenue
@@ -54,12 +54,7 @@ export function VenueBlock({
 
   return (
     <React.Fragment>
-      {shouldDisplayDistanceTag ? (
-        <React.Fragment>
-          <Tag label={`à ${distance}`} />
-          <Spacer.Column numberOfSpaces={4} />
-        </React.Fragment>
-      ) : null}
+      {shouldDisplayDistanceTag ? <StyledTag label={`à ${distance}`} /> : null}
 
       <TouchableContainer
         navigateTo={{ screen: 'Venue', params: { id: venue.id } }}
@@ -75,3 +70,7 @@ export function VenueBlock({
     </React.Fragment>
   )
 }
+
+const StyledTag = styled(Tag)({
+  marginBottom: getSpacing(4),
+})
