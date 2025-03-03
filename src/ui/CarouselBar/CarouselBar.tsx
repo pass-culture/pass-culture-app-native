@@ -1,12 +1,12 @@
 import React from 'react'
-import Animated, { interpolateColor, useAnimatedStyle } from 'react-native-reanimated'
+import Animated, { SharedValue, interpolateColor, useAnimatedStyle } from 'react-native-reanimated'
 import styled, { useTheme } from 'styled-components/native'
 
 import { getSpacing } from 'ui/theme'
 
 type Props = {
   index: number
-  animValue: Animated.SharedValue<number>
+  animValue: SharedValue<number>
 }
 
 export const CarouselBar: React.FunctionComponent<Props> = ({ animValue, index }) => {
