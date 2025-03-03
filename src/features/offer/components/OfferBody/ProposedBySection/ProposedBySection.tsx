@@ -12,6 +12,7 @@ import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { RightFilled } from 'ui/svg/icons/RightFilled'
 import { Venue } from 'ui/svg/icons/Venue'
 import { TypoDS } from 'ui/theme'
+import { AVATAR_SMALL } from 'ui/theme/constants'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type ProposedBySectionProps = {
@@ -39,9 +40,9 @@ export const ProposedBySection: FunctionComponent<ProposedBySectionProps> = ({
             rightComponent={
               <RightFilled size={theme.icons.sizes.extraSmall} testID="RightFilled" />
             }
-            defaultThumbnailSize={54}
+            defaultThumbnailSize={AVATAR_SMALL}
             thumbnailComponent={
-              <Avatar size={54}>
+              <Avatar borderWidth={3} size={AVATAR_SMALL}>
                 {imageUrl ? (
                   <FullSizeImage url={imageUrl} testID="VenueImage" />
                 ) : (
