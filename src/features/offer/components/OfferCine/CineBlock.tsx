@@ -8,6 +8,7 @@ import { NextScreeningButton } from 'features/offer/components/MoviesScreeningCa
 import { useOfferCTAButton } from 'features/offer/components/OfferCTAButton/useOfferCTAButton'
 import { OfferEventCardList } from 'features/offer/components/OfferEventCardList/OfferEventCardList'
 import { VenueBlock } from 'features/offer/components/OfferVenueBlock/VenueBlock'
+import { getAddress, getVenue } from 'features/offer/helpers/getVenueBlockProps'
 import { useSubcategoriesMapping } from 'libs/subcategories'
 import { getSpacing } from 'ui/theme'
 
@@ -25,6 +26,8 @@ export const CineBlock: FunctionComponent<CineBlockProps> = ({
   withDivider,
 }) => {
   const { selectedDate, goToDate } = useMovieCalendar()
+  const venueBlockVenue = getVenue(offer.venue)
+  const venueBlockAddress = getAddress(offer.address)
 
   const subcategoriesMapping = useSubcategoriesMapping()
 
@@ -36,7 +39,12 @@ export const CineBlock: FunctionComponent<CineBlockProps> = ({
   return (
     <React.Fragment>
       <CineBlockContainer>
-        <VenueBlock offer={offer} onSeeVenuePress={onSeeVenuePress} />
+        <VenueBlock
+          venue={venueBlockVenue}
+          address={venueBlockAddress}
+          onSeeVenuePress={onSeeVenuePress}
+        />
+
         <React.Fragment>
           {nextDate ? (
             <NextScreeningButton

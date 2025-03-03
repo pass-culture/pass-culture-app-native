@@ -1,7 +1,7 @@
 import Clipboard from '@react-native-clipboard/clipboard'
 import { useMemo } from 'react'
 
-import { OfferAddressResponse, OfferVenueResponse } from 'api/gen'
+import { VenueBlockAddress, VenueBlockVenue } from 'features/offer/components/OfferVenueBlock/type'
 import { formatFullAddressStartsWithPostalCode } from 'libs/address/useFormatFullAddress'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
@@ -9,8 +9,8 @@ export function useVenueBlock({
   venue,
   offerAddress,
 }: {
-  venue: OfferVenueResponse
-  offerAddress?: OfferAddressResponse | null
+  venue: VenueBlockVenue
+  offerAddress?: VenueBlockAddress
 }) {
   const { showSuccessSnackBar, showErrorSnackBar } = useSnackBarContext()
 

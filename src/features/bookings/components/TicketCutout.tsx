@@ -13,8 +13,8 @@ import { getShadow, getSpacing, TypoDS } from 'ui/theme'
 
 type Props = {
   title: string
-  hour: string
-  day: string
+  hour?: string
+  day?: string
   isDuo?: boolean
   children: React.JSX.Element
   infoBanner?: React.JSX.Element
@@ -36,14 +36,18 @@ export const TicketCutout = ({
         <ViewGap gap={6}>
           <TypoDS.Title2>{title}</TypoDS.Title2>
           <ViewGap gap={2}>
-            <Row>
-              <StyledCalendarS />
-              <TypoDS.Body>{day}</TypoDS.Body>
-            </Row>
-            <Row>
-              <StyledClockFilled />
-              <TypoDS.Body>{hour}</TypoDS.Body>
-            </Row>
+            {day ? (
+              <Row>
+                <StyledCalendarS />
+                <TypoDS.Body>{day}</TypoDS.Body>
+              </Row>
+            ) : null}
+            {hour ? (
+              <Row>
+                <StyledClockFilled />
+                <TypoDS.Body>{hour}</TypoDS.Body>
+              </Row>
+            ) : null}
             {isDuo ? (
               <Row>
                 <StyledStock />
@@ -104,7 +108,6 @@ const Row = styled.View({
 })
 
 const ContentBlock = styled.View(({ theme }) => ({
-  paddingVertical: getSpacing(6),
   marginHorizontal: getSpacing(6),
   backgroundColor: 'white',
   gap: getSpacing(6),
@@ -124,8 +127,10 @@ const BottomBlock = styled(ContentBlock)({
   borderBottomLeftRadius: getSpacing(6),
   borderBottomRightRadius: getSpacing(6),
   justifyContent: 'center',
+  paddingBottom: getSpacing(6),
 })
 const TopBlock = styled(ContentBlock)({
   borderTopLeftRadius: getSpacing(6),
   borderTopRightRadius: getSpacing(6),
+  paddingTop: getSpacing(6),
 })

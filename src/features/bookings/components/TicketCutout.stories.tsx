@@ -1,5 +1,6 @@
 import { ComponentMeta } from '@storybook/react'
 import React from 'react'
+import styled from 'styled-components/native'
 
 import { SubcategoryIdEnum, WithdrawalTypeEnum } from 'api/gen'
 import { TicketBody } from 'features/bookings/components/TicketBody/TicketBody'
@@ -24,6 +25,10 @@ const meta: ComponentMeta<typeof TicketCutout> = {
   },
 }
 export default meta
+
+const StyledBody = styled(TypoDS.Body)({
+  textAlign: 'center',
+})
 
 const variantConfig: Variants<typeof TicketCutout> = [
   {
@@ -51,10 +56,10 @@ const variantConfig: Variants<typeof TicketCutout> = [
             venue={bookingsSnap.ongoing_bookings[0].stock.offer.venue}
             isEvent
           />
-          <TypoDS.Body>Présente ce billet pour accéder à l’évènement</TypoDS.Body>
+          <StyledBody>Présente ce billet pour accéder à l’évènement</StyledBody>
         </ViewGap>
       ),
-      venueInfo: <VenueBlock offer={offerResponseSnap} />,
+      venueInfo: <VenueBlock venue={bookingsSnap.ongoing_bookings[0].stock.offer.venue} />,
     },
   },
   {
@@ -83,7 +88,7 @@ const variantConfig: Variants<typeof TicketCutout> = [
           />
         </ViewGap>
       ),
-      venueInfo: <VenueBlock offer={offerResponseSnap} />,
+      venueInfo: <VenueBlock venue={bookingsSnap.ongoing_bookings[0].stock.offer.venue} />,
     },
   },
 ]
