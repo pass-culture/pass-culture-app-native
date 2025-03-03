@@ -5,11 +5,11 @@ import { getSearchStackConfig } from 'features/navigation/SearchStackNavigator/s
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { WEBAPP_V2_URL } from 'libs/environment/useWebAppUrl'
 
-// To see the linking config used in the tests, check the file :
-// features/navigation/RootNavigator/__mocks__/routes.ts
-
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
+
+// TODO(PC-34456): remove this global mock
+jest.unmock('features/navigation/RootNavigator/routes')
 
 describe('getScreenFromDeeplink()', () => {
   it('should return PageNotFound when route is unknown', () => {
@@ -61,9 +61,23 @@ describe('getScreenFromDeeplink()', () => {
     expect(params).toEqual({ screen: 'SearchStackNavigator', params: undefined })
   })
 
-  // investigate why SearchResults works, but not ThematicSearch, SearchLanding, SearchFilters
-  // eslint-disable-next-line jest/no-disabled-tests
-  it.skip('should return SearchStackNavigator when url = /recherche/thematique', () => {
+  it('should return SearchStackNavigator when url = /recherche/accueil', () => {
+    const url = getFullUrl(getScreenPath(...getSearchStackConfig('SearchLanding')))
+    const { screen, params } = getScreenFromDeeplink(url)
+
+    expect(screen).toEqual('TabNavigator')
+    expect(params).toEqual({ screen: 'SearchStackNavigator', params: undefined })
+  })
+
+  it('should return SearchStackNavigator when url = /recherche/filter', () => {
+    const url = getFullUrl(getScreenPath(...getSearchStackConfig('SearchFilter')))
+    const { screen, params } = getScreenFromDeeplink(url)
+
+    expect(screen).toEqual('TabNavigator')
+    expect(params).toEqual({ screen: 'SearchStackNavigator', params: undefined })
+  })
+
+  it('should return SearchStackNavigator when url = /recherche/thematic', () => {
     const url = getFullUrl(getScreenPath(...getSearchStackConfig('ThematicSearch')))
     const { screen, params } = getScreenFromDeeplink(url)
 
