@@ -158,7 +158,6 @@ platform :android do
   lane :deploy_appDistribution do |options|
     firebase_app_distribution(
         app: ENV['FIREBASE_PUBLIC_ANDROID_APP_ID'],
-        release_notes: escaped_release_notes,
         android_artifact_type: 'APK' ,
         android_artifact_path: ENV["ANDROID_FILE_PATH"],
         service_credentials_file: options[:firebase_token],
