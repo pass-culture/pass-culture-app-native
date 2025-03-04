@@ -795,6 +795,25 @@ describe('BookingDetails', () => {
 
       expect(mockedOpenUrl).toHaveBeenCalledWith(`mailto:${organizerEmail}`, undefined, true)
     })
+
+    it('should render correctly when withdrawal type is no ticket', async () => {
+      renderBookingDetails({
+        ...ongoingBookings,
+        stock: {
+          ...ongoingBookings.stock,
+          offer: {
+            ...ongoingBookings.stock.offer,
+            withdrawalType: WithdrawalTypeEnum.no_ticket,
+          },
+        },
+      })
+
+      await screen.findByText(ongoingBookings.stock.offer.name)
+
+      expect(
+        screen.getByText('Tu n’as pas besoin de billet pour profiter de cette offre !')
+      ).toBeOnTheScreen()
+    })
   })
 })
 

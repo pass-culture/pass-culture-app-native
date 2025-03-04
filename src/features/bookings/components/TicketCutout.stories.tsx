@@ -4,6 +4,7 @@ import styled from 'styled-components/native'
 
 import { SubcategoryIdEnum, WithdrawalTypeEnum } from 'api/gen'
 import { OldTicketBody } from 'features/bookings/components/TicketBody/OldTicketBody'
+import { TicketBody } from 'features/bookings/components/TicketBody/TicketBody'
 import { TicketCutout } from 'features/bookings/components/TicketCutout'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { VenueBlock } from 'features/offer/components/OfferVenueBlock/VenueBlock'
@@ -54,6 +55,7 @@ const variantConfig: Variants<typeof TicketCutout> = [
             qrCodeData={undefined}
             externalBookings={{ barcode: 'PASSCULTURE:v3;TOKEN:352UW4', seat: 'A12' }}
             venue={bookingsSnap.ongoing_bookings[0].stock.offer.venue}
+            isEvent
           />
           <StyledBody>Présente ce billet pour accéder à l’évènement</StyledBody>
         </ViewGap>
@@ -74,18 +76,7 @@ const variantConfig: Variants<typeof TicketCutout> = [
           icon={IdCard}
         />
       ),
-      children: (
-        <ViewGap gap={6}>
-          <OldTicketBody
-            withdrawalType={WithdrawalTypeEnum.no_ticket}
-            withdrawalDelay={1000}
-            beginningDatetime={undefined}
-            subcategoryId={SubcategoryIdEnum.CONCERT}
-            qrCodeData={undefined}
-            venue={bookingsSnap.ongoing_bookings[0].stock.offer.venue}
-          />
-        </ViewGap>
-      ),
+      children: <TicketBody withdrawalType={WithdrawalTypeEnum.no_ticket} />,
       venueInfo: <VenueBlock venue={bookingsSnap.ongoing_bookings[0].stock.offer.venue} />,
     },
   },
