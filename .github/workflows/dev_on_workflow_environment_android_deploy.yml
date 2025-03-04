@@ -77,6 +77,16 @@ jobs:
             ANDROID_KEYSTORE:passculture-metier-ehp/passculture-app-native-${{ inputs.ENV }}-keystore
             ANDROID_PLAYSTORE_SERVICE_ACCOUNT:passculture-metier-ehp/passculture-app-native-android-production-service-account
             SENTRY_AUTH_TOKEN:passculture-metier-ehp/passculture-app-native-sentry-token
+      - name: Get Secret for App Distribution from Secret Manager (EHP only)
+        id: 'app_distribution_secret'
+        uses: 'google-github-actions/get-secretmanager-secrets@v2'
+        with:
+          secrets: |-
+            FIREBASE_TOKEN:passculture-metier-ehp/pc_native_${{ inputs.ENV }}_firebase_json
+        if: ${{ inputs.ENV != 'production' }}
+      - name: Export firebase secret to file
+        run: |
+          echo '${{steps.app_distribution_secret.outputs.FIREBASE_TOKEN}}' > app_distribution_credentials.json
       - name: 'Render Sentry Template'
         id: render_template
         uses: chuhlomin/render-template@v1.9
@@ -106,11 +116,16 @@ jobs:
         run: echo '${{ steps.secrets.outputs.ANDROID_PLAYSTORE_SERVICE_ACCOUNT }}' > fastlane/playStoreServiceAccount.json
       - name: Deploy hard android for ${{ inputs.ENV }}
         run: |
-          bundle exec fastlane android deploy --env ${{ inputs.ENV }} --verbose
+          if [ "${{ inputs.ENV }}" != "production" ]; then
+            bundle exec fastlane android deploy firebase_token:"${GOOGLE_APPLICATION_CREDENTIALS}" --env ${{ inputs.ENV }} --verbose
+          else
+            bundle exec fastlane android deploy --env ${{ inputs.ENV }} --verbose
+          fi
         env:
           LC_ALL: en_US.UTF-8
           LANG: en_US.UTF-8
           ANDROID_APPCENTER_API_TOKEN: ${{ steps.secrets.outputs.ANDROID_APPCENTER_API_TOKEN }}
+          GOOGLE_APPLICATION_CREDENTIALS: ./app_distribution_credentials.json
       - name: Create Sentry sourcemaps
         run: bash -c 'source scripts/upload_sourcemaps_to_sentry.sh;upload_sourcemaps "android" ${{ inputs.ENV }}'
 
