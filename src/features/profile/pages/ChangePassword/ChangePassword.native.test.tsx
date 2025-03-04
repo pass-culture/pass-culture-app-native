@@ -12,8 +12,6 @@ import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/S
 
 import { ChangePassword } from './ChangePassword'
 
-jest.mock('libs/firebase/analytics/analytics')
-
 jest.mock('features/auth/context/AuthContext')
 mockAuthContextWithUser(beneficiaryUser, { persist: true })
 
