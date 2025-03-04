@@ -12,7 +12,7 @@ describe('eventMonitoring', () => {
       expect(SentryModule.init).toHaveBeenCalledWith({
         dsn: env.SENTRY_DSN,
         environment: 'development',
-        integrations: [expect.anything()],
+        integrations: [],
         tracesSampleRate: 1,
         sampleRate: 1,
         ignoreErrors: ['Non-Error promise rejection captured with value: Timeout'],

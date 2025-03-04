@@ -4,10 +4,6 @@ export const eventMonitoring: typeof actualErrorMonitoring = {
   addBreadcrumb: jest.fn(),
   captureException: jest.fn(),
   init: jest.fn(),
-  configureScope: jest.fn(),
   setExtras: jest.fn(),
   setUser: jest.fn(),
-  startTransaction: jest.fn().mockReturnValue({ name: 'transaction1' }),
-  withProfiler: jest.fn(),
-  wrap: jest.fn(),
 }

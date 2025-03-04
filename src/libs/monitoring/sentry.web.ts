@@ -1,12 +1,8 @@
 export {
   addBreadcrumb,
   captureException,
-  configureScope,
   init,
   setUser,
   setExtras,
-  startTransaction,
-  withProfiler,
-  wrap,
-  getCurrentHub,
+  browserTracingIntegration,
 } from '@sentry/react'

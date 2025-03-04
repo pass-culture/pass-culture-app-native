@@ -5,10 +5,10 @@ import CodePush from 'react-native-code-push'
 import { env } from 'libs/environment/env'
 import { getAppBuildVersion, getAppVersion } from 'libs/packageJson'
 
-import { ReactNativeTracing, ReactNavigationInstrumentation } from './sentry'
+import { reactNavigationIntegration } from './sentry'
 
 // Construct a new instrumentation instance. This is needed to communicate between the integration and React
-const routingInstrumentation = new ReactNavigationInstrumentation()
+const sentryReactNavigationIntegration = reactNavigationIntegration()
 
 export async function getSentryConfig() {
   let update
@@ -32,7 +32,7 @@ export async function getSentryConfig() {
     tracesSampleRate: Number(env.SENTRY_TRACES_SAMPLE_RATE || 1),
     sampleRate: Number(env.SENTRY_SAMPLE_RATE || 1),
     attachScreenshot: true,
-    integrations: [new ReactNativeTracing({ routingInstrumentation })],
+    integrations: [sentryReactNavigationIntegration],
     _experiments: {
       // profilesSampleRate is relative to tracesSampleRate.
       // Here, we'll capture profiles for 1% of transactions.

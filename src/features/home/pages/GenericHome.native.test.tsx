@@ -30,22 +30,6 @@ const defaultModules = [formattedVenuesModule]
 const homeId = 'fake-id'
 const Header = <TypoDS.Title1>Header</TypoDS.Title1>
 
-const mockStartTransaction = jest.fn()
-const mockFinishTransaction = jest.fn()
-jest.mock('shared/performance/transactions', () => {
-  const originalModule = jest.requireActual('shared/performance/transactions')
-
-  return {
-    ...originalModule,
-    startTransaction: (s: string) => {
-      mockStartTransaction(s)
-    },
-    finishTransaction: (s: string) => {
-      mockFinishTransaction(s)
-    },
-  }
-})
-
 jest.mock('libs/firebase/analytics/analytics')
 
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
@@ -85,47 +69,6 @@ describe('GenericHome', () => {
       renderGenericHome({})
 
       expect(await screen.findByText('Pas de réseau internet')).toBeOnTheScreen()
-    })
-  })
-
-  describe('With displayed skeleton by default', () => {
-    beforeAll(() => {
-      useShowSkeletonSpy.mockReturnValue(true)
-    })
-
-    afterAll(() => {
-      useShowSkeletonSpy.mockReturnValue(false)
-    })
-
-    it('should finish home component creation performance transaction when component created', async () => {
-      renderGenericHome({})
-
-      await act(async () => {})
-
-      await waitFor(() => {
-        expect(mockFinishTransaction).toHaveBeenCalledTimes(1)
-      })
-    })
-
-    it('should finish home loading performance transaction when home page loaded', async () => {
-      renderGenericHome({})
-
-      await act(async () => {})
-
-      // home component creation performance transaction
-      expect(mockFinishTransaction).toHaveBeenCalledTimes(1)
-
-      useShowSkeletonSpy.mockReturnValueOnce(false)
-      // home component creation performance transaction + home loading performance transaction
-      screen.rerender(
-        reactQueryProviderHOC(
-          <GenericHome modules={defaultModules} Header={Header} homeId={homeId} />
-        )
-      )
-
-      await act(async () => {})
-
-      expect(mockFinishTransaction).toHaveBeenCalledTimes(2)
     })
   })
 
