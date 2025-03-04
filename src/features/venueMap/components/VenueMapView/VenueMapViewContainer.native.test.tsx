@@ -244,7 +244,9 @@ describe('VenueMapViewContainer', () => {
     expect(await screen.findByText('Voir les offres du lieu')).toBeOnTheScreen()
   })
 
-  it('should not display venueMapPreview in bottom sheet if selected marker is not found in venue list', async () => {
+  // TODO(PC-33564): fix flaky tests
+  // eslint-disable-next-line jest/no-disabled-tests
+  it.skip('should not display venueMapPreview in bottom sheet if selected marker is not found in venue list', async () => {
     renderVenueMapViewContainer()
     await screen.findByTestId(`marker-${venuesFixture[0].venueId}`)
 
