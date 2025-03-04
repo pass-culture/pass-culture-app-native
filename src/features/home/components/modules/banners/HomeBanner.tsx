@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native'
-import React, { ComponentType, useCallback, useMemo } from 'react'
+import React, { useCallback, useMemo } from 'react'
 import styled from 'styled-components/native'
 
 import { BannerName } from 'api/gen'
@@ -14,6 +14,7 @@ import { SystemBanner as GenericSystemBanner } from 'ui/components/ModuleBanner/
 import { ArrowAgain } from 'ui/svg/icons/ArrowAgain'
 import { BicolorUnlock } from 'ui/svg/icons/BicolorUnlock'
 import { BirthdayCake } from 'ui/svg/icons/BirthdayCake'
+import { AccessibleIcon } from 'ui/svg/icons/types'
 import { getSpacing } from 'ui/theme'
 
 type HomeBannerProps = {
@@ -32,7 +33,9 @@ const StyledBirthdayCake = styled(BirthdayCake).attrs(({ theme }) => ({
   color: theme.colors.secondaryLight200,
 }))``
 
-const systemBannerIcons: { [key in Exclude<BannerName, 'geolocation_banner'>]: ComponentType } = {
+const systemBannerIcons: {
+  [key in Exclude<BannerName, 'geolocation_banner'>]: React.FunctionComponent<AccessibleIcon>
+} = {
   [BannerName.activation_banner]: StyledBicolorUnlock,
   [BannerName.retry_identity_check_banner]: StyledArrowAgain,
   [BannerName.transition_17_18_banner]: StyledBirthdayCake,
@@ -64,10 +67,10 @@ export const HomeBanner = ({ isLoggedIn }: HomeBannerProps) => {
   )
 
   const renderSystemBanner = useCallback(
-    (Icon: ComponentType, title: string, subtitle: string) => (
+    (Icon: React.FunctionComponent<AccessibleIcon>, title: string, subtitle: string) => (
       <BannerContainer>
         <GenericSystemBanner
-          LeftIcon={<Icon />}
+          leftIcon={Icon}
           title={title}
           subtitle={subtitle}
           onPress={() => onPressSystemBanner(StepperOrigin.HOME)}

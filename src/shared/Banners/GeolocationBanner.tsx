@@ -30,7 +30,7 @@ export const GeolocationBanner: FunctionComponent<Props> = ({
 
   return (
     <SystemBanner
-      LeftIcon={<StyledLocationIcon />}
+      leftIcon={StyledLocationIcon}
       accessibilityLabel="Active ta géolocalisation"
       subtitle={subtitle}
       title={title}

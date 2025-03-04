@@ -1,18 +1,22 @@
-import React, { FunctionComponent, ReactElement, useEffect } from 'react'
+import React, { FunctionComponent, useEffect } from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { analytics } from 'libs/analytics/provider'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
+import { theme } from 'theme'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
+import { AccessibleIcon } from 'ui/svg/icons/types'
 import { getSpacing, TypoDS } from 'ui/theme'
+// eslint-disable-next-line no-restricted-imports
+import { ColorsEnum } from 'ui/theme/colors'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 
 type Props = {
-  LeftIcon: ReactElement
+  leftIcon: React.FunctionComponent<AccessibleIcon>
   title: string
   subtitle: string
   onPress: VoidFunction
@@ -23,13 +27,14 @@ type Props = {
   }
 }
 
-export const SystemBanner: FunctionComponent<Props> = ({
-  LeftIcon,
+export const SystemBanner: FunctionComponent<Props & { withBackground?: boolean }> = ({
+  leftIcon: LeftIcon,
   title,
   subtitle,
   onPress,
   accessibilityLabel,
   analyticsParams: { type, from },
+  withBackground = false,
 }) => {
   const focusProps = useHandleFocus()
 
@@ -37,38 +42,64 @@ export const SystemBanner: FunctionComponent<Props> = ({
     analytics.logSystemBlockDisplayed({ type, from })
   }, [type, from])
 
+  const color = withBackground ? theme.colors.white : theme.colors.black
+  const iconColor = withBackground ? theme.colors.white : theme.colors.secondaryLight200
+  const backgroundColor = withBackground ? theme.uniqueColors.brand : theme.colors.transparent
+  const borderColor = withBackground ? theme.uniqueColors.brand : theme.colors.secondaryLight200
+
+  const StyledIcon = LeftIcon
+    ? styled(LeftIcon).attrs(({ theme }) => ({
+        color: iconColor,
+        color2: iconColor,
+        size: theme.icons.sizes.standard,
+      }))``
+    : undefined
+
   return (
-    <StyledTouchable onPress={onPress} accessibilityLabel={accessibilityLabel} {...focusProps}>
-      <Container testID="systemBanner">
-        {LeftIcon ? <IconContainer>{LeftIcon}</IconContainer> : null}
+    <StyledTouchable
+      onPress={onPress}
+      accessibilityLabel={accessibilityLabel}
+      color={color}
+      {...focusProps}>
+      <Container backgroundColor={backgroundColor} borderColor={borderColor} testID="systemBanner">
+        {StyledIcon ? (
+          <IconContainer>
+            <StyledIcon />
+          </IconContainer>
+        ) : null}
         <DescriptionContainer gap={1}>
-          <TypoDS.BodyAccent>{title}</TypoDS.BodyAccent>
-          <TypoDS.Body numberOfLines={2}>{subtitle}</TypoDS.Body>
+          <StyledBodyAccent color={color}>{title}</StyledBodyAccent>
+          <StyledBody color={color}>{subtitle}</StyledBody>
         </DescriptionContainer>
         <View>
-          <StyledArrowNextIcon />
+          <StyledArrowNextIcon color={iconColor} />
         </View>
       </Container>
     </StyledTouchable>
   )
 }
 
-const StyledTouchable = styledButton(Touchable)<{ isFocus?: boolean; isHover?: boolean }>(
-  ({ theme, isFocus }) => ({
+const Container = styled.View<{ backgroundColor: ColorsEnum; borderColor: ColorsEnum }>(
+  ({ theme, backgroundColor, borderColor }) => ({
+    alignItems: 'center',
+    backgroundColor,
+    borderColor,
     borderRadius: theme.borderRadius.radius,
-    ...customFocusOutline({ isFocus, color: theme.colors.black }),
+    borderStyle: 'solid',
+    borderWidth: 1,
+    flexDirection: 'row',
+    padding: getSpacing(4),
+    width: '100%',
   })
 )
 
-const Container = styled.View(({ theme }) => ({
-  flexDirection: 'row',
-  alignItems: 'center',
-  borderStyle: 'solid',
-  borderWidth: 1,
+const StyledTouchable = styledButton(Touchable)<{
+  isFocus?: boolean
+  isHover?: boolean
+  color: ColorsEnum
+}>(({ theme, isFocus, color }) => ({
   borderRadius: theme.borderRadius.radius,
-  borderColor: theme.colors.secondaryLight200,
-  padding: getSpacing(4),
-  width: '100%',
+  ...customFocusOutline({ isFocus, color }),
 }))
 
 const IconContainer = styled.View({
@@ -83,7 +114,15 @@ const DescriptionContainer = styled(ViewGap)({
   textAlign: 'start',
 })
 
-const StyledArrowNextIcon = styled(ArrowNext).attrs(({ theme }) => ({
+const StyledArrowNextIcon = styled(ArrowNext).attrs(({ theme, color }) => ({
   size: theme.icons.sizes.small,
-  color: theme.colors.secondaryLight200,
+  color,
 }))``
+
+const StyledBodyAccent = styled(TypoDS.BodyAccent)<{ color?: ColorsEnum }>(({ color }) => ({
+  color,
+}))
+
+const StyledBody = styled(TypoDS.Body)<{ color?: ColorsEnum }>(({ color }) => ({
+  color,
+}))

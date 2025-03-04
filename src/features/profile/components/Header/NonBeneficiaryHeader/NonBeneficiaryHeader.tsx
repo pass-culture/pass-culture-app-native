@@ -77,7 +77,7 @@ function SystemBanner({ homeBanner, Icon, formattedEligibilityEndDatetime }: Ban
     <BannerContainer testID="eligibility-system-banner-container">
       <EligibilityMessage formattedEligibilityEndDatetime={formattedEligibilityEndDatetime} />
       <GenericSystemBanner
-        LeftIcon={<Icon />}
+        leftIcon={Icon}
         title={homeBanner.title}
         subtitle={homeBanner.text}
         accessibilityLabel={homeBanner.text}
