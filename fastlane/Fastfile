@@ -155,6 +155,17 @@ platform :android do
     )
   end
 
+  lane :deploy_appDistribution do |options|
+    firebase_app_distribution(
+        app: ENV['FIREBASE_PUBLIC_ANDROID_APP_ID'],
+        release_notes: escaped_release_notes,
+        android_artifact_type: 'APK' ,
+        android_artifact_path: ENV["ANDROID_FILE_PATH"],
+        service_credentials_file: options[:firebase_token],
+        groups: "devs"
+    )
+  end
+
   lane :upload_sentry_sourceMaps_soft do
     sh "cd .. && \
         export APPCENTER_ACCESS_TOKEN=#{ENV['ANDROID_APPCENTER_API_TOKEN']} && \
@@ -188,6 +199,7 @@ platform :android do
       build
       if ENV['DEPLOYMENT_PLATFORM'] === 'appcenter' then
         deploy_appCenter
+        deploy_appDistribution(firebase_token: options[:firebase_token])
       elsif ENV['DEPLOYMENT_PLATFORM'] === 'store' then
         deploy_playStore
       end
