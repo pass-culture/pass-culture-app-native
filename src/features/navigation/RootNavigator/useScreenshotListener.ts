@@ -16,9 +16,7 @@ export const useScreenshotListener = () => {
       return () => {
         unsubscribe()
       }
-    }
-
-    return
+    } else return
   }, [isFocused, name, params])
 }
 

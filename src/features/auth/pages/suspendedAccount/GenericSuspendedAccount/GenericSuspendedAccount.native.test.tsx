@@ -5,7 +5,7 @@ import { GenericSuspendedAccount } from 'features/auth/pages/suspendedAccount/Ge
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { env } from 'libs/environment/env'
-import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
+import { userEvent, render, screen } from 'tests/utils'
 
 const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
 
@@ -16,23 +16,24 @@ jest.mock('features/auth/helpers/useLogoutRoutine', () => ({
 
 jest.mock('libs/firebase/analytics/analytics')
 
+const user = userEvent.setup()
+jest.useFakeTimers()
+
 describe('<GenericSuspendedAccount />', () => {
   it('should open mail app when clicking on "Contacter le support" button', async () => {
     render(<GenericSuspendedAccount onBeforeNavigateContactFraudTeam={jest.fn()} />)
 
     const contactSupportButton = screen.getByText('Contacter le service fraude')
-    fireEvent.press(contactSupportButton)
+    await user.press(contactSupportButton)
 
-    await waitFor(() => {
-      expect(openUrl).toHaveBeenCalledWith(`mailto:${env.FRAUD_EMAIL_ADDRESS}`, undefined, true)
-    })
+    expect(openUrl).toHaveBeenCalledWith(`mailto:${env.FRAUD_EMAIL_ADDRESS}`, undefined, true)
   })
 
   it('should go to home page when clicking on go to home button', async () => {
     render(<GenericSuspendedAccount onBeforeNavigateContactFraudTeam={jest.fn()} />)
 
     const homeButton = screen.getByText('Retourner à l’accueil')
-    await act(async () => fireEvent.press(homeButton))
+    await user.press(homeButton)
 
     expect(navigate).toHaveBeenNthCalledWith(
       1,

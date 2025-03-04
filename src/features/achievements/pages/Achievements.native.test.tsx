@@ -3,7 +3,7 @@ import React from 'react'
 import { mockCompletedAchievements } from 'features/achievements/data/AchievementData'
 import { beneficiaryUser } from 'fixtures/user'
 import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
-import { fireEvent, render, screen } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 
 import { Achievements } from './Achievements'
 
@@ -13,6 +13,8 @@ jest.mock('react-native-safe-area-context', () => ({
   ...(jest.requireActual('react-native-safe-area-context') as Record<string, unknown>),
   useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
 }))
+
+jest.useFakeTimers()
 
 describe('<Achievements/>', () => {
   beforeEach(() => {
@@ -35,8 +37,8 @@ describe('<Achievements/>', () => {
     render(<Achievements />)
 
     const firstMovieBookingAchievement = screen.getByText('Mangeur de popcorns')
-    fireEvent.press(firstMovieBookingAchievement)
+    await userEvent.setup().press(firstMovieBookingAchievement)
 
-    expect(await screen.findByText('Tu as réservé ta première séance de cinéma')).toBeOnTheScreen()
+    expect(screen.getByText('Tu as réservé ta première séance de cinéma')).toBeOnTheScreen()
   })
 })

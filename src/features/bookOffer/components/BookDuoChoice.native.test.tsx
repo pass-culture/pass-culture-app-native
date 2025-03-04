@@ -3,7 +3,7 @@ import React from 'react'
 import { BookingState, Step } from 'features/bookOffer/context/reducer'
 import { mockOffer } from 'features/bookOffer/fixtures/offer'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
-import { fireEvent, render, screen } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 
 import { BookDuoChoice } from './BookDuoChoice'
 
@@ -41,6 +41,8 @@ jest.mock('features/offer/helpers/useHasEnoughCredit/useHasEnoughCredit', () => 
   useCreditForOffer: jest.fn(() => mockCreditOffer),
 }))
 
+jest.useFakeTimers()
+
 describe('BookDuoChoice', () => {
   beforeEach(() => {
     setFeatureFlags()
@@ -57,12 +59,12 @@ describe('BookDuoChoice', () => {
     expect(duoChoice).toBeOnTheScreen()
   })
 
-  it('should select an item when pressed', () => {
+  it('should select an item when pressed', async () => {
     render(<BookDuoChoice />)
 
     const soloChoice = screen.getByTestId('DuoChoice1-price')
 
-    fireEvent.press(soloChoice)
+    await userEvent.setup().press(soloChoice)
 
     expect(mockDispatch).toHaveBeenCalledWith({ type: 'SELECT_QUANTITY', payload: 1 })
   })
