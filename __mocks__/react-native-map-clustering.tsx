@@ -1,5 +1,7 @@
 import React, { forwardRef, useEffect, useImperativeHandle } from 'react'
-import { View } from 'react-native'
+import { Pressable } from 'react-native'
+// eslint-disable-next-line no-restricted-imports
+import { MapPressEvent } from 'react-native-maps'
 
 import { MapViewProps } from 'libs/maps/maps'
 
@@ -31,9 +33,18 @@ const MapViewMock = forwardRef<MockMapRef, ExtendedMapViewProps>(function MapVie
     props.onRegionChange?.()
   }, [props])
 
+  const { onPress: onMapPress, onLongPress: _, ...otherProps } = props
+
   useImperativeHandle(ref, () => mockMapRef.current, [])
 
-  return <View {...props} />
+  return (
+    <Pressable
+      onPress={() => {
+        onMapPress?.({} as MapPressEvent)
+      }}
+      {...otherProps}
+    />
+  )
 })
 
 export default MapViewMock
