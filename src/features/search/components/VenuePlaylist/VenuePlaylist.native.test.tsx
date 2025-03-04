@@ -6,7 +6,7 @@ import { SearchGroupNameEnumv2, VenueTypeCodeKey } from 'api/gen'
 import { VenuePlaylist } from 'features/search/components/VenuePlaylist/VenuePlaylist'
 import { initialSearchState } from 'features/search/context/reducer'
 import { mockAlgoliaVenues } from 'features/search/fixtures/mockAlgoliaVenues'
-import * as useVenueMapStore from 'features/venueMap/store/venueMapStore'
+import { venuesFilterActions } from 'features/venueMap/store/venuesFilterStore'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -21,7 +21,7 @@ jest.mock('features/search/context/SearchWrapper', () => ({
   useSearch: () => mockUseSearch(),
 }))
 
-const setVenueTypeCodeSpy = jest.spyOn(useVenueMapStore, 'setVenueTypeCode')
+const mockSetVenuesFilters = jest.spyOn(venuesFilterActions, 'setVenuesFilters')
 
 const user = userEvent.setup()
 
@@ -80,7 +80,7 @@ describe('<VenuePlaylist />', () => {
       expect(screen.getByText('6 résultats')).toBeOnTheScreen()
     })
 
-    it('should set filter on bookstore venue type when pressing Voir sur la carte button and offer category is Livres', async () => {
+    it('should set venue types filter when search group associated to venue types when pressing Voir sur la carte button', async () => {
       render(
         <VenuePlaylist
           venuePlaylistTitle="Test Playlist"
@@ -92,22 +92,40 @@ describe('<VenuePlaylist />', () => {
 
       await user.press(screen.getByText('Voir sur la carte'))
 
-      expect(setVenueTypeCodeSpy).toHaveBeenNthCalledWith(1, VenueTypeCodeKey.BOOKSTORE)
+      expect(mockSetVenuesFilters).toHaveBeenNthCalledWith(1, [
+        VenueTypeCodeKey.BOOKSTORE,
+        VenueTypeCodeKey.DISTRIBUTION_STORE,
+        VenueTypeCodeKey.LIBRARY,
+      ])
     })
 
-    it('should not set filter on bookstore venue type when pressing Voir sur la carte button and offer category is not Livres', async () => {
+    it('should set venue types filter as empty array when search group not associated to venue types when pressing Voir sur la carte button', async () => {
       render(
         <VenuePlaylist
           venuePlaylistTitle="Test Playlist"
           venues={mockAlgoliaVenues}
           currentView="ThematicSearch"
-          offerCategory={SearchGroupNameEnumv2.CINEMA}
+          offerCategory={SearchGroupNameEnumv2.ARTS_LOISIRS_CREATIFS}
         />
       )
 
       await user.press(screen.getByText('Voir sur la carte'))
 
-      expect(setVenueTypeCodeSpy).not.toHaveBeenCalled()
+      expect(mockSetVenuesFilters).toHaveBeenNthCalledWith(1, [])
+    })
+
+    it('should set venue types filter as empty array when no search group specified when pressing Voir sur la carte button', async () => {
+      render(
+        <VenuePlaylist
+          venuePlaylistTitle="Test Playlist"
+          venues={mockAlgoliaVenues}
+          currentView="ThematicSearch"
+        />
+      )
+
+      await user.press(screen.getByText('Voir sur la carte'))
+
+      expect(mockSetVenuesFilters).toHaveBeenNthCalledWith(1, [])
     })
 
     it('should open venue map location modal when pressing Voir sur la carte button and user location is not located', async () => {
