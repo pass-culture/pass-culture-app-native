@@ -1,9 +1,2 @@
 flows:
   - '**'
-
-notifications:
-  email:
-    enabled: true
-    onSuccess: true
-    recipients:
-      - equipe-e2e-jeunes-aaaakntkqy3ta5ksdafyew6dae@passcultureteam.slack.com
