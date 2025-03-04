@@ -3,14 +3,15 @@ import React, { useEffect } from 'react'
 import { Platform, View } from 'react-native'
 import styled from 'styled-components/native'
 
-import { SearchGroupNameEnumv2, VenueTypeCodeKey } from 'api/gen'
+import { SearchGroupNameEnumv2 } from 'api/gen'
 import { VenueMapLocationModal } from 'features/location/components/VenueMapLocationModal'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { SearchStackParamList } from 'features/navigation/SearchStackNavigator/types'
 import { NumberOfResults } from 'features/search/components/NumberOfResults/NumberOfResults'
 import { SearchVenueItem } from 'features/search/components/SearchVenueItems/SearchVenueItem'
 import { useSearch } from 'features/search/context/SearchWrapper'
-import { setVenueTypeCode } from 'features/venueMap/store/venueMapStore'
+import { getVenueTypesFromSearchGroup } from 'features/search/helpers/getVenueTypesFromSearchGroup/getVenueTypesFromSearchGroup'
+import { venuesFilterActions } from 'features/venueMap/store/venuesFilterStore'
 import { AlgoliaVenue } from 'libs/algolia/types'
 import { analytics } from 'libs/analytics/provider'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -64,6 +65,7 @@ export const VenuePlaylist: React.FC<Props> = ({
     searchState: { searchId },
   } = useSearch()
   const enabledVenueMap = useFeatureFlag(RemoteStoreFeatureFlags.WIP_VENUE_MAP)
+  const { setVenuesFilters } = venuesFilterActions
 
   const logVenuePlaylistDisplayedOnSearchResultsOnce = useFunctionOnce(() =>
     analytics.logVenuePlaylistDisplayedOnSearchResults({
@@ -88,9 +90,8 @@ export const VenuePlaylist: React.FC<Props> = ({
   const isMapWithoutPositionAndNotLocated = !isLocated && !isWeb
 
   const handleSeeMapPress = () => {
-    if (offerCategory === SearchGroupNameEnumv2.LIVRES) {
-      setVenueTypeCode(VenueTypeCodeKey.BOOKSTORE)
-    }
+    setVenuesFilters(offerCategory ? getVenueTypesFromSearchGroup(offerCategory) : [])
+
     if (isMapWithoutPositionAndNotLocated) {
       showVenueMapLocationModal()
       return
