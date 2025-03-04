@@ -1,14 +1,12 @@
 import React, { FunctionComponent, ReactNode } from 'react'
 import styled from 'styled-components/native'
 
-import { RemoteBanner } from 'features/remoteBanner/components/RemoteBanner'
 import { InfoBanner } from 'ui/components/banners/InfoBanner'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { Info } from 'ui/svg/icons/Info'
-import { getSpacing, Spacer, TypoDS } from 'ui/theme'
+import { getSpacing, TypoDS } from 'ui/theme'
 
 type PropsWithChildren = {
-  showRemoteBanner: boolean
   title: string
   subtitle?: ReactNode | string
   withGreyContainer?: boolean
@@ -17,7 +15,6 @@ type PropsWithChildren = {
 }
 
 export const HeaderWithGreyContainer: FunctionComponent<PropsWithChildren> = ({
-  showRemoteBanner,
   title,
   subtitle,
   bannerText,
@@ -27,26 +24,21 @@ export const HeaderWithGreyContainer: FunctionComponent<PropsWithChildren> = ({
   return (
     <React.Fragment>
       <PageHeader title={title} numberOfLines={2} />
+
       {subtitle ? (
         <SubtitleContainer>
-          <Spacer.Column numberOfSpaces={1} />
           {typeof subtitle === 'string' ? <TypoDS.Body>{subtitle}</TypoDS.Body> : subtitle}
         </SubtitleContainer>
       ) : (
-        <Spacer.Column numberOfSpaces={6} />
+        <SubtitlePlaceholder />
       )}
-      {showRemoteBanner ? (
-        <BannerContainer>
-          <RemoteBanner from="Profile" />
-          <Spacer.Column numberOfSpaces={6} />
-        </BannerContainer>
-      ) : null}
+
       {bannerText ? (
-        <BannerContainer>
+        <BannerContainer withMarginBottom>
           <InfoBanner message={bannerText} icon={Info} />
-          <Spacer.Column numberOfSpaces={6} />
         </BannerContainer>
       ) : null}
+
       {children ? (
         <GreyContainer withGreyContainer={withGreyContainer}>{children}</GreyContainer>
       ) : null}
@@ -56,8 +48,13 @@ export const HeaderWithGreyContainer: FunctionComponent<PropsWithChildren> = ({
 
 const SubtitleContainer = styled.View(({ theme }) => ({
   marginHorizontal: theme.contentPage.marginHorizontal,
+  marginTop: getSpacing(1),
   marginBottom: getSpacing(6),
 }))
+
+const SubtitlePlaceholder = styled.View({
+  height: getSpacing(6),
+})
 
 const GreyContainer = styled.View<{ withGreyContainer: boolean }>(
   ({ theme, withGreyContainer }) => ({
@@ -70,6 +67,10 @@ const GreyContainer = styled.View<{ withGreyContainer: boolean }>(
     minWidth: theme.isDesktopViewport ? theme.contentPage.maxWidth : undefined,
   })
 )
-const BannerContainer = styled.View(({ theme }) => ({
-  marginHorizontal: theme.contentPage.marginHorizontal,
-}))
+
+const BannerContainer = styled.View<{ withMarginBottom?: boolean }>(
+  ({ theme, withMarginBottom = false }) => ({
+    marginHorizontal: theme.contentPage.marginHorizontal,
+    marginBottom: withMarginBottom ? getSpacing(6) : undefined,
+  })
+)

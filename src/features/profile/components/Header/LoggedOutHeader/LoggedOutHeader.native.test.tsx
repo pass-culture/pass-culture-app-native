@@ -19,7 +19,7 @@ describe('LoggedOutHeader', () => {
   beforeEach(() => setFeatureFlags())
 
   it('should display subtitle with credit V2', () => {
-    render(<LoggedOutHeader showRemoteBanner={false} />)
+    render(<LoggedOutHeader />)
 
     const subtitle = 'Tu as entre 15 et 18 ans\u00a0?'
 
@@ -27,7 +27,7 @@ describe('LoggedOutHeader', () => {
   })
 
   it('should navigate to the SignupForm page', async () => {
-    render(<LoggedOutHeader showRemoteBanner={false} />)
+    render(<LoggedOutHeader />)
 
     const signupButton = screen.getByText('Créer un compte')
     await user.press(signupButton)
@@ -38,7 +38,7 @@ describe('LoggedOutHeader', () => {
   })
 
   it('should navigate to the Login page', async () => {
-    render(<LoggedOutHeader showRemoteBanner={false} />)
+    render(<LoggedOutHeader />)
 
     const signinButton = screen.getByText('Se connecter')
     await user.press(signinButton)
@@ -49,7 +49,7 @@ describe('LoggedOutHeader', () => {
   })
 
   it('should log analytics when clicking on "Créer un compte"', async () => {
-    render(<LoggedOutHeader showRemoteBanner={false} />)
+    render(<LoggedOutHeader />)
 
     const signupButton = screen.getByText('Créer un compte')
     await user.press(signupButton)
@@ -64,7 +64,7 @@ describe('LoggedOutHeader', () => {
     })
 
     it('should display subtitle with credit V3', () => {
-      render(<LoggedOutHeader showRemoteBanner={false} />)
+      render(<LoggedOutHeader />)
 
       const subtitle = 'Tu as 17 ou 18 ans\u00a0?'
 
@@ -74,7 +74,7 @@ describe('LoggedOutHeader', () => {
     it('should not display subtitle with passForAll enabled', () => {
       setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PASS_FOR_ALL])
 
-      render(<LoggedOutHeader showRemoteBanner={false} />)
+      render(<LoggedOutHeader />)
 
       const subtitle = 'Tu as 17 ou 18 ans\u00a0?'
 

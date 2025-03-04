@@ -6,26 +6,29 @@ import { STORE_LINK } from 'features/forceUpdate/constants'
 import { onPressStoreLink } from 'features/forceUpdate/helpers/onPressStoreLink'
 import { openUrl } from 'features/navigation/helpers/openUrl'
 import {
+  RemoteBannerOrigin,
   RemoteBannerRedirectionType,
+  RemoteBannerType,
   validateRemoteBanner,
-} from 'features/remoteBanner/components/remoteBannerSchema'
+} from 'features/remoteBanners/utils/remoteBannerSchema'
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
-import { analytics } from 'libs/analytics/provider'
-import { useFeatureFlagOptions } from 'libs/firebase/firestore/featureFlags/useFeatureFlagOptions'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { BannerWithBackground } from 'ui/components/ModuleBanner/BannerWithBackground'
 import { Hourglass } from 'ui/svg/icons/Hourglass'
 import { TypoDS } from 'ui/theme'
 
 const isWeb = Platform.OS === 'web'
 
-export type RemoteBannerOrigin = 'Profile' | 'Home' | 'Cheatcodes'
+type RemoteBannerProps = {
+  from: RemoteBannerOrigin
+  options?: Record<string, unknown>
+  logClickEvent: (from: RemoteBannerOrigin, options: RemoteBannerType) => void
+}
 
-export const RemoteBanner = ({ from }: { from: RemoteBannerOrigin }) => {
-  const { options } = useFeatureFlagOptions(RemoteStoreFeatureFlags.SHOW_REMOTE_BANNER)
+export const RemoteBanner = ({ from, options, logClickEvent }: RemoteBannerProps) => {
   const validatedOptions = validateRemoteBanner(options)
   if (!validatedOptions) return null
+
   const { title, subtitleMobile, subtitleWeb, redirectionUrl, redirectionType } = validatedOptions
 
   const isStoreRedirection = redirectionType === RemoteBannerRedirectionType.STORE
@@ -43,7 +46,7 @@ export const RemoteBanner = ({ from }: { from: RemoteBannerOrigin }) => {
     : storeAccessibilityLabel
 
   const onPress = () => {
-    analytics.logHasClickedRemoteBanner(from, validatedOptions)
+    logClickEvent(from, validatedOptions)
     if (isStoreRedirection) onPressStoreLink()
     if (isExternalAndDefined) openUrl(redirectionUrl)
   }

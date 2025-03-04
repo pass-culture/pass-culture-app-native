@@ -21,7 +21,7 @@ export type CheatcodesStackParamList = {
   CheatcodesScreenCategoryThematicHomeHeader: undefined
   CheatcodesScreenDefaultThematicHomeHeader: undefined
   CheatcodesScreenHighlightThematicHomeHeader: undefined
-  CheatcodesScreenRemoteBanner: undefined
+  CheatcodesScreenRemoteBanners: undefined
   CheatcodesScreenTrustedDeviceInfos: undefined
   // Others
   CheatcodeScreenLoadingPage: undefined

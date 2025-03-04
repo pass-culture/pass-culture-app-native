@@ -86,9 +86,7 @@ describe('ProfileHeader', () => {
     renderProfileHeader({
       featureFlags: {
         enableAchievements: false,
-        enableSystemBanner: true,
         disableActivation: false,
-        showRemoteBanner: false,
         enablePassForAll: true,
       },
       user: undefined,
@@ -103,9 +101,7 @@ describe('ProfileHeader', () => {
     renderProfileHeader({
       featureFlags: {
         enableAchievements: false,
-        enableSystemBanner: true,
         disableActivation: false,
-        showRemoteBanner: false,
         enablePassForAll: false,
       },
       user: undefined,
@@ -122,9 +118,7 @@ describe('ProfileHeader', () => {
     renderProfileHeader({
       featureFlags: {
         enableAchievements: false,
-        enableSystemBanner: true,
         disableActivation: false,
-        showRemoteBanner: false,
         enablePassForAll: false,
       },
       user,
@@ -138,9 +132,7 @@ describe('ProfileHeader', () => {
     renderProfileHeader({
       featureFlags: {
         enableAchievements: false,
-        enableSystemBanner: true,
         disableActivation: false,
-        showRemoteBanner: false,
         enablePassForAll: false,
       },
       user,
@@ -153,9 +145,7 @@ describe('ProfileHeader', () => {
     renderProfileHeader({
       featureFlags: {
         enableAchievements: false,
-        enableSystemBanner: true,
         disableActivation: false,
-        showRemoteBanner: false,
         enablePassForAll: false,
       },
       user: exBeneficiaryUser,
@@ -176,9 +166,7 @@ describe('ProfileHeader', () => {
     renderProfileHeader({
       featureFlags: {
         enableAchievements: false,
-        enableSystemBanner: true,
         disableActivation: false,
-        showRemoteBanner: false,
         enablePassForAll: false,
       },
       user: notBeneficiaryUser,
@@ -192,9 +180,7 @@ describe('ProfileHeader', () => {
     renderProfileHeader({
       featureFlags: {
         enableAchievements: false,
-        enableSystemBanner: false,
         disableActivation: false,
-        showRemoteBanner: false,
         enablePassForAll: false,
       },
       user: exUnderageBeneficiaryUser,
@@ -210,9 +196,7 @@ const renderProfileHeader = ({
 }: {
   featureFlags: {
     enableAchievements: boolean
-    enableSystemBanner: boolean
     disableActivation: boolean
-    showRemoteBanner: boolean
     enablePassForAll: boolean
   }
   user?: UserProfileResponse

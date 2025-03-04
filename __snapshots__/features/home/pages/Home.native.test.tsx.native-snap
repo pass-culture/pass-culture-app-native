@@ -368,11 +368,13 @@ exports[`Home page should render correctly 1`] = `
                   }
                 >
                   <View
+                    accessibilityLabel="Crée ton compte si tu as entre 15 et 18 ans !"
+                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,
                         "checked": undefined,
-                        "disabled": false,
+                        "disabled": undefined,
                         "expanded": undefined,
                         "selected": undefined,
                       }
@@ -385,7 +387,7 @@ exports[`Home page should render correctly 1`] = `
                         "text": undefined,
                       }
                     }
-                    accessible={false}
+                    accessible={true}
                     focusable={true}
                     onClick={[Function]}
                     onResponderGrant={[Function]}
@@ -400,154 +402,109 @@ exports[`Home page should render correctly 1`] = `
                           {
                             "userSelect": "auto",
                           },
-                          {},
-                          {},
+                          {
+                            "borderRadius": 8,
+                          },
                         ],
                         {
                           "opacity": 1,
                         },
                       ]
                     }
-                    testID="bannerWithBackground"
+                    testID="Crée ton compte si tu as entre 15 et 18 ans !"
                   >
                     <View
                       style={
                         [
                           {
-                            "borderRadius": 7,
-                            "overflow": "hidden",
+                            "alignItems": "center",
+                            "borderColor": "#6123DF",
+                            "borderRadius": 8,
+                            "borderStyle": "solid",
+                            "borderWidth": 1,
+                            "flexDirection": "row",
+                            "paddingBottom": 16,
+                            "paddingLeft": 16,
+                            "paddingRight": 16,
+                            "paddingTop": 16,
+                            "width": "100%",
                           },
                         ]
                       }
+                      testID="systemBanner"
                     >
                       <View
-                        accessibilityIgnoresInvertColors={true}
                         style={
                           [
                             {
-                              "backgroundColor": "#eb0055",
-                              "justifyContent": "center",
-                              "width": "100%",
+                              "alignContent": "center",
+                              "marginRight": 16,
                             },
                           ]
                         }
                       >
-                        <Image
-                          source={
-                            {
-                              "uri": "",
-                            }
-                          }
-                          style={
-                            [
-                              {
-                                "bottom": 0,
-                                "left": 0,
-                                "position": "absolute",
-                                "right": 0,
-                                "top": 0,
-                              },
-                              {
-                                "height": undefined,
-                                "width": "100%",
-                              },
-                              undefined,
-                            ]
-                          }
-                          testID="module-background"
-                        />
                         <View
+                          height={32}
+                          testID="BicolorUnlock"
+                          width={32}
+                        >
+                          <Text>
+                            BicolorUnlock-SVG-Mock
+                          </Text>
+                        </View>
+                      </View>
+                      <View
+                        gap={1}
+                        style={
+                          [
+                            {
+                              "flexGrow": 1,
+                              "flexShrink": 1,
+                              "gap": 4,
+                              "marginRight": 16,
+                              "textAlign": "start",
+                            },
+                          ]
+                        }
+                      >
+                        <Text
                           style={
                             [
                               {
-                                "alignItems": "center",
-                                "borderColor": "#90949D",
-                                "borderRadius": 7,
-                                "borderStyle": "solid",
-                                "borderWidth": 1,
-                                "flexDirection": "row",
-                                "padding": 16,
-                                "width": "100%",
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 16,
+                                "lineHeight": 25.6,
                               },
-                              [
-                                {
-                                  "borderWidth": 0,
-                                },
-                              ],
                             ]
                           }
                         >
-                          <View
-                            style={
-                              [
-                                {
-                                  "alignContent": "center",
-                                  "marginRight": 16,
-                                },
-                              ]
-                            }
-                          >
-                            <View
-                              height={32}
-                              testID="BicolorUnlock"
-                              width={32}
-                            >
-                              <Text>
-                                BicolorUnlock-SVG-Mock
-                              </Text>
-                            </View>
-                          </View>
-                          <View
-                            style={
-                              [
-                                {
-                                  "flexGrow": 1,
-                                  "flexShrink": 1,
-                                  "marginRight": 16,
-                                  "textAlign": "start",
-                                },
-                              ]
-                            }
-                          >
-                            <Text
-                              style={
-                                [
-                                  {
-                                    "color": "#ffffff",
-                                    "fontFamily": "Montserrat-SemiBold",
-                                    "fontSize": 16,
-                                    "lineHeight": 25.6,
-                                  },
-                                ]
-                              }
-                            >
-                              Débloque ton crédit
-                            </Text>
-                            <Text
-                              style={
-                                [
-                                  {
-                                    "color": "#ffffff",
-                                    "fontFamily": "Montserrat-Medium",
-                                    "fontSize": 16,
-                                    "lineHeight": 25.6,
-                                  },
-                                ]
-                              }
-                            >
-                              Crée ton compte si tu as entre 15 et 18 ans !
-                            </Text>
-                          </View>
-                          <View>
-                            <View
-                              height={24}
-                              width={24}
-                            >
-                              <Text>
-                                undefined-SVG-Mock
-                              </Text>
-                            </View>
-                          </View>
+                          Débloque ton crédit
+                        </Text>
+                        <Text
+                          numberOfLines={2}
+                          style={
+                            [
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-Medium",
+                                "fontSize": 16,
+                                "lineHeight": 25.6,
+                              },
+                            ]
+                          }
+                        >
+                          Crée ton compte si tu as entre 15 et 18 ans !
+                        </Text>
+                      </View>
+                      <View>
+                        <View
+                          height={24}
+                          width={24}
+                        >
+                          <Text>
+                            undefined-SVG-Mock
+                          </Text>
                         </View>
                       </View>
                     </View>
