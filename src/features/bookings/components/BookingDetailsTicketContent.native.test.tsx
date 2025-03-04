@@ -1,14 +1,16 @@
 import React from 'react'
 
-import { SubcategoryIdEnum } from 'api/gen'
+import { BookingReponse, CategoryIdEnum, SubcategoryIdEnum } from 'api/gen'
 import { BookingDetailsTicketContent } from 'features/bookings/components/BookingDetailsTicketContent'
+import { SeatWithQrCodeProps } from 'features/bookings/components/TicketBody/SeatWithQrCode/SeatWithQrCode'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
+import * as useCategoryIdModule from 'libs/subcategories/useCategoryId'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils'
 
-jest.mock('libs/subcategories/useCategoryId')
-jest.mock('libs/subcategories/useSubcategory')
-
 jest.mock('libs/firebase/analytics/analytics')
+
+const useCategoryIdSpy = jest.spyOn(useCategoryIdModule, 'useCategoryId')
 
 describe('BookingDetailsTicketContent', () => {
   const originalBooking = bookingsSnap.ongoing_bookings[0]
@@ -25,29 +27,29 @@ describe('BookingDetailsTicketContent', () => {
   }
 
   it('should display the booking activation code when booking has one', () => {
-    render(<BookingDetailsTicketContent booking={booking} />)
+    renderBookingDetailsTicketContent(booking)
 
     expect(screen.getByText(booking.activationCode.code)).toBeOnTheScreen()
   })
 
   it('should not display the booking token when booking has activation code', () => {
-    render(<BookingDetailsTicketContent booking={booking} />)
+    renderBookingDetailsTicketContent(booking)
 
-    const token = booking.token as string
+    const { token } = booking
 
     expect(screen.queryByText(token)).not.toBeOnTheScreen()
   })
 
   it('should display the booking token when booking has no activation code', () => {
-    render(<BookingDetailsTicketContent booking={originalBooking} />)
+    renderBookingDetailsTicketContent(originalBooking)
 
-    const token = booking.token as string
+    const { token } = booking
 
     expect(screen.getByText(token)).toBeOnTheScreen()
   })
 
   it('should display the access button offer when booking has activation code', () => {
-    render(<BookingDetailsTicketContent booking={booking} />)
+    renderBookingDetailsTicketContent(booking)
 
     expect(screen.getByText('Accéder à l’offre en ligne')).toBeOnTheScreen()
   })
@@ -64,7 +66,7 @@ describe('BookingDetailsTicketContent', () => {
         },
       },
     }
-    render(<BookingDetailsTicketContent booking={booking} />)
+    renderBookingDetailsTicketContent(booking)
 
     expect(screen.queryByText('Accéder à l’offre en ligne')).not.toBeOnTheScreen()
   })
@@ -81,14 +83,16 @@ describe('BookingDetailsTicketContent', () => {
         },
       },
     }
-    render(<BookingDetailsTicketContent booking={booking} />)
+    renderBookingDetailsTicketContent(booking)
 
     expect(screen.getByText('Accéder à l’offre en ligne')).toBeOnTheScreen()
   })
 
   describe('EAN', () => {
     it('should display EAN when the offer is a book with an EAN', () => {
-      const bookingForBookOffer = {
+      useCategoryIdSpy.mockReturnValueOnce(CategoryIdEnum.LIVRE)
+
+      const bookingWithEAN = {
         ...booking,
         stock: {
           ...booking.stock,
@@ -99,13 +103,15 @@ describe('BookingDetailsTicketContent', () => {
         },
       }
 
-      render(<BookingDetailsTicketContent booking={bookingForBookOffer} />)
+      renderBookingDetailsTicketContent(bookingWithEAN)
 
-      expect(screen.getByTestId('bookingComplementaryInfo')).toBeOnTheScreen()
+      expect(screen.getByText(bookingWithEAN.stock.offer.extraData.ean)).toBeOnTheScreen()
     })
 
     it('should not display EAN when the offer is a book without an EAN', () => {
-      const bookingWithEan = {
+      useCategoryIdSpy.mockReturnValueOnce(CategoryIdEnum.LIVRE)
+
+      const bookingWithoutEAN = {
         ...booking,
         stock: {
           ...booking.stock,
@@ -117,13 +123,15 @@ describe('BookingDetailsTicketContent', () => {
         },
       }
 
-      render(<BookingDetailsTicketContent booking={bookingWithEan} />)
+      renderBookingDetailsTicketContent(bookingWithoutEAN)
 
       expect(screen.queryByTestId('bookingComplementaryInfo')).not.toBeOnTheScreen()
     })
 
     it('should not display EAN when the offer is not a book', () => {
-      const bookingWithEan = {
+      useCategoryIdSpy.mockReturnValueOnce(CategoryIdEnum.MUSIQUE_LIVE)
+
+      const bookingWithEAN = {
         ...booking,
         stock: {
           ...booking.stock,
@@ -134,25 +142,47 @@ describe('BookingDetailsTicketContent', () => {
         },
       }
 
-      render(<BookingDetailsTicketContent booking={bookingWithEan} />)
+      renderBookingDetailsTicketContent(bookingWithEAN)
 
-      expect(screen.queryByTestId('bookingComplementaryInfo')).not.toBeOnTheScreen()
+      expect(screen.queryByText(bookingWithEAN.stock.offer.extraData.ean)).not.toBeOnTheScreen()
     })
   })
 
   describe('BarCode', () => {
-    it('should display BarCode as REF when the offer is an external booking with barCode', () => {
-      const externalBookings = { barcode: '123456' }
+    const externalBookings = { barcode: '123456' }
 
-      render(<BookingDetailsTicketContent booking={booking} externalBookings={externalBookings} />)
+    it('should display BarCode when the offer is an external booking with barCode and category is MUSIC_LIVE', () => {
+      useCategoryIdSpy.mockReturnValueOnce(CategoryIdEnum.MUSIQUE_LIVE)
 
-      expect(screen.getByTestId('bookingComplementaryInfo')).toBeOnTheScreen()
+      renderBookingDetailsTicketContent(booking, externalBookings)
+
+      expect(screen.getByText(externalBookings.barcode)).toBeOnTheScreen()
     })
 
-    it('should not display REF with barCode when the booking is not an external one', () => {
-      render(<BookingDetailsTicketContent booking={booking} />)
+    it('should not display barCode when the booking is not an external one', () => {
+      useCategoryIdSpy.mockReturnValueOnce(CategoryIdEnum.MUSIQUE_LIVE)
 
-      expect(screen.queryByTestId('bookingComplementaryInfo')).not.toBeOnTheScreen()
+      renderBookingDetailsTicketContent(booking)
+
+      expect(screen.queryByText(externalBookings.barcode)).not.toBeOnTheScreen()
+    })
+
+    it('should not display barCode when category is not MUSIC_LIVE', () => {
+      useCategoryIdSpy.mockReturnValueOnce(CategoryIdEnum.LIVRE)
+
+      renderBookingDetailsTicketContent(booking)
+
+      expect(screen.queryByText(externalBookings.barcode)).not.toBeOnTheScreen()
     })
   })
 })
+
+const renderBookingDetailsTicketContent = (
+  booking: BookingReponse,
+  externalBookings?: SeatWithQrCodeProps
+) =>
+  render(
+    reactQueryProviderHOC(
+      <BookingDetailsTicketContent booking={booking} externalBookings={externalBookings} />
+    )
+  )

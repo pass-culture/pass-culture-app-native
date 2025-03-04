@@ -41,13 +41,16 @@ export function BookingDetailsTicketContent({
   const properties = getBookingProperties(booking, isEvent)
 
   const categoryId = useCategoryId(offerSubcategory)
+
   const ean =
     extraData?.ean && categoryId === CategoryIdEnum.LIVRE ? (
       <BookingComplementaryInfo title="EAN" value={extraData.ean} />
     ) : null
-  const barCode = externalBookings?.barcode ? (
-    <BookingComplementaryInfo title="REF" value={externalBookings.barcode} />
-  ) : null
+
+  const barCode =
+    externalBookings?.barcode && categoryId === CategoryIdEnum.MUSIQUE_LIVE ? (
+      <BookingComplementaryInfo title="REF" value={externalBookings.barcode} />
+    ) : null
 
   const buttonWording = getDigitalOfferBookingWording(offerSubcategory)
 
