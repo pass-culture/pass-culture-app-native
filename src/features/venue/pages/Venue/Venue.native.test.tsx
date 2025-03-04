@@ -173,7 +173,7 @@ describe('<Venue />', () => {
     it('should display CTA if venueTypeCode is not Movie and gtlPlaylists have length', async () => {
       mockUseVenueOffers.mockReturnValueOnce({
         isLoading: false,
-        data: { hits: {}, nbHits: 0 },
+        data: { hits: [], nbHits: 0 },
       })
 
       renderVenue(venueId)

@@ -3,33 +3,41 @@ import { useCallback } from 'react'
 import { useQuery, UseQueryResult } from 'react-query'
 
 import { VenueResponse } from 'api/gen'
-import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
-import { useSearch } from 'features/search/context/SearchWrapper'
 import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
-import { useVenueSearchParameters } from 'features/venue/helpers/useVenueSearchParameters'
+import { SearchState } from 'features/search/types'
 import { VenueOffers } from 'features/venue/types'
 import { fetchMultipleOffers } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/fetchMultipleOffers'
 import {
   filterOfferHitWithImage,
   filterValidOfferHit,
-  useTransformOfferHits,
 } from 'libs/algolia/fetchAlgolia/transformOfferHit'
-import { SearchQueryParameters } from 'libs/algolia/types'
+import { AlgoliaOffer, HitOffer, SearchQueryParameters } from 'libs/algolia/types'
 import { env } from 'libs/environment/env'
-import { useLocation } from 'libs/location'
+import { Position } from 'libs/location'
+import { LocationMode } from 'libs/location/types'
 import { QueryKeys } from 'libs/queryKeys'
 
-export const useVenueOffers = (
-  venue?: VenueResponse,
+type UseVenueOffersParams = {
+  userLocation: Position
+  selectedLocationMode: LocationMode
+  isUserUnderage: boolean
+  venueSearchParams: SearchState
+  searchState: SearchState
+  transformHits: (hit: AlgoliaOffer<HitOffer>) => AlgoliaOffer<HitOffer>
+  venue?: VenueResponse
   includeHitsWithoutImage?: boolean
-): UseQueryResult<VenueOffers> => {
-  // TODO(PC-33493): hook refacto
-  const { userLocation, selectedLocationMode } = useLocation()
-  const transformHits = useTransformOfferHits()
-  const venueSearchParams = useVenueSearchParameters(venue)
-  const { searchState } = useSearch()
-  const isUserUnderage = useIsUserUnderage()
+}
 
+export const useVenueOffers = ({
+  userLocation,
+  selectedLocationMode,
+  isUserUnderage,
+  venueSearchParams,
+  searchState,
+  transformHits,
+  venue,
+  includeHitsWithoutImage,
+}: UseVenueOffersParams): UseQueryResult<VenueOffers> => {
   const buildVenueOffersQueryParams = useCallback(
     (offerParams: SearchQueryParameters) => ({
       locationParams: {

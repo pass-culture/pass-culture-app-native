@@ -2,7 +2,7 @@ import mockdate from 'mockdate'
 import React from 'react'
 import { Linking } from 'react-native'
 
-import { useRoute, navigate } from '__mocks__/@react-navigation/native'
+import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { CategoryIdEnum } from 'api/gen'
 import { gtlPlaylistAlgoliaSnapshot } from 'features/gtlPlaylist/fixtures/gtlPlaylistAlgoliaSnapshot'
 import * as useGTLPlaylists from 'features/gtlPlaylist/hooks/useGTLPlaylists'
@@ -10,10 +10,12 @@ import { useVenueOffers } from 'features/venue/api/useVenueOffers'
 import { VenueBody } from 'features/venue/components/VenueBody/VenueBody'
 import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
 import { VenueOffersResponseSnap } from 'features/venue/fixtures/venueOffersResponseSnap'
+import * as useVenueSearchParameters from 'features/venue/helpers/useVenueSearchParameters'
+import mockVenueSearchParams from 'fixtures/venueSearchParams'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render, screen, userEvent } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 
 mockdate.set(new Date('2021-08-15T00:00:00Z'))
 
@@ -47,6 +49,12 @@ const HEADLINE_OFFER_DATA = {
   distance: '500m',
 }
 
+jest
+  .spyOn(useVenueSearchParameters, 'useVenueSearchParameters')
+  .mockReturnValue(mockVenueSearchParams)
+
+jest.mock('features/search/context/SearchWrapper')
+
 jest.useFakeTimers()
 const user = userEvent.setup()
 
@@ -68,7 +76,7 @@ describe('<VenueBody />', () => {
   it('should display withdrawal details', async () => {
     render(reactQueryProviderHOC(<VenueBody venue={venueDataTest} />))
 
-    fireEvent.press(screen.getByText('Infos pratiques'))
+    await user.press(screen.getByText('Infos pratiques'))
 
     expect(screen.getByText('How to withdraw, https://test.com')).toBeOnTheScreen()
   })
@@ -76,7 +84,7 @@ describe('<VenueBody />', () => {
   it('should log event when pressing on Infos pratiques tab', async () => {
     render(reactQueryProviderHOC(<VenueBody venue={venueDataTest} />))
 
-    fireEvent.press(screen.getByText('Infos pratiques'))
+    await user.press(screen.getByText('Infos pratiques'))
 
     expect(analytics.logConsultPracticalInformations).toHaveBeenCalledWith({
       venueId: venueDataTest.id,
@@ -86,7 +94,7 @@ describe('<VenueBody />', () => {
   it('should log event when pressing on Offres disponibles tab', async () => {
     render(reactQueryProviderHOC(<VenueBody venue={venueDataTest} />))
 
-    fireEvent.press(screen.getByText('Offres disponibles'))
+    await user.press(screen.getByText('Offres disponibles'))
 
     expect(analytics.logConsultVenueOffers).toHaveBeenCalledWith({ venueId: venueDataTest.id })
   })

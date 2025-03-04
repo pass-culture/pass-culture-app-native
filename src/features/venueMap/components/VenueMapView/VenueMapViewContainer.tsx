@@ -15,7 +15,10 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled from 'styled-components/native'
 
 import { Referrals, UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
+import { useSearch } from 'features/search/context/SearchWrapper'
 import { useVenueOffers } from 'features/venue/api/useVenueOffers'
+import { useVenueSearchParameters } from 'features/venue/helpers/useVenueSearchParameters'
 import { VenueMapBottomSheet } from 'features/venueMap/components/VenueMapBottomSheet/VenueMapBottomSheet'
 import { transformGeoLocatedVenueToVenueResponse } from 'features/venueMap/helpers/geoLocatedVenueToVenueResponse/geoLocatedVenueToVenueResponse'
 import { useCenterOnLocation } from 'features/venueMap/hook/useCenterOnLocation'
@@ -30,9 +33,11 @@ import {
   setVenues,
   useVenueMapStore,
 } from 'features/venueMap/store/venueMapStore'
+import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { analytics } from 'libs/analytics/provider'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { useLocation } from 'libs/location'
 import { Map, MarkerPressEvent, Region } from 'libs/maps/maps'
 import { LENGTH_L } from 'ui/theme'
 
@@ -81,9 +86,23 @@ export const VenueMapViewContainer: FunctionComponent = () => {
   useTrackMapSessionDuration()
   useTrackMapSeenDuration()
 
-  const { data: selectedVenueOffers } = useVenueOffers(
-    bottomSheetOffersEnabled ? transformGeoLocatedVenueToVenueResponse(selectedVenue) : undefined
-  )
+  const venue = bottomSheetOffersEnabled
+    ? transformGeoLocatedVenueToVenueResponse(selectedVenue)
+    : undefined
+  const { userLocation, selectedLocationMode } = useLocation()
+  const transformHits = useTransformOfferHits()
+  const venueSearchParams = useVenueSearchParameters(venue)
+  const { searchState } = useSearch()
+  const isUserUnderage = useIsUserUnderage()
+  const { data: selectedVenueOffers } = useVenueOffers({
+    userLocation,
+    selectedLocationMode,
+    isUserUnderage,
+    venueSearchParams,
+    searchState,
+    transformHits,
+    venue,
+  })
 
   const hasOffers = !!selectedVenueOffers && selectedVenueOffers.hits?.length
   const contentViewHeight = useMemo(
