@@ -3,7 +3,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { SubcategoryIdEnum, WithdrawalTypeEnum } from 'api/gen'
-import { TicketBody } from 'features/bookings/components/TicketBody/TicketBody'
+import { OldTicketBody } from 'features/bookings/components/TicketBody/OldTicketBody'
 import { TicketCutout } from 'features/bookings/components/TicketCutout'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { VenueBlock } from 'features/offer/components/OfferVenueBlock/VenueBlock'
@@ -46,7 +46,7 @@ const variantConfig: Variants<typeof TicketCutout> = [
       ),
       children: (
         <ViewGap gap={6}>
-          <TicketBody
+          <OldTicketBody
             withdrawalType={WithdrawalTypeEnum.in_app}
             withdrawalDelay={1000}
             beginningDatetime={undefined}
@@ -76,7 +76,7 @@ const variantConfig: Variants<typeof TicketCutout> = [
       ),
       children: (
         <ViewGap gap={6}>
-          <TicketBody
+          <OldTicketBody
             withdrawalType={WithdrawalTypeEnum.no_ticket}
             withdrawalDelay={1000}
             beginningDatetime={undefined}

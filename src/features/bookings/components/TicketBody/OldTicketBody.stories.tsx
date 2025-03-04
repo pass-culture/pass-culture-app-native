@@ -5,11 +5,11 @@ import { SubcategoryIdEnum, WithdrawalTypeEnum } from 'api/gen'
 import { ThreeShapesTicket } from 'features/bookings/components/ThreeShapesTicket'
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 
-import { TicketBody } from './TicketBody'
+import { OldTicketBody } from './OldTicketBody'
 
-const meta: ComponentMeta<typeof TicketBody> = {
-  title: 'features/bookings/TicketBody',
-  component: TicketBody,
+const meta: ComponentMeta<typeof OldTicketBody> = {
+  title: 'features/bookings/OldTicketBody',
+  component: OldTicketBody,
   parameters: {
     axe: {
       // Disabled this rule because we use SvgIdentifier for all Illustration linearGradient id
@@ -19,23 +19,23 @@ const meta: ComponentMeta<typeof TicketBody> = {
 }
 export default meta
 
-const variantConfig: Variants<typeof TicketBody> = [
+const variantConfig: Variants<typeof OldTicketBody> = [
   {
-    label: 'TicketBody default',
+    label: 'OldTicketBody default',
     props: {
       withdrawalDelay: 1000,
       withdrawalType: WithdrawalTypeEnum.on_site,
     },
   },
   {
-    label: 'TicketBody external booking',
+    label: 'OldTicketBody external booking',
     props: {
       withdrawalDelay: 1000,
       externalBookings: { barcode: 'PASSCULTURE:v3;TOKEN:352UW4', seat: 'A12' },
     },
   },
   {
-    label: 'TicketBody with subcategory should have QR Code',
+    label: 'OldTicketBody with subcategory should have QR Code',
     props: {
       withdrawalDelay: 1000,
       qrCodeData: '1234',
@@ -43,20 +43,20 @@ const variantConfig: Variants<typeof TicketBody> = [
     },
   },
   {
-    label: 'TicketBody no ticket needed',
+    label: 'OldTicketBody no ticket needed',
     props: { withdrawalDelay: 1000, withdrawalType: WithdrawalTypeEnum.no_ticket },
   },
   {
-    label: 'TicketBody by email with beginning date',
+    label: 'OldTicketBody by email with beginning date',
     props: { withdrawalDelay: 1000, withdrawalType: WithdrawalTypeEnum.by_email },
   },
 ]
 
-const Template: VariantsStory<typeof TicketBody> = () => (
+const Template: VariantsStory<typeof OldTicketBody> = () => (
   <ThreeShapesTicket>
-    <VariantsTemplate variants={variantConfig} Component={TicketBody} />
+    <VariantsTemplate variants={variantConfig} Component={OldTicketBody} />
   </ThreeShapesTicket>
 )
 
 export const AllVariants = Template.bind({})
-AllVariants.storyName = 'TicketBody'
+AllVariants.storyName = 'OldTicketBody'

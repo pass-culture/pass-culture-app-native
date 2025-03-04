@@ -2,7 +2,7 @@ import mockdate from 'mockdate'
 import React from 'react'
 
 import { SubcategoryIdEnum, WithdrawalTypeEnum } from 'api/gen'
-import { TicketBody } from 'features/bookings/components/TicketBody/TicketBody'
+import { OldTicketBody } from 'features/bookings/components/TicketBody/OldTicketBody'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { mockBuilder } from 'tests/mockBuilder'
@@ -26,24 +26,32 @@ const venue = mockBuilder.bookingVenueResponse()
 
 mockdate.set('2021-03-10T20:00:00')
 
-describe('TicketBody', () => {
+describe('OldTicketBody', () => {
   beforeEach(() => {
     mockIsMailAppAvailable = true
   })
 
   describe('<QrCode/> display', () => {
-    it('should display the QR code when the the booking have a QR code and the offer subcategory allows to have a qr code', () => {
-      render(<TicketBody {...initialProps} venue={venue} />)
+    it('should display the QR code when booking have a QR code and offer is not an event', () => {
+      render(
+        <OldTicketBody
+          {...initialProps}
+          subcategoryId={SubcategoryIdEnum.PARTITION}
+          venue={venue}
+          isEvent={false}
+        />
+      )
 
       expect(screen.getByTestId('qr-code')).toBeOnTheScreen()
     })
 
-    it('should not display the QR code when event subcategory is in subcategories list without QR code display', () => {
+    it('should not display the QR code when booking is an event and not an external booking', () => {
       render(
-        <TicketBody
+        <OldTicketBody
           {...initialProps}
           subcategoryId={SubcategoryIdEnum.FESTIVAL_MUSIQUE}
           venue={venue}
+          isEvent
         />
       )
 
@@ -60,7 +68,8 @@ describe('TicketBody', () => {
 
         it('should be hidden until 2 days before the event', () => {
           render(
-            <TicketBody
+            <OldTicketBody
+              isEvent={false}
               {...initialProps}
               subcategoryId={SubcategoryIdEnum.FESTIVAL_MUSIQUE}
               externalBookings={{ barcode: 'barcode' }}
@@ -73,7 +82,8 @@ describe('TicketBody', () => {
 
         it('should be displayed 2 days before the event', () => {
           render(
-            <TicketBody
+            <OldTicketBody
+              isEvent={false}
               {...initialProps}
               beginningDatetime="2021-03-11T20:00:00"
               subcategoryId={SubcategoryIdEnum.FESTIVAL_MUSIQUE}
@@ -88,7 +98,8 @@ describe('TicketBody', () => {
 
       it('should display the availability date', () => {
         render(
-          <TicketBody
+          <OldTicketBody
+            isEvent={false}
             {...initialProps}
             beginningDatetime="2021-03-13T20:00:00"
             subcategoryId={SubcategoryIdEnum.FESTIVAL_MUSIQUE}
@@ -102,7 +113,8 @@ describe('TicketBody', () => {
 
       it('should display the availability time', () => {
         render(
-          <TicketBody
+          <OldTicketBody
+            isEvent={false}
             {...initialProps}
             beginningDatetime="2021-03-13T20:00:00"
             subcategoryId={SubcategoryIdEnum.FESTIVAL_MUSIQUE}
@@ -121,7 +133,8 @@ describe('TicketBody', () => {
 
         it('should not be hidden even until 2 days before the event', () => {
           render(
-            <TicketBody
+            <OldTicketBody
+              isEvent={false}
               {...initialProps}
               subcategoryId={SubcategoryIdEnum.FESTIVAL_MUSIQUE}
               externalBookings={{ barcode: 'barcode' }}
@@ -136,7 +149,8 @@ describe('TicketBody', () => {
 
     it('should be displayed when it is not a concert or festival', () => {
       render(
-        <TicketBody
+        <OldTicketBody
+          isEvent={false}
           {...initialProps}
           subcategoryId={SubcategoryIdEnum.EVENEMENT_PATRIMOINE}
           externalBookings={{ barcode: 'barcode' }}
@@ -150,7 +164,7 @@ describe('TicketBody', () => {
 
   describe('Withdrawal', () => {
     it("should not display withdrawal informations for legacy offer that doesn't withdrawal informations", () => {
-      render(<TicketBody {...initialProps} withdrawalType={undefined} venue={venue} />)
+      render(<OldTicketBody {...initialProps} withdrawalType={undefined} venue={venue} isEvent />)
 
       expect(screen.queryByTestId('withdrawal-info')).not.toBeOnTheScreen()
     })
@@ -158,7 +172,8 @@ describe('TicketBody', () => {
     describe('<NoTicket/> display', () => {
       it('should display no ticket withdrawal wording', () => {
         render(
-          <TicketBody
+          <OldTicketBody
+            isEvent={false}
             {...initialProps}
             subcategoryId={SubcategoryIdEnum.FESTIVAL_MUSIQUE}
             withdrawalType={WithdrawalTypeEnum.no_ticket}
@@ -175,7 +190,8 @@ describe('TicketBody', () => {
       const twoDays = 60 * 60 * 24 * 2
 
       render(
-        <TicketBody
+        <OldTicketBody
+          isEvent={false}
           {...initialProps}
           beginningDatetime="2021-03-11T20:00:00"
           subcategoryId={SubcategoryIdEnum.FESTIVAL_MUSIQUE}
@@ -191,7 +207,8 @@ describe('TicketBody', () => {
     describe('<TicketWithdrawal/> display', () => {
       it('should display on site withdrawal delay when delay is specified', () => {
         render(
-          <TicketBody
+          <OldTicketBody
+            isEvent={false}
             {...initialProps}
             subcategoryId={SubcategoryIdEnum.FESTIVAL_MUSIQUE}
             withdrawalType={WithdrawalTypeEnum.on_site}
@@ -205,7 +222,7 @@ describe('TicketBody', () => {
 
     describe('Consulter mes e-mails display', () => {
       it('should show the button to open mail', async () => {
-        render(<TicketBody {...initialProps} withdrawalType={undefined} venue={venue} />)
+        render(<OldTicketBody {...initialProps} withdrawalType={undefined} venue={venue} isEvent />)
 
         const checkEmailsButton = screen.queryByText('Consulter mes e-mails')
 
@@ -214,7 +231,15 @@ describe('TicketBody', () => {
 
       it('should not show the button to open mail if no mail app is available', async () => {
         mockIsMailAppAvailable = false
-        render(<TicketBody {...initialProps} withdrawalType={undefined} venue={venue} />)
+
+        render(
+          <OldTicketBody
+            isEvent={false}
+            {...initialProps}
+            withdrawalType={undefined}
+            venue={venue}
+          />
+        )
 
         const checkEmailsButton = screen.queryByText('Consulter mes e-mails')
 
