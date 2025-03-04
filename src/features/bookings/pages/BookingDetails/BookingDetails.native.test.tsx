@@ -741,6 +741,16 @@ describe('BookingDetails', () => {
       openItinerary.mockRestore()
       getBookingProperties.mockRestore()
     })
+
+    it('should display banner warning about disposal', async () => {
+      renderBookingDetails(ongoingBookings)
+
+      await screen.findByText(ongoingBookings.stock.offer.name)
+
+      expect(
+        screen.getByText('Tu n’as pas le droit de céder ou de revendre ton billet.')
+      ).toBeOnTheScreen()
+    })
   })
 })
 
