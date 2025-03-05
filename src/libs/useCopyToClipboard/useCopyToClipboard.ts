@@ -14,23 +14,19 @@ export const useCopyToClipboard = ({
 }) => {
   const { showSuccessSnackBar, showErrorSnackBar } = useSnackBarContext()
 
-  return useCallback(
-    async () => {
-      Clipboard.setString(textToCopy)
-      if ((await Clipboard.getString()) === textToCopy) {
-        onCopy?.()
-        showSuccessSnackBar({
-          message: snackBarMessage ?? 'Copié\u00a0!',
-          timeout: SNACK_BAR_TIME_OUT,
-        })
-      } else {
-        showErrorSnackBar({
-          message: 'Une erreur est survenue, veuillez réessayer.',
-          timeout: SNACK_BAR_TIME_OUT,
-        })
-      }
-    },
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [textToCopy, snackBarMessage, onCopy]
-  )
+  return useCallback(async () => {
+    Clipboard.setString(textToCopy)
+    if ((await Clipboard.getString()) === textToCopy) {
+      onCopy?.()
+      showSuccessSnackBar({
+        message: snackBarMessage ?? 'Copié\u00a0!',
+        timeout: SNACK_BAR_TIME_OUT,
+      })
+    } else {
+      showErrorSnackBar({
+        message: 'Une erreur est survenue, veuillez réessayer.',
+        timeout: SNACK_BAR_TIME_OUT,
+      })
+    }
+  }, [textToCopy, onCopy, showSuccessSnackBar, snackBarMessage, showErrorSnackBar])
 }

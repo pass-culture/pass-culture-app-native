@@ -17,9 +17,9 @@ jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/location')
 const mockUseLocation = jest.mocked(useLocation)
 jest.mock('@react-native-clipboard/clipboard')
+const venueOpenToPublic = { ...venueDataTest, isOpenToPublic: true }
 
 const user = userEvent.setup()
-
 jest.useFakeTimers()
 
 describe('<VenueTopComponent />', () => {
@@ -28,18 +28,17 @@ describe('<VenueTopComponent />', () => {
   })
 
   it('should display full venue address', async () => {
-    render(<VenueTopComponent venue={venueDataTest} />)
+    renderVenueTopComponent(venueOpenToPublic)
 
     expect(await screen.findByText('1 boulevard Poissonnière, 75000 Paris')).toBeOnTheScreen()
   })
 
   it('should display venue type', async () => {
     const culturalCenterVenue: VenueResponse = {
-      ...venueDataTest,
+      ...venueOpenToPublic,
       venueTypeCode: VenueTypeCodeKey.CULTURAL_CENTRE,
     }
-
-    render(reactQueryProviderHOC(<VenueTopComponent venue={culturalCenterVenue} />))
+    renderVenueTopComponent(culturalCenterVenue)
 
     expect(await screen.findByText('Centre culturel')).toBeOnTheScreen()
   })
@@ -50,9 +49,9 @@ describe('<VenueTopComponent />', () => {
       userLocation,
       hasGeolocPosition: true,
     } as ILocationContext)
-    const locatedVenue: VenueResponse = { ...venueDataTest, latitude: 30, longitude: 30 }
+    const locatedVenue: VenueResponse = { ...venueOpenToPublic, latitude: 30, longitude: 30 }
 
-    render(reactQueryProviderHOC(<VenueTopComponent venue={locatedVenue} />))
+    renderVenueTopComponent(locatedVenue)
 
     expect(await screen.findByText('À 10 km')).toBeOnTheScreen()
   })
@@ -61,15 +60,14 @@ describe('<VenueTopComponent />', () => {
     mockUseLocation.mockReturnValueOnce({
       hasGeolocPosition: false,
     } as ILocationContext)
-    const locatedVenue: VenueResponse = { ...venueDataTest, latitude: 30, longitude: 30 }
-    render(reactQueryProviderHOC(<VenueTopComponent venue={locatedVenue} />))
+    const locatedVenue: VenueResponse = { ...venueOpenToPublic, latitude: 30, longitude: 30 }
+    renderVenueTopComponent(locatedVenue)
 
     expect(screen.queryByText('À 10 km')).not.toBeOnTheScreen()
   })
 
   it('should copy the whole address when pressing the copy button', async () => {
-    render(reactQueryProviderHOC(<VenueTopComponent venue={venueDataTest} />))
-
+    renderVenueTopComponent(venueOpenToPublic)
     await user.press(screen.getByText('Copier l’adresse'))
 
     expect(Clipboard.setString).toHaveBeenCalledWith(
@@ -81,12 +79,11 @@ describe('<VenueTopComponent />', () => {
     Clipboard.getString = jest
       .fn()
       .mockReturnValue('Le Petit Rintintin 1, 1 boulevard Poissonnière, 75000 Paris')
-    render(reactQueryProviderHOC(<VenueTopComponent venue={venueDataTest} />))
-
+    renderVenueTopComponent(venueOpenToPublic)
     await user.press(screen.getByText('Copier l’adresse'))
 
     expect(analytics.logCopyAddress).toHaveBeenCalledWith({
-      venueId: venueDataTest.id,
+      venueId: venueOpenToPublic.id,
       from: 'venue',
     })
   })
@@ -94,57 +91,65 @@ describe('<VenueTopComponent />', () => {
   it('should render dynamics opening hours when feature flag is enabled', async () => {
     setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_DYNAMIC_OPENING_HOURS])
     mockdate.set(new Date('2024-05-31T08:31:00'))
-
-    render(reactQueryProviderHOC(<VenueTopComponent venue={venueDataTest} />))
+    renderVenueTopComponent(venueOpenToPublic)
 
     expect(screen.getByText('Ouvre bientôt - 9h')).toBeOnTheScreen()
   })
 
   it('should NOT render dynamics opening hours when feature flag is disabled', async () => {
-    render(reactQueryProviderHOC(<VenueTopComponent venue={venueDataTest} />))
+    renderVenueTopComponent(venueOpenToPublic)
 
     expect(screen.queryByText('Fermé')).not.toBeOnTheScreen()
   })
 
   it('should NOT render dynamics opening hours when venue doesn t have openingHours', async () => {
-    const venue = {
-      ...venueDataTest,
-      openingHours: undefined,
-    }
-
-    render(reactQueryProviderHOC(<VenueTopComponent venue={venue} />))
+    renderVenueTopComponent({ ...venueOpenToPublic, openingHours: undefined })
 
     expect(screen.queryByText('Fermé')).not.toBeOnTheScreen()
   })
 
   it('should log analytics when pressing Voir l’itinéraire', async () => {
-    render(reactQueryProviderHOC(<VenueTopComponent venue={venueDataTest} />))
+    render(reactQueryProviderHOC(<VenueTopComponent venue={venueOpenToPublic} />))
 
     await user.press(screen.getByText('Voir l’itinéraire'))
 
     expect(analytics.logConsultItinerary).toHaveBeenCalledWith({
-      venueId: venueDataTest.id,
+      venueId: venueOpenToPublic.id,
       from: 'venue',
     })
   })
 
   it('should navigate to venue preview carousel', async () => {
-    render(
-      reactQueryProviderHOC(
-        <VenueTopComponent
-          venue={{
-            ...venueDataTest,
-            bannerUrl: 'https://image.com',
-            bannerMeta: { is_from_google: false, image_credit: 'François Boulo' },
-          }}
-        />
-      )
-    )
+    renderVenueTopComponent({
+      ...venueOpenToPublic,
+      bannerUrl: 'https://image.com',
+      bannerMeta: { is_from_google: false, image_credit: 'François Boulo' },
+    })
 
     await user.press(screen.getByTestId('venueImage'))
 
     expect(navigate).toHaveBeenCalledWith('VenuePreviewCarousel', {
-      id: venueDataTest.id,
+      id: venueOpenToPublic.id,
+    })
+  })
+
+  describe('venue is not open to public', () => {
+    it('should not render dynamics opening hours', async () => {
+      setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_DYNAMIC_OPENING_HOURS])
+      mockdate.set(new Date('2024-05-31T08:31:00'))
+
+      renderVenueTopComponent({ ...venueDataTest, isOpenToPublic: false })
+
+      expect(screen.queryByText('Ouvre bientôt - 9h')).not.toBeOnTheScreen()
+    })
+
+    it('should not display full venue address', async () => {
+      render(<VenueTopComponent venue={{ ...venueDataTest, isOpenToPublic: false }} />)
+
+      expect(screen.queryByText('1 boulevard Poissonnière, 75000 Paris')).not.toBeOnTheScreen()
     })
   })
 })
+
+const renderVenueTopComponent = (venue: VenueResponse) =>
+  render(reactQueryProviderHOC(<VenueTopComponent venue={venue} />))

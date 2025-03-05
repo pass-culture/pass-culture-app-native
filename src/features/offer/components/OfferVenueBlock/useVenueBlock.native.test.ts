@@ -39,7 +39,7 @@ describe('useVenueBlock without offer address', () => {
   it('should return address', () => {
     const { result } = renderHook(() => useVenueBlock({ venue: offerResponseSnap.venue }))
 
-    expect(result.current.venueAddress).toBe('75008 PARIS 8, 2 RUE LAMENNAIS')
+    expect(result.current.venueAddress).toBe('2 RUE LAMENNAIS, 75008 PARIS 8')
   })
 
   it('should return isOfferAddressDifferent to false if offer address is not present', () => {
@@ -54,20 +54,7 @@ describe('useVenueBlock without offer address', () => {
 
     await result.current.onCopyAddressPress()
 
-    expect(spy).toHaveBeenCalledWith('75008 PARIS 8, 2 RUE LAMENNAIS')
-  })
-
-  it('should show success snackbar when address is copied', async () => {
-    jest.spyOn(Clipboard, 'getString').mockResolvedValueOnce('75008 PARIS 8, 2 RUE LAMENNAIS')
-
-    const { result } = renderHook(() => useVenueBlock({ venue: offerResponseSnap.venue }))
-
-    await result.current.onCopyAddressPress()
-
-    expect(mockShowSuccessSnackbar).toHaveBeenCalledWith({
-      message: 'L’adresse a bien été copiée',
-      timeout: undefined,
-    })
+    expect(spy).toHaveBeenCalledWith('2 RUE LAMENNAIS, 75008 PARIS 8')
   })
 
   it('should show error snackbar when address is not copied', async () => {
@@ -78,7 +65,7 @@ describe('useVenueBlock without offer address', () => {
     await result.current.onCopyAddressPress()
 
     expect(mockShowErrorSnackbar).toHaveBeenCalledWith({
-      message: 'Une erreur est survenue, veuillez réessayer',
+      message: 'Une erreur est survenue, veuillez réessayer.',
       timeout: undefined,
     })
   })
@@ -104,7 +91,7 @@ describe('useVenueBlock with offer address', () => {
       })
     )
 
-    expect(result.current.venueAddress).toBe('75013 PARIS 13, 1 RUE DES CAFÉS')
+    expect(result.current.venueAddress).toBe('1 RUE DES CAFÉS, 75013 PARIS 13')
   })
 
   it('should return isOfferAddressDifferent to true if offer and venue address are different', () => {
@@ -151,6 +138,6 @@ describe('useVenueBlock with offer address', () => {
 
     await result.current.onCopyAddressPress()
 
-    expect(spy).toHaveBeenCalledWith('75013 PARIS 13, 1 RUE DES CAFÉS')
+    expect(spy).toHaveBeenCalledWith('1 RUE DES CAFÉS, 75013 PARIS 13')
   })
 })

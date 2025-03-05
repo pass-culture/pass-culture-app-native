@@ -3,6 +3,8 @@ import { View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { VenueResponse, VenueTypeCodeKey } from 'api/gen'
+import { VenueBlockVenue } from 'features/offer/components/OfferVenueBlock/type'
+import { useVenueBlock } from 'features/offer/components/OfferVenueBlock/useVenueBlock'
 import { OpeningHoursStatus } from 'features/venue/components/OpeningHoursStatus/OpeningHoursStatus'
 import { VenueBanner } from 'features/venue/components/VenueBody/VenueBanner'
 import { analytics } from 'libs/analytics/provider'
@@ -13,7 +15,6 @@ import { getGoogleMapsItineraryUrl } from 'libs/itinerary/openGoogleMapsItinerar
 import { useLocation } from 'libs/location'
 import { getDistance } from 'libs/location/getDistance'
 import { MAP_VENUE_TYPE_TO_LABEL } from 'libs/parsers/venueType'
-import { formatFullAddress } from 'shared/address/addressFormatter'
 import { CopyToClipboardButton } from 'shared/CopyToClipboardButton/CopyToClipboardButton'
 import { Separator } from 'ui/components/Separator'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
@@ -30,12 +31,12 @@ export const VenueTopComponentBase: React.FunctionComponent<Props> = ({
   venue,
   onPressBannerImage,
 }) => {
+  const { venueAddress, venueName } = useVenueBlock({
+    venue: getVenue(venue),
+  })
   const { userLocation, selectedPlace, selectedLocationMode } = useLocation()
 
-  const { bannerUrl, publicName, name, address, postalCode, city, bannerMeta } = venue
-
-  const venueFullAddress = formatFullAddress(address, postalCode, city)
-  const venueName = publicName || name
+  const { bannerUrl, bannerMeta } = venue
 
   const distanceToVenue = getDistance(
     { lat: venue.latitude, lng: venue.longitude },
@@ -55,7 +56,8 @@ export const VenueTopComponentBase: React.FunctionComponent<Props> = ({
     RemoteStoreFeatureFlags.WIP_ENABLE_DYNAMIC_OPENING_HOURS
   )
 
-  const isDynamicOpeningHoursDisplayed = isDynamicOpeningHoursEnabled && venue.openingHours
+  const isDynamicOpeningHoursDisplayed =
+    isDynamicOpeningHoursEnabled && venue.openingHours && venue.isOpenToPublic
 
   return (
     <TopContainer>
@@ -78,26 +80,30 @@ export const VenueTopComponentBase: React.FunctionComponent<Props> = ({
                 timezone={venue.timezone}
               />
             ) : null}
-            <ViewGap gap={3}>
-              <View>
-                <TypoDS.BodyAccentXs>Adresse</TypoDS.BodyAccentXs>
-                <TypoDS.Body>{venueFullAddress}</TypoDS.Body>
-              </View>
-              <Separator.Horizontal />
-              <CopyToClipboardButton
-                wording="Copier l’adresse"
-                textToCopy={`${venueName}, ${venueFullAddress}`}
-                onCopy={() => analytics.logCopyAddress({ venueId: venue.id, from: 'venue' })}
-                snackBarMessage="L’adresse a bien été copiée."
-              />
-              <SeeItineraryButton
-                externalNav={{
-                  url: getGoogleMapsItineraryUrl(venueFullAddress),
-                  address: venueFullAddress,
-                }}
-                onPress={() => analytics.logConsultItinerary({ venueId: venue.id, from: 'venue' })}
-              />
-            </ViewGap>
+            {venue.isOpenToPublic ? (
+              <ViewGap gap={3}>
+                <View>
+                  <TypoDS.BodyAccentXs>Adresse</TypoDS.BodyAccentXs>
+                  <TypoDS.Body>{venueAddress}</TypoDS.Body>
+                </View>
+                <Separator.Horizontal />
+                <CopyToClipboardButton
+                  wording="Copier l’adresse"
+                  textToCopy={`${venueName}, ${venueAddress}`}
+                  onCopy={() => analytics.logCopyAddress({ venueId: venue.id, from: 'venue' })}
+                  snackBarMessage="L’adresse a bien été copiée."
+                />
+                <SeeItineraryButton
+                  externalNav={{
+                    url: getGoogleMapsItineraryUrl(venueAddress),
+                    address: venueAddress,
+                  }}
+                  onPress={() =>
+                    analytics.logConsultItinerary({ venueId: venue.id, from: 'venue' })
+                  }
+                />
+              </ViewGap>
+            ) : null}
           </ViewGap>
         </ViewGap>
       </MarginContainer>
@@ -121,3 +127,11 @@ const MarginContainer = styled.View({
   marginHorizontal: getSpacing(6),
   flexShrink: 1,
 })
+
+const getVenue = (venue: VenueResponse): VenueBlockVenue => {
+  return {
+    ...venue,
+    bannerUrl: venue.bannerUrl ?? undefined,
+    coordinates: {},
+  }
+}
