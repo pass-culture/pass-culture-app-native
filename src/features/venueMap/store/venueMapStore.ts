@@ -4,11 +4,9 @@ import { create } from 'zustand'
 import { PlaylistType } from 'features/offer/enums'
 import { GeolocatedVenue } from 'features/venueMap/components/VenueMapView/types'
 import { Region } from 'libs/maps/maps'
-import { VenueTypeCode } from 'libs/parsers/venueType'
 
 type VenueMapStoreState = {
   offersPlaylistType: PlaylistType
-  venueTypeCode?: VenueTypeCode | null
   venues: GeolocatedVenue[]
   selectedVenue?: GeolocatedVenue | null
   region?: Region
@@ -19,7 +17,6 @@ const DEFAULT_STATE: VenueMapStoreState = {
   offersPlaylistType: PlaylistType.TOP_OFFERS,
   venues: [],
   selectedVenue: undefined,
-  venueTypeCode: undefined,
   region: undefined,
   initialRegion: undefined,
 }

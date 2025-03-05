@@ -21,7 +21,6 @@ describe('VenueMapStore', () => {
     expect(result.current.region).toBeUndefined()
     expect(result.current.offersPlaylistType).toBe(PlaylistType.TOP_OFFERS)
     expect(result.current.selectedVenue).toBeUndefined()
-    expect(result.current.venueTypeCode).toBeUndefined()
   })
 
   it('should set venues', () => {
