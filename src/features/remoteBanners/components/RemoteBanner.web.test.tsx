@@ -21,7 +21,7 @@ describe('<RemoteBanner/>', () => {
         options: bannerExternalUrl,
       },
     ])
-    render(<RemoteGenericBanner from="Profile" />)
+    render(<RemoteGenericBanner from="profile" />)
 
     const subtitle = screen.queryByText('subtitleWeb')
 
@@ -35,7 +35,7 @@ describe('<RemoteBanner/>', () => {
         options: bannerExternalUrl,
       },
     ])
-    render(<RemoteGenericBanner from="Profile" />)
+    render(<RemoteGenericBanner from="profile" />)
 
     const subtitle = screen.queryByText('subtitleMobile')
 
@@ -49,7 +49,7 @@ describe('<RemoteBanner/>', () => {
         options: bannerStoreRedirection,
       },
     ])
-    render(<RemoteGenericBanner from="Profile" />)
+    render(<RemoteGenericBanner from="profile" />)
 
     const rightIcon = screen.queryByTestId('ArrowNext')
 
@@ -63,7 +63,7 @@ describe('<RemoteBanner/>', () => {
         options: bannerStoreRedirection,
       },
     ])
-    render(<RemoteGenericBanner from="Profile" />)
+    render(<RemoteGenericBanner from="profile" />)
 
     const buttonBanner = await screen.findByRole(AccessibilityRole.BUTTON)
 
@@ -77,7 +77,7 @@ describe('<RemoteBanner/>', () => {
         options: bannerExternalUrl,
       },
     ])
-    render(<RemoteGenericBanner from="Profile" />)
+    render(<RemoteGenericBanner from="profile" />)
 
     const linkBanner = await screen.findByRole(AccessibilityRole.LINK)
 

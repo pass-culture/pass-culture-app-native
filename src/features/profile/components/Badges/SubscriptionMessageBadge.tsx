@@ -90,7 +90,7 @@ export const SubscriptionMessageBadge = ({
 
       {disableActivation ? (
         <React.Fragment>
-          <RemoteActivationBanner from="Profile" />
+          <RemoteActivationBanner from="profile" />
           <Spacer.Column numberOfSpaces={6} />
         </React.Fragment>
       ) : null}

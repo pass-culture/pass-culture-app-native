@@ -369,7 +369,6 @@ exports[`Home page should render correctly 1`] = `
                 >
                   <View
                     accessibilityLabel="Crée ton compte si tu as entre 15 et 18 ans !"
-                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,

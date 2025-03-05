@@ -17,7 +17,7 @@ export const RemoteGenericBanner = ({ from }: { from: RemoteBannerOrigin }) => {
       options={options}
       leftIcon={Info}
       logClickEvent={analytics.logHasClickedRemoteGenericBanner}
-      analyticsParams={{ from: 'Home', type: 'remoteGenericBanner' }}
+      analyticsParams={{ from: 'home', type: 'remoteGenericBanner' }}
     />
   )
 }

@@ -23,7 +23,7 @@ type RemoteBannerProps = {
   logClickEvent: (from: RemoteBannerOrigin, options: RemoteBannerType) => void
   analyticsParams: {
     type: 'remoteActivationBanner' | 'remoteGenericBanner'
-    from: 'Profile' | 'Home' | 'Cheatcodes'
+    from: 'profile' | 'home' | 'cheatcodes'
   }
 }
 

@@ -86,7 +86,7 @@ export const HomeBanner = ({ isLoggedIn }: HomeBannerProps) => {
     if (disableActivation) {
       return (
         <BannerContainer>
-          <RemoteActivationBanner from="Home" />
+          <RemoteActivationBanner from="home" />
         </BannerContainer>
       )
     }
@@ -116,7 +116,7 @@ export const HomeBanner = ({ isLoggedIn }: HomeBannerProps) => {
     <React.Fragment>
       {showRemoteGenericBanner ? (
         <RemoteGenericBannerContainer>
-          <RemoteGenericBanner from="Home" />
+          <RemoteGenericBanner from="home" />
         </RemoteGenericBannerContainer>
       ) : null}
       {SystemBanner}

@@ -136,7 +136,7 @@ function NonBeneficiaryBanner({
     if (featureFlags.disableActivation) {
       return (
         <BannerContainer withMarginTop>
-          <RemoteActivationBanner from="Profile" />
+          <RemoteActivationBanner from="profile" />
         </BannerContainer>
       )
     }

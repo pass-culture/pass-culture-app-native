@@ -23,12 +23,12 @@ describe('<RemoteGenericBanner/>', () => {
         options: bannerExternalUrl,
       },
     ])
-    render(<RemoteGenericBanner from="Home" />)
+    render(<RemoteGenericBanner from="home" />)
 
     const banner = await screen.findByText('title 1')
     await user.press(banner)
 
-    expect(analytics.logHasClickedRemoteGenericBanner).toHaveBeenCalledWith('Home', {
+    expect(analytics.logHasClickedRemoteGenericBanner).toHaveBeenCalledWith('home', {
       ...bannerExternalUrl,
     })
   })

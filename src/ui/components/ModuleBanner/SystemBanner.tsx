@@ -37,7 +37,7 @@ type Props = TouchableProps & {
   accessibilityRole?: AccessibilityRole
   analyticsParams: {
     type: 'credit' | 'location' | 'remoteActivationBanner' | 'remoteGenericBanner'
-    from: 'Home' | 'ThematicHome' | 'Offer' | 'Profile' | 'Search' | 'Cheatcodes'
+    from: 'home' | 'thematicHome' | 'offer' | 'profile' | 'search' | 'cheatcodes'
   }
   withBackground?: boolean
 }
