@@ -153,7 +153,23 @@ jobs:
     needs: yarn_test_native
 
     steps:
+      - name: Enable Corepack
+        run: corepack enable
       - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+      - name: Cache the node_modules
+        id: yarn-modules-cache
+        uses: pass-culture-github-actions/cache@v1.0.0
+        with:
+          bucket: ${{ inputs.CACHE_BUCKET_NAME }}
+          path: |
+            node_modules
+            ~/.cache/yarn
+          key: v1-yarn-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            v1-yarn-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
 
       - name: 'Authentification to Google'
         uses: 'google-github-actions/auth@v2'
@@ -178,16 +194,8 @@ jobs:
           done
           rm -rf allure-results-*
 
-      - name: Install Allure
-        run: |
-          ALLURE_VERSION=$(curl -s https://api.github.com/repos/allure-framework/allure2/releases/latest | jq -r .tag_name | tr -d v)
-          wget -q https://github.com/allure-framework/allure2/releases/download/${ALLURE_VERSION}/allure-${ALLURE_VERSION}.tgz
-          tar -xzvf allure-${ALLURE_VERSION}.tgz -C /opt/
-          echo "/opt/allure-${ALLURE_VERSION}/bin" >> $GITHUB_PATH
-
       - name: Generate Allure Report
-        run: |
-          allure generate allure-results --clean -o allure-report
+        run: yarn generate:allure-report
 
       - name: 'Get secrets (github)'
         id: 'secrets'

@@ -13019,6 +13019,7 @@ __metadata:
     "@welldone-software/why-did-you-render": ^7.0.1
     "@zootools/email-spell-checker": ^1.11.0
     algoliasearch: ^4.24.0
+    allure-commandline: ^2.33.0
     allure-jest: ^3.2.0
     allure-js-commons: ^3.2.0
     amplitude-js: ^8.16.1
@@ -13480,6 +13481,15 @@ __metadata:
     "@algolia/requester-node-http": 4.24.0
     "@algolia/transporter": 4.24.0
   checksum: 13cae6ea7ff05e068906dcb101b940bcf1a4ea41008757554c16a7951cdaa3af3094e547e3e51f9e751f68906b5654506e1dd4a1debb1b9d54cbb227ca83e8db
+  languageName: node
+  linkType: hard
+
+"allure-commandline@npm:^2.33.0":
+  version: 2.33.0
+  resolution: "allure-commandline@npm:2.33.0"
+  bin:
+    allure: bin/allure
+  checksum: ed555ee2defc61659dffcf72732e019f319f4dd7d086498de3a602bf9169c83d883809fe2dac68d654820aba40a602099b7133b31ae8af0d774b8cb3a1a708ff
   languageName: node
   linkType: hard
 
