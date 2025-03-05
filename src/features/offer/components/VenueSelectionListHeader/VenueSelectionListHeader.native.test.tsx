@@ -4,18 +4,16 @@ import { VenueSelectionListHeader } from 'features/offer/components/VenueSelecti
 import { render, screen } from 'tests/utils'
 
 describe('<VenueSelectionListHeader />', () => {
-  describe('When wipAppV2SystemBlock feature flag activated', () => {
-    it('should display geolocation system banner when user has not a location', () => {
-      render(
-        <VenueSelectionListHeader
-          subTitle="Sélectionner un lieu"
-          headerMessage="Lieux à proximité"
-          isSharingLocation={false}
-        />
-      )
+  it('should display geolocation system banner when user has not a location', () => {
+    render(
+      <VenueSelectionListHeader
+        subTitle="Sélectionner un lieu"
+        headerMessage="Lieux à proximité"
+        isSharingLocation={false}
+      />
+    )
 
-      expect(screen.getByTestId('systemBanner')).toBeOnTheScreen()
-    })
+    expect(screen.getByTestId('systemBanner')).toBeOnTheScreen()
   })
 
   it('should display subtitle', () => {
