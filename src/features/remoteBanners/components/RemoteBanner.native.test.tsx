@@ -21,46 +21,46 @@ jest.useFakeTimers()
 const user = userEvent.setup()
 const appStoreUrl = 'https://apps.apple.com/fr/app/pass-culture/id1557887412'
 
-describe('RemoteGenericBanner', () => {
-  it('when the showRemoteGenericBanner FF is off, the banner should not be displayed', () => {
+describe('<RemoteBanner/>', () => {
+  it('should not be displayed when the showRemoteGenericBanner FF is disable', () => {
     setFeatureFlags()
-    render(<RemoteGenericBanner from="Profile" />)
+    render(<RemoteGenericBanner from="profile" />)
 
     const banner = screen.queryByText('title 1')
 
     expect(banner).not.toBeOnTheScreen()
   })
 
-  it('when redirection type is an expected value, banner should appear', () => {
+  it('should displayed when redirection type is an expected value', () => {
     setFeatureFlags([
       {
         featureFlag: RemoteStoreFeatureFlags.SHOW_REMOTE_GENERIC_BANNER,
         options: bannerExternalUrl,
       },
     ])
-    render(<RemoteGenericBanner from="Profile" />)
+    render(<RemoteGenericBanner from="profile" />)
 
     const banner = screen.queryByText('title 1')
 
     expect(banner).toBeOnTheScreen()
   })
 
-  it('when redirection type is an unexpected value, banner should not appear', () => {
+  it('should not be displayed when redirection type is an unexpected value', () => {
     setFeatureFlags([
       { featureFlag: RemoteStoreFeatureFlags.SHOW_REMOTE_GENERIC_BANNER, options: bannerBadType },
     ])
-    render(<RemoteGenericBanner from="Profile" />)
+    render(<RemoteGenericBanner from="profile" />)
 
     const banner = screen.queryByText('title 1')
 
     expect(banner).not.toBeOnTheScreen()
   })
 
-  it('when redirection type is an unexpected value, should log to sentry', () => {
+  it('should log sentry when redirection type is an unexpected value', () => {
     setFeatureFlags([
       { featureFlag: RemoteStoreFeatureFlags.SHOW_REMOTE_GENERIC_BANNER, options: bannerBadType },
     ])
-    render(<RemoteGenericBanner from="Profile" />)
+    render(<RemoteGenericBanner from="profile" />)
 
     expect(eventMonitoring.captureException).toHaveBeenCalledWith(
       new Error(
@@ -72,11 +72,11 @@ describe('RemoteGenericBanner', () => {
     )
   })
 
-  it('when redirection is to app store, should navigate to store and a11y label should be correct', async () => {
+  it('should navigate to store and a11y label should be correct when redirection is to app store', async () => {
     setFeatureFlags([
       { featureFlag: RemoteStoreFeatureFlags.SHOW_REMOTE_GENERIC_BANNER, options: bannerAppStore },
     ])
-    render(<RemoteGenericBanner from="Profile" />)
+    render(<RemoteGenericBanner from="profile" />)
 
     const banner = await screen.findByText('title 1')
     await user.press(banner)
@@ -87,14 +87,14 @@ describe('RemoteGenericBanner', () => {
     expect(openUrl).toHaveBeenCalledWith(appStoreUrl)
   })
 
-  it('when redirection is external, should navigate to url and a11y label should be correct', async () => {
+  it('should navigate to url and a11y label should be correct when redirection is external', async () => {
     setFeatureFlags([
       {
         featureFlag: RemoteStoreFeatureFlags.SHOW_REMOTE_GENERIC_BANNER,
         options: bannerExternalUrl,
       },
     ])
-    render(<RemoteGenericBanner from="Profile" />)
+    render(<RemoteGenericBanner from="profile" />)
 
     const banner = await screen.findByText('title 1')
     await user.press(banner)
@@ -107,14 +107,14 @@ describe('RemoteGenericBanner', () => {
     expect(openUrl).toHaveBeenCalledWith('https://www.test.fr')
   })
 
-  it('when redirection is external, but url is an empty string, button should be disabled and there should not be an a11y label', async () => {
+  it('should be disabled and there should not be an a11y label when redirection is external, but url is an empty string', async () => {
     setFeatureFlags([
       {
         featureFlag: RemoteStoreFeatureFlags.SHOW_REMOTE_GENERIC_BANNER,
         options: bannerExternalUrlWithMissingUrl,
       },
     ])
-    render(<RemoteGenericBanner from="Profile" />)
+    render(<RemoteGenericBanner from="profile" />)
 
     const banner = await screen.findByText('title 1')
     await user.press(banner)
@@ -125,19 +125,19 @@ describe('RemoteGenericBanner', () => {
     expect(openUrl).not.toHaveBeenCalled()
   })
 
-  it('when user presses banner, should log analytics', async () => {
+  it('should log analytics when user presses banner', async () => {
     setFeatureFlags([
       {
         featureFlag: RemoteStoreFeatureFlags.SHOW_REMOTE_GENERIC_BANNER,
         options: bannerAppStore,
       },
     ])
-    render(<RemoteGenericBanner from="Profile" />)
+    render(<RemoteGenericBanner from="profile" />)
 
     const banner = await screen.findByText('title 1')
     await user.press(banner)
 
-    expect(analytics.logHasClickedRemoteGenericBanner).toHaveBeenCalledWith('Profile', {
+    expect(analytics.logHasClickedRemoteGenericBanner).toHaveBeenCalledWith('profile', {
       ...bannerAppStore,
     })
   })
@@ -150,7 +150,7 @@ describe('RemoteGenericBanner', () => {
           options: bannerAppStore,
         },
       ])
-      render(<RemoteGenericBanner from="Profile" />)
+      render(<RemoteGenericBanner from="profile" />)
 
       const linkBanner = await screen.findByRole(AccessibilityRole.LINK)
 
@@ -164,7 +164,7 @@ describe('RemoteGenericBanner', () => {
           options: bannerExternalUrl,
         },
       ])
-      render(<RemoteGenericBanner from="Profile" />)
+      render(<RemoteGenericBanner from="profile" />)
 
       const linkBanner = await screen.findByRole(AccessibilityRole.LINK)
 
@@ -178,7 +178,7 @@ describe('RemoteGenericBanner', () => {
           options: bannerAppStore,
         },
       ])
-      render(<RemoteGenericBanner from="Profile" />)
+      render(<RemoteGenericBanner from="profile" />)
 
       const banner = await screen.findByText('title 1')
       await user.press(banner)
@@ -195,7 +195,7 @@ describe('RemoteGenericBanner', () => {
           options: bannerExternalUrl,
         },
       ])
-      render(<RemoteGenericBanner from="Profile" />)
+      render(<RemoteGenericBanner from="profile" />)
 
       const banner = await screen.findByText('title 1')
       await user.press(banner)
@@ -214,7 +214,7 @@ describe('RemoteGenericBanner', () => {
           options: bannerExternalUrlWithMissingUrl,
         },
       ])
-      render(<RemoteGenericBanner from="Profile" />)
+      render(<RemoteGenericBanner from="profile" />)
 
       const banner = await screen.findByText('title 1')
       await user.press(banner)

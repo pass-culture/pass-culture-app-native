@@ -4,6 +4,7 @@ import { RemoteBannerOrigin } from 'features/remoteBanners/utils/remoteBannerSch
 import { analytics } from 'libs/analytics/provider'
 import { useFeatureFlagOptions } from 'libs/firebase/firestore/featureFlags/useFeatureFlagOptions'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { Hourglass } from 'ui/svg/icons/Hourglass'
 
 import { RemoteBanner } from '../components/RemoteBanner'
 
@@ -15,6 +16,8 @@ export const RemoteActivationBanner = ({ from }: { from: RemoteBannerOrigin }) =
       from={from}
       options={options}
       logClickEvent={analytics.logHasClickedRemoteActivationBanner}
+      analyticsParams={{ from, type: 'remoteActivationBanner' }}
+      leftIcon={Hourglass}
     />
   )
 }

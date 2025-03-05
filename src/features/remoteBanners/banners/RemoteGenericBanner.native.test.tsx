@@ -16,19 +16,19 @@ jest.useFakeTimers()
 const user = userEvent.setup()
 
 describe('<RemoteGenericBanner/>', () => {
-  it('when user presses banner, should log analytics', async () => {
+  it('should log analytics when user presses banner', async () => {
     setFeatureFlags([
       {
         featureFlag: RemoteStoreFeatureFlags.SHOW_REMOTE_GENERIC_BANNER,
         options: bannerExternalUrl,
       },
     ])
-    render(<RemoteGenericBanner from="Home" />)
+    render(<RemoteGenericBanner from="home" />)
 
     const banner = await screen.findByText('title 1')
     await user.press(banner)
 
-    expect(analytics.logHasClickedRemoteGenericBanner).toHaveBeenCalledWith('Home', {
+    expect(analytics.logHasClickedRemoteGenericBanner).toHaveBeenCalledWith('home', {
       ...bannerExternalUrl,
     })
   })

@@ -16,19 +16,19 @@ jest.useFakeTimers()
 const user = userEvent.setup()
 
 describe('<RemoteActivationBanner/>', () => {
-  it('when user presses banner, should log analytics', async () => {
+  it('should log analytics when user presses banner', async () => {
     setFeatureFlags([
       {
         featureFlag: RemoteStoreFeatureFlags.DISABLE_ACTIVATION,
         options: bannerExternalUrl,
       },
     ])
-    render(<RemoteActivationBanner from="Profile" />)
+    render(<RemoteActivationBanner from="profile" />)
 
     const banner = await screen.findByText('title 1')
     await user.press(banner)
 
-    expect(analytics.logHasClickedRemoteActivationBanner).toHaveBeenCalledWith('Profile', {
+    expect(analytics.logHasClickedRemoteActivationBanner).toHaveBeenCalledWith('profile', {
       ...bannerExternalUrl,
     })
   })

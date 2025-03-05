@@ -674,8 +674,8 @@ export const logEventAnalytics = {
   logSubscriptionUpdate: (params: SubscriptionAnalyticsParams) =>
     analytics.logEvent({ firebase: AnalyticsEvent.SUBSCRIPTION_UPDATE }, params),
   logSystemBlockDisplayed: (params: {
-    type: 'credit' | 'location'
-    from: 'home' | 'thematicHome' | 'offer' | 'profile' | 'search'
+    type: 'credit' | 'location' | 'remoteActivationBanner' | 'remoteGenericBanner'
+    from: 'home' | 'thematicHome' | 'offer' | 'profile' | 'search' | 'cheatcodes'
   }) => analytics.logEvent({ firebase: AnalyticsEvent.SYSTEM_BLOCK_DISPLAYED }, params),
   logTrendsBlockClicked: (params: {
     moduleId: string

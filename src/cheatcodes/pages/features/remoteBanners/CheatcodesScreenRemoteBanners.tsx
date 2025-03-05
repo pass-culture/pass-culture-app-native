@@ -44,7 +44,7 @@ export const CheatcodesScreenRemoteBanners = () => {
     <CheatcodesTemplateScreen title="RemoteBanners 🆒" flexDirection="column">
       <ViewGap gap={3}>
         <TypoDS.Title3>RemoteGenericBanner</TypoDS.Title3>
-        <RemoteGenericBanner from="Cheatcodes" />
+        <RemoteGenericBanner from="cheatcodes" />
         {genericBannerError ? (
           <ErrorBanner
             message={`La bannière RemoteGenericBanner ne s‘affichera pas à cause de l’erreur suivante:\n${genericBannerError}`}
@@ -54,7 +54,7 @@ export const CheatcodesScreenRemoteBanners = () => {
         <StyledSeparator />
 
         <TypoDS.Title3>RemoteActivationBanner</TypoDS.Title3>
-        <RemoteActivationBanner from="Cheatcodes" />
+        <RemoteActivationBanner from="cheatcodes" />
         {activationBannerError ? (
           <ErrorBanner
             message={`La bannière RemoteActivationBanner ne s‘affichera pas à cause de l’erreur suivante:\n${activationBannerError}`}

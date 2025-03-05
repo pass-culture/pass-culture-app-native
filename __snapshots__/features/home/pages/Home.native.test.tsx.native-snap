@@ -369,7 +369,6 @@ exports[`Home page should render correctly 1`] = `
                 >
                   <View
                     accessibilityLabel="Crée ton compte si tu as entre 15 et 18 ans !"
-                    accessibilityRole="button"
                     accessibilityState={
                       {
                         "busy": undefined,
@@ -414,10 +413,13 @@ exports[`Home page should render correctly 1`] = `
                     testID="Crée ton compte si tu as entre 15 et 18 ans !"
                   >
                     <View
+                      backgroundColor="transparent"
+                      borderColor="#6123DF"
                       style={
                         [
                           {
                             "alignItems": "center",
+                            "backgroundColor": "transparent",
                             "borderColor": "#6123DF",
                             "borderRadius": 8,
                             "borderStyle": "solid",
@@ -468,6 +470,7 @@ exports[`Home page should render correctly 1`] = `
                         }
                       >
                         <Text
+                          color="#161617"
                           style={
                             [
                               {
@@ -482,7 +485,7 @@ exports[`Home page should render correctly 1`] = `
                           Débloque ton crédit
                         </Text>
                         <Text
-                          numberOfLines={2}
+                          color="#161617"
                           style={
                             [
                               {

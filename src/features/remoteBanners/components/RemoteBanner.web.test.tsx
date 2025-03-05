@@ -13,7 +13,7 @@ import { render, screen } from 'tests/utils/web'
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
-describe('RemoteGenericBanner', () => {
+describe('<RemoteBanner/>', () => {
   it('should show web specific subtitle', async () => {
     setFeatureFlags([
       {
@@ -21,7 +21,7 @@ describe('RemoteGenericBanner', () => {
         options: bannerExternalUrl,
       },
     ])
-    render(<RemoteGenericBanner from="Profile" />)
+    render(<RemoteGenericBanner from="profile" />)
 
     const subtitle = screen.queryByText('subtitleWeb')
 
@@ -35,7 +35,7 @@ describe('RemoteGenericBanner', () => {
         options: bannerExternalUrl,
       },
     ])
-    render(<RemoteGenericBanner from="Profile" />)
+    render(<RemoteGenericBanner from="profile" />)
 
     const subtitle = screen.queryByText('subtitleMobile')
 
@@ -49,7 +49,7 @@ describe('RemoteGenericBanner', () => {
         options: bannerStoreRedirection,
       },
     ])
-    render(<RemoteGenericBanner from="Profile" />)
+    render(<RemoteGenericBanner from="profile" />)
 
     const rightIcon = screen.queryByTestId('ArrowNext')
 
@@ -63,7 +63,7 @@ describe('RemoteGenericBanner', () => {
         options: bannerStoreRedirection,
       },
     ])
-    render(<RemoteGenericBanner from="Profile" />)
+    render(<RemoteGenericBanner from="profile" />)
 
     const buttonBanner = await screen.findByRole(AccessibilityRole.BUTTON)
 
@@ -77,7 +77,7 @@ describe('RemoteGenericBanner', () => {
         options: bannerExternalUrl,
       },
     ])
-    render(<RemoteGenericBanner from="Profile" />)
+    render(<RemoteGenericBanner from="profile" />)
 
     const linkBanner = await screen.findByRole(AccessibilityRole.LINK)
 

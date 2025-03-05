@@ -77,7 +77,7 @@ function SystemBanner({ homeBanner, Icon, formattedEligibilityEndDatetime }: Ban
     <BannerContainer testID="eligibility-system-banner-container">
       <EligibilityMessage formattedEligibilityEndDatetime={formattedEligibilityEndDatetime} />
       <GenericSystemBanner
-        LeftIcon={<Icon />}
+        leftIcon={Icon}
         title={homeBanner.title}
         subtitle={homeBanner.text}
         accessibilityLabel={homeBanner.text}
@@ -136,7 +136,7 @@ function NonBeneficiaryBanner({
     if (featureFlags.disableActivation) {
       return (
         <BannerContainer withMarginTop>
-          <RemoteActivationBanner from="Profile" />
+          <RemoteActivationBanner from="profile" />
         </BannerContainer>
       )
     }

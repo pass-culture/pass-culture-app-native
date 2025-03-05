@@ -17,7 +17,7 @@ export enum RemoteBannerRedirectionType {
   EXTERNAL = 'external',
 }
 
-export type RemoteBannerOrigin = 'Profile' | 'Home' | 'Cheatcodes'
+export type RemoteBannerOrigin = 'profile' | 'home' | 'cheatcodes'
 
 export const validateRemoteBanner = (objectToValidate: unknown): RemoteBannerType | null => {
   try {

@@ -25,7 +25,7 @@ export const SignupBanner: FunctionComponent = () => {
 
   return (
     <SystemBanner
-      LeftIcon={<StyledSystemBannerBicolorUnlock />}
+      leftIcon={StyledSystemBannerBicolorUnlock}
       title={title}
       subtitle={subtitle}
       onPress={onSystemBannerPress}
