@@ -1,6 +1,5 @@
 import React from 'react'
 import { Platform } from 'react-native'
-import styled from 'styled-components/native'
 
 import { STORE_LINK } from 'features/forceUpdate/constants'
 import { onPressStoreLink } from 'features/forceUpdate/helpers/onPressStoreLink'
@@ -11,25 +10,36 @@ import {
   RemoteBannerType,
   validateRemoteBanner,
 } from 'features/remoteBanners/utils/remoteBannerSchema'
-import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
-import { BannerWithBackground } from 'ui/components/ModuleBanner/BannerWithBackground'
-import { Hourglass } from 'ui/svg/icons/Hourglass'
-import { TypoDS } from 'ui/theme'
+import { SystemBanner } from 'ui/components/ModuleBanner/SystemBanner'
+import { AccessibleIcon } from 'ui/svg/icons/types'
 
 const isWeb = Platform.OS === 'web'
 
 type RemoteBannerProps = {
   from: RemoteBannerOrigin
+  leftIcon: React.FunctionComponent<AccessibleIcon>
   options?: Record<string, unknown>
   logClickEvent: (from: RemoteBannerOrigin, options: RemoteBannerType) => void
+  analyticsParams: {
+    type: 'remoteActivationBanner' | 'remoteGenericBanner'
+    from: 'Profile' | 'Home' | 'Cheatcodes'
+  }
 }
 
-export const RemoteBanner = ({ from, options, logClickEvent }: RemoteBannerProps) => {
+export const RemoteBanner = ({
+  from,
+  options,
+  leftIcon,
+  logClickEvent,
+  analyticsParams,
+}: RemoteBannerProps) => {
   const validatedOptions = validateRemoteBanner(options)
   if (!validatedOptions) return null
 
   const { title, subtitleMobile, subtitleWeb, redirectionUrl, redirectionType } = validatedOptions
+
+  const subtitle = isWeb ? subtitleWeb : subtitleMobile
 
   const isStoreRedirection = redirectionType === RemoteBannerRedirectionType.STORE
   const isExternalRedirection = redirectionType === RemoteBannerRedirectionType.EXTERNAL
@@ -38,9 +48,9 @@ export const RemoteBanner = ({ from, options, logClickEvent }: RemoteBannerProps
   const isWebStoreBanner = isStoreRedirection && isWeb
   const accessibilityRole = isWebStoreBanner ? AccessibilityRole.BUTTON : AccessibilityRole.LINK
 
-  const externalAccessiblityLabel = `Nouvelle fenêtre\u00a0: ${String(redirectionUrl)}`
   const storeAccessibilityLabel = isWebStoreBanner ? '' : `Nouvelle fenêtre\u00a0: ${STORE_LINK}`
 
+  const externalAccessiblityLabel = `Nouvelle fenêtre\u00a0: ${String(redirectionUrl)}`
   const accessibilityLabel = isExternalAndDefined
     ? externalAccessiblityLabel
     : storeAccessibilityLabel
@@ -52,23 +62,14 @@ export const RemoteBanner = ({ from, options, logClickEvent }: RemoteBannerProps
   }
 
   return (
-    <BannerWithBackground
+    <SystemBanner
       accessibilityRole={accessibilityRole}
-      disabled={!isStoreRedirection && !redirectionUrl}
-      leftIcon={Hourglass}
-      noRightIcon={isWebStoreBanner}
+      withBackground
+      leftIcon={leftIcon}
+      title={title}
+      subtitle={subtitle ?? ''}
       onPress={onPress}
-      {...accessibilityAndTestId(accessibilityLabel)}>
-      <StyledButtonText>{title}</StyledButtonText>
-      <StyledBodyText>{isWeb ? subtitleWeb : subtitleMobile}</StyledBodyText>
-    </BannerWithBackground>
+      accessibilityLabel={accessibilityLabel}
+      analyticsParams={analyticsParams}></SystemBanner>
   )
 }
-
-const StyledButtonText = styled(TypoDS.Button)(({ theme }) => ({
-  color: theme.colors.white,
-}))
-
-const StyledBodyText = styled(TypoDS.Body)(({ theme }) => ({
-  color: theme.colors.white,
-}))

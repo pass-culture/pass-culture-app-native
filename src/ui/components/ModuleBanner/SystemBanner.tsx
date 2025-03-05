@@ -2,11 +2,14 @@ import React, { FunctionComponent, useEffect } from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/analytics/provider'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { theme } from 'theme'
 import { styledButton } from 'ui/components/buttons/styledButton'
-import { Touchable } from 'ui/components/touchable/Touchable'
+import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
+import { InternalNavigationProps } from 'ui/components/touchableLink/types'
+import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
 import { AccessibleIcon } from 'ui/svg/icons/types'
@@ -14,27 +17,40 @@ import { getSpacing, TypoDS } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
+import { getHoverStyle } from 'ui/theme/getHoverStyle/getHoverStyle'
 
-type Props = {
+type TouchableProps =
+  | {
+      navigateTo: InternalNavigationProps['navigateTo']
+      onBeforeNavigate?: () => void
+    }
+  | {
+      onPress: () => void
+    }
+
+type Props = TouchableProps & {
   leftIcon: React.FunctionComponent<AccessibleIcon>
   title: string
   subtitle: string
   onPress: VoidFunction
   accessibilityLabel: string
+  accessibilityRole?: AccessibilityRole
   analyticsParams: {
-    type: 'credit' | 'location'
-    from: 'home' | 'thematicHome' | 'offer' | 'profile' | 'search'
+    type: 'credit' | 'location' | 'remoteActivationBanner' | 'remoteGenericBanner'
+    from: 'Home' | 'ThematicHome' | 'Offer' | 'Profile' | 'Search' | 'Cheatcodes'
   }
+  withBackground?: boolean
 }
 
-export const SystemBanner: FunctionComponent<Props & { withBackground?: boolean }> = ({
+export const SystemBanner: FunctionComponent<Props> = ({
   leftIcon: LeftIcon,
   title,
   subtitle,
-  onPress,
   accessibilityLabel,
+  accessibilityRole,
   analyticsParams: { type, from },
   withBackground = false,
+  ...touchableProps
 }) => {
   const focusProps = useHandleFocus()
 
@@ -55,12 +71,16 @@ export const SystemBanner: FunctionComponent<Props & { withBackground?: boolean 
       }))``
     : undefined
 
+  const TouchableComponent =
+    'navigateTo' in touchableProps ? StyledInternalTouchableLink : StyledTouchableOpacity
+
   return (
-    <StyledTouchable
-      onPress={onPress}
+    <TouchableComponent
+      {...touchableProps}
+      {...focusProps}
+      accessibilityRole={accessibilityRole}
       accessibilityLabel={accessibilityLabel}
-      color={color}
-      {...focusProps}>
+      color={color}>
       <Container backgroundColor={backgroundColor} borderColor={borderColor} testID="systemBanner">
         {StyledIcon ? (
           <IconContainer>
@@ -75,9 +95,25 @@ export const SystemBanner: FunctionComponent<Props & { withBackground?: boolean 
           <StyledArrowNextIcon color={iconColor} />
         </View>
       </Container>
-    </StyledTouchable>
+    </TouchableComponent>
   )
 }
+
+const StyledInternalTouchableLink = styled(InternalTouchableLink)<{ color: ColorsEnum }>(
+  ({ theme, color }) => ({
+    borderRadius: theme.borderRadius.radius,
+    ...customFocusOutline({ color }),
+    ...getHoverStyle(color),
+  })
+)
+
+const StyledTouchableOpacity = styledButton(TouchableOpacity)<{
+  color: ColorsEnum
+}>(({ theme, color }) => ({
+  borderRadius: theme.borderRadius.radius,
+  ...customFocusOutline({ color }),
+  ...getHoverStyle(color),
+}))
 
 const Container = styled.View<{ backgroundColor: ColorsEnum; borderColor: ColorsEnum }>(
   ({ theme, backgroundColor, borderColor }) => ({
@@ -92,15 +128,6 @@ const Container = styled.View<{ backgroundColor: ColorsEnum; borderColor: Colors
     width: '100%',
   })
 )
-
-const StyledTouchable = styledButton(Touchable)<{
-  isFocus?: boolean
-  isHover?: boolean
-  color: ColorsEnum
-}>(({ theme, isFocus, color }) => ({
-  borderRadius: theme.borderRadius.radius,
-  ...customFocusOutline({ isFocus, color }),
-}))
 
 const IconContainer = styled.View({
   alignContent: 'center',

@@ -4,6 +4,7 @@ import { RemoteBannerOrigin } from 'features/remoteBanners/utils/remoteBannerSch
 import { analytics } from 'libs/analytics/provider'
 import { useFeatureFlagOptions } from 'libs/firebase/firestore/featureFlags/useFeatureFlagOptions'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { Info } from 'ui/svg/icons/Info'
 
 import { RemoteBanner } from '../components/RemoteBanner'
 
@@ -14,7 +15,9 @@ export const RemoteGenericBanner = ({ from }: { from: RemoteBannerOrigin }) => {
     <RemoteBanner
       from={from}
       options={options}
+      leftIcon={Info}
       logClickEvent={analytics.logHasClickedRemoteGenericBanner}
+      analyticsParams={{ from: 'Home', type: 'remoteGenericBanner' }}
     />
   )
 }

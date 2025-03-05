@@ -16,7 +16,7 @@ jest.useFakeTimers()
 const user = userEvent.setup()
 
 describe('<RemoteActivationBanner/>', () => {
-  it('when user presses banner, should log analytics', async () => {
+  it('should log analytics when user presses banner', async () => {
     setFeatureFlags([
       {
         featureFlag: RemoteStoreFeatureFlags.DISABLE_ACTIVATION,
