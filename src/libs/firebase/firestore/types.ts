@@ -58,7 +58,6 @@ export enum RemoteStoreFeatureFlags {
   TARGET_XP_CINE_FROM_OFFER = 'targetXpCineFromOffer',
   WIP_APP_V2_BUSINESS_BLOCK = 'wipAppV2BusinessBlock',
   WIP_APP_V2_CATEGORY_BLOCK = 'wipAppV2CategoryBlock',
-  WIP_APP_V2_LOCATION_WIDGET = 'wipAppV2LocationWidget',
   WIP_APP_V2_MULTI_VIDEO_MODULE = 'wipAppV2MultiVideoModule',
   WIP_APP_V2_SEARCH_LANDING_HEADER = 'wipAppV2SearchLandingHeader',
   WIP_APP_V2_THEMATIC_HOME_HEADER = 'wipAppV2ThematicHomeHeader',
