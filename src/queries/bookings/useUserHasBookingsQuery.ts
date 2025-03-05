@@ -1,4 +1,4 @@
-import { useBookingsQuery } from 'queries/useBookingsQuery'
+import { useBookingsQuery } from 'queries/bookings/useBookingsQuery'
 
 export function useUserHasBookingsQuery() {
   const { data: bookings } = useBookingsQuery()

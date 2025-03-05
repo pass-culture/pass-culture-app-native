@@ -2,7 +2,7 @@ import React, { FunctionComponent, useMemo } from 'react'
 import styled from 'styled-components/native'
 
 import { BookingReponse, OfferResponseV2, ReactionTypeEnum, UserProfileResponse } from 'api/gen'
-import { useBookingsQuery } from 'queries/useBookingsQuery'
+import { useBookingsQuery } from 'queries/bookings/useBookingsQuery'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { ThumbUpFilled } from 'ui/svg/icons/ThumbUpFilled'
 import { TypoDS, getSpacing } from 'ui/theme'

@@ -3,7 +3,7 @@ import React, { FunctionComponent } from 'react'
 
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { useGoBack } from 'features/navigation/useGoBack'
-import { useOfferQuery } from 'queries/useOfferQuery/useOfferQuery'
+import { useOfferQuery } from 'queries/offer/useOfferQuery'
 import { getImagesUrlsWithCredit } from 'shared/getImagesUrlsWithCredit/getImagesUrlsWithCredit'
 import { ImageWithCredit } from 'shared/types'
 import { ImagesCarousel } from 'ui/components/ImagesCarousel/ImagesCarousel'

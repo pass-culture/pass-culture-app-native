@@ -6,7 +6,7 @@ import { OfferReactionSection } from 'features/offer/components/OfferReactionSec
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { useBookingsQuery } from 'queries/useBookingsQuery'
+import { useBookingsQuery } from 'queries/bookings/useBookingsQuery'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 

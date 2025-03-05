@@ -2,7 +2,7 @@ import { useRoute } from '@react-navigation/native'
 import React from 'react'
 import { Platform } from 'react-native'
 
-import { useOngoingOrEndedBookingQuery } from 'features/bookings/api'
+import { useOngoingOrEndedBookingQuery } from 'features/bookings/queries'
 import { BookingDetailsContent } from 'features/bookings/components/BookingDetailsContent'
 import { OldBookingDetailsContent } from 'features/bookings/components/OldBookingDetailsContent'
 import { getBookingProperties } from 'features/bookings/helpers'

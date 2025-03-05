@@ -4,7 +4,7 @@ import { useWindowDimensions } from 'react-native'
 import styled from 'styled-components/native'
 
 import { BookingReponse } from 'api/gen'
-import { useBookings } from 'features/bookings/api'
+import { useBookings } from 'features/bookings/queries'
 import { ArchiveBookingModal } from 'features/bookings/components/ArchiveBookingModal'
 import { BookingDetailsCancelButton } from 'features/bookings/components/BookingDetailsCancelButton'
 import { BookingDetailsHeader } from 'features/bookings/components/BookingDetailsHeader'

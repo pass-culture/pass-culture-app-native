@@ -3,7 +3,7 @@ import { UseQueryResult } from 'react-query'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
 import { BookingReponse, SubcategoriesResponseModelv2 } from 'api/gen'
-import * as ongoingOrEndedBookingAPI from 'features/bookings/api/useOngoingOrEndedBookingQuery'
+import * as ongoingOrEndedBookingAPI from 'features/bookings/queries/useOngoingOrEndedBookingQuery'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { Booking } from 'features/bookings/types'
 import { withAsyncErrorBoundary } from 'features/errors/hocs/withAsyncErrorBoundary'

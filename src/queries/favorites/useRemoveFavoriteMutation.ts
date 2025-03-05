@@ -2,7 +2,7 @@ import { useMutation, useQueryClient } from 'react-query'
 
 import { api } from 'api/api'
 import { PaginatedFavoritesResponse } from 'api/gen'
-import { FavoriteMutationContext } from 'features/favorites/api/types'
+import { FavoriteMutationContext } from 'features/favorites/queries/types'
 import { QueryKeys } from 'libs/queryKeys'
 
 interface RemoveFavorite {

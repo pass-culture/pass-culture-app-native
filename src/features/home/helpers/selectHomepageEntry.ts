@@ -11,8 +11,8 @@ import { UserOnboardingRole } from 'features/tutorial/enums'
 import { useUserRoleFromOnboarding } from 'features/tutorial/helpers/useUserRoleFromOnboarding'
 import { CustomRemoteConfig } from 'libs/firebase/remoteConfig/remoteConfig.types'
 import { useRemoteConfigContext } from 'libs/firebase/remoteConfig/RemoteConfigProvider'
-import { useBookingsQuery } from 'queries/useBookingsQuery'
-import { useUserHasBookingsQuery } from 'queries/useUserHasBookingsQuery'
+import { useBookingsQuery } from 'queries/bookings/useBookingsQuery'
+import { useUserHasBookingsQuery } from 'queries/bookings/useUserHasBookingsQuery'
 import { getAvailableCredit } from 'shared/user/useAvailableCredit'
 
 const scoreHomepageByTags = (

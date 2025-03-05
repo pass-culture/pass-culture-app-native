@@ -6,7 +6,7 @@ import {
   getVenueList,
   filterVenueOfferHit,
   useSearchVenueOffersInfiniteQuery,
-} from 'queries/useSearchVenuesOfferInfiniteQuery/useSearchVenueOffersInfiniteQuery'
+} from 'queries/searchVenuesOffer/useSearchVenueOffersInfiniteQuery'
 import { toMutable } from 'shared/types/toMutable'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, waitFor } from 'tests/utils'

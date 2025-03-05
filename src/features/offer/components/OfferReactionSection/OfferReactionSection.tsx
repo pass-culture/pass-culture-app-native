@@ -7,7 +7,7 @@ import { useReactionMutation } from 'features/reactions/api/useReactionMutation'
 import { ReactionChoiceValidation } from 'features/reactions/components/ReactionChoiceValidation/ReactionChoiceValidation'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { useBookingsQuery } from 'queries/useBookingsQuery'
+import { useBookingsQuery } from 'queries/bookings/useBookingsQuery'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 
 type Props = {

@@ -8,7 +8,7 @@ import { getOfferArtists } from 'features/offer/helpers/getOfferArtists/getOffer
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useSubcategoriesMapping } from 'libs/subcategories'
-import { useOfferQuery } from 'queries/useOfferQuery/useOfferQuery'
+import { useOfferQuery } from 'queries/offer/useOfferQuery'
 
 export type Artist = {
   name: string

@@ -9,7 +9,7 @@ import { useAvailableReaction } from 'features/reactions/api/useAvailableReactio
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
-import * as bookingsAPI from 'queries/useBookingsQuery'
+import * as bookingsAPI from 'queries/bookings/useBookingsQuery'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, render, screen, userEvent } from 'tests/utils'

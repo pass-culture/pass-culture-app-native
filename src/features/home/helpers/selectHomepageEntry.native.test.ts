@@ -11,8 +11,8 @@ import * as OnboardingRoleAPI from 'features/tutorial/helpers/useUserRoleFromOnb
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import { CustomRemoteConfig } from 'libs/firebase/remoteConfig/remoteConfig.types'
 import { useRemoteConfigContext } from 'libs/firebase/remoteConfig/RemoteConfigProvider'
-import { useBookingsQuery } from 'queries/useBookingsQuery'
-import { useUserHasBookingsQuery } from 'queries/useUserHasBookingsQuery'
+import { useBookingsQuery } from 'queries/bookings/useBookingsQuery'
+import { useUserHasBookingsQuery } from 'queries/bookings/useUserHasBookingsQuery'
 import { Credit, getAvailableCredit } from 'shared/user/useAvailableCredit'
 import {
   mockAuthContextWithoutUser,

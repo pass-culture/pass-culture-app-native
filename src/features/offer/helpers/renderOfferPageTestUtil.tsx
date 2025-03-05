@@ -22,7 +22,7 @@ jest.mock('libs/itinerary/useItinerary', () => ({
 
 let mockedOffer: Partial<OfferResponseV2> | undefined | null = undefined
 let mockedIsLoading = false
-jest.mock('queries/useOfferQuery/useOfferQuery', () => ({
+jest.mock('queries/offer/useOfferQuery', () => ({
   useOfferQuery: () => ({
     data: mockedOffer,
     isLoading: mockedIsLoading,

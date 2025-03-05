@@ -16,7 +16,7 @@ import { getOfferPrices } from 'features/offer/helpers/getOfferPrice/getOfferPri
 import { useOfferBatchTracking } from 'features/offer/helpers/useOfferBatchTracking/useOfferBatchTracking'
 import { getDisplayedPrice } from 'libs/parsers/getDisplayedPrice'
 import { useSubcategoriesMapping } from 'libs/subcategories'
-import { useOfferQuery } from 'queries/useOfferQuery/useOfferQuery'
+import { useOfferQuery } from 'queries/offer/useOfferQuery'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
 

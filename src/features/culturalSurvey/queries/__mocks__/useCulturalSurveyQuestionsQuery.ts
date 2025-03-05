@@ -1,8 +1,8 @@
 import { UseQueryResult } from 'react-query'
 
 import { CulturalSurveyQuestionsResponse } from 'api/gen'
-import { useCulturalSurveyQuestionsQuery as actualUseCulturalSurveyQuestions } from 'features/culturalSurvey/api/useCulturalSurveyQuestionsQuery'
 import { culturalSurveyQuestionsFixture } from 'features/culturalSurvey/fixtures/culturalSurveyQuestions.fixture'
+import { useCulturalSurveyQuestionsQuery as actualUseCulturalSurveyQuestions } from 'features/culturalSurvey/queries/useCulturalSurveyQuestionsQuery'
 
 export const useCulturalSurveyQuestionsQuery: typeof actualUseCulturalSurveyQuestions = jest.fn(
   () =>

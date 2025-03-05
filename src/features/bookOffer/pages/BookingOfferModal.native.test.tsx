@@ -15,7 +15,7 @@ import * as logOfferConversionAPI from 'libs/algolia/analytics/logOfferConversio
 import { analytics } from 'libs/analytics/provider'
 import { CampaignEvents, campaignTracker } from 'libs/campaign'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
-import * as useBookOfferMutation from 'queries/useBookOfferQuery/useBookOfferMutation'
+import * as useBookOfferMutation from 'queries/bookOffer/useBookOfferMutation'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
@@ -42,7 +42,7 @@ const mockUseOfferQuery = jest.fn()
 mockUseOfferQuery.mockReturnValue({
   data: mockOffer,
 })
-jest.mock('queries/useOfferQuery/useOfferQuery', () => ({
+jest.mock('queries/offer/useOfferQuery', () => ({
   useOfferQuery: () => mockUseOfferQuery(),
 }))
 
@@ -103,7 +103,7 @@ const mockData = {
 }
 const mockOfferVenues: VenueListItem[] = []
 const mockNbOfferVenues = 0
-jest.mock('queries/useSearchVenuesOfferInfiniteQuery/useSearchVenueOffersInfiniteQuery', () => ({
+jest.mock('queries/searchVenuesOffer/useSearchVenueOffersInfiniteQuery', () => ({
   useSearchVenueOffers: () => ({
     hasNextPage: mockHasNextPage,
     fetchNextPage: mockFetchNextPage,

@@ -30,7 +30,7 @@ mockUseOfferQuery.mockReturnValue({
     extraData: { performer: 'Céline Dion, Sia' },
   },
 })
-jest.mock('queries/useOfferQuery/useOfferQuery', () => ({
+jest.mock('queries/offer/useOfferQuery', () => ({
   useOffer: () => mockUseOfferQuery(),
 }))
 

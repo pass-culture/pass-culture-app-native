@@ -1,7 +1,7 @@
 import { UseQueryResult } from 'react-query'
 
 import { BookingReponse, BookingsResponse } from 'api/gen'
-import { useBookingsQuery } from 'queries/useBookingsQuery'
+import { useBookingsQuery } from 'queries/bookings/useBookingsQuery'
 
 export function useEndedBookingFromOfferIdQuery(
   offerId: number

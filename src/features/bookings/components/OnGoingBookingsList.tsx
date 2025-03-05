@@ -14,7 +14,7 @@ import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { plural } from 'libs/plural'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
-import { useBookingsQuery } from 'queries/useBookingsQuery'
+import { useBookingsQuery } from 'queries/bookings/useBookingsQuery'
 import {
   BookingHitPlaceholder,
   NumberOfBookingsPlaceholder,

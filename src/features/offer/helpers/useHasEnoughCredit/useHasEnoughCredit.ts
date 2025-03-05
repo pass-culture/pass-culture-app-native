@@ -1,6 +1,6 @@
 import { FavoriteOfferResponse, OfferResponseV2, UserProfileResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { useOfferQuery } from 'queries/useOfferQuery/useOfferQuery'
+import { useOfferQuery } from 'queries/offer/useOfferQuery'
 
 import { getOfferPrice } from '../getOfferPrice/getOfferPrice'
 

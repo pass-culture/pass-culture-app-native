@@ -6,7 +6,7 @@ import { useChronicles } from 'features/chronicle/api/useChronicles/useChronicle
 import { ChroniclesBase } from 'features/chronicle/pages/Chronicles/ChroniclesBase'
 import { ChronicleCardData } from 'features/chronicle/type'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
-import { useOfferQuery } from 'queries/useOfferQuery/useOfferQuery'
+import { useOfferQuery } from 'queries/offer/useOfferQuery'
 
 export const Chronicles: FunctionComponent = () => {
   const route = useRoute<UseRouteType<'Chronicles'>>()

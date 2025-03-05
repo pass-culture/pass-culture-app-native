@@ -15,7 +15,7 @@ jest.setTimeout(20_000) // to avoid exceeded timeout
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 const mockedOffer: Partial<OfferResponseV2> | undefined = offerResponseSnap
-jest.mock('queries/useOfferQuery/useOfferQuery', () => ({
+jest.mock('queries/offer/useOfferQuery', () => ({
   useOfferQuery: () => ({
     data: mockedOffer,
     isLoading: false,
@@ -46,7 +46,7 @@ const mockData = {
 }
 const mockVenueList: VenueListItem[] = []
 const mockNbVenueItems = 0
-jest.mock('queries/useSearchVenuesOfferInfiniteQuery/useSearchVenueOffersInfiniteQuery', () => ({
+jest.mock('queries/searchVenuesOffer/useSearchVenueOffersInfiniteQuery', () => ({
   useSearchVenueOffers: () => ({
     hasNextPage: mockHasNextPage,
     fetchNextPage: mockFetchNextPage,

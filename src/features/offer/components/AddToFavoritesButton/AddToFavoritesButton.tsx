@@ -1,8 +1,8 @@
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
-import { useFavorite } from 'features/favorites/api'
-import { useAddFavoriteMutation } from 'features/favorites/api/useAddFavoriteMutation'
+import { useFavorite } from 'features/favorites/queries'
+import { useAddFavoriteMutation } from 'queries/favorites/useAddFavoriteMutation'
 import { ButtonTertiaryPrimary } from 'ui/components/buttons/ButtonTertiaryPrimary'
 import { FavoriteFilled } from 'ui/svg/icons/FavoriteFilled'
 import { Spacer } from 'ui/theme'

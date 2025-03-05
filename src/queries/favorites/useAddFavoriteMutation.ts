@@ -9,7 +9,7 @@ import {
   PaginatedFavoritesResponse,
   SubcategoryIdEnum,
 } from 'api/gen'
-import { FavoriteMutationContext } from 'features/favorites/api/types'
+import { FavoriteMutationContext } from 'features/favorites/queries/types'
 import { QueryKeys } from 'libs/queryKeys'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 

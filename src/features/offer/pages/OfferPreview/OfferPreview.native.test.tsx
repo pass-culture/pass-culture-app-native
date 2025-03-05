@@ -19,7 +19,7 @@ const mockOffer = jest.fn((): { data: OfferResponseV2 } => ({
   },
 }))
 
-jest.mock('queries/useOfferQuery/useOfferQuery', () => ({
+jest.mock('queries/offer/useOfferQuery', () => ({
   useOfferQuery: () => mockOffer(),
 }))
 
