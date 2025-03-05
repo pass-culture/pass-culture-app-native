@@ -52,7 +52,7 @@ const mockBookingsWithDislike = {
   ],
 }
 
-jest.mock('features/bookings/api')
+jest.mock('queries/bookings/useBookingsQuery')
 const mockUseBookings = useBookingsQuery as jest.Mock
 
 jest.mock('features/auth/context/AuthContext')

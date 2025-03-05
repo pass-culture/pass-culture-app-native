@@ -28,7 +28,8 @@
 - useRotatingText => challenger l'animation du loader (on imagine que c'est pour les billeteries externes)
 - reducer dans features/bookOffer, mimique Redux
 - useCookiesChoiceByCategory => ça commence par "use" mais ça n'appelle aucun hook
-- useUserHasBookingsQuery
+- useUserHasBookingsQuery => select
+- src/features/favorites/hooks/useFavorite.ts => select + à déplacer dans les select communs
 
 ### Devrait utiliser react-query
 

@@ -13,7 +13,7 @@ import { useFavoritesQuery } from './useFavoritesQuery'
 jest.mock('features/auth/context/AuthContext')
 jest.mock('libs/jwt/jwt')
 
-describe('useFavorites hook', () => {
+describe('useFavoritesQuery hook', () => {
   it('should retrieve favorite data when logged in', async () => {
     simulateBackend()
     const { result } = renderHook(useFavoritesQuery, {

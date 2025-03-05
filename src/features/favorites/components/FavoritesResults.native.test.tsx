@@ -23,9 +23,9 @@ jest.mock('features/favorites/context/FavoritesWrapper', () => ({
   }),
 }))
 
-jest.mock('features/favorites/queries/useFavorites')
+jest.mock('features/favorites/queries/useFavoritesQuery')
 const mockUseFavorites = useFavoritesQuery as jest.MockedFunction<typeof useFavoritesQuery>
-jest.mock('queries/favorites/useRemoveFavorite')
+jest.mock('queries/favorites/useRemoveFavoriteMutation')
 const mockUseRemoveFavorites = useRemoveFavoriteMutation as jest.MockedFunction<
   typeof useRemoveFavoriteMutation
 >

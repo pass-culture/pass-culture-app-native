@@ -122,7 +122,7 @@ const mockUseRemoteConfigContext = useRemoteConfigContext as jest.MockedFunction
 
 jest.mock('features/auth/context/AuthContext')
 
-jest.mock('queries/bookings/useUserHasBookings')
+jest.mock('queries/bookings/useUserHasBookingsQuery')
 const mockUseUserHasBookings = useUserHasBookingsQuery as jest.MockedFunction<
   typeof useUserHasBookingsQuery
 >

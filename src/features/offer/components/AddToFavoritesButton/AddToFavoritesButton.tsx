@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
-import { useFavorite } from 'features/favorites/queries'
+import { useFavorite } from 'features/favorites/hooks/useFavorite'
 import { useAddFavoriteMutation } from 'queries/favorites/useAddFavoriteMutation'
 import { ButtonTertiaryPrimary } from 'ui/components/buttons/ButtonTertiaryPrimary'
 import { FavoriteFilled } from 'ui/svg/icons/FavoriteFilled'

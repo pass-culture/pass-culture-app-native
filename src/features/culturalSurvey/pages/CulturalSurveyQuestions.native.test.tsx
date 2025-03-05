@@ -55,8 +55,8 @@ jest.mock('features/culturalSurvey/helpers/useGetNextQuestion', () => ({
   useGetNextQuestion: jest.fn(() => mockUseGetNextQuestionReturnValue),
 }))
 
-jest.mock('features/culturalSurvey/api/useCulturalSurveyQuestions')
-jest.mock('features/culturalSurvey/api/useCulturalSurveyAnswers')
+jest.mock('features/culturalSurvey/queries/useCulturalSurveyQuestionsQuery')
+jest.mock('features/culturalSurvey/queries/useCulturalSurveyAnswersMutation')
 
 jest
   .spyOn(CulturalSurveyContextProviderModule, 'useCulturalSurveyContext')
