@@ -5,7 +5,7 @@ import { withAsyncErrorBoundary } from 'features/errors/hocs/withAsyncErrorBound
 import { Favorites } from 'features/favorites/pages/Favorites'
 import { Home as HomeComponent } from 'features/home/pages/Home'
 import { profileNavigatorPathConfig } from 'features/navigation/ProfileStackNavigator/profileNavigatorPathConfig'
-import { SuspenseProfileStackNavigator } from 'features/navigation/ProfileStackNavigator/SuspenseProfileStackNavigator'
+import { ProfileStackNavigator } from 'features/navigation/ProfileStackNavigator/ProfileStackNavigator'
 import { getScreensAndConfig } from 'features/navigation/RootNavigator/linking/getScreensConfig'
 import { ScreenNames } from 'features/navigation/RootNavigator/types'
 import { screenParamsParser } from 'features/navigation/screenParamsUtils'
@@ -47,7 +47,7 @@ const routes: TabRoute[] = [
   },
   {
     name: 'ProfileStackNavigator',
-    component: SuspenseProfileStackNavigator,
+    component: ProfileStackNavigator,
     pathConfig: profileNavigatorPathConfig,
   },
 ]
