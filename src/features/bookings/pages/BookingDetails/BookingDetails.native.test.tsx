@@ -9,9 +9,9 @@ import {
   SubcategoryIdEnum,
   WithdrawalTypeEnum,
 } from 'api/gen'
-import * as ongoingOrEndedBookingAPI from 'features/bookings/queries/useOngoingOrEndedBookingQuery'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import * as bookingPropertiesAPI from 'features/bookings/helpers/getBookingProperties'
+import * as ongoingOrEndedBookingAPI from 'features/bookings/queries/useOngoingOrEndedBookingQuery'
 import { Booking } from 'features/bookings/types'
 import { withAsyncErrorBoundary } from 'features/errors/hocs/withAsyncErrorBoundary'
 import { openUrl } from 'features/navigation/helpers/openUrl'
@@ -99,7 +99,7 @@ describe('BookingDetails', () => {
     it('should call useOngoingOrEndedBooking with the right parameters', async () => {
       const useOngoingOrEndedBooking = jest.spyOn(
         ongoingOrEndedBookingAPI,
-        'useOngoingOrEndedBooking'
+        'useOngoingOrEndedBookingQuery'
       )
 
       renderBookingDetails(ongoingBookings)

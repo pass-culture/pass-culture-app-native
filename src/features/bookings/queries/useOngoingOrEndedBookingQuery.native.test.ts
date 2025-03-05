@@ -1,6 +1,6 @@
 import { BookingsResponse } from 'api/gen'
-import { useOngoingOrEndedBookingQuery } from 'features/bookings/queries'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
+import { useOngoingOrEndedBookingQuery } from 'features/bookings/queries'
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
