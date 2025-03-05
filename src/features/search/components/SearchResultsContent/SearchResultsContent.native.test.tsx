@@ -1,4 +1,5 @@
 import { useRoute } from '@react-navigation/native'
+import { useVenuesInRegionQuery } from 'queries/useVenuesInRegionQuery/useVenuesInRegionQuery'
 import React from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -13,7 +14,6 @@ import { initialSearchState } from 'features/search/context/reducer'
 import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
 import { SearchState, UserData } from 'features/search/types'
 import * as useVenueMapStore from 'features/venueMap/store/venueMapStore'
-import { useVenuesInRegionQuery } from 'features/venueMap/useVenuesInRegionQuery'
 import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 import { venuesFixture } from 'libs/algolia/fetchAlgolia/fetchVenues/fixtures/venuesFixture'
 import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
