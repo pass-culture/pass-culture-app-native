@@ -3,7 +3,7 @@ import React from 'react'
 
 import { LocationWidget } from 'features/location/components/LocationWidget'
 import { ScreenOrigin } from 'features/location/enums'
-import { act, fireEvent, render, screen } from 'tests/utils'
+import { act, render, screen, userEvent } from 'tests/utils'
 
 jest.unmock('@react-navigation/native')
 
@@ -17,13 +17,17 @@ jest.mock('ui/components/modals/useModal', () => ({
   }),
 }))
 
+const user = userEvent.setup()
+
+jest.useFakeTimers()
+
 describe('LocationWidget', () => {
   it('should show modal when pressing widget', async () => {
     renderLocationWidget()
 
     const button = screen.getByTestId('Ouvrir la modale de localisation depuis le widget')
 
-    fireEvent.press(button)
+    await user.press(button)
 
     expect(mockShowModal).toHaveBeenCalledTimes(1)
   })
@@ -63,7 +67,7 @@ describe('LocationWidget', () => {
 
     const button = screen.getByLabelText('Fermer le tooltip')
 
-    fireEvent.press(button)
+    await user.press(button)
 
     expect(
       screen.queryByText(
