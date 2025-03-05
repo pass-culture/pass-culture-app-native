@@ -1,6 +1,7 @@
 import { SearchResponse } from '@algolia/client-search'
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import mockdate from 'mockdate'
+import { useVenueOffersQuery } from 'queries/useVenueOffersQuery/useVenueOffersQuery'
 import React from 'react'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
@@ -9,7 +10,6 @@ import { useGTLPlaylists } from 'features/gtlPlaylist/hooks/useGTLPlaylists'
 import { Referrals } from 'features/navigation/RootNavigator/types'
 import { CineContentCTAID } from 'features/offer/components/OfferCine/CineContentCTA'
 import * as useOfferCTAContextModule from 'features/offer/components/OfferContent/OfferCTAProvider'
-import { useVenueOffers } from 'features/venue/api/useVenueOffers'
 import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
 import {
   VenueMoviesOffersResponseSnap,
@@ -40,7 +40,7 @@ jest.unmock('react-native/Libraries/Animated/createAnimatedComponent')
 
 jest.mock('libs/itinerary/useItinerary')
 jest.mock('features/venue/api/useVenueOffers')
-const mockUseVenueOffers = useVenueOffers as jest.Mock
+const mockUseVenueOffers = useVenueOffersQuery as jest.Mock
 
 jest.mock('features/search/context/SearchWrapper')
 jest.mock('libs/location')

@@ -1,10 +1,10 @@
 import { useRoute } from '@react-navigation/native'
+import * as useVenueOffers from 'queries/useVenueOffersQuery/useVenueOffersQuery'
 import React from 'react'
 import { UseQueryResult } from 'react-query'
 
 import { VenueTypeCodeKey } from 'api/gen'
 import * as useGoBack from 'features/navigation/useGoBack'
-import * as useVenueOffers from 'features/venue/api/useVenueOffers'
 import * as useVenueSearchParameters from 'features/venue/helpers/useVenueSearchParameters'
 import { VenueOffers } from 'features/venue/types'
 import { FILTERS_VENUE_TYPE_MAPPING } from 'features/venueMap/constant'
