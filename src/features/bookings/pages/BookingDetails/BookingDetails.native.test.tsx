@@ -751,6 +751,63 @@ describe('BookingDetails', () => {
         screen.getByText('Tu n’as pas le droit de céder ou de revendre ton billet.')
       ).toBeOnTheScreen()
     })
+
+    it("should render organizer's indications", async () => {
+      const withdrawalDetails = 'Une explication de l’organisateur'
+
+      renderBookingDetails({
+        ...ongoingBookings,
+        stock: {
+          ...ongoingBookings.stock,
+          offer: {
+            ...ongoingBookings.stock.offer,
+            withdrawalDetails,
+          },
+        },
+      })
+
+      await screen.findByText(ongoingBookings.stock.offer.name)
+
+      expect(screen.getByText(withdrawalDetails)).toBeOnTheScreen()
+    })
+
+    it("should render organizer's email", async () => {
+      const organizerEmail = 'toto@email.com'
+      renderBookingDetails({
+        ...ongoingBookings,
+        stock: {
+          ...ongoingBookings.stock,
+          offer: {
+            ...ongoingBookings.stock.offer,
+            bookingContact: organizerEmail,
+          },
+        },
+      })
+
+      await screen.findByText(ongoingBookings.stock.offer.name)
+
+      expect(screen.getByText(organizerEmail)).toBeOnTheScreen()
+    })
+
+    it('should log analytics on email press', async () => {
+      const organizerEmail = 'toto@email.com'
+      renderBookingDetails({
+        ...ongoingBookings,
+        stock: {
+          ...ongoingBookings.stock,
+          offer: {
+            ...ongoingBookings.stock.offer,
+            bookingContact: organizerEmail,
+          },
+        },
+      })
+
+      await user.press(screen.getByText(organizerEmail))
+
+      expect(analytics.logClickEmailOrganizer).toHaveBeenCalledTimes(1)
+
+      expect(mockedOpenUrl).toHaveBeenCalledWith(`mailto:${organizerEmail}`, undefined, true)
+    })
   })
 })
 
