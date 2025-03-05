@@ -222,6 +222,10 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 })
 
 describe('<SearchLanding />', () => {
+  beforeAll(() => {
+    setFeatureFlags()
+  })
+
   beforeEach(() => {
     mockUseNetInfoContext.mockReturnValue({ isConnected: true })
   })
@@ -234,11 +238,6 @@ describe('<SearchLanding />', () => {
       priceRange: [0, 20],
     }
     mockIsFocusOnSuggestions = false
-  })
-
-  describe('When wipAppV2SearchLandingHeader feature flag deactivated', () => {
-    beforeAll(() => {
-      setFeatureFlags()
     })
 
     it('should render SearchLanding', async () => {
