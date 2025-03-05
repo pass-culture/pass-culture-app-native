@@ -3,6 +3,7 @@ appId: ${MAESTRO_APP_ID}
 - runFlow:
     when:
       visible: "Playlist hybride 3"
+      platform: Android
     commands:
     - swipe:
         from:
