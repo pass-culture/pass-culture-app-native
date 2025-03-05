@@ -11,7 +11,8 @@ import { getGeolocatedVenues } from 'features/venueMap/helpers/getGeolocatedVenu
 import { getVenuesNumberByType } from 'features/venueMap/helpers/getVenuesNumberByType/getVenuesNumberByType'
 import { getVenueTypeLabel } from 'features/venueMap/helpers/getVenueTypeLabel/getVenueTypeLabel'
 import { venueTypesMapping } from 'features/venueMap/helpers/venueTypesMapping/venueTypesMapping'
-import { setVenueTypeCode, useVenueMapStore } from 'features/venueMap/store/venueMapStore'
+import { useVenueMapStore } from 'features/venueMap/store/venueMapStore'
+import { useVenuesFilter, venuesFilterActions } from 'features/venueMap/store/venuesFilterStore'
 import { analytics } from 'libs/analytics/provider'
 import { MAP_VENUE_TYPE_TO_LABEL, VenueTypeCode } from 'libs/parsers/venueType'
 import { Form } from 'ui/components/Form'
@@ -37,10 +38,12 @@ const MODAL_TITLE = 'Type de lieu'
 
 export const VenueTypeModal: FunctionComponent<Props> = ({ hideModal, isVisible = false }) => {
   const { modal } = useTheme()
+  const venueFilters = useVenuesFilter()
 
   const venues = useVenueMapStore((state) => state.venues)
   const selectedVenue = useVenueMapStore((state) => state.selectedVenue)
-  const defaultVenueTypeCode = useVenueMapStore((state) => state.venueTypeCode)
+  const defaultVenueTypeCode = venueFilters.length ? venueFilters[0] : null
+  const { setVenuesFilters } = venuesFilterActions
 
   const {
     formState: { isSubmitting },
@@ -50,7 +53,7 @@ export const VenueTypeModal: FunctionComponent<Props> = ({ hideModal, isVisible 
     watch,
   } = useForm<VenueTypeModalFormProps>({
     defaultValues: {
-      venueTypeCode: defaultVenueTypeCode,
+      venueTypeCode: defaultVenueTypeCode as VenueTypeCode,
     },
   })
   const { venueTypeCode } = watch()
@@ -73,19 +76,19 @@ export const VenueTypeModal: FunctionComponent<Props> = ({ hideModal, isVisible 
 
   const handleCloseModal = useCallback(() => {
     reset({
-      venueTypeCode: defaultVenueTypeCode,
+      venueTypeCode: defaultVenueTypeCode as VenueTypeCode,
     })
     hideModal()
   }, [hideModal, reset, defaultVenueTypeCode])
 
   const handleSearchPress = useCallback(
     (form: VenueTypeModalFormProps) => {
-      setVenueTypeCode(form.venueTypeCode)
+      setVenuesFilters(form.venueTypeCode ? [form.venueTypeCode] : [])
       if (form.venueTypeCode)
         analytics.logApplyVenueMapFilter({ venueType: MAP_VENUE_TYPE_TO_LABEL[form.venueTypeCode] })
       hideModal()
     },
-    [hideModal]
+    [hideModal, setVenuesFilters]
   )
 
   return (

@@ -16,6 +16,7 @@ import { VenueMapViewContainer } from 'features/venueMap/components/VenueMapView
 import { useCenterOnLocation } from 'features/venueMap/hook/useCenterOnLocation'
 import * as useVenueMapFilters from 'features/venueMap/hook/useVenueMapFilters'
 import * as useVenueMapStore from 'features/venueMap/store/venueMapStore'
+import { venuesFilterActions } from 'features/venueMap/store/venuesFilterStore'
 import { useVenuesInRegionQuery } from 'features/venueMap/useVenuesInRegionQuery'
 import mockVenueSearchParams from 'fixtures/venueSearchParams'
 import { venuesFixture } from 'libs/algolia/fetchAlgolia/fetchVenues/fixtures/venuesFixture'
@@ -107,8 +108,7 @@ const pressVenueMarker = (venue: GeolocatedVenue, forcedVenueId?: string) => {
 }
 
 const initStore = () => {
-  const { setVenues, setVenueTypeCode, setOffersPlaylistType, setInitialRegion, setRegion } =
-    useVenueMapStore
+  const { setVenues, setOffersPlaylistType, setInitialRegion, setRegion } = useVenueMapStore
 
   const mockCurrentRegion = {
     latitude: 48.871728,
@@ -118,7 +118,7 @@ const initStore = () => {
   }
 
   setVenues(venuesFixture)
-  setVenueTypeCode(VenueTypeCodeKey.VISUAL_ARTS)
+  venuesFilterActions.setVenuesFilters([VenueTypeCodeKey.VISUAL_ARTS])
   setOffersPlaylistType(PlaylistType.SEARCH_RESULTS)
   setInitialRegion(mockCurrentRegion)
   setRegion(mockCurrentRegion)

@@ -33,6 +33,7 @@ import {
   setVenues,
   useVenueMapStore,
 } from 'features/venueMap/store/venueMapStore'
+import { useVenuesFilter } from 'features/venueMap/store/venuesFilterStore'
 import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { analytics } from 'libs/analytics/provider'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -49,7 +50,7 @@ export const VenueMapViewContainer: FunctionComponent = () => {
   const venues = useVenueMapStore((state) => state.venues)
   const currentRegion = useVenueMapStore((state) => state.region)
   const selectedVenue = useVenueMapStore((state) => state.selectedVenue)
-  const venueTypeCode = useVenueMapStore((state) => state.venueTypeCode)
+  const venueFilters = useVenuesFilter()
 
   const { navigate } = useNavigation<UseNavigationType>()
   const { bottom } = useSafeAreaInsets()
@@ -235,9 +236,11 @@ export const VenueMapViewContainer: FunctionComponent = () => {
       if (activeFilters.length === 0) return venues
       return venues?.filter((venue) => venue.venue_type && activeFilters.includes(venue.venue_type))
     } else {
-      return venueTypeCode ? venues?.filter((venue) => venue.venue_type === venueTypeCode) : venues
+      return venueFilters.length
+        ? venues?.filter((venue) => venue.venue_type === venueFilters[0])
+        : venues
     }
-  }, [venues, activeFilters, filterCategoriesActive, venueTypeCode])
+  }, [filterCategoriesActive, activeFilters, venues, venueFilters])
 
   return initialRegion ? (
     <Container>
