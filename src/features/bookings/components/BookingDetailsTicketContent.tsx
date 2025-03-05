@@ -54,7 +54,6 @@ export function BookingDetailsTicketContent({
   const activationCode = booking.activationCode ? (
     <TicketCode withdrawalType={withdrawalType ?? undefined} code={booking.activationCode.code} />
   ) : null
-
   const accessExternalOfferButton = completedUrl ? (
     <ExternalTouchableLink
       as={ButtonWithLinearGradient}
@@ -79,7 +78,6 @@ export function BookingDetailsTicketContent({
       qrCodeData={booking.qrCodeData ?? undefined}
       externalBookings={externalBookings}
       venue={venue}
-      isEvent={isEvent}
     />
   )
 

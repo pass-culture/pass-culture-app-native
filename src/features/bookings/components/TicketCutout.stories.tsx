@@ -54,7 +54,6 @@ const variantConfig: Variants<typeof TicketCutout> = [
             qrCodeData={undefined}
             externalBookings={{ barcode: 'PASSCULTURE:v3;TOKEN:352UW4', seat: 'A12' }}
             venue={bookingsSnap.ongoing_bookings[0].stock.offer.venue}
-            isEvent
           />
           <StyledBody>Présente ce billet pour accéder à l’évènement</StyledBody>
         </ViewGap>
@@ -84,7 +83,6 @@ const variantConfig: Variants<typeof TicketCutout> = [
             subcategoryId={SubcategoryIdEnum.CONCERT}
             qrCodeData={undefined}
             venue={bookingsSnap.ongoing_bookings[0].stock.offer.venue}
-            isEvent
           />
         </ViewGap>
       ),

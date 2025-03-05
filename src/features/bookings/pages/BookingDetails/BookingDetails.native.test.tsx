@@ -158,20 +158,7 @@ describe('BookingDetails', () => {
         expect(screen.queryByText('Accéder à l’offre')).not.toBeOnTheScreen()
       })
 
-      it('should display booking qr code when offer is not digital and is event and external booking', async () => {
-        const externalBooking: BookingsResponse['ongoing_bookings'][number] = structuredClone({
-          ...ongoingBookings,
-          externalBookings: [{ barcode: 'PASSCULTURE:v3;TOKEN:352UW4', seat: 'A12' }],
-        })
-        externalBooking.stock.offer.isDigital = false
-        renderBookingDetails(externalBooking)
-
-        await screen.findByText('Ma réservation')
-
-        expect(await screen.findByTestId('qr-code')).toBeOnTheScreen()
-      })
-
-      it('should not display booking qr code when offer is not digital and is event and not an external booking', async () => {
+      it('should display booking qr code if offer is physical', async () => {
         const booking: BookingsResponse['ongoing_bookings'][number] =
           structuredClone(ongoingBookings)
         booking.stock.offer.isDigital = false
@@ -179,7 +166,7 @@ describe('BookingDetails', () => {
 
         await screen.findByText('Ma réservation')
 
-        expect(screen.queryByTestId('qr-code')).not.toBeOnTheScreen()
+        expect(await screen.findByTestId('qr-code')).toBeOnTheScreen()
       })
 
       it('should display EAN code if offer is a book (digital or physical)', async () => {
