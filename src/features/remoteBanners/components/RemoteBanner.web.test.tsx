@@ -1,10 +1,10 @@
 import React from 'react'
 
-import { RemoteBanner } from 'features/remoteBanner/components/RemoteBanner'
+import { RemoteGenericBanner } from 'features/remoteBanners/banners/RemoteGenericBanner'
 import {
   RemoteBannerRedirectionType,
   RemoteBannerType,
-} from 'features/remoteBanner/components/remoteBannerSchema'
+} from 'features/remoteBanners/utils/remoteBannerSchema'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -13,12 +13,15 @@ import { render, screen } from 'tests/utils/web'
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
-describe('RemoteBanner', () => {
+describe('RemoteGenericBanner', () => {
   it('should show web specific subtitle', async () => {
     setFeatureFlags([
-      { featureFlag: RemoteStoreFeatureFlags.SHOW_REMOTE_BANNER, options: bannerExternalUrl },
+      {
+        featureFlag: RemoteStoreFeatureFlags.SHOW_REMOTE_GENERIC_BANNER,
+        options: bannerExternalUrl,
+      },
     ])
-    render(<RemoteBanner from="Profile" />)
+    render(<RemoteGenericBanner from="Profile" />)
 
     const subtitle = screen.queryByText('subtitleWeb')
 
@@ -27,9 +30,12 @@ describe('RemoteBanner', () => {
 
   it('should not show mobile specific subtitle', async () => {
     setFeatureFlags([
-      { featureFlag: RemoteStoreFeatureFlags.SHOW_REMOTE_BANNER, options: bannerExternalUrl },
+      {
+        featureFlag: RemoteStoreFeatureFlags.SHOW_REMOTE_GENERIC_BANNER,
+        options: bannerExternalUrl,
+      },
     ])
-    render(<RemoteBanner from="Profile" />)
+    render(<RemoteGenericBanner from="Profile" />)
 
     const subtitle = screen.queryByText('subtitleMobile')
 
@@ -38,9 +44,12 @@ describe('RemoteBanner', () => {
 
   it('should have noRightIcon for store redirection on web', async () => {
     setFeatureFlags([
-      { featureFlag: RemoteStoreFeatureFlags.SHOW_REMOTE_BANNER, options: bannerStoreRedirection },
+      {
+        featureFlag: RemoteStoreFeatureFlags.SHOW_REMOTE_GENERIC_BANNER,
+        options: bannerStoreRedirection,
+      },
     ])
-    render(<RemoteBanner from="Profile" />)
+    render(<RemoteGenericBanner from="Profile" />)
 
     const rightIcon = screen.queryByTestId('ArrowNext')
 
@@ -49,9 +58,12 @@ describe('RemoteBanner', () => {
 
   it('should have correct accessibilityRole for store redirection', async () => {
     setFeatureFlags([
-      { featureFlag: RemoteStoreFeatureFlags.SHOW_REMOTE_BANNER, options: bannerStoreRedirection },
+      {
+        featureFlag: RemoteStoreFeatureFlags.SHOW_REMOTE_GENERIC_BANNER,
+        options: bannerStoreRedirection,
+      },
     ])
-    render(<RemoteBanner from="Profile" />)
+    render(<RemoteGenericBanner from="Profile" />)
 
     const buttonBanner = await screen.findByRole(AccessibilityRole.BUTTON)
 
@@ -60,9 +72,12 @@ describe('RemoteBanner', () => {
 
   it('should have correct accessibilityRole for external redirection', async () => {
     setFeatureFlags([
-      { featureFlag: RemoteStoreFeatureFlags.SHOW_REMOTE_BANNER, options: bannerExternalUrl },
+      {
+        featureFlag: RemoteStoreFeatureFlags.SHOW_REMOTE_GENERIC_BANNER,
+        options: bannerExternalUrl,
+      },
     ])
-    render(<RemoteBanner from="Profile" />)
+    render(<RemoteGenericBanner from="Profile" />)
 
     const linkBanner = await screen.findByRole(AccessibilityRole.LINK)
 

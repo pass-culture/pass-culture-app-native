@@ -7,7 +7,7 @@ import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { ArrowRight } from 'ui/svg/icons/ArrowRight'
+import { ArrowNext } from 'ui/svg/icons/ArrowNext'
 import { getSpacing, TypoDS } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 
@@ -46,7 +46,7 @@ export const SystemBanner: FunctionComponent<Props> = ({
           <TypoDS.Body numberOfLines={2}>{subtitle}</TypoDS.Body>
         </DescriptionContainer>
         <View>
-          <StyledArrowRightIcon />
+          <StyledArrowNextIcon />
         </View>
       </Container>
     </StyledTouchable>
@@ -83,7 +83,7 @@ const DescriptionContainer = styled(ViewGap)({
   textAlign: 'start',
 })
 
-const StyledArrowRightIcon = styled(ArrowRight).attrs(({ theme }) => ({
+const StyledArrowNextIcon = styled(ArrowNext).attrs(({ theme }) => ({
   size: theme.icons.sizes.small,
   color: theme.colors.secondaryLight200,
 }))``

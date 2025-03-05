@@ -382,7 +382,7 @@ Reviens lundi pour débloquer ton crédit !
 </View>
 `;
 
-exports[`<DisableActivation/> with RemoteBanner informations should render correctly 1`] = `
+exports[`<DisableActivation/> with RemoteActivationBanner informations should render correctly 1`] = `
 <View
   style={
     [
@@ -502,7 +502,7 @@ exports[`<DisableActivation/> with RemoteBanner informations should render corre
         ]
       }
     >
-      Title from RemoteBanner
+      Title from RemoteGenericBanner
     </Text>
     <View
       numberOfSpaces={5}
@@ -639,7 +639,7 @@ exports[`<DisableActivation/> with RemoteBanner informations should render corre
         }
       />
       <View
-        accessibilityLabel="Plus d’infos dans notre FAQ"
+        accessibilityLabel="subtitleMobile"
         accessibilityState={
           {
             "busy": undefined,
@@ -685,7 +685,7 @@ exports[`<DisableActivation/> with RemoteBanner informations should render corre
             "width": "100%",
           }
         }
-        testID="Plus d’infos dans notre FAQ"
+        testID="subtitleMobile"
       >
         <View
           style={
@@ -743,7 +743,7 @@ exports[`<DisableActivation/> with RemoteBanner informations should render corre
               ]
             }
           >
-            Plus d’infos dans notre FAQ
+            subtitleMobile
           </Text>
         </View>
       </View>

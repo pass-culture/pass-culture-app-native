@@ -4,24 +4,23 @@ import styled from 'styled-components/native'
 
 import { Banner, BannerName } from 'api/gen'
 import { useActivationBanner } from 'features/home/api/useActivationBanner'
-import { ActivationBanner } from 'features/home/components/banners/ActivationBanner'
 import { useGetStepperInfo } from 'features/identityCheck/api/useGetStepperInfo'
 import { StepperOrigin, UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { IdentityCheckPendingBadge } from 'features/profile/components/Badges/IdentityCheckPendingBadge'
 import { SubscriptionMessageBadge } from 'features/profile/components/Badges/SubscriptionMessageBadge'
 import { YoungerBadge } from 'features/profile/components/Badges/YoungerBadge'
 import { EligibilityMessage } from 'features/profile/components/Header/NonBeneficiaryHeader/EligibilityMessage'
-import { RemoteBanner } from 'features/remoteBanner/components/RemoteBanner'
+import { RemoteActivationBanner } from 'features/remoteBanners/banners/RemoteActivationBanner'
 import { formatToSlashedFrenchDate } from 'libs/dates'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { SystemBanner as GenericSystemBanner } from 'ui/components/ModuleBanner/SystemBanner'
 import { BicolorUnlock } from 'ui/svg/icons/BicolorUnlock'
 import { BirthdayCake } from 'ui/svg/icons/BirthdayCake'
 import { AccessibleIcon } from 'ui/svg/icons/types'
-import { Spacer } from 'ui/theme'
+import { getSpacing } from 'ui/theme'
 
 interface NonBeneficiaryHeaderProps {
-  featureFlags: { enableSystemBanner: boolean; disableActivation: boolean }
+  featureFlags: { disableActivation: boolean }
   eligibilityStartDatetime?: string
   eligibilityEndDatetime?: string
 }
@@ -49,20 +48,6 @@ type BannerProps = {
   formattedEligibilityEndDatetime?: string
 }
 
-function BannerWithBackground({ homeBanner, Icon, formattedEligibilityEndDatetime }: BannerProps) {
-  return (
-    <BannerContainer testID="eligibility-banner-container">
-      <EligibilityMessage formattedEligibilityEndDatetime={formattedEligibilityEndDatetime} />
-      <ActivationBanner
-        title={homeBanner.title}
-        subtitle={homeBanner.text}
-        icon={Icon}
-        from={StepperOrigin.PROFILE}
-      />
-    </BannerContainer>
-  )
-}
-
 const StyledBicolorUnlock = styled(BicolorUnlock).attrs(({ theme }) => ({
   color: theme.colors.secondaryLight200,
 }))``
@@ -79,16 +64,6 @@ const systemBannerIcons: {
 } = {
   [BannerName.activation_banner]: StyledBicolorUnlock,
   [BannerName.transition_17_18_banner]: StyledBirthdayCake,
-}
-
-const bannerIcons: {
-  [key in Exclude<
-    BannerName,
-    'geolocation_banner' | 'retry_identity_check_banner'
-  >]: FunctionComponent<AccessibleIcon>
-} = {
-  [BannerName.activation_banner]: BicolorUnlock,
-  [BannerName.transition_17_18_banner]: BirthdayCake,
 }
 
 function SystemBanner({ homeBanner, Icon, formattedEligibilityEndDatetime }: BannerProps) {
@@ -137,8 +112,7 @@ function NonBeneficiaryBanner({
 
   if (isUserTooYoungToBeEligible) {
     return (
-      <BannerContainer>
-        <Spacer.Column numberOfSpaces={2} />
+      <BannerContainer withMarginTop>
         <YoungerBadge eligibilityStartDatetime={formattedEligibilityStartDatetime} />
       </BannerContainer>
     )
@@ -161,23 +135,15 @@ function NonBeneficiaryBanner({
   ) {
     if (featureFlags.disableActivation) {
       return (
-        <BannerContainer>
-          <Spacer.Column numberOfSpaces={2} />
-          <RemoteBanner from="Profile" />
+        <BannerContainer withMarginTop>
+          <RemoteActivationBanner from="Profile" />
         </BannerContainer>
       )
     }
 
-    const ActivationBannerComponent = featureFlags.enableSystemBanner
-      ? SystemBanner
-      : BannerWithBackground
-    const ActivationBannerIcon = featureFlags.enableSystemBanner
-      ? systemBannerIcons[banner.name]
-      : bannerIcons[banner.name]
-
     return (
-      <ActivationBannerComponent
-        Icon={ActivationBannerIcon}
+      <SystemBanner
+        Icon={systemBannerIcons[banner.name]}
         homeBanner={banner as Banner} // Use this as because API typing return Banner | null but it's never null
         formattedEligibilityEndDatetime={formattedEligibilityEndDatetime}
       />
@@ -186,8 +152,7 @@ function NonBeneficiaryBanner({
 
   if (subscription?.hasIdentityCheckPending) {
     return (
-      <BannerContainer>
-        <Spacer.Column numberOfSpaces={2} />
+      <BannerContainer withMarginTop>
         <IdentityCheckPendingBadge />
       </BannerContainer>
     )
@@ -196,7 +161,10 @@ function NonBeneficiaryBanner({
   return null
 }
 
-const BannerContainer = styled.View(({ theme }) => ({
-  paddingHorizontal: theme.contentPage.marginHorizontal,
-  position: 'relative',
-}))
+const BannerContainer = styled.View<{ withMarginTop?: boolean }>(
+  ({ theme, withMarginTop = false }) => ({
+    marginTop: withMarginTop ? getSpacing(2) : undefined,
+    paddingHorizontal: theme.contentPage.marginHorizontal,
+    position: 'relative',
+  })
+)

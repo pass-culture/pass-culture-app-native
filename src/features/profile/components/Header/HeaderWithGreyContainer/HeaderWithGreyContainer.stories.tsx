@@ -28,19 +28,16 @@ const Template: ComponentStory<typeof HeaderWithGreyContainer> = (props) => (
 
 export const WithActivationBanner = Template.bind({})
 WithActivationBanner.args = {
-  showRemoteBanner: true,
   title: 'Jean Dubois',
 }
 
 export const WithTitle = Template.bind({})
 WithTitle.args = {
-  showRemoteBanner: false,
   title: 'Jean Dubois',
 }
 
 export const WithStringSubtitle = Template.bind({})
 WithStringSubtitle.args = {
-  showRemoteBanner: false,
   title: 'Jean Dubois',
   subtitle: 'Tu as entre 15 et 18 ans\u00a0?',
 }
@@ -52,7 +49,6 @@ const Row = styled.View({
 
 export const WithComponentAsSubtitle = Template.bind({})
 WithComponentAsSubtitle.args = {
-  showRemoteBanner: false,
   title: 'Jean Dubois',
   subtitle: (
     <Row>
@@ -66,14 +62,12 @@ WithComponentAsSubtitle.args = {
 
 export const WithInfoBanner = Template.bind({})
 WithInfoBanner.args = {
-  showRemoteBanner: false,
   title: 'Jean Dubois',
   bannerText: 'Some really important information',
 }
 
 export const WithLargeContent = Template.bind({})
 WithLargeContent.args = {
-  showRemoteBanner: false,
   title: 'Jean Dubois',
   subtitle: 'Tu as entre 15 et 18 ans\u00a0?',
   children: (
@@ -87,7 +81,6 @@ WithLargeContent.args = {
 
 export const WithSmallContent = Template.bind({})
 WithSmallContent.args = {
-  showRemoteBanner: false,
   title: 'Jean Dubois',
   subtitle: 'Tu as entre 15 et 18 ans\u00a0?',
   children: <TypoDS.Body>Lorem ipsum dolor, sit amet consectetur</TypoDS.Body>,

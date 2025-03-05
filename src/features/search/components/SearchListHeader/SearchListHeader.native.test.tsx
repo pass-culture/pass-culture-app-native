@@ -431,23 +431,6 @@ describe('<SearchListHeader />', () => {
 
       expect(screen.getByText('Les offres dans des lieux accessibles')).toBeOnTheScreen()
     })
-
-    it('should display generic banner for geolocation incitation', () => {
-      mockUseLocation.mockReturnValueOnce({
-        geolocPosition: null,
-        selectedLocationMode: LocationMode.EVERYWHERE,
-      })
-      render(
-        <SearchListHeader
-          nbHits={10}
-          userData={[]}
-          venuesUserData={[]}
-          venues={mockAlgoliaVenues}
-        />
-      )
-
-      expect(screen.getByTestId('genericBanner')).toBeOnTheScreen()
-    })
   })
 
   describe('When wipVenueMapInSearch feature flag activated', () => {
@@ -469,26 +452,15 @@ describe('<SearchListHeader />', () => {
     })
   })
 
-  describe('When wipAppV2SystemBlock feature flag activated', () => {
-    beforeEach(() => {
-      setFeatureFlags([RemoteStoreFeatureFlags.WIP_APP_V2_SYSTEM_BLOCK])
+  it('should display system banner for geolocation incitation', () => {
+    mockUseLocation.mockReturnValueOnce({
+      geolocPosition: null,
+      selectedLocationMode: LocationMode.EVERYWHERE,
     })
+    render(
+      <SearchListHeader nbHits={10} userData={[]} venuesUserData={[]} venues={mockAlgoliaVenues} />
+    )
 
-    it('should display system banner for geolocation incitation', () => {
-      mockUseLocation.mockReturnValueOnce({
-        geolocPosition: null,
-        selectedLocationMode: LocationMode.EVERYWHERE,
-      })
-      render(
-        <SearchListHeader
-          nbHits={10}
-          userData={[]}
-          venuesUserData={[]}
-          venues={mockAlgoliaVenues}
-        />
-      )
-
-      expect(screen.getByTestId('systemBanner')).toBeOnTheScreen()
-    })
+    expect(screen.getByTestId('systemBanner')).toBeOnTheScreen()
   })
 })

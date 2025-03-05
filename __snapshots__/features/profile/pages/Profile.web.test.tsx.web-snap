@@ -230,11 +230,8 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
               </div>
             </div>
             <div
-              class="css-view-175oi2r r-marginBottom-1peese0 r-marginHorizontal-1hy1u7s"
+              class="css-view-175oi2r r-marginBottom-1peese0 r-marginHorizontal-1hy1u7s r-marginTop-14gqq1x"
             >
-              <div
-                class="css-view-175oi2r r-height-hdaws3"
-              />
               <div
                 class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm"
                 dir="ltr"
@@ -1389,11 +1386,8 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
               </div>
             </div>
             <div
-              class="css-view-175oi2r r-marginBottom-1peese0 r-marginHorizontal-1hy1u7s"
+              class="css-view-175oi2r r-marginBottom-1peese0 r-marginHorizontal-1hy1u7s r-marginTop-14gqq1x"
             >
-              <div
-                class="css-view-175oi2r r-height-hdaws3"
-              />
               <div
                 class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm"
                 dir="ltr"

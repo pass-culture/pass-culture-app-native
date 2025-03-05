@@ -1,20 +1,19 @@
 import { useNavigation } from '@react-navigation/native'
-import React, { ComponentType, FunctionComponent, useCallback, useMemo } from 'react'
+import React, { ComponentType, useCallback, useMemo } from 'react'
 import styled from 'styled-components/native'
 
 import { BannerName } from 'api/gen'
 import { useActivationBanner } from 'features/home/api/useActivationBanner'
-import { ActivationBanner } from 'features/home/components/banners/ActivationBanner'
 import { SignupBanner } from 'features/home/components/banners/SignupBanner'
 import { StepperOrigin, UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { RemoteBanner } from 'features/remoteBanner/components/RemoteBanner'
+import { RemoteActivationBanner } from 'features/remoteBanners/banners/RemoteActivationBanner'
+import { RemoteGenericBanner } from 'features/remoteBanners/banners/RemoteGenericBanner'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { SystemBanner as GenericSystemBanner } from 'ui/components/ModuleBanner/SystemBanner'
 import { ArrowAgain } from 'ui/svg/icons/ArrowAgain'
 import { BicolorUnlock } from 'ui/svg/icons/BicolorUnlock'
 import { BirthdayCake } from 'ui/svg/icons/BirthdayCake'
-import { AccessibleIcon } from 'ui/svg/icons/types'
 import { getSpacing } from 'ui/theme'
 
 type HomeBannerProps = {
@@ -39,14 +38,6 @@ const systemBannerIcons: { [key in Exclude<BannerName, 'geolocation_banner'>]: C
   [BannerName.transition_17_18_banner]: StyledBirthdayCake,
 }
 
-const bannerIcons: {
-  [key in Exclude<BannerName, 'geolocation_banner'>]: FunctionComponent<AccessibleIcon>
-} = {
-  [BannerName.activation_banner]: BicolorUnlock,
-  [BannerName.retry_identity_check_banner]: ArrowAgain,
-  [BannerName.transition_17_18_banner]: BirthdayCake,
-}
-
 const bannersToRender = [
   BannerName.activation_banner,
   BannerName.retry_identity_check_banner,
@@ -54,10 +45,11 @@ const bannersToRender = [
 ]
 
 export const HomeBanner = ({ isLoggedIn }: HomeBannerProps) => {
-  const showRemoteBanner = useFeatureFlag(RemoteStoreFeatureFlags.SHOW_REMOTE_BANNER)
+  const showRemoteGenericBanner = useFeatureFlag(RemoteStoreFeatureFlags.SHOW_REMOTE_GENERIC_BANNER)
+  const disableActivation = useFeatureFlag(RemoteStoreFeatureFlags.DISABLE_ACTIVATION)
+
   const { banner } = useActivationBanner()
   const { navigate } = useNavigation<UseNavigationType>()
-  const enableSystemBanner = useFeatureFlag(RemoteStoreFeatureFlags.WIP_APP_V2_SYSTEM_BLOCK)
 
   const shouldRenderSystemBanner = banner.name ? bannersToRender.includes(banner.name) : false
 
@@ -70,36 +62,6 @@ export const HomeBanner = ({ isLoggedIn }: HomeBannerProps) => {
     },
     [navigate]
   )
-
-  const renderActivationBanner = useCallback(
-    (Icon: FunctionComponent<AccessibleIcon>, title: string, subtitle: string) => (
-      <BannerContainer>
-        <ActivationBanner title={title} subtitle={subtitle} icon={Icon} from={StepperOrigin.HOME} />
-      </BannerContainer>
-    ),
-    []
-  )
-
-  const Banner = useMemo(() => {
-    if (!isLoggedIn)
-      return (
-        <BannerContainer>
-          <SignupBanner hasGraphicRedesign={enableSystemBanner} />
-        </BannerContainer>
-      )
-
-    if (
-      shouldRenderSystemBanner &&
-      banner.name &&
-      banner.name !== BannerName.geolocation_banner &&
-      banner.title &&
-      banner.text
-    ) {
-      return renderActivationBanner(bannerIcons[banner.name], banner.title, banner.text)
-    }
-
-    return null
-  }, [isLoggedIn, banner, shouldRenderSystemBanner, renderActivationBanner, enableSystemBanner])
 
   const renderSystemBanner = useCallback(
     (Icon: ComponentType, title: string, subtitle: string) => (
@@ -118,12 +80,21 @@ export const HomeBanner = ({ isLoggedIn }: HomeBannerProps) => {
   )
 
   const SystemBanner = useMemo(() => {
-    if (!isLoggedIn)
+    if (disableActivation) {
       return (
         <BannerContainer>
-          <SignupBanner hasGraphicRedesign={enableSystemBanner} />
+          <RemoteActivationBanner from="Home" />
         </BannerContainer>
       )
+    }
+
+    if (!isLoggedIn) {
+      return (
+        <BannerContainer>
+          <SignupBanner />
+        </BannerContainer>
+      )
+    }
 
     if (
       shouldRenderSystemBanner &&
@@ -136,19 +107,24 @@ export const HomeBanner = ({ isLoggedIn }: HomeBannerProps) => {
     }
 
     return null
-  }, [isLoggedIn, shouldRenderSystemBanner, renderSystemBanner, banner, enableSystemBanner])
+  }, [isLoggedIn, shouldRenderSystemBanner, renderSystemBanner, banner, disableActivation])
 
-  if (showRemoteBanner) {
-    return (
-      <BannerContainer>
-        <RemoteBanner from="Home" />
-      </BannerContainer>
-    )
-  }
-
-  return enableSystemBanner ? SystemBanner : Banner
+  return (
+    <React.Fragment>
+      {showRemoteGenericBanner ? (
+        <RemoteGenericBannerContainer>
+          <RemoteGenericBanner from="Home" />
+        </RemoteGenericBannerContainer>
+      ) : null}
+      {SystemBanner}
+    </React.Fragment>
+  )
 }
 
 const BannerContainer = styled.View({
   marginBottom: getSpacing(8),
+})
+
+const RemoteGenericBannerContainer = styled.View({
+  marginBottom: getSpacing(6),
 })
