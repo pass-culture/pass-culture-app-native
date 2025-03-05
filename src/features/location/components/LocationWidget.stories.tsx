@@ -1,5 +1,5 @@
 import { NavigationContainer } from '@react-navigation/native'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { ComponentMeta, ComponentStory } from '@storybook/react'
 import React from 'react'
 
 import { ScreenOrigin } from 'features/location/enums'
@@ -23,6 +23,5 @@ const Template: ComponentStory<typeof LocationWidget> = () => (
   <LocationWidget screenOrigin={ScreenOrigin.HOME} />
 )
 
-// Not exported and broken story story du to FF
-const Default = Template.bind({})
-Default.args = {}
+export const Default = Template.bind({})
+Default.storyName = 'LocationWidget'

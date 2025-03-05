@@ -3,7 +3,6 @@ import React from 'react'
 
 import { LocationWidget } from 'features/location/components/LocationWidget'
 import { ScreenOrigin } from 'features/location/enums'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { act, fireEvent, render, screen } from 'tests/utils'
 
 jest.unmock('@react-navigation/native')
@@ -19,10 +18,6 @@ jest.mock('ui/components/modals/useModal', () => ({
 }))
 
 describe('LocationWidget', () => {
-  beforeEach(() => {
-    setFeatureFlags() // TODO(PC-34435): add tests for WIP_APP_V2_LOCATION_WIDGET
-  })
-
   it('should show modal when pressing widget', async () => {
     renderLocationWidget()
 
