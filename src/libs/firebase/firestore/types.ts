@@ -88,5 +88,4 @@ export enum RemoteStoreFeatureFlags {
   WIP_VENUE_MAP_HIDDEN_POI = 'wipVenueMapHiddenPOI',
   WIP_VENUE_MAP_IN_SEARCH = 'wipVenueMapInSearch',
   WIP_VENUE_MAP_PIN_V2 = 'wipVenueMapPinV2',
-  WIP_VENUE_MAP_TYPE_FILTER_V2 = 'wipVenueMapTypeFilterV2',
 }
