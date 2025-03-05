@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { VenueTypeCodeKey } from 'api/gen'
-import { setVenueTypeCode } from 'features/venueMap/store/venueMapStore'
+import { venuesFilterActions } from 'features/venueMap/store/venuesFilterStore'
 import { parseType } from 'libs/parsers/venueType'
 import { ellipseString } from 'shared/string/ellipseString'
 import { render, screen } from 'tests/utils'
@@ -12,7 +12,7 @@ const VENUE_TYPE = VenueTypeCodeKey.MOVIE
 
 describe('SingleFilterBannerContainer', () => {
   beforeEach(() => {
-    setVenueTypeCode(VENUE_TYPE)
+    venuesFilterActions.setVenuesFilters([VENUE_TYPE])
   })
 
   it('should render correctly', async () => {
@@ -22,7 +22,7 @@ describe('SingleFilterBannerContainer', () => {
   })
 
   it('Should filter with no venueCode', async () => {
-    setVenueTypeCode(null)
+    venuesFilterActions.setVenuesFilters([])
 
     render(<SingleFilterBannerContainer />)
 

@@ -4,7 +4,8 @@ import styled from 'styled-components/native'
 import { SingleFilterButton } from 'features/search/components/Buttons/SingleFilterButton/SingleFilterButton'
 import { getVenueTypeLabel } from 'features/venueMap/helpers/getVenueTypeLabel/getVenueTypeLabel'
 import { VenueTypeModal } from 'features/venueMap/pages/modals/VenueTypeModal/VenueTypeModal'
-import { useVenueMapStore } from 'features/venueMap/store/venueMapStore'
+import { useVenuesFilter } from 'features/venueMap/store/venuesFilterStore'
+import { VenueTypeCode } from 'libs/parsers/venueType'
 import { ellipseString } from 'shared/string/ellipseString'
 import { Li } from 'ui/components/Li'
 import { useModal } from 'ui/components/modals/useModal'
@@ -15,8 +16,9 @@ import { getSpacing } from 'ui/theme'
 const MAX_VENUE_CHARACTERS = 20
 
 export const SingleFilterBannerContainer = () => {
-  const venueTypeCode = useVenueMapStore((state) => state.venueTypeCode)
-  const venueTypeLabel = getVenueTypeLabel(venueTypeCode) ?? 'Tous les lieux'
+  const venueFilters = useVenuesFilter()
+  const venueTypeCode = venueFilters.length ? venueFilters[0] : null
+  const venueTypeLabel = getVenueTypeLabel(venueTypeCode as VenueTypeCode) ?? 'Tous les lieux'
 
   const {
     visible: venueTypeModalVisible,

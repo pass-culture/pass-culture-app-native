@@ -75,7 +75,7 @@ describe('<VenueMap />', () => {
       RemoteStoreFeatureFlags.WIP_VENUE_MAP_TYPE_FILTER_V2,
       RemoteStoreFeatureFlags.WIP_VENUE_MAP,
     ])
-    venueMapStore.setVenueTypeCode(VENUE_TYPE)
+    venuesFilterActions.setVenuesFilters([VENUE_TYPE])
   })
 
   afterEach(() => {
@@ -121,13 +121,13 @@ describe('<VenueMap />', () => {
   })
 
   it('Should reset venue type code in store when pressing go back button', async () => {
-    const spy = jest.spyOn(venueMapStore, 'setVenueTypeCode')
+    const spy = jest.spyOn(venuesFilterActions, 'setVenuesFilters')
     render(reactQueryProviderHOC(<VenueMap />))
 
     const goBackButton = screen.getByTestId('Revenir en arrière')
     await user.press(goBackButton)
 
-    await waitFor(() => expect(spy).toHaveBeenNthCalledWith(1, null))
+    await waitFor(() => expect(spy).toHaveBeenNthCalledWith(1, []))
   })
 
   it('Should reset store + filters when unmounting', async () => {

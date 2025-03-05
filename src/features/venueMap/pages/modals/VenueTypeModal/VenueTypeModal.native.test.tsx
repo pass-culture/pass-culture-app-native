@@ -3,13 +3,14 @@ import React from 'react'
 import { VenueTypeCodeKey } from 'api/gen'
 import { VenueTypeModal } from 'features/venueMap/pages/modals/VenueTypeModal/VenueTypeModal'
 import * as useVenueMapStore from 'features/venueMap/store/venueMapStore'
+import { venuesFilterActions } from 'features/venueMap/store/venuesFilterStore'
 import { venuesFixture } from 'libs/algolia/fetchAlgolia/fetchVenues/fixtures/venuesFixture'
 import { analytics } from 'libs/analytics/provider'
 import { act, fireEvent, render, screen, userEvent, waitFor } from 'tests/utils'
 
 const mockHideModal = jest.fn()
 
-const setVenueTypeCodeSpy = jest.spyOn(useVenueMapStore, 'setVenueTypeCode')
+const mockSetVenuesFilters = jest.spyOn(venuesFilterActions, 'setVenuesFilters')
 
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   return function createAnimatedComponent(Component: unknown) {
@@ -30,7 +31,7 @@ describe('<VenueTypeModal />', () => {
 
   describe('When venue type is null', () => {
     beforeEach(() => {
-      useVenueMapStore.setVenueTypeCode(null)
+      venuesFilterActions.setVenuesFilters([])
       useVenueMapStore.setVenues(venuesFixture)
     })
 
@@ -110,14 +111,14 @@ describe('<VenueTypeModal />', () => {
       await user.press(screen.getByText('Rechercher'))
 
       await waitFor(() => {
-        expect(setVenueTypeCodeSpy).toHaveBeenCalledWith(VenueTypeCodeKey.MOVIE)
+        expect(mockSetVenuesFilters).toHaveBeenCalledWith([VenueTypeCodeKey.MOVIE])
       })
     })
   })
 
   describe('When venue type is not null', () => {
     beforeEach(() => {
-      useVenueMapStore.setVenueTypeCode(VenueTypeCodeKey.MOVIE)
+      venuesFilterActions.setVenuesFilters([VenueTypeCodeKey.MOVIE])
       useVenueMapStore.setVenues([])
     })
 
