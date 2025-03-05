@@ -47,7 +47,7 @@ const mockData = {
 const mockOfferVenues: VenueListItem[] = []
 const mockNbOfferVenues = 0
 jest.mock('queries/searchVenuesOffer/useSearchVenueOffersInfiniteQuery', () => ({
-  useSearchVenueOffers: () => ({
+  useSearchVenueOffersInfiniteQuery: () => ({
     hasNextPage: mockHasNextPage,
     fetchNextPage: mockFetchNextPage,
     data: mockData,

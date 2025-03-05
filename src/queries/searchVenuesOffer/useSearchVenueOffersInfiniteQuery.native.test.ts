@@ -147,7 +147,7 @@ describe('useSearchVenueOffersInfiniteQuery', () => {
     })
   })
 
-  describe('useSearchVenueOffers', () => {
+  describe('useSearchVenueOffersInfiniteQuery', () => {
     const fetchOfferSpy = jest
       .spyOn(fetchAlgoliaOffer, 'fetchOffers')
       .mockResolvedValue(mockedAlgoliaResponse)

@@ -83,11 +83,11 @@ describe('Bookings', () => {
   })
 
   it('should always execute the query (in cache or in network)', async () => {
-    const useBookings = jest.spyOn(bookingsAPI, 'useBookingsQuery')
+    const useBookingsQuery = jest.spyOn(bookingsAPI, 'useBookingsQuery')
     renderBookings(bookingsSnap)
 
     await waitFor(() => {
-      expect(useBookings).toHaveBeenCalledTimes(2)
+      expect(useBookingsQuery).toHaveBeenCalledTimes(2)
     })
   })
 

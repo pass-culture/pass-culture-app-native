@@ -122,16 +122,12 @@ const mockUseRemoteConfigContext = useRemoteConfigContext as jest.MockedFunction
 
 jest.mock('features/auth/context/AuthContext')
 
-jest.mock('features/bookings/api', () => ({
-  useBookings: jest.fn(() => ({ ended_bookings: [], ongoing_bookings: [] })),
-}))
-
-jest.mock('features/bookings/api/useUserHasBookings')
+jest.mock('queries/bookings/useUserHasBookings')
 const mockUseUserHasBookings = useUserHasBookingsQuery as jest.MockedFunction<
   typeof useUserHasBookingsQuery
 >
 
-jest.mock('features/bookings/api')
+jest.mock('queries/bookings/useBookingsQuery')
 const mockUseBookings = useBookingsQuery as jest.MockedFunction<typeof useBookingsQuery>
 mockUseBookings.mockReturnValue({
   data: bookingsSnap,

@@ -72,7 +72,7 @@ describe('Bookings', () => {
     renderBookings()
     await act(async () => {}) // Without this act the test is flaky
 
-    //Due to multiple renders useBookings is called three times
+    //Due to multiple renders useBookingsQuery is called three times
     expect(useBookingsSpy).toHaveBeenCalledTimes(3)
   })
 
@@ -88,7 +88,7 @@ describe('Bookings', () => {
       data: emptyBookingsSnap,
       isFetching: false,
     } as unknown as QueryObserverResult<BookingsResponse, unknown>
-    // Due to multiple renders we need to mock useBookings six times
+    // Due to multiple renders we need to mock useBookingsQuery six times
     useBookingsSpy
       .mockReturnValueOnce(useBookingsResultMock)
       .mockReturnValueOnce(useBookingsResultMock)
@@ -207,7 +207,7 @@ describe('Bookings', () => {
         },
         isFetching: false,
       } as unknown as QueryObserverResult<BookingsResponse, unknown>
-      // Due to multiple renders we need to mock useBookings three times
+      // Due to multiple renders we need to mock useBookingsQuery three times
       useBookingsSpy
         .mockReturnValueOnce(useBookingsResultMock)
         .mockReturnValueOnce(useBookingsResultMock)

@@ -16,8 +16,8 @@ const mockBookings = { ...bookingsSnap }
 const mockUseBookings = jest.fn(() => ({
   data: mockBookings,
 }))
-jest.mock('features/bookings/api/useBookings', () => ({
-  useBookings: jest.fn(() => mockUseBookings()),
+jest.mock('queries/bookings/useBookingsQuery', () => ({
+  useBookingsQuery: jest.fn(() => mockUseBookings()),
 }))
 
 it('should display "Sois le premier à réagir :" when there are no likes and the user is connected, beneficiary and has possibility to react', async () => {

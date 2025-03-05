@@ -55,8 +55,8 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
 
 let mockBookings: BookingsResponse = { ...bookingsSnap }
 
-jest.mock('features/bookings/api/useBookings', () => ({
-  useBookings: jest.fn(() => ({
+jest.mock('queries/bookings/useBookingsQuery', () => ({
+  useBookingsQuery: jest.fn(() => ({
     data: mockBookings,
   })),
 }))
