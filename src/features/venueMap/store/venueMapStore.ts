@@ -44,8 +44,6 @@ export const setInitialRegion = (initialRegion: Region) => {
 export const setVenues = (venues: GeolocatedVenue[]) => {
   useVenueMapStore.setState({ venues })
 }
-export const setVenueTypeCode = (venueTypeCode: VenueTypeCode | null) =>
-  useVenueMapStore.setState({ venueTypeCode })
 export const setSelectedVenue = (selectedVenue: GeolocatedVenue) =>
   useVenueMapStore.setState({ selectedVenue })
 export const removeSelectedVenue = () => useVenueMapStore.setState({ selectedVenue: undefined })
