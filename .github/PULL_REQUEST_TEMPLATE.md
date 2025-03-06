@@ -48,6 +48,23 @@ If you consider correcting the issue is too time consuming/complex: create a tic
 - Remove logic from components that should be dumb.
 - undefined != null : undefined should be used for optionals and null when no value
 
+### Request specific:
+
+- A request must use `react-query`
+- A hook that use `react-query` must:
+  - folder
+    - when used in one feature
+      - be in `src/<feature>/queries/`
+    - when used by several features
+      - be in `src/queries/<the main feature related to the query>/`
+  - file
+    - when use `useQuery` or hook related (like `useInfiniteQuery`)
+      - named `use<the content retrieved by the query>Query.ts`
+      - returns the type `UseQueryResult<the content retrieved by the query>`
+    - when use `useMutation`
+      - named `use<the content mutated by the query>Mutation.ts`
+      - returns the type `UseMutationResult<the content mutated by the query>`
+
 ### Test specific:
 
 - Avoid mocking internal parts of our code. Ideally, mock only external calls.
