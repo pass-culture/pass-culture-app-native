@@ -1,6 +1,9 @@
 {
   "lockfile_version": "1",
   "packages": {
+    "github:NixOS/nixpkgs/nixpkgs-unstable": {
+      "resolved": "github:NixOS/nixpkgs/02032da4af073d0f6110540c8677f16d4be0117f?lastModified=1741037377&narHash=sha256-SvtvVKHaUX4Owb%2BPasySwZsoc5VUeTf1px34BByiOxw%3D"
+    },
     "nodejs@20.10.0": {
       "last_modified": "2024-01-14T03:55:27Z",
       "plugin_version": "0.0.2",
@@ -118,50 +121,50 @@
       }
     },
     "watchman@latest": {
-      "last_modified": "2025-02-09T21:53:45Z",
-      "resolved": "github:NixOS/nixpkgs/b2243f41e860ac85c0b446eadc6930359b294e79#watchman",
+      "last_modified": "2025-02-23T09:42:26Z",
+      "resolved": "github:NixOS/nixpkgs/2d068ae5c6516b2d04562de50a58c682540de9bf#watchman",
       "source": "devbox-search",
-      "version": "2025.01.06.00",
+      "version": "2025.02.10.00",
       "systems": {
         "aarch64-darwin": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/949r217qcgj3gkghr4g4za2qd1ib7c64-watchman-2025.01.06.00",
+              "path": "/nix/store/s1m8b0757s9kjfa5lrw6a1q9czsl614a-watchman-2025.02.10.00",
               "default": true
             }
           ],
-          "store_path": "/nix/store/949r217qcgj3gkghr4g4za2qd1ib7c64-watchman-2025.01.06.00"
+          "store_path": "/nix/store/s1m8b0757s9kjfa5lrw6a1q9czsl614a-watchman-2025.02.10.00"
         },
         "aarch64-linux": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/fddh8mnv3h0acakzd6fmigdfsb7s3rx0-watchman-2025.01.06.00",
+              "path": "/nix/store/562hi6js3q6dflx1cfh6lqbmp4bby3wb-watchman-2025.02.10.00",
               "default": true
             }
           ],
-          "store_path": "/nix/store/fddh8mnv3h0acakzd6fmigdfsb7s3rx0-watchman-2025.01.06.00"
+          "store_path": "/nix/store/562hi6js3q6dflx1cfh6lqbmp4bby3wb-watchman-2025.02.10.00"
         },
         "x86_64-darwin": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/slna805vss31iajkgqb7zagpywa0maxj-watchman-2025.01.06.00",
+              "path": "/nix/store/g6nr5i8h7jlk5dk471sfccc6nfxs5629-watchman-2025.02.10.00",
               "default": true
             }
           ],
-          "store_path": "/nix/store/slna805vss31iajkgqb7zagpywa0maxj-watchman-2025.01.06.00"
+          "store_path": "/nix/store/g6nr5i8h7jlk5dk471sfccc6nfxs5629-watchman-2025.02.10.00"
         },
         "x86_64-linux": {
           "outputs": [
             {
               "name": "out",
-              "path": "/nix/store/wlaa8gzf696nnffscxnyhjh5kpramqsi-watchman-2025.01.06.00",
+              "path": "/nix/store/ddg1viq1jk86hr5nbyg3is637j5rsrz9-watchman-2025.02.10.00",
               "default": true
             }
           ],
-          "store_path": "/nix/store/wlaa8gzf696nnffscxnyhjh5kpramqsi-watchman-2025.01.06.00"
+          "store_path": "/nix/store/ddg1viq1jk86hr5nbyg3is637j5rsrz9-watchman-2025.02.10.00"
         }
       }
     }
