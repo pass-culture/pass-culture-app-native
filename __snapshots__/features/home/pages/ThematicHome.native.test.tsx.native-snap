@@ -794,14 +794,14 @@ exports[`ThematicHome should render correctly 1`] = `
           },
         ]
       }
-      testID="animated-thematic-header-v1"
     >
       <Image
         collapsable={false}
         height={180}
+        resizeMode="stretch"
         source={
           {
-            "uri": "url.com/image",
+            "testUri": "../../../src/features/home/images/headerGradient/Lilac.png",
           }
         }
         style={
@@ -830,43 +830,6 @@ exports[`ThematicHome should render correctly 1`] = `
           ]
         }
       >
-        <BVLinearGradient
-          collapsable={false}
-          colors={
-            [
-              1447447,
-              2870351383,
-            ]
-          }
-          endPoint={
-            {
-              "x": 0.5,
-              "y": 1,
-            }
-          }
-          height={180}
-          locations={null}
-          startPoint={
-            {
-              "x": 0.5,
-              "y": 0,
-            }
-          }
-          style={
-            [
-              {
-                "height": 180,
-              },
-              {
-                "transform": [
-                  {
-                    "translateY": 0,
-                  },
-                ],
-              },
-            ]
-          }
-        />
         <View
           collapsable={false}
           style={
@@ -878,6 +841,7 @@ exports[`ThematicHome should render correctly 1`] = `
                 "paddingTop": 8,
               },
               {
+                "backgroundColor": "rgba(22,22,23,0)",
                 "transform": [
                   {
                     "translateY": 0,
@@ -917,7 +881,7 @@ exports[`ThematicHome should render correctly 1`] = `
             style={
               [
                 {
-                  "color": "#ffffff",
+                  "color": "#161617",
                   "fontFamily": "Montserrat-Bold",
                   "fontSize": 28,
                   "lineHeight": 44.8,
@@ -929,6 +893,25 @@ exports[`ThematicHome should render correctly 1`] = `
           </Text>
         </View>
       </View>
+      <View
+        collapsable={false}
+        style={
+          [
+            {
+              "bottom": 16,
+              "position": "absolute",
+              "right": 24,
+            },
+            {
+              "transform": [
+                {
+                  "translateY": 0,
+                },
+              ],
+            },
+          ]
+        }
+      />
     </View>
   </View>
 </View>
