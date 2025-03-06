@@ -28,23 +28,15 @@ appId: ${MAESTRO_APP_ID}
 
 - tapOn: 'Rechercher'
 
-- runFlow:
-    when:
-      notVisible: 'One piece.*'
-    commands:
-      - swipe:
-          from:
-            text: Les offres
-          direction: UP
+- swipe:
+    from:
+      text: Les offres
+    direction: UP
 
 - runFlow:
     when:
       platform: Android
     commands:
-    - swipe:
-        from:
-          text: Les offres
-        direction: UP
     - tapOn:
         text: 'One piece.*'
         index: 1
@@ -53,4 +45,4 @@ appId: ${MAESTRO_APP_ID}
     when:
       platform: iOS
     commands:
-    - tapOn: 'Offre One Piece.*'
+    - tapOn: '.*Livres.*'

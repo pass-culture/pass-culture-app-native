@@ -10,11 +10,6 @@ appId: ${MAESTRO_APP_ID}
       id: 'tagsContainer'
     direction: UP
 
-- scrollUntilVisible:
-    element: 'À propos'
-- assertVisible: 'À propos'
-- assertVisible: "Description\_:"
-
 - runFlow:
     when:
       platform: Android

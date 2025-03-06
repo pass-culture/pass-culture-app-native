@@ -8,3 +8,6 @@ appId: ${MAESTRO_APP_ID}
     - tapOn: "Autoriser"
 - assertVisible: 'Respect de ta vie privée'
 - tapOn: 'Tout accepter'
+- tapOn: 
+    text: 'Autoriser'
+    optional: true
