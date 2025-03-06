@@ -10,8 +10,8 @@ import { QuitSignupModal } from 'features/auth/pages/signup/QuitSignupModal/Quit
 import { DEFAULT_STEP_CONFIG, SSO_STEP_CONFIG } from 'features/auth/stepConfig'
 import { SignupData } from 'features/auth/types'
 import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
+import { getProfileStackConfig } from 'features/navigation/ProfileStackNavigator/getProfileStackConfig'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
-import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { useDeviceInfo } from 'features/trustedDevice/helpers/useDeviceInfo'
 import { analytics } from 'libs/analytics/provider'
@@ -51,7 +51,7 @@ export const SignupForm: FunctionComponent = () => {
       ? `Continuer vers l’étape ${nextStep.accessibilityTitle}`
       : undefined
 
-  const { goBack: goBackAndLeaveSignup } = useGoBack(...getTabNavConfig('Profile'))
+  const { goBack: goBackAndLeaveSignup } = useGoBack(...getProfileStackConfig('Profile'))
 
   const goToPreviousStep = () => {
     if (isFirstStep) {

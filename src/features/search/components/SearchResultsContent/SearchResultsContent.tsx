@@ -9,7 +9,7 @@ import { AccessibilityFiltersModal } from 'features/accessibility/components/Acc
 import { useAccessibilityFiltersContext } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { VenueMapLocationModal } from 'features/location/components/VenueMapLocationModal'
-import { getNavigateToConfig } from 'features/navigation/SearchStackNavigator/helpers'
+import { getSearchNavConfig } from 'features/navigation/SearchStackNavigator/searchStackHelpers'
 import { PlaylistType } from 'features/offer/enums'
 import { useSearchResults } from 'features/search/api/useSearchResults/useSearchResults'
 import { AutoScrollSwitch } from 'features/search/components/AutoScrollSwitch/AutoScrollSwitch'
@@ -449,7 +449,7 @@ export const SearchResultsContent: React.FC = () => {
             <StyledLi>
               <FilterButton
                 activeFilters={activeFiltersCount}
-                navigateTo={getNavigateToConfig(SearchView.Filter)}
+                navigateTo={getSearchNavConfig(SearchView.Filter)}
               />
             </StyledLi>
             <StyledLi>

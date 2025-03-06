@@ -2,8 +2,8 @@ import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 
 import { useLogoutRoutine } from 'features/auth/helpers/useLogoutRoutine'
+import { getProfileStackConfig } from 'features/navigation/ProfileStackNavigator/getProfileStackConfig'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useAnonymizeAccount } from 'features/profile/api/useAnonymizeAccount'
 import { env } from 'libs/environment/env'
 import { InfoBanner } from 'ui/components/banners/InfoBanner'
@@ -40,7 +40,7 @@ export const DeleteProfileConfirmation = () => {
   return (
     <GenericInfoPageWhite
       headerGoBack
-      goBackParams={getTabNavConfig('Profile')}
+      goBackParams={getProfileStackConfig('Profile')}
       icon={BicolorProfileDeletion}
       separateIconFromTitle={false}
       title="Ta demande de suppression de compte"

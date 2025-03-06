@@ -1,12 +1,12 @@
 import { VenueResponse } from 'api/gen'
-import { getNavigateToConfig } from 'features/navigation/SearchStackNavigator/helpers'
+import { getSearchNavConfig } from 'features/navigation/SearchStackNavigator/searchStackHelpers'
 import { SearchStackParamList } from 'features/navigation/SearchStackNavigator/types'
 import { useVenueSearchParameters } from 'features/venue/helpers/useVenueSearchParameters'
 
 export const useNavigateToSearchWithVenueOffers = (venue: VenueResponse) => {
   const venueSearchParams: SearchStackParamList['SearchResults'] = useVenueSearchParameters(venue)
   return {
-    ...getNavigateToConfig('SearchResults', {
+    ...getSearchNavConfig('SearchResults', {
       ...venueSearchParams,
     }),
     withPush: true,

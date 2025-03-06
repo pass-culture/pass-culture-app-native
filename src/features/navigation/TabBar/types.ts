@@ -1,6 +1,10 @@
 import { TabNavigationState } from '@react-navigation/native'
 
 import { BookingsTab } from 'features/bookings/enum'
+import {
+  ProfileStackParamList,
+  ProfileStackRouteName,
+} from 'features/navigation/ProfileStackNavigator/ProfileStack'
 import { GenericRoute } from 'features/navigation/RootNavigator/types'
 import {
   SearchStackParamList,
@@ -19,7 +23,10 @@ export type TabParamList = {
   }
   Bookings: { activeTab?: BookingsTab } | undefined
   Favorites: undefined
-  Profile: undefined
+  ProfileStackNavigator?: {
+    screen: ProfileStackRouteName
+    params: ProfileStackParamList[ProfileStackRouteName]
+  }
 }
 
 export type TabNavigationStateType = TabNavigationState<TabParamList>

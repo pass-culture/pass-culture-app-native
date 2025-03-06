@@ -3,8 +3,8 @@ import React, { FC } from 'react'
 import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 
+import { getProfileStackConfig } from 'features/navigation/ProfileStackNavigator/getProfileStackConfig'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { env } from 'libs/environment/env'
 import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonInsideText'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -21,7 +21,7 @@ import { SPACE } from 'ui/theme/constants'
 export const DeleteProfileAccountNotDeletable: FC = () => {
   const { navigate } = useNavigation<UseNavigationType>()
 
-  const navigateToProfile = () => navigate(...getTabNavConfig('Profile'))
+  const navigateToProfile = () => navigate(...getProfileStackConfig('Profile'))
 
   const navigateToNotifications = () => navigate('NotificationsSettings')
   const { illustrations } = useTheme()

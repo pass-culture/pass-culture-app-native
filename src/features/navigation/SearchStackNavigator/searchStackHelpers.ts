@@ -13,7 +13,7 @@ export function getSearchStackConfig<Screen extends SearchStackRouteName>(
   return ['TabNavigator', { screen: 'SearchStackNavigator', params: { screen, params } }]
 }
 
-export function getNavigateToConfig<Screen extends SearchStackRouteName>(
+export function getSearchNavConfig<Screen extends SearchStackRouteName>(
   screen: Screen,
   params?: SearchStackParamList[Screen]
 ): {

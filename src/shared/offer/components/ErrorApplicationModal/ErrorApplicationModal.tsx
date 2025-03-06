@@ -2,8 +2,8 @@ import { useNavigation } from '@react-navigation/native'
 import React, { FunctionComponent, useCallback } from 'react'
 import styled from 'styled-components/native'
 
+import { getProfileStackConfig } from 'features/navigation/ProfileStackNavigator/getProfileStackConfig'
 import { Referrals, UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { AddToFavoritesButton } from 'features/offer/components/AddToFavoritesButton/AddToFavoritesButton'
 import { analytics } from 'libs/analytics/provider'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -36,7 +36,7 @@ export const ErrorApplicationModal: FunctionComponent<Props> = ({
   const navigateToProfile = () => {
     analytics.logGoToProfil({ from: 'ErrorApplicationModal', offerId })
     hideModal()
-    navigate(...getTabNavConfig('Profile'))
+    navigate(...getProfileStackConfig('Profile'))
   }
 
   return (

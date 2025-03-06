@@ -74,7 +74,7 @@ import { VenueMap } from 'features/venueMap/pages/VenueMap/VenueMap'
 import { ABTestingPOC } from 'libs/firebase/remoteConfig/ABTestingPOC'
 import { LoadingPage } from 'ui/pages/LoadingPage'
 
-import { RootRoute } from './types'
+import { RootRoute, RootScreenNames } from './types'
 
 // This dynamic import allows us to separate all the achievements illustrations (1,06 MB) from the main web bundle.
 const Achievements = lazy(async () => {
@@ -549,3 +549,8 @@ export const routes: RootRoute[] = [
     options: { title: 'Avis du book club' },
   },
 ]
+
+export function isRootStackScreen(screen: string): screen is RootScreenNames {
+  const rootStackRouteNames = routes.map((route): string => route.name)
+  return rootStackRouteNames.includes(screen)
+}

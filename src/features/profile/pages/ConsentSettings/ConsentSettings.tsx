@@ -8,8 +8,8 @@ import { getCookiesChoiceFromCategories } from 'features/cookies/helpers/getCook
 import { startTrackingAcceptedCookies } from 'features/cookies/helpers/startTrackingAcceptedCookies'
 import { useCookies } from 'features/cookies/helpers/useCookies'
 import { CookiesChoiceByCategory } from 'features/cookies/types'
+import { getProfileStackConfig } from 'features/navigation/ProfileStackNavigator/getProfileStackConfig'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonInsideText'
@@ -47,7 +47,7 @@ export const ConsentSettings = () => {
       message: 'Ton choix a bien été enregistré.',
       timeout: SNACK_BAR_TIME_OUT,
     })
-    navigate(...getTabNavConfig('Profile'))
+    navigate(...getProfileStackConfig('Profile'))
   }, [navigate, setCookiesConsent, settingsCookiesChoice, showSuccessSnackBar])
 
   return (

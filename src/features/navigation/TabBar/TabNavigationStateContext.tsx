@@ -11,7 +11,7 @@ export const DEFAULT_TAB_ROUTES: TabStateRoute[] = [
   { name: 'SearchStackNavigator', key: 'search-initial' },
   { name: 'Bookings', key: 'bookings-initial' },
   { name: 'Favorites', key: 'favorites-initial' },
-  { name: 'Profile', key: 'profile-initial' },
+  { name: 'ProfileStackNavigator', key: 'profile-initial' },
 ]
 const DEFAULT_TAB_NAVIGATION_STATE: TabNavigationStateType = {
   history: [],

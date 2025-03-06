@@ -3,7 +3,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { getSearchStackConfig } from 'features/navigation/SearchStackNavigator/helpers'
+import { getSearchStackConfig } from 'features/navigation/SearchStackNavigator/searchStackHelpers'
 import { Helmet } from 'libs/react-helmet/Helmet'
 import { ButtonSecondaryWhite } from 'ui/components/buttons/ButtonSecondaryWhite'
 import { GenericErrorPage } from 'ui/pages/GenericErrorPage'

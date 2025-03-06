@@ -2,8 +2,8 @@ import { useNavigation } from '@react-navigation/native'
 import React, { FC } from 'react'
 import styled from 'styled-components/native'
 
+import { getProfileStackConfig } from 'features/navigation/ProfileStackNavigator/getProfileStackConfig'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
@@ -16,7 +16,7 @@ import { TypoDS } from 'ui/theme'
 export const DeleteProfileEmailHacked: FC = () => {
   const { navigate } = useNavigation<UseNavigationType>()
 
-  const navigateToProfile = () => navigate(...getTabNavConfig('Profile'))
+  const navigateToProfile = () => navigate(...getProfileStackConfig('Profile'))
 
   const navigateToChangeEmail = () => navigate('ChangeEmail')
 

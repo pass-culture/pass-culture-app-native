@@ -5,6 +5,7 @@ import { ComponentType } from 'react'
 import { CulturalSurveyQuestionEnum } from 'api/gen/api'
 import { BookingsTab } from 'features/bookings/enum'
 import { CheatcodesStackParamList } from 'features/navigation/CheatcodesStackNavigator/types'
+import { ProfileStackParamList } from 'features/navigation/ProfileStackNavigator/ProfileStack'
 import { SearchStackParamList } from 'features/navigation/SearchStackNavigator/types'
 import { PlaylistType } from 'features/offer/enums'
 import { TutorialType } from 'features/tutorial/types'
@@ -296,7 +297,10 @@ export type RootStackParamList = {
   TrustedDeviceRootStackParamList &
   TutorialRootStackParamList
 
-export type AllNavParamList = RootStackParamList & TabParamList & SearchStackParamList
+export type AllNavParamList = RootStackParamList &
+  TabParamList &
+  SearchStackParamList &
+  ProfileStackParamList
 
 /** Type helpers to share screen names */
 export type RootScreenNames = keyof RootStackParamList
