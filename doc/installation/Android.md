@@ -73,7 +73,7 @@ yarn start
 
 In Android Studio: File > Settings > Experimental > Gradle -> uncheck "Only sync the active variant" checkbox.
 
-En cas de soucis avec le JDK installer via `brew install --cask zulu17` et ajouter le chemin `JAVA_HOME=/Library/Java/JavaVirtualMachines/zulu-17.jdk/Contents/Home` dans .zshrc
+En cas de soucis avec le JDK installer via `brew install --cask temurin@17` et ajouter le chemin `JAVA_HOME=/Library/Java/JavaVirtualMachines/temurin-17.jdk/Contents/Home` dans .zshrc
 
 </details>
 <details>
