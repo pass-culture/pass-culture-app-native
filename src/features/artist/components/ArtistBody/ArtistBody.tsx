@@ -29,13 +29,13 @@ const isWeb = Platform.OS === 'web'
 
 const NUMBER_OF_LINES_OF_DESCRIPTION_SECTION = 5
 
-type Props = {
+export type ArtistBodyProps = {
   offer: OfferResponseV2
   artist: Artist
   subcategory: Subcategory
 }
 
-export const ArtistBody: FunctionComponent<Props> = ({ offer, artist, subcategory }) => {
+export const ArtistBody: FunctionComponent<ArtistBodyProps> = ({ offer, artist, subcategory }) => {
   const { params } = useRoute<UseRouteType<'Artist'>>()
   const { goBack } = useGoBack('Offer', { id: params.fromOfferId })
   const { appBarHeight } = useTheme()

@@ -1,12 +1,9 @@
 import { useRoute } from '@react-navigation/native'
 import React, { FunctionComponent } from 'react'
 
-import { ArtistBody } from 'features/artist/components/ArtistBody/ArtistBody'
-import { PageNotFound } from 'features/navigation/pages/PageNotFound'
+import { ArtistBodyProxy } from 'features/artist/components/ArtistBody/ArtistBodyProxy'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { getOfferArtists } from 'features/offer/helpers/getOfferArtists/getOfferArtists'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useSubcategoriesMapping } from 'libs/subcategories'
 import { useOfferQuery } from 'queries/offer/useOfferQuery'
 
@@ -16,7 +13,6 @@ export type Artist = {
 }
 
 export const Artist: FunctionComponent = () => {
-  const enableArtistPage = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ARTIST_PAGE)
   const { params } = useRoute<UseRouteType<'Artist'>>()
   const { data: offer } = useOfferQuery({ offerId: params.fromOfferId })
   const subcategoriesMapping = useSubcategoriesMapping()
@@ -34,9 +30,5 @@ export const Artist: FunctionComponent = () => {
     bio: undefined,
   }
 
-  return enableArtistPage ? (
-    <ArtistBody offer={offer} subcategory={subcategory} artist={artistInfo} />
-  ) : (
-    <PageNotFound />
-  )
+  return <ArtistBodyProxy offer={offer} subcategory={subcategory} artist={artistInfo} />
 }

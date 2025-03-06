@@ -3,20 +3,7 @@ import { onlineManager, useQuery } from 'react-query'
 import { getAllFeatureFlags } from 'libs/firebase/firestore/featureFlags/getAllFeatureFlags'
 import { FeatureFlagConfig, squads } from 'libs/firebase/firestore/featureFlags/types'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { getAppBuildVersion } from 'libs/packageJson'
-
-const isFeatureFlagActive = (
-  featureFlagConfig: FeatureFlagConfig | undefined,
-  appBuildVersion: number
-): boolean => {
-  if (!featureFlagConfig) return false
-
-  const { minimalBuildNumber, maximalBuildNumber } = featureFlagConfig
-  return (
-    (!minimalBuildNumber || minimalBuildNumber <= appBuildVersion) &&
-    (!maximalBuildNumber || maximalBuildNumber >= appBuildVersion)
-  )
-}
+import { isFeatureFlagActive } from 'shared/featureflag/isFeatureFlagActive'
 
 export type FeatureFlagAll = {
   featureFlag: RemoteStoreFeatureFlags
@@ -24,7 +11,6 @@ export type FeatureFlagAll = {
 }
 
 export const useFeatureFlagAllQuery = () => {
-  const appBuildVersion = getAppBuildVersion()
   const {
     data: docSnapshot,
     isLoading,
@@ -47,7 +33,7 @@ export const useFeatureFlagAllQuery = () => {
       }
       flags[owner].push({
         featureFlag: key,
-        isFeatureFlagActive: isFeatureFlagActive(config, appBuildVersion),
+        isFeatureFlagActive: isFeatureFlagActive(key),
       })
       return flags
     },

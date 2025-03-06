@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { PropsWithChildren } from 'react'
 
 import { MustUpdateAppState, useMustUpdateApp } from 'features/forceUpdate/helpers/useMustUpdateApp'
 import { ForceUpdateWithResetErrorBoundary } from 'features/forceUpdate/pages/ForceUpdateWithResetErrorBoundary'
@@ -8,11 +8,7 @@ import { MAINTENANCE } from 'libs/firebase/firestore/types'
 import { useLogTypeFromRemoteConfig } from 'libs/hooks/useLogTypeFromRemoteConfig'
 import { ScreenError } from 'libs/monitoring/errors'
 
-export const ScreenErrorProvider = ({
-  children,
-}: {
-  children?: React.JSX.Element | React.JSX.Element[]
-}) => {
+export const ScreenErrorProvider = ({ children }: PropsWithChildren) => {
   const { status } = useMaintenance()
   const mustUpdateApp = useMustUpdateApp()
   const { logType } = useLogTypeFromRemoteConfig()
