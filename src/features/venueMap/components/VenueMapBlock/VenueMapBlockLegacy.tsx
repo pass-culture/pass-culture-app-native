@@ -1,7 +1,9 @@
+import colorAlpha from 'color-alpha'
 import React, { FunctionComponent } from 'react'
+import LinearGradient from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
 
-import { VENUE_MAP_BACKGROUND_APP_V2 } from 'features/venueMap/components/VenueMapBlock/VenueMapBackgroundAppV2'
+import { VENUE_MAP_BACKGROUND } from 'features/venueMap/components/VenueMapBlock/VenueMapBackground'
 import { removeSelectedVenue, setVenues } from 'features/venueMap/store/venueMapStore'
 import { analytics } from 'libs/analytics/provider'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
@@ -9,11 +11,13 @@ import { Touchable } from 'ui/components/touchable/Touchable'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
+import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 import type { VenueMapBlockProps } from './types'
 
-export const VenueMapBlock: FunctionComponent<VenueMapBlockProps> = ({ onPress, from }) => {
+export const VenueMapBlockLegacy: FunctionComponent<VenueMapBlockProps> = ({ onPress, from }) => {
   const focusProps = useHandleFocus()
+
   const TouchableContainer = onPress ? StyledTouchable : StyledInternalTouchableLink
 
   const handleOnBeforeNavigate = () => {
@@ -28,10 +32,12 @@ export const VenueMapBlock: FunctionComponent<VenueMapBlockProps> = ({ onPress, 
 
   return (
     <React.Fragment>
-      <Spacer.Column numberOfSpaces={2} />
+      <TypoDS.Title3 {...getHeadingAttrs(2)}>Carte des lieux culturels</TypoDS.Title3>
+      <Spacer.Column numberOfSpaces={4} />
       <TouchableContainer {...touchableProps} {...focusProps}>
-        <StyledImageBackground source={VENUE_MAP_BACKGROUND_APP_V2}>
-          <CardText>Explore la carte</CardText>
+        <StyledImageBackground source={VENUE_MAP_BACKGROUND}>
+          <StyledLinearGradient />
+          <CardText>Explorer les lieux</CardText>
         </StyledImageBackground>
       </TouchableContainer>
     </React.Fragment>
@@ -64,6 +70,21 @@ const StyledImageBackground = styled.ImageBackground.attrs(({ theme }) => ({
   width: '100%',
   height: getSpacing(25),
 })
+
+const StyledLinearGradient = styled(LinearGradient).attrs(({ theme }) => ({
+  useAngle: true,
+  angle: 69,
+  locations: [0.11, 0.68, 1],
+  colors: [
+    colorAlpha(theme.colors.white, 1),
+    colorAlpha(theme.colors.white, 0.7),
+    colorAlpha(theme.colors.white, 0),
+  ],
+}))(({ theme }) => ({
+  height: '100%',
+  width: '100%',
+  borderRadius: theme.borderRadius.radius,
+}))
 
 const CardText = styled(TypoDS.BodyAccent)({
   position: 'absolute',

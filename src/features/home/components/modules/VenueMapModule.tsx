@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { VenueMapBlock } from 'features/venueMap/components/VenueMapBlock/VenueMapBlock'
+import { VenueMapBlockProxy } from 'features/venueMap/components/VenueMapBlock/VenueMapBlockProxy'
 import { useShouldDisplayVenueMap } from 'features/venueMap/hook/useShouldDisplayVenueMap'
 
 export const VenueMapModule = () => {
@@ -10,7 +10,7 @@ export const VenueMapModule = () => {
   return shouldDisplayVenueMap ? <StyledVenueMapBlock from="home" /> : null
 }
 
-const StyledVenueMapBlock = styled(VenueMapBlock)(({ theme }) => ({
+const StyledVenueMapBlock = styled(VenueMapBlockProxy)(({ theme }) => ({
   marginHorizontal: theme.contentPage.marginHorizontal,
   paddingBottom: theme.home.spaceBetweenModules,
 }))
