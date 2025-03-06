@@ -15,6 +15,7 @@ const libsThatHaveJSFilesContainingJSX = [
   'node_modules/@ptomasroos/react-native-multi-slider',
   'node_modules/react-native-calendars',
   'node_modules/react-native-swipe-gestures',
+  'node_modules/@react-native/assets-registry',
 ]
 
 const packageJson = require('./package.json')
@@ -122,6 +123,7 @@ export default ({ mode }) => {
           replacement: '/src/$1',
         },
         { find: 'react-native', replacement: 'react-native-web' },
+        { find: 'react-native-svg', replacement: 'react-native-svg-web' },
         {
           find: 'react-native-email-link',
           replacement: '/src/libs/react-native-email-link',
