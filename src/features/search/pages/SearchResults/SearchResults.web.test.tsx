@@ -1,3 +1,4 @@
+import { useVenuesInRegionQuery } from 'queries/useVenuesInRegionQuery/useVenuesInRegionQuery'
 import React from 'react'
 
 import { SubcategoriesResponseModelv2 } from 'api/gen'
@@ -6,7 +7,6 @@ import { ISearchContext } from 'features/search/context/SearchWrapper'
 import * as useFilterCountAPI from 'features/search/helpers/useFilterCount/useFilterCount'
 import { SearchResults } from 'features/search/pages/SearchResults/SearchResults'
 import { useCenterOnLocation } from 'features/venueMap/hook/useCenterOnLocation'
-import { useVenuesInRegionQuery } from 'features/venueMap/useVenuesInRegionQuery'
 import { venuesFixture } from 'libs/algolia/fetchAlgolia/fetchVenues/fixtures/venuesFixture'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'

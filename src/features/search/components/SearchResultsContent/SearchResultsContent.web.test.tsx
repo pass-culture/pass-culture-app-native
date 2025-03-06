@@ -1,8 +1,8 @@
+import { useVenuesInRegionQuery } from 'queries/useVenuesInRegionQuery/useVenuesInRegionQuery'
 import React from 'react'
 
 import { initialSearchState } from 'features/search/context/reducer'
 import { useCenterOnLocation } from 'features/venueMap/hook/useCenterOnLocation'
-import { useVenuesInRegionQuery } from 'features/venueMap/useVenuesInRegionQuery'
 import { venuesFixture } from 'libs/algolia/fetchAlgolia/fetchVenues/fixtures/venuesFixture'
 import {
   mockedAlgoliaResponse,
