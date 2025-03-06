@@ -249,13 +249,18 @@ describe('VenueMapViewContainer', () => {
   })
 
   // eslint-disable-next-line jest/no-disabled-tests
-  it.skip('should not display venueMapPreview in bottom sheet if selected marker is not found in venue list', async () => {
+  it('should not display venueMapPreview in bottom sheet if selected marker is not found in venue list', async () => {
+    mockUseVenueOffers(true)
     renderVenueMapViewContainer()
     await screen.findByTestId(`marker-${venuesFixture[0].venueId}`)
 
-    await pressVenueMarker(venuesFixture[0], '666')
+    await act(async () => {
+      await pressVenueMarker(venuesFixture[0], '666')
+    })
 
-    expect(screen.queryByTestId('venueMapPreview')).not.toBeOnTheScreen()
+    await waitFor(() => {
+      expect(screen.queryByTestId('venueMapPreview')).not.toBeOnTheScreen()
+    })
   })
 
   it('should remove selected venue when map is pressed', async () => {
@@ -365,7 +370,9 @@ describe('VenueMapViewContainer', () => {
 
     await user.press(screen.getByTestId('venue-map-view'))
 
-    await pressVenueMarker(venuesFixture[0])
+    await act(async () => {
+      await pressVenueMarker(venuesFixture[0])
+    })
 
     await waitFor(() => expect(mockUseCenterOnLocation).toHaveBeenCalledWith(expect.any(Object)))
   })
