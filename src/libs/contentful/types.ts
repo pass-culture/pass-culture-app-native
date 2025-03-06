@@ -32,7 +32,6 @@ export enum ContentTypes {
   VENUE_MAP_BLOCK = 'venueMapBlock',
   VENUES_PARAMETERS = 'venuesParameters',
   VENUES_PLAYLIST = 'venuesPlaylist',
-  VENUES_PLAYLIST_APP_V2 = 'venuesPlaylistAppV2',
   VIDEO = 'video',
   VIDEO_CAROUSEL = 'videoCarousel',
   VIDEO_CAROUSEL_ITEM = 'videoCarouselItem',
@@ -236,10 +235,6 @@ export interface VenuesFields {
   title: string
   venuesSearchParameters: VenuesParameters[]
   displayParameters: DisplayParameters
-}
-
-interface AppV2VenuesFields extends VenuesFields {
-  homeEntryId: string
 }
 
 // Taken from https://app.contentful.com/spaces/2bg01iqy0isv/environments/testing/content_types/recommendation/fields
@@ -465,7 +460,6 @@ interface HomepageNatifFields {
 
 export type HomepageNatifModule =
   | AlgoliaContentModel
-  | AppV2VenuesContentModel
   | BusinessContentModel
   | ExclusivityContentModel
   | RecommendationContentModel
@@ -493,8 +487,6 @@ export type ThematicHighlightContentModel = Entry<
 >
 
 export type VenuesContentModel = Entry<VenuesFields, ContentTypes.VENUES_PLAYLIST>
-
-export type AppV2VenuesContentModel = Entry<AppV2VenuesFields, ContentTypes.VENUES_PLAYLIST_APP_V2>
 
 export type CategoryListContentModel = Entry<CategoryListFields, ContentTypes.CATEGORY_LIST>
 
@@ -574,11 +566,6 @@ export const isThematicHighlightContentModel = (
 
 export const isVenuesContentModel = (module: HomepageNatifModule): module is VenuesContentModel =>
   module.sys.contentType?.sys.id === ContentTypes.VENUES_PLAYLIST
-
-export const isAppV2VenuesContentModel = (
-  module: HomepageNatifModule
-): module is AppV2VenuesContentModel =>
-  module.sys.contentType?.sys.id === ContentTypes.VENUES_PLAYLIST_APP_V2
 
 export const isCategoryListContentModel = (
   module: HomepageNatifModule

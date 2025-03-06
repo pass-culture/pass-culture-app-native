@@ -10,7 +10,6 @@ import { GtlLevel } from 'shared/gtl/types'
 import { Offer } from 'shared/offer/types'
 
 export enum HomepageModuleType {
-  'AppV2VenuesModule' = 'AppV2VenuesModule',
   'OffersModule' = 'OffersModule',
   'VenuesModule' = 'VenuesModule',
   'BusinessModule' = 'BusinessModule',
@@ -75,7 +74,6 @@ export type Homepage = {
 }
 
 export type HomepageModule =
-  | AppV2VenuesModule
   | OffersModule
   | BusinessModule
   | ExclusivityModule
@@ -244,15 +242,6 @@ export type VenuesModule = {
   data?: ModuleData
 }
 
-export type AppV2VenuesModule = {
-  type: HomepageModuleType.AppV2VenuesModule
-  id: string
-  venuesParameters: VenuesModuleParameters
-  displayParameters: DisplayParameters
-  homeVenuesListEntryId: string
-  data?: ModuleData
-}
-
 export type VenuesModuleParameters = {
   title: string
   venueTypes?: string[]
@@ -398,18 +387,8 @@ export const isVenuesModule = (module: HomepageModule): module is VenuesModule =
   return module.type === HomepageModuleType.VenuesModule
 }
 
-export const isAppV2VenuesModule = (module: HomepageModule): module is AppV2VenuesModule => {
-  return module.type === HomepageModuleType.AppV2VenuesModule
-}
-
 export const isVideoCarouselModule = (module: HomepageModule): module is VideoCarouselModule => {
   return module.type === HomepageModuleType.VideoCarouselModule
-}
-
-export const isOneOfVenuesModule = (
-  module: HomepageModule
-): module is VenuesModule | AppV2VenuesModule => {
-  return isVenuesModule(module) || isAppV2VenuesModule(module)
 }
 
 export const isOffersModule = (module: HomepageModule): module is OffersModule => {

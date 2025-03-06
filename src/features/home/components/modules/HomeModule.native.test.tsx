@@ -16,7 +16,7 @@ import {
   formattedVenuesModule,
 } from 'features/home/fixtures/homepage.fixture'
 import { videoModuleFixture } from 'features/home/fixtures/videoModule.fixture'
-import { HomepageModule, HomepageModuleType, ModuleData } from 'features/home/types'
+import { HomepageModule, ModuleData } from 'features/home/types'
 import { SimilarOffersResponse } from 'features/offer/types'
 import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { venuesSearchFixture } from 'libs/algolia/fixtures/venuesSearchFixture'
@@ -206,21 +206,6 @@ describe('<HomeModule />', () => {
 
   it('should display VenuesModule', async () => {
     renderHomeModule(formattedVenuesModule, defaultDataVenues)
-
-    await waitFor(() => {
-      expect(screen.getByText('Le Petit Rintintin 1')).toBeOnTheScreen()
-    })
-  })
-
-  it('should display AppV2VenuesModule', async () => {
-    renderHomeModule(
-      {
-        ...formattedVenuesModule,
-        type: HomepageModuleType.AppV2VenuesModule,
-        homeVenuesListEntryId: homeEntryId,
-      },
-      defaultDataVenues
-    )
 
     await waitFor(() => {
       expect(screen.getByText('Le Petit Rintintin 1')).toBeOnTheScreen()

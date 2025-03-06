@@ -26,9 +26,7 @@ import { useOnScroll } from 'features/home/pages/helpers/useOnScroll'
 import {
   HomepageModule,
   HomepageModuleType,
-  isAppV2VenuesModule,
   isOffersModule,
-  isOneOfVenuesModule,
   isVenuesModule,
   isVideoCarouselModule,
   ThematicHeader,
@@ -72,7 +70,7 @@ const renderModule = (
     item={item}
     index={index}
     homeEntryId={homeId}
-    data={isOffersModule(item) || isOneOfVenuesModule(item) ? item.data : undefined}
+    data={isOffersModule(item) || isVenuesModule(item) ? item.data : undefined}
     videoModuleId={videoModuleId}
   />
 )
@@ -126,7 +124,7 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = ({
   statusBar,
 }) => {
   const { offersModulesData } = useGetOffersData(modules.filter(isOffersModule))
-  const { venuesModulesData } = useGetVenuesData(modules.filter(isOneOfVenuesModule))
+  const { venuesModulesData } = useGetVenuesData(modules.filter(isVenuesModule))
   const logHasSeenAllModules = useFunctionOnce(async () =>
     analytics.logAllModulesSeen(modules.length)
   )
@@ -159,9 +157,6 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = ({
       module.data = offersModulesData.find((mod) => mod.moduleId === module.id)
     }
     if (isVenuesModule(module)) {
-      module.data = venuesModulesData.find((mod) => mod.moduleId === module.id)
-    }
-    if (isAppV2VenuesModule(module)) {
       module.data = venuesModulesData.find((mod) => mod.moduleId === module.id)
     }
   })

@@ -9,7 +9,6 @@ import { RecommendationModule } from 'features/home/components/modules/Recommend
 import { ThematicHighlightModule } from 'features/home/components/modules/ThematicHighlightModule'
 import { TrendsModule } from 'features/home/components/modules/TrendsModule'
 import { VenueMapModule } from 'features/home/components/modules/VenueMapModule'
-import { AppV2VenuesModule } from 'features/home/components/modules/venues/AppV2VenuesModule'
 import { VenuesModule } from 'features/home/components/modules/venues/VenuesModule'
 import { VideoCarouselModule } from 'features/home/components/modules/video/VideoCarouselModule'
 import { VideoModule } from 'features/home/components/modules/video/VideoModule'
@@ -21,7 +20,6 @@ import {
 } from 'features/home/types'
 
 const modules = {
-  [HomepageModuleType.AppV2VenuesModule]: AppV2VenuesModule,
   [HomepageModuleType.BusinessModule]: BusinessModule,
   [HomepageModuleType.CategoryListModule]: CategoryListModule,
   [HomepageModuleType.ExclusivityModule]: ExclusivityModule,
