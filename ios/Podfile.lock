@@ -19,7 +19,7 @@ PODS:
   - BVLinearGradient (2.8.3):
     - React-Core
   - CocoaAsyncSocket (7.6.5)
-  - CodePush (8.1.0):
+  - CodePush (8.3.1):
     - Base64 (~> 1.1)
     - JWT (~> 3.0.0-beta.12)
     - React-Core
@@ -1146,8 +1146,8 @@ SPEC CHECKSUMS:
   boost: 7dcd2de282d72e344012f7d6564d024930a6a440
   BVLinearGradient: 880f91a7854faff2df62518f0281afb1c60d49a3
   CocoaAsyncSocket: 065fd1e645c7abab64f7a6a2007a48038fdc6a99
-  CodePush: 255d7607f428dcbec39085f81a206b170e01d012
-  DoubleConversion: 5189b271737e1565bdce30deb4a08d647e3f5f54
+  CodePush: d892f13c5012e9e2cb36640f4929654b7be21fe5
+  DoubleConversion: fea03f2699887d960129cc54bba7e52542b6f953
   FBLazyVector: a31ac2336aea59512b5b982f8e231f65d7d148e1
   FBReactNativeSpec: 0976da6bc1ebd3ea9b3a65d04be2c0117d304c4c
   Firebase: 5f8193dff4b5b7c5d5ef72ae54bb76c08e2b841d
@@ -1169,7 +1169,7 @@ SPEC CHECKSUMS:
   Flipper-PeerTalk: 116d8f857dc6ef55c7a5a75ea3ceaafe878aadc9
   FlipperKit: 2efad7007d6745a3f95e4034d547be637f89d3f6
   fmt: ff9d55029c625d3757ed641535fd4a75fedc7ce9
-  glog: 04b94705f318337d7ead9e6d17c019bd9b1f6b1b
+  glog: c5d68082e772fa1c511173d6b30a9de2c05a69a2
   GoogleAppMeasurement: 4c19f031220c72464d460c9daa1fb5d1acce958e
   GoogleDataTransport: 6c09b596d841063d76d4288cc2d2f42cc36e1e2a
   GoogleSignIn: d4281ab6cf21542b1cfaff85c191f230b399d2db
