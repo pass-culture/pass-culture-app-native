@@ -1,4 +1,4 @@
-import { useMutation } from 'react-query'
+import { useMutation } from '@tanstack/react-query'
 
 import { api } from 'api/api'
 import { ResetPasswordRequest, ResetPasswordResponse } from 'api/gen'
@@ -9,7 +9,8 @@ interface MutationOptions {
 }
 
 export const useResetPasswordMutation = ({ onSuccess, onError }: MutationOptions) => {
-  return useMutation((body: ResetPasswordRequest) => api.postNativeV1ResetPassword(body), {
+  return useMutation({
+    mutationFn: (body: ResetPasswordRequest) => api.postNativeV1ResetPassword(body),
     onSuccess,
     onError,
   })

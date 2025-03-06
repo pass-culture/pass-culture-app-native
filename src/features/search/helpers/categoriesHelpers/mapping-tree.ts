@@ -183,5 +183,5 @@ export function getKeyFromStringLabel(input?: string | null): string | null {
     .replace(',', '')
     .replace(/ /g, '_')
     .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '')
+    .replace(/[\u0300-\u036f]/g, '');
 }

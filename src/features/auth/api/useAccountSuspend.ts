@@ -1,4 +1,4 @@
-import { useMutation } from 'react-query'
+import { useMutation } from '@tanstack/react-query'
 
 import { api } from 'api/api'
 
@@ -8,15 +8,13 @@ type UseAccountSuspendOptions = {
 }
 
 export function useAccountSuspend({ onSuccess, onError }: UseAccountSuspendOptions = {}) {
-  const { mutate: suspendAccount, isLoading } = useMutation(
-    () => api.postNativeV1AccountSuspend(),
-    {
-      onSuccess,
-      onError,
-    }
-  )
+  const { mutate: suspendAccount, isPending } = useMutation({
+    mutationFn: () => api.postNativeV1AccountSuspend(),
+    onSuccess,
+    onError,
+  })
   return {
     suspendAccount,
-    isLoading,
+    isLoading: isPending,
   }
 }

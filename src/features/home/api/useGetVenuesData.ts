@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { useQuery } from 'react-query'
+import { useQuery } from '@tanstack/react-query'
 
 import { mapVenuesDataAndModules } from 'features/home/api/helpers/mapVenuesDataAndModules'
 import { AppV2VenuesModule, VenuesModule, VenuesModuleParameters } from 'features/home/types'

@@ -34,7 +34,7 @@ export const useFilterCount = (searchState: SearchState): number => {
 
   return (
     // Lieux culturels
-    +!!venue +
+    (+!!venue +
     // Catégories
     +hasCategories +
     // Prix ou gratuit
@@ -42,8 +42,7 @@ export const useFilterCount = (searchState: SearchState): number => {
     // Uniquement les offres duo
     +offerIsDuo +
     // Date & heure
-    +hasDatesHours +
-    //
-    +hasActivatedAccessibility
-  )
+    +hasDatesHours + //
+    +hasActivatedAccessibility)
+  );
 }

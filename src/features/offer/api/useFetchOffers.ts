@@ -1,4 +1,4 @@
-import { useQuery } from 'react-query'
+import { useQuery } from '@tanstack/react-query'
 
 import { fetchOffers } from 'libs/algolia/fetchAlgolia/fetchOffers'
 import { QueryKeys } from 'libs/queryKeys'

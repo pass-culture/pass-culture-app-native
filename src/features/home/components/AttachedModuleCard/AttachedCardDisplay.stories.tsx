@@ -57,7 +57,7 @@ const variantConfig: Variants<typeof AttachedCardDisplay> = [
     props: {
       bottomRightElement: (
         // eslint-disable-next-line react-native/no-inline-styles
-        <ArrowRight style={{ flexShrink: 0 }} size={theme.icons.sizes.extraSmall} />
+        (<ArrowRight style={{ flexShrink: 0 }} size={theme.icons.sizes.extraSmall} />)
       ),
     },
   },

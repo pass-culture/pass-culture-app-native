@@ -1,5 +1,5 @@
 import React from 'react'
-import { QueryObserverResult } from 'react-query'
+import { QueryObserverResult } from '@tanstack/react-query'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { BookingsResponse, ReactionTypeEnum, SubcategoriesResponseModelv2 } from 'api/gen'

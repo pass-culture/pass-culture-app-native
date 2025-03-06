@@ -1,6 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
 import { useCallback } from 'react'
-import { useQueryClient } from 'react-query'
+import { useQueryClient } from '@tanstack/react-query'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { analytics } from 'libs/analytics/provider'

@@ -19,9 +19,9 @@ import { navigationRef } from '../navigationRef'
 import { onNavigationStateChange } from '../services'
 
 const getNavThemeConfig = (theme: DefaultTheme) =>
-  ({
-    colors: { background: theme.colors.white },
-  }) as Theme
+  (({
+    colors: { background: theme.colors.white }
+  }) as Theme)
 const SECONDARY_TITLE = author?.name || 'pass Culture'
 const DOCUMENT_TITLE_OPTIONS: DocumentTitleOptions = {
   formatter(options, _route) {

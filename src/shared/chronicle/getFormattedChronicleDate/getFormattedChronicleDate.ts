@@ -5,5 +5,5 @@ export function getFormattedChronicleDate(dateString: string) {
     year: 'numeric',
   }).format(date)
 
-  return formattedDate.replace(/^\w/, (c) => c.toUpperCase())
+  return formattedDate.replace(/^\w/, (c) => c.toUpperCase());
 }

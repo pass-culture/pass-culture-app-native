@@ -1,4 +1,4 @@
-import { onlineManager, useQuery } from 'react-query'
+import { onlineManager, useQuery } from '@tanstack/react-query'
 
 import { getAllFeatureFlags } from 'libs/firebase/firestore/featureFlags/getAllFeatureFlags'
 import { FeatureFlagConfig, squads } from 'libs/firebase/firestore/featureFlags/types'

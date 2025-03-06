@@ -1,4 +1,4 @@
-import { UseQueryResult } from 'react-query'
+import { UseQueryResult } from '@tanstack/react-query'
 
 import { OfferResponseV2 } from 'api/gen'
 import * as excluOfferAPI from 'features/home/api/useExcluOffer'

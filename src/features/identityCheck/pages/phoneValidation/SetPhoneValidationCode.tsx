@@ -174,7 +174,7 @@ export const SetPhoneValidationCode = () => {
 
 export const hasCodeCorrectFormat = (code: string) => {
   // exactly 6 digits, no spaces
-  return !!code.match(/^\d{6}$/)
+  return !!code.match(/^\d{6}$/);
 }
 
 const StyledBody = styled(TypoDS.Body)(({ theme }) => ({

@@ -58,6 +58,6 @@ export function parseMarkdown(markdown: string, styles: TextStyle = {}): Markdow
     return {
       ...partObject,
       text: partObject.text.replace(/{URL-(\d+)}/g, url),
-    }
-  })
+    };
+  });
 }

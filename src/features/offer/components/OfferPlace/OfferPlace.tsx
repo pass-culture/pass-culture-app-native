@@ -1,7 +1,7 @@
 import { useNavigation } from '@react-navigation/native'
 import React, { useCallback } from 'react'
 import { View } from 'react-native'
-import { useQueryClient } from 'react-query'
+import { useQueryClient } from '@tanstack/react-query'
 import { useTheme } from 'styled-components/native'
 
 import { OfferResponseV2, SubcategoryIdEnum, VenueResponse } from 'api/gen'

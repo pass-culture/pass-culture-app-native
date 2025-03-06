@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { QueryObserverResult } from 'react-query'
+import { QueryObserverResult } from '@tanstack/react-query'
 
 import { UserProfileResponse } from 'api/gen'
 
@@ -15,7 +15,7 @@ export const AuthContext = React.createContext<IAuthContext>({
   isLoggedIn: false,
   setIsLoggedIn: () => undefined,
   user: undefined,
-  refetchUser: async () => ({}) as QueryObserverResult<UserProfileResponse>,
+  refetchUser: async () => (({}) as QueryObserverResult<UserProfileResponse>),
   isUserLoading: false,
 })
 

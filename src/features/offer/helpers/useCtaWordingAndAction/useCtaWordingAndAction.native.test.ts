@@ -964,7 +964,7 @@ const buildOffer = (partialOffer: Partial<OfferResponseV2>): OfferResponseV2 => 
 
 const baseSubcategory = subcategoriesDataTest.subcategories[0]
 const buildSubcategory = (partialSubcategory: Partial<Subcategory>): Subcategory =>
-  ({
+  (({
     ...baseSubcategory,
-    ...partialSubcategory,
-  }) as Subcategory
+    ...partialSubcategory
+  }) as Subcategory)

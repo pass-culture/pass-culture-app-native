@@ -28,7 +28,7 @@ const TouchableWithoutRef: React.ForwardRefRenderFunction<HTMLButtonElement, Tou
     Warning: Unknown event handler property `onPress`. It will be ignored.
     */
   // @ts-ignore bug with typescript
-  <StyledTouchable ref={ref} onClick={onPress} {...rest} />
+  (<StyledTouchable ref={ref} onClick={onPress} {...rest} />)
 )
 
 export const Touchable = React.forwardRef<HTMLButtonElement, TouchableProps>(TouchableWithoutRef)

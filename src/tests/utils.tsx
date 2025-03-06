@@ -36,7 +36,7 @@ const DefaultWrapper = ({ theme, children }: PropsWithTheme) => {
         <IconFactoryProvider>{children}</IconFactoryProvider>
       </ThemeProvider>
     </ThemeProviderWeb>
-  )
+  );
 }
 
 type RenderOptions = {

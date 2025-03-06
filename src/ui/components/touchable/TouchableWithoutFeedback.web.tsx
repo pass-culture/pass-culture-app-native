@@ -29,5 +29,5 @@ export const TouchableWithoutFeedback: React.ForwardRefRenderFunction<
     Warning: Unknown event handler property `onPress`. It will be ignored.
     */
   // @ts-ignore bug with typescript
-  <StyledTouchableWithoutFeedback onClick={onPress} {...rest} />
+  (<StyledTouchableWithoutFeedback onClick={onPress} {...rest} />)
 )

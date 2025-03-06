@@ -1,6 +1,6 @@
 import { SearchResponse } from '@algolia/client-search'
 import { flatten, uniqBy } from 'lodash'
-import { UseQueryResult } from 'react-query'
+import { UseQueryResult } from '@tanstack/react-query'
 
 import { ModuleData, OfferModuleParamsInfo } from 'features/home/types'
 import { filterOfferHitWithImage } from 'libs/algolia/fetchAlgolia/transformOfferHit'
