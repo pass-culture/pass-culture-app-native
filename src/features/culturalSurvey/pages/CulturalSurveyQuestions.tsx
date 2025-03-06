@@ -7,8 +7,6 @@ import styled from 'styled-components/native'
 import { extractApiErrorMessage } from 'api/apiHelpers'
 import { CulturalSurveyAnswer, CulturalSurveyAnswerEnum, CulturalSurveyQuestionEnum } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { useCulturalSurveyAnswersMutation } from 'features/culturalSurvey/api/useCulturalSurveyAnswers'
-import { useCulturalSurveyQuestions } from 'features/culturalSurvey/api/useCulturalSurveyQuestions'
 import { CulturalSurveyCheckbox } from 'features/culturalSurvey/components/CulturalSurveyCheckbox'
 import { CulturalSurveyPageHeader } from 'features/culturalSurvey/components/CulturalSurveyPageHeader'
 import { useCulturalSurveyContext } from 'features/culturalSurvey/context/CulturalSurveyContextProvider'
@@ -19,6 +17,8 @@ import {
 } from 'features/culturalSurvey/helpers/questionsToDisplay'
 import { useCulturalSurveyProgress } from 'features/culturalSurvey/helpers/useCulturalSurveyProgress'
 import { useGetNextQuestion } from 'features/culturalSurvey/helpers/useGetNextQuestion'
+import { useCulturalSurveyAnswersMutation } from 'features/culturalSurvey/queries/useCulturalSurveyAnswersMutation'
+import { useCulturalSurveyQuestionsQuery } from 'features/culturalSurvey/queries/useCulturalSurveyQuestionsQuery'
 import { navigateToHome, navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import {
   CulturalSurveyRootStackParamList,
@@ -49,7 +49,7 @@ export function CulturalSurveyQuestions({ route }: CulturalSurveyQuestionsProps)
   )
   const [bottomChildrenViewHeight, setBottomChildrenViewHeight] = useState(0)
   const { push, reset } = useNavigation<UseNavigationType>()
-  const { data: culturalSurveyQuestionsData } = useCulturalSurveyQuestions()
+  const { data: culturalSurveyQuestionsData } = useCulturalSurveyQuestionsQuery()
   const { nextQuestion, isCurrentQuestionLastQuestion } = useGetNextQuestion(route.params.question)
   const culturalSurveyProgress = useCulturalSurveyProgress(route.params.question)
   const { showErrorSnackBar } = useSnackBarContext()

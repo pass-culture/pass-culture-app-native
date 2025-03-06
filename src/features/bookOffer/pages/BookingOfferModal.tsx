@@ -6,7 +6,6 @@ import { useTheme } from 'styled-components/native'
 import { ApiError } from 'api/ApiError'
 import { isApiError } from 'api/apiHelpers'
 import { RecommendationApiParams, SubcategoryIdEnum } from 'api/gen'
-import { useBookOfferMutation } from 'features/bookOffer/api/useBookOfferMutation'
 import { BookingCloseInformation } from 'features/bookOffer/components/BookingCloseInformation'
 import { BookingOfferModalFooter } from 'features/bookOffer/components/BookingOfferModalFooter'
 import { BookingOfferModalHeader } from 'features/bookOffer/components/BookingOfferModalHeader'
@@ -17,11 +16,12 @@ import { getStockWithCategory } from 'features/bookOffer/helpers/bookingHelpers/
 import { useBookingStock } from 'features/bookOffer/helpers/useBookingStock'
 import { useModalContent } from 'features/bookOffer/helpers/useModalContent'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
-import { useOffer } from 'features/offer/api/useOffer'
 import { MovieScreeningBookingData } from 'features/offer/components/MovieScreeningCalendar/types'
 import { useLogOfferConversion } from 'libs/algolia/analytics/logOfferConversion'
 import { analytics } from 'libs/analytics/provider'
 import { CampaignEvents, campaignTracker } from 'libs/campaign'
+import { useBookOfferMutation } from 'queries/bookOffer/useBookOfferMutation'
+import { useOfferQuery } from 'queries/offer/useOfferQuery'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { ModalLeftIconProps } from 'ui/components/modals/types'
 import { useModal } from 'ui/components/modals/useModal'
@@ -50,7 +50,7 @@ export const BookingOfferModalComponent: React.FC<BookingOfferModalComponentProp
   isEndedUsedBooking,
   bookingDataMovieScreening,
 }) => {
-  const { data: offer } = useOffer({ offerId })
+  const { data: offer } = useOfferQuery({ offerId })
   const { dismissModal, dispatch, bookingState } = useBookingContext()
   const { step } = bookingState
   const { navigate } = useNavigation<UseNavigationType>()

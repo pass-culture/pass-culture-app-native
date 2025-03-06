@@ -13,7 +13,7 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { OfferResponseV2, RecommendationApiParams } from 'api/gen'
 import { ChronicleCardData } from 'features/chronicle/type'
-import { useAddFavorite, useFavorite, useRemoveFavorite } from 'features/favorites/api'
+import { useFavorite } from 'features/favorites/hooks/useFavorite'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { OfferBody } from 'features/offer/components/OfferBody/OfferBody'
 import { ChronicleSection } from 'features/offer/components/OfferContent/ChronicleSection/ChronicleSection'
@@ -32,6 +32,8 @@ import { isCloseToBottom } from 'libs/analytics'
 import { analytics } from 'libs/analytics/provider'
 import { useFunctionOnce } from 'libs/hooks'
 import { QueryKeys } from 'libs/queryKeys'
+import { useAddFavoriteMutation } from 'queries/favorites/useAddFavoriteMutation'
+import { useRemoveFavoriteMutation } from 'queries/favorites/useRemoveFavoriteMutation'
 import { getImagesUrlsWithCredit } from 'shared/getImagesUrlsWithCredit/getImagesUrlsWithCredit'
 import { ImageWithCredit } from 'shared/types'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
@@ -136,7 +138,7 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
     [onScroll]
   )
 
-  const { mutate: addFavorite, isLoading: isAddFavoriteLoading } = useAddFavorite({
+  const { mutate: addFavorite, isLoading: isAddFavoriteLoading } = useAddFavoriteMutation({
     onSuccess: () => {
       if (typeof offer.id === 'number' && params) {
         const { from, moduleName, moduleId, searchId, playlistType } = params
@@ -153,7 +155,7 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
     },
   })
 
-  const { mutate: removeFavorite, isLoading: isRemoveFavoriteLoading } = useRemoveFavorite({
+  const { mutate: removeFavorite, isLoading: isRemoveFavoriteLoading } = useRemoveFavoriteMutation({
     onError: () => {
       showErrorSnackBar({
         message: 'L’offre n’a pas été retirée de tes favoris',

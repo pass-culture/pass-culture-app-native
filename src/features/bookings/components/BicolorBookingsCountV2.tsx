@@ -2,7 +2,7 @@ import React from 'react'
 import { Animated } from 'react-native'
 import styled from 'styled-components/native'
 
-import { useScaleAnimation } from 'features/favorites/helpers/useScaleFavoritesAnimation'
+import { useScaleAnimation } from 'features/favorites/hooks/useScaleFavoritesAnimation'
 import { createLabels } from 'shared/handleTooManyCount/countUtils'
 import { BicolorBookings } from 'ui/svg/icons/BicolorBookings'
 import { AccessibleBicolorIcon } from 'ui/svg/icons/types'

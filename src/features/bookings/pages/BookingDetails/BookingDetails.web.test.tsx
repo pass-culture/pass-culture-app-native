@@ -3,8 +3,8 @@ import { UseQueryResult } from 'react-query'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
 import { BookingReponse, SubcategoriesResponseModelv2 } from 'api/gen'
-import * as ongoingOrEndedBookingAPI from 'features/bookings/api/useOngoingOrEndedBooking'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
+import * as ongoingOrEndedBookingAPI from 'features/bookings/queries/useOngoingOrEndedBookingQuery'
 import { Booking } from 'features/bookings/types'
 import { withAsyncErrorBoundary } from 'features/errors/hocs/withAsyncErrorBoundary'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
@@ -52,7 +52,7 @@ describe('BookingDetails', () => {
 })
 
 function renderBookingDetails(booking: Booking) {
-  jest.spyOn(ongoingOrEndedBookingAPI, 'useOngoingOrEndedBooking').mockReturnValue({
+  jest.spyOn(ongoingOrEndedBookingAPI, 'useOngoingOrEndedBookingQuery').mockReturnValue({
     data: booking,
     isLoading: false,
     isSuccess: true,

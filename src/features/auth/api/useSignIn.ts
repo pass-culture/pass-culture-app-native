@@ -7,7 +7,6 @@ import { isApiError } from 'api/apiHelpers'
 import { AccountState, FavoriteResponse } from 'api/gen'
 import { useLoginRoutine } from 'features/auth/helpers/useLoginRoutine'
 import { LoginRequest, SignInResponseFailure } from 'features/auth/types'
-import { useAddFavorite } from 'features/favorites/api'
 import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import {
   RootStackParamList,
@@ -18,6 +17,7 @@ import { useDeviceInfo } from 'features/trustedDevice/helpers/useDeviceInfo'
 import { LoginRoutineMethod, SSOType } from 'libs/analytics/logEventAnalytics'
 import { analytics } from 'libs/analytics/provider'
 import { storage } from 'libs/storage'
+import { useAddFavoriteMutation } from 'queries/favorites/useAddFavoriteMutation'
 import { useShouldShowCulturalSurveyForBeneficiaryUser } from 'shared/culturalSurvey/useShouldShowCulturalSurveyForBeneficiaryUser'
 
 export const useSignIn = ({
@@ -81,7 +81,7 @@ const useHandleSigninSuccess = (
     }
   }, [])
 
-  const { mutate: addFavorite } = useAddFavorite({
+  const { mutate: addFavorite } = useAddFavoriteMutation({
     onSuccess: onAddFavoriteSuccess,
   })
 

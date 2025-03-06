@@ -3,7 +3,6 @@ import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { OfferStockResponse, SubcategoryIdEnum } from 'api/gen'
-import { useSearchVenueOffers } from 'api/useSearchVenuesOffer/useSearchVenueOffers'
 import { Item } from 'features/bookings/components/BookingItemWithIcon'
 import { FREE_OFFER_CATEGORIES_TO_ARCHIVE } from 'features/bookings/constants'
 import { BookingInformations } from 'features/bookOffer/components/BookingInformations'
@@ -24,6 +23,7 @@ import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
 import { useLocation } from 'libs/location'
 import { useSubcategoriesMapping } from 'libs/subcategories'
+import { useSearchVenueOffersInfiniteQuery } from 'queries/searchVenuesOffer/useSearchVenueOffersInfiniteQuery'
 import { formatFullAddress } from 'shared/address/addressFormatter'
 import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
@@ -114,7 +114,9 @@ export function BookingDetails({ stocks, onPressBookOffer, isLoading }: BookingD
     nbHits,
     nbLoadedHits,
     isFetchingNextPage,
-  } = useSearchVenueOffers(Object.assign(defaultSearchVenueOffers, currentSearchVenueOffers))
+  } = useSearchVenueOffersInfiniteQuery(
+    Object.assign(defaultSearchVenueOffers, currentSearchVenueOffers)
+  )
   const [isCguChecked, setIsCguChecked] = useState(false)
 
   const isRefreshing = useIsFalseWithDelay(isFetching, ANIMATION_DURATION)

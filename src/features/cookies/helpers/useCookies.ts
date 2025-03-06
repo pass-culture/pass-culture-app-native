@@ -1,22 +1,17 @@
-import { omit } from 'lodash'
 import { Dispatch, SetStateAction, useEffect, useState } from 'react'
-import { useMutation } from 'react-query'
 
-import { api } from 'api/api'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { ConsentState } from 'features/cookies/enums'
 import { isConsentChoiceExpired } from 'features/cookies/helpers/isConsentChoiceExpired'
 import { startTrackingAcceptedCookies } from 'features/cookies/helpers/startTrackingAcceptedCookies'
 import { Consent, ConsentStatus, CookiesConsent } from 'features/cookies/types'
-import { useLogTypeFromRemoteConfig } from 'libs/hooks/useLogTypeFromRemoteConfig'
-import { LogTypeEnum } from 'libs/monitoring/errors'
-import { eventMonitoring } from 'libs/monitoring/services'
 import { getAppBuildVersion } from 'libs/packageJson'
 import { getDeviceId } from 'libs/react-native-device-info/getDeviceId'
 import { storage } from 'libs/storage'
-import { getErrorMessage } from 'shared/getErrorMessage/getErrorMessage'
 
-const COOKIES_CONSENT_KEY = 'cookies'
+import { usePersistCookieConsentMutation } from '../queries/usePersistCookieConsentMutation/usePersistCookieConsentMutation'
+
+import { COOKIES_CONSENT_KEY } from './cookiesConsentKey'
 
 export const getCookiesChoice = async () => storage.readObject<CookiesConsent>(COOKIES_CONSENT_KEY)
 
@@ -33,7 +28,7 @@ export const useCookies = () => {
     state: ConsentState.LOADING,
   })
   const { user: userProfileInfo } = useAuthContext()
-  const { mutateAsync: persist } = usePersistCookieConsent()
+  const { mutateAsync: persist } = usePersistCookieConsentMutation()
 
   useEffect(() => {
     getCookiesChoice().then((cookies) => {
@@ -109,26 +104,4 @@ const setConsentAndChoiceDateTime = (
       setCookiesConsentInternalState({ state: ConsentState.UNKNOWN })
     }
   }
-}
-
-const usePersistCookieConsent = () => {
-  const { logType } = useLogTypeFromRemoteConfig()
-
-  return useMutation(async (cookiesChoice: CookiesConsent): Promise<void> => {
-    await storage.saveObject(COOKIES_CONSENT_KEY, cookiesChoice)
-
-    try {
-      if (cookiesChoice.consent) {
-        await api.postNativeV1CookiesConsent(omit(cookiesChoice, ['buildVersion']))
-      }
-    } catch (error) {
-      if (logType === LogTypeEnum.INFO) {
-        const errorMessage = getErrorMessage(error)
-        eventMonitoring.captureException(
-          `can‘t log cookies consent choice ; reason: "${errorMessage}"`,
-          { level: logType, extra: { error } }
-        )
-      }
-    }
-  })
 }

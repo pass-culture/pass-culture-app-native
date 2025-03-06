@@ -16,12 +16,7 @@ import {
   YoungStatusType,
 } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import {
-  useBookings,
-  useEndedBookingFromOfferId,
-  useOngoingOrEndedBooking,
-} from 'features/bookings/api'
-import { useBookOfferMutation } from 'features/bookOffer/api/useBookOfferMutation'
+import { useOngoingOrEndedBookingQuery } from 'features/bookings/queries'
 import { openUrl } from 'features/navigation/helpers/openUrl'
 import { Referrals, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { BottomBannerTextEnum } from 'features/offer/components/MovieScreeningCalendar/enums'
@@ -32,6 +27,9 @@ import { getIsFreeDigitalOffer } from 'features/offer/helpers/getIsFreeDigitalOf
 import { isUserUnderageBeneficiary } from 'features/profile/helpers/isUserUnderageBeneficiary'
 import { analytics } from 'libs/analytics/provider'
 import { Subcategory } from 'libs/subcategories/types'
+import { useBookingsQuery } from 'queries/bookings/useBookingsQuery'
+import { useEndedBookingFromOfferIdQuery } from 'queries/bookings/useEndedBookingFromOfferIdQuery'
+import { useBookOfferMutation } from 'queries/bookOffer/useBookOfferMutation'
 import { getDigitalOfferBookingWording } from 'shared/getDigitalOfferBookingWording/getDigitalOfferBookingWording'
 import { OfferModal } from 'shared/offer/enums'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
@@ -341,7 +339,7 @@ export const useCtaWordingAndAction = (props: UseGetCtaWordingAndActionProps) =>
   const { isLoggedIn, user } = useAuthContext()
   const hasEnoughCredit = useHasEnoughCredit(offer)
   const isUnderageBeneficiary = isUserUnderageBeneficiary(user)
-  const { data: endedBooking } = useEndedBookingFromOfferId(offerId)
+  const { data: endedBooking } = useEndedBookingFromOfferIdQuery(offerId)
   const { showErrorSnackBar } = useSnackBarContext()
   const route = useRoute<UseRouteType<'Offer'>>()
   const apiRecoParams: RecommendationApiParams = route.params.apiRecoParams
@@ -354,7 +352,7 @@ export const useCtaWordingAndAction = (props: UseGetCtaWordingAndActionProps) =>
     ? new Date(user?.depositExpirationDate) < new Date()
     : false
 
-  const { refetch: getBookings } = useBookings()
+  const { refetch: getBookings } = useBookingsQuery()
 
   async function redirectToBookingAction(response: BookOfferResponse) {
     const bookings = await getBookings()
@@ -387,7 +385,9 @@ export const useCtaWordingAndAction = (props: UseGetCtaWordingAndActionProps) =>
     },
   })
   const { isBeneficiary = false, bookedOffers = {}, status } = user ?? {}
-  const { data: booking } = useOngoingOrEndedBooking(getBookingOfferId(offerId, bookedOffers) ?? 0)
+  const { data: booking } = useOngoingOrEndedBookingQuery(
+    getBookingOfferId(offerId, bookedOffers) ?? 0
+  )
   /* check I have all information to calculate wording
    * why: avoid flash on CTA wording
    * The venue.id is not available on Homepage, or wherever we click on an offer

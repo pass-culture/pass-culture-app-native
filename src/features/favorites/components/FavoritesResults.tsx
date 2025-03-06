@@ -13,7 +13,6 @@ import styled from 'styled-components/native'
 import { FavoriteOfferResponse, FavoriteResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { BookingOfferModal } from 'features/bookOffer/pages/BookingOfferModal'
-import { useFavorites } from 'features/favorites/api'
 import { Sort } from 'features/favorites/components/Buttons/Sort'
 import { Favorite } from 'features/favorites/components/Favorite'
 import { NoFavoritesResult } from 'features/favorites/components/NoFavoritesResult'
@@ -24,6 +23,7 @@ import {
   sortByDistanceAroundMe,
   sortByIdDesc,
 } from 'features/favorites/helpers/sorts'
+import { useFavoritesQuery } from 'features/favorites/queries'
 import { FavoriteSortBy } from 'features/favorites/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
@@ -75,7 +75,7 @@ const UnmemoizedFavoritesResults: FunctionComponent = () => {
   const flatListRef = useRef<FlatList<FavoriteResponse> | null>(null)
   const favoritesState = useFavoritesState()
   const { geolocPosition: position } = useLocation()
-  const { data, isLoading, isFetching, refetch } = useFavorites()
+  const { data, isLoading, isFetching, refetch } = useFavoritesQuery()
   const showSkeleton = useIsFalseWithDelay(isLoading, ANIMATION_DURATION)
   const isRefreshing = useIsFalseWithDelay(isFetching, ANIMATION_DURATION)
 

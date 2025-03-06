@@ -2,12 +2,12 @@ import React, { FunctionComponent, useCallback, useMemo } from 'react'
 
 import { OfferResponseV2, PostReactionRequest, ReactionTypeEnum } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { useBookings } from 'features/bookings/api'
 import { OfferReactions } from 'features/offer/components/OfferReactions/OfferReactions'
 import { useReactionMutation } from 'features/reactions/api/useReactionMutation'
 import { ReactionChoiceValidation } from 'features/reactions/components/ReactionChoiceValidation/ReactionChoiceValidation'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { useBookingsQuery } from 'queries/bookings/useBookingsQuery'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 
 type Props = {
@@ -17,7 +17,7 @@ type Props = {
 export const OfferReactionSection: FunctionComponent<Props> = ({ offer }) => {
   const isReactionFeatureActive = useFeatureFlag(RemoteStoreFeatureFlags.WIP_REACTION_FEATURE)
   const { isLoggedIn, user } = useAuthContext()
-  const { data: bookings } = useBookings()
+  const { data: bookings } = useBookingsQuery()
   const { mutate: addReaction } = useReactionMutation()
 
   const userBooking = useMemo(

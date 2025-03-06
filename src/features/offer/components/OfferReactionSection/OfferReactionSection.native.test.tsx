@@ -1,12 +1,12 @@
 import React, { ComponentProps } from 'react'
 
 import { ReactionTypeEnum } from 'api/gen'
-import { useBookings } from 'features/bookings/api'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { OfferReactionSection } from 'features/offer/components/OfferReactionSection/OfferReactionSection'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { useBookingsQuery } from 'queries/bookings/useBookingsQuery'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
@@ -52,8 +52,8 @@ const mockBookingsWithDislike = {
   ],
 }
 
-jest.mock('features/bookings/api')
-const mockUseBookings = useBookings as jest.Mock
+jest.mock('queries/bookings/useBookingsQuery')
+const mockUseBookings = useBookingsQuery as jest.Mock
 
 jest.mock('features/auth/context/AuthContext')
 

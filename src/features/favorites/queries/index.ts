@@ -1,0 +1,1 @@
+export { useFavoritesQuery } from './useFavoritesQuery'

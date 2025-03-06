@@ -12,8 +12,8 @@ jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 const mockBookings = { ...bookingsSnap }
-jest.mock('features/bookings/api/useBookings', () => ({
-  useBookings: jest.fn(() => ({ data: mockBookings })),
+jest.mock('queries/bookings/useBookingsQuery', () => ({
+  useBookingsQuery: jest.fn(() => ({ data: mockBookings })),
 }))
 
 const mockUseSubcategoriesMapping = jest.fn()

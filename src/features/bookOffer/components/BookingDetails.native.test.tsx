@@ -128,8 +128,8 @@ const mockData = {
 }
 let mockVenueList: VenueListItem[] = []
 let mockNbVenueItems = 0
-jest.mock('api/useSearchVenuesOffer/useSearchVenueOffers', () => ({
-  useSearchVenueOffers: () => ({
+jest.mock('queries/searchVenuesOffer/useSearchVenueOffersInfiniteQuery', () => ({
+  useSearchVenueOffersInfiniteQuery: () => ({
     hasNextPage: mockHasNextPage,
     fetchNextPage: mockFetchNextPage,
     data: mockData,
