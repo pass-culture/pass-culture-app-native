@@ -7,7 +7,6 @@ import { Home as HomeComponent } from 'features/home/pages/Home'
 import { profileNavigatorPathConfig } from 'features/navigation/ProfileStackNavigator/profileNavigatorPathConfig'
 import { ProfileStackNavigator } from 'features/navigation/ProfileStackNavigator/ProfileStackNavigator'
 import { getScreensAndConfig } from 'features/navigation/RootNavigator/linking/getScreensConfig'
-import { ScreenNames } from 'features/navigation/RootNavigator/types'
 import { screenParamsParser } from 'features/navigation/screenParamsUtils'
 import { searchNavigatorPathConfig } from 'features/navigation/SearchStackNavigator/routes'
 import { SuspenseSearchStackNavigator } from 'features/navigation/SearchStackNavigator/SuspenseSearchStackNavigator'
@@ -52,11 +51,8 @@ const routes: TabRoute[] = [
   },
 ]
 
-const tabRouteNames = routes.map((route) => route.name)
-
-// Typeguard for screen params
-export function isTabScreen(screen: ScreenNames): screen is TabRouteName {
-  // @ts-expect-error : ScreenNames is not necessarily a screen in tabRouteNames
+export function isTabScreen(screen: string): screen is TabRouteName {
+  const tabRouteNames = routes.map((route): string => route.name)
   return tabRouteNames.includes(screen)
 }
 

@@ -6,6 +6,7 @@ import { openUrl } from 'features/navigation/helpers/openUrl'
 import { navigateFromRef } from 'features/navigation/navigationRef'
 import { getScreenPath } from 'features/navigation/RootNavigator/linking/getScreenPath'
 import { analytics } from 'libs/analytics/provider'
+import { eventMonitoring } from 'libs/monitoring/services'
 import { act } from 'tests/utils'
 
 jest.mock('libs/monitoring/services')
@@ -103,6 +104,23 @@ describe('openUrl', () => {
 
       expect(openURL).not.toHaveBeenCalled()
       expect(navigateFromRef).toHaveBeenCalledWith('PageNotFound', undefined)
+    })
+
+    it('should log to sentry and navigate to the home when there is an error', async () => {
+      const openURL = openURLSpy.mockResolvedValueOnce(undefined)
+      getScreenFromDeeplinkModuleSpy.mockImplementationOnce(() => {
+        throw new Error('Nope')
+      })
+
+      const link = 'https://mockValidPrefix2' + '/unknown'
+      await openUrl(link)
+
+      expect(openURL).not.toHaveBeenCalled()
+      expect(navigateFromRef).toHaveBeenCalledWith('TabNavigator', {
+        params: undefined,
+        screen: 'Home',
+      })
+      expect(eventMonitoring.captureException).toHaveBeenCalledWith(new Error('Nope'))
     })
   })
 

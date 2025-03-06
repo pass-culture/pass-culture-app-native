@@ -1,12 +1,8 @@
 import { ComponentForPathConfig } from 'features/navigation/ComponentForPathConfig'
-import { ProfileStackRouteName } from 'features/navigation/ProfileStackNavigator/ProfileStack'
-import { GenericRoute } from 'features/navigation/RootNavigator/types'
-
-type ProfileStackParamList = {
-  Profile: undefined
-}
-
-type ProfileStackRoute = GenericRoute<ProfileStackParamList>
+import {
+  ProfileStackRoute,
+  ProfileStackRouteName,
+} from 'features/navigation/ProfileStackNavigator/ProfileStack'
 
 export const routes: ProfileStackRoute[] = [
   {

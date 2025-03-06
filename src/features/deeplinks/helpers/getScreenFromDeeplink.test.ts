@@ -8,7 +8,7 @@ import { WEBAPP_V2_URL } from 'libs/environment/useWebAppUrl'
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
-// TODO(PC-34456): remove this global mock
+// TODO(PC-34456): remove the global mock
 jest.unmock('features/navigation/RootNavigator/routes')
 
 describe('getScreenFromDeeplink()', () => {
