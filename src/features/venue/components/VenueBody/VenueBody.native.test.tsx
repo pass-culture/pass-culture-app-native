@@ -1,4 +1,5 @@
 import mockdate from 'mockdate'
+import { useVenueOffersQuery } from 'queries/useVenueOffersQuery/useVenueOffersQuery'
 import React from 'react'
 import { Linking } from 'react-native'
 
@@ -6,7 +7,6 @@ import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { CategoryIdEnum } from 'api/gen'
 import { gtlPlaylistAlgoliaSnapshot } from 'features/gtlPlaylist/fixtures/gtlPlaylistAlgoliaSnapshot'
 import * as useGTLPlaylists from 'features/gtlPlaylist/hooks/useGTLPlaylists'
-import { useVenueOffers } from 'features/venue/api/useVenueOffers'
 import { VenueBody } from 'features/venue/components/VenueBody/VenueBody'
 import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
 import { VenueOffersResponseSnap } from 'features/venue/fixtures/venueOffersResponseSnap'
@@ -25,7 +25,7 @@ jest
   .mockReturnValue({ isLoading: false, gtlPlaylists: gtlPlaylistAlgoliaSnapshot })
 
 jest.mock('features/venue/api/useVenueOffers')
-const mockUseVenueOffers = useVenueOffers as jest.Mock
+const mockUseVenueOffers = useVenueOffersQuery as jest.Mock
 mockUseVenueOffers.mockReturnValue({
   isLoading: false,
   data: { hits: VenueOffersResponseSnap, nbHits: 10 },

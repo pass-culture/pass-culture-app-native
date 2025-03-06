@@ -1,12 +1,12 @@
 import { BottomTabBarHeightContext } from '@react-navigation/bottom-tabs'
 import { useNavigation, useRoute } from '@react-navigation/native'
+import * as useVenueOffers from 'queries/useVenueOffersQuery/useVenueOffersQuery'
 import React from 'react'
 import { State } from 'react-native-gesture-handler'
 import { fireGestureHandler, getByGestureTestId } from 'react-native-gesture-handler/jest-utils'
 import { UseQueryResult } from 'react-query'
 
 import { PlaylistType } from 'features/offer/enums'
-import * as useVenueOffers from 'features/venue/api/useVenueOffers'
 import { VenueOffersResponseSnap } from 'features/venue/fixtures/venueOffersResponseSnap'
 import * as useVenueSearchParameters from 'features/venue/helpers/useVenueSearchParameters'
 import { VenueOffers } from 'features/venue/types'

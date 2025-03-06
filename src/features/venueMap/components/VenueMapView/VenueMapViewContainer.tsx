@@ -1,6 +1,7 @@
 import BottomSheet from '@gorhom/bottom-sheet'
 import { BottomTabBarHeightContext } from '@react-navigation/bottom-tabs'
 import { useNavigation, useRoute } from '@react-navigation/native'
+import { useVenueOffersQuery } from 'queries/useVenueOffersQuery/useVenueOffersQuery'
 import React, {
   FunctionComponent,
   useCallback,
@@ -17,7 +18,6 @@ import styled from 'styled-components/native'
 import { Referrals, UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { useSearch } from 'features/search/context/SearchWrapper'
-import { useVenueOffers } from 'features/venue/api/useVenueOffers'
 import { useVenueSearchParameters } from 'features/venue/helpers/useVenueSearchParameters'
 import { VenueMapBottomSheet } from 'features/venueMap/components/VenueMapBottomSheet/VenueMapBottomSheet'
 import { transformGeoLocatedVenueToVenueResponse } from 'features/venueMap/helpers/geoLocatedVenueToVenueResponse/geoLocatedVenueToVenueResponse'
@@ -91,7 +91,7 @@ export const VenueMapViewContainer: FunctionComponent = () => {
   const venueSearchParams = useVenueSearchParameters(venue)
   const { searchState } = useSearch()
   const isUserUnderage = useIsUserUnderage()
-  const { data: selectedVenueOffers } = useVenueOffers({
+  const { data: selectedVenueOffers } = useVenueOffersQuery({
     userLocation,
     selectedLocationMode,
     isUserUnderage,
