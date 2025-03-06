@@ -33,15 +33,15 @@ export function LegalNotices() {
         />
         {/* eslint-disable-next-line local-rules/no-currency-symbols */}
         {LINE_BREAK}
-        Société par action simplifiée au capital de 1&nbsp;000&nbsp;000&nbsp;€
+        Société par actions simplifiée au capital de 1&nbsp;000&nbsp;000&nbsp;€
         {LINE_BREAK}
-        Siège social&nbsp;: 89 rue La Boétie - 75008 Paris - France
+        Siège social&nbsp;: 35 Boulevard de Sébastopol – 75001 Paris - France
         {LINE_BREAK}
         Immatriculée au RCS de Paris sous le numéro&nbsp;: 853&nbsp;318&nbsp;459
         {LINE_BREAK}
         N° TVA intracommunautaire&nbsp;: FR65853318459
         {LINE_BREAK}
-        Directeur de la publication&nbsp;: Sébastien Cavalier
+        Directrice de la publication&nbsp;: Laurence Tison-Vuillaume
         {LINE_BREAK}
         Hébergeur&nbsp;: Google Cloud Platform
         {LINE_BREAK}8 Rue de Londres - 75009 Paris - France
@@ -49,7 +49,7 @@ export function LegalNotices() {
         Nous contacter&nbsp;:&nbsp;
         <ExternalTouchableLink
           as={ButtonInsideTextBlack}
-          wording="support@passculture.fr"
+          wording="support@passculture.app"
           accessibilityLabel="Ouvrir le gestionnaire mail pour contacter le support"
           externalNav={contactSupport.forGenericQuestion}
           icon={EmailFilled}
