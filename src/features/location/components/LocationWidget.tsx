@@ -7,16 +7,12 @@ import { SearchLocationModal } from 'features/location/components/SearchLocation
 import { ScreenOrigin } from 'features/location/enums'
 import { getLocationTitle } from 'features/location/helpers/getLocationTitle'
 import { useLocationWidgetTooltip } from 'features/location/helpers/useLocationWidgetTooltip'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useLocation } from 'libs/location'
 import { LocationMode } from 'libs/location/types'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { useModal } from 'ui/components/modals/useModal'
 import { Tooltip } from 'ui/components/Tooltip'
 import { Touchable } from 'ui/components/touchable/Touchable'
-import { BicolorLocationPointer } from 'ui/svg/icons/BicolorLocationPointer'
-import { LocationPointer } from 'ui/svg/icons/LocationPointer'
 import { LocationPointerAppV2 } from 'ui/svg/icons/LocationPointerAppV2'
 import { getSpacing, TypoDS } from 'ui/theme'
 
@@ -30,10 +26,6 @@ type Props = {
 }
 
 export const LocationWidget: FunctionComponent<Props> = ({ screenOrigin }) => {
-  const shouldDisplayLocationWidgetAppV2 = useFeatureFlag(
-    RemoteStoreFeatureFlags.WIP_APP_V2_LOCATION_WIDGET
-  )
-
   const shouldShowHomeLocationModal = screenOrigin === ScreenOrigin.HOME
 
   const { place, selectedLocationMode } = useLocation()
@@ -56,11 +48,6 @@ export const LocationWidget: FunctionComponent<Props> = ({ screenOrigin }) => {
 
   const isWidgetHighlighted = selectedLocationMode !== LocationMode.EVERYWHERE
 
-  const locationIconAppV2 = isWidgetHighlighted ? (
-    <LocationPointerAppV2Filled />
-  ) : (
-    <LocationPointerAppV2NotFilled />
-  )
   const locationIcon = isWidgetHighlighted ? (
     <LocationPointerFilled />
   ) : (
@@ -82,9 +69,7 @@ export const LocationWidget: FunctionComponent<Props> = ({ screenOrigin }) => {
         onPress={showLocationModal}
         accessibilityLabel="Ouvrir la modale de localisation depuis le widget"
         {...(Platform.OS === 'web' ? { ref: touchableRef } : { onLayout: onWidgetLayout })}>
-        <IconContainer isActive={isWidgetHighlighted}>
-          {shouldDisplayLocationWidgetAppV2 ? locationIconAppV2 : locationIcon}
-        </IconContainer>
+        <IconContainer isActive={isWidgetHighlighted}>{locationIcon}</IconContainer>
         <StyledCaption numberOfLines={1}>{locationTitle}</StyledCaption>
       </StyledTouchable>
       {shouldShowHomeLocationModal ? (
@@ -125,23 +110,12 @@ const IconContainer = styled(Animated.View)<{ isActive: boolean }>(({ theme, isA
   backgroundColor: theme.colors.white,
 }))
 
-const LocationPointerFilled = styled(LocationPointer).attrs(({ theme }) => ({
+const LocationPointerFilled = styled(LocationPointerAppV2).attrs(({ theme }) => ({
   color: theme.colors.primary,
   size: theme.icons.sizes.small,
 }))({})
 
-const LocationPointerNotFilled = styled(BicolorLocationPointer).attrs(({ theme }) => ({
-  color: theme.colors.black,
-  color2: theme.colors.black,
-  size: theme.icons.sizes.small,
-}))``
-
-const LocationPointerAppV2Filled = styled(LocationPointerAppV2).attrs(({ theme }) => ({
-  color: theme.colors.primary,
-  size: theme.icons.sizes.small,
-}))({})
-
-const LocationPointerAppV2NotFilled = styled(LocationPointerAppV2).attrs(({ theme }) => ({
+const LocationPointerNotFilled = styled(LocationPointerAppV2).attrs(({ theme }) => ({
   color: theme.colors.greyMedium,
   size: theme.icons.sizes.small,
 }))({})
