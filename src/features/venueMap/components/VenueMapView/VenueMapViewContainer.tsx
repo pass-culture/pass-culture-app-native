@@ -62,7 +62,6 @@ export const VenueMapViewContainer: FunctionComponent = () => {
 
   const isPreviewEnabled = useFeatureFlag(RemoteStoreFeatureFlags.WIP_VENUE_MAP)
   const shouldDisplayPinV2 = useFeatureFlag(RemoteStoreFeatureFlags.WIP_VENUE_MAP_PIN_V2)
-  const hidePointsOfInterest = useFeatureFlag(RemoteStoreFeatureFlags.WIP_VENUE_MAP_HIDDEN_POI)
   const shouldNavigateToVenueOnFling = useFeatureFlag(
     RemoteStoreFeatureFlags.WIP_FLING_BOTTOM_SHEET_NAVIGATE_TO_VENUE
   )
@@ -256,7 +255,6 @@ export const VenueMapViewContainer: FunctionComponent = () => {
         onSearch={isSearchEnabled ? handleSearchPress : undefined}
         onPress={isPreviewEnabled ? handlePressOutOfVenuePin : undefined}
         onClusterPress={isPreviewEnabled ? handlePressOutOfVenuePin : undefined}
-        hidePointsOfInterest={hidePointsOfInterest}
         onMarkerPress={handleMarkerPress}
         venues={filteredVenues}
       />

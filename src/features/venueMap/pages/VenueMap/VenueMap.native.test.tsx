@@ -99,12 +99,9 @@ describe('<VenueMap />', () => {
     })
 
     expect(screen.getByText('Carte des lieux')).toBeOnTheScreen()
-    expect(await screen.findByTestId('venue-map-view')).toHaveProp('showsPointsOfInterest', true)
   })
 
-  it('should hide POI when FF is active', async () => {
-    setFeatureFlags([RemoteStoreFeatureFlags.WIP_VENUE_MAP_HIDDEN_POI])
-
+  it('should hide POI', async () => {
     render(reactQueryProviderHOC(<VenueMap />))
 
     expect(await screen.findByTestId('venue-map-view')).toHaveProp('showsPointsOfInterest', false)
