@@ -13,12 +13,11 @@ import { SearchState } from 'features/search/types'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { LocationMode } from 'libs/location/types'
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
 import { SuggestedPlace } from 'libs/place/types'
 import { mockedSuggestedVenue } from 'libs/venue/fixtures/mockedSuggestedVenues'
-import { act, fireEvent, render, screen } from 'tests/utils'
+import { act, render, screen, userEvent } from 'tests/utils'
 
 const venue = mockedSuggestedVenue
 
@@ -221,7 +220,15 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
+const user = userEvent.setup()
+
+jest.useFakeTimers()
+
 describe('<SearchLanding />', () => {
+  beforeAll(() => {
+    setFeatureFlags()
+  })
+
   beforeEach(() => {
     mockUseNetInfoContext.mockReturnValue({ isConnected: true })
   })
@@ -236,43 +243,21 @@ describe('<SearchLanding />', () => {
     mockIsFocusOnSuggestions = false
   })
 
-  describe('When wipAppV2SearchLandingHeader feature flag deactivated', () => {
-    beforeAll(() => {
-      setFeatureFlags()
+  it('should render SearchLanding', async () => {
+    render(<SearchLanding />, {
+      theme: { isDesktopViewport: false, isMobileViewport: true },
     })
 
-    it('should render SearchLanding', async () => {
-      render(<SearchLanding />, {
-        theme: { isDesktopViewport: false, isMobileViewport: true },
-      })
-      await screen.findByText('Rechercher')
+    await act(() => {})
 
-      await act(() => {})
-
-      expect(screen).toMatchSnapshot()
-    })
-
-    it('should not render gradient header', async () => {
-      render(<SearchLanding />)
-
-      await screen.findByText('Rechercher')
-
-      expect(screen.queryByTestId('searchLandingHeader')).not.toBeOnTheScreen()
-    })
+    expect(screen).toMatchSnapshot()
   })
 
-  describe('When wipAppV2SearchLandingHeader feature flag activated', () => {
-    beforeAll(() => {
-      setFeatureFlags([RemoteStoreFeatureFlags.WIP_APP_V2_SEARCH_LANDING_HEADER])
-    })
+  it('should render gradient header', async () => {
+    render(<SearchLanding />)
+    await screen.findByText('Rechercher')
 
-    it('should render gradient header', async () => {
-      render(<SearchLanding />)
-
-      await screen.findByText('Rechercher')
-
-      expect(screen.getByTestId('searchLandingHeader')).toBeOnTheScreen()
-    })
+    expect(screen.getByTestId('searchLandingHeader')).toBeOnTheScreen()
   })
 
   describe('When SearchLanding is focus on suggestions', () => {
@@ -282,27 +267,22 @@ describe('<SearchLanding />', () => {
 
     it('should display offer suggestions', async () => {
       render(<SearchLanding />)
-      await act(async () => {})
 
-      expect(screen.getByTestId('autocompleteOfferItem_1')).toBeOnTheScreen()
+      expect(await screen.findByTestId('autocompleteOfferItem_1')).toBeOnTheScreen()
       expect(screen.getByTestId('autocompleteOfferItem_2')).toBeOnTheScreen()
     })
 
     it('should display venue suggestions', async () => {
       render(<SearchLanding />)
-      await act(async () => {})
 
-      expect(screen.getByTestId('autocompleteVenueItem_1')).toBeOnTheScreen()
+      expect(await screen.findByTestId('autocompleteVenueItem_1')).toBeOnTheScreen()
       expect(screen.getByTestId('autocompleteVenueItem_2')).toBeOnTheScreen()
     })
 
     it('should handle venue press', async () => {
       render(<SearchLanding />)
-      await act(async () => {})
 
-      expect(screen.getByTestId('autocompleteVenueItem_1')).toBeOnTheScreen()
-
-      fireEvent.press(screen.getByTestId('autocompleteVenueItem_1'))
+      await user.press(screen.getByTestId('autocompleteVenueItem_1'))
 
       expect(analytics.logConsultVenue).toHaveBeenCalledWith({
         from: 'searchAutoComplete',
@@ -312,11 +292,8 @@ describe('<SearchLanding />', () => {
 
     it('should hide suggestions when pressing a venue', async () => {
       render(<SearchLanding />)
-      await act(async () => {})
 
-      expect(screen.getByTestId('autocompleteVenueItem_1')).toBeOnTheScreen()
-
-      fireEvent.press(screen.getByTestId('autocompleteVenueItem_1'))
+      await user.press(screen.getByTestId('autocompleteVenueItem_1'))
 
       expect(mockHideSuggestions).toHaveBeenNthCalledWith(1)
     })
@@ -331,9 +308,8 @@ describe('<SearchLanding />', () => {
       }
       const keyboardDismissSpy = jest.spyOn(Keyboard, 'dismiss')
       render(<SearchLanding />)
-      await act(async () => {})
 
-      const scrollView = screen.getByTestId('autocompleteScrollView')
+      const scrollView = await screen.findByTestId('autocompleteScrollView')
       // 1st scroll to bottom => trigger
       scrollView.props.onScroll(scrollEventBottom)
 
@@ -343,9 +319,8 @@ describe('<SearchLanding />', () => {
     it('should display search history when it has items', async () => {
       mockdate.set(TODAY_DATE)
       render(<SearchLanding />)
-      await act(async () => {})
 
-      expect(screen.getByText('Historique de recherche')).toBeOnTheScreen()
+      expect(await screen.findByText('Historique de recherche')).toBeOnTheScreen()
     })
 
     it('should not display search history when it has no items', async () => {
@@ -355,7 +330,8 @@ describe('<SearchLanding />', () => {
       mockUseSearchHistory.mockReturnValueOnce(mockedEmptyHistory)
 
       render(<SearchLanding />)
-      await act(async () => {})
+
+      await screen.findByPlaceholderText('Offre, artiste, lieu culturel...')
 
       expect(screen.queryByText('Historique de recherche')).not.toBeOnTheScreen()
     })
@@ -364,9 +340,8 @@ describe('<SearchLanding />', () => {
       mockdate.set(TODAY_DATE)
       const keyboardDismissSpy = jest.spyOn(Keyboard, 'dismiss')
       render(<SearchLanding />)
-      await act(async () => {})
 
-      fireEvent.press(screen.getByText('manga'))
+      await user.press(screen.getByText('manga'))
 
       expect(keyboardDismissSpy).toHaveBeenCalledTimes(1)
     })
@@ -375,9 +350,8 @@ describe('<SearchLanding />', () => {
       it('When it has not category and native category', async () => {
         mockdate.set(TODAY_DATE)
         render(<SearchLanding />)
-        await act(async () => {})
 
-        fireEvent.press(screen.getByText('manga'))
+        await user.press(screen.getByText('manga'))
 
         expect(mockDispatch).toHaveBeenCalledWith({
           type: 'SET_STATE',
@@ -397,9 +371,8 @@ describe('<SearchLanding />', () => {
       it('When it has category and native category', async () => {
         mockdate.set(TODAY_DATE)
         render(<SearchLanding />)
-        await act(async () => {})
 
-        fireEvent.press(screen.getByText('tolkien'))
+        await user.press(screen.getByText('tolkien'))
 
         expect(mockDispatch).toHaveBeenCalledWith({
           type: 'SET_STATE',
@@ -419,9 +392,8 @@ describe('<SearchLanding />', () => {
       it('When it has only a category', async () => {
         mockdate.set(TODAY_DATE)
         render(<SearchLanding />)
-        await act(async () => {})
 
-        fireEvent.press(screen.getByText('foresti'))
+        await user.press(screen.getByText('foresti'))
 
         expect(mockDispatch).toHaveBeenCalledWith({
           type: 'SET_STATE',

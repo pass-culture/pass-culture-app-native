@@ -59,7 +59,7 @@ export enum RemoteStoreFeatureFlags {
   WIP_APP_V2_BUSINESS_BLOCK = 'wipAppV2BusinessBlock',
   WIP_APP_V2_CATEGORY_BLOCK = 'wipAppV2CategoryBlock',
   WIP_APP_V2_MULTI_VIDEO_MODULE = 'wipAppV2MultiVideoModule',
-  WIP_APP_V2_SEARCH_LANDING_HEADER = 'wipAppV2SearchLandingHeader',
+  WIP_APP_V2_SYSTEM_BLOCK = 'wipAppV2SystemBlock',
   WIP_APP_V2_THEMATIC_HOME_HEADER = 'wipAppV2ThematicHomeHeader',
   WIP_APP_V2_VENUE_LIST = 'wipAppV2VenueList',
   WIP_APP_V2_VENUE_MAP_BLOCK = 'wipAppV2VenueMapBlock',
