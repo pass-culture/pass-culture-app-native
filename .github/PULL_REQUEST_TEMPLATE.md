@@ -33,6 +33,7 @@ I have:
 
 <details>
   <summary>Click to expand</summary>
+
 These rules apply to files that you make changes to.
 If you can't respect one of these rules, be sure to explain why with a comment.
 If you consider correcting the issue is too time consuming/complex: create a ticket. Link the ticket in the code.
@@ -47,7 +48,7 @@ If you consider correcting the issue is too time consuming/complex: create a tic
 - Remove logic from components that should be dumb.
 - undefined != null : undefined should be used for optionals and null when no value
 
-Test specific:
+### Test specific:
 
 - Avoid mocking internal parts of our code. Ideally, mock only external calls.
 - When you see a local variable that is over-written in every test, mock it.
@@ -59,9 +60,10 @@ Test specific:
 - Make a web specific snapshot when your web page/modal is specific to the web.
 - Make an a11y test for web pages.
 
-Advice:
+### Advice:
 
 - Use TDD
 - Use Storybook
 - Use pair programming/mobs
+
 </details>
