@@ -39,21 +39,6 @@ export function BeneficiaryCeilings({ domainsCredit }: BeneficiaryCeilingsProps)
           </TypoDS.Body>
         </React.Fragment>
       ) : null}
-      {domainsCredit.physical ? (
-        <TypoDS.Body testID="domains-credit-physical">
-          dont
-          {SPACE}
-          <BodySecondary>
-            {formatCurrencyFromCents(
-              domainsCredit.physical.remaining,
-              currency,
-              euroToPacificFrancRate
-            )}
-          </BodySecondary>
-          {SPACE}
-          en offres physiques.
-        </TypoDS.Body>
-      ) : null}
     </React.Fragment>
   )
 }

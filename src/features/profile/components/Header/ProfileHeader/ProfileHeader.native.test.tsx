@@ -11,7 +11,7 @@ import {
 } from 'api/gen'
 import { subscriptionStepperFixture } from 'features/identityCheck/fixtures/subscriptionStepperFixture'
 import { ProfileHeader } from 'features/profile/components/Header/ProfileHeader/ProfileHeader'
-import { domains_credit_v1 } from 'features/profile/fixtures/domainsCredit'
+import { domains_credit_v3 } from 'features/profile/fixtures/domainsCredit'
 import { isUserUnderageBeneficiary } from 'features/profile/helpers/isUserUnderageBeneficiary'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { mockServer } from 'tests/mswServer'
@@ -28,7 +28,7 @@ const user: UserProfileResponse = {
   isBeneficiary: true,
   birthDate: '2003-01-01',
   depositExpirationDate: '2023-02-09T11:17:14.786670',
-  domainsCredit: domains_credit_v1,
+  domainsCredit: domains_credit_v3,
   lastName: '93 HNMM 2',
   id: 1234,
   needsToFillCulturalSurvey: true,
