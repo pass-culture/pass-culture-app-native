@@ -5,7 +5,6 @@ import { ModuleData } from 'features/home/types'
 import { venuesSearchFixture } from 'libs/algolia/fixtures/venuesSearchFixture'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils'
 
@@ -21,9 +20,11 @@ const props = {
 }
 
 describe('<AppV2VenuesModule />', () => {
-  it('should log ModuleDisplayedOnHomePage event when seeing the module', () => {
-    setFeatureFlags([RemoteStoreFeatureFlags.WIP_APP_V2_VENUE_LIST])
+  beforeAll(() => {
+    setFeatureFlags()
+  })
 
+  it('should log ModuleDisplayedOnHomePage event when seeing the module', () => {
     renderAppV2VenuesModule()
 
     expect(analytics.logModuleDisplayedOnHomepage).toHaveBeenNthCalledWith(1, {
@@ -36,8 +37,6 @@ describe('<AppV2VenuesModule />', () => {
   })
 
   it('should not render list when data is undefined', () => {
-    setFeatureFlags([RemoteStoreFeatureFlags.WIP_APP_V2_VENUE_LIST])
-
     renderAppV2VenuesModule({ data: undefined })
 
     expect(
@@ -46,21 +45,9 @@ describe('<AppV2VenuesModule />', () => {
   })
 
   it('should return 4 venues maximum when home id', () => {
-    setFeatureFlags([RemoteStoreFeatureFlags.WIP_APP_V2_VENUE_LIST])
-
     renderAppV2VenuesModule()
 
     expect(screen.queryByText('Le Petit Rintintin 5')).not.toBeOnTheScreen()
-  })
-
-  it('should not render list when feature flag deactivated', () => {
-    setFeatureFlags()
-
-    renderAppV2VenuesModule()
-
-    expect(
-      screen.queryByText('Les lieux culturels à proximité'.toUpperCase())
-    ).not.toBeOnTheScreen()
   })
 })
 

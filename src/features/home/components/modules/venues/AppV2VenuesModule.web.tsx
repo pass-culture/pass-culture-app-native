@@ -7,8 +7,6 @@ import { AppV2VenuesModule as AppV2VenuesModuleType, ModuleData } from 'features
 import { VenueHit } from 'libs/algolia/types'
 import { analytics } from 'libs/analytics/provider'
 import { ContentTypes } from 'libs/contentful/types'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 
 type Props = {
   displayParameters: AppV2VenuesModuleType['displayParameters']
@@ -29,9 +27,8 @@ export const AppV2VenuesModule = ({
 }: Props) => {
   const { playlistItems = [] } = data ?? { playlistItems: [] }
   const { isDesktopViewport } = useTheme()
-  const enableAppV2VenueList = useFeatureFlag(RemoteStoreFeatureFlags.WIP_APP_V2_VENUE_LIST)
 
-  const shouldModuleBeDisplayed = playlistItems.length > 0 && enableAppV2VenueList
+  const shouldModuleBeDisplayed = playlistItems.length > 0
 
   useEffect(() => {
     if (shouldModuleBeDisplayed) {

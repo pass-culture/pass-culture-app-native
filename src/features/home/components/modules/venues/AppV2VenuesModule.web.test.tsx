@@ -4,7 +4,6 @@ import { AppV2VenuesModule } from 'features/home/components/modules/venues/AppV2
 import { venuesSearchFixture } from 'libs/algolia/fixtures/venuesSearchFixture'
 import { Layout } from 'libs/contentful/types'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils/web'
 
@@ -28,8 +27,6 @@ jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 describe('<AppV2VenuesModule />', () => {
   it('should return 6 venues maximum on web desktop', () => {
-    setFeatureFlags([RemoteStoreFeatureFlags.WIP_APP_V2_VENUE_LIST])
-
     renderAppV2VenuesModule({ isDesktopViewport: true })
 
     expect(screen.getByText('Le Petit Rintintin 5')).toBeInTheDocument()
@@ -41,16 +38,6 @@ describe('<AppV2VenuesModule />', () => {
     renderAppV2VenuesModule({ isDesktopViewport: false })
 
     expect(screen.queryByText('Le Petit Rintintin 5')).not.toBeInTheDocument()
-  })
-
-  it('should not render list when feature flag deactivated', () => {
-    setFeatureFlags()
-
-    renderAppV2VenuesModule()
-
-    expect(
-      screen.queryByText('Les lieux culturels à proximité'.toUpperCase())
-    ).not.toBeOnTheScreen()
   })
 })
 

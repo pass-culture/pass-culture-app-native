@@ -5,8 +5,6 @@ import { ModuleData } from 'features/home/types'
 import { VenueHit } from 'libs/algolia/types'
 import { analytics } from 'libs/analytics/provider'
 import { ContentTypes } from 'libs/contentful/types'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 
 type Props = {
   moduleId: string
@@ -16,10 +14,9 @@ type Props = {
 }
 
 export const AppV2VenuesModule = ({ data, homeEntryId, moduleId, index }: Props) => {
-  const enableAppV2VenueList = useFeatureFlag(RemoteStoreFeatureFlags.WIP_APP_V2_VENUE_LIST)
   const { playlistItems = [] } = data ?? { playlistItems: [] }
 
-  const shouldModuleBeDisplayed = playlistItems.length > 0 && enableAppV2VenueList
+  const shouldModuleBeDisplayed = playlistItems.length > 0
 
   useEffect(() => {
     if (shouldModuleBeDisplayed) {
