@@ -1,11 +1,11 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { useRemoteConfigContext } from 'libs/firebase/remoteConfig/RemoteConfigProvider'
+import { useRemoteConfig } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 
 export const ABTestingPOC: React.FC = () => {
-  const { test_param } = useRemoteConfigContext()
+  const { test_param } = useRemoteConfig()
 
   const message = `test_param value is ${test_param}`
   const instructionsText =
