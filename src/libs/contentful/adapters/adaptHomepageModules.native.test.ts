@@ -1,5 +1,4 @@
 import {
-  formattedAppV2VenuesModule,
   formattedBusinessModule,
   formattedCategoryListModule,
   formattedExclusivityModule,
@@ -12,7 +11,6 @@ import {
 } from 'features/home/fixtures/homepage.fixture'
 import { adaptHomepageNatifModules } from 'libs/contentful/adapters/adaptHomepageModules'
 import { algoliaNatifModuleFixture } from 'libs/contentful/fixtures/algoliaModules.fixture'
-import { appV2VenuesNatifModuleFixture } from 'libs/contentful/fixtures/appV2VenuesModule.fixture'
 import { businessNatifModuleFixture } from 'libs/contentful/fixtures/businessModule.fixture'
 import { categoryListFixture } from 'libs/contentful/fixtures/categoryList.fixture'
 import { exclusivityNatifModuleFixture } from 'libs/contentful/fixtures/exclusivityModule.fixture'
@@ -33,7 +31,6 @@ describe('adaptHomepageModules', () => {
       recommendationNatifModuleFixture,
       thematicHighlightModuleFixture,
       categoryListFixture,
-      appV2VenuesNatifModuleFixture,
       videoCarouselFixture,
       trendsModuleFixture,
     ]
@@ -46,7 +43,6 @@ describe('adaptHomepageModules', () => {
       formattedRecommendedOffersModule,
       formattedThematicHighlightModule,
       formattedCategoryListModule,
-      formattedAppV2VenuesModule,
       formattedVideoCarouselModule,
       formattedTrendsModule,
     ]
