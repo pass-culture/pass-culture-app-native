@@ -3,8 +3,8 @@ import styled from 'styled-components/native'
 
 import { CategoryIdEnum, BookingReponse } from 'api/gen'
 import { BookingComplementaryInfo } from 'features/bookings/components/TicketBody/BookingComplementaryInfo/BookingComplementaryInfo'
+import { OldTicketBody } from 'features/bookings/components/TicketBody/OldTicketBody'
 import { SeatWithQrCodeProps } from 'features/bookings/components/TicketBody/SeatWithQrCode/SeatWithQrCode'
-import { TicketBody } from 'features/bookings/components/TicketBody/TicketBody'
 import { TicketCode } from 'features/bookings/components/TicketCode'
 import { getBookingProperties } from 'features/bookings/helpers'
 import { useCategoryId, useSubcategory } from 'libs/subcategories'
@@ -73,7 +73,7 @@ export function BookingDetailsTicketContent({
   const ticketContent = properties.isDigital ? (
     accessExternalOfferButton
   ) : (
-    <TicketBody
+    <OldTicketBody
       withdrawalType={withdrawalType ?? undefined}
       withdrawalDelay={withdrawalDelay ?? 0}
       beginningDatetime={beginningDatetime ?? undefined}
