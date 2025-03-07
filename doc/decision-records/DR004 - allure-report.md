@@ -20,39 +20,39 @@ Les différentss moyen de passer des fichiers d'un job à un autre est de créer
 Les jobs de tests, qui créent les rapports Allure tournent donc sur 10 machines virtuelles différentes
 Il faut dans un premier temps les uploader vers Google Cloud
 
-```ts
-      - name: Cache the allure reports
-        if: github.ref == 'refs/heads/master'
-        id: allure-report-cache-native
-        uses: pass-culture-github-actions/gcs-cache@v1.0.0
-        with:
-          bucket: ${{ inputs.CACHE_BUCKET_NAME }}
-          path: |
-            allure-results-${{matrix.shard}}
-          restore-keys: |
-            v1-allure-dependency-cache-${{ runner.os }}-${{ github.sha }}-${{ matrix.shard }}
-          key: v1-allure-dependency-cache-${{ runner.os }}-${{ github.sha }}-${{ matrix.shard }}
+```yaml
+- name: Cache the allure reports
+  if: github.ref == 'refs/heads/master'
+  id: allure-report-cache-native
+  uses: pass-culture-github-actions/gcs-cache@v1.0.0
+  with:
+    bucket: ${{ inputs.CACHE_BUCKET_NAME }}
+    path: |
+      allure-results-${{matrix.shard}}
+    restore-keys: |
+      v1-allure-dependency-cache-${{ runner.os }}-${{ github.sha }}-${{ matrix.shard }}
+    key: v1-allure-dependency-cache-${{ runner.os }}-${{ github.sha }}-${{ matrix.shard }}
 ```
 
 puis les décompresser en boucle (ils sont stockés au format `tar`), et tous les placer dans le dossier `allure-result` pour les merger
 
-```ts
-      - name: 'Retrieve reports from bucket'
-        run: |
-          mkdir allure-results
-          gsutil cp 'gs://${{ inputs.CACHE_BUCKET_NAME }}/pass-culture/pass-culture-app-native/v1-allure-dependency-cache-${{ runner.os }}-${{ github.sha }}-*' allure-results
-          gsutil cp 'gs://${{ inputs.CACHE_BUCKET_NAME }}/pass-culture/pass-culture-app-native/v1-allure-dependency-cache-web-${{ runner.os }}-${{ github.sha }}-*' allure-results
-          for file in `ls allure-results/*tar`; do tar --use-compress-program='zstd --long=30' -xf $file; done
-          rm -f allure-results/*.tar
-          find . -maxdepth 1 -type d -name "allure-results-*" | while read dir; do
-          cp -r "$dir"/* allure-results
-          done
-          rm -rf allure-results-*
+```yaml
+- name: 'Retrieve reports from bucket'
+  run: |
+    mkdir allure-results
+    gsutil cp 'gs://${{ inputs.CACHE_BUCKET_NAME }}/pass-culture/pass-culture-app-native/v1-allure-dependency-cache-${{ runner.os }}-${{ github.sha }}-*' allure-results
+    gsutil cp 'gs://${{ inputs.CACHE_BUCKET_NAME }}/pass-culture/pass-culture-app-native/v1-allure-dependency-cache-web-${{ runner.os }}-${{ github.sha }}-*' allure-results
+    for file in `ls allure-results/*tar`; do tar --use-compress-program='zstd --long=30' -xf $file; done
+    rm -f allure-results/*.tar
+    find . -maxdepth 1 -type d -name "allure-results-*" | while read dir; do
+    cp -r "$dir"/* allure-results
+    done
+    rm -rf allure-results-*
 ```
 
 Ainsi, on obtient un dossier `allure-results` comme si on avait fait tourner tous les tests sur un même job
 On peut ensuite build le site web à partir du fichier `allure-results` grâce à la commande `yarn generate:allure-report`, et obtenir le dossier `allure-report`
-Le contenu du dossier est ensuite envoyé sur la branche `allure-results`
+Le contenu du dossier est ensuite envoyé sur la branche `allure-report`
 La branche `allure-report` est configurée sur Github comme étant rattachée à Github pages, donc chaque push sur cette branche déploiera son contenu automatiquement.
 
 Tout ceci est conditionné dans la CI par le fait que l'on pousse vers la branche `master`:

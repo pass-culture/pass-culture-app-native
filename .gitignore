@@ -66,7 +66,6 @@ yarn-error.log
 .jest/
 coverage/
 
-# Allure
 allure-results/
 
 /dist
