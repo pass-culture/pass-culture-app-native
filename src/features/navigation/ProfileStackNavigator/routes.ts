@@ -13,6 +13,12 @@ export const routes: ProfileStackRoute[] = [
     path: 'profil',
     options: { title: 'Mon profil' },
   },
+  {
+    name: 'NotificationsSettings',
+    component: ComponentForPathConfig,
+    path: 'profil/notifications',
+    options: { title: 'Réglages de notifications' },
+  },
 ]
 
 export function isProfileStackScreen(screen: string): screen is ProfileStackRouteName {

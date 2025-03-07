@@ -4,6 +4,7 @@ import { CheatcodesSubscreensButtonList } from 'cheatcodes/components/Cheatcodes
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
 import { LinkToScreen } from 'cheatcodes/components/LinkToScreen'
 import { CheatcodesButtonsWithSubscreensProps } from 'cheatcodes/types'
+import { getProfileNavConfig } from 'features/navigation/ProfileStackNavigator/getProfileNavConfig'
 import { ExpiredCreditModal } from 'features/profile/components/Modals/ExpiredCreditModal'
 import { useModal } from 'ui/components/modals/useModal'
 
@@ -19,7 +20,7 @@ export const cheatcodesNavigationProfileButtons: [CheatcodesButtonsWithSubscreen
       { screen: 'ChangeStatus' },
       { screen: 'ChangeEmailSetPassword', navigationParams: { token: 'token' } },
       { screen: 'ConsentSettings' },
-      { screen: 'NotificationsSettings' },
+      { ...getProfileNavConfig('NotificationsSettings') },
       { screen: 'ChangeEmailExpiredLink' },
       { title: 'ExpiredCreditModal', showOnlyInSearch: true },
     ],

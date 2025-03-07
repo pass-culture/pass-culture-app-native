@@ -60,7 +60,6 @@ import { DeleteProfileReason } from 'features/profile/pages/DeleteProfileReason/
 import { FeedbackInApp } from 'features/profile/pages/FeedbackInApp/FeedbackInApp'
 import { LegalNotices } from 'features/profile/pages/LegalNotices/LegalNotices'
 import { NewEmailSelection } from 'features/profile/pages/NewEmailSelection/NewEmailSelection'
-import { NotificationsSettings } from 'features/profile/pages/NotificationSettings/NotificationsSettings'
 import { PersonalData } from 'features/profile/pages/PersonalData/PersonalData'
 import { SuspendAccountConfirmation } from 'features/profile/pages/SuspendAccountConfirmation/SuspendAccountConfirmation'
 import { TrackEmailChange } from 'features/profile/pages/TrackEmailChange/TrackEmailChange'
@@ -325,12 +324,6 @@ export const routes: RootRoute[] = [
       parse: screenParamsParser['Login'],
     },
     options: { title: 'Connexion' },
-  },
-  {
-    name: 'NotificationsSettings',
-    component: NotificationsSettings,
-    path: 'profil/notifications',
-    options: { title: 'Réglages de notifications' },
   },
   {
     name: 'PersonalData',
