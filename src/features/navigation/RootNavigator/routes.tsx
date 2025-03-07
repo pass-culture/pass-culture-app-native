@@ -30,7 +30,6 @@ import { ThematicHome } from 'features/home/pages/ThematicHome'
 import { DeeplinksGenerator } from 'features/internal/pages/DeeplinksGenerator'
 import { UTMParameters } from 'features/internal/pages/UTMParameters'
 import { PageNotFound } from 'features/navigation/pages/PageNotFound'
-import { accessibilityRoutes } from 'features/navigation/RootNavigator/accessibilityRoutes'
 import { culturalSurveyRoutes } from 'features/navigation/RootNavigator/culturalSurveyRoutes'
 import { subscriptionRoutes } from 'features/navigation/RootNavigator/subscriptionRoutes'
 import { trustedDeviceRoutes } from 'features/navigation/RootNavigator/trustedDeviceRoutes'
@@ -83,7 +82,6 @@ const Achievements = lazy(async () => {
 })
 
 export const routes: RootRoute[] = [
-  ...accessibilityRoutes,
   ...culturalSurveyRoutes,
   ...subscriptionRoutes,
   ...trustedDeviceRoutes,

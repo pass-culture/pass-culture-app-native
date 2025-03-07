@@ -290,8 +290,7 @@ export type RootStackParamList = {
   VenueMapFiltersStackNavigator: undefined
   VenuePreviewCarousel: { id: number; defaultIndex?: number }
   VerifyEligibility: undefined
-} & AccessibilityRootStackParamList &
-  CheatcodesStackParamList &
+} & CheatcodesStackParamList &
   CulturalSurveyRootStackParamList &
   SubscriptionRootStackParamList &
   TrustedDeviceRootStackParamList &

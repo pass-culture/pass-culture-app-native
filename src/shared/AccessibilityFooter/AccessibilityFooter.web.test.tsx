@@ -35,7 +35,10 @@ describe('AccessibilityFooter', () => {
 
     fireEvent.click(passCultureButton)
 
-    expect(navigate).toHaveBeenCalledWith('Accessibility', undefined)
+    expect(navigate).toHaveBeenCalledWith('TabNavigator', {
+      params: { params: undefined, screen: 'Accessibility' },
+      screen: 'ProfileStackNavigator',
+    })
   })
 
   it('should go to legal info page when the "Mentions légales" link is pressed', () => {
