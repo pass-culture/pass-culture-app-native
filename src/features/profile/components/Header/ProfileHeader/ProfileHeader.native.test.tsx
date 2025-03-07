@@ -82,7 +82,7 @@ describe('ProfileHeader', () => {
     )
   })
 
-  it('should not display subtitle with passForAll enabled', () => {
+  it('should not display subtitle with passForAll enabled', async () => {
     renderProfileHeader({
       featureFlags: {
         enableAchievements: false,
@@ -91,13 +91,14 @@ describe('ProfileHeader', () => {
       },
       user: undefined,
     })
+    await screen.findByText('Cheatcodes')
 
     const subtitle = 'Tu as 17 ou 18 ans\u00a0?'
 
     expect(screen.queryByText(subtitle)).not.toBeOnTheScreen()
   })
 
-  it('should display the LoggedOutHeader if no user', () => {
+  it('should display the LoggedOutHeader if no user', async () => {
     renderProfileHeader({
       featureFlags: {
         enableAchievements: false,
@@ -107,6 +108,8 @@ describe('ProfileHeader', () => {
       user: undefined,
     })
 
+    await screen.findByText('Cheatcodes')
+
     expect(
       screen.getByText(
         'Envie d’explorer des offres culturelles ou de débloquer ton crédit si tu as entre 15 et 18 ans ?'
@@ -114,7 +117,7 @@ describe('ProfileHeader', () => {
     ).toBeOnTheScreen()
   })
 
-  it('should display the BeneficiaryHeader if user is beneficiary', () => {
+  it('should display the BeneficiaryHeader if user is beneficiary', async () => {
     renderProfileHeader({
       featureFlags: {
         enableAchievements: false,
@@ -124,10 +127,12 @@ describe('ProfileHeader', () => {
       user,
     })
 
+    await screen.findByText('Cheatcodes')
+
     expect(screen.getByText('Profite de ton crédit jusqu’au')).toBeOnTheScreen()
   })
 
-  it('should display the BeneficiaryHeader if user is underage beneficiary', () => {
+  it('should display the BeneficiaryHeader if user is underage beneficiary', async () => {
     mockedisUserUnderageBeneficiary.mockReturnValueOnce(true)
     renderProfileHeader({
       featureFlags: {
@@ -138,10 +143,12 @@ describe('ProfileHeader', () => {
       user,
     })
 
+    await screen.findByText('Cheatcodes')
+
     expect(screen.getByText('Profite de ton crédit jusqu’au')).toBeOnTheScreen()
   })
 
-  it('should display the ExBeneficiary Header if credit is expired', () => {
+  it('should display the ExBeneficiary Header if credit is expired', async () => {
     renderProfileHeader({
       featureFlags: {
         enableAchievements: false,
@@ -150,6 +157,8 @@ describe('ProfileHeader', () => {
       },
       user: exBeneficiaryUser,
     })
+
+    await screen.findByText('Cheatcodes')
 
     expect(screen.getByText('Ton crédit a expiré le')).toBeOnTheScreen()
   })

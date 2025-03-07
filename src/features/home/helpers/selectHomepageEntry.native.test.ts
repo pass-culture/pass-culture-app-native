@@ -8,9 +8,9 @@ import { useSelectHomepageEntry } from 'features/home/helpers/selectHomepageEntr
 import { Homepage, HomepageTag } from 'features/home/types'
 import { UserOnboardingRole } from 'features/tutorial/enums'
 import * as OnboardingRoleAPI from 'features/tutorial/helpers/useUserRoleFromOnboarding'
+import * as useRemoteConfig from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import { CustomRemoteConfig } from 'libs/firebase/remoteConfig/remoteConfig.types'
-import { useRemoteConfigContext } from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { useBookingsQuery } from 'queries/bookings/useBookingsQuery'
 import { useUserHasBookingsQuery } from 'queries/bookings/useUserHasBookingsQuery'
 import { Credit, getAvailableCredit } from 'shared/user/useAvailableCredit'
@@ -115,10 +115,7 @@ const homepageEntries = [
 
 jest.mock('react-native/Libraries/Animated/NativeAnimatedHelper')
 
-jest.mock('libs/firebase/remoteConfig/RemoteConfigProvider')
-const mockUseRemoteConfigContext = useRemoteConfigContext as jest.MockedFunction<
-  typeof useRemoteConfigContext
->
+const useRemoteConfigSpy = jest.spyOn(useRemoteConfig, 'useRemoteConfig')
 
 jest.mock('features/auth/context/AuthContext')
 
@@ -156,7 +153,7 @@ const defaultRemoteConfig: CustomRemoteConfig = {
 
 describe('useSelectHomepageEntry', () => {
   it('should not return anything when no homepageEntries retrieved from contentful', () => {
-    mockUseRemoteConfigContext.mockReturnValueOnce(defaultRemoteConfig)
+    useRemoteConfigSpy.mockReturnValueOnce(defaultRemoteConfig)
     const { result } = renderHook(() => useSelectHomepageEntry())
     const Homepage = result.current([])
 
@@ -164,7 +161,7 @@ describe('useSelectHomepageEntry', () => {
   })
 
   it('should return home entry corresponding to id provided', () => {
-    mockUseRemoteConfigContext.mockReturnValueOnce(defaultRemoteConfig)
+    useRemoteConfigSpy.mockReturnValueOnce(defaultRemoteConfig)
     const { result } = renderHook(() => useSelectHomepageEntry(homeEntryId))
     const Homepage = result.current(shuffle(homepageEntries))
 
@@ -187,7 +184,7 @@ describe('useSelectHomepageEntry', () => {
         onboardingRole: UserOnboardingRole
         expectedHomepage: Homepage
       }) => {
-        mockUseRemoteConfigContext.mockReturnValueOnce(defaultRemoteConfig)
+        useRemoteConfigSpy.mockReturnValueOnce(defaultRemoteConfig)
         mockAuthContextWithoutUser()
         mockUseUserRoleFromOnboarding.mockReturnValueOnce(onboardingRole)
         mockUseUserHasBookings.mockReturnValueOnce(false)
@@ -202,7 +199,7 @@ describe('useSelectHomepageEntry', () => {
     )
 
     it('should return not connected home entry when user is logged in but undefined', () => {
-      mockUseRemoteConfigContext.mockReturnValueOnce(defaultRemoteConfig)
+      useRemoteConfigSpy.mockReturnValueOnce(defaultRemoteConfig)
       mockUseAuthContext.mockReturnValueOnce({
         isLoggedIn: true,
         user: undefined,
@@ -241,7 +238,7 @@ describe('useSelectHomepageEntry', () => {
         credit: Credit
         expectedHomepage: Homepage
       }) => {
-        mockUseRemoteConfigContext.mockReturnValueOnce(defaultRemoteConfig)
+        useRemoteConfigSpy.mockReturnValueOnce(defaultRemoteConfig)
         mockAuthContextWithUser(user)
 
         mockUseUserRoleFromOnboarding.mockReturnValueOnce(onboardingRole)
@@ -266,7 +263,7 @@ describe('useSelectHomepageEntry', () => {
     `(
       'should display the homeEntryWithoutBooking_18 home if user has never done booking as an eighteen years old',
       async ({ user }) => {
-        mockUseRemoteConfigContext.mockReturnValueOnce(defaultRemoteConfig)
+        useRemoteConfigSpy.mockReturnValueOnce(defaultRemoteConfig)
         mockUseAuthContext.mockReturnValueOnce({
           isLoggedIn: true,
           user: user as UserProfileResponse,
@@ -295,7 +292,7 @@ describe('useSelectHomepageEntry', () => {
 
   describe('default home entry when no remote config available', () => {
     beforeEach(() => {
-      mockUseRemoteConfigContext.mockReturnValueOnce({
+      useRemoteConfigSpy.mockReturnValueOnce({
         ...defaultRemoteConfig,
         test_param: 'A',
         homeEntryIdNotConnected: '',

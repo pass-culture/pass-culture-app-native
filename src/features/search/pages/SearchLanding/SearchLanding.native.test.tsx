@@ -17,7 +17,8 @@ import { LocationMode } from 'libs/location/types'
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
 import { SuggestedPlace } from 'libs/place/types'
 import { mockedSuggestedVenue } from 'libs/venue/fixtures/mockedSuggestedVenues'
-import { act, render, screen, userEvent } from 'tests/utils'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { render, screen, userEvent } from 'tests/utils'
 
 const venue = mockedSuggestedVenue
 
@@ -244,17 +245,17 @@ describe('<SearchLanding />', () => {
   })
 
   it('should render SearchLanding', async () => {
-    render(<SearchLanding />, {
+    render(reactQueryProviderHOC(<SearchLanding />), {
       theme: { isDesktopViewport: false, isMobileViewport: true },
     })
 
-    await act(() => {})
+    await screen.findByText('Rechercher')
 
     expect(screen).toMatchSnapshot()
   })
 
   it('should render gradient header', async () => {
-    render(<SearchLanding />)
+    render(reactQueryProviderHOC(<SearchLanding />))
     await screen.findByText('Rechercher')
 
     expect(screen.getByTestId('searchLandingHeader')).toBeOnTheScreen()
@@ -266,21 +267,21 @@ describe('<SearchLanding />', () => {
     })
 
     it('should display offer suggestions', async () => {
-      render(<SearchLanding />)
+      render(reactQueryProviderHOC(<SearchLanding />))
 
       expect(await screen.findByTestId('autocompleteOfferItem_1')).toBeOnTheScreen()
       expect(screen.getByTestId('autocompleteOfferItem_2')).toBeOnTheScreen()
     })
 
     it('should display venue suggestions', async () => {
-      render(<SearchLanding />)
+      render(reactQueryProviderHOC(<SearchLanding />))
 
       expect(await screen.findByTestId('autocompleteVenueItem_1')).toBeOnTheScreen()
       expect(screen.getByTestId('autocompleteVenueItem_2')).toBeOnTheScreen()
     })
 
     it('should handle venue press', async () => {
-      render(<SearchLanding />)
+      render(reactQueryProviderHOC(<SearchLanding />))
 
       await user.press(screen.getByTestId('autocompleteVenueItem_1'))
 
@@ -291,7 +292,7 @@ describe('<SearchLanding />', () => {
     })
 
     it('should hide suggestions when pressing a venue', async () => {
-      render(<SearchLanding />)
+      render(reactQueryProviderHOC(<SearchLanding />))
 
       await user.press(screen.getByTestId('autocompleteVenueItem_1'))
 
@@ -307,7 +308,7 @@ describe('<SearchLanding />', () => {
         },
       }
       const keyboardDismissSpy = jest.spyOn(Keyboard, 'dismiss')
-      render(<SearchLanding />)
+      render(reactQueryProviderHOC(<SearchLanding />))
 
       const scrollView = await screen.findByTestId('autocompleteScrollView')
       // 1st scroll to bottom => trigger
@@ -318,7 +319,7 @@ describe('<SearchLanding />', () => {
 
     it('should display search history when it has items', async () => {
       mockdate.set(TODAY_DATE)
-      render(<SearchLanding />)
+      render(reactQueryProviderHOC(<SearchLanding />))
 
       expect(await screen.findByText('Historique de recherche')).toBeOnTheScreen()
     })
@@ -329,7 +330,7 @@ describe('<SearchLanding />', () => {
       mockUseSearchHistory.mockReturnValueOnce(mockedEmptyHistory)
       mockUseSearchHistory.mockReturnValueOnce(mockedEmptyHistory)
 
-      render(<SearchLanding />)
+      render(reactQueryProviderHOC(<SearchLanding />))
 
       await screen.findByPlaceholderText('Offre, artiste, lieu culturel...')
 
@@ -339,7 +340,7 @@ describe('<SearchLanding />', () => {
     it('should dismiss the keyboard when pressing search history item', async () => {
       mockdate.set(TODAY_DATE)
       const keyboardDismissSpy = jest.spyOn(Keyboard, 'dismiss')
-      render(<SearchLanding />)
+      render(reactQueryProviderHOC(<SearchLanding />))
 
       await user.press(screen.getByText('manga'))
 
@@ -349,7 +350,7 @@ describe('<SearchLanding />', () => {
     describe('should update state and execute the search with the history item', () => {
       it('When it has not category and native category', async () => {
         mockdate.set(TODAY_DATE)
-        render(<SearchLanding />)
+        render(reactQueryProviderHOC(<SearchLanding />))
 
         await user.press(screen.getByText('manga'))
 
@@ -370,7 +371,7 @@ describe('<SearchLanding />', () => {
 
       it('When it has category and native category', async () => {
         mockdate.set(TODAY_DATE)
-        render(<SearchLanding />)
+        render(reactQueryProviderHOC(<SearchLanding />))
 
         await user.press(screen.getByText('tolkien'))
 
@@ -391,7 +392,7 @@ describe('<SearchLanding />', () => {
 
       it('When it has only a category', async () => {
         mockdate.set(TODAY_DATE)
-        render(<SearchLanding />)
+        render(reactQueryProviderHOC(<SearchLanding />))
 
         await user.press(screen.getByText('foresti'))
 
@@ -416,7 +417,7 @@ describe('<SearchLanding />', () => {
     it('should display offline page', async () => {
       // eslint-disable-next-line local-rules/independent-mocks
       mockUseNetInfoContext.mockReturnValue({ isConnected: false })
-      render(<SearchLanding />)
+      render(reactQueryProviderHOC(<SearchLanding />))
 
       expect(await screen.findByText('Pas de réseau internet')).toBeOnTheScreen()
     })
