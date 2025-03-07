@@ -7,6 +7,7 @@ import { initialSearchState } from 'features/search/context/reducer'
 import * as useFilterCountAPI from 'features/search/helpers/useFilterCount/useFilterCount'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { LocationLabel } from 'libs/location/types'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, waitFor, within } from 'tests/utils'
 
 jest.mock('libs/firebase/analytics/analytics')
@@ -127,12 +128,14 @@ function renderSearchHeader({ shouldDisplaySubtitle, isDesktopViewport }: Render
   const searchInputID = uuidv4()
 
   return render(
-    <SearchHeader
-      searchInputID={searchInputID}
-      shouldDisplaySubtitle={shouldDisplaySubtitle}
-      addSearchHistory={jest.fn()}
-      searchInHistory={jest.fn()}
-    />,
+    reactQueryProviderHOC(
+      <SearchHeader
+        searchInputID={searchInputID}
+        shouldDisplaySubtitle={shouldDisplaySubtitle}
+        addSearchHistory={jest.fn()}
+        searchInHistory={jest.fn()}
+      />
+    ),
     {
       theme: { isDesktopViewport: isDesktopViewport ?? false },
     }

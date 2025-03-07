@@ -1,10 +1,9 @@
 import { useMapSubscriptionHomeIdsToThematic } from 'features/subscription/helpers/useMapSubscriptionHomeIdsToThematic'
 import { SubscriptionTheme } from 'features/subscription/types'
+import * as useRemoteConfig from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
-import * as useRemoteConfigContext from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 
-const useRemoteConfigContextSpy = jest.spyOn(useRemoteConfigContext, 'useRemoteConfigContext')
-useRemoteConfigContextSpy.mockReturnValue({
+jest.spyOn(useRemoteConfig, 'useRemoteConfig').mockReturnValue({
   ...DEFAULT_REMOTE_CONFIG,
   subscriptionHomeEntryIds: {
     [SubscriptionTheme.CINEMA]: 'cinemaId',

@@ -4,14 +4,15 @@ import { ModalDisplayState } from 'features/home/components/helpers/useBookingsR
 import { beneficiaryUser } from 'fixtures/user'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import * as useRemoteConfig from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
-import * as useRemoteConfigContext from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { renderHook } from 'tests/utils'
 
 jest.mock('features/auth/context/AuthContext')
 jest.mock('libs/firebase/analytics/analytics')
-const useRemoteConfigContextSpy = jest.spyOn(useRemoteConfigContext, 'useRemoteConfigContext')
+
+const useRemoteConfigSpy = jest.spyOn(useRemoteConfig, 'useRemoteConfig')
 
 const achievements: AchievementResponse[] = [
   {
@@ -29,14 +30,14 @@ describe('useShouldShowAchievementSuccessModal', () => {
     })
 
     beforeAll(() => {
-      useRemoteConfigContextSpy.mockReturnValue({
+      useRemoteConfigSpy.mockReturnValue({
         ...DEFAULT_REMOTE_CONFIG,
         displayAchievements: true,
       })
     })
 
     afterAll(() => {
-      useRemoteConfigContextSpy.mockReturnValue(DEFAULT_REMOTE_CONFIG)
+      useRemoteConfigSpy.mockReturnValue(DEFAULT_REMOTE_CONFIG)
     })
 
     it('should return shouldNotShow', () => {
@@ -67,14 +68,14 @@ describe('useShouldShowAchievementSuccessModal', () => {
     })
 
     beforeAll(() => {
-      useRemoteConfigContextSpy.mockReturnValue({
+      useRemoteConfigSpy.mockReturnValue({
         ...DEFAULT_REMOTE_CONFIG,
         displayAchievements: true,
       })
     })
 
     afterAll(() => {
-      useRemoteConfigContextSpy.mockReturnValue(DEFAULT_REMOTE_CONFIG)
+      useRemoteConfigSpy.mockReturnValue(DEFAULT_REMOTE_CONFIG)
     })
 
     it('should return shouldNotShow', () => {
@@ -157,7 +158,7 @@ describe('useShouldShowAchievementSuccessModal', () => {
     })
 
     beforeAll(() => {
-      useRemoteConfigContextSpy.mockReturnValue(DEFAULT_REMOTE_CONFIG)
+      useRemoteConfigSpy.mockReturnValue(DEFAULT_REMOTE_CONFIG)
     })
 
     it('should return shouldNotShow', () => {
