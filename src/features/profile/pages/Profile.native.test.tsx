@@ -299,7 +299,10 @@ describe('Profile component', () => {
       const notificationsButton = screen.getByText('Notifications')
       await user.press(notificationsButton)
 
-      expect(navigate).toHaveBeenCalledWith('NotificationsSettings', undefined)
+      expect(navigate).toHaveBeenCalledWith('TabNavigator', {
+        params: { params: undefined, screen: 'NotificationsSettings' },
+        screen: 'ProfileStackNavigator',
+      })
     })
   })
 
@@ -380,7 +383,10 @@ describe('Profile component', () => {
       const accessibilityButton = screen.getByText('Accessibilité')
       await user.press(accessibilityButton)
 
-      expect(navigate).toHaveBeenCalledWith('Accessibility', undefined)
+      expect(navigate).toHaveBeenCalledWith('TabNavigator', {
+        params: { params: undefined, screen: 'Accessibility' },
+        screen: 'ProfileStackNavigator',
+      })
     })
 
     it('should navigate when the legal notices row is clicked', async () => {

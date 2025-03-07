@@ -243,7 +243,6 @@ export type RootStackParamList = {
   Maintenance: undefined
   MovieCalendar: undefined
   NewEmailSelection: { token: string }
-  NotificationsSettings: undefined
   NotYetUnderageEligibility: { eligibilityStartDatetime: string }
   Offer: {
     id: number
@@ -290,8 +289,7 @@ export type RootStackParamList = {
   VenueMapFiltersStackNavigator: undefined
   VenuePreviewCarousel: { id: number; defaultIndex?: number }
   VerifyEligibility: undefined
-} & AccessibilityRootStackParamList &
-  CheatcodesStackParamList &
+} & CheatcodesStackParamList &
   CulturalSurveyRootStackParamList &
   SubscriptionRootStackParamList &
   TrustedDeviceRootStackParamList &

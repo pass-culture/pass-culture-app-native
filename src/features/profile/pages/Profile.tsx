@@ -8,6 +8,7 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { useLogoutRoutine } from 'features/auth/helpers/useLogoutRoutine'
 import { useFavoritesState } from 'features/favorites/context/FavoritesWrapper'
+import { getProfileNavConfig } from 'features/navigation/ProfileStackNavigator/getProfileNavConfig'
 import { ProfileHeader } from 'features/profile/components/Header/ProfileHeader/ProfileHeader'
 import { SectionWithSwitch } from 'features/profile/components/SectionWithSwitch/SectionWithSwitch'
 import { SocialNetwork } from 'features/profile/components/SocialNetwork/SocialNetwork'
@@ -191,7 +192,7 @@ const OnlineProfile: React.FC = () => {
                       type="navigable"
                       title="Notifications"
                       icon={Bell}
-                      navigateTo={{ screen: 'NotificationsSettings' }}
+                      navigateTo={getProfileNavConfig('NotificationsSettings')}
                     />
                   </Li>
                   <LiWithMarginVertical>
@@ -247,7 +248,7 @@ const OnlineProfile: React.FC = () => {
                     <Row
                       title="Accessibilité"
                       type="navigable"
-                      navigateTo={{ screen: 'Accessibility' }}
+                      navigateTo={getProfileNavConfig('Accessibility')}
                       icon={HandicapMental}
                     />
                   </Li>
