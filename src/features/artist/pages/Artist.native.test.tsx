@@ -89,10 +89,10 @@ describe('<Artist />', () => {
       setFeatureFlags()
     })
 
-    it('should page not found', () => {
-      render(<Artist />)
+    it('should page not found', async () => {
+      render(reactQueryProviderHOC(<Artist />))
 
-      expect(screen.getByText('Page introuvable !')).toBeOnTheScreen()
+      expect(await screen.findByText('Page introuvable !')).toBeOnTheScreen()
     })
   })
 })
