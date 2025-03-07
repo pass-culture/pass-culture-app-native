@@ -1,4 +1,4 @@
-import { ComponentMeta } from '@storybook/react'
+import type { Meta } from '@storybook/react'
 import React from 'react'
 import styled from 'styled-components/native'
 
@@ -7,7 +7,7 @@ import { ArrowRight } from 'ui/svg/icons/ArrowRight'
 
 import { Tag } from './Tag'
 
-const meta: ComponentMeta<typeof Tag> = {
+const meta: Meta<typeof Tag> = {
   title: 'ui/Tag',
   component: Tag,
 }
@@ -28,9 +28,8 @@ const variantConfig: Variants<typeof Tag> = [
   },
 ]
 
-const Template: VariantsStory<typeof Tag> = (args) => (
+const Template: VariantsStory<typeof Tag> = (args: React.ComponentProps<typeof Tag>) => (
   <VariantsTemplate variants={variantConfig} Component={Tag} defaultProps={{ ...args }} />
 )
 
 export const AllVariants = Template.bind({})
-AllVariants.storyName = 'Tag'

@@ -1,11 +1,11 @@
-import { ComponentMeta } from '@storybook/react'
+import type { Meta } from '@storybook/react'
 import React from 'react'
 
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 
 import { StepDots } from './StepDots'
 
-const meta: ComponentMeta<typeof StepDots> = {
+const meta: Meta<typeof StepDots> = {
   title: 'ui/StepDots',
   component: StepDots,
 }
@@ -34,9 +34,8 @@ const variantConfig: Variants<typeof StepDots> = [
   },
 ]
 
-const Template: VariantsStory<typeof StepDots> = (args) => (
+const Template: VariantsStory<typeof StepDots> = (args: React.ComponentProps<typeof StepDots>) => (
   <VariantsTemplate variants={variantConfig} Component={StepDots} defaultProps={{ ...args }} />
 )
 
 export const AllVariants = Template.bind({})
-AllVariants.storyName = 'StepDots'

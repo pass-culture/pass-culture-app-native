@@ -1,11 +1,11 @@
-import { ComponentMeta } from '@storybook/react'
+import type { Meta } from '@storybook/react'
 import React from 'react'
 
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 
 import { EmailInput } from './EmailInput'
 
-const meta: ComponentMeta<typeof EmailInput> = {
+const meta: Meta<typeof EmailInput> = {
   title: 'ui/inputs/EmailInput',
   component: EmailInput,
 }
@@ -37,9 +37,8 @@ const variantConfig: Variants<typeof EmailInput> = [
   },
 ]
 
-const Template: VariantsStory<typeof EmailInput> = (args) => (
-  <VariantsTemplate variants={variantConfig} Component={EmailInput} defaultProps={{ ...args }} />
-)
+const Template: VariantsStory<typeof EmailInput> = (
+  args: React.ComponentProps<typeof EmailInput>
+) => <VariantsTemplate variants={variantConfig} Component={EmailInput} defaultProps={{ ...args }} />
 
 export const AllVariants = Template.bind({})
-AllVariants.storyName = 'EmailInput'

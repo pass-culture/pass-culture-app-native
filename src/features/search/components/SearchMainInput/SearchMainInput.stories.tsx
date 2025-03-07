@@ -1,16 +1,16 @@
 import { action } from '@storybook/addon-actions'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
 import React from 'react'
 
 import { SearchMainInput } from './SearchMainInput'
 
-const meta: ComponentMeta<typeof SearchMainInput> = {
+const meta: Meta<typeof SearchMainInput> = {
   title: 'Features/search/SearchMainInput',
   component: SearchMainInput,
 }
 export default meta
 
-const Template: ComponentStory<typeof SearchMainInput> = (args) => <SearchMainInput {...args} />
+type Story = StoryObj<typeof SearchMainInput>
 
 const baseProps = {
   setQuery: action('setQuery'),
@@ -21,21 +21,27 @@ const baseProps = {
   label: 'Label',
 }
 
-export const Home = Template.bind({})
-Home.args = {
-  ...baseProps,
-  showLocationButton: true,
+export const Home: Story = {
+  render: (args) => <SearchMainInput {...args} />,
+  args: {
+    ...baseProps,
+    showLocationButton: true,
+  },
 }
 
-export const Focus = Template.bind({})
-Focus.args = {
-  ...baseProps,
-  isFocus: true,
+export const Focus: Story = {
+  render: (args) => <SearchMainInput {...args} />,
+  args: {
+    ...baseProps,
+    isFocus: true,
+  },
 }
 
-export const WithSearch = Template.bind({})
-WithSearch.args = {
-  ...baseProps,
-  query: 'Naheulbeuk tome 1',
-  isFocus: true,
+export const WithSearch: Story = {
+  render: (args) => <SearchMainInput {...args} />,
+  args: {
+    ...baseProps,
+    query: 'Naheulbeuk tome 1',
+    isFocus: true,
+  },
 }

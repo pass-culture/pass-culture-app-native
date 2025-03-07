@@ -1,4 +1,4 @@
-import { ComponentMeta } from '@storybook/react'
+import type { Meta } from '@storybook/react'
 import React from 'react'
 
 import { CreditStatus } from 'features/tutorial/enums'
@@ -7,7 +7,7 @@ import { TypoDS } from 'ui/theme'
 
 import { CreditBlock } from './CreditBlock'
 
-const meta: ComponentMeta<typeof CreditBlock> = {
+const meta: Meta<typeof CreditBlock> = {
   title: 'features/tutorial/CreditBlock',
   component: CreditBlock,
 }
@@ -30,9 +30,8 @@ const variantConfig: Variants<typeof CreditBlock> = [
   },
 ]
 
-const Template: VariantsStory<typeof CreditBlock> = (args) => (
-  <VariantsTemplate variants={variantConfig} Component={CreditBlock} defaultProps={args} />
-)
+const Template: VariantsStory<typeof CreditBlock> = (
+  args: React.ComponentProps<typeof CreditBlock>
+) => <VariantsTemplate variants={variantConfig} Component={CreditBlock} defaultProps={args} />
 
 export const AllVariants = Template.bind({})
-AllVariants.storyName = 'CreditBlock'

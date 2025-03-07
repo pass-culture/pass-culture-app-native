@@ -1,4 +1,4 @@
-import { ComponentMeta } from '@storybook/react'
+import type { Meta } from '@storybook/react'
 import React from 'react'
 
 import { CategoryIdEnum } from 'api/gen'
@@ -7,7 +7,7 @@ import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { getOfferArtists } from 'features/offer/helpers/getOfferArtists/getOfferArtists'
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 
-const meta: ComponentMeta<typeof OfferArtists> = {
+const meta: Meta<typeof OfferArtists> = {
   title: 'features/offer/OfferArtists',
   component: OfferArtists,
 }
@@ -74,9 +74,10 @@ const variantConfig: Variants<typeof OfferArtists> = [
   },
 ]
 
-const Template: VariantsStory<typeof OfferArtists> = (args) => (
+const Template: VariantsStory<typeof OfferArtists> = (
+  args: React.ComponentProps<typeof OfferArtists>
+) => (
   <VariantsTemplate variants={variantConfig} Component={OfferArtists} defaultProps={{ ...args }} />
 )
 
 export const AllVariants = Template.bind({})
-AllVariants.storyName = 'OfferArtists'

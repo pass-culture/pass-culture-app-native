@@ -1,5 +1,5 @@
 import { NavigationContainer } from '@react-navigation/native'
-import { ComponentMeta } from '@storybook/react'
+import type { Meta } from '@storybook/react'
 import React from 'react'
 
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
@@ -7,11 +7,11 @@ import { BicolorAroundMe } from 'ui/svg/icons/BicolorAroundMe'
 
 import { CheckboxBlock } from './CheckboxBlock'
 
-const meta: ComponentMeta<typeof CheckboxBlock> = {
+const meta: Meta<typeof CheckboxBlock> = {
   title: 'ui/CheckboxBlock',
   component: CheckboxBlock,
   decorators: [
-    (Story) => (
+    (Story: React.ComponentType) => (
       <NavigationContainer>
         <Story />
       </NavigationContainer>
@@ -62,9 +62,8 @@ const variantConfig: Variants<typeof CheckboxBlock> = [
   },
 ]
 
-const Template: VariantsStory<typeof CheckboxBlock> = (args) => (
-  <VariantsTemplate variants={variantConfig} Component={CheckboxBlock} defaultProps={args} />
-)
+const Template: VariantsStory<typeof CheckboxBlock> = (
+  args: React.ComponentProps<typeof CheckboxBlock>
+) => <VariantsTemplate variants={variantConfig} Component={CheckboxBlock} defaultProps={args} />
 
 export const AllVariants = Template.bind({})
-AllVariants.storyName = 'CheckboxBlock'

@@ -1,5 +1,5 @@
 import { NavigationContainer } from '@react-navigation/native'
-import { ComponentMeta } from '@storybook/react'
+import type { Meta } from '@storybook/react'
 import React from 'react'
 
 import { IconRetryStep } from 'features/identityCheck/components/IconRetryStep'
@@ -20,11 +20,11 @@ const DisabledIdCardIcon: React.FC<AccessibleIcon> = () => (
   />
 )
 
-const meta: ComponentMeta<typeof StepButton> = {
+const meta: Meta<typeof StepButton> = {
   title: 'ui/StepButton',
   component: StepButton,
   decorators: [
-    (Story) => (
+    (Story: React.ComponentType) => (
       <NavigationContainer>
         <Story />
       </NavigationContainer>
@@ -84,7 +84,9 @@ const variantConfig: Variants<typeof StepButton> = [
   },
 ]
 
-const Template: VariantsStory<typeof StepButton> = (args) => (
+const Template: VariantsStory<typeof StepButton> = (
+  args: React.ComponentProps<typeof StepButton>
+) => (
   <VariantsTemplate
     variants={variantConfig}
     Component={StepButton}
@@ -93,4 +95,3 @@ const Template: VariantsStory<typeof StepButton> = (args) => (
 )
 
 export const AllVariants = Template.bind({})
-AllVariants.storyName = 'StepButton'
