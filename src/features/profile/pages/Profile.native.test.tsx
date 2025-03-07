@@ -18,8 +18,8 @@ import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import * as useRemoteConfig from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
-import * as useRemoteConfigContext from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import {
   GeoCoordinates,
   GEOLOCATION_USER_ERROR_MESSAGE,
@@ -98,7 +98,7 @@ const useVersionSpy = jest.spyOn(useVersion, 'useVersion').mockReturnValue('Vers
 
 const shareSpy = jest.spyOn(Share, 'share').mockResolvedValue({ action: Share.sharedAction })
 
-const useRemoteConfigContextSpy = jest.spyOn(useRemoteConfigContext, 'useRemoteConfigContext')
+const useRemoteConfigSpy = jest.spyOn(useRemoteConfig, 'useRemoteConfig')
 
 jest.mock('libs/firebase/analytics/analytics')
 
@@ -115,7 +115,7 @@ describe('Profile component', () => {
   mockUseNetInfoContext.mockReturnValue({ isConnected: true })
 
   beforeAll(() => {
-    useRemoteConfigContextSpy.mockReturnValue({
+    useRemoteConfigSpy.mockReturnValue({
       ...DEFAULT_REMOTE_CONFIG,
       displayInAppFeedback: true,
       displayAchievements: true,
