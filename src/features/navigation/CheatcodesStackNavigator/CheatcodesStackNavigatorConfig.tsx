@@ -31,7 +31,7 @@ export const cheatcodesStackNavigatorConfig = {
       CheatcodesScreenFeatureFlags: 'cheatcodes/other/feature-flags',
       CheatcodesScreenHighlightThematicHomeHeader: 'cheatcodes/home/highlight-thematic-home-header',
       CheatcodesScreenNewCaledonia: 'cheatcodes/other/new-caledonia',
-      CheatcodesScreenRemoteBanner: 'cheatcodes/remote-banner',
+      CheatcodesScreenRemoteBanners: 'cheatcodes/remote-banners',
       CheatcodesScreenRemoteConfig: 'cheatcodes/other/remote-config',
       CheatcodesScreenTrustedDeviceInfos: 'cheatcodes/trusted-device/trusted-device-infos',
     },

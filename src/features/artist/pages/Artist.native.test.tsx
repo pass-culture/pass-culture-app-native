@@ -15,16 +15,16 @@ jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
   canGoBack: jest.fn(() => true),
 })
 
-const mockUseOffer = jest.fn()
-mockUseOffer.mockReturnValue({
+const mockUseOfferQuery = jest.fn()
+mockUseOfferQuery.mockReturnValue({
   data: {
     ...mockOffer,
     subcategoryId: SubcategoryIdEnum.SUPPORT_PHYSIQUE_MUSIQUE_CD,
     extraData: { performer: 'Céline Dion' },
   },
 })
-jest.mock('features/offer/api/useOffer', () => ({
-  useOffer: () => mockUseOffer(),
+jest.mock('queries/offer/useOfferQuery', () => ({
+  useOfferQuery: () => mockUseOfferQuery(),
 }))
 
 useRoute.mockReturnValue({
@@ -63,7 +63,7 @@ describe('<Artist />', () => {
     })
 
     it('should not display artist page content when there is no artist', () => {
-      mockUseOffer.mockReturnValueOnce({
+      mockUseOfferQuery.mockReturnValueOnce({
         data: {
           ...mockOffer,
           extraData: undefined,
@@ -75,7 +75,7 @@ describe('<Artist />', () => {
     })
 
     it('should not display artist page content when offer not found', () => {
-      mockUseOffer.mockReturnValueOnce({
+      mockUseOfferQuery.mockReturnValueOnce({
         data: undefined,
       })
       render(reactQueryProviderHOC(<Artist />))

@@ -32,26 +32,18 @@ describe('TicketBody', () => {
   })
 
   describe('<QrCode/> display', () => {
-    it('should display the QR code when booking have a QR code and offer is not an event', () => {
-      render(
-        <TicketBody
-          {...initialProps}
-          subcategoryId={SubcategoryIdEnum.PARTITION}
-          venue={venue}
-          isEvent={false}
-        />
-      )
+    it('should display the QR code when the the booking have a QR code and the offer subcategory allows to have a qr code', () => {
+      render(<TicketBody {...initialProps} venue={venue} />)
 
       expect(screen.getByTestId('qr-code')).toBeOnTheScreen()
     })
 
-    it('should not display the QR code when booking is an event and not an external booking', () => {
+    it('should not display the QR code when event subcategory is in subcategories list without QR code display', () => {
       render(
         <TicketBody
           {...initialProps}
           subcategoryId={SubcategoryIdEnum.FESTIVAL_MUSIQUE}
           venue={venue}
-          isEvent
         />
       )
 
@@ -73,7 +65,6 @@ describe('TicketBody', () => {
               subcategoryId={SubcategoryIdEnum.FESTIVAL_MUSIQUE}
               externalBookings={{ barcode: 'barcode' }}
               venue={venue}
-              isEvent
             />
           )
 
@@ -88,7 +79,6 @@ describe('TicketBody', () => {
               subcategoryId={SubcategoryIdEnum.FESTIVAL_MUSIQUE}
               externalBookings={{ barcode: 'barcode' }}
               venue={venue}
-              isEvent
             />
           )
 
@@ -104,7 +94,6 @@ describe('TicketBody', () => {
             subcategoryId={SubcategoryIdEnum.FESTIVAL_MUSIQUE}
             externalBookings={{ barcode: 'barcode' }}
             venue={venue}
-            isEvent
           />
         )
 
@@ -119,7 +108,6 @@ describe('TicketBody', () => {
             subcategoryId={SubcategoryIdEnum.FESTIVAL_MUSIQUE}
             externalBookings={{ barcode: 'barcode' }}
             venue={venue}
-            isEvent
           />
         )
 
@@ -138,7 +126,6 @@ describe('TicketBody', () => {
               subcategoryId={SubcategoryIdEnum.FESTIVAL_MUSIQUE}
               externalBookings={{ barcode: 'barcode' }}
               venue={venue}
-              isEvent
             />
           )
 
@@ -154,7 +141,6 @@ describe('TicketBody', () => {
           subcategoryId={SubcategoryIdEnum.EVENEMENT_PATRIMOINE}
           externalBookings={{ barcode: 'barcode' }}
           venue={venue}
-          isEvent
         />
       )
 
@@ -164,7 +150,7 @@ describe('TicketBody', () => {
 
   describe('Withdrawal', () => {
     it("should not display withdrawal informations for legacy offer that doesn't withdrawal informations", () => {
-      render(<TicketBody {...initialProps} withdrawalType={undefined} venue={venue} isEvent />)
+      render(<TicketBody {...initialProps} withdrawalType={undefined} venue={venue} />)
 
       expect(screen.queryByTestId('withdrawal-info')).not.toBeOnTheScreen()
     })
@@ -178,7 +164,6 @@ describe('TicketBody', () => {
             withdrawalType={WithdrawalTypeEnum.no_ticket}
             withdrawalDelay={0}
             venue={venue}
-            isEvent
           />
         )
 
@@ -197,7 +182,6 @@ describe('TicketBody', () => {
           withdrawalType={WithdrawalTypeEnum.by_email}
           withdrawalDelay={twoDays}
           venue={venue}
-          isEvent
         />
       )
 
@@ -212,7 +196,6 @@ describe('TicketBody', () => {
             subcategoryId={SubcategoryIdEnum.FESTIVAL_MUSIQUE}
             withdrawalType={WithdrawalTypeEnum.on_site}
             venue={venue}
-            isEvent
           />
         )
 
@@ -222,7 +205,7 @@ describe('TicketBody', () => {
 
     describe('Consulter mes e-mails display', () => {
       it('should show the button to open mail', async () => {
-        render(<TicketBody {...initialProps} withdrawalType={undefined} venue={venue} isEvent />)
+        render(<TicketBody {...initialProps} withdrawalType={undefined} venue={venue} />)
 
         const checkEmailsButton = screen.queryByText('Consulter mes e-mails')
 
@@ -231,7 +214,7 @@ describe('TicketBody', () => {
 
       it('should not show the button to open mail if no mail app is available', async () => {
         mockIsMailAppAvailable = false
-        render(<TicketBody {...initialProps} withdrawalType={undefined} venue={venue} isEvent />)
+        render(<TicketBody {...initialProps} withdrawalType={undefined} venue={venue} />)
 
         const checkEmailsButton = screen.queryByText('Consulter mes e-mails')
 

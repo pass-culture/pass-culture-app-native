@@ -5,11 +5,13 @@ import { UseQueryResult } from 'react-query'
 import { VenueTypeCodeKey } from 'api/gen'
 import * as useGoBack from 'features/navigation/useGoBack'
 import * as useVenueOffers from 'features/venue/api/useVenueOffers'
+import * as useVenueSearchParameters from 'features/venue/helpers/useVenueSearchParameters'
 import { VenueOffers } from 'features/venue/types'
 import { FILTERS_VENUE_TYPE_MAPPING } from 'features/venueMap/constant'
 import { VenueMap } from 'features/venueMap/pages/VenueMap/VenueMap'
 import * as venueMapStore from 'features/venueMap/store/venueMapStore'
 import { venuesFilterActions } from 'features/venueMap/store/venuesFilterStore'
+import mockVenueSearchParams from 'fixtures/venueSearchParams'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -55,6 +57,12 @@ jest.mock('@gorhom/bottom-sheet', () => {
   }
 })
 
+jest
+  .spyOn(useVenueSearchParameters, 'useVenueSearchParameters')
+  .mockReturnValue(mockVenueSearchParams)
+
+jest.mock('features/search/context/SearchWrapper')
+
 const VENUE_TYPE = VenueTypeCodeKey.MOVIE
 
 describe('<VenueMap />', () => {
@@ -64,10 +72,9 @@ describe('<VenueMap />', () => {
     jest.useFakeTimers()
     setFeatureFlags([
       RemoteStoreFeatureFlags.WIP_OFFERS_IN_BOTTOM_SHEET,
-      RemoteStoreFeatureFlags.WIP_VENUE_MAP_TYPE_FILTER_V2,
       RemoteStoreFeatureFlags.WIP_VENUE_MAP,
     ])
-    venueMapStore.setVenueTypeCode(VENUE_TYPE)
+    venuesFilterActions.setVenuesFilters([VENUE_TYPE])
   })
 
   afterEach(() => {
@@ -113,13 +120,13 @@ describe('<VenueMap />', () => {
   })
 
   it('Should reset venue type code in store when pressing go back button', async () => {
-    const spy = jest.spyOn(venueMapStore, 'setVenueTypeCode')
+    const spy = jest.spyOn(venuesFilterActions, 'setVenuesFilters')
     render(reactQueryProviderHOC(<VenueMap />))
 
     const goBackButton = screen.getByTestId('Revenir en arrière')
     await user.press(goBackButton)
 
-    await waitFor(() => expect(spy).toHaveBeenNthCalledWith(1, null))
+    await waitFor(() => expect(spy).toHaveBeenNthCalledWith(1, []))
   })
 
   it('Should reset store + filters when unmounting', async () => {

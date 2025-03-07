@@ -2,7 +2,7 @@ import React, { FunctionComponent, useMemo } from 'react'
 import styled from 'styled-components/native'
 
 import { BookingReponse, OfferResponseV2, ReactionTypeEnum, UserProfileResponse } from 'api/gen'
-import { useBookings } from 'features/bookings/api'
+import { useBookingsQuery } from 'queries/bookings/useBookingsQuery'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { ThumbUpFilled } from 'ui/svg/icons/ThumbUpFilled'
 import { TypoDS, getSpacing } from 'ui/theme'
@@ -22,7 +22,7 @@ export const OfferReactions: FunctionComponent<Props> = ({
   userCanReact,
   userBooking,
 }) => {
-  const { data: bookings } = useBookings()
+  const { data: bookings } = useBookingsQuery()
   const { reactionsCount } = offer
   const hasLikes = reactionsCount?.likes > 0
 

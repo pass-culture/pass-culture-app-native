@@ -1,13 +1,15 @@
 import { getScreenFromDeeplink } from 'features/deeplinks/helpers'
+import { getProfileStackConfig } from 'features/navigation/ProfileStackNavigator/getProfileStackConfig'
 import { getScreenPath } from 'features/navigation/RootNavigator/linking/getScreenPath'
-import { getTabNavConfig, homeNavConfig } from 'features/navigation/TabBar/helpers'
+import { getSearchStackConfig } from 'features/navigation/SearchStackNavigator/searchStackHelpers'
+import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { WEBAPP_V2_URL } from 'libs/environment/useWebAppUrl'
-
-// To see the linking config used in the tests, check the file :
-// features/navigation/RootNavigator/__mocks__/routes.ts
 
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
+
+// TODO(PC-34456): remove the global mock
+jest.unmock('features/navigation/RootNavigator/routes')
 
 describe('getScreenFromDeeplink()', () => {
   it('should return PageNotFound when route is unknown', () => {
@@ -43,12 +45,44 @@ describe('getScreenFromDeeplink()', () => {
     expect(screenFromDeeplink.params).toEqual({ screen: 'Home', params: undefined })
   })
 
-  it('should return Profil when url = /profil', () => {
-    const url = getFullUrl(getScreenPath(...getTabNavConfig('Profile', undefined)))
+  it('should return ProfileStackNavigator when url = /profil', () => {
+    const url = getFullUrl(getScreenPath(...getProfileStackConfig('Profile')))
     const { screen, params } = getScreenFromDeeplink(url)
 
     expect(screen).toEqual('TabNavigator')
-    expect(params).toEqual({ screen: 'Profile', params: undefined })
+    expect(params).toEqual({ screen: 'ProfileStackNavigator', params: undefined })
+  })
+
+  it('should return SearchStackNavigator when url = /recherche/resultats', () => {
+    const url = getFullUrl(getScreenPath(...getSearchStackConfig('SearchResults')))
+    const { screen, params } = getScreenFromDeeplink(url)
+
+    expect(screen).toEqual('TabNavigator')
+    expect(params).toEqual({ screen: 'SearchStackNavigator', params: undefined })
+  })
+
+  it('should return SearchStackNavigator when url = /recherche/accueil', () => {
+    const url = getFullUrl(getScreenPath(...getSearchStackConfig('SearchLanding')))
+    const { screen, params } = getScreenFromDeeplink(url)
+
+    expect(screen).toEqual('TabNavigator')
+    expect(params).toEqual({ screen: 'SearchStackNavigator', params: undefined })
+  })
+
+  it('should return SearchStackNavigator when url = /recherche/filter', () => {
+    const url = getFullUrl(getScreenPath(...getSearchStackConfig('SearchFilter')))
+    const { screen, params } = getScreenFromDeeplink(url)
+
+    expect(screen).toEqual('TabNavigator')
+    expect(params).toEqual({ screen: 'SearchStackNavigator', params: undefined })
+  })
+
+  it('should return SearchStackNavigator when url = /recherche/thematic', () => {
+    const url = getFullUrl(getScreenPath(...getSearchStackConfig('ThematicSearch')))
+    const { screen, params } = getScreenFromDeeplink(url)
+
+    expect(screen).toEqual('TabNavigator')
+    expect(params).toEqual({ screen: 'SearchStackNavigator', params: undefined })
   })
 
   it('should return Offer with id=666', () => {

@@ -7,7 +7,7 @@ import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import {
   RemoteBannerRedirectionType,
   RemoteBannerType,
-} from 'features/remoteBanner/components/remoteBannerSchema'
+} from 'features/remoteBanners/utils/remoteBannerSchema'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/fixtures'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
@@ -20,7 +20,7 @@ jest.mock('libs/firebase/analytics/analytics')
 jest.useFakeTimers()
 
 const bannerExternalInformations: RemoteBannerType = {
-  title: 'Title from RemoteBanner',
+  title: 'Title from RemoteGenericBanner',
   subtitleMobile: 'subtitleMobile',
   subtitleWeb: 'subtitleWeb',
   redirectionUrl: 'https://www.test.fr',
@@ -63,11 +63,11 @@ describe('<DisableActivation/>', () => {
     expect(analytics.logHasClickedTutorialFAQ).toHaveBeenCalledTimes(1)
   })
 
-  describe('with RemoteBanner informations', () => {
+  describe('with RemoteActivationBanner informations', () => {
     beforeEach(() =>
       setFeatureFlags([
         {
-          featureFlag: RemoteStoreFeatureFlags.SHOW_REMOTE_BANNER,
+          featureFlag: RemoteStoreFeatureFlags.DISABLE_ACTIVATION,
           options: bannerExternalInformations,
         },
       ])
@@ -85,10 +85,18 @@ describe('<DisableActivation/>', () => {
       expect(screen.getByText(bannerExternalInformations.title)).toBeTruthy()
     })
 
-    it('should open FAQ link from feature flag options when pressing "Plus d’infos dans notre FAQ"', async () => {
+    it('should display correct external title from feature flag options', () => {
       render(<DisableActivation />)
 
-      const faqButton = screen.getByText('Plus d’infos dans notre FAQ')
+      // bannerExternalInformations.subtitleMobile is never undefined in test
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      expect(screen.getByText(bannerExternalInformations.subtitleMobile!)).toBeTruthy()
+    })
+
+    it('should open FAQ link from feature flag options when pressing external link', async () => {
+      render(<DisableActivation />)
+
+      const faqButton = screen.getByText('subtitleMobile')
       await userEvent.press(faqButton)
 
       expect(openUrl).toHaveBeenNthCalledWith(

@@ -15,9 +15,7 @@ import { Spacer, getSpacing } from 'ui/theme'
 type ProfileHeaderProps = {
   featureFlags: {
     enableAchievements: boolean
-    enableSystemBanner: boolean
     disableActivation: boolean
-    showRemoteBanner: boolean
     enablePassForAll: boolean
   }
   user?: UserProfileResponse
@@ -33,7 +31,7 @@ export function ProfileHeader(props: ProfileHeaderProps) {
 
   const ProfileHeader = useMemo(() => {
     if (!isLoggedIn || !user) {
-      return <LoggedOutHeader showRemoteBanner={featureFlags.showRemoteBanner} />
+      return <LoggedOutHeader />
     }
 
     if (!user.isBeneficiary || user.isEligibleForBeneficiaryUpgrade) {
@@ -49,7 +47,6 @@ export function ProfileHeader(props: ProfileHeaderProps) {
     return (
       <React.Fragment>
         <CreditHeader
-          showRemoteBanner={featureFlags.showRemoteBanner}
           firstName={user.firstName}
           lastName={user.lastName}
           age={getAge(user.birthDate)}

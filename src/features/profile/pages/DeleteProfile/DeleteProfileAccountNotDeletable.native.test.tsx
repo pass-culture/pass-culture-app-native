@@ -32,7 +32,13 @@ describe('DeleteProfileAccountNotDeletable', () => {
     const button = screen.getByText('Retourner sur mon profil')
     await user.press(button)
 
-    expect(navigate).toHaveBeenCalledWith('TabNavigator', { params: undefined, screen: 'Profile' })
+    expect(navigate).toHaveBeenCalledWith('TabNavigator', {
+      params: {
+        params: undefined,
+        screen: 'Profile',
+      },
+      screen: 'ProfileStackNavigator',
+    })
   })
 
   it('should navigate to notifications settings on press Désactiver mes notifications', async () => {

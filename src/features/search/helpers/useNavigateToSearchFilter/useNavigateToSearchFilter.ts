@@ -1,7 +1,7 @@
 import { useNavigation } from '@react-navigation/native'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { getSearchStackConfig } from 'features/navigation/SearchStackNavigator/helpers'
+import { getSearchStackConfig } from 'features/navigation/SearchStackNavigator/searchStackHelpers'
 import { SearchState, SearchView } from 'features/search/types'
 
 export const useNavigateToSearchFilter = () => {

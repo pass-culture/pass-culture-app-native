@@ -2,11 +2,11 @@ import { useRoute } from '@react-navigation/native'
 import React from 'react'
 import { Platform } from 'react-native'
 
-import { useOngoingOrEndedBooking } from 'features/bookings/api'
 import { BookingDetailsContent } from 'features/bookings/components/BookingDetailsContent'
 import { OldBookingDetailsContent } from 'features/bookings/components/OldBookingDetailsContent'
 import { getBookingProperties } from 'features/bookings/helpers'
 import { BookingNotFound } from 'features/bookings/pages/BookingNotFound/BookingNotFound'
+import { useOngoingOrEndedBookingQuery } from 'features/bookings/queries'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -26,7 +26,7 @@ export const BookingDetails = () => {
     isError,
     error,
     dataUpdatedAt,
-  } = useOngoingOrEndedBooking(params.id)
+  } = useOngoingOrEndedBookingQuery(params.id)
   const mapping = useSubcategoriesMapping()
   const { logType } = useLogTypeFromRemoteConfig()
 

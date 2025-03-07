@@ -5,6 +5,8 @@ SSL_CERT_FILE="$(realpath '/Library/Application Support'/*/*/data/*cacert.pem 2>
 
 SCRIPT_FOLDER="$(dirname "$(realpath "${BASH_SOURCE[0]}")")"
 
+WAIT_BOOT_COMPLETED="${WAIT_BOOT_COMPLETED:-5}"
+
 choose_an_emulator() {
 	emulator -list-avds |
 		grep -v 'INFO' |
@@ -44,6 +46,8 @@ if sh "$SCRIPT_FOLDER/is_proxy_enabled.sh"; then
 	start_android_emulator >/dev/null &
 
 	adb wait-for-device
+
+	sleep "${WAIT_BOOT_COMPLETED}" # try to avoid flakiness : sometimes certificate is added, sometimes it isn't probably because the device hasn't finished to boot
 
 	add_certificate_to_this_session
 fi

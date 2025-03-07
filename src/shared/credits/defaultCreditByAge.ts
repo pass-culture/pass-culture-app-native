@@ -2,8 +2,6 @@ import type { ReadonlyDeep } from 'type-fest'
 
 import { DepositAmountsByAge } from 'api/gen'
 
-export const DEFAULT_EIGHTEEN_YEARS_OLD_DIGITAL_AMOUNT_V2 = 100_00
-
 type Version = 'v2' | 'v3'
 
 export const defaultCreditByAge = {

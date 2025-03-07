@@ -1,7 +1,7 @@
 import { v4 as uuidv4 } from 'uuid'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
-import { getNavigateToConfig } from 'features/navigation/SearchStackNavigator/helpers'
+import { getSearchNavConfig } from 'features/navigation/SearchStackNavigator/searchStackHelpers'
 import { ListCategoryButtonProps } from 'features/search/components/CategoriesListDumb/CategoriesListDumb'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { isOnlyOnline } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
@@ -26,7 +26,7 @@ export const useSortedSearchCategories = (): ListCategoryButtonProps => {
   const hasAThematicSearch = useHasAThematicPageList()
   const { searchState, dispatch } = useSearch()
   const navigateTo = (facetFilter: SearchGroupNameEnumv2) => {
-    const searchTabConfig = getNavigateToConfig(
+    const searchTabConfig = getSearchNavConfig(
       hasAThematicSearch.includes(facetFilter) ? 'ThematicSearch' : 'SearchResults',
       {
         offerCategories: [facetFilter],

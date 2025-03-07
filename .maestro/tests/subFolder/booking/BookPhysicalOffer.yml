@@ -44,9 +44,14 @@ appId: ${MAESTRO_APP_ID}
       visible: "Plus tard"
     commands:
     - tapOn: "Plus tard"
+
+- runFlow:
+    when:
+      platform: iOS
+    commands:
     - tapOn: 
         text: 'Voir ma réservation'
-        optional: true
+
 
 - runFlow:
     when:

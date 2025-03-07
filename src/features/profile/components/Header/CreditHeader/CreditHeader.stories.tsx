@@ -1,13 +1,17 @@
 import { NavigationContainer } from '@react-navigation/native'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { ComponentMeta } from '@storybook/react'
 import React from 'react'
 
-import { domains_credit_v1, domains_credit_v2 } from 'features/profile/fixtures/domainsCredit'
+import {
+  domains_credit_v3,
+  domains_exhausted_credit_v3,
+} from 'features/profile/fixtures/domainsCredit'
+import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 
 import { CreditHeader } from './CreditHeader'
 
 const meta: ComponentMeta<typeof CreditHeader> = {
-  title: 'ui/CreditHeader',
+  title: 'features/profile/CreditHeader',
   component: CreditHeader,
   decorators: [
     (Story) => (
@@ -19,26 +23,34 @@ const meta: ComponentMeta<typeof CreditHeader> = {
 }
 export default meta
 
-const Template: ComponentStory<typeof CreditHeader> = (props) => <CreditHeader {...props} />
-
 const depositExpirationDate = '2023-02-16T17:16:04.735235'
 
-// TODO(PC-17931): Fix this stories
-const WithDomainCreditV1 = Template.bind({})
-WithDomainCreditV1.args = {
-  showRemoteBanner: false,
-  firstName: 'Rosa',
-  lastName: 'Bonheur',
-  depositExpirationDate: depositExpirationDate,
-  domainsCredit: domains_credit_v1,
-}
+const variantConfig: Variants<typeof CreditHeader> = [
+  {
+    label: 'CreditHeader with domain credit V3',
+    props: {
+      firstName: 'Rosa',
+      lastName: 'Bonheur',
+      depositExpirationDate: depositExpirationDate,
+      domainsCredit: domains_credit_v3,
+      age: 18,
+    },
+  },
+  {
+    label: 'CreditHeader with exhausted credit',
+    props: {
+      firstName: 'Rosa',
+      lastName: 'Bonheur',
+      depositExpirationDate: depositExpirationDate,
+      domainsCredit: domains_exhausted_credit_v3,
+      age: 18,
+    },
+  },
+]
 
-// TODO(PC-17931): Fix this stories
-const WithDomainCreditV2 = Template.bind({})
-WithDomainCreditV2.args = {
-  showRemoteBanner: false,
-  firstName: 'Rosa',
-  lastName: 'Bonheur',
-  depositExpirationDate: depositExpirationDate,
-  domainsCredit: domains_credit_v2,
-}
+const Template: VariantsStory<typeof CreditHeader> = (args) => (
+  <VariantsTemplate variants={variantConfig} Component={CreditHeader} defaultProps={{ ...args }} />
+)
+
+export const AllVariants = Template.bind({})
+AllVariants.storyName = 'CreditHeader'

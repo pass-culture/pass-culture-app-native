@@ -2,17 +2,12 @@ import { NavigationContainer } from '@react-navigation/native'
 import React from 'react'
 
 import { LocationWidgetDesktop } from 'features/location/components/LocationWidgetDesktop'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { act, fireEvent, render, screen } from 'tests/utils/web'
 
 jest.unmock('@react-navigation/native')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 describe('LocationWidgetDesktop', () => {
-  beforeEach(() => {
-    setFeatureFlags() // TODO(PC-34435): add tests for WIP_APP_V2_LOCATION_WIDGET
-  })
-
   afterEach(async () => {
     await act(async () => {
       jest.runOnlyPendingTimers()

@@ -21,7 +21,6 @@ import { BicolorOffers } from 'ui/svg/icons/BicolorOffers'
 import { Spacer, TypoDS } from 'ui/theme'
 
 export type CreditHeaderProps = {
-  showRemoteBanner: boolean
   firstName?: string | null
   lastName?: string | null
   age?: number
@@ -30,7 +29,6 @@ export type CreditHeaderProps = {
 }
 
 export function CreditHeader({
-  showRemoteBanner,
   firstName,
   lastName,
   age,
@@ -90,7 +88,6 @@ export function CreditHeader({
 
   return (
     <HeaderWithGreyContainer
-      showRemoteBanner={showRemoteBanner}
       title={name}
       bannerText={bannerText}
       subtitle={<Subtitle {...subtitleProps} />}

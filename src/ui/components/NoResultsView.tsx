@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
-import { getNavigateToConfig } from 'features/navigation/SearchStackNavigator/helpers'
+import { getSearchNavConfig } from 'features/navigation/SearchStackNavigator/searchStackHelpers'
 import { useLogBeforeNavToSearchResults } from 'features/search/helpers/useLogBeforeNavToSearchResults/useLogBeforeNavToSearchResults'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
@@ -50,7 +50,7 @@ export const NoResultsView = ({
           <ButtonContainer>
             <InternalTouchableLink
               as={ButtonPrimary}
-              navigateTo={getNavigateToConfig('SearchLanding')}
+              navigateTo={getSearchNavConfig('SearchLanding')}
               wording="Découvrir le catalogue"
               onBeforeNavigate={onPressExploreOffers}
               buttonHeight="tall"

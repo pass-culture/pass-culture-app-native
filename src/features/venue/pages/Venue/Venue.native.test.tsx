@@ -47,7 +47,6 @@ jest.mock('libs/location')
 
 jest.mock('libs/subcategories/useSubcategories')
 const venueId = venueDataTest.id
-
 jest.mock('features/gtlPlaylist/hooks/useGTLPlaylists')
 const mockUseGTLPlaylists = useGTLPlaylists as jest.Mock
 mockUseGTLPlaylists.mockReturnValue({
@@ -113,7 +112,10 @@ describe('<Venue />', () => {
   beforeEach(() => {
     setFeatureFlags()
     getItemSpy.mockReset()
-    mockServer.getApi<VenueResponse>(`/v1/venue/${venueId}`, venueDataTest)
+    mockServer.getApi<VenueResponse>(`/v1/venue/${venueId}`, {
+      ...venueDataTest,
+      isOpenToPublic: true,
+    })
   })
 
   it('should match snapshot', async () => {
@@ -173,7 +175,7 @@ describe('<Venue />', () => {
     it('should display CTA if venueTypeCode is not Movie and gtlPlaylists have length', async () => {
       mockUseVenueOffers.mockReturnValueOnce({
         isLoading: false,
-        data: { hits: {}, nbHits: 0 },
+        data: { hits: [], nbHits: 0 },
       })
 
       renderVenue(venueId)

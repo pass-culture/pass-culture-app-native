@@ -3,11 +3,16 @@ import React from 'react'
 import { SubcategoryIdEnum, VenueResponse } from 'api/gen'
 import { useGTLPlaylists } from 'features/gtlPlaylist/hooks/useGTLPlaylists'
 import { GtlPlaylistData } from 'features/gtlPlaylist/types'
+import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
+import { useSearch } from 'features/search/context/SearchWrapper'
 import { useVenueOffers } from 'features/venue/api/useVenueOffers'
 import { NoOfferPlaceholder } from 'features/venue/components/Placeholders/NoOfferPlaceholder'
 import { VenueMovies } from 'features/venue/components/VenueOffers/VenueMovies'
 import { VenueOffersList } from 'features/venue/components/VenueOffers/VenueOffersList'
-import type { VenueOffersArtists, VenueOffers } from 'features/venue/types'
+import { useVenueSearchParameters } from 'features/venue/helpers/useVenueSearchParameters'
+import type { VenueOffers, VenueOffersArtists } from 'features/venue/types'
+import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
+import { useLocation } from 'libs/location'
 import { CategoryHomeLabelMapping, CategoryIdMapping } from 'libs/subcategories/types'
 import { Currency } from 'shared/currency/useGetCurrencyToDisplay'
 import { OfferPlaylistSkeleton, TileSize } from 'ui/components/placeholders/OfferPlaylistSkeleton'
@@ -41,7 +46,20 @@ export function VenueOffers({
   currency,
   euroToPacificFrancRate,
 }: Readonly<VenueOffersProps>) {
-  const { isLoading: areVenueOffersLoading } = useVenueOffers(venue)
+  const { userLocation, selectedLocationMode } = useLocation()
+  const transformHits = useTransformOfferHits()
+  const venueSearchParams = useVenueSearchParameters(venue)
+  const { searchState } = useSearch()
+  const isUserUnderage = useIsUserUnderage()
+  const { isLoading: areVenueOffersLoading } = useVenueOffers({
+    userLocation,
+    selectedLocationMode,
+    isUserUnderage,
+    venueSearchParams,
+    searchState,
+    transformHits,
+    venue,
+  })
   const { isLoading: arePlaylistsLoading } = useGTLPlaylists({
     venue,
     queryKey: 'VENUE_GTL_PLAYLISTS',

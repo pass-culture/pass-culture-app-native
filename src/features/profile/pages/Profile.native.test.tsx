@@ -11,7 +11,7 @@ import { FavoritesWrapper } from 'features/favorites/context/FavoritesWrapper'
 import { initialFavoritesState } from 'features/favorites/context/reducer'
 import { subscriptionStepperFixture } from 'features/identityCheck/fixtures/subscriptionStepperFixture'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
-import { domains_exhausted_credit_v1 } from 'features/profile/fixtures/domainsCredit'
+import { domains_exhausted_credit_v3 } from 'features/profile/fixtures/domainsCredit'
 import { TutorialTypes } from 'features/tutorial/enums'
 import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics/provider'
@@ -365,10 +365,7 @@ describe('Profile component', () => {
     it('should display tutorial row when user has no credit and no upcoming credit', async () => {
       mockedUseAuthContext.mockImplementationOnce(() => ({
         isLoggedIn: true,
-        user: {
-          ...beneficiaryUser,
-          domainsCredit: domains_exhausted_credit_v1,
-        },
+        user: { ...beneficiaryUser, domainsCredit: domains_exhausted_credit_v3 },
       }))
       renderProfile()
 

@@ -1,4 +1,5 @@
 import { linking } from 'features/navigation/RootNavigator/linking'
+import { isRootStackScreen } from 'features/navigation/RootNavigator/routes'
 import { NavigationResultState } from 'features/navigation/RootNavigator/types'
 
 import { DeeplinkParts } from '../types'
@@ -12,6 +13,9 @@ export function getScreenFromDeeplink(url: string): DeeplinkParts {
   const route = getLastRouteFromState(navigationState)
   const screen = route?.name
   let params = route?.params
+  if (!screen || !isRootStackScreen(screen)) {
+    throw new Error('Screen has unexpected value', { cause: { url, navigationState, route } })
+  }
   if (route?.state) {
     const nestedRoute = getLastRouteFromState(route.state)
     params = {
@@ -19,7 +23,7 @@ export function getScreenFromDeeplink(url: string): DeeplinkParts {
       params: nestedRoute?.params,
     }
   }
-  return { screen, params } as DeeplinkParts
+  return { screen, params }
 }
 
 function getLastRouteFromState(navigationState: NavigationResultState) {

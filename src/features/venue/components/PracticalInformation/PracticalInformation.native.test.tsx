@@ -8,19 +8,21 @@ import { render, screen } from 'tests/utils'
 
 jest.mock('libs/firebase/analytics/analytics')
 
+const venueOpenToPublic = { ...venueDataTest, isOpenToPublic: true }
+
 describe('PracticalInformation', () => {
   beforeEach(() => {
     setFeatureFlags()
   })
 
   it('should display withdrawal information', async () => {
-    render(reactQueryProviderHOC(<PracticalInformation venue={venueDataTest} />))
+    render(reactQueryProviderHOC(<PracticalInformation venue={venueOpenToPublic} />))
 
     expect(await screen.findByText('How to withdraw, https://test.com')).toBeOnTheScreen()
   })
 
   it('should display description information', async () => {
-    render(reactQueryProviderHOC(<PracticalInformation venue={venueDataTest} />))
+    render(reactQueryProviderHOC(<PracticalInformation venue={venueOpenToPublic} />))
 
     expect(
       await screen.findByText(
@@ -30,20 +32,20 @@ describe('PracticalInformation', () => {
   })
 
   it('should display contact block', async () => {
-    render(reactQueryProviderHOC(<PracticalInformation venue={venueDataTest} />))
+    render(reactQueryProviderHOC(<PracticalInformation venue={venueOpenToPublic} />))
 
     expect(await screen.findByText('contact@venue.com')).toBeOnTheScreen()
   })
 
   it('should display accessibility block', async () => {
-    render(reactQueryProviderHOC(<PracticalInformation venue={venueDataTest} />))
+    render(reactQueryProviderHOC(<PracticalInformation venue={venueOpenToPublic} />))
 
     expect(await screen.findAllByTestId('accessibilityBadgeContainer')).not.toHaveLength(0)
   })
 
   it('should display placeholder when no practical information provided', async () => {
     const venueWithoutPracticalInformation = {
-      ...venueDataTest,
+      ...venueOpenToPublic,
       withdrawalDetails: undefined,
       description: undefined,
       contact: undefined,
@@ -67,7 +69,7 @@ describe('PracticalInformation', () => {
   it('should not display withdrawal section when no withdrawal info provided', async () => {
     render(
       reactQueryProviderHOC(
-        <PracticalInformation venue={{ ...venueDataTest, withdrawalDetails: undefined }} />
+        <PracticalInformation venue={{ ...venueOpenToPublic, withdrawalDetails: undefined }} />
       )
     )
 
@@ -77,7 +79,7 @@ describe('PracticalInformation', () => {
   it('should not display description section when no description provided', async () => {
     render(
       reactQueryProviderHOC(
-        <PracticalInformation venue={{ ...venueDataTest, description: undefined }} />
+        <PracticalInformation venue={{ ...venueOpenToPublic, description: undefined }} />
       )
     )
 
@@ -86,7 +88,7 @@ describe('PracticalInformation', () => {
 
   it('should not display contact section when no contacts provided', async () => {
     render(
-      reactQueryProviderHOC(<PracticalInformation venue={{ ...venueDataTest, contact: {} }} />)
+      reactQueryProviderHOC(<PracticalInformation venue={{ ...venueOpenToPublic, contact: {} }} />)
     )
 
     expect(screen.queryByText('Contact')).not.toBeOnTheScreen()
@@ -97,7 +99,7 @@ describe('PracticalInformation', () => {
       reactQueryProviderHOC(
         <PracticalInformation
           venue={{
-            ...venueDataTest,
+            ...venueOpenToPublic,
             contact: {
               email: '',
               phoneNumber: '',
@@ -117,7 +119,7 @@ describe('PracticalInformation', () => {
       reactQueryProviderHOC(
         <PracticalInformation
           venue={{
-            ...venueDataTest,
+            ...venueOpenToPublic,
             externalAccessibilityUrl: undefined,
             externalAccessibilityData: undefined,
             accessibility: {
@@ -135,7 +137,7 @@ describe('PracticalInformation', () => {
   })
 
   it('should display opening hours section', async () => {
-    render(reactQueryProviderHOC(<PracticalInformation venue={venueDataTest} />))
+    render(reactQueryProviderHOC(<PracticalInformation venue={venueOpenToPublic} />))
 
     expect(screen.getByText('Horaires d’ouverture')).toBeOnTheScreen()
   })
@@ -143,10 +145,32 @@ describe('PracticalInformation', () => {
   it('should not display opening hours section', async () => {
     render(
       reactQueryProviderHOC(
-        <PracticalInformation venue={{ ...venueDataTest, openingHours: undefined }} />
+        <PracticalInformation venue={{ ...venueOpenToPublic, openingHours: undefined }} />
       )
     )
 
     expect(screen.queryByText('Horaires d’ouverture')).not.toBeOnTheScreen()
+  })
+
+  describe('venue is not open to public', () => {
+    it('should not display opening hours section', async () => {
+      render(
+        reactQueryProviderHOC(
+          <PracticalInformation venue={{ ...venueDataTest, isOpenToPublic: false }} />
+        )
+      )
+
+      expect(screen.queryByText('Horaires d’ouverture')).not.toBeOnTheScreen()
+    })
+
+    it('should not display accessibility section when no accessibility info provided', async () => {
+      render(
+        reactQueryProviderHOC(
+          <PracticalInformation venue={{ ...venueDataTest, isOpenToPublic: false }} />
+        )
+      )
+
+      expect(screen.queryByText('Accessibilité')).not.toBeOnTheScreen()
+    })
   })
 })

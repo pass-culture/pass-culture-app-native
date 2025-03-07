@@ -8,7 +8,6 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { ILocationContext, useLocation } from 'libs/location'
 import { LocationMode } from 'libs/location/types'
 import { useGetDepositAmountsByAge } from 'shared/user/useGetDepositAmountsByAge'
-import { mockAuthContextWithoutUser } from 'tests/AuthContextUtils'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, render, screen } from 'tests/utils'
@@ -33,13 +32,17 @@ jest.useFakeTimers()
 describe('<HomeBanner/>', () => {
   beforeEach(() => {
     setFeatureFlags()
+    mockDepositAmounts.mockReturnValue(undefined)
+    mockUseGeolocation.mockReturnValue({
+      selectedLocationMode: LocationMode.EVERYWHERE,
+    } as ILocationContext)
   })
 
-  describe('when feature flag showRemoteBanner is enable', () => {
+  describe('when feature flag showRemoteGenericBanner is enable', () => {
     beforeEach(() => {
       setFeatureFlags([
         {
-          featureFlag: RemoteStoreFeatureFlags.SHOW_REMOTE_BANNER,
+          featureFlag: RemoteStoreFeatureFlags.SHOW_REMOTE_GENERIC_BANNER,
           options: {
             title: 'title 1',
             subtitleMobile: 'subtitleMobile 1',
@@ -61,21 +64,13 @@ describe('<HomeBanner/>', () => {
         },
       })
       renderHomeBanner({})
+      const remoteBanner = await screen.findByText('title 1')
 
-      const banner = await screen.findByText('title 1')
-
-      expect(banner).toBeOnTheScreen()
+      expect(remoteBanner).toBeOnTheScreen()
     })
   })
 
-  describe('When wipAppV2SystemBlock feature flag deactivated', () => {
-    beforeEach(() => {
-      mockDepositAmounts.mockReturnValue(undefined)
-      mockUseGeolocation.mockReturnValue({
-        selectedLocationMode: LocationMode.EVERYWHERE,
-      } as ILocationContext)
-    })
-
+  describe('user is not logged in', () => {
     it('should display SignupBanner when user is not logged in', async () => {
       mockSubscriptionStepper()
       mockBannerFromBackend({
@@ -91,138 +86,55 @@ describe('<HomeBanner/>', () => {
 
       expect(screen.getByText('Débloque ton crédit')).toBeOnTheScreen()
     })
-
-    describe('user is logged in', () => {
-      it('should display activation banner with BicolorUnlock icon when banner api call return activation banner', async () => {
-        mockSubscriptionStepper()
-        mockBannerFromBackend({
-          banner: {
-            name: BannerName.activation_banner,
-            text: 'à dépenser sur l’application',
-            title: 'Débloque tes 1000\u00a0€',
-          },
-        })
-
-        renderHomeBanner({})
-        await screen.findByText('Débloque tes 1000\u00a0€')
-
-        expect(screen.getByTestId('BicolorUnlock')).toBeOnTheScreen()
-      })
-
-      it('should display activation banner with ArrowAgain icon when banner api call return retry_identity_check_banner', async () => {
-        mockSubscriptionStepper()
-        mockBannerFromBackend({
-          banner: {
-            name: BannerName.retry_identity_check_banner,
-            title: 'Retente ubble',
-            text: 'pour débloquer ton crédit',
-          },
-        })
-
-        renderHomeBanner({})
-        await screen.findByText('Retente ubble')
-
-        expect(screen.getByTestId('ArrowAgain')).toBeOnTheScreen()
-      })
-
-      it('should display activation banner with BirthdayCake icon when banner api call return transition_17_18_banner', async () => {
-        mockSubscriptionStepper()
-        mockBannerFromBackend({
-          banner: {
-            name: BannerName.transition_17_18_banner,
-            title: 'Débloque tes 600\u00a0€',
-            text: 'Confirme tes informations',
-          },
-        })
-
-        renderHomeBanner({})
-        await screen.findByText('Débloque tes 600\u00a0€')
-
-        expect(screen.getByTestId('BirthdayCake')).toBeOnTheScreen()
-      })
-    })
   })
 
-  describe('When wipAppV2SystemBlock feature flag activated', () => {
-    beforeEach(() => {
-      setFeatureFlags([RemoteStoreFeatureFlags.WIP_APP_V2_SYSTEM_BLOCK])
-    })
-
-    it('should display SignupBanner when user is not logged in', async () => {
+  describe('user is logged in', () => {
+    it('should display activation banner with BicolorUnlock icon when banner api call return activation banner', async () => {
       mockSubscriptionStepper()
-      mockServer.getApi<BannerResponse>('/v1/banner?isGeolocated=true', {
-        responseOptions: {
-          data: {},
+      mockBannerFromBackend({
+        banner: {
+          name: BannerName.activation_banner,
+          text: 'à dépenser sur l’application',
+          title: 'Débloque tes 1000\u00a0€',
         },
-        requestOptions: { persist: true },
       })
-      mockServer.getApi<BannerResponse>('/v1/banner?isGeolocated=false', {
-        responseOptions: {
-          data: {
-            banner: {
-              name: BannerName.geolocation_banner,
-              title: 'Géolocalise-toi',
-              text: 'Pour trouver des offres autour de toi.',
-            },
-          },
-        },
-        requestOptions: { persist: true },
-      })
-      mockAuthContextWithoutUser()
 
-      renderHomeBanner({ isLoggedIn: false })
+      renderHomeBanner({})
+      await screen.findByText('Débloque tes 1000\u00a0€')
 
-      expect(await screen.findByText('Débloque ton crédit')).toBeOnTheScreen()
+      expect(screen.getByTestId('BicolorUnlock')).toBeOnTheScreen()
     })
 
-    describe('user is logged in', () => {
-      it('should display activation banner with BicolorUnlock icon when banner api call return activation banner', async () => {
-        mockSubscriptionStepper()
-        mockBannerFromBackend({
-          banner: {
-            name: BannerName.activation_banner,
-            text: 'à dépenser sur l’application',
-            title: 'Débloque tes 1000\u00a0€',
-          },
-        })
-
-        renderHomeBanner({ isLoggedIn: true })
-        await screen.findByText('Débloque tes 1000\u00a0€')
-
-        expect(screen.getByTestId('BicolorUnlock')).toBeOnTheScreen()
+    it('should display activation banner with ArrowAgain icon when banner api call return retry_identity_check_banner', async () => {
+      mockSubscriptionStepper()
+      mockBannerFromBackend({
+        banner: {
+          name: BannerName.retry_identity_check_banner,
+          title: 'Retente ubble',
+          text: 'pour débloquer ton crédit',
+        },
       })
 
-      it('should display activation banner with ArrowAgain icon when banner api call return retry_identity_check_banner', async () => {
-        mockSubscriptionStepper()
-        mockBannerFromBackend({
-          banner: {
-            name: BannerName.retry_identity_check_banner,
-            title: 'Retente ubble',
-            text: 'pour débloquer ton crédit',
-          },
-        })
+      renderHomeBanner({})
+      await screen.findByText('Retente ubble')
 
-        renderHomeBanner({ isLoggedIn: true })
-        await screen.findByText('Retente ubble')
+      expect(screen.getByTestId('ArrowAgain')).toBeOnTheScreen()
+    })
 
-        expect(screen.getByTestId('ArrowAgain')).toBeOnTheScreen()
+    it('should display activation banner with BirthdayCake icon when banner api call return transition_17_18_banner', async () => {
+      mockSubscriptionStepper()
+      mockBannerFromBackend({
+        banner: {
+          name: BannerName.transition_17_18_banner,
+          title: 'Débloque tes 600\u00a0€',
+          text: 'Confirme tes informations',
+        },
       })
 
-      it('should display activation banner with BirthdayCake icon when banner api call return transition_17_18_banner', async () => {
-        mockSubscriptionStepper()
-        mockBannerFromBackend({
-          banner: {
-            name: BannerName.transition_17_18_banner,
-            title: 'Débloque tes 600\u00a0€',
-            text: 'Confirme tes informations',
-          },
-        })
+      renderHomeBanner({})
+      await screen.findByText('Débloque tes 600\u00a0€')
 
-        renderHomeBanner({ isLoggedIn: true })
-        await screen.findByText('Débloque tes 600\u00a0€')
-
-        expect(screen.getByTestId('BirthdayCake')).toBeOnTheScreen()
-      })
+      expect(screen.getByTestId('BirthdayCake')).toBeOnTheScreen()
     })
   })
 })

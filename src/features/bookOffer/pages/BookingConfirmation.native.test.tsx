@@ -13,7 +13,7 @@ import { BookingConfirmation } from './BookingConfirmation'
 
 jest.mock('react-native/Libraries/Animated/animations/TimingAnimation.js')
 
-jest.mock('features/offer/api/useOffer')
+jest.mock('queries/offer/useOfferQuery')
 
 jest.mock('shared/user/useAvailableCredit', () => ({
   useAvailableCredit: jest.fn(() => ({ isExpired: false, amount: 2000 })),

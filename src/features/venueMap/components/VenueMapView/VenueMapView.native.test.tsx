@@ -51,7 +51,9 @@ describe('VenueMapView', () => {
   it('should render empty map', async () => {
     render(<VenueMapView venues={[]} />)
 
-    expect(await screen.findByTestId('venue-map-view')).toBeOnTheScreen()
+    const map = await screen.findByTestId('venue-map-view')
+
+    expect(map).toBeOnTheScreen()
   })
 
   it('should render map with markers', async () => {

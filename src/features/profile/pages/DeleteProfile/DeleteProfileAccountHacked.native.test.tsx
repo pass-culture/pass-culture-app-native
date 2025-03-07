@@ -24,7 +24,13 @@ describe('DeleteProfileAccountHacked', () => {
 
     fireEvent.press(button)
 
-    expect(navigate).toHaveBeenCalledWith('TabNavigator', { params: undefined, screen: 'Profile' })
+    expect(navigate).toHaveBeenCalledWith('TabNavigator', {
+      params: {
+        params: undefined,
+        screen: 'Profile',
+      },
+      screen: 'ProfileStackNavigator',
+    })
   })
 
   it('should navigate to confirm delete profile on press Susprendre mon compte', async () => {

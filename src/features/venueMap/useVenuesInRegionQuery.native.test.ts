@@ -1,4 +1,5 @@
 import * as venueMapStore from 'features/venueMap/store/venueMapStore'
+import { venuesFilterActions } from 'features/venueMap/store/venuesFilterStore'
 import { venuesFixture as mockVenues } from 'libs/algolia/fetchAlgolia/fetchVenues/fixtures/venuesFixture'
 import { Region } from 'libs/maps/maps'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -25,7 +26,7 @@ describe('useVenuesInRegionQuery', () => {
 
   beforeAll(() => {
     act(() => {
-      venueMapStore.setVenueTypeCode(null)
+      venuesFilterActions.setVenuesFilters([])
     })
   })
 

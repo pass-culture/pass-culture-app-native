@@ -2,7 +2,6 @@ import React, { FunctionComponent, useCallback, useMemo } from 'react'
 import { FlatList, ListRenderItem, NativeScrollEvent } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
-import { useBookings } from 'features/bookings/api'
 import { EndedBookingsSection } from 'features/bookings/components/EndedBookingsSection'
 import { getEligibleBookingsForArchive } from 'features/bookings/helpers/expirationDateUtils'
 import { Booking } from 'features/bookings/types'
@@ -15,6 +14,7 @@ import { useIsFalseWithDelay } from 'libs/hooks/useIsFalseWithDelay'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { plural } from 'libs/plural'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
+import { useBookingsQuery } from 'queries/bookings/useBookingsQuery'
 import {
   BookingHitPlaceholder,
   NumberOfBookingsPlaceholder,
@@ -35,7 +35,7 @@ const ANIMATION_DURATION = 700
 export const OnGoingBookingsList: FunctionComponent = () => {
   const enableBookingImprove = useFeatureFlag(RemoteStoreFeatureFlags.WIP_BOOKING_IMPROVE)
   const netInfo = useNetInfoContext()
-  const { data: bookings, isLoading, isFetching, refetch } = useBookings()
+  const { data: bookings, isLoading, isFetching, refetch } = useBookingsQuery()
   const { isLoading: subcategoriesIsLoading } = useSubcategories()
   const showSkeleton = useIsFalseWithDelay(isLoading || subcategoriesIsLoading, ANIMATION_DURATION)
   const isRefreshing = useIsFalseWithDelay(isFetching, ANIMATION_DURATION)

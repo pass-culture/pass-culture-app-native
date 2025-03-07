@@ -58,9 +58,7 @@ const DEBOUNCE_TOGGLE_DELAY_MS = 5000
 
 const OnlineProfile: React.FC = () => {
   const enableAchievements = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_ACHIEVEMENTS)
-  const enableSystemBanner = useFeatureFlag(RemoteStoreFeatureFlags.WIP_APP_V2_SYSTEM_BLOCK)
   const disableActivation = useFeatureFlag(RemoteStoreFeatureFlags.DISABLE_ACTIVATION)
-  const showRemoteBanner = useFeatureFlag(RemoteStoreFeatureFlags.SHOW_REMOTE_BANNER)
   const enablePassForAll = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_PASS_FOR_ALL)
 
   const { dispatch: favoritesDispatch } = useFavoritesState()
@@ -169,9 +167,7 @@ const OnlineProfile: React.FC = () => {
             <ProfileHeader
               featureFlags={{
                 enableAchievements,
-                enableSystemBanner,
                 disableActivation,
-                showRemoteBanner,
                 enablePassForAll,
               }}
               user={user}

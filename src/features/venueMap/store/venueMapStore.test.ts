@@ -1,4 +1,3 @@
-import { VenueTypeCodeKey } from 'api/gen'
 import { PlaylistType } from 'features/offer/enums'
 import { venuesFixture } from 'libs/algolia/fetchAlgolia/fetchVenues/fixtures/venuesFixture'
 import { act, renderHook } from 'tests/utils'
@@ -9,7 +8,6 @@ import {
   setOffersPlaylistType,
   setRegion,
   setSelectedVenue,
-  setVenueTypeCode,
   setVenues,
   useVenueMapStore,
 } from './venueMapStore'
@@ -23,7 +21,6 @@ describe('VenueMapStore', () => {
     expect(result.current.region).toBeUndefined()
     expect(result.current.offersPlaylistType).toBe(PlaylistType.TOP_OFFERS)
     expect(result.current.selectedVenue).toBeUndefined()
-    expect(result.current.venueTypeCode).toBeUndefined()
   })
 
   it('should set venues', () => {
@@ -60,7 +57,6 @@ describe('VenueMapStore', () => {
     const REGION = { latitude: 22.9, longitude: 33.2, longitudeDelta: 2, latitudeDelta: 3 }
     act(() => {
       setVenues(venuesFixture)
-      setVenueTypeCode(VenueTypeCodeKey.BOOKSTORE)
       setOffersPlaylistType(PlaylistType.SEARCH_RESULTS)
       setInitialRegion(REGION)
       setRegion(REGION)
@@ -72,6 +68,5 @@ describe('VenueMapStore', () => {
     expect(result.current.region).toStrictEqual(REGION)
     expect(result.current.offersPlaylistType).toBe(PlaylistType.SEARCH_RESULTS)
     expect(result.current.selectedVenue).toStrictEqual(venuesFixture[1])
-    expect(result.current.venueTypeCode).toStrictEqual(VenueTypeCodeKey.BOOKSTORE)
   })
 })

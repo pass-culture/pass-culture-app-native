@@ -7,7 +7,7 @@ import { Subtitle } from 'features/profile/components/Subtitle/Subtitle'
 import { formatDateToLastUpdatedAtMessage } from 'features/profile/helpers/formatDateToLastUpdatedAtMessage'
 import { matchSubscriptionMessageIconToSvg } from 'features/profile/helpers/matchSubscriptionMessageIconToSvg'
 import { shouldOpenInbox as checkShouldOpenInbox } from 'features/profile/helpers/shouldOpenInbox'
-import { RemoteBanner } from 'features/remoteBanner/components/RemoteBanner'
+import { RemoteActivationBanner } from 'features/remoteBanners/banners/RemoteActivationBanner'
 import { InfoBanner } from 'ui/components/banners/InfoBanner'
 import { BaseButtonProps } from 'ui/components/buttons/AppButton/types'
 import { ButtonQuaternarySecondary } from 'ui/components/buttons/ButtonQuaternarySecondary'
@@ -85,13 +85,16 @@ export const SubscriptionMessageBadge = ({
           <Spacer.Column numberOfSpaces={4} />
         </React.Fragment>
       ) : null}
+
       <Spacer.Column numberOfSpaces={2} />
+
       {disableActivation ? (
         <React.Fragment>
-          <RemoteBanner from="Profile" />
+          <RemoteActivationBanner from="profile" />
           <Spacer.Column numberOfSpaces={6} />
         </React.Fragment>
       ) : null}
+
       <InfoBanner
         icon={icon}
         message={userMessage}

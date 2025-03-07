@@ -3,13 +3,13 @@ import { QueryObserverResult } from 'react-query'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { BookingsResponse, ReactionTypeEnum, SubcategoriesResponseModelv2 } from 'api/gen'
-import * as bookingsAPI from 'features/bookings/api/useBookings'
 import { availableReactionsSnap } from 'features/bookings/fixtures/availableReactionSnap'
 import { bookingsSnap, emptyBookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { useAvailableReaction } from 'features/reactions/api/useAvailableReaction'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
+import * as bookingsAPI from 'queries/bookings/useBookingsQuery'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, render, screen, userEvent } from 'tests/utils'
@@ -18,7 +18,7 @@ import { Bookings } from './Bookings'
 
 jest.mock('libs/network/NetInfoWrapper')
 
-const useBookingsSpy = jest.spyOn(bookingsAPI, 'useBookings')
+const useBookingsSpy = jest.spyOn(bookingsAPI, 'useBookingsQuery')
 
 useBookingsSpy.mockReturnValue({
   data: bookingsSnap,
@@ -72,7 +72,7 @@ describe('Bookings', () => {
     renderBookings()
     await act(async () => {}) // Without this act the test is flaky
 
-    //Due to multiple renders useBookings is called three times
+    //Due to multiple renders useBookingsQuery is called three times
     expect(useBookingsSpy).toHaveBeenCalledTimes(3)
   })
 
@@ -88,7 +88,7 @@ describe('Bookings', () => {
       data: emptyBookingsSnap,
       isFetching: false,
     } as unknown as QueryObserverResult<BookingsResponse, unknown>
-    // Due to multiple renders we need to mock useBookings six times
+    // Due to multiple renders we need to mock useBookingsQuery six times
     useBookingsSpy
       .mockReturnValueOnce(useBookingsResultMock)
       .mockReturnValueOnce(useBookingsResultMock)
@@ -207,7 +207,7 @@ describe('Bookings', () => {
         },
         isFetching: false,
       } as unknown as QueryObserverResult<BookingsResponse, unknown>
-      // Due to multiple renders we need to mock useBookings three times
+      // Due to multiple renders we need to mock useBookingsQuery three times
       useBookingsSpy
         .mockReturnValueOnce(useBookingsResultMock)
         .mockReturnValueOnce(useBookingsResultMock)

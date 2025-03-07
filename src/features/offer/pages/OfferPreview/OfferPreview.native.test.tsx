@@ -19,8 +19,8 @@ const mockOffer = jest.fn((): { data: OfferResponseV2 } => ({
   },
 }))
 
-jest.mock('features/offer/api/useOffer', () => ({
-  useOffer: () => mockOffer(),
+jest.mock('queries/offer/useOfferQuery', () => ({
+  useOfferQuery: () => mockOffer(),
 }))
 
 jest.useFakeTimers()

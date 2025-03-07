@@ -4,7 +4,6 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { CheatcodesButtonList } from 'cheatcodes/components/CheatcodesButtonList'
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
-import { filterAndSortCheatcodesButtons } from 'cheatcodes/hooks/filterAndSortCheatcodesButtons'
 import { cheatcodesNavigationAchievementsButtons } from 'cheatcodes/pages/features/achievements/CheatcodesNavigationAchievements'
 import { cheatcodesNavigationBirthdayNotificationsButtons } from 'cheatcodes/pages/features/birthdayNotifications/CheatcodesNavigationBirthdayNotifications'
 import { cheatcodesNavigationBookOfferButtons } from 'cheatcodes/pages/features/bookOffer/CheatcodesNavigationBookOffer'
@@ -27,6 +26,33 @@ import { SearchInput } from 'ui/components/inputs/SearchInput'
 import { SeparatorWithText } from 'ui/components/SeparatorWithText'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { getSpacing } from 'ui/theme'
+
+const isMatching = (searchValue: string, str?: string): boolean =>
+  (str ?? '').toLowerCase().includes(searchValue.toLowerCase())
+
+const filterAndSortCheatcodesButtons = (
+  searchValue: string,
+  buttons: CheatcodesButtonsWithSubscreensProps[]
+): CheatcodesButtonsWithSubscreensProps[] =>
+  buttons
+    .filter((button) => button.title || button.screen)
+    .map((button): CheatcodesButtonsWithSubscreensProps | null => {
+      const filteredSubscreens = button.subscreens?.filter(
+        (subscreen) =>
+          isMatching(searchValue, subscreen.title) || isMatching(searchValue, subscreen.screen)
+      )
+      const isButtonMatching =
+        isMatching(searchValue, button.title) ||
+        isMatching(searchValue, button.screen) ||
+        (filteredSubscreens && filteredSubscreens.length > 0)
+      return isButtonMatching
+        ? { ...button, subscreens: searchValue ? filteredSubscreens : [] }
+        : null
+    })
+    .filter((button): button is CheatcodesButtonsWithSubscreensProps => button !== null)
+    .sort((a, b) =>
+      (a.title || a.screen || 'sans titre').localeCompare(b.title || b.screen || 'sans titre')
+    )
 
 export function CheatcodesMenu(): React.JSX.Element {
   const [searchValue, setSearchValue] = useState('')
@@ -55,7 +81,7 @@ export function CheatcodesMenu(): React.JSX.Element {
     ...cheatcodesNavigationSubscriptionButtons,
     ...cheatcodesNavigationTrustedDeviceButtons,
     ...cheatcodesNavigationTutorialButtons,
-    { title: 'RemoteBanner 🆒', screen: 'CheatcodesScreenRemoteBanner', subscreens: [] },
+    { title: 'RemoteBanners 🆒', screen: 'CheatcodesScreenRemoteBanners', subscreens: [] },
     { title: 'Share 🔗', screen: 'CheatcodesNavigationShare', subscreens: [] },
   ]
 

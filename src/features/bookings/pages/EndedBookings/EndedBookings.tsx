@@ -8,7 +8,6 @@ import {
   PostReactionRequest,
   ReactionTypeEnum,
 } from 'api/gen'
-import { useBookings } from 'features/bookings/api'
 import { EndedBookingItem } from 'features/bookings/components/EndedBookingItem'
 import { NoBookingsView } from 'features/bookings/components/NoBookingsView'
 import { getEndedBookingDateLabel } from 'features/bookings/helpers/getEndedBookingDateLabel/getEndedBookingDateLabel'
@@ -23,6 +22,7 @@ import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { plural } from 'libs/plural'
 import { ShareContent } from 'libs/share/types'
+import { useBookingsQuery } from 'queries/bookings/useBookingsQuery'
 import { BlurHeader } from 'ui/components/headers/BlurHeader'
 import {
   PageHeaderWithoutPlaceholder,
@@ -39,7 +39,7 @@ const keyExtractor: (item: Booking) => string = (item) => item.id.toString()
 export const EndedBookings: FunctionComponent = () => {
   const enableBookingImprove = useFeatureFlag(RemoteStoreFeatureFlags.WIP_BOOKING_IMPROVE)
   const shouldDisplayReactionFeature = useFeatureFlag(RemoteStoreFeatureFlags.WIP_REACTION_FEATURE)
-  const { data: bookings } = useBookings()
+  const { data: bookings } = useBookingsQuery()
   const { goBack } = useGoBack(...getTabNavConfig('Bookings'))
   const headerHeight = useGetHeaderHeight()
   const { mutate: addReaction } = useReactionMutation()

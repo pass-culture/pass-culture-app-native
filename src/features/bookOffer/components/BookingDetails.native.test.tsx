@@ -128,8 +128,8 @@ const mockData = {
 }
 let mockVenueList: VenueListItem[] = []
 let mockNbVenueItems = 0
-jest.mock('api/useSearchVenuesOffer/useSearchVenueOffers', () => ({
-  useSearchVenueOffers: () => ({
+jest.mock('queries/searchVenuesOffer/useSearchVenueOffersInfiniteQuery', () => ({
+  useSearchVenueOffersInfiniteQuery: () => ({
     hasNextPage: mockHasNextPage,
     fetchNextPage: mockFetchNextPage,
     data: mockData,
@@ -472,7 +472,7 @@ describe('<BookingDetails />', () => {
 
       renderBookingDetails({ stocks: mockStocks, onPressBookOffer: mockOnPressBookOffer })
 
-      expect(await screen.findByText('75013 PARIS 13, 2 RUE DU CAFÉ')).toBeOnTheScreen()
+      expect(await screen.findByText('2 RUE DU CAFÉ, 75013 PARIS 13')).toBeOnTheScreen()
     })
 
     it('should display venue address when offer.address is not present', async () => {
@@ -489,7 +489,7 @@ describe('<BookingDetails />', () => {
 
       renderBookingDetails({ stocks: mockStocks, onPressBookOffer: mockOnPressBookOffer })
 
-      expect(await screen.findByText('97310 Kourou, RUE DE CALI')).toBeOnTheScreen()
+      expect(await screen.findByText('RUE DE CALI, 97310 Kourou')).toBeOnTheScreen()
     })
   })
 

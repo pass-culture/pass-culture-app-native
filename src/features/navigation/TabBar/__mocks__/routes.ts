@@ -1,5 +1,6 @@
 import { LinkingOptions } from '@react-navigation/native'
 
+import { profileNavigatorPathConfig } from 'features/navigation/ProfileStackNavigator/profileNavigatorPathConfig'
 import { ScreenNames } from 'features/navigation/RootNavigator/types'
 import { screenParamsParser } from 'features/navigation/screenParamsUtils'
 import { searchNavigatorPathConfig } from 'features/navigation/SearchStackNavigator/__mocks__/routes'
@@ -13,29 +14,20 @@ export const tabNavigatorPathConfig: LinkingOptions<TabParamList>['config'] = {
       path: 'accueil',
       parse: {},
     },
-    SearchStackNavigator: {
-      initialRouteName: 'SearchLanding',
-      screens: {
-        SearchLanding: {
-          path: 'recherche/accueil',
-          parse: {},
-          stringify: {},
-        },
-        SearchResults: {
-          path: 'recherche/resultats',
-          parse: {},
-          stringify: {},
-        },
-      },
-    },
+    SearchStackNavigator: searchNavigatorPathConfig,
     Bookings: {
       path: 'reservations',
     },
     Favorites: {
       path: 'favoris',
     },
-    Profile: {
-      path: 'profil',
+    ProfileStackNavigator: {
+      initialRouteName: 'Profile',
+      screens: {
+        Profile: {
+          path: 'profil',
+        },
+      },
     },
   },
 }
@@ -62,9 +54,9 @@ export const routes: Array<TabRoute> = [
     path: 'favoris',
   },
   {
-    name: 'Profile',
+    name: 'ProfileStackNavigator',
     component: MockComponent,
-    path: 'profil',
+    pathConfig: profileNavigatorPathConfig,
   },
 ]
 

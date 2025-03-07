@@ -2,13 +2,14 @@ import { useNavigation } from '@react-navigation/native'
 import React, { useEffect } from 'react'
 import styled from 'styled-components/native'
 
-import { useNotifyWebappLinkSent } from 'features/bookOffer/api/useNotifyWebappLinkSent'
 import { Step } from 'features/bookOffer/context/reducer'
 import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
-import { useAddFavorite, useFavorite } from 'features/favorites/api'
+import { useNotifyWebappLinkSent } from 'features/bookOffer/queries/useNotifyWebappLinkSent'
+import { useFavorite } from 'features/favorites/hooks/useFavorite'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
 import { analytics } from 'libs/analytics/provider'
+import { useAddFavoriteMutation } from 'queries/favorites/useAddFavoriteMutation'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryPrimary } from 'ui/components/buttons/ButtonTertiaryPrimary'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
@@ -34,7 +35,7 @@ export const BookingImpossible: React.FC = () => {
     }
   }, [bookingState.step, dispatch])
 
-  const { mutate: addFavorite } = useAddFavorite({
+  const { mutate: addFavorite } = useAddFavoriteMutation({
     onSuccess: () => {
       if (typeof offerId == 'undefined') return
       analytics.logHasAddedOfferToFavorites({ from: 'bookingimpossible', offerId })

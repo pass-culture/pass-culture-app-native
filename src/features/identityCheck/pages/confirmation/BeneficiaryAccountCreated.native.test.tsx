@@ -85,11 +85,11 @@ describe('<BeneficiaryAccountCreated/>', () => {
   })
 
   it('should redirect to native cultural survey page when "C’est parti !"button is clicked and user is supposed to see cultural survey', async () => {
-    renderBeneficiaryAccountCreated()
     mockAuthContextWithUser(
       { ...beneficiaryUser, needsToFillCulturalSurvey: true },
       { persist: true }
     )
+    renderBeneficiaryAccountCreated()
 
     await user.press(await screen.findByLabelText('C’est parti !'))
 

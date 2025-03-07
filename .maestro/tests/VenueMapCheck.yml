@@ -1,6 +1,5 @@
 appId: ${MAESTRO_APP_ID}
 tags:
-  - cloud
   - nightlyIOS
   - local
 ---

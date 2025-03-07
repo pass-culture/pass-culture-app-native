@@ -17,7 +17,6 @@ import * as useMapSubscriptionHomeIdsToThematic from 'features/subscription/help
 import { SubscriptionTheme } from 'features/subscription/types'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { GeolocPermissionState, ILocationContext } from 'libs/location'
 import { LocationMode } from 'libs/location/types'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
@@ -290,66 +289,37 @@ describe('ThematicHome', () => {
     })
   })
 
-  describe('geolocation banner when wipAppV2SystemBlock disabled', () => {
-    // TODO(PC-33663): the tests of this describe block pass with and without the FF. The tests should be re-written.
-    beforeAll(() => {
-      setFeatureFlags()
-    })
+  it('should not show geolocation banner when user is geolocated or located', async () => {
+    mockUseLocation.mockReturnValueOnce(defaultUseLocation)
+    renderThematicHome()
 
-    it('should show geolocation banner when user is not geolocated or located', async () => {
-      mockUseLocation.mockReturnValueOnce({
-        ...defaultUseLocation,
-        userLocation: undefined,
-      })
-      renderThematicHome()
+    await screen.findByText('Suivre')
 
-      await screen.findByText('Suivre')
-
-      expect(screen.getByTestId('genericBanner')).toBeOnTheScreen()
-    })
-
-    it('should not show geolocation banner when user is geolocated or located', async () => {
-      mockUseLocation.mockReturnValueOnce(defaultUseLocation)
-      renderThematicHome()
-
-      await screen.findByText('Suivre')
-
-      expect(screen.queryByText('Géolocalise-toi')).not.toBeOnTheScreen()
-    })
+    expect(screen.queryByText('Géolocalise-toi')).not.toBeOnTheScreen()
   })
 
-  describe('system banner when wipAppV2SystemBlock enabled', () => {
-    beforeEach(() => {
-      setFeatureFlags([RemoteStoreFeatureFlags.WIP_APP_V2_SYSTEM_BLOCK])
+  it('should show system banner when user is not geolocated or located', async () => {
+    mockUseLocation.mockReturnValueOnce({
+      ...defaultUseLocation,
+      userLocation: undefined,
     })
+    renderThematicHome()
 
-    it('should show system banner when user is not geolocated or located', async () => {
-      mockUseLocation.mockReturnValueOnce({
-        ...defaultUseLocation,
-        userLocation: undefined,
-      })
-      renderThematicHome()
+    await screen.findByText('Suivre')
 
-      await screen.findByText('Suivre')
+    expect(screen.getByTestId('systemBanner')).toBeOnTheScreen()
+  })
 
-      expect(screen.getByTestId('systemBanner')).toBeOnTheScreen()
-    })
+  it('should not show system banner when user is geolocated or located', async () => {
+    mockUseLocation.mockReturnValueOnce(defaultUseLocation)
+    renderThematicHome()
 
-    it('should not show system banner when user is geolocated or located', async () => {
-      mockUseLocation.mockReturnValueOnce(defaultUseLocation)
-      renderThematicHome()
+    await screen.findByText('Suivre')
 
-      await screen.findByText('Suivre')
-
-      expect(screen.queryByText('Géolocalise-toi')).not.toBeOnTheScreen()
-    })
+    expect(screen.queryByText('Géolocalise-toi')).not.toBeOnTheScreen()
   })
 
   describe('localization', () => {
-    beforeEach(() => {
-      setFeatureFlags([RemoteStoreFeatureFlags.WIP_APP_V2_SYSTEM_BLOCK])
-    })
-
     it.each`
       hasGeolocPosition | from                | selectedLocationMode         | expectedLocationMode
       ${true}           | ${'deeplink'}       | ${LocationMode.AROUND_ME}    | ${LocationMode.AROUND_ME}

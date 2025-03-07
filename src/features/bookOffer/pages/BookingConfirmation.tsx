@@ -4,12 +4,12 @@ import styled from 'styled-components/native'
 
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
-import { useOffer } from 'features/offer/api/useOffer'
 import { getShareOffer } from 'features/share/helpers/getShareOffer'
 import { WebShareModal } from 'features/share/pages/WebShareModal'
 import { analytics } from 'libs/analytics/provider'
 import { useShowReview } from 'libs/hooks/useShowReview'
 import { BatchEvent, BatchProfile } from 'libs/react-native-batch'
+import { useOfferQuery } from 'queries/offer/useOfferQuery'
 import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
@@ -26,7 +26,7 @@ import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 
 export function BookingConfirmation() {
   const { params } = useRoute<UseRouteType<'BookingConfirmation'>>()
-  const { data: offer } = useOffer({ offerId: params.offerId })
+  const { data: offer } = useOfferQuery({ offerId: params.offerId })
   const { share: shareOffer, shareContent } = getShareOffer({
     offer,
     utmMedium: 'post_booking',

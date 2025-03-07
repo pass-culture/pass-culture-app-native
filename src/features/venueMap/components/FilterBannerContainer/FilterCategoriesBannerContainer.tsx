@@ -1,19 +1,20 @@
 import colorAlpha from 'color-alpha'
 import React from 'react'
-import { View } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
 
 import { FilterButton } from 'features/search/components/Buttons/FilterButton/FilterButton'
 import { SingleFilterButton } from 'features/search/components/Buttons/SingleFilterButton/SingleFilterButton'
-import { filterGroups } from 'features/venueMap/constant'
+import { FILTER_BANNER_HEIGHT, filterGroups } from 'features/venueMap/constant'
 import { useVenueMapFilters } from 'features/venueMap/hook/useVenueMapFilters'
 import { FilterGroupKey } from 'features/venueMap/types'
+import { useGetHeaderHeight } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
 import { getSpacing } from 'ui/theme'
 
 const BULLET_SIZE = 12
 
 export const FilterCategoriesBannerContainer = () => {
+  const headerHeight = useGetHeaderHeight()
   const { getSelectedMacroFilters, toggleMacroFilter } = useVenueMapFilters()
 
   const selectedGroups = getSelectedMacroFilters()
@@ -23,26 +24,35 @@ export const FilterCategoriesBannerContainer = () => {
   }
 
   return (
-    <Container>
-      <FilterButton
-        navigateTo={{ screen: 'VenueMapFiltersStackNavigator' }}
-        activeFilters={selectedGroups.length}
-      />
-      {filterGroups.map(({ color, id, label }) => (
-        <SingleFilterButton
-          key={id}
-          testID={id}
-          icon={<ColoredGradientBullet color={color} />}
-          label={label}
-          isSelected={selectedGroups.includes(id)}
-          onPress={() => handleCategoryPress(id)}
+    <Container headerHeight={headerHeight}>
+      <ButtonsContainer>
+        <FilterButton
+          navigateTo={{ screen: 'VenueMapFiltersStackNavigator' }}
+          activeFilters={selectedGroups.length}
         />
-      ))}
+        {filterGroups.map(({ color, id, label }) => (
+          <SingleFilterButton
+            key={id}
+            testID={id}
+            icon={<ColoredGradientBullet color={color} />}
+            label={label}
+            isSelected={selectedGroups.includes(id)}
+            onPress={() => handleCategoryPress(id)}
+          />
+        ))}
+      </ButtonsContainer>
     </Container>
   )
 }
 
-const Container = styled(View)({
+const Container = styled.View<{ headerHeight: number }>(({ headerHeight }) => ({
+  height: FILTER_BANNER_HEIGHT,
+  marginTop: headerHeight,
+  paddingHorizontal: getSpacing(6),
+  paddingVertical: getSpacing(1),
+}))
+
+const ButtonsContainer = styled.View({
   flex: 1,
   flexDirection: 'row',
   alignItems: 'center',

@@ -9,9 +9,9 @@ import {
   SubcategoryIdEnum,
   WithdrawalTypeEnum,
 } from 'api/gen'
-import * as ongoingOrEndedBookingAPI from 'features/bookings/api/useOngoingOrEndedBooking'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import * as bookingPropertiesAPI from 'features/bookings/helpers/getBookingProperties'
+import * as ongoingOrEndedBookingAPI from 'features/bookings/queries/useOngoingOrEndedBookingQuery'
 import { Booking } from 'features/bookings/types'
 import { withAsyncErrorBoundary } from 'features/errors/hocs/withAsyncErrorBoundary'
 import { openUrl } from 'features/navigation/helpers/openUrl'
@@ -55,8 +55,8 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
 
 let mockBookings: BookingsResponse = { ...bookingsSnap }
 
-jest.mock('features/bookings/api/useBookings', () => ({
-  useBookings: jest.fn(() => ({
+jest.mock('queries/bookings/useBookingsQuery', () => ({
+  useBookingsQuery: jest.fn(() => ({
     data: mockBookings,
   })),
 }))
@@ -99,7 +99,7 @@ describe('BookingDetails', () => {
     it('should call useOngoingOrEndedBooking with the right parameters', async () => {
       const useOngoingOrEndedBooking = jest.spyOn(
         ongoingOrEndedBookingAPI,
-        'useOngoingOrEndedBooking'
+        'useOngoingOrEndedBookingQuery'
       )
 
       renderBookingDetails(ongoingBookings)
@@ -158,20 +158,7 @@ describe('BookingDetails', () => {
         expect(screen.queryByText('Accéder à l’offre')).not.toBeOnTheScreen()
       })
 
-      it('should display booking qr code when offer is not digital and is event and external booking', async () => {
-        const externalBooking: BookingsResponse['ongoing_bookings'][number] = structuredClone({
-          ...ongoingBookings,
-          externalBookings: [{ barcode: 'PASSCULTURE:v3;TOKEN:352UW4', seat: 'A12' }],
-        })
-        externalBooking.stock.offer.isDigital = false
-        renderBookingDetails(externalBooking)
-
-        await screen.findByText('Ma réservation')
-
-        expect(await screen.findByTestId('qr-code')).toBeOnTheScreen()
-      })
-
-      it('should not display booking qr code when offer is not digital and is event and not an external booking', async () => {
+      it('should display booking qr code if offer is physical', async () => {
         const booking: BookingsResponse['ongoing_bookings'][number] =
           structuredClone(ongoingBookings)
         booking.stock.offer.isDigital = false
@@ -179,7 +166,7 @@ describe('BookingDetails', () => {
 
         await screen.findByText('Ma réservation')
 
-        expect(screen.queryByTestId('qr-code')).not.toBeOnTheScreen()
+        expect(await screen.findByTestId('qr-code')).toBeOnTheScreen()
       })
 
       it('should display EAN code if offer is a book (digital or physical)', async () => {
@@ -741,11 +728,78 @@ describe('BookingDetails', () => {
       openItinerary.mockRestore()
       getBookingProperties.mockRestore()
     })
+
+    it('should display banner warning about disposal', async () => {
+      renderBookingDetails(ongoingBookings)
+
+      await screen.findByText(ongoingBookings.stock.offer.name)
+
+      expect(
+        screen.getByText('Tu n’as pas le droit de céder ou de revendre ton billet.')
+      ).toBeOnTheScreen()
+    })
+
+    it("should render organizer's indications", async () => {
+      const withdrawalDetails = 'Une explication de l’organisateur'
+
+      renderBookingDetails({
+        ...ongoingBookings,
+        stock: {
+          ...ongoingBookings.stock,
+          offer: {
+            ...ongoingBookings.stock.offer,
+            withdrawalDetails,
+          },
+        },
+      })
+
+      await screen.findByText(ongoingBookings.stock.offer.name)
+
+      expect(screen.getByText(withdrawalDetails)).toBeOnTheScreen()
+    })
+
+    it("should render organizer's email", async () => {
+      const organizerEmail = 'toto@email.com'
+      renderBookingDetails({
+        ...ongoingBookings,
+        stock: {
+          ...ongoingBookings.stock,
+          offer: {
+            ...ongoingBookings.stock.offer,
+            bookingContact: organizerEmail,
+          },
+        },
+      })
+
+      await screen.findByText(ongoingBookings.stock.offer.name)
+
+      expect(screen.getByText(organizerEmail)).toBeOnTheScreen()
+    })
+
+    it('should log analytics on email press', async () => {
+      const organizerEmail = 'toto@email.com'
+      renderBookingDetails({
+        ...ongoingBookings,
+        stock: {
+          ...ongoingBookings.stock,
+          offer: {
+            ...ongoingBookings.stock.offer,
+            bookingContact: organizerEmail,
+          },
+        },
+      })
+
+      await user.press(screen.getByText(organizerEmail))
+
+      expect(analytics.logClickEmailOrganizer).toHaveBeenCalledTimes(1)
+
+      expect(mockedOpenUrl).toHaveBeenCalledWith(`mailto:${organizerEmail}`, undefined, true)
+    })
   })
 })
 
 function renderBookingDetails(booking?: Booking, options = {}) {
-  jest.spyOn(ongoingOrEndedBookingAPI, 'useOngoingOrEndedBooking').mockReturnValue({
+  jest.spyOn(ongoingOrEndedBookingAPI, 'useOngoingOrEndedBookingQuery').mockReturnValue({
     data: booking,
     isLoading: false,
     isSuccess: true,

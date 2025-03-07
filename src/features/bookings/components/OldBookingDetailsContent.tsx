@@ -4,7 +4,6 @@ import { useWindowDimensions } from 'react-native'
 import styled from 'styled-components/native'
 
 import { BookingReponse } from 'api/gen'
-import { useBookings } from 'features/bookings/api'
 import { ArchiveBookingModal } from 'features/bookings/components/ArchiveBookingModal'
 import { BookingDetailsCancelButton } from 'features/bookings/components/BookingDetailsCancelButton'
 import { BookingDetailsHeader } from 'features/bookings/components/BookingDetailsHeader'
@@ -29,6 +28,7 @@ import { SeeItineraryButton } from 'libs/itinerary/components/SeeItineraryButton
 import { getGoogleMapsItineraryUrl } from 'libs/itinerary/openGoogleMapsItinerary'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { SubcategoriesMapping } from 'libs/subcategories/types'
+import { useBookingsQuery } from 'queries/bookings/useBookingsQuery'
 import { formatFullAddress } from 'shared/address/addressFormatter'
 import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
@@ -78,7 +78,7 @@ export const OldBookingDetailsContent = ({
     ? formatFullAddress(address.street, address.postalCode, address.city)
     : undefined
 
-  const { data: bookings } = useBookings()
+  const { data: bookings } = useBookingsQuery()
   const { ended_bookings: endedBookings = emptyBookings } = bookings ?? {}
 
   const { showInfoSnackBar, showErrorSnackBar } = useSnackBarContext()
@@ -89,7 +89,7 @@ export const OldBookingDetailsContent = ({
   // of the reservation being consulted if it is made via Flask Admin
   // and booking is not archived
   const cancellationConsultedBooking: BookingReponse[] = endedBookings.filter(
-    (item) => item.id === paramsId && !isEligibleBookingsForArchive(item)
+    (item: BookingReponse) => item.id === paramsId && !isEligibleBookingsForArchive(item)
   )
   const nameCanceledBooking = cancellationConsultedBooking[0]?.stock.offer.name
 

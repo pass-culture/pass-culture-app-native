@@ -9,8 +9,8 @@ import {
   CreditHeaderProps,
 } from 'features/profile/components/Header/CreditHeader/CreditHeader'
 import {
-  domains_credit_v1,
-  domains_exhausted_credit_v1,
+  domains_credit_v3,
+  domains_exhausted_credit_v3,
 } from 'features/profile/fixtures/domainsCredit'
 import * as ProfileUtils from 'features/profile/helpers/useIsUserUnderageBeneficiary'
 import { formatToSlashedFrenchDate, setDateOneDayEarlier } from 'libs/dates'
@@ -54,12 +54,6 @@ describe('CreditHeader', () => {
       expect(screen.getByText('Ton crédit a expiré le')).toBeOnTheScreen()
     })
 
-    it('should render correctly with exhausted credit', () => {
-      renderCreditHeader({ domainsCredit: domains_exhausted_credit_v1, age: 18 })
-
-      expect(screen.getByText('Tu as dépensé tout ton crédit')).toBeOnTheScreen()
-    })
-
     it('should display user name', () => {
       renderCreditHeader({ age: 18 })
       const name = screen.queryByText('Rosa Bonheur')
@@ -74,15 +68,6 @@ describe('CreditHeader', () => {
       )
 
       expect(depositExpirationDate).toBeOnTheScreen()
-    })
-
-    it('should display credit ceilings', () => {
-      renderCreditHeader({ age: 18 })
-      const digitalCredit = screen.queryByTestId('domains-credit-digital')
-      const physicalCredit = screen.queryByTestId('domains-credit-physical')
-
-      expect(digitalCredit).toBeOnTheScreen()
-      expect(physicalCredit).toBeOnTheScreen()
     })
 
     it('should display credit info', () => {
@@ -103,11 +88,9 @@ describe('CreditHeader', () => {
       renderCreditHeader({ depositExpirationDate: dateInPast, age: 18 })
       const creditInfo = screen.queryByTestId('credit-info')
       const digitalCredit = screen.queryByTestId('domains-credit-digital')
-      const physicalCredit = screen.queryByTestId('domains-credit-physical')
 
       expect(creditInfo).not.toBeOnTheScreen()
       expect(digitalCredit).not.toBeOnTheScreen()
-      expect(physicalCredit).not.toBeOnTheScreen()
     })
 
     it('should not display coming credit for 18-year-old beneficiary', () => {
@@ -117,7 +100,7 @@ describe('CreditHeader', () => {
     })
 
     it('should navigate to thematic home with remote config homeId on banner press', () => {
-      renderCreditHeader({ domainsCredit: domains_exhausted_credit_v1, age: 18 })
+      renderCreditHeader({ domainsCredit: domains_exhausted_credit_v3, age: 18 })
 
       fireEvent.press(screen.getByText('L’aventure continue !'))
 
@@ -173,16 +156,14 @@ describe('CreditHeader', () => {
       it.each([15, 16, 17])('should not display credit ceilings for %s year-old', (age) => {
         renderCreditHeader({ age })
         const digitalCredit = screen.queryByTestId('domains-credit-digital')
-        const physicalCredit = screen.queryByTestId('domains-credit-physical')
 
         expect(digitalCredit).not.toBeOnTheScreen()
-        expect(physicalCredit).not.toBeOnTheScreen()
       })
 
-      it.each([15, 16, 17])(
+      it.each([15, 16, 17, 18])(
         'should render correctly with exhausted credit for %s year-old',
         (age) => {
-          renderCreditHeader({ domainsCredit: domains_exhausted_credit_v1, age })
+          renderCreditHeader({ domainsCredit: domains_exhausted_credit_v3, age })
 
           expect(screen.getByText('Tu as dépensé tout ton crédit')).toBeOnTheScreen()
         }
@@ -258,11 +239,10 @@ describe('CreditHeader', () => {
 const renderCreditHeader = (props?: Partial<CreditHeaderProps>) => {
   render(
     <CreditHeader
-      showRemoteBanner={false}
       firstName="Rosa"
       lastName="Bonheur"
       depositExpirationDate={dateInFuture}
-      domainsCredit={domains_credit_v1}
+      domainsCredit={domains_credit_v3}
       {...props}
     />
   )

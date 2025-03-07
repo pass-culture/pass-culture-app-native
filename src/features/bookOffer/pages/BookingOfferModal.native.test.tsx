@@ -4,7 +4,6 @@ import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { ApiError } from 'api/ApiError'
 import { RecommendationApiParams, SubcategoryIdEnum } from 'api/gen'
 import * as Auth from 'features/auth/context/AuthContext'
-import * as useBookOfferMutation from 'features/bookOffer/api/useBookOfferMutation'
 import { BookingState, Step } from 'features/bookOffer/context/reducer'
 import { mockOffer as baseOffer } from 'features/bookOffer/fixtures/offer'
 import { mockStocks } from 'features/bookOffer/fixtures/stocks'
@@ -16,6 +15,7 @@ import * as logOfferConversionAPI from 'libs/algolia/analytics/logOfferConversio
 import { analytics } from 'libs/analytics/provider'
 import { CampaignEvents, campaignTracker } from 'libs/campaign'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import * as useBookOfferMutation from 'queries/bookOffer/useBookOfferMutation'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
@@ -38,12 +38,12 @@ jest.mock('features/bookOffer/context/useBookingContext', () => ({
   useBookingContext: () => mockUseBookingContext(),
 }))
 
-const mockUseOffer = jest.fn()
-mockUseOffer.mockReturnValue({
+const mockUseOfferQuery = jest.fn()
+mockUseOfferQuery.mockReturnValue({
   data: mockOffer,
 })
-jest.mock('features/offer/api/useOffer', () => ({
-  useOffer: () => mockUseOffer(),
+jest.mock('queries/offer/useOfferQuery', () => ({
+  useOfferQuery: () => mockUseOfferQuery(),
 }))
 
 jest.mock('features/bookOffer/helpers/useBookingOffer', () => ({
@@ -103,8 +103,8 @@ const mockData = {
 }
 const mockOfferVenues: VenueListItem[] = []
 const mockNbOfferVenues = 0
-jest.mock('api/useSearchVenuesOffer/useSearchVenueOffers', () => ({
-  useSearchVenueOffers: () => ({
+jest.mock('queries/searchVenuesOffer/useSearchVenueOffersInfiniteQuery', () => ({
+  useSearchVenueOffersInfiniteQuery: () => ({
     hasNextPage: mockHasNextPage,
     fetchNextPage: mockFetchNextPage,
     data: mockData,
@@ -211,7 +211,7 @@ describe('<BookingOfferModalComponent />', () => {
   })
 
   it('should display modal with prices by categories', () => {
-    mockUseOffer.mockReturnValueOnce({ data: { ...mockOffer, stocks: mockStocks } })
+    mockUseOfferQuery.mockReturnValueOnce({ data: { ...mockOffer, stocks: mockStocks } })
     render(reactQueryProviderHOC(<BookingOfferModalComponent visible offerId={20} />))
 
     expect(screen.getByTestId('modalWithPricesByCategories')).toBeOnTheScreen()

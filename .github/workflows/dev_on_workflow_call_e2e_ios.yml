@@ -11,7 +11,7 @@ on:
 permissions:
   contents: read
   id-token: write
-  
+
 jobs:
   build_e2e:
     name: 'Build E2E Staging'
@@ -97,9 +97,13 @@ jobs:
       - name: Generate Robin iOS upload name
         id: generate_name
         run: |
-          DATE=$(date +"%d-%m-%Y")
+          DATE=$(date +"%d/%m/%Y")
           COMMIT_HASH=$(git rev-parse --short=8 HEAD)
-          CUSTOM_NAME="[Nightly] - ${DATE} - ${COMMIT_HASH}"
+          if [[ "${{ github.event_name }}" == "schedule" ]]; then
+            CUSTOM_NAME="[Nightly][iOS] Release du ${DATE} au soir (${COMMIT_HASH})"
+          else
+            CUSTOM_NAME="[MES][iOS] Staging du ${DATE} (${COMMIT_HASH})"
+          fi
           echo "CUSTOM_NAME=$CUSTOM_NAME" >> $GITHUB_OUTPUT
       - name: Upload and run ios tests with Robin
         uses: mobile-dev-inc/action-maestro-cloud@v1.9.6

@@ -87,9 +87,13 @@ jobs:
       - name: Generate Robin Android upload name
         id: generate_name
         run: |
-          DATE=$(date +"%d-%m-%Y")
+          DATE=$(date +"%d/%m/%Y")
           COMMIT_HASH=$(git rev-parse --short=8 HEAD)
-          CUSTOM_NAME="[Nightly] - ${DATE} - ${COMMIT_HASH}"
+          if [[ "${{ github.event_name }}" == "schedule" ]]; then
+            CUSTOM_NAME="[Nightly][Android] Release du ${DATE} au soir (${COMMIT_HASH})"
+          else
+            CUSTOM_NAME="[MES][Android] Staging du ${DATE} (${COMMIT_HASH})"
+          fi
           echo "CUSTOM_NAME=$CUSTOM_NAME" >> $GITHUB_OUTPUT
 
       - name: Upload and run android tests with Robin

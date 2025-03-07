@@ -9,11 +9,11 @@ import {
   SubcategoriesResponseModelv2,
   SubcategoryIdEnum,
 } from 'api/gen'
-import * as bookingsAPI from 'features/bookings/api/useBookings'
 import { bookingsSnap, emptyBookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { useAvailableReaction } from 'features/reactions/api/useAvailableReaction'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
+import * as bookingsAPI from 'queries/bookings/useBookingsQuery'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, checkAccessibilityFor, fireEvent, render, screen, waitFor } from 'tests/utils/web'
 
@@ -83,11 +83,11 @@ describe('Bookings', () => {
   })
 
   it('should always execute the query (in cache or in network)', async () => {
-    const useBookings = jest.spyOn(bookingsAPI, 'useBookings')
+    const useBookingsQuery = jest.spyOn(bookingsAPI, 'useBookingsQuery')
     renderBookings(bookingsSnap)
 
     await waitFor(() => {
-      expect(useBookings).toHaveBeenCalledTimes(2)
+      expect(useBookingsQuery).toHaveBeenCalledTimes(2)
     })
   })
 
@@ -126,7 +126,7 @@ describe('Bookings', () => {
 
 const renderBookings = (bookings: BookingsResponse) => {
   jest
-    .spyOn(bookingsAPI, 'useBookings')
+    .spyOn(bookingsAPI, 'useBookingsQuery')
     .mockReturnValue({ data: bookings, isFetching: false } as QueryObserverResult<
       BookingsResponse,
       unknown

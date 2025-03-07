@@ -29,6 +29,22 @@ export function getScreenPath<RouteName extends keyof AllNavParamList>(
         ],
       }
     }
+    if (isScreen('ProfileStackNavigator', tabNavigatorScreen, tabNavigatorParams)) {
+      const nestedNestedRoutes = [
+        {
+          name: tabNavigatorParams ? tabNavigatorParams.screen : tabNavigatorScreen,
+          params: tabNavigatorParams?.params,
+        },
+      ]
+      state = {
+        routes: [
+          {
+            name: screen,
+            state: { routes: [{ name: params.screen, state: { routes: nestedNestedRoutes } }] },
+          },
+        ],
+      }
+    }
   }
 
   return linking.getPathFromState(state, linking.config)

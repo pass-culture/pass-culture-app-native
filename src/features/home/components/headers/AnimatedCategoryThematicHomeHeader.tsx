@@ -3,11 +3,8 @@ import React, { FunctionComponent } from 'react'
 import { Animated } from 'react-native'
 import styled from 'styled-components/native'
 
-import { BlackGradient } from 'features/home/components/BlackGradient'
 import { BlackBackground } from 'features/home/components/headers/BlackBackground'
 import { CategoryThematicHeader } from 'features/home/types'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 import { gradientImagesMapping } from 'ui/theme/gradientImagesMapping'
 
@@ -15,38 +12,9 @@ export const MOBILE_HEADER_HEIGHT = 45
 
 type CategoryThematicHeaderProps = Omit<CategoryThematicHeader, 'type'>
 
-const AppV1Header: FunctionComponent<CategoryThematicHeaderProps> = ({
-  title,
-  subtitle,
-  imageUrl,
-  imageAnimatedHeight,
-  gradientTranslation,
-}) => {
-  return (
-    <Container testID="animated-thematic-header-v1">
-      <AnimatedImage source={{ uri: imageUrl }} height={imageAnimatedHeight} />
-      <TextContainer>
-        <AnimatedBlackGradient
-          height={getSpacing(MOBILE_HEADER_HEIGHT)}
-          style={{ transform: [{ translateY: gradientTranslation }] }}
-        />
-        <AnimatedBlackBackground style={{ transform: [{ translateY: gradientTranslation }] }}>
-          {subtitle ? (
-            <React.Fragment>
-              <Subtitle numberOfLines={1}>{subtitle}</Subtitle>
-              <Spacer.Column numberOfSpaces={1} />
-            </React.Fragment>
-          ) : null}
-          <Title numberOfLines={2}>{title}</Title>
-        </AnimatedBlackBackground>
-      </TextContainer>
-    </Container>
-  )
-}
+type AppHeaderProps = Omit<CategoryThematicHeaderProps, 'imageUrl'>
 
-type AppV2HeaderProps = Omit<CategoryThematicHeaderProps, 'imageUrl'>
-
-const AppV2Header: FunctionComponent<AppV2HeaderProps> = ({
+const AppHeader: FunctionComponent<AppHeaderProps> = ({
   title,
   subtitle,
   imageAnimatedHeight,
@@ -54,7 +22,7 @@ const AppV2Header: FunctionComponent<AppV2HeaderProps> = ({
   gradientTranslation,
 }) => {
   return (
-    <Container testID="animated-thematic-header-v2">
+    <Container>
       <AnimatedImage
         source={color ? gradientImagesMapping[color] : null}
         height={imageAnimatedHeight}
@@ -81,25 +49,14 @@ const AppV2Header: FunctionComponent<AppV2HeaderProps> = ({
 export const AnimatedCategoryThematicHomeHeader: FunctionComponent<CategoryThematicHeaderProps> = ({
   title,
   subtitle,
-  imageUrl,
   imageAnimatedHeight,
   gradientTranslation,
   color,
 }) => {
-  const enableAppV2Header = useFeatureFlag(RemoteStoreFeatureFlags.WIP_APP_V2_THEMATIC_HOME_HEADER)
-  return enableAppV2Header ? (
-    <AppV2Header
+  return (
+    <AppHeader
       title={title}
       subtitle={subtitle}
-      imageAnimatedHeight={imageAnimatedHeight}
-      gradientTranslation={gradientTranslation}
-      color={color}
-    />
-  ) : (
-    <AppV1Header
-      title={title}
-      subtitle={subtitle}
-      imageUrl={imageUrl}
       imageAnimatedHeight={imageAnimatedHeight}
       gradientTranslation={gradientTranslation}
       color={color}
@@ -138,13 +95,9 @@ const Subtitle = styled(TypoDS.Title4)(({ theme }) => ({
   color: theme.colors.white,
 }))
 
-const Title = styled(TypoDS.Title1)(({ theme }) => ({
-  color: theme.colors.white,
-}))
-
 const AnimatedImage = Animated.createAnimatedComponent(StyledImage)
 const AnimatedBlackBackground = Animated.createAnimatedComponent(BlackBackground)
-const AnimatedBlackGradient = Animated.createAnimatedComponent(BlackGradient)
+
 const AnimatedBackgroundSubscribeButton = Animated.createAnimatedComponent(SubscribeButtonContainer)
 
 const AnimatedBackground = styled(AnimatedBlackBackground)(({ theme }) => ({

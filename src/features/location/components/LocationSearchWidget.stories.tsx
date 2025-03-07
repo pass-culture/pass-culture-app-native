@@ -6,18 +6,15 @@ import { LocationSearchWidget } from 'features/location/components/LocationSearc
 import { SearchWrapper } from 'features/search/context/SearchWrapper'
 
 const meta: ComponentMeta<typeof LocationSearchWidget> = {
-  title: 'Features/Location/LocationSearchWidget',
+  title: 'features/location/LocationSearchWidget',
   component: LocationSearchWidget,
   decorators: [
     (Story) => (
       <NavigationContainer>
-        <Story />
+        <SearchWrapper>
+          <Story />
+        </SearchWrapper>
       </NavigationContainer>
-    ),
-    (Story) => (
-      <SearchWrapper>
-        <Story />
-      </SearchWrapper>
     ),
   ],
 }
