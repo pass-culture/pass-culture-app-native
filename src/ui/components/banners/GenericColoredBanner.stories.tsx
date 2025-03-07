@@ -1,4 +1,4 @@
-import { ComponentMeta } from '@storybook/react'
+import type { Meta } from '@storybook/react'
 import React from 'react'
 
 import { theme } from 'theme'
@@ -6,7 +6,7 @@ import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storyboo
 
 import { GenericColoredBanner } from './GenericColoredBanner'
 
-const meta: ComponentMeta<typeof GenericColoredBanner> = {
+const meta: Meta<typeof GenericColoredBanner> = {
   title: 'ui/banners/GenericColoredBanner',
   component: GenericColoredBanner,
 }
@@ -30,9 +30,10 @@ const variantConfig: Variants<typeof GenericColoredBanner> = [
   },
 ]
 
-const Template: VariantsStory<typeof GenericColoredBanner> = (args) => (
+const Template: VariantsStory<typeof GenericColoredBanner> = (
+  args: React.ComponentProps<typeof GenericColoredBanner>
+) => (
   <VariantsTemplate variants={variantConfig} Component={GenericColoredBanner} defaultProps={args} />
 )
 
 export const AllVariants = Template.bind({})
-AllVariants.storyName = 'GenericColoredBanner'

@@ -17,12 +17,12 @@
       "const Template: ComponentStory<typeof ${1:ComponentName}> = (props) => (",
       "  <${1:ComponentName} {...props} />",
       ")",
-      "export const ${3:StoryName1} = Template.bind({})",
-      "${3:StoryName1}.args = {",
+      "export const ${3:name1} = Template.bind({})",
+      "${3:name1}.args = {",
       "  ${0:args},",
       "}",
-      ""
+      "",
     ],
-    "description": "Create a component story for Storybook"
-  }
+    "description": "Create a component story for Storybook",
+  },
 }

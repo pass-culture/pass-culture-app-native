@@ -1,4 +1,4 @@
-import { ComponentStory } from '@storybook/react'
+import { StoryFn } from '@storybook/react'
 import React from 'react'
 
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
@@ -11,7 +11,7 @@ export default {
 
 type TypographyComponents = (typeof TypoDS)[keyof typeof TypoDS]
 
-const Template: ComponentStory<TypographyComponents> = () => (
+const Template: StoryFn<TypographyComponents> = () => (
   <ViewGap gap={5}>
     <TypoDS.Title1>Title1</TypoDS.Title1>
     <TypoDS.Title2>Title2</TypoDS.Title2>
@@ -30,4 +30,3 @@ const Template: ComponentStory<TypographyComponents> = () => (
 )
 
 export const Typographies = Template.bind({})
-Typographies.storyName = 'Typographies'

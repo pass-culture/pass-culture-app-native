@@ -1,16 +1,16 @@
 import { NavigationContainer } from '@react-navigation/native'
-import { ComponentMeta } from '@storybook/react'
+import type { Meta } from '@storybook/react'
 import React from 'react'
 
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 
 import { VenueMapPreview } from './VenueMapPreview'
 
-const meta: ComponentMeta<typeof VenueMapPreview> = {
+const meta: Meta<typeof VenueMapPreview> = {
   title: 'features/search/VenueMapPreview',
   component: VenueMapPreview,
   decorators: [
-    (Story) => (
+    (Story: React.ComponentType) => (
       <NavigationContainer>
         <Story />
       </NavigationContainer>
@@ -33,9 +33,8 @@ const variantConfig: Variants<typeof VenueMapPreview> = [
   },
 ]
 
-const Template: VariantsStory<typeof VenueMapPreview> = (args) => (
-  <VariantsTemplate variants={variantConfig} Component={VenueMapPreview} defaultProps={args} />
-)
+const Template: VariantsStory<typeof VenueMapPreview> = (
+  args: React.ComponentProps<typeof VenueMapPreview>
+) => <VariantsTemplate variants={variantConfig} Component={VenueMapPreview} defaultProps={args} />
 
 export const AllVariants = Template.bind({})
-AllVariants.storyName = 'VenueMapPreview'

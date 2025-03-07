@@ -1,17 +1,17 @@
 import { NavigationContainer } from '@react-navigation/native'
-import { ComponentMeta } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
 import React from 'react'
 
 import { venuesSearchFixture } from 'libs/algolia/fixtures/venuesSearchFixture'
-import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
+import { VariantsTemplate, type Variants } from 'ui/storybook/VariantsTemplate'
 
 import { VenueListModule } from './VenueListModule'
 
-const meta: ComponentMeta<typeof VenueListModule> = {
+const meta: Meta<typeof VenueListModule> = {
   title: 'Features/Home/VenueListModule',
   component: VenueListModule,
   decorators: [
-    (Story) => (
+    (Story: React.ComponentType) => (
       <NavigationContainer>
         <Story />
       </NavigationContainer>
@@ -42,9 +42,12 @@ const variantConfig: Variants<typeof VenueListModule> = [
   },
 ]
 
-const Template: VariantsStory<typeof VenueListModule> = (args) => (
+type Story = StoryObj<typeof VenueListModule>
+
+const Template = (args: React.ComponentProps<typeof VenueListModule>) => (
   <VariantsTemplate variants={variantConfig} Component={VenueListModule} defaultProps={args} />
 )
 
-export const AllVariants = Template.bind({})
-AllVariants.storyName = 'VenueListModule'
+export const AllVariants: Story = {
+  render: Template,
+}

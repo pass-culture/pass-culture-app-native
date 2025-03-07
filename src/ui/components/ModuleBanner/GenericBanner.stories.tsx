@@ -1,4 +1,4 @@
-import { ComponentMeta } from '@storybook/react'
+import type { Meta } from '@storybook/react'
 import React from 'react'
 
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
@@ -8,7 +8,7 @@ import { Spacer, TypoDS } from 'ui/theme'
 
 import { GenericBanner } from './GenericBanner'
 
-const meta: ComponentMeta<typeof GenericBanner> = {
+const meta: Meta<typeof GenericBanner> = {
   title: 'ui/banners/GenericBanner',
   component: GenericBanner,
 }
@@ -48,9 +48,8 @@ const variantConfig: Variants<typeof GenericBanner> = [
   },
 ]
 
-const Template: VariantsStory<typeof GenericBanner> = (args) => (
-  <VariantsTemplate variants={variantConfig} Component={GenericBanner} defaultProps={args} />
-)
+const Template: VariantsStory<typeof GenericBanner> = (
+  args: React.ComponentProps<typeof GenericBanner>
+) => <VariantsTemplate variants={variantConfig} Component={GenericBanner} defaultProps={args} />
 
 export const AllVariants = Template.bind({})
-AllVariants.storyName = 'GenericBanner'

@@ -1,4 +1,4 @@
-import { ComponentMeta } from '@storybook/react'
+import type { Meta } from '@storybook/react'
 import React from 'react'
 import styled from 'styled-components/native'
 
@@ -6,7 +6,7 @@ import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storyboo
 
 import { ExpandingFlatList } from './ExpandingFlatList'
 
-const meta: ComponentMeta<typeof ExpandingFlatList> = {
+const meta: Meta<typeof ExpandingFlatList> = {
   title: 'features/offer/ExpandingFlatList',
   component: ExpandingFlatList,
   argTypes: {
@@ -44,7 +44,9 @@ const variantConfig: Variants<typeof ExpandingFlatList<Item>> = [
   },
 ]
 
-export const Template: VariantsStory<typeof ExpandingFlatList> = (args) => (
+export const Template: VariantsStory<typeof ExpandingFlatList> = (
+  args: React.ComponentProps<typeof ExpandingFlatList>
+) => (
   <VariantsTemplate
     variants={variantConfig.map((variant) => ({
       ...variant,
@@ -65,7 +67,6 @@ const StyledItem = styled.View({
   width: 200,
 })
 
-Template.storyName = 'ExpandingFlatList'
 Template.args = {
   isLoading: false,
   skeletonListLength: 3,

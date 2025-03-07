@@ -1,15 +1,15 @@
 import { NavigationContainer } from '@react-navigation/native'
-import { ComponentMeta, ComponentStory } from '@storybook/react'
+import type { Meta } from '@storybook/react'
 import React from 'react'
 
 import { SecondButtonList } from 'features/identityCheck/components/SecondButtonList'
 import { BicolorSmartphone } from 'ui/svg/icons/BicolorSmartphone'
 
-const meta: ComponentMeta<typeof SecondButtonList> = {
+const meta: Meta<typeof SecondButtonList> = {
   title: 'ui/SecondButtonList',
   component: SecondButtonList,
   decorators: [
-    (Story) => (
+    (Story: React.ComponentType) => (
       <NavigationContainer>
         <Story />
       </NavigationContainer>
@@ -18,12 +18,13 @@ const meta: ComponentMeta<typeof SecondButtonList> = {
 }
 export default meta
 
-const Template: ComponentStory<typeof SecondButtonList> = (props) => <SecondButtonList {...props} />
+const Template = (props: React.ComponentProps<typeof SecondButtonList>) => (
+  <SecondButtonList {...props} />
+)
 
-export const Default = Template.bind({})
-Default.storyName = 'SecondButtonList'
-Default.args = {
-  label: 'test',
-  navigateTo: { screen: 'Login' },
-  leftIcon: BicolorSmartphone,
-}
+export const Default = () =>
+  Template({
+    label: 'test',
+    navigateTo: { screen: 'Login' },
+    leftIcon: BicolorSmartphone,
+  })

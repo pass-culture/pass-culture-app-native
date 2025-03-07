@@ -1,42 +1,46 @@
 import { NavigationContainer } from '@react-navigation/native'
-import { ComponentMeta, ComponentStory } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
 import React from 'react'
 
 import { categoryBlockList } from 'features/home/fixtures/categoryBlockList.fixture'
 
 import { CategoryListModule } from './CategoryListModule'
 
-const componentMeta: ComponentMeta<typeof CategoryListModule> = {
+const meta: Meta<typeof CategoryListModule> = {
   title: 'features/home/CategoryListModule',
   component: CategoryListModule,
   decorators: [
-    (Story) => (
+    (Story: React.ComponentType) => (
       <NavigationContainer>
         <Story />
       </NavigationContainer>
     ),
   ],
 }
-export default componentMeta
+export default meta
 
-const Template: ComponentStory<typeof CategoryListModule> = (props) => (
-  <CategoryListModule {...props} />
-)
-//TODO(PC-30279): Fix this stories
-const CategoryListWithThreeBlocks = Template.bind({})
-CategoryListWithThreeBlocks.args = {
-  id: '123',
-  title: 'En ce moment sur le pass',
-  categoryBlockList: categoryBlockList.slice(1),
-  homeEntryId: 'homeEntryId',
-  index: 1,
+type Story = StoryObj<typeof CategoryListModule>
+
+// TODO(PC-30279): Fix this stories
+export const CategoryListWithThreeBlocks: Story = {
+  render: (props) => <CategoryListModule {...props} />,
+  args: {
+    id: '123',
+    title: 'En ce moment sur le pass',
+    categoryBlockList: categoryBlockList.slice(1),
+    homeEntryId: 'homeEntryId',
+    index: 1,
+  },
 }
-//TODO(PC-30279): Fix this stories
-const CategoryListWithFourBlocks = Template.bind({})
-CategoryListWithFourBlocks.args = {
-  id: '123',
-  title: 'En ce moment sur le pass',
-  categoryBlockList,
-  homeEntryId: 'homeEntryId',
-  index: 1,
+
+// TODO(PC-30279): Fix this stories
+export const CategoryListWithFourBlocks: Story = {
+  render: (props) => <CategoryListModule {...props} />,
+  args: {
+    id: '123',
+    title: 'En ce moment sur le pass',
+    categoryBlockList,
+    homeEntryId: 'homeEntryId',
+    index: 1,
+  },
 }

@@ -1,4 +1,4 @@
-import { ComponentMeta } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
 import React from 'react'
 import styled from 'styled-components/native'
 
@@ -10,11 +10,11 @@ import { VenueBlock } from 'features/offer/components/OfferVenueBlock/VenueBlock
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { InfoBanner } from 'ui/components/banners/InfoBanner'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
+import { VariantsTemplate, type Variants } from 'ui/storybook/VariantsTemplate'
 import { IdCard } from 'ui/svg/icons/IdCard'
 import { TypoDS } from 'ui/theme'
 
-const meta: ComponentMeta<typeof TicketCutout> = {
+const meta: Meta<typeof TicketCutout> = {
   title: 'Features/bookings/TicketCutout',
   component: TicketCutout,
   parameters: {
@@ -91,9 +91,12 @@ const variantConfig: Variants<typeof TicketCutout> = [
   },
 ]
 
-const Template: VariantsStory<typeof TicketCutout> = (args) => (
+type Story = StoryObj<typeof TicketCutout>
+
+const Template = (args: React.ComponentProps<typeof TicketCutout>) => (
   <VariantsTemplate variants={variantConfig} Component={TicketCutout} defaultProps={args} />
 )
 
-export const AllVariants = Template.bind({})
-AllVariants.storyName = 'TicketCutout'
+export const AllVariants: Story = {
+  render: Template,
+}
