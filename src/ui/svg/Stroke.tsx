@@ -21,7 +21,7 @@ const StrokeSvg: React.FunctionComponent<AccessibleIcon> = ({
       stroke={color}
       strokeWidth="4"
       strokeLinecap="round"
-      vector-effect="non-scaling-stroke"
+      vectorEffect="non-scaling-stroke"
       d="M254 2L2 1.99998"
       strokeDasharray="2,16"
     />

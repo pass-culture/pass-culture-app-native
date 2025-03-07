@@ -1,14 +1,14 @@
 import React from 'react'
-import { View } from 'react-native'
+import { Platform, View } from 'react-native'
 import styled from 'styled-components/native'
 
+import { Middle } from 'features/bookings/components/Middle'
+import { MiddleWeb } from 'features/bookings/components/MiddleWeb.web'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { CalendarS } from 'ui/svg/icons/CalendarS'
 import { ClockFilled } from 'ui/svg/icons/ClockFilled'
 import { Stock } from 'ui/svg/icons/Stock'
 import { Stroke } from 'ui/svg/Stroke'
-import { TicketCutoutLeft } from 'ui/svg/TicketCutoutLeft'
-import { TicketCutoutRight } from 'ui/svg/TicketCutoutRight'
 import { getShadow, getSpacing, TypoDS } from 'ui/theme'
 
 type Props = {
@@ -20,6 +20,8 @@ type Props = {
   infoBanner?: React.JSX.Element
   venueInfo?: React.JSX.Element
 }
+
+const isWeb = Platform.OS === 'web'
 
 export const TicketCutout = ({
   day,
@@ -59,11 +61,15 @@ export const TicketCutout = ({
         </ViewGap>
       </TopBlock>
       <MiddleBlock>
-        <TicketCutoutLeft />
-        <ContainerStrokedLine>
-          <StyledStrokedLine />
-        </ContainerStrokedLine>
-        <TicketCutoutRight />
+        {isWeb ? (
+          <MiddleWeb>
+            <Toto />
+          </MiddleWeb>
+        ) : (
+          <Middle>
+            <Toto />
+          </Middle>
+        )}
       </MiddleBlock>
       <BottomBlock>
         {infoBanner}
@@ -73,13 +79,13 @@ export const TicketCutout = ({
   )
 }
 
-const MiddleBlock = styled.View({
-  flexDirection: 'row',
-  width: '100%',
-  height: getSpacing(21.5),
-  backgroundColor: 'white',
-  zIndex: 1,
-})
+const Toto = () => {
+  return (
+    <ContainerStrokedLine>
+      <StyledStrokedLine />
+    </ContainerStrokedLine>
+  )
+}
 
 const ContainerStrokedLine = styled.View({
   flex: 1,
@@ -89,6 +95,14 @@ const StyledStrokedLine = styled(Stroke).attrs(({ theme }) => ({
   size: '100%',
   color: theme.colors.greyMedium,
 }))({})
+
+const MiddleBlock = styled.View({
+  flexDirection: 'row',
+  width: '100%',
+  height: getSpacing(21.5),
+  backgroundColor: 'white',
+  zIndex: 1,
+})
 
 const StyledClockFilled = styled(ClockFilled).attrs(({ theme }) => ({
   size: theme.icons.sizes.small,
