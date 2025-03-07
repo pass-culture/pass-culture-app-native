@@ -2,7 +2,7 @@ import { useNavigation } from '@react-navigation/native'
 import React, { FC } from 'react'
 import styled from 'styled-components/native'
 
-import { useAccountSuspendForHackSuspicion } from 'features/auth/api/useAccountSuspendForHackSuspicion'
+import { useAccountSuspendForHackSuspicionMutation } from 'features/auth/queries/useAccountSuspendForHackSuspicionMutation'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
@@ -28,7 +28,7 @@ export const SuspendAccountConfirmationWithoutAuthentication: FC = () => {
     analytics.logContactFraudTeam({ from: 'suspendaccountconfirmation' })
   }
 
-  const { accountSuspendForHackSuspicion, isLoading } = useAccountSuspendForHackSuspicion({
+  const { accountSuspendForHackSuspicion, isLoading } = useAccountSuspendForHackSuspicionMutation({
     onSuccess: () => {
       navigate('SuspiciousLoginSuspendedAccount')
     },

@@ -20,7 +20,7 @@ import { storage } from 'libs/storage'
 import { useAddFavoriteMutation } from 'queries/favorites/useAddFavoriteMutation'
 import { useShouldShowCulturalSurveyForBeneficiaryUser } from 'shared/culturalSurvey/useShouldShowCulturalSurveyForBeneficiaryUser'
 
-export const useSignIn = ({
+export const useSignInMutation = ({
   params,
   doNotNavigateOnSigninSuccess,
   analyticsMethod = 'fromLogin',
@@ -102,12 +102,10 @@ const useHandleSigninSuccess = (
         case StepperOrigin.BOOKING:
           navigate('Offer', { id: offerId, openModalOnNavigation: true })
           return
+
         case StepperOrigin.FAVORITE:
-          addFavorite({ offerId })
-          navigate('Offer', { id: offerId })
-          return
         case StepperOrigin.OFFER:
-        case StepperOrigin.NOTIFICATION:
+          addFavorite({ offerId })
           navigate('Offer', { id: offerId })
           return
         default:

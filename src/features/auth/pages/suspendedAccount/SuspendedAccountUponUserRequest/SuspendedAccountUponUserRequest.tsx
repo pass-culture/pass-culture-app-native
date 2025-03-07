@@ -2,10 +2,10 @@ import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { useAccountSuspensionDate } from 'features/auth/api/useAccountSuspensionDate'
-import { useAccountUnsuspend } from 'features/auth/api/useAccountUnsuspend'
 import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { useLogoutRoutine } from 'features/auth/helpers/useLogoutRoutine'
+import { useAccountSuspensionDateQuery } from 'features/auth/queries/useAccountSuspensionDateQuery'
+import { useAccountUnsuspendMutation } from 'features/auth/queries/useAccountUnsuspendMutation'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
@@ -27,7 +27,7 @@ const addDaysToDate = (date: Date, days: number) => {
 export const SuspendedAccountUponUserRequest = () => {
   const { replace } = useNavigation<UseNavigationType>()
   const { data: settings } = useSettingsContext()
-  const { data: accountSuspensionDate } = useAccountSuspensionDate()
+  const { data: accountSuspensionDate } = useAccountSuspensionDateQuery()
   const signOut = useLogoutRoutine()
   const { showErrorSnackBar } = useSnackBarContext()
 
@@ -42,7 +42,7 @@ export const SuspendedAccountUponUserRequest = () => {
     })
   }
 
-  const { mutate: unsuspendAccount, isLoading: unsuspendIsLoading } = useAccountUnsuspend(
+  const { mutate: unsuspendAccount, isLoading: unsuspendIsLoading } = useAccountUnsuspendMutation(
     onAccountUnsuspendSuccess,
     onAccountUnsuspendFailure
   )
