@@ -13,7 +13,7 @@ import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsult
 import { analytics } from 'libs/analytics/provider'
 import { useLocation } from 'libs/location'
 import { getDistance } from 'libs/location/getDistance'
-import { useSearchGroupLabel, useSubcategory } from 'libs/subcategories'
+import { useSubcategory } from 'libs/subcategories'
 import { TileContentType, tileAccessibilityLabel } from 'libs/tileAccessibilityLabel'
 import { useRemoveFavoriteMutation } from 'queries/favorites/useRemoveFavoriteMutation'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
@@ -65,8 +65,7 @@ export const Favorite: React.FC<Props> = (props) => {
     price: offer.price,
   })
   const { showErrorSnackBar } = useSnackBarContext()
-  const { categoryId, searchGroupName } = useSubcategory(offer.subcategoryId)
-  const searchGroupLabel = useSearchGroupLabel(searchGroupName)
+  const { categoryId, appLabel } = useSubcategory(offer.subcategoryId)
   const formattedDate = useFavoriteFormattedDate({ offer })
   const { modalToDisplay, ...buttonProperties } =
     getBookingButtonProperties({
@@ -92,7 +91,7 @@ export const Favorite: React.FC<Props> = (props) => {
 
   const accessibilityLabel = tileAccessibilityLabel(TileContentType.OFFER, {
     ...offer,
-    categoryLabel: searchGroupLabel,
+    categoryLabel: appLabel,
     distance: distanceToOffer,
     date: formattedDate,
     price: displayPrice,
@@ -205,7 +204,7 @@ export const Favorite: React.FC<Props> = (props) => {
                 <LeftContent>
                   <TypoDS.BodyAccent numberOfLines={2}>{offer.name}</TypoDS.BodyAccent>
                   <Spacer.Column numberOfSpaces={1} />
-                  <Body>{searchGroupLabel}</Body>
+                  <Body>{appLabel}</Body>
                   {formattedDate ? <Body>{formattedDate}</Body> : null}
                   {displayPrice ? (
                     <React.Fragment>
