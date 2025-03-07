@@ -96,7 +96,7 @@ export const OfferImageCarousel: FunctionComponent<Props> = ({
       />
 
       <Container>
-        {currentCredit ? <CopyrightText>© {currentCredit}</CopyrightText> : null}
+        {currentCredit ? <CopyrightText numberOfLines={2}>© {currentCredit}</CopyrightText> : null}
       </Container>
 
       {offerImages.length > 1 && progressValue ? (
@@ -112,10 +112,12 @@ export const OfferImageCarousel: FunctionComponent<Props> = ({
 
 const CopyrightText = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
   color: theme.colors.greySemiDark,
+  width: 0,
+  flexGrow: 1,
   textAlign: 'right',
 }))
 
 const Container = styled.View(({ theme }) => ({
-  height: getSpacing(5),
   marginBottom: theme.isDesktopViewport ? getSpacing(2) : 0,
+  flexDirection: 'row',
 }))
