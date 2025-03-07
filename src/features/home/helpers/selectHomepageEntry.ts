@@ -11,8 +11,8 @@ import { isUserUnderage } from 'features/profile/helpers/isUserUnderage'
 import { isUserUnderageBeneficiary } from 'features/profile/helpers/isUserUnderageBeneficiary'
 import { UserOnboardingRole } from 'features/tutorial/enums'
 import { useUserRoleFromOnboarding } from 'features/tutorial/helpers/useUserRoleFromOnboarding'
+import { useRemoteConfig } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { CustomRemoteConfig } from 'libs/firebase/remoteConfig/remoteConfig.types'
-import { useRemoteConfigContext } from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { getAvailableCredit } from 'shared/user/useAvailableCredit'
 
 const scoreHomepageByTags = (
@@ -44,7 +44,7 @@ export const useSelectHomepageEntry = (
     homeEntryId_18,
     homeEntryId_15_17,
     ...onboardingHomeEntryIds
-  } = useRemoteConfigContext()
+  } = useRemoteConfig()
 
   return useCallback(
     (homepageList: Homepage[]): Homepage | undefined => {

@@ -5,9 +5,9 @@ import { fetchAndActivate, getAll } from 'firebase/remote-config'
 import { getRemoteConfigFromConfigValues } from 'libs/firebase/remoteConfig/helpers/getRemoteConfigFromConfigValues'
 import firebaseRemoteConfig from 'libs/firebase/shims/remote-config/index.web'
 
-import { CustomRemoteConfig } from './remoteConfig.types'
+import { CustomRemoteConfig, RemoteConfigServices } from './remoteConfig.types'
 
-export const remoteConfig = {
+export const remoteConfig: RemoteConfigServices = {
   async refresh() {
     return fetchAndActivate(firebaseRemoteConfig)
   },
@@ -16,5 +16,10 @@ export const remoteConfig = {
   getValues(): CustomRemoteConfig {
     const parameters = getAll(firebaseRemoteConfig)
     return getRemoteConfigFromConfigValues(parameters)
+  },
+  async configure() {
+    // On Web, we don't need any specific configuration.
+    // This method is included to maintain compatibility with the RemoteConfigServices interface,
+    // but it remains empty since no additional setup is required on this platform.
   },
 }
