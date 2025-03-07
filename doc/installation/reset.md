@@ -65,7 +65,7 @@ brew uninstall watchman
 ### d) Remove Java (if you need to reinstall properly)
 
 ```bash
-brew uninstall --cask zulu
+brew uninstall --cask temurin@17
 ```
 
 ## 3. Clean folders
@@ -115,7 +115,7 @@ brew install watchman
 ### d) Install Java (if necessary for Android)
 
 ```bash
-brew install --cask zulu
+brew install --cask temurin@17
 ```
 
 ### e) Install Android Studio (if necessary)
