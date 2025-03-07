@@ -6,7 +6,7 @@ import { JustifiedLeftTitle } from 'features/identityCheck/components/JustifiedL
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
-import { useRemoteConfigContext } from 'libs/firebase/remoteConfig/RemoteConfigProvider'
+import { useRemoteConfig } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { theme } from 'theme'
 import { InfoBanner } from 'ui/components/banners/InfoBanner'
 import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
@@ -28,7 +28,7 @@ export const IdentificationFork: FunctionComponent = () => {
 }
 
 const IdentificationForkEduconnectContent: FunctionComponent = () => {
-  const { shouldDisplayReassuranceMention } = useRemoteConfigContext()
+  const { shouldDisplayReassuranceMention } = useRemoteConfig()
   return (
     <Container>
       <JustifiedLeftTitle title="S’identifier en 2 min avec&nbsp;:" />

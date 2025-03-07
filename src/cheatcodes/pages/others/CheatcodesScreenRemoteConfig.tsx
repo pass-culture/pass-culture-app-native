@@ -4,8 +4,8 @@ import { FlatList } from 'react-native'
 import styled from 'styled-components/native'
 
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
+import { useRemoteConfig } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { GenericRemoteConfig } from 'libs/firebase/remoteConfig/remoteConfig.types'
-import { useRemoteConfigContext } from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { Separator } from 'ui/components/Separator'
 import { TypoDS, getSpacing } from 'ui/theme'
 
@@ -17,7 +17,7 @@ const ConfigItem = ({ label, value }: { label: string; value: GenericRemoteConfi
 )
 
 export const CheatcodesScreenRemoteConfig = () => {
-  const remoteConfig = useRemoteConfigContext()
+  const remoteConfig = useRemoteConfig()
 
   const sortedRemoteConfigEntries = Object.entries(remoteConfig).sort(([keyA], [keyB]) =>
     keyA.localeCompare(keyB)

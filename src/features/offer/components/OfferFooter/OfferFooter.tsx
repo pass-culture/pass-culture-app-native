@@ -7,7 +7,7 @@ import { useOfferCTA } from 'features/offer/components/OfferContent/OfferCTAProv
 import { StickyFooterContent } from 'features/offer/components/OfferFooter/StickyFooterContent'
 import { getIsAComingSoonOffer } from 'features/offer/helpers/getIsAComingSoonOffer'
 import { FavoriteProps } from 'features/offer/types'
-import { useRemoteConfigContext } from 'libs/firebase/remoteConfig/RemoteConfigProvider'
+import { useRemoteConfig } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 
 export type OfferFooterProps = {
   offer: OfferResponseV2
@@ -25,7 +25,7 @@ export const OfferFooter = ({
 }: OfferFooterProps) => {
   const { isDesktopViewport } = useTheme()
   const { isButtonVisible } = useOfferCTA()
-  const { showAccessScreeningButton } = useRemoteConfigContext()
+  const { showAccessScreeningButton } = useRemoteConfig()
 
   const isAComingSoonOffer = getIsAComingSoonOffer(offer)
 

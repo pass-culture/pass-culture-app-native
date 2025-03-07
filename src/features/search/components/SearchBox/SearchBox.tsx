@@ -24,7 +24,7 @@ import { useSearch } from 'features/search/context/SearchWrapper'
 import { useNavigateToSearch } from 'features/search/helpers/useNavigateToSearch/useNavigateToSearch'
 import { CreateHistoryItem, SearchView, SearchState } from 'features/search/types'
 import { analytics } from 'libs/analytics/provider'
-import { useRemoteConfigContext } from 'libs/firebase/remoteConfig/RemoteConfigProvider'
+import { useRemoteConfig } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { BackButton } from 'ui/components/headers/BackButton'
 import { HiddenAccessibleText } from 'ui/components/HiddenAccessibleText'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
@@ -66,7 +66,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
   const route = useRoute()
   const { navigateToSearch: navigateToSearchResults } = useNavigateToSearch('SearchResults')
   const { navigateToSearch: navigateToThematicSearch } = useNavigateToSearch('ThematicSearch')
-  const { shouldRedirectToThematicSearch } = useRemoteConfigContext()
+  const { shouldRedirectToThematicSearch } = useRemoteConfig()
   const currentView = route.name
 
   // Autocompletion inspired by https://github.com/algolia/doc-code-samples/tree/master/react-instantsearch-hooks-native/getting-started

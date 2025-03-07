@@ -8,7 +8,7 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { CreditHeader } from 'features/profile/components/Header/CreditHeader/CreditHeader'
 import { LoggedOutHeader } from 'features/profile/components/Header/LoggedOutHeader/LoggedOutHeader'
 import { NonBeneficiaryHeader } from 'features/profile/components/Header/NonBeneficiaryHeader/NonBeneficiaryHeader'
-import { useRemoteConfigContext } from 'libs/firebase/remoteConfig/RemoteConfigProvider'
+import { useRemoteConfig } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { getAge } from 'shared/user/getAge'
 import { Spacer, getSpacing } from 'ui/theme'
 
@@ -25,7 +25,7 @@ export function ProfileHeader(props: ProfileHeaderProps) {
   const { featureFlags, user } = props
   const { isLoggedIn } = useAuthContext()
 
-  const { displayAchievements } = useRemoteConfigContext()
+  const { displayAchievements } = useRemoteConfig()
   const shouldShowAchievementsBanner =
     featureFlags.enableAchievements && displayAchievements && user?.isBeneficiary
 
