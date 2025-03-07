@@ -1,5 +1,5 @@
 import React from 'react'
-import { LogBox } from 'react-native'
+import { LogBox, View as MockView } from 'react-native'
 
 import { campaignTracker } from 'libs/campaign'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
@@ -12,7 +12,7 @@ import { App } from './App'
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 jest.mock('features/navigation/NavigationContainer/NavigationContainer', () => ({
-  AppNavigationContainer: () => 'Placeholder for NavigationContainer',
+  AppNavigationContainer: MockView,
 }))
 
 jest.mock('libs/e2e/getIsMaestro', () => ({
@@ -28,36 +28,52 @@ jest.mock('react-native-safe-area-context', () => ({
   useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
 }))
 
+jest.mock('libs/firebase/firestore/featureFlags/getAllFeatureFlags', () => ({
+  getAllFeatureFlags: jest.fn().mockResolvedValue({
+    data: () => ({
+      feature1: true,
+    }),
+  }),
+}))
+
 describe('<App /> with mocked RootNavigator', () => {
   beforeEach(() => {
     setFeatureFlags()
   })
 
-  it("should override font for Batch's in-app messages", () => {
+  it("should override font for Batch's in-app messages", async () => {
     renderApp()
 
-    expect(BatchMessaging.setFontOverride).toHaveBeenCalledTimes(1)
+    await waitFor(() => {
+      expect(BatchMessaging.setFontOverride).toHaveBeenCalledTimes(1)
+    })
   })
 
-  it('should request push notifications permission', () => {
+  it('should request push notifications permission', async () => {
     renderApp()
 
-    expect(BatchPush.requestNotificationAuthorization).toHaveBeenCalledTimes(1)
+    await waitFor(() => {
+      expect(BatchPush.requestNotificationAuthorization).toHaveBeenCalledTimes(1)
+    })
   })
 
-  it('should not init AppsFlyer on launch', () => {
+  it('should not init AppsFlyer on launch', async () => {
     renderApp()
 
-    expect(campaignTracker.init).not.toHaveBeenCalled()
+    await waitFor(() => {
+      expect(campaignTracker.init).not.toHaveBeenCalled()
+    })
   })
 
-  it('should configure Google signin on launch', () => {
+  it('should configure Google signin on launch', async () => {
     renderApp()
 
-    expect(configureGoogleSignin).toHaveBeenCalledWith({
-      iosClientId: 'GOOGLE_IOS_CLIENT_ID',
-      webClientId: 'GOOGLE_CLIENT_ID',
-      offlineAccess: true,
+    await waitFor(() => {
+      expect(configureGoogleSignin).toHaveBeenCalledWith({
+        iosClientId: 'GOOGLE_IOS_CLIENT_ID',
+        webClientId: 'GOOGLE_CLIENT_ID',
+        offlineAccess: true,
+      })
     })
   })
 
