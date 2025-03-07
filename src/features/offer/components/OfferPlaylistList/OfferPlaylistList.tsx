@@ -1,5 +1,6 @@
 import { useRoute } from '@react-navigation/native'
-import React from 'react'
+import React, { useState } from 'react'
+import { FlatListProps } from 'react-native'
 
 import { OfferResponseV2, RecommendationApiParams } from 'api/gen'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
@@ -41,6 +42,7 @@ export function OfferPlaylistList({
   const fromOfferId = route.params?.fromOfferId
   const categoryMapping = useCategoryIdMapping()
   const labelMapping = useCategoryHomeLabelMapping()
+  const [inViewPlaylists, setInViewPlaylists] = useState<string[]>([])
 
   const currency = useGetCurrencyToDisplay()
   const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
@@ -62,6 +64,16 @@ export function OfferPlaylistList({
   const handleChangeSameCategoryPlaylistDisplay = useLogScrollHandler(
     logSameCategoryPlaylistVerticalScroll
   )
+
+  const handleChange = (playlist: SimilarOfferPlaylist, isInView: boolean) => {
+    playlist.handleChangePlaylistDisplay(isInView)
+
+    setInViewPlaylists((prevPlaylists) =>
+      isInView
+        ? [...prevPlaylists, playlist.title]
+        : prevPlaylists.filter((id) => playlist.title !== id)
+    )
+  }
 
   const trackingOnHorizontalScroll = (
     playlistType: PlaylistType,
@@ -96,6 +108,12 @@ export function OfferPlaylistList({
   const shouldDisplayPlaylist =
     isArrayNotEmpty(sameCategorySimilarOffers) || isArrayNotEmpty(otherCategoriesSimilarOffers)
 
+  type ViewableItemsChangeHandler = FlatListProps<unknown>['onViewableItemsChanged']
+  const handleViewableItemsChange: ViewableItemsChangeHandler = ({ viewableItems }) => {
+    console.log('COUCOU')
+    console.log({ viewableItems })
+  }
+
   return (
     <SectionWithDivider visible={shouldDisplayPlaylist} gap={8}>
       {similarOffersPlaylist.map((playlist) => {
@@ -105,7 +123,9 @@ export function OfferPlaylistList({
 
         return (
           <IntersectionObserver
-            onChange={playlist.handleChangePlaylistDisplay}
+            onChange={(isInView: boolean) => {
+              handleChange(playlist, isInView)
+            }}
             threshold="50%"
             key={playlist.type}>
             <OfferPlaylist
@@ -126,6 +146,7 @@ export function OfferPlaylistList({
               title={playlist.title}
               onEndReached={() => trackingOnHorizontalScroll(playlist.type, playlist.apiRecoParams)}
               playlistType={playlist.type}
+              onViewableItemsChanged={handleViewableItemsChange}
             />
           </IntersectionObserver>
         )
