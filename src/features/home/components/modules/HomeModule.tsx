@@ -1,4 +1,5 @@
 import React, { memo } from 'react'
+import { FlatListProps } from 'react-native'
 
 import { BusinessModule } from 'features/home/components/modules/business/BusinessModule'
 import { CategoryListModule } from 'features/home/components/modules/categories/CategoryListModule'
@@ -40,17 +41,20 @@ const UnmemoizedModule = ({
   homeEntryId,
   data,
   videoModuleId,
+  onViewableItemsChanged,
 }: {
   item: HomepageModule
   index: number
   homeEntryId: string
   data?: ModuleData
   videoModuleId?: string
+  onViewableItemsChanged: FlatListProps<unknown>['onViewableItemsChanged']
 }) => {
   /* eslint-disable @typescript-eslint/no-explicit-any */
   if (isExclusivityModule(item)) return null
   const ComponentModule: any = modules[item.type]
   if (!ComponentModule) return null
+
   return (
     <ComponentModule
       {...item}
@@ -59,6 +63,7 @@ const UnmemoizedModule = ({
       moduleId={item.id}
       data={data}
       shouldShowModal={item.id === videoModuleId}
+      onViewableItemsChanged={onViewableItemsChanged}
     />
   )
 }

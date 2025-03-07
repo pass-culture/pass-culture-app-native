@@ -2,6 +2,7 @@ import { useScrollToTop } from '@react-navigation/native'
 import { without } from 'lodash'
 import React, { FunctionComponent, useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import {
+  FlatListProps,
   NativeScrollEvent,
   NativeSyntheticEvent,
   Platform,
@@ -62,6 +63,12 @@ type GenericHomeProps = {
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const keyExtractor = (item: any) => item.id
 
+const handleViewableItemsChanged: FlatListProps<unknown>['onViewableItemsChanged'] = ({
+  changed,
+}) => {
+  console.log(changed)
+}
+
 const renderModule = (
   { item, index }: { item: HomepageModule; index: number },
   homeId: string,
@@ -73,6 +80,7 @@ const renderModule = (
     homeEntryId={homeId}
     data={isOffersModule(item) || isVenuesModule(item) ? item.data : undefined}
     videoModuleId={videoModuleId}
+    onViewableItemsChanged={handleViewableItemsChanged}
   />
 )
 
