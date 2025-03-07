@@ -299,7 +299,10 @@ describe('Profile component', () => {
       const notificationsButton = screen.getByText('Notifications')
       await user.press(notificationsButton)
 
-      expect(navigate).toHaveBeenCalledWith('NotificationsSettings', undefined)
+      expect(navigate).toHaveBeenCalledWith('TabNavigator', {
+        params: { params: undefined, screen: 'NotificationsSettings' },
+        screen: 'ProfileStackNavigator',
+      })
     })
   })
 

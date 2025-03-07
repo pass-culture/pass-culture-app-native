@@ -192,7 +192,7 @@ const OnlineProfile: React.FC = () => {
                       type="navigable"
                       title="Notifications"
                       icon={Bell}
-                      navigateTo={{ screen: 'NotificationsSettings' }}
+                      navigateTo={getProfileNavConfig('NotificationsSettings')}
                     />
                   </Li>
                   <LiWithMarginVertical>

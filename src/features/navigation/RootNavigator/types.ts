@@ -243,7 +243,6 @@ export type RootStackParamList = {
   Maintenance: undefined
   MovieCalendar: undefined
   NewEmailSelection: { token: string }
-  NotificationsSettings: undefined
   NotYetUnderageEligibility: { eligibilityStartDatetime: string }
   Offer: {
     id: number

@@ -8,6 +8,7 @@ import { AccessibilityDeclarationMobile } from 'features/profile/pages/Accessibi
 import { AccessibilityDeclarationWeb } from 'features/profile/pages/Accessibility/AccessibilityDeclarationWeb'
 import { AccessibilityEngagement } from 'features/profile/pages/Accessibility/AccessibilityEngagement'
 import { RecommendedPaths } from 'features/profile/pages/Accessibility/RecommendedPaths'
+import { NotificationsSettings } from 'features/profile/pages/NotificationSettings/NotificationsSettings'
 import { Profile } from 'features/profile/pages/Profile'
 
 export const ProfileStackNavigator = () => (
@@ -42,6 +43,11 @@ export const ProfileStackNavigator = () => (
       name="RecommendedPaths"
       component={RecommendedPaths}
       options={{ title: 'Parcours recommandés' }}
+    />
+    <ProfileStack.Screen
+      name="NotificationsSettings"
+      component={NotificationsSettings}
+      options={{ title: 'Réglages de notifications' }}
     />
   </ProfileStack.Navigator>
 )

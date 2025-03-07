@@ -23,7 +23,7 @@ export const DeleteProfileAccountNotDeletable: FC = () => {
 
   const navigateToProfile = () => navigate(...getProfileStackConfig('Profile'))
 
-  const navigateToNotifications = () => navigate('NotificationsSettings')
+  const navigateToNotifications = () => navigate(...getProfileStackConfig('NotificationsSettings'))
   const { illustrations } = useTheme()
 
   return (
