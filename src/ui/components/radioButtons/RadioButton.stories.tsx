@@ -1,8 +1,7 @@
 import { NavigationContainer } from '@react-navigation/native'
-import { ComponentMeta } from '@storybook/react'
+import type { Meta } from '@storybook/react'
 import React from 'react'
 
-import { selectArgTypeFromObject } from 'libs/storybook/selectArgTypeFromObject'
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 import { VideoGame } from 'ui/svg/icons/bicolor/VideoGame'
 import { EditPen } from 'ui/svg/icons/EditPen'
@@ -10,22 +9,29 @@ import { Email } from 'ui/svg/icons/Email'
 
 import { RadioButton } from './RadioButton'
 
-const meta: ComponentMeta<typeof RadioButton> = {
+const meta: Meta<typeof RadioButton> = {
   title: 'ui/inputs/RadioButton',
   component: RadioButton,
   decorators: [
-    (Story) => (
+    (Story: React.ComponentType) => (
       <NavigationContainer>
         <Story />
       </NavigationContainer>
     ),
   ],
   argTypes: {
-    icon: selectArgTypeFromObject({
-      Email,
-      EditPen,
-      VideoGame,
-    }),
+    icon: {
+      options: ['Email', 'EditPen', 'VideoGame'],
+      mapping: {
+        Email,
+        EditPen,
+        VideoGame,
+      },
+      control: {
+        type: 'select',
+        labels: {},
+      },
+    },
   },
 }
 export default meta
@@ -62,9 +68,10 @@ const variantConfig: Variants<typeof RadioButton> = [
   },
 ]
 
-const Template: VariantsStory<typeof RadioButton> = (args) => (
+const Template: VariantsStory<typeof RadioButton> = (
+  args: React.ComponentProps<typeof RadioButton>
+) => (
   <VariantsTemplate variants={variantConfig} Component={RadioButton} defaultProps={{ ...args }} />
 )
 
 export const AllVariants = Template.bind({})
-AllVariants.storyName = 'RadioButton'

@@ -119,7 +119,7 @@ export default ({ mode }) => {
       extensions: allExtensions,
       alias: [
         {
-          find: /^((api|cheatcodes|features|fixtures|libs|queries|shared|theme|ui|web).*)/,
+          find: /^((api|cheatcodes|features|fixtures|libs|queries|shared|theme|ui|web|tests).*)/,
           replacement: '/src/$1',
         },
         // if you add something below, it should also be added to storybook config file in modulesToAlias

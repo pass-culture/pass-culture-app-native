@@ -1,11 +1,11 @@
-import { ComponentMeta } from '@storybook/react'
+import type { Meta } from '@storybook/react'
 import React from 'react'
 
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 
 import { OpeningHoursStatus } from './OpeningHoursStatus'
 
-const meta: ComponentMeta<typeof OpeningHoursStatus> = {
+const meta: Meta<typeof OpeningHoursStatus> = {
   title: 'features/venue/OpeningHoursStatus',
   component: OpeningHoursStatus,
 }
@@ -54,9 +54,10 @@ const variantConfig: Variants<typeof OpeningHoursStatus> = [
   },
 ]
 
-const Template: VariantsStory<typeof OpeningHoursStatus> = (args) => (
+const Template: VariantsStory<typeof OpeningHoursStatus> = (
+  args: React.ComponentProps<typeof OpeningHoursStatus>
+) => (
   <VariantsTemplate variants={variantConfig} Component={OpeningHoursStatus} defaultProps={args} />
 )
 
 export const AllVariants = Template.bind({})
-AllVariants.storyName = 'OpeningHoursStatus'

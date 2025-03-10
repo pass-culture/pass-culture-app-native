@@ -1,4 +1,4 @@
-import { ComponentMeta } from '@storybook/react'
+import type { Meta } from '@storybook/react'
 import React from 'react'
 
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
@@ -6,7 +6,7 @@ import { Eye } from 'ui/svg/icons/Eye'
 
 import { TextInput } from './TextInput'
 
-const meta: ComponentMeta<typeof TextInput> = {
+const meta: Meta<typeof TextInput> = {
   title: 'ui/inputs/TextInput',
   component: TextInput,
 }
@@ -44,9 +44,8 @@ const variantConfig: Variants<typeof TextInput> = [
   },
 ]
 
-const Template: VariantsStory<typeof TextInput> = (args) => (
-  <VariantsTemplate variants={variantConfig} Component={TextInput} defaultProps={{ ...args }} />
-)
+const Template: VariantsStory<typeof TextInput> = (
+  args: React.ComponentProps<typeof TextInput>
+) => <VariantsTemplate variants={variantConfig} Component={TextInput} defaultProps={{ ...args }} />
 
 export const AllVariants = Template.bind({})
-AllVariants.storyName = 'TextInput'

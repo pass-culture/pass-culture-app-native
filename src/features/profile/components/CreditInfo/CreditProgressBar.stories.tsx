@@ -1,11 +1,11 @@
-import { ComponentMeta } from '@storybook/react'
+import type { Meta } from '@storybook/react'
 import React from 'react'
 
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 
 import { CreditProgressBar } from './CreditProgressBar'
 
-const meta: ComponentMeta<typeof CreditProgressBar> = {
+const meta: Meta<typeof CreditProgressBar> = {
   title: 'Features/Profile/CreditProgressBar',
   component: CreditProgressBar,
 }
@@ -43,9 +43,8 @@ const variantConfig: Variants<typeof CreditProgressBar> = [
   },
 ]
 
-const Template: VariantsStory<typeof CreditProgressBar> = (args) => (
-  <VariantsTemplate variants={variantConfig} Component={CreditProgressBar} defaultProps={args} />
-)
+const Template: VariantsStory<typeof CreditProgressBar> = (
+  args: React.ComponentProps<typeof CreditProgressBar>
+) => <VariantsTemplate variants={variantConfig} Component={CreditProgressBar} defaultProps={args} />
 
 export const AllVariants = Template.bind({})
-AllVariants.storyName = 'CreditProgressBar'

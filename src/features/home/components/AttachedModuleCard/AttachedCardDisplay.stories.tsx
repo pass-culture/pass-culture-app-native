@@ -1,14 +1,14 @@
-import { ComponentMeta } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
 import React, { type ComponentProps } from 'react'
 
 import { CategoryIdEnum } from 'api/gen'
 import { theme } from 'theme'
 import { OfferImage } from 'ui/components/tiles/OfferImage'
-import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
+import { VariantsTemplate, type Variants } from 'ui/storybook/VariantsTemplate'
 import { ArrowRight } from 'ui/svg/icons/ArrowRight'
 
 import { AttachedCardDisplay } from './AttachedCardDisplay'
-const meta: ComponentMeta<typeof AttachedCardDisplay> = {
+const meta: Meta<typeof AttachedCardDisplay> = {
   title: 'ui/AttachedCardDisplay',
   component: AttachedCardDisplay,
 }
@@ -78,7 +78,9 @@ const variantConfig: Variants<typeof AttachedCardDisplay> = [
   },
 ]
 
-const Template: VariantsStory<typeof AttachedCardDisplay> = (args) => (
+type Story = StoryObj<typeof AttachedCardDisplay>
+
+const Template = (args: ComponentProps<typeof AttachedCardDisplay>) => (
   <VariantsTemplate
     variants={variantConfig}
     Component={AttachedCardDisplay}
@@ -86,5 +88,6 @@ const Template: VariantsStory<typeof AttachedCardDisplay> = (args) => (
   />
 )
 
-export const AllVariants = Template.bind({})
-AllVariants.storyName = 'AttachedCardDisplay'
+export const AllVariants: Story = {
+  render: Template,
+}

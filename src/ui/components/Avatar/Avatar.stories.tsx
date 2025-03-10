@@ -1,4 +1,4 @@
-import { ComponentMeta } from '@storybook/react'
+import type { Meta } from '@storybook/react'
 import React from 'react'
 
 import { theme } from 'theme'
@@ -11,7 +11,7 @@ import { AVATAR_LARGE, AVATAR_MEDIUM, AVATAR_SMALL, AVATAR_XSMALL } from 'ui/the
 
 import { Avatar } from './Avatar'
 
-const meta: ComponentMeta<typeof Avatar> = {
+const meta: Meta<typeof Avatar> = {
   title: 'ui/Avatar',
   component: Avatar,
 }
@@ -75,9 +75,8 @@ const variantConfig: Variants<typeof Avatar> = [
   },
 ]
 
-const Template: VariantsStory<typeof Avatar> = (args) => (
+const Template: VariantsStory<typeof Avatar> = (args: React.ComponentProps<typeof Avatar>) => (
   <VariantsTemplate variants={variantConfig} Component={Avatar} defaultProps={{ ...args }} />
 )
 
 export const AllVariants = Template.bind({})
-AllVariants.storyName = 'Avatar'

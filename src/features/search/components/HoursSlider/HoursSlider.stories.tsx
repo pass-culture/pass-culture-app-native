@@ -1,4 +1,4 @@
-import { ComponentStory } from '@storybook/react'
+import { StoryFn } from '@storybook/react'
 import React, { useState } from 'react'
 import { StyleSheet, View } from 'react-native'
 
@@ -10,12 +10,13 @@ export default {
   component: HoursSlider,
 }
 
-const WrappedTemplate: ComponentStory<typeof HoursSlider> = ({ field }) => {
-  const [value, setValue] = useState<[Hour, Hour] | undefined>(field.value)
+const WrappedTemplate: StoryFn<typeof HoursSlider> = (args) => {
+  const defaultValue: [Hour, Hour] = [0, 24]
+  const [value, setValue] = useState<[Hour, Hour]>(args.field.value || defaultValue)
 
   return (
     <View style={styles.wrapper}>
-      <HoursSlider field={{ value: value, onChange: setValue }} />
+      <HoursSlider field={{ value, onChange: setValue }} />
     </View>
   )
 }
