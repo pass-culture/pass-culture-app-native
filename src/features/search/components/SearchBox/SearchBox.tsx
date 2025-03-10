@@ -44,7 +44,6 @@ type Props = UseSearchBoxProps & {
 
 const accessibilityDescribedBy = uuidv4()
 
-const BOOK_KEYWORD_PATTERN = /\bLIVRES?\b$/i
 const CINEMA_KEYWORD_PATTERN = /\bCINEMAS?\b$/i
 
 export const SearchBox: React.FunctionComponent<Props> = ({
@@ -241,19 +240,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
         }
       }
 
-      let hasSearchedForBookKeyword = false
-
       if (currentView === SearchView.Landing) {
-        hasSearchedForBookKeyword = BOOK_KEYWORD_PATTERN.test(queryText.trim())
-
-        if (hasSearchedForBookKeyword) {
-          partialSearchState = {
-            ...partialSearchState,
-            query: queryText.trim(),
-            offerCategories: [SearchGroupNameEnumv2.LIVRES],
-          }
-        }
-
         if (
           CINEMA_KEYWORD_PATTERN.test(
             queryText
@@ -266,7 +253,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
         }
       }
 
-      pushWithSearch(partialSearchState, {}, hasSearchedForBookKeyword)
+      pushWithSearch(partialSearchState, {})
       hideSuggestions()
     },
     [
