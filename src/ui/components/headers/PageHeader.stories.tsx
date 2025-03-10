@@ -1,16 +1,18 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
 import React from 'react'
 
 import { PageHeader } from './PageHeader'
 
-const meta: ComponentMeta<typeof PageHeader> = {
+const meta: Meta<typeof PageHeader> = {
   title: 'ui/PageHeader',
   component: PageHeader,
 }
 export default meta
 
-const Template: ComponentStory<typeof PageHeader> = (props) => <PageHeader {...props} />
+type Story = StoryObj<typeof PageHeader>
 
-export const Default = Template.bind({})
-Default.storyName = 'PageHeader'
-Default.args = { title: 'Page header' }
+export const Default: Story = {
+  render: (props) => <PageHeader {...props} />,
+  args: { title: 'Page header' },
+  name: 'PageHeader',
+}

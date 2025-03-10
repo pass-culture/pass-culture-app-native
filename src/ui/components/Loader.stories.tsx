@@ -1,11 +1,11 @@
-import { ComponentMeta } from '@storybook/react'
+import type { Meta } from '@storybook/react'
 import React from 'react'
 
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 
 import { Loader } from './Loader'
 
-const meta: ComponentMeta<typeof Loader> = {
+const meta: Meta<typeof Loader> = {
   title: 'ui/Loader',
   component: Loader,
 }
@@ -26,4 +26,3 @@ const Template: VariantsStory<typeof Loader> = (args) => (
 )
 
 export const AllVariants = Template.bind({})
-AllVariants.storyName = 'Loader'

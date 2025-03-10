@@ -1,5 +1,5 @@
 import { NavigationContainer } from '@react-navigation/native'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
 import React from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
@@ -10,7 +10,7 @@ import { getSpacing } from 'ui/theme'
 
 import { CategoriesListDumb } from './CategoriesListDumb'
 
-const meta: ComponentMeta<typeof CategoriesListDumb> = {
+const meta: Meta<typeof CategoriesListDumb> = {
   title: 'Features/search/CategoriesButtons',
   component: CategoriesListDumb,
 }
@@ -20,98 +20,102 @@ const BodyWrapper = styled.View({
   marginHorizontal: -getSpacing(4),
 })
 
-export const Default: ComponentStory<typeof CategoriesListDumb> = (props) => (
-  <BodyWrapper>
-    <NavigationContainer>
-      <Container>
-        <CategoriesListDumb {...props} />
-      </Container>
-    </NavigationContainer>
-  </BodyWrapper>
-)
-Default.args = {
-  sortedCategories: [
-    {
-      label: 'Concerts & Festivals',
-      navigateTo: {
-        screen: 'TabNavigator',
-        params: {
-          screen: 'ThematicSearch',
-          params: { offerCategories: SearchGroupNameEnumv2.CONCERTS_FESTIVALS },
-          isFullyDigitalOffersCategory: false,
-          withPush: true,
+type Story = StoryObj<typeof CategoriesListDumb>
+
+export const Default: Story = {
+  render: (props) => (
+    <BodyWrapper>
+      <NavigationContainer>
+        <Container>
+          <CategoriesListDumb {...props} />
+        </Container>
+      </NavigationContainer>
+    </BodyWrapper>
+  ),
+  args: {
+    sortedCategories: [
+      {
+        label: 'Concerts & Festivals',
+        navigateTo: {
+          screen: 'TabNavigator',
+          params: {
+            screen: 'ThematicSearch',
+            params: { offerCategories: SearchGroupNameEnumv2.CONCERTS_FESTIVALS },
+            isFullyDigitalOffersCategory: false,
+            withPush: true,
+          },
         },
+        fillColor: theme.colors.goldLight100,
+        borderColor: theme.colors.goldLight200,
       },
-      fillColor: theme.colors.goldLight100,
-      borderColor: theme.colors.goldLight200,
-    },
-    {
-      label: 'Cinéma',
-      navigateTo: {
-        screen: 'TabNavigator',
-        params: {
-          screen: 'ThematicSearch',
-          params: { offerCategories: SearchGroupNameEnumv2.CINEMA },
-          isFullyDigitalOffersCategory: false,
-          withPush: true,
+      {
+        label: 'Cinéma',
+        navigateTo: {
+          screen: 'TabNavigator',
+          params: {
+            screen: 'ThematicSearch',
+            params: { offerCategories: SearchGroupNameEnumv2.CINEMA },
+            isFullyDigitalOffersCategory: false,
+            withPush: true,
+          },
         },
+        borderColor: theme.colors.skyBlue,
+        fillColor: theme.colors.skyBlueLight,
       },
-      borderColor: theme.colors.skyBlue,
-      fillColor: theme.colors.skyBlueLight,
-    },
-    {
-      label: 'Films, séries et documentaires',
-      navigateTo: {
-        screen: 'TabNavigator',
-        params: {
-          screen: 'ThematicSearch',
-          params: { offerCategories: SearchGroupNameEnumv2.FILMS_DOCUMENTAIRES_SERIES },
-          isFullyDigitalOffersCategory: false,
-          withPush: true,
+      {
+        label: 'Films, séries et documentaires',
+        navigateTo: {
+          screen: 'TabNavigator',
+          params: {
+            screen: 'ThematicSearch',
+            params: { offerCategories: SearchGroupNameEnumv2.FILMS_DOCUMENTAIRES_SERIES },
+            isFullyDigitalOffersCategory: false,
+            withPush: true,
+          },
         },
+        borderColor: theme.colors.lilac,
+        fillColor: theme.colors.lilacLight,
       },
-      borderColor: theme.colors.lilac,
-      fillColor: theme.colors.lilacLight,
-    },
-    {
-      label: 'Livres',
-      navigateTo: {
-        screen: 'TabNavigator',
-        params: {
-          screen: 'ThematicSearch',
-          params: { offerCategories: SearchGroupNameEnumv2.LIVRES },
-          isFullyDigitalOffersCategory: false,
-          withPush: true,
+      {
+        label: 'Livres',
+        navigateTo: {
+          screen: 'TabNavigator',
+          params: {
+            screen: 'ThematicSearch',
+            params: { offerCategories: SearchGroupNameEnumv2.LIVRES },
+            isFullyDigitalOffersCategory: false,
+            withPush: true,
+          },
         },
+        borderColor: theme.colors.coral,
+        fillColor: theme.colors.coralLight,
       },
-      borderColor: theme.colors.coral,
-      fillColor: theme.colors.coralLight,
-    },
-    {
-      label: 'Musique',
-      navigateTo: {
-        screen: 'TabNavigator',
-        params: {
-          screen: 'ThematicSearch',
-          params: { offerCategories: SearchGroupNameEnumv2.MUSIQUE },
-          isFullyDigitalOffersCategory: false,
-          withPush: true,
+      {
+        label: 'Musique',
+        navigateTo: {
+          screen: 'TabNavigator',
+          params: {
+            screen: 'ThematicSearch',
+            params: { offerCategories: SearchGroupNameEnumv2.MUSIQUE },
+            isFullyDigitalOffersCategory: false,
+            withPush: true,
+          },
         },
+        borderColor: theme.colors.aquamarineDark,
+        fillColor: theme.colors.aquamarineLight,
       },
-      borderColor: theme.colors.aquamarineDark,
-      fillColor: theme.colors.aquamarineLight,
-    },
-  ],
-}
-Default.parameters = {
-  chromatic: {
-    viewports: [
-      theme.breakpoints.xxs,
-      theme.breakpoints.sm,
-      theme.breakpoints.md,
-      theme.breakpoints.lg,
-      theme.breakpoints.xl,
     ],
+  },
+  parameters: {
+    chromatic: {
+      viewports: [
+        theme.breakpoints.xxs,
+        theme.breakpoints.sm,
+        theme.breakpoints.md,
+        theme.breakpoints.lg,
+        theme.breakpoints.xl,
+      ],
+    },
   },
 }
 

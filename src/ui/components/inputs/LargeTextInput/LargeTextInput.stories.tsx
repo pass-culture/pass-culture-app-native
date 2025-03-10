@@ -1,11 +1,11 @@
-import { ComponentMeta } from '@storybook/react'
+import type { Meta } from '@storybook/react'
 import React from 'react'
 
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 
 import { LargeTextInput } from './LargeTextInput'
 
-const meta: ComponentMeta<typeof LargeTextInput> = {
+const meta: Meta<typeof LargeTextInput> = {
   title: 'ui/inputs/LargeTextInput',
   component: LargeTextInput,
 }
@@ -47,4 +47,3 @@ const Template: VariantsStory<typeof LargeTextInput> = (args) => (
 )
 
 export const AllVariants = Template.bind({})
-AllVariants.storyName = 'LargeTextInput'

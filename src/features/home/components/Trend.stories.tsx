@@ -2,14 +2,14 @@
 // eslint-disable-next-line import/no-unresolved
 
 import { NavigationContainer } from '@react-navigation/native'
-import { ComponentMeta, ComponentStory } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
 import React from 'react'
 
 import { formattedTrendsModule } from 'features/home/fixtures/homepage.fixture'
 
 import { Trend } from './Trend'
 
-const meta: ComponentMeta<typeof Trend> = {
+const meta: Meta<typeof Trend> = {
   title: 'features/home/Trend',
   component: Trend,
   decorators: [
@@ -23,11 +23,13 @@ const meta: ComponentMeta<typeof Trend> = {
 
 export default meta
 
-const Template: ComponentStory<typeof Trend> = (props) => <Trend {...props} />
+type Story = StoryObj<typeof Trend>
 
-export const Default = Template.bind({})
-Default.storyName = 'Trend'
-Default.args = {
-  ...formattedTrendsModule.items[1],
-  navigateTo: { screen: 'VenueMap' },
+export const Default: Story = {
+  render: (props) => <Trend {...props} />,
+  args: {
+    ...formattedTrendsModule.items[1],
+    navigateTo: { screen: 'VenueMap' },
+  },
+  name: 'Trend',
 }

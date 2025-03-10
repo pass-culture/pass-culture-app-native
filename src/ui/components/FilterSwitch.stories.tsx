@@ -1,12 +1,12 @@
 import { NavigationContainer } from '@react-navigation/native'
-import { ComponentMeta } from '@storybook/react'
+import type { Meta } from '@storybook/react'
 import React from 'react'
 
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 
 import FilterSwitch from './FilterSwitch'
 
-const meta: ComponentMeta<typeof FilterSwitch> = {
+const meta: Meta<typeof FilterSwitch> = {
   title: 'ui/FilterSwitch',
   component: FilterSwitch,
   decorators: [
@@ -43,4 +43,3 @@ const Template: VariantsStory<typeof FilterSwitch> = (args) => (
 )
 
 export const AllVariants = Template.bind({})
-AllVariants.storyName = 'FilterSwitch'

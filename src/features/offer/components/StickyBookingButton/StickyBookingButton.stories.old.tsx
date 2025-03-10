@@ -1,4 +1,4 @@
-import { ComponentMeta } from '@storybook/react'
+import type { Meta } from '@storybook/react'
 import React from 'react'
 import styled from 'styled-components/native'
 
@@ -6,7 +6,7 @@ import { StickyBookingButton } from 'features/offer/components/StickyBookingButt
 import { SHARE_APP_IMAGE_SOURCE } from 'features/share/components/shareAppImage'
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 
-const meta: ComponentMeta<typeof StickyBookingButton> = {
+const meta: Meta<typeof StickyBookingButton> = {
   title: 'features/offer/StickyBookingButton',
   component: StickyBookingButton,
 }
@@ -84,7 +84,6 @@ const Template: VariantsStory<typeof StickyBookingButton> = () => (
 )
 
 export const AllVariants = Template.bind({})
-AllVariants.storyName = 'StickyBookingButton'
 
 const ImageBackground = styled.ImageBackground({
   width: '100%',

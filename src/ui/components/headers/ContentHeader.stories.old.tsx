@@ -1,4 +1,4 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
 import React from 'react'
 import { ScrollView, View } from 'react-native'
 import styled from 'styled-components/native'
@@ -9,8 +9,8 @@ import { Spacer, Typo } from 'ui/theme'
 
 import { ContentHeader } from './ContentHeader'
 
-const meta: ComponentMeta<typeof ContentHeader> = {
-  title: 'ui/headers/AnimatedBlurHeaderTitle',
+const meta: Meta<typeof ContentHeader> = {
+  title: 'ui/headers/ContentHeader',
   component: ContentHeader,
   parameters: {
     axe: {
@@ -22,9 +22,10 @@ const meta: ComponentMeta<typeof ContentHeader> = {
 }
 export default meta
 
-const Template: ComponentStory<typeof ContentHeader> = (props) => {
-  const { onScroll, headerTransition } = useOpacityTransition()
+type Story = StoryObj<typeof ContentHeader>
 
+const StoryComponent = (props: React.ComponentProps<typeof ContentHeader>) => {
+  const { onScroll, headerTransition } = useOpacityTransition()
   const headerHeight = useGetHeaderHeight()
 
   return (
@@ -46,12 +47,12 @@ const Template: ComponentStory<typeof ContentHeader> = (props) => {
   )
 }
 
-//TODO(PC-28526): Fix this stories
-const Default = Template.bind({})
-Default.args = {
-  headerTitle: 'Titre',
+export const Default: Story = {
+  render: (props) => <StoryComponent {...props} />,
+  args: {
+    headerTitle: 'Titre',
+  },
 }
 
 const Container = styled.View({ height: 400 })
-
 const Content = styled.View({ height: 200, backgroundColor: 'blue' })

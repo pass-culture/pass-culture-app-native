@@ -1,19 +1,21 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
 import React from 'react'
 
 import { ErrorBanner } from './ErrorBanner'
 
-const meta: ComponentMeta<typeof ErrorBanner> = {
+const meta: Meta<typeof ErrorBanner> = {
   title: 'ui/banners/ErrorBanner',
   component: ErrorBanner,
 }
 export default meta
 
-const Template: ComponentStory<typeof ErrorBanner> = (props) => <ErrorBanner {...props} />
+type Story = StoryObj<typeof ErrorBanner>
 
-export const Default = Template.bind({})
-Default.args = {
-  message:
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.',
+export const Default: Story = {
+  render: (props) => <ErrorBanner {...props} />,
+  name: 'ErrorBanner',
+  args: {
+    message:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore.',
+  },
 }
-Default.storyName = 'ErrorBanner'

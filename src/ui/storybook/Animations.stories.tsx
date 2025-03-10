@@ -1,8 +1,21 @@
-import { ComponentStory } from '@storybook/react'
+// remove this after rename without old.tsx
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { StoryFn } from '@storybook/react'
 import React, { useState } from 'react'
 import styled from 'styled-components/native'
 
 import LottieView from 'libs/lottie'
+import achievements_success from 'ui/animations/achievements_success.json'
+import eighteen_birthday from 'ui/animations/eighteen_birthday.json'
+import geolocalisation from 'ui/animations/geolocalisation.json'
+import lottie_illuminated_smiley from 'ui/animations/lottie_illuminated_smiley.json'
+import lottie_loading from 'ui/animations/lottie_loading.json'
+import notif_basic_medium from 'ui/animations/notif_basic_medium.json'
+import onboarding_birthday_cake from 'ui/animations/onboarding_birthday_cake.json'
+import onboarding_unlock from 'ui/animations/onboarding_unlock.json'
+import qpi_thanks from 'ui/animations/qpi_thanks.json'
+import tutorial_pass_logo from 'ui/animations/tutorial_pass_logo.json'
+import { AnimationObject } from 'ui/animations/type'
 import { Spacer, Typo, getSpacing } from 'ui/theme'
 
 export default {
@@ -15,58 +28,58 @@ export default {
 
 const LottieAnimations = {
   achievements_success: {
-    source: require('ui/animations/achievements_success.json'),
+    source: achievements_success,
     hasBackground: false,
     isSmallAnimation: false,
   },
   eighteen_birthday: {
-    source: require('ui/animations/eighteen_birthday.json'),
+    source: eighteen_birthday,
     hasBackground: false,
     isSmallAnimation: false,
   },
   geolocalisation: {
-    source: require('ui/animations/geolocalisation.json'),
+    source: geolocalisation,
     hasBackground: false,
     isSmallAnimation: false,
   },
   lottie_illuminated_smiley: {
-    source: require('ui/animations/lottie_illuminated_smiley.json'),
+    source: lottie_illuminated_smiley,
     hasBackground: true,
     isSmallAnimation: false,
   },
   lottie_loading: {
-    source: require('ui/animations/lottie_loading.json'),
+    source: lottie_loading,
     hasBackground: false,
     isSmallAnimation: false,
   },
   notif_basic_medium: {
-    source: require('ui/animations/notif_basic_medium.json'),
+    source: notif_basic_medium,
     hasBackground: false,
     isSmallAnimation: true,
   },
   onboarding_birthday_cake: {
-    source: require('ui/animations/onboarding_birthday_cake.json'),
+    source: onboarding_birthday_cake,
     hasBackground: false,
     isSmallAnimation: false,
   },
   onboarding_unlock: {
-    source: require('ui/animations/onboarding_unlock.json'),
+    source: onboarding_unlock,
     hasBackground: false,
     isSmallAnimation: true,
   },
   qpi_thanks: {
-    source: require('ui/animations/qpi_thanks.json'),
+    source: qpi_thanks,
     hasBackground: false,
     isSmallAnimation: false,
   },
   tutorial_pass_logo: {
-    source: require('ui/animations/tutorial_pass_logo.json'),
+    source: tutorial_pass_logo,
     hasBackground: false,
     isSmallAnimation: false,
   },
 }
 
-const Template: ComponentStory<typeof LottieView> = () => (
+const Template: StoryFn<typeof LottieView> = () => (
   <GridContainer>
     {Object.entries(LottieAnimations)
       .sort(([nameA], [nameB]) => nameA.localeCompare(nameB))
@@ -84,7 +97,7 @@ const Template: ComponentStory<typeof LottieView> = () => (
 
 interface HoverAnimationProps {
   name: string
-  source: string
+  source: AnimationObject
   hasBackground: boolean
   isSmallAnimation: boolean
 }
@@ -123,8 +136,7 @@ const HoverAnimation: React.FC<HoverAnimationProps> = ({
   )
 }
 
-export const AllAnimations = Template.bind({})
-AllAnimations.storyName = 'Animations'
+export const AllAnimations = Template
 
 const AnimationContainer = styled.View<{ hasBackground: boolean }>(({ theme, hasBackground }) => ({
   margin: getSpacing(2),

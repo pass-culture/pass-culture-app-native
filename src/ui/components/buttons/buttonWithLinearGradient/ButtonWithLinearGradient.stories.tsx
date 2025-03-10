@@ -1,5 +1,5 @@
 import { action } from '@storybook/addon-actions'
-import { ComponentMeta } from '@storybook/react'
+import type { Meta } from '@storybook/react'
 import React from 'react'
 
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
@@ -8,7 +8,7 @@ import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
 
 import { ButtonWithLinearGradient } from './ButtonWithLinearGradient'
 
-const meta: ComponentMeta<typeof ButtonWithLinearGradient> = {
+const meta: Meta<typeof ButtonWithLinearGradient> = {
   title: 'ui/buttons/ButtonWithLinearGradient',
   component: ButtonWithLinearGradient,
 }
@@ -55,4 +55,3 @@ const Template: VariantsStory<typeof ButtonWithLinearGradient> = (args) => (
 )
 
 export const AllVariants = Template.bind({})
-AllVariants.storyName = 'ButtonWithLinearGradient'

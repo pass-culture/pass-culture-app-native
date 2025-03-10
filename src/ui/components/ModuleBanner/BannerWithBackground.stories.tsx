@@ -1,4 +1,4 @@
-import { ComponentMeta } from '@storybook/react'
+import type { Meta } from '@storybook/react'
 import React from 'react'
 import styled from 'styled-components/native'
 
@@ -9,7 +9,7 @@ import { Typo } from 'ui/theme'
 
 import { BannerWithBackground } from './BannerWithBackground'
 
-const meta: ComponentMeta<typeof BannerWithBackground> = {
+const meta: Meta<typeof BannerWithBackground> = {
   title: 'ui/banners/BannerWithBackground',
   component: BannerWithBackground,
 }
@@ -44,4 +44,3 @@ const Template: VariantsStory<typeof BannerWithBackground> = (args) => (
 )
 
 export const AllVariants = Template.bind({})
-AllVariants.storyName = 'BannerWithBackground'

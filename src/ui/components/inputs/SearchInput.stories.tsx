@@ -1,4 +1,4 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
 import { userEvent, screen } from '@storybook/testing-library'
 import React, { Fragment } from 'react'
 
@@ -8,26 +8,29 @@ import { MagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
 
 import { SearchInput } from './SearchInput'
 
-const meta: ComponentMeta<typeof SearchInput> = {
+const meta: Meta<typeof SearchInput> = {
   title: 'ui/inputs/SearchInput',
   component: SearchInput,
 }
 export default meta
 
-export const NotFocusable: ComponentStory<typeof SearchInput> = (args) => (
-  <Fragment>
-    <SearchInput {...args} />
-    <ButtonPrimary wording="This is button should be automatically focused" />
-  </Fragment>
-)
-NotFocusable.args = {
-  isFocusable: false,
-  placeholder: 'Placeholder...',
-}
-NotFocusable.play = async () => {
-  await screen.findAllByRole('button') // wait first render
+type Story = StoryObj<typeof SearchInput>
 
-  userEvent.tab()
+export const NotFocusable: Story = {
+  render: (args) => (
+    <Fragment>
+      <SearchInput {...args} />
+      <ButtonPrimary wording="This is button should be automatically focused" />
+    </Fragment>
+  ),
+  args: {
+    isFocusable: false,
+    placeholder: 'Placeholder...',
+  },
+  play: async () => {
+    await screen.findAllByRole('button') // wait first render
+    userEvent.tab()
+  },
 }
 
 const variantConfig: Variants<typeof SearchInput> = [
@@ -62,4 +65,3 @@ const Template: VariantsStory<typeof SearchInput> = (args) => (
 )
 
 export const AllVariants = Template.bind({})
-AllVariants.storyName = 'SearchInput'

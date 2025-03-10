@@ -1,18 +1,24 @@
-import { ComponentMeta } from '@storybook/react'
+import type { Meta } from '@storybook/react'
 import React from 'react'
 
-import { selectArgTypeFromObject } from 'libs/storybook/selectArgTypeFromObject'
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 import { categoriesIcons } from 'ui/svg/icons/bicolor/exports/categoriesIcons'
 import { getSpacing } from 'ui/theme'
 
 import { IconWithCaption } from './IconWithCaption'
 
-const meta: ComponentMeta<typeof IconWithCaption> = {
+const meta: Meta<typeof IconWithCaption> = {
   title: 'ui/IconWithCaption',
   component: IconWithCaption,
   argTypes: {
-    Icon: selectArgTypeFromObject(categoriesIcons),
+    Icon: {
+      options: Object.keys(categoriesIcons),
+      mapping: categoriesIcons,
+      control: {
+        type: 'select',
+        labels: {},
+      },
+    },
   },
 }
 export default meta
@@ -45,4 +51,3 @@ const Template: VariantsStory<typeof IconWithCaption> = (args) => (
 )
 
 export const AllVariants = Template.bind({})
-AllVariants.storyName = 'IconWithCaption'

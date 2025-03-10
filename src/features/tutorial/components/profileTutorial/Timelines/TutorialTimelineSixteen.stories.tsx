@@ -1,26 +1,26 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
 import React from 'react'
 
 import { TutorialTimelineSixteen } from './TutorialTimelineSixteen'
 
-const meta: ComponentMeta<typeof TutorialTimelineSixteen> = {
+const meta: Meta<typeof TutorialTimelineSixteen> = {
   title: 'features/tutorial/TutorialTimelineSixteen',
   component: TutorialTimelineSixteen,
 }
 export default meta
 
-const Template: ComponentStory<typeof TutorialTimelineSixteen> = (props) => (
-  <TutorialTimelineSixteen {...props} />
-)
+type Story = StoryObj<typeof TutorialTimelineSixteen>
 
-//TODO(PC-28526): Fix this stories
-const WithoutActivation = Template.bind({})
-WithoutActivation.args = {
-  activatedAt: undefined,
+export const WithoutActivation: Story = {
+  render: (props) => <TutorialTimelineSixteen {...props} />,
+  args: {
+    activatedAt: undefined,
+  },
 }
 
-//TODO(PC-28526): Fix this stories
-const ActivatedAt15 = Template.bind({})
-ActivatedAt15.args = {
-  activatedAt: 15,
+export const ActivatedAt15: Story = {
+  render: (props) => <TutorialTimelineSixteen {...props} />,
+  args: {
+    activatedAt: 15,
+  },
 }

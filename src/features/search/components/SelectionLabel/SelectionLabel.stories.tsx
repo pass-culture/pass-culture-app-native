@@ -1,11 +1,11 @@
-import { ComponentMeta } from '@storybook/react'
+import type { Meta } from '@storybook/react'
 import React from 'react'
 
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 
 import { SelectionLabel } from './SelectionLabel'
 
-const meta: ComponentMeta<typeof SelectionLabel> = {
+const meta: Meta<typeof SelectionLabel> = {
   title: 'Features/search/SelectionLabel',
   component: SelectionLabel,
 }
@@ -52,4 +52,3 @@ const Template: VariantsStory<typeof SelectionLabel> = (args) => (
 )
 
 export const AllVariants = Template.bind({})
-AllVariants.storyName = 'SelectionLabel'

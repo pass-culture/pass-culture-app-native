@@ -1,22 +1,22 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
 import React from 'react'
 
 import { ShareMessagingAppOther } from 'ui/components/ShareMessagingAppOther'
 
-const meta: ComponentMeta<typeof ShareMessagingAppOther> = {
+const meta: Meta<typeof ShareMessagingAppOther> = {
   title: 'ui/share/ShareMessagingAppOther',
   component: ShareMessagingAppOther,
 }
 export default meta
 
-const Template: ComponentStory<typeof ShareMessagingAppOther> = (args) => (
-  <ShareMessagingAppOther {...args} />
-)
+type Story = StoryObj<typeof ShareMessagingAppOther>
 
-export const Default = Template.bind({})
-Default.storyName = 'ShareMessagingAppOther'
-Default.args = {
-  onPress: async () => {
-    return
+export const Default: Story = {
+  render: (args) => <ShareMessagingAppOther {...args} />,
+  name: 'ShareMessagingAppOther',
+  args: {
+    onPress: async () => {
+      return
+    },
   },
 }

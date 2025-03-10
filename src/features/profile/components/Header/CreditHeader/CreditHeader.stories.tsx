@@ -1,5 +1,5 @@
 import { NavigationContainer } from '@react-navigation/native'
-import { ComponentMeta } from '@storybook/react'
+import type { Meta } from '@storybook/react'
 import React from 'react'
 
 import {
@@ -10,7 +10,7 @@ import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storyboo
 
 import { CreditHeader } from './CreditHeader'
 
-const meta: ComponentMeta<typeof CreditHeader> = {
+const meta: Meta<typeof CreditHeader> = {
   title: 'features/profile/CreditHeader',
   component: CreditHeader,
   decorators: [
@@ -52,6 +52,5 @@ const Template: VariantsStory<typeof CreditHeader> = (args) => (
   <VariantsTemplate variants={variantConfig} Component={CreditHeader} defaultProps={{ ...args }} />
 )
 
-// Todo(PC-35078) fix this story, read the associated ticket to follow the different choices offered
 const AllVariants = Template.bind({})
 AllVariants.storyName = 'CreditHeader'

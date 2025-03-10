@@ -1,5 +1,5 @@
 import { NavigationContainer } from '@react-navigation/native'
-import { ComponentMeta } from '@storybook/react'
+import type { Meta } from '@storybook/react'
 import React from 'react'
 
 import { theme } from 'theme'
@@ -7,7 +7,7 @@ import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storyboo
 
 import { MarketingBlockHighlight } from './MarketingBlockHighlight'
 
-const meta: ComponentMeta<typeof MarketingBlockHighlight> = {
+const meta: Meta<typeof MarketingBlockHighlight> = {
   title: 'features/home/MarketingBlock/MarketingBlockHighlight',
   component: MarketingBlockHighlight,
   decorators: [
@@ -64,7 +64,9 @@ const variantConfig: Variants<typeof MarketingBlockHighlight> = [
   },
 ]
 
-const Template: VariantsStory<typeof MarketingBlockHighlight> = (args) => (
+const Template: VariantsStory<typeof MarketingBlockHighlight> = (
+  args: React.ComponentProps<typeof MarketingBlockHighlight>
+) => (
   <VariantsTemplate
     variants={variantConfig}
     Component={MarketingBlockHighlight}
@@ -73,7 +75,6 @@ const Template: VariantsStory<typeof MarketingBlockHighlight> = (args) => (
 )
 
 export const AllVariants = Template.bind({})
-AllVariants.storyName = 'MarketingBlockHighlight'
 AllVariants.parameters = {
   chromatic: { viewports: [theme.breakpoints.xs, theme.breakpoints.xl] },
 }

@@ -1,4 +1,5 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { NavigationContainer } from '@react-navigation/native'
+import type { Meta } from '@storybook/react'
 import React from 'react'
 
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
@@ -6,31 +7,31 @@ import { ReactQueryClientProvider } from 'libs/react-query/ReactQueryClientProvi
 
 import { OfferMessagingApps } from './OfferMessagingApps'
 
-const meta: ComponentMeta<typeof OfferMessagingApps> = {
-  title: 'features/offer/MessagingApps',
+const meta: Meta<typeof OfferMessagingApps> = {
+  title: 'features/Offer/OfferMessagingApps',
   component: OfferMessagingApps,
   decorators: [
     (Story) => (
-      <ReactQueryClientProvider>
-        <Story />
-      </ReactQueryClientProvider>
+      <NavigationContainer>
+        <ReactQueryClientProvider>
+          <Story />
+        </ReactQueryClientProvider>
+      </NavigationContainer>
     ),
   ],
 }
 export default meta
 
-const Template: ComponentStory<typeof OfferMessagingApps> = (args) => (
-  <OfferMessagingApps {...args} />
+const Template = (props: React.ComponentProps<typeof OfferMessagingApps>) => (
+  <OfferMessagingApps {...props} />
 )
 
-// TODO(PC-17931): Fix this story
-const Default = Template.bind({})
-Default.args = {
-  offer: offerResponseSnap,
-}
+export const Default = () =>
+  Template({
+    offer: offerResponseSnap,
+  })
 
-// TODO(PC-17931): Fix this story
-const Event = Template.bind({})
-Event.args = {
-  offer: offerResponseSnap,
-}
+export const Event = () =>
+  Template({
+    offer: offerResponseSnap,
+  })

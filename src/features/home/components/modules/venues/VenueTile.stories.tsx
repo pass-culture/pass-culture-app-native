@@ -1,5 +1,5 @@
 import { NavigationContainer } from '@react-navigation/native'
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
 import React from 'react'
 
 import { venuesSearchFixture } from 'libs/algolia/fixtures/venuesSearchFixture'
@@ -8,7 +8,7 @@ import { LENGTH_S } from 'ui/theme'
 
 import { VenueTile } from './VenueTile'
 
-const meta: ComponentMeta<typeof VenueTile> = {
+const meta: Meta<typeof VenueTile> = {
   title: 'Features/Home/VenueTile',
   component: VenueTile,
   decorators: [
@@ -23,7 +23,9 @@ const meta: ComponentMeta<typeof VenueTile> = {
 }
 export default meta
 
-const Template: ComponentStory<typeof VenueTile> = (props) => <VenueTile {...props} />
+type Story = StoryObj<typeof VenueTile>
+
+const Template = (props: React.ComponentProps<typeof VenueTile>) => <VenueTile {...props} />
 
 const props = {
   moduleId: 'module-id',
@@ -36,23 +38,22 @@ const props = {
   width: LENGTH_S * (3 / 2),
 }
 
-// TODO(PC-17931): Fix this stories
-const WithoutImage = Template.bind({})
-WithoutImage.args = props
-
-// TODO(PC-17931): Fix this stories
-const WithImage = Template.bind({})
-WithImage.args = {
-  ...props,
-  venue: {
-    ...venuesSearchFixture.hits[0],
-    bannerUrl:
-      'https://img-19.ccm2.net/8vUCl8TXZfwTt7zAOkBkuDRHiT8=/1240x/smart/b829396acc244fd484c5ddcdcb2b08f3/ccmcms-commentcamarche/20494859.jpg',
-  },
+export const WithoutImage: Story = {
+  render: () => Template(props),
 }
 
-// TODO(PC-17931): Fix this stories
-const WithPosition = Template.bind({})
-WithPosition.args = {
-  ...props,
+export const WithImage: Story = {
+  render: () =>
+    Template({
+      ...props,
+      venue: {
+        ...venuesSearchFixture.hits[0],
+        bannerUrl:
+          'https://img-19.ccm2.net/8vUCl8TXZfwTt7zAOkBkuDRHiT8=/1240x/smart/b829396acc244fd484c5ddcdcb2b08f3/ccmcms-commentcamarche/20494859.jpg',
+      },
+    }),
+}
+
+export const WithPosition: Story = {
+  render: () => Template({ ...props }),
 }

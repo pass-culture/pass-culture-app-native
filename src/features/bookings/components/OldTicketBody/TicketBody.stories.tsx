@@ -1,12 +1,12 @@
-import { ComponentMeta } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
 import React from 'react'
 
 import { SubcategoryIdEnum, WithdrawalTypeEnum } from 'api/gen'
 import { TicketBody } from 'features/bookings/components/OldTicketBody/TicketBody'
 import { ThreeShapesTicket } from 'features/bookings/components/ThreeShapesTicket'
-import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
+import { VariantsTemplate, type Variants } from 'ui/storybook/VariantsTemplate'
 
-const meta: ComponentMeta<typeof TicketBody> = {
+const meta: Meta<typeof TicketBody> = {
   title: 'features/bookings/Old/TicketBody',
   component: TicketBody,
   parameters: {
@@ -51,12 +51,15 @@ const variantConfig: Variants<typeof TicketBody> = [
   },
 ]
 
-const Template: VariantsStory<typeof TicketBody> = () => (
+type Story = StoryObj<typeof TicketBody>
+
+const Template = () => (
   <ThreeShapesTicket>
     <VariantsTemplate variants={variantConfig} Component={TicketBody} />
   </ThreeShapesTicket>
 )
 
-// Todo(PC-35079) fix this story, read the associated ticket to follow the different choices offered
-const AllVariants = Template.bind({})
-AllVariants.storyName = 'TicketBody'
+export const AllVariants: Story = {
+  render: Template,
+  name: 'TicketBody',
+}

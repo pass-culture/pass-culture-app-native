@@ -1,13 +1,13 @@
-import { ComponentMeta } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
 import React from 'react'
 import QRCode from 'react-native-qrcode-svg'
 
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
+import { VariantsTemplate, type Variants } from 'ui/storybook/VariantsTemplate'
 
 import { ThreeShapesTicket } from './ThreeShapesTicket'
 
-const meta: ComponentMeta<typeof ThreeShapesTicket> = {
+const meta: Meta<typeof ThreeShapesTicket> = {
   title: 'Features/bookings/ThreeShapesTicket',
   component: ThreeShapesTicket,
 }
@@ -28,9 +28,12 @@ const variantConfig: Variants<typeof ThreeShapesTicket> = [
   },
 ]
 
-const Template: VariantsStory<typeof ThreeShapesTicket> = (args) => (
+type Story = StoryObj<typeof ThreeShapesTicket>
+
+const Template = (args: React.ComponentProps<typeof ThreeShapesTicket>) => (
   <VariantsTemplate variants={variantConfig} Component={ThreeShapesTicket} defaultProps={args} />
 )
 
-export const AllVariants = Template.bind({})
-AllVariants.storyName = 'ThreeShapesTicket'
+export const AllVariants: Story = {
+  render: Template,
+}

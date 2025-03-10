@@ -1,20 +1,18 @@
 // @ts-ignore import is unresolved
 // eslint-disable-next-line import/no-unresolved
-import { useQueryDecorator } from '/.storybook/mocks/react-query'
 
 import { NavigationContainer } from '@react-navigation/native'
-import { ComponentMeta, ComponentStory } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
 import React from 'react'
 
 import { formattedTrendsModule } from 'features/home/fixtures/homepage.fixture'
 
 import { TrendsModule } from './TrendsModule'
 
-const meta: ComponentMeta<typeof TrendsModule> = {
+const meta: Meta<typeof TrendsModule> = {
   title: 'features/home/TrendsModule',
   component: TrendsModule,
   decorators: [
-    useQueryDecorator,
     (Story) => (
       <NavigationContainer>
         <Story />
@@ -30,7 +28,9 @@ const meta: ComponentMeta<typeof TrendsModule> = {
 
 export default meta
 
-const Template: ComponentStory<typeof TrendsModule> = (props) => <TrendsModule {...props} />
-//TODO(PC-30279): Fix this stories
-const Default = Template.bind({})
-Default.args = formattedTrendsModule
+type Story = StoryObj<typeof TrendsModule>
+
+export const Default: Story = {
+  render: (props: React.ComponentProps<typeof TrendsModule>) => <TrendsModule {...props} />,
+  args: formattedTrendsModule,
+}

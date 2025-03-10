@@ -1,4 +1,4 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
 import React from 'react'
 
 import { env } from 'libs/environment/fixtures'
@@ -6,15 +6,13 @@ import { GoogleOAuthProvider } from 'libs/react-native-google-sso/GoogleOAuthPro
 
 // @ts-ignore import is unresolved
 // eslint-disable-next-line import/no-unresolved
-import { useQueryDecorator } from '/.storybook/mocks/react-query'
 
 import { SSOButtonBase } from './SSOButtonBase'
 
-const meta: ComponentMeta<typeof SSOButtonBase> = {
+const meta: Meta<typeof SSOButtonBase> = {
   title: 'Features/auth/SSOButton',
   component: SSOButtonBase,
   decorators: [
-    useQueryDecorator,
     (Story) => (
       <GoogleOAuthProvider clientId={env.GOOGLE_CLIENT_ID}>
         <Story />
@@ -29,16 +27,18 @@ const meta: ComponentMeta<typeof SSOButtonBase> = {
 }
 export default meta
 
-const Template: ComponentStory<typeof SSOButtonBase> = (props) => <SSOButtonBase {...props} />
+type Story = StoryObj<typeof SSOButtonBase>
 
-// TODO(PC-28525): the storie even exported in not present in Stroybook
-const Login = Template.bind({})
-Login.args = {
-  type: 'login',
+export const Login: Story = {
+  render: (props) => <SSOButtonBase {...props} />,
+  args: {
+    type: 'login',
+  },
 }
 
-// TODO(PC-28525): the storie even exported in not present in Stroybook
-const Signup = Template.bind({})
-Signup.args = {
-  type: 'signup',
+export const Signup: Story = {
+  render: (props) => <SSOButtonBase {...props} />,
+  args: {
+    type: 'signup',
+  },
 }

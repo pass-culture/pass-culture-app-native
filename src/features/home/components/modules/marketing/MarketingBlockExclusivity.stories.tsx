@@ -1,5 +1,5 @@
 import { NavigationContainer } from '@react-navigation/native'
-import { ComponentMeta } from '@storybook/react'
+import type { Meta } from '@storybook/react'
 import React from 'react'
 
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
@@ -11,13 +11,11 @@ import { MarketingBlockExclusivity } from './MarketingBlockExclusivity'
 
 // @ts-ignore import is unresolved
 // eslint-disable-next-line import/no-unresolved
-import { useQueryDecorator } from '/.storybook/mocks/react-query'
 
-const meta: ComponentMeta<typeof MarketingBlockExclusivity> = {
+const meta: Meta<typeof MarketingBlockExclusivity> = {
   title: 'features/home/MarketingBlock/MarketingBlockExclusivity',
   component: MarketingBlockExclusivity,
   decorators: [
-    useQueryDecorator,
     (Story) => (
       <NavigationContainer>
         <Story />
@@ -60,9 +58,9 @@ const Template: VariantsStory<typeof MarketingBlockExclusivity> = (args) => (
   />
 )
 
-// Todo(PC-35079) fix this story, read the associated ticket to follow the different choices offered
-const AllVariants = Template.bind({})
-AllVariants.storyName = 'MarketingBlockExclusivity'
+export const AllVariants = Template.bind({})
 AllVariants.parameters = {
-  chromatic: { viewports: [theme.breakpoints.xs, theme.breakpoints.xl] },
+  chromatic: {
+    viewports: [theme.breakpoints.xs, theme.breakpoints.xl],
+  },
 }

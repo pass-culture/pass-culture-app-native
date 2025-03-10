@@ -1,4 +1,4 @@
-import { ComponentMeta } from '@storybook/react'
+import type { Meta } from '@storybook/react'
 import React from 'react'
 
 import { CallToActionIcon, PopOverIcon } from 'api/gen'
@@ -6,7 +6,7 @@ import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storyboo
 
 import { SubscriptionMessageBadge } from './SubscriptionMessageBadge'
 
-const meta: ComponentMeta<typeof SubscriptionMessageBadge> = {
+const meta: Meta<typeof SubscriptionMessageBadge> = {
   title: 'features/profile/SubscriptionMessageBadge',
   component: SubscriptionMessageBadge,
 }
@@ -73,4 +73,3 @@ const Template: VariantsStory<typeof SubscriptionMessageBadge> = (args) => (
 )
 
 export const AllVariants = Template.bind({})
-AllVariants.storyName = 'SubscriptionMessageBadge'

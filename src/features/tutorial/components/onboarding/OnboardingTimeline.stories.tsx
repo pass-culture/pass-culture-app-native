@@ -1,11 +1,11 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
 import React from 'react'
 
 import { ANIMATION_DELAY } from 'features/home/api/useShowSkeleton'
 
 import { OnboardingTimeline } from './OnboardingTimeline'
 
-const meta: ComponentMeta<typeof OnboardingTimeline> = {
+const meta: Meta<typeof OnboardingTimeline> = {
   title: 'features/tutorial/OnboardingTimeline',
   component: OnboardingTimeline,
   parameters: {
@@ -15,28 +15,32 @@ const meta: ComponentMeta<typeof OnboardingTimeline> = {
 }
 export default meta
 
-const Template: ComponentStory<typeof OnboardingTimeline> = (props) => (
-  <OnboardingTimeline {...props} />
-)
-//TODO(PC-28526): Fix this stories
-const Eighteen = Template.bind({})
-Eighteen.args = {
-  age: 18,
+type Story = StoryObj<typeof OnboardingTimeline>
+
+export const Eighteen: Story = {
+  render: (props) => <OnboardingTimeline {...props} />,
+  args: {
+    age: 18,
+  },
 }
 
-//TODO(PC-28526): Fix this stories
-const Seventeen = Template.bind({})
-Seventeen.args = {
-  age: 17,
-}
-//TODO(PC-28526): Fix this stories
-const Sixteen = Template.bind({})
-Sixteen.args = {
-  age: 16,
+export const Seventeen: Story = {
+  render: (props) => <OnboardingTimeline {...props} />,
+  args: {
+    age: 17,
+  },
 }
 
-//TODO(PC-28526): Fix this stories
-const Fifteen = Template.bind({})
-Fifteen.args = {
-  age: 15,
+export const Sixteen: Story = {
+  render: (props) => <OnboardingTimeline {...props} />,
+  args: {
+    age: 16,
+  },
+}
+
+export const Fifteen: Story = {
+  render: (props) => <OnboardingTimeline {...props} />,
+  args: {
+    age: 15,
+  },
 }

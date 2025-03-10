@@ -1,5 +1,5 @@
 import Clipboard from '@react-native-clipboard/clipboard'
-import { ComponentStory } from '@storybook/react'
+import { StoryFn } from '@storybook/react'
 import colorAlpha from 'color-alpha'
 import React, { FunctionComponent, useState } from 'react'
 import styled from 'styled-components/native'
@@ -20,7 +20,7 @@ type ColorProps = RectangleProps & {
   name: string
 }
 
-const Template: ComponentStory<React.FC> = () => (
+const Template: StoryFn<React.FC> = () => (
   <React.Fragment>
     <Typo.Title2>ColorsEnum</Typo.Title2>
     <ColorsSection colorsPalette={ColorsEnum} />
@@ -29,7 +29,6 @@ const Template: ComponentStory<React.FC> = () => (
   </React.Fragment>
 )
 export const AllColors = Template.bind({})
-AllColors.storyName = 'Colors'
 
 const Color: FunctionComponent<ColorProps> = ({ name, color }) => {
   const [copiedColor, setCopiedColor] = useState<string | null>(null)
