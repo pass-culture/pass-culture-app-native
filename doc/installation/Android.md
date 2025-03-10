@@ -117,7 +117,7 @@ If you have a pass Culture's computer, which has a proxy that adds a custom cert
 
 In Android Studio: File > Settings > Experimental > Gradle -> uncheck "Only sync the active variant" checkbox.
 
-En cas de soucis avec le JDK installer via `brew install --cask temurin@17` et ajouter le chemin `JAVA_HOME=/Library/Java/JavaVirtualMachines/temurin-17.jdk/Contents/Home` dans .zshrc
+If you encounter an issue with JDK, install using `brew install --cask temurin@17` and add the path `JAVA_HOME=/Library/Java/JavaVirtualMachines/temurin-17.jdk/Contents/Home` in .zshrc
 
 </details>
 <details>
