@@ -5,8 +5,8 @@ import { OfferResponseV2 } from 'api/gen'
 import { CineContentCTA } from 'features/offer/components/OfferCine/CineContentCTA'
 import { useOfferCTA } from 'features/offer/components/OfferContent/OfferCTAProvider'
 import { StickyFooterContent } from 'features/offer/components/OfferFooter/StickyFooterContent'
-import { FavoriteProps } from 'features/offer/components/OfferHeader/OfferHeader'
 import { getIsAComingSoonOffer } from 'features/offer/helpers/getIsAComingSoonOffer'
+import { FavoriteProps } from 'features/offer/types'
 import { useRemoteConfigContext } from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 
 export type OfferFooterProps = {
