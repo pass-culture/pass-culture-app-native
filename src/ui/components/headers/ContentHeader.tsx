@@ -64,7 +64,9 @@ export const ContentHeader = ({
         <TitleContainer>
           <Title
             testID={titleTestID}
-            style={{ opacity: customHeaderTitleTransition ?? headerTransition }} // Utilisation de l'interpolation effective
+            style={{
+              opacity: customHeaderTitleTransition ?? headerTransition,
+            }} // Utilisation de l'interpolation effective
             accessibilityHidden={ariaHiddenTitle}>
             <Body>{headerTitle}</Body>
           </Title>
@@ -101,16 +103,17 @@ const HeaderContainer = styled(Animated.View)<{ height: number }>(({ theme, heig
 
 const TitleContainer = styled.View({
   flex: 1,
+  flexDirection: 'row',
+  justifyContent: 'center',
 })
 
 const Title = styled(Animated.Text).attrs({
   numberOfLines: 2,
-})(({ theme }) => ({
+})({
   flexShrink: 1,
   textAlign: 'center',
-  color: theme.colors.white,
   ...(Platform.OS === 'web' ? { whiteSpace: 'pre-wrap' } : {}),
-}))
+})
 
 const Body = styled(TypoDS.Body)(({ theme }) => ({
   color: theme.colors.black,

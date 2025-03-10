@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { ReactElement } from 'react'
 import { Animated, Share } from 'react-native'
 
 import { OfferResponseV2, PaginatedFavoritesResponse } from 'api/gen'
@@ -9,6 +9,7 @@ import { analytics } from 'libs/analytics/provider'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, userEvent, render, screen } from 'tests/utils'
+import { FavoriteButton } from 'ui/components/buttons/FavoriteButton'
 
 import { OfferHeader } from '../OfferHeader/OfferHeader'
 
@@ -29,8 +30,30 @@ jest.useFakeTimers()
 const user = userEvent.setup()
 
 describe('<OfferHeader />', () => {
-  it('should render all the icons', async () => {
+  it('should render all basic icons', async () => {
     renderOfferHeader()
+
+    expect(screen.getByTestId('animated-icon-back')).toBeOnTheScreen()
+    expect(screen.getByTestId('animated-icon-share')).toBeOnTheScreen()
+  })
+
+  it('should render basic icons + optional icons', async () => {
+    renderOfferHeader(
+      <FavoriteButton
+        offerId={123}
+        addFavorite={jest.fn()}
+        isAddFavoriteLoading
+        animationState={{
+          iconBackgroundColor: {} as Animated.AnimatedInterpolation<string>,
+          iconBorderColor: {} as Animated.AnimatedInterpolation<string>,
+          transition: {
+            interpolate: jest.fn(),
+          } as unknown as Animated.AnimatedInterpolation<number>,
+        }}
+        removeFavorite={jest.fn()}
+        isRemoveFavoriteLoading={false}
+      />
+    )
 
     expect(screen.getByTestId('animated-icon-back')).toBeOnTheScreen()
     expect(screen.getByTestId('animated-icon-share')).toBeOnTheScreen()
@@ -92,7 +115,7 @@ describe('<OfferHeader />', () => {
   })
 })
 
-function renderOfferHeader() {
+function renderOfferHeader(children?: ReactElement | null) {
   mockServer.getApi<PaginatedFavoritesResponse>('/v1/me/favorites', paginatedFavoritesResponseSnap)
   mockServer.getApi<OfferResponseV2>(`/v1/offer/${offerResponseSnap.id}`, offerResponseSnap)
 
@@ -102,13 +125,9 @@ function renderOfferHeader() {
       <OfferHeader
         title="Some very nice offer"
         headerTransition={animatedValue}
-        offer={offerResponseSnap}
-        addFavorite={jest.fn()}
-        isAddFavoriteLoading={false}
-        removeFavorite={jest.fn()}
-        isRemoveFavoriteLoading={false}
-        favorite={null}
-      />
+        offer={offerResponseSnap}>
+        {children}
+      </OfferHeader>
     )
   )
   return { animatedValue }
