@@ -213,19 +213,11 @@ export type RootStackParamList = {
   ChangeStatus: undefined
   CheatcodesStackNavigator: undefined
   ConfirmChangeEmail: { token: string; expiration_timestamp: number }
-  ConfirmDeleteProfile: undefined
   ConsentSettings: { onGoBack?: () => void } | undefined
   Chronicles: { offerId: number; chronicleId?: number; from?: Referrals }
   CulturalSurvey: undefined
   DeactivateProfileSuccess: undefined
   DeeplinksGenerator: undefined
-  DeleteProfileAccountHacked: undefined
-  DeleteProfileAccountNotDeletable: undefined
-  DeleteProfileConfirmation: undefined
-  DeleteProfileContactSupport: undefined
-  DeleteProfileEmailHacked: undefined
-  DeleteProfileReason: undefined
-  DeleteProfileSuccess: undefined
   EighteenBirthday: undefined
   EndedBookings: undefined
   FavoritesSorts: undefined

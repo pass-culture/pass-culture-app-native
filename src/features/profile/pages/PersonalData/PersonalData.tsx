@@ -3,6 +3,7 @@ import styled from 'styled-components/native'
 
 import { ActivityIdEnum } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { getProfileNavConfig } from 'features/navigation/ProfileStackNavigator/getProfileNavConfig'
 import { RootNavigateParams } from 'features/navigation/RootNavigator/types'
 import { EditButton } from 'features/profile/components/Buttons/EditButton/EditButton'
 import { useCheckHasCurrentEmailChange } from 'features/profile/helpers/useCheckHasCurrentEmailChange'
@@ -145,7 +146,7 @@ export function PersonalData() {
       <SectionRow
         title="Supprimer mon compte"
         type="navigable"
-        navigateTo={{ screen: 'DeleteProfileReason' }}
+        navigateTo={getProfileNavConfig('DeleteProfileReason')}
         onPress={analytics.logAccountDeletion}
         icon={Trash}
         iconSize={SECTION_ROW_ICON_SIZE}

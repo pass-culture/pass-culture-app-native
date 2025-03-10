@@ -2,6 +2,7 @@ import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 
 import { useLogoutRoutine } from 'features/auth/helpers/useLogoutRoutine'
+import { getProfileNavConfig } from 'features/navigation/ProfileStackNavigator/getProfileNavConfig'
 import { getProfileStackConfig } from 'features/navigation/ProfileStackNavigator/getProfileStackConfig'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { useAnonymizeAccount } from 'features/profile/api/useAnonymizeAccount'
@@ -26,7 +27,7 @@ export const DeleteProfileConfirmation = () => {
   const { anonymizeAccount } = useAnonymizeAccount({
     onSuccess: async () => {
       await signOut()
-      navigate('DeleteProfileSuccess')
+      navigate(...getProfileStackConfig('DeleteProfileSuccess'))
     },
     onError: () => {
       showErrorSnackBar({
@@ -68,7 +69,7 @@ export const DeleteProfileConfirmation = () => {
       <InternalTouchableLink
         as={ButtonTertiaryBlack}
         wording="Annuler"
-        navigateTo={{ screen: 'DeleteProfileReason' }}
+        navigateTo={getProfileNavConfig('DeleteProfileReason')}
         icon={Invalidate}
       />
     </GenericInfoPageWhiteLegacy>

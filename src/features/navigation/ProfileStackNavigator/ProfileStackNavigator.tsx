@@ -8,6 +8,14 @@ import { AccessibilityDeclarationMobile } from 'features/profile/pages/Accessibi
 import { AccessibilityDeclarationWeb } from 'features/profile/pages/Accessibility/AccessibilityDeclarationWeb'
 import { AccessibilityEngagement } from 'features/profile/pages/Accessibility/AccessibilityEngagement'
 import { RecommendedPaths } from 'features/profile/pages/Accessibility/RecommendedPaths'
+import { ConfirmDeleteProfile } from 'features/profile/pages/DeleteProfile/ConfirmDeleteProfile'
+import { DeleteProfileAccountHacked } from 'features/profile/pages/DeleteProfile/DeleteProfileAccountHacked'
+import { DeleteProfileAccountNotDeletable } from 'features/profile/pages/DeleteProfile/DeleteProfileAccountNotDeletable'
+import { DeleteProfileConfirmation } from 'features/profile/pages/DeleteProfile/DeleteProfileConfirmation'
+import { DeleteProfileContactSupport } from 'features/profile/pages/DeleteProfile/DeleteProfileContactSupport'
+import { DeleteProfileEmailHacked } from 'features/profile/pages/DeleteProfile/DeleteProfileEmailHacked'
+import { DeleteProfileSuccess } from 'features/profile/pages/DeleteProfile/DeleteProfileSuccess'
+import { DeleteProfileReason } from 'features/profile/pages/DeleteProfileReason/DeleteProfileReason'
 import { NotificationsSettings } from 'features/profile/pages/NotificationSettings/NotificationsSettings'
 import { Profile } from 'features/profile/pages/Profile'
 
@@ -48,6 +56,46 @@ export const ProfileStackNavigator = () => (
       name="NotificationsSettings"
       component={NotificationsSettings}
       options={{ title: 'Réglages de notifications' }}
+    />
+    <ProfileStack.Screen
+      name="DeleteProfileReason"
+      component={DeleteProfileReason}
+      options={{ title: 'Raison de suppression de compte' }}
+    />
+    <ProfileStack.Screen
+      name="DeleteProfileContactSupport"
+      component={DeleteProfileContactSupport}
+      options={{ title: 'Contact support' }}
+    />
+    <ProfileStack.Screen
+      name="DeleteProfileEmailHacked"
+      component={DeleteProfileEmailHacked}
+      options={{ title: 'Sécurise ton compte' }}
+    />
+    <ProfileStack.Screen
+      name="DeleteProfileAccountHacked"
+      component={DeleteProfileAccountHacked}
+      options={{ title: 'Sécurise ton compte' }}
+    />
+    <ProfileStack.Screen
+      name="DeleteProfileAccountNotDeletable"
+      component={DeleteProfileAccountNotDeletable}
+      options={{ title: 'Compte non supprimable' }}
+    />
+    <ProfileStack.Screen
+      name="ConfirmDeleteProfile"
+      component={ConfirmDeleteProfile}
+      options={{ title: 'Suppression de compte' }}
+    />
+    <ProfileStack.Screen
+      name="DeleteProfileConfirmation"
+      component={DeleteProfileConfirmation}
+      options={{ title: 'Réglages de notifications' }}
+    />
+    <ProfileStack.Screen
+      name="DeleteProfileSuccess"
+      component={DeleteProfileSuccess}
+      options={{ title: 'Suppression profil confirmée' }}
     />
   </ProfileStack.Navigator>
 )

@@ -47,16 +47,8 @@ import { ChangePassword } from 'features/profile/pages/ChangePassword'
 import { ChangeStatus } from 'features/profile/pages/ChangeStatus/ChangeStatus'
 import { ConfirmChangeEmail } from 'features/profile/pages/ConfirmChangeEmail/ConfirmChangeEmail'
 import { ConsentSettings } from 'features/profile/pages/ConsentSettings/ConsentSettings'
-import { ConfirmDeleteProfile } from 'features/profile/pages/DeleteProfile/ConfirmDeleteProfile'
 import { DeactivateProfileSuccess } from 'features/profile/pages/DeleteProfile/DeactivateProfileSuccess'
-import { DeleteProfileAccountHacked } from 'features/profile/pages/DeleteProfile/DeleteProfileAccountHacked'
-import { DeleteProfileAccountNotDeletable } from 'features/profile/pages/DeleteProfile/DeleteProfileAccountNotDeletable'
-import { DeleteProfileConfirmation } from 'features/profile/pages/DeleteProfile/DeleteProfileConfirmation'
-import { DeleteProfileContactSupport } from 'features/profile/pages/DeleteProfile/DeleteProfileContactSupport'
-import { DeleteProfileEmailHacked } from 'features/profile/pages/DeleteProfile/DeleteProfileEmailHacked'
-import { DeleteProfileSuccess } from 'features/profile/pages/DeleteProfile/DeleteProfileSuccess'
 import { SuspendAccountConfirmationWithoutAuthentication } from 'features/profile/pages/DeleteProfile/SuspendAccountConfirmationWithoutAuthentication'
-import { DeleteProfileReason } from 'features/profile/pages/DeleteProfileReason/DeleteProfileReason'
 import { FeedbackInApp } from 'features/profile/pages/FeedbackInApp/FeedbackInApp'
 import { LegalNotices } from 'features/profile/pages/LegalNotices/LegalNotices'
 import { NewEmailSelection } from 'features/profile/pages/NewEmailSelection/NewEmailSelection'
@@ -243,54 +235,13 @@ export const routes: RootRoute[] = [
     secure: true,
   },
   {
-    name: 'DeleteProfileReason',
-    component: DeleteProfileReason,
-    path: 'profil/suppression/raison',
-    options: { title: 'Raison de suppression de compte' },
-    secure: true,
-  },
-  {
-    name: 'DeleteProfileContactSupport',
-    component: DeleteProfileContactSupport,
-    path: 'profil/suppression/support',
-    options: { title: 'Contact support' },
-    secure: true,
-  },
-  {
-    name: 'DeleteProfileEmailHacked',
-    component: DeleteProfileEmailHacked,
-    path: 'profil/suppression/email-pirate',
-    options: { title: 'Sécurise ton compte' },
-    secure: true,
-  },
-  {
-    name: 'DeleteProfileAccountHacked',
-    component: DeleteProfileAccountHacked,
-    path: 'profil/suppression/compte-pirate',
-    options: { title: 'Sécurise ton compte' },
-    secure: true,
-  },
-  {
-    name: 'DeleteProfileAccountNotDeletable',
-    component: DeleteProfileAccountNotDeletable,
-    path: 'profil/suppression/information',
-    options: { title: 'Compte non supprimable' },
-    secure: true,
-  },
-  {
     name: 'SuspendAccountConfirmationWithoutAuthentication',
     component: SuspendAccountConfirmationWithoutAuthentication,
     path: 'profile/suppression/demande-confirmation',
     options: { title: 'Suppression profil confirmation' },
     secure: true,
   },
-  {
-    name: 'ConfirmDeleteProfile',
-    component: ConfirmDeleteProfile,
-    path: 'profil/suppression',
-    options: { title: 'Suppression de compte' },
-    secure: true,
-  },
+
   {
     name: 'FeedbackInApp',
     component: FeedbackInApp,
@@ -298,24 +249,14 @@ export const routes: RootRoute[] = [
     options: { title: 'Forumulaire de suggestion' },
     secure: true,
   },
-  {
-    name: 'DeleteProfileConfirmation',
-    component: DeleteProfileConfirmation,
-    path: 'profile/suppression/confirmation',
-    options: { title: 'Suppression profil confirmation' },
-  },
+
   {
     name: 'DeactivateProfileSuccess',
     component: DeactivateProfileSuccess,
     path: 'profile/desactivation/succes',
     options: { title: 'Désactivation profil confirmée' },
   },
-  {
-    name: 'DeleteProfileSuccess',
-    component: DeleteProfileSuccess,
-    path: 'profile/suppression/succes',
-    options: { title: 'Suppression profil confirmée' },
-  },
+
   {
     name: 'Login',
     component: Login,

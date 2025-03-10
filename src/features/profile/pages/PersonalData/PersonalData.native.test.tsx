@@ -173,7 +173,10 @@ describe('PersonalData', () => {
 
     await waitFor(() => {
       expect(analytics.logAccountDeletion).toHaveBeenCalledTimes(1)
-      expect(navigate).toHaveBeenCalledWith('DeleteProfileReason', undefined)
+      expect(navigate).toHaveBeenCalledWith('TabNavigator', {
+        params: { params: undefined, screen: 'DeleteProfileReason' },
+        screen: 'ProfileStackNavigator',
+      })
     })
   })
 
