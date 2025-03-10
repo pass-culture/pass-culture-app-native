@@ -19,8 +19,10 @@ type Props = Pick<
   | 'keyExtractor'
   | 'renderItem'
   | 'onEndReached'
+  | 'onViewableItemsChanged'
   | 'playlistType'
   | 'tileType'
+  | 'playlistRef'
 > & {
   title: string
   subtitle?: string
@@ -36,6 +38,7 @@ export const PassPlaylist = ({
   TitleComponent,
   onPressSeeMore,
   onEndReached,
+  onViewableItemsChanged,
   titleSeeMoreLink,
   data,
   itemHeight,
@@ -45,6 +48,7 @@ export const PassPlaylist = ({
   playlistType,
   tileType,
   keyExtractor,
+  playlistRef,
   testID: _testID,
   ...props
 }: Props) => {
@@ -101,6 +105,8 @@ export const PassPlaylist = ({
         onEndReached={onEndReached}
         playlistType={playlistType}
         tileType={tileType}
+        playlistRef={playlistRef}
+        onViewableItemsChanged={onViewableItemsChanged}
       />
     </Container>
   )
