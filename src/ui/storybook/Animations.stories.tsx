@@ -1,4 +1,4 @@
-import { ComponentStory } from '@storybook/react'
+import { StoryFn } from '@storybook/react'
 import React, { useState } from 'react'
 import styled from 'styled-components/native'
 
@@ -66,7 +66,7 @@ const LottieAnimations = {
   },
 }
 
-const Template: ComponentStory<typeof LottieView> = () => (
+const Template: StoryFn<typeof LottieView> = () => (
   <GridContainer>
     {Object.entries(LottieAnimations)
       .sort(([nameA], [nameB]) => nameA.localeCompare(nameB))
@@ -124,7 +124,6 @@ const HoverAnimation: React.FC<HoverAnimationProps> = ({
 }
 
 export const AllAnimations = Template.bind({})
-AllAnimations.storyName = 'Animations'
 
 const AnimationContainer = styled.View<{ hasBackground: boolean }>(({ theme, hasBackground }) => ({
   margin: getSpacing(2),

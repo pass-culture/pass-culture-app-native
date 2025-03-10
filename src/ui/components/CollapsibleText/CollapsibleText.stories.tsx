@@ -1,11 +1,11 @@
-import { ComponentMeta } from '@storybook/react'
+import type { Meta } from '@storybook/react'
 import React from 'react'
 
 import { CollapsibleText } from 'ui/components/CollapsibleText/CollapsibleText'
 import { Markdown } from 'ui/components/Markdown/Markdown'
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 
-const meta: ComponentMeta<typeof CollapsibleText> = {
+const meta: Meta<typeof CollapsibleText> = {
   title: 'ui/CollapsibleText',
   component: CollapsibleText,
 }
@@ -42,9 +42,8 @@ const variantConfig: Variants<typeof CollapsibleText> = [
   },
 ]
 
-const Template: VariantsStory<typeof CollapsibleText> = (args) => (
-  <VariantsTemplate variants={variantConfig} Component={CollapsibleText} defaultProps={args} />
-)
+const Template: VariantsStory<typeof CollapsibleText> = (
+  args: React.ComponentProps<typeof CollapsibleText>
+) => <VariantsTemplate variants={variantConfig} Component={CollapsibleText} defaultProps={args} />
 
 export const AllVariants = Template.bind({})
-AllVariants.storyName = 'CollapsibleText'

@@ -1,4 +1,4 @@
-import { ComponentMeta } from '@storybook/react'
+import type { Meta } from '@storybook/react'
 import React from 'react'
 import { View } from 'react-native'
 
@@ -7,7 +7,7 @@ import { TypoDS } from 'ui/theme'
 
 import { SectionWithDivider } from './SectionWithDivider'
 
-const meta: ComponentMeta<typeof SectionWithDivider> = {
+const meta: Meta<typeof SectionWithDivider> = {
   title: 'ui/sections/SectionWithDivider',
   component: SectionWithDivider,
 }
@@ -39,7 +39,9 @@ const variantConfig: Variants<typeof SectionWithDivider> = [
   },
 ]
 
-const Template: VariantsStory<typeof SectionWithDivider> = (args) => (
+const Template: VariantsStory<typeof SectionWithDivider> = (
+  args: React.ComponentProps<typeof SectionWithDivider>
+) => (
   <VariantsTemplate
     variants={variantConfig}
     Component={SectionWithDivider}
@@ -48,4 +50,3 @@ const Template: VariantsStory<typeof SectionWithDivider> = (args) => (
 )
 
 export const AllVariants = Template.bind({})
-AllVariants.storyName = 'SectionWithDivider'

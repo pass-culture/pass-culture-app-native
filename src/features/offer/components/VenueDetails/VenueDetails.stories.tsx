@@ -1,11 +1,11 @@
-import { ComponentMeta } from '@storybook/react'
+import type { Meta } from '@storybook/react'
 import React from 'react'
 
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 
 import { VenueDetails } from './VenueDetails'
 
-const meta: ComponentMeta<typeof VenueDetails> = {
+const meta: Meta<typeof VenueDetails> = {
   title: 'features/offer/VenueDetails',
   component: VenueDetails,
 }
@@ -27,9 +27,8 @@ const variantConfig: Variants<typeof VenueDetails> = [
   },
 ]
 
-const Template: VariantsStory<typeof VenueDetails> = (args) => (
-  <VariantsTemplate variants={variantConfig} Component={VenueDetails} defaultProps={args} />
-)
+const Template: VariantsStory<typeof VenueDetails> = (
+  args: React.ComponentProps<typeof VenueDetails>
+) => <VariantsTemplate variants={variantConfig} Component={VenueDetails} defaultProps={args} />
 
 export const AllVariants = Template.bind({})
-AllVariants.storyName = 'VenueDetails'

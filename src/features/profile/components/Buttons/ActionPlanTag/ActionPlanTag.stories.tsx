@@ -1,11 +1,11 @@
-import { ComponentMeta } from '@storybook/react'
+import type { Meta } from '@storybook/react'
 import React from 'react'
 
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 
 import { ActionPlanStatus, ActionPlanTag } from './ActionPlanTag'
 
-const meta: ComponentMeta<typeof ActionPlanTag> = {
+const meta: Meta<typeof ActionPlanTag> = {
   title: 'features/profile/buttons/ActionPlanTag',
   component: ActionPlanTag,
 }
@@ -29,9 +29,8 @@ const variantConfig: Variants<typeof ActionPlanTag> = [
   },
 ]
 
-const Template: VariantsStory<typeof ActionPlanTag> = (args) => (
-  <VariantsTemplate variants={variantConfig} Component={ActionPlanTag} defaultProps={args} />
-)
+const Template: VariantsStory<typeof ActionPlanTag> = (
+  args: React.ComponentProps<typeof ActionPlanTag>
+) => <VariantsTemplate variants={variantConfig} Component={ActionPlanTag} defaultProps={args} />
 
 export const AllVariants = Template.bind({})
-AllVariants.storyName = 'ActionPlanTag'

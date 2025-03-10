@@ -1,5 +1,5 @@
 import { NavigationContainer } from '@react-navigation/native'
-import { ComponentMeta } from '@storybook/react'
+import type { Meta } from '@storybook/react'
 import React from 'react'
 
 import { VenueTypeCodeKey } from 'api/gen'
@@ -9,11 +9,11 @@ import { LENGTH_XS, LENGTH_XXS } from 'ui/theme'
 
 import { SearchVenueItem } from './SearchVenueItem'
 
-const meta: ComponentMeta<typeof SearchVenueItem> = {
+const meta: Meta<typeof SearchVenueItem> = {
   title: 'features/search/SearchVenueItem',
   component: SearchVenueItem,
   decorators: [
-    (Story) => (
+    (Story: React.ComponentType) => (
       <NavigationContainer>
         <Story />
       </NavigationContainer>
@@ -75,7 +75,9 @@ const variantConfig: Variants<typeof SearchVenueItem> = [
   },
 ]
 
-const Template: VariantsStory<typeof SearchVenueItem> = (args) => (
+const Template: VariantsStory<typeof SearchVenueItem> = (
+  args: React.ComponentProps<typeof SearchVenueItem>
+) => (
   <VariantsTemplate
     variants={variantConfig}
     Component={SearchVenueItem}
@@ -84,4 +86,3 @@ const Template: VariantsStory<typeof SearchVenueItem> = (args) => (
 )
 
 export const AllVariants = Template.bind({})
-AllVariants.storyName = 'SearchVenueItem'

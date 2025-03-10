@@ -1,4 +1,4 @@
-import type { ComponentStory } from '@storybook/react'
+import type { StoryFn } from '@storybook/react'
 import React, { type ComponentProps } from 'react'
 import styled from 'styled-components/native'
 
@@ -37,7 +37,7 @@ export const VariantsTemplate = <
   variants,
   Component,
   defaultProps = {},
-}: VariantsTemplateProps<ComponentType, Props>): ReturnType<ComponentStory<ComponentType>> => (
+}: VariantsTemplateProps<ComponentType, Props>) => (
   <ViewGap gap={4}>
     {variants.map((variant, index) => {
       const props = {
@@ -69,7 +69,7 @@ export const VariantsTemplate = <
 export type VariantsStory<
   ComponentType extends React.ComponentType<Props>,
   Props extends Record<string, unknown> = ComponentProps<ComponentType>,
-> = ComponentStory<ComponentType>
+> = StoryFn<ComponentType>
 
 const ComponentContainer = styled.View<{ withBackground?: boolean; minHeight: number }>(
   ({ withBackground, minHeight, theme }) => ({
