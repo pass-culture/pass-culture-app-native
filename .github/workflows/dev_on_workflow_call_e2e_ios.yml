@@ -2,6 +2,12 @@ name: '0 [on_workflow] Dev on workflow call e2e iOS'
 
 on:
   workflow_call:
+    inputs:
+      upload_name_prefix:
+        description: 'Prefix to add to the upload name'
+        required: false
+        type: string
+        default: '[MES]'
     secrets:
       GCP_EHP_SERVICE_ACCOUNT:
         required: true
@@ -102,7 +108,7 @@ jobs:
           if [[ "${{ github.event_name }}" == "schedule" ]]; then
             CUSTOM_NAME="[Nightly][iOS] Release du ${DATE} au soir (${COMMIT_HASH})"
           else
-            CUSTOM_NAME="[MES][iOS] Staging du ${DATE} (${COMMIT_HASH})"
+            CUSTOM_NAME="${{ inputs.upload_name_prefix }}[iOS] Staging du ${DATE} (${COMMIT_HASH})"
           fi
           echo "CUSTOM_NAME=$CUSTOM_NAME" >> $GITHUB_OUTPUT
       - name: Upload and run ios tests with Robin
