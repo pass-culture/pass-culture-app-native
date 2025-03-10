@@ -1257,8 +1257,10 @@ exports[`BookingDetails OldBookingDetails : when FF WIP_NEW_BOOKING_PAGE is off 
           [
             {
               "flexBasis": 0,
+              "flexDirection": "row",
               "flexGrow": 1,
               "flexShrink": 1,
+              "justifyContent": "center",
             },
           ]
         }
@@ -1269,7 +1271,6 @@ exports[`BookingDetails OldBookingDetails : when FF WIP_NEW_BOOKING_PAGE is off 
           numberOfLines={2}
           style={
             {
-              "color": "#ffffff",
               "flexShrink": 1,
               "opacity": 0,
               "textAlign": "center",
