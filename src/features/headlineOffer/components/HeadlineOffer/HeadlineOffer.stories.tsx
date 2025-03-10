@@ -1,16 +1,16 @@
 import { NavigationContainer } from '@react-navigation/native'
-import { ComponentMeta } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
 import React from 'react'
 
 import { HeadlineOffer } from 'features/headlineOffer/components/HeadlineOffer/HeadlineOffer'
 import { SHARE_APP_IMAGE_SOURCE } from 'features/share/components/shareAppImage'
-import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
+import { VariantsTemplate, type Variants } from 'ui/storybook/VariantsTemplate'
 
-const meta: ComponentMeta<typeof HeadlineOffer> = {
+const meta: Meta<typeof HeadlineOffer> = {
   title: 'ui/HeadlineOffer',
   component: HeadlineOffer,
   decorators: [
-    (Story) => (
+    (Story: React.ComponentType) => (
       <NavigationContainer>
         <Story />
       </NavigationContainer>
@@ -33,9 +33,12 @@ const variantConfig: Variants<typeof HeadlineOffer> = [
   },
 ]
 
-const Template: VariantsStory<typeof HeadlineOffer> = (args) => (
+type Story = StoryObj<typeof HeadlineOffer>
+
+const Template = (args: React.ComponentProps<typeof HeadlineOffer>) => (
   <VariantsTemplate variants={variantConfig} Component={HeadlineOffer} defaultProps={args} />
 )
 
-export const AllVariants = Template.bind({})
-AllVariants.storyName = 'HeadlineOffer'
+export const AllVariants: Story = {
+  render: Template,
+}

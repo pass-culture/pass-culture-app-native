@@ -1,4 +1,4 @@
-import { ComponentMeta } from '@storybook/react'
+import type { Meta } from '@storybook/react'
 import React from 'react'
 
 import { CreditStatus } from 'features/tutorial/enums'
@@ -6,7 +6,7 @@ import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storyboo
 
 import { CreditStatusTag } from './CreditStatusTag'
 
-const meta: ComponentMeta<typeof CreditStatusTag> = {
+const meta: Meta<typeof CreditStatusTag> = {
   title: 'features/tutorial/CreditStatusTag',
   component: CreditStatusTag,
 }
@@ -27,7 +27,9 @@ const variantConfig: Variants<typeof CreditStatusTag> = [
   },
 ]
 
-const Template: VariantsStory<typeof CreditStatusTag> = (args) => (
+const Template: VariantsStory<typeof CreditStatusTag> = (
+  args: React.ComponentProps<typeof CreditStatusTag>
+) => (
   <VariantsTemplate
     variants={variantConfig}
     Component={CreditStatusTag}
@@ -36,4 +38,3 @@ const Template: VariantsStory<typeof CreditStatusTag> = (args) => (
 )
 
 export const AllVariants = Template.bind({})
-AllVariants.storyName = 'CreditStatusTag'

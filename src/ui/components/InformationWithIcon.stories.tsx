@@ -1,4 +1,4 @@
-import { ComponentMeta } from '@storybook/react'
+import type { Meta } from '@storybook/react'
 import React from 'react'
 
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
@@ -6,7 +6,7 @@ import { BicolorClock } from 'ui/svg/icons/BicolorClock'
 
 import { InformationWithIcon } from './InformationWithIcon'
 
-const meta: ComponentMeta<typeof InformationWithIcon> = {
+const meta: Meta<typeof InformationWithIcon> = {
   title: 'ui/InformationWithIcon',
   component: InformationWithIcon,
 }
@@ -28,9 +28,10 @@ const variantConfig: Variants<typeof InformationWithIcon> = [
   },
 ]
 
-const Template: VariantsStory<typeof InformationWithIcon> = (args) => (
+const Template: VariantsStory<typeof InformationWithIcon> = (
+  args: React.ComponentProps<typeof InformationWithIcon>
+) => (
   <VariantsTemplate variants={variantConfig} Component={InformationWithIcon} defaultProps={args} />
 )
 
 export const AllVariants = Template.bind({})
-AllVariants.storyName = 'InformationWithIcon'

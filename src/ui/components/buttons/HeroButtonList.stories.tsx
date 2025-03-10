@@ -1,5 +1,5 @@
 import { NavigationContainer } from '@react-navigation/native'
-import { ComponentMeta } from '@storybook/react'
+import type { Meta } from '@storybook/react'
 import React from 'react'
 import { Text } from 'react-native'
 
@@ -13,11 +13,11 @@ import { TypoDS } from 'ui/theme'
 import { ColorsEnum } from 'ui/theme/colors'
 import { iconSizes } from 'ui/theme/iconSizes'
 
-const meta: ComponentMeta<typeof HeroButtonList> = {
+const meta: Meta<typeof HeroButtonList> = {
   title: 'ui/buttons/HeroButtonList',
   component: HeroButtonList,
   decorators: [
-    (Story) => (
+    (Story: React.ComponentType) => (
       <NavigationContainer>
         <Story />
       </NavigationContainer>
@@ -77,9 +77,8 @@ const variantConfig: Variants<typeof HeroButtonList> = [
   },
 ]
 
-const Template: VariantsStory<typeof HeroButtonList> = (args) => (
-  <VariantsTemplate variants={variantConfig} Component={HeroButtonList} defaultProps={args} />
-)
+const Template: VariantsStory<typeof HeroButtonList> = (
+  args: React.ComponentProps<typeof HeroButtonList>
+) => <VariantsTemplate variants={variantConfig} Component={HeroButtonList} defaultProps={args} />
 
 export const AllVariants = Template.bind({})
-AllVariants.storyName = 'HeroButtonList'

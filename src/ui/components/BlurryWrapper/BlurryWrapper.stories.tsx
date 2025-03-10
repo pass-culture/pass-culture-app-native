@@ -1,4 +1,4 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
 import React from 'react'
 import styled from 'styled-components/native'
 
@@ -7,23 +7,25 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 
 import { BlurryWrapper } from './BlurryWrapper'
 
-const meta: ComponentMeta<typeof BlurryWrapper> = {
+const meta: Meta<typeof BlurryWrapper> = {
   title: 'ui/BlurryWrapper',
   component: BlurryWrapper,
 }
 
 export default meta
 
-const Template: ComponentStory<typeof BlurryWrapper> = (props) => (
-  <ImageBackground source={SHARE_APP_IMAGE_SOURCE}>
-    <BlurryWrapper {...props} />
-  </ImageBackground>
-)
+type Story = StoryObj<typeof BlurryWrapper>
 
-export const Default = Template.bind({})
-Default.storyName = 'BlurryWrapper'
-Default.args = {
-  children: <ButtonPrimary wording="Réserver l’offre" mediumWidth />,
+export const Default: Story = {
+  render: (props) => (
+    <ImageBackground source={SHARE_APP_IMAGE_SOURCE}>
+      <BlurryWrapper {...props} />
+    </ImageBackground>
+  ),
+  name: 'BlurryWrapper',
+  args: {
+    children: <ButtonPrimary wording="Réserver l’offre" mediumWidth />,
+  },
 }
 
 const ImageBackground = styled.ImageBackground({

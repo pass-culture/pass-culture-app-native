@@ -1,5 +1,5 @@
 import { NavigationContainer } from '@react-navigation/native'
-import { ComponentMeta } from '@storybook/react'
+import type { Meta } from '@storybook/react'
 import React from 'react'
 
 import { SubscriptionTheme } from 'features/subscription/types'
@@ -7,11 +7,11 @@ import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storyboo
 
 import { SubscriptionThematicButton } from './SubscriptionThematicButton'
 
-const meta: ComponentMeta<typeof SubscriptionThematicButton> = {
+const meta: Meta<typeof SubscriptionThematicButton> = {
   title: 'Features/subscription/SubscriptionThematicButton',
   component: SubscriptionThematicButton,
   decorators: [
-    (Story) => (
+    (Story: React.ComponentType) => (
       <NavigationContainer>
         <Story />
       </NavigationContainer>
@@ -30,7 +30,9 @@ const variantConfig: Variants<typeof SubscriptionThematicButton> = [
     props: { thematic: SubscriptionTheme.CINEMA, checked: true },
   },
 ]
-const Template: VariantsStory<typeof SubscriptionThematicButton> = (args) => (
+const Template: VariantsStory<typeof SubscriptionThematicButton> = (
+  args: React.ComponentProps<typeof SubscriptionThematicButton>
+) => (
   <VariantsTemplate
     variants={variantConfig}
     Component={SubscriptionThematicButton}
@@ -39,4 +41,3 @@ const Template: VariantsStory<typeof SubscriptionThematicButton> = (args) => (
 )
 
 export const AllVariants = Template.bind({})
-AllVariants.storyName = 'SubscriptionThematicButton'

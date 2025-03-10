@@ -1,10 +1,12 @@
-import { defineConfig, loadEnv, transformWithEsbuild } from 'vite'
-import react from '@vitejs/plugin-react'
-import { createHtmlPlugin } from 'vite-plugin-html'
-import { sentryVitePlugin } from '@sentry/vite-plugin'
-import { whiteListEnv } from './whiteListEnv'
 import { execSync } from 'child_process'
+
+import { sentryVitePlugin } from '@sentry/vite-plugin'
+import react from '@vitejs/plugin-react'
+import { defineConfig, loadEnv, transformWithEsbuild } from 'vite'
 import { analyzer } from 'vite-bundle-analyzer'
+import { createHtmlPlugin } from 'vite-plugin-html'
+
+import { whiteListEnv } from './whiteListEnv'
 
 const defaultExtensions = ['.mjs', '.js', '.mts', '.ts', '.jsx', '.tsx', '.json']
 const allExtensions = [...defaultExtensions.map((ext) => `.web${ext}`), ...defaultExtensions]
@@ -119,7 +121,7 @@ export default ({ mode }) => {
       extensions: allExtensions,
       alias: [
         {
-          find: /^((api|cheatcodes|features|fixtures|libs|queries|shared|theme|ui|web).*)/, // if you change this line, check this doc https://github.com/pass-culture/pass-culture-app-native/blob/5ff5fba596244a759d60f8c9cdb67d56ac86a1a7/doc/development/alias.md
+          find: /^((api|cheatcodes|features|fixtures|libs|queries|shared|theme|ui|web|tests).*)/,
           replacement: '/src/$1',
         },
         // if you add something below, it should also be added to storybook config file in modulesToAlias

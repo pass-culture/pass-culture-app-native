@@ -1,16 +1,18 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
 import React from 'react'
 import { Controller, useForm } from 'react-hook-form'
 
 import { EmailInputWithSpellingHelp } from './EmailInputWithSpellingHelp'
 
-const meta: ComponentMeta<typeof EmailInputWithSpellingHelp> = {
+const meta: Meta<typeof EmailInputWithSpellingHelp> = {
   title: 'ui/inputs/EmailInputWithSpellingHelp',
   component: EmailInputWithSpellingHelp,
 }
 export default meta
 
-const Template: ComponentStory<typeof EmailInputWithSpellingHelp> = (props) => {
+type Story = StoryObj<typeof EmailInputWithSpellingHelp>
+
+const StoryComponent = (props: React.ComponentProps<typeof EmailInputWithSpellingHelp>) => {
   const { control } = useForm<{ email: string }>({
     defaultValues: {
       email: props.email,
@@ -33,14 +35,18 @@ const Template: ComponentStory<typeof EmailInputWithSpellingHelp> = (props) => {
   )
 }
 
-export const WithGoodEmail = Template.bind({})
-WithGoodEmail.args = {
-  label: 'Adresse e-mail',
-  email: 'firstname.lastname@gmail.com',
+export const WithGoodEmail: Story = {
+  render: (props) => <StoryComponent {...props} />,
+  args: {
+    label: 'Adresse e-mail',
+    email: 'firstname.lastname@gmail.com',
+  },
 }
 
-export const WithSpellingHelp = Template.bind({})
-WithSpellingHelp.args = {
-  label: 'Adresse e-mail',
-  email: 'firstname.lastname@gmal.com',
+export const WithSpellingHelp: Story = {
+  render: (props) => <StoryComponent {...props} />,
+  args: {
+    label: 'Adresse e-mail',
+    email: 'firstname.lastname@gmal.com',
+  },
 }

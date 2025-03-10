@@ -1,5 +1,5 @@
 import { action } from '@storybook/addon-actions'
-import { ComponentMeta } from '@storybook/react'
+import type { Meta } from '@storybook/react'
 import React from 'react'
 
 import { ButtonQuaternarySecondary } from 'ui/components/buttons/ButtonQuaternarySecondary'
@@ -9,7 +9,7 @@ import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
 
 import { InfoBanner } from './InfoBanner'
 
-const meta: ComponentMeta<typeof InfoBanner> = {
+const meta: Meta<typeof InfoBanner> = {
   title: 'ui/banners/InfoBanner',
   component: InfoBanner,
 }
@@ -47,9 +47,8 @@ const variantConfig: Variants<typeof InfoBanner> = [
   },
 ]
 
-const Template: VariantsStory<typeof InfoBanner> = (args) => (
-  <VariantsTemplate variants={variantConfig} Component={InfoBanner} defaultProps={args} />
-)
+const Template: VariantsStory<typeof InfoBanner> = (
+  args: React.ComponentProps<typeof InfoBanner>
+) => <VariantsTemplate variants={variantConfig} Component={InfoBanner} defaultProps={args} />
 
 export const AllVariants = Template.bind({})
-AllVariants.storyName = 'InfoBanner'
