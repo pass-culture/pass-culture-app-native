@@ -1,0 +1,1 @@
+import{r as g,s as m}from"./stringify-CUxI7f_a.js";function c(a,x,v){a=a||{};var r=a.random||(a.rng||g)();if(r[6]=r[6]&15|64,r[8]=r[8]&63|128,x){v=v||0;for(var n=0;n<16;++n)x[v+n]=r[n];return x}return m(r)}export{c as v};

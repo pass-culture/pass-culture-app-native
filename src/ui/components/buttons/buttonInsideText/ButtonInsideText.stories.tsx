@@ -1,4 +1,4 @@
-import { ComponentMeta } from '@storybook/react'
+import type { Meta } from '@storybook/react'
 import React from 'react'
 
 import { ButtonInsideTexteProps } from 'ui/components/buttons/buttonInsideText/types'
@@ -8,7 +8,7 @@ import { TypoDS } from 'ui/theme'
 
 import { ButtonInsideText } from './ButtonInsideText'
 
-const meta: ComponentMeta<typeof ButtonInsideText> = {
+const meta: Meta<typeof ButtonInsideText> = {
   title: 'ui/buttons/ButtonInsideText',
   component: ButtonInsideText,
 }
@@ -54,9 +54,8 @@ const RandomText = (props: ButtonInsideTexteProps) => {
   )
 }
 
-const Template: VariantsStory<typeof RandomText> = (args) => (
-  <VariantsTemplate variants={variantConfig} Component={RandomText} defaultProps={args} />
-)
+const Template: VariantsStory<typeof RandomText> = (
+  args: React.ComponentProps<typeof RandomText>
+) => <VariantsTemplate variants={variantConfig} Component={RandomText} defaultProps={args} />
 
 export const AllVariants = Template.bind({})
-AllVariants.storyName = 'ButtonInsideText'

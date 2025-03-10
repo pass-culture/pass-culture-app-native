@@ -1,16 +1,16 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react'
+import type { Meta } from '@storybook/react'
 import React from 'react'
 
 import { OfferMetadataList } from 'features/offer/components/OfferMetadataList/OfferMetadataList'
 import { getOfferMetadata } from 'features/offer/helpers/getOfferMetadata/getOfferMetadata'
 
-const meta: ComponentMeta<typeof OfferMetadataList> = {
+const meta: Meta<typeof OfferMetadataList> = {
   title: 'features/offer/OfferMetadataList',
   component: OfferMetadataList,
 }
 export default meta
 
-const Template: ComponentStory<typeof OfferMetadataList> = (props) => (
+const Template = (props: React.ComponentProps<typeof OfferMetadataList>) => (
   <OfferMetadataList {...props} />
 )
 
@@ -21,8 +21,7 @@ const metadata = getOfferMetadata({
   cast: ['Pauline Auriol', 'Axel Prioton Alcala', 'Valentin Santes', 'Pierre Louis Sémézis'],
 })
 
-export const Default = Template.bind({})
-Default.args = {
-  metadata,
-}
-Default.storyName = 'OfferMetadataList'
+export const Default = () =>
+  Template({
+    metadata,
+  })

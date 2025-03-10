@@ -1,11 +1,11 @@
-import { ComponentMeta } from '@storybook/react'
+import type { Meta } from '@storybook/react'
 import React from 'react'
 
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 
 import { Badge } from './Badge'
 
-const meta: ComponentMeta<typeof Badge> = {
+const meta: Meta<typeof Badge> = {
   title: 'ui/Badge',
   component: Badge,
 }
@@ -22,9 +22,8 @@ const variantConfig: Variants<typeof Badge> = [
   },
 ]
 
-const Template: VariantsStory<typeof Badge> = (args) => (
+const Template: VariantsStory<typeof Badge> = (args: React.ComponentProps<typeof Badge>) => (
   <VariantsTemplate variants={variantConfig} Component={Badge} defaultProps={args} />
 )
 
 export const AllVariants = Template.bind({})
-AllVariants.storyName = 'Badge'

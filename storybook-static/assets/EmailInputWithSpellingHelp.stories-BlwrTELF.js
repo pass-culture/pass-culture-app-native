@@ -1,0 +1,13 @@
+import{j as t}from"./jsx-runtime-BiHFnIch.js";import{u as S,C as x}from"./index.esm-Al_y4dSy.js";import{E as l}from"./EmailInputWithSpellingHelp-CKTS8ujn.js";import"./index-CsVCrh6D.js";import"./_commonjsHelpers-DR3NjCyK.js";import"./EmailInput-BSB3AXe4.js";import"./TextInput-CA0zpRPS.js";import"./grid-C-3QDytX.js";import"./index-C2Dso1zb.js";import"./useHandleFocus-Cqy5wjC7.js";import"./styled-components.browser.esm-DFuWokAj.js";import"./types-BSqtYkyg.js";import"./InputLabel.web-cbSq4OYr.js";import"./ContainerWithMaxWidth-DmODooKe.js";import"./LabelContainer-Cs6jWhDC.js";import"./Touchable.web-BmARAH_k.js";import"./styleUtils-7d7EC2RV.js";import"./padding-Dae-Jp5M.js";import"./customFocusOutline.web-DGw9-iH-.js";import"./lib-BWPdn4WI.js";import"./index-BXMVnZ8T.js";import"./constants-C79QT0UB.js";import"./colors-oXVEEODc.js";import"./getHoverStyle-A_aiC9pY.js";import"./InputContainer-Cv8eS5uf.js";import"./v4-f9CH9kWS.js";import"./stringify-CUxI7f_a.js";import"./useDebounceValue---T0mb3X.js";import"./array-CbIL34FO.js";import"./_baseIsEqual-B1O9bDXV.js";import"./isObjectLike-e0j5qXck.js";import"./isSymbol-CsCJre4W.js";import"./SpellingHelp-B6S-Ec4Y.js";import"./InfoBanner-DbL9jDja.js";import"./GenericColoredBanner-1ufbBto0.js";import"./ButtonQuaternarySecondary-BOk-JB4x.js";import"./AppButton.web-jc1nmv1J.js";import"./accessibilityAndTestId.web-DIFnR3-A.js";import"./Logo-BskoEGGL.js";import"./AccessibleSvg-9v1l2TNR.js";import"./index-BPaTxB0G.js";import"./PlainArrowNext-hBatPDZn.js";const pr={title:"ui/inputs/EmailInputWithSpellingHelp",component:l},c=r=>{const{control:d}=S({defaultValues:{email:r.email}});return t.jsx(x,{control:d,name:"email",render:({field:{onChange:u,onBlur:g,value:f}})=>t.jsx(l,{...r,email:f,onEmailChange:u,onBlur:g})})},o={render:r=>t.jsx(c,{...r}),args:{label:"Adresse e-mail",email:"firstname.lastname@gmail.com"}},m={render:r=>t.jsx(c,{...r}),args:{label:"Adresse e-mail",email:"firstname.lastname@gmal.com"}};var e,i,p;o.parameters={...o.parameters,docs:{...(e=o.parameters)==null?void 0:e.docs,source:{originalSource:`{
+  render: props => <StoryComponent {...props} />,
+  args: {
+    label: 'Adresse e-mail',
+    email: 'firstname.lastname@gmail.com'
+  }
+}`,...(p=(i=o.parameters)==null?void 0:i.docs)==null?void 0:p.source}}};var a,s,n;m.parameters={...m.parameters,docs:{...(a=m.parameters)==null?void 0:a.docs,source:{originalSource:`{
+  render: props => <StoryComponent {...props} />,
+  args: {
+    label: 'Adresse e-mail',
+    email: 'firstname.lastname@gmal.com'
+  }
+}`,...(n=(s=m.parameters)==null?void 0:s.docs)==null?void 0:n.source}}};const ar=["WithGoodEmail","WithSpellingHelp"];export{o as WithGoodEmail,m as WithSpellingHelp,ar as __namedExportsOrder,pr as default};

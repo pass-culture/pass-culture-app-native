@@ -1,0 +1,1 @@
+const e=["Janvier","Février","Mars","Avril","Mai","Juin","Juillet","Août","Septembre","Octobre","Novembre","Décembre"],r=["Janv.","Févr.","Mars","Avril","Mai","Juin","Juil.","Août","Sept.","Oct.","Nov.","Déc."],i=["janvier","février","mars","avril","mai","juin","juillet","août","septembre","octobre","novembre","décembre"];export{e as C,i as M,r as a};

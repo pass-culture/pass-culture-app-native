@@ -1,0 +1,1 @@
+import{A as t,d as c}from"./grid-C-3QDytX.js";const o=({checked:s,label:e})=>{const i={accessibilityRole:t.RADIO,accessibilityLabel:e};return c.Platform.select({web:{...i,accessibilityChecked:s},default:{...i,accessibilityState:{checked:s}}})};export{o as a};

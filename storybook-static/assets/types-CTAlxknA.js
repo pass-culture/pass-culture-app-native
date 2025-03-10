@@ -1,0 +1,1 @@
+var E=(r=>(r.AROUND_ME="AROUND_ME",r.AROUND_PLACE="AROUND_PLACE",r.EVERYWHERE="EVERYWHERE",r))(E||{}),e=(r=>(r.everywhereLabel="France entière",r.aroundMeLabel="Ma position",r))(e||{});export{E as L,e as a};

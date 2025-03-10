@@ -1,0 +1,1 @@
+import{A as t,d as a}from"./grid-C-3QDytX.js";const o=({checked:s,label:e,required:c})=>{const i={accessibilityRole:t.CHECKBOX,accessibilityLabel:e};return a.Platform.select({web:{...i,accessibilityChecked:s,accessibilityRequired:c},default:{...i,accessibilityState:{checked:s}}})};export{o as a};

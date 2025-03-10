@@ -1,4 +1,4 @@
-import { ComponentStory } from '@storybook/react'
+import { StoryFn } from '@storybook/react'
 import React from 'react'
 
 import { CategoryIdEnum } from 'api/gen'
@@ -16,10 +16,7 @@ export default {
   },
 }
 
-export const Default: ComponentStory<typeof ImagePlaceholder> = (props) => (
-  <ImagePlaceholder {...props} />
-)
-Default.storyName = 'ImagePlaceholder'
+export const Default: StoryFn<typeof ImagePlaceholder> = (props) => <ImagePlaceholder {...props} />
 Default.args = {
   size: getSpacing(24),
   borderRadius: 4,

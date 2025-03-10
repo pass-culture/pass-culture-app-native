@@ -1,0 +1,1 @@
+import{r as t}from"./index-CsVCrh6D.js";import{N as i,a}from"./NavigationContext-HZz-RePV.js";function s(){const o=t.useContext(i),n=t.useContext(a);if(n===void 0&&o===void 0)throw new Error("Couldn't find a navigation object. Is your component inside NavigationContainer?");return n??o}export{s as u};

@@ -1,0 +1,1 @@
+import{r as s}from"./index-CsVCrh6D.js";import{u as r}from"./useNavigation-AduvEkyI.js";function f(t){const e=r(),[,u]=s.useState(()=>t(e.getState())),a=s.useRef(t);return s.useEffect(()=>{a.current=t}),s.useEffect(()=>e.addListener("state",n=>{u(a.current(n.data.state))}),[e]),t(e.getState())}export{f as u};

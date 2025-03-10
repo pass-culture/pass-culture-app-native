@@ -1,0 +1,1 @@
+import{d as r}from"./grid-C-3QDytX.js";const i=(t,e)=>{if(r.Platform.OS==="web"&&t){const o={textDecoration:"underline",textDecorationColor:t,"&:disabled":{textDecoration:"none"}};return e===void 0?{"&:hover":o}:e?o:{}}return{}};export{i as g};

@@ -1,23 +1,27 @@
-import { ComponentMeta } from '@storybook/react'
+import type { Meta } from '@storybook/react'
 import React from 'react'
 
 import { CategoryIdEnum } from 'api/gen'
-import { selectArgTypeFromObject } from 'libs/storybook/selectArgTypeFromObject'
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 
 import { OfferImage } from './OfferImage'
 
 // @ts-ignore import is unresolved, this commit is temporary
 // eslint-disable-next-line import/no-unresolved
-import { useQueryDecorator } from '/.storybook/mocks/react-query'
 
-const meta: ComponentMeta<typeof OfferImage> = {
+const meta: Meta<typeof OfferImage> = {
   title: 'ui/tiles/OfferImage',
   component: OfferImage,
   argTypes: {
-    categoryId: selectArgTypeFromObject(CategoryIdEnum),
+    categoryId: {
+      options: Object.keys(CategoryIdEnum),
+      mapping: CategoryIdEnum,
+      control: {
+        type: 'select' as const,
+        labels: {},
+      },
+    },
   },
-  decorators: [useQueryDecorator],
   parameters: {
     axe: {
       // Our images do not need alt because they are illustrative
@@ -47,9 +51,8 @@ const variantConfig: Variants<typeof OfferImage> = [
   },
 ]
 
-const Template: VariantsStory<typeof OfferImage> = (args) => (
-  <VariantsTemplate variants={variantConfig} Component={OfferImage} defaultProps={args} />
-)
+const Template: VariantsStory<typeof OfferImage> = (
+  args: React.ComponentProps<typeof OfferImage>
+) => <VariantsTemplate variants={variantConfig} Component={OfferImage} defaultProps={args} />
 
 export const AllVariants = Template.bind({})
-AllVariants.storyName = 'OfferImage'

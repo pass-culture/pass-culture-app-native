@@ -1,0 +1,1 @@
+function e(a,r){return["TabNavigator",{screen:"SearchStackNavigator",params:{screen:a,params:r}}]}function t(a,r){return{screen:"TabNavigator",params:{screen:"SearchStackNavigator",params:{screen:a,params:r}}}}export{e as a,t as g};

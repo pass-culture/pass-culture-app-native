@@ -1,0 +1,1 @@
+import{X as l}from"./styled-components.browser.esm-DFuWokAj.js";function m(o=!0){const{isDesktopViewport:t,appContentWidth:e,forms:r,slider:s,modal:i}=l(),d=t?i.desktopMaxWidth:e,n=i.spacing.MD*2,a=o?Math.min(e,r.maxWidth+n):e;return{sliderLength:(t?d:a)-n-s.markerSize}}export{m as u};

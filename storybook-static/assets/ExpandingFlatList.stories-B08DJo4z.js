@@ -1,0 +1,7 @@
+import{j as e}from"./jsx-runtime-BiHFnIch.js";import{s as m}from"./grid-C-3QDytX.js";import{V as l}from"./VariantsTemplate-DuOJcNtD.js";import{E as i}from"./ExpandingFlatList-DBPSnQ4w.js";import"./index-CsVCrh6D.js";import"./_commonjsHelpers-DR3NjCyK.js";import"./index-C2Dso1zb.js";import"./Separator-BsXrwaD7.js";import"./ViewGap-Xg8HNGGB.js";import"./index.web-QI2TjELu.js";import"./browser-CaSUOz1x.js";const V={title:"features/offer/ExpandingFlatList",component:i,argTypes:{isLoading:{control:"boolean",defaultValue:!1},skeletonListLength:{control:"number",defaultValue:3}}},d=[{id:1,title:"Item 1"},{id:2,title:"Item 2"},{id:3,title:"Item 3"}],c=[{label:"Default state",props:{data:d,renderItem:()=>e.jsx(o,{}),renderSkeleton:()=>e.jsx(o,{})}}],t=p=>e.jsx(l,{variants:c.map(a=>({...a,props:{...a.props,...p}})),Component:i}),o=m.View({borderColor:"black",backgroundColor:"lightgrey",borderWidth:1,height:50,width:200});t.args={isLoading:!1,skeletonListLength:3};var r,s,n;t.parameters={...t.parameters,docs:{...(r=t.parameters)==null?void 0:r.docs,source:{originalSource:`(args: React.ComponentProps<typeof ExpandingFlatList>) => <VariantsTemplate variants={variantConfig.map(variant => ({
+  ...variant,
+  props: {
+    ...variant.props,
+    ...args
+  }
+}))} Component={ExpandingFlatList} />`,...(n=(s=t.parameters)==null?void 0:s.docs)==null?void 0:n.source}}};const j=["Template"];export{t as Template,j as __namedExportsOrder,V as default};
