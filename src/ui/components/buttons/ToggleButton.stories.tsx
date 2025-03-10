@@ -1,5 +1,5 @@
 import { action } from '@storybook/addon-actions'
-import { ComponentMeta } from '@storybook/react'
+import type { Meta } from '@storybook/react'
 import React from 'react'
 import styled from 'styled-components/native'
 
@@ -8,7 +8,7 @@ import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storyboo
 import { Bell } from 'ui/svg/icons/Bell'
 import { BellFilled } from 'ui/svg/icons/BellFilled'
 
-const meta: ComponentMeta<typeof ToggleButton> = {
+const meta: Meta<typeof ToggleButton> = {
   title: 'ui/buttons/ToggleButton',
   component: ToggleButton,
 }
@@ -49,9 +49,8 @@ const variantConfig: Variants<typeof ToggleButton> = [
   },
 ]
 
-const Template: VariantsStory<typeof ToggleButton> = (args) => (
-  <VariantsTemplate variants={variantConfig} Component={ToggleButton} defaultProps={args} />
-)
+const Template: VariantsStory<typeof ToggleButton> = (
+  args: React.ComponentProps<typeof ToggleButton>
+) => <VariantsTemplate variants={variantConfig} Component={ToggleButton} defaultProps={args} />
 
 export const AllVariants = Template.bind({})
-AllVariants.storyName = 'ToggleButton'

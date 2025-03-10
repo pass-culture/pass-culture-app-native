@@ -1,12 +1,12 @@
 import { action } from '@storybook/addon-actions'
-import { ComponentMeta } from '@storybook/react'
+import type { Meta } from '@storybook/react'
 import React from 'react'
 
 import { DEFAULT_SELECTED_DATE, MAXIMUM_DATE, MINIMUM_DATE } from 'features/auth/fixtures/fixtures'
 import { DateInput } from 'ui/components/inputs/DateInput/DateInput'
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 
-const meta: ComponentMeta<typeof DateInput> = {
+const meta: Meta<typeof DateInput> = {
   title: 'ui/inputs/DateInput',
   component: DateInput,
 }
@@ -30,9 +30,8 @@ const variantConfig: Variants<typeof DateInput> = [
   },
 ]
 
-const Template: VariantsStory<typeof DateInput> = (args) => (
-  <VariantsTemplate variants={variantConfig} Component={DateInput} defaultProps={args} />
-)
+const Template: VariantsStory<typeof DateInput> = (
+  args: React.ComponentProps<typeof DateInput>
+) => <VariantsTemplate variants={variantConfig} Component={DateInput} defaultProps={args} />
 
 export const AllVariants = Template.bind({})
-AllVariants.storyName = 'DateInput'
