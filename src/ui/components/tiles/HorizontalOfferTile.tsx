@@ -12,7 +12,6 @@ import { getDistance } from 'libs/location/getDistance'
 import { LocationMode } from 'libs/location/types'
 import { getDisplayedPrice } from 'libs/parsers/getDisplayedPrice'
 import { useSubcategory } from 'libs/subcategories'
-import { useSearchGroupLabel } from 'libs/subcategories/useSearchGroupLabel'
 import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { getOfferDates } from 'shared/date/getOfferDates'
@@ -21,7 +20,6 @@ import { Offer } from 'shared/offer/types'
 import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
 import { Tag } from 'ui/components/Tag/Tag'
 import { OfferName } from 'ui/components/tiles/OfferName'
-import { useNativeCategoryValue } from 'ui/components/tiles/useNativeCategoryValue'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { RightFilled } from 'ui/svg/icons/RightFilled'
 import { getSpacing } from 'ui/theme'
@@ -72,8 +70,7 @@ export const HorizontalOfferTile = ({
     selectedPlace,
     selectedLocationMode,
   })
-  const { categoryId, searchGroupName, nativeCategoryId } = useSubcategory(subcategoryId)
-  const searchGroupLabel = useSearchGroupLabel(searchGroupName)
+  const { categoryId, appLabel } = useSubcategory(subcategoryId)
   const { logClickOnOffer } = useLogClickOnOffer()
 
   const offerId = Number(objectID)
@@ -90,19 +87,18 @@ export const HorizontalOfferTile = ({
     euroToPacificFrancRate,
     offerDetails.isDuo && user?.isBeneficiary
   )
-  const nativeCategoryValue = useNativeCategoryValue({ nativeCategoryId })
 
   const accessibilityLabel = tileAccessibilityLabel(TileContentType.OFFER, {
     ...offerDetails,
-    categoryLabel: searchGroupLabel,
+    categoryLabel: appLabel,
     distance: distanceToOffer,
     date: formattedDate,
     price: formattedPrice,
   })
 
   const generatedSubtitles = useMemo(() => {
-    return subtitles ?? [nativeCategoryValue, formattedDate].filter((subtitle) => !!subtitle)
-  }, [formattedDate, nativeCategoryValue, subtitles])
+    return subtitles ?? [appLabel, formattedDate].filter((subtitle) => !!subtitle)
+  }, [formattedDate, appLabel, subtitles])
 
   function handlePressOffer() {
     if (!offerId) return
