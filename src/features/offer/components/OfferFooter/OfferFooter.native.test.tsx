@@ -9,12 +9,12 @@ import { OfferCTAProvider } from 'features/offer/components/OfferContent/OfferCT
 import * as useOfferCTAContextModule from 'features/offer/components/OfferContent/OfferCTAProvider'
 import { OfferFooter, OfferFooterProps } from 'features/offer/components/OfferFooter/OfferFooter'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
+import * as useRemoteConfig from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
-import * as useRemoteConfigContext from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
 
-const useRemoteConfigContextSpy = jest.spyOn(useRemoteConfigContext, 'useRemoteConfigContext')
+const useRemoteConfigSpy = jest.spyOn(useRemoteConfig, 'useRemoteConfig')
 
 const useAuthContextSpy = jest.spyOn(Auth, 'useAuthContext')
 
@@ -40,14 +40,14 @@ const user = userEvent.setup()
 
 describe('OfferFooter', () => {
   beforeAll(() => {
-    useRemoteConfigContextSpy.mockReturnValue(DEFAULT_REMOTE_CONFIG)
+    useRemoteConfigSpy.mockReturnValue(DEFAULT_REMOTE_CONFIG)
     useOfferCTASpy.mockReturnValue(mockUseOfferCTAReturnValue)
     useAuthContextSpy.mockReturnValue(mockAuthContextReturnValue)
   })
 
   describe('Content when offer is a movie screening', () => {
     beforeEach(() => {
-      useRemoteConfigContextSpy.mockReturnValue({
+      useRemoteConfigSpy.mockReturnValue({
         ...DEFAULT_REMOTE_CONFIG,
         showAccessScreeningButton: true,
       })
@@ -75,7 +75,7 @@ describe('OfferFooter', () => {
 
     beforeEach(() => {
       mockDate.set(CURRENT_DATE)
-      useRemoteConfigContextSpy.mockReturnValue({
+      useRemoteConfigSpy.mockReturnValue({
         ...DEFAULT_REMOTE_CONFIG,
         showAccessScreeningButton: false,
       })

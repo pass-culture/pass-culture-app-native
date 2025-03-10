@@ -1,6 +1,8 @@
 import React from 'react'
 
 import { ChangeEmailSetPassword } from 'features/profile/pages/ChangeEmailSetPassword/ChangeEmailSetPassword'
+import * as useRemoteConfig from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
+import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, checkAccessibilityFor, render } from 'tests/utils/web'
 
@@ -12,6 +14,9 @@ jest.mock('uuid', () => {
     v4: jest.fn(() => value++),
   }
 })
+
+jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
+jest.spyOn(useRemoteConfig, 'useRemoteConfig').mockReturnValue({ ...DEFAULT_REMOTE_CONFIG })
 
 describe('<ChangeEmailSetPassword />', () => {
   describe('Accessibility', () => {

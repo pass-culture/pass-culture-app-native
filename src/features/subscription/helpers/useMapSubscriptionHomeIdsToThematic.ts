@@ -1,8 +1,8 @@
 import { SubscriptionTheme } from 'features/subscription/types'
-import { useRemoteConfigContext } from 'libs/firebase/remoteConfig/RemoteConfigProvider'
+import { useRemoteConfig } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 
 export const useMapSubscriptionHomeIdsToThematic = (homeId: string): SubscriptionTheme | null => {
-  const { subscriptionHomeEntryIds } = useRemoteConfigContext()
+  const { subscriptionHomeEntryIds } = useRemoteConfig()
   const ThematicList = Object.keys(subscriptionHomeEntryIds) as SubscriptionTheme[]
   return (
     ThematicList.find((key: SubscriptionTheme) => subscriptionHomeEntryIds[key] === homeId) ?? null

@@ -33,7 +33,6 @@ import { getIsMaestro } from 'libs/e2e/getIsMaestro'
 import { env } from 'libs/environment/env'
 import { AnalyticsInitializer } from 'libs/firebase/analytics/AnalyticsInitializer'
 import { FirestoreNetworkObserver } from 'libs/firebase/firestore/FirestoreNetworkObserver/FirestoreNetworkObserver'
-import { RemoteConfigProvider } from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { LocationWrapper } from 'libs/location'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { NetInfoWrapper } from 'libs/network/NetInfoWrapper'
@@ -82,55 +81,53 @@ const App: FunctionComponent = function () {
   }, [])
 
   return (
-    <RemoteConfigProvider>
-      <ReactQueryClientProvider>
-        <ThemeProvider theme={theme}>
-          <SafeAreaProvider>
-            <ErrorBoundary FallbackComponent={AsyncErrorBoundaryWithoutNavigation}>
-              <AnalyticsInitializer>
-                {/* All react-query calls should be nested inside NetInfoWrapper to ensure the user has internet connection */}
-                <NetInfoWrapper>
-                  <FirestoreNetworkObserver />
-                  <SettingsWrapper>
-                    <AuthWrapper>
-                      <LocationWrapper>
-                        <AccessibilityFiltersWrapper>
-                          <FavoritesWrapper>
-                            <SearchAnalyticsWrapper>
-                              <SearchWrapper>
-                                <SnackBarProvider>
-                                  <CulturalSurveyContextProvider>
-                                    <SubscriptionContextProvider>
-                                      <SplashScreenProvider>
-                                        <PushNotificationsWrapper>
-                                          <ShareAppWrapper>
-                                            <OnboardingWrapper>
-                                              <OfflineModeContainer>
-                                                <ScreenErrorProvider>
-                                                  <AppNavigationContainer />
-                                                </ScreenErrorProvider>
-                                              </OfflineModeContainer>
-                                            </OnboardingWrapper>
-                                          </ShareAppWrapper>
-                                        </PushNotificationsWrapper>
-                                      </SplashScreenProvider>
-                                    </SubscriptionContextProvider>
-                                  </CulturalSurveyContextProvider>
-                                </SnackBarProvider>
-                              </SearchWrapper>
-                            </SearchAnalyticsWrapper>
-                          </FavoritesWrapper>
-                        </AccessibilityFiltersWrapper>
-                      </LocationWrapper>
-                    </AuthWrapper>
-                  </SettingsWrapper>
-                </NetInfoWrapper>
-              </AnalyticsInitializer>
-            </ErrorBoundary>
-          </SafeAreaProvider>
-        </ThemeProvider>
-      </ReactQueryClientProvider>
-    </RemoteConfigProvider>
+    <ReactQueryClientProvider>
+      <ThemeProvider theme={theme}>
+        <SafeAreaProvider>
+          <ErrorBoundary FallbackComponent={AsyncErrorBoundaryWithoutNavigation}>
+            <AnalyticsInitializer>
+              {/* All react-query calls should be nested inside NetInfoWrapper to ensure the user has internet connection */}
+              <NetInfoWrapper>
+                <FirestoreNetworkObserver />
+                <SettingsWrapper>
+                  <AuthWrapper>
+                    <LocationWrapper>
+                      <AccessibilityFiltersWrapper>
+                        <FavoritesWrapper>
+                          <SearchAnalyticsWrapper>
+                            <SearchWrapper>
+                              <SnackBarProvider>
+                                <CulturalSurveyContextProvider>
+                                  <SubscriptionContextProvider>
+                                    <SplashScreenProvider>
+                                      <PushNotificationsWrapper>
+                                        <ShareAppWrapper>
+                                          <OnboardingWrapper>
+                                            <OfflineModeContainer>
+                                              <ScreenErrorProvider>
+                                                <AppNavigationContainer />
+                                              </ScreenErrorProvider>
+                                            </OfflineModeContainer>
+                                          </OnboardingWrapper>
+                                        </ShareAppWrapper>
+                                      </PushNotificationsWrapper>
+                                    </SplashScreenProvider>
+                                  </SubscriptionContextProvider>
+                                </CulturalSurveyContextProvider>
+                              </SnackBarProvider>
+                            </SearchWrapper>
+                          </SearchAnalyticsWrapper>
+                        </FavoritesWrapper>
+                      </AccessibilityFiltersWrapper>
+                    </LocationWrapper>
+                  </AuthWrapper>
+                </SettingsWrapper>
+              </NetInfoWrapper>
+            </AnalyticsInitializer>
+          </ErrorBoundary>
+        </SafeAreaProvider>
+      </ThemeProvider>
+    </ReactQueryClientProvider>
   )
 }
 

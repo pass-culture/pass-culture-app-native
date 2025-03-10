@@ -6,4 +6,5 @@ import { remoteConfig as actualRemoteConfig } from '../remoteConfig.services.web
 export const remoteConfig: jest.Mocked<typeof actualRemoteConfig> = {
   refresh: jest.fn().mockResolvedValue(true),
   getValues: jest.fn().mockReturnValue(DEFAULT_REMOTE_CONFIG),
+  configure: jest.fn(),
 }
