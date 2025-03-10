@@ -81,7 +81,6 @@ export enum RemoteStoreFeatureFlags {
   WIP_VENUE_ARTISTS_PLAYLIST = 'wipVenueArtistsPlaylist',
   WIP_VENUE_HEADLINE_OFFER = 'wipVenueHeadlineOffer',
   WIP_VENUE_MAP = 'wipVenueMap',
-  WIP_VENUE_MAP_HIDDEN_POI = 'wipVenueMapHiddenPOI',
   WIP_VENUE_MAP_IN_SEARCH = 'wipVenueMapInSearch',
   WIP_VENUE_MAP_PIN_V2 = 'wipVenueMapPinV2',
 }
