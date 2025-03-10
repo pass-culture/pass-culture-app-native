@@ -1,7 +1,6 @@
 import React, { FunctionComponent, useCallback, useMemo } from 'react'
 
 import { OfferResponseV2, PostReactionRequest, ReactionTypeEnum } from 'api/gen'
-import { useAuthContext } from 'features/auth/context/AuthContext'
 import { OfferReactions } from 'features/offer/components/OfferReactions/OfferReactions'
 import { useReactionMutation } from 'features/reactions/api/useReactionMutation'
 import { ReactionChoiceValidation } from 'features/reactions/components/ReactionChoiceValidation/ReactionChoiceValidation'
@@ -16,7 +15,6 @@ type Props = {
 
 export const OfferReactionSection: FunctionComponent<Props> = ({ offer }) => {
   const isReactionFeatureActive = useFeatureFlag(RemoteStoreFeatureFlags.WIP_REACTION_FEATURE)
-  const { isLoggedIn, user } = useAuthContext()
   const { data: bookings } = useBookingsQuery()
   const { mutate: addReaction } = useReactionMutation()
 
@@ -47,13 +45,7 @@ export const OfferReactionSection: FunctionComponent<Props> = ({ offer }) => {
 
   return (
     <ViewGap gap={4}>
-      <OfferReactions
-        user={user}
-        isLoggedIn={isLoggedIn}
-        offer={offer}
-        userCanReact={userBooking?.canReact}
-        userBooking={userBooking}
-      />
+      <OfferReactions offer={offer} />
 
       {userBooking?.canReact ? (
         <ReactionChoiceValidation
