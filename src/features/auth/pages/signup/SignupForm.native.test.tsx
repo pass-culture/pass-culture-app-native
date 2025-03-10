@@ -5,6 +5,7 @@ import { ReactTestInstance } from 'react-test-renderer'
 
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { api } from 'api/api'
+import { ApiError } from 'api/ApiError'
 import {
   AccountState,
   EmailValidationRemainingResendsResponse,
@@ -26,7 +27,7 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
+import { act, fireEvent, render, screen, userEvent, waitFor } from 'tests/utils'
 
 import { SignupForm } from './SignupForm'
 
@@ -39,11 +40,9 @@ const getSystemNameSpy = jest.spyOn(DeviceInfo, 'getSystemName')
 
 const apiSignUpSpy = jest.spyOn(api, 'postNativeV1Account')
 const apiSSOSignUpSpy = jest.spyOn(api, 'postNativeV1OauthGoogleAccount')
+
 const loginAndRedirectMock = jest.fn()
 jest.spyOn(LoginAndRedirectAPI, 'useLoginAndRedirect').mockReturnValue(loginAndRedirectMock)
-
-const realUseState = React.useState
-const mockUseState = jest.spyOn(React, 'useState')
 
 const apiPostGoogleAuthorize = jest.spyOn(api, 'postNativeV1OauthGoogleAuthorize')
 
@@ -75,7 +74,43 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
+const user = userEvent.setup()
+
+const gotoStep2 = async () => {
+  await user.type(await screen.findByPlaceholderText('tonadresse@email.com'), 'email@gmail.com')
+
+  await user.press(screen.getByLabelText('Continuer vers l’étape Mot de passe'))
+  await screen.findByText('Étape 2 sur 5', { includeHiddenElements: true })
+}
+
+const gotoStep3 = async () => {
+  await user.type(await screen.findByPlaceholderText('Ton mot de passe'), 'user@AZERTY123')
+
+  await user.press(screen.getByLabelText('Continuer vers l’étape Date de naissance'))
+  await screen.findByText('Étape 3 sur 5', { includeHiddenElements: true })
+}
+
+const gotoStep4 = async () => {
+  await act(async () =>
+    fireEvent(await screen.findByTestId('date-picker-spinner-native'), 'onChange', {
+      nativeEvent: { timestamp: ELIGIBLE_AGE_DATE },
+    })
+  )
+
+  await user.press(screen.getByLabelText('Continuer vers l’étape CGU & Données'))
+
+  await screen.findByText('Étape 4 sur 5', { includeHiddenElements: true })
+}
+
 describe('Signup Form', () => {
+  beforeAll(() => {
+    jest.useFakeTimers({ legacyFakeTimers: true })
+  })
+
+  afterAll(() => {
+    jest.useRealTimers()
+  })
+
   beforeEach(() => {
     mockServer.getApi<EmailValidationRemainingResendsResponse>(
       '/v1/email_validation_remaining_resends/email%40gmail.com',
@@ -87,28 +122,23 @@ describe('Signup Form', () => {
     setFeatureFlags()
   })
 
-  it.each`
-    stepIndex | component
-    ${0}      | ${'SetEmail'}
-    ${1}      | ${'SetPassword'}
-    ${2}      | ${'SetBirthday'}
-    ${3}      | ${'AcceptCgu'}
-  `('should render correctly for $component', async ({ stepIndex }) => {
-    mockUseState.mockImplementationOnce(() => realUseState(stepIndex))
-    mockUseState.mockImplementationOnce(() => realUseState(stepIndex))
-    renderSignupForm()
+  describe('For each step', () => {
+    const stepValidationMap = [() => Promise.resolve(), gotoStep2, gotoStep3, gotoStep4]
 
-    await screen.findByText('Inscription')
+    it.each([1, 2, 3, 4])('should render correctly for step %i/5', async (step: number) => {
+      renderSignupForm()
 
-    expect(screen).toMatchSnapshot()
-  })
+      await screen.findByText('Inscription')
 
-  it('should have accessibility label indicating current step and total steps', async () => {
-    renderSignupForm()
+      await stepValidationMap
+        .slice(0, step)
+        .reduce((prev, current) => prev.then(() => current()), Promise.resolve())
 
-    const step = await screen.findByText('Étape 1 sur 5', { includeHiddenElements: true })
-
-    expect(step).toBeOnTheScreen()
+      expect(
+        await screen.findByText(`Étape ${step} sur 5`, { includeHiddenElements: true })
+      ).toBeOnTheScreen()
+      expect(screen).toMatchSnapshot()
+    })
   })
 
   describe('Quit button', () => {
@@ -126,10 +156,10 @@ describe('Signup Form', () => {
       renderSignupForm()
 
       const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
-      fireEvent.changeText(emailInput, 'email@gmail.com')
-      await act(() => fireEvent.press(screen.getByText('Continuer')))
+      await user.type(emailInput, 'email@gmail.com')
+      await user.press(screen.getByText('Continuer'))
 
-      fireEvent.press(screen.getByText('Quitter'))
+      await user.press(screen.getByText('Quitter'))
 
       expect(screen.getByText('Veux-tu abandonner l’inscription ?')).toBeOnTheScreen()
     })
@@ -138,34 +168,19 @@ describe('Signup Form', () => {
       simulateSignupSuccess()
       renderSignupForm()
 
-      const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
-      fireEvent.changeText(emailInput, 'email@gmail.com')
-      await act(() => fireEvent.press(screen.getByLabelText('Continuer vers l’étape Mot de passe')))
+      await gotoStep2()
+      await gotoStep3()
+      await gotoStep4()
 
-      const passwordInput = screen.getByPlaceholderText('Ton mot de passe')
-      await act(async () => fireEvent.changeText(passwordInput, 'user@AZERTY123'))
-      await act(async () =>
-        fireEvent.press(screen.getByLabelText('Continuer vers l’étape Date de naissance'))
-      )
-
-      const datePicker = screen.getByTestId('date-picker-spinner-native')
-      await act(async () =>
-        fireEvent(datePicker, 'onChange', { nativeEvent: { timestamp: ELIGIBLE_AGE_DATE } })
-      )
-      await act(async () =>
-        fireEvent.press(screen.getByLabelText('Continuer vers l’étape CGU & Données'))
-      )
-
-      fireEvent.press(
+      await user.press(
         screen.getByText('J’ai lu et j’accepte les conditions générales d’utilisation*')
       )
-      await act(() => {
-        fireEvent.press(screen.getByText('J’ai lu la charte des données personnelles*'))
-      })
-      await act(() => fireEvent.press(screen.getByText('S’inscrire')))
 
-      const closeButton = screen.getByText('Fermer')
-      fireEvent.press(closeButton)
+      await user.press(screen.getByText('J’ai lu la charte des données personnelles*'))
+
+      await user.press(screen.getByText('S’inscrire'))
+
+      await user.press(await screen.findByText('Fermer'))
 
       expect(navigate).toHaveBeenCalledWith(
         navigateToHomeConfig.screen,
@@ -179,7 +194,7 @@ describe('Signup Form', () => {
       renderSignupForm()
 
       const goBackButton = await screen.findByTestId('Revenir en arrière')
-      fireEvent.press(goBackButton)
+      await user.press(goBackButton)
 
       expect(mockGoBack).toHaveBeenCalledTimes(1)
     })
@@ -188,17 +203,15 @@ describe('Signup Form', () => {
       renderSignupForm()
 
       const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
-      fireEvent.changeText(emailInput, 'email@gmail.com')
+      await user.type(emailInput, 'email@gmail.com')
 
       const continueButton = screen.getByText('Continuer')
-      await act(async () => {
-        fireEvent.press(continueButton)
-      })
+
+      await user.press(continueButton)
 
       const goBackButton = screen.getByTestId('Revenir en arrière')
-      await act(async () => {
-        fireEvent.press(goBackButton)
-      })
+
+      await user.press(goBackButton)
 
       const firstStepTitle = await screen.findByText('Crée-toi un compte')
 
@@ -210,26 +223,26 @@ describe('Signup Form', () => {
       renderSignupForm()
 
       const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
-      fireEvent.changeText(emailInput, 'email@gmail.com')
-      await act(() => fireEvent.press(screen.getByText('Continuer')))
+      await user.type(emailInput, 'email@gmail.com')
+      await user.press(screen.getByText('Continuer'))
 
       const passwordInput = screen.getByPlaceholderText('Ton mot de passe')
-      await act(async () => fireEvent.changeText(passwordInput, 'user@AZERTY123'))
-      await act(async () => fireEvent.press(screen.getByText('Continuer')))
+      await user.type(passwordInput, 'user@AZERTY123')
+      await user.press(screen.getByText('Continuer'))
 
       const datePicker = screen.getByTestId('date-picker-spinner-native')
       await act(async () =>
         fireEvent(datePicker, 'onChange', { nativeEvent: { timestamp: ELIGIBLE_AGE_DATE } })
       )
-      await act(async () => fireEvent.press(screen.getByText('Continuer')))
+      await user.press(screen.getByText('Continuer'))
 
-      fireEvent.press(
+      await user.press(
         screen.getByText('J’ai lu et j’accepte les conditions générales d’utilisation*')
       )
-      await act(() => {
-        fireEvent.press(screen.getByText('J’ai lu la charte des données personnelles*'))
-      })
-      await act(() => fireEvent.press(screen.getByText('S’inscrire')))
+
+      await user.press(screen.getByText('J’ai lu la charte des données personnelles*'))
+
+      await user.press(screen.getByText('S’inscrire'))
 
       expect(screen.queryByLabelText('Revenir en arrière')).not.toBeOnTheScreen()
     })
@@ -240,26 +253,26 @@ describe('Signup Form', () => {
     renderSignupForm()
 
     const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
-    fireEvent.changeText(emailInput, 'email@gmail.com')
-    await act(() => fireEvent.press(screen.getByText('Continuer')))
+    await user.type(emailInput, 'email@gmail.com')
+    await user.press(screen.getByText('Continuer'))
 
     const passwordInput = screen.getByPlaceholderText('Ton mot de passe')
-    await act(async () => fireEvent.changeText(passwordInput, 'user@AZERTY123'))
-    await act(async () => fireEvent.press(screen.getByText('Continuer')))
+    await user.type(passwordInput, 'user@AZERTY123')
+    await user.press(screen.getByText('Continuer'))
 
     const datePicker = screen.getByTestId('date-picker-spinner-native')
     await act(async () =>
       fireEvent(datePicker, 'onChange', { nativeEvent: { timestamp: ELIGIBLE_AGE_DATE } })
     )
-    await act(async () => fireEvent.press(screen.getByText('Continuer')))
+    await user.press(screen.getByText('Continuer'))
 
-    fireEvent.press(
+    await user.press(
       screen.getByText('J’ai lu et j’accepte les conditions générales d’utilisation*')
     )
-    await act(() => {
-      fireEvent.press(screen.getByText('J’ai lu la charte des données personnelles*'))
-    })
-    await act(() => fireEvent.press(screen.getByText('S’inscrire')))
+
+    await user.press(screen.getByText('J’ai lu la charte des données personnelles*'))
+
+    await user.press(screen.getByText('S’inscrire'))
 
     expect(screen.getByText('Confirme ton adresse e-mail')).toBeOnTheScreen()
   })
@@ -277,10 +290,9 @@ describe('Signup Form', () => {
       )
 
       const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
-      fireEvent.changeText(emailInput, 'email@gmail.com')
-      await act(async () => {
-        fireEvent.press(screen.getByTestId('Continuer vers l’étape Mot de passe'))
-      })
+      await user.type(emailInput, 'email@gmail.com')
+
+      await user.press(screen.getByTestId('Continuer vers l’étape Mot de passe'))
 
       expect(analytics.logStepperDisplayed).toHaveBeenNthCalledWith(
         2,
@@ -290,10 +302,8 @@ describe('Signup Form', () => {
       )
 
       const passwordInput = screen.getByPlaceholderText('Ton mot de passe')
-      await act(async () => fireEvent.changeText(passwordInput, 'user@AZERTY123'))
-      await act(async () =>
-        fireEvent.press(screen.getByTestId('Continuer vers l’étape Date de naissance'))
-      )
+      await user.type(passwordInput, 'user@AZERTY123')
+      await user.press(screen.getByTestId('Continuer vers l’étape Date de naissance'))
 
       expect(analytics.logStepperDisplayed).toHaveBeenNthCalledWith(
         3,
@@ -307,9 +317,7 @@ describe('Signup Form', () => {
         fireEvent(datePicker, 'onChange', { nativeEvent: { timestamp: ELIGIBLE_AGE_DATE } })
       })
 
-      await act(async () =>
-        fireEvent.press(screen.getByTestId('Continuer vers l’étape CGU & Données'))
-      )
+      await user.press(screen.getByTestId('Continuer vers l’étape CGU & Données'))
 
       expect(analytics.logStepperDisplayed).toHaveBeenNthCalledWith(
         4,
@@ -318,13 +326,13 @@ describe('Signup Form', () => {
         undefined
       )
 
-      fireEvent.press(
+      await user.press(
         screen.getByText('J’ai lu et j’accepte les conditions générales d’utilisation*')
       )
-      await act(() => {
-        fireEvent.press(screen.getByText('J’ai lu la charte des données personnelles*'))
-      })
-      await act(() => fireEvent.press(screen.getByText('S’inscrire')))
+
+      await user.press(screen.getByText('J’ai lu la charte des données personnelles*'))
+
+      await user.press(screen.getByText('S’inscrire'))
 
       expect(analytics.logStepperDisplayed).toHaveBeenNthCalledWith(
         5,
@@ -338,15 +346,15 @@ describe('Signup Form', () => {
       renderSignupForm()
 
       const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
-      fireEvent.changeText(emailInput, 'email@gmail.com')
+      await user.type(emailInput, 'email@gmail.com')
 
       const continueButton = screen.getByText('Continuer')
-      fireEvent.press(continueButton)
+      await user.press(continueButton)
 
       await screen.findAllByText('Mot de passe')
 
       const quitButton = screen.getByText('Quitter')
-      fireEvent.press(quitButton)
+      await user.press(quitButton)
 
       expect(analytics.logQuitSignup).toHaveBeenNthCalledWith(1, 'SetPassword')
     })
@@ -355,13 +363,13 @@ describe('Signup Form', () => {
       renderSignupForm()
 
       const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
-      fireEvent.changeText(emailInput, 'email@gmail.com')
-      fireEvent.press(screen.getByText('Continuer'))
+      await user.type(emailInput, 'email@gmail.com')
+      await user.press(screen.getByText('Continuer'))
 
       await screen.findAllByText('Mot de passe')
 
-      fireEvent.press(screen.getByText('Quitter'))
-      fireEvent.press(screen.getByText('Abandonner l’inscription'))
+      await user.press(screen.getByText('Quitter'))
+      await user.press(screen.getByText('Abandonner l’inscription'))
 
       expect(analytics.logCancelSignup).toHaveBeenCalledWith('Password')
     })
@@ -382,30 +390,26 @@ describe('Signup Form', () => {
       renderSignupForm()
 
       const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
-      fireEvent.changeText(emailInput, 'email@gmail.com')
-      await act(() => fireEvent.press(screen.getByLabelText('Continuer vers l’étape Mot de passe')))
+      await user.type(emailInput, 'email@gmail.com')
+
+      await user.press(screen.getByLabelText('Continuer vers l’étape Mot de passe'))
 
       const passwordInput = screen.getByPlaceholderText('Ton mot de passe')
-      await act(async () => fireEvent.changeText(passwordInput, 'user@AZERTY123'))
-      await act(async () =>
-        fireEvent.press(screen.getByLabelText('Continuer vers l’étape Date de naissance'))
-      )
+      await user.type(passwordInput, 'user@AZERTY123')
+      await user.press(screen.getByLabelText('Continuer vers l’étape Date de naissance'))
 
       const datePicker = screen.getByTestId('date-picker-spinner-native')
       await act(async () =>
         fireEvent(datePicker, 'onChange', { nativeEvent: { timestamp: ELIGIBLE_AGE_DATE } })
       )
-      await act(async () =>
-        fireEvent.press(screen.getByLabelText('Continuer vers l’étape CGU & Données'))
-      )
+      await user.press(screen.getByLabelText('Continuer vers l’étape CGU & Données'))
 
-      fireEvent.press(
+      await user.press(
         screen.getByText('J’ai lu et j’accepte les conditions générales d’utilisation*')
       )
-      await act(() => {
-        fireEvent.press(screen.getByText('J’ai lu la charte des données personnelles*'))
-      })
-      await act(() => fireEvent.press(screen.getByText('S’inscrire')))
+      await user.press(screen.getByText('J’ai lu la charte des données personnelles*'))
+
+      await user.press(screen.getByText('S’inscrire'))
 
       expect(apiSignUpSpy).toHaveBeenCalledWith(
         {
@@ -433,33 +437,30 @@ describe('Signup Form', () => {
       renderSignupForm()
 
       const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
-      fireEvent.changeText(emailInput, 'email@gmail.com')
-      await act(() => fireEvent.press(screen.getByTestId('Continuer vers l’étape Mot de passe')))
+      await user.type(emailInput, 'email@gmail.com')
+      await user.press(screen.getByTestId('Continuer vers l’étape Mot de passe'))
 
       const passwordInput = screen.getByPlaceholderText('Ton mot de passe')
-      await act(async () => fireEvent.changeText(passwordInput, 'user@AZERTY123'))
-      await act(async () =>
-        fireEvent.press(screen.getByTestId('Continuer vers l’étape Date de naissance'))
-      )
+      await user.type(passwordInput, 'user@AZERTY123')
+
+      await user.press(screen.getByTestId('Continuer vers l’étape Date de naissance'))
 
       const datePicker = screen.getByTestId('date-picker-spinner-native')
       await act(async () =>
         fireEvent(datePicker, 'onChange', { nativeEvent: { timestamp: ELIGIBLE_AGE_DATE } })
       )
-      await act(async () =>
-        fireEvent.press(screen.getByTestId('Continuer vers l’étape CGU & Données'))
-      )
+      await user.press(screen.getByTestId('Continuer vers l’étape CGU & Données'))
 
-      fireEvent.press(
+      await user.press(
         screen.getByText('J’ai lu et j’accepte les conditions générales d’utilisation*')
       )
-      await act(() => {
-        fireEvent.press(screen.getByText('J’ai lu la charte des données personnelles*'))
-      })
-      await act(() => fireEvent.press(screen.getByText('S’inscrire')))
+
+      await user.press(screen.getByText('J’ai lu la charte des données personnelles*'))
+
+      await user.press(screen.getByText('S’inscrire'))
 
       expect(eventMonitoring.captureException).toHaveBeenCalledWith(
-        new Error('NETWORK_REQUEST_FAILED')
+        new ApiError(400, '', 'Échec de la requête https://localhost/native/v1/account, code: 400')
       )
     })
   })
@@ -531,9 +532,9 @@ describe('Signup Form', () => {
       })
       renderSignupForm()
 
-      await act(async () => fireEvent.press(await screen.findByTestId('S’inscrire avec Google')))
+      await user.press(await screen.findByTestId('S’inscrire avec Google'))
 
-      await act(async () => fireEvent.press(screen.getByTestId('Revenir en arrière')))
+      await user.press(screen.getByTestId('Revenir en arrière'))
 
       expect(screen.getByText('Crée-toi un compte')).toBeOnTheScreen()
     })
@@ -555,7 +556,7 @@ describe('Signup Form', () => {
       await act(async () =>
         fireEvent(datePicker, 'onChange', { nativeEvent: { timestamp: ELIGIBLE_AGE_DATE } })
       )
-      await act(async () => fireEvent.press(screen.getByText('Continuer')))
+      await user.press(screen.getByText('Continuer'))
 
       expect(screen.getByText('S’inscrire')).toBeOnTheScreen()
       expect(screen.getByTestId('Revenir en arrière')).toBeOnTheScreen()
@@ -571,13 +572,13 @@ describe('Signup Form', () => {
 
       renderSignupForm()
 
-      await act(async () => fireEvent.press(await screen.findByTestId('S’inscrire avec Google')))
+      await user.press(await screen.findByTestId('S’inscrire avec Google'))
 
-      await act(async () => fireEvent.press(screen.getByTestId('Revenir en arrière')))
+      await user.press(screen.getByTestId('Revenir en arrière'))
 
       const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
-      fireEvent.changeText(emailInput, 'email@gmail.com')
-      await act(() => fireEvent.press(screen.getByText('Continuer')))
+      await user.type(emailInput, 'email@gmail.com')
+      await user.press(screen.getByText('Continuer'))
 
       expect(screen.getByText('Choisis un mot de passe')).toBeOnTheScreen()
     })
@@ -616,14 +617,14 @@ describe('Signup Form', () => {
       await act(async () =>
         fireEvent(datePicker, 'onChange', { nativeEvent: { timestamp: ELIGIBLE_AGE_DATE } })
       )
-      await act(async () => fireEvent.press(screen.getByText('Continuer')))
-      fireEvent.press(
+      await user.press(screen.getByText('Continuer'))
+      await user.press(
         screen.getByText('J’ai lu et j’accepte les conditions générales d’utilisation*')
       )
-      await act(() => {
-        fireEvent.press(screen.getByText('J’ai lu la charte des données personnelles*'))
-      })
-      await act(() => fireEvent.press(screen.getByText('S’inscrire')))
+
+      await user.press(screen.getByText('J’ai lu la charte des données personnelles*'))
+
+      await user.press(screen.getByText('S’inscrire'))
 
       expect(apiSSOSignUpSpy).toHaveBeenCalledWith(
         {
@@ -670,20 +671,20 @@ describe('Signup Form', () => {
         expect(ssoButton.props.focusable).toBeTruthy()
       })
 
-      await act(async () => fireEvent.press(ssoButton))
+      await user.press(ssoButton)
 
       const datePicker = screen.getByTestId('date-picker-spinner-native')
       await act(async () =>
         fireEvent(datePicker, 'onChange', { nativeEvent: { timestamp: ELIGIBLE_AGE_DATE } })
       )
-      await act(async () => fireEvent.press(screen.getByText('Continuer')))
-      fireEvent.press(
+      await user.press(screen.getByText('Continuer'))
+      await user.press(
         screen.getByText('J’ai lu et j’accepte les conditions générales d’utilisation*')
       )
-      await act(() => {
-        fireEvent.press(screen.getByText('J’ai lu la charte des données personnelles*'))
-      })
-      await act(() => fireEvent.press(screen.getByText('S’inscrire')))
+
+      await user.press(screen.getByText('J’ai lu la charte des données personnelles*'))
+
+      await user.press(screen.getByText('S’inscrire'))
 
       expect(loginAndRedirectMock).toHaveBeenCalledWith(
         {
@@ -720,14 +721,14 @@ describe('Signup Form', () => {
       await act(async () =>
         fireEvent(datePicker, 'onChange', { nativeEvent: { timestamp: ELIGIBLE_AGE_DATE } })
       )
-      await act(async () => fireEvent.press(screen.getByText('Continuer')))
-      fireEvent.press(
+      await user.press(screen.getByText('Continuer'))
+      await user.press(
         screen.getByText('J’ai lu et j’accepte les conditions générales d’utilisation*')
       )
-      await act(() => {
-        fireEvent.press(screen.getByText('J’ai lu la charte des données personnelles*'))
-      })
-      await act(() => fireEvent.press(screen.getByText('S’inscrire')))
+
+      await user.press(screen.getByText('J’ai lu la charte des données personnelles*'))
+
+      await user.press(screen.getByText('S’inscrire'))
 
       expect(loginAndRedirectMock).toHaveBeenCalledWith(
         {
@@ -780,14 +781,14 @@ describe('Signup Form', () => {
       await act(async () =>
         fireEvent(datePicker, 'onChange', { nativeEvent: { timestamp: ELIGIBLE_AGE_DATE } })
       )
-      await act(async () => fireEvent.press(screen.getByText('Continuer')))
-      fireEvent.press(
+      await user.press(screen.getByText('Continuer'))
+      await user.press(
         screen.getByText('J’ai lu et j’accepte les conditions générales d’utilisation*')
       )
-      await act(() => {
-        fireEvent.press(screen.getByText('J’ai lu la charte des données personnelles*'))
-      })
-      await act(() => fireEvent.press(screen.getByText('S’inscrire')))
+
+      await user.press(screen.getByText('J’ai lu la charte des données personnelles*'))
+
+      await user.press(screen.getByText('S’inscrire'))
 
       expect(apiSSOSignUpSpy).toHaveBeenCalledWith(
         {
@@ -819,8 +820,6 @@ describe('Signup Form', () => {
 
         renderSignupForm()
 
-        const ssoButton = await screen.findByTestId('S’inscrire avec Google')
-
         expect(analytics.logStepperDisplayed).toHaveBeenNthCalledWith(
           1,
           StepperOrigin.HOME,
@@ -828,35 +827,29 @@ describe('Signup Form', () => {
           undefined
         )
 
-        await waitFor(async () => {
-          expect(ssoButton.props.focusable).toBeTruthy()
-        })
+        await pressSSOButton()
 
-        await act(async () => fireEvent.press(ssoButton))
-
-        await waitFor(() => {
-          expect(analytics.logStepperDisplayed).toHaveBeenNthCalledWith(
-            2,
-            StepperOrigin.HOME,
-            PreValidationSignupStep.Birthday,
-            'SSO_signup'
-          )
-        })
+        expect(analytics.logStepperDisplayed).toHaveBeenNthCalledWith(
+          2,
+          StepperOrigin.HOME,
+          PreValidationSignupStep.Birthday,
+          'SSO_signup'
+        )
 
         const datePicker = screen.getByTestId('date-picker-spinner-native')
         await act(async () => {
           fireEvent(datePicker, 'onChange', { nativeEvent: { timestamp: ELIGIBLE_AGE_DATE } })
         })
 
-        await act(async () =>
-          fireEvent.press(screen.getByTestId('Continuer vers l’étape CGU & Données'))
-        )
+        await user.press(screen.getByTestId('Continuer vers l’étape CGU & Données'))
 
-        expect(analytics.logStepperDisplayed).toHaveBeenNthCalledWith(
-          3,
-          StepperOrigin.HOME,
-          PreValidationSignupStep.CGU,
-          'SSO_signup'
+        await waitFor(() =>
+          expect(analytics.logStepperDisplayed).toHaveBeenNthCalledWith(
+            3,
+            StepperOrigin.HOME,
+            PreValidationSignupStep.CGU,
+            'SSO_signup'
+          )
         )
       })
 
@@ -891,9 +884,7 @@ describe('Signup Form', () => {
           fireEvent(datePicker, 'onChange', { nativeEvent: { timestamp: ELIGIBLE_AGE_DATE } })
         })
 
-        await act(async () =>
-          fireEvent.press(screen.getByTestId('Continuer vers l’étape CGU & Données'))
-        )
+        await user.press(screen.getByTestId('Continuer vers l’étape CGU & Données'))
 
         expect(analytics.logStepperDisplayed).toHaveBeenNthCalledWith(
           3,
@@ -915,5 +906,6 @@ const pressSSOButton = async () => {
   await waitFor(async () => {
     SSOButton = await screen.findByTestId('S’inscrire avec Google')
   })
+  // userEvent.press is not working correctly with SSOButton :'(
   await act(async () => fireEvent.press(SSOButton))
 }

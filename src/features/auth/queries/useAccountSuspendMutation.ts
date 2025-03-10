@@ -2,12 +2,15 @@ import { useMutation } from 'react-query'
 
 import { api } from 'api/api'
 
-type UseAccountSuspendOptions = {
+type UseAccountSuspendMutationOptions = {
   onSuccess?: () => void
   onError?: (error: unknown) => void
 }
 
-export function useAccountSuspend({ onSuccess, onError }: UseAccountSuspendOptions = {}) {
+export function useAccountSuspendMutation({
+  onSuccess,
+  onError,
+}: UseAccountSuspendMutationOptions = {}) {
   const { mutate: suspendAccount, isLoading } = useMutation(
     () => api.postNativeV1AccountSuspend(),
     {

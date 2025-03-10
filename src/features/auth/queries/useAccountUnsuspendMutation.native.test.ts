@@ -2,7 +2,7 @@ import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, waitFor } from 'tests/utils'
 
-import { useAccountUnsuspend } from './useAccountUnsuspend'
+import { useAccountUnsuspendMutation } from './useAccountUnsuspendMutation'
 
 jest.mock('libs/jwt/jwt')
 const onSuccess = jest.fn()
@@ -43,6 +43,6 @@ describe('useAccountUnsuspend', () => {
 })
 
 const renderAccountUnsuspendHook = () =>
-  renderHook(() => useAccountUnsuspend(onSuccess, onError), {
+  renderHook(() => useAccountUnsuspendMutation(onSuccess, onError), {
     wrapper: ({ children }) => reactQueryProviderHOC(children),
   })
