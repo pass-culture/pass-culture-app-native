@@ -6,7 +6,7 @@ import { MaintenanceCone } from 'ui/svg/icons/MaintenanceCone'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
 import { TypoDS } from 'ui/theme'
 
-const onPress = () => 'doNothing'
+const onPress = jest.fn()
 
 describe('<GenericInfoPageWhite />', () => {
   describe('Accessibility', () => {
@@ -18,9 +18,19 @@ describe('<GenericInfoPageWhite />', () => {
           illustration={MaintenanceCone}
           title="Title"
           subtitle="Subtitle"
-          buttonPrimary={{ wording: 'ButtonPrimary', action: onPress }}
-          buttonSecondary={{ wording: 'ButtonSecondary', action: onPress }}
-          buttonTertiary={{ wording: 'ButtonTertiary', action: onPress, icon: PlainArrowPrevious }}>
+          buttonPrimary={{
+            wording: 'ButtonPrimary',
+            navigateTo: { screen: 'CheatcodesNavigationGenericPages' },
+          }}
+          buttonSecondary={{
+            wording: 'ButtonSecondary',
+            onPress: onPress,
+          }}
+          buttonTertiary={{
+            wording: 'ButtonTertiary',
+            navigateTo: { screen: 'CheatcodesNavigationGenericPages' },
+            icon: PlainArrowPrevious,
+          }}>
           <TypoDS.Body>Children...</TypoDS.Body>
         </GenericInfoPageWhite>
       )
