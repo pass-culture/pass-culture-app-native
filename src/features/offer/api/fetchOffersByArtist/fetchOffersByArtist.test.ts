@@ -1,6 +1,6 @@
 import { SearchResponse } from '@algolia/client-search'
 
-import { SearchGroupNameEnumv2 } from 'api/gen'
+import { SubcategoryIdEnum } from 'api/gen'
 import {
   buildAlgoliaFilter,
   fetchOffersByArtist,
@@ -15,7 +15,7 @@ const mockMultipleQueries = jest.spyOn(multipleQueries, 'multipleQueries')
 const mockUserLocation: Position = { latitude: 2, longitude: 2 }
 
 describe('fetchOffersByArtist', () => {
-  it('should execute the multiple queries if artist is provided, searchGroupName is a book, and artist is not "collectif"', async () => {
+  it('should execute the multiple queries if artist is provided, subcategory is a book, and artist is not "collectif"', async () => {
     mockMultipleQueries.mockResolvedValueOnce([
       {
         hits: [],
@@ -26,7 +26,7 @@ describe('fetchOffersByArtist', () => {
     ])
     await fetchOffersByArtist({
       artists: 'Eiichiro Oda',
-      searchGroupName: SearchGroupNameEnumv2.LIVRES,
+      subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
       userLocation: mockUserLocation,
     })
 
@@ -65,37 +65,37 @@ describe('fetchOffersByArtist', () => {
 
     const result = await fetchOffersByArtist({
       artists: 'Eiichiro Oda',
-      searchGroupName: SearchGroupNameEnumv2.LIVRES,
+      subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
       userLocation: mockUserLocation,
     })
 
     expect(result).toEqual({ playlistHits: [], topOffersHits: [] })
   })
 
-  it('should not execute the query if artist is provided, searchGroupName is not a book and artist is not "collectif"', async () => {
+  it('should not execute the query if artist is provided, subcategory is not a book and artist is not "collectif"', async () => {
     await fetchOffersByArtist({
       artists: 'Eiichiro Oda',
-      searchGroupName: SearchGroupNameEnumv2.CINEMA,
+      subcategoryId: SubcategoryIdEnum.SEANCE_CINE,
       userLocation: mockUserLocation,
     })
 
     expect(mockMultipleQueries).not.toHaveBeenCalled()
   })
 
-  it('should not execute the query if artist is provided, searchGroupName is a book, and artist is "COLLECTIF"', async () => {
+  it('should not execute the query if artist is provided, subcategory is a book, and artist is "COLLECTIF"', async () => {
     await fetchOffersByArtist({
       artists: 'COLLECTIF',
-      searchGroupName: SearchGroupNameEnumv2.CINEMA,
+      subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
       userLocation: mockUserLocation,
     })
 
     expect(mockMultipleQueries).not.toHaveBeenCalled()
   })
 
-  it('should not execute the query if artist is provided, searchGroupName is a book, and artist is "COLLECTIFS"', async () => {
+  it('should not execute the query if artist is provided, subcategory is a book, and artist is "COLLECTIFS"', async () => {
     await fetchOffersByArtist({
       artists: 'COLLECTIFS',
-      searchGroupName: SearchGroupNameEnumv2.CINEMA,
+      subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
       userLocation: mockUserLocation,
     })
 

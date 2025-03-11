@@ -1,4 +1,4 @@
-import { SearchGroupNameEnumv2 } from 'api/gen'
+import { SubcategoryIdEnum } from 'api/gen'
 import { useArtistResults } from 'features/offer/helpers/useArtistResults/useArtistResults'
 import { mockedAlgoliaOffersWithSameArtistResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { Position } from 'libs/location/types'
@@ -31,7 +31,7 @@ describe('useArtistResults', () => {
       () =>
         useArtistResults({
           artists: 'Eiichiro Oda',
-          searchGroupName: SearchGroupNameEnumv2.LIVRES,
+          subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
         }),
       {
         wrapper: ({ children }) => reactQueryProviderHOC(children),
@@ -41,7 +41,7 @@ describe('useArtistResults', () => {
     await waitFor(() => {
       expect(fetchOffersByArtistSpy).toHaveBeenCalledWith({
         artists: 'Eiichiro Oda',
-        searchGroupName: SearchGroupNameEnumv2.LIVRES,
+        subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
         userLocation: mockUserLocation,
       })
     })
@@ -54,7 +54,7 @@ describe('useArtistResults', () => {
       () =>
         useArtistResults({
           artists: 'Eiichiro Oda',
-          searchGroupName: SearchGroupNameEnumv2.LIVRES,
+          subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
         }),
       {
         wrapper: ({ children }) => reactQueryProviderHOC(children),
@@ -73,7 +73,7 @@ describe('useArtistResults', () => {
       () =>
         useArtistResults({
           artists: 'Eiichiro Oda',
-          searchGroupName: SearchGroupNameEnumv2.LIVRES,
+          subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
         }),
       {
         wrapper: ({ children }) => reactQueryProviderHOC(children),
