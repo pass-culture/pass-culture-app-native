@@ -67,7 +67,7 @@ export const OfferBody: FunctionComponent<Props> = ({ offer, subcategory, childr
 
   const { artistPlaylist: artistOffers } = useArtistResults({
     artists,
-    searchGroupName: subcategory.searchGroupName,
+    subcategoryId: offer.subcategoryId,
   })
 
   const hasAccessToArtistPage =

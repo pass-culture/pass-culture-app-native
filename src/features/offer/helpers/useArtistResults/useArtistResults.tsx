@@ -2,7 +2,7 @@ import { Hit } from '@algolia/client-search'
 import { useCallback, useMemo } from 'react'
 import { useQuery } from 'react-query'
 
-import { SearchGroupNameEnumv2 } from 'api/gen'
+import { SubcategoryIdEnum } from 'api/gen'
 import { fetchOffersByArtist } from 'features/offer/api/fetchOffersByArtist/fetchOffersByArtist'
 import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { AlgoliaOfferWithArtistAndEan } from 'libs/algolia/types'
@@ -11,11 +11,11 @@ import { formatDistance } from 'libs/parsers/formatDistance'
 import { QueryKeys } from 'libs/queryKeys'
 
 type UseArtistResultsProps = {
-  searchGroupName: SearchGroupNameEnumv2
+  subcategoryId: SubcategoryIdEnum
   artists?: string | null
 }
 
-export const useArtistResults = ({ artists, searchGroupName }: UseArtistResultsProps) => {
+export const useArtistResults = ({ artists, subcategoryId }: UseArtistResultsProps) => {
   const transformHits = useTransformOfferHits()
   const { userLocation } = useLocation()
 
@@ -24,7 +24,7 @@ export const useArtistResults = ({ artists, searchGroupName }: UseArtistResultsP
     async () => {
       const { playlistHits, topOffersHits } = await fetchOffersByArtist({
         artists,
-        searchGroupName,
+        subcategoryId,
         userLocation,
       })
       return { playlistHits, topOffersHits }
