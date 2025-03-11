@@ -35,11 +35,13 @@ Finally, open the Android Virtual Devices Manager and select (or create) a Virtu
 
 ### Install
 
-In the `.env.local` file, add
+In the `.env.local` file (create the file if not exists), add
 
 ```sh
 SECRET_KEYTOOL_PASSWORD=THE_PASSWORD # replace THE_PASSWORD with the one from Keeper search for "Android keytool password"
 ```
+
+then in your terminal run :
 
 ```sh
 ./scripts/install_certificate_java.sh # this script ask root password
@@ -66,6 +68,48 @@ This will also start the metro server. If not, run in another tab :
 yarn start
 ```
 
+### Emulator
+
+#### Download Android image
+
+1. Open Android Studio
+1. Open settings
+1. In settings, search "Android SDK" and open it
+1. Check "Show Package Details" (in bottom right)
+1. Unfold some image versions (any [version supported](../../android/build.gradle))
+1. Check "Google APIs `*` System Image"
+
+   Where `*` match you CPU architecture that you can know using the following command in the terminal
+
+   ```sh
+   uname -m
+   ```
+
+   Example: `Google APIs ARM 64 v8a System Image`
+
+   This type of image is known to work unlike to "Google APIs **ATD**" which is known to have issues
+
+1. Click on "OK", this will download stuff
+
+#### Create an emulator
+
+1. Open Android Studio
+1. Open Device Manager
+1. Click on "Add a new device"
+1. Click on "Create Virtual Device"
+1. Choose any hardware
+1. Choose [a "Google APIs" image that have been previously downloaded](#download-android-image), you may have to go to the "Other Images" tab
+
+If you have a pass Culture's computer, which has a proxy that adds a custom certificate.
+
+1. Start your emulator at least once
+1. Stop your emulator
+1. Run in a terminal
+
+   ```sh
+   yarn android:testing
+   ```
+
 ### Troubleshooting
 
 <details>
@@ -73,7 +117,7 @@ yarn start
 
 In Android Studio: File > Settings > Experimental > Gradle -> uncheck "Only sync the active variant" checkbox.
 
-En cas de soucis avec le JDK installer via `brew install --cask temurin@17` et ajouter le chemin `JAVA_HOME=/Library/Java/JavaVirtualMachines/temurin-17.jdk/Contents/Home` dans .zshrc
+If you encounter an issue with JDK, install using `brew install --cask temurin@17` and add the path `JAVA_HOME=/Library/Java/JavaVirtualMachines/temurin-17.jdk/Contents/Home` in .zshrc
 
 </details>
 <details>
