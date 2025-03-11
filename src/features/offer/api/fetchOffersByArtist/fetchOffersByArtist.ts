@@ -1,6 +1,7 @@
 import { MultipleQueriesQuery, SearchResponse } from '@algolia/client-search'
 
-import { SearchGroupNameEnumv2 } from 'api/gen'
+import { SubcategoryIdEnum } from 'api/gen'
+import { ARTIST_PAGE_SUBCATEGORIES } from 'features/artist/constants'
 import { EXCLUDED_ARTISTS } from 'features/offer/helpers/constants'
 import { captureAlgoliaError } from 'libs/algolia/fetchAlgolia/AlgoliaError'
 import { offerAttributesToRetrieve } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/offerAttributesToRetrieve'
@@ -14,13 +15,13 @@ type BuildAlgoliaFilterType = {
 }
 
 export type FetchOfferByArtist = BuildAlgoliaFilterType & {
-  searchGroupName: SearchGroupNameEnumv2
+  subcategoryId: SubcategoryIdEnum
   userLocation: Position
 }
 
 export const fetchOffersByArtist = async ({
   artists,
-  searchGroupName,
+  subcategoryId,
   userLocation,
 }: FetchOfferByArtist) => {
   const queries: MultipleQueriesQuery[] = [
@@ -62,8 +63,7 @@ export const fetchOffersByArtist = async ({
   if (
     !artists ||
     EXCLUDED_ARTISTS.includes(artists.toLowerCase()) ||
-    (searchGroupName !== SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE &&
-      searchGroupName !== SearchGroupNameEnumv2.LIVRES)
+    !ARTIST_PAGE_SUBCATEGORIES.includes(subcategoryId)
   )
     return { playlistHits: [], topOffersHits: [] }
 

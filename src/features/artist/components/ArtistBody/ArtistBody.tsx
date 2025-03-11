@@ -43,7 +43,7 @@ export const ArtistBody: FunctionComponent<Props> = ({ offer, artist, subcategor
   const artists = getOfferArtists(subcategory.categoryId, offer)
   const { artistPlaylist, artistTopOffers } = useArtistResults({
     artists,
-    searchGroupName: subcategory.searchGroupName,
+    subcategoryId: offer.subcategoryId,
   })
 
   const { top } = useSafeAreaInsets()
