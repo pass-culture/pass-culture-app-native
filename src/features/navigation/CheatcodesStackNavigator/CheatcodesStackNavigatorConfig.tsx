@@ -10,6 +10,8 @@ export const cheatcodesStackNavigatorConfig = {
       CheatcodesNavigationCulturalSurvey: 'cheatcodes/cultural-survey',
       CheatcodesNavigationErrors: 'cheatcodes/other/errors',
       CheatcodesNavigationForceUpdate: 'cheatcodes/other/force-update',
+      CheatcodesScreenGenericInfoPageWhite: 'cheatcodes/other/generic-info-page-white',
+      CheatcodesNavigationGenericPages: 'cheatcodes/other/generic-pages',
       CheatcodesNavigationHome: 'cheatcodes/home',
       CheatcodesNavigationIdentityCheck: 'cheatcodes/identity-check',
       CheatcodesNavigationInternal: 'cheatcodes/internal',
