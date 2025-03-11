@@ -23,7 +23,7 @@ appId: ${MAESTRO_APP_ID}
       platform: Android
     commands:
     - tapOn:
-        text: 'CDs'
+        text: 'CD'
         index: 1
 
 - runFlow:
@@ -36,7 +36,7 @@ appId: ${MAESTRO_APP_ID}
           id: "animated-icon-back"
       - scroll
       - tapOn:
-          text: 'CDs'
+          text: 'CD'
           index: 2
 
 - runFlow:
@@ -68,7 +68,7 @@ appId: ${MAESTRO_APP_ID}
           id: "animated-icon-back"
       - scroll
       - tapOn:
-          text: 'CDs'
+          text: 'CD'
           index: 3
 
 - runFlow:
@@ -99,7 +99,7 @@ appId: ${MAESTRO_APP_ID}
       platform: Android
     commands:
     - tapOn:
-        text: 'CDs'
+        text: 'CD'
     - tapOn:
         id: 'animated-icon-favorite'
     - tapOn:
