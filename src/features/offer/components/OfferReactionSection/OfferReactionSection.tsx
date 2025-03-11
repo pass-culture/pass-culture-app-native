@@ -26,7 +26,9 @@ export const OfferReactionSection: FunctionComponent<Props> = ({ offer }) => {
     [bookings, offer.id]
   )
 
-  const shouldDisplayReactions = offer.reactionsCount.likes > 0 || offer.chronicles.length > 0
+  const hasLikes = offer.reactionsCount.likes > 0
+  const hasChronicles = offer.chronicles.length > 0
+  const shouldDisplayReactions = hasLikes || hasChronicles
   const canDisplayReactionSection =
     isReactionFeatureActive && (shouldDisplayReactions || userBooking?.canReact)
 
@@ -45,18 +47,21 @@ export const OfferReactionSection: FunctionComponent<Props> = ({ offer }) => {
     [addReaction, offer.id, userBooking?.userReaction]
   )
 
+  const likesCounterElement = hasLikes ? (
+    <LikesInfoCounter text={`${offer.reactionsCount.likes} j’aime`} />
+  ) : null
+  const chroniclesCounterElement = hasChronicles ? (
+    <ChroniclesInfoCounter text={`${offer.chronicles.length} avis`} />
+  ) : null
+
   if (!canDisplayReactionSection) return null
 
   return (
     <ViewGap gap={4}>
       {shouldDisplayReactions ? (
         <InfosCounterContainer gap={2}>
-          {offer.reactionsCount.likes > 0 ? (
-            <LikesInfoCounter text={`${offer.reactionsCount.likes} j’aime`} />
-          ) : null}
-          {offer.chronicles.length > 0 ? (
-            <ChroniclesInfoCounter text={`${offer.chronicles.length} avis`} />
-          ) : null}
+          {likesCounterElement}
+          {chroniclesCounterElement}
         </InfosCounterContainer>
       ) : null}
 
