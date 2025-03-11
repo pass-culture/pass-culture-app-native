@@ -13,7 +13,8 @@ const Template: ComponentStory<typeof OfferAccessibility> = (props) => (
   <OfferAccessibility {...props} />
 )
 
-export const Default = Template.bind({})
+// Todo(PC-35077) fix this story, read the associated ticket to follow the different choices offered
+const Default = Template.bind({})
 Default.args = {
   accessibility: {
     audioDisability: true,
