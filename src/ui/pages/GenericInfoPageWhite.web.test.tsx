@@ -6,6 +6,9 @@ import { MaintenanceCone } from 'ui/svg/icons/MaintenanceCone'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
 import { TypoDS } from 'ui/theme'
 
+jest.mock('libs/firebase/analytics/analytics')
+jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
+
 const onPress = jest.fn()
 
 describe('<GenericInfoPageWhite />', () => {

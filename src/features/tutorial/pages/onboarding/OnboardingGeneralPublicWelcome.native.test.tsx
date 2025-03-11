@@ -7,6 +7,7 @@ import { userEvent, render, screen } from 'tests/utils'
 
 import { OnboardingGeneralPublicWelcome } from './OnboardingGeneralPublicWelcome'
 
+jest.mock('libs/firebase/analytics/analytics')
 jest.useFakeTimers()
 
 describe('OnboardingGeneralPublicWelcome', () => {

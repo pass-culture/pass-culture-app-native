@@ -14,9 +14,11 @@ import {
   PageHeaderWithoutPlaceholder,
   useGetHeaderHeight,
 } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
+import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import { InternalNavigationProps } from 'ui/components/touchableLink/types'
+import { ExternalNavigationProps, InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -24,9 +26,27 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 type ButtonProps = {
   wording: string
   icon?: FunctionComponent<AccessibleIcon>
+  disabled?: boolean
+  isLoading?: boolean
 } & (
-  | { navigateTo: InternalNavigationProps['navigateTo']; onPress?: never }
-  | { onPress: () => void; navigateTo?: never }
+  | {
+      onPress: () => void
+      onBeforeNavigate?: () => void
+      navigateTo?: never
+      externalNav?: never
+    }
+  | {
+      navigateTo: InternalNavigationProps['navigateTo']
+      onBeforeNavigate?: () => void
+      onPress?: never
+      externalNav?: never
+    }
+  | {
+      externalNav: ExternalNavigationProps['externalNav']
+      onBeforeNavigate?: () => void
+      onPress?: never
+      navigateTo?: never
+    }
 )
 
 type Props = PropsWithChildren<
@@ -95,54 +115,104 @@ export const GenericInfoPageWhite: React.FunctionComponent<Props> = ({
         {isDesktopViewport ? null : <Spacer.Flex flex={1} />}
 
         <ButtonContainer gap={4}>
+          {buttonPrimary.onPress ? (
+            <ButtonPrimary
+              key={1}
+              wording={buttonPrimary.wording}
+              onPress={buttonPrimary.onPress}
+              isLoading={buttonPrimary.isLoading}
+              disabled={buttonPrimary.disabled}
+            />
+          ) : null}
+
           {buttonPrimary.navigateTo ? (
             <InternalTouchableLink
               key={1}
               as={ButtonPrimary}
               wording={buttonPrimary.wording}
               navigateTo={buttonPrimary.navigateTo}
+              isLoading={buttonPrimary.isLoading}
+              disabled={buttonPrimary.disabled}
             />
           ) : null}
 
-          {buttonPrimary.onPress ? (
-            <ButtonPrimary
+          {buttonPrimary.externalNav ? (
+            <ExternalTouchableLink
               key={1}
+              as={ButtonPrimary}
               wording={buttonPrimary.wording}
-              onPress={buttonPrimary.onPress}
+              externalNav={buttonPrimary.externalNav}
+              isLoading={buttonPrimary.isLoading}
+              disabled={buttonPrimary.disabled}
+              icon={ExternalSiteFilled}
             />
           ) : null}
 
-          {buttonSecondary && buttonSecondary.navigateTo ? (
+          {buttonSecondary?.onPress ? (
+            <ButtonSecondary
+              key={2}
+              wording={buttonSecondary.wording}
+              onPress={buttonSecondary.onPress}
+              isLoading={buttonPrimary.isLoading}
+              disabled={buttonPrimary.disabled}
+            />
+          ) : null}
+
+          {buttonSecondary?.navigateTo ? (
             <InternalTouchableLink
               key={2}
               as={ButtonSecondary}
               wording={buttonSecondary.wording}
               navigateTo={buttonSecondary.navigateTo}
+              isLoading={buttonPrimary.isLoading}
+              disabled={buttonPrimary.disabled}
             />
           ) : null}
 
-          {buttonSecondary && buttonSecondary.onPress ? (
-            <ButtonSecondary
+          {buttonSecondary?.externalNav ? (
+            <ExternalTouchableLink
               key={2}
+              as={ButtonSecondary}
               wording={buttonSecondary.wording}
-              onPress={buttonSecondary.onPress}
+              externalNav={buttonSecondary.externalNav}
+              isLoading={buttonSecondary.isLoading}
+              disabled={buttonSecondary.disabled}
+              icon={ExternalSiteFilled}
             />
           ) : null}
 
-          {buttonTertiary && buttonTertiary.navigateTo ? (
+          {buttonTertiary?.onPress ? (
+            <ButtonTertiaryBlack
+              key={buttonTertiary ? 3 : 2}
+              wording={buttonTertiary.wording}
+              onPress={buttonTertiary.onPress}
+              isLoading={buttonTertiary.isLoading}
+              disabled={buttonTertiary.disabled}
+              icon={buttonTertiary.icon}
+            />
+          ) : null}
+
+          {buttonTertiary?.navigateTo ? (
             <InternalTouchableLink
-              key={buttonSecondary ? 3 : 2}
+              key={buttonTertiary ? 3 : 2}
               as={ButtonTertiaryBlack}
               wording={buttonTertiary.wording}
               navigateTo={buttonTertiary.navigateTo}
+              isLoading={buttonTertiary.isLoading}
+              disabled={buttonTertiary.disabled}
+              icon={buttonTertiary.icon}
             />
           ) : null}
 
-          {buttonTertiary && buttonTertiary.onPress ? (
-            <ButtonTertiaryBlack
-              key={buttonSecondary ? 3 : 2}
+          {buttonTertiary?.externalNav ? (
+            <ExternalTouchableLink
+              key={buttonTertiary ? 3 : 2}
+              as={ButtonTertiaryBlack}
               wording={buttonTertiary.wording}
-              onPress={buttonTertiary.onPress}
+              externalNav={buttonTertiary.externalNav}
+              isLoading={buttonTertiary.isLoading}
+              disabled={buttonTertiary.disabled}
+              icon={ExternalSiteFilled}
             />
           ) : null}
         </ButtonContainer>

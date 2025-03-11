@@ -1,10 +1,13 @@
 import React from 'react'
 
 import { render, screen } from 'tests/utils'
-import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
 import { MaintenanceCone } from 'ui/svg/icons/MaintenanceCone'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
 import { TypoDS } from 'ui/theme'
+
+import { GenericInfoPageWhite } from './GenericInfoPageWhite'
+
+jest.mock('libs/firebase/analytics/analytics')
 
 const onPress = jest.fn()
 
