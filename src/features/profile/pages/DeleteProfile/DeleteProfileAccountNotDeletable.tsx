@@ -11,7 +11,7 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
+import { GenericInfoPageWhiteLegacy } from 'ui/pages/GenericInfoPageWhiteLegacy'
 import { BellFilled } from 'ui/svg/icons/BellFilled'
 import { BicolorError } from 'ui/svg/icons/BicolorError'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
@@ -27,7 +27,7 @@ export const DeleteProfileAccountNotDeletable: FC = () => {
   const { illustrations } = useTheme()
 
   return (
-    <GenericInfoPageWhite
+    <GenericInfoPageWhiteLegacy
       headerGoBack
       separateIconFromTitle={false}
       icon={BicolorError}
@@ -65,7 +65,7 @@ export const DeleteProfileAccountNotDeletable: FC = () => {
           />
         </ContentBottom>
       </Content>
-    </GenericInfoPageWhite>
+    </GenericInfoPageWhiteLegacy>
   )
 }
 

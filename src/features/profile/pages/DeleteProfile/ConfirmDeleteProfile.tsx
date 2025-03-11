@@ -14,7 +14,7 @@ import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { VerticalUl } from 'ui/components/Ul'
-import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
+import { GenericInfoPageWhiteLegacy } from 'ui/pages/GenericInfoPageWhiteLegacy'
 import { BicolorError } from 'ui/svg/icons/BicolorError'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { getSpacing, Spacer, TypoDS } from 'ui/theme'
@@ -40,7 +40,7 @@ export function ConfirmDeleteProfile() {
   })
 
   return (
-    <GenericInfoPageWhite
+    <GenericInfoPageWhiteLegacy
       headerGoBack
       goBackParams={getProfileStackConfig('Profile')}
       separateIconFromTitle={false}
@@ -88,7 +88,7 @@ export function ConfirmDeleteProfile() {
           />
         </ButtonContainer>
       </Content>
-    </GenericInfoPageWhite>
+    </GenericInfoPageWhiteLegacy>
   )
 }
 

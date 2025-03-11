@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<GenericInfoPageWhite /> should render correctly 1`] = `
+exports[`<GenericInfoPageWhiteLegacy /> should render correctly 1`] = `
 <View
   style={
     [
@@ -77,7 +77,7 @@ exports[`<GenericInfoPageWhite /> should render correctly 1`] = `
       ]
     }
   >
-    GenericInfoPageWhite
+    GenericInfoPageWhiteLegacy
   </Text>
   <View
     flex={0.5}

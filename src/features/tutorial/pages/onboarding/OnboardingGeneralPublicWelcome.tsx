@@ -8,7 +8,7 @@ import QpiThanks from 'ui/animations/qpi_thanks.json'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
+import { GenericInfoPageWhiteLegacy } from 'ui/pages/GenericInfoPageWhiteLegacy'
 import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 
 export const OnboardingGeneralPublicWelcome = () => {
@@ -17,7 +17,7 @@ export const OnboardingGeneralPublicWelcome = () => {
     reset({ index: 0, routes: [{ name: homeNavConfig[0] }] })
   }
   return (
-    <GenericInfoPageWhite
+    <GenericInfoPageWhiteLegacy
       mobileBottomFlex={0.1}
       animation={QpiThanks}
       onSkip={navigateToHomeWithReset}
@@ -47,7 +47,7 @@ export const OnboardingGeneralPublicWelcome = () => {
           }}
         />
       </ButtonContainer>
-    </GenericInfoPageWhite>
+    </GenericInfoPageWhiteLegacy>
   )
 }
 

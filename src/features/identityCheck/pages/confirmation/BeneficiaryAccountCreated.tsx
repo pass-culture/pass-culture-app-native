@@ -21,7 +21,7 @@ import { AnimatedProgressBar } from 'ui/components/bars/AnimatedProgressBar'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
-import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
+import { GenericInfoPageWhiteLegacy } from 'ui/pages/GenericInfoPageWhiteLegacy'
 import { categoriesIcons } from 'ui/svg/icons/bicolor/exports/categoriesIcons'
 import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 import { getNoHeadingAttrs } from 'ui/theme/typographyAttrs/getNoHeadingAttrs'
@@ -78,7 +78,7 @@ export function BeneficiaryAccountCreated() {
   useEnterKeyAction(navigateToHome)
 
   return (
-    <GenericInfoPageWhite animation={TutorialPassLogo} title="Bonne nouvelle&nbsp;!">
+    <GenericInfoPageWhiteLegacy animation={TutorialPassLogo} title="Bonne nouvelle&nbsp;!">
       <StyledSubtitle>{enableCreditV3 ? subtitleV3 : subtitle}</StyledSubtitle>
 
       <Spacer.Column numberOfSpaces={4} />
@@ -106,7 +106,7 @@ export function BeneficiaryAccountCreated() {
           onBeforeNavigate={onBeforeNavigate}
         />
       </ButtonContainer>
-    </GenericInfoPageWhite>
+    </GenericInfoPageWhiteLegacy>
   )
 }
 

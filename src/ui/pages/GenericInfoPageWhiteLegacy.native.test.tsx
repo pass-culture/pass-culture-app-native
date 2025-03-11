@@ -1,24 +1,26 @@
 import React from 'react'
 
 import { render, screen, userEvent } from 'tests/utils'
-import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
+import { GenericInfoPageWhiteLegacy } from 'ui/pages/GenericInfoPageWhiteLegacy'
 import { BicolorPhonePending } from 'ui/svg/icons/BicolorPhonePending'
 
 const onSkip = jest.fn()
 const user = userEvent.setup()
 jest.useFakeTimers()
 
-describe('<GenericInfoPageWhite />', () => {
+describe('<GenericInfoPageWhiteLegacy />', () => {
   it('should render correctly', () => {
-    render(<GenericInfoPageWhite title="GenericInfoPageWhite" icon={BicolorPhonePending} />)
+    render(
+      <GenericInfoPageWhiteLegacy title="GenericInfoPageWhiteLegacy" icon={BicolorPhonePending} />
+    )
 
     expect(screen).toMatchSnapshot()
   })
 
   it('should call skip when onSkip is provided', async () => {
     render(
-      <GenericInfoPageWhite
-        title="GenericInfoPageWhite"
+      <GenericInfoPageWhiteLegacy
+        title="GenericInfoPageWhiteLegacy"
         icon={BicolorPhonePending}
         onSkip={onSkip}
       />

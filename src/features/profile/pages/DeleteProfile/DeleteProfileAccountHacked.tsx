@@ -7,7 +7,7 @@ import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
+import { GenericInfoPageWhiteLegacy } from 'ui/pages/GenericInfoPageWhiteLegacy'
 import { Clear } from 'ui/svg/icons/Clear'
 import { BicolorUserBlocked } from 'ui/svg/icons/UserBlocked'
 import { TypoDS } from 'ui/theme'
@@ -22,7 +22,7 @@ export const DeleteProfileAccountHacked: FC = () => {
   }
 
   return (
-    <GenericInfoPageWhite
+    <GenericInfoPageWhiteLegacy
       headerGoBack
       separateIconFromTitle={false}
       icon={BicolorUserBlocked}
@@ -52,7 +52,7 @@ export const DeleteProfileAccountHacked: FC = () => {
           </StyledBody>
         </ContentBottom>
       </ViewGap>
-    </GenericInfoPageWhite>
+    </GenericInfoPageWhiteLegacy>
   )
 }
 

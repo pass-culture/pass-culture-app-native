@@ -10,7 +10,7 @@ import { InformationWithIcon } from 'ui/components/InformationWithIcon'
 import { Li } from 'ui/components/Li'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { VerticalUl } from 'ui/components/Ul'
-import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
+import { GenericInfoPageWhiteLegacy } from 'ui/pages/GenericInfoPageWhiteLegacy'
 import { BicolorClock } from 'ui/svg/icons/BicolorClock'
 import { BicolorConfirmation } from 'ui/svg/icons/BicolorConfirmation'
 import { BicolorIdCard } from 'ui/svg/icons/BicolorIdCard'
@@ -55,7 +55,7 @@ export const DMSIntroduction = (): React.JSX.Element => {
       }
 
   return (
-    <GenericInfoPageWhite
+    <GenericInfoPageWhiteLegacy
       icon={LogoDMS}
       titleComponent={TypoDS.Title2}
       title="Identifie-toi sur le site demarches-simplifiees.fr"
@@ -81,7 +81,7 @@ export const DMSIntroduction = (): React.JSX.Element => {
           {...toDMSWebsiteButtonProps}
         />
       </LinkContainer>
-    </GenericInfoPageWhite>
+    </GenericInfoPageWhiteLegacy>
   )
 }
 

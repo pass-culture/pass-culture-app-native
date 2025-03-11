@@ -1,12 +1,12 @@
-import React, { useCallback, useEffect, useMemo, useRef } from 'react'
+import React, { useMemo } from 'react'
 import { Platform } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { RootNavigateParams } from 'features/navigation/RootNavigator/types'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
-import { useAppStateChange } from 'libs/appState'
 import LottieView from 'libs/lottie'
+import { usePartialLottieAnimation } from 'shared/animations/useLottieAnimation'
 import { AnimationObject } from 'ui/animations/type'
 import { ButtonTertiaryNeutralInfo } from 'ui/components/buttons/ButtonTertiaryNeutralInfo'
 import { styledButton } from 'ui/components/buttons/styledButton'
@@ -43,13 +43,12 @@ type Props = {
   children?: React.ReactNode
 } & (PropsWithAnimation | PropsWithIcon)
 
-export const GenericInfoPageWhite: React.FC<Props> = ({
+export const GenericInfoPageWhiteLegacy: React.FC<Props> = ({
   separateIconFromTitle = true,
   onSkip,
   ...props
 }) => {
   const { canGoBack, goBack } = useGoBack(...(props.goBackParams ?? homeNavConfig))
-  const animationRef = useRef<LottieView>(null)
   const grid = useGrid()
 
   const { animation } = props as PropsWithAnimation
@@ -76,15 +75,8 @@ export const GenericInfoPageWhite: React.FC<Props> = ({
     })
   }, [subtitleComponent])
 
-  const playAnimation = useCallback(() => {
-    const lottieAnimation = animationRef.current
-    if (animation && lottieAnimation) {
-      lottieAnimation.play(0, 62)
-    }
-  }, [animation])
+  const animationRef = usePartialLottieAnimation(animation)
 
-  useAppStateChange(playAnimation, undefined)
-  useEffect(playAnimation, [playAnimation])
   return (
     <React.Fragment>
       {props.headerGoBack && canGoBack() ? (

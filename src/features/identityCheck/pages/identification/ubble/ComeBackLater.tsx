@@ -7,7 +7,7 @@ import { analytics } from 'libs/analytics/provider'
 import { BatchEvent, BatchProfile } from 'libs/react-native-batch'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
+import { GenericInfoPageWhiteLegacy } from 'ui/pages/GenericInfoPageWhiteLegacy'
 import { BicolorIdCardInvalid } from 'ui/svg/icons/BicolorIdCardInvalid'
 import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 
@@ -17,7 +17,7 @@ export const ComeBackLater: FunctionComponent = () => {
   }, [])
 
   return (
-    <GenericInfoPageWhite
+    <GenericInfoPageWhiteLegacy
       icon={BicolorIdCardInvalid}
       titleComponent={TypoDS.Title2}
       title="Reviens plus tard"
@@ -40,7 +40,7 @@ export const ComeBackLater: FunctionComponent = () => {
           onBeforeNavigate={() => analytics.logComeBackLaterClicked(undefined)}
         />
       </View>
-    </GenericInfoPageWhite>
+    </GenericInfoPageWhiteLegacy>
   )
 }
 

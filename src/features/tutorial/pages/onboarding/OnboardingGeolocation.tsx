@@ -10,7 +10,7 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useLocation } from 'libs/location'
 import GeolocationAnimation from 'ui/animations/geolocalisation.json'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
+import { GenericInfoPageWhiteLegacy } from 'ui/pages/GenericInfoPageWhiteLegacy'
 import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 
 export const OnboardingGeolocation = () => {
@@ -37,7 +37,7 @@ export const OnboardingGeolocation = () => {
   }, [navigateToNextScreen, requestGeolocPermission])
 
   return (
-    <GenericInfoPageWhite
+    <GenericInfoPageWhiteLegacy
       mobileBottomFlex={0.1}
       animation={GeolocationAnimation}
       onSkip={onSkip}
@@ -50,7 +50,7 @@ export const OnboardingGeolocation = () => {
       <ButtonContainer>
         <ButtonPrimary wording="Utiliser ma position" onPress={onGeolocationButtonPress} />
       </ButtonContainer>
-    </GenericInfoPageWhite>
+    </GenericInfoPageWhiteLegacy>
   )
 }
 

@@ -1,12 +1,10 @@
-import React, { useCallback, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import { useResetRecreditAmountToShow } from 'features/profile/api/useResetRecreditAmountToShow'
-import { useAppStateChange } from 'libs/appState'
-import LottieView from 'libs/lottie'
 import { storage } from 'libs/storage'
 import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
@@ -18,7 +16,7 @@ import { AnimatedProgressBar } from 'ui/components/bars/AnimatedProgressBar'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Spacer } from 'ui/components/spacer/Spacer'
-import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
+import { GenericInfoPageWhiteLegacy } from 'ui/pages/GenericInfoPageWhiteLegacy'
 import { categoriesIcons } from 'ui/svg/icons/bicolor/exports/categoriesIcons'
 import { getSpacing, TypoDS } from 'ui/theme'
 import { getNoHeadingAttrs } from 'ui/theme/typographyAttrs/getNoHeadingAttrs'
@@ -30,7 +28,6 @@ export const RecreditBirthdayNotification = () => {
 
   const age = getAge(user?.birthDate)
 
-  const animationRef = React.useRef<LottieView>(null)
   const credit = useAvailableCredit()
   const currency = useGetCurrencyToDisplay()
   const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
@@ -66,14 +63,6 @@ export const RecreditBirthdayNotification = () => {
     storage.saveObject('has_seen_birthday_notification_card', true)
   }, [])
 
-  const playAnimation = useCallback(() => {
-    const lottieAnimation = animationRef.current
-    if (lottieAnimation) lottieAnimation.play(0, 62)
-  }, [animationRef])
-
-  useAppStateChange(playAnimation, undefined)
-  useEffect(playAnimation, [playAnimation])
-
   const recreditMessage = age
     ? `Pour tes ${age} ans, ${creditedAmount} ont été ajoutés à ton compte. Tu disposes maintenant de\u00a0:`
     : ''
@@ -84,7 +73,7 @@ export const RecreditBirthdayNotification = () => {
     : 'Tu as jusqu’à la veille de tes 18 ans pour profiter de ton crédit.'
 
   return (
-    <GenericInfoPageWhite animation={TutorialPassLogo} title="Bonne nouvelle&nbsp;!">
+    <GenericInfoPageWhiteLegacy animation={TutorialPassLogo} title="Bonne nouvelle&nbsp;!">
       <StyledSubtitle testID="recreditMessage">{recreditMessage}</StyledSubtitle>
 
       <Spacer.Column numberOfSpaces={4} />
@@ -107,7 +96,7 @@ export const RecreditBirthdayNotification = () => {
           isLoading={isResetRecreditAmountToShowLoading}
         />
       </ButtonContainer>
-    </GenericInfoPageWhite>
+    </GenericInfoPageWhiteLegacy>
   )
 }
 

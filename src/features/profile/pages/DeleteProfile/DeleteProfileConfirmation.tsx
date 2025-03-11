@@ -13,7 +13,7 @@ import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
+import { GenericInfoPageWhiteLegacy } from 'ui/pages/GenericInfoPageWhiteLegacy'
 import { BicolorProfileDeletion } from 'ui/svg/icons/BicolorProfileDeletion'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
@@ -38,7 +38,7 @@ export const DeleteProfileConfirmation = () => {
   })
 
   return (
-    <GenericInfoPageWhite
+    <GenericInfoPageWhiteLegacy
       headerGoBack
       goBackParams={getProfileStackConfig('Profile')}
       icon={BicolorProfileDeletion}
@@ -71,6 +71,6 @@ export const DeleteProfileConfirmation = () => {
         navigateTo={{ screen: 'DeleteProfileReason' }}
         icon={Invalidate}
       />
-    </GenericInfoPageWhite>
+    </GenericInfoPageWhiteLegacy>
   )
 }

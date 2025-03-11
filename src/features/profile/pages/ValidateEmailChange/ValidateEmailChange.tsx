@@ -14,7 +14,7 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
+import { GenericInfoPageWhiteLegacy } from 'ui/pages/GenericInfoPageWhiteLegacy'
 import { BicolorPhonePending } from 'ui/svg/icons/BicolorPhonePending'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { Spacer, TypoDS } from 'ui/theme'
@@ -79,7 +79,7 @@ export function ValidateEmailChange({ route: { params }, navigation }: ValidateE
   }, [emailUpdateStatus, isLoadingEmailUpdateStatus, navigation])
 
   return (
-    <GenericInfoPageWhite
+    <GenericInfoPageWhiteLegacy
       icon={BicolorPhonePending}
       titleComponent={TypoDS.Title3}
       title="Valides-tu la nouvelle adresse e-mail&nbsp;?"
@@ -102,6 +102,6 @@ export function ValidateEmailChange({ route: { params }, navigation }: ValidateE
         icon={Invalidate}
         disabled={isLoading}
       />
-    </GenericInfoPageWhite>
+    </GenericInfoPageWhiteLegacy>
   )
 }

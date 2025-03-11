@@ -11,7 +11,7 @@ import { useEmailUpdateStatus } from 'features/profile/helpers/useEmailUpdateSta
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
-import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
+import { GenericInfoPageWhiteLegacy } from 'ui/pages/GenericInfoPageWhiteLegacy'
 import { BicolorUserError } from 'ui/svg/BicolorUserError'
 import { Clear } from 'ui/svg/icons/Clear'
 import { Spacer, TypoDS } from 'ui/theme'
@@ -73,7 +73,7 @@ export function SuspendAccountConfirmation({
   }, [emailUpdateStatus, isLoadingEmailUpdateStatus, navigation])
 
   return (
-    <GenericInfoPageWhite
+    <GenericInfoPageWhiteLegacy
       icon={StyledBicolorUserError}
       titleComponent={TypoDS.Title3}
       title="Souhaites-tu suspendre ton compte pass&nbsp;Culture&nbsp;?"
@@ -99,7 +99,7 @@ export function SuspendAccountConfirmation({
           disabled={isLoading}
         />
       </View>
-    </GenericInfoPageWhite>
+    </GenericInfoPageWhiteLegacy>
   )
 }
 
