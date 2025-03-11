@@ -16,6 +16,8 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
   searchGroupList,
   subcategory,
   chronicles,
+  defaultReaction,
+  onReactionButtonPress,
 }) => {
   const { visible, showModal, hideModal } = useModal(false)
   const headerHeight = useGetHeaderHeight()
@@ -58,6 +60,8 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
           chronicles={chronicles}
           onOfferPreviewPress={handlePress}
           BodyWrapper={BodyWrapper}
+          defaultReaction={defaultReaction}
+          onReactionButtonPress={onReactionButtonPress}
         />
       </React.Fragment>
     </OfferCTAProvider>

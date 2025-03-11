@@ -30,10 +30,17 @@ const getOfferById = async (offerId: number, logType: LogTypeEnum) => {
   }
 }
 
-export const useOfferQuery = ({ offerId }: { offerId: number }) => {
+export const useOfferQuery = <T = OfferResponseV2>({
+  offerId,
+  select,
+}: {
+  offerId: number
+  select?: (data: OfferResponseV2) => T | undefined
+}) => {
   const { logType } = useLogTypeFromRemoteConfig()
 
-  return useQuery<OfferResponseV2 | undefined>([QueryKeys.OFFER, offerId], () =>
-    offerId ? getOfferById(offerId, logType) : undefined
-  )
+  return useQuery([QueryKeys.OFFER, offerId], () => getOfferById(offerId, logType), {
+    enabled: !!offerId,
+    select,
+  })
 }

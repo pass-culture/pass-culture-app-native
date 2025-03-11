@@ -16,6 +16,8 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
   searchGroupList,
   subcategory,
   chronicles,
+  defaultReaction,
+  onReactionButtonPress,
 }) => {
   const { navigate } = useNavigation<UseNavigationType>()
   const handlePress = (defaultIndex = 0) => {
@@ -32,6 +34,8 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
         BodyWrapper={BodyWrapper}
         chronicles={chronicles}
         subcategory={subcategory}
+        defaultReaction={defaultReaction}
+        onReactionButtonPress={onReactionButtonPress}
       />
     </OfferCTAProvider>
   )
