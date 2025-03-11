@@ -191,7 +191,7 @@ exports[`OnboardingNotEligible should render correctly 1`] = `
         ]
       }
     >
-      Ton crédit t’attend à partir de tes 17 ans. En attendant, crée-toi un compte pour des suggestions à venir.
+      Ton crédit t’attend à partir de tes 17 ans. En attendant, crée-toi un compte pour découvrir les bons plans autour de toi.
     </Text>
     <View
       flex={1}
