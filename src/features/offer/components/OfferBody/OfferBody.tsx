@@ -40,9 +40,17 @@ type Props = {
   offer: OfferResponseV2
   subcategory: Subcategory
   children: ReactNode
+  likesCount?: number
+  chroniclesCount?: number
 }
 
-export const OfferBody: FunctionComponent<Props> = ({ offer, subcategory, children }) => {
+export const OfferBody: FunctionComponent<Props> = ({
+  offer,
+  subcategory,
+  children,
+  likesCount,
+  chroniclesCount,
+}) => {
   const { navigate } = useNavigation<UseNavigationType>()
 
   const hasArtistPage = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ARTIST_PAGE)
@@ -136,7 +144,7 @@ export const OfferBody: FunctionComponent<Props> = ({ offer, subcategory, childr
 
         {prices ? <TypoDS.Title3 {...getHeadingAttrs(2)}>{displayedPrice}</TypoDS.Title3> : null}
 
-        <OfferReactionSection offer={offer} />
+        <OfferReactionSection likesCount={likesCount} chroniclesCount={chroniclesCount} />
 
         <GroupWithSeparator
           showTopComponent={shouldUseIsOpenToPublic ? isOpenToPublicVenue : offer.venue.isPermanent}
