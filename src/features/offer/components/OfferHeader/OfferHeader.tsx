@@ -1,34 +1,24 @@
-import React, { useCallback } from 'react'
+import React, { PropsWithChildren, useCallback } from 'react'
 import { Animated } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
-import { FavoriteResponse, OfferResponseV2 } from 'api/gen'
+import { OfferResponseV2 } from 'api/gen'
 import { getSearchStackConfig } from 'features/navigation/SearchStackNavigator/searchStackHelpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { getShareOffer } from 'features/share/helpers/getShareOffer'
 import { WebShareModal } from 'features/share/pages/WebShareModal'
 import { analytics } from 'libs/analytics/provider'
 import { getAnimationState } from 'ui/animations/helpers/getAnimationState'
-import { FavoriteButton } from 'ui/components/buttons/FavoriteButton'
 import { RoundedButton } from 'ui/components/buttons/RoundedButton'
 import { ContentHeader } from 'ui/components/headers/ContentHeader'
 import { useModal } from 'ui/components/modals/useModal'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { Spacer } from 'ui/theme'
 
-export type FavoriteProps = {
-  addFavorite: ({ offerId }: { offerId: number }) => void
-  isAddFavoriteLoading: boolean
-  removeFavorite: (id: number) => void
-  isRemoveFavoriteLoading: boolean
-  favorite?: FavoriteResponse | null
-}
-
-type OfferHeaderProps = {
+type OfferHeaderProps = PropsWithChildren<{
   headerTransition: Animated.AnimatedInterpolation<string | number>
   title: string
   offer: OfferResponseV2
-} & FavoriteProps
+}>
 
 /**
  * @param props.headerTransition should be between animated between 0 and 1
@@ -37,11 +27,7 @@ export function OfferHeader({
   headerTransition,
   title,
   offer,
-  addFavorite,
-  isAddFavoriteLoading,
-  removeFavorite,
-  isRemoveFavoriteLoading,
-  favorite,
+  children,
 }: Readonly<OfferHeaderProps>) {
   const theme = useTheme()
 
@@ -73,7 +59,6 @@ export function OfferHeader({
         headerTransition={headerTransition}
         titleTestID="offerHeaderName"
         onBackPress={goBack}
-        LeftElement={<Spacer.Row numberOfSpaces={13} />}
         RightElement={
           <ButtonsWrapper gap={3}>
             <RoundedButton
@@ -83,15 +68,7 @@ export function OfferHeader({
               accessibilityLabel="Partager"
               finalColor={theme.colors.black}
             />
-            <FavoriteButton
-              animationState={animationState}
-              offerId={offer.id}
-              addFavorite={addFavorite}
-              isAddFavoriteLoading={isAddFavoriteLoading}
-              removeFavorite={removeFavorite}
-              isRemoveFavoriteLoading={isRemoveFavoriteLoading}
-              favorite={favorite}
-            />
+            {children}
           </ButtonsWrapper>
         }
       />

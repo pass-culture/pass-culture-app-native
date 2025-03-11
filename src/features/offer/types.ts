@@ -2,6 +2,7 @@ import { SharedValue } from 'react-native-reanimated'
 
 import {
   CategoryIdEnum,
+  FavoriteResponse,
   OfferResponseV2,
   RecommendationApiParams,
   SearchGroupResponseModelv2,
@@ -43,6 +44,14 @@ export interface OfferTileProps {
   index?: number
   artistName?: string
   navigationMethod?: NavigationMethod
+}
+
+export type FavoriteProps = {
+  addFavorite: ({ offerId }: { offerId: number }) => void
+  isAddFavoriteLoading: boolean
+  removeFavorite: (id: number) => void
+  isRemoveFavoriteLoading: boolean
+  favorite?: FavoriteResponse | null
 }
 
 export interface SimilarOffersResponse {

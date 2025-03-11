@@ -2,6 +2,7 @@ import { NavigationContainer } from '@react-navigation/native'
 import React, { ComponentProps } from 'react'
 import { ReactTestInstance } from 'react-test-renderer'
 
+import { api } from 'api/api'
 import {
   FavoriteResponse,
   OfferResponseV2,
@@ -10,8 +11,10 @@ import {
   SubcategoriesResponseModelv2,
   SubcategoryIdEnum,
   SubcategoryIdEnumv2,
+  UserProfileResponse,
 } from 'api/gen'
 import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteResponseSnap'
+import * as useFavorite from 'features/favorites/hooks/useFavorite'
 import * as useGoBack from 'features/navigation/useGoBack'
 import { chroniclePreviewToChronicalCardData } from 'features/offer/adapters/chroniclePreviewToChronicleCardData'
 import * as useSimilarOffers from 'features/offer/api/useSimilarOffers'
@@ -45,6 +48,16 @@ import { OfferContent } from './OfferContent'
 jest.unmock('react-native/Libraries/Animated/createAnimatedComponent')
 
 jest.mock('libs/jwt/jwt')
+
+const useFavoriteSpy = jest.spyOn(useFavorite, 'useFavorite')
+const spyApiDeleteFavorite = jest.spyOn(api, 'deleteNativeV1MeFavoritesfavoriteId')
+
+const mockShowErrorSnackBar = jest.fn()
+jest.mock('ui/components/snackBar/SnackBarContext', () => ({
+  useSnackBarContext: () => ({
+    showErrorSnackBar: mockShowErrorSnackBar,
+  }),
+}))
 
 const Kourou: SuggestedPlace = {
   label: 'Kourou',
@@ -179,7 +192,9 @@ describe('<OfferContent />', () => {
   const user = userEvent.setup()
 
   beforeEach(() => {
+    spyApiDeleteFavorite.mockResolvedValue({})
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
+    useFavoriteSpy.mockReturnValue(favoriteResponseSnap)
     mockPosition = { latitude: 90.4773245, longitude: 90.4773245 }
     mockAuthContextWithoutUser({ persist: true })
     setFeatureFlags([RemoteStoreFeatureFlags.TARGET_XP_CINE_FROM_OFFER])
@@ -187,10 +202,34 @@ describe('<OfferContent />', () => {
 
   afterEach(cleanup)
 
-  it('should display offer header', async () => {
-    renderOfferContent({})
+  describe('Header', () => {
+    it('should display offer header', async () => {
+      renderOfferContent({})
 
-    expect(await screen.findByTestId('offerHeaderName')).toBeOnTheScreen()
+      expect(await screen.findByTestId('offerHeaderName')).toBeOnTheScreen()
+    })
+
+    it('should remove favorite when press on favorite', async () => {
+      mockAuthContextWithUser({ id: 1, email: 'user@test.com' } as UserProfileResponse)
+      renderOfferContent({})
+      const button = await screen.findByLabelText('Mettre en favori')
+      await user.press(button)
+
+      expect(spyApiDeleteFavorite).toHaveBeenCalledWith(favoriteResponseSnap.id)
+    })
+
+    it('should display snackbar when remove favorite fails', async () => {
+      spyApiDeleteFavorite.mockRejectedValueOnce({ status: 400 })
+      mockAuthContextWithUser({ id: 1, email: 'user@test.com' } as UserProfileResponse)
+      renderOfferContent({})
+      const button = await screen.findByLabelText('Mettre en favori')
+      await user.press(button)
+
+      expect(spyApiDeleteFavorite).toHaveBeenCalledWith(favoriteResponseSnap.id)
+      expect(mockShowErrorSnackBar).toHaveBeenCalledWith(
+        expect.objectContaining({ message: 'L’offre n’a pas été retirée de tes favoris' })
+      )
+    })
   })
 
   it('should navigate to offer preview screen when clicking on image offer', async () => {
@@ -432,6 +471,7 @@ describe('<OfferContent />', () => {
       }
 
       it('should display "Mettre en favori" button', async () => {
+        useFavoriteSpy.mockReturnValueOnce(undefined)
         renderOfferContent({ offer: comingSoonOffer })
 
         expect(await screen.findByText('Mettre en favori')).toBeOnTheScreen()
@@ -439,6 +479,7 @@ describe('<OfferContent />', () => {
 
       describe('analytics', () => {
         beforeEach(() => {
+          useFavoriteSpy.mockReturnValueOnce(undefined)
           mockAuthContextWithUser(beneficiaryUser, { persist: true })
           const favoritesResponseWithoutOfferIn: PaginatedFavoritesResponse = {
             page: 1,

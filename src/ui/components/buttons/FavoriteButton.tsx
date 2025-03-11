@@ -1,9 +1,10 @@
 import React, { useCallback, useRef } from 'react'
 import { Animated } from 'react-native'
+import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { FavoriteAuthModal } from 'features/offer/components/FavoriteAuthModal/FavoriteAuthModal'
-import { FavoriteProps } from 'features/offer/components/OfferHeader/OfferHeader'
+import { FavoriteProps } from 'features/offer/types'
 import { accessibleCheckboxProps } from 'shared/accessibilityProps/accessibleCheckboxProps'
 import { theme } from 'theme'
 import { RoundedButton } from 'ui/components/buttons/RoundedButton'
@@ -61,14 +62,21 @@ export const FavoriteButton: React.FC<FavoriteButtonProps> = (props) => {
         disabled={isRemoveFavoriteLoading || isAddFavoriteLoading}
         {...accessibleCheckboxProps({ checked: !!favorite, label: 'Mettre en favori' })}
       />
-      <FavoriteAuthModal
-        visible={signInModalVisible}
-        offerId={offerId}
-        dismissModal={hideSignInModal}
-      />
+      {/*  TODO(PC-35063): Fix this dirty style hack by removing this modal outside the button ! */}
+      <ModalWrapper>
+        <FavoriteAuthModal
+          visible={signInModalVisible}
+          offerId={offerId}
+          dismissModal={hideSignInModal}
+        />
+      </ModalWrapper>
     </React.Fragment>
   )
 }
+
+const ModalWrapper = styled.View({
+  position: 'absolute',
+})
 
 function animateIcon(animatedValue: Animated.Value): void {
   Animated.sequence([

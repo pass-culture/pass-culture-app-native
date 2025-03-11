@@ -36,8 +36,10 @@ import { useAddFavoriteMutation } from 'queries/favorites/useAddFavoriteMutation
 import { useRemoveFavoriteMutation } from 'queries/favorites/useRemoveFavoriteMutation'
 import { getImagesUrlsWithCredit } from 'shared/getImagesUrlsWithCredit/getImagesUrlsWithCredit'
 import { ImageWithCredit } from 'shared/types'
+import { getAnimationState } from 'ui/animations/helpers/getAnimationState'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { AnchorProvider } from 'ui/components/anchor/AnchorContext'
+import { FavoriteButton } from 'ui/components/buttons/FavoriteButton'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { getSpacing } from 'ui/theme'
@@ -60,7 +62,7 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
   contentContainerStyle,
   BodyWrapper = React.Fragment,
 }) => {
-  const { isDesktopViewport } = useTheme()
+  const theme = useTheme()
 
   const { navigate } = useNavigation<UseNavigationType>()
   const { params } = useRoute<UseRouteType<'Offer'>>()
@@ -188,16 +190,23 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
     />
   )
 
+  const { animationState } = getAnimationState(theme, headerTransition)
+
   return (
     <Container>
       <AnchorProvider scrollViewRef={scrollViewRef} handleCheckScrollY={handleCheckScrollY}>
         <OfferWebMetaHeader offer={offer} />
-        <OfferHeader
-          title={offer.name}
-          headerTransition={headerTransition}
-          offer={offer}
-          {...favoriteButtonProps}
-        />
+        <OfferHeader title={offer.name} headerTransition={headerTransition} offer={offer}>
+          <FavoriteButton
+            animationState={animationState}
+            offerId={offer.id}
+            addFavorite={addFavorite}
+            isAddFavoriteLoading={isAddFavoriteLoading}
+            removeFavorite={removeFavorite}
+            isRemoveFavoriteLoading={isRemoveFavoriteLoading}
+            favorite={favorite}
+          />
+        </OfferHeader>
         <ScrollViewContainer
           testID="offerv2-container"
           scrollEventThrottle={16}
@@ -214,7 +223,7 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
               placeholderImage={placeholderImage}
             />
             <OfferBody offer={offer} subcategory={subcategory}>
-              {isDesktopViewport ? offerCtaButton : null}
+              {theme.isDesktopViewport ? offerCtaButton : null}
             </OfferBody>
           </BodyWrapper>
           {chronicles?.length ? (
