@@ -5,7 +5,7 @@ import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import * as useGoBack from 'features/navigation/useGoBack'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
-import * as useRemoteConfig from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
+import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import { FetchError, MonitoringError } from 'libs/monitoring/errors'
 import { eventMonitoring } from 'libs/monitoring/services'
@@ -32,7 +32,7 @@ jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
 
 jest.mock('libs/firebase/analytics/analytics')
 
-const useRemoteConfigSpy = jest.spyOn(useRemoteConfig, 'useRemoteConfig')
+const useRemoteConfigSpy = jest.spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
 
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   return function createAnimatedComponent(Component: unknown) {

@@ -19,7 +19,7 @@ import { fetchSearchResults } from 'libs/algolia/fetchAlgolia/fetchSearchResults
 import { adaptAlgoliaVenues } from 'libs/algolia/fetchAlgolia/fetchVenues/adaptAlgoliaVenues'
 import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { AlgoliaVenue, FacetData } from 'libs/algolia/types'
-import { useRemoteConfig } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
+import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { useLocation } from 'libs/location'
 import { QueryKeys } from 'libs/queryKeys'
 import { Offer } from 'shared/offer/types'
@@ -46,7 +46,7 @@ export const useSearchInfiniteQuery = (searchState: SearchState, dispatch: Dispa
   const { setCurrentQueryID } = useSearchAnalyticsState()
   const previousPageObjectIds = useRef<string[]>([])
   const { replaceToSearch: navigateToThematicSearch } = useNavigateToSearch('ThematicSearch')
-  const { aroundPrecision } = useRemoteConfig()
+  const { aroundPrecision } = useRemoteConfigQuery()
 
   const { data, ...infiniteQuery } = useInfiniteQuery<SearchOfferResponse>(
     [

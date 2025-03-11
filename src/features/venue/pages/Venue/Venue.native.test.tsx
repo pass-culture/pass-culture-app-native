@@ -19,7 +19,7 @@ import { Venue } from 'features/venue/pages/Venue/Venue'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import * as useRemoteConfig from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
+import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import { Network } from 'libs/share/types'
 import { Offer } from 'shared/offer/types'
@@ -96,7 +96,7 @@ jest.mock('@shopify/flash-list', () => {
   }
 })
 
-const useRemoteConfigSpy = jest.spyOn(useRemoteConfig, 'useRemoteConfig')
+const useRemoteConfigSpy = jest.spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
 const useScrollToAnchorSpy = jest.spyOn(AnchorContextModule, 'useScrollToAnchor')
 
 const user = userEvent.setup()

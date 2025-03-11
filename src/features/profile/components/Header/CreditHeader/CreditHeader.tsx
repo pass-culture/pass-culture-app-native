@@ -13,7 +13,7 @@ import { Subtitle } from 'features/profile/components/Subtitle/Subtitle'
 import { getHeaderSubtitleProps } from 'features/profile/helpers/getHeaderSubtitleProps'
 import { useIsUserUnderageBeneficiary } from 'features/profile/helpers/useIsUserUnderageBeneficiary'
 import { setDateOneDayEarlier } from 'libs/dates'
-import { useRemoteConfig } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
+import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { useDepositAmountsByAge } from 'shared/user/useDepositAmountsByAge'
 import { GenericBanner } from 'ui/components/ModuleBanner/GenericBanner'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
@@ -35,7 +35,7 @@ export function CreditHeader({
   domainsCredit,
   depositExpirationDate,
 }: CreditHeaderProps) {
-  const { homeEntryIdFreeOffers } = useRemoteConfig()
+  const { homeEntryIdFreeOffers } = useRemoteConfigQuery()
   const depositAmount = useDepositAmountsByAge()
 
   const sixteenYearsOldIncomingDeposit = {

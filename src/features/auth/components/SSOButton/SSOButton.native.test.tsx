@@ -10,7 +10,7 @@ import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import * as useRemoteConfig from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
+import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { mockServer } from 'tests/mswServer'
@@ -40,7 +40,7 @@ jest.useFakeTimers()
 
 jest.mock('libs/firebase/analytics/analytics')
 
-const useRemoteConfigSpy = jest.spyOn(useRemoteConfig, 'useRemoteConfig')
+const useRemoteConfigSpy = jest.spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
 
 describe('<SSOButton />', () => {
   beforeEach(() => {

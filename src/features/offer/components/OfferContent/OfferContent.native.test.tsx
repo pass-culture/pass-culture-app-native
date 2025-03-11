@@ -32,7 +32,7 @@ import {
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import * as useRemoteConfig from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
+import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import { Position } from 'libs/location'
 import { SuggestedPlace } from 'libs/place/types'
@@ -130,22 +130,24 @@ jest.mock('react-native-intersection-observer', () => {
 })
 
 const useScrollToAnchorSpy = jest.spyOn(AnchorContextModule, 'useScrollToAnchor')
-const useRemoteConfigSpy = jest.spyOn(useRemoteConfig, 'useRemoteConfig').mockReturnValue({
-  ...DEFAULT_REMOTE_CONFIG,
-  sameAuthorPlaylist: 'withPlaylistAsFirst',
-  reactionFakeDoorCategories: {
-    categories: [
-      NativeCategoryIdEnumv2.SEANCES_DE_CINEMA,
-      NativeCategoryIdEnumv2.CD,
-      NativeCategoryIdEnumv2.MUSIQUE_EN_LIGNE,
-      NativeCategoryIdEnumv2.VINYLES,
-      NativeCategoryIdEnumv2.LIVRES_AUDIO_PHYSIQUES,
-      NativeCategoryIdEnumv2.LIVRES_NUMERIQUE_ET_AUDIO,
-      NativeCategoryIdEnumv2.LIVRES_PAPIER,
-      NativeCategoryIdEnumv2.DVD_BLU_RAY,
-    ],
-  },
-})
+const useRemoteConfigSpy = jest
+  .spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
+  .mockReturnValue({
+    ...DEFAULT_REMOTE_CONFIG,
+    sameAuthorPlaylist: 'withPlaylistAsFirst',
+    reactionFakeDoorCategories: {
+      categories: [
+        NativeCategoryIdEnumv2.SEANCES_DE_CINEMA,
+        NativeCategoryIdEnumv2.CD,
+        NativeCategoryIdEnumv2.MUSIQUE_EN_LIGNE,
+        NativeCategoryIdEnumv2.VINYLES,
+        NativeCategoryIdEnumv2.LIVRES_AUDIO_PHYSIQUES,
+        NativeCategoryIdEnumv2.LIVRES_NUMERIQUE_ET_AUDIO,
+        NativeCategoryIdEnumv2.LIVRES_PAPIER,
+        NativeCategoryIdEnumv2.DVD_BLU_RAY,
+      ],
+    },
+  })
 
 const scrollEvent = {
   nativeEvent: {

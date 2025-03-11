@@ -4,7 +4,7 @@ import { ModalDisplayState } from 'features/home/components/helpers/useBookingsR
 import { beneficiaryUser } from 'fixtures/user'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import * as useRemoteConfig from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
+import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { renderHook } from 'tests/utils'
@@ -12,7 +12,7 @@ import { renderHook } from 'tests/utils'
 jest.mock('features/auth/context/AuthContext')
 jest.mock('libs/firebase/analytics/analytics')
 
-const useRemoteConfigSpy = jest.spyOn(useRemoteConfig, 'useRemoteConfig')
+const useRemoteConfigSpy = jest.spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
 
 const achievements: AchievementResponse[] = [
   {

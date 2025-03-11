@@ -1,8 +1,8 @@
-import { useRemoteConfig } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
+import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { LogTypeEnum } from 'libs/monitoring/errors'
 
 export const useLogTypeFromRemoteConfig = () => {
-  const { shouldLogInfo } = useRemoteConfig()
+  const { shouldLogInfo } = useRemoteConfigQuery()
 
   return { logType: shouldLogInfo ? LogTypeEnum.INFO : LogTypeEnum.IGNORED }
 }

@@ -8,7 +8,7 @@ import { useSelectHomepageEntry } from 'features/home/helpers/selectHomepageEntr
 import { Homepage, HomepageTag } from 'features/home/types'
 import { UserOnboardingRole } from 'features/tutorial/enums'
 import * as OnboardingRoleAPI from 'features/tutorial/helpers/useUserRoleFromOnboarding'
-import * as useRemoteConfig from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
+import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import { CustomRemoteConfig } from 'libs/firebase/remoteConfig/remoteConfig.types'
 import { useBookingsQuery } from 'queries/bookings/useBookingsQuery'
@@ -115,7 +115,7 @@ const homepageEntries = [
 
 jest.mock('react-native/Libraries/Animated/NativeAnimatedHelper')
 
-const useRemoteConfigSpy = jest.spyOn(useRemoteConfig, 'useRemoteConfig')
+const useRemoteConfigSpy = jest.spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
 
 jest.mock('features/auth/context/AuthContext')
 

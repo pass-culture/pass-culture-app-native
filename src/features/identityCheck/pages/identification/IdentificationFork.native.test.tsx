@@ -4,14 +4,14 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { IdentificationFork } from 'features/identityCheck/pages/identification/IdentificationFork'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { analytics } from 'libs/analytics/provider'
-import * as useRemoteConfig from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
+import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
 
 const useRemoteConfigSpy = jest
-  .spyOn(useRemoteConfig, 'useRemoteConfig')
+  .spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
   .mockReturnValue({ ...DEFAULT_REMOTE_CONFIG, shouldDisplayReassuranceMention: true })
 
 jest.mock('libs/firebase/analytics/analytics')

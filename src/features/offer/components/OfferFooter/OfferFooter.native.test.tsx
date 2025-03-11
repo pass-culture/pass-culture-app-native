@@ -9,12 +9,12 @@ import { OfferCTAProvider } from 'features/offer/components/OfferContent/OfferCT
 import * as useOfferCTAContextModule from 'features/offer/components/OfferContent/OfferCTAProvider'
 import { OfferFooter, OfferFooterProps } from 'features/offer/components/OfferFooter/OfferFooter'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
-import * as useRemoteConfig from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
+import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
 
-const useRemoteConfigSpy = jest.spyOn(useRemoteConfig, 'useRemoteConfig')
+const useRemoteConfigSpy = jest.spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
 
 const useAuthContextSpy = jest.spyOn(Auth, 'useAuthContext')
 

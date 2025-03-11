@@ -4,7 +4,7 @@ import {
   RemoteStoreDocuments,
   RemoteStoreFeatureFlags,
 } from 'libs/firebase/firestore/types'
-import * as useRemoteConfig from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
+import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import firestore from 'libs/firebase/shims/firestore'
 import { eventMonitoring } from 'libs/monitoring/services'
@@ -23,14 +23,14 @@ const mockGet = jest.fn()
 
 const featureFlag = RemoteStoreFeatureFlags.WIP_DISABLE_STORE_REVIEW
 const useRemoteConfigSpy = jest
-  .spyOn(useRemoteConfig, 'useRemoteConfig')
+  .spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
   .mockReturnValue({ ...DEFAULT_REMOTE_CONFIG })
 
 describe('useFeatureFlagOptions', () => {
   beforeAll(() =>
     collection(FIRESTORE_ROOT_COLLECTION)
       .doc(RemoteStoreDocuments.FEATURE_FLAGS)
-      // @ts-expect-error is a mock  e
+      // @ts-expect-error is a mock
       .get.mockResolvedValue({
         get: mockGet,
       })

@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { useSettingsContext } from 'features/auth/context/SettingsContext'
-import { useRemoteConfig } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
+import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { useDepositAmountsByAge } from 'shared/user/useDepositAmountsByAge'
 import { ButtonWithLinearGradient } from 'ui/components/buttons/buttonWithLinearGradient/ButtonWithLinearGradient'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
@@ -10,7 +10,7 @@ import { Offers } from 'ui/svg/icons/Offers'
 import { Spacer, TypoDS } from 'ui/theme'
 
 export const EmptyCredit = ({ age }: { age: number }) => {
-  const { homeEntryIdFreeOffers } = useRemoteConfig()
+  const { homeEntryIdFreeOffers } = useRemoteConfigQuery()
   const { sixteenYearsOldDeposit, seventeenYearsOldDeposit, eighteenYearsOldDeposit } =
     useDepositAmountsByAge()
 

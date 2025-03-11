@@ -3,7 +3,7 @@ import { useCallback } from 'react'
 import { shareApp } from 'features/share/helpers/shareApp'
 import { ShareAppModalType } from 'features/share/types'
 import { analytics } from 'libs/analytics/provider'
-import { useRemoteConfig } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
+import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 
 export type ShareAppModalSelectorViewmodelParams = {
   type: ShareAppModalType
@@ -18,7 +18,7 @@ export const useShareAppModalViewmodel = ({
   showModal,
   setType,
 }: ShareAppModalSelectorViewmodelParams) => {
-  const { shareAppModalVersion: version } = useRemoteConfig()
+  const { shareAppModalVersion: version } = useRemoteConfigQuery()
 
   const close = useCallback(() => {
     analytics.logDismissShareApp(type)

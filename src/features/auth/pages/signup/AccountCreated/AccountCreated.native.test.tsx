@@ -11,7 +11,7 @@ import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import * as useRemoteConfig from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
+import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
@@ -19,7 +19,9 @@ import { fireEvent, render, screen, waitFor } from 'tests/utils'
 import { AccountCreated } from './AccountCreated'
 
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
-jest.spyOn(useRemoteConfig, 'useRemoteConfig').mockReturnValue({ ...DEFAULT_REMOTE_CONFIG })
+jest
+  .spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
+  .mockReturnValue({ ...DEFAULT_REMOTE_CONFIG })
 
 jest.mock('features/profile/api/useResetRecreditAmountToShow')
 jest.mock('features/navigation/helpers/navigateToHome')

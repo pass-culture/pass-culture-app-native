@@ -3,7 +3,7 @@ import React from 'react'
 import { api } from 'api/api'
 import { EmailValidationRemainingResendsResponse } from 'api/gen'
 import { analytics } from 'libs/analytics/provider'
-import * as useRemoteConfig from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
+import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { MODAL_TO_SHOW_TIME } from 'tests/constants'
@@ -20,7 +20,7 @@ jest.mock('libs/monitoring/services')
 const resendEmailValidationSpy = jest.spyOn(api, 'postNativeV1ResendEmailValidation')
 
 const useRemoteConfigSpy = jest
-  .spyOn(useRemoteConfig, 'useRemoteConfig')
+  .spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
   .mockReturnValue({ ...DEFAULT_REMOTE_CONFIG })
 
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {

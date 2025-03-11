@@ -6,7 +6,7 @@ import { HISTORY_KEY, MAX_HISTORY_RESULTS } from 'features/search/constants'
 import { mockedSearchHistory } from 'features/search/fixtures/mockedSearchHistory'
 import { useSearchHistory } from 'features/search/helpers/useSearchHistory/useSearchHistory'
 import { CreateHistoryItem, HistoryItem } from 'features/search/types'
-import * as useRemoteConfig from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
+import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -29,7 +29,7 @@ jest.mock('libs/subcategories/useSubcategories')
 
 jest.mock('libs/firebase/analytics/analytics')
 
-const useRemoteConfigSpy = jest.spyOn(useRemoteConfig, 'useRemoteConfig')
+const useRemoteConfigSpy = jest.spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
 
 describe('useSearchHistory', () => {
   beforeEach(async () => {

@@ -5,12 +5,12 @@ import { setSettings } from 'features/auth/tests/setSettings'
 import { EmptyCredit } from 'features/profile/components/EmptyCredit/EmptyCredit'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import * as useRemoteConfig from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
+import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import { fireEvent, render, screen } from 'tests/utils'
 
 jest
-  .spyOn(useRemoteConfig, 'useRemoteConfig')
+  .spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
   .mockReturnValue({ ...DEFAULT_REMOTE_CONFIG, homeEntryIdFreeOffers: 'homeEntryIdFreeOffers' })
 
 describe('<EmptyCredit />', () => {

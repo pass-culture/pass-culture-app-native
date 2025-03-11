@@ -38,7 +38,7 @@ L’utilisation de `useQuery` permet de simplifier cette gestion en offrant un c
 - **Ajout d’un mécanisme de `retry`** : Permet une meilleure résilience en cas d’échec réseau temporaire.
 - **Meilleure gestion des erreurs** : Les erreurs sont capturées.
 - **Amélioration des performances** : React Query optimise la récupération et le caching, évitant ainsi des appels inutiles.
-- **Facilité d'utilisation** : Plus besoin de wrapper l’application avec un provider spécifique, `useRemoteConfig` peut être utilisé directement dans les composants.
+- **Facilité d'utilisation** : Plus besoin de wrapper l’application avec un provider spécifique, `useRemoteConfigQuery` peut être utilisé directement dans les composants.
 
 ## Conséquences
 
@@ -56,6 +56,6 @@ L’utilisation de `useQuery` permet de simplifier cette gestion en offrant un c
 
 ## Actions à mettre en œuvre
 
-- Adapter les composants pour utiliser `useRemoteConfig` au lieu du `RemoteConfigProvider`.
+- Adapter les composants pour utiliser `useRemoteConfigQuery` au lieu du `RemoteConfigProvider`.
 - Mettre à jour la documentation technique pour expliquer la nouvelle approche.
 - Surveiller les performances et le bon fonctionnement en production après la mise en place.

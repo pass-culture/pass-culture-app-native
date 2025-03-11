@@ -11,7 +11,7 @@ import * as useFilterCountAPI from 'features/search/helpers/useFilterCount/useFi
 import { BooksNativeCategoriesEnum, SearchState, SearchView } from 'features/search/types'
 import { analytics } from 'libs/analytics/__mocks__/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
-import * as useRemoteConfig from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
+import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import { GeoCoordinates, Position } from 'libs/location'
 import { LocationLabel, LocationMode } from 'libs/location/types'
@@ -145,7 +145,7 @@ jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
 jest.useFakeTimers()
 const user = userEvent.setup()
 
-const useRemoteConfigSpy = jest.spyOn(useRemoteConfig, 'useRemoteConfig')
+const useRemoteConfigSpy = jest.spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
 jest.mock('libs/firebase/analytics/analytics')
 
 describe('SearchBox component', () => {

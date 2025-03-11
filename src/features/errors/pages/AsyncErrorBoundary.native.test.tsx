@@ -5,7 +5,7 @@ import { ApiError } from 'api/ApiError'
 import { useMaintenance } from 'features/maintenance/helpers/useMaintenance/useMaintenance'
 import { MaintenanceErrorPage } from 'features/maintenance/pages/MaintenanceErrorPage'
 import * as useGoBack from 'features/navigation/useGoBack'
-import * as useRemoteConfig from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
+import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import { AsyncError, MonitoringError, ScreenError, LogTypeEnum } from 'libs/monitoring/errors'
 import { eventMonitoring } from 'libs/monitoring/services'
@@ -22,7 +22,7 @@ jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
 })
 
 const useRemoteConfigSpy = jest
-  .spyOn(useRemoteConfig, 'useRemoteConfig')
+  .spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
   .mockReturnValue({ ...DEFAULT_REMOTE_CONFIG })
 
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {

@@ -1,7 +1,7 @@
 import React from 'react'
 
 import * as useGoBack from 'features/navigation/useGoBack'
-import * as useRemoteConfig from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
+import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import { AsyncError, LogTypeEnum } from 'libs/monitoring/errors'
 import { checkAccessibilityFor, fireEvent, render, screen } from 'tests/utils/web'
@@ -19,7 +19,9 @@ jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
 })
 
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
-jest.spyOn(useRemoteConfig, 'useRemoteConfig').mockReturnValue({ ...DEFAULT_REMOTE_CONFIG })
+jest
+  .spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
+  .mockReturnValue({ ...DEFAULT_REMOTE_CONFIG })
 jest.mock('ui/theme/customFocusOutline/customFocusOutline')
 
 describe('AsyncErrorBoundary component', () => {

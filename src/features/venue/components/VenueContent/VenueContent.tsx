@@ -13,7 +13,7 @@ import { VenueWebMetaHeader } from 'features/venue/components/VenueWebMetaHeader
 import { useNavigateToSearchWithVenueOffers } from 'features/venue/helpers/useNavigateToSearchWithVenueOffers'
 import { isCloseToBottom } from 'libs/analytics'
 import { analytics } from 'libs/analytics/provider'
-import { useRemoteConfig } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
+import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { useFunctionOnce } from 'libs/hooks'
 import { BatchEvent, BatchProfile } from 'libs/react-native-batch'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
@@ -37,7 +37,7 @@ export const VenueContent: React.FunctionComponent<Props> = ({
   const triggerBatch = useFunctionOnce(trackEventHasSeenVenueForSurvey)
   const scrollViewRef = useRef<ScrollView>(null)
   const scrollYRef = useRef<number>(0)
-  const { showAccessScreeningButton } = useRemoteConfig()
+  const { showAccessScreeningButton } = useRemoteConfigQuery()
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {

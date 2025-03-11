@@ -8,7 +8,7 @@ import { useCookies } from 'features/cookies/helpers/useCookies'
 import { CookiesConsent } from 'features/cookies/types'
 import { FAKE_USER_ID } from 'fixtures/fakeUserId'
 import { beneficiaryUser } from 'fixtures/user'
-import * as useRemoteConfig from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
+import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import { eventMonitoring } from 'libs/monitoring/services'
 import * as PackageJson from 'libs/packageJson'
@@ -44,7 +44,7 @@ jest.mock('api/api')
 
 jest.mock('libs/firebase/analytics/analytics')
 
-const useRemoteConfigSpy = jest.spyOn(useRemoteConfig, 'useRemoteConfig')
+const useRemoteConfigSpy = jest.spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
 
 describe('useCookies', () => {
   beforeAll(() => {
