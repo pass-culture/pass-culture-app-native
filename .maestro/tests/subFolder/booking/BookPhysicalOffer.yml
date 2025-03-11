@@ -6,7 +6,7 @@ appId: ${MAESTRO_APP_ID}
       platform: Android
     commands:
     - tapOn:
-        text: 'Livres papier'
+        text: 'Livre'
         index: 0
 
 - runFlow:
