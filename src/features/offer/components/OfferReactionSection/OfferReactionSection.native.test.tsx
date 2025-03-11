@@ -80,12 +80,59 @@ describe('<OfferReactionSection />', () => {
       expect(await screen.findByText('Je n’aime pas')).toBeOnTheScreen()
     })
 
-    it('should display reaction count when other users have reacted to the offer', async () => {
+    it('should display likes information when other users have reacted to the offer', async () => {
       mockUseBookings.mockReturnValueOnce({ data: mockBookingsWithoutReaction })
 
       renderOfferReactionSection({})
 
       expect(await screen.findByText('1 j’aime')).toBeOnTheScreen()
+    })
+
+    it('should not display likes information when not exists', async () => {
+      const offerWithoutLikes = {
+        ...offerResponseSnap,
+        reactionsCount: { likes: 0 },
+      }
+      mockUseBookings.mockReturnValueOnce({ data: mockBookingsWithoutReaction })
+
+      renderOfferReactionSection({ offer: offerWithoutLikes })
+
+      expect(screen.queryByTestId('likesCounterIcon')).not.toBeOnTheScreen()
+    })
+
+    it('should display chronicles information when exist', async () => {
+      mockUseBookings.mockReturnValueOnce({ data: mockBookingsWithoutReaction })
+
+      renderOfferReactionSection({})
+
+      expect(await screen.findByText('3 avis')).toBeOnTheScreen()
+      expect(screen.getByTestId('chroniclesCounterIcon')).toBeOnTheScreen()
+    })
+
+    it('should not display chronicles information when not exists', async () => {
+      const offerWithoutChronicles = {
+        ...offerResponseSnap,
+        chronicles: [],
+      }
+      mockUseBookings.mockReturnValueOnce({ data: mockBookingsWithoutReaction })
+
+      renderOfferReactionSection({ offer: offerWithoutChronicles })
+
+      expect(screen.queryByTestId('chroniclesCounterIcon')).not.toBeOnTheScreen()
+    })
+
+    it('should display nothing when there are not chronicles and likes information', async () => {
+      const offerWithoutLikesAndChronicles = {
+        ...offerResponseSnap,
+        reactionsCount: { likes: 0 },
+        chronicles: [],
+      }
+      mockUseBookings.mockReturnValueOnce({ data: mockBookingsWithoutReaction })
+
+      renderOfferReactionSection({ offer: offerWithoutLikesAndChronicles })
+
+      expect(screen.queryByTestId('chroniclesCounterIcon')).not.toBeOnTheScreen()
+      expect(screen.queryByTestId('likesCounterIcon')).not.toBeOnTheScreen()
     })
 
     it('should send like reaction when pressing J’aime button and user not already send a reaction', async () => {
