@@ -4,6 +4,7 @@ import React from 'react'
 import { State } from 'react-native-gesture-handler'
 import { fireGestureHandler, getByGestureTestId } from 'react-native-gesture-handler/jest-utils'
 import { UseQueryResult } from 'react-query'
+import { ReactTestInstance } from 'react-test-renderer'
 
 import { PlaylistType } from 'features/offer/enums'
 import * as useVenueOffers from 'features/venue/api/useVenueOffers'
@@ -315,7 +316,8 @@ describe('VenueMapViewContainer', () => {
     await pressVenueMarker(venuesFixture[1])
     await screen.findByTestId('venueMapPreview')
 
-    await user.press(screen.getByText(venuesFixture[1].label))
+    // Using as because links is never undefined and the typing is not correct
+    await user.press(screen.getAllByText(venuesFixture[1].label)[0] as ReactTestInstance)
 
     expect(screen.queryByTestId('RightFilled')).not.toBeOnTheScreen()
   })
@@ -335,7 +337,8 @@ describe('VenueMapViewContainer', () => {
     await pressVenueMarker(venuesFixture[0])
     await waitFor(() => expect(screen.getByTestId('venueMapPreview')).toBeOnTheScreen())
 
-    await user.press(screen.getByText(venuesFixture[0].label))
+    // Using as because links is never undefined and the typing is not correct
+    await user.press(screen.getAllByText(venuesFixture[0].label)[0] as ReactTestInstance)
 
     expect(screen.getByTestId('RightFilled')).toBeOnTheScreen()
   })
@@ -377,11 +380,10 @@ describe('VenueMapViewContainer', () => {
     await waitFor(() => expect(mockUseCenterOnLocation).toHaveBeenCalledWith(expect.any(Object)))
   })
 
-  it('should display venue label when wipVenueMapPinV2 FF is activated', async () => {
+  it('should display venue label', async () => {
     setFeatureFlags([
       RemoteStoreFeatureFlags.WIP_OFFERS_IN_BOTTOM_SHEET,
       RemoteStoreFeatureFlags.WIP_VENUE_MAP,
-      RemoteStoreFeatureFlags.WIP_VENUE_MAP_PIN_V2,
     ])
     renderVenueMapViewContainer()
 
@@ -390,11 +392,10 @@ describe('VenueMapViewContainer', () => {
     expect(screen.getByText('Cinéma de la fin')).toBeOnTheScreen()
   })
 
-  it('should not display venue label when wipVenueMapPinV2 FF is activated and zoom is too low', async () => {
+  it('should not display venue label when zoom is too low', async () => {
     setFeatureFlags([
       RemoteStoreFeatureFlags.WIP_OFFERS_IN_BOTTOM_SHEET,
       RemoteStoreFeatureFlags.WIP_VENUE_MAP,
-      RemoteStoreFeatureFlags.WIP_VENUE_MAP_PIN_V2,
     ])
     Object.assign(constants.MARKER_LABEL_VISIBILITY_LIMIT, {
       zoom: 16,
@@ -412,7 +413,6 @@ describe('VenueMapViewContainer', () => {
     setFeatureFlags([
       RemoteStoreFeatureFlags.WIP_OFFERS_IN_BOTTOM_SHEET,
       RemoteStoreFeatureFlags.WIP_VENUE_MAP,
-      RemoteStoreFeatureFlags.WIP_VENUE_MAP_PIN_V2,
     ])
     renderVenueMapViewContainer()
 
@@ -423,14 +423,6 @@ describe('VenueMapViewContainer', () => {
         ).length
       )
     )
-  })
-
-  it('should not display venue label wipVenueMapPinV2 when FF is disabled', async () => {
-    setFeatureFlags([RemoteStoreFeatureFlags.WIP_VENUE_MAP])
-    renderVenueMapViewContainer()
-    await screen.findByTestId('venue-map-view')
-
-    expect(screen.queryByText('Cinéma de la fin')).not.toBeOnTheScreen()
   })
 })
 

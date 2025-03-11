@@ -61,7 +61,6 @@ export const VenueMapViewContainer: FunctionComponent = () => {
   const isInVenueMapScreen = routeName.toLowerCase() === 'venuemap'
 
   const isPreviewEnabled = useFeatureFlag(RemoteStoreFeatureFlags.WIP_VENUE_MAP)
-  const shouldDisplayPinV2 = useFeatureFlag(RemoteStoreFeatureFlags.WIP_VENUE_MAP_PIN_V2)
   const shouldNavigateToVenueOnFling = useFeatureFlag(
     RemoteStoreFeatureFlags.WIP_FLING_BOTTOM_SHEET_NAVIGATE_TO_VENUE
   )
@@ -246,7 +245,7 @@ export const VenueMapViewContainer: FunctionComponent = () => {
       />
       <VenueMapView
         ref={mapViewRef}
-        showLabel={shouldDisplayPinV2}
+        showLabel
         initialRegion={initialRegion}
         selectedVenueId={selectedVenue?.venueId}
         onLayout={handleMapLayout}
