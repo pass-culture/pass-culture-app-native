@@ -19,7 +19,7 @@ const isWeb = Platform.OS === 'web'
 type RemoteBannerProps = {
   from: RemoteBannerOrigin
   leftIcon: React.FunctionComponent<AccessibleIcon>
-  options?: Record<string, unknown>
+  options: Record<string, unknown>
   logClickEvent: (from: RemoteBannerOrigin, options: RemoteBannerType) => void
   analyticsParams: {
     type: 'remoteActivationBanner' | 'remoteGenericBanner'

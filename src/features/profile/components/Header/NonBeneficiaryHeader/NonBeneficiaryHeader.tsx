@@ -12,6 +12,8 @@ import { YoungerBadge } from 'features/profile/components/Badges/YoungerBadge'
 import { EligibilityMessage } from 'features/profile/components/Header/NonBeneficiaryHeader/EligibilityMessage'
 import { RemoteActivationBanner } from 'features/remoteBanners/banners/RemoteActivationBanner'
 import { formatToSlashedFrenchDate } from 'libs/dates'
+import { useFeatureFlagOptions } from 'libs/firebase/firestore/featureFlags/useFeatureFlagOptions'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { SystemBanner as GenericSystemBanner } from 'ui/components/ModuleBanner/SystemBanner'
 import { BicolorUnlock } from 'ui/svg/icons/BicolorUnlock'
@@ -98,6 +100,9 @@ function NonBeneficiaryBanner({
   const today = new Date()
   const { data: subscription } = useGetStepperInfo()
   const { banner } = useActivationBanner()
+  const { options: remoteActivationBannerOptions } = useFeatureFlagOptions(
+    RemoteStoreFeatureFlags.DISABLE_ACTIVATION
+  )
 
   const formattedEligibilityStartDatetime = eligibilityStartDatetime
     ? new Date(eligibilityStartDatetime)
@@ -118,12 +123,13 @@ function NonBeneficiaryBanner({
     )
   }
 
-  if (subscription?.subscriptionMessage) {
+  if (subscription?.subscriptionMessage && remoteActivationBannerOptions) {
     return (
       <BannerContainer>
         <SubscriptionMessageBadge
           disableActivation={featureFlags.disableActivation}
           subscriptionMessage={subscription.subscriptionMessage}
+          remoteActivationBannerOptions={remoteActivationBannerOptions}
         />
       </BannerContainer>
     )
@@ -133,10 +139,13 @@ function NonBeneficiaryBanner({
     banner.name === BannerName.activation_banner ||
     banner.name === BannerName.transition_17_18_banner
   ) {
-    if (featureFlags.disableActivation) {
+    if (featureFlags.disableActivation && remoteActivationBannerOptions) {
       return (
         <BannerContainer withMarginTop>
-          <RemoteActivationBanner from="profile" />
+          <RemoteActivationBanner
+            from="profile"
+            remoteActivationBannerOptions={remoteActivationBannerOptions}
+          />
         </BannerContainer>
       )
     }

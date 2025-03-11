@@ -25,7 +25,8 @@ const Template: VariantsStory<typeof LoggedOutHeader> = () => (
   <VariantsTemplate variants={variantConfig} Component={LoggedOutHeader} />
 )
 
-export const AllVariants = Template.bind({})
+// Todo(PC-35078) fix this story, read the associated ticket to follow the different choices offered
+const AllVariants = Template.bind({})
 AllVariants.storyName = 'LoggedOutHeader'
 AllVariants.parameters = {
   chromatic: { viewports: [theme.breakpoints.md, theme.breakpoints.lg, theme.breakpoints.xl] },
