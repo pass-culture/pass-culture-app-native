@@ -4,7 +4,7 @@ import { api } from 'api/api'
 import { ApiError } from 'api/ApiError'
 import { QueryKeys } from 'libs/queryKeys'
 
-export const useEmailValidationRemainingResends = ({
+export const useEmailValidationRemainingResendsQuery = ({
   email,
   onError,
 }: {

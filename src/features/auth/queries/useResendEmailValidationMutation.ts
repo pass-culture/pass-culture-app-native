@@ -4,7 +4,7 @@ import { api } from 'api/api'
 import { ApiError } from 'api/ApiError'
 import { ResendEmailValidationRequest } from 'api/gen'
 
-export function useResendEmailValidation({
+export function useResendEmailValidationMutation({
   onError,
   onSuccess,
 }: {

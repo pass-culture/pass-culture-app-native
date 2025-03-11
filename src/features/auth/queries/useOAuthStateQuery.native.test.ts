@@ -1,6 +1,6 @@
 import * as API from 'api/api'
 import { OauthStateResponse } from 'api/gen'
-import { useOAuthState } from 'features/auth/api/useOAuthState'
+import { useOAuthStateQuery } from 'features/auth/queries/useOAuthStateQuery'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { mockServer } from 'tests/mswServer'
@@ -11,10 +11,10 @@ const apiOAuthStateSpy = jest.spyOn(API.api, 'getNativeV1OauthState')
 
 jest.mock('libs/network/NetInfoWrapper')
 
-describe('useOAuthState', () => {
-  it('should not fetch oauth state when FF is disabled', async () => {
+describe('useOAuthStateQuery', () => {
+  it('should not fetch oauth state when disabled', async () => {
     setFeatureFlags()
-    const { result } = renderOAuthState()
+    const { result } = renderOAuthState(false)
 
     expect(apiOAuthStateSpy).not.toHaveBeenCalled()
     expect(result.current.data).toBeUndefined()
@@ -36,7 +36,7 @@ describe('useOAuthState', () => {
   })
 })
 
-const renderOAuthState = () =>
-  renderHook(useOAuthState, {
+const renderOAuthState = (enabled = true) =>
+  renderHook(() => useOAuthStateQuery({ enabled }), {
     wrapper: ({ children }) => reactQueryProviderHOC(children),
   })

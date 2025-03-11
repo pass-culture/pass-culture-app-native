@@ -20,7 +20,7 @@ import { storage } from 'libs/storage'
 import { useAddFavoriteMutation } from 'queries/favorites/useAddFavoriteMutation'
 import { useShouldShowCulturalSurveyForBeneficiaryUser } from 'shared/culturalSurvey/useShouldShowCulturalSurveyForBeneficiaryUser'
 
-export const useSignIn = ({
+export const useSignInMutation = ({
   params,
   doNotNavigateOnSigninSuccess,
   analyticsMethod = 'fromLogin',

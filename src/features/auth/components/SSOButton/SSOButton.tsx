@@ -1,7 +1,7 @@
 import { useRoute } from '@react-navigation/native'
 import React from 'react'
 
-import { useSignIn } from 'features/auth/api/useSignIn'
+import { useSignInMutation } from 'features/auth/queries/useSignInMutation'
 import { SignInResponseFailure } from 'features/auth/types'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 
@@ -15,7 +15,7 @@ type Props = {
 export const SSOButton = ({ type, onSignInFailure }: Props) => {
   const { params } = useRoute<UseRouteType<'SignupForm'>>()
   const isSignupButton = type === 'signup'
-  const { mutate: signIn } = useSignIn({
+  const { mutate: signIn } = useSignInMutation({
     params,
     onFailure: (error) => onSignInFailure?.(error),
     analyticsType: isSignupButton ? 'SSO_signup' : 'SSO_login',

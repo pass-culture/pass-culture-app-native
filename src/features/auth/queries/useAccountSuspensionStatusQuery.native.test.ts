@@ -1,5 +1,5 @@
 import { AccountState, UserSuspensionStatusResponse } from 'api/gen'
-import { useAccountSuspensionStatus } from 'features/auth/api/useAccountSuspensionStatus'
+import { useAccountSuspensionStatusQuery } from 'features/auth/queries/useAccountSuspensionStatusQuery'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, renderHook } from 'tests/utils'
@@ -39,6 +39,6 @@ describe('useAccountSuspensionStatus', () => {
 })
 
 const renderSuspensionDateHook = () =>
-  renderHook(() => useAccountSuspensionStatus(), {
+  renderHook(() => useAccountSuspensionStatusQuery(), {
     wrapper: ({ children }) => reactQueryProviderHOC(children),
   })

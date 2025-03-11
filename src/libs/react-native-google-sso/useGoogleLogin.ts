@@ -1,7 +1,7 @@
 // eslint-disable-next-line no-restricted-imports
 import { GoogleSignin } from '@react-native-google-signin/google-signin'
 
-import { useOAuthState } from 'features/auth/api/useOAuthState'
+import { useOAuthStateQuery } from 'features/auth/queries/useOAuthStateQuery'
 import { useLogTypeFromRemoteConfig } from 'libs/hooks/useLogTypeFromRemoteConfig'
 import { LogTypeEnum } from 'libs/monitoring/errors'
 import { eventMonitoring } from 'libs/monitoring/services'
@@ -9,7 +9,7 @@ import { GoogleLoginOptions } from 'libs/react-native-google-sso/types'
 import { getErrorMessage } from 'shared/getErrorMessage/getErrorMessage'
 
 export const useGoogleLogin = ({ onSuccess }: GoogleLoginOptions) => {
-  const { data } = useOAuthState()
+  const { data } = useOAuthStateQuery()
   const { logType } = useLogTypeFromRemoteConfig()
 
   if (!data?.oauthStateToken) return

@@ -7,7 +7,7 @@ type UseAccountSuspendForHackSuspicion = {
   onError?: (error: unknown) => void
 }
 
-export function useAccountSuspendForHackSuspicion({
+export function useAccountSuspendForHackSuspicionMutation({
   onSuccess,
   onError,
 }: UseAccountSuspendForHackSuspicion = {}) {

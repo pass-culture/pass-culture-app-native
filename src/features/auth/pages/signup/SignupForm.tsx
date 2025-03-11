@@ -1,12 +1,14 @@
 import { useNavigation, useRoute } from '@react-navigation/native'
 import React, { FunctionComponent, useCallback, useEffect, useState } from 'react'
-import { Keyboard } from 'react-native'
+import { Keyboard, Platform } from 'react-native'
 import styled from 'styled-components/native'
 
-import { useSignUp } from 'features/auth/api/useSignUp'
 import { ProgressBar } from 'features/auth/components/ProgressBar/ProgressBar'
 import { PreValidationSignupStep } from 'features/auth/enums'
+import { useLoginAndRedirect } from 'features/auth/pages/signup/helpers/useLoginAndRedirect'
 import { QuitSignupModal } from 'features/auth/pages/signup/QuitSignupModal/QuitSignupModal'
+import { useAppSignupMutation } from 'features/auth/queries/signup/useAppSignupMutation'
+import { useGoogleSignupMutation } from 'features/auth/queries/signup/useGoogleSignupMutation'
 import { DEFAULT_STEP_CONFIG, SSO_STEP_CONFIG } from 'features/auth/stepConfig'
 import { SignupData } from 'features/auth/types'
 import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
@@ -15,7 +17,8 @@ import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigat
 import { useGoBack } from 'features/navigation/useGoBack'
 import { useDeviceInfo } from 'features/trustedDevice/helpers/useDeviceInfo'
 import { analytics } from 'libs/analytics/provider'
-import { AsyncError } from 'libs/monitoring/errors'
+import { campaignTracker } from 'libs/campaign'
+import { firebaseAnalytics } from 'libs/firebase/analytics/analytics'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { BlurHeader } from 'ui/components/headers/BlurHeader'
 import {
@@ -28,8 +31,11 @@ import { getSpacing, Spacer } from 'ui/theme'
 import { Helmet } from 'ui/web/global/Helmet'
 
 export const SignupForm: FunctionComponent = () => {
-  const signUpApiCall = useSignUp()
   const trustedDevice = useDeviceInfo()
+
+  const { mutateAsync: googleSignup } = useGoogleSignupMutation()
+  const { mutateAsync: appSignup } = useAppSignupMutation()
+  const loginAndRedirect = useLoginAndRedirect()
 
   const { params } = useRoute<UseRouteType<'SignupForm'>>()
   const { setParams } = useNavigation<UseNavigationType>()
@@ -119,24 +125,30 @@ export const SignupForm: FunctionComponent = () => {
     setIsSSOSubscription(false)
   }, [])
 
-  async function signUp(token: string, marketingEmailSubscription: boolean) {
+  const signUp = async (token: string, marketingEmailSubscription: boolean) => {
     try {
-      const signupResponse = await signUpApiCall(
-        {
-          ...signupData,
-          marketingEmailSubscription,
-          token,
-          trustedDevice,
-        },
-        stepperAnalyticsType
-      )
-      if (!signupResponse?.isSuccess) {
-        throw new AsyncError('NETWORK_REQUEST_FAILED')
-      } else if (!isSSOSubscription) {
+      const commonParams = {
+        ...signupData,
+        marketingEmailSubscription,
+        token,
+        trustedDevice,
+        appsFlyerPlatform: Platform.OS,
+        appsFlyerUserId: await campaignTracker.getUserId(),
+        firebasePseudoId: await firebaseAnalytics.getAppInstanceId(),
+      }
+
+      if (commonParams.accountCreationToken) {
+        const { accountCreationToken, email: _email, password: _password, ...rest } = commonParams
+        const { accessToken, refreshToken } = await googleSignup({
+          ...rest,
+          accountCreationToken,
+        })
+        await loginAndRedirect({ accessToken, refreshToken }, stepperAnalyticsType)
+      } else {
+        await appSignup(commonParams)
         setStepIndex(numberOfSteps - 1)
       }
     } catch (error) {
-      ;(error as Error).name = 'SignUpError'
       eventMonitoring.captureException(error)
     }
   }
