@@ -1,3 +1,5 @@
+/* eslint-disable no-restricted-imports */
+// it the only file we need to import theme from design system
 import {
   theme as themeDarkMobile,
   ColorsType as ColorsTypeDarkMobile,
