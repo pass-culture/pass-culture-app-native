@@ -1,125 +1,30 @@
-import React, { useCallback, useState } from 'react'
-import styled from 'styled-components/native'
+import React, { FC } from 'react'
 
-import { useAuthContext } from 'features/auth/context/AuthContext'
-import { FavoriteAuthModal } from 'features/offer/components/FavoriteAuthModal/FavoriteAuthModal'
 import { NotificationAuthModal } from 'features/offer/components/NotificationAuthModal/NotificationAuthModal'
-import { FavoriteProps } from 'features/offer/types'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
+import {
+  StickyFooterContentBase,
+  StickyFooterContentProps,
+} from 'features/offer/components/OfferFooter/StickyFooterContentBase'
+import { StickyFooterNotificationsProps } from 'features/offer/components/OfferFooter/types'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
-import { useModal } from 'ui/components/modals/useModal'
-import { StickyBottomWrapper } from 'ui/components/StickyBottomWrapper/StickyBottomWrapper'
 import { Bell } from 'ui/svg/icons/Bell'
 import { BellFilled } from 'ui/svg/icons/BellFilled'
-import { Favorite } from 'ui/svg/icons/Favorite'
-import { FavoriteFilled } from 'ui/svg/icons/FavoriteFilled'
-import { getSpacing, getShadow, TypoDS } from 'ui/theme'
-import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
-type Props = {
-  offerId: number
-} & FavoriteProps
+type Props = StickyFooterContentProps & StickyFooterNotificationsProps
 
-export const StickyFooterContent = ({
-  offerId,
-  addFavorite,
-  isAddFavoriteLoading,
-  removeFavorite,
-  isRemoveFavoriteLoading,
-  favorite,
-}: Props) => {
-  const { isLoggedIn } = useAuthContext()
-
-  const { bottom } = useCustomSafeInsets()
-  const [hasEnabledNotifications, setHasEnabledNotifications] = useState(false)
-
-  const {
-    visible: isFavoriteAuthModalVisible,
-    showModal: showFavoriteAuthModal,
-    hideModal: hideFavoriteAuthModal,
-  } = useModal(false)
-
-  const {
-    visible: isNotificationAuthModalVisible,
-    showModal: showNotificationAuthModal,
-    hideModal: hideNotificationAuthModal,
-  } = useModal(false)
-
-  const pressFavoriteCTA = useCallback(() => {
-    if (!isLoggedIn) {
-      showFavoriteAuthModal()
-    } else if (favorite) {
-      removeFavorite(favorite.id)
-    } else {
-      addFavorite({ offerId })
-    }
-  }, [addFavorite, favorite, isLoggedIn, offerId, removeFavorite, showFavoriteAuthModal])
-
-  const pressNotificationsCTA = () => {
-    if (!isLoggedIn) {
-      showNotificationAuthModal()
-    }
-    setHasEnabledNotifications(!hasEnabledNotifications)
-  }
-
+export const StickyFooterContent: FC<Props> = (props) => {
   return (
-    <StickyFooterWrapper bottom={bottom}>
-      <Caption>Cette offre sera bientôt disponible</Caption>
-      {favorite ? (
-        <ButtonSecondary
-          wording="Retirer des favoris"
-          onPress={pressFavoriteCTA}
-          icon={FavoriteFilled}
-          isLoading={isRemoveFavoriteLoading}
-        />
-      ) : (
-        <React.Fragment>
-          <ButtonPrimary
-            wording="Mettre en favori"
-            onPress={pressFavoriteCTA}
-            icon={Favorite}
-            isLoading={isAddFavoriteLoading}
-          />
-          <FavoriteAuthModal
-            visible={isFavoriteAuthModalVisible}
-            offerId={offerId}
-            dismissModal={hideFavoriteAuthModal}
-          />
-        </React.Fragment>
-      )}
-      <React.Fragment>
-        <ButtonTertiaryBlack
-          wording={hasEnabledNotifications ? 'Désactiver le rappel' : 'Ajouter un rappel'}
-          onPress={pressNotificationsCTA}
-          icon={hasEnabledNotifications ? BellFilled : Bell}
-        />
-        <NotificationAuthModal
-          visible={isNotificationAuthModalVisible}
-          offerId={offerId}
-          dismissModal={hideNotificationAuthModal}
-        />
-      </React.Fragment>
-    </StickyFooterWrapper>
+    <StickyFooterContentBase {...props}>
+      <ButtonTertiaryBlack
+        wording={props.hasEnabledNotifications ? 'Désactiver le rappel' : 'Ajouter un rappel'}
+        onPress={props.onPressNotificationsCTA}
+        icon={props.hasEnabledNotifications ? BellFilled : Bell}
+      />
+      <NotificationAuthModal
+        visible={props.notificationAuthModal.visible}
+        offerId={props.offerId}
+        dismissModal={props.notificationAuthModal.hideModal}
+      />
+    </StickyFooterContentBase>
   )
 }
-
-const StickyFooterWrapper = styled(StickyBottomWrapper)(({ theme, bottom }) => ({
-  bottom,
-  backgroundColor: theme.colors.white,
-  paddingTop: getSpacing(4),
-  paddingHorizontal: getSpacing(6),
-  paddingBottom: getSpacing(6),
-  gap: getSpacing(2),
-  ...getShadow({
-    shadowOffset: { width: 0, height: getSpacing(1) },
-    shadowRadius: getSpacing(5),
-    shadowColor: theme.colors.black,
-    shadowOpacity: 0.25,
-  }),
-}))
-
-const Caption = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
-  textAlign: 'center',
-  color: theme.colors.black,
-}))
