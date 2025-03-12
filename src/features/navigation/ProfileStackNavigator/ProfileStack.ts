@@ -24,6 +24,7 @@ export type ProfileStackParamList = {
   TrackEmailChange: undefined
   LegalNotices: undefined
   PersonalData: undefined
+  ValidateEmailChange: { token: string } | undefined
 } & AccessibilityRootStackParamList
 
 export type ProfileStackRouteName = keyof ProfileStackParamList

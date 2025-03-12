@@ -47,7 +47,6 @@ import { ConsentSettings } from 'features/profile/pages/ConsentSettings/ConsentS
 import { FeedbackInApp } from 'features/profile/pages/FeedbackInApp/FeedbackInApp'
 import { NewEmailSelection } from 'features/profile/pages/NewEmailSelection/NewEmailSelection'
 import { SuspendAccountConfirmation } from 'features/profile/pages/SuspendAccountConfirmation/SuspendAccountConfirmation'
-import { ValidateEmailChange } from 'features/profile/pages/ValidateEmailChange/ValidateEmailChange'
 import { OnboardingSubscription } from 'features/subscription/page/OnboardingSubscription'
 import { ProfileTutorialAgeInformation } from 'features/tutorial/pages/profileTutorial/ProfileTutorialAgeInformation'
 import { Venue } from 'features/venue/pages/Venue/Venue'
@@ -140,12 +139,6 @@ export const routes: RootRoute[] = [
     name: 'ConfirmChangeEmail',
     component: ConfirmChangeEmail,
     path: 'changement-email/confirmation',
-    options: { title: 'Confirmation de changement d’email ' },
-  },
-  {
-    name: 'ValidateEmailChange',
-    component: ValidateEmailChange,
-    path: 'changement-email/validation',
     options: { title: 'Confirmation de changement d’email ' },
   },
   {

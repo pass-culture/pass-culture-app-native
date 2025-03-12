@@ -98,6 +98,11 @@ export const routes: ProfileStackRoute[] = [
     component: ComponentForPathConfig,
     path: 'profil/donnees-personnelles',
   },
+  {
+    name: 'ValidateEmailChange',
+    component: ComponentForPathConfig,
+    path: 'changement-email/validation',
+  },
 ]
 
 export function isProfileStackScreen(screen: string): screen is ProfileStackRouteName {

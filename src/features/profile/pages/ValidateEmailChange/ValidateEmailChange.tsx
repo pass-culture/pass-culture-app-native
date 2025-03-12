@@ -7,6 +7,7 @@ import { ApiError } from 'api/ApiError'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useLogoutRoutine } from 'features/auth/helpers/useLogoutRoutine'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
+import { ProfileStackParamList } from 'features/navigation/ProfileStackNavigator/ProfileStack'
 import { RootStackParamList, StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useEmailUpdateStatus } from 'features/profile/helpers/useEmailUpdateStatus'
@@ -17,7 +18,10 @@ import { BicolorPhonePending } from 'ui/svg/icons/BicolorPhonePending'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { Spacer, TypoDS, getSpacing } from 'ui/theme'
 
-type ValidateEmailChangeProps = NativeStackScreenProps<RootStackParamList, 'ValidateEmailChange'>
+type ValidateEmailChangeProps = NativeStackScreenProps<
+  RootStackParamList & ProfileStackParamList,
+  'ValidateEmailChange'
+>
 
 export function ValidateEmailChange({ route: { params }, navigation }: ValidateEmailChangeProps) {
   const { data: emailUpdateStatus, isLoading: isLoadingEmailUpdateStatus } = useEmailUpdateStatus()
@@ -29,6 +33,7 @@ export function ValidateEmailChange({ route: { params }, navigation }: ValidateE
   const signOut = useLogoutRoutine()
 
   const mutate = useCallback(async () => {
+    if (!params?.token) return
     return api.putNativeV1ProfileEmailUpdateValidate({
       token: params?.token,
     })

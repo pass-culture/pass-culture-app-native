@@ -7,6 +7,7 @@ import * as API from 'api/api'
 import { ApiError } from 'api/ApiError'
 import { EmailHistoryEventTypeEnum, EmailUpdateStatusResponse } from 'api/gen'
 import * as Auth from 'features/auth/context/AuthContext'
+import { ProfileStackParamList } from 'features/navigation/ProfileStackNavigator/ProfileStack'
 import { RootStackParamList, StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import * as useEmailUpdateStatus from 'features/profile/helpers/useEmailUpdateStatus'
@@ -55,13 +56,16 @@ const emailUpdateValidateSpy = jest
 const navigation = {
   reset: jest.fn(),
   replace: jest.fn(),
-} as unknown as NativeStackNavigationProp<RootStackParamList, 'ValidateEmailChange'>
+} as unknown as NativeStackNavigationProp<
+  RootStackParamList & ProfileStackParamList,
+  'ValidateEmailChange'
+>
 
 const route = {
   params: {
     token: 'example',
   },
-} as unknown as RouteProp<RootStackParamList, 'ValidateEmailChange'>
+} as unknown as RouteProp<RootStackParamList & ProfileStackParamList, 'ValidateEmailChange'>
 
 jest.mock('libs/firebase/analytics/analytics')
 

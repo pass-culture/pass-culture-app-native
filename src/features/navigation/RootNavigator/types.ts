@@ -267,7 +267,6 @@ export type RootStackParamList = {
   ThematicHome: ThematicHomeParams
   Tutorial?: { selectedAge?: 15 | 16 | 17 | 18 }
   UTMParameters: undefined
-  ValidateEmailChange: { token: string }
   Venue: { id: number; from?: Referrals; searchId?: string }
   VenueMap: undefined
   VenueMapFiltersStackNavigator: undefined

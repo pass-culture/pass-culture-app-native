@@ -26,6 +26,7 @@ import { NotificationsSettings } from 'features/profile/pages/NotificationSettin
 import { PersonalData } from 'features/profile/pages/PersonalData/PersonalData'
 import { Profile } from 'features/profile/pages/Profile'
 import { TrackEmailChange } from 'features/profile/pages/TrackEmailChange/TrackEmailChange'
+import { ValidateEmailChange } from 'features/profile/pages/ValidateEmailChange/ValidateEmailChange'
 
 export const ProfileStackNavigator = () => (
   <ProfileStack.Navigator initialRouteName="Profile" screenOptions={ROOT_NAVIGATOR_SCREEN_OPTIONS}>
@@ -139,6 +140,11 @@ export const ProfileStackNavigator = () => (
       name="PersonalData"
       component={withAuthProtection(PersonalData)}
       options={{ title: 'Mes informations personnelles' }}
+    />
+    <ProfileStack.Screen
+      name="ValidateEmailChange"
+      component={ValidateEmailChange}
+      options={{ title: 'Confirmation de changement d’email ' }}
     />
   </ProfileStack.Navigator>
 )
