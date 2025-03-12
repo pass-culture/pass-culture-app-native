@@ -51,12 +51,7 @@ const initialProps: ComponentProps<typeof CategoriesListDumb> = {
 }
 
 describe('CategoriesListDumb', () => {
-  beforeEach(() =>
-    setFeatureFlags([
-      RemoteStoreFeatureFlags.WIP_VENUE_MAP,
-      RemoteStoreFeatureFlags.WIP_APP_V2_VENUE_MAP_BLOCK,
-    ])
-  )
+  beforeEach(() => setFeatureFlags([RemoteStoreFeatureFlags.WIP_VENUE_MAP]))
 
   it('should not display venue map block when shouldDisplayVenueMap and isMapWithoutPositionAndNotLocated are false', async () => {
     render(

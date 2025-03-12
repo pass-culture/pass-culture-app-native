@@ -6,7 +6,7 @@ import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
-import { fireEvent, render, screen } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 
 const mockedPlace: SuggestedPlace = {
   label: 'Kourou',
@@ -27,12 +27,13 @@ jest.mock('libs/location', () => ({
   useLocation: () => mockUseLocation(),
 }))
 
+const user = userEvent.setup()
+
+jest.useFakeTimers()
+
 describe('VenueMapModule', () => {
   beforeEach(() => {
-    setFeatureFlags([
-      RemoteStoreFeatureFlags.WIP_VENUE_MAP,
-      RemoteStoreFeatureFlags.WIP_APP_V2_VENUE_MAP_BLOCK,
-    ])
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_VENUE_MAP])
   })
 
   it('should render venue map block when user is located and feature flag enabled', () => {
@@ -70,10 +71,10 @@ describe('VenueMapModule', () => {
     expect(screen.queryByText('Carte des lieux culturels')).not.toBeOnTheScreen()
   })
 
-  it('should log consult venue map from home when pressing venue map block', () => {
+  it('should log consult venue map from home when pressing venue map block', async () => {
     render(<VenueMapModule />)
 
-    fireEvent.press(screen.getByText('Explore la carte'))
+    await user.press(screen.getByText('Explore la carte'))
 
     expect(analytics.logConsultVenueMap).toHaveBeenNthCalledWith(1, { from: 'home' })
   })
