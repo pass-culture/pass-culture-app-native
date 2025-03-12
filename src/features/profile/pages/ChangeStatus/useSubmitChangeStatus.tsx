@@ -6,6 +6,7 @@ import * as yup from 'yup'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { StatusForm } from 'features/identityCheck/pages/profile/StatusFlatList'
+import { getProfileStackConfig } from 'features/navigation/ProfileStackNavigator/getProfileStackConfig'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { usePatchProfile } from 'features/profile/api/usePatchProfile'
 import { analytics } from 'libs/analytics/provider'
@@ -53,7 +54,7 @@ export const useSubmitChangeStatus = () => {
   const submitStatus = useCallback(
     async (formValues: StatusForm) => {
       patchProfile({ activityId: formValues.selectedStatus })
-      navigate('PersonalData')
+      navigate(...getProfileStackConfig('PersonalData'))
     },
     [navigate, patchProfile]
   )

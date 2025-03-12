@@ -182,7 +182,7 @@ const OnlineProfile: React.FC = () => {
                       <Row
                         title="Informations personnelles"
                         type="navigable"
-                        navigateTo={{ screen: 'PersonalData' }}
+                        navigateTo={getProfileNavConfig('PersonalData')}
                         icon={BicolorProfile}
                       />
                     </Li>

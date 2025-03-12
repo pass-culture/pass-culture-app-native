@@ -41,7 +41,7 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
-describe('<SetCity/>', () => {
+describe('ChangeCity', () => {
   it('should render correctly', () => {
     render(reactQueryProviderHOC(<ChangeCity />))
 
@@ -97,7 +97,10 @@ describe('<SetCity/>', () => {
     })
 
     await waitFor(async () => {
-      expect(navigate).toHaveBeenNthCalledWith(1, 'PersonalData')
+      expect(navigate).toHaveBeenNthCalledWith(1, 'TabNavigator', {
+        params: { params: undefined, screen: 'PersonalData' },
+        screen: 'ProfileStackNavigator',
+      })
     })
   })
 

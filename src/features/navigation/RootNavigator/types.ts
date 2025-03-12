@@ -247,7 +247,6 @@ export type RootStackParamList = {
   OfferPreview: { id: number; defaultIndex?: number }
   OnboardingSubscription: undefined
   PageNotFound: undefined
-  PersonalData: undefined
   RecreditBirthdayNotification: undefined
   ReinitializePassword: {
     email: string

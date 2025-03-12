@@ -46,7 +46,6 @@ import { ConfirmChangeEmail } from 'features/profile/pages/ConfirmChangeEmail/Co
 import { ConsentSettings } from 'features/profile/pages/ConsentSettings/ConsentSettings'
 import { FeedbackInApp } from 'features/profile/pages/FeedbackInApp/FeedbackInApp'
 import { NewEmailSelection } from 'features/profile/pages/NewEmailSelection/NewEmailSelection'
-import { PersonalData } from 'features/profile/pages/PersonalData/PersonalData'
 import { SuspendAccountConfirmation } from 'features/profile/pages/SuspendAccountConfirmation/SuspendAccountConfirmation'
 import { ValidateEmailChange } from 'features/profile/pages/ValidateEmailChange/ValidateEmailChange'
 import { OnboardingSubscription } from 'features/subscription/page/OnboardingSubscription'
@@ -236,13 +235,6 @@ export const routes: RootRoute[] = [
       parse: screenParamsParser['Login'],
     },
     options: { title: 'Connexion' },
-  },
-  {
-    name: 'PersonalData',
-    component: PersonalData,
-    path: 'profil/donnees-personnelles',
-    options: { title: 'Mes informations personnelles' },
-    secure: true,
   },
   {
     name: 'OnboardingSubscription',

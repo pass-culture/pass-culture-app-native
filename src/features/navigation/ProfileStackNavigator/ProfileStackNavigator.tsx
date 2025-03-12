@@ -23,6 +23,7 @@ import { SuspendAccountConfirmationWithoutAuthentication } from 'features/profil
 import { DeleteProfileReason } from 'features/profile/pages/DeleteProfileReason/DeleteProfileReason'
 import { LegalNotices } from 'features/profile/pages/LegalNotices/LegalNotices'
 import { NotificationsSettings } from 'features/profile/pages/NotificationSettings/NotificationsSettings'
+import { PersonalData } from 'features/profile/pages/PersonalData/PersonalData'
 import { Profile } from 'features/profile/pages/Profile'
 import { TrackEmailChange } from 'features/profile/pages/TrackEmailChange/TrackEmailChange'
 
@@ -133,6 +134,11 @@ export const ProfileStackNavigator = () => (
       name="LegalNotices"
       component={LegalNotices}
       options={{ title: 'Informations légales' }}
+    />
+    <ProfileStack.Screen
+      name="PersonalData"
+      component={withAuthProtection(PersonalData)}
+      options={{ title: 'Mes informations personnelles' }}
     />
   </ProfileStack.Navigator>
 )

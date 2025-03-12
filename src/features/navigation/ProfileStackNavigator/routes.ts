@@ -93,6 +93,11 @@ export const routes: ProfileStackRoute[] = [
     path: 'notices-legales',
     options: {},
   },
+  {
+    name: 'PersonalData',
+    component: ComponentForPathConfig,
+    path: 'profil/donnees-personnelles',
+  },
 ]
 
 export function isProfileStackScreen(screen: string): screen is ProfileStackRouteName {

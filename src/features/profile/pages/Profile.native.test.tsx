@@ -211,7 +211,10 @@ describe('Profile component', () => {
       const row = screen.getByText('Informations personnelles')
       await user.press(row)
 
-      expect(navigate).toHaveBeenCalledWith('PersonalData', undefined)
+      expect(navigate).toHaveBeenCalledWith('TabNavigator', {
+        params: { params: undefined, screen: 'PersonalData' },
+        screen: 'ProfileStackNavigator',
+      })
     })
 
     describe('geolocation switch', () => {
