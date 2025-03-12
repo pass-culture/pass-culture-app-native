@@ -404,6 +404,18 @@ describe('Profile component', () => {
       })
     })
 
+    it('should navigate when the feed back row is clicked', async () => {
+      renderProfile()
+
+      const legalNoticesButton = screen.getByText('Faire une suggestion')
+      await user.press(legalNoticesButton)
+
+      expect(navigate).toHaveBeenCalledWith('TabNavigator', {
+        params: { params: undefined, screen: 'FeedbackInApp' },
+        screen: 'ProfileStackNavigator',
+      })
+    })
+
     it('should navigate when the confidentiality row is clicked', async () => {
       renderProfile()
 

@@ -216,7 +216,6 @@ export type RootStackParamList = {
   EighteenBirthday: undefined
   EndedBookings: undefined
   FavoritesSorts: undefined
-  FeedbackInApp: undefined
   ForgottenPassword: undefined
   FraudulentSuspendedAccount: undefined
   LocationFilter?: { selectedVenue?: Venue; selectedPlace?: SuggestedPlace }

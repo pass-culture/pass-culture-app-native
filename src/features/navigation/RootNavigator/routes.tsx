@@ -43,7 +43,6 @@ import { ChangeEmailExpiredLink } from 'features/profile/pages/ChangeEmail/Chang
 import { ChangeEmailSetPassword } from 'features/profile/pages/ChangeEmailSetPassword/ChangeEmailSetPassword'
 import { ConfirmChangeEmail } from 'features/profile/pages/ConfirmChangeEmail/ConfirmChangeEmail'
 import { ConsentSettings } from 'features/profile/pages/ConsentSettings/ConsentSettings'
-import { FeedbackInApp } from 'features/profile/pages/FeedbackInApp/FeedbackInApp'
 import { NewEmailSelection } from 'features/profile/pages/NewEmailSelection/NewEmailSelection'
 import { OnboardingSubscription } from 'features/subscription/page/OnboardingSubscription'
 import { ProfileTutorialAgeInformation } from 'features/tutorial/pages/profileTutorial/ProfileTutorialAgeInformation'
@@ -209,13 +208,6 @@ export const routes: RootRoute[] = [
     component: AccountReactivationSuccess,
     path: 'compte-reactive',
     options: { title: 'Compte réactivé' },
-    secure: true,
-  },
-  {
-    name: 'FeedbackInApp',
-    component: FeedbackInApp,
-    path: 'profil/formulaire-suggestion',
-    options: { title: 'Forumulaire de suggestion' },
     secure: true,
   },
   {

@@ -22,6 +22,7 @@ import { DeleteProfileContactSupport } from 'features/profile/pages/DeleteProfil
 import { DeleteProfileEmailHacked } from 'features/profile/pages/DeleteProfile/DeleteProfileEmailHacked'
 import { SuspendAccountConfirmationWithoutAuthentication } from 'features/profile/pages/DeleteProfile/SuspendAccountConfirmationWithoutAuthentication'
 import { DeleteProfileReason } from 'features/profile/pages/DeleteProfileReason/DeleteProfileReason'
+import { FeedbackInApp } from 'features/profile/pages/FeedbackInApp/FeedbackInApp'
 import { LegalNotices } from 'features/profile/pages/LegalNotices/LegalNotices'
 import { NotificationsSettings } from 'features/profile/pages/NotificationSettings/NotificationsSettings'
 import { PersonalData } from 'features/profile/pages/PersonalData/PersonalData'
@@ -157,6 +158,11 @@ export const ProfileStackNavigator = () => (
       name="SuspendAccountConfirmation"
       component={SuspendAccountConfirmation}
       options={{ title: 'Suspension de compte' }}
+    />
+    <ProfileStack.Screen
+      name="FeedbackInApp"
+      component={withAuthProtection(FeedbackInApp)}
+      options={{ title: 'Forumulaire de suggestion' }}
     />
   </ProfileStack.Navigator>
 )

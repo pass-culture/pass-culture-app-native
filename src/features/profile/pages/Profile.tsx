@@ -257,7 +257,7 @@ const OnlineProfile: React.FC = () => {
                       <Row
                         title="Faire une suggestion"
                         type="navigable"
-                        navigateTo={{ screen: 'FeedbackInApp' }}
+                        navigateTo={getProfileNavConfig('FeedbackInApp')}
                         icon={Bulb}
                       />
                     </Li>
