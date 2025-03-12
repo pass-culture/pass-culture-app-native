@@ -6,7 +6,7 @@ import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
-import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 import * as useModalAPI from 'ui/components/modals/useModal'
 
 import { CategoriesList } from './CategoriesList'
@@ -53,63 +53,54 @@ jest.mock('libs/location', () => ({
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('features/navigation/TabBar/routes')
 
+const user = userEvent.setup()
+
+jest.useFakeTimers()
+
 describe('CategoriesList', () => {
   beforeEach(() => {
-    setFeatureFlags([
-      RemoteStoreFeatureFlags.WIP_VENUE_MAP,
-      RemoteStoreFeatureFlags.WIP_APP_V2_VENUE_MAP_BLOCK,
-    ])
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_VENUE_MAP])
   })
 
   it('should display categories', async () => {
     render(<CategoriesList />)
 
-    await waitFor(async () => {
-      expect(screen.getByText('Cinéma'.toUpperCase())).toBeOnTheScreen()
-    })
+    expect(await screen.findByText('Cinéma'.toUpperCase())).toBeOnTheScreen()
   })
 
   it('should dispatch with offerCategory before navigation', async () => {
     render(<CategoriesList />)
-    const categoryButton = screen.getByText('Spectacles'.toUpperCase())
-    await act(async () => {
-      fireEvent.press(categoryButton)
-    })
 
-    await waitFor(async () => {
-      expect(mockDispatch).toHaveBeenCalledWith({
-        type: 'SET_STATE',
-        payload: { ...initialSearchState, offerCategories: ['SPECTACLES'] },
-      })
+    await user.press(screen.getByText('Spectacles'.toUpperCase()))
+
+    expect(mockDispatch).toHaveBeenCalledWith({
+      type: 'SET_STATE',
+      payload: { ...initialSearchState, offerCategories: ['SPECTACLES'] },
     })
   })
 
   it('should navigate to search results with search params on press', async () => {
     render(<CategoriesList />)
 
-    const categoryButton = screen.getByText('Spectacles'.toUpperCase())
-    await act(async () => {
-      fireEvent.press(categoryButton)
-    })
-    await waitFor(async () => {
-      expect(navigate).toHaveBeenCalledWith('TabNavigator', {
+    await user.press(screen.getByText('Spectacles'.toUpperCase()))
+
+    expect(navigate).toHaveBeenCalledWith('TabNavigator', {
+      params: {
         params: {
-          params: {
-            searchId: 'testUuidV4',
-            isFullyDigitalOffersCategory: false,
-            offerCategories: ['SPECTACLES'],
-          },
-          screen: 'SearchResults',
+          searchId: 'testUuidV4',
+          isFullyDigitalOffersCategory: false,
+          offerCategories: ['SPECTACLES'],
         },
-        screen: 'SearchStackNavigator',
-      })
+        screen: 'SearchResults',
+      },
+      screen: 'SearchStackNavigator',
     })
   })
 
   it.each`
     hasGeolocPosition | selectedLocationMode      | place          | FF
     ${true}           | ${LocationMode.AROUND_ME} | ${mockedPlace} | ${[]}
-    ${false}          | ${LocationMode.AROUND_ME} | ${mockedPlace} | ${[RemoteStoreFeatureFlags.WIP_VENUE_MAP, RemoteStoreFeatureFlags.WIP_APP_V2_VENUE_MAP_BLOCK]}
+    ${false}          | ${LocationMode.AROUND_ME} | ${mockedPlace} | ${[RemoteStoreFeatureFlags.WIP_VENUE_MAP]}
   `(
     'should not display venue map block',
     async ({ hasGeolocPosition, selectedLocationMode, place, FF }) => {
@@ -136,10 +127,7 @@ describe('CategoriesList', () => {
   `(
     'should display venue map block',
     async ({ hasGeolocPosition, selectedLocationMode, place }) => {
-      setFeatureFlags([
-        RemoteStoreFeatureFlags.WIP_VENUE_MAP,
-        RemoteStoreFeatureFlags.WIP_APP_V2_VENUE_MAP_BLOCK,
-      ])
+      setFeatureFlags([RemoteStoreFeatureFlags.WIP_VENUE_MAP])
       mockUseLocation.mockReturnValueOnce({
         hasGeolocPosition,
         selectedLocationMode,
@@ -153,7 +141,7 @@ describe('CategoriesList', () => {
     }
   )
 
-  it('should open venue map location modal when pressing on venue map block', () => {
+  it('should open venue map location modal when pressing on venue map block', async () => {
     mockUseLocation.mockReturnValueOnce({
       hasGeolocPosition: false,
       selectedLocationMode: LocationMode.EVERYWHERE,
@@ -163,7 +151,7 @@ describe('CategoriesList', () => {
 
     render(<CategoriesList />)
 
-    fireEvent.press(screen.getByText('Explore la carte'))
+    await user.press(screen.getByText('Explore la carte'))
 
     expect(mockShowModal).toHaveBeenCalledTimes(1)
   })
