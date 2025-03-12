@@ -11,9 +11,7 @@ import * as useVersion from 'ui/hooks/useVersion.web'
 import { Profile } from './Profile'
 
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
-jest
-  .spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
-  .mockReturnValue({ ...DEFAULT_REMOTE_CONFIG })
+jest.spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery').mockReturnValue(DEFAULT_REMOTE_CONFIG)
 
 jest.mock('features/favorites/context/FavoritesWrapper')
 

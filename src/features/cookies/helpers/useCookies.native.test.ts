@@ -60,7 +60,9 @@ describe('useCookies', () => {
       const { result } = renderUseCookies()
       const { cookiesConsent } = result.current
 
-      await act(() => expect(cookiesConsent).toEqual({ state: ConsentState.LOADING }))
+      await act(() => {})
+
+      expect(cookiesConsent).toEqual({ state: ConsentState.LOADING })
     })
 
     it('should write state', async () => {

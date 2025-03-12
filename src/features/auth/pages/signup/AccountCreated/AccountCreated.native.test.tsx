@@ -19,9 +19,7 @@ import { fireEvent, render, screen, waitFor } from 'tests/utils'
 import { AccountCreated } from './AccountCreated'
 
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
-jest
-  .spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
-  .mockReturnValue({ ...DEFAULT_REMOTE_CONFIG })
+jest.spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery').mockReturnValue(DEFAULT_REMOTE_CONFIG)
 
 jest.mock('features/profile/api/useResetRecreditAmountToShow')
 jest.mock('features/navigation/helpers/navigateToHome')

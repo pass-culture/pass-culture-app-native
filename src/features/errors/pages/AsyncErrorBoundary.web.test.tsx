@@ -19,9 +19,7 @@ jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
 })
 
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
-jest
-  .spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
-  .mockReturnValue({ ...DEFAULT_REMOTE_CONFIG })
+jest.spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery').mockReturnValue(DEFAULT_REMOTE_CONFIG)
 jest.mock('ui/theme/customFocusOutline/customFocusOutline')
 
 describe('AsyncErrorBoundary component', () => {

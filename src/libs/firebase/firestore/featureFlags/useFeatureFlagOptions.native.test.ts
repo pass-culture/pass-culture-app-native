@@ -24,7 +24,7 @@ const mockGet = jest.fn()
 const featureFlag = RemoteStoreFeatureFlags.WIP_DISABLE_STORE_REVIEW
 const useRemoteConfigSpy = jest
   .spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
-  .mockReturnValue({ ...DEFAULT_REMOTE_CONFIG })
+  .mockReturnValue(DEFAULT_REMOTE_CONFIG)
 
 describe('useFeatureFlagOptions', () => {
   beforeAll(() =>

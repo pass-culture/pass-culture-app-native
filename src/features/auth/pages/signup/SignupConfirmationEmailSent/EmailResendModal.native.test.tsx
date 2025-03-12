@@ -21,7 +21,7 @@ const resendEmailValidationSpy = jest.spyOn(api, 'postNativeV1ResendEmailValidat
 
 const useRemoteConfigSpy = jest
   .spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
-  .mockReturnValue({ ...DEFAULT_REMOTE_CONFIG })
+  .mockReturnValue(DEFAULT_REMOTE_CONFIG)
 
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   return function createAnimatedComponent(Component: unknown) {

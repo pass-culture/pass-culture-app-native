@@ -17,9 +17,7 @@ import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { userEvent, render, screen, act } from 'tests/utils'
 
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
-jest
-  .spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
-  .mockReturnValue({ ...DEFAULT_REMOTE_CONFIG })
+jest.spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery').mockReturnValue(DEFAULT_REMOTE_CONFIG)
 
 jest.mock('features/auth/context/AuthContext')
 
