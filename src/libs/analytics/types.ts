@@ -44,4 +44,5 @@ export type ConsultOfferLogParams = {
   offer_display_index?: number
   index?: number
   artistName?: string
+  isHeadline?: boolean
 }
