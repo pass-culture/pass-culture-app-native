@@ -3,6 +3,7 @@ import React from 'react'
 import { NativeStackNavigationProp } from 'react-native-screens/native-stack'
 
 import { EmailHistoryEventTypeEnum } from 'api/gen'
+import { ProfileStackParamList } from 'features/navigation/ProfileStackNavigator/ProfileStack'
 import { RootStackParamList } from 'features/navigation/RootNavigator/types'
 import * as useEmailUpdateStatus from 'features/profile/helpers/useEmailUpdateStatus'
 import { SuspendAccountConfirmation } from 'features/profile/pages/SuspendAccountConfirmation/SuspendAccountConfirmation'
@@ -27,13 +28,19 @@ describe('<SuspendAccountConfirmation />', () => {
   describe('Accessibility', () => {
     const navigation = {
       navigate: jest.fn(),
-    } as unknown as NativeStackNavigationProp<RootStackParamList, 'SuspendAccountConfirmation'>
+    } as unknown as NativeStackNavigationProp<
+      RootStackParamList & ProfileStackParamList,
+      'SuspendAccountConfirmation'
+    >
 
     const route = {
       params: {
         token: 'example',
       },
-    } as unknown as RouteProp<RootStackParamList, 'SuspendAccountConfirmation'>
+    } as unknown as RouteProp<
+      RootStackParamList & ProfileStackParamList,
+      'SuspendAccountConfirmation'
+    >
 
     it('should not have basic accessibility issues', async () => {
       const { container } = render(

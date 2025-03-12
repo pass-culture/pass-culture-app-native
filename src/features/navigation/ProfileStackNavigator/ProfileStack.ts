@@ -26,6 +26,7 @@ export type ProfileStackParamList = {
   PersonalData: undefined
   ValidateEmailChange: { token: string } | undefined
   ChangePassword: undefined
+  SuspendAccountConfirmation: { token: string } | undefined
 } & AccessibilityRootStackParamList
 
 export type ProfileStackRouteName = keyof ProfileStackParamList

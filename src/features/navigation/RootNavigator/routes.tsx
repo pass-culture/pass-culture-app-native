@@ -45,7 +45,6 @@ import { ConfirmChangeEmail } from 'features/profile/pages/ConfirmChangeEmail/Co
 import { ConsentSettings } from 'features/profile/pages/ConsentSettings/ConsentSettings'
 import { FeedbackInApp } from 'features/profile/pages/FeedbackInApp/FeedbackInApp'
 import { NewEmailSelection } from 'features/profile/pages/NewEmailSelection/NewEmailSelection'
-import { SuspendAccountConfirmation } from 'features/profile/pages/SuspendAccountConfirmation/SuspendAccountConfirmation'
 import { OnboardingSubscription } from 'features/subscription/page/OnboardingSubscription'
 import { ProfileTutorialAgeInformation } from 'features/tutorial/pages/profileTutorial/ProfileTutorialAgeInformation'
 import { Venue } from 'features/venue/pages/Venue/Venue'
@@ -269,12 +268,6 @@ export const routes: RootRoute[] = [
     component: ResetPasswordExpiredLink,
     path: 'email-modification-mot-de-passe-expire',
     options: { title: 'Email modification mot de passe expiré' },
-  },
-  {
-    name: 'SuspendAccountConfirmation',
-    component: SuspendAccountConfirmation,
-    path: 'suspension-compte/confirmation',
-    options: { title: 'Suspension de compte' },
   },
   {
     name: 'SignupForm',

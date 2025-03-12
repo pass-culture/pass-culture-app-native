@@ -6,6 +6,7 @@ import * as API from 'api/api'
 import { ApiError } from 'api/ApiError'
 import { EmailHistoryEventTypeEnum } from 'api/gen'
 import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
+import { ProfileStackParamList } from 'features/navigation/ProfileStackNavigator/ProfileStack'
 import { RootStackParamList } from 'features/navigation/RootNavigator/types'
 import * as useEmailUpdateStatus from 'features/profile/helpers/useEmailUpdateStatus'
 import { SuspendAccountConfirmation } from 'features/profile/pages/SuspendAccountConfirmation/SuspendAccountConfirmation'
@@ -42,13 +43,16 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
 const navigation = {
   navigate: jest.fn(),
   reset: jest.fn(),
-} as unknown as NativeStackNavigationProp<RootStackParamList, 'SuspendAccountConfirmation'>
+} as unknown as NativeStackNavigationProp<
+  RootStackParamList & ProfileStackParamList,
+  'SuspendAccountConfirmation'
+>
 
 const route = {
   params: {
     token: 'example',
   },
-} as unknown as RouteProp<RootStackParamList, 'SuspendAccountConfirmation'>
+} as unknown as RouteProp<RootStackParamList & ProfileStackParamList, 'SuspendAccountConfirmation'>
 
 jest.mock('libs/firebase/analytics/analytics')
 

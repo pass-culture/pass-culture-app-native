@@ -260,7 +260,6 @@ export type RootStackParamList = {
   SignupForm:
     | { accountCreationToken?: string; email?: string; offerId?: number; from: StepperOrigin }
     | undefined
-  SuspendAccountConfirmation: { token: string }
   SuspendedAccountUponUserRequest: undefined
   TabNavigator: { screen: TabRouteName; params: TabParamList[TabRouteName] }
   ThematicHome: ThematicHomeParams

@@ -26,6 +26,7 @@ import { LegalNotices } from 'features/profile/pages/LegalNotices/LegalNotices'
 import { NotificationsSettings } from 'features/profile/pages/NotificationSettings/NotificationsSettings'
 import { PersonalData } from 'features/profile/pages/PersonalData/PersonalData'
 import { Profile } from 'features/profile/pages/Profile'
+import { SuspendAccountConfirmation } from 'features/profile/pages/SuspendAccountConfirmation/SuspendAccountConfirmation'
 import { TrackEmailChange } from 'features/profile/pages/TrackEmailChange/TrackEmailChange'
 import { ValidateEmailChange } from 'features/profile/pages/ValidateEmailChange/ValidateEmailChange'
 
@@ -151,6 +152,11 @@ export const ProfileStackNavigator = () => (
       name="ChangePassword"
       component={ChangePassword}
       options={{ title: 'Modification du mot de passe' }}
+    />
+    <ProfileStack.Screen
+      name="SuspendAccountConfirmation"
+      component={SuspendAccountConfirmation}
+      options={{ title: 'Suspension de compte' }}
     />
   </ProfileStack.Navigator>
 )

@@ -68,6 +68,11 @@ export const routes: ProfileStackRoute[] = [
     path: 'profile/suppression/demande-confirmation',
   },
   {
+    name: 'SuspendAccountConfirmation',
+    component: ComponentForPathConfig,
+    path: 'suspension-compte/confirmation',
+  },
+  {
     name: 'ChangeStatus',
     component: ComponentForPathConfig,
     path: 'profil/modification-statut',
