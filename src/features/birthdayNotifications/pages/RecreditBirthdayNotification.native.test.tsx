@@ -10,6 +10,7 @@ import { render, screen } from 'tests/utils'
 
 import { RecreditBirthdayNotification } from './RecreditBirthdayNotification'
 
+jest.mock('libs/firebase/analytics/analytics')
 jest.mock('features/auth/context/AuthContext')
 jest.mock('features/profile/api/usePatchProfile', () => ({
   useResetRecreditAmountToShow: jest.fn().mockReturnValue({ mutate: jest.fn() }),
