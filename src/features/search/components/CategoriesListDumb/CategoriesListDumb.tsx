@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
 import { VenueMapLocationModal } from 'features/location/components/VenueMapLocationModal'
-import { VenueMapBlock } from 'features/venueMap/components/VenueMapBlock/VenueMapBlock'
+import { VenueMapBlockProxy } from 'features/venueMap/components/VenueMapBlock/VenueMapBlockProxy'
 import { CategoryButton, CategoryButtonProps } from 'shared/categoryButton/CategoryButton'
 import { getSpacing, TypoDS } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
@@ -38,7 +38,7 @@ export const CategoriesListDumb: FunctionComponent<Props> = ({
       {isMapWithoutPositionAndNotLocated || shouldDisplayVenueMap ? (
         <Container>
           <ContainerVenueMapBlock>
-            <VenueMapBlock
+            <VenueMapBlockProxy
               onPress={isMapWithoutPositionAndNotLocated ? showVenueMapLocationModal : undefined}
               from="searchLanding"
             />

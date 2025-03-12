@@ -1,6 +1,6 @@
 import 'intl'
 import 'intl/locale-data/jsonp/en'
-import React, { FunctionComponent, useEffect } from 'react'
+import React, { FunctionComponent, useEffect, useState } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
 import { LogBox, Platform, StatusBar } from 'react-native'
 import CodePush from 'react-native-code-push'
@@ -32,6 +32,7 @@ import { AutoImmediate, NextResume } from 'libs/codepush/options'
 import { getIsMaestro } from 'libs/e2e/getIsMaestro'
 import { env } from 'libs/environment/env'
 import { AnalyticsInitializer } from 'libs/firebase/analytics/AnalyticsInitializer'
+import { getAllFeatureFlags } from 'libs/firebase/firestore/featureFlags/getAllFeatureFlags'
 import { FirestoreNetworkObserver } from 'libs/firebase/firestore/FirestoreNetworkObserver/FirestoreNetworkObserver'
 import { RemoteConfigProvider } from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { LocationWrapper } from 'libs/location'
@@ -41,6 +42,7 @@ import { OfflineModeContainer } from 'libs/network/OfflineModeContainer'
 import { BatchMessaging, BatchPush } from 'libs/react-native-batch'
 import { configureGoogleSignin } from 'libs/react-native-google-sso/configureGoogleSignin'
 import { SafeAreaProvider } from 'libs/react-native-save-area-provider'
+import { queryClient } from 'libs/react-query/queryClient'
 import { ReactQueryClientProvider } from 'libs/react-query/ReactQueryClientProvider'
 import { SplashScreenProvider } from 'libs/splashscreen'
 import { ThemeProvider } from 'libs/styled'
@@ -57,6 +59,8 @@ LogBox.ignoreLogs([
 ])
 
 const App: FunctionComponent = function () {
+  const [featureFlagsOk, setFeatureFlagsOk] = useState(false)
+
   useEffect(() => {
     StatusBar.setBarStyle('dark-content')
     if (Platform.OS === 'android') {
@@ -71,6 +75,16 @@ const App: FunctionComponent = function () {
   }, [])
 
   useEffect(() => {
+    queryClient
+      .prefetchQuery({
+        queryKey: 'FEATURE_FLAGS',
+        queryFn: () => getAllFeatureFlags().then((snapshot) => snapshot?.data()),
+        staleTime: Infinity,
+        cacheTime: Infinity,
+      })
+      .then(() => {
+        setFeatureFlagsOk(true)
+      })
     initAlgoliaAnalytics()
     BatchPush.requestNotificationAuthorization() //  For iOS and Android 13
     BatchMessaging.setFontOverride('Montserrat-Regular', 'Montserrat-Bold', 'Montserrat-Italic')
@@ -107,7 +121,9 @@ const App: FunctionComponent = function () {
                                             <OnboardingWrapper>
                                               <OfflineModeContainer>
                                                 <ScreenErrorProvider>
-                                                  <AppNavigationContainer />
+                                                  {featureFlagsOk ? (
+                                                    <AppNavigationContainer />
+                                                  ) : null}
                                                 </ScreenErrorProvider>
                                               </OfflineModeContainer>
                                             </OnboardingWrapper>
