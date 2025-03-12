@@ -207,7 +207,6 @@ export type RootStackParamList = {
   Bookings: { activeTab?: BookingsTab } | undefined
   ChangeEmailExpiredLink: undefined
   ChangeEmailSetPassword: { token: string; emailSelectionToken: string }
-  ChangePassword: undefined
   CheatcodesStackNavigator: undefined
   ConfirmChangeEmail: { token: string; expiration_timestamp: number }
   ConsentSettings: { onGoBack?: () => void } | undefined

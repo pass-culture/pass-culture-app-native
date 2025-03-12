@@ -16,6 +16,7 @@ import { PersonalData } from './PersonalData'
 jest.mock('libs/network/NetInfoWrapper')
 
 jest.mock('libs/jwt/jwt')
+
 const mockedUseAuthContext = jest.spyOn(Auth, 'useAuthContext')
 const openUrl = jest.spyOn(OpenUrlAPI, 'openUrl')
 
@@ -155,25 +156,16 @@ describe('PersonalData', () => {
 
     fireEvent.press(await screen.findByTestId('Modifier mot de passe'))
 
-    expect(navigate).toHaveBeenCalledWith('ChangePassword', undefined)
+    expect(navigate).toHaveBeenCalledWith('TabNavigator', {
+      params: { params: undefined, screen: 'ChangePassword' },
+      screen: 'ProfileStackNavigator',
+    })
   })
 
   it('should redirect to ChangeCity when clicking on modify city button for beneficiaries', async () => {
     mockedUseAuthContext
-      .mockReturnValueOnce({
-        ...initialAuthContext,
-        user: {
-          ...mockedUser,
-          isBeneficiary: true,
-        },
-      })
-      .mockReturnValueOnce({
-        ...initialAuthContext,
-        user: {
-          ...mockedUser,
-          isBeneficiary: true,
-        },
-      })
+      .mockReturnValueOnce(initialAuthContext)
+      .mockReturnValueOnce(initialAuthContext)
 
     render(reactQueryProviderHOC(<PersonalData />))
 

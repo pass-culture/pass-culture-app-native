@@ -41,7 +41,6 @@ import { Offer } from 'features/offer/pages/Offer/Offer'
 import { OfferPreview } from 'features/offer/pages/OfferPreview/OfferPreview'
 import { ChangeEmailExpiredLink } from 'features/profile/pages/ChangeEmail/ChangeEmailExpiredLink'
 import { ChangeEmailSetPassword } from 'features/profile/pages/ChangeEmailSetPassword/ChangeEmailSetPassword'
-import { ChangePassword } from 'features/profile/pages/ChangePassword'
 import { ConfirmChangeEmail } from 'features/profile/pages/ConfirmChangeEmail/ConfirmChangeEmail'
 import { ConsentSettings } from 'features/profile/pages/ConsentSettings/ConsentSettings'
 import { FeedbackInApp } from 'features/profile/pages/FeedbackInApp/FeedbackInApp'
@@ -249,12 +248,6 @@ export const routes: RootRoute[] = [
     path: 'profil/nouvelle-adresse-email',
     options: { title: 'Nouvelle adresse e-mail' },
     secure: true,
-  },
-  {
-    name: 'ChangePassword',
-    component: ChangePassword,
-    path: 'profil/modification-mot-de-passe',
-    options: { title: 'Modification du mot de passe' },
   },
   {
     name: 'ReinitializePassword',

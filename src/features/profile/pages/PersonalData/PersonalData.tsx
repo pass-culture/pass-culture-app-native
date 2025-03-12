@@ -90,7 +90,7 @@ export function PersonalData() {
           <EditContainer>
             <EditText>{'*'.repeat(12)}</EditText>
             <EditButton
-              navigateTo={{ screen: 'ChangePassword' }}
+              navigateTo={getProfileNavConfig('ChangePassword')}
               wording="Modifier"
               accessibilityLabel="Modifier mot de passe"
             />
