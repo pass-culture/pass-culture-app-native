@@ -7,7 +7,7 @@ import {
   ViewStyle,
 } from 'react-native'
 
-import { AccessibleIcon } from 'ui/svg/icons/types'
+import { AccessibleIcon, ColorsTypeLegacy } from 'ui/svg/icons/types'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
@@ -49,9 +49,9 @@ export interface BaseButtonProps {
   center?: boolean
   disabled?: boolean
   ellipsizeMode?: 'head' | 'middle' | 'tail' | 'clip'
-  focusOutlineColor?: ColorsEnum
+  focusOutlineColor?: ColorsTypeLegacy
   fullWidth?: boolean
-  hoverUnderlineColor?: ColorsEnum
+  hoverUnderlineColor?: ColorsTypeLegacy
   href?: string
   icon?: FunctionComponent<AccessibleIcon>
   iconPosition?: 'left' | 'right'
@@ -69,7 +69,7 @@ export interface BaseButtonProps {
   textSize?: number
   type?: 'button' | 'submit' | 'reset'
   wording: string
-  color?: ColorsEnum
+  color?: ColorsTypeLegacy
 }
 
 export interface AppButtonProps extends BaseButtonProps {
