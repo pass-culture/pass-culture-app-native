@@ -100,7 +100,15 @@ describe('<ChangeEmailSetPassword />', () => {
       fireEvent.press(await screen.findByLabelText('Créer mon mot de passe'))
     })
 
-    expect(replace).toHaveBeenCalledWith('NewEmailSelection', { token: 'email_selection_token' })
+    expect(replace).toHaveBeenCalledWith('TabNavigator', {
+      params: {
+        params: {
+          token: 'email_selection_token',
+        },
+        screen: 'NewEmailSelection',
+      },
+      screen: 'ProfileStackNavigator',
+    })
   })
 
   it('should show success snackbar on password creation success', async () => {

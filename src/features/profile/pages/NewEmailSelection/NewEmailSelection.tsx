@@ -59,7 +59,10 @@ export const NewEmailSelection = () => {
       }),
   })
 
-  const onSubmit = handleSubmit(({ newEmail }) => selectNewEmail({ newEmail, token: params.token }))
+  const onSubmit = handleSubmit(({ newEmail }) => {
+    if (!params?.token) return
+    selectNewEmail({ newEmail, token: params.token })
+  })
 
   return (
     <SecondaryPageWithBlurHeader title="Modifier mon adresse e-mail">

@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form'
 import { Platform } from 'react-native'
 import styled from 'styled-components/native'
 
+import { getProfileStackConfig } from 'features/navigation/ProfileStackNavigator/getProfileStackConfig'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { useChangeEmailSetPasswordMutation } from 'features/profile/helpers/useChangeEmailSetPasswordMutation'
 import { PasswordInputController } from 'shared/forms/controllers/PasswordInputController'
@@ -49,7 +50,7 @@ export const ChangeEmailSetPassword = () => {
         timeout: SNACK_BAR_TIME_OUT,
       })
       if (!params?.emailSelectionToken) return
-      replace('NewEmailSelection', { token: params?.emailSelectionToken })
+      replace(...getProfileStackConfig('NewEmailSelection', { token: params?.emailSelectionToken }))
     },
     onError: () =>
       showErrorSnackBar({

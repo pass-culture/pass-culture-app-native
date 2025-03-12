@@ -33,6 +33,7 @@ export type ProfileStackParamList = {
   ChangeEmailSetPassword:
     | { token: string | null | undefined; emailSelectionToken: string | null | undefined }
     | undefined
+  NewEmailSelection: { token: string | null | undefined } | undefined
 } & AccessibilityRootStackParamList
 
 export type ProfileStackRouteName = keyof ProfileStackParamList

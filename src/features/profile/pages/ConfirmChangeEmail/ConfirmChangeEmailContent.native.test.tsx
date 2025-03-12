@@ -60,7 +60,15 @@ describe('<ConfirmChangeEmail />', () => {
 
     await act(async () => fireEvent.press(screen.getByText('Confirmer la demande')))
 
-    expect(replace).toHaveBeenNthCalledWith(1, 'NewEmailSelection', { token: 'token' })
+    expect(replace).toHaveBeenNthCalledWith(1, 'TabNavigator', {
+      params: {
+        params: {
+          token: 'token',
+        },
+        screen: 'NewEmailSelection',
+      },
+      screen: 'ProfileStackNavigator',
+    })
   })
 
   it("should navigate to password creation on change email confirmation success when user doesn't have a password", async () => {

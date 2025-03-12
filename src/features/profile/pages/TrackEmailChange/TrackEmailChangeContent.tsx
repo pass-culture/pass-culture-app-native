@@ -93,7 +93,7 @@ export const TrackEmailChangeContent = () => {
         disabled: DisabledPencilIcon,
         retry: DisabledPencilIcon,
       },
-      navigateTo: { screen: 'NewEmailSelection', params: { token: requestStatus?.token } },
+      navigateTo: getProfileNavConfig('NewEmailSelection', { token: requestStatus?.token }),
     },
     VALIDATION: {
       currentTitle: 'Valide ta nouvelle adresse',

@@ -57,8 +57,14 @@ describe('TrackEmailChangeContent', () => {
 
     fireEvent.press(await screen.findByText('Choisis ta nouvelle adresse e-mail'))
 
-    expect(navigate).toHaveBeenCalledWith('NewEmailSelection', {
-      token: 'new_email_selection_token',
+    expect(navigate).toHaveBeenCalledWith('TabNavigator', {
+      params: {
+        params: {
+          token: 'new_email_selection_token',
+        },
+        screen: 'NewEmailSelection',
+      },
+      screen: 'ProfileStackNavigator',
     })
   })
 

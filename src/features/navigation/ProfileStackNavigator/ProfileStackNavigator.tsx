@@ -26,6 +26,7 @@ import { DeleteProfileEmailHacked } from 'features/profile/pages/DeleteProfile/D
 import { SuspendAccountConfirmationWithoutAuthentication } from 'features/profile/pages/DeleteProfile/SuspendAccountConfirmationWithoutAuthentication'
 import { DeleteProfileReason } from 'features/profile/pages/DeleteProfileReason/DeleteProfileReason'
 import { LegalNotices } from 'features/profile/pages/LegalNotices/LegalNotices'
+import { NewEmailSelection } from 'features/profile/pages/NewEmailSelection/NewEmailSelection'
 import { NotificationsSettings } from 'features/profile/pages/NotificationSettings/NotificationsSettings'
 import { PersonalData } from 'features/profile/pages/PersonalData/PersonalData'
 import { Profile } from 'features/profile/pages/Profile'
@@ -175,6 +176,11 @@ export const ProfileStackNavigator = () => (
       name="ChangeEmailSetPassword"
       component={withAuthProtection(ChangeEmailSetPassword)}
       options={{ title: 'Création du mot de passe' }}
+    />
+    <ProfileStack.Screen
+      name="NewEmailSelection"
+      component={withAuthProtection(NewEmailSelection)}
+      options={{ title: 'Nouvelle adresse e-mail' }}
     />
   </ProfileStack.Navigator>
 )

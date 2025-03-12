@@ -224,7 +224,6 @@ export type RootStackParamList = {
   }
   Maintenance: undefined
   MovieCalendar: undefined
-  NewEmailSelection: { token: string }
   NotYetUnderageEligibility: { eligibilityStartDatetime: string }
   Offer: {
     id: number

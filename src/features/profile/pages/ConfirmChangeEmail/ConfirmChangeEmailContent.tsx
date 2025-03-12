@@ -41,7 +41,7 @@ export const ConfirmChangeEmailContent = () => {
           })
         )
       } else {
-        replace('NewEmailSelection', { token: newEmailSelectionToken })
+        replace(...getProfileStackConfig('NewEmailSelection', { token: newEmailSelectionToken }))
       }
     },
     onError: (error) => {
