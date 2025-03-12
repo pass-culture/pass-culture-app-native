@@ -191,7 +191,7 @@ exports[`OnboardingGeneralPublicWelcome should render correctly 1`] = `
         ]
       }
     >
-      Et si tu créais un compte pour des suggestions à venir ? Sinon, explore librement le catalogue dès maintenant !
+      Et si tu créais un compte pour suivre l’actualité culturelle autour de toi ?
     </Text>
     <View
       flex={1}

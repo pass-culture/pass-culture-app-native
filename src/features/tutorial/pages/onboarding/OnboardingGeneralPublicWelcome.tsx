@@ -23,8 +23,7 @@ export const OnboardingGeneralPublicWelcome = () => {
       onSkip={navigateToHomeWithReset}
       title="Explore, découvre, profite">
       <StyledBody>
-        Et si tu créais un compte pour des suggestions à venir&nbsp;? Sinon, explore librement le
-        catalogue dès maintenant&nbsp;!
+        Et si tu créais un compte pour suivre l’actualité culturelle autour de toi&nbsp;?
       </StyledBody>
       <Spacer.Flex flex={1} />
       <ButtonContainer>

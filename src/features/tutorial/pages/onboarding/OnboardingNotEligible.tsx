@@ -24,8 +24,8 @@ export const OnboardingNotEligible = () => {
       title="Encore un peu de patience&nbsp;!"
       onSkip={navigateToHomeWithReset}>
       <StyledBody>
-        Ton crédit t’attend à partir de tes 17 ans. En attendant, crée-toi un compte pour des
-        suggestions à venir.
+        Ton crédit t’attend à partir de tes 17 ans. En attendant, crée-toi un compte pour découvrir
+        les bons plans autour de toi.
       </StyledBody>
       <Spacer.Flex flex={1} />
       <ButtonContainer>
