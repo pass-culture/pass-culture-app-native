@@ -6,6 +6,7 @@ import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { render, fireEvent, screen } from 'tests/utils'
 
+jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 jest.mock('features/navigation/helpers/navigateToHome')
