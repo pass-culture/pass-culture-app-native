@@ -4,10 +4,14 @@ import { FlatList } from 'react-native'
 import styled from 'styled-components/native'
 
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
+import { env } from 'libs/environment/env'
 import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { GenericRemoteConfig } from 'libs/firebase/remoteConfig/remoteConfig.types'
+import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonInsideText'
 import { Separator } from 'ui/components/Separator'
-import { TypoDS, getSpacing } from 'ui/theme'
+import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
+import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
+import { Spacer, TypoDS, getSpacing } from 'ui/theme'
 
 const ConfigItem = ({ label, value }: { label: string; value: GenericRemoteConfig }) => (
   <React.Fragment>
@@ -44,8 +48,46 @@ export const CheatcodesScreenRemoteConfig = () => {
     }
   }
 
+  const title = `Remote config ${env.ENV} 📊`
+  const showTestingFeatureFlags = env.ENV !== 'testing'
+  const showStagingFeatureFlags = env.ENV !== 'staging'
+  const showProductionFeatureFlags = env.ENV !== 'production'
+
   return (
-    <CheatcodesTemplateScreen title="Remote config 📊" flexDirection="column">
+    <CheatcodesTemplateScreen title={title} flexDirection="column">
+      {showTestingFeatureFlags ? (
+        <ExternalTouchableLink
+          as={ButtonInsideTextBlack}
+          buttonHeight="extraSmall"
+          icon={ExternalSiteFilled}
+          wording="Voir les feature flags testing"
+          externalNav={{
+            url: 'https://app.testing.passculture.team/cheatcodes/other/remote-config',
+          }}
+        />
+      ) : null}
+      {showStagingFeatureFlags ? (
+        <ExternalTouchableLink
+          as={ButtonInsideTextBlack}
+          buttonHeight="extraSmall"
+          icon={ExternalSiteFilled}
+          wording="Voir les feature flags staging"
+          externalNav={{
+            url: 'https://app.staging.passculture.team/cheatcodes/other/remote-config',
+          }}
+        />
+      ) : null}
+      {showProductionFeatureFlags ? (
+        <ExternalTouchableLink
+          as={ButtonInsideTextBlack}
+          buttonHeight="extraSmall"
+          icon={ExternalSiteFilled}
+          wording="Voir les feature flags production"
+          externalNav={{ url: 'https://passculture.app/cheatcodes/other/remote-config' }}
+        />
+      ) : null}
+      <Spacer.Column numberOfSpaces={6} />
+
       <FlatList
         data={sortedRemoteConfigEntries}
         keyExtractor={([label]) => label}
@@ -59,3 +101,7 @@ export const CheatcodesScreenRemoteConfig = () => {
 const StyledSeparator = styled(Separator.Horizontal)({
   marginVertical: getSpacing(2),
 })
+
+const ButtonInsideTextBlack = styled(ButtonInsideText).attrs(({ theme }) => ({
+  buttonColor: theme.colors.black,
+}))``
