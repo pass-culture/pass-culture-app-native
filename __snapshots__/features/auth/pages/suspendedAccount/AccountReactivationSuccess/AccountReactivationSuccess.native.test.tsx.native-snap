@@ -16,6 +16,9 @@ exports[`<AccountReactivationSuccess /> should match snapshot 1`] = `
           "top": 0,
           "zIndex": 1,
         },
+        {
+          "borderBottomWidth": 0,
+        },
       ]
     }
   >

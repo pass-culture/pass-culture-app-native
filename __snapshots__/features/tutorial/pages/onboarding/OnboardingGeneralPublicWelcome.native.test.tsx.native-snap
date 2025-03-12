@@ -16,6 +16,9 @@ exports[`OnboardingGeneralPublicWelcome should render correctly 1`] = `
           "top": 0,
           "zIndex": 1,
         },
+        {
+          "borderBottomWidth": 0,
+        },
       ]
     }
   >

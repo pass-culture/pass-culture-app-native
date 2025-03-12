@@ -88,7 +88,7 @@ export const GenericInfoPageWhite: React.FunctionComponent<Props> = ({
 
   return (
     <React.Fragment>
-      <PageHeaderWithoutPlaceholder
+      <Header
         shouldDisplayBackButton={withGoBack}
         RightButton={<SkipButton withSkipAction={withSkipAction} />}
       />
@@ -229,6 +229,10 @@ const Container = styled.View<{ top: number; bottom: number }>(({ theme }) => ({
   paddingVertical: theme.contentPage.marginVertical,
   overflow: 'scroll',
 }))
+
+const Header = styled(PageHeaderWithoutPlaceholder)({
+  borderBottomWidth: 0,
+})
 
 const Placeholder = styled.View<{ height: number }>(({ height }) => ({
   height,
