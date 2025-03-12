@@ -29,25 +29,25 @@ type ButtonProps = {
   disabled?: boolean
   isLoading?: boolean
 } & (
-  | {
+    | {
       onPress: () => void
       onBeforeNavigate?: never
       navigateTo?: never
       externalNav?: never
     }
-  | {
+    | {
       navigateTo: InternalNavigationProps['navigateTo']
       onBeforeNavigate?: () => void
       onPress?: never
       externalNav?: never
     }
-  | {
+    | {
       externalNav: ExternalNavigationProps['externalNav']
       onBeforeNavigate?: () => void
       onPress?: never
       navigateTo?: never
     }
-)
+  )
 
 type Props = PropsWithChildren<
   {
