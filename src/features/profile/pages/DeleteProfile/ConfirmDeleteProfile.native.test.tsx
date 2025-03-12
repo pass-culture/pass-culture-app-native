@@ -51,7 +51,22 @@ describe('ConfirmDeleteProfile component', () => {
 
     await act(async () => fireEvent.press(screen.getByText('Supprimer mon compte')))
 
-    expect(reset).toHaveBeenCalledWith({ index: 0, routes: [{ name: 'DeactivateProfileSuccess' }] })
+    expect(reset).toHaveBeenCalledWith({
+      index: 0,
+      routes: [
+        {
+          name: 'TabNavigator',
+          state: {
+            routes: [
+              {
+                name: 'ProfileStackNavigator',
+                state: { routes: [{ name: 'DeactivateProfileSuccess' }] },
+              },
+            ],
+          },
+        },
+      ],
+    })
   })
 
   it('should show error snackbar if suspend account request fails when clicking on "Supprimer mon compte" button', async () => {

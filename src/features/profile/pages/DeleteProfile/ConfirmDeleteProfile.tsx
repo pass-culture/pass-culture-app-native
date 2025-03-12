@@ -28,7 +28,19 @@ export function ConfirmDeleteProfile() {
     onSuccess: () => {
       reset({
         index: 0,
-        routes: [{ name: 'DeactivateProfileSuccess' }],
+        routes: [
+          {
+            name: 'TabNavigator',
+            state: {
+              routes: [
+                {
+                  name: 'ProfileStackNavigator',
+                  state: { routes: [{ name: 'DeactivateProfileSuccess' }] },
+                },
+              ],
+            },
+          },
+        ],
       })
     },
     onError: () => {

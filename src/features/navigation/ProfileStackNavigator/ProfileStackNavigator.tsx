@@ -10,12 +10,13 @@ import { AccessibilityDeclarationWeb } from 'features/profile/pages/Accessibilit
 import { AccessibilityEngagement } from 'features/profile/pages/Accessibility/AccessibilityEngagement'
 import { RecommendedPaths } from 'features/profile/pages/Accessibility/RecommendedPaths'
 import { ConfirmDeleteProfile } from 'features/profile/pages/DeleteProfile/ConfirmDeleteProfile'
+import { DeactivateProfileSuccess } from 'features/profile/pages/DeleteProfile/DeactivateProfileSuccess'
 import { DeleteProfileAccountHacked } from 'features/profile/pages/DeleteProfile/DeleteProfileAccountHacked'
 import { DeleteProfileAccountNotDeletable } from 'features/profile/pages/DeleteProfile/DeleteProfileAccountNotDeletable'
 import { DeleteProfileConfirmation } from 'features/profile/pages/DeleteProfile/DeleteProfileConfirmation'
 import { DeleteProfileContactSupport } from 'features/profile/pages/DeleteProfile/DeleteProfileContactSupport'
 import { DeleteProfileEmailHacked } from 'features/profile/pages/DeleteProfile/DeleteProfileEmailHacked'
-import { DeleteProfileSuccess } from 'features/profile/pages/DeleteProfile/DeleteProfileSuccess'
+import { SuspendAccountConfirmationWithoutAuthentication } from 'features/profile/pages/DeleteProfile/SuspendAccountConfirmationWithoutAuthentication'
 import { DeleteProfileReason } from 'features/profile/pages/DeleteProfileReason/DeleteProfileReason'
 import { NotificationsSettings } from 'features/profile/pages/NotificationSettings/NotificationsSettings'
 import { Profile } from 'features/profile/pages/Profile'
@@ -94,9 +95,14 @@ export const ProfileStackNavigator = () => (
       options={{ title: 'Réglages de notifications' }}
     />
     <ProfileStack.Screen
-      name="DeleteProfileSuccess"
-      component={DeleteProfileSuccess}
-      options={{ title: 'Suppression profil confirmée' }}
+      name="DeactivateProfileSuccess"
+      component={withAuthProtection(DeactivateProfileSuccess)}
+      options={{ title: 'Désactivation profil confirmée' }}
+    />
+    <ProfileStack.Screen
+      name="SuspendAccountConfirmationWithoutAuthentication"
+      component={withAuthProtection(SuspendAccountConfirmationWithoutAuthentication)}
+      options={{ title: 'Suppression profil confirmation' }}
     />
   </ProfileStack.Navigator>
 )

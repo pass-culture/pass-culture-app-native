@@ -16,7 +16,7 @@ export const cheatcodesNavigationAccountManagementButtons: [CheatcodesButtonsWit
         { screen: 'AccountReactivationSuccess' },
         { ...getProfileNavConfig('DeleteProfileReason') },
         { ...getProfileNavConfig('ConfirmDeleteProfile') },
-        { screen: 'DeactivateProfileSuccess' },
+        { ...getProfileNavConfig('DeactivateProfileSuccess') },
         { ...getProfileNavConfig('DeleteProfileSuccess') },
         { ...getProfileNavConfig('DeleteProfileConfirmation') },
         { screen: 'ResetPasswordExpiredLink' },

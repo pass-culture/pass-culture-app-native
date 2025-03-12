@@ -47,8 +47,6 @@ import { ChangePassword } from 'features/profile/pages/ChangePassword'
 import { ChangeStatus } from 'features/profile/pages/ChangeStatus/ChangeStatus'
 import { ConfirmChangeEmail } from 'features/profile/pages/ConfirmChangeEmail/ConfirmChangeEmail'
 import { ConsentSettings } from 'features/profile/pages/ConsentSettings/ConsentSettings'
-import { DeactivateProfileSuccess } from 'features/profile/pages/DeleteProfile/DeactivateProfileSuccess'
-import { SuspendAccountConfirmationWithoutAuthentication } from 'features/profile/pages/DeleteProfile/SuspendAccountConfirmationWithoutAuthentication'
 import { FeedbackInApp } from 'features/profile/pages/FeedbackInApp/FeedbackInApp'
 import { LegalNotices } from 'features/profile/pages/LegalNotices/LegalNotices'
 import { NewEmailSelection } from 'features/profile/pages/NewEmailSelection/NewEmailSelection'
@@ -235,28 +233,12 @@ export const routes: RootRoute[] = [
     secure: true,
   },
   {
-    name: 'SuspendAccountConfirmationWithoutAuthentication',
-    component: SuspendAccountConfirmationWithoutAuthentication,
-    path: 'profile/suppression/demande-confirmation',
-    options: { title: 'Suppression profil confirmation' },
-    secure: true,
-  },
-
-  {
     name: 'FeedbackInApp',
     component: FeedbackInApp,
     path: 'profil/formulaire-suggestion',
     options: { title: 'Forumulaire de suggestion' },
     secure: true,
   },
-
-  {
-    name: 'DeactivateProfileSuccess',
-    component: DeactivateProfileSuccess,
-    path: 'profile/desactivation/succes',
-    options: { title: 'Désactivation profil confirmée' },
-  },
-
   {
     name: 'Login',
     component: Login,

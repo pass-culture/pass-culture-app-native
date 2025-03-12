@@ -57,6 +57,16 @@ export const routes: ProfileStackRoute[] = [
     component: ComponentForPathConfig,
     path: 'profile/suppression/succes',
   },
+  {
+    name: 'DeactivateProfileSuccess',
+    component: ComponentForPathConfig,
+    path: 'profile/desactivation/succes',
+  },
+  {
+    name: 'SuspendAccountConfirmationWithoutAuthentication',
+    component: ComponentForPathConfig,
+    path: 'profile/suppression/demande-confirmation',
+  },
 ]
 
 export function isProfileStackScreen(screen: string): screen is ProfileStackRouteName {

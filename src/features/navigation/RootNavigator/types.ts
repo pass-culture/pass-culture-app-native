@@ -216,7 +216,6 @@ export type RootStackParamList = {
   ConsentSettings: { onGoBack?: () => void } | undefined
   Chronicles: { offerId: number; chronicleId?: number; from?: Referrals }
   CulturalSurvey: undefined
-  DeactivateProfileSuccess: undefined
   DeeplinksGenerator: undefined
   EighteenBirthday: undefined
   EndedBookings: undefined
@@ -268,7 +267,6 @@ export type RootStackParamList = {
     | { accountCreationToken?: string; email?: string; offerId?: number; from: StepperOrigin }
     | undefined
   SuspendAccountConfirmation: { token: string }
-  SuspendAccountConfirmationWithoutAuthentication: undefined
   SuspendedAccountUponUserRequest: undefined
   TabNavigator: { screen: TabRouteName; params: TabParamList[TabRouteName] }
   ThematicHome: ThematicHomeParams

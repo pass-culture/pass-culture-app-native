@@ -53,6 +53,12 @@ describe('DeleteProfileEmailHacked', () => {
 
     await user.press(button)
 
-    expect(navigate).toHaveBeenCalledWith('SuspendAccountConfirmationWithoutAuthentication')
+    expect(navigate).toHaveBeenCalledWith('TabNavigator', {
+      params: {
+        params: undefined,
+        screen: 'SuspendAccountConfirmationWithoutAuthentication',
+      },
+      screen: 'ProfileStackNavigator',
+    })
   })
 })
