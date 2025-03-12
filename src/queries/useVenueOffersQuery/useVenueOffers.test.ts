@@ -1,5 +1,4 @@
 import { SubcategoryIdEnum } from 'api/gen'
-import { useVenueOffers } from 'features/venue/api/useVenueOffers'
 import mockVenueResponse from 'fixtures/venueResponse'
 import mockVenueSearchParams from 'fixtures/venueSearchParams'
 import { fetchMultipleOffers } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/fetchMultipleOffers'
@@ -9,6 +8,7 @@ import {
 } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { AlgoliaOffer, HitOffer } from 'libs/algolia/types'
 import { LocationMode, Position } from 'libs/location/types'
+import { useVenueOffersQuery } from 'queries/useVenueOffersQuery/useVenueOffersQuery'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, waitFor } from 'tests/utils'
 
@@ -58,7 +58,7 @@ const EXPECTED_CALL_PARAM = {
   ],
 }
 
-describe('useVenueOffers', () => {
+describe('useVenueOffersQuery', () => {
   it('should call multiple fetch offers algolia request and return correct response object', async () => {
     const FETCH_MULTIPLE_OFFERS_RESPONSE = [
       {
@@ -126,7 +126,7 @@ describe('useVenueOffers', () => {
 
     const { result } = renderHook(
       () =>
-        useVenueOffers({
+        useVenueOffersQuery({
           userLocation: mockUserLocation,
           selectedLocationMode: mockLocationMode,
           venue: mockVenueResponse,

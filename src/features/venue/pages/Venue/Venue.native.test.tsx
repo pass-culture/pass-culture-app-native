@@ -9,7 +9,6 @@ import { useGTLPlaylists } from 'features/gtlPlaylist/hooks/useGTLPlaylists'
 import { Referrals } from 'features/navigation/RootNavigator/types'
 import { CineContentCTAID } from 'features/offer/components/OfferCine/CineContentCTA'
 import * as useOfferCTAContextModule from 'features/offer/components/OfferContent/OfferCTAProvider'
-import { useVenueOffers } from 'features/venue/api/useVenueOffers'
 import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
 import {
   VenueMoviesOffersResponseSnap,
@@ -22,6 +21,7 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import * as useRemoteConfigContextModule from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { Network } from 'libs/share/types'
+import { useVenueOffersQuery } from 'queries/useVenueOffersQuery/useVenueOffersQuery'
 import { Offer } from 'shared/offer/types'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -39,8 +39,8 @@ jest.mock('libs/firebase/analytics/analytics')
 jest.unmock('react-native/Libraries/Animated/createAnimatedComponent')
 
 jest.mock('libs/itinerary/useItinerary')
-jest.mock('features/venue/api/useVenueOffers')
-const mockUseVenueOffers = useVenueOffers as jest.Mock
+jest.mock('queries/useVenueOffersQuery/useVenueOffersQuery')
+const mockUseVenueOffers = useVenueOffersQuery as jest.Mock
 
 jest.mock('features/search/context/SearchWrapper')
 jest.mock('libs/location')
