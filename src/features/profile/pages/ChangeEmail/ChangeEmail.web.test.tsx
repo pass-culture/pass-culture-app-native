@@ -54,7 +54,15 @@ describe('<ChangeEmail/>', () => {
       fireEvent.click(closeButton)
 
       await waitFor(() => {
-        expect(replace).toHaveBeenNthCalledWith(1, 'ChangeEmail', { showModal: false })
+        expect(replace).toHaveBeenNthCalledWith(1, 'TabNavigator', {
+          params: {
+            params: {
+              showModal: false,
+            },
+            screen: 'ChangeEmail',
+          },
+          screen: 'ProfileStackNavigator',
+        })
       })
     })
   })

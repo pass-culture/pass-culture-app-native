@@ -36,7 +36,7 @@ type ReasonButton = {
 const reasonButtons = (canDelete: boolean): ReasonButton[] => [
   {
     wording: 'J’aimerais créer un compte avec une adresse e-mail différente',
-    navigateTo: { screen: 'ChangeEmail', params: { showModal: true } },
+    navigateTo: { ...getProfileNavConfig('ChangeEmail', { showModal: true }) },
     analyticsReason: 'changeEmail',
   },
   {

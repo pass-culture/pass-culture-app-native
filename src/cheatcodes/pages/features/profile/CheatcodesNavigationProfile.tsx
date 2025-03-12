@@ -15,9 +15,9 @@ export const cheatcodesNavigationProfileButtons: [CheatcodesButtonsWithSubscreen
     subscreens: [
       { screen: 'Login' },
       { screen: 'FeedbackInApp' },
-      { screen: 'ChangeCity' },
-      { screen: 'ChangeEmail' },
-      { screen: 'ChangeStatus' },
+      { ...getProfileNavConfig('ChangeCity') },
+      { ...getProfileNavConfig('ChangeEmail') },
+      { ...getProfileNavConfig('ChangeStatus') },
       { screen: 'ChangeEmailSetPassword', navigationParams: { token: 'token' } },
       { screen: 'ConsentSettings' },
       { ...getProfileNavConfig('NotificationsSettings') },

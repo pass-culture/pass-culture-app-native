@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 import { ActivityIdEnum } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { getProfileNavConfig } from 'features/navigation/ProfileStackNavigator/getProfileNavConfig'
-import { RootNavigateParams } from 'features/navigation/RootNavigator/types'
+import { ProfileNavigateParams } from 'features/navigation/RootNavigator/types'
 import { EditButton } from 'features/profile/components/Buttons/EditButton/EditButton'
 import { useCheckHasCurrentEmailChange } from 'features/profile/helpers/useCheckHasCurrentEmailChange'
 import { analytics } from 'libs/analytics/provider'
@@ -44,7 +44,7 @@ export function PersonalData() {
 
   const { hasCurrentEmailChange } = useCheckHasCurrentEmailChange()
 
-  const updateEmailRoute = useMemo<RootNavigateParams[0]>(() => {
+  const updateEmailRoute = useMemo<ProfileNavigateParams[0]>(() => {
     if (hasCurrentEmailChange) return 'TrackEmailChange'
     return 'ChangeEmail'
   }, [hasCurrentEmailChange])
@@ -65,7 +65,7 @@ export function PersonalData() {
       <EditContainer>
         <EditText>{user?.email}</EditText>
         <EditButton
-          navigateTo={{ screen: updateEmailRoute }}
+          navigateTo={getProfileNavConfig(updateEmailRoute)}
           onPress={onEmailChangeClick}
           wording="Modifier"
           accessibilityLabel="Modifier e-mail"
@@ -106,7 +106,7 @@ export function PersonalData() {
           <EditContainer>
             <EditText>{user?.activityId && ACTIVITIES[user.activityId]}</EditText>
             <EditButton
-              navigateTo={{ screen: 'ChangeStatus' }}
+              navigateTo={getProfileNavConfig('ChangeStatus')}
               wording="Modifier"
               accessibilityLabel="Modifier le statut"
             />
@@ -122,7 +122,7 @@ export function PersonalData() {
           <EditContainer>
             <EditText numberOfLines={2}>{city}</EditText>
             <EditButton
-              navigateTo={{ screen: 'ChangeCity' }}
+              navigateTo={getProfileNavConfig('ChangeCity')}
               wording="Modifier"
               accessibilityLabel="Modifier la ville de résidence"
             />

@@ -198,9 +198,15 @@ exports[`<DeleteProfileReason /> should match snapshot 1`] = `
           "analyticsReason": "changeEmail",
           "navigateTo": {
             "params": {
-              "showModal": true,
+              "params": {
+                "params": {
+                  "showModal": true,
+                },
+                "screen": "ChangeEmail",
+              },
+              "screen": "ProfileStackNavigator",
             },
-            "screen": "ChangeEmail",
+            "screen": "TabNavigator",
           },
           "wording": "J’aimerais créer un compte avec une adresse e-mail différente",
         },

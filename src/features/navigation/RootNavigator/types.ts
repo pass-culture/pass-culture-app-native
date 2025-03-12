@@ -205,12 +205,9 @@ export type RootStackParamList = {
   BookingConfirmation: { offerId: number; bookingId: number; apiRecoParams?: string }
   BookingDetails: { id: number }
   Bookings: { activeTab?: BookingsTab } | undefined
-  ChangeCity: undefined
-  ChangeEmail: { showModal: boolean } | undefined
   ChangeEmailExpiredLink: undefined
   ChangeEmailSetPassword: { token: string; emailSelectionToken: string }
   ChangePassword: undefined
-  ChangeStatus: undefined
   CheatcodesStackNavigator: undefined
   ConfirmChangeEmail: { token: string; expiration_timestamp: number }
   ConsentSettings: { onGoBack?: () => void } | undefined
@@ -270,7 +267,6 @@ export type RootStackParamList = {
   SuspendedAccountUponUserRequest: undefined
   TabNavigator: { screen: TabRouteName; params: TabParamList[TabRouteName] }
   ThematicHome: ThematicHomeParams
-  TrackEmailChange: undefined
   Tutorial?: { selectedAge?: 15 | 16 | 17 | 18 }
   UTMParameters: undefined
   ValidateEmailChange: { token: string }
@@ -328,6 +324,7 @@ type NavigateParams<RouteName extends keyof ParamListBase> =
     ? [RouteName] | [RouteName, ParamListBase[RouteName]]
     : [RouteName, ParamListBase[RouteName]]
 export type RootNavigateParams = NavigateParams<keyof RootStackParamList>
+export type ProfileNavigateParams = NavigateParams<keyof ProfileStackParamList>
 type AllNavigateParams = NavigateParams<keyof AllNavParamList>
 
 export type NavigationResultState = ReturnType<typeof getStateFromPath>

@@ -49,7 +49,15 @@ describe('<DeleteProfileReason />', () => {
     )
 
     await waitFor(() => {
-      expect(navigate).toHaveBeenCalledWith('ChangeEmail', { showModal: true })
+      expect(navigate).toHaveBeenCalledWith('TabNavigator', {
+        params: {
+          params: {
+            showModal: true,
+          },
+          screen: 'ChangeEmail',
+        },
+        screen: 'ProfileStackNavigator',
+      })
     })
   })
 

@@ -9,6 +9,9 @@ import { AccessibilityDeclarationMobile } from 'features/profile/pages/Accessibi
 import { AccessibilityDeclarationWeb } from 'features/profile/pages/Accessibility/AccessibilityDeclarationWeb'
 import { AccessibilityEngagement } from 'features/profile/pages/Accessibility/AccessibilityEngagement'
 import { RecommendedPaths } from 'features/profile/pages/Accessibility/RecommendedPaths'
+import { ChangeCity } from 'features/profile/pages/ChangeCity/ChangeCity'
+import { ChangeEmail } from 'features/profile/pages/ChangeEmail/ChangeEmail'
+import { ChangeStatus } from 'features/profile/pages/ChangeStatus/ChangeStatus'
 import { ConfirmDeleteProfile } from 'features/profile/pages/DeleteProfile/ConfirmDeleteProfile'
 import { DeactivateProfileSuccess } from 'features/profile/pages/DeleteProfile/DeactivateProfileSuccess'
 import { DeleteProfileAccountHacked } from 'features/profile/pages/DeleteProfile/DeleteProfileAccountHacked'
@@ -20,6 +23,7 @@ import { SuspendAccountConfirmationWithoutAuthentication } from 'features/profil
 import { DeleteProfileReason } from 'features/profile/pages/DeleteProfileReason/DeleteProfileReason'
 import { NotificationsSettings } from 'features/profile/pages/NotificationSettings/NotificationsSettings'
 import { Profile } from 'features/profile/pages/Profile'
+import { TrackEmailChange } from 'features/profile/pages/TrackEmailChange/TrackEmailChange'
 
 export const ProfileStackNavigator = () => (
   <ProfileStack.Navigator initialRouteName="Profile" screenOptions={ROOT_NAVIGATOR_SCREEN_OPTIONS}>
@@ -103,6 +107,26 @@ export const ProfileStackNavigator = () => (
       name="SuspendAccountConfirmationWithoutAuthentication"
       component={withAuthProtection(SuspendAccountConfirmationWithoutAuthentication)}
       options={{ title: 'Suppression profil confirmation' }}
+    />
+    <ProfileStack.Screen
+      name="ChangeStatus"
+      component={withAuthProtection(ChangeStatus)}
+      options={{ title: 'Ton statut | Profil' }}
+    />
+    <ProfileStack.Screen
+      name="ChangeCity"
+      component={withAuthProtection(ChangeCity)}
+      options={{ title: 'Ton code postal | Profil' }}
+    />
+    <ProfileStack.Screen
+      name="ChangeEmail"
+      component={ChangeEmail}
+      options={{ title: 'Modification de l’e-mail' }}
+    />
+    <ProfileStack.Screen
+      name="TrackEmailChange"
+      component={withAuthProtection(TrackEmailChange)}
+      options={{ title: 'Suivi de ton changement d’e-mail' }}
     />
   </ProfileStack.Navigator>
 )

@@ -39,12 +39,9 @@ import { tabNavigatorPathConfig } from 'features/navigation/TabBar/routes'
 import { TabNavigator } from 'features/navigation/TabBar/TabNavigator'
 import { Offer } from 'features/offer/pages/Offer/Offer'
 import { OfferPreview } from 'features/offer/pages/OfferPreview/OfferPreview'
-import { ChangeCity } from 'features/profile/pages/ChangeCity/ChangeCity'
-import { ChangeEmail } from 'features/profile/pages/ChangeEmail/ChangeEmail'
 import { ChangeEmailExpiredLink } from 'features/profile/pages/ChangeEmail/ChangeEmailExpiredLink'
 import { ChangeEmailSetPassword } from 'features/profile/pages/ChangeEmailSetPassword/ChangeEmailSetPassword'
 import { ChangePassword } from 'features/profile/pages/ChangePassword'
-import { ChangeStatus } from 'features/profile/pages/ChangeStatus/ChangeStatus'
 import { ConfirmChangeEmail } from 'features/profile/pages/ConfirmChangeEmail/ConfirmChangeEmail'
 import { ConsentSettings } from 'features/profile/pages/ConsentSettings/ConsentSettings'
 import { FeedbackInApp } from 'features/profile/pages/FeedbackInApp/FeedbackInApp'
@@ -52,7 +49,6 @@ import { LegalNotices } from 'features/profile/pages/LegalNotices/LegalNotices'
 import { NewEmailSelection } from 'features/profile/pages/NewEmailSelection/NewEmailSelection'
 import { PersonalData } from 'features/profile/pages/PersonalData/PersonalData'
 import { SuspendAccountConfirmation } from 'features/profile/pages/SuspendAccountConfirmation/SuspendAccountConfirmation'
-import { TrackEmailChange } from 'features/profile/pages/TrackEmailChange/TrackEmailChange'
 import { ValidateEmailChange } from 'features/profile/pages/ValidateEmailChange/ValidateEmailChange'
 import { OnboardingSubscription } from 'features/subscription/page/OnboardingSubscription'
 import { ProfileTutorialAgeInformation } from 'features/tutorial/pages/profileTutorial/ProfileTutorialAgeInformation'
@@ -260,33 +256,6 @@ export const routes: RootRoute[] = [
     component: OnboardingSubscription,
     path: 'choix-abonnement',
     options: { title: 'Choix des thèmes à suivre' },
-    secure: true,
-  },
-  {
-    name: 'ChangeStatus',
-    component: ChangeStatus,
-    path: 'profil/modification-statut',
-    options: { title: 'Ton statut | Profil' },
-    secure: true,
-  },
-  {
-    name: 'ChangeCity',
-    component: ChangeCity,
-    path: 'profil/modification-ville',
-    options: { title: 'Ton code postal | Profil' },
-    secure: true,
-  },
-  {
-    name: 'ChangeEmail',
-    component: ChangeEmail,
-    path: 'profil/modification-email',
-    options: { title: 'Modification de l’e-mail' },
-  },
-  {
-    name: 'TrackEmailChange',
-    component: TrackEmailChange,
-    path: 'profil/suivi-modification-email',
-    options: { title: 'Suivi de ton changement d’e-mail' },
     secure: true,
   },
   {

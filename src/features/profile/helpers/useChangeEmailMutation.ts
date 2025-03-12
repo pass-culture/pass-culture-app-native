@@ -2,6 +2,7 @@ import { useNavigation } from '@react-navigation/native'
 import { useMutation } from 'react-query'
 
 import { api } from 'api/api'
+import { getProfileStackConfig } from 'features/navigation/ProfileStackNavigator/getProfileStackConfig'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import {
   SNACK_BAR_TIME_OUT,
@@ -22,7 +23,7 @@ export const useChangeEmailMutation = () => {
             'E-mail envoyé sur ton adresse actuelle\u00a0! Tu as 24h pour valider ta demande. Si tu ne le trouves pas, pense à vérifier tes spams.',
           timeout: SNACK_BAR_TIME_OUT_LONG,
         })
-        replace('TrackEmailChange')
+        replace(...getProfileStackConfig('TrackEmailChange'))
       },
       onError: () => {
         showErrorSnackBar({

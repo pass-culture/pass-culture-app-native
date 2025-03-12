@@ -67,6 +67,26 @@ export const routes: ProfileStackRoute[] = [
     component: ComponentForPathConfig,
     path: 'profile/suppression/demande-confirmation',
   },
+  {
+    name: 'ChangeStatus',
+    component: ComponentForPathConfig,
+    path: 'profil/modification-statut',
+  },
+  {
+    name: 'ChangeCity',
+    component: ComponentForPathConfig,
+    path: 'profil/modification-ville',
+  },
+  {
+    name: 'ChangeEmail',
+    component: ComponentForPathConfig,
+    path: 'profil/modification-email',
+  },
+  {
+    name: 'TrackEmailChange',
+    component: ComponentForPathConfig,
+    path: 'profil/suivi-modification-email',
+  },
 ]
 
 export function isProfileStackScreen(screen: string): screen is ProfileStackRouteName {

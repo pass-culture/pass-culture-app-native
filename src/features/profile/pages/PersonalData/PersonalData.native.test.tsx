@@ -158,6 +158,33 @@ describe('PersonalData', () => {
     expect(navigate).toHaveBeenCalledWith('ChangePassword', undefined)
   })
 
+  it('should redirect to ChangeCity when clicking on modify city button for beneficiaries', async () => {
+    mockedUseAuthContext
+      .mockReturnValueOnce({
+        ...initialAuthContext,
+        user: {
+          ...mockedUser,
+          isBeneficiary: true,
+        },
+      })
+      .mockReturnValueOnce({
+        ...initialAuthContext,
+        user: {
+          ...mockedUser,
+          isBeneficiary: true,
+        },
+      })
+
+    render(reactQueryProviderHOC(<PersonalData />))
+
+    fireEvent.press(await screen.findByTestId('Modifier la ville de résidence'))
+
+    expect(navigate).toHaveBeenCalledWith('TabNavigator', {
+      params: { params: undefined, screen: 'ChangeCity' },
+      screen: 'ProfileStackNavigator',
+    })
+  })
+
   it('should log analytics and redirect to ConfirmDeleteProfile page when the account-deletion row is clicked', async () => {
     mockedUseAuthContext.mockReturnValueOnce({
       ...initialAuthContext,

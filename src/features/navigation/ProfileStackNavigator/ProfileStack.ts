@@ -18,6 +18,10 @@ export type ProfileStackParamList = {
   ConfirmDeleteProfile: undefined
   DeactivateProfileSuccess: undefined
   SuspendAccountConfirmationWithoutAuthentication: undefined
+  ChangeStatus: undefined
+  ChangeCity: undefined
+  ChangeEmail: { showModal: boolean } | undefined
+  TrackEmailChange: undefined
 } & AccessibilityRootStackParamList
 
 export type ProfileStackRouteName = keyof ProfileStackParamList
