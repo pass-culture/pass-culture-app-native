@@ -30,6 +30,9 @@ export type ProfileStackParamList = {
   FeedbackInApp: undefined
   ConsentSettings: { onGoBack?: () => void } | undefined
   ConfirmChangeEmail: { token: string; expiration_timestamp: number } | undefined
+  ChangeEmailSetPassword:
+    | { token: string | null | undefined; emailSelectionToken: string | null | undefined }
+    | undefined
 } & AccessibilityRootStackParamList
 
 export type ProfileStackRouteName = keyof ProfileStackParamList

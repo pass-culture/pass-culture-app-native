@@ -18,7 +18,7 @@ export const cheatcodesNavigationProfileButtons: [CheatcodesButtonsWithSubscreen
       { ...getProfileNavConfig('ChangeCity') },
       { ...getProfileNavConfig('ChangeEmail') },
       { ...getProfileNavConfig('ChangeStatus') },
-      { screen: 'ChangeEmailSetPassword', navigationParams: { token: 'token' } },
+      { ...getProfileNavConfig('ChangeEmailSetPassword'), navigationParams: { token: 'token' } },
       { ...getProfileNavConfig('ConsentSettings') },
       { ...getProfileNavConfig('NotificationsSettings') },
       { screen: 'ChangeEmailExpiredLink' },

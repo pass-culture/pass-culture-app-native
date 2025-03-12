@@ -40,7 +40,6 @@ import { TabNavigator } from 'features/navigation/TabBar/TabNavigator'
 import { Offer } from 'features/offer/pages/Offer/Offer'
 import { OfferPreview } from 'features/offer/pages/OfferPreview/OfferPreview'
 import { ChangeEmailExpiredLink } from 'features/profile/pages/ChangeEmail/ChangeEmailExpiredLink'
-import { ChangeEmailSetPassword } from 'features/profile/pages/ChangeEmailSetPassword/ChangeEmailSetPassword'
 import { NewEmailSelection } from 'features/profile/pages/NewEmailSelection/NewEmailSelection'
 import { OnboardingSubscription } from 'features/subscription/page/OnboardingSubscription'
 import { ProfileTutorialAgeInformation } from 'features/tutorial/pages/profileTutorial/ProfileTutorialAgeInformation'
@@ -210,13 +209,6 @@ export const routes: RootRoute[] = [
     component: OnboardingSubscription,
     path: 'choix-abonnement',
     options: { title: 'Choix des thèmes à suivre' },
-    secure: true,
-  },
-  {
-    name: 'ChangeEmailSetPassword',
-    component: ChangeEmailSetPassword,
-    path: 'profil/creation-mot-de-passe',
-    options: { title: 'Création du mot de passe' },
     secure: true,
   },
   {

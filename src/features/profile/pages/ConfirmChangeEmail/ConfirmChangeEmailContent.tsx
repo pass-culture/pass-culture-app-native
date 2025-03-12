@@ -5,6 +5,7 @@ import { ApiError } from 'api/ApiError'
 import { AccountState } from 'api/gen'
 import { useLoginRoutine } from 'features/auth/helpers/useLoginRoutine'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
+import { getProfileStackConfig } from 'features/navigation/ProfileStackNavigator/getProfileStackConfig'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { useConfirmChangeEmailMutationV2 } from 'features/profile/helpers/useConfirmChangeEmailMutationV2'
 import { isTimestampExpired } from 'libs/dates'
@@ -33,10 +34,12 @@ export const ConfirmChangeEmailContent = () => {
       )
 
       if (resetPasswordToken) {
-        replace('ChangeEmailSetPassword', {
-          token: resetPasswordToken,
-          emailSelectionToken: newEmailSelectionToken,
-        })
+        replace(
+          ...getProfileStackConfig('ChangeEmailSetPassword', {
+            token: resetPasswordToken,
+            emailSelectionToken: newEmailSelectionToken,
+          })
+        )
       } else {
         replace('NewEmailSelection', { token: newEmailSelectionToken })
       }

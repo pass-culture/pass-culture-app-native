@@ -120,9 +120,15 @@ describe('TrackEmailChangeContent', () => {
 
       fireEvent.press(await screen.findByText('Crée ton mot de passe'))
 
-      expect(navigate).toHaveBeenCalledWith('ChangeEmailSetPassword', {
-        token: 'reset_password_token',
-        emailSelectionToken: 'new_email_selection_token',
+      expect(navigate).toHaveBeenCalledWith('TabNavigator', {
+        params: {
+          params: {
+            emailSelectionToken: 'new_email_selection_token',
+            token: 'reset_password_token',
+          },
+          screen: 'ChangeEmailSetPassword',
+        },
+        screen: 'ProfileStackNavigator',
       })
     })
   })

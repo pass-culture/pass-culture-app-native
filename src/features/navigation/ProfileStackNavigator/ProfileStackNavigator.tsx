@@ -11,6 +11,7 @@ import { AccessibilityEngagement } from 'features/profile/pages/Accessibility/Ac
 import { RecommendedPaths } from 'features/profile/pages/Accessibility/RecommendedPaths'
 import { ChangeCity } from 'features/profile/pages/ChangeCity/ChangeCity'
 import { ChangeEmail } from 'features/profile/pages/ChangeEmail/ChangeEmail'
+import { ChangeEmailSetPassword } from 'features/profile/pages/ChangeEmailSetPassword/ChangeEmailSetPassword'
 import { ChangePassword } from 'features/profile/pages/ChangePassword'
 import { ChangeStatus } from 'features/profile/pages/ChangeStatus/ChangeStatus'
 import { ConfirmChangeEmail } from 'features/profile/pages/ConfirmChangeEmail/ConfirmChangeEmail'
@@ -169,6 +170,11 @@ export const ProfileStackNavigator = () => (
       name="ConfirmChangeEmail"
       component={ConfirmChangeEmail}
       options={{ title: 'Confirmation de changement d’email ' }}
+    />
+    <ProfileStack.Screen
+      name="ChangeEmailSetPassword"
+      component={withAuthProtection(ChangeEmailSetPassword)}
+      options={{ title: 'Création du mot de passe' }}
     />
   </ProfileStack.Navigator>
 )

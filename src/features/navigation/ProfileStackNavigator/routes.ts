@@ -129,6 +129,11 @@ export const routes: ProfileStackRoute[] = [
     path: 'changement-email/confirmation',
     options: {},
   },
+  {
+    name: 'ChangeEmailSetPassword',
+    component: ComponentForPathConfig,
+    path: 'profil/creation-mot-de-passe',
+  },
 ]
 
 export function isProfileStackScreen(screen: string): screen is ProfileStackRouteName {

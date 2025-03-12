@@ -74,9 +74,15 @@ describe('<ConfirmChangeEmail />', () => {
 
     await act(async () => fireEvent.press(screen.getByText('Confirmer la demande')))
 
-    expect(replace).toHaveBeenNthCalledWith(1, 'ChangeEmailSetPassword', {
-      token: 'reset_password_token',
-      emailSelectionToken: 'token',
+    expect(replace).toHaveBeenNthCalledWith(1, 'TabNavigator', {
+      params: {
+        params: {
+          emailSelectionToken: 'token',
+          token: 'reset_password_token',
+        },
+        screen: 'ChangeEmailSetPassword',
+      },
+      screen: 'ProfileStackNavigator',
     })
   })
 

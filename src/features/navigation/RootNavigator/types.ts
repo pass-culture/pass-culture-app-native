@@ -206,7 +206,6 @@ export type RootStackParamList = {
   BookingDetails: { id: number }
   Bookings: { activeTab?: BookingsTab } | undefined
   ChangeEmailExpiredLink: undefined
-  ChangeEmailSetPassword: { token: string; emailSelectionToken: string }
   CheatcodesStackNavigator: undefined
   Chronicles: { offerId: number; chronicleId?: number; from?: Referrals }
   CulturalSurvey: undefined

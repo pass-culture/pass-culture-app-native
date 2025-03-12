@@ -48,7 +48,8 @@ export const ChangeEmailSetPassword = () => {
         message: 'Ton mot de passe a bien été créé.',
         timeout: SNACK_BAR_TIME_OUT,
       })
-      replace('NewEmailSelection', { token: params.emailSelectionToken })
+      if (!params?.emailSelectionToken) return
+      replace('NewEmailSelection', { token: params?.emailSelectionToken })
     },
     onError: () =>
       showErrorSnackBar({
@@ -58,9 +59,10 @@ export const ChangeEmailSetPassword = () => {
       }),
   })
 
-  const onSubmit = handleSubmit(({ newPassword }) =>
-    setPassword({ resetPasswordToken: params.token, newPassword })
-  )
+  const onSubmit = handleSubmit(({ newPassword }) => {
+    if (!params?.token) return
+    setPassword({ resetPasswordToken: params?.token, newPassword })
+  })
 
   return (
     <SecondaryPageWithBlurHeader title="Créer mon mot de passe">
