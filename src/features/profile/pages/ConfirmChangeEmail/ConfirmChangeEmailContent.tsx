@@ -53,12 +53,12 @@ export const ConfirmChangeEmailContent = () => {
     },
   })
 
-  const onConfirmEmail = useCallback(
-    () => mutate({ token: params?.token }),
-    [params?.token, mutate]
-  )
+  const onConfirmEmail = useCallback(() => {
+    if (!params?.token) return
+    mutate({ token: params?.token })
+  }, [params?.token, mutate])
 
-  if (isTimestampExpired(params.expiration_timestamp)) {
+  if (params?.expiration_timestamp && isTimestampExpired(params.expiration_timestamp)) {
     reset({ index: 0, routes: [{ name: 'ChangeEmailExpiredLink' }] })
     return null
   }

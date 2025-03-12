@@ -41,7 +41,6 @@ import { Offer } from 'features/offer/pages/Offer/Offer'
 import { OfferPreview } from 'features/offer/pages/OfferPreview/OfferPreview'
 import { ChangeEmailExpiredLink } from 'features/profile/pages/ChangeEmail/ChangeEmailExpiredLink'
 import { ChangeEmailSetPassword } from 'features/profile/pages/ChangeEmailSetPassword/ChangeEmailSetPassword'
-import { ConfirmChangeEmail } from 'features/profile/pages/ConfirmChangeEmail/ConfirmChangeEmail'
 import { NewEmailSelection } from 'features/profile/pages/NewEmailSelection/NewEmailSelection'
 import { OnboardingSubscription } from 'features/subscription/page/OnboardingSubscription'
 import { ProfileTutorialAgeInformation } from 'features/tutorial/pages/profileTutorial/ProfileTutorialAgeInformation'
@@ -130,12 +129,6 @@ export const routes: RootRoute[] = [
     component: AccountCreated,
     path: 'creation-compte/confirmation',
     options: { title: 'Compte créé\u00a0!' },
-  },
-  {
-    name: 'ConfirmChangeEmail',
-    component: ConfirmChangeEmail,
-    path: 'changement-email/confirmation',
-    options: { title: 'Confirmation de changement d’email ' },
   },
   {
     name: 'AfterSignupEmailValidationBuffer',

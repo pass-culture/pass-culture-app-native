@@ -123,6 +123,12 @@ export const routes: ProfileStackRoute[] = [
     component: ComponentForPathConfig,
     path: 'profil/confidentialite',
   },
+  {
+    name: 'ConfirmChangeEmail',
+    component: ComponentForPathConfig,
+    path: 'changement-email/confirmation',
+    options: {},
+  },
 ]
 
 export function isProfileStackScreen(screen: string): screen is ProfileStackRouteName {

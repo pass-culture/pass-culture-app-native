@@ -208,7 +208,6 @@ export type RootStackParamList = {
   ChangeEmailExpiredLink: undefined
   ChangeEmailSetPassword: { token: string; emailSelectionToken: string }
   CheatcodesStackNavigator: undefined
-  ConfirmChangeEmail: { token: string; expiration_timestamp: number }
   Chronicles: { offerId: number; chronicleId?: number; from?: Referrals }
   CulturalSurvey: undefined
   DeeplinksGenerator: undefined

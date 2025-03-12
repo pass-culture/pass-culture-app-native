@@ -13,6 +13,7 @@ import { ChangeCity } from 'features/profile/pages/ChangeCity/ChangeCity'
 import { ChangeEmail } from 'features/profile/pages/ChangeEmail/ChangeEmail'
 import { ChangePassword } from 'features/profile/pages/ChangePassword'
 import { ChangeStatus } from 'features/profile/pages/ChangeStatus/ChangeStatus'
+import { ConfirmChangeEmail } from 'features/profile/pages/ConfirmChangeEmail/ConfirmChangeEmail'
 import { ConsentSettings } from 'features/profile/pages/ConsentSettings/ConsentSettings'
 import { ConfirmDeleteProfile } from 'features/profile/pages/DeleteProfile/ConfirmDeleteProfile'
 import { DeactivateProfileSuccess } from 'features/profile/pages/DeleteProfile/DeactivateProfileSuccess'
@@ -163,6 +164,11 @@ export const ProfileStackNavigator = () => (
       name="ConsentSettings"
       component={ConsentSettings}
       options={{ title: 'Paramètres de confidentialité' }}
+    />
+    <ProfileStack.Screen
+      name="ConfirmChangeEmail"
+      component={ConfirmChangeEmail}
+      options={{ title: 'Confirmation de changement d’email ' }}
     />
   </ProfileStack.Navigator>
 )

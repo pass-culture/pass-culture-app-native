@@ -29,6 +29,7 @@ export type ProfileStackParamList = {
   SuspendAccountConfirmation: { token: string } | undefined
   FeedbackInApp: undefined
   ConsentSettings: { onGoBack?: () => void } | undefined
+  ConfirmChangeEmail: { token: string; expiration_timestamp: number } | undefined
 } & AccessibilityRootStackParamList
 
 export type ProfileStackRouteName = keyof ProfileStackParamList
