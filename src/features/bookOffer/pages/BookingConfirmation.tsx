@@ -1,6 +1,5 @@
 import { useNavigation, useRoute } from '@react-navigation/native'
 import React, { useCallback } from 'react'
-import styled from 'styled-components/native'
 
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
@@ -14,15 +13,11 @@ import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
 import { useAvailableCredit } from 'shared/user/useAvailableCredit'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
-import { ButtonTertiaryPrimary } from 'ui/components/buttons/ButtonTertiaryPrimary'
 import { useModal } from 'ui/components/modals/useModal'
-import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import { GenericInfoPageWhiteLegacy } from 'ui/pages/GenericInfoPageWhiteLegacy'
+import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
 import { BicolorTicketBooked } from 'ui/svg/icons/BicolorTicketBooked'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
-import { getSpacing, Spacer, TypoDS } from 'ui/theme'
+import { LINE_BREAK } from 'ui/theme/constants'
 
 export function BookingConfirmation() {
   const { params } = useRoute<UseRouteType<'BookingConfirmation'>>()
@@ -75,30 +70,25 @@ export function BookingConfirmation() {
 
   return (
     <React.Fragment>
-      <GenericInfoPageWhiteLegacy
+      <GenericInfoPageWhite
+        illustration={BicolorTicketBooked}
         title="Réservation confirmée&nbsp;!"
-        titleComponent={TypoDS.Title2}
-        icon={BicolorTicketBooked}
-        separateIconFromTitle={false}
-        mobileBottomFlex={0.1}>
-        <StyledBody>{amountLeftText}</StyledBody>
-        <StyledBody>
-          Tu peux retrouver toutes les informations concernant ta réservation sur l’application.
-        </StyledBody>
-        <Spacer.Flex />
-        <ButtonContainer>
-          <ButtonPrimary key={1} wording="Voir ma réservation" onPress={displayBookingDetails} />
-          <ButtonSecondary wording="Partager l’offre" onPress={pressShareOffer} />
-          <InternalTouchableLink
-            key={2}
-            as={ButtonTertiaryPrimary}
-            wording="Retourner à l’accueil"
-            navigateTo={navigateToHomeConfig}
-            onBeforeNavigate={trackBooking}
-            icon={PlainArrowPrevious}
-          />
-        </ButtonContainer>
-      </GenericInfoPageWhiteLegacy>
+        subtitle={`${amountLeftText}${LINE_BREAK}Tu peux retrouver toutes les informations concernant ta réservation sur l’application.`}
+        buttonPrimary={{
+          wording: 'Voir ma réservation',
+          onPress: displayBookingDetails,
+        }}
+        buttonSecondary={{
+          wording: 'Partager l’offre',
+          onPress: pressShareOffer,
+        }}
+        buttonTertiary={{
+          wording: 'Retourner à l’accueil',
+          navigateTo: navigateToHomeConfig,
+          onBeforeNavigate: trackBooking,
+          icon: PlainArrowPrevious,
+        }}
+      />
       {shareContent ? (
         <WebShareModal
           visible={shareOfferModalVisible}
@@ -110,12 +100,3 @@ export function BookingConfirmation() {
     </React.Fragment>
   )
 }
-
-const StyledBody = styled(TypoDS.Body)({
-  textAlign: 'center',
-})
-
-const ButtonContainer = styled.View({
-  paddingBottom: getSpacing(10),
-  gap: getSpacing(4),
-})
