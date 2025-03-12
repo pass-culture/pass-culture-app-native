@@ -8,5 +8,5 @@ export function RequiredLabel() {
 }
 
 const StyledBodyAccentXs = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
-  color: theme.colors.greyDark,
+  color: theme.designSystem.color.text.subtle,
 }))

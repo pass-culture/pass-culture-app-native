@@ -14,8 +14,8 @@ export const ButtonSecondaryBlack = styledButton(AppButton).attrs<BaseButtonProp
     if (icon) {
       Icon = styled(icon).attrs({
         color: disabled
-          ? theme.buttons.disabled.secondaryBlack.iconColor
-          : theme.buttons.secondaryBlack.iconColor,
+          ? theme.designSystem.color.icon.disabled
+          : theme.designSystem.color.icon.default,
         size: theme.buttons.secondaryBlack.iconSize,
       })``
     }
@@ -23,8 +23,8 @@ export const ButtonSecondaryBlack = styledButton(AppButton).attrs<BaseButtonProp
     const Title = styled(TypoDS.Button)({
       maxWidth: '100%',
       color: disabled
-        ? theme.buttons.disabled.secondaryBlack.textColor
-        : theme.buttons.secondaryBlack.textColor,
+        ? theme.designSystem.color.text.disabled
+        : theme.designSystem.color.text.default,
       fontSize: textSize,
     })
 

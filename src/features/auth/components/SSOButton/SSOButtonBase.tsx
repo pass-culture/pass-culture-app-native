@@ -28,5 +28,5 @@ export const SSOButtonBase = ({ type, onSuccess }: Props) => {
 }
 
 const StyledButton = styledButton(ButtonSecondaryBlack)(({ theme }) => ({
-  borderColor: theme.colors.greyMedium,
+  borderColor: theme.designSystem.color.border.subtle,
 }))

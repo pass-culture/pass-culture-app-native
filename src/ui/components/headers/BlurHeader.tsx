@@ -1,5 +1,5 @@
 import React from 'react'
-import { Platform } from 'react-native'
+import { Platform, useColorScheme } from 'react-native'
 import styled from 'styled-components/native'
 
 import { BlurView } from 'ui/components/BlurView'
@@ -10,14 +10,16 @@ type Props = {
   blurType?: 'dark' | 'light' | 'xlight'
 }
 
-export const BlurHeader = ({ height, blurAmount = 8, blurType = 'light' }: Props) => {
+export const BlurHeader = ({ height, blurAmount = 8, blurType }: Props) => {
+  const colorScheme = useColorScheme()
+  const computedBlurType = blurType || (colorScheme === 'dark' ? 'dark' : 'light')
   // There is an issue with the blur on Android: we chose not to render it and use a white background
   // https://github.com/Kureev/react-native-blur/issues/511
   if (Platform.OS === 'android') return null
 
   return (
     <BlurNativeContainer height={height}>
-      <Blurred blurType={blurType} blurAmount={blurAmount} />
+      <Blurred blurType={computedBlurType} blurAmount={blurAmount} />
     </BlurNativeContainer>
   )
 }

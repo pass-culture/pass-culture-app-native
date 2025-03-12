@@ -45,15 +45,16 @@ const getBorderColor = (
   isError?: boolean
 ) => {
   if (isDisabled) {
-    return theme.colors.white
+    return theme.designSystem.color.border.disabled
   }
   if (isFocus) {
-    return theme.colors.black
+    // maybe we need another semantic color.text.focused
+    return theme.designSystem.color.outline.default
   }
   if (isError) {
-    return theme.colors.error
+    return theme.designSystem.color.border.error
   }
-  return theme.colors.greySemiDark
+  return theme.designSystem.color.border.default
 }
 
 const StyledView = styled(View)<{
@@ -81,7 +82,9 @@ const StyledView = styled(View)<{
     borderStyle: 'solid',
     borderWidth,
     borderColor: getBorderColor(theme, isFocus, isDisabled, isError),
-    backgroundColor: isDisabled ? theme.colors.greyLight : theme.colors.white,
+    backgroundColor: isDisabled
+      ? theme.designSystem.color.background.disabled
+      : theme.designSystem.color.background.default,
     ...(height === 'tall'
       ? {
           ...padding(2, tallHorizontalPadding), // This assures that things don't move when the border width changes on focus

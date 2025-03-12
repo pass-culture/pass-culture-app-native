@@ -1,11 +1,9 @@
 import React, { FunctionComponent } from 'react'
-import { useTheme } from 'styled-components'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
+import { ColorsType } from 'theme/types'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 import { Spacer, TypoDS, getSpacing } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 
 type InputRuleType = 'Valid' | 'Error' | 'Neutral'
 
@@ -24,13 +22,33 @@ export const InputRule: FunctionComponent<Props> = ({
   iconSize,
   type,
   testIdSuffix,
-  noFullWidth,
+  noFullWidth = false,
 }: Props) => {
   const theme = useTheme()
-  const baseColor = type === 'Valid' ? theme.colors.greenValid : theme.colors.black
-  const color = type === 'Error' ? theme.colors.error : baseColor
+  const colorMapping: Record<InputRuleType, { text: ColorsType; icon: ColorsType }> = {
+    Valid: {
+      text: theme.designSystem.color.text.success,
+      icon: theme.designSystem.color.icon.success,
+    },
+    Error: {
+      text: theme.designSystem.color.text.error,
+      icon: theme.designSystem.color.icon.error,
+    },
+    Neutral: {
+      text: theme.designSystem.color.text.default,
+      icon: theme.designSystem.color.icon.default,
+    },
+  }
+
+  const defaultColor = {
+    text: 'text.default',
+    icon: 'icon.default',
+  }
+
+  const { text: color, icon: colorIcon } = colorMapping[type] ?? defaultColor
+
   const Icon = styled(icon).attrs<{ testID: string }>({
-    color: color,
+    color: colorIcon,
     size: iconSize,
   })``
 
@@ -58,7 +76,7 @@ const StyledView = styled.View<{ noFullWidth?: boolean }>(({ noFullWidth, theme 
 }))
 
 const StyledCaption = styled(TypoDS.BodyAccentXs)<{
-  color: ColorsEnum
+  color: ColorsType
   noFullWidth?: boolean
 }>(({ color, noFullWidth }) => ({
   paddingLeft: getSpacing(1),
