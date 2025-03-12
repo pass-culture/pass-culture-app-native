@@ -6,6 +6,7 @@ import { render, screen, userEvent } from 'tests/utils'
 
 import { AccountReactivationSuccess } from './AccountReactivationSuccess'
 
+jest.mock('libs/firebase/analytics/analytics')
 jest.mock('features/navigation/helpers/navigateToHome')
 
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
