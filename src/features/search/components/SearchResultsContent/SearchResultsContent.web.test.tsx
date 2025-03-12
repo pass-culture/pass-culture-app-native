@@ -2,7 +2,6 @@ import React from 'react'
 
 import { initialSearchState } from 'features/search/context/reducer'
 import { useCenterOnLocation } from 'features/venueMap/hook/useCenterOnLocation'
-import { useVenuesInRegionQuery } from 'features/venueMap/useVenuesInRegionQuery'
 import { venuesFixture } from 'libs/algolia/fetchAlgolia/fetchVenues/fixtures/venuesFixture'
 import {
   mockedAlgoliaResponse,
@@ -11,6 +10,7 @@ import {
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { GeoCoordinates, Position } from 'libs/location'
+import { useVenuesInRegionQuery } from 'queries/useVenuesInRegionQuery/useVenuesInRegionQuery'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils/web'
 
@@ -46,7 +46,7 @@ jest.mock('libs/location/LocationWrapper', () => ({
   }),
 }))
 
-jest.mock('features/venueMap/useVenuesInRegionQuery')
+jest.mock('queries/useVenuesInRegionQuery/useVenuesInRegionQuery.ts')
 const mockUseVenuesInRegionQuery = useVenuesInRegionQuery as jest.Mock
 
 const mockSearchState = initialSearchState
