@@ -1,4 +1,3 @@
-import { theme as designTokens } from 'design-system/dist/build/ts'
 import { Platform } from 'react-native'
 
 // eslint-disable-next-line no-restricted-imports
@@ -23,6 +22,8 @@ import { iconSizes } from 'ui/theme/iconSizes'
 import { illustrationSizes } from 'ui/theme/illustrationSizes'
 // eslint-disable-next-line no-restricted-imports
 import { zIndex } from 'ui/theme/layers'
+
+import { designTokensLight } from './designTokens'
 
 const isNative = Platform.OS === 'ios' || Platform.OS === 'android'
 const isTouchWeb = Platform.OS === 'web' && (isMobileDeviceDetectOnWeb || isTabletDeviceDetectOnWeb)
@@ -111,7 +112,7 @@ export const theme = {
       },
     },
   },
-  designSystem: designTokens,
+  designSystem: designTokensLight,
   typography: {
     title1: {
       fontFamily: 'Montserrat-Black',

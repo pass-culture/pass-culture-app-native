@@ -1,8 +1,11 @@
 import { useMemo } from 'react'
-import { useWindowDimensions } from 'react-native'
+import { useColorScheme, useWindowDimensions } from 'react-native'
 
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useMediaQuery } from 'libs/react-responsive/useMediaQuery'
 import { BaseAppThemeType, AppThemeType } from 'theme'
+import { designTokensDark, designTokensLight } from 'theme/designTokens'
 
 export function useComputedTheme(theme: BaseAppThemeType) {
   const { width: windowWidth } = useWindowDimensions()
@@ -19,9 +22,15 @@ export function useComputedTheme(theme: BaseAppThemeType) {
   const showTabBar = theme.isTouch || !!isMobileViewport
   const appContentWidth = Math.min(desktopMinWidth, windowWidth)
 
+  const enableDarkMode = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_DARK_MODE)
+  const colorScheme = useColorScheme()
+  const isDarkMode = enableDarkMode && colorScheme === 'dark'
+  const designTokens = isDarkMode ? designTokensDark : designTokensLight
+
   return useMemo<AppThemeType>(
     () => ({
       ...theme,
+      designSystem: designTokens,
       tabBar: { ...theme.tabBar, showLabels, height: theme.tabBar.heightV2 },
       isMobileViewport,
       isTabletViewport,
@@ -32,6 +41,7 @@ export function useComputedTheme(theme: BaseAppThemeType) {
     }),
     // eslint-disable-next-line react-hooks/exhaustive-deps
     [
+      colorScheme,
       isMobileViewport,
       isTabletViewport,
       isDesktopViewport,
