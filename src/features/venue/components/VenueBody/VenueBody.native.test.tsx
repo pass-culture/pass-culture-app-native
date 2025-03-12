@@ -120,4 +120,21 @@ describe('<VenueBody />', () => {
 
     expect(navigate).toHaveBeenCalledWith('Offer', { id: HEADLINE_OFFER_DATA.id })
   })
+
+  it('should trigger ConsultOffer log when pressing on headline offer', async () => {
+    render(
+      reactQueryProviderHOC(
+        <VenueBody venue={venueDataTest} headlineOfferData={HEADLINE_OFFER_DATA} />
+      )
+    )
+
+    await user.press(screen.getByText('One Piece Tome 108'))
+
+    expect(analytics.logConsultOffer).toHaveBeenNthCalledWith(1, {
+      offerId: Number(HEADLINE_OFFER_DATA.id),
+      from: 'venue',
+      venueId: venueDataTest.id,
+      isHeadline: true,
+    })
+  })
 })

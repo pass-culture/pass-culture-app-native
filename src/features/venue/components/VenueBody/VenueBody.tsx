@@ -11,6 +11,7 @@ import { TabLayout } from 'features/venue/components/TabLayout/TabLayout'
 import { VenueOffers } from 'features/venue/components/VenueOffers/VenueOffers'
 import type { VenueOffersArtists, VenueOffers as VenueOffersType } from 'features/venue/types'
 import { Tab } from 'features/venue/types'
+import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
 import { analytics } from 'libs/analytics/provider'
 import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
@@ -45,6 +46,15 @@ export const VenueBody: FunctionComponent<Props> = ({
 
   const SectionContainer = isLargeScreen ? View : SectionWithDivider
 
+  const handleOnBeforeNavigate = (headlineOfferData: HeadlineOfferData) => {
+    triggerConsultOfferLog({
+      offerId: Number(headlineOfferData.id),
+      from: 'venue',
+      venueId: venue.id,
+      isHeadline: true,
+    })
+  }
+
   const tabPanels = {
     [Tab.OFFERS]: (
       <React.Fragment>
@@ -54,6 +64,7 @@ export const VenueBody: FunctionComponent<Props> = ({
             <HeadlineOffer
               navigateTo={{ screen: 'Offer', params: { id: headlineOfferData.id } }}
               {...headlineOfferData}
+              onBeforeNavigate={() => handleOnBeforeNavigate(headlineOfferData)}
             />
           </MarginContainer>
         ) : null}
