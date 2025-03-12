@@ -12,6 +12,7 @@ import { render, screen, userEvent } from 'tests/utils'
 import { EighteenBirthday } from './EighteenBirthday'
 
 jest.mock('features/auth/context/AuthContext')
+jest.mock('libs/firebase/analytics/analytics')
 
 afterEach(() => {
   storage.clear('has_seen_eligible_card')

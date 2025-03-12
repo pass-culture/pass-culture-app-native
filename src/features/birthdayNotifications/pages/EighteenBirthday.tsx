@@ -9,13 +9,36 @@ import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay
 import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
 import { useDepositAmountsByAge } from 'shared/user/useDepositAmountsByAge'
 import TutorialPassLogo from 'ui/animations/eighteen_birthday.json'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
-import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import { GenericInfoPageWhiteLegacy } from 'ui/pages/GenericInfoPageWhiteLegacy'
+import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
 import { ClockFilled } from 'ui/svg/icons/ClockFilled'
-import { Spacer, TypoDS, getSpacing } from 'ui/theme'
-import { CaptionNeutralInfo, TextProps } from 'ui/theme/typography'
+import { CaptionNeutralInfo } from 'ui/theme/typography'
+
+export function EighteenBirthday() {
+  const { user } = useAuthContext()
+  const pageWording = useGetPageWording(user?.requiresIdCheck)
+
+  useEffect(() => {
+    storage.saveObject('has_seen_eligible_card', true)
+  }, [])
+
+  return (
+    <GenericInfoPageWhite
+      animation={TutorialPassLogo}
+      title="Tu as 18 ans&nbsp;!"
+      subtitle={pageWording.text}
+      buttonPrimary={{
+        wording: pageWording.buttonText,
+        navigateTo: { screen: 'Stepper' },
+      }}
+      buttonTertiary={{
+        wording: 'Plus tard',
+        navigateTo: { screen: 'TabNavigator', params: { screen: 'Home' } },
+        icon: ClockFilled,
+      }}>
+      <ResetText />
+    </GenericInfoPageWhite>
+  )
+}
 
 const useGetPageWording = (userRequiresIdCheck?: boolean) => {
   const { eighteenYearsOldDeposit } = useDepositAmountsByAge()
@@ -31,37 +54,7 @@ const useGetPageWording = (userRequiresIdCheck?: boolean) => {
   }
 }
 
-export function EighteenBirthday() {
-  const { user } = useAuthContext()
-  const pageWording = useGetPageWording(user?.requiresIdCheck)
-
-  useEffect(() => {
-    storage.saveObject('has_seen_eligible_card', true)
-  }, [])
-
-  return (
-    <GenericInfoPageWhiteLegacy
-      animation={TutorialPassLogo}
-      title="Tu as 18 ans&nbsp;!"
-      subtitle={pageWording.text}
-      subtitleComponent={SubtitleComponent}>
-      <InternalTouchableLink
-        as={ButtonPrimary}
-        wording={pageWording.buttonText}
-        navigateTo={{ screen: 'Stepper' }}
-      />
-      <Spacer.Column numberOfSpaces={2} />
-      <InternalTouchableLink
-        as={ButtonTertiaryBlack}
-        wording="Plus tard"
-        navigateTo={{ screen: 'TabNavigator', params: { screen: 'Home' } }}
-        icon={ClockFilled}
-      />
-    </GenericInfoPageWhiteLegacy>
-  )
-}
-
-function SubtitleComponent(props: TextProps) {
+function ResetText() {
   const { data: settings } = useSettingsContext()
   const enableCreditV3 = settings?.wipEnableCreditV3
 
@@ -69,23 +62,12 @@ function SubtitleComponent(props: TextProps) {
   const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
   const zero = formatCurrencyFromCents(0, currency, euroToPacificFrancRate)
 
+  if (enableCreditV3) return null
+
   return (
-    <Wrapper>
-      <TypoDS.Body {...props} />
-      <Spacer.Column numberOfSpaces={4} />
-      {enableCreditV3 ? null : (
-        <StyledCaptionNeutralInfo>
-          Ton crédit précédent a été remis à {zero}.
-        </StyledCaptionNeutralInfo>
-      )}
-    </Wrapper>
+    <StyledCaptionNeutralInfo>Ton crédit précédent a été remis à {zero}.</StyledCaptionNeutralInfo>
   )
 }
-
-const Wrapper = styled.View({
-  marginTop: getSpacing(4),
-  alignItems: 'center',
-})
 
 const StyledCaptionNeutralInfo = styled(CaptionNeutralInfo)({
   textAlign: 'center',
