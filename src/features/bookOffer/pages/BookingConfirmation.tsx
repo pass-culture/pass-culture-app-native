@@ -19,7 +19,7 @@ import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
 import { ButtonTertiaryPrimary } from 'ui/components/buttons/ButtonTertiaryPrimary'
 import { useModal } from 'ui/components/modals/useModal'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
+import { GenericInfoPageWhiteLegacy } from 'ui/pages/GenericInfoPageWhiteLegacy'
 import { BicolorTicketBooked } from 'ui/svg/icons/BicolorTicketBooked'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
 import { getSpacing, Spacer, TypoDS } from 'ui/theme'
@@ -75,7 +75,7 @@ export function BookingConfirmation() {
 
   return (
     <React.Fragment>
-      <GenericInfoPageWhite
+      <GenericInfoPageWhiteLegacy
         title="Réservation confirmée&nbsp;!"
         titleComponent={TypoDS.Title2}
         icon={BicolorTicketBooked}
@@ -98,7 +98,7 @@ export function BookingConfirmation() {
             icon={PlainArrowPrevious}
           />
         </ButtonContainer>
-      </GenericInfoPageWhite>
+      </GenericInfoPageWhiteLegacy>
       {shareContent ? (
         <WebShareModal
           visible={shareOfferModalVisible}

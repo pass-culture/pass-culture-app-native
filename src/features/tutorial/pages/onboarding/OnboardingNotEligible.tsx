@@ -8,7 +8,7 @@ import BirthdayCakeAnimation from 'ui/animations/onboarding_birthday_cake.json'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
+import { GenericInfoPageWhiteLegacy } from 'ui/pages/GenericInfoPageWhiteLegacy'
 import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 
 export const OnboardingNotEligible = () => {
@@ -18,7 +18,7 @@ export const OnboardingNotEligible = () => {
   }
 
   return (
-    <GenericInfoPageWhite
+    <GenericInfoPageWhiteLegacy
       mobileBottomFlex={0.1}
       animation={BirthdayCakeAnimation}
       title="Encore un peu de patience&nbsp;!"
@@ -49,7 +49,7 @@ export const OnboardingNotEligible = () => {
           }}
         />
       </ButtonContainer>
-    </GenericInfoPageWhite>
+    </GenericInfoPageWhiteLegacy>
   )
 }
 

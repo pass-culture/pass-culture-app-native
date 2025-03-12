@@ -14,7 +14,7 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 describe('<SecondaryPageWithBlurHeader />', () => {
   it('should render correctly', () => {
     render(
-      <SecondaryPageWithBlurHeader title="GenericInfoPageWhite">
+      <SecondaryPageWithBlurHeader title="SecondaryPageWithBlurHeader">
         <TypoDS.Title3>Children</TypoDS.Title3>
       </SecondaryPageWithBlurHeader>
     )

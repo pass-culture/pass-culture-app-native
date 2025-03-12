@@ -18,6 +18,7 @@ import { cheatcodesNavigationTrustedDeviceButtons } from 'cheatcodes/pages/featu
 import { cheatcodesNavigationTutorialButtons } from 'cheatcodes/pages/features/tutorial/CheatcodesNavigationTutorial'
 import { cheatcodesNavigationAccountManagementButtons } from 'cheatcodes/pages/others/CheatcodesNavigationAccountManagement'
 import { cheatcodesNavigationErrorsButtons } from 'cheatcodes/pages/others/CheatcodesNavigationErrors'
+import { cheatcodesNavigationGenericPagesButtons } from 'cheatcodes/pages/others/CheatcodesNavigationGenericPages'
 import { cheatcodesNavigationSignUpButtons } from 'cheatcodes/pages/others/CheatcodesNavigationSignUp'
 import { CheatcodesButtonsWithSubscreensProps } from 'cheatcodes/types'
 import { env } from 'libs/environment/env'
@@ -88,6 +89,7 @@ export function CheatcodesMenu(): React.JSX.Element {
   const otherButtons: CheatcodesButtonsWithSubscreensProps[] = [
     ...cheatcodesNavigationAccountManagementButtons,
     ...cheatcodesNavigationErrorsButtons,
+    ...cheatcodesNavigationGenericPagesButtons,
     ...cheatcodesNavigationSignUpButtons,
     { title: 'AccesLibre 🌈', screen: 'CheatcodesScreenAccesLibre', subscreens: [] },
     { title: 'Debug informations 🪲', screen: 'CheatcodesScreenDebugInformations', subscreens: [] },

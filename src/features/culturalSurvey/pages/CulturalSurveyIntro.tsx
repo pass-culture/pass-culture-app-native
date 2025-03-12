@@ -13,7 +13,7 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
+import { GenericInfoPageWhiteLegacy } from 'ui/pages/GenericInfoPageWhiteLegacy'
 import { BicolorPhonePending } from 'ui/svg/icons/BicolorPhonePending'
 import { InfoPlain } from 'ui/svg/icons/InfoPlain'
 import { Spacer, TypoDS } from 'ui/theme'
@@ -48,7 +48,7 @@ export const CulturalSurveyIntro = (): React.JSX.Element => {
   const { intro } = useGetCulturalSurveyContent(enableCulturalSurveyMandatory)
 
   return (
-    <GenericInfoPageWhite
+    <GenericInfoPageWhiteLegacy
       icon={StyledBicolorPhonePending}
       titleComponent={TypoDS.Title3}
       title={intro.title}
@@ -102,7 +102,7 @@ export const CulturalSurveyIntro = (): React.JSX.Element => {
           onPress={intro.secondaryButton.onPress}
         />
       </View>
-    </GenericInfoPageWhite>
+    </GenericInfoPageWhiteLegacy>
   )
 }
 

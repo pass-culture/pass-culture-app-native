@@ -25,11 +25,13 @@ import { CheatcodesNavigationProfileTutorial } from 'cheatcodes/pages/features/t
 import { CheatcodesNavigationTutorial } from 'cheatcodes/pages/features/tutorial/CheatcodesNavigationTutorial'
 import { CheatcodesNavigationAccountManagement } from 'cheatcodes/pages/others/CheatcodesNavigationAccountManagement'
 import { CheatcodesNavigationErrors } from 'cheatcodes/pages/others/CheatcodesNavigationErrors'
+import { CheatcodesNavigationGenericPages } from 'cheatcodes/pages/others/CheatcodesNavigationGenericPages'
 import { CheatcodesNavigationNotScreensPages } from 'cheatcodes/pages/others/CheatcodesNavigationNotScreensPages'
 import { CheatcodesNavigationSignUp } from 'cheatcodes/pages/others/CheatcodesNavigationSignUp'
 import { CheatcodesScreenAccesLibre } from 'cheatcodes/pages/others/CheatcodesScreenAccesLibre'
 import { CheatcodesScreenDebugInformations } from 'cheatcodes/pages/others/CheatcodesScreenDebugInformations'
 import { CheatcodesScreenFeatureFlags } from 'cheatcodes/pages/others/CheatcodesScreenFeatureFlags'
+import { CheatcodesScreenGenericInfoPageWhite } from 'cheatcodes/pages/others/CheatcodesScreenGenericInfoPageWhite'
 import { CheatcodesScreenNewCaledonia } from 'cheatcodes/pages/others/CheatcodesScreenNewCaledonia'
 import { CheatcodesScreenRemoteConfig } from 'cheatcodes/pages/others/CheatcodesScreenRemoteConfig'
 import { withAsyncErrorBoundary } from 'features/errors/hocs/withAsyncErrorBoundary'
@@ -171,6 +173,14 @@ const routes: CheatcodesStackRoute[] = [
   {
     name: 'CheatcodesNavigationAccountManagement',
     component: withAsyncErrorBoundary(CheatcodesNavigationAccountManagement),
+  },
+  {
+    name: 'CheatcodesNavigationGenericPages',
+    component: CheatcodesNavigationGenericPages,
+  },
+  {
+    name: 'CheatcodesScreenGenericInfoPageWhite',
+    component: CheatcodesScreenGenericInfoPageWhite,
   },
 ]
 

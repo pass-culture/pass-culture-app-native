@@ -8,7 +8,7 @@ import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
+import { GenericInfoPageWhiteLegacy } from 'ui/pages/GenericInfoPageWhiteLegacy'
 import { BicolorEmailSent } from 'ui/svg/icons/BicolorEmailSent'
 import { Email } from 'ui/svg/icons/Email'
 import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
@@ -27,7 +27,7 @@ export const DeleteProfileContactSupport: FC = () => {
 
   const navigateToProfile = () => navigate(...getProfileStackConfig('Profile'))
   return (
-    <GenericInfoPageWhite
+    <GenericInfoPageWhiteLegacy
       headerGoBack
       separateIconFromTitle={false}
       icon={BicolorEmailSent}
@@ -52,7 +52,7 @@ export const DeleteProfileContactSupport: FC = () => {
           />
         </ContentBottom>
       </ViewGap>
-    </GenericInfoPageWhite>
+    </GenericInfoPageWhiteLegacy>
   )
 }
 

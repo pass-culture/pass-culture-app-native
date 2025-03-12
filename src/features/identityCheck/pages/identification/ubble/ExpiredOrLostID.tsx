@@ -6,7 +6,7 @@ import { env } from 'libs/environment/env'
 import { BatchEvent, BatchProfile } from 'libs/react-native-batch'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
-import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
+import { GenericInfoPageWhiteLegacy } from 'ui/pages/GenericInfoPageWhiteLegacy'
 import { BicolorIdCardError } from 'ui/svg/icons/BicolorIdCardError'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { getSpacing, Spacer, TypoDS } from 'ui/theme'
@@ -17,7 +17,7 @@ export const ExpiredOrLostID = (): React.JSX.Element => {
   }, [])
 
   return (
-    <GenericInfoPageWhite
+    <GenericInfoPageWhiteLegacy
       icon={StyledBicolorIdCardError}
       titleComponent={TypoDS.Title2}
       title="Ta pièce d’identité expirée ou perdue"
@@ -45,7 +45,7 @@ export const ExpiredOrLostID = (): React.JSX.Element => {
           icon={ExternalSiteFilled}
         />
       </View>
-    </GenericInfoPageWhite>
+    </GenericInfoPageWhiteLegacy>
   )
 }
 

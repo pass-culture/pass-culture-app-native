@@ -1,60 +1,37 @@
 import { useNavigation } from '@react-navigation/native'
 import React from 'react'
-import styled from 'styled-components/native'
 
 import { StepperOrigin, UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import QpiThanks from 'ui/animations/qpi_thanks.json'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
-import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
-import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 
 export const OnboardingGeneralPublicWelcome = () => {
   const { reset } = useNavigation<UseNavigationType>()
   const navigateToHomeWithReset = () => {
     reset({ index: 0, routes: [{ name: homeNavConfig[0] }] })
   }
+
   return (
     <GenericInfoPageWhite
-      mobileBottomFlex={0.1}
+      withSkipAction={navigateToHomeWithReset}
       animation={QpiThanks}
-      onSkip={navigateToHomeWithReset}
-      title="Explore, découvre, profite">
-      <StyledBody>
-        Et si tu créais un compte pour suivre l’actualité culturelle autour de toi&nbsp;?
-      </StyledBody>
-      <Spacer.Flex flex={1} />
-      <ButtonContainer>
-        <InternalTouchableLink
-          as={ButtonPrimary}
-          wording="Créer un compte"
-          navigateTo={{
-            screen: 'SignupForm',
-            params: { from: StepperOrigin.ONBOARDING_GENERAL_PUBLIC_WELCOME },
-          }}
-          key={1}
-        />
-        <Spacer.Column numberOfSpaces={4} />
-        <InternalTouchableLink
-          key={2}
-          as={ButtonSecondary}
-          wording="Accéder au catalogue"
-          navigateTo={{
-            screen: homeNavConfig[0],
-            withReset: true,
-          }}
-        />
-      </ButtonContainer>
-    </GenericInfoPageWhite>
+      title="Explore, découvre, profite"
+      subtitle="Et si tu créais un compte pour suivre l’actualité culturelle autour de toi&nbsp;?"
+      buttonPrimary={{
+        wording: 'Créer un compte',
+        navigateTo: {
+          screen: 'SignupForm',
+          params: { from: StepperOrigin.ONBOARDING_GENERAL_PUBLIC_WELCOME },
+        },
+      }}
+      buttonSecondary={{
+        wording: 'Accéder au catalogue',
+        navigateTo: {
+          screen: homeNavConfig[0],
+          withPush: true,
+        },
+      }}
+    />
   )
 }
-
-const ButtonContainer = styled.View({
-  paddingBottom: getSpacing(10),
-})
-
-const StyledBody = styled(TypoDS.Body)({
-  textAlign: 'center',
-})

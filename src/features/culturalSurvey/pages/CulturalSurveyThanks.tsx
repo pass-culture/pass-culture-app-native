@@ -6,7 +6,7 @@ import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import QpiThanks from 'ui/animations/qpi_thanks.json'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
+import { GenericInfoPageWhiteLegacy } from 'ui/pages/GenericInfoPageWhiteLegacy'
 import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 
 export const CulturalSurveyThanks: React.FC = () => {
@@ -17,7 +17,7 @@ export const CulturalSurveyThanks: React.FC = () => {
   const { thanks } = useGetCulturalSurveyContent(enableCulturalSurveyMandatory)
 
   return (
-    <GenericInfoPageWhite
+    <GenericInfoPageWhiteLegacy
       mobileBottomFlex={0.1}
       animation={QpiThanks}
       title="Un grand merci"
@@ -27,7 +27,7 @@ export const CulturalSurveyThanks: React.FC = () => {
       <ButtonContainer>
         <ButtonPrimary wording={thanks.button.wording} onPress={thanks.button.onPress} />
       </ButtonContainer>
-    </GenericInfoPageWhite>
+    </GenericInfoPageWhiteLegacy>
   )
 }
 

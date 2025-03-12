@@ -13,7 +13,7 @@ import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { TouchableLink } from 'ui/components/touchableLink/TouchableLink'
-import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
+import { GenericInfoPageWhiteLegacy } from 'ui/pages/GenericInfoPageWhiteLegacy'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { BicolorUserBlocked } from 'ui/svg/icons/UserBlocked'
 import { Spacer, TypoDS } from 'ui/theme'
@@ -31,7 +31,7 @@ export const AccountSecurity = () => {
   }
 
   return (
-    <GenericInfoPageWhite
+    <GenericInfoPageWhiteLegacy
       title="Sécurise ton compte"
       titleComponent={TypoDS.Title3}
       icon={BicolorUserBlocked}
@@ -84,6 +84,6 @@ export const AccountSecurity = () => {
         icon={Invalidate}
         handleNavigation={onPressDismissAccountSecurity}
       />
-    </GenericInfoPageWhite>
+    </GenericInfoPageWhiteLegacy>
   )
 }

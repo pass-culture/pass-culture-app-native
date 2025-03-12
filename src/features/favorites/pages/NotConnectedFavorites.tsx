@@ -6,7 +6,7 @@ import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
 import { ButtonWithLinearGradient } from 'ui/components/buttons/buttonWithLinearGradient/ButtonWithLinearGradient'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
+import { GenericInfoPageWhiteLegacy } from 'ui/pages/GenericInfoPageWhiteLegacy'
 import { BicolorUserFavorite } from 'ui/svg/icons/BicolorUserFavorite'
 import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 
@@ -16,7 +16,7 @@ const onBeforeSignupNavigate = () => {
 }
 
 export const NotConnectedFavorites = () => (
-  <GenericInfoPageWhite
+  <GenericInfoPageWhiteLegacy
     title="Identifie-toi pour retrouver tes favoris"
     subtitle="Ton compte te permettra de retrouver tous tes bons plans en un clin d’oeil&nbsp;!"
     titleComponent={StyledTitle4}
@@ -40,7 +40,7 @@ export const NotConnectedFavorites = () => (
       />
     </ButtonContainer>
     <Spacer.BottomScreen />
-  </GenericInfoPageWhite>
+  </GenericInfoPageWhiteLegacy>
 )
 
 const StyledTitle4 = styled(TypoDS.Title4)({

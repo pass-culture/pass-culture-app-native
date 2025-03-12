@@ -12,7 +12,7 @@ import TutorialPassLogo from 'ui/animations/eighteen_birthday.json'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
+import { GenericInfoPageWhiteLegacy } from 'ui/pages/GenericInfoPageWhiteLegacy'
 import { ClockFilled } from 'ui/svg/icons/ClockFilled'
 import { Spacer, TypoDS, getSpacing } from 'ui/theme'
 import { CaptionNeutralInfo, TextProps } from 'ui/theme/typography'
@@ -40,7 +40,7 @@ export function EighteenBirthday() {
   }, [])
 
   return (
-    <GenericInfoPageWhite
+    <GenericInfoPageWhiteLegacy
       animation={TutorialPassLogo}
       title="Tu as 18 ans&nbsp;!"
       subtitle={pageWording.text}
@@ -57,7 +57,7 @@ export function EighteenBirthday() {
         navigateTo={{ screen: 'TabNavigator', params: { screen: 'Home' } }}
         icon={ClockFilled}
       />
-    </GenericInfoPageWhite>
+    </GenericInfoPageWhiteLegacy>
   )
 }
 

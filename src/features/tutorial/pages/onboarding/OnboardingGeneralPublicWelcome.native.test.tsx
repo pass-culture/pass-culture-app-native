@@ -1,12 +1,13 @@
 import React from 'react'
 
-import { navigate, reset } from '__mocks__/@react-navigation/native'
+import { navigate, reset, push } from '__mocks__/@react-navigation/native'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { userEvent, render, screen } from 'tests/utils'
 
 import { OnboardingGeneralPublicWelcome } from './OnboardingGeneralPublicWelcome'
 
+jest.mock('libs/firebase/analytics/analytics')
 jest.useFakeTimers()
 
 describe('OnboardingGeneralPublicWelcome', () => {
@@ -14,6 +15,18 @@ describe('OnboardingGeneralPublicWelcome', () => {
     render(<OnboardingGeneralPublicWelcome />)
 
     expect(screen).toMatchSnapshot()
+  })
+
+  it('should reset navigation on go to Home when pressing "Plus tard"', async () => {
+    render(<OnboardingGeneralPublicWelcome />)
+
+    const skipButton = screen.getByText('Passer')
+    await userEvent.press(skipButton)
+
+    expect(reset).toHaveBeenCalledWith({
+      index: 0,
+      routes: [{ name: homeNavConfig[0] }],
+    })
   })
 
   it('should navigate to SignupForm when pressing "Créer un compte"', async () => {
@@ -27,27 +40,12 @@ describe('OnboardingGeneralPublicWelcome', () => {
     })
   })
 
-  it('should reset navigation on go to Home when pressing "Accéder au catalogue"', async () => {
+  it('should push to Home when pressing "Accéder au catalogue"', async () => {
     render(<OnboardingGeneralPublicWelcome />)
 
-    const signupButton = screen.getByText('Accéder au catalogue')
-    await userEvent.press(signupButton)
+    const goToCatalogButton = screen.getByText('Accéder au catalogue')
+    await userEvent.press(goToCatalogButton)
 
-    expect(reset).toHaveBeenCalledWith({
-      index: 0,
-      routes: [{ name: homeNavConfig[0] }],
-    })
-  })
-
-  it('should reset navigation on go to Home when pressing "Plus tard"', async () => {
-    render(<OnboardingGeneralPublicWelcome />)
-
-    const signupButton = screen.getByText('Passer')
-    await userEvent.press(signupButton)
-
-    expect(reset).toHaveBeenCalledWith({
-      index: 0,
-      routes: [{ name: homeNavConfig[0] }],
-    })
+    expect(push).toHaveBeenCalledWith('TabNavigator', undefined)
   })
 })

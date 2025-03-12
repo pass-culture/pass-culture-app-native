@@ -157,7 +157,7 @@ exports[`<SecondaryPageWithBlurHeader /> should render correctly 1`] = `
             ]
           }
         >
-          GenericInfoPageWhite
+          SecondaryPageWithBlurHeader
         </Text>
         <View
           positionInHeader="right"

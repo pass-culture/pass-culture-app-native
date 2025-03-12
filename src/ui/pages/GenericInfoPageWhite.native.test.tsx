@@ -1,32 +1,42 @@
 import React from 'react'
 
-import { render, screen, userEvent } from 'tests/utils'
-import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
-import { BicolorPhonePending } from 'ui/svg/icons/BicolorPhonePending'
+import { render, screen } from 'tests/utils'
+import { MaintenanceCone } from 'ui/svg/icons/MaintenanceCone'
+import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
+import { TypoDS } from 'ui/theme'
 
-const onSkip = jest.fn()
-const user = userEvent.setup()
-jest.useFakeTimers()
+import { GenericInfoPageWhite } from './GenericInfoPageWhite'
+
+jest.mock('libs/firebase/analytics/analytics')
+
+const onPress = jest.fn()
 
 describe('<GenericInfoPageWhite />', () => {
   it('should render correctly', () => {
-    render(<GenericInfoPageWhite title="GenericInfoPageWhite" icon={BicolorPhonePending} />)
-
-    expect(screen).toMatchSnapshot()
-  })
-
-  it('should call skip when onSkip is provided', async () => {
     render(
       <GenericInfoPageWhite
-        title="GenericInfoPageWhite"
-        icon={BicolorPhonePending}
-        onSkip={onSkip}
-      />
+        withGoBack
+        withSkipAction={onPress}
+        illustration={MaintenanceCone}
+        title="Title"
+        subtitle="Subtitle"
+        buttonPrimary={{
+          wording: 'ButtonPrimary',
+          navigateTo: { screen: 'CheatcodesNavigationGenericPages' },
+        }}
+        buttonSecondary={{
+          wording: 'ButtonSecondary',
+          onPress: onPress,
+        }}
+        buttonTertiary={{
+          wording: 'ButtonTertiary',
+          navigateTo: { screen: 'CheatcodesNavigationGenericPages' },
+          icon: PlainArrowPrevious,
+        }}>
+        <TypoDS.Body>Children...</TypoDS.Body>
+      </GenericInfoPageWhite>
     )
 
-    const skipButton = screen.getByText('Passer')
-    await user.press(skipButton)
-
-    expect(onSkip).toHaveBeenCalledTimes(1)
+    expect(screen).toMatchSnapshot()
   })
 })

@@ -1,156 +1,247 @@
-import React, { useCallback, useEffect, useMemo, useRef } from 'react'
-import { Platform } from 'react-native'
+import React, { FunctionComponent, PropsWithChildren } from 'react'
+import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled, { useTheme } from 'styled-components/native'
 
-import { RootNavigateParams } from 'features/navigation/RootNavigator/types'
-import { homeNavConfig } from 'features/navigation/TabBar/helpers'
-import { useGoBack } from 'features/navigation/useGoBack'
-import { useAppStateChange } from 'libs/appState'
 import LottieView from 'libs/lottie'
+import { usePartialLottieAnimation } from 'shared/animations/useLottieAnimation'
+import { getPrimaryIllustration } from 'shared/illustrations/getPrimaryIllustration'
 import { AnimationObject } from 'ui/animations/type'
+import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
+import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { ButtonTertiaryNeutralInfo } from 'ui/components/buttons/ButtonTertiaryNeutralInfo'
-import { styledButton } from 'ui/components/buttons/styledButton'
-import { Spacer } from 'ui/components/spacer/Spacer'
-import { Touchable } from 'ui/components/touchable/Touchable'
-import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
+import {
+  PageHeaderWithoutPlaceholder,
+  useGetHeaderHeight,
+} from 'ui/components/headers/PageHeaderWithoutPlaceholder'
+import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
+import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
+import { ExternalNavigationProps, InternalNavigationProps } from 'ui/components/touchableLink/types'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { AccessibleIcon } from 'ui/svg/icons/types'
-import { getSpacing, TypoDS } from 'ui/theme'
-import { useGrid } from 'ui/theme/grid'
-import { TextProps } from 'ui/theme/typography'
+import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
-import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
-type PropsWithAnimation = {
-  animation: AnimationObject
-}
-
-type PropsWithIcon = {
-  icon: React.FC<AccessibleIcon>
-  iconSize?: number
-}
-
-type Props = {
-  headerGoBack?: boolean
-  goBackParams?: RootNavigateParams
-  titleComponent?: React.FC<TextProps>
-  subtitleComponent?: React.FC<TextProps>
-  title: string
-  subtitle?: string
-  activeIndex?: number
-  mobileBottomFlex?: number
-  separateIconFromTitle?: boolean
-  onSkip?: () => void
-  children?: React.ReactNode
-} & (PropsWithAnimation | PropsWithIcon)
-
-export const GenericInfoPageWhite: React.FC<Props> = ({
-  separateIconFromTitle = true,
-  onSkip,
-  ...props
-}) => {
-  const { canGoBack, goBack } = useGoBack(...(props.goBackParams ?? homeNavConfig))
-  const animationRef = useRef<LottieView>(null)
-  const grid = useGrid()
-
-  const { animation } = props as PropsWithAnimation
-  const { icon: Icon, iconSize } = props as PropsWithIcon
-  const titleComponent = props.titleComponent ?? TypoDS.Title1
-  const subtitleComponent = props.subtitleComponent ?? TypoDS.Title4
-  const { isDesktopViewport } = useTheme()
-  const { top } = useCustomSafeInsets()
-  const StyledTitle = useMemo(() => {
-    return styled(titleComponent)({
-      textAlign: 'center',
-    })
-  }, [titleComponent])
-
-  const StyledIcon =
-    Icon &&
-    styled(Icon).attrs(({ theme }) => ({
-      size: iconSize || theme.illustrations.sizes.fullPage,
-    }))({ width: '100%' })
-
-  const StyledSubtitle = useMemo(() => {
-    return styled(subtitleComponent)({
-      textAlign: 'center',
-    })
-  }, [subtitleComponent])
-
-  const playAnimation = useCallback(() => {
-    const lottieAnimation = animationRef.current
-    if (animation && lottieAnimation) {
-      lottieAnimation.play(0, 62)
+type ButtonProps = {
+  wording: string
+  icon?: FunctionComponent<AccessibleIcon>
+  disabled?: boolean
+  isLoading?: boolean
+} & (
+  | {
+      onPress: () => void
+      onBeforeNavigate?: () => void
+      navigateTo?: never
+      externalNav?: never
     }
-  }, [animation])
+  | {
+      navigateTo: InternalNavigationProps['navigateTo']
+      onBeforeNavigate?: () => void
+      onPress?: never
+      externalNav?: never
+    }
+  | {
+      externalNav: ExternalNavigationProps['externalNav']
+      onBeforeNavigate?: () => void
+      onPress?: never
+      navigateTo?: never
+    }
+)
 
-  useAppStateChange(playAnimation, undefined)
-  useEffect(playAnimation, [playAnimation])
+type Props = PropsWithChildren<
+  {
+    withGoBack?: boolean
+    withSkipAction?: () => void
+    title: string
+    subtitle?: string
+    buttonPrimary: ButtonProps
+    buttonSecondary?: ButtonProps
+    buttonTertiary?: ButtonProps
+  } & (
+    | { illustration: React.FC<AccessibleIcon>; animation?: never }
+    | { animation: AnimationObject; illustration?: never }
+  )
+>
+
+export const GenericInfoPageWhite: React.FunctionComponent<Props> = ({
+  withGoBack = false,
+  withSkipAction,
+  illustration,
+  animation,
+  title,
+  subtitle,
+  buttonPrimary,
+  buttonSecondary,
+  buttonTertiary,
+  children,
+}) => {
+  const { isDesktopViewport } = useTheme()
+
+  const headerHeight = useGetHeaderHeight()
+  const { top, bottom } = useSafeAreaInsets()
+  const shouldDisplayHeader = withGoBack || withSkipAction
+  const placeholderHeight = shouldDisplayHeader ? headerHeight : top
+
+  const Illustration = getPrimaryIllustration(illustration)
+  const animationRef = usePartialLottieAnimation(animation)
+
   return (
     <React.Fragment>
-      {props.headerGoBack && canGoBack() ? (
-        <HeaderContainer
-          onPress={goBack}
-          top={top + getSpacing(3.5)}
-          accessibilityLabel="Revenir en arrière">
-          <StyledArrowPrevious />
-        </HeaderContainer>
-      ) : null}
-      {onSkip ? (
-        <SkipButtonContainer top={top + getSpacing(3.5)}>
-          <ButtonTertiaryNeutralInfo
-            wording="Passer"
-            accessibilityLabel="Aller à l’écran suivant"
-            onPress={onSkip}
-          />
-        </SkipButtonContainer>
-      ) : null}
-      <ContentContainer>
-        <Spacer.Flex flex={grid({ sm: 1, default: 2 }, 'height')} />
-        <StyledLottieContainer hasHeight={separateIconFromTitle}>
+      <PageHeaderWithoutPlaceholder
+        shouldDisplayBackButton={withGoBack}
+        RightButton={<SkipButton withSkipAction={withSkipAction} />}
+      />
+
+      <Container bottom={bottom}>
+        <Placeholder height={placeholderHeight} />
+
+        <Spacer.Flex flex={1} />
+
+        <IllustrationContainer animation={animation}>
+          {Illustration ? <Illustration /> : null}
           {animation ? (
-            <StyledLottieView
-              key={props?.activeIndex}
-              ref={animationRef}
-              source={animation}
-              loop={false}
+            <StyledLottieView ref={animationRef} source={animation} loop={false} />
+          ) : null}
+        </IllustrationContainer>
+
+        <TextContainer gap={4}>
+          <StyledTitle2 {...getHeadingAttrs(1)}>{title}</StyledTitle2>
+          <StyledBody {...getHeadingAttrs(2)}>{subtitle}</StyledBody>
+        </TextContainer>
+
+        {children ? <ChildrenContainer>{children}</ChildrenContainer> : null}
+
+        {isDesktopViewport ? null : <Spacer.Flex flex={1} />}
+
+        <ButtonContainer gap={4}>
+          {buttonPrimary.onPress ? (
+            <ButtonPrimary
+              key={1}
+              wording={buttonPrimary.wording}
+              onPress={buttonPrimary.onPress}
+              isLoading={buttonPrimary.isLoading}
+              disabled={buttonPrimary.disabled}
             />
-          ) : (
-            <StyledIcon />
-          )}
-        </StyledLottieContainer>
-        {separateIconFromTitle ? <Spacer.Flex flex={0.5} /> : null}
-        <StyledTitle {...getHeadingAttrs(1)}>{props.title}</StyledTitle>
-        {props.subtitle ? (
-          <StyledSubtitle {...getHeadingAttrs(2)}>{props.subtitle}</StyledSubtitle>
-        ) : null}
-        <Spacer.Flex flex={0.5} />
-        {props.children}
-        <Spacer.Flex
-          flex={
-            !isDesktopViewport && props.mobileBottomFlex
-              ? props.mobileBottomFlex
-              : grid({ default: 1.5, sm: 2 }, 'height')
-          }
-        />
-      </ContentContainer>
+          ) : null}
+
+          {buttonPrimary.navigateTo ? (
+            <InternalTouchableLink
+              key={1}
+              as={ButtonPrimary}
+              wording={buttonPrimary.wording}
+              navigateTo={buttonPrimary.navigateTo}
+              isLoading={buttonPrimary.isLoading}
+              disabled={buttonPrimary.disabled}
+            />
+          ) : null}
+
+          {buttonPrimary.externalNav ? (
+            <ExternalTouchableLink
+              key={1}
+              as={ButtonPrimary}
+              wording={buttonPrimary.wording}
+              externalNav={buttonPrimary.externalNav}
+              isLoading={buttonPrimary.isLoading}
+              disabled={buttonPrimary.disabled}
+              icon={ExternalSiteFilled}
+            />
+          ) : null}
+
+          {buttonSecondary?.onPress ? (
+            <ButtonSecondary
+              key={2}
+              wording={buttonSecondary.wording}
+              onPress={buttonSecondary.onPress}
+              isLoading={buttonPrimary.isLoading}
+              disabled={buttonPrimary.disabled}
+            />
+          ) : null}
+
+          {buttonSecondary?.navigateTo ? (
+            <InternalTouchableLink
+              key={2}
+              as={ButtonSecondary}
+              wording={buttonSecondary.wording}
+              navigateTo={buttonSecondary.navigateTo}
+              isLoading={buttonPrimary.isLoading}
+              disabled={buttonPrimary.disabled}
+            />
+          ) : null}
+
+          {buttonSecondary?.externalNav ? (
+            <ExternalTouchableLink
+              key={2}
+              as={ButtonSecondary}
+              wording={buttonSecondary.wording}
+              externalNav={buttonSecondary.externalNav}
+              isLoading={buttonSecondary.isLoading}
+              disabled={buttonSecondary.disabled}
+              icon={ExternalSiteFilled}
+            />
+          ) : null}
+
+          {buttonTertiary?.onPress ? (
+            <ButtonTertiaryBlack
+              key={buttonTertiary ? 3 : 2}
+              wording={buttonTertiary.wording}
+              onPress={buttonTertiary.onPress}
+              isLoading={buttonTertiary.isLoading}
+              disabled={buttonTertiary.disabled}
+              icon={buttonTertiary.icon}
+            />
+          ) : null}
+
+          {buttonTertiary?.navigateTo ? (
+            <InternalTouchableLink
+              key={buttonTertiary ? 3 : 2}
+              as={ButtonTertiaryBlack}
+              wording={buttonTertiary.wording}
+              navigateTo={buttonTertiary.navigateTo}
+              isLoading={buttonTertiary.isLoading}
+              disabled={buttonTertiary.disabled}
+              icon={buttonTertiary.icon}
+            />
+          ) : null}
+
+          {buttonTertiary?.externalNav ? (
+            <ExternalTouchableLink
+              key={buttonTertiary ? 3 : 2}
+              as={ButtonTertiaryBlack}
+              wording={buttonTertiary.wording}
+              externalNav={buttonTertiary.externalNav}
+              isLoading={buttonTertiary.isLoading}
+              disabled={buttonTertiary.disabled}
+              icon={ExternalSiteFilled}
+            />
+          ) : null}
+        </ButtonContainer>
+        {isDesktopViewport ? <Spacer.Flex flex={1} /> : null}
+      </Container>
     </React.Fragment>
   )
 }
 
-const ContentContainer = styled.View(({ theme }) => ({
-  alignSelf: 'center',
+const Container = styled.View<{ top: number; bottom: number }>(({ theme }) => ({
   flex: 1,
-  paddingHorizontal: getSpacing(6),
-  maxWidth: theme.contentPage.maxWidth,
-  overflow: Platform.OS === 'web' ? 'auto' : 'scroll',
-  width: '100%',
+  justifyContent: 'space-between',
+  paddingHorizontal: theme.contentPage.marginHorizontal,
+  paddingVertical: theme.contentPage.marginVertical,
+  overflow: 'scroll',
 }))
 
-const StyledLottieContainer = styled.View<{ hasHeight?: boolean }>(({ hasHeight }) => ({
-  flexGrow: 1,
+const Placeholder = styled.View<{ height: number }>(({ height }) => ({
+  height,
+}))
+
+const IllustrationContainer = styled.View<{ animation: boolean }>(({ animation }) => ({
   alignItems: 'center',
   justifyContent: 'center',
-  height: hasHeight ? '30%' : undefined,
+  flexGrow: 1,
+  ...(animation && {
+    height: '30%',
+    marginBottom: getSpacing(6),
+  }),
 }))
 
 const StyledLottieView = styled(LottieView)({
@@ -158,21 +249,37 @@ const StyledLottieView = styled(LottieView)({
   height: '100%',
 })
 
-const StyledArrowPrevious = styled(ArrowPrevious).attrs(({ theme }) => ({
-  size: theme.icons.sizes.small,
-  accessibilityLabel: 'Revenir en arrière',
-}))``
+const TextContainer = styled(ViewGap)({
+  alignItems: 'center',
+  marginBottom: getSpacing(6),
+})
 
-const HeaderContainer = styledButton(Touchable)<{ top: number }>(({ theme, top }) => ({
-  position: 'absolute',
-  top,
-  left: getSpacing(6),
-  zIndex: theme.zIndex.floatingButton,
-}))
+const StyledTitle2 = styled(TypoDS.Title2)({
+  textAlign: 'center',
+})
 
-const SkipButtonContainer = styled.View<{ top: number }>(({ theme, top }) => ({
-  position: 'absolute',
-  top,
-  right: getSpacing(6),
-  zIndex: theme.zIndex.floatingButton,
-}))
+const StyledBody = styled(TypoDS.Body)({
+  textAlign: 'center',
+})
+
+const ChildrenContainer = styled.View({
+  marginBottom: getSpacing(6),
+})
+
+const ButtonContainer = styled(ViewGap)({
+  alignItems: 'center',
+})
+
+const SkipButton = ({ withSkipAction }: { withSkipAction?: () => void }) => {
+  if (withSkipAction) {
+    return (
+      <ButtonTertiaryNeutralInfo
+        wording="Passer"
+        accessibilityLabel="Aller à la page suivante"
+        onPress={withSkipAction}
+        inline
+      />
+    )
+  }
+  return null
+}

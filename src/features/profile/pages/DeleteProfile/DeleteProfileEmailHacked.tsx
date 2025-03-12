@@ -8,7 +8,7 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
+import { GenericInfoPageWhiteLegacy } from 'ui/pages/GenericInfoPageWhiteLegacy'
 import { Clear } from 'ui/svg/icons/Clear'
 import { BicolorUserBlocked } from 'ui/svg/icons/UserBlocked'
 import { TypoDS } from 'ui/theme'
@@ -25,7 +25,7 @@ export const DeleteProfileEmailHacked: FC = () => {
   }
 
   return (
-    <GenericInfoPageWhite
+    <GenericInfoPageWhiteLegacy
       headerGoBack
       separateIconFromTitle={false}
       icon={BicolorUserBlocked}
@@ -52,7 +52,7 @@ export const DeleteProfileEmailHacked: FC = () => {
           />
         </ContentBottom>
       </ViewGap>
-    </GenericInfoPageWhite>
+    </GenericInfoPageWhiteLegacy>
   )
 }
 
