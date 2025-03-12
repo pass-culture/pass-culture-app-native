@@ -395,7 +395,10 @@ describe('Profile component', () => {
       const legalNoticesButton = screen.getByText('Informations légales')
       await user.press(legalNoticesButton)
 
-      expect(navigate).toHaveBeenCalledWith('LegalNotices', undefined)
+      expect(navigate).toHaveBeenCalledWith('TabNavigator', {
+        params: { params: undefined, screen: 'LegalNotices' },
+        screen: 'ProfileStackNavigator',
+      })
     })
 
     it('should navigate when the confidentiality row is clicked', async () => {

@@ -22,6 +22,7 @@ export type ProfileStackParamList = {
   ChangeCity: undefined
   ChangeEmail: { showModal: boolean } | undefined
   TrackEmailChange: undefined
+  LegalNotices: undefined
 } & AccessibilityRootStackParamList
 
 export type ProfileStackRouteName = keyof ProfileStackParamList

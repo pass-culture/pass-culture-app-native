@@ -220,7 +220,6 @@ export type RootStackParamList = {
   FeedbackInApp: undefined
   ForgottenPassword: undefined
   FraudulentSuspendedAccount: undefined
-  LegalNotices: undefined
   LocationFilter?: { selectedVenue?: Venue; selectedPlace?: SuggestedPlace }
   LocationPicker: undefined
   Login?: {

@@ -29,7 +29,7 @@ export const AccessibilityFooter = () => {
             <InternalTouchableLink navigateTo={getProfileNavConfig('Accessibility')}>
               <CaptionNeutralInfo>Accessibilité&nbsp;: partiellement conforme</CaptionNeutralInfo>
             </InternalTouchableLink>
-            <InternalTouchableLink navigateTo={{ screen: 'LegalNotices' }}>
+            <InternalTouchableLink navigateTo={getProfileNavConfig('LegalNotices')}>
               <CaptionNeutralInfo>Mentions légales</CaptionNeutralInfo>
             </InternalTouchableLink>
             <ExternalTouchableLink

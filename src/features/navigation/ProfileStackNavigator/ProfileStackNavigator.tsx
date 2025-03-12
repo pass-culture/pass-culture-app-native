@@ -21,6 +21,7 @@ import { DeleteProfileContactSupport } from 'features/profile/pages/DeleteProfil
 import { DeleteProfileEmailHacked } from 'features/profile/pages/DeleteProfile/DeleteProfileEmailHacked'
 import { SuspendAccountConfirmationWithoutAuthentication } from 'features/profile/pages/DeleteProfile/SuspendAccountConfirmationWithoutAuthentication'
 import { DeleteProfileReason } from 'features/profile/pages/DeleteProfileReason/DeleteProfileReason'
+import { LegalNotices } from 'features/profile/pages/LegalNotices/LegalNotices'
 import { NotificationsSettings } from 'features/profile/pages/NotificationSettings/NotificationsSettings'
 import { Profile } from 'features/profile/pages/Profile'
 import { TrackEmailChange } from 'features/profile/pages/TrackEmailChange/TrackEmailChange'
@@ -127,6 +128,11 @@ export const ProfileStackNavigator = () => (
       name="TrackEmailChange"
       component={withAuthProtection(TrackEmailChange)}
       options={{ title: 'Suivi de ton changement d’e-mail' }}
+    />
+    <ProfileStack.Screen
+      name="LegalNotices"
+      component={LegalNotices}
+      options={{ title: 'Informations légales' }}
     />
   </ProfileStack.Navigator>
 )

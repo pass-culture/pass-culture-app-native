@@ -47,6 +47,9 @@ describe('AccessibilityFooter', () => {
 
     fireEvent.click(passCultureButton)
 
-    expect(navigate).toHaveBeenCalledWith('LegalNotices', undefined)
+    expect(navigate).toHaveBeenCalledWith('TabNavigator', {
+      params: { params: undefined, screen: 'LegalNotices' },
+      screen: 'ProfileStackNavigator',
+    })
   })
 })

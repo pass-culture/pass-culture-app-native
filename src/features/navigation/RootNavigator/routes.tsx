@@ -45,7 +45,6 @@ import { ChangePassword } from 'features/profile/pages/ChangePassword'
 import { ConfirmChangeEmail } from 'features/profile/pages/ConfirmChangeEmail/ConfirmChangeEmail'
 import { ConsentSettings } from 'features/profile/pages/ConsentSettings/ConsentSettings'
 import { FeedbackInApp } from 'features/profile/pages/FeedbackInApp/FeedbackInApp'
-import { LegalNotices } from 'features/profile/pages/LegalNotices/LegalNotices'
 import { NewEmailSelection } from 'features/profile/pages/NewEmailSelection/NewEmailSelection'
 import { PersonalData } from 'features/profile/pages/PersonalData/PersonalData'
 import { SuspendAccountConfirmation } from 'features/profile/pages/SuspendAccountConfirmation/SuspendAccountConfirmation'
@@ -196,12 +195,6 @@ export const routes: RootRoute[] = [
     component: ForgottenPassword,
     path: 'mot-de-passe-oublie',
     options: { title: 'Mot de passe oublié' },
-  },
-  {
-    name: 'LegalNotices',
-    component: LegalNotices,
-    path: 'notices-legales',
-    options: { title: 'Informations légales' },
   },
   {
     name: 'AccountStatusScreenHandler',

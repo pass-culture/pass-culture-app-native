@@ -87,6 +87,12 @@ export const routes: ProfileStackRoute[] = [
     component: ComponentForPathConfig,
     path: 'profil/suivi-modification-email',
   },
+  {
+    name: 'LegalNotices',
+    component: ComponentForPathConfig,
+    path: 'notices-legales',
+    options: {},
+  },
 ]
 
 export function isProfileStackScreen(screen: string): screen is ProfileStackRouteName {
