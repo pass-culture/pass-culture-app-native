@@ -39,14 +39,14 @@ export function useComputedTheme(theme: BaseAppThemeType) {
       showTabBar,
       appContentWidth,
     }),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     [
-      colorScheme,
+      theme,
+      designTokens,
+      showLabels,
       isMobileViewport,
       isTabletViewport,
       isDesktopViewport,
       isSmallScreen,
-      showLabels,
       showTabBar,
       appContentWidth,
     ]
