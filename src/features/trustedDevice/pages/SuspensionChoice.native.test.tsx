@@ -5,8 +5,8 @@ import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import * as useGoBack from 'features/navigation/useGoBack'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
+import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
-import * as useRemoteConfigContext from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { FetchError, MonitoringError } from 'libs/monitoring/errors'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { mockServer } from 'tests/mswServer'
@@ -32,7 +32,7 @@ jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
 
 jest.mock('libs/firebase/analytics/analytics')
 
-const useRemoteConfigContextSpy = jest.spyOn(useRemoteConfigContext, 'useRemoteConfigContext')
+const useRemoteConfigSpy = jest.spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
 
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   return function createAnimatedComponent(Component: unknown) {
@@ -41,8 +41,10 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 })
 
 describe('<SuspensionChoice/>', () => {
-  it('should match snapshot', () => {
+  it('should match snapshot', async () => {
     renderSuspensionChoice()
+
+    await screen.findByText('Oui, suspendre mon compte')
 
     expect(screen).toMatchSnapshot()
   })
@@ -77,7 +79,7 @@ describe('<SuspensionChoice/>', () => {
 
   describe('When shouldLogInfo remote config is false', () => {
     beforeAll(() => {
-      useRemoteConfigContextSpy.mockReturnValue({
+      useRemoteConfigSpy.mockReturnValue({
         ...DEFAULT_REMOTE_CONFIG,
         shouldLogInfo: false,
       })
@@ -97,14 +99,14 @@ describe('<SuspensionChoice/>', () => {
 
   describe('When shouldLogInfo remote config is true', () => {
     beforeAll(() => {
-      useRemoteConfigContextSpy.mockReturnValue({
+      useRemoteConfigSpy.mockReturnValue({
         ...DEFAULT_REMOTE_CONFIG,
         shouldLogInfo: true,
       })
     })
 
     afterAll(() => {
-      useRemoteConfigContextSpy.mockReturnValue(DEFAULT_REMOTE_CONFIG)
+      useRemoteConfigSpy.mockReturnValue(DEFAULT_REMOTE_CONFIG)
     })
 
     it('should capture an info in Sentry on suspension error', async () => {

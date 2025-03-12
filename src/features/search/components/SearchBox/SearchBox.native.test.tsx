@@ -11,8 +11,8 @@ import * as useFilterCountAPI from 'features/search/helpers/useFilterCount/useFi
 import { BooksNativeCategoriesEnum, SearchState, SearchView } from 'features/search/types'
 import { analytics } from 'libs/analytics/__mocks__/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
-import * as useRemoteConfigContextModule from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { GeoCoordinates, Position } from 'libs/location'
 import { LocationLabel, LocationMode } from 'libs/location/types'
 import { mockedSuggestedVenue } from 'libs/venue/fixtures/mockedSuggestedVenues'
@@ -145,8 +145,7 @@ jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
 jest.useFakeTimers()
 const user = userEvent.setup()
 
-const useRemoteConfigContextSpy = jest.spyOn(useRemoteConfigContextModule, 'useRemoteConfigContext')
-
+const useRemoteConfigSpy = jest.spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
 jest.mock('libs/firebase/analytics/analytics')
 
 describe('SearchBox component', () => {
@@ -174,14 +173,14 @@ describe('SearchBox component', () => {
 
   describe('shouldRedirectToThematicSearch remote config enabled', () => {
     beforeAll(() => {
-      useRemoteConfigContextSpy.mockReturnValue({
+      useRemoteConfigSpy.mockReturnValue({
         ...DEFAULT_REMOTE_CONFIG,
         shouldRedirectToThematicSearch: true,
       })
     })
 
     afterAll(() => {
-      useRemoteConfigContextSpy.mockReturnValue({
+      useRemoteConfigSpy.mockReturnValue({
         ...DEFAULT_REMOTE_CONFIG,
         shouldRedirectToThematicSearch: false,
       })
@@ -248,7 +247,7 @@ describe('SearchBox component', () => {
 
   describe('shouldRedirectToThematicSearch remote config disabled', () => {
     beforeAll(() => {
-      useRemoteConfigContextSpy.mockReturnValue({
+      useRemoteConfigSpy.mockReturnValue({
         ...DEFAULT_REMOTE_CONFIG,
         shouldRedirectToThematicSearch: false,
       })

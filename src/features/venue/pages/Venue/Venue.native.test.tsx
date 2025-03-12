@@ -19,8 +19,8 @@ import { Venue } from 'features/venue/pages/Venue/Venue'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
-import * as useRemoteConfigContextModule from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { Network } from 'libs/share/types'
 import { Offer } from 'shared/offer/types'
 import { mockServer } from 'tests/mswServer'
@@ -96,7 +96,7 @@ jest.mock('@shopify/flash-list', () => {
   }
 })
 
-const useRemoteConfigContextSpy = jest.spyOn(useRemoteConfigContextModule, 'useRemoteConfigContext')
+const useRemoteConfigSpy = jest.spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
 const useScrollToAnchorSpy = jest.spyOn(AnchorContextModule, 'useScrollToAnchor')
 
 const user = userEvent.setup()
@@ -218,7 +218,7 @@ describe('<Venue />', () => {
 
   describe('movie screening access button', () => {
     beforeAll(() => {
-      useRemoteConfigContextSpy.mockReturnValue({
+      useRemoteConfigSpy.mockReturnValue({
         ...DEFAULT_REMOTE_CONFIG,
         showAccessScreeningButton: true,
       })
@@ -283,7 +283,7 @@ describe('<Venue />', () => {
 
     describe('remote config flag is deactivated', () => {
       beforeAll(() => {
-        useRemoteConfigContextSpy.mockReturnValue({
+        useRemoteConfigSpy.mockReturnValue({
           ...DEFAULT_REMOTE_CONFIG,
           showAccessScreeningButton: false,
         })

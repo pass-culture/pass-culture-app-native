@@ -4,8 +4,8 @@ import {
   RemoteStoreDocuments,
   RemoteStoreFeatureFlags,
 } from 'libs/firebase/firestore/types'
+import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
-import * as useRemoteConfigContext from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import firestore from 'libs/firebase/shims/firestore'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { getAppBuildVersion } from 'libs/packageJson'
@@ -22,7 +22,9 @@ const { collection } = firestore()
 const mockGet = jest.fn()
 
 const featureFlag = RemoteStoreFeatureFlags.WIP_DISABLE_STORE_REVIEW
-const useRemoteConfigContextSpy = jest.spyOn(useRemoteConfigContext, 'useRemoteConfigContext')
+const useRemoteConfigSpy = jest
+  .spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
+  .mockReturnValue(DEFAULT_REMOTE_CONFIG)
 
 describe('useFeatureFlag', () => {
   beforeAll(() =>
@@ -180,7 +182,7 @@ describe('useFeatureFlag', () => {
 
     describe('When shouldLogInfo remote config is false', () => {
       beforeAll(() => {
-        useRemoteConfigContextSpy.mockReturnValue({
+        useRemoteConfigSpy.mockReturnValue({
           ...DEFAULT_REMOTE_CONFIG,
           shouldLogInfo: false,
         })
@@ -203,14 +205,14 @@ describe('useFeatureFlag', () => {
 
     describe('When shouldLogInfo remote config is true', () => {
       beforeAll(() => {
-        useRemoteConfigContextSpy.mockReturnValue({
+        useRemoteConfigSpy.mockReturnValue({
           ...DEFAULT_REMOTE_CONFIG,
           shouldLogInfo: true,
         })
       })
 
       afterAll(() => {
-        useRemoteConfigContextSpy.mockReturnValue(DEFAULT_REMOTE_CONFIG)
+        useRemoteConfigSpy.mockReturnValue(DEFAULT_REMOTE_CONFIG)
       })
 
       it('should log to sentry when minimalBuildNumber is greater than maximalBuildNumber', async () => {

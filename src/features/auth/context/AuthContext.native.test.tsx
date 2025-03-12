@@ -9,6 +9,8 @@ import * as NavigationRef from 'features/navigation/navigationRef'
 import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 // eslint-disable-next-line no-restricted-imports
 import { amplitude } from 'libs/amplitude'
+import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
+import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import { decodedTokenWithRemainingLifetime, tokenRemainingLifetimeInMs } from 'libs/jwt/fixtures'
 import { clearRefreshToken, getRefreshToken, saveRefreshToken } from 'libs/keychain/keychain'
 import { eventMonitoring } from 'libs/monitoring/services'
@@ -38,6 +40,8 @@ const decodeTokenSpy = jest.spyOn(jwt, 'default')
 jest.useFakeTimers()
 
 jest.mock('libs/firebase/analytics/analytics')
+
+jest.spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery').mockReturnValue(DEFAULT_REMOTE_CONFIG)
 
 describe('AuthContext', () => {
   beforeEach(async () => {

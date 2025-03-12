@@ -11,6 +11,7 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { subscriptionStepperFixture as mockStep } from 'features/identityCheck/fixtures/subscriptionStepperFixture'
 import { NonBeneficiaryHeader } from 'features/profile/components/Header/NonBeneficiaryHeader/NonBeneficiaryHeader'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { ILocationContext, useLocation } from 'libs/location'
 import { LocationMode } from 'libs/location/types'
 import { useGetDepositAmountsByAge } from 'shared/user/useGetDepositAmountsByAge'
@@ -129,6 +130,7 @@ describe('<NonBeneficiaryHeader/>', () => {
   })
 
   it('should render the subscription message if there is one', async () => {
+    setFeatureFlags([{ featureFlag: RemoteStoreFeatureFlags.DISABLE_ACTIVATION, options: {} }])
     mockServer.getApi<SubscriptionStepperResponseV2>('/v2/subscription/stepper', {
       ...mockStep,
       subscriptionMessage: mockedSubscriptionMessage,

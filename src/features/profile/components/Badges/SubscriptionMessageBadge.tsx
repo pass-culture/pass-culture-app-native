@@ -62,11 +62,13 @@ const CallToAction = ({ subscriptionMessage }: CallToActionProps) => {
 type SubscriptionMessageBadgeProps = {
   disableActivation: boolean
   subscriptionMessage: SubscriptionMessage
+  remoteActivationBannerOptions: Record<string, unknown>
 }
 
 export const SubscriptionMessageBadge = ({
   disableActivation,
   subscriptionMessage,
+  remoteActivationBannerOptions,
 }: SubscriptionMessageBadgeProps) => {
   const { callToAction, popOverIcon, userMessage, updatedAt } = subscriptionMessage
 
@@ -90,7 +92,10 @@ export const SubscriptionMessageBadge = ({
 
       {disableActivation ? (
         <React.Fragment>
-          <RemoteActivationBanner from="profile" />
+          <RemoteActivationBanner
+            from="profile"
+            remoteActivationBannerOptions={remoteActivationBannerOptions}
+          />
           <Spacer.Column numberOfSpaces={6} />
         </React.Fragment>
       ) : null}

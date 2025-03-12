@@ -2,19 +2,23 @@ import React from 'react'
 
 import { RemoteBannerOrigin } from 'features/remoteBanners/utils/remoteBannerSchema'
 import { analytics } from 'libs/analytics/provider'
-import { useFeatureFlagOptions } from 'libs/firebase/firestore/featureFlags/useFeatureFlagOptions'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { Hourglass } from 'ui/svg/icons/Hourglass'
 
 import { RemoteBanner } from '../components/RemoteBanner'
 
-export const RemoteActivationBanner = ({ from }: { from: RemoteBannerOrigin }) => {
-  const { options } = useFeatureFlagOptions(RemoteStoreFeatureFlags.DISABLE_ACTIVATION)
+type RemoteActivationBannerProps = {
+  from: RemoteBannerOrigin
+  remoteActivationBannerOptions: Record<string, unknown>
+}
 
+export const RemoteActivationBanner = ({
+  from,
+  remoteActivationBannerOptions,
+}: RemoteActivationBannerProps) => {
   return (
     <RemoteBanner
       from={from}
-      options={options}
+      options={remoteActivationBannerOptions}
       logClickEvent={analytics.logHasClickedRemoteActivationBanner}
       analyticsParams={{ from, type: 'remoteActivationBanner' }}
       leftIcon={Hourglass}

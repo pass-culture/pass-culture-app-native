@@ -31,3 +31,9 @@ For example : firebaseRemoteConfig().setDefaults(... as GenericRemoteConfig) */
 export type GenericRemoteConfig = CustomRemoteConfig & {
   [key: string]: string | number | boolean
 }
+
+export type RemoteConfigServices = {
+  configure(): Promise<void>
+  refresh(): Promise<boolean>
+  getValues(): CustomRemoteConfig
+}

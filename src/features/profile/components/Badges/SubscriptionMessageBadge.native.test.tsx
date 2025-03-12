@@ -3,6 +3,10 @@ import { openInbox } from 'react-native-email-link'
 
 import { SubscriptionMessage } from 'api/gen'
 import { SubscriptionMessageBadge } from 'features/profile/components/Badges/SubscriptionMessageBadge'
+import {
+  RemoteBannerRedirectionType,
+  RemoteBannerType,
+} from 'features/remoteBanners/utils/remoteBannerSchema'
 import { fireEvent, render, screen, act } from 'tests/utils'
 
 jest.mock('features/auth/helpers/useIsMailAppAvailable', () => ({
@@ -67,5 +71,17 @@ describe('<SubscriptionMessageBadge />', () => {
 
 const renderSubscriptionMessageBadge = (subscriptionMessage: SubscriptionMessage) =>
   render(
-    <SubscriptionMessageBadge disableActivation={false} subscriptionMessage={subscriptionMessage} />
+    <SubscriptionMessageBadge
+      disableActivation={false}
+      subscriptionMessage={subscriptionMessage}
+      remoteActivationBannerOptions={bannerExternalUrl}
+    />
   )
+
+const bannerExternalUrl: RemoteBannerType = {
+  title: 'title 1',
+  subtitleMobile: 'subtitleMobile 1',
+  subtitleWeb: 'subtitleWeb 1',
+  redirectionUrl: 'https://www.test.fr',
+  redirectionType: RemoteBannerRedirectionType.EXTERNAL,
+}

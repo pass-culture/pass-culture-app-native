@@ -17,7 +17,9 @@ const Template: ComponentStory<typeof EighteenBlockDescription> = () => (
     <EighteenBlockDescription />
   </GreyContainer>
 )
-export const Default = Template.bind({})
+
+// Todo(PC-35078) fix this story, read the associated ticket to follow the different choices offered
+const Default = Template.bind({})
 Default.storyName = 'EighteenBlockDescription'
 
 const GreyContainer = styled.View(({ theme }) => ({

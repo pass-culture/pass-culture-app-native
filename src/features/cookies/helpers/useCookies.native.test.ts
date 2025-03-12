@@ -8,8 +8,8 @@ import { useCookies } from 'features/cookies/helpers/useCookies'
 import { CookiesConsent } from 'features/cookies/types'
 import { FAKE_USER_ID } from 'fixtures/fakeUserId'
 import { beneficiaryUser } from 'fixtures/user'
+import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
-import * as useRemoteConfigContext from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { eventMonitoring } from 'libs/monitoring/services'
 import * as PackageJson from 'libs/packageJson'
 import { getDeviceId } from 'libs/react-native-device-info/getDeviceId'
@@ -44,7 +44,7 @@ jest.mock('api/api')
 
 jest.mock('libs/firebase/analytics/analytics')
 
-const useRemoteConfigContextSpy = jest.spyOn(useRemoteConfigContext, 'useRemoteConfigContext')
+const useRemoteConfigSpy = jest.spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
 
 describe('useCookies', () => {
   beforeAll(() => {
@@ -60,7 +60,9 @@ describe('useCookies', () => {
       const { result } = renderUseCookies()
       const { cookiesConsent } = result.current
 
-      await waitFor(() => expect(cookiesConsent).toEqual({ state: ConsentState.LOADING }))
+      await act(() => {})
+
+      expect(cookiesConsent).toEqual({ state: ConsentState.LOADING })
     })
 
     it('should write state', async () => {
@@ -458,7 +460,7 @@ describe('useCookies', () => {
 
       describe('When shouldLogInfo remote config is false', () => {
         beforeAll(() => {
-          useRemoteConfigContextSpy.mockReturnValue({
+          useRemoteConfigSpy.mockReturnValue({
             ...DEFAULT_REMOTE_CONFIG,
             shouldLogInfo: false,
           })
@@ -482,14 +484,14 @@ describe('useCookies', () => {
 
       describe('When shouldLogInfo remote config is true', () => {
         beforeAll(() => {
-          useRemoteConfigContextSpy.mockReturnValue({
+          useRemoteConfigSpy.mockReturnValue({
             ...DEFAULT_REMOTE_CONFIG,
             shouldLogInfo: true,
           })
         })
 
         afterAll(() => {
-          useRemoteConfigContextSpy.mockReturnValue(DEFAULT_REMOTE_CONFIG)
+          useRemoteConfigSpy.mockReturnValue(DEFAULT_REMOTE_CONFIG)
         })
 
         it('should notify sentry', async () => {

@@ -3,8 +3,8 @@ import React from 'react'
 import { api } from 'api/api'
 import { EmailValidationRemainingResendsResponse } from 'api/gen'
 import { analytics } from 'libs/analytics/provider'
+import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
-import * as useRemoteConfigContext from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { MODAL_TO_SHOW_TIME } from 'tests/constants'
 import { mockServer } from 'tests/mswServer'
@@ -19,7 +19,9 @@ jest.mock('libs/monitoring/services')
 
 const resendEmailValidationSpy = jest.spyOn(api, 'postNativeV1ResendEmailValidation')
 
-const useRemoteConfigContextSpy = jest.spyOn(useRemoteConfigContext, 'useRemoteConfigContext')
+const useRemoteConfigSpy = jest
+  .spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
+  .mockReturnValue(DEFAULT_REMOTE_CONFIG)
 
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   return function createAnimatedComponent(Component: unknown) {
@@ -38,7 +40,7 @@ describe('<EmailResendModal />', () => {
     expect(screen).toMatchSnapshot()
   })
 
-  it('should dismiss modal when close icon is pressed', async () => {
+  it('should dismiss modal when close icon is pressed', () => {
     renderEmailResendModal({})
 
     fireEvent.press(screen.getByLabelText('Fermer la modale'))
@@ -141,6 +143,8 @@ describe('<EmailResendModal />', () => {
 
     renderEmailResendModal({})
 
+    await screen.findAllByLabelText('Recevoir un nouveau lien')
+
     expect(
       screen.queryByText(
         'Tu as dépassé le nombre de 3 demandes de lien autorisées. Tu pourras réessayer le 30/09/2023 à 12h58.'
@@ -150,7 +154,7 @@ describe('<EmailResendModal />', () => {
 
   describe('When shouldLogInfo remote config is false', () => {
     beforeAll(() => {
-      useRemoteConfigContextSpy.mockReturnValue({
+      useRemoteConfigSpy.mockReturnValue({
         ...DEFAULT_REMOTE_CONFIG,
         shouldLogInfo: false,
       })
@@ -170,14 +174,14 @@ describe('<EmailResendModal />', () => {
 
   describe('When shouldLogInfo remote config is true', () => {
     beforeAll(() => {
-      useRemoteConfigContextSpy.mockReturnValue({
+      useRemoteConfigSpy.mockReturnValue({
         ...DEFAULT_REMOTE_CONFIG,
         shouldLogInfo: true,
       })
     })
 
     afterAll(() => {
-      useRemoteConfigContextSpy.mockReturnValue(DEFAULT_REMOTE_CONFIG)
+      useRemoteConfigSpy.mockReturnValue(DEFAULT_REMOTE_CONFIG)
     })
 
     it('should log to Sentry on error', async () => {

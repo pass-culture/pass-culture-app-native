@@ -95,5 +95,6 @@ const Template: VariantsStory<typeof TicketCutout> = (args) => (
   <VariantsTemplate variants={variantConfig} Component={TicketCutout} defaultProps={args} />
 )
 
-export const AllVariants = Template.bind({})
+// Todo(PC-35079) fix this story, read the associated ticket to follow the different choices offered
+const AllVariants = Template.bind({})
 AllVariants.storyName = 'TicketCutout'

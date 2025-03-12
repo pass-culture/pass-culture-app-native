@@ -5,8 +5,8 @@ import { ApiError } from 'api/ApiError'
 import { useMaintenance } from 'features/maintenance/helpers/useMaintenance/useMaintenance'
 import { MaintenanceErrorPage } from 'features/maintenance/pages/MaintenanceErrorPage'
 import * as useGoBack from 'features/navigation/useGoBack'
+import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
-import * as useRemoteConfigContext from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { AsyncError, MonitoringError, ScreenError, LogTypeEnum } from 'libs/monitoring/errors'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { fireEvent, render, screen } from 'tests/utils'
@@ -21,7 +21,9 @@ jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
   canGoBack: jest.fn(() => true),
 })
 
-const useRemoteConfigContextSpy = jest.spyOn(useRemoteConfigContext, 'useRemoteConfigContext')
+const useRemoteConfigSpy = jest
+  .spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
+  .mockReturnValue(DEFAULT_REMOTE_CONFIG)
 
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   return function createAnimatedComponent(Component: unknown) {
@@ -102,14 +104,14 @@ describe('AsyncErrorBoundary component', () => {
 
   describe('When shouldLogInfo remote config is true', () => {
     beforeAll(() => {
-      useRemoteConfigContextSpy.mockReturnValue({
+      useRemoteConfigSpy.mockReturnValue({
         ...DEFAULT_REMOTE_CONFIG,
         shouldLogInfo: true,
       })
     })
 
     afterAll(() => {
-      useRemoteConfigContextSpy.mockReturnValue(DEFAULT_REMOTE_CONFIG)
+      useRemoteConfigSpy.mockReturnValue(DEFAULT_REMOTE_CONFIG)
     })
 
     it('should capture info when error is ApiError and error code is 401', () => {
@@ -127,7 +129,7 @@ describe('AsyncErrorBoundary component', () => {
 
   describe('When shouldLogInfo remote config is false', () => {
     beforeAll(() => {
-      useRemoteConfigContextSpy.mockReturnValue({
+      useRemoteConfigSpy.mockReturnValue({
         ...DEFAULT_REMOTE_CONFIG,
         shouldLogInfo: false,
       })

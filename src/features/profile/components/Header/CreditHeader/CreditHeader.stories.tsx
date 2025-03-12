@@ -52,5 +52,6 @@ const Template: VariantsStory<typeof CreditHeader> = (args) => (
   <VariantsTemplate variants={variantConfig} Component={CreditHeader} defaultProps={{ ...args }} />
 )
 
-export const AllVariants = Template.bind({})
+// Todo(PC-35078) fix this story, read the associated ticket to follow the different choices offered
+const AllVariants = Template.bind({})
 AllVariants.storyName = 'CreditHeader'

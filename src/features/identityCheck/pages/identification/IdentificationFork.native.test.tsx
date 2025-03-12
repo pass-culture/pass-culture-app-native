@@ -4,18 +4,15 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { IdentificationFork } from 'features/identityCheck/pages/identification/IdentificationFork'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { analytics } from 'libs/analytics/provider'
+import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
-import * as useRemoteConfigContext from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
 const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
 
-const useRemoteConfigContextSpy = jest.spyOn(useRemoteConfigContext, 'useRemoteConfigContext')
-
-useRemoteConfigContextSpy.mockReturnValue({
-  ...DEFAULT_REMOTE_CONFIG,
-  shouldDisplayReassuranceMention: true,
-})
+const useRemoteConfigSpy = jest
+  .spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
+  .mockReturnValue({ ...DEFAULT_REMOTE_CONFIG, shouldDisplayReassuranceMention: true })
 
 jest.mock('libs/firebase/analytics/analytics')
 
@@ -87,7 +84,7 @@ describe('<IdentificationFork />', () => {
   })
 
   it('should not display reassuring mention when firebase parameters is false', () => {
-    useRemoteConfigContextSpy.mockReturnValueOnce({
+    useRemoteConfigSpy.mockReturnValueOnce({
       ...DEFAULT_REMOTE_CONFIG,
       shouldDisplayReassuranceMention: false,
     })

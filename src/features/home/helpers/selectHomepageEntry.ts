@@ -9,8 +9,8 @@ import { isUserUnderage } from 'features/profile/helpers/isUserUnderage'
 import { isUserUnderageBeneficiary } from 'features/profile/helpers/isUserUnderageBeneficiary'
 import { UserOnboardingRole } from 'features/tutorial/enums'
 import { useUserRoleFromOnboarding } from 'features/tutorial/helpers/useUserRoleFromOnboarding'
+import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { CustomRemoteConfig } from 'libs/firebase/remoteConfig/remoteConfig.types'
-import { useRemoteConfigContext } from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { useBookingsQuery } from 'queries/bookings/useBookingsQuery'
 import { useUserHasBookingsQuery } from 'queries/bookings/useUserHasBookingsQuery'
 import { getAvailableCredit } from 'shared/user/useAvailableCredit'
@@ -44,7 +44,7 @@ export const useSelectHomepageEntry = (
     homeEntryId_18,
     homeEntryId_15_17,
     ...onboardingHomeEntryIds
-  } = useRemoteConfigContext()
+  } = useRemoteConfigQuery()
 
   return useCallback(
     (homepageList: Homepage[]): Homepage | undefined => {

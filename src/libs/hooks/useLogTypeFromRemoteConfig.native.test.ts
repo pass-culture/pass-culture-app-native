@@ -1,22 +1,22 @@
+import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
-import * as useRemoteConfigContext from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { useLogTypeFromRemoteConfig } from 'libs/hooks/useLogTypeFromRemoteConfig'
 import { LogTypeEnum } from 'libs/monitoring/errors'
 import { renderHook } from 'tests/utils'
 
-const useRemoteConfigContextSpy = jest.spyOn(useRemoteConfigContext, 'useRemoteConfigContext')
+const useRemoteConfigSpy = jest.spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
 
 describe('useLogTypeFromRemoteConfig', () => {
   describe('When shouldLogInfo remote config is false', () => {
     beforeAll(() => {
-      useRemoteConfigContextSpy.mockReturnValue({
+      useRemoteConfigSpy.mockReturnValue({
         ...DEFAULT_REMOTE_CONFIG,
         shouldLogInfo: false,
       })
     })
 
     afterAll(() => {
-      useRemoteConfigContextSpy.mockReturnValue(DEFAULT_REMOTE_CONFIG)
+      useRemoteConfigSpy.mockReturnValue(DEFAULT_REMOTE_CONFIG)
     })
 
     it('should return ignored as log type', () => {
@@ -28,14 +28,14 @@ describe('useLogTypeFromRemoteConfig', () => {
 
   describe('When shouldLogInfo remote config is true', () => {
     beforeAll(() => {
-      useRemoteConfigContextSpy.mockReturnValue({
+      useRemoteConfigSpy.mockReturnValue({
         ...DEFAULT_REMOTE_CONFIG,
         shouldLogInfo: true,
       })
     })
 
     afterAll(() => {
-      useRemoteConfigContextSpy.mockReturnValue(DEFAULT_REMOTE_CONFIG)
+      useRemoteConfigSpy.mockReturnValue(DEFAULT_REMOTE_CONFIG)
     })
 
     it('should return info as log type', () => {

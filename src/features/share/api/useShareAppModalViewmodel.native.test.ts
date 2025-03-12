@@ -1,9 +1,9 @@
 import * as shareApp from 'features/share/helpers/shareApp'
 import { ShareAppModalType } from 'features/share/types'
 import { analytics } from 'libs/analytics/__mocks__/provider'
+import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import { CustomRemoteConfig } from 'libs/firebase/remoteConfig/remoteConfig.types'
-import * as useRemoteConfigContext from 'libs/firebase/remoteConfig/RemoteConfigProvider'
 import { renderHook } from 'tests/utils'
 
 import {
@@ -11,7 +11,7 @@ import {
   useShareAppModalViewmodel,
 } from './useShareAppModalViewmodel'
 
-const useRemoteConfigContextSpy = jest.spyOn(useRemoteConfigContext, 'useRemoteConfigContext')
+const useRemoteConfigSpy = jest.spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
 
 const mockShareApp = jest.spyOn(shareApp, 'shareApp')
 mockShareApp.mockImplementation(jest.fn())
@@ -38,7 +38,7 @@ const useShareAppModalSelectorViewmodelTest = ({
 const givenRemoteConfigShareAppModalVersion = (
   version: CustomRemoteConfig['shareAppModalVersion']
 ) => {
-  useRemoteConfigContextSpy.mockReturnValue({
+  useRemoteConfigSpy.mockReturnValue({
     ...DEFAULT_REMOTE_CONFIG,
     shareAppModalVersion: version,
   })

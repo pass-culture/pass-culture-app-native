@@ -2,6 +2,8 @@ import React from 'react'
 
 import { setSettings } from 'features/auth/tests/setSettings'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
+import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { checkAccessibilityFor, render, screen } from 'tests/utils/web'
 import * as useVersion from 'ui/hooks/useVersion.web'
@@ -9,6 +11,7 @@ import * as useVersion from 'ui/hooks/useVersion.web'
 import { Profile } from './Profile'
 
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
+jest.spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery').mockReturnValue(DEFAULT_REMOTE_CONFIG)
 
 jest.mock('features/favorites/context/FavoritesWrapper')
 

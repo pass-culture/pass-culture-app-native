@@ -9,6 +9,7 @@ import { StepperOrigin, UseNavigationType } from 'features/navigation/RootNaviga
 import { RemoteActivationBanner } from 'features/remoteBanners/banners/RemoteActivationBanner'
 import { RemoteGenericBanner } from 'features/remoteBanners/banners/RemoteGenericBanner'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { useFeatureFlagOptions } from 'libs/firebase/firestore/featureFlags/useFeatureFlagOptions'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { SystemBanner as GenericSystemBanner } from 'ui/components/ModuleBanner/SystemBanner'
 import { ArrowAgain } from 'ui/svg/icons/ArrowAgain'
@@ -50,6 +51,12 @@ const bannersToRender = [
 export const HomeBanner = ({ isLoggedIn }: HomeBannerProps) => {
   const showRemoteGenericBanner = useFeatureFlag(RemoteStoreFeatureFlags.SHOW_REMOTE_GENERIC_BANNER)
   const disableActivation = useFeatureFlag(RemoteStoreFeatureFlags.DISABLE_ACTIVATION)
+  const { options: remoteGenericBannerOptions } = useFeatureFlagOptions(
+    RemoteStoreFeatureFlags.SHOW_REMOTE_GENERIC_BANNER
+  )
+  const { options: remoteActivationBannerOptions } = useFeatureFlagOptions(
+    RemoteStoreFeatureFlags.DISABLE_ACTIVATION
+  )
 
   const { banner } = useActivationBanner()
   const { navigate } = useNavigation<UseNavigationType>()
@@ -83,10 +90,13 @@ export const HomeBanner = ({ isLoggedIn }: HomeBannerProps) => {
   )
 
   const SystemBanner = useMemo(() => {
-    if (disableActivation) {
+    if (disableActivation && remoteActivationBannerOptions) {
       return (
         <BannerContainer>
-          <RemoteActivationBanner from="home" />
+          <RemoteActivationBanner
+            from="home"
+            remoteActivationBannerOptions={remoteActivationBannerOptions}
+          />
         </BannerContainer>
       )
     }
@@ -110,13 +120,25 @@ export const HomeBanner = ({ isLoggedIn }: HomeBannerProps) => {
     }
 
     return null
-  }, [isLoggedIn, shouldRenderSystemBanner, renderSystemBanner, banner, disableActivation])
+  }, [
+    disableActivation,
+    remoteActivationBannerOptions,
+    isLoggedIn,
+    shouldRenderSystemBanner,
+    banner.name,
+    banner.title,
+    banner.text,
+    renderSystemBanner,
+  ])
 
   return (
     <React.Fragment>
-      {showRemoteGenericBanner ? (
+      {showRemoteGenericBanner && remoteGenericBannerOptions ? (
         <RemoteGenericBannerContainer>
-          <RemoteGenericBanner from="home" />
+          <RemoteGenericBanner
+            from="home"
+            remoteGenericBannerOptions={remoteGenericBannerOptions}
+          />
         </RemoteGenericBannerContainer>
       ) : null}
       {SystemBanner}
