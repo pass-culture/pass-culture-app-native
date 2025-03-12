@@ -1,11 +1,20 @@
-import { LinkingOptions } from '@react-navigation/native'
+import { LinkingOptions, PathConfig } from '@react-navigation/native'
 
-import { profileNavigatorPathConfig } from 'features/navigation/ProfileStackNavigator/profileNavigatorPathConfig'
+import { ProfileStackParamList } from 'features/navigation/ProfileStackNavigator/ProfileStack'
 import { ScreenNames } from 'features/navigation/RootNavigator/types'
 import { screenParamsParser } from 'features/navigation/screenParamsUtils'
 import { searchNavigatorPathConfig } from 'features/navigation/SearchStackNavigator/__mocks__/routes'
 
 import { TabParamList, TabRoute, TabRouteName } from '../types'
+
+const profileNavigatorPathConfig: LinkingOptions<ProfileStackParamList>['config'] = {
+  initialRouteName: 'Profile',
+  screens: {
+    Profile: {
+      path: 'profil',
+    },
+  },
+}
 
 export const tabNavigatorPathConfig: LinkingOptions<TabParamList>['config'] = {
   initialRouteName: 'Home',
@@ -21,14 +30,7 @@ export const tabNavigatorPathConfig: LinkingOptions<TabParamList>['config'] = {
     Favorites: {
       path: 'favoris',
     },
-    ProfileStackNavigator: {
-      initialRouteName: 'Profile',
-      screens: {
-        Profile: {
-          path: 'profil',
-        },
-      },
-    },
+    ProfileStackNavigator: profileNavigatorPathConfig as PathConfig<ProfileStackParamList>, // without this, TS considers profileNavigatorPathConfig as invalid.
   },
 }
 const MockComponent = () => null
