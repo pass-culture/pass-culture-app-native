@@ -42,7 +42,6 @@ import { OfferPreview } from 'features/offer/pages/OfferPreview/OfferPreview'
 import { ChangeEmailExpiredLink } from 'features/profile/pages/ChangeEmail/ChangeEmailExpiredLink'
 import { ChangeEmailSetPassword } from 'features/profile/pages/ChangeEmailSetPassword/ChangeEmailSetPassword'
 import { ConfirmChangeEmail } from 'features/profile/pages/ConfirmChangeEmail/ConfirmChangeEmail'
-import { ConsentSettings } from 'features/profile/pages/ConsentSettings/ConsentSettings'
 import { NewEmailSelection } from 'features/profile/pages/NewEmailSelection/NewEmailSelection'
 import { OnboardingSubscription } from 'features/subscription/page/OnboardingSubscription'
 import { ProfileTutorialAgeInformation } from 'features/tutorial/pages/profileTutorial/ProfileTutorialAgeInformation'
@@ -158,12 +157,6 @@ export const routes: RootRoute[] = [
     component: ChangeEmailExpiredLink,
     path: 'lien-modification-email-expire',
     options: { title: 'Lien de modification de l’email expiré' },
-  },
-  {
-    name: 'ConsentSettings',
-    component: ConsentSettings,
-    path: 'profil/confidentialite',
-    options: { title: 'Paramètres de confidentialité' },
   },
   {
     name: 'EndedBookings',

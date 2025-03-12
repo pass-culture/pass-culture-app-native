@@ -28,6 +28,7 @@ export type ProfileStackParamList = {
   ChangePassword: undefined
   SuspendAccountConfirmation: { token: string } | undefined
   FeedbackInApp: undefined
+  ConsentSettings: { onGoBack?: () => void } | undefined
 } & AccessibilityRootStackParamList
 
 export type ProfileStackRouteName = keyof ProfileStackParamList

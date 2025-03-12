@@ -422,7 +422,10 @@ describe('Profile component', () => {
       const confidentialityButton = screen.getByText('Confidentialité')
       await user.press(confidentialityButton)
 
-      expect(navigate).toHaveBeenCalledWith('ConsentSettings', undefined)
+      expect(navigate).toHaveBeenCalledWith('TabNavigator', {
+        params: { params: undefined, screen: 'ConsentSettings' },
+        screen: 'ProfileStackNavigator',
+      })
     })
   })
 

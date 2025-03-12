@@ -19,7 +19,7 @@ export const cheatcodesNavigationProfileButtons: [CheatcodesButtonsWithSubscreen
       { ...getProfileNavConfig('ChangeEmail') },
       { ...getProfileNavConfig('ChangeStatus') },
       { screen: 'ChangeEmailSetPassword', navigationParams: { token: 'token' } },
-      { screen: 'ConsentSettings' },
+      { ...getProfileNavConfig('ConsentSettings') },
       { ...getProfileNavConfig('NotificationsSettings') },
       { screen: 'ChangeEmailExpiredLink' },
       { title: 'ExpiredCreditModal', showOnlyInSearch: true },

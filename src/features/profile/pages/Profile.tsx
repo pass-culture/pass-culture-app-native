@@ -274,7 +274,7 @@ const OnlineProfile: React.FC = () => {
                     <Row
                       title="Confidentialité"
                       type="navigable"
-                      navigateTo={{ screen: 'ConsentSettings' }}
+                      navigateTo={getProfileNavConfig('ConsentSettings')}
                       icon={Confidentiality}
                     />
                   </Li>

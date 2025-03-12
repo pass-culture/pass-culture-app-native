@@ -118,6 +118,11 @@ export const routes: ProfileStackRoute[] = [
     component: ComponentForPathConfig,
     path: 'profil/formulaire-suggestion',
   },
+  {
+    name: 'ConsentSettings',
+    component: ComponentForPathConfig,
+    path: 'profil/confidentialite',
+  },
 ]
 
 export function isProfileStackScreen(screen: string): screen is ProfileStackRouteName {

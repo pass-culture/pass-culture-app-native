@@ -13,6 +13,7 @@ import { ChangeCity } from 'features/profile/pages/ChangeCity/ChangeCity'
 import { ChangeEmail } from 'features/profile/pages/ChangeEmail/ChangeEmail'
 import { ChangePassword } from 'features/profile/pages/ChangePassword'
 import { ChangeStatus } from 'features/profile/pages/ChangeStatus/ChangeStatus'
+import { ConsentSettings } from 'features/profile/pages/ConsentSettings/ConsentSettings'
 import { ConfirmDeleteProfile } from 'features/profile/pages/DeleteProfile/ConfirmDeleteProfile'
 import { DeactivateProfileSuccess } from 'features/profile/pages/DeleteProfile/DeactivateProfileSuccess'
 import { DeleteProfileAccountHacked } from 'features/profile/pages/DeleteProfile/DeleteProfileAccountHacked'
@@ -22,7 +23,6 @@ import { DeleteProfileContactSupport } from 'features/profile/pages/DeleteProfil
 import { DeleteProfileEmailHacked } from 'features/profile/pages/DeleteProfile/DeleteProfileEmailHacked'
 import { SuspendAccountConfirmationWithoutAuthentication } from 'features/profile/pages/DeleteProfile/SuspendAccountConfirmationWithoutAuthentication'
 import { DeleteProfileReason } from 'features/profile/pages/DeleteProfileReason/DeleteProfileReason'
-import { FeedbackInApp } from 'features/profile/pages/FeedbackInApp/FeedbackInApp'
 import { LegalNotices } from 'features/profile/pages/LegalNotices/LegalNotices'
 import { NotificationsSettings } from 'features/profile/pages/NotificationSettings/NotificationsSettings'
 import { PersonalData } from 'features/profile/pages/PersonalData/PersonalData'
@@ -160,9 +160,9 @@ export const ProfileStackNavigator = () => (
       options={{ title: 'Suspension de compte' }}
     />
     <ProfileStack.Screen
-      name="FeedbackInApp"
-      component={withAuthProtection(FeedbackInApp)}
-      options={{ title: 'Forumulaire de suggestion' }}
+      name="ConsentSettings"
+      component={ConsentSettings}
+      options={{ title: 'Paramètres de confidentialité' }}
     />
   </ProfileStack.Navigator>
 )
