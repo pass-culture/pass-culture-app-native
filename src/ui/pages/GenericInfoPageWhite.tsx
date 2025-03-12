@@ -107,7 +107,7 @@ export const GenericInfoPageWhite: React.FunctionComponent<Props> = ({
 
         <TextContainer gap={4}>
           <StyledTitle2 {...getHeadingAttrs(1)}>{title}</StyledTitle2>
-          <StyledBody {...getHeadingAttrs(2)}>{subtitle}</StyledBody>
+          {subtitle ? <StyledBody {...getHeadingAttrs(2)}>{subtitle}</StyledBody> : null}
         </TextContainer>
 
         {children ? <ChildrenContainer>{children}</ChildrenContainer> : null}
