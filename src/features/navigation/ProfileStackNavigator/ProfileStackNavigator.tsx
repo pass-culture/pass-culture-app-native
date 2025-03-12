@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { ProfileStack } from 'features/navigation/ProfileStackNavigator/ProfileStack'
+import { withAuthProtection } from 'features/navigation/RootNavigator/linking/withAuthProtection'
 import { ROOT_NAVIGATOR_SCREEN_OPTIONS } from 'features/navigation/RootNavigator/navigationOptions'
 import { Accessibility } from 'features/profile/pages/Accessibility/Accessibility'
 import { AccessibilityActionPlan } from 'features/profile/pages/Accessibility/AccessibilityActionPlan'
@@ -59,32 +60,32 @@ export const ProfileStackNavigator = () => (
     />
     <ProfileStack.Screen
       name="DeleteProfileReason"
-      component={DeleteProfileReason}
+      component={withAuthProtection(DeleteProfileReason)}
       options={{ title: 'Raison de suppression de compte' }}
     />
     <ProfileStack.Screen
       name="DeleteProfileContactSupport"
-      component={DeleteProfileContactSupport}
+      component={withAuthProtection(DeleteProfileContactSupport)}
       options={{ title: 'Contact support' }}
     />
     <ProfileStack.Screen
       name="DeleteProfileEmailHacked"
-      component={DeleteProfileEmailHacked}
+      component={withAuthProtection(DeleteProfileEmailHacked)}
       options={{ title: 'Sécurise ton compte' }}
     />
     <ProfileStack.Screen
       name="DeleteProfileAccountHacked"
-      component={DeleteProfileAccountHacked}
+      component={withAuthProtection(DeleteProfileAccountHacked)}
       options={{ title: 'Sécurise ton compte' }}
     />
     <ProfileStack.Screen
       name="DeleteProfileAccountNotDeletable"
-      component={DeleteProfileAccountNotDeletable}
+      component={withAuthProtection(DeleteProfileAccountNotDeletable)}
       options={{ title: 'Compte non supprimable' }}
     />
     <ProfileStack.Screen
       name="ConfirmDeleteProfile"
-      component={ConfirmDeleteProfile}
+      component={withAuthProtection(ConfirmDeleteProfile)}
       options={{ title: 'Suppression de compte' }}
     />
     <ProfileStack.Screen
