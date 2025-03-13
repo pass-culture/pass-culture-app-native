@@ -4,7 +4,7 @@ import { NotificationAuthModal } from 'features/offer/components/NotificationAut
 import {
   StickyFooterContentBase,
   StickyFooterContentProps,
-} from 'features/offer/components/OfferFooter/StickyFooterContentBase'
+} from 'features/offer/components/OfferContent/StickyFooterContent/StickyFooterContentBase'
 import { StickyFooterNotificationsProps } from 'features/offer/components/OfferFooter/types'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { Bell } from 'ui/svg/icons/Bell'
