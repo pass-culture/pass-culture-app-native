@@ -1,6 +1,6 @@
 import algoliasearch from '__mocks__/algoliasearch'
-import { fetchFilmsOffers } from 'features/search/pages/ThematicSearch/api/fetchFilmsOffers'
 import { buildQueryHelper } from 'features/search/pages/ThematicSearch/api/buildQueryHelper'
+import { fetchFilmsOffers } from 'features/search/pages/ThematicSearch/api/fetchFilmsOffers'
 import { Position } from 'libs/location'
 
 describe('fetchFilmsOffers', () => {
