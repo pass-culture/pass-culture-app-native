@@ -3,7 +3,6 @@ import { contentfulGtlPlaylistSnap } from 'features/gtlPlaylist/fixtures/content
 import { fetchOffersByGTL } from 'libs/algolia/fetchAlgolia/fetchOffersByGTL'
 import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { LocationMode, Position } from 'libs/location/types'
-import { QueryKeys } from 'libs/queryKeys'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -52,7 +51,7 @@ describe('useGTLPlaylists', () => {
         contentfulGtlPlaylistSnap
       )
 
-      renderHookWithParams('VENUE_GTL_PLAYLISTS', mockVenue)
+      renderUseGtlPlaylists(mockVenue)
 
       await waitFor(() => {
         expect(mockFetchOffersByGTL).toHaveBeenCalledWith(
@@ -79,7 +78,7 @@ describe('useGTLPlaylists', () => {
         contentfulGtlPlaylistSnap
       )
 
-      const { result } = renderHookWithParams('VENUE_GTL_PLAYLISTS', mockVenue)
+      const { result } = renderUseGtlPlaylists(mockVenue)
 
       await waitFor(() => {
         expect(result.current).toEqual({
@@ -107,7 +106,7 @@ describe('useGTLPlaylists', () => {
 
       mockFetchOffersByGTL.mockResolvedValueOnce([])
 
-      const { result } = renderHookWithParams('VENUE_GTL_PLAYLISTS', mockVenue)
+      const { result } = renderUseGtlPlaylists(mockVenue)
 
       await waitFor(() => {
         expect(result.current).toEqual({ gtlPlaylists: [], isLoading: false })
@@ -138,7 +137,7 @@ describe('useGTLPlaylists', () => {
         { ...mockedAlgoliaResponse, hits: [mockedAlgoliaResponse.hits[0]] },
       ])
 
-      const { result } = renderHookWithParams('VENUE_GTL_PLAYLISTS', mockVenue)
+      const { result } = renderUseGtlPlaylists(mockVenue)
 
       await waitFor(() => {
         expect(result.current).toEqual({ gtlPlaylists: [], isLoading: false })
@@ -153,7 +152,7 @@ describe('useGTLPlaylists', () => {
         contentfulGtlPlaylistSnap
       )
 
-      renderHookWithParams('SEARCH_N1_BOOKS_GTL_PLAYLISTS')
+      renderUseGtlPlaylists()
 
       await waitFor(() => {
         expect(mockFetchOffersByGTL).toHaveBeenCalledWith(
@@ -172,18 +171,10 @@ describe('useGTLPlaylists', () => {
         )
       })
     })
-
-    it('should return empty list if no venue given', async () => {
-      const { result } = renderHookWithParams('VENUE_GTL_PLAYLISTS')
-
-      await waitFor(() => {
-        expect(result.current).toEqual({ gtlPlaylists: [], isLoading: false })
-      })
-    })
   })
 })
 
-const renderHookWithParams = (queryKey: keyof typeof QueryKeys, venue?: VenueResponse) =>
-  renderHook(() => useGTLPlaylists({ queryKey, venue }), {
+const renderUseGtlPlaylists = (venue?: VenueResponse) =>
+  renderHook(() => useGTLPlaylists({ venue }), {
     wrapper: ({ children }) => reactQueryProviderHOC(children),
   })
