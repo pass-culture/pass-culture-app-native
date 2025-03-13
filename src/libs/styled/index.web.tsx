@@ -1,21 +1,21 @@
-import React, { ReactNode } from 'react'
+import React, { FunctionComponent } from 'react'
 import { ThemeProvider as ThemeProviderWeb } from 'styled-components'
 
 import { useComputedTheme } from 'libs/styled/useComputedTheme'
-import { AppThemeType } from 'theme'
 
-import { ThemeProvider as ThemeProviderNative } from './native/ThemeProvider'
+import { ThemeProvider as ThemeProviderNative, ThemeProviderProps } from './native/ThemeProvider'
 
-type Props = {
-  children: ReactNode
-  theme: AppThemeType
-}
-
-export function ThemeProvider({ children, theme }: Props) {
-  const computedTheme = useComputedTheme(theme)
+export const ThemeProvider: FunctionComponent<ThemeProviderProps> = ({
+  children,
+  theme,
+  colorScheme,
+}) => {
+  const computedTheme = useComputedTheme(theme, colorScheme)
   return (
     <ThemeProviderWeb theme={computedTheme}>
-      <ThemeProviderNative theme={computedTheme}>{children}</ThemeProviderNative>
+      <ThemeProviderNative theme={computedTheme} colorScheme={colorScheme}>
+        {children}
+      </ThemeProviderNative>
     </ThemeProviderWeb>
   )
 }

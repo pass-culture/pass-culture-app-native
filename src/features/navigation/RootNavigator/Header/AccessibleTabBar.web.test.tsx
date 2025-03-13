@@ -176,7 +176,7 @@ function renderTabBar() {
   return render(
     reactQueryProviderHOC(
       <NavigationContainer>
-        <ThemeProvider theme={computedTheme}>
+        <ThemeProvider theme={computedTheme} colorScheme="light">
           <AccessibleTabBar id="tabBarID" />
         </ThemeProvider>
       </NavigationContainer>

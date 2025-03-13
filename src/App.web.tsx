@@ -27,6 +27,7 @@ import { SafeAreaProvider } from 'libs/react-native-save-area-provider'
 import { ReactQueryClientProvider } from 'libs/react-query/ReactQueryClientProvider'
 import { ThemeProvider } from 'libs/styled'
 import 'resize-observer-polyfill/dist/ResizeObserver.global'
+import { ThemeWrapper } from 'libs/styled/ThemeWrapper'
 import { theme } from 'theme'
 import { SnackBarProvider } from 'ui/components/snackBar/SnackBarContext'
 import { LoadingPage } from 'ui/pages/LoadingPage'
@@ -55,44 +56,48 @@ export function App() {
 
   return (
     <ReactQueryClientProvider>
-      <ThemeProvider theme={theme}>
-        <SupportedBrowsersGate>
-          <SafeAreaProvider>
-            <SettingsWrapper>
-              <GoogleOAuthProvider clientId={env.GOOGLE_CLIENT_ID}>
-                <AuthWrapper>
-                  <ErrorBoundary FallbackComponent={AsyncErrorBoundaryWithoutNavigation}>
-                    <LocationWrapper>
-                      <AccessibilityFiltersWrapper>
-                        <FavoritesWrapper>
-                          <SearchAnalyticsWrapper>
-                            <SearchWrapper>
-                              <SnackBarProvider>
-                                <CulturalSurveyContextProvider>
-                                  <SubscriptionContextProvider>
-                                    <AppWebHead />
-                                    <OnboardingWrapper>
-                                      <ScreenErrorProvider>
-                                        <Suspense fallback={<LoadingPage />}>
-                                          <AppNavigationContainer />
-                                        </Suspense>
-                                      </ScreenErrorProvider>
-                                    </OnboardingWrapper>
-                                  </SubscriptionContextProvider>
-                                </CulturalSurveyContextProvider>
-                              </SnackBarProvider>
-                            </SearchWrapper>
-                          </SearchAnalyticsWrapper>
-                        </FavoritesWrapper>
-                      </AccessibilityFiltersWrapper>
-                    </LocationWrapper>
-                  </ErrorBoundary>
-                </AuthWrapper>
-              </GoogleOAuthProvider>
-            </SettingsWrapper>
-          </SafeAreaProvider>
-        </SupportedBrowsersGate>
-      </ThemeProvider>
+      <ThemeWrapper>
+        {(colorScheme) => (
+          <ThemeProvider theme={theme} colorScheme={colorScheme}>
+            <SupportedBrowsersGate>
+              <SafeAreaProvider>
+                <SettingsWrapper>
+                  <GoogleOAuthProvider clientId={env.GOOGLE_CLIENT_ID}>
+                    <AuthWrapper>
+                      <ErrorBoundary FallbackComponent={AsyncErrorBoundaryWithoutNavigation}>
+                        <LocationWrapper>
+                          <AccessibilityFiltersWrapper>
+                            <FavoritesWrapper>
+                              <SearchAnalyticsWrapper>
+                                <SearchWrapper>
+                                  <SnackBarProvider>
+                                    <CulturalSurveyContextProvider>
+                                      <SubscriptionContextProvider>
+                                        <AppWebHead />
+                                        <OnboardingWrapper>
+                                          <ScreenErrorProvider>
+                                            <Suspense fallback={<LoadingPage />}>
+                                              <AppNavigationContainer />
+                                            </Suspense>
+                                          </ScreenErrorProvider>
+                                        </OnboardingWrapper>
+                                      </SubscriptionContextProvider>
+                                    </CulturalSurveyContextProvider>
+                                  </SnackBarProvider>
+                                </SearchWrapper>
+                              </SearchAnalyticsWrapper>
+                            </FavoritesWrapper>
+                          </AccessibilityFiltersWrapper>
+                        </LocationWrapper>
+                      </ErrorBoundary>
+                    </AuthWrapper>
+                  </GoogleOAuthProvider>
+                </SettingsWrapper>
+              </SafeAreaProvider>
+            </SupportedBrowsersGate>
+          </ThemeProvider>
+        )}
+      </ThemeWrapper>
     </ReactQueryClientProvider>
   )
 }

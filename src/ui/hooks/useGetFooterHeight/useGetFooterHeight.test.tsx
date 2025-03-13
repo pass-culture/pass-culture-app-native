@@ -19,7 +19,11 @@ describe('useGetFooterHeight', () => {
   it('should return correct footer height', () => {
     const footerHeight = 40
     const { result } = renderHook(() => useGetFooterHeight(footerHeight), {
-      wrapper: ({ children }) => <ThemeProvider theme={computedTheme}>{children}</ThemeProvider>,
+      wrapper: ({ children }) => (
+        <ThemeProvider theme={computedTheme} colorScheme="light">
+          {children}
+        </ThemeProvider>
+      ),
     })
 
     expect(result.current).toEqual(49)
