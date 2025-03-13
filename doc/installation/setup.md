@@ -13,6 +13,7 @@ curl --proto '=https' --tlsv1.2 -sSf -L https://install.determinate.systems/nix 
 ```
 
 #### Install DirEnv
+
 ( can be done while waiting for direnv installation )
 
 1. If you don't already have it, install [brew](https://brew.sh/).
@@ -39,7 +40,7 @@ The last step can take several tens of minutes, especially the first time.
 
 #### Troubleshooting
 
-🚨 If you got the following error when executing `direnv allow` 🚨 
+🚨 If you got the following error when executing `direnv allow` 🚨
 
 ```txt
 /nix/store/559pz0w6zlvw8yyxah9s10fhaz400vaj-stdenv-darwin/setup: line 138: pop_var_context: head of shell_variables not a function context
@@ -76,7 +77,7 @@ Still wrong ?
 
 ```sh
 direnv deny
-git clean -dxf .direnv .devbox .venv ios/Pods
+rm -rf .direnv .devbox .venv ios/Pods
 npx rn-game-over --all
 direnv allow
 ```
