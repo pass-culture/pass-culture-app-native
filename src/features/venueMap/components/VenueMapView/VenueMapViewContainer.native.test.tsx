@@ -7,7 +7,6 @@ import { UseQueryResult } from 'react-query'
 import { ReactTestInstance } from 'react-test-renderer'
 
 import { PlaylistType } from 'features/offer/enums'
-import * as useVenueOffers from 'features/venue/api/useVenueOffers'
 import { VenueOffersResponseSnap } from 'features/venue/fixtures/venueOffersResponseSnap'
 import * as useVenueSearchParameters from 'features/venue/helpers/useVenueSearchParameters'
 import { VenueOffers } from 'features/venue/types'
@@ -21,6 +20,7 @@ import mockVenueSearchParams from 'fixtures/venueSearchParams'
 import { venuesFixture } from 'libs/algolia/fetchAlgolia/fetchVenues/fixtures/venuesFixture'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import * as useVenueOffersQueryModule from 'queries/useVenueOffersQuery/useVenueOffersQuery'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, userEvent, waitFor } from 'tests/utils'
 
@@ -44,7 +44,7 @@ const mockUseCenterOnLocation = useCenterOnLocation as jest.Mock
 
 jest.mock('features/venueMap/helpers/zoomOutIfMapEmpty')
 
-const useVenueOffersSpy = jest.spyOn(useVenueOffers, 'useVenueOffers')
+const useVenueOffersSpy = jest.spyOn(useVenueOffersQueryModule, 'useVenueOffersQuery')
 
 const useVenueMapFiltersSpy = jest.spyOn(useVenueMapFilters, 'useVenueMapFilters')
 useVenueMapFiltersSpy.mockReturnValue({

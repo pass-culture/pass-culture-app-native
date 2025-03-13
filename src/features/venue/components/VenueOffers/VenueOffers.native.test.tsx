@@ -10,7 +10,6 @@ import * as useGTLPlaylists from 'features/gtlPlaylist/hooks/useGTLPlaylists'
 import { mockLabelMapping, mockMapping } from 'features/headlineOffer/fixtures/mockMapping'
 import { OfferCTAProvider } from 'features/offer/components/OfferContent/OfferCTAProvider'
 import { initialSearchState } from 'features/search/context/reducer'
-import * as useVenueOffers from 'features/venue/api/useVenueOffers'
 import { VenueOffers } from 'features/venue/components/VenueOffers/VenueOffers'
 import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
 import { VenueOffersArtistsResponseSnap } from 'features/venue/fixtures/venueOffersArtistsResponseSnap'
@@ -23,6 +22,7 @@ import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { LocationMode } from 'libs/location/types'
+import * as useVenueOffersQueryModule from 'queries/useVenueOffersQuery/useVenueOffersQuery'
 import { Currency } from 'shared/currency/useGetCurrencyToDisplay'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
@@ -35,7 +35,7 @@ const venueId = venueDataTest.id
 const useGTLPlaylistsSpy = jest
   .spyOn(useGTLPlaylists, 'useGTLPlaylists')
   .mockReturnValue({ isLoading: false, gtlPlaylists: gtlPlaylistAlgoliaSnapshot })
-jest.spyOn(useVenueOffers, 'useVenueOffers').mockReturnValue({
+jest.spyOn(useVenueOffersQueryModule, 'useVenueOffersQuery').mockReturnValue({
   isLoading: false,
   data: { hits: VenueOffersResponseSnap, nbHits: 10 },
 } as unknown as UseQueryResult<VenueOffersType, unknown>)
@@ -113,7 +113,7 @@ describe('<VenueOffers />', () => {
   })
 
   it('should display skeleton if offers are fetching', () => {
-    jest.spyOn(useVenueOffers, 'useVenueOffers').mockReturnValueOnce({
+    jest.spyOn(useVenueOffersQueryModule, 'useVenueOffersQuery').mockReturnValueOnce({
       isLoading: true,
     } as UseQueryResult<VenueOffersType, unknown>)
     renderVenueOffers({ venue: venueDataTest, venueOffers: venueOffersMock })
