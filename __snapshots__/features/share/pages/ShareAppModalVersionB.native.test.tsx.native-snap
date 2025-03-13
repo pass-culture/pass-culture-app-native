@@ -187,7 +187,6 @@ exports[`ShareAppModalVersionB should match snapshot 1`] = `
             style={
               [
                 {
-                  "color": "#161617",
                   "fontFamily": "Montserrat-Bold",
                   "fontSize": 17,
                   "lineHeight": 27.2,
@@ -332,7 +331,6 @@ exports[`ShareAppModalVersionB should match snapshot 1`] = `
                 style={
                   [
                     {
-                      "color": "#161617",
                       "fontFamily": "Montserrat-Medium",
                       "fontSize": 16,
                       "lineHeight": 25.6,
@@ -345,7 +343,6 @@ exports[`ShareAppModalVersionB should match snapshot 1`] = `
                   style={
                     [
                       {
-                        "color": "#161617",
                         "fontFamily": "Montserrat-Bold",
                         "fontSize": 16,
                         "lineHeight": 25.6,
@@ -509,7 +506,7 @@ exports[`ShareAppModalVersionB should match snapshot 1`] = `
                   style={
                     {
                       "alignItems": "center",
-                      "backgroundColor": "transparent",
+                      "backgroundColor": "#ffffff",
                       "borderRadius": 24,
                       "flexDirection": "row",
                       "justifyContent": "center",

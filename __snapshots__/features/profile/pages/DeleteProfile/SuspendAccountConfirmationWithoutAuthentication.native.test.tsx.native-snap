@@ -54,7 +54,6 @@ exports[`SuspendAccountConfirmationWithoutAuthentication should render correctly
     style={
       [
         {
-          "color": "#161617",
           "fontFamily": "Montserrat-Bold",
           "fontSize": 19,
           "lineHeight": 30.4,
@@ -81,7 +80,6 @@ exports[`SuspendAccountConfirmationWithoutAuthentication should render correctly
     style={
       [
         {
-          "color": "#161617",
           "fontFamily": "Montserrat-SemiBold",
           "fontSize": 16,
           "lineHeight": 25.6,
@@ -148,7 +146,6 @@ exports[`SuspendAccountConfirmationWithoutAuthentication should render correctly
           style={
             [
               {
-                "color": "#161617",
                 "flexBasis": 0,
                 "flexGrow": 1,
                 "flexShrink": 1,
@@ -164,7 +161,6 @@ exports[`SuspendAccountConfirmationWithoutAuthentication should render correctly
             style={
               [
                 {
-                  "color": "#161617",
                   "fontFamily": "Montserrat-Medium",
                   "fontSize": 16,
                   "lineHeight": 25.6,
@@ -315,7 +311,6 @@ exports[`SuspendAccountConfirmationWithoutAuthentication should render correctly
           style={
             [
               {
-                "color": "#161617",
                 "flexBasis": 0,
                 "flexGrow": 1,
                 "flexShrink": 1,
@@ -377,7 +372,6 @@ exports[`SuspendAccountConfirmationWithoutAuthentication should render correctly
           style={
             [
               {
-                "color": "#161617",
                 "flexBasis": 0,
                 "flexGrow": 1,
                 "flexShrink": 1,
@@ -408,7 +402,6 @@ exports[`SuspendAccountConfirmationWithoutAuthentication should render correctly
     style={
       [
         {
-          "color": "#161617",
           "fontFamily": "Montserrat-SemiBold",
           "fontSize": 16,
           "lineHeight": 25.6,
@@ -422,7 +415,6 @@ exports[`SuspendAccountConfirmationWithoutAuthentication should render correctly
     style={
       [
         {
-          "color": "#161617",
           "fontFamily": "Montserrat-Medium",
           "fontSize": 16,
           "lineHeight": 25.6,
@@ -571,7 +563,7 @@ exports[`SuspendAccountConfirmationWithoutAuthentication should render correctly
       style={
         {
           "alignItems": "center",
-          "backgroundColor": "transparent",
+          "backgroundColor": "#ffffff",
           "borderRadius": 24,
           "flexDirection": "row",
           "justifyContent": "center",

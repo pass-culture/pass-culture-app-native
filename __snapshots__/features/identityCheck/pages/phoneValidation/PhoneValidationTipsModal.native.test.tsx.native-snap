@@ -292,7 +292,6 @@ exports[`<PhoneValidationTipsModal /> should match snapshot 1`] = `
             style={
               [
                 {
-                  "color": "#161617",
                   "fontFamily": "Montserrat-Bold",
                   "fontSize": 17,
                   "lineHeight": 27.2,
@@ -419,7 +418,6 @@ exports[`<PhoneValidationTipsModal /> should match snapshot 1`] = `
                   style={
                     [
                       {
-                        "color": "#161617",
                         "flexBasis": 0,
                         "flexGrow": 1,
                         "flexShrink": 1,
@@ -504,7 +502,6 @@ exports[`<PhoneValidationTipsModal /> should match snapshot 1`] = `
                   style={
                     [
                       {
-                        "color": "#161617",
                         "flexBasis": 0,
                         "flexGrow": 1,
                         "flexShrink": 1,

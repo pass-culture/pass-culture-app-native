@@ -68,7 +68,6 @@ exports[`CulturalSurveyIntro page When FF is disabled should render the page wit
     style={
       [
         {
-          "color": "#161617",
           "fontFamily": "Montserrat-Bold",
           "fontSize": 19,
           "lineHeight": 30.4,
@@ -83,7 +82,6 @@ exports[`CulturalSurveyIntro page When FF is disabled should render the page wit
     style={
       [
         {
-          "color": "#161617",
           "fontFamily": "Montserrat-Bold",
           "fontSize": 17,
           "lineHeight": 27.2,
@@ -110,7 +108,6 @@ exports[`CulturalSurveyIntro page When FF is disabled should render the page wit
     style={
       [
         {
-          "color": "#161617",
           "fontFamily": "Montserrat-Medium",
           "fontSize": 16,
           "lineHeight": 25.6,
@@ -170,7 +167,7 @@ exports[`CulturalSurveyIntro page When FF is disabled should render the page wit
               "width": "100%",
             },
             {
-              "backgroundColor": "transparent",
+              "backgroundColor": "#ffffff",
             },
           ],
           {
@@ -398,7 +395,7 @@ exports[`CulturalSurveyIntro page When FF is disabled should render the page wit
               "width": "100%",
             },
             {
-              "backgroundColor": "transparent",
+              "backgroundColor": "#ffffff",
             },
           ],
           {
@@ -551,7 +548,6 @@ exports[`CulturalSurveyIntro page When FF is enabled should render the page with
     style={
       [
         {
-          "color": "#161617",
           "fontFamily": "Montserrat-Bold",
           "fontSize": 19,
           "lineHeight": 30.4,
@@ -578,7 +574,6 @@ exports[`CulturalSurveyIntro page When FF is enabled should render the page with
     style={
       [
         {
-          "color": "#161617",
           "fontFamily": "Montserrat-SemiBold",
           "fontSize": 16,
           "lineHeight": 25.6,
@@ -603,7 +598,6 @@ exports[`CulturalSurveyIntro page When FF is enabled should render the page with
     style={
       [
         {
-          "color": "#161617",
           "fontFamily": "Montserrat-Medium",
           "fontSize": 16,
           "lineHeight": 25.6,
@@ -771,7 +765,7 @@ exports[`CulturalSurveyIntro page When FF is enabled should render the page with
               "width": "100%",
             },
             {
-              "backgroundColor": "transparent",
+              "backgroundColor": "#ffffff",
             },
           ],
           {

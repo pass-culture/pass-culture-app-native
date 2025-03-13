@@ -55,7 +55,6 @@ exports[`<ConfirmChangeEmail /> should render correctly 1`] = `
     style={
       [
         {
-          "color": "#161617",
           "fontFamily": "Montserrat-Bold",
           "fontSize": 19,
           "lineHeight": 30.4,
@@ -232,7 +231,7 @@ exports[`<ConfirmChangeEmail /> should render correctly 1`] = `
             "width": "100%",
           },
           {
-            "backgroundColor": "transparent",
+            "backgroundColor": "#ffffff",
           },
         ],
         {

@@ -241,7 +241,6 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
                 style={
                   [
                     {
-                      "color": "#161617",
                       "fontFamily": "Montserrat-Bold",
                       "fontSize": 17,
                       "lineHeight": 27.2,
@@ -300,7 +299,6 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
               style={
                 [
                   {
-                    "color": "#161617",
                     "fontFamily": "Montserrat-Medium",
                     "fontSize": 16,
                     "lineHeight": 25.6,
@@ -314,7 +312,6 @@ exports[`<CookiesConsent/> should render correctly 1`] = `
               style={
                 [
                   {
-                    "color": "#161617",
                     "fontFamily": "Montserrat-Medium",
                     "fontSize": 16,
                     "lineHeight": 25.6,

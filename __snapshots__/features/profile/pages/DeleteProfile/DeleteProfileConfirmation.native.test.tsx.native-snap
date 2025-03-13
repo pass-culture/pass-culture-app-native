@@ -114,7 +114,6 @@ exports[`DeleteProfileConfirmation should match snapshot 1`] = `
       style={
         [
           {
-            "color": "#161617",
             "fontFamily": "Montserrat-Bold",
             "fontSize": 21,
             "lineHeight": 33.6,
@@ -141,7 +140,6 @@ exports[`DeleteProfileConfirmation should match snapshot 1`] = `
       style={
         [
           {
-            "color": "#161617",
             "fontFamily": "Montserrat-Medium",
             "fontSize": 16,
             "lineHeight": 25.6,
@@ -155,7 +153,6 @@ exports[`DeleteProfileConfirmation should match snapshot 1`] = `
       style={
         [
           {
-            "color": "#161617",
             "fontFamily": "Montserrat-Medium",
             "fontSize": 16,
             "lineHeight": 25.6,
@@ -505,7 +502,7 @@ exports[`DeleteProfileConfirmation should match snapshot 1`] = `
               "width": "100%",
             },
             {
-              "backgroundColor": "transparent",
+              "backgroundColor": "#ffffff",
             },
           ],
           {

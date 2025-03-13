@@ -116,7 +116,6 @@ exports[`DMSIntroduction foreign version should render correctly 1`] = `
       style={
         [
           {
-            "color": "#161617",
             "fontFamily": "Montserrat-Bold",
             "fontSize": 21,
             "lineHeight": 33.6,
@@ -143,7 +142,6 @@ exports[`DMSIntroduction foreign version should render correctly 1`] = `
       style={
         [
           {
-            "color": "#161617",
             "fontFamily": "Montserrat-Medium",
             "fontSize": 16,
             "lineHeight": 25.6,
@@ -208,7 +206,6 @@ exports[`DMSIntroduction foreign version should render correctly 1`] = `
             style={
               [
                 {
-                  "color": "#161617",
                   "flexBasis": 0,
                   "flexGrow": 1,
                   "flexShrink": 1,
@@ -275,7 +272,6 @@ exports[`DMSIntroduction foreign version should render correctly 1`] = `
             style={
               [
                 {
-                  "color": "#161617",
                   "flexBasis": 0,
                   "flexGrow": 1,
                   "flexShrink": 1,
@@ -342,7 +338,6 @@ exports[`DMSIntroduction foreign version should render correctly 1`] = `
             style={
               [
                 {
-                  "color": "#161617",
                   "flexBasis": 0,
                   "flexGrow": 1,
                   "flexShrink": 1,
@@ -411,7 +406,6 @@ exports[`DMSIntroduction foreign version should render correctly 1`] = `
             style={
               [
                 {
-                  "color": "#161617",
                   "flexBasis": 0,
                   "flexGrow": 1,
                   "flexShrink": 1,
@@ -441,7 +435,6 @@ exports[`DMSIntroduction foreign version should render correctly 1`] = `
       style={
         [
           {
-            "color": "#161617",
             "fontFamily": "Montserrat-SemiBold",
             "fontSize": 12,
             "lineHeight": 19.2,
@@ -723,7 +716,6 @@ exports[`DMSIntroduction french version should render correctly 1`] = `
       style={
         [
           {
-            "color": "#161617",
             "fontFamily": "Montserrat-Bold",
             "fontSize": 21,
             "lineHeight": 33.6,
@@ -750,7 +742,6 @@ exports[`DMSIntroduction french version should render correctly 1`] = `
       style={
         [
           {
-            "color": "#161617",
             "fontFamily": "Montserrat-Medium",
             "fontSize": 16,
             "lineHeight": 25.6,
@@ -815,7 +806,6 @@ exports[`DMSIntroduction french version should render correctly 1`] = `
             style={
               [
                 {
-                  "color": "#161617",
                   "flexBasis": 0,
                   "flexGrow": 1,
                   "flexShrink": 1,
@@ -882,7 +872,6 @@ exports[`DMSIntroduction french version should render correctly 1`] = `
             style={
               [
                 {
-                  "color": "#161617",
                   "flexBasis": 0,
                   "flexGrow": 1,
                   "flexShrink": 1,
@@ -951,7 +940,6 @@ exports[`DMSIntroduction french version should render correctly 1`] = `
             style={
               [
                 {
-                  "color": "#161617",
                   "flexBasis": 0,
                   "flexGrow": 1,
                   "flexShrink": 1,
@@ -981,7 +969,6 @@ exports[`DMSIntroduction french version should render correctly 1`] = `
       style={
         [
           {
-            "color": "#161617",
             "fontFamily": "Montserrat-SemiBold",
             "fontSize": 12,
             "lineHeight": 19.2,

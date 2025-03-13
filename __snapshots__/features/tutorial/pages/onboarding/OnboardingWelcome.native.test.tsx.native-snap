@@ -113,7 +113,6 @@ exports[`OnboardingWelcome should render correctly 1`] = `
       style={
         [
           {
-            "color": "#161617",
             "fontFamily": "Montserrat-Bold",
             "fontSize": 28,
             "lineHeight": 44.8,
@@ -138,7 +137,6 @@ exports[`OnboardingWelcome should render correctly 1`] = `
       style={
         [
           {
-            "color": "#161617",
             "fontFamily": "Montserrat-Medium",
             "fontSize": 16,
             "lineHeight": 25.6,

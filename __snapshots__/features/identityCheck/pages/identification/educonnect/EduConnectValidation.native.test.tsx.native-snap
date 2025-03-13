@@ -8,7 +8,7 @@ exports[`<EduConnectValidation /> should render EduConnectValidation component c
       [
         {
           "backgroundColor": "rgba(255,255,255,0)",
-          "borderBottomColor": "#F1F1F4",
+          "borderBottomColor": "#cbcdd2",
           "borderBottomWidth": 1,
           "left": 0,
           "position": "absolute",
@@ -270,7 +270,6 @@ exports[`<EduConnectValidation /> should render EduConnectValidation component c
                 style={
                   [
                     {
-                      "color": "#161617",
                       "fontFamily": "Montserrat-Bold",
                       "fontSize": 17,
                       "lineHeight": 27.2,
@@ -323,7 +322,6 @@ exports[`<EduConnectValidation /> should render EduConnectValidation component c
                 style={
                   [
                     {
-                      "color": "#161617",
                       "fontFamily": "Montserrat-Bold",
                       "fontSize": 19,
                       "lineHeight": 30.4,
@@ -372,7 +370,6 @@ exports[`<EduConnectValidation /> should render EduConnectValidation component c
                 style={
                   [
                     {
-                      "color": "#161617",
                       "fontFamily": "Montserrat-Bold",
                       "fontSize": 19,
                       "lineHeight": 30.4,
@@ -421,7 +418,6 @@ exports[`<EduConnectValidation /> should render EduConnectValidation component c
                 style={
                   [
                     {
-                      "color": "#161617",
                       "fontFamily": "Montserrat-Bold",
                       "fontSize": 19,
                       "lineHeight": 30.4,

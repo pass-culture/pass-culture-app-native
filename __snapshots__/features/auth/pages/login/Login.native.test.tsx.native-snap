@@ -6,8 +6,6 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
     [
       {
         "backgroundColor": "#ffffff",
-      },
-      {
         "flexBasis": 0,
         "flexGrow": 1,
         "flexShrink": 1,
@@ -21,7 +19,7 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
       [
         {
           "backgroundColor": "rgba(255,255,255,0)",
-          "borderBottomColor": "#90949d",
+          "borderBottomColor": "#cbcdd2",
           "borderBottomWidth": 1,
           "left": 0,
           "position": "absolute",
@@ -866,11 +864,11 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
           }
         >
           <View
-            backgroundColor="#90949d"
+            backgroundColor="#cbcdd2"
             style={
               [
                 {
-                  "backgroundColor": "#90949d",
+                  "backgroundColor": "#cbcdd2",
                   "flexBasis": 0,
                   "flexGrow": 1,
                   "flexShrink": 1,
@@ -896,11 +894,11 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
             ou
           </Text>
           <View
-            backgroundColor="#90949d"
+            backgroundColor="#cbcdd2"
             style={
               [
                 {
-                  "backgroundColor": "#90949d",
+                  "backgroundColor": "#cbcdd2",
                   "flexBasis": 0,
                   "flexGrow": 1,
                   "flexShrink": 1,

@@ -151,7 +151,6 @@ exports[`AgeSelectionFork should render correctly 1`] = `
           style={
             [
               {
-                "color": "#161617",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 19,
                 "lineHeight": 30.4,
@@ -753,7 +752,6 @@ exports[`AgeSelectionFork when enableCreditV3 activated onboarding should render
           style={
             [
               {
-                "color": "#161617",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 19,
                 "lineHeight": 30.4,

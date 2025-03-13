@@ -222,7 +222,6 @@ exports[`<OnboardingSubscriptionModal /> should display correctly 1`] = `
             style={
               [
                 {
-                  "color": "#161617",
                   "fontFamily": "Montserrat-Bold",
                   "fontSize": 17,
                   "lineHeight": 27.2,
@@ -538,7 +537,7 @@ exports[`<OnboardingSubscriptionModal /> should display correctly 1`] = `
                         "width": "100%",
                       },
                       {
-                        "backgroundColor": "transparent",
+                        "backgroundColor": "#ffffff",
                       },
                     ],
                     {

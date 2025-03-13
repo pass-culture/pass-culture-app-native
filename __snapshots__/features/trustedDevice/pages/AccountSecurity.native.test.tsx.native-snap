@@ -54,7 +54,6 @@ exports[`<AccountSecurity/> with route params when user is connected and has a p
     style={
       [
         {
-          "color": "#161617",
           "fontFamily": "Montserrat-Bold",
           "fontSize": 19,
           "lineHeight": 30.4,
@@ -81,7 +80,6 @@ exports[`<AccountSecurity/> with route params when user is connected and has a p
     style={
       [
         {
-          "color": "#161617",
           "fontFamily": "Montserrat-Medium",
           "fontSize": 16,
           "lineHeight": 25.6,
@@ -94,7 +92,6 @@ exports[`<AccountSecurity/> with route params when user is connected and has a p
       style={
         [
           {
-            "color": "#161617",
             "fontFamily": "Montserrat-SemiBold",
             "fontSize": 16,
             "lineHeight": 25.6,
@@ -180,7 +177,6 @@ exports[`<AccountSecurity/> with route params when user is connected and has a p
           style={
             [
               {
-                "color": "#161617",
                 "fontFamily": "Montserrat-Regular",
                 "fontSize": 12,
                 "lineHeight": 19.2,
@@ -192,7 +188,6 @@ exports[`<AccountSecurity/> with route params when user is connected and has a p
             style={
               [
                 {
-                  "color": "#161617",
                   "fontFamily": "Montserrat-SemiBold",
                   "fontSize": 12,
                   "lineHeight": 19.2,
@@ -210,7 +205,6 @@ exports[`<AccountSecurity/> with route params when user is connected and has a p
             style={
               [
                 {
-                  "color": "#161617",
                   "fontFamily": "Montserrat-SemiBold",
                   "fontSize": 12,
                   "lineHeight": 19.2,
@@ -228,7 +222,6 @@ exports[`<AccountSecurity/> with route params when user is connected and has a p
             style={
               [
                 {
-                  "color": "#161617",
                   "fontFamily": "Montserrat-SemiBold",
                   "fontSize": 12,
                   "lineHeight": 19.2,
@@ -258,7 +251,6 @@ exports[`<AccountSecurity/> with route params when user is connected and has a p
     style={
       [
         {
-          "color": "#161617",
           "fontFamily": "Montserrat-Medium",
           "fontSize": 16,
           "lineHeight": 25.6,
@@ -271,7 +263,6 @@ exports[`<AccountSecurity/> with route params when user is connected and has a p
       style={
         [
           {
-            "color": "#161617",
             "fontFamily": "Montserrat-SemiBold",
             "fontSize": 16,
             "lineHeight": 25.6,
@@ -538,7 +529,7 @@ exports[`<AccountSecurity/> with route params when user is connected and has a p
             "width": "100%",
           },
           {
-            "backgroundColor": "transparent",
+            "backgroundColor": "#ffffff",
           },
         ],
         {
@@ -677,7 +668,6 @@ exports[`<AccountSecurity/> with route params when user is connected and has no 
     style={
       [
         {
-          "color": "#161617",
           "fontFamily": "Montserrat-Bold",
           "fontSize": 19,
           "lineHeight": 30.4,
@@ -704,7 +694,6 @@ exports[`<AccountSecurity/> with route params when user is connected and has no 
     style={
       [
         {
-          "color": "#161617",
           "fontFamily": "Montserrat-Medium",
           "fontSize": 16,
           "lineHeight": 25.6,
@@ -717,7 +706,6 @@ exports[`<AccountSecurity/> with route params when user is connected and has no 
       style={
         [
           {
-            "color": "#161617",
             "fontFamily": "Montserrat-SemiBold",
             "fontSize": 16,
             "lineHeight": 25.6,
@@ -803,7 +791,6 @@ exports[`<AccountSecurity/> with route params when user is connected and has no 
           style={
             [
               {
-                "color": "#161617",
                 "fontFamily": "Montserrat-Regular",
                 "fontSize": 12,
                 "lineHeight": 19.2,
@@ -815,7 +802,6 @@ exports[`<AccountSecurity/> with route params when user is connected and has no 
             style={
               [
                 {
-                  "color": "#161617",
                   "fontFamily": "Montserrat-SemiBold",
                   "fontSize": 12,
                   "lineHeight": 19.2,
@@ -833,7 +819,6 @@ exports[`<AccountSecurity/> with route params when user is connected and has no 
             style={
               [
                 {
-                  "color": "#161617",
                   "fontFamily": "Montserrat-SemiBold",
                   "fontSize": 12,
                   "lineHeight": 19.2,
@@ -851,7 +836,6 @@ exports[`<AccountSecurity/> with route params when user is connected and has no 
             style={
               [
                 {
-                  "color": "#161617",
                   "fontFamily": "Montserrat-SemiBold",
                   "fontSize": 12,
                   "lineHeight": 19.2,
@@ -881,7 +865,6 @@ exports[`<AccountSecurity/> with route params when user is connected and has no 
     style={
       [
         {
-          "color": "#161617",
           "fontFamily": "Montserrat-Medium",
           "fontSize": 16,
           "lineHeight": 25.6,
@@ -894,7 +877,6 @@ exports[`<AccountSecurity/> with route params when user is connected and has no 
       style={
         [
           {
-            "color": "#161617",
             "fontFamily": "Montserrat-SemiBold",
             "fontSize": 16,
             "lineHeight": 25.6,
@@ -1061,7 +1043,7 @@ exports[`<AccountSecurity/> with route params when user is connected and has no 
             "width": "100%",
           },
           {
-            "backgroundColor": "transparent",
+            "backgroundColor": "#ffffff",
           },
         ],
         {
@@ -1200,7 +1182,6 @@ exports[`<AccountSecurity/> without route params should match snapshot when no t
     style={
       [
         {
-          "color": "#161617",
           "fontFamily": "Montserrat-Bold",
           "fontSize": 19,
           "lineHeight": 30.4,
@@ -1227,7 +1208,6 @@ exports[`<AccountSecurity/> without route params should match snapshot when no t
     style={
       [
         {
-          "color": "#161617",
           "fontFamily": "Montserrat-Medium",
           "fontSize": 16,
           "lineHeight": 25.6,
@@ -1240,7 +1220,6 @@ exports[`<AccountSecurity/> without route params should match snapshot when no t
       style={
         [
           {
-            "color": "#161617",
             "fontFamily": "Montserrat-SemiBold",
             "fontSize": 16,
             "lineHeight": 25.6,
@@ -1326,7 +1305,6 @@ exports[`<AccountSecurity/> without route params should match snapshot when no t
           style={
             [
               {
-                "color": "#161617",
                 "fontFamily": "Montserrat-Regular",
                 "fontSize": 12,
                 "lineHeight": 19.2,
@@ -1338,7 +1316,6 @@ exports[`<AccountSecurity/> without route params should match snapshot when no t
             style={
               [
                 {
-                  "color": "#161617",
                   "fontFamily": "Montserrat-SemiBold",
                   "fontSize": 12,
                   "lineHeight": 19.2,
@@ -1356,7 +1333,6 @@ exports[`<AccountSecurity/> without route params should match snapshot when no t
             style={
               [
                 {
-                  "color": "#161617",
                   "fontFamily": "Montserrat-SemiBold",
                   "fontSize": 12,
                   "lineHeight": 19.2,
@@ -1374,7 +1350,6 @@ exports[`<AccountSecurity/> without route params should match snapshot when no t
             style={
               [
                 {
-                  "color": "#161617",
                   "fontFamily": "Montserrat-SemiBold",
                   "fontSize": 12,
                   "lineHeight": 19.2,
@@ -1404,7 +1379,6 @@ exports[`<AccountSecurity/> without route params should match snapshot when no t
     style={
       [
         {
-          "color": "#161617",
           "fontFamily": "Montserrat-Medium",
           "fontSize": 16,
           "lineHeight": 25.6,
@@ -1417,7 +1391,6 @@ exports[`<AccountSecurity/> without route params should match snapshot when no t
       style={
         [
           {
-            "color": "#161617",
             "fontFamily": "Montserrat-SemiBold",
             "fontSize": 16,
             "lineHeight": 25.6,
@@ -1684,7 +1657,7 @@ exports[`<AccountSecurity/> without route params should match snapshot when no t
             "width": "100%",
           },
           {
-            "backgroundColor": "transparent",
+            "backgroundColor": "#ffffff",
           },
         ],
         {

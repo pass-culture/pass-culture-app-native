@@ -66,7 +66,6 @@ exports[`<SetCity/> should render correctly 1`] = `
   font-family: Montserrat-Medium;
   font-size: 1rem;
   line-height: 1.6rem;
-  color: #161617;
   cursor: pointer;
 }
 
@@ -130,7 +129,7 @@ exports[`<SetCity/> should render correctly 1`] = `
 
 <div>
   <header
-    class="css-view-175oi2r r-backgroundColor-1stjixc r-borderBottomColor-8fzpo5 r-borderBottomWidth-qklmqi r-left-1d2f490 r-position-u8s1d r-right-zchlnj r-top-ipm5af r-zIndex-184en5c"
+    class="css-view-175oi2r r-backgroundColor-1stjixc r-borderBottomColor-1nwnxgm r-borderBottomWidth-qklmqi r-left-1d2f490 r-position-u8s1d r-right-zchlnj r-top-ipm5af r-zIndex-184en5c"
     role="banner"
   >
     <div
@@ -213,7 +212,7 @@ exports[`<SetCity/> should render correctly 1`] = `
             >
               <h2
                 aria-level="2"
-                class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-1wf0xld r-lineHeight-1ln193j r-textAlign-q4m81j"
+                class="css-text-1rynq56 r-fontFamily-1gknse6 r-fontSize-1wf0xld r-lineHeight-1ln193j r-textAlign-q4m81j"
                 dir="ltr"
                 role="heading"
               >
@@ -239,7 +238,7 @@ exports[`<SetCity/> should render correctly 1`] = `
                       class="css-view-175oi2r r-alignItems-obd0qt r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-width-13qz1uu"
                     >
                       <div
-                        class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm"
+                        class="css-text-1rynq56 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm"
                         dir="ltr"
                       >
                         Indique ton code postal et choisis ta ville

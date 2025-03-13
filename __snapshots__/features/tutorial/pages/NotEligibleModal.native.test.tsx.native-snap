@@ -135,7 +135,6 @@ exports[`NotEligibleModal for user under 15 years old should render correctly fo
           style={
             [
               {
-                "color": "#161617",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 17,
                 "lineHeight": 27.2,
@@ -276,7 +275,6 @@ exports[`NotEligibleModal for user under 15 years old should render correctly fo
         style={
           [
             {
-              "color": "#161617",
               "fontFamily": "Montserrat-Medium",
               "fontSize": 16,
               "lineHeight": 25.6,
@@ -345,7 +343,7 @@ exports[`NotEligibleModal for user under 15 years old should render correctly fo
                 "width": "100%",
               },
               {
-                "backgroundColor": "transparent",
+                "backgroundColor": "#ffffff",
               },
             ],
             {
@@ -429,7 +427,6 @@ exports[`NotEligibleModal for user under 15 years old should render correctly fo
         style={
           [
             {
-              "color": "#161617",
               "fontFamily": "Montserrat-Medium",
               "fontSize": 16,
               "lineHeight": 25.6,
@@ -688,7 +685,6 @@ exports[`NotEligibleModal for user under 15 years old should render correctly fo
           style={
             [
               {
-                "color": "#161617",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 17,
                 "lineHeight": 27.2,
@@ -829,7 +825,6 @@ exports[`NotEligibleModal for user under 15 years old should render correctly fo
         style={
           [
             {
-              "color": "#161617",
               "fontFamily": "Montserrat-Medium",
               "fontSize": 16,
               "lineHeight": 25.6,
@@ -854,7 +849,6 @@ exports[`NotEligibleModal for user under 15 years old should render correctly fo
         style={
           [
             {
-              "color": "#161617",
               "fontFamily": "Montserrat-Medium",
               "fontSize": 16,
               "lineHeight": 25.6,
