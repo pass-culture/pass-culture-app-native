@@ -188,7 +188,6 @@ describe('<ThematicSearch/>', () => {
         await screen.findByText('Romans et littérature')
 
         expect(mockUseGtlPlaylist).toHaveBeenCalledWith({
-          queryKey: 'SEARCH_N1_BOOKS_GTL_PLAYLISTS',
           searchIndex: env.ALGOLIA_OFFERS_INDEX_NAME_B,
         })
       })

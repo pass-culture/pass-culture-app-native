@@ -12,7 +12,6 @@ export const BookPlaylists: React.FC = () => {
     RemoteStoreFeatureFlags.ENABLE_REPLICA_ALGOLIA_INDEX
   )
   const { gtlPlaylists: bookGtlPlaylists, isLoading: areGtlPlaylistsLoading } = useGTLPlaylists({
-    queryKey: 'SEARCH_N1_BOOKS_GTL_PLAYLISTS',
     searchIndex: isReplicaAlgoliaIndexActive
       ? env.ALGOLIA_OFFERS_INDEX_NAME_B
       : env.ALGOLIA_OFFERS_INDEX_NAME,

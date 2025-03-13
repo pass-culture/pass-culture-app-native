@@ -11,25 +11,20 @@ import { useLocation } from 'libs/location'
 import { QueryKeys } from 'libs/queryKeys'
 
 type UseGTLPlaylistsProps = {
-  queryKey: keyof typeof QueryKeys
   venue?: VenueResponse
   searchIndex?: string
 }
 
-export function useGTLPlaylists({
-  queryKey: gtlPlaylistsQueryKey,
-  venue,
-  searchIndex,
-}: UseGTLPlaylistsProps) {
+// TODO(PC-35123): refactor this hook
+export function useGTLPlaylists({ venue, searchIndex }: UseGTLPlaylistsProps) {
   const { userLocation, selectedLocationMode } = useLocation()
   const isUserUnderage = useIsUserUnderage()
   const adaptPlaylistParameters = useAdaptOffersPlaylistParameters()
   const transformHits = useTransformOfferHits()
 
   const { data: gtlPlaylists, isLoading } = useQuery({
-    queryKey: [gtlPlaylistsQueryKey, venue?.id, userLocation, selectedLocationMode],
+    queryKey: [QueryKeys.GTL_PLAYLISTS, venue?.id, userLocation, selectedLocationMode],
     queryFn: async (): Promise<GtlPlaylistData[]> => {
-      if (gtlPlaylistsQueryKey === 'VENUE_GTL_PLAYLISTS' && !venue) return Promise.resolve([])
       const gtlPlaylistsConfig = await fetchGTLPlaylistConfig()
       const offers = await fetchOffersByGTL(
         gtlPlaylistsConfig.map((request) => {
