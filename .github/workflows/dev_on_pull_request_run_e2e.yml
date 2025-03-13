@@ -1,0 +1,75 @@
+name: '[on_pr] Run E2E tests from given branch when labeled'
+
+on:
+  pull_request:
+    types: [labeled]
+
+permissions:
+  contents: read
+  id-token: write
+  pull-requests: write
+
+jobs:
+  notify_test_launch:
+    if: |
+      github.event.label.name == 'e2e iOS' ||
+      github.event.label.name == 'e2e Android' ||
+      github.event.label.name == 'e2e'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Comment PR
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const label = context.payload.label.name;
+            let platform = label.includes('iOS') ? 'iOS' : label.includes('Android') ? 'Android' : 'iOS et Android';
+            let dashboardLinks = '';
+
+            if (label === 'e2e' || label.includes('iOS')) {
+              dashboardLinks += '- [Dashboard iOS](https://app.maestro.dev/project/proj_01javz1ncreqb9dcshv3y4da44/maestro-tests/app/app_01jk8x3ck0e6dansmsrx4g1h6z)\n';
+            }
+            if (label === 'e2e' || label.includes('Android')) {
+              dashboardLinks += '- [Dashboard Android](https://app.maestro.dev/project/proj_01javz1ncreqb9dcshv3y4da44/maestro-tests/app/app_01jawmdb0kfyk9tpg40habrw36)\n';
+            }
+
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: `🚀 Les tests E2E ${platform} ont été lancés !
+
+              Les résultats seront disponibles :
+              - Dans le canal Slack #equipe-e2e-jeunes
+              ${dashboardLinks}
+              Bonne journée ! 🌟`
+            })
+
+  e2e-tests-ios:
+    if: |
+      github.event.label.name == 'e2e iOS' ||
+      github.event.label.name == 'e2e'
+    needs: notify_test_launch
+    concurrency:
+      group: e2e-ios-${{ github.head_ref }}
+      cancel-in-progress: false
+    uses: ./.github/workflows/dev_on_workflow_call_e2e_ios.yml
+    with:
+      upload_name_prefix: '[PR]'
+    secrets:
+      GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+
+  e2e-tests-android:
+    if: |
+      github.event.label.name == 'e2e Android' ||
+      github.event.label.name == 'e2e'
+    needs: notify_test_launch
+    concurrency:
+      group: e2e-android-${{ github.head_ref }}
+      cancel-in-progress: false
+    uses: ./.github/workflows/dev_on_workflow_call_e2e_android.yml
+    with:
+      upload_name_prefix: '[PR]'
+    secrets:
+      GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
