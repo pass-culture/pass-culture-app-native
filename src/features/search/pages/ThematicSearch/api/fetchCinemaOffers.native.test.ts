@@ -2,7 +2,7 @@ import mockdate from 'mockdate'
 
 import algoliasearch from '__mocks__/algoliasearch'
 import { fetchCinemaOffers } from 'features/search/pages/ThematicSearch/api/fetchCinemaOffers'
-import { buildQuery } from 'features/search/pages/ThematicSearch/api/utils'
+import { buildQueryHelper } from 'features/search/pages/ThematicSearch/api/buildQueryHelper'
 import { Position } from 'libs/location'
 
 describe('fetchCinemaOffers', () => {
@@ -30,16 +30,16 @@ function buildQueries(userLocation: Position) {
   }
 
   return [
-    buildQuery({
+    buildQueryHelper({
       ...commonQueryParams,
       filters: 'offer.subcategoryId:"SEANCE_CINE"',
     }),
-    buildQuery({
+    buildQueryHelper({
       ...commonQueryParams,
       filters: 'offer.subcategoryId:"SEANCE_CINE"',
       numericFilters: 'offer.releaseDate: 1743984000 TO 1744588800',
     }),
-    buildQuery({
+    buildQueryHelper({
       ...commonQueryParams,
       userLocation: undefined,
       filters:

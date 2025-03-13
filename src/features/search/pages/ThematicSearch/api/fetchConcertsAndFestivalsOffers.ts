@@ -2,7 +2,7 @@ import { MultipleQueriesQuery } from '@algolia/client-search'
 
 import { SubcategoryIdEnum } from 'api/gen'
 import { fetchThematicSearchPlaylists } from 'features/search/pages/ThematicSearch/api/fetchThematicSearchPlaylists'
-import { buildQuery } from 'features/search/pages/ThematicSearch/api/utils'
+import { buildQueryHelper } from 'features/search/pages/ThematicSearch/api/buildQueryHelper'
 import { env } from 'libs/environment/env'
 import { Position } from 'libs/location/types'
 
@@ -13,11 +13,11 @@ export const fetchConcertsAndFestivalsOffers = async (userLocation?: Position) =
   }
 
   const queries: MultipleQueriesQuery[] = [
-    buildQuery({
+    buildQueryHelper({
       ...commonQueryParams,
       filters: `offer.subcategoryId:"${SubcategoryIdEnum.CONCERT}" AND NOT offer.last30DaysBookingsRange:"very-low"`,
     }),
-    buildQuery({
+    buildQueryHelper({
       ...commonQueryParams,
       filters: `offer.subcategoryId:"${SubcategoryIdEnum.FESTIVAL_MUSIQUE}" AND NOT offer.last30DaysBookingsRange:"very-low"`,
       withRadius: false,
