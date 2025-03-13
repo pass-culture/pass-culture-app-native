@@ -14,7 +14,7 @@ import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.c
 import { BatchProfile } from 'libs/react-native-batch'
 import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { userEvent, render, screen, act } from 'tests/utils'
+import { userEvent, render, screen, act, waitFor } from 'tests/utils'
 
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
@@ -85,9 +85,7 @@ describe('<BeneficiaryAccountCreated/>', () => {
 
     await user.press(await screen.findByLabelText('C’est parti !'))
 
-    await act(() => {
-      expect(mockShowAppModal).not.toHaveBeenCalled()
-    })
+    await waitFor(() => expect(mockShowAppModal).not.toHaveBeenCalled())
   })
 
   it('should redirect to native cultural survey page when "C’est parti !"button is clicked and user is supposed to see cultural survey', async () => {

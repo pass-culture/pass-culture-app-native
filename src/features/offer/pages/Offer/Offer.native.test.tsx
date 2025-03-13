@@ -1,4 +1,6 @@
+import { api } from 'api/api'
 import { SubcategoriesResponseModelv2 } from 'api/gen'
+import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import * as useSimilarOffers from 'features/offer/api/useSimilarOffers'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { renderOfferPage } from 'features/offer/helpers/renderOfferPageTestUtil'
@@ -8,7 +10,8 @@ import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { mockAuthContextWithoutUser } from 'tests/AuthContextUtils'
-import { screen, waitFor } from 'tests/utils'
+import { screen, userEvent, waitFor } from 'tests/utils'
+import * as useModal from 'ui/components/modals/useModal'
 
 jest.unmock('react-native/Libraries/Animated/createAnimatedComponent')
 
@@ -34,10 +37,20 @@ jest.mock('libs/subcategories/useSubcategories', () => ({
   }),
 }))
 
+const mockShowModal = jest.fn()
+jest.spyOn(useModal, 'useModal').mockReturnValue({
+  showModal: mockShowModal,
+  hideModal: jest.fn(),
+  toggleModal: jest.fn(),
+  visible: false,
+})
+
 jest.mock('libs/firebase/analytics/analytics')
 jest.useFakeTimers()
 
 describe('<Offer />', () => {
+  const user = userEvent.setup()
+
   beforeEach(() => {
     mockAuthContextWithoutUser({ persist: true })
     setFeatureFlags()
@@ -62,6 +75,72 @@ describe('<Offer />', () => {
     await waitFor(async () => {
       expect(screen.queryByTestId('offerv2-container')).not.toBeOnTheScreen()
     })
+  })
+
+  it('should display reaction button in header if offer is in ended bookings and FF is active', async () => {
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_REACTION_FEATURE])
+    jest.spyOn(api, 'getNativeV1Bookings').mockResolvedValueOnce({
+      ongoing_bookings: [],
+      ended_bookings: [
+        {
+          ...bookingsSnap.ended_bookings[0],
+          stock: {
+            ...bookingsSnap.ended_bookings[0].stock,
+            offer: { ...bookingsSnap.ended_bookings[0].stock.offer, id: offerResponseSnap.id },
+          },
+        },
+      ],
+      hasBookingsAfter18: false,
+    })
+
+    renderOfferPage({ mockOffer: offerResponseSnap })
+
+    expect(await screen.findByTestId('animated-icon-like')).toBeOnTheScreen()
+  })
+
+  it('should not display reaction button in header if offer is in ended bookings and FF is inactive', async () => {
+    jest.spyOn(api, 'getNativeV1Bookings').mockResolvedValueOnce({
+      ongoing_bookings: [],
+      ended_bookings: [
+        {
+          ...bookingsSnap.ended_bookings[0],
+          stock: {
+            ...bookingsSnap.ended_bookings[0].stock,
+            offer: { ...bookingsSnap.ended_bookings[0].stock.offer, id: offerResponseSnap.id },
+          },
+        },
+      ],
+      hasBookingsAfter18: false,
+    })
+
+    renderOfferPage({ mockOffer: offerResponseSnap })
+
+    await waitFor(() => expect(screen.queryByTestId('animated-icon-like')).not.toBeOnTheScreen())
+  })
+
+  it('should open reaction modal when press on reaction button in header', async () => {
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_REACTION_FEATURE])
+    jest.spyOn(api, 'getNativeV1Bookings').mockResolvedValueOnce({
+      ongoing_bookings: [],
+      ended_bookings: [
+        {
+          ...bookingsSnap.ended_bookings[0],
+          stock: {
+            ...bookingsSnap.ended_bookings[0].stock,
+            offer: { ...bookingsSnap.ended_bookings[0].stock.offer, id: offerResponseSnap.id },
+          },
+        },
+      ],
+      hasBookingsAfter18: false,
+    })
+
+    renderOfferPage({ mockOffer: offerResponseSnap })
+
+    const reactionButton = await screen.findByTestId('animated-icon-like')
+
+    await user.press(reactionButton)
+
+    expect(mockShowModal).toHaveBeenCalledTimes(1)
   })
 
   it('should not display offer container when subcategories and offer not loaded', async () => {

@@ -22,4 +22,17 @@ describe('useOfferQuery', () => {
 
     expect(JSON.stringify(result.current.data)).toEqual(JSON.stringify(offerResponseSnap))
   })
+
+  it('should call and API return formated data', async () => {
+    const { result } = renderHook(
+      () => useOfferQuery<string>({ offerId: offerResponseSnap.id, select: (data) => data?.name }),
+      {
+        wrapper: ({ children }) => reactQueryProviderHOC(children),
+      }
+    )
+
+    await act(async () => {})
+
+    expect(result.current.data).toBe(offerResponseSnap.name)
+  })
 })
