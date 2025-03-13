@@ -32,7 +32,7 @@ export const ProposedBySection: FunctionComponent<ProposedBySectionProps> = ({
 
   return (
     <Wrapper>
-      <InternalTouchableLink navigateTo={navigateTo}>
+      <InternalTouchableLink navigateTo={navigateTo} hoverUnderlineColor={theme.colors.white}>
         <ViewGap gap={4}>
           <TypoDS.Title3 {...getHeadingAttrs(2)}>Proposé par</TypoDS.Title3>
           <InfoHeader
