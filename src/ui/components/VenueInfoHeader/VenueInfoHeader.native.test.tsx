@@ -88,4 +88,32 @@ describe('<VenueInfoHeader />', () => {
 
     expect(screen.queryByTestId('RightFilled')).not.toBeOnTheScreen()
   })
+
+  it('should display custom thumbnail placeholder icon when no image URL', () => {
+    render(
+      <VenueInfoHeader
+        title="PATHE BEAUGRENELLE"
+        subtitle="Paris, France"
+        showArrow={false}
+        imageURL=""
+        imageSize={VENUE_THUMBNAIL_SIZE}
+      />
+    )
+
+    expect(screen.getByTestId('LocationIcon')).toBeOnTheScreen()
+  })
+
+  it('should not display default thumbnail placeholder icon', () => {
+    render(
+      <VenueInfoHeader
+        title="PATHE BEAUGRENELLE"
+        subtitle="Paris, France"
+        showArrow={false}
+        imageURL="https://example.com/image.jpg"
+        imageSize={VENUE_THUMBNAIL_SIZE}
+      />
+    )
+
+    expect(screen.queryByTestId('ThumbnailPlaceholderIcon')).not.toBeOnTheScreen()
+  })
 })
