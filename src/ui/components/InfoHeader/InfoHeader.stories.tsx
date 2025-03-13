@@ -5,6 +5,7 @@ import styled from 'styled-components/native'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 import { All } from 'ui/svg/icons/bicolor/All'
+import { LocationPointer } from 'ui/svg/icons/LocationPointer'
 import { RightFilled } from 'ui/svg/icons/RightFilled'
 
 import { InfoHeader } from './InfoHeader'
@@ -33,6 +34,11 @@ const RightIcon = styled(RightFilled).attrs(({ theme }) => ({
   flexShrink: 0,
 })
 
+const LocationIcon = styled(LocationPointer).attrs(({ theme }) => ({
+  size: theme.icons.sizes.standard,
+  color: theme.colors.greyMedium,
+}))``
+
 const variantConfig: Variants<typeof InfoHeader> = [
   {
     label: 'InfoHeader default',
@@ -57,6 +63,20 @@ const variantConfig: Variants<typeof InfoHeader> = [
     props: {
       ...baseProps,
       subtitle: undefined,
+    },
+  },
+  {
+    label: 'InfoHeader without title and with subtitle',
+    props: {
+      ...baseProps,
+      title: undefined,
+    },
+  },
+  {
+    label: 'InfoHeader with custom icon placeholder',
+    props: {
+      ...baseProps,
+      placeholderIcon: <LocationIcon />,
     },
   },
 ]

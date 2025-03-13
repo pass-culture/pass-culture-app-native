@@ -52,6 +52,9 @@ export function VenueBlock({
       [hasVenuePage]
     )
 
+  const addressLabel = address?.label ?? undefined
+  const venueImageUrl = venue.bannerUrl ?? ''
+
   return (
     <React.Fragment>
       {shouldDisplayDistanceTag ? <StyledTag label={`à ${distance}`} /> : null}
@@ -60,11 +63,11 @@ export function VenueBlock({
         navigateTo={{ screen: 'Venue', params: { id: venue.id } }}
         onBeforeNavigate={onSeeVenuePress}>
         <VenueInfoHeader
-          title={venueName}
+          title={isOfferAddressDifferent ? addressLabel : venueName}
           subtitle={venueAddress}
           imageSize={thumbnailSize ?? VENUE_THUMBNAIL_SIZE}
           showArrow={hasVenuePage}
-          imageURL={venue.bannerUrl ?? ''}
+          imageURL={isOfferAddressDifferent ? '' : venueImageUrl}
         />
       </TouchableContainer>
     </React.Fragment>
