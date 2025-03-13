@@ -1,6 +1,6 @@
 import algoliasearch from '__mocks__/algoliasearch'
-import { fetchMusicOffers } from 'features/search/pages/ThematicSearch/api/fetchMusicOffers'
 import { buildQueryHelper } from 'features/search/pages/ThematicSearch/api/buildQueryHelper'
+import { fetchMusicOffers } from 'features/search/pages/ThematicSearch/api/fetchMusicOffers'
 import { Position } from 'libs/location'
 
 describe('fetchMusicOffers', () => {

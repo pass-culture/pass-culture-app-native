@@ -1,8 +1,8 @@
 import mockdate from 'mockdate'
 
 import algoliasearch from '__mocks__/algoliasearch'
-import { fetchCinemaOffers } from 'features/search/pages/ThematicSearch/api/fetchCinemaOffers'
 import { buildQueryHelper } from 'features/search/pages/ThematicSearch/api/buildQueryHelper'
+import { fetchCinemaOffers } from 'features/search/pages/ThematicSearch/api/fetchCinemaOffers'
 import { Position } from 'libs/location'
 
 describe('fetchCinemaOffers', () => {

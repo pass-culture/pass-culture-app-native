@@ -2,8 +2,8 @@ import { MultipleQueriesQuery } from '@algolia/client-search'
 import { subDays } from 'date-fns'
 
 import { NativeCategoryIdEnumv2, SubcategoryIdEnum } from 'api/gen'
-import { fetchThematicSearchPlaylists } from 'features/search/pages/ThematicSearch/api/fetchThematicSearchPlaylists'
 import { buildQueryHelper } from 'features/search/pages/ThematicSearch/api/buildQueryHelper'
+import { fetchThematicSearchPlaylists } from 'features/search/pages/ThematicSearch/api/fetchThematicSearchPlaylists'
 import { env } from 'libs/environment/env'
 import { Position } from 'libs/location/types'
 

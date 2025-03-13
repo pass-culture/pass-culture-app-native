@@ -1,8 +1,8 @@
 import { MultipleQueriesQuery } from '@algolia/client-search'
 
 import { SubcategoryIdEnum } from 'api/gen'
-import { fetchThematicSearchPlaylists } from 'features/search/pages/ThematicSearch/api/fetchThematicSearchPlaylists'
 import { buildQueryHelper } from 'features/search/pages/ThematicSearch/api/buildQueryHelper'
+import { fetchThematicSearchPlaylists } from 'features/search/pages/ThematicSearch/api/fetchThematicSearchPlaylists'
 import { env } from 'libs/environment/env'
 import { Position } from 'libs/location/types'
 
