@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { ReactNode } from 'react'
 import { ViewProps } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
@@ -23,10 +23,16 @@ const ThumbnailPlaceholderIcon = styled(All).attrs(({ theme }) => ({
 type ThumbnailPlaceholderProps = ViewProps & {
   height: number
   width: number
+  icon?: ReactNode
 }
 
-export const ThumbnailPlaceholder = ({ height, width, ...props }: ThumbnailPlaceholderProps) => (
+export const ThumbnailPlaceholder = ({
+  height,
+  width,
+  icon,
+  ...props
+}: ThumbnailPlaceholderProps) => (
   <ThumbnailPlaceholderContainer height={height} width={width} {...props}>
-    <ThumbnailPlaceholderIcon />
+    {icon ?? <ThumbnailPlaceholderIcon testID="ThumbnailPlaceholderIcon" />}
   </ThumbnailPlaceholderContainer>
 )
