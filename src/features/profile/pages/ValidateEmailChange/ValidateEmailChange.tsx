@@ -89,7 +89,6 @@ export function ValidateEmailChange({ route: { params }, navigation }: ValidateE
     <GenericInfoPageWhite
       illustration={BicolorPhonePending}
       title="Valides-tu la nouvelle adresse e-mail&nbsp;?"
-      subtitle={emailUpdateStatus?.newEmail ?? undefined}
       buttonPrimary={{
         wording: 'Valider l’adresse e-mail',
         onPress: handleSubmit,
