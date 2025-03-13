@@ -118,7 +118,7 @@ export default ({ mode }) => {
       extensions: allExtensions,
       alias: [
         {
-          find: /^((api|cheatcodes|features|fixtures|libs|queries|shared|theme|ui|web).*)/,
+          find: /^((api|cheatcodes|features|fixtures|libs|queries|shared|theme|ui|web).*)/, // if you change this ligne, check this doc https://github.com/pass-culture/pass-culture-app-native/blob/5ff5fba596244a759d60f8c9cdb67d56ac86a1a7/doc/development/alias.md
           replacement: '/src/$1',
         },
         { find: 'react-native', replacement: 'react-native-web' },
