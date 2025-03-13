@@ -96,7 +96,6 @@ export const routes: ProfileStackRoute[] = [
     name: 'LegalNotices',
     component: ComponentForPathConfig,
     path: 'notices-legales',
-    options: {},
   },
   {
     name: 'PersonalData',
@@ -127,7 +126,6 @@ export const routes: ProfileStackRoute[] = [
     name: 'ConfirmChangeEmail',
     component: ComponentForPathConfig,
     path: 'changement-email/confirmation',
-    options: {},
   },
   {
     name: 'ChangeEmailSetPassword',
