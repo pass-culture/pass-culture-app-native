@@ -40,12 +40,7 @@ export const InputRule: FunctionComponent<Props> = ({
     },
   }
 
-  const defaultColor = {
-    text: 'text.default',
-    icon: 'icon.default',
-  }
-
-  const { text: color, icon: colorIcon } = colorMapping[type] ?? defaultColor
+  const { text: color, icon: colorIcon } = colorMapping[type]
 
   const Icon = styled(icon).attrs<{ testID: string }>({
     color: colorIcon,

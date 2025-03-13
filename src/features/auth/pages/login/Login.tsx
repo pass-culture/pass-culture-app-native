@@ -197,7 +197,7 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
   const titlePage = 'Connecte-toi'
 
   return (
-    <StyledPage>
+    <Page>
       {isRecaptchaEnabled ? (
         <ReCaptcha
           onClose={onReCaptchaClose}
@@ -255,12 +255,8 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
         </Form.MaxWidth>
         <SignUpButton onAdditionalPress={onLogSignUpAnalytics} />
       </SecondaryPageWithBlurHeader>
-    </StyledPage>
+    </Page>
   )
-})
-
-const StyledPage = styled(Page)({
-  flex: 1,
 })
 
 const Title = styled(TypoDS.Title3)(({ theme }) => ({
