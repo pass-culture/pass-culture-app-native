@@ -70,33 +70,6 @@ export const DMSIntroduction = (): React.JSX.Element => {
         Le traitement de ton dossier peut prendre jusqu’à 5 jours.
       </TypoDS.BodyAccentXs>
     </GenericInfoPageWhite>
-    // <GenericInfoPageWhiteLegacy
-    //   icon={LogoDMS}
-    //   titleComponent={TypoDS.Title2}
-    //   title="Identifie-toi sur le site demarches-simplifiees.fr"
-    //   separateIconFromTitle={false}
-    //   headerGoBack
-    //   mobileBottomFlex={0.5}>
-    //   <StyledBody>Pour t’identifier tu vas avoir besoin de&nbsp;: </StyledBody>
-    //   <VerticalUl>
-    //     {informationListItem.map((informationItem) => (
-    //       <Li key={informationItem.label}>
-    //         <InformationWithIcon Icon={informationItem.icon} text={informationItem.label} />
-    //         <Spacer.Column numberOfSpaces={4.5} />
-    //       </Li>
-    //     ))}
-    //   </VerticalUl>
-    //   <StyledCaption>Le traitement de ton dossier peut prendre jusqu’à 5 jours.</StyledCaption>
-    //   <Spacer.Flex flex={1} />
-    //   <LinkContainer>
-    //     <ExternalTouchableLink
-    //       wording="Aller sur demarches-simplifiees.fr"
-    //       icon={ExternalSite}
-    //       as={ButtonPrimary}
-    //       {...toDMSWebsiteButtonProps}
-    //     />
-    //   </LinkContainer>
-    // </GenericInfoPageWhiteLegacy>
   )
 }
 
