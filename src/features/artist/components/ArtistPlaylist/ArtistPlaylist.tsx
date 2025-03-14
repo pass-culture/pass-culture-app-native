@@ -5,7 +5,11 @@ import { OfferPlaylistItem } from 'features/offer/components/OfferPlaylistItem/O
 import { PlaylistType } from 'features/offer/enums'
 import { AlgoliaOfferWithArtistAndEan } from 'libs/algolia/types'
 import { usePlaylistItemDimensionsFromLayout } from 'libs/contentful/usePlaylistItemDimensionsFromLayout'
-import { getDisplayedPrice, getIfPricesShouldBeFix } from 'libs/parsers/getDisplayedPrice'
+import {
+  formatPriceFn,
+  getDisplayedPrice,
+  getIfPricesShouldBeFix,
+} from 'libs/parsers/getDisplayedPrice'
 import { useCategoryIdMapping } from 'libs/subcategories'
 import { useSubcategoryOfferLabelMapping } from 'libs/subcategories/mappings'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
@@ -50,9 +54,7 @@ export const ArtistPlaylist: FunctionComponent<ArtistPlaylistProps> = ({
             item.offer.prices,
             currency,
             euroToPacificFrancRate,
-            undefined,
-            undefined,
-            getIfPricesShouldBeFix(item.offer.subcategoryId)
+            formatPriceFn(getIfPricesShouldBeFix(item.offer.subcategoryId), false)
           ),
       })}
       itemWidth={itemWidth}
