@@ -2,41 +2,41 @@
 
 exports[`NotConnectedFavorites component should render not connected favorites 1`] = `
 <View
+  bottom={16}
   style={
     [
       {
-        "alignSelf": "center",
+        "alignItems": "center",
         "flexBasis": 0,
         "flexGrow": 1,
         "flexShrink": 1,
-        "maxWidth": 500,
+        "justifyContent": "space-between",
         "overflow": "scroll",
         "paddingHorizontal": 24,
-        "width": "100%",
+        "paddingVertical": 24,
       },
     ]
   }
 >
   <View
-    flex={2}
+    flex={1}
     style={
       [
         {
           "flexBasis": 0,
-          "flexGrow": 2,
+          "flexGrow": 1,
           "flexShrink": 1,
         },
       ]
     }
   />
   <View
-    hasHeight={false}
     style={
       [
         {
           "alignItems": "center",
-          "flexGrow": 1,
           "justifyContent": "center",
+          "marginBottom": 24,
         },
       ]
     }
@@ -50,7 +50,8 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
       </Text>
     </View>
   </View>
-  <Text
+  <View
+    gap={4}
     style={
       [
         {
@@ -80,26 +81,13 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
     Ton compte te permettra de retrouver tous tes bons plans en un clin d’oeil !
   </Text>
   <View
-    flex={0.5}
+    gap={4}
     style={
       [
         {
-          "flexBasis": 0,
-          "flexGrow": 0.5,
-          "flexShrink": 1,
-        },
-      ]
-    }
-  />
-  <View
-    style={
-      [
-        {
-          "flexBasis": 0,
-          "flexGrow": 1,
-          "flexShrink": 1,
-          "minHeight": 124,
-          "paddingBottom": 40,
+          "gap": 16,
+          "maxWidth": 500,
+          "width": "100%",
         },
       ]
     }
@@ -199,16 +187,6 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
         </Text>
       </View>
     </View>
-    <View
-      numberOfSpaces={4}
-      style={
-        [
-          {
-            "height": 16,
-          },
-        ]
-      }
-    />
     <View
       style={
         [
@@ -332,23 +310,12 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
     </View>
   </View>
   <View
-    customHeight={8}
-    enable={true}
-    style={
-      [
-        {
-          "height": 8,
-        },
-      ]
-    }
-  />
-  <View
-    flex={2}
+    flex={1}
     style={
       [
         {
           "flexBasis": 0,
-          "flexGrow": 2,
+          "flexGrow": 1,
           "flexShrink": 1,
         },
       ]
