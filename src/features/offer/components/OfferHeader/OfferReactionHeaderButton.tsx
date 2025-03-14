@@ -1,9 +1,9 @@
 import React, { ComponentProps, useRef } from 'react'
 import { Animated, View } from 'react-native'
+import { DefaultTheme, useTheme } from 'styled-components/native'
 
 import { ReactionTypeEnum } from 'api/gen'
 import { accessibleCheckboxProps } from 'shared/accessibilityProps/accessibleCheckboxProps'
-import { theme } from 'theme'
 import { RoundedButton } from 'ui/components/buttons/RoundedButton'
 import { IconNames } from 'ui/components/icons/iconFactory'
 // eslint-disable-next-line no-restricted-imports
@@ -14,9 +14,13 @@ type ReactionHeaderButtonProps = Omit<
   'scaleAnimatedValue'
 > & { defaultReaction?: ReactionTypeEnum | null }
 
-const getIconAndColorFromReactionType = (
+const getIconAndColorFromReactionType = ({
+  theme,
+  reactionType,
+}: {
+  theme: DefaultTheme
   reactionType?: ReactionTypeEnum | null
-): { iconName: IconNames; color: ColorsEnum } => {
+}): { iconName: IconNames; color: ColorsEnum } => {
   switch (reactionType) {
     case ReactionTypeEnum.LIKE:
       return { iconName: 'like-filled', color: theme.colors.primary }
@@ -33,8 +37,12 @@ export const OfferReactionHeaderButton = ({
   disabled,
   defaultReaction,
 }: ReactionHeaderButtonProps) => {
+  const theme = useTheme()
   const scaleFavoriteIconAnimatedValueRef = useRef(new Animated.Value(1))
-  const { iconName, color } = getIconAndColorFromReactionType(defaultReaction)
+  const { iconName, color } = getIconAndColorFromReactionType({
+    theme,
+    reactionType: defaultReaction,
+  })
   return (
     <View style={{ transform: [{ scale: defaultReaction === ReactionTypeEnum.DISLIKE ? -1 : 1 }] }}>
       <RoundedButton
