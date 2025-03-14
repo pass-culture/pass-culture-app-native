@@ -8,7 +8,7 @@ exports[`DeleteProfileContactSupport should render correctly 1`] = `
       [
         {
           "backgroundColor": "rgba(255,255,255,0)",
-          "borderBottomColor": "#F1F1F4",
+          "borderBottomColor": "#cbcdd2",
           "borderBottomWidth": 1,
           "left": 0,
           "position": "absolute",
@@ -23,53 +23,8 @@ exports[`DeleteProfileContactSupport should render correctly 1`] = `
     }
   >
     <View
-      fill="none"
-      height={156}
-      width={200}
-    >
-      <Text>
-        undefined-SVG-Mock
-      </Text>
-    </View>
-  </View>
-  <Text
-    style={
-      [
-        {
-          "fontFamily": "Montserrat-Bold",
-          "fontSize": 21,
-          "lineHeight": 33.6,
-          "textAlign": "center",
-        },
-      ]
-    }
-  >
-    Contacte le support
-  </Text>
-  <View
-    flex={0.5}
-    style={
-      [
-        {
-          "flexBasis": 0,
-          "flexGrow": 0.5,
-          "flexShrink": 1,
-        },
-      ]
-    }
-  />
-  <View
-    gap={8}
-    style={
-      [
-        {
-          "gap": 32,
-        },
-      ]
-    }
-  >
-    <View
-      gap={6}
+      customHeight={16}
+      enable={true}
       style={
         [
           {
@@ -288,27 +243,15 @@ exports[`DeleteProfileContactSupport should render correctly 1`] = `
         style={
           [
             {
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 16,
-              "lineHeight": 25.6,
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 21,
+              "lineHeight": 33.6,
+              "textAlign": "center",
             },
           ]
         }
       >
-        Pour traiter ta demande, nous te conseillons d’écrire à notre équipe support.
-      </Text>
-      <Text
-        style={
-          [
-            {
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 16,
-              "lineHeight": 25.6,
-            },
-          ]
-        }
-      >
-        Ta demande sera analysée et tu pourras être redirigé vers la meilleure solution.
+        Contacte le support
       </Text>
     </View>
     <View
@@ -334,7 +277,6 @@ exports[`DeleteProfileContactSupport should render correctly 1`] = `
           style={
             [
               {
-                "color": "#161617",
                 "fontFamily": "Montserrat-Medium",
                 "fontSize": 16,
                 "lineHeight": 25.6,
@@ -349,7 +291,6 @@ exports[`DeleteProfileContactSupport should render correctly 1`] = `
           style={
             [
               {
-                "color": "#161617",
                 "fontFamily": "Montserrat-Medium",
                 "fontSize": 16,
                 "lineHeight": 25.6,

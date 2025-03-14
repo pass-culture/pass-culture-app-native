@@ -8,7 +8,7 @@ exports[`ComeBackLater should render correctly 1`] = `
       [
         {
           "backgroundColor": "rgba(255,255,255,0)",
-          "borderBottomColor": "#F1F1F4",
+          "borderBottomColor": "#cbcdd2",
           "borderBottomWidth": 1,
           "left": 0,
           "position": "absolute",
@@ -232,10 +232,9 @@ exports[`ComeBackLater should render correctly 1`] = `
       style={
         [
           {
-            "fontFamily": "Montserrat-Bold",
-            "fontSize": 21,
-            "lineHeight": 33.6,
-            "textAlign": "center",
+            "alignItems": "center",
+            "gap": 16,
+            "marginBottom": 24,
           },
         ]
       }
@@ -244,7 +243,6 @@ exports[`ComeBackLater should render correctly 1`] = `
         style={
           [
             {
-              "color": "#161617",
               "fontFamily": "Montserrat-Bold",
               "fontSize": 21,
               "lineHeight": 33.6,
@@ -260,20 +258,6 @@ exports[`ComeBackLater should render correctly 1`] = `
       style={
         [
           {
-            "flexBasis": 0,
-            "flexGrow": 0.5,
-            "flexShrink": 1,
-          },
-        ]
-      }
-    />
-    <Text
-      style={
-        [
-          {
-            "fontFamily": "Montserrat-Medium",
-            "fontSize": 16,
-            "lineHeight": 25.6,
             "marginBottom": 24,
           },
         ]
@@ -296,7 +280,6 @@ exports[`ComeBackLater should render correctly 1`] = `
           style={
             [
               {
-                "color": "#161617",
                 "fontFamily": "Montserrat-Medium",
                 "fontSize": 16,
                 "lineHeight": 25.6,
@@ -310,7 +293,6 @@ exports[`ComeBackLater should render correctly 1`] = `
           style={
             [
               {
-                "color": "#161617",
                 "fontFamily": "Montserrat-SemiBold",
                 "fontSize": 16,
                 "lineHeight": 25.6,
@@ -325,7 +307,7 @@ exports[`ComeBackLater should render correctly 1`] = `
         style={
           [
             {
-              "fontFamily": "Montserrat-SemiBold",
+              "fontFamily": "Montserrat-Medium",
               "fontSize": 16,
               "lineHeight": 25.6,
               "marginBottom": 24,
@@ -336,22 +318,7 @@ exports[`ComeBackLater should render correctly 1`] = `
       >
         N’hésite pas à revenir t’identifier quand tu l’auras avec toi !
       </Text>
-    </Text>
-    <Text
-      style={
-        [
-          {
-            "fontFamily": "Montserrat-Medium",
-            "fontSize": 16,
-            "lineHeight": 25.6,
-            "marginBottom": 24,
-            "textAlign": "center",
-          },
-        ]
-      }
-    >
-      N’hésite pas à revenir t’identifier quand tu l’auras avec toi !
-    </Text>
+    </View>
     <View
       flex={1}
       style={

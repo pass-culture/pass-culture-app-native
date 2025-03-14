@@ -8,7 +8,7 @@ exports[`CulturalSurveyIntro page When FF is disabled should render the page wit
       [
         {
           "backgroundColor": "rgba(255,255,255,0)",
-          "borderBottomColor": "#F1F1F4",
+          "borderBottomColor": "#cbcdd2",
           "borderBottomWidth": 1,
           "left": 0,
           "position": "absolute",
@@ -23,302 +23,8 @@ exports[`CulturalSurveyIntro page When FF is disabled should render the page wit
     }
   >
     <View
-      fill="none"
-      height={156}
-      width={200}
-    >
-      <Text>
-        undefined-SVG-Mock
-      </Text>
-    </View>
-  </View>
-  <View
-    flex={0.5}
-    style={
-      [
-        {
-          "flexBasis": 0,
-          "flexGrow": 0.5,
-          "flexShrink": 1,
-        },
-      ]
-    }
-  />
-  <Text
-    style={
-      [
-        {
-          "fontFamily": "Montserrat-Bold",
-          "fontSize": 19,
-          "lineHeight": 30.4,
-          "textAlign": "center",
-        },
-      ]
-    }
-  >
-    Prends 1 minute
-  </Text>
-  <Text
-    style={
-      [
-        {
-          "fontFamily": "Montserrat-Bold",
-          "fontSize": 17,
-          "lineHeight": 27.2,
-          "textAlign": "center",
-        },
-      ]
-    }
-  >
-    pour nous parler de tes activités culturelles préférées
-  </Text>
-  <View
-    flex={0.5}
-    style={
-      [
-        {
-          "flexBasis": 0,
-          "flexGrow": 0.5,
-          "flexShrink": 1,
-        },
-      ]
-    }
-  />
-  <Text
-    style={
-      [
-        {
-          "fontFamily": "Montserrat-Medium",
-          "fontSize": 16,
-          "lineHeight": 25.6,
-          "textAlign": "center",
-        },
-      ]
-    }
-  >
-    En continuant, tu acceptes que nous utilisions les réponses au questionnaire qui va suivre pour améliorer l’application.
-  </Text>
-  <View>
-    <View
-      accessibilityLabel="En savoir plus sur ce qu’on fait de tes données"
-      accessibilityState={
-        {
-          "busy": undefined,
-          "checked": undefined,
-          "disabled": undefined,
-          "expanded": undefined,
-          "selected": undefined,
-        }
-      }
-      accessibilityValue={
-        {
-          "max": undefined,
-          "min": undefined,
-          "now": undefined,
-          "text": undefined,
-        }
-      }
-      accessible={true}
-      focusable={true}
-      onClick={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
-      style={
-        [
-          [
-            {
-              "userSelect": "auto",
-            },
-            {
-              "alignItems": "center",
-              "borderRadius": 24,
-              "flexDirection": "row",
-              "justifyContent": "center",
-              "maxWidth": 500,
-              "minHeight": 40,
-              "paddingBottom": 2,
-              "paddingLeft": 2,
-              "paddingRight": 2,
-              "paddingTop": 2,
-              "width": "100%",
-            },
-            {
-              "backgroundColor": "#ffffff",
-            },
-          ],
-          {
-            "opacity": 1,
-          },
-        ]
-      }
-      testID="En savoir plus sur ce qu’on fait de tes données"
-    >
-      <View
-        style={
-          [
-            {
-              "alignItems": "center",
-              "flexDirection": "row",
-            },
-          ]
-        }
-      >
-        <View
-          style={
-            [
-              {
-                "flexDirection": "row",
-                "flexShrink": 0,
-              },
-            ]
-          }
-        >
-          <View
-            fill="#161617"
-            height={20}
-            testID="button-icon-left"
-            width={20}
-          >
-            <Text>
-              button-icon-left-SVG-Mock
-            </Text>
-          </View>
-          <View
-            numberOfSpaces={2}
-            style={
-              [
-                {
-                  "width": 8,
-                },
-              ]
-            }
-          />
-        </View>
-        <Text
-          adjustsFontSizeToFit={false}
-          numberOfLines={1}
-          style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 16,
-                "lineHeight": 25.6,
-                "maxWidth": "100%",
-              },
-            ]
-          }
-        >
-          En savoir plus
-        </Text>
-      </View>
-    </View>
-  </View>
-  <View
-    flex={1}
-    style={
-      [
-        {
-          "flexBasis": 0,
-          "flexGrow": 1,
-          "flexShrink": 1,
-        },
-      ]
-    }
-  />
-  <View>
-    <View
-      accessibilityLabel="Commencer le questionnaire"
-      accessibilityState={
-        {
-          "busy": undefined,
-          "checked": undefined,
-          "disabled": undefined,
-          "expanded": undefined,
-          "selected": undefined,
-        }
-      }
-      accessibilityValue={
-        {
-          "max": undefined,
-          "min": undefined,
-          "now": undefined,
-          "text": undefined,
-        }
-      }
-      accessible={true}
-      focusable={true}
-      onClick={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
-      style={
-        [
-          [
-            {
-              "userSelect": "auto",
-            },
-            {
-              "alignItems": "center",
-              "backgroundColor": "#eb0055",
-              "borderRadius": 24,
-              "flexDirection": "row",
-              "justifyContent": "center",
-              "maxWidth": 500,
-              "minHeight": 40,
-              "paddingBottom": 2,
-              "paddingLeft": 20,
-              "paddingRight": 20,
-              "paddingTop": 2,
-              "width": "100%",
-            },
-            {},
-          ],
-          {
-            "opacity": 1,
-          },
-        ]
-      }
-      testID="Commencer le questionnaire"
-    >
-      <View
-        style={
-          [
-            {
-              "alignItems": "center",
-              "flexDirection": "row",
-            },
-          ]
-        }
-      >
-        <Text
-          adjustsFontSizeToFit={false}
-          numberOfLines={1}
-          style={
-            [
-              {
-                "color": "#ffffff",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 16,
-                "lineHeight": 25.6,
-                "maxWidth": "100%",
-              },
-            ]
-          }
-        >
-          Commencer le questionnaire
-        </Text>
-      </View>
-    </View>
-    <View
-      numberOfSpaces={3}
+      customHeight={16}
+      enable={true}
       style={
         [
           {
@@ -330,27 +36,6 @@ exports[`CulturalSurveyIntro page When FF is disabled should render the page wit
     <View
       style={
         [
-          [
-            {
-              "userSelect": "auto",
-            },
-            {
-              "alignItems": "center",
-              "borderRadius": 24,
-              "flexDirection": "row",
-              "justifyContent": "center",
-              "maxWidth": 500,
-              "minHeight": 40,
-              "paddingBottom": 2,
-              "paddingLeft": 2,
-              "paddingRight": 2,
-              "paddingTop": 2,
-              "width": "100%",
-            },
-            {
-              "backgroundColor": "#ffffff",
-            },
-          ],
           {
             "alignItems": "center",
             "height": 48,
@@ -486,7 +171,6 @@ exports[`CulturalSurveyIntro page When FF is disabled should render the page wit
         style={
           [
             {
-              "color": "#161617",
               "fontFamily": "Montserrat-Bold",
               "fontSize": 21,
               "lineHeight": 33.6,
@@ -511,7 +195,6 @@ exports[`CulturalSurveyIntro page When FF is disabled should render the page wit
         style={
           [
             {
-              "color": "#161617",
               "fontFamily": "Montserrat-Medium",
               "fontSize": 16,
               "lineHeight": 25.6,
@@ -571,7 +254,7 @@ exports[`CulturalSurveyIntro page When FF is disabled should render the page wit
                   "width": "100%",
                 },
                 {
-                  "backgroundColor": "transparent",
+                  "backgroundColor": "#ffffff",
                 },
               ],
               {
@@ -800,7 +483,7 @@ exports[`CulturalSurveyIntro page When FF is disabled should render the page wit
                 "width": "100%",
               },
               {
-                "backgroundColor": "transparent",
+                "backgroundColor": "#ffffff",
               },
             ],
             {
@@ -882,7 +565,7 @@ exports[`CulturalSurveyIntro page When FF is enabled should render the page with
       [
         {
           "backgroundColor": "rgba(255,255,255,0)",
-          "borderBottomColor": "#F1F1F4",
+          "borderBottomColor": "#cbcdd2",
           "borderBottomWidth": 1,
           "left": 0,
           "position": "absolute",
@@ -897,192 +580,8 @@ exports[`CulturalSurveyIntro page When FF is enabled should render the page with
     }
   >
     <View
-      fill="none"
-      height={156}
-      width={200}
-    >
-      <Text>
-        undefined-SVG-Mock
-      </Text>
-    </View>
-  </View>
-  <View
-    flex={0.5}
-    style={
-      [
-        {
-          "flexBasis": 0,
-          "flexGrow": 0.5,
-          "flexShrink": 1,
-        },
-      ]
-    }
-  />
-  <Text
-    style={
-      [
-        {
-          "fontFamily": "Montserrat-Bold",
-          "fontSize": 19,
-          "lineHeight": 30.4,
-          "textAlign": "center",
-        },
-      ]
-    }
-  >
-    Tu y es presque !
-  </Text>
-  <View
-    flex={0.5}
-    style={
-      [
-        {
-          "flexBasis": 0,
-          "flexGrow": 0.5,
-          "flexShrink": 1,
-        },
-      ]
-    }
-  />
-  <Text
-    style={
-      [
-        {
-          "fontFamily": "Montserrat-SemiBold",
-          "fontSize": 16,
-          "lineHeight": 25.6,
-          "textAlign": "center",
-        },
-      ]
-    }
-  >
-    Quelques questions et ton crédit est à toi.
-  </Text>
-  <View
-    numberOfSpaces={6}
-    style={
-      [
-        {
-          "height": 24,
-        },
-      ]
-    }
-  />
-  <Text
-    style={
-      [
-        {
-          "fontFamily": "Montserrat-Medium",
-          "fontSize": 16,
-          "lineHeight": 25.6,
-          "textAlign": "center",
-        },
-      ]
-    }
-  >
-    Parle nous de tes activités culturelles préférées. Tes réponses vont nous aider à mieux te connaître.
-  </Text>
-  <View
-    flex={1}
-    style={
-      [
-        {
-          "flexBasis": 0,
-          "flexGrow": 1,
-          "flexShrink": 1,
-        },
-      ]
-    }
-  />
-  <View>
-    <View
-      accessibilityLabel="Commencer le questionnaire"
-      accessibilityState={
-        {
-          "busy": undefined,
-          "checked": undefined,
-          "disabled": undefined,
-          "expanded": undefined,
-          "selected": undefined,
-        }
-      }
-      accessibilityValue={
-        {
-          "max": undefined,
-          "min": undefined,
-          "now": undefined,
-          "text": undefined,
-        }
-      }
-      accessible={true}
-      focusable={true}
-      onClick={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
-      style={
-        [
-          [
-            {
-              "userSelect": "auto",
-            },
-            {
-              "alignItems": "center",
-              "backgroundColor": "#eb0055",
-              "borderRadius": 24,
-              "flexDirection": "row",
-              "justifyContent": "center",
-              "maxWidth": 500,
-              "minHeight": 40,
-              "paddingBottom": 2,
-              "paddingLeft": 20,
-              "paddingRight": 20,
-              "paddingTop": 2,
-              "width": "100%",
-            },
-            {},
-          ],
-          {
-            "opacity": 1,
-          },
-        ]
-      }
-      testID="Commencer le questionnaire"
-    >
-      <View
-        style={
-          [
-            {
-              "alignItems": "center",
-              "flexDirection": "row",
-            },
-          ]
-        }
-      >
-        <Text
-          adjustsFontSizeToFit={false}
-          numberOfLines={1}
-          style={
-            [
-              {
-                "color": "#ffffff",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 16,
-                "lineHeight": 25.6,
-                "maxWidth": "100%",
-              },
-            ]
-          }
-        >
-          Commencer le questionnaire
-        </Text>
-      </View>
-    </View>
-    <View
-      numberOfSpaces={3}
+      customHeight={16}
+      enable={true}
       style={
         [
           {
@@ -1094,27 +593,6 @@ exports[`CulturalSurveyIntro page When FF is enabled should render the page with
     <View
       style={
         [
-          [
-            {
-              "userSelect": "auto",
-            },
-            {
-              "alignItems": "center",
-              "borderRadius": 24,
-              "flexDirection": "row",
-              "justifyContent": "center",
-              "maxWidth": 500,
-              "minHeight": 40,
-              "paddingBottom": 2,
-              "paddingLeft": 2,
-              "paddingRight": 2,
-              "paddingTop": 2,
-              "width": "100%",
-            },
-            {
-              "backgroundColor": "#ffffff",
-            },
-          ],
           {
             "alignItems": "center",
             "height": 48,
@@ -1250,7 +728,6 @@ exports[`CulturalSurveyIntro page When FF is enabled should render the page with
         style={
           [
             {
-              "color": "#161617",
               "fontFamily": "Montserrat-Bold",
               "fontSize": 21,
               "lineHeight": 33.6,
@@ -1265,7 +742,6 @@ exports[`CulturalSurveyIntro page When FF is enabled should render the page with
         style={
           [
             {
-              "color": "#161617",
               "fontFamily": "Montserrat-Medium",
               "fontSize": 16,
               "lineHeight": 25.6,
@@ -1290,7 +766,6 @@ exports[`CulturalSurveyIntro page When FF is enabled should render the page with
         style={
           [
             {
-              "color": "#161617",
               "fontFamily": "Montserrat-Medium",
               "fontSize": 16,
               "lineHeight": 25.6,
@@ -1459,7 +934,7 @@ exports[`CulturalSurveyIntro page When FF is enabled should render the page with
                 "width": "100%",
               },
               {
-                "backgroundColor": "transparent",
+                "backgroundColor": "#ffffff",
               },
             ],
             {

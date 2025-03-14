@@ -8,7 +8,7 @@ exports[`DeleteProfileConfirmation should match snapshot 1`] = `
       [
         {
           "backgroundColor": "rgba(255,255,255,0)",
-          "borderBottomColor": "#F1F1F4",
+          "borderBottomColor": "#cbcdd2",
           "borderBottomWidth": 1,
           "left": 0,
           "position": "absolute",
@@ -226,70 +226,8 @@ exports[`DeleteProfileConfirmation should match snapshot 1`] = `
         </Text>
       </View>
     </View>
-    <Text
-      style={
-        [
-          {
-            "fontFamily": "Montserrat-Bold",
-            "fontSize": 21,
-            "lineHeight": 33.6,
-            "textAlign": "center",
-          },
-        ]
-      }
-    >
-      Ta demande de suppression de compte
-    </Text>
     <View
-      flex={0.5}
-      style={
-        [
-          {
-            "flexBasis": 0,
-            "flexGrow": 0.5,
-            "flexShrink": 1,
-          },
-        ]
-      }
-    />
-    <Text
-      style={
-        [
-          {
-            "fontFamily": "Montserrat-Medium",
-            "fontSize": 16,
-            "lineHeight": 25.6,
-          },
-        ]
-      }
-    >
-      Si tu confirmes ta demande, tu ne pourras plus accéder à ton compte et tes données personnelles seront supprimées (anonymisées).
-    </Text>
-    <Text
-      style={
-        [
-          {
-            "fontFamily": "Montserrat-Medium",
-            "fontSize": 16,
-            "lineHeight": 25.6,
-          },
-        ]
-      }
-    >
-      Tes réservations en cours seront également annulées et supprimées.
-    </Text>
-    <View
-      numberOfSpaces={6}
-      style={
-        [
-          {
-            "height": 24,
-          },
-        ]
-      }
-    />
-    <View
-      backgroundColor="#f3ecff"
+      gap={4}
       style={
         [
           {
@@ -304,7 +242,6 @@ exports[`DeleteProfileConfirmation should match snapshot 1`] = `
         style={
           [
             {
-              "color": "#161617",
               "fontFamily": "Montserrat-Bold",
               "fontSize": 21,
               "lineHeight": 33.6,
@@ -329,7 +266,6 @@ exports[`DeleteProfileConfirmation should match snapshot 1`] = `
         style={
           [
             {
-              "color": "#161617",
               "fontFamily": "Montserrat-Medium",
               "fontSize": 16,
               "lineHeight": 25.6,
@@ -353,7 +289,6 @@ exports[`DeleteProfileConfirmation should match snapshot 1`] = `
         style={
           [
             {
-              "color": "#161617",
               "fontFamily": "Montserrat-Medium",
               "fontSize": 16,
               "lineHeight": 25.6,
@@ -415,252 +350,8 @@ exports[`DeleteProfileConfirmation should match snapshot 1`] = `
             }
             textColor="#161617"
           >
-            <View
-              style={
-                [
-                  {
-                    "flexDirection": "row",
-                    "flexShrink": 0,
-                  },
-                ]
-              }
-            >
-              <View
-                accessibilityLabel="Nouvelle fenêtre"
-                height={16}
-                testID="button-icon-left"
-                width={16}
-              >
-                <Text>
-                  button-icon-left-SVG-Mock
-                </Text>
-              </View>
-              <View
-                numberOfSpaces={2}
-                style={
-                  [
-                    {
-                      "width": 8,
-                    },
-                  ]
-                }
-              />
-            </View>
-            <Text
-              adjustsFontSizeToFit={false}
-              numberOfLines={1}
-              style={
-                [
-                  {
-                    "color": "#320096",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 12,
-                    "lineHeight": 19.2,
-                    "maxWidth": "100%",
-                  },
-                ]
-              }
-            >
-              Consultez notre FAQ
-            </Text>
-          </View>
-        </View>
-      </View>
-    </View>
-    <View
-      numberOfSpaces={6}
-      style={
-        [
-          {
-            "height": 24,
-          },
-        ]
-      }
-    />
-    <View
-      accessibilityLabel="Supprimer mon compte"
-      accessibilityState={
-        {
-          "busy": undefined,
-          "checked": undefined,
-          "disabled": undefined,
-          "expanded": undefined,
-          "selected": undefined,
-        }
-      }
-      accessibilityValue={
-        {
-          "max": undefined,
-          "min": undefined,
-          "now": undefined,
-          "text": undefined,
-        }
-      }
-      accessible={true}
-      focusable={true}
-      onClick={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
-      style={
-        [
-          [
-            {
-              "userSelect": "auto",
-            },
-            {
-              "alignItems": "center",
-              "backgroundColor": "#eb0055",
-              "borderRadius": 24,
-              "flexDirection": "row",
-              "justifyContent": "center",
-              "maxWidth": 500,
-              "minHeight": 40,
-              "paddingBottom": 2,
-              "paddingLeft": 20,
-              "paddingRight": 20,
-              "paddingTop": 2,
-              "width": "100%",
-            },
-            {},
-          ],
-          {
-            "opacity": 1,
-          },
-        ]
-      }
-      testID="Supprimer mon compte"
-    >
-      <View
-        style={
-          [
-            {
-              "alignItems": "center",
-              "flexDirection": "row",
-            },
-          ]
-        }
-      >
-        <Text
-          adjustsFontSizeToFit={false}
-          numberOfLines={1}
-          style={
-            [
-              {
-                "color": "#ffffff",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 16,
-                "lineHeight": 25.6,
-                "maxWidth": "100%",
-              },
-            ]
-          }
-        >
-          Supprimer mon compte
-        </Text>
-      </View>
-    </View>
-    <View
-      numberOfSpaces={4}
-      style={
-        [
-          {
-            "height": 16,
-          },
-        ]
-      }
-    />
-    <View
-      accessibilityLabel="Annuler"
-      accessibilityState={
-        {
-          "busy": undefined,
-          "checked": undefined,
-          "disabled": undefined,
-          "expanded": undefined,
-          "selected": undefined,
-        }
-      }
-      accessibilityValue={
-        {
-          "max": undefined,
-          "min": undefined,
-          "now": undefined,
-          "text": undefined,
-        }
-      }
-      accessible={true}
-      focusable={true}
-      onClick={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
-      style={
-        [
-          [
-            {
-              "userSelect": "auto",
-            },
-            {
-              "alignItems": "center",
-              "borderRadius": 24,
-              "flexDirection": "row",
-              "justifyContent": "center",
-              "maxWidth": 500,
-              "minHeight": 40,
-              "paddingBottom": 2,
-              "paddingLeft": 2,
-              "paddingRight": 2,
-              "paddingTop": 2,
-              "width": "100%",
-            },
-            {
-              "backgroundColor": "#ffffff",
-            },
-          ],
-          {
-            "opacity": 1,
-          },
-        ]
-      }
-      testID="Annuler"
-    >
-      <View
-        style={
-          [
-            {
-              "alignItems": "center",
-              "flexDirection": "row",
-            },
-          ]
-        }
-      >
-        <View
-          style={
-            [
-              {
-                "flexDirection": "row",
-                "flexShrink": 0,
-              },
-            ]
-          }
-        >
-          <View
-            fill="#161617"
-            height={20}
-            testID="button-icon-left"
-            width={20}
-          >
-            <Text>
-              button-icon-left-SVG-Mock
-            </Text>
-          </View>
+            L’anonymisation de tes données personnelles empêche toute possibilité de te réidentifier à l’avenir.
+          </Text>
           <View
             numberOfSpaces={2}
             style={
@@ -951,7 +642,7 @@ exports[`DeleteProfileConfirmation should match snapshot 1`] = `
                 "width": "100%",
               },
               {
-                "backgroundColor": "transparent",
+                "backgroundColor": "#ffffff",
               },
             ],
             {

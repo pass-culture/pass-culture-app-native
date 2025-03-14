@@ -55,31 +55,42 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
     style={
       [
         {
-          "fontFamily": "Montserrat-Bold",
-          "fontSize": 17,
-          "lineHeight": 27.2,
-          "marginBottom": 16,
-          "textAlign": "center",
+          "alignItems": "center",
+          "gap": 16,
+          "marginBottom": 48,
         },
       ]
     }
   >
-    Identifie-toi pour retrouver tes favoris
-  </Text>
-  <Text
-    style={
-      [
-        {
-          "fontFamily": "Montserrat-Medium",
-          "fontSize": 16,
-          "lineHeight": 25.6,
-          "textAlign": "center",
-        },
-      ]
-    }
-  >
-    Ton compte te permettra de retrouver tous tes bons plans en un clin d’oeil !
-  </Text>
+    <Text
+      style={
+        [
+          {
+            "fontFamily": "Montserrat-Bold",
+            "fontSize": 21,
+            "lineHeight": 33.6,
+            "textAlign": "center",
+          },
+        ]
+      }
+    >
+      Identifie-toi pour retrouver tes favoris
+    </Text>
+    <Text
+      style={
+        [
+          {
+            "fontFamily": "Montserrat-Medium",
+            "fontSize": 16,
+            "lineHeight": 25.6,
+            "textAlign": "center",
+          },
+        ]
+      }
+    >
+      Ton compte te permettra de retrouver tous tes bons plans en un clin d’oeil !
+    </Text>
+  </View>
   <View
     gap={4}
     style={

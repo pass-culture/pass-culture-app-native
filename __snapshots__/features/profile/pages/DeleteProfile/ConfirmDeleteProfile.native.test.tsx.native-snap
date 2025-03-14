@@ -8,7 +8,7 @@ exports[`ConfirmDeleteProfile component should render confirm delete profile 1`]
       [
         {
           "backgroundColor": "rgba(255,255,255,0)",
-          "borderBottomColor": "#F1F1F4",
+          "borderBottomColor": "#cbcdd2",
           "borderBottomWidth": 1,
           "left": 0,
           "position": "absolute",
@@ -231,10 +231,9 @@ exports[`ConfirmDeleteProfile component should render confirm delete profile 1`]
       style={
         [
           {
-            "fontFamily": "Montserrat-Bold",
-            "fontSize": 21,
-            "lineHeight": 33.6,
-            "textAlign": "center",
+            "alignItems": "center",
+            "gap": 16,
+            "marginBottom": 24,
           },
         ]
       }
@@ -243,7 +242,6 @@ exports[`ConfirmDeleteProfile component should render confirm delete profile 1`]
         style={
           [
             {
-              "color": "#161617",
               "fontFamily": "Montserrat-Bold",
               "fontSize": 21,
               "lineHeight": 33.6,
@@ -608,240 +606,6 @@ exports[`ConfirmDeleteProfile component should render confirm delete profile 1`]
       >
         Nous gardons toutes les informations personnelles que tu nous as transmises lors de la vérification de ton identité.
       </Text>
-      <View
-        numberOfSpaces={14}
-        style={
-          [
-            {
-              "height": 56,
-            },
-          ]
-        }
-      />
-      <View
-        style={
-          [
-            {
-              "marginTop": 12,
-            },
-          ]
-        }
-      >
-        <View
-          accessibilityLabel="Supprimer mon compte"
-          accessibilityState={
-            {
-              "busy": undefined,
-              "checked": undefined,
-              "disabled": undefined,
-              "expanded": undefined,
-              "selected": undefined,
-            }
-          }
-          accessibilityValue={
-            {
-              "max": undefined,
-              "min": undefined,
-              "now": undefined,
-              "text": undefined,
-            }
-          }
-          accessible={true}
-          focusable={true}
-          onClick={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
-          style={
-            [
-              [
-                {
-                  "userSelect": "auto",
-                },
-                {
-                  "alignItems": "center",
-                  "backgroundColor": "#eb0055",
-                  "borderRadius": 24,
-                  "flexDirection": "row",
-                  "justifyContent": "center",
-                  "maxWidth": 500,
-                  "minHeight": 40,
-                  "paddingBottom": 2,
-                  "paddingLeft": 20,
-                  "paddingRight": 20,
-                  "paddingTop": 2,
-                  "width": "100%",
-                },
-                {},
-              ],
-              {
-                "opacity": 1,
-              },
-            ]
-          }
-          testID="Supprimer mon compte"
-        >
-          <View
-            style={
-              [
-                {
-                  "alignItems": "center",
-                  "flexDirection": "row",
-                },
-              ]
-            }
-          >
-            <Text
-              adjustsFontSizeToFit={false}
-              numberOfLines={1}
-              style={
-                [
-                  {
-                    "color": "#ffffff",
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                    "maxWidth": "100%",
-                  },
-                ]
-              }
-            >
-              Supprimer mon compte
-            </Text>
-          </View>
-        </View>
-        <View
-          numberOfSpaces={4}
-          style={
-            [
-              {
-                "height": 16,
-              },
-            ]
-          }
-        />
-        <View
-          accessibilityLabel="Consulter l’article d’aide"
-          accessibilityState={
-            {
-              "busy": undefined,
-              "checked": undefined,
-              "disabled": undefined,
-              "expanded": undefined,
-              "selected": undefined,
-            }
-          }
-          accessibilityValue={
-            {
-              "max": undefined,
-              "min": undefined,
-              "now": undefined,
-              "text": undefined,
-            }
-          }
-          accessible={true}
-          focusable={true}
-          onClick={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
-          style={
-            [
-              [
-                {
-                  "userSelect": "auto",
-                },
-                {
-                  "alignItems": "center",
-                  "borderRadius": 24,
-                  "flexDirection": "row",
-                  "justifyContent": "center",
-                  "maxWidth": 500,
-                  "minHeight": 40,
-                  "paddingBottom": 2,
-                  "paddingLeft": 2,
-                  "paddingRight": 2,
-                  "paddingTop": 2,
-                  "width": "100%",
-                },
-                {
-                  "backgroundColor": "#ffffff",
-                },
-              ],
-              {
-                "opacity": 1,
-              },
-            ]
-          }
-          testID="Consulter l’article d’aide"
-        >
-          <View
-            style={
-              [
-                {
-                  "alignItems": "center",
-                  "flexDirection": "row",
-                },
-              ]
-            }
-          >
-            <View
-              style={
-                [
-                  {
-                    "flexDirection": "row",
-                    "flexShrink": 0,
-                  },
-                ]
-              }
-            >
-              <View
-                accessibilityLabel="Nouvelle fenêtre"
-                height={20}
-                testID="button-icon-left"
-                width={20}
-              >
-                <Text>
-                  button-icon-left-SVG-Mock
-                </Text>
-              </View>
-              <View
-                numberOfSpaces={2}
-                style={
-                  [
-                    {
-                      "width": 8,
-                    },
-                  ]
-                }
-              />
-            </View>
-            <Text
-              adjustsFontSizeToFit={false}
-              numberOfLines={1}
-              style={
-                [
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                    "maxWidth": "100%",
-                  },
-                ]
-              }
-            >
-              Consulter l’article d’aide
-            </Text>
-          </View>
-        </View>
-      </View>
     </View>
     <View
       flex={1}
@@ -1000,7 +764,7 @@ exports[`ConfirmDeleteProfile component should render confirm delete profile 1`]
                 "width": "100%",
               },
               {
-                "backgroundColor": "transparent",
+                "backgroundColor": "#ffffff",
               },
             ],
             {

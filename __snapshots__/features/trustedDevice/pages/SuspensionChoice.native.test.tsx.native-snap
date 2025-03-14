@@ -8,7 +8,7 @@ exports[`<SuspensionChoice/> should match snapshot 1`] = `
       [
         {
           "backgroundColor": "rgba(255,255,255,0)",
-          "borderBottomColor": "#F1F1F4",
+          "borderBottomColor": "#cbcdd2",
           "borderBottomWidth": 1,
           "left": 0,
           "position": "absolute",
@@ -226,39 +226,14 @@ exports[`<SuspensionChoice/> should match snapshot 1`] = `
         </Text>
       </View>
     </View>
-    <Text
-      style={
-        [
-          {
-            "fontFamily": "Montserrat-Bold",
-            "fontSize": 19,
-            "lineHeight": 30.4,
-            "textAlign": "center",
-          },
-        ]
-      }
-    >
-      Souhaites-tu suspendre ton compte pass Culture ?
-    </Text>
     <View
       gap={4}
       style={
         [
           {
-            "flexBasis": 0,
-            "flexGrow": 0.5,
-            "flexShrink": 1,
-          },
-        ]
-      }
-    />
-    <Text
-      style={
-        [
-          {
-            "fontFamily": "Montserrat-SemiBold",
-            "fontSize": 16,
-            "lineHeight": 25.6,
+            "alignItems": "center",
+            "gap": 16,
+            "marginBottom": 24,
           },
         ]
       }
@@ -267,7 +242,6 @@ exports[`<SuspensionChoice/> should match snapshot 1`] = `
         style={
           [
             {
-              "color": "#161617",
               "fontFamily": "Montserrat-Bold",
               "fontSize": 21,
               "lineHeight": 33.6,
@@ -292,7 +266,6 @@ exports[`<SuspensionChoice/> should match snapshot 1`] = `
         style={
           [
             {
-              "color": "#161617",
               "fontFamily": "Montserrat-SemiBold",
               "fontSize": 16,
               "lineHeight": 25.6,
@@ -355,26 +328,13 @@ exports[`<SuspensionChoice/> should match snapshot 1`] = `
                 </Text>
               </View>
             </View>
-          </View>
-          <Text
-            style={
-              [
-                {
-                  "flexBasis": 0,
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
-                  "marginLeft": 12,
-                },
-              ]
-            }
-          >
             <Text
               style={
                 [
                   {
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
                     "fontFamily": "Montserrat-Medium",
                     "fontSize": 16,
                     "lineHeight": 25.6,
@@ -387,7 +347,6 @@ exports[`<SuspensionChoice/> should match snapshot 1`] = `
                 style={
                   [
                     {
-                      "color": "#161617",
                       "fontFamily": "Montserrat-Medium",
                       "fontSize": 16,
                       "lineHeight": 25.6,
@@ -545,7 +504,6 @@ exports[`<SuspensionChoice/> should match snapshot 1`] = `
               style={
                 [
                   {
-                    "color": "#161617",
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
@@ -560,23 +518,6 @@ exports[`<SuspensionChoice/> should match snapshot 1`] = `
               si tu as un dossier en cours, tu ne pourras pas en déposer un nouveau.
             </Text>
           </View>
-          <Text
-            style={
-              [
-                {
-                  "flexBasis": 0,
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
-                  "marginLeft": 12,
-                },
-              ]
-            }
-          >
-            si tu as un dossier en cours, tu ne pourras pas en déposer un nouveau.
-          </Text>
         </View>
         <View
           accessibilityRole="none"
@@ -624,7 +565,6 @@ exports[`<SuspensionChoice/> should match snapshot 1`] = `
               style={
                 [
                   {
-                    "color": "#161617",
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
@@ -639,23 +579,6 @@ exports[`<SuspensionChoice/> should match snapshot 1`] = `
               tu n’auras plus accès au catalogue.
             </Text>
           </View>
-          <Text
-            style={
-              [
-                {
-                  "flexBasis": 0,
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
-                  "marginLeft": 12,
-                },
-              ]
-            }
-          >
-            tu n’auras plus accès au catalogue.
-          </Text>
         </View>
       </View>
       <View
@@ -672,7 +595,6 @@ exports[`<SuspensionChoice/> should match snapshot 1`] = `
         style={
           [
             {
-              "color": "#161617",
               "fontFamily": "Montserrat-SemiBold",
               "fontSize": 16,
               "lineHeight": 25.6,
@@ -686,7 +608,6 @@ exports[`<SuspensionChoice/> should match snapshot 1`] = `
         style={
           [
             {
-              "color": "#161617",
               "fontFamily": "Montserrat-Medium",
               "fontSize": 16,
               "lineHeight": 25.6,
@@ -702,43 +623,9 @@ exports[`<SuspensionChoice/> should match snapshot 1`] = `
       style={
         [
           {
-            "height": 16,
-          },
-        ]
-      }
-    />
-    <Text
-      style={
-        [
-          {
-            "fontFamily": "Montserrat-SemiBold",
-            "fontSize": 16,
-            "lineHeight": 25.6,
-          },
-        ]
-      }
-    >
-      Les données que nous conservons :
-    </Text>
-    <Text
-      style={
-        [
-          {
-            "fontFamily": "Montserrat-Medium",
-            "fontSize": 16,
-            "lineHeight": 25.6,
-          },
-        ]
-      }
-    >
-      Nous gardons toutes les informations personnelles que tu nous as transmises lors de la vérification de ton identité.
-    </Text>
-    <View
-      numberOfSpaces={4}
-      style={
-        [
-          {
-            "height": 16,
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
           },
         ]
       }

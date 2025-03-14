@@ -8,7 +8,7 @@ exports[`<BeneficiaryAccountCreated/> should render correctly for 18 year-old be
       [
         {
           "backgroundColor": "rgba(255,255,255,0)",
-          "borderBottomColor": "#F1F1F4",
+          "borderBottomColor": "#cbcdd2",
           "borderBottomWidth": 1,
           "left": 0,
           "position": "absolute",
@@ -23,88 +23,8 @@ exports[`<BeneficiaryAccountCreated/> should render correctly for 18 year-old be
     }
   >
     <View
-      flex={2}
-      style={
-        [
-          {
-            "flexBasis": 0,
-            "flexGrow": 2,
-            "flexShrink": 1,
-          },
-        ]
-      }
-    />
-    <View
-      hasHeight={true}
-      style={
-        [
-          {
-            "alignItems": "center",
-            "flexGrow": 1,
-            "height": "30%",
-            "justifyContent": "center",
-          },
-        ]
-      }
-    >
-      <View>
-        undefined-Lottie-Mock
-      </View>
-    </View>
-    <View
-      flex={0.5}
-      style={
-        [
-          {
-            "flexBasis": 0,
-            "flexGrow": 0.5,
-            "flexShrink": 1,
-          },
-        ]
-      }
-    />
-    <Text
-      style={
-        [
-          {
-            "fontFamily": "Montserrat-Bold",
-            "fontSize": 28,
-            "lineHeight": 44.8,
-            "textAlign": "center",
-          },
-        ]
-      }
-    >
-      Bonne nouvelle !
-    </Text>
-    <View
-      flex={0.5}
-      style={
-        [
-          {
-            "flexBasis": 0,
-            "flexGrow": 0.5,
-            "flexShrink": 1,
-          },
-        ]
-      }
-    />
-    <Text
-      style={
-        [
-          {
-            "fontFamily": "Montserrat-Bold",
-            "fontSize": 17,
-            "lineHeight": 27.2,
-            "textAlign": "center",
-          },
-        ]
-      }
-    >
-      300 € viennent d’être crédités sur ton compte pass Culture
-    </Text>
-    <View
-      numberOfSpaces={4}
+      customHeight={16}
+      enable={true}
       style={
         [
           {
@@ -201,20 +121,6 @@ exports[`<BeneficiaryAccountCreated/> should render correctly for 18 year-old be
         ]
       }
     />
-    <Text
-      style={
-        [
-          {
-            "fontFamily": "Montserrat-Medium",
-            "fontSize": 16,
-            "lineHeight": 25.6,
-            "textAlign": "center",
-          },
-        ]
-      }
-    >
-      Tu as deux ans pour profiter de ton crédit.
-    </Text>
     <View
       flex={1}
       style={
@@ -261,7 +167,6 @@ exports[`<BeneficiaryAccountCreated/> should render correctly for 18 year-old be
         style={
           [
             {
-              "color": "#161617",
               "fontFamily": "Montserrat-Bold",
               "fontSize": 21,
               "lineHeight": 33.6,
@@ -276,7 +181,6 @@ exports[`<BeneficiaryAccountCreated/> should render correctly for 18 year-old be
         style={
           [
             {
-              "color": "#161617",
               "fontFamily": "Montserrat-Medium",
               "fontSize": 16,
               "lineHeight": 25.6,
@@ -422,7 +326,6 @@ exports[`<BeneficiaryAccountCreated/> should render correctly for 18 year-old be
         style={
           [
             {
-              "color": "#161617",
               "fontFamily": "Montserrat-Medium",
               "fontSize": 16,
               "lineHeight": 25.6,
@@ -565,7 +468,7 @@ exports[`<BeneficiaryAccountCreated/> should render correctly for underage benef
       [
         {
           "backgroundColor": "rgba(255,255,255,0)",
-          "borderBottomColor": "#F1F1F4",
+          "borderBottomColor": "#cbcdd2",
           "borderBottomWidth": 1,
           "left": 0,
           "position": "absolute",
@@ -580,88 +483,8 @@ exports[`<BeneficiaryAccountCreated/> should render correctly for underage benef
     }
   >
     <View
-      flex={2}
-      style={
-        [
-          {
-            "flexBasis": 0,
-            "flexGrow": 2,
-            "flexShrink": 1,
-          },
-        ]
-      }
-    />
-    <View
-      hasHeight={true}
-      style={
-        [
-          {
-            "alignItems": "center",
-            "flexGrow": 1,
-            "height": "30%",
-            "justifyContent": "center",
-          },
-        ]
-      }
-    >
-      <View>
-        undefined-Lottie-Mock
-      </View>
-    </View>
-    <View
-      flex={0.5}
-      style={
-        [
-          {
-            "flexBasis": 0,
-            "flexGrow": 0.5,
-            "flexShrink": 1,
-          },
-        ]
-      }
-    />
-    <Text
-      style={
-        [
-          {
-            "fontFamily": "Montserrat-Bold",
-            "fontSize": 28,
-            "lineHeight": 44.8,
-            "textAlign": "center",
-          },
-        ]
-      }
-    >
-      Bonne nouvelle !
-    </Text>
-    <View
-      flex={0.5}
-      style={
-        [
-          {
-            "flexBasis": 0,
-            "flexGrow": 0.5,
-            "flexShrink": 1,
-          },
-        ]
-      }
-    />
-    <Text
-      style={
-        [
-          {
-            "fontFamily": "Montserrat-Bold",
-            "fontSize": 17,
-            "lineHeight": 27.2,
-            "textAlign": "center",
-          },
-        ]
-      }
-    >
-      300 € viennent d’être crédités sur ton compte pass Culture
-    </Text>
-    <View
-      numberOfSpaces={4}
+      customHeight={16}
+      enable={true}
       style={
         [
           {
@@ -758,20 +581,6 @@ exports[`<BeneficiaryAccountCreated/> should render correctly for underage benef
         ]
       }
     />
-    <Text
-      style={
-        [
-          {
-            "fontFamily": "Montserrat-Medium",
-            "fontSize": 16,
-            "lineHeight": 25.6,
-            "textAlign": "center",
-          },
-        ]
-      }
-    >
-      Tu as jusqu’à la veille de tes 18 ans pour profiter de ton crédit.
-    </Text>
     <View
       flex={1}
       style={
@@ -818,7 +627,6 @@ exports[`<BeneficiaryAccountCreated/> should render correctly for underage benef
         style={
           [
             {
-              "color": "#161617",
               "fontFamily": "Montserrat-Bold",
               "fontSize": 21,
               "lineHeight": 33.6,
@@ -833,7 +641,6 @@ exports[`<BeneficiaryAccountCreated/> should render correctly for underage benef
         style={
           [
             {
-              "color": "#161617",
               "fontFamily": "Montserrat-Medium",
               "fontSize": 16,
               "lineHeight": 25.6,
@@ -979,7 +786,6 @@ exports[`<BeneficiaryAccountCreated/> should render correctly for underage benef
         style={
           [
             {
-              "color": "#161617",
               "fontFamily": "Montserrat-Medium",
               "fontSize": 16,
               "lineHeight": 25.6,

@@ -8,7 +8,7 @@ exports[`ExpiredOrLostID should render correctly 1`] = `
       [
         {
           "backgroundColor": "rgba(255,255,255,0)",
-          "borderBottomColor": "#F1F1F4",
+          "borderBottomColor": "#cbcdd2",
           "borderBottomWidth": 1,
           "left": 0,
           "position": "absolute",
@@ -227,41 +227,14 @@ exports[`ExpiredOrLostID should render correctly 1`] = `
         </Text>
       </View>
     </View>
-    <Text
-      style={
-        [
-          {
-            "fontFamily": "Montserrat-Bold",
-            "fontSize": 21,
-            "lineHeight": 33.6,
-            "textAlign": "center",
-          },
-        ]
-      }
-    >
-      Ta pièce d’identité expirée ou perdue
-    </Text>
     <View
       gap={4}
       style={
         [
           {
-            "flexBasis": 0,
-            "flexGrow": 0.5,
-            "flexShrink": 1,
-          },
-        ]
-      }
-    />
-    <Text
-      style={
-        [
-          {
-            "fontFamily": "Montserrat-Medium",
-            "fontSize": 16,
-            "lineHeight": 25.6,
-            "marginBottom": 20,
-            "textAlign": "center",
+            "alignItems": "center",
+            "gap": 16,
+            "marginBottom": 24,
           },
         ]
       }
@@ -270,7 +243,6 @@ exports[`ExpiredOrLostID should render correctly 1`] = `
         style={
           [
             {
-              "color": "#161617",
               "fontFamily": "Montserrat-Bold",
               "fontSize": 21,
               "lineHeight": 33.6,
@@ -286,51 +258,65 @@ exports[`ExpiredOrLostID should render correctly 1`] = `
       style={
         [
           {
-            "height": 4,
-          },
-        ]
-      }
-    />
-    <Text
-      style={
-        [
-          {
-            "fontFamily": "Montserrat-Medium",
-            "fontSize": 16,
-            "lineHeight": 25.6,
-            "marginBottom": 20,
-            "textAlign": "center",
+            "marginBottom": 24,
           },
         ]
       }
     >
-      Si ta pièce d’identité est expirée, elle sera refusée pour débloquer ton crédit.
-    </Text>
-    <View
-      numberOfSpaces={1}
-      style={
-        [
-          {
-            "height": 4,
-          },
-        ]
-      }
-    />
-    <Text
-      style={
-        [
-          {
-            "fontFamily": "Montserrat-Medium",
-            "fontSize": 16,
-            "lineHeight": 25.6,
-            "marginBottom": 20,
-            "textAlign": "center",
-          },
-        ]
-      }
-    >
-      Tu peux tout de même déposer un dossier en passant par demarches-simplifiees.fr
-    </Text>
+      <View
+        gap={6}
+        style={
+          [
+            {
+              "gap": 24,
+            },
+          ]
+        }
+      >
+        <Text
+          style={
+            [
+              {
+                "fontFamily": "Montserrat-Medium",
+                "fontSize": 16,
+                "lineHeight": 25.6,
+                "textAlign": "center",
+              },
+            ]
+          }
+        >
+          Pour profiter du pass Culture tu as besoin de ta carte d’identité ou de ton passeport en cours de validité.
+        </Text>
+        <Text
+          style={
+            [
+              {
+                "fontFamily": "Montserrat-Medium",
+                "fontSize": 16,
+                "lineHeight": 25.6,
+                "textAlign": "center",
+              },
+            ]
+          }
+        >
+          Si ta pièce d’identité est expirée, elle sera refusée pour débloquer ton crédit.
+        </Text>
+        <Text
+          style={
+            [
+              {
+                "fontFamily": "Montserrat-Medium",
+                "fontSize": 16,
+                "lineHeight": 25.6,
+                "textAlign": "center",
+              },
+            ]
+          }
+        >
+          Tu peux tout de même déposer un dossier en passant par demarches-simplifiees.fr
+        </Text>
+      </View>
+    </View>
     <View
       flex={1}
       style={

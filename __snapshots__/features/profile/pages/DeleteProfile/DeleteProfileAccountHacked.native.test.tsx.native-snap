@@ -8,7 +8,7 @@ exports[`DeleteProfileAccountHacked should render correctly 1`] = `
       [
         {
           "backgroundColor": "rgba(255,255,255,0)",
-          "borderBottomColor": "#F1F1F4",
+          "borderBottomColor": "#cbcdd2",
           "borderBottomWidth": 1,
           "left": 0,
           "position": "absolute",
@@ -23,52 +23,8 @@ exports[`DeleteProfileAccountHacked should render correctly 1`] = `
     }
   >
     <View
-      height={156}
-      width={200}
-    >
-      <Text>
-        undefined-SVG-Mock
-      </Text>
-    </View>
-  </View>
-  <Text
-    style={
-      [
-        {
-          "fontFamily": "Montserrat-Bold",
-          "fontSize": 21,
-          "lineHeight": 33.6,
-          "textAlign": "center",
-        },
-      ]
-    }
-  >
-    Sécurise ton compte
-  </Text>
-  <View
-    flex={0.5}
-    style={
-      [
-        {
-          "flexBasis": 0,
-          "flexGrow": 0.5,
-          "flexShrink": 1,
-        },
-      ]
-    }
-  />
-  <View
-    gap={8}
-    style={
-      [
-        {
-          "gap": 32,
-        },
-      ]
-    }
-  >
-    <View
-      gap={6}
+      customHeight={16}
+      enable={true}
       style={
         [
           {
@@ -286,54 +242,15 @@ exports[`DeleteProfileAccountHacked should render correctly 1`] = `
         style={
           [
             {
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 16,
-              "lineHeight": 25.6,
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 21,
+              "lineHeight": 33.6,
+              "textAlign": "center",
             },
           ]
         }
       >
-        Tu as indiqué
-        <Text
-          style={
-            [
-              {
-                "fontFamily": "Montserrat-SemiBold",
-                "fontSize": 16,
-                "lineHeight": 25.6,
-              },
-            ]
-          }
-        >
-           que quelqu’un d’autre a accès à ton compte.
-        </Text>
-      </Text>
-      <Text
-        style={
-          [
-            {
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 16,
-              "lineHeight": 25.6,
-            },
-          ]
-        }
-      >
-        Pour des raisons de 
-        <Text
-          style={
-            [
-              {
-                "fontFamily": "Montserrat-SemiBold",
-                "fontSize": 16,
-                "lineHeight": 25.6,
-              },
-            ]
-          }
-        >
-          sécurité
-        </Text>
-        , nous te conseillons de suspendre ton compte temporairement.
+        Sécurise ton compte
       </Text>
     </View>
     <View
@@ -359,7 +276,6 @@ exports[`DeleteProfileAccountHacked should render correctly 1`] = `
           style={
             [
               {
-                "color": "#161617",
                 "fontFamily": "Montserrat-Medium",
                 "fontSize": 16,
                 "lineHeight": 25.6,
@@ -372,7 +288,6 @@ exports[`DeleteProfileAccountHacked should render correctly 1`] = `
             style={
               [
                 {
-                  "color": "#161617",
                   "fontFamily": "Montserrat-SemiBold",
                   "fontSize": 16,
                   "lineHeight": 25.6,
@@ -387,7 +302,6 @@ exports[`DeleteProfileAccountHacked should render correctly 1`] = `
           style={
             [
               {
-                "color": "#161617",
                 "fontFamily": "Montserrat-Medium",
                 "fontSize": 16,
                 "lineHeight": 25.6,
@@ -400,7 +314,6 @@ exports[`DeleteProfileAccountHacked should render correctly 1`] = `
             style={
               [
                 {
-                  "color": "#161617",
                   "fontFamily": "Montserrat-SemiBold",
                   "fontSize": 16,
                   "lineHeight": 25.6,

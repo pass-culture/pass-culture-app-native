@@ -8,7 +8,7 @@ exports[`DeleteProfileAccountNotDeletable should render correctly 1`] = `
       [
         {
           "backgroundColor": "rgba(255,255,255,0)",
-          "borderBottomColor": "#F1F1F4",
+          "borderBottomColor": "#cbcdd2",
           "borderBottomWidth": 1,
           "left": 0,
           "position": "absolute",
@@ -23,53 +23,8 @@ exports[`DeleteProfileAccountNotDeletable should render correctly 1`] = `
     }
   >
     <View
-      height={109.2}
-      width={140}
-    >
-      <Text>
-        undefined-SVG-Mock
-      </Text>
-    </View>
-  </View>
-  <Text
-    style={
-      [
-        {
-          "fontFamily": "Montserrat-Bold",
-          "fontSize": 21,
-          "lineHeight": 33.6,
-          "textAlign": "center",
-        },
-      ]
-    }
-  >
-    Nous ne pouvons pas encore supprimer ton compte
-  </Text>
-  <View
-    flex={0.5}
-    style={
-      [
-        {
-          "flexBasis": 0,
-          "flexGrow": 0.5,
-          "flexShrink": 1,
-        },
-      ]
-    }
-  />
-  <View
-    gap={6}
-    style={
-      [
-        {
-          "gap": 24,
-          "marginTop": 16,
-        },
-      ]
-    }
-  >
-    <View
-      gap={6}
+      customHeight={16}
+      enable={true}
       style={
         [
           {
@@ -93,29 +48,32 @@ exports[`DeleteProfileAccountNotDeletable should render correctly 1`] = `
         style={
           [
             {
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 14,
-              "lineHeight": 22.4,
+              "alignItems": "center",
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+              "width": "100%",
             },
           ]
         }
       >
-        Pour éviter les cas de fraude et te permettre d’accéder à ton crédit, il est nécessaire de garder ton compte pour l’instant.
-      </Text>
-      <Text
-        style={
-          [
-            {
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 14,
-              "lineHeight": 22.4,
-            },
-          ]
-        }
-      >
-        À tes 21 ans, ton compte pourra être supprimé et tu pourras faire une demande pour anonymiser tes données. Tu peux en savoir plus en
-         
-        <View>
+        <View
+          positionInHeader="left"
+          style={
+            [
+              {
+                "alignItems": "center",
+                "flexBasis": 0,
+                "flexDirection": "row",
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "justifyContent": "flex-start",
+                "paddingLeft": 12,
+                "paddingRight": 12,
+              },
+            ]
+          }
+          testID="back-button-container"
+        >
           <View
             accessibilityLabel="Revenir en arrière"
             accessibilityRole="button"
@@ -284,9 +242,10 @@ exports[`DeleteProfileAccountNotDeletable should render correctly 1`] = `
         style={
           [
             {
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 14,
-              "lineHeight": 22.4,
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 21,
+              "lineHeight": 33.6,
+              "textAlign": "center",
             },
           ]
         }
@@ -317,7 +276,6 @@ exports[`DeleteProfileAccountNotDeletable should render correctly 1`] = `
           style={
             [
               {
-                "color": "#161617",
                 "fontFamily": "Montserrat-Medium",
                 "fontSize": 14,
                 "lineHeight": 22.4,
@@ -331,7 +289,6 @@ exports[`DeleteProfileAccountNotDeletable should render correctly 1`] = `
           style={
             [
               {
-                "color": "#161617",
                 "fontFamily": "Montserrat-Medium",
                 "fontSize": 14,
                 "lineHeight": 22.4,
@@ -444,7 +401,6 @@ exports[`DeleteProfileAccountNotDeletable should render correctly 1`] = `
           style={
             [
               {
-                "color": "#161617",
                 "fontFamily": "Montserrat-Medium",
                 "fontSize": 14,
                 "lineHeight": 22.4,

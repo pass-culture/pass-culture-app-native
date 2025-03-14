@@ -34,6 +34,9 @@ export const DeleteProfileConfirmation = () => {
     },
   })
 
+  const navigateToDeleteProfileReason = () =>
+    navigate(...getProfileStackConfig('DeleteProfileReason'))
+
   return (
     <GenericInfoPageWhite
       withGoBack
@@ -45,7 +48,7 @@ export const DeleteProfileConfirmation = () => {
       }}
       buttonTertiary={{
         wording: 'Annuler',
-        navigateTo: { screen: 'DeleteProfileReason' },
+        onPress: navigateToDeleteProfileReason,
         icon: Invalidate,
       }}>
       <TypoDS.Body>

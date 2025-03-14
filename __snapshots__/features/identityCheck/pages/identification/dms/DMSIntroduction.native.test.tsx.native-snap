@@ -8,7 +8,7 @@ exports[`DMSIntroduction foreign version should render correctly 1`] = `
       [
         {
           "backgroundColor": "rgba(255,255,255,0)",
-          "borderBottomColor": "#F1F1F4",
+          "borderBottomColor": "#cbcdd2",
           "borderBottomWidth": 1,
           "left": 0,
           "position": "absolute",
@@ -228,41 +228,14 @@ exports[`DMSIntroduction foreign version should render correctly 1`] = `
         </Text>
       </View>
     </View>
-    <Text
-      style={
-        [
-          {
-            "fontFamily": "Montserrat-Bold",
-            "fontSize": 21,
-            "lineHeight": 33.6,
-            "textAlign": "center",
-          },
-        ]
-      }
-    >
-      Identifie-toi sur le site demarches-simplifiees.fr
-    </Text>
     <View
       gap={4}
       style={
         [
           {
-            "flexBasis": 0,
-            "flexGrow": 0.5,
-            "flexShrink": 1,
-          },
-        ]
-      }
-    />
-    <Text
-      style={
-        [
-          {
-            "fontFamily": "Montserrat-Medium",
-            "fontSize": 16,
-            "lineHeight": 25.6,
-            "marginBottom": 20,
-            "textAlign": "center",
+            "alignItems": "center",
+            "gap": 16,
+            "marginBottom": 24,
           },
         ]
       }
@@ -271,7 +244,6 @@ exports[`DMSIntroduction foreign version should render correctly 1`] = `
         style={
           [
             {
-              "color": "#161617",
               "fontFamily": "Montserrat-Bold",
               "fontSize": 21,
               "lineHeight": 33.6,
@@ -280,271 +252,14 @@ exports[`DMSIntroduction foreign version should render correctly 1`] = `
           ]
         }
       >
-        <View
-          style={
-            [
-              {
-                "alignItems": "center",
-                "flexDirection": "row",
-              },
-            ]
-          }
-        >
-          <View
-            height={24}
-            width={24}
-          >
-            <Text>
-              undefined-SVG-Mock
-            </Text>
-          </View>
-          <View
-            numberOfSpaces={3.75}
-            style={
-              [
-                {
-                  "width": 15,
-                },
-              ]
-            }
-          />
-          <Text
-            style={
-              [
-                {
-                  "flexBasis": 0,
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
-                },
-              ]
-            }
-          >
-            10 minutes de ton temps
-          </Text>
-        </View>
-        <View
-          numberOfSpaces={4.5}
-          style={
-            [
-              {
-                "height": 18,
-              },
-            ]
-          }
-        />
-      </View>
-      <View
-        accessibilityRole="none"
-        style={
-          [
-            {
-              "display": "flex",
-            },
-          ]
-        }
-      >
-        <View
-          style={
-            [
-              {
-                "alignItems": "center",
-                "flexDirection": "row",
-              },
-            ]
-          }
-        >
-          <View
-            height={24}
-            width={24}
-          >
-            <Text>
-              undefined-SVG-Mock
-            </Text>
-          </View>
-          <View
-            numberOfSpaces={3.75}
-            style={
-              [
-                {
-                  "width": 15,
-                },
-              ]
-            }
-          />
-          <Text
-            style={
-              [
-                {
-                  "flexBasis": 0,
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
-                },
-              ]
-            }
-          >
-            Ta carte d’identité, ton passeport ou un titre séjour français en cours de validité
-          </Text>
-        </View>
-        <View
-          numberOfSpaces={4.5}
-          style={
-            [
-              {
-                "height": 18,
-              },
-            ]
-          }
-        />
-      </View>
-      <View
-        accessibilityRole="none"
-        style={
-          [
-            {
-              "display": "flex",
-            },
-          ]
-        }
-      >
-        <View
-          style={
-            [
-              {
-                "alignItems": "center",
-                "flexDirection": "row",
-              },
-            ]
-          }
-        >
-          <View
-            height={24}
-            width={24}
-          >
-            <Text>
-              undefined-SVG-Mock
-            </Text>
-          </View>
-          <View
-            numberOfSpaces={3.75}
-            style={
-              [
-                {
-                  "width": 15,
-                },
-              ]
-            }
-          />
-          <Text
-            style={
-              [
-                {
-                  "flexBasis": 0,
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
-                },
-              ]
-            }
-          >
-            Un justificatif de domicile
-          </Text>
-        </View>
-        <View
-          numberOfSpaces={4.5}
-          style={
-            [
-              {
-                "height": 18,
-              },
-            ]
-          }
-        />
-      </View>
-      <View
-        accessibilityRole="none"
-        style={
-          [
-            {
-              "display": "flex",
-            },
-          ]
-        }
-      >
-        <View
-          style={
-            [
-              {
-                "alignItems": "center",
-                "flexDirection": "row",
-              },
-            ]
-          }
-        >
-          <View
-            fill="url(#gradienttestUuid)"
-            height={24}
-            testID="BicolorProfile"
-            width={24}
-          >
-            <Text>
-              BicolorProfile-SVG-Mock
-            </Text>
-          </View>
-          <View
-            numberOfSpaces={3.75}
-            style={
-              [
-                {
-                  "width": 15,
-                },
-              ]
-            }
-          />
-          <Text
-            style={
-              [
-                {
-                  "flexBasis": 0,
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
-                },
-              ]
-            }
-          >
-            Un selfie avec ta pièce d’identité
-          </Text>
-        </View>
-        <View
-          numberOfSpaces={4.5}
-          style={
-            [
-              {
-                "height": 18,
-              },
-            ]
-          }
-        />
-      </View>
+        Identifie-toi sur le site demarches-simplifiees.fr
+      </Text>
     </View>
     <View
       style={
         [
           {
-            "fontFamily": "Montserrat-SemiBold",
-            "fontSize": 12,
-            "lineHeight": 19.2,
-            "textAlign": "center",
+            "marginBottom": 24,
           },
         ]
       }
@@ -553,7 +268,6 @@ exports[`DMSIntroduction foreign version should render correctly 1`] = `
         style={
           [
             {
-              "color": "#161617",
               "fontFamily": "Montserrat-Medium",
               "fontSize": 16,
               "lineHeight": 25.6,
@@ -617,7 +331,6 @@ exports[`DMSIntroduction foreign version should render correctly 1`] = `
               style={
                 [
                   {
-                    "color": "#161617",
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
@@ -684,7 +397,6 @@ exports[`DMSIntroduction foreign version should render correctly 1`] = `
               style={
                 [
                   {
-                    "color": "#161617",
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
@@ -751,7 +463,6 @@ exports[`DMSIntroduction foreign version should render correctly 1`] = `
               style={
                 [
                   {
-                    "color": "#161617",
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
@@ -820,7 +531,6 @@ exports[`DMSIntroduction foreign version should render correctly 1`] = `
               style={
                 [
                   {
-                    "color": "#161617",
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
@@ -850,7 +560,6 @@ exports[`DMSIntroduction foreign version should render correctly 1`] = `
         style={
           [
             {
-              "color": "#161617",
               "fontFamily": "Montserrat-SemiBold",
               "fontSize": 12,
               "lineHeight": 19.2,
@@ -1014,7 +723,7 @@ exports[`DMSIntroduction french version should render correctly 1`] = `
       [
         {
           "backgroundColor": "rgba(255,255,255,0)",
-          "borderBottomColor": "#F1F1F4",
+          "borderBottomColor": "#cbcdd2",
           "borderBottomWidth": 1,
           "left": 0,
           "position": "absolute",
@@ -1234,41 +943,14 @@ exports[`DMSIntroduction french version should render correctly 1`] = `
         </Text>
       </View>
     </View>
-    <Text
-      style={
-        [
-          {
-            "fontFamily": "Montserrat-Bold",
-            "fontSize": 21,
-            "lineHeight": 33.6,
-            "textAlign": "center",
-          },
-        ]
-      }
-    >
-      Identifie-toi sur le site demarches-simplifiees.fr
-    </Text>
     <View
       gap={4}
       style={
         [
           {
-            "flexBasis": 0,
-            "flexGrow": 0.5,
-            "flexShrink": 1,
-          },
-        ]
-      }
-    />
-    <Text
-      style={
-        [
-          {
-            "fontFamily": "Montserrat-Medium",
-            "fontSize": 16,
-            "lineHeight": 25.6,
-            "marginBottom": 20,
-            "textAlign": "center",
+            "alignItems": "center",
+            "gap": 16,
+            "marginBottom": 24,
           },
         ]
       }
@@ -1277,7 +959,6 @@ exports[`DMSIntroduction french version should render correctly 1`] = `
         style={
           [
             {
-              "color": "#161617",
               "fontFamily": "Montserrat-Bold",
               "fontSize": 21,
               "lineHeight": 33.6,
@@ -1286,205 +967,14 @@ exports[`DMSIntroduction french version should render correctly 1`] = `
           ]
         }
       >
-        <View
-          style={
-            [
-              {
-                "alignItems": "center",
-                "flexDirection": "row",
-              },
-            ]
-          }
-        >
-          <View
-            height={24}
-            width={24}
-          >
-            <Text>
-              undefined-SVG-Mock
-            </Text>
-          </View>
-          <View
-            numberOfSpaces={3.75}
-            style={
-              [
-                {
-                  "width": 15,
-                },
-              ]
-            }
-          />
-          <Text
-            style={
-              [
-                {
-                  "flexBasis": 0,
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
-                },
-              ]
-            }
-          >
-            10 minutes de ton temps
-          </Text>
-        </View>
-        <View
-          numberOfSpaces={4.5}
-          style={
-            [
-              {
-                "height": 18,
-              },
-            ]
-          }
-        />
-      </View>
-      <View
-        accessibilityRole="none"
-        style={
-          [
-            {
-              "display": "flex",
-            },
-          ]
-        }
-      >
-        <View
-          style={
-            [
-              {
-                "alignItems": "center",
-                "flexDirection": "row",
-              },
-            ]
-          }
-        >
-          <View
-            height={24}
-            width={24}
-          >
-            <Text>
-              undefined-SVG-Mock
-            </Text>
-          </View>
-          <View
-            numberOfSpaces={3.75}
-            style={
-              [
-                {
-                  "width": 15,
-                },
-              ]
-            }
-          />
-          <Text
-            style={
-              [
-                {
-                  "flexBasis": 0,
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
-                },
-              ]
-            }
-          >
-            Ta pièce d’identité française en cours de validité
-          </Text>
-        </View>
-        <View
-          numberOfSpaces={4.5}
-          style={
-            [
-              {
-                "height": 18,
-              },
-            ]
-          }
-        />
-      </View>
-      <View
-        accessibilityRole="none"
-        style={
-          [
-            {
-              "display": "flex",
-            },
-          ]
-        }
-      >
-        <View
-          style={
-            [
-              {
-                "alignItems": "center",
-                "flexDirection": "row",
-              },
-            ]
-          }
-        >
-          <View
-            fill="url(#gradienttestUuid)"
-            height={24}
-            testID="BicolorProfile"
-            width={24}
-          >
-            <Text>
-              BicolorProfile-SVG-Mock
-            </Text>
-          </View>
-          <View
-            numberOfSpaces={3.75}
-            style={
-              [
-                {
-                  "width": 15,
-                },
-              ]
-            }
-          />
-          <Text
-            style={
-              [
-                {
-                  "flexBasis": 0,
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
-                },
-              ]
-            }
-          >
-            Un selfie avec ta pièce d’identité
-          </Text>
-        </View>
-        <View
-          numberOfSpaces={4.5}
-          style={
-            [
-              {
-                "height": 18,
-              },
-            ]
-          }
-        />
-      </View>
+        Identifie-toi sur le site demarches-simplifiees.fr
+      </Text>
     </View>
     <View
       style={
         [
           {
-            "fontFamily": "Montserrat-SemiBold",
-            "fontSize": 12,
-            "lineHeight": 19.2,
-            "textAlign": "center",
+            "marginBottom": 24,
           },
         ]
       }
@@ -1493,7 +983,6 @@ exports[`DMSIntroduction french version should render correctly 1`] = `
         style={
           [
             {
-              "color": "#161617",
               "fontFamily": "Montserrat-Medium",
               "fontSize": 16,
               "lineHeight": 25.6,
@@ -1557,7 +1046,6 @@ exports[`DMSIntroduction french version should render correctly 1`] = `
               style={
                 [
                   {
-                    "color": "#161617",
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
@@ -1624,7 +1112,6 @@ exports[`DMSIntroduction french version should render correctly 1`] = `
               style={
                 [
                   {
-                    "color": "#161617",
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
@@ -1693,7 +1180,6 @@ exports[`DMSIntroduction french version should render correctly 1`] = `
               style={
                 [
                   {
-                    "color": "#161617",
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
@@ -1723,7 +1209,6 @@ exports[`DMSIntroduction french version should render correctly 1`] = `
         style={
           [
             {
-              "color": "#161617",
               "fontFamily": "Montserrat-SemiBold",
               "fontSize": 12,
               "lineHeight": 19.2,

@@ -8,7 +8,7 @@ exports[`<AccountSecurity/> with route params when user is connected and has a p
       [
         {
           "backgroundColor": "rgba(255,255,255,0)",
-          "borderBottomColor": "#F1F1F4",
+          "borderBottomColor": "#cbcdd2",
           "borderBottomWidth": 1,
           "left": 0,
           "position": "absolute",
@@ -23,59 +23,12 @@ exports[`<AccountSecurity/> with route params when user is connected and has a p
     }
   >
     <View
-      height={156}
-      width={200}
-    >
-      <Text>
-        undefined-SVG-Mock
-      </Text>
-    </View>
-  </View>
-  <Text
-    style={
-      [
-        {
-          "fontFamily": "Montserrat-Bold",
-          "fontSize": 19,
-          "lineHeight": 30.4,
-          "textAlign": "center",
-        },
-      ]
-    }
-  >
-    Sécurise ton compte
-  </Text>
-  <View
-    flex={0.5}
-    style={
-      [
-        {
-          "flexBasis": 0,
-          "flexGrow": 0.5,
-          "flexShrink": 1,
-        },
-      ]
-    }
-  />
-  <Text
-    style={
-      [
-        {
-          "fontFamily": "Montserrat-Medium",
-          "fontSize": 16,
-          "lineHeight": 25.6,
-        },
-      ]
-    }
-  >
-    Tu as indiqué 
-    <Text
+      customHeight={16}
+      enable={true}
       style={
         [
           {
-            "fontFamily": "Montserrat-SemiBold",
-            "fontSize": 16,
-            "lineHeight": 25.6,
+            "height": 16,
           },
         ]
       }
@@ -179,189 +132,7 @@ exports[`<AccountSecurity/> with route params when user is connected and has a p
           },
         ]
       }
-    >
-      <Text
-        style={
-          [
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-SemiBold",
-              "fontSize": 12,
-              "lineHeight": 19.2,
-            },
-          ]
-        }
-        textColor="#161617"
-      >
-        <Text
-          style={
-            [
-              {
-                "fontFamily": "Montserrat-Regular",
-                "fontSize": 12,
-                "lineHeight": 19.2,
-              },
-            ]
-          }
-        >
-          <Text
-            style={
-              [
-                {
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 12,
-                  "lineHeight": 19.2,
-                },
-              ]
-            }
-          >
-            Appareil utilisé : 
-          </Text>
-           
-          iOS - iPhone 13
-          
-
-          <Text
-            style={
-              [
-                {
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 12,
-                  "lineHeight": 19.2,
-                },
-              ]
-            }
-          >
-            Lieu : 
-          </Text>
-           
-          Paris
-          
-
-          <Text
-            style={
-              [
-                {
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 12,
-                  "lineHeight": 19.2,
-                },
-              ]
-            }
-          >
-            Date et heure : 
-          </Text>
-           
-          Le 09/06/2023 à 10h00
-        </Text>
-      </Text>
-    </View>
-  </View>
-  <View
-    numberOfSpaces={4}
-    style={
-      [
-        {
-          "height": 16,
-        },
-      ]
-    }
-  />
-  <Text
-    style={
-      [
-        {
-          "fontFamily": "Montserrat-Medium",
-          "fontSize": 16,
-          "lineHeight": 25.6,
-        },
-      ]
-    }
-  >
-    Pour des raisons de 
-    <Text
-      style={
-        [
-          {
-            "fontFamily": "Montserrat-SemiBold",
-            "fontSize": 16,
-            "lineHeight": 25.6,
-          },
-        ]
-      }
-    >
-      sécurité,
-    </Text>
-     nous te conseillons de
-     modifier ton mot de passe ou de suspendre ton compte temporairement.
-  </Text>
-  <View
-    numberOfSpaces={6}
-    style={
-      [
-        {
-          "height": 24,
-        },
-      ]
-    }
-  />
-  <View
-    accessibilityLabel="Modifier mon mot de passe"
-    accessibilityState={
-      {
-        "busy": undefined,
-        "checked": undefined,
-        "disabled": undefined,
-        "expanded": undefined,
-        "selected": undefined,
-      }
-    }
-    accessibilityValue={
-      {
-        "max": undefined,
-        "min": undefined,
-        "now": undefined,
-        "text": undefined,
-      }
-    }
-    accessible={true}
-    focusable={true}
-    onClick={[Function]}
-    onResponderGrant={[Function]}
-    onResponderMove={[Function]}
-    onResponderRelease={[Function]}
-    onResponderTerminate={[Function]}
-    onResponderTerminationRequest={[Function]}
-    onStartShouldSetResponder={[Function]}
-    style={
-      [
-        [
-          {
-            "userSelect": "auto",
-          },
-          {
-            "alignItems": "center",
-            "backgroundColor": "#eb0055",
-            "borderRadius": 24,
-            "flexDirection": "row",
-            "justifyContent": "center",
-            "maxWidth": 500,
-            "minHeight": 40,
-            "paddingBottom": 2,
-            "paddingLeft": 20,
-            "paddingRight": 20,
-            "paddingTop": 2,
-            "width": "100%",
-          },
-          {},
-        ],
-        {
-          "opacity": 1,
-        },
-      ]
-    }
-    testID="Modifier mon mot de passe"
-  >
+    />
     <View
       animation={false}
       style={
@@ -370,130 +141,6 @@ exports[`<AccountSecurity/> with route params when user is connected and has a p
             "alignItems": "center",
             "flexGrow": 1,
             "justifyContent": "center",
-            "maxWidth": 500,
-            "minHeight": 40,
-            "paddingBottom": 2,
-            "paddingLeft": 20,
-            "paddingRight": 20,
-            "paddingTop": 2,
-            "width": "100%",
-          },
-          {
-            "borderColor": "#eb0055",
-            "borderStyle": "solid",
-            "borderWidth": 2,
-          },
-        ],
-        {
-          "opacity": 1,
-        },
-      ]
-    }
-    testID="Suspendre mon compte"
-  >
-    <View
-      style={
-        [
-          {
-            "alignItems": "center",
-            "flexDirection": "row",
-          },
-        ]
-      }
-    >
-      <Text
-        adjustsFontSizeToFit={false}
-        numberOfLines={1}
-        style={
-          [
-            {
-              "color": "#eb0055",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 16,
-              "lineHeight": 25.6,
-              "maxWidth": "100%",
-            },
-          ]
-        }
-      >
-        Suspendre mon compte
-      </Text>
-    </View>
-  </View>
-  <View
-    numberOfSpaces={2}
-    style={
-      [
-        {
-          "height": 8,
-        },
-      ]
-    }
-  />
-  <View
-    accessibilityLabel="Ne pas sécuriser mon compte"
-    accessibilityState={
-      {
-        "busy": undefined,
-        "checked": undefined,
-        "disabled": undefined,
-        "expanded": undefined,
-        "selected": undefined,
-      }
-    }
-    accessibilityValue={
-      {
-        "max": undefined,
-        "min": undefined,
-        "now": undefined,
-        "text": undefined,
-      }
-    }
-    accessible={true}
-    focusable={true}
-    onClick={[Function]}
-    onResponderGrant={[Function]}
-    onResponderMove={[Function]}
-    onResponderRelease={[Function]}
-    onResponderTerminate={[Function]}
-    onResponderTerminationRequest={[Function]}
-    onStartShouldSetResponder={[Function]}
-    style={
-      [
-        [
-          {
-            "userSelect": "auto",
-          },
-          {
-            "alignItems": "center",
-            "borderRadius": 24,
-            "flexDirection": "row",
-            "justifyContent": "center",
-            "maxWidth": 500,
-            "minHeight": 40,
-            "paddingBottom": 2,
-            "paddingLeft": 2,
-            "paddingRight": 2,
-            "paddingTop": 2,
-            "width": "100%",
-          },
-          {
-            "backgroundColor": "#ffffff",
-          },
-        ],
-        {
-          "opacity": 1,
-        },
-      ]
-    }
-    testID="Ne pas sécuriser mon compte"
-  >
-    <View
-      style={
-        [
-          {
-            "alignItems": "center",
-            "flexDirection": "row",
           },
         ]
       }
@@ -523,7 +170,6 @@ exports[`<AccountSecurity/> with route params when user is connected and has a p
         style={
           [
             {
-              "color": "#161617",
               "fontFamily": "Montserrat-Bold",
               "fontSize": 21,
               "lineHeight": 33.6,
@@ -548,7 +194,6 @@ exports[`<AccountSecurity/> with route params when user is connected and has a p
         style={
           [
             {
-              "color": "#161617",
               "fontFamily": "Montserrat-Medium",
               "fontSize": 16,
               "lineHeight": 25.6,
@@ -561,7 +206,6 @@ exports[`<AccountSecurity/> with route params when user is connected and has a p
           style={
             [
               {
-                "color": "#161617",
                 "fontFamily": "Montserrat-SemiBold",
                 "fontSize": 16,
                 "lineHeight": 25.6,
@@ -647,7 +291,6 @@ exports[`<AccountSecurity/> with route params when user is connected and has a p
               style={
                 [
                   {
-                    "color": "#161617",
                     "fontFamily": "Montserrat-Regular",
                     "fontSize": 12,
                     "lineHeight": 19.2,
@@ -659,7 +302,6 @@ exports[`<AccountSecurity/> with route params when user is connected and has a p
                 style={
                   [
                     {
-                      "color": "#161617",
                       "fontFamily": "Montserrat-SemiBold",
                       "fontSize": 12,
                       "lineHeight": 19.2,
@@ -677,7 +319,6 @@ exports[`<AccountSecurity/> with route params when user is connected and has a p
                 style={
                   [
                     {
-                      "color": "#161617",
                       "fontFamily": "Montserrat-SemiBold",
                       "fontSize": 12,
                       "lineHeight": 19.2,
@@ -695,7 +336,6 @@ exports[`<AccountSecurity/> with route params when user is connected and has a p
                 style={
                   [
                     {
-                      "color": "#161617",
                       "fontFamily": "Montserrat-SemiBold",
                       "fontSize": 12,
                       "lineHeight": 19.2,
@@ -725,7 +365,6 @@ exports[`<AccountSecurity/> with route params when user is connected and has a p
         style={
           [
             {
-              "color": "#161617",
               "fontFamily": "Montserrat-Medium",
               "fontSize": 16,
               "lineHeight": 25.6,
@@ -738,7 +377,6 @@ exports[`<AccountSecurity/> with route params when user is connected and has a p
           style={
             [
               {
-                "color": "#161617",
                 "fontFamily": "Montserrat-SemiBold",
                 "fontSize": 16,
                 "lineHeight": 25.6,
@@ -999,7 +637,7 @@ exports[`<AccountSecurity/> with route params when user is connected and has a p
                 "width": "100%",
               },
               {
-                "backgroundColor": "transparent",
+                "backgroundColor": "#ffffff",
               },
             ],
             {
@@ -1082,7 +720,7 @@ exports[`<AccountSecurity/> with route params when user is connected and has no 
       [
         {
           "backgroundColor": "rgba(255,255,255,0)",
-          "borderBottomColor": "#F1F1F4",
+          "borderBottomColor": "#cbcdd2",
           "borderBottomWidth": 1,
           "left": 0,
           "position": "absolute",
@@ -1097,59 +735,12 @@ exports[`<AccountSecurity/> with route params when user is connected and has no 
     }
   >
     <View
-      height={156}
-      width={200}
-    >
-      <Text>
-        undefined-SVG-Mock
-      </Text>
-    </View>
-  </View>
-  <Text
-    style={
-      [
-        {
-          "fontFamily": "Montserrat-Bold",
-          "fontSize": 19,
-          "lineHeight": 30.4,
-          "textAlign": "center",
-        },
-      ]
-    }
-  >
-    Sécurise ton compte
-  </Text>
-  <View
-    flex={0.5}
-    style={
-      [
-        {
-          "flexBasis": 0,
-          "flexGrow": 0.5,
-          "flexShrink": 1,
-        },
-      ]
-    }
-  />
-  <Text
-    style={
-      [
-        {
-          "fontFamily": "Montserrat-Medium",
-          "fontSize": 16,
-          "lineHeight": 25.6,
-        },
-      ]
-    }
-  >
-    Tu as indiqué 
-    <Text
+      customHeight={16}
+      enable={true}
       style={
         [
           {
-            "fontFamily": "Montserrat-SemiBold",
-            "fontSize": 16,
-            "lineHeight": 25.6,
+            "height": 16,
           },
         ]
       }
@@ -1253,189 +844,7 @@ exports[`<AccountSecurity/> with route params when user is connected and has no 
           },
         ]
       }
-    >
-      <Text
-        style={
-          [
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-SemiBold",
-              "fontSize": 12,
-              "lineHeight": 19.2,
-            },
-          ]
-        }
-        textColor="#161617"
-      >
-        <Text
-          style={
-            [
-              {
-                "fontFamily": "Montserrat-Regular",
-                "fontSize": 12,
-                "lineHeight": 19.2,
-              },
-            ]
-          }
-        >
-          <Text
-            style={
-              [
-                {
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 12,
-                  "lineHeight": 19.2,
-                },
-              ]
-            }
-          >
-            Appareil utilisé : 
-          </Text>
-           
-          iOS - iPhone 13
-          
-
-          <Text
-            style={
-              [
-                {
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 12,
-                  "lineHeight": 19.2,
-                },
-              ]
-            }
-          >
-            Lieu : 
-          </Text>
-           
-          Paris
-          
-
-          <Text
-            style={
-              [
-                {
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 12,
-                  "lineHeight": 19.2,
-                },
-              ]
-            }
-          >
-            Date et heure : 
-          </Text>
-           
-          Le 09/06/2023 à 10h00
-        </Text>
-      </Text>
-    </View>
-  </View>
-  <View
-    numberOfSpaces={4}
-    style={
-      [
-        {
-          "height": 16,
-        },
-      ]
-    }
-  />
-  <Text
-    style={
-      [
-        {
-          "fontFamily": "Montserrat-Medium",
-          "fontSize": 16,
-          "lineHeight": 25.6,
-        },
-      ]
-    }
-  >
-    Pour des raisons de 
-    <Text
-      style={
-        [
-          {
-            "fontFamily": "Montserrat-SemiBold",
-            "fontSize": 16,
-            "lineHeight": 25.6,
-          },
-        ]
-      }
-    >
-      sécurité,
-    </Text>
-     nous te conseillons de
-     sécuriser l’accès à ta boîte mail et de suspendre ton compte pass Culture temporairement.
-  </Text>
-  <View
-    numberOfSpaces={4}
-    style={
-      [
-        {
-          "height": 16,
-        },
-      ]
-    }
-  />
-  <View
-    accessibilityLabel="Suspendre mon compte"
-    accessibilityState={
-      {
-        "busy": undefined,
-        "checked": undefined,
-        "disabled": undefined,
-        "expanded": undefined,
-        "selected": undefined,
-      }
-    }
-    accessibilityValue={
-      {
-        "max": undefined,
-        "min": undefined,
-        "now": undefined,
-        "text": undefined,
-      }
-    }
-    accessible={true}
-    focusable={true}
-    onClick={[Function]}
-    onResponderGrant={[Function]}
-    onResponderMove={[Function]}
-    onResponderRelease={[Function]}
-    onResponderTerminate={[Function]}
-    onResponderTerminationRequest={[Function]}
-    onStartShouldSetResponder={[Function]}
-    style={
-      [
-        [
-          {
-            "userSelect": "auto",
-          },
-          {
-            "alignItems": "center",
-            "backgroundColor": "#eb0055",
-            "borderRadius": 24,
-            "flexDirection": "row",
-            "justifyContent": "center",
-            "maxWidth": 500,
-            "minHeight": 40,
-            "paddingBottom": 2,
-            "paddingLeft": 20,
-            "paddingRight": 20,
-            "paddingTop": 2,
-            "width": "100%",
-          },
-          {},
-        ],
-        {
-          "opacity": 1,
-        },
-      ]
-    }
-    testID="Suspendre mon compte"
-  >
+    />
     <View
       animation={false}
       style={
@@ -1444,31 +853,6 @@ exports[`<AccountSecurity/> with route params when user is connected and has no 
             "alignItems": "center",
             "flexGrow": 1,
             "justifyContent": "center",
-            "maxWidth": 500,
-            "minHeight": 40,
-            "paddingBottom": 2,
-            "paddingLeft": 2,
-            "paddingRight": 2,
-            "paddingTop": 2,
-            "width": "100%",
-          },
-          {
-            "backgroundColor": "#ffffff",
-          },
-        ],
-        {
-          "opacity": 1,
-        },
-      ]
-    }
-    testID="Ne pas sécuriser mon compte"
-  >
-    <View
-      style={
-        [
-          {
-            "alignItems": "center",
-            "flexDirection": "row",
           },
         ]
       }
@@ -1498,7 +882,6 @@ exports[`<AccountSecurity/> with route params when user is connected and has no 
         style={
           [
             {
-              "color": "#161617",
               "fontFamily": "Montserrat-Bold",
               "fontSize": 21,
               "lineHeight": 33.6,
@@ -1523,7 +906,6 @@ exports[`<AccountSecurity/> with route params when user is connected and has no 
         style={
           [
             {
-              "color": "#161617",
               "fontFamily": "Montserrat-Medium",
               "fontSize": 16,
               "lineHeight": 25.6,
@@ -1536,7 +918,6 @@ exports[`<AccountSecurity/> with route params when user is connected and has no 
           style={
             [
               {
-                "color": "#161617",
                 "fontFamily": "Montserrat-SemiBold",
                 "fontSize": 16,
                 "lineHeight": 25.6,
@@ -1622,7 +1003,6 @@ exports[`<AccountSecurity/> with route params when user is connected and has no 
               style={
                 [
                   {
-                    "color": "#161617",
                     "fontFamily": "Montserrat-Regular",
                     "fontSize": 12,
                     "lineHeight": 19.2,
@@ -1634,7 +1014,6 @@ exports[`<AccountSecurity/> with route params when user is connected and has no 
                 style={
                   [
                     {
-                      "color": "#161617",
                       "fontFamily": "Montserrat-SemiBold",
                       "fontSize": 12,
                       "lineHeight": 19.2,
@@ -1652,7 +1031,6 @@ exports[`<AccountSecurity/> with route params when user is connected and has no 
                 style={
                   [
                     {
-                      "color": "#161617",
                       "fontFamily": "Montserrat-SemiBold",
                       "fontSize": 12,
                       "lineHeight": 19.2,
@@ -1670,7 +1048,6 @@ exports[`<AccountSecurity/> with route params when user is connected and has no 
                 style={
                   [
                     {
-                      "color": "#161617",
                       "fontFamily": "Montserrat-SemiBold",
                       "fontSize": 12,
                       "lineHeight": 19.2,
@@ -1700,7 +1077,6 @@ exports[`<AccountSecurity/> with route params when user is connected and has no 
         style={
           [
             {
-              "color": "#161617",
               "fontFamily": "Montserrat-Medium",
               "fontSize": 16,
               "lineHeight": 25.6,
@@ -1713,7 +1089,6 @@ exports[`<AccountSecurity/> with route params when user is connected and has no 
           style={
             [
               {
-                "color": "#161617",
                 "fontFamily": "Montserrat-SemiBold",
                 "fontSize": 16,
                 "lineHeight": 25.6,
@@ -1884,7 +1259,7 @@ exports[`<AccountSecurity/> with route params when user is connected and has no 
                 "width": "100%",
               },
               {
-                "backgroundColor": "transparent",
+                "backgroundColor": "#ffffff",
               },
             ],
             {
@@ -1967,7 +1342,7 @@ exports[`<AccountSecurity/> without route params should match snapshot when no t
       [
         {
           "backgroundColor": "rgba(255,255,255,0)",
-          "borderBottomColor": "#F1F1F4",
+          "borderBottomColor": "#cbcdd2",
           "borderBottomWidth": 1,
           "left": 0,
           "position": "absolute",
@@ -1982,59 +1357,12 @@ exports[`<AccountSecurity/> without route params should match snapshot when no t
     }
   >
     <View
-      height={156}
-      width={200}
-    >
-      <Text>
-        undefined-SVG-Mock
-      </Text>
-    </View>
-  </View>
-  <Text
-    style={
-      [
-        {
-          "fontFamily": "Montserrat-Bold",
-          "fontSize": 19,
-          "lineHeight": 30.4,
-          "textAlign": "center",
-        },
-      ]
-    }
-  >
-    Sécurise ton compte
-  </Text>
-  <View
-    flex={0.5}
-    style={
-      [
-        {
-          "flexBasis": 0,
-          "flexGrow": 0.5,
-          "flexShrink": 1,
-        },
-      ]
-    }
-  />
-  <Text
-    style={
-      [
-        {
-          "fontFamily": "Montserrat-Medium",
-          "fontSize": 16,
-          "lineHeight": 25.6,
-        },
-      ]
-    }
-  >
-    Tu as indiqué 
-    <Text
+      customHeight={16}
+      enable={true}
       style={
         [
           {
-            "fontFamily": "Montserrat-SemiBold",
-            "fontSize": 16,
-            "lineHeight": 25.6,
+            "height": 16,
           },
         ]
       }
@@ -2138,189 +1466,7 @@ exports[`<AccountSecurity/> without route params should match snapshot when no t
           },
         ]
       }
-    >
-      <Text
-        style={
-          [
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-SemiBold",
-              "fontSize": 12,
-              "lineHeight": 19.2,
-            },
-          ]
-        }
-        textColor="#161617"
-      >
-        <Text
-          style={
-            [
-              {
-                "fontFamily": "Montserrat-Regular",
-                "fontSize": 12,
-                "lineHeight": 19.2,
-              },
-            ]
-          }
-        >
-          <Text
-            style={
-              [
-                {
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 12,
-                  "lineHeight": 19.2,
-                },
-              ]
-            }
-          >
-            Appareil utilisé : 
-          </Text>
-           
-          Indéterminé
-          
-
-          <Text
-            style={
-              [
-                {
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 12,
-                  "lineHeight": 19.2,
-                },
-              ]
-            }
-          >
-            Lieu : 
-          </Text>
-           
-          Indéterminé
-          
-
-          <Text
-            style={
-              [
-                {
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 12,
-                  "lineHeight": 19.2,
-                },
-              ]
-            }
-          >
-            Date et heure : 
-          </Text>
-           
-          Indéterminé
-        </Text>
-      </Text>
-    </View>
-  </View>
-  <View
-    numberOfSpaces={4}
-    style={
-      [
-        {
-          "height": 16,
-        },
-      ]
-    }
-  />
-  <Text
-    style={
-      [
-        {
-          "fontFamily": "Montserrat-Medium",
-          "fontSize": 16,
-          "lineHeight": 25.6,
-        },
-      ]
-    }
-  >
-    Pour des raisons de 
-    <Text
-      style={
-        [
-          {
-            "fontFamily": "Montserrat-SemiBold",
-            "fontSize": 16,
-            "lineHeight": 25.6,
-          },
-        ]
-      }
-    >
-      sécurité,
-    </Text>
-     nous te conseillons de
-     modifier ton mot de passe ou de suspendre ton compte temporairement.
-  </Text>
-  <View
-    numberOfSpaces={6}
-    style={
-      [
-        {
-          "height": 24,
-        },
-      ]
-    }
-  />
-  <View
-    accessibilityLabel="Modifier mon mot de passe"
-    accessibilityState={
-      {
-        "busy": undefined,
-        "checked": undefined,
-        "disabled": undefined,
-        "expanded": undefined,
-        "selected": undefined,
-      }
-    }
-    accessibilityValue={
-      {
-        "max": undefined,
-        "min": undefined,
-        "now": undefined,
-        "text": undefined,
-      }
-    }
-    accessible={true}
-    focusable={true}
-    onClick={[Function]}
-    onResponderGrant={[Function]}
-    onResponderMove={[Function]}
-    onResponderRelease={[Function]}
-    onResponderTerminate={[Function]}
-    onResponderTerminationRequest={[Function]}
-    onStartShouldSetResponder={[Function]}
-    style={
-      [
-        [
-          {
-            "userSelect": "auto",
-          },
-          {
-            "alignItems": "center",
-            "backgroundColor": "#eb0055",
-            "borderRadius": 24,
-            "flexDirection": "row",
-            "justifyContent": "center",
-            "maxWidth": 500,
-            "minHeight": 40,
-            "paddingBottom": 2,
-            "paddingLeft": 20,
-            "paddingRight": 20,
-            "paddingTop": 2,
-            "width": "100%",
-          },
-          {},
-        ],
-        {
-          "opacity": 1,
-        },
-      ]
-    }
-    testID="Modifier mon mot de passe"
-  >
+    />
     <View
       animation={false}
       style={
@@ -2329,130 +1475,6 @@ exports[`<AccountSecurity/> without route params should match snapshot when no t
             "alignItems": "center",
             "flexGrow": 1,
             "justifyContent": "center",
-            "maxWidth": 500,
-            "minHeight": 40,
-            "paddingBottom": 2,
-            "paddingLeft": 20,
-            "paddingRight": 20,
-            "paddingTop": 2,
-            "width": "100%",
-          },
-          {
-            "borderColor": "#eb0055",
-            "borderStyle": "solid",
-            "borderWidth": 2,
-          },
-        ],
-        {
-          "opacity": 1,
-        },
-      ]
-    }
-    testID="Suspendre mon compte"
-  >
-    <View
-      style={
-        [
-          {
-            "alignItems": "center",
-            "flexDirection": "row",
-          },
-        ]
-      }
-    >
-      <Text
-        adjustsFontSizeToFit={false}
-        numberOfLines={1}
-        style={
-          [
-            {
-              "color": "#eb0055",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 16,
-              "lineHeight": 25.6,
-              "maxWidth": "100%",
-            },
-          ]
-        }
-      >
-        Suspendre mon compte
-      </Text>
-    </View>
-  </View>
-  <View
-    numberOfSpaces={2}
-    style={
-      [
-        {
-          "height": 8,
-        },
-      ]
-    }
-  />
-  <View
-    accessibilityLabel="Ne pas sécuriser mon compte"
-    accessibilityState={
-      {
-        "busy": undefined,
-        "checked": undefined,
-        "disabled": undefined,
-        "expanded": undefined,
-        "selected": undefined,
-      }
-    }
-    accessibilityValue={
-      {
-        "max": undefined,
-        "min": undefined,
-        "now": undefined,
-        "text": undefined,
-      }
-    }
-    accessible={true}
-    focusable={true}
-    onClick={[Function]}
-    onResponderGrant={[Function]}
-    onResponderMove={[Function]}
-    onResponderRelease={[Function]}
-    onResponderTerminate={[Function]}
-    onResponderTerminationRequest={[Function]}
-    onStartShouldSetResponder={[Function]}
-    style={
-      [
-        [
-          {
-            "userSelect": "auto",
-          },
-          {
-            "alignItems": "center",
-            "borderRadius": 24,
-            "flexDirection": "row",
-            "justifyContent": "center",
-            "maxWidth": 500,
-            "minHeight": 40,
-            "paddingBottom": 2,
-            "paddingLeft": 2,
-            "paddingRight": 2,
-            "paddingTop": 2,
-            "width": "100%",
-          },
-          {
-            "backgroundColor": "#ffffff",
-          },
-        ],
-        {
-          "opacity": 1,
-        },
-      ]
-    }
-    testID="Ne pas sécuriser mon compte"
-  >
-    <View
-      style={
-        [
-          {
-            "alignItems": "center",
-            "flexDirection": "row",
           },
         ]
       }
@@ -2482,7 +1504,6 @@ exports[`<AccountSecurity/> without route params should match snapshot when no t
         style={
           [
             {
-              "color": "#161617",
               "fontFamily": "Montserrat-Bold",
               "fontSize": 21,
               "lineHeight": 33.6,
@@ -2507,7 +1528,6 @@ exports[`<AccountSecurity/> without route params should match snapshot when no t
         style={
           [
             {
-              "color": "#161617",
               "fontFamily": "Montserrat-Medium",
               "fontSize": 16,
               "lineHeight": 25.6,
@@ -2520,7 +1540,6 @@ exports[`<AccountSecurity/> without route params should match snapshot when no t
           style={
             [
               {
-                "color": "#161617",
                 "fontFamily": "Montserrat-SemiBold",
                 "fontSize": 16,
                 "lineHeight": 25.6,
@@ -2606,7 +1625,6 @@ exports[`<AccountSecurity/> without route params should match snapshot when no t
               style={
                 [
                   {
-                    "color": "#161617",
                     "fontFamily": "Montserrat-Regular",
                     "fontSize": 12,
                     "lineHeight": 19.2,
@@ -2618,7 +1636,6 @@ exports[`<AccountSecurity/> without route params should match snapshot when no t
                 style={
                   [
                     {
-                      "color": "#161617",
                       "fontFamily": "Montserrat-SemiBold",
                       "fontSize": 12,
                       "lineHeight": 19.2,
@@ -2636,7 +1653,6 @@ exports[`<AccountSecurity/> without route params should match snapshot when no t
                 style={
                   [
                     {
-                      "color": "#161617",
                       "fontFamily": "Montserrat-SemiBold",
                       "fontSize": 12,
                       "lineHeight": 19.2,
@@ -2654,7 +1670,6 @@ exports[`<AccountSecurity/> without route params should match snapshot when no t
                 style={
                   [
                     {
-                      "color": "#161617",
                       "fontFamily": "Montserrat-SemiBold",
                       "fontSize": 12,
                       "lineHeight": 19.2,
@@ -2684,7 +1699,6 @@ exports[`<AccountSecurity/> without route params should match snapshot when no t
         style={
           [
             {
-              "color": "#161617",
               "fontFamily": "Montserrat-Medium",
               "fontSize": 16,
               "lineHeight": 25.6,
@@ -2697,7 +1711,6 @@ exports[`<AccountSecurity/> without route params should match snapshot when no t
           style={
             [
               {
-                "color": "#161617",
                 "fontFamily": "Montserrat-SemiBold",
                 "fontSize": 16,
                 "lineHeight": 25.6,
@@ -2958,7 +1971,7 @@ exports[`<AccountSecurity/> without route params should match snapshot when no t
                 "width": "100%",
               },
               {
-                "backgroundColor": "transparent",
+                "backgroundColor": "#ffffff",
               },
             ],
             {
