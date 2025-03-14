@@ -134,6 +134,7 @@ exports[`<BookingConfirmation /> should render correctly 1`] = `
       }
     />
     <View
+      animation={false}
       style={
         [
           {

@@ -98,7 +98,7 @@ export const GenericInfoPageWhite: React.FunctionComponent<Props> = ({
 
         <Spacer.Flex flex={1} />
 
-        <IllustrationContainer animation={animation}>
+        <IllustrationContainer animation={!!animation}>
           {Illustration ? <Illustration /> : null}
           {animation ? (
             <StyledLottieView ref={animationRef} source={animation} loop={false} />
