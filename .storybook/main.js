@@ -25,7 +25,8 @@ module.exports = {
           types: './src/types',
           ui: './src/ui',
           web: './src/web',
-
+          // if you add something below, it should also be added to main config file in resolve > alias
+          'react-native-svg': 'react-native-svg-web',
           'react-native-linear-gradient': 'react-native-web-linear-gradient',
           'react-native-fast-image': path.join(appSrc, 'libs/react-native-web-fast-image'),
           'react-native-email-link': path.join(appSrc, 'libs/react-native-email-link'),

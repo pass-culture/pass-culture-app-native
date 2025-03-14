@@ -73,14 +73,6 @@ export const TicketCutout = ({
   )
 }
 
-const MiddleBlock = styled.View({
-  flexDirection: 'row',
-  width: '100%',
-  height: getSpacing(21.5),
-  backgroundColor: 'white',
-  zIndex: 1,
-})
-
 const ContainerStrokedLine = styled.View({
   flex: 1,
 })
@@ -89,6 +81,14 @@ const StyledStrokedLine = styled(Stroke).attrs(({ theme }) => ({
   size: '100%',
   color: theme.colors.greyMedium,
 }))({})
+
+const MiddleBlock = styled.View({
+  flexDirection: 'row',
+  width: '100%',
+  height: getSpacing(21.5),
+  backgroundColor: 'white',
+  zIndex: 1,
+})
 
 const StyledClockFilled = styled(ClockFilled).attrs(({ theme }) => ({
   size: theme.icons.sizes.small,
