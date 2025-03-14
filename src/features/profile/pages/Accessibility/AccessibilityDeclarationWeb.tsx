@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { contactSupport } from 'features/auth/helpers/contactSupport'
+import { getProfileNavConfig } from 'features/navigation/ProfileStackNavigator/getProfileNavConfig'
 import { WEBAPP_V2_URL } from 'libs/environment/useWebAppUrl'
 import { BulletListItem } from 'ui/components/BulletListItem'
 import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonInsideText'
@@ -50,7 +51,7 @@ export function AccessibilityDeclarationWeb() {
                 as={ButtonInsideText}
                 wording="Schéma pluriannuel d’accessibilité 2022 - 2025"
                 icon={PlainArrowNext}
-                navigateTo={{ screen: 'AccessibilityActionPlan' }}
+                navigateTo={getProfileNavConfig('AccessibilityActionPlan')}
               />
             </TypoDS.BodyXs>
           </BulletListItem>
@@ -60,7 +61,7 @@ export function AccessibilityDeclarationWeb() {
                 as={ButtonInsideText}
                 wording="Actions réalisées depuis 2022"
                 icon={PlainArrowNext}
-                navigateTo={{ screen: 'AccessibilityActionPlan' }}
+                navigateTo={getProfileNavConfig('AccessibilityActionPlan')}
               />
             </TypoDS.BodyXs>
           </BulletListItem>
@@ -70,7 +71,7 @@ export function AccessibilityDeclarationWeb() {
                 as={ButtonInsideText}
                 wording="Plan d’actions 2024"
                 icon={PlainArrowNext}
-                navigateTo={{ screen: 'AccessibilityActionPlan' }}
+                navigateTo={getProfileNavConfig('AccessibilityActionPlan')}
               />
             </TypoDS.BodyXs>
           </BulletListItem>

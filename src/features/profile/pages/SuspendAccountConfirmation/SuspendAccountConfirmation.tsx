@@ -6,6 +6,8 @@ import styled from 'styled-components/native'
 import { api } from 'api/api'
 import { ApiError } from 'api/ApiError'
 import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
+import { getProfileStackConfig } from 'features/navigation/ProfileStackNavigator/getProfileStackConfig'
+import { ProfileStackParamList } from 'features/navigation/ProfileStackNavigator/ProfileStack'
 import { RootStackParamList } from 'features/navigation/RootNavigator/types'
 import { useEmailUpdateStatus } from 'features/profile/helpers/useEmailUpdateStatus'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -18,7 +20,7 @@ import { Spacer, TypoDS } from 'ui/theme'
 import { DOUBLE_LINE_BREAK } from 'ui/theme/constants'
 
 type SuspendAccountConfirmationProps = NativeStackScreenProps<
-  RootStackParamList,
+  RootStackParamList & ProfileStackParamList,
   'SuspendAccountConfirmation'
 >
 
@@ -32,6 +34,7 @@ export function SuspendAccountConfirmation({
   const [isLoading, setIsLoading] = useState(false)
 
   const mutate = useCallback(async () => {
+    if (!params?.token) return
     return api.postNativeV1ProfileEmailUpdateCancel({
       token: params?.token,
     })
@@ -45,7 +48,7 @@ export function SuspendAccountConfirmation({
     setIsLoading(true)
     try {
       await mutate()
-      navigation.navigate('TrackEmailChange')
+      navigation.navigate(...getProfileStackConfig('TrackEmailChange'))
     } catch (error) {
       if (error instanceof ApiError && error.statusCode === 401) {
         navigation.reset({ routes: [{ name: 'ChangeEmailExpiredLink' }] })

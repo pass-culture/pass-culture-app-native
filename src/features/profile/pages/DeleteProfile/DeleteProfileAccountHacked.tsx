@@ -18,7 +18,7 @@ export const DeleteProfileAccountHacked: FC = () => {
   const navigateToProfile = () => navigate(...getProfileStackConfig('Profile'))
 
   const navigateToSuspendAccount = () => {
-    navigate('SuspendAccountConfirmationWithoutAuthentication')
+    navigate(...getProfileStackConfig('SuspendAccountConfirmationWithoutAuthentication'))
   }
 
   return (

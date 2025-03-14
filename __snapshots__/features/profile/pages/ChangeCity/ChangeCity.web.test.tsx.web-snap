@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<ChangeCity/> should render correctly 1`] = `
+exports[`ChangeCity should render correctly 1`] = `
 .c0 {
   -webkit-flex-direction: column;
   -ms-flex-direction: column;

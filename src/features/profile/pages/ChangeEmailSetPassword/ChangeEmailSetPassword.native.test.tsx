@@ -3,6 +3,7 @@ import React from 'react'
 import { replace, useRoute } from '__mocks__/@react-navigation/native'
 import { ChangeEmailSetPassword } from 'features/profile/pages/ChangeEmailSetPassword/ChangeEmailSetPassword'
 import { EmptyResponse } from 'libs/fetch'
+import { eventMonitoring } from 'libs/monitoring/services'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen } from 'tests/utils'
@@ -100,7 +101,15 @@ describe('<ChangeEmailSetPassword />', () => {
       fireEvent.press(await screen.findByLabelText('Créer mon mot de passe'))
     })
 
-    expect(replace).toHaveBeenCalledWith('NewEmailSelection', { token: 'email_selection_token' })
+    expect(replace).toHaveBeenCalledWith('TabNavigator', {
+      params: {
+        params: {
+          token: 'email_selection_token',
+        },
+        screen: 'NewEmailSelection',
+      },
+      screen: 'ProfileStackNavigator',
+    })
   })
 
   it('should show success snackbar on password creation success', async () => {
@@ -125,6 +134,39 @@ describe('<ChangeEmailSetPassword />', () => {
       message: 'Ton mot de passe a bien été créé.',
       timeout: SnackBarContextModule.SNACK_BAR_TIME_OUT,
     })
+  })
+
+  it('should log to sentry if the token is undefined', async () => {
+    const routeWithUndefinedToken = {
+      params: { token: undefined, emailSelectionToken: undefined },
+    }
+    useRoute.mockReturnValueOnce(routeWithUndefinedToken)
+    useRoute.mockReturnValueOnce(routeWithUndefinedToken) // There is probably a second render
+
+    mockServer.postApi<EmptyResponse>('/v2/profile/email_update/new_password', {
+      responseOptions: {
+        statusCode: 204,
+        data: {},
+      },
+    })
+    render(reactQueryProviderHOC(<ChangeEmailSetPassword />))
+
+    const passwordInput = screen.getByTestId('Mot de passe')
+    const confirmationInput = screen.getByTestId('Confirmer le mot de passe')
+
+    await act(async () => {
+      fireEvent.changeText(passwordInput, 'user@AZERTY123')
+      fireEvent.changeText(confirmationInput, 'user@AZERTY123')
+      fireEvent.press(await screen.findByLabelText('Créer mon mot de passe'))
+    })
+
+    expect(mockShowSuccessSnackBar).not.toHaveBeenCalledWith({
+      message: 'Ton mot de passe a bien été créé.',
+      timeout: SnackBarContextModule.SNACK_BAR_TIME_OUT,
+    })
+    expect(eventMonitoring.captureException).toHaveBeenCalledWith(
+      new Error('Expected a string, but received undefined')
+    )
   })
 
   it('should show error snackbar on password creation failure', async () => {

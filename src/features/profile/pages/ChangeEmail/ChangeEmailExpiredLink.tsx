@@ -2,6 +2,7 @@ import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { getProfileStackConfig } from 'features/navigation/ProfileStackNavigator/getProfileStackConfig'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
@@ -17,7 +18,7 @@ export function ChangeEmailExpiredLink() {
   const changeEmailExpiredLink = () => {
     resendEmailNumberOfHits++
     analytics.logSendActivationMailAgain(resendEmailNumberOfHits)
-    isLoggedIn ? navigate('ChangeEmail') : navigate('Login')
+    isLoggedIn ? navigate(...getProfileStackConfig('ChangeEmail')) : navigate('Login')
   }
 
   const upperBodyText =

@@ -8,6 +8,7 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { useLogoutRoutine } from 'features/auth/helpers/useLogoutRoutine'
 import { useFavoritesState } from 'features/favorites/context/FavoritesWrapper'
+import { getProfileNavConfig } from 'features/navigation/ProfileStackNavigator/getProfileNavConfig'
 import { ProfileHeader } from 'features/profile/components/Header/ProfileHeader/ProfileHeader'
 import { SectionWithSwitch } from 'features/profile/components/SectionWithSwitch/SectionWithSwitch'
 import { SocialNetwork } from 'features/profile/components/SocialNetwork/SocialNetwork'
@@ -181,7 +182,7 @@ const OnlineProfile: React.FC = () => {
                       <Row
                         title="Informations personnelles"
                         type="navigable"
-                        navigateTo={{ screen: 'PersonalData' }}
+                        navigateTo={getProfileNavConfig('PersonalData')}
                         icon={BicolorProfile}
                       />
                     </Li>
@@ -191,7 +192,7 @@ const OnlineProfile: React.FC = () => {
                       type="navigable"
                       title="Notifications"
                       icon={Bell}
-                      navigateTo={{ screen: 'NotificationsSettings' }}
+                      navigateTo={getProfileNavConfig('NotificationsSettings')}
                     />
                   </Li>
                   <LiWithMarginVertical>
@@ -247,7 +248,7 @@ const OnlineProfile: React.FC = () => {
                     <Row
                       title="Accessibilité"
                       type="navigable"
-                      navigateTo={{ screen: 'Accessibility' }}
+                      navigateTo={getProfileNavConfig('Accessibility')}
                       icon={HandicapMental}
                     />
                   </Li>
@@ -256,7 +257,7 @@ const OnlineProfile: React.FC = () => {
                       <Row
                         title="Faire une suggestion"
                         type="navigable"
-                        navigateTo={{ screen: 'FeedbackInApp' }}
+                        navigateTo={getProfileNavConfig('FeedbackInApp')}
                         icon={Bulb}
                       />
                     </Li>
@@ -265,7 +266,7 @@ const OnlineProfile: React.FC = () => {
                     <Row
                       title="Informations légales"
                       type="navigable"
-                      navigateTo={{ screen: 'LegalNotices' }}
+                      navigateTo={getProfileNavConfig('LegalNotices')}
                       icon={LegalNotices}
                     />
                   </Li>
@@ -273,7 +274,7 @@ const OnlineProfile: React.FC = () => {
                     <Row
                       title="Confidentialité"
                       type="navigable"
-                      navigateTo={{ screen: 'ConsentSettings' }}
+                      navigateTo={getProfileNavConfig('ConsentSettings')}
                       icon={Confidentiality}
                     />
                   </Li>

@@ -2,6 +2,7 @@ import React from 'react'
 import { Platform } from 'react-native'
 import styled from 'styled-components/native'
 
+import { getProfileNavConfig } from 'features/navigation/ProfileStackNavigator/getProfileNavConfig'
 import { env } from 'libs/environment/env'
 import { ButtonQuaternaryGrey } from 'ui/components/buttons/ButtonQuaternaryGrey'
 import { Separator } from 'ui/components/Separator'
@@ -25,10 +26,10 @@ export const AccessibilityFooter = () => {
             <ColoredPassCultureLogo />
           </LogoContainer>
           <LinksContainer>
-            <InternalTouchableLink navigateTo={{ screen: 'Accessibility' }}>
+            <InternalTouchableLink navigateTo={getProfileNavConfig('Accessibility')}>
               <CaptionNeutralInfo>Accessibilité&nbsp;: partiellement conforme</CaptionNeutralInfo>
             </InternalTouchableLink>
-            <InternalTouchableLink navigateTo={{ screen: 'LegalNotices' }}>
+            <InternalTouchableLink navigateTo={getProfileNavConfig('LegalNotices')}>
               <CaptionNeutralInfo>Mentions légales</CaptionNeutralInfo>
             </InternalTouchableLink>
             <ExternalTouchableLink

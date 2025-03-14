@@ -5,6 +5,7 @@ import LinearGradient from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { getProfileNavConfig } from 'features/navigation/ProfileStackNavigator/getProfileNavConfig'
 import { useOnViewableItemsChanged } from 'features/subscription/helpers/useOnViewableItemsChanged'
 import { analytics } from 'libs/analytics/provider'
 import { AnimatedViewRefType, createAnimatableComponent } from 'libs/react-native-animatable'
@@ -35,38 +36,48 @@ type ReasonButton = {
 const reasonButtons = (canDelete: boolean): ReasonButton[] => [
   {
     wording: 'J’aimerais créer un compte avec une adresse e-mail différente',
-    navigateTo: { screen: 'ChangeEmail', params: { showModal: true } },
+    navigateTo: { ...getProfileNavConfig('ChangeEmail', { showModal: true }) },
     analyticsReason: 'changeEmail',
   },
   {
     wording: 'Je n’utilise plus l’application',
     navigateTo: {
-      screen: canDelete ? 'DeleteProfileConfirmation' : 'DeleteProfileAccountNotDeletable',
+      ...getProfileNavConfig(
+        canDelete ? 'DeleteProfileConfirmation' : 'DeleteProfileAccountNotDeletable'
+      ),
     },
     analyticsReason: 'noLongerUsed',
   },
   {
     wording: 'Je n’ai plus de crédit ou très peu de crédit restant',
     navigateTo: {
-      screen: canDelete ? 'DeleteProfileConfirmation' : 'DeleteProfileAccountNotDeletable',
+      ...getProfileNavConfig(
+        canDelete ? 'DeleteProfileConfirmation' : 'DeleteProfileAccountNotDeletable'
+      ),
     },
     analyticsReason: 'noMoreCredit',
   },
   {
     wording: 'Je souhaite supprimer mes données personnelles',
     navigateTo: {
-      screen: canDelete ? 'DeleteProfileConfirmation' : 'DeleteProfileAccountNotDeletable',
+      ...getProfileNavConfig(
+        canDelete ? 'DeleteProfileConfirmation' : 'DeleteProfileAccountNotDeletable'
+      ),
     },
     analyticsReason: 'dataDeletion',
   },
   {
     wording: 'Je pense que quelqu’un d’autre a accès à mon compte',
-    navigateTo: { screen: 'DeleteProfileAccountHacked' },
+    navigateTo: {
+      ...getProfileNavConfig('DeleteProfileAccountHacked'),
+    },
     analyticsReason: 'hackedAccount',
   },
   {
     wording: 'Autre',
-    navigateTo: { screen: 'DeleteProfileContactSupport' },
+    navigateTo: {
+      ...getProfileNavConfig('DeleteProfileContactSupport'),
+    },
     analyticsReason: 'other',
   },
 ]

@@ -3,6 +3,7 @@ import React from 'react'
 import { CheatcodesSubscreensButtonList } from 'cheatcodes/components/CheatcodesSubscreenButtonList'
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
 import { CheatcodesButtonsWithSubscreensProps } from 'cheatcodes/types'
+import { getProfileNavConfig } from 'features/navigation/ProfileStackNavigator/getProfileNavConfig'
 
 export const cheatcodesNavigationAccountManagementButtons: [CheatcodesButtonsWithSubscreensProps] =
   [
@@ -13,14 +14,14 @@ export const cheatcodesNavigationAccountManagementButtons: [CheatcodesButtonsWit
         { screen: 'FraudulentSuspendedAccount' },
         { screen: 'SuspendedAccountUponUserRequest' },
         { screen: 'AccountReactivationSuccess' },
-        { screen: 'DeleteProfileReason' },
-        { screen: 'ConfirmDeleteProfile' },
-        { screen: 'DeactivateProfileSuccess' },
-        { screen: 'DeleteProfileSuccess' },
-        { screen: 'DeleteProfileConfirmation' },
+        getProfileNavConfig('DeleteProfileReason'),
+        getProfileNavConfig('ConfirmDeleteProfile'),
+        getProfileNavConfig('DeactivateProfileSuccess'),
+        getProfileNavConfig('DeleteProfileSuccess'),
+        getProfileNavConfig('DeleteProfileConfirmation'),
         { screen: 'ResetPasswordExpiredLink' },
-        { screen: 'DeleteProfileAccountNotDeletable' },
-        { screen: 'DeleteProfileAccountHacked' },
+        getProfileNavConfig('DeleteProfileAccountNotDeletable'),
+        getProfileNavConfig('DeleteProfileAccountHacked'),
         { screen: 'ResetPasswordEmailSent', navigationParams: { email: 'jean.dupont@gmail.com' } },
       ],
     },

@@ -57,7 +57,10 @@ describe('<ChangeEmailExpiredLink />', () => {
     const resendEmailButton = screen.getByText('Faire une nouvelle demande')
     fireEvent.press(resendEmailButton)
 
-    expect(navigate).toHaveBeenCalledWith('ChangeEmail')
+    expect(navigate).toHaveBeenCalledWith('TabNavigator', {
+      params: { params: undefined, screen: 'ChangeEmail' },
+      screen: 'ProfileStackNavigator',
+    })
   })
 
   it('should log event when clicking on resend email button', () => {

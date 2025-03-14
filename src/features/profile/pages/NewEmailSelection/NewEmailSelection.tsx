@@ -3,9 +3,11 @@ import { useNavigation, useRoute } from '@react-navigation/native'
 import React from 'react'
 import { useForm } from 'react-hook-form'
 
+import { getProfileStackConfig } from 'features/navigation/ProfileStackNavigator/getProfileStackConfig'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { useNewEmailSelectionMutation } from 'features/profile/helpers/useNewEmailSelectionMutation'
 import { newEmailSelectionSchema } from 'features/profile/pages/NewEmailSelection/schema/newEmailSelectionSchema'
+import { eventMonitoring } from 'libs/monitoring/services'
 import { EmailInputController } from 'shared/forms/controllers/EmailInputController'
 import { InfoBanner } from 'ui/components/banners/InfoBanner'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -49,7 +51,7 @@ export const NewEmailSelection = () => {
           'E-mail envoyé sur ta nouvelle adresse\u00a0! Tu as 24h pour valider ta demande. Si tu ne le trouves pas, pense à vérifier tes spams.',
         timeout: SNACK_BAR_TIME_OUT_LONG,
       })
-      replace('TrackEmailChange')
+      replace(...getProfileStackConfig('TrackEmailChange'))
     },
     onError: () =>
       showErrorSnackBar({
@@ -58,7 +60,15 @@ export const NewEmailSelection = () => {
       }),
   })
 
-  const onSubmit = handleSubmit(({ newEmail }) => selectNewEmail({ newEmail, token: params.token }))
+  const onSubmit = handleSubmit(({ newEmail }) => {
+    if (!params?.token || typeof params?.token !== 'string') {
+      eventMonitoring.captureException(
+        new Error(`Expected a string, but received ${typeof params?.token}`)
+      )
+      return
+    }
+    selectNewEmail({ newEmail, token: params.token })
+  })
 
   return (
     <SecondaryPageWithBlurHeader title="Modifier mon adresse e-mail">

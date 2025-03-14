@@ -81,7 +81,10 @@ describe('DeleteProfileConfirmation', () => {
 
     fireEvent.press(screen.getByText('Annuler'))
 
-    expect(navigate).toHaveBeenCalledWith('DeleteProfileReason', undefined)
+    expect(navigate).toHaveBeenCalledWith('TabNavigator', {
+      params: { params: undefined, screen: 'DeleteProfileReason' },
+      screen: 'ProfileStackNavigator',
+    })
   })
 
   it('should navigate to DeleteProfileSuccess when account is anonymized', async () => {
@@ -91,7 +94,10 @@ describe('DeleteProfileConfirmation', () => {
     whenAnonymizeAccount()
 
     await waitFor(() => {
-      expect(navigate).toHaveBeenCalledWith('DeleteProfileSuccess')
+      expect(navigate).toHaveBeenCalledWith('TabNavigator', {
+        params: { params: undefined, screen: 'DeleteProfileSuccess' },
+        screen: 'ProfileStackNavigator',
+      })
     })
   })
 

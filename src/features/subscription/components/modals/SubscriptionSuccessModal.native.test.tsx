@@ -42,7 +42,10 @@ describe('<SubscriptionSuccessModal />', () => {
     fireEvent.press(screen.getByText('Voir mes préférences'))
 
     await waitFor(() => {
-      expect(navigate).toHaveBeenCalledWith('NotificationsSettings', undefined)
+      expect(navigate).toHaveBeenCalledWith('TabNavigator', {
+        params: { params: undefined, screen: 'NotificationsSettings' },
+        screen: 'ProfileStackNavigator',
+      })
     })
   })
 

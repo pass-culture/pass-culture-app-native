@@ -205,34 +205,16 @@ export type RootStackParamList = {
   BookingConfirmation: { offerId: number; bookingId: number; apiRecoParams?: string }
   BookingDetails: { id: number }
   Bookings: { activeTab?: BookingsTab } | undefined
-  ChangeCity: undefined
-  ChangeEmail: { showModal: boolean } | undefined
   ChangeEmailExpiredLink: undefined
-  ChangeEmailSetPassword: { token: string; emailSelectionToken: string }
-  ChangePassword: undefined
-  ChangeStatus: undefined
   CheatcodesStackNavigator: undefined
-  ConfirmChangeEmail: { token: string; expiration_timestamp: number }
-  ConfirmDeleteProfile: undefined
-  ConsentSettings: { onGoBack?: () => void } | undefined
   Chronicles: { offerId: number; chronicleId?: number; from?: Referrals }
   CulturalSurvey: undefined
-  DeactivateProfileSuccess: undefined
   DeeplinksGenerator: undefined
-  DeleteProfileAccountHacked: undefined
-  DeleteProfileAccountNotDeletable: undefined
-  DeleteProfileConfirmation: undefined
-  DeleteProfileContactSupport: undefined
-  DeleteProfileEmailHacked: undefined
-  DeleteProfileReason: undefined
-  DeleteProfileSuccess: undefined
   EighteenBirthday: undefined
   EndedBookings: undefined
   FavoritesSorts: undefined
-  FeedbackInApp: undefined
   ForgottenPassword: undefined
   FraudulentSuspendedAccount: undefined
-  LegalNotices: undefined
   LocationFilter?: { selectedVenue?: Venue; selectedPlace?: SuggestedPlace }
   LocationPicker: undefined
   Login?: {
@@ -242,8 +224,6 @@ export type RootStackParamList = {
   }
   Maintenance: undefined
   MovieCalendar: undefined
-  NewEmailSelection: { token: string }
-  NotificationsSettings: undefined
   NotYetUnderageEligibility: { eligibilityStartDatetime: string }
   Offer: {
     id: number
@@ -261,7 +241,6 @@ export type RootStackParamList = {
   OfferPreview: { id: number; defaultIndex?: number }
   OnboardingSubscription: undefined
   PageNotFound: undefined
-  PersonalData: undefined
   RecreditBirthdayNotification: undefined
   ReinitializePassword: {
     email: string
@@ -276,22 +255,17 @@ export type RootStackParamList = {
   SignupForm:
     | { accountCreationToken?: string; email?: string; offerId?: number; from: StepperOrigin }
     | undefined
-  SuspendAccountConfirmation: { token: string }
-  SuspendAccountConfirmationWithoutAuthentication: undefined
   SuspendedAccountUponUserRequest: undefined
   TabNavigator: { screen: TabRouteName; params: TabParamList[TabRouteName] }
   ThematicHome: ThematicHomeParams
-  TrackEmailChange: undefined
   Tutorial?: { selectedAge?: 15 | 16 | 17 | 18 }
   UTMParameters: undefined
-  ValidateEmailChange: { token: string }
   Venue: { id: number; from?: Referrals; searchId?: string }
   VenueMap: undefined
   VenueMapFiltersStackNavigator: undefined
   VenuePreviewCarousel: { id: number; defaultIndex?: number }
   VerifyEligibility: undefined
-} & AccessibilityRootStackParamList &
-  CheatcodesStackParamList &
+} & CheatcodesStackParamList &
   CulturalSurveyRootStackParamList &
   SubscriptionRootStackParamList &
   TrustedDeviceRootStackParamList &
@@ -340,6 +314,7 @@ type NavigateParams<RouteName extends keyof ParamListBase> =
     ? [RouteName] | [RouteName, ParamListBase[RouteName]]
     : [RouteName, ParamListBase[RouteName]]
 export type RootNavigateParams = NavigateParams<keyof RootStackParamList>
+export type ProfileNavigateParams = NavigateParams<keyof ProfileStackParamList>
 type AllNavigateParams = NavigateParams<keyof AllNavParamList>
 
 export type NavigationResultState = ReturnType<typeof getStateFromPath>

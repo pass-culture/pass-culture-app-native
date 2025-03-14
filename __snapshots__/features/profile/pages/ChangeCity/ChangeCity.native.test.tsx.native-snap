@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<SetCity/> should render correctly 1`] = `
+exports[`ChangeCity should render correctly 1`] = `
 [
   <View
     accessibilityRole="header"

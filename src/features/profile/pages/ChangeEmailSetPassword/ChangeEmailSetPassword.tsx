@@ -5,8 +5,10 @@ import { useForm } from 'react-hook-form'
 import { Platform } from 'react-native'
 import styled from 'styled-components/native'
 
+import { getProfileStackConfig } from 'features/navigation/ProfileStackNavigator/getProfileStackConfig'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { useChangeEmailSetPasswordMutation } from 'features/profile/helpers/useChangeEmailSetPasswordMutation'
+import { eventMonitoring } from 'libs/monitoring/services'
 import { PasswordInputController } from 'shared/forms/controllers/PasswordInputController'
 import { newPasswordSchema } from 'shared/forms/schemas/newPasswordSchema'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -48,7 +50,8 @@ export const ChangeEmailSetPassword = () => {
         message: 'Ton mot de passe a bien été créé.',
         timeout: SNACK_BAR_TIME_OUT,
       })
-      replace('NewEmailSelection', { token: params.emailSelectionToken })
+      if (!params?.emailSelectionToken) return // emailSelectionToken should never be undefined if token is defined
+      replace(...getProfileStackConfig('NewEmailSelection', { token: params?.emailSelectionToken }))
     },
     onError: () =>
       showErrorSnackBar({
@@ -58,9 +61,15 @@ export const ChangeEmailSetPassword = () => {
       }),
   })
 
-  const onSubmit = handleSubmit(({ newPassword }) =>
-    setPassword({ resetPasswordToken: params.token, newPassword })
-  )
+  const onSubmit = handleSubmit(({ newPassword }) => {
+    if (!params?.token || typeof params?.token !== 'string') {
+      eventMonitoring.captureException(
+        new Error(`Expected a string, but received ${typeof params?.token}`)
+      )
+      return
+    }
+    setPassword({ resetPasswordToken: params?.token, newPassword })
+  })
 
   return (
     <SecondaryPageWithBlurHeader title="Créer mon mot de passe">

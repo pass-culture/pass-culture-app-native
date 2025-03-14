@@ -14,10 +14,10 @@ export const DeleteProfileEmailHacked: FC = () => {
 
   const navigateToProfile = () => navigate(...getProfileStackConfig('Profile'))
 
-  const navigateToChangeEmail = () => navigate('ChangeEmail')
+  const navigateToChangeEmail = () => navigate(...getProfileStackConfig('ChangeEmail'))
 
   const navigateToSuspendAccount = () => {
-    navigate('SuspendAccountConfirmationWithoutAuthentication')
+    navigate(...getProfileStackConfig('SuspendAccountConfirmationWithoutAuthentication'))
   }
 
   return (

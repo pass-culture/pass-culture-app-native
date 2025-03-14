@@ -5,9 +5,11 @@ import { ApiError } from 'api/ApiError'
 import { AccountState } from 'api/gen'
 import { useLoginRoutine } from 'features/auth/helpers/useLoginRoutine'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
+import { getProfileStackConfig } from 'features/navigation/ProfileStackNavigator/getProfileStackConfig'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { useConfirmChangeEmailMutationV2 } from 'features/profile/helpers/useConfirmChangeEmailMutationV2'
 import { isTimestampExpired } from 'libs/dates'
+import { eventMonitoring } from 'libs/monitoring/services'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
@@ -33,15 +35,18 @@ export const ConfirmChangeEmailContent = () => {
       )
 
       if (resetPasswordToken) {
-        replace('ChangeEmailSetPassword', {
-          token: resetPasswordToken,
-          emailSelectionToken: newEmailSelectionToken,
-        })
+        replace(
+          ...getProfileStackConfig('ChangeEmailSetPassword', {
+            token: resetPasswordToken,
+            emailSelectionToken: newEmailSelectionToken,
+          })
+        )
       } else {
-        replace('NewEmailSelection', { token: newEmailSelectionToken })
+        replace(...getProfileStackConfig('NewEmailSelection', { token: newEmailSelectionToken }))
       }
     },
     onError: (error) => {
+      eventMonitoring.captureException(error)
       if (error instanceof ApiError && error.statusCode === 401) {
         reset({ index: 0, routes: [{ name: 'ChangeEmailExpiredLink' }] })
         return
@@ -53,12 +58,17 @@ export const ConfirmChangeEmailContent = () => {
     },
   })
 
-  const onConfirmEmail = useCallback(
-    () => mutate({ token: params?.token }),
-    [params?.token, mutate]
-  )
+  const onConfirmEmail = useCallback(() => {
+    if (!params?.token || typeof params?.token !== 'string') {
+      eventMonitoring.captureException(
+        new Error(`Expected a string, but received ${typeof params?.token}`)
+      )
+      return
+    }
+    mutate({ token: params?.token })
+  }, [params?.token, mutate])
 
-  if (isTimestampExpired(params.expiration_timestamp)) {
+  if (params?.expiration_timestamp && isTimestampExpired(params.expiration_timestamp)) {
     reset({ index: 0, routes: [{ name: 'ChangeEmailExpiredLink' }] })
     return null
   }

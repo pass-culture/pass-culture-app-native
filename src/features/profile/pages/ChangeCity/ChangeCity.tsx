@@ -7,6 +7,7 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { CityForm, cityResolver } from 'features/identityCheck/pages/profile/SetCity'
 import { cityActions, useCity } from 'features/identityCheck/pages/profile/store/cityStore'
+import { getProfileStackConfig } from 'features/navigation/ProfileStackNavigator/getProfileStackConfig'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { usePatchProfile } from 'features/profile/api/usePatchProfile'
 import { CitySearchInput } from 'features/profile/components/CitySearchInput/CitySearchInput'
@@ -55,7 +56,7 @@ export const ChangeCity = () => {
   const onSubmit = ({ city }: CityForm) => {
     setCity(city)
     updateProfile({ city: city.name, postalCode: city.postalCode })
-    navigate('PersonalData')
+    navigate(...getProfileStackConfig('PersonalData'))
   }
 
   return (

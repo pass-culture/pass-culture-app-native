@@ -5,6 +5,7 @@ import { openInbox } from 'react-native-email-link'
 import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { getProfileNavConfig } from 'features/navigation/ProfileStackNavigator/getProfileNavConfig'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { getEmailUpdateStep } from 'features/profile/helpers/getEmailUpdateStep'
@@ -77,13 +78,10 @@ export const TrackEmailChangeContent = () => {
         disabled: DisabledConfidentialityIcon,
         retry: DisabledConfidentialityIcon,
       },
-      navigateTo: {
-        screen: 'ChangeEmailSetPassword',
-        params: {
-          token: requestStatus?.resetPasswordToken,
-          emailSelectionToken: requestStatus?.token,
-        },
-      },
+      navigateTo: getProfileNavConfig('ChangeEmailSetPassword', {
+        token: requestStatus?.resetPasswordToken,
+        emailSelectionToken: requestStatus?.token,
+      }),
     },
     NEW_EMAIL: {
       currentTitle: 'Choisis ta nouvelle adresse e-mail',
@@ -95,7 +93,7 @@ export const TrackEmailChangeContent = () => {
         disabled: DisabledPencilIcon,
         retry: DisabledPencilIcon,
       },
-      navigateTo: { screen: 'NewEmailSelection', params: { token: requestStatus?.token } },
+      navigateTo: getProfileNavConfig('NewEmailSelection', { token: requestStatus?.token }),
     },
     VALIDATION: {
       currentTitle: 'Valide ta nouvelle adresse',

@@ -47,7 +47,10 @@ describe('DeleteProfileAccountNotDeletable', () => {
     const button = screen.getByText('Désactiver mes notifications')
     await user.press(button)
 
-    expect(navigate).toHaveBeenCalledWith('NotificationsSettings')
+    expect(navigate).toHaveBeenCalledWith('TabNavigator', {
+      params: { params: undefined, screen: 'NotificationsSettings' },
+      screen: 'ProfileStackNavigator',
+    })
   })
 
   it('should open FAQ link when clicking on "consultant cette page" button', async () => {
