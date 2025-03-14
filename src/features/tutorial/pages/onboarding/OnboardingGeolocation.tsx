@@ -1,6 +1,5 @@
 import { useNavigation } from '@react-navigation/native'
 import React, { useCallback } from 'react'
-import styled from 'styled-components/native'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { TutorialTypes } from 'features/tutorial/enums'
@@ -9,9 +8,7 @@ import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useLocation } from 'libs/location'
 import GeolocationAnimation from 'ui/animations/geolocalisation.json'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { GenericInfoPageWhiteLegacy } from 'ui/pages/GenericInfoPageWhiteLegacy'
-import { getSpacing, Spacer, TypoDS } from 'ui/theme'
+import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
 
 export const OnboardingGeolocation = () => {
   const isPassForAllEnabled = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_PASS_FOR_ALL)
@@ -37,27 +34,15 @@ export const OnboardingGeolocation = () => {
   }, [navigateToNextScreen, requestGeolocPermission])
 
   return (
-    <GenericInfoPageWhiteLegacy
-      mobileBottomFlex={0.1}
+    <GenericInfoPageWhite
+      withSkipAction={onSkip}
       animation={GeolocationAnimation}
-      onSkip={onSkip}
-      title="Découvre les offres près de chez toi">
-      <StyledBody>
-        Librairie, ciné, festival... Active ta géolocalisation pour retrouver les offres culturelles
-        à proximité.
-      </StyledBody>
-      <Spacer.Flex flex={2} />
-      <ButtonContainer>
-        <ButtonPrimary wording="Utiliser ma position" onPress={onGeolocationButtonPress} />
-      </ButtonContainer>
-    </GenericInfoPageWhiteLegacy>
+      title="Découvre les offres près de chez toi"
+      subtitle="Librairie, ciné, festival... Active ta géolocalisation pour retrouver les offres culturelles à proximité."
+      buttonPrimary={{
+        wording: 'Utiliser ma position',
+        onPress: onGeolocationButtonPress,
+      }}
+    />
   )
 }
-
-const ButtonContainer = styled.View({
-  paddingBottom: getSpacing(10),
-})
-
-const StyledBody = styled(TypoDS.Body)({
-  textAlign: 'center',
-})

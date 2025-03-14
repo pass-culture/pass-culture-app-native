@@ -1,5 +1,6 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import { NativeStackScreenProps } from 'react-native-screens/native-stack'
+import styled from 'styled-components/native'
 
 import { api } from 'api/api'
 import { ApiError } from 'api/ApiError'
@@ -9,15 +10,12 @@ import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome
 import { RootStackParamList, StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useEmailUpdateStatus } from 'features/profile/helpers/useEmailUpdateStatus'
-import { ValidateEmailChangeSubtitleComponent } from 'features/profile/pages/ValidateEmailChange/SubtitleComponent'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
+import { Separator } from 'ui/components/Separator'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
-import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import { GenericInfoPageWhiteLegacy } from 'ui/pages/GenericInfoPageWhiteLegacy'
+import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
 import { BicolorPhonePending } from 'ui/svg/icons/BicolorPhonePending'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
-import { Spacer, TypoDS } from 'ui/theme'
+import { Spacer, TypoDS, getSpacing } from 'ui/theme'
 
 type ValidateEmailChangeProps = NativeStackScreenProps<RootStackParamList, 'ValidateEmailChange'>
 
@@ -79,29 +77,41 @@ export function ValidateEmailChange({ route: { params }, navigation }: ValidateE
   }, [emailUpdateStatus, isLoadingEmailUpdateStatus, navigation])
 
   return (
-    <GenericInfoPageWhiteLegacy
-      icon={BicolorPhonePending}
-      titleComponent={TypoDS.Title3}
+    <GenericInfoPageWhite
+      illustration={BicolorPhonePending}
       title="Valides-tu la nouvelle adresse e-mail&nbsp;?"
-      subtitle={emailUpdateStatus?.newEmail || undefined}
-      subtitleComponent={ValidateEmailChangeSubtitleComponent}
-      separateIconFromTitle={false}
-      mobileBottomFlex={0.3}>
-      <Spacer.Column numberOfSpaces={40} />
-      <ButtonPrimary
-        wording="Valider l’adresse e-mail"
-        accessibilityLabel="Valider l’adresse e-mail"
-        onPress={handleSubmit}
-        disabled={isLoading}
-      />
-      <Spacer.Column numberOfSpaces={4} />
-      <InternalTouchableLink
-        as={ButtonTertiaryBlack}
-        wording="Annuler"
-        navigateTo={navigateToHomeConfig}
-        icon={Invalidate}
-        disabled={isLoading}
-      />
-    </GenericInfoPageWhiteLegacy>
+      buttonPrimary={{
+        wording: 'Valider l’adresse e-mail',
+        onPress: handleSubmit,
+        disabled: isLoading,
+      }}
+      buttonTertiary={{
+        wording: 'Annuler',
+        navigateTo: navigateToHomeConfig,
+        icon: Invalidate,
+        disabled: isLoading,
+      }}>
+      <Wrapper>
+        <TypoDS.Body>Nouvelle adresse e-mail&nbsp;:</TypoDS.Body>
+        <TypoDS.BodyAccent>{emailUpdateStatus?.newEmail}</TypoDS.BodyAccent>
+        <Spacer.Column numberOfSpaces={4} />
+        <Separator.Horizontal />
+        <Spacer.Column numberOfSpaces={4} />
+        <StyledCaption>
+          En cliquant sur valider, tu seras déconnecté.e. Tu devras te reconnecter avec ta nouvelle
+          adresse e-mail.
+        </StyledCaption>
+      </Wrapper>
+    </GenericInfoPageWhite>
   )
 }
+
+const Wrapper = styled.View({
+  marginTop: getSpacing(4),
+  alignItems: 'center',
+})
+
+const StyledCaption = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
+  textAlign: 'center',
+  color: theme.colors.greyDark,
+}))

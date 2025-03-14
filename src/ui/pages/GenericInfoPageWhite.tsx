@@ -31,7 +31,7 @@ type ButtonProps = {
 } & (
   | {
       onPress: () => void
-      onBeforeNavigate?: () => void
+      onBeforeNavigate?: never
       navigateTo?: never
       externalNav?: never
     }
@@ -88,7 +88,7 @@ export const GenericInfoPageWhite: React.FunctionComponent<Props> = ({
 
   return (
     <React.Fragment>
-      <PageHeaderWithoutPlaceholder
+      <Header
         shouldDisplayBackButton={withGoBack}
         RightButton={<SkipButton withSkipAction={withSkipAction} />}
       />
@@ -98,7 +98,7 @@ export const GenericInfoPageWhite: React.FunctionComponent<Props> = ({
 
         <Spacer.Flex flex={1} />
 
-        <IllustrationContainer animation={animation}>
+        <IllustrationContainer animation={!!animation}>
           {Illustration ? <Illustration /> : null}
           {animation ? (
             <StyledLottieView ref={animationRef} source={animation} loop={false} />
@@ -107,7 +107,7 @@ export const GenericInfoPageWhite: React.FunctionComponent<Props> = ({
 
         <TextContainer gap={4}>
           <StyledTitle2 {...getHeadingAttrs(1)}>{title}</StyledTitle2>
-          <StyledBody {...getHeadingAttrs(2)}>{subtitle}</StyledBody>
+          {subtitle ? <StyledBody {...getHeadingAttrs(2)}>{subtitle}</StyledBody> : null}
         </TextContainer>
 
         {children ? <ChildrenContainer>{children}</ChildrenContainer> : null}
@@ -131,6 +131,7 @@ export const GenericInfoPageWhite: React.FunctionComponent<Props> = ({
               as={ButtonPrimary}
               wording={buttonPrimary.wording}
               navigateTo={buttonPrimary.navigateTo}
+              onBeforeNavigate={buttonPrimary.onBeforeNavigate}
               isLoading={buttonPrimary.isLoading}
               disabled={buttonPrimary.disabled}
             />
@@ -142,6 +143,7 @@ export const GenericInfoPageWhite: React.FunctionComponent<Props> = ({
               as={ButtonPrimary}
               wording={buttonPrimary.wording}
               externalNav={buttonPrimary.externalNav}
+              onBeforeNavigate={buttonPrimary.onBeforeNavigate}
               isLoading={buttonPrimary.isLoading}
               disabled={buttonPrimary.disabled}
               icon={ExternalSiteFilled}
@@ -164,6 +166,7 @@ export const GenericInfoPageWhite: React.FunctionComponent<Props> = ({
               as={ButtonSecondary}
               wording={buttonSecondary.wording}
               navigateTo={buttonSecondary.navigateTo}
+              onBeforeNavigate={buttonSecondary.onBeforeNavigate}
               isLoading={buttonPrimary.isLoading}
               disabled={buttonPrimary.disabled}
             />
@@ -175,6 +178,7 @@ export const GenericInfoPageWhite: React.FunctionComponent<Props> = ({
               as={ButtonSecondary}
               wording={buttonSecondary.wording}
               externalNav={buttonSecondary.externalNav}
+              onBeforeNavigate={buttonSecondary.onBeforeNavigate}
               isLoading={buttonSecondary.isLoading}
               disabled={buttonSecondary.disabled}
               icon={ExternalSiteFilled}
@@ -198,6 +202,7 @@ export const GenericInfoPageWhite: React.FunctionComponent<Props> = ({
               as={ButtonTertiaryBlack}
               wording={buttonTertiary.wording}
               navigateTo={buttonTertiary.navigateTo}
+              onBeforeNavigate={buttonTertiary.onBeforeNavigate}
               isLoading={buttonTertiary.isLoading}
               disabled={buttonTertiary.disabled}
               icon={buttonTertiary.icon}
@@ -210,6 +215,7 @@ export const GenericInfoPageWhite: React.FunctionComponent<Props> = ({
               as={ButtonTertiaryBlack}
               wording={buttonTertiary.wording}
               externalNav={buttonTertiary.externalNav}
+              onBeforeNavigate={buttonTertiary.onBeforeNavigate}
               isLoading={buttonTertiary.isLoading}
               disabled={buttonTertiary.disabled}
               icon={ExternalSiteFilled}
@@ -229,6 +235,10 @@ const Container = styled.View<{ top: number; bottom: number }>(({ theme }) => ({
   paddingVertical: theme.contentPage.marginVertical,
   overflow: 'scroll',
 }))
+
+const Header = styled(PageHeaderWithoutPlaceholder)({
+  borderBottomWidth: 0,
+})
 
 const Placeholder = styled.View<{ height: number }>(({ height }) => ({
   height,

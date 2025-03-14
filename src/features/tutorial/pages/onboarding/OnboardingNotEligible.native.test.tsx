@@ -6,6 +6,7 @@ import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { OnboardingNotEligible } from 'features/tutorial/pages/onboarding/OnboardingNotEligible'
 import { render, screen, userEvent } from 'tests/utils'
 
+jest.mock('libs/firebase/analytics/analytics')
 jest.useFakeTimers()
 
 describe('OnboardingNotEligible', () => {

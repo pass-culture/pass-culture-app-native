@@ -3,66 +3,46 @@
 exports[`OnboardingNotEligible should render correctly 1`] = `
 [
   <View
+    accessibilityRole="header"
     style={
       [
         {
+          "backgroundColor": "rgba(255,255,255,0)",
+          "borderBottomColor": "#F1F1F4",
+          "borderBottomWidth": 1,
+          "left": 0,
           "position": "absolute",
-          "right": 24,
-          "top": 30,
+          "right": 0,
+          "top": 0,
           "zIndex": 1,
+        },
+        {
+          "borderBottomWidth": 0,
         },
       ]
     }
-    top={30}
   >
     <View
-      accessibilityLabel="Aller à l’écran suivant"
-      accessibilityState={
-        {
-          "busy": undefined,
-          "checked": undefined,
-          "disabled": undefined,
-          "expanded": undefined,
-          "selected": undefined,
-        }
-      }
-      accessibilityValue={
-        {
-          "max": undefined,
-          "min": undefined,
-          "now": undefined,
-          "text": undefined,
-        }
-      }
-      accessible={true}
-      collapsable={false}
-      focusable={true}
-      onClick={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
+      customHeight={16}
+      enable={true}
       style={
-        {
-          "alignItems": "center",
-          "backgroundColor": "transparent",
-          "borderRadius": 24,
-          "flexDirection": "row",
-          "justifyContent": "center",
-          "maxWidth": 500,
-          "minHeight": 40,
-          "opacity": 1,
-          "paddingBottom": 2,
-          "paddingLeft": 2,
-          "paddingRight": 2,
-          "paddingTop": 2,
-          "userSelect": "auto",
-          "width": "100%",
-        }
+        [
+          {
+            "height": 16,
+          },
+        ]
       }
-      testID="Aller à l’écran suivant"
+    />
+    <View
+      style={
+        [
+          {
+            "alignItems": "center",
+            "height": 48,
+            "justifyContent": "center",
+          },
+        ]
+      }
     >
       <View
         style={
@@ -70,129 +50,158 @@ exports[`OnboardingNotEligible should render correctly 1`] = `
             {
               "alignItems": "center",
               "flexDirection": "row",
+              "justifyContent": "space-between",
+              "width": "100%",
             },
           ]
         }
       >
-        <Text
-          adjustsFontSizeToFit={false}
-          numberOfLines={1}
+        <View
+          positionInHeader="left"
           style={
             [
               {
-                "color": "#696A6F",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 16,
-                "lineHeight": 25.6,
-                "maxWidth": "100%",
+                "alignItems": "center",
+                "flexBasis": 0,
+                "flexDirection": "row",
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "justifyContent": "flex-start",
+                "paddingLeft": 12,
+                "paddingRight": 12,
               },
             ]
           }
+          testID="back-button-container"
+        />
+        <View
+          positionInHeader="right"
+          style={
+            [
+              {
+                "alignItems": "center",
+                "flexBasis": 0,
+                "flexDirection": "row",
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "justifyContent": "flex-end",
+                "paddingLeft": 12,
+                "paddingRight": 12,
+              },
+            ]
+          }
+          testID="close-button-container"
         >
-          Passer
-        </Text>
+          <View
+            accessibilityLabel="Aller à la page suivante"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              {
+                "alignItems": "center",
+                "backgroundColor": "transparent",
+                "borderRadius": 0,
+                "borderWidth": 0,
+                "flexDirection": "row",
+                "justifyContent": "center",
+                "marginTop": 0,
+                "maxWidth": 500,
+                "minHeight": 16,
+                "opacity": 1,
+                "paddingBottom": 0,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+                "paddingTop": 0,
+                "userSelect": "auto",
+                "width": "auto",
+              }
+            }
+            testID="Aller à la page suivante"
+          >
+            <View
+              style={
+                [
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                  },
+                ]
+              }
+            >
+              <Text
+                adjustsFontSizeToFit={false}
+                numberOfLines={1}
+                style={
+                  [
+                    {
+                      "color": "#696A6F",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                      "maxWidth": "100%",
+                    },
+                  ]
+                }
+              >
+                Passer
+              </Text>
+            </View>
+          </View>
+        </View>
       </View>
     </View>
   </View>,
   <View
+    bottom={16}
     style={
       [
         {
-          "alignSelf": "center",
           "flexBasis": 0,
           "flexGrow": 1,
           "flexShrink": 1,
-          "maxWidth": 500,
+          "justifyContent": "space-between",
           "overflow": "scroll",
           "paddingHorizontal": 24,
-          "width": "100%",
+          "paddingVertical": 24,
         },
       ]
     }
   >
     <View
-      flex={2}
+      height={65}
       style={
         [
           {
-            "flexBasis": 0,
-            "flexGrow": 2,
-            "flexShrink": 1,
+            "height": 65,
           },
         ]
       }
     />
-    <View
-      hasHeight={true}
-      style={
-        [
-          {
-            "alignItems": "center",
-            "flexGrow": 1,
-            "height": "30%",
-            "justifyContent": "center",
-          },
-        ]
-      }
-    >
-      <View>
-        undefined-Lottie-Mock
-      </View>
-    </View>
-    <View
-      flex={0.5}
-      style={
-        [
-          {
-            "flexBasis": 0,
-            "flexGrow": 0.5,
-            "flexShrink": 1,
-          },
-        ]
-      }
-    />
-    <Text
-      style={
-        [
-          {
-            "color": "#161617",
-            "fontFamily": "Montserrat-Bold",
-            "fontSize": 28,
-            "lineHeight": 44.8,
-            "textAlign": "center",
-          },
-        ]
-      }
-    >
-      Encore un peu de patience !
-    </Text>
-    <View
-      flex={0.5}
-      style={
-        [
-          {
-            "flexBasis": 0,
-            "flexGrow": 0.5,
-            "flexShrink": 1,
-          },
-        ]
-      }
-    />
-    <Text
-      style={
-        [
-          {
-            "color": "#161617",
-            "fontFamily": "Montserrat-Medium",
-            "fontSize": 16,
-            "lineHeight": 25.6,
-            "textAlign": "center",
-          },
-        ]
-      }
-    >
-      Ton crédit t’attend à partir de tes 17 ans. En attendant, crée-toi un compte pour découvrir les bons plans autour de toi.
-    </Text>
     <View
       flex={1}
       style={
@@ -206,10 +215,85 @@ exports[`OnboardingNotEligible should render correctly 1`] = `
       }
     />
     <View
+      animation={true}
       style={
         [
           {
-            "paddingBottom": 40,
+            "alignItems": "center",
+            "flexGrow": 1,
+            "height": "30%",
+            "justifyContent": "center",
+            "marginBottom": 24,
+          },
+        ]
+      }
+    >
+      <View>
+        undefined-Lottie-Mock
+      </View>
+    </View>
+    <View
+      gap={4}
+      style={
+        [
+          {
+            "alignItems": "center",
+            "gap": 16,
+            "marginBottom": 24,
+          },
+        ]
+      }
+    >
+      <Text
+        style={
+          [
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 21,
+              "lineHeight": 33.6,
+              "textAlign": "center",
+            },
+          ]
+        }
+      >
+        Encore un peu de patience !
+      </Text>
+      <Text
+        style={
+          [
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Medium",
+              "fontSize": 16,
+              "lineHeight": 25.6,
+              "textAlign": "center",
+            },
+          ]
+        }
+      >
+        Ton crédit t’attend à partir de tes 17 ans. En attendant, crée-toi un compte pour découvrir les bons plans autour de toi.
+      </Text>
+    </View>
+    <View
+      flex={1}
+      style={
+        [
+          {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+          },
+        ]
+      }
+    />
+    <View
+      gap={4}
+      style={
+        [
+          {
+            "alignItems": "center",
+            "gap": 16,
           },
         ]
       }
@@ -293,16 +377,6 @@ exports[`OnboardingNotEligible should render correctly 1`] = `
         </View>
       </View>
       <View
-        numberOfSpaces={4}
-        style={
-          [
-            {
-              "height": 16,
-            },
-          ]
-        }
-      />
-      <View
         accessibilityLabel="Accéder au catalogue"
         accessibilityState={
           {
@@ -384,18 +458,6 @@ exports[`OnboardingNotEligible should render correctly 1`] = `
         </View>
       </View>
     </View>
-    <View
-      flex={0.1}
-      style={
-        [
-          {
-            "flexBasis": 0,
-            "flexGrow": 0.1,
-            "flexShrink": 1,
-          },
-        ]
-      }
-    />
   </View>,
 ]
 `;

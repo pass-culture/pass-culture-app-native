@@ -7,7 +7,7 @@ import { useReviewInAppInformation } from 'features/bookOffer/helpers/useReviewI
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { BatchProfile } from 'libs/react-native-batch'
-import { act, render, screen, userEvent } from 'tests/utils'
+import { act, render, screen, userEvent, waitFor } from 'tests/utils'
 
 import { BookingConfirmation } from './BookingConfirmation'
 
@@ -165,13 +165,15 @@ describe('<BookingConfirmation />', () => {
     })
 
     it.each(['Voir ma réservation', 'Retourner à l’accueil'])(
-      'should track Batch event when button is clicked',
+      'should track Batch event when button "%s" is clicked',
       async (buttonWording) => {
         render(<BookingConfirmation />)
 
         await userEvent.press(await screen.findByText(buttonWording))
 
-        expect(BatchProfile.trackEvent).toHaveBeenCalledWith('has_booked')
+        await waitFor(() => {
+          expect(BatchProfile.trackEvent).toHaveBeenCalledWith('has_booked')
+        })
       }
     )
   })

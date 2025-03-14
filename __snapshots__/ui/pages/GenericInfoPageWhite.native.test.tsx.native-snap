@@ -16,6 +16,9 @@ exports[`<GenericInfoPageWhite /> should render correctly 1`] = `
           "top": 0,
           "zIndex": 1,
         },
+        {
+          "borderBottomWidth": 0,
+        },
       ]
     }
   >
@@ -277,6 +280,7 @@ exports[`<GenericInfoPageWhite /> should render correctly 1`] = `
       }
     />
     <View
+      animation={false}
       style={
         [
           {

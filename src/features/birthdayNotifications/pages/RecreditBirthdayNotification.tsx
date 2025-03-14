@@ -13,10 +13,9 @@ import { getAge } from 'shared/user/getAge'
 import { useAvailableCredit } from 'shared/user/useAvailableCredit'
 import TutorialPassLogo from 'ui/animations/eighteen_birthday.json'
 import { AnimatedProgressBar } from 'ui/components/bars/AnimatedProgressBar'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Spacer } from 'ui/components/spacer/Spacer'
-import { GenericInfoPageWhiteLegacy } from 'ui/pages/GenericInfoPageWhiteLegacy'
+import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
 import { categoriesIcons } from 'ui/svg/icons/bicolor/exports/categoriesIcons'
 import { getSpacing, TypoDS } from 'ui/theme'
 import { getNoHeadingAttrs } from 'ui/theme/typographyAttrs/getNoHeadingAttrs'
@@ -45,19 +44,9 @@ export const RecreditBirthdayNotification = () => {
 
   const { mutate: resetRecreditAmountToShow, isLoading: isResetRecreditAmountToShowLoading } =
     useResetRecreditAmountToShow({
-      onSuccess: () => {
-        navigateToHome()
-      },
-      onError: () => {
-        showErrorSnackBar({
-          message: 'Une erreur est survenue',
-        })
-      },
+      onSuccess: () => navigateToHome(),
+      onError: () => showErrorSnackBar({ message: 'Une erreur est survenue' }),
     })
-
-  const onPressContinue = () => {
-    resetRecreditAmountToShow()
-  }
 
   useEffect(() => {
     storage.saveObject('has_seen_birthday_notification_card', true)
@@ -65,7 +54,7 @@ export const RecreditBirthdayNotification = () => {
 
   const recreditMessage = age
     ? `Pour tes ${age} ans, ${creditedAmount} ont été ajoutés à ton compte. Tu disposes maintenant de\u00a0:`
-    : ''
+    : undefined
 
   const enableCreditV3 = settings?.wipEnableCreditV3
   const text = enableCreditV3
@@ -73,36 +62,31 @@ export const RecreditBirthdayNotification = () => {
     : 'Tu as jusqu’à la veille de tes 18 ans pour profiter de ton crédit.'
 
   return (
-    <GenericInfoPageWhiteLegacy animation={TutorialPassLogo} title="Bonne nouvelle&nbsp;!">
-      <StyledSubtitle testID="recreditMessage">{recreditMessage}</StyledSubtitle>
-
-      <Spacer.Column numberOfSpaces={4} />
-      <ProgressBarContainer>
-        <AnimatedProgressBar
-          progress={1}
-          color={uniqueColors.brand}
-          icon={categoriesIcons.Show}
-          isAnimated
-        />
-        <Amount>{remainingCredit}</Amount>
-      </ProgressBarContainer>
-      <Spacer.Column numberOfSpaces={4} />
-      <StyledBody>{text}</StyledBody>
-      <Spacer.Column numberOfSpaces={5} />
-      <ButtonContainer>
-        <ButtonPrimary
-          wording="Continuer"
-          onPress={onPressContinue}
-          isLoading={isResetRecreditAmountToShowLoading}
-        />
-      </ButtonContainer>
-    </GenericInfoPageWhiteLegacy>
+    <GenericInfoPageWhite
+      animation={TutorialPassLogo}
+      title="Bonne nouvelle&nbsp;!"
+      subtitle={recreditMessage}
+      buttonPrimary={{
+        wording: 'Continuer',
+        onPress: resetRecreditAmountToShow,
+        isLoading: isResetRecreditAmountToShowLoading,
+      }}>
+      <React.Fragment>
+        <ProgressBarContainer>
+          <AnimatedProgressBar
+            progress={1}
+            color={uniqueColors.brand}
+            icon={categoriesIcons.Show}
+            isAnimated
+          />
+          <Amount>{remainingCredit}</Amount>
+        </ProgressBarContainer>
+        <Spacer.Column numberOfSpaces={4} />
+        <StyledBody>{text}</StyledBody>
+      </React.Fragment>
+    </GenericInfoPageWhite>
   )
 }
-
-const StyledSubtitle = styled(TypoDS.Title4).attrs(getNoHeadingAttrs())({
-  textAlign: 'center',
-})
 
 const StyledBody = styled(TypoDS.Body)({
   textAlign: 'center',
@@ -116,7 +100,3 @@ const Amount = styled(TypoDS.Title2).attrs(getNoHeadingAttrs())(({ theme }) => (
   textAlign: 'center',
   color: theme.uniqueColors.brand,
 }))
-
-const ButtonContainer = styled.View({
-  alignItems: 'center',
-})
