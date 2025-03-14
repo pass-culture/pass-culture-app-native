@@ -1,6 +1,4 @@
-import { useCallback } from 'react'
-import { PixelRatio, useWindowDimensions } from 'react-native'
-import { useTheme } from 'styled-components/native'
+import { PixelRatio } from 'react-native'
 
 export enum BorderRadiusEnum {
   BUTTON = 24,
@@ -45,30 +43,4 @@ export enum Breakpoints {
   LG = 1024,
   XL = 1200,
   XXL = 1400,
-}
-
-interface Grid {
-  sm?: number
-  md?: number
-  default: number
-}
-
-type Axis = 'width' | 'height'
-
-export function useGrid() {
-  const { height: windowHeight } = useWindowDimensions()
-  const { appContentWidth } = useTheme()
-  return useCallback(
-    (grid: Grid, axis: Axis = 'width') => {
-      const axisLength = axis === 'width' ? appContentWidth : windowHeight
-
-      if (grid.md && axisLength < Breakpoints.MD) {
-        return grid.md
-      } else if (grid.sm && axisLength < Breakpoints.SM) {
-        return grid.sm
-      }
-      return grid.default
-    },
-    [appContentWidth, windowHeight]
-  )
 }

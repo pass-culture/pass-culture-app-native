@@ -11,7 +11,7 @@ import { useDepositAmountsByAge } from 'shared/user/useDepositAmountsByAge'
 import TutorialPassLogo from 'ui/animations/eighteen_birthday.json'
 import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
 import { ClockFilled } from 'ui/svg/icons/ClockFilled'
-import { CaptionNeutralInfo } from 'ui/theme/typography'
+import { TypoDS } from 'ui/theme'
 
 export function EighteenBirthday() {
   const { user } = useAuthContext()
@@ -64,11 +64,9 @@ function ResetText() {
 
   if (enableCreditV3) return null
 
-  return (
-    <StyledCaptionNeutralInfo>Ton crédit précédent a été remis à {zero}.</StyledCaptionNeutralInfo>
-  )
+  return <StyledBodyAccentXs>Ton crédit précédent a été remis à {zero}.</StyledBodyAccentXs>
 }
 
-const StyledCaptionNeutralInfo = styled(CaptionNeutralInfo)({
+const StyledBodyAccentXs = styled(TypoDS.BodyAccentXs)({
   textAlign: 'center',
 })

@@ -1,14 +1,13 @@
 import { useNavigation } from '@react-navigation/native'
 import React, { FC } from 'react'
-import styled from 'styled-components/native'
 
 import { getProfileStackConfig } from 'features/navigation/ProfileStackNavigator/getProfileStackConfig'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
+import { InfoBanner } from 'ui/components/banners/InfoBanner'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { GenericInfoPageWhiteLegacy } from 'ui/pages/GenericInfoPageWhiteLegacy'
+import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
 import { Clear } from 'ui/svg/icons/Clear'
+import { Info } from 'ui/svg/icons/Info'
 import { BicolorUserBlocked } from 'ui/svg/icons/UserBlocked'
 import { TypoDS } from 'ui/theme'
 
@@ -22,47 +21,30 @@ export const DeleteProfileAccountHacked: FC = () => {
   }
 
   return (
-    <GenericInfoPageWhiteLegacy
-      headerGoBack
-      separateIconFromTitle={false}
-      icon={BicolorUserBlocked}
-      titleComponent={TypoDS.Title2}
-      title="Sécurise ton compte">
-      <ViewGap gap={8}>
-        <ViewGap gap={6}>
-          <TypoDS.Body>
-            Tu as indiqué
-            <TypoDS.BodyAccent> que quelqu’un d’autre a accès à ton compte.</TypoDS.BodyAccent>
-          </TypoDS.Body>
-          <TypoDS.Body>
-            Pour des raisons de <TypoDS.BodyAccent>sécurité</TypoDS.BodyAccent>, nous te conseillons
-            de suspendre ton compte temporairement.
-          </TypoDS.Body>
-        </ViewGap>
-        <ContentBottom>
-          <ButtonPrimary wording="Suspendre mon compte" onPress={navigateToSuspendAccount} />
-          <ButtonTertiaryBlack
-            wording="Ne pas sécuriser mon compte"
-            onPress={navigateToProfile}
-            icon={Clear}
-            inline
-          />
-          <StyledBody>
-            Tu recevras un e-mail pour t’indiquer les étapes à suivre pour récupérer ton compte
-          </StyledBody>
-        </ContentBottom>
+    <GenericInfoPageWhite
+      withGoBack
+      illustration={BicolorUserBlocked}
+      title="Sécurise ton compte"
+      buttonPrimary={{ wording: 'Suspendre mon compte', onPress: navigateToSuspendAccount }}
+      buttonTertiary={{
+        wording: 'Ne pas sécuriser mon compte',
+        onPress: navigateToProfile,
+        icon: Clear,
+      }}>
+      <ViewGap gap={6}>
+        <TypoDS.Body>
+          Tu as indiqué
+          <TypoDS.BodyAccent> que quelqu’un d’autre a accès à ton compte.</TypoDS.BodyAccent>
+        </TypoDS.Body>
+        <TypoDS.Body>
+          Pour des raisons de <TypoDS.BodyAccent>sécurité</TypoDS.BodyAccent>, nous te conseillons
+          de suspendre ton compte temporairement.
+        </TypoDS.Body>
+        <InfoBanner
+          icon={Info}
+          message="Tu recevras un e-mail pour t’indiquer les étapes à suivre pour récupérer ton compte"
+        />
       </ViewGap>
-    </GenericInfoPageWhiteLegacy>
+    </GenericInfoPageWhite>
   )
 }
-
-const ContentBottom = styled(ViewGap).attrs({
-  gap: 6,
-})({
-  alignItems: 'center',
-})
-
-const StyledBody = styled(TypoDS.BodyS)(({ theme }) => ({
-  textAlign: 'center',
-  color: theme.colors.greyDark,
-}))

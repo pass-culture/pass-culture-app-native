@@ -11,8 +11,7 @@ import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouch
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { LogoPassCulture } from 'ui/svg/icons/LogoPassCulture'
 import { LogoMinistere } from 'ui/svg/LogoMinistere'
-import { getSpacing, Spacer } from 'ui/theme'
-import { CaptionNeutralInfo } from 'ui/theme/typography'
+import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 
 const isWeb = Platform.OS === 'web'
 
@@ -27,10 +26,10 @@ export const AccessibilityFooter = () => {
           </LogoContainer>
           <LinksContainer>
             <InternalTouchableLink navigateTo={getProfileNavConfig('Accessibility')}>
-              <CaptionNeutralInfo>Accessibilité&nbsp;: partiellement conforme</CaptionNeutralInfo>
+              <TypoDS.BodyAccentXs>Accessibilité&nbsp;: partiellement conforme</TypoDS.BodyAccentXs>
             </InternalTouchableLink>
             <InternalTouchableLink navigateTo={getProfileNavConfig('LegalNotices')}>
-              <CaptionNeutralInfo>Mentions légales</CaptionNeutralInfo>
+              <TypoDS.BodyAccentXs>Mentions légales</TypoDS.BodyAccentXs>
             </InternalTouchableLink>
             <ExternalTouchableLink
               as={ButtonQuaternaryGrey}

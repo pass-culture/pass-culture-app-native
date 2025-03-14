@@ -12,16 +12,14 @@ import { eventMonitoring } from 'libs/monitoring/services'
 import { getErrorMessage } from 'shared/getErrorMessage/getErrorMessage'
 import { BulletListItem } from 'ui/components/BulletListItem'
 import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonInsideText'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { VerticalUl } from 'ui/components/Ul'
-import { GenericInfoPageWhiteLegacy } from 'ui/pages/GenericInfoPageWhiteLegacy'
+import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
 import { BicolorUserError } from 'ui/svg/BicolorUserError'
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
-import { getSpacing, Spacer, TypoDS } from 'ui/theme'
+import { Spacer, TypoDS } from 'ui/theme'
 import { SPACE } from 'ui/theme/constants'
 
 export const SuspensionChoice = () => {
@@ -55,13 +53,26 @@ export const SuspensionChoice = () => {
     suspendAccountForSuspiciousLogin({ token: params.token })
   }, [params.token, suspendAccountForSuspiciousLogin])
 
+  const onPressContactFraudTeam = () => {
+    analytics.logContactFraudTeam({ from: 'suspensionchoice' })
+  }
+
   return (
-    <GenericInfoPageWhiteLegacy
-      headerGoBack
-      titleComponent={TypoDS.Title3}
+    <GenericInfoPageWhite
+      withGoBack
+      illustration={BicolorUserError}
       title="Souhaites-tu suspendre ton compte pass&nbsp;Culture&nbsp;?"
-      separateIconFromTitle={false}
-      icon={BicolorUserError}>
+      buttonPrimary={{
+        wording: 'Oui, suspendre mon compte',
+        onPress: onPressContinue,
+        isLoading,
+      }}
+      buttonTertiary={{
+        icon: EmailFilled,
+        wording: 'Contacter le service fraude',
+        onBeforeNavigate: onPressContactFraudTeam,
+        externalNav: { url: `mailto:${env.FRAUD_EMAIL_ADDRESS}` },
+      }}>
       <TypoDS.BodyAccent>Les conséquences&nbsp;:</TypoDS.BodyAccent>
       <VerticalUl>
         <BulletListItem>
@@ -84,34 +95,9 @@ export const SuspensionChoice = () => {
         Nous gardons toutes les informations personnelles que tu nous as transmises lors de la
         vérification de ton identité.
       </TypoDS.Body>
-      <Spacer.Column numberOfSpaces={4} />
-      <ButtonContainer>
-        <ButtonPrimary
-          wording="Oui, suspendre mon compte"
-          onPress={onPressContinue}
-          isLoading={isLoading}
-        />
-        <Spacer.Column numberOfSpaces={2} />
-        <ExternalTouchableLink
-          as={ButtonTertiaryBlack}
-          wording="Contacter le service fraude"
-          accessibilityLabel="Ouvrir le gestionnaire mail pour contacter le service fraude"
-          icon={EmailFilled}
-          onBeforeNavigate={onPressContactFraudTeam}
-          externalNav={{ url: `mailto:${env.FRAUD_EMAIL_ADDRESS}` }}
-        />
-      </ButtonContainer>
-    </GenericInfoPageWhiteLegacy>
+    </GenericInfoPageWhite>
   )
 }
-
-const onPressContactFraudTeam = () => {
-  analytics.logContactFraudTeam({ from: 'suspensionchoice' })
-}
-
-const ButtonContainer = styled.View({
-  paddingBottom: getSpacing(10),
-})
 
 const StyledButtonInsideText = styled(ButtonInsideText).attrs(({ theme }) => ({
   buttonColor: theme.colors.black,

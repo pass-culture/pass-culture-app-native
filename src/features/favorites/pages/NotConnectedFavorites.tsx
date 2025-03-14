@@ -1,4 +1,5 @@
 import React from 'react'
+import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled from 'styled-components/native'
 
 import { AuthenticationButton } from 'features/auth/components/AuthenticationButton/AuthenticationButton'
@@ -6,58 +7,90 @@ import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
 import { ButtonWithLinearGradient } from 'ui/components/buttons/buttonWithLinearGradient/ButtonWithLinearGradient'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import { GenericInfoPageWhiteLegacy } from 'ui/pages/GenericInfoPageWhiteLegacy'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { BicolorUserFavorite } from 'ui/svg/icons/BicolorUserFavorite'
 import { getSpacing, Spacer, TypoDS } from 'ui/theme'
+import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
-const onBeforeSignupNavigate = () => {
-  analytics.logSignUpFromFavorite()
-  analytics.logSignUpClicked({ from: 'favorite' })
+export const NotConnectedFavorites = () => {
+  const { bottom } = useSafeAreaInsets()
+
+  const onBeforeSignupNavigate = () => {
+    analytics.logSignUpFromFavorite()
+    analytics.logSignUpClicked({ from: 'favorite' })
+  }
+
+  return (
+    <Container bottom={bottom}>
+      <Spacer.Flex flex={1} />
+      <IllustrationContainer>
+        <Illustration />
+      </IllustrationContainer>
+      <TextContainer gap={4}>
+        <StyledTitle2 {...getHeadingAttrs(1)}>
+          Identifie-toi pour retrouver tes favoris
+        </StyledTitle2>
+        <StyledBody {...getHeadingAttrs(2)}>
+          Ton compte te permettra de retrouver tous tes bons plans en un clin d’oeil&nbsp;!
+        </StyledBody>
+      </TextContainer>
+      <ButtonContainer gap={4}>
+        <InternalTouchableLink
+          key={1}
+          as={ButtonWithLinearGradient}
+          wording="Créer un compte"
+          navigateTo={{ screen: 'SignupForm', params: { from: StepperOrigin.FAVORITE } }}
+          onBeforeNavigate={onBeforeSignupNavigate}
+        />
+        <StyledAuthenticationButton
+          key={2}
+          type="login"
+          onAdditionalPress={analytics.logSignInFromFavorite}
+          params={{ from: StepperOrigin.FAVORITE }}
+        />
+      </ButtonContainer>
+      <Spacer.Flex flex={1} />
+    </Container>
+  )
 }
 
-export const NotConnectedFavorites = () => (
-  <GenericInfoPageWhiteLegacy
-    title="Identifie-toi pour retrouver tes favoris"
-    subtitle="Ton compte te permettra de retrouver tous tes bons plans en un clin d’oeil&nbsp;!"
-    titleComponent={StyledTitle4}
-    subtitleComponent={CenteredText}
-    icon={BicolorUserFavorite}
-    separateIconFromTitle={false}
-    mobileBottomFlex={2}>
-    <ButtonContainer>
-      <InternalTouchableLink
-        as={ButtonWithLinearGradient}
-        wording="Créer un compte"
-        navigateTo={{ screen: 'SignupForm', params: { from: StepperOrigin.FAVORITE } }}
-        onBeforeNavigate={onBeforeSignupNavigate}
-        buttonHeight="tall"
-      />
-      <Spacer.Column numberOfSpaces={4} />
-      <StyledAuthenticationButton
-        type="login"
-        onAdditionalPress={analytics.logSignInFromFavorite}
-        params={{ from: StepperOrigin.FAVORITE }}
-      />
-    </ButtonContainer>
-    <Spacer.BottomScreen />
-  </GenericInfoPageWhiteLegacy>
-)
-
-const StyledTitle4 = styled(TypoDS.Title4)({
-  textAlign: 'center',
-  marginBottom: getSpacing(4),
-})
-
-const ButtonContainer = styled.View({
+const Container = styled.View<{ top: number; bottom: number }>(({ theme }) => ({
   flex: 1,
-  paddingBottom: getSpacing(10),
-  minHeight: getSpacing(31), // To avoid button getting smashed on "square" screens
+  justifyContent: 'space-between',
+  paddingHorizontal: theme.contentPage.marginHorizontal,
+  paddingVertical: theme.contentPage.marginVertical,
+  overflow: 'scroll',
+  alignItems: 'center',
+}))
+
+const IllustrationContainer = styled.View({
+  alignItems: 'center',
+  justifyContent: 'center',
+  marginBottom: getSpacing(6),
 })
 
-const CenteredText = styled(TypoDS.Body)({
-  textAlign: 'center',
-})
+const Illustration = styled(BicolorUserFavorite).attrs(({ theme }) => ({
+  size: theme.illustrations.sizes.fullPage,
+}))``
+
+const ButtonContainer = styled(ViewGap)(({ theme }) => ({
+  maxWidth: theme.contentPage.maxWidth,
+  width: '100%',
+}))
 
 const StyledAuthenticationButton = styled(AuthenticationButton).attrs(({ theme }) => ({
   linkColor: theme.colors.secondary,
 }))``
+
+const TextContainer = styled(ViewGap)({
+  alignItems: 'center',
+  marginBottom: getSpacing(12),
+})
+
+const StyledTitle2 = styled(TypoDS.Title2)({
+  textAlign: 'center',
+})
+
+const StyledBody = styled(TypoDS.Body)({
+  textAlign: 'center',
+})
