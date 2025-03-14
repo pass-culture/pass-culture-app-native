@@ -35,7 +35,7 @@ import { subscriptionRoutes } from 'features/navigation/RootNavigator/subscripti
 import { trustedDeviceRoutes } from 'features/navigation/RootNavigator/trustedDeviceRoutes'
 import { tutorialRoutes } from 'features/navigation/RootNavigator/tutorialRoutes'
 import { screenParamsParser } from 'features/navigation/screenParamsUtils'
-import { tabNavigatorPathConfig } from 'features/navigation/TabBar/routes'
+import { tabNavigatorPathConfig } from 'features/navigation/TabBar/tabBarRoutes'
 import { TabNavigator } from 'features/navigation/TabBar/TabNavigator'
 import { Offer } from 'features/offer/pages/Offer/Offer'
 import { OfferPreview } from 'features/offer/pages/OfferPreview/OfferPreview'

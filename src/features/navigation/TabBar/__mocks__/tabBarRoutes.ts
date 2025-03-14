@@ -34,7 +34,7 @@ export const tabNavigatorPathConfig: LinkingOptions<TabParamList>['config'] = {
   },
 }
 const MockComponent = () => null
-export const routes: Array<TabRoute> = [
+export const tabBarRoutes: Array<TabRoute> = [
   {
     name: 'Home',
     component: MockComponent,
@@ -64,7 +64,7 @@ export const routes: Array<TabRoute> = [
 
 export const initialRouteName = 'Home'
 
-const tabRouteNames = routes.map((route) => route.name)
+const tabRouteNames = tabBarRoutes.map((route) => route.name)
 
 // Typeguard for screen params
 export function isTabScreen(screen: ScreenNames): screen is TabRouteName {
