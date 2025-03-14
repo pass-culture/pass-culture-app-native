@@ -12,6 +12,7 @@ module.exports = {
       name: '@storybook/addon-react-native-web',
       options: {
         modulesToAlias: {
+          // if you change those lignes, check this doc https://github.com/pass-culture/pass-culture-app-native/blob/5ff5fba596244a759d60f8c9cdb67d56ac86a1a7/doc/development/alias.md
           __mocks__: './__mocks__',
           api: './src/api',
           cheatcodes: './src/cheatcodes',
