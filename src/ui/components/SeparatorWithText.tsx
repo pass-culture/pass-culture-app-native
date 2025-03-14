@@ -30,9 +30,10 @@ const Container = styled.View({
   paddingHorizontal: getSpacing(1),
 })
 
-const StyledLabel = styled(TypoDS.BodyAccentXs)({
+const StyledLabel = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
+  color: theme.designSystem.color.text.default,
   marginHorizontal: getSpacing(2.5),
-})
+}))
 
 const StyledSeparator = styled(Separator.Horizontal)<{ backgroundColor?: ColorsEnum }>(
   ({ theme, backgroundColor }) => ({

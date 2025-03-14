@@ -1,13 +1,12 @@
 import colorAlpha from 'color-alpha'
 import React, { FunctionComponent, ReactNode } from 'react'
 import { Platform, StyleProp, View, ViewStyle } from 'react-native'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { BackButton } from 'ui/components/headers/BackButton'
 import { getSpacing, Spacer } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
@@ -42,6 +41,7 @@ export const PageHeaderWithoutPlaceholder: FunctionComponent<Props> = ({
   children,
   style,
 }) => {
+  const theme = useTheme()
   return (
     <Header testID={testID} accessibilityRole={AccessibilityRole.HEADER} style={style}>
       <Spacer.TopScreen />
@@ -49,7 +49,7 @@ export const PageHeaderWithoutPlaceholder: FunctionComponent<Props> = ({
         <Row>
           <ButtonContainer positionInHeader="left" testID="back-button-container">
             {shouldDisplayBackButton ? (
-              <BackButton onGoBack={onGoBack} color={ColorsEnum.BLACK} />
+              <BackButton onGoBack={onGoBack} color={theme.designSystem.color.icon.default} />
             ) : null}
           </ButtonContainer>
           {title ? <Title nativeID={titleID}>{title}</Title> : null}
@@ -71,8 +71,10 @@ const Header = styled(View)(({ theme }) => ({
   right: 0,
   // There is an issue with the blur on Android: we chose to render white background for the header
   backgroundColor:
-    Platform.OS === 'android' ? theme.colors.white : colorAlpha(theme.colors.white, 0),
-  borderBottomColor: theme.colors.greyLight,
+    Platform.OS === 'android'
+      ? theme.designSystem.color.background.default
+      : colorAlpha(theme.designSystem.color.background.default, 0),
+  borderBottomColor: theme.designSystem.separator.color.subtle,
   borderBottomWidth: 1,
 }))
 
@@ -87,6 +89,7 @@ const Title = styled.Text.attrs(() => ({
   ...getHeadingAttrs(1),
 }))(({ theme }) => ({
   ...theme.designSystem.typography.title4,
+  color: theme.designSystem.color.text.default,
   textAlign: 'center',
 }))
 

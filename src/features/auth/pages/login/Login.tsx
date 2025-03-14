@@ -32,6 +32,7 @@ import { SUGGESTION_DELAY_IN_MS } from 'ui/components/inputs/EmailInputWithSpell
 import { InputError } from 'ui/components/inputs/InputError'
 import { SeparatorWithText } from 'ui/components/SeparatorWithText'
 import { SNACK_BAR_TIME_OUT_LONG, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import { Page } from 'ui/pages/Page'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
 import { Key } from 'ui/svg/icons/Key'
 import { Spacer, TypoDS } from 'ui/theme'
@@ -193,8 +194,10 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
     analytics.logSignUpClicked({ from: 'login' })
   }, [])
 
+  const titlePage = 'Connecte-toi'
+
   return (
-    <React.Fragment>
+    <Page>
       {isRecaptchaEnabled ? (
         <ReCaptcha
           onClose={onReCaptchaClose}
@@ -205,7 +208,7 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
         />
       ) : null}
       <SecondaryPageWithBlurHeader title="Connexion" shouldDisplayBackButton>
-        <TypoDS.Title3 {...getHeadingAttrs(2)}>Connecte-toi</TypoDS.Title3>
+        <Title {...getHeadingAttrs(2)}>{titlePage}</Title>
         <Spacer.Column numberOfSpaces={2} />
         <Form.MaxWidth>
           <InputError
@@ -252,9 +255,13 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
         </Form.MaxWidth>
         <SignUpButton onAdditionalPress={onLogSignUpAnalytics} />
       </SecondaryPageWithBlurHeader>
-    </React.Fragment>
+    </Page>
   )
 })
+
+const Title = styled(TypoDS.Title3)(({ theme }) => ({
+  color: theme.designSystem.color.text.default,
+}))
 
 const ButtonContainer = styled.View(({ theme }) => ({
   flexDirection: 'row',
@@ -263,10 +270,10 @@ const ButtonContainer = styled.View(({ theme }) => ({
 }))
 
 const SignUpButton = styled(AuthenticationButton).attrs(({ theme }) => ({
-  linkColor: theme.colors.secondary,
+  linkColor: theme.designSystem.color.text['brand-secondary'],
   type: 'signup',
 }))``
 
 const StyledSeparatorWithText = styled(SeparatorWithText).attrs(({ theme }) => ({
-  backgroundColor: theme.colors.greyMedium,
+  backgroundColor: theme.designSystem.separator.color.subtle,
 }))``

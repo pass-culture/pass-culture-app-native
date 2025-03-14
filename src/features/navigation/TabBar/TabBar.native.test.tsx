@@ -391,7 +391,7 @@ describe('TabBar', () => {
 function renderTabBar(tabNavigationState: TabNavigationState<ParamListBase>) {
   render(
     reactQueryProviderHOC(
-      <ThemeProvider theme={computedTheme}>
+      <ThemeProvider theme={computedTheme} colorScheme="light">
         <TabBar navigation={navigation} state={tabNavigationState} />
       </ThemeProvider>
     )

@@ -658,7 +658,6 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                         style={
                           [
                             {
-                              "color": "#161617",
                               "flexShrink": 1,
                               "fontFamily": "Montserrat-SemiBold",
                               "fontSize": 16,
@@ -803,7 +802,6 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                         style={
                           [
                             {
-                              "color": "#161617",
                               "flexShrink": 1,
                               "fontFamily": "Montserrat-SemiBold",
                               "fontSize": 16,
@@ -948,7 +946,6 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                         style={
                           [
                             {
-                              "color": "#161617",
                               "flexShrink": 1,
                               "fontFamily": "Montserrat-SemiBold",
                               "fontSize": 16,
@@ -1093,7 +1090,6 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                         style={
                           [
                             {
-                              "color": "#161617",
                               "flexShrink": 1,
                               "fontFamily": "Montserrat-SemiBold",
                               "fontSize": 16,
@@ -1238,7 +1234,6 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                         style={
                           [
                             {
-                              "color": "#161617",
                               "flexShrink": 1,
                               "fontFamily": "Montserrat-SemiBold",
                               "fontSize": 16,
@@ -1383,7 +1378,6 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                         style={
                           [
                             {
-                              "color": "#161617",
                               "flexShrink": 1,
                               "fontFamily": "Montserrat-SemiBold",
                               "fontSize": 16,
@@ -1528,7 +1522,6 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                         style={
                           [
                             {
-                              "color": "#161617",
                               "flexShrink": 1,
                               "fontFamily": "Montserrat-SemiBold",
                               "fontSize": 16,
@@ -1673,7 +1666,6 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                         style={
                           [
                             {
-                              "color": "#161617",
                               "flexShrink": 1,
                               "fontFamily": "Montserrat-SemiBold",
                               "fontSize": 16,
@@ -1818,7 +1810,6 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                         style={
                           [
                             {
-                              "color": "#161617",
                               "flexShrink": 1,
                               "fontFamily": "Montserrat-SemiBold",
                               "fontSize": 16,
@@ -1963,7 +1954,6 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                         style={
                           [
                             {
-                              "color": "#161617",
                               "flexShrink": 1,
                               "fontFamily": "Montserrat-SemiBold",
                               "fontSize": 16,
@@ -2268,7 +2258,6 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                         style={
                           [
                             {
-                              "color": "#161617",
                               "flexShrink": 1,
                               "fontFamily": "Montserrat-SemiBold",
                               "fontSize": 16,
@@ -2413,7 +2402,6 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                         style={
                           [
                             {
-                              "color": "#161617",
                               "flexShrink": 1,
                               "fontFamily": "Montserrat-SemiBold",
                               "fontSize": 16,

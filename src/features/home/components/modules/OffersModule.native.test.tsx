@@ -243,7 +243,7 @@ describe('OffersModule', () => {
 const renderOffersModule = (additionalProps: Partial<OffersModuleProps> = {}) =>
   render(
     reactQueryProviderHOC(
-      <ThemeProvider theme={computedTheme}>
+      <ThemeProvider theme={computedTheme} colorScheme="light">
         <OffersModule {...props} {...additionalProps} />
       </ThemeProvider>
     )

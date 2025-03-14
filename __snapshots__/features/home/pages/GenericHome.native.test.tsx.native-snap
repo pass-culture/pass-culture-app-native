@@ -131,7 +131,6 @@ exports[`GenericHome With not displayed skeleton by default should display real 
               style={
                 [
                   {
-                    "color": "#161617",
                     "fontFamily": "Montserrat-Bold",
                     "fontSize": 28,
                     "lineHeight": 44.8,
@@ -329,7 +328,6 @@ exports[`GenericHome With not displayed skeleton by default should display skele
               style={
                 [
                   {
-                    "color": "#161617",
                     "fontFamily": "Montserrat-Bold",
                     "fontSize": 28,
                     "lineHeight": 44.8,

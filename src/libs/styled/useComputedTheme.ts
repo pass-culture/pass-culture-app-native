@@ -1,10 +1,11 @@
 import { useMemo } from 'react'
-import { useWindowDimensions } from 'react-native'
+import { ColorSchemeName, useWindowDimensions } from 'react-native'
 
 import { useMediaQuery } from 'libs/react-responsive/useMediaQuery'
 import { BaseAppThemeType, AppThemeType } from 'theme'
+import { designTokensDark, designTokensLight } from 'theme/designTokens'
 
-export function useComputedTheme(theme: BaseAppThemeType) {
+export function useComputedTheme(theme: BaseAppThemeType, colorScheme: ColorSchemeName) {
   const { width: windowWidth } = useWindowDimensions()
   const tabletMinWidth = theme.breakpoints.md
   const desktopMinWidth = theme.breakpoints.lg
@@ -19,9 +20,12 @@ export function useComputedTheme(theme: BaseAppThemeType) {
   const showTabBar = theme.isTouch || !!isMobileViewport
   const appContentWidth = Math.min(desktopMinWidth, windowWidth)
 
+  const designTokens = colorScheme === 'dark' ? designTokensDark : designTokensLight
+
   return useMemo<AppThemeType>(
     () => ({
       ...theme,
+      designSystem: designTokens,
       tabBar: { ...theme.tabBar, showLabels, height: theme.tabBar.heightV2 },
       isMobileViewport,
       isTabletViewport,
@@ -30,13 +34,14 @@ export function useComputedTheme(theme: BaseAppThemeType) {
       showTabBar,
       appContentWidth,
     }),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
     [
+      theme,
+      designTokens,
+      showLabels,
       isMobileViewport,
       isTabletViewport,
       isDesktopViewport,
       isSmallScreen,
-      showLabels,
       showTabBar,
       appContentWidth,
     ]

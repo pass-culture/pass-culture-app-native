@@ -479,7 +479,6 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                   style={
                     [
                       {
-                        "color": "#161617",
                         "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 16,
                         "lineHeight": 25.6,
@@ -659,7 +658,6 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                   style={
                     [
                       {
-                        "color": "#161617",
                         "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 16,
                         "lineHeight": 25.6,
@@ -873,7 +871,7 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                     {
                       "alignItems": "center",
                       "backgroundColor": "#ffffff",
-                      "borderColor": "#90949D",
+                      "borderColor": "#90949d",
                       "borderRadius": 22,
                       "borderStyle": "solid",
                       "borderWidth": 1,
@@ -983,7 +981,7 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                     style={
                       [
                         {
-                          "color": "#696A6F",
+                          "color": "#696a6f",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 12,
                           "lineHeight": 19.2,
@@ -1015,7 +1013,7 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                     {
                       "alignItems": "center",
                       "backgroundColor": "#ffffff",
-                      "borderColor": "#90949D",
+                      "borderColor": "#90949d",
                       "borderRadius": 22,
                       "borderStyle": "solid",
                       "borderWidth": 1,

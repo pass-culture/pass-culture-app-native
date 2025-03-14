@@ -193,6 +193,10 @@ module.exports = {
             group: ['*.stories*'],
             message: 'you should never import something from a story.',
           },
+          {
+            group: ['design-system/*'],
+            message: 'use useTheme() | styled(Component).attrs(({ theme }) => ({})`` | styled(Component)(({ theme }) => ({}) when you want yo use design tokens',
+          }
         ],
       },
     ],

@@ -29,6 +29,7 @@ const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, TextInputPro
   const StyledIcon =
     Icon &&
     styled(Icon).attrs(({ theme }) => ({
+      color: theme.designSystem.color.icon.default,
       size: theme.icons.sizes.small,
     }))``
 
@@ -46,7 +47,7 @@ const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, TextInputPro
         <React.Fragment>
           <FlexInputLabel htmlFor={textInputID}>
             <LabelContainer>
-              <TypoDS.Body>{customProps.label}</TypoDS.Body>
+              <StyledLabel>{customProps.label}</StyledLabel>
               <RightLabel
                 isRequiredField={customProps.isRequiredField}
                 rightLabel={customProps.rightLabel}
@@ -110,5 +111,9 @@ const IconTouchableOpacity = styledButton(Touchable)({
 })
 
 const Subtitle = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
-  color: theme.colors.greyDark,
+  color: theme.designSystem.color.text.subtle,
+}))
+
+const StyledLabel = styled(TypoDS.Body)(({ theme }) => ({
+  color: theme.designSystem.color.text.default,
 }))

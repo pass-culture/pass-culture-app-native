@@ -7,13 +7,13 @@ import { styledButton } from 'ui/components/buttons/styledButton'
 import { HiddenAccessibleText } from 'ui/components/HiddenAccessibleText'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { ArrowPrevious as DefaultArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
+import { ColorsTypeLegacy } from 'ui/svg/icons/types'
 import { getSpacing } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 
 interface HeaderIconProps {
   onGoBack?: () => void
-  color?: ColorsEnum
+  color?: ColorsTypeLegacy
 }
 
 export const BackButton: React.FC<HeaderIconProps> = ({ onGoBack, color }) => {
@@ -34,7 +34,7 @@ const StyledTouchable = styledButton(Touchable)({
   alignItems: 'center',
 })
 
-const ArrowPrevious = styled(DefaultArrowPrevious).attrs<{ color: ColorsEnum }>(
+const ArrowPrevious = styled(DefaultArrowPrevious).attrs<{ color: ColorsTypeLegacy }>(
   ({ theme, color }) => ({
     color: color ?? theme.colors.white,
     size: theme.icons.sizes.small,

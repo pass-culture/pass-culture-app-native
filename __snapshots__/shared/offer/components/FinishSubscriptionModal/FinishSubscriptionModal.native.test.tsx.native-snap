@@ -222,7 +222,6 @@ exports[`<FinishSubscriptionModal /> should display correct body when user needs
             style={
               [
                 {
-                  "color": "#161617",
                   "fontFamily": "Montserrat-Bold",
                   "fontSize": 17,
                   "lineHeight": 27.2,
@@ -375,7 +374,6 @@ pour réserver cette offre
                 style={
                   [
                     {
-                      "color": "#161617",
                       "fontFamily": "Montserrat-Medium",
                       "fontSize": 16,
                       "lineHeight": 25.6,
@@ -389,7 +387,6 @@ pour réserver cette offre
                   style={
                     [
                       {
-                        "color": "#161617",
                         "fontFamily": "Montserrat-Medium",
                         "fontSize": 16,
                         "lineHeight": 25.6,
@@ -404,7 +401,6 @@ pour réserver cette offre
                     style={
                       [
                         {
-                          "color": "#161617",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 16,
                           "lineHeight": 25.6,
@@ -745,7 +741,6 @@ exports[`<FinishSubscriptionModal /> should render correctly with eighteen years
             style={
               [
                 {
-                  "color": "#161617",
                   "fontFamily": "Montserrat-Bold",
                   "fontSize": 17,
                   "lineHeight": 27.2,
@@ -898,7 +893,6 @@ pour réserver cette offre
                 style={
                   [
                     {
-                      "color": "#161617",
                       "fontFamily": "Montserrat-Medium",
                       "fontSize": 16,
                       "lineHeight": 25.6,
@@ -912,7 +906,6 @@ pour réserver cette offre
                   style={
                     [
                       {
-                        "color": "#161617",
                         "fontFamily": "Montserrat-Medium",
                         "fontSize": 16,
                         "lineHeight": 25.6,
@@ -927,7 +920,6 @@ pour réserver cette offre
                     style={
                       [
                         {
-                          "color": "#161617",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 16,
                           "lineHeight": 25.6,
@@ -1268,7 +1260,6 @@ exports[`<FinishSubscriptionModal /> should render correctly with undefined depo
             style={
               [
                 {
-                  "color": "#161617",
                   "fontFamily": "Montserrat-Bold",
                   "fontSize": 17,
                   "lineHeight": 27.2,
@@ -1421,7 +1412,6 @@ pour réserver cette offre
                 style={
                   [
                     {
-                      "color": "#161617",
                       "fontFamily": "Montserrat-Medium",
                       "fontSize": 16,
                       "lineHeight": 25.6,

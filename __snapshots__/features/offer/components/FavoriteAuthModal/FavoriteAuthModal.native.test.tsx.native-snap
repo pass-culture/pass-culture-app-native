@@ -222,7 +222,6 @@ exports[`FavoriteAuthModal should match previous snapshot 1`] = `
             style={
               [
                 {
-                  "color": "#161617",
                   "fontFamily": "Montserrat-Bold",
                   "fontSize": 17,
                   "lineHeight": 27.2,
@@ -374,7 +373,6 @@ retrouver tes favoris
                 style={
                   [
                     {
-                      "color": "#161617",
                       "fontFamily": "Montserrat-Medium",
                       "fontSize": 16,
                       "lineHeight": 25.6,

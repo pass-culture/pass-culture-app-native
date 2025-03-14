@@ -136,7 +136,6 @@ exports[`PushNotificationsModal should render properly 1`] = `
           style={
             [
               {
-                "color": "#161617",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 17,
                 "lineHeight": 27.2,
@@ -267,7 +266,6 @@ exports[`PushNotificationsModal should render properly 1`] = `
         style={
           [
             {
-              "color": "#161617",
               "fontFamily": "Montserrat-Medium",
               "fontSize": 16,
               "lineHeight": 25.6,
@@ -292,7 +290,6 @@ exports[`PushNotificationsModal should render properly 1`] = `
         style={
           [
             {
-              "color": "#161617",
               "fontFamily": "Montserrat-Medium",
               "fontSize": 16,
               "lineHeight": 25.6,

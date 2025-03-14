@@ -1,14 +1,25 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
-[
+<View
+  style={
+    [
+      {
+        "backgroundColor": "#ffffff",
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+      },
+    ]
+  }
+>
   <View
     accessibilityRole="header"
     style={
       [
         {
           "backgroundColor": "rgba(255,255,255,0)",
-          "borderBottomColor": "#F1F1F4",
+          "borderBottomColor": "#cbcdd2",
           "borderBottomWidth": 1,
           "left": 0,
           "position": "absolute",
@@ -179,7 +190,7 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
         />
       </View>
     </View>
-  </View>,
+  </View>
   <RCTScrollView
     contentContainerStyle={
       {
@@ -297,7 +308,7 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
                 style={
                   [
                     {
-                      "color": "#696A6F",
+                      "color": "#696a6f",
                       "fontFamily": "Montserrat-SemiBold",
                       "fontSize": 12,
                       "lineHeight": 19.2,
@@ -329,7 +340,7 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
                 {
                   "alignItems": "center",
                   "backgroundColor": "#ffffff",
-                  "borderColor": "#90949D",
+                  "borderColor": "#90949d",
                   "borderRadius": 22,
                   "borderStyle": "solid",
                   "borderWidth": 1,
@@ -440,7 +451,7 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
                 style={
                   [
                     {
-                      "color": "#696A6F",
+                      "color": "#696a6f",
                       "fontFamily": "Montserrat-SemiBold",
                       "fontSize": 12,
                       "lineHeight": 19.2,
@@ -472,7 +483,7 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
                 {
                   "alignItems": "center",
                   "backgroundColor": "#ffffff",
-                  "borderColor": "#90949D",
+                  "borderColor": "#90949d",
                   "borderRadius": 22,
                   "borderStyle": "solid",
                   "borderWidth": 1,
@@ -665,7 +676,7 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
                     "width": "auto",
                   },
                   {
-                    "backgroundColor": "transparent",
+                    "backgroundColor": "#ffffff",
                   },
                 ],
                 {
@@ -853,11 +864,11 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
           }
         >
           <View
-            backgroundColor="#CBCDD2"
+            backgroundColor="#cbcdd2"
             style={
               [
                 {
-                  "backgroundColor": "#CBCDD2",
+                  "backgroundColor": "#cbcdd2",
                   "flexBasis": 0,
                   "flexGrow": 1,
                   "flexShrink": 1,
@@ -883,11 +894,11 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
             ou
           </Text>
           <View
-            backgroundColor="#CBCDD2"
+            backgroundColor="#cbcdd2"
             style={
               [
                 {
-                  "backgroundColor": "#CBCDD2",
+                  "backgroundColor": "#cbcdd2",
                   "flexBasis": 0,
                   "flexGrow": 1,
                   "flexShrink": 1,
@@ -957,7 +968,7 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
                   "width": "100%",
                 },
                 {
-                  "borderColor": "#CBCDD2",
+                  "borderColor": "#cbcdd2",
                   "borderStyle": "solid",
                   "borderWidth": 2,
                 },
@@ -1161,7 +1172,7 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
         </View>
       </View>
     </View>
-  </RCTScrollView>,
+  </RCTScrollView>
   <View
     height={65}
     style={
@@ -1196,6 +1207,6 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
         ]
       }
     />
-  </View>,
-]
+  </View>
+</View>
 `;

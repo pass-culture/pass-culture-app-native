@@ -63,7 +63,6 @@ exports[`<BeneficiaryAccountCreated/> should render correctly for 18 year-old be
       style={
         [
           {
-            "color": "#161617",
             "fontFamily": "Montserrat-Bold",
             "fontSize": 28,
             "lineHeight": 44.8,
@@ -90,7 +89,6 @@ exports[`<BeneficiaryAccountCreated/> should render correctly for 18 year-old be
       style={
         [
           {
-            "color": "#161617",
             "fontFamily": "Montserrat-Bold",
             "fontSize": 17,
             "lineHeight": 27.2,
@@ -236,7 +234,6 @@ exports[`<BeneficiaryAccountCreated/> should render correctly for 18 year-old be
       style={
         [
           {
-            "color": "#161617",
             "fontFamily": "Montserrat-Medium",
             "fontSize": 16,
             "lineHeight": 25.6,
@@ -441,7 +438,6 @@ exports[`<BeneficiaryAccountCreated/> should render correctly for underage benef
       style={
         [
           {
-            "color": "#161617",
             "fontFamily": "Montserrat-Bold",
             "fontSize": 28,
             "lineHeight": 44.8,
@@ -468,7 +464,6 @@ exports[`<BeneficiaryAccountCreated/> should render correctly for underage benef
       style={
         [
           {
-            "color": "#161617",
             "fontFamily": "Montserrat-Bold",
             "fontSize": 17,
             "lineHeight": 27.2,
@@ -614,7 +609,6 @@ exports[`<BeneficiaryAccountCreated/> should render correctly for underage benef
       style={
         [
           {
-            "color": "#161617",
             "fontFamily": "Montserrat-Medium",
             "fontSize": 16,
             "lineHeight": 25.6,

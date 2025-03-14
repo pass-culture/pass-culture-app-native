@@ -222,7 +222,6 @@ exports[`<SubscriptionSuccessModal /> should render correctly for activites_crea
             style={
               [
                 {
-                  "color": "#161617",
                   "fontFamily": "Montserrat-Bold",
                   "fontSize": 17,
                   "lineHeight": 27.2,
@@ -373,7 +372,6 @@ exports[`<SubscriptionSuccessModal /> should render correctly for activites_crea
                 style={
                   [
                     {
-                      "color": "#161617",
                       "fontFamily": "Montserrat-Medium",
                       "fontSize": 16,
                       "lineHeight": 25.6,
@@ -572,7 +570,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for activites_crea
                           "width": "100%",
                         },
                         {
-                          "backgroundColor": "transparent",
+                          "backgroundColor": "#ffffff",
                         },
                       ],
                       {
@@ -884,7 +882,6 @@ exports[`<SubscriptionSuccessModal /> should render correctly for cinema 1`] = `
             style={
               [
                 {
-                  "color": "#161617",
                   "fontFamily": "Montserrat-Bold",
                   "fontSize": 17,
                   "lineHeight": 27.2,
@@ -1035,7 +1032,6 @@ exports[`<SubscriptionSuccessModal /> should render correctly for cinema 1`] = `
                 style={
                   [
                     {
-                      "color": "#161617",
                       "fontFamily": "Montserrat-Medium",
                       "fontSize": 16,
                       "lineHeight": 25.6,
@@ -1234,7 +1230,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for cinema 1`] = `
                           "width": "100%",
                         },
                         {
-                          "backgroundColor": "transparent",
+                          "backgroundColor": "#ffffff",
                         },
                       ],
                       {
@@ -1546,7 +1542,6 @@ exports[`<SubscriptionSuccessModal /> should render correctly for lecture 1`] = 
             style={
               [
                 {
-                  "color": "#161617",
                   "fontFamily": "Montserrat-Bold",
                   "fontSize": 17,
                   "lineHeight": 27.2,
@@ -1697,7 +1692,6 @@ exports[`<SubscriptionSuccessModal /> should render correctly for lecture 1`] = 
                 style={
                   [
                     {
-                      "color": "#161617",
                       "fontFamily": "Montserrat-Medium",
                       "fontSize": 16,
                       "lineHeight": 25.6,
@@ -1896,7 +1890,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for lecture 1`] = 
                           "width": "100%",
                         },
                         {
-                          "backgroundColor": "transparent",
+                          "backgroundColor": "#ffffff",
                         },
                       ],
                       {
@@ -2208,7 +2202,6 @@ exports[`<SubscriptionSuccessModal /> should render correctly for musique 1`] = 
             style={
               [
                 {
-                  "color": "#161617",
                   "fontFamily": "Montserrat-Bold",
                   "fontSize": 17,
                   "lineHeight": 27.2,
@@ -2359,7 +2352,6 @@ exports[`<SubscriptionSuccessModal /> should render correctly for musique 1`] = 
                 style={
                   [
                     {
-                      "color": "#161617",
                       "fontFamily": "Montserrat-Medium",
                       "fontSize": 16,
                       "lineHeight": 25.6,
@@ -2558,7 +2550,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for musique 1`] = 
                           "width": "100%",
                         },
                         {
-                          "backgroundColor": "transparent",
+                          "backgroundColor": "#ffffff",
                         },
                       ],
                       {
@@ -2870,7 +2862,6 @@ exports[`<SubscriptionSuccessModal /> should render correctly for spectacles 1`]
             style={
               [
                 {
-                  "color": "#161617",
                   "fontFamily": "Montserrat-Bold",
                   "fontSize": 17,
                   "lineHeight": 27.2,
@@ -3021,7 +3012,6 @@ exports[`<SubscriptionSuccessModal /> should render correctly for spectacles 1`]
                 style={
                   [
                     {
-                      "color": "#161617",
                       "fontFamily": "Montserrat-Medium",
                       "fontSize": 16,
                       "lineHeight": 25.6,
@@ -3220,7 +3210,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for spectacles 1`]
                           "width": "100%",
                         },
                         {
-                          "backgroundColor": "transparent",
+                          "backgroundColor": "#ffffff",
                         },
                       ],
                       {
@@ -3532,7 +3522,6 @@ exports[`<SubscriptionSuccessModal /> should render correctly for visites 1`] = 
             style={
               [
                 {
-                  "color": "#161617",
                   "fontFamily": "Montserrat-Bold",
                   "fontSize": 17,
                   "lineHeight": 27.2,
@@ -3683,7 +3672,6 @@ exports[`<SubscriptionSuccessModal /> should render correctly for visites 1`] = 
                 style={
                   [
                     {
-                      "color": "#161617",
                       "fontFamily": "Montserrat-Medium",
                       "fontSize": 16,
                       "lineHeight": 25.6,
@@ -3882,7 +3870,7 @@ exports[`<SubscriptionSuccessModal /> should render correctly for visites 1`] = 
                           "width": "100%",
                         },
                         {
-                          "backgroundColor": "transparent",
+                          "backgroundColor": "#ffffff",
                         },
                       ],
                       {

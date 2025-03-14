@@ -8,7 +8,7 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
       [
         {
           "backgroundColor": "rgba(255,255,255,0)",
-          "borderBottomColor": "#F1F1F4",
+          "borderBottomColor": "#cbcdd2",
           "borderBottomWidth": 1,
           "left": 0,
           "position": "absolute",
@@ -281,7 +281,6 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
                 style={
                   [
                     {
-                      "color": "#161617",
                       "fontFamily": "Montserrat-Bold",
                       "fontSize": 17,
                       "lineHeight": 27.2,
@@ -414,7 +413,7 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
                           {
                             "alignItems": "center",
                             "backgroundColor": "#ffffff",
-                            "borderColor": "#90949D",
+                            "borderColor": "#90949d",
                             "borderRadius": 22,
                             "borderStyle": "solid",
                             "borderWidth": 1,
@@ -482,7 +481,6 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
                           style={
                             [
                               {
-                                "color": "#161617",
                                 "fontFamily": "Montserrat-Medium",
                                 "fontSize": 16,
                                 "lineHeight": 25.6,

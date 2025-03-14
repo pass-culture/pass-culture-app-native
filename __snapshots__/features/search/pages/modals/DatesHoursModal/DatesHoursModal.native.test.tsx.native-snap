@@ -413,7 +413,6 @@ exports[`<DatesHoursModal/> should render modal correctly after animation and wi
                     style={
                       [
                         {
-                          "color": "#161617",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 16,
                           "lineHeight": 25.6,
@@ -627,7 +626,6 @@ exports[`<DatesHoursModal/> should render modal correctly after animation and wi
                     style={
                       [
                         {
-                          "color": "#161617",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 16,
                           "lineHeight": 25.6,

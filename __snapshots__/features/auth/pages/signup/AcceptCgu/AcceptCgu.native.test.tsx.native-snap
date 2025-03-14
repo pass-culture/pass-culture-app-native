@@ -22,7 +22,6 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
     style={
       [
         {
-          "color": "#161617",
           "fontFamily": "Montserrat-Bold",
           "fontSize": 19,
           "lineHeight": 30.4,
@@ -115,7 +114,6 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
         [
           {
             "alignSelf": "center",
-            "color": "#161617",
             "flexBasis": 0,
             "flexGrow": 1,
             "flexShrink": 1,
@@ -213,7 +211,6 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
         [
           {
             "alignSelf": "center",
-            "color": "#161617",
             "flexBasis": 0,
             "flexGrow": 1,
             "flexShrink": 1,
@@ -660,7 +657,6 @@ exports[`<AcceptCgu/> should render correctly for SSO subscription 1`] = `
     style={
       [
         {
-          "color": "#161617",
           "fontFamily": "Montserrat-Bold",
           "fontSize": 19,
           "lineHeight": 30.4,
@@ -753,7 +749,6 @@ exports[`<AcceptCgu/> should render correctly for SSO subscription 1`] = `
         [
           {
             "alignSelf": "center",
-            "color": "#161617",
             "flexBasis": 0,
             "flexGrow": 1,
             "flexShrink": 1,
@@ -871,7 +866,6 @@ exports[`<AcceptCgu/> should render correctly for SSO subscription 1`] = `
         [
           {
             "alignSelf": "center",
-            "color": "#161617",
             "flexBasis": 0,
             "flexGrow": 1,
             "flexShrink": 1,
@@ -969,7 +963,6 @@ exports[`<AcceptCgu/> should render correctly for SSO subscription 1`] = `
         [
           {
             "alignSelf": "center",
-            "color": "#161617",
             "flexBasis": 0,
             "flexGrow": 1,
             "flexShrink": 1,

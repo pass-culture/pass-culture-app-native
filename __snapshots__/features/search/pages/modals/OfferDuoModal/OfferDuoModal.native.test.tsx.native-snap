@@ -404,7 +404,6 @@ exports[`<OfferDuoModal/> should render modal correctly after animation and with
                   style={
                     [
                       {
-                        "color": "#161617",
                         "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 16,
                         "lineHeight": 25.6,

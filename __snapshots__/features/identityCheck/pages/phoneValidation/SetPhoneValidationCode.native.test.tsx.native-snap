@@ -8,7 +8,7 @@ exports[`SetPhoneValidationCode should match snapshot 1`] = `
       [
         {
           "backgroundColor": "rgba(255,255,255,0)",
-          "borderBottomColor": "#F1F1F4",
+          "borderBottomColor": "#cbcdd2",
           "borderBottomWidth": 1,
           "left": 0,
           "position": "absolute",
@@ -281,7 +281,6 @@ exports[`SetPhoneValidationCode should match snapshot 1`] = `
                   style={
                     [
                       {
-                        "color": "#161617",
                         "fontFamily": "Montserrat-Bold",
                         "fontSize": 17,
                         "lineHeight": 27.2,
@@ -386,7 +385,7 @@ exports[`SetPhoneValidationCode should match snapshot 1`] = `
                           style={
                             [
                               {
-                                "color": "#696A6F",
+                                "color": "#696a6f",
                                 "fontFamily": "Montserrat-SemiBold",
                                 "fontSize": 12,
                                 "lineHeight": 19.2,
@@ -418,7 +417,7 @@ exports[`SetPhoneValidationCode should match snapshot 1`] = `
                           {
                             "alignItems": "center",
                             "backgroundColor": "#ffffff",
-                            "borderColor": "#90949D",
+                            "borderColor": "#90949d",
                             "borderRadius": 22,
                             "borderStyle": "solid",
                             "borderWidth": 1,
@@ -544,7 +543,7 @@ exports[`SetPhoneValidationCode should match snapshot 1`] = `
                             "width": "auto",
                           },
                           {
-                            "backgroundColor": "transparent",
+                            "backgroundColor": "#ffffff",
                           },
                         ],
                         {

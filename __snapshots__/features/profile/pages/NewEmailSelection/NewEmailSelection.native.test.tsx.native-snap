@@ -8,7 +8,7 @@ exports[`<NewEmailSelection /> should match snapshot 1`] = `
       [
         {
           "backgroundColor": "rgba(255,255,255,0)",
-          "borderBottomColor": "#F1F1F4",
+          "borderBottomColor": "#cbcdd2",
           "borderBottomWidth": 1,
           "left": 0,
           "position": "absolute",
@@ -285,7 +285,7 @@ exports[`<NewEmailSelection /> should match snapshot 1`] = `
                 {
                   "alignItems": "center",
                   "backgroundColor": "#ffffff",
-                  "borderColor": "#90949D",
+                  "borderColor": "#90949d",
                   "borderRadius": 22,
                   "borderStyle": "solid",
                   "borderWidth": 1,

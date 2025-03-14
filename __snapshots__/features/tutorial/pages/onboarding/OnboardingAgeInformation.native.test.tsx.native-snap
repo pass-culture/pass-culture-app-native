@@ -158,7 +158,6 @@ exports[`OnboardingAgeInformation should render correctly for 15-year-old 1`] = 
           style={
             [
               {
-                "color": "#161617",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 19,
                 "lineHeight": 30.4,
@@ -182,7 +181,6 @@ exports[`OnboardingAgeInformation should render correctly for 15-year-old 1`] = 
           style={
             [
               {
-                "color": "#161617",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 17,
                 "lineHeight": 27.2,
@@ -649,7 +647,6 @@ exports[`OnboardingAgeInformation should render correctly for 15-year-old 1`] = 
                     style={
                       [
                         {
-                          "color": "#161617",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 16,
                           "lineHeight": 25.6,
@@ -903,7 +900,6 @@ exports[`OnboardingAgeInformation should render correctly for 15-year-old 1`] = 
                     style={
                       [
                         {
-                          "color": "#161617",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 16,
                           "lineHeight": 25.6,
@@ -1095,7 +1091,6 @@ exports[`OnboardingAgeInformation should render correctly for 15-year-old 1`] = 
                 style={
                   [
                     {
-                      "color": "#161617",
                       "fontFamily": "Montserrat-Medium",
                       "fontSize": 16,
                       "justifyContent": "center",
@@ -1295,7 +1290,6 @@ exports[`OnboardingAgeInformation should render correctly for 15-year-old 1`] = 
                     style={
                       [
                         {
-                          "color": "#161617",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 16,
                           "lineHeight": 25.6,
@@ -1567,7 +1561,7 @@ exports[`OnboardingAgeInformation should render correctly for 15-year-old 1`] = 
               "width": "100%",
             },
             {
-              "backgroundColor": "transparent",
+              "backgroundColor": "#ffffff",
             },
           ],
           {
@@ -1809,7 +1803,6 @@ exports[`OnboardingAgeInformation should render correctly for 16-year-old 1`] = 
           style={
             [
               {
-                "color": "#161617",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 19,
                 "lineHeight": 30.4,
@@ -1833,7 +1826,6 @@ exports[`OnboardingAgeInformation should render correctly for 16-year-old 1`] = 
           style={
             [
               {
-                "color": "#161617",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 17,
                 "lineHeight": 27.2,
@@ -2034,7 +2026,6 @@ exports[`OnboardingAgeInformation should render correctly for 16-year-old 1`] = 
                     style={
                       [
                         {
-                          "color": "#161617",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 16,
                           "lineHeight": 25.6,
@@ -2541,7 +2532,6 @@ exports[`OnboardingAgeInformation should render correctly for 16-year-old 1`] = 
                     style={
                       [
                         {
-                          "color": "#161617",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 16,
                           "lineHeight": 25.6,
@@ -2733,7 +2723,6 @@ exports[`OnboardingAgeInformation should render correctly for 16-year-old 1`] = 
                 style={
                   [
                     {
-                      "color": "#161617",
                       "fontFamily": "Montserrat-Medium",
                       "fontSize": 16,
                       "justifyContent": "center",
@@ -2933,7 +2922,6 @@ exports[`OnboardingAgeInformation should render correctly for 16-year-old 1`] = 
                     style={
                       [
                         {
-                          "color": "#161617",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 16,
                           "lineHeight": 25.6,
@@ -3205,7 +3193,7 @@ exports[`OnboardingAgeInformation should render correctly for 16-year-old 1`] = 
               "width": "100%",
             },
             {
-              "backgroundColor": "transparent",
+              "backgroundColor": "#ffffff",
             },
           ],
           {
@@ -3447,7 +3435,6 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
           style={
             [
               {
-                "color": "#161617",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 19,
                 "lineHeight": 30.4,
@@ -3471,7 +3458,6 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
           style={
             [
               {
-                "color": "#161617",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 17,
                 "lineHeight": 27.2,
@@ -3672,7 +3658,6 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                     style={
                       [
                         {
-                          "color": "#161617",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 16,
                           "lineHeight": 25.6,
@@ -3913,7 +3898,6 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                     style={
                       [
                         {
-                          "color": "#161617",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 16,
                           "lineHeight": 25.6,
@@ -4358,7 +4342,6 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                 style={
                   [
                     {
-                      "color": "#161617",
                       "fontFamily": "Montserrat-Medium",
                       "fontSize": 16,
                       "justifyContent": "center",
@@ -4558,7 +4541,6 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                     style={
                       [
                         {
-                          "color": "#161617",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 16,
                           "lineHeight": 25.6,
@@ -4830,7 +4812,7 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
               "width": "100%",
             },
             {
-              "backgroundColor": "transparent",
+              "backgroundColor": "#ffffff",
             },
           ],
           {
@@ -5072,7 +5054,6 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
           style={
             [
               {
-                "color": "#161617",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 19,
                 "lineHeight": 30.4,
@@ -5096,7 +5077,6 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
           style={
             [
               {
-                "color": "#161617",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 17,
                 "lineHeight": 27.2,
@@ -5297,7 +5277,6 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
                     style={
                       [
                         {
-                          "color": "#161617",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 16,
                           "lineHeight": 25.6,
@@ -5538,7 +5517,6 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
                     style={
                       [
                         {
-                          "color": "#161617",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 16,
                           "lineHeight": 25.6,
@@ -5779,7 +5757,6 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
                     style={
                       [
                         {
-                          "color": "#161617",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 16,
                           "lineHeight": 25.6,
@@ -6295,7 +6272,7 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
               "width": "100%",
             },
             {
-              "backgroundColor": "transparent",
+              "backgroundColor": "#ffffff",
             },
           ],
           {
@@ -6537,7 +6514,6 @@ exports[`OnboardingAgeInformation when enableCreditV3 activated should render co
           style={
             [
               {
-                "color": "#161617",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 19,
                 "lineHeight": 30.4,
@@ -6561,7 +6537,6 @@ exports[`OnboardingAgeInformation when enableCreditV3 activated should render co
           style={
             [
               {
-                "color": "#161617",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 17,
                 "lineHeight": 27.2,
@@ -6758,7 +6733,7 @@ exports[`OnboardingAgeInformation when enableCreditV3 activated should render co
               "width": "100%",
             },
             {
-              "backgroundColor": "transparent",
+              "backgroundColor": "#ffffff",
             },
           ],
           {
@@ -7000,7 +6975,6 @@ exports[`OnboardingAgeInformation when enableCreditV3 activated should render co
           style={
             [
               {
-                "color": "#161617",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 19,
                 "lineHeight": 30.4,
@@ -7024,7 +6998,6 @@ exports[`OnboardingAgeInformation when enableCreditV3 activated should render co
           style={
             [
               {
-                "color": "#161617",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 17,
                 "lineHeight": 27.2,
@@ -7221,7 +7194,7 @@ exports[`OnboardingAgeInformation when enableCreditV3 activated should render co
               "width": "100%",
             },
             {
-              "backgroundColor": "transparent",
+              "backgroundColor": "#ffffff",
             },
           ],
           {
@@ -7463,7 +7436,6 @@ exports[`OnboardingAgeInformation when enableCreditV3 activated should render co
           style={
             [
               {
-                "color": "#161617",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 19,
                 "lineHeight": 30.4,
@@ -7487,7 +7459,6 @@ exports[`OnboardingAgeInformation when enableCreditV3 activated should render co
           style={
             [
               {
-                "color": "#161617",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 17,
                 "lineHeight": 27.2,
@@ -7945,7 +7916,6 @@ exports[`OnboardingAgeInformation when enableCreditV3 activated should render co
                     style={
                       [
                         {
-                          "color": "#161617",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 16,
                           "lineHeight": 25.6,
@@ -8217,7 +8187,7 @@ exports[`OnboardingAgeInformation when enableCreditV3 activated should render co
               "width": "100%",
             },
             {
-              "backgroundColor": "transparent",
+              "backgroundColor": "#ffffff",
             },
           ],
           {
@@ -8459,7 +8429,6 @@ exports[`OnboardingAgeInformation when enableCreditV3 activated should render co
           style={
             [
               {
-                "color": "#161617",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 19,
                 "lineHeight": 30.4,
@@ -8483,7 +8452,6 @@ exports[`OnboardingAgeInformation when enableCreditV3 activated should render co
           style={
             [
               {
-                "color": "#161617",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 17,
                 "lineHeight": 27.2,
@@ -8684,7 +8652,6 @@ exports[`OnboardingAgeInformation when enableCreditV3 activated should render co
                     style={
                       [
                         {
-                          "color": "#161617",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 16,
                           "lineHeight": 25.6,
@@ -9200,7 +9167,7 @@ exports[`OnboardingAgeInformation when enableCreditV3 activated should render co
               "width": "100%",
             },
             {
-              "backgroundColor": "transparent",
+              "backgroundColor": "#ffffff",
             },
           ],
           {

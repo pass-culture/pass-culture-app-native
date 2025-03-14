@@ -103,33 +103,36 @@ const StyledSelect = styled.select<SelectProps>`
     const borderRadiusRight = noBorderRadiusRight
       ? noBorderRadius
       : `${theme.borderRadius.button}px`
-    const { fontFamily, fontSize, color, lineHeight } = isEmpty
-      ? {
-          ...theme.designSystem.typography.bodyItalic,
-          color: theme.colors.greyDark,
-        }
+
+    const typography = isEmpty
+      ? theme.designSystem.typography.bodyItalic
       : theme.designSystem.typography.body
+
+    const { fontFamily, fontSize, lineHeight } = typography
+
+    const color = isEmpty ? theme.colors.greyDark : theme.colors.black
+
     return `
-    font-family: ${fontFamily};
-    font-size: ${fontSize}px;
-    line-height: ${lineHeight};
-    color: ${color};
-    width: 100%;
-    padding-right: ${getSpacingString(4)};
-    padding-left: ${getSpacingString(4)};
-    height: ${getSpacingString(10)};
-    border-top-left-radius: ${borderRadiusLeft};
-    border-bottom-left-radius: ${borderRadiusLeft};
-    border-top-right-radius: ${borderRadiusRight};
-    border-bottom-right-radius: ${borderRadiusRight};
-    border: solid 1px ${isError ? theme.colors.error : theme.colors.greyDark};
-    cursor: pointer;
-    background-color: ${theme.colors.white};
-    appearance: none;
-    &:focus-visible, &:active {
-      border-color: ${theme.colors.primary};
-    }
-  `
+      font-family: ${fontFamily};
+      font-size: ${fontSize}px;
+      line-height: ${lineHeight};
+      color: ${color}; 
+      width: 100%;
+      padding-right: ${getSpacingString(4)};
+      padding-left: ${getSpacingString(4)};
+      height: ${getSpacingString(10)};
+      border-top-left-radius: ${borderRadiusLeft};
+      border-bottom-left-radius: ${borderRadiusLeft};
+      border-top-right-radius: ${borderRadiusRight};
+      border-bottom-right-radius: ${borderRadiusRight};
+      border: solid 1px ${isError ? theme.colors.error : theme.colors.greyDark};
+      cursor: pointer;
+      background-color: ${theme.colors.white};
+      appearance: none;
+      &:focus-visible, &:active {
+        border-color: ${theme.colors.primary};
+      }
+    `
   }}
 `
 

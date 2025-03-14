@@ -8,7 +8,7 @@ exports[`<ChangeStatus/> should render correctly 1`] = `
       [
         {
           "backgroundColor": "rgba(255,255,255,0)",
-          "borderBottomColor": "#F1F1F4",
+          "borderBottomColor": "#cbcdd2",
           "borderBottomWidth": 1,
           "left": 0,
           "position": "absolute",
@@ -332,7 +332,6 @@ exports[`<ChangeStatus/> should render correctly 1`] = `
             style={
               [
                 {
-                  "color": "#161617",
                   "fontFamily": "Montserrat-Bold",
                   "fontSize": 19,
                   "lineHeight": 30.4,
@@ -496,7 +495,6 @@ exports[`<ChangeStatus/> should render correctly 1`] = `
                       style={
                         [
                           {
-                            "color": "#161617",
                             "fontFamily": "Montserrat-SemiBold",
                             "fontSize": 16,
                             "lineHeight": 25.6,
@@ -677,7 +675,6 @@ exports[`<ChangeStatus/> should render correctly 1`] = `
                       style={
                         [
                           {
-                            "color": "#161617",
                             "fontFamily": "Montserrat-SemiBold",
                             "fontSize": 16,
                             "lineHeight": 25.6,
@@ -858,7 +855,6 @@ exports[`<ChangeStatus/> should render correctly 1`] = `
                       style={
                         [
                           {
-                            "color": "#161617",
                             "fontFamily": "Montserrat-SemiBold",
                             "fontSize": 16,
                             "lineHeight": 25.6,
@@ -1039,7 +1035,6 @@ exports[`<ChangeStatus/> should render correctly 1`] = `
                       style={
                         [
                           {
-                            "color": "#161617",
                             "fontFamily": "Montserrat-SemiBold",
                             "fontSize": 16,
                             "lineHeight": 25.6,
@@ -1220,7 +1215,6 @@ exports[`<ChangeStatus/> should render correctly 1`] = `
                       style={
                         [
                           {
-                            "color": "#161617",
                             "fontFamily": "Montserrat-SemiBold",
                             "fontSize": 16,
                             "lineHeight": 25.6,
@@ -1401,7 +1395,6 @@ exports[`<ChangeStatus/> should render correctly 1`] = `
                       style={
                         [
                           {
-                            "color": "#161617",
                             "fontFamily": "Montserrat-SemiBold",
                             "fontSize": 16,
                             "lineHeight": 25.6,
@@ -1582,7 +1575,6 @@ exports[`<ChangeStatus/> should render correctly 1`] = `
                       style={
                         [
                           {
-                            "color": "#161617",
                             "fontFamily": "Montserrat-SemiBold",
                             "fontSize": 16,
                             "lineHeight": 25.6,
@@ -1778,7 +1770,6 @@ exports[`<ChangeStatus/> should render correctly 1`] = `
                       style={
                         [
                           {
-                            "color": "#161617",
                             "fontFamily": "Montserrat-SemiBold",
                             "fontSize": 16,
                             "lineHeight": 25.6,
@@ -1974,7 +1965,6 @@ exports[`<ChangeStatus/> should render correctly 1`] = `
                       style={
                         [
                           {
-                            "color": "#161617",
                             "fontFamily": "Montserrat-SemiBold",
                             "fontSize": 16,
                             "lineHeight": 25.6,
@@ -2231,7 +2221,7 @@ exports[`<ChangeStatus/> should show loading component 1`] = `
       [
         {
           "backgroundColor": "rgba(255,255,255,0)",
-          "borderBottomColor": "#F1F1F4",
+          "borderBottomColor": "#cbcdd2",
           "borderBottomWidth": 1,
           "left": 0,
           "position": "absolute",
@@ -2555,7 +2545,6 @@ exports[`<ChangeStatus/> should show loading component 1`] = `
             style={
               [
                 {
-                  "color": "#161617",
                   "fontFamily": "Montserrat-Bold",
                   "fontSize": 19,
                   "lineHeight": 30.4,
@@ -2719,7 +2708,6 @@ exports[`<ChangeStatus/> should show loading component 1`] = `
                       style={
                         [
                           {
-                            "color": "#161617",
                             "fontFamily": "Montserrat-SemiBold",
                             "fontSize": 16,
                             "lineHeight": 25.6,
@@ -2900,7 +2888,6 @@ exports[`<ChangeStatus/> should show loading component 1`] = `
                       style={
                         [
                           {
-                            "color": "#161617",
                             "fontFamily": "Montserrat-SemiBold",
                             "fontSize": 16,
                             "lineHeight": 25.6,
@@ -3081,7 +3068,6 @@ exports[`<ChangeStatus/> should show loading component 1`] = `
                       style={
                         [
                           {
-                            "color": "#161617",
                             "fontFamily": "Montserrat-SemiBold",
                             "fontSize": 16,
                             "lineHeight": 25.6,
@@ -3262,7 +3248,6 @@ exports[`<ChangeStatus/> should show loading component 1`] = `
                       style={
                         [
                           {
-                            "color": "#161617",
                             "fontFamily": "Montserrat-SemiBold",
                             "fontSize": 16,
                             "lineHeight": 25.6,
@@ -3443,7 +3428,6 @@ exports[`<ChangeStatus/> should show loading component 1`] = `
                       style={
                         [
                           {
-                            "color": "#161617",
                             "fontFamily": "Montserrat-SemiBold",
                             "fontSize": 16,
                             "lineHeight": 25.6,
@@ -3624,7 +3608,6 @@ exports[`<ChangeStatus/> should show loading component 1`] = `
                       style={
                         [
                           {
-                            "color": "#161617",
                             "fontFamily": "Montserrat-SemiBold",
                             "fontSize": 16,
                             "lineHeight": 25.6,
@@ -3805,7 +3788,6 @@ exports[`<ChangeStatus/> should show loading component 1`] = `
                       style={
                         [
                           {
-                            "color": "#161617",
                             "fontFamily": "Montserrat-SemiBold",
                             "fontSize": 16,
                             "lineHeight": 25.6,
@@ -4001,7 +3983,6 @@ exports[`<ChangeStatus/> should show loading component 1`] = `
                       style={
                         [
                           {
-                            "color": "#161617",
                             "fontFamily": "Montserrat-SemiBold",
                             "fontSize": 16,
                             "lineHeight": 25.6,
@@ -4197,7 +4178,6 @@ exports[`<ChangeStatus/> should show loading component 1`] = `
                       style={
                         [
                           {
-                            "color": "#161617",
                             "fontFamily": "Montserrat-SemiBold",
                             "fontSize": 16,
                             "lineHeight": 25.6,

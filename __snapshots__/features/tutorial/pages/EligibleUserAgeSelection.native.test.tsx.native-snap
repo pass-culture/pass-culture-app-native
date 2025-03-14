@@ -158,7 +158,6 @@ exports[`EligibleUserAgeSelection with passForAll feature flag off onboarding sh
           style={
             [
               {
-                "color": "#161617",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 19,
                 "lineHeight": 30.4,
@@ -182,7 +181,6 @@ exports[`EligibleUserAgeSelection with passForAll feature flag off onboarding sh
           style={
             [
               {
-                "color": "#161617",
                 "fontFamily": "Montserrat-Medium",
                 "fontSize": 16,
                 "lineHeight": 25.6,
@@ -1181,7 +1179,6 @@ exports[`EligibleUserAgeSelection with passForAll feature flag off profileTutori
           style={
             [
               {
-                "color": "#161617",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 19,
                 "lineHeight": 30.4,
@@ -1205,7 +1202,6 @@ exports[`EligibleUserAgeSelection with passForAll feature flag off profileTutori
           style={
             [
               {
-                "color": "#161617",
                 "fontFamily": "Montserrat-Medium",
                 "fontSize": 16,
                 "lineHeight": 25.6,
@@ -2204,7 +2200,6 @@ exports[`EligibleUserAgeSelection with passForAll feature flag on onboarding sho
           style={
             [
               {
-                "color": "#161617",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 19,
                 "lineHeight": 30.4,

@@ -13,8 +13,8 @@ export const ButtonTertiaryBlack = styledButton(AppButton).attrs<BaseButtonProps
     if (icon) {
       Icon = styled(icon).attrs({
         color: disabled
-          ? theme.buttons.disabled.tertiaryBlack.iconColor
-          : theme.buttons.tertiaryBlack.iconColor,
+          ? theme.designSystem.color.icon.disabled
+          : theme.designSystem.color.icon.default,
         size:
           buttonHeight === 'extraSmall'
             ? theme.icons.sizes.extraSmall
@@ -25,8 +25,8 @@ export const ButtonTertiaryBlack = styledButton(AppButton).attrs<BaseButtonProps
     const Title = styled(TypoDS.Button)({
       maxWidth: '100%',
       color: disabled
-        ? theme.buttons.disabled.tertiaryBlack.textColor
-        : theme.buttons.tertiaryBlack.textColor,
+        ? theme.designSystem.color.text.disabled
+        : theme.designSystem.color.text.default,
       fontSize: textSize,
     })
     return {
@@ -39,7 +39,7 @@ export const ButtonTertiaryBlack = styledButton(AppButton).attrs<BaseButtonProps
     }
   }
 )(({ theme }) => ({
-  backgroundColor: theme.buttons.tertiaryBlack.backgroundColor,
+  backgroundColor: theme.designSystem.color.background.default,
 }))
 
 const LoadingIndicator = styled(InitialLoadingIndicator).attrs(({ theme }) => ({

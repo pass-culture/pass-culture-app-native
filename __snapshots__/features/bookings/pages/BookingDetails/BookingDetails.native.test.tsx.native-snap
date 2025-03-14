@@ -276,7 +276,6 @@ exports[`BookingDetails OldBookingDetails : when FF WIP_NEW_BOOKING_PAGE is off 
                         style={
                           [
                             {
-                              "color": "#161617",
                               "fontFamily": "Montserrat-Bold",
                               "fontSize": 19,
                               "lineHeight": 30.4,
@@ -507,7 +506,6 @@ exports[`BookingDetails OldBookingDetails : when FF WIP_NEW_BOOKING_PAGE is off 
               style={
                 [
                   {
-                    "color": "#161617",
                     "fontFamily": "Montserrat-Bold",
                     "fontSize": 17,
                     "lineHeight": 27.2,
@@ -621,7 +619,6 @@ exports[`BookingDetails OldBookingDetails : when FF WIP_NEW_BOOKING_PAGE is off 
                     style={
                       [
                         {
-                          "color": "#161617",
                           "fontFamily": "Montserrat-Medium",
                           "fontSize": 16,
                           "lineHeight": 25.6,
@@ -738,7 +735,6 @@ exports[`BookingDetails OldBookingDetails : when FF WIP_NEW_BOOKING_PAGE is off 
                     style={
                       [
                         {
-                          "color": "#161617",
                           "fontFamily": "Montserrat-Medium",
                           "fontSize": 16,
                           "lineHeight": 25.6,
@@ -750,7 +746,6 @@ exports[`BookingDetails OldBookingDetails : when FF WIP_NEW_BOOKING_PAGE is off 
                       style={
                         [
                           {
-                            "color": "#161617",
                             "fontFamily": "Montserrat-Medium",
                             "fontSize": 16,
                             "lineHeight": 25.6,
@@ -765,7 +760,6 @@ exports[`BookingDetails OldBookingDetails : when FF WIP_NEW_BOOKING_PAGE is off 
                       style={
                         [
                           {
-                            "color": "#161617",
                             "fontFamily": "Montserrat-Medium",
                             "fontSize": 16,
                             "lineHeight": 25.6,
@@ -784,7 +778,6 @@ exports[`BookingDetails OldBookingDetails : when FF WIP_NEW_BOOKING_PAGE is off 
                       style={
                         [
                           {
-                            "color": "#161617",
                             "fontFamily": "Montserrat-Medium",
                             "fontSize": 16,
                             "lineHeight": 25.6,
@@ -800,7 +793,6 @@ exports[`BookingDetails OldBookingDetails : when FF WIP_NEW_BOOKING_PAGE is off 
                       style={
                         [
                           {
-                            "color": "#161617",
                             "fontFamily": "Montserrat-Medium",
                             "fontSize": 16,
                             "lineHeight": 25.6,
@@ -869,7 +861,7 @@ exports[`BookingDetails OldBookingDetails : when FF WIP_NEW_BOOKING_PAGE is off 
               style={
                 {
                   "alignItems": "center",
-                  "backgroundColor": "transparent",
+                  "backgroundColor": "#ffffff",
                   "borderRadius": 0,
                   "borderWidth": 0,
                   "flexDirection": "row",

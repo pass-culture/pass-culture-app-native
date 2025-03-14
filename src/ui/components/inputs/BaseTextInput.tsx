@@ -94,7 +94,9 @@ const StyledTextInput = styled(RNTextInput).attrs(({ theme }) => ({
       paddingTop: multiline ? getSpacing(2.5) : 0,
       height: '100%',
       ...inputStyle,
-      color: editable ? inputStyle.color : theme.colors.greyDark,
+      color: editable
+        ? theme.designSystem.color.text.default
+        : theme.designSystem.color.text.disabled,
       lineHeight: undefined,
       ...(Platform.OS === 'web' && { width: 'inherit' }),
     }

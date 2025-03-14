@@ -59,7 +59,7 @@ exports[`<PageWithHeader/> should render correctly 1`] = `
 
 <div>
   <header
-    class="css-view-175oi2r r-backgroundColor-1stjixc r-borderBottomColor-8fzpo5 r-borderBottomWidth-qklmqi r-left-1d2f490 r-position-u8s1d r-right-zchlnj r-top-ipm5af r-zIndex-184en5c"
+    class="css-view-175oi2r r-backgroundColor-1stjixc r-borderBottomColor-1nwnxgm r-borderBottomWidth-qklmqi r-left-1d2f490 r-position-u8s1d r-right-zchlnj r-top-ipm5af r-zIndex-184en5c"
     role="banner"
   >
     <div

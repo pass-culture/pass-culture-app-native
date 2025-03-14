@@ -8,7 +8,7 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
       [
         {
           "backgroundColor": "rgba(255,255,255,0)",
-          "borderBottomColor": "#F1F1F4",
+          "borderBottomColor": "#cbcdd2",
           "borderBottomWidth": 1,
           "left": 0,
           "position": "absolute",
@@ -213,7 +213,6 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
         style={
           [
             {
-              "color": "#161617",
               "fontFamily": "Montserrat-Medium",
               "fontSize": 16,
               "lineHeight": 25.6,
@@ -261,7 +260,6 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
         style={
           [
             {
-              "color": "#161617",
               "fontFamily": "Montserrat-Bold",
               "fontSize": 17,
               "lineHeight": 27.2,
@@ -678,7 +676,6 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
               style={
                 [
                   {
-                    "color": "#161617",
                     "flexShrink": 1,
                     "fontFamily": "Montserrat-Bold",
                     "fontSize": 17,
@@ -691,7 +688,6 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
                 style={
                   [
                     {
-                      "color": "#161617",
                       "fontFamily": "Montserrat-Medium",
                       "fontSize": 16,
                       "lineHeight": 25.6,
@@ -772,7 +768,6 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
             style={
               [
                 {
-                  "color": "#161617",
                   "fontFamily": "Montserrat-Medium",
                   "fontSize": 16,
                   "lineHeight": 25.6,
@@ -1064,7 +1059,6 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
               style={
                 [
                   {
-                    "color": "#161617",
                     "flexShrink": 1,
                     "fontFamily": "Montserrat-Bold",
                     "fontSize": 17,
@@ -1077,7 +1071,6 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
                 style={
                   [
                     {
-                      "color": "#161617",
                       "fontFamily": "Montserrat-Medium",
                       "fontSize": 16,
                       "lineHeight": 25.6,
@@ -1158,7 +1151,6 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
             style={
               [
                 {
-                  "color": "#161617",
                   "fontFamily": "Montserrat-Medium",
                   "fontSize": 16,
                   "lineHeight": 25.6,
@@ -1450,7 +1442,6 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
               style={
                 [
                   {
-                    "color": "#161617",
                     "flexShrink": 1,
                     "fontFamily": "Montserrat-Bold",
                     "fontSize": 17,
@@ -1463,7 +1454,6 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
                 style={
                   [
                     {
-                      "color": "#161617",
                       "fontFamily": "Montserrat-Medium",
                       "fontSize": 16,
                       "lineHeight": 25.6,
@@ -1544,7 +1534,6 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
             style={
               [
                 {
-                  "color": "#161617",
                   "fontFamily": "Montserrat-Medium",
                   "fontSize": 16,
                   "lineHeight": 25.6,
@@ -1839,7 +1828,6 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
               style={
                 [
                   {
-                    "color": "#161617",
                     "flexShrink": 1,
                     "fontFamily": "Montserrat-Bold",
                     "fontSize": 17,
@@ -1852,7 +1840,6 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
                 style={
                   [
                     {
-                      "color": "#161617",
                       "fontFamily": "Montserrat-Medium",
                       "fontSize": 16,
                       "lineHeight": 25.6,
@@ -1933,7 +1920,6 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
             style={
               [
                 {
-                  "color": "#161617",
                   "fontFamily": "Montserrat-Medium",
                   "fontSize": 16,
                   "lineHeight": 25.6,
@@ -2024,7 +2010,6 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
         style={
           [
             {
-              "color": "#161617",
               "fontFamily": "Montserrat-Bold",
               "fontSize": 17,
               "lineHeight": 27.2,
@@ -2048,7 +2033,6 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
         style={
           [
             {
-              "color": "#161617",
               "fontFamily": "Montserrat-Medium",
               "fontSize": 16,
               "lineHeight": 25.6,
@@ -2072,7 +2056,6 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
         style={
           [
             {
-              "color": "#161617",
               "fontFamily": "Montserrat-Medium",
               "fontSize": 16,
               "lineHeight": 25.6,
