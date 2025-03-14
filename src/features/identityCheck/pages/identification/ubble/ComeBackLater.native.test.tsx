@@ -8,6 +8,8 @@ import { analytics } from 'libs/analytics/provider'
 import { BatchEvent, BatchProfile } from 'libs/react-native-batch'
 import { fireEvent, render, screen, waitFor } from 'tests/utils'
 
+jest.mock('libs/firebase/analytics/analytics')
+
 jest.mock('features/navigation/helpers/navigateToHome')
 jest.mock('features/navigation/navigationRef')
 
