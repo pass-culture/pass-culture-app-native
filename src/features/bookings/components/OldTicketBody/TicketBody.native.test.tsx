@@ -2,7 +2,7 @@ import mockdate from 'mockdate'
 import React from 'react'
 
 import { SubcategoryIdEnum, WithdrawalTypeEnum } from 'api/gen'
-import { TicketBody } from 'features/bookings/components/TicketBody/TicketBody'
+import { TicketBody } from 'features/bookings/components/OldTicketBody/TicketBody'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { mockBuilder } from 'tests/mockBuilder'
@@ -33,7 +33,9 @@ describe('TicketBody', () => {
 
   describe('<QrCode/> display', () => {
     it('should display the QR code when the the booking have a QR code and the offer subcategory allows to have a qr code', () => {
-      render(<TicketBody {...initialProps} venue={venue} />)
+      render(
+        <TicketBody {...initialProps} subcategoryId={SubcategoryIdEnum.PARTITION} venue={venue} />
+      )
 
       expect(screen.getByTestId('qr-code')).toBeOnTheScreen()
     })
@@ -214,6 +216,7 @@ describe('TicketBody', () => {
 
       it('should not show the button to open mail if no mail app is available', async () => {
         mockIsMailAppAvailable = false
+
         render(<TicketBody {...initialProps} withdrawalType={undefined} venue={venue} />)
 
         const checkEmailsButton = screen.queryByText('Consulter mes e-mails')
