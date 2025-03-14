@@ -3,94 +3,210 @@
 exports[`<SuspensionChoice/> should match snapshot 1`] = `
 [
   <View
-    accessibilityLabel="Revenir en arrière"
-    accessibilityRole="button"
-    accessibilityState={
-      {
-        "busy": undefined,
-        "checked": undefined,
-        "disabled": undefined,
-        "expanded": undefined,
-        "selected": undefined,
-      }
-    }
-    accessibilityValue={
-      {
-        "max": undefined,
-        "min": undefined,
-        "now": undefined,
-        "text": undefined,
-      }
-    }
-    accessible={true}
-    focusable={true}
-    onClick={[Function]}
-    onResponderGrant={[Function]}
-    onResponderMove={[Function]}
-    onResponderRelease={[Function]}
-    onResponderTerminate={[Function]}
-    onResponderTerminationRequest={[Function]}
-    onStartShouldSetResponder={[Function]}
+    accessibilityRole="header"
     style={
       [
-        [
-          {
-            "userSelect": "auto",
-          },
-          {
-            "left": 24,
-            "position": "absolute",
-            "top": 30,
-            "zIndex": 1,
-          },
-        ],
         {
-          "opacity": 1,
+          "backgroundColor": "rgba(255,255,255,0)",
+          "borderBottomColor": "#F1F1F4",
+          "borderBottomWidth": 1,
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+          "zIndex": 1,
+        },
+        {
+          "borderBottomWidth": 0,
         },
       ]
     }
-    testID="Revenir en arrière"
   >
     <View
-      accessibilityLabel="Revenir en arrière"
-      height={24}
-      width={24}
+      customHeight={16}
+      enable={true}
+      style={
+        [
+          {
+            "height": 16,
+          },
+        ]
+      }
+    />
+    <View
+      style={
+        [
+          {
+            "alignItems": "center",
+            "height": 48,
+            "justifyContent": "center",
+          },
+        ]
+      }
     >
-      <Text>
-        undefined-SVG-Mock
-      </Text>
+      <View
+        style={
+          [
+            {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+              "width": "100%",
+            },
+          ]
+        }
+      >
+        <View
+          positionInHeader="left"
+          style={
+            [
+              {
+                "alignItems": "center",
+                "flexBasis": 0,
+                "flexDirection": "row",
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "justifyContent": "flex-start",
+                "paddingLeft": 12,
+                "paddingRight": 12,
+              },
+            ]
+          }
+          testID="back-button-container"
+        >
+          <View
+            accessibilityLabel="Revenir en arrière"
+            accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "alignItems": "center",
+                    "flexGrow": 1,
+                    "height": 40,
+                    "justifyContent": "center",
+                    "maxWidth": 40,
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
+            }
+            testID="Revenir en arrière"
+          >
+            <View
+              height={24}
+              testID="icon-back"
+              width={24}
+            >
+              <Text>
+                icon-back-SVG-Mock
+              </Text>
+            </View>
+            <Text
+              style={
+                [
+                  {
+                    "display": "none",
+                  },
+                ]
+              }
+            >
+              Retour
+            </Text>
+          </View>
+        </View>
+        <View
+          positionInHeader="right"
+          style={
+            [
+              {
+                "alignItems": "center",
+                "flexBasis": 0,
+                "flexDirection": "row",
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "justifyContent": "flex-end",
+                "paddingLeft": 12,
+                "paddingRight": 12,
+              },
+            ]
+          }
+          testID="close-button-container"
+        />
+      </View>
     </View>
   </View>,
   <View
+    bottom={16}
     style={
       [
         {
-          "alignSelf": "center",
           "flexBasis": 0,
           "flexGrow": 1,
           "flexShrink": 1,
-          "maxWidth": 500,
+          "justifyContent": "space-between",
           "overflow": "scroll",
           "paddingHorizontal": 24,
-          "width": "100%",
+          "paddingVertical": 24,
         },
       ]
     }
   >
     <View
-      flex={2}
+      height={65}
+      style={
+        [
+          {
+            "height": 65,
+          },
+        ]
+      }
+    />
+    <View
+      flex={1}
       style={
         [
           {
             "flexBasis": 0,
-            "flexGrow": 2,
+            "flexGrow": 1,
             "flexShrink": 1,
           },
         ]
       }
     />
     <View
-      hasHeight={false}
+      animation={false}
       style={
         [
           {
@@ -125,7 +241,7 @@ exports[`<SuspensionChoice/> should match snapshot 1`] = `
       Souhaites-tu suspendre ton compte pass Culture ?
     </Text>
     <View
-      flex={0.5}
+      gap={4}
       style={
         [
           {
@@ -147,36 +263,62 @@ exports[`<SuspensionChoice/> should match snapshot 1`] = `
         ]
       }
     >
-      Les conséquences :
-    </Text>
+      <Text
+        style={
+          [
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 21,
+              "lineHeight": 33.6,
+              "textAlign": "center",
+            },
+          ]
+        }
+      >
+        Souhaites-tu suspendre ton compte pass Culture ?
+      </Text>
+    </View>
     <View
-      accessibilityRole="list"
       style={
         [
           {
-            "flexDirection": "column",
-            "paddingLeft": 0,
+            "marginBottom": 24,
           },
         ]
       }
     >
-      <View
-        accessibilityRole="none"
+      <Text
         style={
           [
             {
-              "display": "flex",
+              "color": "#161617",
+              "fontFamily": "Montserrat-SemiBold",
+              "fontSize": 16,
+              "lineHeight": 25.6,
+            },
+          ]
+        }
+      >
+        Les conséquences :
+      </Text>
+      <View
+        accessibilityRole="list"
+        style={
+          [
+            {
+              "flexDirection": "column",
+              "paddingLeft": 0,
             },
           ]
         }
       >
         <View
+          accessibilityRole="none"
           style={
             [
               {
-                "flexDirection": "row",
-                "marginLeft": 12,
-                "marginTop": 0,
+                "display": "flex",
               },
             ]
           }
@@ -185,21 +327,33 @@ exports[`<SuspensionChoice/> should match snapshot 1`] = `
             style={
               [
                 {
-                  "height": 25.6,
-                  "justifyContent": "center",
+                  "flexDirection": "row",
+                  "marginLeft": 12,
+                  "marginTop": 0,
                 },
               ]
             }
           >
             <View
-              borderColor="#161617"
-              fillColor="#161617"
-              height={3}
-              width={3}
+              style={
+                [
+                  {
+                    "height": 25.6,
+                    "justifyContent": "center",
+                  },
+                ]
+              }
             >
-              <Text>
-                undefined-SVG-Mock
-              </Text>
+              <View
+                borderColor="#161617"
+                fillColor="#161617"
+                height={3}
+                width={3}
+              >
+                <Text>
+                  undefined-SVG-Mock
+                </Text>
+              </View>
             </View>
           </View>
           <Text
@@ -224,131 +378,133 @@ exports[`<SuspensionChoice/> should match snapshot 1`] = `
                     "fontFamily": "Montserrat-Medium",
                     "fontSize": 16,
                     "lineHeight": 25.6,
+                    "marginLeft": 12,
                   },
                 ]
               }
             >
-              tes réservations seront annulées sauf pour certains cas précisés dans les
-               
-              <View>
-                <View
-                  accessibilityLabel="conditions générales d’utilisation"
-                  accessibilityRole="link"
-                  accessibilityState={
+              <Text
+                style={
+                  [
                     {
-                      "busy": undefined,
-                      "checked": undefined,
-                      "disabled": undefined,
-                      "expanded": undefined,
-                      "selected": undefined,
-                    }
-                  }
-                  accessibilityValue={
-                    {
-                      "max": undefined,
-                      "min": undefined,
-                      "now": undefined,
-                      "text": undefined,
-                    }
-                  }
-                  accessible={true}
-                  focusable={true}
-                  onClick={[Function]}
-                  onResponderGrant={[Function]}
-                  onResponderMove={[Function]}
-                  onResponderRelease={[Function]}
-                  onResponderTerminate={[Function]}
-                  onResponderTerminationRequest={[Function]}
-                  onStartShouldSetResponder={[Function]}
-                  style={
-                    [
-                      [
-                        {
-                          "userSelect": "auto",
-                        },
-                        {
-                          "top": 3,
-                        },
-                      ],
-                      {
-                        "opacity": 1,
-                      },
-                    ]
-                  }
-                  testID="conditions générales d’utilisation"
-                >
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Medium",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                    },
+                  ]
+                }
+              >
+                tes réservations seront annulées sauf pour certains cas précisés dans les
+                 
+                <View>
                   <View
-                    paddingForIcon={0}
+                    accessibilityLabel="conditions générales d’utilisation"
+                    accessibilityRole="link"
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": undefined,
+                        "disabled": undefined,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={true}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
                     style={
                       [
+                        [
+                          {
+                            "userSelect": "auto",
+                          },
+                          {
+                            "top": 3,
+                          },
+                        ],
                         {
-                          "alignItems": "center",
-                          "flexDirection": "row",
-                          "top": 0,
+                          "opacity": 1,
                         },
                       ]
                     }
+                    testID="conditions générales d’utilisation"
                   >
                     <View
-                      accessibilityLabel="Nouvelle fenêtre"
-                      height={20}
-                      testID="button-icon"
-                      width={20}
+                      paddingForIcon={0}
+                      style={
+                        [
+                          {
+                            "alignItems": "center",
+                            "flexDirection": "row",
+                            "top": 0,
+                          },
+                        ]
+                      }
                     >
-                      <Text>
-                        button-icon-SVG-Mock
+                      <View
+                        accessibilityLabel="Nouvelle fenêtre"
+                        height={20}
+                        testID="button-icon"
+                        width={20}
+                      >
+                        <Text>
+                          button-icon-SVG-Mock
+                        </Text>
+                      </View>
+                      <View
+                        numberOfSpaces={1}
+                        style={
+                          [
+                            {
+                              "width": 4,
+                            },
+                          ]
+                        }
+                      />
+                      <Text
+                        color="#161617"
+                        style={
+                          [
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-Bold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            },
+                          ]
+                        }
+                        typography="Button"
+                      >
+                        conditions générales d’utilisation
                       </Text>
                     </View>
-                    <View
-                      numberOfSpaces={1}
-                      style={
-                        [
-                          {
-                            "width": 4,
-                          },
-                        ]
-                      }
-                    />
-                    <Text
-                      color="#161617"
-                      style={
-                        [
-                          {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
-                          },
-                        ]
-                      }
-                      typography="Button"
-                    >
-                      conditions générales d’utilisation
-                    </Text>
                   </View>
                 </View>
-              </View>
+              </Text>
             </Text>
-          </Text>
+          </View>
         </View>
-      </View>
-      <View
-        accessibilityRole="none"
-        style={
-          [
-            {
-              "display": "flex",
-            },
-          ]
-        }
-      >
         <View
+          accessibilityRole="none"
           style={
             [
               {
-                "flexDirection": "row",
-                "marginLeft": 12,
-                "marginTop": 0,
+                "display": "flex",
               },
             ]
           }
@@ -357,22 +513,52 @@ exports[`<SuspensionChoice/> should match snapshot 1`] = `
             style={
               [
                 {
-                  "height": 25.6,
-                  "justifyContent": "center",
+                  "flexDirection": "row",
+                  "marginLeft": 12,
+                  "marginTop": 0,
                 },
               ]
             }
           >
             <View
-              borderColor="#161617"
-              fillColor="#161617"
-              height={3}
-              width={3}
+              style={
+                [
+                  {
+                    "height": 25.6,
+                    "justifyContent": "center",
+                  },
+                ]
+              }
             >
-              <Text>
-                undefined-SVG-Mock
-              </Text>
+              <View
+                borderColor="#161617"
+                fillColor="#161617"
+                height={3}
+                width={3}
+              >
+                <Text>
+                  undefined-SVG-Mock
+                </Text>
+              </View>
             </View>
+            <Text
+              style={
+                [
+                  {
+                    "color": "#161617",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                    "marginLeft": 12,
+                  },
+                ]
+              }
+            >
+              si tu as un dossier en cours, tu ne pourras pas en déposer un nouveau.
+            </Text>
           </View>
           <Text
             style={
@@ -392,24 +578,12 @@ exports[`<SuspensionChoice/> should match snapshot 1`] = `
             si tu as un dossier en cours, tu ne pourras pas en déposer un nouveau.
           </Text>
         </View>
-      </View>
-      <View
-        accessibilityRole="none"
-        style={
-          [
-            {
-              "display": "flex",
-            },
-          ]
-        }
-      >
         <View
+          accessibilityRole="none"
           style={
             [
               {
-                "flexDirection": "row",
-                "marginLeft": 12,
-                "marginTop": 0,
+                "display": "flex",
               },
             ]
           }
@@ -418,22 +592,52 @@ exports[`<SuspensionChoice/> should match snapshot 1`] = `
             style={
               [
                 {
-                  "height": 25.6,
-                  "justifyContent": "center",
+                  "flexDirection": "row",
+                  "marginLeft": 12,
+                  "marginTop": 0,
                 },
               ]
             }
           >
             <View
-              borderColor="#161617"
-              fillColor="#161617"
-              height={3}
-              width={3}
+              style={
+                [
+                  {
+                    "height": 25.6,
+                    "justifyContent": "center",
+                  },
+                ]
+              }
             >
-              <Text>
-                undefined-SVG-Mock
-              </Text>
+              <View
+                borderColor="#161617"
+                fillColor="#161617"
+                height={3}
+                width={3}
+              >
+                <Text>
+                  undefined-SVG-Mock
+                </Text>
+              </View>
             </View>
+            <Text
+              style={
+                [
+                  {
+                    "color": "#161617",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                    "marginLeft": 12,
+                  },
+                ]
+              }
+            >
+              tu n’auras plus accès au catalogue.
+            </Text>
           </View>
           <Text
             style={
@@ -454,9 +658,47 @@ exports[`<SuspensionChoice/> should match snapshot 1`] = `
           </Text>
         </View>
       </View>
+      <View
+        numberOfSpaces={4}
+        style={
+          [
+            {
+              "height": 16,
+            },
+          ]
+        }
+      />
+      <Text
+        style={
+          [
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-SemiBold",
+              "fontSize": 16,
+              "lineHeight": 25.6,
+            },
+          ]
+        }
+      >
+        Les données que nous conservons :
+      </Text>
+      <Text
+        style={
+          [
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Medium",
+              "fontSize": 16,
+              "lineHeight": 25.6,
+            },
+          ]
+        }
+      >
+        Nous gardons toutes les informations personnelles que tu nous as transmises lors de la vérification de ton identité.
+      </Text>
     </View>
     <View
-      numberOfSpaces={4}
+      flex={1}
       style={
         [
           {
@@ -502,10 +744,12 @@ exports[`<SuspensionChoice/> should match snapshot 1`] = `
       }
     />
     <View
+      gap={4}
       style={
         [
           {
-            "paddingBottom": 40,
+            "alignItems": "center",
+            "gap": 16,
           },
         ]
       }
@@ -597,17 +841,7 @@ exports[`<SuspensionChoice/> should match snapshot 1`] = `
         </View>
       </View>
       <View
-        numberOfSpaces={2}
-        style={
-          [
-            {
-              "height": 8,
-            },
-          ]
-        }
-      />
-      <View
-        accessibilityLabel="Ouvrir le gestionnaire mail pour contacter le service fraude"
+        accessibilityLabel="Contacter le service fraude"
         accessibilityState={
           {
             "busy": undefined,
@@ -662,7 +896,7 @@ exports[`<SuspensionChoice/> should match snapshot 1`] = `
             },
           ]
         }
-        testID="Ouvrir le gestionnaire mail pour contacter le service fraude"
+        testID="Contacter le service fraude"
       >
         <View
           style={
@@ -685,6 +919,7 @@ exports[`<SuspensionChoice/> should match snapshot 1`] = `
             }
           >
             <View
+              accessibilityLabel="Nouvelle fenêtre"
               height={20}
               testID="button-icon-left"
               width={20}
@@ -724,18 +959,6 @@ exports[`<SuspensionChoice/> should match snapshot 1`] = `
         </View>
       </View>
     </View>
-    <View
-      flex={1.5}
-      style={
-        [
-          {
-            "flexBasis": 0,
-            "flexGrow": 1.5,
-            "flexShrink": 1,
-          },
-        ]
-      }
-    />
   </View>,
 ]
 `;
