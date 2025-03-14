@@ -5,10 +5,8 @@ import styled from 'styled-components/native'
 
 import { getProfileStackConfig } from 'features/navigation/ProfileStackNavigator/getProfileStackConfig'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { GenericInfoPageWhiteLegacy } from 'ui/pages/GenericInfoPageWhiteLegacy'
+import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
 import { BicolorEmailSent } from 'ui/svg/icons/BicolorEmailSent'
 import { Email } from 'ui/svg/icons/Email'
 import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
@@ -27,37 +25,32 @@ export const DeleteProfileContactSupport: FC = () => {
 
   const navigateToProfile = () => navigate(...getProfileStackConfig('Profile'))
   return (
-    <GenericInfoPageWhiteLegacy
-      headerGoBack
-      separateIconFromTitle={false}
-      icon={BicolorEmailSent}
-      titleComponent={TypoDS.Title2}
-      title="Contacte le support">
-      <ViewGap gap={8}>
-        <ViewGap gap={6}>
-          <TypoDS.Body>
-            Pour traiter ta demande, nous te conseillons d’écrire à notre équipe support.
-          </TypoDS.Body>
-          <TypoDS.Body>
-            Ta demande sera analysée et tu pourras être redirigé vers la meilleure solution.
-          </TypoDS.Body>
-        </ViewGap>
-
-        <ContentBottom>
-          <ButtonPrimary icon={Email} wording="Contacter le support" onPress={requestSendMail} />
-          <ButtonTertiaryBlack
-            wording="Retourner au profil"
-            onPress={navigateToProfile}
-            icon={PlainArrowNext}
-          />
-        </ContentBottom>
+    <GenericInfoPageWhite
+      withGoBack
+      illustration={BicolorEmailSent}
+      title="Contacte le support"
+      buttonPrimary={{
+        wording: 'Contacter le support',
+        onPress: requestSendMail,
+        icon: Email,
+      }}
+      buttonTertiary={{
+        wording: 'Retourner au profil',
+        onPress: navigateToProfile,
+        icon: PlainArrowNext,
+      }}>
+      <ViewGap gap={6}>
+        <StyledBody>
+          Pour traiter ta demande, nous te conseillons d’écrire à notre équipe support.
+        </StyledBody>
+        <StyledBody>
+          Ta demande sera analysée et tu pourras être redirigé vers la meilleure solution.
+        </StyledBody>
       </ViewGap>
-    </GenericInfoPageWhiteLegacy>
+    </GenericInfoPageWhite>
   )
 }
 
-const ContentBottom = styled(ViewGap).attrs({
-  gap: 6,
-})({
-  alignItems: 'center',
+const StyledBody = styled(TypoDS.Body)({
+  textAlign: 'center',
 })
