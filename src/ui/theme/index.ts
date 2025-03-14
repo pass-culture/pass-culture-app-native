@@ -2,7 +2,6 @@ export { getShadow } from './shadow'
 export { padding } from './padding'
 export { getSpacing, getSpacingString } from './spacing'
 export { Spacer } from '../components/spacer/Spacer'
-export { Typo } from 'ui/theme/typography'
 export { TypoDS } from 'ui/theme/designSystemTypographie'
 export {
   MARGIN_DP,

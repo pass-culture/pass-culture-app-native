@@ -1032,7 +1032,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                     tabindex="0"
                   >
                     <div
-                      class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+                      class="css-text-1rynq56 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
                       dir="ltr"
                     >
                       Accessibilité : partiellement conforme
@@ -1044,7 +1044,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                     tabindex="0"
                   >
                     <div
-                      class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+                      class="css-text-1rynq56 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
                       dir="ltr"
                     >
                       Mentions légales
@@ -2187,7 +2187,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                     tabindex="0"
                   >
                     <div
-                      class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+                      class="css-text-1rynq56 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
                       dir="ltr"
                     >
                       Accessibilité : partiellement conforme
@@ -2199,7 +2199,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                     tabindex="0"
                   >
                     <div
-                      class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1enofrn r-lineHeight-1cwl3u0"
+                      class="css-text-1rynq56 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
                       dir="ltr"
                     >
                       Mentions légales
