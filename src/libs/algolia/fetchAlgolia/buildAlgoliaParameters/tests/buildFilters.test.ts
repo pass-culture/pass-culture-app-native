@@ -1,26 +1,36 @@
 import { buildFilters } from '../buildFilters'
 
 describe('buildFilters', () => {
-  describe('without filter', () => {
-    it('should return an object if no parameters are passed', () => {
-      expect(buildFilters({})).toEqual({})
+  it('should return base filter when no excludedObjectIds are provided', () => {
+    const result = buildFilters({})
+
+    expect(result).toEqual({
+      filters: 'NOT _tags:"is_future" ',
     })
   })
 
-  describe('with filter', () => {
-    describe('excludedObjectIds', () => {
-      it('should return filters that excludes objectID when excludedObjectIds is not empty', () => {
-        expect(
-          buildFilters({ excludedObjectIds: ['你好', 'привет', 'xαίρετε', 'สวัสดี'] })
-        ).toEqual({
-          filters:
-            'NOT objectID:你好 AND NOT objectID:привет AND NOT objectID:xαίρετε AND NOT objectID:สวัสดี',
-        })
-      })
+  it('should return base filter when excludedObjectIds is an empty array', () => {
+    const result = buildFilters({ excludedObjectIds: [] })
 
-      it('should return filters that excludes objectID when excludedObjectIds is empty', () => {
-        expect(buildFilters({ excludedObjectIds: [] })).toEqual({})
-      })
+    expect(result).toEqual({
+      filters: 'NOT _tags:"is_future" ',
+    })
+  })
+
+  it('should correctly exclude a single objectId', () => {
+    const result = buildFilters({ excludedObjectIds: ['123'] })
+
+    expect(result).toEqual({
+      filters: 'NOT _tags:"is_future" AND NOT objectID:123',
+    })
+  })
+
+  it('should correctly exclude multiple objectIds', () => {
+    const result = buildFilters({ excludedObjectIds: ['123', '456', '789'] })
+
+    expect(result).toEqual({
+      filters:
+        'NOT _tags:"is_future" AND NOT objectID:123 AND NOT objectID:456 AND NOT objectID:789',
     })
   })
 })

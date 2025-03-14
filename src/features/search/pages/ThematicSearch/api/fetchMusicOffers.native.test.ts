@@ -1,6 +1,6 @@
 import algoliasearch from '__mocks__/algoliasearch'
+import { buildQueryHelper } from 'features/search/pages/ThematicSearch/api/buildQueryHelper'
 import { fetchMusicOffers } from 'features/search/pages/ThematicSearch/api/fetchMusicOffers'
-import { buildQuery } from 'features/search/pages/ThematicSearch/api/utils'
 import { Position } from 'libs/location'
 
 describe('fetchMusicOffers', () => {
@@ -22,33 +22,33 @@ function buildQueries(userLocation: Position) {
   }
 
   return [
-    buildQuery({
+    buildQueryHelper({
       ...commonQueryParams,
       userLocation: undefined,
       filters:
         '(offer.subcategoryId:"ABO_PLATEFORME_MUSIQUE" OR offer.subcategoryId:"LIVESTREAM_MUSIQUE" OR offer.subcategoryId:"TELECHARGEMENT_MUSIQUE") AND NOT offer.last30DaysBookingsRange:"very-low"',
     }),
-    buildQuery({
+    buildQueryHelper({
       ...commonQueryParams,
       filters: 'offer.subcategoryId:"CONCERT" AND NOT offer.last30DaysBookingsRange:"very-low"',
     }),
-    buildQuery({
+    buildQueryHelper({
       ...commonQueryParams,
       filters:
         'offer.subcategoryId:"FESTIVAL_MUSIQUE" AND NOT offer.last30DaysBookingsRange:"very-low"',
       withRadius: false,
     }),
-    buildQuery({
+    buildQueryHelper({
       ...commonQueryParams,
       filters:
         '(offer.subcategoryId:"ACHAT_INSTRUMENT" OR offer.subcategoryId:"LOCATION_INSTRUMENT") AND NOT offer.last30DaysBookingsRange:"very-low"',
     }),
-    buildQuery({
+    buildQueryHelper({
       ...commonQueryParams,
       filters:
         'offer.subcategoryId:"SUPPORT_PHYSIQUE_MUSIQUE_CD" AND NOT offer.last30DaysBookingsRange:"very-low"',
     }),
-    buildQuery({
+    buildQueryHelper({
       ...commonQueryParams,
       filters:
         'offer.subcategoryId:"SUPPORT_PHYSIQUE_MUSIQUE_VINYLE" AND NOT offer.last30DaysBookingsRange:"very-low"',

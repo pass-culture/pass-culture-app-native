@@ -36,6 +36,7 @@ describe('buildOfferSearchParameters', () => {
       aroundRadius: 'all',
       facetFilters: [['offer.isEducational:false']],
       numericFilters: [['offer.prices: 0 TO 300']],
+      filters: 'NOT _tags:"is_future" ',
     })
   })
 
@@ -54,6 +55,7 @@ describe('buildOfferSearchParameters', () => {
     expect(result).toEqual({
       facetFilters: [['offer.isEducational:false']],
       numericFilters: [['offer.prices: 0 TO 300']],
+      filters: 'NOT _tags:"is_future" ',
     })
   })
 
@@ -77,6 +79,7 @@ describe('buildOfferSearchParameters', () => {
       aroundRadius: 'all',
       facetFilters: [['offer.isEducational:false']],
       numericFilters: [['offer.prices: 0 TO 300'], ['offer.dates: 1682899200 TO 1682985599']],
+      filters: 'NOT _tags:"is_future" ',
     })
   })
 
@@ -100,6 +103,7 @@ describe('buildOfferSearchParameters', () => {
         ['offer.searchGroupNamev2:CD_VINYLE_MUSIQUE_EN_LIGNE'],
       ],
       numericFilters: [['offer.prices: 0 TO 300']],
+      filters: 'NOT _tags:"is_future" ',
     })
   })
 
@@ -120,6 +124,7 @@ describe('buildOfferSearchParameters', () => {
       aroundRadius: 'all',
       facetFilters: [['offer.isEducational:false']],
       numericFilters: [['offer.prices: 50 TO 300']],
+      filters: 'NOT _tags:"is_future" ',
     })
   })
 
@@ -153,6 +158,7 @@ describe('buildOfferSearchParameters', () => {
       aroundRadius: 10000,
       facetFilters: [['offer.isEducational:false']],
       numericFilters: [['offer.prices: 0 TO 300']],
+      filters: 'NOT _tags:"is_future" ',
     })
   })
 })

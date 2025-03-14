@@ -1,6 +1,6 @@
 import algoliasearch from '__mocks__/algoliasearch'
+import { buildQueryHelper } from 'features/search/pages/ThematicSearch/api/buildQueryHelper'
 import { fetchFilmsOffers } from 'features/search/pages/ThematicSearch/api/fetchFilmsOffers'
-import { buildQuery } from 'features/search/pages/ThematicSearch/api/utils'
 import { Position } from 'libs/location'
 
 describe('fetchFilmsOffers', () => {
@@ -18,15 +18,15 @@ describe('fetchFilmsOffers', () => {
 
 function buildQueries(userLocation: Position) {
   return [
-    buildQuery({
+    buildQueryHelper({
       indexName: 'algoliaOffersIndexNameB',
       filters: 'offer.subcategoryId:"ABO_PLATEFORME_VIDEO"',
     }),
-    buildQuery({
+    buildQueryHelper({
       indexName: 'algoliaOffersIndexNameB',
       filters: 'offer.subcategoryId:"VOD"',
     }),
-    buildQuery({
+    buildQueryHelper({
       indexName: 'algoliaOffersIndexName',
       filters:
         'offer.nativeCategoryId:"DVD_BLU_RAY" AND offer.subcategoryId:"SUPPORT_PHYSIQUE_FILM" AND NOT offer.last30DaysBookingsRange:"very-low"',

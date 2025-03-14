@@ -14,7 +14,7 @@ type ThematicSearchQueryParams = {
   withRadius?: boolean
 }
 
-export const buildQuery = ({
+export const buildQueryHelper = ({
   indexName,
   userLocation,
   filters,
@@ -34,7 +34,7 @@ export const buildQuery = ({
           aroundRadius: withRadius ? DEFAULT_RADIUS * 1000 : 'all',
         }
       : {}),
-    ...(filters && { filters }),
+    ...(filters && { filters: `${filters} AND NOT _tags:"is_future"` }),
     ...(numericFilters && { numericFilters }),
     ...(distinct && { distinct }),
     hitsPerPage: hitsPerPage ?? 50,
