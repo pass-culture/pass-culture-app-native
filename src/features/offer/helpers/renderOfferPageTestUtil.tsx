@@ -34,7 +34,7 @@ jest.mock('react-native-safe-area-context', () => ({
   useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
 }))
 
-const offerId = 116656
+const offerId = offerResponseSnap.id
 
 type MockOffer =
   | (OfferResponseV2 & {

@@ -4,6 +4,7 @@ import {
   CategoryIdEnum,
   FavoriteResponse,
   OfferResponseV2,
+  ReactionTypeEnum,
   RecommendationApiParams,
   SearchGroupResponseModelv2,
   SubcategoryIdEnum,
@@ -76,4 +77,6 @@ export type OfferContentProps = {
   searchGroupList: SearchGroupResponseModelv2[]
   subcategory: Subcategory
   chronicles?: ChronicleCardData[]
+  defaultReaction?: ReactionTypeEnum | null
+  onReactionButtonPress?: () => void
 }
