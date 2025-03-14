@@ -22,6 +22,7 @@ export const cheatcodesNavigationIdentityCheckButtons: [CheatcodesButtonsWithSub
       { screen: 'DisableActivation' },
       { screen: 'DMSIntroduction' },
       { screen: 'EduConnectForm' },
+      { screen: 'ExpiredOrLostID' },
       { screen: 'IdentificationFork' },
       { screen: 'IdentityCheckDMS' },
       { screen: 'IdentityCheckEnd' },
