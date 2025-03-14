@@ -5,17 +5,14 @@ import styled from 'styled-components/native'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { InformationWithIcon } from 'ui/components/InformationWithIcon'
 import { Li } from 'ui/components/Li'
-import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { VerticalUl } from 'ui/components/Ul'
-import { GenericInfoPageWhiteLegacy } from 'ui/pages/GenericInfoPageWhiteLegacy'
+import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
 import { BicolorClock } from 'ui/svg/icons/BicolorClock'
 import { BicolorConfirmation } from 'ui/svg/icons/BicolorConfirmation'
 import { BicolorIdCard } from 'ui/svg/icons/BicolorIdCard'
 import { BicolorProfile } from 'ui/svg/icons/BicolorProfile'
-import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { AccessibleBicolorIcon } from 'ui/svg/icons/types'
 import { LogoDMS } from 'ui/svg/LogoDMS'
 import { getSpacing, Spacer, TypoDS } from 'ui/theme'
@@ -55,13 +52,11 @@ export const DMSIntroduction = (): React.JSX.Element => {
       }
 
   return (
-    <GenericInfoPageWhiteLegacy
-      icon={LogoDMS}
-      titleComponent={TypoDS.Title2}
+    <GenericInfoPageWhite
+      withGoBack
+      illustration={LogoDMS}
       title="Identifie-toi sur le site demarches-simplifiees.fr"
-      separateIconFromTitle={false}
-      headerGoBack
-      mobileBottomFlex={0.5}>
+      buttonPrimary={{ wording: 'Aller sur demarches-simplifiees.fr', ...toDMSWebsiteButtonProps }}>
       <StyledBody>Pour t’identifier tu vas avoir besoin de&nbsp;: </StyledBody>
       <VerticalUl>
         {informationListItem.map((informationItem) => (
@@ -71,29 +66,40 @@ export const DMSIntroduction = (): React.JSX.Element => {
           </Li>
         ))}
       </VerticalUl>
-      <StyledCaption>Le traitement de ton dossier peut prendre jusqu’à 5 jours.</StyledCaption>
-      <Spacer.Flex flex={1} />
-      <LinkContainer>
-        <ExternalTouchableLink
-          wording="Aller sur demarches-simplifiees.fr"
-          icon={ExternalSite}
-          as={ButtonPrimary}
-          {...toDMSWebsiteButtonProps}
-        />
-      </LinkContainer>
-    </GenericInfoPageWhiteLegacy>
+      <TypoDS.BodyAccentXs>
+        Le traitement de ton dossier peut prendre jusqu’à 5 jours.
+      </TypoDS.BodyAccentXs>
+    </GenericInfoPageWhite>
+    // <GenericInfoPageWhiteLegacy
+    //   icon={LogoDMS}
+    //   titleComponent={TypoDS.Title2}
+    //   title="Identifie-toi sur le site demarches-simplifiees.fr"
+    //   separateIconFromTitle={false}
+    //   headerGoBack
+    //   mobileBottomFlex={0.5}>
+    //   <StyledBody>Pour t’identifier tu vas avoir besoin de&nbsp;: </StyledBody>
+    //   <VerticalUl>
+    //     {informationListItem.map((informationItem) => (
+    //       <Li key={informationItem.label}>
+    //         <InformationWithIcon Icon={informationItem.icon} text={informationItem.label} />
+    //         <Spacer.Column numberOfSpaces={4.5} />
+    //       </Li>
+    //     ))}
+    //   </VerticalUl>
+    //   <StyledCaption>Le traitement de ton dossier peut prendre jusqu’à 5 jours.</StyledCaption>
+    //   <Spacer.Flex flex={1} />
+    //   <LinkContainer>
+    //     <ExternalTouchableLink
+    //       wording="Aller sur demarches-simplifiees.fr"
+    //       icon={ExternalSite}
+    //       as={ButtonPrimary}
+    //       {...toDMSWebsiteButtonProps}
+    //     />
+    //   </LinkContainer>
+    // </GenericInfoPageWhiteLegacy>
   )
 }
 
 const StyledBody = styled(TypoDS.Body)({
-  textAlign: 'center',
   marginBottom: getSpacing(5),
-})
-
-const StyledCaption = styled(TypoDS.BodyAccentXs)({
-  textAlign: 'center',
-})
-
-const LinkContainer = styled.View({
-  alignItems: 'center',
 })
