@@ -69,7 +69,7 @@ const mockUseCenterOnLocation = useCenterOnLocation as jest.Mock
 
 jest.mock('features/venue/api/useVenueOffers')
 jest.mock('features/venueMap/helpers/zoomOutIfMapEmpty')
-jest.mock('features/navigation/TabBar/routes')
+jest.mock('features/navigation/TabBar/tabBarRoutes')
 
 jest.mock('features/venueMap/useVenuesInRegionQuery')
 const mockUseVenuesInRegionQuery = useVenuesInRegionQuery as jest.Mock

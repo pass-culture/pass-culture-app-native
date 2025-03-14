@@ -9,7 +9,7 @@ jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 // TODO(PC-34456): remove the global mock
-jest.unmock('features/navigation/RootNavigator/routes')
+jest.unmock('features/navigation/RootNavigator/rootRoutes')
 
 describe('getScreenFromDeeplink()', () => {
   it('should return PageNotFound when route is unknown', () => {

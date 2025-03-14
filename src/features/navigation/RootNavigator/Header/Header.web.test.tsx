@@ -26,7 +26,7 @@ const mockUseTabBarItemBadges = useTabBarItemBadges as jest.Mock
 const mockedUseAuthContext = useAuthContext as jest.Mock
 jest.mock('features/auth/context/AuthContext')
 
-jest.mock('features/navigation/RootNavigator/routes', () => ({
+jest.mock('features/navigation/RootNavigator/rootRoutes', () => ({
   routes: [
     {
       name: 'TabNavigator',

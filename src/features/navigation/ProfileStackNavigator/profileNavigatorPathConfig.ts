@@ -1,13 +1,13 @@
 import { LinkingOptions } from '@react-navigation/native'
 
+import { profileRoutes } from 'features/navigation/ProfileStackNavigator/profileRoutes'
 import {
   ProfileStack,
   ProfileStackParamList,
 } from 'features/navigation/ProfileStackNavigator/ProfileStack'
-import { routes } from 'features/navigation/ProfileStackNavigator/routes'
 import { getScreensAndConfig } from 'features/navigation/RootNavigator/linking/getScreensConfig'
 
-const { screensConfig } = getScreensAndConfig(routes, ProfileStack.Screen)
+const { screensConfig } = getScreensAndConfig(profileRoutes, ProfileStack.Screen)
 
 export const profileNavigatorPathConfig: LinkingOptions<ProfileStackParamList>['config'] = {
   initialRouteName: 'Profile',

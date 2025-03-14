@@ -8,7 +8,7 @@ import { profileNavigatorPathConfig } from 'features/navigation/ProfileStackNavi
 import { SuspenseProfileStackNavigator } from 'features/navigation/ProfileStackNavigator/SuspenseProfileStackNavigator'
 import { getScreensAndConfig } from 'features/navigation/RootNavigator/linking/getScreensConfig'
 import { screenParamsParser } from 'features/navigation/screenParamsUtils'
-import { searchNavigatorPathConfig } from 'features/navigation/SearchStackNavigator/routes'
+import { searchNavigatorPathConfig } from 'features/navigation/SearchStackNavigator/searchRoutes'
 import { SuspenseSearchStackNavigator } from 'features/navigation/SearchStackNavigator/SuspenseSearchStackNavigator'
 
 import { TabStack } from './Stack'
@@ -18,7 +18,7 @@ export const initialRouteName = 'Home'
 
 const Home = withAsyncErrorBoundary(HomeComponent)
 
-const routes: TabRoute[] = [
+const tabBarRoutes: TabRoute[] = [
   {
     name: 'Home',
     component: Home,
@@ -52,12 +52,12 @@ const routes: TabRoute[] = [
 ]
 
 export function isTabScreen(screen: string): screen is TabRouteName {
-  const tabRouteNames = routes.map((route): string => route.name)
+  const tabRouteNames = tabBarRoutes.map((route): string => route.name)
   return tabRouteNames.includes(screen)
 }
 
 const { screensConfig: tabScreensConfig, Screens: TabScreens } = getScreensAndConfig(
-  routes,
+  tabBarRoutes,
   TabStack.Screen
 )
 

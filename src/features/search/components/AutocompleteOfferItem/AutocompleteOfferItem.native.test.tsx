@@ -49,7 +49,7 @@ const mockSendEvent = jest.fn()
 const searchId = uuidv4()
 
 jest.mock('libs/firebase/analytics/analytics')
-jest.mock('features/navigation/TabBar/routes')
+jest.mock('features/navigation/TabBar/tabBarRoutes')
 
 describe('AutocompleteOfferItem component', () => {
   beforeEach(() => {

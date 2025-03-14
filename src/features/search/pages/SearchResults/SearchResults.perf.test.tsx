@@ -14,7 +14,7 @@ import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, measurePerformance } from 'tests/utils'
 
 jest.mock('libs/firebase/analytics/analytics')
-jest.mock('features/navigation/TabBar/routes')
+jest.mock('features/navigation/TabBar/tabBarRoutes')
 
 jest.mock('react-native/Libraries/Animated/NativeAnimatedHelper')
 

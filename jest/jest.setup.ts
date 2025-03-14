@@ -27,4 +27,4 @@ jest.mock('react-native-device-info', () => mockRNDeviceInfo)
 jest.unmock('react-native-modal')
 
 // TODO(PC-34456): remove this global mock
-jest.mock('features/navigation/RootNavigator/routes')
+jest.mock('features/navigation/RootNavigator/rootRoutes')
