@@ -1,6 +1,6 @@
 appId: ${MAESTRO_APP_ID}
 ---
-- repeat: # Fallback si aucune date disponible dans 3 jours
+- repeat:
     while:
       notVisible:
         id: 'movie-calendar-day'
@@ -12,9 +12,9 @@ appId: ${MAESTRO_APP_ID}
       - tapOn:
           text: 'Séance de cinéma'
           index: 1
-      - tapOn: "Accéder aux séances"
+      - tapOn: 'Accéder aux séances'
 
-- runFlow: # Vérifier que l'offre a bien une date disponible dans 3 jours
+- runFlow:
     when:
       visible:
         id: 'movie-calendar-day'

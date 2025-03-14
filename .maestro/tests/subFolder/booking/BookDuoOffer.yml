@@ -12,9 +12,9 @@ appId: ${MAESTRO_APP_ID}
 
 - waitForAnimationToEnd
 
-- repeat: # Vérifier que l'offre n'est pas déjà réservée
+- repeat:
     while:
-      notVisible: "Accéder aux séances"
+      notVisible: 'Accéder aux séances'
     commands:
       - pressKey: back
       - scroll
@@ -22,12 +22,12 @@ appId: ${MAESTRO_APP_ID}
           text: 'Séance de cinéma'
           index: 1
 
-- runFlow: # Vérifier si une séance est disponible dans 3 jours
+- runFlow:
     when:
-      visible: "Accéder aux séances"
+      visible: 'Accéder aux séances'
     commands:
-      - tapOn: "Accéder aux séances"
-      - assertVisible: "Trouve ta séance"
+      - tapOn: 'Accéder aux séances'
+      - assertVisible: 'Trouve ta séance'
       - runFlow: ../../subFolder/booking/DaySelectionCinema.yml
 
 - tapOn:
@@ -35,7 +35,7 @@ appId: ${MAESTRO_APP_ID}
     below:
       id: VenuePreviewImage
 
-- runFlow: # Si différentes gamme de prix pour l'offre
+- runFlow:
     when:
       visible: 'Prix'
     commands:
@@ -63,7 +63,7 @@ appId: ${MAESTRO_APP_ID}
 
 - scroll
 - scroll
-- runFlow: # Si la réservation peut être annulée
+- runFlow:
     when:
       visible: 'Annuler ma réservation'
     commands:
@@ -72,7 +72,7 @@ appId: ${MAESTRO_APP_ID}
 
 - waitForAnimationToEnd
 
-- runFlow: # Si la réservation ne peut pas être annulée
+- runFlow:
     when:
       visible: 'Voir le détail de l’offre'
     commands:
