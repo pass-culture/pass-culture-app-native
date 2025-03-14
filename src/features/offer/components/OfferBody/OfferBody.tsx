@@ -24,7 +24,7 @@ import { useOfferSummaryInfoList } from 'features/offer/helpers/useOfferSummaryI
 import { analytics } from 'libs/analytics/provider'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { getDisplayedPrice } from 'libs/parsers/getDisplayedPrice'
+import { getDisplayedPrice, getIfPricesShouldBeFix } from 'libs/parsers/getDisplayedPrice'
 import { Subcategory } from 'libs/subcategories/types'
 import { formatFullAddress } from 'shared/address/addressFormatter'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
@@ -62,7 +62,8 @@ export const OfferBody: FunctionComponent<Props> = ({ offer, subcategory, childr
     currency,
     euroToPacificFrancRate,
     offer.isDuo && user?.isBeneficiary,
-    { fractionDigits: 2 }
+    { fractionDigits: 2 },
+    getIfPricesShouldBeFix(offer.subcategoryId)
   )
 
   const { artistPlaylist: artistOffers } = useArtistResults({

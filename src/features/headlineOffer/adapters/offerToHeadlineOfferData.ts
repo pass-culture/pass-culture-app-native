@@ -1,7 +1,7 @@
 import { HeadlineOfferData } from 'features/headlineOffer/type'
 import { Position } from 'libs/location'
 import { formatDistance } from 'libs/parsers/formatDistance'
-import { getDisplayedPrice } from 'libs/parsers/getDisplayedPrice'
+import { getDisplayedPrice, getIfPricesShouldBeFix } from 'libs/parsers/getDisplayedPrice'
 import { CategoryHomeLabelMapping, CategoryIdMapping } from 'libs/subcategories/types'
 import { Currency } from 'shared/currency/useGetCurrencyToDisplay'
 import { Offer } from 'shared/offer/types'
@@ -29,7 +29,14 @@ export function offerToHeadlineOfferData({
   const { mapping, labelMapping, currency, euroToPacificFrancRate, userLocation } =
     transformParameters
 
-  const displayedPrice = getDisplayedPrice(hitOffer.prices, currency, euroToPacificFrancRate)
+  const displayedPrice = getDisplayedPrice(
+    hitOffer.prices,
+    currency,
+    euroToPacificFrancRate,
+    undefined,
+    undefined,
+    getIfPricesShouldBeFix(hitOffer.subcategoryId)
+  )
 
   return {
     id: objectID,

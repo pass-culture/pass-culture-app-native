@@ -10,7 +10,7 @@ import { useLogPlaylist } from 'features/offer/helpers/useLogPlaylistVertical/us
 import { useLogScrollHandler } from 'features/offer/helpers/useLogScrolHandler/useLogScrollHandler'
 import { analytics } from 'libs/analytics/provider'
 import { usePlaylistItemDimensionsFromLayout } from 'libs/contentful/usePlaylistItemDimensionsFromLayout'
-import { getDisplayedPrice } from 'libs/parsers/getDisplayedPrice'
+import { getDisplayedPrice, getIfPricesShouldBeFix } from 'libs/parsers/getDisplayedPrice'
 import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
@@ -121,7 +121,14 @@ export function OfferPlaylistList({
                 navigationMethod: 'push',
                 apiRecoParams: playlist.apiRecoParams,
                 priceDisplay: (item: Offer) =>
-                  getDisplayedPrice(item.offer.prices, currency, euroToPacificFrancRate),
+                  getDisplayedPrice(
+                    item.offer.prices,
+                    currency,
+                    euroToPacificFrancRate,
+                    undefined,
+                    undefined,
+                    getIfPricesShouldBeFix(item.offer.subcategoryId)
+                  ),
               })}
               title={playlist.title}
               onEndReached={() => trackingOnHorizontalScroll(playlist.type, playlist.apiRecoParams)}

@@ -10,7 +10,7 @@ import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useLocation } from 'libs/location'
 import { getDistance } from 'libs/location/getDistance'
-import { getDisplayedPrice } from 'libs/parsers/getDisplayedPrice'
+import { getDisplayedPrice, getIfPricesShouldBeFix } from 'libs/parsers/getDisplayedPrice'
 import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { getOfferDates } from 'shared/date/getOfferDates'
@@ -47,7 +47,9 @@ export const VideoMultiOfferTile: FunctionComponent<Props> = ({
     offer?.offer?.prices,
     currency,
     euroToPacificFrancRate,
-    offer.offer.isDuo && user?.isBeneficiary
+    offer.offer.isDuo && user?.isBeneficiary,
+    undefined,
+    getIfPricesShouldBeFix(offer.offer.subcategoryId)
   )
 
   const displayDate = getOfferDates(

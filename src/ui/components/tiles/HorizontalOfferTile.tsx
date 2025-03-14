@@ -10,7 +10,7 @@ import { OfferAnalyticsParams } from 'libs/analytics/types'
 import { useLocation } from 'libs/location'
 import { getDistance } from 'libs/location/getDistance'
 import { LocationMode } from 'libs/location/types'
-import { getDisplayedPrice } from 'libs/parsers/getDisplayedPrice'
+import { getDisplayedPrice, getIfPricesShouldBeFix } from 'libs/parsers/getDisplayedPrice'
 import { useSubcategory } from 'libs/subcategories'
 import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
@@ -85,7 +85,9 @@ export const HorizontalOfferTile = ({
     prices,
     currency,
     euroToPacificFrancRate,
-    offerDetails.isDuo && user?.isBeneficiary
+    offerDetails.isDuo && user?.isBeneficiary,
+    undefined,
+    getIfPricesShouldBeFix(offerDetails.subcategoryId)
   )
 
   const accessibilityLabel = tileAccessibilityLabel(TileContentType.OFFER, {

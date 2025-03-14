@@ -14,7 +14,7 @@ import { analytics } from 'libs/analytics/provider'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { formatDates, getTimeStampInMillis } from 'libs/parsers/formatDates'
-import { getDisplayedPrice } from 'libs/parsers/getDisplayedPrice'
+import { getDisplayedPrice, getIfPricesShouldBeFix } from 'libs/parsers/getDisplayedPrice'
 import { VenueTypeCode } from 'libs/parsers/venueType'
 import { CategoryHomeLabelMapping, CategoryIdMapping } from 'libs/subcategories/types'
 import { Currency } from 'shared/currency/useGetCurrencyToDisplay'
@@ -91,7 +91,9 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
           item.offer.prices,
           currency,
           euroToPacificFrancRate,
-          item.offer.isDuo && user?.isBeneficiary
+          item.offer.isDuo && user?.isBeneficiary,
+          undefined,
+          getIfPricesShouldBeFix(item.offer.subcategoryId)
         )}
         venueId={venue?.id}
         width={width}

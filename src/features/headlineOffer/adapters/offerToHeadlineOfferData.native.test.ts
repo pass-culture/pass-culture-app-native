@@ -23,7 +23,7 @@ describe('offerToHeadlineOfferData', () => {
       imageUrl:
         'https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDNQ',
       offerTitle: 'La nuit des temps',
-      price: 'Dès 28\u00a0€',
+      price: '28\u00a0€',
       distance: '900+ km',
     })
   })
