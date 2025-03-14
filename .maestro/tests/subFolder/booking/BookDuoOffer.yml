@@ -1,6 +1,4 @@
 appId: ${MAESTRO_APP_ID}
-env:
-  LOCATION: 'Ma position'
 ---
 - assertVisible: 'Rechercher'
 - swipe:
@@ -12,88 +10,32 @@ env:
     text: 'Séance de cinéma'
     index: 1
 
-- repeat: #Vérifier que l'offre est bien réservable
+- waitForAnimationToEnd
+
+- repeat:
     while:
-      visible: 'Voir ma réservation'
+      notVisible: 'Accéder aux séances'
     commands:
       - pressKey: back
       - scroll
       - tapOn:
           text: 'Séance de cinéma'
           index: 1
-
-- swipe:
-    from:
-      id: 'tagsContainer'
-    direction: UP
-
-- scrollUntilVisible:
-    element:
-      text: "Passe le bon plan\_!"
-    visibilityPercentage: 50
-
-- runFlow: # Vérifie que l'offre n'est pas déjà réservée
-    when:
-      visible: 'Voir ma réservation'
-    commands:
-      - pressKey: back
-      - scroll
-      - tapOn:
-          text: 'Séance de cinéma'
-          index: 1
-      - swipe:
-          from:
-            id: 'tagsContainer'
-          direction: UP
-      - scrollUntilVisible:
-          element:
-            text: "Passe le bon plan\_!"
-          visibilityPercentage: 50
-
-- repeat: # Vérifie que l'offre a bien une date disponible dans 2 jours
-    while:
-      notVisible:
-        id: 'movie-calendar-day'
-        index: 3
-    commands:
-      - pressKey: back
-      - scroll
-      - tapOn:
-          text: 'Séance de cinéma'
-          index: 1
-      - swipe:
-          from:
-            id: 'tagsContainer'
-          direction: UP
-      - scrollUntilVisible:
-          element:
-            text: "Passe le bon plan\_!"
-          visibilityPercentage: 50
 
 - runFlow:
     when:
-      visible:
-        id: 'movie-calendar-day'
-        index: 2
+      visible: 'Accéder aux séances'
     commands:
-      - tapOn:
-          id: 'movie-calendar-day'
-          index: 2
-
-- runFlow:
-    when:
-      visible: "Prochaine séance\_:"
-    commands:
-      - tapOn:
-          enabled: true
-          below:
-            text: "Prochaine séance\_:"
+      - tapOn: 'Accéder aux séances'
+      - assertVisible: 'Trouve ta séance'
+      - runFlow: ../../subFolder/booking/DaySelectionCinema.yml
 
 - tapOn:
-    id: event-card
-    index: 0
+    enabled: true
+    below:
+      id: VenuePreviewImage
 
-- runFlow: #Si différentes gamme de prix pour l'offre
+- runFlow:
     when:
       visible: 'Prix'
     commands:
@@ -112,7 +54,7 @@ env:
 - tapOn: 'J’ai lu et j’accepte les conditions générales d’utilisation'
 - scrollUntilVisible:
     element: 'Confirmer la réservation'
-- tapOn: 'Confirmer la réservation'
+- doubleTapOn: 'Confirmer la réservation'
 
 - assertVisible: "Réservation confirmée\_!"
 - tapOn:
@@ -121,7 +63,7 @@ env:
 
 - scroll
 - scroll
-- runFlow: # Si la réservation peut être annulée
+- runFlow:
     when:
       visible: 'Annuler ma réservation'
     commands:
@@ -130,7 +72,7 @@ env:
 
 - waitForAnimationToEnd
 
-- runFlow: # Si la réservation ne peut pas être annulée
+- runFlow:
     when:
       visible: 'Voir le détail de l’offre'
     commands:

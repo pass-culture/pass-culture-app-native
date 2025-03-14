@@ -8,85 +8,35 @@ appId: ${MAESTRO_APP_ID}
       text: 'Les offres'
     direction: UP
 - tapOn:
-    label: 'Sélection de la 1ère offre disponible'
     text: 'Séance de cinéma'
     index: 1
 
 - waitForAnimationToEnd
 
-- swipe:
-    from:
-      id: 'tagsContainer'
-    direction: UP
-
-- scrollUntilVisible:
-    element:
-      text: "Passe le bon plan\_!"
-    visibilityPercentage: 50
-
-- runFlow: # Vérifier que l'offre n'est pas déjà réservée
-    when:
-      visible: 'Voir ma réservation'
-    commands:
-      - pressKey: back
-      - scroll
-      - tapOn:
-          text: 'Séance de cinéma'
-          index: 1
-      - swipe:
-          from:
-            id: 'tagsContainer'
-          direction: UP
-      - scrollUntilVisible:
-          element:
-            text: "Passe le bon plan\_!"
-          visibilityPercentage: 50
-
-- repeat: # Vérifier que l'offre a bien une date disponible dans 2 jours
+- repeat:
     while:
-      notVisible:
-        id: 'movie-calendar-day'
-        index: 3
+      notVisible: 'Accéder aux séances'
     commands:
       - pressKey: back
       - scroll
       - tapOn:
           text: 'Séance de cinéma'
           index: 1
-      - swipe:
-          from:
-            id: 'tagsContainer'
-          direction: UP
-      - scrollUntilVisible:
-          element:
-            text: "Passe le bon plan\_!"
-          visibilityPercentage: 50
 
 - runFlow:
     when:
-      visible:
-        id: 'movie-calendar-day'
-        index: 3
+      visible: 'Accéder aux séances'
     commands:
-      - tapOn:
-          id: 'movie-calendar-day'
-          index: 3
-
-- runFlow:
-    when:
-      visible: "Prochaine séance\_:"
-    commands:
-      - tapOn:
-          enabled: true
-          below:
-            text: "Prochaine séance\_:"
+      - tapOn: 'Accéder aux séances'
+      - assertVisible: 'Trouve ta séance'
+      - runFlow: ../../subFolder/booking/DaySelectionCinema.yml
 
 - tapOn:
     enabled: true
     below:
       id: VenuePreviewImage
 
-- runFlow: #Si différentes gamme de prix pour l'offre
+- runFlow:
     when:
       visible: 'Prix'
     commands:
@@ -104,7 +54,7 @@ appId: ${MAESTRO_APP_ID}
 - tapOn: 'J’ai lu et j’accepte les conditions générales d’utilisation'
 - scrollUntilVisible:
     element: 'Confirmer la réservation'
-- tapOn: 'Confirmer la réservation'
+- doubleTapOn: 'Confirmer la réservation'
 
 - assertVisible: "Réservation confirmée\_!"
 - tapOn:
@@ -113,7 +63,7 @@ appId: ${MAESTRO_APP_ID}
 
 - scroll
 - scroll
-- runFlow: # Si la réservation peut être annulée
+- runFlow:
     when:
       visible: 'Annuler ma réservation'
     commands:
@@ -122,7 +72,7 @@ appId: ${MAESTRO_APP_ID}
 
 - waitForAnimationToEnd
 
-- runFlow: # Si la réservation ne peut pas être annulée
+- runFlow:
     when:
       visible: 'Voir le détail de l’offre'
     commands:
