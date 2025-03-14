@@ -8,7 +8,7 @@ import { profileNavigatorPathConfig } from 'features/navigation/ProfileStackNavi
 import { SuspenseProfileStackNavigator } from 'features/navigation/ProfileStackNavigator/SuspenseProfileStackNavigator'
 import { getScreensAndConfig } from 'features/navigation/RootNavigator/linking/getScreensConfig'
 import { screenParamsParser } from 'features/navigation/screenParamsUtils'
-import { searchNavigatorPathConfig } from 'features/navigation/SearchStackNavigator/routes'
+import { searchNavigatorPathConfig } from 'features/navigation/SearchStackNavigator/searchRoutes'
 import { SuspenseSearchStackNavigator } from 'features/navigation/SearchStackNavigator/SuspenseSearchStackNavigator'
 
 import { TabStack } from './Stack'

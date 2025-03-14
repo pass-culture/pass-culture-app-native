@@ -3,7 +3,7 @@ import { LinkingOptions, PathConfig } from '@react-navigation/native'
 import { ProfileStackParamList } from 'features/navigation/ProfileStackNavigator/ProfileStack'
 import { ScreenNames } from 'features/navigation/RootNavigator/types'
 import { screenParamsParser } from 'features/navigation/screenParamsUtils'
-import { searchNavigatorPathConfig } from 'features/navigation/SearchStackNavigator/__mocks__/routes'
+import { searchNavigatorPathConfig } from 'features/navigation/SearchStackNavigator/__mocks__/searchRoutes'
 
 import { TabParamList, TabRoute, TabRouteName } from '../types'
 

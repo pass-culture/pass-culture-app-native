@@ -10,7 +10,7 @@ import { SearchStackRoute, SearchStackParamList, SearchStackRouteName } from './
 
 const initialSearchStackRouteName: SearchStackRouteName = SearchView.Landing
 
-const routes: SearchStackRoute[] = [
+const searchRoutes: SearchStackRoute[] = [
   {
     name: SearchView.Landing,
     component: ComponentForPathConfig,
@@ -53,7 +53,7 @@ const routes: SearchStackRoute[] = [
   },
 ]
 
-const { screensConfig: searchScreensConfig } = getScreensAndConfig(routes, SearchStack.Screen)
+const { screensConfig: searchScreensConfig } = getScreensAndConfig(searchRoutes, SearchStack.Screen)
 
 export const searchNavigatorPathConfig: LinkingOptions<SearchStackParamList>['config'] = {
   initialRouteName: initialSearchStackRouteName,
@@ -61,6 +61,6 @@ export const searchNavigatorPathConfig: LinkingOptions<SearchStackParamList>['co
 }
 
 export function isSearchStackScreen(screen: string): screen is SearchStackRouteName {
-  const searchStackRouteNames = routes.map((route): string => route.name)
+  const searchStackRouteNames = searchRoutes.map((route): string => route.name)
   return searchStackRouteNames.includes(screen)
 }
