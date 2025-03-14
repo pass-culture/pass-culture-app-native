@@ -5,7 +5,7 @@ import {
   ProfileStackRouteName,
 } from 'features/navigation/ProfileStackNavigator/ProfileStack'
 
-export const routes: ProfileStackRoute[] = [
+export const profileRoutes: ProfileStackRoute[] = [
   ...accessibilityRoutes,
   {
     name: 'Profile',
@@ -140,6 +140,6 @@ export const routes: ProfileStackRoute[] = [
 ]
 
 export function isProfileStackScreen(screen: string): screen is ProfileStackRouteName {
-  const profileStackRouteNames = routes.map((route): string => route.name)
+  const profileStackRouteNames = profileRoutes.map((route): string => route.name)
   return profileStackRouteNames.includes(screen)
 }

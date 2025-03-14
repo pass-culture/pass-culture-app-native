@@ -20,7 +20,7 @@ import {
   ScreensUsedByMarketing,
 } from 'features/internal/config/deeplinksExportConfig'
 import { getProfileStackConfig } from 'features/navigation/ProfileStackNavigator/getProfileStackConfig'
-import { isProfileStackScreen } from 'features/navigation/ProfileStackNavigator/routes'
+import { isProfileStackScreen } from 'features/navigation/ProfileStackNavigator/profileRoutes'
 import { getScreenPath } from 'features/navigation/RootNavigator/linking/getScreenPath'
 import { isSearchStackScreen } from 'features/navigation/SearchStackNavigator/searchRoutes'
 import { getSearchStackConfig } from 'features/navigation/SearchStackNavigator/searchStackHelpers'
