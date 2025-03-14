@@ -16,6 +16,7 @@ import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { userEvent, render, screen, act } from 'tests/utils'
 
+jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 jest.spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery').mockReturnValue(DEFAULT_REMOTE_CONFIG)
 
@@ -84,7 +85,9 @@ describe('<BeneficiaryAccountCreated/>', () => {
 
     await user.press(await screen.findByLabelText('C’est parti !'))
 
-    expect(mockShowAppModal).not.toHaveBeenCalled()
+    await act(() => {
+      expect(mockShowAppModal).not.toHaveBeenCalled()
+    })
   })
 
   it('should redirect to native cultural survey page when "C’est parti !"button is clicked and user is supposed to see cultural survey', async () => {

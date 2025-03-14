@@ -18,10 +18,8 @@ import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay
 import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
 import TutorialPassLogo from 'ui/animations/tutorial_pass_logo.json'
 import { AnimatedProgressBar } from 'ui/components/bars/AnimatedProgressBar'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
-import { GenericInfoPageWhiteLegacy } from 'ui/pages/GenericInfoPageWhiteLegacy'
+import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
 import { categoriesIcons } from 'ui/svg/icons/bicolor/exports/categoriesIcons'
 import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 import { getNoHeadingAttrs } from 'ui/theme/typographyAttrs/getNoHeadingAttrs'
@@ -78,10 +76,17 @@ export function BeneficiaryAccountCreated() {
   useEnterKeyAction(navigateToHome)
 
   return (
-    <GenericInfoPageWhiteLegacy animation={TutorialPassLogo} title="Bonne nouvelle&nbsp;!">
-      <StyledSubtitle>{enableCreditV3 ? subtitleV3 : subtitle}</StyledSubtitle>
-
-      <Spacer.Column numberOfSpaces={4} />
+    <GenericInfoPageWhite
+      animation={TutorialPassLogo}
+      title="Bonne nouvelle&nbsp;!"
+      subtitle={enableCreditV3 ? subtitleV3 : subtitle}
+      buttonPrimary={{
+        wording: 'C’est parti\u00a0!',
+        onBeforeNavigate: onBeforeNavigate,
+        navigateTo: shouldNavigateToCulturalSurvey
+          ? { screen: 'CulturalSurveyIntro' }
+          : navigateToHomeConfig,
+      }}>
       <ProgressBarContainer>
         <AnimatedProgressBar
           progress={1}
@@ -93,26 +98,9 @@ export function BeneficiaryAccountCreated() {
       </ProgressBarContainer>
       <Spacer.Column numberOfSpaces={4} />
       <StyledBody>{text}</StyledBody>
-      <Spacer.Column numberOfSpaces={5} />
-      <ButtonContainer>
-        <InternalTouchableLink
-          as={ButtonPrimary}
-          wording="C’est parti&nbsp;!"
-          navigateTo={
-            shouldNavigateToCulturalSurvey
-              ? { screen: 'CulturalSurveyIntro' }
-              : navigateToHomeConfig
-          }
-          onBeforeNavigate={onBeforeNavigate}
-        />
-      </ButtonContainer>
-    </GenericInfoPageWhiteLegacy>
+    </GenericInfoPageWhite>
   )
 }
-
-const StyledSubtitle = styled(TypoDS.Title4).attrs(getNoHeadingAttrs())({
-  textAlign: 'center',
-})
 
 const StyledBody = styled(TypoDS.Body)({
   textAlign: 'center',
@@ -126,7 +114,3 @@ const Amount = styled(TypoDS.Title2).attrs(getNoHeadingAttrs())(({ theme }) => (
   textAlign: 'center',
   color: theme.uniqueColors.brand,
 }))
-
-const ButtonContainer = styled.View({
-  alignItems: 'center',
-})
