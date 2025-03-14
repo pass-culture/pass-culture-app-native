@@ -4,6 +4,8 @@ const config: KnipConfig = {
   entry: ['index.js', 'src/index.tsx', 'server/src/index.ts'],
   project: ['src/**/*.{ts,tsx}'],
   ignore: [
+    // fix this
+    'src/libs/react-native-web-fast-image/index.tsx',
     'src/**/*.ios.*',
     'src/**/*.android.*',
     'src/**/*.web.*',

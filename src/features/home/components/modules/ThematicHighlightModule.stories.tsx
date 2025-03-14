@@ -1,5 +1,5 @@
 import { NavigationContainer } from '@react-navigation/native'
-import { ComponentMeta, ComponentStory } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
 import mockDate from 'mockdate'
 import React from 'react'
 
@@ -9,22 +9,20 @@ import { ThematicHighlightModule } from './ThematicHighlightModule'
 
 mockDate.set(CURRENT_DATE)
 
-const componentMeta: ComponentMeta<typeof ThematicHighlightModule> = {
+const meta: Meta<typeof ThematicHighlightModule> = {
   title: 'Features/Home/ThematicHighlightModule',
   component: ThematicHighlightModule,
   decorators: [
-    (Story) => (
+    (Story: React.ComponentType) => (
       <NavigationContainer>
         <Story />
       </NavigationContainer>
     ),
   ],
 }
-export default componentMeta
+export default meta
 
-const Template: ComponentStory<typeof ThematicHighlightModule> = (props) => (
-  <ThematicHighlightModule {...props} />
-)
+type Story = StoryObj<typeof ThematicHighlightModule>
 
 const defaultArgs = {
   id: 'toto',
@@ -37,13 +35,19 @@ const defaultArgs = {
   thematicHomeEntryId: '351351',
   index: 0,
 }
-//TODO(PC-30279): Fix this stories
-const Default = Template.bind({})
-Default.args = defaultArgs
-//TODO(PC-30279): Fix this stories
-const OneDayHighlight = Template.bind({})
-OneDayHighlight.args = {
-  ...defaultArgs,
-  beginningDate: new Date('2022-12-21'),
-  endingDate: new Date('2022-12-21'),
+
+// TODO(PC-30279): Fix this stories
+export const Default: Story = {
+  render: (props) => <ThematicHighlightModule {...props} />,
+  args: defaultArgs,
+}
+
+// TODO(PC-30279): Fix this stories
+export const OneDayHighlight: Story = {
+  render: (props) => <ThematicHighlightModule {...props} />,
+  args: {
+    ...defaultArgs,
+    beginningDate: new Date('2022-12-21'),
+    endingDate: new Date('2022-12-21'),
+  },
 }

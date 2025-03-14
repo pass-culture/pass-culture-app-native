@@ -1,9 +1,7 @@
-import { Meta } from '@storybook/react'
-import { Story } from '@storybook/react/dist/ts3.9/client/preview/types-6-0'
-import React, { ComponentProps } from 'react'
+import type { Meta, StoryObj } from '@storybook/react'
+import React, { type ComponentProps } from 'react'
 import { StyleSheet, View } from 'react-native'
 
-import { selectArgTypeFromObject } from 'libs/storybook/selectArgTypeFromObject'
 import { theme } from 'theme'
 import { StepVariant } from 'ui/components/VerticalStepper/types'
 import { VerticalStepper } from 'ui/components/VerticalStepper/VerticalStepper'
@@ -28,7 +26,12 @@ Each one has its own styling, and it should always be only one "in-progress" ste
 It may exist 0 or more completed and future steps.`,
     },
     wrapper: {
-      ...selectArgTypeFromObject({ normal: 'normal', large: 'large', small: 'small' }),
+      options: ['normal', 'large', 'small'],
+      mapping: { normal: 'normal', large: 'large', small: 'small' },
+      control: {
+        type: 'select',
+        labels: { normal: 'Normal', large: 'Large', small: 'Small' },
+      },
       description: 'ONLY USED IN STORYBOOK. NOT AVAILABLE IN THE COMPONENT',
     },
     iconComponent: {
@@ -39,7 +42,9 @@ It may exist 0 or more completed and future steps.`,
 }
 export default meta
 
-const WrapperTemplate: Story<VerticalStepperStoryProps> = ({ wrapper = 'normal', ...props }) => (
+type Story = StoryObj<VerticalStepperStoryProps>
+
+const WrapperTemplate = ({ wrapper = 'normal', ...props }: VerticalStepperStoryProps) => (
   <View
     style={[
       wrapper === 'normal' && styles.wrapper,
@@ -50,29 +55,37 @@ const WrapperTemplate: Story<VerticalStepperStoryProps> = ({ wrapper = 'normal',
   </View>
 )
 
-export const Complete = WrapperTemplate.bind({})
-Complete.args = {
-  variant: StepVariant.complete,
-  wrapper: 'normal',
+export const Complete: Story = {
+  render: (args) => WrapperTemplate(args),
+  args: {
+    variant: StepVariant.complete,
+    wrapper: 'normal',
+  },
 }
 
-export const InProgress = WrapperTemplate.bind({})
-InProgress.args = {
-  variant: StepVariant.in_progress,
-  wrapper: 'normal',
+export const InProgress: Story = {
+  render: (args) => WrapperTemplate(args),
+  args: {
+    variant: StepVariant.in_progress,
+    wrapper: 'normal',
+  },
 }
 
-export const Future = WrapperTemplate.bind({})
-Future.args = {
-  variant: StepVariant.future,
-  wrapper: 'normal',
+export const Future: Story = {
+  render: (args) => WrapperTemplate(args),
+  args: {
+    variant: StepVariant.future,
+    wrapper: 'normal',
+  },
 }
 
-export const WithCustomComponent = WrapperTemplate.bind({})
-WithCustomComponent.args = {
-  ...Complete.args,
-  // eslint-disable-next-line react-native/no-color-literals, react-native/no-inline-styles
-  iconComponent: <View style={{ width: 20, height: 20, backgroundColor: 'blue' }} />,
+export const WithCustomComponent: Story = {
+  render: (args) => WrapperTemplate(args),
+  args: {
+    ...Complete.args,
+    // eslint-disable-next-line react-native/no-color-literals, react-native/no-inline-styles
+    iconComponent: <View style={{ width: 20, height: 20, backgroundColor: 'blue' }} />,
+  },
 }
 
 const styles = StyleSheet.create({

@@ -1,16 +1,16 @@
 import { NavigationContainer } from '@react-navigation/native'
-import { ComponentMeta } from '@storybook/react'
+import type { Meta } from '@storybook/react'
 import React from 'react'
 
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 
 import { EditButton } from './EditButton'
 
-const meta: ComponentMeta<typeof EditButton> = {
+const meta: Meta<typeof EditButton> = {
   title: 'features/profile/buttons/EditButton',
   component: EditButton,
   decorators: [
-    (Story) => (
+    (Story: React.ComponentType) => (
       <NavigationContainer>
         <Story />
       </NavigationContainer>
@@ -29,9 +29,8 @@ const variantConfig: Variants<typeof EditButton> = [
   },
 ]
 
-const Template: VariantsStory<typeof EditButton> = (args) => (
-  <VariantsTemplate variants={variantConfig} Component={EditButton} defaultProps={args} />
-)
+const Template: VariantsStory<typeof EditButton> = (
+  args: React.ComponentProps<typeof EditButton>
+) => <VariantsTemplate variants={variantConfig} Component={EditButton} defaultProps={args} />
 
 export const AllVariants = Template.bind({})
-AllVariants.storyName = 'EditButton'

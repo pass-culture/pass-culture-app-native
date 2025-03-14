@@ -1,4 +1,4 @@
-import { ComponentMeta } from '@storybook/react'
+import type { Meta } from '@storybook/react'
 import React from 'react'
 
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
@@ -10,7 +10,7 @@ import { Sort as SortIconDefault } from 'ui/svg/icons/Sort'
 
 import { FilterRow } from './FilterRow'
 
-const meta: ComponentMeta<typeof FilterRow> = {
+const meta: Meta<typeof FilterRow> = {
   title: 'Features/search/FilterRow',
   component: FilterRow,
 }
@@ -43,9 +43,8 @@ const variantConfig: Variants<typeof FilterRow> = [
   },
 ]
 
-const Template: VariantsStory<typeof FilterRow> = (args) => (
-  <VariantsTemplate variants={variantConfig} Component={FilterRow} defaultProps={{ ...args }} />
-)
+const Template: VariantsStory<typeof FilterRow> = (
+  args: React.ComponentProps<typeof FilterRow>
+) => <VariantsTemplate variants={variantConfig} Component={FilterRow} defaultProps={{ ...args }} />
 
 export const AllVariants = Template.bind({})
-AllVariants.storyName = 'FilterRow'

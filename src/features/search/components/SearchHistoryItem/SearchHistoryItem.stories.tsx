@@ -1,5 +1,5 @@
 import { action } from '@storybook/addon-actions'
-import { ComponentMeta } from '@storybook/react'
+import type { Meta } from '@storybook/react'
 import React from 'react'
 
 import { NativeCategoryIdEnumv2, SearchGroupNameEnumv2 } from 'api/gen'
@@ -7,10 +7,10 @@ import { SearchHistoryItem } from 'features/search/components/SearchHistoryItem/
 import { Highlighted, HistoryItem } from 'features/search/types'
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 
-const meta: ComponentMeta<typeof SearchHistoryItem> = {
+const meta: Meta<typeof SearchHistoryItem> = {
   title: 'features/search/SearchHistoryItem',
   component: SearchHistoryItem,
-  decorators: [(Story) => <Story />],
+  decorators: [(Story: React.ComponentType) => <Story />],
 }
 export default meta
 
@@ -60,7 +60,9 @@ const variantConfig: Variants<typeof SearchHistoryItem> = [
   },
 ]
 
-const Template: VariantsStory<typeof SearchHistoryItem> = (args) => (
+const Template: VariantsStory<typeof SearchHistoryItem> = (
+  args: React.ComponentProps<typeof SearchHistoryItem>
+) => (
   <VariantsTemplate
     variants={variantConfig}
     Component={SearchHistoryItem}
@@ -69,4 +71,3 @@ const Template: VariantsStory<typeof SearchHistoryItem> = (args) => (
 )
 
 export const AllVariants = Template.bind({})
-AllVariants.storyName = 'SearchHistoryItem'

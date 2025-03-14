@@ -1,12 +1,12 @@
 import { NavigationContainer } from '@react-navigation/native'
-import { ComponentMeta } from '@storybook/react'
+import type { Meta } from '@storybook/react'
 import React from 'react'
 
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 
 import { RadioSelector } from './RadioSelector'
 
-const meta: ComponentMeta<typeof RadioSelector> = {
+const meta: Meta<typeof RadioSelector> = {
   title: 'ui/inputs/RadioSelector',
   component: RadioSelector,
   parameters: {
@@ -23,7 +23,7 @@ const meta: ComponentMeta<typeof RadioSelector> = {
     onPress: { control: { disable: true } },
   },
   decorators: [
-    (Story) => (
+    (Story: React.ComponentType) => (
       <NavigationContainer>
         <Story />
       </NavigationContainer>
@@ -64,9 +64,10 @@ const variantConfig: Variants<typeof RadioSelector> = [
   },
 ]
 
-const Template: VariantsStory<typeof RadioSelector> = (args) => (
+const Template: VariantsStory<typeof RadioSelector> = (
+  args: React.ComponentProps<typeof RadioSelector>
+) => (
   <VariantsTemplate variants={variantConfig} Component={RadioSelector} defaultProps={{ ...args }} />
 )
 
 export const AllVariants = Template.bind({})
-AllVariants.storyName = 'RadioSelector'
