@@ -3,6 +3,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { SubcategoryIdEnum, WithdrawalTypeEnum } from 'api/gen'
+import { TicketBody as OldTicketBody } from 'features/bookings/components/OldTicketBody/TicketBody'
 import { TicketBody } from 'features/bookings/components/TicketBody/TicketBody'
 import { TicketCutout } from 'features/bookings/components/TicketCutout'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
@@ -46,7 +47,7 @@ const variantConfig: Variants<typeof TicketCutout> = [
       ),
       children: (
         <ViewGap gap={6}>
-          <TicketBody
+          <OldTicketBody
             withdrawalType={WithdrawalTypeEnum.in_app}
             withdrawalDelay={1000}
             beginningDatetime={undefined}
@@ -74,18 +75,7 @@ const variantConfig: Variants<typeof TicketCutout> = [
           icon={IdCard}
         />
       ),
-      children: (
-        <ViewGap gap={6}>
-          <TicketBody
-            withdrawalType={WithdrawalTypeEnum.no_ticket}
-            withdrawalDelay={1000}
-            beginningDatetime={undefined}
-            subcategoryId={SubcategoryIdEnum.CONCERT}
-            qrCodeData={undefined}
-            venue={bookingsSnap.ongoing_bookings[0].stock.offer.venue}
-          />
-        </ViewGap>
-      ),
+      children: <TicketBody withdrawalType={WithdrawalTypeEnum.no_ticket} />,
       venueInfo: <VenueBlock venue={bookingsSnap.ongoing_bookings[0].stock.offer.venue} />,
     },
   },

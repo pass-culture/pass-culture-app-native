@@ -2,21 +2,21 @@ import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
 import { BicolorCircledCheck as InitialBicolorCircledCheck } from 'ui/svg/icons/BicolorCircledCheck'
-import { TypoDS, getSpacing } from 'ui/theme'
+import { getSpacing, TypoDS } from 'ui/theme'
 
 export const NoTicket: FunctionComponent = () => (
   <TicketContainer testID="withdrawal-info-no-ticket">
     <IconContainer>
       <BicolorCircledCheck />
     </IconContainer>
-    <StyledBody>Tu n’as pas besoin de billet pour profiter de cette offre&nbsp;!</StyledBody>
+    <StyledBody>
+      Tu n’as pas besoin de billet&nbsp;! Rends toi directement sur place le jour de l’évènement.
+    </StyledBody>
   </TicketContainer>
 )
 
 const TicketContainer = styled.View({
   width: '100%',
-  gap: getSpacing(4),
-  flexDirection: 'column',
 })
 
 const StyledBody = styled(TypoDS.Body)({
@@ -27,10 +27,12 @@ const StyledBody = styled(TypoDS.Body)({
 const IconContainer = styled.View({
   alignItems: 'center',
   width: '100%',
+  marginTop: -getSpacing(4),
+  marginBottom: getSpacing(3),
 })
 
 const BicolorCircledCheck = styled(InitialBicolorCircledCheck).attrs(({ theme }) => ({
-  size: theme.illustrations.sizes.small,
-  color: theme.colors.black,
-  color2: theme.colors.black,
+  size: theme.illustrations.sizes.medium,
+  color: theme.colors.primary,
+  color2: theme.colors.secondary,
 }))``
