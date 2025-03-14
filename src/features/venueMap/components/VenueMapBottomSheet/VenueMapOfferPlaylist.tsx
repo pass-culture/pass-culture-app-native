@@ -4,7 +4,11 @@ import styled from 'styled-components/native'
 
 import { OfferTile } from 'features/offer/components/OfferTile/OfferTile'
 import { PlaylistType } from 'features/offer/enums'
-import { getDisplayedPrice } from 'libs/parsers/getDisplayedPrice'
+import {
+  formatStartPrice,
+  getDisplayedPrice,
+  getIfPricesShouldBeFix,
+} from 'libs/parsers/getDisplayedPrice'
 import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
@@ -46,7 +50,12 @@ export const VenueMapOfferPlaylist = ({
         offerLocation={item._geoloc}
         analyticsFrom="venueMap"
         thumbUrl={item.offer.thumbUrl}
-        price={getDisplayedPrice(item.offer.prices, currency, euroToPacificFrancRate)}
+        price={getDisplayedPrice(
+          item.offer.prices,
+          currency,
+          euroToPacificFrancRate,
+          getIfPricesShouldBeFix(item.offer.subcategoryId) ? undefined : formatStartPrice
+        )}
         width={PLAYLIST_ITEM_WIDTH}
         height={PLAYLIST_ITEM_HEIGHT}
         playlistType={playlistType}
