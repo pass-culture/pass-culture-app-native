@@ -10,6 +10,8 @@ import { fireEvent, render, screen } from 'tests/utils'
 
 import { AccountSecurity } from './AccountSecurity'
 
+jest.mock('libs/firebase/analytics/analytics')
+
 jest.unmock('jwt-decode')
 jest.mock('features/navigation/helpers/navigateToHome')
 jest.mock('features/auth/context/AuthContext')
