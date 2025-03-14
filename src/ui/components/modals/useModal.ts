@@ -1,6 +1,13 @@
 import { useCallback, useState } from 'react'
 
-export function useModal(defaultVisibility = false) {
+export type ModalSettings = {
+  visible: boolean
+  showModal: () => void
+  hideModal: () => void
+  toggleModal: () => void
+}
+
+export function useModal(defaultVisibility = false): ModalSettings {
   const [visible, setVisible] = useState(defaultVisibility)
 
   const showModal = useCallback(() => setVisible(true), [])
