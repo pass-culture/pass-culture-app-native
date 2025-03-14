@@ -24,7 +24,6 @@ export const cheatcodesNavigationProfileButtons: [CheatcodesButtonsWithSubscreen
       { ...getProfileNavConfig('ChangeEmailSetPassword'), navigationParams: { token: 'token' } },
       { screen: 'Login' },
       { screen: 'ChangeEmailExpiredLink' },
-      { screen: 'Login' },
       { title: 'ExpiredCreditModal', showOnlyInSearch: true },
     ],
   },
