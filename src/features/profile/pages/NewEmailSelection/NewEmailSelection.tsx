@@ -7,6 +7,7 @@ import { getProfileStackConfig } from 'features/navigation/ProfileStackNavigator
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { useNewEmailSelectionMutation } from 'features/profile/helpers/useNewEmailSelectionMutation'
 import { newEmailSelectionSchema } from 'features/profile/pages/NewEmailSelection/schema/newEmailSelectionSchema'
+import { eventMonitoring } from 'libs/monitoring/services'
 import { EmailInputController } from 'shared/forms/controllers/EmailInputController'
 import { InfoBanner } from 'ui/components/banners/InfoBanner'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -60,7 +61,12 @@ export const NewEmailSelection = () => {
   })
 
   const onSubmit = handleSubmit(({ newEmail }) => {
-    if (!params?.token) return
+    if (!params?.token || typeof params?.token !== 'string') {
+      eventMonitoring.captureException(
+        new Error(`Expected a string, but received ${typeof params?.token}`)
+      )
+      return
+    }
     selectNewEmail({ newEmail, token: params.token })
   })
 

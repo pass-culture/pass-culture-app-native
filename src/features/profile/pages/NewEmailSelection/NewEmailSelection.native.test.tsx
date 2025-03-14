@@ -3,6 +3,7 @@ import React from 'react'
 import { replace, useRoute } from '__mocks__/@react-navigation/native'
 import { NewEmailSelection } from 'features/profile/pages/NewEmailSelection/NewEmailSelection'
 import { EmptyResponse } from 'libs/fetch'
+import { eventMonitoring } from 'libs/monitoring/services'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen } from 'tests/utils'
@@ -93,6 +94,34 @@ describe('<NewEmailSelection />', () => {
         'E-mail envoyé sur ta nouvelle adresse\u00a0! Tu as 24h pour valider ta demande. Si tu ne le trouves pas, pense à vérifier tes spams.',
       timeout: SnackBarContextModule.SNACK_BAR_TIME_OUT_LONG,
     })
+  })
+
+  it('should show log to sentry if token is undefined', async () => {
+    const routeWithUndefinedToken = { params: { token: undefined } }
+    useRoute.mockReturnValueOnce(routeWithUndefinedToken)
+    useRoute.mockReturnValueOnce(routeWithUndefinedToken) // There is probably a second render
+
+    mockServer.postApi<EmptyResponse>('/v2/profile/email_update/new_email', {
+      responseOptions: {
+        statusCode: 204,
+      },
+    })
+    render(reactQueryProviderHOC(<NewEmailSelection />))
+
+    const emailInput = screen.getByPlaceholderText('email@exemple.com')
+    await act(async () => {
+      fireEvent.changeText(emailInput, 'john.doe@gmail.com')
+      fireEvent.press(await screen.findByLabelText('Modifier mon adresse e-mail'))
+    })
+
+    expect(mockShowSuccessSnackBar).not.toHaveBeenCalledWith({
+      message:
+        'E-mail envoyé sur ta nouvelle adresse\u00a0! Tu as 24h pour valider ta demande. Si tu ne le trouves pas, pense à vérifier tes spams.',
+      timeout: SnackBarContextModule.SNACK_BAR_TIME_OUT_LONG,
+    })
+    expect(eventMonitoring.captureException).toHaveBeenCalledWith(
+      new Error('Expected a string, but received undefined')
+    )
   })
 
   it('should show error snackbar on new email selection failure', async () => {

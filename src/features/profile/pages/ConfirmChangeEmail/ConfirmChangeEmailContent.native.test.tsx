@@ -6,6 +6,7 @@ import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { ConfirmChangeEmailContent } from 'features/profile/pages/ConfirmChangeEmail/ConfirmChangeEmailContent'
 import { EmptyResponse } from 'libs/fetch'
 import { getRefreshToken } from 'libs/keychain/keychain'
+import { eventMonitoring } from 'libs/monitoring/services'
 import { storage } from 'libs/storage'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -44,6 +45,10 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 })
 
 describe('<ConfirmChangeEmail />', () => {
+  beforeEach(() => {
+    storage.clear('access_token')
+  })
+
   it('should navigate to home when pressing cancel button', async () => {
     render(reactQueryProviderHOC(<ConfirmChangeEmailContent />))
 
@@ -104,6 +109,21 @@ describe('<ConfirmChangeEmail />', () => {
 
     expect(await storage.readString('access_token')).toEqual('accessToken')
     expect(await getRefreshToken()).toEqual('refreshToken')
+  })
+
+  it('should log to sentry if token is falsy', async () => {
+    mockServer.postApi<EmailChangeConfirmationResponse>('/v2/profile/email_update/confirm', {
+      responseOptions: { statusCode: 200, data: confirmationSuccessResponse },
+    })
+    useRoute.mockReturnValueOnce({ params: { token: undefined } })
+    render(reactQueryProviderHOC(<ConfirmChangeEmailContent />))
+
+    await act(async () => fireEvent.press(screen.getByText('Confirmer la demande')))
+
+    expect(eventMonitoring.captureException).toHaveBeenCalledWith(
+      new Error('Expected a string, but received undefined')
+    )
+    expect(await storage.readString('access_token')).not.toEqual('accessToken')
   })
 
   it('should redirect to change email expired when change email confirmation fails because the link expired', async () => {

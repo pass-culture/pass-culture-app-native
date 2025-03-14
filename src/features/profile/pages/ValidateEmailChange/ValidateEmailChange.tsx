@@ -11,6 +11,7 @@ import { ProfileStackParamList } from 'features/navigation/ProfileStackNavigator
 import { RootStackParamList, StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useEmailUpdateStatus } from 'features/profile/helpers/useEmailUpdateStatus'
+import { eventMonitoring } from 'libs/monitoring/services'
 import { Separator } from 'ui/components/Separator'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
@@ -33,7 +34,9 @@ export function ValidateEmailChange({ route: { params }, navigation }: ValidateE
   const signOut = useLogoutRoutine()
 
   const mutate = useCallback(async () => {
-    if (!params?.token) return
+    if (!params?.token || typeof params?.token !== 'string') {
+      throw new Error(`Expected a string, but received ${typeof params?.token}`)
+    }
     return api.putNativeV1ProfileEmailUpdateValidate({
       token: params?.token,
     })
@@ -64,6 +67,7 @@ export function ValidateEmailChange({ route: { params }, navigation }: ValidateE
         message: 'Désolé, une erreur technique s’est produite. Veuillez réessayer plus tard.',
         timeout: SNACK_BAR_TIME_OUT,
       })
+      eventMonitoring.captureException(error)
       navigation.replace(...homeNavConfig)
     } finally {
       setIsLoading(false)

@@ -9,6 +9,7 @@ import { getProfileStackConfig } from 'features/navigation/ProfileStackNavigator
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { useConfirmChangeEmailMutationV2 } from 'features/profile/helpers/useConfirmChangeEmailMutationV2'
 import { isTimestampExpired } from 'libs/dates'
+import { eventMonitoring } from 'libs/monitoring/services'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
@@ -45,6 +46,7 @@ export const ConfirmChangeEmailContent = () => {
       }
     },
     onError: (error) => {
+      eventMonitoring.captureException(error)
       if (error instanceof ApiError && error.statusCode === 401) {
         reset({ index: 0, routes: [{ name: 'ChangeEmailExpiredLink' }] })
         return
@@ -57,7 +59,12 @@ export const ConfirmChangeEmailContent = () => {
   })
 
   const onConfirmEmail = useCallback(() => {
-    if (!params?.token) return
+    if (!params?.token || typeof params?.token !== 'string') {
+      eventMonitoring.captureException(
+        new Error(`Expected a string, but received ${typeof params?.token}`)
+      )
+      return
+    }
     mutate({ token: params?.token })
   }, [params?.token, mutate])
 

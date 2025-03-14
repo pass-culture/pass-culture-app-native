@@ -12,6 +12,7 @@ import { RootStackParamList, StepperOrigin } from 'features/navigation/RootNavig
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import * as useEmailUpdateStatus from 'features/profile/helpers/useEmailUpdateStatus'
 import { ValidateEmailChange } from 'features/profile/pages/ValidateEmailChange/ValidateEmailChange'
+import { eventMonitoring } from 'libs/monitoring/services'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 
 const useEmailUpdateStatusSpy = jest
@@ -61,11 +62,20 @@ const navigation = {
   'ValidateEmailChange'
 >
 
+type RootAndProfileRouteProp = RouteProp<
+  RootStackParamList & ProfileStackParamList,
+  'ValidateEmailChange'
+>
 const route = {
   params: {
     token: 'example',
   },
-} as unknown as RouteProp<RootStackParamList & ProfileStackParamList, 'ValidateEmailChange'>
+} as unknown as RootAndProfileRouteProp
+const routeWithUndefinedToken = {
+  params: {
+    token: undefined,
+  },
+} as unknown as RootAndProfileRouteProp
 
 jest.mock('libs/firebase/analytics/analytics')
 
@@ -191,7 +201,21 @@ describe('ValidateEmailChange', () => {
 
     expect(navigation.replace).toHaveBeenCalledWith(...homeNavConfig)
   })
+
+  it('should log to sentry, redirect to home and show error message when token is falsy', async () => {
+    renderValidateEmailChange(routeWithUndefinedToken)
+
+    await act(async () => {
+      fireEvent.press(screen.getByText('Valider l’adresse e-mail'))
+    })
+
+    expect(eventMonitoring.captureException).toHaveBeenCalledWith(
+      new Error('Expected a string, but received undefined')
+    )
+    expect(navigation.replace).toHaveBeenCalledWith(...homeNavConfig)
+    expect(mockShowErrorSnackbar).toHaveBeenCalledTimes(1)
+  })
 })
 
-const renderValidateEmailChange = () =>
-  render(<ValidateEmailChange navigation={navigation} route={route} />)
+const renderValidateEmailChange = (routeProp: RootAndProfileRouteProp = route) =>
+  render(<ValidateEmailChange navigation={navigation} route={routeProp} />)
