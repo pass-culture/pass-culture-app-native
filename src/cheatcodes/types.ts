@@ -1,6 +1,6 @@
 import { RootScreenNames, RootStackParamList } from 'features/navigation/RootNavigator/types'
 
-type CheatcodesButtonProps = {
+export type CheatcodesButtonProps = {
   title?: string
   screen?: RootScreenNames
   onPress?: () => void
