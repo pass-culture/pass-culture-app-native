@@ -35,7 +35,7 @@ jest.mock('react-native-safe-area-context', () => ({
   useSafeAreaInsets: jest.fn(() => ({ bottom: 10 })),
 }))
 
-jest.mock('features/navigation/RootNavigator/routes', () => ({
+jest.mock('features/navigation/RootNavigator/rootRoutes', () => ({
   routes: [
     {
       name: 'TabNavigator',

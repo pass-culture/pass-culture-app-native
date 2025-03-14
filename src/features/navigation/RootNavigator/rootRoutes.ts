@@ -48,7 +48,7 @@ import { ABTestingPOC } from 'libs/firebase/remoteConfig/ABTestingPOC'
 
 import { RootRoute, RootScreenNames } from './types'
 
-export const routes: RootRoute[] = [
+export const rootRoutes: RootRoute[] = [
   ...culturalSurveyRoutes,
   ...subscriptionRoutes,
   ...trustedDeviceRoutes,
@@ -348,6 +348,6 @@ export const routes: RootRoute[] = [
 ]
 
 export function isRootStackScreen(screen: string): screen is RootScreenNames {
-  const rootStackRouteNames = routes.map((route): string => route.name)
+  const rootStackRouteNames = rootRoutes.map((route): string => route.name)
   return rootStackRouteNames.includes(screen)
 }
