@@ -1,5 +1,3 @@
-import React, { lazy, Suspense } from 'react'
-
 import { Artist } from 'features/artist/pages/Artist'
 import { ForgottenPassword } from 'features/auth/pages/forgottenPassword/ForgottenPassword/ForgottenPassword'
 import { ReinitializePassword } from 'features/auth/pages/forgottenPassword/ReinitializePassword/ReinitializePassword'
@@ -32,6 +30,7 @@ import { UTMParameters } from 'features/internal/pages/UTMParameters'
 import { PageNotFound } from 'features/navigation/pages/PageNotFound'
 import { culturalSurveyRoutes } from 'features/navigation/RootNavigator/culturalSurveyRoutes'
 import { subscriptionRoutes } from 'features/navigation/RootNavigator/subscriptionRoutes'
+import { SuspenseAchievements } from 'features/navigation/RootNavigator/SuspenseAchievements'
 import { trustedDeviceRoutes } from 'features/navigation/RootNavigator/trustedDeviceRoutes'
 import { tutorialRoutes } from 'features/navigation/RootNavigator/tutorialRoutes'
 import { screenParamsParser } from 'features/navigation/screenParamsUtils'
@@ -46,15 +45,8 @@ import { Venue } from 'features/venue/pages/Venue/Venue'
 import { VenuePreviewCarousel } from 'features/venue/pages/VenuePreviewCarousel/VenuePreviewCarousel'
 import { VenueMap } from 'features/venueMap/pages/VenueMap/VenueMap'
 import { ABTestingPOC } from 'libs/firebase/remoteConfig/ABTestingPOC'
-import { LoadingPage } from 'ui/pages/LoadingPage'
 
 import { RootRoute, RootScreenNames } from './types'
-
-// This dynamic import allows us to separate all the achievements illustrations (1,06 MB) from the main web bundle.
-const Achievements = lazy(async () => {
-  const module = await import('features/achievements/pages/Achievements')
-  return { default: module.Achievements }
-})
 
 export const routes: RootRoute[] = [
   ...culturalSurveyRoutes,
@@ -340,11 +332,7 @@ export const routes: RootRoute[] = [
   },
   {
     name: 'Achievements',
-    component: () => (
-      <Suspense fallback={<LoadingPage />}>
-        <Achievements />
-      </Suspense>
-    ),
+    component: SuspenseAchievements,
     path: 'profile/achievements',
   },
   {
