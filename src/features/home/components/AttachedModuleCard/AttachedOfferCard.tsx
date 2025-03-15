@@ -6,7 +6,11 @@ import { getExclusivityAccessibilityLabel } from 'features/home/helpers/getExclu
 import { useLocation } from 'libs/location'
 import { getDistance } from 'libs/location/getDistance'
 import { formatDates, getTimeStampInMillis } from 'libs/parsers/formatDates'
-import { getDisplayedPrice } from 'libs/parsers/getDisplayedPrice'
+import {
+  formatPrice,
+  getDisplayedPrice,
+  getIfPricesShouldBeFix,
+} from 'libs/parsers/getDisplayedPrice'
 import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
@@ -36,7 +40,10 @@ export const AttachedOfferCard: React.FC<Props> = ({ offer, shouldFixHeight, com
     attachedOffer.prices,
     currency,
     euroToPacificFrancRate,
-    attachedOffer.isDuo && user?.isBeneficiary
+    formatPrice(
+      getIfPricesShouldBeFix(attachedOffer.subcategoryId),
+      !!(attachedOffer.isDuo && user?.isBeneficiary)
+    )
   )
   const distance = getDistance(offer._geoloc, { userLocation, selectedPlace, selectedLocationMode })
   const distanceLabel = distance ? `à ${distance}` : undefined

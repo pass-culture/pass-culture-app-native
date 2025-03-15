@@ -3,7 +3,11 @@ import React from 'react'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { OfferTile } from 'features/offer/components/OfferTile/OfferTile'
 import { OfferTileProps } from 'features/offer/types'
-import { getDisplayedPrice } from 'libs/parsers/getDisplayedPrice'
+import {
+  formatPrice,
+  getDisplayedPrice,
+  getIfPricesShouldBeFix,
+} from 'libs/parsers/getDisplayedPrice'
 import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { getOfferDates } from 'shared/date/getOfferDates'
@@ -34,7 +38,10 @@ export const OfferTileWrapper = (props: Props) => {
     item.offer?.prices,
     currency,
     euroToPacificFrancRate,
-    item.offer.isDuo && user?.isBeneficiary
+    formatPrice(
+      getIfPricesShouldBeFix(item.offer.subcategoryId),
+      !!(item.offer.isDuo && user?.isBeneficiary)
+    )
   )
 
   return (
