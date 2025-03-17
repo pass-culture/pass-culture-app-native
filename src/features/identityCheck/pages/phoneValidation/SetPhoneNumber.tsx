@@ -125,14 +125,14 @@ export const SetPhoneNumber = () => {
               <Spacer.Column numberOfSpaces={6} />
               <InputContainer>
                 <TextInput
-                  autoComplete="off" // disable autofill on android
+                  autoComplete="tel"
                   autoCapitalize="none"
                   isError={false}
                   keyboardType="number-pad"
                   label="Numéro de téléphone"
                   value={phoneNumber}
                   onChangeText={onChangeText}
-                  textContentType="none" // disable autofill on iOS
+                  textContentType="telephoneNumber"
                   onSubmitEditing={requestSendPhoneValidationCode}
                   accessibilityDescribedBy={phoneNumberInputErrorId}
                   leftComponent={<CountryPicker selectedCountry={country} onSelect={setCountry} />}

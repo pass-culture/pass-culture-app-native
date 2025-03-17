@@ -471,6 +471,7 @@ Nous les vérifions et ils ne pourront plus être modifiés par la suite.
                   <TextInput
                     accessibilityDescribedBy="testUuidV4"
                     accessibilityRequired={true}
+                    autoComplete="given-name"
                     editable={true}
                     isEmpty={true}
                     multiline={false}
@@ -500,7 +501,7 @@ Nous les vérifions et ils ne pourront plus être modifiés par la suite.
                     }
                     testID="Entrée pour le prénom"
                     textAlignVertical="center"
-                    textContentType="username"
+                    textContentType="givenName"
                     value=""
                   />
                 </View>
@@ -610,6 +611,7 @@ Nous les vérifions et ils ne pourront plus être modifiés par la suite.
                   <TextInput
                     accessibilityDescribedBy="testUuidV4"
                     accessibilityRequired={true}
+                    autoComplete="family-name"
                     editable={true}
                     isEmpty={true}
                     multiline={false}
@@ -639,7 +641,7 @@ Nous les vérifions et ils ne pourront plus être modifiés par la suite.
                     }
                     testID="Entrée pour le nom"
                     textAlignVertical="center"
-                    textContentType="username"
+                    textContentType="familyName"
                     value=""
                   />
                 </View>

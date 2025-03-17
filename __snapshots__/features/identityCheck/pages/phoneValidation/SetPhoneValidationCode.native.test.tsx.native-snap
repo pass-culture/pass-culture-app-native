@@ -436,6 +436,7 @@ exports[`SetPhoneValidationCode should match snapshot 1`] = `
                       <TextInput
                         accessibilityDescribedBy="testUuidV4"
                         autoCapitalize="none"
+                        autoComplete="one-time-code"
                         editable={true}
                         isEmpty={true}
                         keyboardType="number-pad"

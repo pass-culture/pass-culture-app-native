@@ -44,11 +44,11 @@ export const PriceInputController = <
             rightLabel={rightLabel}
             disabled={isDisabled}
             isError={!!error && value.length > 0}
-            textContentType="none"
             accessibilityDescribedBy={accessibilityId}
             keyboardType="numeric"
-            autoComplete="off"
             autoCapitalize="none"
+            autoComplete="off" // Keep autocomplete="off" to prevent incorrect suggestions.
+            textContentType="none" // Keep textContentType="none" to prevent incorrect suggestions.
             {...textInputProps}
           />
           <InputError

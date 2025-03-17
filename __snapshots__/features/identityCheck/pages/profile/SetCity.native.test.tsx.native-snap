@@ -381,6 +381,7 @@ exports[`<SetCity/> should render correctly 1`] = `
                   <TextInput
                     accessibilityDescribedBy="testUuidV4"
                     accessibilityHidden={false}
+                    autoComplete="postal-code"
                     autoCorrect={false}
                     editable={true}
                     enablesReturnKeyAutomatically={true}

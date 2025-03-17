@@ -372,6 +372,7 @@ exports[`<SetAddress/> should render correctly 1`] = `
                 <TextInput
                   accessibilityDescribedBy="testUuidV4"
                   accessibilityHidden={false}
+                  autoComplete="street-address"
                   autoCorrect={false}
                   editable={true}
                   enablesReturnKeyAutomatically={true}
@@ -406,7 +407,7 @@ exports[`<SetAddress/> should render correctly 1`] = `
                   }
                   testID="Entrée pour l’adresse"
                   textAlignVertical="center"
-                  textContentType="addressState"
+                  textContentType="fullStreetAddress"
                   value=""
                 />
               </View>
