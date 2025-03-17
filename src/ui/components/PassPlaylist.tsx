@@ -1,4 +1,5 @@
-import React, { ComponentProps, ComponentType, useCallback } from 'react'
+import React, { ComponentProps, ComponentType, Ref, useCallback } from 'react'
+import { FlatList } from 'react-native-gesture-handler'
 import styled, { useTheme } from 'styled-components/native'
 
 import { Playlist, RenderFooterItem } from 'ui/components/Playlist'
@@ -19,6 +20,7 @@ type Props = Pick<
   | 'keyExtractor'
   | 'renderItem'
   | 'onEndReached'
+  | 'onViewableItemsChanged'
   | 'playlistType'
   | 'tileType'
 > & {
@@ -28,6 +30,7 @@ type Props = Pick<
   onPressSeeMore?: () => void
   renderFooter?: RenderFooterItem
   titleSeeMoreLink?: InternalNavigationProps['navigateTo']
+  playlistRef?: Ref<FlatList>
 }
 
 export const PassPlaylist = ({
@@ -36,6 +39,7 @@ export const PassPlaylist = ({
   TitleComponent,
   onPressSeeMore,
   onEndReached,
+  onViewableItemsChanged,
   titleSeeMoreLink,
   data,
   itemHeight,
@@ -45,6 +49,7 @@ export const PassPlaylist = ({
   playlistType,
   tileType,
   keyExtractor,
+  playlistRef,
   testID: _testID,
   ...props
 }: Props) => {
@@ -101,6 +106,8 @@ export const PassPlaylist = ({
         onEndReached={onEndReached}
         playlistType={playlistType}
         tileType={tileType}
+        ref={playlistRef}
+        onViewableItemsChanged={onViewableItemsChanged}
       />
     </Container>
   )

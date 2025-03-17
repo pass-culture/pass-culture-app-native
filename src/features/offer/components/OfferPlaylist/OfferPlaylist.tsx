@@ -1,25 +1,14 @@
-import React from 'react'
+import React, { ComponentProps } from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
-import { PlaylistType } from 'features/offer/enums'
 import { AlgoliaOfferWithArtistAndEan } from 'libs/algolia/types'
 import { Offer } from 'shared/offer/types'
 import { PassPlaylist } from 'ui/components/PassPlaylist'
 
-interface OfferPlaylistProps {
+interface OfferPlaylistProps
+  extends Omit<ComponentProps<typeof PassPlaylist>, 'data' | 'keyExtractor'> {
   items: Offer[] | AlgoliaOfferWithArtistAndEan[]
-  renderItem: (props: {
-    item: Offer
-    width: number
-    height: number
-    playlistType?: PlaylistType
-  }) => React.ReactElement
-  itemWidth: number
-  itemHeight: number
-  title: string
-  playlistType: PlaylistType
-  onEndReached?: () => void
 }
 
 const keyExtractor = (item: Offer | AlgoliaOfferWithArtistAndEan) => item.objectID
@@ -32,6 +21,8 @@ export function OfferPlaylist({
   title,
   playlistType,
   onEndReached,
+  playlistRef,
+  onViewableItemsChanged,
 }: Readonly<OfferPlaylistProps>) {
   return (
     <View>
@@ -44,6 +35,8 @@ export function OfferPlaylist({
         title={title}
         playlistType={playlistType}
         onEndReached={onEndReached}
+        onViewableItemsChanged={onViewableItemsChanged}
+        playlistRef={playlistRef}
       />
     </View>
   )
