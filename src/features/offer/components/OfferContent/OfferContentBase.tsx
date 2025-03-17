@@ -11,7 +11,7 @@ import { IOScrollView as IntersectionObserverScrollView } from 'react-native-int
 import { useQueryClient } from 'react-query'
 import styled, { useTheme } from 'styled-components/native'
 
-import { OfferResponseV2, RecommendationApiParams } from 'api/gen'
+import { OfferResponseV2, ReactionTypeEnum, RecommendationApiParams } from 'api/gen'
 import { ChronicleCardData } from 'features/chronicle/type'
 import { useFavorite } from 'features/favorites/hooks/useFavorite'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
@@ -20,6 +20,7 @@ import { ChronicleSection } from 'features/offer/components/OfferContent/Chronic
 import { OfferCTAButton } from 'features/offer/components/OfferCTAButton/OfferCTAButton'
 import { OfferFooter } from 'features/offer/components/OfferFooter/OfferFooter'
 import { OfferHeader } from 'features/offer/components/OfferHeader/OfferHeader'
+import { OfferReactionHeaderButton } from 'features/offer/components/OfferHeader/OfferReactionHeaderButton'
 import { OfferImageContainer } from 'features/offer/components/OfferImageContainer/OfferImageContainer'
 import { OfferMessagingApps } from 'features/offer/components/OfferMessagingApps/OfferMessagingApps'
 import { OfferPlaylistList } from 'features/offer/components/OfferPlaylistList/OfferPlaylistList'
@@ -48,6 +49,9 @@ type OfferContentBaseProps = OfferContentProps & {
   BodyWrapper: FunctionComponent
   onOfferPreviewPress: (index?: number) => void
   chronicles?: ChronicleCardData[]
+  likesCount?: number
+  defaultReaction?: ReactionTypeEnum | null
+  onReactionButtonPress?: () => void
   contentContainerStyle?: StyleProp<ViewStyle>
 }
 
@@ -60,6 +64,8 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
   chronicles,
   onOfferPreviewPress,
   contentContainerStyle,
+  defaultReaction,
+  onReactionButtonPress,
   BodyWrapper = React.Fragment,
 }) => {
   const theme = useTheme()
@@ -197,15 +203,23 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
       <AnchorProvider scrollViewRef={scrollViewRef} handleCheckScrollY={handleCheckScrollY}>
         <OfferWebMetaHeader offer={offer} />
         <OfferHeader title={offer.name} headerTransition={headerTransition} offer={offer}>
-          <FavoriteButton
-            animationState={animationState}
-            offerId={offer.id}
-            addFavorite={addFavorite}
-            isAddFavoriteLoading={isAddFavoriteLoading}
-            removeFavorite={removeFavorite}
-            isRemoveFavoriteLoading={isRemoveFavoriteLoading}
-            favorite={favorite}
-          />
+          {onReactionButtonPress ? (
+            <OfferReactionHeaderButton
+              onPress={onReactionButtonPress}
+              defaultReaction={defaultReaction}
+              animationState={animationState}
+            />
+          ) : (
+            <FavoriteButton
+              animationState={animationState}
+              offerId={offer.id}
+              addFavorite={addFavorite}
+              isAddFavoriteLoading={isAddFavoriteLoading}
+              removeFavorite={removeFavorite}
+              isRemoveFavoriteLoading={isRemoveFavoriteLoading}
+              favorite={favorite}
+            />
+          )}
         </OfferHeader>
         <ScrollViewContainer
           testID="offerv2-container"
@@ -222,7 +236,11 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
               onPress={onOfferPreviewPress}
               placeholderImage={placeholderImage}
             />
-            <OfferBody offer={offer} subcategory={subcategory}>
+            <OfferBody
+              offer={offer}
+              subcategory={subcategory}
+              likesCount={offer.reactionsCount.likes}
+              chroniclesCount={chronicles?.length}>
               {theme.isDesktopViewport ? offerCtaButton : null}
             </OfferBody>
           </BodyWrapper>
