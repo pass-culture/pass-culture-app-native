@@ -3,94 +3,210 @@
 exports[`DeleteProfileConfirmation should match snapshot 1`] = `
 [
   <View
-    accessibilityLabel="Revenir en arrière"
-    accessibilityRole="button"
-    accessibilityState={
-      {
-        "busy": undefined,
-        "checked": undefined,
-        "disabled": undefined,
-        "expanded": undefined,
-        "selected": undefined,
-      }
-    }
-    accessibilityValue={
-      {
-        "max": undefined,
-        "min": undefined,
-        "now": undefined,
-        "text": undefined,
-      }
-    }
-    accessible={true}
-    focusable={true}
-    onClick={[Function]}
-    onResponderGrant={[Function]}
-    onResponderMove={[Function]}
-    onResponderRelease={[Function]}
-    onResponderTerminate={[Function]}
-    onResponderTerminationRequest={[Function]}
-    onStartShouldSetResponder={[Function]}
+    accessibilityRole="header"
     style={
       [
-        [
-          {
-            "userSelect": "auto",
-          },
-          {
-            "left": 24,
-            "position": "absolute",
-            "top": 30,
-            "zIndex": 1,
-          },
-        ],
         {
-          "opacity": 1,
+          "backgroundColor": "rgba(255,255,255,0)",
+          "borderBottomColor": "#cbcdd2",
+          "borderBottomWidth": 1,
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+          "zIndex": 1,
+        },
+        {
+          "borderBottomWidth": 0,
         },
       ]
     }
-    testID="Revenir en arrière"
   >
     <View
-      accessibilityLabel="Revenir en arrière"
-      height={24}
-      width={24}
+      customHeight={16}
+      enable={true}
+      style={
+        [
+          {
+            "height": 16,
+          },
+        ]
+      }
+    />
+    <View
+      style={
+        [
+          {
+            "alignItems": "center",
+            "height": 48,
+            "justifyContent": "center",
+          },
+        ]
+      }
     >
-      <Text>
-        undefined-SVG-Mock
-      </Text>
+      <View
+        style={
+          [
+            {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+              "width": "100%",
+            },
+          ]
+        }
+      >
+        <View
+          positionInHeader="left"
+          style={
+            [
+              {
+                "alignItems": "center",
+                "flexBasis": 0,
+                "flexDirection": "row",
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "justifyContent": "flex-start",
+                "paddingLeft": 12,
+                "paddingRight": 12,
+              },
+            ]
+          }
+          testID="back-button-container"
+        >
+          <View
+            accessibilityLabel="Revenir en arrière"
+            accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "alignItems": "center",
+                    "flexGrow": 1,
+                    "height": 40,
+                    "justifyContent": "center",
+                    "maxWidth": 40,
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
+            }
+            testID="Revenir en arrière"
+          >
+            <View
+              height={24}
+              testID="icon-back"
+              width={24}
+            >
+              <Text>
+                icon-back-SVG-Mock
+              </Text>
+            </View>
+            <Text
+              style={
+                [
+                  {
+                    "display": "none",
+                  },
+                ]
+              }
+            >
+              Retour
+            </Text>
+          </View>
+        </View>
+        <View
+          positionInHeader="right"
+          style={
+            [
+              {
+                "alignItems": "center",
+                "flexBasis": 0,
+                "flexDirection": "row",
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "justifyContent": "flex-end",
+                "paddingLeft": 12,
+                "paddingRight": 12,
+              },
+            ]
+          }
+          testID="close-button-container"
+        />
+      </View>
     </View>
   </View>,
   <View
+    bottom={16}
     style={
       [
         {
-          "alignSelf": "center",
           "flexBasis": 0,
           "flexGrow": 1,
           "flexShrink": 1,
-          "maxWidth": 500,
+          "justifyContent": "space-between",
           "overflow": "scroll",
           "paddingHorizontal": 24,
-          "width": "100%",
+          "paddingVertical": 24,
         },
       ]
     }
   >
     <View
-      flex={2}
+      height={65}
+      style={
+        [
+          {
+            "height": 65,
+          },
+        ]
+      }
+    />
+    <View
+      flex={1}
       style={
         [
           {
             "flexBasis": 0,
-            "flexGrow": 2,
+            "flexGrow": 1,
             "flexShrink": 1,
           },
         ]
       }
     />
     <View
-      hasHeight={false}
+      animation={false}
       style={
         [
           {
@@ -110,480 +226,493 @@ exports[`DeleteProfileConfirmation should match snapshot 1`] = `
         </Text>
       </View>
     </View>
-    <Text
-      style={
-        [
-          {
-            "fontFamily": "Montserrat-Bold",
-            "fontSize": 21,
-            "lineHeight": 33.6,
-            "textAlign": "center",
-          },
-        ]
-      }
-    >
-      Ta demande de suppression de compte
-    </Text>
     <View
-      flex={0.5}
-      style={
-        [
-          {
-            "flexBasis": 0,
-            "flexGrow": 0.5,
-            "flexShrink": 1,
-          },
-        ]
-      }
-    />
-    <Text
-      style={
-        [
-          {
-            "fontFamily": "Montserrat-Medium",
-            "fontSize": 16,
-            "lineHeight": 25.6,
-          },
-        ]
-      }
-    >
-      Si tu confirmes ta demande, tu ne pourras plus accéder à ton compte et tes données personnelles seront supprimées (anonymisées).
-    </Text>
-    <Text
-      style={
-        [
-          {
-            "fontFamily": "Montserrat-Medium",
-            "fontSize": 16,
-            "lineHeight": 25.6,
-          },
-        ]
-      }
-    >
-      Tes réservations en cours seront également annulées et supprimées.
-    </Text>
-    <View
-      numberOfSpaces={6}
-      style={
-        [
-          {
-            "height": 24,
-          },
-        ]
-      }
-    />
-    <View
-      backgroundColor="#f3ecff"
+      gap={4}
       style={
         [
           {
             "alignItems": "center",
-            "backgroundColor": "#f3ecff",
-            "borderRadius": 8,
-            "flexDirection": "row",
-            "justifyContent": "space-between",
-            "paddingBottom": 16,
-            "paddingLeft": 16,
-            "paddingRight": 16,
-            "paddingTop": 16,
+            "gap": 16,
+            "marginBottom": 24,
           },
         ]
       }
     >
-      <View
+      <Text
         style={
           [
             {
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 21,
+              "lineHeight": 33.6,
+              "textAlign": "center",
             },
           ]
         }
       >
-        <Text
-          style={
-            [
-              {
-                "color": "#161617",
-                "fontFamily": "Montserrat-SemiBold",
-                "fontSize": 12,
-                "lineHeight": 19.2,
-              },
-            ]
-          }
-          textColor="#161617"
-        >
-          L’anonymisation de tes données personnelles empêche toute possibilité de te réidentifier à l’avenir.
-        </Text>
-        <View
-          numberOfSpaces={2}
-          style={
-            [
-              {
-                "height": 8,
-              },
-            ]
-          }
-        />
-        <View
-          accessibilityLabel="Consultez notre FAQ"
-          accessibilityState={
+        Ta demande de suppression de compte
+      </Text>
+    </View>
+    <View
+      style={
+        [
+          {
+            "marginBottom": 24,
+          },
+        ]
+      }
+    >
+      <Text
+        style={
+          [
             {
-              "busy": undefined,
-              "checked": undefined,
-              "disabled": undefined,
-              "expanded": undefined,
-              "selected": undefined,
-            }
-          }
-          accessibilityValue={
+              "fontFamily": "Montserrat-Medium",
+              "fontSize": 16,
+              "lineHeight": 25.6,
+            },
+          ]
+        }
+      >
+        Si tu confirmes ta demande, tu ne pourras plus accéder à ton compte et tes données personnelles seront supprimées (anonymisées).
+      </Text>
+      <View
+        numberOfSpaces={6}
+        style={
+          [
             {
-              "max": undefined,
-              "min": undefined,
-              "now": undefined,
-              "text": undefined,
-            }
-          }
-          accessible={true}
-          focusable={true}
-          onClick={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
+              "height": 24,
+            },
+          ]
+        }
+      />
+      <Text
+        style={
+          [
+            {
+              "fontFamily": "Montserrat-Medium",
+              "fontSize": 16,
+              "lineHeight": 25.6,
+            },
+          ]
+        }
+      >
+        Tes réservations en cours seront également annulées et supprimées.
+      </Text>
+      <View
+        numberOfSpaces={6}
+        style={
+          [
+            {
+              "height": 24,
+            },
+          ]
+        }
+      />
+      <View
+        backgroundColor="#f3ecff"
+        style={
+          [
+            {
+              "alignItems": "center",
+              "backgroundColor": "#f3ecff",
+              "borderRadius": 8,
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+              "paddingBottom": 16,
+              "paddingLeft": 16,
+              "paddingRight": 16,
+              "paddingTop": 16,
+            },
+          ]
+        }
+      >
+        <View
           style={
             [
-              [
-                {
-                  "userSelect": "auto",
-                },
-                {
-                  "alignItems": "center",
-                  "borderRadius": 0,
-                  "borderWidth": 0,
-                  "flexDirection": "row",
-                  "justifyContent": "flex-start",
-                  "marginTop": 0,
-                  "maxWidth": 500,
-                  "minHeight": 20,
-                  "paddingBottom": 0,
-                  "paddingLeft": 0,
-                  "paddingRight": 0,
-                  "paddingTop": 0,
-                  "width": "auto",
-                },
-                {
-                  "backgroundColor": "transparent",
-                },
-              ],
               {
-                "opacity": 1,
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
               },
             ]
           }
-          testID="Consultez notre FAQ"
         >
-          <View
+          <Text
             style={
               [
                 {
-                  "alignItems": "center",
-                  "flexDirection": "row",
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 12,
+                  "lineHeight": 19.2,
                 },
               ]
             }
+            textColor="#161617"
           >
-            <View
-              style={
-                [
-                  {
-                    "flexDirection": "row",
-                    "flexShrink": 0,
-                  },
-                ]
-              }
-            >
-              <View
-                accessibilityLabel="Nouvelle fenêtre"
-                height={16}
-                testID="button-icon-left"
-                width={16}
-              >
-                <Text>
-                  button-icon-left-SVG-Mock
-                </Text>
-              </View>
-              <View
-                numberOfSpaces={2}
-                style={
-                  [
-                    {
-                      "width": 8,
-                    },
-                  ]
-                }
-              />
-            </View>
-            <Text
-              adjustsFontSizeToFit={false}
-              numberOfLines={1}
-              style={
-                [
-                  {
-                    "color": "#320096",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 12,
-                    "lineHeight": 19.2,
-                    "maxWidth": "100%",
-                  },
-                ]
-              }
-            >
-              Consultez notre FAQ
-            </Text>
-          </View>
-        </View>
-      </View>
-    </View>
-    <View
-      numberOfSpaces={6}
-      style={
-        [
-          {
-            "height": 24,
-          },
-        ]
-      }
-    />
-    <View
-      accessibilityLabel="Supprimer mon compte"
-      accessibilityState={
-        {
-          "busy": undefined,
-          "checked": undefined,
-          "disabled": undefined,
-          "expanded": undefined,
-          "selected": undefined,
-        }
-      }
-      accessibilityValue={
-        {
-          "max": undefined,
-          "min": undefined,
-          "now": undefined,
-          "text": undefined,
-        }
-      }
-      accessible={true}
-      focusable={true}
-      onClick={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
-      style={
-        [
-          [
-            {
-              "userSelect": "auto",
-            },
-            {
-              "alignItems": "center",
-              "backgroundColor": "#eb0055",
-              "borderRadius": 24,
-              "flexDirection": "row",
-              "justifyContent": "center",
-              "maxWidth": 500,
-              "minHeight": 40,
-              "paddingBottom": 2,
-              "paddingLeft": 20,
-              "paddingRight": 20,
-              "paddingTop": 2,
-              "width": "100%",
-            },
-            {},
-          ],
-          {
-            "opacity": 1,
-          },
-        ]
-      }
-      testID="Supprimer mon compte"
-    >
-      <View
-        style={
-          [
-            {
-              "alignItems": "center",
-              "flexDirection": "row",
-            },
-          ]
-        }
-      >
-        <Text
-          adjustsFontSizeToFit={false}
-          numberOfLines={1}
-          style={
-            [
-              {
-                "color": "#ffffff",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 16,
-                "lineHeight": 25.6,
-                "maxWidth": "100%",
-              },
-            ]
-          }
-        >
-          Supprimer mon compte
-        </Text>
-      </View>
-    </View>
-    <View
-      numberOfSpaces={4}
-      style={
-        [
-          {
-            "height": 16,
-          },
-        ]
-      }
-    />
-    <View
-      accessibilityLabel="Annuler"
-      accessibilityState={
-        {
-          "busy": undefined,
-          "checked": undefined,
-          "disabled": undefined,
-          "expanded": undefined,
-          "selected": undefined,
-        }
-      }
-      accessibilityValue={
-        {
-          "max": undefined,
-          "min": undefined,
-          "now": undefined,
-          "text": undefined,
-        }
-      }
-      accessible={true}
-      focusable={true}
-      onClick={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
-      style={
-        [
-          [
-            {
-              "userSelect": "auto",
-            },
-            {
-              "alignItems": "center",
-              "borderRadius": 24,
-              "flexDirection": "row",
-              "justifyContent": "center",
-              "maxWidth": 500,
-              "minHeight": 40,
-              "paddingBottom": 2,
-              "paddingLeft": 2,
-              "paddingRight": 2,
-              "paddingTop": 2,
-              "width": "100%",
-            },
-            {
-              "backgroundColor": "#ffffff",
-            },
-          ],
-          {
-            "opacity": 1,
-          },
-        ]
-      }
-      testID="Annuler"
-    >
-      <View
-        style={
-          [
-            {
-              "alignItems": "center",
-              "flexDirection": "row",
-            },
-          ]
-        }
-      >
-        <View
-          style={
-            [
-              {
-                "flexDirection": "row",
-                "flexShrink": 0,
-              },
-            ]
-          }
-        >
-          <View
-            fill="#161617"
-            height={20}
-            testID="button-icon-left"
-            width={20}
-          >
-            <Text>
-              button-icon-left-SVG-Mock
-            </Text>
-          </View>
+            L’anonymisation de tes données personnelles empêche toute possibilité de te réidentifier à l’avenir.
+          </Text>
           <View
             numberOfSpaces={2}
             style={
               [
                 {
-                  "width": 8,
+                  "height": 8,
                 },
               ]
             }
           />
-        </View>
-        <Text
-          adjustsFontSizeToFit={false}
-          numberOfLines={1}
-          style={
-            [
+          <View
+            accessibilityLabel="Consultez notre FAQ"
+            accessibilityState={
               {
-                "color": "#161617",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 16,
-                "lineHeight": 25.6,
-                "maxWidth": "100%",
-              },
-            ]
-          }
-        >
-          Annuler
-        </Text>
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "alignItems": "center",
+                    "borderRadius": 0,
+                    "borderWidth": 0,
+                    "flexDirection": "row",
+                    "justifyContent": "flex-start",
+                    "marginTop": 0,
+                    "maxWidth": 500,
+                    "minHeight": 20,
+                    "paddingBottom": 0,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 0,
+                    "width": "auto",
+                  },
+                  {
+                    "backgroundColor": "transparent",
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
+            }
+            testID="Consultez notre FAQ"
+          >
+            <View
+              style={
+                [
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                  },
+                ]
+              }
+            >
+              <View
+                style={
+                  [
+                    {
+                      "flexDirection": "row",
+                      "flexShrink": 0,
+                    },
+                  ]
+                }
+              >
+                <View
+                  accessibilityLabel="Nouvelle fenêtre"
+                  height={16}
+                  testID="button-icon-left"
+                  width={16}
+                >
+                  <Text>
+                    button-icon-left-SVG-Mock
+                  </Text>
+                </View>
+                <View
+                  numberOfSpaces={2}
+                  style={
+                    [
+                      {
+                        "width": 8,
+                      },
+                    ]
+                  }
+                />
+              </View>
+              <Text
+                adjustsFontSizeToFit={false}
+                numberOfLines={1}
+                style={
+                  [
+                    {
+                      "color": "#320096",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 19.2,
+                      "maxWidth": "100%",
+                    },
+                  ]
+                }
+              >
+                Consultez notre FAQ
+              </Text>
+            </View>
+          </View>
+        </View>
       </View>
     </View>
     <View
-      flex={1.5}
+      flex={1}
       style={
         [
           {
             "flexBasis": 0,
-            "flexGrow": 1.5,
+            "flexGrow": 1,
             "flexShrink": 1,
           },
         ]
       }
     />
+    <View
+      gap={4}
+      style={
+        [
+          {
+            "alignItems": "center",
+            "gap": 16,
+          },
+        ]
+      }
+    >
+      <View
+        accessibilityLabel="Supprimer mon compte"
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
+        accessible={true}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          [
+            [
+              {
+                "userSelect": "auto",
+              },
+              {
+                "alignItems": "center",
+                "backgroundColor": "#eb0055",
+                "borderRadius": 24,
+                "flexDirection": "row",
+                "justifyContent": "center",
+                "maxWidth": 500,
+                "minHeight": 40,
+                "paddingBottom": 2,
+                "paddingLeft": 20,
+                "paddingRight": 20,
+                "paddingTop": 2,
+                "width": "100%",
+              },
+              {},
+            ],
+            {
+              "opacity": 1,
+            },
+          ]
+        }
+        testID="Supprimer mon compte"
+      >
+        <View
+          style={
+            [
+              {
+                "alignItems": "center",
+                "flexDirection": "row",
+              },
+            ]
+          }
+        >
+          <Text
+            adjustsFontSizeToFit={false}
+            numberOfLines={1}
+            style={
+              [
+                {
+                  "color": "#ffffff",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 16,
+                  "lineHeight": 25.6,
+                  "maxWidth": "100%",
+                },
+              ]
+            }
+          >
+            Supprimer mon compte
+          </Text>
+        </View>
+      </View>
+      <View
+        accessibilityLabel="Annuler"
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
+        accessible={true}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          [
+            [
+              {
+                "userSelect": "auto",
+              },
+              {
+                "alignItems": "center",
+                "borderRadius": 24,
+                "flexDirection": "row",
+                "justifyContent": "center",
+                "maxWidth": 500,
+                "minHeight": 40,
+                "paddingBottom": 2,
+                "paddingLeft": 2,
+                "paddingRight": 2,
+                "paddingTop": 2,
+                "width": "100%",
+              },
+              {
+                "backgroundColor": "#ffffff",
+              },
+            ],
+            {
+              "opacity": 1,
+            },
+          ]
+        }
+        testID="Annuler"
+      >
+        <View
+          style={
+            [
+              {
+                "alignItems": "center",
+                "flexDirection": "row",
+              },
+            ]
+          }
+        >
+          <View
+            style={
+              [
+                {
+                  "flexDirection": "row",
+                  "flexShrink": 0,
+                },
+              ]
+            }
+          >
+            <View
+              fill="#161617"
+              height={20}
+              testID="button-icon-left"
+              width={20}
+            >
+              <Text>
+                button-icon-left-SVG-Mock
+              </Text>
+            </View>
+            <View
+              numberOfSpaces={2}
+              style={
+                [
+                  {
+                    "width": 8,
+                  },
+                ]
+              }
+            />
+          </View>
+          <Text
+            adjustsFontSizeToFit={false}
+            numberOfLines={1}
+            style={
+              [
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 16,
+                  "lineHeight": 25.6,
+                  "maxWidth": "100%",
+                },
+              ]
+            }
+          >
+            Annuler
+          </Text>
+        </View>
+      </View>
+    </View>
   </View>,
 ]
 `;

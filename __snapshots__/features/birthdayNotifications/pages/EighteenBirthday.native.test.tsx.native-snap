@@ -205,10 +205,9 @@ exports[`<EighteenBirthday /> should render eighteen birthday 1`] = `
         style={
           [
             {
-              "color": "#696A6F",
               "fontFamily": "Montserrat-SemiBold",
               "fontSize": 12,
-              "lineHeight": 16,
+              "lineHeight": 19.2,
               "textAlign": "center",
             },
           ]

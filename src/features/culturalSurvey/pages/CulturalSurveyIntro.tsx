@@ -9,14 +9,13 @@ import { analytics } from 'libs/analytics/provider'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { storage } from 'libs/storage'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import { GenericInfoPageWhiteLegacy } from 'ui/pages/GenericInfoPageWhiteLegacy'
+import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
 import { BicolorPhonePending } from 'ui/svg/icons/BicolorPhonePending'
 import { InfoPlain } from 'ui/svg/icons/InfoPlain'
-import { Spacer, TypoDS } from 'ui/theme'
+import { TypoDS } from 'ui/theme'
 
 const FAQTouchableLinkProps = {
   as: ButtonTertiaryBlack,
@@ -48,74 +47,45 @@ export const CulturalSurveyIntro = (): React.JSX.Element => {
   const { intro } = useGetCulturalSurveyContent(enableCulturalSurveyMandatory)
 
   return (
-    <GenericInfoPageWhiteLegacy
-      icon={StyledBicolorPhonePending}
-      titleComponent={TypoDS.Title3}
+    <GenericInfoPageWhite
+      illustration={BicolorPhonePending}
       title={intro.title}
-      subtitle={intro.subtitle}>
-      {intro.customSubtitle ? (
-        <React.Fragment>
-          <StyledBodyAccent>{intro.customSubtitle}</StyledBodyAccent>
-          <Spacer.Column numberOfSpaces={6} />
-        </React.Fragment>
-      ) : null}
-
+      subtitle={intro.customSubtitle}
+      buttonPrimary={{
+        wording: 'Commencer le questionnaire',
+        onBeforeNavigate: analytics.logHasStartedCulturalSurvey,
+        navigateTo: {
+          screen: 'CulturalSurveyQuestions',
+          params: { question: initialQuestions[0] },
+        },
+      }}
+      buttonTertiary={{
+        wording: intro.secondaryButton.text,
+        icon: intro.secondaryButton.icon,
+        onPress: intro.secondaryButton.onPress,
+      }}>
       <StyledBody>{intro.bodyText}</StyledBody>
       {intro.showFAQLink ? (
         <View>
           {Platform.OS === 'web' ? (
             <ExternalTouchableLink
               key={1}
-              externalNav={{
-                url: FAQ_LINK_USER_DATA,
-              }}
+              externalNav={{ url: FAQ_LINK_USER_DATA }}
               {...FAQTouchableLinkProps}
             />
           ) : (
             <InternalTouchableLink
               key={1}
-              navigateTo={{
-                screen: 'FAQWebview',
-              }}
+              navigateTo={{ screen: 'FAQWebview' }}
               {...FAQTouchableLinkProps}
             />
           )}
         </View>
       ) : null}
-      <Spacer.Flex flex={1} />
-      <View>
-        <InternalTouchableLink
-          key={2}
-          as={ButtonPrimary}
-          wording="Commencer le questionnaire"
-          onBeforeNavigate={analytics.logHasStartedCulturalSurvey}
-          navigateTo={{
-            screen: 'CulturalSurveyQuestions',
-            params: { question: initialQuestions[0] },
-          }}
-        />
-        <Spacer.Column numberOfSpaces={3} />
-        <ButtonTertiaryBlack
-          key={3}
-          wording={intro.secondaryButton.text}
-          icon={intro.secondaryButton.icon}
-          onPress={intro.secondaryButton.onPress}
-        />
-      </View>
-    </GenericInfoPageWhiteLegacy>
+    </GenericInfoPageWhite>
   )
 }
 
-const StyledBicolorPhonePending = styled(BicolorPhonePending).attrs(({ theme }) => ({
-  size: theme.illustrations.sizes.fullPage,
-  color: theme.colors.primary,
-  color2: theme.colors.secondary,
-}))``
-
 const StyledBody = styled(TypoDS.Body)({
-  textAlign: 'center',
-})
-
-const StyledBodyAccent = styled(TypoDS.BodyAccent)({
   textAlign: 'center',
 })

@@ -1,5 +1,4 @@
 import React, { useCallback, useEffect, useState } from 'react'
-import { View } from 'react-native'
 import { NativeStackScreenProps } from 'react-native-screens/native-stack'
 import styled from 'styled-components/native'
 
@@ -10,13 +9,11 @@ import { getProfileStackConfig } from 'features/navigation/ProfileStackNavigator
 import { ProfileStackParamList } from 'features/navigation/ProfileStackNavigator/ProfileStack'
 import { RootStackParamList } from 'features/navigation/RootNavigator/types'
 import { useEmailUpdateStatus } from 'features/profile/helpers/useEmailUpdateStatus'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
-import { GenericInfoPageWhiteLegacy } from 'ui/pages/GenericInfoPageWhiteLegacy'
+import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
 import { BicolorUserError } from 'ui/svg/BicolorUserError'
 import { Clear } from 'ui/svg/icons/Clear'
-import { Spacer, TypoDS } from 'ui/theme'
+import { TypoDS } from 'ui/theme'
 import { DOUBLE_LINE_BREAK } from 'ui/theme/constants'
 
 type SuspendAccountConfirmationProps = NativeStackScreenProps<
@@ -76,33 +73,27 @@ export function SuspendAccountConfirmation({
   }, [emailUpdateStatus, isLoadingEmailUpdateStatus, navigation])
 
   return (
-    <GenericInfoPageWhiteLegacy
-      icon={StyledBicolorUserError}
-      titleComponent={TypoDS.Title3}
+    <GenericInfoPageWhite
+      illustration={StyledBicolorUserError}
       title="Souhaites-tu suspendre ton compte pass&nbsp;Culture&nbsp;?"
-      separateIconFromTitle={false}>
+      buttonPrimary={{
+        wording: 'Oui, suspendre mon compte',
+        onPress: handleSuspendAccount,
+        disabled: isLoading,
+      }}
+      buttonTertiary={{
+        icon: Clear,
+        wording: 'Ne pas suspendre mon compte',
+        onPress: onClose,
+        disabled: isLoading,
+      }}>
       <StyledBody>
         Tu as indiqué <BoldText>ne pas être à l’origine</BoldText> de la demande de changement
-        d’email.{DOUBLE_LINE_BREAK} Pour des raisons de <BoldText>sécurité</BoldText>, nous te
+        d’email.{DOUBLE_LINE_BREAK}Pour des raisons de <BoldText>sécurité</BoldText>, nous te
         conseillons de suspendre de ton compte&nbsp;:
         <BoldText> toutes les offres seront annulées et l’accès au compte sera bloqué.</BoldText>
       </StyledBody>
-      <Spacer.Column numberOfSpaces={19} />
-      <View>
-        <ButtonPrimary
-          wording="Oui, suspendre mon compte"
-          onPress={handleSuspendAccount}
-          disabled={isLoading}
-        />
-        <Spacer.Column numberOfSpaces={4} />
-        <ButtonTertiaryBlack
-          wording="Ne pas suspendre mon compte"
-          icon={Clear}
-          onPress={onClose}
-          disabled={isLoading}
-        />
-      </View>
-    </GenericInfoPageWhiteLegacy>
+    </GenericInfoPageWhite>
   )
 }
 
