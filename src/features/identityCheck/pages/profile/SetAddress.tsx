@@ -122,7 +122,8 @@ export const SetAddress = () => {
               value={query}
               label={label}
               placeholder="Ex&nbsp;: 34 avenue de l’Opéra"
-              textContentType="addressState"
+              autoComplete="street-address"
+              textContentType="fullStreetAddress"
               accessibilityDescribedBy={addressInputErrorId}
               onPressRightIcon={resetSearch}
               returnKeyType="next"

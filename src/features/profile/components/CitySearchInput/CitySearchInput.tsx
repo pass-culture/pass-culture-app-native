@@ -126,11 +126,12 @@ export const CitySearchInput = ({ city, onCitySelected }: CitySearchInputProps) 
                 value={value}
                 label="Indique ton code postal et choisis ta ville"
                 placeholder="Ex&nbsp;: 75017"
-                textContentType="postalCode"
                 onPressRightIcon={resetSearch}
                 keyboardType="number-pad"
                 accessibilityDescribedBy={postalCodeInputId}
                 testID="Entrée pour la ville"
+                autoComplete="postal-code"
+                textContentType="postalCode"
               />
               <InputError
                 messageId={error?.message}

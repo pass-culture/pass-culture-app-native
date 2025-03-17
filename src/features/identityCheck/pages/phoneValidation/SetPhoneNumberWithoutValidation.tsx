@@ -116,7 +116,7 @@ export const SetPhoneNumberWithoutValidation = () => {
               render={({ field, fieldState }) => (
                 <ViewGap gap={2}>
                   <TextInput
-                    autoComplete="off" // disable autofill on android
+                    autoComplete="tel"
                     autoCapitalize="none"
                     isError={!!fieldState.error}
                     keyboardType="number-pad"
@@ -124,7 +124,7 @@ export const SetPhoneNumberWithoutValidation = () => {
                     value={field.value}
                     onChangeText={field.onChange}
                     onSubmitEditing={submit}
-                    textContentType="none" // disable autofill on iOS
+                    textContentType="telephoneNumber"
                     accessibilityDescribedBy={phoneNumberInputErrorId}
                     leftComponent={
                       <Controller

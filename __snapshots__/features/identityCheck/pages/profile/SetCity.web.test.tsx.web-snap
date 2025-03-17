@@ -252,7 +252,7 @@ exports[`<SetCity/> should render correctly 1`] = `
                 >
                   <input
                     autocapitalize="sentences"
-                    autocomplete="on"
+                    autocomplete="postal-code"
                     autocorrect="off"
                     class="css-textinput-11aywtz r-placeholderTextColor-6taxm2 r-color-1rmcaf9 r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-fontFamily-1nu0hr2 r-fontSize-cygvgh r-height-1pi2tsx r-paddingBottom-1mdbw0j r-paddingLeft-gy4na3 r-paddingRight-9aemit r-paddingTop-wk8lta r-width-lnhwgy"
                     data-testid="Entrée pour la ville"

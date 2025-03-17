@@ -61,13 +61,13 @@ export const CheatcodesScreenNewCaledonia = () => {
       <StyledSeparator />
       <TextInput
         label="Montant en&nbsp;€ pour conversion&nbsp;:"
-        autoComplete="off"
+        autoComplete="off" // Keep autocomplete="off" to prevent incorrect suggestions.
         autoCapitalize="none"
         value={inputEuro}
         onChangeText={setInputEuro}
         keyboardType="numeric"
         placeholder="Entrez le montant en&nbsp;€"
-        textContentType="none"
+        textContentType="none" // Keep textContentType="none" to prevent incorrect suggestions.
       />
       <Spacer.Column numberOfSpaces={4} />
       <TypoDS.Body>Franc Pacifique sans arrondi&nbsp;:</TypoDS.Body>

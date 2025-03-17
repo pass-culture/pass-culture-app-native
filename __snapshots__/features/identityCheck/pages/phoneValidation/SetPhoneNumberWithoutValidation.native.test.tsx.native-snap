@@ -575,7 +575,7 @@ exports[`SetPhoneNumberWithoutValidation should match snapshot 1`] = `
                       <TextInput
                         accessibilityDescribedBy="testUuidV4"
                         autoCapitalize="none"
-                        autoComplete="off"
+                        autoComplete="tel"
                         editable={true}
                         isEmpty={true}
                         keyboardType="number-pad"
@@ -607,7 +607,7 @@ exports[`SetPhoneNumberWithoutValidation should match snapshot 1`] = `
                         }
                         testID="Entrée pour le numéro de téléphone"
                         textAlignVertical="center"
-                        textContentType="none"
+                        textContentType="telephoneNumber"
                       />
                     </View>
                   </View>

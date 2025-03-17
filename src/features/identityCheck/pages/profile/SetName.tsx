@@ -76,10 +76,11 @@ Nous les vérifions et ils ne pourront plus être modifiés par la suite."
                   autoFocus
                   onChangeText={onChange}
                   placeholder="Ton prénom"
-                  textContentType="username"
                   isRequiredField
                   accessibilityDescribedBy={firstNameInputErrorId}
                   testID="Entrée pour le prénom"
+                  textContentType="givenName"
+                  autoComplete="given-name"
                 />
                 <InputError
                   visible={firstName.length > 0 && !!error}
@@ -101,10 +102,11 @@ Nous les vérifions et ils ne pourront plus être modifiés par la suite."
                   value={value}
                   onChangeText={onChange}
                   placeholder="Ton nom"
-                  textContentType="username"
                   isRequiredField
                   accessibilityDescribedBy={lastNameInputErrorId}
                   testID="Entrée pour le nom"
+                  textContentType="familyName"
+                  autoComplete="family-name"
                 />
                 <InputError
                   visible={lastName.length > 0 && !!error}

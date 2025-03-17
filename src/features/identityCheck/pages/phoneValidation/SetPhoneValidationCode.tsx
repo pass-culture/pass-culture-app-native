@@ -131,6 +131,7 @@ export const SetPhoneValidationCode = () => {
                 value={codeInputState.code}
                 onChangeText={onChangeValue}
                 placeholder="012345"
+                autoComplete="one-time-code"
                 textContentType="oneTimeCode"
                 onSubmitEditing={validateCode}
                 accessibilityDescribedBy={validationCodeInputErrorId}
