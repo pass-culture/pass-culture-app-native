@@ -1,16 +1,13 @@
-import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 
-import { StepperOrigin, UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { useNavigateToHomeWithReset } from 'features/navigation/helpers/useNavigateToHomeWithReset'
+import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import BirthdayCakeAnimation from 'ui/animations/onboarding_birthday_cake.json'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 
 export const OnboardingNotEligible = () => {
-  const { reset } = useNavigation<UseNavigationType>()
-  const navigateToHomeWithReset = () => {
-    reset({ index: 0, routes: [{ name: homeNavConfig[0] }] })
-  }
+  const { navigateToHomeWithReset } = useNavigateToHomeWithReset()
 
   return (
     <GenericInfoPage

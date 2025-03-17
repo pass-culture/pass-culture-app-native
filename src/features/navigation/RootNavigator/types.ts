@@ -5,6 +5,10 @@ import { ComponentType } from 'react'
 import { CulturalSurveyQuestionEnum } from 'api/gen/api'
 import { DisabilitiesProperties } from 'features/accessibility/types'
 import { BookingsTab } from 'features/bookings/enum'
+import {
+  ActivationStackParamList,
+  ActivationStackRouteName,
+} from 'features/navigation/ActivationStackNavigator/ActivationStackTypes'
 import { CheatcodesStackParamList } from 'features/navigation/CheatcodesStackNavigator/types'
 import {
   ProfileStackParamList,
@@ -88,12 +92,12 @@ export type CulturalSurveyRootStackParamList = {
 }
 
 export type TutorialRootStackParamList = {
-  AgeSelectionFork: TutorialType
-  OnboardingAgeInformation: { age: 15 | 16 | 17 | 18 }
+  AgeSelectionFork: TutorialType | undefined
+  OnboardingAgeInformation: { age: 15 | 16 | 17 | 18 } | undefined
   OnboardingGeneralPublicWelcome: undefined
   OnboardingGeolocation: undefined
   OnboardingNotEligible: undefined
-  OnboardingWelcome: undefined
+  OnboardingWelcome: TutorialType | undefined
   ProfileTutorialAgeInformationCredit: undefined
 }
 
@@ -198,6 +202,10 @@ export type SubscriptionRootStackParamList = {
  * please update the deeplink handler in consequence.
  */
 export type RootStackParamList = {
+  ActivationStackNavigator?: {
+    screen: ActivationStackRouteName
+    params: ActivationStackParamList[ActivationStackRouteName]
+  }
   ABTestingPOC: undefined
   AccountCreated: undefined
   AccountReactivationSuccess: undefined
@@ -283,13 +291,13 @@ export type RootStackParamList = {
 } & CheatcodesStackParamList &
   CulturalSurveyRootStackParamList &
   SubscriptionRootStackParamList &
-  TrustedDeviceRootStackParamList &
-  TutorialRootStackParamList
+  TrustedDeviceRootStackParamList
 
 export type AllNavParamList = RootStackParamList &
   TabParamList &
   SearchStackParamList &
-  ProfileStackParamList
+  ProfileStackParamList &
+  ActivationStackParamList
 
 /** Type helpers to share screen names */
 export type RootScreenNames = keyof RootStackParamList
@@ -356,7 +364,10 @@ export type GenericRoute<
   options?: { title?: string }
   secure?: boolean
 }
-export type RootRoute = GenericRoute<RootStackParamList, TabParamList & ProfileStackParamList>
+export type RootRoute = GenericRoute<
+  RootStackParamList,
+  TabParamList & ProfileStackParamList & ActivationStackParamList
+>
 
 // Typeguard for screen params
 export function isScreen<Screen extends AllNavigateParams[0]>(

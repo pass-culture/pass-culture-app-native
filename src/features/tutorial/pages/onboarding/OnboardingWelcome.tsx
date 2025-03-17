@@ -12,6 +12,7 @@ import { ButtonWithLinearGradient } from 'ui/components/buttons/buttonWithLinear
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getActivationNavConfig } from 'features/navigation/ActivationStackNavigator/getActivationNavConfig'
 
 const setHasSeenTutorials = () => storage.saveObject('has_seen_tutorials', true)
 
@@ -44,7 +45,7 @@ export const OnboardingWelcome: FunctionComponent = () => {
           wording="C’est parti&nbsp;!"
           icon={PlainArrowNext}
           iconAfterWording
-          navigateTo={{ screen: 'OnboardingGeolocation' }}
+          navigateTo={getActivationNavConfig('OnboardingGeolocation')}
           onBeforeNavigate={onStartPress}
         />
         <Spacer.Column numberOfSpaces={4} />

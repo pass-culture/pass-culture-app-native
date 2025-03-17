@@ -28,7 +28,7 @@ export function useInitialScreen(): RootScreenNames | undefined {
         triggerInitialScreenNameAnalytics(screen)
       })
       .catch(() => {
-        setInitialScreen('TabNavigator')
+        setInitialScreen('ActivationStackNavigator')
       })
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isLoggedIn, user, shouldShowCulturalSurvey])
@@ -73,7 +73,7 @@ async function getInitialScreen({
     return homeNavConfig[0]
   }
 
-  return 'OnboardingWelcome'
+  return 'ActivationStackNavigator'
 }
 
 function triggerInitialScreenNameAnalytics(screenName: RootScreenNames) {

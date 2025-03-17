@@ -7,6 +7,7 @@ import { v4 as uuidv4 } from 'uuid'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useLogoutRoutine } from 'features/auth/helpers/useLogoutRoutine'
 import { useFavoritesState } from 'features/favorites/context/FavoritesWrapper'
+import { getActivationNavConfig } from 'features/navigation/ActivationStackNavigator/getActivationNavConfig'
 import { getProfileNavConfig } from 'features/navigation/ProfileStackNavigator/getProfileNavConfig'
 import { ProfileHeader } from 'features/profile/components/Header/ProfileHeader/ProfileHeader'
 import { SectionWithSwitch } from 'features/profile/components/SectionWithSwitch/SectionWithSwitch'
@@ -77,7 +78,6 @@ const OnlineProfile: React.FC = () => {
   const [isGeolocSwitchActive, setIsGeolocSwitchActive] = useState<boolean>(
     permissionState === GeolocPermissionState.GRANTED
   )
-
   const isCreditEmpty = user?.domainsCredit?.all.remaining === 0
 
   const isDepositExpired = user?.depositExpirationDate
@@ -213,7 +213,7 @@ const OnlineProfile: React.FC = () => {
                       <Row
                         title="Comment ça marche&nbsp;?"
                         type="navigable"
-                        navigateTo={{ screen: 'ProfileTutorialAgeInformationCredit' }}
+                        navigateTo={getActivationNavConfig('ProfileTutorialAgeInformationCredit')}
                         onPress={() =>
                           analytics.logConsultTutorial({ age: userAge, from: 'ProfileHelp' })
                         }

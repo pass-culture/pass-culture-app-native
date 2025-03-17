@@ -10,6 +10,7 @@ import { Separator } from 'ui/components/Separator'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { Question } from 'ui/svg/icons/Question'
 import { Spacer } from 'ui/theme'
+import { getActivationNavConfig } from 'features/navigation/ActivationStackNavigator/getActivationNavConfig'
 
 interface Props {
   age: number
@@ -47,7 +48,7 @@ export const CreditExplanation: FunctionComponent<Props> = ({ age, isDepositExpi
         as={StyledButtonQuaternaryBlack}
         icon={Question}
         wording="Comment ça marche&nbsp;?"
-        navigateTo={{ screen: 'ProfileTutorialAgeInformationCredit' }}
+        navigateTo={getActivationNavConfig('ProfileTutorialAgeInformationCredit')}
         onBeforeNavigate={onTutorialClick}
       />
     </React.Fragment>

@@ -1,18 +1,14 @@
-import { useNavigation } from '@react-navigation/native'
 import { StackScreenProps } from '@react-navigation/stack'
 import React from 'react'
 
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
-import {
-  StepperOrigin,
-  TutorialRootStackParamList,
-  UseNavigationType,
-} from 'features/navigation/RootNavigator/types'
-import { homeNavConfig } from 'features/navigation/TabBar/helpers'
+import { useNavigateToHomeWithReset } from 'features/navigation/helpers/useNavigateToHomeWithReset'
+import { StepperOrigin, TutorialRootStackParamList } from 'features/navigation/RootNavigator/types'
 import { OnboardingTimeline } from 'features/tutorial/components/onboarding/OnboardingTimeline'
 import { TutorialTypes } from 'features/tutorial/enums'
 import { TutorialPage } from 'features/tutorial/pages/TutorialPage'
 import { analytics } from 'libs/analytics/provider'
+import { eventMonitoring } from 'libs/monitoring/services'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { ButtonWithLinearGradient } from 'ui/components/buttons/buttonWithLinearGradient/ButtonWithLinearGradient'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
@@ -27,13 +23,20 @@ const onSignupPress = () => {
   analytics.logSignUpClicked({ from: TutorialTypes.ONBOARDING })
 }
 
-export const OnboardingAgeInformation = ({ route }: Props): React.JSX.Element => {
-  const { reset } = useNavigation<UseNavigationType>()
-  const userAge = route.params.age
+export const OnboardingAgeInformation = ({ route }: Props): React.JSX.Element | null => {
+  const { navigateToHomeWithReset } = useNavigateToHomeWithReset()
+
+  const userAge = route?.params?.age
+
+  if (!userAge) {
+    eventMonitoring.captureException('route.params.type is undefined')
+    navigateToHomeWithReset()
+    return null
+  }
 
   const onLaterPress = () => {
     analytics.logOnboardingAgeInformationClicked({ type: 'account_creation_skipped' })
-    reset({ index: 0, routes: [{ name: homeNavConfig[0] }] })
+    navigateToHomeWithReset()
   }
 
   const buttons = [

@@ -26,6 +26,8 @@ import { FavoritesSorts } from 'features/favorites/pages/FavoritesSorts'
 import { ThematicHome } from 'features/home/pages/ThematicHome'
 import { DeeplinksGenerator } from 'features/internal/pages/DeeplinksGenerator'
 import { UTMParameters } from 'features/internal/pages/UTMParameters'
+import { activationNavigatorPathConfig } from 'features/navigation/ActivationStackNavigator/activationNavigatorPathConfig'
+import { SuspenseActivationStackNavigator } from 'features/navigation/ActivationStackNavigator/SuspenseActivationStackNavigator'
 import { PageNotFound } from 'features/navigation/pages/PageNotFound'
 import { profileNavigatorPathConfig } from 'features/navigation/ProfileStackNavigator/profileNavigatorPathConfig'
 import { SuspenseProfileStackNavigator } from 'features/navigation/ProfileStackNavigator/SuspenseProfileStackNavigator'
@@ -33,7 +35,6 @@ import { culturalSurveyRoutes } from 'features/navigation/RootNavigator/cultural
 import { subscriptionRoutes } from 'features/navigation/RootNavigator/subscriptionRoutes'
 import { SuspenseAchievements } from 'features/navigation/RootNavigator/SuspenseAchievements'
 import { trustedDeviceRoutes } from 'features/navigation/RootNavigator/trustedDeviceRoutes'
-import { tutorialRoutes } from 'features/navigation/RootNavigator/tutorialRoutes'
 import { screenParamsParser, screenParamsStringifier } from 'features/navigation/screenParamsUtils'
 import { tabNavigatorPathConfig } from 'features/navigation/TabBar/tabBarRoutes'
 import { TabNavigator } from 'features/navigation/TabBar/TabNavigator'
@@ -52,7 +53,11 @@ export const rootRoutes: RootRoute[] = [
   ...culturalSurveyRoutes,
   ...subscriptionRoutes,
   ...trustedDeviceRoutes,
-  ...tutorialRoutes,
+  {
+    name: 'ActivationStackNavigator',
+    component: SuspenseActivationStackNavigator,
+    pathConfig: activationNavigatorPathConfig,
+  },
   {
     name: 'Offer',
     component: Offer,
