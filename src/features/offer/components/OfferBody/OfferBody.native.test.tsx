@@ -365,7 +365,7 @@ describe('<OfferBody />', () => {
       })
 
       it('should display venue distance tag when user share his position', async () => {
-        renderOfferBody({})
+        renderOfferBody({ distance: '900+ km' })
 
         expect(await screen.findByText('à 900+ km')).toBeOnTheScreen()
       })
@@ -652,11 +652,12 @@ describe('<OfferBody />', () => {
     offer = offerResponseSnap,
     subcategory = mockSubcategory,
     isDesktopViewport,
+    distance,
     children,
   }: RenderOfferBodyType) {
     render(
       reactQueryProviderHOC(
-        <OfferBody offer={offer} subcategory={subcategory}>
+        <OfferBody offer={offer} subcategory={subcategory} distance={distance}>
           {children}
         </OfferBody>
       ),
