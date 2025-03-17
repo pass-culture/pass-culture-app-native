@@ -89,7 +89,7 @@ echo "Generating ${output} ..."
 	display_version docker
 	display_version kubectl version --client
 	display_version node
-	display_version nix
+	display_version nix && ls -l /etc/nix/ && cat /etc/nix/nix.conf && display_version determinate-nixd
 	display_version direnv
 	display_version dbt # not found if used in virtualenv
 	display_version virtualenv
