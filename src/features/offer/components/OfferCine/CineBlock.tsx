@@ -7,6 +7,7 @@ import { isDateNotWithinNextNbDays } from 'features/offer/components/MoviesScree
 import { NextScreeningButton } from 'features/offer/components/MoviesScreeningCalendar/NextScreeningButton'
 import { useOfferCTAButton } from 'features/offer/components/OfferCTAButton/useOfferCTAButton'
 import { OfferEventCardList } from 'features/offer/components/OfferEventCardList/OfferEventCardList'
+import { useVenueBlock } from 'features/offer/components/OfferVenueBlock/useVenueBlock'
 import { VenueBlock } from 'features/offer/components/OfferVenueBlock/VenueBlock'
 import { getAddress, getVenue } from 'features/offer/helpers/getVenueBlockProps'
 import { useSubcategoriesMapping } from 'libs/subcategories'
@@ -17,6 +18,7 @@ export type CineBlockProps = {
   onSeeVenuePress?: VoidFunction
   nextDate?: Date
   withDivider?: boolean
+  distance?: string | null
 }
 
 export const CineBlock: FunctionComponent<CineBlockProps> = ({
@@ -24,6 +26,7 @@ export const CineBlock: FunctionComponent<CineBlockProps> = ({
   onSeeVenuePress,
   nextDate,
   withDivider,
+  distance,
 }) => {
   const { selectedDate, goToDate } = useMovieCalendar()
 
@@ -34,13 +37,25 @@ export const CineBlock: FunctionComponent<CineBlockProps> = ({
     subcategoriesMapping[offer.subcategoryId]
   )
 
+  const venueBlockVenue = getVenue(offer.venue)
+  const venueBlockAddress = getAddress(offer.address)
+
+  const { venueName, venueAddress, isOfferAddressDifferent } = useVenueBlock({
+    venue: venueBlockVenue,
+    offerAddress: venueBlockAddress,
+  })
+
   return (
     <React.Fragment>
       <CineBlockContainer>
         <VenueBlock
-          venue={getVenue(offer.venue)}
-          address={getAddress(offer.address)}
+          venueId={venueBlockVenue.id}
+          title={venueName}
+          subtitle={venueAddress}
           onSeeVenuePress={onSeeVenuePress}
+          venueImageUrl={venueBlockVenue.bannerUrl ?? ''}
+          distance={distance}
+          hasVenuePage={!!onSeeVenuePress && !isOfferAddressDifferent}
         />
 
         <React.Fragment>
