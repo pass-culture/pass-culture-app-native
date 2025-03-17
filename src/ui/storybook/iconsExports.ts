@@ -124,12 +124,15 @@ import { ThumbUp } from 'ui/svg/icons/ThumbUp'
 import { ThumbUpFilled } from 'ui/svg/icons/ThumbUpFilled'
 import { Trash } from 'ui/svg/icons/Trash'
 import { TryAgain } from 'ui/svg/icons/TryAgain'
+import { Ubble } from 'ui/svg/icons/Ubble'
 import { Valid } from 'ui/svg/icons/Valid'
 import { Validate } from 'ui/svg/icons/Validate'
 import { ValidateOff } from 'ui/svg/icons/ValidateOff'
 import { Venue } from 'ui/svg/icons/Venue'
 import { WorldPosition } from 'ui/svg/icons/WorldPosition'
 import { Wrong } from 'ui/svg/icons/Wrong'
+import { LogoDMS } from 'ui/svg/LogoDMS'
+import { LogoFrenchRepublic } from 'ui/svg/LogoFrenchRepublic'
 
 export const SocialNetworkIcons = {
   Facebook,
@@ -280,4 +283,7 @@ const LogoPassCulture = styled(PassCultureIcon).attrs(({ theme }) => ({
 
 export const UnconventionalIcons = {
   LogoPassCulture,
+  LogoFrenchRepublic,
+  LogoDMS,
+  Ubble,
 }
