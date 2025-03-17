@@ -17,7 +17,7 @@ module.exports = {
   testEnvironment: process.env.RUN_ALLURE === 'true' ? 'allure-jest/node' : undefined,
   testEnvironmentOptions: { customExportConditions: [''] },
   moduleNameMapper: {
-    // if you change those lignes, check this doc https://github.com/pass-culture/pass-culture-app-native/blob/5ff5fba596244a759d60f8c9cdb67d56ac86a1a7/doc/development/alias.md
+    // if you change those lines, check this doc https://github.com/pass-culture/pass-culture-app-native/blob/5ff5fba596244a759d60f8c9cdb67d56ac86a1a7/doc/development/alias.md
     '^__mocks__(.*)$': '<rootDir>/__mocks__$1',
     '^api(.*)$': '<rootDir>/src/api$1',
     '^cheatcodes(.*)$': '<rootDir>/src/cheatcodes$1',
