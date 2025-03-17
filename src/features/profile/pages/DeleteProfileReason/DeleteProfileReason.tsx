@@ -6,6 +6,8 @@ import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { getProfileNavConfig } from 'features/navigation/ProfileStackNavigator/getProfileNavConfig'
+import { getProfileStackConfig } from 'features/navigation/ProfileStackNavigator/getProfileStackConfig'
+import { useGoBack } from 'features/navigation/useGoBack'
 import { useOnViewableItemsChanged } from 'features/subscription/helpers/useOnViewableItemsChanged'
 import { analytics } from 'libs/analytics/provider'
 import { AnimatedViewRefType, createAnimatableComponent } from 'libs/react-native-animatable'
@@ -90,10 +92,11 @@ export function DeleteProfileReason() {
   const canDeleteProfile = !user?.isBeneficiary || userIsDefinedAndAbove21
   const reasons = reasonButtons(!!canDeleteProfile)
   const { onViewableItemsChanged } = useOnViewableItemsChanged(gradientRef, reasons)
+  const { goBack } = useGoBack(...getProfileStackConfig('Profile'))
 
   return (
     <React.Fragment>
-      <PageHeaderWithoutPlaceholder />
+      <PageHeaderWithoutPlaceholder onGoBack={goBack} />
       <FlatList
         listAs="ul"
         itemAs="li"
