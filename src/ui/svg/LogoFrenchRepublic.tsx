@@ -6,7 +6,7 @@ import { AccessibleSvg } from 'ui/svg/AccessibleSvg'
 import { AccessibleRectangleIcon } from 'ui/svg/icons/types'
 import { getSpacing } from 'ui/theme'
 
-function LogoMinistereSvg({ width, height }: AccessibleRectangleIcon) {
+function LogoFrenchRepublicSvg({ width, height }: AccessibleRectangleIcon) {
   return (
     <AccessibleSvg
       width={width}
@@ -38,7 +38,7 @@ function LogoMinistereSvg({ width, height }: AccessibleRectangleIcon) {
   )
 }
 
-export const LogoMinistere = styled(LogoMinistereSvg).attrs(({ width, height }) => ({
+export const LogoFrenchRepublic = styled(LogoFrenchRepublicSvg).attrs(({ width, height }) => ({
   width: width ?? getSpacing(20),
   height: height ?? getSpacing(20),
 }))``

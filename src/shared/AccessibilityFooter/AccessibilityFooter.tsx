@@ -10,7 +10,7 @@ import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouch
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { LogoPassCulture } from 'ui/svg/icons/LogoPassCulture'
-import { LogoMinistere } from 'ui/svg/LogoMinistere'
+import { LogoFrenchRepublic } from 'ui/svg/LogoFrenchRepublic'
 import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 
 const isWeb = Platform.OS === 'web'
@@ -49,7 +49,7 @@ export const AccessibilityFooter = () => {
             />
           </LinksContainer>
           <LogoContainer>
-            <LogoMinistere />
+            <LogoFrenchRepublic />
           </LogoContainer>
           <Spacer.TabBar />
         </Container>
