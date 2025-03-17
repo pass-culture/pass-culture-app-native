@@ -7,7 +7,7 @@ import {
   RemoteBannerRedirectionType,
   RemoteBannerType,
 } from 'features/remoteBanners/utils/remoteBannerSchema'
-import { fireEvent, render, screen, act } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 
 jest.mock('features/auth/helpers/useIsMailAppAvailable', () => ({
   useIsMailAppAvailable: jest.fn(() => true),
@@ -19,6 +19,9 @@ jest.mock('features/profile/helpers/shouldOpenInbox', () => ({
 }))
 
 jest.mock('libs/firebase/analytics/analytics')
+
+const user = userEvent.setup()
+jest.useFakeTimers()
 
 describe('<SubscriptionMessageBadge />', () => {
   it('should display the subscription message', () => {
@@ -46,10 +49,8 @@ describe('<SubscriptionMessageBadge />', () => {
       callToAction: { callToActionTitle: 'hey2', callToActionLink: 'https://fake.net' },
     })
 
-    await act(() => {
-      const button = screen.getByText('hey2')
-      fireEvent.press(button)
-    })
+    const button = screen.getByText('hey2')
+    await user.press(button)
 
     expect(openInbox).not.toHaveBeenCalled()
   })
@@ -60,10 +61,8 @@ describe('<SubscriptionMessageBadge />', () => {
       callToAction: { callToActionTitle: 'hey2', callToActionLink: 'https://fake.net' },
     })
 
-    await act(() => {
-      const button = screen.getByText('hey2')
-      fireEvent.press(button)
-    })
+    const button = screen.getByText('hey2')
+    await user.press(button)
 
     expect(openInbox).toHaveBeenCalledTimes(1)
   })

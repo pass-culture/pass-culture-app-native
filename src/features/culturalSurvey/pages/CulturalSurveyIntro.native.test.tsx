@@ -1,5 +1,4 @@
 import React from 'react'
-import { act } from 'react-test-renderer'
 
 import { navigate, reset } from '__mocks__/@react-navigation/native'
 import { CulturalSurveyQuestionEnum } from 'api/gen'
@@ -9,7 +8,7 @@ import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { storage } from 'libs/storage'
-import { fireEvent, render, screen, waitFor } from 'tests/utils'
+import { render, screen, userEvent, waitFor } from 'tests/utils'
 
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
@@ -33,6 +32,8 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
     return Component
   }
 })
+const user = userEvent.setup()
+jest.useFakeTimers()
 
 describe('CulturalSurveyIntro page', () => {
   beforeEach(() => {
@@ -54,7 +55,7 @@ describe('CulturalSurveyIntro page', () => {
       render(<CulturalSurveyIntro />)
 
       const StartButton = screen.getByText('Commencer le questionnaire')
-      fireEvent.press(StartButton)
+      user.press(StartButton)
 
       await waitFor(() => {
         expect(navigate).toHaveBeenCalledWith('CulturalSurveyQuestions', {
@@ -63,11 +64,11 @@ describe('CulturalSurveyIntro page', () => {
       })
     })
 
-    it('should log hasStartedCulturalSurvey event when pressing "Commencer le questionnaire" button', () => {
+    it('should log hasStartedCulturalSurvey event when pressing "Commencer le questionnaire" button', async () => {
       render(<CulturalSurveyIntro />)
 
       const StartButton = screen.getByText('Commencer le questionnaire')
-      fireEvent.press(StartButton)
+      await user.press(StartButton)
 
       expect(analytics.logHasStartedCulturalSurvey).toHaveBeenCalledTimes(1)
     })
@@ -76,13 +77,11 @@ describe('CulturalSurveyIntro page', () => {
       render(<CulturalSurveyIntro />)
 
       const LaterButton = screen.getByText('Plus tard')
-      fireEvent.press(LaterButton)
+      await user.press(LaterButton)
 
-      await waitFor(() => {
-        expect(reset).toHaveBeenCalledWith({
-          index: 0,
-          routes: [{ name: 'TabNavigator' }],
-        })
+      expect(reset).toHaveBeenCalledWith({
+        index: 0,
+        routes: [{ name: 'TabNavigator' }],
       })
     })
 
@@ -90,18 +89,16 @@ describe('CulturalSurveyIntro page', () => {
       render(<CulturalSurveyIntro />)
 
       const LaterButton = screen.getByText('Plus tard')
-      await act(() => {
-        fireEvent.press(LaterButton)
-      })
+      await user.press(LaterButton)
 
       expect(analytics.logHasSkippedCulturalSurvey).toHaveBeenCalledTimes(1)
     })
 
-    it('should navigate to FAQWebview when pressing "En savoir plus" button', () => {
+    it('should navigate to FAQWebview when pressing "En savoir plus" button', async () => {
       render(<CulturalSurveyIntro />)
 
       const FAQButton = screen.getByText('En savoir plus')
-      fireEvent.press(FAQButton)
+      await user.press(FAQButton)
 
       expect(navigate).toHaveBeenCalledWith('FAQWebview', undefined)
     })
@@ -136,7 +133,7 @@ describe('CulturalSurveyIntro page', () => {
       render(<CulturalSurveyIntro />)
 
       const goBackButton = screen.getByText('Retour')
-      fireEvent.press(goBackButton)
+      await user.press(goBackButton)
 
       expect(mockGoBack).toHaveBeenCalledTimes(1)
     })

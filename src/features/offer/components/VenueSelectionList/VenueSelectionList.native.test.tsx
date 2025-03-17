@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
-import { fireEvent, render, screen } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 import { theme } from 'theme'
 
 import { VenueListItem, VenueSelectionList } from './VenueSelectionList'
@@ -30,6 +30,9 @@ const items: VenueListItem[] = [
 const nbLoadedHits = 3
 const nbHits = 40
 
+const user = userEvent.setup()
+jest.useFakeTimers()
+
 describe('<VenueSelectionList />', () => {
   beforeEach(() => {
     setFeatureFlags()
@@ -54,7 +57,7 @@ describe('<VenueSelectionList />', () => {
     expect(screen.queryAllByTestId('venue-selection-list-item')).toHaveLength(3)
   })
 
-  it('should select item on press', () => {
+  it('should select item on press', async () => {
     const onItemSelect = jest.fn()
 
     render(
@@ -72,7 +75,7 @@ describe('<VenueSelectionList />', () => {
       />
     )
 
-    fireEvent.press(screen.getByText('Envie de lire'))
+    await user.press(screen.getByText('Envie de lire'))
 
     expect(onItemSelect).toHaveBeenNthCalledWith(1, 1)
   })

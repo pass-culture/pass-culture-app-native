@@ -2,13 +2,15 @@ import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { NoContentError } from 'features/home/pages/NoContentError'
-import { fireEvent, render, screen } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   return function createAnimatedComponent(Component: unknown) {
     return Component
   }
 })
+const user = userEvent.setup()
+jest.useFakeTimers()
 
 describe('NoContentError', () => {
   it('should render correctly', () => {
@@ -17,10 +19,10 @@ describe('NoContentError', () => {
     expect(screen.toJSON()).toMatchSnapshot()
   })
 
-  it('should redirect to Search tab when pressing the button', () => {
+  it('should redirect to Search tab when pressing the button', async () => {
     render(<NoContentError />)
     const searchButton = screen.getByText('Rechercher une offre')
-    fireEvent.press(searchButton)
+    await user.press(searchButton)
 
     expect(navigate).toHaveBeenCalledWith('TabNavigator', {
       screen: 'SearchStackNavigator',
