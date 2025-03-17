@@ -2672,8 +2672,8 @@ exports[`Profile component should render correctly 1`] = `
                 <View
                   accessibilityLabel="République Française - Liberté Égalité Fraternité"
                   fill="none"
-                  height="100%"
-                  width="100%"
+                  height={80}
+                  width={80}
                 >
                   <Text>
                     undefined-SVG-Mock

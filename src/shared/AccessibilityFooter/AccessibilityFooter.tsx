@@ -26,10 +26,10 @@ export const AccessibilityFooter = () => {
           </LogoContainer>
           <LinksContainer>
             <InternalTouchableLink navigateTo={getProfileNavConfig('Accessibility')}>
-              <TypoDS.BodyAccentXs>Accessibilité&nbsp;: partiellement conforme</TypoDS.BodyAccentXs>
+              <StyledBodyAccentXs>Accessibilité&nbsp;: partiellement conforme</StyledBodyAccentXs>
             </InternalTouchableLink>
             <InternalTouchableLink navigateTo={getProfileNavConfig('LegalNotices')}>
-              <TypoDS.BodyAccentXs>Mentions légales</TypoDS.BodyAccentXs>
+              <StyledBodyAccentXs>Mentions légales</StyledBodyAccentXs>
             </InternalTouchableLink>
             <ExternalTouchableLink
               as={ButtonQuaternaryGrey}
@@ -85,3 +85,7 @@ const ColoredPassCultureLogo = styled(LogoPassCulture).attrs(({ theme }) => ({
 const LogoContainer = styled.View({
   width: getSpacing(20),
 })
+
+const StyledBodyAccentXs = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
+  color: theme.colors.greyDark,
+}))

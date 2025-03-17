@@ -3,23 +3,18 @@ import { Path, G } from 'react-native-svg'
 import styled from 'styled-components/native'
 
 import { AccessibleSvg } from 'ui/svg/AccessibleSvg'
+import { getSpacing } from 'ui/theme'
 
 import { AccessibleRectangleIcon } from './types'
 
-function LogoPassCultureSvg({
-  width,
-  height,
-  color,
-  accessibilityLabel,
-  testID,
-}: AccessibleRectangleIcon) {
+function LogoPassCultureSvg({ width, height, color, testID }: AccessibleRectangleIcon) {
   return (
     <AccessibleSvg
       width={width}
       height={height}
       viewBox="0 0 107 36"
       testID={testID}
-      accessibilityLabel={accessibilityLabel ?? 'pass culture'}>
+      accessibilityLabel="pass culture">
       <G fill="none" fillRule="evenodd">
         <G fill={color} fillRule="nonzero">
           <Path
@@ -35,7 +30,7 @@ function LogoPassCultureSvg({
 export const LogoPassCulture = styled(LogoPassCultureSvg).attrs(
   ({ color, width, height, theme }) => ({
     color: color ?? theme.colors.white,
-    width: width ?? 107,
-    height: height ?? 36,
+    width: width ?? getSpacing(26),
+    height: height ?? getSpacing(9),
   })
 )``
