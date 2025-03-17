@@ -166,11 +166,11 @@ const BottomContainer = styled.View(({ theme }) => ({
   alignSelf: 'stretch',
   ...(theme.isTouch
     ? {
-      justifyContent: 'flex-end',
-      marginBottom: getSpacing(4),
-    }
+        justifyContent: 'flex-end',
+        marginBottom: getSpacing(4),
+      }
     : {
-      marginTop: getSpacing(25),
-      maxHeight: getSpacing(1),
-    }),
+        marginTop: getSpacing(25),
+        maxHeight: getSpacing(1),
+      }),
 }))
