@@ -1,28 +1,38 @@
-import { useNavigation } from '@react-navigation/core'
 import React from 'react'
 
 import { LinkToScreen } from 'cheatcodes/components/LinkToScreen'
-import { CheatcodesButtonProps, CheatcodesButtonsWithSubscreensProps } from 'cheatcodes/types'
-import { getProfileStackConfig } from 'features/navigation/ProfileStackNavigator/getProfileStackConfig'
+import { LinkToScreenWithNavigateTo } from 'cheatcodes/components/LinkToScreenWithNavigateTo'
+import { CheatcodesButtonsWithSubscreensProps } from 'cheatcodes/types'
+import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 
 interface Props {
   buttons: CheatcodesButtonsWithSubscreensProps[]
 }
 
 export const CheatcodesSubscreensButtonList: React.FC<Props> = ({ buttons }) => {
-  const { navigate } = useNavigation()
-
   return (
     <React.Fragment>
       {buttons.map((button, index) =>
         button.subscreens?.map((subscreen, subIndex) => {
+          if (subscreen.screen === 'TabNavigator')
+            return (
+              <LinkToScreenWithNavigateTo
+                key={`${index}-${subIndex}`}
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                title={(subscreen as any).params.params.screen as string}
+                screen={subscreen.screen}
+                navigateTo={subscreen as InternalNavigationProps['navigateTo']}
+                disabled={subscreen.showOnlyInSearch ?? false}
+              />
+            )
+
           return (
             <LinkToScreen
               key={`${index}-${subIndex}`}
-              title={getTitle(subscreen)}
+              title={subscreen.title ?? subscreen.screen ?? '[sans titre]'}
               screen={subscreen.screen}
-              onPress={getOnPress(subscreen)}
-              navigationParams={getParams(subscreen)}
+              onPress={subscreen.onPress}
+              navigationParams={subscreen.navigationParams}
               disabled={subscreen.showOnlyInSearch ?? false}
             />
           )
@@ -30,17 +40,4 @@ export const CheatcodesSubscreensButtonList: React.FC<Props> = ({ buttons }) => 
       )}
     </React.Fragment>
   )
-  function getTitle(subscreen: CheatcodesButtonProps): string | undefined {
-    if (subscreen.screen === 'TabNavigator') return subscreen.params.params.screen
-    return subscreen.title ?? subscreen.screen ?? '[sans titre]'
-  }
-  function getParams(subscreen: CheatcodesButtonProps) {
-    if (subscreen.screen === 'TabNavigator') return subscreen.screen
-    return subscreen.navigationParams
-  }
-  function getOnPress(subscreen: CheatcodesButtonProps): (() => void) | undefined {
-    if (subscreen.screen === 'TabNavigator')
-      return () => navigate(...getProfileStackConfig(subscreen.params.params.screen))
-    return subscreen.onPress
-  }
 }
