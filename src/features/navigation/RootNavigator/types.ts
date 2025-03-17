@@ -4,6 +4,10 @@ import { ComponentType } from 'react'
 
 import { CulturalSurveyQuestionEnum } from 'api/gen/api'
 import { BookingsTab } from 'features/bookings/enum'
+import {
+  ActivationStackParamList,
+  ActivationStackRouteName,
+} from 'features/navigation/ActivationStackNavigator/ActivationStackTypes'
 import { CheatcodesStackParamList } from 'features/navigation/CheatcodesStackNavigator/types'
 import {
   ProfileStackParamList,
@@ -199,6 +203,10 @@ export type SubscriptionRootStackParamList = {
  * please update the deeplink handler in consequence.
  */
 export type RootStackParamList = {
+  ActivationStackNavigator?: {
+    screen: ActivationStackRouteName
+    params: ActivationStackParamList[ActivationStackRouteName]
+  }
   ABTestingPOC: undefined
   AccountCreated: undefined
   AccountReactivationSuccess: undefined
