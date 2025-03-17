@@ -11,6 +11,8 @@ import { BookingProperties } from 'features/bookings/types'
 import { VenueBlockAddress, VenueBlockVenue } from 'features/offer/components/OfferVenueBlock/type'
 import { VenueBlockWithItinerary } from 'features/offer/components/OfferVenueBlock/VenueBlockWithItinerary'
 import { analytics } from 'libs/analytics/provider'
+import { useLocation } from 'libs/location'
+import { getDistance } from 'libs/location/getDistance'
 import { formatFullAddress } from 'shared/address/addressFormatter'
 import { ErrorBanner } from 'ui/components/banners/ErrorBanner'
 import { InfoBanner } from 'ui/components/banners/InfoBanner'
@@ -38,6 +40,15 @@ export const BookingDetailsContent = ({
 
   const { hourLabel, dayLabel } = getBookingLabels(booking, properties)
 
+  const { userLocation, selectedPlace, selectedLocationMode } = useLocation()
+
+  const distance = offer.venue.coordinates
+    ? getDistance(
+        { lat: offer.venue.coordinates.latitude, lng: offer.venue.coordinates.longitude },
+        { userLocation, selectedPlace, selectedLocationMode }
+      )
+    : null
+
   const onEmailPress = () => {
     analytics.logClickEmailOrganizer()
   }
@@ -56,6 +67,7 @@ export const BookingDetailsContent = ({
             address={getVenueBlockAddress(booking.stock.offer.address)}
             offerId={offer.id}
             thumbnailSize={VENUE_THUMBNAIL_SIZE}
+            distance={distance}
           />
         }
         title={offer.name}
