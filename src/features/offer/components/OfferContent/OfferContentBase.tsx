@@ -53,6 +53,7 @@ type OfferContentBaseProps = OfferContentProps & {
   onOfferPreviewPress: (index?: number) => void
   chronicles?: ChronicleCardData[]
   likesCount?: number
+  headlineOffersCount?: number
   defaultReaction?: ReactionTypeEnum | null
   onReactionButtonPress?: () => void
   contentContainerStyle?: StyleProp<ViewStyle>
@@ -65,6 +66,7 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
   searchGroupList,
   subcategory,
   chronicles,
+  headlineOffersCount,
   onOfferPreviewPress,
   contentContainerStyle,
   defaultReaction,
@@ -253,7 +255,8 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
               subcategory={subcategory}
               likesCount={offer.reactionsCount.likes}
               chroniclesCount={chronicles?.length}
-              distance={distance}>
+              distance={distance}
+              headlineOffersCount={headlineOffersCount}>
               {theme.isDesktopViewport ? offerCtaButton : null}
             </OfferBody>
           </BodyWrapper>

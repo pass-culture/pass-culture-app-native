@@ -5,6 +5,7 @@ import { ReactionTypeEnum } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { chroniclePreviewToChronicalCardData } from 'features/offer/adapters/chroniclePreviewToChronicleCardData'
+import { useFetchHeadlineOffersCount } from 'features/offer/api/headlineOffers/useFetchHeadlineOffersCount'
 import { OfferContent } from 'features/offer/components/OfferContent/OfferContent'
 import { OfferContentPlaceholder } from 'features/offer/components/OfferContentPlaceholder/OfferContentPlaceholder'
 import { useReactionMutation } from 'features/reactions/api/useReactionMutation'
@@ -17,6 +18,7 @@ import { useSubcategoriesMapping } from 'libs/subcategories/mappings'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
 import { useEndedBookingFromOfferIdQuery } from 'queries/bookings/useEndedBookingFromOfferIdQuery'
 import { useOfferQuery } from 'queries/offer/useOfferQuery'
+import { isMultiVenueCompatibleOffer } from 'shared/multiVenueOffer/isMultiVenueCompatibleOffer'
 import { useModal } from 'ui/components/modals/useModal'
 
 const ANIMATION_DURATION = 700
@@ -60,7 +62,12 @@ export function Offer() {
     ? offer?.chronicles?.map((value) => chroniclePreviewToChronicalCardData(value))
     : undefined
 
+  const { data } = useFetchHeadlineOffersCount(offer)
+
   if (!offer || !subcategories) return null
+
+  const shouldFetchSearchVenueOffers = isMultiVenueCompatibleOffer(offer)
+  const headlineOffersCount = shouldFetchSearchVenueOffers ? data?.headlineOffersCount : undefined
 
   if (showSkeleton) return <OfferContentPlaceholder />
 
@@ -80,6 +87,7 @@ export function Offer() {
       <OfferContent
         offer={offer}
         chronicles={chronicles}
+        headlineOffersCount={headlineOffersCount}
         searchGroupList={subcategories.searchGroups}
         subcategory={subcategoriesMapping[offer.subcategoryId]}
         defaultReaction={booking?.userReaction}
