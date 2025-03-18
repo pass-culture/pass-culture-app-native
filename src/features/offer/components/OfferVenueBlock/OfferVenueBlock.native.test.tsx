@@ -3,9 +3,7 @@ import React from 'react'
 import { SubcategoryIdEnum } from 'api/gen'
 import { useVenueBlock } from 'features/offer/components/OfferVenueBlock/useVenueBlock'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
-import { ILocationContext } from 'libs/location'
-import { LocationMode } from 'libs/location/types'
-import { userEvent, render, screen } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 
 import { OfferVenueBlock } from './OfferVenueBlock'
 
@@ -22,26 +20,6 @@ jest.mock('libs/itinerary/useItinerary', () => ({
 }))
 
 const cinemaOffer = { ...offerResponseSnap, subcategoryId: SubcategoryIdEnum.SEANCE_CINE }
-
-const DEFAULT_USER_LOCATION = { latitude: 20, longitude: 3 }
-
-const EVERYWHERE_USER_POSITION = {
-  userLocation: null,
-  selectedPlace: null,
-  selectedLocationMode: LocationMode.EVERYWHERE,
-  geolocPosition: undefined,
-}
-const AROUND_ME_POSITION = {
-  userLocation: DEFAULT_USER_LOCATION,
-  selectedPlace: null,
-  selectedLocationMode: LocationMode.AROUND_ME,
-  geolocPosition: DEFAULT_USER_LOCATION,
-}
-
-const mockUseLocation = jest.fn((): Partial<ILocationContext> => EVERYWHERE_USER_POSITION)
-jest.mock('libs/location/LocationWrapper', () => ({
-  useLocation: () => mockUseLocation(),
-}))
 
 jest.mock('libs/firebase/analytics/analytics')
 
@@ -75,16 +53,12 @@ describe('<OfferVenueBlock />', () => {
   })
 
   it('should render distance when user chose geolocation', () => {
-    mockUseLocation.mockReturnValueOnce(AROUND_ME_POSITION)
-
-    render(<OfferVenueBlock title="Lieu de retrait" offer={offerResponseSnap} />)
+    render(<OfferVenueBlock title="Lieu de retrait" offer={offerResponseSnap} distance="105 km" />)
 
     expect(screen.getByText('à 105 km')).toBeOnTheScreen()
   })
 
   it("should not render distance when user chose 'France entière'", () => {
-    mockUseLocation.mockReturnValueOnce(EVERYWHERE_USER_POSITION)
-
     render(<OfferVenueBlock title="Lieu de retrait" offer={offerResponseSnap} />)
 
     expect(screen.queryByText('à 105 km')).not.toBeOnTheScreen()
@@ -225,20 +199,12 @@ describe('<OfferVenueBlock />', () => {
   })
 
   it('should not display right icon when venue is permanent but offer address is different than venue address', () => {
-    // useVenue hook is called twice, the second call is the one we want to mock for the test
-    mockUseVenueBlock
-      .mockReturnValueOnce({
-        venueName: 'PATHE BEAUGRENELLE',
-        venueAddress: '75008 PARIS 8, 2 RUE LAMENNAIS',
-        isOfferAddressDifferent: false,
-        onCopyAddressPress: mockOnCopyAddressPress,
-      })
-      .mockReturnValueOnce({
-        venueName: 'PATHE BEAUGRENELLE',
-        venueAddress: '75008 PARIS 8, 2 RUE LAMENNAIS',
-        isOfferAddressDifferent: true,
-        onCopyAddressPress: mockOnCopyAddressPress,
-      })
+    mockUseVenueBlock.mockReturnValueOnce({
+      venueName: 'PATHE BEAUGRENELLE',
+      venueAddress: '75008 PARIS 8, 2 RUE LAMENNAIS',
+      isOfferAddressDifferent: true,
+      onCopyAddressPress: mockOnCopyAddressPress,
+    })
 
     render(
       <OfferVenueBlock
@@ -285,5 +251,68 @@ describe('<OfferVenueBlock />', () => {
     await user.press(screen.getByText('Voir l’itinéraire'))
 
     expect(mockNavigateToItinerary).toHaveBeenNthCalledWith(1, '75008 PARIS 8, 2 RUE LAMENNAIS')
+  })
+
+  it('should display offer address label when offer address is different of venue offer address', async () => {
+    mockUseVenueBlock.mockReturnValueOnce({
+      venueName: 'PATHE BEAUGRENELLE',
+      venueAddress: '75008 PARIS 8, 2 RUE LAMENNAIS',
+      isOfferAddressDifferent: true,
+      onCopyAddressPress: mockOnCopyAddressPress,
+    })
+
+    render(
+      <OfferVenueBlock
+        title="Lieu de retrait"
+        offer={{
+          ...offerResponseSnap,
+          address: { ...offerResponseSnap.address, label: 'PATHE PARNASSE' },
+        }}
+        onSeeVenuePress={jest.fn()}
+      />
+    )
+
+    expect(await screen.findByText('PATHE PARNASSE')).toBeOnTheScreen()
+  })
+
+  it('should not display venue name when offer address is different of venue offer address and offer address has not label', () => {
+    mockUseVenueBlock.mockReturnValueOnce({
+      venueName: 'PATHE BEAUGRENELLE',
+      venueAddress: '75008 PARIS 8, 2 RUE LAMENNAIS',
+      isOfferAddressDifferent: true,
+      onCopyAddressPress: mockOnCopyAddressPress,
+    })
+
+    render(
+      <OfferVenueBlock
+        title="Lieu de retrait"
+        offer={{
+          ...offerResponseSnap,
+          address: { ...offerResponseSnap.address, label: '' },
+        }}
+        onSeeVenuePress={jest.fn()}
+      />
+    )
+
+    expect(screen.queryByText('PATHE BEAUGRENELLE')).not.toBeOnTheScreen()
+  })
+
+  it('should display placeholder when offer address is different of venue offer address even if venue has an image', async () => {
+    mockUseVenueBlock.mockReturnValueOnce({
+      venueName: 'PATHE BEAUGRENELLE',
+      venueAddress: '75008 PARIS 8, 2 RUE LAMENNAIS',
+      isOfferAddressDifferent: true,
+      onCopyAddressPress: mockOnCopyAddressPress,
+    })
+
+    render(
+      <OfferVenueBlock
+        title="Lieu de retrait"
+        offer={offerResponseSnap}
+        onSeeVenuePress={jest.fn()}
+      />
+    )
+
+    expect(await screen.findByTestId('LocationIcon')).toBeOnTheScreen()
   })
 })

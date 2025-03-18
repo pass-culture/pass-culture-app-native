@@ -354,7 +354,7 @@ describe('<OfferPlace />', () => {
       .mockReturnValueOnce(AROUND_ME_POSITION)
       .mockReturnValueOnce(AROUND_ME_POSITION)
     mockUseSearchVenueOffers.mockReturnValueOnce(searchVenueOfferEmpty)
-    renderOfferPlace({})
+    renderOfferPlace({ distance: '73 km' })
 
     expect(screen.getByText('à 73 km')).toBeOnTheScreen()
   })
@@ -685,11 +685,12 @@ const renderOfferPlace = ({
   offer = mockOffer,
   subcategory = mockSubcategory,
   isDesktopViewport,
+  distance,
 }: RenderOfferPlaceType) =>
   render(
     reactQueryProviderHOC(
       <OfferCTAProvider>
-        <OfferPlace offer={offer} subcategory={subcategory} />
+        <OfferPlace offer={offer} subcategory={subcategory} distance={distance} />
       </OfferCTAProvider>
     ),
     {

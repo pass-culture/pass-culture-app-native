@@ -46,6 +46,7 @@ type Props = {
   children: ReactNode
   likesCount?: number
   chroniclesCount?: number
+  distance?: string | null
 }
 
 export const OfferBody: FunctionComponent<Props> = ({
@@ -54,6 +55,7 @@ export const OfferBody: FunctionComponent<Props> = ({
   children,
   likesCount,
   chroniclesCount,
+  distance,
 }) => {
   const { navigate } = useNavigation<UseNavigationType>()
 
@@ -183,7 +185,7 @@ export const OfferBody: FunctionComponent<Props> = ({
         />
       )}
 
-      <OfferPlace offer={offer} subcategory={subcategory} />
+      <OfferPlace offer={offer} subcategory={subcategory} distance={distance} />
     </Container>
   )
 }

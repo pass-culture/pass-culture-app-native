@@ -22,6 +22,7 @@ type Props = {
   onChangeVenuePress?: VoidFunction
   onSeeVenuePress?: VoidFunction
   onSeeItineraryPress?: VoidFunction
+  distance?: string | null
 }
 
 export function OfferVenueBlock({
@@ -30,15 +31,20 @@ export function OfferVenueBlock({
   onSeeItineraryPress,
   title,
   offer,
+  distance,
 }: Readonly<Props>) {
   const venueBlockVenue = getVenue(offer.venue)
   const venueBlockAddress = getAddress(offer.address)
-  const { onCopyAddressPress, venueAddress } = useVenueBlock({
+
+  const isCinema = offer.subcategoryId === SubcategoryIdEnum.SEANCE_CINE
+
+  const addressLabel = venueBlockAddress?.label ?? undefined
+  const venueImageUrl = venueBlockVenue.bannerUrl ?? ''
+
+  const { venueName, venueAddress, isOfferAddressDifferent, onCopyAddressPress } = useVenueBlock({
     venue: venueBlockVenue,
     offerAddress: venueBlockAddress,
   })
-
-  const isCinema = offer.subcategoryId === SubcategoryIdEnum.SEANCE_CINE
 
   return (
     <Wrapper>
@@ -46,9 +52,13 @@ export function OfferVenueBlock({
 
       <Container>
         <VenueBlock
-          venue={venueBlockVenue}
-          address={venueBlockAddress}
+          venueId={venueBlockVenue.id}
+          distance={distance}
+          hasVenuePage={!!onSeeVenuePress && !isOfferAddressDifferent}
           onSeeVenuePress={onSeeVenuePress}
+          title={isOfferAddressDifferent ? addressLabel : venueName}
+          subtitle={venueAddress}
+          venueImageUrl={isOfferAddressDifferent ? '' : venueImageUrl}
         />
 
         {onChangeVenuePress ? (

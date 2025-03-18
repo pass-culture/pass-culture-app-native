@@ -30,6 +30,7 @@ import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 export type OfferPlaceProps = {
   offer: OfferResponseV2
   subcategory: Subcategory
+  distance?: string | null
 }
 
 type PartialVenue = Pick<
@@ -53,7 +54,7 @@ const mergeVenueData =
 
 const ANIMATION_DURATION = 500 //ms
 
-export function OfferPlace({ offer, subcategory }: Readonly<OfferPlaceProps>) {
+export function OfferPlace({ offer, subcategory, distance }: Readonly<OfferPlaceProps>) {
   const { navigate } = useNavigation<UseNavigationType>()
   const queryClient = useQueryClient()
   const { selectedLocationMode, place, userLocation } = useLocation()
@@ -160,6 +161,7 @@ export function OfferPlace({ offer, subcategory }: Readonly<OfferPlaceProps>) {
             title={venueSectionTitle}
             offer={offer}
             onSeeVenuePress={canSeeVenue ? handleOnSeeVenuePress : undefined}
+            distance={distance}
           />
         ) : (
           <OfferVenueBlock
@@ -170,6 +172,7 @@ export function OfferPlace({ offer, subcategory }: Readonly<OfferPlaceProps>) {
             onSeeItineraryPress={
               shouldDisplaySeeItineraryButton ? handleBeforeNavigateToItinerary : undefined
             }
+            distance={distance}
           />
         )}
 

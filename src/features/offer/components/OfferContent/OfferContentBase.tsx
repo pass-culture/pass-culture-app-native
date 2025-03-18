@@ -26,12 +26,15 @@ import { OfferMessagingApps } from 'features/offer/components/OfferMessagingApps
 import { OfferPlaylistList } from 'features/offer/components/OfferPlaylistList/OfferPlaylistList'
 import { OfferWebMetaHeader } from 'features/offer/components/OfferWebMetaHeader'
 import { getIsAComingSoonOffer } from 'features/offer/helpers/getIsAComingSoonOffer'
+import { getVenue } from 'features/offer/helpers/getVenueBlockProps'
 import { useOfferBatchTracking } from 'features/offer/helpers/useOfferBatchTracking/useOfferBatchTracking'
 import { useOfferPlaylist } from 'features/offer/helpers/useOfferPlaylist/useOfferPlaylist'
 import { OfferContentProps } from 'features/offer/types'
 import { isCloseToBottom } from 'libs/analytics'
 import { analytics } from 'libs/analytics/provider'
 import { useFunctionOnce } from 'libs/hooks'
+import { useLocation } from 'libs/location'
+import { getDistance } from 'libs/location/getDistance'
 import { QueryKeys } from 'libs/queryKeys'
 import { useAddFavoriteMutation } from 'queries/favorites/useAddFavoriteMutation'
 import { useRemoveFavoriteMutation } from 'queries/favorites/useRemoveFavoriteMutation'
@@ -93,6 +96,15 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
 
   const { shouldTriggerBatchSurveyEvent, trackBatchEvent, trackEventHasSeenOfferOnce } =
     useOfferBatchTracking(subcategory.id)
+
+  const { userLocation, selectedPlace, selectedLocationMode } = useLocation()
+  const venue = getVenue(offer.venue)
+  const distance = venue.coordinates
+    ? getDistance(
+        { lat: venue.coordinates.latitude, lng: venue.coordinates.longitude },
+        { userLocation, selectedPlace, selectedLocationMode }
+      )
+    : null
 
   // We want to show images from offer when it's loaded. Not the one preloaded in query cache...
   const offerImages: ImageWithCredit[] = useMemo(
@@ -240,7 +252,8 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
               offer={offer}
               subcategory={subcategory}
               likesCount={offer.reactionsCount.likes}
-              chroniclesCount={chronicles?.length}>
+              chroniclesCount={chronicles?.length}
+              distance={distance}>
               {theme.isDesktopViewport ? offerCtaButton : null}
             </OfferBody>
           </BodyWrapper>

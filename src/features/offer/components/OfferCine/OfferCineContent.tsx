@@ -21,10 +21,13 @@ import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
 import { PlainMore } from 'ui/svg/icons/PlainMore'
 import { TypoDS, getSpacing } from 'ui/theme'
 
-export const OfferCineContent: FC<{
+type Props = {
   offer: OfferResponseV2
   onSeeVenuePress?: VoidFunction
-}> = ({ offer, onSeeVenuePress }) => {
+  distance?: string | null
+}
+
+export const OfferCineContent: FC<Props> = ({ offer, onSeeVenuePress, distance }) => {
   const theme = useTheme()
 
   const { data: offers, isLoading } = useOffersStocksFromOfferQuery(offer)
@@ -54,6 +57,7 @@ export const OfferCineContent: FC<{
             onSeeVenuePress={onSeeVenuePress}
             nextDate={item.nextDate}
             withDivider
+            distance={distance}
           />
         )}
       />

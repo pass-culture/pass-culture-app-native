@@ -11,18 +11,19 @@ import { getDates } from 'shared/date/getDates'
 import { AppThemeType } from 'theme'
 import { Anchor } from 'ui/components/anchor/Anchor'
 import { useScrollToAnchor } from 'ui/components/anchor/AnchorContext'
-import { getSpacing, Spacer, TypoDS } from 'ui/theme'
+import { Spacer, TypoDS, getSpacing } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type Props = {
   title: string
   offer: OfferResponseV2
   onSeeVenuePress?: VoidFunction
+  distance?: string | null
 }
 
 const cinemaCTAButtonName = 'Accéder aux séances'
 
-export const OfferCineBlock: FC<Props> = ({ title, onSeeVenuePress, offer }) => {
+export const OfferCineBlock: FC<Props> = ({ title, onSeeVenuePress, offer, distance }) => {
   const theme = useTheme()
   const { setButton, showButton } = useOfferCTA()
   const scrollToAnchor = useScrollToAnchor()
@@ -52,7 +53,7 @@ export const OfferCineBlock: FC<Props> = ({ title, onSeeVenuePress, offer }) => 
       </Anchor>
       <Spacer.Column numberOfSpaces={4} />
       <MovieCalendarProvider initialDates={next15Dates} containerStyle={getCalendarStyle(theme)}>
-        <OfferCineContent offer={offer} onSeeVenuePress={onSeeVenuePress} />
+        <OfferCineContent offer={offer} onSeeVenuePress={onSeeVenuePress} distance={distance} />
       </MovieCalendarProvider>
     </Container>
   )
