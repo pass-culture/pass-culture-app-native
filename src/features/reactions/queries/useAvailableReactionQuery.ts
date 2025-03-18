@@ -5,7 +5,7 @@ import { GetAvailableReactionsResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { QueryKeys } from 'libs/queryKeys'
 
-export const useAvailableReaction = () => {
+export const useAvailableReactionQuery = () => {
   const { isLoggedIn } = useAuthContext()
 
   return useQuery<GetAvailableReactionsResponse>(

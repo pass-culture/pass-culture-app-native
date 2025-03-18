@@ -9,7 +9,7 @@ import { render, screen } from 'tests/utils'
 jest.mock('queries/bookings/useBookingsQuery')
 const mockMutate = jest.fn()
 let mockIsSuccess = true
-jest.mock('features/reactions/api/useReactionMutation', () => ({
+jest.mock('features/reactions/queries/useReactionMutation', () => ({
   useReactionMutation: () => ({ mutate: mockMutate, isSuccess: mockIsSuccess }),
 }))
 
