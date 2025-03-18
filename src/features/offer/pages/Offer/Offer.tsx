@@ -2,6 +2,7 @@ import { useRoute } from '@react-navigation/native'
 import React, { Fragment, useCallback } from 'react'
 
 import { ReactionTypeEnum } from 'api/gen'
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { chroniclePreviewToChronicalCardData } from 'features/offer/adapters/chroniclePreviewToChronicleCardData'
 import { OfferContent } from 'features/offer/components/OfferContent/OfferContent'
@@ -29,6 +30,7 @@ export function Offer() {
   )
   const isReactionEnabled = useFeatureFlag(RemoteStoreFeatureFlags.WIP_REACTION_FEATURE)
 
+  const { isLoggedIn } = useAuthContext()
   const { data: offer, isLoading } = useOfferQuery({
     offerId,
     select: (data) => ({
@@ -42,7 +44,7 @@ export function Offer() {
 
   const { visible, hideModal, showModal } = useModal(false)
   const { data: booking } = useEndedBookingFromOfferIdQuery(offer?.id ?? -1, {
-    enabled: isReactionEnabled && !!offer?.id,
+    enabled: isLoggedIn && isReactionEnabled && !!offer?.id,
   })
   const { mutate: saveReaction } = useReactionMutation()
 
