@@ -60,7 +60,7 @@ export const SetPhoneNumberWithoutValidation = () => {
 
   const { navigateForwardToStepper } = useNavigateForwardToStepper()
   const saveStep = useSaveStep()
-  const { mutate: updateProfile } = usePatchProfile({
+  const { mutate: patchProfile } = usePatchProfile({
     onSuccess: () => {
       const { phoneNumber, countryId } = getValues()
       const country = findCountry(countryId)
@@ -92,7 +92,7 @@ export const SetPhoneNumberWithoutValidation = () => {
       return
     }
     const phoneNumberWithPrefix = formatPhoneNumberWithPrefix(phoneNumber, country.callingCode)
-    updateProfile({ phoneNumber: phoneNumberWithPrefix })
+    patchProfile({ phoneNumber: phoneNumberWithPrefix })
   }
 
   const submit = handleSubmit(onSubmit)

@@ -53,7 +53,7 @@ export const useThematicSubscription = ({
 
   const isSubscribeButtonActive = isAtLeastOneNotificationTypeActivated && isThemeSubscribed
 
-  const { mutate: updateProfile, isLoading: isUpdatingProfile } = usePatchProfile({
+  const { mutate: patchProfile, isLoading: isUpdatingProfile } = usePatchProfile({
     onSuccess: async () => {
       analytics.logNotificationToggle(!!state.allowEmails, !!state.allowPush)
       const analyticsParams = homeId
@@ -93,7 +93,7 @@ export const useThematicSubscription = ({
   const updateSubscription = () => {
     if (!isAtLeastOneNotificationTypeActivated || isUpdatingProfile) return
 
-    updateProfile({
+    patchProfile({
       subscriptions: {
         marketingEmail: user?.subscriptions.marketingEmail || false,
         marketingPush: user?.subscriptions.marketingPush || false,
@@ -112,7 +112,7 @@ export const useThematicSubscription = ({
     allowEmails: boolean
     allowPush: boolean
   }) => {
-    updateProfile({
+    patchProfile({
       subscriptions: {
         marketingEmail: allowEmails,
         marketingPush: allowPush,

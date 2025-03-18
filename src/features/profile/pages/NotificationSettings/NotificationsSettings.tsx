@@ -64,7 +64,7 @@ export const NotificationsSettings = () => {
 
   const { pushPermission } = usePushPermission(updatePushPermissionFromSettings)
 
-  const { mutate: updateProfile, isLoading: isUpdatingProfile } = usePatchProfile({
+  const { mutate: patchProfile, isLoading: isUpdatingProfile } = usePatchProfile({
     onSuccess: () => {
       showSuccessSnackBar({
         message: 'Tes modifications ont été enregistrées\u00a0!',
@@ -128,7 +128,7 @@ export const NotificationsSettings = () => {
       analytics.logSubscriptionUpdate({ type: 'update', from: 'profile' })
     }
     if (state.allowEmails !== undefined && state.allowPush !== undefined) {
-      updateProfile({
+      patchProfile({
         subscriptions: {
           marketingEmail: state.allowEmails,
           marketingPush: state.allowPush,

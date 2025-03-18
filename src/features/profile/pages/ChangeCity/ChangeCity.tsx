@@ -32,7 +32,7 @@ export const ChangeCity = () => {
     resolver: yupResolver(cityResolver),
     defaultValues: { city: storedCity ?? undefined },
   })
-  const { mutate: updateProfile } = usePatchProfile({
+  const { mutate: patchProfile } = usePatchProfile({
     onSuccess: (_, variables) => {
       analytics.logUpdatePostalCode({
         newCity: variables.city ?? '',
@@ -55,7 +55,7 @@ export const ChangeCity = () => {
 
   const onSubmit = ({ city }: CityForm) => {
     setCity(city)
-    updateProfile({ city: city.name, postalCode: city.postalCode })
+    patchProfile({ city: city.name, postalCode: city.postalCode })
     navigate(...getProfileStackConfig('PersonalData'))
   }
 
