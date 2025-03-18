@@ -65,7 +65,7 @@ export const BookingDetailsCancelButton = (props: BookingDetailsCancelButtonProp
   const otherBookingStatusMessage = `Tu ne peux plus annuler ta réservation\u00a0: elle devait être annulée avant le\u00a0${formattedConfirmationDate}`
 
   let cancelAnnulationMessage = ''
-  let button = null
+  let button: React.JSX.Element | null = null
 
   if (isStillCancellable) {
     cancelAnnulationMessage = stillCancellableMessage

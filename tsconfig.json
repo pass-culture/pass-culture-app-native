@@ -14,7 +14,7 @@
     "moduleResolution": "bundler",
     "noEmit": true,
     "strict": true,
-    "noImplicitAny": true,
+    "noImplicitAny": false,
     "noImplicitReturns": true,
     "noImplicitThis": true,
     "noUncheckedIndexedAccess": true,

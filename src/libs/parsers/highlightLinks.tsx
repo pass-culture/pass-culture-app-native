@@ -4,6 +4,7 @@ import React from 'react'
 import { ExternalLink } from 'ui/components/buttons/externalLink/ExternalLink'
 
 type ParsedDescription = Array<string | React.ReactNode>
+type ChunkType = { highlight: boolean; start: number; end: number }
 
 const externalNavRegex = new RegExp(
   /((^|\s)|https?:\/\/)[a-z]([-a-z0-9:%._+~#=]*[a-z0-9])?\.[a-z0-9]{1,6}([/?#]\S*)?(\s|$)/,
@@ -12,7 +13,7 @@ const externalNavRegex = new RegExp(
 
 export const customFindUrlChunks = ({ textToHighlight }: FindChunksArgs): Chunk[] => {
   // code adapted from https://github.com/bvaughn/highlight-words-core/blob/master/src/utils.js
-  const chunks = []
+  const chunks: ChunkType[] = []
   let match: RegExpExecArray | null
   while ((match = externalNavRegex.exec(textToHighlight))) {
     // @ts-expect-error: because of noUncheckedIndexedAccess
