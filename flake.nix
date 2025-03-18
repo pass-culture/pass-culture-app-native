@@ -26,6 +26,7 @@
             pkgs.act # needed to debug pipeline locally
             pkgs.gh # needed to debug pipeline locally
             pkgs.podman # needed to debug pipeline locally
+            pkgs.watchman # needed by Metro bundler
           ];
         };
     });
