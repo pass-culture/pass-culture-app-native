@@ -22,7 +22,7 @@
             pkgs.jdk17 # needed by Android
             pkgs.jq # needed by some scripts run in the pipeline
             pkgs.python3 # needed by scripts/add_tracker.py
-            pkgs-old.maestro # needed to run end to end test locally
+            pkgs.maestro # needed to run end to end test locally
             pkgs.act # needed to debug pipeline locally
             pkgs.gh # needed to debug pipeline locally
             pkgs.podman # needed to debug pipeline locally
