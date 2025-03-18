@@ -13,244 +13,17 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
   }
 >
   <View
-    customHeight={16}
-    enable={true}
     style={
       [
         {
-          "height": 16,
-        },
-      ]
-    }
-  />
-  <View
-    style={
-      [
-        {
-          "marginTop": 24,
-          "paddingHorizontal": 24,
-          "zIndex": 1,
+          "marginBottom": 8,
         },
       ]
     }
   >
     <View
-      style={
-        [
-          {
-            "alignItems": "center",
-            "flexDirection": "row",
-          },
-        ]
-      }
-    >
-      <View
-        style={
-          [
-            {
-              "flexDirection": "row",
-              "justifyContent": "space-between",
-              "width": "100%",
-            },
-          ]
-        }
-      >
-        <View
-          style={
-            [
-              {
-                "flexShrink": 1,
-                "width": "100%",
-              },
-            ]
-          }
-          testID="SearchHeaderTitleContainer"
-        >
-          <View
-            style={
-              [
-                {
-                  "alignItems": "flex-start",
-                  "flexDirection": "row",
-                  "justifyContent": "flex-start",
-                },
-              ]
-            }
-          >
-            <View
-              style={
-                [
-                  {
-                    "alignItems": "center",
-                    "flexWrap": "wrap",
-                    "justifyContent": "flex-start",
-                    "maxWidth": "75%",
-                  },
-                ]
-              }
-            >
-              <Text
-                htmlFor="testUuidV4"
-                style={
-                  [
-                    {
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 28,
-                      "lineHeight": 44.8,
-                    },
-                  ]
-                }
-              >
-                Rechercher
-              </Text>
-            </View>
-          </View>
-          <Text
-            style={
-              [
-                {
-                  "color": "#696A6F",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 12,
-                  "lineHeight": 19.2,
-                  "marginTop": 4,
-                },
-              ]
-            }
-          >
-            Toutes les offres à portée de main
-          </Text>
-        </View>
-        <View
-          testID="InsideLocationWidget"
-        >
-          <View
-            accessibilityLabel="Ouvrir la modale de localisation depuis le widget"
-            accessibilityRole="button"
-            accessibilityState={
-              {
-                "busy": undefined,
-                "checked": undefined,
-                "disabled": undefined,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
-            focusable={true}
-            onClick={[Function]}
-            onLayout={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              [
-                [
-                  {
-                    "userSelect": "auto",
-                  },
-                  {
-                    "alignItems": "center",
-                    "marginLeft": 8,
-                  },
-                ],
-                {
-                  "opacity": 1,
-                },
-              ]
-            }
-            testID="Ouvrir la modale de localisation depuis le widget"
-          >
-            <View
-              isActive={true}
-              style={
-                [
-                  {
-                    "alignItems": "center",
-                    "backgroundColor": "#ffffff",
-                    "borderColor": "#161617",
-                    "borderRadius": 40,
-                    "borderStyle": "solid",
-                    "borderWidth": 2,
-                    "height": 40,
-                    "justifyContent": "center",
-                    "width": 40,
-                  },
-                ]
-              }
-            >
-              <View
-                height={24}
-                width={24}
-              >
-                <Text>
-                  undefined-SVG-Mock
-                </Text>
-              </View>
-            </View>
-            <Text
-              numberOfLines={1}
-              style={
-                [
-                  {
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 12,
-                    "lineHeight": 19.2,
-                    "maxWidth": 100,
-                    "paddingTop": 4,
-                  },
-                ]
-              }
-            >
-              Ma position
-            </Text>
-          </View>
-          <Modal
-            accessibilityLabelledBy="testUuidV4"
-            accessibilityModal={true}
-            animationType="none"
-            deviceHeight={1334}
-            deviceWidth={750}
-            hardwareAccelerated={false}
-            hideModalContentWhileAnimating={false}
-            onBackdropPress={[Function]}
-            onModalHide={[Function]}
-            onModalWillHide={[Function]}
-            onModalWillShow={[Function]}
-            onRequestClose={[Function]}
-            panResponderThreshold={4}
-            scrollHorizontal={false}
-            scrollOffset={0}
-            scrollOffsetMax={0}
-            scrollTo={null}
-            statusBarTranslucent={true}
-            supportedOrientations={
-              [
-                "portrait",
-                "landscape",
-              ]
-            }
-            swipeThreshold={100}
-            testID="modal"
-            transparent={true}
-            visible={false}
-          />
-        </View>
-      </View>
-    </View>
-    <View
-      numberOfSpaces={4}
+      customHeight={16}
+      enable={true}
       style={
         [
           {
@@ -259,12 +32,24 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
         ]
       }
     />
-    <View>
+    <View
+      style={
+        [
+          {
+            "marginTop": 24,
+            "paddingHorizontal": 24,
+            "zIndex": 1,
+          },
+        ]
+      }
+    >
       <View
         style={
           [
             {
+              "alignItems": "center",
               "flexDirection": "row",
+              "paddingBottom": 16,
             },
           ]
         }
@@ -273,12 +58,213 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
           style={
             [
               {
-                "alignItems": "center",
-                "flexBasis": 0,
                 "flexDirection": "row",
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "justifyContent": "center",
+                "justifyContent": "space-between",
+                "width": "100%",
+              },
+            ]
+          }
+        >
+          <View
+            style={
+              [
+                {
+                  "flexShrink": 1,
+                  "width": "100%",
+                },
+              ]
+            }
+            testID="SearchHeaderTitleContainer"
+          >
+            <View
+              style={
+                [
+                  {
+                    "alignItems": "flex-start",
+                    "flexDirection": "row",
+                    "justifyContent": "flex-start",
+                  },
+                ]
+              }
+            >
+              <View
+                style={
+                  [
+                    {
+                      "alignItems": "center",
+                      "flexWrap": "wrap",
+                      "justifyContent": "flex-start",
+                      "maxWidth": "75%",
+                    },
+                  ]
+                }
+              >
+                <Text
+                  htmlFor="testUuidV4"
+                  style={
+                    [
+                      {
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 28,
+                        "lineHeight": 44.8,
+                      },
+                    ]
+                  }
+                >
+                  Rechercher
+                </Text>
+              </View>
+            </View>
+            <Text
+              style={
+                [
+                  {
+                    "color": "#696A6F",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 12,
+                    "lineHeight": 19.2,
+                    "marginTop": 4,
+                  },
+                ]
+              }
+            >
+              Toutes les offres à portée de main
+            </Text>
+          </View>
+          <View
+            testID="InsideLocationWidget"
+          >
+            <View
+              accessibilityLabel="Ouvrir la modale de localisation depuis le widget"
+              accessibilityRole="button"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              focusable={true}
+              onClick={[Function]}
+              onLayout={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                [
+                  [
+                    {
+                      "userSelect": "auto",
+                    },
+                    {
+                      "alignItems": "center",
+                      "marginLeft": 8,
+                    },
+                  ],
+                  {
+                    "opacity": 1,
+                  },
+                ]
+              }
+              testID="Ouvrir la modale de localisation depuis le widget"
+            >
+              <View
+                isActive={true}
+                style={
+                  [
+                    {
+                      "alignItems": "center",
+                      "backgroundColor": "#ffffff",
+                      "borderColor": "#161617",
+                      "borderRadius": 40,
+                      "borderStyle": "solid",
+                      "borderWidth": 2,
+                      "height": 40,
+                      "justifyContent": "center",
+                      "width": 40,
+                    },
+                  ]
+                }
+              >
+                <View
+                  height={24}
+                  width={24}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+              </View>
+              <Text
+                numberOfLines={1}
+                style={
+                  [
+                    {
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 19.2,
+                      "maxWidth": 100,
+                      "paddingTop": 4,
+                    },
+                  ]
+                }
+              >
+                Ma position
+              </Text>
+            </View>
+            <Modal
+              accessibilityLabelledBy="testUuidV4"
+              accessibilityModal={true}
+              animationType="none"
+              deviceHeight={1334}
+              deviceWidth={750}
+              hardwareAccelerated={false}
+              hideModalContentWhileAnimating={false}
+              onBackdropPress={[Function]}
+              onModalHide={[Function]}
+              onModalWillHide={[Function]}
+              onModalWillShow={[Function]}
+              onRequestClose={[Function]}
+              panResponderThreshold={4}
+              scrollHorizontal={false}
+              scrollOffset={0}
+              scrollOffsetMax={0}
+              scrollTo={null}
+              statusBarTranslucent={true}
+              supportedOrientations={
+                [
+                  "portrait",
+                  "landscape",
+                ]
+              }
+              swipeThreshold={100}
+              testID="modal"
+              transparent={true}
+              visible={false}
+            />
+          </View>
+        </View>
+      </View>
+      <View>
+        <View
+          style={
+            [
+              {
+                "flexDirection": "row",
               },
             ]
           }
@@ -292,6 +278,7 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                   "flexDirection": "row",
                   "flexGrow": 1,
                   "flexShrink": 1,
+                  "justifyContent": "center",
                 },
               ]
             }
@@ -300,6 +287,7 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
               style={
                 [
                   {
+                    "alignItems": "center",
                     "flexBasis": 0,
                     "flexDirection": "row",
                     "flexGrow": 1,
@@ -309,127 +297,130 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
               }
             >
               <View
-                height="regular"
-                isDisabled={false}
-                isError={false}
-                isFocus={false}
                 style={
                   [
                     {
-                      "alignItems": "center",
-                      "backgroundColor": "#ffffff",
-                      "borderColor": "#90949d",
-                      "borderRadius": 22,
-                      "borderStyle": "solid",
-                      "borderWidth": 1,
+                      "flexBasis": 0,
                       "flexDirection": "row",
-                      "height": 48,
-                      "paddingBottom": 0,
-                      "paddingLeft": 17,
-                      "paddingRight": 17,
-                      "paddingTop": 0,
-                      "width": "100%",
-                    },
-                    {
-                      "borderRadius": 24,
-                      "outlineOffset": 0,
-                    },
-                    {
-                      "flex": 1,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
                     },
                   ]
                 }
-                testID="styled-input-container"
               >
                 <View
+                  height="regular"
+                  isDisabled={false}
+                  isError={false}
+                  isFocus={false}
                   style={
                     [
                       {
-                        "flexShrink": 0,
-                        "marginRight": 8,
+                        "alignItems": "center",
+                        "backgroundColor": "#ffffff",
+                        "borderColor": "#90949d",
+                        "borderRadius": 22,
+                        "borderStyle": "solid",
+                        "borderWidth": 1,
+                        "flexDirection": "row",
+                        "height": 48,
+                        "paddingBottom": 0,
+                        "paddingLeft": 17,
+                        "paddingRight": 17,
+                        "paddingTop": 0,
+                        "width": "100%",
+                      },
+                      {
+                        "borderRadius": 24,
+                        "outlineOffset": 0,
+                      },
+                      {
+                        "flex": 1,
                       },
                     ]
                   }
+                  testID="styled-input-container"
                 >
                   <View
-                    height={20}
-                    width={20}
+                    style={
+                      [
+                        {
+                          "flexShrink": 0,
+                          "marginRight": 8,
+                        },
+                      ]
+                    }
                   >
-                    <Text>
-                      undefined-SVG-Mock
-                    </Text>
+                    <View
+                      height={20}
+                      width={20}
+                    >
+                      <Text>
+                        undefined-SVG-Mock
+                      </Text>
+                    </View>
                   </View>
+                  <TextInput
+                    accessibilityDescribedBy="testUuidV4"
+                    accessibilityHidden={true}
+                    autoCorrect={false}
+                    autoFocus={false}
+                    editable={true}
+                    enablesReturnKeyAutomatically={true}
+                    focusable={false}
+                    isEmpty={true}
+                    multiline={false}
+                    nativeID="testUuidV4"
+                    onBlur={[Function]}
+                    onChangeText={[Function]}
+                    onFocus={[Function]}
+                    onSubmitEditing={[Function]}
+                    placeholder="Offre, artiste, lieu culturel..."
+                    placeholderTextColor="#696A6F"
+                    returnKeyType="search"
+                    selectionColor="#696A6F"
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "Montserrat-MediumItalic",
+                          "fontSize": 16,
+                          "height": "100%",
+                          "paddingBottom": 0,
+                          "paddingLeft": 0,
+                          "paddingRight": 0,
+                          "paddingTop": 0,
+                        },
+                        {},
+                      ]
+                    }
+                    testID="searchInput"
+                    textAlignVertical="center"
+                    value=""
+                  />
                 </View>
-                <TextInput
-                  accessibilityDescribedBy="testUuidV4"
-                  accessibilityHidden={true}
-                  autoCorrect={false}
-                  autoFocus={false}
-                  editable={true}
-                  enablesReturnKeyAutomatically={true}
-                  focusable={false}
-                  isEmpty={true}
-                  multiline={false}
-                  nativeID="testUuidV4"
-                  onBlur={[Function]}
-                  onChangeText={[Function]}
-                  onFocus={[Function]}
-                  onSubmitEditing={[Function]}
-                  placeholder="Offre, artiste, lieu culturel..."
-                  placeholderTextColor="#696A6F"
-                  returnKeyType="search"
-                  selectionColor="#696A6F"
-                  style={
-                    [
-                      {
-                        "color": "#161617",
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "fontFamily": "Montserrat-MediumItalic",
-                        "fontSize": 16,
-                        "height": "100%",
-                        "paddingBottom": 0,
-                        "paddingLeft": 0,
-                        "paddingRight": 0,
-                        "paddingTop": 0,
-                      },
-                      {},
-                    ]
-                  }
-                  testID="searchInput"
-                  textAlignVertical="center"
-                  value=""
-                />
               </View>
             </View>
           </View>
+          <Text
+            nativeID="testUuidV4"
+            style={
+              [
+                {
+                  "display": "none",
+                },
+              ]
+            }
+          >
+            Indique le nom d’une offre ou d’un lieu puis lance la recherche à l’aide de la touche ”Entrée”
+          </Text>
         </View>
-        <Text
-          nativeID="testUuidV4"
-          style={
-            [
-              {
-                "display": "none",
-              },
-            ]
-          }
-        >
-          Indique le nom d’une offre ou d’un lieu puis lance la recherche à l’aide de la touche ”Entrée”
-        </Text>
       </View>
     </View>
   </View>
-  <View
-    numberOfSpaces={2}
-    style={
-      [
-        {
-          "height": 8,
-        },
-      ]
-    }
-  />
   <View
     style={
       [

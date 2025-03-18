@@ -1,7 +1,6 @@
 import { useNavigationState } from '@react-navigation/native'
 import React, { useCallback } from 'react'
 import { Configure, InstantSearch } from 'react-instantsearch-core'
-// eslint-disable-next-line no-restricted-imports
 import { StatusBar } from 'react-native'
 import AlgoliaSearchInsights from 'search-insights'
 import styled from 'styled-components/native'
@@ -18,7 +17,7 @@ import { env } from 'libs/environment/env'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { OfflinePage } from 'libs/network/OfflinePage'
 import { Form } from 'ui/components/Form'
-import { Spacer } from 'ui/theme'
+import { getSpacing } from 'ui/theme'
 
 const searchInputID = uuidv4()
 const suggestionsIndex = env.ALGOLIA_SUGGESTIONS_INDEX_NAME
@@ -53,15 +52,14 @@ export const SearchLanding = () => {
           insights={{ insightsClient: AlgoliaSearchInsights }}>
           <Configure hitsPerPage={5} clickAnalytics />
 
-          <React.Fragment>
+          <Container>
             <SearchHeader
               searchInputID={searchInputID}
               shouldDisplaySubtitle
               addSearchHistory={addToHistory}
               searchInHistory={setQueryHistoryMemoized}
             />
-            <Spacer.Column numberOfSpaces={2} />
-          </React.Fragment>
+          </Container>
 
           {isFocusOnSuggestions ? (
             <SearchSuggestions
@@ -87,3 +85,7 @@ const CategoriesButtonsContainer = styled.View(({ theme }) => ({
   overflowY: 'auto',
   ...(theme.isMobileViewport ? { marginBottom: theme.tabBar.height } : {}),
 }))
+
+const Container = styled.View({
+  marginBottom: getSpacing(2),
+})
