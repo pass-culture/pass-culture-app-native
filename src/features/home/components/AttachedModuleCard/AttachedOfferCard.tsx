@@ -33,7 +33,7 @@ export const AttachedOfferCard: React.FC<Props> = ({ offer, shouldFixHeight, com
   const currency = useGetCurrencyToDisplay()
   const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
   const categoryName = labelMapping[attachedOffer.subcategoryId] ?? ''
-  const details = []
+  const details: string[] = []
 
   const date = attachedOffer.dates && formatDates(getTimeStampInMillis(attachedOffer.dates))
   const price = getDisplayedPrice(

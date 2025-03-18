@@ -24,7 +24,7 @@ const getWeekDatesFromDate = (date: Date): Date[] => {
   const dayOfTheWeek = date.getDay()
   if (dayOfTheWeek === SUNDAY_INDEX_IN_A_WEEK) return [date]
   let daysUntilSunday = DAYS_IN_A_WEEK - dayOfTheWeek
-  const timestampsOfTheWeek = []
+  const timestampsOfTheWeek: number[] = []
   while (daysUntilSunday >= 0) {
     timestampsOfTheWeek.push(date.getTime() + MILLISECONDS_IN_A_DAY * daysUntilSunday)
     daysUntilSunday--
