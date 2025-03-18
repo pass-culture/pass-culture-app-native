@@ -18,7 +18,7 @@
         "type": "github"
       }
     },
-    "nixpkgs": {
+    "nixpkgs-old": {
       "locked": {
         "lastModified": 1725910328,
         "narHash": "sha256-n9pCtzGZ0httmTwMuEbi5E78UQ4ZbQMr1pzi5N0LAG8=",
@@ -37,7 +37,7 @@
     "root": {
       "inputs": {
         "flake-utils": "flake-utils",
-        "nixpkgs": "nixpkgs"
+        "nixpkgs-old": "nixpkgs-old"
       }
     },
     "systems": {
