@@ -22,6 +22,6 @@ const CONTENTFUL_LABELS: Record<string, SearchGroupNameEnumv2> = {
 
 export const getCategoriesFacetFilters = (categoryLabel: string): SearchGroupNameEnumv2 => {
   const searchGroup = CONTENTFUL_LABELS[categoryLabel]
-  // @ts-expect-error: because of noUncheckedIndexedAccess
-  return CATEGORY_CRITERIA[searchGroup]?.facetFilter ?? SearchGroupNameEnumv2.NONE
+  if (searchGroup) return CATEGORY_CRITERIA[searchGroup]?.facetFilter ?? SearchGroupNameEnumv2.NONE
+  return SearchGroupNameEnumv2.NONE
 }
