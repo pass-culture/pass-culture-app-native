@@ -99,9 +99,8 @@ const Container = styled(ViewGap)<{ width?: number; shouldTruncate?: boolean }>(
 )
 
 const DescriptionContainer = styled.View<{ defaultHeight: number; shouldTruncate?: boolean }>(
-  ({ defaultHeight, shouldTruncate }) => ({
-    ...(shouldTruncate ? { maxHeight: MAX_LINES * defaultHeight, overflow: 'hidden' } : {}),
-  })
+  ({ defaultHeight, shouldTruncate }) =>
+    shouldTruncate ? { maxHeight: MAX_LINES * defaultHeight, overflow: 'hidden' } : {}
 )
 
 const Description = styled(TypoDS.BodyAccentS)(({ theme }) => ({
