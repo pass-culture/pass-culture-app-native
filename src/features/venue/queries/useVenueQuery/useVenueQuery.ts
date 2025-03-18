@@ -19,7 +19,7 @@ const getVenueById = async (venueId: number | null, logType: LogTypeEnum) => {
   }
 }
 
-export const useVenue = (venueId: number | null) => {
+export const useVenueQuery = (venueId: number | null) => {
   const { logType } = useLogTypeFromRemoteConfig()
 
   return useQuery<VenueResponse | undefined>(

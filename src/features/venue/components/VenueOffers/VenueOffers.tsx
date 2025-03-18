@@ -5,7 +5,6 @@ import { useGTLPlaylists } from 'features/gtlPlaylist/hooks/useGTLPlaylists'
 import { GtlPlaylistData } from 'features/gtlPlaylist/types'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { useSearch } from 'features/search/context/SearchWrapper'
-import { useVenueOffers } from 'features/venue/api/useVenueOffers'
 import { NoOfferPlaceholder } from 'features/venue/components/Placeholders/NoOfferPlaceholder'
 import { VenueMovies } from 'features/venue/components/VenueOffers/VenueMovies'
 import { VenueOffersList } from 'features/venue/components/VenueOffers/VenueOffersList'
@@ -14,6 +13,7 @@ import type { VenueOffers, VenueOffersArtists } from 'features/venue/types'
 import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { useLocation } from 'libs/location'
 import { CategoryHomeLabelMapping, CategoryIdMapping } from 'libs/subcategories/types'
+import { useVenueOffersQuery } from 'queries/useVenueOffersQuery/useVenueOffersQuery'
 import { Currency } from 'shared/currency/useGetCurrencyToDisplay'
 import { OfferPlaylistSkeleton, TileSize } from 'ui/components/placeholders/OfferPlaylistSkeleton'
 import { Spacer } from 'ui/theme'
@@ -51,7 +51,7 @@ export function VenueOffers({
   const venueSearchParams = useVenueSearchParameters(venue)
   const { searchState } = useSearch()
   const isUserUnderage = useIsUserUnderage()
-  const { isLoading: areVenueOffersLoading } = useVenueOffers({
+  const { isLoading: areVenueOffersLoading } = useVenueOffersQuery({
     userLocation,
     selectedLocationMode,
     isUserUnderage,
