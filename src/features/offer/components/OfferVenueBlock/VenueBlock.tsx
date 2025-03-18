@@ -9,7 +9,7 @@ import { getSpacing } from 'ui/theme'
 
 type Props = {
   venueId: number
-  venueImageUrl: string
+  venueImageUrl?: string
   title?: string
   subtitle?: string
   onSeeVenuePress?: VoidFunction
@@ -22,7 +22,7 @@ const VENUE_THUMBNAIL_SIZE = getSpacing(14)
 
 export const VenueBlock: FunctionComponent<Props> = ({
   venueId,
-  venueImageUrl,
+  venueImageUrl = '',
   title,
   subtitle,
   onSeeVenuePress,

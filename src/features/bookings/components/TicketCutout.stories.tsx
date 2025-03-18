@@ -59,12 +59,7 @@ const variantConfig: Variants<typeof TicketCutout> = [
           <StyledBody>Présente ce billet pour accéder à l’évènement</StyledBody>
         </ViewGap>
       ),
-      venueInfo: (
-        <VenueBlock
-          venueId={bookingsSnap.ongoing_bookings[0].stock.offer.venue.id}
-          venueImageUrl=""
-        />
-      ),
+      venueInfo: <VenueBlock venueId={bookingsSnap.ongoing_bookings[0].stock.offer.venue.id} />,
     },
   },
   {
@@ -81,12 +76,7 @@ const variantConfig: Variants<typeof TicketCutout> = [
         />
       ),
       children: <TicketBody withdrawalType={WithdrawalTypeEnum.no_ticket} />,
-      venueInfo: (
-        <VenueBlock
-          venueId={bookingsSnap.ongoing_bookings[0].stock.offer.venue.id}
-          venueImageUrl=""
-        />
-      ),
+      venueInfo: <VenueBlock venueId={bookingsSnap.ongoing_bookings[0].stock.offer.venue.id} />,
     },
   },
 ]

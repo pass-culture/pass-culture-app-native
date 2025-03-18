@@ -53,7 +53,7 @@ export const CineBlock: FunctionComponent<CineBlockProps> = ({
           title={venueName}
           subtitle={venueAddress}
           onSeeVenuePress={onSeeVenuePress}
-          venueImageUrl={venueBlockVenue.bannerUrl ?? ''}
+          venueImageUrl={venueBlockVenue.bannerUrl}
           distance={distance}
           hasVenuePage={!!onSeeVenuePress && !isOfferAddressDifferent}
         />

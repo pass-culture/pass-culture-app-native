@@ -40,7 +40,7 @@ export const VenueBlockWithItinerary = ({
           subtitle={venueAddress}
           shouldShowDistances={false}
           thumbnailSize={thumbnailSize}
-          venueImageUrl={venue.bannerUrl ?? ''}
+          venueImageUrl={venue.bannerUrl}
           distance={distance}
         />
       ) : null}
