@@ -213,6 +213,7 @@ exports[`RecommendedPaths should render correctly 1`] = `
         style={
           [
             {
+              "color": "#161617",
               "fontFamily": "Montserrat-Medium",
               "fontSize": 16,
               "lineHeight": 25.6,
@@ -293,6 +294,7 @@ exports[`RecommendedPaths should render correctly 1`] = `
               style={
                 [
                   {
+                    "color": "#161617",
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
@@ -354,6 +356,7 @@ exports[`RecommendedPaths should render correctly 1`] = `
               style={
                 [
                   {
+                    "color": "#161617",
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
@@ -415,6 +418,7 @@ exports[`RecommendedPaths should render correctly 1`] = `
               style={
                 [
                   {
+                    "color": "#161617",
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
@@ -542,6 +546,7 @@ exports[`RecommendedPaths should render correctly 1`] = `
         style={
           [
             {
+              "color": "#161617",
               "fontFamily": "Montserrat-Medium",
               "fontSize": 16,
               "lineHeight": 25.6,

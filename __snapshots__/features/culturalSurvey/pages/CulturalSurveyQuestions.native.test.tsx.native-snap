@@ -235,6 +235,7 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                 style={
                   [
                     {
+                      "color": "#161617",
                       "fontFamily": "Montserrat-SemiBold",
                       "fontSize": 12,
                       "lineHeight": 19.2,
@@ -254,6 +255,7 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
         style={
           [
             {
+              "color": "#161617",
               "flexBasis": 0,
               "flexGrow": 1,
               "flexShrink": 1,
@@ -298,6 +300,7 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
         style={
           [
             {
+              "color": "#161617",
               "fontFamily": "Montserrat-Bold",
               "fontSize": 19,
               "lineHeight": 30.4,
@@ -482,6 +485,7 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                     style={
                       [
                         {
+                          "color": "#161617",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 16,
                           "lineHeight": 25.6,
@@ -648,6 +652,7 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                     style={
                       [
                         {
+                          "color": "#161617",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 16,
                           "lineHeight": 25.6,
@@ -814,6 +819,7 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                     style={
                       [
                         {
+                          "color": "#161617",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 16,
                           "lineHeight": 25.6,
@@ -980,6 +986,7 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                     style={
                       [
                         {
+                          "color": "#161617",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 16,
                           "lineHeight": 25.6,
@@ -1146,6 +1153,7 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                     style={
                       [
                         {
+                          "color": "#161617",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 16,
                           "lineHeight": 25.6,
@@ -1298,6 +1306,7 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                     style={
                       [
                         {
+                          "color": "#161617",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 16,
                           "lineHeight": 25.6,
@@ -1450,6 +1459,7 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                     style={
                       [
                         {
+                          "color": "#161617",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 16,
                           "lineHeight": 25.6,
@@ -1616,6 +1626,7 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                     style={
                       [
                         {
+                          "color": "#161617",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 16,
                           "lineHeight": 25.6,
@@ -1782,6 +1793,7 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                     style={
                       [
                         {
+                          "color": "#161617",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 16,
                           "lineHeight": 25.6,
@@ -1929,6 +1941,7 @@ exports[`CulturalSurveyQuestions page should render the page with correct layout
                     style={
                       [
                         {
+                          "color": "#161617",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 16,
                           "lineHeight": 25.6,

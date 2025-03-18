@@ -222,6 +222,7 @@ exports[`<NotificationsSettingsModal /> should render correctly 1`] = `
             style={
               [
                 {
+                  "color": "#161617",
                   "fontFamily": "Montserrat-Bold",
                   "fontSize": 17,
                   "lineHeight": 27.2,
@@ -353,6 +354,7 @@ exports[`<NotificationsSettingsModal /> should render correctly 1`] = `
                 style={
                   [
                     {
+                      "color": "#161617",
                       "fontFamily": "Montserrat-Medium",
                       "fontSize": 16,
                       "lineHeight": 25.6,
@@ -421,6 +423,7 @@ exports[`<NotificationsSettingsModal /> should render correctly 1`] = `
                     style={
                       [
                         {
+                          "color": "#161617",
                           "fontFamily": "Montserrat-Medium",
                           "fontSize": 16,
                           "lineHeight": 25.6,
@@ -432,6 +435,7 @@ exports[`<NotificationsSettingsModal /> should render correctly 1`] = `
                       style={
                         [
                           {
+                            "color": "#161617",
                             "fontFamily": "Montserrat-SemiBold",
                             "fontSize": 16,
                             "lineHeight": 25.6,
@@ -632,6 +636,7 @@ exports[`<NotificationsSettingsModal /> should render correctly 1`] = `
                     style={
                       [
                         {
+                          "color": "#161617",
                           "fontFamily": "Montserrat-Medium",
                           "fontSize": 16,
                           "lineHeight": 25.6,
@@ -643,6 +648,7 @@ exports[`<NotificationsSettingsModal /> should render correctly 1`] = `
                       style={
                         [
                           {
+                            "color": "#161617",
                             "fontFamily": "Montserrat-SemiBold",
                             "fontSize": 16,
                             "lineHeight": 25.6,

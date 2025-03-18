@@ -50,6 +50,7 @@ exports[`<Favorites/> should render correctly 1`] = `
         style={
           [
             {
+              "color": "#161617",
               "fontFamily": "Montserrat-Bold",
               "fontSize": 28,
               "lineHeight": 44.8,

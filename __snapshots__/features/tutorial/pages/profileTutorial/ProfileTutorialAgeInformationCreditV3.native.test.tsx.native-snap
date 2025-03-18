@@ -45,6 +45,7 @@ exports[`<ProfileTutorialAgeInformationCreditV3 /> should render correctly 1`] =
         style={
           [
             {
+              "color": "#161617",
               "fontFamily": "Montserrat-Bold",
               "fontSize": 19,
               "lineHeight": 30.4,
@@ -69,6 +70,7 @@ exports[`<ProfileTutorialAgeInformationCreditV3 /> should render correctly 1`] =
         style={
           [
             {
+              "color": "#161617",
               "fontFamily": "Montserrat-Medium",
               "fontSize": 14,
               "lineHeight": 22.4,
@@ -464,6 +466,7 @@ exports[`<ProfileTutorialAgeInformationCreditV3 /> should render correctly 1`] =
                         style={
                           [
                             {
+                              "color": "#161617",
                               "flexShrink": 1,
                               "fontFamily": "Montserrat-SemiBold",
                               "fontSize": 12,
@@ -878,6 +881,7 @@ exports[`<ProfileTutorialAgeInformationCreditV3 /> should render correctly 1`] =
                             style={
                               [
                                 {
+                                  "color": "#161617",
                                   "flexShrink": 1,
                                   "fontFamily": "Montserrat-SemiBold",
                                   "fontSize": 12,
@@ -945,6 +949,7 @@ exports[`<ProfileTutorialAgeInformationCreditV3 /> should render correctly 1`] =
                             style={
                               [
                                 {
+                                  "color": "#161617",
                                   "flexShrink": 1,
                                   "fontFamily": "Montserrat-SemiBold",
                                   "fontSize": 12,
@@ -1081,6 +1086,7 @@ exports[`<ProfileTutorialAgeInformationCreditV3 /> should render correctly 1`] =
               style={
                 [
                   {
+                    "color": "#161617",
                     "fontFamily": "Montserrat-SemiBold",
                     "fontSize": 16,
                     "justifyContent": "center",
@@ -1106,6 +1112,7 @@ exports[`<ProfileTutorialAgeInformationCreditV3 /> should render correctly 1`] =
               style={
                 [
                   {
+                    "color": "#161617",
                     "fontFamily": "Montserrat-SemiBold",
                     "fontSize": 12,
                     "justifyContent": "center",

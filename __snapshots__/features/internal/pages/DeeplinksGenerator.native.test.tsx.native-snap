@@ -252,6 +252,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
               style={
                 [
                   {
+                    "color": "#161617",
                     "fontFamily": "Montserrat-Bold",
                     "fontSize": 17,
                     "lineHeight": 27.2,
@@ -348,6 +349,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                     style={
                       [
                         {
+                          "color": "#161617",
                           "flexShrink": 1,
                           "fontFamily": "Montserrat-Bold",
                           "fontSize": 17,
@@ -1818,6 +1820,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                     style={
                       [
                         {
+                          "color": "#161617",
                           "flexShrink": 1,
                           "fontFamily": "Montserrat-Bold",
                           "fontSize": 17,
@@ -2088,6 +2091,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                     style={
                       [
                         {
+                          "color": "#161617",
                           "flexShrink": 1,
                           "fontFamily": "Montserrat-Bold",
                           "fontSize": 17,
@@ -2839,6 +2843,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                     style={
                       [
                         {
+                          "color": "#161617",
                           "flexShrink": 1,
                           "fontFamily": "Montserrat-Bold",
                           "fontSize": 17,
@@ -3210,6 +3215,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
               style={
                 [
                   {
+                    "color": "#161617",
                     "fontFamily": "Montserrat-Bold",
                     "fontSize": 17,
                     "lineHeight": 27.2,
@@ -3267,6 +3273,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                       style={
                         [
                           {
+                            "color": "#161617",
                             "fontFamily": "Montserrat-Medium",
                             "fontSize": 16,
                             "lineHeight": 25.6,
@@ -3311,6 +3318,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
             style={
               [
                 {
+                  "color": "#161617",
                   "fontFamily": "Montserrat-Bold",
                   "fontSize": 17,
                   "lineHeight": 27.2,
@@ -3514,6 +3522,7 @@ exports[`<DeeplinksGenerator /> should render DeeplinksGenerator 1`] = `
                     [
                       {
                         "alignSelf": "center",
+                        "color": "#161617",
                         "flexBasis": 0,
                         "flexGrow": 1,
                         "flexShrink": 1,

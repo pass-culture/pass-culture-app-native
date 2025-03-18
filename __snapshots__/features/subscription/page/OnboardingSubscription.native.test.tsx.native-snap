@@ -195,6 +195,7 @@ exports[`OnboardingSubscription should render correctly 1`] = `
           style={
             [
               {
+                "color": "#161617",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 19,
                 "lineHeight": 30.4,
@@ -218,6 +219,7 @@ exports[`OnboardingSubscription should render correctly 1`] = `
           style={
             [
               {
+                "color": "#161617",
                 "fontFamily": "Montserrat-Medium",
                 "fontSize": 16,
                 "lineHeight": 25.6,
@@ -388,6 +390,7 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                   style={
                     [
                       {
+                        "color": "#161617",
                         "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 16,
                         "lineHeight": 25.6,
@@ -573,6 +576,7 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                   style={
                     [
                       {
+                        "color": "#161617",
                         "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 16,
                         "lineHeight": 25.6,
@@ -758,6 +762,7 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                   style={
                     [
                       {
+                        "color": "#161617",
                         "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 16,
                         "lineHeight": 25.6,
@@ -943,6 +948,7 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                   style={
                     [
                       {
+                        "color": "#161617",
                         "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 16,
                         "lineHeight": 25.6,
@@ -1128,6 +1134,7 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                   style={
                     [
                       {
+                        "color": "#161617",
                         "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 16,
                         "lineHeight": 25.6,
@@ -1313,6 +1320,7 @@ exports[`OnboardingSubscription should render correctly 1`] = `
                   style={
                     [
                       {
+                        "color": "#161617",
                         "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 16,
                         "lineHeight": 25.6,

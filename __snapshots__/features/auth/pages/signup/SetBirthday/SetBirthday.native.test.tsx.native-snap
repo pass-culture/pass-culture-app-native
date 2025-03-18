@@ -15,6 +15,7 @@ exports[`<SetBirthday /> should render correctly 1`] = `
     style={
       [
         {
+          "color": "#161617",
           "fontFamily": "Montserrat-Bold",
           "fontSize": 19,
           "lineHeight": 30.4,
@@ -148,6 +149,7 @@ exports[`<SetBirthday /> should render correctly 1`] = `
           style={
             [
               {
+                "color": "#161617",
                 "fontFamily": "Montserrat-Medium",
                 "fontSize": 16,
                 "lineHeight": 25.6,
@@ -199,6 +201,7 @@ exports[`<SetBirthday /> should render correctly 1`] = `
           style={
             [
               {
+                "color": "#161617",
                 "fontFamily": "Montserrat-Medium",
                 "fontSize": 16,
                 "lineHeight": 25.6,
@@ -379,6 +382,7 @@ exports[`<SetBirthday /> should render correctly when account creation token and
     style={
       [
         {
+          "color": "#161617",
           "fontFamily": "Montserrat-Bold",
           "fontSize": 19,
           "lineHeight": 30.4,
@@ -402,6 +406,7 @@ exports[`<SetBirthday /> should render correctly when account creation token and
     style={
       [
         {
+          "color": "#161617",
           "fontFamily": "Montserrat-Medium",
           "fontSize": 16,
           "lineHeight": 25.6,
@@ -537,6 +542,7 @@ exports[`<SetBirthday /> should render correctly when account creation token and
           style={
             [
               {
+                "color": "#161617",
                 "fontFamily": "Montserrat-Medium",
                 "fontSize": 16,
                 "lineHeight": 25.6,
@@ -588,6 +594,7 @@ exports[`<SetBirthday /> should render correctly when account creation token and
           style={
             [
               {
+                "color": "#161617",
                 "fontFamily": "Montserrat-Medium",
                 "fontSize": 16,
                 "lineHeight": 25.6,
