@@ -29,7 +29,7 @@ export const SetStatus = () => {
   const storedCity = useCity()
   const storedAddress = useAddress()
 
-  const { mutateAsync: patchProfile } = usePostProfile()
+  const { mutateAsync: postProfile } = usePostProfile()
   // isLoading from react-query is not support with mutateAsync
   const [isLoading, setIsLoading] = useState<boolean>(false)
 
@@ -61,12 +61,12 @@ export const SetStatus = () => {
         schoolType: null,
       }
       setIsLoading(true)
-      await patchProfile(profile)
+      await postProfile(profile)
       await saveStep(IdentityCheckStep.PROFILE)
       setIsLoading(false)
       navigateForwardToStepper()
     },
-    [storedName, storedCity, storedAddress, patchProfile, saveStep, navigateForwardToStepper]
+    [storedName, storedCity, storedAddress, postProfile, saveStep, navigateForwardToStepper]
   )
 
   const headerHeight = useGetHeaderHeight()

@@ -65,7 +65,7 @@ export const OnboardingSubscription = () => {
     initialSubscribedThemes
   )
 
-  const { mutate: updateProfile, isLoading: isUpdatingProfile } = usePatchProfile({
+  const { mutate: patchProfile, isLoading: isUpdatingProfile } = usePatchProfile({
     onSuccess: () => {
       analytics.logSubscriptionUpdate({ type: 'update', from: 'home' })
       showSuccessSnackBar({
@@ -100,7 +100,7 @@ export const OnboardingSubscription = () => {
 
   const updateSubscription = useCallback(
     (notifications: { allowEmails: boolean; allowPush: boolean }) => {
-      updateProfile({
+      patchProfile({
         subscriptions: {
           marketingEmail: notifications.allowEmails,
           marketingPush: notifications.allowPush,
@@ -109,7 +109,7 @@ export const OnboardingSubscription = () => {
         origin: 'OnboardingSubscription',
       })
     },
-    [subscribedThemes, updateProfile]
+    [subscribedThemes, patchProfile]
   )
 
   const onSubmit = useCallback(() => {

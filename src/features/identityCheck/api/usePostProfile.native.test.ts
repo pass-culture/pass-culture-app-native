@@ -40,10 +40,10 @@ describe('usePostProfile', () => {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
 
-    const { mutateAsync: patchProfile } = result.current
+    const { mutateAsync: postProfile } = result.current
 
     await act(async () => {
-      await patchProfile(profile)
+      await postProfile(profile)
     })
 
     expect(postSubscriptionProfileSpy).toHaveBeenCalledWith({
@@ -66,10 +66,10 @@ describe('usePostProfile', () => {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
 
-    const { mutateAsync: patchProfile } = result.current
+    const { mutateAsync: postProfile } = result.current
 
     await act(async () => {
-      await patchProfile(profile)
+      await postProfile(profile)
     })
 
     await waitFor(async () => {
@@ -89,10 +89,10 @@ describe('usePostProfile', () => {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
 
-    const { mutateAsync: patchProfile } = result.current
+    const { mutateAsync: postProfile } = result.current
 
     await act(async () => {
-      await patchProfile(profile)
+      await postProfile(profile)
     })
 
     expect(refetchUserSpy).toHaveBeenCalledWith()
