@@ -376,7 +376,7 @@ export const mockHitWithUnavailableCategory: AlgoliaSuggestionHit = {
           {
             attribute: 'offer.searchGroupNamev2',
             operator: ':',
-            value: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
+            value: SearchGroupNameEnumv2.NONE,
             count: 6172,
           },
         ],

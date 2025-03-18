@@ -94,16 +94,6 @@ export const CATEGORY_CRITERIA: CategoryCriteriaWithNone = {
     borderColor: theme.colors.goldLight200,
     fillColor: theme.colors.goldLight100,
   },
-  [SearchGroupNameEnumv2.FILMS_SERIES_CINEMA]: {
-    icon: categoriesIcons.Cinema,
-    illustration: SearchCategoriesIllustrations.FilmsSeriesCinema,
-    facetFilter: SearchGroupNameEnumv2.FILMS_SERIES_CINEMA,
-    position: 2,
-
-    gradients: gradientColorsMapping.SkyBlue,
-    borderColor: theme.colors.skyBlue,
-    fillColor: theme.colors.skyBlueLight,
-  },
   [SearchGroupNameEnumv2.CINEMA]: {
     icon: categoriesIcons.Cinema,
     illustration: SearchCategoriesIllustrations.FilmsSeriesCinema,
