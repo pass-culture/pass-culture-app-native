@@ -1,5 +1,5 @@
 import { availableReactionsSnap } from 'features/bookings/fixtures/availableReactionSnap'
-import { useAvailableReaction } from 'features/reactions/api/useAvailableReaction'
+import { useAvailableReactionQuery } from 'features/reactions/queries/useAvailableReactionQuery'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, renderHook } from 'tests/utils'
@@ -16,7 +16,7 @@ describe('useAvailableReaction', () => {
   })
 
   it('should fetch available reactions correctly', async () => {
-    const { result } = renderHook(() => useAvailableReaction(), {
+    const { result } = renderHook(() => useAvailableReactionQuery(), {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
 
@@ -28,7 +28,7 @@ describe('useAvailableReaction', () => {
   it('should return an empty object if API response is empty', async () => {
     mockServer.getApi('/v1/reaction/available', {})
 
-    const { result } = renderHook(() => useAvailableReaction(), {
+    const { result } = renderHook(() => useAvailableReactionQuery(), {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
 
@@ -40,7 +40,7 @@ describe('useAvailableReaction', () => {
   it('should handle errors correctly', async () => {
     mockServer.getApi('/v1/reaction/available', { responseOptions: { statusCode: 400, data: {} } })
 
-    const { result } = renderHook(() => useAvailableReaction(), {
+    const { result } = renderHook(() => useAvailableReactionQuery(), {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
 

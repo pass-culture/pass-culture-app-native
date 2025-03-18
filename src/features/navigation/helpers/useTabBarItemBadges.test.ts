@@ -5,8 +5,8 @@ import { renderHook } from 'tests/utils'
 
 const mockAvailableReactionsSnap = availableReactionsSnap
 
-jest.mock('features/reactions/api/useAvailableReaction', () => ({
-  useAvailableReaction: jest.fn(() => ({
+jest.mock('features/reactions/queries/useAvailableReactionQuery', () => ({
+  useAvailableReactionQuery: jest.fn(() => ({
     data: mockAvailableReactionsSnap,
   })),
 }))
