@@ -254,13 +254,6 @@ describe('<SearchLanding />', () => {
     expect(screen).toMatchSnapshot()
   })
 
-  it('should render gradient header', async () => {
-    render(reactQueryProviderHOC(<SearchLanding />))
-    await screen.findByText('Rechercher')
-
-    expect(screen.getByTestId('searchLandingHeader')).toBeOnTheScreen()
-  })
-
   describe('When SearchLanding is focus on suggestions', () => {
     beforeEach(() => {
       mockIsFocusOnSuggestions = true

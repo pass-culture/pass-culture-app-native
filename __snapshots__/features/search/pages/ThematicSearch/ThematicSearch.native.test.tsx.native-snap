@@ -30,6 +30,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
           {
             "alignItems": "center",
             "flexDirection": "row",
+            "paddingBottom": 16,
           },
         ]
       }
@@ -101,16 +102,6 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
         />
       </View>
     </View>
-    <View
-      numberOfSpaces={4}
-      style={
-        [
-          {
-            "height": 16,
-          },
-        ]
-      }
-    />
     <View>
       <View
         style={

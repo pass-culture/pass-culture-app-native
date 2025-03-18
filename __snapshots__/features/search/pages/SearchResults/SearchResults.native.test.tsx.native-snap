@@ -40,6 +40,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
           {
             "alignItems": "center",
             "flexDirection": "row",
+            "paddingBottom": 16,
           },
         ]
       }
@@ -111,16 +112,6 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
         />
       </View>
     </View>
-    <View
-      numberOfSpaces={4}
-      style={
-        [
-          {
-            "height": 16,
-          },
-        ]
-      }
-    />
     <View>
       <View
         style={

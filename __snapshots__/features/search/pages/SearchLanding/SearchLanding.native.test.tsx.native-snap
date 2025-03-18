@@ -13,33 +13,14 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
   }
 >
   <View
-    accessibilityIgnoresInvertColors={true}
-  >
-    <Image
-      resizeMode="stretch"
-      source={
+    style={
+      [
         {
-          "testUri": "../../../src/features/search/images/GradientHeader.png",
-        }
-      }
-      style={
-        [
-          {
-            "bottom": 0,
-            "left": 0,
-            "position": "absolute",
-            "right": 0,
-            "top": 0,
-          },
-          {
-            "height": undefined,
-            "width": undefined,
-          },
-          undefined,
-        ]
-      }
-      testID="searchLandingHeader"
-    />
+          "marginBottom": 8,
+        },
+      ]
+    }
+  >
     <View
       customHeight={16}
       enable={true}
@@ -68,6 +49,7 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
             {
               "alignItems": "center",
               "flexDirection": "row",
+              "paddingBottom": 16,
             },
           ]
         }
@@ -277,16 +259,6 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
           </View>
         </View>
       </View>
-      <View
-        numberOfSpaces={4}
-        style={
-          [
-            {
-              "height": 16,
-            },
-          ]
-        }
-      />
       <View>
         <View
           style={
@@ -448,16 +420,6 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
         </View>
       </View>
     </View>
-    <View
-      numberOfSpaces={2}
-      style={
-        [
-          {
-            "height": 8,
-          },
-        ]
-      }
-    />
   </View>
   <View
     style={

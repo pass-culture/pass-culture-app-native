@@ -60,7 +60,6 @@ export const SearchHeader = memo(function SearchHeader({
             title={title}
           />
         </RowContainer>
-        <Spacer.Column numberOfSpaces={4} />
         <View>
           <SearchBox
             searchInputID={searchInputID}
@@ -93,4 +92,5 @@ const StyledView = styled.View({
 const RowContainer = styled.View({
   flexDirection: 'row',
   alignItems: 'center',
+  paddingBottom: getSpacing(4),
 })
