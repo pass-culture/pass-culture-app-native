@@ -24,7 +24,7 @@ import { AccessibleIcon, AccessibleRectangleIcon } from 'ui/svg/icons/types'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
-type ButtonProps = {
+export type ButtonProps = {
   wording: string
   icon?: FunctionComponent<AccessibleIcon>
   disabled?: boolean

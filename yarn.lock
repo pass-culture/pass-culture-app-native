@@ -4858,7 +4858,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime@npm:^7.26.10":
+"@babel/runtime@npm:^7.25.0, @babel/runtime@npm:^7.26.10":
   version: 7.26.10
   resolution: "@babel/runtime@npm:7.26.10"
   dependencies:
@@ -13360,11 +13360,11 @@ __metadata:
   linkType: hard
 
 "color-parse@npm:^1.4.1":
-  version: 1.4.2
-  resolution: "color-parse@npm:1.4.2"
+  version: 1.4.3
+  resolution: "color-parse@npm:1.4.3"
   dependencies:
     color-name: ^1.0.0
-  checksum: 3ed5916f873e55637c4c3ccf663de64d125c5a445ec081e08f596c625fb8cee32b9c9fc9437073e88d8565cc7ce542d35bef3a0d16bd922839e0c436c3f6f11a
+  checksum: 3fb417857664c3f16250e60cf97a2b48b36b414c2ea6b163719fb4632879d98505ce4fe1c2a4afd870a399abcf1a794f9a0366556cb3f8eaebd41fddeebddc38
   languageName: node
   linkType: hard
 
@@ -13691,10 +13691,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cookie@npm:^0.7.2":
-  version: 0.7.2
-  resolution: "cookie@npm:0.7.2"
-  checksum: 9bf8555e33530affd571ea37b615ccad9b9a34febbf2c950c86787088eb00a8973690833b0f8ebd6b69b753c62669ea60cec89178c1fb007bf0749abed74f93e
 "cookie@npm:^0.4.1":
   version: 0.4.2
   resolution: "cookie@npm:0.4.2"
@@ -13702,10 +13698,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cookie@npm:^0.5.0":
-  version: 0.5.0
-  resolution: "cookie@npm:0.5.0"
-  checksum: 1f4bd2ca5765f8c9689a7e8954183f5332139eb72b6ff783d8947032ec1fdf43109852c178e21a953a30c0dd42257828185be01b49d1eb1a67fd054ca588a180
+"cookie@npm:^0.7.2":
+  version: 0.7.2
+  resolution: "cookie@npm:0.7.2"
+  checksum: 9bf8555e33530affd571ea37b615ccad9b9a34febbf2c950c86787088eb00a8973690833b0f8ebd6b69b753c62669ea60cec89178c1fb007bf0749abed74f93e
   languageName: node
   linkType: hard
 
@@ -21350,7 +21346,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"marky@npm:^1.2.2":
+"marky@npm:^1.2.0, marky@npm:^1.2.2":
   version: 1.2.5
   resolution: "marky@npm:1.2.5"
   checksum: 823b946677749551cdfc3b5221685478b5d1b9cc0dc03eff977c6f9a615fb05c67559f9556cb3c0fcb941a9ea0e195e37befd83026443396ccee8b724f54f4c5
@@ -22414,7 +22410,7 @@ __metadata:
       optional: true
   bin:
     msw: cli/index.js
-  checksum: bae72567488822889cc5c18318206c847b85d1df4c7bff0eac62e3fa902b95dd2e36710e3679829eaceb9c4f5066f9ed441afd919b304fba111fe2dacf82cefb
+  checksum: 6f1125aebee753f7cf0fe3a52ae161a744b6cf3bed5c6355b1cc6e05064423fa5bf7dc97a180fb85cbf1ed8bd80d67fcc86b8959fe238f5e6fdce2a8c2be4946
   languageName: node
   linkType: hard
 
@@ -24635,9 +24631,9 @@ __metadata:
   linkType: hard
 
 "react-native-appsflyer@npm:^6.15.3":
-  version: 6.15.3
-  resolution: "react-native-appsflyer@npm:6.15.3"
-  checksum: 4747a7c05a7a6008082c9a7cb33bf297efd5383d93ec3aae4c350f5c7bc37fb1f823fe631877f412e1a1df958cf4628444d0f79b60528949908350036bdfd1f0
+  version: 6.16.2
+  resolution: "react-native-appsflyer@npm:6.16.2"
+  checksum: 299bb5c759c82fde47baa5e08f6a410808fe689499a06532adb3960c8b2ef3293dc4e5b661cd875af8c0b4f35d7503a120d56b5a3e1e8118d4707ada780aa4e2
   languageName: node
   linkType: hard
 
