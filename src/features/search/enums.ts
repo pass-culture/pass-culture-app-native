@@ -176,15 +176,6 @@ export const CATEGORY_CRITERIA: CategoryCriteriaWithNone = {
     borderColor: theme.colors.lilac,
     fillColor: theme.colors.lilacLight,
   },
-  [SearchGroupNameEnumv2.INSTRUMENTS]: {
-    icon: categoriesIcons.Instrument,
-    illustration: SearchCategoriesIllustrations.MusicalInstruments,
-    facetFilter: SearchGroupNameEnumv2.INSTRUMENTS,
-    position: 10,
-    gradients: gradientColorsMapping.Gold,
-    borderColor: theme.colors.coral,
-    fillColor: theme.colors.coralLight,
-  },
   [SearchGroupNameEnumv2.MEDIA_PRESSE]: {
     icon: categoriesIcons.Press,
     illustration: SearchCategoriesIllustrations.MediaPress,

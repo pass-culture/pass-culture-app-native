@@ -196,7 +196,7 @@ export const subcategoriesMappingSnap = {
     isEvent: false,
     nativeCategoryId: 'ACHAT_LOCATION_INSTRUMENT',
     onlineOfflinePlatform: 'OFFLINE',
-    searchGroupName: 'INSTRUMENTS',
+    searchGroupName: 'MUSIQUE',
   },
   ACTIVATION_EVENT: {
     id: 'ACTIVATION_EVENT',
@@ -256,7 +256,7 @@ export const subcategoriesMappingSnap = {
     isEvent: false,
     nativeCategoryId: 'ACHAT_LOCATION_INSTRUMENT',
     onlineOfflinePlatform: 'OFFLINE',
-    searchGroupName: 'INSTRUMENTS',
+    searchGroupName: 'MUSIQUE',
   },
   CAPTATION_MUSIQUE: {
     id: 'CAPTATION_MUSIQUE',
@@ -556,7 +556,7 @@ export const subcategoriesMappingSnap = {
     isEvent: false,
     nativeCategoryId: 'ACHAT_LOCATION_INSTRUMENT',
     onlineOfflinePlatform: 'OFFLINE',
-    searchGroupName: 'INSTRUMENTS',
+    searchGroupName: 'MUSIQUE',
   },
   MATERIEL_ART_CREATIF: {
     id: 'MATERIEL_ART_CREATIF',
@@ -596,7 +596,7 @@ export const subcategoriesMappingSnap = {
     isEvent: false,
     nativeCategoryId: 'PARTITIONS_DE_MUSIQUE',
     onlineOfflinePlatform: 'OFFLINE',
-    searchGroupName: 'INSTRUMENTS',
+    searchGroupName: 'MUSIQUE',
   },
   PLATEFORME_PRATIQUE_ARTISTIQUE: {
     id: 'PLATEFORME_PRATIQUE_ARTISTIQUE',
@@ -819,7 +819,6 @@ export const useSearchGroupLabelMappingSnap = {
   EVENEMENTS_EN_LIGNE: 'Évènements en ligne',
   CINEMA: 'Cinéma',
   FILMS_DOCUMENTAIRES_SERIES: 'Films, séries et documentaires',
-  INSTRUMENTS: 'Instruments de musique',
   JEUX_JEUX_VIDEOS: 'Jeux & jeux vidéos',
   LIVRES: 'Livres',
   MEDIA_PRESSE: 'Médias & presse',

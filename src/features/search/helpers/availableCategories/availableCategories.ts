@@ -7,6 +7,5 @@ import { CATEGORY_CRITERIA } from 'features/search/enums'
 export const availableCategories = omit(
   CATEGORY_CRITERIA,
   SearchGroupNameEnumv2.NONE,
-  SearchGroupNameEnumv2.INSTRUMENTS,
   SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE
 )

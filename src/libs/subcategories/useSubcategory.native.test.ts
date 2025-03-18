@@ -17,13 +17,13 @@ describe('useSubcategory', () => {
     ${SubcategoryIdEnum.ABO_PRATIQUE_ART}                | ${false} | ${CategoryIdEnum.PRATIQUE_ART}        | ${SearchGroupNameEnumv2.ARTS_LOISIRS_CREATIFS}
     ${SubcategoryIdEnum.ABO_PRESSE_EN_LIGNE}             | ${false} | ${CategoryIdEnum.MEDIA}               | ${SearchGroupNameEnumv2.MEDIA_PRESSE}
     ${SubcategoryIdEnum.ABO_SPECTACLE}                   | ${false} | ${CategoryIdEnum.SPECTACLE}           | ${SearchGroupNameEnumv2.SPECTACLES}
-    ${SubcategoryIdEnum.ACHAT_INSTRUMENT}                | ${false} | ${CategoryIdEnum.INSTRUMENT}          | ${SearchGroupNameEnumv2.INSTRUMENTS}
+    ${SubcategoryIdEnum.ACHAT_INSTRUMENT}                | ${false} | ${CategoryIdEnum.INSTRUMENT}          | ${SearchGroupNameEnumv2.MUSIQUE}
     ${SubcategoryIdEnum.ACTIVATION_EVENT}                | ${true}  | ${CategoryIdEnum.TECHNIQUE}           | ${SearchGroupNameEnumv2.NONE}
     ${SubcategoryIdEnum.ACTIVATION_THING}                | ${false} | ${CategoryIdEnum.TECHNIQUE}           | ${SearchGroupNameEnumv2.NONE}
     ${SubcategoryIdEnum.APP_CULTURELLE}                  | ${false} | ${CategoryIdEnum.MEDIA}               | ${SearchGroupNameEnumv2.MEDIA_PRESSE}
     ${SubcategoryIdEnum.ATELIER_PRATIQUE_ART}            | ${true}  | ${CategoryIdEnum.PRATIQUE_ART}        | ${SearchGroupNameEnumv2.ARTS_LOISIRS_CREATIFS}
     ${SubcategoryIdEnum.AUTRE_SUPPORT_NUMERIQUE}         | ${false} | ${CategoryIdEnum.FILM}                | ${SearchGroupNameEnumv2.FILMS_DOCUMENTAIRES_SERIES}
-    ${SubcategoryIdEnum.BON_ACHAT_INSTRUMENT}            | ${false} | ${CategoryIdEnum.INSTRUMENT}          | ${SearchGroupNameEnumv2.INSTRUMENTS}
+    ${SubcategoryIdEnum.BON_ACHAT_INSTRUMENT}            | ${false} | ${CategoryIdEnum.INSTRUMENT}          | ${SearchGroupNameEnumv2.MUSIQUE}
     ${SubcategoryIdEnum.CAPTATION_MUSIQUE}               | ${false} | ${CategoryIdEnum.MUSIQUE_ENREGISTREE} | ${SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE}
     ${SubcategoryIdEnum.CARTE_CINE_ILLIMITE}             | ${false} | ${CategoryIdEnum.CINEMA}              | ${SearchGroupNameEnumv2.CINEMA}
     ${SubcategoryIdEnum.CARTE_CINE_MULTISEANCES}         | ${false} | ${CategoryIdEnum.CINEMA}              | ${SearchGroupNameEnumv2.CINEMA}
@@ -53,11 +53,11 @@ describe('useSubcategory', () => {
     ${SubcategoryIdEnum.LIVRE_AUDIO_PHYSIQUE}            | ${false} | ${CategoryIdEnum.LIVRE}               | ${SearchGroupNameEnumv2.LIVRES}
     ${SubcategoryIdEnum.LIVRE_NUMERIQUE}                 | ${false} | ${CategoryIdEnum.LIVRE}               | ${SearchGroupNameEnumv2.LIVRES}
     ${SubcategoryIdEnum.LIVRE_PAPIER}                    | ${false} | ${CategoryIdEnum.LIVRE}               | ${SearchGroupNameEnumv2.LIVRES}
-    ${SubcategoryIdEnum.LOCATION_INSTRUMENT}             | ${false} | ${CategoryIdEnum.INSTRUMENT}          | ${SearchGroupNameEnumv2.INSTRUMENTS}
+    ${SubcategoryIdEnum.LOCATION_INSTRUMENT}             | ${false} | ${CategoryIdEnum.INSTRUMENT}          | ${SearchGroupNameEnumv2.MUSIQUE}
     ${SubcategoryIdEnum.MATERIEL_ART_CREATIF}            | ${false} | ${CategoryIdEnum.BEAUX_ARTS}          | ${SearchGroupNameEnumv2.ARTS_LOISIRS_CREATIFS}
     ${SubcategoryIdEnum.MUSEE_VENTE_DISTANCE}            | ${false} | ${CategoryIdEnum.MUSEE}               | ${SearchGroupNameEnumv2.MUSEES_VISITES_CULTURELLES}
     ${SubcategoryIdEnum.OEUVRE_ART}                      | ${false} | ${CategoryIdEnum.TECHNIQUE}           | ${SearchGroupNameEnumv2.ARTS_LOISIRS_CREATIFS}
-    ${SubcategoryIdEnum.PARTITION}                       | ${false} | ${CategoryIdEnum.INSTRUMENT}          | ${SearchGroupNameEnumv2.INSTRUMENTS}
+    ${SubcategoryIdEnum.PARTITION}                       | ${false} | ${CategoryIdEnum.INSTRUMENT}          | ${SearchGroupNameEnumv2.MUSIQUE}
     ${SubcategoryIdEnum.PLATEFORME_PRATIQUE_ARTISTIQUE}  | ${false} | ${CategoryIdEnum.PRATIQUE_ART}        | ${SearchGroupNameEnumv2.ARTS_LOISIRS_CREATIFS}
     ${SubcategoryIdEnum.PODCAST}                         | ${false} | ${CategoryIdEnum.MEDIA}               | ${SearchGroupNameEnumv2.MEDIA_PRESSE}
     ${SubcategoryIdEnum.PRATIQUE_ART_VENTE_DISTANCE}     | ${false} | ${CategoryIdEnum.PRATIQUE_ART}        | ${SearchGroupNameEnumv2.ARTS_LOISIRS_CREATIFS}

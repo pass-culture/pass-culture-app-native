@@ -29,7 +29,6 @@ describe('Search reducer', () => {
         SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE,
         SearchGroupNameEnumv2.RENCONTRES_CONFERENCES,
         SearchGroupNameEnumv2.JEUX_JEUX_VIDEOS,
-        SearchGroupNameEnumv2.INSTRUMENTS,
       ],
       tags: [],
     }
