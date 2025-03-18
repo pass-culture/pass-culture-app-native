@@ -21,8 +21,6 @@ import {
 import { isCloseToBottom } from 'libs/analytics'
 import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
 import { analytics } from 'libs/analytics/provider'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { SeeItineraryButton } from 'libs/itinerary/components/SeeItineraryButton'
 import { getGoogleMapsItineraryUrl } from 'libs/itinerary/openGoogleMapsItinerary'
@@ -61,7 +59,6 @@ export const OldBookingDetailsContent = ({
   properties: BookingProperties
   mapping: SubcategoriesMapping
 }) => {
-  const enableBookingImprove = useFeatureFlag(RemoteStoreFeatureFlags.WIP_BOOKING_IMPROVE)
   const windowHeight = useWindowDimensions().height - blurImageHeight
   const netInfo = useNetInfoContext()
 
@@ -98,11 +95,8 @@ export const OldBookingDetailsContent = ({
       message: `Ta réservation "${nameCanceledBooking}" a été annulée`,
       timeout: SNACK_BAR_TIME_OUT,
     })
-    if (enableBookingImprove) {
-      navigate('Bookings')
-    } else {
-      navigate('EndedBookings')
-    }
+
+    navigate('Bookings')
   }
   const logConsultWholeBooking = useFunctionOnce(
     () => offerId && analytics.logBookingDetailsScrolledToBottom(offerId)

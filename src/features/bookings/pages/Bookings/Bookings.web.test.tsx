@@ -1,7 +1,6 @@
 import React from 'react'
 import { QueryObserverResult, UseQueryResult } from 'react-query'
 
-import { navigate } from '__mocks__/@react-navigation/native'
 import {
   BookingsResponse,
   CategoryIdEnum,
@@ -9,13 +8,13 @@ import {
   SubcategoriesResponseModelv2,
   SubcategoryIdEnum,
 } from 'api/gen'
-import { bookingsSnap, emptyBookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
+import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { useAvailableReaction } from 'features/reactions/api/useAvailableReaction'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
 import * as bookingsAPI from 'queries/bookings/useBookingsQuery'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, checkAccessibilityFor, fireEvent, render, screen, waitFor } from 'tests/utils/web'
+import { act, checkAccessibilityFor, render } from 'tests/utils/web'
 
 import { Bookings } from './Bookings'
 
@@ -79,47 +78,6 @@ describe('Bookings', () => {
 
         expect(results).toHaveNoViolations()
       })
-    })
-  })
-
-  it('should always execute the query (in cache or in network)', async () => {
-    const useBookingsQuery = jest.spyOn(bookingsAPI, 'useBookingsQuery')
-    renderBookings(bookingsSnap)
-
-    await waitFor(() => {
-      expect(useBookingsQuery).toHaveBeenCalledTimes(2)
-    })
-  })
-
-  it('should display the right number of ongoing bookings', async () => {
-    renderBookings(bookingsSnap)
-
-    expect(await screen.findByText('3 réservations en cours')).toBeInTheDocument()
-  })
-
-  it('should display the empty bookings dedicated view', async () => {
-    renderBookings(emptyBookingsSnap)
-
-    expect(await screen.findByText('Découvrir le catalogue')).toBeInTheDocument()
-  })
-
-  it('should display ended bookings CTA with the right number', async () => {
-    renderBookings(bookingsSnap)
-
-    await waitFor(() => {
-      expect(screen.getByText('2')).toBeInTheDocument()
-      expect(screen.getByText('Réservations terminées')).toBeInTheDocument()
-    })
-  })
-
-  it('should navigate to ended bookings page on press ended bookings CTA', async () => {
-    renderBookings(bookingsSnap)
-
-    const cta = screen.getByText('Réservations terminées')
-    fireEvent.click(cta)
-
-    await waitFor(() => {
-      expect(navigate).toHaveBeenCalledWith('EndedBookings', undefined)
     })
   })
 })

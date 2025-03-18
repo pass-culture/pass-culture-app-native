@@ -66,33 +66,12 @@ describe('EndedBookings', () => {
 
     await screen.findAllByText('Avez-vous déjà vu\u00a0?')
 
-    await screen.findByText('Réservations terminées')
-
     expect(screen).toMatchSnapshot()
-  })
-
-  it('should display the right number of ended bookings', async () => {
-    renderEndedBookings()
-
-    expect(await screen.findByText('2 réservations terminées')).toBeOnTheScreen()
-  })
-
-  it('should goBack when we press on the back button', async () => {
-    renderEndedBookings()
-
-    await screen.findAllByText('Avez-vous déjà vu\u00a0?')
-
-    await user.press(screen.getByTestId('Revenir en arrière'))
-
-    expect(mockGoBack).toHaveBeenCalledTimes(1)
   })
 
   describe('with reaction feature flag activated', () => {
     beforeEach(() => {
-      setFeatureFlags([
-        RemoteStoreFeatureFlags.WIP_BOOKING_IMPROVE,
-        RemoteStoreFeatureFlags.WIP_REACTION_FEATURE,
-      ])
+      setFeatureFlags([RemoteStoreFeatureFlags.WIP_REACTION_FEATURE])
     })
 
     it('should send reaction from cinema offer', async () => {
