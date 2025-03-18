@@ -78,7 +78,6 @@ export const safeFetch = async (
     return fetch(url, runtimeOptions)
   }
 
-  // @ts-expect-error
   const authorizationHeader: string = options.headers?.['Authorization'] || ''
   const token = authorizationHeader.replace('Bearer ', '')
   const accessTokenStatus = getTokenStatus(token)

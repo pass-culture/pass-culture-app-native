@@ -1,21 +1,18 @@
 import Clipboard from '@react-native-clipboard/clipboard'
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { ComponentStory } from '@storybook/react'
 import React, { useMemo, useState } from 'react'
 import styled from 'styled-components/native'
 
 import { AccessibleIcon } from 'ui/svg/icons/types'
 import { Spacer, Typo, getSpacing } from 'ui/theme'
 
-export const SVGTemplate: ComponentStory<
-  React.FC<{
-    title: string
-    icons: Record<string, React.ComponentType<AccessibleIcon>>
-    isBicolor?: boolean
-    children?: never
-    isIllustration?: boolean
-  }>
-> = ({ title, icons, isBicolor = false, isIllustration = false }) => {
+export const SVGTemplate: React.FC<{
+  title: string
+  icons: Record<string, React.ComponentType<AccessibleIcon>>
+  isBicolor?: boolean
+  children?: never
+  isIllustration?: boolean
+}> = ({ title, icons, isBicolor = false, isIllustration = false }) => {
   const [copiedIconName, setCopiedIconName] = useState<string | null>(null)
 
   const sortedIcons = useMemo(() => {
