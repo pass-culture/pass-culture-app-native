@@ -39,7 +39,7 @@ export enum ContentTypes {
 
 export type Layout = 'three-items' | 'two-items' | 'one-item-medium'
 
-interface Entry<T, ContentType extends ContentTypes> {
+export interface Entry<T, ContentType extends ContentTypes> {
   sys: Sys<ContentType>
   // if the content model is unpublished/deleted, `fields` won't be provided
   fields?: T
@@ -543,35 +543,6 @@ type TrendsFields = {
 
 export type TrendsContentModel = Entry<TrendsFields, ContentTypes.TRENDS>
 
-export const isAlgoliaContentModel = (module: HomepageNatifModule): module is AlgoliaContentModel =>
-  module.sys.contentType?.sys.id === ContentTypes.ALGOLIA
-
-export const isBusinessContentModel = (
-  module: HomepageNatifModule
-): module is BusinessContentModel => module.sys.contentType?.sys.id === ContentTypes.BUSINESS
-
-export const isExclusivityContentModel = (
-  module: HomepageNatifModule
-): module is ExclusivityContentModel => module.sys.contentType?.sys.id === ContentTypes.EXCLUSIVITY
-
-export const isRecommendationContentModel = (
-  module: HomepageNatifModule
-): module is RecommendationContentModel =>
-  module.sys.contentType?.sys.id === ContentTypes.RECOMMENDATION
-
-export const isThematicHighlightContentModel = (
-  module: HomepageNatifModule
-): module is ThematicHighlightContentModel =>
-  module.sys.contentType?.sys.id === ContentTypes.THEMATIC_HIGHLIGHT
-
-export const isVenuesContentModel = (module: HomepageNatifModule): module is VenuesContentModel =>
-  module.sys.contentType?.sys.id === ContentTypes.VENUES_PLAYLIST
-
-export const isCategoryListContentModel = (
-  module: HomepageNatifModule
-): module is CategoryListContentModel =>
-  module.sys.contentType?.sys.id === ContentTypes.CATEGORY_LIST
-
 export const isThematicHighlightInfo = (
   thematicHeader?: ThematicHeader
 ): thematicHeader is ThematicHighlightInfo =>
@@ -582,9 +553,6 @@ export const isThematicCategoryInfo = (
 ): thematicHeader is ThematicCategoryInfo =>
   thematicHeader?.sys.contentType?.sys.id === ContentTypes.THEMATIC_CATEGORY_INFO
 
-export const isTrendsContentModel = (module: HomepageNatifModule): module is TrendsContentModel =>
-  module.sys.contentType?.sys.id === ContentTypes.TRENDS
-
 export const isClassicThematicHeader = (
   thematicHeader?: ThematicHeader
 ): thematicHeader is ClassicThematicHeader =>
@@ -594,16 +562,3 @@ export const isVenueMapBlockContentModel = (
   module: HomepageNatifModule
 ): module is VenueMapBlockContentModel =>
   module.sys.contentType?.sys.id === ContentTypes.VENUE_MAP_BLOCK
-
-export const isVideoContentModel = (module: HomepageNatifModule): module is VideoContentModel =>
-  module.sys.contentType?.sys.id === ContentTypes.VIDEO
-
-export const isHighlightOfferContentModel = (
-  module: HomepageNatifModule
-): module is HighlightOfferContentModel =>
-  module.sys.contentType?.sys.id === ContentTypes.HIGHLIGHT_OFFER
-
-export const isVideoCarouselContentModel = (
-  module: HomepageNatifModule
-): module is VideoCarouselContentModel =>
-  module.sys.contentType?.sys.id === ContentTypes.VIDEO_CAROUSEL
