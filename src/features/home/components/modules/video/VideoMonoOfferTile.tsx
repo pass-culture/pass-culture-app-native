@@ -10,7 +10,11 @@ import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsult
 import { OfferAnalyticsParams } from 'libs/analytics/types'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { getDisplayedPrice } from 'libs/parsers/getDisplayedPrice'
+import {
+  formatPrice,
+  getDisplayedPrice,
+  getIfPricesShouldBeFix,
+} from 'libs/parsers/getDisplayedPrice'
 import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { getOfferDates } from 'shared/date/getOfferDates'
@@ -58,7 +62,10 @@ export const VideoMonoOfferTile: FunctionComponent<Props> = ({
     offer?.offer?.prices,
     currency,
     euroToPacificFrancRate,
-    offer.offer.isDuo && user?.isBeneficiary
+    formatPrice(
+      getIfPricesShouldBeFix(offer.offer.subcategoryId),
+      !!(offer.offer.isDuo && user?.isBeneficiary)
+    )
   )
 
   const offerHeight = theme.isDesktopViewport ? getSpacing(45) : getSpacing(35)

@@ -1,3 +1,6 @@
+import compose from 'lodash/fp/compose'
+
+import { SubcategoryIdEnum } from 'api/gen'
 import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
 import { Currency } from 'shared/currency/useGetCurrencyToDisplay'
 
@@ -9,7 +12,7 @@ export const getDisplayedPrice = (
   prices: number[] | undefined,
   currency: Currency,
   euroToPacificFrancRate: number,
-  isDuoDisplayable?: boolean,
+  formatDisplayedPrice = identityPrice,
   options?: FormatPriceOptions
 ): string => {
   if (prices?.length) {
@@ -22,9 +25,24 @@ export const getDisplayedPrice = (
     const sortedPrices = [...uniquePrices].sort((a, b) => a - b)
     const firstPrice = sortedPrices[0]
     if (firstPrice !== undefined) {
-      const displayedPrice = `Dès ${formatCurrencyFromCents(firstPrice, currency, euroToPacificFrancRate, options)}`
-      return isDuoDisplayable ? `${displayedPrice} - Duo` : displayedPrice
+      const displayedPrice = formatCurrencyFromCents(
+        firstPrice,
+        currency,
+        euroToPacificFrancRate,
+        options
+      )
+      return formatDisplayedPrice(displayedPrice)
     }
   }
   return ''
+}
+
+export const identityPrice = (price: string): string => price
+export const formatDuoPrice = (price: string): string => `${price} - Duo`
+export const formatStartPrice = (price: string): string => `Dès ${price}`
+export const formatPrice = (isFixed: boolean, isDuo: boolean) =>
+  compose([isFixed ? identityPrice : formatStartPrice, isDuo ? formatDuoPrice : identityPrice])
+
+export const getIfPricesShouldBeFix = (subcategoryId?: SubcategoryIdEnum | undefined): boolean => {
+  return subcategoryId == SubcategoryIdEnum.LIVRE_PAPIER
 }
