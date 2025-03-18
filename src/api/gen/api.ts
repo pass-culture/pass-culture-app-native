@@ -885,11 +885,6 @@ export interface CategoryResponseModel {
    * @type {string}
    * @memberof CategoryResponseModel
    */
-  id: string
-  /**
-   * @type {string}
-   * @memberof CategoryResponseModel
-   */
   label: string
   /**
    * @type {Array<string>}
@@ -906,6 +901,11 @@ export interface CategoryResponseModel {
    * @memberof CategoryResponseModel
    */
   searchFilter?: string | null
+  /**
+   * @type {string}
+   * @memberof CategoryResponseModel
+   */
+  searchValue?: string | null
 }
 /**
  * @export
