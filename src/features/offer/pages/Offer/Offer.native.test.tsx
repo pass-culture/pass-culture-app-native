@@ -9,13 +9,10 @@ import { mockedAlgoliaOffersWithSameArtistResponse } from 'libs/algolia/fixtures
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
-import { mockAuthContextWithoutUser } from 'tests/AuthContextUtils'
 import { screen, userEvent, waitFor } from 'tests/utils'
 import * as useModal from 'ui/components/modals/useModal'
 
 jest.unmock('react-native/Libraries/Animated/createAnimatedComponent')
-
-jest.mock('features/auth/context/AuthContext')
 
 jest
   .spyOn(useSimilarOffers, 'useSimilarOffers')
@@ -48,12 +45,24 @@ jest.spyOn(useModal, 'useModal').mockReturnValue({
 jest.mock('libs/firebase/analytics/analytics')
 jest.useFakeTimers()
 
+const mockUseAuthContext = jest.fn()
+jest.mock('features/auth/context/AuthContext', () => ({
+  useAuthContext: () => mockUseAuthContext(),
+}))
+
+const mockAuthContext = (isLoggedIn = true) => {
+  mockUseAuthContext.mockReturnValue({
+    user: undefined,
+    isLoggedIn,
+  })
+}
+
 describe('<Offer />', () => {
   const user = userEvent.setup()
 
   beforeEach(() => {
-    mockAuthContextWithoutUser({ persist: true })
     setFeatureFlags()
+    mockAuthContext()
   })
 
   afterEach(() => {
@@ -112,6 +121,15 @@ describe('<Offer />', () => {
       ],
       hasBookingsAfter18: false,
     })
+
+    renderOfferPage({ mockOffer: offerResponseSnap })
+
+    await waitFor(() => expect(screen.queryByTestId('animated-icon-like')).not.toBeOnTheScreen())
+  })
+
+  it('should not display reaction button in header when user is anonymous (not logged in)', async () => {
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_REACTION_FEATURE])
+    mockAuthContext(false)
 
     renderOfferPage({ mockOffer: offerResponseSnap })
 
