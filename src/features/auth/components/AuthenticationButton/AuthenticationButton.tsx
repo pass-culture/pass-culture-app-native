@@ -94,7 +94,6 @@ const AuthenticationContainer = styled.View({
   gap: getSpacing(1),
 })
 
-const StyledBody = styled(TypoDS.Body)(({ theme }) => ({
-  color: theme.designSystem.color.text.default,
+const StyledBody = styled(TypoDS.Body)({
   textAlign: 'center',
-}))
+})
