@@ -64,7 +64,7 @@ export const ChronicleCard: FunctionComponent<Props> = ({
         thumbnailComponent={<BookClubCertification />}
       />
       <Separator.Horizontal />
-      <DescriptionContainer defaultHeight={defaultHeight}>
+      <DescriptionContainer defaultHeight={defaultHeight} shouldTruncate={shouldTruncate}>
         <Description
           testID="description"
           onLayout={shouldTruncate ? handleOnLayout : undefined}
@@ -98,10 +98,10 @@ const Container = styled(ViewGap)<{ width?: number; shouldTruncate?: boolean }>(
   })
 )
 
-const DescriptionContainer = styled.View<{ defaultHeight: number }>(({ defaultHeight }) => ({
-  maxHeight: MAX_LINES * defaultHeight,
-  overflow: 'hidden',
-}))
+const DescriptionContainer = styled.View<{ defaultHeight: number; shouldTruncate?: boolean }>(
+  ({ defaultHeight, shouldTruncate }) =>
+    shouldTruncate ? { maxHeight: MAX_LINES * defaultHeight, overflow: 'hidden' } : {}
+)
 
 const Description = styled(TypoDS.BodyAccentS)(({ theme }) => ({
   color: theme.colors.greyDark,
