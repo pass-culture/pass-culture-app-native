@@ -220,8 +220,8 @@ exports[`DMSIntroduction foreign version should render correctly 1`] = `
       <View
         accessibilityLabel="demarches-simplifiees.fr"
         fill="none"
-        height="64"
-        width="281"
+        height={64}
+        width={240}
       >
         <Text>
           undefined-SVG-Mock
@@ -935,8 +935,8 @@ exports[`DMSIntroduction french version should render correctly 1`] = `
       <View
         accessibilityLabel="demarches-simplifiees.fr"
         fill="none"
-        height="64"
-        width="281"
+        height={64}
+        width={240}
       >
         <Text>
           undefined-SVG-Mock

@@ -8,7 +8,7 @@ import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useMediaQuery } from 'libs/react-responsive/useMediaQuery'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { LogoPassCulture } from 'ui/svg/icons/LogoPassCulture'
-import { LogoMinistere } from 'ui/svg/LogoMinistere'
+import { LogoFrenchRepublic } from 'ui/svg/LogoFrenchRepublic'
 import { getShadow, getSpacing } from 'ui/theme'
 import { QuickAccess } from 'ui/web/link/QuickAccess'
 
@@ -120,9 +120,9 @@ export const Header = memo(function Header({ mainId }: { mainId: string }) {
           style={fadeAnimSmall}
           accessibilityHidden={!!isBrandVisible}>
           <FlexContainer alignItems="flex-end">
-            <LogoMinistereContainer height={getSpacing(11)} width={getSpacing(15.5)}>
-              <LogoMinistere />
-            </LogoMinistereContainer>
+            <LogoFrenchRepublicContainer height={getSpacing(11)} width={getSpacing(15.5)}>
+              <LogoFrenchRepublic />
+            </LogoFrenchRepublicContainer>
           </FlexContainer>
         </RightContainer>
       </CenterContainer>
@@ -133,9 +133,9 @@ export const Header = memo(function Header({ mainId }: { mainId: string }) {
         accessibilityHidden={!isBrandVisible}>
         <FlexContainer />
         <FlexContainer>
-          <LogoMinistereContainer>
-            <LogoMinistere />
-          </LogoMinistereContainer>
+          <LogoFrenchRepublicContainer>
+            <LogoFrenchRepublic />
+          </LogoFrenchRepublicContainer>
         </FlexContainer>
       </RightContainer>
     </HeaderContainer>
@@ -201,7 +201,7 @@ const LogoContainer = styled(InternalTouchableLink)({
   flex: 1,
 })
 
-const LogoMinistereContainer = styled.View<{ width?: number; height?: number }>(
+const LogoFrenchRepublicContainer = styled.View<{ width?: number; height?: number }>(
   ({ height, width }) => ({
     height: height ?? getSpacing(15),
     width,

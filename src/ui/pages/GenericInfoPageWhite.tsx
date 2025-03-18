@@ -19,7 +19,7 @@ import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouch
 import { ExternalNavigationProps, InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
-import { AccessibleIcon } from 'ui/svg/icons/types'
+import { AccessibleIcon, AccessibleRectangleIcon } from 'ui/svg/icons/types'
 import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -59,7 +59,7 @@ type Props = PropsWithChildren<
     buttonSecondary?: ButtonProps
     buttonTertiary?: ButtonProps
   } & (
-    | { illustration: React.FC<AccessibleIcon>; animation?: never }
+    | { illustration: React.FC<AccessibleIcon | AccessibleRectangleIcon>; animation?: never }
     | { animation: AnimationObject; illustration?: never }
   )
 >

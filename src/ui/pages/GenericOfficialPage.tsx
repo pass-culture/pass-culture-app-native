@@ -3,7 +3,7 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { Helmet } from 'libs/react-helmet/Helmet'
 import { LogoPassCulture } from 'ui/svg/icons/LogoPassCulture'
-import { LogoMinistere } from 'ui/svg/LogoMinistere'
+import { LogoFrenchRepublic } from 'ui/svg/LogoFrenchRepublic'
 import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -44,9 +44,9 @@ export function GenericOfficialPage({
       <Spacer.TopScreen />
       <HeaderContainer>
         <IllustrationsContainer>
-          <LogoMinistereContainer>
-            <LogoMinistere />
-          </LogoMinistereContainer>
+          <LogoFrenchRepublicContainer>
+            <LogoFrenchRepublic />
+          </LogoFrenchRepublicContainer>
           <LogoPassCultureContainer>
             <ColoredPassCultureLogo />
           </LogoPassCultureContainer>
@@ -140,7 +140,7 @@ const IllustrationsContainer = styled.View({
   alignSelf: 'stretch',
 })
 
-const LogoMinistereContainer = styled.View({
+const LogoFrenchRepublicContainer = styled.View({
   width: getSpacing(33),
   height: getSpacing(22),
 })

@@ -54,7 +54,7 @@ export const DMSIntroduction = (): React.JSX.Element => {
   return (
     <GenericInfoPageWhite
       withGoBack
-      illustration={LogoDMS}
+      illustration={StyledLogoDMS}
       title="Identifie-toi sur le site demarches-simplifiees.fr"
       buttonPrimary={{ wording: 'Aller sur demarches-simplifiees.fr', ...toDMSWebsiteButtonProps }}>
       <StyledBody>Pour t’identifier tu vas avoir besoin de&nbsp;: </StyledBody>
@@ -76,3 +76,7 @@ export const DMSIntroduction = (): React.JSX.Element => {
 const StyledBody = styled(TypoDS.Body)({
   marginBottom: getSpacing(5),
 })
+
+const StyledLogoDMS = () => {
+  return <LogoDMS width={getSpacing(60)} />
+}

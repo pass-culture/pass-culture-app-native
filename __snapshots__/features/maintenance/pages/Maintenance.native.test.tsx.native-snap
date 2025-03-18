@@ -170,7 +170,7 @@ exports[`<Maintenance /> should match snapshot with custom message 1`] = `
     <View
       accessibilityLabel="pass culture"
       height={36}
-      width={107}
+      width={104}
     >
       <Text>
         undefined-SVG-Mock
@@ -383,7 +383,7 @@ exports[`<Maintenance /> should match snapshot with default message 1`] = `
     <View
       accessibilityLabel="pass culture"
       height={36}
-      width={107}
+      width={104}
     >
       <Text>
         undefined-SVG-Mock

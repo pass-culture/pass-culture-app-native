@@ -49,7 +49,7 @@ import { LegalNotices } from 'ui/svg/icons/LegalNotices'
 import { LifeBuoy } from 'ui/svg/icons/LifeBuoy'
 import { LocationPointer } from 'ui/svg/icons/LocationPointer'
 import { SignOut } from 'ui/svg/icons/SignOut'
-import { LogoMinistere } from 'ui/svg/LogoMinistere'
+import { LogoFrenchRepublic } from 'ui/svg/LogoFrenchRepublic'
 import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 import { SECTION_ROW_ICON_SIZE } from 'ui/theme/constants'
 
@@ -315,9 +315,9 @@ const OnlineProfile: React.FC = () => {
                   {isWeb ? `-${String(env.COMMIT_HASH)}` : ''}
                 </Version>
                 {isWeb ? null : (
-                  <LogoMinistereContainer>
-                    <LogoMinistere />
-                  </LogoMinistereContainer>
+                  <LogoFrenchRepublicContainer>
+                    <LogoFrenchRepublic />
+                  </LogoFrenchRepublicContainer>
                 )}
               </Section>
               {isWeb ? null : <Spacer.TabBar />}
@@ -377,7 +377,7 @@ const Version = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
   marginVertical: getSpacing(4),
 }))
 
-const LogoMinistereContainer = styled.View({
+const LogoFrenchRepublicContainer = styled.View({
   width: getSpacing(40),
   height: getSpacing(28),
   marginBottom: getSpacing(4),

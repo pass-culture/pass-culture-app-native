@@ -10,7 +10,7 @@ import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouch
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { LogoPassCulture } from 'ui/svg/icons/LogoPassCulture'
-import { LogoMinistere } from 'ui/svg/LogoMinistere'
+import { LogoFrenchRepublic } from 'ui/svg/LogoFrenchRepublic'
 import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 
 const isWeb = Platform.OS === 'web'
@@ -26,10 +26,10 @@ export const AccessibilityFooter = () => {
           </LogoContainer>
           <LinksContainer>
             <InternalTouchableLink navigateTo={getProfileNavConfig('Accessibility')}>
-              <TypoDS.BodyAccentXs>Accessibilité&nbsp;: partiellement conforme</TypoDS.BodyAccentXs>
+              <StyledBodyAccentXs>Accessibilité&nbsp;: partiellement conforme</StyledBodyAccentXs>
             </InternalTouchableLink>
             <InternalTouchableLink navigateTo={getProfileNavConfig('LegalNotices')}>
-              <TypoDS.BodyAccentXs>Mentions légales</TypoDS.BodyAccentXs>
+              <StyledBodyAccentXs>Mentions légales</StyledBodyAccentXs>
             </InternalTouchableLink>
             <ExternalTouchableLink
               as={ButtonQuaternaryGrey}
@@ -49,7 +49,7 @@ export const AccessibilityFooter = () => {
             />
           </LinksContainer>
           <LogoContainer>
-            <LogoMinistere />
+            <LogoFrenchRepublic />
           </LogoContainer>
           <Spacer.TabBar />
         </Container>
@@ -85,3 +85,7 @@ const ColoredPassCultureLogo = styled(LogoPassCulture).attrs(({ theme }) => ({
 const LogoContainer = styled.View({
   width: getSpacing(20),
 })
+
+const StyledBodyAccentXs = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
+  color: theme.colors.greyDark,
+}))
