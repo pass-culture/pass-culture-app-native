@@ -6,7 +6,7 @@ import {
   HomepageLabelNameEnumv2,
   NativeCategoryIdEnumv2,
   OfferResponseV2,
-  OnlineOfflinePlatformChoicesEnumv2,
+  OnlineOfflinePlatformChoicesEnum,
   SearchGroupNameEnumv2,
   SubcategoryIdEnum,
   SubcategoryIdEnumv2,
@@ -102,7 +102,7 @@ describe('<OfferBody />', () => {
         searchGroupName: SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE,
         homepageLabelName: HomepageLabelNameEnumv2.MUSIQUE,
         isEvent: false,
-        onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnumv2.OFFLINE,
+        onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnum.OFFLINE,
         nativeCategoryId: NativeCategoryIdEnumv2.VINYLES,
       }
 
