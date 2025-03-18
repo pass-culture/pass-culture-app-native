@@ -1338,11 +1338,17 @@ exports[`<Venue /> should match snapshot 1`] = `
                               "onEndReached": undefined,
                               "onEndReachedThreshold": 0.2,
                               "onScroll": [Function],
+                              "onViewableItemsChanged": undefined,
                               "renderItem": [Function],
                               "scrollEnabled": true,
                               "scrollEventThrottle": 16,
                               "showsHorizontalScrollIndicator": false,
                               "testID": "offersModuleList",
+                              "viewabilityConfig": {
+                                "minimumViewTime": 300,
+                                "viewAreaCoveragePercentThreshold": 20,
+                                "waitForInteraction": true,
+                              },
                             },
                             "renderWindowInsets": {
                               "height": 0,
@@ -1400,6 +1406,13 @@ exports[`<Venue /> should match snapshot 1`] = `
                         }
                         suppressBoundedSizeException={true}
                         testID="offersModuleList"
+                        viewabilityConfig={
+                          {
+                            "minimumViewTime": 300,
+                            "viewAreaCoveragePercentThreshold": 20,
+                            "waitForInteraction": true,
+                          }
+                        }
                         windowCorrectionConfig={
                           {
                             "applyToInitialOffset": true,
@@ -2755,11 +2768,17 @@ exports[`<Venue /> should match snapshot 1`] = `
                                 "onEndReached": [Function],
                                 "onEndReachedThreshold": 0.2,
                                 "onScroll": [Function],
+                                "onViewableItemsChanged": undefined,
                                 "renderItem": [Function],
                                 "scrollEnabled": true,
                                 "scrollEventThrottle": 16,
                                 "showsHorizontalScrollIndicator": false,
                                 "testID": "offersModuleList",
+                                "viewabilityConfig": {
+                                  "minimumViewTime": 300,
+                                  "viewAreaCoveragePercentThreshold": 20,
+                                  "waitForInteraction": true,
+                                },
                               },
                               "renderWindowInsets": {
                                 "height": 0,
@@ -2817,6 +2836,13 @@ exports[`<Venue /> should match snapshot 1`] = `
                           }
                           suppressBoundedSizeException={true}
                           testID="offersModuleList"
+                          viewabilityConfig={
+                            {
+                              "minimumViewTime": 300,
+                              "viewAreaCoveragePercentThreshold": 20,
+                              "waitForInteraction": true,
+                            }
+                          }
                           windowCorrectionConfig={
                             {
                               "applyToInitialOffset": true,
@@ -6418,11 +6444,17 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                               "onEndReached": undefined,
                               "onEndReachedThreshold": 0.2,
                               "onScroll": [Function],
+                              "onViewableItemsChanged": undefined,
                               "renderItem": [Function],
                               "scrollEnabled": true,
                               "scrollEventThrottle": 16,
                               "showsHorizontalScrollIndicator": false,
                               "testID": "offersModuleList",
+                              "viewabilityConfig": {
+                                "minimumViewTime": 300,
+                                "viewAreaCoveragePercentThreshold": 20,
+                                "waitForInteraction": true,
+                              },
                             },
                             "renderWindowInsets": {
                               "height": 0,
@@ -6480,6 +6512,13 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                         }
                         suppressBoundedSizeException={true}
                         testID="offersModuleList"
+                        viewabilityConfig={
+                          {
+                            "minimumViewTime": 300,
+                            "viewAreaCoveragePercentThreshold": 20,
+                            "waitForInteraction": true,
+                          }
+                        }
                         windowCorrectionConfig={
                           {
                             "applyToInitialOffset": true,
@@ -7835,11 +7874,17 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                 "onEndReached": [Function],
                                 "onEndReachedThreshold": 0.2,
                                 "onScroll": [Function],
+                                "onViewableItemsChanged": undefined,
                                 "renderItem": [Function],
                                 "scrollEnabled": true,
                                 "scrollEventThrottle": 16,
                                 "showsHorizontalScrollIndicator": false,
                                 "testID": "offersModuleList",
+                                "viewabilityConfig": {
+                                  "minimumViewTime": 300,
+                                  "viewAreaCoveragePercentThreshold": 20,
+                                  "waitForInteraction": true,
+                                },
                               },
                               "renderWindowInsets": {
                                 "height": 0,
@@ -7897,6 +7942,13 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                           }
                           suppressBoundedSizeException={true}
                           testID="offersModuleList"
+                          viewabilityConfig={
+                            {
+                              "minimumViewTime": 300,
+                              "viewAreaCoveragePercentThreshold": 20,
+                              "waitForInteraction": true,
+                            }
+                          }
                           windowCorrectionConfig={
                             {
                               "applyToInitialOffset": true,

@@ -1,5 +1,7 @@
 import { useRoute } from '@react-navigation/native'
-import React from 'react'
+import React, { createRef, RefObject, useRef } from 'react'
+import { ViewToken } from 'react-native'
+import { FlatList } from 'react-native-gesture-handler'
 
 import { OfferResponseV2, RecommendationApiParams } from 'api/gen'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
@@ -24,6 +26,7 @@ export type OfferPlaylistListProps = {
   apiRecoParamsSameCategory?: RecommendationApiParams
   otherCategoriesSimilarOffers?: Offer[]
   apiRecoParamsOtherCategories?: RecommendationApiParams
+  onPlaylistViewableItemsChanged?: (playlistId: string, itemsId: string[]) => void
 }
 
 function isArrayNotEmpty<T>(data: T[] | undefined): data is T[] {
@@ -36,11 +39,13 @@ export function OfferPlaylistList({
   apiRecoParamsSameCategory,
   otherCategoriesSimilarOffers,
   apiRecoParamsOtherCategories,
+  onPlaylistViewableItemsChanged,
 }: Readonly<OfferPlaylistListProps>) {
   const route = useRoute<UseRouteType<'Offer'>>()
   const fromOfferId = route.params?.fromOfferId
   const categoryMapping = useCategoryIdMapping()
   const labelMapping = useCategoryHomeLabelMapping()
+  const inViewPlaylists = useRef<string[]>([])
 
   const currency = useGetCurrencyToDisplay()
   const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
@@ -93,8 +98,36 @@ export function OfferPlaylistList({
     otherCategoriesSimilarOffersPlaylist,
   ]
 
+  const playlistRefs = similarOffersPlaylist.reduce(
+    (previous, current) => {
+      previous[current.title] = createRef<FlatList>()
+      return previous
+    },
+    {} as Record<string, RefObject<FlatList>>
+  )
+
+  const handleIntersectionObserverChange = (playlist: SimilarOfferPlaylist, isInView: boolean) => {
+    playlist.handleChangePlaylistDisplay(isInView)
+
+    if (isInView) {
+      inViewPlaylists.current.push(playlist.title)
+      playlistRefs[playlist.title]?.current?.recordInteraction()
+    } else {
+      inViewPlaylists.current = inViewPlaylists.current.filter((title) => playlist.title !== title)
+    }
+  }
+
   const shouldDisplayPlaylist =
     isArrayNotEmpty(sameCategorySimilarOffers) || isArrayNotEmpty(otherCategoriesSimilarOffers)
+
+  const handleViewableItemsChange = (playlist: SimilarOfferPlaylist, changed: ViewToken[]) => {
+    if (inViewPlaylists.current.includes(playlist.title)) {
+      onPlaylistViewableItemsChanged?.(
+        playlist.title,
+        changed.map((value) => value.key)
+      )
+    }
+  }
 
   return (
     <SectionWithDivider visible={shouldDisplayPlaylist} gap={8}>
@@ -105,13 +138,16 @@ export function OfferPlaylistList({
 
         return (
           <IntersectionObserver
-            onChange={playlist.handleChangePlaylistDisplay}
+            onChange={(isInView: boolean) => {
+              handleIntersectionObserverChange(playlist, isInView)
+            }}
             threshold="50%"
             key={playlist.type}>
             <OfferPlaylist
               items={playlist.offers}
               itemWidth={itemWidth}
               itemHeight={itemHeight}
+              playlistRef={playlistRefs[playlist.title]}
               renderItem={OfferPlaylistItem({
                 offer,
                 labelMapping,
@@ -126,6 +162,7 @@ export function OfferPlaylistList({
               title={playlist.title}
               onEndReached={() => trackingOnHorizontalScroll(playlist.type, playlist.apiRecoParams)}
               playlistType={playlist.type}
+              onViewableItemsChanged={({ changed }) => handleViewableItemsChange(playlist, changed)}
             />
           </IntersectionObserver>
         )

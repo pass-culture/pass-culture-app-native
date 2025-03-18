@@ -1,9 +1,9 @@
 /* We use many `any` on purpose in this module, so we deactivate the following rule : */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { ListRenderItemInfo, FlashList } from '@shopify/flash-list'
-import React, { FunctionComponent, useCallback, useMemo, useRef } from 'react'
-import { Platform, useWindowDimensions } from 'react-native'
-import { FlatList as RNGHFlatList } from 'react-native-gesture-handler'
+import React, { forwardRef, useCallback, useImperativeHandle, useMemo, useRef } from 'react'
+import { FlatListProps, Platform, useWindowDimensions, ViewabilityConfig } from 'react-native'
+import { FlatList, FlatList as RNGHFlatList } from 'react-native-gesture-handler'
 import styled, { useTheme } from 'styled-components/native'
 
 import { PlaylistType } from 'features/offer/enums'
@@ -26,7 +26,7 @@ export type CustomListRenderItem<ItemT> = (
     }
 ) => React.ReactElement | null
 
-type Props = {
+type Props = Pick<FlatListProps<unknown>, 'onViewableItemsChanged'> & {
   data: any[]
   itemWidth: number
   itemHeight: number
@@ -45,40 +45,40 @@ type Props = {
   horizontalMargin?: number
 }
 
-function defaultKeyExtractor(item: any, index: number): string {
-  return item.key || item.id || index.toString()
-}
-
-const defaultProps = {
-  keyExtractor: defaultKeyExtractor,
-}
-
 const isWeb = Platform.OS === 'web' ? true : undefined
 
 const ITEM_SEPARATOR_WIDTH = getSpacing(4)
 const HORIZONTAL_MARGIN = getSpacing(6)
+const PLAYLIST_VIEWABILITY_CONFIG = {
+  waitForInteraction: true,
+  viewAreaCoveragePercentThreshold: 20,
+  minimumViewTime: 300,
+} satisfies ViewabilityConfig
 
-export const Playlist: FunctionComponent<Props> = ({
-  data,
-  itemWidth,
-  itemHeight,
-  scrollButtonOffsetY,
-  testID,
-  playlistType,
-  renderItem,
-  keyExtractor,
-  renderHeader,
-  renderFooter,
-  onEndReached,
-  FlatListComponent = FlashList,
-  tileType = 'offer',
-  itemSeparatorSize = ITEM_SEPARATOR_WIDTH,
-  horizontalMargin = HORIZONTAL_MARGIN,
-}) => {
+export const Playlist = forwardRef<FlatList, Props>(function Playlist(props, ref) {
+  const {
+    data,
+    itemWidth,
+    itemHeight,
+    scrollButtonOffsetY,
+    testID,
+    playlistType,
+    renderItem,
+    keyExtractor,
+    renderHeader,
+    renderFooter,
+    onEndReached,
+    onViewableItemsChanged,
+    FlatListComponent = FlashList,
+    tileType = 'offer',
+    itemSeparatorSize = ITEM_SEPARATOR_WIDTH,
+    horizontalMargin = HORIZONTAL_MARGIN,
+  } = props
+
   const { isTouch, tiles } = useTheme()
   const { width } = useWindowDimensions()
 
-  const listRef = useRef(null)
+  const listRef = useRef<FlatList>(null)
   const {
     handleScrollPrevious,
     handleScrollNext,
@@ -88,6 +88,8 @@ export const Playlist: FunctionComponent<Props> = ({
     isEnd,
     isStart,
   } = useHorizontalFlatListScroll({ ref: listRef, isActive: isWeb })
+
+  useImperativeHandle(ref, () => listRef.current as FlatList)
 
   // We have to include these dummy objects for header and footer in the data array
   // in order to have the correct array length available for the scroll functions and renderItem
@@ -182,12 +184,12 @@ export const Playlist: FunctionComponent<Props> = ({
         ListFooterComponent={MemoizedHorizontalMargin}
         onEndReached={onEndReached}
         onEndReachedThreshold={0.2}
+        viewabilityConfig={PLAYLIST_VIEWABILITY_CONFIG}
+        onViewableItemsChanged={onViewableItemsChanged}
       />
     </FlatListContainer>
   )
-}
-
-Playlist.defaultProps = defaultProps
+})
 
 const FlatListContainer = styled.View<{ minHeight?: number }>(({ minHeight }) => ({
   position: 'relative',
