@@ -185,6 +185,42 @@ exports[`<Venue /> should match snapshot 1`] = `
                 Le Petit Rintintin 1
               </Text>
               <View
+                style={
+                  [
+                    {
+                      "alignItems": "center",
+                      "display": "flex",
+                      "flexDirection": "row",
+                      "gap": 4,
+                    },
+                  ]
+                }
+              >
+                <View
+                  height={16}
+                  width={16}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+                <Text
+                  state="close"
+                  style={
+                    [
+                      {
+                        "color": "#b60025",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 19.2,
+                      },
+                    ]
+                  }
+                >
+                  Fermé - Ouvre demain à 9h
+                </Text>
+              </View>
+              <View
                 gap={3}
                 style={
                   [
@@ -4980,6 +5016,42 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
               >
                 Le Petit Rintintin 1
               </Text>
+              <View
+                style={
+                  [
+                    {
+                      "alignItems": "center",
+                      "display": "flex",
+                      "flexDirection": "row",
+                      "gap": 4,
+                    },
+                  ]
+                }
+              >
+                <View
+                  height={16}
+                  width={16}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+                <Text
+                  state="close"
+                  style={
+                    [
+                      {
+                        "color": "#b60025",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 19.2,
+                      },
+                    ]
+                  }
+                >
+                  Fermé - Ouvre demain à 9h
+                </Text>
+              </View>
               <View
                 gap={3}
                 style={
@@ -10111,6 +10183,42 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
               >
                 Le Petit Rintintin 1
               </Text>
+              <View
+                style={
+                  [
+                    {
+                      "alignItems": "center",
+                      "display": "flex",
+                      "flexDirection": "row",
+                      "gap": 4,
+                    },
+                  ]
+                }
+              >
+                <View
+                  height={16}
+                  width={16}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+                <Text
+                  state="close"
+                  style={
+                    [
+                      {
+                        "color": "#b60025",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 19.2,
+                      },
+                    ]
+                  }
+                >
+                  Fermé - Ouvre demain à 9h
+                </Text>
+              </View>
               <View
                 gap={3}
                 style={

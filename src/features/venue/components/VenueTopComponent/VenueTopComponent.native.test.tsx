@@ -8,7 +8,6 @@ import { VenueTopComponent } from 'features/venue/components/VenueTopComponent/V
 import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { ILocationContext, useLocation } from 'libs/location'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
@@ -88,18 +87,11 @@ describe('<VenueTopComponent />', () => {
     })
   })
 
-  it('should render dynamics opening hours when feature flag is enabled', async () => {
-    setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_DYNAMIC_OPENING_HOURS])
+  it('should render dynamics opening hours', async () => {
     mockdate.set(new Date('2024-05-31T08:31:00'))
     renderVenueTopComponent(venueOpenToPublic)
 
     expect(screen.getByText('Ouvre bientôt - 9h')).toBeOnTheScreen()
-  })
-
-  it('should NOT render dynamics opening hours when feature flag is disabled', async () => {
-    renderVenueTopComponent(venueOpenToPublic)
-
-    expect(screen.queryByText('Fermé')).not.toBeOnTheScreen()
   })
 
   it('should NOT render dynamics opening hours when venue doesn t have openingHours', async () => {
@@ -135,7 +127,6 @@ describe('<VenueTopComponent />', () => {
 
   describe('venue is not open to public', () => {
     it('should not render dynamics opening hours', async () => {
-      setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_DYNAMIC_OPENING_HOURS])
       mockdate.set(new Date('2024-05-31T08:31:00'))
 
       renderVenueTopComponent({ ...venueDataTest, isOpenToPublic: false })
