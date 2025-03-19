@@ -20,6 +20,7 @@ export type Referrals =
   | 'bookingimpossible'
   | 'chronicles'
   | 'deeplink'
+  | 'endedbookings'
   | 'exclusivity'
   | 'highlightOffer'
   | 'home'
@@ -211,7 +212,6 @@ export type RootStackParamList = {
   CulturalSurvey: undefined
   DeeplinksGenerator: undefined
   EighteenBirthday: undefined
-  EndedBookings: undefined
   FavoritesSorts: undefined
   ForgottenPassword: undefined
   FraudulentSuspendedAccount: undefined

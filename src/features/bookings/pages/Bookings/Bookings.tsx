@@ -19,7 +19,6 @@ import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 
 export function Bookings() {
   const { params } = useRoute<UseRouteType<'Bookings'>>()
-  const enableBookingImprove = useFeatureFlag(RemoteStoreFeatureFlags.WIP_BOOKING_IMPROVE)
   const enableReactionFeature = useFeatureFlag(RemoteStoreFeatureFlags.WIP_REACTION_FEATURE)
   const [activeTab, setActiveTab] = useState<BookingsTab>(params?.activeTab ?? BookingsTab.CURRENT)
   const [previousTab, setPreviousTab] = useState(activeTab)
@@ -70,36 +69,26 @@ export function Bookings() {
   const shouldDisplayPastille = enableReactionFeature && numberOfReactableBookings > 0
 
   return (
-    <React.Fragment>
-      {enableBookingImprove ? (
-        <ContainerTab gap={6}>
-          <PageHeader title="Mes réservations" />
-          <TabLayout
-            tabPanels={tabPanels}
-            defaultTab={params?.activeTab ?? BookingsTab.CURRENT}
-            tabs={[
-              { key: BookingsTab.CURRENT },
-              {
-                key: BookingsTab.COMPLETED,
-                pastille: shouldDisplayPastille
-                  ? { label: fullCountLabel, accessibilityLabel: accessibilityLabel }
-                  : undefined,
-              },
-            ]}
-            onTabChange={(key) => {
-              setActiveTab(key)
-            }}
-          />
-        </ContainerTab>
-      ) : (
-        <Container>
-          <PageHeader title="Mes réservations" />
-          <OnGoingBookingsList />
-        </Container>
-      )}
-    </React.Fragment>
+    <Container gap={6}>
+      <PageHeader title="Mes réservations" />
+      <TabLayout
+        tabPanels={tabPanels}
+        defaultTab={params?.activeTab ?? BookingsTab.CURRENT}
+        tabs={[
+          { key: BookingsTab.CURRENT },
+          {
+            key: BookingsTab.COMPLETED,
+            pastille: shouldDisplayPastille
+              ? { label: fullCountLabel, accessibilityLabel: accessibilityLabel }
+              : undefined,
+          },
+        ]}
+        onTabChange={(key) => {
+          setActiveTab(key)
+        }}
+      />
+    </Container>
   )
 }
 
-const ContainerTab = styled(ViewGap)({ flex: 1 })
-const Container = styled.View({ flex: 1 })
+const Container = styled(ViewGap)({ flex: 1 })

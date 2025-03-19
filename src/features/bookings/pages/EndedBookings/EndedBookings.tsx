@@ -12,36 +12,25 @@ import { EndedBookingItem } from 'features/bookings/components/EndedBookingItem'
 import { NoBookingsView } from 'features/bookings/components/NoBookingsView'
 import { getEndedBookingDateLabel } from 'features/bookings/helpers/getEndedBookingDateLabel/getEndedBookingDateLabel'
 import { Booking } from 'features/bookings/types'
-import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
-import { useGoBack } from 'features/navigation/useGoBack'
 import { useReactionMutation } from 'features/reactions/api/useReactionMutation'
 import { ReactionChoiceModal } from 'features/reactions/components/ReactionChoiceModal/ReactionChoiceModal'
 import { ReactionChoiceModalBodyEnum, ReactionFromEnum } from 'features/reactions/enum'
 import { WebShareModal } from 'features/share/pages/WebShareModal'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { plural } from 'libs/plural'
 import { ShareContent } from 'libs/share/types'
 import { useBookingsQuery } from 'queries/bookings/useBookingsQuery'
-import { BlurHeader } from 'ui/components/headers/BlurHeader'
-import {
-  PageHeaderWithoutPlaceholder,
-  useGetHeaderHeight,
-} from 'ui/components/headers/PageHeaderWithoutPlaceholder'
 import { useModal } from 'ui/components/modals/useModal'
 import { Separator } from 'ui/components/Separator'
-import { getSpacing, Spacer, TypoDS } from 'ui/theme'
+import { getSpacing, Spacer } from 'ui/theme'
 import { TAB_BAR_COMP_HEIGHT_V2 } from 'ui/theme/constants'
-import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 const keyExtractor: (item: Booking) => string = (item) => item.id.toString()
 
 export const EndedBookings: FunctionComponent = () => {
-  const enableBookingImprove = useFeatureFlag(RemoteStoreFeatureFlags.WIP_BOOKING_IMPROVE)
   const shouldDisplayReactionFeature = useFeatureFlag(RemoteStoreFeatureFlags.WIP_REACTION_FEATURE)
   const { data: bookings } = useBookingsQuery()
-  const { goBack } = useGoBack(...getTabNavConfig('Bookings'))
-  const headerHeight = useGetHeaderHeight()
+
   const { mutate: addReaction } = useReactionMutation()
 
   const [selectedBookingOffer, setSelectedBookingOffer] = useState<BookingOfferResponse>()
@@ -63,10 +52,6 @@ export const EndedBookings: FunctionComponent = () => {
   } = useModal(false)
 
   const endedBookingsCount = bookings?.ended_bookings?.length ?? 0
-  const endedBookingsLabel = plural(endedBookingsCount, {
-    singular: '# réservation terminée',
-    plural: '# réservations terminées',
-  })
 
   const openReactionModal = useCallback(
     (booking: Booking) => {
@@ -133,48 +118,20 @@ export const EndedBookings: FunctionComponent = () => {
     [openReactionModal, openShareModal]
   )
 
-  const ListHeaderComponent = useCallback(
-    () => (
-      <React.Fragment>
-        <Placeholder height={headerHeight} />
-        <Spacer.Column numberOfSpaces={6} />
-        <EndedBookingsCount>{endedBookingsLabel}</EndedBookingsCount>
-      </React.Fragment>
-    ),
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    [endedBookingsCount]
-  )
-
   return (
     <React.Fragment>
-      {enableBookingImprove ? (
-        <FlatList
-          listAs="ul"
-          itemAs="li"
-          contentContainerStyle={contentContainerStyle}
-          data={bookings?.ended_bookings ?? []}
-          keyExtractor={keyExtractor}
-          renderItem={renderItem}
-          ItemSeparatorComponent={StyledSeparator}
-          ListHeaderComponent={endedBookingsCount ? <Spacer.Column numberOfSpaces={6} /> : null}
-          ListEmptyComponent={<NoBookingsView />}
-        />
-      ) : (
-        <React.Fragment>
-          <PageHeaderWithoutPlaceholder title="Réservations terminées" onGoBack={goBack} />
-          <FlatList
-            listAs="ul"
-            itemAs="li"
-            contentContainerStyle={contentContainerStyle}
-            data={bookings?.ended_bookings ?? []}
-            keyExtractor={keyExtractor}
-            renderItem={renderItem}
-            ItemSeparatorComponent={StyledSeparator}
-            ListHeaderComponent={ListHeaderComponent}
-          />
-          <BlurHeader height={headerHeight} />
-        </React.Fragment>
-      )}
+      <FlatList
+        listAs="ul"
+        itemAs="li"
+        contentContainerStyle={contentContainerStyle}
+        data={bookings?.ended_bookings ?? []}
+        keyExtractor={keyExtractor}
+        renderItem={renderItem}
+        ItemSeparatorComponent={StyledSeparator}
+        ListHeaderComponent={endedBookingsCount ? <Spacer.Column numberOfSpaces={6} /> : null}
+        ListEmptyComponent={<NoBookingsView />}
+      />
+
       {shareContent ? (
         <WebShareModal
           visible={shareModalVisible}
@@ -198,15 +155,6 @@ export const EndedBookings: FunctionComponent = () => {
     </React.Fragment>
   )
 }
-
-const Placeholder = styled.View<{ height: number }>(({ height }) => ({
-  height,
-}))
-
-const EndedBookingsCount = styled(TypoDS.Body).attrs(getHeadingAttrs(2))(({ theme }) => ({
-  color: theme.colors.greyDark,
-  paddingBottom: getSpacing(5.5),
-}))
 
 const contentContainerStyle = {
   flexGrow: 1,
