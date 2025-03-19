@@ -1,7 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`OnboardingGeolocation should render correctly 1`] = `
-[
+<View
+  style={
+    [
+      {
+        "backgroundColor": "#ffffff",
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+      },
+    ]
+  }
+>
   <View
     accessibilityRole="header"
     style={
@@ -142,7 +153,7 @@ exports[`OnboardingGeolocation should render correctly 1`] = `
                     "width": "auto",
                   },
                   {
-                    "backgroundColor": "transparent",
+                    "backgroundColor": "#ffffff",
                   },
                 ],
                 {
@@ -168,7 +179,7 @@ exports[`OnboardingGeolocation should render correctly 1`] = `
                 style={
                   [
                     {
-                      "color": "#696A6F",
+                      "color": "#696a6f",
                       "fontFamily": "Montserrat-Bold",
                       "fontSize": 16,
                       "lineHeight": 25.6,
@@ -184,7 +195,7 @@ exports[`OnboardingGeolocation should render correctly 1`] = `
         </View>
       </View>
     </View>
-  </View>,
+  </View>
   <View
     bottom={16}
     style={
@@ -394,6 +405,6 @@ exports[`OnboardingGeolocation should render correctly 1`] = `
         </View>
       </View>
     </View>
-  </View>,
-]
+  </View>
+</View>
 `;
