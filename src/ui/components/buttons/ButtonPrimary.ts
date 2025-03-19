@@ -14,8 +14,8 @@ export const ButtonPrimary = styledButton(AppButton).attrs<BaseButtonProps>(
     if (icon) {
       Icon = styled(icon).attrs({
         color: disabled
-          ? theme.buttons.disabled.primary.iconColor
-          : theme.buttons.primary.iconColor,
+          ? theme.designSystem.color.icon.disabled
+          : theme.designSystem.color.text.inverted, // TODO(PC-35256): Use theme.designSystem.color.icon.lockDefault from design system
         size:
           buttonHeight === 'extraSmall'
             ? theme.icons.sizes.extraSmall
@@ -23,17 +23,20 @@ export const ButtonPrimary = styledButton(AppButton).attrs<BaseButtonProps>(
       })``
     }
 
-    let backgroundColor: string = theme.buttons.primary.backgroundColor
+    let backgroundColor: string = theme.designSystem.color.background['brand-primary']
 
     if (isLoading) {
+      // TODO(PC-35256): Use theme.designSystem.color.primary.loading from design system
       backgroundColor = theme.buttons.loading.primary.backgroundColor
     } else if (disabled) {
-      backgroundColor = theme.buttons.disabled.primary.backgroundColor
+      backgroundColor = theme.designSystem.color.background.disabled
     }
 
     const Title = styled(buttonHeight === 'extraSmall' ? TypoDS.BodyAccentXs : TypoDS.Button)({
       maxWidth: '100%',
-      color: disabled ? theme.buttons.disabled.primary.textColor : theme.buttons.primary.textColor,
+      color: disabled
+        ? theme.designSystem.color.text.disabled
+        : theme.designSystem.color.text.inverted,
       fontSize: textSize,
     })
 
@@ -51,7 +54,7 @@ export const ButtonPrimary = styledButton(AppButton).attrs<BaseButtonProps>(
   if (Platform.OS === 'web') {
     webOnly = {
       ['&:disabled']: {
-        backgroundColor: theme.buttons.disabled.primary.backgroundColor,
+        backgroundColor: theme.designSystem.color.background.disabled,
       },
     }
   }
