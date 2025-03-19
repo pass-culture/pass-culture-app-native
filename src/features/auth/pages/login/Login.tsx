@@ -208,7 +208,7 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
         />
       ) : null}
       <SecondaryPageWithBlurHeader title="Connexion" shouldDisplayBackButton>
-        <Title {...getHeadingAttrs(2)}>{titlePage}</Title>
+        <TypoDS.Title3 {...getHeadingAttrs(2)}>{titlePage}</TypoDS.Title3>
         <Spacer.Column numberOfSpaces={2} />
         <Form.MaxWidth>
           <InputError
@@ -258,10 +258,6 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
     </Page>
   )
 })
-
-const Title = styled(TypoDS.Title3)(({ theme }) => ({
-  color: theme.designSystem.color.text.default,
-}))
 
 const ButtonContainer = styled.View(({ theme }) => ({
   flexDirection: 'row',

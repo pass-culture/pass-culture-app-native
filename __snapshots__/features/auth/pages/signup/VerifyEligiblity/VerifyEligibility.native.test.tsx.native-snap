@@ -191,6 +191,7 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
         style={
           [
             {
+              "color": "#161617",
               "fontFamily": "Montserrat-SemiBold",
               "fontSize": 16,
               "lineHeight": 25.6,

@@ -1,16 +1,15 @@
 import React, { FunctionComponent } from 'react'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
-import { theme } from 'theme'
+import { IconColorKey, TextColorKey } from 'theme/types'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 import { Spacer, TypoDS } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 
 interface LocationModalButtonProps {
   icon: FunctionComponent<AccessibleIcon>
-  color?: ColorsEnum
+  color: TextColorKey & IconColorKey
   title: string
   subtitle?: string
   onPress: () => void
@@ -23,12 +22,13 @@ export const LocationModalButton = ({
   subtitle,
   onPress,
 }: LocationModalButtonProps) => {
+  const theme = useTheme()
   return (
     <TouchableOpacity onPress={onPress} accessibilityRole="button">
       <TopContainer>
-        <Icon color={color} size={theme.icons.sizes.small} />
+        <Icon color={theme.designSystem.color.icon[color]} size={theme.icons.sizes.small} />
         <Spacer.Row numberOfSpaces={2} />
-        <StyledButtonText color={color}>{title}</StyledButtonText>
+        <TypoDS.Button color={color}>{title}</TypoDS.Button>
       </TopContainer>
       {subtitle ? (
         <React.Fragment>
@@ -44,10 +44,6 @@ const TopContainer = styled.View({
   flexDirection: 'row',
   alignItems: 'center',
 })
-
-const StyledButtonText = styled(TypoDS.Button)<{ color?: ColorsEnum }>(({ color }) => ({
-  color: color,
-}))
 
 const StyledCaption = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
   color: theme.colors.greyDark,

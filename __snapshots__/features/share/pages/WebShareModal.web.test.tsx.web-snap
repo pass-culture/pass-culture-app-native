@@ -262,7 +262,7 @@ exports[`<WebShareModal/> should render correctly when shown 1`] = `
                   >
                     <h1
                       aria-level="1"
-                      class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-fontFamily-1gknse6 r-fontSize-1wf0xld r-lineHeight-1ln193j r-textAlign-q4m81j"
+                      class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-1wf0xld r-lineHeight-1ln193j r-textAlign-q4m81j"
                       data-testid="modalHeaderTitle"
                       dir="ltr"
                       id="testUuidV4"
@@ -444,7 +444,7 @@ exports[`<WebShareModal/> should render correctly when shown 1`] = `
                                 class="css-view-175oi2r r-height-3da1kt"
                               />
                               <div
-                                class="css-text-1rynq56 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
+                                class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
                                 dir="ltr"
                               >
                                 Facebook
@@ -474,7 +474,7 @@ exports[`<WebShareModal/> should render correctly when shown 1`] = `
                                 class="css-view-175oi2r r-height-3da1kt"
                               />
                               <div
-                                class="css-text-1rynq56 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
+                                class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
                                 dir="ltr"
                               >
                                 X
@@ -504,7 +504,7 @@ exports[`<WebShareModal/> should render correctly when shown 1`] = `
                                 class="css-view-175oi2r r-height-3da1kt"
                               />
                               <div
-                                class="css-text-1rynq56 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
+                                class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
                                 dir="ltr"
                               >
                                 WhatsApp
@@ -534,7 +534,7 @@ exports[`<WebShareModal/> should render correctly when shown 1`] = `
                                 class="css-view-175oi2r r-height-3da1kt"
                               />
                               <div
-                                class="css-text-1rynq56 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
+                                class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
                                 dir="ltr"
                               >
                                 Telegram

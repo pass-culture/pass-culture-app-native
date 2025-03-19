@@ -224,6 +224,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
           style={
             [
               {
+                "color": "#161617",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 17,
                 "lineHeight": 27.2,
@@ -247,6 +248,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
           style={
             [
               {
+                "color": "#161617",
                 "fontFamily": "Montserrat-Medium",
                 "fontSize": 16,
                 "lineHeight": 25.6,
@@ -317,6 +319,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                   style={
                     [
                       {
+                        "color": "#161617",
                         "fontFamily": "Montserrat-Medium",
                         "fontSize": 16,
                         "lineHeight": 25.6,
@@ -328,6 +331,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                     style={
                       [
                         {
+                          "color": "#161617",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 16,
                           "lineHeight": 25.6,
@@ -474,6 +478,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
             style={
               [
                 {
+                  "color": "#161617",
                   "fontFamily": "Montserrat-SemiBold",
                   "fontSize": 12,
                   "lineHeight": 19.2,
@@ -523,6 +528,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                   style={
                     [
                       {
+                        "color": "#161617",
                         "fontFamily": "Montserrat-Medium",
                         "fontSize": 16,
                         "lineHeight": 25.6,
@@ -534,6 +540,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                     style={
                       [
                         {
+                          "color": "#161617",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 16,
                           "lineHeight": 25.6,
@@ -711,6 +718,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
             style={
               [
                 {
+                  "color": "#161617",
                   "fontFamily": "Montserrat-Bold",
                   "fontSize": 17,
                   "lineHeight": 27.2,
@@ -844,6 +852,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                   style={
                     [
                       {
+                        "color": "#161617",
                         "fontFamily": "Montserrat-Medium",
                         "fontSize": 16,
                         "lineHeight": 25.6,
@@ -855,6 +864,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                     style={
                       [
                         {
+                          "color": "#161617",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 16,
                           "lineHeight": 25.6,
@@ -1050,6 +1060,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                   style={
                     [
                       {
+                        "color": "#161617",
                         "fontFamily": "Montserrat-Medium",
                         "fontSize": 16,
                         "lineHeight": 25.6,
@@ -1061,6 +1072,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                     style={
                       [
                         {
+                          "color": "#161617",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 16,
                           "lineHeight": 25.6,
@@ -1246,6 +1258,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                   style={
                     [
                       {
+                        "color": "#161617",
                         "fontFamily": "Montserrat-Medium",
                         "fontSize": 16,
                         "lineHeight": 25.6,
@@ -1257,6 +1270,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                     style={
                       [
                         {
+                          "color": "#161617",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 16,
                           "lineHeight": 25.6,
@@ -1442,6 +1456,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                   style={
                     [
                       {
+                        "color": "#161617",
                         "fontFamily": "Montserrat-Medium",
                         "fontSize": 16,
                         "lineHeight": 25.6,
@@ -1453,6 +1468,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                     style={
                       [
                         {
+                          "color": "#161617",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 16,
                           "lineHeight": 25.6,
@@ -1638,6 +1654,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                   style={
                     [
                       {
+                        "color": "#161617",
                         "fontFamily": "Montserrat-Medium",
                         "fontSize": 16,
                         "lineHeight": 25.6,
@@ -1649,6 +1666,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                     style={
                       [
                         {
+                          "color": "#161617",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 16,
                           "lineHeight": 25.6,
@@ -1834,6 +1852,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                   style={
                     [
                       {
+                        "color": "#161617",
                         "fontFamily": "Montserrat-Medium",
                         "fontSize": 16,
                         "lineHeight": 25.6,
@@ -1845,6 +1864,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                     style={
                       [
                         {
+                          "color": "#161617",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 16,
                           "lineHeight": 25.6,
@@ -2030,6 +2050,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                   style={
                     [
                       {
+                        "color": "#161617",
                         "fontFamily": "Montserrat-Medium",
                         "fontSize": 16,
                         "lineHeight": 25.6,
@@ -2041,6 +2062,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                     style={
                       [
                         {
+                          "color": "#161617",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 16,
                           "lineHeight": 25.6,
@@ -2661,6 +2683,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
           style={
             [
               {
+                "color": "#161617",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 17,
                 "lineHeight": 27.2,
@@ -2684,6 +2707,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
           style={
             [
               {
+                "color": "#161617",
                 "fontFamily": "Montserrat-Medium",
                 "fontSize": 16,
                 "lineHeight": 25.6,
@@ -2754,6 +2778,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                   style={
                     [
                       {
+                        "color": "#161617",
                         "fontFamily": "Montserrat-Medium",
                         "fontSize": 16,
                         "lineHeight": 25.6,
@@ -2765,6 +2790,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                     style={
                       [
                         {
+                          "color": "#161617",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 16,
                           "lineHeight": 25.6,
@@ -2950,6 +2976,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                   style={
                     [
                       {
+                        "color": "#161617",
                         "fontFamily": "Montserrat-Medium",
                         "fontSize": 16,
                         "lineHeight": 25.6,
@@ -2961,6 +2988,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                     style={
                       [
                         {
+                          "color": "#161617",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 16,
                           "lineHeight": 25.6,
@@ -3141,6 +3169,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
             style={
               [
                 {
+                  "color": "#161617",
                   "fontFamily": "Montserrat-Bold",
                   "fontSize": 17,
                   "lineHeight": 27.2,
@@ -3200,6 +3229,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                   style={
                     [
                       {
+                        "color": "#161617",
                         "fontFamily": "Montserrat-Medium",
                         "fontSize": 16,
                         "lineHeight": 25.6,
@@ -3211,6 +3241,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                     style={
                       [
                         {
+                          "color": "#161617",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 16,
                           "lineHeight": 25.6,
@@ -3406,6 +3437,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                   style={
                     [
                       {
+                        "color": "#161617",
                         "fontFamily": "Montserrat-Medium",
                         "fontSize": 16,
                         "lineHeight": 25.6,
@@ -3417,6 +3449,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                     style={
                       [
                         {
+                          "color": "#161617",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 16,
                           "lineHeight": 25.6,
@@ -3602,6 +3635,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                   style={
                     [
                       {
+                        "color": "#161617",
                         "fontFamily": "Montserrat-Medium",
                         "fontSize": 16,
                         "lineHeight": 25.6,
@@ -3613,6 +3647,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                     style={
                       [
                         {
+                          "color": "#161617",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 16,
                           "lineHeight": 25.6,
@@ -3798,6 +3833,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                   style={
                     [
                       {
+                        "color": "#161617",
                         "fontFamily": "Montserrat-Medium",
                         "fontSize": 16,
                         "lineHeight": 25.6,
@@ -3809,6 +3845,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                     style={
                       [
                         {
+                          "color": "#161617",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 16,
                           "lineHeight": 25.6,
@@ -3994,6 +4031,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                   style={
                     [
                       {
+                        "color": "#161617",
                         "fontFamily": "Montserrat-Medium",
                         "fontSize": 16,
                         "lineHeight": 25.6,
@@ -4005,6 +4043,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                     style={
                       [
                         {
+                          "color": "#161617",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 16,
                           "lineHeight": 25.6,
@@ -4190,6 +4229,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                   style={
                     [
                       {
+                        "color": "#161617",
                         "fontFamily": "Montserrat-Medium",
                         "fontSize": 16,
                         "lineHeight": 25.6,
@@ -4201,6 +4241,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                     style={
                       [
                         {
+                          "color": "#161617",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 16,
                           "lineHeight": 25.6,
@@ -4386,6 +4427,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                   style={
                     [
                       {
+                        "color": "#161617",
                         "fontFamily": "Montserrat-Medium",
                         "fontSize": 16,
                         "lineHeight": 25.6,
@@ -4397,6 +4439,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                     style={
                       [
                         {
+                          "color": "#161617",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 16,
                           "lineHeight": 25.6,

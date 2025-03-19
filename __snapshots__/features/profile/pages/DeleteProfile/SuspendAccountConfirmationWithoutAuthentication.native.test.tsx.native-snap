@@ -235,6 +235,7 @@ exports[`SuspendAccountConfirmationWithoutAuthentication should render correctly
         style={
           [
             {
+              "color": "#161617",
               "fontFamily": "Montserrat-Bold",
               "fontSize": 21,
               "lineHeight": 33.6,
@@ -259,6 +260,7 @@ exports[`SuspendAccountConfirmationWithoutAuthentication should render correctly
         style={
           [
             {
+              "color": "#161617",
               "fontFamily": "Montserrat-SemiBold",
               "fontSize": 16,
               "lineHeight": 25.6,
@@ -325,6 +327,7 @@ exports[`SuspendAccountConfirmationWithoutAuthentication should render correctly
               style={
                 [
                   {
+                    "color": "#161617",
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
@@ -340,6 +343,7 @@ exports[`SuspendAccountConfirmationWithoutAuthentication should render correctly
                 style={
                   [
                     {
+                      "color": "#161617",
                       "fontFamily": "Montserrat-Medium",
                       "fontSize": 16,
                       "lineHeight": 25.6,
@@ -490,6 +494,7 @@ exports[`SuspendAccountConfirmationWithoutAuthentication should render correctly
               style={
                 [
                   {
+                    "color": "#161617",
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
@@ -551,6 +556,7 @@ exports[`SuspendAccountConfirmationWithoutAuthentication should render correctly
               style={
                 [
                   {
+                    "color": "#161617",
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
@@ -581,6 +587,7 @@ exports[`SuspendAccountConfirmationWithoutAuthentication should render correctly
         style={
           [
             {
+              "color": "#161617",
               "fontFamily": "Montserrat-SemiBold",
               "fontSize": 16,
               "lineHeight": 25.6,
@@ -594,6 +601,7 @@ exports[`SuspendAccountConfirmationWithoutAuthentication should render correctly
         style={
           [
             {
+              "color": "#161617",
               "fontFamily": "Montserrat-Medium",
               "fontSize": 16,
               "lineHeight": 25.6,

@@ -4,6 +4,7 @@ import React from 'react'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { SubcategoriesResponseModelv2 } from 'api/gen'
 import { VideoMonoOfferTile } from 'features/home/components/modules/video/VideoMonoOfferTile'
+import { Color } from 'features/home/types'
 import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { analytics } from 'libs/analytics/provider'
 import { OfferAnalyticsParams } from 'libs/analytics/types'
@@ -75,7 +76,7 @@ function renderOfferVideoModule(offer?: Offer) {
   render(
     <VideoMonoOfferTile
       offer={offer ?? mockOffer}
-      color=""
+      color={Color.Aquamarine}
       hideModal={hideModalMock}
       analyticsParams={mockAnalyticsParams}
     />,

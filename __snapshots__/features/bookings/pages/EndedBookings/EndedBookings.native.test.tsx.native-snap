@@ -363,6 +363,7 @@ exports[`EndedBookings should render correctly 1`] = `
                   style={
                     [
                       {
+                        "color": "#161617",
                         "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 16,
                         "lineHeight": 25.6,
@@ -400,7 +401,7 @@ exports[`EndedBookings should render correctly 1`] = `
                   }
                 >
                   <Text
-                    color="#a20121"
+                    color="error"
                     noFullWidth={true}
                     style={
                       [
@@ -816,6 +817,7 @@ exports[`EndedBookings should render correctly 1`] = `
                   style={
                     [
                       {
+                        "color": "#161617",
                         "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 16,
                         "lineHeight": 25.6,
@@ -853,7 +855,7 @@ exports[`EndedBookings should render correctly 1`] = `
                   }
                 >
                   <Text
-                    color="#15884f"
+                    color="success"
                     noFullWidth={true}
                     style={
                       [

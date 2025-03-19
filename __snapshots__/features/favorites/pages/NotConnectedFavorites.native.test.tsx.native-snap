@@ -66,6 +66,7 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
       style={
         [
           {
+            "color": "#161617",
             "fontFamily": "Montserrat-Bold",
             "fontSize": 21,
             "lineHeight": 33.6,
@@ -80,6 +81,7 @@ exports[`NotConnectedFavorites component should render not connected favorites 1
       style={
         [
           {
+            "color": "#161617",
             "fontFamily": "Montserrat-Medium",
             "fontSize": 16,
             "lineHeight": 25.6,

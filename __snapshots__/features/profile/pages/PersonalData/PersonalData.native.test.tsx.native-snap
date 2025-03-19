@@ -237,6 +237,7 @@ exports[`PersonalData should render personal data success 1`] = `
         style={
           [
             {
+              "color": "#161617",
               "fontFamily": "Montserrat-Medium",
               "fontSize": 16,
               "lineHeight": 25.6,
@@ -296,6 +297,7 @@ exports[`PersonalData should render personal data success 1`] = `
           style={
             [
               {
+                "color": "#161617",
                 "flexShrink": 1,
                 "fontFamily": "Montserrat-Medium",
                 "fontSize": 16,
@@ -468,6 +470,7 @@ exports[`PersonalData should render personal data success 1`] = `
         style={
           [
             {
+              "color": "#161617",
               "fontFamily": "Montserrat-Medium",
               "fontSize": 16,
               "lineHeight": 25.6,
@@ -527,6 +530,7 @@ exports[`PersonalData should render personal data success 1`] = `
           style={
             [
               {
+                "color": "#161617",
                 "flexShrink": 1,
                 "fontFamily": "Montserrat-Medium",
                 "fontSize": 16,
@@ -709,6 +713,7 @@ exports[`PersonalData should render personal data success 1`] = `
           style={
             [
               {
+                "color": "#161617",
                 "flexShrink": 1,
                 "fontFamily": "Montserrat-Medium",
                 "fontSize": 16,
@@ -892,6 +897,7 @@ exports[`PersonalData should render personal data success 1`] = `
           style={
             [
               {
+                "color": "#161617",
                 "flexShrink": 1,
                 "fontFamily": "Montserrat-Medium",
                 "fontSize": 16,
@@ -1314,6 +1320,7 @@ exports[`PersonalData should render personal data success 1`] = `
               style={
                 [
                   {
+                    "color": "#161617",
                     "fontFamily": "Montserrat-SemiBold",
                     "fontSize": 16,
                     "lineHeight": 25.6,

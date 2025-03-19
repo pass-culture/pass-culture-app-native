@@ -242,6 +242,7 @@ exports[`DeleteProfileEmailHacked should render correctly 1`] = `
         style={
           [
             {
+              "color": "#161617",
               "fontFamily": "Montserrat-Bold",
               "fontSize": 21,
               "lineHeight": 33.6,
@@ -276,6 +277,7 @@ exports[`DeleteProfileEmailHacked should render correctly 1`] = `
           style={
             [
               {
+                "color": "#161617",
                 "fontFamily": "Montserrat-Medium",
                 "fontSize": 14,
                 "lineHeight": 22.4,
@@ -288,6 +290,7 @@ exports[`DeleteProfileEmailHacked should render correctly 1`] = `
             style={
               [
                 {
+                  "color": "#161617",
                   "fontFamily": "Montserrat-SemiBold",
                   "fontSize": 14,
                   "lineHeight": 22.4,
@@ -303,6 +306,7 @@ exports[`DeleteProfileEmailHacked should render correctly 1`] = `
           style={
             [
               {
+                "color": "#161617",
                 "fontFamily": "Montserrat-Medium",
                 "fontSize": 14,
                 "lineHeight": 22.4,
@@ -315,6 +319,7 @@ exports[`DeleteProfileEmailHacked should render correctly 1`] = `
             style={
               [
                 {
+                  "color": "#161617",
                   "fontFamily": "Montserrat-SemiBold",
                   "fontSize": 14,
                   "lineHeight": 22.4,

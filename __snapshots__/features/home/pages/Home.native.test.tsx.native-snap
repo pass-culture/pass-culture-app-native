@@ -179,6 +179,7 @@ exports[`Home page should render correctly 1`] = `
                       style={
                         [
                           {
+                            "color": "#161617",
                             "fontFamily": "Montserrat-Bold",
                             "fontSize": 28,
                             "lineHeight": 44.8,
@@ -293,6 +294,7 @@ exports[`Home page should render correctly 1`] = `
                       style={
                         [
                           {
+                            "color": "#161617",
                             "fontFamily": "Montserrat-SemiBold",
                             "fontSize": 12,
                             "lineHeight": 19.2,
@@ -468,7 +470,7 @@ exports[`Home page should render correctly 1`] = `
                         }
                       >
                         <Text
-                          color="#161617"
+                          color="default"
                           style={
                             [
                               {
@@ -483,7 +485,7 @@ exports[`Home page should render correctly 1`] = `
                           Débloque ton crédit
                         </Text>
                         <Text
-                          color="#161617"
+                          color="default"
                           style={
                             [
                               {

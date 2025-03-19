@@ -2,12 +2,15 @@ import { Text as RNText } from 'react-native'
 import styled from 'styled-components/native'
 
 import { theme } from 'theme'
+import { TextColorKey } from 'theme/types'
 import { getHeadingAttrs, HeadingLevel } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 // Function to validate if a value is a HeadingLevel valid to correct typing
 const isHeadingLevel = (level: unknown): level is HeadingLevel => {
   return typeof level === 'number' && [1, 2, 3, 4, 5, 6].includes(level)
 }
+
+const DEFAULT_COLOR_TEXT = 'default'
 
 const createStyledText = (
   typographyStyle: keyof typeof theme.designSystem.typography,
@@ -20,7 +23,10 @@ const createStyledText = (
       return getHeadingAttrs(defaultLevel)
     }
     return {}
-  })(({ theme }) => theme.designSystem.typography[typographyStyle])
+  })<{ color?: TextColorKey }>(({ theme, color }) => ({
+    ...theme.designSystem.typography[typographyStyle],
+    color: theme.designSystem.color.text[color ?? DEFAULT_COLOR_TEXT],
+  }))
 }
 
 const Title1 = createStyledText('title1', 1)

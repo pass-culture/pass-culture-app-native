@@ -28,3 +28,6 @@ export type DesignTokensType =
   | typeof themeLightMobile
   | typeof themeDarkWeb
   | typeof themeLightWeb
+
+export type TextColorKey = keyof DesignTokensType['color']['text']
+export type IconColorKey = keyof DesignTokensType['color']['icon']

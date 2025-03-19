@@ -34,7 +34,7 @@ function renderHelperSnackBar(visible: boolean, props: SnackBarHelperSettings, r
       timeout={props.timeout}
       backgroundColor={theme.colors.primary}
       progressBarColor={theme.colors.secondary}
-      color={theme.colors.white}
+      color="inverted"
       refresher={refresher}
       animationDuration={props.animationDuration}
     />

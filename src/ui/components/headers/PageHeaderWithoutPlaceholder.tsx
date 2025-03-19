@@ -5,7 +5,7 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { BackButton } from 'ui/components/headers/BackButton'
-import { getSpacing, Spacer } from 'ui/theme'
+import { getSpacing, Spacer, TypoDS } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
@@ -84,14 +84,12 @@ const Container = styled.View({
   justifyContent: 'center',
 })
 
-const Title = styled.Text.attrs(() => ({
+const Title = styled(TypoDS.Title4).attrs(() => ({
   numberOfLines: 1,
   ...getHeadingAttrs(1),
-}))(({ theme }) => ({
-  ...theme.designSystem.typography.title4,
-  color: theme.designSystem.color.text.default,
+}))({
   textAlign: 'center',
-}))
+})
 
 const Row = styled.View({
   alignItems: 'center',

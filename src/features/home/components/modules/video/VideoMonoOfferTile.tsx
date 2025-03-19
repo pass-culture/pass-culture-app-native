@@ -6,6 +6,7 @@ import styled from 'styled-components/native'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { AttachedOfferCard } from 'features/home/components/AttachedModuleCard/AttachedOfferCard'
 import { getTagColor } from 'features/home/components/helpers/getTagColor'
+import { Color } from 'features/home/types'
 import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
 import { OfferAnalyticsParams } from 'libs/analytics/types'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -28,7 +29,7 @@ import { TypoDS, getShadow, getSpacing } from 'ui/theme'
 
 type Props = {
   offer: Offer
-  color: string
+  color: Color
   hideModal: () => void
   analyticsParams: OfferAnalyticsParams
   style?: StyleProp<ViewStyle>
@@ -108,7 +109,7 @@ export const VideoMonoOfferTile: FunctionComponent<Props> = ({
           />
         </OfferImageContainer>
         <OfferInformations>
-          <CategoryText color={color}>{labelMapping[offer.offer.subcategoryId]}</CategoryText>
+          <CategoryText colorText={color}>{labelMapping[offer.offer.subcategoryId]}</CategoryText>
           <TitleText numberOfLines={2}>{offer.offer.name}</TitleText>
           {displayDate ? <AdditionalInfoText>{displayDate}</AdditionalInfoText> : null}
           {displayPrice ? <AdditionalInfoText>{displayPrice}</AdditionalInfoText> : null}
@@ -167,8 +168,8 @@ const ArrowOffer = styled.View({
   right: getSpacing(4),
 })
 
-const CategoryText = styled(TypoDS.BodyAccentXs)<{ color: string }>(({ color }) => ({
-  color: getTagColor(color),
+const CategoryText = styled(TypoDS.BodyAccentXs)<{ colorText: Color }>(({ colorText }) => ({
+  color: getTagColor(colorText),
   marginBottom: getSpacing(1),
 }))
 

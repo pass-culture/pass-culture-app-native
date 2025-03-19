@@ -1,10 +1,11 @@
 import React, { FunctionComponent, useRef, useEffect, useCallback, useState, memo } from 'react'
 import { Platform, View } from 'react-native'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { AnimatedRef, AnimatedView } from 'libs/react-native-animatable'
+import { IconColorKey, TextColorKey } from 'theme/types'
 import { SnackBarProgressBar } from 'ui/components/snackBar/SnackBarProgressBar'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { Close as DefaultClose } from 'ui/svg/icons/Close'
@@ -21,12 +22,13 @@ export type SnackBarProps = {
   timeout?: number
   backgroundColor: ColorsEnum
   progressBarColor: ColorsEnum
-  color: ColorsEnum
+  color: TextColorKey & IconColorKey
   animationDuration?: number
   refresher: number
 }
 
 const SnackBarBase = (props: SnackBarProps) => {
+  const theme = useTheme()
   const firstRender = useRef(true)
   const animationDuration = props.animationDuration || 500
 
@@ -116,7 +118,9 @@ const SnackBarBase = (props: SnackBarProps) => {
               marginTop={top}
               testID="snackbar-container"
               accessibilityHidden={!isVisible}>
-              {Icon ? <Icon testID="snackbar-icon" color={props.color} /> : null}
+              {Icon ? (
+                <Icon testID="snackbar-icon" color={theme.designSystem.color.icon[props.color]} />
+              ) : null}
               <Spacer.Flex flex={1}>
                 <StyledBody testID="snackbar-message" color={props.color}>
                   {props.message}
@@ -125,7 +129,7 @@ const SnackBarBase = (props: SnackBarProps) => {
               <Touchable
                 accessibilityLabel={`Supprimer le message\u00a0: ${props.message}`}
                 onPress={onClose}>
-                <Close color={props.color} />
+                <Close color={theme.designSystem.color.icon[props.color]} />
               </Touchable>
             </SnackBarContainer>
           </View>
@@ -169,12 +173,11 @@ const SnackBarContainer = styled.View<{ isVisible: boolean; marginTop: number }>
   })
 )
 
-const StyledBody = styled(TypoDS.Body)<{ color: string }>((props) => ({
-  color: props.color,
+const StyledBody = styled(TypoDS.Body)({
   marginHorizontal: getSpacing(3),
   flexGrow: 0,
   flexWrap: 'wrap',
-}))
+})
 
 const Close = memo(
   styled(DefaultClose).attrs(({ theme }) => ({

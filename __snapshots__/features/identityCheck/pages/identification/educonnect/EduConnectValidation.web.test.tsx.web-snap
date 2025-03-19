@@ -196,7 +196,7 @@ exports[`<EduConnectValidation /> should render EduConnectValidation component c
             >
               <h2
                 aria-level="2"
-                class="css-text-1rynq56 r-fontFamily-1gknse6 r-fontSize-1wf0xld r-lineHeight-1ln193j r-textAlign-q4m81j"
+                class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-1wf0xld r-lineHeight-1ln193j r-textAlign-q4m81j"
                 dir="ltr"
                 role="heading"
               >
@@ -219,7 +219,7 @@ exports[`<EduConnectValidation /> should render EduConnectValidation component c
                 class="css-view-175oi2r r-height-3da1kt"
               />
               <div
-                class="css-text-1rynq56 r-fontFamily-1gknse6 r-fontSize-19e3y8m r-lineHeight-1w51ilw"
+                class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-19e3y8m r-lineHeight-1w51ilw"
                 data-testid="validation-first-name"
                 dir="ltr"
               >
@@ -238,7 +238,7 @@ exports[`<EduConnectValidation /> should render EduConnectValidation component c
                 class="css-view-175oi2r r-height-3da1kt"
               />
               <div
-                class="css-text-1rynq56 r-fontFamily-1gknse6 r-fontSize-19e3y8m r-lineHeight-1w51ilw"
+                class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-19e3y8m r-lineHeight-1w51ilw"
                 data-testid="validation-name"
                 dir="ltr"
               >
@@ -257,7 +257,7 @@ exports[`<EduConnectValidation /> should render EduConnectValidation component c
                 class="css-view-175oi2r r-height-3da1kt"
               />
               <div
-                class="css-text-1rynq56 r-fontFamily-1gknse6 r-fontSize-19e3y8m r-lineHeight-1w51ilw"
+                class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-19e3y8m r-lineHeight-1w51ilw"
                 data-testid="validation-birth-date"
                 dir="ltr"
               >
