@@ -9,7 +9,7 @@ import { formatDates, getTimeStampInMillis } from 'libs/parsers/formatDates'
 import {
   formatPrice,
   getDisplayedPrice,
-  getIfPricesShouldBeFix,
+  getIfPricesShouldBeFixed,
 } from 'libs/parsers/getDisplayedPrice'
 import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
@@ -40,10 +40,10 @@ export const AttachedOfferCard: React.FC<Props> = ({ offer, shouldFixHeight, com
     attachedOffer.prices,
     currency,
     euroToPacificFrancRate,
-    formatPrice(
-      getIfPricesShouldBeFix(attachedOffer.subcategoryId),
-      !!(attachedOffer.isDuo && user?.isBeneficiary)
-    )
+    formatPrice({
+      isFixed: getIfPricesShouldBeFixed(attachedOffer.subcategoryId),
+      isDuo: !!(attachedOffer.isDuo && user?.isBeneficiary),
+    })
   )
   const distance = getDistance(offer._geoloc, { userLocation, selectedPlace, selectedLocationMode })
   const distanceLabel = distance ? `à ${distance}` : undefined

@@ -15,24 +15,23 @@ export const getDisplayedPrice = (
   formatDisplayedPrice = identityPrice,
   options?: FormatPriceOptions
 ): string => {
-  if (prices?.length) {
-    if (prices.includes(0)) {
-      return 'Gratuit'
-    }
+  if (!prices?.length) return ''
+  if (prices.includes(0)) {
+    return 'Gratuit'
+  }
 
-    const uniquePrices = Array.from(new Set(prices.filter((p) => p > 0)))
+  const uniquePrices = Array.from(new Set(prices.filter((p) => p > 0)))
 
-    const sortedPrices = [...uniquePrices].sort((a, b) => a - b)
-    const firstPrice = sortedPrices[0]
-    if (firstPrice !== undefined) {
-      const displayedPrice = formatCurrencyFromCents(
-        firstPrice,
-        currency,
-        euroToPacificFrancRate,
-        options
-      )
-      return formatDisplayedPrice(displayedPrice)
-    }
+  const sortedPrices = [...uniquePrices].sort((a, b) => a - b)
+  const firstPrice = sortedPrices[0]
+  if (firstPrice !== undefined) {
+    const displayedPrice = formatCurrencyFromCents(
+      firstPrice,
+      currency,
+      euroToPacificFrancRate,
+      options
+    )
+    return formatDisplayedPrice(displayedPrice)
   }
   return ''
 }
@@ -40,9 +39,15 @@ export const getDisplayedPrice = (
 export const identityPrice = (price: string): string => price
 export const formatDuoPrice = (price: string): string => `${price} - Duo`
 export const formatStartPrice = (price: string): string => `Dès ${price}`
-export const formatPrice = (isFixed: boolean, isDuo: boolean) =>
-  compose([isFixed ? identityPrice : formatStartPrice, isDuo ? formatDuoPrice : identityPrice])
+export const formatPrice = ({ isFixed, isDuo }: { isFixed: boolean; isDuo: boolean }) => {
+  return compose([
+    isFixed ? identityPrice : formatStartPrice,
+    isDuo ? formatDuoPrice : identityPrice,
+  ])
+}
 
-export const getIfPricesShouldBeFix = (subcategoryId?: SubcategoryIdEnum | undefined): boolean => {
+export const getIfPricesShouldBeFixed = (
+  subcategoryId?: SubcategoryIdEnum | undefined
+): boolean => {
   return subcategoryId == SubcategoryIdEnum.LIVRE_PAPIER
 }

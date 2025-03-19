@@ -4,7 +4,7 @@ import { formatDistance } from 'libs/parsers/formatDistance'
 import {
   formatStartPrice,
   getDisplayedPrice,
-  getIfPricesShouldBeFix,
+  getIfPricesShouldBeFixed,
 } from 'libs/parsers/getDisplayedPrice'
 import { CategoryHomeLabelMapping, CategoryIdMapping } from 'libs/subcategories/types'
 import { Currency } from 'shared/currency/useGetCurrencyToDisplay'
@@ -37,7 +37,7 @@ export function offerToHeadlineOfferData({
     hitOffer.prices,
     currency,
     euroToPacificFrancRate,
-    getIfPricesShouldBeFix(hitOffer.subcategoryId) ? formatStartPrice : undefined
+    getIfPricesShouldBeFixed(hitOffer.subcategoryId) ? formatStartPrice : undefined
   )
 
   return {
