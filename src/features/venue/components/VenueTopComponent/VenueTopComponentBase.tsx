@@ -8,8 +8,6 @@ import { useVenueBlock } from 'features/offer/components/OfferVenueBlock/useVenu
 import { OpeningHoursStatus } from 'features/venue/components/OpeningHoursStatus/OpeningHoursStatus'
 import { VenueBanner } from 'features/venue/components/VenueBody/VenueBanner'
 import { analytics } from 'libs/analytics/provider'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { SeeItineraryButton } from 'libs/itinerary/components/SeeItineraryButton'
 import { getGoogleMapsItineraryUrl } from 'libs/itinerary/openGoogleMapsItinerary'
 import { useLocation } from 'libs/location'
@@ -52,12 +50,8 @@ export const VenueTopComponentBase: React.FunctionComponent<Props> = ({
   distanceToVenue && venueTags.push(`À ${distanceToVenue}`)
 
   const currentDate = new Date()
-  const isDynamicOpeningHoursEnabled = useFeatureFlag(
-    RemoteStoreFeatureFlags.WIP_ENABLE_DYNAMIC_OPENING_HOURS
-  )
 
-  const isDynamicOpeningHoursDisplayed =
-    isDynamicOpeningHoursEnabled && venue.openingHours && venue.isOpenToPublic
+  const isDynamicOpeningHoursDisplayed = venue.openingHours && venue.isOpenToPublic
 
   return (
     <TopContainer>
