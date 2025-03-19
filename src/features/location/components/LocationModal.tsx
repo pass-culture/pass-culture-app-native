@@ -1,6 +1,6 @@
 import React from 'react'
 import { View } from 'react-native'
-import styled, { useTheme } from 'styled-components/native'
+import styled from 'styled-components/native'
 
 import { LocationModalButton } from 'features/location/components/LocationModalButton'
 import { LocationModalFooter } from 'features/location/components/LocationModalFooter'
@@ -68,19 +68,17 @@ export const LocationModal = ({
 }: LocationModalProps) => {
   const isCurrentLocationMode = (target: LocationMode) => tempLocationMode === target
 
-  const theme = useTheme()
-
   const geolocationModeColor = isCurrentLocationMode(LocationMode.AROUND_ME)
-    ? theme.colors.primary
-    : theme.colors.black
+    ? 'brand-primary'
+    : 'default'
 
   const customLocationModeColor = isCurrentLocationMode(LocationMode.AROUND_PLACE)
-    ? theme.colors.primary
-    : theme.colors.black
+    ? 'brand-primary'
+    : 'default'
 
   const everywhereLocationModeColor = isCurrentLocationMode(LocationMode.EVERYWHERE)
-    ? theme.colors.primary
-    : theme.colors.black
+    ? 'brand-primary'
+    : 'default'
 
   const shouldShowAroundPlaceRadiusSlider =
     shouldShowRadiusSlider &&

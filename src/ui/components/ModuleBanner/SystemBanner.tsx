@@ -58,7 +58,7 @@ export const SystemBanner: FunctionComponent<Props> = ({
     analytics.logSystemBlockDisplayed({ type, from })
   }, [type, from])
 
-  const color = withBackground ? theme.colors.white : theme.colors.black
+  const color = withBackground ? 'inverted' : 'default'
   const iconColor = withBackground ? theme.colors.white : theme.colors.secondaryLight200
   const backgroundColor = withBackground ? theme.uniqueColors.brand : theme.colors.transparent
   const borderColor = withBackground ? theme.uniqueColors.brand : theme.colors.secondaryLight200
@@ -80,7 +80,7 @@ export const SystemBanner: FunctionComponent<Props> = ({
       {...focusProps}
       accessibilityRole={accessibilityRole}
       accessibilityLabel={accessibilityLabel}
-      color={color}>
+      color={withBackground ? theme.colors.white : theme.colors.black}>
       <Container backgroundColor={backgroundColor} borderColor={borderColor} testID="systemBanner">
         {StyledIcon ? (
           <IconContainer>
@@ -88,8 +88,8 @@ export const SystemBanner: FunctionComponent<Props> = ({
           </IconContainer>
         ) : null}
         <DescriptionContainer gap={1}>
-          <StyledBodyAccent color={color}>{title}</StyledBodyAccent>
-          <StyledBody color={color}>{subtitle}</StyledBody>
+          <TypoDS.BodyAccent color={color}>{title}</TypoDS.BodyAccent>
+          <TypoDS.Body color={color}>{subtitle}</TypoDS.Body>
         </DescriptionContainer>
         <View>
           <StyledArrowNextIcon color={iconColor} />
@@ -145,11 +145,3 @@ const StyledArrowNextIcon = styled(ArrowNext).attrs(({ theme, color }) => ({
   size: theme.icons.sizes.small,
   color,
 }))``
-
-const StyledBodyAccent = styled(TypoDS.BodyAccent)<{ color?: ColorsEnum }>(({ color }) => ({
-  color,
-}))
-
-const StyledBody = styled(TypoDS.Body)<{ color?: ColorsEnum }>(({ color }) => ({
-  color,
-}))

@@ -35,7 +35,7 @@ describe('SnackBar Component', () => {
           icon: Check,
           backgroundColor: theme.colors.accent,
           progressBarColor: theme.colors.greenLight,
-          color: theme.colors.white,
+          color: 'inverted',
           timeout: 1000,
           refresher: 1,
         })
@@ -49,7 +49,7 @@ describe('SnackBar Component', () => {
 
       expect(view.props.backgroundColor).toEqual(theme.colors.accent)
       expect(progressBar.props.backgroundColor).toEqual(theme.colors.greenLight)
-      expect(message.props.color).toEqual(theme.colors.white)
+      expect(message.props.color).toEqual('inverted')
     })
 
     it('should not display progress bar if timeout is not provided', () => {
@@ -60,7 +60,7 @@ describe('SnackBar Component', () => {
           icon: Check,
           backgroundColor: theme.colors.accent,
           progressBarColor: theme.colors.greenLight,
-          color: theme.colors.white,
+          color: 'inverted',
           refresher: 1,
         })
       )
@@ -104,7 +104,7 @@ describe('SnackBar Component', () => {
           icon: undefined,
           backgroundColor: theme.colors.accent,
           progressBarColor: theme.colors.greenLight,
-          color: theme.colors.white,
+          color: 'inverted',
           refresher: 1,
         })
       )
@@ -268,7 +268,7 @@ function renderHelperSnackBar(visible: boolean, props: SnackBarHelperSettings, r
       timeout={props.timeout}
       backgroundColor={theme.colors.primary}
       progressBarColor={theme.colors.secondary}
-      color={theme.colors.white}
+      color="inverted"
       refresher={refresher}
       animationDuration={props.animationDuration}
     />

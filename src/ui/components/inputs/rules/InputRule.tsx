@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
-import { ColorsType } from 'theme/types'
+import { ColorsType, TextColorKey } from 'theme/types'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 import { Spacer, TypoDS, getSpacing } from 'ui/theme'
 
@@ -25,17 +25,17 @@ export const InputRule: FunctionComponent<Props> = ({
   noFullWidth = false,
 }: Props) => {
   const theme = useTheme()
-  const colorMapping: Record<InputRuleType, { text: ColorsType; icon: ColorsType }> = {
+  const colorMapping: Record<InputRuleType, { text: TextColorKey; icon: ColorsType }> = {
     Valid: {
-      text: theme.designSystem.color.text.success,
+      text: 'success',
       icon: theme.designSystem.color.icon.success,
     },
     Error: {
-      text: theme.designSystem.color.text.error,
+      text: 'error',
       icon: theme.designSystem.color.icon.error,
     },
     Neutral: {
-      text: theme.designSystem.color.text.default,
+      text: 'default',
       icon: theme.designSystem.color.icon.default,
     },
   }
@@ -71,11 +71,9 @@ const StyledView = styled.View<{ noFullWidth?: boolean }>(({ noFullWidth, theme 
 }))
 
 const StyledCaption = styled(TypoDS.BodyAccentXs)<{
-  color: ColorsType
   noFullWidth?: boolean
-}>(({ color, noFullWidth }) => ({
+}>(({ noFullWidth }) => ({
   paddingLeft: getSpacing(1),
   flexShrink: 1,
-  color,
   ...(noFullWidth ? { textAlign: 'center' } : {}),
 }))

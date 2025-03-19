@@ -104,6 +104,7 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                   style={
                     [
                       {
+                        "color": "#161617",
                         "fontFamily": "Montserrat-Bold",
                         "fontSize": 28,
                         "lineHeight": 44.8,
@@ -214,6 +215,7 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                 style={
                   [
                     {
+                      "color": "#161617",
                       "fontFamily": "Montserrat-SemiBold",
                       "fontSize": 12,
                       "lineHeight": 19.2,
@@ -452,6 +454,7 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
           style={
             [
               {
+                "color": "#161617",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 17,
                 "lineHeight": 27.2,

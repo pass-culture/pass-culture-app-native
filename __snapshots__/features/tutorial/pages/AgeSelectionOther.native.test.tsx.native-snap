@@ -158,6 +158,7 @@ exports[`AgeSelectionOther onboarding should render correctly 1`] = `
           style={
             [
               {
+                "color": "#161617",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 19,
                 "lineHeight": 30.4,
@@ -618,6 +619,7 @@ exports[`AgeSelectionOther profileTutorial should render correctly 1`] = `
           style={
             [
               {
+                "color": "#161617",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 19,
                 "lineHeight": 30.4,

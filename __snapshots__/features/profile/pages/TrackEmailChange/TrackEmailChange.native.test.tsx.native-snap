@@ -148,6 +148,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
       style={
         [
           {
+            "color": "#161617",
             "fontFamily": "Montserrat-Bold",
             "fontSize": 28,
             "lineHeight": 44.8,
@@ -1092,6 +1093,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
       style={
         [
           {
+            "color": "#161617",
             "fontFamily": "Montserrat-Bold",
             "fontSize": 28,
             "lineHeight": 44.8,
@@ -2054,6 +2056,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
       style={
         [
           {
+            "color": "#161617",
             "fontFamily": "Montserrat-Bold",
             "fontSize": 28,
             "lineHeight": 44.8,
@@ -2980,6 +2983,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
       style={
         [
           {
+            "color": "#161617",
             "fontFamily": "Montserrat-Bold",
             "fontSize": 28,
             "lineHeight": 44.8,
@@ -4157,6 +4161,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
       style={
         [
           {
+            "color": "#161617",
             "fontFamily": "Montserrat-Bold",
             "fontSize": 28,
             "lineHeight": 44.8,
@@ -5370,6 +5375,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
       style={
         [
           {
+            "color": "#161617",
             "fontFamily": "Montserrat-Bold",
             "fontSize": 28,
             "lineHeight": 44.8,
@@ -6565,6 +6571,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
       style={
         [
           {
+            "color": "#161617",
             "fontFamily": "Montserrat-Bold",
             "fontSize": 28,
             "lineHeight": 44.8,

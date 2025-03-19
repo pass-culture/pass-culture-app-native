@@ -85,6 +85,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                 style={
                   [
                     {
+                      "color": "#161617",
                       "fontFamily": "Montserrat-Bold",
                       "fontSize": 28,
                       "lineHeight": 44.8,
@@ -412,6 +413,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                       style={
                         [
                           {
+                            "color": "#161617",
                             "fontFamily": "Montserrat-SemiBold",
                             "fontSize": 12,
                             "lineHeight": 19.2,
@@ -593,6 +595,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
               style={
                 [
                   {
+                    "color": "#161617",
                     "fontFamily": "Montserrat-SemiBold",
                     "fontSize": 12,
                     "lineHeight": 19.2,
@@ -677,6 +680,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
               style={
                 [
                   {
+                    "color": "#161617",
                     "fontFamily": "Montserrat-SemiBold",
                     "fontSize": 12,
                     "lineHeight": 19.2,
@@ -761,6 +765,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
               style={
                 [
                   {
+                    "color": "#161617",
                     "fontFamily": "Montserrat-SemiBold",
                     "fontSize": 12,
                     "lineHeight": 19.2,
@@ -845,6 +850,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
               style={
                 [
                   {
+                    "color": "#161617",
                     "fontFamily": "Montserrat-SemiBold",
                     "fontSize": 12,
                     "lineHeight": 19.2,
@@ -929,6 +935,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
               style={
                 [
                   {
+                    "color": "#161617",
                     "fontFamily": "Montserrat-SemiBold",
                     "fontSize": 12,
                     "lineHeight": 19.2,
@@ -1013,6 +1020,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
               style={
                 [
                   {
+                    "color": "#161617",
                     "fontFamily": "Montserrat-SemiBold",
                     "fontSize": 12,
                     "lineHeight": 19.2,
@@ -1097,6 +1105,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
               style={
                 [
                   {
+                    "color": "#161617",
                     "fontFamily": "Montserrat-SemiBold",
                     "fontSize": 12,
                     "lineHeight": 19.2,
@@ -1181,6 +1190,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
               style={
                 [
                   {
+                    "color": "#161617",
                     "fontFamily": "Montserrat-SemiBold",
                     "fontSize": 12,
                     "lineHeight": 19.2,
@@ -1265,6 +1275,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
               style={
                 [
                   {
+                    "color": "#161617",
                     "fontFamily": "Montserrat-SemiBold",
                     "fontSize": 12,
                     "lineHeight": 19.2,
@@ -1349,6 +1360,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
               style={
                 [
                   {
+                    "color": "#161617",
                     "fontFamily": "Montserrat-SemiBold",
                     "fontSize": 12,
                     "lineHeight": 19.2,
@@ -1433,6 +1445,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
               style={
                 [
                   {
+                    "color": "#161617",
                     "fontFamily": "Montserrat-SemiBold",
                     "fontSize": 12,
                     "lineHeight": 19.2,
@@ -1517,6 +1530,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
               style={
                 [
                   {
+                    "color": "#161617",
                     "fontFamily": "Montserrat-SemiBold",
                     "fontSize": 12,
                     "lineHeight": 19.2,
@@ -1601,6 +1615,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
               style={
                 [
                   {
+                    "color": "#161617",
                     "fontFamily": "Montserrat-SemiBold",
                     "fontSize": 12,
                     "lineHeight": 19.2,
@@ -1693,6 +1708,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                     style={
                       [
                         {
+                          "color": "#161617",
                           "fontFamily": "Montserrat-Bold",
                           "fontSize": 19,
                           "lineHeight": 30.4,
@@ -4266,6 +4282,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                                           style={
                                             [
                                               {
+                                                "color": "#161617",
                                                 "fontFamily": "Montserrat-SemiBold",
                                                 "fontSize": 12,
                                                 "lineHeight": 19.2,
@@ -4279,6 +4296,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                                           style={
                                             [
                                               {
+                                                "color": "#161617",
                                                 "fontFamily": "Montserrat-SemiBold",
                                                 "fontSize": 12,
                                                 "lineHeight": 19.2,
@@ -4708,6 +4726,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                                           style={
                                             [
                                               {
+                                                "color": "#161617",
                                                 "fontFamily": "Montserrat-SemiBold",
                                                 "fontSize": 12,
                                                 "lineHeight": 19.2,
@@ -4721,6 +4740,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                                           style={
                                             [
                                               {
+                                                "color": "#161617",
                                                 "fontFamily": "Montserrat-SemiBold",
                                                 "fontSize": 12,
                                                 "lineHeight": 19.2,
@@ -5150,6 +5170,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                                           style={
                                             [
                                               {
+                                                "color": "#161617",
                                                 "fontFamily": "Montserrat-SemiBold",
                                                 "fontSize": 12,
                                                 "lineHeight": 19.2,
@@ -5163,6 +5184,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                                           style={
                                             [
                                               {
+                                                "color": "#161617",
                                                 "fontFamily": "Montserrat-SemiBold",
                                                 "fontSize": 12,
                                                 "lineHeight": 19.2,
@@ -5592,6 +5614,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                                           style={
                                             [
                                               {
+                                                "color": "#161617",
                                                 "fontFamily": "Montserrat-SemiBold",
                                                 "fontSize": 12,
                                                 "lineHeight": 19.2,
@@ -5605,6 +5628,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                                           style={
                                             [
                                               {
+                                                "color": "#161617",
                                                 "fontFamily": "Montserrat-SemiBold",
                                                 "fontSize": 12,
                                                 "lineHeight": 19.2,
@@ -6034,6 +6058,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                                           style={
                                             [
                                               {
+                                                "color": "#161617",
                                                 "fontFamily": "Montserrat-SemiBold",
                                                 "fontSize": 12,
                                                 "lineHeight": 19.2,
@@ -6047,6 +6072,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                                           style={
                                             [
                                               {
+                                                "color": "#161617",
                                                 "fontFamily": "Montserrat-SemiBold",
                                                 "fontSize": 12,
                                                 "lineHeight": 19.2,
@@ -6492,6 +6518,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                                       style={
                                         [
                                           {
+                                            "color": "#161617",
                                             "fontFamily": "Montserrat-SemiBold",
                                             "fontSize": 12,
                                             "lineHeight": 19.2,
@@ -6505,6 +6532,7 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                                       style={
                                         [
                                           {
+                                            "color": "#161617",
                                             "fontFamily": "Montserrat-SemiBold",
                                             "fontSize": 12,
                                             "lineHeight": 19.2,

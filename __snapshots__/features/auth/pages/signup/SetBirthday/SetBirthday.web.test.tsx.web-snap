@@ -178,7 +178,7 @@ exports[`<SetBirthday /> no touch device should render correctly 1`] = `
   >
     <h2
       aria-level="2"
-      class="css-text-1rynq56 r-fontFamily-1gknse6 r-fontSize-19e3y8m r-lineHeight-1w51ilw"
+      class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-19e3y8m r-lineHeight-1w51ilw"
       dir="ltr"
       role="heading"
     >
@@ -1530,7 +1530,7 @@ exports[`<SetBirthday /> touch device should render correctly 1`] = `
   >
     <h2
       aria-level="2"
-      class="css-text-1rynq56 r-fontFamily-1gknse6 r-fontSize-19e3y8m r-lineHeight-1w51ilw"
+      class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-19e3y8m r-lineHeight-1w51ilw"
       dir="ltr"
       role="heading"
     >
@@ -1594,7 +1594,7 @@ exports[`<SetBirthday /> touch device should render correctly 1`] = `
           data-testid="styled-input-container"
         >
           <div
-            class="css-text-1rynq56 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm"
+            class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm"
             dir="ltr"
             id="testUuidV4"
           >
