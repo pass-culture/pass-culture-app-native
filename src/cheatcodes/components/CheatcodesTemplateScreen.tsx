@@ -1,10 +1,12 @@
 import React, { PropsWithChildren } from 'react'
+import { ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
 import {
   PageHeaderWithoutPlaceholder,
   useGetHeaderHeight,
 } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
+import { Page } from 'ui/pages/Page'
 import { Spacer } from 'ui/theme'
 
 type Props = PropsWithChildren<{
@@ -20,27 +22,20 @@ export const CheatcodesTemplateScreen: React.FC<Props> = ({
   const headerHeight = useGetHeaderHeight()
 
   return (
-    <React.Fragment>
+    <Page>
       <PageHeaderWithoutPlaceholder title={title} />
       <Placeholder height={headerHeight} />
       <ScrollView>
         <StyledContainer flexDirection={flexDirection}>{children}</StyledContainer>
         <Spacer.BottomScreen />
       </ScrollView>
-    </React.Fragment>
+    </Page>
   )
 }
 
 const Placeholder = styled.View<{ height: number }>(({ height }) => ({
   height,
-  backgroundColor: 'white',
 }))
-
-const ScrollView = styled.ScrollView.attrs(({ theme }) => ({
-  contentContainerStyle: {
-    backgroundColor: theme.colors.white,
-  },
-}))``
 
 const StyledContainer = styled.View<{ flexDirection: 'row' | 'column' }>(
   ({ theme, flexDirection }) => ({
