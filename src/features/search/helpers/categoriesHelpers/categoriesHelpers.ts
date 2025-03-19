@@ -4,7 +4,7 @@ import {
   GenreType,
   NativeCategoryIdEnumv2,
   NativeCategoryResponseModelv2,
-  OnlineOfflinePlatformChoicesEnumv2,
+  OnlineOfflinePlatformChoicesEnum,
   SearchGroupNameEnumv2,
   SearchGroupResponseModelv2,
   SubcategoriesResponseModelv2,
@@ -256,7 +256,7 @@ export function isOnlyOnline(
     return false
   }
 
-  const platforms: OnlineOfflinePlatformChoicesEnumv2[] = [
+  const platforms: OnlineOfflinePlatformChoicesEnum[] = [
     ...new Set(
       data.subcategories
         .filter((subcategory) =>
@@ -269,9 +269,9 @@ export function isOnlyOnline(
   ]
 
   const isOnlyOnline =
-    platforms.includes(OnlineOfflinePlatformChoicesEnumv2.ONLINE) &&
-    !platforms.includes(OnlineOfflinePlatformChoicesEnumv2.ONLINE_OR_OFFLINE) &&
-    !platforms.includes(OnlineOfflinePlatformChoicesEnumv2.OFFLINE)
+    platforms.includes(OnlineOfflinePlatformChoicesEnum.ONLINE) &&
+    !platforms.includes(OnlineOfflinePlatformChoicesEnum.ONLINE_OR_OFFLINE) &&
+    !platforms.includes(OnlineOfflinePlatformChoicesEnum.OFFLINE)
 
   return isOnlyOnline
 }
