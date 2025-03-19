@@ -4,7 +4,7 @@ import {
   CategoryIdEnum,
   HomepageLabelNameEnumv2,
   NativeCategoryIdEnumv2,
-  OnlineOfflinePlatformChoicesEnumv2,
+  OnlineOfflinePlatformChoicesEnum,
   SearchGroupNameEnumv2,
   SubcategoryIdEnum,
 } from 'api/gen'
@@ -34,7 +34,7 @@ const object = {
   homepageLabelName: HomepageLabelNameEnumv2.CINEMA,
   isEvent: false,
   nativeCategoryId: NativeCategoryIdEnumv2.SEANCES_DE_CINEMA,
-  onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnumv2.ONLINE,
+  onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnum.ONLINE,
   searchGroupName: SearchGroupNameEnumv2.CINEMA,
 }
 
