@@ -17,7 +17,7 @@ import { formatDates, getTimeStampInMillis } from 'libs/parsers/formatDates'
 import {
   formatPrice,
   getDisplayedPrice,
-  getIfPricesShouldBeFix,
+  getIfPricesShouldBeFixed,
 } from 'libs/parsers/getDisplayedPrice'
 import { VenueTypeCode } from 'libs/parsers/venueType'
 import { CategoryHomeLabelMapping, CategoryIdMapping } from 'libs/subcategories/types'
@@ -95,10 +95,10 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
           item.offer.prices,
           currency,
           euroToPacificFrancRate,
-          formatPrice(
-            getIfPricesShouldBeFix(item.offer.subcategoryId),
-            !!(item.offer.isDuo && user?.isBeneficiary)
-          )
+          formatPrice({
+            isFixed: getIfPricesShouldBeFixed(item.offer.subcategoryId),
+            isDuo: !!(item.offer.isDuo && user?.isBeneficiary),
+          })
         )}
         venueId={venue?.id}
         width={width}

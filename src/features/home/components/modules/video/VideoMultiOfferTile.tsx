@@ -13,7 +13,7 @@ import { getDistance } from 'libs/location/getDistance'
 import {
   formatPrice,
   getDisplayedPrice,
-  getIfPricesShouldBeFix,
+  getIfPricesShouldBeFixed,
 } from 'libs/parsers/getDisplayedPrice'
 import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
@@ -51,10 +51,10 @@ export const VideoMultiOfferTile: FunctionComponent<Props> = ({
     offer?.offer?.prices,
     currency,
     euroToPacificFrancRate,
-    formatPrice(
-      getIfPricesShouldBeFix(offer.offer.subcategoryId),
-      !!(offer.offer.isDuo && user?.isBeneficiary)
-    )
+    formatPrice({
+      isFixed: getIfPricesShouldBeFixed(offer.offer.subcategoryId),
+      isDuo: !!(offer.offer.isDuo && user?.isBeneficiary),
+    })
   )
 
   const displayDate = getOfferDates(

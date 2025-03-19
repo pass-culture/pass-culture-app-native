@@ -7,7 +7,7 @@ import { AlgoliaOfferWithArtistAndEan } from 'libs/algolia/types'
 import { usePlaylistItemDimensionsFromLayout } from 'libs/contentful/usePlaylistItemDimensionsFromLayout'
 import {
   getDisplayedPrice,
-  getIfPricesShouldBeFix,
+  getIfPricesShouldBeFixed,
   formatStartPrice,
 } from 'libs/parsers/getDisplayedPrice'
 import { useCategoryIdMapping } from 'libs/subcategories'
@@ -54,7 +54,7 @@ export const ArtistPlaylist: FunctionComponent<ArtistPlaylistProps> = ({
             item.offer.prices,
             currency,
             euroToPacificFrancRate,
-            getIfPricesShouldBeFix(item.offer.subcategoryId) ? undefined : formatStartPrice
+            getIfPricesShouldBeFixed(item.offer.subcategoryId) ? undefined : formatStartPrice
           ),
       })}
       itemWidth={itemWidth}

@@ -39,9 +39,15 @@ export const getDisplayedPrice = (
 export const identityPrice = (price: string): string => price
 export const formatDuoPrice = (price: string): string => `${price} - Duo`
 export const formatStartPrice = (price: string): string => `Dès ${price}`
-export const formatPrice = (isFixed: boolean, isDuo: boolean) =>
-  compose([isFixed ? identityPrice : formatStartPrice, isDuo ? formatDuoPrice : identityPrice])
+export const formatPrice = ({ isFixed, isDuo }: { isFixed: boolean; isDuo: boolean }) => {
+  return compose([
+    isFixed ? identityPrice : formatStartPrice,
+    isDuo ? formatDuoPrice : identityPrice,
+  ])
+}
 
-export const getIfPricesShouldBeFix = (subcategoryId?: SubcategoryIdEnum | undefined): boolean => {
+export const getIfPricesShouldBeFixed = (
+  subcategoryId?: SubcategoryIdEnum | undefined
+): boolean => {
   return subcategoryId == SubcategoryIdEnum.LIVRE_PAPIER
 }

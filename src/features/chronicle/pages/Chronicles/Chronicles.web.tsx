@@ -16,7 +16,7 @@ import { getOfferPrices } from 'features/offer/helpers/getOfferPrice/getOfferPri
 import { useOfferBatchTracking } from 'features/offer/helpers/useOfferBatchTracking/useOfferBatchTracking'
 import {
   getDisplayedPrice,
-  getIfPricesShouldBeFix,
+  getIfPricesShouldBeFixed,
   formatPrice,
 } from 'libs/parsers/getDisplayedPrice'
 import { useSubcategoriesMapping } from 'libs/subcategories'
@@ -52,10 +52,10 @@ export const Chronicles: FunctionComponent = () => {
     prices,
     currency,
     euroToPacificFrancRate,
-    formatPrice(
-      getIfPricesShouldBeFix(offer?.subcategoryId),
-      !!(offer?.isDuo && user?.isBeneficiary)
-    ),
+    formatPrice({
+      isFixed: getIfPricesShouldBeFixed(offer?.subcategoryId),
+      isDuo: !!(offer?.isDuo && user?.isBeneficiary),
+    }),
     {
       fractionDigits: 2,
     }
