@@ -59,7 +59,7 @@ describe('<Bookings />', () => {
       ),
       {
         scenario: async () => {
-          await screen.findByText('3 réservations en cours', {}, { timeout: TEST_TIMEOUT_IN_MS })
+          await screen.findByText('Mes réservations', {}, { timeout: TEST_TIMEOUT_IN_MS })
         },
       }
     )

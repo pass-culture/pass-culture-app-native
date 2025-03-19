@@ -18,7 +18,6 @@ import { SuspendedAccountUponUserRequest } from 'features/auth/pages/suspendedAc
 import { EighteenBirthday } from 'features/birthdayNotifications/pages/EighteenBirthday'
 import { RecreditBirthdayNotification } from 'features/birthdayNotifications/pages/RecreditBirthdayNotification'
 import { BookingDetails } from 'features/bookings/pages/BookingDetails/BookingDetails'
-import { EndedBookings } from 'features/bookings/pages/EndedBookings/EndedBookings'
 import { BookingConfirmation } from 'features/bookOffer/pages/BookingConfirmation'
 import { Chronicles } from 'features/chronicle/pages/Chronicles/Chronicles'
 import { withAsyncErrorBoundary } from 'features/errors/hocs/withAsyncErrorBoundary'
@@ -140,13 +139,6 @@ export const rootRoutes: RootRoute[] = [
     component: ChangeEmailExpiredLink,
     path: 'lien-modification-email-expire',
     options: { title: 'Lien de modification de l’email expiré' },
-  },
-  {
-    name: 'EndedBookings',
-    component: EndedBookings,
-    path: 'reservations-terminees',
-    options: { title: 'Réservations terminées' },
-    secure: true,
   },
   {
     name: 'FavoritesSorts',

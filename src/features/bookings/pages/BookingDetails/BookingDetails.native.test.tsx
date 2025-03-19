@@ -369,97 +369,6 @@ describe('BookingDetails', () => {
     })
 
     describe('cancellation message', () => {
-      describe('should display it and navigate to ended bookings', () => {
-        beforeEach(() => {
-          useRoute.mockImplementation(() => ({
-            params: {
-              id: 321,
-            },
-          }))
-        })
-
-        it('when booking is digital with expiration date', async () => {
-          const booking: BookingsResponse['ongoing_bookings'][number] = {
-            ...endedBookings,
-            expirationDate: '2021-03-17T23:01:37.925926',
-          }
-
-          mockBookings = {
-            ...mockBookings,
-            ended_bookings: [booking],
-          }
-
-          const nameCanceledBooking = booking.stock.offer.name
-          renderBookingDetails(booking)
-
-          await screen.findByText('Ma réservation')
-
-          expect(mockShowInfoSnackBar).toHaveBeenCalledWith({
-            message: `Ta réservation "${nameCanceledBooking}" a été annulée`,
-            timeout: SNACK_BAR_TIME_OUT,
-          })
-          expect(navigate).toHaveBeenCalledWith('EndedBookings')
-        })
-
-        it('when booking is not digital with expiration date', async () => {
-          const booking: BookingsResponse['ongoing_bookings'][number] = {
-            ...endedBookings,
-            expirationDate: '2021-03-17T23:01:37.925926',
-            stock: {
-              ...endedBookings.stock,
-              offer: { ...endedBookings.stock.offer, isDigital: false },
-            },
-          }
-
-          mockBookings = {
-            ...mockBookings,
-            ended_bookings: [booking],
-          }
-
-          const nameCanceledBooking = booking.stock.offer.name
-          renderBookingDetails(booking)
-
-          await screen.findByText('Ma réservation')
-
-          expect(mockShowInfoSnackBar).toHaveBeenCalledWith({
-            message: `Ta réservation "${nameCanceledBooking}" a été annulée`,
-            timeout: SNACK_BAR_TIME_OUT,
-          })
-          expect(navigate).toHaveBeenCalledWith('EndedBookings')
-        })
-
-        it('when booking is not digital without expiration date', async () => {
-          const booking = {
-            ...endedBookings,
-            expirationDate: null,
-            stock: {
-              ...endedBookings.stock.offer,
-              offer: { ...endedBookings.stock.offer, isDigital: false },
-              price: 400,
-              priceCategoryLabel: 'Cat 4',
-              features: ['VOSTFR', '3D', 'IMAX'],
-            },
-          }
-
-          mockBookings = {
-            ...mockBookings,
-            ended_bookings: [booking],
-          }
-
-          const nameCanceledBooking = booking.stock.offer.name
-
-          renderBookingDetails(booking)
-
-          await screen.findByText('Ma réservation')
-
-          expect(mockShowInfoSnackBar).toHaveBeenCalledWith({
-            message: `Ta réservation "${nameCanceledBooking}" a été annulée`,
-            timeout: SNACK_BAR_TIME_OUT,
-          })
-          expect(navigate).toHaveBeenCalledWith('EndedBookings')
-        })
-      })
-
       it('should not display it and not navigate when booking is digital without expiration date', async () => {
         renderBookingDetails(endedBookings)
         await screen.findByText('Ma réservation')
@@ -468,9 +377,8 @@ describe('BookingDetails', () => {
         expect(navigate).not.toHaveBeenCalled()
       })
 
-      describe('when booking improve feature flag is activated should display it and navigate to bookings', () => {
+      describe('should display it and navigate to bookings', () => {
         beforeEach(() => {
-          setFeatureFlags([RemoteStoreFeatureFlags.WIP_BOOKING_IMPROVE])
           useRoute.mockImplementation(() => ({
             params: {
               id: 321,

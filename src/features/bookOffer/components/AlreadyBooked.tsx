@@ -5,8 +5,6 @@ import { OfferResponseV2 } from 'api/gen'
 import { Step } from 'features/bookOffer/context/reducer'
 import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
 import { env } from 'libs/environment/env'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ExternalLink } from 'ui/components/buttons/externalLink/ExternalLink'
 import { Spacer } from 'ui/components/spacer/Spacer'
@@ -15,7 +13,6 @@ import { getSpacing, TypoDS } from 'ui/theme'
 
 export function AlreadyBooked({ offer }: { offer: OfferResponseV2 }) {
   const { bookingState, dismissModal, dispatch } = useBookingContext()
-  const enableBookingImprove = useFeatureFlag(RemoteStoreFeatureFlags.WIP_BOOKING_IMPROVE)
 
   // Change step to confirmation
   useEffect(() => {
@@ -43,7 +40,7 @@ export function AlreadyBooked({ offer }: { offer: OfferResponseV2 }) {
       <InternalTouchableLink
         as={ButtonPrimary}
         wording="Mes réservations terminées"
-        navigateTo={{ screen: enableBookingImprove ? 'Bookings' : 'EndedBookings' }}
+        navigateTo={{ screen: 'Bookings' }}
         onBeforeNavigate={dismissModal}
       />
     </Container>

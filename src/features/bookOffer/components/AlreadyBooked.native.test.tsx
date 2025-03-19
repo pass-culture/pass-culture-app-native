@@ -4,7 +4,6 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { OfferResponseV2 } from 'api/gen'
 import { initialBookingState, Step } from 'features/bookOffer/context/reducer'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { fireEvent, render, screen } from 'tests/utils'
 
 import { AlreadyBooked } from './AlreadyBooked'
@@ -44,20 +43,10 @@ describe('<AlreadyBooked />', () => {
     })
   })
 
-  it('should navigate to ended bookings when clicking on cta', async () => {
+  it('should navigate to bookings when clicking on cta', async () => {
     render(<AlreadyBooked offer={{ name: 'hello' } as OfferResponseV2} />)
     await fireEvent.press(screen.getByText('Mes réservations terminées'))
 
-    expect(navigate).toHaveBeenCalledWith('EndedBookings', undefined)
-  })
-
-  describe('when booking improve feature flag is activated', () => {
-    it('should navigate to bookings when clicking on cta', async () => {
-      setFeatureFlags([RemoteStoreFeatureFlags.WIP_BOOKING_IMPROVE])
-      render(<AlreadyBooked offer={{ name: 'hello' } as OfferResponseV2} />)
-      await fireEvent.press(screen.getByText('Mes réservations terminées'))
-
-      expect(navigate).toHaveBeenCalledWith('Bookings', undefined)
-    })
+    expect(navigate).toHaveBeenCalledWith('Bookings', undefined)
   })
 })
