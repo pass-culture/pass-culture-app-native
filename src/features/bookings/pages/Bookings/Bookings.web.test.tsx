@@ -10,7 +10,7 @@ import {
   SubcategoryIdEnum,
 } from 'api/gen'
 import { bookingsSnap, emptyBookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
-import { useAvailableReaction } from 'features/reactions/api/useAvailableReaction'
+import { useAvailableReactionQuery } from 'features/reactions/queries/useAvailableReactionQuery'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
 import * as bookingsAPI from 'queries/bookings/useBookingsQuery'
@@ -59,8 +59,8 @@ mockUseCategoryIdMapping.mockReturnValue({
   [SubcategoryIdEnum.EVENEMENT_PATRIMOINE]: CategoryIdEnum.MUSEE,
 })
 
-jest.mock('features/reactions/api/useAvailableReaction')
-const mockUseAvailableReaction = useAvailableReaction as jest.Mock
+jest.mock('features/reactions/queries/useAvailableReactionQuery')
+const mockUseAvailableReaction = useAvailableReactionQuery as jest.Mock
 mockUseAvailableReaction.mockReturnValue({
   data: { numberOfReactableBookings: 0, bookings: [] },
 })

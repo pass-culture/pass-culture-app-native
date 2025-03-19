@@ -5,7 +5,7 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { BookingsResponse, ReactionTypeEnum, SubcategoriesResponseModelv2 } from 'api/gen'
 import { availableReactionsSnap } from 'features/bookings/fixtures/availableReactionSnap'
 import { bookingsSnap, emptyBookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
-import { useAvailableReaction } from 'features/reactions/api/useAvailableReaction'
+import { useAvailableReactionQuery } from 'features/reactions/queries/useAvailableReactionQuery'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
@@ -40,12 +40,12 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 })
 
 const mockMutate = jest.fn()
-jest.mock('features/reactions/api/useReactionMutation', () => ({
+jest.mock('features/reactions/queries/useReactionMutation', () => ({
   useReactionMutation: () => ({ mutate: mockMutate }),
 }))
 
-jest.mock('features/reactions/api/useAvailableReaction')
-const mockUseAvailableReaction = useAvailableReaction as jest.Mock
+jest.mock('features/reactions/queries/useAvailableReactionQuery')
+const mockUseAvailableReaction = useAvailableReactionQuery as jest.Mock
 mockUseAvailableReaction.mockReturnValue({
   data: { numberOfReactableBookings: 0, bookings: [] },
 })

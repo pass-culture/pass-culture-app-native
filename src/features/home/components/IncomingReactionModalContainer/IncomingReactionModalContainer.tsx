@@ -6,9 +6,9 @@ import {
   PostReactionRequest,
   ReactionTypeEnum,
 } from 'api/gen'
-import { useReactionMutation } from 'features/reactions/api/useReactionMutation'
 import { ReactionChoiceModal } from 'features/reactions/components/ReactionChoiceModal/ReactionChoiceModal'
 import { ReactionChoiceModalBodyEnum, ReactionFromEnum } from 'features/reactions/enum'
+import { useReactionMutation } from 'features/reactions/queries/useReactionMutation'
 import { OfferImageBasicProps } from 'features/reactions/types'
 import { formatToSlashedFrenchDate } from 'libs/dates'
 import { useCategoryIdMapping } from 'libs/subcategories'
