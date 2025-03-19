@@ -41,8 +41,8 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
 .c0:hover {
   -webkit-text-decoration: underline;
   text-decoration: underline;
-  -webkit-text-decoration-color: #696A6F;
-  text-decoration-color: #696A6F;
+  -webkit-text-decoration-color: #696a6f;
+  text-decoration-color: #696a6f;
 }
 
 .c0:hover:disabled {
@@ -103,7 +103,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
 }
 
 .c1 {
-  background-color: transparent;
+  background-color: #ffffff;
 }
 
 .c2 {
@@ -1199,8 +1199,8 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
 .c0:hover {
   -webkit-text-decoration: underline;
   text-decoration: underline;
-  -webkit-text-decoration-color: #696A6F;
-  text-decoration-color: #696A6F;
+  -webkit-text-decoration-color: #696a6f;
+  text-decoration-color: #696a6f;
 }
 
 .c0:hover:disabled {
@@ -1261,7 +1261,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
 }
 
 .c1 {
-  background-color: transparent;
+  background-color: #ffffff;
 }
 
 .c2 {
