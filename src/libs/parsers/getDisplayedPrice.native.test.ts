@@ -7,7 +7,7 @@ import {
   formatPrice,
   formatStartPrice,
   getDisplayedPrice,
-  getIfPricesShouldBeFix,
+  getIfPricesShouldBeFixed,
   identityPrice,
 } from './getDisplayedPrice'
 
@@ -61,7 +61,10 @@ describe('getDisplayedPrice', () => {
           prices,
           currency,
           DEFAULT_PACIFIC_FRANC_TO_EURO_RATE,
-          formatPrice(getIfPricesShouldBeFix(subcategoryId), isDuoDisplayable),
+          formatPrice({
+            isFixed: getIfPricesShouldBeFixed(subcategoryId),
+            isDuo: isDuoDisplayable,
+          }),
           {
             fractionDigits: 2,
           }
@@ -105,19 +108,19 @@ describe('formatPrice', () => {
     ${false} | ${true}  | ${`Dès ${price} - Duo`}
     ${false} | ${false} | ${`Dès ${price}`}
   `('$should render \t= $expected', ({ isFixed, isDuo, expected }) => {
-    const formatDisplayedPrice = formatPrice(isFixed, isDuo)
+    const formatDisplayedPrice = formatPrice({ isFixed, isDuo })
 
     expect(formatDisplayedPrice(price)).toBe(expected)
   })
 })
 
-describe('getIfPricesShouldBeFix', () => {
+describe('getIfPricesShouldBeFixed', () => {
   it.each`
     subcategoryId                             | expected
     ${SubcategoryIdEnum.LIVRE_PAPIER}         | ${true}
     ${undefined}                              | ${false}
     ${SubcategoryIdEnum.MATERIEL_ART_CREATIF} | ${false}
-  `('getIfPricesShouldBeFix($subcategoryId) \t= $expected', ({ subcategoryId, expected }) => {
-    expect(getIfPricesShouldBeFix(subcategoryId)).toBe(expected)
+  `('getIfPricesShouldBeFixed($subcategoryId) \t= $expected', ({ subcategoryId, expected }) => {
+    expect(getIfPricesShouldBeFixed(subcategoryId)).toBe(expected)
   })
 })

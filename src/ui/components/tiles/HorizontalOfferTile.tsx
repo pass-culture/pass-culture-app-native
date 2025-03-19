@@ -13,7 +13,7 @@ import { LocationMode } from 'libs/location/types'
 import {
   formatPrice,
   getDisplayedPrice,
-  getIfPricesShouldBeFix,
+  getIfPricesShouldBeFixed,
 } from 'libs/parsers/getDisplayedPrice'
 import { useSubcategory } from 'libs/subcategories'
 import { tileAccessibilityLabel, TileContentType } from 'libs/tileAccessibilityLabel'
@@ -89,10 +89,10 @@ export const HorizontalOfferTile = ({
     prices,
     currency,
     euroToPacificFrancRate,
-    formatPrice(
-      getIfPricesShouldBeFix(offerDetails.subcategoryId),
-      !!(offerDetails.isDuo && user?.isBeneficiary)
-    )
+    formatPrice({
+      isFixed: getIfPricesShouldBeFixed(offerDetails.subcategoryId),
+      isDuo: !!(offerDetails.isDuo && user?.isBeneficiary),
+    })
   )
 
   const accessibilityLabel = tileAccessibilityLabel(TileContentType.OFFER, {

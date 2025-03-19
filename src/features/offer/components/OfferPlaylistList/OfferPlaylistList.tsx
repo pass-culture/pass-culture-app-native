@@ -15,7 +15,7 @@ import { usePlaylistItemDimensionsFromLayout } from 'libs/contentful/usePlaylist
 import {
   formatStartPrice,
   getDisplayedPrice,
-  getIfPricesShouldBeFix,
+  getIfPricesShouldBeFixed,
 } from 'libs/parsers/getDisplayedPrice'
 import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
@@ -165,7 +165,9 @@ export function OfferPlaylistList({
                     item.offer.prices,
                     currency,
                     euroToPacificFrancRate,
-                    getIfPricesShouldBeFix(item.offer.subcategoryId) ? undefined : formatStartPrice
+                    getIfPricesShouldBeFixed(item.offer.subcategoryId)
+                      ? undefined
+                      : formatStartPrice
                   ),
               })}
               title={playlist.title}

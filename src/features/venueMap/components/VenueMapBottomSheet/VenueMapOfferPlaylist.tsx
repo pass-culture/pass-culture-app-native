@@ -7,7 +7,7 @@ import { PlaylistType } from 'features/offer/enums'
 import {
   formatStartPrice,
   getDisplayedPrice,
-  getIfPricesShouldBeFix,
+  getIfPricesShouldBeFixed,
 } from 'libs/parsers/getDisplayedPrice'
 import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
@@ -54,7 +54,7 @@ export const VenueMapOfferPlaylist = ({
           item.offer.prices,
           currency,
           euroToPacificFrancRate,
-          getIfPricesShouldBeFix(item.offer.subcategoryId) ? undefined : formatStartPrice
+          getIfPricesShouldBeFixed(item.offer.subcategoryId) ? undefined : formatStartPrice
         )}
         width={PLAYLIST_ITEM_WIDTH}
         height={PLAYLIST_ITEM_HEIGHT}

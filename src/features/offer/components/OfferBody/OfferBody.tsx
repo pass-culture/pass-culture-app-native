@@ -27,7 +27,7 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import {
   formatPrice,
   getDisplayedPrice,
-  getIfPricesShouldBeFix,
+  getIfPricesShouldBeFixed,
 } from 'libs/parsers/getDisplayedPrice'
 import { Subcategory } from 'libs/subcategories/types'
 import { formatFullAddress } from 'shared/address/addressFormatter'
@@ -75,10 +75,10 @@ export const OfferBody: FunctionComponent<Props> = ({
     prices,
     currency,
     euroToPacificFrancRate,
-    formatPrice(
-      getIfPricesShouldBeFix(offer.subcategoryId),
-      !!(offer.isDuo && user?.isBeneficiary)
-    ),
+    formatPrice({
+      isFixed: getIfPricesShouldBeFixed(offer.subcategoryId),
+      isDuo: !!(offer.isDuo && user?.isBeneficiary),
+    }),
     { fractionDigits: 2 }
   )
 

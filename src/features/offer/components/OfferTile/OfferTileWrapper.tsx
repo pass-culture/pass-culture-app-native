@@ -6,7 +6,7 @@ import { OfferTileProps } from 'features/offer/types'
 import {
   formatPrice,
   getDisplayedPrice,
-  getIfPricesShouldBeFix,
+  getIfPricesShouldBeFixed,
 } from 'libs/parsers/getDisplayedPrice'
 import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
@@ -38,10 +38,10 @@ export const OfferTileWrapper = (props: Props) => {
     item.offer?.prices,
     currency,
     euroToPacificFrancRate,
-    formatPrice(
-      getIfPricesShouldBeFix(item.offer.subcategoryId),
-      !!(item.offer.isDuo && user?.isBeneficiary)
-    )
+    formatPrice({
+      isFixed: getIfPricesShouldBeFixed(item.offer.subcategoryId),
+      isDuo: !!(item.offer.isDuo && user?.isBeneficiary),
+    })
   )
 
   return (
