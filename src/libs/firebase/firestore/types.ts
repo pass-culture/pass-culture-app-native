@@ -65,7 +65,6 @@ export enum RemoteStoreFeatureFlags {
   WIP_DISPLAY_SEARCH_NB_FACET_RESULTS = 'wipDisplaySearchNbFacetResults',
   WIP_ENABLE_ACCES_LIBRE = 'wipEnableAccesLibre',
   WIP_ENABLE_DARK_MODE = 'wipEnableDarkMode',
-  WIP_ENABLE_DYNAMIC_OPENING_HOURS = 'wipEnableDynamicOpeningHours',
   WIP_ENABLE_GOOGLE_SSO = 'wipEnableGoogleSSO',
   WIP_FLING_BOTTOM_SHEET_NAVIGATE_TO_VENUE = 'wipFlingBottomSheetNavigateToVenue',
   WIP_IS_OPEN_TO_PUBLIC = 'wipIsOpenToPublic',
