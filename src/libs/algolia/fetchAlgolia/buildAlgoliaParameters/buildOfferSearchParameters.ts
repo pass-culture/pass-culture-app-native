@@ -15,6 +15,7 @@ type Parameters = SearchQueryParameters & {
   objectIds?: string[]
   excludedObjectIds?: string[]
   aroundRadius?: number
+  shouldExcludeFutureOffers?: boolean
 }
 
 export const buildOfferSearchParameters = (
@@ -46,6 +47,7 @@ export const buildOfferSearchParameters = (
     timeRange = null,
     venue,
     gtls = [],
+    shouldExcludeFutureOffers = true,
   }: Parameters,
   buildLocationParameterParams: BuildLocationParameterParams,
   isUserUnderage: boolean,
@@ -91,6 +93,6 @@ export const buildOfferSearchParameters = (
     }),
     ...locationParameter,
     ...buildFilters({ excludedObjectIds }),
-    ...buildTagFilters({}),
+    ...buildTagFilters({ shouldExcludeFutureOffers }),
   }
 }
