@@ -181,33 +181,33 @@ describe('useModalContent', () => {
     expect(result.current.onLeftIconPress).not.toBeUndefined()
     expect(result.current.title).toBe('Choix des options')
   })
-})
 
-it('shows modal AlreadyBooked when isEndedUsedBooking is true', () => {
-  mockOffer = baseOffer
-  mockOffer.subcategoryId = SubcategoryIdEnum.CINE_PLEIN_AIR
-  mockStep = Step.CONFIRMATION
+  it('shows modal AlreadyBooked when isEndedUsedBooking is true', () => {
+    mockOffer = baseOffer
+    mockOffer.subcategoryId = SubcategoryIdEnum.CINE_PLEIN_AIR
+    mockStep = Step.CONFIRMATION
 
-  const { result } = renderHook(() => useModalContent(onPressBookOffer, undefined, true))
+    const { result } = renderHook(() => useModalContent(onPressBookOffer, undefined, true))
 
-  expect((result.current.children as any).type.name).toBe('AlreadyBooked')
-  expect(result.current.onLeftIconPress).toBeUndefined()
-  expect(result.current.title).toBe('Réservation impossible')
-})
+    expect((result.current.children as any).type.name).toBe('AlreadyBooked')
+    expect(result.current.onLeftIconPress).toBeUndefined()
+    expect(result.current.title).toBe('Réservation impossible')
+  })
 
-it('should not show back arrow if receives bookingDataMovieScreening', () => {
-  const bookingDataMovieScreening = {
-    date: new Date('2024-03-02'),
-    hour: 4,
-    stockId: 44,
-  }
-  mockOffer = baseOffer
-  mockOffer.subcategoryId = SubcategoryIdEnum.SEANCE_CINE
-  mockStep = Step.DUO
+  it('should not show back arrow if receives bookingDataMovieScreening', () => {
+    const bookingDataMovieScreening = {
+      date: new Date('2024-03-02'),
+      hour: 4,
+      stockId: 44,
+    }
+    mockOffer = baseOffer
+    mockOffer.subcategoryId = SubcategoryIdEnum.SEANCE_CINE
+    mockStep = Step.DUO
 
-  const { result } = renderHook(() =>
-    useModalContent(onPressBookOffer, undefined, true, bookingDataMovieScreening)
-  )
+    const { result } = renderHook(() =>
+      useModalContent(onPressBookOffer, undefined, true, bookingDataMovieScreening)
+    )
 
-  expect(result.current.leftIcon).toBeUndefined()
+    expect(result.current.leftIcon).toBeUndefined()
+  })
 })
