@@ -90,12 +90,14 @@ export const useVenueOffers = ({
           .filter(filterFn)
           .map(transformHits)
 
+        const uniqHits = uniqBy(hits, 'objectID')
+
         const headlineOfferHit = headlineOfferResults?.hits[0]
         const headlineOffer = headlineOfferHit ? transformHits(headlineOfferHit) : undefined
 
         return {
-          hits: uniqBy(hits, 'objectID'),
-          nbHits: hits.length,
+          hits: uniqHits,
+          nbHits: uniqHits.length,
           headlineOffer,
         }
       },
