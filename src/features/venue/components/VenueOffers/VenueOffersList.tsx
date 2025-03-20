@@ -28,7 +28,7 @@ import { PassPlaylist } from 'ui/components/PassPlaylist'
 import { CustomListRenderItem, RenderFooterItem } from 'ui/components/Playlist'
 import { SeeMore } from 'ui/components/SeeMore'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { LENGTH_M, RATIO_HOME_IMAGE, Spacer, TypoDS, getSpacing } from 'ui/theme'
+import { LENGTH_M, RATIO_HOME_IMAGE, TypoDS, getSpacing } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 const keyExtractor = (item: Offer) => item.objectID
@@ -113,8 +113,7 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
   }
 
   return (
-    <React.Fragment>
-      <Spacer.Column numberOfSpaces={6} />
+    <Container>
       <PassPlaylist
         testID="offersModuleList"
         title="Toutes les offres"
@@ -147,11 +146,13 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
           ))}
         </React.Fragment>
       ) : null}
-    </React.Fragment>
+    </Container>
   )
 }
 
 const PlaylistTitleText = styled(TypoDS.Title3).attrs(getHeadingAttrs(2))``
+
+const Container = styled.View({ marginTop: getSpacing(6) })
 
 const ArtistsPlaylistContainer = styled(ViewGap)({
   paddingBottom: OFFERS_PLAYLIST_SIMILAR_SPACING,
