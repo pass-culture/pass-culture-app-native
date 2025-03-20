@@ -3,7 +3,7 @@ import React from 'react'
 import { QuitIdentityCheckModal } from 'features/identityCheck/components/modals/QuitIdentityCheckModal'
 import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import { analytics } from 'libs/analytics/provider'
-import { fireEvent, render, screen } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 
 jest.mock('features/navigation/helpers/navigateToHome')
 const mockHideModal = jest.fn()
@@ -18,6 +18,9 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
     return Component
   }
 })
+
+const user = userEvent.setup()
+jest.useFakeTimers()
 
 describe('<QuitIdentityCheckModal/>', () => {
   it('should render correctly', () => {
@@ -42,23 +45,39 @@ describe('<QuitIdentityCheckModal/>', () => {
     expect(title).toBeOnTheScreen()
   })
 
-  it('should call resume function when clicking on "Continuer la vérification"', () => {
+  it('should log analytics when clicking on "Continuer la vérification"', async () => {
     renderQuitIdentityCheckModal(true)
 
     const resumeButton = screen.getByText('Continuer la vérification')
-    fireEvent.press(resumeButton)
+    await user.press(resumeButton)
 
     expect(analytics.logContinueIdentityCheck).toHaveBeenCalledTimes(1)
+  })
+
+  it('should call hideModal when clicking on "Continuer la vérification"', async () => {
+    renderQuitIdentityCheckModal(true)
+
+    const resumeButton = screen.getByText('Continuer la vérification')
+    await user.press(resumeButton)
+
     expect(mockHideModal).toHaveBeenCalledTimes(1)
   })
 
-  it('should go back to homepage when clicking on "Abandonner la vérification"', () => {
+  it('should log analytics when clicking on "Abandonner la vérification"', async () => {
     renderQuitIdentityCheckModal(true)
 
     const abandonButton = screen.getByText('Abandonner la vérification')
-    fireEvent.press(abandonButton)
+    await user.press(abandonButton)
 
     expect(analytics.logQuitIdentityCheck).toHaveBeenNthCalledWith(1, mockStep)
+  })
+
+  it('should go back to homepage when clicking on "Abandonner la vérification"', async () => {
+    renderQuitIdentityCheckModal(true)
+
+    const abandonButton = screen.getByText('Abandonner la vérification')
+    await user.press(abandonButton)
+
     expect(navigateToHome).toHaveBeenCalledTimes(1)
   })
 })

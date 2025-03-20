@@ -2,7 +2,7 @@ import React from 'react'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render, screen, waitFor } from 'tests/utils'
+import { render, screen, userEvent, waitFor } from 'tests/utils'
 
 import { ChangeEmail } from './ChangeEmail'
 
@@ -13,6 +13,9 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
     return Component
   }
 })
+
+const user = userEvent.setup()
+jest.useFakeTimers()
 
 describe('<ChangeEmail/>', () => {
   it('should render correctly', async () => {
@@ -65,7 +68,7 @@ describe('<ChangeEmail/>', () => {
       renderChangeEmail()
 
       const closeButton = screen.getByLabelText('Fermer la modale')
-      fireEvent.press(closeButton)
+      user.press(closeButton)
 
       await waitFor(() => {
         expect(screen.queryByText('Modifie ton adresse e-mail sur ce compte')).not.toBeOnTheScreen()

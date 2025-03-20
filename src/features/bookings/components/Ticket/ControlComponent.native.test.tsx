@@ -1,10 +1,13 @@
 import React from 'react'
 
-import { fireEvent, render, screen } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 
 import { ControlComponent, ControlComponentProps } from './ControlComponent'
 
 jest.unmock('react-native/Libraries/Animated/createAnimatedComponent')
+
+const user = userEvent.setup()
+jest.useFakeTimers()
 
 describe('<ControlComponent />', () => {
   const onPress = jest.fn()
@@ -38,14 +41,14 @@ describe('<ControlComponent />', () => {
     expect(() => screen.getByTestId('arrowPrevious')).toThrow()
   })
 
-  it('renders trigger onPress when pressed', () => {
+  it('renders trigger onPress when pressed', async () => {
     renderControlComponent({
       onPress,
       title: 'Previous',
       type: 'prev',
     })
 
-    fireEvent.press(screen.getByTestId('Previous'))
+    await user.press(screen.getByTestId('Previous'))
 
     expect(onPress).toHaveBeenCalledTimes(1)
   })

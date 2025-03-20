@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { fireEvent, render, screen } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 
 import { DeleteProfileAccountHacked } from './DeleteProfileAccountHacked'
 
@@ -12,6 +12,9 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
     return Component
   }
 })
+
+const user = userEvent.setup()
+jest.useFakeTimers()
 
 describe('DeleteProfileAccountHacked', () => {
   it('should render correctly', () => {
@@ -24,7 +27,7 @@ describe('DeleteProfileAccountHacked', () => {
     render(<DeleteProfileAccountHacked />)
     const button = screen.getByText('Ne pas sécuriser mon compte')
 
-    fireEvent.press(button)
+    await user.press(button)
 
     expect(navigate).toHaveBeenCalledWith('TabNavigator', {
       params: {
@@ -39,7 +42,7 @@ describe('DeleteProfileAccountHacked', () => {
     render(<DeleteProfileAccountHacked />)
     const button = screen.getByText('Suspendre mon compte')
 
-    fireEvent.press(button)
+    await user.press(button)
 
     expect(navigate).toHaveBeenCalledWith('TabNavigator', {
       params: {

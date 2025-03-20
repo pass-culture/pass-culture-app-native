@@ -7,7 +7,7 @@ import {
 import * as useGoBack from 'features/navigation/useGoBack'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render, screen, waitFor } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 jest.mock('libs/jwt/jwt')
@@ -25,7 +25,7 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
 jest.mock('libs/react-query/usePersistQuery', () => ({
   usePersistQuery: jest.requireActual('react-query').useQuery,
 }))
-
+const onDismiss = jest.fn()
 const mockGoBack = jest.fn()
 jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
   goBack: mockGoBack,
@@ -40,48 +40,50 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
-describe('<ArchiveBookingModal />', () => {
-  it('should call on onDismiss', () => {
-    const onDismiss = jest.fn()
+const props = {
+  visible: true,
+  bookingId: 2,
+  bookingTitle: 'title',
+  onDismiss,
+}
 
-    renderArchiveDigitalBookingOfferModal({
-      visible: true,
-      bookingId: 2,
-      bookingTitle: 'title',
-      onDismiss,
-    })
+const user = userEvent.setup()
+jest.useFakeTimers()
+
+describe('<ArchiveBookingModal />', () => {
+  it('should call on onDismiss', async () => {
+    renderArchiveDigitalBookingOfferModal(props)
 
     const button = screen.getByTestId('Retourner à ma réservation')
-    fireEvent.press(button)
+    await user.press(button)
 
     expect(onDismiss).toHaveBeenCalledTimes(1)
   })
 
-  it('should call the mutation to toggle booking display', async () => {
+  it('should call the Success SnackBar when success on archiving reservation', async () => {
     mockServer.postApi('/v1/bookings/2/toggle_display', {})
 
-    const onDismiss = jest.fn()
-
-    renderArchiveDigitalBookingOfferModal({
-      visible: true,
-      bookingId: 2,
-      bookingTitle: 'title',
-      onDismiss,
-    })
+    renderArchiveDigitalBookingOfferModal(props)
 
     const cancelButton = screen.getByText('Terminer ma réservation')
+    await user.press(cancelButton)
 
-    fireEvent.press(cancelButton)
-
-    await waitFor(() => {
-      expect(mockShowSuccessSnackBar).toHaveBeenCalledWith({
-        message:
-          'La réservation a bien été archivée. Tu pourras la retrouver dans tes réservations terminées',
-        timeout: 5000,
-      })
-      expect(onDismiss).toHaveBeenCalledTimes(1)
-      expect(mockGoBack).toHaveBeenCalledTimes(1)
+    expect(mockShowSuccessSnackBar).toHaveBeenCalledWith({
+      message:
+        'La réservation a bien été archivée. Tu pourras la retrouver dans tes réservations terminées',
+      timeout: 5000,
     })
+  })
+
+  it('should call goBack when success on archiving reservation', async () => {
+    mockServer.postApi('/v1/bookings/2/toggle_display', {})
+
+    renderArchiveDigitalBookingOfferModal(props)
+
+    const cancelButton = screen.getByText('Terminer ma réservation')
+    await user.press(cancelButton)
+
+    expect(mockGoBack).toHaveBeenCalledTimes(1)
   })
 
   it('should show error snackbar if terminate booking request fails', async () => {
@@ -93,23 +95,14 @@ describe('<ArchiveBookingModal />', () => {
       responseOptions: { statusCode: 400, data: response },
     })
 
-    const onDismiss = jest.fn()
-
-    renderArchiveDigitalBookingOfferModal({
-      visible: true,
-      bookingId: 2,
-      bookingTitle: 'title',
-      onDismiss,
-    })
+    renderArchiveDigitalBookingOfferModal(props)
 
     const cancelButton = screen.getByText('Terminer ma réservation')
-    fireEvent.press(cancelButton)
+    await user.press(cancelButton)
 
-    await waitFor(() => {
-      expect(mockShowErrorSnackBar).toHaveBeenCalledWith({
-        message: response.message,
-        timeout: 5000,
-      })
+    expect(mockShowErrorSnackBar).toHaveBeenCalledWith({
+      message: response.message,
+      timeout: 5000,
     })
   })
 })

@@ -4,7 +4,7 @@ import { reset } from '__mocks__/@react-navigation/native'
 import { CulturalSurveyThanks } from 'features/culturalSurvey/pages/CulturalSurveyThanks'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { render, fireEvent, screen } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
@@ -16,6 +16,9 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
     return Component
   }
 })
+
+const user = userEvent.setup()
+jest.useFakeTimers()
 
 describe('CulturalSurveyThanksPage page', () => {
   describe('When FF is disabled', () => {
@@ -33,7 +36,7 @@ describe('CulturalSurveyThanksPage page', () => {
       render(<CulturalSurveyThanks />)
 
       const discoverButton = screen.getByText('Découvrir le catalogue')
-      fireEvent.press(discoverButton)
+      await user.press(discoverButton)
 
       expect(reset).toHaveBeenCalledWith({
         index: 0,
@@ -57,7 +60,7 @@ describe('CulturalSurveyThanksPage page', () => {
       render(<CulturalSurveyThanks />)
 
       const continueButton = screen.getByText('Continuer')
-      fireEvent.press(continueButton)
+      await user.press(continueButton)
 
       expect(reset).toHaveBeenCalledWith({
         index: 0,

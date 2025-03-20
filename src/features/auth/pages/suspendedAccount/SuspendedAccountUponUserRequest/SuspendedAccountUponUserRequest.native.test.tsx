@@ -6,7 +6,7 @@ import { analytics } from 'libs/analytics/provider'
 import { EmptyResponse } from 'libs/fetch'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 import * as SnackBarContextModule from 'ui/components/snackBar/SnackBarContext'
 
 import { SuspendedAccountUponUserRequest } from './SuspendedAccountUponUserRequest'
@@ -36,6 +36,9 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
+const user = userEvent.setup()
+jest.useFakeTimers()
+
 describe('<SuspendedAccountUponUserRequest />', () => {
   it('should match snapshot', () => {
     render(reactQueryProviderHOC(<SuspendedAccountUponUserRequest />))
@@ -47,7 +50,7 @@ describe('<SuspendedAccountUponUserRequest />', () => {
     mockServer.postApi('/v1/account/unsuspend', {})
     render(reactQueryProviderHOC(<SuspendedAccountUponUserRequest />))
 
-    await act(async () => fireEvent.press(screen.getByText('Réactiver mon compte')))
+    await user.press(screen.getByText('Réactiver mon compte'))
 
     expect(replace).toHaveBeenNthCalledWith(1, 'AccountReactivationSuccess')
   })
@@ -56,7 +59,7 @@ describe('<SuspendedAccountUponUserRequest />', () => {
     mockServer.postApi('/v1/account/unsuspend', {})
     render(reactQueryProviderHOC(<SuspendedAccountUponUserRequest />))
 
-    await act(async () => fireEvent.press(screen.getByText('Réactiver mon compte')))
+    await user.press(screen.getByText('Réactiver mon compte'))
 
     expect(analytics.logAccountReactivation).toHaveBeenCalledWith('suspendedaccountuponuserrequest')
   })
@@ -69,13 +72,11 @@ describe('<SuspendedAccountUponUserRequest />', () => {
     })
     render(reactQueryProviderHOC(<SuspendedAccountUponUserRequest />))
 
-    await act(async () => fireEvent.press(screen.getByText('Réactiver mon compte')))
+    await user.press(screen.getByText('Réactiver mon compte'))
 
-    await waitFor(() => {
-      expect(mockShowErrorSnackBar).toHaveBeenNthCalledWith(1, {
-        message: 'Une erreur s’est produite pendant la réactivation.',
-        timeout: SnackBarContextModule.SNACK_BAR_TIME_OUT,
-      })
+    expect(mockShowErrorSnackBar).toHaveBeenNthCalledWith(1, {
+      message: 'Une erreur s’est produite pendant la réactivation.',
+      timeout: SnackBarContextModule.SNACK_BAR_TIME_OUT,
     })
   })
 
@@ -87,28 +88,22 @@ describe('<SuspendedAccountUponUserRequest />', () => {
     })
     render(reactQueryProviderHOC(<SuspendedAccountUponUserRequest />))
 
-    await act(async () => fireEvent.press(screen.getByText('Réactiver mon compte')))
+    await user.press(screen.getByText('Réactiver mon compte'))
 
-    await waitFor(() => {
-      expect(analytics.logAccountReactivation).toHaveBeenCalledWith(
-        'suspendedaccountuponuserrequest'
-      )
-    })
+    expect(analytics.logAccountReactivation).toHaveBeenCalledWith('suspendedaccountuponuserrequest')
   })
 
   it('should go to home page when clicking on "Retourner à l’accueil" button', async () => {
     render(reactQueryProviderHOC(<SuspendedAccountUponUserRequest />))
 
     const homeButton = screen.getByText('Retourner à l’accueil')
-    fireEvent.press(homeButton)
+    await user.press(homeButton)
 
-    await waitFor(() => {
-      expect(navigate).toHaveBeenNthCalledWith(
-        1,
-        navigateToHomeConfig.screen,
-        navigateToHomeConfig.params
-      )
-      expect(mockSignOut).toHaveBeenCalledTimes(1)
-    })
+    expect(navigate).toHaveBeenNthCalledWith(
+      1,
+      navigateToHomeConfig.screen,
+      navigateToHomeConfig.params
+    )
+    expect(mockSignOut).toHaveBeenCalledTimes(1)
   })
 })

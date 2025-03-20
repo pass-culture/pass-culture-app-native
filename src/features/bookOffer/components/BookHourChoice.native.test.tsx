@@ -6,7 +6,7 @@ import { mockOffer as mockBaseOffer } from 'features/bookOffer/fixtures/offer'
 import { stock1, stock2, stock3, stock4 } from 'features/bookOffer/fixtures/stocks'
 import { IBookingContext } from 'features/bookOffer/types'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
-import { fireEvent, render, screen } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 
 import { BookHourChoice } from './BookHourChoice'
 
@@ -47,6 +47,9 @@ jest.mock('features/offer/helpers/useHasEnoughCredit/useHasEnoughCredit', () => 
   useCreditForOffer: jest.fn(() => mockCreditOffer),
 }))
 
+const user = userEvent.setup()
+jest.useFakeTimers()
+
 describe('BookHourChoice when hour is already selected', () => {
   beforeEach(() => {
     mockUseBookingContext.mockReturnValueOnce({
@@ -61,12 +64,12 @@ describe('BookHourChoice when hour is already selected', () => {
     setFeatureFlags()
   })
 
-  it('should change step to Hour', () => {
+  it('should change step to Hour', async () => {
     render(<BookHourChoice />)
 
     const selectedHour = screen.getByText('20:00')
 
-    fireEvent.press(selectedHour)
+    await user.press(selectedHour)
 
     expect(mockDispatch).toHaveBeenCalledWith({ type: 'CHANGE_STEP', payload: Step.HOUR })
   })
@@ -100,12 +103,12 @@ describe('BookHourChoice', () => {
     expect(thirdStock).toHaveLength(1)
   })
 
-  it('should select an item when pressed', () => {
+  it('should select an item when pressed', async () => {
     render(<BookHourChoice />)
 
     // firstStock correspond to 2021-03-02 stock
     const firstStock = screen.getByTestId('HourChoice148409-label')
-    fireEvent.press(firstStock)
+    await user.press(firstStock)
 
     expect(mockDispatch).toHaveBeenCalledWith({ type: 'SELECT_STOCK', payload: 148409 })
   })
@@ -193,10 +196,10 @@ describe('BookHourChoice when there are several stocks', () => {
     expect(screen.getByText('épuisé')).toBeOnTheScreen()
   })
 
-  it('should set the hour selected when pressing hour item', () => {
+  it('should set the hour selected when pressing hour item', async () => {
     render(<BookHourChoice />)
 
-    fireEvent.press(screen.getByText('20h00'))
+    await user.press(screen.getByText('20h00'))
 
     expect(mockDispatch).toHaveBeenNthCalledWith(1, {
       type: 'SELECT_HOUR',
@@ -204,7 +207,7 @@ describe('BookHourChoice when there are several stocks', () => {
     })
   })
 
-  it('should set the stock selected when pressing hour item and there is only one stock', () => {
+  it('should set the stock selected when pressing hour item and there is only one stock', async () => {
     mockOffer = {
       ...mockOffer,
       stocks: [stock1],
@@ -212,7 +215,7 @@ describe('BookHourChoice when there are several stocks', () => {
 
     render(<BookHourChoice />)
 
-    fireEvent.press(screen.getByText('22h00'))
+    await user.press(screen.getByText('22h00'))
 
     expect(mockDispatch).toHaveBeenNthCalledWith(1, {
       type: 'SELECT_STOCK',
@@ -220,14 +223,14 @@ describe('BookHourChoice when there are several stocks', () => {
     })
   })
 
-  it('should not set the stock selected when pressing hour item and there are several stock', () => {
+  it('should not set the stock selected when pressing hour item and there are several stock', async () => {
     mockOffer = {
       ...mockOffer,
       stocks: [stock1, { ...stock1, price: 22000, priceCategoryLabel: 'Pelouse or' }],
     }
     render(<BookHourChoice />)
 
-    fireEvent.press(screen.getByText('20h00'))
+    await user.press(screen.getByText('20h00'))
 
     expect(mockDispatch).not.toHaveBeenCalledWith({
       type: 'SELECT_STOCK',
@@ -235,14 +238,14 @@ describe('BookHourChoice when there are several stocks', () => {
     })
   })
 
-  it('should set the quantity at 1 when pressing hour item and offer is not duo', () => {
+  it('should set the quantity at 1 when pressing hour item and offer is not duo', async () => {
     mockOffer = {
       ...mockOffer,
       isDuo: false,
     }
     render(<BookHourChoice />)
 
-    fireEvent.press(screen.getByText('20h00'))
+    await user.press(screen.getByText('20h00'))
 
     expect(mockDispatch).not.toHaveBeenCalledWith(1, {
       type: 'SELECT_QUANTITY',
@@ -250,10 +253,10 @@ describe('BookHourChoice when there are several stocks', () => {
     })
   })
 
-  it('should not set the quantity at 1 when pressing hour item and offer is duo', () => {
+  it('should not set the quantity at 1 when pressing hour item and offer is duo', async () => {
     render(<BookHourChoice />)
 
-    fireEvent.press(screen.getByText('20h00'))
+    await user.press(screen.getByText('20h00'))
 
     expect(mockDispatch).not.toHaveBeenCalledWith(1, {
       type: 'SELECT_QUANTITY',
@@ -296,9 +299,9 @@ describe('BookHourChoice when there is only one stock', () => {
     expect(screen.queryByTestId('HourChoice2023-04-01T20:00:00Z-label')).not.toBeOnTheScreen()
   })
 
-  it('should select the stock when pressing an hour item', () => {
+  it('should select the stock when pressing an hour item', async () => {
     render(<BookHourChoice />)
-    fireEvent.press(screen.getByTestId('HourChoice18758-label'))
+    await user.press(screen.getByTestId('HourChoice18758-label'))
 
     expect(mockDispatch).toHaveBeenCalledWith({ type: 'SELECT_STOCK', payload: stock1.id })
   })

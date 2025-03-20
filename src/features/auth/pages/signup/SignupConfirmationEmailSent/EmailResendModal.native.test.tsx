@@ -9,7 +9,7 @@ import { eventMonitoring } from 'libs/monitoring/services'
 import { MODAL_TO_SHOW_TIME } from 'tests/constants'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
+import { act, render, screen, userEvent, waitFor } from 'tests/utils'
 
 import { EmailResendModal } from './EmailResendModal'
 
@@ -29,6 +29,9 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
+const user = userEvent.setup()
+jest.useFakeTimers()
+
 describe('<EmailResendModal />', () => {
   it('should render correctly', async () => {
     renderEmailResendModal({})
@@ -40,10 +43,10 @@ describe('<EmailResendModal />', () => {
     expect(screen).toMatchSnapshot()
   })
 
-  it('should dismiss modal when close icon is pressed', () => {
+  it('should dismiss modal when close icon is pressed', async () => {
     renderEmailResendModal({})
 
-    fireEvent.press(screen.getByLabelText('Fermer la modale'))
+    await user.press(screen.getByLabelText('Fermer la modale'))
 
     expect(onDismissMock).toHaveBeenCalledTimes(1)
   })
@@ -56,7 +59,7 @@ describe('<EmailResendModal />', () => {
     })
 
     await act(async () => {
-      fireEvent.press(screen.getByLabelText('Demander un nouveau lien'))
+      user.press(screen.getByLabelText('Demander un nouveau lien'))
     })
 
     expect(analytics.logResendEmailValidation).toHaveBeenCalledTimes(1)
@@ -68,7 +71,7 @@ describe('<EmailResendModal />', () => {
       expect(screen.getByText('Demander un nouveau lien')).toBeEnabled()
     })
 
-    await act(async () => fireEvent.press(screen.getByText('Demander un nouveau lien')))
+    await act(async () => user.press(screen.getByText('Demander un nouveau lien')))
 
     expect(resendEmailValidationSpy).toHaveBeenCalledTimes(1)
   })
@@ -80,7 +83,7 @@ describe('<EmailResendModal />', () => {
       expect(screen.getByText('Demander un nouveau lien')).toBeEnabled()
     })
 
-    fireEvent.press(screen.getByText('Demander un nouveau lien'))
+    await user.press(screen.getByText('Demander un nouveau lien'))
 
     expect(
       await screen.findByText(
@@ -95,7 +98,7 @@ describe('<EmailResendModal />', () => {
       expect(screen.getByText('Demander un nouveau lien')).toBeEnabled()
     })
 
-    fireEvent.press(screen.getByText('Demander un nouveau lien'))
+    user.press(screen.getByText('Demander un nouveau lien'))
 
     expect(
       await screen.findByText(
@@ -110,7 +113,7 @@ describe('<EmailResendModal />', () => {
       expect(screen.getByText('Demander un nouveau lien')).toBeEnabled()
     })
 
-    fireEvent.press(screen.getByText('Demander un nouveau lien'))
+    user.press(screen.getByText('Demander un nouveau lien'))
 
     expect(
       await screen.findByText('Tu as dépassé le nombre de renvois autorisés.')
@@ -126,7 +129,7 @@ describe('<EmailResendModal />', () => {
       expect(screen.getByText('Demander un nouveau lien')).toBeEnabled()
     })
 
-    await act(async () => fireEvent.press(screen.getByText('Demander un nouveau lien')))
+    await act(async () => user.press(screen.getByText('Demander un nouveau lien')))
 
     expect(
       screen.queryByText(
@@ -166,7 +169,7 @@ describe('<EmailResendModal />', () => {
         expect(screen.getByText('Demander un nouveau lien')).toBeEnabled()
       })
 
-      await act(async () => fireEvent.press(screen.getByText('Demander un nouveau lien')))
+      await user.press(screen.getByText('Demander un nouveau lien'))
 
       expect(eventMonitoring.captureException).toHaveBeenCalledTimes(0)
     })
@@ -190,7 +193,7 @@ describe('<EmailResendModal />', () => {
         expect(screen.getByText('Demander un nouveau lien')).toBeEnabled()
       })
 
-      fireEvent.press(screen.getByText('Demander un nouveau lien'))
+      user.press(screen.getByText('Demander un nouveau lien'))
 
       await waitFor(() => {
         expect(eventMonitoring.captureException).toHaveBeenCalledWith(
