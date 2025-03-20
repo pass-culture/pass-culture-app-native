@@ -50,7 +50,7 @@ export const ButtonSecondary = styledButton(AppButton).attrs<BaseButtonProps>(
     Platform.OS === 'web'
       ? {
           ['&:disabled']: {
-            borderColor: theme.designSystem.color.border['brand-primary'],
+            borderColor: theme.designSystem.color.border.disabled,
           },
         }
       : {}

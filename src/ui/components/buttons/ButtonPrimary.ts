@@ -15,7 +15,7 @@ export const ButtonPrimary = styledButton(AppButton).attrs<BaseButtonProps>(
       Icon = styled(icon).attrs({
         color: disabled
           ? theme.designSystem.color.icon.disabled
-          : theme.designSystem.color.text.inverted, // TODO(PC-35256): Use theme.designSystem.color.icon.lockDefault from design system
+          : theme.designSystem.color.text.inverted, // TODO(PC-35256): Use theme.designSystem.color.icon.inverted from design system
         size:
           buttonHeight === 'extraSmall'
             ? theme.icons.sizes.extraSmall
