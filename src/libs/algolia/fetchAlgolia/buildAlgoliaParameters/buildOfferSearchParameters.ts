@@ -5,6 +5,7 @@ import {
   buildLocationParameterForSearch,
   BuildLocationParameterParams,
 } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildLocationParameter'
+import { buildTagFilters } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildTagFilters'
 import { SearchQueryParameters } from 'libs/algolia/types'
 
 import { buildFacetFilters } from './buildFacetFilters'
@@ -14,6 +15,7 @@ type Parameters = SearchQueryParameters & {
   objectIds?: string[]
   excludedObjectIds?: string[]
   aroundRadius?: number
+  shouldExcludeFutureOffers?: boolean
 }
 
 export const buildOfferSearchParameters = (
@@ -45,6 +47,7 @@ export const buildOfferSearchParameters = (
     timeRange = null,
     venue,
     gtls = [],
+    shouldExcludeFutureOffers = true,
   }: Parameters,
   buildLocationParameterParams: BuildLocationParameterParams,
   isUserUnderage: boolean,
@@ -90,5 +93,6 @@ export const buildOfferSearchParameters = (
     }),
     ...locationParameter,
     ...buildFilters({ excludedObjectIds }),
+    ...buildTagFilters({ shouldExcludeFutureOffers }),
   }
 }

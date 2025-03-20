@@ -36,6 +36,7 @@ describe('buildOfferSearchParameters', () => {
       aroundRadius: 'all',
       facetFilters: [['offer.isEducational:false']],
       numericFilters: [['offer.prices: 0 TO 300']],
+      tagFilters: '["-is_future"]',
     })
   })
 
@@ -54,6 +55,7 @@ describe('buildOfferSearchParameters', () => {
     expect(result).toEqual({
       facetFilters: [['offer.isEducational:false']],
       numericFilters: [['offer.prices: 0 TO 300']],
+      tagFilters: '["-is_future"]',
     })
   })
 
@@ -77,6 +79,7 @@ describe('buildOfferSearchParameters', () => {
       aroundRadius: 'all',
       facetFilters: [['offer.isEducational:false']],
       numericFilters: [['offer.prices: 0 TO 300'], ['offer.dates: 1682899200 TO 1682985599']],
+      tagFilters: '["-is_future"]',
     })
   })
 
@@ -97,6 +100,7 @@ describe('buildOfferSearchParameters', () => {
       aroundRadius: 'all',
       facetFilters: [['offer.isEducational:false'], ['offer.searchGroupNamev2:MUSIQUE']],
       numericFilters: [['offer.prices: 0 TO 300']],
+      tagFilters: '["-is_future"]',
     })
   })
 
@@ -117,6 +121,7 @@ describe('buildOfferSearchParameters', () => {
       aroundRadius: 'all',
       facetFilters: [['offer.isEducational:false']],
       numericFilters: [['offer.prices: 50 TO 300']],
+      tagFilters: '["-is_future"]',
     })
   })
 
@@ -150,6 +155,7 @@ describe('buildOfferSearchParameters', () => {
       aroundRadius: 10000,
       facetFilters: [['offer.isEducational:false']],
       numericFilters: [['offer.prices: 0 TO 300']],
+      tagFilters: '["-is_future"]',
     })
   })
 })
