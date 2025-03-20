@@ -15,6 +15,7 @@ type ThematicSearchQueryParams = {
   withRadius?: boolean
 }
 
+//TODO(PC-35271) - use already existing queryBuilders
 export const buildQueryHelper = ({
   indexName,
   userLocation,
