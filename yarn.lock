@@ -2009,24 +2009,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/helpers@npm:^7.12.5, @babel/helpers@npm:^7.24.4":
-  version: 7.24.4
-  resolution: "@babel/helpers@npm:7.24.4"
+"@babel/helpers@npm:^7.12.5, @babel/helpers@npm:^7.24.4, @babel/helpers@npm:^7.25.0":
+  version: 7.26.10
+  resolution: "@babel/helpers@npm:7.26.10"
   dependencies:
-    "@babel/template": ^7.24.0
-    "@babel/traverse": ^7.24.1
-    "@babel/types": ^7.24.0
-  checksum: ecd2dc0b3b32e24b97fa3bcda432dd3235b77c2be1e16eafc35b8ef8f6c461faa99796a8bc2431a408c98b4aabfd572c160e2b67ecea4c5c9dd3a8314a97994a
-  languageName: node
-  linkType: hard
-
-"@babel/helpers@npm:^7.25.0":
-  version: 7.25.0
-  resolution: "@babel/helpers@npm:7.25.0"
-  dependencies:
-    "@babel/template": ^7.25.0
-    "@babel/types": ^7.25.0
-  checksum: 739e3704ff41a30f5eaac469b553f4d3ab02be6ced083f5925851532dfbd9efc5c347728e77b754ed0b262a4e5e384e60932a62c192d338db7e4b7f3adf9f4a7
+    "@babel/template": ^7.26.9
+    "@babel/types": ^7.26.10
+  checksum: daa3689024a4fc5e024fea382915c6fb0fde15cf1b2f6093435725c79edccbef7646d4a656b199c046ff5c61846d1b3876d6096b7bf0635823de6aaff2a1e1a4
   languageName: node
   linkType: hard
 
