@@ -47,6 +47,7 @@ type Props = {
   likesCount?: number
   chroniclesCount?: number
   distance?: string | null
+  headlineOffersCount?: number
 }
 
 export const OfferBody: FunctionComponent<Props> = ({
@@ -56,6 +57,7 @@ export const OfferBody: FunctionComponent<Props> = ({
   likesCount,
   chroniclesCount,
   distance,
+  headlineOffersCount,
 }) => {
   const { navigate } = useNavigation<UseNavigationType>()
 
@@ -153,7 +155,11 @@ export const OfferBody: FunctionComponent<Props> = ({
 
         {prices ? <TypoDS.Title3 {...getHeadingAttrs(2)}>{displayedPrice}</TypoDS.Title3> : null}
 
-        <OfferReactionSection likesCount={likesCount} chroniclesCount={chroniclesCount} />
+        <OfferReactionSection
+          likesCount={likesCount}
+          chroniclesCount={chroniclesCount}
+          headlineOffersCount={headlineOffersCount}
+        />
 
         <GroupWithSeparator
           showTopComponent={shouldUseIsOpenToPublic ? isOpenToPublicVenue : offer.venue.isPermanent}

@@ -77,6 +77,7 @@ export type OfferContentProps = {
   searchGroupList: SearchGroupResponseModelv2[]
   subcategory: Subcategory
   chronicles?: ChronicleCardData[]
+  headlineOffersCount?: number
   defaultReaction?: ReactionTypeEnum | null
   onReactionButtonPress?: () => void
 }

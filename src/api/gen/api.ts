@@ -2529,6 +2529,11 @@ export interface OfferResponse {
    * @type {boolean}
    * @memberof OfferResponse
    */
+  isHeadline: boolean
+  /**
+   * @type {boolean}
+   * @memberof OfferResponse
+   */
   isReleased: boolean
   /**
    * @type {boolean}
@@ -2661,6 +2666,11 @@ export interface OfferResponseV2 {
    * @memberof OfferResponseV2
    */
   isForbiddenToUnderage: boolean
+  /**
+   * @type {boolean}
+   * @memberof OfferResponseV2
+   */
+  isHeadline: boolean
   /**
    * @type {boolean}
    * @memberof OfferResponseV2

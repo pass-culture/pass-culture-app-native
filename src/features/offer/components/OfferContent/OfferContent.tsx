@@ -17,6 +17,7 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
   subcategory,
   chronicles,
   defaultReaction,
+  headlineOffersCount,
   onReactionButtonPress,
 }) => {
   const { navigate } = useNavigation<UseNavigationType>()
@@ -33,6 +34,7 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
         onOfferPreviewPress={handlePress}
         BodyWrapper={BodyWrapper}
         chronicles={chronicles}
+        headlineOffersCount={headlineOffersCount}
         subcategory={subcategory}
         defaultReaction={defaultReaction}
         onReactionButtonPress={onReactionButtonPress}

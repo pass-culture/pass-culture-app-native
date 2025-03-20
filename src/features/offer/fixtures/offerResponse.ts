@@ -24,6 +24,7 @@ export const offerResponseSnap = toMutable({
   isExpired: false,
   isForbiddenToUnderage: false,
   isSoldOut: false,
+  isHeadline: false,
   reactionsCount: {
     likes: 1,
   },

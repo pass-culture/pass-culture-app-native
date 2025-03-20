@@ -40,6 +40,7 @@ const mergeOfferData =
       likes: 0,
     },
     chronicles: [],
+    isHeadline: false,
     ...(prevData ?? {}),
   })
 
