@@ -1,7 +1,7 @@
 import colorAlpha from 'color-alpha'
 import React, { memo } from 'react'
 import LinearGradient from 'react-native-linear-gradient'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { getSpacing } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
@@ -29,8 +29,12 @@ const CreditProgressBarComponent: React.FC<CreditProgressBarProps> = ({
   progress,
   height = 'normal',
 }) => {
-  // @ts-expect-error: because of noUncheckedIndexedAccess
-  const shadowColors = [colorAlpha(colors[0], 0.1), colorAlpha(colors[1], 0.1)]
+  const theme = useTheme()
+
+  const shadowColors = [
+    colorAlpha(colors[0] || theme.colors.primary, 0.1),
+    colorAlpha(colors[1] || theme.colors.secondary, 0.1),
+  ]
 
   return (
     <Container>
