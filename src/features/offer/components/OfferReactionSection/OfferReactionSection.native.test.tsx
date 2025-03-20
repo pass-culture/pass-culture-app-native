@@ -26,7 +26,7 @@ describe('<OfferReactionSection />', () => {
       expect(await screen.findByText('1 j’aime')).toBeOnTheScreen()
     })
 
-    it('should not display likes information when not exists', async () => {
+    it('should not display likes information when not exists', () => {
       renderOfferReactionSection({ chroniclesCount: 1 })
 
       expect(screen.queryByTestId('likesCounterIcon')).not.toBeOnTheScreen()
@@ -52,7 +52,7 @@ describe('<OfferReactionSection />', () => {
       expect(screen.getByTestId('headlineOffersCounterIcon')).toBeOnTheScreen()
     })
 
-    it('should not display headline offers count when not exists', async () => {
+    it('should not display headline offers count when not exists', () => {
       renderOfferReactionSection({ likesCount: 3 })
 
       expect(screen.queryByTestId('headlineOffersCounterIcon')).not.toBeOnTheScreen()
