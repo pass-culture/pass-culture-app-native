@@ -1,7 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<UTMParameters /> should render correctly 1`] = `
-[
+<View
+  style={
+    [
+      {
+        "backgroundColor": "#ffffff",
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+      },
+    ]
+  }
+>
   <View
     accessibilityRole="header"
     style={
@@ -179,30 +190,18 @@ exports[`<UTMParameters /> should render correctly 1`] = `
         />
       </View>
     </View>
-  </View>,
+  </View>
   <View
     height={65}
     style={
       [
         {
-          "backgroundColor": "white",
           "height": 65,
         },
       ]
     }
-  />,
-  <RCTScrollView
-    contentContainerStyle={
-      {
-        "backgroundColor": "#ffffff",
-      }
-    }
-    style={
-      [
-        {},
-      ]
-    }
-  >
+  />
+  <RCTScrollView>
     <View>
       <View
         flexDirection="column"
@@ -364,6 +363,6 @@ exports[`<UTMParameters /> should render correctly 1`] = `
         }
       />
     </View>
-  </RCTScrollView>,
-]
+  </RCTScrollView>
+</View>
 `;

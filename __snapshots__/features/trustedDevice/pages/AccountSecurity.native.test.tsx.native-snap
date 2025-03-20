@@ -1,7 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<AccountSecurity/> with route params when user is connected and has a password should match snapshot with valid token 1`] = `
-[
+<View
+  style={
+    [
+      {
+        "backgroundColor": "#ffffff",
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+      },
+    ]
+  }
+>
   <View
     accessibilityRole="header"
     style={
@@ -94,7 +105,7 @@ exports[`<AccountSecurity/> with route params when user is connected and has a p
         />
       </View>
     </View>
-  </View>,
+  </View>
   <View
     bottom={16}
     style={
@@ -544,7 +555,7 @@ exports[`<AccountSecurity/> with route params when user is connected and has a p
               },
               {
                 "alignItems": "center",
-                "backgroundColor": "transparent",
+                "backgroundColor": "#ffffff",
                 "borderRadius": 24,
                 "flexDirection": "row",
                 "justifyContent": "center",
@@ -717,12 +728,23 @@ exports[`<AccountSecurity/> with route params when user is connected and has a p
         </View>
       </View>
     </View>
-  </View>,
-]
+  </View>
+</View>
 `;
 
 exports[`<AccountSecurity/> with route params when user is connected and has no password (sso) should show alternative wording 1`] = `
-[
+<View
+  style={
+    [
+      {
+        "backgroundColor": "#ffffff",
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+      },
+    ]
+  }
+>
   <View
     accessibilityRole="header"
     style={
@@ -815,7 +837,7 @@ exports[`<AccountSecurity/> with route params when user is connected and has no 
         />
       </View>
     </View>
-  </View>,
+  </View>
   <View
     bottom={16}
     style={
@@ -1348,12 +1370,23 @@ exports[`<AccountSecurity/> with route params when user is connected and has no 
         </View>
       </View>
     </View>
-  </View>,
-]
+  </View>
+</View>
 `;
 
 exports[`<AccountSecurity/> without route params should match snapshot when no token 1`] = `
-[
+<View
+  style={
+    [
+      {
+        "backgroundColor": "#ffffff",
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+      },
+    ]
+  }
+>
   <View
     accessibilityRole="header"
     style={
@@ -1446,7 +1479,7 @@ exports[`<AccountSecurity/> without route params should match snapshot when no t
         />
       </View>
     </View>
-  </View>,
+  </View>
   <View
     bottom={16}
     style={
@@ -1896,7 +1929,7 @@ exports[`<AccountSecurity/> without route params should match snapshot when no t
               },
               {
                 "alignItems": "center",
-                "backgroundColor": "transparent",
+                "backgroundColor": "#ffffff",
                 "borderRadius": 24,
                 "flexDirection": "row",
                 "justifyContent": "center",
@@ -2069,6 +2102,6 @@ exports[`<AccountSecurity/> without route params should match snapshot when no t
         </View>
       </View>
     </View>
-  </View>,
-]
+  </View>
+</View>
 `;

@@ -13,8 +13,8 @@ export const ButtonTertiaryNeutralInfo = styledButton(AppButton).attrs<BaseButto
     if (icon) {
       Icon = styled(icon).attrs({
         color: disabled
-          ? theme.buttons.disabled.tertiaryNeutralInfo.iconColor
-          : theme.buttons.tertiaryNeutralInfo.iconColor,
+          ? theme.designSystem.color.icon.disabled
+          : theme.designSystem.color.icon.subtle,
         size: theme.buttons.tertiaryNeutralInfo.iconSize,
       })``
     }
@@ -22,8 +22,8 @@ export const ButtonTertiaryNeutralInfo = styledButton(AppButton).attrs<BaseButto
     const Title = styled(TypoDS.Button)({
       maxWidth: '100%',
       color: disabled
-        ? theme.buttons.disabled.tertiaryNeutralInfo.textColor
-        : theme.buttons.tertiaryNeutralInfo.textColor,
+        ? theme.designSystem.color.text.disabled
+        : theme.designSystem.color.text.subtle,
       fontSize: textSize,
     })
 
@@ -32,11 +32,11 @@ export const ButtonTertiaryNeutralInfo = styledButton(AppButton).attrs<BaseButto
       loadingIndicator: LoadingIndicator,
       icon: Icon,
       title: Title,
-      hoverUnderlineColor: theme.buttons.tertiaryNeutralInfo.textColor,
+      hoverUnderlineColor: theme.designSystem.color.text.subtle,
     }
   }
 )(({ theme }) => ({
-  backgroundColor: theme.buttons.tertiaryNeutralInfo.backgroundColor,
+  backgroundColor: theme.designSystem.color.background.default,
 }))
 
 const LoadingIndicator = styled(InitialLoadingIndicator).attrs(({ theme }) => ({

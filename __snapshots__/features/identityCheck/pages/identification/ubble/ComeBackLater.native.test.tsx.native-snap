@@ -1,7 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`ComeBackLater should render correctly 1`] = `
-[
+<View
+  style={
+    [
+      {
+        "backgroundColor": "#ffffff",
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+      },
+    ]
+  }
+>
   <View
     accessibilityRole="header"
     style={
@@ -166,7 +177,7 @@ exports[`ComeBackLater should render correctly 1`] = `
         />
       </View>
     </View>
-  </View>,
+  </View>
   <View
     bottom={16}
     style={
@@ -434,6 +445,6 @@ exports[`ComeBackLater should render correctly 1`] = `
         </View>
       </View>
     </View>
-  </View>,
-]
+  </View>
+</View>
 `;

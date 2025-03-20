@@ -19,7 +19,7 @@ exports[`<SetBirthday /> no touch device should render correctly 1`] = `
   padding-right: 20px;
   min-height: 40px;
   width: 100%;
-  background-color: #F1F1F4;
+  background-color: #f1f1f4;
   max-width: 500px;
   cursor: pointer;
   outline: none;
@@ -52,7 +52,7 @@ exports[`<SetBirthday /> no touch device should render correctly 1`] = `
 }
 
 .c9:disabled {
-  background-color: #F1F1F4;
+  background-color: #f1f1f4;
 }
 
 .c0 {
@@ -1476,7 +1476,7 @@ exports[`<SetBirthday /> touch device should render correctly 1`] = `
   padding-right: 20px;
   min-height: 40px;
   width: 100%;
-  background-color: #F1F1F4;
+  background-color: #f1f1f4;
   max-width: 500px;
   cursor: pointer;
   outline: none;
@@ -1509,7 +1509,7 @@ exports[`<SetBirthday /> touch device should render correctly 1`] = `
 }
 
 .c3:disabled {
-  background-color: #F1F1F4;
+  background-color: #f1f1f4;
 }
 
 .c0 {

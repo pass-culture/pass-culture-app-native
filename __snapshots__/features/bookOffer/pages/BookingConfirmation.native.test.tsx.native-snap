@@ -1,7 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<BookingConfirmation /> should render correctly 1`] = `
-[
+<View
+  style={
+    [
+      {
+        "backgroundColor": "#ffffff",
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+      },
+    ]
+  }
+>
   <View
     accessibilityRole="header"
     style={
@@ -94,7 +105,7 @@ exports[`<BookingConfirmation /> should render correctly 1`] = `
         />
       </View>
     </View>
-  </View>,
+  </View>
   <View
     bottom={16}
     style={
@@ -343,7 +354,7 @@ Tu peux retrouver toutes les informations concernant ta réservation sur l’app
               },
               {
                 "alignItems": "center",
-                "backgroundColor": "transparent",
+                "backgroundColor": "#ffffff",
                 "borderRadius": 24,
                 "flexDirection": "row",
                 "justifyContent": "center",
@@ -515,6 +526,6 @@ Tu peux retrouver toutes les informations concernant ta réservation sur l’app
         </View>
       </View>
     </View>
-  </View>,
-]
+  </View>
+</View>
 `;

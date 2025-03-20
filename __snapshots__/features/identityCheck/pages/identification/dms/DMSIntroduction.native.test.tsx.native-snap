@@ -1,7 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`DMSIntroduction foreign version should render correctly 1`] = `
-[
+<View
+  style={
+    [
+      {
+        "backgroundColor": "#ffffff",
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+      },
+    ]
+  }
+>
   <View
     accessibilityRole="header"
     style={
@@ -166,7 +177,7 @@ exports[`DMSIntroduction foreign version should render correctly 1`] = `
         />
       </View>
     </View>
-  </View>,
+  </View>
   <View
     bottom={16}
     style={
@@ -718,12 +729,23 @@ exports[`DMSIntroduction foreign version should render correctly 1`] = `
         </View>
       </View>
     </View>
-  </View>,
-]
+  </View>
+</View>
 `;
 
 exports[`DMSIntroduction french version should render correctly 1`] = `
-[
+<View
+  style={
+    [
+      {
+        "backgroundColor": "#ffffff",
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+      },
+    ]
+  }
+>
   <View
     accessibilityRole="header"
     style={
@@ -888,7 +910,7 @@ exports[`DMSIntroduction french version should render correctly 1`] = `
         />
       </View>
     </View>
-  </View>,
+  </View>
   <View
     bottom={16}
     style={
@@ -1373,6 +1395,6 @@ exports[`DMSIntroduction french version should render correctly 1`] = `
         </View>
       </View>
     </View>
-  </View>,
-]
+  </View>
+</View>
 `;

@@ -108,7 +108,7 @@ exports[`<EduConnectValidation /> should render EduConnectValidation component c
 }
 
 .c3:disabled {
-  background-color: #F1F1F4;
+  background-color: #f1f1f4;
 }
 
 <div>

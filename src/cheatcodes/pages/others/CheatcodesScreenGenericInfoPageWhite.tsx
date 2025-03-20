@@ -22,10 +22,12 @@ export const CheatcodesScreenGenericInfoPageWhite = () => {
       buttonPrimary={{
         wording: 'ButtonPrimary',
         navigateTo: { screen: 'CheatcodesNavigationGenericPages' },
+        icon: PlainArrowPrevious,
       }}
       buttonSecondary={{
         wording: 'ButtonSecondary',
         onPress: navigateToCheatcodesNavigationGenericPages,
+        icon: PlainArrowPrevious,
       }}
       buttonTertiary={{
         wording: 'ButtonTertiary',

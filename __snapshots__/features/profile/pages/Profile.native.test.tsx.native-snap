@@ -100,7 +100,7 @@ exports[`Profile component should render correctly 1`] = `
                       "width": "100%",
                     },
                     {
-                      "backgroundColor": "transparent",
+                      "backgroundColor": "#ffffff",
                     },
                   ],
                   {
@@ -126,7 +126,7 @@ exports[`Profile component should render correctly 1`] = `
                   style={
                     [
                       {
-                        "color": "#696A6F",
+                        "color": "#696a6f",
                         "fontFamily": "Montserrat-Bold",
                         "fontSize": 16,
                         "lineHeight": 25.6,

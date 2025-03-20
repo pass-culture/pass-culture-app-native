@@ -2254,7 +2254,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                   },
                   {
                     "alignItems": "center",
-                    "backgroundColor": "#F1F1F4",
+                    "backgroundColor": "#f1f1f4",
                     "borderRadius": 24,
                     "flexDirection": "row",
                     "justifyContent": "center",
@@ -2291,7 +2291,7 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
                 style={
                   [
                     {
-                      "color": "#696A6F",
+                      "color": "#696a6f",
                       "fontFamily": "Montserrat-Bold",
                       "fontSize": 16,
                       "lineHeight": 25.6,
@@ -4631,7 +4631,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                   },
                   {
                     "alignItems": "center",
-                    "backgroundColor": "#F1F1F4",
+                    "backgroundColor": "#f1f1f4",
                     "borderRadius": 24,
                     "flexDirection": "row",
                     "justifyContent": "center",
@@ -4668,7 +4668,7 @@ exports[`NotificationsSettings should render correctly when user is not logged i
                 style={
                   [
                     {
-                      "color": "#696A6F",
+                      "color": "#696a6f",
                       "fontFamily": "Montserrat-Bold",
                       "fontSize": 16,
                       "lineHeight": 25.6,

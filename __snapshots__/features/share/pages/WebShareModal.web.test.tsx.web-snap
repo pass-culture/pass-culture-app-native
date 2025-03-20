@@ -198,7 +198,7 @@ exports[`<WebShareModal/> should render correctly when shown 1`] = `
 }
 
 .c6:disabled {
-  background-color: #F1F1F4;
+  background-color: #f1f1f4;
 }
 
 .c1 {

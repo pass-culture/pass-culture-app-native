@@ -775,7 +775,7 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
                     },
                     {
                       "alignItems": "center",
-                      "backgroundColor": "#F1F1F4",
+                      "backgroundColor": "#f1f1f4",
                       "borderRadius": 24,
                       "flexDirection": "row",
                       "justifyContent": "center",
@@ -812,7 +812,7 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
                   style={
                     [
                       {
-                        "color": "#696A6F",
+                        "color": "#696a6f",
                         "fontFamily": "Montserrat-Bold",
                         "fontSize": 16,
                         "lineHeight": 25.6,

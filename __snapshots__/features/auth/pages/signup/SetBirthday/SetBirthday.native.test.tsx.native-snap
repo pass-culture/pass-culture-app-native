@@ -303,7 +303,7 @@ exports[`<SetBirthday /> should render correctly 1`] = `
             },
             {
               "alignItems": "center",
-              "backgroundColor": "#F1F1F4",
+              "backgroundColor": "#f1f1f4",
               "borderRadius": 24,
               "flexDirection": "row",
               "justifyContent": "center",
@@ -340,7 +340,7 @@ exports[`<SetBirthday /> should render correctly 1`] = `
           style={
             [
               {
-                "color": "#696A6F",
+                "color": "#696a6f",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 16,
                 "lineHeight": 25.6,
@@ -696,7 +696,7 @@ exports[`<SetBirthday /> should render correctly when account creation token and
             },
             {
               "alignItems": "center",
-              "backgroundColor": "#F1F1F4",
+              "backgroundColor": "#f1f1f4",
               "borderRadius": 24,
               "flexDirection": "row",
               "justifyContent": "center",
@@ -733,7 +733,7 @@ exports[`<SetBirthday /> should render correctly when account creation token and
           style={
             [
               {
-                "color": "#696A6F",
+                "color": "#696a6f",
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 16,
                 "lineHeight": 25.6,

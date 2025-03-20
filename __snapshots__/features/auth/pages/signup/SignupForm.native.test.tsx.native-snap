@@ -567,7 +567,7 @@ exports[`Signup Form For each step should render correctly for step 1/5 1`] = `
                 },
                 {
                   "alignItems": "center",
-                  "backgroundColor": "#F1F1F4",
+                  "backgroundColor": "#f1f1f4",
                   "borderRadius": 24,
                   "flexDirection": "row",
                   "justifyContent": "center",
@@ -604,7 +604,7 @@ exports[`Signup Form For each step should render correctly for step 1/5 1`] = `
               style={
                 [
                   {
-                    "color": "#696A6F",
+                    "color": "#696a6f",
                     "fontFamily": "Montserrat-Bold",
                     "fontSize": 16,
                     "lineHeight": 25.6,
@@ -1781,7 +1781,7 @@ exports[`Signup Form For each step should render correctly for step 2/5 1`] = `
                 },
                 {
                   "alignItems": "center",
-                  "backgroundColor": "#F1F1F4",
+                  "backgroundColor": "#f1f1f4",
                   "borderRadius": 24,
                   "flexDirection": "row",
                   "justifyContent": "center",
@@ -1818,7 +1818,7 @@ exports[`Signup Form For each step should render correctly for step 2/5 1`] = `
               style={
                 [
                   {
-                    "color": "#696A6F",
+                    "color": "#696a6f",
                     "fontFamily": "Montserrat-Bold",
                     "fontSize": 16,
                     "lineHeight": 25.6,
@@ -2518,7 +2518,7 @@ exports[`Signup Form For each step should render correctly for step 3/5 1`] = `
                   },
                   {
                     "alignItems": "center",
-                    "backgroundColor": "#F1F1F4",
+                    "backgroundColor": "#f1f1f4",
                     "borderRadius": 24,
                     "flexDirection": "row",
                     "justifyContent": "center",
@@ -2555,7 +2555,7 @@ exports[`Signup Form For each step should render correctly for step 3/5 1`] = `
                 style={
                   [
                     {
-                      "color": "#696A6F",
+                      "color": "#696a6f",
                       "fontFamily": "Montserrat-Bold",
                       "fontSize": 16,
                       "lineHeight": 25.6,
@@ -3497,7 +3497,7 @@ exports[`Signup Form For each step should render correctly for step 4/5 1`] = `
                 },
                 {
                   "alignItems": "center",
-                  "backgroundColor": "#F1F1F4",
+                  "backgroundColor": "#f1f1f4",
                   "borderRadius": 24,
                   "flexDirection": "row",
                   "justifyContent": "center",
@@ -3534,7 +3534,7 @@ exports[`Signup Form For each step should render correctly for step 4/5 1`] = `
               style={
                 [
                   {
-                    "color": "#696A6F",
+                    "color": "#696a6f",
                     "fontFamily": "Montserrat-Bold",
                     "fontSize": 16,
                     "lineHeight": 25.6,

@@ -1,7 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`SuspendAccountConfirmationWithoutAuthentication should render correctly 1`] = `
-[
+<View
+  style={
+    [
+      {
+        "backgroundColor": "#ffffff",
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+      },
+    ]
+  }
+>
   <View
     accessibilityRole="header"
     style={
@@ -159,7 +170,7 @@ exports[`SuspendAccountConfirmationWithoutAuthentication should render correctly
         />
       </View>
     </View>
-  </View>,
+  </View>
   <View
     bottom={16}
     style={
@@ -823,6 +834,6 @@ exports[`SuspendAccountConfirmationWithoutAuthentication should render correctly
         </View>
       </View>
     </View>
-  </View>,
-]
+  </View>
+</View>
 `;

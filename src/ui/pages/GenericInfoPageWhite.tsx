@@ -18,6 +18,7 @@ import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouch
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { ExternalNavigationProps, InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Page } from 'ui/pages/Page'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { AccessibleIcon, AccessibleRectangleIcon } from 'ui/svg/icons/types'
 import { getSpacing, Spacer, TypoDS } from 'ui/theme'
@@ -87,7 +88,7 @@ export const GenericInfoPageWhite: React.FunctionComponent<Props> = ({
   const animationRef = usePartialLottieAnimation(animation)
 
   return (
-    <React.Fragment>
+    <Page>
       <Header
         shouldDisplayBackButton={withGoBack}
         RightButton={<SkipButton withSkipAction={withSkipAction} />}
@@ -122,6 +123,7 @@ export const GenericInfoPageWhite: React.FunctionComponent<Props> = ({
               onPress={buttonPrimary.onPress}
               isLoading={buttonPrimary.isLoading}
               disabled={buttonPrimary.disabled}
+              icon={buttonPrimary.icon}
             />
           ) : null}
 
@@ -134,6 +136,7 @@ export const GenericInfoPageWhite: React.FunctionComponent<Props> = ({
               onBeforeNavigate={buttonPrimary.onBeforeNavigate}
               isLoading={buttonPrimary.isLoading}
               disabled={buttonPrimary.disabled}
+              icon={buttonPrimary.icon}
             />
           ) : null}
 
@@ -155,8 +158,9 @@ export const GenericInfoPageWhite: React.FunctionComponent<Props> = ({
               key={2}
               wording={buttonSecondary.wording}
               onPress={buttonSecondary.onPress}
-              isLoading={buttonPrimary.isLoading}
-              disabled={buttonPrimary.disabled}
+              isLoading={buttonSecondary.isLoading}
+              disabled={buttonSecondary.disabled}
+              icon={buttonSecondary.icon}
             />
           ) : null}
 
@@ -167,8 +171,9 @@ export const GenericInfoPageWhite: React.FunctionComponent<Props> = ({
               wording={buttonSecondary.wording}
               navigateTo={buttonSecondary.navigateTo}
               onBeforeNavigate={buttonSecondary.onBeforeNavigate}
-              isLoading={buttonPrimary.isLoading}
-              disabled={buttonPrimary.disabled}
+              isLoading={buttonSecondary.isLoading}
+              disabled={buttonSecondary.disabled}
+              icon={buttonSecondary.icon}
             />
           ) : null}
 
@@ -224,7 +229,7 @@ export const GenericInfoPageWhite: React.FunctionComponent<Props> = ({
         </ButtonContainer>
         {isDesktopViewport ? <Spacer.Flex flex={1} /> : null}
       </Container>
-    </React.Fragment>
+    </Page>
   )
 }
 

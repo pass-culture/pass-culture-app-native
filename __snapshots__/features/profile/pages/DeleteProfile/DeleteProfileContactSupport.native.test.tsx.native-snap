@@ -1,7 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`DeleteProfileContactSupport should render correctly 1`] = `
-[
+<View
+  style={
+    [
+      {
+        "backgroundColor": "#ffffff",
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+      },
+    ]
+  }
+>
   <View
     accessibilityRole="header"
     style={
@@ -166,7 +177,7 @@ exports[`DeleteProfileContactSupport should render correctly 1`] = `
         />
       </View>
     </View>
-  </View>,
+  </View>
   <View
     bottom={16}
     style={
@@ -396,6 +407,36 @@ exports[`DeleteProfileContactSupport should render correctly 1`] = `
             ]
           }
         >
+          <View
+            style={
+              [
+                {
+                  "flexDirection": "row",
+                  "flexShrink": 0,
+                },
+              ]
+            }
+          >
+            <View
+              height={24}
+              testID="button-icon-left"
+              width={24}
+            >
+              <Text>
+                button-icon-left-SVG-Mock
+              </Text>
+            </View>
+            <View
+              numberOfSpaces={2}
+              style={
+                [
+                  {
+                    "width": 8,
+                  },
+                ]
+              }
+            />
+          </View>
           <Text
             adjustsFontSizeToFit={false}
             numberOfLines={1}
@@ -533,6 +574,6 @@ exports[`DeleteProfileContactSupport should render correctly 1`] = `
         </View>
       </View>
     </View>
-  </View>,
-]
+  </View>
+</View>
 `;

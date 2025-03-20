@@ -1,7 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`CulturalSurveyThanksPage page When FF is disabled should render the page with correct layout and content 1`] = `
-[
+<View
+  style={
+    [
+      {
+        "backgroundColor": "#ffffff",
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+      },
+    ]
+  }
+>
   <View
     accessibilityRole="header"
     style={
@@ -94,7 +105,7 @@ exports[`CulturalSurveyThanksPage page When FF is disabled should render the pag
         />
       </View>
     </View>
-  </View>,
+  </View>
   <View
     bottom={16}
     style={
@@ -304,12 +315,23 @@ exports[`CulturalSurveyThanksPage page When FF is disabled should render the pag
         </View>
       </View>
     </View>
-  </View>,
-]
+  </View>
+</View>
 `;
 
 exports[`CulturalSurveyThanksPage page When FF is enabled should render the page with correct layout and content 1`] = `
-[
+<View
+  style={
+    [
+      {
+        "backgroundColor": "#ffffff",
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+      },
+    ]
+  }
+>
   <View
     accessibilityRole="header"
     style={
@@ -402,7 +424,7 @@ exports[`CulturalSurveyThanksPage page When FF is enabled should render the page
         />
       </View>
     </View>
-  </View>,
+  </View>
   <View
     bottom={16}
     style={
@@ -612,6 +634,6 @@ exports[`CulturalSurveyThanksPage page When FF is enabled should render the page
         </View>
       </View>
     </View>
-  </View>,
-]
+  </View>
+</View>
 `;
