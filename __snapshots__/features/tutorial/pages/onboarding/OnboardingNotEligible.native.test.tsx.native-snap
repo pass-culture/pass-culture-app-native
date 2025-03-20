@@ -1,7 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`OnboardingNotEligible should render correctly 1`] = `
-[
+<View
+  style={
+    [
+      {
+        "backgroundColor": "#ffffff",
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+      },
+    ]
+  }
+>
   <View
     accessibilityRole="header"
     style={
@@ -124,7 +135,7 @@ exports[`OnboardingNotEligible should render correctly 1`] = `
             style={
               {
                 "alignItems": "center",
-                "backgroundColor": "transparent",
+                "backgroundColor": "#ffffff",
                 "borderRadius": 0,
                 "borderWidth": 0,
                 "flexDirection": "row",
@@ -159,7 +170,7 @@ exports[`OnboardingNotEligible should render correctly 1`] = `
                 style={
                   [
                     {
-                      "color": "#696A6F",
+                      "color": "#696a6f",
                       "fontFamily": "Montserrat-Bold",
                       "fontSize": 16,
                       "lineHeight": 25.6,
@@ -175,7 +186,7 @@ exports[`OnboardingNotEligible should render correctly 1`] = `
         </View>
       </View>
     </View>
-  </View>,
+  </View>
   <View
     bottom={16}
     style={
@@ -408,7 +419,7 @@ exports[`OnboardingNotEligible should render correctly 1`] = `
         style={
           {
             "alignItems": "center",
-            "backgroundColor": "transparent",
+            "backgroundColor": "#ffffff",
             "borderColor": "#eb0055",
             "borderRadius": 24,
             "borderStyle": "solid",
@@ -458,6 +469,6 @@ exports[`OnboardingNotEligible should render correctly 1`] = `
         </View>
       </View>
     </View>
-  </View>,
-]
+  </View>
+</View>
 `;

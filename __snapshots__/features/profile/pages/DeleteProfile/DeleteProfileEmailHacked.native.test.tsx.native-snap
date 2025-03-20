@@ -1,7 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`DeleteProfileEmailHacked should render correctly 1`] = `
-[
+<View
+  style={
+    [
+      {
+        "backgroundColor": "#ffffff",
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+      },
+    ]
+  }
+>
   <View
     accessibilityRole="header"
     style={
@@ -166,7 +177,7 @@ exports[`DeleteProfileEmailHacked should render correctly 1`] = `
         />
       </View>
     </View>
-  </View>,
+  </View>
   <View
     bottom={16}
     style={
@@ -478,7 +489,7 @@ exports[`DeleteProfileEmailHacked should render correctly 1`] = `
               },
               {
                 "alignItems": "center",
-                "backgroundColor": "transparent",
+                "backgroundColor": "#ffffff",
                 "borderRadius": 24,
                 "flexDirection": "row",
                 "justifyContent": "center",
@@ -651,6 +662,6 @@ exports[`DeleteProfileEmailHacked should render correctly 1`] = `
         </View>
       </View>
     </View>
-  </View>,
-]
+  </View>
+</View>
 `;

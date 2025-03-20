@@ -10,10 +10,10 @@ import { TypoDS } from 'ui/theme'
 export const ButtonSecondary = styledButton(AppButton).attrs<BaseButtonProps>(
   ({ icon, disabled, textSize, theme, color, ...rest }) => {
     let Icon
-    const defaultColor = color ?? theme.buttons.secondary.iconColor
+    const defaultColor = color ?? theme.designSystem.color.icon['brand-primary']
     if (icon) {
       Icon = styled(icon).attrs({
-        color: disabled ? theme.buttons.disabled.secondary.iconColor : defaultColor,
+        color: disabled ? theme.designSystem.color.icon.disabled : defaultColor,
         size: theme.buttons.secondary.iconSize,
       })``
     }
@@ -21,8 +21,8 @@ export const ButtonSecondary = styledButton(AppButton).attrs<BaseButtonProps>(
     const Title = styled(TypoDS.Button)({
       maxWidth: '100%',
       color: disabled
-        ? theme.buttons.disabled.secondary.textColor
-        : color ?? theme.buttons.secondary.textColor,
+        ? theme.designSystem.color.text.disabled
+        : color ?? theme.designSystem.color.text['brand-primary'],
       fontSize: textSize,
     })
 
@@ -31,15 +31,16 @@ export const ButtonSecondary = styledButton(AppButton).attrs<BaseButtonProps>(
       icon: Icon,
       title: Title,
       loadingIndicator: LoadingIndicator,
-      backgroundColor: theme.buttons.secondary.backgroundColor,
-      hoverUnderlineColor: color ?? theme.buttons.secondary.textColor,
+      backgroundColor: theme.designSystem.color.background.default,
+      hoverUnderlineColor: color ?? theme.designSystem.color.text['brand-primary'],
     }
   }
 )(({ theme, isLoading, disabled, color }) => {
   const borderWidth = theme.buttons.secondary.borderWidth
-  let borderColor: string = color ?? theme.buttons.secondary.borderColor
+  let borderColor: string = color ?? theme.designSystem.color.border['brand-primary']
 
   if (isLoading) {
+    // TODO(PC-35256): Use theme.designSystem.color.primary.loading from design system
     borderColor = theme.buttons.loading.secondary.borderColor
   } else if (disabled) {
     borderColor = theme.buttons.disabled.secondary.borderColor
@@ -49,7 +50,7 @@ export const ButtonSecondary = styledButton(AppButton).attrs<BaseButtonProps>(
     Platform.OS === 'web'
       ? {
           ['&:disabled']: {
-            borderColor: theme.buttons.disabled.secondary.borderColor,
+            borderColor: theme.designSystem.color.border.disabled,
           },
         }
       : {}

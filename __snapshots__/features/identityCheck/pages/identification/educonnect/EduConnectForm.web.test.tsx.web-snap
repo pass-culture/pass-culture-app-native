@@ -108,7 +108,7 @@ exports[`<EduConnectForm /> should render EduConnectForm 1`] = `
 }
 
 .c3:disabled {
-  background-color: #F1F1F4;
+  background-color: #f1f1f4;
 }
 
 <div>
