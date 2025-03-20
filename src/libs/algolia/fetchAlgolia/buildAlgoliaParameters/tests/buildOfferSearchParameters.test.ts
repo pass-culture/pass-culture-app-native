@@ -83,7 +83,7 @@ describe('buildOfferSearchParameters', () => {
   it('should return parameters with offer category filter when offer category is specified', () => {
     const parameters = {
       ...searchQueryParametersFixture,
-      offerCategories: [SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE],
+      offerCategories: [SearchGroupNameEnumv2.MUSIQUE],
     }
 
     const result = buildOfferSearchParameters(
@@ -95,10 +95,7 @@ describe('buildOfferSearchParameters', () => {
     expect(result).toEqual({
       aroundLatLng: '48.8566, 2.3522',
       aroundRadius: 'all',
-      facetFilters: [
-        ['offer.isEducational:false'],
-        ['offer.searchGroupNamev2:CD_VINYLE_MUSIQUE_EN_LIGNE'],
-      ],
+      facetFilters: [['offer.isEducational:false'], ['offer.searchGroupNamev2:MUSIQUE']],
       numericFilters: [['offer.prices: 0 TO 300']],
     })
   })

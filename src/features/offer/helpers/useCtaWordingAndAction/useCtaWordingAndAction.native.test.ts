@@ -512,8 +512,8 @@ describe('getCtaWordingAndAction', () => {
         ${true}  | ${'Réserver l’offre'}        | ${false} | ${true}   | ${SearchGroupNameEnumv2.CINEMA}           | ${0}  | ${false}              | ${OfferModal.BOOKING}
         ${true}  | ${'Voir les disponibilités'} | ${false} | ${true}   | ${SearchGroupNameEnumv2.CINEMA}           | ${20} | ${false}              | ${OfferModal.BOOKING}
         ${false} | ${'Réserver l’offre'}        | ${false} | ${false}  | ${SearchGroupNameEnumv2.JEUX_JEUX_VIDEOS} | ${0}  | ${false}              | ${OfferModal.BOOKING}
-        ${true}  | ${'Voir les disponibilités'} | ${false} | ${false}  | ${SearchGroupNameEnumv2.INSTRUMENTS}      | ${20} | ${false}              | ${OfferModal.BOOKING}
-        ${true}  | ${undefined}                 | ${true}  | ${false}  | ${SearchGroupNameEnumv2.INSTRUMENTS}      | ${20} | ${true}               | ${undefined}
+        ${true}  | ${'Voir les disponibilités'} | ${false} | ${false}  | ${SearchGroupNameEnumv2.MUSIQUE}          | ${20} | ${false}              | ${OfferModal.BOOKING}
+        ${true}  | ${undefined}                 | ${true}  | ${false}  | ${SearchGroupNameEnumv2.MUSIQUE}          | ${20} | ${true}               | ${undefined}
       `(
         'CTA(disabled=$disabled) = "$expected" for isEvent=$isEvent, isDigital=$isDigital, isForbiddenToUnderage=$isForbiddenToUnderage, category=$category and price=$price',
         ({
