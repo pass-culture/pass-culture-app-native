@@ -14,7 +14,7 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
-import { fireEvent, render, screen, waitFor } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 
 import { AccountCreated } from './AccountCreated'
 
@@ -37,6 +37,9 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
+const user = userEvent.setup()
+jest.useFakeTimers()
+
 describe('<AccountCreated />', () => {
   beforeEach(() => {
     setFeatureFlags()
@@ -53,25 +56,23 @@ describe('<AccountCreated />', () => {
   it('should redirect to native cultural survey page WHEN "On y va !" button is clicked', async () => {
     renderAccountCreated()
 
-    fireEvent.press(await screen.findByLabelText('On y va\u00a0!'))
+    await user.press(await screen.findByLabelText('On y va\u00a0!'))
 
-    await waitFor(() => {
-      expect(navigateFromRef).not.toHaveBeenCalled()
-      expect(navigate).toHaveBeenNthCalledWith(1, 'CulturalSurveyIntro', undefined)
-    })
+    expect(navigateFromRef).not.toHaveBeenCalled()
+    expect(navigate).toHaveBeenNthCalledWith(1, 'CulturalSurveyIntro', undefined)
   })
 
   it('should redirect to home page WHEN "On y va !" button is clicked BUT feature flag enableCulturalSurveyMandatory is enabled', async () => {
     setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_CULTURAL_SURVEY_MANDATORY])
     renderAccountCreated()
-    fireEvent.press(await screen.findByLabelText('On y va\u00a0!'))
-    await waitFor(() => {
-      expect(navigateFromRef).toHaveBeenCalledWith(
-        navigateToHomeConfig.screen,
-        navigateToHomeConfig.params
-      )
-      expect(navigate).not.toHaveBeenCalledWith('CulturalSurvey', undefined)
-    })
+
+    await user.press(await screen.findByLabelText('On y va\u00a0!'))
+
+    expect(navigateFromRef).toHaveBeenCalledWith(
+      navigateToHomeConfig.screen,
+      navigateToHomeConfig.params
+    )
+    expect(navigate).not.toHaveBeenCalledWith('CulturalSurvey', undefined)
   })
 
   it('should redirect to home page WHEN "On y va !" button is clicked and user needs not to fill cultural survey', async () => {
@@ -79,21 +80,19 @@ describe('<AccountCreated />', () => {
     mockAuthContextWithUser({ ...beneficiaryUser, needsToFillCulturalSurvey: false }) // re-render because local storage value has been read and set
     renderAccountCreated()
 
-    fireEvent.press(await screen.findByLabelText('On y va\u00a0!'))
+    await user.press(await screen.findByLabelText('On y va\u00a0!'))
 
-    await waitFor(() => {
-      expect(navigateFromRef).toHaveBeenCalledWith(
-        navigateToHomeConfig.screen,
-        navigateToHomeConfig.params
-      )
-      expect(navigate).not.toHaveBeenCalledWith('CulturalSurvey', undefined)
-    })
+    expect(navigateFromRef).toHaveBeenCalledWith(
+      navigateToHomeConfig.screen,
+      navigateToHomeConfig.params
+    )
+    expect(navigate).not.toHaveBeenCalledWith('CulturalSurvey', undefined)
   })
 
   it('should track Batch event when "On y va !" button is clicked', async () => {
     renderAccountCreated()
 
-    fireEvent.press(await screen.findByLabelText('On y va\u00a0!'))
+    await user.press(await screen.findByLabelText('On y va\u00a0!'))
 
     expect(BatchProfile.trackEvent).toHaveBeenCalledWith('has_validated_account')
   })
@@ -109,7 +108,7 @@ describe('<AccountCreated />', () => {
   it('should show non eligible share app modal when "On y va !" button is clicked', async () => {
     renderAccountCreated()
 
-    fireEvent.press(await screen.findByLabelText('On y va\u00a0!'))
+    await user.press(await screen.findByLabelText('On y va\u00a0!'))
 
     expect(mockShowAppModal).toHaveBeenNthCalledWith(1, ShareAppModalType.NOT_ELIGIBLE)
   })
@@ -117,7 +116,7 @@ describe('<AccountCreated />', () => {
   it('should log analytics when "On y va !" button is clicked', async () => {
     renderAccountCreated()
 
-    fireEvent.press(await screen.findByLabelText('On y va\u00a0!'))
+    await user.press(await screen.findByLabelText('On y va\u00a0!'))
 
     expect(analytics.logAccountCreatedStartClicked).toHaveBeenCalledTimes(1)
   })

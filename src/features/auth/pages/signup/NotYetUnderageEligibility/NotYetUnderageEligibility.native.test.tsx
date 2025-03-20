@@ -4,7 +4,7 @@ import React from 'react'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { navigateFromRef } from 'features/navigation/navigationRef'
 import { RootStackParamList } from 'features/navigation/RootNavigator/types'
-import { render, fireEvent, screen } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 
 import { NotYetUnderageEligibility } from './NotYetUnderageEligibility'
 
@@ -21,6 +21,9 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
+const user = userEvent.setup()
+jest.useFakeTimers()
+
 describe('<NotYetUnderageEligibility />', () => {
   it('should render properly', () => {
     render(<NotYetUnderageEligibility {...navigationProps} />)
@@ -28,11 +31,11 @@ describe('<NotYetUnderageEligibility />', () => {
     expect(screen).toMatchSnapshot()
   })
 
-  it('should redirect to home page WHEN go back to home button is clicked', () => {
+  it('should redirect to home page WHEN go back to home button is clicked', async () => {
     render(<NotYetUnderageEligibility {...navigationProps} />)
 
     const button = screen.getByText('Retourner à l’accueil')
-    fireEvent.press(button)
+    await user.press(button)
 
     expect(navigateFromRef).toHaveBeenCalledWith(
       navigateToHomeConfig.screen,

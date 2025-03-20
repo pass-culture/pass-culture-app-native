@@ -7,7 +7,7 @@ import { analytics } from 'libs/analytics/provider'
 import { ErrorApplicationModal } from 'shared/offer/components/ErrorApplicationModal/ErrorApplicationModal'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render, screen, waitFor } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 
 jest.mock('libs/jwt/jwt')
 
@@ -22,25 +22,20 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
+const user = userEvent.setup()
+jest.useFakeTimers()
+
 describe('<ErrorApplicationModal />', () => {
   it('should match previous snapshot', () => {
-    render(
-      reactQueryProviderHOC(
-        <ErrorApplicationModal visible hideModal={hideModal} offerId={offerId} />
-      )
-    )
+    renderErrorApplicationModal()
 
     expect(screen).toMatchSnapshot()
   })
 
-  it('should close modal and navigate to profile when pressing "Aller vers la section profil" button', () => {
-    render(
-      reactQueryProviderHOC(
-        <ErrorApplicationModal visible hideModal={hideModal} offerId={offerId} />
-      )
-    )
+  it('should close modal and navigate to profile when pressing "Aller vers la section profil" button', async () => {
+    renderErrorApplicationModal()
 
-    fireEvent.press(screen.getByLabelText('Aller vers la section profil'))
+    await user.press(screen.getByLabelText('Aller vers la section profil'))
 
     expect(hideModal).toHaveBeenCalledTimes(1)
     expect(navigate).toHaveBeenCalledWith('TabNavigator', {
@@ -53,13 +48,9 @@ describe('<ErrorApplicationModal />', () => {
   })
 
   it('should log analytics when clicking on close button with label "Aller vers la section profil', async () => {
-    render(
-      reactQueryProviderHOC(
-        <ErrorApplicationModal visible hideModal={hideModal} offerId={offerId} />
-      )
-    )
+    renderErrorApplicationModal()
 
-    fireEvent.press(screen.getByLabelText('Aller vers la section profil'))
+    await user.press(screen.getByLabelText('Aller vers la section profil'))
 
     expect(analytics.logGoToProfil).toHaveBeenNthCalledWith(1, {
       from: 'ErrorApplicationModal',
@@ -69,34 +60,28 @@ describe('<ErrorApplicationModal />', () => {
 
   it('should close modal when clicking on button "Mettre en favori', async () => {
     mockServer.postApi<FavoriteResponse>('/v1/me/favorites', favoriteResponseSnap)
-    render(
-      reactQueryProviderHOC(
-        <ErrorApplicationModal visible hideModal={hideModal} offerId={offerId} />
-      )
-    )
+    renderErrorApplicationModal()
 
-    fireEvent.press(screen.getByText('Mettre en favori'))
+    await user.press(screen.getByText('Mettre en favori'))
 
-    await waitFor(() => {
-      expect(hideModal).toHaveBeenCalledTimes(1)
-    })
+    expect(hideModal).toHaveBeenCalledTimes(1)
   })
 
   it('should log analytics when clicking on button "Mettre en favori', async () => {
     mockServer.postApi<FavoriteResponse>('/v1/me/favorites', favoriteResponseSnap)
-    render(
-      reactQueryProviderHOC(
-        <ErrorApplicationModal visible hideModal={hideModal} offerId={offerId} />
-      )
-    )
+    renderErrorApplicationModal()
 
-    fireEvent.press(screen.getByText('Mettre en favori'))
+    await user.press(screen.getByText('Mettre en favori'))
 
-    await waitFor(() => {
-      expect(analytics.logHasAddedOfferToFavorites).toHaveBeenCalledWith({
-        from: 'ErrorApplicationModal',
-        offerId,
-      })
+    expect(analytics.logHasAddedOfferToFavorites).toHaveBeenCalledWith({
+      from: 'ErrorApplicationModal',
+      offerId,
     })
   })
 })
+
+const renderErrorApplicationModal = () => {
+  render(
+    reactQueryProviderHOC(<ErrorApplicationModal visible hideModal={hideModal} offerId={offerId} />)
+  )
+}

@@ -3,7 +3,7 @@ import React from 'react'
 import { analytics } from 'libs/analytics/provider'
 import { GeolocPermissionState } from 'libs/location'
 import { GeolocationActivationModal } from 'libs/location/geolocation/components/GeolocationActivationModal'
-import { fireEvent, render, screen } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 
 const hideGeolocPermissionModal = jest.fn()
 const onPressGeolocPermissionModalButton = jest.fn()
@@ -21,51 +21,62 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
+const user = userEvent.setup()
+jest.useFakeTimers()
+
 describe('GeolocationActivationModal', () => {
   it('should render properly', () => {
     mockPermissionState = GeolocPermissionState.DENIED
-    render(
-      <GeolocationActivationModal
-        hideGeolocPermissionModal={hideGeolocPermissionModal}
-        isGeolocPermissionModalVisible
-        onPressGeolocPermissionModalButton={onPressGeolocPermissionModalButton}
-      />
-    )
+    renderGeolocationActivationModal()
 
     expect(screen).toMatchSnapshot()
   })
 
-  it('should open settings to activate geoloc and log event deeplinkEnableLocation', () => {
+  it('should open settings to activate geoloc when press on "Activer la géolocalisation"', async () => {
     mockPermissionState = GeolocPermissionState.DENIED
-    render(
-      <GeolocationActivationModal
-        hideGeolocPermissionModal={hideGeolocPermissionModal}
-        isGeolocPermissionModalVisible
-        onPressGeolocPermissionModalButton={onPressGeolocPermissionModalButton}
-      />
-    )
+    renderGeolocationActivationModal()
 
-    fireEvent.press(screen.getByText('Activer la géolocalisation'))
+    await user.press(screen.getByText('Activer la géolocalisation'))
 
-    expect(analytics.logOpenLocationSettings).toHaveBeenCalledTimes(1)
     expect(onPressGeolocPermissionModalButton).toHaveBeenCalledTimes(1)
     expect(hideGeolocPermissionModal).not.toHaveBeenCalled()
   })
 
-  it('should open settings to deactivate geoloc and log event deeplinkEnableLocation', () => {
-    mockPermissionState = GeolocPermissionState.GRANTED
-    render(
-      <GeolocationActivationModal
-        hideGeolocPermissionModal={hideGeolocPermissionModal}
-        isGeolocPermissionModalVisible
-        onPressGeolocPermissionModalButton={onPressGeolocPermissionModalButton}
-      />
-    )
+  it('should log event deeplinkEnableLocation when press on "Activer la géolocalisation"', async () => {
+    mockPermissionState = GeolocPermissionState.DENIED
+    renderGeolocationActivationModal()
 
-    fireEvent.press(screen.getByText('Désactiver la géolocalisation'))
+    await user.press(screen.getByText('Activer la géolocalisation'))
 
     expect(analytics.logOpenLocationSettings).toHaveBeenCalledTimes(1)
+  })
+
+  it('should open settings to deactivate geoloc when press on "Désactiver la géolocalisation"', async () => {
+    mockPermissionState = GeolocPermissionState.GRANTED
+    renderGeolocationActivationModal()
+
+    await user.press(screen.getByText('Désactiver la géolocalisation'))
+
     expect(onPressGeolocPermissionModalButton).toHaveBeenCalledTimes(1)
     expect(hideGeolocPermissionModal).not.toHaveBeenCalled()
+  })
+
+  it('should log event deeplinkEnableLocation when press on "Désactiver la géolocalisation"', async () => {
+    mockPermissionState = GeolocPermissionState.GRANTED
+    renderGeolocationActivationModal()
+
+    await user.press(screen.getByText('Désactiver la géolocalisation'))
+
+    expect(analytics.logOpenLocationSettings).toHaveBeenCalledTimes(1)
   })
 })
+
+function renderGeolocationActivationModal() {
+  render(
+    <GeolocationActivationModal
+      hideGeolocPermissionModal={hideGeolocPermissionModal}
+      isGeolocPermissionModalVisible
+      onPressGeolocPermissionModalButton={onPressGeolocPermissionModalButton}
+    />
+  )
+}

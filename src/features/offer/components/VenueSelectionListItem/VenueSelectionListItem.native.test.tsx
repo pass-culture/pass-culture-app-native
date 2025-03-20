@@ -1,9 +1,12 @@
 import React from 'react'
 
-import { fireEvent, render, screen } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 import { theme } from 'theme'
 
 import { VenueSelectionListItem } from './VenueSelectionListItem'
+
+const user = userEvent.setup()
+jest.useFakeTimers()
 
 describe('<VenueSelectionListItem />', () => {
   it('should apply different styles when selected', () => {
@@ -31,14 +34,14 @@ describe('<VenueSelectionListItem />', () => {
     })
   })
 
-  it('should call `onSelect` when selecting', () => {
+  it('should call `onSelect` when selecting', async () => {
     const onSelect = jest.fn()
 
     render(
       <VenueSelectionListItem title="Jest" address="Somewhere in you memory" onSelect={onSelect} />
     )
 
-    fireEvent.press(screen.getByText('Jest'))
+    await user.press(screen.getByText('Jest'))
 
     expect(onSelect).toHaveBeenCalledTimes(1)
   })

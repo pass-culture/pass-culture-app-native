@@ -4,7 +4,7 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { NoFavoritesResult } from 'features/favorites/components/NoFavoritesResult'
 import { initialFavoritesState } from 'features/favorites/context/reducer'
 import { analytics } from 'libs/analytics/provider'
-import { fireEvent, render, screen, waitFor } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 
 const mockFavoritesState = initialFavoritesState
 const mockDispatch = jest.fn()
@@ -22,6 +22,9 @@ jest.mock('features/search/context/SearchWrapper', () => ({
   }),
 }))
 
+const user = userEvent.setup()
+jest.useFakeTimers()
+
 describe('NoFavoritesResult component', () => {
   it('should show the message', () => {
     render(<NoFavoritesResult />)
@@ -34,14 +37,12 @@ describe('NoFavoritesResult component', () => {
     render(<NoFavoritesResult />)
 
     const button = screen.getByText('Découvrir le catalogue')
-    fireEvent.press(button)
+    await user.press(button)
 
-    await waitFor(() => {
-      expect(navigate).toHaveBeenCalledWith('TabNavigator', {
-        params: { params: undefined, screen: 'SearchLanding' },
-        screen: 'SearchStackNavigator',
-      })
-      expect(analytics.logDiscoverOffers).toHaveBeenCalledWith('favorites')
+    expect(navigate).toHaveBeenCalledWith('TabNavigator', {
+      params: { params: undefined, screen: 'SearchLanding' },
+      screen: 'SearchStackNavigator',
     })
+    expect(analytics.logDiscoverOffers).toHaveBeenCalledWith('favorites')
   })
 })

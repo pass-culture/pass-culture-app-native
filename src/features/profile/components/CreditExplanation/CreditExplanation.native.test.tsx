@@ -4,7 +4,10 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { setSettings } from 'features/auth/tests/setSettings'
 import { CreditExplanation } from 'features/profile/components/CreditExplanation/CreditExplanation'
 import { analytics } from 'libs/analytics/provider'
-import { act, fireEvent, render, screen } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
+
+const user = userEvent.setup()
+jest.useFakeTimers()
 
 describe('<CreditExplanation/>', () => {
   it('should render correctly for expired deposit', () => {
@@ -26,10 +29,10 @@ describe('<CreditExplanation/>', () => {
       expect(screen.queryByTestId('modalHeader')).not.toBeOnTheScreen()
     })
 
-    it('should display modal when button is triggered', () => {
+    it('should display modal when button is triggered', async () => {
       render(<CreditExplanation isDepositExpired age={18} />)
       const explanationButton = screen.getByTestId('Mon crédit est expiré, que\u00a0faire\u00a0?')
-      fireEvent.press(explanationButton)
+      await user.press(explanationButton)
 
       expect(screen.getByTestId('modalHeader')).toBeOnTheScreen()
     })
@@ -43,7 +46,7 @@ describe('<CreditExplanation/>', () => {
     it('should navigate to tutorial when button is triggered', async () => {
       render(<CreditExplanation isDepositExpired={false} age={18} />)
       const explanationButton = screen.getByTestId('Comment ça marche\u00a0?')
-      await act(() => fireEvent.press(explanationButton))
+      await user.press(explanationButton)
 
       expect(navigate).toHaveBeenCalledWith('ProfileTutorialAgeInformation', { age: 18 })
     })
@@ -53,7 +56,7 @@ describe('<CreditExplanation/>', () => {
 
       render(<CreditExplanation isDepositExpired={false} age={18} />)
       const explanationButton = screen.getByTestId('Comment ça marche\u00a0?')
-      await act(() => fireEvent.press(explanationButton))
+      await user.press(explanationButton)
 
       expect(navigate).toHaveBeenCalledWith('ProfileTutorialAgeInformationCreditV3', undefined)
     })
@@ -61,18 +64,18 @@ describe('<CreditExplanation/>', () => {
     it('should navigate to 17 years old tutorial when button is triggered and user is 17', async () => {
       render(<CreditExplanation isDepositExpired={false} age={17} />)
       const explanationButton = screen.getByTestId('Comment ça marche\u00a0?')
-      await act(() => fireEvent.press(explanationButton))
+      await user.press(explanationButton)
 
       expect(navigate).toHaveBeenCalledWith('ProfileTutorialAgeInformation', { age: 17 })
     })
   })
 
   describe('Analytics', () => {
-    it('should log logConsultModalExpiredGrant analytics when expired deposit and press the button "Mon crédit est expiré, que faire ?"', () => {
+    it('should log logConsultModalExpiredGrant analytics when expired deposit and press the button "Mon crédit est expiré, que faire ?"', async () => {
       render(<CreditExplanation isDepositExpired age={18} />)
 
       const explanationButton = screen.getByText('Mon crédit est expiré, que faire ?')
-      fireEvent.press(explanationButton)
+      await user.press(explanationButton)
 
       expect(analytics.logConsultModalExpiredGrant).toHaveBeenCalledTimes(1)
     })
@@ -81,7 +84,7 @@ describe('<CreditExplanation/>', () => {
       render(<CreditExplanation isDepositExpired={false} age={18} />)
 
       const explanationButton = screen.getByText('Comment ça marche ?')
-      fireEvent.press(explanationButton)
+      await user.press(explanationButton)
 
       expect(analytics.logConsultTutorial).toHaveBeenCalledWith({ from: 'CreditBlock', age: 18 })
     })
