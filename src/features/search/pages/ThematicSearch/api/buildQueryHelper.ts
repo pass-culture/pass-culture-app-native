@@ -14,7 +14,7 @@ type ThematicSearchQueryParams = {
   withRadius?: boolean
 }
 
-export const buildQuery = ({
+export const buildQueryHelper = ({
   indexName,
   userLocation,
   filters,

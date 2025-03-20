@@ -2,7 +2,7 @@ import { MultipleQueriesQuery } from '@algolia/client-search'
 
 import { SubcategoryIdEnum } from 'api/gen'
 import { fetchThematicSearchPlaylists } from 'features/search/pages/ThematicSearch/api/fetchThematicSearchPlaylists'
-import { buildQuery } from 'features/search/pages/ThematicSearch/api/utils'
+import { buildQueryHelper } from 'features/search/pages/ThematicSearch/api/buildQueryHelper'
 import { env } from 'libs/environment/env'
 import { Position } from 'libs/location/types'
 
@@ -13,29 +13,29 @@ export const fetchMusicOffers = async (userLocation?: Position) => {
   }
 
   const queries: MultipleQueriesQuery[] = [
-    buildQuery({
+    buildQueryHelper({
       ...commonQueryParams,
       userLocation: undefined,
       filters: `(offer.subcategoryId:"${SubcategoryIdEnum.ABO_PLATEFORME_MUSIQUE}" OR offer.subcategoryId:"${SubcategoryIdEnum.LIVESTREAM_MUSIQUE}" OR offer.subcategoryId:"${SubcategoryIdEnum.TELECHARGEMENT_MUSIQUE}") AND NOT offer.last30DaysBookingsRange:"very-low"`,
     }),
-    buildQuery({
+    buildQueryHelper({
       ...commonQueryParams,
       filters: `offer.subcategoryId:"${SubcategoryIdEnum.CONCERT}" AND NOT offer.last30DaysBookingsRange:"very-low"`,
     }),
-    buildQuery({
+    buildQueryHelper({
       ...commonQueryParams,
       filters: `offer.subcategoryId:"${SubcategoryIdEnum.FESTIVAL_MUSIQUE}" AND NOT offer.last30DaysBookingsRange:"very-low"`,
       withRadius: false,
     }),
-    buildQuery({
+    buildQueryHelper({
       ...commonQueryParams,
       filters: `(offer.subcategoryId:"${SubcategoryIdEnum.ACHAT_INSTRUMENT}" OR offer.subcategoryId:"${SubcategoryIdEnum.LOCATION_INSTRUMENT}") AND NOT offer.last30DaysBookingsRange:"very-low"`,
     }),
-    buildQuery({
+    buildQueryHelper({
       ...commonQueryParams,
       filters: `offer.subcategoryId:"${SubcategoryIdEnum.SUPPORT_PHYSIQUE_MUSIQUE_CD}" AND NOT offer.last30DaysBookingsRange:"very-low"`,
     }),
-    buildQuery({
+    buildQueryHelper({
       ...commonQueryParams,
       filters: `offer.subcategoryId:"${SubcategoryIdEnum.SUPPORT_PHYSIQUE_MUSIQUE_VINYLE}" AND NOT offer.last30DaysBookingsRange:"very-low"`,
     }),

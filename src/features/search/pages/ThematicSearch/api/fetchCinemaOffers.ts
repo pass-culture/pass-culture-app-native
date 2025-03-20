@@ -3,7 +3,7 @@ import { subDays } from 'date-fns'
 
 import { NativeCategoryIdEnumv2, SubcategoryIdEnum } from 'api/gen'
 import { fetchThematicSearchPlaylists } from 'features/search/pages/ThematicSearch/api/fetchThematicSearchPlaylists'
-import { buildQuery } from 'features/search/pages/ThematicSearch/api/utils'
+import { buildQueryHelper } from 'features/search/pages/ThematicSearch/api/buildQueryHelper'
 import { env } from 'libs/environment/env'
 import { Position } from 'libs/location/types'
 
@@ -19,16 +19,16 @@ export const fetchCinemaOffers = async (userLocation?: Position) => {
   const sevenDaysAgo = Math.floor(subDays(new Date(), 7).getTime() / 1000)
 
   const queries: MultipleQueriesQuery[] = [
-    buildQuery({
+    buildQueryHelper({
       ...commonQueryParams,
       filters: `offer.subcategoryId:"${SubcategoryIdEnum.SEANCE_CINE}"`,
     }),
-    buildQuery({
+    buildQueryHelper({
       ...commonQueryParams,
       filters: `offer.subcategoryId:"${SubcategoryIdEnum.SEANCE_CINE}"`,
       numericFilters: `offer.releaseDate: ${sevenDaysAgo} TO ${today}`,
     }),
-    buildQuery({
+    buildQueryHelper({
       ...commonQueryParams,
       userLocation: undefined,
       filters: `offer.nativeCategoryId:"${NativeCategoryIdEnumv2.CARTES_CINEMA}" AND (offer.subcategoryId:"${SubcategoryIdEnum.CARTE_CINE_MULTISEANCES}" OR offer.subcategoryId:"${SubcategoryIdEnum.CINE_VENTE_DISTANCE}")`,
