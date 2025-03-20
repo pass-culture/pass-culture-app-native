@@ -14,28 +14,22 @@ export const useVenueOffersArtists = (
   }
 
   const artists: Artist[] = chain(
-    // `flatMap` is used to map over `venueOffers.hits`, transforming each offer into an artist object if the artist exists,
-    // and flattening the results into a single array. If no artist is found, it returns an empty array, effectively filtering out
-    // offers without an artist in a single step.
-    venueOffers.flatMap((offer) =>
-      offer.offer.artist && isArtistPageCompatible(offer.offer.artist, offer.offer.subcategoryId)
-        ? [
-            {
-              id: Number(offer.objectID),
-              name: offer.offer.artist,
-              image: offer.offer.thumbUrl,
-            },
-          ]
-        : []
+    // `flatMap` is used to map over `venueOffers.hits`, transforming each offer into an artists array if exists,
+    // and flattening the results into a single array. If no artists found, it returns an empty array, effectively filtering out
+    // offers without artists in a single step.
+    venueOffers.hits.flatMap((offer) =>
+      (offer.artists ?? []).filter((artist) =>
+        isArtistPageCompatible(artist.name, offer.offer.subcategoryId)
+      )
     )
   )
-    .groupBy('name')
+    .groupBy('id')
     .orderBy(
       [(artistList) => artistList.length, (artistList) => artistList[0]?.name],
       ['desc', 'asc']
     )
     .flatten()
-    .uniqBy('name')
+    .uniqBy('id')
     .slice(0, 30)
     .value()
 
