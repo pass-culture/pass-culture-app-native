@@ -19,7 +19,7 @@ import { useListExpander } from 'features/offer/helpers/useListExpander/useListE
 import { useOffersStocksFromOfferQuery } from 'features/offer/helpers/useOffersStocksFromOfferQuery/useOffersStocksFromOfferQuery'
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
 import { PlainMore } from 'ui/svg/icons/PlainMore'
-import { TypoDS, getSpacing } from 'ui/theme'
+import { Typo, getSpacing } from 'ui/theme'
 
 type Props = {
   offer: OfferResponseV2
@@ -83,6 +83,6 @@ const SeeMoreContainer = styled.View(({ theme }) => ({
   gap: getSpacing(4),
 }))
 
-const Text = styled(TypoDS.Body)(({ theme }) => ({
+const Text = styled(Typo.Body)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))

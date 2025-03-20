@@ -3,7 +3,7 @@ import React, { ReactNode } from 'react'
 import { ArtistHeaderWrapper } from 'features/artist/components/ArtistHeader/ArtistHeaderWrapper'
 import { Avatar } from 'ui/components/Avatar/Avatar'
 import { DefaultAvatar } from 'ui/components/Avatar/DefaultAvatar'
-import { TypoDS } from 'ui/theme'
+import { Typo } from 'ui/theme'
 import { AVATAR_LARGE } from 'ui/theme/constants'
 
 type ArtistHeaderProps = {
@@ -17,7 +17,7 @@ export const ArtistHeader = ({ avatarImage, name }: ArtistHeaderProps) => {
       <Avatar borderWidth={6} size={AVATAR_LARGE}>
         {avatarImage ?? <DefaultAvatar />}
       </Avatar>
-      <TypoDS.Title1>{name}</TypoDS.Title1>
+      <Typo.Title1>{name}</Typo.Title1>
     </ArtistHeaderWrapper>
   )
 }

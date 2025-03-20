@@ -5,7 +5,7 @@ import { accessibleRadioProps } from 'shared/accessibilityProps/accessibleRadioP
 import { Separator } from 'ui/components/Separator'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { Validate as DefaultValidate } from 'ui/svg/icons/Validate'
-import { getSpacing, TypoDS } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 interface Props {
   onPressOption: (optionKey: string) => void
   optionKey: string
@@ -56,7 +56,7 @@ const TextContainer = styled.View({
   flexDirection: 'row',
 })
 
-const StyledBody = styled(TypoDS.Body)<{ selected: boolean }>(({ theme, selected }) => ({
+const StyledBody = styled(Typo.Body)<{ selected: boolean }>(({ theme, selected }) => ({
   fontWeight: selected ? 'bold' : 'normal',
   flex: theme.isMobileViewport ? 1 : undefined,
 }))

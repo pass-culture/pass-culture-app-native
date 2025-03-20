@@ -11,7 +11,7 @@ import { SeparatorWithText } from 'ui/components/SeparatorWithText'
 import { BicolorIdCard } from 'ui/svg/icons/BicolorIdCard'
 import { BicolorLostId } from 'ui/svg/icons/BicolorLostId'
 import { BicolorNoId } from 'ui/svg/icons/BicolorNoId'
-import { getSpacing, Spacer, TypoDS } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export enum IDStatus {
@@ -30,8 +30,8 @@ export const SelectIDStatus: FunctionComponent = () => (
 
 const MainOptionButton = (
   <HeroButtonList
-    Title={<TypoDS.BodyAccent>J’ai ma pièce d’identité en cours de validité</TypoDS.BodyAccent>}
-    Subtitle={<TypoDS.BodyAccentXs>Les copies ne sont pas acceptées</TypoDS.BodyAccentXs>}
+    Title={<Typo.BodyAccent>J’ai ma pièce d’identité en cours de validité</Typo.BodyAccent>}
+    Subtitle={<Typo.BodyAccentXs>Les copies ne sont pas acceptées</Typo.BodyAccentXs>}
     Icon={<BicolorIdCard />}
     navigateTo={{ screen: 'UbbleWebview' }}
     onBeforeNavigate={() => logEventSelectIdStatusClicked(IDStatus.ID_OK)}
@@ -65,11 +65,11 @@ const SelectIDStatusContent: FunctionComponent = () => {
       <StyledTitle4>As-tu ta pièce d’identité avec toi&nbsp;?</StyledTitle4>
       <Spacer.Column numberOfSpaces={4} />
       <StyledText>
-        <TypoDS.Body>Tu dois avoir ta pièce d’identité </TypoDS.Body>
-        <TypoDS.BodyAccent>originale </TypoDS.BodyAccent>
-        <TypoDS.Body>et </TypoDS.Body>
-        <TypoDS.BodyAccent>en cours de validité </TypoDS.BodyAccent>
-        <TypoDS.Body>avec toi.</TypoDS.Body>
+        <Typo.Body>Tu dois avoir ta pièce d’identité </Typo.Body>
+        <Typo.BodyAccent>originale </Typo.BodyAccent>
+        <Typo.Body>et </Typo.Body>
+        <Typo.BodyAccent>en cours de validité </Typo.BodyAccent>
+        <Typo.Body>avec toi.</Typo.Body>
       </StyledText>
       <Spacer.Column numberOfSpaces={12} />
       {MainOptionButton}
@@ -89,7 +89,7 @@ const Container = styled.View({
   marginVertical: getSpacing(8),
 })
 
-const StyledTitle4 = styled(TypoDS.Title4).attrs(getHeadingAttrs(2))({
+const StyledTitle4 = styled(Typo.Title4).attrs(getHeadingAttrs(2))({
   textAlign: 'center',
 })
 const StyledText = styled(Text)({

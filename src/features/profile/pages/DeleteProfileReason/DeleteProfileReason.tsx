@@ -21,7 +21,7 @@ import {
 } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { BicolorSadFace } from 'ui/svg/icons/BicolorSadFace'
-import { getSpacing, Spacer, TypoDS } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 const GRADIENT_HEIGHT = getSpacing(30)
@@ -107,13 +107,13 @@ export function DeleteProfileReason() {
             <HeaderHeightSpacer headerHeight={headerHeight} />
             <StyledIcon />
             <TitlesContainer>
-              <TypoDS.Title3 {...getHeadingAttrs(1)}>
+              <Typo.Title3 {...getHeadingAttrs(1)}>
                 Pourquoi souhaites-tu supprimer ton compte&nbsp;?
-              </TypoDS.Title3>
-              <TypoDS.Body>
+              </Typo.Title3>
+              <Typo.Body>
                 Triste de te voir partir&nbsp;! Dis-nous pourquoi pour nous aider à améliorer
                 l’application.
-              </TypoDS.Body>
+              </Typo.Body>
             </TitlesContainer>
           </HeaderContainer>
         }
@@ -125,7 +125,7 @@ export function DeleteProfileReason() {
           return (
             <ItemContainer>
               <HeroButtonList
-                Title={<TypoDS.BodyAccent>{wording}</TypoDS.BodyAccent>}
+                Title={<Typo.BodyAccent>{wording}</Typo.BodyAccent>}
                 navigateTo={navigateTo}
                 onBeforeNavigate={() => analytics.logSelectDeletionReason(analyticsReason)}
                 accessibilityLabel={wording}

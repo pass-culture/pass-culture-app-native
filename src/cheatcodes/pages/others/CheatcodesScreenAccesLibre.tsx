@@ -9,7 +9,7 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { TextInput } from 'ui/components/inputs/TextInput'
 import { Separator } from 'ui/components/Separator'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { Spacer, TypoDS } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
@@ -45,12 +45,12 @@ export const CheatcodesScreenAccesLibre = () => {
                   <detail.icon
                     color={detail.isAccessible ? ColorsEnum.GREEN_VALID : ColorsEnum.ERROR}
                   />
-                  <TypoDS.Title3>{detail.category}</TypoDS.Title3>
+                  <Typo.Title3>{detail.category}</Typo.Title3>
                 </StyledView>
                 {Object.entries(detail.description).map(([key, value]) => (
                   <View key={key}>
-                    <TypoDS.BodyAccent>{key}</TypoDS.BodyAccent>
-                    <TypoDS.Body>{value}</TypoDS.Body>
+                    <Typo.BodyAccent>{key}</Typo.BodyAccent>
+                    <Typo.Body>{value}</Typo.Body>
                   </View>
                 ))}
                 <Spacer.Column numberOfSpaces={2} />
@@ -60,7 +60,7 @@ export const CheatcodesScreenAccesLibre = () => {
             </View>
           ))
         ) : (
-          <TypoDS.Title4>Lieu non disponible sur AccesLibre</TypoDS.Title4>
+          <Typo.Title4>Lieu non disponible sur AccesLibre</Typo.Title4>
         )
       ) : null}
     </CheatcodesTemplateScreen>

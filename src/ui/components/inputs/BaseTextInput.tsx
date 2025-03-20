@@ -8,9 +8,9 @@ import { getSpacing } from 'ui/theme'
 
 import { RNTextInputProps } from './types'
 
-type TypographyDS = ValueOf<typeof theme.designSystem.typography>
+type Typography = ValueOf<typeof theme.designSystem.typography>
 
-type Props = RNTextInputProps & { textStyle?: TypographyDS }
+type Props = RNTextInputProps & { textStyle?: Typography }
 
 export const BaseTextInput = forwardRef<RNTextInput, Props>(function BaseTextInput(
   { nativeAutoFocus, autoFocus, testID, defaultValue, ...props },
@@ -79,9 +79,9 @@ export const BaseTextInput = forwardRef<RNTextInput, Props>(function BaseTextInp
 
 const StyledTextInput = styled(RNTextInput).attrs(({ theme }) => ({
   placeholderTextColor: theme.colors.greyDark,
-}))<{ isEmpty: boolean; textStyle?: TypographyDS; multiline: boolean }>(
+}))<{ isEmpty: boolean; textStyle?: Typography; multiline: boolean }>(
   ({ theme, isEmpty, textStyle, editable, multiline }) => {
-    let inputStyle: TypographyDS = theme.designSystem.typography.body
+    let inputStyle: Typography = theme.designSystem.typography.body
     if (isEmpty) {
       inputStyle = theme.designSystem.typography.bodyItalic
     } else if (textStyle) {

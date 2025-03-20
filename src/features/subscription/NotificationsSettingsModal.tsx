@@ -13,7 +13,7 @@ import { BellFilled } from 'ui/svg/icons/BellFilled'
 import { Close } from 'ui/svg/icons/Close'
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
-import { Spacer, TypoDS } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 
 interface Props {
   visible: boolean
@@ -74,7 +74,7 @@ export const NotificationsSettingsModal: FunctionComponent<Props> = ({
       rightIcon={Close}
       onRightIconPress={onDismiss}>
       <ModalContent>
-        <TypoDS.Body>{description}</TypoDS.Body>
+        <Typo.Body>{description}</Typo.Body>
 
         <Spacer.Column numberOfSpaces={6} />
 
@@ -138,7 +138,7 @@ const ModalContent = styled.View({
   width: '100%',
 })
 
-const StyledCaption = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
+const StyledCaption = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))
 

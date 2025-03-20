@@ -1,7 +1,7 @@
 import React from 'react'
 import { Text } from 'react-native'
 
-import { TypoDS } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 export type OfferMetadataItemProps = {
   label: string
@@ -13,12 +13,12 @@ export function OfferMetadataItem({ label, value }: Readonly<OfferMetadataItemPr
     <Text>
       {label ? (
         <React.Fragment>
-          <TypoDS.BodyAccent>{label}&nbsp;: </TypoDS.BodyAccent>
+          <Typo.BodyAccent>{label}&nbsp;: </Typo.BodyAccent>
 
-          <TypoDS.Body>{value}</TypoDS.Body>
+          <Typo.Body>{value}</Typo.Body>
         </React.Fragment>
       ) : (
-        <TypoDS.BodyAccent>{value}</TypoDS.BodyAccent>
+        <Typo.BodyAccent>{value}</Typo.BodyAccent>
       )}
     </Text>
   )

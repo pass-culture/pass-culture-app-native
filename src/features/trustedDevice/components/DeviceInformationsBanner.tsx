@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 import { InfoBanner } from 'ui/components/banners/InfoBanner'
 import { Info } from 'ui/svg/icons/Info'
-import { TypoDS } from 'ui/theme'
+import { Typo } from 'ui/theme'
 import { LINE_BREAK } from 'ui/theme/constants'
 
 type DeviceInformationsBanner = {
@@ -20,17 +20,17 @@ export const DeviceInformationsBanner: React.FC<DeviceInformationsBanner> = ({
   <InfoBanner
     message={
       <CaptionRegular>
-        <TypoDS.BodyAccentXs>Appareil utilisé&nbsp;: </TypoDS.BodyAccentXs> {osAndSource}
+        <Typo.BodyAccentXs>Appareil utilisé&nbsp;: </Typo.BodyAccentXs> {osAndSource}
         {LINE_BREAK}
-        <TypoDS.BodyAccentXs>Lieu&nbsp;: </TypoDS.BodyAccentXs> {location}
+        <Typo.BodyAccentXs>Lieu&nbsp;: </Typo.BodyAccentXs> {location}
         {LINE_BREAK}
-        <TypoDS.BodyAccentXs>Date et heure&nbsp;: </TypoDS.BodyAccentXs> {loginDate}
+        <Typo.BodyAccentXs>Date et heure&nbsp;: </Typo.BodyAccentXs> {loginDate}
       </CaptionRegular>
     }
     icon={Info}
   />
 )
 
-const CaptionRegular = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
+const CaptionRegular = styled(Typo.BodyAccentXs)(({ theme }) => ({
   fontFamily: theme.fontFamily.regular,
 }))

@@ -36,7 +36,7 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Li } from 'ui/components/Li'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { VerticalUl } from 'ui/components/Ul'
-import { getSpacing, Spacer, TypoDS } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 type CulturalSurveyQuestionsProps = StackScreenProps<
   CulturalSurveyRootStackParamList,
@@ -201,7 +201,7 @@ export function CulturalSurveyQuestions({ route }: CulturalSurveyQuestionsProps)
         bottomChildrenViewHeight={bottomChildrenViewHeight}
         onScroll={onScroll}
         testID="cultural-survey-questions-scrollview">
-        <TypoDS.Title3>{culturalSurveyQuestion?.title}</TypoDS.Title3>
+        <Typo.Title3>{culturalSurveyQuestion?.title}</Typo.Title3>
         <CaptionContainer>
           <CaptionNeutralInfo>{pageSubtitle}</CaptionNeutralInfo>
         </CaptionContainer>
@@ -288,6 +288,6 @@ const FixedBottomChildrenView = styled(View)({
   paddingHorizontal: getSpacing(6),
 })
 
-const CaptionNeutralInfo = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
+const CaptionNeutralInfo = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))

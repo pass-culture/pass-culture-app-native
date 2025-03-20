@@ -8,7 +8,7 @@ import { ButtonWithLinearGradient } from 'ui/components/buttons/buttonWithLinear
 import { AppModalWithIllustration } from 'ui/components/modals/AppModalWithIllustration'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { BicolorUserFavorite } from 'ui/svg/icons/BicolorUserFavorite'
-import { getSpacing, TypoDS } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 import { LINE_BREAK } from 'ui/theme/constants'
 
 interface Props {
@@ -73,6 +73,6 @@ const StyledButtonContainer = styled.View({
   marginBottom: getSpacing(4),
 })
 
-const StyledBody = styled(TypoDS.Body)({
+const StyledBody = styled(Typo.Body)({
   textAlign: 'center',
 })

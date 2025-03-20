@@ -11,7 +11,7 @@ import { Accordion } from 'ui/components/Accordion'
 import FilterSwitch from 'ui/components/FilterSwitch'
 import { Separator } from 'ui/components/Separator'
 import { InfoPlain } from 'ui/svg/icons/InfoPlain'
-import { getSpacing, Spacer, TypoDS } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 export const CookiesAccordion = ({
   cookie,
@@ -33,7 +33,7 @@ export const CookiesAccordion = ({
   return (
     <React.Fragment>
       <StyledAccordionItem
-        title={<TypoDS.Body>{info.title}</TypoDS.Body>}
+        title={<Typo.Body>{info.title}</Typo.Body>}
         onOpenOnce={() => analytics.logHasOpenedCookiesAccordion(cookie)}
         labelId={accordionLabelId}
         leftComponent={
@@ -46,7 +46,7 @@ export const CookiesAccordion = ({
           />
         }>
         <React.Fragment>
-          <TypoDS.Body>{info.description}</TypoDS.Body>
+          <Typo.Body>{info.description}</Typo.Body>
           {info.caption ? (
             <React.Fragment>
               <Spacer.Column numberOfSpaces={4} />
@@ -103,6 +103,6 @@ const StyledAccordionItem = styled(Accordion).attrs({
   },
 })``
 
-const CaptionNeutralInfo = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
+const CaptionNeutralInfo = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))

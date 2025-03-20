@@ -9,7 +9,7 @@ import { ButtonSecondaryWhite } from 'ui/components/buttons/ButtonSecondaryWhite
 import { GenericErrorPage } from 'ui/pages/GenericErrorPage'
 import { BicolorBrokenConnection } from 'ui/svg/BicolorBrokenConnection'
 import { MagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
-import { TypoDS } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 export const NoContentError = () => {
   const { navigate } = useNavigation<UseNavigationType>()
@@ -46,7 +46,7 @@ export const NoContentError = () => {
   )
 }
 
-const StyledBody = styled(TypoDS.Body)(({ theme }) => ({
+const StyledBody = styled(Typo.Body)(({ theme }) => ({
   color: theme.colors.white,
   textAlign: 'center',
 }))

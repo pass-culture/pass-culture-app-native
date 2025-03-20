@@ -2,7 +2,7 @@ import React, { FC } from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
-import { TypoDS } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 import { ViewGap } from './ViewGap/ViewGap'
 
@@ -20,21 +20,21 @@ export const NewOfferCaption: FC<Props> = ({ name, date, price, categoryLabel }:
       <View>
         <OfferText>{name}</OfferText>
         {date ? <DateText>{date}</DateText> : null}
-        <TypoDS.BodyAccentXs testID="priceIsDuo">{price}</TypoDS.BodyAccentXs>
+        <Typo.BodyAccentXs testID="priceIsDuo">{price}</Typo.BodyAccentXs>
       </View>
     </ViewGap>
   )
 }
 
-const CategoryLabel = styled(TypoDS.BodyAccentXs).attrs({
+const CategoryLabel = styled(Typo.BodyAccentXs).attrs({
   numberOfLines: 1,
 })(({ theme }) => ({
   color: theme.colors.greyDark,
 }))
 
-const OfferText = styled(TypoDS.BodyAccentXs).attrs({
+const OfferText = styled(Typo.BodyAccentXs).attrs({
   numberOfLines: 2,
 })({})
-const DateText = styled(TypoDS.BodyAccentXs).attrs({
+const DateText = styled(Typo.BodyAccentXs).attrs({
   numberOfLines: 1,
 })({})

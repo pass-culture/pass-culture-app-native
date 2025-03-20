@@ -1,10 +1,10 @@
 import React from 'react'
 
 import { sanitizeTitle } from 'shared/offer/helpers/sanitizeTitle'
-import { TypoDS } from 'ui/theme/designSystemTypographie'
+import { Typo } from 'ui/theme/typography'
 
 export const OfferName = ({ title }: { title: string }) => {
   const uiTitle = sanitizeTitle(title)
   if (!uiTitle) return null
-  return <TypoDS.BodyAccent numberOfLines={1}>{uiTitle}</TypoDS.BodyAccent>
+  return <Typo.BodyAccent numberOfLines={1}>{uiTitle}</Typo.BodyAccent>
 }

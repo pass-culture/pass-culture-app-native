@@ -8,7 +8,7 @@ import { analytics } from 'libs/analytics/provider'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import { TypoDS, getSpacing } from 'ui/theme'
+import { Typo, getSpacing } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 
 type Props = {
@@ -69,7 +69,7 @@ const StyledImageBackground = styled.ImageBackground.attrs(({ theme }) => ({
   height: getSpacing(25),
 })
 
-const CardText = styled(TypoDS.BodyAccent)({
+const CardText = styled(Typo.BodyAccent)({
   position: 'absolute',
   left: getSpacing(4),
   bottom: getSpacing(4),

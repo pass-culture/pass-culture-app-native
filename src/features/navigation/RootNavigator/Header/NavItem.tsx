@@ -7,7 +7,7 @@ import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouch
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { BicolorLogo } from 'ui/svg/icons/BicolorLogo'
 import { AccessibleBicolorIcon } from 'ui/svg/icons/types'
-import { getSpacing, TypoDS } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 
 interface NavItemInterface {
   isSelected?: boolean
@@ -60,7 +60,7 @@ const StyledTouchableLink = styled(InternalTouchableLink).attrs<{ isSelected?: b
   borderRadius: theme.borderRadius.button * 2,
 }))
 
-const Title = styled(TypoDS.BodyAccent)<{ isSelected?: boolean }>(({ theme, isSelected }) => ({
+const Title = styled(Typo.BodyAccent)<{ isSelected?: boolean }>(({ theme, isSelected }) => ({
   marginLeft: 12,
   color: isSelected ? theme.uniqueColors.brand : theme.colors.black,
 }))

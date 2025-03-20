@@ -23,7 +23,7 @@ import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition
 import { CollapsibleText } from 'ui/components/CollapsibleText/CollapsibleText'
 import { ContentHeader } from 'ui/components/headers/ContentHeader'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { TypoDS } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 const isWeb = Platform.OS === 'web'
 
@@ -87,7 +87,7 @@ export const ArtistBody: FunctionComponent<Props> = ({ offer, artist, subcategor
             <ArtistHeader name={name} avatarImage={avatarImage} />
             {bio ? (
               <Description gap={1}>
-                <TypoDS.BodyAccent>Quelques infos à son sujet</TypoDS.BodyAccent>
+                <Typo.BodyAccent>Quelques infos à son sujet</Typo.BodyAccent>
                 <CollapsibleText numberOfLines={NUMBER_OF_LINES_OF_DESCRIPTION_SECTION}>
                   {highlightLinks(bio)}
                 </CollapsibleText>

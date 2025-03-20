@@ -6,7 +6,7 @@ import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
-import { getSpacing, Spacer, TypoDS } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 interface Props {
@@ -68,7 +68,7 @@ const Gradient = styled(LinearGradient).attrs(({ theme }) => ({
   marginTop: -GRADIENT_SIZE,
 })
 
-const Title = styled(TypoDS.Title3).attrs(() => getHeadingAttrs(1))({
+const Title = styled(Typo.Title3).attrs(() => getHeadingAttrs(1))({
   textAlign: 'center',
 })
 

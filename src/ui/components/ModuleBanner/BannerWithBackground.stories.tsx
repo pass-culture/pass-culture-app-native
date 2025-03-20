@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 import { SHARE_APP_BANNER_IMAGE_SOURCE } from 'features/share/components/shareAppBannerImage'
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 import { Bell } from 'ui/svg/icons/Bell'
-import { TypoDS } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 import { BannerWithBackground } from './BannerWithBackground'
 
@@ -16,7 +16,7 @@ const meta: ComponentMeta<typeof BannerWithBackground> = {
 export default meta
 
 const TextComponent = () => <StyledBody>Banner text</StyledBody>
-const StyledBody = styled(TypoDS.Body)(({ theme }) => ({
+const StyledBody = styled(Typo.Body)(({ theme }) => ({
   color: theme.colors.white,
 }))
 

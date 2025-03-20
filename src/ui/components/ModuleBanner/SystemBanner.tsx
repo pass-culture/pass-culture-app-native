@@ -13,7 +13,7 @@ import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
 import { AccessibleIcon } from 'ui/svg/icons/types'
-import { getSpacing, TypoDS } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
@@ -88,8 +88,8 @@ export const SystemBanner: FunctionComponent<Props> = ({
           </IconContainer>
         ) : null}
         <DescriptionContainer gap={1}>
-          <TypoDS.BodyAccent color={color}>{title}</TypoDS.BodyAccent>
-          <TypoDS.Body color={color}>{subtitle}</TypoDS.Body>
+          <Typo.BodyAccent color={color}>{title}</Typo.BodyAccent>
+          <Typo.Body color={color}>{subtitle}</Typo.Body>
         </DescriptionContainer>
         <View>
           <StyledArrowNextIcon color={iconColor} />

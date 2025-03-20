@@ -9,7 +9,7 @@ import { ButtonWithLinearGradient } from 'ui/components/buttons/buttonWithLinear
 import { AppModalWithIllustration } from 'ui/components/modals/AppModalWithIllustration'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { BicolorUserIdentification } from 'ui/svg/BicolorUserIdentification'
-import { Spacer, TypoDS } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 import { LINE_BREAK } from 'ui/theme/constants'
 
 type Props = {
@@ -52,7 +52,7 @@ export const AuthenticationModal: FunctionComponent<Props> = ({
       title={'Identifie-toi' + LINE_BREAK + 'pour réserver l’offre'}
       Illustration={BicolorUserIdentification}
       hideModal={closeModal}>
-      <TypoDS.BodyAccent>{title}</TypoDS.BodyAccent>
+      <Typo.BodyAccent>{title}</Typo.BodyAccent>
       <Spacer.Column numberOfSpaces={2} />
       <StyledBody>
         Identifie-toi pour bénéficier de ton crédit et profiter des offres culturelles.
@@ -86,6 +86,6 @@ const StyledAuthenticationButton = styled(AuthenticationButton).attrs(({ theme }
 const StyledButtonContainer = styled.View({
   width: '100%',
 })
-const StyledBody = styled(TypoDS.Body)({
+const StyledBody = styled(Typo.Body)({
   textAlign: 'center',
 })

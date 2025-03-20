@@ -21,7 +21,7 @@ import { InputError } from 'ui/components/inputs/InputError'
 import { Separator } from 'ui/components/Separator'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
-import { Spacer, TypoDS } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type FormValues = {
@@ -122,7 +122,7 @@ export const AcceptCgu: FunctionComponent<PreValidationSignupLastStepProps> = ({
           isVisible={isDoingReCaptchaChallenge}
         />
       ) : null}
-      <TypoDS.Title3 {...getHeadingAttrs(2)}>CGU & Données</TypoDS.Title3>
+      <Typo.Title3 {...getHeadingAttrs(2)}>CGU & Données</Typo.Title3>
       <Spacer.Column numberOfSpaces={10} />
       {isSSOSubscription ? (
         <React.Fragment>
@@ -203,6 +203,6 @@ export const AcceptCgu: FunctionComponent<PreValidationSignupLastStepProps> = ({
   )
 }
 
-const CaptionNeutralInfo = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
+const CaptionNeutralInfo = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))

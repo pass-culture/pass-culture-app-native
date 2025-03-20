@@ -6,7 +6,7 @@ import { BatchEvent, BatchProfile } from 'libs/react-native-batch'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
 import { BicolorIdCardError } from 'ui/svg/icons/BicolorIdCardError'
-import { TypoDS } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 export const ExpiredOrLostID = (): React.JSX.Element => {
   useEffect(() => {
@@ -38,6 +38,6 @@ export const ExpiredOrLostID = (): React.JSX.Element => {
   )
 }
 
-const StyledBody = styled(TypoDS.Body)({
+const StyledBody = styled(Typo.Body)({
   textAlign: 'center',
 })

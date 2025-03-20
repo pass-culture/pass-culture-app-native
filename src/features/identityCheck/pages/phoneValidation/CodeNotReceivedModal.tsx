@@ -16,7 +16,7 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Close } from 'ui/svg/icons/Close'
-import { Spacer, TypoDS } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 
 export interface CodeNotReceivedModalProps {
   isVisible: boolean
@@ -96,7 +96,7 @@ export const CodeNotReceivedModal: FunctionComponent<CodeNotReceivedModalProps> 
   )
 }
 
-const StyledBody = styled(TypoDS.Body)({
+const StyledBody = styled(Typo.Body)({
   textAlign: 'center',
 })
 
@@ -108,12 +108,12 @@ const WarningContainer = styled.View({
   flexDirection: 'row',
 })
 
-const WarningRemainingAttempts = styled(TypoDS.BodyAccentXs)<{ isLastAttempt: boolean }>(
+const WarningRemainingAttempts = styled(Typo.BodyAccentXs)<{ isLastAttempt: boolean }>(
   ({ theme, isLastAttempt }) => ({
     color: isLastAttempt ? theme.colors.error : theme.colors.black,
   })
 )
 
-const CaptionNeutralInfo = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
+const CaptionNeutralInfo = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))

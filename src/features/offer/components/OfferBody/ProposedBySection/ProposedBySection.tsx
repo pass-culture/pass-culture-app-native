@@ -11,7 +11,7 @@ import { InternalTouchableLinkProps } from 'ui/components/touchableLink/types'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { RightFilled } from 'ui/svg/icons/RightFilled'
 import { Venue } from 'ui/svg/icons/Venue'
-import { TypoDS } from 'ui/theme'
+import { Typo } from 'ui/theme'
 import { AVATAR_SMALL } from 'ui/theme/constants'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -34,7 +34,7 @@ export const ProposedBySection: FunctionComponent<ProposedBySectionProps> = ({
     <Wrapper>
       <InternalTouchableLink navigateTo={navigateTo} hoverUnderlineColor={theme.colors.white}>
         <ViewGap gap={4}>
-          <TypoDS.Title3 {...getHeadingAttrs(2)}>Proposé par</TypoDS.Title3>
+          <Typo.Title3 {...getHeadingAttrs(2)}>Proposé par</Typo.Title3>
           <InfoHeader
             title={name}
             rightComponent={

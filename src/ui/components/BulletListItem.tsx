@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 import { Li } from 'ui/components/Li'
 import { VerticalUl } from 'ui/components/Ul'
 import { Dot } from 'ui/svg/icons/Dot'
-import { getSpacing, TypoDS } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 import { REM_TO_PX } from 'ui/theme/constants'
 
 // Use with Ul or VerticalUl to be accessible in web
@@ -77,7 +77,7 @@ const BulletContainer = styled.View(({ theme }) => ({
   justifyContent: 'center',
 }))
 
-const ListText = styled(TypoDS.Body)({
+const ListText = styled(Typo.Body)({
   marginLeft: getSpacing(3),
   flex: 1,
 })

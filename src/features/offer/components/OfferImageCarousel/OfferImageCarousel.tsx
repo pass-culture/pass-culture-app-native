@@ -9,7 +9,7 @@ import { OfferImageCarouselPagination } from 'features/offer/components/OfferIma
 import { calculateCarouselIndex } from 'features/offer/helpers/calculateCarouselIndex/calculateCarouselIndex'
 import { useOfferImageContainerDimensions } from 'features/offer/helpers/useOfferImageContainerDimensions'
 import { ImageWithCredit } from 'shared/types'
-import { TypoDS, getSpacing } from 'ui/theme'
+import { Typo, getSpacing } from 'ui/theme'
 
 type Props = {
   progressValue: SharedValue<number>
@@ -110,7 +110,7 @@ export const OfferImageCarousel: FunctionComponent<Props> = ({
   )
 }
 
-const CopyrightText = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
+const CopyrightText = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.colors.greySemiDark,
   width: 0,
   flexGrow: 1,

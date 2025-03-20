@@ -16,7 +16,7 @@ import { Checkbox } from 'ui/components/inputs/Checkbox/Checkbox'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { Ul } from 'ui/components/Ul'
 import { Close } from 'ui/svg/icons/Close'
-import { getSpacing, Spacer, TypoDS } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 const titleId = uuidv4()
 
@@ -104,9 +104,9 @@ export const AccessibilityFiltersModal: React.FC<AccessibilityModalProps> = ({
       }>
       <Spacer.Column numberOfSpaces={6} />
       <AccessibilityFiltersContainer>
-        <TypoDS.BodyAccent>
+        <Typo.BodyAccent>
           Filtrer par l’accessibilité des lieux en fonction d’un ou plusieurs handicaps
-        </TypoDS.BodyAccent>
+        </Typo.BodyAccent>
         <StyledCheckBox>
           <Checkbox
             isChecked={!!displayedDisabilities?.[DisplayedDisabilitiesEnum.VISUAL]}

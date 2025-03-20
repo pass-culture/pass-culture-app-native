@@ -21,7 +21,7 @@ import { StepButton } from 'ui/components/StepButton/StepButton'
 import { StepButtonState } from 'ui/components/StepButton/types'
 import { StepList } from 'ui/components/StepList/StepList'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
-import { getSpacing, Spacer, TypoDS } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const Stepper = () => {
@@ -139,7 +139,7 @@ export const Stepper = () => {
   )
 }
 
-const StyledTitle1 = styled(TypoDS.Title1).attrs(() => getHeadingAttrs(1))``
+const StyledTitle1 = styled(Typo.Title1).attrs(() => getHeadingAttrs(1))``
 
 const Container = styled.ScrollView.attrs(({ theme }) => ({
   contentContainerStyle: {
@@ -164,7 +164,7 @@ const QuitButtonContainer = styled.View({
 const StyledSubtitle = ({ subtitle }: { subtitle: string }) => (
   <React.Fragment>
     <Spacer.Column numberOfSpaces={2} />
-    <TypoDS.Body>{subtitle}</TypoDS.Body>
+    <Typo.Body>{subtitle}</Typo.Body>
     <Spacer.Column numberOfSpaces={8} />
   </React.Fragment>
 )

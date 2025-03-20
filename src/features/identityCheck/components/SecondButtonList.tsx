@@ -3,7 +3,7 @@ import React, { FunctionComponent } from 'react'
 import { SectionRow } from 'ui/components/SectionRow'
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { AccessibleIcon } from 'ui/svg/icons/types'
-import { TypoDS } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 interface SecondButtonListProps {
   leftIcon: FunctionComponent<AccessibleIcon>
@@ -17,7 +17,7 @@ export const SecondButtonList: FunctionComponent<SecondButtonListProps> = ({
   navigateTo,
   onBeforeNavigate,
 }) => {
-  const renderTitle = (title: string) => <TypoDS.BodyAccentXs>{title}</TypoDS.BodyAccentXs>
+  const renderTitle = (title: string) => <Typo.BodyAccentXs>{title}</Typo.BodyAccentXs>
 
   return (
     <SectionRow

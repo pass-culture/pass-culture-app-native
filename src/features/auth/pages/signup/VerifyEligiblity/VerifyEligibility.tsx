@@ -12,7 +12,7 @@ import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { GenericOfficialPage } from 'ui/pages/GenericOfficialPage'
 import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
-import { Spacer, TypoDS } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 
 export const VerifyEligibility: FunctionComponent = () => {
   useEffect(() => {
@@ -50,15 +50,15 @@ export const VerifyEligibility: FunctionComponent = () => {
           l’aide financière de l’État.
         </StyledBody>
         <Spacer.Column numberOfSpaces={4} />
-        <TypoDS.BodyAccent>
+        <Typo.BodyAccent>
           Assure-toi que toutes les informations que tu nous transmets sont correctes pour faciliter
           ton inscription.
-        </TypoDS.BodyAccent>
+        </Typo.BodyAccent>
       </View>
     </GenericOfficialPage>
   )
 }
 
-const StyledBody = styled(TypoDS.Body)(({ theme }) => ({
+const StyledBody = styled(Typo.Body)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))

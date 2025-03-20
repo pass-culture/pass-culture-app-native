@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { NoOffer } from 'ui/svg/icons/NoOffer'
-import { getSpacing, Spacer, TypoDS } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type NoSearchResultProps = {
@@ -73,22 +73,22 @@ const ContainerText = styled.View(({ theme }) => ({
     : {}),
 }))
 
-const Title = styled(TypoDS.Title4).attrs({
+const Title = styled(Typo.Title4).attrs({
   ...getHeadingAttrs(2),
 })(({ theme }) => ({
   color: theme.colors.black,
   marginTop: getSpacing(4),
 }))
 
-const Subtitle = styled(TypoDS.Body)(({ theme }) => ({
+const Subtitle = styled(Typo.Body)(({ theme }) => ({
   color: theme.colors.black,
 }))
 
-const ErrorDescription = styled(TypoDS.Body)(({ theme }) => ({
+const ErrorDescription = styled(Typo.Body)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))
 
-const ErrorDescriptionContainer = styled(TypoDS.Body)({
+const ErrorDescriptionContainer = styled(Typo.Body)({
   marginTop: getSpacing(6),
   textAlign: 'center',
 })

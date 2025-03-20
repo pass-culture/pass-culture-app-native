@@ -13,7 +13,7 @@ import { StepVariant } from 'ui/components/VerticalStepper/types'
 import { Warning } from 'ui/svg/icons/BicolorWarning'
 import { CakeOneCandle } from 'ui/svg/icons/CakeOneCandle'
 import { CakeTwoCandles } from 'ui/svg/icons/CakeTwoCandles'
-import { Spacer, TypoDS, getSpacing } from 'ui/theme'
+import { Spacer, Typo, getSpacing } from 'ui/theme'
 import { getNoHeadingAttrs } from 'ui/theme/typographyAttrs/getNoHeadingAttrs'
 
 type Age = 17 | 18
@@ -105,7 +105,7 @@ export const CreditTimelineV3 = ({ stepperProps, age, testID }: Props) => {
   )
 }
 
-const BodySecondary = styled(TypoDS.Body)(({ theme }) => ({
+const BodySecondary = styled(Typo.Body)(({ theme }) => ({
   color: theme.colors.secondary,
 }))
 
@@ -129,7 +129,7 @@ const GreyWarning = styled(Warning).attrs(({ theme }) => ({
   marginHorizontal: getSpacing(1.5),
 })
 
-const TitleSecondary = styled(TypoDS.Title3).attrs(getNoHeadingAttrs)(({ theme }) => ({
+const TitleSecondary = styled(Typo.Title3).attrs(getNoHeadingAttrs)(({ theme }) => ({
   color: theme.colors.secondary,
   marginBottom: getSpacing(2),
 }))

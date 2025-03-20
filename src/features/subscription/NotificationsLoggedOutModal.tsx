@@ -8,7 +8,7 @@ import { ButtonWithLinearGradient } from 'ui/components/buttons/buttonWithLinear
 import { AppModalWithIllustration } from 'ui/components/modals/AppModalWithIllustration'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { BicolorUserNotification } from 'ui/svg/icons/BicolorUserNotification'
-import { Spacer, TypoDS } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 
 interface Props {
   visible: boolean
@@ -65,7 +65,7 @@ const StyledAuthenticationButton = styled(AuthenticationButton).attrs(({ theme }
   linkColor: theme.colors.secondary,
 }))``
 
-const InformationText = styled(TypoDS.Body)({
+const InformationText = styled(Typo.Body)({
   textAlign: 'center',
 })
 

@@ -7,7 +7,7 @@ import styled from 'styled-components/native'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Li } from 'ui/components/Li'
 import { VerticalUl } from 'ui/components/Ul'
-import { getSpacing, Spacer, TypoDS } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 type SupportedBrowsers = Array<{
   browser: string
@@ -60,14 +60,14 @@ export const BrowserNotSupportedPage: React.FC<{
       <Container>
         <Title>{title}</Title>
         <Spacer.Column numberOfSpaces={5} />
-        <TypoDS.Body>
+        <Typo.Body>
           Nous ne supportons pas certaines versions et/ou navigateurs qui ne permettraient pas une
           expérience optimale.
-        </TypoDS.Body>
+        </Typo.Body>
         <Spacer.Column numberOfSpaces={5} />
-        <TypoDS.Body>
+        <Typo.Body>
           Voici ceux que nous te conseillons pour profiter pleinement du pass Culture&nbsp;:
-        </TypoDS.Body>
+        </Typo.Body>
         <VerticalUl>
           {supportedBrowsers.map(({ browser, version }) => {
             let displayedMessage = `- ${browser}`
@@ -82,9 +82,9 @@ export const BrowserNotSupportedPage: React.FC<{
           })}
         </VerticalUl>
         <Spacer.Column numberOfSpaces={5} />
-        <TypoDS.BodyAccentXs>
+        <Typo.BodyAccentXs>
           Mets vite à jour ton navigateur en allant dans les paramètres
-        </TypoDS.BodyAccentXs>
+        </Typo.BodyAccentXs>
         <Spacer.Column numberOfSpaces={2} />
         <ButtonPrimary
           wording="J’accède au pass Culture sans mettre à jour mon navigateur"
@@ -111,10 +111,10 @@ const Container = styled.View({
   padding: getSpacing(6),
 })
 
-const Title = styled(TypoDS.Title3)({
+const Title = styled(Typo.Title3)({
   textAlign: 'center',
 })
 
-const StyledBody = styled(TypoDS.Body)({
+const StyledBody = styled(Typo.Body)({
   padding: getSpacing(5),
 })

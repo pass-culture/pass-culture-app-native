@@ -11,7 +11,7 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { BicolorIdCardWithMagnifyingGlass } from 'ui/svg/icons/BicolorIdCardWithMagnifyingGlass'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { Info } from 'ui/svg/icons/Info'
-import { getSpacing, Spacer, TypoDS } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 export const EduConnectForm = () => {
   const { error, openEduConnectTab } = useEduConnectLogin()
@@ -79,12 +79,12 @@ const Center = styled.View({
   padding: getSpacing(7),
 })
 
-const StyledBody = styled(TypoDS.Body)(({ theme }) => ({
+const StyledBody = styled(Typo.Body)(({ theme }) => ({
   textAlign: 'center',
   color: theme.colors.greyDark,
 }))
 
-const StyledButtonText = styled(TypoDS.BodyAccent)(({ theme }) => ({
+const StyledButtonText = styled(Typo.BodyAccent)(({ theme }) => ({
   textAlign: 'center',
   color: theme.colors.greyDark,
 }))

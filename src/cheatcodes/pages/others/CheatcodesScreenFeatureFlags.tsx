@@ -9,7 +9,7 @@ import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonI
 import { Separator } from 'ui/components/Separator'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
-import { Spacer, TypoDS, getSpacing } from 'ui/theme'
+import { Spacer, Typo, getSpacing } from 'ui/theme'
 
 export const CheatcodesScreenFeatureFlags = () => {
   const featureFlags = useFeatureFlagAllQuery()
@@ -67,25 +67,25 @@ export const CheatcodesScreenFeatureFlags = () => {
         />
       ) : null}
       <Spacer.Column numberOfSpaces={6} />
-      <TypoDS.BodyItalicAccent>
+      <Typo.BodyItalicAccent>
         Nombre de feature flags&nbsp;: {totalFeatureFlags}
-      </TypoDS.BodyItalicAccent>
+      </Typo.BodyItalicAccent>
       <StyledSeparator />
       <SectionList
         sections={sections}
         keyExtractor={(item) => item.featureFlag}
         renderSectionHeader={({ section: { title, data } }) => (
           <React.Fragment>
-            <TypoDS.Title2>
+            <Typo.Title2>
               {title} ({data.length})
-            </TypoDS.Title2>
+            </Typo.Title2>
             <Spacer.Column numberOfSpaces={5} />
           </React.Fragment>
         )}
         renderItem={({ item, index, section }) => (
           <React.Fragment>
             <StyledFeatureFlag>
-              <TypoDS.Body numberOfLines={1}>{item.featureFlag}</TypoDS.Body>
+              <Typo.Body numberOfLines={1}>{item.featureFlag}</Typo.Body>
               <StyledTitle4 active={!!item.isFeatureFlagActive}>
                 {item.isFeatureFlagActive ? 'Actif' : 'Inactif'}
               </StyledTitle4>
@@ -105,7 +105,7 @@ const StyledFeatureFlag = styled.View({
   alignItems: 'center',
 })
 
-const StyledTitle4 = styled(TypoDS.Title4)<{ active: boolean }>(({ theme, active }) => ({
+const StyledTitle4 = styled(Typo.Title4)<{ active: boolean }>(({ theme, active }) => ({
   color: active ? theme.colors.greenValid : theme.colors.error,
 }))
 

@@ -15,7 +15,7 @@ import { NonEligible, TutorialTypes } from 'features/tutorial/enums'
 import { TutorialPage } from 'features/tutorial/pages/TutorialPage'
 import { analytics } from 'libs/analytics/provider'
 import { storage } from 'libs/storage'
-import { Spacer, TypoDS } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 import { getNoHeadingAttrs } from 'ui/theme/typographyAttrs/getNoHeadingAttrs'
 
 type Props = StackScreenProps<TutorialRootStackParamList, 'EligibleUserAgeSelection'>
@@ -116,10 +116,10 @@ const AgeButtonContent = ({
   </Title4Text>
 )
 
-const Title3Text = styled(TypoDS.Title3).attrs(getNoHeadingAttrs)(({ theme }) => ({
+const Title3Text = styled(Typo.Title3).attrs(getNoHeadingAttrs)(({ theme }) => ({
   color: theme.colors.secondary,
 }))
 
-const Title4Text = styled(TypoDS.Title4).attrs(getNoHeadingAttrs)(({ theme }) => ({
+const Title4Text = styled(Typo.Title4).attrs(getNoHeadingAttrs)(({ theme }) => ({
   color: theme.colors.secondary,
 }))

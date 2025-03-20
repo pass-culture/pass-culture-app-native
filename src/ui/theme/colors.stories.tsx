@@ -4,7 +4,7 @@ import colorAlpha from 'color-alpha'
 import React, { FunctionComponent, useState } from 'react'
 import styled from 'styled-components/native'
 
-import { TypoDS, getSpacing } from 'ui/theme'
+import { Typo, getSpacing } from 'ui/theme'
 
 import { ColorsEnum, UniqueColors } from './colors'
 
@@ -22,9 +22,9 @@ type ColorProps = RectangleProps & {
 
 const Template: ComponentStory<React.FC> = () => (
   <React.Fragment>
-    <TypoDS.Title2>ColorsEnum</TypoDS.Title2>
+    <Typo.Title2>ColorsEnum</Typo.Title2>
     <ColorsSection colorsPalette={ColorsEnum} />
-    <TypoDS.Title2>UniqueColors</TypoDS.Title2>
+    <Typo.Title2>UniqueColors</Typo.Title2>
     <ColorsSection colorsPalette={UniqueColors} />
   </React.Fragment>
 )
@@ -45,8 +45,8 @@ const Color: FunctionComponent<ColorProps> = ({ name, color }) => {
       <Rectangle color={color} onPress={() => handleColorClick(color)}>
         {copiedColor === color ? <StyledTitle4>Copié&nbsp;!</StyledTitle4> : null}
       </Rectangle>
-      <TypoDS.BodyAccentXs>{name}</TypoDS.BodyAccentXs>
-      <TypoDS.BodyXs>{color}</TypoDS.BodyXs>
+      <Typo.BodyAccentXs>{name}</Typo.BodyAccentXs>
+      <Typo.BodyXs>{color}</Typo.BodyXs>
     </ColorContainer>
   )
 }
@@ -66,7 +66,7 @@ const Rectangle = styled.TouchableOpacity<RectangleProps>(({ color, theme }) => 
   justifyContent: 'center',
 }))
 
-const StyledTitle4 = styled(TypoDS.Title4)(({ theme }) => ({
+const StyledTitle4 = styled(Typo.Title4)(({ theme }) => ({
   position: 'absolute',
   color: theme.colors.greenValid,
   backgroundColor: theme.colors.white,

@@ -13,7 +13,7 @@ import { ButtonWithLinearGradient } from 'ui/components/buttons/buttonWithLinear
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { ExternalSiteFilled as ExternalSiteFilledIcon } from 'ui/svg/icons/ExternalSiteFilled'
-import { getSpacing, TypoDS } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export type BookingDetailsTicketContentProps = {
@@ -113,7 +113,7 @@ const Container = styled.View(({ theme }) => ({
   width: '100%',
 }))
 
-const Title = styled(TypoDS.Title3).attrs(getHeadingAttrs(1))({
+const Title = styled(Typo.Title3).attrs(getHeadingAttrs(1))({
   textAlign: 'center',
   maxWidth: '100%',
   paddingHorizontal: getSpacing(2),

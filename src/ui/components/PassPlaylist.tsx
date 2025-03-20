@@ -6,7 +6,7 @@ import { Playlist, RenderFooterItem } from 'ui/components/Playlist'
 import { SeeMore } from 'ui/components/SeeMore'
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { TypoDS } from 'ui/theme'
+import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 import { SeeMoreWithEye } from './SeeMoreWithEye'
@@ -117,9 +117,9 @@ const Container = styled(ViewGap)(({ theme }) => ({
   paddingBottom: theme.home.spaceBetweenModules,
 }))
 
-const DefaultTitle = styled(TypoDS.Title3).attrs(getHeadingAttrs(2))``
+const DefaultTitle = styled(Typo.Title3).attrs(getHeadingAttrs(2))``
 
-const StyledSubtitle = styled(TypoDS.BodyAccentXs).attrs({
+const StyledSubtitle = styled(Typo.BodyAccentXs).attrs({
   numberOfLines: 2,
 })(({ theme }) => ({
   marginHorizontal: theme.contentPage.marginHorizontal,

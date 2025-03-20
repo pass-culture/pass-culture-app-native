@@ -13,7 +13,7 @@ import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { useLogTypeFromRemoteConfig } from 'libs/hooks/useLogTypeFromRemoteConfig'
 import { AsyncError, ScreenError, LogTypeEnum } from 'libs/monitoring/errors'
 import { QueryKeys } from 'libs/queryKeys'
-import { TypoDS } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 export const cheatcodesNavigationErrorsButtons: [CheatcodesButtonsWithSubscreensProps] = [
   {
@@ -117,7 +117,7 @@ export const CheatcodesNavigationErrors: FunctionComponent = () => {
   )
 }
 
-const CenteredText = styled(TypoDS.BodyAccentXs)({
+const CenteredText = styled(Typo.BodyAccentXs)({
   width: '100%',
   textAlign: 'center',
 })

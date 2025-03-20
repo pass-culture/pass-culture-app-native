@@ -8,7 +8,7 @@ import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
 import { Spacer } from 'ui/theme'
-import { TypoDS } from 'ui/theme/designSystemTypographie'
+import { Typo } from 'ui/theme/typography'
 
 type CreditInfoProps = {
   totalCredit: DomainsCredit['all']
@@ -32,6 +32,6 @@ export function CreditInfo({ totalCredit }: PropsWithChildren<CreditInfoProps>) 
   )
 }
 
-const Title = styled(TypoDS.Title1)(({ theme }) => ({
+const Title = styled(Typo.Title1)(({ theme }) => ({
   color: theme.colors.secondary,
 }))

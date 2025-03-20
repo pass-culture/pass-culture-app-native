@@ -2,7 +2,7 @@ import React, { FunctionComponent, ReactNode } from 'react'
 import styled from 'styled-components/native'
 
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { TypoDS, getSpacing } from 'ui/theme'
+import { Typo, getSpacing } from 'ui/theme'
 
 type InfoCounterProps = {
   icon: ReactNode
@@ -13,7 +13,7 @@ export const InfoCounter: FunctionComponent<InfoCounterProps> = ({ icon, text })
   return (
     <Container gap={1}>
       {icon}
-      <TypoDS.BodyAccentS>{text}</TypoDS.BodyAccentS>
+      <Typo.BodyAccentS>{text}</Typo.BodyAccentS>
     </Container>
   )
 }

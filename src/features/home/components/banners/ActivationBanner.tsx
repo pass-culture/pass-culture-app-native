@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { BannerWithBackground } from 'ui/components/ModuleBanner/BannerWithBackground'
 import { AccessibleIcon } from 'ui/svg/icons/types'
-import { TypoDS } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 type ActivationBannerProps = {
   title: string
@@ -29,10 +29,10 @@ export const ActivationBanner = ({ title, subtitle, icon, from }: ActivationBann
   )
 }
 
-const StyledButtonText = styled(TypoDS.BodyAccent)(({ theme }) => ({
+const StyledButtonText = styled(Typo.BodyAccent)(({ theme }) => ({
   color: theme.colors.white,
 }))
 
-const StyledBodyText = styled(TypoDS.Body)(({ theme }) => ({
+const StyledBodyText = styled(Typo.Body)(({ theme }) => ({
   color: theme.colors.white,
 }))

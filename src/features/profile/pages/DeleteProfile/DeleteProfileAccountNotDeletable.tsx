@@ -12,7 +12,7 @@ import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
 import { BellFilled } from 'ui/svg/icons/BellFilled'
 import { BicolorError } from 'ui/svg/icons/BicolorError'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
-import { TypoDS } from 'ui/theme'
+import { Typo } from 'ui/theme'
 import { SPACE } from 'ui/theme/constants'
 
 export const DeleteProfileAccountNotDeletable: FC = () => {
@@ -33,11 +33,11 @@ export const DeleteProfileAccountNotDeletable: FC = () => {
         icon: BellFilled,
       }}>
       <ViewGap gap={6}>
-        <TypoDS.BodyS>
+        <Typo.BodyS>
           Pour éviter les cas de fraude et te permettre d’accéder à ton crédit, il est nécessaire de
           garder ton compte pour l’instant.
-        </TypoDS.BodyS>
-        <TypoDS.BodyS>
+        </Typo.BodyS>
+        <Typo.BodyS>
           À tes 21 ans, ton compte pourra être supprimé et tu pourras faire une demande pour
           anonymiser tes données. Tu peux en savoir plus en{SPACE}
           <ExternalTouchableLink
@@ -46,11 +46,11 @@ export const DeleteProfileAccountNotDeletable: FC = () => {
             icon={ExternalSiteFilled}
             externalNav={{ url: env.FAQ_LINK_RIGHT_TO_ERASURE }}
           />
-        </TypoDS.BodyS>
-        <TypoDS.BodyS>
+        </Typo.BodyS>
+        <Typo.BodyS>
           Pour ne plus recevoir de communications du pass Culture, tu peux désactiver tes
           notifications
-        </TypoDS.BodyS>
+        </Typo.BodyS>
       </ViewGap>
     </GenericInfoPageWhite>
   )

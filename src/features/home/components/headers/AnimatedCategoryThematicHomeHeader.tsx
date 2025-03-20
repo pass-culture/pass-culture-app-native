@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 
 import { BlackBackground } from 'features/home/components/headers/BlackBackground'
 import { CategoryThematicHeader } from 'features/home/types'
-import { getSpacing, Spacer, TypoDS } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { gradientImagesMapping } from 'ui/theme/gradientImagesMapping'
 
 export const MOBILE_HEADER_HEIGHT = 45
@@ -36,7 +36,7 @@ const AppHeader: FunctionComponent<AppHeaderProps> = ({
               <Spacer.Column numberOfSpaces={1} />
             </React.Fragment>
           ) : null}
-          <TypoDS.Title1 numberOfLines={2}>{title}</TypoDS.Title1>
+          <Typo.Title1 numberOfLines={2}>{title}</Typo.Title1>
         </AnimatedBackground>
       </TextContainer>
       <AnimatedBackgroundSubscribeButton
@@ -91,7 +91,7 @@ const SubscribeButtonContainer = styled.View({
   right: getSpacing(6),
 })
 
-const Subtitle = styled(TypoDS.Title4)(({ theme }) => ({
+const Subtitle = styled(Typo.Title4)(({ theme }) => ({
   color: theme.colors.white,
 }))
 

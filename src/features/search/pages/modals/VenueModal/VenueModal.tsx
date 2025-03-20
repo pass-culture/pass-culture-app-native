@@ -13,7 +13,7 @@ import { Close } from 'ui/svg/icons/Close'
 import { MagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
 import { MagnifyingGlassFilled } from 'ui/svg/icons/MagnifyingGlassFilled'
 import { getSpacing } from 'ui/theme'
-import { TypoDS } from 'ui/theme/designSystemTypographie'
+import { Typo } from 'ui/theme/typography'
 
 interface Props extends VenueModalHookProps {
   visible: boolean
@@ -64,7 +64,7 @@ export const VenueModal = ({ visible, dismissModal }: Props) => {
       <StyledScrollView>
         <SubtitleContainer>
           <SearchIcon />
-          <TypoDS.BodyAccent>Trouver un lieu culturel</TypoDS.BodyAccent>
+          <Typo.BodyAccent>Trouver un lieu culturel</Typo.BodyAccent>
         </SubtitleContainer>
         <Container>
           <SearchInput

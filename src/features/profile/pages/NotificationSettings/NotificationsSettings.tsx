@@ -30,7 +30,7 @@ import { Separator } from 'ui/components/Separator'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
 import { Info } from 'ui/svg/icons/Info'
-import { getSpacing, Spacer, TypoDS } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export type NotificationsSettingsState = {
@@ -162,11 +162,11 @@ export const NotificationsSettings = () => {
             <Spacer.Column numberOfSpaces={6} />
           </React.Fragment>
         )}
-        <TypoDS.Title4 {...getHeadingAttrs(2)}>Type d’alerte</TypoDS.Title4>
+        <Typo.Title4 {...getHeadingAttrs(2)}>Type d’alerte</Typo.Title4>
         <Spacer.Column numberOfSpaces={4} />
-        <TypoDS.Body>
+        <Typo.Body>
           Reste informé des actualités du pass Culture et ne rate aucun de nos bons plans.
-        </TypoDS.Body>
+        </Typo.Body>
         <Spacer.Column numberOfSpaces={2} />
         <Form.Flex>
           <SectionWithSwitchContainer>
@@ -178,10 +178,10 @@ export const NotificationsSettings = () => {
             />
           </SectionWithSwitchContainer>
           {!state.allowEmails && isLoggedIn ? (
-            <TypoDS.BodyAccentXs>
+            <Typo.BodyAccentXs>
               Tu continueras à recevoir par e-mail des informations essentielles concernant ton
               compte.
-            </TypoDS.BodyAccentXs>
+            </Typo.BodyAccentXs>
           ) : null}
           {Platform.OS === 'web' ? null : (
             <SectionWithSwitchContainer>
@@ -196,7 +196,7 @@ export const NotificationsSettings = () => {
           <Spacer.Column numberOfSpaces={4} />
           <Separator.Horizontal />
           <Spacer.Column numberOfSpaces={8} />
-          <TypoDS.Title4 {...getHeadingAttrs(2)}>Tes thèmes suivis</TypoDS.Title4>
+          <Typo.Title4 {...getHeadingAttrs(2)}>Tes thèmes suivis</Typo.Title4>
           {!isLoggedIn || areNotificationsEnabled ? null : (
             <React.Fragment>
               <Spacer.Column numberOfSpaces={4} />

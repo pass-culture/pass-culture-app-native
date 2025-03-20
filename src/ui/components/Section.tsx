@@ -1,7 +1,7 @@
 import React, { PropsWithChildren } from 'react'
 import styled from 'styled-components/native'
 
-import { getSpacing, Spacer, TypoDS } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 import { Separator } from './Separator'
@@ -25,6 +25,6 @@ const Container = styled.View({
   paddingTop: getSpacing(2),
 })
 
-const CaptionNeutralInfo = styled(TypoDS.BodyAccentXs).attrs(getHeadingAttrs(2))(({ theme }) => ({
+const CaptionNeutralInfo = styled(Typo.BodyAccentXs).attrs(getHeadingAttrs(2))(({ theme }) => ({
   color: theme.colors.greyDark,
 }))

@@ -11,12 +11,12 @@ import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonI
 import { Separator } from 'ui/components/Separator'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
-import { Spacer, TypoDS, getSpacing } from 'ui/theme'
+import { Spacer, Typo, getSpacing } from 'ui/theme'
 
 const ConfigItem = ({ label, value }: { label: string; value: GenericRemoteConfig }) => (
   <React.Fragment>
-    <TypoDS.Title4>{label}:</TypoDS.Title4>
-    <TypoDS.Body>{JSON.stringify(value, null, 2)}</TypoDS.Body>
+    <Typo.Title4>{label}:</Typo.Title4>
+    <Typo.Body>{JSON.stringify(value, null, 2)}</Typo.Body>
   </React.Fragment>
 )
 
@@ -37,7 +37,7 @@ export const CheatcodesScreenRemoteConfig = () => {
           <FlatList
             data={value}
             keyExtractor={(_, index) => index.toString()}
-            renderItem={({ item }) => <TypoDS.Body>{JSON.stringify(item)}</TypoDS.Body>}
+            renderItem={({ item }) => <Typo.Body>{JSON.stringify(item)}</Typo.Body>}
           />
         </React.Fragment>
       )

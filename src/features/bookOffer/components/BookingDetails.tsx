@@ -35,7 +35,7 @@ import { Loader } from 'ui/components/Loader'
 import { useModal } from 'ui/components/modals/useModal'
 import { Error } from 'ui/svg/icons/Error'
 import { LocationBuilding } from 'ui/svg/icons/LocationBuilding'
-import { getSpacing, Spacer, TypoDS } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export interface BookingDetailsProps {
@@ -201,7 +201,7 @@ export function BookingDetails({ stocks, onPressBookOffer, isLoading }: BookingD
       />
       <Spacer.Column numberOfSpaces={6} />
 
-      <TypoDS.Title4 {...getHeadingAttrs(2)}>Informations</TypoDS.Title4>
+      <Typo.Title4 {...getHeadingAttrs(2)}>Informations</Typo.Title4>
       <Spacer.Column numberOfSpaces={6} />
       <BookingInformations />
       <Spacer.Column numberOfSpaces={6} />
@@ -225,7 +225,7 @@ export function BookingDetails({ stocks, onPressBookOffer, isLoading }: BookingD
         Icon={LocationBuilding}
         message={
           <VenueContainer>
-            <TypoDS.BodyAccentXs testID="venueName">{venueName}</TypoDS.BodyAccentXs>
+            <Typo.BodyAccentXs testID="venueName">{venueName}</Typo.BodyAccentXs>
             <Spacer.Column numberOfSpaces={1} />
             <VenueAddress testID="venueAddress">{venueFullAddress}</VenueAddress>
           </VenueContainer>
@@ -311,7 +311,7 @@ const Separator = styled.View(({ theme }) => ({
   backgroundColor: theme.colors.greyLight,
 }))
 
-const Caption = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
+const Caption = styled(Typo.BodyAccentXs)(({ theme }) => ({
   marginTop: getSpacing(1),
   textAlign: 'center',
   color: theme.colors.greyDark,
@@ -322,11 +322,11 @@ const VenueTitleContainer = styled.View({
   justifyContent: 'space-between',
 })
 
-const VenueTitleText = styled(TypoDS.Title4).attrs(getHeadingAttrs(2))({
+const VenueTitleText = styled(Typo.Title4).attrs(getHeadingAttrs(2))({
   flexShrink: 1,
 })
 
-const VenueAddress = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
+const VenueAddress = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))
 

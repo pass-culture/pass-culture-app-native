@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { getSpacing, Spacer, TypoDS } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 type Props = {
   title: string
@@ -16,7 +16,7 @@ export const PageHeader = ({ title, numberOfLines = 1, subtitle, children }: Pro
       <Spacer.TopScreen />
       <HeaderContainer>
         <TitleContainer>
-          <TypoDS.Title1 numberOfLines={numberOfLines}>{title}</TypoDS.Title1>
+          <Typo.Title1 numberOfLines={numberOfLines}>{title}</Typo.Title1>
           <Spacer.Column numberOfSpaces={1} />
           {subtitle ? <CaptionSubtitle>{subtitle}</CaptionSubtitle> : null}
         </TitleContainer>
@@ -38,6 +38,6 @@ const TitleContainer = styled.View({
   flexShrink: 1,
 })
 
-const CaptionSubtitle = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
+const CaptionSubtitle = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))

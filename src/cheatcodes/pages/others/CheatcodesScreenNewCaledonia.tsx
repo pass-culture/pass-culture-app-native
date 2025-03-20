@@ -13,7 +13,7 @@ import { DEFAULT_PACIFIC_FRANC_TO_EURO_RATE } from 'shared/exchangeRates/default
 import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
 import { TextInput } from 'ui/components/inputs/TextInput'
 import { Separator } from 'ui/components/Separator'
-import { Spacer, TypoDS, getSpacing } from 'ui/theme'
+import { Spacer, Typo, getSpacing } from 'ui/theme'
 import { SPACE } from 'ui/theme/constants'
 
 export const CheatcodesScreenNewCaledonia = () => {
@@ -31,33 +31,33 @@ export const CheatcodesScreenNewCaledonia = () => {
 
   return (
     <CheatcodesTemplateScreen title="Nouvelle-Calédonie 🇳🇨" flexDirection="column">
-      <TypoDS.Body>
+      <Typo.Body>
         FeatureFlag
         {SPACE}
-        <TypoDS.Title4>enablePacificFrancCurrency</TypoDS.Title4>
+        <Typo.Title4>enablePacificFrancCurrency</Typo.Title4>
         &nbsp;:
-      </TypoDS.Body>
+      </Typo.Body>
       <StyledTitle3 active={enablePacificFrancCurrency}>
         {enablePacificFrancCurrency === true ? 'Actif' : 'Inactif'}
       </StyledTitle3>
       <StyledSeparator />
-      <TypoDS.Body>Localisation de l’utilisateur&nbsp;:</TypoDS.Body>
-      <TypoDS.Title3>{selectedPlace ? selectedPlace?.info : 'Non localisé'}</TypoDS.Title3>
-      <TypoDS.Body>Code postal renseigné par l’utilisateur&nbsp;:</TypoDS.Body>
-      <TypoDS.Title3>
+      <Typo.Body>Localisation de l’utilisateur&nbsp;:</Typo.Body>
+      <Typo.Title3>{selectedPlace ? selectedPlace?.info : 'Non localisé'}</Typo.Title3>
+      <Typo.Body>Code postal renseigné par l’utilisateur&nbsp;:</Typo.Body>
+      <Typo.Title3>
         {user ? (user.postalCode ? `${user.postalCode}` : 'Non renseigné') : 'Non connecté'}
-      </TypoDS.Title3>
-      <TypoDS.Body>Devise renvoyé par l’API&nbsp;:</TypoDS.Body>
-      <TypoDS.Title3>{user?.currency ? `${user.currency}` : 'Non connecté'}</TypoDS.Title3>
+      </Typo.Title3>
+      <Typo.Body>Devise renvoyé par l’API&nbsp;:</Typo.Body>
+      <Typo.Title3>{user?.currency ? `${user.currency}` : 'Non connecté'}</Typo.Title3>
       <StyledSeparator />
-      <TypoDS.Body>Devise affichée à l’utilisateur&nbsp;:</TypoDS.Body>
-      <TypoDS.Title3>{currency}</TypoDS.Title3>
+      <Typo.Body>Devise affichée à l’utilisateur&nbsp;:</Typo.Body>
+      <Typo.Title3>{currency}</Typo.Title3>
       <StyledSeparator />
-      <TypoDS.Body>Taux de change depuis le backend&nbsp;:</TypoDS.Body>
-      <TypoDS.Title3>{pacificFrancToEuroRate}</TypoDS.Title3>
+      <Typo.Body>Taux de change depuis le backend&nbsp;:</Typo.Body>
+      <Typo.Title3>{pacificFrancToEuroRate}</Typo.Title3>
       <StyledSeparator />
-      <TypoDS.Body>Taux de change par défaut côté frontend&nbsp;:</TypoDS.Body>
-      <TypoDS.Title3>{DEFAULT_PACIFIC_FRANC_TO_EURO_RATE}</TypoDS.Title3>
+      <Typo.Body>Taux de change par défaut côté frontend&nbsp;:</Typo.Body>
+      <Typo.Title3>{DEFAULT_PACIFIC_FRANC_TO_EURO_RATE}</Typo.Title3>
       <StyledSeparator />
       <TextInput
         label="Montant en&nbsp;€ pour conversion&nbsp;:"
@@ -70,21 +70,21 @@ export const CheatcodesScreenNewCaledonia = () => {
         textContentType="none" // Keep textContentType="none" to prevent incorrect suggestions.
       />
       <Spacer.Column numberOfSpaces={4} />
-      <TypoDS.Body>Franc Pacifique sans arrondi&nbsp;:</TypoDS.Body>
-      <TypoDS.Title3>
+      <Typo.Body>Franc Pacifique sans arrondi&nbsp;:</Typo.Body>
+      <Typo.Title3>
         {convertEuroToPacificFranc(priceInEuro, pacificFrancToEuroRate)}&nbsp;F
-      </TypoDS.Title3>
+      </Typo.Title3>
       <Spacer.Column numberOfSpaces={4} />
-      <TypoDS.Body>Franc Pacifique avec l’arrondi à l’unité&nbsp;:</TypoDS.Body>
-      <TypoDS.Title3>
+      <Typo.Body>Franc Pacifique avec l’arrondi à l’unité&nbsp;:</Typo.Body>
+      <Typo.Title3>
         {convertEuroToPacificFranc(priceInEuro, pacificFrancToEuroRate, RoundUnit.UNITS)}&nbsp;F
-      </TypoDS.Title3>
+      </Typo.Title3>
       <StyledSeparator />
     </CheatcodesTemplateScreen>
   )
 }
 
-const StyledTitle3 = styled(TypoDS.Title3)<{ active: boolean }>(({ theme, active }) => ({
+const StyledTitle3 = styled(Typo.Title3)<{ active: boolean }>(({ theme, active }) => ({
   color: active ? theme.colors.greenValid : theme.colors.error,
 }))
 

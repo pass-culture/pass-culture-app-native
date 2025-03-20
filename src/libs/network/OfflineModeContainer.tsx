@@ -2,7 +2,7 @@ import React, { ReactNode, useState, useEffect, useRef } from 'react'
 import styled from 'styled-components/native'
 
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
-import { getSpacing, Spacer, TypoDS } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 const THIRTY_SECONDS = 15000
 
@@ -58,6 +58,6 @@ const OfflineModeBanner = styled.View(({ theme }) => ({
   alignItems: 'center',
 }))
 
-const OfflineModeBannerText = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
+const OfflineModeBannerText = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.offlineMode.banner.textColor,
 }))

@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
-import { getSpacing, Spacer, TypoDS } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 export const ABTestingPOC: React.FC = () => {
   const { test_param } = useRemoteConfigQuery()
@@ -12,9 +12,9 @@ export const ABTestingPOC: React.FC = () => {
     'Voir les expériences sur la console Firebase\u00a0: > Menu "Engager" de la barre de gauche > Cliquer sur le bouton "A/B testing" > Cliquer sur un des onglets selon l’état du test > Cliquer sur le test'
   return (
     <StyledView>
-      <TypoDS.Title2>{message}</TypoDS.Title2>
+      <Typo.Title2>{message}</Typo.Title2>
       <Spacer.Column numberOfSpaces={5} />
-      <TypoDS.Body>{instructionsText}</TypoDS.Body>
+      <Typo.Body>{instructionsText}</Typo.Body>
     </StyledView>
   )
 }

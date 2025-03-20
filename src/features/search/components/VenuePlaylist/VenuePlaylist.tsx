@@ -22,7 +22,7 @@ import { useModal } from 'ui/components/modals/useModal'
 import { Playlist } from 'ui/components/Playlist'
 import { Separator } from 'ui/components/Separator'
 import { Map } from 'ui/svg/icons/Map'
-import { getSpacing, LENGTH_XS, LENGTH_XXS, Spacer, TypoDS } from 'ui/theme'
+import { getSpacing, LENGTH_XS, LENGTH_XXS, Spacer, Typo } from 'ui/theme'
 
 export const VENUE_ITEM_HEIGHT = LENGTH_XXS
 export const VENUE_ITEM_WIDTH = LENGTH_XS
@@ -144,7 +144,7 @@ export const VenuePlaylist: React.FC<Props> = ({
   )
 }
 
-const Title = styled(TypoDS.Title3)({
+const Title = styled(Typo.Title3)({
   marginHorizontal: getSpacing(6),
 })
 

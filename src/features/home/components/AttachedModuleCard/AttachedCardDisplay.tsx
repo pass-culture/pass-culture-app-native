@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 import { OfferName } from 'ui/components/tiles/OfferName'
 import { ClockFilled } from 'ui/svg/icons/ClockFilled'
-import { getSpacing, Spacer, TypoDS } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 interface AttachedCardDisplayProps {
   title: string
@@ -45,7 +45,7 @@ export const AttachedCardDisplay: React.FC<AttachedCardDisplayProps> = ({
           </ImageContainer>
         ) : null}
         <CentralColumn>
-          {subtitle ? <TypoDS.BodyAccentXs>{subtitle}</TypoDS.BodyAccentXs> : null}
+          {subtitle ? <Typo.BodyAccentXs>{subtitle}</Typo.BodyAccentXs> : null}
           <OfferName title={title} />
           {details
             ? details?.map((detail) => (
@@ -56,7 +56,7 @@ export const AttachedCardDisplay: React.FC<AttachedCardDisplayProps> = ({
         <RightColumn>
           {rightTagLabel ? (
             <TagWrapper label={rightTagLabel}>
-              <TypoDS.BodyAccentXs>{rightTagLabel}</TypoDS.BodyAccentXs>
+              <Typo.BodyAccentXs>{rightTagLabel}</Typo.BodyAccentXs>
             </TagWrapper>
           ) : null}
           <Spacer.Flex />
@@ -71,7 +71,7 @@ export const AttachedCardDisplay: React.FC<AttachedCardDisplayProps> = ({
       {bottomBannerText ? (
         <BottomBanner testId="bottom-banner">
           <ClockFilled />
-          <TypoDS.BodyAccentXs>{bottomBannerText}</TypoDS.BodyAccentXs>
+          <Typo.BodyAccentXs>{bottomBannerText}</Typo.BodyAccentXs>
         </BottomBanner>
       ) : null}
     </React.Fragment>
@@ -133,6 +133,6 @@ const Container = styled.View<{ shouldFixHeight: boolean; bottomBannerText: stri
   })
 )
 
-const CaptionNeutralInfo = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
+const CaptionNeutralInfo = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))

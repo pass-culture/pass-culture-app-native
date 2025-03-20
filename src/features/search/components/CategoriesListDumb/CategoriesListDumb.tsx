@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 import { VenueMapLocationModal } from 'features/location/components/VenueMapLocationModal'
 import { VenueMapBlock } from 'features/venueMap/components/VenueMapBlock/VenueMapBlock'
 import { CategoryButton, CategoryButtonProps } from 'shared/categoryButton/CategoryButton'
-import { getSpacing, TypoDS } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -92,7 +92,7 @@ const CategoriesButtonsContainer = styled.View(({ theme }) => ({
       }),
 }))
 
-const CategoriesTitleV2 = styled(TypoDS.Title4).attrs({
+const CategoriesTitleV2 = styled(Typo.Title4).attrs({
   children: 'Parcours les catégories',
   ...getHeadingAttrs(2),
 })({
