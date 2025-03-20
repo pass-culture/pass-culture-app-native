@@ -24,6 +24,7 @@ export enum QueryKeys {
   FEATURE_FLAGS = 'featureFlags',
   FILMS_OFFERS = 'filmsOffers',
   FIRESTORE_UBBLE_ETA_MESSAGE = 'firestoreUbbleETAMessage',
+  HEADLINE_OFFERS_COUNT = 'headlineOffersCount',
   HIGHLIGHT_OFFER = 'highlightOffer',
   HOME_BANNER = 'homeBanner',
   HOME_MODULE = 'homeModule',

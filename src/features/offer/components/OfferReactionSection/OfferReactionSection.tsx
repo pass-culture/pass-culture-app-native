@@ -1,29 +1,44 @@
 import React, { FunctionComponent } from 'react'
+import { View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { InfoCounter } from 'features/offer/components/InfoCounter/InfoCounter'
+import { getRecommendationText } from 'features/offer/helpers/getRecommendationText/getRecommendationText'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { BookClubCertification } from 'ui/svg/BookClubCertification'
 import { ThumbUpFilled } from 'ui/svg/icons/ThumbUpFilled'
+import { Star } from 'ui/svg/Star'
 
 type Props = {
   likesCount?: number
   chroniclesCount?: number
+  headlineOffersCount?: number
 }
 
-export const OfferReactionSection: FunctionComponent<Props> = ({ likesCount, chroniclesCount }) => {
+export const OfferReactionSection: FunctionComponent<Props> = ({
+  likesCount,
+  chroniclesCount,
+  headlineOffersCount,
+}) => {
   const likesCounterElement = likesCount ? <LikesInfoCounter text={`${likesCount} j’aime`} /> : null
   const chroniclesCounterElement = chroniclesCount ? (
     <ChroniclesInfoCounter text={`${chroniclesCount} avis`} />
   ) : null
+  const headlineOffersCounterElement = headlineOffersCount ? (
+    <HeadlineOffersCount text={getRecommendationText(headlineOffersCount)} />
+  ) : null
 
-  if (!(likesCounterElement || chroniclesCounterElement)) return null
+  if (!(likesCounterElement || chroniclesCounterElement || headlineOffersCounterElement))
+    return null
 
   return (
-    <InfosCounterContainer gap={2}>
-      {likesCounterElement}
-      {chroniclesCounterElement}
-    </InfosCounterContainer>
+    <ViewGap gap={4}>
+      <InfosCounterContainer gap={2}>
+        {likesCounterElement}
+        {chroniclesCounterElement}
+      </InfosCounterContainer>
+      <View>{headlineOffersCounterElement}</View>
+    </ViewGap>
   )
 }
 
@@ -46,4 +61,8 @@ const LikesInfoCounter = styled(InfoCounter).attrs(() => ({
 
 const ChroniclesInfoCounter = styled(InfoCounter).attrs(() => ({
   icon: <BookClubIcon testID="chroniclesCounterIcon" />,
+}))``
+
+const HeadlineOffersCount = styled(InfoCounter).attrs(() => ({
+  icon: <Star testID="headlineOffersCounterIcon" />,
 }))``

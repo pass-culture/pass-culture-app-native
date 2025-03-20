@@ -109,6 +109,7 @@ describe('OfferTile component', () => {
       isExpired: false,
       isForbiddenToUnderage: false,
       isSoldOut: false,
+      isHeadline: false,
       name: OFFER.name,
       stocks: [],
       subcategoryId: OFFER.subcategoryId,
