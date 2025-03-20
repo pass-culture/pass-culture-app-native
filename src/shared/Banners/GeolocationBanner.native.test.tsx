@@ -27,60 +27,60 @@ describe('<GeolocationBanner />', () => {
 
     expect(screen.getByTestId('systemBanner')).toBeOnTheScreen()
   })
-})
 
-it('should open "Paramètres de localisation" modal when pressing button and permission is never ask again', async () => {
-  mockUseLocation.mockReturnValueOnce({
-    permissionState: GeolocPermissionState.NEVER_ASK_AGAIN,
-    showGeolocPermissionModal,
+  it('should open "Paramètres de localisation" modal when pressing button and permission is never ask again', async () => {
+    mockUseLocation.mockReturnValueOnce({
+      permissionState: GeolocPermissionState.NEVER_ASK_AGAIN,
+      showGeolocPermissionModal,
+    })
+    render(
+      <GeolocationBanner
+        title="Géolocalise-toi"
+        subtitle="Pour trouver des offres autour de toi."
+        analyticsFrom="thematicHome"
+      />
+    )
+    const button = screen.getByText('Géolocalise-toi')
+
+    await user.press(button)
+
+    expect(showGeolocPermissionModal).toHaveBeenCalledWith()
   })
-  render(
-    <GeolocationBanner
-      title="Géolocalise-toi"
-      subtitle="Pour trouver des offres autour de toi."
-      analyticsFrom="thematicHome"
-    />
-  )
-  const button = screen.getByText('Géolocalise-toi')
 
-  await user.press(button)
+  it('should ask for permission when pressing button and permission is denied', async () => {
+    mockUseLocation.mockReturnValueOnce({
+      permissionState: GeolocPermissionState.DENIED,
+      requestGeolocPermission,
+    })
+    render(
+      <GeolocationBanner
+        title="Géolocalise-toi"
+        subtitle="Pour trouver des offres autour de toi."
+        analyticsFrom="thematicHome"
+      />
+    )
+    const button = screen.getByText('Géolocalise-toi')
 
-  expect(showGeolocPermissionModal).toHaveBeenCalledWith()
-})
+    await user.press(button)
 
-it('should ask for permission when pressing button and permission is denied', async () => {
-  mockUseLocation.mockReturnValueOnce({
-    permissionState: GeolocPermissionState.DENIED,
-    requestGeolocPermission,
+    expect(requestGeolocPermission).toHaveBeenCalledWith()
   })
-  render(
-    <GeolocationBanner
-      title="Géolocalise-toi"
-      subtitle="Pour trouver des offres autour de toi."
-      analyticsFrom="thematicHome"
-    />
-  )
-  const button = screen.getByText('Géolocalise-toi')
 
-  await user.press(button)
+  it('should call onPress externaly when specified', async () => {
+    const mockOnPress = jest.fn()
+    render(
+      <GeolocationBanner
+        title="Géolocalise-toi"
+        subtitle="Pour trouver des offres autour de toi."
+        analyticsFrom="thematicHome"
+        onPress={mockOnPress}
+      />
+    )
 
-  expect(requestGeolocPermission).toHaveBeenCalledWith()
-})
+    const button = screen.getByText('Géolocalise-toi')
 
-it('should call onPress externaly when specified', async () => {
-  const mockOnPress = jest.fn()
-  render(
-    <GeolocationBanner
-      title="Géolocalise-toi"
-      subtitle="Pour trouver des offres autour de toi."
-      analyticsFrom="thematicHome"
-      onPress={mockOnPress}
-    />
-  )
+    await user.press(button)
 
-  const button = screen.getByText('Géolocalise-toi')
-
-  await user.press(button)
-
-  expect(mockOnPress).toHaveBeenCalledTimes(1)
+    expect(mockOnPress).toHaveBeenCalledTimes(1)
+  })
 })
