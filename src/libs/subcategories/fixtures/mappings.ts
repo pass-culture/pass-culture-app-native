@@ -146,7 +146,7 @@ export const subcategoriesMappingSnap = {
     isEvent: false,
     nativeCategoryId: 'MUSIQUE_EN_LIGNE',
     onlineOfflinePlatform: 'ONLINE',
-    searchGroupName: 'CD_VINYLE_MUSIQUE_EN_LIGNE',
+    searchGroupName: 'MUSIQUE',
   },
   ABO_PLATEFORME_VIDEO: {
     id: 'ABO_PLATEFORME_VIDEO',
@@ -266,7 +266,7 @@ export const subcategoriesMappingSnap = {
     isEvent: false,
     nativeCategoryId: 'MUSIQUE_EN_LIGNE',
     onlineOfflinePlatform: 'OFFLINE',
-    searchGroupName: 'CD_VINYLE_MUSIQUE_EN_LIGNE',
+    searchGroupName: 'MUSIQUE',
   },
   CARTE_CINE_ILLIMITE: {
     id: 'CARTE_CINE_ILLIMITE',
@@ -736,7 +736,7 @@ export const subcategoriesMappingSnap = {
     isEvent: false,
     nativeCategoryId: 'CD',
     onlineOfflinePlatform: 'OFFLINE',
-    searchGroupName: 'CD_VINYLE_MUSIQUE_EN_LIGNE',
+    searchGroupName: 'MUSIQUE',
   },
   SUPPORT_PHYSIQUE_MUSIQUE_VINYLE: {
     id: 'SUPPORT_PHYSIQUE_MUSIQUE_VINYLE',
@@ -746,7 +746,7 @@ export const subcategoriesMappingSnap = {
     isEvent: false,
     nativeCategoryId: 'VINYLES',
     onlineOfflinePlatform: 'OFFLINE',
-    searchGroupName: 'CD_VINYLE_MUSIQUE_EN_LIGNE',
+    searchGroupName: 'MUSIQUE',
   },
   TELECHARGEMENT_LIVRE_AUDIO: {
     id: 'TELECHARGEMENT_LIVRE_AUDIO',
@@ -766,7 +766,7 @@ export const subcategoriesMappingSnap = {
     isEvent: false,
     nativeCategoryId: 'MUSIQUE_EN_LIGNE',
     onlineOfflinePlatform: 'ONLINE',
-    searchGroupName: 'CD_VINYLE_MUSIQUE_EN_LIGNE',
+    searchGroupName: 'MUSIQUE',
   },
   VISITE: {
     id: 'VISITE',
@@ -813,7 +813,6 @@ export const subcategoriesMappingSnap = {
 export const useSearchGroupLabelMappingSnap = {
   ARTS_LOISIRS_CREATIFS: 'Arts & loisirs créatifs',
   CARTES_JEUNES: 'Cartes jeunes',
-  CD_VINYLE_MUSIQUE_EN_LIGNE: 'CD, vinyles, musique en ligne',
   CONCERTS_FESTIVALS: 'Concerts & festivals',
   RENCONTRES_CONFERENCES: 'Conférences & rencontres',
   EVENEMENTS_EN_LIGNE: 'Évènements en ligne',

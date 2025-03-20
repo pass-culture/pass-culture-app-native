@@ -324,7 +324,7 @@ describe('SearchResultsContent component', () => {
       mockUseSearch.mockReturnValueOnce({
         searchState: {
           ...mockSearchState,
-          offerCategories: [SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE],
+          offerCategories: [SearchGroupNameEnumv2.MUSIQUE],
         },
         dispatch: mockDispatch,
       })

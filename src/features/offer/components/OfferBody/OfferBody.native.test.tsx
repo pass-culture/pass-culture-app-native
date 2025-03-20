@@ -99,7 +99,7 @@ describe('<OfferBody />', () => {
         id: SubcategoryIdEnumv2.SUPPORT_PHYSIQUE_MUSIQUE_VINYLE,
         categoryId: CategoryIdEnum.MUSIQUE_ENREGISTREE,
         appLabel: 'Vinyles et autres supports',
-        searchGroupName: SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE,
+        searchGroupName: SearchGroupNameEnumv2.MUSIQUE,
         homepageLabelName: HomepageLabelNameEnumv2.MUSIQUE,
         isEvent: false,
         onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnum.OFFLINE,

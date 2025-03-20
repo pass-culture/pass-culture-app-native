@@ -57,7 +57,6 @@ const mockAvailableCategoriesList: SearchGroupNameEnumv2[] = [
   SearchGroupNameEnumv2.CINEMA,
   SearchGroupNameEnumv2.FILMS_DOCUMENTAIRES_SERIES,
   SearchGroupNameEnumv2.LIVRES,
-  SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE,
   SearchGroupNameEnumv2.ARTS_LOISIRS_CREATIFS,
   SearchGroupNameEnumv2.SPECTACLES,
   SearchGroupNameEnumv2.MUSEES_VISITES_CULTURELLES,
@@ -82,10 +81,6 @@ describe('categoriesHelpers', () => {
       {
         name: 'CARTES_JEUNES',
         value: 'Cartes jeunes',
-      },
-      {
-        name: 'CD_VINYLE_MUSIQUE_EN_LIGNE',
-        value: 'CD, vinyles, musique en ligne',
       },
       {
         name: 'CINEMA',

@@ -122,15 +122,6 @@ export const CATEGORY_CRITERIA: CategoryCriteriaWithNone = {
     borderColor: theme.colors.coral,
     fillColor: theme.colors.coralLight,
   },
-  [SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE]: {
-    icon: categoriesIcons.Disk,
-    illustration: SearchCategoriesIllustrations.CDVinylsOnlineMusic,
-    facetFilter: SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE,
-    position: 5,
-    gradients: gradientColorsMapping.Coral,
-    borderColor: theme.colors.aquamarineDark,
-    fillColor: theme.colors.aquamarineLight,
-  },
   [SearchGroupNameEnumv2.MUSIQUE]: {
     icon: categoriesIcons.Disk,
     illustration: SearchCategoriesIllustrations.CDVinylsOnlineMusic,

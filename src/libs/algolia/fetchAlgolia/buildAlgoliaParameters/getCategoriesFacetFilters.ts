@@ -5,7 +5,7 @@ import { CATEGORY_CRITERIA } from 'features/search/enums'
 const CONTENTFUL_LABELS: Record<string, SearchGroupNameEnumv2> = {
   ['Arts & loisirs créatifs']: SearchGroupNameEnumv2.ARTS_LOISIRS_CREATIFS,
   ['Cartes jeunes']: SearchGroupNameEnumv2.CARTES_JEUNES,
-  ['CD, vinyles, musique en ligne']: SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE,
+  ['CD, vinyles, musique en ligne']: SearchGroupNameEnumv2.MUSIQUE,
   ['Cinéma']: SearchGroupNameEnumv2.CINEMA,
   ['Concerts & festivals']: SearchGroupNameEnumv2.CONCERTS_FESTIVALS,
   ['Conférences & rencontres']: SearchGroupNameEnumv2.RENCONTRES_CONFERENCES,
