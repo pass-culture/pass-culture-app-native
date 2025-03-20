@@ -26,10 +26,9 @@ describe('Search reducer', () => {
       geolocation: { latitude: 48.8557, longitude: 2.3469 },
       offerCategories: [
         SearchGroupNameEnumv2.CINEMA,
-        SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE,
+        SearchGroupNameEnumv2.MUSIQUE,
         SearchGroupNameEnumv2.RENCONTRES_CONFERENCES,
         SearchGroupNameEnumv2.JEUX_JEUX_VIDEOS,
-        SearchGroupNameEnumv2.INSTRUMENTS,
       ],
       tags: [],
     }

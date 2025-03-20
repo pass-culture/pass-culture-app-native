@@ -42,7 +42,7 @@ export const mockSubcategoryCD: Subcategory = {
   id: SubcategoryIdEnumv2.SUPPORT_PHYSIQUE_MUSIQUE_CD,
   categoryId: CategoryIdEnum.MUSIQUE_ENREGISTREE,
   appLabel: 'CD',
-  searchGroupName: SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE,
+  searchGroupName: SearchGroupNameEnumv2.MUSIQUE,
   homepageLabelName: HomepageLabelNameEnumv2.MUSIQUE,
   isEvent: false,
   onlineOfflinePlatform: OnlineOfflinePlatformChoicesEnum.OFFLINE,

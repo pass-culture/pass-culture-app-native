@@ -57,12 +57,10 @@ const mockAvailableCategoriesList: SearchGroupNameEnumv2[] = [
   SearchGroupNameEnumv2.CINEMA,
   SearchGroupNameEnumv2.FILMS_DOCUMENTAIRES_SERIES,
   SearchGroupNameEnumv2.LIVRES,
-  SearchGroupNameEnumv2.CD_VINYLE_MUSIQUE_EN_LIGNE,
   SearchGroupNameEnumv2.ARTS_LOISIRS_CREATIFS,
   SearchGroupNameEnumv2.SPECTACLES,
   SearchGroupNameEnumv2.MUSEES_VISITES_CULTURELLES,
   SearchGroupNameEnumv2.JEUX_JEUX_VIDEOS,
-  SearchGroupNameEnumv2.INSTRUMENTS,
   SearchGroupNameEnumv2.MEDIA_PRESSE,
   SearchGroupNameEnumv2.CARTES_JEUNES,
   SearchGroupNameEnumv2.RENCONTRES_CONFERENCES,
@@ -85,10 +83,6 @@ describe('categoriesHelpers', () => {
         value: 'Cartes jeunes',
       },
       {
-        name: 'CD_VINYLE_MUSIQUE_EN_LIGNE',
-        value: 'CD, vinyles, musique en ligne',
-      },
-      {
         name: 'CINEMA',
         value: 'Cinéma',
       },
@@ -107,10 +101,6 @@ describe('categoriesHelpers', () => {
       {
         name: 'FILMS_DOCUMENTAIRES_SERIES',
         value: 'Films, séries et documentaires',
-      },
-      {
-        name: 'INSTRUMENTS',
-        value: 'Instruments de musique',
       },
       {
         name: 'JEUX_JEUX_VIDEOS',
