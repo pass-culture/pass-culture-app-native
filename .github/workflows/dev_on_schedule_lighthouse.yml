@@ -1,0 +1,42 @@
+name: "4 [on_pr] Lighthouse Web Performance test"
+
+on:
+  schedule:
+    - cron: '0 22 * * 0' # At 10PM every Sunday
+
+env:
+  CACHE_BUCKET_NAME: passculture-infra-prod-github-runner-cache
+
+jobs:
+  lighthouse:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Enable Corepack
+        run: corepack enable
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+      - name: Cache the node_modules
+        id: yarn-modules-cache
+        uses: pass-culture-github-actions/cache@v1.0.0
+        with:
+          path: |
+            node_modules
+            ~/.cache/yarn
+          key: v1-yarn-dependency-lighthouse-cache-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            v1-yarn-dependency-lighthouse-cache-${{ hashFiles('**/yarn.lock') }}
+          bucket: ${{ env.CACHE_BUCKET_NAME }}
+          workload-identity-provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+          service-account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+      - name: Run Lighthouse CI 🚀
+        run: |
+          yarn global add @lhci/cli@0.14.0
+          yarn test:lighthouse --collect.psiApiKey=${{ secrets.PAGE_SPEED_API_KEY }}
+      - name: Upload lighthouse report to artifacts 🔎
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: lighthouse-report
+          path: ./.lighthouseci/*.html
