@@ -9,6 +9,7 @@ type ThematicSearchQueryParams = {
   userLocation?: Position
   filters?: string
   numericFilters?: string
+  tagFilters?: string
   hitsPerPage?: number
   distinct?: boolean
   withRadius?: boolean
@@ -19,6 +20,7 @@ export const buildQueryHelper = ({
   userLocation,
   filters,
   numericFilters,
+  tagFilters = '["-is_future"]',
   hitsPerPage,
   distinct,
   withRadius = true,
@@ -36,6 +38,7 @@ export const buildQueryHelper = ({
       : {}),
     ...(filters && { filters }),
     ...(numericFilters && { numericFilters }),
+    ...(tagFilters && { tagFilters }),
     ...(distinct && { distinct }),
     hitsPerPage: hitsPerPage ?? 50,
   },
