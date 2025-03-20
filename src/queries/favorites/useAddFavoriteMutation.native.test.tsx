@@ -80,25 +80,25 @@ describe('useAddFavoriteMutation', () => {
       })
     })
   })
-})
 
-it('should show snack bar when too many favorites when trying to add favorite', async () => {
-  simulateBackend({
-    id: offerId,
-    hasAddFavoriteError: false,
-    hasTooManyFavorites: true,
-    hasRemoveFavoriteError: false,
-  })
-  const result = renderUseAddFavorite()
+  it('should show snack bar when too many favorites when trying to add favorite', async () => {
+    simulateBackend({
+      id: offerId,
+      hasAddFavoriteError: false,
+      hasTooManyFavorites: true,
+      hasRemoveFavoriteError: false,
+    })
+    const result = renderUseAddFavorite()
 
-  expect(result.current.isLoading).toBeFalsy()
+    expect(result.current.isLoading).toBeFalsy()
 
-  result.current.mutate({ offerId })
+    result.current.mutate({ offerId })
 
-  await waitFor(() => {
-    expect(showErrorSnackBar).toHaveBeenCalledWith({
-      message: 'Trop de favoris enregistrés. Supprime des favoris pour en ajouter de nouveaux.',
-      timeout: SNACK_BAR_TIME_OUT,
+    await waitFor(() => {
+      expect(showErrorSnackBar).toHaveBeenCalledWith({
+        message: 'Trop de favoris enregistrés. Supprime des favoris pour en ajouter de nouveaux.',
+        timeout: SNACK_BAR_TIME_OUT,
+      })
     })
   })
 })
