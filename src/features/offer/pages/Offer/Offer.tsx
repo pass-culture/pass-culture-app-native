@@ -5,9 +5,9 @@ import { ReactionTypeEnum } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { chroniclePreviewToChronicalCardData } from 'features/offer/adapters/chroniclePreviewToChronicleCardData'
-import { useFetchHeadlineOffersCount } from 'features/offer/api/headlineOffers/useFetchHeadlineOffersCount'
 import { OfferContent } from 'features/offer/components/OfferContent/OfferContent'
 import { OfferContentPlaceholder } from 'features/offer/components/OfferContentPlaceholder/OfferContentPlaceholder'
+import { useFetchHeadlineOffersCountQuery } from 'features/offer/queries/useFetchHeadlineOffersCount'
 import { useReactionMutation } from 'features/reactions/api/useReactionMutation'
 import { ReactionChoiceModal } from 'features/reactions/components/ReactionChoiceModal/ReactionChoiceModal'
 import { ReactionChoiceModalBodyEnum, ReactionFromEnum } from 'features/reactions/enum'
@@ -62,7 +62,7 @@ export function Offer() {
     ? offer?.chronicles?.map((value) => chroniclePreviewToChronicalCardData(value))
     : undefined
 
-  const { data } = useFetchHeadlineOffersCount(offer)
+  const { data } = useFetchHeadlineOffersCountQuery(offer)
 
   if (!offer || !subcategories) return null
 

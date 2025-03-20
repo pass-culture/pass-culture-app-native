@@ -64,5 +64,5 @@ const ChroniclesInfoCounter = styled(InfoCounter).attrs(() => ({
 }))``
 
 const HeadlineOffersCount = styled(InfoCounter).attrs(() => ({
-  icon: <Star testID="chroniclesCounterIcon" />,
+  icon: <Star testID="headlineOffersCounterIcon" />,
 }))``

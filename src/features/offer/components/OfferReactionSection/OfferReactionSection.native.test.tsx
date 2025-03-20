@@ -39,17 +39,31 @@ describe('<OfferReactionSection />', () => {
       expect(screen.getByTestId('chroniclesCounterIcon')).toBeOnTheScreen()
     })
 
-    it('should not display chronicles information when not exists', async () => {
+    it('should not display chronicles information when not exists', () => {
       renderOfferReactionSection({ likesCount: 2 })
 
       expect(screen.queryByTestId('chroniclesCounterIcon')).not.toBeOnTheScreen()
     })
 
-    it('should display nothing when there are not chronicles and likes information', async () => {
+    it('should display headline offers count when exist', async () => {
+      renderOfferReactionSection({ headlineOffersCount: 3 })
+
+      expect(await screen.findByText('Recommandé par 3 lieux culturels')).toBeOnTheScreen()
+      expect(screen.getByTestId('headlineOffersCounterIcon')).toBeOnTheScreen()
+    })
+
+    it('should not display headline offers count when not exists', async () => {
+      renderOfferReactionSection({ likesCount: 3 })
+
+      expect(screen.queryByTestId('headlineOffersCounterIcon')).not.toBeOnTheScreen()
+    })
+
+    it('should display nothing when there are not chronicles, likes information and headline offers count', async () => {
       renderOfferReactionSection({})
 
       expect(screen.queryByTestId('chroniclesCounterIcon')).not.toBeOnTheScreen()
       expect(screen.queryByTestId('likesCounterIcon')).not.toBeOnTheScreen()
+      expect(screen.queryByTestId('headlineOffersCounterIcon')).not.toBeOnTheScreen()
     })
   })
 })
@@ -59,10 +73,15 @@ type RenderOfferReactionSectionType = Partial<ComponentProps<typeof OfferReactio
 function renderOfferReactionSection({
   chroniclesCount = 0,
   likesCount = 0,
+  headlineOffersCount = 0,
 }: RenderOfferReactionSectionType) {
   render(
     reactQueryProviderHOC(
-      <OfferReactionSection chroniclesCount={chroniclesCount} likesCount={likesCount} />
+      <OfferReactionSection
+        chroniclesCount={chroniclesCount}
+        likesCount={likesCount}
+        headlineOffersCount={headlineOffersCount}
+      />
     )
   )
 }

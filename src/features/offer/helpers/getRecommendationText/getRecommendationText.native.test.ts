@@ -13,8 +13,8 @@ describe('getRecommendationText', () => {
     expect(getRecommendationText(10)).toEqual('Recommandé par 10 lieux culturels')
   })
 
-  it("should return 'Recommandé par 0 lieu culturel' when headlineOffersCount is 0", () => {
-    expect(getRecommendationText(0)).toEqual('Recommandé par 0 lieu culturel')
+  it('should return an empty string when headlineOffersCount is 0', () => {
+    expect(getRecommendationText(0)).toEqual('')
   })
 
   it('should handle large numbers correctly', () => {

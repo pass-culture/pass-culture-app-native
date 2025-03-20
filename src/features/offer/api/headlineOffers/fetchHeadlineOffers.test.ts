@@ -29,15 +29,7 @@ describe('fetchHeadlineOffers', () => {
   it('should not fetch headline offer when there is not an offer', () => {
     fetchHeadlineOffersCount(undefined)
 
-    expect(search).not.toHaveBeenCalledWith('', {
-      attributesToHighlight: [],
-      attributesToRetrieve: [],
-      distinct: false,
-      facetFilters: [['offer.isEducational:false'], ['offer.isHeadline:true']],
-      hitsPerPage: 100,
-      numericFilters: [['offer.prices: 0 TO 300']],
-      page: 0,
-    })
+    expect(search).not.toHaveBeenCalled()
   })
 
   it('should catch an error', async () => {
