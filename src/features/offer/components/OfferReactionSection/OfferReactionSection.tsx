@@ -33,11 +33,13 @@ export const OfferReactionSection: FunctionComponent<Props> = ({
 
   return (
     <ViewGap gap={4}>
-      <InfosCounterContainer gap={2}>
-        {likesCounterElement}
-        {chroniclesCounterElement}
-      </InfosCounterContainer>
-      <View>{headlineOffersCounterElement}</View>
+      {likesCount || chroniclesCount ? (
+        <InfosCounterContainer gap={2}>
+          {likesCounterElement}
+          {chroniclesCounterElement}
+        </InfosCounterContainer>
+      ) : null}
+      {headlineOffersCount ? <View>{headlineOffersCounterElement}</View> : null}
     </ViewGap>
   )
 }
