@@ -3,7 +3,6 @@ import React from 'react'
 import { ArtistTopOffers } from 'features/artist/components/ArtistTopOffers/ArtistTopOffers'
 import { mockedAlgoliaOffersWithSameArtistResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils'
 
@@ -11,7 +10,7 @@ jest.mock('libs/firebase/analytics/analytics')
 
 describe('ArtistTopOffers', () => {
   beforeEach(() => {
-    setFeatureFlags([RemoteStoreFeatureFlags.WIP_NEW_HOME_MODULE_SIZES])
+    setFeatureFlags()
   })
 
   it('should display top offers when there is some offer from this artist', () => {
