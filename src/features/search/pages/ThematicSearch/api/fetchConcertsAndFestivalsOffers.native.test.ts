@@ -1,6 +1,6 @@
 import algoliasearch from '__mocks__/algoliasearch'
+import { buildQueryHelper } from 'features/search/pages/ThematicSearch/api/buildQueryHelper'
 import { fetchConcertsAndFestivalsOffers } from 'features/search/pages/ThematicSearch/api/fetchConcertsAndFestivalsOffers'
-import { buildQuery } from 'features/search/pages/ThematicSearch/api/utils'
 import { Position } from 'libs/location'
 
 describe('fetchConcertsAndFestivalsOffers', () => {
@@ -22,11 +22,11 @@ function buildQueries(userLocation: Position) {
   }
 
   return [
-    buildQuery({
+    buildQueryHelper({
       ...commonQueryParams,
       filters: 'offer.subcategoryId:"CONCERT" AND NOT offer.last30DaysBookingsRange:"very-low"',
     }),
-    buildQuery({
+    buildQueryHelper({
       ...commonQueryParams,
       filters:
         'offer.subcategoryId:"FESTIVAL_MUSIQUE" AND NOT offer.last30DaysBookingsRange:"very-low"',
