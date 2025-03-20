@@ -1,6 +1,6 @@
 import algoliasearch from '__mocks__/algoliasearch'
+import { buildQueryHelper } from 'features/search/pages/ThematicSearch/api/buildQueryHelper'
 import { fetchThematicSearchPlaylists } from 'features/search/pages/ThematicSearch/api/fetchThematicSearchPlaylists'
-import { buildQuery } from 'features/search/pages/ThematicSearch/api/utils'
 import { Position } from 'libs/location'
 
 describe('fetchThematicSearchPlaylists', () => {
@@ -43,15 +43,15 @@ function buildQueries(userLocation: Position) {
   }
 
   return [
-    buildQuery({
+    buildQueryHelper({
       ...commonQueryParams,
       filters: 'offer.subcategoryId:"SEANCE_CINE"',
     }),
-    buildQuery({
+    buildQueryHelper({
       ...commonQueryParams,
       filters: 'offer.subcategoryId:"VOD"',
     }),
-    buildQuery({
+    buildQueryHelper({
       ...commonQueryParams,
       filters: 'offer.subcategoryId:"CONCERT" AND NOT offer.last30DaysBookingsRange:"low"',
     }),
