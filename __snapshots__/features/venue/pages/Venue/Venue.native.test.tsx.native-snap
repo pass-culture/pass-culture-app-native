@@ -2614,7 +2614,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                             }
                           }
                           contentHeight={250}
-                          contentWidth={192}
+                          contentWidth={280}
                           data={
                             [
                               {
@@ -2662,7 +2662,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                             }
                           }
                           disableRecycling={false}
-                          estimatedItemSize={192}
+                          estimatedItemSize={280}
                           extendedState={{}}
                           externalScrollView={[Function]}
                           finalRenderAheadOffset={187.5}
@@ -2690,7 +2690,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                                   {
                                     "height": 250,
                                     "type": 0,
-                                    "width": 192,
+                                    "width": 280,
                                     "x": 0,
                                     "y": 0,
                                   },
@@ -2701,7 +2701,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                                   "width": 800,
                                 },
                                 "_totalHeight": 250,
-                                "_totalWidth": 192,
+                                "_totalWidth": 280,
                                 "_window": {
                                   "height": 250,
                                   "width": 800,
@@ -2718,12 +2718,10 @@ exports[`<Venue /> should match snapshot 1`] = `
                                 "width": 0,
                               },
                               "averageWindow": AverageWindow {
-                                "currentAverage": 192,
+                                "currentAverage": 280,
                                 "currentCount": 1,
                                 "inputValues": [
-                                  192,
-                                  ,
-                                  ,
+                                  280,
                                   ,
                                   ,
                                   ,
@@ -2813,7 +2811,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                                   },
                                 ],
                                 "drawDistance": 187.5,
-                                "estimatedItemSize": 192,
+                                "estimatedItemSize": 280,
                                 "horizontal": true,
                                 "keyExtractor": [Function],
                                 "numColumns": 1,
@@ -2953,7 +2951,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                                 style={
                                   {
                                     "height": 250,
-                                    "width": 192,
+                                    "width": 280,
                                   }
                                 }
                                 windowSize={800}
@@ -3009,7 +3007,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                                             },
                                             {
                                               "borderRadius": 8,
-                                              "height": 416,
+                                              "height": 548,
                                               "marginVertical": 4,
                                             },
                                           ]
@@ -3018,13 +3016,13 @@ exports[`<Venue /> should match snapshot 1`] = `
                                       >
                                         <View
                                           gap={2}
-                                          maxWidth={192}
+                                          maxWidth={280}
                                           style={
                                             [
                                               {
                                                 "flexDirection": "column-reverse",
                                                 "gap": 8,
-                                                "maxWidth": 192,
+                                                "maxWidth": 280,
                                               },
                                             ]
                                           }
@@ -3093,16 +3091,16 @@ exports[`<Venue /> should match snapshot 1`] = `
                                             }
                                           >
                                             <View
-                                              height={288}
+                                              height={420}
                                               style={
                                                 [
                                                   {
-                                                    "height": 288,
-                                                    "width": 192,
+                                                    "height": 420,
+                                                    "width": 280,
                                                   },
                                                 ]
                                               }
-                                              width={192}
+                                              width={280}
                                             >
                                               <BVLinearGradient
                                                 borderRadius={8}
@@ -3229,7 +3227,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                                         },
                                         {
                                           "borderRadius": 8,
-                                          "height": 416,
+                                          "height": 548,
                                           "marginVertical": 4,
                                         },
                                       ]
@@ -3238,13 +3236,13 @@ exports[`<Venue /> should match snapshot 1`] = `
                                   >
                                     <View
                                       gap={2}
-                                      maxWidth={192}
+                                      maxWidth={280}
                                       style={
                                         [
                                           {
                                             "flexDirection": "column-reverse",
                                             "gap": 8,
-                                            "maxWidth": 192,
+                                            "maxWidth": 280,
                                           },
                                         ]
                                       }
@@ -3313,16 +3311,16 @@ exports[`<Venue /> should match snapshot 1`] = `
                                         }
                                       >
                                         <View
-                                          height={288}
+                                          height={420}
                                           style={
                                             [
                                               {
-                                                "height": 288,
-                                                "width": 192,
+                                                "height": 420,
+                                                "width": 280,
                                               },
                                             ]
                                           }
-                                          width={192}
+                                          width={280}
                                         >
                                           <BVLinearGradient
                                             borderRadius={8}
@@ -7781,7 +7779,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                             }
                           }
                           contentHeight={250}
-                          contentWidth={192}
+                          contentWidth={280}
                           data={
                             [
                               {
@@ -7829,7 +7827,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                             }
                           }
                           disableRecycling={false}
-                          estimatedItemSize={192}
+                          estimatedItemSize={280}
                           extendedState={{}}
                           externalScrollView={[Function]}
                           finalRenderAheadOffset={187.5}
@@ -7857,7 +7855,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                   {
                                     "height": 250,
                                     "type": 0,
-                                    "width": 192,
+                                    "width": 280,
                                     "x": 0,
                                     "y": 0,
                                   },
@@ -7868,7 +7866,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                   "width": 800,
                                 },
                                 "_totalHeight": 250,
-                                "_totalWidth": 192,
+                                "_totalWidth": 280,
                                 "_window": {
                                   "height": 250,
                                   "width": 800,
@@ -7885,12 +7883,10 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                 "width": 0,
                               },
                               "averageWindow": AverageWindow {
-                                "currentAverage": 192,
+                                "currentAverage": 280,
                                 "currentCount": 1,
                                 "inputValues": [
-                                  192,
-                                  ,
-                                  ,
+                                  280,
                                   ,
                                   ,
                                   ,
@@ -7980,7 +7976,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                   },
                                 ],
                                 "drawDistance": 187.5,
-                                "estimatedItemSize": 192,
+                                "estimatedItemSize": 280,
                                 "horizontal": true,
                                 "keyExtractor": [Function],
                                 "numColumns": 1,
@@ -8120,7 +8116,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                 style={
                                   {
                                     "height": 250,
-                                    "width": 192,
+                                    "width": 280,
                                   }
                                 }
                                 windowSize={800}
@@ -8176,7 +8172,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                             },
                                             {
                                               "borderRadius": 8,
-                                              "height": 416,
+                                              "height": 548,
                                               "marginVertical": 4,
                                             },
                                           ]
@@ -8185,13 +8181,13 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                       >
                                         <View
                                           gap={2}
-                                          maxWidth={192}
+                                          maxWidth={280}
                                           style={
                                             [
                                               {
                                                 "flexDirection": "column-reverse",
                                                 "gap": 8,
-                                                "maxWidth": 192,
+                                                "maxWidth": 280,
                                               },
                                             ]
                                           }
@@ -8260,16 +8256,16 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                             }
                                           >
                                             <View
-                                              height={288}
+                                              height={420}
                                               style={
                                                 [
                                                   {
-                                                    "height": 288,
-                                                    "width": 192,
+                                                    "height": 420,
+                                                    "width": 280,
                                                   },
                                                 ]
                                               }
-                                              width={192}
+                                              width={280}
                                             >
                                               <BVLinearGradient
                                                 borderRadius={8}
@@ -8396,7 +8392,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                         },
                                         {
                                           "borderRadius": 8,
-                                          "height": 416,
+                                          "height": 548,
                                           "marginVertical": 4,
                                         },
                                       ]
@@ -8405,13 +8401,13 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                   >
                                     <View
                                       gap={2}
-                                      maxWidth={192}
+                                      maxWidth={280}
                                       style={
                                         [
                                           {
                                             "flexDirection": "column-reverse",
                                             "gap": 8,
-                                            "maxWidth": 192,
+                                            "maxWidth": 280,
                                           },
                                         ]
                                       }
@@ -8480,16 +8476,16 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                         }
                                       >
                                         <View
-                                          height={288}
+                                          height={420}
                                           style={
                                             [
                                               {
-                                                "height": 288,
-                                                "width": 192,
+                                                "height": 420,
+                                                "width": 280,
                                               },
                                             ]
                                           }
-                                          width={192}
+                                          width={280}
                                         >
                                           <BVLinearGradient
                                             borderRadius={8}
