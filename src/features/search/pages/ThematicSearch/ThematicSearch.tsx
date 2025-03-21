@@ -18,6 +18,7 @@ import { ConcertsAndFestivalsPlaylists } from 'features/search/pages/ThematicSea
 import { FilmsPlaylists } from 'features/search/pages/ThematicSearch/Films/FilmsPlaylists'
 import { MusicPlaylists } from 'features/search/pages/ThematicSearch/Music/MusicPlaylists'
 import { ThematicSearchBar } from 'features/search/pages/ThematicSearch/ThematicSearchBar'
+import { getShouldDisplayGtlPlaylist } from 'features/venue/pages/Venue/getShouldDisplayGtlPlaylist'
 import { useLocation } from 'libs/location'
 import { LocationMode } from 'libs/location/types'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
@@ -85,6 +86,12 @@ export const ThematicSearch: React.FC = () => {
     isLocated
   )
 
+  const searchGroupWithGtlPlaylist = getShouldDisplayGtlPlaylist({
+    searchGroup: offerCategory,
+  })
+    ? offerCategory
+    : undefined
+
   return (
     <ThematicSearchBar
       offerCategories={offerCategories}
@@ -100,6 +107,7 @@ export const ThematicSearch: React.FC = () => {
             currentView={currentView}
             offerCategory={offerCategory}
             shouldDisplaySeparator={false}
+            searchGroup={searchGroupWithGtlPlaylist}
           />
         ) : null}
         {playlistsComponent[offerCategory]}

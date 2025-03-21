@@ -350,7 +350,7 @@ type SubcategoriesFields = {
   subcategories: string[]
 }
 type CategoriesFields = {
-  categories: string[]
+  categories: ContentfulLabelCategories[]
 }
 
 type MovieGenresFields = {
@@ -562,3 +562,33 @@ export const isVenueMapBlockContentModel = (
   module: HomepageNatifModule
 ): module is VenueMapBlockContentModel =>
   module.sys.contentType?.sys.id === ContentTypes.VENUE_MAP_BLOCK
+
+export const isVideoContentModel = (module: HomepageNatifModule): module is VideoContentModel =>
+  module.sys.contentType?.sys.id === ContentTypes.VIDEO
+
+export const isHighlightOfferContentModel = (
+  module: HomepageNatifModule
+): module is HighlightOfferContentModel =>
+  module.sys.contentType?.sys.id === ContentTypes.HIGHLIGHT_OFFER
+
+export const isVideoCarouselContentModel = (
+  module: HomepageNatifModule
+): module is VideoCarouselContentModel =>
+  module.sys.contentType?.sys.id === ContentTypes.VIDEO_CAROUSEL
+
+export type ContentfulLabelCategories =
+  | 'Arts & loisirs créatifs'
+  | 'Cartes jeunes'
+  | 'CD, vinyles, musique en ligne'
+  | 'Cinéma'
+  | 'Concerts & festivals'
+  | 'Conférences & rencontres'
+  | 'Évènements en ligne'
+  | 'Films, documentaires et séries'
+  | 'Instruments de musique'
+  | 'Jeux & jeux vidéos'
+  | 'Livres'
+  | 'Médias & presse'
+  | 'Musées & visites culturelles'
+  | 'Musique'
+  | 'Spectacles'

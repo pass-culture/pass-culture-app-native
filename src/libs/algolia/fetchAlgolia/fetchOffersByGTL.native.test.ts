@@ -15,52 +15,56 @@ describe('fetchOffersByGTL', () => {
     } as unknown as SearchResponse<Offer>,
   ])
 
-  const params: [PlaylistOffersParams[], BuildLocationParameterParams, boolean] = [
-    [
-      {
-        offerParams: {
-          hitsPerPage: 35,
-          offerCategories: [],
-          offerSubcategories: [],
-          offerIsDuo: false,
-          isDigital: false,
-          priceRange: [0, 300],
-          tags: [],
-          date: null,
-          timeRange: null,
-          query: '',
-          minBookingsThreshold: 5,
-          offerGenreTypes: [],
-          offerGtlLabel: 'Romance',
-          offerGtlLevel: 3,
-          venue: {
-            venueId: 123,
-            info: 'BAYONNE',
-            label: 'DARRIEUMERLOU',
-          },
-        },
-        locationParams: {
-          selectedLocationMode: LocationMode.EVERYWHERE,
-          userLocation: null,
-          aroundMeRadius: 'all',
-          aroundPlaceRadius: 'all',
-        },
-      },
-    ],
+  const playlistOffersParams: PlaylistOffersParams[] = [
     {
-      userLocation: {
-        latitude: 2,
-        longitude: 2,
+      offerParams: {
+        hitsPerPage: 35,
+        offerCategories: [],
+        offerSubcategories: [],
+        offerIsDuo: false,
+        isDigital: false,
+        priceRange: [0, 300],
+        tags: [],
+        date: null,
+        timeRange: null,
+        query: '',
+        minBookingsThreshold: 5,
+        offerGenreTypes: [],
+        offerGtlLabel: 'Romance',
+        offerGtlLevel: 3,
+        venue: {
+          venueId: 123,
+          info: 'BAYONNE',
+          label: 'DARRIEUMERLOU',
+        },
       },
-      selectedLocationMode: LocationMode.AROUND_ME,
-      aroundMeRadius: 'all',
-      aroundPlaceRadius: 'all',
+      locationParams: {
+        selectedLocationMode: LocationMode.EVERYWHERE,
+        userLocation: null,
+        aroundMeRadius: 'all',
+        aroundPlaceRadius: 'all',
+      },
     },
-    false,
   ]
 
+  const locationParameterParams: BuildLocationParameterParams = {
+    userLocation: {
+      latitude: 2,
+      longitude: 2,
+    },
+    selectedLocationMode: LocationMode.AROUND_ME,
+    aroundMeRadius: 'all',
+    aroundPlaceRadius: 'all',
+  }
+
+  const fetchOffersByGTLArgs = {
+    parameters: playlistOffersParams,
+    buildLocationParameterParams: locationParameterParams,
+    isUserUnderage: false,
+  }
+
   it('should execute `multipleQueries` to fetch offers', async () => {
-    await fetchOffersByGTL(...params)
+    await fetchOffersByGTL(fetchOffersByGTLArgs)
 
     expect(mockMultipleQueries).toHaveBeenNthCalledWith(1, [
       {
@@ -83,7 +87,7 @@ describe('fetchOffersByGTL', () => {
   })
 
   it('should return a GTL playlist', async () => {
-    const result = await fetchOffersByGTL(...params)
+    const result = await fetchOffersByGTL(fetchOffersByGTLArgs)
 
     expect(result).toEqual([
       {
@@ -93,7 +97,7 @@ describe('fetchOffersByGTL', () => {
   })
 
   it('should execute query with given search index if given', async () => {
-    await fetchOffersByGTL(...params, 'algoliaTopOffersIndexNameB')
+    await fetchOffersByGTL({ ...fetchOffersByGTLArgs, searchIndex: 'algoliaTopOffersIndexNameB' })
 
     expect(mockMultipleQueries).toHaveBeenNthCalledWith(1, [
       {
