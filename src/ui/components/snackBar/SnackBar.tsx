@@ -5,7 +5,7 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { AnimatedRef, AnimatedView } from 'libs/react-native-animatable'
-import { IconColorKey, TextColorKey } from 'theme/types'
+import { TextColorKey } from 'theme/types'
 import { SnackBarProgressBar } from 'ui/components/snackBar/SnackBarProgressBar'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { Close as DefaultClose } from 'ui/svg/icons/Close'
@@ -22,7 +22,7 @@ export type SnackBarProps = {
   timeout?: number
   backgroundColor: ColorsEnum
   progressBarColor: ColorsEnum
-  color: TextColorKey & IconColorKey
+  color: TextColorKey
   animationDuration?: number
   refresher: number
 }
@@ -119,7 +119,8 @@ const SnackBarBase = (props: SnackBarProps) => {
               testID="snackbar-container"
               accessibilityHidden={!isVisible}>
               {Icon ? (
-                <Icon testID="snackbar-icon" color={theme.designSystem.color.icon[props.color]} />
+                // TODO(PC-35256): Use theme.designSystem.color.icon.locked from design system
+                <Icon testID="snackbar-icon" color={theme.designSystem.color.text[props.color]} />
               ) : null}
               <Spacer.Flex flex={1}>
                 <StyledBody testID="snackbar-message" color={props.color}>
@@ -129,7 +130,8 @@ const SnackBarBase = (props: SnackBarProps) => {
               <Touchable
                 accessibilityLabel={`Supprimer le message\u00a0: ${props.message}`}
                 onPress={onClose}>
-                <Close color={theme.designSystem.color.icon[props.color]} />
+                {/* TODO(PC-35256): Use theme.designSystem.color.icon.locked from design system */}
+                <Close color={theme.designSystem.color.text[props.color]} />
               </Touchable>
             </SnackBarContainer>
           </View>
