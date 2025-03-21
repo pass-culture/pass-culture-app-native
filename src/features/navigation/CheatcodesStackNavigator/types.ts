@@ -2,6 +2,7 @@ export type CheatcodesStackParamList = {
   // Menu
   CheatcodesMenu: undefined
   // Features
+  CheatcodesScreenAccessibility: undefined
   CheatcodesNavigationAchievements: undefined
   CheatcodesNavigationBirthdayNotifications: undefined
   CheatcodesNavigationBookOffer: undefined

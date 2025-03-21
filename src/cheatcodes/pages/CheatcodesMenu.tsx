@@ -82,6 +82,7 @@ export function CheatcodesMenu(): React.JSX.Element {
     ...cheatcodesNavigationSubscriptionButtons,
     ...cheatcodesNavigationTrustedDeviceButtons,
     ...cheatcodesNavigationTutorialButtons,
+    { title: 'Accessibility 🌈', screen: 'CheatcodesScreenAccessibility', subscreens: [] },
     { title: 'RemoteBanners 🆒', screen: 'CheatcodesScreenRemoteBanners', subscreens: [] },
     { title: 'Share 🔗', screen: 'CheatcodesNavigationShare', subscreens: [] },
   ]

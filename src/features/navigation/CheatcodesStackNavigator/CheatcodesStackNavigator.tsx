@@ -2,6 +2,7 @@ import { createStackNavigator } from '@react-navigation/stack'
 import React from 'react'
 
 import { CheatcodesMenu } from 'cheatcodes/pages/CheatcodesMenu'
+import { CheatcodesScreenAccessibility } from 'cheatcodes/pages/features/accessibility/CheatcodesScreenAccessibility'
 import { CheatcodesNavigationAchievements } from 'cheatcodes/pages/features/achievements/CheatcodesNavigationAchievements'
 import { CheatcodesNavigationBirthdayNotifications } from 'cheatcodes/pages/features/birthdayNotifications/CheatcodesNavigationBirthdayNotifications'
 import { CheatcodesNavigationBookOffer } from 'cheatcodes/pages/features/bookOffer/CheatcodesNavigationBookOffer'
@@ -49,6 +50,10 @@ const routes: CheatcodesStackRoute[] = [
     component: CheatcodesMenu,
   },
   /**** FEATURES ****/
+  {
+    name: 'CheatcodesScreenAccessibility',
+    component: CheatcodesScreenAccessibility,
+  },
   {
     name: 'CheatcodesNavigationBirthdayNotifications',
     component: CheatcodesNavigationBirthdayNotifications,
