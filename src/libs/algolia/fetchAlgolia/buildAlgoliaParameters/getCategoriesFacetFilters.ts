@@ -3,7 +3,7 @@ import { CATEGORY_CRITERIA } from 'features/search/enums'
 import { ContentfulLabelCategories } from 'libs/contentful/types'
 
 // Mapping from contentful label to corresponding search group
-export const CONTENTFUL_LABELS = {
+const CONTENTFUL_LABELS = {
   ['Arts & loisirs créatifs']: SearchGroupNameEnumv2.ARTS_LOISIRS_CREATIFS,
   ['Cartes jeunes']: SearchGroupNameEnumv2.CARTES_JEUNES,
   ['CD, vinyles, musique en ligne']: SearchGroupNameEnumv2.MUSIQUE,

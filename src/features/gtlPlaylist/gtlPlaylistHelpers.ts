@@ -3,7 +3,7 @@ import { GtlPlaylistRequest } from 'features/gtlPlaylist/types'
 import { OffersModuleParameters, PlaylistOffersParams } from 'features/home/types'
 import { ContentfulLabelCategories } from 'libs/contentful/types'
 
-export const VenueTypeToContentfulLabelMapping: Partial<
+const VenueTypeToContentfulLabelMapping: Partial<
   Record<keyof typeof VenueTypeCodeKey, ContentfulLabelCategories>
 > = {
   [VenueTypeCodeKey.BOOKSTORE]: 'Livres',
