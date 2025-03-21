@@ -168,7 +168,7 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
                   "flexBasis": 0,
                   "flexGrow": 1,
                   "flexShrink": 1,
-                  "marginLeft": 8,
+                  "marginHorizontal": 8,
                 },
               ]
             }
@@ -415,7 +415,10 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
                     [
                       {
                         "flexDirection": "column",
-                        "paddingLeft": 0,
+                        "paddingBottom": 4,
+                        "paddingLeft": 4,
+                        "paddingRight": 4,
+                        "paddingTop": 4,
                         "width": "100%",
                       },
                     ]
@@ -711,7 +714,7 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
                   "flexBasis": 0,
                   "flexGrow": 1,
                   "flexShrink": 1,
-                  "marginLeft": 8,
+                  "marginHorizontal": 8,
                 },
               ]
             }
@@ -1101,7 +1104,7 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
                   "flexBasis": 0,
                   "flexGrow": 1,
                   "flexShrink": 1,
-                  "marginLeft": 8,
+                  "marginHorizontal": 8,
                 },
               ]
             }
@@ -1491,7 +1494,7 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
                   "flexBasis": 0,
                   "flexGrow": 1,
                   "flexShrink": 1,
-                  "marginLeft": 8,
+                  "marginHorizontal": 8,
                 },
               ]
             }
@@ -1684,7 +1687,7 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
                   "flexBasis": 0,
                   "flexGrow": 1,
                   "flexShrink": 1,
-                  "marginLeft": 8,
+                  "marginHorizontal": 8,
                 },
               ]
             }
@@ -1968,7 +1971,10 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
                     [
                       {
                         "flexDirection": "column",
-                        "paddingLeft": 0,
+                        "paddingBottom": 4,
+                        "paddingLeft": 4,
+                        "paddingRight": 4,
+                        "paddingTop": 4,
                         "width": "100%",
                       },
                     ]
@@ -2255,7 +2261,7 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
                   "flexBasis": 0,
                   "flexGrow": 1,
                   "flexShrink": 1,
-                  "marginLeft": 8,
+                  "marginHorizontal": 8,
                 },
               ]
             }
@@ -3012,7 +3018,7 @@ exports[`<ProfileTutorialAgeInformation /> should render correctly when logged i
                   "flexBasis": 0,
                   "flexGrow": 1,
                   "flexShrink": 1,
-                  "marginLeft": 8,
+                  "marginHorizontal": 8,
                 },
               ]
             }
@@ -3259,7 +3265,10 @@ exports[`<ProfileTutorialAgeInformation /> should render correctly when logged i
                     [
                       {
                         "flexDirection": "column",
-                        "paddingLeft": 0,
+                        "paddingBottom": 4,
+                        "paddingLeft": 4,
+                        "paddingRight": 4,
+                        "paddingTop": 4,
                         "width": "100%",
                       },
                     ]
@@ -3555,7 +3564,7 @@ exports[`<ProfileTutorialAgeInformation /> should render correctly when logged i
                   "flexBasis": 0,
                   "flexGrow": 1,
                   "flexShrink": 1,
-                  "marginLeft": 8,
+                  "marginHorizontal": 8,
                 },
               ]
             }
@@ -3945,7 +3954,7 @@ exports[`<ProfileTutorialAgeInformation /> should render correctly when logged i
                   "flexBasis": 0,
                   "flexGrow": 1,
                   "flexShrink": 1,
-                  "marginLeft": 8,
+                  "marginHorizontal": 8,
                 },
               ]
             }
@@ -4335,7 +4344,7 @@ exports[`<ProfileTutorialAgeInformation /> should render correctly when logged i
                   "flexBasis": 0,
                   "flexGrow": 1,
                   "flexShrink": 1,
-                  "marginLeft": 8,
+                  "marginHorizontal": 8,
                 },
               ]
             }
@@ -4528,7 +4537,7 @@ exports[`<ProfileTutorialAgeInformation /> should render correctly when logged i
                   "flexBasis": 0,
                   "flexGrow": 1,
                   "flexShrink": 1,
-                  "marginLeft": 8,
+                  "marginHorizontal": 8,
                 },
               ]
             }
@@ -4812,7 +4821,10 @@ exports[`<ProfileTutorialAgeInformation /> should render correctly when logged i
                     [
                       {
                         "flexDirection": "column",
-                        "paddingLeft": 0,
+                        "paddingBottom": 4,
+                        "paddingLeft": 4,
+                        "paddingRight": 4,
+                        "paddingTop": 4,
                         "width": "100%",
                       },
                     ]
@@ -5099,7 +5111,7 @@ exports[`<ProfileTutorialAgeInformation /> should render correctly when logged i
                   "flexBasis": 0,
                   "flexGrow": 1,
                   "flexShrink": 1,
-                  "marginLeft": 8,
+                  "marginHorizontal": 8,
                 },
               ]
             }

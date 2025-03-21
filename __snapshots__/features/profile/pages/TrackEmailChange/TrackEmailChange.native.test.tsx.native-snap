@@ -290,13 +290,14 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
-                    "marginLeft": 8,
+                    "marginHorizontal": 8,
                   },
                 ]
               }
             >
               <View
                 accessibilityLabel="Confirmation de ta demande complété"
+                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -330,6 +331,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                         "userSelect": "auto",
                       },
                       {
+                        "borderRadius": 8,
                         "flexDirection": "row",
                         "justifyContent": "center",
                         "width": "100%",
@@ -535,7 +537,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
-                    "marginLeft": 8,
+                    "marginHorizontal": 8,
                   },
                 ]
               }
@@ -587,6 +589,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                       },
                       {},
                       {
+                        "borderRadius": 8,
                         "flexDirection": "row",
                         "justifyContent": "center",
                         "width": "100%",
@@ -810,13 +813,14 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
-                    "marginLeft": 8,
+                    "marginHorizontal": 8,
                   },
                 ]
               }
             >
               <View
                 accessibilityLabel="Validation de ta nouvelle adresse e-mail non complété"
+                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -850,6 +854,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                         "userSelect": "auto",
                       },
                       {
+                        "borderRadius": 8,
                         "flexDirection": "row",
                         "justifyContent": "center",
                         "width": "100%",
@@ -1248,7 +1253,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
-                    "marginLeft": 8,
+                    "marginHorizontal": 8,
                   },
                 ]
               }
@@ -1265,6 +1270,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
               />
               <View
                 accessibilityLabel="Confirme ta demande non complété"
+                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -1298,6 +1304,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                         "userSelect": "auto",
                       },
                       {
+                        "borderRadius": 8,
                         "flexDirection": "row",
                         "justifyContent": "center",
                         "width": "100%",
@@ -1531,7 +1538,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
-                    "marginLeft": 8,
+                    "marginHorizontal": 8,
                   },
                 ]
               }
@@ -1573,6 +1580,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                       },
                       {},
                       {
+                        "borderRadius": 8,
                         "flexDirection": "row",
                         "justifyContent": "center",
                         "width": "100%",
@@ -1773,13 +1781,14 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
-                    "marginLeft": 8,
+                    "marginHorizontal": 8,
                   },
                 ]
               }
             >
               <View
                 accessibilityLabel="Validation de ta nouvelle adresse e-mail non complété"
+                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -1813,6 +1822,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                         "userSelect": "auto",
                       },
                       {
+                        "borderRadius": 8,
                         "flexDirection": "row",
                         "justifyContent": "center",
                         "width": "100%",
@@ -2198,13 +2208,14 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
-                    "marginLeft": 8,
+                    "marginHorizontal": 8,
                   },
                 ]
               }
             >
               <View
                 accessibilityLabel="Confirmation de ta demande complété"
+                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -2238,6 +2249,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                         "userSelect": "auto",
                       },
                       {
+                        "borderRadius": 8,
                         "flexDirection": "row",
                         "justifyContent": "center",
                         "width": "100%",
@@ -2430,7 +2442,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
-                    "marginLeft": 8,
+                    "marginHorizontal": 8,
                   },
                 ]
               }
@@ -2472,6 +2484,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                       },
                       {},
                       {
+                        "borderRadius": 8,
                         "flexDirection": "row",
                         "justifyContent": "center",
                         "width": "100%",
@@ -2667,7 +2680,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
-                    "marginLeft": 8,
+                    "marginHorizontal": 8,
                   },
                 ]
               }
@@ -2684,6 +2697,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
               />
               <View
                 accessibilityLabel="Valide ta nouvelle adresse non complété"
+                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -2717,6 +2731,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                         "userSelect": "auto",
                       },
                       {
+                        "borderRadius": 8,
                         "flexDirection": "row",
                         "justifyContent": "center",
                         "width": "100%",
@@ -3125,13 +3140,14 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
-                    "marginLeft": 8,
+                    "marginHorizontal": 8,
                   },
                 ]
               }
             >
               <View
                 accessibilityLabel="Confirmation de ta demande complété"
+                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -3165,6 +3181,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                         "userSelect": "auto",
                       },
                       {
+                        "borderRadius": 8,
                         "flexDirection": "row",
                         "justifyContent": "center",
                         "width": "100%",
@@ -3357,7 +3374,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
-                    "marginLeft": 8,
+                    "marginHorizontal": 8,
                   },
                 ]
               }
@@ -3399,6 +3416,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                       },
                       {},
                       {
+                        "borderRadius": 8,
                         "flexDirection": "row",
                         "justifyContent": "center",
                         "width": "100%",
@@ -3603,7 +3621,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
-                    "marginLeft": 8,
+                    "marginHorizontal": 8,
                   },
                 ]
               }
@@ -3655,6 +3673,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                       },
                       {},
                       {
+                        "borderRadius": 8,
                         "flexDirection": "row",
                         "justifyContent": "center",
                         "width": "100%",
@@ -3878,13 +3897,14 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
-                    "marginLeft": 8,
+                    "marginHorizontal": 8,
                   },
                 ]
               }
             >
               <View
                 accessibilityLabel="Validation de ta nouvelle adresse e-mail non complété"
+                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -3918,6 +3938,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                         "userSelect": "auto",
                       },
                       {
+                        "borderRadius": 8,
                         "flexDirection": "row",
                         "justifyContent": "center",
                         "width": "100%",
@@ -4316,7 +4337,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
-                    "marginLeft": 8,
+                    "marginHorizontal": 8,
                   },
                 ]
               }
@@ -4333,6 +4354,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
               />
               <View
                 accessibilityLabel="Confirme ta demande non complété"
+                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -4366,6 +4388,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                         "userSelect": "auto",
                       },
                       {
+                        "borderRadius": 8,
                         "flexDirection": "row",
                         "justifyContent": "center",
                         "width": "100%",
@@ -4599,7 +4622,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
-                    "marginLeft": 8,
+                    "marginHorizontal": 8,
                   },
                 ]
               }
@@ -4641,6 +4664,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                       },
                       {},
                       {
+                        "borderRadius": 8,
                         "flexDirection": "row",
                         "justifyContent": "center",
                         "width": "100%",
@@ -4850,7 +4874,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
-                    "marginLeft": 8,
+                    "marginHorizontal": 8,
                   },
                 ]
               }
@@ -4892,6 +4916,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                       },
                       {},
                       {
+                        "borderRadius": 8,
                         "flexDirection": "row",
                         "justifyContent": "center",
                         "width": "100%",
@@ -5092,13 +5117,14 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
-                    "marginLeft": 8,
+                    "marginHorizontal": 8,
                   },
                 ]
               }
             >
               <View
                 accessibilityLabel="Validation de ta nouvelle adresse e-mail non complété"
+                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -5132,6 +5158,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                         "userSelect": "auto",
                       },
                       {
+                        "borderRadius": 8,
                         "flexDirection": "row",
                         "justifyContent": "center",
                         "width": "100%",
@@ -5517,13 +5544,14 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
-                    "marginLeft": 8,
+                    "marginHorizontal": 8,
                   },
                 ]
               }
             >
               <View
                 accessibilityLabel="Confirmation de ta demande complété"
+                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -5557,6 +5585,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                         "userSelect": "auto",
                       },
                       {
+                        "borderRadius": 8,
                         "flexDirection": "row",
                         "justifyContent": "center",
                         "width": "100%",
@@ -5762,7 +5791,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
-                    "marginLeft": 8,
+                    "marginHorizontal": 8,
                   },
                 ]
               }
@@ -5814,6 +5843,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                       },
                       {},
                       {
+                        "borderRadius": 8,
                         "flexDirection": "row",
                         "justifyContent": "center",
                         "width": "100%",
@@ -6046,7 +6076,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
-                    "marginLeft": 8,
+                    "marginHorizontal": 8,
                   },
                 ]
               }
@@ -6088,6 +6118,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                       },
                       {},
                       {
+                        "borderRadius": 8,
                         "flexDirection": "row",
                         "justifyContent": "center",
                         "width": "100%",
@@ -6288,13 +6319,14 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
-                    "marginLeft": 8,
+                    "marginHorizontal": 8,
                   },
                 ]
               }
             >
               <View
                 accessibilityLabel="Validation de ta nouvelle adresse e-mail non complété"
+                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -6328,6 +6360,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                         "userSelect": "auto",
                       },
                       {
+                        "borderRadius": 8,
                         "flexDirection": "row",
                         "justifyContent": "center",
                         "width": "100%",
@@ -6713,13 +6746,14 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
-                    "marginLeft": 8,
+                    "marginHorizontal": 8,
                   },
                 ]
               }
             >
               <View
                 accessibilityLabel="Confirmation de ta demande complété"
+                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -6753,6 +6787,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                         "userSelect": "auto",
                       },
                       {
+                        "borderRadius": 8,
                         "flexDirection": "row",
                         "justifyContent": "center",
                         "width": "100%",
@@ -6945,7 +6980,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
-                    "marginLeft": 8,
+                    "marginHorizontal": 8,
                   },
                 ]
               }
@@ -6987,6 +7022,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                       },
                       {},
                       {
+                        "borderRadius": 8,
                         "flexDirection": "row",
                         "justifyContent": "center",
                         "width": "100%",
@@ -7178,7 +7214,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
-                    "marginLeft": 8,
+                    "marginHorizontal": 8,
                   },
                 ]
               }
@@ -7220,6 +7256,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                       },
                       {},
                       {
+                        "borderRadius": 8,
                         "flexDirection": "row",
                         "justifyContent": "center",
                         "width": "100%",
@@ -7415,7 +7452,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
-                    "marginLeft": 8,
+                    "marginHorizontal": 8,
                   },
                 ]
               }
@@ -7432,6 +7469,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
               />
               <View
                 accessibilityLabel="Valide ta nouvelle adresse non complété"
+                accessibilityRole="button"
                 accessibilityState={
                   {
                     "busy": undefined,
@@ -7465,6 +7503,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                         "userSelect": "auto",
                       },
                       {
+                        "borderRadius": 8,
                         "flexDirection": "row",
                         "justifyContent": "center",
                         "width": "100%",
