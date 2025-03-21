@@ -177,7 +177,10 @@ exports[`AgeSelectionFork should render correctly 1`] = `
             [
               {
                 "flexDirection": "column",
-                "paddingLeft": 0,
+                "paddingBottom": 4,
+                "paddingLeft": 4,
+                "paddingRight": 4,
+                "paddingTop": 4,
                 "width": "100%",
               },
             ]
@@ -779,7 +782,10 @@ exports[`AgeSelectionFork when enableCreditV3 activated onboarding should render
             [
               {
                 "flexDirection": "column",
-                "paddingLeft": 0,
+                "paddingBottom": 4,
+                "paddingLeft": 4,
+                "paddingRight": 4,
+                "paddingTop": 4,
                 "width": "100%",
               },
             ]

@@ -1,10 +1,14 @@
 import React, { ReactElement } from 'react'
 import styled from 'styled-components/native'
 
+import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { GenericBanner } from 'ui/components/ModuleBanner/GenericBanner'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { getSpacing } from 'ui/theme'
+// eslint-disable-next-line no-restricted-imports
+import { ColorsEnum } from 'ui/theme/colors'
+import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 
 type HeroButtonListProps = {
   Title: ReactElement
@@ -23,8 +27,11 @@ export function HeroButtonList({
   accessibilityLabel,
   onBeforeNavigate,
 }: Readonly<HeroButtonListProps>) {
+  const focusProps = useHandleFocus()
+
   return (
-    <InternalTouchableLink
+    <StyledInternalTouchableLink
+      {...focusProps}
       navigateTo={navigateTo}
       testID="HeroButtonList"
       accessibilityLabel={accessibilityLabel}
@@ -35,9 +42,18 @@ export function HeroButtonList({
           {Subtitle ? <SubtitleContainer>{Subtitle}</SubtitleContainer> : null}
         </TextWrapper>
       </GenericBanner>
-    </InternalTouchableLink>
+    </StyledInternalTouchableLink>
   )
 }
+
+const StyledInternalTouchableLink = styled(InternalTouchableLink).attrs<{
+  color: ColorsEnum
+}>(({ color }) => ({
+  hoverUnderlineColor: color,
+}))<{ isFocus: boolean }>(({ theme, isFocus }) => ({
+  borderRadius: theme.borderRadius.radius,
+  ...customFocusOutline({ isFocus, color: theme.colors.black }),
+}))
 
 const TextWrapper = styled.View({
   minHeight: getSpacing(14.5),

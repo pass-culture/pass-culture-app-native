@@ -3,6 +3,7 @@ import { NativeSyntheticEvent, Platform, TargetedEvent } from 'react-native'
 import styled from 'styled-components/native'
 
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { useHandleHover } from 'libs/hooks/useHandleHover'
 import { handleNavigationWrapper } from 'ui/components/touchableLink/handleNavigationWrapper'
@@ -40,7 +41,7 @@ export function TouchableLink({
   const touchableOpacityProps =
     Platform.OS === 'web' && !disabled
       ? { ...linkProps, accessibilityRole: undefined }
-      : { accessibilityRole: 'link' }
+      : { accessibilityRole: AccessibilityRole.LINK }
 
   const onLinkFocus = useCallback(
     (e: NativeSyntheticEvent<TargetedEvent>) => {

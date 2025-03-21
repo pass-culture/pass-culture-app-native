@@ -191,7 +191,7 @@ exports[`<ProfileTutorialAgeInformationCreditV3 /> should render correctly 1`] =
                   "flexBasis": 0,
                   "flexGrow": 1,
                   "flexShrink": 1,
-                  "marginLeft": 8,
+                  "marginHorizontal": 8,
                 },
               ]
             }
@@ -584,7 +584,7 @@ exports[`<ProfileTutorialAgeInformationCreditV3 /> should render correctly 1`] =
                   "flexBasis": 0,
                   "flexGrow": 1,
                   "flexShrink": 1,
-                  "marginLeft": 8,
+                  "marginHorizontal": 8,
                 },
               ]
             }
@@ -830,7 +830,10 @@ exports[`<ProfileTutorialAgeInformationCreditV3 /> should render correctly 1`] =
                         [
                           {
                             "flexDirection": "column",
-                            "paddingLeft": 0,
+                            "paddingBottom": 4,
+                            "paddingLeft": 4,
+                            "paddingRight": 4,
+                            "paddingTop": 4,
                             "width": "100%",
                           },
                         ]
@@ -1066,7 +1069,7 @@ exports[`<ProfileTutorialAgeInformationCreditV3 /> should render correctly 1`] =
                   "flexBasis": 0,
                   "flexGrow": 1,
                   "flexShrink": 1,
-                  "marginLeft": 8,
+                  "marginHorizontal": 8,
                 },
               ]
             }

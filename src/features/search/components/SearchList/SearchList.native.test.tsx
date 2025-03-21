@@ -9,6 +9,8 @@ import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { Offer } from 'shared/offer/types'
 import { render } from 'tests/utils'
 
+jest.mock('libs/firebase/analytics/analytics')
+
 const mockHits: Offer[] = mockedAlgoliaResponse.hits
 const mockNbHits = mockedAlgoliaResponse.nbHits
 

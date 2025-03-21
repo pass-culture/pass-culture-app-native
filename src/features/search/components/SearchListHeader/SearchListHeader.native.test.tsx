@@ -21,6 +21,8 @@ import { act, render, screen } from 'tests/utils'
 
 import { SearchListHeader } from './SearchListHeader'
 
+jest.mock('libs/firebase/analytics/analytics')
+
 const searchId = uuidv4()
 
 const mockUsePreviousRoute: jest.Mock<Route<string> | null> = usePreviousRoute

@@ -27,6 +27,8 @@ const items: VenueListItem[] = [
   },
 ]
 
+jest.mock('libs/firebase/analytics/analytics')
+
 const nbLoadedHits = 3
 const nbHits = 40
 
