@@ -3,6 +3,8 @@ import React from 'react'
 import { VenueSelectionListHeader } from 'features/offer/components/VenueSelectionListHeader/VenueSelectionListHeader'
 import { render, screen } from 'tests/utils'
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('<VenueSelectionListHeader />', () => {
   it('should display geolocation system banner when user has not a location', () => {
     render(

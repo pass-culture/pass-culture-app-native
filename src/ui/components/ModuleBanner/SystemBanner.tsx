@@ -8,8 +8,9 @@ import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { theme } from 'theme'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { Touchable } from 'ui/components/touchable/Touchable'
+import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import { InternalNavigationProps } from 'ui/components/touchableLink/types'
+import { ExternalNavigationProps, InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
 import { AccessibleIcon } from 'ui/svg/icons/types'
@@ -21,14 +22,25 @@ import { getHoverStyle } from 'ui/theme/getHoverStyle/getHoverStyle'
 
 type TouchableProps =
   | {
-      navigateTo: InternalNavigationProps['navigateTo']
-      onBeforeNavigate?: () => void
+      onPress: () => void
+      onBeforeNavigate?: never
+      navigateTo?: never
+      externalNav?: never
     }
   | {
-      onPress: () => void
+      navigateTo: InternalNavigationProps['navigateTo']
+      onBeforeNavigate?: () => void
+      onPress?: never
+      externalNav?: never
+    }
+  | {
+      externalNav: ExternalNavigationProps['externalNav']
+      onBeforeNavigate?: () => void
+      onPress?: never
+      navigateTo?: never
     }
 
-type Props = TouchableProps & {
+type Props = {
   leftIcon: React.FunctionComponent<AccessibleIcon>
   title: string
   subtitle: string
@@ -39,7 +51,7 @@ type Props = TouchableProps & {
     from: 'home' | 'thematicHome' | 'offer' | 'profile' | 'search' | 'cheatcodes'
   }
   withBackground?: boolean
-}
+} & TouchableProps
 
 export const SystemBanner: FunctionComponent<Props> = ({
   leftIcon: LeftIcon,
@@ -70,8 +82,13 @@ export const SystemBanner: FunctionComponent<Props> = ({
       }))``
     : undefined
 
-  const TouchableComponent =
-    'navigateTo' in touchableProps ? StyledInternalTouchableLink : StyledTouchableOpacity
+  const getTouchableComponent = (props: TouchableProps) => {
+    if ('navigateTo' in props) return StyledInternalTouchableLink
+    if ('externalNav' in props) return StyledExternalTouchableLink
+    return StyledTouchableOpacity
+  }
+
+  const TouchableComponent = getTouchableComponent(touchableProps)
 
   return (
     <TouchableComponent
@@ -99,6 +116,15 @@ export const SystemBanner: FunctionComponent<Props> = ({
 }
 
 const StyledInternalTouchableLink = styled(InternalTouchableLink).attrs<{
+  color: ColorsEnum
+}>(({ color }) => ({
+  hoverUnderlineColor: color,
+}))<{ isFocus: boolean }>(({ theme, isFocus }) => ({
+  borderRadius: theme.borderRadius.radius,
+  ...customFocusOutline({ isFocus, color: theme.colors.black }),
+}))
+
+const StyledExternalTouchableLink = styled(ExternalTouchableLink).attrs<{
   color: ColorsEnum
 }>(({ color }) => ({
   hoverUnderlineColor: color,

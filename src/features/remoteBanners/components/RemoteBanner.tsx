@@ -3,7 +3,6 @@ import { Platform } from 'react-native'
 
 import { STORE_LINK } from 'features/forceUpdate/constants'
 import { onPressStoreLink } from 'features/forceUpdate/helpers/onPressStoreLink'
-import { openUrl } from 'features/navigation/helpers/openUrl'
 import {
   RemoteBannerOrigin,
   RemoteBannerRedirectionType,
@@ -55,21 +54,42 @@ export const RemoteBanner = ({
     ? externalAccessiblityLabel
     : storeAccessibilityLabel
 
+  const onBeforeNavigate = () => logClickEvent(from, validatedOptions)
   const onPress = () => {
-    logClickEvent(from, validatedOptions)
-    if (isStoreRedirection) onPressStoreLink()
-    if (isExternalAndDefined) openUrl(redirectionUrl)
+    onBeforeNavigate()
+    onPressStoreLink()
   }
 
-  return (
-    <SystemBanner
-      accessibilityRole={accessibilityRole}
-      withBackground
-      leftIcon={leftIcon}
-      title={title}
-      subtitle={subtitle ?? ''}
-      onPress={onPress}
-      accessibilityLabel={accessibilityLabel}
-      analyticsParams={analyticsParams}></SystemBanner>
-  )
+  if (isStoreRedirection) {
+    return (
+      <SystemBanner
+        accessibilityRole={accessibilityRole}
+        withBackground
+        leftIcon={leftIcon}
+        title={title}
+        subtitle={subtitle ?? ''}
+        onPress={onPress}
+        accessibilityLabel={accessibilityLabel}
+        analyticsParams={analyticsParams}
+      />
+    )
+  }
+
+  if (isExternalAndDefined) {
+    return (
+      <SystemBanner
+        accessibilityRole={accessibilityRole}
+        withBackground
+        leftIcon={leftIcon}
+        title={title}
+        subtitle={subtitle ?? ''}
+        onBeforeNavigate={onBeforeNavigate}
+        externalNav={{ url: redirectionUrl }}
+        accessibilityLabel={accessibilityLabel}
+        analyticsParams={analyticsParams}
+      />
+    )
+  }
+
+  return null
 }

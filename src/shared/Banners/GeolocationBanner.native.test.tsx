@@ -5,6 +5,8 @@ import { requestGeolocPermission, showGeolocPermissionModal } from 'libs/locatio
 import { GeolocationBanner } from 'shared/Banners/GeolocationBanner'
 import { render, screen, userEvent } from 'tests/utils'
 
+jest.mock('libs/firebase/analytics/analytics')
+
 jest.mock('libs/location')
 const mockUseLocation = useLocation as jest.Mock
 

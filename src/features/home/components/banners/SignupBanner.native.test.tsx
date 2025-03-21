@@ -8,6 +8,8 @@ import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { userEvent, render, screen } from 'tests/utils'
 
+jest.mock('libs/firebase/analytics/analytics')
+
 const user = userEvent.setup()
 jest.useFakeTimers()
 
