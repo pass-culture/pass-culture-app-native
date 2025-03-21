@@ -25,6 +25,7 @@ export function useComputedTheme(theme: BaseAppThemeType, colorScheme: ColorSche
   return useMemo<AppThemeType>(
     () => ({
       ...theme,
+      colorScheme,
       designSystem: designTokens,
       tabBar: { ...theme.tabBar, showLabels, height: theme.tabBar.heightV2 },
       isMobileViewport,
@@ -36,6 +37,7 @@ export function useComputedTheme(theme: BaseAppThemeType, colorScheme: ColorSche
     }),
     [
       theme,
+      colorScheme,
       designTokens,
       showLabels,
       isMobileViewport,
