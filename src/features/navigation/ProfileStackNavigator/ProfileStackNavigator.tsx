@@ -25,6 +25,7 @@ import { DeleteProfileContactSupport } from 'features/profile/pages/DeleteProfil
 import { DeleteProfileEmailHacked } from 'features/profile/pages/DeleteProfile/DeleteProfileEmailHacked'
 import { SuspendAccountConfirmationWithoutAuthentication } from 'features/profile/pages/DeleteProfile/SuspendAccountConfirmationWithoutAuthentication'
 import { DeleteProfileReason } from 'features/profile/pages/DeleteProfileReason/DeleteProfileReason'
+import { FeedbackInApp } from 'features/profile/pages/FeedbackInApp/FeedbackInApp'
 import { LegalNotices } from 'features/profile/pages/LegalNotices/LegalNotices'
 import { NewEmailSelection } from 'features/profile/pages/NewEmailSelection/NewEmailSelection'
 import { NotificationsSettings } from 'features/profile/pages/NotificationSettings/NotificationsSettings'
@@ -181,6 +182,11 @@ export const ProfileStackNavigator = () => (
       name="NewEmailSelection"
       component={withAuthProtection(NewEmailSelection)}
       options={{ title: 'Nouvelle adresse e-mail' }}
+    />
+    <ProfileStack.Screen
+      name="FeedbackInApp"
+      component={withAuthProtection(FeedbackInApp)}
+      options={{ title: 'Forumulaire de suggestion' }}
     />
   </ProfileStack.Navigator>
 )
