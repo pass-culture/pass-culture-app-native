@@ -4,6 +4,8 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { SelectPhoneStatus } from 'features/identityCheck/pages/identification/ubble/SelectPhoneStatus.web'
 import { checkAccessibilityFor, fireEvent, render, screen } from 'tests/utils/web'
 
+jest.mock('ui/theme/customFocusOutline/customFocusOutline')
+
 describe('SelectPhoneStatus', () => {
   it('should render correctly', () => {
     const { container } = render(<SelectPhoneStatus />)
