@@ -3,7 +3,7 @@ import React from 'react'
 
 import { CreditStatus } from 'features/tutorial/enums'
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
-import { TypoDS } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 import { CreditBlock } from './CreditBlock'
 
@@ -13,7 +13,7 @@ const meta: ComponentMeta<typeof CreditBlock> = {
 }
 export default meta
 
-const Text = <TypoDS.BodyAccentXs>Tu auras deux ans pour utiliser tes 300€</TypoDS.BodyAccentXs>
+const Text = <Typo.BodyAccentXs>Tu auras deux ans pour utiliser tes 300€</Typo.BodyAccentXs>
 
 const variantConfig: Variants<typeof CreditBlock> = [
   {

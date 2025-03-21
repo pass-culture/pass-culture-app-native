@@ -11,7 +11,7 @@ import { HeadlineOfferData } from 'features/headlineOffer/type'
 import { Tag } from 'ui/components/Tag/Tag'
 import { HorizontalTile } from 'ui/components/tiles/HorizontalTile'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { TypoDS, getSpacing } from 'ui/theme'
+import { Typo, getSpacing } from 'ui/theme'
 
 export const HeadlineOfferLargeViewport: FunctionComponent<HeadlineOfferData> = ({
   imageUrl,
@@ -53,6 +53,6 @@ const IconContainer = styled(ViewGap)({
   flexDirection: 'row',
 })
 
-const SeeOfferText = styled(TypoDS.BodyAccentS)(({ theme }) => ({
+const SeeOfferText = styled(Typo.BodyAccentS)(({ theme }) => ({
   color: theme.colors.white,
 }))

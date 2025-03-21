@@ -17,7 +17,7 @@ import { Touchable } from 'ui/components/touchable/Touchable'
 import { GenericErrorPage } from 'ui/pages/GenericErrorPage'
 import { BicolorBrokenConnection } from 'ui/svg/BicolorBrokenConnection'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
-import { getSpacing, TypoDS } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 interface AsyncFallbackProps extends FallbackProps {
@@ -129,7 +129,7 @@ const HeaderContainer = styledButton(Touchable)<{ top: number }>(({ theme, top }
   zIndex: theme.zIndex.floatingButton,
 }))
 
-const StyledBody = styled(TypoDS.Body)(({ theme }) => ({
+const StyledBody = styled(Typo.Body)(({ theme }) => ({
   color: theme.colors.white,
   textAlign: 'center',
 }))

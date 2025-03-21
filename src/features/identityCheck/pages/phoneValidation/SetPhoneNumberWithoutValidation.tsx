@@ -23,7 +23,7 @@ import { InputError } from 'ui/components/inputs/InputError'
 import { TextInput } from 'ui/components/inputs/TextInput'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Info } from 'ui/svg/icons/Info'
-import { TypoDS } from 'ui/theme'
+import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 import { invalidateStepperInfoQuery } from '../helpers/invalidateStepperQuery'
@@ -103,7 +103,7 @@ export const SetPhoneNumberWithoutValidation = () => {
       scrollChildren={
         <ViewGap gap={8}>
           <ViewGap gap={4}>
-            <TypoDS.Title3 {...getHeadingAttrs(2)}>Saisis ton numéro de téléphone</TypoDS.Title3>
+            <Typo.Title3 {...getHeadingAttrs(2)}>Saisis ton numéro de téléphone</Typo.Title3>
             <InfoBanner
               icon={Info}
               message="Ton numéro pourra être utilisé pour recevoir des infos sur tes futures réservations."

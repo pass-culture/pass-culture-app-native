@@ -5,7 +5,7 @@ import { useHighlightOffer } from 'features/home/api/useHighlightOffer'
 import { HighlightOfferModule as HighlightOfferModuleType } from 'features/home/types'
 import { analytics } from 'libs/analytics/provider'
 import { ContentTypes } from 'libs/contentful/types'
-import { Spacer, TypoDS } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 
 import { MarketingBlockExclusivity } from './marketing/MarketingBlockExclusivity'
 
@@ -76,6 +76,6 @@ const StyledTitleContainer = styled.View(({ theme }) => ({
   marginHorizontal: theme.contentPage.marginHorizontal,
 }))
 
-const StyledTitle = styled(TypoDS.Title3).attrs({
+const StyledTitle = styled(Typo.Title3).attrs({
   numberOfLines: 2,
 })``

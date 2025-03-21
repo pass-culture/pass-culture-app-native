@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 import { customEaseInOut, DURATION_IN_MS } from 'features/tutorial/helpers/animationProps'
 import { AnimatedView, NAV_DELAY_IN_MS } from 'libs/react-native-animatable'
 import { EmptyHeader } from 'ui/components/headers/EmptyHeader'
-import { getSpacing, Spacer, TypoDS } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 interface Props {
@@ -41,15 +41,15 @@ export const TutorialPage: FunctionComponent<Props> = ({
           {title ? (
             <React.Fragment>
               <Spacer.Column numberOfSpaces={6} />
-              <TypoDS.Title3 numberOfLines={3} {...getHeadingAttrs(1)}>
+              <Typo.Title3 numberOfLines={3} {...getHeadingAttrs(1)}>
                 {title}
-              </TypoDS.Title3>
+              </Typo.Title3>
             </React.Fragment>
           ) : null}
           {subtitle ? (
             <React.Fragment>
               <Spacer.Column numberOfSpaces={2} />
-              <TypoDS.Body>{subtitle}</TypoDS.Body>
+              <Typo.Body>{subtitle}</Typo.Body>
             </React.Fragment>
           ) : null}
           <Spacer.Column numberOfSpaces={4} />

@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { AccessibleIcon } from 'ui/svg/icons/types'
-import { getSpacing, Spacer, TypoDS } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 interface IconWithCaptionProps {
   Icon: React.FC<AccessibleIcon>
@@ -46,7 +46,7 @@ const IconContainer = styled.View({
   padding: getSpacing(1),
 })
 
-const Caption = styled(TypoDS.BodyAccentXs)<{ disabled?: boolean }>(({ disabled, theme }) => ({
+const Caption = styled(Typo.BodyAccentXs)<{ disabled?: boolean }>(({ disabled, theme }) => ({
   color: disabled ? theme.colors.greyDark : theme.colors.black,
   textAlign: 'center',
 }))

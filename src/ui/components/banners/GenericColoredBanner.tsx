@@ -3,7 +3,7 @@ import { ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
 import { AccessibleIcon } from 'ui/svg/icons/types'
-import { getSpacing, TypoDS } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 
 type ColorMessageProps = {
   textColor?: string
@@ -59,6 +59,6 @@ const TextContainer = styled.View({
   flex: 1,
 })
 
-const Caption = styled(TypoDS.BodyAccentXs)<ColorMessageProps>(({ theme, textColor }) => ({
+const Caption = styled(Typo.BodyAccentXs)<ColorMessageProps>(({ theme, textColor }) => ({
   color: textColor || theme.colors.black,
 }))

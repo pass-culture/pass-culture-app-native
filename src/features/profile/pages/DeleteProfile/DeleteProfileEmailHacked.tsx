@@ -7,7 +7,7 @@ import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
 import { Clear } from 'ui/svg/icons/Clear'
 import { BicolorUserBlocked } from 'ui/svg/icons/UserBlocked'
-import { TypoDS } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 export const DeleteProfileEmailHacked: FC = () => {
   const { navigate } = useNavigation<UseNavigationType>()
@@ -39,13 +39,13 @@ export const DeleteProfileEmailHacked: FC = () => {
         icon: Clear,
       }}>
       <ViewGap gap={6}>
-        <TypoDS.BodyS>
-          Tu as indiqué <TypoDS.BodyAccentS>que ta boite mail a été piratée</TypoDS.BodyAccentS>.
-        </TypoDS.BodyS>
-        <TypoDS.BodyS>
-          Pour des raisons de <TypoDS.BodyAccentS>sécurité</TypoDS.BodyAccentS>, nous te conseillons
-          de modifier ton mot de passe ou suspendre ton compte temporairement.
-        </TypoDS.BodyS>
+        <Typo.BodyS>
+          Tu as indiqué <Typo.BodyAccentS>que ta boite mail a été piratée</Typo.BodyAccentS>.
+        </Typo.BodyS>
+        <Typo.BodyS>
+          Pour des raisons de <Typo.BodyAccentS>sécurité</Typo.BodyAccentS>, nous te conseillons de
+          modifier ton mot de passe ou suspendre ton compte temporairement.
+        </Typo.BodyS>
       </ViewGap>
     </GenericInfoPageWhite>
   )

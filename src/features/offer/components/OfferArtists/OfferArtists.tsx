@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
-import { Spacer, TypoDS } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 interface Props {
@@ -41,7 +41,7 @@ export const OfferArtists: FunctionComponent<Props> = ({ artists, onPressArtistL
   )
 }
 
-const ArtistsText = styled(TypoDS.BodyAccent)(({ theme }) => ({
+const ArtistsText = styled(Typo.BodyAccent)(({ theme }) => ({
   color: theme.buttons.tertiaryBlack.textColor,
   flex: 1,
 }))
@@ -50,6 +50,6 @@ const ArtistInfoContainer = styled.View({
   flexDirection: 'row',
 })
 
-const StyledPrefix = styled(TypoDS.BodyAccent)(({ theme }) => ({
+const StyledPrefix = styled(Typo.BodyAccent)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))

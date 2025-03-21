@@ -18,7 +18,7 @@ import { ProgressBar } from 'ui/components/bars/ProgressBar'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
 import { AccessibleIcon } from 'ui/svg/icons/types'
-import { getSpacing, TypoDS } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 const emptyAchievement = {
@@ -47,7 +47,7 @@ export const Achievements = () => {
   return (
     <SecondaryPageWithBlurHeader title="">
       <ViewGap gap={4}>
-        <TypoDS.Title2 {...getHeadingAttrs(1)}>Mes succès</TypoDS.Title2>
+        <Typo.Title2 {...getHeadingAttrs(1)}>Mes succès</Typo.Title2>
         {categories.map((category) => {
           const isOddAchievements = category.achievements.length % 2 !== 0
           const achievements = isOddAchievements
@@ -58,9 +58,9 @@ export const Achievements = () => {
             <ViewGap gap={4} key={category.name}>
               <AchievementsGroupeHeader>
                 <View>
-                  <TypoDS.Title4 {...getHeadingAttrs(2)}>
+                  <Typo.Title4 {...getHeadingAttrs(2)}>
                     {achievementCategoryDisplayTitles[category.name]}
-                  </TypoDS.Title4>
+                  </Typo.Title4>
                   <StyledBody>{category.remainingAchievementsText}</StyledBody>
                 </View>
                 <CompletionContainer>
@@ -71,7 +71,7 @@ export const Achievements = () => {
                       height={2.5}
                     />
                   </ProgressBarContainer>
-                  <TypoDS.BodyS>{category.progressText}</TypoDS.BodyS>
+                  <Typo.BodyS>{category.progressText}</Typo.BodyS>
                 </CompletionContainer>
               </AchievementsGroupeHeader>
               <FlatList
@@ -111,7 +111,7 @@ const EmptyAchievement = styled.View({
   flex: 0.5,
 })
 
-const StyledBody = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
+const StyledBody = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.colors.greySemiDark,
 }))
 

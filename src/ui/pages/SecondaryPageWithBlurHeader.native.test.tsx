@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { render, screen } from 'tests/utils'
-import { TypoDS } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 import { SecondaryPageWithBlurHeader } from './SecondaryPageWithBlurHeader'
 
@@ -15,7 +15,7 @@ describe('<SecondaryPageWithBlurHeader />', () => {
   it('should render correctly', () => {
     render(
       <SecondaryPageWithBlurHeader title="SecondaryPageWithBlurHeader">
-        <TypoDS.Title3>Children</TypoDS.Title3>
+        <Typo.Title3>Children</Typo.Title3>
       </SecondaryPageWithBlurHeader>
     )
 

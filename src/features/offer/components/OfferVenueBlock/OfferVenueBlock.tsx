@@ -13,7 +13,7 @@ import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { Separator } from 'ui/components/Separator'
 import { Duplicate } from 'ui/svg/icons/Duplicate'
 import { EditPen } from 'ui/svg/icons/EditPen'
-import { getSpacing, TypoDS } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type Props = {
@@ -48,7 +48,7 @@ export function OfferVenueBlock({
 
   return (
     <Wrapper>
-      <TypoDS.Title3 {...getHeadingAttrs(2)}>{title}</TypoDS.Title3>
+      <Typo.Title3 {...getHeadingAttrs(2)}>{title}</Typo.Title3>
 
       <Container>
         <VenueBlock

@@ -10,7 +10,7 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { ErrorBanner } from 'ui/components/banners/ErrorBanner'
 import { Separator } from 'ui/components/Separator'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { TypoDS, getSpacing } from 'ui/theme'
+import { Typo, getSpacing } from 'ui/theme'
 
 export const CheatcodesScreenRemoteBanners = () => {
   const { options: showGenericBannerOptions } = useFeatureFlagOptions(
@@ -43,7 +43,7 @@ export const CheatcodesScreenRemoteBanners = () => {
   return (
     <CheatcodesTemplateScreen title="RemoteBanners 🆒" flexDirection="column">
       <ViewGap gap={3}>
-        <TypoDS.Title3>RemoteGenericBanner</TypoDS.Title3>
+        <Typo.Title3>RemoteGenericBanner</Typo.Title3>
         {showGenericBannerOptions ? (
           <RemoteGenericBanner
             from="cheatcodes"
@@ -58,7 +58,7 @@ export const CheatcodesScreenRemoteBanners = () => {
 
         <StyledSeparator />
 
-        <TypoDS.Title3>RemoteActivationBanner</TypoDS.Title3>
+        <Typo.Title3>RemoteActivationBanner</Typo.Title3>
         {disableActivationOptions ? (
           <RemoteActivationBanner
             from="cheatcodes"

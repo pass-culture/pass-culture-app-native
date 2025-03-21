@@ -3,9 +3,9 @@ import styled from 'styled-components/native'
 
 import { CreditComponentProps } from 'features/tutorial/components/CreditTimeline'
 import { BicolorUnlock } from 'ui/svg/icons/BicolorUnlock'
-import { Spacer, TypoDS, getSpacing } from 'ui/theme'
+import { Spacer, Typo, getSpacing } from 'ui/theme'
 
-const StyledCaption = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
+const StyledCaption = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))
 

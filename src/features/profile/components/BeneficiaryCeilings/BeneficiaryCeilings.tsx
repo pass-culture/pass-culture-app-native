@@ -6,7 +6,7 @@ import { useIsUserUnderageBeneficiary } from 'features/profile/helpers/useIsUser
 import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
-import { Spacer, TypoDS } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 import { SPACE } from 'ui/theme/constants'
 
 type BeneficiaryCeilingsProps = {
@@ -24,7 +24,7 @@ export function BeneficiaryCeilings({ domainsCredit }: BeneficiaryCeilingsProps)
       {domainsCredit.digital ? (
         <React.Fragment>
           <Spacer.Column numberOfSpaces={6} />
-          <TypoDS.Body testID="domains-credit-digital">
+          <Typo.Body testID="domains-credit-digital">
             dont
             {SPACE}
             <BodySecondary>
@@ -36,13 +36,13 @@ export function BeneficiaryCeilings({ domainsCredit }: BeneficiaryCeilingsProps)
             </BodySecondary>
             {SPACE}
             en offres numériques.
-          </TypoDS.Body>
+          </Typo.Body>
         </React.Fragment>
       ) : null}
     </React.Fragment>
   )
 }
 
-const BodySecondary = styled(TypoDS.Body)(({ theme }) => ({
+const BodySecondary = styled(Typo.Body)(({ theme }) => ({
   color: theme.colors.secondary,
 }))

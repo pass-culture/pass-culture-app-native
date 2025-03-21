@@ -18,7 +18,7 @@ import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/S
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
-import { Spacer, TypoDS } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const ConsentSettings = () => {
@@ -52,10 +52,10 @@ export const ConsentSettings = () => {
 
   return (
     <SecondaryPageWithBlurHeader title="Paramètres de confidentialité" scrollable>
-      <TypoDS.Body>
+      <Typo.Body>
         L’application pass Culture utilise des outils et traceurs appelés cookies pour améliorer ton
         expérience de navigation.
-      </TypoDS.Body>
+      </Typo.Body>
       <Spacer.Column numberOfSpaces={4} />
       <StyledBodyAccentXs>
         Tu peux choisir d’accepter ou non l’activation de leur suivi.
@@ -66,15 +66,13 @@ export const ConsentSettings = () => {
         setSettingsCookiesChoice={setSettingsCookiesChoice}
       />
       <Spacer.Column numberOfSpaces={4} />
-      <TypoDS.Title4 {...getHeadingAttrs(2)}>Tu as la main dessus</TypoDS.Title4>
+      <Typo.Title4 {...getHeadingAttrs(2)}>Tu as la main dessus</Typo.Title4>
       <Spacer.Column numberOfSpaces={4} />
-      <TypoDS.Body>
+      <Typo.Body>
         Ton choix est enregistré pour 6 mois et tu peux changer d’avis à tout moment.
-      </TypoDS.Body>
+      </Typo.Body>
       <Spacer.Column numberOfSpaces={4} />
-      <TypoDS.Body>
-        On te redemandera bien sûr ton consentement si notre politique évolue.
-      </TypoDS.Body>
+      <Typo.Body>On te redemandera bien sûr ton consentement si notre politique évolue.</Typo.Body>
       <Spacer.Column numberOfSpaces={4} />
       <StyledBodyAccentXs>
         Pour plus d’informations, nous t’invitons à consulter notre
@@ -94,6 +92,6 @@ export const ConsentSettings = () => {
   )
 }
 
-const StyledBodyAccentXs = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
+const StyledBodyAccentXs = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))

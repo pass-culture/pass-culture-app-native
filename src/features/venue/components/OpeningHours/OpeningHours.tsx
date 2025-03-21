@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 import { Li } from 'ui/components/Li'
 import { VerticalUl } from 'ui/components/Ul'
-import { TypoDS } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 import { OpeningHours as OpeningHoursType, getOpeningHours } from './getOpeningHours'
 
@@ -17,8 +17,8 @@ export const OpeningHours: FC<Props> = ({ openingHours }) => {
         <StyledLi
           key={day.label}
           accessibilityLabel={`${day.label} ${day.hours.replace('/', ' puis ')}`}>
-          <TypoDS.Body accessibilityHidden>{day.label}</TypoDS.Body>
-          <TypoDS.Body accessibilityHidden>{day.hours}</TypoDS.Body>
+          <Typo.Body accessibilityHidden>{day.label}</Typo.Body>
+          <Typo.Body accessibilityHidden>{day.hours}</Typo.Body>
         </StyledLi>
       ))}
     </StyledVerticalUl>

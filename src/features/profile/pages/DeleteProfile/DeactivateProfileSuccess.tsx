@@ -13,7 +13,7 @@ import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouch
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { Again } from 'ui/svg/icons/Again'
 import { ProfileDeletion } from 'ui/svg/icons/ProfileDeletion'
-import { Spacer, TypoDS } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 
 export function DeactivateProfileSuccess() {
   const signOut = useLogoutRoutine()
@@ -64,7 +64,7 @@ export function DeactivateProfileSuccess() {
   )
 }
 
-const StyledBody = styled(TypoDS.Body)(({ theme }) => ({
+const StyledBody = styled(Typo.Body)(({ theme }) => ({
   color: theme.colors.white,
   textAlign: 'center',
 }))

@@ -22,7 +22,7 @@ import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouch
 import { BicolorClock as DefaultClock } from 'ui/svg/icons/BicolorClock'
 import { Duo } from 'ui/svg/icons/Duo'
 import { OfferEvent as DefaultOfferEvent } from 'ui/svg/icons/OfferEvent'
-import { Spacer, TypoDS, getSpacing } from 'ui/theme'
+import { Spacer, Typo, getSpacing } from 'ui/theme'
 
 type Props = {
   booking: Booking
@@ -145,11 +145,11 @@ const WithdrawContainer = styled.View(({ theme }) => ({
   color: theme.colors.primary,
 }))
 
-const DateLabel = styled(TypoDS.Body)(({ theme }) => ({
+const DateLabel = styled(Typo.Body)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))
 
-const WithdrawCaption = styled(TypoDS.BodyAccentXs)({
+const WithdrawCaption = styled(Typo.BodyAccentXs)({
   marginTop: getSpacing(1),
   marginRight: getSpacing(4),
 })
@@ -176,7 +176,7 @@ const ExpirationBookingContainer = styled.View(({ theme }) => ({
   color: theme.colors.primary,
 }))
 
-const ExpirationBookingLabel = styled(TypoDS.BodyAccentXs)({
+const ExpirationBookingLabel = styled(Typo.BodyAccentXs)({
   marginTop: getSpacing(1),
   marginRight: getSpacing(4),
 })

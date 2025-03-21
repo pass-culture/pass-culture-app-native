@@ -9,14 +9,14 @@ const tests = {
   valid: [
     // <Text>string</Text>
     { code: '<Text>toto</Text>' },
-    // <TypoDS.***>string</TypoDS.***>
-    { code: '<TypoDS.Title1>toto</TypoDS.Title1>' },
-    { code: '<TypoDS.Title2>toto</TypoDS.Title2>' },
-    { code: '<TypoDS.Title3>toto</TypoDS.Title3>' },
-    { code: '<TypoDS.Title4>toto</TypoDS.Title4>' },
-    { code: '<TypoDS.Button>toto</TypoDS.Button>' },
-    { code: '<TypoDS.Body>toto</TypoDS.Body>' },
-    { code: '<TypoDS.BodyAccentXs>toto</TypoDS.BodyAccentXs>' },
+    // <Typo.***>string</Typo.***>
+    { code: '<Typo.Title1>toto</Typo.Title1>' },
+    { code: '<Typo.Title2>toto</Typo.Title2>' },
+    { code: '<Typo.Title3>toto</Typo.Title3>' },
+    { code: '<Typo.Title4>toto</Typo.Title4>' },
+    { code: '<Typo.Button>toto</Typo.Button>' },
+    { code: '<Typo.Body>toto</Typo.Body>' },
+    { code: '<Typo.BodyAccentXs>toto</Typo.BodyAccentXs>' },
     // <Styled***>string</Styled***>
     { code: '<StyledTitle1>toto</StyledTitle1>' },
     { code: '<StyledTitle2>toto</StyledTitle2>' },
@@ -64,7 +64,7 @@ tests.invalid.forEach((t) =>
   Object.assign(t, config, {
     errors: [
       {
-        message: `No raw text outside tags <Text>, <Typo.***>, <TypoDS.***>, <allowed JSX tag.***>. \n *** = all exported Typo in src/ui/theme/typography.tsx`,
+        message: `No raw text outside tags <Text>, <Typo.***>, <allowed JSX tag.***>. \n *** = all exported Typo in src/ui/theme/typography.tsx`,
       },
     ],
   })

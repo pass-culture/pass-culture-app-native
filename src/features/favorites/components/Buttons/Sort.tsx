@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { Sort as SortIconDefault } from 'ui/svg/icons/Sort'
-import { getSpacing, Spacer, TypoDS } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 export const Sort: FunctionComponent = () => {
   return (
@@ -43,6 +43,6 @@ const StyledLinearGradient = styled(LinearGradient).attrs(({ theme }) => ({
   height: getSpacing(10),
 }))
 
-const StyledButtonText = styled(TypoDS.Button)(({ theme }) => ({
+const StyledButtonText = styled(Typo.Button)(({ theme }) => ({
   color: theme.colors.white,
 }))

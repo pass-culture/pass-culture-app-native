@@ -3,7 +3,7 @@ import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { Platform, View } from 'react-native'
 import styled from 'styled-components/native'
 
-import { getSpacing, Spacer, TypoDS } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 export type ValuesType = [number] | [number, number]
 
@@ -222,7 +222,7 @@ const StyledMultiSlider = styled(MultiSlider).attrs(({ sliderLength, theme }) =>
   }
 })``
 
-const CenteredText = styled(TypoDS.BodyAccent)<{ width?: number }>(({ width, theme }) => ({
+const CenteredText = styled(Typo.BodyAccent)<{ width?: number }>(({ width, theme }) => ({
   width: width ?? theme.appContentWidth - getSpacing(2 * 2 * 6),
   textAlign: 'center',
 }))
@@ -232,7 +232,7 @@ const MinMaxContainer = styled.View({
   justifyContent: 'space-between',
 })
 
-const MinMaxValue = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
+const MinMaxValue = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))
 

@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 
 import { Separator } from 'ui/components/Separator'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { TypoDS, getSpacing } from 'ui/theme'
+import { Typo, getSpacing } from 'ui/theme'
 
 type Variant<Props extends Record<string, unknown>> = {
   label: string
@@ -50,7 +50,7 @@ export const VariantsTemplate = <
 
       return (
         <React.Fragment key={variant.label}>
-          <TypoDS.BodyAccentXs>{variant.label}</TypoDS.BodyAccentXs>
+          <Typo.BodyAccentXs>{variant.label}</Typo.BodyAccentXs>
 
           <ComponentContainer withBackground={variant.withBackground} minHeight={variant.minHeight}>
             <Component {...props} />
@@ -80,7 +80,7 @@ const ComponentContainer = styled.View<{ withBackground?: boolean; minHeight: nu
   })
 )
 
-const StyledBody = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
+const StyledBody = styled(Typo.BodyAccentXs)(({ theme }) => ({
   marginTop: getSpacing(3),
   color: theme.colors.white,
   fontStyle: 'italic',

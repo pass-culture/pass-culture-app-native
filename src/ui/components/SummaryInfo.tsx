@@ -2,7 +2,7 @@ import React, { ReactElement } from 'react'
 import styled from 'styled-components/native'
 
 import { Separator } from 'ui/components/Separator'
-import { getSpacing, TypoDS } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 
 export type SummaryInfoProps = {
   Icon: ReactElement
@@ -16,7 +16,7 @@ export function SummaryInfo({ Icon, title, subtitle }: Readonly<SummaryInfoProps
       <Container>
         <IconContainer>{Icon}</IconContainer>
         <TextContainer>
-          <TypoDS.Body>{title}</TypoDS.Body>
+          <Typo.Body>{title}</Typo.Body>
           {subtitle ? <Subtitle>{subtitle}</Subtitle> : null}
         </TextContainer>
       </Container>
@@ -42,6 +42,6 @@ const TextContainer = styled.View({
   gap: getSpacing(1),
 })
 
-const Subtitle = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
+const Subtitle = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))

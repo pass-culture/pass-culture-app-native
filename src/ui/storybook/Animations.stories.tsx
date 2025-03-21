@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import styled from 'styled-components/native'
 
 import LottieView from 'libs/lottie'
-import { Spacer, TypoDS, getSpacing } from 'ui/theme'
+import { Spacer, Typo, getSpacing } from 'ui/theme'
 
 export default {
   title: 'Fondations/Animations',
@@ -104,9 +104,9 @@ const HoverAnimation: React.FC<HoverAnimationProps> = ({
       onMouseLeave={() => setIsHovered(false)}>
       <Cover isHovered={isHovered}>
         <Spacer.Flex />
-        <TypoDS.Button>👆</TypoDS.Button>
+        <Typo.Button>👆</Typo.Button>
         <Spacer.Flex />
-        <TypoDS.Button>{name}</TypoDS.Button>
+        <Typo.Button>{name}</Typo.Button>
       </Cover>
 
       <Spacer.Flex />
@@ -138,7 +138,7 @@ const AnimationContainer = styled.View<{ hasBackground: boolean }>(({ theme, has
   cursor: 'pointer',
 }))
 
-const Name = styled(TypoDS.Button)<{ hasBackground: boolean }>(({ theme, hasBackground }) => ({
+const Name = styled(Typo.Button)<{ hasBackground: boolean }>(({ theme, hasBackground }) => ({
   color: hasBackground ? theme.colors.white : theme.colors.black,
 }))
 

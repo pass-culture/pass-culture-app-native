@@ -11,7 +11,7 @@ import { VideoMonoOfferTile } from 'features/home/components/modules/video/Video
 import { VideoMultiOfferPlaylist } from 'features/home/components/modules/video/VideoMultiOfferPlaylist'
 import { VideoModuleProps } from 'features/home/types'
 import { Play } from 'ui/svg/icons/Play'
-import { getSpacing, Spacer, TypoDS } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { gradientColorsMapping } from 'ui/theme/gradientColorsMapping'
 
 const THUMBNAIL_HEIGHT = getSpacing(45)
@@ -147,7 +147,7 @@ const BlackBackground = styled.View(({ theme }) => ({
   backgroundColor: colorAlpha(theme.colors.black, TEXT_BACKGROUND_OPACITY),
 }))
 
-const VideoTitle = styled(TypoDS.Title4)(({ theme }) => ({
+const VideoTitle = styled(Typo.Title4)(({ theme }) => ({
   color: theme.colors.white,
   textAlign: 'left',
 }))
@@ -162,7 +162,7 @@ const StyledTitleContainer = styled.View(({ theme }) => ({
   marginHorizontal: theme.contentPage.marginHorizontal,
 }))
 
-const StyledTitleComponent = styled(TypoDS.Title3).attrs({
+const StyledTitleComponent = styled(Typo.Title3).attrs({
   numberOfLines: 2,
 })({})
 

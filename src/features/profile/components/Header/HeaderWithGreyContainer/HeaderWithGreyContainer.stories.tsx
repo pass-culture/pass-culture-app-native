@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 
 import { formatToSlashedFrenchDate } from 'libs/dates'
 import { theme } from 'theme'
-import { TypoDS } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 import { HeaderWithGreyContainer } from './HeaderWithGreyContainer'
 
@@ -52,10 +52,8 @@ WithComponentAsSubtitle.args = {
   title: 'Jean Dubois',
   subtitle: (
     <Row>
-      <TypoDS.Body>Profite de ton crédit jusqu’au&nbsp;</TypoDS.Body>
-      <TypoDS.BodyAccent>
-        {formatToSlashedFrenchDate('2023-02-16T17:16:04.735235')}
-      </TypoDS.BodyAccent>
+      <Typo.Body>Profite de ton crédit jusqu’au&nbsp;</Typo.Body>
+      <Typo.BodyAccent>{formatToSlashedFrenchDate('2023-02-16T17:16:04.735235')}</Typo.BodyAccent>
     </Row>
   ),
 }
@@ -71,11 +69,11 @@ WithLargeContent.args = {
   title: 'Jean Dubois',
   subtitle: 'Tu as entre 15 et 18 ans\u00a0?',
   children: (
-    <TypoDS.Body>
+    <Typo.Body>
       Lorem ipsum dolor, sit amet consectetur adipisicing elit. Porro molestiae laudantium
       voluptatibus accusamus aperiam maiores culpa sint repellendus nobis quisquam minus totam esse
       neque eum soluta, illum, labore, distinctio asperiores?
-    </TypoDS.Body>
+    </Typo.Body>
   ),
 }
 
@@ -83,7 +81,7 @@ export const WithSmallContent = Template.bind({})
 WithSmallContent.args = {
   title: 'Jean Dubois',
   subtitle: 'Tu as entre 15 et 18 ans\u00a0?',
-  children: <TypoDS.Body>Lorem ipsum dolor, sit amet consectetur</TypoDS.Body>,
+  children: <Typo.Body>Lorem ipsum dolor, sit amet consectetur</Typo.Body>,
 }
 WithSmallContent.parameters = {
   chromatic: {

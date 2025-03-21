@@ -1,8 +1,8 @@
 import React from 'react'
 
-import { TypoDS } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
-export const InputLabel = TypoDS.Body as React.FC<{
+export const InputLabel = Typo.Body as React.FC<{
   id?: string
   accessibilityDescribedBy?: string
   htmlFor: string

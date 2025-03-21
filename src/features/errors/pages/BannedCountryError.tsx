@@ -7,7 +7,7 @@ import { pushFromRef } from 'features/navigation/navigationRef'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { GenericErrorPage } from 'ui/pages/GenericErrorPage'
 import { BicolorBrokenConnection } from 'ui/svg/BicolorBrokenConnection'
-import { TypoDS } from 'ui/theme'
+import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const BannedCountryError = () => {
@@ -34,6 +34,6 @@ export const BannedCountryError = () => {
   )
 }
 
-const StyledBody = styled(TypoDS.Body).attrs(() => getHeadingAttrs(2))({
+const StyledBody = styled(Typo.Body).attrs(() => getHeadingAttrs(2))({
   textAlign: 'center',
 })

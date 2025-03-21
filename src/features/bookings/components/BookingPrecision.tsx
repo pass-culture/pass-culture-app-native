@@ -5,7 +5,7 @@ import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'
-import { TypoDS, getSpacing } from 'ui/theme'
+import { Typo, getSpacing } from 'ui/theme'
 
 export const BookingPrecisions: React.FC<{
   withdrawalDetails?: string | null
@@ -15,8 +15,8 @@ export const BookingPrecisions: React.FC<{
   <Container>
     {withdrawalDetails ? (
       <ExplanationContainer>
-        <TypoDS.BodyAccentS>Précisions de l’organisateur</TypoDS.BodyAccentS>
-        <TypoDS.BodyS testID="withdrawalDetails">{withdrawalDetails}</TypoDS.BodyS>
+        <Typo.BodyAccentS>Précisions de l’organisateur</Typo.BodyAccentS>
+        <Typo.BodyS testID="withdrawalDetails">{withdrawalDetails}</Typo.BodyS>
       </ExplanationContainer>
     ) : null}
     {bookingContactEmail ? (
@@ -48,6 +48,6 @@ const Container = styled.View({ marginHorizontal: getSpacing(6), gap: getSpacing
 
 const ExplanationContainer = styled.View({ gap: getSpacing(4) })
 
-const CaptionNeutralInfo = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
+const CaptionNeutralInfo = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))

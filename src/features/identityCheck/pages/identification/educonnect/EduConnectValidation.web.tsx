@@ -13,7 +13,7 @@ import { DeprecatedIdentityCheckStep } from 'features/identityCheck/types'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
-import { Spacer, TypoDS } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 import { getNoHeadingAttrs } from 'ui/theme/typographyAttrs/getNoHeadingAttrs'
 
 export function EduConnectValidation() {
@@ -92,8 +92,8 @@ const BodyContainer = styled.View({
   alignItems: 'center',
 })
 
-const StyledBody = styled(TypoDS.Body)(({ theme }) => ({
+const StyledBody = styled(Typo.Body)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))
 
-const TextToValidate = styled(TypoDS.Title3).attrs(getNoHeadingAttrs())``
+const TextToValidate = styled(Typo.Title3).attrs(getNoHeadingAttrs())``

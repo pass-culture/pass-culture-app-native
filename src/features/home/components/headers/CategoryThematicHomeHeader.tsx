@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 
 import { BlackBackground } from 'features/home/components/headers/BlackBackground'
 import { CategoryThematicHeader } from 'features/home/types'
-import { getSpacing, Spacer, TypoDS } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { gradientImagesMapping } from 'ui/theme/gradientImagesMapping'
 
 const HEADER_HEIGHT = getSpacing(45)
@@ -21,7 +21,7 @@ const AppHeader: FunctionComponent<AppHeaderProps> = ({ title, subtitle, color }
       testID="CategoryThematicHomeHeaderV2">
       <TextContainer>
         <Background>
-          <TypoDS.Title1 numberOfLines={2}>{title}</TypoDS.Title1>
+          <Typo.Title1 numberOfLines={2}>{title}</Typo.Title1>
           {subtitle ? (
             <React.Fragment>
               <Subtitle numberOfLines={2}>{subtitle}</Subtitle>
@@ -54,7 +54,7 @@ const TextContainer = styled.View({
   right: 0,
 })
 
-const Subtitle = styled(TypoDS.Title4)(({ theme }) => ({
+const Subtitle = styled(Typo.Title4)(({ theme }) => ({
   color: theme.colors.white,
 }))
 

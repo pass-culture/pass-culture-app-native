@@ -7,7 +7,7 @@ import { HeroButtonList } from 'ui/components/buttons/HeroButtonList'
 import { BicolorNoPhone } from 'ui/svg/icons/BicolorNoPhone'
 import { BicolorPhonePending } from 'ui/svg/icons/BicolorPhonePending'
 import { BicolorSmartphone } from 'ui/svg/icons/BicolorSmartphone'
-import { getSpacing, Spacer, TypoDS } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const SelectPhoneStatus: FunctionComponent = () => {
@@ -16,13 +16,13 @@ export const SelectPhoneStatus: FunctionComponent = () => {
 
 const buttonList = [
   <HeroButtonList
-    Title={<TypoDS.Body>J’ai un smartphone à proximité</TypoDS.Body>}
+    Title={<Typo.Body>J’ai un smartphone à proximité</Typo.Body>}
     Icon={<BicolorSmartphone />}
     navigateTo={{ screen: 'SelectIDStatus' }}
     key={1}
   />,
   <HeroButtonList
-    Title={<TypoDS.Body>Je n’ai pas de smartphone à proximité</TypoDS.Body>}
+    Title={<Typo.Body>Je n’ai pas de smartphone à proximité</Typo.Body>}
     Icon={<BicolorNoPhone />}
     navigateTo={{ screen: 'DMSIntroduction', params: { isForeignDMSInformation: false } }}
     key={2}
@@ -59,9 +59,9 @@ const StyledBicolorPhonePending = styled(BicolorPhonePending).attrs(({ theme }) 
   size: theme.illustrations.sizes.fullPage,
 }))``
 
-const StyledTitle4 = styled(TypoDS.Title4).attrs(getHeadingAttrs(2))({
+const StyledTitle4 = styled(Typo.Title4).attrs(getHeadingAttrs(2))({
   textAlign: 'center',
 })
-const StyledBody = styled(TypoDS.Body)({
+const StyledBody = styled(Typo.Body)({
   textAlign: 'center',
 })

@@ -14,7 +14,7 @@ import { useGetDepositAmountsByAge } from 'shared/user/useGetDepositAmountsByAge
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppModalWithIllustration } from 'ui/components/modals/AppModalWithIllustration'
 import { BicolorIdCardWithMagnifyingGlass } from 'ui/svg/icons/BicolorIdCardWithMagnifyingGlass'
-import { Spacer, TypoDS } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 import { LINE_BREAK, SPACE } from 'ui/theme/constants'
 
 type Props = {
@@ -90,15 +90,15 @@ export const FinishSubscriptionModal: FunctionComponent<Props> = ({ visible, hid
 const Deposit = ({ depositAmountByAge }: { depositAmountByAge: string }) => (
   <StyledBody>
     {SPACE}
-    tes <TypoDS.BodyAccent>{depositAmountByAge}</TypoDS.BodyAccent>
+    tes <Typo.BodyAccent>{depositAmountByAge}</Typo.BodyAccent>
     {SPACE}
   </StyledBody>
 )
 
-const StyledBody = styled(TypoDS.Body)({
+const StyledBody = styled(Typo.Body)({
   textAlign: 'center',
 })
 
-const CaptionNeutralInfo = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
+const CaptionNeutralInfo = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))

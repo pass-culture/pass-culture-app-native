@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { Touchable } from 'ui/components/touchable/Touchable'
-import { getSpacing, TypoDS } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 import { getHoverStyle } from 'ui/theme/getHoverStyle/getHoverStyle'
 
@@ -57,6 +57,6 @@ const TouchableContainer = styledButton(Touchable)<IsSelectedProps>(({ theme, is
   ...getHoverStyle(theme.colors.black),
 }))
 
-const Label = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
+const Label = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.colors.black,
 }))

@@ -9,7 +9,7 @@ import { ModalSettings } from 'ui/components/modals/useModal'
 import { StickyBottomWrapper } from 'ui/components/StickyBottomWrapper/StickyBottomWrapper'
 import { Favorite } from 'ui/svg/icons/Favorite'
 import { FavoriteFilled } from 'ui/svg/icons/FavoriteFilled'
-import { getSpacing, getShadow, TypoDS } from 'ui/theme'
+import { getSpacing, getShadow, Typo } from 'ui/theme'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 export type StickyFooterContentProps = {
@@ -76,7 +76,7 @@ const StickyFooterWrapper = styled(StickyBottomWrapper)(({ theme, bottom }) => (
   }),
 }))
 
-const Caption = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
+const Caption = styled(Typo.BodyAccentXs)(({ theme }) => ({
   textAlign: 'center',
   color: theme.colors.black,
 }))

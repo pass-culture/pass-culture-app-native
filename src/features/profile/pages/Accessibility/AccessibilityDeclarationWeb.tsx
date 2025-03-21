@@ -15,7 +15,7 @@ import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeade
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
-import { getSpacing, Spacer, TypoDS } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { DOUBLE_LINE_BREAK, SPACE } from 'ui/theme/constants'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -38,46 +38,46 @@ const rightsDelegateUrl = { url: 'https://www.defenseurdesdroits.fr/saisir/deleg
 export function AccessibilityDeclarationWeb() {
   return (
     <SecondaryPageWithBlurHeader title="Déclaration d’accessibilité web" enableMaxWidth={false}>
-      <TypoDS.Body>
+      <Typo.Body>
         Le pass Culture s’engage à rendre son site internet accessible conformément à l’article 47
         de la loi n° 2005-102 du 11 février 2005. À cette fin, il met en œuvre la stratégie et les
         actions suivantes&nbsp;:
-      </TypoDS.Body>
+      </Typo.Body>
       <StyledView>
         <VerticalUl>
           <BulletListItem>
-            <TypoDS.BodyXs>
+            <Typo.BodyXs>
               <InternalTouchableLink
                 as={ButtonInsideText}
                 wording="Schéma pluriannuel d’accessibilité 2022 - 2025"
                 icon={PlainArrowNext}
                 navigateTo={getProfileNavConfig('AccessibilityActionPlan')}
               />
-            </TypoDS.BodyXs>
+            </Typo.BodyXs>
           </BulletListItem>
           <BulletListItem>
-            <TypoDS.BodyXs>
+            <Typo.BodyXs>
               <InternalTouchableLink
                 as={ButtonInsideText}
                 wording="Actions réalisées depuis 2022"
                 icon={PlainArrowNext}
                 navigateTo={getProfileNavConfig('AccessibilityActionPlan')}
               />
-            </TypoDS.BodyXs>
+            </Typo.BodyXs>
           </BulletListItem>
           <BulletListItem>
-            <TypoDS.BodyXs>
+            <Typo.BodyXs>
               <InternalTouchableLink
                 as={ButtonInsideText}
                 wording="Plan d’actions 2024"
                 icon={PlainArrowNext}
                 navigateTo={getProfileNavConfig('AccessibilityActionPlan')}
               />
-            </TypoDS.BodyXs>
+            </Typo.BodyXs>
           </BulletListItem>
         </VerticalUl>
       </StyledView>
-      <TypoDS.Body>
+      <Typo.Body>
         Cette déclaration d’accessibilité s’applique au site internet{SPACE}
         <ExternalTouchableLink
           as={ButtonInsideText}
@@ -85,21 +85,21 @@ export function AccessibilityDeclarationWeb() {
           icon={ExternalSiteFilled}
           externalNav={webappUrl}
         />
-      </TypoDS.Body>
+      </Typo.Body>
       <StyledSeparator />
       <ViewGap gap={6}>
         <TitleText>État de conformité</TitleText>
-        <TypoDS.Body>
+        <Typo.Body>
           Le site pass Culture est partiellement conforme avec le référentiel général d’amélioration
           de l’accessibilité.
-        </TypoDS.Body>
-        <TypoDS.BodyAccent>
+        </Typo.Body>
+        <Typo.BodyAccent>
           Résultats des tests
           {DOUBLE_LINE_BREAK}
-          <TypoDS.Body>
+          <Typo.Body>
             L’audit de conformité réalisé par la société Tanaguru révèle que&nbsp;:
-          </TypoDS.Body>
-        </TypoDS.BodyAccent>
+          </Typo.Body>
+        </Typo.BodyAccent>
       </ViewGap>
       <StyledView>
         <VerticalUl>
@@ -110,10 +110,10 @@ export function AccessibilityDeclarationWeb() {
         <TitleText>Contenus non accessibles</TitleText>
       </StyledView>
       <ViewGap gap={6}>
-        <TypoDS.Body>
+        <Typo.Body>
           Les contenus listés ci-dessous ne sont pas accessibles pour les raisons suivantes.
-        </TypoDS.Body>
-        <TypoDS.BodyAccent>Non conformité</TypoDS.BodyAccent>
+        </Typo.Body>
+        <Typo.BodyAccent>Non conformité</Typo.BodyAccent>
       </ViewGap>
       <StyledView>
         <VerticalUl>
@@ -137,7 +137,7 @@ export function AccessibilityDeclarationWeb() {
           <BulletListItem text="Sur la page de connexion et certaines pages du processus d’inscription, lorsque l’on oriente son écran en mode paysage, le défilement vertical ne fonctionne pas correctement et empêche ainsi l’accès a une partie du contenu de la page." />
         </VerticalUl>
       </StyledView>
-      <TypoDS.BodyAccent>Dérogations pour charge disproportionnée</TypoDS.BodyAccent>
+      <Typo.BodyAccent>Dérogations pour charge disproportionnée</Typo.BodyAccent>
       <StyledView>
         <VerticalUl>
           <BulletListItem text="Le lecteur Youtube, utilisé pour diffuser les contenus vidéo." />
@@ -145,7 +145,7 @@ export function AccessibilityDeclarationWeb() {
           <BulletListItem text="La carte des lieux culturels, utilisée dans la recherche." />
         </VerticalUl>
       </StyledView>
-      <TypoDS.BodyAccent>Contenus non soumis à l’obligation d’accessibilité</TypoDS.BodyAccent>
+      <Typo.BodyAccent>Contenus non soumis à l’obligation d’accessibilité</Typo.BodyAccent>
       <StyledView>
         <VerticalUl>
           <BulletListItem text="Aucun" />
@@ -154,13 +154,13 @@ export function AccessibilityDeclarationWeb() {
         <TitleText>Établissement de cette déclaration d’accessibilité</TitleText>
       </StyledView>
       <ViewGap gap={6}>
-        <TypoDS.BodyItalic>
+        <Typo.BodyItalic>
           Cette déclaration a été établie le 29 novembre 2022. Elle a été mise à jour le 13 février
           2023.
-        </TypoDS.BodyItalic>
-        <TypoDS.BodyAccent>
+        </Typo.BodyItalic>
+        <Typo.BodyAccent>
           Technologies utilisées pour la réalisation du site pass Culture
-        </TypoDS.BodyAccent>
+        </Typo.BodyAccent>
       </ViewGap>
       <StyledView>
         <VerticalUl>
@@ -169,15 +169,15 @@ export function AccessibilityDeclarationWeb() {
           <BulletListItem text="JavaScript" />
         </VerticalUl>
       </StyledView>
-      <TypoDS.BodyAccent>
+      <Typo.BodyAccent>
         Environnement de test
         {DOUBLE_LINE_BREAK}
-        <TypoDS.Body>
+        <Typo.Body>
           Les vérifications de restitution de contenus ont été réalisées sur la base de la
           combinaison fournie par la base de référence du RGAA 4.1, avec les versions
           suivantes&nbsp;:
-        </TypoDS.Body>
-      </TypoDS.BodyAccent>
+        </Typo.Body>
+      </Typo.BodyAccent>
       <StyledView>
         <VerticalUl>
           <BulletListItem text="Firefox et NVDA" />
@@ -185,7 +185,7 @@ export function AccessibilityDeclarationWeb() {
           <BulletListItem text="Safari et VoiceOver" />
         </VerticalUl>
       </StyledView>
-      <TypoDS.BodyAccent>Les outils utilisés lors de l’évaluation</TypoDS.BodyAccent>
+      <Typo.BodyAccent>Les outils utilisés lors de l’évaluation</Typo.BodyAccent>
       <StyledView>
         <VerticalUl>
           <BulletListItem text="Extension HeadingsMap" />
@@ -196,130 +196,130 @@ export function AccessibilityDeclarationWeb() {
           <BulletListItem text="Outils de développement (navigateur)" />
         </VerticalUl>
       </StyledView>
-      <TypoDS.BodyAccent>
+      <Typo.BodyAccent>
         Pages du site ayant fait l’objet de la vérification de conformité
-      </TypoDS.BodyAccent>
+      </Typo.BodyAccent>
       <StyledView>
         <VerticalUl>
           <BulletListItem>
-            <TypoDS.BodyXs>
+            <Typo.BodyXs>
               <ExternalTouchableLink
                 as={ButtonInsideText}
                 wording="Accueil"
                 icon={ExternalSiteFilled}
                 externalNav={homeUrl}
               />
-            </TypoDS.BodyXs>
+            </Typo.BodyXs>
           </BulletListItem>
           <BulletListItem>
-            <TypoDS.BodyXs>
+            <Typo.BodyXs>
               <ExternalTouchableLink
                 as={ButtonInsideText}
                 wording="Connexion"
                 icon={ExternalSiteFilled}
                 externalNav={loginUrl}
               />
-            </TypoDS.BodyXs>
+            </Typo.BodyXs>
           </BulletListItem>
           <BulletListItem>
-            <TypoDS.BodyXs>
+            <Typo.BodyXs>
               <ExternalTouchableLink
                 as={ButtonInsideText}
                 wording="Inscription - Date de naissance"
                 icon={ExternalSiteFilled}
                 externalNav={signupUrl}
               />
-            </TypoDS.BodyXs>
+            </Typo.BodyXs>
           </BulletListItem>
           <BulletListItem>
-            <TypoDS.BodyXs>
+            <Typo.BodyXs>
               <ExternalTouchableLink
                 as={ButtonInsideText}
                 wording="Vérification d’identité"
                 icon={ExternalSiteFilled}
                 externalNav={identityCheckUrl}
               />
-            </TypoDS.BodyXs>
+            </Typo.BodyXs>
           </BulletListItem>
           <BulletListItem>
-            <TypoDS.BodyXs>
+            <Typo.BodyXs>
               <ExternalTouchableLink
                 as={ButtonInsideText}
                 wording="Profil"
                 icon={ExternalSiteFilled}
                 externalNav={profileUrl}
               />
-            </TypoDS.BodyXs>
+            </Typo.BodyXs>
           </BulletListItem>
           <BulletListItem>
-            <TypoDS.BodyXs>
+            <Typo.BodyXs>
               <ExternalTouchableLink
                 as={ButtonInsideText}
                 wording="Modification de mot de passe"
                 icon={ExternalSiteFilled}
                 externalNav={changePasswordUrl}
               />
-            </TypoDS.BodyXs>
+            </Typo.BodyXs>
           </BulletListItem>
           <BulletListItem>
-            <TypoDS.BodyXs>
+            <Typo.BodyXs>
               <ExternalTouchableLink
                 as={ButtonInsideText}
                 wording="Recherche"
                 icon={ExternalSiteFilled}
                 externalNav={searchUrl}
               />
-            </TypoDS.BodyXs>
+            </Typo.BodyXs>
           </BulletListItem>
           <BulletListItem>
-            <TypoDS.BodyXs>
+            <Typo.BodyXs>
               <ExternalTouchableLink
                 as={ButtonInsideText}
                 wording="Filtres"
                 icon={ExternalSiteFilled}
                 externalNav={filterUrl}
               />
-            </TypoDS.BodyXs>
+            </Typo.BodyXs>
           </BulletListItem>
           <BulletListItem>
-            <TypoDS.BodyXs>
+            <Typo.BodyXs>
               <ExternalTouchableLink
                 as={ButtonInsideText}
                 wording="Résultats de recherche"
                 icon={ExternalSiteFilled}
                 externalNav={searchResultsUrl}
               />
-            </TypoDS.BodyXs>
+            </Typo.BodyXs>
           </BulletListItem>
           <BulletListItem>
-            <TypoDS.BodyXs>
+            <Typo.BodyXs>
               <ExternalTouchableLink
                 as={ButtonInsideText}
                 wording="Favoris"
                 icon={ExternalSiteFilled}
                 externalNav={favoritesUrl}
               />
-            </TypoDS.BodyXs>
+            </Typo.BodyXs>
           </BulletListItem>
           <BulletListItem>
-            <TypoDS.BodyXs>
+            <Typo.BodyXs>
               <ExternalTouchableLink
                 as={ButtonInsideText}
                 wording="Détails d’une offre"
                 icon={ExternalSiteFilled}
                 externalNav={offerUrl}
               />
-            </TypoDS.BodyXs>
+            </Typo.BodyXs>
           </BulletListItem>
           <BulletListItem>
-            <TypoDS.BodyXs>
+            <Typo.BodyXs>
               <ExternalTouchableLink
                 as={ButtonInsideText}
                 wording="Déclaration d’accessibilité"
                 icon={ExternalSiteFilled}
                 externalNav={accessibilityUrl}
               />
-            </TypoDS.BodyXs>
+            </Typo.BodyXs>
           </BulletListItem>
         </VerticalUl>
       </StyledView>
@@ -327,14 +327,14 @@ export function AccessibilityDeclarationWeb() {
       <TitleText>
         Retour d’information et contact
         {DOUBLE_LINE_BREAK}
-        <TypoDS.Body>
+        <Typo.Body>
           Si vous n’arrivez pas à accéder à un contenu ou à un service, vous pouvez contacter le
           responsable de l’application pour être orienté vers une alternative accessible ou obtenir
           le contenu sous une autre forme.
-        </TypoDS.Body>
+        </Typo.Body>
       </TitleText>
 
-      <TypoDS.Body>
+      <Typo.Body>
         Contacter l’équipe support à l’adresse{SPACE}
         <ExternalTouchableLink
           as={ButtonInsideText}
@@ -344,21 +344,21 @@ export function AccessibilityDeclarationWeb() {
           externalNav={contactSupport.forGenericQuestion}
           icon={EmailFilled}
         />
-      </TypoDS.Body>
+      </Typo.Body>
 
       <StyledSeparator />
 
       <ViewGap gap={6}>
         <TitleText>Voie de recours</TitleText>
-        <TypoDS.Body>
+        <Typo.Body>
           Cette procédure est à utiliser dans le cas suivant&nbsp;:
           {DOUBLE_LINE_BREAK}
           Vous avez signalé au responsable du site internet un défaut d’accessibilité qui vous
           empêche d’accéder à un contenu ou à un des services du portail et vous n’avez pas obtenu
           de réponse satisfaisante.
-        </TypoDS.Body>
+        </Typo.Body>
         <ViewGap gap={3}>
-          <TypoDS.Body>
+          <Typo.Body>
             Écrire un message au{SPACE}
             <ExternalTouchableLink
               as={ButtonInsideText}
@@ -366,8 +366,8 @@ export function AccessibilityDeclarationWeb() {
               icon={ExternalSiteFilled}
               externalNav={rightsDefenderUrl}
             />
-          </TypoDS.Body>
-          <TypoDS.Body>
+          </Typo.Body>
+          <Typo.Body>
             Contacter le délégué du{SPACE}
             <ExternalTouchableLink
               as={ButtonInsideText}
@@ -375,11 +375,11 @@ export function AccessibilityDeclarationWeb() {
               icon={ExternalSiteFilled}
               externalNav={rightsDelegateUrl}
             />
-          </TypoDS.Body>
-          <TypoDS.Body>
+          </Typo.Body>
+          <Typo.Body>
             Envoyer un courrier par la poste (gratuit, ne pas mettre de timbre) Défenseur des droits
             Libre réponse 71120 75342 Paris CEDEX 07
-          </TypoDS.Body>
+          </Typo.Body>
         </ViewGap>
       </ViewGap>
       <Spacer.BottomScreen />
@@ -387,7 +387,7 @@ export function AccessibilityDeclarationWeb() {
   )
 }
 
-const TitleText = styled(TypoDS.Title4).attrs(getHeadingAttrs(2))``
+const TitleText = styled(Typo.Title4).attrs(getHeadingAttrs(2))``
 
 const StyledSeparator = styled(Separator.Horizontal)({
   marginVertical: getSpacing(6),

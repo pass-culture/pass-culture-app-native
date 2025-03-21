@@ -3,7 +3,7 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled from 'styled-components/native'
 
 import { BicolorWarning } from 'ui/svg/icons/BicolorWarning'
-import { getSpacing, Spacer, TypoDS } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 interface Props {
   text: string
@@ -22,7 +22,7 @@ export const BottomBanner = ({ text, ...props }: Props) => {
       </IconContainer>
       <Spacer.Row numberOfSpaces={4} />
       <TextContainer>
-        <TypoDS.BodyAccentXs>{text}</TypoDS.BodyAccentXs>
+        <Typo.BodyAccentXs>{text}</Typo.BodyAccentXs>
       </TextContainer>
     </Container>
   )

@@ -21,7 +21,7 @@ import { AnimatedProgressBar } from 'ui/components/bars/AnimatedProgressBar'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
 import { categoriesIcons } from 'ui/svg/icons/bicolor/exports/categoriesIcons'
-import { getSpacing, Spacer, TypoDS } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getNoHeadingAttrs } from 'ui/theme/typographyAttrs/getNoHeadingAttrs'
 
 export function BeneficiaryAccountCreated() {
@@ -102,7 +102,7 @@ export function BeneficiaryAccountCreated() {
   )
 }
 
-const StyledBody = styled(TypoDS.Body)({
+const StyledBody = styled(Typo.Body)({
   textAlign: 'center',
 })
 
@@ -110,7 +110,7 @@ const ProgressBarContainer = styled.View({
   paddingHorizontal: getSpacing(10),
 })
 
-const Amount = styled(TypoDS.Title2).attrs(getNoHeadingAttrs())(({ theme }) => ({
+const Amount = styled(Typo.Title2).attrs(getNoHeadingAttrs())(({ theme }) => ({
   textAlign: 'center',
   color: theme.uniqueColors.brand,
 }))

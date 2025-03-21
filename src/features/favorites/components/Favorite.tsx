@@ -30,7 +30,7 @@ import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouch
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { useLayout } from 'ui/hooks/useLayout'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
-import { Spacer, TypoDS, getSpacing } from 'ui/theme'
+import { Spacer, Typo, getSpacing } from 'ui/theme'
 
 interface Props {
   favorite: FavoriteResponse
@@ -202,14 +202,14 @@ export const Favorite: React.FC<Props> = (props) => {
               <Spacer.Row numberOfSpaces={SPACER_BETWEEN_IMAGE_AND_CONTENT} />
               <ContentContainer>
                 <LeftContent>
-                  <TypoDS.BodyAccent numberOfLines={2}>{offer.name}</TypoDS.BodyAccent>
+                  <Typo.BodyAccent numberOfLines={2}>{offer.name}</Typo.BodyAccent>
                   <Spacer.Column numberOfSpaces={1} />
                   <Body>{appLabel}</Body>
                   {formattedDate ? <Body>{formattedDate}</Body> : null}
                   {displayPrice ? (
                     <React.Fragment>
                       <Spacer.Column numberOfSpaces={1} />
-                      <TypoDS.BodyAccentXs>{displayPrice}</TypoDS.BodyAccentXs>
+                      <Typo.BodyAccentXs>{displayPrice}</Typo.BodyAccentXs>
                     </React.Fragment>
                   ) : null}
                 </LeftContent>
@@ -308,12 +308,12 @@ export const FavoriteButtonsContainer = styled.View(({ theme }) => {
   }
 })
 
-const Distance = styled(TypoDS.Body)(({ theme }) => ({
+const Distance = styled(Typo.Body)(({ theme }) => ({
   textAlign: 'right',
   color: theme.colors.greyDark,
 }))
 
-const Body = styled(TypoDS.Body)(({ theme }) => ({
+const Body = styled(Typo.Body)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))
 

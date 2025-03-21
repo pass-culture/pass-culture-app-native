@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 import { Highlight } from 'features/search/components/Highlight/Highlight'
 import { Highlighted, HistoryItem } from 'features/search/types'
 import { ClockFilled } from 'ui/svg/icons/ClockFilled'
-import { getSpacing, TypoDS } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 
 interface Props {
   item: Highlighted<HistoryItem>
@@ -30,16 +30,16 @@ export function SearchHistoryItem({ item, queryHistory, onPress }: Props) {
         </ClockIconContainer>
         <StyledText numberOfLines={1}>
           {queryHistory === '' ? (
-            <TypoDS.BodyItalic testID="withoutUsingHighlight">{item.query}</TypoDS.BodyItalic>
+            <Typo.BodyItalic testID="withoutUsingHighlight">{item.query}</Typo.BodyItalic>
           ) : (
             <Highlight historyItem={item} />
           )}
           {shouldDisplaySearchGroupOrNativeCategory ? (
             <React.Fragment>
-              <TypoDS.BodyItalic> dans </TypoDS.BodyItalic>
-              <TypoDS.BodyItalicAccent>
+              <Typo.BodyItalic> dans </Typo.BodyItalic>
+              <Typo.BodyItalicAccent>
                 {item.nativeCategoryLabel ?? item.categoryLabel}
-              </TypoDS.BodyItalicAccent>
+              </Typo.BodyItalicAccent>
             </React.Fragment>
           ) : null}
         </StyledText>

@@ -6,7 +6,7 @@ import styled, { DefaultTheme } from 'styled-components/native'
 import { DiagonalStripe } from 'features/bookOffer/components/Calendar/DiagonalStripe'
 import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
 import { OfferStatus } from 'features/bookOffer/helpers/utils'
-import { getSpacing, TypoDS } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 
 interface Props {
   status: OfferStatus
@@ -78,11 +78,11 @@ function getStatusColor({ colors }: DefaultTheme, status: OfferStatus) {
   return colors.greyDark
 }
 
-const Body = styled(TypoDS.Body)(({ theme }) => ({
+const Body = styled(Typo.Body)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))
 
-const Day = styled(TypoDS.Button)<{ status: OfferStatus }>(({ theme, status }) => ({
+const Day = styled(Typo.Button)<{ status: OfferStatus }>(({ theme, status }) => ({
   textAlign: 'center',
   minWidth: getSpacing(6),
   color: getStatusColor(theme, status),
@@ -97,7 +97,7 @@ const SelectedDay = styled(View)(({ theme }) => ({
   justifyContent: 'center',
 }))
 
-const SelectedDayNumber = styled(TypoDS.Button)(({ theme }) => ({
+const SelectedDayNumber = styled(Typo.Button)(({ theme }) => ({
   alignSelf: 'center',
   color: theme.colors.white,
 }))

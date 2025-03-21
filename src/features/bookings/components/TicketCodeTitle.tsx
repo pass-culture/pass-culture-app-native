@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { Touchable } from 'ui/components/touchable/Touchable'
-import { getSpacing, TypoDS } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 
 export const TicketCodeTitle = ({
   accessibilityLabel,
@@ -19,7 +19,7 @@ export const TicketCodeTitle = ({
   </StyledTouchable>
 )
 
-const StyledTitle = styled(TypoDS.Title2)(({ theme }) => ({
+const StyledTitle = styled(Typo.Title2)(({ theme }) => ({
   color: theme.colors.primary,
 }))
 

@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
-import { getSpacing, TypoDS } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 
 const BADGE_SIZE = getSpacing(4)
 
@@ -34,7 +34,7 @@ const Wrapper = styled.View({
   paddingHorizontal: getSpacing(0.5),
 })
 
-const Caption = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
+const Caption = styled(Typo.BodyAccentXs)(({ theme }) => ({
   textAlign: 'center',
   color: theme.colors.white,
   lineHeight: `${BADGE_SIZE}px`,

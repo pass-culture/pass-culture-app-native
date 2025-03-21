@@ -13,7 +13,7 @@ import { MAP_VENUE_TYPE_TO_LABEL, VenueTypeCode } from 'libs/parsers/venueType'
 import { theme } from 'theme'
 import { Checkbox } from 'ui/components/inputs/Checkbox/Checkbox'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { getSpacing, TypoDS } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 
 import { useVenueMapFilters } from '../../hook/useVenueMapFilters'
 
@@ -80,12 +80,12 @@ export const VenueMapTypeFilter: FunctionComponent<Props> = ({ navigation, route
       shouldDisplayCloseButton>
       <Container gap={6}>
         <ThemeProvider theme={ALTERED_THEME}>
-          <TypoDS.Title1>{title}</TypoDS.Title1>
+          <Typo.Title1>{title}</Typo.Title1>
           <SelectAllCheckBox
             label="Tout sélectionner"
             isChecked={hasAllFilters}
             onPress={toggleAll}
-            LabelComponent={hasAllFilters ? TypoDS.Button : undefined}
+            LabelComponent={hasAllFilters ? Typo.Button : undefined}
           />
           {venueTypes.map((venueType) => {
             const isChecked = venueFilters.includes(venueType)
@@ -121,7 +121,7 @@ const SelectAllCheckBox = styled(StyledCheckbox)({
   marginBottom: getSpacing(2),
 })
 
-const LabelCheckbox = styled(TypoDS.Button)({
+const LabelCheckbox = styled(Typo.Button)({
   alignSelf: 'center',
   flex: 1,
 })

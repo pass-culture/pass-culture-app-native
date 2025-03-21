@@ -9,7 +9,7 @@ import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
 import { getDistinctPricesFromAllStock } from 'features/bookOffer/helpers/bookingHelpers/bookingHelpers'
 import { formatToCompleteFrenchDate } from 'libs/parsers/formatDates'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
-import { Spacer, TypoDS, getSpacing } from 'ui/theme'
+import { Spacer, Typo, getSpacing } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 interface Props {
@@ -34,9 +34,9 @@ export const BookDateChoice = ({ stocks, userRemainingCredit }: Props) => {
 
   return (
     <StyledView>
-      <TypoDS.Title3 {...getHeadingAttrs(3)} testID="DateStep">
+      <Typo.Title3 {...getHeadingAttrs(3)} testID="DateStep">
         Date
-      </TypoDS.Title3>
+      </Typo.Title3>
 
       {bookingState.step === Step.DATE ? (
         <Calendar
@@ -48,7 +48,7 @@ export const BookDateChoice = ({ stocks, userRemainingCredit }: Props) => {
       ) : (
         <TouchableOpacity onPress={showCalendar}>
           <Spacer.Column numberOfSpaces={2} />
-          <TypoDS.Button>{buttonTitle}</TypoDS.Button>
+          <Typo.Button>{buttonTitle}</Typo.Button>
         </TouchableOpacity>
       )}
     </StyledView>

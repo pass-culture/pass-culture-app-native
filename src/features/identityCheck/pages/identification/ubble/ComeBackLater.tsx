@@ -6,7 +6,7 @@ import { analytics } from 'libs/analytics/provider'
 import { BatchEvent, BatchProfile } from 'libs/react-native-batch'
 import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
 import { BicolorIdCardInvalid } from 'ui/svg/icons/BicolorIdCardInvalid'
-import { getSpacing, TypoDS } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 
 export const ComeBackLater: FunctionComponent = () => {
   useEffect(() => {
@@ -24,17 +24,17 @@ export const ComeBackLater: FunctionComponent = () => {
         onBeforeNavigate: () => analytics.logComeBackLaterClicked(undefined),
       }}>
       <StyledText>
-        <TypoDS.Body>Pour profiter du pass Culture, tu dois avoir </TypoDS.Body>
-        <TypoDS.BodyAccent>
+        <Typo.Body>Pour profiter du pass Culture, tu dois avoir </Typo.Body>
+        <Typo.BodyAccent>
           ta pièce d’identité originale et en cours de validité avec toi.
-        </TypoDS.BodyAccent>
+        </Typo.BodyAccent>
       </StyledText>
       <StyledText>N’hésite pas à revenir t’identifier quand tu l’auras avec toi&nbsp;!</StyledText>
     </GenericInfoPageWhite>
   )
 }
 
-const StyledText = styled(TypoDS.Body)({
+const StyledText = styled(Typo.Body)({
   textAlign: 'center',
   marginBottom: getSpacing(6),
 })

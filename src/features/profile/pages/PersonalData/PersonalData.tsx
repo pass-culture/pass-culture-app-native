@@ -17,7 +17,7 @@ import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouch
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Trash } from 'ui/svg/icons/Trash'
-import { getSpacing, Spacer, TypoDS } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { SECTION_ROW_ICON_SIZE } from 'ui/theme/constants'
 
 function onEmailChangeClick() {
@@ -55,7 +55,7 @@ export function PersonalData() {
         <React.Fragment>
           <CaptionNeutralInfo>Prénom et nom</CaptionNeutralInfo>
           <Spacer.Column numberOfSpaces={2} />
-          <TypoDS.Body>{fullname}</TypoDS.Body>
+          <Typo.Body>{fullname}</Typo.Body>
           <StyledSeparator />
         </React.Fragment>
       ) : null}
@@ -78,7 +78,7 @@ export function PersonalData() {
         <React.Fragment>
           <CaptionNeutralInfo>Numéro de téléphone</CaptionNeutralInfo>
           <Spacer.Column numberOfSpaces={2} />
-          <TypoDS.Body>{user?.phoneNumber}</TypoDS.Body>
+          <Typo.Body>{user?.phoneNumber}</Typo.Body>
           <StyledSeparator />
         </React.Fragment>
       ) : null}
@@ -164,11 +164,11 @@ const EditContainer = styled.View({
   justifyContent: 'space-between',
 })
 
-const EditText = styled(TypoDS.Body)({
+const EditText = styled(Typo.Body)({
   flexShrink: 1,
   marginRight: getSpacing(2),
 })
 
-const CaptionNeutralInfo = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
+const CaptionNeutralInfo = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))

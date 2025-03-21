@@ -17,7 +17,7 @@ import { CopyToClipboardButton } from 'shared/CopyToClipboardButton/CopyToClipbo
 import { Separator } from 'ui/components/Separator'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { InformationTags } from 'ui/InformationTags/InformationTags'
-import { getSpacing, TypoDS } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type Props = {
@@ -77,8 +77,8 @@ export const VenueTopComponentBase: React.FunctionComponent<Props> = ({
             {venue.isOpenToPublic ? (
               <ViewGap gap={3}>
                 <View>
-                  <TypoDS.BodyAccentXs>Adresse</TypoDS.BodyAccentXs>
-                  <TypoDS.Body>{venueAddress}</TypoDS.Body>
+                  <Typo.BodyAccentXs>Adresse</Typo.BodyAccentXs>
+                  <Typo.Body>{venueAddress}</Typo.Body>
                 </View>
                 <Separator.Horizontal />
                 <CopyToClipboardButton
@@ -115,7 +115,7 @@ const TopContainer = styled.View(({ theme }) => {
   }
 })
 
-const VenueTitle = styled(TypoDS.Title3).attrs(getHeadingAttrs(1))``
+const VenueTitle = styled(Typo.Title3).attrs(getHeadingAttrs(1))``
 
 const MarginContainer = styled.View({
   marginHorizontal: getSpacing(6),

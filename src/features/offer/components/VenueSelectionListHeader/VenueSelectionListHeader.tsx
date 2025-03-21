@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
 import { GeolocationBanner } from 'shared/Banners/GeolocationBanner'
-import { Spacer, TypoDS } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type Props = {
@@ -21,7 +21,7 @@ export const VenueSelectionListHeader: FunctionComponent<Props> = ({
   return (
     <ListHeaderContainer>
       <Spacer.Column numberOfSpaces={6} />
-      <TypoDS.Title3 {...getHeadingAttrs(2)}>{subTitle}</TypoDS.Title3>
+      <Typo.Title3 {...getHeadingAttrs(2)}>{subTitle}</Typo.Title3>
       <Spacer.Column numberOfSpaces={6} />
       {isSharingLocation ? null : (
         <React.Fragment>
@@ -44,6 +44,6 @@ const ListHeaderContainer = styled.View({
   width: '100%',
 })
 
-const HeaderMessageText = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
+const HeaderMessageText = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))

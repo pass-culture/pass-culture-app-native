@@ -3,7 +3,7 @@ import { StyleProp, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
 import { ThumbnailPlaceholder } from 'ui/components/InfoHeader/ThumbnailPlaceHolder'
-import { TypoDS, getSpacing } from 'ui/theme'
+import { Typo, getSpacing } from 'ui/theme'
 
 type InfoHeaderProps = PropsWithChildren<{
   defaultThumbnailSize: number
@@ -73,17 +73,17 @@ const TitleContainer = styled.View({
   columnGap: getSpacing(1),
 })
 
-const Title = styled(TypoDS.BodyAccent).attrs({ numberOfLines: 1 })({
+const Title = styled(Typo.BodyAccent).attrs({ numberOfLines: 1 })({
   flexShrink: 1,
 })
 
-const Subtitle = styled(TypoDS.BodyAccentXs).attrs({
+const Subtitle = styled(Typo.BodyAccentXs).attrs({
   numberOfLines: 2,
 })(({ theme }) => ({
   color: theme.colors.greyDark,
 }))
 
-const SubtitleWithoutTitle = styled(TypoDS.BodyAccentS).attrs({
+const SubtitleWithoutTitle = styled(Typo.BodyAccentS).attrs({
   numberOfLines: 2,
 })(({ theme }) => ({
   color: theme.colors.black,

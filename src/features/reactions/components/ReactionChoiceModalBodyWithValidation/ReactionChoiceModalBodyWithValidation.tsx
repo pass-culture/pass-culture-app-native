@@ -10,7 +10,7 @@ import { HorizontalTile } from 'ui/components/tiles/HorizontalTile'
 import { OfferName } from 'ui/components/tiles/OfferName'
 import { ValidationMark } from 'ui/components/ValidationMark'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { getSpacing, Spacer, TypoDS } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 type Props = {
   offer: OfferResponse | BookingOfferResponse
@@ -31,7 +31,7 @@ export const ReactionChoiceModalBodyWithValidation: FunctionComponent<Props> = (
     <React.Fragment>
       <Spacer.Column numberOfSpaces={6} />
       <ViewGap gap={6}>
-        <TypoDS.Title3>Partage-nous ton avis&nbsp;!</TypoDS.Title3>
+        <Typo.Title3>Partage-nous ton avis&nbsp;!</Typo.Title3>
         <ViewGap gap={4}>
           <Separator.Horizontal />
           <HorizontalTileContainer gap={4}>
@@ -71,11 +71,11 @@ const SubtitleContainer = styled(ViewGap)({
   alignItems: 'center',
 })
 
-const UsedText = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
+const UsedText = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.colors.greenValid,
 }))
 
-const DateUsedText = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
+const DateUsedText = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))
 

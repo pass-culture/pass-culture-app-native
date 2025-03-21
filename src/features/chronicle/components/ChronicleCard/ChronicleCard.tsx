@@ -7,7 +7,7 @@ import { InfoHeader } from 'ui/components/InfoHeader/InfoHeader'
 import { Separator } from 'ui/components/Separator'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { BookClubCertification } from 'ui/svg/BookClubCertification'
-import { TypoDS, getShadow, getSpacing } from 'ui/theme'
+import { Typo, getShadow, getSpacing } from 'ui/theme'
 import { REM_TO_PX } from 'ui/theme/constants'
 
 const CHRONICLE_THUMBNAIL_SIZE = getSpacing(14)
@@ -103,7 +103,7 @@ const DescriptionContainer = styled.View<{ defaultHeight: number; shouldTruncate
     shouldTruncate ? { maxHeight: MAX_LINES * defaultHeight, overflow: 'hidden' } : {}
 )
 
-const Description = styled(TypoDS.BodyAccentS)(({ theme }) => ({
+const Description = styled(Typo.BodyAccentS)(({ theme }) => ({
   color: theme.colors.greyDark,
   flexGrow: 1,
 }))
@@ -113,7 +113,7 @@ const BottomCardContainer = styled.View({
   justifyContent: 'space-between',
 })
 
-const PublicationDate = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
+const PublicationDate = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.colors.greyDark,
   alignSelf: 'center',
 }))

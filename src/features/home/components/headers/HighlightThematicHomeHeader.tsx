@@ -7,7 +7,7 @@ import { BlackBackground } from 'features/home/components/headers/BlackBackgroun
 import { Introduction } from 'features/home/components/headers/highlightThematic/Introduction'
 import { computeDateRangeDisplay } from 'features/home/components/helpers/computeDateRangeDisplay'
 import { HighlightThematicHeader } from 'features/home/types'
-import { getSpacing, Spacer, TypoDS } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 type HighligthThematicHeaderProps = Omit<HighlightThematicHeader, 'type'>
@@ -73,16 +73,16 @@ const DateRangeCaptionContainer = styled.View<{ statusBarHeight: number }>(
   })
 )
 
-const DateRangeCaption = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
+const DateRangeCaption = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.colors.white,
 }))
 
 const TextContainer = styled.View({ position: 'absolute', bottom: 0, left: 0, right: 0 })
 
-const Subtitle = styled(TypoDS.Title4)(({ theme }) => ({
+const Subtitle = styled(Typo.Title4)(({ theme }) => ({
   color: theme.colors.white,
 }))
 
-const Title = styled(TypoDS.Title1)(({ theme }) => ({
+const Title = styled(Typo.Title1)(({ theme }) => ({
   color: theme.colors.white,
 }))

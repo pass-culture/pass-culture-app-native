@@ -26,7 +26,7 @@ import { Pause } from 'ui/svg/icons/Pause'
 import { PlayV2 } from 'ui/svg/icons/PlayV2'
 import { SoundOff } from 'ui/svg/icons/SoundOff'
 import { SoundOn } from 'ui/svg/icons/SoundOn'
-import { getSpacing, Spacer, TypoDS } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 import { PlayerState } from './types'
 
@@ -328,7 +328,7 @@ const StyledYoutubePlayer = styled(YouTubePlayer).attrs({
   webViewStyle: Platform.OS === 'android' ? { opacity: 0.99 } : undefined,
 })``
 
-const StyledCaption = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
+const StyledCaption = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.colors.white,
   textAlign: 'center',
 }))

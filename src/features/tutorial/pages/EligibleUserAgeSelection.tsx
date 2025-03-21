@@ -13,7 +13,7 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { storage } from 'libs/storage'
 import { AccessibleUnorderedList } from 'ui/components/accessibility/AccessibleUnorderedList'
 import { All } from 'ui/svg/icons/bicolor/All'
-import { Spacer, TypoDS } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 import { getNoHeadingAttrs } from 'ui/theme/typographyAttrs/getNoHeadingAttrs'
 
 type Props = StackScreenProps<TutorialRootStackParamList, 'EligibleUserAgeSelection'>
@@ -111,14 +111,14 @@ const BicolorAll = styled(All).attrs(({ theme }) => ({
   size: theme.icons.sizes.small,
 }))``
 
-const StyledTitle4 = styled(TypoDS.Title4).attrs(getNoHeadingAttrs)(({ theme }) => ({
+const StyledTitle4 = styled(Typo.Title4).attrs(getNoHeadingAttrs)(({ theme }) => ({
   color: theme.colors.secondary,
 }))
 
-const StyledBody = styled(TypoDS.Body)(({ theme }) => ({
+const StyledBody = styled(Typo.Body)(({ theme }) => ({
   color: theme.colors.secondary,
 }))
 
-const StyledBodyAccentXs = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
+const StyledBodyAccentXs = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))

@@ -24,7 +24,7 @@ import { InputError } from 'ui/components/inputs/InputError'
 import { TextInput } from 'ui/components/inputs/TextInput'
 import { useModal } from 'ui/components/modals/useModal'
 import { Again } from 'ui/svg/icons/Again'
-import { Spacer, TypoDS } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 
 export const SetPhoneValidationCode = () => {
   const { phoneValidation } = useSubscriptionContext()
@@ -178,7 +178,7 @@ export const hasCodeCorrectFormat = (code: string) => {
   return !!code.match(/^\d{6}$/)
 }
 
-const StyledBody = styled(TypoDS.Body)(({ theme }) => ({
+const StyledBody = styled(Typo.Body)(({ theme }) => ({
   color: theme.colors.greyDark,
   textAlign: 'center',
 }))

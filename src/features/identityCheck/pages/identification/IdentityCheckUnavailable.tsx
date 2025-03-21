@@ -14,7 +14,7 @@ import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { HappyFace } from 'ui/svg/icons/HappyFace'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
-import { Spacer, TypoDS } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 
 export function IdentityCheckUnavailable() {
   const { params } = useRoute<UseRouteType<'IdentityCheckUnavailable'>>()
@@ -64,7 +64,7 @@ export function IdentityCheckUnavailable() {
   )
 }
 
-const StyledBody = styled(TypoDS.Body)(({ theme }) => ({
+const StyledBody = styled(Typo.Body)(({ theme }) => ({
   color: theme.colors.white,
   textAlign: 'center',
 }))

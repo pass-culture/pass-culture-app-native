@@ -16,7 +16,7 @@ import { LargeTextInput } from 'ui/components/inputs/LargeTextInput/LargeTextInp
 import { SeparatorWithText } from 'ui/components/SeparatorWithText'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'
-import { Spacer, TypoDS } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type FormValue = {
@@ -45,14 +45,14 @@ export const FeedbackInApp = () => {
       title="Faire une suggestion"
       scrollChildren={
         <React.Fragment>
-          <TypoDS.Title3 {...getHeadingAttrs(1)}>
+          <Typo.Title3 {...getHeadingAttrs(1)}>
             Comment pourrions-nous améliorer l’application&nbsp;?
-          </TypoDS.Title3>
+          </Typo.Title3>
           <Spacer.Column numberOfSpaces={5} />
-          <TypoDS.Body>
+          <Typo.Body>
             Nous ne pouvons pas te répondre individuellement mais ta suggestion sera transmise à nos
             équipes.
-          </TypoDS.Body>
+          </Typo.Body>
           <Spacer.Column numberOfSpaces={6} />
           <Controller
             control={control}
@@ -97,7 +97,7 @@ export const FeedbackInApp = () => {
   )
 }
 
-const StyledBody = styled(TypoDS.Body)({
+const StyledBody = styled(Typo.Body)({
   textAlign: 'center',
 })
 

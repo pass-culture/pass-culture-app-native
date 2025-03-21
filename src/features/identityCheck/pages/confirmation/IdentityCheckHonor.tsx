@@ -16,7 +16,7 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { useGetHeaderHeight } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
-import { Spacer, TypoDS } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const IdentityCheckHonor = () => {
@@ -67,14 +67,14 @@ export const IdentityCheckHonor = () => {
   return (
     <StyledScrollView>
       <HeaderHeightSpacer headerHeight={headerHeight} />
-      <TypoDS.Title2 {...getHeadingAttrs(1)}>
+      <Typo.Title2 {...getHeadingAttrs(1)}>
         Les informations que tu as renseignées sont-elles correctes&nbsp;?
-      </TypoDS.Title2>
+      </Typo.Title2>
       <Spacer.Column numberOfSpaces={10} />
-      <TypoDS.Title4 {...getHeadingAttrs(2)}>
+      <Typo.Title4 {...getHeadingAttrs(2)}>
         &quot;Je déclare que l’ensemble des informations que j’ai renseignées durant mon inscription
         sont correctes.&quot;
-      </TypoDS.Title4>
+      </Typo.Title4>
       <Spacer.Column numberOfSpaces={4} />
       <StyledBody>
         Des contrôles aléatoires seront effectués et un justificatif de domicile devra être fourni.
@@ -109,6 +109,6 @@ const HeaderHeightSpacer = styled.View.attrs<{ headerHeight: number }>({})<{
   paddingTop: headerHeight,
 }))
 
-const StyledBody = styled(TypoDS.BodyS)(({ theme }) => ({
+const StyledBody = styled(Typo.BodyS)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))
