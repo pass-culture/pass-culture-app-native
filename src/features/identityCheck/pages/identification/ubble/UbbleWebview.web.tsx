@@ -1,11 +1,10 @@
-import { useNavigation } from '@react-navigation/native'
 import React, { useEffect } from 'react'
 
 import { IdentityCheckMethod } from 'api/gen'
 import { useIdentificationUrl } from 'features/identityCheck/api/useIdentificationUrl'
 import { REDIRECT_URL_UBBLE } from 'features/identityCheck/constants'
 import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
-import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { navigateFromRef } from 'features/navigation/navigationRef'
 import { analytics } from 'libs/analytics/provider'
 import { Helmet } from 'libs/react-helmet/Helmet'
 import { LoadingPage } from 'ui/pages/LoadingPage'
@@ -28,7 +27,6 @@ interface AbortEvent {
 // https://ubbleai.github.io/developer-documentation/#webview-integration
 export const UbbleWebview: React.FC = () => {
   const identificationUrl = useIdentificationUrl()
-  const { navigate } = useNavigation<UseNavigationType>()
 
   useEffect(() => {
     if (!identificationUrl) return
@@ -42,7 +40,7 @@ export const UbbleWebview: React.FC = () => {
           onComplete({ redirectUrl }: CompleteEvent) {
             analytics.logIdentityCheckSuccess({ method: IdentityCheckMethod.ubble })
             ubbleIDV.destroy()
-            if (redirectUrl.includes(REDIRECT_URL_UBBLE)) navigate('IdentityCheckEnd')
+            if (redirectUrl.includes(REDIRECT_URL_UBBLE)) navigateFromRef('IdentityCheckEnd')
           },
           onAbort({ redirectUrl, returnReason: reason }: AbortEvent) {
             analytics.logIdentityCheckAbort({

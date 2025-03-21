@@ -129,6 +129,8 @@ yarn vite preview
 
 Keep in mind to [do the following change to not run into CORS errors](./general-info-web.md#requests-blocked-by-cors-policy).
 
+If you use the command `yarn vite build`, vite defaults to using the production values for environnement variables. It's usually better to use the commands available in `package.json` and make a mindful choice of what environnement you want you build to run in.
+
 ## Browser compatibility
 
 We currently tested/support the browsers specified in `src/web/SupportedBrowsersGate.tsx`.
