@@ -1,4 +1,4 @@
-import { Platform } from 'react-native'
+import { ColorSchemeName, Platform } from 'react-native'
 
 // eslint-disable-next-line no-restricted-imports
 import { isMobileDeviceDetectOnWeb, isTabletDeviceDetectOnWeb } from 'libs/react-device-detect'
@@ -576,6 +576,7 @@ export const theme = {
 
 export type BaseAppThemeType = typeof theme
 export type AppThemeType = BaseAppThemeType & {
+  colorScheme?: ColorSchemeName
   isMobileViewport?: boolean
   isTabletViewport?: boolean
   isDesktopViewport?: boolean
