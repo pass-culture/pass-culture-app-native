@@ -8,7 +8,7 @@ appId: ${MAESTRO_APP_ID}
     text: 'Passer' # Androïd
     optional: true
 - tapOn:
-    text: 'Aller à l’écran suivant' # iOS
+    text: 'Aller à la page suivante' # iOS
     optional: true
 
 - assertVisible: "Pour commencer, peux-tu nous dire ton âge\_?"
