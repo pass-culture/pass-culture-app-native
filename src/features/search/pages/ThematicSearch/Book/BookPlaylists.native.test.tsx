@@ -74,6 +74,7 @@ describe('BookPlaylists', () => {
 
     expect(useGTLPlaylistsSpy).toHaveBeenCalledWith({
       searchIndex: env.ALGOLIA_OFFERS_INDEX_NAME,
+      searchGroupLabel: 'Livres',
     })
   })
 
@@ -85,6 +86,7 @@ describe('BookPlaylists', () => {
 
     expect(useGTLPlaylistsSpy).toHaveBeenCalledWith({
       searchIndex: env.ALGOLIA_OFFERS_INDEX_NAME_B,
+      searchGroupLabel: 'Livres',
     })
   })
 })
