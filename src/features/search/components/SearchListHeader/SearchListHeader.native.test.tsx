@@ -17,6 +17,7 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { GeoCoordinates } from 'libs/location'
 import { ILocationContext, LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
+import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { act, render, screen } from 'tests/utils'
 
 import { SearchListHeader } from './SearchListHeader'
@@ -92,6 +93,13 @@ jest.mock('@shopify/flash-list', () => {
 jest.mock('features/location/helpers/useLocationState', () => ({
   useLocationState: () => ({
     onModalHideRef: { current: jest.fn() },
+  }),
+}))
+
+const mockData = PLACEHOLDER_DATA
+jest.mock('libs/subcategories/useSubcategories', () => ({
+  useSubcategories: () => ({
+    data: mockData,
   }),
 }))
 

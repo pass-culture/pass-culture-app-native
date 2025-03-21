@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
-import { SearchGroupNameEnumv2, SubcategoriesResponseModelv2 } from 'api/gen'
+import { SearchGroupNameEnumv2 } from 'api/gen'
 import { gtlPlaylistAlgoliaSnapshot } from 'features/gtlPlaylist/fixtures/gtlPlaylistAlgoliaSnapshot'
 import * as useGTLPlaylists from 'features/gtlPlaylist/hooks/useGTLPlaylists'
 import { initialSearchState } from 'features/search/context/reducer'
@@ -12,7 +12,6 @@ import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { LocationMode } from 'libs/location/types'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
-import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
 
@@ -90,13 +89,19 @@ jest.mock('features/search/api/useSearchResults/useSearchResults', () => ({
   useSearchResults: () => mockUseSearchResults(),
 }))
 
+const mockData = PLACEHOLDER_DATA
+jest.mock('libs/subcategories/useSubcategories', () => ({
+  useSubcategories: () => ({
+    data: mockData,
+  }),
+}))
+
 const user = userEvent.setup()
 
 describe('<ThematicSearch/>', () => {
   jest.useFakeTimers()
 
   beforeEach(() => {
-    mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', PLACEHOLDER_DATA)
     setFeatureFlags()
   })
 
@@ -189,6 +194,7 @@ describe('<ThematicSearch/>', () => {
 
         expect(mockUseGtlPlaylist).toHaveBeenCalledWith({
           searchIndex: env.ALGOLIA_OFFERS_INDEX_NAME_B,
+          searchGroupLabel: 'Livres',
         })
       })
     })
