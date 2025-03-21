@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 import { CategoryIdEnum } from 'api/gen'
 import { OfferName } from 'ui/components/tiles/OfferName'
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
-import { getSpacing, TypoDS } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 
 import { HorizontalTile } from './HorizontalTile'
 
@@ -21,7 +21,7 @@ const Container = styled.View({
   gap: getSpacing(4),
 })
 
-const Body = styled(TypoDS.Body)(({ theme }) => ({
+const Body = styled(Typo.Body)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))
 
@@ -62,7 +62,7 @@ const variantConfig: Variants<typeof HorizontalTile> = [
                 {subtitle}
               </Body>
             ))}
-            <TypoDS.BodyAccentS>120€</TypoDS.BodyAccentS>
+            <Typo.BodyAccentS>120€</Typo.BodyAccentS>
           </Column>
         </Container>
       ),

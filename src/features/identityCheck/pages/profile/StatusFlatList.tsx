@@ -15,7 +15,7 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Li } from 'ui/components/Li'
 import { RadioSelector } from 'ui/components/radioSelector/RadioSelector'
 import { Spinner } from 'ui/components/Spinner'
-import { getSpacing, Spacer, TypoDS } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 const GRADIENT_HEIGHT = getSpacing(30)
 const VIEWABILITY_CONFIG = { itemVisiblePercentThreshold: 100 }
@@ -95,7 +95,7 @@ export function StatusFlatList({
               <React.Fragment>
                 <HeaderHeightSpacer headerHeight={headerHeight} />
                 <Spacer.Column numberOfSpaces={2} />
-                <TypoDS.Title3>Sélectionne ton statut</TypoDS.Title3>
+                <Typo.Title3>Sélectionne ton statut</Typo.Title3>
                 <Spacer.Column numberOfSpaces={8} />
               </React.Fragment>
             }

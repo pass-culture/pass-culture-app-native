@@ -11,7 +11,7 @@ import { SeeMoreWithEye } from 'ui/components/SeeMoreWithEye'
 import { Separator } from 'ui/components/Separator'
 import { HorizontalOfferTile } from 'ui/components/tiles/HorizontalOfferTile'
 import { Play } from 'ui/svg/icons/Play'
-import { getSpacing, Spacer, TypoDS } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 import { videoModuleColorsMapping } from 'ui/theme/videoModuleColorsMapping'
@@ -34,7 +34,7 @@ export const VideoModuleDesktop: FunctionComponent<VideoModuleProps> = (props) =
   return (
     <React.Fragment>
       <StyledTitleContainer>
-        <TypoDS.Title3 numberOfLines={2}>{props.title}</TypoDS.Title3>
+        <Typo.Title3 numberOfLines={2}>{props.title}</Typo.Title3>
         {showSeeMore && props.isMultiOffer && renderTitleSeeMore()}
       </StyledTitleContainer>
       <Spacer.Column numberOfSpaces={5} />
@@ -163,7 +163,7 @@ const TextContainer = styled.View({
   right: 0,
 })
 
-const VideoTitle = styled(TypoDS.Title3)(({ theme }) => ({
+const VideoTitle = styled(Typo.Title3)(({ theme }) => ({
   color: theme.colors.white,
   textAlign: 'center',
   textTransform: 'uppercase',

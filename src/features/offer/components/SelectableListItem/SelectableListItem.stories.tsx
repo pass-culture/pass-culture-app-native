@@ -4,7 +4,7 @@ import React from 'react'
 
 import { theme } from 'theme'
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
-import { TypoDS } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 import { SelectableListItem } from './SelectableListItem'
 
@@ -22,7 +22,7 @@ const variantConfig: Variants<typeof SelectableListItem> = [
   {
     label: 'SelectableListItem default',
     props: {
-      render: () => <TypoDS.Body>Hello World</TypoDS.Body>,
+      render: () => <Typo.Body>Hello World</Typo.Body>,
       isSelected: false,
       onSelect: action('select'),
     },
@@ -30,7 +30,7 @@ const variantConfig: Variants<typeof SelectableListItem> = [
   {
     label: 'SelectableListItem selected',
     props: {
-      render: () => <TypoDS.Body>Hello World</TypoDS.Body>,
+      render: () => <Typo.Body>Hello World</Typo.Body>,
       isSelected: true,
       onSelect: action('select'),
     },
@@ -39,14 +39,14 @@ const variantConfig: Variants<typeof SelectableListItem> = [
     label: 'SelectableListItem funky content based on state',
     props: {
       render: () => (
-        <TypoDS.Body
+        <Typo.Body
           // eslint-disable-next-line react-native/no-inline-styles
           style={{
             color: theme.colors.primary,
             fontSize: 24,
           }}>
           Hello World
-        </TypoDS.Body>
+        </Typo.Body>
       ),
       isSelected: true,
       onSelect: action('select'),

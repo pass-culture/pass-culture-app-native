@@ -3,12 +3,12 @@ import React from 'react'
 import { ActionPlanTag } from 'features/profile/components/Buttons/ActionPlanTag/ActionPlanTag'
 import { BulletListItem } from 'ui/components/BulletListItem'
 import { VerticalUl } from 'ui/components/Ul'
-import { Spacer, TypoDS } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const AccessibilityActionPlan2022 = () => (
   <React.Fragment>
-    <TypoDS.Title4 {...getHeadingAttrs(2)}>Plan annuel 2022</TypoDS.Title4>
+    <Typo.Title4 {...getHeadingAttrs(2)}>Plan annuel 2022</Typo.Title4>
     <Spacer.Column numberOfSpaces={6} />
     <VerticalUl>
       <BulletListItem text="Constitution du pôle Accessibilité">

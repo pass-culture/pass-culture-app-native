@@ -11,7 +11,7 @@ import { analytics } from 'libs/analytics/provider'
 import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { BicolorUserBlocked } from 'ui/svg/icons/UserBlocked'
-import { Spacer, TypoDS } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 
 export const AccountSecurity = () => {
   const { params } = useRoute<UseRouteType<'AccountSecurity'>>()
@@ -61,10 +61,10 @@ export const AccountSecurity = () => {
         wording: 'Ne pas sécuriser mon compte',
         onPress: onPressDismissAccountSecurity,
       }}>
-      <TypoDS.Body>
-        Tu as indiqué <TypoDS.BodyAccent>ne pas être à l’origine</TypoDS.BodyAccent> de cette
+      <Typo.Body>
+        Tu as indiqué <Typo.BodyAccent>ne pas être à l’origine</Typo.BodyAccent> de cette
         connexion&nbsp;:
-      </TypoDS.Body>
+      </Typo.Body>
       <Spacer.Column numberOfSpaces={4} />
       <DeviceInformationsBanner
         osAndSource={osAndSource}
@@ -72,12 +72,12 @@ export const AccountSecurity = () => {
         loginDate={loginDate}
       />
       <Spacer.Column numberOfSpaces={4} />
-      <TypoDS.Body>
-        Pour des raisons de <TypoDS.BodyAccent>sécurité,</TypoDS.BodyAccent> nous te conseillons de
+      <Typo.Body>
+        Pour des raisons de <Typo.BodyAccent>sécurité,</Typo.BodyAccent> nous te conseillons de
         {isLoggedOutOrHasPassword
           ? ' modifier ton mot de passe ou de suspendre ton compte temporairement.'
           : ' sécuriser l’accès à ta boîte mail et de suspendre ton compte pass Culture temporairement.'}
-      </TypoDS.Body>
+      </Typo.Body>
     </GenericInfoPageWhite>
   )
 }

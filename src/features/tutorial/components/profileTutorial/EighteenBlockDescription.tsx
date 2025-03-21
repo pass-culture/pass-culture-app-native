@@ -13,7 +13,7 @@ import { AccessibleUnorderedList } from 'ui/components/accessibility/AccessibleU
 import { BicolorNumeric } from 'ui/svg/icons/bicolor/Numeric'
 import { BicolorClock } from 'ui/svg/icons/BicolorClock'
 import { BicolorLock } from 'ui/svg/icons/BicolorLock'
-import { Spacer, TypoDS } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 
 type Props = {
   ongoingCredit?: boolean
@@ -63,7 +63,7 @@ export const EighteenBlockDescription: FunctionComponent<Props> = ({ ongoingCred
   )
 }
 
-const StyledCaption = styled(TypoDS.BodyAccentXs)({
+const StyledCaption = styled(Typo.BodyAccentXs)({
   flexShrink: 1,
 })
 

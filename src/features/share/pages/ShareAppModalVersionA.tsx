@@ -9,7 +9,7 @@ import { Share } from 'ui/svg/icons/BicolorShare'
 import { BicolorShareChat } from 'ui/svg/icons/BicolorShareChat'
 import { Close } from 'ui/svg/icons/Close'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
-import { TypoDS } from 'ui/theme'
+import { Typo } from 'ui/theme'
 import { LINE_BREAK } from 'ui/theme/constants'
 
 type Props = {
@@ -32,9 +32,9 @@ export const ShareAppModalVersionA: FC<Props> = ({ visible, close, share }) => {
           <Icon />
         </ImageContainer>
         <StyledBody>
-          <TypoDS.Button>
+          <Typo.Button>
             35 % des jeunes en France n’ont pas encore le pass&nbsp;Culture.
-          </TypoDS.Button>
+          </Typo.Button>
           {LINE_BREAK}
           Fais découvrir le pass à tes amis&nbsp;!
         </StyledBody>
@@ -47,7 +47,7 @@ export const ShareAppModalVersionA: FC<Props> = ({ visible, close, share }) => {
   )
 }
 
-const StyledBody = styled(TypoDS.Body)({
+const StyledBody = styled(Typo.Body)({
   textAlign: 'center',
 })
 

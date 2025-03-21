@@ -12,7 +12,7 @@ import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacific
 import { useAvailableCredit } from 'shared/user/useAvailableCredit'
 import { PageHeader } from 'ui/components/headers/PageHeader'
 import { Separator } from 'ui/components/Separator'
-import { getSpacing, Spacer, TypoDS } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 export const HomeHeader: FunctionComponent = function () {
   const availableCredit = useAvailableCredit()
@@ -82,11 +82,11 @@ const HeaderContainer = styled.View(({ theme }) => ({
 const TitleContainer = styled.View({
   width: '100%',
 })
-const Subtitle = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
+const Subtitle = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))
 
-const TitleLabel = styled(TypoDS.Title1)({
+const TitleLabel = styled(Typo.Title1)({
   maxWidth: '70%',
 })
 

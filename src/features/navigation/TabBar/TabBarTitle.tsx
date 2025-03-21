@@ -2,7 +2,7 @@ import React from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
 import { HiddenAccessibleText } from 'ui/components/HiddenAccessibleText'
-import { TypoDS } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 interface Props {
   displayName: string
@@ -16,7 +16,7 @@ export const TabBarTitle: React.FC<Props> = ({ selected, displayName }) => {
   return <HiddenAccessibleText>{displayName}</HiddenAccessibleText>
 }
 
-const Title = styled(TypoDS.BodyAccentXs)<{ selected?: boolean }>(({ theme, selected }) => ({
+const Title = styled(Typo.BodyAccentXs)<{ selected?: boolean }>(({ theme, selected }) => ({
   color: selected ? theme.colors.black : theme.colors.greyDark,
   fontSize: theme.tabBar.fontSize,
   textAlign: 'center',

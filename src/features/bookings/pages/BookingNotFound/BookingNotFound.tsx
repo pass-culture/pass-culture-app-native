@@ -9,7 +9,7 @@ import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { NoBookings } from 'ui/svg/icons/NoBookings'
-import { TypoDS } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 export const BookingNotFound = ({ resetErrorBoundary }: ScreenErrorProps) => {
   const timer = useRef<NodeJS.Timeout>()
@@ -64,7 +64,7 @@ export const BookingNotFound = ({ resetErrorBoundary }: ScreenErrorProps) => {
   )
 }
 
-const StyledBody = styled(TypoDS.Body)(({ theme }) => ({
+const StyledBody = styled(Typo.Body)(({ theme }) => ({
   color: theme.colors.white,
   textAlign: 'center',
 }))

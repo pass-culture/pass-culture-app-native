@@ -3,7 +3,7 @@ import { NativeSyntheticEvent, TextLayoutEventData } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { CollapsibleTextButton } from 'ui/components/CollapsibleText/CollapsibleTextButton/CollapsibleTextButton'
-import { TypoDS } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 type Props = {
   expanded: boolean
@@ -41,11 +41,11 @@ export const CollapsibleTextContent: FunctionComponent<Props> = ({
 
   return (
     <Container>
-      <TypoDS.Body
+      <Typo.Body
         onTextLayout={handleOnTextLayout}
         numberOfLines={expanded ? undefined : currentNumberOfLines}>
         {children}
-      </TypoDS.Body>
+      </Typo.Body>
 
       {shouldDisplayButton ? (
         <CollapsibleTextButton expanded={expanded} onPress={onButtonPress} />

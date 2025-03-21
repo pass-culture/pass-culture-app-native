@@ -4,7 +4,7 @@ import React from 'react'
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 import { BicolorEverywhere } from 'ui/svg/icons/BicolorEverywhere'
 import { Bulb } from 'ui/svg/icons/Bulb'
-import { Spacer, TypoDS } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 
 import { GenericBanner } from './GenericBanner'
 
@@ -17,10 +17,10 @@ export default meta
 
 const textExample = ({ withSubtitle = true }) => (
   <React.Fragment>
-    <TypoDS.Button>Géolocalise-toi</TypoDS.Button>
+    <Typo.Button>Géolocalise-toi</Typo.Button>
     <Spacer.Column numberOfSpaces={1} />
     {withSubtitle ? (
-      <TypoDS.Body numberOfLines={2}>Pour trouver des offres autour de toi.</TypoDS.Body>
+      <Typo.Body numberOfLines={2}>Pour trouver des offres autour de toi.</Typo.Body>
     ) : null}
   </React.Fragment>
 )

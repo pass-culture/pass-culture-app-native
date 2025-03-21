@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from 'uuid'
 import FilterSwitch from 'ui/components/FilterSwitch'
 import { InputLabel } from 'ui/components/InputLabel/InputLabel'
 import { styledInputLabel } from 'ui/components/InputLabel/styledInputLabel'
-import { Spacer, TypoDS } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs, HeadingLevel } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type Props = {
@@ -94,6 +94,6 @@ const StyledInputLabel = styledInputLabel(InputLabel)(({ theme }) => ({
   ...theme.designSystem.typography.bodyAccent,
 }))
 
-const Subtitle = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
+const Subtitle = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))

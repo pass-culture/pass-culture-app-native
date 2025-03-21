@@ -4,7 +4,7 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Close } from 'ui/svg/icons/Close'
-import { TypoDS } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 type Props = {
   isVisible: boolean
@@ -26,13 +26,13 @@ export const ChroniclesWritersModal: FunctionComponent<Props> = ({
       rightIcon={Close}
       onRightIconPress={closeModal}>
       <ViewGap gap={6}>
-        <TypoDS.Body>
+        <Typo.Body>
           Les avis du book club sont écrits par des jeunes passionnés de lecture.
-        </TypoDS.Body>
-        <TypoDS.Body>
+        </Typo.Body>
+        <Typo.Body>
           Ils sont sélectionnés par le pass Culture pour te faire leurs meilleures recos tous les
           mois.
-        </TypoDS.Body>
+        </Typo.Body>
 
         <ButtonPrimary
           wording="Voir toutes les recos du book club"

@@ -1,13 +1,13 @@
 import styled from 'styled-components/native'
 
 import { ArrowRight } from 'ui/svg/icons/ArrowRight'
-import { TypoDS } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
-export const LightGreyText = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
+export const LightGreyText = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.colors.greyMedium,
 }))
 
-export const Title = styled(TypoDS.BodyAccent)(({ theme }) => ({
+export const Title = styled(Typo.BodyAccent)(({ theme }) => ({
   color: theme.colors.white,
 }))
 

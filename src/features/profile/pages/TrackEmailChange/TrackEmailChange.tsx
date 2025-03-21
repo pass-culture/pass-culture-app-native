@@ -6,7 +6,7 @@ import { getProfileStackConfig } from 'features/navigation/ProfileStackNavigator
 import { useGoBack } from 'features/navigation/useGoBack'
 import { TrackEmailChangeContent } from 'features/profile/pages/TrackEmailChange/TrackEmailChangeContent'
 import { BackButton } from 'ui/components/headers/BackButton'
-import { getSpacing, Spacer, TypoDS } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 const HEADER_HEIGHT = getSpacing(8)
@@ -52,6 +52,6 @@ const StyledScrollViewContainer = styled(ScrollView)({
   flex: 1,
 })
 
-const StyledTitleText = styled(TypoDS.Title1)({
+const StyledTitleText = styled(Typo.Title1)({
   ...(Platform.OS === 'web' ? { textAlign: 'center' } : {}),
 })

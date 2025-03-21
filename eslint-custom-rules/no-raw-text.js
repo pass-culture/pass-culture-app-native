@@ -14,10 +14,6 @@ const conditions = [
     message: 'Typo',
   },
   {
-    check: (openingElement) => openingElement?.object?.name === 'TypoDS',
-    message: 'TypoDS',
-  },
-  {
     check: (openingElement) => ALLOWED_JSX_TAGS.some((value) => value.test(openingElement.name)),
     message: 'allowed JSX tag',
   },

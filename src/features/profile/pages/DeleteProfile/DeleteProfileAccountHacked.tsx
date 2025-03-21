@@ -9,7 +9,7 @@ import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
 import { Clear } from 'ui/svg/icons/Clear'
 import { Info } from 'ui/svg/icons/Info'
 import { BicolorUserBlocked } from 'ui/svg/icons/UserBlocked'
-import { TypoDS } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 export const DeleteProfileAccountHacked: FC = () => {
   const { navigate } = useNavigation<UseNavigationType>()
@@ -32,14 +32,14 @@ export const DeleteProfileAccountHacked: FC = () => {
         icon: Clear,
       }}>
       <ViewGap gap={6}>
-        <TypoDS.Body>
+        <Typo.Body>
           Tu as indiqué
-          <TypoDS.BodyAccent> que quelqu’un d’autre a accès à ton compte.</TypoDS.BodyAccent>
-        </TypoDS.Body>
-        <TypoDS.Body>
-          Pour des raisons de <TypoDS.BodyAccent>sécurité</TypoDS.BodyAccent>, nous te conseillons
-          de suspendre ton compte temporairement.
-        </TypoDS.Body>
+          <Typo.BodyAccent> que quelqu’un d’autre a accès à ton compte.</Typo.BodyAccent>
+        </Typo.Body>
+        <Typo.Body>
+          Pour des raisons de <Typo.BodyAccent>sécurité</Typo.BodyAccent>, nous te conseillons de
+          suspendre ton compte temporairement.
+        </Typo.Body>
         <InfoBanner
           icon={Info}
           message="Tu recevras un e-mail pour t’indiquer les étapes à suivre pour récupérer ton compte"

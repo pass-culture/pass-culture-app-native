@@ -13,7 +13,7 @@ import { InfoBanner } from 'ui/components/banners/InfoBanner'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 import { IdCard } from 'ui/svg/icons/IdCard'
-import { TypoDS } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 const meta: ComponentMeta<typeof TicketCutout> = {
   title: 'Features/bookings/TicketCutout',
@@ -27,7 +27,7 @@ const meta: ComponentMeta<typeof TicketCutout> = {
 }
 export default meta
 
-const StyledBody = styled(TypoDS.Body)({
+const StyledBody = styled(Typo.Body)({
   textAlign: 'center',
 })
 

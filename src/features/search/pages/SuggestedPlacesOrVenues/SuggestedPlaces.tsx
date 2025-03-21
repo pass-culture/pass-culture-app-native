@@ -12,7 +12,7 @@ import { Li } from 'ui/components/Li'
 import { Spinner } from 'ui/components/Spinner'
 import { VerticalUl } from 'ui/components/Ul'
 import { LocationPointer as DefaultLocationPointer } from 'ui/svg/icons/LocationPointer'
-import { Spacer, TypoDS, getSpacing } from 'ui/theme'
+import { Spacer, Typo, getSpacing } from 'ui/theme'
 
 const keyExtractor = (place: SuggestedPlace) => {
   const { label, info } = place
@@ -94,7 +94,7 @@ const ListIconWrapper = styled.View({
   marginRight: getSpacing(0.5),
 })
 
-const StyledBody = styled(TypoDS.Body)(({ theme }) => ({
+const StyledBody = styled(Typo.Body)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))
 

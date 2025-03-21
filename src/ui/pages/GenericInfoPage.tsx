@@ -7,7 +7,7 @@ import { Helmet } from 'libs/react-helmet/Helmet'
 import { AnimationObject } from 'ui/animations/type'
 import { BackgroundWithDefaultStatusBar } from 'ui/svg/Background'
 import { AccessibleIcon } from 'ui/svg/icons/types'
-import { getSpacing, Spacer, TypoDS } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type Props = {
@@ -139,7 +139,7 @@ const StyledLottieView = styled(LottieView)((props: { size: number }) => ({
   height: props.size,
 }))
 
-const StyledTitle = styled(TypoDS.Title2).attrs(() => getHeadingAttrs(1))(({ theme }) => ({
+const StyledTitle = styled(Typo.Title2).attrs(() => getHeadingAttrs(1))(({ theme }) => ({
   color: theme.colors.white,
   textAlign: 'center',
 }))

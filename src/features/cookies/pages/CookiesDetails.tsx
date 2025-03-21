@@ -9,7 +9,7 @@ import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonI
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
-import { getSpacing, Spacer, TypoDS } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const CookiesDetails = (props: CookiesChoiceSettings) => {
@@ -18,25 +18,25 @@ export const CookiesDetails = (props: CookiesChoiceSettings) => {
     <StyledView>
       <AccordionContainer>
         <StyledAccordionItem>
-          <TypoDS.Body>
+          <Typo.Body>
             Les cookies sont des petits fichiers stockés sur ton appareil lorsque tu navigues. Tu
             peux choisir d’accepter ou non l’activation de leur suivi. Nous utilisons les données
             collectées par ces cookies et traceurs pour t’offrir la meilleure expérience possible.
-          </TypoDS.Body>
+          </Typo.Body>
         </StyledAccordionItem>
       </AccordionContainer>
       <CookiesSettingsContainer>
         <CookiesSettings {...props} />
       </CookiesSettingsContainer>
       <ViewGap gap={4}>
-        <TypoDS.Title4 {...getHeadingAttrs(2)}>Tu as la main dessus</TypoDS.Title4>
-        <TypoDS.Body>
+        <Typo.Title4 {...getHeadingAttrs(2)}>Tu as la main dessus</Typo.Title4>
+        <Typo.Body>
           Ton choix est conservé pendant 6 mois et tu pourras le modifier dans les paramètres de
           confidentialité de ton profil à tout moment.
-        </TypoDS.Body>
-        <TypoDS.Body>
+        </Typo.Body>
+        <Typo.Body>
           On te redemandera bien sûr ton consentement si notre politique évolue.
-        </TypoDS.Body>
+        </Typo.Body>
         <CaptionNeutralInfo>
           {buttonText}
           <Spacer.Row numberOfSpaces={1} />
@@ -55,7 +55,7 @@ export const CookiesDetails = (props: CookiesChoiceSettings) => {
 
 const ACCORDION_BORDER_RADIUS = getSpacing(2)
 const StyledAccordionItem = styled(Accordion).attrs(({ theme }) => ({
-  title: <TypoDS.BodyAccent>Qu’est-ce que les cookies&nbsp;?</TypoDS.BodyAccent>,
+  title: <Typo.BodyAccent>Qu’est-ce que les cookies&nbsp;?</Typo.BodyAccent>,
   titleStyle: {
     backgroundColor: theme.colors.greyLight,
     paddingVertical: getSpacing(4),
@@ -71,7 +71,7 @@ const AccordionContainer = styled.View({
   overflow: 'hidden',
 })
 
-const CaptionNeutralInfo = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
+const CaptionNeutralInfo = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))
 

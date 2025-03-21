@@ -4,7 +4,7 @@ import { OfferStockResponse } from 'api/gen'
 import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
-import { TypoDS } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 interface PriceLineProps {
   quantity?: number
@@ -26,13 +26,13 @@ export function PriceLine({
   const totalPrice = formatCurrencyFromCents(quantity * unitPrice, currency, euroToPacificFrancRate)
   const price = formatCurrencyFromCents(unitPrice, currency, euroToPacificFrancRate)
 
-  const MainText = shouldDisabledStyles ? TypoDS.Body : TypoDS.BodyAccentXs
-  const SecondaryText = shouldDisabledStyles ? TypoDS.Body : TypoDS.BodyAccentXs
+  const MainText = shouldDisabledStyles ? Typo.Body : Typo.BodyAccentXs
+  const SecondaryText = shouldDisabledStyles ? Typo.Body : Typo.BodyAccentXs
 
   const shouldDisplayAttributes = attributes?.length
 
   return (
-    <TypoDS.Body>
+    <Typo.Body>
       <MainText>{totalPrice} </MainText>
 
       {quantity > 1 ? (
@@ -46,6 +46,6 @@ export function PriceLine({
       {shouldDisplayAttributes ? (
         <MainText testID="price-line-attributes"> - {attributes.join(' ')}</MainText>
       ) : null}
-    </TypoDS.Body>
+    </Typo.Body>
   )
 }

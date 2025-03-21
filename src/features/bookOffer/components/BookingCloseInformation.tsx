@@ -4,7 +4,7 @@ import styled, { useTheme } from 'styled-components/native'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppInformationModal } from 'ui/components/modals/AppInformationModal'
 import { BicolorInfo } from 'ui/svg/icons/BicolorInfo'
-import { getSpacing, Spacer, TypoDS } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { LINE_BREAK } from 'ui/theme/constants'
 
 interface Props {
@@ -40,6 +40,6 @@ export const BookingCloseInformation = ({ visible, hideModal }: Props) => {
   )
 }
 
-const ModalBodyText = styled(TypoDS.Body)({
+const ModalBodyText = styled(Typo.Body)({
   textAlign: 'center',
 })

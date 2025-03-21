@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 import { theme } from 'theme'
 import { ArrowNext as DefaultArrowNext } from 'ui/svg/icons/ArrowNext'
 import { AccessibleIcon } from 'ui/svg/icons/types'
-import { Spacer, TypoDS } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 
 export type SectionRowContentProps = {
   title: string
@@ -38,7 +38,7 @@ export const SectionRowContent = ({
   const Title = renderTitle ? (
     renderTitle(title)
   ) : (
-    <TypoDS.BodyAccent numberOfLines={numberOfLines}>{title}</TypoDS.BodyAccent>
+    <Typo.BodyAccent numberOfLines={numberOfLines}>{title}</Typo.BodyAccent>
   )
 
   return (

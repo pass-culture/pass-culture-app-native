@@ -5,7 +5,7 @@ import { SelectableListItem } from 'features/offer/components/SelectableListItem
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { accessibleRadioProps } from 'shared/accessibilityProps/accessibleRadioProps'
 import { useSpaceBarAction } from 'ui/hooks/useSpaceBarAction'
-import { getSpacing, TypoDS } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 
 interface RadioSelectorProps {
   label: string
@@ -83,12 +83,12 @@ const LeftContent = styled.View({
   marginVertical: getSpacing(4),
 })
 
-const Label = styled(TypoDS.BodyAccent)<{ isHover?: boolean }>(({ theme, disabled, isHover }) => ({
+const Label = styled(Typo.BodyAccent)<{ isHover?: boolean }>(({ theme, disabled, isHover }) => ({
   color: disabled ? theme.colors.greyDark : undefined,
   textDecoration: isHover ? 'underline' : undefined,
 }))
 
-const Description = styled(TypoDS.BodyAccentXs)<{ isHover?: boolean }>(
+const Description = styled(Typo.BodyAccentXs)<{ isHover?: boolean }>(
   ({ theme, disabled, isHover }) => ({
     marginTop: getSpacing(1),
     color: disabled ? theme.colors.greySemiDark : theme.colors.greyDark,
@@ -96,6 +96,6 @@ const Description = styled(TypoDS.BodyAccentXs)<{ isHover?: boolean }>(
   })
 )
 
-const RightText = styled(TypoDS.Body)(({ theme, disabled }) => ({
+const RightText = styled(Typo.Body)(({ theme, disabled }) => ({
   color: disabled ? theme.colors.greyDark : theme.colors.black,
 }))

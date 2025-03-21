@@ -3,7 +3,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { CreditStatus } from 'features/tutorial/enums'
-import { getSpacing, Spacer, TypoDS } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 import { AgeCreditBlock } from './AgeCreditBlock'
 
@@ -22,13 +22,13 @@ const Template: ComponentStory<typeof AgeCreditBlock> = (props) => <AgeCreditBlo
 const List: ComponentStory<typeof AgeCreditBlock> = (props) => (
   <ListContainer>
     <AgeCreditBlock {...props} creditStatus={CreditStatus.GONE}>
-      <TypoDS.Title3>30&nbsp;€</TypoDS.Title3>
+      <Typo.Title3>30&nbsp;€</Typo.Title3>
     </AgeCreditBlock>
     <Spacer.Column numberOfSpaces={0.5} />
     <AgeCreditBlock {...props} />
     <Spacer.Column numberOfSpaces={0.5} />
     <AgeCreditBlock {...props} creditStatus={CreditStatus.COMING}>
-      <TypoDS.Title3>30&nbsp;€</TypoDS.Title3>
+      <Typo.Title3>30&nbsp;€</Typo.Title3>
     </AgeCreditBlock>
   </ListContainer>
 )
@@ -38,7 +38,7 @@ const ListContainer = styled.View({
   justifyContent: 'center',
 })
 
-const StyledTitle3 = styled(TypoDS.Title3)(({ theme }) => ({
+const StyledTitle3 = styled(Typo.Title3)(({ theme }) => ({
   color: theme.colors.secondary,
 }))
 
@@ -55,9 +55,9 @@ const withDescription = Template.bind({})
 withDescription.args = {
   children: (
     <React.Fragment>
-      <TypoDS.Title3>300&nbsp;€</TypoDS.Title3>
+      <Typo.Title3>300&nbsp;€</Typo.Title3>
       <Spacer.Column numberOfSpaces={2} />
-      <TypoDS.Body>Tu auras 2 ans pour utiliser tes 300&nbsp;€</TypoDS.Body>
+      <Typo.Body>Tu auras 2 ans pour utiliser tes 300&nbsp;€</Typo.Body>
     </React.Fragment>
   ),
   age: 18,

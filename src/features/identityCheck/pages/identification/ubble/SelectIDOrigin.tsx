@@ -10,7 +10,7 @@ import { SeparatorWithText } from 'ui/components/SeparatorWithText'
 import { BicolorEarth } from 'ui/svg/icons/BicolorEarth'
 import { BicolorFrance } from 'ui/svg/icons/BicolorFrance'
 import { BicolorIdCardWithMagnifyingGlass } from 'ui/svg/icons/BicolorIdCardWithMagnifyingGlass'
-import { getSpacing, Spacer, TypoDS } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export enum IDOrigin {
@@ -36,8 +36,8 @@ const SelectIDOriginContent: FunctionComponent = () => {
       <HeroButtonList
         Title={
           <Text>
-            <TypoDS.Body>J’ai une carte d’identité ou un passeport </TypoDS.Body>
-            <TypoDS.BodyAccent>français</TypoDS.BodyAccent>
+            <Typo.Body>J’ai une carte d’identité ou un passeport </Typo.Body>
+            <Typo.BodyAccent>français</Typo.BodyAccent>
           </Text>
         }
         Icon={<BicolorFrance />}
@@ -77,9 +77,9 @@ const StyledBicolorIdCardWithMagnifyingGlass = styled(BicolorIdCardWithMagnifyin
   })
 )``
 
-const StyledTitle4 = styled(TypoDS.Title4).attrs(getHeadingAttrs(2))({
+const StyledTitle4 = styled(Typo.Title4).attrs(getHeadingAttrs(2))({
   textAlign: 'center',
 })
-const StyledBody = styled(TypoDS.Body)({
+const StyledBody = styled(Typo.Body)({
   textAlign: 'center',
 })

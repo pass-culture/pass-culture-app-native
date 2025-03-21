@@ -4,7 +4,7 @@ import { ColorSchemeName, Platform } from 'react-native'
 import { isMobileDeviceDetectOnWeb, isTabletDeviceDetectOnWeb } from 'libs/react-device-detect'
 // eslint-disable-next-line no-restricted-imports
 import { ModalSpacing } from 'ui/components/modals/enum'
-import { getSpacing, getSpacingString } from 'ui/theme'
+import { getSpacing } from 'ui/theme'
 import { buttonHeights } from 'ui/theme/buttonHeights'
 // eslint-disable-next-line no-restricted-imports
 import { ACTIVE_OPACITY, ColorsEnum, UniqueColors } from 'ui/theme/colors'
@@ -113,68 +113,6 @@ export const theme = {
     },
   },
   designSystem: designTokensLight,
-  typography: {
-    title1: {
-      fontFamily: 'Montserrat-Black',
-      fontSize: getSpacing(6.5),
-      lineHeight: getSpacingString(8.5),
-      color: ColorsEnum.BLACK,
-    },
-    title2: {
-      fontFamily: 'Montserrat-Medium',
-      fontSize: getSpacing(5.5),
-      lineHeight: getSpacingString(6.5),
-      color: ColorsEnum.BLACK,
-    },
-    title3: {
-      fontFamily: 'Montserrat-Bold',
-      fontSize: getSpacing(5),
-      lineHeight: getSpacingString(6),
-      color: ColorsEnum.BLACK,
-    },
-    title4: {
-      fontFamily: 'Montserrat-Medium',
-      fontSize: getSpacing(4.5),
-      lineHeight: getSpacingString(5.5),
-      color: ColorsEnum.BLACK,
-    },
-    buttonText: {
-      fontFamily: 'Montserrat-Bold',
-      fontSize: getSpacing(3.75),
-      lineHeight: getSpacingString(5),
-      color: ColorsEnum.BLACK,
-    },
-    body: {
-      fontFamily: 'Montserrat-Regular',
-      fontSize: getSpacing(3.75),
-      lineHeight: getSpacingString(5),
-      color: ColorsEnum.BLACK,
-    },
-    caption: {
-      fontFamily: 'Montserrat-SemiBold',
-      fontSize: getSpacing(3),
-      lineHeight: getSpacingString(4),
-      color: ColorsEnum.BLACK,
-    },
-    hint: {
-      fontFamily: 'Montserrat-SemiBold',
-      fontSize: getSpacing(2.5),
-      lineHeight: getSpacingString(3),
-      color: ColorsEnum.BLACK,
-    },
-    placeholder: {
-      fontFamily: 'Montserrat-Italic',
-      fontSize: getSpacing(3.75),
-      lineHeight: getSpacingString(5),
-      color: ColorsEnum.GREY_DARK,
-    },
-    bodyBoldItalic: {
-      fontFamily: 'Montserrat-BoldItalic',
-      fontSize: getSpacing(3.75),
-      lineHeight: getSpacingString(5),
-      color: ColorsEnum.BLACK,
-    },
-  },
   colors: {
     accent: ColorsEnum.ACCENT,
     attention: ColorsEnum.ATTENTION,

@@ -6,7 +6,7 @@ import { DefaultAvatar } from 'ui/components/Avatar/DefaultAvatar'
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 import { BicolorProfile } from 'ui/svg/icons/BicolorProfile'
 import { Profile } from 'ui/svg/icons/Profile'
-import { TypoDS } from 'ui/theme'
+import { Typo } from 'ui/theme'
 import { AVATAR_LARGE, AVATAR_MEDIUM, AVATAR_SMALL, AVATAR_XSMALL } from 'ui/theme/constants'
 
 import { Avatar } from './Avatar'
@@ -21,18 +21,18 @@ export default meta
 const variantConfig: Variants<typeof Avatar> = [
   {
     label: 'Avatar xsmall',
-    props: { size: AVATAR_XSMALL, children: <TypoDS.Title3>M</TypoDS.Title3> },
+    props: { size: AVATAR_XSMALL, children: <Typo.Title3>M</Typo.Title3> },
   },
   {
     label: 'Avatar small',
-    props: { size: AVATAR_SMALL, children: <TypoDS.Title3>M</TypoDS.Title3> },
+    props: { size: AVATAR_SMALL, children: <Typo.Title3>M</Typo.Title3> },
   },
   {
     label: 'Avatar medium',
     props: {
       size: AVATAR_MEDIUM,
       backgroundColor: theme.colors.attentionLight,
-      children: <TypoDS.Title3>M</TypoDS.Title3>,
+      children: <Typo.Title3>M</Typo.Title3>,
     },
   },
   {
@@ -70,7 +70,7 @@ const variantConfig: Variants<typeof Avatar> = [
       rounded: false,
       borderWidth: 6,
       backgroundColor: theme.colors.coralLight,
-      children: <TypoDS.Title1>M.M</TypoDS.Title1>,
+      children: <Typo.Title1>M.M</Typo.Title1>,
     },
   },
 ]

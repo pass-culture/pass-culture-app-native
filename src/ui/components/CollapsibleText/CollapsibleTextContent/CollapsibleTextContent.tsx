@@ -1,7 +1,7 @@
 import React, { FunctionComponent, PropsWithChildren } from 'react'
 
 import { CollapsibleTextButton } from 'ui/components/CollapsibleText/CollapsibleTextButton/CollapsibleTextButton'
-import { TypoDS } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 import { useIsTextEllipsis } from '../useIsTextEllipsis'
 
@@ -25,12 +25,12 @@ export const CollapsibleTextContent: FunctionComponent<Props> = ({
 
   return (
     <React.Fragment>
-      <TypoDS.Body
+      <Typo.Body
         numberOfLines={expanded ? undefined : numberOfLines}
         onLayout={onLayout}
         onTextLayout={onTextLayout}>
         {children}
-      </TypoDS.Body>
+      </Typo.Body>
 
       {shouldDisplayButton ? (
         <CollapsibleTextButton expanded={expanded} onPress={onButtonPress} />

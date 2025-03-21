@@ -10,7 +10,7 @@ import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
 import { BicolorEmailSent } from 'ui/svg/icons/BicolorEmailSent'
 import { Email } from 'ui/svg/icons/Email'
 import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
-import { TypoDS } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 import { nativeEmailProvider } from './EmailProvider'
 import { useContactSupportForDeletionProfile } from './useContactSupportForDeletionProfile'
@@ -51,6 +51,6 @@ export const DeleteProfileContactSupport: FC = () => {
   )
 }
 
-const StyledBody = styled(TypoDS.Body)({
+const StyledBody = styled(Typo.Body)({
   textAlign: 'center',
 })

@@ -18,7 +18,7 @@ import { styledButton } from 'ui/components/buttons/styledButton'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { Close } from 'ui/svg/icons/Close'
-import { getSpacing, Spacer, TypoDS } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 interface VideoModalProps extends VideoModule {
   offers: Offer[]
@@ -86,7 +86,7 @@ export const VideoModal: React.FC<VideoModalProps> = (props) => {
           </StyledTagBackground>
         </StyledTagContainer>
         <Spacer.Column numberOfSpaces={2} />
-        <TypoDS.Title3>{props.title}</TypoDS.Title3>
+        <Typo.Title3>{props.title}</Typo.Title3>
         <Spacer.Column numberOfSpaces={2} />
         <StyledCaptionDate>{`Publiée le ${formatToFrenchDate(
           new Date(props.videoPublicationDate)
@@ -98,7 +98,7 @@ export const VideoModal: React.FC<VideoModalProps> = (props) => {
           </React.Fragment>
         ) : null}
         <Spacer.Column numberOfSpaces={6} />
-        <TypoDS.Title4>{props.offerTitle}</TypoDS.Title4>
+        <Typo.Title4>{props.offerTitle}</Typo.Title4>
         <Spacer.Column numberOfSpaces={4} />
         {props.isMultiOffer ? (
           <VideoMultiOfferList
@@ -145,15 +145,15 @@ const StyledTagBackground = styled(View)<{ color: string }>(({ color }) => ({
   borderRadius: theme.borderRadius.checkbox,
 }))
 
-const StyledCaptionTag = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
+const StyledCaptionTag = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.colors.white,
 }))
 
-const StyledCaptionDate = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
+const StyledCaptionDate = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.colors.greySemiDark,
 }))
 
-const StyledBody = styled(TypoDS.Body)(({ theme }) => ({
+const StyledBody = styled(Typo.Body)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))
 

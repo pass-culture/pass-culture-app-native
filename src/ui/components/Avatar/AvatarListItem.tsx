@@ -7,7 +7,7 @@ import { Avatar, AvatarProps } from 'ui/components/Avatar/Avatar'
 import { DefaultAvatar } from 'ui/components/Avatar/DefaultAvatar'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { getSpacing, TypoDS } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 import { AVATAR_LARGE } from 'ui/theme/constants'
 
 export type AvatarListItemProps = {
@@ -61,7 +61,7 @@ const StyledView = styled(ViewGap)({
   paddingVertical: getSpacing(2),
 })
 
-const ArtistName = styled(TypoDS.BodyAccentS)<{ maxWidth: number }>(({ maxWidth }) => ({
+const ArtistName = styled(Typo.BodyAccentS)<{ maxWidth: number }>(({ maxWidth }) => ({
   textAlign: 'center',
   maxWidth,
 }))

@@ -6,7 +6,7 @@ import { openUrl } from 'features/navigation/helpers/openUrl'
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { extractExternalLinkParts } from 'ui/components/buttons/externalLink/ExternalLink.service'
 import { ExternalSiteFilled as DefaultExternalSite } from 'ui/svg/icons/ExternalSiteFilled'
-import { Spacer, TypoDS } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 
 interface Props {
   url: string
@@ -34,7 +34,7 @@ export const ExternalLink: React.FC<Props> = ({ url, text, primary, testID }) =>
   )
 }
 
-const ButtonText = styled(TypoDS.BodyAccent)<{ primary?: boolean }>(({ primary, theme }) => ({
+const ButtonText = styled(Typo.BodyAccent)<{ primary?: boolean }>(({ primary, theme }) => ({
   color: primary ? theme.colors.primary : undefined,
 }))
 

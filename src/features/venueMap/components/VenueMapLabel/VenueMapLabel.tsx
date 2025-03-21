@@ -4,7 +4,7 @@ import { Easing, FadeIn, FadeOut } from 'react-native-reanimated'
 
 import { GeolocatedVenue } from 'features/venueMap/components/VenueMapView/types'
 import { Size } from 'features/venueMap/types'
-import { TypoDS } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 import { LabelContainer } from './LabelContainer'
 
@@ -26,7 +26,7 @@ export const VenueMapLabel: FunctionComponent<Props> = ({ venue }) => {
       labelSize={labelSize}
       exiting={FadeOut.easing(Easing.in(Easing.quad)).duration(500)}
       entering={FadeIn.easing(Easing.out(Easing.quad)).duration(500).delay(200)}>
-      <TypoDS.BodyAccentXs numberOfLines={1}>{venue.label}</TypoDS.BodyAccentXs>
+      <Typo.BodyAccentXs numberOfLines={1}>{venue.label}</Typo.BodyAccentXs>
     </LabelContainer>
   )
 }

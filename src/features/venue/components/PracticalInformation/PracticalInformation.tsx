@@ -6,7 +6,7 @@ import { ContactBlock } from 'features/venue/components/ContactBlock/ContactBloc
 import { NoInformationPlaceholder } from 'features/venue/components/Placeholders/NoInformationPlaceholder'
 import { AccessibilityBlock } from 'shared/accessibility/AccessibilityBlock'
 import { Separator } from 'ui/components/Separator'
-import { TypoDS, getSpacing } from 'ui/theme'
+import { Typo, getSpacing } from 'ui/theme'
 
 import { OpeningHours } from '../OpeningHours/OpeningHours'
 
@@ -17,12 +17,12 @@ export const PracticalInformation: FunctionComponent<Props> = ({ venue }) => {
   const sections: Section[] = [
     {
       title: 'Modalités de retrait',
-      body: <TypoDS.Body>{venue.withdrawalDetails}</TypoDS.Body>,
+      body: <Typo.Body>{venue.withdrawalDetails}</Typo.Body>,
       shouldBeDisplayed: !!venue.withdrawalDetails,
     },
     {
       title: 'Description',
-      body: <TypoDS.Body>{venue.description}</TypoDS.Body>,
+      body: <Typo.Body>{venue.description}</Typo.Body>,
       shouldBeDisplayed: !!venue.description,
     },
     {
@@ -81,7 +81,7 @@ const Section: FunctionComponent<{ title: string; children?: React.JSX.Element }
   children,
 }) => (
   <StyledViewGap>
-    <TypoDS.BodyAccentXs>{title}</TypoDS.BodyAccentXs>
+    <Typo.BodyAccentXs>{title}</Typo.BodyAccentXs>
     {children}
   </StyledViewGap>
 )

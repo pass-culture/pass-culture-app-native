@@ -8,7 +8,7 @@ import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouch
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { AccessibleIcon } from 'ui/svg/icons/types'
-import { getSpacing, TypoDS } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 
 interface Props {
   step: StepDetails
@@ -166,7 +166,7 @@ const StyledTouchableOpacity = styled(TouchableOpacity)({
   flexDirection: 'row',
 })
 
-const StyledButtonText = styled(TypoDS.BodyAccent)<{ stepState: StepButtonState }>(
+const StyledButtonText = styled(Typo.BodyAccent)<{ stepState: StepButtonState }>(
   ({ stepState, theme }) => ({
     color:
       stepState === StepButtonState.CURRENT || stepState === StepButtonState.RETRY
@@ -175,7 +175,7 @@ const StyledButtonText = styled(TypoDS.BodyAccent)<{ stepState: StepButtonState 
   })
 )
 
-const StepSubtitle = styled(TypoDS.BodyAccentXs)<{ stepState: StepButtonState }>(
+const StepSubtitle = styled(Typo.BodyAccentXs)<{ stepState: StepButtonState }>(
   ({ stepState, theme }) => ({
     color:
       stepState === StepButtonState.CURRENT || stepState === StepButtonState.RETRY

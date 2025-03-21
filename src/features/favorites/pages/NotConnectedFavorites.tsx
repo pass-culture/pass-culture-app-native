@@ -9,7 +9,7 @@ import { ButtonWithLinearGradient } from 'ui/components/buttons/buttonWithLinear
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { BicolorUserFavorite } from 'ui/svg/icons/BicolorUserFavorite'
-import { getSpacing, Spacer, TypoDS } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const NotConnectedFavorites = () => {
@@ -87,10 +87,10 @@ const TextContainer = styled(ViewGap)({
   marginBottom: getSpacing(12),
 })
 
-const StyledTitle2 = styled(TypoDS.Title2)({
+const StyledTitle2 = styled(Typo.Title2)({
   textAlign: 'center',
 })
 
-const StyledBody = styled(TypoDS.Body)({
+const StyledBody = styled(Typo.Body)({
   textAlign: 'center',
 })

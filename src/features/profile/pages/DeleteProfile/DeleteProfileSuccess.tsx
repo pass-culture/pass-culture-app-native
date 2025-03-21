@@ -8,7 +8,7 @@ import { Emoji } from 'ui/components/Emoji'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { ProfileDeletion } from 'ui/svg/icons/ProfileDeletion'
-import { Spacer, TypoDS } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 
 export function DeleteProfileSuccess() {
   const signOut = useLogoutRoutine()
@@ -42,7 +42,7 @@ export function DeleteProfileSuccess() {
   )
 }
 
-const StyledBody = styled(TypoDS.Body)(({ theme }) => ({
+const StyledBody = styled(Typo.Body)(({ theme }) => ({
   color: theme.colors.white,
   textAlign: 'center',
 }))

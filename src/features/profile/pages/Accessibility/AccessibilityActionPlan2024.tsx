@@ -9,12 +9,12 @@ import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonI
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { VerticalUl } from 'ui/components/Ul'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
-import { Spacer, TypoDS } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const AccessibilityActionPlan2024 = () => (
   <React.Fragment>
-    <TypoDS.Title4 {...getHeadingAttrs(2)}>Plan annuel 2024</TypoDS.Title4>
+    <Typo.Title4 {...getHeadingAttrs(2)}>Plan annuel 2024</Typo.Title4>
     <Spacer.Column numberOfSpaces={6} />
     <VerticalUl>
       <BulletListItem text="Mise en place d’une solution permettant aux jeunes en situation de handicap de retrouver facilement les offres accessibles">
@@ -22,7 +22,7 @@ export const AccessibilityActionPlan2024 = () => (
       </BulletListItem>
 
       <BulletListItem>
-        <TypoDS.Body>
+        <Typo.Body>
           Publier la déclaration d’accessibilité du site{' '}
           <ExternalTouchableLink
             as={ButtonInsideText}
@@ -32,7 +32,7 @@ export const AccessibilityActionPlan2024 = () => (
             externalNav={{ url: 'https://passculture.pro/' }}
           />
           <ActionPlanTag status={ActionPlanStatus.DONE} />
-        </TypoDS.Body>
+        </Typo.Body>
       </BulletListItem>
 
       <BulletListItem text="Intégrer les données d’Acceslibre pour améliorer l’information sur l’accessibilité des lieux">
@@ -44,7 +44,7 @@ export const AccessibilityActionPlan2024 = () => (
       </BulletListItem>
 
       <BulletListItem>
-        <TypoDS.Body>
+        <Typo.Body>
           Publier la déclaration d’accessibilité du site{' '}
           <ExternalTouchableLink
             as={ButtonInsideText}
@@ -54,11 +54,11 @@ export const AccessibilityActionPlan2024 = () => (
             externalNav={{ url: 'https://pass.culture.fr/' }}
           />
           <ActionPlanTag status={ActionPlanStatus.DONE} />
-        </TypoDS.Body>
+        </Typo.Body>
       </BulletListItem>
 
       <BulletListItem>
-        <TypoDS.Body>
+        <Typo.Body>
           Formation des Product Manager du site{' '}
           <ExternalTouchableLink
             as={ButtonInsideText}
@@ -68,7 +68,7 @@ export const AccessibilityActionPlan2024 = () => (
             externalNav={{ url: 'https://passculture.pro/' }}
           />
           <ActionPlanTag status={ActionPlanStatus.DONE} />
-        </TypoDS.Body>
+        </Typo.Body>
       </BulletListItem>
 
       <BulletListItem text="Sensibilisation des équipes internes aux enjeux d’accessibilité">
@@ -76,7 +76,7 @@ export const AccessibilityActionPlan2024 = () => (
       </BulletListItem>
 
       <BulletListItem>
-        <TypoDS.Body>
+        <Typo.Body>
           Rendre le site{' '}
           <ExternalTouchableLink
             as={ButtonInsideText}
@@ -87,7 +87,7 @@ export const AccessibilityActionPlan2024 = () => (
           />{' '}
           100% accessible
           <ActionPlanTag status={ActionPlanStatus.ONGOING} details="poursuivi en 2025" />
-        </TypoDS.Body>
+        </Typo.Body>
       </BulletListItem>
 
       <BulletListItem text="Améliorer la lisibilité de l’accessibilité des offres avec la mise en place des modalités d’accessibilité par offre">

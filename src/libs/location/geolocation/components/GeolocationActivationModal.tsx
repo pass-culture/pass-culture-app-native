@@ -8,7 +8,7 @@ import { useLocation } from 'libs/location/LocationWrapper'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppInformationModal } from 'ui/components/modals/AppInformationModal'
 import { BicolorLocationPointer } from 'ui/svg/icons/BicolorLocationPointer'
-import { Spacer, TypoDS } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 
 type Props = {
   hideGeolocPermissionModal: () => void
@@ -65,6 +65,6 @@ export const GeolocationActivationModal: React.FC<Props> = ({
   )
 }
 
-const InformationText = styled(TypoDS.Body)({
+const InformationText = styled(Typo.Body)({
   textAlign: 'center',
 })

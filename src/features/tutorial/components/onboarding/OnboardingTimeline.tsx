@@ -5,7 +5,7 @@ import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { CreditComponentProps, CreditTimeline } from 'features/tutorial/components/CreditTimeline'
 import { TutorialTypes } from 'features/tutorial/enums'
 import { useDepositAmountsByAge } from 'shared/user/useDepositAmountsByAge'
-import { Spacer, TypoDS, getSpacing, getSpacingString } from 'ui/theme'
+import { Spacer, Typo, getSpacing, getSpacingString } from 'ui/theme'
 
 interface Props {
   age: 15 | 16 | 17 | 18
@@ -98,13 +98,13 @@ const stepperPropsMappingV2 = new Map<Props['age'], CreditComponentProps[]>([
   ],
 ])
 
-const StyledBody = styled(TypoDS.Body)({
+const StyledBody = styled(Typo.Body)({
   marginVertical: getSpacing(2),
   marginLeft: getSpacing(1.5),
   justifyContent: 'center',
 })
 
-const DescriptionText = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
+const DescriptionText = styled(Typo.BodyAccentXs)(({ theme }) => ({
   fontSize: theme.tabBar.fontSize,
   lineHeight: getSpacingString(3),
   color: theme.colors.greyDark,

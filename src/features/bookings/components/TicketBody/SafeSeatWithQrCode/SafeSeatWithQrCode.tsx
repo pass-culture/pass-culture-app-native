@@ -10,7 +10,7 @@ import {
 } from 'features/bookings/components/TicketBody/SeatWithQrCode/SeatWithQrCode'
 import genericQrCode from 'ui/images/generic-qr-code.png'
 import { BarCode } from 'ui/svg/icons/BarCode'
-import { TypoDS } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 type SafeSeatWithQrCodeProps = SeatWithQrCodeProps & {
   subcategoryId: SubcategoryIdEnum
@@ -68,7 +68,7 @@ const BlurredQrCode = styled.ImageBackground.attrs({
   opacity: 0.1,
 }))
 
-const StyledBody = styled(TypoDS.BodyAccentS)({
+const StyledBody = styled(Typo.BodyAccentS)({
   textAlign: 'center',
 })
 

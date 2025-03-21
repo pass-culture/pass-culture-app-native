@@ -4,7 +4,7 @@ import styled, { useTheme } from 'styled-components/native'
 import { IconColorKey, TextColorKey } from 'theme/types'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { AccessibleIcon } from 'ui/svg/icons/types'
-import { Spacer, TypoDS } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
 
 interface LocationModalButtonProps {
@@ -28,7 +28,7 @@ export const LocationModalButton = ({
       <TopContainer>
         <Icon color={theme.designSystem.color.icon[color]} size={theme.icons.sizes.small} />
         <Spacer.Row numberOfSpaces={2} />
-        <TypoDS.Button color={color}>{title}</TypoDS.Button>
+        <Typo.Button color={color}>{title}</Typo.Button>
       </TopContainer>
       {subtitle ? (
         <React.Fragment>
@@ -45,6 +45,6 @@ const TopContainer = styled.View({
   alignItems: 'center',
 })
 
-const StyledCaption = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
+const StyledCaption = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))

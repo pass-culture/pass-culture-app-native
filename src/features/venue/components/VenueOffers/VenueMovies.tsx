@@ -7,7 +7,7 @@ import { useOfferCTA } from 'features/offer/components/OfferContent/OfferCTAProv
 import type { VenueOffers } from 'features/venue/types'
 import { Anchor } from 'ui/components/anchor/Anchor'
 import { useScrollToAnchor } from 'ui/components/anchor/AnchorContext'
-import { TypoDS, getSpacing } from 'ui/theme'
+import { Typo, getSpacing } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 const cinemaCTAButtonName = 'Accéder aux séances'
@@ -47,6 +47,6 @@ const Container = styled.View(({ theme }) => ({
   gap: theme.isDesktopViewport ? getSpacing(10) : getSpacing(6),
 }))
 
-const MoviesTitle = styled(TypoDS.Title3).attrs(getHeadingAttrs(2))({
+const MoviesTitle = styled(Typo.Title3).attrs(getHeadingAttrs(2))({
   marginLeft: getSpacing(6),
 })

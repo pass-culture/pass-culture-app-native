@@ -3,14 +3,14 @@ import styled from 'styled-components/native'
 
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
 import { useDeviceInfo } from 'features/trustedDevice/helpers/useDeviceInfo'
-import { Spacer, TypoDS } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 
 export const CheatcodesScreenTrustedDeviceInfos = () => {
   const deviceInfo = useDeviceInfo()
 
   return (
     <CheatcodesTemplateScreen title="Trusted device debug infos" flexDirection="column">
-      <TypoDS.Title3>Informations du device actuel</TypoDS.Title3>
+      <Typo.Title3>Informations du device actuel</Typo.Title3>
       <Spacer.Column numberOfSpaces={2} />
       <Data title="Device ID" data={deviceInfo?.deviceId} />
       <Data title="Device Model ou Browser" data={deviceInfo?.source} />
@@ -27,7 +27,7 @@ type DataProps = {
 const Data = ({ title, data }: DataProps) => (
   <React.Fragment>
     <Spacer.Column numberOfSpaces={2} />
-    <TypoDS.Button>{title}</TypoDS.Button>
+    <Typo.Button>{title}</Typo.Button>
     {data ? (
       <ButtonTextSecondary>{data}</ButtonTextSecondary>
     ) : (
@@ -37,10 +37,10 @@ const Data = ({ title, data }: DataProps) => (
   </React.Fragment>
 )
 
-const ButtonTextPrimary = styled(TypoDS.Button)(({ theme }) => ({
+const ButtonTextPrimary = styled(Typo.Button)(({ theme }) => ({
   color: theme.colors.primary,
 }))
 
-const ButtonTextSecondary = styled(TypoDS.Button)(({ theme }) => ({
+const ButtonTextSecondary = styled(Typo.Button)(({ theme }) => ({
   color: theme.colors.secondary,
 }))

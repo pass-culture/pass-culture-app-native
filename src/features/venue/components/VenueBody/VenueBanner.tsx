@@ -10,7 +10,7 @@ import { Image } from 'libs/resizing-image-on-demand/Image'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Venue } from 'ui/svg/icons/Venue'
-import { getSpacing, Spacer, TypoDS } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 const GOOGLE_LOGO_HEIGHT = 15
 const GOOGLE_LOGO_WIDTH = 47
@@ -97,7 +97,7 @@ const GoogleLogo = styled.Image({
   zIndex: 2,
 })
 
-const CopyrightText = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
+const CopyrightText = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.colors.greySemiDark,
   textAlign: 'right',
   marginRight: theme.isMobileViewport ? getSpacing(4) : 0,

@@ -9,7 +9,7 @@ import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouch
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { Connect } from 'ui/svg/icons/Connect'
 import { Profile } from 'ui/svg/icons/Profile'
-import { getSpacing, TypoDS } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
@@ -94,6 +94,6 @@ const AuthenticationContainer = styled.View({
   gap: getSpacing(1),
 })
 
-const StyledBody = styled(TypoDS.Body)({
+const StyledBody = styled(Typo.Body)({
   textAlign: 'center',
 })

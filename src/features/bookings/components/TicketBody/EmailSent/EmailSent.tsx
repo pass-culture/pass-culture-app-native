@@ -6,7 +6,7 @@ import { useIsMailAppAvailable } from 'features/auth/helpers/useIsMailAppAvailab
 import { getEmailMessage } from 'features/bookings/components/TicketBody/ticketBodyMessages'
 import { ButtonWithLinearGradient } from 'ui/components/buttons/buttonWithLinearGradient/ButtonWithLinearGradient'
 import { Email } from 'ui/svg/icons/Email'
-import { getSpacing, TypoDS } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 
 type Props = {
   offerDate: Date
@@ -36,7 +36,7 @@ const TicketContainer = styled.View({
   width: '100%',
 })
 
-const WithDrawalContainer = styled(TypoDS.Body)({
+const WithDrawalContainer = styled(Typo.Body)({
   textAlign: 'center',
   maxWidth: '100%',
   paddingBottom: getSpacing(6),

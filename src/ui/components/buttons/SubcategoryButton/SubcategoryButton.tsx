@@ -8,7 +8,7 @@ import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { useHandleHover } from 'libs/hooks/useHandleHover'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import { getShadow, TypoDS } from 'ui/theme'
+import { getShadow, Typo } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
 import type { ColorsEnum } from 'ui/theme/colors'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
@@ -89,7 +89,7 @@ const StyledInternalTouchable: typeof InternalTouchableLink = styled(InternalTou
   padding: getSpacing(2),
 }))
 
-const StyledText = styledButton(TypoDS.BodyAccentXs).attrs({
+const StyledText = styledButton(Typo.BodyAccentXs).attrs({
   ellipsizeMode: 'tail',
   numberOfLines: 2,
   ...(Platform.OS === 'ios' && { paddingRight: getSpacing(4) }),

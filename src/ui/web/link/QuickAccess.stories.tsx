@@ -2,7 +2,7 @@ import { ComponentStory, ComponentMeta } from '@storybook/react'
 import { userEvent, screen } from '@storybook/testing-library'
 import React, { Fragment } from 'react'
 
-import { TypoDS } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 import { QuickAccess } from './QuickAccess'
 
@@ -17,10 +17,10 @@ const body = ' is a component that should be visible only when giving focus'
 
 const Template: ComponentStory<typeof QuickAccess> = (args) => (
   <Fragment>
-    <TypoDS.Body>
-      <TypoDS.BodyAccentXs>{caption}</TypoDS.BodyAccentXs>
+    <Typo.Body>
+      <Typo.BodyAccentXs>{caption}</Typo.BodyAccentXs>
       {body}
-    </TypoDS.Body>
+    </Typo.Body>
     <QuickAccess {...args} />
   </Fragment>
 )

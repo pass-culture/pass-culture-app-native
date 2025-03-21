@@ -14,7 +14,7 @@ import { Spacer } from 'ui/components/spacer/Spacer'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { ArrowNext as DefaultArrowNext } from 'ui/svg/icons/ArrowNext'
 import { BicolorLocationBuilding as LocationBuilding } from 'ui/svg/icons/BicolorLocationBuilding'
-import { TypoDS, getSpacing } from 'ui/theme'
+import { Typo, getSpacing } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type Props = {
@@ -75,7 +75,7 @@ export const WhereSection: React.FC<Props> = ({
   return (
     <React.Fragment>
       <Spacer.Column numberOfSpaces={6} />
-      <TypoDS.Title4 {...getHeadingAttrs(2)}>Où&nbsp;?</TypoDS.Title4>
+      <Typo.Title4 {...getHeadingAttrs(2)}>Où&nbsp;?</Typo.Title4>
       {showVenueBanner ? (
         <React.Fragment>
           <Spacer.Column numberOfSpaces={4} />
@@ -98,7 +98,7 @@ export const WhereSection: React.FC<Props> = ({
       {address ? (
         <React.Fragment>
           <Spacer.Column numberOfSpaces={4} />
-          <TypoDS.BodyAccentXs>Adresse</TypoDS.BodyAccentXs>
+          <Typo.BodyAccentXs>Adresse</Typo.BodyAccentXs>
           <Spacer.Column numberOfSpaces={1} />
           <StyledAddress>{address}</StyledAddress>
         </React.Fragment>
@@ -106,9 +106,9 @@ export const WhereSection: React.FC<Props> = ({
       {distanceToLocation ? (
         <React.Fragment>
           <Spacer.Column numberOfSpaces={4} />
-          <TypoDS.BodyAccentXs>Distance</TypoDS.BodyAccentXs>
+          <Typo.BodyAccentXs>Distance</Typo.BodyAccentXs>
           <Spacer.Column numberOfSpaces={1} />
-          <TypoDS.Body>{distanceToLocation}</TypoDS.Body>
+          <Typo.Body>{distanceToLocation}</Typo.Body>
         </React.Fragment>
       ) : null}
       {venueFullAddress ? (
@@ -135,14 +135,14 @@ const VenueNameContainer = styled(InternalTouchableLink)({
   alignItems: 'center',
 })
 
-const StyledAddress = styled(TypoDS.Body)({
+const StyledAddress = styled(Typo.Body)({
   textTransform: 'capitalize',
 })
 
 const iconSize = getSpacing(8)
 const iconSpacing = Math.round(iconSize / 5)
 
-const StyledVenueName = styled(TypoDS.BodyAccent)({
+const StyledVenueName = styled(Typo.BodyAccent)({
   textTransform: 'capitalize',
   flexShrink: 1,
   left: -iconSpacing,

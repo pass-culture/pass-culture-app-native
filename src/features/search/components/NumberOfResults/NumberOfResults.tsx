@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { plural } from 'libs/plural'
-import { getSpacing, TypoDS } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 interface Props {
@@ -31,6 +31,6 @@ const Container = styled.View({
   marginBottom: getSpacing(4),
 })
 
-const Body = styled(TypoDS.Body)(({ theme }) => ({
+const Body = styled(Typo.Body)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))

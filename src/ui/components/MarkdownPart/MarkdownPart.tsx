@@ -2,20 +2,20 @@ import React, { FunctionComponent } from 'react'
 
 import { highlightLinks } from 'libs/parsers/highlightLinks'
 import { MarkdownPartProps } from 'ui/components/types'
-import { TypoDS } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 export const MarkdownPart: FunctionComponent<MarkdownPartProps> = ({ text, isBold, isItalic }) => {
   if (isBold && !isItalic) {
-    return <TypoDS.BodyAccent testID="styledBodyAccent">{highlightLinks(text)}</TypoDS.BodyAccent>
+    return <Typo.BodyAccent testID="styledBodyAccent">{highlightLinks(text)}</Typo.BodyAccent>
   } else if (isItalic && !isBold) {
-    return <TypoDS.BodyItalic testID="styledBodyItalic">{highlightLinks(text)}</TypoDS.BodyItalic>
+    return <Typo.BodyItalic testID="styledBodyItalic">{highlightLinks(text)}</Typo.BodyItalic>
   } else if (isItalic && isBold) {
     return (
-      <TypoDS.BodyItalicAccent testID="styledBodyItalicAccent">
+      <Typo.BodyItalicAccent testID="styledBodyItalicAccent">
         {highlightLinks(text)}
-      </TypoDS.BodyItalicAccent>
+      </Typo.BodyItalicAccent>
     )
   }
 
-  return <TypoDS.Body testID="styledBody">{highlightLinks(text)}</TypoDS.Body>
+  return <Typo.Body testID="styledBody">{highlightLinks(text)}</Typo.Body>
 }

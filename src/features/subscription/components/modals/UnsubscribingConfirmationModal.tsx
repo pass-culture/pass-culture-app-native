@@ -8,7 +8,7 @@ import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { AppModalWithIllustration } from 'ui/components/modals/AppModalWithIllustration'
 import { BicolorRingingBellOff } from 'ui/svg/BicolorRingingBellOff'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
-import { Spacer, TypoDS } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 
 interface Props {
   visible: boolean
@@ -47,7 +47,7 @@ const StyledButtonContainer = styled.View({
   width: '100%',
 })
 
-const StyledBody = styled(TypoDS.Body)({
+const StyledBody = styled(Typo.Body)({
   textAlign: 'center',
 })
 

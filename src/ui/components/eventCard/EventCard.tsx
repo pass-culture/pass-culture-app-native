@@ -5,7 +5,7 @@ import { Referrals } from 'features/navigation/RootNavigator/types'
 import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { Touchable } from 'ui/components/touchable/Touchable'
-import { getShadow, getSpacing, Spacer, TypoDS } from 'ui/theme'
+import { getShadow, getSpacing, Spacer, Typo } from 'ui/theme'
 
 const BORDER_WIDTH = getSpacing(0.25)
 export const EVENT_CARD_HEIGHT = getSpacing(19)
@@ -90,7 +90,7 @@ const StyledTouchableOpacity = styledButton(Touchable)<{ disabled: boolean }>(
   })
 )
 
-const Title = styled(TypoDS.Button)<{ disabled: boolean }>(({ theme, disabled }) => ({
+const Title = styled(Typo.Button)<{ disabled: boolean }>(({ theme, disabled }) => ({
   color: disabled ? theme.colors.greyDark : theme.colors.black,
   textAlign: 'left',
 }))
@@ -104,7 +104,7 @@ const SubtitleContainer = styled.View({
   textOverflow: 'ellipsis',
 })
 
-const SubtitleLeft = styled(TypoDS.BodyAccentXs)<{
+const SubtitleLeft = styled(Typo.BodyAccentXs)<{
   disabled: boolean
   hasSubtitleRight: boolean
 }>(({ theme, disabled, hasSubtitleRight }) => ({
@@ -114,7 +114,7 @@ const SubtitleLeft = styled(TypoDS.BodyAccentXs)<{
   flex: hasSubtitleRight ? 'auto' : 1,
 }))
 
-const SubtitleRight = styled(TypoDS.Body)<{ disabled: boolean }>(({ theme, disabled }) => ({
+const SubtitleRight = styled(Typo.Body)<{ disabled: boolean }>(({ theme, disabled }) => ({
   color: disabled ? theme.colors.greySemiDark : theme.colors.black,
   textAlign: 'right',
   flexShrink: 0,

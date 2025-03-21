@@ -5,7 +5,7 @@ import React, { useMemo, useState } from 'react'
 import styled from 'styled-components/native'
 
 import { AccessibleIcon } from 'ui/svg/icons/types'
-import { Spacer, TypoDS, getSpacing } from 'ui/theme'
+import { Spacer, Typo, getSpacing } from 'ui/theme'
 
 export const SVGTemplate: ComponentStory<
   React.FC<{
@@ -35,7 +35,7 @@ export const SVGTemplate: ComponentStory<
   return (
     <React.Fragment>
       <Spacer.Column numberOfSpaces={3} />
-      <TypoDS.Title2>{title}</TypoDS.Title2>
+      <Typo.Title2>{title}</Typo.Title2>
       <Spacer.Column numberOfSpaces={3} />
       <GridContainer>
         {sortedIcons.map(([name, Icon]) => {
@@ -54,7 +54,7 @@ export const SVGTemplate: ComponentStory<
               {isBicolor ? <IconComponentBicolor /> : <IconComponent />}
               {isCopied ? <StyledTitle4>Copié&nbsp;!</StyledTitle4> : null}
               <Spacer.Column numberOfSpaces={2} />
-              <TypoDS.BodyS numberOfLines={2}>{name}</TypoDS.BodyS>
+              <Typo.BodyS numberOfLines={2}>{name}</Typo.BodyS>
             </IconWrapper>
           )
         })}
@@ -85,7 +85,7 @@ const IconWrapper = styled.TouchableOpacity<{
   position: 'relative',
 }))
 
-const StyledTitle4 = styled(TypoDS.Title4)(({ theme }) => ({
+const StyledTitle4 = styled(Typo.Title4)(({ theme }) => ({
   position: 'absolute',
   color: theme.colors.greenValid,
   backgroundColor: theme.colors.white,

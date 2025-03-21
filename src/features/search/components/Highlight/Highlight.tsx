@@ -3,7 +3,7 @@ import React from 'react'
 
 import { Highlighted, HistoryItem } from 'features/search/types'
 import { AlgoliaSuggestionHit, AlgoliaVenue } from 'libs/algolia/types'
-import { TypoDS } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 // Inspired by https://www.algolia.com/doc/guides/building-search-ui/going-further/native/react-hooks/?client=Highlight.js#highlight-matches
 
@@ -14,17 +14,17 @@ type HighlightPartProps = {
 
 export function HighlightPart({ children, isHighlighted }: HighlightPartProps) {
   return isHighlighted ? (
-    <TypoDS.Body testID="highlightedText">{children}</TypoDS.Body>
+    <Typo.Body testID="highlightedText">{children}</Typo.Body>
   ) : (
-    <TypoDS.BodyAccent testID="nonHighlightedText">{children}</TypoDS.BodyAccent>
+    <Typo.BodyAccent testID="nonHighlightedText">{children}</Typo.BodyAccent>
   )
 }
 
 export function HighlightHistoryItemPart({ children, isHighlighted }: HighlightPartProps) {
   return isHighlighted ? (
-    <TypoDS.BodyItalic testID="highlightedHistoryItemText">{children}</TypoDS.BodyItalic>
+    <Typo.BodyItalic testID="highlightedHistoryItemText">{children}</Typo.BodyItalic>
   ) : (
-    <TypoDS.BodyItalic testID="nonHighlightedHistoryItemText">{children}</TypoDS.BodyItalic>
+    <Typo.BodyItalic testID="nonHighlightedHistoryItemText">{children}</Typo.BodyItalic>
   )
 }
 

@@ -21,7 +21,7 @@ import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Page } from 'ui/pages/Page'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { AccessibleIcon, AccessibleRectangleIcon } from 'ui/svg/icons/types'
-import { getSpacing, Spacer, TypoDS } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type ButtonProps = {
@@ -269,11 +269,11 @@ const TextContainer = styled(ViewGap)({
   marginBottom: getSpacing(6),
 })
 
-const StyledTitle2 = styled(TypoDS.Title2)({
+const StyledTitle2 = styled(Typo.Title2)({
   textAlign: 'center',
 })
 
-const StyledBody = styled(TypoDS.Body)({
+const StyledBody = styled(Typo.Body)({
   textAlign: 'center',
 })
 

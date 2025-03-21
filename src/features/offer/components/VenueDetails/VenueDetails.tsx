@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 
 import { VenueDetail } from 'features/offer/types'
 import { Tag } from 'ui/components/Tag/Tag'
-import { getSpacing, Spacer, TypoDS } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHoverStyle } from 'ui/theme/getHoverStyle/getHoverStyle'
 
 export interface VenueDetailsProps extends VenueDetail, ViewProps {
@@ -55,14 +55,14 @@ const Wrapper = styled(View)<{ height: Size }>((props) => ({
   height: props.height === Size.Large ? getSpacing(23.5) : getSpacing(14.5),
 }))
 
-const Title = styled(TypoDS.BodyAccent).attrs({
+const Title = styled(Typo.BodyAccent).attrs({
   numberOfLines: 1,
   ellipsizeMode: 'tail',
 })<{ isHover?: boolean }>(({ theme, isHover }) => ({
   ...getHoverStyle(theme.colors.black, isHover),
 }))
 
-const VenueAddress = styled(TypoDS.BodyAccentXs).attrs({
+const VenueAddress = styled(Typo.BodyAccentXs).attrs({
   numberOfLines: 2,
   ellipsizeMode: 'tail',
 })<{ isHover?: boolean }>(({ theme, isHover }) => ({

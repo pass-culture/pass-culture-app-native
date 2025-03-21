@@ -6,7 +6,7 @@ import { v4 as uuidv4 } from 'uuid'
 import { InputError } from 'ui/components/inputs/InputError'
 import { TextInput } from 'ui/components/inputs/TextInput'
 import { TextInputProps } from 'ui/components/inputs/types'
-import { TypoDS, getSpacing } from 'ui/theme'
+import { Typo, getSpacing } from 'ui/theme'
 
 interface LargeTextInputProps extends Omit<TextInputProps, 'value' | 'onChangeText'> {
   label: string
@@ -84,6 +84,6 @@ const CountContainer = styled.View({
   width: getSpacing(18),
 })
 
-const CaptionNeutralInfo = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
+const CaptionNeutralInfo = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))

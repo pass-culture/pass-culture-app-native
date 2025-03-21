@@ -6,7 +6,7 @@ import { ChronicleCardList } from 'features/chronicle/components/ChronicleCardLi
 import { CHRONICLE_CARD_WIDTH } from 'features/chronicle/constant'
 import { ButtonSecondaryBlack } from 'ui/components/buttons/ButtonSecondaryBlack'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import { TypoDS } from 'ui/theme'
+import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 import { ChronicleSectionProps } from './types'
@@ -23,7 +23,7 @@ export const ChronicleSectionBase = ({
   return (
     <View style={style}>
       <Gutter>
-        <TypoDS.Title3 {...getHeadingAttrs(3)}>{title}</TypoDS.Title3>
+        <Typo.Title3 {...getHeadingAttrs(3)}>{title}</Typo.Title3>
         {subtitle ? <StyledSubtitle>{subtitle}</StyledSubtitle> : null}
       </Gutter>
       <StyledChronicleCardlist
@@ -58,6 +58,6 @@ const Gutter = styled.View(({ theme }) => ({
   paddingHorizontal: theme.contentPage.marginHorizontal,
 }))
 
-const StyledSubtitle = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
+const StyledSubtitle = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))

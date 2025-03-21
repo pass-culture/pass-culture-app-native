@@ -12,7 +12,7 @@ import { TutorialPage } from 'features/tutorial/pages/TutorialPage'
 import { storage } from 'libs/storage'
 import { AccessibleUnorderedList } from 'ui/components/accessibility/AccessibleUnorderedList'
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
-import { Spacer, TypoDS } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 import { getNoHeadingAttrs } from 'ui/theme/typographyAttrs/getNoHeadingAttrs'
 
 type AgeButtonProps = {
@@ -128,10 +128,10 @@ export const AgeSelectionFork: FunctionComponent<Props> = ({ route }: Props) => 
   )
 }
 
-const StyledTitle4 = styled(TypoDS.Title4).attrs(getNoHeadingAttrs)(({ theme }) => ({
+const StyledTitle4 = styled(Typo.Title4).attrs(getNoHeadingAttrs)(({ theme }) => ({
   color: theme.colors.secondary,
 }))
 
-const StyledBody = styled(TypoDS.Body)(({ theme }) => ({
+const StyledBody = styled(Typo.Body)(({ theme }) => ({
   color: theme.colors.secondary,
 }))

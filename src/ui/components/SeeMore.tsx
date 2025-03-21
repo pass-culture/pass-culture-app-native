@@ -5,7 +5,7 @@ import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouch
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { ArrowNext as DefaultArrowNext } from 'ui/svg/icons/ArrowNext'
-import { getSpacing, Spacer, getShadow, TypoDS } from 'ui/theme'
+import { getSpacing, Spacer, getShadow, Typo } from 'ui/theme'
 
 interface SeeMoreProps {
   height: number
@@ -105,6 +105,6 @@ const ArrowNext = styled(DefaultArrowNext).attrs(({ theme }) => ({
   size: theme.icons.sizes.standard,
 }))``
 
-const StyledBodyAccent = styled(TypoDS.BodyAccent)(({ theme }) => ({
+const StyledBodyAccent = styled(Typo.BodyAccent)(({ theme }) => ({
   color: theme.colors.primary,
 }))

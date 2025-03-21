@@ -4,7 +4,7 @@ import styled, { useTheme } from 'styled-components/native'
 import { AchievementEnum } from 'api/gen'
 import { useAchievementDetails } from 'features/achievements/hooks/useAchievementDetails'
 import { AppInformationModal } from 'ui/components/modals/AppInformationModal'
-import { getSpacing, TypoDS, Spacer } from 'ui/theme'
+import { getSpacing, Typo, Spacer } from 'ui/theme'
 
 interface Props {
   visible: boolean
@@ -40,13 +40,13 @@ export const AchievementDetailsModal = ({ visible, hideModal, name }: Props) => 
           {achievement.completed ? (
             <StyledBody>Fait le {achievement.completedAt}</StyledBody>
           ) : (
-            <TypoDS.Body>Non débloqué</TypoDS.Body>
+            <Typo.Body>Non débloqué</Typo.Body>
           )}
         </BodyWrapper>
         <Spacer.Column numberOfSpaces={4} />
         {achievement.completed ? (
           <React.Fragment>
-            <TypoDS.Title3>{achievement.title}</TypoDS.Title3>
+            <Typo.Title3>{achievement.title}</Typo.Title3>
             <Spacer.Column numberOfSpaces={4} />
           </React.Fragment>
         ) : null}
@@ -73,10 +73,10 @@ const BodyWrapper = styled.View<{ isCompleted: boolean }>(({ isCompleted, theme 
   borderRadius: getSpacing(1),
 }))
 
-const StyledBody = styled(TypoDS.Body)(({ theme }) => ({
+const StyledBody = styled(Typo.Body)(({ theme }) => ({
   color: theme.colors.white,
 }))
 
-const StyledDescrption = styled(TypoDS.Body)({
+const StyledDescrption = styled(Typo.Body)({
   textAlign: 'center',
 })

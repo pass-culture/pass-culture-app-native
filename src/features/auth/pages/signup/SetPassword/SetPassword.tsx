@@ -7,7 +7,7 @@ import { PreValidationSignupNormalStepProps } from 'features/auth/types'
 import { PasswordInputController } from 'shared/forms/controllers/PasswordInputController'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
-import { Spacer, TypoDS } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type FormValues = {
@@ -37,7 +37,7 @@ export const SetPassword: FunctionComponent<PreValidationSignupNormalStepProps> 
 
   return (
     <Form.MaxWidth>
-      <TypoDS.Title3 {...getHeadingAttrs(2)}>Choisis un mot de passe</TypoDS.Title3>
+      <Typo.Title3 {...getHeadingAttrs(2)}>Choisis un mot de passe</Typo.Title3>
       <Spacer.Column numberOfSpaces={10} />
       <PasswordInputController
         control={control}

@@ -5,7 +5,7 @@ import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
 import { MaintenanceCone } from 'ui/svg/icons/MaintenanceCone'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
-import { TypoDS } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 export const CheatcodesScreenGenericInfoPageWhite = () => {
   const { navigate } = useNavigation<UseNavigationType>()
@@ -34,7 +34,7 @@ export const CheatcodesScreenGenericInfoPageWhite = () => {
         navigateTo: { screen: 'CheatcodesNavigationGenericPages' },
         icon: PlainArrowPrevious,
       }}>
-      <TypoDS.Body>Children...</TypoDS.Body>
+      <Typo.Body>Children...</Typo.Body>
     </GenericInfoPageWhite>
   )
 }

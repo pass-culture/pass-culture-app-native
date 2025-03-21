@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 import { DeeplinkItem } from 'features/internal/atoms/DeeplinkItem'
 import { GeneratedDeeplink } from 'features/internal/components/DeeplinksGeneratorForm'
-import { getSpacing, TypoDS } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 
 interface Props {
   result?: GeneratedDeeplink
@@ -19,7 +19,7 @@ export const DeeplinksResult = ({ result }: Props) => {
             <DeeplinkItem deeplink={result} />
           ) : (
             <CenteredContainer>
-              <TypoDS.Body>Vous devez d’abord générer un lien</TypoDS.Body>
+              <Typo.Body>Vous devez d’abord générer un lien</Typo.Body>
             </CenteredContainer>
           )}
         </ResultContainer>
@@ -43,7 +43,7 @@ const ResultContainer = styled.View({
   alignItems: 'flex-start',
 })
 
-const StyledTitle4 = styled(TypoDS.Title4)({
+const StyledTitle4 = styled(Typo.Title4)({
   textAlign: 'center',
 })
 

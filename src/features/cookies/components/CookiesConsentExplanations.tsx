@@ -1,19 +1,19 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { TypoDS, getSpacing } from 'ui/theme'
+import { Typo, getSpacing } from 'ui/theme'
 
 export const CookiesConsentExplanations = () => (
   <StyledView>
-    <TypoDS.Body>
+    <Typo.Body>
       Les cookies sont des petits fichiers stockés sur ton appareil lorsque tu navigues. Nous
       utilisons les données collectées par ces cookies et traceurs pour t’offrir la meilleure
       expérience possible.
-    </TypoDS.Body>
-    <TypoDS.Body>
+    </Typo.Body>
+    <Typo.Body>
       Tu peux accéder aux réglages des cookies pour faire un choix éclairé et découvrir notre
       politique de gestion des cookies.
-    </TypoDS.Body>
+    </Typo.Body>
     <CaptionNeutralInfo>
       Ton choix est conservé pendant 6 mois et tu pourras le modifier dans les paramètres de
       confidentialité de ton profil à tout moment.
@@ -21,7 +21,7 @@ export const CookiesConsentExplanations = () => (
   </StyledView>
 )
 
-const CaptionNeutralInfo = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
+const CaptionNeutralInfo = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))
 

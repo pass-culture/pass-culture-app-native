@@ -31,7 +31,7 @@ import { Form } from 'ui/components/Form'
 import { InputError } from 'ui/components/inputs/InputError'
 import { TextInput } from 'ui/components/inputs/TextInput'
 import { useModal } from 'ui/components/modals/useModal'
-import { Spacer, TypoDS } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 
 const INITIAL_COUNTRY = METROPOLITAN_FRANCE
 
@@ -187,7 +187,7 @@ const RemainingAttemptsContainer = styled.View({
   flexDirection: 'row',
 })
 
-const StyledBody = styled(TypoDS.Body)(({ theme }) => ({
+const StyledBody = styled(Typo.Body)(({ theme }) => ({
   color: theme.colors.greyDark,
   textAlign: 'center',
 }))
@@ -203,12 +203,12 @@ const InputContainer = styled.View(({ theme }) => ({
   marginHorizontal: theme.isMobileViewport ? undefined : 'auto',
 }))
 
-const WarningRemainingAttempts = styled(TypoDS.BodyAccentXs)<{ isLastAttempt: boolean }>(
+const WarningRemainingAttempts = styled(Typo.BodyAccentXs)<{ isLastAttempt: boolean }>(
   ({ theme, isLastAttempt }) => ({
     color: isLastAttempt ? theme.colors.error : theme.colors.black,
   })
 )
 
-const CaptionNeutralInfo = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
+const CaptionNeutralInfo = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))

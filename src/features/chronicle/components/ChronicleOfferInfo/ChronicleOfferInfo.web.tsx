@@ -6,7 +6,7 @@ import { CategoryIdEnum } from 'api/gen'
 import { OfferBodyImagePlaceholder } from 'features/offer/components/OfferBodyImagePlaceholder'
 import { useOfferImageContainerDimensions } from 'features/offer/helpers/useOfferImageContainerDimensions'
 import { FastImage } from 'libs/resizing-image-on-demand/FastImage'
-import { TypoDS, getSpacing } from 'ui/theme'
+import { Typo, getSpacing } from 'ui/theme'
 
 type ChronicleOfferInfoProps = PropsWithChildren<{
   imageUrl: string
@@ -33,7 +33,7 @@ export const ChronicleOfferInfo = ({
         {imageUrl ? <OfferImage style={imageStyle} url={imageUrl} testID="offerImage" /> : null}
       </View>
       <TextWrapper>
-        <TypoDS.Title3 numberOfLines={1}>{title}</TypoDS.Title3>
+        <Typo.Title3 numberOfLines={1}>{title}</Typo.Title3>
         <StyledTitle3>{price}</StyledTitle3>
       </TextWrapper>
       {children}
@@ -46,7 +46,7 @@ const OfferImage = styled(FastImage)({
   zIndex: 2,
 })
 
-const StyledTitle3 = styled(TypoDS.Title3)(({ theme }) => ({
+const StyledTitle3 = styled(Typo.Title3)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))
 

@@ -50,7 +50,7 @@ import { LifeBuoy } from 'ui/svg/icons/LifeBuoy'
 import { LocationPointer } from 'ui/svg/icons/LocationPointer'
 import { SignOut } from 'ui/svg/icons/SignOut'
 import { LogoFrenchRepublic } from 'ui/svg/LogoFrenchRepublic'
-import { getSpacing, Spacer, TypoDS } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { SECTION_ROW_ICON_SIZE } from 'ui/theme/constants'
 
 const isWeb = Platform.OS === 'web'
@@ -364,15 +364,15 @@ const ShareAppContainer = styled(ViewGap)(({ theme }) => ({
   paddingRight: theme.isSmallScreen ? 0 : getSpacing(8),
 }))
 
-const StyledBody = styled(TypoDS.Body)(({ theme }) => ({
+const StyledBody = styled(Typo.Body)(({ theme }) => ({
   color: theme.colors.white,
 }))
 
-const StyledButtonText = styled(TypoDS.BodyAccent)(({ theme }) => ({
+const StyledButtonText = styled(Typo.BodyAccent)(({ theme }) => ({
   color: theme.colors.white,
 }))
 
-const Version = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
+const Version = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.colors.greyDark,
   marginVertical: getSpacing(4),
 }))

@@ -9,7 +9,7 @@ import { LabelContainer } from 'ui/components/inputs/LabelContainer'
 import { RequiredLabel } from 'ui/components/inputs/RequiredLabel'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { Invalidate as DefaultInvalidate } from 'ui/svg/icons/Invalidate'
-import { getSpacing, TypoDS } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 
 import { BaseTextInput as DefaultBaseTextInput } from './BaseTextInput'
 import { InputContainer } from './InputContainer'
@@ -56,7 +56,7 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
         <StyledView>
           <FlexInputLabel htmlFor={searchInputID}>
             <LabelContainer>
-              <TypoDS.Body>{label}</TypoDS.Body>
+              <Typo.Body>{label}</Typo.Body>
               {isRequiredField ? <RequiredLabel /> : null}
             </LabelContainer>
           </FlexInputLabel>

@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
 import { BicolorCircledCheck as InitialBicolorCircledCheck } from 'ui/svg/icons/BicolorCircledCheck'
-import { TypoDS, getSpacing } from 'ui/theme'
+import { Typo, getSpacing } from 'ui/theme'
 
 export const NoTicket: FunctionComponent = () => (
   <TicketContainer testID="withdrawal-info-no-ticket">
@@ -19,7 +19,7 @@ const TicketContainer = styled.View({
   flexDirection: 'column',
 })
 
-const StyledBody = styled(TypoDS.Body)({
+const StyledBody = styled(Typo.Body)({
   textAlign: 'center',
   maxWidth: '100%',
 })

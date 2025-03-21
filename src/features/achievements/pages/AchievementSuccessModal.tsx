@@ -13,7 +13,7 @@ import { Spacer } from 'ui/components/spacer/Spacer'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
-import { getSpacing, TypoDS } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 
 interface Props {
   visible: boolean
@@ -95,7 +95,7 @@ const StyledViewGap = styled(ViewGap)(({ theme }) => ({
   maxWidth: theme.contentPage.maxWidth,
 }))
 
-const StyledTitle = styled(TypoDS.Title3)({
+const StyledTitle = styled(Typo.Title3)({
   textAlign: 'center',
 })
 

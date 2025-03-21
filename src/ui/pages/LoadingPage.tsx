@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 import LottieView from 'libs/lottie'
 import LoadingAnimation from 'ui/animations/lottie_loading.json'
-import { TypoDS } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 const UnmemoizedLoadingPage: FunctionComponent = () => {
   return (
@@ -30,7 +30,7 @@ const StyledLottieView = styled(LottieView)({
   height: 150,
 })
 
-const LoadingText = styled(TypoDS.Body)(({ theme }) => ({
+const LoadingText = styled(Typo.Body)(({ theme }) => ({
   top: -16,
   textAlign: 'center',
   color: theme.uniqueColors.brand,

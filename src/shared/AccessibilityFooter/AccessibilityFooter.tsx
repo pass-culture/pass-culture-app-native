@@ -11,7 +11,7 @@ import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouch
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { LogoPassCulture } from 'ui/svg/icons/LogoPassCulture'
 import { LogoFrenchRepublic } from 'ui/svg/LogoFrenchRepublic'
-import { getSpacing, Spacer, TypoDS } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 const isWeb = Platform.OS === 'web'
 
@@ -86,6 +86,6 @@ const LogoContainer = styled.View({
   width: getSpacing(20),
 })
 
-const StyledBodyAccentXs = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
+const StyledBodyAccentXs = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))

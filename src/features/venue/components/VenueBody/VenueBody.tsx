@@ -18,7 +18,7 @@ import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay
 import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { TypoDS, getSpacing } from 'ui/theme'
+import { Typo, getSpacing } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 interface Props {
@@ -60,7 +60,7 @@ export const VenueBody: FunctionComponent<Props> = ({
       <React.Fragment>
         {headlineOfferData ? (
           <MarginContainer gap={2}>
-            <TypoDS.Title3 {...getHeadingAttrs(2)}>À la une</TypoDS.Title3>
+            <Typo.Title3 {...getHeadingAttrs(2)}>À la une</Typo.Title3>
             <HeadlineOffer
               navigateTo={{ screen: 'Offer', params: { id: headlineOfferData.id } }}
               {...headlineOfferData}

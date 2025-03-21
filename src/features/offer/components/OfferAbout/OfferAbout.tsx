@@ -8,7 +8,7 @@ import { OfferMetadataList } from 'features/offer/components/OfferMetadataList/O
 import { CollapsibleText } from 'ui/components/CollapsibleText/CollapsibleText'
 import { Markdown } from 'ui/components/Markdown/Markdown'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { TypoDS } from 'ui/theme'
+import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type Props = {
@@ -28,14 +28,14 @@ export const OfferAbout: FunctionComponent<Props> = ({
 }) => {
   return (
     <ViewGap gap={2}>
-      <TypoDS.Title3 {...getHeadingAttrs(2)}>À propos</TypoDS.Title3>
+      <Typo.Title3 {...getHeadingAttrs(2)}>À propos</Typo.Title3>
       <ViewGap gap={2}>
         {hasMetadata ? <OfferMetadataList metadata={metadata} /> : null}
 
         <ViewGap gap={8}>
           {offer.description ? (
             <View>
-              <TypoDS.BodyAccent>Description&nbsp;:</TypoDS.BodyAccent>
+              <Typo.BodyAccent>Description&nbsp;:</Typo.BodyAccent>
               <CollapsibleText numberOfLines={NUMBER_OF_LINES_OF_DESCRIPTION_SECTION}>
                 <Markdown>{offer.description}</Markdown>
               </CollapsibleText>

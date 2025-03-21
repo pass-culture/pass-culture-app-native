@@ -11,7 +11,7 @@ import { AccessibleIcon } from 'ui/svg/icons/types'
 import { Validate } from 'ui/svg/icons/Validate'
 import { ValidateOff } from 'ui/svg/icons/ValidateOff'
 import { getSpacing, Spacer } from 'ui/theme'
-import { TypoDS } from 'ui/theme/designSystemTypographie'
+import { Typo } from 'ui/theme/typography'
 
 interface RadioButtonProps {
   label: string
@@ -130,13 +130,13 @@ const StyledTouchableOpacity = styled(TouchableOpacity)(({ theme }) => ({
   justifyContent: theme.isMobileViewport ? 'space-between' : undefined,
 }))
 
-const Label = styled(TypoDS.BodyAccent)<{ isSelected: boolean }>(({ isSelected, theme }) => ({
+const Label = styled(Typo.BodyAccent)<{ isSelected: boolean }>(({ isSelected, theme }) => ({
   color: isSelected ? theme.colors.primary : theme.colors.black,
   flexGrow: 1,
   flexShrink: 1,
 }))
 
-const ComplementLabel = styled(TypoDS.BodyAccentXs)<{ isSelected: boolean }>(
+const ComplementLabel = styled(Typo.BodyAccentXs)<{ isSelected: boolean }>(
   ({ isSelected, theme }) => ({
     color: isSelected ? theme.colors.primary : theme.colors.greyDark,
     marginLeft: getSpacing(2),
@@ -144,7 +144,7 @@ const ComplementLabel = styled(TypoDS.BodyAccentXs)<{ isSelected: boolean }>(
   })
 )
 
-const Description = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
+const Description = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))
 

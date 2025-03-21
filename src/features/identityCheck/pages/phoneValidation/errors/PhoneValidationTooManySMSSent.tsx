@@ -11,7 +11,7 @@ import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouch
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
 import { UserBlocked } from 'ui/svg/icons/UserBlocked'
-import { Spacer, TypoDS } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 
 export function PhoneValidationTooManySMSSent() {
   const { counterResetDatetime } = usePhoneValidationRemainingAttempts()
@@ -49,7 +49,7 @@ export function PhoneValidationTooManySMSSent() {
   )
 }
 
-const StyledBody = styled(TypoDS.Body)(({ theme }) => ({
+const StyledBody = styled(Typo.Body)(({ theme }) => ({
   color: theme.colors.white,
   textAlign: 'center',
 }))

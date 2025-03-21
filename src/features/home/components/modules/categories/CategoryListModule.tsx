@@ -5,7 +5,7 @@ import { CategoryBlock as CategoryBlockData } from 'features/home/types'
 import { analytics } from 'libs/analytics/provider'
 import { ContentTypes } from 'libs/contentful/types'
 import { CategoryButton } from 'shared/categoryButton/CategoryButton'
-import { getSpacing, TypoDS } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 import { colorMapping } from 'ui/theme/colorMapping'
 
 type CategoryListProps = {
@@ -88,7 +88,7 @@ const StyledView = styled.View(({ theme }) => ({
       }),
 }))
 
-const StyledTitle = styled(TypoDS.Title3)(({ theme }) => ({
+const StyledTitle = styled(Typo.Title3)(({ theme }) => ({
   marginHorizontal: theme.contentPage.marginHorizontal,
 }))
 

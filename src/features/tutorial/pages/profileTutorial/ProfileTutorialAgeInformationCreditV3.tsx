@@ -21,7 +21,7 @@ import { BicolorClock } from 'ui/svg/icons/BicolorClock'
 import { BicolorLock } from 'ui/svg/icons/BicolorLock'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Offers } from 'ui/svg/icons/Offers'
-import { Spacer, TypoDS, getSpacing } from 'ui/theme'
+import { Spacer, Typo, getSpacing } from 'ui/theme'
 import { LINE_BREAK } from 'ui/theme/constants'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -36,14 +36,14 @@ export const ProfileTutorialAgeInformationCreditV3: FunctionComponent = () => {
       <StyledScrollView onScroll={onScroll} scrollEventThrottle={16}>
         <Placeholder height={headerHeight} />
         <Spacer.Column numberOfSpaces={7} />
-        <TypoDS.Title3 numberOfLines={3} {...getHeadingAttrs(1)}>
+        <Typo.Title3 numberOfLines={3} {...getHeadingAttrs(1)}>
           {headerTitle}
-        </TypoDS.Title3>
+        </Typo.Title3>
         <Spacer.Column numberOfSpaces={6} />
-        <TypoDS.BodyS numberOfLines={3} {...getHeadingAttrs(1)}>
+        <Typo.BodyS numberOfLines={3} {...getHeadingAttrs(1)}>
           De 17 à 18 ans, le pass Culture offre un crédit à dépenser dans l’application pour des
           activités culturelles.
-        </TypoDS.BodyS>
+        </Typo.BodyS>
         <Spacer.Column numberOfSpaces={6} />
         <CreditTimelineV3
           age={17}

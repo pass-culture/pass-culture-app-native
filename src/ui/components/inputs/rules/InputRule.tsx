@@ -3,7 +3,7 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { ColorsType, TextColorKey } from 'theme/types'
 import { AccessibleIcon } from 'ui/svg/icons/types'
-import { Spacer, TypoDS, getSpacing } from 'ui/theme'
+import { Spacer, Typo, getSpacing } from 'ui/theme'
 
 type InputRuleType = 'Valid' | 'Error' | 'Neutral'
 
@@ -70,7 +70,7 @@ const StyledView = styled.View<{ noFullWidth?: boolean }>(({ noFullWidth, theme 
   ...(noFullWidth ? {} : { width: '100%' }),
 }))
 
-const StyledCaption = styled(TypoDS.BodyAccentXs)<{
+const StyledCaption = styled(Typo.BodyAccentXs)<{
   noFullWidth?: boolean
 }>(({ noFullWidth }) => ({
   paddingLeft: getSpacing(1),

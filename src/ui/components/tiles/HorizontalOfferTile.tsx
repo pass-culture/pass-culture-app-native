@@ -27,7 +27,7 @@ import { OfferName } from 'ui/components/tiles/OfferName'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { RightFilled } from 'ui/svg/icons/RightFilled'
 import { getSpacing } from 'ui/theme'
-import { TypoDS } from 'ui/theme/designSystemTypographie'
+import { Typo } from 'ui/theme/typography'
 
 import { HorizontalTile, HorizontalTileProps } from './HorizontalTile'
 
@@ -164,7 +164,7 @@ export const HorizontalOfferTile = ({
                   {subtitle}
                 </Body>
               ))}
-            {price ? <TypoDS.BodyAccentS>{price}</TypoDS.BodyAccentS> : null}
+            {price ? <Typo.BodyAccentS>{price}</Typo.BodyAccentS> : null}
           </Column>
           {distanceToOffer ? (
             <DistanceTag testID="distance_tag" label={`à ${distanceToOffer}`} />
@@ -186,7 +186,7 @@ const Container = styled(InternalTouchableLink)({
   gap: getSpacing(4),
 })
 
-const Body = styled(TypoDS.Body)(({ theme }) => ({
+const Body = styled(Typo.Body)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))
 

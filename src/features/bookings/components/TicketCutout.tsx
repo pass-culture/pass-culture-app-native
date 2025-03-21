@@ -9,7 +9,7 @@ import { Stock } from 'ui/svg/icons/Stock'
 import { Stroke } from 'ui/svg/Stroke'
 import { TicketCutoutLeft } from 'ui/svg/TicketCutoutLeft'
 import { TicketCutoutRight } from 'ui/svg/TicketCutoutRight'
-import { getShadow, getSpacing, TypoDS } from 'ui/theme'
+import { getShadow, getSpacing, Typo } from 'ui/theme'
 
 type Props = {
   title: string
@@ -34,24 +34,24 @@ export const TicketCutout = ({
     <View testID="ticket-punched">
       <TopBlock>
         <ViewGap gap={6}>
-          <TypoDS.Title2>{title}</TypoDS.Title2>
+          <Typo.Title2>{title}</Typo.Title2>
           <ViewGap gap={2}>
             {day ? (
               <Row>
                 <StyledCalendarS />
-                <TypoDS.Body>{day}</TypoDS.Body>
+                <Typo.Body>{day}</Typo.Body>
               </Row>
             ) : null}
             {hour ? (
               <Row>
                 <StyledClockFilled />
-                <TypoDS.Body>{hour}</TypoDS.Body>
+                <Typo.Body>{hour}</Typo.Body>
               </Row>
             ) : null}
             {isDuo ? (
               <Row>
                 <StyledStock />
-                <TypoDS.Body>Pour deux personnes</TypoDS.Body>
+                <Typo.Body>Pour deux personnes</Typo.Body>
               </Row>
             ) : null}
           </ViewGap>

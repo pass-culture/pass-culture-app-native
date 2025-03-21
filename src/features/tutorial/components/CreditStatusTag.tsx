@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 import { CreditStatus } from 'features/tutorial/enums'
 import { getTagColor } from 'features/tutorial/helpers/getTagColor'
-import { getSpacing, TypoDS } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 
 interface Props {
   status: CreditStatus
@@ -19,7 +19,7 @@ export const CreditStatusTag: React.FC<Props> = ({ status }) => {
   )
 }
 
-const StyledText = styled(TypoDS.BodyAccentXs)<{ status: CreditStatus }>(({ theme, status }) => ({
+const StyledText = styled(Typo.BodyAccentXs)<{ status: CreditStatus }>(({ theme, status }) => ({
   color: status === CreditStatus.GONE ? theme.colors.greyDark : theme.colors.white,
 }))
 

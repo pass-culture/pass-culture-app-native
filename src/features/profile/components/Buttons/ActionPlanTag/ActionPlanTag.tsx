@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { TypoDS } from 'ui/theme'
+import { Typo } from 'ui/theme'
 import { SPACE } from 'ui/theme/constants'
 
 export enum ActionPlanStatus {
@@ -25,6 +25,6 @@ export const ActionPlanTag = ({
   )
 }
 
-const StyledButtonText = styled(TypoDS.BodyAccent)<{ done: boolean }>(({ theme, done }) => ({
+const StyledButtonText = styled(Typo.BodyAccent)<{ done: boolean }>(({ theme, done }) => ({
   color: done ? theme.colors.greenValid : theme.colors.black,
 }))

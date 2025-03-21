@@ -7,7 +7,7 @@ import { Offer } from 'shared/offer/types'
 import { theme } from 'theme'
 import { Separator } from 'ui/components/Separator'
 import { HorizontalOfferTile } from 'ui/components/tiles/HorizontalOfferTile'
-import { Spacer, TypoDS, getSpacing } from 'ui/theme'
+import { Spacer, Typo, getSpacing } from 'ui/theme'
 
 type Props = {
   artistName: string
@@ -43,7 +43,7 @@ export const ArtistTopOffers: FunctionComponent<Props> = ({ artistName, items })
       keyExtractor={keyExtractor}
       ListHeaderComponent={
         <React.Fragment>
-          <TypoDS.Title3>Ses oeuvres populaires</TypoDS.Title3>
+          <Typo.Title3>Ses oeuvres populaires</Typo.Title3>
           <Spacer.Column numberOfSpaces={4} />
         </React.Fragment>
       }

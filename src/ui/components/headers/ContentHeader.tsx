@@ -6,7 +6,7 @@ import styled, { useTheme } from 'styled-components/native'
 import { getAnimationState } from 'ui/animations/helpers/getAnimationState'
 import { BlurView } from 'ui/components/BlurView'
 import { RoundedButton } from 'ui/components/buttons/RoundedButton'
-import { TypoDS, getSpacing } from 'ui/theme'
+import { Typo, getSpacing } from 'ui/theme'
 
 type AnimatedBlurHeaderFullProps = {
   headerTitle?: string
@@ -115,7 +115,7 @@ const Title = styled(Animated.Text).attrs({
   ...(Platform.OS === 'web' ? { whiteSpace: 'pre-wrap' } : {}),
 })
 
-const Body = styled(TypoDS.Body)(({ theme }) => ({
+const Body = styled(Typo.Body)(({ theme }) => ({
   color: theme.colors.black,
 }))
 

@@ -23,7 +23,7 @@ import { Offer } from 'shared/offer/types'
 import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
 import { OfferImage } from 'ui/components/tiles/OfferImage'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import { Spacer, TypoDS, getSpacing } from 'ui/theme'
+import { Spacer, Typo, getSpacing } from 'ui/theme'
 
 type Props = {
   offer: Offer
@@ -114,7 +114,7 @@ export const VideoMultiOfferTile: FunctionComponent<Props> = ({
               withStroke
             />
             <Spacer.Column numberOfSpaces={2} />
-            <TypoDS.BodyAccentXs numberOfLines={1}>{offer.offer.name}</TypoDS.BodyAccentXs>
+            <Typo.BodyAccentXs numberOfLines={1}>{offer.offer.name}</Typo.BodyAccentXs>
             <AdditionalInfoText>{labelMapping[offer.offer.subcategoryId]}</AdditionalInfoText>
             {displayPrice ? <AdditionalInfoText>{displayPrice}</AdditionalInfoText> : null}
           </React.Fragment>
@@ -133,6 +133,6 @@ const StyledTouchableLink = styled(InternalTouchableLink)(({ theme }) => ({
   width: theme.tiles.sizes['large'].width,
 }))
 
-const AdditionalInfoText = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
+const AdditionalInfoText = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))

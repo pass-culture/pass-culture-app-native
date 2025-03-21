@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { AccessibilityFrame } from 'ui/components/accessibility/AccessibilityFrame'
-import { Spacer, TypoDS } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 
 import {
   getAccessibilityCategoryAndIcon,
@@ -35,4 +35,4 @@ const Container = styled.View({
   alignItems: 'center',
 })
 
-const StyledCaption = styled(TypoDS.BodyAccentXs)({ textAlign: 'center', paddingHorizontal: 1 })
+const StyledCaption = styled(Typo.BodyAccentXs)({ textAlign: 'center', paddingHorizontal: 1 })

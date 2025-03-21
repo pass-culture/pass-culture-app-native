@@ -37,7 +37,7 @@ import { isNullOrUndefined } from 'shared/isNullOrUndefined/isNullOrUndefined'
 import { Separator } from 'ui/components/Separator'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { InformationTags } from 'ui/InformationTags/InformationTags'
-import { getSpacing, TypoDS } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type Props = {
@@ -153,7 +153,7 @@ export const OfferBody: FunctionComponent<Props> = ({
           </ViewGap>
         </GroupWithoutGap>
 
-        {prices ? <TypoDS.Title3 {...getHeadingAttrs(2)}>{displayedPrice}</TypoDS.Title3> : null}
+        {prices ? <Typo.Title3 {...getHeadingAttrs(2)}>{displayedPrice}</Typo.Title3> : null}
 
         <OfferReactionSection
           likesCount={likesCount}

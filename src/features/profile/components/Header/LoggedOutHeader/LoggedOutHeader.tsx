@@ -10,7 +10,7 @@ import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { ButtonWithLinearGradient } from 'ui/components/buttons/buttonWithLinearGradient/ButtonWithLinearGradient'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import { getSpacing, Spacer, TypoDS } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 const onBeforeNavigate = () => {
   analytics.logProfilSignUp()
@@ -30,7 +30,7 @@ export const LoggedOutHeader: FunctionComponent = () => {
     <HeaderWithGreyContainer
       title="Mon profil"
       subtitle={isPassForAllEnabled ? undefined : subtitle}>
-      <TypoDS.Body>{bodyText}</TypoDS.Body>
+      <Typo.Body>{bodyText}</Typo.Body>
       <Spacer.Column numberOfSpaces={5} />
       <Container>
         <InternalTouchableLink

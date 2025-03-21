@@ -2,7 +2,7 @@ import React from 'react'
 
 import { render, screen } from 'tests/utils'
 import { Markdown } from 'ui/components/Markdown/Markdown'
-import { TypoDS } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 const TEXT =
   'Lorem **ipsum dolor** sit amet, consectetur _adipiscing_ elit. Maecenas nec tellus in magna convallis egestas eget **_id justo_**. Donec lorem ante, tempor eu diam quis, laoreet rhoncus tortor.'
@@ -24,7 +24,7 @@ describe('Markdown', () => {
   it('should not render text when children is not a string', () => {
     render(
       <Markdown>
-        <TypoDS.Body>Lorem</TypoDS.Body>
+        <Typo.Body>Lorem</Typo.Body>
       </Markdown>
     )
 

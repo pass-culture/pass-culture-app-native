@@ -11,7 +11,7 @@ import { Separator } from 'ui/components/Separator'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { LocationPointer } from 'ui/svg/icons/LocationPointer'
 import { LocationPointerNotFilled } from 'ui/svg/icons/LocationPointerNotFilled'
-import { getSpacing, TypoDS } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 
 export const LocationSearchWidget = () => {
   const { place, selectedLocationMode } = useLocation()
@@ -59,7 +59,7 @@ const SmallLocationPointerNotFilled = styled(LocationPointerNotFilled).attrs(({ 
   size: theme.icons.sizes.extraSmall,
 }))``
 
-const LocationTitle = styled(TypoDS.BodyAccentXs).attrs({
+const LocationTitle = styled(Typo.BodyAccentXs).attrs({
   numberOfLines: 1,
 })({
   marginLeft: getSpacing(1),

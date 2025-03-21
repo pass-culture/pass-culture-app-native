@@ -12,7 +12,7 @@ import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouch
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { AgainIllustration } from 'ui/svg/icons/AgainIllustration'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
-import { TypoDS } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 const isWeb = Platform.OS === 'web'
 
@@ -41,7 +41,7 @@ export const ForceUpdateInfos = () => (
   </React.Fragment>
 )
 
-const StyledBody = styled(TypoDS.Body)(({ theme }) => ({
+const StyledBody = styled(Typo.Body)(({ theme }) => ({
   textAlign: 'center',
   color: theme.colors.white,
 }))

@@ -9,7 +9,7 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ExternalLink } from 'ui/components/buttons/externalLink/ExternalLink'
 import { Spacer } from 'ui/components/spacer/Spacer'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import { getSpacing, TypoDS } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 
 export function AlreadyBooked({ offer }: { offer: OfferResponseV2 }) {
   const { bookingState, dismissModal, dispatch } = useBookingContext()
@@ -51,10 +51,10 @@ const Container = styled.View({
   alignItems: 'center',
 })
 
-const Bold = styled(TypoDS.Body)(({ theme }) => ({
+const Bold = styled(Typo.Body)(({ theme }) => ({
   fontFamily: theme.fontFamily.bold,
 }))
 
-const StyledBody = styled(TypoDS.Body)({
+const StyledBody = styled(Typo.Body)({
   textAlign: 'center',
 })

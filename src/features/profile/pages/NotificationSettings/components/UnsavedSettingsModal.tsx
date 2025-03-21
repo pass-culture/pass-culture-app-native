@@ -8,7 +8,7 @@ import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { Close } from 'ui/svg/icons/Close'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
-import { getSpacing, TypoDS } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 
 interface Props {
   visible: boolean
@@ -56,7 +56,7 @@ export const UnsavedSettingsModal: FunctionComponent<Props> = ({
   )
 }
 
-const InformationText = styled(TypoDS.Body)({
+const InformationText = styled(Typo.Body)({
   textAlign: 'center',
 })
 

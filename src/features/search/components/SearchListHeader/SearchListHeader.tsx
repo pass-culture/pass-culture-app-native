@@ -20,7 +20,7 @@ import { GeolocationBanner } from 'shared/Banners/GeolocationBanner'
 import { Offer } from 'shared/offer/types'
 import { InfoBanner } from 'ui/components/banners/InfoBanner'
 import { Error } from 'ui/svg/icons/Error'
-import { Spacer, TypoDS, getSpacing } from 'ui/theme'
+import { Spacer, Typo, getSpacing } from 'ui/theme'
 
 interface SearchListHeaderProps extends ScrollViewProps {
   nbHits: number
@@ -127,6 +127,6 @@ const BannerOfferNotPresentContainer = styled.View<{ nbHits: number }>(({ nbHits
   ...(nbHits > 0 && { paddingBottom: getSpacing(4) }),
 }))
 
-const Title = styled(TypoDS.Title3)({
+const Title = styled(Typo.Title3)({
   marginHorizontal: getSpacing(6),
 })

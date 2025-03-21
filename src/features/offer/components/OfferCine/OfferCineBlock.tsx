@@ -11,7 +11,7 @@ import { getDates } from 'shared/date/getDates'
 import { AppThemeType } from 'theme'
 import { Anchor } from 'ui/components/anchor/Anchor'
 import { useScrollToAnchor } from 'ui/components/anchor/AnchorContext'
-import { Spacer, TypoDS, getSpacing } from 'ui/theme'
+import { Spacer, Typo, getSpacing } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type Props = {
@@ -47,7 +47,7 @@ export const OfferCineBlock: FC<Props> = ({ title, onSeeVenuePress, offer, dista
             showButton(!inView)
           }}>
           <TitleContainer>
-            <TypoDS.Title3 {...getHeadingAttrs(2)}>{title}</TypoDS.Title3>
+            <Typo.Title3 {...getHeadingAttrs(2)}>{title}</Typo.Title3>
           </TitleContainer>
         </InView>
       </Anchor>

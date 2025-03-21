@@ -16,7 +16,7 @@ import { ImageBackground } from 'libs/resizing-image-on-demand/ImageBackground'
 import { SNACK_BAR_TIME_OUT_LONG, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { ArrowRight } from 'ui/svg/icons/ArrowRight'
-import { getSpacing, Spacer, TypoDS } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 
 const FIXED_SIZE = getSpacing(81.75)
@@ -238,25 +238,25 @@ const Row = styled.View({
   marginBottom: getSpacing(6),
 })
 
-const StyledTitle1 = styled(TypoDS.Title1)(({ theme }) => ({
+const StyledTitle1 = styled(Typo.Title1)(({ theme }) => ({
   color: theme.colors.white,
 }))
 
-const StyledTitle3 = styled(TypoDS.Title3)(({ theme }) => ({
+const StyledTitle3 = styled(Typo.Title3)(({ theme }) => ({
   color: theme.colors.white,
 }))
-const StyledCaption = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
-  color: theme.colors.white,
-}))
-
-const StyledBody = styled(TypoDS.Body)(({ theme }) => ({
-  color: theme.colors.white,
-}))
-const StyledTitle4 = styled(TypoDS.Title4)(({ theme }) => ({
+const StyledCaption = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.colors.white,
 }))
 
-const StyledButtonText = styled(TypoDS.BodyAccent)(({ theme }) => ({
+const StyledBody = styled(Typo.Body)(({ theme }) => ({
+  color: theme.colors.white,
+}))
+const StyledTitle4 = styled(Typo.Title4)(({ theme }) => ({
+  color: theme.colors.white,
+}))
+
+const StyledButtonText = styled(Typo.BodyAccent)(({ theme }) => ({
   color: theme.colors.white,
 }))
 

@@ -16,7 +16,7 @@ import { AlertBanner } from 'ui/components/banners/AlertBanner'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { Close } from 'ui/svg/icons/Close'
-import { Spacer, TypoDS } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 
 interface Props {
   email: string
@@ -127,11 +127,11 @@ const ModalContent = styled.View({
   alignItems: 'center',
 })
 
-const StyledBody = styled(TypoDS.Body)({
+const StyledBody = styled(Typo.Body)({
   textAlign: 'center',
 })
 
-const StyledCaption = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
+const StyledCaption = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.colors.error,
   textAlign: 'center',
 }))

@@ -15,7 +15,7 @@ import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouch
 import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
 import { BicolorPhonePending } from 'ui/svg/icons/BicolorPhonePending'
 import { InfoPlain } from 'ui/svg/icons/InfoPlain'
-import { TypoDS } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 const FAQTouchableLinkProps = {
   as: ButtonTertiaryBlack,
@@ -86,6 +86,6 @@ export const CulturalSurveyIntro = (): React.JSX.Element => {
   )
 }
 
-const StyledBody = styled(TypoDS.Body)({
+const StyledBody = styled(Typo.Body)({
   textAlign: 'center',
 })

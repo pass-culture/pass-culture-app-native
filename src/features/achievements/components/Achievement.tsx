@@ -6,7 +6,7 @@ import { AchievementDetailsModal } from 'features/achievements/pages/Achievement
 import { useModal } from 'ui/components/modals/useModal'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { AccessibleIcon } from 'ui/svg/icons/types'
-import { Spacer, TypoDS, getSpacing } from 'ui/theme'
+import { Spacer, Typo, getSpacing } from 'ui/theme'
 
 type AchievementProps = {
   name: AchievementEnum
@@ -53,7 +53,7 @@ const AchievementContainer = styled.View<{ isCompleted: boolean }>(({ theme, isC
   justifyContent: 'center',
 }))
 
-const TypoAchievementName = styled(TypoDS.Button)<{ isCompleted: boolean }>(
+const TypoAchievementName = styled(Typo.Button)<{ isCompleted: boolean }>(
   ({ theme, isCompleted }) => ({
     color: isCompleted ? theme.colors.black : theme.colors.greySemiDark,
     textAlign: 'center',

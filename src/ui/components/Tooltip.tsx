@@ -9,7 +9,7 @@ import { styledButton } from 'ui/components/buttons/styledButton'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { useEscapeKeyAction } from 'ui/hooks/useEscapeKeyAction'
 import { Clear } from 'ui/svg/icons/Clear'
-import { TypoDS, getSpacing } from 'ui/theme'
+import { Typo, getSpacing } from 'ui/theme'
 
 const FADE_IN_DURATION = 300
 
@@ -104,7 +104,7 @@ const Background = styled.View(({ theme }) => ({
   backgroundColor: theme.uniqueColors.backgroundSurface,
 }))
 
-const StyledText = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
+const StyledText = styled(Typo.BodyAccentXs)(({ theme }) => ({
   flexShrink: 1,
   color: theme.colors.white,
 }))

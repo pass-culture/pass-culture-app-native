@@ -6,7 +6,7 @@ import { OfferVenueResponse } from 'api/gen'
 import { analytics } from 'libs/analytics/provider'
 import { HeroButtonList } from 'ui/components/buttons/HeroButtonList'
 import { LocationBuildingFilled } from 'ui/svg/icons/LocationBuildingFilled'
-import { TypoDS } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 interface Props {
   venue: OfferVenueResponse
@@ -18,7 +18,7 @@ export function OfferVenueButton({ venue }: Readonly<Props>) {
 
   return (
     <HeroButtonList
-      Title={<TypoDS.BodyAccent>{venueName}</TypoDS.BodyAccent>}
+      Title={<Typo.BodyAccent>{venueName}</Typo.BodyAccent>}
       Subtitle={
         venue.city ? <SubtitleText testID="subtitle">{venue.city}</SubtitleText> : undefined
       }
@@ -30,6 +30,6 @@ export function OfferVenueButton({ venue }: Readonly<Props>) {
   )
 }
 
-const SubtitleText = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
+const SubtitleText = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))

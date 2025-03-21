@@ -5,7 +5,7 @@ import { analytics } from 'libs/analytics/provider'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppInformationModal } from 'ui/components/modals/AppInformationModal'
 import { BicolorRingingBell } from 'ui/svg/BicolorRingingBell'
-import { Spacer, TypoDS } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 
 type Props = {
   onDismiss: () => void
@@ -46,7 +46,7 @@ export const PushNotificationsModal: React.FC<Props> = ({
   </AppInformationModal>
 )
 
-const InformationText = styled(TypoDS.Body)({
+const InformationText = styled(Typo.Body)({
   textAlign: 'center',
 })
 

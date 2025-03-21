@@ -23,7 +23,7 @@ import { AppModal } from 'ui/components/modals/AppModal'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Close } from 'ui/svg/icons/Close'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
-import { getSpacing, Spacer, TypoDS } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 interface Props {
   visible: boolean
@@ -113,11 +113,11 @@ const ModalContent = styled.View({
   width: '100%',
 })
 
-const OfferName = styled(TypoDS.BodyAccent)({
+const OfferName = styled(Typo.BodyAccent)({
   textAlign: 'center',
 })
 
-const Refund = styled(TypoDS.Body)({
+const Refund = styled(Typo.Body)({
   textAlign: 'center',
 })
 

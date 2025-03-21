@@ -12,7 +12,7 @@ import { CookiesChoiceSettings } from 'features/cookies/types'
 import FilterSwitch from 'ui/components/FilterSwitch'
 import { InputLabel } from 'ui/components/InputLabel/InputLabel'
 import { styledInputLabel } from 'ui/components/InputLabel/styledInputLabel'
-import { Spacer, TypoDS } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 const checkboxID = uuidv4()
@@ -54,9 +54,9 @@ export const CookiesSettings = ({
 
   return (
     <React.Fragment>
-      <TypoDS.Title4 {...getHeadingAttrs(2)}>
+      <Typo.Title4 {...getHeadingAttrs(2)}>
         À quoi servent tes cookies et tes données&nbsp;?
-      </TypoDS.Title4>
+      </Typo.Title4>
       <Spacer.Column numberOfSpaces={6} />
       <ChoiceContainer>
         <CaptionNeutralInfo>Je choisis mes cookies</CaptionNeutralInfo>
@@ -93,7 +93,7 @@ const ChoiceContainer = styled.View({
   justifyContent: 'space-between',
 })
 
-const CaptionNeutralInfo = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
+const CaptionNeutralInfo = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.colors.greyDark,
   flexShrink: 1,
 }))

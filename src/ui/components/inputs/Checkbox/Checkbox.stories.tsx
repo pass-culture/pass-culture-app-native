@@ -3,7 +3,7 @@ import { ComponentMeta } from '@storybook/react'
 import React from 'react'
 
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
-import { TypoDS } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 import { Checkbox } from './Checkbox'
 
@@ -39,7 +39,7 @@ const variantConfig: Variants<typeof Checkbox> = [
       label: 'I have to agree',
       isChecked: true,
       style: { flexDirection: 'row-reverse', justifyContent: 'space-between' },
-      LabelComponent: TypoDS.Title1,
+      LabelComponent: Typo.Title1,
     },
   },
 ]

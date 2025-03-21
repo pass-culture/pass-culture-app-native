@@ -15,7 +15,7 @@ import { BicolorIdCard } from 'ui/svg/icons/BicolorIdCard'
 import { BicolorProfile } from 'ui/svg/icons/BicolorProfile'
 import { AccessibleBicolorIcon } from 'ui/svg/icons/types'
 import { LogoDMS } from 'ui/svg/LogoDMS'
-import { getSpacing, Spacer, TypoDS } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 export const DMSIntroduction = (): React.JSX.Element => {
   const { params } = useRoute<UseRouteType<'DMSIntroduction'>>()
@@ -66,14 +66,14 @@ export const DMSIntroduction = (): React.JSX.Element => {
           </Li>
         ))}
       </VerticalUl>
-      <TypoDS.BodyAccentXs>
+      <Typo.BodyAccentXs>
         Le traitement de ton dossier peut prendre jusqu’à 5 jours.
-      </TypoDS.BodyAccentXs>
+      </Typo.BodyAccentXs>
     </GenericInfoPageWhite>
   )
 }
 
-const StyledBody = styled(TypoDS.Body)({
+const StyledBody = styled(Typo.Body)({
   marginBottom: getSpacing(5),
 })
 

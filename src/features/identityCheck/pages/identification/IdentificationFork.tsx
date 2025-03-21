@@ -16,7 +16,7 @@ import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouch
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Marianne } from 'ui/svg/icons/Marianne'
 import { Ubble } from 'ui/svg/icons/Ubble'
-import { getSpacing, Spacer, TypoDS } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 export const IdentificationFork: FunctionComponent = () => {
   return (
@@ -33,7 +33,7 @@ const IdentificationForkEduconnectContent: FunctionComponent = () => {
     <Container>
       <JustifiedLeftTitle title="S’identifier en 2 min avec&nbsp;:" />
       <IdentificationForkButton
-        Title={<TypoDS.BodyAccent>Mes codes ÉduConnect</TypoDS.BodyAccent>}
+        Title={<Typo.BodyAccent>Mes codes ÉduConnect</Typo.BodyAccent>}
         Subtitle={<StyledCaption>Fournis par ton établissement scolaire</StyledCaption>}
         icon={Marianne}
         navigateTo={{ screen: 'EduConnectForm' }}
@@ -54,7 +54,7 @@ const IdentificationForkEduconnectContent: FunctionComponent = () => {
         <SeparatorWithText label="ou" />
       </StyledSeparatorWithText>
       <IdentificationForkButton
-        Title={<TypoDS.BodyAccent>Ma pièce d’identité</TypoDS.BodyAccent>}
+        Title={<Typo.BodyAccent>Ma pièce d’identité</Typo.BodyAccent>}
         Subtitle={<StyledCaption>Carte d’identité ou passeport</StyledCaption>}
         icon={Ubble}
         navigateTo={{ screen: 'SelectIDOrigin' }}
@@ -96,6 +96,6 @@ const StyledExternalTouchableLinkContainer = styled.View({
   marginTop: getSpacing(3),
 })
 
-const StyledCaption = styled(TypoDS.BodyAccentXs)({
+const StyledCaption = styled(Typo.BodyAccentXs)({
   color: theme.colors.greyDark,
 })

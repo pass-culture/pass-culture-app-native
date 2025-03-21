@@ -13,7 +13,7 @@ import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/S
 import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
 import { BicolorUserError } from 'ui/svg/BicolorUserError'
 import { Clear } from 'ui/svg/icons/Clear'
-import { TypoDS } from 'ui/theme'
+import { Typo } from 'ui/theme'
 import { DOUBLE_LINE_BREAK } from 'ui/theme/constants'
 
 type SuspendAccountConfirmationProps = NativeStackScreenProps<
@@ -103,10 +103,10 @@ const StyledBicolorUserError = styled(BicolorUserError).attrs(({ theme }) => ({
   color2: theme.colors.secondary,
 }))``
 
-const StyledBody = styled(TypoDS.Body)({
+const StyledBody = styled(Typo.Body)({
   textAlign: 'center',
 })
 
-const BoldText = styled(TypoDS.Body)(({ theme }) => ({
+const BoldText = styled(Typo.Body)(({ theme }) => ({
   fontFamily: theme.fontFamily.bold,
 }))

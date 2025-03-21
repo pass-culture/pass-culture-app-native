@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 import { analytics } from 'libs/analytics/provider'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
-import { getSpacing, Spacer, TypoDS } from 'ui/theme'
+import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 import { SocialNetwork, SocialNetworkIconsMap } from './socials/types'
 
@@ -35,7 +35,7 @@ function SocialNetworkCardComponent(props: SocialNetworkCardProps) {
           <StyledIcon />
         </NetworkIconBox>
         <Spacer.Column numberOfSpaces={1} />
-        <TypoDS.BodyAccentXs numberOfLines={2}>{name}</TypoDS.BodyAccentXs>
+        <Typo.BodyAccentXs numberOfLines={2}>{name}</Typo.BodyAccentXs>
       </Container>
     </ExternalTouchableLink>
   )

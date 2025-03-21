@@ -10,7 +10,7 @@ import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { AppInformationModal } from 'ui/components/modals/AppInformationModal'
 import { BicolorBirthdayCake } from 'ui/svg/icons/BicolorBirthdayCake'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
-import { Spacer, TypoDS } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 
 type Props = {
   visible: boolean
@@ -65,7 +65,7 @@ export const NotEligibleModal = ({ visible, userStatus, hideModal, type }: Props
   return null
 }
 
-const StyledBody = styled(TypoDS.Body)({
+const StyledBody = styled(Typo.Body)({
   textAlign: 'center',
 })
 

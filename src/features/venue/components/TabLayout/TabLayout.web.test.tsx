@@ -7,11 +7,11 @@ import { Tab } from 'features/venue/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole.web'
 import { fireEvent, render, screen } from 'tests/utils/web'
 import { theme } from 'theme'
-import { TypoDS } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 const tabPanels = {
-  [Tab.OFFERS]: <TypoDS.Body>Offres disponibles content</TypoDS.Body>,
-  [Tab.INFOS]: <TypoDS.Body>Infos pratiques content</TypoDS.Body>,
+  [Tab.OFFERS]: <Typo.Body>Offres disponibles content</Typo.Body>,
+  [Tab.INFOS]: <Typo.Body>Infos pratiques content</Typo.Body>,
 }
 
 describe('TabLayout', () => {

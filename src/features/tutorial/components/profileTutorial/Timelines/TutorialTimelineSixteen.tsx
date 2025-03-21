@@ -11,7 +11,7 @@ import {
 import { UnderageBlockDescription } from 'features/tutorial/components/profileTutorial/UnderageBlockDescription'
 import { TutorialTypes } from 'features/tutorial/enums'
 import { useDepositAmountsByAge } from 'shared/user/useDepositAmountsByAge'
-import { Spacer, TypoDS } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 
 interface Props {
   activatedAt?: number | null
@@ -38,7 +38,7 @@ export const TutorialTimelineSixteen = ({ activatedAt }: Props) => {
   )
 }
 
-const StyledCaption = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
+const StyledCaption = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))
 

@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { Close } from 'ui/svg/icons/Close'
-import { Spacer, TypoDS } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 
 type Props = {
   isVisible: boolean
@@ -29,6 +29,6 @@ export const DeleteProfileReasonNewEmailModal: React.FC<Props> = ({ isVisible, h
   )
 }
 
-const StyledBody = styled(TypoDS.Body)({
+const StyledBody = styled(Typo.Body)({
   textAlign: 'center',
 })

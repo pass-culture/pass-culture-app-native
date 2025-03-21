@@ -39,7 +39,7 @@ const Component = () => {
 
   return (
     <View>
-      <TypoDS.Title1>{bears} bears</TypoDS.Title1>
+      <Typo.Title1>{bears} bears</Typo.Title1>
       <Button onClick={addBear}>+</Button>
       <Button onClick={removeBear}>-</Button>
       <Button onClick={() => setBears(0)}>Reset</Button>

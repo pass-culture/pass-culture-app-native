@@ -2,7 +2,7 @@ import React from 'react'
 import { PixelRatio } from 'react-native'
 import styled from 'styled-components/native'
 
-import { GUTTER_DP, TypoDS } from 'ui/theme'
+import { GUTTER_DP, Typo } from 'ui/theme'
 
 interface VenueDetailsProps {
   width: number
@@ -28,7 +28,7 @@ const Container = styled.View<{ maxWidth: number }>(({ maxWidth }) => ({
   position: 'relative',
 }))
 
-const VenueName = styled(TypoDS.BodyAccent).attrs({
+const VenueName = styled(Typo.BodyAccent).attrs({
   numberOfLines: 2,
 })({})
 
@@ -36,6 +36,6 @@ const Row = styled.View({
   flexDirection: 'row',
 })
 
-const TypeLabel = styled(TypoDS.BodyAccentXs).attrs({
+const TypeLabel = styled(Typo.BodyAccentXs).attrs({
   numberOfLines: 1,
 })(({ theme }) => ({ flexShrink: 1, color: theme.colors.greyDark }))

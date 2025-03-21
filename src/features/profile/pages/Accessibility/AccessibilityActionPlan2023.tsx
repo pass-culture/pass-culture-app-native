@@ -6,12 +6,12 @@ import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonI
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { VerticalUl } from 'ui/components/Ul'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
-import { Spacer, TypoDS } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const AccessibilityActionPlan2023 = () => (
   <React.Fragment>
-    <TypoDS.Title4 {...getHeadingAttrs(2)}>Plan annuel 2023</TypoDS.Title4>
+    <Typo.Title4 {...getHeadingAttrs(2)}>Plan annuel 2023</Typo.Title4>
     <Spacer.Column numberOfSpaces={6} />
     <VerticalUl>
       <BulletListItem text="Formation des équipes produit aux enjeux de l’accessibilité">
@@ -49,7 +49,7 @@ export const AccessibilityActionPlan2023 = () => (
       </BulletListItem>
 
       <BulletListItem>
-        <TypoDS.Body>
+        <Typo.Body>
           Maquettage d’un nouveau site{' '}
           <ExternalTouchableLink
             as={ButtonInsideText}
@@ -60,7 +60,7 @@ export const AccessibilityActionPlan2023 = () => (
           />{' '}
           100% accessible
           <ActionPlanTag />
-        </TypoDS.Body>
+        </Typo.Body>
       </BulletListItem>
 
       <BulletListItem text="Mise en place d’un partenariat avec Acceslibre pour compléter les informations d’accessibilité des partenaires culturels">

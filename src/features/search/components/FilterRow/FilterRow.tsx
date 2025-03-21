@@ -5,7 +5,7 @@ import { styledButton } from 'ui/components/buttons/styledButton'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { ArrowNext as DefaultArrowNext } from 'ui/svg/icons/ArrowNext'
 import { AccessibleIcon } from 'ui/svg/icons/types'
-import { TypoDS, getSpacing } from 'ui/theme'
+import { Typo, getSpacing } from 'ui/theme'
 
 interface Props {
   icon?: React.FunctionComponent<AccessibleIcon>
@@ -70,11 +70,11 @@ const TitleAndComplement = styled.View({
   flexDirection: 'row',
 })
 
-const Title = styled(TypoDS.BodyAccent)({
+const Title = styled(Typo.BodyAccent)({
   flexShrink: 1,
 })
 
-const Description = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
+const Description = styled(Typo.BodyAccentXs)(({ theme }) => ({
   flexShrink: 1,
   color: theme.colors.greyDark,
 }))
@@ -95,6 +95,6 @@ const ComplementContainer = styled.View({
   marginLeft: getSpacing(1),
 })
 
-const ComplementLabel = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
+const ComplementLabel = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))

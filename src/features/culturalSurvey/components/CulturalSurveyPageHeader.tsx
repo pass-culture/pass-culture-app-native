@@ -6,7 +6,7 @@ import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { ArrowPrevious as DefaultArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
-import { getSpacing, TypoDS } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 interface Props {
@@ -41,7 +41,7 @@ const BarAndTitle = styled.View({
   flex: 1,
 })
 
-const Title = styled(TypoDS.Title4).attrs(() => ({ ...getHeadingAttrs(1), numberOfLines: 1 }))({
+const Title = styled(Typo.Title4).attrs(() => ({ ...getHeadingAttrs(1), numberOfLines: 1 }))({
   flex: 1,
   marginRight: getSpacing(6),
   textAlign: 'right',

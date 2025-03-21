@@ -8,7 +8,7 @@ import {
   InternalNavigationProps,
   InternalTouchableLinkProps,
 } from 'ui/components/touchableLink/types'
-import { getSpacing, TypoDS } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
@@ -81,7 +81,7 @@ const LabelContainer = styled.View({
   alignItems: 'flex-start',
 })
 
-const Label = styled(TypoDS.BodyAccentS).attrs({ numberOfLines: 3 })(({ theme }) => ({
+const Label = styled(Typo.BodyAccentS).attrs({ numberOfLines: 3 })(({ theme }) => ({
   textAlign: 'left',
   color: theme.colors.black,
 }))

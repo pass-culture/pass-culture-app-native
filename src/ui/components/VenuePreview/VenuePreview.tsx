@@ -6,7 +6,7 @@ import styled from 'styled-components/native'
 import { Image } from 'libs/resizing-image-on-demand/Image'
 import { All } from 'ui/svg/icons/bicolor/All'
 import { RightFilled } from 'ui/svg/icons/RightFilled'
-import { Spacer, TypoDS } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 
 type Props = PropsWithChildren<{
   venueName: string
@@ -70,7 +70,7 @@ const VenueTitleContainer = styled.View({
   alignItems: 'center',
 })
 
-const VenueName = styled(TypoDS.BodyAccent).attrs({ numberOfLines: 1 })({
+const VenueName = styled(Typo.BodyAccent).attrs({ numberOfLines: 1 })({
   flexShrink: 1,
 })
 
@@ -80,7 +80,7 @@ const RightIcon = styled(RightFilled).attrs(({ theme }) => ({
   flexShrink: 0,
 })
 
-const Address = styled(TypoDS.BodyAccentXs).attrs({ numberOfLines: 2 })(({ theme }) => ({
+const Address = styled(Typo.BodyAccentXs).attrs({ numberOfLines: 2 })(({ theme }) => ({
   color: theme.colors.greyDark,
 }))
 

@@ -1,7 +1,7 @@
 import React, { ReactNode } from 'react'
 import styled from 'styled-components/native'
 
-import { Spacer, TypoDS } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 
 interface BookingExpirationProps {
   children: ReactNode
@@ -22,7 +22,7 @@ export const BookingExpiration = ({ children, expirationDate }: BookingExpiratio
   )
 }
 
-const StyledCaption = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
+const StyledCaption = styled(Typo.BodyAccentXs)(({ theme }) => ({
   textAlign: 'center',
   color: theme.colors.greyDark,
 }))

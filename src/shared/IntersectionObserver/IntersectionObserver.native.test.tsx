@@ -2,7 +2,7 @@ import React from 'react'
 
 import { IntersectionObserver } from 'shared/IntersectionObserver/IntersectionObserver'
 import { fireEvent, render, screen } from 'tests/utils'
-import { TypoDS } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 const onChangeMock = jest.fn()
 
@@ -10,7 +10,7 @@ describe('<IntersectionObserver />', () => {
   it('should call onChange with correct value when intersection changed', () => {
     render(
       <IntersectionObserver onChange={onChangeMock}>
-        <TypoDS.BodyAccentXs>Hello world</TypoDS.BodyAccentXs>
+        <Typo.BodyAccentXs>Hello world</Typo.BodyAccentXs>
       </IntersectionObserver>
     )
 
@@ -23,7 +23,7 @@ describe('<IntersectionObserver />', () => {
   it('should use a threshold at 0 by default to execute intersection changed', () => {
     render(
       <IntersectionObserver onChange={onChangeMock}>
-        <TypoDS.BodyAccentXs>Hello world</TypoDS.BodyAccentXs>
+        <Typo.BodyAccentXs>Hello world</Typo.BodyAccentXs>
       </IntersectionObserver>
     )
 
@@ -37,7 +37,7 @@ describe('<IntersectionObserver />', () => {
   it('should use a number custom threshold to execute intersection changed', () => {
     render(
       <IntersectionObserver onChange={onChangeMock} threshold={100}>
-        <TypoDS.BodyAccentXs>Hello world</TypoDS.BodyAccentXs>
+        <Typo.BodyAccentXs>Hello world</Typo.BodyAccentXs>
       </IntersectionObserver>
     )
 
@@ -51,7 +51,7 @@ describe('<IntersectionObserver />', () => {
   it('should use a percent custom threshold to execute intersection changed', () => {
     render(
       <IntersectionObserver onChange={onChangeMock} threshold="60%">
-        <TypoDS.BodyAccentXs>Hello world</TypoDS.BodyAccentXs>
+        <Typo.BodyAccentXs>Hello world</Typo.BodyAccentXs>
       </IntersectionObserver>
     )
 
@@ -65,7 +65,7 @@ describe('<IntersectionObserver />', () => {
   it('should render children correctly', () => {
     render(
       <IntersectionObserver onChange={onChangeMock} threshold="60%">
-        <TypoDS.BodyAccentXs>Hello world</TypoDS.BodyAccentXs>
+        <Typo.BodyAccentXs>Hello world</Typo.BodyAccentXs>
       </IntersectionObserver>
     )
 

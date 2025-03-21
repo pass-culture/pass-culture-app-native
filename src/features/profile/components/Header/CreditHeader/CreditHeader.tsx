@@ -18,7 +18,7 @@ import { useDepositAmountsByAge } from 'shared/user/useDepositAmountsByAge'
 import { GenericBanner } from 'ui/components/ModuleBanner/GenericBanner'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { BicolorOffers } from 'ui/svg/icons/BicolorOffers'
-import { Spacer, TypoDS } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 
 export type CreditHeaderProps = {
   firstName?: string | null
@@ -99,7 +99,7 @@ export function CreditHeader({
             params: { homeId: homeEntryIdFreeOffers, from: 'profile' },
           }}>
           <GenericBanner LeftIcon={<BicolorOffers />}>
-            <TypoDS.BodyAccent>L’aventure continue&nbsp;!</TypoDS.BodyAccent>
+            <Typo.BodyAccent>L’aventure continue&nbsp;!</Typo.BodyAccent>
             <Spacer.Column numberOfSpaces={1} />
             <StyledBody numberOfLines={3}>
               Tu peux profiter d’offres gratuites autour de toi.
@@ -117,14 +117,14 @@ export function CreditHeader({
           {incomingCreditLabelsMap[age] && !isCreditEmpty ? (
             <React.Fragment>
               <Spacer.Column numberOfSpaces={6} />
-              <TypoDS.Body>
+              <Typo.Body>
                 {
                   /* @ts-expect-error: because of noUncheckedIndexedAccess */
                   incomingCreditLabelsMap[age].label
                 }
                 {/* @ts-expect-error: because of noUncheckedIndexedAccess */}
                 <HighlightedBody>{incomingCreditLabelsMap[age].highlightedLabel}</HighlightedBody>
-              </TypoDS.Body>
+              </Typo.Body>
             </React.Fragment>
           ) : null}
           {isCreditEmpty ? <EmptyCredit age={age} /> : null}
@@ -136,10 +136,10 @@ export function CreditHeader({
   )
 }
 
-const HighlightedBody = styled(TypoDS.Body)(({ theme }) => ({
+const HighlightedBody = styled(Typo.Body)(({ theme }) => ({
   color: theme.colors.secondary,
 }))
 
-const StyledBody = styled(TypoDS.Body)(({ theme }) => ({
+const StyledBody = styled(Typo.Body)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))

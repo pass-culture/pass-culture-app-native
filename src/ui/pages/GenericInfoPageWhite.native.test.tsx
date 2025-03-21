@@ -3,7 +3,7 @@ import React from 'react'
 import { render, screen } from 'tests/utils'
 import { MaintenanceCone } from 'ui/svg/icons/MaintenanceCone'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
-import { TypoDS } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 import { GenericInfoPageWhite } from './GenericInfoPageWhite'
 
@@ -33,7 +33,7 @@ describe('<GenericInfoPageWhite />', () => {
           navigateTo: { screen: 'CheatcodesNavigationGenericPages' },
           icon: PlainArrowPrevious,
         }}>
-        <TypoDS.Body>Children...</TypoDS.Body>
+        <Typo.Body>Children...</Typo.Body>
       </GenericInfoPageWhite>
     )
 

@@ -9,7 +9,7 @@ import { styledButton } from 'ui/components/buttons/styledButton'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { VerticalUl } from 'ui/components/Ul'
 import { Close as DefaultClose } from 'ui/svg/icons/Close'
-import { TypoDS, getSpacing } from 'ui/theme'
+import { Typo, getSpacing } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type Props = {
@@ -55,11 +55,9 @@ const StyledVerticalUl = styled(VerticalUl)({
   marginTop: getSpacing(4),
 })
 
-const SearchHistoryTitleText = styled(TypoDS.BodyAccentXs).attrs(getHeadingAttrs(2))(
-  ({ theme }) => ({
-    color: theme.colors.greyDark,
-  })
-)
+const SearchHistoryTitleText = styled(Typo.BodyAccentXs).attrs(getHeadingAttrs(2))(({ theme }) => ({
+  color: theme.colors.greyDark,
+}))
 
 const Container = styled.View<{ isEmptyQuery: boolean }>(({ isEmptyQuery }) => ({
   flexDirection: 'row',

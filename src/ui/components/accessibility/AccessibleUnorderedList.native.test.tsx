@@ -2,14 +2,14 @@ import React from 'react'
 
 import { render, screen } from 'tests/utils'
 import { AccessibleUnorderedList } from 'ui/components/accessibility/AccessibleUnorderedList'
-import { Spacer, TypoDS } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 
 describe('accessibilityList', () => {
   it.each`
-    itemList                                                                              | numberOfSeparator
-    ${[]}                                                                                 | ${0}
-    ${[<TypoDS.Body key={1}>Item</TypoDS.Body>]}                                          | ${0}
-    ${[<TypoDS.Body key={1}>Item</TypoDS.Body>, <TypoDS.Body key={2}>Item</TypoDS.Body>]} | ${1}
+    itemList                                                                      | numberOfSeparator
+    ${[]}                                                                         | ${0}
+    ${[<Typo.Body key={1}>Item</Typo.Body>]}                                      | ${0}
+    ${[<Typo.Body key={1}>Item</Typo.Body>, <Typo.Body key={2}>Item</Typo.Body>]} | ${1}
   `(
     'should render $itemList.length items and $numberOfSeparator separators',
     ({ itemList, numberOfSeparator }) => {

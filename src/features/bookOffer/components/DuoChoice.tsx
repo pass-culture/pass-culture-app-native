@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 import { ChoiceBloc, getTextColor } from 'features/bookOffer/components/ChoiceBloc'
 import { AccessibleIcon } from 'ui/svg/icons/types'
-import { getSpacing, TypoDS } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 
 interface Props {
   title: string
@@ -65,11 +65,11 @@ interface TypoProps {
   disabled: boolean
 }
 
-const ButtonText = styled(TypoDS.BodyAccent)<TypoProps>(({ selected, disabled, theme }) => ({
+const ButtonText = styled(Typo.BodyAccent)<TypoProps>(({ selected, disabled, theme }) => ({
   color: getTextColor(theme, selected, disabled),
 }))
 
-const Caption = styled(TypoDS.BodyAccentXs)<TypoProps>(({ selected, disabled, theme }) => ({
+const Caption = styled(Typo.BodyAccentXs)<TypoProps>(({ selected, disabled, theme }) => ({
   color: getTextColor(theme, selected, disabled),
   textAlign: 'center',
 }))

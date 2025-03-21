@@ -8,7 +8,7 @@ import { analytics } from 'libs/analytics/provider'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppInformationModal } from 'ui/components/modals/AppInformationModal'
 import { BicolorRingingBell } from 'ui/svg/BicolorRingingBell'
-import { Spacer, TypoDS } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 import { DOUBLE_LINE_BREAK } from 'ui/theme/constants'
 
 interface Props {
@@ -65,7 +65,7 @@ export const AskNotificiationsModal: FunctionComponent<Props> = ({ visible, onHi
   )
 }
 
-const StyledBody = styled(TypoDS.Body)({
+const StyledBody = styled(Typo.Body)({
   textAlign: 'center',
 })
 

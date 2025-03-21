@@ -5,7 +5,7 @@ import styledNative, { DefaultTheme } from 'styled-components/native'
 import { accessibilityAndTestId } from 'libs/accessibilityAndTestId'
 import { buttonWidthStyle } from 'ui/components/buttons/buttonWithLinearGradient/styleUtils'
 import { ButtonWithLinearGradientProps } from 'ui/components/buttons/buttonWithLinearGradient/types'
-import { getSpacing, TypoDS } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 import { getHoverStyle } from 'ui/theme/getHoverStyle/getHoverStyle'
 
@@ -94,7 +94,7 @@ const Link = styled.a<{ fitContentWidth: boolean }>(({ theme, fitContentWidth })
   boxSizing: 'border-box',
 }))
 
-const Title = styledNative(TypoDS.Button)<{ isDisabled: boolean }>(({ isDisabled, theme }) => ({
+const Title = styledNative(Typo.Button)<{ isDisabled: boolean }>(({ isDisabled, theme }) => ({
   color: isDisabled
     ? theme.buttons.disabled.linearGradient.textColor
     : theme.buttons.linearGradient.textColor,

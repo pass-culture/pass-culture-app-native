@@ -10,7 +10,7 @@ import { EmailFilled } from 'ui/svg/icons/EmailFilled'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
 import { SadFace } from 'ui/svg/icons/SadFace'
-import { Spacer, TypoDS } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 
 type Props = {
   renderCustomButton?: () => React.ReactNode
@@ -74,7 +74,7 @@ export function LayoutExpiredLink({
   )
 }
 
-const StyledBody = styled(TypoDS.Body)(({ theme }) => ({
+const StyledBody = styled(Typo.Body)(({ theme }) => ({
   color: theme.colors.white,
   textAlign: 'center',
 }))

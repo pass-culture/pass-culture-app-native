@@ -9,7 +9,7 @@ import { ChronicleSectionBase } from 'features/offer/components/OfferContent/Chr
 import { ButtonSecondaryBlack } from 'ui/components/buttons/ButtonSecondaryBlack'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { Show } from 'ui/svg/icons/Show'
-import { getSpacing, TypoDS } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 import { ChronicleSectionProps } from './types'
@@ -61,12 +61,12 @@ const Gutter = styled.View(({ theme }) => ({
 
 const Row = styled.View({ flexDirection: 'row', alignItems: 'center' })
 
-const StyledTitle3 = styled(TypoDS.Title3)(({ theme }) => ({
+const StyledTitle3 = styled(Typo.Title3)(({ theme }) => ({
   borderRightWidth: StyleSheet.hairlineWidth,
   borderRightColor: theme.colors.black,
   paddingRight: getSpacing(2),
 }))
 
-const StyledSubtitle = styled(TypoDS.BodyAccentXs)(({ theme }) => ({
+const StyledSubtitle = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))

@@ -3,7 +3,7 @@ import React from 'react'
 import { useBookingOffer } from 'features/bookOffer/helpers/useBookingOffer'
 import { useBookingStock } from 'features/bookOffer/helpers/useBookingStock'
 import { formatDateTimezone } from 'libs/parsers/formatDates'
-import { Spacer, TypoDS } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 const NOT_CANCELLABLE_MESSAGE =
@@ -31,9 +31,9 @@ export const CancellationDetails: React.FC = () => {
 
   return (
     <React.Fragment>
-      <TypoDS.Title4 {...getHeadingAttrs(2)}>Conditions d’annulation</TypoDS.Title4>
+      <Typo.Title4 {...getHeadingAttrs(2)}>Conditions d’annulation</Typo.Title4>
       <Spacer.Column numberOfSpaces={2} />
-      <TypoDS.BodyAccentXs>{message}</TypoDS.BodyAccentXs>
+      <Typo.BodyAccentXs>{message}</Typo.BodyAccentXs>
     </React.Fragment>
   )
 }
