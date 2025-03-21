@@ -139,6 +139,7 @@ export const screenParamsParser: ParamsParsers = {
     id: (value) => (value ? Number(value) : 0),
     from: identityFn,
     searchId: identityFn,
+    fromThematicSearch: identityFn,
   },
   VenuePreviewCarousel: {
     id: Number,

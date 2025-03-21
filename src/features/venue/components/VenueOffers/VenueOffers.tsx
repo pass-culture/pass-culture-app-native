@@ -1,7 +1,6 @@
 import React from 'react'
 
 import { SubcategoryIdEnum, VenueResponse } from 'api/gen'
-import { useGTLPlaylists } from 'features/gtlPlaylist/hooks/useGTLPlaylists'
 import { GtlPlaylistData } from 'features/gtlPlaylist/types'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { useSearch } from 'features/search/context/SearchWrapper'
@@ -22,11 +21,12 @@ export interface VenueOffersProps {
   venue: VenueResponse
   venueArtists?: VenueOffersArtists
   venueOffers?: VenueOffers
-  playlists?: GtlPlaylistData[]
+  playlists: GtlPlaylistData[]
   mapping: CategoryIdMapping
   labelMapping: CategoryHomeLabelMapping
   currency: Currency
   euroToPacificFrancRate: number
+  arePlaylistsLoading: boolean
 }
 
 const LoadingState: React.FC = () => (
@@ -45,6 +45,7 @@ export function VenueOffers({
   labelMapping,
   currency,
   euroToPacificFrancRate,
+  arePlaylistsLoading,
 }: Readonly<VenueOffersProps>) {
   const { userLocation, selectedLocationMode } = useLocation()
   const transformHits = useTransformOfferHits()
@@ -60,10 +61,7 @@ export function VenueOffers({
     transformHits,
     venue,
   })
-  const { isLoading: arePlaylistsLoading } = useGTLPlaylists({
-    venue,
-    queryKey: 'VENUE_GTL_PLAYLISTS',
-  })
+
   const isOfferAMovieScreening = venueOffers?.hits.some(
     (offer) => offer.offer.subcategoryId === SubcategoryIdEnum.SEANCE_CINE
   )
@@ -90,6 +88,7 @@ export function VenueOffers({
       labelMapping={labelMapping}
       currency={currency}
       euroToPacificFrancRate={euroToPacificFrancRate}
+      arePlaylistsLoading={arePlaylistsLoading}
     />
   )
 }

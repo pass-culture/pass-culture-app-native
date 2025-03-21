@@ -14,9 +14,11 @@ import { getVenueTypesFromSearchGroup } from 'features/search/helpers/getVenueTy
 import { venuesFilterActions } from 'features/venueMap/store/venuesFilterStore'
 import { AlgoliaVenue } from 'libs/algolia/types'
 import { analytics } from 'libs/analytics/provider'
+import { ContentfulLabelCategories } from 'libs/contentful/types'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
+import { useSearchGroupLabelMapping } from 'libs/subcategories/mappings'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { useModal } from 'ui/components/modals/useModal'
 import { Playlist } from 'ui/components/Playlist'
@@ -35,6 +37,7 @@ type Props = {
   shouldDisplaySeparator?: boolean
   currentView?: keyof SearchStackParamList
   offerCategory?: SearchGroupNameEnumv2
+  searchGroup?: SearchGroupNameEnumv2
 }
 
 const renderVenueItem = (
@@ -47,8 +50,17 @@ const renderVenueItem = (
     height: number
     width: number
   },
-  searchId?: string
-) => <SearchVenueItem venue={item} height={height} width={width} searchId={searchId} />
+  searchId?: string,
+  searchGroupLabel?: ContentfulLabelCategories
+) => (
+  <SearchVenueItem
+    venue={item}
+    height={height}
+    width={width}
+    searchId={searchId}
+    searchGroupLabel={searchGroupLabel}
+  />
+)
 
 const isWeb = Platform.OS === 'web'
 
@@ -59,6 +71,7 @@ export const VenuePlaylist: React.FC<Props> = ({
   currentView = 'SearchResults',
   offerCategory,
   shouldDisplaySeparator = true,
+  searchGroup,
 }) => {
   const { navigate } = useNavigation<UseNavigationType>()
   const {
@@ -86,6 +99,11 @@ export const VenuePlaylist: React.FC<Props> = ({
     visible: venueMapLocationModalVisible,
     hideModal: hideVenueMapLocationModal,
   } = useModal()
+
+  const searchGroupLabelMapping = useSearchGroupLabelMapping()
+  const searchGroupLabel = searchGroup
+    ? (searchGroupLabelMapping[searchGroup] as ContentfulLabelCategories)
+    : undefined
 
   const isMapWithoutPositionAndNotLocated = !isLocated && !isWeb
 
@@ -125,7 +143,7 @@ export const VenuePlaylist: React.FC<Props> = ({
           itemHeight={VENUE_ITEM_HEIGHT}
           itemWidth={VENUE_ITEM_WIDTH}
           renderItem={({ item, height, width }) =>
-            renderVenueItem({ item, height, width }, searchId)
+            renderVenueItem({ item, height, width }, searchId, searchGroupLabel)
           }
           renderHeader={undefined}
           renderFooter={undefined}

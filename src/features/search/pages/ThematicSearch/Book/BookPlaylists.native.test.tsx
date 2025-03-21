@@ -73,8 +73,8 @@ describe('BookPlaylists', () => {
     await screen.findByText(DEFAULT_PLAYLIST_TITLE)
 
     expect(useGTLPlaylistsSpy).toHaveBeenCalledWith({
-      queryKey: 'SEARCH_N1_BOOKS_GTL_PLAYLISTS',
       searchIndex: env.ALGOLIA_OFFERS_INDEX_NAME,
+      searchGroupLabel: 'Livres',
     })
   })
 
@@ -85,8 +85,8 @@ describe('BookPlaylists', () => {
     await screen.findByText(DEFAULT_PLAYLIST_TITLE)
 
     expect(useGTLPlaylistsSpy).toHaveBeenCalledWith({
-      queryKey: 'SEARCH_N1_BOOKS_GTL_PLAYLISTS',
       searchIndex: env.ALGOLIA_OFFERS_INDEX_NAME_B,
+      searchGroupLabel: 'Livres',
     })
   })
 })

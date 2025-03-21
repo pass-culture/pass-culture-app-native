@@ -10,6 +10,7 @@ import { venuesFilterActions } from 'features/venueMap/store/venuesFilterStore'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { render, screen, userEvent } from 'tests/utils'
 import * as useModalAPI from 'ui/components/modals/useModal'
 
@@ -22,6 +23,13 @@ jest.mock('features/search/context/SearchWrapper', () => ({
 }))
 
 const mockSetVenuesFilters = jest.spyOn(venuesFilterActions, 'setVenuesFilters')
+
+const mockData = PLACEHOLDER_DATA
+jest.mock('libs/subcategories/useSubcategories', () => ({
+  useSubcategories: () => ({
+    data: mockData,
+  }),
+}))
 
 const user = userEvent.setup()
 
