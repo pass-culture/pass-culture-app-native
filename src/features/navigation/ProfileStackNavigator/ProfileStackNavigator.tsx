@@ -186,7 +186,7 @@ export const ProfileStackNavigator = () => (
     <ProfileStack.Screen
       name="FeedbackInApp"
       component={withAuthProtection(FeedbackInApp)}
-      options={{ title: 'Forumulaire de suggestion' }}
+      options={{ title: 'Formulaire de suggestion' }}
     />
   </ProfileStack.Navigator>
 )
