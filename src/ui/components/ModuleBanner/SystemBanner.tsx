@@ -7,9 +7,9 @@ import { analytics } from 'libs/analytics/provider'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { theme } from 'theme'
 import { styledButton } from 'ui/components/buttons/styledButton'
+import { Touchable } from 'ui/components/touchable/Touchable'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
-import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { ArrowNext } from 'ui/svg/icons/ArrowNext'
 import { AccessibleIcon } from 'ui/svg/icons/types'
@@ -32,7 +32,6 @@ type Props = TouchableProps & {
   leftIcon: React.FunctionComponent<AccessibleIcon>
   title: string
   subtitle: string
-  onPress: VoidFunction
   accessibilityLabel: string
   accessibilityRole?: AccessibilityRole
   analyticsParams: {
@@ -99,19 +98,20 @@ export const SystemBanner: FunctionComponent<Props> = ({
   )
 }
 
-const StyledInternalTouchableLink = styled(InternalTouchableLink)<{ color: ColorsEnum }>(
-  ({ theme, color }) => ({
-    borderRadius: theme.borderRadius.radius,
-    ...customFocusOutline({ color }),
-    ...getHoverStyle(color),
-  })
-)
+const StyledInternalTouchableLink = styled(InternalTouchableLink).attrs<{
+  color: ColorsEnum
+}>(({ color }) => ({
+  hoverUnderlineColor: color,
+}))<{ isFocus: boolean }>(({ theme, isFocus }) => ({
+  borderRadius: theme.borderRadius.radius,
+  ...customFocusOutline({ isFocus, color: theme.colors.black }),
+}))
 
-const StyledTouchableOpacity = styledButton(TouchableOpacity)<{
+const StyledTouchableOpacity = styledButton(Touchable)<{
   color: ColorsEnum
 }>(({ theme, color }) => ({
   borderRadius: theme.borderRadius.radius,
-  ...customFocusOutline({ color }),
+  ...customFocusOutline({ color: theme.colors.black }),
   ...getHoverStyle(color),
 }))
 
