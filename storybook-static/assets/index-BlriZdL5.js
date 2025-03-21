@@ -1,0 +1,1 @@
+import{r as n,t as o}from"./index-C_7c-WgH.js";function s(a){if(a===null||a===!0||a===!1)return NaN;var t=Number(a);return isNaN(t)?t:t<0?Math.ceil(t):Math.floor(t)}function i(a,t){n(2,arguments);var e=o(a).getTime(),r=s(t);return new Date(e+r)}export{i as a,s as t};

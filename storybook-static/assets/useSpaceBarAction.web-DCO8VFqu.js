@@ -1,0 +1,1 @@
+import{r as s}from"./index-CsVCrh6D.js";import{u as t}from"./useFocusEffect-0itXeAll.js";const i=e=>{t(s.useCallback(()=>{const o=r=>{if(r.key==="Spacebar"||r.key===" ")return r.preventDefault(),e==null?void 0:e()};return globalThis.addEventListener("keydown",o),()=>{globalThis.removeEventListener("keydown",o)}},[e]))};export{i as u};

@@ -1,0 +1,25 @@
+-----BEGIN PGP SIGNED MESSAGE-----
+Hash: SHA256
+
+Contact: mailto:ssi@passculture.app
+Expires: 2025-11-14T09:00:00.000Z
+Encryption: https://vdp.passculture.app/p/Send-a-report
+Preferred-Languages: en, fr
+Canonical: https://passculture.app/.well-known/security.txt
+Policy: https://vdp.passculture.app/p/Policy
+-----BEGIN PGP SIGNATURE-----
+
+iQIzBAEBCAAdFiEE3NlwlNAt36UqtH//fz0jUzYhVdcFAmVTWtYACgkQfz0jUzYh
+VdfLig/7BuNhY5zqpELYN0UyHpMQHP92wzqtLDu/X10r0KkLj6yXK4do2OJrydzs
+mwPUrzJyansDZyUXi+HlImzC8QcS13XZvIbJs2F1goSsANTAq7lCNXHVMgNm5ji5
+GlJBFZ07gvyfNRH/XFE+kv1dAsmjrtdjIi0OrjPTMkETg9Qkmc5xRubAkXI73bpb
+lM/L/hM7/cclgUwvM0hCAcPSrUFNzOEIFFBoSQ7xBJojT6liHQBa91ylJf8rEsJc
+sDRJAMBYNjtioqJvqs/gREXJD84AjrIYZuvt5dvIia+D+wGXZR0SWjDWP8KdAciG
+SwmEHa4CPQgimgEnG73ytVQ2HaeaThX6146ZKGNHwmlputZ35RkL/stkR4rDl/kW
+G3nB4Z+9qf6+ZzAzP2j2JvSBsHf0LU8NHCmOjv2gHXCxF7zFBWWppinCmaH5X7Rg
+GSW5OZjFD7Snwh+fxLMhDYrbBNmkYk7pxXscW5qHfHA8vTg1hQk9zU9kEpkpyMhT
+eJP//Htpz5FW8zjuDeUfu6/pRRIU3jfwF1ZSXbaageQ12/oE0WjPQITFOrFxXuK6
+eo8S4RDmUtHiUzuRHsL6xmcg1l6mS+m/PrixDFCrVZdf5PFbKxJqjtiH4KASsRtg
+p07A13pS4LVxZIooeBc6Celrz4TsE/41NcQq8u6hI5eIl+mYY+o=
+=OiXg
+-----END PGP SIGNATURE-----

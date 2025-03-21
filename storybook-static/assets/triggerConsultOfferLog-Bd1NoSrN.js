@@ -1,0 +1,1 @@
+import{a as o}from"./provider-BCwzBnSK.js";import{a as t}from"./packageJson-BxUjkxge.js";function i(r){if(!r.offerId){t.captureException(new Error("Trigger ConsultOffer log without offer id"),{extra:r});return}o.logConsultOffer(r)}export{i as t};

@@ -1,0 +1,1 @@
+import{r}from"./index-CsVCrh6D.js";import{u as t}from"./useFocusEffect-0itXeAll.js";import"./index-C1IskGAg.js";import"./grid-C-3QDytX.js";const E=e=>{t(r.useCallback(()=>{const s=o=>{if(o.key==="Escape"||o.key==="Esc")return e==null?void 0:e()};return globalThis.addEventListener("keydown",s),()=>{globalThis.removeEventListener("keydown",s)}},[e]))};export{E as u};

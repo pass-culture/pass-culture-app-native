@@ -1,0 +1,1 @@
+import"./QueryClientProvider-DeV8N_iD.js";import{Q as e,a as r}from"./queryClient-Dp2d_9EU.js";const t=new e,a=new r({queryCache:t,defaultOptions:{queries:{retry:0,useErrorBoundary:!0}}});export{a as q};

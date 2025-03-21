@@ -1,4 +1,4 @@
-import { ComponentMeta, ComponentStory } from '@storybook/react'
+import { Meta, StoryObj } from '@storybook/react'
 import React from 'react'
 import { StyleSheet, View } from 'react-native'
 import styled from 'styled-components/native'
@@ -14,7 +14,7 @@ import { Step } from '../Step/Step'
 
 import { StepList } from './StepList'
 
-const meta: ComponentMeta<typeof StepList> = {
+const meta: Meta<typeof StepList> = {
   title: 'features/profile/StepList',
   component: StepList,
   args: {
@@ -67,7 +67,7 @@ const StyleStepCard = styled(StepCard)({
   marginVertical: 12,
 })
 
-const Template: ComponentStory<typeof StepList> = ({ currentStepIndex = 0 }) => {
+const Template = ({ currentStepIndex = 0 }) => {
   const getStepButtonState = (stepIndex: number) => {
     if (stepIndex === currentStepIndex) return StepButtonState.CURRENT
     if (stepIndex < currentStepIndex) return StepButtonState.COMPLETED
@@ -97,7 +97,11 @@ const Template: ComponentStory<typeof StepList> = ({ currentStepIndex = 0 }) => 
   )
 }
 
-export const WithStepCard = Template.bind({})
-WithStepCard.args = {
-  currentStepIndex: 1,
+type Story = StoryObj<typeof StepList>
+
+export const WithStepCard: Story = {
+  args: {
+    currentStepIndex: 1,
+  },
+  render: Template,
 }

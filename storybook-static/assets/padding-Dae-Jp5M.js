@@ -1,0 +1,1 @@
+import{g}from"./grid-C-3QDytX.js";function o(i,n,p,a){const d={paddingTop:i,paddingRight:i,paddingBottom:i,paddingLeft:i};return n&&(d.paddingRight=n,d.paddingLeft=n),{paddingTop:g(d.paddingTop),paddingRight:g(d.paddingRight),paddingBottom:g(d.paddingBottom),paddingLeft:g(d.paddingLeft)}}export{o as p};

@@ -1,15 +1,17 @@
 import { action } from '@storybook/addon-actions'
-import { ComponentMeta } from '@storybook/react'
-import React, { ComponentProps } from 'react'
+import type { Meta } from '@storybook/react'
+import React, { type ComponentProps } from 'react'
 
 import { SystemBanner } from 'ui/components/ModuleBanner/SystemBanner'
 import { Variants, VariantsStory, VariantsTemplate } from 'ui/storybook/VariantsTemplate'
 import { BicolorEverywhere } from 'ui/svg/icons/BicolorEverywhere'
 
-export default {
+const meta: Meta<typeof SystemBanner> = {
   title: 'ui/banners/SystemBanner',
   component: SystemBanner,
-} as ComponentMeta<typeof SystemBanner>
+}
+
+export default meta
 
 const baseProps: ComponentProps<typeof SystemBanner> = {
   leftIcon: BicolorEverywhere,
@@ -37,9 +39,8 @@ const variantConfig: Variants<typeof SystemBanner> = [
   },
 ]
 
-const Template: VariantsStory<typeof SystemBanner> = (args) => (
-  <VariantsTemplate variants={variantConfig} Component={SystemBanner} defaultProps={args} />
-)
+const Template: VariantsStory<typeof SystemBanner> = (
+  args: ComponentProps<typeof SystemBanner>
+) => <VariantsTemplate variants={variantConfig} Component={SystemBanner} defaultProps={args} />
 
 export const AllVariants = Template.bind({})
-AllVariants.storyName = 'SystemBanner'

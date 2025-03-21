@@ -1,0 +1,1 @@
+import{R as e,r as t}from"./index-CsVCrh6D.js";const s=e.createContext({isLoggedIn:!1,setIsLoggedIn:()=>{},user:void 0,refetchUser:async()=>({}),isUserLoading:!1});function r(){return t.useContext(s)}export{r as u};

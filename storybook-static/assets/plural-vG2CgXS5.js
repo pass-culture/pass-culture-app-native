@@ -1,0 +1,1 @@
+const e=(l,r)=>{if(r.singular){if(l===0)return r.singular.replace("#","0");if(l===1)return r.singular.replace("#","1")}return r.plural&&l>1?r.plural.replace("#",l.toLocaleString("fr")):""};export{e as p};

@@ -1,4 +1,4 @@
-import { ComponentMeta } from '@storybook/react'
+import type { Meta } from '@storybook/react'
 import React from 'react'
 import LinearGradient from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
@@ -7,7 +7,7 @@ import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storyboo
 
 import { SingleFilterButton } from './SingleFilterButton'
 
-const meta: ComponentMeta<typeof SingleFilterButton> = {
+const meta: Meta<typeof SingleFilterButton> = {
   title: 'Features/search/SingleFilterButton',
   component: SingleFilterButton,
 }
@@ -43,9 +43,10 @@ const variantConfig: Variants<typeof SingleFilterButton> = [
   },
 ]
 
-const Template: VariantsStory<typeof SingleFilterButton> = (args) => (
+const Template: VariantsStory<typeof SingleFilterButton> = (
+  args: React.ComponentProps<typeof SingleFilterButton>
+) => (
   <VariantsTemplate variants={variantConfig} Component={SingleFilterButton} defaultProps={args} />
 )
 
 export const AllVariants = Template.bind({})
-AllVariants.storyName = 'SingleFilterButton'

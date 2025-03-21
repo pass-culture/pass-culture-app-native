@@ -1,0 +1,22 @@
+[
+  {
+    "relation": ["delegate_permission/common.get_login_creds"],
+    "target": {
+      "namespace": "web",
+      "site": "https://app.staging.passculture.team"
+    }
+  },
+  {
+    "relation": [
+      "delegate_permission/common.get_login_creds",
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "app.passculture.staging",
+      "sha256_cert_fingerprints": [
+        "38:C3:22:9D:88:B2:0C:AE:22:92:01:EE:6E:28:D1:DD:0E:EA:06:7E:5E:88:C3:8E:41:28:07:AD:E3:39:AB:F1"
+      ]
+    }
+  }
+]

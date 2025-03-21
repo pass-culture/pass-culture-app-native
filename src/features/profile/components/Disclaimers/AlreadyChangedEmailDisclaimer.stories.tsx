@@ -1,11 +1,11 @@
-import { ComponentMeta } from '@storybook/react'
+import type { Meta } from '@storybook/react'
 import React from 'react'
 
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 
 import { AlreadyChangedEmailDisclaimer } from './AlreadyChangedEmailDisclaimer'
 
-const meta: ComponentMeta<typeof AlreadyChangedEmailDisclaimer> = {
+const meta: Meta<typeof AlreadyChangedEmailDisclaimer> = {
   title: 'features/profile/disclaimers/AlreadyChangedEmailDisclaimer',
   component: AlreadyChangedEmailDisclaimer,
 }
@@ -22,4 +22,3 @@ const Template: VariantsStory<typeof AlreadyChangedEmailDisclaimer> = () => (
 )
 
 export const AllVariants = Template.bind({})
-AllVariants.storyName = 'AlreadyChangedEmailDisclaimer'

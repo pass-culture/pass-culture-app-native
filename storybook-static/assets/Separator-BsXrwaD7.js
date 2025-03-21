@@ -1,0 +1,1 @@
+import{s as t}from"./grid-C-3QDytX.js";const i=t.View(({color:o,theme:r})=>({width:"100%",height:1,backgroundColor:o??r.colors.greyLight})),a=t.View(({color:o,theme:r,height:e})=>({width:1,backgroundColor:o??r.colors.greySemiDark,height:e??"100%"})),c={Horizontal:i,Vertical:a};export{c as S};
