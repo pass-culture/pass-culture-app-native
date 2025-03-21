@@ -10,6 +10,7 @@ import { BlackGradient } from 'features/home/components/BlackGradient'
 import { TEXT_BACKGROUND_OPACITY } from 'features/home/components/constants'
 import { VideoMonoOfferTile } from 'features/home/components/modules/video/VideoMonoOfferTile'
 import { VideoModuleProps } from 'features/home/types'
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { Offer } from 'shared/offer/types'
 import { SeeMoreWithEye } from 'ui/components/SeeMoreWithEye'
 import { Separator } from 'ui/components/Separator'
@@ -59,7 +60,7 @@ export const OldVideoModuleDesktop: FunctionComponent<VideoModuleProps> = (props
           <StyledTouchableHighlight
             onPress={props.showVideoModal}
             testID="video-thumbnail"
-            accessibilityRole="button"
+            accessibilityRole={AccessibilityRole.BUTTON}
             isMultiOffer={props.isMultiOffer}>
             <Thumbnail source={{ uri: props.videoThumbnail }}>
               <DurationCaption label={videoDuration} />

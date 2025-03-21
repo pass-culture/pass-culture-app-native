@@ -1,6 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { IconColorKey, TextColorKey } from 'theme/types'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { AccessibleIcon } from 'ui/svg/icons/types'
@@ -24,7 +25,7 @@ export const LocationModalButton = ({
 }: LocationModalButtonProps) => {
   const theme = useTheme()
   return (
-    <TouchableOpacity onPress={onPress} accessibilityRole="button">
+    <TouchableOpacity onPress={onPress} accessibilityRole={AccessibilityRole.BUTTON}>
       <TopContainer>
         <Icon color={theme.designSystem.color.icon[color]} size={theme.icons.sizes.small} />
         <Spacer.Row numberOfSpaces={2} />
