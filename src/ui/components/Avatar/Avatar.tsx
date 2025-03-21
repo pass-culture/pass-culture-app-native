@@ -19,6 +19,7 @@ export type AvatarProps = {
   borderColor?: string
   borderWidth?: number
   rounded?: boolean
+  borderRadius?: number
 }
 export const Avatar = ({
   size = AVATAR_SMALL,
@@ -26,13 +27,19 @@ export const Avatar = ({
   borderColor = 'white',
   borderWidth = 0,
   rounded = true,
+  borderRadius,
   children,
 }: PropsWithChildren<AvatarProps>) => {
   // Fix for iOS wich crop shadows when container has "overflow:hidden"
   const Wrapper = Platform.OS === 'ios' ? ShadowWrapper : Fragment
   return (
     <Wrapper>
-      <Container rounded={rounded} size={size} borderWidth={borderWidth} borderColor={borderColor}>
+      <Container
+        rounded={rounded}
+        size={size}
+        borderWidth={borderWidth}
+        borderColor={borderColor}
+        borderRadius={borderRadius}>
         <AvatarBody size={size} backgroundColor={backgroundColor} borderWidth={borderWidth}>
           {children}
         </AvatarBody>
@@ -57,14 +64,14 @@ const AvatarBody = styled.View<Pick<AvatarProps, 'size' | 'backgroundColor' | 'b
 )
 
 const Container = styled.View<
-  Pick<AvatarProps, 'rounded' | 'size' | 'borderWidth' | 'borderColor'>
->(({ size = AVATAR_SMALL, rounded, borderColor, borderWidth }) => ({
+  Pick<AvatarProps, 'rounded' | 'size' | 'borderWidth' | 'borderColor' | 'borderRadius'>
+>(({ size = AVATAR_SMALL, rounded, borderColor, borderWidth, borderRadius }) => ({
   width: size,
   height: size,
   overflow: 'hidden',
   borderWidth,
   borderColor,
-  borderRadius: rounded ? size * 0.5 : 0,
+  borderRadius: borderRadius ?? (rounded ? size * 0.5 : 0),
 
   ...(Platform.OS === 'ios' ? undefined : SHADOW),
 }))

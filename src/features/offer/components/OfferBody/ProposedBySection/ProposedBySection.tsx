@@ -12,7 +12,7 @@ import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { RightFilled } from 'ui/svg/icons/RightFilled'
 import { Venue } from 'ui/svg/icons/Venue'
 import { Typo } from 'ui/theme'
-import { AVATAR_SMALL } from 'ui/theme/constants'
+import { AVATAR_BORDER_RADIUS_XSMALL, AVATAR_SMALL } from 'ui/theme/constants'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type ProposedBySectionProps = {
@@ -42,7 +42,10 @@ export const ProposedBySection: FunctionComponent<ProposedBySectionProps> = ({
             }
             defaultThumbnailSize={AVATAR_SMALL}
             thumbnailComponent={
-              <Avatar borderWidth={3} size={AVATAR_SMALL}>
+              <Avatar
+                size={AVATAR_SMALL}
+                rounded={false}
+                borderRadius={AVATAR_BORDER_RADIUS_XSMALL}>
                 {imageUrl ? (
                   <FullSizeImage url={imageUrl} testID="VenueImage" />
                 ) : (
