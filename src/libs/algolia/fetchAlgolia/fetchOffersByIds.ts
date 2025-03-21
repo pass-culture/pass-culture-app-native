@@ -10,15 +10,23 @@ import { Offer } from 'shared/offer/types'
 type fetchOffersByIdsArgs = {
   objectIds: string[]
   isUserUnderage: boolean
+  shouldExcludeFutureOffers?: boolean
 }
 
 export const fetchOffersByIds = async ({
   objectIds,
   isUserUnderage,
+  shouldExcludeFutureOffers,
 }: fetchOffersByIdsArgs): Promise<Offer[]> => {
   const index = client.initIndex(env.ALGOLIA_OFFERS_INDEX_NAME)
   const searchParameters = buildOfferSearchParameters(
-    { ...initialSearchState, hitsPerPage: objectIds.length, objectIds, query: '' },
+    {
+      ...initialSearchState,
+      hitsPerPage: objectIds.length,
+      objectIds,
+      query: '',
+      shouldExcludeFutureOffers,
+    },
     {
       selectedLocationMode: LocationMode.EVERYWHERE,
       userLocation: null,

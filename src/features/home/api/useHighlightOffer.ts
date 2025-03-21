@@ -53,6 +53,7 @@ export const useHighlightOffer = ({
     const result = await fetchOffersByIds({
       objectIds: [offerId],
       isUserUnderage,
+      shouldExcludeFutureOffers: false,
     })
 
     return result
