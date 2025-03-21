@@ -350,7 +350,7 @@ type SubcategoriesFields = {
   subcategories: string[]
 }
 type CategoriesFields = {
-  categories: string[]
+  categories: ContentfulLabelCategories[]
 }
 
 type MovieGenresFields = {
@@ -607,3 +607,20 @@ export const isVideoCarouselContentModel = (
   module: HomepageNatifModule
 ): module is VideoCarouselContentModel =>
   module.sys.contentType?.sys.id === ContentTypes.VIDEO_CAROUSEL
+
+export type ContentfulLabelCategories =
+  | 'Arts & loisirs créatifs'
+  | 'Cartes jeunes'
+  | 'CD, vinyles, musique en ligne'
+  | 'Cinéma'
+  | 'Concerts & festivals'
+  | 'Conférences & rencontres'
+  | 'Évènements en ligne'
+  | 'Films, documentaires et séries'
+  | 'Instruments de musique'
+  | 'Jeux & jeux vidéos'
+  | 'Livres'
+  | 'Médias & presse'
+  | 'Musées & visites culturelles'
+  | 'Musique'
+  | 'Spectacles'

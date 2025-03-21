@@ -7,6 +7,7 @@ import { VenueTypeLocationIcon } from 'features/home/components/modules/venues/V
 import { SearchVenueItemDetails } from 'features/search/components/SearchVenueItemsDetails/SearchVenueItemDetails'
 import { AlgoliaVenue } from 'libs/algolia/types'
 import { analytics } from 'libs/analytics/provider'
+import { ContentfulLabelCategories } from 'libs/contentful/types'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { useLocation } from 'libs/location'
 import { getDistance } from 'libs/location/getDistance'
@@ -26,6 +27,7 @@ interface SearchVenueItemProps {
   width: number
   height: number
   searchId?: string
+  searchGroupLabel?: ContentfulLabelCategories
 }
 
 const MAX_VENUE_CAPTION_HEIGHT = getSpacing(19)
@@ -36,7 +38,13 @@ const mergeVenueData = (venue: AlgoliaVenue) => (prevData: AlgoliaVenue | undefi
   ...(prevData ?? {}),
 })
 
-const UnmemoizedSearchVenueItem = ({ venue, height, width, searchId }: SearchVenueItemProps) => {
+const UnmemoizedSearchVenueItem = ({
+  venue,
+  height,
+  width,
+  searchId,
+  searchGroupLabel,
+}: SearchVenueItemProps) => {
   const { userLocation, selectedPlace, selectedLocationMode } = useLocation()
   const { onFocus, onBlur, isFocus } = useHandleFocus()
   const { colors } = useTheme()
@@ -68,7 +76,12 @@ const UnmemoizedSearchVenueItem = ({ venue, height, width, searchId }: SearchVen
         width={width}
         navigateTo={{
           screen: 'Venue',
-          params: { id: Number(venue.objectID), from: 'venue', searchId },
+          params: {
+            id: Number(venue.objectID),
+            from: 'venue',
+            searchId,
+            fromThematicSearch: searchGroupLabel,
+          },
         }}
         onBeforeNavigate={handlePressVenue}
         onFocus={onFocus}
