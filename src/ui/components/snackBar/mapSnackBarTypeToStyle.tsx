@@ -16,28 +16,28 @@ export const mapSnackBarTypeToStyle = (
         icon: AccessibleCheck,
         backgroundColor: theme.colors.greenValid,
         progressBarColor: theme.colors.greenLight,
-        color: 'default',
+        color: 'locked-default',
       }
     case SnackBarType.ERROR:
       return {
         icon: AccessibleError,
         backgroundColor: theme.colors.error,
         progressBarColor: theme.colors.primaryDisabled,
-        color: 'default',
+        color: 'locked-default',
       }
     case SnackBarType.INFO:
       return {
         icon: AccessibleInfo,
         backgroundColor: theme.colors.accent,
         progressBarColor: theme.colors.white,
-        color: 'default',
+        color: 'locked-default',
       }
     default:
       return {
         icon: undefined,
         backgroundColor: theme.colors.transparent,
         progressBarColor: theme.colors.transparent,
-        color: 'default',
+        color: 'locked-default',
       }
   }
 }
