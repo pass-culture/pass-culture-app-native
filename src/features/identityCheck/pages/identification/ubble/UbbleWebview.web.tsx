@@ -1,4 +1,4 @@
-import { useNavigation } from '@react-navigation/native'
+import { CommonActions, useNavigation } from '@react-navigation/native'
 import React, { useEffect } from 'react'
 
 import { IdentityCheckMethod } from 'api/gen'
@@ -28,7 +28,7 @@ interface AbortEvent {
 // https://ubbleai.github.io/developer-documentation/#webview-integration
 export const UbbleWebview: React.FC = () => {
   const identificationUrl = useIdentificationUrl()
-  const { navigate } = useNavigation<UseNavigationType>()
+  const { dispatch } = useNavigation<UseNavigationType>()
 
   useEffect(() => {
     if (!identificationUrl) return
@@ -42,7 +42,9 @@ export const UbbleWebview: React.FC = () => {
           onComplete({ redirectUrl }: CompleteEvent) {
             analytics.logIdentityCheckSuccess({ method: IdentityCheckMethod.ubble })
             ubbleIDV.destroy()
-            if (redirectUrl.includes(REDIRECT_URL_UBBLE)) navigate('IdentityCheckEnd')
+            if (redirectUrl.includes(REDIRECT_URL_UBBLE)) {
+              dispatch(CommonActions.reset({ index: 0, routes: [{ name: 'IdentityCheckEnd' }] }))
+            }
           },
           onAbort({ redirectUrl, returnReason: reason }: AbortEvent) {
             analytics.logIdentityCheckAbort({

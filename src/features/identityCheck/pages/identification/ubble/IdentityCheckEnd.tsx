@@ -14,14 +14,20 @@ export const IdentityCheckEnd: FC = () => {
   const { navigateForwardToStepper } = useNavigateForwardToStepper()
   const saveStep = useSaveStep()
 
-  const navigateToStepper = async () => {
+  const navigateToStepperWithReload = async () => {
     await saveStep(IdentityCheckStep.IDENTIFICATION)
     navigateForwardToStepper()
+    setTimeout(() => window.location.reload(), 100)
+  }
+
+  const navigateHomeWithReload = () => {
+    navigateToHome()
+    setTimeout(() => window.location.reload(), 100)
   }
 
   useEffect(() => {
     const timeout = setTimeout(
-      subscription?.nextSubscriptionStep ? navigateToStepper : navigateToHome,
+      subscription?.nextSubscriptionStep ? navigateToStepperWithReload : navigateHomeWithReload,
       3000
     )
     return () => clearTimeout(timeout)
