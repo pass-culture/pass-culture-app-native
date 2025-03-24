@@ -130,6 +130,7 @@ export const mockOffer = toMutable({
   },
   chronicles: [],
   isHeadline: false,
+  artists: [],
 } as const satisfies ReadonlyDeep<OfferResponseV2>)
 
 export const mockDigitalOffer = toMutable({
@@ -227,4 +228,5 @@ export const mockDigitalOffer = toMutable({
   },
   chronicles: [],
   isHeadline: false,
+  artists: [],
 } as const satisfies ReadonlyDeep<OfferResponseV2>)
