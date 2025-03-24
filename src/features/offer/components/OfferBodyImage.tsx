@@ -4,21 +4,27 @@ import React, { FunctionComponent } from 'react'
 import FastImage, { OnLoadEvent } from 'react-native-fast-image'
 import styled from 'styled-components/native'
 
-import { useOfferImageContainerDimensions } from 'features/offer/helpers/useOfferImageContainerDimensions'
+import { OfferImageContainerDimensions } from 'features/offer/helpers/useOfferImageContainerDimensions'
 import { FastImage as ResizedFastImage } from 'libs/resizing-image-on-demand/FastImage'
 
 type Props = {
   imageUrl: string
+  imageDimensions: OfferImageContainerDimensions
   isInCarousel?: boolean
   onLoad?: (event: OnLoadEvent) => void
 }
 
-export const OfferBodyImage: FunctionComponent<Props> = ({ imageUrl, isInCarousel, onLoad }) => {
-  const { imageStyle, imageStyleWithoutBorderRadius } = useOfferImageContainerDimensions()
-
+export const OfferBodyImage: FunctionComponent<Props> = ({
+  imageUrl,
+  imageDimensions,
+  isInCarousel,
+  onLoad,
+}) => {
   return (
     <StyledFastImage
-      style={isInCarousel ? imageStyleWithoutBorderRadius : imageStyle}
+      style={
+        isInCarousel ? imageDimensions.imageStyleWithoutBorderRadius : imageDimensions.imageStyle
+      }
       url={imageUrl}
       resizeMode={FastImage.resizeMode?.cover}
       testID="offerBodyImage"

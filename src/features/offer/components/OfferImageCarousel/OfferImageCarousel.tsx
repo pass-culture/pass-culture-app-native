@@ -7,13 +7,14 @@ import styled, { useTheme } from 'styled-components/native'
 import { OfferImageCarouselItem } from 'features/offer/components/OfferImageCarousel/OfferImageCarouselItem'
 import { OfferImageCarouselPagination } from 'features/offer/components/OfferImageCarouselPagination/OfferImageCarouselPagination'
 import { calculateCarouselIndex } from 'features/offer/helpers/calculateCarouselIndex/calculateCarouselIndex'
-import { useOfferImageContainerDimensions } from 'features/offer/helpers/useOfferImageContainerDimensions'
+import { OfferImageContainerDimensions } from 'features/offer/helpers/useOfferImageContainerDimensions'
 import { ImageWithCredit } from 'shared/types'
 import { Typo, getSpacing } from 'ui/theme'
 
 type Props = {
   progressValue: SharedValue<number>
   offerImages: ImageWithCredit[]
+  imageDimensions: OfferImageContainerDimensions
   onItemPress?: (index: number) => void
   onLoad?: () => void
   style?: StyleProp<ViewStyle>
@@ -24,11 +25,11 @@ const isWeb = Platform.OS === 'web'
 export const OfferImageCarousel: FunctionComponent<Props> = ({
   progressValue,
   offerImages,
+  imageDimensions,
   onItemPress,
   onLoad,
   style,
 }) => {
-  const { imageStyle } = useOfferImageContainerDimensions()
   const { borderRadius } = useTheme()
   const carouselRef = useRef<ICarouselInstance>(null)
   const carouselStyle = useRef({
@@ -62,6 +63,7 @@ export const OfferImageCarousel: FunctionComponent<Props> = ({
         <Animated.View entering={FadeIn}>
           <OfferImageCarouselItem
             index={index}
+            imageDimensions={imageDimensions}
             imageURL={item.url}
             onLoad={handleImageLoad}
             onPress={onItemPress}
@@ -69,7 +71,7 @@ export const OfferImageCarousel: FunctionComponent<Props> = ({
           />
         </Animated.View>
       ),
-      [onItemPress, handleImageLoad]
+      [handleImageLoad, imageDimensions, onItemPress]
     )
 
   const offerImagesUrl = offerImages.map((image) => image.url)
@@ -81,8 +83,8 @@ export const OfferImageCarousel: FunctionComponent<Props> = ({
         ref={carouselRef}
         testID="offerImageContainerCarousel"
         vertical={false}
-        height={imageStyle.height}
-        width={imageStyle.width}
+        height={imageDimensions.imageStyle.height}
+        width={imageDimensions.imageStyle.width}
         loop={false}
         enabled={!isWeb && offerImages.length > 1}
         scrollAnimationDuration={500}

@@ -7,10 +7,12 @@ import { CategoryIdEnum } from 'api/gen'
 import { OfferBodyImagePlaceholder } from 'features/offer/components/OfferBodyImagePlaceholder'
 import { OfferImageCarousel } from 'features/offer/components/OfferImageCarousel/OfferImageCarousel'
 import { OfferImageCarouselItem } from 'features/offer/components/OfferImageCarousel/OfferImageCarouselItem'
+import { OfferImageContainerDimensions } from 'features/offer/helpers/useOfferImageContainerDimensions'
 import { ImageWithCredit } from 'shared/types'
 
 type Props = {
   categoryId: CategoryIdEnum | null
+  imageDimensions: OfferImageContainerDimensions
   offerImages?: ImageWithCredit[]
   placeholderImage?: string
   progressValue: SharedValue<number>
@@ -20,6 +22,7 @@ type Props = {
 
 export const OfferImageRenderer: FunctionComponent<Props> = ({
   offerImages = [],
+  imageDimensions,
   progressValue,
   placeholderImage,
   categoryId,
@@ -37,13 +40,18 @@ export const OfferImageRenderer: FunctionComponent<Props> = ({
       <StyledOfferImageCarousel
         progressValue={progressValue}
         offerImages={offerImages}
+        imageDimensions={imageDimensions}
         onItemPress={onPress}
         onLoad={handleCarouselLoad}
         isReady={carouselReady}
       />
       {carouselReady ? null : (
         <AnimatedImageContainer exiting={FadeOut.delay(100)} testID="placeholderImage">
-          <OfferImageCarouselItem imageURL={placeholderImage} onPress={onPress} index={0}>
+          <OfferImageCarouselItem
+            imageURL={placeholderImage}
+            onPress={onPress}
+            index={0}
+            imageDimensions={imageDimensions}>
             <OfferBodyImagePlaceholder categoryId={categoryId} />
           </OfferImageCarouselItem>
         </AnimatedImageContainer>

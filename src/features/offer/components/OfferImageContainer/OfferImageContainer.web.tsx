@@ -5,8 +5,8 @@ import styled, { useTheme } from 'styled-components/native'
 import { CategoryIdEnum } from 'api/gen'
 import { OfferImageRenderer } from 'features/offer/components/OfferImageContainer/OfferImageRenderer'
 import {
+  OfferImageContainerDimensions,
   offerImageContainerMarginTop,
-  useOfferImageContainerDimensions,
 } from 'features/offer/helpers/useOfferImageContainerDimensions'
 import { ImageWithCredit } from 'shared/types'
 import { useGetHeaderHeight } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
@@ -16,6 +16,7 @@ import { OfferImageHeaderWrapper } from './OfferImageHeaderWrapper'
 
 type Props = {
   categoryId: CategoryIdEnum | null
+  imageDimensions: OfferImageContainerDimensions
   images?: ImageWithCredit[]
   onPress?: (defaultIndex?: number) => void
   placeholderImage?: string
@@ -26,8 +27,8 @@ export const OfferImageContainer: FunctionComponent<Props> = ({
   onPress,
   categoryId,
   placeholderImage,
+  imageDimensions,
 }) => {
-  const { backgroundHeight } = useOfferImageContainerDimensions()
   const { isDesktopViewport } = useTheme()
   const headerHeight = useGetHeaderHeight()
 
@@ -38,7 +39,7 @@ export const OfferImageContainer: FunctionComponent<Props> = ({
       <React.Fragment>{children}</React.Fragment>
     ) : (
       <OfferImageHeaderWrapper
-        imageHeight={backgroundHeight}
+        imageHeight={imageDimensions.backgroundHeight}
         imageUrl={placeholderImage}
         paddingTop={getSpacing(offerImageContainerMarginTop)}>
         {children}
@@ -55,6 +56,7 @@ export const OfferImageContainer: FunctionComponent<Props> = ({
         progressValue={progressValue}
         onPress={onPress}
         categoryId={categoryId}
+        imageDimensions={imageDimensions}
       />
     </Wrapper>
   )
