@@ -1,24 +1,19 @@
-import { useRoute } from '@react-navigation/native'
 import React, { FunctionComponent, useMemo } from 'react'
 import { Platform } from 'react-native'
 import { IOScrollView as IntersectionObserverScrollView } from 'react-native-intersection-observer'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
 import styled, { useTheme } from 'styled-components/native'
 
-import { OfferResponseV2 } from 'api/gen'
 import { ArtistHeader } from 'features/artist/components/ArtistHeader/ArtistHeader'
 import { ArtistPlaylist } from 'features/artist/components/ArtistPlaylist/ArtistPlaylist'
 import { ArtistTopOffers } from 'features/artist/components/ArtistTopOffers/ArtistTopOffers'
 import { ArtistWebMetaHeader } from 'features/artist/components/ArtistWebMetaHeader'
 import { Artist } from 'features/artist/pages/Artist'
-import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { useGoBack } from 'features/navigation/useGoBack'
-import { getOfferArtists } from 'features/offer/helpers/getOfferArtists/getOfferArtists'
-import { useArtistResults } from 'features/offer/helpers/useArtistResults/useArtistResults'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
+import { AlgoliaOfferWithArtistAndEan } from 'libs/algolia/types'
 import { highlightLinks } from 'libs/parsers/highlightLinks'
 import { FastImage } from 'libs/resizing-image-on-demand/FastImage'
-import { Subcategory } from 'libs/subcategories/types'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { CollapsibleText } from 'ui/components/CollapsibleText/CollapsibleText'
 import { ContentHeader } from 'ui/components/headers/ContentHeader'
@@ -30,40 +25,37 @@ const isWeb = Platform.OS === 'web'
 const NUMBER_OF_LINES_OF_DESCRIPTION_SECTION = 5
 
 type Props = {
-  offer: OfferResponseV2
   artist: Artist
-  subcategory: Subcategory
+  artistPlaylist: AlgoliaOfferWithArtistAndEan[]
+  artistTopOffers: AlgoliaOfferWithArtistAndEan[]
 }
 
-export const ArtistBody: FunctionComponent<Props> = ({ offer, artist, subcategory }) => {
-  const { params } = useRoute<UseRouteType<'Artist'>>()
-  const { goBack } = useGoBack('Offer', { id: params.fromOfferId })
+export const ArtistBody: FunctionComponent<Props> = ({
+  artist,
+  artistPlaylist,
+  artistTopOffers,
+}) => {
+  const { goBack } = useGoBack('Offer')
   const { appBarHeight } = useTheme()
   const { headerTransition, onScroll } = useOpacityTransition()
-  const artists = getOfferArtists(subcategory.categoryId, offer)
-  const { artistPlaylist, artistTopOffers } = useArtistResults({
-    artists,
-    subcategoryId: offer.subcategoryId,
-  })
 
   const { top } = useSafeAreaInsets()
   const headerHeight = appBarHeight + top
 
-  const { name, bio } = artist
+  const { name, bio, image } = artist
 
   const avatarImage = useMemo(() => {
-    const topOfferThumb = artistTopOffers[0]?.offer.thumbUrl ?? ''
-    if (!topOfferThumb) {
+    if (!image) {
       return undefined
     }
     return (
       <StyledImage
-        url={topOfferThumb}
+        url={image}
         accessibilityRole={AccessibilityRole.IMAGE}
         accessibilityLabel="artist avatar"
       />
     )
-  }, [artistTopOffers])
+  }, [image])
 
   return (
     <Container>
@@ -95,7 +87,7 @@ export const ArtistBody: FunctionComponent<Props> = ({ offer, artist, subcategor
             ) : null}
           </ViewGap>
           <ArtistTopOffers artistName={name} items={artistTopOffers} />
-          <ArtistPlaylist offer={offer} artistName={name} items={artistPlaylist} />
+          <ArtistPlaylist artistName={name} items={artistPlaylist} />
         </ViewGap>
       </ContentContainer>
 

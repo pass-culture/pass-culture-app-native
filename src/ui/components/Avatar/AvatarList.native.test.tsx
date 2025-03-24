@@ -5,9 +5,9 @@ import { render, screen, userEvent } from 'tests/utils'
 import { AvatarsList } from 'ui/components/Avatar/AvatarList'
 
 const avatarsData = [
-  { id: 1, image: 'url1', name: 'Oda' },
-  { id: 2, image: 'url2', name: 'MMMM' },
-  { id: 3, name: 'Lolo' },
+  { id: '1', image: 'url1', name: 'Oda' },
+  { id: '2', image: 'url2', name: 'MMMM' },
+  { id: '3', name: 'Lolo' },
 ]
 
 const user = userEvent.setup()
@@ -42,7 +42,7 @@ describe('<AvatarsList />', () => {
     await user.press(screen.getByText('Oda'))
 
     expect(navigate).toHaveBeenCalledWith('Artist', {
-      fromOfferId: 1,
+      id: '1',
     })
   })
 })

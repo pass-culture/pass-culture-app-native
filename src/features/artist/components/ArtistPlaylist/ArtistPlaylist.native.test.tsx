@@ -1,7 +1,6 @@
 import React from 'react'
 
 import { ArtistPlaylist } from 'features/artist/components/ArtistPlaylist/ArtistPlaylist'
-import { mockOffer } from 'features/bookOffer/fixtures/offer'
 import { mockedAlgoliaOffersWithSameArtistResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -32,7 +31,6 @@ describe('ArtistPlaylist', () => {
     render(
       reactQueryProviderHOC(
         <ArtistPlaylist
-          offer={mockOffer}
           artistName="Céline Dion"
           items={mockedAlgoliaOffersWithSameArtistResponse}
         />
@@ -44,11 +42,7 @@ describe('ArtistPlaylist', () => {
   })
 
   it('should not display artist playlist when there is not some offer from this artist', async () => {
-    render(
-      reactQueryProviderHOC(
-        <ArtistPlaylist offer={mockOffer} artistName="Céline Dion" items={[]} />
-      )
-    )
+    render(reactQueryProviderHOC(<ArtistPlaylist artistName="Céline Dion" items={[]} />))
 
     expect(screen.queryByText('Toutes ses offres disponibles')).not.toBeOnTheScreen()
     expect(screen.queryByText('Manga Série "One piece" - Tome 5')).not.toBeOnTheScreen()
@@ -58,7 +52,6 @@ describe('ArtistPlaylist', () => {
     render(
       reactQueryProviderHOC(
         <ArtistPlaylist
-          offer={mockOffer}
           artistName="Céline Dion"
           items={mockedAlgoliaOffersWithSameArtistResponse}
         />
@@ -72,7 +65,6 @@ describe('ArtistPlaylist', () => {
     render(
       reactQueryProviderHOC(
         <ArtistPlaylist
-          offer={mockOffer}
           artistName="Céline Dion"
           items={mockedAlgoliaOffersWithSameArtistResponse}
         />

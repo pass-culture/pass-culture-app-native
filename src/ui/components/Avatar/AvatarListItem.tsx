@@ -31,7 +31,7 @@ export const AvatarListItem: FunctionComponent<AvatarListItemProps> = ({
       navigateTo={{
         screen: 'Artist',
         params: {
-          fromOfferId: id,
+          id,
         },
       }}
       onBeforeNavigate={() => onItemPress(name)}>

@@ -283,8 +283,8 @@ export const rootRoutes: RootRoute[] = [
   {
     name: 'Artist',
     component: Artist,
-    path: 'artiste/:fromOfferId',
-    deeplinkPaths: ['artist/:fromOfferId'],
+    path: 'artiste/:id',
+    deeplinkPaths: ['artist/:id'],
     options: { title: 'Artiste' },
   },
   // Internals
