@@ -7,7 +7,13 @@ import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storyboo
 import { BicolorProfile } from 'ui/svg/icons/BicolorProfile'
 import { Profile } from 'ui/svg/icons/Profile'
 import { Typo } from 'ui/theme'
-import { AVATAR_LARGE, AVATAR_MEDIUM, AVATAR_SMALL, AVATAR_XSMALL } from 'ui/theme/constants'
+import {
+  AVATAR_LARGE,
+  AVATAR_MEDIUM,
+  AVATAR_SMALL,
+  AVATAR_XSMALL,
+  AVATAR_BORDER_RADIUS_SMALL,
+} from 'ui/theme/constants'
 
 import { Avatar } from './Avatar'
 
@@ -70,6 +76,16 @@ const variantConfig: Variants<typeof Avatar> = [
       rounded: false,
       borderWidth: 6,
       backgroundColor: theme.colors.coralLight,
+      children: <Typo.Title1>M.M</Typo.Title1>,
+    },
+  },
+  {
+    label: 'Avatar square with border radius',
+    props: {
+      size: AVATAR_LARGE,
+      rounded: false,
+      backgroundColor: theme.colors.coralLight,
+      borderRadius: AVATAR_BORDER_RADIUS_SMALL,
       children: <Typo.Title1>M.M</Typo.Title1>,
     },
   },
