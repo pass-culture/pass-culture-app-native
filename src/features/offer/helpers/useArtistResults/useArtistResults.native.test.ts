@@ -30,7 +30,7 @@ describe('useArtistResults', () => {
     renderHook(
       () =>
         useArtistResults({
-          artists: 'Eiichiro Oda',
+          artistId: '1',
           subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
         }),
       {
@@ -40,7 +40,7 @@ describe('useArtistResults', () => {
 
     await waitFor(() => {
       expect(fetchOffersByArtistSpy).toHaveBeenCalledWith({
-        artists: 'Eiichiro Oda',
+        artistId: '1',
         subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
         userLocation: mockUserLocation,
       })
@@ -53,7 +53,7 @@ describe('useArtistResults', () => {
     const { result } = renderHook(
       () =>
         useArtistResults({
-          artists: 'Eiichiro Oda',
+          artistId: '1',
           subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
         }),
       {
@@ -72,7 +72,7 @@ describe('useArtistResults', () => {
     const { result } = renderHook(
       () =>
         useArtistResults({
-          artists: 'Eiichiro Oda',
+          artistId: '1',
           subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
         }),
       {
