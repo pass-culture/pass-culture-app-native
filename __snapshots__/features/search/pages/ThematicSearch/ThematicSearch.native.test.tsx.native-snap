@@ -4305,7 +4305,13 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                                         />
                                       </View>
                                     </View>
-                                    <View>
+                                    <View
+                                      style={
+                                        [
+                                          {},
+                                        ]
+                                      }
+                                    >
                                       <View
                                         height={420}
                                         style={
@@ -4743,7 +4749,13 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                                         />
                                       </View>
                                     </View>
-                                    <View>
+                                    <View
+                                      style={
+                                        [
+                                          {},
+                                        ]
+                                      }
+                                    >
                                       <View
                                         height={420}
                                         style={
@@ -5181,7 +5193,13 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                                         />
                                       </View>
                                     </View>
-                                    <View>
+                                    <View
+                                      style={
+                                        [
+                                          {},
+                                        ]
+                                      }
+                                    >
                                       <View
                                         height={420}
                                         style={
@@ -5635,7 +5653,13 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                                     />
                                   </View>
                                 </View>
-                                <View>
+                                <View
+                                  style={
+                                    [
+                                      {},
+                                    ]
+                                  }
+                                >
                                   <View
                                     height={420}
                                     style={

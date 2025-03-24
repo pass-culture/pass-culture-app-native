@@ -24,6 +24,7 @@ type Props = Pick<
   | 'playlistType'
   | 'tileType'
 > & {
+  noMarginBottom?: boolean
   title: string
   subtitle?: string
   TitleComponent?: ComponentType<ComponentProps<typeof DefaultTitle>>
@@ -51,6 +52,7 @@ export const PassPlaylist = ({
   keyExtractor,
   playlistRef,
   testID: _testID,
+  noMarginBottom,
   ...props
 }: Props) => {
   const { isTouch } = useTheme()
@@ -86,7 +88,7 @@ export const PassPlaylist = ({
     ) : null
   }
   return (
-    <Container gap={4} {...props}>
+    <StyledViewGap gap={4} noMarginBottom={noMarginBottom} {...props}>
       <ViewGap gap={1}>
         <StyledView>
           <StyledTitleComponent testID="playlistTitle">{title}</StyledTitleComponent>
@@ -109,13 +111,15 @@ export const PassPlaylist = ({
         ref={playlistRef}
         onViewableItemsChanged={onViewableItemsChanged}
       />
-    </Container>
+    </StyledViewGap>
   )
 }
 
-const Container = styled(ViewGap)(({ theme }) => ({
-  paddingBottom: theme.home.spaceBetweenModules,
-}))
+const StyledViewGap = styled(ViewGap)<{ noMarginBottom?: boolean }>(
+  ({ noMarginBottom, theme }) => ({
+    paddingBottom: noMarginBottom ? 0 : theme.home.spaceBetweenModules,
+  })
+)
 
 const DefaultTitle = styled(Typo.Title3).attrs(getHeadingAttrs(2))``
 

@@ -18,9 +18,16 @@ export interface GtlPlaylistProps {
   route: Extract<ScreenNames, 'Venue' | 'ThematicSearch'>
   playlist: GtlPlaylistData
   venue?: VenueResponse
+  noMarginBottom?: boolean
 }
 
-export function GtlPlaylist({ venue, playlist, analyticsFrom, route }: Readonly<GtlPlaylistProps>) {
+export function GtlPlaylist({
+  venue,
+  playlist,
+  analyticsFrom,
+  route,
+  noMarginBottom,
+}: Readonly<GtlPlaylistProps>) {
   const entryId = playlist.entryId
 
   const logHasSeenAllTilesOnce = useFunctionOnce(() => {
@@ -58,6 +65,7 @@ export function GtlPlaylist({ venue, playlist, analyticsFrom, route }: Readonly<
         keyExtractor={(item: Hit<Offer>) => item.objectID}
         title={playlist.title}
         onEndReached={logHasSeenAllTilesOnce}
+        noMarginBottom={noMarginBottom}
       />
     </IntersectionObserver>
   )
