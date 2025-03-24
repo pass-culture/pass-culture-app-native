@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { buttonWidthStyle } from 'ui/components/buttons/buttonWithLinearGradient/styleUtils'
 import { ButtonWithLinearGradientProps } from 'ui/components/buttons/buttonWithLinearGradient/types'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
@@ -27,7 +28,7 @@ export const ButtonWithLinearGradient: React.FC<ButtonWithLinearGradientProps> =
       onPress={isDisabled ? undefined : onPress}
       disabled={isDisabled}
       fitContentWidth={fitContentWidth}
-      accessibilityRole="link"
+      accessibilityRole={AccessibilityRole.LINK}
       accessibilityLabel={wording}>
       {isDisabled ? <DisabledRectangle /> : <Rectangle />}
       <LegendContainer reverse={iconAfterWording}>

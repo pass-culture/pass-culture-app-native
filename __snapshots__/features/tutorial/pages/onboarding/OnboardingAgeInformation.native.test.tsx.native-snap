@@ -304,7 +304,7 @@ exports[`OnboardingAgeInformation should render correctly for 15-year-old 1`] = 
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
-                    "marginLeft": 8,
+                    "marginHorizontal": 8,
                   },
                 ]
               }
@@ -568,7 +568,7 @@ exports[`OnboardingAgeInformation should render correctly for 15-year-old 1`] = 
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
-                    "marginLeft": 8,
+                    "marginHorizontal": 8,
                   },
                 ]
               }
@@ -822,7 +822,7 @@ exports[`OnboardingAgeInformation should render correctly for 15-year-old 1`] = 
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
-                    "marginLeft": 8,
+                    "marginHorizontal": 8,
                   },
                 ]
               }
@@ -1076,7 +1076,7 @@ exports[`OnboardingAgeInformation should render correctly for 15-year-old 1`] = 
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
-                    "marginLeft": 8,
+                    "marginHorizontal": 8,
                   },
                 ]
               }
@@ -1214,7 +1214,7 @@ exports[`OnboardingAgeInformation should render correctly for 15-year-old 1`] = 
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
-                    "marginLeft": 8,
+                    "marginHorizontal": 8,
                   },
                 ]
               }
@@ -1953,7 +1953,7 @@ exports[`OnboardingAgeInformation should render correctly for 16-year-old 1`] = 
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
-                    "marginLeft": 8,
+                    "marginHorizontal": 8,
                   },
                 ]
               }
@@ -2196,7 +2196,7 @@ exports[`OnboardingAgeInformation should render correctly for 16-year-old 1`] = 
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
-                    "marginLeft": 8,
+                    "marginHorizontal": 8,
                   },
                 ]
               }
@@ -2460,7 +2460,7 @@ exports[`OnboardingAgeInformation should render correctly for 16-year-old 1`] = 
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
-                    "marginLeft": 8,
+                    "marginHorizontal": 8,
                   },
                 ]
               }
@@ -2714,7 +2714,7 @@ exports[`OnboardingAgeInformation should render correctly for 16-year-old 1`] = 
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
-                    "marginLeft": 8,
+                    "marginHorizontal": 8,
                   },
                 ]
               }
@@ -2852,7 +2852,7 @@ exports[`OnboardingAgeInformation should render correctly for 16-year-old 1`] = 
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
-                    "marginLeft": 8,
+                    "marginHorizontal": 8,
                   },
                 ]
               }
@@ -3591,7 +3591,7 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
-                    "marginLeft": 8,
+                    "marginHorizontal": 8,
                   },
                 ]
               }
@@ -3832,7 +3832,7 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
-                    "marginLeft": 8,
+                    "marginHorizontal": 8,
                   },
                 ]
               }
@@ -4075,7 +4075,7 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
-                    "marginLeft": 8,
+                    "marginHorizontal": 8,
                   },
                 ]
               }
@@ -4339,7 +4339,7 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
-                    "marginLeft": 8,
+                    "marginHorizontal": 8,
                   },
                 ]
               }
@@ -4477,7 +4477,7 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
-                    "marginLeft": 8,
+                    "marginHorizontal": 8,
                   },
                 ]
               }
@@ -5216,7 +5216,7 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
-                    "marginLeft": 8,
+                    "marginHorizontal": 8,
                   },
                 ]
               }
@@ -5457,7 +5457,7 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
-                    "marginLeft": 8,
+                    "marginHorizontal": 8,
                   },
                 ]
               }
@@ -5698,7 +5698,7 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
-                    "marginLeft": 8,
+                    "marginHorizontal": 8,
                   },
                 ]
               }
@@ -5932,7 +5932,7 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
-                    "marginLeft": 8,
+                    "marginHorizontal": 8,
                   },
                 ]
               }
@@ -7609,7 +7609,7 @@ exports[`OnboardingAgeInformation when enableCreditV3 activated should render co
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
-                    "marginLeft": 8,
+                    "marginHorizontal": 8,
                   },
                 ]
               }
@@ -7864,7 +7864,7 @@ exports[`OnboardingAgeInformation when enableCreditV3 activated should render co
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
-                    "marginLeft": 8,
+                    "marginHorizontal": 8,
                   },
                 ]
               }
@@ -8603,7 +8603,7 @@ exports[`OnboardingAgeInformation when enableCreditV3 activated should render co
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
-                    "marginLeft": 8,
+                    "marginHorizontal": 8,
                   },
                 ]
               }
@@ -8837,7 +8837,7 @@ exports[`OnboardingAgeInformation when enableCreditV3 activated should render co
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
-                    "marginLeft": 8,
+                    "marginHorizontal": 8,
                   },
                 ]
               }

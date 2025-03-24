@@ -3,6 +3,7 @@ import styled from 'styled-components/native'
 
 import { Li } from 'ui/components/Li'
 import { VerticalUl } from 'ui/components/Ul'
+import { getSpacing } from 'ui/theme'
 
 interface Props {
   items: ReactNode[]
@@ -29,4 +30,5 @@ export const AccessibleUnorderedList: FC<Props> = ({ items, Separator }) => {
 
 const StyledVerticalUl = styled(VerticalUl)({
   width: '100%',
+  padding: getSpacing(1),
 })

@@ -10,6 +10,7 @@ import { TEXT_BACKGROUND_OPACITY } from 'features/home/components/constants'
 import { VideoMonoOfferTile } from 'features/home/components/modules/video/VideoMonoOfferTile'
 import { VideoMultiOfferPlaylist } from 'features/home/components/modules/video/VideoMultiOfferPlaylist'
 import { VideoModuleProps } from 'features/home/types'
+import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { Play } from 'ui/svg/icons/Play'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { gradientColorsMapping } from 'ui/theme/gradientColorsMapping'
@@ -50,7 +51,7 @@ export const OldVideoModuleMobile: FunctionComponent<VideoModuleProps> = (props)
           <StyledTouchableHighlight
             onPress={props.showVideoModal}
             testID="video-thumbnail"
-            accessibilityRole="button">
+            accessibilityRole={AccessibilityRole.BUTTON}>
             <Thumbnail source={{ uri: props.videoThumbnail }}>
               <DurationCaption label={videoDuration} />
               <TextContainer>

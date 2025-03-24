@@ -42,5 +42,5 @@ const Wrapper = styled.View({
 
 const Content = styled.View({
   flex: 1,
-  marginLeft: getSpacing(2),
+  marginHorizontal: getSpacing(2),
 })

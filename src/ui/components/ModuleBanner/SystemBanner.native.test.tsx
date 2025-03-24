@@ -5,6 +5,8 @@ import { render } from 'tests/utils'
 import { SystemBanner } from 'ui/components/ModuleBanner/SystemBanner'
 import { BicolorEverywhere } from 'ui/svg/icons/BicolorEverywhere'
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('SystemBanner', () => {
   it('should log analytics on display', () => {
     render(

@@ -8,6 +8,7 @@ import {
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { render, screen } from 'tests/utils/web'
 
+jest.mock('ui/theme/customFocusOutline/customFocusOutline')
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 

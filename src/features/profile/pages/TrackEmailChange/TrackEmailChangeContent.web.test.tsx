@@ -9,6 +9,7 @@ import { fireEvent, render, screen } from 'tests/utils/web'
 
 jest.mock('features/auth/context/AuthContext')
 jest.mock('libs/jwt/jwt')
+jest.mock('ui/theme/customFocusOutline/customFocusOutline')
 
 describe('TrackEmailChangeContent', () => {
   it('should not open mail app when clicking first step and first step is active', async () => {

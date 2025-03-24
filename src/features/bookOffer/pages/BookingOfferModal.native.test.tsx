@@ -22,6 +22,8 @@ import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 import { BookingOfferModalComponent } from './BookingOfferModal'
 
+jest.mock('libs/firebase/analytics/analytics')
+
 jest.mock('libs/campaign')
 
 const mockDismissModal = jest.fn()

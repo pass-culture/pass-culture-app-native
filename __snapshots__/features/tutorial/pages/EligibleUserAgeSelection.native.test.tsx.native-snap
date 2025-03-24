@@ -208,7 +208,10 @@ exports[`EligibleUserAgeSelection with passForAll feature flag off onboarding sh
             [
               {
                 "flexDirection": "column",
-                "paddingLeft": 0,
+                "paddingBottom": 4,
+                "paddingLeft": 4,
+                "paddingRight": 4,
+                "paddingTop": 4,
                 "width": "100%",
               },
             ]
@@ -1231,7 +1234,10 @@ exports[`EligibleUserAgeSelection with passForAll feature flag off profileTutori
             [
               {
                 "flexDirection": "column",
-                "paddingLeft": 0,
+                "paddingBottom": 4,
+                "paddingLeft": 4,
+                "paddingRight": 4,
+                "paddingTop": 4,
                 "width": "100%",
               },
             ]
@@ -2230,7 +2236,10 @@ exports[`EligibleUserAgeSelection with passForAll feature flag on onboarding sho
             [
               {
                 "flexDirection": "column",
-                "paddingLeft": 0,
+                "paddingBottom": 4,
+                "paddingLeft": 4,
+                "paddingRight": 4,
+                "paddingTop": 4,
                 "width": "100%",
               },
             ]

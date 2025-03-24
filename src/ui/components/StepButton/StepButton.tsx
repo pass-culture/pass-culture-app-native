@@ -2,13 +2,18 @@ import React, { FunctionComponent } from 'react'
 import { StyleProp, View, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
+import { useHandleFocus } from 'libs/hooks/useHandleFocus'
+import { styledButton } from 'ui/components/buttons/styledButton'
 import { GenericBanner } from 'ui/components/ModuleBanner/GenericBanner'
 import { StepButtonState, StepDetails } from 'ui/components/StepButton/types'
+import { Touchable } from 'ui/components/touchable/Touchable'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
-import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 import { getSpacing, Typo } from 'ui/theme'
+// eslint-disable-next-line no-restricted-imports
+import { ColorsEnum } from 'ui/theme/colors'
+import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 
 interface Props {
   step: StepDetails
@@ -17,6 +22,8 @@ interface Props {
 }
 
 export const StepButton = ({ step, navigateTo, onPress }: Props) => {
+  const focusProps = useHandleFocus()
+
   const label = step.title
   const stepState = step.stepState
   const Icon = step.icon[stepState]
@@ -48,6 +55,7 @@ export const StepButton = ({ step, navigateTo, onPress }: Props) => {
 
   return navigateTo ? (
     <StyledInternalTouchableLink
+      {...focusProps}
       navigateTo={navigateTo}
       onBeforeNavigate={onPress}
       disabled={isDisabled}
@@ -154,17 +162,27 @@ const ChildrenContainer = styled.View({
   paddingRight: getSpacing(4),
 })
 
-const StyledInternalTouchableLink: typeof InternalTouchableLink = styled(InternalTouchableLink)({
+const StyledInternalTouchableLink: typeof InternalTouchableLink = styled(
+  InternalTouchableLink
+).attrs<{
+  color: ColorsEnum
+}>(({ color }) => ({
+  hoverUnderlineColor: color,
+}))<{ isFocus: boolean }>(({ theme, isFocus }) => ({
   width: '100%',
   justifyContent: 'center',
   flexDirection: 'row',
-})
+  borderRadius: theme.borderRadius.radius,
+  ...customFocusOutline({ isFocus, color: theme.colors.black }),
+}))
 
-const StyledTouchableOpacity = styled(TouchableOpacity)({
+const StyledTouchableOpacity = styledButton(Touchable)(({ theme }) => ({
   width: '100%',
   justifyContent: 'center',
   flexDirection: 'row',
-})
+  borderRadius: theme.borderRadius.radius,
+  ...customFocusOutline({ color: theme.colors.black }),
+}))
 
 const StyledButtonText = styled(Typo.BodyAccent)<{ stepState: StepButtonState }>(
   ({ stepState, theme }) => ({
