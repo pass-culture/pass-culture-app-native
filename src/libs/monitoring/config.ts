@@ -41,6 +41,9 @@ export async function getSentryConfig() {
     enableAppHangTracking: false,
     ignoreErrors: [
       'Non-Error promise rejection captured with value: Timeout', // Sentry Issue: APPLICATION-NATIVE-77ZQ
+      'Could not decrypt data with alias', // Sentry Issue: APPLICATION-NATIVE-1GTFR
+      'Could not encrypt data with alias:', // Sentry Issue: APPLICATION-NATIVE-1GTGN
+      'No keychain is available. You may need to restart your computer.', // Sentry Issue: APPLICATION-NATIVE-1GTTT
     ],
   } satisfies ReactNativeOptions
 }
