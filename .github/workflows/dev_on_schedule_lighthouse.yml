@@ -1,4 +1,4 @@
-name: "4 [on_pr] Lighthouse Web Performance test"
+name: '4 [on_pr] Lighthouse Web Performance test'
 
 on:
   schedule:
@@ -32,7 +32,7 @@ jobs:
           service-account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
       - name: Run Lighthouse CI 🚀
         run: |
-          yarn global add @lhci/cli@0.14.0
+          yarn dlx @lhci/cli@0.14.0
           yarn test:lighthouse --collect.psiApiKey=${{ secrets.PAGE_SPEED_API_KEY }}
       - name: Upload lighthouse report to artifacts 🔎
         uses: actions/upload-artifact@v4
