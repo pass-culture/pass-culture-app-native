@@ -2,7 +2,6 @@ import { useRoute } from '@react-navigation/native'
 import React, { FunctionComponent, useMemo } from 'react'
 
 import { ArtistBody } from 'features/artist/components/ArtistBody/ArtistBody'
-import { findArtistById } from 'features/artist/helpers/findArtistById'
 import { PageNotFound } from 'features/navigation/pages/PageNotFound'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { useArtistResults } from 'features/offer/helpers/useArtistResults/useArtistResults'
@@ -25,7 +24,9 @@ export const Artist: FunctionComponent = () => {
   })
 
   const artist = useMemo(() => {
-    return findArtistById(artistPlaylist, params.id) || findArtistById(artistTopOffers, params.id)
+    return [...artistPlaylist, ...artistTopOffers][0]?.artists?.find(
+      (artist) => artist.id === params.id
+    )
   }, [artistPlaylist, artistTopOffers, params.id])
 
   if (!artist) return <PageNotFound />
