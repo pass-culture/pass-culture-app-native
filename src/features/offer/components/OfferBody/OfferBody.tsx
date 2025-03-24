@@ -14,8 +14,6 @@ import { OfferReactionSection } from 'features/offer/components/OfferReactionSec
 import { OfferSummaryInfoList } from 'features/offer/components/OfferSummaryInfoList/OfferSummaryInfoList'
 import { OfferTitle } from 'features/offer/components/OfferTitle/OfferTitle'
 import { OfferVenueButton } from 'features/offer/components/OfferVenueButton/OfferVenueButton'
-import { COMMA_OR_SEMICOLON_REGEX, EXCLUDED_ARTISTS } from 'features/offer/helpers/constants'
-import { getOfferArtists } from 'features/offer/helpers/getOfferArtists/getOfferArtists'
 import { getOfferMetadata } from 'features/offer/helpers/getOfferMetadata/getOfferMetadata'
 import { getOfferPrices } from 'features/offer/helpers/getOfferPrice/getOfferPrice'
 import { getOfferTags } from 'features/offer/helpers/getOfferTags/getOfferTags'
@@ -70,7 +68,7 @@ export const OfferBody: FunctionComponent<Props> = ({
 
   const extraData = offer.extraData ?? undefined
   const tags = getOfferTags(subcategory.appLabel, extraData)
-  const artists = getOfferArtists(subcategory.categoryId, offer)
+  const artists = offer.artists
   const prices = getOfferPrices(offer.stocks)
 
   const displayedPrice = getDisplayedPrice(
@@ -85,16 +83,12 @@ export const OfferBody: FunctionComponent<Props> = ({
   )
 
   const { artistPlaylist: artistOffers } = useArtistResults({
-    artists,
+    artistId: artists.length > 0 ? artists[0]?.id : undefined,
     subcategoryId: offer.subcategoryId,
   })
 
-  const hasAccessToArtistPage =
-    hasArtistPage &&
-    artists &&
-    artistOffers?.length > 1 &&
-    !COMMA_OR_SEMICOLON_REGEX.test(artists) &&
-    !EXCLUDED_ARTISTS.includes(artists.toLowerCase())
+  const hasAccessToArtistPage = hasArtistPage && artists.length === 1 && artistOffers?.length > 1
+
   const isCinemaOffer = subcategory.categoryId === CategoryIdEnum.CINEMA
 
   const { summaryInfoItems } = useOfferSummaryInfoList({
@@ -115,9 +109,10 @@ export const OfferBody: FunctionComponent<Props> = ({
     shouldDisplayAccessibilitySection || !!offer.description || hasMetadata
 
   const handleArtistLinkPress = () => {
-    const mainArtistName = artists?.split(',')[0] ?? ''
+    if (!artists[0]) return
+    const mainArtistName = artists[0].name
     analytics.logConsultArtist({ offerId: offer.id, artistName: mainArtistName, from: 'offer' })
-    navigate('Artist', { fromOfferId: offer.id })
+    navigate('Artist', { id: artists[0].id })
   }
 
   const isOpenToPublicVenue = offer.venue.isOpenToPublic ?? false
@@ -145,7 +140,7 @@ export const OfferBody: FunctionComponent<Props> = ({
               <OfferTitle offerName={offer.name} />
               {artists ? (
                 <OfferArtists
-                  artists={artists}
+                  artists={artists.map((artist) => artist.name).join(', ')}
                   onPressArtistLink={hasAccessToArtistPage ? handleArtistLinkPress : undefined}
                 />
               ) : null}
