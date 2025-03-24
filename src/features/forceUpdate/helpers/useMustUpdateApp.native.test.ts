@@ -16,6 +16,7 @@ describe('useMustUpdateApp', () => {
     useGetMinimalBuildNumberSpy.mockReturnValueOnce({
       minimalBuildNumber: 10_303_999,
       isLoading: false,
+      error: undefined,
     })
 
     const { result } = renderUseMustUpdateApp()
@@ -29,6 +30,7 @@ describe('useMustUpdateApp', () => {
     useGetMinimalBuildNumberSpy.mockReturnValueOnce({
       minimalBuildNumber: 10_304_001,
       isLoading: false,
+      error: undefined,
     })
 
     const { result } = renderUseMustUpdateApp()
@@ -42,6 +44,7 @@ describe('useMustUpdateApp', () => {
     useGetMinimalBuildNumberSpy.mockReturnValueOnce({
       minimalBuildNumber: buildVersion,
       isLoading: false,
+      error: undefined,
     })
 
     const { result } = renderUseMustUpdateApp()

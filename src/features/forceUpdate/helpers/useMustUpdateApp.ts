@@ -4,8 +4,6 @@ import { useMinimalBuildNumber } from 'features/forceUpdate/helpers/useMinimalBu
 import { eventMonitoring } from 'libs/monitoring/services'
 import { getAppBuildVersion } from 'libs/packageJson'
 
-const DELAY_BEFORE_VALUE_SHOULD_BE_SET_IN_MS = 15000
-
 export enum MustUpdateAppState {
   PENDING = 'pending',
   SHOULD_UPDATE = 'shouldUpdate',
@@ -13,24 +11,20 @@ export enum MustUpdateAppState {
 }
 
 export const useMustUpdateApp: () => MustUpdateAppState = () => {
-  const { minimalBuildNumber, isLoading } = useMinimalBuildNumber()
+  const { minimalBuildNumber, isLoading, error } = useMinimalBuildNumber()
   const appBuildVersion = getAppBuildVersion()
 
   useEffect(() => {
-    const timer = globalThis.setTimeout(() => {
-      if (!minimalBuildNumber) {
-        eventMonitoring.captureException(new Error('MustUpdateNoMinimalBuildNumberError'), {
-          extra: {
-            minimalBuildNumber,
-            build: appBuildVersion,
-          },
-        })
-      }
-    }, DELAY_BEFORE_VALUE_SHOULD_BE_SET_IN_MS)
-    return () => {
-      clearInterval(timer)
+    if (!isLoading && !minimalBuildNumber && error) {
+      eventMonitoring.captureException(new Error('MustUpdateNoMinimalBuildNumberError'), {
+        extra: {
+          minimalBuildNumber,
+          build: appBuildVersion,
+          error,
+        },
+      })
     }
-  }, [appBuildVersion, minimalBuildNumber])
+  }, [appBuildVersion, error, isLoading, minimalBuildNumber])
 
   if (isLoading) return MustUpdateAppState.PENDING
 
