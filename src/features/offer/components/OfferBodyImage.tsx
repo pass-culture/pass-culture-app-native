@@ -1,10 +1,10 @@
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, useMemo } from 'react'
 // we import FastImage to get the resizeMode, not to use it as a component
 // eslint-disable-next-line no-restricted-imports
 import FastImage, { OnLoadEvent } from 'react-native-fast-image'
 import styled from 'styled-components/native'
 
-import { OfferImageContainerDimensions } from 'features/offer/helpers/useOfferImageContainerDimensions'
+import { OfferImageContainerDimensions } from 'features/offer/types'
 import { FastImage as ResizedFastImage } from 'libs/resizing-image-on-demand/FastImage'
 
 type Props = {
@@ -20,11 +20,17 @@ export const OfferBodyImage: FunctionComponent<Props> = ({
   isInCarousel,
   onLoad,
 }) => {
+  const imageStyle = useMemo(
+    () =>
+      isInCarousel
+        ? { ...imageDimensions.imageStyle, borderRadius: 0 }
+        : imageDimensions.imageStyle,
+    [isInCarousel, imageDimensions]
+  )
+
   return (
     <StyledFastImage
-      style={
-        isInCarousel ? imageDimensions.imageStyleWithoutBorderRadius : imageDimensions.imageStyle
-      }
+      style={imageStyle}
       url={imageUrl}
       resizeMode={FastImage.resizeMode?.cover}
       testID="offerBodyImage"

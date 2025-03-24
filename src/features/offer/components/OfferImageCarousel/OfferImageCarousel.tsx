@@ -7,7 +7,7 @@ import styled, { useTheme } from 'styled-components/native'
 import { OfferImageCarouselItem } from 'features/offer/components/OfferImageCarousel/OfferImageCarouselItem'
 import { OfferImageCarouselPagination } from 'features/offer/components/OfferImageCarouselPagination/OfferImageCarouselPagination'
 import { calculateCarouselIndex } from 'features/offer/helpers/calculateCarouselIndex/calculateCarouselIndex'
-import { OfferImageContainerDimensions } from 'features/offer/helpers/useOfferImageContainerDimensions'
+import { OfferImageContainerDimensions } from 'features/offer/types'
 import { ImageWithCredit } from 'shared/types'
 import { Typo, getSpacing } from 'ui/theme'
 

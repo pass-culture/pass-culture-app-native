@@ -1,6 +1,7 @@
 import { useTheme } from 'styled-components/native'
 
 import { SubcategoryIdEnum } from 'api/gen'
+import { OfferImageContainerDimensions } from 'features/offer/types'
 import { getSpacing } from 'ui/theme'
 import { MARGIN_DP } from 'ui/theme/grid'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
@@ -16,24 +17,6 @@ const PORTRAIT_DIMENSIONS = {
   musique: { height: getSpacing(60), width: getSpacing(60) },
 } as const
 
-export type OfferImageContainerDimensions = {
-  backgroundHeight: number
-  imageStyle: {
-    height: number
-    width: number
-    maxWidth: number
-    aspectRatio: number
-    borderRadius: number
-  }
-  imageStyleWithoutBorderRadius: {
-    height: number
-    width: number
-    maxWidth: number
-    aspectRatio: number
-    borderRadius: number
-  }
-}
-
 export const useOfferImageContainerDimensions = (
   subcategoryId?: SubcategoryIdEnum
 ): OfferImageContainerDimensions => {
@@ -41,12 +24,14 @@ export const useOfferImageContainerDimensions = (
   const { appContentWidth, borderRadius } = useTheme()
   const fullWidth = appContentWidth - 2 * MARGIN_DP
 
-  const isMusique =
+  const isMusicSupport =
     subcategoryId ===
     (SubcategoryIdEnum.SUPPORT_PHYSIQUE_MUSIQUE_CD ||
       SubcategoryIdEnum.SUPPORT_PHYSIQUE_MUSIQUE_VINYLE)
 
-  const { height, width } = isMusique ? PORTRAIT_DIMENSIONS.musique : PORTRAIT_DIMENSIONS.default
+  const { height, width } = isMusicSupport
+    ? PORTRAIT_DIMENSIONS.musique
+    : PORTRAIT_DIMENSIONS.default
 
   const getImageStyle = (borderRadiusValue: number) => ({
     height,
@@ -59,6 +44,5 @@ export const useOfferImageContainerDimensions = (
   return {
     backgroundHeight: top + HEADER_HEIGHT,
     imageStyle: getImageStyle(borderRadius.radius),
-    imageStyleWithoutBorderRadius: getImageStyle(0),
   }
 }

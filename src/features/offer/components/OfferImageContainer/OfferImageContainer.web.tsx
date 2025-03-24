@@ -4,10 +4,8 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { CategoryIdEnum } from 'api/gen'
 import { OfferImageRenderer } from 'features/offer/components/OfferImageContainer/OfferImageRenderer'
-import {
-  OfferImageContainerDimensions,
-  offerImageContainerMarginTop,
-} from 'features/offer/helpers/useOfferImageContainerDimensions'
+import { offerImageContainerMarginTop } from 'features/offer/helpers/useOfferImageContainerDimensions'
+import { OfferImageContainerDimensions } from 'features/offer/types'
 import { ImageWithCredit } from 'shared/types'
 import { useGetHeaderHeight } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
 import { getSpacing } from 'ui/theme'

@@ -3,7 +3,7 @@ import { OnLoadEvent } from 'react-native-fast-image'
 
 import { OfferBodyImage } from 'features/offer/components/OfferBodyImage'
 import { OfferImageWrapper } from 'features/offer/components/OfferImageWrapper/OfferImageWrapper'
-import { OfferImageContainerDimensions } from 'features/offer/helpers/useOfferImageContainerDimensions'
+import { OfferImageContainerDimensions } from 'features/offer/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 

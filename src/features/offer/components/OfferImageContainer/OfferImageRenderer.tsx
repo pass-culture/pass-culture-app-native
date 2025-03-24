@@ -7,7 +7,7 @@ import { CategoryIdEnum } from 'api/gen'
 import { OfferBodyImagePlaceholder } from 'features/offer/components/OfferBodyImagePlaceholder'
 import { OfferImageCarousel } from 'features/offer/components/OfferImageCarousel/OfferImageCarousel'
 import { OfferImageCarouselItem } from 'features/offer/components/OfferImageCarousel/OfferImageCarouselItem'
-import { OfferImageContainerDimensions } from 'features/offer/helpers/useOfferImageContainerDimensions'
+import { OfferImageContainerDimensions } from 'features/offer/types'
 import { ImageWithCredit } from 'shared/types'
 
 type Props = {

@@ -6,7 +6,7 @@ import { StyleProp, View, ViewStyle } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
 
-import { OfferImageContainerDimensions } from 'features/offer/helpers/useOfferImageContainerDimensions'
+import { OfferImageContainerDimensions } from 'features/offer/types'
 import { getShadow, getSpacing } from 'ui/theme'
 
 type Props = {

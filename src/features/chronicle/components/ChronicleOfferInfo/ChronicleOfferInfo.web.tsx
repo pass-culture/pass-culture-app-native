@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 
 import { CategoryIdEnum } from 'api/gen'
 import { OfferBodyImagePlaceholder } from 'features/offer/components/OfferBodyImagePlaceholder'
-import { OfferImageContainerDimensions } from 'features/offer/helpers/useOfferImageContainerDimensions'
+import { OfferImageContainerDimensions } from 'features/offer/types'
 import { FastImage } from 'libs/resizing-image-on-demand/FastImage'
 import { Typo, getSpacing } from 'ui/theme'
 

@@ -2,10 +2,8 @@ import React, { FunctionComponent } from 'react'
 import { useSharedValue } from 'react-native-reanimated'
 
 import { CategoryIdEnum } from 'api/gen'
-import {
-  OfferImageContainerDimensions,
-  offerImageContainerMarginTop,
-} from 'features/offer/helpers/useOfferImageContainerDimensions'
+import { offerImageContainerMarginTop } from 'features/offer/helpers/useOfferImageContainerDimensions'
+import { OfferImageContainerDimensions } from 'features/offer/types'
 import { ImageWithCredit } from 'shared/types'
 import { getSpacing } from 'ui/theme'
 
