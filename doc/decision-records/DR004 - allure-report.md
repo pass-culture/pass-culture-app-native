@@ -16,7 +16,7 @@ Tout est référencé dans les actions `dev_on_workflow_tester.yml`
 La pipeline de tests est divisée en 10 shards (les jobs tournent simultanément pour plus de rapidité), 7 pour les tests natifs et 3 pour le web.
 Un rapport sera créé pour chacun des shards
 Chacun des job tourne sur une machine virtuelle différente, donc un nouveau job doit cloner (checkout) le repo, créer les node_modules, etc.
-Les différentss moyen de passer des fichiers d'un job à un autre est de créer un artefact, un cache sur Github (comme pour les node_modules), ou utiliser le service Google Cloud. On a décider d'utiliser Google Cloud à l'instar du job de coverage, qui est relativement similaire.
+Les différents moyens de passer des fichiers d'un job à un autre est de créer un artefact, un cache sur Github (comme pour les node_modules), ou utiliser le service Google Cloud. On a décider d'utiliser Google Cloud à l'instar du job de coverage, qui est relativement similaire.
 Les jobs de tests, qui créent les rapports Allure tournent donc sur 10 machines virtuelles différentes
 Il faut dans un premier temps les uploader vers Google Cloud
 
