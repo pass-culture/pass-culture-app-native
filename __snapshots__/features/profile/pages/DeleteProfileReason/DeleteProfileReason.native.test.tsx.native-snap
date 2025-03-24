@@ -441,6 +441,9 @@ exports[`<DeleteProfileReason /> should match snapshot 1`] = `
                     "userSelect": "auto",
                   },
                   {},
+                  {
+                    "borderRadius": 8,
+                  },
                 ],
                 {
                   "opacity": 1,
@@ -568,6 +571,9 @@ exports[`<DeleteProfileReason /> should match snapshot 1`] = `
                     "userSelect": "auto",
                   },
                   {},
+                  {
+                    "borderRadius": 8,
+                  },
                 ],
                 {
                   "opacity": 1,
@@ -695,6 +701,9 @@ exports[`<DeleteProfileReason /> should match snapshot 1`] = `
                     "userSelect": "auto",
                   },
                   {},
+                  {
+                    "borderRadius": 8,
+                  },
                 ],
                 {
                   "opacity": 1,
@@ -822,6 +831,9 @@ exports[`<DeleteProfileReason /> should match snapshot 1`] = `
                     "userSelect": "auto",
                   },
                   {},
+                  {
+                    "borderRadius": 8,
+                  },
                 ],
                 {
                   "opacity": 1,
@@ -949,6 +961,9 @@ exports[`<DeleteProfileReason /> should match snapshot 1`] = `
                     "userSelect": "auto",
                   },
                   {},
+                  {
+                    "borderRadius": 8,
+                  },
                 ],
                 {
                   "opacity": 1,
@@ -1076,6 +1091,9 @@ exports[`<DeleteProfileReason /> should match snapshot 1`] = `
                     "userSelect": "auto",
                   },
                   {},
+                  {
+                    "borderRadius": 8,
+                  },
                 ],
                 {
                   "opacity": 1,

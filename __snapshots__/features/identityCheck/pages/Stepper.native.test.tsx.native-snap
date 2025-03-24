@@ -221,7 +221,7 @@ exports[`Stepper navigation should render correctly 1`] = `
                   "flexBasis": 0,
                   "flexGrow": 1,
                   "flexShrink": 1,
-                  "marginLeft": 8,
+                  "marginHorizontal": 8,
                 },
               ]
             }
@@ -263,6 +263,7 @@ exports[`Stepper navigation should render correctly 1`] = `
                     },
                     {},
                     {
+                      "borderRadius": 8,
                       "flexDirection": "row",
                       "justifyContent": "center",
                       "width": "100%",
@@ -478,7 +479,7 @@ exports[`Stepper navigation should render correctly 1`] = `
                   "flexBasis": 0,
                   "flexGrow": 1,
                   "flexShrink": 1,
-                  "marginLeft": 8,
+                  "marginHorizontal": 8,
                 },
               ]
             }
@@ -520,6 +521,7 @@ exports[`Stepper navigation should render correctly 1`] = `
                     },
                     {},
                     {
+                      "borderRadius": 8,
                       "flexDirection": "row",
                       "justifyContent": "center",
                       "width": "100%",
@@ -762,7 +764,7 @@ exports[`Stepper navigation should render correctly 1`] = `
                   "flexBasis": 0,
                   "flexGrow": 1,
                   "flexShrink": 1,
-                  "marginLeft": 8,
+                  "marginHorizontal": 8,
                 },
               ]
             }
@@ -804,6 +806,7 @@ exports[`Stepper navigation should render correctly 1`] = `
                     },
                     {},
                     {
+                      "borderRadius": 8,
                       "flexDirection": "row",
                       "justifyContent": "center",
                       "width": "100%",
@@ -1016,7 +1019,7 @@ exports[`Stepper navigation should render correctly 1`] = `
                   "flexBasis": 0,
                   "flexGrow": 1,
                   "flexShrink": 1,
-                  "marginLeft": 8,
+                  "marginHorizontal": 8,
                 },
               ]
             }
@@ -1058,6 +1061,7 @@ exports[`Stepper navigation should render correctly 1`] = `
                     },
                     {},
                     {
+                      "borderRadius": 8,
                       "flexDirection": "row",
                       "justifyContent": "center",
                       "width": "100%",

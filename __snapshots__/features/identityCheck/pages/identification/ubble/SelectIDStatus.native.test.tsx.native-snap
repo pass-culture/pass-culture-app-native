@@ -426,6 +426,9 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
                         "userSelect": "auto",
                       },
                       {},
+                      {
+                        "borderRadius": 8,
+                      },
                     ],
                     {
                       "opacity": 1,
@@ -625,7 +628,10 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
                   [
                     {
                       "flexDirection": "column",
-                      "paddingLeft": 0,
+                      "paddingBottom": 4,
+                      "paddingLeft": 4,
+                      "paddingRight": 4,
+                      "paddingTop": 4,
                       "width": "100%",
                     },
                   ]

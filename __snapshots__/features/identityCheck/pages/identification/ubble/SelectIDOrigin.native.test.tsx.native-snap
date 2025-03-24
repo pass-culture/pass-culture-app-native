@@ -381,6 +381,9 @@ exports[`SelectIDOrigin should render correctly 1`] = `
                         "userSelect": "auto",
                       },
                       {},
+                      {
+                        "borderRadius": 8,
+                      },
                     ],
                     {
                       "opacity": 1,

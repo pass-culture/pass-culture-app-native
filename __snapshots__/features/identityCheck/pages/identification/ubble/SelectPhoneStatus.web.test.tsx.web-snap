@@ -174,7 +174,7 @@ exports[`SelectPhoneStatus should render correctly 1`] = `
                 class="css-view-175oi2r r-height-mabqd8"
               />
               <ul
-                class="css-view-175oi2r r-flexDirection-eqz5dr r-overflow-1dqxon3 r-paddingLeft-gy4na3 r-width-13qz1uu"
+                class="css-view-175oi2r r-flexDirection-eqz5dr r-overflow-1dqxon3 r-paddingBottom-iphfwy r-paddingLeft-m2pi6t r-paddingRight-1hvjb8t r-paddingTop-1h8ys4a r-width-13qz1uu"
                 role="list"
               >
                 <li
@@ -182,7 +182,7 @@ exports[`SelectPhoneStatus should render correctly 1`] = `
                   role="listitem"
                 >
                   <div
-                    class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
+                    class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-borderRadius-1xfd6ze"
                     data-testid="HeroButtonList"
                     style="transition-duration: 0s;"
                     tabindex="0"
@@ -244,7 +244,7 @@ exports[`SelectPhoneStatus should render correctly 1`] = `
                   role="listitem"
                 >
                   <div
-                    class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
+                    class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd r-borderRadius-1xfd6ze"
                     data-testid="HeroButtonList"
                     style="transition-duration: 0s;"
                     tabindex="0"

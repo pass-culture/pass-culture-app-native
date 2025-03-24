@@ -30,6 +30,42 @@ describe('<RemoteBanner/>', () => {
     expect(banner).not.toBeOnTheScreen()
   })
 
+  it('should not be displayed when no redirection type or external URL', () => {
+    render(
+      <RemoteGenericBanner from="profile" remoteGenericBannerOptions={bannerWithoutTypeOrUrl} />
+    )
+
+    const banner = screen.queryByText('title 1')
+
+    expect(banner).not.toBeOnTheScreen()
+  })
+
+  it('should not be displayed when redirection is external, but URL is an empty string', async () => {
+    render(
+      <RemoteGenericBanner
+        from="profile"
+        remoteGenericBannerOptions={bannerExternalUrlWithMissingUrl}
+      />
+    )
+
+    const banner = screen.queryByText('title 1')
+
+    expect(banner).not.toBeOnTheScreen()
+  })
+
+  it('should not be displayed external URL is missing', async () => {
+    render(
+      <RemoteGenericBanner
+        from="profile"
+        remoteGenericBannerOptions={bannerExternalUrlWithMissingUrl}
+      />
+    )
+
+    const banner = screen.queryByText('title 1')
+
+    expect(banner).not.toBeOnTheScreen()
+  })
+
   it('should displayed when redirection type is an expected value', () => {
     render(<RemoteGenericBanner from="profile" remoteGenericBannerOptions={bannerExternalUrl} />)
 
@@ -82,24 +118,7 @@ describe('<RemoteBanner/>', () => {
     )
 
     expect(accessibilityLabel).toBeTruthy()
-    expect(openUrl).toHaveBeenCalledWith('https://www.test.fr')
-  })
-
-  it('should be disabled and there should not be an a11y label when redirection is external, but url is an empty string', async () => {
-    render(
-      <RemoteGenericBanner
-        from="profile"
-        remoteGenericBannerOptions={bannerExternalUrlWithMissingUrl}
-      />
-    )
-
-    const banner = await screen.findByText('title 1')
-    await user.press(banner)
-
-    const accessibilityLabel = screen.queryByLabelText('Nouvelle fenêtre : https://www.test.fr')
-
-    expect(accessibilityLabel).toBeFalsy()
-    expect(openUrl).not.toHaveBeenCalled()
+    expect(openUrl).toHaveBeenCalledWith('https://www.test.fr', undefined, true)
   })
 
   it('should log analytics when user presses banner', async () => {
@@ -153,22 +172,6 @@ describe('<RemoteBanner/>', () => {
 
       expect(accessibilityLabel).toBeTruthy()
     })
-
-    it('should not have accessibilityLabel if external URL is missing', async () => {
-      render(
-        <RemoteGenericBanner
-          from="profile"
-          remoteGenericBannerOptions={bannerExternalUrlWithMissingUrl}
-        />
-      )
-
-      const banner = await screen.findByText('title 1')
-      await user.press(banner)
-
-      const accessibilityLabel = screen.queryByLabelText('Nouvelle fenêtre : https://www.test.fr')
-
-      expect(accessibilityLabel).toBeFalsy()
-    })
   })
 })
 
@@ -202,4 +205,10 @@ const bannerBadType: Partial<RemoteBannerType> = {
   subtitleWeb: 'subtitleWeb 1',
   redirectionUrl: 'https://www.test.fr',
   redirectionType: 'other',
+}
+
+const bannerWithoutTypeOrUrl: Partial<RemoteBannerType> = {
+  title: 'title 1',
+  subtitleMobile: 'subtitleMobile 1',
+  subtitleWeb: 'subtitleWeb 1',
 }

@@ -54,7 +54,7 @@ export type TouchableLinkProps = TouchableLinkGenericProps & {
   linkProps?:
     | {
         href: string
-        accessibilityRole: 'link'
+        accessibilityRole: 'link' // In useLinkPropsType "link" is not assignable to type 'AccessibilityRole.LINK'
         onPress: () => void
       }
     | {

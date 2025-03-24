@@ -10,6 +10,8 @@ import { checkAccessibilityFor, render } from 'tests/utils/web'
 
 import { Stepper } from './Stepper'
 
+jest.mock('ui/theme/customFocusOutline/customFocusOutline')
+
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 

@@ -8,6 +8,8 @@ import * as useModalAPI from 'ui/components/modals/useModal'
 
 import { VenueSelectionModal } from './VenueSelectionModal'
 
+jest.mock('libs/firebase/analytics/analytics')
+
 const DEFAULT_POSITION = { latitude: 66, longitude: 66 } as GeoCoordinates | null
 const mockRequestGeolocPermission = jest.fn()
 const defaultUseLocation = {
