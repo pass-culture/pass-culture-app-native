@@ -1,11 +1,10 @@
 import React, { memo } from 'react'
-import { FlatListProps } from 'react-native'
 
 import { BusinessModule } from 'features/home/components/modules/business/BusinessModule'
 import { CategoryListModule } from 'features/home/components/modules/categories/CategoryListModule'
 import { ExclusivityModule } from 'features/home/components/modules/exclusivity/ExclusivityModule'
 import { HighlightOfferModule } from 'features/home/components/modules/HighlightOfferModule'
-import { OffersModule } from 'features/home/components/modules/OffersModule'
+import { OffersModule, OffersModuleProps } from 'features/home/components/modules/OffersModule'
 import { RecommendationModule } from 'features/home/components/modules/RecommendationModule'
 import { ThematicHighlightModule } from 'features/home/components/modules/ThematicHighlightModule'
 import { TrendsModule } from 'features/home/components/modules/TrendsModule'
@@ -41,14 +40,21 @@ const UnmemoizedModule = ({
   homeEntryId,
   data,
   videoModuleId,
-  onViewableItemsChanged,
+  onModuleViewableItemsChanged,
 }: {
   item: HomepageModule
   index: number
   homeEntryId: string
   data?: ModuleData
   videoModuleId?: string
-  onViewableItemsChanged: FlatListProps<unknown>['onViewableItemsChanged']
+  onModuleViewableItemsChanged?: ({
+    moduleId,
+    index,
+    changedItemIds,
+    homeEntryId,
+  }: Pick<OffersModuleProps, 'homeEntryId' | 'index' | 'moduleId'> & {
+    changedItemIds: string[]
+  }) => void
 }) => {
   /* eslint-disable @typescript-eslint/no-explicit-any */
   if (isExclusivityModule(item)) return null
@@ -63,7 +69,9 @@ const UnmemoizedModule = ({
       moduleId={item.id}
       data={data}
       shouldShowModal={item.id === videoModuleId}
-      onViewableItemsChanged={onViewableItemsChanged}
+      onViewableItemsChanged={(changedItemIds: string[]) =>
+        onModuleViewableItemsChanged?.({ index, moduleId: item.id, changedItemIds, homeEntryId })
+      }
     />
   )
 }
