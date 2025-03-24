@@ -13,16 +13,17 @@ export enum MustUpdateAppState {
 }
 
 export const useMustUpdateApp: () => MustUpdateAppState = () => {
-  const { minimalBuildNumber, isLoading } = useMinimalBuildNumber()
+  const { minimalBuildNumber, isLoading, error } = useMinimalBuildNumber()
   const appBuildVersion = getAppBuildVersion()
 
   useEffect(() => {
     const timer = globalThis.setTimeout(() => {
-      if (!isLoading && !minimalBuildNumber) {
+      if (!isLoading && !minimalBuildNumber && error) {
         eventMonitoring.captureException(new Error('MustUpdateNoMinimalBuildNumberError'), {
           extra: {
             minimalBuildNumber,
             build: appBuildVersion,
+            error,
           },
         })
       }
@@ -30,7 +31,7 @@ export const useMustUpdateApp: () => MustUpdateAppState = () => {
     return () => {
       clearInterval(timer)
     }
-  }, [appBuildVersion, isLoading, minimalBuildNumber])
+  }, [appBuildVersion, error, isLoading, minimalBuildNumber])
 
   if (isLoading) return MustUpdateAppState.PENDING
 
