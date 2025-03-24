@@ -130,6 +130,8 @@ export const OfferBody: FunctionComponent<Props> = ({
 
   const hasSameAddress = fullAddressOffer === fullAddressVenue
 
+  const hasVenuePage = shouldUseIsOpenToPublic ? isOpenToPublicVenue : offer.venue.isPermanent
+
   return (
     <Container>
       <MarginContainer gap={6}>
@@ -182,7 +184,9 @@ export const OfferBody: FunctionComponent<Props> = ({
         <ProposedBySection
           name={offer.venue.name}
           imageUrl={offer.venue.bannerUrl}
-          navigateTo={{ screen: 'Venue', params: { id: offer.venue.id } }}
+          navigateTo={
+            hasVenuePage ? { screen: 'Venue', params: { id: offer.venue.id } } : undefined
+          }
         />
       )}
 
