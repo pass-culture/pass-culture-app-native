@@ -17,7 +17,7 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type ProposedBySectionProps = {
   name: string
-  navigateTo: InternalTouchableLinkProps['navigateTo']
+  navigateTo?: InternalTouchableLinkProps['navigateTo']
   imageUrl?: string | null
 }
 
@@ -28,31 +28,41 @@ export const ProposedBySection: FunctionComponent<ProposedBySectionProps> = ({
 }) => {
   const theme = useTheme()
 
+  const content = (
+    <ViewGap gap={4}>
+      <Typo.Title3 {...getHeadingAttrs(2)}>Proposé par</Typo.Title3>
+      <InfoHeader
+        title={name}
+        rightComponent={
+          navigateTo ? (
+            <RightFilled size={theme.icons.sizes.extraSmall} testID="RightFilled" />
+          ) : undefined
+        }
+        defaultThumbnailSize={AVATAR_SMALL}
+        thumbnailComponent={
+          <Avatar size={AVATAR_SMALL} rounded={false} borderRadius={AVATAR_BORDER_RADIUS_SMALL}>
+            {imageUrl ? (
+              <FullSizeImage url={imageUrl} testID="VenueImage" />
+            ) : (
+              <DefaultVenueAvatar testID="DefaultImage" />
+            )}
+          </Avatar>
+        }
+      />
+    </ViewGap>
+  )
+
   const Wrapper = theme.isDesktopViewport ? Fragment : StyledSectionWithDivider
 
   return (
     <Wrapper>
-      <InternalTouchableLink navigateTo={navigateTo} hoverUnderlineColor={theme.colors.white}>
-        <ViewGap gap={4}>
-          <Typo.Title3 {...getHeadingAttrs(2)}>Proposé par</Typo.Title3>
-          <InfoHeader
-            title={name}
-            rightComponent={
-              <RightFilled size={theme.icons.sizes.extraSmall} testID="RightFilled" />
-            }
-            defaultThumbnailSize={AVATAR_SMALL}
-            thumbnailComponent={
-              <Avatar size={AVATAR_SMALL} rounded={false} borderRadius={AVATAR_BORDER_RADIUS_SMALL}>
-                {imageUrl ? (
-                  <FullSizeImage url={imageUrl} testID="VenueImage" />
-                ) : (
-                  <DefaultVenueAvatar testID="DefaultImage" />
-                )}
-              </Avatar>
-            }
-          />
-        </ViewGap>
-      </InternalTouchableLink>
+      {navigateTo ? (
+        <InternalTouchableLink navigateTo={navigateTo} hoverUnderlineColor={theme.colors.white}>
+          {content}
+        </InternalTouchableLink>
+      ) : (
+        content
+      )}
     </Wrapper>
   )
 }
