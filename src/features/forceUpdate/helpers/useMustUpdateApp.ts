@@ -18,7 +18,7 @@ export const useMustUpdateApp: () => MustUpdateAppState = () => {
 
   useEffect(() => {
     const timer = globalThis.setTimeout(() => {
-      if (!minimalBuildNumber) {
+      if (!isLoading && !minimalBuildNumber) {
         eventMonitoring.captureException(new Error('MustUpdateNoMinimalBuildNumberError'), {
           extra: {
             minimalBuildNumber,
@@ -30,7 +30,7 @@ export const useMustUpdateApp: () => MustUpdateAppState = () => {
     return () => {
       clearInterval(timer)
     }
-  }, [appBuildVersion, minimalBuildNumber])
+  }, [appBuildVersion, isLoading, minimalBuildNumber])
 
   if (isLoading) return MustUpdateAppState.PENDING
 
