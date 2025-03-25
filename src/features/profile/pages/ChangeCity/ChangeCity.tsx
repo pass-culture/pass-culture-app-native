@@ -8,9 +8,9 @@ import { CityForm, cityResolver } from 'features/identityCheck/pages/profile/Set
 import { cityActions, useCity } from 'features/identityCheck/pages/profile/store/cityStore'
 import { getProfileStackConfig } from 'features/navigation/ProfileStackNavigator/getProfileStackConfig'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { usePatchProfile } from 'features/profile/api/usePatchProfile'
 import { CitySearchInput } from 'features/profile/components/CitySearchInput/CitySearchInput'
 import { analytics } from 'libs/analytics/provider'
+import { usePatchProfileMutation } from 'queries/profile/usePatchProfileMutation'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
@@ -32,7 +32,7 @@ export const ChangeCity = () => {
     resolver: yupResolver(cityResolver),
     defaultValues: { city: storedCity ?? undefined },
   })
-  const { mutate: patchProfile } = usePatchProfile({
+  const { mutate: patchProfile } = usePatchProfileMutation({
     onSuccess: (_, variables) => {
       analytics.logUpdatePostalCode({
         newCity: variables.city ?? '',

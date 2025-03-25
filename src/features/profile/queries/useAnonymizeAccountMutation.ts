@@ -7,7 +7,7 @@ type Options = {
   onError?: (error: Error) => void
 }
 
-export const useAnonymizeAccount = ({ onSuccess, onError }: Options) => {
+export const useAnonymizeAccountMutation = ({ onSuccess, onError }: Options) => {
   const { mutate: anonymizeAccount } = useMutation(() => api.postNativeV1AccountAnonymize(), {
     onSuccess,
     onError,

@@ -7,7 +7,6 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { PushNotificationsModal } from 'features/notifications/pages/PushNotificationsModal'
-import { usePatchProfile } from 'features/profile/api/usePatchProfile'
 import { SectionWithSwitch } from 'features/profile/components/SectionWithSwitch/SectionWithSwitch'
 import { UnsavedSettingsModal } from 'features/profile/pages/NotificationSettings/components/UnsavedSettingsModal'
 import {
@@ -22,6 +21,7 @@ import {
   TOTAL_NUMBER_OF_THEME,
 } from 'features/subscription/types'
 import { analytics } from 'libs/analytics/provider'
+import { usePatchProfileMutation } from 'queries/profile/usePatchProfileMutation'
 import { InfoBanner } from 'ui/components/banners/InfoBanner'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
@@ -64,7 +64,7 @@ export const NotificationsSettings = () => {
 
   const { pushPermission } = usePushPermission(updatePushPermissionFromSettings)
 
-  const { mutate: patchProfile, isLoading: isUpdatingProfile } = usePatchProfile({
+  const { mutate: patchProfile, isLoading: isUpdatingProfile } = usePatchProfileMutation({
     onSuccess: () => {
       showSuccessSnackBar({
         message: 'Tes modifications ont été enregistrées\u00a0!',

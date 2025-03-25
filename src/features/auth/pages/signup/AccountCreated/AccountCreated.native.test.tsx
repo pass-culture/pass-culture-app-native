@@ -22,7 +22,7 @@ jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 jest.spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery').mockReturnValue(DEFAULT_REMOTE_CONFIG)
 
-jest.mock('features/profile/api/useResetRecreditAmountToShow')
+jest.mock('queries/profile/useResetRecreditAmountToShowMutation')
 jest.mock('features/navigation/helpers/navigateToHome')
 jest.mock('features/navigation/navigationRef')
 jest.mock('features/auth/context/AuthContext')
