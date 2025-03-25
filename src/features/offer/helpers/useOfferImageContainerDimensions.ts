@@ -14,7 +14,7 @@ const HEADER_HEIGHT = getSpacing(64.5)
 
 const PORTRAIT_DIMENSIONS = {
   default: { height: getSpacing(95), width: getSpacing(95) * RATIO_PORTRAIT },
-  music: { height: getSpacing(60), width: getSpacing(60) },
+  music: { height: getSpacing(95) * RATIO_PORTRAIT, width: getSpacing(95) * RATIO_PORTRAIT },
 } as const
 
 export const useOfferImageContainerDimensions = (
