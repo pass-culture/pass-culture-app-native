@@ -194,6 +194,14 @@ jobs:
           done
           rm -rf allure-results-*
 
+      - name: 'Retrieve previous Allure history from bucket'
+        run: |
+          mkdir -p allure-results/history
+          # Check if history exists and copy it directly
+          if gsutil ls 'gs://${{ inputs.CACHE_BUCKET_NAME }}/pass-culture/pass-culture-app-native/v1-allure-history/' >/dev/null 2>&1; then
+            gsutil cp -r 'gs://${{ inputs.CACHE_BUCKET_NAME }}/pass-culture/pass-culture-app-native/v1-allure-history/*' allure-results/history/ || true
+          fi
+
       - name: Generate Allure Report
         run: yarn generate:allure-report
 
@@ -203,6 +211,15 @@ jobs:
         with:
           secrets: |-
             API_TOKEN_GITHUB:passculture-metier-ehp/passculture-main-sa-access-token
+
+      - name: 'Save Allure history to bucket'
+        run: |
+          # Check if history was generated and save it
+          if [ -d "allure-report/history" ] && [ "$(ls -A allure-report/history)" ]; then
+            gsutil cp -r allure-report/history/* 'gs://${{ inputs.CACHE_BUCKET_NAME }}/pass-culture/pass-culture-app-native/v1-allure-history/' || true
+          else
+            echo "Warning: No history generated in allure-report/history"
+          fi
 
       - name: 'Author'
         run: |
