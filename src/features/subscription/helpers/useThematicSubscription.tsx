@@ -2,10 +2,10 @@ import { useState } from 'react'
 import { Platform } from 'react-native'
 
 import { UserProfileResponse } from 'api/gen'
-import { usePatchProfile } from 'features/profile/api/usePatchProfile'
 import { usePushPermission } from 'features/profile/pages/NotificationSettings/usePushPermission'
 import { SubscriptionAnalyticsParams, SubscriptionTheme } from 'features/subscription/types'
 import { analytics } from 'libs/analytics/provider'
+import { usePatchProfileMutation } from 'queries/profile/usePatchProfileMutation'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
 type AnalyticsInfos = { venueId: string; homeId?: never } | { homeId: string; venueId?: never }
@@ -53,7 +53,7 @@ export const useThematicSubscription = ({
 
   const isSubscribeButtonActive = isAtLeastOneNotificationTypeActivated && isThemeSubscribed
 
-  const { mutate: patchProfile, isLoading: isUpdatingProfile } = usePatchProfile({
+  const { mutate: patchProfile, isLoading: isUpdatingProfile } = usePatchProfileMutation({
     onSuccess: async () => {
       analytics.logNotificationToggle(!!state.allowEmails, !!state.allowPush)
       const analyticsParams = homeId

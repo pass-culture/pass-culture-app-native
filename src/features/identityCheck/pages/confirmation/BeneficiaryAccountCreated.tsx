@@ -5,12 +5,12 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { creditActions } from 'features/identityCheck/api/useCreditStore'
 import { navigateToHome, navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
-import { useResetRecreditAmountToShow } from 'features/profile/api/useResetRecreditAmountToShow'
 import { isUserUnderageBeneficiary } from 'features/profile/helpers/isUserUnderageBeneficiary'
 import { useMaxPrice } from 'features/search/helpers/useMaxPrice/useMaxPrice'
 import { useShareAppContext } from 'features/share/context/ShareAppWrapper'
 import { ShareAppModalType } from 'features/share/types'
 import { BatchEvent, BatchProfile } from 'libs/react-native-batch'
+import { useResetRecreditAmountToShowMutation } from 'queries/profile/useResetRecreditAmountToShowMutation'
 import { defaultCreditByAge } from 'shared/credits/defaultCreditByAge'
 import { useShouldShowCulturalSurveyForBeneficiaryUser } from 'shared/culturalSurvey/useShouldShowCulturalSurveyForBeneficiaryUser'
 import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
@@ -52,7 +52,7 @@ export function BeneficiaryAccountCreated() {
 
   const enableCreditV3 = settings?.wipEnableCreditV3
 
-  const { mutate: resetRecreditAmountToShow } = useResetRecreditAmountToShow({
+  const { mutate: resetRecreditAmountToShow } = useResetRecreditAmountToShowMutation({
     onSuccess: () => {
       refetchUser()
     },
