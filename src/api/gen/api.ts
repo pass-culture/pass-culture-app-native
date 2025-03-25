@@ -2198,6 +2198,27 @@ export interface OfferAddressResponse {
 }
 /**
  * @export
+ * @interface OfferArtist
+ */
+export interface OfferArtist {
+  /**
+   * @type {string}
+   * @memberof OfferArtist
+   */
+  id: string
+  /**
+   * @type {string}
+   * @memberof OfferArtist
+   */
+  image?: string | null
+  /**
+   * @type {string}
+   * @memberof OfferArtist
+   */
+  name: string
+}
+/**
+ * @export
  * @interface OfferChronicle
  */
 export interface OfferChronicle {
@@ -2461,6 +2482,11 @@ export interface OfferResponse {
    */
   address?: OfferAddressResponse | null
   /**
+   * @type {Array<OfferArtist>}
+   * @memberof OfferResponse
+   */
+  artists: Array<OfferArtist>
+  /**
    * @type {Array<ChroniclePreview>}
    * @memberof OfferResponse
    */
@@ -2601,6 +2627,11 @@ export interface OfferResponseV2 {
    * @memberof OfferResponseV2
    */
   address?: OfferAddressResponse | null
+  /**
+   * @type {Array<OfferArtist>}
+   * @memberof OfferResponseV2
+   */
+  artists: Array<OfferArtist>
   /**
    * @type {Array<ChroniclePreview>}
    * @memberof OfferResponseV2

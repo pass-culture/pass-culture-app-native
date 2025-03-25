@@ -129,4 +129,5 @@ export const offerResponseSnap = toMutable({
     },
   },
   isExternalBookingsDisabled: false,
+  artists: [],
 } as const satisfies ReadonlyDeep<OfferResponseV2>)

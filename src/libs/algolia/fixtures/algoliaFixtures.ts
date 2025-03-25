@@ -289,6 +289,7 @@ export const mockedAlgoliaOffersWithSameArtistResponse = toMutable([
       lng: -2.75922,
     },
     objectID: '16302',
+    artists: [{ id: '1', name: 'Eiichiro Oda' }],
   },
   {
     offer: {
@@ -317,6 +318,7 @@ export const mockedAlgoliaOffersWithSameArtistResponse = toMutable([
       lng: 7.74571,
     },
     objectID: '12794',
+    artists: [{ id: '1', name: 'Eiichiro Oda' }],
   },
   {
     offer: {
@@ -345,6 +347,7 @@ export const mockedAlgoliaOffersWithSameArtistResponse = toMutable([
       lng: 7.74571,
     },
     objectID: '12793',
+    artists: [{ id: '1', name: 'Eiichiro Oda' }],
   },
   {
     offer: {
@@ -373,6 +376,7 @@ export const mockedAlgoliaOffersWithSameArtistResponse = toMutable([
       lng: 7.74571,
     },
     objectID: '12792',
+    artists: [{ id: '1', name: 'Eiichiro Oda' }],
   },
   {
     offer: {
@@ -401,6 +405,7 @@ export const mockedAlgoliaOffersWithSameArtistResponse = toMutable([
       lng: 7.74571,
     },
     objectID: '12791',
+    artists: [{ id: '1', name: 'Eiichiro Oda' }],
   },
   {
     offer: {
@@ -429,6 +434,7 @@ export const mockedAlgoliaOffersWithSameArtistResponse = toMutable([
       lng: 7.74571,
     },
     objectID: '12790',
+    artists: [{ id: '1', name: 'Eiichiro Oda' }],
   },
   {
     offer: {
@@ -457,6 +463,7 @@ export const mockedAlgoliaOffersWithSameArtistResponse = toMutable([
       lng: 7.74571,
     },
     objectID: '12789',
+    artists: [{ id: '1', name: 'Eiichiro Oda' }],
   },
   {
     offer: {
@@ -485,6 +492,7 @@ export const mockedAlgoliaOffersWithSameArtistResponse = toMutable([
       lng: 7.74571,
     },
     objectID: '12788',
+    artists: [{ id: '1', name: 'Eiichiro Oda' }],
   },
   {
     offer: {
@@ -513,6 +521,7 @@ export const mockedAlgoliaOffersWithSameArtistResponse = toMutable([
       lng: 7.74571,
     },
     objectID: '12787',
+    artists: [{ id: '1', name: 'Eiichiro Oda' }],
   },
   {
     offer: {
@@ -541,6 +550,7 @@ export const mockedAlgoliaOffersWithSameArtistResponse = toMutable([
       lng: 7.74571,
     },
     objectID: '12786',
+    artists: [{ id: '1', name: 'Eiichiro Oda' }],
   },
   {
     offer: {
@@ -569,6 +579,7 @@ export const mockedAlgoliaOffersWithSameArtistResponse = toMutable([
       lng: 7.74571,
     },
     objectID: '12785',
+    artists: [{ id: '1', name: 'Eiichiro Oda' }],
   },
   {
     offer: {
@@ -597,6 +608,7 @@ export const mockedAlgoliaOffersWithSameArtistResponse = toMutable([
       lng: 7.74571,
     },
     objectID: '12784',
+    artists: [{ id: '1', name: 'Eiichiro Oda' }],
   },
   {
     offer: {
@@ -625,6 +637,7 @@ export const mockedAlgoliaOffersWithSameArtistResponse = toMutable([
       lng: 7.74571,
     },
     objectID: '12783',
+    artists: [{ id: '1', name: 'Eiichiro Oda' }],
   },
   {
     offer: {
@@ -653,6 +666,7 @@ export const mockedAlgoliaOffersWithSameArtistResponse = toMutable([
       lng: 7.74571,
     },
     objectID: '12782',
+    artists: [{ id: '1', name: 'Eiichiro Oda' }],
   },
   {
     offer: {
@@ -681,6 +695,7 @@ export const mockedAlgoliaOffersWithSameArtistResponse = toMutable([
       lng: 7.74571,
     },
     objectID: '12781',
+    artists: [{ id: '1', name: 'Eiichiro Oda' }],
   },
   {
     offer: {
@@ -709,6 +724,7 @@ export const mockedAlgoliaOffersWithSameArtistResponse = toMutable([
       lng: 7.74571,
     },
     objectID: '12777',
+    artists: [{ id: '1', name: 'Eiichiro Oda' }],
   },
   {
     offer: {
@@ -737,6 +753,7 @@ export const mockedAlgoliaOffersWithSameArtistResponse = toMutable([
       lng: 7.74571,
     },
     objectID: '12776',
+    artists: [{ id: '1', name: 'Eiichiro Oda' }],
   },
   {
     offer: {
@@ -765,6 +782,7 @@ export const mockedAlgoliaOffersWithSameArtistResponse = toMutable([
       lng: 7.74571,
     },
     objectID: '12775',
+    artists: [{ id: '1', name: 'Eiichiro Oda' }],
   },
   {
     offer: {
@@ -793,6 +811,7 @@ export const mockedAlgoliaOffersWithSameArtistResponse = toMutable([
       lng: 7.74571,
     },
     objectID: '12774',
+    artists: [{ id: '1', name: 'Eiichiro Oda' }],
   },
   {
     offer: {
@@ -821,6 +840,7 @@ export const mockedAlgoliaOffersWithSameArtistResponse = toMutable([
       lng: 7.74571,
     },
     objectID: '12773',
+    artists: [{ id: '1', name: 'Eiichiro Oda' }],
   },
   {
     offer: {
@@ -849,6 +869,7 @@ export const mockedAlgoliaOffersWithSameArtistResponse = toMutable([
       lng: 7.74571,
     },
     objectID: '12772',
+    artists: [{ id: '1', name: 'Eiichiro Oda' }],
   },
   {
     offer: {
@@ -877,6 +898,7 @@ export const mockedAlgoliaOffersWithSameArtistResponse = toMutable([
       lng: 7.74571,
     },
     objectID: '12771',
+    artists: [{ id: '1', name: 'Eiichiro Oda' }],
   },
   {
     offer: {
@@ -905,6 +927,7 @@ export const mockedAlgoliaOffersWithSameArtistResponse = toMutable([
       lng: 7.74571,
     },
     objectID: '12770',
+    artists: [{ id: '1', name: 'Eiichiro Oda' }],
   },
   {
     offer: {
@@ -933,6 +956,7 @@ export const mockedAlgoliaOffersWithSameArtistResponse = toMutable([
       lng: 7.74571,
     },
     objectID: '12766',
+    artists: [{ id: '1', name: 'Eiichiro Oda' }],
   },
   {
     offer: {
@@ -961,6 +985,7 @@ export const mockedAlgoliaOffersWithSameArtistResponse = toMutable([
       lng: 7.74571,
     },
     objectID: '12764',
+    artists: [{ id: '1', name: 'Eiichiro Oda' }],
   },
   {
     offer: {
@@ -989,6 +1014,7 @@ export const mockedAlgoliaOffersWithSameArtistResponse = toMutable([
       lng: 7.74571,
     },
     objectID: '12763',
+    artists: [{ id: '1', name: 'Eiichiro Oda' }],
   },
   {
     offer: {
@@ -1017,6 +1043,7 @@ export const mockedAlgoliaOffersWithSameArtistResponse = toMutable([
       lng: 7.74571,
     },
     objectID: '12762',
+    artists: [{ id: '1', name: 'Eiichiro Oda' }],
   },
   {
     offer: {
@@ -1045,6 +1072,7 @@ export const mockedAlgoliaOffersWithSameArtistResponse = toMutable([
       lng: 7.74571,
     },
     objectID: '12761',
+    artists: [{ id: '1', name: 'Eiichiro Oda' }],
   },
   {
     offer: {
@@ -1073,6 +1101,7 @@ export const mockedAlgoliaOffersWithSameArtistResponse = toMutable([
       lng: 7.74571,
     },
     objectID: '12760',
+    artists: [{ id: '1', name: 'Eiichiro Oda' }],
   },
   {
     offer: {
@@ -1101,5 +1130,6 @@ export const mockedAlgoliaOffersWithSameArtistResponse = toMutable([
       lng: 7.74571,
     },
     objectID: '12759',
+    artists: [{ id: '1', name: 'Eiichiro Oda' }],
   },
 ] as const satisfies ReadonlyDeep<AlgoliaOfferWithArtistAndEan[]>)
