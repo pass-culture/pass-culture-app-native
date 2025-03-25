@@ -2,7 +2,7 @@ import { QueryClient } from 'react-query'
 
 import { ReactionTypeEnum } from 'api/gen'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
-import { useReactionMutation } from 'features/reactions/api/useReactionMutation'
+import { useReactionMutation } from 'features/reactions/queries/useReactionMutation'
 import { QueryKeys } from 'libs/queryKeys'
 import { mockServer } from 'tests/mswServer'
 import { queryCache, reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'

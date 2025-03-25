@@ -25,7 +25,7 @@ jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
 jest.mock('libs/firebase/analytics/analytics')
 
 const mockMutate = jest.fn()
-jest.mock('features/reactions/api/useReactionMutation', () => ({
+jest.mock('features/reactions/queries/useReactionMutation', () => ({
   useReactionMutation: () => ({ mutate: mockMutate }),
 }))
 

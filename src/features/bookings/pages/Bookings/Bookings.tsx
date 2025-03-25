@@ -7,8 +7,8 @@ import { OnGoingBookingsList } from 'features/bookings/components/OnGoingBooking
 import { BookingsTab } from 'features/bookings/enum'
 import { EndedBookings } from 'features/bookings/pages/EndedBookings/EndedBookings'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
-import { useAvailableReaction } from 'features/reactions/api/useAvailableReaction'
-import { useReactionMutation } from 'features/reactions/api/useReactionMutation'
+import { useAvailableReactionQuery } from 'features/reactions/queries/useAvailableReactionQuery'
+import { useReactionMutation } from 'features/reactions/queries/useReactionMutation'
 import { TabLayout } from 'features/venue/components/TabLayout/TabLayout'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -27,7 +27,7 @@ export function Bookings() {
 
   const { ended_bookings: endedBookings = [] } = bookings ?? {}
 
-  const { data: availableReactions } = useAvailableReaction()
+  const { data: availableReactions } = useAvailableReactionQuery()
   const numberOfReactableBookings = availableReactions?.numberOfReactableBookings ?? 0
 
   const { fullCountLabel, accessibilityLabel } = createLabels(
