@@ -132,7 +132,8 @@ exports[`<Venue /> should match snapshot 1`] = `
                 style={
                   [
                     {
-                      "alignSelf": "baseline",
+                      "alignItems": "center",
+                      "alignSelf": "flex-start",
                       "backgroundColor": "#F1F1F4",
                       "borderRadius": 6,
                       "flexDirection": "row",
@@ -1658,13 +1659,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                                               </Text>
                                             </View>
                                           </View>
-                                          <View
-                                            style={
-                                              [
-                                                {},
-                                              ]
-                                            }
-                                          >
+                                          <View>
                                             <View
                                               style={
                                                 [
@@ -1918,13 +1913,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                                               </Text>
                                             </View>
                                           </View>
-                                          <View
-                                            style={
-                                              [
-                                                {},
-                                              ]
-                                            }
-                                          >
+                                          <View>
                                             <View
                                               style={
                                                 [
@@ -2114,13 +2103,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                                               </Text>
                                             </View>
                                           </View>
-                                          <View
-                                            style={
-                                              [
-                                                {},
-                                              ]
-                                            }
-                                          >
+                                          <View>
                                             <View
                                               style={
                                                 [
@@ -2390,13 +2373,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                                           </Text>
                                         </View>
                                       </View>
-                                      <View
-                                        style={
-                                          [
-                                            {},
-                                          ]
-                                        }
-                                      >
+                                      <View>
                                         <View
                                           style={
                                             [
@@ -3082,13 +3059,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                                                 />
                                               </View>
                                             </View>
-                                            <View
-                                              style={
-                                                [
-                                                  {},
-                                                ]
-                                              }
-                                            >
+                                            <View>
                                               <View
                                                 height={420}
                                                 style={
@@ -3302,13 +3273,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                                             />
                                           </View>
                                         </View>
-                                        <View
-                                          style={
-                                            [
-                                              {},
-                                            ]
-                                          }
-                                        >
+                                        <View>
                                           <View
                                             height={420}
                                             style={
@@ -4962,7 +4927,8 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                 style={
                   [
                     {
-                      "alignSelf": "baseline",
+                      "alignItems": "center",
+                      "alignSelf": "flex-start",
                       "backgroundColor": "#F1F1F4",
                       "borderRadius": 6,
                       "flexDirection": "row",
@@ -6823,13 +6789,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                               </Text>
                                             </View>
                                           </View>
-                                          <View
-                                            style={
-                                              [
-                                                {},
-                                              ]
-                                            }
-                                          >
+                                          <View>
                                             <View
                                               style={
                                                 [
@@ -7083,13 +7043,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                               </Text>
                                             </View>
                                           </View>
-                                          <View
-                                            style={
-                                              [
-                                                {},
-                                              ]
-                                            }
-                                          >
+                                          <View>
                                             <View
                                               style={
                                                 [
@@ -7279,13 +7233,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                               </Text>
                                             </View>
                                           </View>
-                                          <View
-                                            style={
-                                              [
-                                                {},
-                                              ]
-                                            }
-                                          >
+                                          <View>
                                             <View
                                               style={
                                                 [
@@ -7555,13 +7503,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                           </Text>
                                         </View>
                                       </View>
-                                      <View
-                                        style={
-                                          [
-                                            {},
-                                          ]
-                                        }
-                                      >
+                                      <View>
                                         <View
                                           style={
                                             [
@@ -8247,13 +8189,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                                 />
                                               </View>
                                             </View>
-                                            <View
-                                              style={
-                                                [
-                                                  {},
-                                                ]
-                                              }
-                                            >
+                                            <View>
                                               <View
                                                 height={420}
                                                 style={
@@ -8467,13 +8403,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                             />
                                           </View>
                                         </View>
-                                        <View
-                                          style={
-                                            [
-                                              {},
-                                            ]
-                                          }
-                                        >
+                                        <View>
                                           <View
                                             height={420}
                                             style={
@@ -10127,7 +10057,8 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                 style={
                   [
                     {
-                      "alignSelf": "baseline",
+                      "alignItems": "center",
+                      "alignSelf": "flex-start",
                       "backgroundColor": "#F1F1F4",
                       "borderRadius": 6,
                       "flexDirection": "row",
