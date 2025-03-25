@@ -140,7 +140,7 @@ export const OfferBody: FunctionComponent<Props> = ({
             <InformationTags tags={tags} />
             <ViewGap gap={2}>
               <OfferTitle offerName={offer.name} />
-              {artists ? (
+              {artists.length > 0 ? (
                 <OfferArtists
                   artists={artists.map((artist) => artist.name).join(', ')}
                   onPressArtistLink={hasAccessToArtistPage ? handleArtistLinkPress : undefined}
