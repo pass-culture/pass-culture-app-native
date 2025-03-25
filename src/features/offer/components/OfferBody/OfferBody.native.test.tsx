@@ -423,22 +423,22 @@ describe('<OfferBody />', () => {
   })
 
   describe('ProposedBy section', () => {
-    it('should display proposed section', async () => {
-      const offerWithDifferentAddress: OfferResponseV2 = {
-        ...offerResponseSnap,
-        address: {
-          label: 'Lieu différent',
-          city: 'Paris',
-          postalCode: '75001',
-          coordinates: {
-            latitude: 0.1,
-            longitude: 0.1,
-          },
-          street: 'rue saint-denis',
-          timezone: '',
+    const offerWithDifferentAddress: OfferResponseV2 = {
+      ...offerResponseSnap,
+      address: {
+        label: 'Lieu différent',
+        city: 'Paris',
+        postalCode: '75001',
+        coordinates: {
+          latitude: 0.1,
+          longitude: 0.1,
         },
-      }
+        street: 'rue saint-denis',
+        timezone: '',
+      },
+    }
 
+    it('should display proposed section', async () => {
       renderOfferBody({ offer: offerWithDifferentAddress })
 
       await screen.findByText(offerResponseSnap.name)
@@ -452,6 +452,57 @@ describe('<OfferBody />', () => {
       await screen.findByText(offerResponseSnap.name)
 
       expect(screen.queryByText('Proposé par')).not.toBeOnTheScreen()
+    })
+
+    it('should redirect to venue page when pressing proposed by section when venue is permanent', async () => {
+      renderOfferBody({ offer: offerWithDifferentAddress })
+
+      await user.press(screen.getByText('Proposé par'))
+
+      expect(mockNavigate).toHaveBeenCalledWith('Venue', { id: offerResponseSnap.venue.id })
+    })
+
+    it('should not redirect to venue page when pressing proposed by section when venue is not permanent', async () => {
+      renderOfferBody({
+        offer: {
+          ...offerWithDifferentAddress,
+          venue: { ...offerWithDifferentAddress.venue, isPermanent: false },
+        },
+      })
+
+      await user.press(screen.getByText('Proposé par'))
+
+      expect(mockNavigate).not.toHaveBeenCalled()
+    })
+
+    describe('When wipIsOpenToPublic activated', () => {
+      beforeEach(() => {
+        setFeatureFlags([RemoteStoreFeatureFlags.WIP_IS_OPEN_TO_PUBLIC])
+      })
+
+      it('should redirect to venue page when pressing proposed by section when venue is open to public', async () => {
+        renderOfferBody({
+          offer: {
+            ...offerWithDifferentAddress,
+            venue: { ...offerWithDifferentAddress.venue, isOpenToPublic: true },
+          },
+        })
+        await user.press(screen.getByText('Proposé par'))
+
+        expect(mockNavigate).toHaveBeenCalledWith('Venue', { id: offerResponseSnap.venue.id })
+      })
+
+      it('should not redirect to venue page when pressing proposed by section when venue is not open to public', async () => {
+        renderOfferBody({
+          offer: {
+            ...offerWithDifferentAddress,
+            venue: { ...offerWithDifferentAddress.venue, isOpenToPublic: false },
+          },
+        })
+        await user.press(screen.getByText('Proposé par'))
+
+        expect(mockNavigate).not.toHaveBeenCalled()
+      })
     })
   })
 
