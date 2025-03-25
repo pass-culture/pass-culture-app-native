@@ -455,7 +455,7 @@ exports[`<SetAddress/> should render correctly 1`] = `
           }
         >
           <View
-            accessibilityLabel="Continuer vers l’étape suivante"
+            accessibilityLabel="Continuer vers le statut"
             accessibilityState={
               {
                 "busy": undefined,
@@ -509,7 +509,7 @@ exports[`<SetAddress/> should render correctly 1`] = `
                 },
               ]
             }
-            testID="Continuer vers l’étape suivante"
+            testID="Continuer vers le statut"
           >
             <View
               style={

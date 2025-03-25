@@ -157,7 +157,7 @@ export const SetAddress = () => {
           type="submit"
           onPress={submitAddress}
           wording="Continuer"
-          accessibilityLabel="Continuer vers l’étape suivante"
+          accessibilityLabel="Continuer vers le statut"
           disabled={!enabled}
         />
       }

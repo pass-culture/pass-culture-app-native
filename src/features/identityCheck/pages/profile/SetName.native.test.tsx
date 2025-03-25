@@ -25,7 +25,7 @@ describe('<SetName/>', () => {
   it('should enable the submit button when first name and last name is not empty', async () => {
     render(<SetName />)
 
-    const continueButton = screen.getByTestId('Continuer vers l’étape suivante')
+    const continueButton = screen.getByTestId('Continuer vers la ville de résidence')
 
     expect(continueButton).toBeDisabled()
 

@@ -668,7 +668,7 @@ Nous les vérifions et ils ne pourront plus être modifiés par la suite.
           }
         >
           <View
-            accessibilityLabel="Continuer vers l’étape suivante"
+            accessibilityLabel="Continuer vers la ville de résidence"
             accessibilityState={
               {
                 "busy": undefined,
@@ -722,7 +722,7 @@ Nous les vérifions et ils ne pourront plus être modifiés par la suite.
                 },
               ]
             }
-            testID="Continuer vers l’étape suivante"
+            testID="Continuer vers la ville de résidence"
           >
             <View
               style={
