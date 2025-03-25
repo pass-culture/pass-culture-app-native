@@ -2,6 +2,7 @@ import React from 'react'
 
 import { CategoryIdEnum } from 'api/gen'
 import { OfferImageContainer } from 'features/offer/components/OfferImageContainer/OfferImageContainer'
+import { mockOfferImageDimensions } from 'features/offer/fixtures/offerImageDimensions'
 import { render, screen } from 'tests/utils'
 
 jest.mock('libs/subcategories/useCategoryId')
@@ -13,6 +14,7 @@ describe('<OfferImageContainer />', () => {
         images={[{ url: 'some_url_to_some_resource' }]}
         categoryId={CategoryIdEnum.CINEMA}
         onPress={jest.fn()}
+        imageDimensions={mockOfferImageDimensions}
       />
     )
 
@@ -26,6 +28,7 @@ describe('<OfferImageContainer />', () => {
         images={[{ url: 'some_url_to_some_resource' }]}
         categoryId={CategoryIdEnum.CINEMA}
         onPress={jest.fn()}
+        imageDimensions={mockOfferImageDimensions}
       />
     )
 
@@ -38,6 +41,7 @@ describe('<OfferImageContainer />', () => {
         images={[{ url: 'some_url_to_some_resource' }, { url: 'some_url2_to_some_resource' }]}
         categoryId={CategoryIdEnum.CINEMA}
         onPress={jest.fn()}
+        imageDimensions={mockOfferImageDimensions}
       />
     )
 
@@ -50,6 +54,7 @@ describe('<OfferImageContainer />', () => {
         images={[{ url: 'some_url_to_some_resource' }, { url: 'some_url2_to_some_resource' }]}
         categoryId={CategoryIdEnum.CINEMA}
         onPress={jest.fn()}
+        imageDimensions={mockOfferImageDimensions}
       />
     )
     await screen.findByTestId('offerImageContainerCarousel')
@@ -64,6 +69,7 @@ describe('<OfferImageContainer />', () => {
         categoryId={CategoryIdEnum.CINEMA}
         onPress={jest.fn()}
         placeholderImage="placeholder_image"
+        imageDimensions={mockOfferImageDimensions}
       />
     )
 
@@ -76,6 +82,7 @@ describe('<OfferImageContainer />', () => {
         categoryId={CategoryIdEnum.CINEMA}
         onPress={jest.fn()}
         placeholderImage="placeholder_image"
+        imageDimensions={mockOfferImageDimensions}
       />,
       {
         theme: { isNative: true, isDesktopViewport: true },

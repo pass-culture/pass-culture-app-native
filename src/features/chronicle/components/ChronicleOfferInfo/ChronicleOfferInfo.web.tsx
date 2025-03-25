@@ -4,12 +4,13 @@ import styled from 'styled-components/native'
 
 import { CategoryIdEnum } from 'api/gen'
 import { OfferBodyImagePlaceholder } from 'features/offer/components/OfferBodyImagePlaceholder'
-import { useOfferImageContainerDimensions } from 'features/offer/helpers/useOfferImageContainerDimensions'
+import { OfferImageContainerDimensions } from 'features/offer/types'
 import { FastImage } from 'libs/resizing-image-on-demand/FastImage'
 import { Typo, getSpacing } from 'ui/theme'
 
 type ChronicleOfferInfoProps = PropsWithChildren<{
   imageUrl: string
+  imageDimensions: OfferImageContainerDimensions
   title: string
   price: string
   categoryId?: CategoryIdEnum
@@ -22,15 +23,16 @@ export const ChronicleOfferInfo = ({
   price,
   style,
   categoryId,
+  imageDimensions,
   children,
 }: ChronicleOfferInfoProps) => {
-  const { imageStyle } = useOfferImageContainerDimensions()
-
   return (
-    <View style={[style, { maxWidth: imageStyle.width }]}>
-      <View style={imageStyle}>
+    <View style={[style, { maxWidth: imageDimensions.imageStyle.width }]}>
+      <View style={imageDimensions.imageStyle}>
         <OfferBodyImagePlaceholder categoryId={categoryId ?? CategoryIdEnum.LIVRE} />
-        {imageUrl ? <OfferImage style={imageStyle} url={imageUrl} testID="offerImage" /> : null}
+        {imageUrl ? (
+          <OfferImage style={imageDimensions.imageStyle} url={imageUrl} testID="offerImage" />
+        ) : null}
       </View>
       <TextWrapper>
         <Typo.Title3 numberOfLines={1}>{title}</Typo.Title3>

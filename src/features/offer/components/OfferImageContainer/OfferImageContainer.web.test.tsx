@@ -2,6 +2,7 @@ import React from 'react'
 
 import { CategoryIdEnum } from 'api/gen'
 import { OfferImageContainer } from 'features/offer/components/OfferImageContainer/OfferImageContainer'
+import { mockOfferImageDimensions } from 'features/offer/fixtures/offerImageDimensions'
 import { render, screen } from 'tests/utils/web'
 
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
@@ -15,6 +16,7 @@ describe('<OfferImageContainer />', () => {
         images={[{ url: 'some_url_to_some_resource' }]}
         categoryId={CategoryIdEnum.CINEMA}
         onPress={mockOnPress}
+        imageDimensions={mockOfferImageDimensions}
       />,
       { theme: { isDesktopViewport: true } }
     )
@@ -30,6 +32,7 @@ describe('<OfferImageContainer />', () => {
         images={[{ url: 'some_url_to_some_resource' }, { url: 'some_url2_to_some_resource' }]}
         categoryId={CategoryIdEnum.CINEMA}
         onPress={mockOnPress}
+        imageDimensions={mockOfferImageDimensions}
       />,
       { theme: { isDesktopViewport: true } }
     )
@@ -43,6 +46,7 @@ describe('<OfferImageContainer />', () => {
         images={[{ url: 'some_url_to_some_resource' }, { url: 'some_url2_to_some_resource' }]}
         categoryId={CategoryIdEnum.CINEMA}
         onPress={mockOnPress}
+        imageDimensions={mockOfferImageDimensions}
       />,
       { theme: { isDesktopViewport: true } }
     )
@@ -60,6 +64,7 @@ describe('<OfferImageContainer />', () => {
         images={[{ url: 'some_url_to_some_resource' }, { url: 'some_url2_to_some_resource' }]}
         categoryId={CategoryIdEnum.CINEMA}
         onPress={mockOnPress}
+        imageDimensions={mockOfferImageDimensions}
       />,
       { theme: { isDesktopViewport: false } }
     )

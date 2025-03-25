@@ -6,11 +6,12 @@ import { StyleProp, View, ViewStyle } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
 
-import { useOfferImageContainerDimensions } from 'features/offer/helpers/useOfferImageContainerDimensions'
+import { OfferImageContainerDimensions } from 'features/offer/types'
 import { getShadow, getSpacing } from 'ui/theme'
 
 type Props = {
   children: React.ReactNode
+  imageDimensions: OfferImageContainerDimensions
   imageUrl?: string
   shouldDisplayOfferPreview?: boolean
   testID?: string
@@ -21,6 +22,7 @@ type Props = {
 
 export const OfferImageWrapper: FunctionComponent<Props> = ({
   children,
+  imageDimensions,
   imageUrl,
   shouldDisplayOfferPreview,
   testID = 'imageContainer',
@@ -28,10 +30,11 @@ export const OfferImageWrapper: FunctionComponent<Props> = ({
   withDropShadow,
   style,
 }) => {
-  const { imageStyle } = useOfferImageContainerDimensions()
-
   return (
-    <Container style={[style, imageStyle]} withDropShadow={withDropShadow} testID={testID}>
+    <Container
+      style={[style, imageDimensions.imageStyle]}
+      withDropShadow={withDropShadow}
+      testID={testID}>
       {imageUrl && shouldDisplayOfferPreview ? (
         <React.Fragment>
           <StyledLinearGradient testID="imageGradient" isInCarousel={isInCarousel} />
