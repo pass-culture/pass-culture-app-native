@@ -117,10 +117,12 @@ const TopContainer = styled.View(({ theme }) => {
 
 const VenueTitle = styled(Typo.Title3).attrs(getHeadingAttrs(1))``
 
-const MarginContainer = styled.View({
-  marginHorizontal: getSpacing(6),
+const MarginContainer = styled.View(({ theme }) => ({
+  marginLeft: theme.isDesktopViewport ? getSpacing(13.5) : getSpacing(6),
+  marginRight: getSpacing(6),
   flexShrink: 1,
-})
+  justifyContent: 'center',
+}))
 
 const getVenue = (venue: VenueResponse): VenueBlockVenue => {
   return {

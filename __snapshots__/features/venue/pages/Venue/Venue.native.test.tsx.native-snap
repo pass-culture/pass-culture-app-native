@@ -46,6 +46,7 @@ exports[`<Venue /> should match snapshot 1`] = `
         }
       >
         <View
+          defaultMarginBottom={24}
           hasGoogleCredit={null}
           style={
             [
@@ -98,7 +99,9 @@ exports[`<Venue /> should match snapshot 1`] = `
             [
               {
                 "flexShrink": 1,
-                "marginHorizontal": 24,
+                "justifyContent": "center",
+                "marginLeft": 24,
+                "marginRight": 24,
               },
             ]
           }
@@ -4876,6 +4879,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
         }
       >
         <View
+          defaultMarginBottom={24}
           hasGoogleCredit={null}
           style={
             [
@@ -4928,7 +4932,9 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
             [
               {
                 "flexShrink": 1,
-                "marginHorizontal": 24,
+                "justifyContent": "center",
+                "marginLeft": 24,
+                "marginRight": 24,
               },
             ]
           }
@@ -10041,6 +10047,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
         }
       >
         <View
+          defaultMarginBottom={24}
           hasGoogleCredit={null}
           style={
             [
@@ -10093,7 +10100,9 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
             [
               {
                 "flexShrink": 1,
-                "marginHorizontal": 24,
+                "justifyContent": "center",
+                "marginLeft": 24,
+                "marginRight": 24,
               },
             ]
           }
