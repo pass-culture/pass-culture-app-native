@@ -14,6 +14,7 @@ import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { OfferCTAButton } from 'features/offer/components/OfferCTAButton/OfferCTAButton'
 import { getOfferPrices } from 'features/offer/helpers/getOfferPrice/getOfferPrice'
 import { useOfferBatchTracking } from 'features/offer/helpers/useOfferBatchTracking/useOfferBatchTracking'
+import { useOfferImageContainerDimensions } from 'features/offer/helpers/useOfferImageContainerDimensions'
 import {
   getDisplayedPrice,
   getIfPricesShouldBeFixed,
@@ -48,6 +49,8 @@ export const Chronicles: FunctionComponent = () => {
   const currency = useGetCurrencyToDisplay()
   const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
 
+  const imageDimensions = useOfferImageContainerDimensions(offer?.subcategoryId)
+
   const displayedPrice = getDisplayedPrice(
     prices,
     currency,
@@ -75,7 +78,8 @@ export const Chronicles: FunctionComponent = () => {
             title={offer.name}
             price={displayedPrice}
             categoryId={subcategory.categoryId}
-            paddingTop={headerHeight}>
+            paddingTop={headerHeight}
+            imageDimensions={imageDimensions}>
             <OfferCTAButton
               offer={offer}
               subcategory={subcategoriesMapping[offer.subcategoryId]}

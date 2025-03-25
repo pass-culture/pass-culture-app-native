@@ -81,3 +81,14 @@ export type OfferContentProps = {
   defaultReaction?: ReactionTypeEnum | null
   onReactionButtonPress?: () => void
 }
+
+export type OfferImageContainerDimensions = {
+  backgroundHeight: number
+  imageStyle: {
+    height: number
+    width: number
+    maxWidth: number
+    aspectRatio: number
+    borderRadius: number
+  }
+}

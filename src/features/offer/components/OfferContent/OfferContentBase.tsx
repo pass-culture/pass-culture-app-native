@@ -28,6 +28,7 @@ import { OfferWebMetaHeader } from 'features/offer/components/OfferWebMetaHeader
 import { getIsAComingSoonOffer } from 'features/offer/helpers/getIsAComingSoonOffer'
 import { getVenue } from 'features/offer/helpers/getVenueBlockProps'
 import { useOfferBatchTracking } from 'features/offer/helpers/useOfferBatchTracking/useOfferBatchTracking'
+import { useOfferImageContainerDimensions } from 'features/offer/helpers/useOfferImageContainerDimensions'
 import { useOfferPlaylist } from 'features/offer/helpers/useOfferPlaylist/useOfferPlaylist'
 import { OfferContentProps } from 'features/offer/types'
 import { isCloseToBottom } from 'libs/analytics'
@@ -196,6 +197,8 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
     favorite,
   }
 
+  const imageDimensions = useOfferImageContainerDimensions(offer.subcategoryId)
+
   const onSeeMoreButtonPress = (chronicleId: number) => {
     // It's dirty but necessary to use from parameter for the logs
     navigate('Chronicles', { offerId: offer.id, chronicleId, from: 'chronicles' })
@@ -249,6 +252,7 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
               categoryId={subcategory.categoryId}
               onPress={onOfferPreviewPress}
               placeholderImage={placeholderImage}
+              imageDimensions={imageDimensions}
             />
             <OfferBody
               offer={offer}

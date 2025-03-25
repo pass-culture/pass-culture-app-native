@@ -1,6 +1,7 @@
 import React from 'react'
 import { SharedValue } from 'react-native-reanimated'
 
+import { mockOfferImageDimensions } from 'features/offer/fixtures/offerImageDimensions'
 import { render, screen, userEvent } from 'tests/utils'
 
 import { OfferImageCarousel } from './OfferImageCarousel'
@@ -16,6 +17,7 @@ describe('OfferImageCarousel', () => {
         offerImages={[{ url: 'https://image1.jpg' }]}
         onItemPress={jest.fn()}
         onLoad={mockOnload}
+        imageDimensions={mockOfferImageDimensions}
       />
     )
 
@@ -39,6 +41,7 @@ describe('OfferImageCarousel', () => {
         ]}
         onItemPress={jest.fn()}
         onLoad={mockOnload}
+        imageDimensions={mockOfferImageDimensions}
       />
     )
 
@@ -63,6 +66,7 @@ describe('OfferImageCarousel', () => {
         ]}
         onItemPress={mockOnItemPress}
         onLoad={jest.fn()}
+        imageDimensions={mockOfferImageDimensions}
       />
     )
 
@@ -80,6 +84,7 @@ describe('OfferImageCarousel', () => {
         offerImages={[{ url: 'https://image1.jpg', credit: 'Cédric' }]}
         onItemPress={jest.fn()}
         onLoad={jest.fn()}
+        imageDimensions={mockOfferImageDimensions}
       />
     )
 

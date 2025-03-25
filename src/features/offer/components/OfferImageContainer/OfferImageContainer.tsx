@@ -2,10 +2,8 @@ import React, { FunctionComponent } from 'react'
 import { useSharedValue } from 'react-native-reanimated'
 
 import { CategoryIdEnum } from 'api/gen'
-import {
-  offerImageContainerMarginTop,
-  useOfferImageContainerDimensions,
-} from 'features/offer/helpers/useOfferImageContainerDimensions'
+import { offerImageContainerMarginTop } from 'features/offer/helpers/useOfferImageContainerDimensions'
+import { OfferImageContainerDimensions } from 'features/offer/types'
 import { ImageWithCredit } from 'shared/types'
 import { getSpacing } from 'ui/theme'
 
@@ -14,6 +12,7 @@ import { OfferImageRenderer } from './OfferImageRenderer'
 
 type Props = {
   categoryId: CategoryIdEnum | null
+  imageDimensions: OfferImageContainerDimensions
   images?: ImageWithCredit[]
   onPress?: (defaultIndex?: number) => void
   placeholderImage?: string
@@ -24,14 +23,13 @@ export const OfferImageContainer: FunctionComponent<Props> = ({
   onPress,
   categoryId,
   placeholderImage,
+  imageDimensions,
 }) => {
-  const { backgroundHeight } = useOfferImageContainerDimensions()
-
   const progressValue = useSharedValue<number>(0)
 
   return (
     <OfferImageHeaderWrapper
-      imageHeight={backgroundHeight}
+      imageHeight={imageDimensions.backgroundHeight}
       imageUrl={placeholderImage}
       paddingTop={getSpacing(offerImageContainerMarginTop)}>
       <OfferImageRenderer
@@ -40,6 +38,7 @@ export const OfferImageContainer: FunctionComponent<Props> = ({
         progressValue={progressValue}
         onPress={onPress}
         categoryId={categoryId}
+        imageDimensions={imageDimensions}
       />
     </OfferImageHeaderWrapper>
   )
