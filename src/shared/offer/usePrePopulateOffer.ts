@@ -41,6 +41,7 @@ const mergeOfferData =
     },
     chronicles: [],
     isHeadline: false,
+    artists: [],
     ...(prevData ?? {}),
   })
 

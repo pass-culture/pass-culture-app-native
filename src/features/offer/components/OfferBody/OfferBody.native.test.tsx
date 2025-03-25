@@ -129,7 +129,11 @@ describe('<OfferBody />', () => {
     const offer: OfferResponseV2 = {
       ...offerResponseSnap,
       subcategoryId: SubcategoryIdEnum.CINE_PLEIN_AIR,
-      extraData: { stageDirector: 'Marion Cotillard, Leonardo DiCaprio' },
+
+      artists: [
+        { id: '4', name: 'Marion Cotillard' },
+        { id: '5', name: 'Leonardo DiCaprio' },
+      ],
     }
     renderOfferBody({
       offer,
@@ -478,11 +482,11 @@ describe('<OfferBody />', () => {
     })
   })
 
-  it('should redirect to artist page when FF is enabled, artist not contain a comma or a semicolon, and artist name is not collectif/s', async () => {
+  it('should redirect to artist page when FF is enabled', async () => {
     const offer: OfferResponseV2 = {
       ...offerResponseSnap,
       subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
-      extraData: { author: 'Stephen King' },
+      artists: [{ id: '1', name: 'Stephen King' }],
     }
 
     renderOfferBody({
@@ -492,65 +496,14 @@ describe('<OfferBody />', () => {
 
     await user.press(await screen.findByText('Stephen King'))
 
-    expect(mockNavigate).toHaveBeenCalledWith('Artist', { fromOfferId: offerResponseSnap.id })
+    expect(mockNavigate).toHaveBeenCalledWith('Artist', { id: '1' })
   })
 
-  it('should not redirect to artist page when FF is enabled artist contain a comma', async () => {
+  it('should not redirect to artist page when FF is enabled and artist has less than 2 offers', async () => {
     const offer: OfferResponseV2 = {
       ...offerResponseSnap,
       subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
-      extraData: { author: 'Stephen King, Clive Barker' },
-    }
-
-    renderOfferBody({
-      offer,
-      subcategory: mockSubcategoryBook,
-    })
-
-    await user.press(await screen.findByText('Stephen King, Clive Barker'))
-
-    expect(mockNavigate).not.toHaveBeenCalled()
-  })
-
-  it('should not redirect to artist page when FF is enabled artist contain a semicolon', async () => {
-    const offer: OfferResponseV2 = {
-      ...offerResponseSnap,
-      subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
-      extraData: { author: 'Stephen King; Clive Barker' },
-    }
-
-    renderOfferBody({
-      offer,
-      subcategory: mockSubcategoryBook,
-    })
-
-    await user.press(await screen.findByText('Stephen King; Clive Barker'))
-
-    expect(mockNavigate).not.toHaveBeenCalled()
-  })
-
-  it('should not redirect to artist page when FF is enabled and artist name is collectif/s"', async () => {
-    const offer: OfferResponseV2 = {
-      ...offerResponseSnap,
-      subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
-      extraData: { author: 'Collectif' },
-    }
-
-    renderOfferBody({
-      offer,
-      subcategory: mockSubcategoryBook,
-    })
-
-    await user.press(await screen.findByText('Collectif'))
-
-    expect(mockNavigate).not.toHaveBeenCalled()
-  })
-
-  it('should not redirect to artist page when FF is enabled and artist has less than 2 offers"', async () => {
-    const offer: OfferResponseV2 = {
-      ...offerResponseSnap,
-      subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
-      extraData: { author: 'J.K Rowling' },
+      artists: [{ id: '3', name: 'J.K Rowling' }],
     }
 
     useArtistResultsSpy.mockReturnValueOnce({
@@ -572,7 +525,7 @@ describe('<OfferBody />', () => {
     const offer: OfferResponseV2 = {
       ...offerResponseSnap,
       subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
-      extraData: { author: 'Stephen King' },
+      artists: [{ id: '1', name: 'Stephen King' }],
     }
 
     renderOfferBody({
@@ -589,12 +542,14 @@ describe('<OfferBody />', () => {
     })
   })
 
-  it('should not log ConsultArtist when pressing artist name if artist name contain a comma and FF is enabled', async () => {
-    const artists = 'Stephen King, Robert McCammon'
+  it('should not log ConsultArtist when pressing artist name if offer has several artists and FF is enabled', async () => {
     const offer: OfferResponseV2 = {
       ...offerResponseSnap,
       subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
-      extraData: { author: artists },
+      artists: [
+        { id: '1', name: 'Stephen King' },
+        { id: '2', name: 'Robert McCammon' },
+      ],
     }
 
     renderOfferBody({
@@ -607,29 +562,11 @@ describe('<OfferBody />', () => {
     expect(analytics.logConsultArtist).not.toHaveBeenCalled()
   })
 
-  it('should not log ConsultArtist when pressing artist name if artist name contain a semicolon and FF is enabled', async () => {
-    const artists = 'Stephen King; Robert McCammon'
-    const offer: OfferResponseV2 = {
-      ...offerResponseSnap,
-      subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
-      extraData: { author: artists },
-    }
-
-    renderOfferBody({
-      offer,
-      subcategory: mockSubcategoryBook,
-    })
-
-    await user.press(await screen.findByText('Stephen King; Robert McCammon'))
-
-    expect(analytics.logConsultArtist).not.toHaveBeenCalled()
-  })
-
   it('should not redirect to artist page when FF is disabled', async () => {
     const offer: OfferResponseV2 = {
       ...offerResponseSnap,
       subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
-      extraData: { author: 'Stephen King', ean: '123456' },
+      artists: [{ id: '1', name: 'Stephen King' }],
     }
 
     setFeatureFlags()

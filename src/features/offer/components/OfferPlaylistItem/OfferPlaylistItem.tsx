@@ -15,7 +15,7 @@ import { Currency } from 'shared/currency/useGetCurrencyToDisplay'
 import { Offer } from 'shared/offer/types'
 
 type OfferPlaylistItemProps = {
-  offer: OfferResponseV2
+  offer?: OfferResponseV2
   categoryMapping: CategoryIdMapping
   labelMapping: CategoryHomeLabelMapping | SubcategoryOfferLabelMapping
   currency: Currency
@@ -63,7 +63,7 @@ export const OfferPlaylistItem = ({
         width={width}
         height={height}
         analyticsFrom={analyticsFrom}
-        fromOfferId={analyticsFrom === 'offer' ? offer.id : undefined}
+        fromOfferId={analyticsFrom === 'offer' && offer ? offer.id : undefined}
         playlistType={playlistType}
         apiRecoParams={apiRecoParams}
         artistName={artistName}

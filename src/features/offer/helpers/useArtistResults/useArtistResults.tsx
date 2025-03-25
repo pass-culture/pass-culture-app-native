@@ -11,19 +11,19 @@ import { formatDistance } from 'libs/parsers/formatDistance'
 import { QueryKeys } from 'libs/queryKeys'
 
 type UseArtistResultsProps = {
-  subcategoryId: SubcategoryIdEnum
-  artists?: string | null
+  subcategoryId?: SubcategoryIdEnum
+  artistId?: string
 }
 
-export const useArtistResults = ({ artists, subcategoryId }: UseArtistResultsProps) => {
+export const useArtistResults = ({ artistId, subcategoryId }: UseArtistResultsProps) => {
   const transformHits = useTransformOfferHits()
   const { userLocation } = useLocation()
 
   const { data } = useQuery(
-    [QueryKeys.ARTIST_PLAYLIST, artists],
+    [QueryKeys.ARTIST_PLAYLIST, artistId],
     async () => {
       const { playlistHits, topOffersHits } = await fetchOffersByArtist({
-        artists,
+        artistId,
         subcategoryId,
         userLocation,
       })

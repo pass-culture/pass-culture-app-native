@@ -2,7 +2,6 @@ import { MultipleQueriesQuery, SearchResponse } from '@algolia/client-search'
 
 import { SubcategoryIdEnum } from 'api/gen'
 import { ARTIST_PAGE_SUBCATEGORIES } from 'features/artist/constants'
-import { EXCLUDED_ARTISTS } from 'features/offer/helpers/constants'
 import { captureAlgoliaError } from 'libs/algolia/fetchAlgolia/AlgoliaError'
 import { offerAttributesToRetrieve } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/offerAttributesToRetrieve'
 import { multipleQueries } from 'libs/algolia/fetchAlgolia/multipleQueries'
@@ -11,34 +10,38 @@ import { env } from 'libs/environment/env'
 import { Position } from 'libs/location'
 
 type BuildAlgoliaFilterType = {
-  artists?: string | null
+  artistId?: string
 }
 
 export type FetchOfferByArtist = BuildAlgoliaFilterType & {
-  subcategoryId: SubcategoryIdEnum
   userLocation: Position
+  subcategoryId?: SubcategoryIdEnum
 }
 
 export const fetchOffersByArtist = async ({
-  artists,
+  artistId,
   subcategoryId,
   userLocation,
 }: FetchOfferByArtist) => {
+  const defaultQueryParams: MultipleQueriesQuery['params'] = {
+    page: 0,
+    filters: buildAlgoliaFilter({ artistId }),
+    attributesToRetrieve: [...offerAttributesToRetrieve, 'offer.ean', 'artists'],
+    attributesToHighlight: [], // We disable highlighting because we don't need it
+    aroundRadius: 'all',
+    ...(userLocation
+      ? { aroundLatLng: `${userLocation.latitude}, ${userLocation.longitude}` }
+      : {}),
+  }
+
   const queries: MultipleQueriesQuery[] = [
     // Playlist
     {
       indexName: env.ALGOLIA_OFFERS_INDEX_NAME_B,
       query: '',
       params: {
-        page: 0,
-        filters: buildAlgoliaFilter({ artists }),
+        ...defaultQueryParams,
         hitsPerPage: 100,
-        attributesToRetrieve: [...offerAttributesToRetrieve, 'offer.ean'],
-        attributesToHighlight: [], // We disable highlighting because we don't need it
-        aroundRadius: 'all',
-        ...(userLocation
-          ? { aroundLatLng: `${userLocation.latitude}, ${userLocation.longitude}` }
-          : {}),
       },
     },
     // Offers top 4
@@ -46,25 +49,13 @@ export const fetchOffersByArtist = async ({
       indexName: env.ALGOLIA_TOP_OFFERS_INDEX_NAME,
       query: '',
       params: {
-        page: 0,
-        filters: buildAlgoliaFilter({ artists }),
+        ...defaultQueryParams,
         hitsPerPage: 4,
-        attributesToRetrieve: [...offerAttributesToRetrieve, 'offer.ean'],
-        attributesToHighlight: [], // We disable highlighting because we don't need it
-        aroundRadius: 'all',
-        ...(userLocation
-          ? { aroundLatLng: `${userLocation.latitude}, ${userLocation.longitude}` }
-          : {}),
       },
     },
   ]
 
-  // TODO(PC-33464): point of vigilance when we will use a hook which get the artists from Algolia
-  if (
-    !artists ||
-    EXCLUDED_ARTISTS.includes(artists.toLowerCase()) ||
-    !ARTIST_PAGE_SUBCATEGORIES.includes(subcategoryId)
-  )
+  if (!artistId || (subcategoryId && !ARTIST_PAGE_SUBCATEGORIES.includes(subcategoryId)))
     return { playlistHits: [], topOffersHits: [] }
 
   try {
@@ -81,10 +72,8 @@ export const fetchOffersByArtist = async ({
   }
 }
 
-export function buildAlgoliaFilter({ artists }: BuildAlgoliaFilterType) {
-  const firstArtist = artists?.split(' ; ')[0]
+export function buildAlgoliaFilter({ artistId }: BuildAlgoliaFilterType) {
+  if (!artistId) return ''
 
-  if (!firstArtist) return ''
-
-  return `offer.artist:"${firstArtist}"`
+  return `artists.id:"${artistId}"`
 }

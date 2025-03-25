@@ -1,5 +1,3 @@
-import { ReactNode } from 'react'
-
 import { RootNavigateParams } from 'features/navigation/RootNavigator/types'
 import { Geoloc } from 'libs/algolia/types'
 import { VenueTypeCode } from 'libs/parsers/venueType'
@@ -65,9 +63,9 @@ export type VenueOffers = {
 }
 
 export type Artist = {
-  id: number
+  id: string
   name: string
-  image?: ReactNode
+  image?: string
 }
 
 export type VenueOffersArtists = { artists: Artist[] }

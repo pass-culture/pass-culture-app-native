@@ -5,7 +5,6 @@ import { isArtistPageCompatible } from 'features/venue/helpers/isArtistPageCompa
 import { Artist, VenueOffersArtists } from 'features/venue/types'
 import { Offer } from 'shared/offer/types'
 
-// TODO(PC-33464): Code to delete if correctly managed on backend (to be replaced by a hook which get the artists from Algolia)
 export const useVenueOffersArtists = (
   venueOffers?: Offer[]
 ): Partial<UseQueryResult<VenueOffersArtists>> => {
@@ -14,28 +13,23 @@ export const useVenueOffersArtists = (
   }
 
   const artists: Artist[] = chain(
-    // `flatMap` is used to map over `venueOffers.hits`, transforming each offer into an artist object if the artist exists,
-    // and flattening the results into a single array. If no artist is found, it returns an empty array, effectively filtering out
-    // offers without an artist in a single step.
-    venueOffers.flatMap((offer) =>
-      offer.offer.artist && isArtistPageCompatible(offer.offer.artist, offer.offer.subcategoryId)
-        ? [
-            {
-              id: Number(offer.objectID),
-              name: offer.offer.artist,
-              image: offer.offer.thumbUrl,
-            },
-          ]
-        : []
-    )
+    // `flatMap` is used to map over `venueOffers`, transforming each offer into an artists array if exists,
+    // and flattening the results into a single array. If no artists found, it returns an empty array, effectively filtering out
+    // offers without artists in a single step.
+    venueOffers.flatMap((offer) => {
+      if (isArtistPageCompatible(offer.offer.subcategoryId) && offer.artists) {
+        return offer.artists
+      }
+      return []
+    })
   )
-    .groupBy('name')
+    .groupBy('id')
     .orderBy(
       [(artistList) => artistList.length, (artistList) => artistList[0]?.name],
       ['desc', 'asc']
     )
     .flatten()
-    .uniqBy('name')
+    .uniqBy('id')
     .slice(0, 30)
     .value()
 

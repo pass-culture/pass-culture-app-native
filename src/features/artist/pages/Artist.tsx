@@ -1,41 +1,49 @@
 import { useRoute } from '@react-navigation/native'
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, useMemo } from 'react'
 
 import { ArtistBody } from 'features/artist/components/ArtistBody/ArtistBody'
 import { PageNotFound } from 'features/navigation/pages/PageNotFound'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
-import { getOfferArtists } from 'features/offer/helpers/getOfferArtists/getOfferArtists'
+import { useArtistResults } from 'features/offer/helpers/useArtistResults/useArtistResults'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { useSubcategoriesMapping } from 'libs/subcategories'
-import { useOfferQuery } from 'queries/offer/useOfferQuery'
 
 export type Artist = {
+  id: string
   name: string
   bio?: string
+  image?: string
 }
 
 export const Artist: FunctionComponent = () => {
   const enableArtistPage = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ARTIST_PAGE)
   const { params } = useRoute<UseRouteType<'Artist'>>()
-  const { data: offer } = useOfferQuery({ offerId: params.fromOfferId })
-  const subcategoriesMapping = useSubcategoriesMapping()
 
-  if (!offer) return null
+  const { artistPlaylist, artistTopOffers } = useArtistResults({
+    artistId: params.id,
+  })
 
-  // TODO(PC-33464): point of vigilance when we will use a hook which get the artists from Algolia
-  const subcategory = subcategoriesMapping[offer?.subcategoryId]
-  const artists = getOfferArtists(subcategory.categoryId, offer)
+  const artist = useMemo(() => {
+    return [...artistPlaylist, ...artistTopOffers][0]?.artists?.find(
+      (artist) => artist.id === params.id
+    )
+  }, [artistPlaylist, artistTopOffers, params.id])
 
-  if (!artists) return null
+  if (!artist) return <PageNotFound />
 
   const artistInfo: Artist = {
-    name: artists,
+    id: params.id,
+    name: artist.name,
+    image: artist.image,
     bio: undefined,
   }
 
   return enableArtistPage ? (
-    <ArtistBody offer={offer} subcategory={subcategory} artist={artistInfo} />
+    <ArtistBody
+      artist={artistInfo}
+      artistPlaylist={artistPlaylist}
+      artistTopOffers={artistTopOffers}
+    />
   ) : (
     <PageNotFound />
   )

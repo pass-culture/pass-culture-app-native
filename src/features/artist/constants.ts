@@ -1,6 +1,5 @@
 import { SubcategoryIdEnum } from 'api/gen'
 
-// TODO(PC-33464): Code to delete if correctly managed on backend
 export const ARTIST_PAGE_SUBCATEGORIES: SubcategoryIdEnum[] = [
   SubcategoryIdEnum.ABO_PLATEFORME_MUSIQUE,
   SubcategoryIdEnum.CAPTATION_MUSIQUE,
