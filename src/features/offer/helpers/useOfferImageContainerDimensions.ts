@@ -14,7 +14,7 @@ const HEADER_HEIGHT = getSpacing(64.5)
 
 const PORTRAIT_DIMENSIONS = {
   default: { height: getSpacing(95), width: getSpacing(95) * RATIO_PORTRAIT },
-  musique: { height: getSpacing(60), width: getSpacing(60) },
+  music: { height: getSpacing(60), width: getSpacing(60) },
 } as const
 
 export const useOfferImageContainerDimensions = (
@@ -29,9 +29,7 @@ export const useOfferImageContainerDimensions = (
     (SubcategoryIdEnum.SUPPORT_PHYSIQUE_MUSIQUE_CD ||
       SubcategoryIdEnum.SUPPORT_PHYSIQUE_MUSIQUE_VINYLE)
 
-  const { height, width } = isMusicSupport
-    ? PORTRAIT_DIMENSIONS.musique
-    : PORTRAIT_DIMENSIONS.default
+  const { height, width } = isMusicSupport ? PORTRAIT_DIMENSIONS.music : PORTRAIT_DIMENSIONS.default
 
   const getImageStyle = (borderRadiusValue: number) => ({
     height,
