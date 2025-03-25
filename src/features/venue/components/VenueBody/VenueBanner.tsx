@@ -1,7 +1,7 @@
 import colorAlpha from 'color-alpha'
 import React, { PropsWithChildren } from 'react'
 import LinearGradient from 'react-native-linear-gradient'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { BannerMetaModel } from 'api/gen'
 import { GOOGLE_LOGO } from 'features/venue/components/VenueBody/GoogleLogo'
@@ -23,14 +23,16 @@ type Props = {
 
 export const VenueBanner: React.FC<Props> = ({ handleImagePress, bannerUrl, bannerMeta }) => {
   const backgroundStyle = useVenueBackgroundStyle()
+  const { isMobileViewport } = useTheme()
   const { is_from_google: isFromGoogle, image_credit: imageCredit } = bannerMeta ?? {
     is_from_google: null,
     image_credit: null,
   }
   const hasGoogleCredit = isFromGoogle && imageCredit
+  const defaultMarginBottom = isMobileViewport ? getSpacing(6) : undefined
 
   return (
-    <HeaderContainer hasGoogleCredit={hasGoogleCredit}>
+    <HeaderContainer hasGoogleCredit={hasGoogleCredit} defaultMarginBottom={defaultMarginBottom}>
       {bannerUrl ? (
         <ViewGap gap={1}>
           <GoogleWatermarkWrapper
@@ -38,7 +40,7 @@ export const VenueBanner: React.FC<Props> = ({ handleImagePress, bannerUrl, bann
             handleImagePress={handleImagePress}>
             <Image style={backgroundStyle} resizeMode="cover" url={bannerUrl} />
           </GoogleWatermarkWrapper>
-          {isFromGoogle && imageCredit ? <CopyrightText>© {imageCredit}</CopyrightText> : null}
+          {hasGoogleCredit ? <CopyrightText>© {imageCredit}</CopyrightText> : null}
         </ViewGap>
       ) : (
         <EmptyVenueBackground style={backgroundStyle} testID="defaultVenueBackground">
@@ -50,10 +52,12 @@ export const VenueBanner: React.FC<Props> = ({ handleImagePress, bannerUrl, bann
   )
 }
 
-const HeaderContainer = styled.View<{ hasGoogleCredit: boolean }>(({ hasGoogleCredit }) => ({
-  alignItems: 'center',
-  marginBottom: hasGoogleCredit ? getSpacing(2) : getSpacing(6),
-}))
+const HeaderContainer = styled.View<{ hasGoogleCredit: boolean; defaultMarginBottom?: number }>(
+  ({ hasGoogleCredit, defaultMarginBottom, theme }) => ({
+    alignItems: 'center',
+    marginBottom: hasGoogleCredit && theme.isMobileViewport ? getSpacing(2) : defaultMarginBottom,
+  })
+)
 
 const GoogleWatermarkWrapper = ({
   withGoogleWatermark,
