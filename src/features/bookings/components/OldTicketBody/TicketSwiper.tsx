@@ -7,14 +7,12 @@ import {
   StyleProp,
   ViewStyle,
 } from 'react-native'
-import { View } from 'react-native-animatable'
 import styled, { useTheme } from 'styled-components/native'
 
 import { BookingDetailsTicketContentProps } from 'features/bookings/components/BookingDetailsTicketContent'
-import { TicketsProps } from 'features/bookings/components/OldTicketBody/getTickets'
-import { getTickets } from 'features/bookings/components/Ticket/getTickets'
+import { getTickets, TicketsProps } from 'features/bookings/components/OldTicketBody/getTickets'
 import { TicketSwiperControls } from 'features/bookings/components/Ticket/TicketSwiperControls'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Spacer } from 'ui/theme'
 
 const SEPARATOR_VALUE = 4
 const INTERVAL = getSpacing(SEPARATOR_VALUE)
@@ -35,12 +33,9 @@ export function TicketSwiper({ booking }: TicketsProps) {
   const APP_COMPONENT_WIDTH_WITH_MARGIN = appContentWidth * 0.9
 
   const renderItem: ListRenderItem<ReactElement<BookingDetailsTicketContentProps>> = ({ item }) => (
-    /*     <TicketsContainer key={item.key} width={TICKET_WIDTH}>
+    <TicketsContainer key={item.key} width={TICKET_WIDTH}>
       {item}
-    </TicketsContainer> */
-    <Div>
-      <Typo.Body>Cnfezouhfe oaphifFHQ JPZ ADZAIDHZA MHDAMDH ZJKDHAMZ&nbsp;!</Typo.Body>
-    </Div>
+    </TicketsContainer>
   )
 
   const nextItemPosition = (TICKET_WIDTH + INTERVAL) * currentIndex
@@ -110,7 +105,10 @@ export function TicketSwiper({ booking }: TicketsProps) {
 
 const TicketsContainer = styled.View<{ width: number }>(({ width }) => ({
   alignItems: 'center',
-  maxWidth: width,
+  justifyContent: 'flex-end',
+  paddingTop: getSpacing(2),
+  paddingBottom: getSpacing(6),
+  width,
 }))
 
 const SwiperTicketsControlsContainer = styled.View({
@@ -118,9 +116,3 @@ const SwiperTicketsControlsContainer = styled.View({
 })
 
 const Separator = () => <Spacer.Row numberOfSpaces={SEPARATOR_VALUE} />
-
-const Div = styled(View)({
-  backgroundColor: 'yellow',
-  maxHeight: getSpacing(85),
-  maxWidth: getSpacing(85),
-})

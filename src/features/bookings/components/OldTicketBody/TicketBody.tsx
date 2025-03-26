@@ -2,12 +2,12 @@ import { addDays, isSameDay } from 'date-fns'
 import React, { FunctionComponent } from 'react'
 
 import { BookingVenueResponse, SubcategoryIdEnum, WithdrawalTypeEnum } from 'api/gen'
+import { EmailSent } from 'features/bookings/components/OldTicketBody/EmailSent/EmailSent'
 import { NoTicket } from 'features/bookings/components/OldTicketBody/NoTicket'
-import { EmailSent } from 'features/bookings/components/TicketBody/EmailSent/EmailSent'
+import { SafeSeatWithQrCode } from 'features/bookings/components/OldTicketBody/SafeSeatWithQrCode/SafeSeatWithQrCode'
+import { TicketWithdrawal } from 'features/bookings/components/OldTicketBody/TicketWithdrawal/TicketWithdrawal'
 import { QrCode } from 'features/bookings/components/TicketBody/QrCode/QrCode'
-import { SafeSeatWithQrCode } from 'features/bookings/components/TicketBody/SafeSeatWithQrCode/SafeSeatWithQrCode'
 import { SeatWithQrCodeProps } from 'features/bookings/components/TicketBody/SeatWithQrCode/SeatWithQrCode'
-import { TicketWithdrawal } from 'features/bookings/components/TicketBody/TicketWithdrawal/TicketWithdrawal'
 
 type Props = {
   withdrawalDelay: number

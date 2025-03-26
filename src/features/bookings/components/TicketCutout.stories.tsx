@@ -4,7 +4,6 @@ import styled from 'styled-components/native'
 
 import { SubcategoryIdEnum, WithdrawalTypeEnum } from 'api/gen'
 import { TicketBody as OldTicketBody } from 'features/bookings/components/OldTicketBody/TicketBody'
-import { TicketBody } from 'features/bookings/components/TicketBody/TicketBody'
 import { TicketCutout } from 'features/bookings/components/TicketCutout'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { VenueBlock } from 'features/offer/components/OfferVenueBlock/VenueBlock'
@@ -59,23 +58,6 @@ const variantConfig: Variants<typeof TicketCutout> = [
           <StyledBody>Présente ce billet pour accéder à l’évènement</StyledBody>
         </ViewGap>
       ),
-      venueInfo: <VenueBlock venueId={bookingsSnap.ongoing_bookings[0].stock.offer.venue.id} />,
-    },
-  },
-  {
-    label: 'TicketBody no ticket needed',
-    props: {
-      title: offerResponseSnap.name,
-      hour: '18h30',
-      day: '20 fev. 2025',
-      isDuo: true,
-      infoBanner: (
-        <InfoBanner
-          message="Tu auras besoin de ta carte d’identité pour accéder à l’évènement."
-          icon={IdCard}
-        />
-      ),
-      children: <TicketBody withdrawalType={WithdrawalTypeEnum.no_ticket} />,
       venueInfo: <VenueBlock venueId={bookingsSnap.ongoing_bookings[0].stock.offer.venue.id} />,
     },
   },

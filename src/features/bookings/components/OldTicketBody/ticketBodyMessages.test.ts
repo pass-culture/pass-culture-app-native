@@ -5,7 +5,7 @@ import {
   getDelayMessage,
   getEmailMessage,
   getStartMessage,
-} from 'features/bookings/components/TicketBody/ticketBodyMessages'
+} from 'features/bookings/components/OldTicketBody/ticketBodyMessages'
 import { formatSecondsToString } from 'features/bookings/helpers'
 
 const whiteSpace = ' '
@@ -19,9 +19,7 @@ describe('<ticketBodyMessages/>', () => {
     it('should return the correct message if withdrawal type is on site', () => {
       const startMessage = getStartMessage(WithdrawalTypeEnum.on_site)
 
-      expect(startMessage).toEqual(
-        `Présente le code ci-dessus à l’accueil du lieu indiqué${whiteSpace}`
-      )
+      expect(startMessage).toEqual(`Présente le code ci-dessus sur place${whiteSpace}`)
     })
 
     it('should return the correct message if withdrawal type is by email', () => {
@@ -33,9 +31,7 @@ describe('<ticketBodyMessages/>', () => {
     it('should not return message if if there is no withdrawal type', () => {
       const startMessage = getStartMessage(WithdrawalTypeEnum.no_ticket)
 
-      expect(startMessage).toEqual(
-        'Tu n’as pas besoin de billet pour profiter de cette offre\u00a0! '
-      )
+      expect(startMessage).toBeNull()
     })
   })
 

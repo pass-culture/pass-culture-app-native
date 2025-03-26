@@ -3,7 +3,7 @@ import { Platform, View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { BookingVenueResponse, SubcategoryIdEnum } from 'api/gen'
-import { useSafeSeatWithQrCode } from 'features/bookings/components/TicketBody/SafeSeatWithQrCode/useSafeSeatWithQrCode'
+import { useSafeSeatWithQrCode } from 'features/bookings/components/OldTicketBody/SafeSeatWithQrCode/useSafeSeatWithQrCode'
 import {
   SeatWithQrCode,
   SeatWithQrCodeProps,

@@ -9,7 +9,7 @@ import { BookingDetailsCancelButton } from 'features/bookings/components/Booking
 import { BookingDetailsHeader } from 'features/bookings/components/BookingDetailsHeader'
 import { BookingPropertiesSection } from 'features/bookings/components/BookingPropertiesSection'
 import { CancelBookingModal } from 'features/bookings/components/CancelBookingModal'
-import { TicketSwiper } from 'features/bookings/components/Ticket/TicketSwiper'
+import { TicketSwiper } from 'features/bookings/components/OldTicketBody/TicketSwiper'
 import { getOfferRules } from 'features/bookings/helpers'
 import { isEligibleBookingsForArchive } from 'features/bookings/helpers/expirationDateUtils'
 import { Booking, BookingProperties } from 'features/bookings/types'

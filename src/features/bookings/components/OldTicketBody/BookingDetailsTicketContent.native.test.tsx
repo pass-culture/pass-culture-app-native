@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { BookingReponse, CategoryIdEnum, SubcategoryIdEnum } from 'api/gen'
-import { BookingDetailsTicketContent } from 'features/bookings/components/BookingDetailsTicketContent'
+import { BookingDetailsTicketContent } from 'features/bookings/components/OldTicketBody/BookingDetailsTicketContent'
 import { QrCodeWithSeatProps } from 'features/bookings/components/TicketBody/QrCodeWithSeat/QrCodeWithSeat'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import * as useCategoryIdModule from 'libs/subcategories/useCategoryId'

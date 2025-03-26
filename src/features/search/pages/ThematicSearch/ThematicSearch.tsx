@@ -1,5 +1,5 @@
 import { useRoute } from '@react-navigation/native'
-import React, { ReactNode, useEffect, useMemo } from 'react'
+import React, { useEffect, useMemo } from 'react'
 import { Platform, View } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 import styled from 'styled-components/native'
@@ -68,12 +68,12 @@ export const ThematicSearch: React.FC = () => {
 
   if (!offerCategory) return null
 
-  const playlistsComponent: Partial<Record<SearchGroupNameEnumv2, ReactNode>> = {
-    [SearchGroupNameEnumv2.LIVRES]: <BookPlaylists />,
-    [SearchGroupNameEnumv2.CINEMA]: <CinemaPlaylists />,
-    [SearchGroupNameEnumv2.FILMS_DOCUMENTAIRES_SERIES]: <FilmsPlaylists />,
-    [SearchGroupNameEnumv2.MUSIQUE]: <MusicPlaylists />,
-    [SearchGroupNameEnumv2.CONCERTS_FESTIVALS]: <ConcertsAndFestivalsPlaylists />,
+  const playlistsComponent: Partial<Record<SearchGroupNameEnumv2, any>> = {
+    [SearchGroupNameEnumv2.LIVRES]: BookPlaylists,
+    [SearchGroupNameEnumv2.CINEMA]: CinemaPlaylists,
+    [SearchGroupNameEnumv2.FILMS_DOCUMENTAIRES_SERIES]: FilmsPlaylists,
+    [SearchGroupNameEnumv2.MUSIQUE]: MusicPlaylists,
+    [SearchGroupNameEnumv2.CONCERTS_FESTIVALS]: ConcertsAndFestivalsPlaylists,
   }
 
   const shouldDisplayAccessibilityContent =
@@ -85,6 +85,7 @@ export const ThematicSearch: React.FC = () => {
     isLocated
   )
 
+  const ComposantTruc = playlistsComponent[offerCategory]
   return (
     <ThematicSearchBar
       offerCategories={offerCategories}
@@ -102,7 +103,9 @@ export const ThematicSearch: React.FC = () => {
             shouldDisplaySeparator={false}
           />
         ) : null}
-        <PlaylistContainer>{playlistsComponent[offerCategory]}</PlaylistContainer>
+        <PlaylistContainer>
+          <ComposantTruc booking={booking} />
+        </PlaylistContainer>
       </ScrollView>
     </ThematicSearchBar>
   )
