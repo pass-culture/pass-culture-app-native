@@ -20,6 +20,7 @@ export type ContentfulAdapter<
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const contentfulAdapters: Record<string, ContentfulAdapter<any, any>> = {
+  // with unknown instead of any: Type 'unknown' is not assignable to type 'AlgoliaContentModel'
   [ContentTypes.ALGOLIA]: adaptOffersModule,
   [ContentTypes.BUSINESS]: adaptBusinessModule,
   [ContentTypes.RECOMMENDATION]: adaptRecommendationModule,
