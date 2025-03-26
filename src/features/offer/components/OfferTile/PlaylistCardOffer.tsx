@@ -1,4 +1,4 @@
-import React, { FC } from 'react'
+import React, { FC, ReactNode } from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -7,7 +7,6 @@ import { ImageTile } from 'ui/components/ImageTile'
 import { NewOfferCaption } from 'ui/components/NewOfferCaption'
 import { Tag } from 'ui/components/Tag/Tag'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { ThumbUpFilled } from 'ui/svg/icons/ThumbUpFilled'
 import { getSpacing } from 'ui/theme'
 
 type Props = {
@@ -20,17 +19,23 @@ type Props = {
   width: number
   height: number
   distance?: string
-  likes?: number
+  interactionTag?: ReactNode
 }
 
-const renderTags = ({ distance = '', likes = 0 }: { distance?: string; likes?: number }) => {
-  if (!distance && !likes) {
+const renderTags = ({
+  distance = '',
+  interactionTag,
+}: {
+  distance?: string
+  interactionTag?: ReactNode
+}) => {
+  if (!distance && !interactionTag) {
     return null
   }
   return (
     <TagContainer>
       {distance ? <DistanceTag label={`à ${distance}`} /> : null}
-      {likes ? <LikeTag label={likes.toString()} /> : null}
+      {interactionTag ?? null}
     </TagContainer>
   )
 }
@@ -45,13 +50,13 @@ export const PlaylistCardOffer: FC<Props> = ({
   width,
   height,
   distance,
-  likes,
+  interactionTag,
 }) => {
   return (
     <Container maxWidth={width}>
       <NewOfferCaption name={name} date={date} price={price} categoryLabel={categoryLabel} />
       <View>
-        {renderTags({ distance, likes })}
+        {renderTags({ distance, interactionTag })}
         <ImageTile categoryId={categoryId} uri={thumbnailUrl} width={width} height={height} />
       </View>
     </Container>
@@ -78,17 +83,6 @@ const TagContainer = styled.View({
 
 const DistanceTag = styled(Tag).attrs(() => ({
   testID: 'DistanceId',
-}))(({ theme }) => ({
-  backgroundColor: theme.colors.white,
-}))
-
-const CustomThumbUp = styled(ThumbUpFilled).attrs(({ theme }) => ({
-  size: getSpacing(4),
-  color: theme.colors.primary,
-}))``
-
-const LikeTag = styled(Tag).attrs(() => ({
-  Icon: CustomThumbUp,
 }))(({ theme }) => ({
   backgroundColor: theme.colors.white,
 }))
