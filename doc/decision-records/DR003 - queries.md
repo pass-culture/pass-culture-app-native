@@ -20,6 +20,7 @@
 - startTrackingAcceptedCookies et server state ?
 - startTracking
 - setMarketingParams => peut etre ?
+- useDeviceInfo
 
 ## De-hookification
 

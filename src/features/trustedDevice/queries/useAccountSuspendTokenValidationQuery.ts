@@ -10,7 +10,7 @@ export enum AccountSecurityStatus {
   EXPIRED_TOKEN,
 }
 
-export const useAccountSuspendTokenValidation = (
+export const useAccountSuspendTokenValidationQuery = (
   token: string
 ): UseQueryResult<AccountSecurityStatus, ApiError> => {
   return useQuery(

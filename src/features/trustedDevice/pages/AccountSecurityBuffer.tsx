@@ -5,8 +5,8 @@ import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import {
   AccountSecurityStatus,
-  useAccountSuspendTokenValidation,
-} from 'features/trustedDevice/api/useAccountSuspendTokenValidation'
+  useAccountSuspendTokenValidationQuery,
+} from 'features/trustedDevice/queries/useAccountSuspendTokenValidationQuery'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { LoadingPage } from 'ui/pages/LoadingPage'
 
@@ -14,7 +14,7 @@ export const AccountSecurityBuffer = () => {
   const { replace } = useNavigation<UseNavigationType>()
   const { params } = useRoute<UseRouteType<'AccountSecurityBuffer'>>()
 
-  const { data: tokenStatus, isLoading } = useAccountSuspendTokenValidation(params.token)
+  const { data: tokenStatus, isLoading } = useAccountSuspendTokenValidationQuery(params.token)
 
   const { showErrorSnackBar } = useSnackBarContext()
 
