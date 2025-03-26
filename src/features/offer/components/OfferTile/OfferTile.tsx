@@ -32,6 +32,7 @@ const UnmemoizedOfferTile = (props: OfferTileProps) => {
     apiRecoParams,
     index,
     artistName,
+    likes,
     navigationMethod = NAVIGATION_METHOD.NAVIGATE,
     ...offer
   } = props
@@ -107,6 +108,7 @@ const UnmemoizedOfferTile = (props: OfferTileProps) => {
           categoryId={categoryId}
           thumbnailUrl={thumbUrl}
           distance={distanceFromOffer}
+          likes={likes}
           name={name}
           date={date}
           price={price}
