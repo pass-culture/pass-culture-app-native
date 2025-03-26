@@ -32,6 +32,7 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
   const offerImagesUrl = useMemo(() => offerImages.map((image) => image.url), [offerImages])
 
   const handlePress = (defaultIndex = 0) => {
+    if (!offer.images) return
     setCarouselDefaultIndex(defaultIndex)
     showModal()
   }

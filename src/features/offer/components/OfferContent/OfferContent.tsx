@@ -22,6 +22,7 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
 }) => {
   const { navigate } = useNavigation<UseNavigationType>()
   const handlePress = (defaultIndex = 0) => {
+    if (!offer.images) return
     navigate('OfferPreview', { id: offer.id, defaultIndex })
   }
 

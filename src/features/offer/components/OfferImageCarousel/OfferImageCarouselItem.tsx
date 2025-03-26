@@ -26,7 +26,7 @@ export const OfferImageCarouselItem = ({
 }: PropsWithChildren<OfferImageCarouselItemProps>) => (
   <TouchableOpacity
     disabled={!onPress}
-    onPress={() => (imageURL ? onPress?.(index) : null)}
+    onPress={() => onPress?.(index)}
     accessibilityLabel={`Carousel image ${index + 1}`}
     accessibilityRole={AccessibilityRole.BUTTON}
     delayPressIn={70}>
