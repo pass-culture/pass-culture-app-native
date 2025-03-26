@@ -35,4 +35,10 @@ describe('PlaylistCardOffer component', () => {
 
     expect(screen.getByTestId('DistanceId')).toHaveTextContent('à 100m')
   })
+
+  it('should display likes count', () => {
+    render(<PlaylistCardOffer {...props} distance="100m" likes={100} />)
+
+    expect(screen.getByTestId('tagIcon')).toBeOnTheScreen()
+  })
 })

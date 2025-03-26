@@ -43,6 +43,7 @@ export interface OfferTileProps {
   searchId?: string
   apiRecoParams?: RecommendationApiParams
   index?: number
+  likes?: number
   artistName?: string
   navigationMethod?: NavigationMethod
 }

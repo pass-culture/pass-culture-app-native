@@ -31,11 +31,12 @@ export const Tag: FunctionComponent<TagProps> = ({ label, Icon, ...props }) => {
 
 const Wrapper = styled(View)(({ theme }) => ({
   flexDirection: 'row',
+  alignItems: 'center',
+  alignSelf: 'flex-start',
   borderRadius: 6,
   backgroundColor: theme.colors.greyLight,
   paddingVertical: PADDING_VERTICAL,
   paddingHorizontal: getSpacing(2),
-  alignSelf: 'baseline',
 }))
 
 const LabelText = styled(Typo.BodyAccentXs)(({ theme }) => ({

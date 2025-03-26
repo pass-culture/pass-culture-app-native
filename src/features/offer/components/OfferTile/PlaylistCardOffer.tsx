@@ -1,4 +1,5 @@
 import React, { FC } from 'react'
+import { View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { CategoryIdEnum } from 'api/gen'
@@ -6,6 +7,7 @@ import { ImageTile } from 'ui/components/ImageTile'
 import { NewOfferCaption } from 'ui/components/NewOfferCaption'
 import { Tag } from 'ui/components/Tag/Tag'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { ThumbUpFilled } from 'ui/svg/icons/ThumbUpFilled'
 import { getSpacing } from 'ui/theme'
 
 type Props = {
@@ -18,6 +20,19 @@ type Props = {
   width: number
   height: number
   distance?: string
+  likes?: number
+}
+
+const renderTags = ({ distance = '', likes = 0 }: { distance?: string; likes?: number }) => {
+  if (!distance && !likes) {
+    return null
+  }
+  return (
+    <TagContainer>
+      {distance ? <DistanceTag label={`à ${distance}`} /> : null}
+      {likes ? <LikeTag label={likes.toString()} /> : null}
+    </TagContainer>
+  )
 }
 
 export const PlaylistCardOffer: FC<Props> = ({
@@ -30,14 +45,15 @@ export const PlaylistCardOffer: FC<Props> = ({
   width,
   height,
   distance,
+  likes,
 }) => {
   return (
     <Container maxWidth={width}>
       <NewOfferCaption name={name} date={date} price={price} categoryLabel={categoryLabel} />
-      <ImageContainer>
-        {distance ? <DistanceTag label={`à ${distance}`} /> : null}
+      <View>
+        {renderTags({ distance, likes })}
         <ImageTile categoryId={categoryId} uri={thumbnailUrl} width={width} height={height} />
-      </ImageContainer>
+      </View>
     </Container>
   )
 }
@@ -49,14 +65,30 @@ const Container = styled(ViewGap).attrs({
   maxWidth,
 }))
 
-const ImageContainer = styled.View({})
+const TagContainer = styled.View({
+  position: 'absolute',
+  width: '100%',
+  padding: getSpacing(2),
+  columnGap: getSpacing(2),
+  top: 0,
+  left: 0,
+  zIndex: 1,
+  flexDirection: 'row',
+})
 
 const DistanceTag = styled(Tag).attrs(() => ({
   testID: 'DistanceId',
 }))(({ theme }) => ({
-  position: 'absolute',
-  top: getSpacing(2),
-  left: getSpacing(2),
-  zIndex: 1,
+  backgroundColor: theme.colors.white,
+}))
+
+const CustomThumbUp = styled(ThumbUpFilled).attrs(({ theme }) => ({
+  size: getSpacing(4),
+  color: theme.colors.primary,
+}))``
+
+const LikeTag = styled(Tag).attrs(() => ({
+  Icon: CustomThumbUp,
+}))(({ theme }) => ({
   backgroundColor: theme.colors.white,
 }))
