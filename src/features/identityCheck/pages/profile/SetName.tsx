@@ -123,7 +123,7 @@ Nous les vérifions et ils ne pourront plus être modifiés par la suite."
         <ButtonPrimary
           type="submit"
           wording="Continuer"
-          accessibilityLabel="Continuer vers l’étape suivante"
+          accessibilityLabel="Continuer vers la ville de résidence"
           onPress={handleSubmit(submitName)}
           disabled={disabled}
         />

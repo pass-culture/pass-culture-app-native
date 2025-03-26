@@ -68,7 +68,7 @@ export const SetCity = () => {
           type="submit"
           onPress={handleSubmit(onSubmit)}
           wording="Continuer"
-          accessibilityLabel="Continuer vers l’étape suivante"
+          accessibilityLabel="Continuer vers l’adresse"
           disabled={!isValid}
         />
       }

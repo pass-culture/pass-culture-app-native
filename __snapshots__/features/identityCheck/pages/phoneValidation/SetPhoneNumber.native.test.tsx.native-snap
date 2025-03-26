@@ -740,7 +740,7 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
               }
             />
             <View
-              accessibilityLabel="Continuer"
+              accessibilityLabel="Continuer vers l’étape suivante"
               accessibilityState={
                 {
                   "busy": undefined,
@@ -794,7 +794,7 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
                   },
                 ]
               }
-              testID="Continuer"
+              testID="Continuer vers l’étape suivante"
             >
               <View
                 style={

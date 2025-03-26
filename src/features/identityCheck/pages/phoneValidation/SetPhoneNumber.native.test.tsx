@@ -103,7 +103,7 @@ describe('SetPhoneNumber', () => {
 
     it('should enable the button when the phone number is valid', async () => {
       renderSetPhoneNumber()
-      const button = screen.getByTestId('Continuer')
+      const button = screen.getByTestId('Continuer vers l’étape suivante')
 
       await waitFor(() => expect(button).toBeDisabled())
 
@@ -120,7 +120,7 @@ describe('SetPhoneNumber', () => {
       '33224354m', // includes char
     ])('should disable the button when the phone number is not valid (%s)', async (phoneNumber) => {
       renderSetPhoneNumber()
-      const button = screen.getByTestId('Continuer')
+      const button = screen.getByTestId('Continuer vers l’étape suivante')
 
       await waitFor(() => expect(button).toBeDisabled())
 
@@ -133,7 +133,7 @@ describe('SetPhoneNumber', () => {
     it('should navigate to SetPhoneValidationCode on /send_phone_validation_code request success', async () => {
       renderSetPhoneNumber()
 
-      const continueButton = screen.getByTestId('Continuer')
+      const continueButton = screen.getByTestId('Continuer vers l’étape suivante')
       const input = screen.getByTestId('Entrée pour le numéro de téléphone')
       fireEvent.changeText(input, '612345678')
       fireEvent.press(continueButton)
@@ -152,7 +152,7 @@ describe('SetPhoneNumber', () => {
       )
       renderSetPhoneNumber()
 
-      const continueButton = screen.getByTestId('Continuer')
+      const continueButton = screen.getByTestId('Continuer vers l’étape suivante')
       const input = screen.getByTestId('Entrée pour le numéro de téléphone')
       fireEvent.changeText(input, '600000000')
 
@@ -173,7 +173,7 @@ describe('SetPhoneNumber', () => {
 
       renderSetPhoneNumber()
 
-      const continueButton = screen.getByTestId('Continuer')
+      const continueButton = screen.getByTestId('Continuer vers l’étape suivante')
       const input = screen.getByTestId('Entrée pour le numéro de téléphone')
       fireEvent.changeText(input, '612345678')
       fireEvent.press(continueButton)
@@ -184,7 +184,7 @@ describe('SetPhoneNumber', () => {
     it('should log event HasRequestedCode when pressing "Continuer" button', async () => {
       renderSetPhoneNumber()
 
-      const continueButton = screen.getByTestId('Continuer')
+      const continueButton = screen.getByTestId('Continuer vers l’étape suivante')
       const input = screen.getByTestId('Entrée pour le numéro de téléphone')
 
       await act(async () => {
@@ -201,7 +201,7 @@ describe('SetPhoneNumber', () => {
     it('should log analytics when pressing "Continuer" button', async () => {
       renderSetPhoneNumber()
 
-      const continueButton = screen.getByTestId('Continuer')
+      const continueButton = screen.getByTestId('Continuer vers l’étape suivante')
       const input = screen.getByTestId('Entrée pour le numéro de téléphone')
 
       await act(async () => {

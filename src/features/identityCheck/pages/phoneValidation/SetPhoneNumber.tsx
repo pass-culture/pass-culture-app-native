@@ -174,6 +174,7 @@ export const SetPhoneNumber = () => {
             type="submit"
             onPress={requestSendPhoneValidationCode}
             wording="Continuer"
+            accessibilityLabel="Continuer vers l’étape suivante"
             disabled={!isContinueButtonEnabled}
             isLoading={isLoading}
           />
