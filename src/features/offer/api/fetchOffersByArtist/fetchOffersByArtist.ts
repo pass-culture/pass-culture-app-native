@@ -1,7 +1,5 @@
 import { MultipleQueriesQuery, SearchResponse } from '@algolia/client-search'
 
-import { SubcategoryIdEnum } from 'api/gen'
-import { ARTIST_PAGE_SUBCATEGORIES } from 'features/artist/constants'
 import { captureAlgoliaError } from 'libs/algolia/fetchAlgolia/AlgoliaError'
 import { offerAttributesToRetrieve } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/offerAttributesToRetrieve'
 import { multipleQueries } from 'libs/algolia/fetchAlgolia/multipleQueries'
@@ -15,14 +13,9 @@ type BuildAlgoliaFilterType = {
 
 export type FetchOfferByArtist = BuildAlgoliaFilterType & {
   userLocation: Position
-  subcategoryId?: SubcategoryIdEnum
 }
 
-export const fetchOffersByArtist = async ({
-  artistId,
-  subcategoryId,
-  userLocation,
-}: FetchOfferByArtist) => {
+export const fetchOffersByArtist = async ({ artistId, userLocation }: FetchOfferByArtist) => {
   const defaultQueryParams: MultipleQueriesQuery['params'] = {
     page: 0,
     filters: buildAlgoliaFilter({ artistId }),
@@ -54,9 +47,6 @@ export const fetchOffersByArtist = async ({
       },
     },
   ]
-
-  if (!artistId || (subcategoryId && !ARTIST_PAGE_SUBCATEGORIES.includes(subcategoryId)))
-    return { playlistHits: [], topOffersHits: [] }
 
   try {
     const [playlistResponse, topOffersResponse] =

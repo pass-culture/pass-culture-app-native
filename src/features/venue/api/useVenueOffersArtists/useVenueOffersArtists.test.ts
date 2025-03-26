@@ -8,7 +8,7 @@ import { renderHook, waitFor } from 'tests/utils'
 
 describe('useVenueOffersArtists', () => {
   it('should return empty artists array when venueOffers is undefined', () => {
-    const { result } = renderHook(() => useVenueOffersArtists(), {
+    const { result } = renderHook(() => useVenueOffersArtists([SubcategoryIdEnum.LIVRE_PAPIER]), {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
 
@@ -16,9 +16,12 @@ describe('useVenueOffersArtists', () => {
   })
 
   it('should return empty artists array when there are no offers', async () => {
-    const { result } = renderHook(() => useVenueOffersArtists([]), {
-      wrapper: ({ children }) => reactQueryProviderHOC(children),
-    })
+    const { result } = renderHook(
+      () => useVenueOffersArtists([SubcategoryIdEnum.LIVRE_PAPIER], []),
+      {
+        wrapper: ({ children }) => reactQueryProviderHOC(children),
+      }
+    )
 
     await waitFor(async () => {
       expect(result.current.data).toEqual({ artists: [] })
@@ -28,70 +31,73 @@ describe('useVenueOffersArtists', () => {
   it('should return artists when there are offers', async () => {
     const { result } = renderHook(
       () =>
-        useVenueOffersArtists([
-          {
-            offer: {
-              dates: [],
-              isDigital: false,
-              isDuo: false,
-              name: 'I want something more',
-              prices: [28.0],
-              subcategoryId: SubcategoryIdEnum.SUPPORT_PHYSIQUE_MUSIQUE_VINYLE,
-              thumbUrl:
-                'https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDZQ',
-              artist: 'Céline Dion',
-            },
-            _geoloc: { lat: 4.90339, lng: -52.31663 },
-            objectID: '102310',
-            venue: {
-              id: 4,
-              name: 'Lieu 4',
-              publicName: 'Lieu 4',
-              address: '4 rue de la paix',
-              postalCode: '75000',
-              city: 'Paris',
-            },
-            artists: [
-              {
-                id: '1',
-                name: 'Céline Dion',
-                image:
+        useVenueOffersArtists(
+          [SubcategoryIdEnum.SUPPORT_PHYSIQUE_MUSIQUE_VINYLE],
+          [
+            {
+              offer: {
+                dates: [],
+                isDigital: false,
+                isDuo: false,
+                name: 'I want something more',
+                prices: [28.0],
+                subcategoryId: SubcategoryIdEnum.SUPPORT_PHYSIQUE_MUSIQUE_VINYLE,
+                thumbUrl:
                   'https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDZQ',
+                artist: 'Céline Dion',
               },
-            ],
-          },
-          {
-            offer: {
-              dates: [],
-              isDigital: false,
-              isDuo: false,
-              name: 'I want something more',
-              prices: [28.0],
-              subcategoryId: SubcategoryIdEnum.SUPPORT_PHYSIQUE_MUSIQUE_VINYLE,
-              thumbUrl:
-                'https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDZQ',
-              artist: 'Céline Dion',
+              _geoloc: { lat: 4.90339, lng: -52.31663 },
+              objectID: '102310',
+              venue: {
+                id: 4,
+                name: 'Lieu 4',
+                publicName: 'Lieu 4',
+                address: '4 rue de la paix',
+                postalCode: '75000',
+                city: 'Paris',
+              },
+              artists: [
+                {
+                  id: '1',
+                  name: 'Céline Dion',
+                  image:
+                    'https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDZQ',
+                },
+              ],
             },
-            _geoloc: { lat: 4.90339, lng: -52.31663 },
-            objectID: '102310',
-            venue: {
-              id: 4,
-              name: 'Lieu 4',
-              publicName: 'Lieu 4',
-              address: '4 rue de la paix',
-              postalCode: '75000',
-              city: 'Paris',
-            },
-            artists: [
-              {
-                id: '1',
-                name: 'Céline Dion',
-                image:
+            {
+              offer: {
+                dates: [],
+                isDigital: false,
+                isDuo: false,
+                name: 'I want something more',
+                prices: [28.0],
+                subcategoryId: SubcategoryIdEnum.SUPPORT_PHYSIQUE_MUSIQUE_VINYLE,
+                thumbUrl:
                   'https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDZQ',
+                artist: 'Céline Dion',
               },
-            ],
-          },
-        ]),
+              _geoloc: { lat: 4.90339, lng: -52.31663 },
+              objectID: '102310',
+              venue: {
+                id: 4,
+                name: 'Lieu 4',
+                publicName: 'Lieu 4',
+                address: '4 rue de la paix',
+                postalCode: '75000',
+                city: 'Paris',
+              },
+              artists: [
+                {
+                  id: '1',
+                  name: 'Céline Dion',
+                  image:
+                    'https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDZQ',
+                },
+              ],
+            },
+          ]
+        ),
       {
         wrapper: ({ children }) => reactQueryProviderHOC(children),
       }
@@ -140,9 +146,16 @@ describe('useVenueOffersArtists', () => {
       ],
     }))
 
-    const { result } = renderHook(() => useVenueOffersArtists(shuffle(mockedArtistList)), {
-      wrapper: ({ children }) => reactQueryProviderHOC(children),
-    })
+    const { result } = renderHook(
+      () =>
+        useVenueOffersArtists(
+          [SubcategoryIdEnum.SUPPORT_PHYSIQUE_MUSIQUE_VINYLE],
+          shuffle(mockedArtistList)
+        ),
+      {
+        wrapper: ({ children }) => reactQueryProviderHOC(children),
+      }
+    )
 
     const expectedArtistsList =
       // Artiste 1

@@ -1,6 +1,8 @@
 import { SubcategoryIdEnum } from 'api/gen'
 import { useArtistResults } from 'features/offer/helpers/useArtistResults/useArtistResults'
 import { mockedAlgoliaOffersWithSameArtistResponse } from 'libs/algolia/fixtures/algoliaFixtures'
+import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
+import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import { Position } from 'libs/location/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, waitFor } from 'tests/utils'
@@ -25,8 +27,17 @@ jest.mock('libs/location/LocationWrapper', () => ({
   }),
 }))
 
+const useRemoteConfigSpy = jest.spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
+
 describe('useArtistResults', () => {
-  it('should fetch same artist playlist when user has Internet connection', async () => {
+  beforeAll(() => {
+    useRemoteConfigSpy.mockReturnValue({
+      ...DEFAULT_REMOTE_CONFIG,
+      artistPageSubcategories: { subcategories: [SubcategoryIdEnum.LIVRE_PAPIER] },
+    })
+  })
+
+  it('should fetch same artist playlist when artistId and subcategory compatible with artist page defined', async () => {
     renderHook(
       () =>
         useArtistResults({
@@ -41,10 +52,50 @@ describe('useArtistResults', () => {
     await waitFor(() => {
       expect(fetchOffersByArtistSpy).toHaveBeenCalledWith({
         artistId: '1',
-        subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
         userLocation: mockUserLocation,
       })
     })
+  })
+
+  it('should fetch same artist playlist when artistId defined and subcategory not defined', async () => {
+    renderHook(
+      () =>
+        useArtistResults({
+          artistId: '1',
+        }),
+      {
+        wrapper: ({ children }) => reactQueryProviderHOC(children),
+      }
+    )
+
+    await waitFor(() => {
+      expect(fetchOffersByArtistSpy).toHaveBeenCalledWith({
+        artistId: '1',
+        userLocation: mockUserLocation,
+      })
+    })
+  })
+
+  it('should not fetch same artist playlist when subcategory compatible with artist page defined and artistId not defined', async () => {
+    renderHook(
+      () =>
+        useArtistResults({
+          subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
+        }),
+      {
+        wrapper: ({ children }) => reactQueryProviderHOC(children),
+      }
+    )
+
+    expect(fetchOffersByArtistSpy).not.toHaveBeenCalled()
+  })
+
+  it('should not fetch same artist playlist when subcategory compatible with artist page and artistId not defined', async () => {
+    renderHook(() => useArtistResults({}), {
+      wrapper: ({ children }) => reactQueryProviderHOC(children),
+    })
+
+    expect(fetchOffersByArtistSpy).not.toHaveBeenCalled()
   })
 
   it('should return an empty array for artist playlist when no data returned', async () => {

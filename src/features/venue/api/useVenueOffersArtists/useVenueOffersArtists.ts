@@ -1,11 +1,12 @@
 import { chain } from 'lodash'
 import { UseQueryResult } from 'react-query'
 
-import { isArtistPageCompatible } from 'features/venue/helpers/isArtistPageCompatible/isArtistPageCompatible'
+import { SubcategoryIdEnum } from 'api/gen'
 import { Artist, VenueOffersArtists } from 'features/venue/types'
 import { Offer } from 'shared/offer/types'
 
 export const useVenueOffersArtists = (
+  artistPageSubcategories: SubcategoryIdEnum[],
   venueOffers?: Offer[]
 ): Partial<UseQueryResult<VenueOffersArtists>> => {
   if (!venueOffers) {
@@ -17,7 +18,7 @@ export const useVenueOffersArtists = (
     // and flattening the results into a single array. If no artists found, it returns an empty array, effectively filtering out
     // offers without artists in a single step.
     venueOffers.flatMap((offer) => {
-      if (isArtistPageCompatible(offer.offer.subcategoryId) && offer.artists) {
+      if (artistPageSubcategories.includes(offer.offer.subcategoryId) && offer.artists) {
         return offer.artists
       }
       return []

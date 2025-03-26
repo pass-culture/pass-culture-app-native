@@ -6,6 +6,7 @@ import { SubcategoryIdEnum } from 'api/gen'
 import { fetchOffersByArtist } from 'features/offer/api/fetchOffersByArtist/fetchOffersByArtist'
 import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { AlgoliaOfferWithArtistAndEan } from 'libs/algolia/types'
+import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { useLocation } from 'libs/location'
 import { formatDistance } from 'libs/parsers/formatDistance'
 import { QueryKeys } from 'libs/queryKeys'
@@ -18,19 +19,23 @@ type UseArtistResultsProps = {
 export const useArtistResults = ({ artistId, subcategoryId }: UseArtistResultsProps) => {
   const transformHits = useTransformOfferHits()
   const { userLocation } = useLocation()
+  const { artistPageSubcategories } = useRemoteConfigQuery()
 
   const { data } = useQuery(
     [QueryKeys.ARTIST_PLAYLIST, artistId],
     async () => {
       const { playlistHits, topOffersHits } = await fetchOffersByArtist({
         artistId,
-        subcategoryId,
         userLocation,
       })
       return { playlistHits, topOffersHits }
     },
     {
       initialData: { playlistHits: [], topOffersHits: [] },
+      enabled: !!(
+        artistId &&
+        (!subcategoryId || artistPageSubcategories.subcategories.includes(subcategoryId))
+      ),
     }
   )
 
