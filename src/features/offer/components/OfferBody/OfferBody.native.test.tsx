@@ -129,7 +129,6 @@ describe('<OfferBody />', () => {
     const offer: OfferResponseV2 = {
       ...offerResponseSnap,
       subcategoryId: SubcategoryIdEnum.CINE_PLEIN_AIR,
-
       artists: [
         { id: '4', name: 'Marion Cotillard' },
         { id: '5', name: 'Leonardo DiCaprio' },
@@ -140,6 +139,19 @@ describe('<OfferBody />', () => {
     })
 
     expect(await screen.findByText('Marion Cotillard, Leonardo DiCaprio')).toBeOnTheScreen()
+  })
+
+  it('should not display artists when array is empty', () => {
+    const offer: OfferResponseV2 = {
+      ...offerResponseSnap,
+      subcategoryId: SubcategoryIdEnum.CINE_PLEIN_AIR,
+      artists: [],
+    }
+    renderOfferBody({
+      offer,
+    })
+
+    expect(screen.queryByText('de')).not.toBeOnTheScreen()
   })
 
   it('should display prices', async () => {

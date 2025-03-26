@@ -1,6 +1,5 @@
 import { SearchResponse } from '@algolia/client-search'
 
-import { SubcategoryIdEnum } from 'api/gen'
 import {
   buildAlgoliaFilter,
   fetchOffersByArtist,
@@ -15,7 +14,7 @@ const mockMultipleQueries = jest.spyOn(multipleQueries, 'multipleQueries')
 const mockUserLocation: Position = { latitude: 2, longitude: 2 }
 
 describe('fetchOffersByArtist', () => {
-  it('should execute the multiple queries if artist is provided and subcategory compatible with the artist page', async () => {
+  it('should execute the multiple queries', async () => {
     mockMultipleQueries.mockResolvedValueOnce([
       {
         hits: [],
@@ -26,7 +25,6 @@ describe('fetchOffersByArtist', () => {
     ])
     await fetchOffersByArtist({
       artistId: '1',
-      subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
       userLocation: mockUserLocation,
     })
 
@@ -65,21 +63,10 @@ describe('fetchOffersByArtist', () => {
 
     const result = await fetchOffersByArtist({
       artistId: '1',
-      subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
       userLocation: mockUserLocation,
     })
 
     expect(result).toEqual({ playlistHits: [], topOffersHits: [] })
-  })
-
-  it('should not execute the query if artist is provided and subcategory not compatible with the artist page', async () => {
-    await fetchOffersByArtist({
-      artistId: '1',
-      subcategoryId: SubcategoryIdEnum.SEANCE_CINE,
-      userLocation: mockUserLocation,
-    })
-
-    expect(mockMultipleQueries).not.toHaveBeenCalled()
   })
 })
 

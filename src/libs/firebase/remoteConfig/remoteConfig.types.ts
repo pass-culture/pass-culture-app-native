@@ -1,9 +1,10 @@
-import { NativeCategoryIdEnumv2 } from 'api/gen'
+import { NativeCategoryIdEnumv2, SubcategoryIdEnum } from 'api/gen'
 import { SubscriptionTheme } from 'features/subscription/types'
 
 export type CustomRemoteConfig = {
   test_param: string
   aroundPrecision: Record<'from' | 'value', number>[] | number
+  artistPageSubcategories: Record<'subcategories', SubcategoryIdEnum[]>
   homeEntryIdFreeOffers: string
   homeEntryIdNotConnected: string
   homeEntryIdGeneral: string

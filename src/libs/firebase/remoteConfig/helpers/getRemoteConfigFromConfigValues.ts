@@ -9,6 +9,9 @@ export const getRemoteConfigFromConfigValues = (
   parameters: FirebaseRemoteConfigTypes.ConfigValues
 ): CustomRemoteConfig => ({
   test_param: getConfigValue(parameters.test_param).asString(),
+  artistPageSubcategories: JSON.parse(
+    getConfigValue(parameters.artistPageSubcategories).asString()
+  ),
   aroundPrecision: JSON.parse(getConfigValue(parameters.aroundPrecision).asString()),
   homeEntryIdFreeOffers: getConfigValue(parameters.homeEntryIdFreeOffers).asString(),
   homeEntryIdNotConnected: getConfigValue(parameters.homeEntryIdNotConnected).asString(),

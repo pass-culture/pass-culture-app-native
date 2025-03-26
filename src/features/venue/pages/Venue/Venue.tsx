@@ -24,6 +24,7 @@ import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferH
 import { analytics } from 'libs/analytics/provider'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { useLocation } from 'libs/location'
 import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
@@ -50,7 +51,11 @@ export const Venue: FunctionComponent = () => {
     transformHits,
     venue,
   })
-  const { data: venueArtists } = useVenueOffersArtists(venueOffers?.hits)
+  const { artistPageSubcategories } = useRemoteConfigQuery()
+  const { data: venueArtists } = useVenueOffersArtists(
+    artistPageSubcategories.subcategories,
+    venueOffers?.hits
+  )
   const { isDesktopViewport } = useTheme()
 
   const currency = useGetCurrencyToDisplay()
