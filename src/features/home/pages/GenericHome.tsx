@@ -1,7 +1,9 @@
+import perf from '@react-native-firebase/perf'
 import { useFocusEffect, useRoute, useScrollToTop } from '@react-navigation/native'
 import { without } from 'lodash'
 import React, { FunctionComponent, useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import {
+  InteractionManager,
   NativeScrollEvent,
   NativeSyntheticEvent,
   Platform,
@@ -13,6 +15,7 @@ import {
   IOFlatList as IntersectionObserverFlatlist,
   IOFlatListController,
 } from 'react-native-intersection-observer'
+import performance from 'react-native-performance'
 import styled, { useTheme } from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
@@ -322,6 +325,27 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = ({
     [Header, shouldDisplayVideoInHeader, videoCarouselModules, homeId, HomeBanner]
   )
 
+  const onLayout = () => {
+    InteractionManager.runAfterInteractions(async () => {
+      performance.mark('screenInteractive')
+      performance.measure('timeToInteractive', 'nativeLaunchStart', 'screenInteractive')
+
+      const tti = performance.getEntriesByName('timeToInteractive')
+      // eslint-disable-next-line no-console
+      console.log(JSON.stringify(tti, null, 2))
+
+      const trace = await perf().startTrace('tti_container')
+      if (tti[0]?.duration) {
+        const roundedDuration = Math.round(tti[0]?.duration)
+        trace.putMetric('tti', roundedDuration)
+        // eslint-disable-next-line no-console
+        console.log(tti[0]?.duration)
+      }
+
+      await trace.stop()
+    })
+  }
+
   return (
     <Container>
       {showSkeleton ? (
@@ -333,6 +357,7 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = ({
       ) : null}
       <HomeBodyLoadingContainer hide={showSkeleton}>
         <FlatListContainer
+          onLayout={onLayout}
           accessibilityRole={AccessibilityRole.MAIN}
           ref={scrollRef}
           testID="homeBodyScrollView"
