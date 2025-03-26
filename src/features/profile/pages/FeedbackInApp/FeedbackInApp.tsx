@@ -5,11 +5,11 @@ import styled from 'styled-components/native'
 
 import { contactSupport } from 'features/auth/helpers/contactSupport'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
-import { useFeedback } from 'features/profile/api/useFeedback'
 import {
   FEEDBACK_IN_APP_VALUE_MAX_LENGTH,
   setFeedbackInAppSchema,
 } from 'features/profile/pages/FeedbackInApp/setFeedbackInAppShema'
+import { useFeedbackMutation } from 'features/profile/queries/useFeedbackMutation'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { LargeTextInput } from 'ui/components/inputs/LargeTextInput/LargeTextInput'
@@ -34,7 +34,7 @@ export const FeedbackInApp = () => {
     mode: 'onChange',
   })
 
-  const { mutate: sendFeedback } = useFeedback()
+  const { mutate: sendFeedback } = useFeedbackMutation()
 
   const onSubmit = ({ feedback }: FormValue) => {
     sendFeedback({ feedback })

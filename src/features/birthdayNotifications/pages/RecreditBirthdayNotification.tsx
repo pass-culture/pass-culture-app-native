@@ -4,8 +4,8 @@ import styled, { useTheme } from 'styled-components/native'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
-import { useResetRecreditAmountToShow } from 'features/profile/api/useResetRecreditAmountToShow'
 import { storage } from 'libs/storage'
+import { useResetRecreditAmountToShowMutation } from 'queries/profile/useResetRecreditAmountToShowMutation'
 import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
@@ -43,7 +43,7 @@ export const RecreditBirthdayNotification = () => {
   const { showErrorSnackBar } = useSnackBarContext()
 
   const { mutate: resetRecreditAmountToShow, isLoading: isResetRecreditAmountToShowLoading } =
-    useResetRecreditAmountToShow({
+    useResetRecreditAmountToShowMutation({
       onSuccess: () => navigateToHome(),
       onError: () => showErrorSnackBar({ message: 'Une erreur est survenue' }),
     })

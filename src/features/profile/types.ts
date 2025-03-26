@@ -1,10 +1,5 @@
 import { StepVariant } from 'ui/components/VerticalStepper/types'
 
-export type ResetRecreditAmountToShowMutationOptions = {
-  onSuccess?: () => void
-  onError?: (error: unknown) => void
-}
-
 export type FirstOrLastProps = {
   isFirst?: boolean
   isLast?: boolean

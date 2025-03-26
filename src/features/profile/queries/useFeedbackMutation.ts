@@ -7,7 +7,8 @@ import { getProfileStackConfig } from 'features/navigation/ProfileStackNavigator
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
-export const useFeedback = () => {
+export const useFeedbackMutation = () => {
+  // TODO(PC-000): Move onSuccess and onError callback functions out of this mutation
   const { navigate } = useNavigation<UseNavigationType>()
   const navigateToProfile = () => navigate(...getProfileStackConfig('Profile'))
   const { showSuccessSnackBar, showErrorSnackBar } = useSnackBarContext()
