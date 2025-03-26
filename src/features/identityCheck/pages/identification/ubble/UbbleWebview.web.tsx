@@ -25,6 +25,7 @@ interface AbortEvent {
 }
 
 // https://ubbleai.github.io/developer-documentation/#webview-integration
+// If you get a double navigation bar on the web version at the end of the Ubble identity check it is potentially because of our mock. Please try the identity check without the mock before creating a ticket (using the XXXXXXX+ubble_test@XXXX.XX pattern for the mail used to register to bypass the age check).
 export const UbbleWebview: React.FC = () => {
   const identificationUrl = useIdentificationUrl()
 
