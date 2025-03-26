@@ -248,9 +248,7 @@ describe('<OfferContent />', () => {
 
     await user.press(await screen.findByLabelText('Carousel image 1'))
 
-    await waitFor(() =>
-      expect(mockNavigate).toHaveBeenCalledWith('OfferPreview', { id: 116656, defaultIndex: 0 })
-    )
+    await waitFor(() => expect(mockNavigate).not.toHaveBeenCalled())
   })
 
   it('should animate on scroll', async () => {
