@@ -6,9 +6,12 @@ import {
   ProvidedCategoryBlockContentModel,
 } from 'libs/contentful/types'
 
-export const adaptCategoryListModule = (
-  module: CategoryListContentModel
-): CategoryListModule | null => {
+import { ContentfulAdapter } from '../contentfulAdapters'
+
+export const adaptCategoryListModule: ContentfulAdapter<
+  CategoryListContentModel,
+  CategoryListModule
+> = (module) => {
   if (module.fields === undefined) return null
 
   return {
