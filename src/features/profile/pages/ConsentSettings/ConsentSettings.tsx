@@ -10,6 +10,7 @@ import { useCookies } from 'features/cookies/helpers/useCookies'
 import { CookiesChoiceByCategory } from 'features/cookies/types'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
+import { useGoBack } from 'features/navigation/useGoBack'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonInsideText'
@@ -23,6 +24,8 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const ConsentSettings = () => {
   const { navigate } = useNavigation<UseNavigationType>()
+  const { goBack } = useGoBack(...getTabNavConfig('Profile'))
+
   const { showSuccessSnackBar } = useSnackBarContext()
   const { setCookiesConsent } = useCookies()
   const [settingsCookiesChoice, setSettingsCookiesChoice] = useState<CookiesChoiceByCategory>({
@@ -51,7 +54,7 @@ export const ConsentSettings = () => {
   }, [navigate, setCookiesConsent, settingsCookiesChoice, showSuccessSnackBar])
 
   return (
-    <SecondaryPageWithBlurHeader title="Paramètres de confidentialité" scrollable>
+    <SecondaryPageWithBlurHeader onGoBack={goBack} title="Paramètres de confidentialité" scrollable>
       <Typo.Body>
         L’application pass Culture utilise des outils et traceurs appelés cookies pour améliorer ton
         expérience de navigation.

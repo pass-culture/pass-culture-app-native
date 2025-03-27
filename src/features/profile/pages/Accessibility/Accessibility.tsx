@@ -2,6 +2,8 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { getProfileNavConfig } from 'features/navigation/ProfileStackNavigator/getProfileNavConfig'
+import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
+import { useGoBack } from 'features/navigation/useGoBack'
 import { AccessibleUnorderedList } from 'ui/components/accessibility/AccessibleUnorderedList'
 import { SectionRow } from 'ui/components/SectionRow'
 import { Separator } from 'ui/components/Separator'
@@ -48,8 +50,10 @@ const sections = [
 ]
 
 export function Accessibility() {
+  const { goBack } = useGoBack(...getTabNavConfig('Profile'))
+
   return (
-    <SecondaryPageWithBlurHeader title="Accessibilité" enableMaxWidth={false}>
+    <SecondaryPageWithBlurHeader title="Accessibilité" enableMaxWidth={false} onGoBack={goBack}>
       <AccessibleUnorderedList items={sections} Separator={<Separator.Horizontal />} />
     </SecondaryPageWithBlurHeader>
   )
