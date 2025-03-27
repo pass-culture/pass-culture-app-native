@@ -266,7 +266,7 @@ const ButtonContainer = styled.View(({ theme }) => ({
 }))
 
 const SignUpButton = styled(AuthenticationButton).attrs(({ theme }) => ({
-  linkColor: theme.designSystem.color.text['brand-secondary'],
+  linkColor: theme.designSystem.color.text.brandSecondary,
   type: 'signup',
 }))``
 

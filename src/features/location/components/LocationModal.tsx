@@ -69,15 +69,15 @@ export const LocationModal = ({
   const isCurrentLocationMode = (target: LocationMode) => tempLocationMode === target
 
   const geolocationModeColor = isCurrentLocationMode(LocationMode.AROUND_ME)
-    ? 'brand-primary'
+    ? 'brandPrimary'
     : 'default'
 
   const customLocationModeColor = isCurrentLocationMode(LocationMode.AROUND_PLACE)
-    ? 'brand-primary'
+    ? 'brandPrimary'
     : 'default'
 
   const everywhereLocationModeColor = isCurrentLocationMode(LocationMode.EVERYWHERE)
-    ? 'brand-primary'
+    ? 'brandPrimary'
     : 'default'
 
   const shouldShowAroundPlaceRadiusSlider =

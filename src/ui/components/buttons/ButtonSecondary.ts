@@ -10,7 +10,7 @@ import { Typo } from 'ui/theme'
 export const ButtonSecondary = styledButton(AppButton).attrs<BaseButtonProps>(
   ({ icon, disabled, textSize, theme, color, ...rest }) => {
     let Icon
-    const defaultColor = color ?? theme.designSystem.color.icon['brand-primary']
+    const defaultColor = color ?? theme.designSystem.color.icon.brandPrimary
     if (icon) {
       Icon = styled(icon).attrs({
         color: disabled ? theme.designSystem.color.icon.disabled : defaultColor,
@@ -22,7 +22,7 @@ export const ButtonSecondary = styledButton(AppButton).attrs<BaseButtonProps>(
       maxWidth: '100%',
       color: disabled
         ? theme.designSystem.color.text.disabled
-        : color ?? theme.designSystem.color.text['brand-primary'],
+        : color ?? theme.designSystem.color.text.brandPrimary,
       fontSize: textSize,
     })
 
@@ -32,18 +32,15 @@ export const ButtonSecondary = styledButton(AppButton).attrs<BaseButtonProps>(
       title: Title,
       loadingIndicator: LoadingIndicator,
       backgroundColor: theme.designSystem.color.background.default,
-      hoverUnderlineColor: color ?? theme.designSystem.color.text['brand-primary'],
+      hoverUnderlineColor: color ?? theme.designSystem.color.text.brandPrimary,
     }
   }
-)(({ theme, isLoading, disabled, color }) => {
+)(({ theme, disabled, color }) => {
   const borderWidth = theme.buttons.secondary.borderWidth
-  let borderColor: string = color ?? theme.designSystem.color.border['brand-primary']
+  let borderColor = color ?? theme.designSystem.color.border.brandPrimary
 
-  if (isLoading) {
-    // TODO(PC-35256): Use theme.designSystem.color.primary.loading from design system
-    borderColor = theme.buttons.loading.secondary.borderColor
-  } else if (disabled) {
-    borderColor = theme.buttons.disabled.secondary.borderColor
+  if (disabled) {
+    borderColor = theme.designSystem.color.border.disabled
   }
 
   const webOnly =

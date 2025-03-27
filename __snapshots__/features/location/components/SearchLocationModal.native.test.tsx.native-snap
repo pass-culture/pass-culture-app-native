@@ -662,7 +662,7 @@ exports[`SearchLocationModal should render correctly if modal visible 1`] = `
                       }
                     />
                     <Text
-                      color="brand-primary"
+                      color="brandPrimary"
                       style={
                         [
                           {

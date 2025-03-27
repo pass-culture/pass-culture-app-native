@@ -1,6 +1,7 @@
 import { Platform } from 'react-native'
 import styled from 'styled-components/native'
 
+import { ColorsType } from 'theme/types'
 import { AppButton } from 'ui/components/buttons/AppButton/AppButton'
 import { BaseButtonProps } from 'ui/components/buttons/AppButton/types'
 import { styledButton } from 'ui/components/buttons/styledButton'
@@ -8,14 +9,14 @@ import { Logo as InitialLoadingIndicator } from 'ui/svg/icons/Logo'
 import { Typo } from 'ui/theme'
 
 export const ButtonPrimary = styledButton(AppButton).attrs<BaseButtonProps>(
-  ({ isLoading, disabled, textSize, icon, theme, buttonHeight, ...rest }) => {
+  ({ disabled, textSize, icon, theme, buttonHeight, ...rest }) => {
     let Icon
 
     if (icon) {
       Icon = styled(icon).attrs({
         color: disabled
           ? theme.designSystem.color.icon.disabled
-          : theme.designSystem.color.text.inverted, // TODO(PC-35256): Use theme.designSystem.color.icon.inverted from design system
+          : theme.designSystem.color.icon.inverted,
         size:
           buttonHeight === 'extraSmall'
             ? theme.icons.sizes.extraSmall
@@ -23,12 +24,9 @@ export const ButtonPrimary = styledButton(AppButton).attrs<BaseButtonProps>(
       })``
     }
 
-    let backgroundColor: string = theme.designSystem.color.background['brand-primary']
+    let backgroundColor: ColorsType = theme.designSystem.color.background.brandPrimary
 
-    if (isLoading) {
-      // TODO(PC-35256): Use theme.designSystem.color.primary.loading from design system
-      backgroundColor = theme.buttons.loading.primary.backgroundColor
-    } else if (disabled) {
+    if (disabled) {
       backgroundColor = theme.designSystem.color.background.disabled
     }
 
