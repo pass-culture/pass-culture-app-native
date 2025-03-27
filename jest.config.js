@@ -53,6 +53,7 @@ module.exports = {
       '|@sentry/react-native' +
       '|react-native-geolocation-service' +
       '|instantsearch.js' +
+      '|design-system' +
       '/(?!(lib)))',
   ],
   testMatch: ['**/*(?<!.(web|perf)).(?:test|spec).[jt]s?(x)'],
