@@ -48,7 +48,7 @@ import { Helmet } from 'ui/web/global/Helmet'
 const scrollIndicatorInsets = { right: 1 }
 const emptyBookings: Booking[] = []
 
-export const OldBookingDetailsContent = ({
+export const BookingDetailsContent = ({
   paramsId,
   booking,
   properties,

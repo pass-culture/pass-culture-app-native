@@ -2,7 +2,7 @@ import { addDays, isSameDay } from 'date-fns'
 import React, { FunctionComponent } from 'react'
 
 import { BookingVenueResponse, SubcategoryIdEnum, WithdrawalTypeEnum } from 'api/gen'
-import { NoTicket } from 'features/bookings/components/OldTicketBody/NoTicket'
+import { NoTicket } from 'features/bookings/components/OldBookingDetails/NoTicket'
 import { EmailSent } from 'features/bookings/components/TicketBody/EmailSent/EmailSent'
 import { QrCode } from 'features/bookings/components/TicketBody/QrCode/QrCode'
 import { QrCodeWithSeatProps } from 'features/bookings/components/TicketBody/QrCodeWithSeat/QrCodeWithSeat'
