@@ -5,6 +5,7 @@ import { Tag } from 'ui/components/Tag/Tag'
 import { BookClubCertification } from 'ui/svg/BookClubCertification'
 import { ThumbUpFilled } from 'ui/svg/icons/ThumbUpFilled'
 import { Star } from 'ui/svg/Star'
+import { getSpacing } from 'ui/theme'
 
 type Props = {
   likesCount?: number
@@ -64,6 +65,7 @@ export const InteractionTag: FunctionComponent<Props> = ({
       label={tagConfig.label}
       backgroundColor={tagConfig.backgroundColor}
       Icon={tagConfig.Icon}
+      paddingHorizontal={getSpacing(1)}
     />
   )
 }

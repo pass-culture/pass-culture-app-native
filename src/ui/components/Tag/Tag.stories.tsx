@@ -27,6 +27,10 @@ const variantConfig: Variants<typeof Tag> = [
     props: { label: '1,4km', backgroundColor: '#20C5E9' },
   },
   {
+    label: 'Tag with custom horizontal padding',
+    props: { label: '1,4km', paddingHorizontal: 8 },
+  },
+  {
     label: 'Tag with icon',
     props: { label: '1', Icon: StyledArrowRight },
   },
