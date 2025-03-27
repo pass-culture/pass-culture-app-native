@@ -5,8 +5,8 @@ import { BookingVenueResponse, SubcategoryIdEnum, WithdrawalTypeEnum } from 'api
 import { NoTicket } from 'features/bookings/components/OldTicketBody/NoTicket'
 import { EmailSent } from 'features/bookings/components/TicketBody/EmailSent/EmailSent'
 import { QrCode } from 'features/bookings/components/TicketBody/QrCode/QrCode'
-import { SafeSeatWithQrCode } from 'features/bookings/components/TicketBody/SafeSeatWithQrCode/SafeSeatWithQrCode'
-import { SeatWithQrCodeProps } from 'features/bookings/components/TicketBody/SeatWithQrCode/SeatWithQrCode'
+import { QrCodeWithSeatProps } from 'features/bookings/components/TicketBody/QrCodeWithSeat/QrCodeWithSeat'
+import { HideableQrCodeWithSeat } from 'features/bookings/components/TicketBody/SafeSeatWithQrCode/HideableQrCodeWithSeat'
 import { TicketWithdrawal } from 'features/bookings/components/TicketBody/TicketWithdrawal/TicketWithdrawal'
 
 type Props = {
@@ -16,7 +16,7 @@ type Props = {
   subcategoryId: SubcategoryIdEnum
   beginningDatetime?: string
   qrCodeData?: string
-  externalBookings?: SeatWithQrCodeProps
+  externalBookings?: QrCodeWithSeatProps
   venue: BookingVenueResponse
 }
 
@@ -41,7 +41,7 @@ export const TicketBody: FunctionComponent<Props> = ({
 
   if (externalBookings)
     return (
-      <SafeSeatWithQrCode
+      <HideableQrCodeWithSeat
         subcategoryId={subcategoryId}
         beginningDatetime={beginningDatetime}
         venue={venue}
