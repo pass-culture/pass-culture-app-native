@@ -2,14 +2,19 @@ import React from 'react'
 
 import { BookingReponse } from 'api/gen'
 import { BookingDetailsTicketContent } from 'features/bookings/components/BookingDetailsTicketContent'
-import { QrCodeWithSeatProps } from 'features/bookings/components/TicketBody/QrCodeWithSeat/QrCodeWithSeat'
+import { ThreeShapesTicket } from 'features/bookings/components/ThreeShapesTicket'
+import { SeatWithQrCodeProps } from 'features/bookings/components/TicketBody/SeatWithQrCode/SeatWithQrCode'
 
 type Props = {
   booking: BookingReponse
-  externalBookings?: QrCodeWithSeatProps
+  externalBookings?: SeatWithQrCodeProps
   testID?: string
 }
 
-export function TicketWithContent({ booking, externalBookings }: Readonly<Props>) {
-  return <BookingDetailsTicketContent booking={booking} externalBookings={externalBookings} />
+export function TicketWithContent({ booking, externalBookings, testID }: Readonly<Props>) {
+  return (
+    <ThreeShapesTicket testID={testID}>
+      <BookingDetailsTicketContent booking={booking} externalBookings={externalBookings} />
+    </ThreeShapesTicket>
+  )
 }

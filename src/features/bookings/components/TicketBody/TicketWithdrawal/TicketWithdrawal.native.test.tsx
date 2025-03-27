@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { WithdrawalTypeEnum } from 'api/gen'
-import { TicketWithdrawal } from 'features/bookings/components/TicketWithdrawal/TicketWithdrawal'
+import { TicketWithdrawal } from 'features/bookings/components/TicketBody/TicketWithdrawal/TicketWithdrawal'
 import { render, screen } from 'tests/utils'
 
 describe('<TicketWithdrawal/>', () => {

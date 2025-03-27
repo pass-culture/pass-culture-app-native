@@ -6,9 +6,8 @@ import {
   getDelayMessage,
   getStartMessage,
 } from 'features/bookings/components/TicketBody/ticketBodyMessages'
-import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { EmailSent } from 'ui/svg/icons/EmailSent'
-import { Typo } from 'ui/theme'
+import { BicolorEmailSent as InitialBicolorEmailSent } from 'ui/svg/icons/BicolorEmailSent'
+import { getSpacing, Typo } from 'ui/theme'
 
 type Props = {
   withdrawalType: Exclude<WithdrawalTypeEnum, WithdrawalTypeEnum.no_ticket>
@@ -18,13 +17,13 @@ type Props = {
 export const TicketWithdrawal: FunctionComponent<Props> = ({ withdrawalType, withdrawalDelay }) => {
   const startMessage = getStartMessage(withdrawalType)
   const delayMessage = getDelayMessage(withdrawalDelay)
-  const endMessage = 'avant le début de l’évènement pour récupérer ton billet.'
+  const endMessage = 'avant le début de l’évènement.'
 
   return (
-    <StyledViewGap gap={4}>
+    <React.Fragment>
       {withdrawalType === WithdrawalTypeEnum.by_email ? (
         <IconContainer>
-          <EmailSent testID="email-sent" size={71.88} />
+          <BicolorEmailSent testID="bicolor-email-sent" />
         </IconContainer>
       ) : null}
       <WithDrawalContainer testID="withdrawal-info">
@@ -36,23 +35,29 @@ export const TicketWithdrawal: FunctionComponent<Props> = ({ withdrawalType, wit
         ) : null}
         {endMessage}
       </WithDrawalContainer>
-    </StyledViewGap>
+    </React.Fragment>
   )
 }
 
 const IconContainer = styled.View({
   alignItems: 'center',
   width: '100%',
+  marginTop: -getSpacing(4),
+  marginBottom: getSpacing(3),
 })
+
+const BicolorEmailSent = styled(InitialBicolorEmailSent).attrs(({ theme }) => ({
+  size: theme.illustrations.sizes.medium,
+  color: theme.colors.primary,
+  color2: theme.colors.secondary,
+}))``
 
 const WithDrawalContainer = styled(Typo.Body)({
   textAlign: 'center',
+  maxWidth: '100%',
+  paddingBottom: getSpacing(6),
 })
 
 const TicketWithdrawalDelay = styled(Typo.Body)(({ theme }) => ({
   fontFamily: theme.fontFamily.bold,
 }))
-
-const StyledViewGap = styled(ViewGap)({
-  flexWrap: 'wrap',
-})

@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 import { ControlComponent } from 'features/bookings/components/Ticket/ControlComponent'
 import { StepDots } from 'ui/components/StepDots'
-import { getSpacing } from 'ui/theme'
+import { getSpacing, Spacer } from 'ui/theme'
 
 type Props = {
   numberOfSteps: number
@@ -32,13 +32,13 @@ export function TicketSwiperControls({
       ) : (
         <ControlComponentSpacing testID="control-component-spacing-prev" />
       )}
-      <StepDotsContainer>
-        <StepDots
-          numberOfSteps={numberOfSteps}
-          currentStep={currentStep}
-          withNeutralPreviousStepsColor
-        />
-      </StepDotsContainer>
+      <Spacer.Row numberOfSpaces={2} />
+      <StepDots
+        numberOfSteps={numberOfSteps}
+        currentStep={currentStep}
+        withNeutralPreviousStepsColor
+      />
+      <Spacer.Row numberOfSpaces={2} />
       {showNextButton ? (
         <ControlComponent type="next" title={nextTitle} onPress={onPressNext} />
       ) : (
@@ -56,5 +56,3 @@ const DotsContainer = styled.View({
 const ControlComponentSpacing = styled.View(({ theme }) => ({
   width: theme.controlComponent.size,
 }))
-
-const StepDotsContainer = styled.View({ marginHorizontal: getSpacing(2) })

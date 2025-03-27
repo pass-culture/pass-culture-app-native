@@ -1,7 +1,7 @@
 import mockdate from 'mockdate'
 
 import { BookingVenueResponse, SubcategoryIdEnum } from 'api/gen'
-import { useSafeSeatWithQrCode } from 'features/bookings/components/OldTicketBody/SafeSeatWithQrCode/useSafeSeatWithQrCode'
+import { useSafeSeatWithQrCode } from 'features/bookings/components/TicketBody/SafeSeatWithQrCode/useSafeSeatWithQrCode'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { dateBuilder, mockBuilder } from 'tests/mockBuilder'
