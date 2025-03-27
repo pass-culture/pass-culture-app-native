@@ -8,6 +8,7 @@ import { getSpacing, getSpacingString, Typo } from 'ui/theme'
 type TagProps = ViewProps & {
   label: string
   Icon?: FunctionComponent<AccessibleIcon>
+  backgroundColor?: string
 }
 
 const PADDING_VERTICAL = getSpacing(1)
@@ -16,9 +17,9 @@ const LINE_HEIGHT = getSpacing(NUMBER_OF_SPACES_LINE_HEIGHT)
 
 export const TAG_HEIGHT = PADDING_VERTICAL + LINE_HEIGHT + PADDING_VERTICAL
 
-export const Tag: FunctionComponent<TagProps> = ({ label, Icon, ...props }) => {
+export const Tag: FunctionComponent<TagProps> = ({ label, Icon, backgroundColor, ...props }) => {
   return (
-    <Wrapper {...props}>
+    <Wrapper backgroundColor={backgroundColor} {...props}>
       {Icon ? (
         <IconContainer>
           <Icon testID="tagIcon" />
@@ -29,12 +30,12 @@ export const Tag: FunctionComponent<TagProps> = ({ label, Icon, ...props }) => {
   )
 }
 
-const Wrapper = styled(View)(({ theme }) => ({
+const Wrapper = styled(View)<{ backgroundColor?: string }>(({ theme, backgroundColor }) => ({
   flexDirection: 'row',
   alignItems: 'center',
   alignSelf: 'flex-start',
   borderRadius: 6,
-  backgroundColor: theme.colors.greyLight,
+  backgroundColor: backgroundColor ?? theme.colors.greyLight,
   paddingVertical: PADDING_VERTICAL,
   paddingHorizontal: getSpacing(2),
 }))
