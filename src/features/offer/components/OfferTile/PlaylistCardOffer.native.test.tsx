@@ -2,6 +2,8 @@ import React from 'react'
 
 import { HomepageLabelNameEnumv2 } from 'api/gen'
 import { render, screen } from 'tests/utils'
+import { Tag } from 'ui/components/Tag/Tag'
+import { ThumbUpFilled } from 'ui/svg/icons/ThumbUpFilled'
 
 import { PlaylistCardOffer } from './PlaylistCardOffer'
 
@@ -36,9 +38,21 @@ describe('PlaylistCardOffer component', () => {
     expect(screen.getByTestId('DistanceId')).toHaveTextContent('à 100m')
   })
 
-  it('should display likes count', () => {
-    render(<PlaylistCardOffer {...props} distance="100m" likes={100} />)
+  it('should display interaction tag when specified', () => {
+    render(
+      <PlaylistCardOffer
+        {...props}
+        distance="100m"
+        interactionTag={<Tag label="100" Icon={ThumbUpFilled} />}
+      />
+    )
 
     expect(screen.getByTestId('tagIcon')).toBeOnTheScreen()
+  })
+
+  it('should not display interaction tag when not specified', () => {
+    render(<PlaylistCardOffer {...props} distance="100m" />)
+
+    expect(screen.queryByTestId('tagIcon')).not.toBeOnTheScreen()
   })
 })

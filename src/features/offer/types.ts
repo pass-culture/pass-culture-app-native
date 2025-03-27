@@ -1,3 +1,4 @@
+import { ReactNode } from 'react'
 import { SharedValue } from 'react-native-reanimated'
 
 import {
@@ -43,9 +44,9 @@ export interface OfferTileProps {
   searchId?: string
   apiRecoParams?: RecommendationApiParams
   index?: number
-  likes?: number
   artistName?: string
   navigationMethod?: NavigationMethod
+  interactionTag?: ReactNode
 }
 
 export type FavoriteProps = {
