@@ -1,5 +1,4 @@
-import { api } from 'api/api'
-import { SubcategoriesResponseModelv2 } from 'api/gen'
+import { BookingsResponse, PaginatedFavoritesResponse, SubcategoriesResponseModelv2 } from 'api/gen'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import * as useSimilarOffers from 'features/offer/api/useSimilarOffers'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
@@ -9,10 +8,13 @@ import { mockedAlgoliaOffersWithSameArtistResponse } from 'libs/algolia/fixtures
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
+import { mockServer } from 'tests/mswServer'
 import { screen, userEvent, waitFor } from 'tests/utils'
 import * as useModal from 'ui/components/modals/useModal'
 
 jest.unmock('react-native/Libraries/Animated/createAnimatedComponent')
+
+jest.mock('libs/jwt/jwt')
 
 jest
   .spyOn(useSimilarOffers, 'useSimilarOffers')
@@ -61,6 +63,9 @@ describe('<Offer />', () => {
   const user = userEvent.setup()
 
   beforeEach(() => {
+    mockServer.getApi<BookingsResponse>('/v1/bookings', {})
+    mockServer.getApi<PaginatedFavoritesResponse>('/v1/favorites', {})
+    mockServer.getApi<PaginatedFavoritesResponse>('/v1/me/favorites', {})
     setFeatureFlags()
     mockAuthContext()
   })
@@ -86,29 +91,17 @@ describe('<Offer />', () => {
     })
   })
 
-  it('should display reaction button in header if offer is in ended bookings and FF is active', async () => {
-    setFeatureFlags([RemoteStoreFeatureFlags.WIP_REACTION_FEATURE])
-    jest.spyOn(api, 'getNativeV1Bookings').mockResolvedValueOnce({
-      ongoing_bookings: [],
-      ended_bookings: [
-        {
-          ...bookingsSnap.ended_bookings[0],
-          stock: {
-            ...bookingsSnap.ended_bookings[0].stock,
-            offer: { ...bookingsSnap.ended_bookings[0].stock.offer, id: offerResponseSnap.id },
-          },
-        },
-      ],
-      hasBookingsAfter18: false,
-    })
-
+  it('should not display reaction button in header if offer is in ended bookings and FF is inactive', async () => {
     renderOfferPage({ mockOffer: offerResponseSnap })
 
-    expect(await screen.findByTestId('animated-icon-like')).toBeOnTheScreen()
+    await screen.findByTestId('offerv2-container')
+
+    await waitFor(() => expect(screen.queryByTestId('animated-icon-like')).not.toBeOnTheScreen())
   })
 
-  it('should not display reaction button in header if offer is in ended bookings and FF is inactive', async () => {
-    jest.spyOn(api, 'getNativeV1Bookings').mockResolvedValueOnce({
+  it('should display reaction button in header if offer is in ended bookings and FF is active', async () => {
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_REACTION_FEATURE])
+    mockServer.getApi<BookingsResponse>('/v1/bookings', {
       ongoing_bookings: [],
       ended_bookings: [
         {
@@ -123,6 +116,29 @@ describe('<Offer />', () => {
     })
 
     renderOfferPage({ mockOffer: offerResponseSnap })
+
+    await waitFor(() => expect(screen.getByTestId('animated-icon-like')).toBeOnTheScreen())
+  })
+
+  it('should not display reaction button in header if booking has been cancelled and FF is active', async () => {
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_REACTION_FEATURE])
+    mockServer.getApi<BookingsResponse>('/v1/bookings', {
+      ongoing_bookings: [],
+      ended_bookings: [
+        {
+          ...bookingsSnap.ended_bookings[1],
+          stock: {
+            ...bookingsSnap.ended_bookings[1].stock,
+            offer: { ...bookingsSnap.ended_bookings[1].stock.offer, id: offerResponseSnap.id },
+          },
+        },
+      ],
+      hasBookingsAfter18: false,
+    })
+
+    renderOfferPage({ mockOffer: offerResponseSnap })
+
+    await screen.findByTestId('offerv2-container')
 
     await waitFor(() => expect(screen.queryByTestId('animated-icon-like')).not.toBeOnTheScreen())
   })
@@ -138,7 +154,7 @@ describe('<Offer />', () => {
 
   it('should open reaction modal when press on reaction button in header', async () => {
     setFeatureFlags([RemoteStoreFeatureFlags.WIP_REACTION_FEATURE])
-    jest.spyOn(api, 'getNativeV1Bookings').mockResolvedValueOnce({
+    mockServer.getApi<BookingsResponse>('/v1/bookings', {
       ongoing_bookings: [],
       ended_bookings: [
         {
@@ -153,6 +169,8 @@ describe('<Offer />', () => {
     })
 
     renderOfferPage({ mockOffer: offerResponseSnap })
+
+    await screen.findByTestId('offerv2-container')
 
     const reactionButton = await screen.findByTestId('animated-icon-like')
 

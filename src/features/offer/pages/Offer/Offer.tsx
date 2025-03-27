@@ -91,7 +91,7 @@ export function Offer() {
         searchGroupList={subcategories.searchGroups}
         subcategory={subcategoriesMapping[offer.subcategoryId]}
         defaultReaction={booking?.userReaction}
-        onReactionButtonPress={booking ? showModal : undefined}
+        onReactionButtonPress={booking?.canReact ? showModal : undefined}
       />
     </Fragment>
   )
