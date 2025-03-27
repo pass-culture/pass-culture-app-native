@@ -8,6 +8,8 @@ import { render, screen, userEvent } from 'tests/utils'
 
 import { NotYetUnderageEligibility } from './NotYetUnderageEligibility'
 
+jest.mock('libs/firebase/analytics/analytics')
+
 jest.mock('features/navigation/helpers/navigateToHome')
 jest.mock('features/navigation/navigationRef')
 
