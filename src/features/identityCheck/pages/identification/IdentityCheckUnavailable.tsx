@@ -10,7 +10,7 @@ import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { useModal } from 'ui/components/modals/useModal'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
+import { GenericInfoPageDeprecated } from 'ui/pages/GenericInfoPageDeprecated'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { HappyFace } from 'ui/svg/icons/HappyFace'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
@@ -26,7 +26,7 @@ export function IdentityCheckUnavailable() {
     showModal()
   }
   return (
-    <GenericInfoPage
+    <GenericInfoPageDeprecated
       title="Victime de notre succès&nbsp;!"
       icon={HappyFace}
       buttons={[
@@ -60,7 +60,7 @@ export function IdentityCheckUnavailable() {
         </StyledBody>
       ) : null}
       <DMSModal visible={visible} hideModal={hideModal} />
-    </GenericInfoPage>
+    </GenericInfoPageDeprecated>
   )
 }
 

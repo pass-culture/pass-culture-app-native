@@ -5,7 +5,7 @@ import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
+import { GenericInfoPageDeprecated } from 'ui/pages/GenericInfoPageDeprecated'
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
@@ -26,7 +26,7 @@ export function LayoutExpiredLink({
   customBodyText,
 }: Props) {
   return (
-    <GenericInfoPage
+    <GenericInfoPageDeprecated
       title="Oups&nbsp;!"
       icon={SadFace}
       buttons={[
@@ -70,7 +70,7 @@ export function LayoutExpiredLink({
           icon={EmailFilled}
         />
       ) : null}
-    </GenericInfoPage>
+    </GenericInfoPageDeprecated>
   )
 }
 

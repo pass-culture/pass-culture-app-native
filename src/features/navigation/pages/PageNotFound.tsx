@@ -5,7 +5,7 @@ import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome
 import { Helmet } from 'libs/react-helmet/Helmet'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
+import { GenericInfoPageDeprecated } from 'ui/pages/GenericInfoPageDeprecated'
 import { PageNotFound as PageNotFoundIcon } from 'ui/svg/icons/PageNotFound'
 import { Typo } from 'ui/theme'
 
@@ -16,7 +16,7 @@ export const PageNotFound: React.FC = () => {
       <Helmet>
         <title>{helmetTitle}</title>
       </Helmet>
-      <GenericInfoPage
+      <GenericInfoPageDeprecated
         title="Page introuvable&nbsp;!"
         icon={PageNotFoundIcon}
         buttons={[
@@ -28,7 +28,7 @@ export const PageNotFound: React.FC = () => {
           />,
         ]}>
         <StyledBody>Il est possible que cette page soit désactivée ou n’existe pas.</StyledBody>
-      </GenericInfoPage>
+      </GenericInfoPageDeprecated>
     </React.Fragment>
   )
 }

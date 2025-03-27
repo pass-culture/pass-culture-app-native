@@ -6,7 +6,7 @@ import { ScreenErrorProps } from 'libs/monitoring/errors'
 import { Helmet } from 'libs/react-helmet/Helmet'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
+import { GenericInfoPageDeprecated } from 'ui/pages/GenericInfoPageDeprecated'
 import { NoOffer } from 'ui/svg/icons/NoOffer'
 import { Typo } from 'ui/theme'
 
@@ -36,7 +36,7 @@ export const VenueNotFound = ({ resetErrorBoundary }: ScreenErrorProps) => {
         <title>{helmetTitle}</title>
         <meta name="robots" content="noindex" />
       </Helmet>
-      <GenericInfoPage
+      <GenericInfoPageDeprecated
         title="Lieu introuvable&nbsp;!"
         icon={NoOffer}
         buttons={[
@@ -49,7 +49,7 @@ export const VenueNotFound = ({ resetErrorBoundary }: ScreenErrorProps) => {
           />,
         ]}>
         <StyledBody>Il est possible que ce lieu soit désactivé ou n’existe pas.</StyledBody>
-      </GenericInfoPage>
+      </GenericInfoPageDeprecated>
     </React.Fragment>
   )
 }

@@ -7,14 +7,14 @@ import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
+import { GenericInfoPageDeprecated } from 'ui/pages/GenericInfoPageDeprecated'
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'
 import { UserBlocked } from 'ui/svg/icons/UserBlocked'
 import { Typo } from 'ui/theme'
 
 export function PhoneValidationTooManyAttempts() {
   return (
-    <GenericInfoPage
+    <GenericInfoPageDeprecated
       title="Trop de tentatives&nbsp;!"
       icon={UserBlocked}
       buttons={[
@@ -37,7 +37,7 @@ export function PhoneValidationTooManyAttempts() {
         Tu as dépassé le nombre d’essais autorisés. L’accès à ton crédit pass Culture a été bloqué.
         Pour le récupérer tu peux contacter le support.
       </StyledBody>
-    </GenericInfoPage>
+    </GenericInfoPageDeprecated>
   )
 }
 

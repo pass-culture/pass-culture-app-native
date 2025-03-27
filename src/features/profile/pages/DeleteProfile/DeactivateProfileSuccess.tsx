@@ -10,7 +10,7 @@ import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { Emoji } from 'ui/components/Emoji'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
+import { GenericInfoPageDeprecated } from 'ui/pages/GenericInfoPageDeprecated'
 import { Again } from 'ui/svg/icons/Again'
 import { ProfileDeletion } from 'ui/svg/icons/ProfileDeletion'
 import { Spacer, Typo } from 'ui/theme'
@@ -25,7 +25,7 @@ export function DeactivateProfileSuccess() {
   }, [signOut])
 
   return (
-    <GenericInfoPage
+    <GenericInfoPageDeprecated
       title="Ton compte a été désactivé"
       icon={ProfileDeletion}
       buttons={[
@@ -60,7 +60,7 @@ export function DeactivateProfileSuccess() {
       <StyledBody>
         Une fois ce délai écoulé, tu n’auras plus accès à ton compte pass Culture.
       </StyledBody>
-    </GenericInfoPage>
+    </GenericInfoPageDeprecated>
   )
 }
 

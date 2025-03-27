@@ -6,7 +6,7 @@ import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome
 import { useShouldShowCulturalSurveyForBeneficiaryUser } from 'shared/culturalSurvey/useShouldShowCulturalSurveyForBeneficiaryUser'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
+import { GenericInfoPageDeprecated } from 'ui/pages/GenericInfoPageDeprecated'
 import { RequestSent } from 'ui/svg/icons/RequestSent'
 import { Typo } from 'ui/theme'
 
@@ -25,7 +25,7 @@ export function BeneficiaryRequestSent() {
   const message = inTheMeantime.length ? `${body} ${inTheMeantime}` : body
 
   return (
-    <GenericInfoPage
+    <GenericInfoPageDeprecated
       title="Demande envoyée&nbsp;!"
       icon={RequestSent}
       buttons={[
@@ -42,7 +42,7 @@ export function BeneficiaryRequestSent() {
       ]}>
       <StyledBody>Nous étudions ton dossier...</StyledBody>
       <StyledBody>{message}</StyledBody>
-    </GenericInfoPage>
+    </GenericInfoPageDeprecated>
   )
 }
 

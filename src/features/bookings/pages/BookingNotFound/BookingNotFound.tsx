@@ -7,7 +7,7 @@ import { Helmet } from 'libs/react-helmet/Helmet'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
+import { GenericInfoPageDeprecated } from 'ui/pages/GenericInfoPageDeprecated'
 import { NoBookings } from 'ui/svg/icons/NoBookings'
 import { Typo } from 'ui/theme'
 
@@ -37,7 +37,7 @@ export const BookingNotFound = ({ resetErrorBoundary }: ScreenErrorProps) => {
       <Helmet>
         <title>{title}</title>
       </Helmet>
-      <GenericInfoPage
+      <GenericInfoPageDeprecated
         title="Réservation introuvable&nbsp;!"
         icon={NoBookings}
         buttons={[
@@ -59,7 +59,7 @@ export const BookingNotFound = ({ resetErrorBoundary }: ScreenErrorProps) => {
           Désolé, nous ne retrouvons pas ta réservation. Peut-être a-t-elle été annulée. N’hésite
           pas à retrouver la liste de tes réservations terminées et annulées pour t’en assurer.
         </StyledBody>
-      </GenericInfoPage>
+      </GenericInfoPageDeprecated>
     </React.Fragment>
   )
 }

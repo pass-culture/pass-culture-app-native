@@ -8,7 +8,7 @@ import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
+import { GenericInfoPageDeprecated } from 'ui/pages/GenericInfoPageDeprecated'
 import { Email } from 'ui/svg/icons/Email'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
 import { UserBlocked } from 'ui/svg/icons/UserBlocked'
@@ -24,7 +24,7 @@ export const GenericSuspendedAccount: React.FC<Props> = ({
   const signOut = useLogoutRoutine()
 
   return (
-    <GenericInfoPage
+    <GenericInfoPageDeprecated
       title="Ton compte a été suspendu"
       icon={UserBlocked}
       buttons={[
@@ -47,7 +47,7 @@ export const GenericSuspendedAccount: React.FC<Props> = ({
         />,
       ]}>
       <ChildrenContainer>{children}</ChildrenContainer>
-    </GenericInfoPage>
+    </GenericInfoPageDeprecated>
   )
 }
 

@@ -7,7 +7,7 @@ import { RootStackParamList } from 'features/navigation/RootNavigator/types'
 import { formatToReadableFrenchDate } from 'libs/dates'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
+import { GenericInfoPageDeprecated } from 'ui/pages/GenericInfoPageDeprecated'
 import { CalendarIllustration } from 'ui/svg/icons/CalendarIllustration'
 import { Typo } from 'ui/theme'
 
@@ -17,7 +17,7 @@ export const NotYetUnderageEligibility: FunctionComponent<Props> = (props) => {
   const formatedDate = formatToReadableFrenchDate(props.route.params.eligibilityStartDatetime)
   const NotYetUnderageEligibilityText = `Reviens à partir du ${formatedDate} pour poursuivre ton inscription et bénéficier des offres du pass Culture.`
   return (
-    <GenericInfoPage
+    <GenericInfoPageDeprecated
       title="C’est pour bientôt&nbsp;!"
       icon={CalendarIllustration}
       buttons={[
@@ -29,7 +29,7 @@ export const NotYetUnderageEligibility: FunctionComponent<Props> = (props) => {
         />,
       ]}>
       <StyledBody>{NotYetUnderageEligibilityText}</StyledBody>
-    </GenericInfoPage>
+    </GenericInfoPageDeprecated>
   )
 }
 

@@ -7,7 +7,7 @@ import { analytics } from 'libs/analytics/provider'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { AppFullPageModal } from 'ui/components/modals/AppFullPageModal'
-import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
+import { GenericInfoPageDeprecated } from 'ui/pages/GenericInfoPageDeprecated'
 import { BicolorError } from 'ui/svg/icons/BicolorError'
 import { Clear } from 'ui/svg/icons/Clear'
 import { Typo } from 'ui/theme'
@@ -41,7 +41,7 @@ export const QuitIdentityCheckModal: FunctionComponent<Props> = ({
       visible={visible}
       testIdSuffix={testIdSuffix}
       onRequestClose={continueIdentityCheck}>
-      <GenericInfoPage
+      <GenericInfoPageDeprecated
         title="Veux-tu abandonner la vérification d’identité&nbsp;?"
         icon={ErrorIllustration}
         flex={false}
@@ -59,7 +59,7 @@ export const QuitIdentityCheckModal: FunctionComponent<Props> = ({
           />,
         ]}>
         <StyledBody>Les informations que tu as renseignées ne seront pas enregistrées.</StyledBody>
-      </GenericInfoPage>
+      </GenericInfoPageDeprecated>
     </AppFullPageModal>
   )
 }

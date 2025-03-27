@@ -11,7 +11,7 @@ import { useShouldShowCulturalSurveyForBeneficiaryUser } from 'shared/culturalSu
 import IlluminatedSmileyAnimation from 'ui/animations/lottie_illuminated_smiley.json'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
+import { GenericInfoPageDeprecated } from 'ui/pages/GenericInfoPageDeprecated'
 import { Typo } from 'ui/theme'
 
 export function AccountCreated() {
@@ -32,7 +32,7 @@ export function AccountCreated() {
   }, [showShareAppModal])
 
   return (
-    <GenericInfoPage
+    <GenericInfoPageDeprecated
       title="Ton compte a été activé&nbsp;!"
       animation={IlluminatedSmileyAnimation}
       buttons={[
@@ -54,7 +54,7 @@ export function AccountCreated() {
           d’impact sur les offres proposées.
         </StyledBody>
       ) : null}
-    </GenericInfoPage>
+    </GenericInfoPageDeprecated>
   )
 }
 

@@ -6,7 +6,7 @@ import { ScreenErrorProps } from 'libs/monitoring/errors'
 import { Helmet } from 'libs/react-helmet/Helmet'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
+import { GenericInfoPageDeprecated } from 'ui/pages/GenericInfoPageDeprecated'
 import { NoOffer } from 'ui/svg/icons/NoOffer'
 import { Typo } from 'ui/theme'
 
@@ -33,7 +33,7 @@ export const OfferNotFound = ({ resetErrorBoundary }: ScreenErrorProps) => {
       <Helmet>
         <title>{helmetTitle}</title>
       </Helmet>
-      <GenericInfoPage
+      <GenericInfoPageDeprecated
         title="Offre introuvable&nbsp;!"
         icon={NoOffer}
         buttons={[
@@ -46,7 +46,7 @@ export const OfferNotFound = ({ resetErrorBoundary }: ScreenErrorProps) => {
           />,
         ]}>
         <StyledBody>Il est possible que cette offre soit désactivée ou n’existe pas.</StyledBody>
-      </GenericInfoPage>
+      </GenericInfoPageDeprecated>
     </React.Fragment>
   )
 }

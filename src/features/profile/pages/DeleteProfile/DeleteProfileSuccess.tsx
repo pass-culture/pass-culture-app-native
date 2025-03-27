@@ -6,7 +6,7 @@ import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { Emoji } from 'ui/components/Emoji'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
+import { GenericInfoPageDeprecated } from 'ui/pages/GenericInfoPageDeprecated'
 import { ProfileDeletion } from 'ui/svg/icons/ProfileDeletion'
 import { Spacer, Typo } from 'ui/theme'
 
@@ -18,7 +18,7 @@ export function DeleteProfileSuccess() {
   }, [signOut])
 
   return (
-    <GenericInfoPage
+    <GenericInfoPageDeprecated
       title="Ton compte a été supprimé"
       icon={ProfileDeletion}
       buttons={[
@@ -38,7 +38,7 @@ export function DeleteProfileSuccess() {
         Tu peux malgré tout continuer à découvrir toute l’actu culturelle en consultant le
         catalogue&nbsp;!
       </StyledBody>
-    </GenericInfoPage>
+    </GenericInfoPageDeprecated>
   )
 }
 

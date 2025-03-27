@@ -5,7 +5,7 @@ import { useNavigateForwardToStepper } from 'features/identityCheck/helpers/useN
 import { useSaveStep } from 'features/identityCheck/pages/helpers/useSaveStep'
 import { IdentityCheckStep } from 'features/identityCheck/types'
 import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
-import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
+import { GenericInfoPageDeprecated } from 'ui/pages/GenericInfoPageDeprecated'
 import { EmailSent } from 'ui/svg/icons/EmailSent'
 
 export const IdentityCheckEnd: FC = () => {
@@ -29,6 +29,9 @@ export const IdentityCheckEnd: FC = () => {
   }, [subscription?.nextSubscriptionStep])
 
   return (
-    <GenericInfoPage title="Ta pièce d’identité a bien été transmise&nbsp;!" icon={EmailSent} />
+    <GenericInfoPageDeprecated
+      title="Ta pièce d’identité a bien été transmise&nbsp;!"
+      icon={EmailSent}
+    />
   )
 }

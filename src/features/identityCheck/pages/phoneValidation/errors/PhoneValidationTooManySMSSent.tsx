@@ -8,7 +8,7 @@ import { plural } from 'libs/plural'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
+import { GenericInfoPageDeprecated } from 'ui/pages/GenericInfoPageDeprecated'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
 import { UserBlocked } from 'ui/svg/icons/UserBlocked'
 import { Spacer, Typo } from 'ui/theme'
@@ -24,7 +24,7 @@ export function PhoneValidationTooManySMSSent() {
   })
 
   return (
-    <GenericInfoPage
+    <GenericInfoPageDeprecated
       title="Réessaie plus tard"
       icon={UserBlocked}
       buttons={[
@@ -45,7 +45,7 @@ export function PhoneValidationTooManySMSSent() {
       <StyledBody>Tu as dépassé le nombre de 5 demandes de code autorisées.</StyledBody>
       <Spacer.Column numberOfSpaces={5} />
       <StyledBody>{hoursLeftWording}</StyledBody>
-    </GenericInfoPage>
+    </GenericInfoPageDeprecated>
   )
 }
 
