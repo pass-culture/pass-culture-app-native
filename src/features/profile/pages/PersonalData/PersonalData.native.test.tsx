@@ -156,9 +156,9 @@ describe('PersonalData', () => {
 
     fireEvent.press(await screen.findByTestId('Modifier mot de passe'))
 
-    expect(navigate).toHaveBeenCalledWith('TabNavigator', {
-      params: { params: undefined, screen: 'ChangePassword' },
-      screen: 'ProfileStackNavigator',
+    expect(navigate).toHaveBeenCalledWith('ProfileStackNavigator', {
+      params: undefined,
+      screen: 'ChangePassword',
     })
   })
 
@@ -192,9 +192,9 @@ describe('PersonalData', () => {
 
     await waitFor(() => {
       expect(analytics.logAccountDeletion).toHaveBeenCalledTimes(1)
-      expect(navigate).toHaveBeenCalledWith('TabNavigator', {
-        params: { params: undefined, screen: 'DeleteProfileReason' },
-        screen: 'ProfileStackNavigator',
+      expect(navigate).toHaveBeenCalledWith('ProfileStackNavigator', {
+        params: undefined,
+        screen: 'DeleteProfileReason',
       })
     })
   })

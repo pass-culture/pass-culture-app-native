@@ -49,14 +49,11 @@ describe('<DeleteProfileReason />', () => {
     )
 
     await waitFor(() => {
-      expect(navigate).toHaveBeenCalledWith('TabNavigator', {
+      expect(navigate).toHaveBeenCalledWith('ProfileStackNavigator', {
         params: {
-          params: {
-            showModal: true,
-          },
-          screen: 'ChangeEmail',
+          showModal: true,
         },
-        screen: 'ProfileStackNavigator',
+        screen: 'ChangeEmail',
       })
     })
   })
@@ -68,9 +65,9 @@ describe('<DeleteProfileReason />', () => {
     fireEvent.press(screen.getByText('Autre'))
 
     await waitFor(() => {
-      expect(navigate).toHaveBeenCalledWith('TabNavigator', {
-        params: { params: undefined, screen: 'DeleteProfileContactSupport' },
-        screen: 'ProfileStackNavigator',
+      expect(navigate).toHaveBeenCalledWith('ProfileStackNavigator', {
+        params: undefined,
+        screen: 'DeleteProfileContactSupport',
       })
     })
   })
@@ -98,9 +95,9 @@ describe('<DeleteProfileReason />', () => {
       fireEvent.press(screen.getByText(reason))
 
       await waitFor(() => {
-        expect(navigate).toHaveBeenCalledWith('TabNavigator', {
-          params: { params: undefined, screen: 'DeleteProfileConfirmation' },
-          screen: 'ProfileStackNavigator',
+        expect(navigate).toHaveBeenCalledWith('ProfileStackNavigator', {
+          params: undefined,
+          screen: 'DeleteProfileConfirmation',
         })
       })
     }
@@ -121,9 +118,9 @@ describe('<DeleteProfileReason />', () => {
         fireEvent.press(screen.getByText(reason))
 
         await waitFor(() => {
-          expect(navigate).toHaveBeenCalledWith('TabNavigator', {
-            params: { params: undefined, screen: 'DeleteProfileAccountNotDeletable' },
-            screen: 'ProfileStackNavigator',
+          expect(navigate).toHaveBeenCalledWith('ProfileStackNavigator', {
+            params: undefined,
+            screen: 'DeleteProfileAccountNotDeletable',
           })
         })
       }
@@ -147,9 +144,9 @@ describe('<DeleteProfileReason />', () => {
           fireEvent.press(screen.getByText('Je n’utilise plus l’application'))
 
           await waitFor(() => {
-            expect(navigate).toHaveBeenCalledWith('TabNavigator', {
-              params: { params: undefined, screen: expectedRedirect },
-              screen: 'ProfileStackNavigator',
+            expect(navigate).toHaveBeenCalledWith('ProfileStackNavigator', {
+              params: undefined,
+              screen: expectedRedirect,
             })
           })
         }

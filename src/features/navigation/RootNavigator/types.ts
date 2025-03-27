@@ -5,7 +5,10 @@ import { ComponentType } from 'react'
 import { CulturalSurveyQuestionEnum } from 'api/gen/api'
 import { BookingsTab } from 'features/bookings/enum'
 import { CheatcodesStackParamList } from 'features/navigation/CheatcodesStackNavigator/types'
-import { ProfileStackParamList } from 'features/navigation/ProfileStackNavigator/ProfileStack'
+import {
+  ProfileStackParamList,
+  ProfileStackRouteName,
+} from 'features/navigation/ProfileStackNavigator/ProfileStack'
 import { SearchStackParamList } from 'features/navigation/SearchStackNavigator/types'
 import { PlaylistType } from 'features/offer/enums'
 import { TutorialType } from 'features/tutorial/types'
@@ -241,6 +244,10 @@ export type RootStackParamList = {
   OfferPreview: { id: number; defaultIndex?: number }
   OnboardingSubscription: undefined
   PageNotFound: undefined
+  ProfileStackNavigator?: {
+    screen: ProfileStackRouteName
+    params: ProfileStackParamList[ProfileStackRouteName]
+  }
   RecreditBirthdayNotification: undefined
   ReinitializePassword: {
     email: string

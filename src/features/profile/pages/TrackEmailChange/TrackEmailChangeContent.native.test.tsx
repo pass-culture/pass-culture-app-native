@@ -57,14 +57,11 @@ describe('TrackEmailChangeContent', () => {
 
     fireEvent.press(await screen.findByText('Choisis ta nouvelle adresse e-mail'))
 
-    expect(navigate).toHaveBeenCalledWith('TabNavigator', {
+    expect(navigate).toHaveBeenCalledWith('ProfileStackNavigator', {
       params: {
-        params: {
-          token: 'new_email_selection_token',
-        },
-        screen: 'NewEmailSelection',
+        token: 'new_email_selection_token',
       },
-      screen: 'ProfileStackNavigator',
+      screen: 'NewEmailSelection',
     })
   })
 
@@ -126,15 +123,12 @@ describe('TrackEmailChangeContent', () => {
 
       fireEvent.press(await screen.findByText('Crée ton mot de passe'))
 
-      expect(navigate).toHaveBeenCalledWith('TabNavigator', {
+      expect(navigate).toHaveBeenCalledWith('ProfileStackNavigator', {
         params: {
-          params: {
-            emailSelectionToken: 'new_email_selection_token',
-            token: 'reset_password_token',
-          },
-          screen: 'ChangeEmailSetPassword',
+          emailSelectionToken: 'new_email_selection_token',
+          token: 'reset_password_token',
         },
-        screen: 'ProfileStackNavigator',
+        screen: 'ChangeEmailSetPassword',
       })
     })
   })

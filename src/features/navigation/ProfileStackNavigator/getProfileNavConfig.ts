@@ -7,14 +7,14 @@ export function getProfileNavConfig<Screen extends ProfileStackRouteName>(
   screen: Screen,
   params?: ProfileStackParamList[Screen]
 ): {
-  screen: 'TabNavigator'
+  screen: 'ProfileStackNavigator'
   params: {
-    screen: 'ProfileStackNavigator'
-    params: { screen: Screen; params: ProfileStackParamList[Screen] }
+    screen: Screen
+    params: ProfileStackParamList[Screen]
   }
 } {
   return {
-    screen: 'TabNavigator',
-    params: { screen: 'ProfileStackNavigator', params: { screen, params } },
+    screen: 'ProfileStackNavigator',
+    params: { screen, params },
   }
 }

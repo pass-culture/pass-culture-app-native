@@ -81,9 +81,9 @@ describe('DeleteProfileConfirmation', () => {
 
     fireEvent.press(screen.getByText('Annuler'))
 
-    expect(navigate).toHaveBeenCalledWith('TabNavigator', {
-      params: { params: undefined, screen: 'DeleteProfileReason' },
-      screen: 'ProfileStackNavigator',
+    expect(navigate).toHaveBeenCalledWith('ProfileStackNavigator', {
+      params: undefined,
+      screen: 'DeleteProfileReason',
     })
   })
 
@@ -94,9 +94,9 @@ describe('DeleteProfileConfirmation', () => {
     whenAnonymizeAccount()
 
     await waitFor(() => {
-      expect(navigate).toHaveBeenCalledWith('TabNavigator', {
-        params: { params: undefined, screen: 'DeleteProfileSuccess' },
-        screen: 'ProfileStackNavigator',
+      expect(navigate).toHaveBeenCalledWith('ProfileStackNavigator', {
+        params: undefined,
+        screen: 'DeleteProfileSuccess',
       })
     })
   })

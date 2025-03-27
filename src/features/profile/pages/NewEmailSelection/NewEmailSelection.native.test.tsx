@@ -69,9 +69,9 @@ describe('<NewEmailSelection />', () => {
       fireEvent.press(await screen.findByLabelText('Modifier mon adresse e-mail'))
     })
 
-    expect(replace).toHaveBeenCalledWith('TabNavigator', {
-      params: { params: undefined, screen: 'TrackEmailChange' },
-      screen: 'ProfileStackNavigator',
+    expect(replace).toHaveBeenCalledWith('ProfileStackNavigator', {
+      params: undefined,
+      screen: 'TrackEmailChange',
     })
   })
 

@@ -35,9 +35,9 @@ describe('Accessibility', () => {
     const row = screen.getByText(title)
     await user.press(row)
 
-    expect(navigate).toHaveBeenCalledWith('TabNavigator', {
-      params: { params: undefined, screen: route },
-      screen: 'ProfileStackNavigator',
+    expect(navigate).toHaveBeenCalledWith('ProfileStackNavigator', {
+      params: undefined,
+      screen: route,
     })
   })
 })

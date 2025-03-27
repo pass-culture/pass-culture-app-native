@@ -5,11 +5,6 @@ jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 describe('getScreenPath()', () => {
-  const ProfileStack = {
-    screen: 'ProfileStackNavigator',
-    params: { screen: 'Profile', params: undefined },
-  }
-
   const SearchStack = {
     screen: 'SearchStackNavigator',
     params: { screen: 'SearchLanding', params: undefined },
@@ -18,7 +13,7 @@ describe('getScreenPath()', () => {
   it.each`
     screen             | params                        | expectedPath
     ${'TabNavigator'}  | ${{ screen: 'Home' }}         | ${'/accueil'}
-    ${'TabNavigator'}  | ${ProfileStack}               | ${'/profil'}
+    ${'TabNavigator'}  | ${{ screen: 'Profile' }}      | ${'/profil'}
     ${'TabNavigator'}  | ${SearchStack}                | ${'/recherche/accueil'}
     ${'Offer'}         | ${{ id: 666, from: 'offer' }} | ${'/offre/666?from=offer'}
     ${'UnknownScreen'} | ${undefined}                  | ${'/UnknownScreen'}

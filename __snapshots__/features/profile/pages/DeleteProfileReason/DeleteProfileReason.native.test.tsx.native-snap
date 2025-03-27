@@ -199,14 +199,11 @@ exports[`<DeleteProfileReason /> should match snapshot 1`] = `
           "navigateTo": {
             "params": {
               "params": {
-                "params": {
-                  "showModal": true,
-                },
-                "screen": "ChangeEmail",
+                "showModal": true,
               },
-              "screen": "ProfileStackNavigator",
+              "screen": "ChangeEmail",
             },
-            "screen": "TabNavigator",
+            "screen": "ProfileStackNavigator",
           },
           "wording": "J’aimerais créer un compte avec une adresse e-mail différente",
         },
@@ -214,13 +211,10 @@ exports[`<DeleteProfileReason /> should match snapshot 1`] = `
           "analyticsReason": "noLongerUsed",
           "navigateTo": {
             "params": {
-              "params": {
-                "params": undefined,
-                "screen": "DeleteProfileConfirmation",
-              },
-              "screen": "ProfileStackNavigator",
+              "params": undefined,
+              "screen": "DeleteProfileConfirmation",
             },
-            "screen": "TabNavigator",
+            "screen": "ProfileStackNavigator",
           },
           "wording": "Je n’utilise plus l’application",
         },
@@ -228,13 +222,10 @@ exports[`<DeleteProfileReason /> should match snapshot 1`] = `
           "analyticsReason": "noMoreCredit",
           "navigateTo": {
             "params": {
-              "params": {
-                "params": undefined,
-                "screen": "DeleteProfileConfirmation",
-              },
-              "screen": "ProfileStackNavigator",
+              "params": undefined,
+              "screen": "DeleteProfileConfirmation",
             },
-            "screen": "TabNavigator",
+            "screen": "ProfileStackNavigator",
           },
           "wording": "Je n’ai plus de crédit ou très peu de crédit restant",
         },
@@ -242,13 +233,10 @@ exports[`<DeleteProfileReason /> should match snapshot 1`] = `
           "analyticsReason": "dataDeletion",
           "navigateTo": {
             "params": {
-              "params": {
-                "params": undefined,
-                "screen": "DeleteProfileConfirmation",
-              },
-              "screen": "ProfileStackNavigator",
+              "params": undefined,
+              "screen": "DeleteProfileConfirmation",
             },
-            "screen": "TabNavigator",
+            "screen": "ProfileStackNavigator",
           },
           "wording": "Je souhaite supprimer mes données personnelles",
         },
@@ -256,13 +244,10 @@ exports[`<DeleteProfileReason /> should match snapshot 1`] = `
           "analyticsReason": "hackedAccount",
           "navigateTo": {
             "params": {
-              "params": {
-                "params": undefined,
-                "screen": "DeleteProfileAccountHacked",
-              },
-              "screen": "ProfileStackNavigator",
+              "params": undefined,
+              "screen": "DeleteProfileAccountHacked",
             },
-            "screen": "TabNavigator",
+            "screen": "ProfileStackNavigator",
           },
           "wording": "Je pense que quelqu’un d’autre a accès à mon compte",
         },
@@ -270,13 +255,10 @@ exports[`<DeleteProfileReason /> should match snapshot 1`] = `
           "analyticsReason": "other",
           "navigateTo": {
             "params": {
-              "params": {
-                "params": undefined,
-                "screen": "DeleteProfileContactSupport",
-              },
-              "screen": "ProfileStackNavigator",
+              "params": undefined,
+              "screen": "DeleteProfileContactSupport",
             },
-            "screen": "TabNavigator",
+            "screen": "ProfileStackNavigator",
           },
           "wording": "Autre",
         },
