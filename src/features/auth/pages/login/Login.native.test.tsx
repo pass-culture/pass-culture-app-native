@@ -649,21 +649,22 @@ describe('<Login/>', () => {
 
     it('should not open reCAPTCHA challenge modal before clicking on login button', async () => {
       renderLogin()
-      const recaptchaWebviewModal = screen.getByTestId('recaptcha-webview-modal')
+      const recaptchaWebviewModal = screen.queryByTestId('recaptcha-webview-modal')
 
       await fillInputs()
 
-      expect(recaptchaWebviewModal.props.visible).toBe(false)
+      expect(recaptchaWebviewModal).not.toBeOnTheScreen()
     })
 
     it('should open reCAPTCHA challenge modal when clicking on login button', async () => {
       renderLogin()
-      const recaptchaWebviewModal = screen.getByTestId('recaptcha-webview-modal')
+
+      expect(screen.queryByTestId('recaptcha-webview-modal')).not.toBeOnTheScreen()
 
       await fillInputs()
       await act(() => fireEvent.press(screen.getByText('Se connecter')))
 
-      expect(recaptchaWebviewModal.props.visible).toBe(true)
+      expect(screen.getByTestId('recaptcha-webview-modal')).toBeOnTheScreen()
     })
 
     it('should disable login button when starting reCAPTCHA challenge', async () => {
