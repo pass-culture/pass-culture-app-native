@@ -2,7 +2,7 @@ import React from 'react'
 
 import { BookingReponse, CategoryIdEnum, SubcategoryIdEnum } from 'api/gen'
 import { BookingDetailsTicketContent } from 'features/bookings/components/BookingDetailsTicketContent'
-import { SeatWithQrCodeProps } from 'features/bookings/components/TicketBody/SeatWithQrCode/SeatWithQrCode'
+import { QrCodeWithSeatProps } from 'features/bookings/components/TicketBody/QrCodeWithSeat/QrCodeWithSeat'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import * as useCategoryIdModule from 'libs/subcategories/useCategoryId'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -179,7 +179,7 @@ describe('BookingDetailsTicketContent', () => {
 
 const renderBookingDetailsTicketContent = (
   booking: BookingReponse,
-  externalBookings?: SeatWithQrCodeProps
+  externalBookings?: QrCodeWithSeatProps
 ) =>
   render(
     reactQueryProviderHOC(

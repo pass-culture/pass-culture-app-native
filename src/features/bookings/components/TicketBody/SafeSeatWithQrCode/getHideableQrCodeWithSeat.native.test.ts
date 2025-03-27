@@ -1,7 +1,7 @@
 import mockdate from 'mockdate'
 
 import { BookingVenueResponse, SubcategoryIdEnum } from 'api/gen'
-import { getSafeSeatWithQrCode } from 'features/bookings/components/TicketBody/SafeSeatWithQrCode/getSafeSeatWithQrCode'
+import { getHideableQrCodeWithSeat } from 'features/bookings/components/TicketBody/SafeSeatWithQrCode/getHideableQrCodeWithSeat'
 import { dateBuilder, mockBuilder } from 'tests/mockBuilder'
 
 const qrCodeVisibilityHoursBeforeEvent = 2 * 24
@@ -12,7 +12,7 @@ const whenEventIsVisible = dateBuilder().withDay(15).withHours(1).toString()
 
 const venue = mockBuilder.bookingVenueResponse()
 
-describe('getSafeSeatWithQrCode', () => {
+describe('getHideableQrCodeWithSeat', () => {
   describe('reservation in a category that should not be hidden', () => {
     const subcategoryId = SubcategoryIdEnum.SEANCE_CINE
 
@@ -22,7 +22,7 @@ describe('getSafeSeatWithQrCode', () => {
       })
 
       it('should display Qr Code', () => {
-        const result = getSafeSeatWithQrCode({
+        const result = getHideableQrCodeWithSeat({
           beginningDatetime: eventDay,
           qrCodeVisibilityHoursBeforeEvent,
           venue,
@@ -40,7 +40,7 @@ describe('getSafeSeatWithQrCode', () => {
       })
 
       it('should display Qr Code', () => {
-        const result = getSafeSeatWithQrCode({
+        const result = getHideableQrCodeWithSeat({
           beginningDatetime: eventDay,
           qrCodeVisibilityHoursBeforeEvent,
           venue,
@@ -65,7 +65,7 @@ describe('getSafeSeatWithQrCode', () => {
         })
 
         it('should hide Qr Code', () => {
-          const result = getSafeSeatWithQrCode({
+          const result = getHideableQrCodeWithSeat({
             beginningDatetime: eventDay,
             qrCodeVisibilityHoursBeforeEvent,
             venue,
@@ -78,7 +78,7 @@ describe('getSafeSeatWithQrCode', () => {
         })
 
         it('should display the right day', () => {
-          const result = getSafeSeatWithQrCode({
+          const result = getHideableQrCodeWithSeat({
             beginningDatetime: eventDay,
             qrCodeVisibilityHoursBeforeEvent,
             venue,
@@ -91,7 +91,7 @@ describe('getSafeSeatWithQrCode', () => {
         })
 
         it('should display the right time', () => {
-          const result = getSafeSeatWithQrCode({
+          const result = getHideableQrCodeWithSeat({
             beginningDatetime: eventDay,
             qrCodeVisibilityHoursBeforeEvent,
             venue,
@@ -110,7 +110,7 @@ describe('getSafeSeatWithQrCode', () => {
         })
 
         it('should display Qr Code', () => {
-          const result = getSafeSeatWithQrCode({
+          const result = getHideableQrCodeWithSeat({
             beginningDatetime: eventDay,
             qrCodeVisibilityHoursBeforeEvent,
             venue,
@@ -128,7 +128,7 @@ describe('getSafeSeatWithQrCode', () => {
       mockdate.set(beforeEventIsVisible)
 
       it('should not hide Qr Code', () => {
-        const result = getSafeSeatWithQrCode({
+        const result = getHideableQrCodeWithSeat({
           beginningDatetime: eventDay,
           qrCodeVisibilityHoursBeforeEvent,
           venue,
@@ -145,7 +145,7 @@ describe('getSafeSeatWithQrCode', () => {
   it('should work with default parameters', () => {
     const venue = { timezone: 'Europe/Paris' } as BookingVenueResponse
 
-    const { shouldQrCodeBeHidden, day } = getSafeSeatWithQrCode({
+    const { shouldQrCodeBeHidden, day } = getHideableQrCodeWithSeat({
       subcategoryId: SubcategoryIdEnum.CONCERT,
       qrCodeVisibilityHoursBeforeEvent: 48,
       venue,

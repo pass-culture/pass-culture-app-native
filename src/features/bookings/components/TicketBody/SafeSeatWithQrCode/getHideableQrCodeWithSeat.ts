@@ -16,7 +16,7 @@ type Parameters = {
   enableHideTicket: boolean
 }
 
-export const getSafeSeatWithQrCode = ({
+export const getHideableQrCodeWithSeat = ({
   beginningDatetime = new Date().toISOString(),
   qrCodeVisibilityHoursBeforeEvent,
   subcategoryId,

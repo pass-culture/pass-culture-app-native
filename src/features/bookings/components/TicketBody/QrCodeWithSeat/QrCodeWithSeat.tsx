@@ -4,14 +4,14 @@ import styled from 'styled-components/native'
 import { QrCode } from 'features/bookings/components/TicketBody/QrCode/QrCode'
 import { getSpacing, Typo } from 'ui/theme'
 
-export type SeatWithQrCodeProps = {
+export type QrCodeWithSeatProps = {
   seatIndex?: string
   seat?: string
   barcode: string
   children?: never
 }
 
-export const SeatWithQrCode: FunctionComponent<SeatWithQrCodeProps> = ({
+export const QrCodeWithSeat: FunctionComponent<QrCodeWithSeatProps> = ({
   seatIndex,
   seat,
   barcode,
