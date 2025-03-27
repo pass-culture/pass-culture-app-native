@@ -3,18 +3,18 @@ import { Platform, View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { BookingVenueResponse, SubcategoryIdEnum } from 'api/gen'
-import { getSafeSeatWithQrCode } from 'features/bookings/components/TicketBody/SafeSeatWithQrCode/getSafeSeatWithQrCode'
 import {
-  SeatWithQrCode,
-  SeatWithQrCodeProps,
-} from 'features/bookings/components/TicketBody/SeatWithQrCode/SeatWithQrCode'
+  QrCodeWithSeat,
+  QrCodeWithSeatProps,
+} from 'features/bookings/components/TicketBody/QrCodeWithSeat/QrCodeWithSeat'
+import { getHideableQrCodeWithSeat } from 'features/bookings/components/TicketBody/SafeSeatWithQrCode/getHideableQrCodeWithSeat'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import genericQrCode from 'ui/images/generic-qr-code.png'
 import { BarCode } from 'ui/svg/icons/BarCode'
 import { Typo } from 'ui/theme'
 
-type SafeSeatWithQrCodeProps = SeatWithQrCodeProps & {
+type HideableQrCodeWithSeatProps = QrCodeWithSeatProps & {
   subcategoryId: SubcategoryIdEnum
   beginningDatetime: string | undefined
   qrCodeVisibilityHoursBeforeEvent: number
@@ -22,7 +22,7 @@ type SafeSeatWithQrCodeProps = SeatWithQrCodeProps & {
   venue: BookingVenueResponse
 }
 
-export const SafeSeatWithQrCode: FC<SafeSeatWithQrCodeProps> = ({
+export const HideableQrCodeWithSeat: FC<HideableQrCodeWithSeatProps> = ({
   subcategoryId,
   categoriesToHide = [],
   qrCodeVisibilityHoursBeforeEvent,
@@ -32,7 +32,7 @@ export const SafeSeatWithQrCode: FC<SafeSeatWithQrCodeProps> = ({
 }) => {
   const enableHideTicket = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_HIDE_TICKET)
 
-  const { day, time, shouldQrCodeBeHidden } = getSafeSeatWithQrCode({
+  const { day, time, shouldQrCodeBeHidden } = getHideableQrCodeWithSeat({
     beginningDatetime,
     qrCodeVisibilityHoursBeforeEvent,
     subcategoryId,
@@ -41,7 +41,7 @@ export const SafeSeatWithQrCode: FC<SafeSeatWithQrCodeProps> = ({
     enableHideTicket,
   })
 
-  if (!shouldQrCodeBeHidden) return <SeatWithQrCode {...seatWithQrCodeProps} />
+  if (!shouldQrCodeBeHidden) return <QrCodeWithSeat {...seatWithQrCodeProps} />
 
   return (
     <DashedContainer>
