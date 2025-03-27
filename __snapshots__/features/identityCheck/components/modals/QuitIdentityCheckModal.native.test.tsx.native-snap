@@ -31,263 +31,40 @@ exports[`<QuitIdentityCheckModal/> should render correctly 1`] = `
     windowHeight={1334}
   >
     <View
-      height="100%"
       style={
         [
           {
-            "bottom": 0,
-            "height": "100%",
-            "left": 0,
-            "position": "absolute",
-            "right": 0,
-            "top": 0,
-            "width": "100%",
-            "zIndex": -1,
-          },
-        ]
-      }
-      width="100%"
-    >
-      <View
-        height="100%"
-        width="100%"
-      >
-        <Text>
-          undefined-SVG-Mock
-        </Text>
-      </View>
-    </View>
-    <View
-      style={
-        [
-          {
-            "alignItems": "center",
+            "backgroundColor": "#ffffff",
             "flexBasis": 0,
-            "flexDirection": "column",
             "flexGrow": 1,
             "flexShrink": 1,
-            "justifyContent": "center",
-            "maxWidth": 360,
-            "overflowY": "auto",
-            "paddingHorizontal": 16,
           },
         ]
       }
     >
       <View
-        customHeight={16}
-        enable={true}
+        accessibilityRole="header"
         style={
           [
             {
-              "height": 16,
+              "backgroundColor": "rgba(255,255,255,0)",
+              "borderBottomColor": "#cbcdd2",
+              "borderBottomWidth": 1,
+              "left": 0,
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
+              "zIndex": 1,
             },
-          ]
-        }
-      />
-      <View
-        style={
-          [
             {
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
-            },
-          ]
-        }
-      />
-      <View
-        numberOfSpaces={10}
-        style={
-          [
-            {
-              "height": 40,
-            },
-          ]
-        }
-      />
-      <View
-        height={156}
-        width={200}
-      >
-        <Text>
-          undefined-SVG-Mock
-        </Text>
-      </View>
-      <View
-        numberOfSpaces={5}
-        style={
-          [
-            {
-              "height": 20,
-            },
-          ]
-        }
-      />
-      <Text
-        style={
-          [
-            {
-              "color": "#ffffff",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 21,
-              "lineHeight": 33.6,
-              "textAlign": "center",
-            },
-          ]
-        }
-      >
-        Veux-tu abandonner la vérification d’identité ?
-      </Text>
-      <View
-        numberOfSpaces={5}
-        style={
-          [
-            {
-              "height": 20,
-            },
-          ]
-        }
-      />
-      <Text
-        style={
-          [
-            {
-              "color": "#ffffff",
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 16,
-              "lineHeight": 25.6,
-              "textAlign": "center",
-            },
-          ]
-        }
-      >
-        Les informations que tu as renseignées ne seront pas enregistrées.
-      </Text>
-      <View
-        numberOfSpaces={30}
-        style={
-          [
-            {
-              "height": 120,
-            },
-          ]
-        }
-      />
-      <View
-        flex={0.5}
-        style={
-          [
-            {
-              "flexBasis": 0,
-              "flexGrow": 0.5,
-              "flexShrink": 1,
-            },
-          ]
-        }
-      />
-      <View
-        style={
-          [
-            {
-              "alignSelf": "stretch",
-              "flexBasis": 0,
-              "flexGrow": 1,
-              "flexShrink": 1,
-              "justifyContent": "flex-end",
-              "marginBottom": 32,
+              "borderBottomWidth": 0,
             },
           ]
         }
       >
         <View
-          accessibilityLabel="Continuer la vérification"
-          accessibilityState={
-            {
-              "busy": undefined,
-              "checked": undefined,
-              "disabled": undefined,
-              "expanded": undefined,
-              "selected": undefined,
-            }
-          }
-          accessibilityValue={
-            {
-              "max": undefined,
-              "min": undefined,
-              "now": undefined,
-              "text": undefined,
-            }
-          }
-          accessible={true}
-          focusable={true}
-          onClick={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
-          style={
-            [
-              [
-                {
-                  "userSelect": "auto",
-                },
-                {
-                  "alignItems": "center",
-                  "backgroundColor": "#ffffff",
-                  "borderRadius": 24,
-                  "flexDirection": "row",
-                  "justifyContent": "center",
-                  "maxWidth": 500,
-                  "minHeight": 40,
-                  "paddingBottom": 2,
-                  "paddingLeft": 20,
-                  "paddingRight": 20,
-                  "paddingTop": 2,
-                  "width": "100%",
-                },
-                {},
-              ],
-              {
-                "opacity": 1,
-              },
-            ]
-          }
-          testID="Continuer la vérification"
-        >
-          <View
-            style={
-              [
-                {
-                  "alignItems": "center",
-                  "flexDirection": "row",
-                },
-              ]
-            }
-          >
-            <Text
-              adjustsFontSizeToFit={false}
-              numberOfLines={1}
-              style={
-                [
-                  {
-                    "color": "#eb0055",
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                    "maxWidth": "100%",
-                  },
-                ]
-              }
-            >
-              Continuer la vérification
-            </Text>
-          </View>
-        </View>
-        <View
-          numberOfSpaces={4}
+          customHeight={16}
+          enable={true}
           style={
             [
               {
@@ -297,62 +74,15 @@ exports[`<QuitIdentityCheckModal/> should render correctly 1`] = `
           }
         />
         <View
-          accessibilityLabel="Abandonner la vérification"
-          accessibilityState={
-            {
-              "busy": undefined,
-              "checked": undefined,
-              "disabled": undefined,
-              "expanded": undefined,
-              "selected": undefined,
-            }
-          }
-          accessibilityValue={
-            {
-              "max": undefined,
-              "min": undefined,
-              "now": undefined,
-              "text": undefined,
-            }
-          }
-          accessible={true}
-          focusable={true}
-          onClick={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
           style={
             [
-              [
-                {
-                  "userSelect": "auto",
-                },
-                {
-                  "alignItems": "center",
-                  "borderRadius": 24,
-                  "flexDirection": "row",
-                  "justifyContent": "center",
-                  "maxWidth": 500,
-                  "minHeight": 40,
-                  "paddingBottom": 2,
-                  "paddingLeft": 2,
-                  "paddingRight": 2,
-                  "paddingTop": 2,
-                  "width": "100%",
-                },
-                {
-                  "backgroundColor": "transparent",
-                },
-              ],
               {
-                "opacity": 1,
+                "alignItems": "center",
+                "height": 48,
+                "justifyContent": "center",
               },
             ]
           }
-          testID="Abandonner la vérification"
         >
           <View
             style={
@@ -360,72 +90,382 @@ exports[`<QuitIdentityCheckModal/> should render correctly 1`] = `
                 {
                   "alignItems": "center",
                   "flexDirection": "row",
+                  "justifyContent": "space-between",
+                  "width": "100%",
                 },
               ]
             }
           >
             <View
+              positionInHeader="left"
               style={
                 [
                   {
+                    "alignItems": "center",
+                    "flexBasis": 0,
                     "flexDirection": "row",
-                    "flexShrink": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "justifyContent": "flex-start",
+                    "paddingLeft": 12,
+                    "paddingRight": 12,
                   },
                 ]
               }
-            >
-              <View
-                fill="#ffffff"
-                height={20}
-                testID="button-icon-left"
-                width={20}
-              >
-                <Text>
-                  button-icon-left-SVG-Mock
-                </Text>
-              </View>
-              <View
-                numberOfSpaces={2}
-                style={
-                  [
-                    {
-                      "width": 8,
-                    },
-                  ]
-                }
-              />
-            </View>
-            <Text
-              adjustsFontSizeToFit={false}
-              numberOfLines={1}
+              testID="back-button-container"
+            />
+            <View
+              positionInHeader="right"
               style={
                 [
                   {
-                    "color": "#ffffff",
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                    "maxWidth": "100%",
+                    "alignItems": "center",
+                    "flexBasis": 0,
+                    "flexDirection": "row",
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "justifyContent": "flex-end",
+                    "paddingLeft": 12,
+                    "paddingRight": 12,
                   },
                 ]
               }
-            >
-              Abandonner la vérification
-            </Text>
+              testID="close-button-container"
+            />
           </View>
         </View>
       </View>
       <View
-        customHeight={8}
-        enable={true}
+        bottom={16}
         style={
           [
             {
-              "height": 8,
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "justifyContent": "space-between",
+              "overflow": "scroll",
+              "paddingHorizontal": 24,
+              "paddingVertical": 24,
             },
           ]
         }
-      />
+      >
+        <View
+          height={16}
+          style={
+            [
+              {
+                "height": 16,
+              },
+            ]
+          }
+        />
+        <View
+          flex={1}
+          style={
+            [
+              {
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
+              },
+            ]
+          }
+        />
+        <View
+          animation={false}
+          style={
+            [
+              {
+                "alignItems": "center",
+                "flexGrow": 1,
+                "justifyContent": "center",
+              },
+            ]
+          }
+        >
+          <View
+            height={156}
+            width={200}
+          >
+            <Text>
+              undefined-SVG-Mock
+            </Text>
+          </View>
+        </View>
+        <View
+          gap={4}
+          style={
+            [
+              {
+                "alignItems": "center",
+                "gap": 16,
+                "marginBottom": 24,
+              },
+            ]
+          }
+        >
+          <Text
+            style={
+              [
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 21,
+                  "lineHeight": 33.6,
+                  "textAlign": "center",
+                },
+              ]
+            }
+          >
+            Veux-tu abandonner la vérification d’identité ?
+          </Text>
+          <Text
+            style={
+              [
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Medium",
+                  "fontSize": 16,
+                  "lineHeight": 25.6,
+                  "textAlign": "center",
+                },
+              ]
+            }
+          >
+            Les informations que tu as renseignées ne seront pas enregistrées.
+          </Text>
+        </View>
+        <View
+          flex={1}
+          style={
+            [
+              {
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
+              },
+            ]
+          }
+        />
+        <View
+          gap={4}
+          style={
+            [
+              {
+                "alignItems": "center",
+                "gap": 16,
+              },
+            ]
+          }
+        >
+          <View
+            accessibilityLabel="Continuer la vérification"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "alignItems": "center",
+                    "backgroundColor": "#eb0055",
+                    "borderRadius": 24,
+                    "flexDirection": "row",
+                    "justifyContent": "center",
+                    "maxWidth": 500,
+                    "minHeight": 40,
+                    "paddingBottom": 2,
+                    "paddingLeft": 20,
+                    "paddingRight": 20,
+                    "paddingTop": 2,
+                    "width": "100%",
+                  },
+                  {},
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
+            }
+            testID="Continuer la vérification"
+          >
+            <View
+              style={
+                [
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                  },
+                ]
+              }
+            >
+              <Text
+                adjustsFontSizeToFit={false}
+                numberOfLines={1}
+                style={
+                  [
+                    {
+                      "color": "#ffffff",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                      "maxWidth": "100%",
+                    },
+                  ]
+                }
+              >
+                Continuer la vérification
+              </Text>
+            </View>
+          </View>
+          <View
+            accessibilityLabel="Abandonner la vérification"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "alignItems": "center",
+                    "borderRadius": 24,
+                    "flexDirection": "row",
+                    "justifyContent": "center",
+                    "maxWidth": 500,
+                    "minHeight": 40,
+                    "paddingBottom": 2,
+                    "paddingLeft": 2,
+                    "paddingRight": 2,
+                    "paddingTop": 2,
+                    "width": "100%",
+                  },
+                  {
+                    "backgroundColor": "#ffffff",
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
+            }
+            testID="Abandonner la vérification"
+          >
+            <View
+              style={
+                [
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                  },
+                ]
+              }
+            >
+              <View
+                style={
+                  [
+                    {
+                      "flexDirection": "row",
+                      "flexShrink": 0,
+                    },
+                  ]
+                }
+              >
+                <View
+                  fill="#161617"
+                  height={20}
+                  testID="button-icon-left"
+                  width={20}
+                >
+                  <Text>
+                    button-icon-left-SVG-Mock
+                  </Text>
+                </View>
+                <View
+                  numberOfSpaces={2}
+                  style={
+                    [
+                      {
+                        "width": 8,
+                      },
+                    ]
+                  }
+                />
+              </View>
+              <Text
+                adjustsFontSizeToFit={false}
+                numberOfLines={1}
+                style={
+                  [
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                      "maxWidth": "100%",
+                    },
+                  ]
+                }
+              >
+                Abandonner la vérification
+              </Text>
+            </View>
+          </View>
+        </View>
+      </View>
     </View>
   </View>
 </Modal>
