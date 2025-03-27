@@ -211,9 +211,9 @@ describe('Profile component', () => {
       const row = screen.getByText('Informations personnelles')
       await user.press(row)
 
-      expect(navigate).toHaveBeenCalledWith('TabNavigator', {
-        params: { params: undefined, screen: 'PersonalData' },
-        screen: 'ProfileStackNavigator',
+      expect(navigate).toHaveBeenCalledWith('ProfileStackNavigator', {
+        params: undefined,
+        screen: 'PersonalData',
       })
     })
 
@@ -302,9 +302,9 @@ describe('Profile component', () => {
       const notificationsButton = screen.getByText('Notifications')
       await user.press(notificationsButton)
 
-      expect(navigate).toHaveBeenCalledWith('TabNavigator', {
-        params: { params: undefined, screen: 'NotificationsSettings' },
-        screen: 'ProfileStackNavigator',
+      expect(navigate).toHaveBeenCalledWith('ProfileStackNavigator', {
+        params: undefined,
+        screen: 'NotificationsSettings',
       })
     })
   })
@@ -386,9 +386,9 @@ describe('Profile component', () => {
       const accessibilityButton = screen.getByText('Accessibilité')
       await user.press(accessibilityButton)
 
-      expect(navigate).toHaveBeenCalledWith('TabNavigator', {
-        params: { params: undefined, screen: 'Accessibility' },
-        screen: 'ProfileStackNavigator',
+      expect(navigate).toHaveBeenCalledWith('ProfileStackNavigator', {
+        params: undefined,
+        screen: 'Accessibility',
       })
     })
 
@@ -398,9 +398,9 @@ describe('Profile component', () => {
       const legalNoticesButton = screen.getByText('Informations légales')
       await user.press(legalNoticesButton)
 
-      expect(navigate).toHaveBeenCalledWith('TabNavigator', {
-        params: { params: undefined, screen: 'LegalNotices' },
-        screen: 'ProfileStackNavigator',
+      expect(navigate).toHaveBeenCalledWith('ProfileStackNavigator', {
+        params: undefined,
+        screen: 'LegalNotices',
       })
     })
 
@@ -410,9 +410,9 @@ describe('Profile component', () => {
       const legalNoticesButton = screen.getByText('Faire une suggestion')
       await user.press(legalNoticesButton)
 
-      expect(navigate).toHaveBeenCalledWith('TabNavigator', {
-        params: { params: undefined, screen: 'FeedbackInApp' },
-        screen: 'ProfileStackNavigator',
+      expect(navigate).toHaveBeenCalledWith('ProfileStackNavigator', {
+        params: undefined,
+        screen: 'FeedbackInApp',
       })
     })
 
@@ -422,9 +422,9 @@ describe('Profile component', () => {
       const confidentialityButton = screen.getByText('Confidentialité')
       await user.press(confidentialityButton)
 
-      expect(navigate).toHaveBeenCalledWith('TabNavigator', {
-        params: { params: undefined, screen: 'ConsentSettings' },
-        screen: 'ProfileStackNavigator',
+      expect(navigate).toHaveBeenCalledWith('ProfileStackNavigator', {
+        params: undefined,
+        screen: 'ConsentSettings',
       })
     })
   })

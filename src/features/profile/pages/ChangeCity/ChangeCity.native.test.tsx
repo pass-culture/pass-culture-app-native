@@ -97,9 +97,9 @@ describe('ChangeCity', () => {
     })
 
     await waitFor(async () => {
-      expect(navigate).toHaveBeenNthCalledWith(1, 'TabNavigator', {
-        params: { params: undefined, screen: 'PersonalData' },
-        screen: 'ProfileStackNavigator',
+      expect(navigate).toHaveBeenNthCalledWith(1, 'ProfileStackNavigator', {
+        params: undefined,
+        screen: 'PersonalData',
       })
     })
   })

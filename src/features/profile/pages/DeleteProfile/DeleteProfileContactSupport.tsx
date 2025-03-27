@@ -3,8 +3,8 @@ import React, { FC } from 'react'
 import { Platform } from 'react-native'
 import styled from 'styled-components/native'
 
-import { getProfileStackConfig } from 'features/navigation/ProfileStackNavigator/getProfileStackConfig'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
 import { BicolorEmailSent } from 'ui/svg/icons/BicolorEmailSent'
@@ -23,7 +23,7 @@ export const DeleteProfileContactSupport: FC = () => {
   const { requestSendMail } = useContactSupportForDeletionProfile({ emailProvider })
   const { navigate } = useNavigation<UseNavigationType>()
 
-  const navigateToProfile = () => navigate(...getProfileStackConfig('Profile'))
+  const navigateToProfile = () => navigate(...getTabNavConfig('Profile'))
   return (
     <GenericInfoPageWhite
       withGoBack

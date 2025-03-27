@@ -10,40 +10,37 @@ export function getScreenPath<RouteName extends keyof AllNavParamList>(
 ) {
   let state: NavigationState = { routes: [{ name: screen, params }] }
   if (isScreen('TabNavigator', screen, params)) {
-    const { screen: tabNavigatorScreen, params: tabNavigatorParams } = params
-    const nestedRoutes = [{ name: tabNavigatorScreen, params: tabNavigatorParams }]
+    const { screen: nestedScreen, params: nestedParams } = params
+    const nestedRoutes = [{ name: nestedScreen, params: nestedParams }]
     state = { routes: [{ name: screen, state: { routes: nestedRoutes } }] }
 
-    if (
-      isScreen('SearchStackNavigator', tabNavigatorScreen, tabNavigatorParams) &&
-      tabNavigatorParams
-    ) {
-      const { screen: searchStackScreen, params: searchStackParams } = tabNavigatorParams
-      const nestedNestedRoutes = [{ name: searchStackScreen, params: searchStackParams }]
+    if (isScreen('SearchStackNavigator', nestedScreen, nestedParams) && nestedParams) {
+      const { screen: searchStackScreen, params: searchStackParams } = nestedParams
+      const nestedRoutes = [{ name: searchStackScreen, params: searchStackParams }]
       state = {
         routes: [
           {
             name: screen,
-            state: { routes: [{ name: params.screen, state: { routes: nestedNestedRoutes } }] },
+            state: { routes: [{ name: params.screen, state: { routes: nestedRoutes } }] },
           },
         ],
       }
     }
-    if (isScreen('ProfileStackNavigator', tabNavigatorScreen, tabNavigatorParams)) {
-      const nestedNestedRoutes = [
+  }
+  if (isScreen('ProfileStackNavigator', screen, params)) {
+    const nestedRoutes = [
+      {
+        name: screen,
+        params: params,
+      },
+    ]
+    state = {
+      routes: [
         {
-          name: tabNavigatorParams ? tabNavigatorParams.screen : tabNavigatorScreen,
-          params: tabNavigatorParams?.params,
+          name: screen,
+          state: { routes: nestedRoutes },
         },
-      ]
-      state = {
-        routes: [
-          {
-            name: screen,
-            state: { routes: [{ name: params.screen, state: { routes: nestedNestedRoutes } }] },
-          },
-        ],
-      }
+      ],
     }
   }
 

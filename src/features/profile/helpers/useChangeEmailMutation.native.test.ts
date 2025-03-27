@@ -42,9 +42,9 @@ describe('useChangeEmailMutation', () => {
 
     await act(async () => changeEmail())
 
-    expect(replace).toHaveBeenCalledWith('TabNavigator', {
-      params: { params: undefined, screen: 'TrackEmailChange' },
-      screen: 'ProfileStackNavigator',
+    expect(replace).toHaveBeenCalledWith('ProfileStackNavigator', {
+      params: undefined,
+      screen: 'TrackEmailChange',
     })
   })
 

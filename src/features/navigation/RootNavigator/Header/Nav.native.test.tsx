@@ -98,7 +98,7 @@ describe('Nav', () => {
       'SearchStackNavigator tab',
       'Bookings tab',
       'Favorites tab',
-      'ProfileStackNavigator tab',
+      'Profile tab',
     ]
 
     expectedTabsTestIds.forEach((tab) => {

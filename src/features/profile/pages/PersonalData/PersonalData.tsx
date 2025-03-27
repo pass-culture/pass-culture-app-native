@@ -5,6 +5,8 @@ import { ActivityIdEnum } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { getProfileNavConfig } from 'features/navigation/ProfileStackNavigator/getProfileNavConfig'
 import { ProfileNavigateParams } from 'features/navigation/RootNavigator/types'
+import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
+import { useGoBack } from 'features/navigation/useGoBack'
 import { EditButton } from 'features/profile/components/Buttons/EditButton/EditButton'
 import { useCheckHasCurrentEmailChange } from 'features/profile/helpers/useCheckHasCurrentEmailChange'
 import { analytics } from 'libs/analytics/provider'
@@ -38,6 +40,8 @@ const ACTIVITIES: Record<ActivityIdEnum, string> = {
 
 export function PersonalData() {
   const { user } = useAuthContext()
+  const { goBack } = useGoBack(...getTabNavConfig('Profile'))
+
   const fullname = String(user?.firstName + ' ' + user?.lastName).trim()
   const hasCity = user?.postalCode && user?.city
   const city = hasCity && user?.postalCode && user?.city ? `${user.postalCode}, ${user.city}` : ''
@@ -50,7 +54,7 @@ export function PersonalData() {
   }, [hasCurrentEmailChange])
 
   return (
-    <SecondaryPageWithBlurHeader title="Informations personnelles">
+    <SecondaryPageWithBlurHeader onGoBack={goBack} title="Informations personnelles">
       {user?.isBeneficiary ? (
         <React.Fragment>
           <CaptionNeutralInfo>Prénom et nom</CaptionNeutralInfo>

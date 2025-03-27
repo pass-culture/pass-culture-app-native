@@ -5,7 +5,10 @@ import { ComponentType } from 'react'
 import { CulturalSurveyQuestionEnum } from 'api/gen/api'
 import { BookingsTab } from 'features/bookings/enum'
 import { CheatcodesStackParamList } from 'features/navigation/CheatcodesStackNavigator/types'
-import { ProfileStackParamList } from 'features/navigation/ProfileStackNavigator/ProfileStack'
+import {
+  ProfileStackParamList,
+  ProfileStackRouteName,
+} from 'features/navigation/ProfileStackNavigator/ProfileStack'
 import { SearchStackParamList } from 'features/navigation/SearchStackNavigator/types'
 import { PlaylistType } from 'features/offer/enums'
 import { TutorialType } from 'features/tutorial/types'
@@ -66,12 +69,12 @@ export type ThematicHomeParams = BaseThematicHome &
   (OtherThematicBlockHome | CategoryBlockThematicHome | HighlightThematicBlockThematicHome)
 
 export type AccessibilityRootStackParamList = {
-  Accessibility: undefined
-  AccessibilityActionPlan: undefined
-  AccessibilityDeclarationMobile: undefined
-  AccessibilityDeclarationWeb: undefined
-  AccessibilityEngagement: undefined
-  RecommendedPaths: undefined
+  Accessibility?: Record<string, unknown> // I had to put type Record<string, unknown> so that getProfileStackConfig in DeeplinksGeneratorForm can take appAndMarketingParams, otherwise I would have just put undefined.
+  AccessibilityActionPlan?: undefined
+  AccessibilityDeclarationMobile?: undefined
+  AccessibilityDeclarationWeb?: undefined
+  AccessibilityEngagement?: undefined
+  RecommendedPaths?: undefined
 }
 
 export type CulturalSurveyRootStackParamList = {
@@ -241,6 +244,11 @@ export type RootStackParamList = {
   OfferPreview: { id: number; defaultIndex?: number }
   OnboardingSubscription: undefined
   PageNotFound: undefined
+  Profile: undefined
+  ProfileStackNavigator?: {
+    screen: ProfileStackRouteName
+    params: ProfileStackParamList[ProfileStackRouteName]
+  }
   RecreditBirthdayNotification: undefined
   ReinitializePassword: {
     email: string
@@ -341,7 +349,7 @@ export type GenericRoute<
   options?: { title?: string }
   secure?: boolean
 }
-export type RootRoute = GenericRoute<RootStackParamList, TabParamList>
+export type RootRoute = GenericRoute<RootStackParamList, TabParamList & ProfileStackParamList>
 
 // Typeguard for screen params
 export function isScreen<Screen extends AllNavigateParams[0]>(

@@ -4,7 +4,7 @@ import { PermissionStatus } from 'react-native-permissions'
 import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { getProfileStackConfig } from 'features/navigation/ProfileStackNavigator/getProfileStackConfig'
+import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { PushNotificationsModal } from 'features/notifications/pages/PushNotificationsModal'
 import { usePatchProfile } from 'features/profile/api/usePatchProfile'
@@ -139,7 +139,7 @@ export const NotificationsSettings = () => {
     }
   }
 
-  const { goBack } = useGoBack(...getProfileStackConfig('Profile'))
+  const { goBack } = useGoBack(...getTabNavConfig('Profile'))
 
   return (
     <SecondaryPageWithBlurHeader

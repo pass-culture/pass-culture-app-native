@@ -65,7 +65,7 @@ export const TabBar: React.FC<Props> = ({ navigation, state }) => {
               break
             case 'Bookings':
             case 'Favorites':
-            case 'ProfileStackNavigator':
+            case 'Profile':
               break
           }
           navigation.navigate('TabNavigator', navigateParams)
