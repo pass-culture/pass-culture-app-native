@@ -161,6 +161,7 @@ export const SetPhoneNumberWithoutValidation = () => {
           disabled={!formState.isValid}
           type="submit"
           wording="Continuer"
+          accessibilityLabel="Continuer vers l’étape suivante"
           onPress={submit}
         />
       }
