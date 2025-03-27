@@ -1,7 +1,8 @@
-import React, { ComponentProps, ComponentType, Ref, useCallback } from 'react'
+import React, { ComponentProps, Ref, useCallback } from 'react'
 import { FlatList } from 'react-native-gesture-handler'
 import styled, { useTheme } from 'styled-components/native'
 
+import { AccessibleTitle } from 'features/home/components/AccessibleTitle'
 import { Playlist, RenderFooterItem } from 'ui/components/Playlist'
 import { SeeMore } from 'ui/components/SeeMore'
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
@@ -27,7 +28,6 @@ type Props = Pick<
   noMarginBottom?: boolean
   title: string
   subtitle?: string
-  TitleComponent?: ComponentType<ComponentProps<typeof DefaultTitle>>
   onPressSeeMore?: () => void
   renderFooter?: RenderFooterItem
   titleSeeMoreLink?: InternalNavigationProps['navigateTo']
@@ -37,7 +37,6 @@ type Props = Pick<
 export const PassPlaylist = ({
   title,
   subtitle,
-  TitleComponent,
   onPressSeeMore,
   onEndReached,
   onViewableItemsChanged,
@@ -59,12 +58,6 @@ export const PassPlaylist = ({
 
   const showTitleSeeMore = !!onPressSeeMore && !isTouch
   const showFooterSeeMore = !!onPressSeeMore && isTouch
-
-  const StyledTitleComponent = styled(TitleComponent || DefaultTitle).attrs({
-    numberOfLines: 2,
-  })(({ theme }) => ({
-    marginHorizontal: theme.contentPage.marginHorizontal,
-  }))
 
   type SizeProps = {
     width: number
@@ -91,7 +84,7 @@ export const PassPlaylist = ({
     <StyledViewGap gap={4} noMarginBottom={noMarginBottom} {...props}>
       <ViewGap gap={1}>
         <StyledView>
-          <StyledTitleComponent testID="playlistTitle">{title}</StyledTitleComponent>
+          <AccessibleTitle TitleComponent={TitleLevel2} testID="playlistTitle" title={title} />
           {renderTitleSeeMore()}
         </StyledView>
         {subtitle ? <StyledSubtitle>{subtitle}</StyledSubtitle> : null}
@@ -121,7 +114,7 @@ const StyledViewGap = styled(ViewGap)<{ noMarginBottom?: boolean }>(
   })
 )
 
-const DefaultTitle = styled(Typo.Title3).attrs(getHeadingAttrs(2))``
+const TitleLevel2 = styled(Typo.Title3).attrs(getHeadingAttrs(2))``
 
 const StyledSubtitle = styled(Typo.BodyAccentXs).attrs({
   numberOfLines: 2,

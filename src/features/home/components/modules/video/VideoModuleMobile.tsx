@@ -3,6 +3,7 @@ import React, { FunctionComponent, useState } from 'react'
 import { LayoutChangeEvent, View } from 'react-native'
 import styled from 'styled-components/native'
 
+import { AccessibleTitle } from 'features/home/components/AccessibleTitle'
 import { VideoMonoOfferTile } from 'features/home/components/modules/video/VideoMonoOfferTile'
 import { VideoMultiOfferPlaylist } from 'features/home/components/modules/video/VideoMultiOfferPlaylist'
 import { VideoModuleProps } from 'features/home/types'
@@ -30,9 +31,8 @@ export const VideoModuleMobile: FunctionComponent<VideoModuleProps> = (props) =>
   return (
     <Container>
       <StyledTitleContainer>
-        <StyledTitleComponent>{props.title}</StyledTitleComponent>
+        <AccessibleTitle testID="playlistTitle" title={props.title} />
       </StyledTitleContainer>
-      <Spacer.Column numberOfSpaces={5} />
 
       <View testID="mobile-video-module">
         <StyledTouchableHighlight
@@ -91,13 +91,7 @@ const Container = styled.View(({ theme }) => ({
   paddingBottom: theme.home.spaceBetweenModules,
 }))
 
-const StyledTitleContainer = styled.View(({ theme }) => ({
-  marginHorizontal: theme.contentPage.marginHorizontal,
-}))
-
-const StyledTitleComponent = styled(Typo.Title3).attrs({
-  numberOfLines: 2,
-})({})
+const StyledTitleContainer = styled.View({ marginBottom: getSpacing(5), alignItems: 'center' })
 
 const StyledTouchableHighlight = styled.TouchableHighlight.attrs(({ theme }) => ({
   underlayColor: theme.colors.white,

@@ -4,6 +4,7 @@ import { View } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
 
+import { AccessibleTitle } from 'features/home/components/AccessibleTitle'
 import { BlackCaption } from 'features/home/components/BlackCaption'
 import { BlackGradient } from 'features/home/components/BlackGradient'
 import { TEXT_BACKGROUND_OPACITY } from 'features/home/components/constants'
@@ -35,10 +36,8 @@ export const OldVideoModuleMobile: FunctionComponent<VideoModuleProps> = (props)
   return (
     <Container>
       <StyledTitleContainer>
-        <StyledTitleComponent>{props.title}</StyledTitleComponent>
+        <AccessibleTitle testID="playlistTitle" title={props.title} />
       </StyledTitleContainer>
-      <Spacer.Column numberOfSpaces={5} />
-
       <View testID="mobile-video-module">
         <ColorCategoryBackground
           colorCategoryBackgroundHeightUniqueOffer={colorCategoryBackgroundHeightUniqueOffer}
@@ -159,13 +158,7 @@ const StyledTouchableHighlight = styled.TouchableHighlight.attrs(({ theme }) => 
   borderRadius: theme.borderRadius.radius,
 }))
 
-const StyledTitleContainer = styled.View(({ theme }) => ({
-  marginHorizontal: theme.contentPage.marginHorizontal,
-}))
-
-const StyledTitleComponent = styled(Typo.Title3).attrs({
-  numberOfLines: 2,
-})({})
+const StyledTitleContainer = styled.View({ marginBottom: getSpacing(5), alignItems: 'center' })
 
 const StyledVideoMonoOfferTile = styled(VideoMonoOfferTile)({
   flexGrow: 1,

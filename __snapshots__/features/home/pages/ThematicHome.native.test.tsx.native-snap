@@ -30,6 +30,7 @@ exports[`ThematicHome should render correctly 1`] = `
         [
           {
             "height": "100%",
+            "marginVertical": 24,
             "overflow": "hidden",
           },
         ]
@@ -319,16 +320,6 @@ exports[`ThematicHome should render correctly 1`] = `
         />
       </View>
     </View>
-    <View
-      numberOfSpaces={6}
-      style={
-        [
-          {
-            "height": 24,
-          },
-        ]
-      }
-    />
   </View>
   <View
     collapsable={false}

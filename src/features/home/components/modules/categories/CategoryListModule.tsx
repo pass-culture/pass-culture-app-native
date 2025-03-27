@@ -1,11 +1,12 @@
 import React, { useEffect } from 'react'
 import styled from 'styled-components/native'
 
+import { AccessibleTitle } from 'features/home/components/AccessibleTitle'
 import { CategoryBlock as CategoryBlockData } from 'features/home/types'
 import { analytics } from 'libs/analytics/provider'
 import { ContentTypes } from 'libs/contentful/types'
 import { CategoryButton } from 'shared/categoryButton/CategoryButton'
-import { getSpacing, Typo } from 'ui/theme'
+import { getSpacing } from 'ui/theme'
 import { colorMapping } from 'ui/theme/colorMapping'
 
 type CategoryListProps = {
@@ -39,7 +40,7 @@ export const CategoryListModule = ({
 
   return (
     <Container>
-      <StyledTitle numberOfLines={2}>{title}</StyledTitle>
+      <AccessibleTitle title={title} />
       <StyledView>
         {categoryBlockList.map((item) => (
           <StyledCategoryButton
@@ -86,10 +87,6 @@ const StyledView = styled.View(({ theme }) => ({
         gap: DESKTOP_GAPS_AND_PADDINGS,
         paddingVertical: DESKTOP_GAPS_AND_PADDINGS,
       }),
-}))
-
-const StyledTitle = styled(Typo.Title3)(({ theme }) => ({
-  marginHorizontal: theme.contentPage.marginHorizontal,
 }))
 
 const Container = styled.View({

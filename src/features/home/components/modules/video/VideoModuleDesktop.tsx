@@ -4,6 +4,7 @@ import React, { FunctionComponent } from 'react'
 import { ImageBackground, View } from 'react-native'
 import styled from 'styled-components/native'
 
+import { AccessibleTitle } from 'features/home/components/AccessibleTitle'
 import { VideoMonoOfferTile } from 'features/home/components/modules/video/VideoMonoOfferTile'
 import { VideoModuleProps } from 'features/home/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
@@ -29,16 +30,17 @@ export const VideoModuleDesktop: FunctionComponent<VideoModuleProps> = (props) =
   const nbOfSeparators = hasOnlyTwoOffers ? 1 : 2
 
   function renderTitleSeeMore() {
-    return <SeeMoreWithEye title={props.videoTitle} onPressSeeMore={props.showVideoModal} />
+    return showSeeMore && props.isMultiOffer ? (
+      <SeeMoreWithEye title={props.videoTitle} onPressSeeMore={props.showVideoModal} />
+    ) : null
   }
 
   return (
     <React.Fragment>
       <StyledTitleContainer>
-        <Typo.Title3 numberOfLines={2}>{props.title}</Typo.Title3>
-        {showSeeMore && props.isMultiOffer && renderTitleSeeMore()}
+        <AccessibleTitle testID="playlistTitle" title={props.title} />
+        {renderTitleSeeMore()}
       </StyledTitleContainer>
-      <Spacer.Column numberOfSpaces={5} />
 
       <View>
         <ColorCategoryBackgroundWrapper>
@@ -179,11 +181,11 @@ const StyledTouchableHighlight = styled.TouchableHighlight.attrs(({ theme }) => 
   width: THUMBNAIL_WIDTH,
 })
 
-const StyledTitleContainer = styled.View(({ theme }) => ({
-  marginHorizontal: theme.contentPage.marginHorizontal,
+const StyledTitleContainer = styled.View({
   flexDirection: 'row',
+  marginBottom: getSpacing(5),
   alignItems: 'center',
-}))
+})
 
 const StyledVideoMonoOfferTile = styled(VideoMonoOfferTile)({
   flexGrow: 1,

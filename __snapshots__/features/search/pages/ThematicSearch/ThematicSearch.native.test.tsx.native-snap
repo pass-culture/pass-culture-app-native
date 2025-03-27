@@ -1694,23 +1694,47 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                 ]
               }
             >
-              <Text
+              <View
                 numberOfLines={2}
                 style={
                   [
                     {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 19,
-                      "lineHeight": 30.4,
+                      "alignItems": "center",
+                      "flexDirection": "row",
                       "marginHorizontal": 24,
                     },
                   ]
                 }
                 testID="playlistTitle"
               >
-                GTL playlist
-              </Text>
+                <Text
+                  style={
+                    [
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 19,
+                        "lineHeight": 30.4,
+                      },
+                    ]
+                  }
+                >
+                  GTL playlist
+                </Text>
+                <Text
+                  accessibilityHidden={true}
+                  style={
+                    [
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 19,
+                        "lineHeight": 30.4,
+                      },
+                    ]
+                  }
+                />
+              </View>
             </View>
           </View>
           <View

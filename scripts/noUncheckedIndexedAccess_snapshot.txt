@@ -2,9 +2,9 @@
 ./src/features/home/api/helpers/mapVenuesDataAndModules.ts:13
 ./src/features/home/api/helpers/mapVenuesDataAndModules.ts:15
 ./src/features/home/components/modules/OffersModule.tsx:66
-./src/features/home/components/modules/video/OldVideoModuleDesktop.tsx:97
-./src/features/home/components/modules/video/OldVideoModuleMobile.tsx:71
-./src/features/home/components/modules/video/VideoModuleDesktop.tsx:87
+./src/features/home/components/modules/video/OldVideoModuleDesktop.tsx:99
+./src/features/home/components/modules/video/OldVideoModuleMobile.tsx:70
+./src/features/home/components/modules/video/VideoModuleDesktop.tsx:89
 ./src/features/home/components/modules/video/VideoModuleMobile.tsx:71
 ./src/features/identityCheck/api/useProfileInfo.ts:21
 ./src/features/identityCheck/pages/helpers/parseUrlParams.ts:8

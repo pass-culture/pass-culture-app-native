@@ -19,6 +19,7 @@ exports[`Home page should render correctly 1`] = `
         [
           {
             "height": "100%",
+            "marginVertical": 24,
             "overflow": "hidden",
           },
         ]
@@ -539,16 +540,6 @@ exports[`Home page should render correctly 1`] = `
         </View>
       </RCTScrollView>
     </View>
-    <View
-      numberOfSpaces={6}
-      style={
-        [
-          {
-            "height": 24,
-          },
-        ]
-      }
-    />
     <View
       height={16}
       style={

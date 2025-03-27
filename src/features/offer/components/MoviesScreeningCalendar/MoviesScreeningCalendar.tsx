@@ -1,6 +1,5 @@
 import { useRoute } from '@react-navigation/native'
 import React, { FunctionComponent } from 'react'
-import styled from 'styled-components/native'
 
 import { SubcategoryIdEnum } from 'api/gen'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
@@ -13,8 +12,7 @@ import { Offer } from 'shared/offer/types'
 import { PassPlaylist } from 'ui/components/PassPlaylist'
 import { CustomListRenderItem } from 'ui/components/Playlist'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
-import { LENGTH_M, RATIO_HOME_IMAGE, Typo } from 'ui/theme'
-import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
+import { LENGTH_M, RATIO_HOME_IMAGE } from 'ui/theme'
 
 type Props = {
   venueOffers: VenueOffers
@@ -55,7 +53,6 @@ export const MoviesScreeningCalendar: FunctionComponent<Props> = ({ venueOffers 
           <PassPlaylist
             testID="offersModuleList"
             title="Les autres offres"
-            TitleComponent={PlaylistTitleText}
             data={nonScreeningOffers}
             itemHeight={LENGTH_M}
             itemWidth={LENGTH_M * RATIO_HOME_IMAGE}
@@ -67,5 +64,3 @@ export const MoviesScreeningCalendar: FunctionComponent<Props> = ({ venueOffers 
     </React.Fragment>
   )
 }
-
-const PlaylistTitleText = styled(Typo.Title3).attrs(getHeadingAttrs(2))``
