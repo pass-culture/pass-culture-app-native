@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { CategoryIdEnum, BookingReponse } from 'api/gen'
-import { TicketBody } from 'features/bookings/components/OldTicketBody/TicketBody'
+import { TicketBody } from 'features/bookings/components/OldBookingDetails/TicketBody'
 import { BookingComplementaryInfo } from 'features/bookings/components/TicketBody/BookingComplementaryInfo/BookingComplementaryInfo'
 import { QrCodeWithSeatProps } from 'features/bookings/components/TicketBody/QrCodeWithSeat/QrCodeWithSeat'
 import { TicketCode } from 'features/bookings/components/TicketCode'
