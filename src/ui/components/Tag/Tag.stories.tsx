@@ -23,6 +23,10 @@ const variantConfig: Variants<typeof Tag> = [
     props: { label: '1,4km' },
   },
   {
+    label: 'Tag with custom background color',
+    props: { label: '1,4km', backgroundColor: '#20C5E9' },
+  },
+  {
     label: 'Tag with icon',
     props: { label: '1', Icon: StyledArrowRight },
   },
