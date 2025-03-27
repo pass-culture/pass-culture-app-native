@@ -6,7 +6,7 @@ type NavigationState = Parameters<typeof linking.getPathFromState>[0]
 
 export function getScreenPath<RouteName extends keyof AllNavParamList>(
   screen: RouteName,
-  params?: AllNavParamList[RouteName]
+  params: AllNavParamList[RouteName]
 ) {
   let state: NavigationState = { routes: [{ name: screen, params }] }
   if (isScreen('TabNavigator', screen, params)) {
