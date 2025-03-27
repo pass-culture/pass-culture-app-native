@@ -1,11 +1,8 @@
 import mockdate from 'mockdate'
 
 import { BookingVenueResponse, SubcategoryIdEnum } from 'api/gen'
-import { useSafeSeatWithQrCode } from 'features/bookings/components/TicketBody/SafeSeatWithQrCode/useSafeSeatWithQrCode'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { getSafeSeatWithQrCode } from 'features/bookings/components/TicketBody/SafeSeatWithQrCode/getSafeSeatWithQrCode'
 import { dateBuilder, mockBuilder } from 'tests/mockBuilder'
-import { renderHook } from 'tests/utils'
 
 const qrCodeVisibilityHoursBeforeEvent = 2 * 24
 
@@ -15,11 +12,9 @@ const whenEventIsVisible = dateBuilder().withDay(15).withHours(1).toString()
 
 const venue = mockBuilder.bookingVenueResponse()
 
-describe('useSafeSeatWithQrCode', () => {
+describe('getSafeSeatWithQrCode', () => {
   describe('reservation in a category that should not be hidden', () => {
     const subcategoryId = SubcategoryIdEnum.SEANCE_CINE
-
-    beforeEach(() => setFeatureFlags())
 
     describe('before it should be visible', () => {
       beforeAll(() => {
@@ -27,14 +22,15 @@ describe('useSafeSeatWithQrCode', () => {
       })
 
       it('should display Qr Code', () => {
-        const { result } = renderUseSafeSeatWithQrCode({
+        const result = getSafeSeatWithQrCode({
           beginningDatetime: eventDay,
           qrCodeVisibilityHoursBeforeEvent,
           venue,
           subcategoryId,
+          enableHideTicket: false,
         })
 
-        expect(result.current.shouldQrCodeBeHidden).toBeFalsy()
+        expect(result.shouldQrCodeBeHidden).toBeFalsy()
       })
     })
 
@@ -44,14 +40,15 @@ describe('useSafeSeatWithQrCode', () => {
       })
 
       it('should display Qr Code', () => {
-        const { result } = renderUseSafeSeatWithQrCode({
+        const result = getSafeSeatWithQrCode({
           beginningDatetime: eventDay,
           qrCodeVisibilityHoursBeforeEvent,
           venue,
           subcategoryId,
+          enableHideTicket: false,
         })
 
-        expect(result.current.shouldQrCodeBeHidden).toBeFalsy()
+        expect(result.shouldQrCodeBeHidden).toBeFalsy()
       })
     })
   })
@@ -60,7 +57,7 @@ describe('useSafeSeatWithQrCode', () => {
     const subcategoryId = SubcategoryIdEnum.SEANCE_CINE
 
     describe('when FF enableHideTicket is on', () => {
-      beforeEach(() => setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_HIDE_TICKET]))
+      const enableHideTicket = true
 
       describe('before it should be visible', () => {
         beforeAll(() => {
@@ -68,39 +65,42 @@ describe('useSafeSeatWithQrCode', () => {
         })
 
         it('should hide Qr Code', () => {
-          const { result } = renderUseSafeSeatWithQrCode({
+          const result = getSafeSeatWithQrCode({
             beginningDatetime: eventDay,
             qrCodeVisibilityHoursBeforeEvent,
             venue,
             subcategoryId,
             categoriesToHide: [subcategoryId],
+            enableHideTicket,
           })
 
-          expect(result.current.shouldQrCodeBeHidden).toBeTruthy()
+          expect(result.shouldQrCodeBeHidden).toBeTruthy()
         })
 
         it('should display the right day', () => {
-          const { result } = renderUseSafeSeatWithQrCode({
+          const result = getSafeSeatWithQrCode({
             beginningDatetime: eventDay,
             qrCodeVisibilityHoursBeforeEvent,
             venue,
             subcategoryId,
             categoriesToHide: [subcategoryId],
+            enableHideTicket,
           })
 
-          expect(result.current.day).toEqual('14 janvier 2024')
+          expect(result.day).toEqual('14 janvier 2024')
         })
 
         it('should display the right time', () => {
-          const { result } = renderUseSafeSeatWithQrCode({
+          const result = getSafeSeatWithQrCode({
             beginningDatetime: eventDay,
             qrCodeVisibilityHoursBeforeEvent,
             venue,
             subcategoryId,
             categoriesToHide: [subcategoryId],
+            enableHideTicket,
           })
 
-          expect(result.current.time).toEqual('02h00')
+          expect(result.time).toEqual('02h00')
         })
       })
 
@@ -110,33 +110,34 @@ describe('useSafeSeatWithQrCode', () => {
         })
 
         it('should display Qr Code', () => {
-          const { result } = renderUseSafeSeatWithQrCode({
+          const result = getSafeSeatWithQrCode({
             beginningDatetime: eventDay,
             qrCodeVisibilityHoursBeforeEvent,
             venue,
             subcategoryId,
             categoriesToHide: [subcategoryId],
+            enableHideTicket,
           })
 
-          expect(result.current.shouldQrCodeBeHidden).toBeFalsy()
+          expect(result.shouldQrCodeBeHidden).toBeFalsy()
         })
       })
     })
 
     describe('when FF enableHideTicket is off', () => {
-      setFeatureFlags()
       mockdate.set(beforeEventIsVisible)
 
       it('should not hide Qr Code', () => {
-        const { result } = renderUseSafeSeatWithQrCode({
+        const result = getSafeSeatWithQrCode({
           beginningDatetime: eventDay,
           qrCodeVisibilityHoursBeforeEvent,
           venue,
           subcategoryId,
           categoriesToHide: [subcategoryId],
+          enableHideTicket: false,
         })
 
-        expect(result.current.shouldQrCodeBeHidden).toBeFalsy()
+        expect(result.shouldQrCodeBeHidden).toBeFalsy()
       })
     })
   })
@@ -144,17 +145,15 @@ describe('useSafeSeatWithQrCode', () => {
   it('should work with default parameters', () => {
     const venue = { timezone: 'Europe/Paris' } as BookingVenueResponse
 
-    const { shouldQrCodeBeHidden, day } = useSafeSeatWithQrCode({
+    const { shouldQrCodeBeHidden, day } = getSafeSeatWithQrCode({
       subcategoryId: SubcategoryIdEnum.CONCERT,
       qrCodeVisibilityHoursBeforeEvent: 48,
       venue,
       beginningDatetime: undefined,
+      enableHideTicket: false,
     })
 
     expect(shouldQrCodeBeHidden).toBe(false)
     expect(day).toBeDefined()
   })
 })
-
-const renderUseSafeSeatWithQrCode = (...params: Parameters<typeof useSafeSeatWithQrCode>) =>
-  renderHook(() => useSafeSeatWithQrCode(...params))

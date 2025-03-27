@@ -1,8 +1,6 @@
 import { isBefore, subHours } from 'date-fns'
 
 import { BookingVenueResponse, SubcategoryIdEnum } from 'api/gen'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import {
   formatToCompleteFrenchDate,
   formatToHour,
@@ -15,17 +13,17 @@ type Parameters = {
   qrCodeVisibilityHoursBeforeEvent: number
   categoriesToHide?: SubcategoryIdEnum[]
   venue: BookingVenueResponse
+  enableHideTicket: boolean
 }
 
-export const useSafeSeatWithQrCode = ({
+export const getSafeSeatWithQrCode = ({
   beginningDatetime = new Date().toISOString(),
   qrCodeVisibilityHoursBeforeEvent,
   subcategoryId,
   venue,
   categoriesToHide = [],
+  enableHideTicket,
 }: Parameters) => {
-  const enableHideTicket = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_HIDE_TICKET)
-
   const now = new Date()
   const isAmongCategoriesToHide = categoriesToHide.includes(subcategoryId)
   const isBeforeHoursOffset = isBefore(
