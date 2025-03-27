@@ -139,6 +139,7 @@ exports[`Bookings should render correctly 1`] = `
         }
         accessible={false}
         focusable={true}
+        nativeID="En cours"
         onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
@@ -243,6 +244,7 @@ exports[`Bookings should render correctly 1`] = `
         }
         accessible={false}
         focusable={true}
+        nativeID="Terminées"
         onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
