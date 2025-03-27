@@ -1,6 +1,6 @@
 import { useRoute } from '@react-navigation/native'
 import React, { ReactNode, useEffect, useMemo } from 'react'
-import { Platform, View } from 'react-native'
+import { Platform } from 'react-native'
 import { ScrollView } from 'react-native-gesture-handler'
 import styled from 'styled-components/native'
 
@@ -90,7 +90,7 @@ export const ThematicSearch: React.FC = () => {
       offerCategories={offerCategories}
       placeholder={`${titles[offerCategory]}...`}
       title={titles[offerCategory]}>
-      <ScrollView>
+      <StyledScrollView>
         <SubcategoryButtonListWrapper offerCategory={offerCategory} />
         {shouldDisplayVenuesPlaylist ? (
           <VenuePlaylist
@@ -102,10 +102,13 @@ export const ThematicSearch: React.FC = () => {
             shouldDisplaySeparator={false}
           />
         ) : null}
-        <PlaylistContainer>{playlistsComponent[offerCategory]}</PlaylistContainer>
-      </ScrollView>
+        {playlistsComponent[offerCategory]}
+      </StyledScrollView>
     </ThematicSearchBar>
   )
 }
 
-const PlaylistContainer = styled(View)({ paddingTop: getSpacing(6) })
+const StyledScrollView = styled(ScrollView)({
+  marginBottom: getSpacing(6),
+  paddingBottom: getSpacing(6),
+})

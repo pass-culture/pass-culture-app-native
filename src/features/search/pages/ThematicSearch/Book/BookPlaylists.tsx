@@ -1,5 +1,4 @@
 import React from 'react'
-import styled from 'styled-components/native'
 
 import { GtlPlaylist } from 'features/gtlPlaylist/components/GtlPlaylist'
 import { useGTLPlaylists } from 'features/gtlPlaylist/hooks/useGTLPlaylists'
@@ -7,7 +6,6 @@ import { ThematicSearchSkeleton } from 'features/search/pages/ThematicSearch/The
 import { env } from 'libs/environment/env'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { getSpacing } from 'ui/theme'
 
 export const BookPlaylists: React.FC = () => {
   const isReplicaAlgoliaIndexActive = useFeatureFlag(
@@ -25,17 +23,16 @@ export const BookPlaylists: React.FC = () => {
   }
 
   return (
-    <GtlPlaylistContainer>
+    <React.Fragment>
       {bookGtlPlaylists.map((playlist) => (
         <GtlPlaylist
           key={playlist.entryId}
           playlist={playlist}
           analyticsFrom="thematicsearch"
           route="ThematicSearch"
+          noMarginBottom
         />
       ))}
-    </GtlPlaylistContainer>
+    </React.Fragment>
   )
 }
-
-const GtlPlaylistContainer = styled.View({ paddingBottom: getSpacing(6) })

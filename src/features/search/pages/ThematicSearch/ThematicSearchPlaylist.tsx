@@ -30,6 +30,7 @@ export function ThematicSearchPlaylist({
       renderItem={renderPassPlaylist}
       keyExtractor={(item: Hit<Offer>) => item.objectID}
       title={playlist.title}
+      noMarginBottom
     />
   )
 }

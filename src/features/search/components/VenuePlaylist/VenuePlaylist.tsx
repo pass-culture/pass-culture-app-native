@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/native'
 import React, { useEffect } from 'react'
-import { Platform, View } from 'react-native'
+import { Platform } from 'react-native'
 import styled from 'styled-components/native'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
@@ -105,7 +105,7 @@ export const VenuePlaylist: React.FC<Props> = ({
 
   return (
     <React.Fragment>
-      <View>
+      <Container>
         <Title>{venuePlaylistTitle}</Title>
         {shouldDisplaySeeOnMapButton ? (
           <ButtonContainer>
@@ -133,7 +133,7 @@ export const VenuePlaylist: React.FC<Props> = ({
           testID="search-venue-list"
           onEndReached={logAllTilesSeenOnce}
         />
-      </View>
+      </Container>
       {shouldDisplaySeparator ? <StyledSeparator testID="venue-playlist-separator" /> : null}
       <VenueMapLocationModal
         visible={venueMapLocationModalVisible}
@@ -158,4 +158,8 @@ const StyledSeparator = styled(Separator.Horizontal)({
 const ButtonContainer = styled.View({
   marginLeft: getSpacing(6),
   alignSelf: 'flex-start',
+})
+
+const Container = styled.View({
+  marginBottom: getSpacing(8),
 })
