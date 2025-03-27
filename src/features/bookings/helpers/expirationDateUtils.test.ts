@@ -7,6 +7,7 @@ import {
   displayExpirationMessage,
   formattedExpirationDate,
   getDigitalBookingsWithoutExpirationDate,
+  getEligibleBookingsForArchive,
   isBookingInList,
   isDigitalBookingWithoutExpirationDate,
   isFreeBookingInSubcategories,
@@ -14,6 +15,23 @@ import {
 
 describe('expirationDateUtils', () => {
   const initialBookings = bookingsSnap.ongoing_bookings
+
+  describe('getEligibleBookingsForArchive', () => {
+    it('should return an array with unique bookings when a booking appears in both categories', () => {
+      const freeBookingInSubcategorie: BookingsResponse['ongoing_bookings'][number] = {
+        ...bookingsSnap.ongoing_bookings[0],
+      }
+      freeBookingInSubcategorie.stock.offer.subcategoryId = SubcategoryIdEnum.CARTE_MUSEE
+      freeBookingInSubcategorie.totalAmount = 0
+      freeBookingInSubcategorie.id = 123
+
+      const digitalBookingsWithoutExpirationDate = initialBookings[0]
+
+      const bookings = [freeBookingInSubcategorie, digitalBookingsWithoutExpirationDate]
+
+      expect(getEligibleBookingsForArchive(bookings)).toHaveLength(1)
+    })
+  })
 
   describe('getDigitalBookingsWithoutExpirationDate', () => {
     it('should get an array with a booking if is digital and without expiration date', () => {
