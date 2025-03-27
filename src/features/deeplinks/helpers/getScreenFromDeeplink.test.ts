@@ -49,7 +49,7 @@ describe('getScreenFromDeeplink()', () => {
     const { screen, params } = getScreenFromDeeplink(url)
 
     expect(screen).toEqual('TabNavigator')
-    expect(params).toEqual({ screen: 'ProfileStackNavigator', params: undefined })
+    expect(params).toEqual({ screen: 'Profile', params: undefined })
   })
 
   it('should return SearchStackNavigator when url = /recherche/resultats', () => {

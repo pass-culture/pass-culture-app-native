@@ -171,9 +171,9 @@ describe('PersonalData', () => {
 
     fireEvent.press(await screen.findByTestId('Modifier la ville de résidence'))
 
-    expect(navigate).toHaveBeenCalledWith('TabNavigator', {
-      params: { params: undefined, screen: 'ChangeCity' },
-      screen: 'ProfileStackNavigator',
+    expect(navigate).toHaveBeenCalledWith('ProfileStackNavigator', {
+      params: undefined,
+      screen: 'ChangeCity',
     })
   })
 
