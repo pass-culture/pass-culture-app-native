@@ -8,11 +8,6 @@ import {
 export const profileRoutes: ProfileStackRoute[] = [
   ...accessibilityRoutes,
   {
-    name: 'Profile',
-    component: ComponentForPathConfig,
-    path: 'profil',
-  },
-  {
     name: 'NotificationsSettings',
     component: ComponentForPathConfig,
     path: 'profil/notifications',

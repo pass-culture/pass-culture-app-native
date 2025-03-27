@@ -8,9 +8,9 @@ export function getProfileNavConfig<Screen extends ProfileStackRouteName>(
   params?: ProfileStackParamList[Screen]
 ): {
   screen: 'ProfileStackNavigator'
-  params: {
+  params?: {
     screen: Screen
-    params: ProfileStackParamList[Screen]
+    params?: ProfileStackParamList[Screen]
   }
 } {
   return {

@@ -1,20 +1,10 @@
 import { LinkingOptions } from '@react-navigation/native'
 
-import { ProfileStackParamList } from 'features/navigation/ProfileStackNavigator/ProfileStack'
 import { ScreenNames } from 'features/navigation/RootNavigator/types'
 import { screenParamsParser } from 'features/navigation/screenParamsUtils'
 import { searchNavigatorPathConfig } from 'features/navigation/SearchStackNavigator/__mocks__/searchRoutes'
 
 import { TabParamList, TabRoute, TabRouteName } from '../types'
-
-const profileNavigatorPathConfig: LinkingOptions<ProfileStackParamList>['config'] = {
-  initialRouteName: 'Profile',
-  screens: {
-    Profile: {
-      path: 'profil',
-    },
-  },
-}
 
 export const tabNavigatorPathConfig: LinkingOptions<TabParamList>['config'] = {
   initialRouteName: 'Home',

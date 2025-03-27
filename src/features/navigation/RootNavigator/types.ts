@@ -69,12 +69,12 @@ export type ThematicHomeParams = BaseThematicHome &
   (OtherThematicBlockHome | CategoryBlockThematicHome | HighlightThematicBlockThematicHome)
 
 export type AccessibilityRootStackParamList = {
-  Accessibility: undefined
-  AccessibilityActionPlan: undefined
-  AccessibilityDeclarationMobile: undefined
-  AccessibilityDeclarationWeb: undefined
-  AccessibilityEngagement: undefined
-  RecommendedPaths: undefined
+  Accessibility?: Record<string, unknown> // I had to put type Record<string, unknown> so that getProfileStackConfig in DeeplinksGeneratorForm can take appAndMarketingParams, otherwise I would have just put undefined.
+  AccessibilityActionPlan?: undefined
+  AccessibilityDeclarationMobile?: undefined
+  AccessibilityDeclarationWeb?: undefined
+  AccessibilityEngagement?: undefined
+  RecommendedPaths?: undefined
 }
 
 export type CulturalSurveyRootStackParamList = {
@@ -244,6 +244,7 @@ export type RootStackParamList = {
   OfferPreview: { id: number; defaultIndex?: number }
   OnboardingSubscription: undefined
   PageNotFound: undefined
+  Profile: undefined
   ProfileStackNavigator?: {
     screen: ProfileStackRouteName
     params: ProfileStackParamList[ProfileStackRouteName]
@@ -348,7 +349,7 @@ export type GenericRoute<
   options?: { title?: string }
   secure?: boolean
 }
-export type RootRoute = GenericRoute<RootStackParamList, TabParamList>
+export type RootRoute = GenericRoute<RootStackParamList, TabParamList & ProfileStackParamList>
 
 // Typeguard for screen params
 export function isScreen<Screen extends AllNavigateParams[0]>(
