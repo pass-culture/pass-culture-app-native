@@ -168,7 +168,7 @@ describe('<OfferContent />', () => {
     unmount()
   })
 
-  it('should show preview modal when carousel is not ready and clicking on offer placeholder image', async () => {
+  it('should not show preview modal when clicking on offer placeholder image', async () => {
     const offer: OfferResponseV2 = {
       ...offerResponseSnap,
       images: null,
@@ -177,7 +177,7 @@ describe('<OfferContent />', () => {
 
     user.click(await screen.findByLabelText('Carousel image 1'))
 
-    await waitFor(() => expect(mockShowModal).toHaveBeenCalledTimes(1))
+    await waitFor(() => expect(mockShowModal).not.toHaveBeenCalled())
     unmount()
   })
 })
