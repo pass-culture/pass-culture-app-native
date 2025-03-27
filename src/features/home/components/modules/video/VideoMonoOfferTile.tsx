@@ -99,7 +99,7 @@ export const VideoMonoOfferTile: FunctionComponent<Props> = ({
       <AttachedOfferCard offer={offer} />
     </StyledInternalTouchableLink>
   ) : (
-    <OfferInsert {...containerProps}>
+    <OfferInsert {...containerProps} testID="videoMonoOfferTile">
       <Row>
         <OfferImageContainer>
           <OfferImage

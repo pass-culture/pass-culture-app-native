@@ -13,7 +13,7 @@ import { SeeMoreWithEye } from 'ui/components/SeeMoreWithEye'
 import { Separator } from 'ui/components/Separator'
 import { HorizontalOfferTile } from 'ui/components/tiles/HorizontalOfferTile'
 import { Play } from 'ui/svg/icons/Play'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 import { videoModuleColorsMapping } from 'ui/theme/videoModuleColorsMapping'
@@ -35,13 +35,23 @@ export const VideoModuleDesktop: FunctionComponent<VideoModuleProps> = (props) =
     ) : null
   }
 
+  function renderSoloOffer() {
+    return props.offers[0] ? (
+      <StyledVideoMonoOfferTile
+        offer={props.offers[0]}
+        color={props.color}
+        hideModal={props.hideVideoModal}
+        analyticsParams={props.analyticsParams}
+      />
+    ) : null
+  }
+
   return (
     <React.Fragment>
       <StyledTitleContainer>
         <AccessibleTitle testID="playlistTitle" title={props.title} />
         {renderTitleSeeMore()}
       </StyledTitleContainer>
-
       <View>
         <ColorCategoryBackgroundWrapper>
           <ColorCategoryBackground
@@ -68,7 +78,6 @@ export const VideoModuleDesktop: FunctionComponent<VideoModuleProps> = (props) =
             </Thumbnail>
           </StyledTouchableHighlight>
           <StyledView>
-            <Spacer.Row numberOfSpaces={4} />
             {props.isMultiOffer ? (
               <StyledMultiOfferList hasOnlyTwoOffers={hasOnlyTwoOffers}>
                 {props.offers.slice(0, 3).map((offer: Offer, index) => (
@@ -85,14 +94,7 @@ export const VideoModuleDesktop: FunctionComponent<VideoModuleProps> = (props) =
                 ))}
               </StyledMultiOfferList>
             ) : (
-              <StyledVideoMonoOfferTile
-                // @ts-expect-error: because of noUncheckedIndexedAccess
-                offer={props.offers[0]}
-                color={props.color}
-                hideModal={props.hideVideoModal}
-                analyticsParams={props.analyticsParams}
-                homeEntryId={props.homeEntryId}
-              />
+              renderSoloOffer()
             )}
           </StyledView>
         </VideoOfferContainer>
