@@ -40,14 +40,18 @@ export const NavItem: React.FC<NavItemInterface> = ({
 )
 
 const StyledIcon = styled(BicolorLogo).attrs<{ selected?: boolean }>(({ theme, selected }) => ({
-  color: selected ? undefined : theme.colors.greyDark,
+  color: selected
+    ? theme.designSystem.color.icon.brandPrimary
+    : theme.designSystem.color.icon.disabled,
   size: theme.icons.sizes.small,
   thin: !selected,
 }))<{ selected?: boolean }>``
 
 const StyledTouchableLink = styled(InternalTouchableLink).attrs<{ isSelected?: boolean }>(
   ({ theme, isSelected }) => ({
-    hoverUnderlineColor: isSelected ? theme.uniqueColors.brand : theme.colors.black,
+    hoverUnderlineColor: isSelected
+      ? theme.designSystem.color.text.brandPrimary
+      : theme.designSystem.color.text.default,
   })
 )<{ isSelected?: boolean }>(({ theme, isSelected }) => ({
   flexDirection: 'row',
@@ -56,11 +60,15 @@ const StyledTouchableLink = styled(InternalTouchableLink).attrs<{ isSelected?: b
   height: getSpacing(11),
   paddingHorizontal: getSpacing(4),
   borderWidth: 1,
-  borderColor: isSelected ? theme.uniqueColors.brand : theme.colors.transparent,
+  borderColor: isSelected
+    ? theme.designSystem.color.border.brandPrimary
+    : theme.designSystem.color.icon.inverted,
   borderRadius: theme.borderRadius.button * 2,
 }))
 
 const Title = styled(Typo.BodyAccent)<{ isSelected?: boolean }>(({ theme, isSelected }) => ({
   marginLeft: 12,
-  color: isSelected ? theme.uniqueColors.brand : theme.colors.black,
+  color: isSelected
+    ? theme.designSystem.color.text.brandPrimary
+    : theme.designSystem.color.text.default,
 }))
