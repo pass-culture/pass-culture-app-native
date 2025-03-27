@@ -20,6 +20,7 @@ export const cheatcodesNavigationProfileButtons: [CheatcodesButtonsWithSubscreen
       getProfileNavConfig('ChangeEmail'),
       getProfileNavConfig('ChangeStatus'),
       getProfileNavConfig('ConsentSettings'),
+      getProfileNavConfig('DeactivateProfileSuccess'),
       getProfileNavConfig('DeleteProfileReason'),
       getProfileNavConfig('FeedbackInApp'),
       getProfileNavConfig('NotificationsSettings'),
