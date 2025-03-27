@@ -3,11 +3,13 @@ import { Platform, View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { BookingVenueResponse, SubcategoryIdEnum } from 'api/gen'
-import { useSafeSeatWithQrCode } from 'features/bookings/components/TicketBody/SafeSeatWithQrCode/useSafeSeatWithQrCode'
+import { getSafeSeatWithQrCode } from 'features/bookings/components/TicketBody/SafeSeatWithQrCode/getSafeSeatWithQrCode'
 import {
   SeatWithQrCode,
   SeatWithQrCodeProps,
 } from 'features/bookings/components/TicketBody/SeatWithQrCode/SeatWithQrCode'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import genericQrCode from 'ui/images/generic-qr-code.png'
 import { BarCode } from 'ui/svg/icons/BarCode'
 import { Typo } from 'ui/theme'
@@ -28,12 +30,15 @@ export const SafeSeatWithQrCode: FC<SafeSeatWithQrCodeProps> = ({
   venue,
   ...seatWithQrCodeProps
 }) => {
-  const { day, time, shouldQrCodeBeHidden } = useSafeSeatWithQrCode({
+  const enableHideTicket = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_HIDE_TICKET)
+
+  const { day, time, shouldQrCodeBeHidden } = getSafeSeatWithQrCode({
     beginningDatetime,
     qrCodeVisibilityHoursBeforeEvent,
     subcategoryId,
     venue,
     categoriesToHide,
+    enableHideTicket,
   })
 
   if (!shouldQrCodeBeHidden) return <SeatWithQrCode {...seatWithQrCodeProps} />
