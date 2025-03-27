@@ -68,11 +68,7 @@ describe('<FeedbackInApp/>', () => {
 
       await waitFor(async () => {
         expect(navigate).toHaveBeenCalledWith('TabNavigator', {
-          params: {
-            params: undefined,
-            screen: 'Profile',
-          },
-          screen: 'ProfileStackNavigator',
+          screen: 'Profile',
         })
       })
     })

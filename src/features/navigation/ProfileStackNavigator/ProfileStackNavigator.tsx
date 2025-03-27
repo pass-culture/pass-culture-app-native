@@ -30,14 +30,14 @@ import { LegalNotices } from 'features/profile/pages/LegalNotices/LegalNotices'
 import { NewEmailSelection } from 'features/profile/pages/NewEmailSelection/NewEmailSelection'
 import { NotificationsSettings } from 'features/profile/pages/NotificationSettings/NotificationsSettings'
 import { PersonalData } from 'features/profile/pages/PersonalData/PersonalData'
-import { Profile } from 'features/profile/pages/Profile'
 import { SuspendAccountConfirmation } from 'features/profile/pages/SuspendAccountConfirmation/SuspendAccountConfirmation'
 import { TrackEmailChange } from 'features/profile/pages/TrackEmailChange/TrackEmailChange'
 import { ValidateEmailChange } from 'features/profile/pages/ValidateEmailChange/ValidateEmailChange'
 
 export const ProfileStackNavigator = () => (
-  <ProfileStack.Navigator initialRouteName="Profile" screenOptions={ROOT_NAVIGATOR_SCREEN_OPTIONS}>
-    <ProfileStack.Screen name="Profile" component={Profile} options={{ title: 'Mon profil' }} />
+  <ProfileStack.Navigator
+    initialRouteName="Accessibility"
+    screenOptions={ROOT_NAVIGATOR_SCREEN_OPTIONS}>
     <ProfileStack.Screen
       name="Accessibility"
       component={Accessibility}

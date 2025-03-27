@@ -8,5 +8,5 @@ export const menu: Record<TabRouteName, { displayName: string; accessibilityLabe
   SearchStackNavigator: { displayName: 'Recherche', accessibilityLabel: 'Rechercher des offres' },
   Bookings: { displayName: 'Réservations', accessibilityLabel: 'Mes réservations' },
   Favorites: { displayName: 'Favoris', accessibilityLabel: isWeb ? undefined : 'Mes favoris' },
-  ProfileStackNavigator: { displayName: 'Profil', accessibilityLabel: 'Mon profil' },
+  Profile: { displayName: 'Profil', accessibilityLabel: 'Mon profil' },
 }

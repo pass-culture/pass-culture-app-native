@@ -84,9 +84,9 @@ describe('<ConfirmChangeEmail />', () => {
 
     await act(async () => userEvent.press(screen.getByText('Confirmer la demande')))
 
-    expect(replace).toHaveBeenCalledWith('TabNavigator', {
-      params: { params: { token: 'token' }, screen: 'NewEmailSelection' },
-      screen: 'ProfileStackNavigator',
+    expect(replace).toHaveBeenCalledWith('ProfileStackNavigator', {
+      params: { token: 'token' },
+      screen: 'NewEmailSelection',
     })
   })
 
@@ -101,12 +101,9 @@ describe('<ConfirmChangeEmail />', () => {
 
     await act(async () => userEvent.press(screen.getByText('Confirmer la demande')))
 
-    expect(replace).toHaveBeenCalledWith('TabNavigator', {
-      params: {
-        params: { token: 'reset_password_token', emailSelectionToken: 'token' },
-        screen: 'ChangeEmailSetPassword',
-      },
-      screen: 'ProfileStackNavigator',
+    expect(replace).toHaveBeenCalledWith('ProfileStackNavigator', {
+      params: { token: 'reset_password_token', emailSelectionToken: 'token' },
+      screen: 'ChangeEmailSetPassword',
     })
   })
 

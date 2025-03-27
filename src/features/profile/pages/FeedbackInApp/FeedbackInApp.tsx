@@ -5,6 +5,8 @@ import styled from 'styled-components/native'
 
 import { contactSupport } from 'features/auth/helpers/contactSupport'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
+import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
+import { useGoBack } from 'features/navigation/useGoBack'
 import { useFeedback } from 'features/profile/api/useFeedback'
 import {
   FEEDBACK_IN_APP_VALUE_MAX_LENGTH,
@@ -40,9 +42,12 @@ export const FeedbackInApp = () => {
     sendFeedback({ feedback })
   }
 
+  const { goBack } = useGoBack(...getTabNavConfig('Profile'))
+
   return (
     <PageWithHeader
       title="Faire une suggestion"
+      onGoBack={goBack}
       scrollChildren={
         <React.Fragment>
           <TypoDS.Title3 {...getHeadingAttrs(1)}>

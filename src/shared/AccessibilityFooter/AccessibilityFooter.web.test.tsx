@@ -35,9 +35,9 @@ describe('AccessibilityFooter', () => {
 
     fireEvent.click(passCultureButton)
 
-    expect(navigate).toHaveBeenCalledWith('TabNavigator', {
-      params: { params: undefined, screen: 'Accessibility' },
-      screen: 'ProfileStackNavigator',
+    expect(navigate).toHaveBeenCalledWith('ProfileStackNavigator', {
+      params: undefined,
+      screen: 'Accessibility',
     })
   })
 
@@ -47,9 +47,9 @@ describe('AccessibilityFooter', () => {
 
     fireEvent.click(passCultureButton)
 
-    expect(navigate).toHaveBeenCalledWith('TabNavigator', {
-      params: { params: undefined, screen: 'LegalNotices' },
-      screen: 'ProfileStackNavigator',
+    expect(navigate).toHaveBeenCalledWith('ProfileStackNavigator', {
+      params: undefined,
+      screen: 'LegalNotices',
     })
   })
 })

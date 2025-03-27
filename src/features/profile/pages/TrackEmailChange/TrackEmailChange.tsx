@@ -2,7 +2,7 @@ import React from 'react'
 import { Platform, ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
-import { getProfileStackConfig } from 'features/navigation/ProfileStackNavigator/getProfileStackConfig'
+import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { TrackEmailChangeContent } from 'features/profile/pages/TrackEmailChange/TrackEmailChangeContent'
 import { BackButton } from 'ui/components/headers/BackButton'
@@ -13,7 +13,7 @@ const HEADER_HEIGHT = getSpacing(8)
 
 export function TrackEmailChange() {
   const { top } = useCustomSafeInsets()
-  const { goBack } = useGoBack(...getProfileStackConfig('Profile'))
+  const { goBack } = useGoBack(...getTabNavConfig('Profile'))
 
   return (
     <StyledScrollViewContainer>

@@ -29,7 +29,7 @@ export function mapTabRouteToBicolorIcon({
       return BicolorBookingsIcon
     case 'Favorites':
       return BicolorFavorite
-    case 'ProfileStackNavigator':
+    case 'Profile':
       return BicolorTabBarProfile
     default:
       return BicolorLogo

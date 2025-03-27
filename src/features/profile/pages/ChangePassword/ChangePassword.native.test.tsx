@@ -123,13 +123,7 @@ describe('ChangePassword', () => {
       message: 'Ton mot de passe est modifié',
       timeout: SNACK_BAR_TIME_OUT,
     })
-    expect(navigate).toHaveBeenCalledWith('TabNavigator', {
-      params: {
-        params: undefined,
-        screen: 'Profile',
-      },
-      screen: 'ProfileStackNavigator',
-    })
+    expect(navigate).toHaveBeenCalledWith('TabNavigator', { screen: 'Profile' })
     expect(analytics.logHasChangedPassword).toHaveBeenCalledWith({
       from: 'personaldata',
       reason: 'changePassword',

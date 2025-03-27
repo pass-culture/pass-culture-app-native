@@ -29,13 +29,7 @@ describe('DeleteProfileAccountHacked', () => {
 
     await user.press(button)
 
-    expect(navigate).toHaveBeenCalledWith('TabNavigator', {
-      params: {
-        params: undefined,
-        screen: 'Profile',
-      },
-      screen: 'ProfileStackNavigator',
-    })
+    expect(navigate).toHaveBeenCalledWith('TabNavigator', { params: undefined, screen: 'Profile' })
   })
 
   it('should navigate to confirm delete profile on press Susprendre mon compte', async () => {
@@ -44,12 +38,9 @@ describe('DeleteProfileAccountHacked', () => {
 
     await user.press(button)
 
-    expect(navigate).toHaveBeenCalledWith('TabNavigator', {
-      params: {
-        params: undefined,
-        screen: 'SuspendAccountConfirmationWithoutAuthentication',
-      },
-      screen: 'ProfileStackNavigator',
+    expect(navigate).toHaveBeenCalledWith('ProfileStackNavigator', {
+      params: undefined,
+      screen: 'SuspendAccountConfirmationWithoutAuthentication',
     })
   })
 })

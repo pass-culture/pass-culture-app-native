@@ -109,12 +109,9 @@ describe('Header', () => {
   it('should identify one tab as current page', () => {
     renderHeader({ isLoggedIn: true, isBeneficiary: true })
 
-    const tabs = [
-      'SearchStackNavigator tab',
-      'Bookings tab',
-      'Favorites tab',
-      'ProfileStackNavigator tab',
-    ].map((tabId) => screen.getByTestId(tabId))
+    const tabs = ['SearchStackNavigator tab', 'Bookings tab', 'Favorites tab', 'Profile tab'].map(
+      (tabId) => screen.getByTestId(tabId)
+    )
 
     expect(screen.getByTestId('Home tab').getAttribute('aria-current')).toEqual('page')
 

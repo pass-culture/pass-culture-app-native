@@ -3,6 +3,7 @@ import React, { FC } from 'react'
 
 import { getProfileStackConfig } from 'features/navigation/ProfileStackNavigator/getProfileStackConfig'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
 import { Clear } from 'ui/svg/icons/Clear'
@@ -12,7 +13,7 @@ import { TypoDS } from 'ui/theme'
 export const DeleteProfileEmailHacked: FC = () => {
   const { navigate } = useNavigation<UseNavigationType>()
 
-  const navigateToProfile = () => navigate(...getProfileStackConfig('Profile'))
+  const navigateToProfile = () => navigate(...getTabNavConfig('Profile'))
 
   const navigateToChangeEmail = () => navigate(...getProfileStackConfig('ChangeEmail'))
 

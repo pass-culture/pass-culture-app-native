@@ -161,13 +161,7 @@ describe('<ConsentSettings/>', () => {
       message: 'Ton choix a bien été enregistré.',
       timeout: SNACK_BAR_TIME_OUT,
     })
-    expect(mockNavigate).toHaveBeenCalledWith('TabNavigator', {
-      params: {
-        params: undefined,
-        screen: 'Profile',
-      },
-      screen: 'ProfileStackNavigator',
-    })
+    expect(mockNavigate).toHaveBeenCalledWith('TabNavigator', { screen: 'Profile' })
   })
 })
 

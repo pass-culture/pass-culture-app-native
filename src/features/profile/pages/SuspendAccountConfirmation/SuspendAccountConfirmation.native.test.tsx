@@ -123,9 +123,9 @@ describe('<SuspendAccountConfirmation />', () => {
     fireEvent.press(screen.getByText('Oui, suspendre mon compte'))
 
     await waitFor(() => {
-      expect(navigation.navigate).toHaveBeenNthCalledWith(1, 'TabNavigator', {
-        params: { params: undefined, screen: 'TrackEmailChange' },
-        screen: 'ProfileStackNavigator',
+      expect(navigation.navigate).toHaveBeenNthCalledWith(1, 'ProfileStackNavigator', {
+        params: undefined,
+        screen: 'TrackEmailChange',
       })
     })
   })

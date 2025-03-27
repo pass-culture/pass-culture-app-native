@@ -10,6 +10,6 @@ import { getScreensAndConfig } from 'features/navigation/RootNavigator/linking/g
 const { screensConfig } = getScreensAndConfig(profileRoutes, ProfileStack.Screen)
 
 export const profileNavigatorPathConfig: LinkingOptions<ProfileStackParamList>['config'] = {
-  initialRouteName: 'Profile',
+  initialRouteName: 'Accessibility',
   screens: screensConfig,
 }

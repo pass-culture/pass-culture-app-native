@@ -6,7 +6,7 @@ import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { getProfileNavConfig } from 'features/navigation/ProfileStackNavigator/getProfileNavConfig'
-import { getProfileStackConfig } from 'features/navigation/ProfileStackNavigator/getProfileStackConfig'
+import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { useOnViewableItemsChanged } from 'features/subscription/helpers/useOnViewableItemsChanged'
 import { analytics } from 'libs/analytics/provider'
@@ -92,7 +92,7 @@ export function DeleteProfileReason() {
   const canDeleteProfile = !user?.isBeneficiary || userIsDefinedAndAbove21
   const reasons = reasonButtons(!!canDeleteProfile)
   const { onViewableItemsChanged } = useOnViewableItemsChanged(gradientRef, reasons)
-  const { goBack } = useGoBack(...getProfileStackConfig('Profile'))
+  const { goBack } = useGoBack(...getTabNavConfig('Profile'))
 
   return (
     <React.Fragment>
