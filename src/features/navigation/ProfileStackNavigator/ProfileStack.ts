@@ -7,32 +7,32 @@ import {
 
 export type ProfileStackParamList = {
   NotificationsSettings?: Record<string, unknown> // I had to put type Record<string, unknown> so that getProfileStackConfig in DeeplinksGeneratorForm can take appAndMarketingParams, otherwise I would have just put undefined.
-  DeleteProfileAccountHacked?: undefined
-  DeleteProfileAccountNotDeletable?: undefined
-  DeleteProfileConfirmation?: undefined
-  DeleteProfileContactSupport?: undefined
-  DeleteProfileEmailHacked?: undefined
-  DeleteProfileReason?: undefined
-  DeleteProfileSuccess?: undefined
-  ConfirmDeleteProfile?: undefined
-  DeactivateProfileSuccess?: undefined
-  SuspendAccountConfirmationWithoutAuthentication?: undefined
-  ChangeStatus?: undefined
-  ChangeCity?: undefined
-  ChangeEmail?: { showModal?: boolean } | undefined
-  TrackEmailChange?: undefined
-  LegalNotices?: undefined
-  PersonalData?: undefined
-  ValidateEmailChange?: { token?: string } | undefined
-  ChangePassword?: undefined
-  SuspendAccountConfirmation?: { token?: string } | undefined
-  FeedbackInApp?: undefined
-  ConsentSettings?: { onGoBack?: () => void } | undefined
-  ConfirmChangeEmail?: { token: string; expiration_timestamp?: number } | undefined
-  ChangeEmailSetPassword?:
-    | { token?: string | null | undefined; emailSelectionToken?: string | null | undefined }
+  DeleteProfileAccountHacked: undefined
+  DeleteProfileAccountNotDeletable: undefined
+  DeleteProfileConfirmation: undefined
+  DeleteProfileContactSupport: undefined
+  DeleteProfileEmailHacked: undefined
+  DeleteProfileReason: undefined
+  DeleteProfileSuccess: undefined
+  ConfirmDeleteProfile: undefined
+  DeactivateProfileSuccess: undefined
+  SuspendAccountConfirmationWithoutAuthentication: undefined
+  ChangeStatus: undefined
+  ChangeCity: undefined
+  ChangeEmail: { showModal: boolean } | undefined
+  TrackEmailChange: undefined
+  LegalNotices: undefined
+  PersonalData: undefined
+  ValidateEmailChange: { token: string } | undefined
+  ChangePassword: undefined
+  SuspendAccountConfirmation: { token: string } | undefined
+  FeedbackInApp: undefined
+  ConsentSettings: { onGoBack?: () => void } | undefined
+  ConfirmChangeEmail: { token: string; expiration_timestamp: number } | undefined
+  ChangeEmailSetPassword:
+    | { token: string | null | undefined; emailSelectionToken: string | null | undefined }
     | undefined
-  NewEmailSelection?: { token: string | null | undefined } | undefined
+  NewEmailSelection: { token: string | null | undefined } | undefined
 } & AccessibilityRootStackParamList
 
 export type ProfileStackRouteName = keyof ProfileStackParamList
