@@ -4,6 +4,7 @@ import styled from 'styled-components/native'
 
 import { getProfileStackConfig } from 'features/navigation/ProfileStackNavigator/getProfileStackConfig'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { env } from 'libs/environment/env'
 import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonInsideText'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
@@ -18,7 +19,7 @@ import { SPACE } from 'ui/theme/constants'
 export const DeleteProfileAccountNotDeletable: FC = () => {
   const { navigate } = useNavigation<UseNavigationType>()
 
-  const navigateToProfile = () => navigate(...getProfileStackConfig('Profile'))
+  const navigateToProfile = () => navigate(...getTabNavConfig('Profile'))
   const navigateToNotifications = () => navigate(...getProfileStackConfig('NotificationsSettings'))
 
   return (

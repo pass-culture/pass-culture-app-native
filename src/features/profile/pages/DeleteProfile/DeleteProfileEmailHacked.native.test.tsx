@@ -29,13 +29,7 @@ describe('DeleteProfileEmailHacked', () => {
 
     await user.press(button)
 
-    expect(navigate).toHaveBeenCalledWith('TabNavigator', {
-      params: {
-        params: undefined,
-        screen: 'Profile',
-      },
-      screen: 'ProfileStackNavigator',
-    })
+    expect(navigate).toHaveBeenCalledWith('TabNavigator', { params: undefined, screen: 'Profile' })
   })
 
   it('should navigate to change email on press Modifier mon adresse e-mail', async () => {

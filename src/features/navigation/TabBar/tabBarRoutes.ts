@@ -4,12 +4,11 @@ import { Bookings } from 'features/bookings/pages/Bookings/Bookings'
 import { withAsyncErrorBoundary } from 'features/errors/hocs/withAsyncErrorBoundary'
 import { Favorites } from 'features/favorites/pages/Favorites'
 import { Home as HomeComponent } from 'features/home/pages/Home'
-import { profileNavigatorPathConfig } from 'features/navigation/ProfileStackNavigator/profileNavigatorPathConfig'
-import { SuspenseProfileStackNavigator } from 'features/navigation/ProfileStackNavigator/SuspenseProfileStackNavigator'
 import { getScreensAndConfig } from 'features/navigation/RootNavigator/linking/getScreensConfig'
 import { screenParamsParser } from 'features/navigation/screenParamsUtils'
 import { searchNavigatorPathConfig } from 'features/navigation/SearchStackNavigator/searchRoutes'
 import { SuspenseSearchStackNavigator } from 'features/navigation/SearchStackNavigator/SuspenseSearchStackNavigator'
+import { Profile } from 'features/profile/pages/Profile'
 
 import { TabStack } from './Stack'
 import { TabParamList, TabRoute, TabRouteName } from './types'
@@ -45,9 +44,10 @@ const tabBarRoutes: TabRoute[] = [
     options: { title: 'Mes favoris' },
   },
   {
-    name: 'ProfileStackNavigator',
-    component: SuspenseProfileStackNavigator,
-    pathConfig: profileNavigatorPathConfig,
+    name: 'Profile',
+    component: Profile,
+    path: 'profil',
+    options: { title: 'Mon profil' },
   },
 ]
 

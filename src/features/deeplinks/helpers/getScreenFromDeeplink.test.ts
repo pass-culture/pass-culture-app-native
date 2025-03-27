@@ -1,8 +1,7 @@
 import { getScreenFromDeeplink } from 'features/deeplinks/helpers'
-import { getProfileStackConfig } from 'features/navigation/ProfileStackNavigator/getProfileStackConfig'
 import { getScreenPath } from 'features/navigation/RootNavigator/linking/getScreenPath'
 import { getSearchStackConfig } from 'features/navigation/SearchStackNavigator/searchStackHelpers'
-import { homeNavConfig } from 'features/navigation/TabBar/helpers'
+import { getTabNavConfig, homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { WEBAPP_V2_URL } from 'libs/environment/useWebAppUrl'
 
 jest.mock('libs/firebase/analytics/analytics')
@@ -46,7 +45,7 @@ describe('getScreenFromDeeplink()', () => {
   })
 
   it('should return ProfileStackNavigator when url = /profil', () => {
-    const url = getFullUrl(getScreenPath(...getProfileStackConfig('Profile')))
+    const url = getFullUrl(getScreenPath(...getTabNavConfig('Profile')))
     const { screen, params } = getScreenFromDeeplink(url)
 
     expect(screen).toEqual('TabNavigator')
