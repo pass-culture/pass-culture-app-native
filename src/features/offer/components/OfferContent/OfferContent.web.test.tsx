@@ -14,7 +14,7 @@ import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { mockAuthContextWithoutUser } from 'tests/AuthContextUtils'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render, screen, waitFor, userEvent } from 'tests/utils/web'
+import { render, screen, userEvent, waitFor } from 'tests/utils/web'
 import * as useModalAPI from 'ui/components/modals/useModal'
 
 import { OfferContent } from './OfferContent.web'
@@ -177,7 +177,8 @@ describe('<OfferContent />', () => {
 
     user.click(await screen.findByLabelText('Carousel image 1'))
 
-    await waitFor(() => expect(mockShowModal).not.toHaveBeenCalled())
+    expect(mockShowModal).not.toHaveBeenCalled()
+
     unmount()
   })
 })
