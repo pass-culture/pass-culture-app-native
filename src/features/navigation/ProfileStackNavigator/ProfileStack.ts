@@ -6,7 +6,7 @@ import {
 } from 'features/navigation/RootNavigator/types'
 
 export type ProfileStackParamList = {
-  NotificationsSettings?: Record<string, unknown> // I had to put type Record<string, unknown> so that getProfileStackConfig in DeeplinksGeneratorForm can take appAndMarketingParams, otherwise I would have just put undefined.
+  NotificationsSettings: undefined
   DeleteProfileAccountHacked: undefined
   DeleteProfileAccountNotDeletable: undefined
   DeleteProfileConfirmation: undefined
