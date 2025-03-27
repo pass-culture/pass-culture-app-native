@@ -3,7 +3,7 @@ import React from 'react'
 import { Platform } from 'react-native'
 
 import { BookingDetailsContent } from 'features/bookings/components/BookingDetailsContent'
-import { OldBookingDetailsContent } from 'features/bookings/components/OldBookingDetailsContent'
+import { BookingDetailsContent as OldBookingDetailsContent } from 'features/bookings/components/OldBookingDetails/BookingDetailsContent'
 import { getBookingProperties } from 'features/bookings/helpers'
 import { BookingNotFound } from 'features/bookings/pages/BookingNotFound/BookingNotFound'
 import { useOngoingOrEndedBookingQuery } from 'features/bookings/queries'

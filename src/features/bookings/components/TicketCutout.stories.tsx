@@ -3,7 +3,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { SubcategoryIdEnum, WithdrawalTypeEnum } from 'api/gen'
-import { TicketBody as OldTicketBody } from 'features/bookings/components/OldTicketBody/TicketBody'
+import { TicketBody as OldTicketBody } from 'features/bookings/components/OldBookingDetails/TicketBody'
 import { TicketBody } from 'features/bookings/components/TicketBody/TicketBody'
 import { TicketCutout } from 'features/bookings/components/TicketCutout'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
