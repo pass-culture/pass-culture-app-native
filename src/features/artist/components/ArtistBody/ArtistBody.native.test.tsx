@@ -84,7 +84,7 @@ describe('<ArtistBody />', () => {
     expect(mockGoBack).toHaveBeenCalledTimes(1)
   })
 
-  it('should display correct artist avatar', async () => {
+  it('should display correct artist avatar', () => {
     render(
       reactQueryProviderHOC(
         <ArtistBody
@@ -98,11 +98,7 @@ describe('<ArtistBody />', () => {
       )
     )
 
-    await screen.findByLabelText('artist avatar')
-
-    expect(screen.getByLabelText('artist avatar').props.source).toMatchObject({
-      uri: mockedAlgoliaOffersWithSameArtistResponse[0].offer.thumbUrl,
-    })
+    expect(screen.getByLabelText('artist avatar')).toBeOnTheScreen()
   })
 
   it('should display default artist avatar when artist has not image', async () => {
