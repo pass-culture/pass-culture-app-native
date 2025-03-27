@@ -634,6 +634,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                   accessible={false}
                   collapsable={false}
                   focusable={true}
+                  nativeID="Offres disponibles"
                   onClick={[Function]}
                   onResponderGrant={[Function]}
                   onResponderMove={[Function]}
@@ -731,6 +732,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                   accessible={false}
                   collapsable={false}
                   focusable={true}
+                  nativeID="Infos pratiques"
                   onClick={[Function]}
                   onResponderGrant={[Function]}
                   onResponderMove={[Function]}
@@ -1211,11 +1213,6 @@ exports[`<Venue /> should match snapshot 1`] = `
                                     <FastImageView
                                       defaultSource={null}
                                       resizeMode="cover"
-                                      source={
-                                        {
-                                          "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
-                                        }
-                                      }
                                       style={
                                         {
                                           "bottom": 0,
@@ -1478,11 +1475,6 @@ exports[`<Venue /> should match snapshot 1`] = `
                                     <FastImageView
                                       defaultSource={null}
                                       resizeMode="cover"
-                                      source={
-                                        {
-                                          "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
-                                        }
-                                      }
                                       style={
                                         {
                                           "bottom": 0,
@@ -1745,11 +1737,6 @@ exports[`<Venue /> should match snapshot 1`] = `
                                     <FastImageView
                                       defaultSource={null}
                                       resizeMode="cover"
-                                      source={
-                                        {
-                                          "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMA",
-                                        }
-                                      }
                                       style={
                                         {
                                           "bottom": 0,
@@ -2649,96 +2636,6 @@ exports[`<Venue /> should match snapshot 1`] = `
                 </View>
               </View>
             </View>
-            <Modal
-              accessibilityLabelledBy="testUuidV4"
-              accessibilityModal={true}
-              animationType="none"
-              deviceHeight={1334}
-              deviceWidth={750}
-              hardwareAccelerated={false}
-              hideModalContentWhileAnimating={false}
-              onBackdropPress={[Function]}
-              onModalHide={[Function]}
-              onModalWillHide={[Function]}
-              onModalWillShow={[Function]}
-              onRequestClose={[Function]}
-              panResponderThreshold={4}
-              scrollHorizontal={false}
-              scrollOffset={0}
-              scrollOffsetMax={0}
-              scrollTo={null}
-              statusBarTranslucent={true}
-              supportedOrientations={
-                [
-                  "portrait",
-                  "landscape",
-                ]
-              }
-              swipeThreshold={100}
-              testID="modal"
-              transparent={true}
-              visible={false}
-            />
-            <Modal
-              accessibilityLabelledBy="testUuidV4"
-              accessibilityModal={true}
-              animationType="none"
-              deviceHeight={1334}
-              deviceWidth={750}
-              hardwareAccelerated={false}
-              hideModalContentWhileAnimating={false}
-              onBackdropPress={[Function]}
-              onModalHide={[Function]}
-              onModalWillHide={[Function]}
-              onModalWillShow={[Function]}
-              onRequestClose={[Function]}
-              panResponderThreshold={4}
-              scrollHorizontal={false}
-              scrollOffset={0}
-              scrollOffsetMax={0}
-              scrollTo={null}
-              statusBarTranslucent={true}
-              supportedOrientations={
-                [
-                  "portrait",
-                  "landscape",
-                ]
-              }
-              swipeThreshold={100}
-              testID="modal"
-              transparent={true}
-              visible={false}
-            />
-            <Modal
-              accessibilityLabelledBy="testUuidV4"
-              accessibilityModal={true}
-              animationType="none"
-              deviceHeight={1334}
-              deviceWidth={750}
-              hardwareAccelerated={false}
-              hideModalContentWhileAnimating={false}
-              onBackdropPress={[Function]}
-              onModalHide={[Function]}
-              onModalWillHide={[Function]}
-              onModalWillShow={[Function]}
-              onRequestClose={[Function]}
-              panResponderThreshold={4}
-              scrollHorizontal={false}
-              scrollOffset={0}
-              scrollOffsetMax={0}
-              scrollTo={null}
-              statusBarTranslucent={true}
-              supportedOrientations={
-                [
-                  "portrait",
-                  "landscape",
-                ]
-              }
-              swipeThreshold={100}
-              testID="modal"
-              transparent={true}
-              visible={false}
-            />
           </View>
           <View
             gap={6}
@@ -4499,6 +4396,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                   accessible={false}
                   collapsable={false}
                   focusable={true}
+                  nativeID="Offres disponibles"
                   onClick={[Function]}
                   onResponderGrant={[Function]}
                   onResponderMove={[Function]}
@@ -4596,6 +4494,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                   accessible={false}
                   collapsable={false}
                   focusable={true}
+                  nativeID="Infos pratiques"
                   onClick={[Function]}
                   onResponderGrant={[Function]}
                   onResponderMove={[Function]}
@@ -4782,11 +4681,6 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                       <FastImageView
                         defaultSource={null}
                         resizeMode="cover"
-                        source={
-                          {
-                            "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
-                          }
-                        }
                         style={
                           {
                             "bottom": 0,
@@ -4920,11 +4814,6 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                 defaultSource={null}
                                 resizeMode="cover"
                                 size="small"
-                                source={
-                                  {
-                                    "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
-                                  }
-                                }
                                 style={
                                   {
                                     "bottom": 0,
@@ -5412,11 +5301,6 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                     <FastImageView
                                       defaultSource={null}
                                       resizeMode="cover"
-                                      source={
-                                        {
-                                          "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
-                                        }
-                                      }
                                       style={
                                         {
                                           "bottom": 0,
@@ -5679,11 +5563,6 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                     <FastImageView
                                       defaultSource={null}
                                       resizeMode="cover"
-                                      source={
-                                        {
-                                          "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
-                                        }
-                                      }
                                       style={
                                         {
                                           "bottom": 0,
@@ -5946,11 +5825,6 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                     <FastImageView
                                       defaultSource={null}
                                       resizeMode="cover"
-                                      source={
-                                        {
-                                          "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMA",
-                                        }
-                                      }
                                       style={
                                         {
                                           "bottom": 0,
@@ -6850,96 +6724,6 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                 </View>
               </View>
             </View>
-            <Modal
-              accessibilityLabelledBy="testUuidV4"
-              accessibilityModal={true}
-              animationType="none"
-              deviceHeight={1334}
-              deviceWidth={750}
-              hardwareAccelerated={false}
-              hideModalContentWhileAnimating={false}
-              onBackdropPress={[Function]}
-              onModalHide={[Function]}
-              onModalWillHide={[Function]}
-              onModalWillShow={[Function]}
-              onRequestClose={[Function]}
-              panResponderThreshold={4}
-              scrollHorizontal={false}
-              scrollOffset={0}
-              scrollOffsetMax={0}
-              scrollTo={null}
-              statusBarTranslucent={true}
-              supportedOrientations={
-                [
-                  "portrait",
-                  "landscape",
-                ]
-              }
-              swipeThreshold={100}
-              testID="modal"
-              transparent={true}
-              visible={false}
-            />
-            <Modal
-              accessibilityLabelledBy="testUuidV4"
-              accessibilityModal={true}
-              animationType="none"
-              deviceHeight={1334}
-              deviceWidth={750}
-              hardwareAccelerated={false}
-              hideModalContentWhileAnimating={false}
-              onBackdropPress={[Function]}
-              onModalHide={[Function]}
-              onModalWillHide={[Function]}
-              onModalWillShow={[Function]}
-              onRequestClose={[Function]}
-              panResponderThreshold={4}
-              scrollHorizontal={false}
-              scrollOffset={0}
-              scrollOffsetMax={0}
-              scrollTo={null}
-              statusBarTranslucent={true}
-              supportedOrientations={
-                [
-                  "portrait",
-                  "landscape",
-                ]
-              }
-              swipeThreshold={100}
-              testID="modal"
-              transparent={true}
-              visible={false}
-            />
-            <Modal
-              accessibilityLabelledBy="testUuidV4"
-              accessibilityModal={true}
-              animationType="none"
-              deviceHeight={1334}
-              deviceWidth={750}
-              hardwareAccelerated={false}
-              hideModalContentWhileAnimating={false}
-              onBackdropPress={[Function]}
-              onModalHide={[Function]}
-              onModalWillHide={[Function]}
-              onModalWillShow={[Function]}
-              onRequestClose={[Function]}
-              panResponderThreshold={4}
-              scrollHorizontal={false}
-              scrollOffset={0}
-              scrollOffsetMax={0}
-              scrollTo={null}
-              statusBarTranslucent={true}
-              supportedOrientations={
-                [
-                  "portrait",
-                  "landscape",
-                ]
-              }
-              swipeThreshold={100}
-              testID="modal"
-              transparent={true}
-              visible={false}
-            />
           </View>
           <View
             gap={6}
@@ -8700,6 +8484,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                   accessible={false}
                   collapsable={false}
                   focusable={true}
+                  nativeID="Offres disponibles"
                   onClick={[Function]}
                   onResponderGrant={[Function]}
                   onResponderMove={[Function]}
@@ -8797,6 +8582,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                   accessible={false}
                   collapsable={false}
                   focusable={true}
+                  nativeID="Infos pratiques"
                   onClick={[Function]}
                   onResponderGrant={[Function]}
                   onResponderMove={[Function]}
@@ -10470,96 +10256,6 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                 </View>
               </View>
             </View>
-            <Modal
-              accessibilityLabelledBy="testUuidV4"
-              accessibilityModal={true}
-              animationType="none"
-              deviceHeight={1334}
-              deviceWidth={750}
-              hardwareAccelerated={false}
-              hideModalContentWhileAnimating={false}
-              onBackdropPress={[Function]}
-              onModalHide={[Function]}
-              onModalWillHide={[Function]}
-              onModalWillShow={[Function]}
-              onRequestClose={[Function]}
-              panResponderThreshold={4}
-              scrollHorizontal={false}
-              scrollOffset={0}
-              scrollOffsetMax={0}
-              scrollTo={null}
-              statusBarTranslucent={true}
-              supportedOrientations={
-                [
-                  "portrait",
-                  "landscape",
-                ]
-              }
-              swipeThreshold={100}
-              testID="modal"
-              transparent={true}
-              visible={false}
-            />
-            <Modal
-              accessibilityLabelledBy="testUuidV4"
-              accessibilityModal={true}
-              animationType="none"
-              deviceHeight={1334}
-              deviceWidth={750}
-              hardwareAccelerated={false}
-              hideModalContentWhileAnimating={false}
-              onBackdropPress={[Function]}
-              onModalHide={[Function]}
-              onModalWillHide={[Function]}
-              onModalWillShow={[Function]}
-              onRequestClose={[Function]}
-              panResponderThreshold={4}
-              scrollHorizontal={false}
-              scrollOffset={0}
-              scrollOffsetMax={0}
-              scrollTo={null}
-              statusBarTranslucent={true}
-              supportedOrientations={
-                [
-                  "portrait",
-                  "landscape",
-                ]
-              }
-              swipeThreshold={100}
-              testID="modal"
-              transparent={true}
-              visible={false}
-            />
-            <Modal
-              accessibilityLabelledBy="testUuidV4"
-              accessibilityModal={true}
-              animationType="none"
-              deviceHeight={1334}
-              deviceWidth={750}
-              hardwareAccelerated={false}
-              hideModalContentWhileAnimating={false}
-              onBackdropPress={[Function]}
-              onModalHide={[Function]}
-              onModalWillHide={[Function]}
-              onModalWillShow={[Function]}
-              onRequestClose={[Function]}
-              panResponderThreshold={4}
-              scrollHorizontal={false}
-              scrollOffset={0}
-              scrollOffsetMax={0}
-              scrollTo={null}
-              statusBarTranslucent={true}
-              supportedOrientations={
-                [
-                  "portrait",
-                  "landscape",
-                ]
-              }
-              swipeThreshold={100}
-              testID="modal"
-              transparent={true}
-              visible={false}
-            />
           </View>
           <View
             gap={6}

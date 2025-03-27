@@ -510,36 +510,6 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
                           }
                         />
                       </View>
-                      <Modal
-                        accessibilityLabelledBy="testUuidV4"
-                        accessibilityModal={true}
-                        animationType="none"
-                        deviceHeight={1334}
-                        deviceWidth={750}
-                        hardwareAccelerated={false}
-                        hideModalContentWhileAnimating={false}
-                        onBackdropPress={[Function]}
-                        onModalHide={[Function]}
-                        onModalWillHide={[Function]}
-                        onModalWillShow={[Function]}
-                        onRequestClose={[Function]}
-                        panResponderThreshold={4}
-                        scrollHorizontal={false}
-                        scrollOffset={0}
-                        scrollOffsetMax={0}
-                        scrollTo={null}
-                        statusBarTranslucent={true}
-                        supportedOrientations={
-                          [
-                            "portrait",
-                            "landscape",
-                          ]
-                        }
-                        swipeThreshold={100}
-                        testID="modal"
-                        transparent={true}
-                        visible={false}
-                      />
                       <View
                         numberOfSpaces={2}
                         style={
@@ -600,36 +570,6 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
                       },
                     ]
                   }
-                />
-                <Modal
-                  accessibilityLabelledBy="testUuidV4"
-                  accessibilityModal={true}
-                  animationType="none"
-                  deviceHeight={1334}
-                  deviceWidth={750}
-                  hardwareAccelerated={false}
-                  hideModalContentWhileAnimating={false}
-                  onBackdropPress={[MockFunction]}
-                  onModalHide={[Function]}
-                  onModalWillHide={[Function]}
-                  onModalWillShow={[Function]}
-                  onRequestClose={[Function]}
-                  panResponderThreshold={4}
-                  scrollHorizontal={false}
-                  scrollOffset={0}
-                  scrollOffsetMax={0}
-                  scrollTo={null}
-                  statusBarTranslucent={true}
-                  supportedOrientations={
-                    [
-                      "portrait",
-                      "landscape",
-                    ]
-                  }
-                  swipeThreshold={100}
-                  testID="modal"
-                  transparent={true}
-                  visible={false}
                 />
               </View>
             </View>
