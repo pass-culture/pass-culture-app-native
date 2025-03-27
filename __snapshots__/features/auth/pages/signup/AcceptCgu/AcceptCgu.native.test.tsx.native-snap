@@ -11,13 +11,6 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
     ]
   }
 >
-  <Modal
-    hardwareAccelerated={false}
-    onRequestClose={[Function]}
-    testID="recaptcha-webview-modal"
-    transparent={true}
-    visible={false}
-  />
   <Text
     style={
       [
@@ -649,13 +642,6 @@ exports[`<AcceptCgu/> should render correctly for SSO subscription 1`] = `
     ]
   }
 >
-  <Modal
-    hardwareAccelerated={false}
-    onRequestClose={[Function]}
-    testID="recaptcha-webview-modal"
-    transparent={true}
-    visible={false}
-  />
   <Text
     style={
       [
