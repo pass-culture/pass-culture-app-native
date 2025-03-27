@@ -5,7 +5,7 @@ exports[`<IdentityCheckUnavailable /> should render correctly 1`] = `
   style={
     [
       {
-        "alignItems": "center",
+        "backgroundColor": "#ffffff",
         "flexBasis": 0,
         "flexGrow": 1,
         "flexShrink": 1,
@@ -14,45 +14,21 @@ exports[`<IdentityCheckUnavailable /> should render correctly 1`] = `
   }
 >
   <View
-    height="100%"
+    accessibilityRole="header"
     style={
       [
         {
-          "bottom": 0,
-          "height": "100%",
+          "backgroundColor": "rgba(255,255,255,0)",
+          "borderBottomColor": "#cbcdd2",
+          "borderBottomWidth": 1,
           "left": 0,
           "position": "absolute",
           "right": 0,
           "top": 0,
-          "width": "100%",
-          "zIndex": -1,
+          "zIndex": 1,
         },
-      ]
-    }
-    width="100%"
-  >
-    <View
-      height="100%"
-      width="100%"
-    >
-      <Text>
-        undefined-SVG-Mock
-      </Text>
-    </View>
-  </View>
-  <View
-    style={
-      [
         {
-          "alignItems": "center",
-          "flexBasis": 0,
-          "flexDirection": "column",
-          "flexGrow": 1,
-          "flexShrink": 1,
-          "justifyContent": "center",
-          "maxWidth": 360,
-          "overflowY": "auto",
-          "paddingHorizontal": 16,
+          "borderBottomWidth": 0,
         },
       ]
     }
@@ -72,6 +48,95 @@ exports[`<IdentityCheckUnavailable /> should render correctly 1`] = `
       style={
         [
           {
+            "alignItems": "center",
+            "height": 48,
+            "justifyContent": "center",
+          },
+        ]
+      }
+    >
+      <View
+        style={
+          [
+            {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+              "width": "100%",
+            },
+          ]
+        }
+      >
+        <View
+          positionInHeader="left"
+          style={
+            [
+              {
+                "alignItems": "center",
+                "flexBasis": 0,
+                "flexDirection": "row",
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "justifyContent": "flex-start",
+                "paddingLeft": 12,
+                "paddingRight": 12,
+              },
+            ]
+          }
+          testID="back-button-container"
+        />
+        <View
+          positionInHeader="right"
+          style={
+            [
+              {
+                "alignItems": "center",
+                "flexBasis": 0,
+                "flexDirection": "row",
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "justifyContent": "flex-end",
+                "paddingLeft": 12,
+                "paddingRight": 12,
+              },
+            ]
+          }
+          testID="close-button-container"
+        />
+      </View>
+    </View>
+  </View>
+  <View
+    bottom={16}
+    style={
+      [
+        {
+          "flexBasis": 0,
+          "flexGrow": 1,
+          "flexShrink": 1,
+          "justifyContent": "space-between",
+          "overflow": "scroll",
+          "paddingHorizontal": 24,
+          "paddingVertical": 24,
+        },
+      ]
+    }
+  >
+    <View
+      height={16}
+      style={
+        [
+          {
+            "height": 16,
+          },
+        ]
+      }
+    />
+    <View
+      flex={1}
+      style={
+        [
+          {
             "flexBasis": 0,
             "flexGrow": 1,
             "flexShrink": 1,
@@ -80,170 +145,154 @@ exports[`<IdentityCheckUnavailable /> should render correctly 1`] = `
       }
     />
     <View
-      numberOfSpaces={10}
+      animation={false}
       style={
         [
           {
-            "height": 40,
+            "alignItems": "center",
+            "flexGrow": 1,
+            "justifyContent": "center",
           },
         ]
       }
-    />
-    <View
-      height={156}
-      width={200}
     >
-      <Text>
-        undefined-SVG-Mock
+      <View
+        height={156}
+        width={200}
+      >
+        <Text>
+          undefined-SVG-Mock
+        </Text>
+      </View>
+    </View>
+    <View
+      gap={4}
+      style={
+        [
+          {
+            "alignItems": "center",
+            "gap": 16,
+            "marginBottom": 24,
+          },
+        ]
+      }
+    >
+      <Text
+        style={
+          [
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 21,
+              "lineHeight": 33.6,
+              "textAlign": "center",
+            },
+          ]
+        }
+      >
+        Victime de notre succès !
       </Text>
     </View>
     <View
-      numberOfSpaces={5}
       style={
         [
           {
-            "height": 20,
-          },
-        ]
-      }
-    />
-    <Text
-      style={
-        [
-          {
-            "color": "#ffffff",
-            "fontFamily": "Montserrat-Bold",
-            "fontSize": 21,
-            "lineHeight": 33.6,
-            "textAlign": "center",
+            "marginBottom": 24,
           },
         ]
       }
     >
-      Victime de notre succès !
-    </Text>
+      <View
+        gap={5}
+        style={
+          [
+            {
+              "gap": 20,
+            },
+          ]
+        }
+      >
+        <Text
+          style={
+            [
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Medium",
+                "fontSize": 16,
+                "lineHeight": 25.6,
+                "textAlign": "center",
+              },
+            ]
+          }
+        >
+          Vous êtes actuellement très nombreux à vouloir créer un compte, notre service rencontre quelques difficultés.
+        </Text>
+        <Text
+          style={
+            [
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Medium",
+                "fontSize": 16,
+                "lineHeight": 25.6,
+                "textAlign": "center",
+              },
+            ]
+          }
+        >
+          Nous reviendrons vers toi dès que le service sera rétabli.
+        </Text>
+      </View>
+      <Modal
+        accessibilityLabelledBy="testUuidV4"
+        accessibilityModal={true}
+        animationType="none"
+        deviceHeight={1334}
+        deviceWidth={750}
+        hardwareAccelerated={false}
+        hideModalContentWhileAnimating={false}
+        onBackdropPress={[Function]}
+        onModalHide={[Function]}
+        onModalWillHide={[Function]}
+        onModalWillShow={[Function]}
+        onRequestClose={[Function]}
+        panResponderThreshold={4}
+        scrollHorizontal={false}
+        scrollOffset={0}
+        scrollOffsetMax={0}
+        scrollTo={null}
+        statusBarTranslucent={true}
+        supportedOrientations={
+          [
+            "portrait",
+            "landscape",
+          ]
+        }
+        swipeThreshold={100}
+        testID="modal"
+        transparent={true}
+        visible={false}
+      />
+    </View>
     <View
-      numberOfSpaces={5}
+      flex={1}
       style={
         [
           {
-            "height": 20,
-          },
-        ]
-      }
-    />
-    <Text
-      style={
-        [
-          {
-            "color": "#ffffff",
-            "fontFamily": "Montserrat-Medium",
-            "fontSize": 16,
-            "lineHeight": 25.6,
-            "textAlign": "center",
-          },
-        ]
-      }
-    >
-      Vous êtes actuellement très nombreux à vouloir créer un compte, notre service rencontre quelques difficultés.
-    </Text>
-    <View
-      numberOfSpaces={5}
-      style={
-        [
-          {
-            "height": 20,
-          },
-        ]
-      }
-    />
-    <Text
-      style={
-        [
-          {
-            "color": "#ffffff",
-            "fontFamily": "Montserrat-Medium",
-            "fontSize": 16,
-            "lineHeight": 25.6,
-            "textAlign": "center",
-          },
-        ]
-      }
-    >
-      Nous reviendrons vers toi dès que le service sera rétabli.
-    </Text>
-    <View
-      numberOfSpaces={6}
-      style={
-        [
-          {
-            "height": 24,
-          },
-        ]
-      }
-    />
-    <Modal
-      accessibilityLabelledBy="testUuidV4"
-      accessibilityModal={true}
-      animationType="none"
-      deviceHeight={1334}
-      deviceWidth={750}
-      hardwareAccelerated={false}
-      hideModalContentWhileAnimating={false}
-      onBackdropPress={[Function]}
-      onModalHide={[Function]}
-      onModalWillHide={[Function]}
-      onModalWillShow={[Function]}
-      onRequestClose={[Function]}
-      panResponderThreshold={4}
-      scrollHorizontal={false}
-      scrollOffset={0}
-      scrollOffsetMax={0}
-      scrollTo={null}
-      statusBarTranslucent={true}
-      supportedOrientations={
-        [
-          "portrait",
-          "landscape",
-        ]
-      }
-      swipeThreshold={100}
-      testID="modal"
-      transparent={true}
-      visible={false}
-    />
-    <View
-      numberOfSpaces={15}
-      style={
-        [
-          {
-            "height": 60,
-          },
-        ]
-      }
-    />
-    <View
-      flex={0.5}
-      style={
-        [
-          {
-            "flexBasis": 0,
-            "flexGrow": 0.5,
-            "flexShrink": 1,
-          },
-        ]
-      }
-    />
-    <View
-      style={
-        [
-          {
-            "alignSelf": "stretch",
             "flexBasis": 0,
             "flexGrow": 1,
             "flexShrink": 1,
-            "justifyContent": "flex-end",
-            "marginBottom": 32,
+          },
+        ]
+      }
+    />
+    <View
+      gap={4}
+      style={
+        [
+          {
+            "alignItems": "center",
+            "gap": 16,
           },
         ]
       }
@@ -284,20 +333,19 @@ exports[`<IdentityCheckUnavailable /> should render correctly 1`] = `
               },
               {
                 "alignItems": "center",
+                "backgroundColor": "#eb0055",
                 "borderRadius": 24,
                 "flexDirection": "row",
                 "justifyContent": "center",
                 "maxWidth": 500,
                 "minHeight": 40,
                 "paddingBottom": 2,
-                "paddingLeft": 2,
-                "paddingRight": 2,
+                "paddingLeft": 20,
+                "paddingRight": 20,
                 "paddingTop": 2,
                 "width": "100%",
               },
-              {
-                "backgroundColor": "transparent",
-              },
+              {},
             ],
             {
               "opacity": 1,
@@ -316,36 +364,6 @@ exports[`<IdentityCheckUnavailable /> should render correctly 1`] = `
             ]
           }
         >
-          <View
-            style={
-              [
-                {
-                  "flexDirection": "row",
-                  "flexShrink": 0,
-                },
-              ]
-            }
-          >
-            <View
-              height={20}
-              testID="button-icon-left"
-              width={20}
-            >
-              <Text>
-                button-icon-left-SVG-Mock
-              </Text>
-            </View>
-            <View
-              numberOfSpaces={2}
-              style={
-                [
-                  {
-                    "width": 8,
-                  },
-                ]
-              }
-            />
-          </View>
           <Text
             adjustsFontSizeToFit={false}
             numberOfLines={1}
@@ -366,17 +384,6 @@ exports[`<IdentityCheckUnavailable /> should render correctly 1`] = `
         </View>
       </View>
     </View>
-    <View
-      customHeight={8}
-      enable={true}
-      style={
-        [
-          {
-            "height": 8,
-          },
-        ]
-      }
-    />
   </View>
 </View>
 `;
