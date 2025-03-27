@@ -1,9 +1,6 @@
 import { ComponentForPathConfig } from 'features/navigation/ComponentForPathConfig'
 import { accessibilityRoutes } from 'features/navigation/ProfileStackNavigator/accessibilityRoutes'
-import {
-  ProfileStackRoute,
-  ProfileStackRouteName,
-} from 'features/navigation/ProfileStackNavigator/ProfileStack'
+import { ProfileStackRoute } from 'features/navigation/ProfileStackNavigator/ProfileStack'
 
 export const profileRoutes: ProfileStackRoute[] = [
   ...accessibilityRoutes,
@@ -133,8 +130,3 @@ export const profileRoutes: ProfileStackRoute[] = [
     path: 'profil/nouvelle-adresse-email',
   },
 ]
-
-export function isProfileStackScreen(screen: string): screen is ProfileStackRouteName {
-  const profileStackRouteNames = profileRoutes.map((route): string => route.name)
-  return profileStackRouteNames.includes(screen)
-}
