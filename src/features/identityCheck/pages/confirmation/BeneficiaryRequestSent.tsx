@@ -1,14 +1,11 @@
 import React from 'react'
-import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { useShouldShowCulturalSurveyForBeneficiaryUser } from 'shared/culturalSurvey/useShouldShowCulturalSurveyForBeneficiaryUser'
-import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
-import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import { GenericInfoPageDeprecated } from 'ui/pages/GenericInfoPageDeprecated'
+import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
 import { RequestSent } from 'ui/svg/icons/RequestSent'
-import { Typo } from 'ui/theme'
+import { LINE_BREAK } from 'ui/theme/constants'
 
 export function BeneficiaryRequestSent() {
   const { user } = useAuthContext()
@@ -25,28 +22,16 @@ export function BeneficiaryRequestSent() {
   const message = inTheMeantime.length ? `${body} ${inTheMeantime}` : body
 
   return (
-    <GenericInfoPageDeprecated
+    <GenericInfoPageWhite
+      illustration={RequestSent}
       title="Demande envoyée&nbsp;!"
-      icon={RequestSent}
-      buttons={[
-        <InternalTouchableLink
-          key={1}
-          as={ButtonPrimaryWhite}
-          wording="On y va&nbsp;!"
-          navigateTo={
-            shouldNavigateToCulturalSurvey
-              ? { screen: 'CulturalSurveyIntro' }
-              : navigateToHomeConfig
-          }
-        />,
-      ]}>
-      <StyledBody>Nous étudions ton dossier...</StyledBody>
-      <StyledBody>{message}</StyledBody>
-    </GenericInfoPageDeprecated>
+      subtitle={`Nous étudions ton dossier...${LINE_BREAK}${message}`}
+      buttonPrimary={{
+        wording: 'On y va\u00a0!',
+        navigateTo: shouldNavigateToCulturalSurvey
+          ? { screen: 'CulturalSurveyIntro' }
+          : navigateToHomeConfig,
+      }}
+    />
   )
 }
-
-const StyledBody = styled(Typo.Body)(({ theme }) => ({
-  color: theme.colors.white,
-  textAlign: 'center',
-}))
