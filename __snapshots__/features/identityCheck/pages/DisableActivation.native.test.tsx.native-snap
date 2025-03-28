@@ -5,7 +5,7 @@ exports[`<DisableActivation/> should render correctly 1`] = `
   style={
     [
       {
-        "alignItems": "center",
+        "backgroundColor": "#ffffff",
         "flexBasis": 0,
         "flexGrow": 1,
         "flexShrink": 1,
@@ -14,45 +14,21 @@ exports[`<DisableActivation/> should render correctly 1`] = `
   }
 >
   <View
-    height="100%"
+    accessibilityRole="header"
     style={
       [
         {
-          "bottom": 0,
-          "height": "100%",
+          "backgroundColor": "rgba(255,255,255,0)",
+          "borderBottomColor": "#cbcdd2",
+          "borderBottomWidth": 1,
           "left": 0,
           "position": "absolute",
           "right": 0,
           "top": 0,
-          "width": "100%",
-          "zIndex": -1,
+          "zIndex": 1,
         },
-      ]
-    }
-    width="100%"
-  >
-    <View
-      height="100%"
-      width="100%"
-    >
-      <Text>
-        undefined-SVG-Mock
-      </Text>
-    </View>
-  </View>
-  <View
-    style={
-      [
         {
-          "alignItems": "center",
-          "flexBasis": 0,
-          "flexDirection": "column",
-          "flexGrow": 1,
-          "flexShrink": 1,
-          "justifyContent": "center",
-          "maxWidth": 360,
-          "overflowY": "auto",
-          "paddingHorizontal": 16,
+          "borderBottomWidth": 0,
         },
       ]
     }
@@ -72,6 +48,95 @@ exports[`<DisableActivation/> should render correctly 1`] = `
       style={
         [
           {
+            "alignItems": "center",
+            "height": 48,
+            "justifyContent": "center",
+          },
+        ]
+      }
+    >
+      <View
+        style={
+          [
+            {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+              "width": "100%",
+            },
+          ]
+        }
+      >
+        <View
+          positionInHeader="left"
+          style={
+            [
+              {
+                "alignItems": "center",
+                "flexBasis": 0,
+                "flexDirection": "row",
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "justifyContent": "flex-start",
+                "paddingLeft": 12,
+                "paddingRight": 12,
+              },
+            ]
+          }
+          testID="back-button-container"
+        />
+        <View
+          positionInHeader="right"
+          style={
+            [
+              {
+                "alignItems": "center",
+                "flexBasis": 0,
+                "flexDirection": "row",
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "justifyContent": "flex-end",
+                "paddingLeft": 12,
+                "paddingRight": 12,
+              },
+            ]
+          }
+          testID="close-button-container"
+        />
+      </View>
+    </View>
+  </View>
+  <View
+    bottom={16}
+    style={
+      [
+        {
+          "flexBasis": 0,
+          "flexGrow": 1,
+          "flexShrink": 1,
+          "justifyContent": "space-between",
+          "overflow": "scroll",
+          "paddingHorizontal": 24,
+          "paddingVertical": 24,
+        },
+      ]
+    }
+  >
+    <View
+      height={16}
+      style={
+        [
+          {
+            "height": 16,
+          },
+        ]
+      }
+    />
+    <View
+      flex={1}
+      style={
+        [
+          {
             "flexBasis": 0,
             "flexGrow": 1,
             "flexShrink": 1,
@@ -80,91 +145,74 @@ exports[`<DisableActivation/> should render correctly 1`] = `
       }
     />
     <View
-      numberOfSpaces={10}
+      animation={false}
       style={
         [
           {
-            "height": 40,
+            "alignItems": "center",
+            "justifyContent": "center",
+            "marginBottom": 24,
           },
         ]
       }
-    />
-    <View
-      height={156}
-      width={200}
     >
-      <Text>
-        undefined-SVG-Mock
+      <View
+        height={156}
+        width={200}
+      >
+        <Text>
+          undefined-SVG-Mock
+        </Text>
+      </View>
+    </View>
+    <View
+      gap={4}
+      style={
+        [
+          {
+            "alignItems": "center",
+            "gap": 16,
+            "marginBottom": 24,
+          },
+        ]
+      }
+    >
+      <Text
+        style={
+          [
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 21,
+              "lineHeight": 33.6,
+              "textAlign": "center",
+            },
+          ]
+        }
+      >
+        Tu as 17 ou 18 ans ?
+Reviens lundi pour débloquer ton crédit !
       </Text>
     </View>
     <View
-      numberOfSpaces={5}
+      flex={1}
       style={
         [
           {
-            "height": 20,
-          },
-        ]
-      }
-    />
-    <Text
-      style={
-        [
-          {
-            "color": "#ffffff",
-            "fontFamily": "Montserrat-Bold",
-            "fontSize": 21,
-            "lineHeight": 33.6,
-            "textAlign": "center",
-          },
-        ]
-      }
-    >
-      Tu as 17 ou 18 ans ?
-Reviens lundi pour débloquer ton crédit !
-    </Text>
-    <View
-      numberOfSpaces={5}
-      style={
-        [
-          {
-            "height": 20,
-          },
-        ]
-      }
-    />
-    <View
-      numberOfSpaces={30}
-      style={
-        [
-          {
-            "height": 120,
-          },
-        ]
-      }
-    />
-    <View
-      flex={0.5}
-      style={
-        [
-          {
-            "flexBasis": 0,
-            "flexGrow": 0.5,
-            "flexShrink": 1,
-          },
-        ]
-      }
-    />
-    <View
-      style={
-        [
-          {
-            "alignSelf": "stretch",
             "flexBasis": 0,
             "flexGrow": 1,
             "flexShrink": 1,
-            "justifyContent": "flex-end",
-            "marginBottom": 32,
+          },
+        ]
+      }
+    />
+    <View
+      gap={4}
+      style={
+        [
+          {
+            "alignItems": "center",
+            "gap": 16,
           },
         ]
       }
@@ -201,7 +249,7 @@ Reviens lundi pour débloquer ton crédit !
         style={
           {
             "alignItems": "center",
-            "backgroundColor": "#ffffff",
+            "backgroundColor": "#eb0055",
             "borderRadius": 24,
             "flexDirection": "row",
             "justifyContent": "center",
@@ -234,7 +282,7 @@ Reviens lundi pour débloquer ton crédit !
             style={
               [
                 {
-                  "color": "#eb0055",
+                  "color": "#ffffff",
                   "fontFamily": "Montserrat-Bold",
                   "fontSize": 16,
                   "lineHeight": 25.6,
@@ -247,16 +295,6 @@ Reviens lundi pour débloquer ton crédit !
           </Text>
         </View>
       </View>
-      <View
-        numberOfSpaces={4}
-        style={
-          [
-            {
-              "height": 16,
-            },
-          ]
-        }
-      />
       <View
         accessibilityLabel="Plus d’infos dans notre FAQ"
         accessibilityState={
@@ -289,7 +327,7 @@ Reviens lundi pour débloquer ton crédit !
         style={
           {
             "alignItems": "center",
-            "backgroundColor": "transparent",
+            "backgroundColor": "#ffffff",
             "borderRadius": 24,
             "flexDirection": "row",
             "justifyContent": "center",
@@ -353,7 +391,7 @@ Reviens lundi pour débloquer ton crédit !
             style={
               [
                 {
-                  "color": "#ffffff",
+                  "color": "#161617",
                   "fontFamily": "Montserrat-Bold",
                   "fontSize": 16,
                   "lineHeight": 25.6,
@@ -367,17 +405,6 @@ Reviens lundi pour débloquer ton crédit !
         </View>
       </View>
     </View>
-    <View
-      customHeight={8}
-      enable={true}
-      style={
-        [
-          {
-            "height": 8,
-          },
-        ]
-      }
-    />
   </View>
 </View>
 `;
@@ -387,7 +414,7 @@ exports[`<DisableActivation/> with RemoteActivationBanner informations should re
   style={
     [
       {
-        "alignItems": "center",
+        "backgroundColor": "#ffffff",
         "flexBasis": 0,
         "flexGrow": 1,
         "flexShrink": 1,
@@ -396,45 +423,21 @@ exports[`<DisableActivation/> with RemoteActivationBanner informations should re
   }
 >
   <View
-    height="100%"
+    accessibilityRole="header"
     style={
       [
         {
-          "bottom": 0,
-          "height": "100%",
+          "backgroundColor": "rgba(255,255,255,0)",
+          "borderBottomColor": "#cbcdd2",
+          "borderBottomWidth": 1,
           "left": 0,
           "position": "absolute",
           "right": 0,
           "top": 0,
-          "width": "100%",
-          "zIndex": -1,
+          "zIndex": 1,
         },
-      ]
-    }
-    width="100%"
-  >
-    <View
-      height="100%"
-      width="100%"
-    >
-      <Text>
-        undefined-SVG-Mock
-      </Text>
-    </View>
-  </View>
-  <View
-    style={
-      [
         {
-          "alignItems": "center",
-          "flexBasis": 0,
-          "flexDirection": "column",
-          "flexGrow": 1,
-          "flexShrink": 1,
-          "justifyContent": "center",
-          "maxWidth": 360,
-          "overflowY": "auto",
-          "paddingHorizontal": 16,
+          "borderBottomWidth": 0,
         },
       ]
     }
@@ -454,6 +457,95 @@ exports[`<DisableActivation/> with RemoteActivationBanner informations should re
       style={
         [
           {
+            "alignItems": "center",
+            "height": 48,
+            "justifyContent": "center",
+          },
+        ]
+      }
+    >
+      <View
+        style={
+          [
+            {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+              "width": "100%",
+            },
+          ]
+        }
+      >
+        <View
+          positionInHeader="left"
+          style={
+            [
+              {
+                "alignItems": "center",
+                "flexBasis": 0,
+                "flexDirection": "row",
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "justifyContent": "flex-start",
+                "paddingLeft": 12,
+                "paddingRight": 12,
+              },
+            ]
+          }
+          testID="back-button-container"
+        />
+        <View
+          positionInHeader="right"
+          style={
+            [
+              {
+                "alignItems": "center",
+                "flexBasis": 0,
+                "flexDirection": "row",
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "justifyContent": "flex-end",
+                "paddingLeft": 12,
+                "paddingRight": 12,
+              },
+            ]
+          }
+          testID="close-button-container"
+        />
+      </View>
+    </View>
+  </View>
+  <View
+    bottom={16}
+    style={
+      [
+        {
+          "flexBasis": 0,
+          "flexGrow": 1,
+          "flexShrink": 1,
+          "justifyContent": "space-between",
+          "overflow": "scroll",
+          "paddingHorizontal": 24,
+          "paddingVertical": 24,
+        },
+      ]
+    }
+  >
+    <View
+      height={16}
+      style={
+        [
+          {
+            "height": 16,
+          },
+        ]
+      }
+    />
+    <View
+      flex={1}
+      style={
+        [
+          {
             "flexBasis": 0,
             "flexGrow": 1,
             "flexShrink": 1,
@@ -462,90 +554,73 @@ exports[`<DisableActivation/> with RemoteActivationBanner informations should re
       }
     />
     <View
-      numberOfSpaces={10}
+      animation={false}
       style={
         [
           {
-            "height": 40,
+            "alignItems": "center",
+            "justifyContent": "center",
+            "marginBottom": 24,
           },
         ]
       }
-    />
-    <View
-      height={156}
-      width={200}
     >
-      <Text>
-        undefined-SVG-Mock
+      <View
+        height={156}
+        width={200}
+      >
+        <Text>
+          undefined-SVG-Mock
+        </Text>
+      </View>
+    </View>
+    <View
+      gap={4}
+      style={
+        [
+          {
+            "alignItems": "center",
+            "gap": 16,
+            "marginBottom": 24,
+          },
+        ]
+      }
+    >
+      <Text
+        style={
+          [
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 21,
+              "lineHeight": 33.6,
+              "textAlign": "center",
+            },
+          ]
+        }
+      >
+        Title from RemoteGenericBanner
       </Text>
     </View>
     <View
-      numberOfSpaces={5}
+      flex={1}
       style={
         [
           {
-            "height": 20,
-          },
-        ]
-      }
-    />
-    <Text
-      style={
-        [
-          {
-            "color": "#ffffff",
-            "fontFamily": "Montserrat-Bold",
-            "fontSize": 21,
-            "lineHeight": 33.6,
-            "textAlign": "center",
-          },
-        ]
-      }
-    >
-      Title from RemoteGenericBanner
-    </Text>
-    <View
-      numberOfSpaces={5}
-      style={
-        [
-          {
-            "height": 20,
-          },
-        ]
-      }
-    />
-    <View
-      numberOfSpaces={30}
-      style={
-        [
-          {
-            "height": 120,
-          },
-        ]
-      }
-    />
-    <View
-      flex={0.5}
-      style={
-        [
-          {
-            "flexBasis": 0,
-            "flexGrow": 0.5,
-            "flexShrink": 1,
-          },
-        ]
-      }
-    />
-    <View
-      style={
-        [
-          {
-            "alignSelf": "stretch",
             "flexBasis": 0,
             "flexGrow": 1,
             "flexShrink": 1,
-            "justifyContent": "flex-end",
-            "marginBottom": 32,
+          },
+        ]
+      }
+    />
+    <View
+      gap={4}
+      style={
+        [
+          {
+            "alignItems": "center",
+            "gap": 16,
           },
         ]
       }
@@ -582,7 +657,7 @@ exports[`<DisableActivation/> with RemoteActivationBanner informations should re
         style={
           {
             "alignItems": "center",
-            "backgroundColor": "#ffffff",
+            "backgroundColor": "#eb0055",
             "borderRadius": 24,
             "flexDirection": "row",
             "justifyContent": "center",
@@ -615,7 +690,7 @@ exports[`<DisableActivation/> with RemoteActivationBanner informations should re
             style={
               [
                 {
-                  "color": "#eb0055",
+                  "color": "#ffffff",
                   "fontFamily": "Montserrat-Bold",
                   "fontSize": 16,
                   "lineHeight": 25.6,
@@ -628,16 +703,6 @@ exports[`<DisableActivation/> with RemoteActivationBanner informations should re
           </Text>
         </View>
       </View>
-      <View
-        numberOfSpaces={4}
-        style={
-          [
-            {
-              "height": 16,
-            },
-          ]
-        }
-      />
       <View
         accessibilityLabel="subtitleMobile"
         accessibilityState={
@@ -670,7 +735,7 @@ exports[`<DisableActivation/> with RemoteActivationBanner informations should re
         style={
           {
             "alignItems": "center",
-            "backgroundColor": "transparent",
+            "backgroundColor": "#ffffff",
             "borderRadius": 24,
             "flexDirection": "row",
             "justifyContent": "center",
@@ -734,7 +799,7 @@ exports[`<DisableActivation/> with RemoteActivationBanner informations should re
             style={
               [
                 {
-                  "color": "#ffffff",
+                  "color": "#161617",
                   "fontFamily": "Montserrat-Bold",
                   "fontSize": 16,
                   "lineHeight": 25.6,
@@ -748,17 +813,6 @@ exports[`<DisableActivation/> with RemoteActivationBanner informations should re
         </View>
       </View>
     </View>
-    <View
-      customHeight={8}
-      enable={true}
-      style={
-        [
-          {
-            "height": 8,
-          },
-        ]
-      }
-    />
   </View>
 </View>
 `;
