@@ -5,7 +5,7 @@ exports[`DeleteProfileSuccess component should render delete profile success 1`]
   style={
     [
       {
-        "alignItems": "center",
+        "backgroundColor": "#ffffff",
         "flexBasis": 0,
         "flexGrow": 1,
         "flexShrink": 1,
@@ -14,45 +14,21 @@ exports[`DeleteProfileSuccess component should render delete profile success 1`]
   }
 >
   <View
-    height="100%"
+    accessibilityRole="header"
     style={
       [
         {
-          "bottom": 0,
-          "height": "100%",
+          "backgroundColor": "rgba(255,255,255,0)",
+          "borderBottomColor": "#cbcdd2",
+          "borderBottomWidth": 1,
           "left": 0,
           "position": "absolute",
           "right": 0,
           "top": 0,
-          "width": "100%",
-          "zIndex": -1,
+          "zIndex": 1,
         },
-      ]
-    }
-    width="100%"
-  >
-    <View
-      height="100%"
-      width="100%"
-    >
-      <Text>
-        undefined-SVG-Mock
-      </Text>
-    </View>
-  </View>
-  <View
-    style={
-      [
         {
-          "alignItems": "center",
-          "flexBasis": 0,
-          "flexDirection": "column",
-          "flexGrow": 1,
-          "flexShrink": 1,
-          "justifyContent": "center",
-          "maxWidth": 360,
-          "overflowY": "auto",
-          "paddingHorizontal": 16,
+          "borderBottomWidth": 0,
         },
       ]
     }
@@ -72,90 +48,82 @@ exports[`DeleteProfileSuccess component should render delete profile success 1`]
       style={
         [
           {
-            "flexBasis": 0,
-            "flexGrow": 1,
-            "flexShrink": 1,
-          },
-        ]
-      }
-    />
-    <View
-      numberOfSpaces={10}
-      style={
-        [
-          {
-            "height": 40,
-          },
-        ]
-      }
-    />
-    <View
-      height={156}
-      width={200}
-    >
-      <Text>
-        undefined-SVG-Mock
-      </Text>
-    </View>
-    <View
-      numberOfSpaces={5}
-      style={
-        [
-          {
-            "height": 20,
-          },
-        ]
-      }
-    />
-    <Text
-      style={
-        [
-          {
-            "color": "#ffffff",
-            "fontFamily": "Montserrat-Bold",
-            "fontSize": 21,
-            "lineHeight": 33.6,
-            "textAlign": "center",
+            "alignItems": "center",
+            "height": 48,
+            "justifyContent": "center",
           },
         ]
       }
     >
-      Ton compte a été supprimé
-    </Text>
-    <View
-      numberOfSpaces={5}
-      style={
-        [
-          {
-            "height": 20,
-          },
-        ]
-      }
-    />
-    <Text
-      style={
-        [
-          {
-            "color": "#ffffff",
-            "fontFamily": "Montserrat-Medium",
-            "fontSize": 16,
-            "lineHeight": 25.6,
-            "textAlign": "center",
-          },
-        ]
-      }
-    >
-      <Text
-        accessibilityHidden={true}
-        accessibilityRole="image"
+      <View
+        style={
+          [
+            {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+              "width": "100%",
+            },
+          ]
+        }
       >
-        😢
-         
-      </Text>
-      On est super triste de te voir partir.
-    </Text>
+        <View
+          positionInHeader="left"
+          style={
+            [
+              {
+                "alignItems": "center",
+                "flexBasis": 0,
+                "flexDirection": "row",
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "justifyContent": "flex-start",
+                "paddingLeft": 12,
+                "paddingRight": 12,
+              },
+            ]
+          }
+          testID="back-button-container"
+        />
+        <View
+          positionInHeader="right"
+          style={
+            [
+              {
+                "alignItems": "center",
+                "flexBasis": 0,
+                "flexDirection": "row",
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "justifyContent": "flex-end",
+                "paddingLeft": 12,
+                "paddingRight": 12,
+              },
+            ]
+          }
+          testID="close-button-container"
+        />
+      </View>
+    </View>
+  </View>
+  <View
+    bottom={16}
+    style={
+      [
+        {
+          "flexBasis": 0,
+          "flexGrow": 1,
+          "flexShrink": 1,
+          "justifyContent": "space-between",
+          "overflow": "scroll",
+          "paddingHorizontal": 24,
+          "paddingVertical": 24,
+        },
+      ]
+    }
+  >
     <View
-      numberOfSpaces={4}
+      height={16}
       style={
         [
           {
@@ -164,53 +132,144 @@ exports[`DeleteProfileSuccess component should render delete profile success 1`]
         ]
       }
     />
-    <Text
+    <View
+      flex={1}
       style={
         [
           {
-            "color": "#ffffff",
-            "fontFamily": "Montserrat-Medium",
-            "fontSize": 16,
-            "lineHeight": 25.6,
-            "textAlign": "center",
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+          },
+        ]
+      }
+    />
+    <View
+      animation={false}
+      style={
+        [
+          {
+            "alignItems": "center",
+            "justifyContent": "center",
+            "marginBottom": 24,
           },
         ]
       }
     >
-      Tu peux malgré tout continuer à découvrir toute l’actu culturelle en consultant le catalogue !
-    </Text>
+      <View
+        height={156}
+        width={200}
+      >
+        <Text>
+          undefined-SVG-Mock
+        </Text>
+      </View>
+    </View>
     <View
-      numberOfSpaces={15}
+      gap={4}
       style={
         [
           {
-            "height": 60,
+            "alignItems": "center",
+            "gap": 16,
+            "marginBottom": 24,
           },
         ]
       }
-    />
+    >
+      <Text
+        style={
+          [
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 21,
+              "lineHeight": 33.6,
+              "textAlign": "center",
+            },
+          ]
+        }
+      >
+        Ton compte a été supprimé
+      </Text>
+    </View>
     <View
-      flex={0.5}
       style={
         [
           {
-            "flexBasis": 0,
-            "flexGrow": 0.5,
-            "flexShrink": 1,
+            "marginBottom": 24,
           },
         ]
       }
-    />
+    >
+      <View
+        gap={4}
+        style={
+          [
+            {
+              "gap": 16,
+            },
+          ]
+        }
+      >
+        <Text
+          style={
+            [
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Medium",
+                "fontSize": 16,
+                "lineHeight": 25.6,
+                "textAlign": "center",
+              },
+            ]
+          }
+        >
+          <Text
+            accessibilityHidden={true}
+            accessibilityRole="image"
+          >
+            😢
+             
+          </Text>
+          On est super triste de te voir partir.
+        </Text>
+        <Text
+          style={
+            [
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Medium",
+                "fontSize": 16,
+                "lineHeight": 25.6,
+                "textAlign": "center",
+              },
+            ]
+          }
+        >
+          Tu peux malgré tout continuer à découvrir toute l’actu culturelle en consultant le catalogue !
+        </Text>
+      </View>
+    </View>
     <View
+      flex={1}
       style={
         [
           {
-            "alignSelf": "stretch",
             "flexBasis": 0,
             "flexGrow": 1,
             "flexShrink": 1,
-            "justifyContent": "flex-end",
-            "marginBottom": 32,
+          },
+        ]
+      }
+    />
+    <View
+      gap={4}
+      style={
+        [
+          {
+            "alignItems": "center",
+            "gap": 16,
           },
         ]
       }
@@ -251,7 +310,7 @@ exports[`DeleteProfileSuccess component should render delete profile success 1`]
               },
               {
                 "alignItems": "center",
-                "backgroundColor": "#ffffff",
+                "backgroundColor": "#eb0055",
                 "borderRadius": 24,
                 "flexDirection": "row",
                 "justifyContent": "center",
@@ -288,7 +347,7 @@ exports[`DeleteProfileSuccess component should render delete profile success 1`]
             style={
               [
                 {
-                  "color": "#eb0055",
+                  "color": "#ffffff",
                   "fontFamily": "Montserrat-Bold",
                   "fontSize": 16,
                   "lineHeight": 25.6,
@@ -302,17 +361,6 @@ exports[`DeleteProfileSuccess component should render delete profile success 1`]
         </View>
       </View>
     </View>
-    <View
-      customHeight={8}
-      enable={true}
-      style={
-        [
-          {
-            "height": 8,
-          },
-        ]
-      }
-    />
   </View>
 </View>
 `;
