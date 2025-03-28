@@ -35,6 +35,7 @@ const useGetRemindersQuerySpy = jest.spyOn(
 ) as jest.Mock<Partial<QueryObserverSuccessResult<GetReminderResponse, Error>>>
 
 const addReminderMutationSpy = jest.spyOn(api, 'postNativeV1MeReminders')
+const deleteReminderMutationSpy = jest.spyOn(api, 'deleteNativeV1MeRemindersreminderId')
 
 const mockShowErrorSnackBar = jest.fn()
 jest.mock('ui/components/snackBar/SnackBarContext', () => ({
@@ -194,6 +195,55 @@ describe('OfferFooter', () => {
         message: 'L’offre n’a pas pu être ajoutée à tes rappels',
         timeout: SNACK_BAR_TIME_OUT,
       })
+    })
+
+    it('should show reminder authentication modal when not logged in', async () => {
+      useAuthContextSpy.mockReturnValueOnce({
+        ...mockAuthContextReturnValue,
+        isLoggedIn: false,
+      })
+      useGetRemindersQuerySpy.mockReturnValueOnce({ data: undefined, isLoading: false })
+
+      renderOfferFooter({ offer: offerWithPublicationDate })
+
+      await user.press(await screen.findByText('Ajouter un rappel'))
+
+      expect(screen.getByText('Identifie-toi pour activer un rappel')).toBeOnTheScreen()
+    })
+
+    it('should call addReminder when no existing reminder', async () => {
+      useAuthContextSpy.mockReturnValueOnce({
+        ...mockAuthContextReturnValue,
+        isLoggedIn: true,
+      })
+      useGetRemindersQuerySpy.mockReturnValueOnce({ data: undefined, isLoading: false })
+
+      renderOfferFooter({
+        offer: offerWithPublicationDate,
+      })
+
+      await user.press(await screen.findByText('Ajouter un rappel'))
+
+      expect(addReminderMutationSpy).toHaveBeenCalledWith({ offerId: offerWithPublicationDate.id })
+    })
+
+    it('should call deleteReminder when existing reminder', async () => {
+      useAuthContextSpy.mockReturnValueOnce({
+        ...mockAuthContextReturnValue,
+        isLoggedIn: true,
+      })
+      useGetRemindersQuerySpy.mockReturnValueOnce({
+        data: remindersResponse,
+        isLoading: false,
+      })
+
+      renderOfferFooter({
+        offer: offerWithPublicationDate,
+      })
+
+      await user.press(await screen.findByText('Désactiver le rappel'))
+
+      expect(deleteReminderMutationSpy).toHaveBeenCalledWith(undefined)
     })
   })
 
