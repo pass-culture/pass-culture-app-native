@@ -15,6 +15,7 @@ import { CheatcodesScreenDefaultThematicHomeHeader } from 'cheatcodes/pages/feat
 import { CheatcodesScreenHighlightThematicHomeHeader } from 'cheatcodes/pages/features/home/CheatcodesScreenHighlightThematicHomeHeader'
 import { CheatcodesNavigationIdentityCheck } from 'cheatcodes/pages/features/identityCheck/CheatcodesNavigationIdentityCheck'
 import { CheatcodesNavigationNewIdentificationFlow } from 'cheatcodes/pages/features/identityCheck/CheatcodesNavigationNewIdentificationFlow'
+import { CheatcodesScreenNotEligibleEduConnect } from 'cheatcodes/pages/features/identityCheck/CheatcodesScreenNotEligibleEduConnect'
 import { CheatcodesNavigationInternal } from 'cheatcodes/pages/features/internal/CheatcodesNavigationInternal'
 import { CheatcodesNavigationProfile } from 'cheatcodes/pages/features/profile/CheatcodesNavigationProfile'
 import { CheatcodesScreenRemoteBanners } from 'cheatcodes/pages/features/remoteBanners/CheatcodesScreenRemoteBanners'
@@ -191,6 +192,10 @@ const routes: CheatcodesStackRoute[] = [
   {
     name: 'CheatcodesScreenBookingNotFound',
     component: CheatcodesScreenBookingNotFound,
+  },
+  {
+    name: 'CheatcodesScreenNotEligibleEduConnect',
+    component: CheatcodesScreenNotEligibleEduConnect,
   },
 ]
 
