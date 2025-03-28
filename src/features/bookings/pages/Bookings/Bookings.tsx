@@ -91,4 +91,7 @@ export function Bookings() {
   )
 }
 
-const Container = styled(ViewGap)({ flex: 1 })
+const Container = styled(ViewGap)(({ theme }) => ({
+  backgroundColor: theme.designSystem.color.background.default,
+  flex: 1,
+}))

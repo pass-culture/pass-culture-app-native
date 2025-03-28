@@ -3,6 +3,7 @@ import styled from 'styled-components/native'
 
 import LottieView from 'libs/lottie'
 import LoadingAnimation from 'ui/animations/lottie_loading.json'
+import { Page } from 'ui/pages/Page'
 import { Typo } from 'ui/theme'
 
 const UnmemoizedLoadingPage: FunctionComponent = () => {
@@ -16,7 +17,7 @@ const UnmemoizedLoadingPage: FunctionComponent = () => {
 
 export const LoadingPage = memo(UnmemoizedLoadingPage)
 
-const Container = styled.View({
+const Container = styled(Page)({
   flexDirection: 'column',
   flexGrow: 1,
   justifyContent: 'center',

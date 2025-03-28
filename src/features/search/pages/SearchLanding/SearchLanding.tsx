@@ -17,6 +17,7 @@ import { env } from 'libs/environment/env'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { OfflinePage } from 'libs/network/OfflinePage'
 import { Form } from 'ui/components/Form'
+import { Page } from 'ui/pages/Page'
 import { getSpacing } from 'ui/theme'
 
 const searchInputID = uuidv4()
@@ -42,7 +43,7 @@ export const SearchLanding = () => {
   }
 
   return (
-    <React.Fragment>
+    <Page>
       <StatusBar barStyle="dark-content" />
       <Form.Flex>
         <InstantSearch
@@ -76,7 +77,7 @@ export const SearchLanding = () => {
           )}
         </InstantSearch>
       </Form.Flex>
-    </React.Fragment>
+    </Page>
   )
 }
 

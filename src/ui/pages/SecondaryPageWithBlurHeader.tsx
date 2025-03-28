@@ -7,6 +7,7 @@ import {
   PageHeaderWithoutPlaceholder,
   useGetHeaderHeight,
 } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
+import { Page } from 'ui/pages/Page'
 
 type Props = PropsWithChildren<{
   title: string
@@ -31,7 +32,7 @@ export const SecondaryPageWithBlurHeader = ({
   const headerHeight = useGetHeaderHeight()
 
   return (
-    <React.Fragment>
+    <Page>
       <PageHeaderWithoutPlaceholder
         title={title}
         shouldDisplayBackButton={shouldDisplayBackButton}
@@ -46,7 +47,7 @@ export const SecondaryPageWithBlurHeader = ({
         {children}
       </StyledScrollView>
       <BlurHeader height={headerHeight} />
-    </React.Fragment>
+    </Page>
   )
 }
 
