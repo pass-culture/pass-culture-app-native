@@ -2,12 +2,12 @@ import { addDays, isSameDay } from 'date-fns'
 import React, { FunctionComponent } from 'react'
 
 import { BookingVenueResponse, SubcategoryIdEnum, WithdrawalTypeEnum } from 'api/gen'
-import { NoTicket } from 'features/bookings/components/OldBookingDetails/NoTicket'
-import { EmailSent } from 'features/bookings/components/TicketBody/EmailSent/EmailSent'
-import { QrCode } from 'features/bookings/components/TicketBody/QrCode/QrCode'
-import { QrCodeWithSeatProps } from 'features/bookings/components/TicketBody/QrCodeWithSeat/QrCodeWithSeat'
-import { HideableQrCodeWithSeat } from 'features/bookings/components/TicketBody/SafeSeatWithQrCode/HideableQrCodeWithSeat'
-import { TicketWithdrawal } from 'features/bookings/components/TicketBody/TicketWithdrawal/TicketWithdrawal'
+import { EmailSent } from 'features/bookings/components/OldBookingDetails/TicketBody/EmailSent/EmailSent'
+import { HideableQrCodeWithSeat } from 'features/bookings/components/OldBookingDetails/TicketBody/HideableQrCodeWithSeat/HideableQrCodeWithSeat'
+import { NoTicket } from 'features/bookings/components/OldBookingDetails/TicketBody/NoTicket/NoTicket'
+import { QrCode } from 'features/bookings/components/OldBookingDetails/TicketBody/QrCode/QrCode'
+import { QrCodeWithSeatProps } from 'features/bookings/components/OldBookingDetails/TicketBody/QrCodeWithSeat/QrCodeWithSeat'
+import { TicketWithdrawal } from 'features/bookings/components/OldBookingDetails/TicketBody/TicketWithdrawal/TicketWithdrawal'
 
 type Props = {
   withdrawalDelay: number

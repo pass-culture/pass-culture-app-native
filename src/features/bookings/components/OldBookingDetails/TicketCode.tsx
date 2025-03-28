@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { WithdrawalTypeEnum } from 'api/gen'
-import { TicketCodeTitle } from 'features/bookings/components/TicketCodeTitle'
+import { TicketCodeTitle } from 'features/bookings/components/OldBookingDetails/TicketCodeTitle'
 
 type TicketCodeProps = {
   code: string

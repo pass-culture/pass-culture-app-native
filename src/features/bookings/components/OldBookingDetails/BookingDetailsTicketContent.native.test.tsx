@@ -1,8 +1,8 @@
 import React from 'react'
 
 import { BookingReponse, CategoryIdEnum, SubcategoryIdEnum } from 'api/gen'
-import { BookingDetailsTicketContent } from 'features/bookings/components/BookingDetailsTicketContent'
-import { QrCodeWithSeatProps } from 'features/bookings/components/TicketBody/QrCodeWithSeat/QrCodeWithSeat'
+import { BookingDetailsTicketContent } from 'features/bookings/components/OldBookingDetails/BookingDetailsTicketContent'
+import { QrCodeWithSeatProps } from 'features/bookings/components/OldBookingDetails/TicketBody/QrCodeWithSeat/QrCodeWithSeat'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import * as useCategoryIdModule from 'libs/subcategories/useCategoryId'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'

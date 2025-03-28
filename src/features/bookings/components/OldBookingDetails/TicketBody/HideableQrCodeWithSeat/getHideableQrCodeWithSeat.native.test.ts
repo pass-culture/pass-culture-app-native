@@ -1,7 +1,7 @@
 import mockdate from 'mockdate'
 
 import { BookingVenueResponse, SubcategoryIdEnum } from 'api/gen'
-import { getHideableQrCodeWithSeat } from 'features/bookings/components/TicketBody/SafeSeatWithQrCode/getHideableQrCodeWithSeat'
+import { getHideableQrCodeWithSeat } from 'features/bookings/components/OldBookingDetails/TicketBody/HideableQrCodeWithSeat/getHideableQrCodeWithSeat'
 import { dateBuilder, mockBuilder } from 'tests/mockBuilder'
 
 const qrCodeVisibilityHoursBeforeEvent = 2 * 24

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { QrCodeWithSeat } from 'features/bookings/components/TicketBody/QrCodeWithSeat/QrCodeWithSeat'
+import { QrCodeWithSeat } from 'features/bookings/components/OldBookingDetails/TicketBody/QrCodeWithSeat/QrCodeWithSeat'
 import { render, screen } from 'tests/utils'
 
 const seatIndex = '1/1'

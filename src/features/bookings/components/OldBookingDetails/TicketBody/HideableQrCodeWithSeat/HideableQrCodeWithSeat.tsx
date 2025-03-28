@@ -3,11 +3,11 @@ import { Platform, View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { BookingVenueResponse, SubcategoryIdEnum } from 'api/gen'
+import { getHideableQrCodeWithSeat } from 'features/bookings/components/OldBookingDetails/TicketBody/HideableQrCodeWithSeat/getHideableQrCodeWithSeat'
 import {
   QrCodeWithSeat,
   QrCodeWithSeatProps,
-} from 'features/bookings/components/TicketBody/QrCodeWithSeat/QrCodeWithSeat'
-import { getHideableQrCodeWithSeat } from 'features/bookings/components/TicketBody/SafeSeatWithQrCode/getHideableQrCodeWithSeat'
+} from 'features/bookings/components/OldBookingDetails/TicketBody/QrCodeWithSeat/QrCodeWithSeat'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import genericQrCode from 'ui/images/generic-qr-code.png'
