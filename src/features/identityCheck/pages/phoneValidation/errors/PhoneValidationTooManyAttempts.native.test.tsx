@@ -5,18 +5,25 @@ import { contactSupport } from 'features/auth/helpers/contactSupport'
 import { PhoneValidationTooManyAttempts } from 'features/identityCheck/pages/phoneValidation/errors/PhoneValidationTooManyAttempts'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
-import { fireEvent, render, waitFor, screen } from 'tests/utils'
+import { userEvent, render, waitFor, screen } from 'tests/utils'
 
 const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
 
 jest.mock('libs/firebase/analytics/analytics')
+jest.useFakeTimers()
 
-describe('Contact support button', () => {
+describe('PhoneValidationTooManyAttempts', () => {
+  it('should render correctly', () => {
+    render(<PhoneValidationTooManyAttempts />)
+
+    expect(screen).toMatchSnapshot()
+  })
+
   it('should open mail app when clicking on contact support button', async () => {
     render(<PhoneValidationTooManyAttempts />)
 
     const contactSupportButton = screen.getByText('Contacter le support')
-    fireEvent.press(contactSupportButton)
+    await userEvent.press(contactSupportButton)
 
     await waitFor(() => {
       expect(openUrl).toHaveBeenCalledWith(
@@ -26,14 +33,10 @@ describe('Contact support button', () => {
       )
     })
   })
-})
 
-jest.mock('libs/firebase/analytics/analytics')
-
-describe('Navigate to home button', () => {
   it('should redirect to Home when clicking on homepage button', async () => {
     render(<PhoneValidationTooManyAttempts />)
-    fireEvent.press(screen.getByText('Retourner à l’accueil'))
+    await userEvent.press(screen.getByText('Retourner à l’accueil'))
 
     expect(navigate).toHaveBeenCalledWith(homeNavConfig[0], homeNavConfig[1])
   })
