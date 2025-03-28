@@ -110,7 +110,6 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
       <PassPlaylist
         testID="offersModuleList"
         title="Toutes les offres"
-        TitleComponent={PlaylistTitleText}
         data={hits}
         itemHeight={LENGTH_M}
         itemWidth={LENGTH_M * RATIO_HOME_IMAGE}
@@ -140,8 +139,6 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
     </Container>
   )
 }
-
-const PlaylistTitleText = styled(Typo.Title3).attrs(getHeadingAttrs(2))``
 
 const Container = styled.View({ marginTop: getSpacing(6) })
 

@@ -867,23 +867,47 @@ exports[`<Venue /> should match snapshot 1`] = `
                           ]
                         }
                       >
-                        <Text
+                        <View
                           numberOfLines={2}
                           style={
                             [
                               {
-                                "color": "#161617",
-                                "fontFamily": "Montserrat-Bold",
-                                "fontSize": 19,
-                                "lineHeight": 30.4,
+                                "alignItems": "center",
+                                "flexDirection": "row",
                                 "marginHorizontal": 24,
                               },
                             ]
                           }
                           testID="playlistTitle"
                         >
-                          Toutes les offres
-                        </Text>
+                          <Text
+                            style={
+                              [
+                                {
+                                  "color": "#161617",
+                                  "fontFamily": "Montserrat-Bold",
+                                  "fontSize": 19,
+                                  "lineHeight": 30.4,
+                                },
+                              ]
+                            }
+                          >
+                            Toutes les offres
+                          </Text>
+                          <Text
+                            accessibilityHidden={true}
+                            style={
+                              [
+                                {
+                                  "color": "#161617",
+                                  "fontFamily": "Montserrat-Bold",
+                                  "fontSize": 19,
+                                  "lineHeight": 30.4,
+                                },
+                              ]
+                            }
+                          />
+                        </View>
                       </View>
                     </View>
                     <View
@@ -2484,23 +2508,47 @@ exports[`<Venue /> should match snapshot 1`] = `
                             ]
                           }
                         >
-                          <Text
+                          <View
                             numberOfLines={2}
                             style={
                               [
                                 {
-                                  "color": "#161617",
-                                  "fontFamily": "Montserrat-Bold",
-                                  "fontSize": 19,
-                                  "lineHeight": 30.4,
+                                  "alignItems": "center",
+                                  "flexDirection": "row",
                                   "marginHorizontal": 24,
                                 },
                               ]
                             }
                             testID="playlistTitle"
                           >
-                            Test
-                          </Text>
+                            <Text
+                              style={
+                                [
+                                  {
+                                    "color": "#161617",
+                                    "fontFamily": "Montserrat-Bold",
+                                    "fontSize": 19,
+                                    "lineHeight": 30.4,
+                                  },
+                                ]
+                              }
+                            >
+                              Test
+                            </Text>
+                            <Text
+                              accessibilityHidden={true}
+                              style={
+                                [
+                                  {
+                                    "color": "#161617",
+                                    "fontFamily": "Montserrat-Bold",
+                                    "fontSize": 19,
+                                    "lineHeight": 30.4,
+                                  },
+                                ]
+                              }
+                            />
+                          </View>
                         </View>
                       </View>
                       <View
@@ -6000,23 +6048,47 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                           ]
                         }
                       >
-                        <Text
+                        <View
                           numberOfLines={2}
                           style={
                             [
                               {
-                                "color": "#161617",
-                                "fontFamily": "Montserrat-Bold",
-                                "fontSize": 19,
-                                "lineHeight": 30.4,
+                                "alignItems": "center",
+                                "flexDirection": "row",
                                 "marginHorizontal": 24,
                               },
                             ]
                           }
                           testID="playlistTitle"
                         >
-                          Toutes les offres
-                        </Text>
+                          <Text
+                            style={
+                              [
+                                {
+                                  "color": "#161617",
+                                  "fontFamily": "Montserrat-Bold",
+                                  "fontSize": 19,
+                                  "lineHeight": 30.4,
+                                },
+                              ]
+                            }
+                          >
+                            Toutes les offres
+                          </Text>
+                          <Text
+                            accessibilityHidden={true}
+                            style={
+                              [
+                                {
+                                  "color": "#161617",
+                                  "fontFamily": "Montserrat-Bold",
+                                  "fontSize": 19,
+                                  "lineHeight": 30.4,
+                                },
+                              ]
+                            }
+                          />
+                        </View>
                       </View>
                     </View>
                     <View
@@ -7617,23 +7689,47 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                             ]
                           }
                         >
-                          <Text
+                          <View
                             numberOfLines={2}
                             style={
                               [
                                 {
-                                  "color": "#161617",
-                                  "fontFamily": "Montserrat-Bold",
-                                  "fontSize": 19,
-                                  "lineHeight": 30.4,
+                                  "alignItems": "center",
+                                  "flexDirection": "row",
                                   "marginHorizontal": 24,
                                 },
                               ]
                             }
                             testID="playlistTitle"
                           >
-                            Test
-                          </Text>
+                            <Text
+                              style={
+                                [
+                                  {
+                                    "color": "#161617",
+                                    "fontFamily": "Montserrat-Bold",
+                                    "fontSize": 19,
+                                    "lineHeight": 30.4,
+                                  },
+                                ]
+                              }
+                            >
+                              Test
+                            </Text>
+                            <Text
+                              accessibilityHidden={true}
+                              style={
+                                [
+                                  {
+                                    "color": "#161617",
+                                    "fontFamily": "Montserrat-Bold",
+                                    "fontSize": 19,
+                                    "lineHeight": 30.4,
+                                  },
+                                ]
+                              }
+                            />
+                          </View>
                         </View>
                       </View>
                       <View

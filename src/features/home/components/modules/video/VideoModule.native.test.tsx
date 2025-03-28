@@ -85,6 +85,13 @@ describe('VideoModule', () => {
     expect(multiOfferList).toBeOnTheScreen()
   })
 
+  it('should render one offer component when one offer', async () => {
+    mockUseVideoOffers.mockReturnValueOnce({ offers: [offerFixture] })
+    renderVideoModule()
+
+    expect(await screen.findByTestId('videoMonoOfferTile')).toBeOnTheScreen()
+  })
+
   it('should render mobile design if mobile viewport', async () => {
     mockUseVideoOffers.mockReturnValueOnce({ offers: [offerFixture] })
     renderVideoModule()
@@ -105,6 +112,32 @@ describe('VideoModule', () => {
     await screen.findByText(offerFixture.offer.name)
 
     expect(multiOfferList).toBeOnTheScreen()
+  })
+
+  it('should show SeeMore button when is multiples offers and more than three offers', async () => {
+    mockUseVideoOffers.mockReturnValueOnce({
+      offers: [offerFixture, offerFixture2, offerFixture3, offerFixture4],
+    })
+    renderVideoModule(true)
+
+    const seeMoreWording = screen.getByText('Voir tout')
+
+    await screen.findByText(videoModuleFixture.title)
+
+    expect(seeMoreWording).toBeOnTheScreen()
+  })
+
+  it('should not show SeeMore button when is multiples offers and less than three offers', async () => {
+    mockUseVideoOffers.mockReturnValueOnce({
+      offers: [offerFixture, offerFixture2],
+    })
+    renderVideoModule(true)
+
+    const seeMoreWording = screen.queryByText('Voir tout')
+
+    await screen.findByText(videoModuleFixture.title)
+
+    expect(seeMoreWording).not.toBeOnTheScreen()
   })
 })
 
@@ -128,6 +161,26 @@ const offerFixture2 = {
   objectID: 9876,
   venue: {
     id: 5432,
+  },
+}
+const offerFixture3 = {
+  offer: {
+    thumbUrl: 'http://thumbnail',
+    subcategoryId: 'CONFERENCE',
+  },
+  objectID: 9877,
+  venue: {
+    id: 5433,
+  },
+}
+const offerFixture4 = {
+  offer: {
+    thumbUrl: 'http://thumbnail',
+    subcategoryId: 'CONFERENCE',
+  },
+  objectID: 9878,
+  venue: {
+    id: 5434,
   },
 }
 

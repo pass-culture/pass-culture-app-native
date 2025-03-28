@@ -107,7 +107,7 @@ describe('<HomeModule />', () => {
       const { container } = renderHomeModule(highlightOfferModuleFixture)
 
       await act(async () => {
-        expect(screen.getByText(highlightOfferModuleFixture.highlightTitle)).toBeInTheDocument()
+        expect(screen.getByText('L’offre du moment')).toBeInTheDocument()
       })
 
       const results = await checkAccessibilityFor(container)

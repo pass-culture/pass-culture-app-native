@@ -309,7 +309,6 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = ({
           </ScrollToTopContainer>
         ) : null}
       </HomeBodyLoadingContainer>
-      <Spacer.Column numberOfSpaces={6} />
       {statusBar ?? null}
     </Container>
   )
@@ -326,6 +325,7 @@ export const GenericHome: FunctionComponent<GenericHomeProps> = (props) => {
 const HomeBodyLoadingContainer = styled.View<{ hide: boolean }>(({ hide }) => ({
   height: hide ? 0 : '100%',
   overflow: 'hidden',
+  marginVertical: getSpacing(6),
 }))
 
 const Container = styled.View({

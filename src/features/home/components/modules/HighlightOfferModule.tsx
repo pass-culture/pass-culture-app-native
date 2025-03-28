@@ -2,10 +2,11 @@ import React, { memo, useEffect } from 'react'
 import styled from 'styled-components/native'
 
 import { useHighlightOffer } from 'features/home/api/useHighlightOffer'
+import { AccessibleTitle } from 'features/home/components/AccessibleTitle'
 import { HighlightOfferModule as HighlightOfferModuleType } from 'features/home/types'
 import { analytics } from 'libs/analytics/provider'
 import { ContentTypes } from 'libs/contentful/types'
-import { Spacer, Typo } from 'ui/theme'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 
 import { MarketingBlockExclusivity } from './marketing/MarketingBlockExclusivity'
 
@@ -46,15 +47,11 @@ const UnmemoizedHighlightOfferModule = (props: HighlightOfferModuleProps) => {
     })
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
-
   if (!highlightOffer) return null
 
   return (
-    <Container>
-      <StyledTitleContainer>
-        <StyledTitle>{props.highlightTitle}</StyledTitle>
-      </StyledTitleContainer>
-      <Spacer.Column numberOfSpaces={5} />
+    <StyledViewGap gap={5}>
+      <AccessibleTitle title={props.highlightTitle} />
       <MarketingBlockExclusivity
         offer={highlightOffer}
         homeEntryId={homeEntryId}
@@ -62,20 +59,12 @@ const UnmemoizedHighlightOfferModule = (props: HighlightOfferModuleProps) => {
         moduleId={props.id}
         shouldDisplayPublicationDate={displayPublicationDate}
       />
-    </Container>
+    </StyledViewGap>
   )
 }
 
 export const HighlightOfferModule = memo(UnmemoizedHighlightOfferModule)
 
-const Container = styled.View(({ theme }) => ({
+const StyledViewGap = styled(ViewGap)(({ theme }) => ({
   paddingBottom: theme.home.spaceBetweenModules,
 }))
-
-const StyledTitleContainer = styled.View(({ theme }) => ({
-  marginHorizontal: theme.contentPage.marginHorizontal,
-}))
-
-const StyledTitle = styled(Typo.Title3).attrs({
-  numberOfLines: 2,
-})``

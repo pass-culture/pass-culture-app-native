@@ -4,6 +4,7 @@ import React, { FunctionComponent } from 'react'
 import { ImageBackground, View } from 'react-native'
 import styled from 'styled-components/native'
 
+import { AccessibleTitle } from 'features/home/components/AccessibleTitle'
 import { VideoMonoOfferTile } from 'features/home/components/modules/video/VideoMonoOfferTile'
 import { VideoModuleProps } from 'features/home/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
@@ -12,7 +13,7 @@ import { SeeMoreWithEye } from 'ui/components/SeeMoreWithEye'
 import { Separator } from 'ui/components/Separator'
 import { HorizontalOfferTile } from 'ui/components/tiles/HorizontalOfferTile'
 import { Play } from 'ui/svg/icons/Play'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 import { videoModuleColorsMapping } from 'ui/theme/videoModuleColorsMapping'
@@ -29,17 +30,28 @@ export const VideoModuleDesktop: FunctionComponent<VideoModuleProps> = (props) =
   const nbOfSeparators = hasOnlyTwoOffers ? 1 : 2
 
   function renderTitleSeeMore() {
-    return <SeeMoreWithEye title={props.videoTitle} onPressSeeMore={props.showVideoModal} />
+    return showSeeMore && props.isMultiOffer ? (
+      <SeeMoreWithEye title={props.videoTitle} onPressSeeMore={props.showVideoModal} />
+    ) : null
+  }
+
+  function renderSoloOffer() {
+    return props.offers[0] ? (
+      <StyledVideoMonoOfferTile
+        offer={props.offers[0]}
+        color={props.color}
+        hideModal={props.hideVideoModal}
+        analyticsParams={props.analyticsParams}
+      />
+    ) : null
   }
 
   return (
     <React.Fragment>
       <StyledTitleContainer>
-        <Typo.Title3 numberOfLines={2}>{props.title}</Typo.Title3>
-        {showSeeMore && props.isMultiOffer && renderTitleSeeMore()}
+        <AccessibleTitle testID="playlistTitle" title={props.title} />
+        {renderTitleSeeMore()}
       </StyledTitleContainer>
-      <Spacer.Column numberOfSpaces={5} />
-
       <View>
         <ColorCategoryBackgroundWrapper>
           <ColorCategoryBackground
@@ -66,7 +78,6 @@ export const VideoModuleDesktop: FunctionComponent<VideoModuleProps> = (props) =
             </Thumbnail>
           </StyledTouchableHighlight>
           <StyledView>
-            <Spacer.Row numberOfSpaces={4} />
             {props.isMultiOffer ? (
               <StyledMultiOfferList hasOnlyTwoOffers={hasOnlyTwoOffers}>
                 {props.offers.slice(0, 3).map((offer: Offer, index) => (
@@ -83,14 +94,7 @@ export const VideoModuleDesktop: FunctionComponent<VideoModuleProps> = (props) =
                 ))}
               </StyledMultiOfferList>
             ) : (
-              <StyledVideoMonoOfferTile
-                // @ts-expect-error: because of noUncheckedIndexedAccess
-                offer={props.offers[0]}
-                color={props.color}
-                hideModal={props.hideVideoModal}
-                analyticsParams={props.analyticsParams}
-                homeEntryId={props.homeEntryId}
-              />
+              renderSoloOffer()
             )}
           </StyledView>
         </VideoOfferContainer>
@@ -179,11 +183,11 @@ const StyledTouchableHighlight = styled.TouchableHighlight.attrs(({ theme }) => 
   width: THUMBNAIL_WIDTH,
 })
 
-const StyledTitleContainer = styled.View(({ theme }) => ({
-  marginHorizontal: theme.contentPage.marginHorizontal,
+const StyledTitleContainer = styled.View({
   flexDirection: 'row',
+  marginBottom: getSpacing(5),
   alignItems: 'center',
-}))
+})
 
 const StyledVideoMonoOfferTile = styled(VideoMonoOfferTile)({
   flexGrow: 1,

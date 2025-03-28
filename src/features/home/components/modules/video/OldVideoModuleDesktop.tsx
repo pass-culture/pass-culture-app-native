@@ -5,6 +5,7 @@ import { ImageBackground, View } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
 
+import { AccessibleTitle } from 'features/home/components/AccessibleTitle'
 import { BlackCaption } from 'features/home/components/BlackCaption'
 import { BlackGradient } from 'features/home/components/BlackGradient'
 import { TEXT_BACKGROUND_OPACITY } from 'features/home/components/constants'
@@ -38,16 +39,17 @@ export const OldVideoModuleDesktop: FunctionComponent<VideoModuleProps> = (props
   const nbOfSeparators = hasOnlyTwoOffers ? 1 : 2
 
   function renderTitleSeeMore() {
-    return <SeeMoreWithEye title={props.videoTitle} onPressSeeMore={props.showVideoModal} />
+    return showSeeMore && props.isMultiOffer ? (
+      <SeeMoreWithEye title={props.videoTitle} onPressSeeMore={props.showVideoModal} />
+    ) : null
   }
 
   return (
     <React.Fragment>
       <StyledTitleContainer>
-        <StyledTitleComponent>{props.title}</StyledTitleComponent>
-        {showSeeMore && props.isMultiOffer && renderTitleSeeMore()}
+        <AccessibleTitle testID="playlistTitle" title={props.title} />
+        {renderTitleSeeMore()}
       </StyledTitleContainer>
-      <Spacer.Column numberOfSpaces={5} />
 
       <StyledWrapper isMultiOffer={props.isMultiOffer} testID="desktop-video-module">
         <ColorCategoryBackground
@@ -190,15 +192,11 @@ const StyledTouchableHighlight = styled.TouchableHighlight.attrs(({ theme }) => 
   width: isMultiOffer ? THUMBNAIL_WIDTH_MULTI_OFFER : THUMBNAIL_WIDTH_MONO_OFFER,
 }))
 
-const StyledTitleContainer = styled.View(({ theme }) => ({
-  marginHorizontal: theme.contentPage.marginHorizontal,
+const StyledTitleContainer = styled.View({
   flexDirection: 'row',
+  marginBottom: getSpacing(5),
   alignItems: 'center',
-}))
-
-const StyledTitleComponent = styled(Typo.Title3).attrs({
-  numberOfLines: 2,
-})({})
+})
 
 const StyledVideoMonoOfferTile = styled(VideoMonoOfferTile)({
   flex: 1,

@@ -18,6 +18,7 @@ exports[`GenericHome With not displayed skeleton by default should display real 
       [
         {
           "height": "100%",
+          "marginVertical": 24,
           "overflow": "hidden",
         },
       ]
@@ -185,16 +186,6 @@ exports[`GenericHome With not displayed skeleton by default should display real 
       </View>
     </RCTScrollView>
   </View>
-  <View
-    numberOfSpaces={6}
-    style={
-      [
-        {
-          "height": 24,
-        },
-      ]
-    }
-  />
 </View>
 `;
 
@@ -216,6 +207,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
       [
         {
           "height": "100%",
+          "marginVertical": 24,
           "overflow": "hidden",
         },
       ]
@@ -383,15 +375,5 @@ exports[`GenericHome With not displayed skeleton by default should display skele
       </View>
     </RCTScrollView>
   </View>
-  <View
-    numberOfSpaces={6}
-    style={
-      [
-        {
-          "height": 24,
-        },
-      ]
-    }
-  />
 </View>
 `;
