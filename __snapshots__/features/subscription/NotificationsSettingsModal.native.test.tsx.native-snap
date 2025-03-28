@@ -1041,15 +1041,6 @@ exports[`<NotificationsSettingsModal /> should render correctly 1`] = `
                 </View>
               </View>
             </View>
-            <Modal
-              animationType="fade"
-              hardwareAccelerated={false}
-              onRequestClose={[Function]}
-              statusBarTranslucent={true}
-              testID="modal-notifications-permission-modal"
-              transparent={true}
-              visible={false}
-            />
           </View>
         </RCTScrollView>
       </View>

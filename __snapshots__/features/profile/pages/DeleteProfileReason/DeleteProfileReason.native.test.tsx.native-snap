@@ -279,7 +279,7 @@ exports[`<DeleteProfileReason /> should match snapshot 1`] = `
     onViewableItemsChanged={[Function]}
     removeClippedSubviews={false}
     renderItem={[Function]}
-    scrollEventThrottle={50}
+    scrollEventThrottle={0.0001}
     stickyHeaderIndices={[]}
     viewabilityConfig={
       {
