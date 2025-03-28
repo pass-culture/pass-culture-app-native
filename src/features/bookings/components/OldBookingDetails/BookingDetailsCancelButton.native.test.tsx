@@ -1,12 +1,11 @@
 import mockdate from 'mockdate'
 import React from 'react'
 
-import { BookingReponse, SubcategoryIdEnum } from 'api/gen'
-import type { BookingsResponse } from 'api/gen'
+import { BookingReponse, BookingsResponse, SubcategoryIdEnum } from 'api/gen'
 import {
   BookingDetailsCancelButton,
   BookingDetailsCancelButtonProps,
-} from 'features/bookings/components/OldTicketBody/BookingDetailsCancelButton'
+} from 'features/bookings/components/OldBookingDetails/BookingDetailsCancelButton'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { Booking } from 'features/bookings/types'
 import { isUserExBeneficiary } from 'features/profile/helpers/isUserExBeneficiary'

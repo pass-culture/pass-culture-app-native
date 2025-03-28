@@ -6,8 +6,8 @@ import { BookingVenueResponse, SubcategoryIdEnum } from 'api/gen'
 import {
   QrCodeWithSeat,
   QrCodeWithSeatProps,
-} from 'features/bookings/components/TicketBody/QrCodeWithSeat/QrCodeWithSeat'
-import { getHideableQrCodeWithSeat } from 'features/bookings/components/TicketBody/SafeSeatWithQrCode/getHideableQrCodeWithSeat'
+} from 'features/bookings/components/OldBookingDetails/TicketBody/QrCodeWithSeat/QrCodeWithSeat'
+import { getHideableQrCodeWithSeat } from 'features/bookings/components/OldBookingDetails/TicketBody/SafeSeatWithQrCode/getHideableQrCodeWithSeat'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import genericQrCode from 'ui/images/generic-qr-code.png'

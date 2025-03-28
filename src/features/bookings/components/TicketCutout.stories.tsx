@@ -3,8 +3,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { SubcategoryIdEnum, WithdrawalTypeEnum } from 'api/gen'
-import { TicketBody as OldTicketBody } from 'features/bookings/components/OldBookingDetails/TicketBody'
-import { TicketBody } from 'features/bookings/components/TicketBody/TicketBody'
+import { TicketBody as OldTicketBody } from 'features/bookings/components/OldBookingDetails/TicketBody/TicketBody'
 import { TicketCutout } from 'features/bookings/components/TicketCutout'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { VenueBlock } from 'features/offer/components/OfferVenueBlock/VenueBlock'
@@ -75,7 +74,7 @@ const variantConfig: Variants<typeof TicketCutout> = [
           icon={IdCard}
         />
       ),
-      children: <TicketBody withdrawalType={WithdrawalTypeEnum.no_ticket} />,
+      children: <React.Fragment />,
       venueInfo: <VenueBlock venueId={bookingsSnap.ongoing_bookings[0].stock.offer.venue.id} />,
     },
   },

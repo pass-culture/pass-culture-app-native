@@ -9,9 +9,12 @@ import {
 } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
-import { BookingDetailsTicketContentProps } from 'features/bookings/components/BookingDetailsTicketContent'
-import { getTickets, TicketsProps } from 'features/bookings/components/Ticket/getTickets'
-import { TicketSwiperControls } from 'features/bookings/components/Ticket/TicketSwiperControls'
+import { BookingDetailsTicketContentProps } from 'features/bookings/components/OldBookingDetails/BookingDetailsTicketContent'
+import {
+  getTickets,
+  TicketsProps,
+} from 'features/bookings/components/OldBookingDetails/Ticket/getTickets'
+import { TicketSwiperControls } from 'features/bookings/components/OldBookingDetails/Ticket/TicketSwiperControls'
 import { getSpacing, Spacer } from 'ui/theme'
 
 const SEPARATOR_VALUE = 4

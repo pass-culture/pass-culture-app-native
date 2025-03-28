@@ -1,9 +1,9 @@
 import React from 'react'
 
 import { BookingReponse } from 'api/gen'
-import { BookingDetailsTicketContent } from 'features/bookings/components/BookingDetailsTicketContent'
-import { ThreeShapesTicket } from 'features/bookings/components/ThreeShapesTicket'
-import { QrCodeWithSeatProps } from 'features/bookings/components/TicketBody/QrCodeWithSeat/QrCodeWithSeat'
+import { BookingDetailsTicketContent } from 'features/bookings/components/OldBookingDetails/BookingDetailsTicketContent'
+import { ThreeShapesTicket } from 'features/bookings/components/OldBookingDetails/ThreeShapesTicket'
+import { QrCodeWithSeatProps } from 'features/bookings/components/OldBookingDetails/TicketBody/QrCodeWithSeat/QrCodeWithSeat'
 
 type Props = {
   booking: BookingReponse

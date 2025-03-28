@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { BookingReponse } from 'api/gen'
-import { TicketWithContent } from 'features/bookings/components/Ticket/TicketWithContent'
+import { TicketWithContent } from 'features/bookings/components/OldBookingDetails/Ticket/TicketWithContent'
 
 export type TicketsProps = {
   booking: BookingReponse
