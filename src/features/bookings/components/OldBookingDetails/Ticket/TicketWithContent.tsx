@@ -1,8 +1,8 @@
 import React from 'react'
-import { View } from 'react-native'
 
 import { BookingReponse } from 'api/gen'
-import { BookingDetailsTicketContent } from 'features/bookings/components/BookingDetailsTicketContent'
+import { BookingDetailsTicketContent } from 'features/bookings/components/OldBookingDetails/BookingDetailsTicketContent'
+import { ThreeShapesTicket } from 'features/bookings/components/OldBookingDetails/ThreeShapesTicket'
 import { QrCodeWithSeatProps } from 'features/bookings/components/OldBookingDetails/TicketBody/QrCodeWithSeat/QrCodeWithSeat'
 
 type Props = {
@@ -13,8 +13,8 @@ type Props = {
 
 export function TicketWithContent({ booking, externalBookings, testID }: Readonly<Props>) {
   return (
-    <View testID={testID}>
+    <ThreeShapesTicket testID={testID}>
       <BookingDetailsTicketContent booking={booking} externalBookings={externalBookings} />
-    </View>
+    </ThreeShapesTicket>
   )
 }

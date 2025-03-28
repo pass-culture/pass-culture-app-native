@@ -2,8 +2,8 @@ import { ComponentMeta } from '@storybook/react'
 import React from 'react'
 
 import { SubcategoryIdEnum, WithdrawalTypeEnum } from 'api/gen'
-import { TicketBody } from 'features/bookings/components/OldBookingDetails/TicketBody'
-import { ThreeShapesTicket } from 'features/bookings/components/ThreeShapesTicket'
+import { TicketBody } from 'features/bookings/components/OldBookingDetails/TicketBody/TicketBody'
+import { ThreeShapesTicket } from 'features/bookings/components/OldBookingDetails/ThreeShapesTicket'
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 
 const meta: ComponentMeta<typeof TicketBody> = {
