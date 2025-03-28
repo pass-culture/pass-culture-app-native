@@ -38,6 +38,7 @@ export const cheatcodesStackNavigatorConfig = {
       CheatcodesScreenRemoteBanners: 'cheatcodes/remote-banners',
       CheatcodesScreenRemoteConfig: 'cheatcodes/other/remote-config',
       CheatcodesScreenTrustedDeviceInfos: 'cheatcodes/trusted-device/trusted-device-infos',
+      CheatcodesScreenNotEligibleEduConnect: 'cheatcodes/identity-check/not-eligible-educonnect',
     },
   },
 }
