@@ -17,7 +17,7 @@ describe('useNotEligibleEduConnectErrorData', () => {
       'Ton compte ÉduConnect est déjà rattaché à un compte pass Culture. Vérifie que tu n’as pas déjà créé un compte avec une autre adresse e-mail.\n\nTu peux contacter le support pour plus d’informations.',
     descriptionAlignment: 'center',
     primaryButton: {
-      text: 'Contacter le support',
+      wording: 'Contacter le support',
       icon: Email,
       externalNav: contactSupport.forGenericQuestion,
     },
@@ -40,7 +40,7 @@ describe('useNotEligibleEduConnectErrorData', () => {
       'Il semblerait que les informations que tu nous as communiquées ne soient pas correctes.\n\nRefais une demande en vérifiant ton identité avec ta pièce d’identité.',
     descriptionAlignment: 'center',
     primaryButton: {
-      text: 'Vérifier mon identité',
+      wording: 'Vérifier mon identité',
       navigateTo: {
         screen: 'SelectIDOrigin',
       },
@@ -55,7 +55,7 @@ describe('useNotEligibleEduConnectErrorData', () => {
       'Les informations provenant d’ÉduConnect indiquent que vous êtes le représentant légal d’un jeune scolarisé.\n\nL’usage du pass Culture est strictement nominatif. Le compte doit être créé et utilisé par un jeune éligible, de 15 à 18 ans. L’identification doit se faire au nom du futur bénéficiaire. ',
     descriptionAlignment: 'center',
     primaryButton: {
-      text: 'Réessayer de m’identifier',
+      wording: 'Réessayer de m’identifier',
       onPress: expect.any(Function),
       navigateTo: { screen: 'EduConnectForm' },
     },
