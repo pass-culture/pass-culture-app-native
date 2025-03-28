@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, ReactElement } from 'react'
 import { View, ViewProps } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -7,7 +7,7 @@ import { getSpacing, getSpacingString, Typo } from 'ui/theme'
 
 type TagProps = ViewProps & {
   label: string
-  Icon?: FunctionComponent<AccessibleIcon>
+  Icon?: FunctionComponent<AccessibleIcon> | ReactElement
   backgroundColor?: string
   paddingHorizontal?: number
 }
@@ -29,7 +29,7 @@ export const Tag: FunctionComponent<TagProps> = ({
     <Wrapper backgroundColor={backgroundColor} paddingHorizontal={paddingHorizontal} {...props}>
       {Icon ? (
         <IconContainer>
-          <Icon testID="tagIcon" />
+          {typeof Icon === 'function' ? <Icon testID="tagIcon" /> : Icon}
         </IconContainer>
       ) : null}
       <LabelText>{label}</LabelText>
