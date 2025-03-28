@@ -4,8 +4,8 @@ import styled from 'styled-components/native'
 
 import { BookingOfferResponseAddress, BookingReponse, BookingVenueResponse } from 'api/gen'
 import { BookingPrecisions } from 'features/bookings/components/BookingPrecision'
-import { TicketBody } from 'features/bookings/components/TicketBody/TicketBody'
 import { TicketCutout } from 'features/bookings/components/TicketCutout'
+import { TicketCutoutBottom } from 'features/bookings/components/TicketCutoutBottom'
 import { getBookingLabels } from 'features/bookings/helpers'
 import { BookingProperties } from 'features/bookings/types'
 import { VenueBlockAddress, VenueBlockVenue } from 'features/offer/components/OfferVenueBlock/type'
@@ -77,7 +77,7 @@ export const BookingDetailsContent = ({
             icon={IdCard}
           />
         }>
-        <TicketBody withdrawalType={offer.withdrawalType} />
+        <TicketCutoutBottom offer={offer} />
       </TicketCutout>
       <ErrorBannerContainer>
         <ErrorBanner message="Tu n’as pas le droit de céder ou de revendre ton billet." />
