@@ -8,11 +8,7 @@ import { ContentfulLabelCategories } from 'libs/contentful/types'
 import { env } from 'libs/environment/env'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-<<<<<<< HEAD
-=======
 import { useSearchGroupLabelMapping } from 'libs/subcategories/mappings'
-import { getSpacing } from 'ui/theme'
->>>>>>> fb1b38674b (feat: add gtl playlist on record store venues)
 
 export const BookPlaylists: React.FC = () => {
   const isReplicaAlgoliaIndexActive = useFeatureFlag(

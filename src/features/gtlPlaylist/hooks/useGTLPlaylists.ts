@@ -39,8 +39,11 @@ export function useGTLPlaylists({ venue, searchIndex, searchGroupLabel }: UseGTL
     ],
     queryFn: async (): Promise<GtlPlaylistData[]> => {
       const gtlPlaylistsConfig = await fetchGTLPlaylistConfig()
-      // Pour les cas des pages lieux visitées après être passé par la thematique search, je pense que je devrais vérifier que je n'ai pas de searchgroupLabel avant de renvoyer un tableau vide
-      if (venue && !getShouldDisplayGtlPlaylist({ venueType: venue?.venueTypeCode })) {
+      if (
+        venue &&
+        !searchGroupLabel &&
+        !getShouldDisplayGtlPlaylist({ venueType: venue?.venueTypeCode })
+      ) {
         return Promise.resolve([])
       }
 
