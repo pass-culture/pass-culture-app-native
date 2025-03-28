@@ -1,7 +1,10 @@
+import { addDays } from 'date-fns'
 import mockDate from 'mockdate'
 import React from 'react'
 import { Button } from 'react-native'
+import { QueryObserverSuccessResult } from 'react-query'
 
+import { api } from 'api/api'
 import * as Auth from 'features/auth/context/AuthContext'
 import { favoriteOfferResponseSnap } from 'features/favorites/fixtures/favoriteOfferResponseSnap'
 import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteResponseSnap'
@@ -9,16 +12,36 @@ import { OfferCTAProvider } from 'features/offer/components/OfferContent/OfferCT
 import * as useOfferCTAContextModule from 'features/offer/components/OfferContent/OfferCTAProvider'
 import { OfferFooter, OfferFooterProps } from 'features/offer/components/OfferFooter/OfferFooter'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
+import { remindersResponse } from 'features/offer/fixtures/remindersResponse'
+import * as useGetRemindersQueryModule from 'features/offer/queries/useGetRemindersQuery'
+import { GetReminderResponse } from 'features/offer/types'
 import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
+import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
+
+jest.mock('libs/jwt/jwt')
 
 const useRemoteConfigSpy = jest.spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
 
 const useAuthContextSpy = jest.spyOn(Auth, 'useAuthContext')
 
 const useOfferCTASpy = jest.spyOn(useOfferCTAContextModule, 'useOfferCTA')
+
+const useGetRemindersQuerySpy = jest.spyOn(
+  useGetRemindersQueryModule,
+  'useGetRemindersQuery'
+) as jest.Mock<Partial<QueryObserverSuccessResult<GetReminderResponse, Error>>>
+
+const addReminderMutationSpy = jest.spyOn(api, 'postNativeV1MeReminders')
+
+const mockShowErrorSnackBar = jest.fn()
+jest.mock('ui/components/snackBar/SnackBarContext', () => ({
+  useSnackBarContext: () => ({
+    showErrorSnackBar: mockShowErrorSnackBar,
+  }),
+}))
 
 const mockUseOfferCTAReturnValue = {
   wording: 'Cine content CTA',
@@ -70,10 +93,11 @@ describe('OfferFooter', () => {
     const offerWithPublicationDate = {
       ...offerResponseSnap,
       isReleased: false,
-      publicationDate: '2025-04-01T14:15:00Z',
+      publicationDate: addDays(CURRENT_DATE, 20).toString(),
     }
 
     beforeEach(() => {
+      useGetRemindersQuerySpy.mockReturnValue({ data: undefined, isLoading: false })
       mockDate.set(CURRENT_DATE)
       useRemoteConfigSpy.mockReturnValue({
         ...DEFAULT_REMOTE_CONFIG,
@@ -102,18 +126,17 @@ describe('OfferFooter', () => {
       expect(screen.getByText('Retirer des favoris')).toBeOnTheScreen()
     })
 
-    it('should display enableNotifications button', async () => {
+    it('should display addReminder button', async () => {
       renderOfferFooter({ offer: offerWithPublicationDate })
 
       expect(screen.getByText('Ajouter un rappel')).toBeOnTheScreen()
     })
 
-    it('should display disableNotifications button', async () => {
+    it('should display disableReminder button', async () => {
       useAuthContextSpy.mockReturnValueOnce({ ...mockAuthContextReturnValue, isLoggedIn: true })
+      useGetRemindersQuerySpy.mockReturnValueOnce({ data: remindersResponse, isLoading: false })
 
       renderOfferFooter({ offer: offerWithPublicationDate })
-
-      await user.press(await screen.findByText('Ajouter un rappel'))
 
       expect(screen.getByText('Désactiver le rappel')).toBeOnTheScreen()
     })
@@ -127,12 +150,7 @@ describe('OfferFooter', () => {
     })
 
     it('should add offer to favorites when user is logged in and presses addTofavorite button', async () => {
-      useAuthContextSpy.mockReturnValueOnce({
-        isLoggedIn: true,
-        isUserLoading: false,
-        setIsLoggedIn: jest.fn(),
-        refetchUser: jest.fn(),
-      })
+      useAuthContextSpy.mockReturnValueOnce({ ...mockAuthContextReturnValue, isLoggedIn: true })
 
       const { addFavorite } = renderOfferFooter({ offer: offerWithPublicationDate })
 
@@ -142,12 +160,7 @@ describe('OfferFooter', () => {
     })
 
     it('should remove offer from favorites when user is logged in and presses removeFromfavorite button', async () => {
-      useAuthContextSpy.mockReturnValueOnce({
-        isLoggedIn: true,
-        isUserLoading: false,
-        setIsLoggedIn: jest.fn(),
-        refetchUser: jest.fn(),
-      })
+      useAuthContextSpy.mockReturnValueOnce({ ...mockAuthContextReturnValue, isLoggedIn: true })
 
       const { removeFavorite, favorite } = renderOfferFooter({
         offer: offerWithPublicationDate,
@@ -165,6 +178,22 @@ describe('OfferFooter', () => {
       expect(screen.queryByText('Mettre en favori')).not.toBeOnTheScreen()
 
       expect(screen.getByLabelText('Chargement en cours')).toBeOnTheScreen()
+    })
+
+    it('should display snackbar when addReminder fails', async () => {
+      useAuthContextSpy.mockReturnValueOnce({ ...mockAuthContextReturnValue, isLoggedIn: true })
+      addReminderMutationSpy.mockRejectedValueOnce({ status: 400 })
+
+      renderOfferFooter({
+        offer: offerWithPublicationDate,
+      })
+
+      await user.press(await screen.findByText('Ajouter un rappel'))
+
+      expect(mockShowErrorSnackBar).toHaveBeenCalledWith({
+        message: 'L’offre n’a pas pu être ajoutée à tes rappels',
+        timeout: SNACK_BAR_TIME_OUT,
+      })
     })
   })
 
