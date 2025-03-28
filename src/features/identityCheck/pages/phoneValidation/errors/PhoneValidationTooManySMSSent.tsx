@@ -5,13 +5,10 @@ import { usePhoneValidationRemainingAttempts } from 'features/identityCheck/api/
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { timeDiffInHours } from 'libs/dates'
 import { plural } from 'libs/plural'
-import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
-import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
-import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import { GenericInfoPageDeprecated } from 'ui/pages/GenericInfoPageDeprecated'
+import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
 import { UserBlocked } from 'ui/svg/icons/UserBlocked'
-import { Spacer, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 export function PhoneValidationTooManySMSSent() {
   const { counterResetDatetime } = usePhoneValidationRemainingAttempts()
@@ -24,32 +21,24 @@ export function PhoneValidationTooManySMSSent() {
   })
 
   return (
-    <GenericInfoPageDeprecated
+    <GenericInfoPageWhite
+      illustration={UserBlocked}
       title="Réessaie plus tard"
-      icon={UserBlocked}
-      buttons={[
-        <InternalTouchableLink
-          key={1}
-          as={ButtonPrimaryWhite}
-          wording="Retourner à l’accueil"
-          navigateTo={navigateToHomeConfig}
-        />,
-        <InternalTouchableLink
-          key={2}
-          as={ButtonTertiaryWhite}
-          icon={PlainArrowPrevious}
-          wording="J’ai reçu mon code"
-          navigateTo={{ screen: 'SetPhoneValidationCode' }}
-        />,
-      ]}>
-      <StyledBody>Tu as dépassé le nombre de 5 demandes de code autorisées.</StyledBody>
-      <Spacer.Column numberOfSpaces={5} />
+      subtitle="Tu as dépassé le nombre de 5 demandes de code autorisées."
+      buttonPrimary={{
+        wording: 'Retourner à l’accueil',
+        navigateTo: navigateToHomeConfig,
+      }}
+      buttonTertiary={{
+        wording: 'J’ai reçu mon code',
+        navigateTo: { screen: 'SetPhoneValidationCode' },
+        icon: PlainArrowPrevious,
+      }}>
       <StyledBody>{hoursLeftWording}</StyledBody>
-    </GenericInfoPageDeprecated>
+    </GenericInfoPageWhite>
   )
 }
 
-const StyledBody = styled(Typo.Body)(({ theme }) => ({
-  color: theme.colors.white,
+const StyledBody = styled(Typo.Body)({
   textAlign: 'center',
-}))
+})
