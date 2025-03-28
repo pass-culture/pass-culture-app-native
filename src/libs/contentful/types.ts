@@ -563,19 +563,6 @@ export const isVenueMapBlockContentModel = (
 ): module is VenueMapBlockContentModel =>
   module.sys.contentType?.sys.id === ContentTypes.VENUE_MAP_BLOCK
 
-export const isVideoContentModel = (module: HomepageNatifModule): module is VideoContentModel =>
-  module.sys.contentType?.sys.id === ContentTypes.VIDEO
-
-export const isHighlightOfferContentModel = (
-  module: HomepageNatifModule
-): module is HighlightOfferContentModel =>
-  module.sys.contentType?.sys.id === ContentTypes.HIGHLIGHT_OFFER
-
-export const isVideoCarouselContentModel = (
-  module: HomepageNatifModule
-): module is VideoCarouselContentModel =>
-  module.sys.contentType?.sys.id === ContentTypes.VIDEO_CAROUSEL
-
 export type ContentfulLabelCategories =
   | 'Arts & loisirs créatifs'
   | 'Cartes jeunes'
