@@ -20,7 +20,7 @@ export enum EduConnectErrorMessageEnum {
   GenericError = 'GenericError',
 }
 
-export type NotEligibleEduConnectErrorData = {
+type NotEligibleEduConnectErrorData = {
   Illustration: FunctionComponent<AccessibleIcon>
   title: string
   description: string
