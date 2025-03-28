@@ -4,6 +4,7 @@ export type CheatcodesStackParamList = {
   // Features
   CheatcodesNavigationAchievements: undefined
   CheatcodesNavigationBirthdayNotifications: undefined
+  CheatcodesNavigationBookings: undefined
   CheatcodesNavigationBookOffer: undefined
   CheatcodesNavigationCulturalSurvey: undefined
   CheatcodesNavigationForceUpdate: undefined
@@ -18,6 +19,7 @@ export type CheatcodesStackParamList = {
   CheatcodesNavigationSubscription: undefined
   CheatcodesNavigationTrustedDevice: undefined
   CheatcodesNavigationTutorial: undefined
+  CheatcodesScreenBookingNotFound: undefined
   CheatcodesScreenCategoryThematicHomeHeader: undefined
   CheatcodesScreenDefaultThematicHomeHeader: undefined
   CheatcodesScreenHighlightThematicHomeHeader: undefined

@@ -4,6 +4,8 @@ import React from 'react'
 import { CheatcodesMenu } from 'cheatcodes/pages/CheatcodesMenu'
 import { CheatcodesNavigationAchievements } from 'cheatcodes/pages/features/achievements/CheatcodesNavigationAchievements'
 import { CheatcodesNavigationBirthdayNotifications } from 'cheatcodes/pages/features/birthdayNotifications/CheatcodesNavigationBirthdayNotifications'
+import { CheatcodesNavigationBookings } from 'cheatcodes/pages/features/bookings/CheatcodesNavigationBookings'
+import { CheatcodesScreenBookingNotFound } from 'cheatcodes/pages/features/bookings/CheatcodesScreenBookingNotFound'
 import { CheatcodesNavigationBookOffer } from 'cheatcodes/pages/features/bookOffer/CheatcodesNavigationBookOffer'
 import { CheatcodesNavigationCulturalSurvey } from 'cheatcodes/pages/features/culturalSurvey/CheatcodesNavigationCulturalSurvey'
 import { CheatcodesNavigationForceUpdate } from 'cheatcodes/pages/features/forceUpdate/cheatcodesNavigationForceUpdate'
@@ -129,6 +131,10 @@ const routes: CheatcodesStackRoute[] = [
     name: 'CheatcodesNavigationBookOffer',
     component: CheatcodesNavigationBookOffer,
   },
+  {
+    name: 'CheatcodesNavigationBookings',
+    component: CheatcodesNavigationBookings,
+  },
   /**** OTHER ****/
   {
     name: 'CheatcodesScreenDebugInformations',
@@ -181,6 +187,10 @@ const routes: CheatcodesStackRoute[] = [
   {
     name: 'CheatcodesScreenGenericInfoPageWhite',
     component: CheatcodesScreenGenericInfoPageWhite,
+  },
+  {
+    name: 'CheatcodesScreenBookingNotFound',
+    component: CheatcodesScreenBookingNotFound,
   },
 ]
 
