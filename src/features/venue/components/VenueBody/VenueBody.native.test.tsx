@@ -3,9 +3,11 @@ import React from 'react'
 import { Linking } from 'react-native'
 
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
-import { CategoryIdEnum } from 'api/gen'
+import { CategoryIdEnum, VenueResponse } from 'api/gen'
 import { gtlPlaylistAlgoliaSnapshot } from 'features/gtlPlaylist/fixtures/gtlPlaylistAlgoliaSnapshot'
 import * as useGTLPlaylists from 'features/gtlPlaylist/hooks/useGTLPlaylists'
+import { GtlPlaylistData } from 'features/gtlPlaylist/types'
+import { HeadlineOfferData } from 'features/headlineOffer/type'
 import { useVenueOffers } from 'features/venue/api/useVenueOffers'
 import { VenueBody } from 'features/venue/components/VenueBody/VenueBody'
 import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
@@ -67,14 +69,14 @@ describe('<VenueBody />', () => {
   })
 
   it('should display expected tabs', async () => {
-    render(reactQueryProviderHOC(<VenueBody venue={venueDataTest} />))
+    renderVenueBody({})
 
     expect(await screen.findByText('Offres disponibles')).toBeOnTheScreen()
     expect(await screen.findByText('Infos pratiques')).toBeOnTheScreen()
   })
 
   it('should display withdrawal details', async () => {
-    render(reactQueryProviderHOC(<VenueBody venue={venueDataTest} />))
+    renderVenueBody({})
 
     await user.press(screen.getByText('Infos pratiques'))
 
@@ -82,7 +84,7 @@ describe('<VenueBody />', () => {
   })
 
   it('should log event when pressing on Infos pratiques tab', async () => {
-    render(reactQueryProviderHOC(<VenueBody venue={venueDataTest} />))
+    renderVenueBody({})
 
     await user.press(screen.getByText('Infos pratiques'))
 
@@ -92,7 +94,7 @@ describe('<VenueBody />', () => {
   })
 
   it('should log event when pressing on Offres disponibles tab', async () => {
-    render(reactQueryProviderHOC(<VenueBody venue={venueDataTest} />))
+    renderVenueBody({})
 
     await user.press(screen.getByText('Offres disponibles'))
 
@@ -100,21 +102,13 @@ describe('<VenueBody />', () => {
   })
 
   it('should display the "À la une" section if headlineData is present', async () => {
-    render(
-      reactQueryProviderHOC(
-        <VenueBody venue={venueDataTest} headlineOfferData={HEADLINE_OFFER_DATA} />
-      )
-    )
+    renderVenueBody({ headlineOfferData: HEADLINE_OFFER_DATA })
 
     expect(screen.getByText('À la une')).toBeOnTheScreen()
   })
 
   it('should navigate to headline offer when pressing on it', async () => {
-    render(
-      reactQueryProviderHOC(
-        <VenueBody venue={venueDataTest} headlineOfferData={HEADLINE_OFFER_DATA} />
-      )
-    )
+    renderVenueBody({ headlineOfferData: HEADLINE_OFFER_DATA })
 
     await user.press(screen.getByText('One Piece Tome 108'))
 
@@ -122,11 +116,7 @@ describe('<VenueBody />', () => {
   })
 
   it('should trigger ConsultOffer log when pressing on headline offer', async () => {
-    render(
-      reactQueryProviderHOC(
-        <VenueBody venue={venueDataTest} headlineOfferData={HEADLINE_OFFER_DATA} />
-      )
-    )
+    renderVenueBody({ headlineOfferData: HEADLINE_OFFER_DATA })
 
     await user.press(screen.getByText('One Piece Tome 108'))
 
@@ -138,3 +128,26 @@ describe('<VenueBody />', () => {
     })
   })
 })
+
+const renderVenueBody = ({
+  venue = venueDataTest,
+  headlineOfferData,
+  playlists = gtlPlaylistAlgoliaSnapshot,
+  arePlaylistsLoading = false,
+}: {
+  venue?: VenueResponse
+  headlineOfferData?: HeadlineOfferData
+  playlists?: GtlPlaylistData[]
+  arePlaylistsLoading?: boolean
+}) => {
+  return render(
+    reactQueryProviderHOC(
+      <VenueBody
+        venue={venue}
+        headlineOfferData={headlineOfferData}
+        playlists={playlists}
+        arePlaylistsLoading={arePlaylistsLoading}
+      />
+    )
+  )
+}

@@ -9,12 +9,19 @@ import { buildHitsPerPage } from 'libs/algolia/fetchAlgolia/utils'
 import { env } from 'libs/environment/env'
 import { Offer } from 'shared/offer/types'
 
-export async function fetchOffersByGTL(
-  parameters: PlaylistOffersParams[],
-  buildLocationParameterParams: BuildLocationParameterParams,
-  isUserUnderage: boolean,
+type fetchOffersByGTLArgs = {
+  parameters: PlaylistOffersParams[]
+  buildLocationParameterParams: BuildLocationParameterParams
+  isUserUnderage: boolean
   searchIndex?: string
-) {
+}
+
+export async function fetchOffersByGTL({
+  parameters,
+  buildLocationParameterParams,
+  isUserUnderage,
+  searchIndex,
+}: fetchOffersByGTLArgs) {
   // Build a query list to send to Algolia
   const queries = parameters.map(({ offerParams }) => ({
     indexName: searchIndex || env.ALGOLIA_TOP_OFFERS_INDEX_NAME,

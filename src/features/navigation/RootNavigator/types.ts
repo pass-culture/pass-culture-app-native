@@ -13,6 +13,7 @@ import { SearchStackParamList } from 'features/navigation/SearchStackNavigator/t
 import { PlaylistType } from 'features/offer/enums'
 import { TutorialType } from 'features/tutorial/types'
 import { Venue } from 'features/venue/types'
+import { ContentfulLabelCategories } from 'libs/contentful/types'
 import { SuggestedPlace } from 'libs/place/types'
 
 import { TabParamList, TabRouteName } from '../TabBar/types'
@@ -268,7 +269,13 @@ export type RootStackParamList = {
   ThematicHome: ThematicHomeParams
   Tutorial?: { selectedAge?: 15 | 16 | 17 | 18 }
   UTMParameters: undefined
-  Venue: { id: number; from?: Referrals; searchId?: string }
+  ValidateEmailChange: { token: string }
+  Venue: {
+    id: number
+    from?: Referrals
+    searchId?: string
+    fromThematicSearch?: ContentfulLabelCategories
+  }
   VenueMap: undefined
   VenueMapFiltersStackNavigator: undefined
   VenuePreviewCarousel: { id: number; defaultIndex?: number }

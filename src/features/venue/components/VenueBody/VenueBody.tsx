@@ -25,8 +25,9 @@ interface Props {
   venue: VenueResponse
   venueArtists?: VenueOffersArtists
   venueOffers?: VenueOffersType
-  playlists?: GtlPlaylistData[]
+  playlists: GtlPlaylistData[]
   headlineOfferData?: HeadlineOfferData | null
+  arePlaylistsLoading: boolean
 }
 
 export const VenueBody: FunctionComponent<Props> = ({
@@ -35,6 +36,7 @@ export const VenueBody: FunctionComponent<Props> = ({
   venueOffers,
   playlists,
   headlineOfferData,
+  arePlaylistsLoading,
 }) => {
   const currency = useGetCurrencyToDisplay()
   const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
@@ -77,6 +79,7 @@ export const VenueBody: FunctionComponent<Props> = ({
           labelMapping={labelMapping}
           currency={currency}
           euroToPacificFrancRate={euroToPacificFrancRate}
+          arePlaylistsLoading={arePlaylistsLoading}
         />
       </React.Fragment>
     ),

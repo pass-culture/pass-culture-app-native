@@ -1,8 +1,9 @@
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { CATEGORY_CRITERIA } from 'features/search/enums'
+import { ContentfulLabelCategories } from 'libs/contentful/types'
 
 // Mapping from contentful label to corresponding search group
-const CONTENTFUL_LABELS: Record<string, SearchGroupNameEnumv2> = {
+const CONTENTFUL_LABELS = {
   ['Arts & loisirs créatifs']: SearchGroupNameEnumv2.ARTS_LOISIRS_CREATIFS,
   ['Cartes jeunes']: SearchGroupNameEnumv2.CARTES_JEUNES,
   ['CD, vinyles, musique en ligne']: SearchGroupNameEnumv2.MUSIQUE,
@@ -18,10 +19,11 @@ const CONTENTFUL_LABELS: Record<string, SearchGroupNameEnumv2> = {
   ['Musées & visites culturelles']: SearchGroupNameEnumv2.MUSEES_VISITES_CULTURELLES,
   ['Musique']: SearchGroupNameEnumv2.MUSIQUE,
   ['Spectacles']: SearchGroupNameEnumv2.SPECTACLES,
-}
+} as const satisfies Record<ContentfulLabelCategories, SearchGroupNameEnumv2>
 
-export const getCategoriesFacetFilters = (categoryLabel: string): SearchGroupNameEnumv2 => {
+export const getCategoriesFacetFilters = (
+  categoryLabel: ContentfulLabelCategories
+): SearchGroupNameEnumv2 => {
   const searchGroup = CONTENTFUL_LABELS[categoryLabel]
-  if (searchGroup) return CATEGORY_CRITERIA[searchGroup]?.facetFilter ?? SearchGroupNameEnumv2.NONE
-  return SearchGroupNameEnumv2.NONE
+  return CATEGORY_CRITERIA[searchGroup].facetFilter
 }

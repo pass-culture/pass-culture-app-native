@@ -2,63 +2,74 @@ import { useQuery } from 'react-query'
 
 import { VenueResponse } from 'api/gen'
 import { fetchGTLPlaylistConfig } from 'features/gtlPlaylist/api/fetchGTLPlaylistConfig'
+import {
+  filterGtlPlaylistConfigByLabel,
+  getGtlPlaylistsParams,
+} from 'features/gtlPlaylist/gtlPlaylistHelpers'
 import { GtlPlaylistData } from 'features/gtlPlaylist/types'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
+import { getShouldDisplayGtlPlaylist } from 'features/venue/pages/Venue/getShouldDisplayGtlPlaylist'
 import { useAdaptOffersPlaylistParameters } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/helpers/useAdaptOffersPlaylistParameters'
 import { fetchOffersByGTL } from 'libs/algolia/fetchAlgolia/fetchOffersByGTL'
 import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
+import { ContentfulLabelCategories } from 'libs/contentful/types'
 import { useLocation } from 'libs/location'
 import { QueryKeys } from 'libs/queryKeys'
 
 type UseGTLPlaylistsProps = {
-  queryKey: keyof typeof QueryKeys
   venue?: VenueResponse
   searchIndex?: string
+  searchGroupLabel?: ContentfulLabelCategories
 }
 
-export function useGTLPlaylists({
-  queryKey: gtlPlaylistsQueryKey,
-  venue,
-  searchIndex,
-}: UseGTLPlaylistsProps) {
+// TODO(PC-35123): refactor this hook
+export function useGTLPlaylists({ venue, searchIndex, searchGroupLabel }: UseGTLPlaylistsProps) {
   const { userLocation, selectedLocationMode } = useLocation()
   const isUserUnderage = useIsUserUnderage()
   const adaptPlaylistParameters = useAdaptOffersPlaylistParameters()
   const transformHits = useTransformOfferHits()
 
   const { data: gtlPlaylists, isLoading } = useQuery({
-    queryKey: [gtlPlaylistsQueryKey, venue?.id, userLocation, selectedLocationMode],
+    queryKey: [
+      QueryKeys.GTL_PLAYLISTS,
+      venue?.id,
+      userLocation,
+      selectedLocationMode,
+      searchGroupLabel,
+    ],
     queryFn: async (): Promise<GtlPlaylistData[]> => {
-      if (gtlPlaylistsQueryKey === 'VENUE_GTL_PLAYLISTS' && !venue) return Promise.resolve([])
       const gtlPlaylistsConfig = await fetchGTLPlaylistConfig()
-      const offers = await fetchOffersByGTL(
-        gtlPlaylistsConfig.map((request) => {
-          const params = adaptPlaylistParameters(request.offersModuleParameters)
-          return venue
-            ? {
-                ...params,
-                offerParams: {
-                  ...params.offerParams,
-                  venue: {
-                    venueId: venue.id,
-                    info: venue.city ?? '',
-                    label: venue.name,
-                  },
-                },
-              }
-            : params
-        }),
-        {
+      if (
+        venue &&
+        !searchGroupLabel &&
+        !getShouldDisplayGtlPlaylist({ venueType: venue?.venueTypeCode })
+      ) {
+        return Promise.resolve([])
+      }
+
+      const filteredGtlPlaylistsConfig = filterGtlPlaylistConfigByLabel(
+        gtlPlaylistsConfig,
+        venue?.venueTypeCode,
+        searchGroupLabel
+      )
+
+      const offers = await fetchOffersByGTL({
+        parameters: getGtlPlaylistsParams(
+          filteredGtlPlaylistsConfig,
+          venue,
+          adaptPlaylistParameters
+        ),
+        buildLocationParameterParams: {
           userLocation,
           selectedLocationMode,
           aroundMeRadius: 'all',
           aroundPlaceRadius: 'all',
         },
         isUserUnderage,
-        searchIndex
-      )
+        searchIndex,
+      })
 
-      return gtlPlaylistsConfig.map((item, index) => {
+      return filteredGtlPlaylistsConfig.map((item, index) => {
         return {
           title: item.displayParameters.title,
           offers: { hits: offers[index]?.hits.map(transformHits) ?? [] },

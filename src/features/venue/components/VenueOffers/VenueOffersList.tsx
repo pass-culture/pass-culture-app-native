@@ -3,7 +3,6 @@ import React, { FunctionComponent } from 'react'
 import { Platform } from 'react-native'
 import styled from 'styled-components/native'
 
-import { VenueTypeCodeKey } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { GtlPlaylist } from 'features/gtlPlaylist/components/GtlPlaylist'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
@@ -19,7 +18,6 @@ import {
   getDisplayedPrice,
   getIfPricesShouldBeFixed,
 } from 'libs/parsers/getDisplayedPrice'
-import { VenueTypeCode } from 'libs/parsers/venueType'
 import { CategoryHomeLabelMapping, CategoryIdMapping } from 'libs/subcategories/types'
 import { Currency } from 'shared/currency/useGetCurrencyToDisplay'
 import { Offer } from 'shared/offer/types'
@@ -61,12 +59,7 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
   const { artists = [] } = venueArtists ?? {}
   const shouldDisplayArtistsPlaylist = artistsPlaylistEnabled && artists.length > 0
 
-  const shouldDisplayGtlPlaylist =
-    [VenueTypeCodeKey.DISTRIBUTION_STORE, VenueTypeCodeKey.BOOKSTORE].includes(
-      venue?.venueTypeCode as VenueTypeCode
-    ) && !!playlists?.length
-
-  const showSeeMore = nbHits > hits.length && !shouldDisplayGtlPlaylist
+  const showSeeMore = nbHits > hits.length && !playlists.length
   const onPressSeeMore = showSeeMore ? () => analytics.logVenueSeeMoreClicked(venue.id) : undefined
 
   const renderFooter: RenderFooterItem = ({ width, height }: { width: number; height: number }) => (
@@ -133,9 +126,8 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
           <AvatarsList data={artists} onItemPress={handleArtistsPlaylistPress} />
         </ArtistsPlaylistContainer>
       ) : null}
-      {shouldDisplayGtlPlaylist ? (
-        <React.Fragment>
-          {playlists?.map((playlist) => (
+      {playlists.length
+        ? playlists.map((playlist) => (
             <GtlPlaylist
               key={playlist.entryId}
               venue={venue}
@@ -143,9 +135,8 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
               analyticsFrom="venue"
               route="Venue"
             />
-          ))}
-        </React.Fragment>
-      ) : null}
+          ))
+        : null}
     </Container>
   )
 }
