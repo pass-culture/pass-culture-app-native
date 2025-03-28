@@ -81,20 +81,18 @@ export const OfferFooter: FC<OfferFooterProps> = ({
 
   if (isAComingSoonOffer && !isDesktopViewport) {
     return (
-      <React.Fragment>
-        <StickyFooterContent
-          offerId={offer.id}
-          favorite={favorite}
-          onPressFavoriteCTA={onPressFavoriteCTA}
-          isAddFavoriteLoading={isAddFavoriteLoading}
-          isRemoveFavoriteLoading={isRemoveFavoriteLoading}
-          hasReminder={hasReminder}
-          onPressReminderCTA={onPressReminderCTA}
-          favoriteAuthModal={favoriteAuthModal}
-          reminderAuthModal={reminderAuthModal}
-          areRemindersLoading={isAddReminderLoading || isDeleteReminderLoading}
-        />
-      </React.Fragment>
+      <StickyFooterContent
+        offerId={offer.id}
+        favorite={favorite}
+        onPressFavoriteCTA={onPressFavoriteCTA}
+        isAddFavoriteLoading={isAddFavoriteLoading}
+        isRemoveFavoriteLoading={isRemoveFavoriteLoading}
+        hasReminder={hasReminder}
+        onPressReminderCTA={onPressReminderCTA}
+        favoriteAuthModal={favoriteAuthModal}
+        reminderAuthModal={reminderAuthModal}
+        areRemindersLoading={isAddReminderLoading || isDeleteReminderLoading}
+      />
     )
   }
 
