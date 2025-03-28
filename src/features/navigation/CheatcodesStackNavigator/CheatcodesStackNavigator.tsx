@@ -17,6 +17,7 @@ import { CheatcodesNavigationIdentityCheck } from 'cheatcodes/pages/features/ide
 import { CheatcodesNavigationNewIdentificationFlow } from 'cheatcodes/pages/features/identityCheck/CheatcodesNavigationNewIdentificationFlow'
 import { CheatcodesScreenNotEligibleEduConnect } from 'cheatcodes/pages/features/identityCheck/CheatcodesScreenNotEligibleEduConnect'
 import { CheatcodesNavigationInternal } from 'cheatcodes/pages/features/internal/CheatcodesNavigationInternal'
+import { CheatcodesScreenMaintenance } from 'cheatcodes/pages/features/maintenance/CheatcodesScreenMaintenance'
 import { CheatcodesNavigationProfile } from 'cheatcodes/pages/features/profile/CheatcodesNavigationProfile'
 import { CheatcodesScreenRemoteBanners } from 'cheatcodes/pages/features/remoteBanners/CheatcodesScreenRemoteBanners'
 import { CheatcodesNavigationShare } from 'cheatcodes/pages/features/share/CheatcodesNavigationShare'
@@ -156,6 +157,10 @@ const routes: CheatcodesStackRoute[] = [
   {
     name: 'CheatcodesScreenRemoteBanners',
     component: CheatcodesScreenRemoteBanners,
+  },
+  {
+    name: 'CheatcodesScreenMaintenance',
+    component: CheatcodesScreenMaintenance,
   },
   {
     name: 'CheatcodesScreenRemoteConfig',
