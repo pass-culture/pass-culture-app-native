@@ -34,16 +34,15 @@ const expirationMessages = {
 }
 
 export const displayExpirationMessage = (daysLeft: number) => {
-  let expirationMessage = ''
   if (daysLeft > 1) {
-    expirationMessage = expirationMessages.manyDaysLeft(daysLeft)
+    return expirationMessages.manyDaysLeft(daysLeft)
   } else if (daysLeft === 1) {
-    expirationMessage = expirationMessages.oneDayLeft
+    return expirationMessages.oneDayLeft
   } else if (daysLeft === 0) {
-    expirationMessage = expirationMessages.lastDay
+    return expirationMessages.lastDay
   }
 
-  return expirationMessage
+  return ''
 }
 
 export const daysCountdown = (dateCreated: string) => {
