@@ -5,6 +5,8 @@ import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome
 import { navigateFromRef } from 'features/navigation/navigationRef'
 import { fireEvent, render, screen } from 'tests/utils'
 
+jest.mock('libs/firebase/analytics/analytics')
+
 jest.mock('features/navigation/helpers/navigateToHome')
 jest.mock('features/navigation/navigationRef')
 

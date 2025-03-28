@@ -8,7 +8,7 @@ import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { AppFullPageModal } from 'ui/components/modals/AppFullPageModal'
 import { Spacer } from 'ui/components/spacer/Spacer'
-import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
+import { GenericInfoPageDeprecated } from 'ui/pages/GenericInfoPageDeprecated'
 import { BicolorError } from 'ui/svg/icons/BicolorError'
 import { Clear } from 'ui/svg/icons/Clear'
 import { Typo } from 'ui/theme'
@@ -42,7 +42,7 @@ export const QuitSignupModal: FunctionComponent<Props> = ({
 
   return (
     <AppFullPageModal visible={visible} testIdSuffix={testIdSuffix} onRequestClose={continueSignup}>
-      <GenericInfoPage
+      <GenericInfoPageDeprecated
         title={title}
         icon={ErrorIllustration}
         flex={false}
@@ -57,7 +57,7 @@ export const QuitSignupModal: FunctionComponent<Props> = ({
         ]}>
         <StyledBody>{description}</StyledBody>
         <Spacer.Column numberOfSpaces={8} />
-      </GenericInfoPage>
+      </GenericInfoPageDeprecated>
     </AppFullPageModal>
   )
 }

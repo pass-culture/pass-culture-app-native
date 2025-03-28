@@ -26,7 +26,7 @@ const ANIMATION_SIZE = getSpacing(45)
 // ON THIS PAGE OR IT WILL BREAK!!!
 // THE NAVIGATION CONTEXT IS NOT ALWAYS LOADED WHEN WE DISPLAY
 // EX: ScreenErrorProvider IS OUTSIDE NAVIGATION!
-export const GenericInfoPage: FunctionComponent<Props> = ({
+export const GenericInfoPageDeprecated: FunctionComponent<Props> = ({
   children,
   noIndex = true,
   animation,

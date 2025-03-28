@@ -14,7 +14,7 @@ import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
+import { GenericInfoPageDeprecated } from 'ui/pages/GenericInfoPageDeprecated'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
 import { ProfileDeletion } from 'ui/svg/icons/ProfileDeletion'
 import { Spacer, Typo } from 'ui/theme'
@@ -62,7 +62,7 @@ export const SuspendedAccountUponUserRequest = () => {
   }
 
   return (
-    <GenericInfoPage
+    <GenericInfoPageDeprecated
       title="Ton compte est désactivé"
       icon={ProfileDeletion}
       buttons={[
@@ -86,7 +86,7 @@ export const SuspendedAccountUponUserRequest = () => {
       <StyledBody>
         Une fois cette date passée, ton compte pass Culture sera définitivement supprimé.
       </StyledBody>
-    </GenericInfoPage>
+    </GenericInfoPageDeprecated>
   )
 }
 

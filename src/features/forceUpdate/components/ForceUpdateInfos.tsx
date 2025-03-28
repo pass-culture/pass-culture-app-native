@@ -9,7 +9,7 @@ import { WEBAPP_V2_URL } from 'libs/environment/useWebAppUrl'
 import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
-import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
+import { GenericInfoPageDeprecated } from 'ui/pages/GenericInfoPageDeprecated'
 import { AgainIllustration } from 'ui/svg/icons/AgainIllustration'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Typo } from 'ui/theme'
@@ -21,7 +21,7 @@ export const ForceUpdateInfos = () => (
     <Helmet>
       <title>{TITLE}</title>
     </Helmet>
-    <GenericInfoPage
+    <GenericInfoPageDeprecated
       title={TITLE}
       icon={AgainIllustration}
       buttons={[
@@ -37,7 +37,7 @@ export const ForceUpdateInfos = () => (
         ),
       ]}>
       <StyledBody>{DESCRIPTION}</StyledBody>
-    </GenericInfoPage>
+    </GenericInfoPageDeprecated>
   </React.Fragment>
 )
 

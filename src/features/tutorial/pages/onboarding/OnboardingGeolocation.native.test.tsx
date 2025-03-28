@@ -38,7 +38,7 @@ describe('OnboardingGeolocation', () => {
   it('should redirect to EligibleUserAgeSelection when "Passer" is clicked', async () => {
     render(<OnboardingGeolocation />)
 
-    const button = screen.getByLabelText('Aller à la page suivante')
+    const button = screen.getByLabelText('Passer à la page suivante')
     await user.press(button)
 
     expect(navigate).toHaveBeenCalledWith('EligibleUserAgeSelection', {
@@ -50,7 +50,7 @@ describe('OnboardingGeolocation', () => {
     setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PASS_FOR_ALL])
     render(<OnboardingGeolocation />)
 
-    const button = screen.getByLabelText('Aller à la page suivante')
+    const button = screen.getByLabelText('Passer à la page suivante')
     await user.press(button)
 
     expect(navigate).toHaveBeenCalledWith('AgeSelectionFork', {
@@ -81,7 +81,7 @@ describe('OnboardingGeolocation', () => {
   it('should log analytics when skip button is clicked', async () => {
     render(<OnboardingGeolocation />)
 
-    const loginButton = screen.getByLabelText('Aller à la page suivante')
+    const loginButton = screen.getByLabelText('Passer à la page suivante')
     await user.press(loginButton)
 
     expect(analytics.logOnboardingGeolocationClicked).toHaveBeenNthCalledWith(1, {

@@ -5,6 +5,9 @@ import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import { analytics } from 'libs/analytics/provider'
 import { fireEvent, render, checkAccessibilityFor, screen, waitFor } from 'tests/utils/web'
 
+jest.mock('libs/firebase/analytics/analytics')
+jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
+
 jest.mock('features/navigation/helpers/navigateToHome')
 const mockHideModal = jest.fn()
 

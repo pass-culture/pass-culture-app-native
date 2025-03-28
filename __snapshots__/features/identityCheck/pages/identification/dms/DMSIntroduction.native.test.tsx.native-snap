@@ -222,8 +222,8 @@ exports[`DMSIntroduction foreign version should render correctly 1`] = `
         [
           {
             "alignItems": "center",
-            "flexGrow": 1,
             "justifyContent": "center",
+            "marginBottom": 24,
           },
         ]
       }
@@ -955,8 +955,8 @@ exports[`DMSIntroduction french version should render correctly 1`] = `
         [
           {
             "alignItems": "center",
-            "flexGrow": 1,
             "justifyContent": "center",
+            "marginBottom": 24,
           },
         ]
       }

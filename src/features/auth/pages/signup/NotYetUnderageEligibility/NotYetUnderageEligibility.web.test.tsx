@@ -10,6 +10,9 @@ const navigationProps = {
   route: { params: { eligibilityStartDatetime: '2019-12-01T00:00:00Z' } },
 } as StackScreenProps<RootStackParamList, 'NotYetUnderageEligibility'>
 
+jest.mock('libs/firebase/analytics/analytics')
+jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
+
 describe('<NotYetUnderageEligibility/>', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {

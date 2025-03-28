@@ -222,8 +222,8 @@ exports[`ExpiredOrLostID should render correctly 1`] = `
         [
           {
             "alignItems": "center",
-            "flexGrow": 1,
             "justifyContent": "center",
+            "marginBottom": 24,
           },
         ]
       }

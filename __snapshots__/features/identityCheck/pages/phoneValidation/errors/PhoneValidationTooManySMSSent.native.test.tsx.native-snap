@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<ConfirmChangeEmail /> should render correctly 1`] = `
+exports[`PhoneValidationTooManySMSSent should render correctly 1`] = `
 <View
   style={
     [
@@ -157,7 +157,6 @@ exports[`<ConfirmChangeEmail /> should render correctly 1`] = `
       }
     >
       <View
-        fill="none"
         height={156}
         width={200}
       >
@@ -191,7 +190,47 @@ exports[`<ConfirmChangeEmail /> should render correctly 1`] = `
           ]
         }
       >
-        Confirmes-tu la demande de changement d’e-mail ?
+        Réessaie plus tard
+      </Text>
+      <Text
+        style={
+          [
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Medium",
+              "fontSize": 16,
+              "lineHeight": 25.6,
+              "textAlign": "center",
+            },
+          ]
+        }
+      >
+        Tu as dépassé le nombre de 5 demandes de code autorisées.
+      </Text>
+    </View>
+    <View
+      style={
+        [
+          {
+            "marginBottom": 24,
+          },
+        ]
+      }
+    >
+      <Text
+        style={
+          [
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Medium",
+              "fontSize": 16,
+              "lineHeight": 25.6,
+              "textAlign": "center",
+            },
+          ]
+        }
+      >
+        Tu pourras réessayer dans 1 heure.
       </Text>
     </View>
     <View
@@ -218,12 +257,12 @@ exports[`<ConfirmChangeEmail /> should render correctly 1`] = `
       }
     >
       <View
-        accessibilityLabel="Confirmer la demande"
+        accessibilityLabel="Retourner à l’accueil"
         accessibilityState={
           {
             "busy": undefined,
             "checked": undefined,
-            "disabled": false,
+            "disabled": undefined,
             "expanded": undefined,
             "selected": undefined,
           }
@@ -237,6 +276,7 @@ exports[`<ConfirmChangeEmail /> should render correctly 1`] = `
           }
         }
         accessible={true}
+        collapsable={false}
         focusable={true}
         onClick={[Function]}
         onResponderGrant={[Function]}
@@ -246,33 +286,24 @@ exports[`<ConfirmChangeEmail /> should render correctly 1`] = `
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          [
-            [
-              {
-                "userSelect": "auto",
-              },
-              {
-                "alignItems": "center",
-                "backgroundColor": "#eb0055",
-                "borderRadius": 24,
-                "flexDirection": "row",
-                "justifyContent": "center",
-                "maxWidth": 500,
-                "minHeight": 40,
-                "paddingBottom": 2,
-                "paddingLeft": 20,
-                "paddingRight": 20,
-                "paddingTop": 2,
-                "width": "100%",
-              },
-              {},
-            ],
-            {
-              "opacity": 1,
-            },
-          ]
+          {
+            "alignItems": "center",
+            "backgroundColor": "#eb0055",
+            "borderRadius": 24,
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "maxWidth": 500,
+            "minHeight": 40,
+            "opacity": 1,
+            "paddingBottom": 2,
+            "paddingLeft": 20,
+            "paddingRight": 20,
+            "paddingTop": 2,
+            "userSelect": "auto",
+            "width": "100%",
+          }
         }
-        testID="Confirmer la demande"
+        testID="Retourner à l’accueil"
       >
         <View
           style={
@@ -299,17 +330,17 @@ exports[`<ConfirmChangeEmail /> should render correctly 1`] = `
               ]
             }
           >
-            Confirmer la demande
+            Retourner à l’accueil
           </Text>
         </View>
       </View>
       <View
-        accessibilityLabel="Annuler"
+        accessibilityLabel="J’ai reçu mon code"
         accessibilityState={
           {
             "busy": undefined,
             "checked": undefined,
-            "disabled": false,
+            "disabled": undefined,
             "expanded": undefined,
             "selected": undefined,
           }
@@ -323,6 +354,7 @@ exports[`<ConfirmChangeEmail /> should render correctly 1`] = `
           }
         }
         accessible={true}
+        collapsable={false}
         focusable={true}
         onClick={[Function]}
         onResponderGrant={[Function]}
@@ -332,34 +364,24 @@ exports[`<ConfirmChangeEmail /> should render correctly 1`] = `
         onResponderTerminationRequest={[Function]}
         onStartShouldSetResponder={[Function]}
         style={
-          [
-            [
-              {
-                "userSelect": "auto",
-              },
-              {
-                "alignItems": "center",
-                "borderRadius": 24,
-                "flexDirection": "row",
-                "justifyContent": "center",
-                "maxWidth": 500,
-                "minHeight": 40,
-                "paddingBottom": 2,
-                "paddingLeft": 2,
-                "paddingRight": 2,
-                "paddingTop": 2,
-                "width": "100%",
-              },
-              {
-                "backgroundColor": "#ffffff",
-              },
-            ],
-            {
-              "opacity": 1,
-            },
-          ]
+          {
+            "alignItems": "center",
+            "backgroundColor": "#ffffff",
+            "borderRadius": 24,
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "maxWidth": 500,
+            "minHeight": 40,
+            "opacity": 1,
+            "paddingBottom": 2,
+            "paddingLeft": 2,
+            "paddingRight": 2,
+            "paddingTop": 2,
+            "userSelect": "auto",
+            "width": "100%",
+          }
         }
-        testID="Annuler"
+        testID="J’ai reçu mon code"
       >
         <View
           style={
@@ -382,7 +404,6 @@ exports[`<ConfirmChangeEmail /> should render correctly 1`] = `
             }
           >
             <View
-              fill="#161617"
               height={20}
               testID="button-icon-left"
               width={20}
@@ -417,7 +438,7 @@ exports[`<ConfirmChangeEmail /> should render correctly 1`] = `
               ]
             }
           >
-            Annuler
+            J’ai reçu mon code
           </Text>
         </View>
       </View>

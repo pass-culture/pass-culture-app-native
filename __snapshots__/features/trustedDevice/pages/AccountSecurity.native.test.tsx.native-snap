@@ -150,8 +150,8 @@ exports[`<AccountSecurity/> with route params when user is connected and has a p
         [
           {
             "alignItems": "center",
-            "flexGrow": 1,
             "justifyContent": "center",
+            "marginBottom": 24,
           },
         ]
       }
@@ -882,8 +882,8 @@ exports[`<AccountSecurity/> with route params when user is connected and has no 
         [
           {
             "alignItems": "center",
-            "flexGrow": 1,
             "justifyContent": "center",
+            "marginBottom": 24,
           },
         ]
       }
@@ -1524,8 +1524,8 @@ exports[`<AccountSecurity/> without route params should match snapshot when no t
         [
           {
             "alignItems": "center",
-            "flexGrow": 1,
             "justifyContent": "center",
+            "marginBottom": 24,
           },
         ]
       }

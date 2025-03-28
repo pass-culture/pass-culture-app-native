@@ -1,16 +1,12 @@
 import React, { FunctionComponent } from 'react'
-import styled from 'styled-components/native'
 
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
 import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import { analytics } from 'libs/analytics/provider'
-import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
-import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
 import { AppFullPageModal } from 'ui/components/modals/AppFullPageModal'
-import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
+import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
 import { BicolorError } from 'ui/svg/icons/BicolorError'
 import { Clear } from 'ui/svg/icons/Clear'
-import { Typo } from 'ui/theme'
 
 interface Props {
   visible: boolean
@@ -41,35 +37,20 @@ export const QuitIdentityCheckModal: FunctionComponent<Props> = ({
       visible={visible}
       testIdSuffix={testIdSuffix}
       onRequestClose={continueIdentityCheck}>
-      <GenericInfoPage
+      <GenericInfoPageWhite
+        illustration={BicolorError}
         title="Veux-tu abandonner la vérification d’identité&nbsp;?"
-        icon={ErrorIllustration}
-        flex={false}
-        buttons={[
-          <ButtonPrimaryWhite
-            key={1}
-            wording="Continuer la vérification"
-            onPress={continueIdentityCheck}
-          />,
-          <ButtonTertiaryWhite
-            key={2}
-            wording="Abandonner la vérification"
-            onPress={quitIdentityCheck}
-            icon={Clear}
-          />,
-        ]}>
-        <StyledBody>Les informations que tu as renseignées ne seront pas enregistrées.</StyledBody>
-      </GenericInfoPage>
+        subtitle="Les informations que tu as renseignées ne seront pas enregistrées."
+        buttonPrimary={{
+          wording: 'Continuer la vérification',
+          onPress: continueIdentityCheck,
+        }}
+        buttonTertiary={{
+          wording: 'Abandonner la vérification',
+          onPress: quitIdentityCheck,
+          icon: Clear,
+        }}
+      />
     </AppFullPageModal>
   )
 }
-
-const StyledBody = styled(Typo.Body)(({ theme }) => ({
-  color: theme.colors.white,
-  textAlign: 'center',
-}))
-
-const ErrorIllustration = styled(BicolorError).attrs(({ theme }) => ({
-  color: theme.colors.white,
-  color2: theme.colors.white,
-}))``
