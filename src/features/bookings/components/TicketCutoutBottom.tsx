@@ -1,11 +1,12 @@
 import React from 'react'
-import { View } from 'react-native'
 
 import { BookingOfferResponse, BookingReponse, WithdrawalTypeEnum } from 'api/gen'
 import { EmailWithdrawal } from 'features/bookings/components/TicketBody/EmailWithdrawal'
+import { InAppWithdrawal } from 'features/bookings/components/TicketBody/InAppWithdrawal'
 import { NoTicket } from 'features/bookings/components/TicketBody/NoTicket/NoTicket'
 import { OnSiteWithdrawal } from 'features/bookings/components/TicketBody/OnSiteWithdrawal'
 import { TicketCodeTitle } from 'features/bookings/components/TicketCodeTitle'
+import { useCategoryId } from 'libs/subcategories'
 
 export const TicketCutoutBottom = ({
   offer,
@@ -14,6 +15,8 @@ export const TicketCutoutBottom = ({
   offer: BookingOfferResponse
   booking: BookingReponse
 }) => {
+  const categoryId = useCategoryId(offer.subcategoryId)
+
   switch (offer.withdrawalType) {
     case WithdrawalTypeEnum.no_ticket:
       return <NoTicket />
@@ -25,7 +28,13 @@ export const TicketCutoutBottom = ({
         />
       )
     case WithdrawalTypeEnum.in_app:
-      return <View />
+      return (
+        <InAppWithdrawal
+          categoryId={categoryId}
+          booking={booking}
+          subcategoryId={offer.subcategoryId}
+        />
+      )
     case WithdrawalTypeEnum.on_site:
       return <OnSiteWithdrawal booking={booking} />
     default:
