@@ -1,38 +1,40 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
 import React from 'react'
 
 import { TutorialTimelineEighteen } from './TutorialTimelineEighteen'
 
-const meta: ComponentMeta<typeof TutorialTimelineEighteen> = {
+const meta: Meta<typeof TutorialTimelineEighteen> = {
   title: 'features/tutorial/TutorialTimelineEighteen',
   component: TutorialTimelineEighteen,
 }
 export default meta
 
-const Template: ComponentStory<typeof TutorialTimelineEighteen> = (props) => (
-  <TutorialTimelineEighteen {...props} />
-)
+type Story = StoryObj<typeof TutorialTimelineEighteen>
 
-//TODO(PC-28526): Fix this stories
-const WithoutActivation = Template.bind({})
-WithoutActivation.args = {
-  activatedAt: undefined,
+export const WithoutActivation: Story = {
+  render: (props) => <TutorialTimelineEighteen {...props} />,
+  args: {
+    activatedAt: undefined,
+  },
 }
 
-//TODO(PC-28526): Fix this stories
-const ActivatedAt15 = Template.bind({})
-ActivatedAt15.args = {
-  activatedAt: 15,
+export const ActivatedAt15: Story = {
+  render: (props) => <TutorialTimelineEighteen {...props} />,
+  args: {
+    activatedAt: 15,
+  },
 }
 
-//TODO(PC-28526): Fix this stories
-const ActivatedAt16 = Template.bind({})
-ActivatedAt16.args = {
-  activatedAt: 16,
+export const ActivatedAt16: Story = {
+  render: (props) => <TutorialTimelineEighteen {...props} />,
+  args: {
+    activatedAt: 16,
+  },
 }
 
-//TODO(PC-28526): Fix this stories
-const ActivatedAt17 = Template.bind({})
-ActivatedAt17.args = {
-  activatedAt: 17,
+export const ActivatedAt17: Story = {
+  render: (props) => <TutorialTimelineEighteen {...props} />,
+  args: {
+    activatedAt: 17,
+  },
 }

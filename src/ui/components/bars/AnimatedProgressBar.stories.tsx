@@ -1,4 +1,4 @@
-import { ComponentMeta } from '@storybook/react'
+import type { Meta } from '@storybook/react'
 import React from 'react'
 
 import { theme } from 'theme'
@@ -8,7 +8,7 @@ import { Email } from 'ui/svg/icons/Email'
 
 import { AnimatedProgressBar } from './AnimatedProgressBar'
 
-const meta: ComponentMeta<typeof AnimatedProgressBar> = {
+const meta: Meta<typeof AnimatedProgressBar> = {
   title: 'ui/AnimatedProgressBar',
   component: AnimatedProgressBar,
 }
@@ -38,4 +38,3 @@ const Template: VariantsStory<typeof AnimatedProgressBar> = (args) => (
 )
 
 export const AllVariants = Template.bind({})
-AllVariants.storyName = 'AnimatedProgressBar'

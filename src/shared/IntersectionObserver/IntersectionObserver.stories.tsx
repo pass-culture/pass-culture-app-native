@@ -1,5 +1,5 @@
 import { action } from '@storybook/addon-actions'
-import { ComponentMeta, ComponentStory } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
 import React, { useState } from 'react'
 import { StyleSheet, View } from 'react-native'
 import { IOScrollView as IntersectionObserverScrollView } from 'react-native-intersection-observer'
@@ -9,7 +9,7 @@ import { Typo } from 'ui/theme'
 
 import { IntersectionObserver } from './IntersectionObserver'
 
-const meta: ComponentMeta<typeof IntersectionObserver> = {
+const meta: Meta<typeof IntersectionObserver> = {
   title: 'features/shared/IntersectionObserver',
   component: IntersectionObserver,
   parameters: {
@@ -21,7 +21,9 @@ const meta: ComponentMeta<typeof IntersectionObserver> = {
 }
 export default meta
 
-const Template: ComponentStory<typeof IntersectionObserver> = (props) => {
+type Story = StoryObj<typeof IntersectionObserver>
+
+const IntersectionObserverTemplate = (props: React.ComponentProps<typeof IntersectionObserver>) => {
   const [inView, setInView] = useState<boolean>(false)
 
   const handleChange = (inView: boolean) => {
@@ -45,19 +47,25 @@ const Template: ComponentStory<typeof IntersectionObserver> = (props) => {
   )
 }
 
-export const WithoutThreshold = Template.bind({})
-WithoutThreshold.args = {
-  threshold: 0,
+export const WithoutThreshold: Story = {
+  render: (props) => <IntersectionObserverTemplate {...props} />,
+  args: {
+    threshold: 0,
+  },
 }
 
-export const WithPercentThreshold = Template.bind({})
-WithPercentThreshold.args = {
-  threshold: '50%',
+export const WithPercentThreshold: Story = {
+  render: (props) => <IntersectionObserverTemplate {...props} />,
+  args: {
+    threshold: '50%',
+  },
 }
 
-export const WithNumberThreshold = Template.bind({})
-WithNumberThreshold.args = {
-  threshold: 20,
+export const WithNumberThreshold: Story = {
+  render: (props) => <IntersectionObserverTemplate {...props} />,
+  args: {
+    threshold: 20,
+  },
 }
 
 const styles = StyleSheet.create({

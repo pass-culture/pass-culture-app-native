@@ -1,4 +1,4 @@
-import { ComponentMeta } from '@storybook/react'
+import type { Meta } from '@storybook/react'
 import React from 'react'
 
 import { OfferExtraDataResponse } from 'api/gen'
@@ -6,7 +6,7 @@ import { getOfferTags } from 'features/offer/helpers/getOfferTags/getOfferTags'
 import { InformationTags } from 'ui/InformationTags/InformationTags'
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 
-const meta: ComponentMeta<typeof InformationTags> = {
+const meta: Meta<typeof InformationTags> = {
   title: 'ui/InformationTags',
   component: InformationTags,
 }
@@ -77,4 +77,3 @@ const Template: VariantsStory<typeof InformationTags> = (args) => (
 )
 
 export const AllVariants = Template.bind({})
-AllVariants.storyName = 'InformationTags'

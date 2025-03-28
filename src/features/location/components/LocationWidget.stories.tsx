@@ -1,12 +1,12 @@
 import { NavigationContainer } from '@react-navigation/native'
-import { ComponentMeta, ComponentStory } from '@storybook/react'
+import type { Meta } from '@storybook/react'
 import React from 'react'
 
 import { ScreenOrigin } from 'features/location/enums'
 
 import { LocationWidget } from './LocationWidget'
 
-const meta: ComponentMeta<typeof LocationWidget> = {
+const meta: Meta<typeof LocationWidget> = {
   title: 'Features/location/LocationWidget',
   component: LocationWidget,
   decorators: [
@@ -19,9 +19,6 @@ const meta: ComponentMeta<typeof LocationWidget> = {
 }
 export default meta
 
-const Template: ComponentStory<typeof LocationWidget> = () => (
-  <LocationWidget screenOrigin={ScreenOrigin.HOME} />
-)
+const Template = () => <LocationWidget screenOrigin={ScreenOrigin.HOME} />
 
 export const Default = Template.bind({})
-Default.storyName = 'LocationWidget'

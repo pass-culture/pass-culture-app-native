@@ -1,4 +1,4 @@
-import { ComponentMeta } from '@storybook/react'
+import type { Meta } from '@storybook/react'
 import React from 'react'
 
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
@@ -6,7 +6,7 @@ import { getSpacing } from 'ui/theme'
 
 import { PlaylistArrowButton } from './PlaylistArrowButton'
 
-const meta: ComponentMeta<typeof PlaylistArrowButton> = {
+const meta: Meta<typeof PlaylistArrowButton> = {
   title: 'ui/buttons/PlaylistArrowButton',
   component: PlaylistArrowButton,
 }
@@ -30,4 +30,3 @@ const Template: VariantsStory<typeof PlaylistArrowButton> = (args) => (
 )
 
 export const AllVariants = Template.bind({})
-AllVariants.storyName = 'PlaylistArrowButton'

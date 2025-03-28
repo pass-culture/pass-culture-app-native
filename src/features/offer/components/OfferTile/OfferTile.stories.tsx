@@ -1,61 +1,51 @@
 import { NavigationContainer } from '@react-navigation/native'
-import { ComponentMeta, ComponentStory } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
 import React from 'react'
-import { View } from 'react-native'
-import styled from 'styled-components/native'
 
-import { Tag } from 'ui/components/Tag/Tag'
-import { ThumbUpFilled } from 'ui/svg/icons/ThumbUpFilled'
-import { getSpacing } from 'ui/theme'
+import { CategoryIdEnum, SubcategoryIdEnum } from 'api/gen'
 
 import { OfferTile } from './OfferTile'
 
-const meta: ComponentMeta<typeof OfferTile> = {
+const meta: Meta<typeof OfferTile> = {
   title: 'ui/tiles/OfferTile',
   component: OfferTile,
   decorators: [
-    (Story, { args }) => (
+    (Story) => (
       <NavigationContainer>
-        <View style={{ width: args.width }}>{Story()}</View>
+        <Story />
       </NavigationContainer>
     ),
   ],
 }
-
 export default meta
 
-const CustomThumbUp = styled(ThumbUpFilled).attrs(({ theme }) => ({
-  size: getSpacing(4),
-  color: theme.colors.primary,
-}))``
+type Story = StoryObj<typeof OfferTile>
 
-const LikeTag = styled(Tag).attrs(() => ({
-  Icon: CustomThumbUp,
-}))(({ theme }) => ({
-  backgroundColor: theme.colors.white,
-}))
-
-const Template: ComponentStory<typeof OfferTile> = (props) => <OfferTile {...props} />
-
-export const Default = Template.bind({})
-Default.args = {
-  date: 'le 18 juin 2024',
-  name: 'The Fall Guy',
-  price: 'dès 15,60\u00a0€',
-  categoryLabel: 'Cinéma',
-  width: 200,
-  height: 300,
-  offerLocation: { lat: 48.94374, lng: 2.48171 },
+export const Default: Story = {
+  args: {
+    date: 'le 18 juin 2024',
+    name: 'The Fall Guy',
+    price: 'dès 15,60\u00a0€',
+    categoryLabel: 'Cinéma',
+    width: 200,
+    height: 300,
+    offerLocation: { lat: 48.94374, lng: 2.48171 },
+    categoryId: CategoryIdEnum.CINEMA,
+    subcategoryId: SubcategoryIdEnum.SEANCE_CINE,
+    offerId: 123456,
+    analyticsFrom: 'home',
+  },
 }
 
-export const WithTags = Template.bind({})
-WithTags.args = {
-  date: 'le 18 juin 2024',
-  name: 'The Fall Guy',
-  price: 'dès 15,60\u00a0€',
-  categoryLabel: 'Cinéma',
-  width: 200,
-  height: 300,
-  interactionTag: <LikeTag label="100" />,
-  offerLocation: { lat: 48.94374, lng: 2.48171 },
+export const WithTags = {
+  name: 'WithTags',
+  args: {
+    date: 'le 18 juin 2024',
+    name: 'The Fall Guy',
+    price: 'dès 15,60\u00a0€',
+    categoryLabel: 'Cinéma',
+    width: 200,
+    height: 300,
+    likes: 99,
+  },
 }

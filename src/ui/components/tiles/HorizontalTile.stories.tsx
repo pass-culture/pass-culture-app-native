@@ -1,4 +1,4 @@
-import { ComponentMeta } from '@storybook/react'
+import type { Meta } from '@storybook/react'
 import React from 'react'
 import styled from 'styled-components/native'
 
@@ -9,7 +9,7 @@ import { getSpacing, Typo } from 'ui/theme'
 
 import { HorizontalTile } from './HorizontalTile'
 
-const meta: ComponentMeta<typeof HorizontalTile> = {
+const meta: Meta<typeof HorizontalTile> = {
   title: 'ui/tiles/HorizontalTile',
   component: HorizontalTile,
 }
@@ -53,7 +53,7 @@ const variantConfig: Variants<typeof HorizontalTile> = [
                 <OfferName title="Harry Potter et l’ordre du phénix" />
               </OfferNameContainer>
             </Row>
-            {['Films à l’affiche', '14 avril 2024'].map((subtitle, index) => (
+            {["Films à l'affiche", '14 avril 2024'].map((subtitle, index) => (
               <Body
                 key={index}
                 ellipsizeMode="tail"
@@ -75,4 +75,3 @@ const Template: VariantsStory<typeof HorizontalTile> = (args) => (
 )
 
 export const AllVariants = Template.bind({})
-AllVariants.storyName = 'HorizontalTile'

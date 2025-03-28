@@ -1,4 +1,4 @@
-import { ComponentMeta } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
 import React from 'react'
 import styled from 'styled-components/native'
 
@@ -11,11 +11,11 @@ import { VenueBlock } from 'features/offer/components/OfferVenueBlock/VenueBlock
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { InfoBanner } from 'ui/components/banners/InfoBanner'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
+import { VariantsTemplate, type Variants } from 'ui/storybook/VariantsTemplate'
 import { IdCard } from 'ui/svg/icons/IdCard'
 import { Typo } from 'ui/theme'
 
-const meta: ComponentMeta<typeof TicketCutout> = {
+const meta: Meta<typeof TicketCutout> = {
   title: 'Features/bookings/TicketCutout',
   component: TicketCutout,
   parameters: {
@@ -81,10 +81,12 @@ const variantConfig: Variants<typeof TicketCutout> = [
   },
 ]
 
-const Template: VariantsStory<typeof TicketCutout> = (args) => (
-  <VariantsTemplate variants={variantConfig} Component={TicketCutout} defaultProps={args} />
+type Story = StoryObj<typeof TicketCutout>
+
+const Template: Story['render'] = () => (
+  <VariantsTemplate variants={variantConfig} Component={TicketCutout} />
 )
 
-// Todo(PC-35079) fix this story, read the associated ticket to follow the different choices offered
-const AllVariants = Template.bind({})
-AllVariants.storyName = 'TicketCutout'
+export const AllVariants: Story = {
+  render: Template,
+}

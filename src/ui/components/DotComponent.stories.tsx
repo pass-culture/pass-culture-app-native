@@ -1,11 +1,11 @@
-import { ComponentMeta } from '@storybook/react'
+import type { Meta } from '@storybook/react'
 import React from 'react'
 
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 
 import { DotComponent } from './DotComponent'
 
-const meta: ComponentMeta<typeof DotComponent> = {
+const meta: Meta<typeof DotComponent> = {
   title: 'ui/DotComponent',
   component: DotComponent,
 }
@@ -41,4 +41,3 @@ const Template: VariantsStory<typeof DotComponent> = (args) => (
 )
 
 export const AllVariants = Template.bind({})
-AllVariants.storyName = 'DotComponent'

@@ -1,4 +1,4 @@
-import { ComponentMeta } from '@storybook/react'
+import type { Meta } from '@storybook/react'
 import React from 'react'
 
 import { theme } from 'theme'
@@ -7,7 +7,7 @@ import { Bag } from 'ui/svg/icons/bicolor/Bag'
 
 import { VenueTypeLocationIcon } from './VenueTypeLocationIcon'
 
-const meta: ComponentMeta<typeof VenueTypeLocationIcon> = {
+const meta: Meta<typeof VenueTypeLocationIcon> = {
   title: 'Features/Home/VenueTypeLocationIcon',
   component: VenueTypeLocationIcon,
 }
@@ -39,4 +39,3 @@ const Template: VariantsStory<typeof VenueTypeLocationIcon> = (args) => (
 )
 
 export const AllVariants = Template.bind({})
-AllVariants.storyName = 'VenueTypeLocationIcon'

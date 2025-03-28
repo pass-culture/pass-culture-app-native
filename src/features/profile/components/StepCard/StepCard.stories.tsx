@@ -1,4 +1,4 @@
-import { ComponentMeta } from '@storybook/react'
+import type { Meta } from '@storybook/react'
 import React from 'react'
 
 import { StepButtonState } from 'ui/components/StepButton/types'
@@ -8,7 +8,7 @@ import { Email } from 'ui/svg/icons/Email'
 
 import { StepCard } from './StepCard'
 
-const meta: ComponentMeta<typeof StepCard> = {
+const meta: Meta<typeof StepCard> = {
   title: 'features/profile/StepCard',
   component: StepCard,
 }
@@ -54,4 +54,3 @@ const Template: VariantsStory<typeof StepCard> = (args) => (
 )
 
 export const AllVariants = Template.bind({})
-AllVariants.storyName = 'StepCard'

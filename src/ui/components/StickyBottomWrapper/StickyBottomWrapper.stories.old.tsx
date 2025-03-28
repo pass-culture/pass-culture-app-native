@@ -1,4 +1,4 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
 import React from 'react'
 import styled from 'styled-components/native'
 
@@ -9,13 +9,15 @@ import { BicolorWarning } from 'ui/svg/icons/BicolorWarning'
 
 import { StickyBottomWrapper } from './StickyBottomWrapper'
 
-const meta: ComponentMeta<typeof StickyBottomWrapper> = {
+const meta: Meta<typeof StickyBottomWrapper> = {
   title: 'ui/StickyBottomWrapper',
   component: StickyBottomWrapper,
 }
 export default meta
 
-const Template: ComponentStory<typeof StickyBottomWrapper> = (props) => (
+type Story = StoryObj<typeof StickyBottomWrapper>
+
+const StoryComponent = (props: React.ComponentProps<typeof StickyBottomWrapper>) => (
   <React.Fragment>
     <InformationWithIcon
       Icon={BicolorWarning}
@@ -27,10 +29,12 @@ const Template: ComponentStory<typeof StickyBottomWrapper> = (props) => (
   </React.Fragment>
 )
 
-export const Default = Template.bind({})
-Default.storyName = 'StickyBottomWrapper'
-Default.args = {
-  children: <ButtonPrimary wording="Réserver l’offre" />,
+export const Default: Story = {
+  render: (props) => <StoryComponent {...props} />,
+  args: {
+    children: <ButtonPrimary wording="Réserver l’offre" />,
+  },
+  name: 'StickyBottomWrapper',
 }
 
 const ImageBackground = styled.ImageBackground({

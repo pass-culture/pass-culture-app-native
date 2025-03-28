@@ -1,11 +1,11 @@
-import { ComponentMeta } from '@storybook/react'
+import type { Meta } from '@storybook/react'
 import React from 'react'
 
 import { theme } from 'theme'
 import { SeparatorWithText } from 'ui/components/SeparatorWithText'
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 
-const meta: ComponentMeta<typeof SeparatorWithText> = {
+const meta: Meta<typeof SeparatorWithText> = {
   title: 'ui/sections/SeparatorWithText',
   component: SeparatorWithText,
 }
@@ -35,4 +35,3 @@ const Template: VariantsStory<typeof SeparatorWithText> = (args) => (
 )
 
 export const AllVariants = Template.bind({})
-AllVariants.storyName = 'SeparatorWithText'

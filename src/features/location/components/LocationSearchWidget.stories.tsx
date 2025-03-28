@@ -1,12 +1,12 @@
 import { NavigationContainer } from '@react-navigation/native'
-import { ComponentMeta, ComponentStory } from '@storybook/react'
+import type { Meta } from '@storybook/react'
 import React from 'react'
 
 import { LocationSearchWidget } from 'features/location/components/LocationSearchWidget'
 import { SearchWrapper } from 'features/search/context/SearchWrapper'
 
-const meta: ComponentMeta<typeof LocationSearchWidget> = {
-  title: 'features/location/LocationSearchWidget',
+const meta: Meta<typeof LocationSearchWidget> = {
+  title: 'Features/Location/LocationSearchWidget',
   component: LocationSearchWidget,
   decorators: [
     (Story) => (
@@ -20,7 +20,6 @@ const meta: ComponentMeta<typeof LocationSearchWidget> = {
 }
 export default meta
 
-const Template: ComponentStory<typeof LocationSearchWidget> = () => <LocationSearchWidget />
+const Template = () => <LocationSearchWidget />
 
-export const Default = Template.bind({})
-Default.storyName = 'LocationSearchWidget'
+export const Default = () => Template()

@@ -1,10 +1,9 @@
 import { NavigationContainer } from '@react-navigation/native'
-import { ComponentMeta } from '@storybook/react'
+import type { Meta } from '@storybook/react'
 import React from 'react'
 import styled from 'styled-components/native'
 
 import { TutorialTypes } from 'features/tutorial/enums'
-import { selectArgTypeFromObject } from 'libs/storybook/selectArgTypeFromObject'
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 import { All } from 'ui/svg/icons/bicolor/All'
 import { Spacer, Typo } from 'ui/theme'
@@ -29,14 +28,21 @@ const StyledBodyAccent = styled(Typo.BodyAccent)(({ theme }) => ({
   color: theme.colors.secondary,
 }))
 
-const meta: ComponentMeta<typeof AgeButton> = {
+const meta: Meta<typeof AgeButton> = {
   title: 'features/tutorial/AgeButton',
   component: AgeButton,
   argTypes: {
-    Icon: selectArgTypeFromObject({
-      BicolorAll,
-      NoIcon: undefined,
-    }),
+    Icon: {
+      options: ['BicolorAll', 'NoIcon'],
+      mapping: {
+        BicolorAll: <BicolorAll />,
+        NoIcon: undefined,
+      },
+      control: {
+        type: 'select',
+        labels: {},
+      },
+    },
   },
   decorators: [
     (Story) => (
@@ -148,4 +154,3 @@ const Template: VariantsStory<typeof AgeButton> = (args) => (
 )
 
 export const AllVariants = Template.bind({})
-AllVariants.storyName = 'AgeButton'

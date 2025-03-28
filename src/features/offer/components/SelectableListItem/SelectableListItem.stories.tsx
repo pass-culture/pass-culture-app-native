@@ -1,5 +1,5 @@
 import { action } from '@storybook/addon-actions'
-import { type ComponentMeta } from '@storybook/react'
+import type { Meta } from '@storybook/react'
 import React from 'react'
 
 import { theme } from 'theme'
@@ -8,7 +8,7 @@ import { Typo } from 'ui/theme'
 
 import { SelectableListItem } from './SelectableListItem'
 
-const meta: ComponentMeta<typeof SelectableListItem> = {
+const meta: Meta<typeof SelectableListItem> = {
   title: 'features/offer/SelectableListItem',
   component: SelectableListItem,
 
@@ -59,4 +59,3 @@ const Template: VariantsStory<typeof SelectableListItem> = () => (
 )
 
 export const AllVariants = Template.bind({})
-AllVariants.storyName = 'SelectableListItem'

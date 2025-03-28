@@ -1,5 +1,5 @@
 import { NavigationContainer } from '@react-navigation/native'
-import { ComponentMeta, ComponentStory } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
 import React from 'react'
 
 import { initialSearchState } from 'features/search/context/reducer'
@@ -7,7 +7,16 @@ import { BooksNativeCategoriesEnum, NativeCategoryEnum } from 'features/search/t
 import { theme } from 'theme'
 import { SubcategoryButtonList } from 'ui/components/buttons/SubcategoryButton/SubcategoryButtonList'
 
-const meta: ComponentMeta<typeof SubcategoryButtonList> = {
+const createSubcategoryButtonItem = (label: string, nativeCategory: NativeCategoryEnum) => ({
+  backgroundColor: theme.colors.aquamarine,
+  borderColor: theme.colors.aquamarineDark,
+  label,
+  nativeCategory,
+  searchParams: initialSearchState,
+  onBeforeNavigate: () => ({}),
+})
+
+const meta: Meta<typeof SubcategoryButtonList> = {
   title: 'ui/buttons/SubcategoryButtonList',
   component: SubcategoryButtonList,
   decorators: [
@@ -20,47 +29,40 @@ const meta: ComponentMeta<typeof SubcategoryButtonList> = {
 }
 export default meta
 
-const Template: ComponentStory<typeof SubcategoryButtonList> = (props) => (
-  <SubcategoryButtonList {...props} />
-)
+type Story = StoryObj<typeof SubcategoryButtonList>
 
-export const Default = Template.bind({})
-
-const createSubcategoryButtonItem = (label: string, nativeCategory: NativeCategoryEnum) => ({
-  backgroundColor: theme.colors.aquamarine,
-  borderColor: theme.colors.aquamarineDark,
-  label,
-  nativeCategory,
-  searchParams: initialSearchState,
-  onBeforeNavigate: () => ({}),
-})
-
-Default.args = {
-  subcategoryButtonContent: [
-    createSubcategoryButtonItem(
-      'Société & Politique',
-      BooksNativeCategoriesEnum.SOCIETE_ET_POLITIQUE
-    ),
-    createSubcategoryButtonItem(
-      'Romans & Littérature',
-      BooksNativeCategoriesEnum.ROMANS_ET_LITTERATURE
-    ),
-    createSubcategoryButtonItem('Mangas', BooksNativeCategoriesEnum.MANGAS),
-    createSubcategoryButtonItem('BD & Comics', BooksNativeCategoriesEnum.BD_ET_COMICS),
-    createSubcategoryButtonItem(
-      'Compétences générales',
-      BooksNativeCategoriesEnum.COMPETENCES_GENERALES
-    ),
-    createSubcategoryButtonItem(
-      'Loisirs & Bien-être',
-      BooksNativeCategoriesEnum.LOISIRS_ET_BIEN_ETRE
-    ),
-    createSubcategoryButtonItem('Mode & Art', BooksNativeCategoriesEnum.MODE_ET_ART),
-    createSubcategoryButtonItem(
-      'Théâtre, poésie et essais',
-      BooksNativeCategoriesEnum.THEATRE_POESIE_ET_ESSAIS
-    ),
-    createSubcategoryButtonItem('Tourisme & Voyage', BooksNativeCategoriesEnum.TOURISME_ET_VOYAGES),
-  ],
+export const Default: Story = {
+  render: (props) => <SubcategoryButtonList {...props} />,
+  args: {
+    subcategoryButtonContent: [
+      createSubcategoryButtonItem(
+        'Société & Politique',
+        BooksNativeCategoriesEnum.SOCIETE_ET_POLITIQUE
+      ),
+      createSubcategoryButtonItem(
+        'Romans & Littérature',
+        BooksNativeCategoriesEnum.ROMANS_ET_LITTERATURE
+      ),
+      createSubcategoryButtonItem('Mangas', BooksNativeCategoriesEnum.MANGAS),
+      createSubcategoryButtonItem('BD & Comics', BooksNativeCategoriesEnum.BD_ET_COMICS),
+      createSubcategoryButtonItem(
+        'Compétences générales',
+        BooksNativeCategoriesEnum.COMPETENCES_GENERALES
+      ),
+      createSubcategoryButtonItem(
+        'Loisirs & Bien-être',
+        BooksNativeCategoriesEnum.LOISIRS_ET_BIEN_ETRE
+      ),
+      createSubcategoryButtonItem('Mode & Art', BooksNativeCategoriesEnum.MODE_ET_ART),
+      createSubcategoryButtonItem(
+        'Théâtre, poésie et essais',
+        BooksNativeCategoriesEnum.THEATRE_POESIE_ET_ESSAIS
+      ),
+      createSubcategoryButtonItem(
+        'Tourisme & Voyage',
+        BooksNativeCategoriesEnum.TOURISME_ET_VOYAGES
+      ),
+    ],
+  },
+  name: 'SubcategoryButtonList',
 }
-Default.storyName = 'SubcategoryButtonList'

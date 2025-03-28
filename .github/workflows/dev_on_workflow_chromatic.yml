@@ -30,9 +30,9 @@ jobs:
       - name: Install dependencies
         run: yarn install
       - name: Build Storybook 🔧
-        run: yarn build-storybook --webpack-stats-json --output-dir $BUILD_DIR
+        run: yarn build-storybook --stats-json --output-dir $BUILD_DIR
       - name: Publish to Chromatic 🚀
-        uses: chromaui/action@v10
+        uses: chromaui/action@v11.27.0
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}

@@ -1,4 +1,5 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import { NavigationContainer } from '@react-navigation/native'
+import type { Meta, StoryObj } from '@storybook/react'
 import React from 'react'
 
 import { offerVenueResponseSnap } from 'features/offer/fixtures/offerVenueReponse'
@@ -8,35 +9,39 @@ import { ReactQueryClientProvider } from 'libs/react-query/ReactQueryClientProvi
 
 import { WhereSection } from './WhereSection'
 
-const meta: ComponentMeta<typeof WhereSection> = {
-  title: 'ui/tutu',
+const meta: Meta<typeof WhereSection> = {
+  title: 'ui/WhereSection',
   component: WhereSection,
   decorators: [
     (Story) => (
-      <ReactQueryClientProvider>
-        <Story />
-      </ReactQueryClientProvider>
+      <NavigationContainer>
+        <ReactQueryClientProvider>
+          <Story />
+        </ReactQueryClientProvider>
+      </NavigationContainer>
     ),
   ],
 }
 export default meta
 
-const Template: ComponentStory<typeof WhereSection> = (props) => <WhereSection {...props} />
+type Story = StoryObj<typeof WhereSection>
 
-// TODO(PC-17931): Fix this stories
-const WithVenueBanner = Template.bind({})
-WithVenueBanner.args = {
-  venue: venueDataTest,
-  locationCoordinates: { latitude: 2, longitude: 4 },
-  address: mockedFullAddress,
-  showVenueBanner: true,
+export const WithVenueBanner: Story = {
+  render: (props) => <WhereSection {...props} />,
+  args: {
+    venue: venueDataTest,
+    locationCoordinates: { latitude: 2, longitude: 4 },
+    address: mockedFullAddress,
+    showVenueBanner: true,
+  },
 }
 
-// TODO(PC-17931): Fix this stories
-const WithoutVenueBanner = Template.bind({})
-WithoutVenueBanner.args = {
-  venue: offerVenueResponseSnap,
-  locationCoordinates: { latitude: 2, longitude: 4 },
-  address: mockedFullAddress,
-  showVenueBanner: false,
+export const WithoutVenueBanner: Story = {
+  render: (props) => <WhereSection {...props} />,
+  args: {
+    venue: offerVenueResponseSnap,
+    locationCoordinates: { latitude: 2, longitude: 4 },
+    address: mockedFullAddress,
+    showVenueBanner: false,
+  },
 }

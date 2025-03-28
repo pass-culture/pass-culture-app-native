@@ -1,24 +1,24 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
 import React from 'react'
 
 import { CulturalSurveyCheckbox } from 'features/culturalSurvey/components/CulturalSurveyCheckbox'
 import { culturalSurveyIcons } from 'ui/svg/icons/bicolor/exports/culturalSurveyIcons'
 
-const meta: ComponentMeta<typeof CulturalSurveyCheckbox> = {
+const meta: Meta<typeof CulturalSurveyCheckbox> = {
   title: 'Features/culturalSurvey/CulturalSurveyCheckbox',
   component: CulturalSurveyCheckbox,
 }
 export default meta
 
-const Template: ComponentStory<typeof CulturalSurveyCheckbox> = (props) => (
-  <CulturalSurveyCheckbox {...props} />
-)
+type Story = StoryObj<typeof CulturalSurveyCheckbox>
 
-export const Default = Template.bind({})
-Default.storyName = 'CulturalSurveyCheckbox'
-Default.args = {
-  title: 'Visité un musée,',
-  subtitle: 'une piscine gonflable',
-  icon: culturalSurveyIcons.Museum,
-  selected: false,
+export const Default: Story = {
+  render: (props) => <CulturalSurveyCheckbox {...props} />,
+  args: {
+    title: 'Visité un musée,',
+    subtitle: 'une piscine gonflable',
+    icon: culturalSurveyIcons.Museum,
+    selected: false,
+  },
+  name: 'CulturalSurveyCheckbox',
 }

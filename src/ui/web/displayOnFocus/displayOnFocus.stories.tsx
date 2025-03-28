@@ -1,15 +1,18 @@
-import { ComponentStory } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
 import { userEvent, screen } from '@storybook/testing-library'
-import React, { Fragment, FunctionComponent, PropsWithChildren } from 'react'
+import React, { Fragment, PropsWithChildren } from 'react'
 import styled from 'styled-components'
 
 import { Typo } from 'ui/theme'
 
 import { displayOnFocus } from './displayOnFocus'
 
-export default {
+const meta: Meta = {
   title: 'ui/accessibility/displayOnFocus',
 }
+export default meta
+
+type Story = StoryObj
 
 const body1 = 'a component wrapped with '
 const caption = 'displayOnFocus'
@@ -31,7 +34,7 @@ const SomeNormalComponent = styled.button({
 const SomeComponentThatDisplayOnFocus: React.FC<PropsWithChildren> =
   displayOnFocus(SomeNormalComponent)
 
-const Template: ComponentStory<FunctionComponent> = () => (
+const StoryComponent = () => (
   <Fragment>
     <Typo.Body>
       {body1}
@@ -44,10 +47,12 @@ const Template: ComponentStory<FunctionComponent> = () => (
   </Fragment>
 )
 
-export const Default = Template.bind({})
-Default.storyName = 'displayOnFocus'
-Default.play = async () => {
-  await screen.findByRole('button') // wait first render
+export const Default: Story = {
+  render: () => <StoryComponent />,
+  name: 'displayOnFocus',
+  play: async () => {
+    await screen.findByRole('button') // wait first render
 
-  userEvent.tab()
+    userEvent.tab()
+  },
 }

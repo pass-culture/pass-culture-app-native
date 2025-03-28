@@ -1,4 +1,4 @@
-import { ComponentMeta } from '@storybook/react'
+import type { Meta } from '@storybook/react'
 import React from 'react'
 
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
@@ -8,7 +8,7 @@ import { CreditBarWithSeparator } from './CreditBarWithSeparator'
 export default {
   title: 'Features/Profile/CreditBarWithSeparator',
   component: CreditBarWithSeparator,
-} as ComponentMeta<typeof CreditBarWithSeparator>
+} as Meta<typeof CreditBarWithSeparator>
 
 const variantConfig: Variants<typeof CreditBarWithSeparator> = [
   {
@@ -62,4 +62,3 @@ const Template: VariantsStory<typeof CreditBarWithSeparator> = (args) => (
 )
 
 export const AllVariants = Template.bind({})
-AllVariants.storyName = 'CreditBarWithSeparator'

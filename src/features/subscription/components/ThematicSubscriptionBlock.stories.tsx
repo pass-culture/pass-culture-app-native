@@ -1,5 +1,5 @@
 import { NavigationContainer } from '@react-navigation/native'
-import { ComponentMeta } from '@storybook/react'
+import { Meta } from '@storybook/react'
 import React from 'react'
 
 import { SubscriptionTheme } from 'features/subscription/types'
@@ -7,7 +7,7 @@ import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storyboo
 
 import { ThematicSubscriptionBlock } from './ThematicSubscriptionBlock'
 
-const meta: ComponentMeta<typeof ThematicSubscriptionBlock> = {
+const meta: Meta<typeof ThematicSubscriptionBlock> = {
   title: 'Features/subscription/ThematicSubscriptionBlock',
   component: ThematicSubscriptionBlock,
   decorators: [
@@ -40,6 +40,5 @@ const Template: VariantsStory<typeof ThematicSubscriptionBlock> = (args) => (
 )
 
 export const AllVariants = Template.bind({})
-AllVariants.storyName = 'ThematicSubscriptionBlock'
 AllVariants.parameters = { axe: { disabledRules: ['duplicate-id'] } }
 // duplicate-id on bell icon (SVG) on CTA, we disable this rule for these stories since we never have more than one ThematicSubscriptionBlock on a page.

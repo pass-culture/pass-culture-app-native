@@ -1,12 +1,12 @@
-import { ComponentMeta } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
 import React from 'react'
 import { View } from 'react-native'
 
 import { ChronicleCard } from 'features/chronicle/components/ChronicleCard/ChronicleCard'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
-import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
+import { VariantsTemplate, type Variants } from 'ui/storybook/VariantsTemplate'
 
-const meta: ComponentMeta<typeof ChronicleCard> = {
+const meta: Meta<typeof ChronicleCard> = {
   title: 'ui/ChronicleCard',
   component: ChronicleCard,
 }
@@ -39,9 +39,12 @@ const variantConfig: Variants<typeof ChronicleCard> = [
   },
 ]
 
-const Template: VariantsStory<typeof ChronicleCard> = (args) => (
+type Story = StoryObj<typeof ChronicleCard>
+
+const Template = (args: React.ComponentProps<typeof ChronicleCard>) => (
   <VariantsTemplate variants={variantConfig} Component={ChronicleCard} defaultProps={args} />
 )
 
-export const AllVariants = Template.bind({})
-AllVariants.storyName = 'ChronicleCard'
+export const AllVariants: Story = {
+  render: Template,
+}

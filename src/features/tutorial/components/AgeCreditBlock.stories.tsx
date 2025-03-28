@@ -1,4 +1,4 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
 import React from 'react'
 import styled from 'styled-components/native'
 
@@ -8,7 +8,7 @@ import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { AgeCreditBlock } from './AgeCreditBlock'
 
 const ANIMATION_DELAY = 2
-const meta: ComponentMeta<typeof AgeCreditBlock> = {
+const meta: Meta<typeof AgeCreditBlock> = {
   title: 'features/tutorial/AgeCreditBlock',
   component: AgeCreditBlock,
   parameters: {
@@ -18,20 +18,7 @@ const meta: ComponentMeta<typeof AgeCreditBlock> = {
 }
 export default meta
 
-const Template: ComponentStory<typeof AgeCreditBlock> = (props) => <AgeCreditBlock {...props} />
-const List: ComponentStory<typeof AgeCreditBlock> = (props) => (
-  <ListContainer>
-    <AgeCreditBlock {...props} creditStatus={CreditStatus.GONE}>
-      <Typo.Title3>30&nbsp;€</Typo.Title3>
-    </AgeCreditBlock>
-    <Spacer.Column numberOfSpaces={0.5} />
-    <AgeCreditBlock {...props} />
-    <Spacer.Column numberOfSpaces={0.5} />
-    <AgeCreditBlock {...props} creditStatus={CreditStatus.COMING}>
-      <Typo.Title3>30&nbsp;€</Typo.Title3>
-    </AgeCreditBlock>
-  </ListContainer>
-)
+type Story = StoryObj<typeof AgeCreditBlock>
 
 const ListContainer = styled.View({
   padding: getSpacing(6),
@@ -42,32 +29,47 @@ const StyledTitle3 = styled(Typo.Title3)(({ theme }) => ({
   color: theme.colors.secondary,
 }))
 
-//TODO(PC-28526): Fix this stories
-const OngoingCredit = Template.bind({})
-OngoingCredit.args = {
-  age: 18,
-  creditStatus: CreditStatus.ONGOING,
-  children: <StyledTitle3>300&nbsp;€</StyledTitle3>,
+export const OngoingCredit: Story = {
+  render: (props) => <AgeCreditBlock {...props} />,
+  args: {
+    age: 18,
+    creditStatus: CreditStatus.ONGOING,
+    children: <StyledTitle3>300&nbsp;€</StyledTitle3>,
+  },
 }
 
-//TODO(PC-28526): Fix this stories
-const withDescription = Template.bind({})
-withDescription.args = {
-  children: (
-    <React.Fragment>
-      <Typo.Title3>300&nbsp;€</Typo.Title3>
-      <Spacer.Column numberOfSpaces={2} />
-      <Typo.Body>Tu auras 2 ans pour utiliser tes 300&nbsp;€</Typo.Body>
-    </React.Fragment>
+export const withDescription: Story = {
+  render: (props) => <AgeCreditBlock {...props} />,
+  args: {
+    children: (
+      <React.Fragment>
+        <Typo.Title3>300&nbsp;€</Typo.Title3>
+        <Spacer.Column numberOfSpaces={2} />
+        <Typo.Body>Tu auras 2 ans pour utiliser tes 300&nbsp;€</Typo.Body>
+      </React.Fragment>
+    ),
+    age: 18,
+    creditStatus: CreditStatus.COMING,
+  },
+}
+
+export const CreditBlockList: Story = {
+  render: (props) => (
+    <ListContainer>
+      <AgeCreditBlock {...props} creditStatus={CreditStatus.GONE}>
+        <Typo.Title3>30&nbsp;€</Typo.Title3>
+      </AgeCreditBlock>
+      <Spacer.Column numberOfSpaces={0.5} />
+      <AgeCreditBlock {...props} />
+      <Spacer.Column numberOfSpaces={0.5} />
+      <AgeCreditBlock {...props} creditStatus={CreditStatus.COMING}>
+        <Typo.Title3>30&nbsp;€</Typo.Title3>
+      </AgeCreditBlock>
+    </ListContainer>
   ),
-  age: 18,
-  creditStatus: CreditStatus.COMING,
-}
-
-//TODO(PC-28526): Fix this stories
-const CreditBlockList = List.bind({})
-CreditBlockList.args = {
-  children: <StyledTitle3>30&nbsp;€</StyledTitle3>,
-  age: 17,
-  creditStatus: CreditStatus.ONGOING,
+  args: {
+    children: <StyledTitle3>30&nbsp;€</StyledTitle3>,
+    age: 17,
+    creditStatus: CreditStatus.ONGOING,
+  },
 }

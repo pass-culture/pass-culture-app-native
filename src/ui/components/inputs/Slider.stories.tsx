@@ -1,11 +1,11 @@
-import { ComponentMeta } from '@storybook/react'
+import type { Meta } from '@storybook/react'
 import React from 'react'
 
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 
 import { Slider } from './Slider'
 
-const meta: ComponentMeta<typeof Slider> = {
+const meta: Meta<typeof Slider> = {
   title: 'ui/inputs/Slider',
   component: Slider,
 }
@@ -65,4 +65,3 @@ const Template: VariantsStory<typeof Slider> = (args) => (
 )
 
 export const AllVariants = Template.bind({})
-AllVariants.storyName = 'Slider'

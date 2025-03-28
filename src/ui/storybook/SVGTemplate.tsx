@@ -1,13 +1,13 @@
 import Clipboard from '@react-native-clipboard/clipboard'
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { ComponentStory } from '@storybook/react'
+import { StoryFn } from '@storybook/react'
 import React, { useMemo, useState } from 'react'
 import styled from 'styled-components/native'
 
 import { AccessibleIcon } from 'ui/svg/icons/types'
 import { Spacer, Typo, getSpacing } from 'ui/theme'
 
-export const SVGTemplate: ComponentStory<
+export const SVGTemplate: StoryFn<
   React.FC<{
     title: string
     icons: Record<string, React.ComponentType<AccessibleIcon>>

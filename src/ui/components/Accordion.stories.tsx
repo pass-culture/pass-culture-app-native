@@ -1,5 +1,5 @@
 import { NavigationContainer } from '@react-navigation/native'
-import { ComponentMeta } from '@storybook/react'
+import type { Meta } from '@storybook/react'
 import React from 'react'
 
 import FilterSwitch from 'ui/components/FilterSwitch'
@@ -8,7 +8,7 @@ import { Typo } from 'ui/theme'
 
 import { Accordion } from './Accordion'
 
-const meta: ComponentMeta<typeof Accordion> = {
+const meta: Meta<typeof Accordion> = {
   title: 'ui/Accordion',
   component: Accordion,
   decorators: [
@@ -52,4 +52,3 @@ const Template: VariantsStory<typeof Accordion> = (args) => (
 )
 
 export const AllVariants = Template.bind({})
-AllVariants.storyName = 'Accordion'

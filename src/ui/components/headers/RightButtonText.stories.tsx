@@ -1,12 +1,12 @@
 import { action } from '@storybook/addon-actions'
-import { ComponentMeta } from '@storybook/react'
+import type { Meta } from '@storybook/react'
 import React from 'react'
 
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 
 import { RightButtonText } from './RightButtonText'
 
-const meta: ComponentMeta<typeof RightButtonText> = {
+const meta: Meta<typeof RightButtonText> = {
   title: 'ui/RightButtonText',
   component: RightButtonText,
 }
@@ -36,4 +36,3 @@ const Template: VariantsStory<typeof RightButtonText> = (args) => (
 )
 
 export const AllVariants = Template.bind({})
-AllVariants.storyName = 'RightButtonText'

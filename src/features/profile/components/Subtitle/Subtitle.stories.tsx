@@ -1,11 +1,11 @@
-import { ComponentMeta } from '@storybook/react'
+import type { Meta } from '@storybook/react'
 import React from 'react'
 
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 
 import { Subtitle } from './Subtitle'
 
-const meta: ComponentMeta<typeof Subtitle> = {
+const meta: Meta<typeof Subtitle> = {
   title: 'features/profile/Subtitle',
   component: Subtitle,
 }
@@ -27,4 +27,3 @@ const Template: VariantsStory<typeof Subtitle> = (args) => (
 )
 
 export const AllVariants = Template.bind({})
-AllVariants.storyName = 'Subtitle'

@@ -1,4 +1,4 @@
-import { ComponentStory } from '@storybook/react'
+import { StoryFn } from '@storybook/react'
 import React from 'react'
 
 import {
@@ -51,7 +51,7 @@ const iconSets = [
   },
 ]
 
-const Template: ComponentStory<typeof Icons> = () => (
+const Template: StoryFn<typeof Icons> = () => (
   <React.Fragment>
     {iconSets.map((icon) => (
       <Icons key={icon.title} title={icon.title} icons={icon.icons} isBicolor={icon.isBicolor} />
@@ -60,4 +60,3 @@ const Template: ComponentStory<typeof Icons> = () => (
 )
 
 export const AllIcons = Template.bind({})
-AllIcons.storyName = 'Icons'

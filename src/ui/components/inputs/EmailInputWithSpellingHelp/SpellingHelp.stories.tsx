@@ -1,11 +1,11 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react'
+import type { Meta, StoryObj } from '@storybook/react'
 import React from 'react'
 
 import { theme } from 'theme'
 
 import { SpellingHelp } from './SpellingHelp'
 
-const meta: ComponentMeta<typeof SpellingHelp> = {
+const meta: Meta<typeof SpellingHelp> = {
   title: 'ui/inputs/EmailInputWithSpellingHelp/SpellingHelp',
   component: SpellingHelp,
   parameters: {
@@ -14,22 +14,26 @@ const meta: ComponentMeta<typeof SpellingHelp> = {
 }
 export default meta
 
-const Template: ComponentStory<typeof SpellingHelp> = (props) => <SpellingHelp {...props} />
+type Story = StoryObj<typeof SpellingHelp>
 
-export const Default = Template.bind({})
-Default.args = {
-  suggestedEmail: {
-    address: 'firstname.lastname',
-    domain: 'gmail.com',
-    full: 'firstname.lastname@gmail.com',
+export const Default: Story = {
+  render: (props) => <SpellingHelp {...props} />,
+  args: {
+    suggestedEmail: {
+      address: 'firstname.lastname',
+      domain: 'gmail.com',
+      full: 'firstname.lastname@gmail.com',
+    },
   },
 }
 
-export const WithLargeSuggestedEmail = Template.bind({})
-WithLargeSuggestedEmail.args = {
-  suggestedEmail: {
-    address: 'firstname.secondfirstname.lastname.secondlastname',
-    domain: 'gmail.com',
-    full: 'firstname.secondfirstname.lastname.secondlastname@gmail.com',
+export const WithLargeSuggestedEmail: Story = {
+  render: (props) => <SpellingHelp {...props} />,
+  args: {
+    suggestedEmail: {
+      address: 'firstname.secondfirstname.lastname.secondlastname',
+      domain: 'gmail.com',
+      full: 'firstname.secondfirstname.lastname.secondlastname@gmail.com',
+    },
   },
 }
