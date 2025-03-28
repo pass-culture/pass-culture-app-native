@@ -1,7 +1,9 @@
-import React, { FunctionComponent, ReactElement } from 'react'
+import React, { cloneElement, FunctionComponent, ReactElement } from 'react'
 import { View, ViewProps } from 'react-native'
 import styled from 'styled-components/native'
 
+import { isReactElement } from 'shared/typeguards/isReactElement'
+import { isStyledComponent } from 'shared/typeguards/isStyledComponent'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 import { getSpacing, getSpacingString, Typo } from 'ui/theme'
 
@@ -29,7 +31,11 @@ export const Tag: FunctionComponent<TagProps> = ({
     <Wrapper backgroundColor={backgroundColor} paddingHorizontal={paddingHorizontal} {...props}>
       {Icon ? (
         <IconContainer>
-          {typeof Icon === 'function' ? <Icon testID="tagIcon" /> : Icon}
+          {isReactElement(Icon) ? (
+            cloneElement(Icon, { testID: 'tagIcon' })
+          ) : isStyledComponent(Icon) ? (
+            <Icon testID="tagIcon" />
+          ) : null}
         </IconContainer>
       ) : null}
       <LabelText>{label}</LabelText>
