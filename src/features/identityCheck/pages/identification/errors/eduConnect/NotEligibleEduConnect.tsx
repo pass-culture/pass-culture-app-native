@@ -8,7 +8,6 @@ import { analytics } from 'libs/analytics/provider'
 import { ScreenErrorProps } from 'libs/monitoring/errors'
 import { Helmet } from 'libs/react-helmet/Helmet'
 import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
-import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
 import { Typo } from 'ui/theme'
 
 export const NotEligibleEduConnect = ({
@@ -63,7 +62,6 @@ export const NotEligibleEduConnect = ({
 
   const defaultGoToHomeButton = {
     wording: 'Retourner à l’accueil',
-    icon: PlainArrowPrevious,
     navigateTo: navigateToHomeConfig,
     onAfterNavigate: onAbandon,
   }

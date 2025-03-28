@@ -1076,36 +1076,6 @@ exports[`NotEligibleEduConnect should render correctly 1`] = `
             ]
           }
         >
-          <View
-            style={
-              [
-                {
-                  "flexDirection": "row",
-                  "flexShrink": 0,
-                },
-              ]
-            }
-          >
-            <View
-              height={20}
-              testID="button-icon-left"
-              width={20}
-            >
-              <Text>
-                button-icon-left-SVG-Mock
-              </Text>
-            </View>
-            <View
-              numberOfSpaces={2}
-              style={
-                [
-                  {
-                    "width": 8,
-                  },
-                ]
-              }
-            />
-          </View>
           <Text
             adjustsFontSizeToFit={false}
             numberOfLines={1}
