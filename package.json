@@ -103,7 +103,6 @@
     "@react-native-firebase/perf": "^14.9.0",
     "@react-native-firebase/remote-config": "^14.9.0",
     "@react-native-google-signin/google-signin": "^10.1.0",
-    "@react-native/assets-registry": "^0.78.0",
     "@react-native/babel-preset": "0.73.21",
     "@react-native/typescript-config": "0.73.1",
     "@react-navigation/bottom-tabs": "6.3.3",

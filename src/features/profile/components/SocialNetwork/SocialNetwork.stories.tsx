@@ -12,7 +12,6 @@ export default meta
 
 type Story = StoryObj<typeof SocialNetwork>
 
-// TODO(PC-17931): Fix those stories
 export const Default: Story = {
   render: () => <SocialNetwork />,
   parameters: {

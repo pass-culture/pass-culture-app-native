@@ -8,7 +8,6 @@ const config: KnipConfig = {
     'src/**/*.stories.old.tsx',
     'src/**/*.ios.*',
     '.storybook/**/*',
-    'src/**/*.ios.*',
     'src/**/*.android.*',
     'src/**/*.web.*',
     'src/api/gen/**',
