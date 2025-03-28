@@ -150,7 +150,6 @@ exports[`CulturalSurveyThanksPage page When FF is disabled should render the pag
         [
           {
             "alignItems": "center",
-            "flexGrow": 1,
             "height": "30%",
             "justifyContent": "center",
             "marginBottom": 24,
@@ -469,7 +468,6 @@ exports[`CulturalSurveyThanksPage page When FF is enabled should render the page
         [
           {
             "alignItems": "center",
-            "flexGrow": 1,
             "height": "30%",
             "justifyContent": "center",
             "marginBottom": 24,

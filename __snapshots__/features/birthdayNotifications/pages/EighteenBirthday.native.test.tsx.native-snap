@@ -150,7 +150,6 @@ exports[`<EighteenBirthday /> should render eighteen birthday 1`] = `
         [
           {
             "alignItems": "center",
-            "flexGrow": 1,
             "height": "30%",
             "justifyContent": "center",
             "marginBottom": 24,

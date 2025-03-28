@@ -150,8 +150,8 @@ exports[`<NotYetUnderageEligibility /> should render properly 1`] = `
         [
           {
             "alignItems": "center",
-            "flexGrow": 1,
             "justifyContent": "center",
+            "marginBottom": 24,
           },
         ]
       }

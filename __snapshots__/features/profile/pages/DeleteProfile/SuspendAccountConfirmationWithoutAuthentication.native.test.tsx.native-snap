@@ -215,8 +215,8 @@ exports[`SuspendAccountConfirmationWithoutAuthentication should render correctly
         [
           {
             "alignItems": "center",
-            "flexGrow": 1,
             "justifyContent": "center",
+            "marginBottom": 24,
           },
         ]
       }

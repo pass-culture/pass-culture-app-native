@@ -151,7 +151,6 @@ exports[`<BeneficiaryAccountCreated/> should render correctly for 18 year-old be
           [
             {
               "alignItems": "center",
-              "flexGrow": 1,
               "height": "30%",
               "justifyContent": "center",
               "marginBottom": 24,
@@ -627,7 +626,6 @@ exports[`<BeneficiaryAccountCreated/> should render correctly for underage benef
           [
             {
               "alignItems": "center",
-              "flexGrow": 1,
               "height": "30%",
               "justifyContent": "center",
               "marginBottom": 24,

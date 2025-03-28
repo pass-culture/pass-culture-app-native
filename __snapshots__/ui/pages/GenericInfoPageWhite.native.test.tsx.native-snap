@@ -169,7 +169,7 @@ exports[`<GenericInfoPageWhite /> should render correctly 1`] = `
           testID="close-button-container"
         >
           <View
-            accessibilityLabel="Aller à la page suivante"
+            accessibilityLabel="Passer à la page suivante"
             accessibilityState={
               {
                 "busy": undefined,
@@ -217,7 +217,7 @@ exports[`<GenericInfoPageWhite /> should render correctly 1`] = `
                 "width": "auto",
               }
             }
-            testID="Aller à la page suivante"
+            testID="Passer à la page suivante"
           >
             <View
               style={
@@ -296,8 +296,8 @@ exports[`<GenericInfoPageWhite /> should render correctly 1`] = `
         [
           {
             "alignItems": "center",
-            "flexGrow": 1,
             "justifyContent": "center",
+            "marginBottom": 24,
           },
         ]
       }

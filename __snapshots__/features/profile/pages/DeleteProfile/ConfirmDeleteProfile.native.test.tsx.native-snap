@@ -222,8 +222,8 @@ exports[`ConfirmDeleteProfile component should render confirm delete profile 1`]
         [
           {
             "alignItems": "center",
-            "flexGrow": 1,
             "justifyContent": "center",
+            "marginBottom": 24,
           },
         ]
       }

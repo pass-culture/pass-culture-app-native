@@ -150,7 +150,6 @@ exports[`<AccountReactivationSuccess /> should match snapshot 1`] = `
         [
           {
             "alignItems": "center",
-            "flexGrow": 1,
             "height": "30%",
             "justifyContent": "center",
             "marginBottom": 24,

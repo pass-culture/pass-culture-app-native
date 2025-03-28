@@ -150,8 +150,8 @@ exports[`CulturalSurveyIntro page When FF is disabled should render the page wit
         [
           {
             "alignItems": "center",
-            "flexGrow": 1,
             "justifyContent": "center",
+            "marginBottom": 24,
           },
         ]
       }
@@ -720,8 +720,8 @@ exports[`CulturalSurveyIntro page When FF is enabled should render the page with
         [
           {
             "alignItems": "center",
-            "flexGrow": 1,
             "justifyContent": "center",
+            "marginBottom": 24,
           },
         ]
       }

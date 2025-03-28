@@ -104,7 +104,7 @@ exports[`OnboardingGeolocation should render correctly 1`] = `
           testID="close-button-container"
         >
           <View
-            accessibilityLabel="Aller à la page suivante"
+            accessibilityLabel="Passer à la page suivante"
             accessibilityState={
               {
                 "busy": undefined,
@@ -161,7 +161,7 @@ exports[`OnboardingGeolocation should render correctly 1`] = `
                 },
               ]
             }
-            testID="Aller à la page suivante"
+            testID="Passer à la page suivante"
           >
             <View
               style={
@@ -240,7 +240,6 @@ exports[`OnboardingGeolocation should render correctly 1`] = `
         [
           {
             "alignItems": "center",
-            "flexGrow": 1,
             "height": "30%",
             "justifyContent": "center",
             "marginBottom": 24,

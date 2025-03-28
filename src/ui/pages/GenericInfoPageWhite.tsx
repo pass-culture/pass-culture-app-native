@@ -252,11 +252,8 @@ const Placeholder = styled.View<{ height: number }>(({ height }) => ({
 const IllustrationContainer = styled.View<{ animation: boolean }>(({ animation }) => ({
   alignItems: 'center',
   justifyContent: 'center',
-  flexGrow: 1,
-  ...(animation && {
-    height: '30%',
-    marginBottom: getSpacing(6),
-  }),
+  marginBottom: getSpacing(6),
+  ...(animation && { height: '30%' }),
 }))
 
 const StyledLottieView = styled(LottieView)({
@@ -290,7 +287,7 @@ const SkipButton = ({ withSkipAction }: { withSkipAction?: () => void }) => {
     return (
       <ButtonTertiaryNeutralInfo
         wording="Passer"
-        accessibilityLabel="Aller à la page suivante"
+        accessibilityLabel="Passer à la page suivante"
         onPress={withSkipAction}
         inline
       />
