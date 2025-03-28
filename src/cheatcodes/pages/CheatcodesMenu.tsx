@@ -86,6 +86,7 @@ export function CheatcodesMenu(): React.JSX.Element {
     ...cheatcodesNavigationTutorialButtons,
     { title: 'RemoteBanners 🆒', screen: 'CheatcodesScreenRemoteBanners', subscreens: [] },
     { title: 'Share 🔗', screen: 'CheatcodesNavigationShare', subscreens: [] },
+    { title: 'Maintenance 🔗', screen: 'CheatcodesScreenMaintenance', subscreens: [] },
   ]
 
   const otherButtons: CheatcodesButtonsWithSubscreensProps[] = [
