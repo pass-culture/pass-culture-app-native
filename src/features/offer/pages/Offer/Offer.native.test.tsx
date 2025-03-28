@@ -4,6 +4,7 @@ import * as useSimilarOffers from 'features/offer/api/useSimilarOffers'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { renderOfferPage } from 'features/offer/helpers/renderOfferPageTestUtil'
 import * as useArtistResults from 'features/offer/helpers/useArtistResults/useArtistResults'
+import { GetReminderResponse } from 'features/offer/types'
 import { mockedAlgoliaOffersWithSameArtistResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -66,6 +67,7 @@ describe('<Offer />', () => {
     mockServer.getApi<BookingsResponse>('/v1/bookings', {})
     mockServer.getApi<PaginatedFavoritesResponse>('/v1/favorites', {})
     mockServer.getApi<PaginatedFavoritesResponse>('/v1/me/favorites', {})
+    mockServer.getApi<GetReminderResponse>('/v1/me/reminders', {})
     setFeatureFlags()
     mockAuthContext()
   })

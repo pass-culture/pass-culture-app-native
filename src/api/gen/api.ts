@@ -16,6 +16,7 @@ import { getAuthenticationHeaders, handleGeneratedApiResponse, safeFetch } from 
 import { EmptyResponse } from 'libs/fetch'
 
 import { Configuration } from './configuration'
+import { GetReminderResponse, ReminderResponse } from 'features/offer/types'
 
 const BASE_PATH = '/'.replace(/\/+$/, '')
 
@@ -7060,7 +7061,7 @@ export const DefaultApiFp = function (api: DefaultApi, configuration?: Configura
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    async getNativeV1MeReminders(options?: any): Promise<EmptyResponse> {
+    async getNativeV1MeReminders(options?: any): Promise<GetReminderResponse> {
       const localVarFetchArgs =
         await DefaultApiFetchParamCreator(configuration).getNativeV1MeReminders(options)
       const response = await safeFetch(
@@ -7777,7 +7778,7 @@ export const DefaultApiFp = function (api: DefaultApi, configuration?: Configura
     async postNativeV1MeReminders(
       body?: PostReminderRequest,
       options?: any
-    ): Promise<EmptyResponse> {
+    ): Promise<ReminderResponse> {
       const localVarFetchArgs = await DefaultApiFetchParamCreator(
         configuration
       ).postNativeV1MeReminders(body, options)
