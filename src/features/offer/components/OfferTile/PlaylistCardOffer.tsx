@@ -37,12 +37,10 @@ export const PlaylistCardOffer: FC<Props> = ({
   return (
     <Container maxWidth={width}>
       <NewOfferCaption name={name} date={date} price={price} categoryLabel={categoryLabel} />
+      {interactionTag ? interactionTag : null}
       <View>
         {distance ? <DistanceTag label={`à ${distance}`} /> : null}
         <ImageTile categoryId={categoryId} uri={thumbnailUrl} width={width} height={height} />
-        {interactionTag ? (
-          <InteractionTagContainer>{interactionTag}</InteractionTagContainer>
-        ) : null}
       </View>
     </Container>
   )
@@ -54,10 +52,6 @@ const Container = styled(ViewGap).attrs({
   flexDirection: 'column-reverse',
   maxWidth,
 }))
-
-const InteractionTagContainer = styled(View)({
-  marginTop: getSpacing(2),
-})
 
 const DistanceTag = styled(Tag).attrs(() => ({
   testID: 'DistanceId',
