@@ -20,19 +20,25 @@ export enum EduConnectErrorMessageEnum {
   GenericError = 'GenericError',
 }
 
-export type NotEligibleEduConnectErrorData = {
+type NotEligibleEduConnectErrorData = {
   Illustration: FunctionComponent<AccessibleIcon>
   title: string
   description: string
   titleAlignment?: Exclude<TextStyle['textAlign'], 'auto'>
   descriptionAlignment?: Exclude<TextStyle['textAlign'], 'auto'>
   primaryButton?: {
-    text: string
+    wording: string
     icon?: FunctionComponent<AccessibleIcon>
     onPress?: () => void
   } & (
-    | { navigateTo?: InternalNavigationProps['navigateTo'] }
-    | { externalNav: ExternalNavigationProps['externalNav'] }
+    | {
+        navigateTo: InternalNavigationProps['navigateTo']
+        externalNav?: never
+      }
+    | {
+        externalNav: ExternalNavigationProps['externalNav']
+        navigateTo?: never
+      }
   )
 
   isGoHomeTertiaryButtonVisible?: boolean
@@ -58,7 +64,7 @@ const InvalidInformationErrorData: NotEligibleEduConnectErrorData = {
     'Refais une demande en vérifiant ton identité avec ta pièce d’identité.',
   descriptionAlignment: 'center',
   primaryButton: {
-    text: 'Vérifier mon identité',
+    wording: 'Vérifier mon identité',
     navigateTo: { screen: 'SelectIDOrigin' },
   },
   isGoHomeTertiaryButtonVisible: true,
@@ -76,7 +82,7 @@ const getUserTypeNotStudentErrorData = (
     'L’usage du pass Culture est strictement nominatif. Le compte doit être créé et utilisé par un jeune éligible, de 15 à 18 ans. L’identification doit se faire au nom du futur bénéficiaire. ',
   descriptionAlignment: 'center',
   primaryButton: {
-    text: 'Réessayer de m’identifier',
+    wording: 'Réessayer de m’identifier',
     onPress: onPrimaryButtonPress,
     navigateTo,
   },
@@ -98,7 +104,7 @@ const DuplicateUserErrorData: NotEligibleEduConnectErrorData = {
     'Ton compte ÉduConnect est déjà rattaché à un compte pass Culture. Vérifie que tu n’as pas déjà créé un compte avec une autre adresse e-mail.\n\nTu peux contacter le support pour plus d’informations.',
   descriptionAlignment: 'center',
   primaryButton: {
-    text: 'Contacter le support',
+    wording: 'Contacter le support',
     icon: Email,
     externalNav: contactSupport.forGenericQuestion,
   },

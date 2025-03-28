@@ -33,18 +33,21 @@ type ButtonProps = {
   | {
       onPress: () => void
       onBeforeNavigate?: never
+      onAfterNavigate?: never
       navigateTo?: never
       externalNav?: never
     }
   | {
       navigateTo: InternalNavigationProps['navigateTo']
       onBeforeNavigate?: () => void
+      onAfterNavigate?: () => void
       onPress?: never
       externalNav?: never
     }
   | {
       externalNav: ExternalNavigationProps['externalNav']
       onBeforeNavigate?: () => void
+      onAfterNavigate?: () => void
       onPress?: never
       navigateTo?: never
     }
@@ -134,6 +137,7 @@ export const GenericInfoPageWhite: React.FunctionComponent<Props> = ({
               wording={buttonPrimary.wording}
               navigateTo={buttonPrimary.navigateTo}
               onBeforeNavigate={buttonPrimary.onBeforeNavigate}
+              onAfterNavigate={buttonPrimary.onAfterNavigate}
               isLoading={buttonPrimary.isLoading}
               disabled={buttonPrimary.disabled}
               icon={buttonPrimary.icon}
@@ -147,6 +151,7 @@ export const GenericInfoPageWhite: React.FunctionComponent<Props> = ({
               wording={buttonPrimary.wording}
               externalNav={buttonPrimary.externalNav}
               onBeforeNavigate={buttonPrimary.onBeforeNavigate}
+              onAfterNavigate={buttonPrimary.onAfterNavigate}
               isLoading={buttonPrimary.isLoading}
               disabled={buttonPrimary.disabled}
               icon={ExternalSiteFilled}
@@ -171,6 +176,7 @@ export const GenericInfoPageWhite: React.FunctionComponent<Props> = ({
               wording={buttonSecondary.wording}
               navigateTo={buttonSecondary.navigateTo}
               onBeforeNavigate={buttonSecondary.onBeforeNavigate}
+              onAfterNavigate={buttonSecondary.onAfterNavigate}
               isLoading={buttonSecondary.isLoading}
               disabled={buttonSecondary.disabled}
               icon={buttonSecondary.icon}
@@ -184,6 +190,7 @@ export const GenericInfoPageWhite: React.FunctionComponent<Props> = ({
               wording={buttonSecondary.wording}
               externalNav={buttonSecondary.externalNav}
               onBeforeNavigate={buttonSecondary.onBeforeNavigate}
+              onAfterNavigate={buttonSecondary.onAfterNavigate}
               isLoading={buttonSecondary.isLoading}
               disabled={buttonSecondary.disabled}
               icon={ExternalSiteFilled}
@@ -208,6 +215,7 @@ export const GenericInfoPageWhite: React.FunctionComponent<Props> = ({
               wording={buttonTertiary.wording}
               navigateTo={buttonTertiary.navigateTo}
               onBeforeNavigate={buttonTertiary.onBeforeNavigate}
+              onAfterNavigate={buttonTertiary.onAfterNavigate}
               isLoading={buttonTertiary.isLoading}
               disabled={buttonTertiary.disabled}
               icon={buttonTertiary.icon}
@@ -221,6 +229,7 @@ export const GenericInfoPageWhite: React.FunctionComponent<Props> = ({
               wording={buttonTertiary.wording}
               externalNav={buttonTertiary.externalNav}
               onBeforeNavigate={buttonTertiary.onBeforeNavigate}
+              onAfterNavigate={buttonTertiary.onAfterNavigate}
               isLoading={buttonTertiary.isLoading}
               disabled={buttonTertiary.disabled}
               icon={ExternalSiteFilled}

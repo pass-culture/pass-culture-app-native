@@ -7,6 +7,7 @@ import { render, screen, userEvent } from 'tests/utils'
 
 import { QuitSignupModal } from './QuitSignupModal'
 
+jest.mock('libs/firebase/analytics/analytics')
 jest.mock('features/navigation/helpers/navigateToHome')
 
 const resumeMock = jest.fn()

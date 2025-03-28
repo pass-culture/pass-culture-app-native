@@ -18,6 +18,7 @@ export const cheatcodesNavigationIdentityCheckButtons: [CheatcodesButtonsWithSub
     screen: 'CheatcodesNavigationIdentityCheck',
     subscreens: [
       { screen: 'BeneficiaryRequestSent' },
+      { screen: 'CheatcodesScreenNotEligibleEduConnect', title: 'NotEligibleEduConnect' },
       { screen: 'ComeBackLater' },
       { screen: 'DisableActivation' },
       { screen: 'DMSIntroduction' },

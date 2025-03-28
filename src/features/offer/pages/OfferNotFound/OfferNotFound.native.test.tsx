@@ -6,6 +6,8 @@ import { render } from 'tests/utils'
 const resetErrorBoundary = () => null
 const error = new Error('error')
 
+jest.mock('libs/firebase/analytics/analytics')
+
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   return function createAnimatedComponent(Component: unknown) {
     return Component

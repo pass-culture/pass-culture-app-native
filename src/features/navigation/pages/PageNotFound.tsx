@@ -1,13 +1,9 @@
 import React from 'react'
-import styled from 'styled-components/native'
 
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { Helmet } from 'libs/react-helmet/Helmet'
-import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
-import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import { GenericInfoPageDeprecated } from 'ui/pages/GenericInfoPageDeprecated'
+import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
 import { PageNotFound as PageNotFoundIcon } from 'ui/svg/icons/PageNotFound'
-import { Typo } from 'ui/theme'
 
 export const PageNotFound: React.FC = () => {
   const helmetTitle = 'Page introuvable | pass Culture'
@@ -16,24 +12,15 @@ export const PageNotFound: React.FC = () => {
       <Helmet>
         <title>{helmetTitle}</title>
       </Helmet>
-      <GenericInfoPageDeprecated
+      <GenericInfoPageWhite
+        illustration={PageNotFoundIcon}
         title="Page introuvable&nbsp;!"
-        icon={PageNotFoundIcon}
-        buttons={[
-          <InternalTouchableLink
-            key={1}
-            as={ButtonPrimaryWhite}
-            wording="Retourner à l’accueil"
-            navigateTo={navigateToHomeConfig}
-          />,
-        ]}>
-        <StyledBody>Il est possible que cette page soit désactivée ou n’existe pas.</StyledBody>
-      </GenericInfoPageDeprecated>
+        subtitle="Il est possible que cette page soit désactivée ou n’existe pas."
+        buttonPrimary={{
+          wording: 'Retourner à l’accueil',
+          navigateTo: navigateToHomeConfig,
+        }}
+      />
     </React.Fragment>
   )
 }
-
-const StyledBody = styled(Typo.Body)(({ theme }) => ({
-  color: theme.colors.white,
-  textAlign: 'center',
-}))
