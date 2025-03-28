@@ -6,6 +6,7 @@ import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import * as GetInstalledAppsAPI from 'features/offer/helpers/getInstalledApps/getInstalledApps'
 import * as useArtistResults from 'features/offer/helpers/useArtistResults/useArtistResults'
 import { Offer } from 'features/offer/pages/Offer/Offer'
+import { GetReminderResponse } from 'features/offer/types'
 import {
   mockedAlgoliaOffersWithSameArtistResponse,
   mockedAlgoliaResponse,
@@ -17,8 +18,8 @@ import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, measurePerformance, screen } from 'tests/utils'
 
+jest.mock('libs/jwt/jwt')
 jest.mock('libs/firebase/analytics/analytics')
-
 jest.mock('react-native/Libraries/Animated/NativeAnimatedHelper')
 
 jest.mock('react-native/Libraries/Alert/Alert', () => ({
@@ -78,6 +79,7 @@ describe('<Offer />', () => {
       }
     )
     mockServer.getApi<SubcategoriesResponseModelv2>(`/v1/subcategories/v2`, subcategoriesDataTest)
+    mockServer.getApi<GetReminderResponse>('/v1/me/reminders', {})
   })
 
   it('Performance test for Offer page', async () => {

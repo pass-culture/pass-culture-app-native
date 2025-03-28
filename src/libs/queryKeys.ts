@@ -58,6 +58,7 @@ export enum QueryKeys {
   VENUES = 'venues',
   VIDEO_CAROUSEL_OFFERS = 'videoCarouselOffers',
   VIDEO_OFFER = 'video_offer',
+  REMINDERS = 'reminders',
 }
 
 export enum MutationKeys {
