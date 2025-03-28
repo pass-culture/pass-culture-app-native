@@ -4,6 +4,7 @@ import styled from 'styled-components/native'
 
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 import { ArrowRight } from 'ui/svg/icons/ArrowRight'
+import { Star } from 'ui/svg/Star'
 
 import { Tag } from './Tag'
 
@@ -33,6 +34,10 @@ const variantConfig: Variants<typeof Tag> = [
   {
     label: 'Tag with icon',
     props: { label: '1', Icon: StyledArrowRight },
+  },
+  {
+    label: 'Tag with JSX icon ',
+    props: { label: '1', Icon: <Star size={16} /> },
   },
 ]
 

@@ -17,6 +17,12 @@ describe('<Tag />', () => {
     expect(screen.getByTestId('tagIcon')).toBeOnTheScreen()
   })
 
+  it('should display icon tag (JSX) when it is informed', () => {
+    render(<Tag label="1" Icon={<ArrowRight />} />)
+
+    expect(screen.getByTestId('tagIcon')).toBeOnTheScreen()
+  })
+
   it('should not display icon tag when it is not informed', () => {
     render(<Tag label="1" />)
 
