@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, ReactElement } from 'react'
 import { View, ViewProps } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -7,7 +7,9 @@ import { getSpacing, getSpacingString, Typo } from 'ui/theme'
 
 type TagProps = ViewProps & {
   label: string
-  Icon?: FunctionComponent<AccessibleIcon>
+  Icon?: FunctionComponent<AccessibleIcon> | ReactElement
+  backgroundColor?: string
+  paddingHorizontal?: number
 }
 
 const PADDING_VERTICAL = getSpacing(1)
@@ -16,12 +18,18 @@ const LINE_HEIGHT = getSpacing(NUMBER_OF_SPACES_LINE_HEIGHT)
 
 export const TAG_HEIGHT = PADDING_VERTICAL + LINE_HEIGHT + PADDING_VERTICAL
 
-export const Tag: FunctionComponent<TagProps> = ({ label, Icon, ...props }) => {
+export const Tag: FunctionComponent<TagProps> = ({
+  label,
+  Icon,
+  backgroundColor,
+  paddingHorizontal,
+  ...props
+}) => {
   return (
-    <Wrapper {...props}>
+    <Wrapper backgroundColor={backgroundColor} paddingHorizontal={paddingHorizontal} {...props}>
       {Icon ? (
         <IconContainer>
-          <Icon testID="tagIcon" />
+          {typeof Icon === 'function' ? <Icon testID="tagIcon" /> : Icon}
         </IconContainer>
       ) : null}
       <LabelText>{label}</LabelText>
@@ -29,15 +37,17 @@ export const Tag: FunctionComponent<TagProps> = ({ label, Icon, ...props }) => {
   )
 }
 
-const Wrapper = styled(View)(({ theme }) => ({
-  flexDirection: 'row',
-  alignItems: 'center',
-  alignSelf: 'flex-start',
-  borderRadius: 6,
-  backgroundColor: theme.colors.greyLight,
-  paddingVertical: PADDING_VERTICAL,
-  paddingHorizontal: getSpacing(2),
-}))
+const Wrapper = styled(View)<{ backgroundColor?: string; paddingHorizontal?: number }>(
+  ({ theme, backgroundColor, paddingHorizontal }) => ({
+    flexDirection: 'row',
+    alignItems: 'center',
+    alignSelf: 'flex-start',
+    borderRadius: 6,
+    backgroundColor: backgroundColor ?? theme.colors.greyLight,
+    paddingVertical: PADDING_VERTICAL,
+    paddingHorizontal: paddingHorizontal ?? getSpacing(2),
+  })
+)
 
 const LabelText = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.colors.black,
