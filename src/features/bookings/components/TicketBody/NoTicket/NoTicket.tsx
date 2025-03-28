@@ -2,22 +2,18 @@ import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
 import { TicketText } from 'features/bookings/components/TicketBody/TicketText'
+import { TicketVisual } from 'features/bookings/components/TicketBody/TicketVisual'
 import { BicolorCircledCheck as InitialBicolorCircledCheck } from 'ui/svg/icons/BicolorCircledCheck'
 import { getSpacing } from 'ui/theme'
 
 export const NoTicket: FunctionComponent = () => (
   <TicketContainer testID="withdrawal-info-no-ticket">
-    <IconContainer>
+    <TicketVisual>
       <BicolorCircledCheck />
-    </IconContainer>
+    </TicketVisual>
     <TicketText>Tu n’as pas besoin de billet pour profiter de cette offre&nbsp;!</TicketText>
   </TicketContainer>
 )
-
-const IconContainer = styled.View({
-  alignItems: 'center',
-  width: '100%',
-})
 
 const BicolorCircledCheck = styled(InitialBicolorCircledCheck).attrs(({ theme }) => ({
   size: theme.illustrations.sizes.small,

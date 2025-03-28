@@ -3,9 +3,9 @@ import styled from 'styled-components/native'
 
 import { Typo, getSpacing } from 'ui/theme'
 
-export const TicketText = ({ children }: { children: string }) => {
+export const TicketText = ({ children, testID }: { children: string; testID?: string }) => {
   return (
-    <TicketContainer>
+    <TicketContainer testID={testID}>
       <StyledBody>{children}</StyledBody>
     </TicketContainer>
   )

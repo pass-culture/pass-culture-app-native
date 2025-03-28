@@ -109,7 +109,7 @@ export const BookingDetailsContent = ({
             icon={IdCard}
           />
         }>
-        <TicketCutoutBottom offer={offer} />
+        <TicketCutoutBottom offer={offer} booking={booking} />
       </TicketCutout>
       <ErrorBannerContainer>
         <ErrorBanner message="Tu n’as pas le droit de céder ou de revendre ton billet." />
