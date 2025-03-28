@@ -6,6 +6,9 @@ import { checkAccessibilityFor, render } from 'tests/utils/web'
 const resetErrorBoundary = () => null
 const error = new Error('error')
 
+jest.mock('libs/firebase/analytics/analytics')
+jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
+
 describe('<VenueNotFound />', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
