@@ -6,7 +6,7 @@ import { BookClubCertification } from 'ui/svg/BookClubCertification'
 import { ThumbUpFilled } from 'ui/svg/icons/ThumbUpFilled'
 import { Star } from 'ui/svg/Star'
 
-export type TagConfig = {
+type TagConfig = {
   theme: typeof theme
   likesCount?: number
   chroniclesCount?: number
