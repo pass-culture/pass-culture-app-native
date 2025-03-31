@@ -7,12 +7,7 @@ import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { useFeatureFlagOptions } from 'libs/firebase/firestore/featureFlags/useFeatureFlagOptions'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
-import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
-import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
-import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import { GenericInfoPageDeprecated } from 'ui/pages/GenericInfoPageDeprecated'
-import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
+import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
 import { Hourglass } from 'ui/svg/icons/Hourglass'
 import { LINE_BREAK } from 'ui/theme/constants'
 
@@ -30,25 +25,18 @@ export const DisableActivation = () => {
   const externalWording = isWeb ? externalWordingWeb : externalWordingMobile
 
   return (
-    <GenericInfoPageDeprecated
-      icon={Hourglass}
+    <GenericInfoPageWhite
+      illustration={Hourglass}
       title={title}
-      buttons={[
-        <InternalTouchableLink
-          key={2}
-          as={ButtonPrimaryWhite}
-          wording="Retourner à l’accueil"
-          navigateTo={navigateToHomeConfig}
-        />,
-        <ExternalTouchableLink
-          key={2}
-          as={ButtonTertiaryWhite}
-          externalNav={{ url }}
-          wording={externalWording}
-          onBeforeNavigate={() => analytics.logHasClickedTutorialFAQ()}
-          icon={ExternalSiteFilled}
-        />,
-      ]}
+      buttonPrimary={{
+        wording: 'Retourner à l’accueil',
+        navigateTo: navigateToHomeConfig,
+      }}
+      buttonTertiary={{
+        wording: externalWording,
+        externalNav: { url },
+        onBeforeNavigate: () => analytics.logHasClickedTutorialFAQ(),
+      }}
     />
   )
 }

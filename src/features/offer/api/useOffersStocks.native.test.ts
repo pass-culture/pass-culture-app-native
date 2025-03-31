@@ -6,6 +6,7 @@ import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, renderHook } from 'tests/utils'
 
 jest.mock('libs/network/NetInfoWrapper')
+jest.mock('libs/firebase/analytics/analytics')
 
 describe('useOffersStocks', () => {
   beforeEach(() => {

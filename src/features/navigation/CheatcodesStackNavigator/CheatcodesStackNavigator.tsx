@@ -4,6 +4,8 @@ import React from 'react'
 import { CheatcodesMenu } from 'cheatcodes/pages/CheatcodesMenu'
 import { CheatcodesNavigationAchievements } from 'cheatcodes/pages/features/achievements/CheatcodesNavigationAchievements'
 import { CheatcodesNavigationBirthdayNotifications } from 'cheatcodes/pages/features/birthdayNotifications/CheatcodesNavigationBirthdayNotifications'
+import { CheatcodesNavigationBookings } from 'cheatcodes/pages/features/bookings/CheatcodesNavigationBookings'
+import { CheatcodesScreenBookingNotFound } from 'cheatcodes/pages/features/bookings/CheatcodesScreenBookingNotFound'
 import { CheatcodesNavigationBookOffer } from 'cheatcodes/pages/features/bookOffer/CheatcodesNavigationBookOffer'
 import { CheatcodesNavigationCulturalSurvey } from 'cheatcodes/pages/features/culturalSurvey/CheatcodesNavigationCulturalSurvey'
 import { CheatcodesNavigationForceUpdate } from 'cheatcodes/pages/features/forceUpdate/cheatcodesNavigationForceUpdate'
@@ -13,7 +15,9 @@ import { CheatcodesScreenDefaultThematicHomeHeader } from 'cheatcodes/pages/feat
 import { CheatcodesScreenHighlightThematicHomeHeader } from 'cheatcodes/pages/features/home/CheatcodesScreenHighlightThematicHomeHeader'
 import { CheatcodesNavigationIdentityCheck } from 'cheatcodes/pages/features/identityCheck/CheatcodesNavigationIdentityCheck'
 import { CheatcodesNavigationNewIdentificationFlow } from 'cheatcodes/pages/features/identityCheck/CheatcodesNavigationNewIdentificationFlow'
+import { CheatcodesScreenNotEligibleEduConnect } from 'cheatcodes/pages/features/identityCheck/CheatcodesScreenNotEligibleEduConnect'
 import { CheatcodesNavigationInternal } from 'cheatcodes/pages/features/internal/CheatcodesNavigationInternal'
+import { CheatcodesScreenMaintenance } from 'cheatcodes/pages/features/maintenance/CheatcodesScreenMaintenance'
 import { CheatcodesNavigationProfile } from 'cheatcodes/pages/features/profile/CheatcodesNavigationProfile'
 import { CheatcodesScreenRemoteBanners } from 'cheatcodes/pages/features/remoteBanners/CheatcodesScreenRemoteBanners'
 import { CheatcodesNavigationShare } from 'cheatcodes/pages/features/share/CheatcodesNavigationShare'
@@ -31,6 +35,7 @@ import { CheatcodesNavigationSignUp } from 'cheatcodes/pages/others/CheatcodesNa
 import { CheatcodesScreenAccesLibre } from 'cheatcodes/pages/others/CheatcodesScreenAccesLibre'
 import { CheatcodesScreenDebugInformations } from 'cheatcodes/pages/others/CheatcodesScreenDebugInformations'
 import { CheatcodesScreenFeatureFlags } from 'cheatcodes/pages/others/CheatcodesScreenFeatureFlags'
+import { CheatcodesScreenGenericErrorPage } from 'cheatcodes/pages/others/CheatcodesScreenGenericErrorPage'
 import { CheatcodesScreenGenericInfoPageWhite } from 'cheatcodes/pages/others/CheatcodesScreenGenericInfoPageWhite'
 import { CheatcodesScreenNewCaledonia } from 'cheatcodes/pages/others/CheatcodesScreenNewCaledonia'
 import { CheatcodesScreenRemoteConfig } from 'cheatcodes/pages/others/CheatcodesScreenRemoteConfig'
@@ -129,6 +134,10 @@ const routes: CheatcodesStackRoute[] = [
     name: 'CheatcodesNavigationBookOffer',
     component: CheatcodesNavigationBookOffer,
   },
+  {
+    name: 'CheatcodesNavigationBookings',
+    component: CheatcodesNavigationBookings,
+  },
   /**** OTHER ****/
   {
     name: 'CheatcodesScreenDebugInformations',
@@ -149,6 +158,10 @@ const routes: CheatcodesStackRoute[] = [
   {
     name: 'CheatcodesScreenRemoteBanners',
     component: CheatcodesScreenRemoteBanners,
+  },
+  {
+    name: 'CheatcodesScreenMaintenance',
+    component: CheatcodesScreenMaintenance,
   },
   {
     name: 'CheatcodesScreenRemoteConfig',
@@ -181,6 +194,18 @@ const routes: CheatcodesStackRoute[] = [
   {
     name: 'CheatcodesScreenGenericInfoPageWhite',
     component: CheatcodesScreenGenericInfoPageWhite,
+  },
+  {
+    name: 'CheatcodesScreenGenericErrorPage',
+    component: CheatcodesScreenGenericErrorPage,
+  },
+  {
+    name: 'CheatcodesScreenBookingNotFound',
+    component: CheatcodesScreenBookingNotFound,
+  },
+  {
+    name: 'CheatcodesScreenNotEligibleEduConnect',
+    component: CheatcodesScreenNotEligibleEduConnect,
   },
 ]
 

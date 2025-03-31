@@ -73,6 +73,11 @@ export const AsyncErrorBoundaryWithoutNavigation = ({
   }
 
   const helmetTitle = 'Page erreur\u00a0: Erreur pendant le chargement | pass Culture'
+
+  // NEVER EVER USE NAVIGATION (OR ANYTHING FROM @react-navigation)
+  // ON THIS PAGE OR IT WILL BREAK!!!
+  // THE NAVIGATION CONTEXT IS NOT ALWAYS LOADED WHEN WE DISPLAY
+  // EX: ScreenErrorProvider IS OUTSIDE NAVIGATION !
   return (
     <React.Fragment>
       <Helmet>

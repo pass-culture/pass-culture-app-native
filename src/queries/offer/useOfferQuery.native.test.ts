@@ -7,6 +7,7 @@ import { act, renderHook } from 'tests/utils'
 import { useOfferQuery } from './useOfferQuery'
 
 jest.mock('libs/network/NetInfoWrapper')
+jest.mock('libs/firebase/analytics/analytics')
 
 describe('useOfferQuery', () => {
   beforeEach(() =>

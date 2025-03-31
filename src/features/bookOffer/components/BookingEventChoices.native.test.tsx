@@ -13,6 +13,7 @@ import { render, screen, waitFor } from 'tests/utils'
 
 import { BookingEventChoices } from './BookingEventChoices'
 
+jest.mock('libs/firebase/analytics/analytics')
 jest.mock('features/auth/context/AuthContext')
 
 const mockUseBooking = useBookingContext as jest.Mock

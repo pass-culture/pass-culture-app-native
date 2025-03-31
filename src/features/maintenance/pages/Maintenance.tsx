@@ -2,42 +2,74 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { Helmet } from 'libs/react-helmet/Helmet'
-import { GenericInfoPageDeprecated } from 'ui/pages/GenericInfoPageDeprecated'
-import { LogoPassCulture as LogoPassCultureOriginal } from 'ui/svg/icons/LogoPassCulture'
+import { getPrimaryIllustration } from 'shared/illustrations/getPrimaryIllustration'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Page } from 'ui/pages/Page'
 import { MaintenanceCone } from 'ui/svg/icons/MaintenanceCone'
-import { Spacer, Typo } from 'ui/theme'
+import { Spacer, Typo, getSpacing } from 'ui/theme'
+import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type MaintenanceProps = {
   message?: string
 }
 
+// NEVER EVER USE NAVIGATION (OR ANYTHING FROM @react-navigation)
+// ON THIS PAGE OR IT WILL BREAK!!!
+// THE NAVIGATION CONTEXT IS NOT ALWAYS LOADED WHEN WE DISPLAY
+// EX: ScreenErrorProvider IS OUTSIDE NAVIGATION !
+// TODO(PC-35429): Create a new GenericErroPage template wihtout background and use in this page
 export const Maintenance: React.FC<MaintenanceProps> = (props) => {
   const helmetTitle = 'Maintenance | pass Culture'
+  const Illustration = getPrimaryIllustration(MaintenanceCone)
+
   return (
     <React.Fragment>
       <Helmet>
         <title>{helmetTitle}</title>
       </Helmet>
-      <GenericInfoPageDeprecated title="Maintenance en cours" icon={MaintenanceCone}>
-        <Spacer.Column numberOfSpaces={6} />
-        <StyledBody>
-          {props.message
-            ? props.message
-            : 'L’application est actuellement en maintenance, mais sera à nouveau en ligne rapidement\u00a0!'}
-        </StyledBody>
-        <Spacer.Column numberOfSpaces={24} />
-        <LogoPassCulture />
-      </GenericInfoPageDeprecated>
+      <Page>
+        <Container>
+          <Spacer.Flex flex={1} />
+          <IllustrationContainer>{Illustration ? <Illustration /> : null}</IllustrationContainer>
+          <TextContainer gap={4}>
+            <StyledTitle2 {...getHeadingAttrs(1)}>Maintenance en cours</StyledTitle2>
+            <StyledBody {...getHeadingAttrs(2)}>
+              {props.message
+                ? props.message
+                : 'L’application est actuellement en maintenance, mais sera à nouveau en ligne rapidement\u00a0!'}
+            </StyledBody>
+          </TextContainer>
+          <Spacer.Flex flex={1} />
+        </Container>
+      </Page>
     </React.Fragment>
   )
 }
 
-const StyledBody = styled(Typo.Body)(({ theme }) => ({
-  color: theme.colors.white,
-  textAlign: 'center',
+const Container = styled.View<{ top: number; bottom: number }>(({ theme }) => ({
+  flex: 1,
+  justifyContent: 'space-between',
+  paddingHorizontal: theme.contentPage.marginHorizontal,
+  paddingVertical: theme.contentPage.marginVertical,
+  overflow: 'scroll',
 }))
 
-const LogoPassCulture = styled(LogoPassCultureOriginal)({
-  alignItems: 'flex-end',
-  flex: 1,
+const IllustrationContainer = styled.View<{ animation: boolean }>(({ animation }) => ({
+  alignItems: 'center',
+  justifyContent: 'center',
+  marginBottom: getSpacing(6),
+  ...(animation && { height: '30%' }),
+}))
+
+const TextContainer = styled(ViewGap)({
+  alignItems: 'center',
+  marginBottom: getSpacing(6),
+})
+
+const StyledTitle2 = styled(Typo.Title2)({
+  textAlign: 'center',
+})
+
+const StyledBody = styled(Typo.Body)({
+  textAlign: 'center',
 })

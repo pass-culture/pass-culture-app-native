@@ -2,18 +2,13 @@ import React, { useEffect, useRef } from 'react'
 import { TextProps, TextStyle } from 'react-native'
 import styled from 'styled-components/native'
 
-import { computePrimaryButtonToDisplay } from 'features/identityCheck/pages/identification/errors/eduConnect/helpers/computePrimaryButtonToDisplay'
+import { useNotEligibleEduConnectErrorData } from 'features/identityCheck/pages/identification/errors/hooks/useNotEligibleEduConnectErrorData'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { analytics } from 'libs/analytics/provider'
 import { ScreenErrorProps } from 'libs/monitoring/errors'
 import { Helmet } from 'libs/react-helmet/Helmet'
-import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
-import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import { GenericInfoPageDeprecated } from 'ui/pages/GenericInfoPageDeprecated'
-import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
+import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
 import { Typo } from 'ui/theme'
-
-import { useNotEligibleEduConnectErrorData } from '../hooks/useNotEligibleEduConnectErrorData'
 
 export const NotEligibleEduConnect = ({
   error: { message },
@@ -25,7 +20,7 @@ export const NotEligibleEduConnect = ({
     description,
     descriptionAlignment,
     Illustration,
-    primaryButton: primaryButtonProps,
+    primaryButton,
     isGoHomeTertiaryButtonVisible = false,
   } = useNotEligibleEduConnectErrorData(message)
 
@@ -47,41 +42,51 @@ export const NotEligibleEduConnect = ({
 
   const helmetTitle = `Page erreur\u00a0: ${title} | pass Culture`
 
-  const goBackToHomeTertiaryButton = (
-    <InternalTouchableLink
-      key={2}
-      as={ButtonTertiaryWhite}
-      icon={PlainArrowPrevious}
-      wording="Retourner à l’accueil"
-      navigateTo={navigateToHomeConfig}
-      onAfterNavigate={onAbandon}
-    />
-  )
+  let buttonPrimary = undefined
+  if (primaryButton) {
+    if (primaryButton.navigateTo) {
+      buttonPrimary = {
+        wording: primaryButton.wording,
+        navigateTo: primaryButton.navigateTo,
+        icon: primaryButton.icon,
+        onBeforeNavigate: primaryButton.onPress,
+      }
+    } else if (primaryButton.externalNav) {
+      buttonPrimary = {
+        wording: primaryButton.wording,
+        externalNav: primaryButton.externalNav,
+        icon: primaryButton.icon,
+        onBeforeNavigate: primaryButton.onPress,
+      }
+    }
+  }
 
-  const primaryButton = computePrimaryButtonToDisplay({ button: primaryButtonProps })
+  const defaultGoToHomeButton = {
+    wording: 'Retourner à l’accueil',
+    navigateTo: navigateToHomeConfig,
+    onAfterNavigate: onAbandon,
+  }
 
   return (
-    <GenericInfoPageDeprecated
-      title={title}
-      icon={Illustration}
-      buttons={[
-        primaryButton,
-        !!isGoHomeTertiaryButtonVisible && goBackToHomeTertiaryButton,
-      ].filter(Boolean)}>
+    <React.Fragment>
       <Helmet>
         <title>{helmetTitle}</title>
       </Helmet>
-      <Body textAlign={descriptionAlignment}>{description}</Body>
-    </GenericInfoPageDeprecated>
+      <GenericInfoPageWhite
+        illustration={Illustration}
+        title={title}
+        buttonPrimary={buttonPrimary ?? defaultGoToHomeButton}
+        buttonTertiary={isGoHomeTertiaryButtonVisible ? defaultGoToHomeButton : undefined}>
+        <Body textAlign={descriptionAlignment}>{description}</Body>
+      </GenericInfoPageWhite>
+    </React.Fragment>
   )
 }
 
 type TextBodyProps = TextProps & {
   textAlign?: Exclude<TextStyle['textAlign'], 'auto'>
 }
+
 const Body = styled(Typo.Body).attrs<TextBodyProps>((props) => props)<TextBodyProps>(
-  ({ theme, textAlign }) => ({
-    textAlign,
-    color: theme.colors.white,
-  })
+  ({ textAlign }) => ({ textAlign })
 )
