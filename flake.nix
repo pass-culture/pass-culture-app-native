@@ -18,7 +18,8 @@
         in
         pkgs.mkShellNoCC {
           packages = [
-            pkgs-old.devbox
+            pkgs.devbox
+            pkgs.git
             pkgs.jdk17 # needed by Android
             pkgs.jq # needed by some scripts run in the pipeline
             pkgs.python3 # needed by scripts/add_tracker.py
