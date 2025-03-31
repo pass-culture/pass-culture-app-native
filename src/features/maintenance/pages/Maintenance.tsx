@@ -13,6 +13,11 @@ type MaintenanceProps = {
   message?: string
 }
 
+// NEVER EVER USE NAVIGATION (OR ANYTHING FROM @react-navigation)
+// ON THIS PAGE OR IT WILL BREAK!!!
+// THE NAVIGATION CONTEXT IS NOT ALWAYS LOADED WHEN WE DISPLAY
+// EX: ScreenErrorProvider IS OUTSIDE NAVIGATION !
+// TODO(PC-35429): Create a new GenericErroPage template wihtout background and use in this page
 export const Maintenance: React.FC<MaintenanceProps> = (props) => {
   const helmetTitle = 'Maintenance | pass Culture'
   const Illustration = getPrimaryIllustration(MaintenanceCone)
