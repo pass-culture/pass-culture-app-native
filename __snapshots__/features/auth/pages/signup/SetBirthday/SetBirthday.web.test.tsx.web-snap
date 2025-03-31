@@ -182,7 +182,7 @@ exports[`<SetBirthday /> no touch device should render correctly 1`] = `
       dir="ltr"
       role="heading"
     >
-      Renseigne ton âge
+      Renseigne ta date de naissance
     </h2>
     <div
       class="css-view-175oi2r r-height-10ptun7"
@@ -214,7 +214,7 @@ exports[`<SetBirthday /> no touch device should render correctly 1`] = `
             class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
             dir="ltr"
           >
-            Assure-toi que ton âge est exact. Il ne pourra plus être modifié par la suite et nous vérifions tes informations.
+            Assure-toi que ta date de naissance est exacte. Elle ne pourra plus être modifiée par la suite et nous vérifions tes informations.
           </div>
         </div>
       </div>
@@ -1534,7 +1534,7 @@ exports[`<SetBirthday /> touch device should render correctly 1`] = `
       dir="ltr"
       role="heading"
     >
-      Renseigne ton âge
+      Renseigne ta date de naissance
     </h2>
     <div
       class="css-view-175oi2r r-height-10ptun7"
@@ -1566,7 +1566,7 @@ exports[`<SetBirthday /> touch device should render correctly 1`] = `
             class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
             dir="ltr"
           >
-            Assure-toi que ton âge est exact. Il ne pourra plus être modifié par la suite et nous vérifions tes informations.
+            Assure-toi que ta date de naissance est exacte. Elle ne pourra plus être modifiée par la suite et nous vérifions tes informations.
           </div>
         </div>
       </div>

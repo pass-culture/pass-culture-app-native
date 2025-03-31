@@ -41,9 +41,9 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 
 const USER_AGE_KEY = 'user_age'
 const GENERAL_PUBLIC_MESSAGE =
-  'Ta date d’anniversaire nous aidera à te proposer des offres adaptées et à personnaliser ton expérience.'
+  'Ta date de naissance nous aidera à te proposer des offres adaptées et à personnaliser ton expérience.'
 const ELIGIBLE_MESSAGE =
-  'Assure-toi que ton âge est exact. Il ne pourra plus être modifié par la suite et nous vérifions tes informations.'
+  'Assure-toi que ta date de naissance est exacte. Elle ne pourra plus être modifiée par la suite et nous vérifions tes informations.'
 
 describe('<SetBirthday />', () => {
   beforeEach(async () => {
