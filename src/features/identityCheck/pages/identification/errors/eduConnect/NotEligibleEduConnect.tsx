@@ -42,23 +42,24 @@ export const NotEligibleEduConnect = ({
 
   const helmetTitle = `Page erreur\u00a0: ${title} | pass Culture`
 
-  const buttonPrimary = primaryButton
-    ? primaryButton.navigateTo
-      ? {
-          wording: primaryButton.wording,
-          navigateTo: primaryButton.navigateTo,
-          icon: primaryButton.icon,
-          onBeforeNavigate: primaryButton.onPress,
-        }
-      : primaryButton.externalNav
-        ? {
-            wording: primaryButton.wording,
-            externalNav: primaryButton.externalNav,
-            icon: primaryButton.icon,
-            onBeforeNavigate: primaryButton.onPress,
-          }
-        : undefined
-    : undefined
+  let buttonPrimary = undefined
+  if (primaryButton) {
+    if (primaryButton.navigateTo) {
+      buttonPrimary = {
+        wording: primaryButton.wording,
+        navigateTo: primaryButton.navigateTo,
+        icon: primaryButton.icon,
+        onBeforeNavigate: primaryButton.onPress,
+      }
+    } else if (primaryButton.externalNav) {
+      buttonPrimary = {
+        wording: primaryButton.wording,
+        externalNav: primaryButton.externalNav,
+        icon: primaryButton.icon,
+        onBeforeNavigate: primaryButton.onPress,
+      }
+    }
+  }
 
   const defaultGoToHomeButton = {
     wording: 'Retourner à l’accueil',
