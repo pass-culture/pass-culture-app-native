@@ -35,6 +35,7 @@ import { CheatcodesNavigationSignUp } from 'cheatcodes/pages/others/CheatcodesNa
 import { CheatcodesScreenAccesLibre } from 'cheatcodes/pages/others/CheatcodesScreenAccesLibre'
 import { CheatcodesScreenDebugInformations } from 'cheatcodes/pages/others/CheatcodesScreenDebugInformations'
 import { CheatcodesScreenFeatureFlags } from 'cheatcodes/pages/others/CheatcodesScreenFeatureFlags'
+import { CheatcodesScreenGenericErrorPage } from 'cheatcodes/pages/others/CheatcodesScreenGenericErrorPage'
 import { CheatcodesScreenGenericInfoPageWhite } from 'cheatcodes/pages/others/CheatcodesScreenGenericInfoPageWhite'
 import { CheatcodesScreenNewCaledonia } from 'cheatcodes/pages/others/CheatcodesScreenNewCaledonia'
 import { CheatcodesScreenRemoteConfig } from 'cheatcodes/pages/others/CheatcodesScreenRemoteConfig'
@@ -193,6 +194,10 @@ const routes: CheatcodesStackRoute[] = [
   {
     name: 'CheatcodesScreenGenericInfoPageWhite',
     component: CheatcodesScreenGenericInfoPageWhite,
+  },
+  {
+    name: 'CheatcodesScreenGenericErrorPage',
+    component: CheatcodesScreenGenericErrorPage,
   },
   {
     name: 'CheatcodesScreenBookingNotFound',

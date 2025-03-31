@@ -13,6 +13,7 @@ export const cheatcodesStackNavigatorConfig = {
       CheatcodesNavigationForceUpdate: 'cheatcodes/other/force-update',
       CheatcodesScreenBookingNotFound: 'cheatcodes/bookings/booking-not-found',
       CheatcodesScreenGenericInfoPageWhite: 'cheatcodes/other/generic-info-page-white',
+      CheatcodesScreenGenericErrorPage: 'cheatcodes/other/generic-error-page',
       CheatcodesNavigationGenericPages: 'cheatcodes/other/generic-pages',
       CheatcodesNavigationHome: 'cheatcodes/home',
       CheatcodesNavigationIdentityCheck: 'cheatcodes/identity-check',
