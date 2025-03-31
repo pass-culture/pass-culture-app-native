@@ -1009,7 +1009,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                 class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-gap-e6ktq0 r-paddingBottom-11rk87y r-paddingTop-fd4yh7"
               >
                 <div
-                  class="css-view-175oi2r r-width-1glkqn6"
+                  class="css-view-175oi2r r-width-cfp7ip"
                 >
                   <div
                     aria-label="pass culture"
@@ -1047,7 +1047,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                       class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
                       dir="ltr"
                     >
-                      Mentions légales
+                      Informations légales
                     </div>
                   </div>
                   <a
@@ -1128,7 +1128,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                   </a>
                 </div>
                 <div
-                  class="css-view-175oi2r r-width-1glkqn6"
+                  class="css-view-175oi2r r-width-cfp7ip"
                 >
                   <div
                     aria-label="République Française - Liberté Égalité Fraternité"
@@ -2164,7 +2164,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                 class="css-view-175oi2r r-flexDirection-eqz5dr r-gap-e6ktq0 r-paddingBottom-11rk87y r-paddingTop-1ygmrgt"
               >
                 <div
-                  class="css-view-175oi2r r-width-1glkqn6"
+                  class="css-view-175oi2r r-width-cfp7ip"
                 >
                   <div
                     aria-label="pass culture"
@@ -2202,7 +2202,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                       class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
                       dir="ltr"
                     >
-                      Mentions légales
+                      Informations légales
                     </div>
                   </div>
                   <a
@@ -2283,7 +2283,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                   </a>
                 </div>
                 <div
-                  class="css-view-175oi2r r-width-1glkqn6"
+                  class="css-view-175oi2r r-width-cfp7ip"
                 >
                   <div
                     aria-label="République Française - Liberté Égalité Fraternité"

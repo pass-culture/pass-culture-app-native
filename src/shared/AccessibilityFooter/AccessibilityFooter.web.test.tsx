@@ -41,9 +41,9 @@ describe('AccessibilityFooter', () => {
     })
   })
 
-  it('should go to legal info page when the "Mentions légales" link is pressed', () => {
+  it('should go to legal info page when the "Informations légales" link is pressed', () => {
     render(<AccessibilityFooter />)
-    const passCultureButton = screen.getByText('Mentions légales')
+    const passCultureButton = screen.getByText('Informations légales')
 
     fireEvent.click(passCultureButton)
 

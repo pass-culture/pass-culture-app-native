@@ -29,7 +29,7 @@ export const AccessibilityFooter = () => {
               <StyledBodyAccentXs>Accessibilité&nbsp;: partiellement conforme</StyledBodyAccentXs>
             </InternalTouchableLink>
             <InternalTouchableLink navigateTo={getProfileNavConfig('LegalNotices')}>
-              <StyledBodyAccentXs>Mentions légales</StyledBodyAccentXs>
+              <StyledBodyAccentXs>Informations légales</StyledBodyAccentXs>
             </InternalTouchableLink>
             <ExternalTouchableLink
               as={ButtonQuaternaryGrey}
@@ -83,7 +83,7 @@ const ColoredPassCultureLogo = styled(LogoPassCulture).attrs(({ theme }) => ({
 }))``
 
 const LogoContainer = styled.View({
-  width: getSpacing(20),
+  width: getSpacing(15),
 })
 
 const StyledBodyAccentXs = styled(Typo.BodyAccentXs)(({ theme }) => ({
