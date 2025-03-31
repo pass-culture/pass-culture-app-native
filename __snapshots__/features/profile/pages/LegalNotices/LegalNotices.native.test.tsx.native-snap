@@ -209,498 +209,572 @@ exports[`LegalNotices should render correctly 1`] = `
           ]
         }
       />
-      <Text
-        style={
-          [
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 17,
-              "lineHeight": 27.2,
-            },
-          ]
-        }
-      >
-        Mentions légales
-      </Text>
       <View
-        numberOfSpaces={4}
+        gap={4}
         style={
           [
             {
-              "height": 16,
-            },
-          ]
-        }
-      />
-      <Text
-        style={
-          [
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 16,
-              "lineHeight": 25.6,
+              "gap": 16,
             },
           ]
         }
       >
-        ÉDITEUR SAS pass Culture
-        
-
-        éditeur du site :
-        
-
-        <View>
-          <View
-            accessibilityLabel="https://passculture.app/accueil"
-            accessibilityRole="link"
-            accessibilityState={
+        <Text
+          style={
+            [
               {
-                "busy": undefined,
-                "checked": undefined,
-                "disabled": undefined,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
+                "color": "#161617",
+                "fontFamily": "Montserrat-Medium",
+                "fontSize": 16,
+                "lineHeight": 25.6,
+              },
+            ]
+          }
+        >
+          ÉDITEUR SAS pass Culture
+        </Text>
+        <Text
+          style={
+            [
               {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              [
-                [
-                  {
-                    "userSelect": "auto",
-                  },
-                  {
-                    "top": 3,
-                  },
-                ],
-                {
-                  "opacity": 1,
-                },
-              ]
-            }
-            testID="https://passculture.app/accueil"
-          >
+                "color": "#161617",
+                "fontFamily": "Montserrat-Medium",
+                "fontSize": 16,
+                "lineHeight": 25.6,
+              },
+            ]
+          }
+        >
+          Éditeur du site :
+           
+          <View>
             <View
-              paddingForIcon={0}
+              accessibilityLabel="https://passculture.app/accueil"
+              accessibilityRole="link"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
               style={
                 [
+                  [
+                    {
+                      "userSelect": "auto",
+                    },
+                    {
+                      "top": 3,
+                    },
+                  ],
                   {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                    "top": 0,
+                    "opacity": 1,
                   },
                 ]
               }
+              testID="https://passculture.app/accueil"
             >
               <View
-                accessibilityLabel="Nouvelle fenêtre"
-                height={20}
-                testID="button-icon"
-                width={20}
+                paddingForIcon={0}
+                style={
+                  [
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                      "top": 0,
+                    },
+                  ]
+                }
               >
-                <Text>
-                  button-icon-SVG-Mock
+                <View
+                  accessibilityLabel="Nouvelle fenêtre"
+                  height={20}
+                  testID="button-icon"
+                  width={20}
+                >
+                  <Text>
+                    button-icon-SVG-Mock
+                  </Text>
+                </View>
+                <View
+                  numberOfSpaces={1}
+                  style={
+                    [
+                      {
+                        "width": 4,
+                      },
+                    ]
+                  }
+                />
+                <Text
+                  color="#161617"
+                  style={
+                    [
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
+                      },
+                    ]
+                  }
+                  typography="Button"
+                >
+                  https://passculture.app/accueil
                 </Text>
               </View>
-              <View
-                numberOfSpaces={1}
-                style={
-                  [
-                    {
-                      "width": 4,
-                    },
-                  ]
-                }
-              />
-              <Text
-                style={
-                  [
-                    {
-                      "color": "#eb0055",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                    },
-                  ]
-                }
-                typography="Button"
-              >
-                https://passculture.app/accueil
-              </Text>
             </View>
           </View>
-        </View>
-        
+        </Text>
+        <Text
+          style={
+            [
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Medium",
+                "fontSize": 16,
+                "lineHeight": 25.6,
+              },
+            ]
+          }
+        >
+          Société par actions simplifiée au capital de 1 000 000 €
+        </Text>
+        <Text
+          style={
+            [
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Medium",
+                "fontSize": 16,
+                "lineHeight": 25.6,
+              },
+            ]
+          }
+        >
+          Siège social : 35 Boulevard de Sébastopol – 75001 Paris - France
+        </Text>
+        <Text
+          style={
+            [
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Medium",
+                "fontSize": 16,
+                "lineHeight": 25.6,
+              },
+            ]
+          }
+        >
+          Immatriculée au RCS de Paris sous le numéro : 853 318 459
+        </Text>
+        <Text
+          style={
+            [
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Medium",
+                "fontSize": 16,
+                "lineHeight": 25.6,
+              },
+            ]
+          }
+        >
+          N° TVA intracommunautaire : FR65853318459
+        </Text>
+        <Text
+          style={
+            [
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Medium",
+                "fontSize": 16,
+                "lineHeight": 25.6,
+              },
+            ]
+          }
+        >
+          Directrice de la publication : Laurence Tison-Vuillaume
+        </Text>
+        <Text
+          style={
+            [
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Medium",
+                "fontSize": 16,
+                "lineHeight": 25.6,
+              },
+            ]
+          }
+        >
+          Hébergeur : Google Cloud Platform
+          
 
-        Société par actions simplifiée au capital de 1 000 000 €
-        
-
-        Siège social : 35 Boulevard de Sébastopol – 75001 Paris - France
-        
-
-        Immatriculée au RCS de Paris sous le numéro : 853 318 459
-        
-
-        N° TVA intracommunautaire : FR65853318459
-        
-
-        Directrice de la publication : Laurence Tison-Vuillaume
-        
-
-        Hébergeur : Google Cloud Platform
-        
-
-        8 Rue de Londres - 75009 Paris - France
-        
-
-        Nous contacter : 
-        <View>
+          8 Rue de Londres - 75009 Paris - France
+        </Text>
+        <Text
+          style={
+            [
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Medium",
+                "fontSize": 16,
+                "lineHeight": 25.6,
+              },
+            ]
+          }
+        >
+          Nous contacter :
+           
+          <View>
+            <View
+              accessibilityLabel="Ouvrir le gestionnaire mail pour contacter le support"
+              accessibilityRole="link"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                [
+                  [
+                    {
+                      "userSelect": "auto",
+                    },
+                    {
+                      "top": 3,
+                    },
+                  ],
+                  {
+                    "opacity": 1,
+                  },
+                ]
+              }
+              testID="Ouvrir le gestionnaire mail pour contacter le support"
+            >
+              <View
+                paddingForIcon={0}
+                style={
+                  [
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                      "top": 0,
+                    },
+                  ]
+                }
+              >
+                <View
+                  height={20}
+                  testID="button-icon"
+                  width={20}
+                >
+                  <Text>
+                    button-icon-SVG-Mock
+                  </Text>
+                </View>
+                <View
+                  numberOfSpaces={1}
+                  style={
+                    [
+                      {
+                        "width": 4,
+                      },
+                    ]
+                  }
+                />
+                <Text
+                  color="#161617"
+                  style={
+                    [
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
+                      },
+                    ]
+                  }
+                  typography="Button"
+                >
+                  support@passculture.app
+                </Text>
+              </View>
+            </View>
+          </View>
+        </Text>
+        <View
+          style={
+            [
+              {
+                "backgroundColor": "#F1F1F4",
+                "height": 1,
+                "width": "100%",
+              },
+            ]
+          }
+        />
+        <View
+          accessibilityLabel="Nouvelle fenêtre : Conditions Générales d’Utilisation"
+          accessibilityRole="link"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": false,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            [
+              [
+                {
+                  "userSelect": "auto",
+                },
+                {},
+              ],
+              {
+                "opacity": 1,
+              },
+            ]
+          }
+          testID="Nouvelle fenêtre : Conditions Générales d’Utilisation"
+        >
           <View
-            accessibilityLabel="Ouvrir le gestionnaire mail pour contacter le support"
-            accessibilityRole="link"
-            accessibilityState={
-              {
-                "busy": undefined,
-                "checked": undefined,
-                "disabled": undefined,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
             style={
               [
-                [
-                  {
-                    "userSelect": "auto",
-                  },
-                  {
-                    "top": 3,
-                  },
-                ],
                 {
-                  "opacity": 1,
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "justifyContent": "space-between",
                 },
+                undefined,
               ]
             }
-            testID="Ouvrir le gestionnaire mail pour contacter le support"
           >
             <View
-              paddingForIcon={0}
+              accessibilityLabel="Nouvelle fenêtre"
+              height={24}
+              width={24}
+            >
+              <Text>
+                undefined-SVG-Mock
+              </Text>
+            </View>
+            <View
+              numberOfSpaces={2}
               style={
                 [
                   {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                    "top": 0,
+                    "width": 8,
+                  },
+                ]
+              }
+            />
+            <View
+              style={
+                [
+                  {
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "textAlign": "left",
                   },
                 ]
               }
             >
-              <View
-                height={20}
-                testID="button-icon"
-                width={20}
-              >
-                <Text>
-                  button-icon-SVG-Mock
-                </Text>
-              </View>
-              <View
-                numberOfSpaces={1}
-                style={
-                  [
-                    {
-                      "width": 4,
-                    },
-                  ]
-                }
-              />
               <Text
-                color="#161617"
+                numberOfLines={2}
                 style={
                   [
                     {
                       "color": "#161617",
-                      "fontFamily": "Montserrat-Bold",
+                      "fontFamily": "Montserrat-SemiBold",
                       "fontSize": 16,
                       "lineHeight": 25.6,
                     },
                   ]
                 }
-                typography="Button"
               >
-                support@passculture.app
+                Conditions Générales d’Utilisation
               </Text>
             </View>
           </View>
         </View>
-      </Text>
-      <View
-        style={
-          [
-            {
-              "backgroundColor": "#F1F1F4",
-              "height": 1,
-              "marginVertical": 16,
-              "width": "100%",
-            },
-          ]
-        }
-      />
-      <View
-        accessibilityLabel="Nouvelle fenêtre : Conditions Générales d’Utilisation"
-        accessibilityRole="link"
-        accessibilityState={
-          {
-            "busy": undefined,
-            "checked": undefined,
-            "disabled": false,
-            "expanded": undefined,
-            "selected": undefined,
-          }
-        }
-        accessibilityValue={
-          {
-            "max": undefined,
-            "min": undefined,
-            "now": undefined,
-            "text": undefined,
-          }
-        }
-        accessible={true}
-        focusable={true}
-        onClick={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          [
-            [
-              {
-                "userSelect": "auto",
-              },
-              {},
-            ],
-            {
-              "opacity": 1,
-            },
-          ]
-        }
-        testID="Nouvelle fenêtre : Conditions Générales d’Utilisation"
-      >
         <View
           style={
             [
               {
-                "alignItems": "center",
-                "flexDirection": "row",
-                "justifyContent": "space-between",
+                "backgroundColor": "#F1F1F4",
+                "height": 1,
+                "width": "100%",
               },
-              undefined,
             ]
           }
-        >
-          <View
-            accessibilityLabel="Nouvelle fenêtre"
-            height={24}
-            width={24}
-          >
-            <Text>
-              undefined-SVG-Mock
-            </Text>
-          </View>
-          <View
-            numberOfSpaces={2}
-            style={
-              [
-                {
-                  "width": 8,
-                },
-              ]
-            }
-          />
-          <View
-            style={
-              [
-                {
-                  "flexBasis": 0,
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                  "textAlign": "left",
-                },
-              ]
-            }
-          >
-            <Text
-              numberOfLines={2}
-              style={
-                [
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                  },
-                ]
-              }
-            >
-              Conditions Générales d’Utilisation
-            </Text>
-          </View>
-        </View>
-      </View>
-      <View
-        style={
-          [
-            {
-              "backgroundColor": "#F1F1F4",
-              "height": 1,
-              "marginVertical": 16,
-              "width": "100%",
-            },
-          ]
-        }
-      />
-      <View
-        accessibilityLabel="Nouvelle fenêtre : Charte de protection des données personnelles"
-        accessibilityRole="link"
-        accessibilityState={
-          {
-            "busy": undefined,
-            "checked": undefined,
-            "disabled": false,
-            "expanded": undefined,
-            "selected": undefined,
-          }
-        }
-        accessibilityValue={
-          {
-            "max": undefined,
-            "min": undefined,
-            "now": undefined,
-            "text": undefined,
-          }
-        }
-        accessible={true}
-        focusable={true}
-        onClick={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          [
-            [
-              {
-                "userSelect": "auto",
-              },
-              {},
-            ],
-            {
-              "opacity": 1,
-            },
-          ]
-        }
-        testID="Nouvelle fenêtre : Charte de protection des données personnelles"
-      >
+        />
         <View
+          accessibilityLabel="Nouvelle fenêtre : Charte de protection des données personnelles"
+          accessibilityRole="link"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": false,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
           style={
             [
+              [
+                {
+                  "userSelect": "auto",
+                },
+                {},
+              ],
               {
-                "alignItems": "center",
-                "flexDirection": "row",
-                "justifyContent": "space-between",
+                "opacity": 1,
               },
-              undefined,
             ]
           }
+          testID="Nouvelle fenêtre : Charte de protection des données personnelles"
         >
           <View
-            accessibilityLabel="Nouvelle fenêtre"
-            height={24}
-            width={24}
-          >
-            <Text>
-              undefined-SVG-Mock
-            </Text>
-          </View>
-          <View
-            numberOfSpaces={2}
             style={
               [
                 {
-                  "width": 8,
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "justifyContent": "space-between",
                 },
-              ]
-            }
-          />
-          <View
-            style={
-              [
-                {
-                  "flexBasis": 0,
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                  "textAlign": "left",
-                },
+                undefined,
               ]
             }
           >
-            <Text
-              numberOfLines={2}
+            <View
+              accessibilityLabel="Nouvelle fenêtre"
+              height={24}
+              width={24}
+            >
+              <Text>
+                undefined-SVG-Mock
+              </Text>
+            </View>
+            <View
+              numberOfSpaces={2}
               style={
                 [
                   {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
+                    "width": 8,
+                  },
+                ]
+              }
+            />
+            <View
+              style={
+                [
+                  {
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "textAlign": "left",
                   },
                 ]
               }
             >
-              Charte de protection des données personnelles
-            </Text>
+              <Text
+                numberOfLines={2}
+                style={
+                  [
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                    },
+                  ]
+                }
+              >
+                Charte de protection des données personnelles
+              </Text>
+            </View>
           </View>
         </View>
       </View>

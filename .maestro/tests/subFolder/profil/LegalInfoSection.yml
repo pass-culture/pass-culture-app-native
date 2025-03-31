@@ -5,7 +5,6 @@ appId: ${MAESTRO_APP_ID}
     index: 1
 
 - assertVisible: 'Informations légales'
-- assertVisible: 'Mentions légales'
 - tapOn:
     id: "Nouvelle fenêtre\_: Conditions Générales d’Utilisation"
 - waitForAnimationToEnd
