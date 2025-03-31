@@ -7,6 +7,8 @@ import { getStocksByOfferIds } from './getStocksByOfferIds'
 
 const apiPostNativeV2OffersStocksSpy = jest.spyOn(api, 'postNativeV2OffersStocks')
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('getStocksByOfferIds', () => {
   it('should return empty array when no offer ids are provided', async () => {
     const result = await getStocksByOfferIds([], LogTypeEnum.INFO)

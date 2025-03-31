@@ -20,6 +20,8 @@ const mockOnLayout = {
   },
 }
 
+jest.mock('libs/firebase/analytics/analytics')
+
 const mockScrollToIndex = jest.fn()
 jest.spyOn(FlatList.prototype, 'scrollToIndex').mockImplementation(mockScrollToIndex)
 
