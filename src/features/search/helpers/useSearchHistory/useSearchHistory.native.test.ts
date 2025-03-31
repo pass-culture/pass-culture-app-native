@@ -32,6 +32,10 @@ jest.mock('libs/firebase/analytics/analytics')
 const useRemoteConfigSpy = jest.spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
 
 describe('useSearchHistory', () => {
+  beforeAll(() => {
+    useRemoteConfigSpy.mockReturnValue(DEFAULT_REMOTE_CONFIG)
+  })
+
   beforeEach(async () => {
     mockdate.set(TODAY_DATE)
     await AsyncStorage.removeItem(HISTORY_KEY)
