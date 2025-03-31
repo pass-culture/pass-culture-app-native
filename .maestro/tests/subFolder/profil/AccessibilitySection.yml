@@ -8,8 +8,7 @@ appId: ${MAESTRO_APP_ID}
     index: 0
 
 - assertVisible: 'Les engagements du pass Culture'
-- assertVisible:
-    id: 'AccessibilityEngagement'
+- assertVisible: "Au pass Culture.*"
 - runFlow:
     file: ../../subFolder/cloud/commands/TapOnBack.yml
 
@@ -17,8 +16,7 @@ appId: ${MAESTRO_APP_ID}
     text: 'Schéma pluriannuel'
     index: 1
 - assertVisible: 'Schéma pluriannuel'
-- assertVisible:
-    id: 'AccessibilityActionPlan'
+- assertVisible: "Schéma pluriannuel d’accessibilité.*"
 - runFlow:
     file: ../../subFolder/cloud/commands/TapOnBack.yml
 

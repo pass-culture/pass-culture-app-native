@@ -57,4 +57,4 @@ env:
 - tapOn: 'Valider la date'
 
 - tapOn: 'Appliquer le filtre'
-- tapOn: 'Rechercher'
+- doubleTapOn: 'Rechercher'

@@ -46,7 +46,11 @@ case "$target" in
     ;;
 
   "cloud")
-    TAGS="--include-tags cloud"
+    if [ "$platform" = "ios" ]; then
+      TAGS="--include-tags nightlyIOS"
+    else
+      TAGS="--include-tags cloud"
+    fi
     run_tracking_tests=false
     run_cloud_commands=true
     api_key=$(parse_env_variable ROBIN_API_KEY .maestro/.env.secret)
