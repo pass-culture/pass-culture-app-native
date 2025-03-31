@@ -2238,7 +2238,7 @@ exports[`Signup Form For each step should render correctly for step 3/5 1`] = `
             ]
           }
         >
-          Renseigne ton âge
+          Renseigne ta date de naissance
         </Text>
         <View
           numberOfSpaces={4}
@@ -2320,7 +2320,7 @@ exports[`Signup Form For each step should render correctly for step 3/5 1`] = `
                 }
                 textColor="#161617"
               >
-                Assure-toi que ton âge est exact. Il ne pourra plus être modifié par la suite et nous vérifions tes informations.
+                Assure-toi que ta date de naissance est exacte. Elle ne pourra plus être modifiée par la suite et nous vérifions tes informations.
               </Text>
             </View>
           </View>

@@ -16,7 +16,7 @@ appId: ${MAESTRO_APP_ID}
 - hideKeyboard
 - tapOn: 'Continuer vers l’étape Date de naissance'
 
-- assertVisible: 'Renseigne ton âge'
+- assertVisible: 'Renseigne ta date de naissance'
 - swipe: # months
     start: 47%, 52%
     end: 47%, 62%
@@ -24,5 +24,5 @@ appId: ${MAESTRO_APP_ID}
     start: 74%, 57%
     end: 74%, 51%
 
-- tapOn: "Quitter"
-- tapOn: "Abandonner l’inscription"
+- tapOn: 'Quitter'
+- tapOn: 'Abandonner l’inscription'

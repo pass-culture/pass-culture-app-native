@@ -520,7 +520,7 @@ describe('Signup Form', () => {
 
       await pressSSOButton()
 
-      expect(screen.getByText('Renseigne ton âge')).toBeOnTheScreen()
+      expect(screen.getByText('Renseigne ta date de naissance')).toBeOnTheScreen()
     })
 
     it('should go back to email step instead of password step when signing up with sso button', async () => {
@@ -746,7 +746,7 @@ describe('Signup Form', () => {
 
       renderSignupForm()
 
-      expect(await screen.findByText('Renseigne ton âge')).toBeOnTheScreen()
+      expect(await screen.findByText('Renseigne ta date de naissance')).toBeOnTheScreen()
     })
 
     it('should create SSO account when clicking on AcceptCgu button and coming from login', async () => {

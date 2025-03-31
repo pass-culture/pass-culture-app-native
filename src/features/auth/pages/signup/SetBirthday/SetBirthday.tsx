@@ -77,12 +77,14 @@ export const SetBirthday: FunctionComponent<PreValidationSignupNormalStepProps> 
     [goToNextStep]
   )
 
-  const pageTitle = isSSOSubscriptionFromLogin ? 'Termine ton inscription' : 'Renseigne ton âge'
+  const pageTitle = isSSOSubscriptionFromLogin
+    ? 'Termine ton inscription'
+    : 'Renseigne ta date de naissance'
 
   const bannerMessage =
     userAge === NonEligible.OVER_18
-      ? 'Ta date d’anniversaire nous aidera à te proposer des offres adaptées et à personnaliser ton expérience.'
-      : 'Assure-toi que ton âge est exact. Il ne pourra plus être modifié par la suite et nous vérifions tes informations.'
+      ? 'Ta date de naissance nous aidera à te proposer des offres adaptées et à personnaliser ton expérience.'
+      : 'Assure-toi que ta date de naissance est exacte. Elle ne pourra plus être modifiée par la suite et nous vérifions tes informations.'
 
   return (
     <Form.MaxWidth>
