@@ -14,100 +14,6 @@ exports[`<ForceUpdateWithResetErrorBoundary/> should match snapshot 1`] = `
   }
 >
   <View
-    accessibilityRole="header"
-    style={
-      [
-        {
-          "backgroundColor": "rgba(255,255,255,0)",
-          "borderBottomColor": "#cbcdd2",
-          "borderBottomWidth": 1,
-          "left": 0,
-          "position": "absolute",
-          "right": 0,
-          "top": 0,
-          "zIndex": 1,
-        },
-        {
-          "borderBottomWidth": 0,
-        },
-      ]
-    }
-  >
-    <View
-      customHeight={16}
-      enable={true}
-      style={
-        [
-          {
-            "height": 16,
-          },
-        ]
-      }
-    />
-    <View
-      style={
-        [
-          {
-            "alignItems": "center",
-            "height": 48,
-            "justifyContent": "center",
-          },
-        ]
-      }
-    >
-      <View
-        style={
-          [
-            {
-              "alignItems": "center",
-              "flexDirection": "row",
-              "justifyContent": "space-between",
-              "width": "100%",
-            },
-          ]
-        }
-      >
-        <View
-          positionInHeader="left"
-          style={
-            [
-              {
-                "alignItems": "center",
-                "flexBasis": 0,
-                "flexDirection": "row",
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "justifyContent": "flex-start",
-                "paddingLeft": 12,
-                "paddingRight": 12,
-              },
-            ]
-          }
-          testID="back-button-container"
-        />
-        <View
-          positionInHeader="right"
-          style={
-            [
-              {
-                "alignItems": "center",
-                "flexBasis": 0,
-                "flexDirection": "row",
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "justifyContent": "flex-end",
-                "paddingLeft": 12,
-                "paddingRight": 12,
-              },
-            ]
-          }
-          testID="close-button-container"
-        />
-      </View>
-    </View>
-  </View>
-  <View
-    bottom={16}
     style={
       [
         {
@@ -123,16 +29,6 @@ exports[`<ForceUpdateWithResetErrorBoundary/> should match snapshot 1`] = `
     }
   >
     <View
-      height={16}
-      style={
-        [
-          {
-            "height": 16,
-          },
-        ]
-      }
-    />
-    <View
       flex={1}
       style={
         [
@@ -145,7 +41,6 @@ exports[`<ForceUpdateWithResetErrorBoundary/> should match snapshot 1`] = `
       }
     />
     <View
-      animation={false}
       style={
         [
           {
@@ -192,16 +87,6 @@ exports[`<ForceUpdateWithResetErrorBoundary/> should match snapshot 1`] = `
       >
         Mise à jour requise !
       </Text>
-    </View>
-    <View
-      style={
-        [
-          {
-            "marginBottom": 24,
-          },
-        ]
-      }
-    >
       <Text
         style={
           [
