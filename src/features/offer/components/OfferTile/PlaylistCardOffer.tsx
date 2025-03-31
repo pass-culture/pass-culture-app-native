@@ -37,7 +37,7 @@ export const PlaylistCardOffer: FC<Props> = ({
   return (
     <Container maxWidth={width}>
       <NewOfferCaption name={name} date={date} price={price} categoryLabel={categoryLabel} />
-      {interactionTag ? interactionTag : null}
+      {interactionTag ?? null}
       <View>
         {distance ? <DistanceTag label={`à ${distance}`} /> : null}
         <ImageTile categoryId={categoryId} uri={thumbnailUrl} width={width} height={height} />

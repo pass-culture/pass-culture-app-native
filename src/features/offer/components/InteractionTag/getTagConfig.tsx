@@ -13,7 +13,7 @@ type TagConfig = {
   headlineCount?: number
 }
 
-// TODO(PC-0000) handle logic values with remote config
+// TODO(PC-35427) handle logic values with remote config
 const MIN_LIKES_VALUE = 20
 const MAX_LIKES_VALUE = 50
 

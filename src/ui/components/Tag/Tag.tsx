@@ -27,17 +27,22 @@ export const Tag: FunctionComponent<TagProps> = ({
   paddingHorizontal,
   ...props
 }) => {
+  const renderIcon = () => {
+    if (!Icon) return null
+
+    if (isReactElement(Icon)) {
+      return cloneElement(Icon, { testID: 'tagIcon' })
+    }
+    if (isStyledComponent(Icon)) {
+      return <Icon testID="tagIcon" />
+    }
+
+    return null
+  }
+
   return (
     <Wrapper backgroundColor={backgroundColor} paddingHorizontal={paddingHorizontal} {...props}>
-      {Icon ? (
-        <IconContainer>
-          {isReactElement(Icon) ? (
-            cloneElement(Icon, { testID: 'tagIcon' })
-          ) : isStyledComponent(Icon) ? (
-            <Icon testID="tagIcon" />
-          ) : null}
-        </IconContainer>
-      ) : null}
+      {Icon ? <IconContainer>{renderIcon()}</IconContainer> : null}
       <LabelText>{label}</LabelText>
     </Wrapper>
   )

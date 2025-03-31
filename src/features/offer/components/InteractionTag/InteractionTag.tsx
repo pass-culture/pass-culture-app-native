@@ -7,7 +7,7 @@ import { getSpacing } from 'ui/theme'
 export type InteractionTagProps = {
   label: string
   backgroundColor?: ColorsTypeLegacy
-  Icon?: React.FunctionComponent<AccessibleIcon> | undefined
+  Icon?: React.FunctionComponent<AccessibleIcon>
 }
 
 export const InteractionTag: FunctionComponent<InteractionTagProps> = ({

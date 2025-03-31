@@ -6,7 +6,7 @@ describe('getTagConfig', () => {
     expect(getTagConfig({ theme })).toEqual(null)
   })
 
-  it('should return the "Reco par les lieux" tag if headlineCount is set and chroniclesCount is absent', () => {
+  it('should return the "Reco par les lieux" tag if headlineCount is set and chroniclesCount is not set', () => {
     expect(getTagConfig({ theme, headlineCount: 1 })).toEqual({
       label: 'Reco par les lieux',
       backgroundColor: theme.colors.goldLight100,
