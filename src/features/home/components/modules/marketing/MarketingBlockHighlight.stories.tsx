@@ -64,17 +64,16 @@ const variantConfig: Variants<typeof MarketingBlockHighlight> = [
   },
 ]
 
-const Template: VariantsStory<typeof MarketingBlockHighlight> = (
-  args: React.ComponentProps<typeof MarketingBlockHighlight>
-) => (
-  <VariantsTemplate
-    variants={variantConfig}
-    Component={MarketingBlockHighlight}
-    defaultProps={args}
-  />
-)
-
-export const AllVariants = Template.bind({})
-AllVariants.parameters = {
-  chromatic: { viewports: [theme.breakpoints.xs, theme.breakpoints.xl] },
+export const Template: VariantsStory<typeof MarketingBlockHighlight> = {
+  name: 'MarketingBlockHighlight',
+  render: (props) => (
+    <VariantsTemplate
+      variants={variantConfig}
+      Component={MarketingBlockHighlight}
+      defaultProps={props}
+    />
+  ),
+  parameters: {
+    chromatic: { viewports: [theme.breakpoints.xs, theme.breakpoints.xl] },
+  },
 }

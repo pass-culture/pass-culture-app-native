@@ -8,7 +8,7 @@ import { Bag } from 'ui/svg/icons/bicolor/Bag'
 import { VenueTypeLocationIcon } from './VenueTypeLocationIcon'
 
 const meta: Meta<typeof VenueTypeLocationIcon> = {
-  title: 'Features/Home/VenueTypeLocationIcon',
+  title: 'Features/home/VenueTypeLocationIcon',
   component: VenueTypeLocationIcon,
 }
 export default meta
@@ -30,12 +30,13 @@ const variantConfig: Variants<typeof VenueTypeLocationIcon> = [
   },
 ]
 
-const Template: VariantsStory<typeof VenueTypeLocationIcon> = (args) => (
-  <VariantsTemplate
-    variants={variantConfig}
-    Component={VenueTypeLocationIcon}
-    defaultProps={args}
-  />
-)
-
-export const AllVariants = Template.bind({})
+export const Template: VariantsStory<typeof VenueTypeLocationIcon> = {
+  name: 'VenueTypeLocationIcon',
+  render: (props) => (
+    <VariantsTemplate
+      variants={variantConfig}
+      Component={VenueTypeLocationIcon}
+      defaultProps={props}
+    />
+  ),
+}
