@@ -31,14 +31,15 @@ const variantConfig: Variants<typeof ThematicSubscriptionBlock> = [
   },
 ]
 
-const Template: VariantsStory<typeof ThematicSubscriptionBlock> = (args) => (
-  <VariantsTemplate
-    variants={variantConfig}
-    Component={ThematicSubscriptionBlock}
-    defaultProps={{ ...args }}
-  />
-)
-
-export const AllVariants = Template.bind({})
-AllVariants.parameters = { axe: { disabledRules: ['duplicate-id'] } }
-// duplicate-id on bell icon (SVG) on CTA, we disable this rule for these stories since we never have more than one ThematicSubscriptionBlock on a page.
+export const Template: VariantsStory<typeof ThematicSubscriptionBlock> = {
+  name: 'ThematicSubscriptionBlock',
+  render: (props) => (
+    <VariantsTemplate
+      variants={variantConfig}
+      Component={ThematicSubscriptionBlock}
+      defaultProps={{ ...props }}
+    />
+  ),
+  // duplicate-id on bell icon (SVG) on CTA, we disable this rule for these stories since we never have more than one ThematicSubscriptionBlock on a page.
+  parameters: { axe: { disabledRules: ['duplicate-id'] } },
+}
