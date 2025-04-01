@@ -20,13 +20,7 @@ const LINE_HEIGHT = getSpacing(NUMBER_OF_SPACES_LINE_HEIGHT)
 
 export const TAG_HEIGHT = PADDING_VERTICAL + LINE_HEIGHT + PADDING_VERTICAL
 
-export const Tag: FunctionComponent<TagProps> = ({
-  label,
-  Icon,
-  backgroundColor,
-  paddingHorizontal,
-  ...props
-}) => {
+export const Tag: FunctionComponent<TagProps> = ({ label, Icon, ...props }) => {
   const renderIcon = () => {
     if (!Icon) return null
 
@@ -41,7 +35,7 @@ export const Tag: FunctionComponent<TagProps> = ({
   }
 
   return (
-    <Wrapper backgroundColor={backgroundColor} paddingHorizontal={paddingHorizontal} {...props}>
+    <Wrapper {...props}>
       {Icon ? <IconContainer>{renderIcon()}</IconContainer> : null}
       <LabelText>{label}</LabelText>
     </Wrapper>
