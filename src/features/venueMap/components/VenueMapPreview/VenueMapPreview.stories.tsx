@@ -7,7 +7,7 @@ import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storyboo
 import { VenueMapPreview } from './VenueMapPreview'
 
 const meta: Meta<typeof VenueMapPreview> = {
-  title: 'features/search/VenueMapPreview',
+  title: 'features/venueMap/VenueMapPreview',
   component: VenueMapPreview,
   decorators: [
     (Story) => (
@@ -33,8 +33,9 @@ const variantConfig: Variants<typeof VenueMapPreview> = [
   },
 ]
 
-const Template: VariantsStory<typeof VenueMapPreview> = (args) => (
-  <VariantsTemplate variants={variantConfig} Component={VenueMapPreview} defaultProps={args} />
-)
-
-export const AllVariants = Template.bind({})
+export const Template: VariantsStory<typeof VenueMapPreview> = {
+  name: 'VenueMapPreview',
+  render: (props) => (
+    <VariantsTemplate variants={variantConfig} Component={VenueMapPreview} defaultProps={props} />
+  ),
+}

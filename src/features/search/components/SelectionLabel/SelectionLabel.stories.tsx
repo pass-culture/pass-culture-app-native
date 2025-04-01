@@ -43,12 +43,13 @@ const variantConfig: Variants<typeof SelectionLabel> = [
   },
 ]
 
-const Template: VariantsStory<typeof SelectionLabel> = (args) => (
-  <VariantsTemplate
-    variants={variantConfig}
-    Component={SelectionLabel}
-    defaultProps={{ ...args }}
-  />
-)
-
-export const AllVariants = Template.bind({})
+export const Template: VariantsStory<typeof SelectionLabel> = {
+  name: 'SelectionLabel',
+  render: (props) => (
+    <VariantsTemplate
+      variants={variantConfig}
+      Component={SelectionLabel}
+      defaultProps={{ ...props }}
+    />
+  ),
+}

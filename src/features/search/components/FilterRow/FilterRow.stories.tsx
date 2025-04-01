@@ -18,19 +18,19 @@ export default meta
 
 const variantConfig: Variants<typeof FilterRow> = [
   {
-    label: 'Localisation',
+    label: 'FilterRow Localisation',
     props: { title: 'Localisation', icon: BicolorAroundMe, description: 'Autour de moi' },
   },
   {
-    label: 'Category',
+    label: 'FilterRow Category',
     props: { title: 'Catégorie', description: 'CD, Vinyle, musique en ligne', icon: All },
   },
   {
-    label: 'Price',
+    label: 'FilterRow Price',
     props: { title: 'Prix', icon: OrderPrice },
   },
   {
-    label: 'Date & heures',
+    label: 'FilterRow Date & heures',
     props: {
       title: 'Date & heures',
       description: 'le 24 septembre 2020 entre 18h et 23h',
@@ -38,13 +38,14 @@ const variantConfig: Variants<typeof FilterRow> = [
     },
   },
   {
-    label: 'Ranking',
+    label: 'FilterRow Ranking',
     props: { title: 'Classement', icon: SortIconDefault },
   },
 ]
 
-const Template: VariantsStory<typeof FilterRow> = (args) => (
-  <VariantsTemplate variants={variantConfig} Component={FilterRow} defaultProps={{ ...args }} />
-)
-
-export const AllVariants = Template.bind({})
+export const Template: VariantsStory<typeof FilterRow> = {
+  name: 'FilterRow',
+  render: (props) => (
+    <VariantsTemplate variants={variantConfig} Component={FilterRow} defaultProps={{ ...props }} />
+  ),
+}

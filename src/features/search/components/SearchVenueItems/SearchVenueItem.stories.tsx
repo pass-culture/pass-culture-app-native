@@ -75,12 +75,13 @@ const variantConfig: Variants<typeof SearchVenueItem> = [
   },
 ]
 
-const Template: VariantsStory<typeof SearchVenueItem> = (args) => (
-  <VariantsTemplate
-    variants={variantConfig}
-    Component={SearchVenueItem}
-    defaultProps={{ ...args }}
-  />
-)
-
-export const AllVariants = Template.bind({})
+export const Template: VariantsStory<typeof SearchVenueItem> = {
+  name: 'SearchVenueItem',
+  render: (props) => (
+    <VariantsTemplate
+      variants={variantConfig}
+      Component={SearchVenueItem}
+      defaultProps={{ ...props }}
+    />
+  ),
+}
