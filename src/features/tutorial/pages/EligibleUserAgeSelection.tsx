@@ -2,6 +2,7 @@ import { StackScreenProps } from '@react-navigation/stack'
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
+import { getActivationNavConfig } from 'features/navigation/ActivationStackNavigator/getActivationNavConfig'
 import { TutorialRootStackParamList } from 'features/navigation/RootNavigator/types'
 import { AgeButton } from 'features/tutorial/components/AgeButton'
 import { TutorialTypes } from 'features/tutorial/enums'
@@ -51,7 +52,7 @@ export const EligibleUserAgeSelection: FunctionComponent<Props> = ({ route }: Pr
           key={age}
           Icon={isPassForAllEnabled ? undefined : <BicolorAll />}
           onBeforeNavigate={async () => onBeforeNavigate(type, age)}
-          navigateTo={{ screen: AgeInformationScreen, params: { age } }}
+          navigateTo={getActivationNavConfig(AgeInformationScreen, { age })}
           accessibilityLabel={`${startButtonTitle} ${age} ans`}>
           <StyledBody>
             {startButtonTitle}
@@ -68,7 +69,7 @@ export const EligibleUserAgeSelection: FunctionComponent<Props> = ({ route }: Pr
           key="other"
           dense
           onBeforeNavigate={async () => onBeforeNavigate(type)}
-          navigateTo={{ screen: 'AgeSelectionOther', params: { type } }}
+          navigateTo={getActivationNavConfig('AgeSelectionOther', { type })}
           accessibilityLabel={`${startButtonTitle} moins de 15 ans ou plus de 18 ans`}>
           <StyledTitle4>Autre</StyledTitle4>
           <React.Fragment>

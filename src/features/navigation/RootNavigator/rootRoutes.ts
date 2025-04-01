@@ -35,7 +35,6 @@ import { culturalSurveyRoutes } from 'features/navigation/RootNavigator/cultural
 import { subscriptionRoutes } from 'features/navigation/RootNavigator/subscriptionRoutes'
 import { SuspenseAchievements } from 'features/navigation/RootNavigator/SuspenseAchievements'
 import { trustedDeviceRoutes } from 'features/navigation/RootNavigator/trustedDeviceRoutes'
-import { tutorialRoutes } from 'features/navigation/RootNavigator/tutorialRoutes'
 import { screenParamsParser } from 'features/navigation/screenParamsUtils'
 import { tabNavigatorPathConfig } from 'features/navigation/TabBar/tabBarRoutes'
 import { TabNavigator } from 'features/navigation/TabBar/TabNavigator'
@@ -43,7 +42,6 @@ import { Offer } from 'features/offer/pages/Offer/Offer'
 import { OfferPreview } from 'features/offer/pages/OfferPreview/OfferPreview'
 import { ChangeEmailExpiredLink } from 'features/profile/pages/ChangeEmail/ChangeEmailExpiredLink'
 import { OnboardingSubscription } from 'features/subscription/page/OnboardingSubscription'
-import { ProfileTutorialAgeInformation } from 'features/tutorial/pages/profileTutorial/ProfileTutorialAgeInformation'
 import { Venue } from 'features/venue/pages/Venue/Venue'
 import { VenuePreviewCarousel } from 'features/venue/pages/VenuePreviewCarousel/VenuePreviewCarousel'
 import { VenueMap } from 'features/venueMap/pages/VenueMap/VenueMap'
@@ -55,7 +53,6 @@ export const rootRoutes: RootRoute[] = [
   ...culturalSurveyRoutes,
   ...subscriptionRoutes,
   ...trustedDeviceRoutes,
-  ...tutorialRoutes,
   {
     name: 'ActivationStackNavigator',
     component: SuspenseActivationStackNavigator,
@@ -260,12 +257,6 @@ export const rootRoutes: RootRoute[] = [
     component: NotYetUnderageEligibility,
     path: 'cest-pour-bientot',
     options: { title: 'C’est pour bientôt' },
-  },
-  {
-    name: 'Tutorial',
-    component: ProfileTutorialAgeInformation,
-    path: 'comment-ca-marche',
-    options: { title: 'Tutoriel "Comment ça marche"' },
   },
   {
     name: 'Venue',

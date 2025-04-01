@@ -321,8 +321,11 @@ describe('Profile component', () => {
       const howItWorkButton = screen.getByText('Comment ça marche\u00a0?')
       await user.press(howItWorkButton)
 
-      expect(navigate).toHaveBeenCalledWith('EligibleUserAgeSelection', {
-        type: TutorialTypes.PROFILE_TUTORIAL,
+      expect(navigate).toHaveBeenCalledWith('ActivationStackNavigator', {
+        params: {
+          type: TutorialTypes.PROFILE_TUTORIAL,
+        },
+        screen: 'EligibleUserAgeSelection',
       })
     })
 
@@ -333,7 +336,10 @@ describe('Profile component', () => {
       const howItWorkButton = screen.getByText('Comment ça marche\u00a0?')
       await user.press(howItWorkButton)
 
-      expect(navigate).toHaveBeenCalledWith('ProfileTutorialAgeInformation', { age: 18 })
+      expect(navigate).toHaveBeenCalledWith('ActivationStackNavigator', {
+        params: { age: 18 },
+        screen: 'ProfileTutorialAgeInformation',
+      })
     })
 
     it('should navigate to Age Information V3 when tutorial row is clicked, user is logged in and enableCreditV3 is true', async () => {
@@ -345,7 +351,10 @@ describe('Profile component', () => {
       const howItWorkButton = screen.getByText('Comment ça marche\u00a0?')
       await user.press(howItWorkButton)
 
-      expect(navigate).toHaveBeenCalledWith('ProfileTutorialAgeInformationCreditV3', undefined)
+      expect(navigate).toHaveBeenCalledWith('ActivationStackNavigator', {
+        params: undefined,
+        screen: 'ProfileTutorialAgeInformationCreditV3',
+      })
     })
 
     it('should navigate when the faq row is clicked', async () => {

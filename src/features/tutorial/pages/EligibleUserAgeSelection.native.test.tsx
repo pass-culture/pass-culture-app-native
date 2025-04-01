@@ -53,7 +53,10 @@ describe('EligibleUserAgeSelection', () => {
           const button = screen.getByText(`${age} ans`)
           await user.press(button)
 
-          expect(navigate).toHaveBeenCalledWith('OnboardingAgeInformation', { age })
+          expect(navigate).toHaveBeenCalledWith('ActivationStackNavigator', {
+            params: { age },
+            screen: 'OnboardingAgeInformation',
+          })
         }
       )
 
@@ -64,8 +67,9 @@ describe('EligibleUserAgeSelection', () => {
         const button = screen.getByText('Autre')
         await user.press(button)
 
-        expect(navigate).toHaveBeenCalledWith('AgeSelectionOther', {
-          type: TutorialTypes.ONBOARDING,
+        expect(navigate).toHaveBeenCalledWith('ActivationStackNavigator', {
+          params: { type: TutorialTypes.ONBOARDING },
+          screen: 'AgeSelectionOther',
         })
       })
 
@@ -126,8 +130,9 @@ describe('EligibleUserAgeSelection', () => {
           const button = screen.getByText(`à ${age} ans`)
           await user.press(button)
 
-          expect(navigate).toHaveBeenCalledWith('ProfileTutorialAgeInformation', {
-            age,
+          expect(navigate).toHaveBeenCalledWith('ActivationStackNavigator', {
+            params: { age },
+            screen: 'ProfileTutorialAgeInformation',
           })
         }
       )

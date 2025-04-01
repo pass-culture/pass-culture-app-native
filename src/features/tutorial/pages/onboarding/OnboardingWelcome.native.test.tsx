@@ -39,7 +39,10 @@ describe('OnboardingWelcome', () => {
     const button = screen.getByText('C’est parti\u00a0!')
     await user.press(button)
 
-    expect(navigate).toHaveBeenCalledWith('OnboardingGeolocation', undefined)
+    expect(navigate).toHaveBeenCalledWith('ActivationStackNavigator', {
+      params: undefined,
+      screen: 'OnboardingGeolocation',
+    })
   })
 
   it('should redirect to login when "Se connecter" is clicked', async () => {

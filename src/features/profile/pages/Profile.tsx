@@ -8,6 +8,7 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { useLogoutRoutine } from 'features/auth/helpers/useLogoutRoutine'
 import { useFavoritesState } from 'features/favorites/context/FavoritesWrapper'
+import { getActivationNavConfig } from 'features/navigation/ActivationStackNavigator/getActivationNavConfig'
 import { getProfileNavConfig } from 'features/navigation/ProfileStackNavigator/getProfileNavConfig'
 import { ProfileHeader } from 'features/profile/components/Header/ProfileHeader/ProfileHeader'
 import { SectionWithSwitch } from 'features/profile/components/SectionWithSwitch/SectionWithSwitch'
@@ -81,7 +82,6 @@ const OnlineProfile: React.FC = () => {
   const [isGeolocSwitchActive, setIsGeolocSwitchActive] = useState<boolean>(
     permissionState === GeolocPermissionState.GRANTED
   )
-
   const isCreditEmpty = user?.domainsCredit?.all.remaining === 0
   const isDepositExpired = user?.depositExpirationDate
     ? new Date(user?.depositExpirationDate) < new Date()
@@ -91,14 +91,15 @@ const OnlineProfile: React.FC = () => {
 
   const shouldDisplayTutorial = !user?.isBeneficiary || isExpiredOrCreditEmptyWithNoUpcomingCredit
 
-  const navigateTo15to18: InternalNavigationProps['navigateTo'] = enableCreditV3
-    ? { screen: 'ProfileTutorialAgeInformationCreditV3' }
-    : { screen: 'ProfileTutorialAgeInformation', params: { age: userAge } }
-  const navigateToUnder15AndAbove18: InternalNavigationProps['navigateTo'] = enableCreditV3
-    ? { screen: 'ProfileTutorialAgeInformationCreditV3' }
-    : { screen: 'EligibleUserAgeSelection', params: { type: TutorialTypes.PROFILE_TUTORIAL } }
-  const tutorialNavigateTo =
-    userAge && userAge < 19 && userAge > 14 ? navigateTo15to18 : navigateToUnder15AndAbove18
+  const tutorialNavigateTo: InternalNavigationProps['navigateTo'] = enableCreditV3
+    ? getActivationNavConfig('ProfileTutorialAgeInformationCreditV3')
+    : userAge && (userAge === 15 || userAge === 16 || userAge === 17 || userAge === 18)
+      ? getActivationNavConfig('ProfileTutorialAgeInformation', {
+          age: userAge,
+        })
+      : getActivationNavConfig('EligibleUserAgeSelection', {
+          type: TutorialTypes.PROFILE_TUTORIAL,
+        })
 
   useFocusEffect(
     useCallback(() => {

@@ -45,7 +45,7 @@ export const tutorialRoutes: GenericRoute<TutorialRootStackParamList>[] = [
   {
     name: 'ProfileTutorialAgeInformation',
     component: ComponentForPathConfig,
-    path: 'tutoriel/selection-age/eligible',
+    path: 'tutoriel/selection-age/eligible', // of 'comment-ca-marche' ?
   },
   {
     name: 'ProfileTutorialAgeInformationCreditV3',

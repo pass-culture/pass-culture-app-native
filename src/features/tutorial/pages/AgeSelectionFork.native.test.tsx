@@ -63,8 +63,9 @@ describe('AgeSelectionFork', () => {
       const button = screen.getByLabelText('J’ai entre 15 et 18 ans')
       await user.press(button)
 
-      expect(navigate).toHaveBeenCalledWith('EligibleUserAgeSelection', {
-        type: TutorialTypes.ONBOARDING,
+      expect(navigate).toHaveBeenCalledWith('ActivationStackNavigator', {
+        params: { type: TutorialTypes.ONBOARDING },
+        screen: 'EligibleUserAgeSelection',
       })
     })
 
@@ -74,8 +75,9 @@ describe('AgeSelectionFork', () => {
       const button = screen.getByLabelText('J’ai 19 ans ou plus')
       await user.press(button)
 
-      expect(navigate).toHaveBeenCalledWith('OnboardingGeneralPublicWelcome', {
-        type: TutorialTypes.ONBOARDING,
+      expect(navigate).toHaveBeenCalledWith('ActivationStackNavigator', {
+        params: { type: TutorialTypes.ONBOARDING },
+        screen: 'OnboardingGeneralPublicWelcome',
       })
     })
 
@@ -114,8 +116,9 @@ describe('AgeSelectionFork', () => {
       const button = screen.getByLabelText('J’ai entre 15 et 18 ans')
       await user.press(button)
 
-      expect(navigate).toHaveBeenCalledWith('EligibleUserAgeSelection', {
-        type: TutorialTypes.PROFILE_TUTORIAL,
+      expect(navigate).toHaveBeenCalledWith('ActivationStackNavigator', {
+        params: { type: TutorialTypes.PROFILE_TUTORIAL },
+        screen: 'EligibleUserAgeSelection',
       })
     })
 
@@ -125,8 +128,9 @@ describe('AgeSelectionFork', () => {
       const button = screen.getByLabelText('J’ai 19 ans ou plus')
       await user.press(button)
 
-      expect(navigate).toHaveBeenCalledWith('OnboardingGeneralPublicWelcome', {
-        type: TutorialTypes.PROFILE_TUTORIAL,
+      expect(navigate).toHaveBeenCalledWith('ActivationStackNavigator', {
+        params: { type: TutorialTypes.PROFILE_TUTORIAL },
+        screen: 'OnboardingGeneralPublicWelcome',
       })
     })
   })
@@ -153,8 +157,9 @@ describe('AgeSelectionFork', () => {
         const button = screen.getByLabelText('J’ai 16 ans ou moins')
         await user.press(button)
 
-        expect(navigate).toHaveBeenCalledWith('OnboardingNotEligible', {
-          type: TutorialTypes.ONBOARDING,
+        expect(navigate).toHaveBeenCalledWith('ActivationStackNavigator', {
+          params: { type: TutorialTypes.ONBOARDING },
+          screen: 'OnboardingNotEligible',
         })
       })
 
@@ -175,9 +180,9 @@ describe('AgeSelectionFork', () => {
         const button = screen.getByLabelText('J’ai 17 ans')
         await user.press(button)
 
-        expect(navigate).toHaveBeenCalledWith('OnboardingAgeInformation', {
-          age: 17,
-          type: TutorialTypes.ONBOARDING,
+        expect(navigate).toHaveBeenCalledWith('ActivationStackNavigator', {
+          params: { age: 17, type: TutorialTypes.ONBOARDING },
+          screen: 'OnboardingAgeInformation',
         })
       })
 
@@ -187,9 +192,9 @@ describe('AgeSelectionFork', () => {
         const button = screen.getByLabelText('J’ai 18 ans')
         await user.press(button)
 
-        expect(navigate).toHaveBeenCalledWith('OnboardingAgeInformation', {
-          age: 18,
-          type: TutorialTypes.ONBOARDING,
+        expect(navigate).toHaveBeenCalledWith('ActivationStackNavigator', {
+          params: { age: 18, type: TutorialTypes.ONBOARDING },
+          screen: 'OnboardingAgeInformation',
         })
       })
     })

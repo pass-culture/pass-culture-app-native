@@ -2,6 +2,7 @@ import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
 import { useSettingsContext } from 'features/auth/context/SettingsContext'
+import { getActivationNavConfig } from 'features/navigation/ActivationStackNavigator/getActivationNavConfig'
 import { ExpiredCreditModal } from 'features/profile/components/Modals/ExpiredCreditModal'
 import { TutorialTypes } from 'features/tutorial/enums'
 import { analytics } from 'libs/analytics/provider'
@@ -24,14 +25,15 @@ export const CreditExplanation: FunctionComponent<Props> = ({ age, isDepositExpi
   const { data: settings } = useSettingsContext()
   const enableCreditV3 = settings?.wipEnableCreditV3
 
-  const navigateTo15to18: InternalNavigationProps['navigateTo'] = enableCreditV3
-    ? { screen: 'ProfileTutorialAgeInformationCreditV3' }
-    : { screen: 'ProfileTutorialAgeInformation', params: { age } }
-  const navigateToUnder15AndAbove18: InternalNavigationProps['navigateTo'] = enableCreditV3
-    ? { screen: 'ProfileTutorialAgeInformationCreditV3' }
-    : { screen: 'EligibleUserAgeSelection', params: { type: TutorialTypes.PROFILE_TUTORIAL } }
-  const tutorialNavigateTo =
-    age && age < 19 && age > 14 ? navigateTo15to18 : navigateToUnder15AndAbove18
+  const tutorialNavigateTo: InternalNavigationProps['navigateTo'] = enableCreditV3
+    ? getActivationNavConfig('ProfileTutorialAgeInformationCreditV3')
+    : age && (age === 15 || age === 16 || age === 17 || age === 18)
+      ? getActivationNavConfig('ProfileTutorialAgeInformation', {
+          age: age,
+        })
+      : getActivationNavConfig('EligibleUserAgeSelection', {
+          type: TutorialTypes.PROFILE_TUTORIAL,
+        })
 
   const onTutorialClick = () => analytics.logConsultTutorial({ age, from: 'CreditBlock' })
 

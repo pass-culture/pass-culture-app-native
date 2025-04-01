@@ -291,13 +291,13 @@ export type RootStackParamList = {
 } & CheatcodesStackParamList &
   CulturalSurveyRootStackParamList &
   SubscriptionRootStackParamList &
-  TrustedDeviceRootStackParamList &
-  TutorialRootStackParamList
+  TrustedDeviceRootStackParamList
 
 export type AllNavParamList = RootStackParamList &
   TabParamList &
   SearchStackParamList &
-  ProfileStackParamList
+  ProfileStackParamList &
+  ActivationStackParamList
 
 /** Type helpers to share screen names */
 export type RootScreenNames = keyof RootStackParamList
@@ -364,7 +364,10 @@ export type GenericRoute<
   options?: { title?: string }
   secure?: boolean
 }
-export type RootRoute = GenericRoute<RootStackParamList, TabParamList & ProfileStackParamList>
+export type RootRoute = GenericRoute<
+  RootStackParamList,
+  TabParamList & ProfileStackParamList & ActivationStackParamList
+>
 
 // Typeguard for screen params
 export function isScreen<Screen extends AllNavigateParams[0]>(

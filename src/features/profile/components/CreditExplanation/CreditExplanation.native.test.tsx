@@ -48,7 +48,10 @@ describe('<CreditExplanation/>', () => {
       const explanationButton = screen.getByTestId('Comment ça marche\u00a0?')
       await user.press(explanationButton)
 
-      expect(navigate).toHaveBeenCalledWith('ProfileTutorialAgeInformation', { age: 18 })
+      expect(navigate).toHaveBeenCalledWith('ActivationStackNavigator', {
+        params: { age: 18 },
+        screen: 'ProfileTutorialAgeInformation',
+      })
     })
 
     it('should navigate to tutorial CreditV3 when button is triggered and enableCreditV3 is true', async () => {
@@ -58,7 +61,10 @@ describe('<CreditExplanation/>', () => {
       const explanationButton = screen.getByTestId('Comment ça marche\u00a0?')
       await user.press(explanationButton)
 
-      expect(navigate).toHaveBeenCalledWith('ProfileTutorialAgeInformationCreditV3', undefined)
+      expect(navigate).toHaveBeenCalledWith('ActivationStackNavigator', {
+        params: undefined,
+        screen: 'ProfileTutorialAgeInformationCreditV3',
+      })
     })
 
     it('should navigate to 17 years old tutorial when button is triggered and user is 17', async () => {
@@ -66,7 +72,10 @@ describe('<CreditExplanation/>', () => {
       const explanationButton = screen.getByTestId('Comment ça marche\u00a0?')
       await user.press(explanationButton)
 
-      expect(navigate).toHaveBeenCalledWith('ProfileTutorialAgeInformation', { age: 17 })
+      expect(navigate).toHaveBeenCalledWith('ActivationStackNavigator', {
+        params: { age: 17 },
+        screen: 'ProfileTutorialAgeInformation',
+      })
     })
   })
 

@@ -62,7 +62,7 @@ export const ActivationStackNavigator = () => (
     <ActivationNavigatorBase.Screen
       name="ProfileTutorialAgeInformationCreditV3"
       component={ProfileTutorialAgeInformationCreditV3}
-      options={{ title: 'Information d’âge' }}
+      options={{ title: 'Information d’âge' }} // or { title: 'Tutoriel "Comment ça marche"' } ?
     />
   </ActivationNavigatorBase.Navigator>
 )

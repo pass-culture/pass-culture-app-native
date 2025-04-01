@@ -13,6 +13,7 @@ import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 export const OnboardingGeolocation = () => {
   const isPassForAllEnabled = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_PASS_FOR_ALL)
   const { navigate } = useNavigation<UseNavigationType>()
+  // const { navigate } = useNavigation<StackNavigationProp<ActivationStackParamList>>()
   const { requestGeolocPermission } = useLocation()
 
   const navigateToNextScreen = useCallback(() => {
