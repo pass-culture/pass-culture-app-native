@@ -8,6 +8,8 @@ import { TicketBody } from 'features/bookings/components/TicketBody/TicketBody'
 import { TicketCutout } from 'features/bookings/components/TicketCutout'
 import { getBookingLabels } from 'features/bookings/helpers'
 import { BookingProperties } from 'features/bookings/types'
+import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
+import { useGoBack } from 'features/navigation/useGoBack'
 import { VenueBlockAddress, VenueBlockVenue } from 'features/offer/components/OfferVenueBlock/type'
 import { VenueBlockWithItinerary } from 'features/offer/components/OfferVenueBlock/VenueBlockWithItinerary'
 import { analytics } from 'libs/analytics/provider'
@@ -16,6 +18,7 @@ import { getDistance } from 'libs/location/getDistance'
 import { formatFullAddress } from 'shared/address/addressFormatter'
 import { ErrorBanner } from 'ui/components/banners/ErrorBanner'
 import { InfoBanner } from 'ui/components/banners/InfoBanner'
+import { RoundedButton } from 'ui/components/buttons/RoundedButton'
 import { Separator } from 'ui/components/Separator'
 import { IdCard } from 'ui/svg/icons/IdCard'
 import { getSpacing } from 'ui/theme'
@@ -52,9 +55,22 @@ export const BookingDetailsContent = ({
   const onEmailPress = () => {
     analytics.logClickEmailOrganizer()
   }
+  const cancelBooking = () => {
+    showCancelModal()
+    analytics.logCancelBooking(offer.id)
+  }
+
+  const { goBack } = useGoBack(...getTabNavConfig('Bookings'))
 
   return (
     <ScrollView>
+      <RoundedButton
+        iconName="back"
+        onPress={goBack}
+        accessibilityLabel="Revenir en arrière"
+        finalColor={theme.colors.black}
+        initialColor={theme.colors.black}
+      />
       <TicketCutout
         hour={hourLabel == '' ? undefined : hourLabel}
         day={dayLabel == '' ? undefined : dayLabel}
