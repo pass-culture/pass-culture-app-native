@@ -11014,7 +11014,7 @@ __metadata:
     json: ^11.0.0
     jwt-decode: ^3.1.2
     knip: ^5.43.6
-    libphonenumber-js: ^1.9.19
+    libphonenumber-js: ^1.12.6
     lodash: ^4.17.21
     lottie-react-native: 5.1.6
     mailparser: ^3.6.3
@@ -20836,10 +20836,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"libphonenumber-js@npm:^1.9.19":
-  version: 1.9.44
-  resolution: "libphonenumber-js@npm:1.9.44"
-  checksum: cac1f8c4d37a35f1763720d5dbd247ce70a2f7a7d045ab2c99d75bdd170ed00ea8a38ddbd68b481fee3f57b9292218e412a20aa8a2a9b871091ed93809f61f95
+"libphonenumber-js@npm:^1.12.6":
+  version: 1.12.6
+  resolution: "libphonenumber-js@npm:1.12.6"
+  checksum: 98ae28d3c8709f6e2c75396178b45b11bea47cd0638f2165170b4a32dd1ba911fdee9a51dd19d1f19feaa5d10faff4554d4ff96caa1341e77d3a7b3796f20e5e
   languageName: node
   linkType: hard
 

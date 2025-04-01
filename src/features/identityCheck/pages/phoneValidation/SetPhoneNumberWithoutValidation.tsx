@@ -2,18 +2,21 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import React from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import { v4 as uuidv4 } from 'uuid'
-import * as yup from 'yup'
 
 import { isApiError } from 'api/apiHelpers'
-import {
-  COUNTRIES,
-  METROPOLITAN_FRANCE,
-} from 'features/identityCheck/components/countryPicker/constants'
+import { METROPOLITAN_FRANCE } from 'features/identityCheck/components/countryPicker/constants'
 import { CountryPicker } from 'features/identityCheck/components/countryPicker/CountryPicker'
 import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
 import { useNavigateForwardToStepper } from 'features/identityCheck/helpers/useNavigateForwardToStepper'
+import { invalidateStepperInfoQuery } from 'features/identityCheck/pages/helpers/invalidateStepperQuery'
 import { useSaveStep } from 'features/identityCheck/pages/helpers/useSaveStep'
+import { findCountry } from 'features/identityCheck/pages/phoneValidation/helpers/findCountry'
+import { formatPhoneNumberWithPrefix } from 'features/identityCheck/pages/phoneValidation/helpers/formatPhoneNumber'
+import {
+  PhoneNumberFormValues,
+  phoneNumberSchema,
+} from 'features/identityCheck/pages/phoneValidation/helpers/phoneNumberSchema'
 import { IdentityCheckStep } from 'features/identityCheck/types'
 import { usePatchProfile } from 'features/profile/api/usePatchProfile'
 import { InfoBanner } from 'ui/components/banners/InfoBanner'
@@ -26,31 +29,11 @@ import { Info } from 'ui/svg/icons/Info'
 import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
-import { invalidateStepperInfoQuery } from '../helpers/invalidateStepperQuery'
-
-import { formatPhoneNumberWithPrefix } from './helpers/formatPhoneNumber'
-import { isPhoneNumberValid } from './helpers/isPhoneNumberValid'
-
-const schema = yup.object({
-  phoneNumber: yup
-    .string()
-    .required('Le numéro de téléphone est requis')
-    .test('is-valid-phone', '', (value, { parent }) => {
-      const country = findCountry(parent.countryId)
-      return country ? isPhoneNumberValid(value ?? '', country.id) : false
-    }),
-  countryId: yup.string().required(),
-})
-
-type FormValues = yup.InferType<typeof schema>
-
-const findCountry = (countryId: string) => COUNTRIES.find((country) => country.id === countryId)
-
 export const SetPhoneNumberWithoutValidation = () => {
   const phoneNumberInputErrorId = uuidv4()
   const { dispatch, phoneValidation } = useSubscriptionContext()
-  const { control, handleSubmit, getValues, setError, formState } = useForm<FormValues>({
-    resolver: yupResolver(schema),
+  const { control, handleSubmit, getValues, setError, formState } = useForm<PhoneNumberFormValues>({
+    resolver: yupResolver(phoneNumberSchema),
     defaultValues: {
       phoneNumber: phoneValidation?.phoneNumber,
       countryId: phoneValidation?.country.countryCode ?? METROPOLITAN_FRANCE.id,
@@ -64,9 +47,8 @@ export const SetPhoneNumberWithoutValidation = () => {
     onSuccess: () => {
       const { phoneNumber, countryId } = getValues()
       const country = findCountry(countryId)
-      if (!country) {
-        return
-      }
+      if (!country) return
+
       dispatch({
         type: 'SET_PHONE_NUMBER',
         payload: {
@@ -86,7 +68,7 @@ export const SetPhoneNumberWithoutValidation = () => {
     },
   })
 
-  const onSubmit = async ({ phoneNumber, countryId }: FormValues) => {
+  const onSubmit = async ({ phoneNumber, countryId }: PhoneNumberFormValues) => {
     const country = findCountry(countryId)
     if (!country) {
       return

@@ -134,7 +134,7 @@
     "instantsearch.js": "^4.74.2",
     "intl": "^1.2.5",
     "jwt-decode": "^3.1.2",
-    "libphonenumber-js": "^1.9.19",
+    "libphonenumber-js": "^1.12.6",
     "lodash": "^4.17.21",
     "lottie-react-native": "5.1.6",
     "patch-package": "^6.2.0",
