@@ -1,4 +1,5 @@
-import parsePhoneNumberFromString, {
+import {
+  parsePhoneNumberFromString,
   CountryCode,
   getCountries,
   validatePhoneNumberLength,

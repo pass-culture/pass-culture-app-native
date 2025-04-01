@@ -1,4 +1,4 @@
-import parsePhoneNumberFromString, { CountryCode, getCountries } from 'libphonenumber-js'
+import { parsePhoneNumberFromString, CountryCode, getCountries } from 'libphonenumber-js'
 
 function isCountryCode(code: string): code is CountryCode {
   const countries: string[] = getCountries()
