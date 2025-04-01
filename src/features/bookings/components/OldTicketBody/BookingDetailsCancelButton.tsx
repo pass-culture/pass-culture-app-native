@@ -49,9 +49,6 @@ export const BookingDetailsCancelButton = (props: BookingDetailsCancelButtonProp
 
   return (
     <StyledViewGap gap={4} testID="cancel-or-archive-section">
-      {cancelMessage ? (
-        <StyledCaption testID="cancel-or-archive-message">{cancelMessage}</StyledCaption>
-      ) : null}
       {shouldDisplayButton ? (
         <BookingDetailsButton
           testID="cancel-or-archive-button"
@@ -61,6 +58,9 @@ export const BookingDetailsCancelButton = (props: BookingDetailsCancelButtonProp
           fullWidth={props.fullWidth}
           onCancel={props.onCancel}
         />
+      ) : null}
+      {cancelMessage ? (
+        <StyledCaption testID="cancel-or-archive-message">{cancelMessage}</StyledCaption>
       ) : null}
     </StyledViewGap>
   )
@@ -73,5 +73,4 @@ const StyledCaption = styled(Typo.BodyAccentXs)(({ theme }) => ({
 
 const StyledViewGap = styled(ViewGap)({
   marginBottom: getSpacing(10),
-  marginHorizontal: getSpacing(6),
 })

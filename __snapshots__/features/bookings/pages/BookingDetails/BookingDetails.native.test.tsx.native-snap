@@ -1045,9 +1045,11 @@ exports[`BookingDetails OldBookingDetails : when FF WIP_NEW_BOOKING_PAGE is off 
               [
                 {
                   "gap": 16,
+                  "marginBottom": 40,
                 },
               ]
             }
+            testID="cancel-or-archive-section"
           >
             <Text
               style={
@@ -1057,12 +1059,11 @@ exports[`BookingDetails OldBookingDetails : when FF WIP_NEW_BOOKING_PAGE is off 
                     "fontFamily": "Montserrat-SemiBold",
                     "fontSize": 12,
                     "lineHeight": 19.2,
-                    "marginBottom": 24,
                     "textAlign": "center",
                   },
                 ]
               }
-              testID="cancel-annulation-message"
+              testID="cancel-or-archive-message"
             >
               Tu ne peux plus annuler ta réservation. Elle expirera automatiquement le 17/03/2021
             </Text>
