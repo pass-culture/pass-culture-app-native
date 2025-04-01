@@ -27,8 +27,9 @@ const variantConfig: Variants<typeof VenueDetails> = [
   },
 ]
 
-const Template: VariantsStory<typeof VenueDetails> = (args) => (
-  <VariantsTemplate variants={variantConfig} Component={VenueDetails} defaultProps={args} />
-)
-
-export const AllVariants = Template.bind({})
+export const Template: VariantsStory<typeof VenueDetails> = {
+  name: 'VenueDetails',
+  render: (props) => (
+    <VariantsTemplate variants={variantConfig} Component={VenueDetails} defaultProps={props} />
+  ),
+}
