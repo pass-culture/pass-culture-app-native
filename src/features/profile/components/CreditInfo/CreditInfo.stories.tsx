@@ -2,7 +2,7 @@ import type { Meta } from '@storybook/react'
 import React from 'react'
 
 import { beneficiaryUser } from 'fixtures/user'
-import { VariantsTemplate, type Variants } from 'ui/storybook/VariantsTemplate'
+import { VariantsTemplate, type Variants, VariantsStory } from 'ui/storybook/VariantsTemplate'
 
 import { CreditInfo } from './CreditInfo'
 
@@ -20,8 +20,9 @@ const variantConfig: Variants<typeof CreditInfo> = [
   },
 ]
 
-const Template = (args: React.ComponentProps<typeof CreditInfo>) => (
-  <VariantsTemplate variants={variantConfig} Component={CreditInfo} defaultProps={args} />
-)
-
-export const AllVariants = Template.bind({})
+export const Template: VariantsStory<typeof CreditInfo> = {
+  render: (props) => (
+    <VariantsTemplate variants={variantConfig} Component={CreditInfo} defaultProps={props} />
+  ),
+  name: 'CreditInfo',
+}

@@ -53,12 +53,13 @@ const variantConfig: Variants<typeof CreditBarWithSeparator> = [
   },
 ]
 
-const Template: VariantsStory<typeof CreditBarWithSeparator> = (args) => (
-  <VariantsTemplate
-    variants={variantConfig}
-    Component={CreditBarWithSeparator}
-    defaultProps={{ ...args }}
-  />
-)
-
-export const AllVariants = Template.bind({})
+export const Template: VariantsStory<typeof CreditBarWithSeparator> = {
+  render: (props) => (
+    <VariantsTemplate
+      variants={variantConfig}
+      Component={CreditBarWithSeparator}
+      defaultProps={{ ...props }}
+    />
+  ),
+  name: 'CreditBarWithSeparator',
+}

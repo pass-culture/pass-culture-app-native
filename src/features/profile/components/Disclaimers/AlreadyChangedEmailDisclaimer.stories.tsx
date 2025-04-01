@@ -17,8 +17,9 @@ const variantConfig: Variants<typeof AlreadyChangedEmailDisclaimer> = [
   },
 ]
 
-const Template: VariantsStory<typeof AlreadyChangedEmailDisclaimer> = () => (
-  <VariantsTemplate variants={variantConfig} Component={AlreadyChangedEmailDisclaimer} />
-)
-
-export const AllVariants = Template.bind({})
+export const Template: VariantsStory<typeof AlreadyChangedEmailDisclaimer> = {
+  render: () => (
+    <VariantsTemplate variants={variantConfig} Component={AlreadyChangedEmailDisclaimer} />
+  ),
+  name: 'AlreadyChangedEmailDisclaimer',
+}

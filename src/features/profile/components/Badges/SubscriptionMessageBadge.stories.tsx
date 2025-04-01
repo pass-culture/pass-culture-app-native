@@ -64,12 +64,13 @@ const variantConfig: Variants<typeof SubscriptionMessageBadge> = [
   },
 ]
 
-const Template: VariantsStory<typeof SubscriptionMessageBadge> = (args) => (
-  <VariantsTemplate
-    variants={variantConfig}
-    Component={SubscriptionMessageBadge}
-    defaultProps={args}
-  />
-)
-
-export const AllVariants = Template.bind({})
+export const Template: VariantsStory<typeof SubscriptionMessageBadge> = {
+  render: (props) => (
+    <VariantsTemplate
+      variants={variantConfig}
+      Component={SubscriptionMessageBadge}
+      defaultProps={props}
+    />
+  ),
+  name: 'SubscriptionMessageBadge',
+}

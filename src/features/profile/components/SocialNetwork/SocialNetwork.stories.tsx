@@ -14,6 +14,7 @@ type Story = StoryObj<typeof SocialNetwork>
 
 export const Default: Story = {
   render: () => <SocialNetwork />,
+  name: 'SocialNetwork',
   parameters: {
     chromatic: {
       viewports: [theme.breakpoints.md, theme.breakpoints.lg, theme.breakpoints.xl],
