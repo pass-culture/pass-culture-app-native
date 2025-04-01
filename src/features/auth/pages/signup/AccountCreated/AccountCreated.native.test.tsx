@@ -18,6 +18,7 @@ import { render, screen, userEvent } from 'tests/utils'
 
 import { AccountCreated } from './AccountCreated'
 
+jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 jest.spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery').mockReturnValue(DEFAULT_REMOTE_CONFIG)
 

@@ -8,10 +8,8 @@ import { ShareAppModalType } from 'features/share/types'
 import { analytics } from 'libs/analytics/provider'
 import { BatchEvent, BatchProfile } from 'libs/react-native-batch'
 import { useShouldShowCulturalSurveyForBeneficiaryUser } from 'shared/culturalSurvey/useShouldShowCulturalSurveyForBeneficiaryUser'
-import IlluminatedSmileyAnimation from 'ui/animations/lottie_illuminated_smiley.json'
-import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
-import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import { GenericInfoPageDeprecated } from 'ui/pages/GenericInfoPageDeprecated'
+import QpiThanks from 'ui/animations/qpi_thanks.json'
+import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { Typo } from 'ui/theme'
 
 export function AccountCreated() {
@@ -32,33 +30,27 @@ export function AccountCreated() {
   }, [showShareAppModal])
 
   return (
-    <GenericInfoPageDeprecated
+    <GenericInfoPage
+      animation={QpiThanks}
       title="Ton compte a été activé&nbsp;!"
-      animation={IlluminatedSmileyAnimation}
-      buttons={[
-        <InternalTouchableLink
-          key={1}
-          as={ButtonPrimaryWhite}
-          wording="On y va&nbsp;!"
-          navigateTo={
-            shouldNavigateToCulturalSurvey
-              ? { screen: 'CulturalSurveyIntro' }
-              : navigateToHomeConfig
-          }
-          onBeforeNavigate={onBeforeNavigate}
-        />,
-      ]}>
+      subtitle=""
+      buttonPrimary={{
+        wording: 'On y va\u00a0!',
+        onBeforeNavigate,
+        navigateTo: shouldNavigateToCulturalSurvey
+          ? { screen: 'CulturalSurveyIntro' }
+          : navigateToHomeConfig,
+      }}>
       {shouldNavigateToCulturalSurvey ? (
         <StyledBody>
           Aide-nous à en savoir plus sur tes pratiques culturelles&nbsp;! Ta sélection n’aura pas
           d’impact sur les offres proposées.
         </StyledBody>
       ) : null}
-    </GenericInfoPageDeprecated>
+    </GenericInfoPage>
   )
 }
 
-const StyledBody = styled(Typo.Body)(({ theme }) => ({
-  color: theme.colors.white,
+const StyledBody = styled(Typo.Body)({
   textAlign: 'center',
-}))
+})
