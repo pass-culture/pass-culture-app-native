@@ -1,4 +1,5 @@
 import { NavigationContainer } from '@react-navigation/native'
+import mockdate from 'mockdate'
 import React, { ComponentProps } from 'react'
 import { ReactTestInstance } from 'react-test-renderer'
 
@@ -38,10 +39,10 @@ import { Position } from 'libs/location'
 import { SuggestedPlace } from 'libs/place/types'
 import { BatchEvent, BatchProfile } from 'libs/react-native-batch'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
-import { mockAuthContextWithoutUser, mockAuthContextWithUser } from 'tests/AuthContextUtils'
+import { mockAuthContextWithUser, mockAuthContextWithoutUser } from 'tests/AuthContextUtils'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { cleanup, act, render, screen, fireEvent, userEvent, waitFor } from 'tests/utils'
+import { act, cleanup, fireEvent, render, screen, userEvent, waitFor } from 'tests/utils'
 import * as AnchorContextModule from 'ui/components/anchor/AnchorContext'
 
 import { OfferContent } from './OfferContent'
@@ -466,6 +467,7 @@ describe('<OfferContent />', () => {
         isReleased: false,
         publicationDate: '2025-04-01T14:15:00Z',
       }
+      mockdate.set(new Date('2025-03-31T10:00:00Z'))
 
       it('should display "Mettre en favori" button', async () => {
         useFavoriteSpy.mockReturnValueOnce(undefined)
