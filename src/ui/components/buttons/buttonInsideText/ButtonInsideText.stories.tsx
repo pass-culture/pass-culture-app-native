@@ -14,7 +14,7 @@ const meta: Meta<typeof ButtonInsideText> = {
 }
 export default meta
 
-const variantConfig: Variants<typeof RandomText> = [
+const variantConfig: Variants<typeof ButtonInsideText> = [
   {
     label: 'ButtonInsideText inactive',
     props: { wording: 'wording' },
@@ -54,8 +54,9 @@ const RandomText = (props: ButtonInsideTexteProps) => {
   )
 }
 
-const Template: VariantsStory<typeof RandomText> = (args) => (
-  <VariantsTemplate variants={variantConfig} Component={RandomText} defaultProps={args} />
-)
-
-export const AllVariants = Template.bind({})
+export const Template: VariantsStory<typeof RandomText> = {
+  name: 'ButtonInsideText',
+  render: (props) => (
+    <VariantsTemplate variants={variantConfig} Component={ButtonInsideText} defaultProps={props} />
+  ),
+}

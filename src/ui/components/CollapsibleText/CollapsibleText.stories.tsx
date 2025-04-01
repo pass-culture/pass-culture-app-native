@@ -42,8 +42,9 @@ const variantConfig: Variants<typeof CollapsibleText> = [
   },
 ]
 
-const Template: VariantsStory<typeof CollapsibleText> = (args) => (
-  <VariantsTemplate variants={variantConfig} Component={CollapsibleText} defaultProps={args} />
-)
-
-export const AllVariants = Template.bind({})
+export const Template: VariantsStory<typeof CollapsibleText> = {
+  name: 'CollapsibleText',
+  render: (props) => (
+    <VariantsTemplate variants={variantConfig} Component={CollapsibleText} defaultProps={props} />
+  ),
+}

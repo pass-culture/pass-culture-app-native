@@ -56,12 +56,13 @@ const variantConfig: Variants<typeof SearchInput> = [
   },
 ]
 
-const Template: VariantsStory<typeof SearchInput> = (args) => (
-  <VariantsTemplate
-    variants={variantConfig}
-    Component={SearchInput}
-    defaultProps={{ placeholder: 'Placeholder...', ...args, label: 'Label' }}
-  />
-)
-
-export const AllVariants = Template.bind({})
+export const Template: VariantsStory<typeof SearchInput> = {
+  name: 'SearchInput',
+  render: (props) => (
+    <VariantsTemplate
+      variants={variantConfig}
+      Component={SearchInput}
+      defaultProps={{ placeholder: 'Placeholder...', ...props, label: 'Label' }}
+    />
+  ),
+}

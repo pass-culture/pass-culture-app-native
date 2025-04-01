@@ -48,9 +48,9 @@ const variantConfig: Variants<typeof CreditHeader> = [
   },
 ]
 
-const Template: VariantsStory<typeof CreditHeader> = (args) => (
-  <VariantsTemplate variants={variantConfig} Component={CreditHeader} defaultProps={{ ...args }} />
-)
-
-const AllVariants = Template.bind({})
-AllVariants.storyName = 'CreditHeader'
+export const Template: VariantsStory<typeof CreditHeader> = {
+  name: 'CreditHeader',
+  render: (props) => (
+    <VariantsTemplate variants={variantConfig} Component={CreditHeader} defaultProps={props} />
+  ),
+}

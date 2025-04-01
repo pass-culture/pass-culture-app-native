@@ -39,8 +39,13 @@ const variantConfig: Variants<typeof BannerWithBackground> = [
   },
 ]
 
-const Template: VariantsStory<typeof BannerWithBackground> = (args) => (
-  <VariantsTemplate variants={variantConfig} Component={BannerWithBackground} defaultProps={args} />
-)
-
-export const AllVariants = Template.bind({})
+export const Template: VariantsStory<typeof BannerWithBackground> = {
+  name: 'BannerWithBackground',
+  render: (props) => (
+    <VariantsTemplate
+      variants={variantConfig}
+      Component={BannerWithBackground}
+      defaultProps={props}
+    />
+  ),
+}

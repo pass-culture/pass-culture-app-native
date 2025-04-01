@@ -39,8 +39,9 @@ const variantConfig: Variants<typeof SystemBanner> = [
   },
 ]
 
-const Template: VariantsStory<typeof SystemBanner> = (
-  args: ComponentProps<typeof SystemBanner>
-) => <VariantsTemplate variants={variantConfig} Component={SystemBanner} defaultProps={args} />
-
-export const AllVariants = Template.bind({})
+export const Template: VariantsStory<typeof SystemBanner> = {
+  name: 'SystemBanner',
+  render: (props) => (
+    <VariantsTemplate variants={variantConfig} Component={SystemBanner} defaultProps={props} />
+  ),
+}

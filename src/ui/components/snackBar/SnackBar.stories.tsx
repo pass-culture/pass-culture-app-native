@@ -45,9 +45,9 @@ const variantConfig: Variants<typeof SnackBar> = [
   },
 ]
 
-const Template: VariantsStory<typeof SnackBar> = (args) => (
-  <VariantsTemplate variants={variantConfig} Component={SnackBar} defaultProps={args} />
-)
-
-export const AllVariants = Template.bind({})
-AllVariants.storyName = 'SnackBar'
+export const Template: VariantsStory<typeof SnackBar> = {
+  name: 'SnackBar',
+  render: (props) => (
+    <VariantsTemplate variants={variantConfig} Component={SnackBar} defaultProps={props} />
+  ),
+}

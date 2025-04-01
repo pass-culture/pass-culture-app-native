@@ -34,8 +34,9 @@ const variantConfig: Variants<typeof StepDots> = [
   },
 ]
 
-const Template: VariantsStory<typeof StepDots> = (args) => (
-  <VariantsTemplate variants={variantConfig} Component={StepDots} defaultProps={{ ...args }} />
-)
-
-export const AllVariants = Template.bind({})
+export const Template: VariantsStory<typeof StepDots> = {
+  name: 'StepDots',
+  render: (props) => (
+    <VariantsTemplate variants={variantConfig} Component={StepDots} defaultProps={{ ...props }} />
+  ),
+}

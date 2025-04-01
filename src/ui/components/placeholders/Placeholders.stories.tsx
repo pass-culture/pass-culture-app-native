@@ -15,7 +15,7 @@ export default {
   title: 'ui/Placeholders',
 }
 
-const Template: StoryFn<typeof VariantsTemplate> = () => (
+export const Template: StoryFn<typeof VariantsTemplate> = () => (
   <React.Fragment>
     <VariantsTemplate variants={[{ label: 'HitPlaceholder' }]} Component={HitPlaceholder} />
     <VariantsTemplate
@@ -40,5 +40,3 @@ const Template: StoryFn<typeof VariantsTemplate> = () => (
     />
   </React.Fragment>
 )
-
-export const Default = Template.bind({})

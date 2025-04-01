@@ -30,8 +30,9 @@ const variantConfig: Variants<typeof DateInput> = [
   },
 ]
 
-const Template: VariantsStory<typeof DateInput> = (args) => (
-  <VariantsTemplate variants={variantConfig} Component={DateInput} defaultProps={args} />
-)
-
-export const AllVariants = Template.bind({})
+export const Template: VariantsStory<typeof DateInput> = {
+  name: 'DateInput',
+  render: (props) => (
+    <VariantsTemplate variants={variantConfig} Component={DateInput} defaultProps={props} />
+  ),
+}

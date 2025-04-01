@@ -60,8 +60,9 @@ const variantConfig: Variants<typeof Slider> = [
   },
 ]
 
-const Template: VariantsStory<typeof Slider> = (args) => (
-  <VariantsTemplate variants={variantConfig} Component={Slider} defaultProps={{ ...args }} />
-)
-
-export const AllVariants = Template.bind({})
+export const Template: VariantsStory<typeof Slider> = {
+  name: 'Slider',
+  render: (props) => (
+    <VariantsTemplate variants={variantConfig} Component={Slider} defaultProps={{ ...props }} />
+  ),
+}

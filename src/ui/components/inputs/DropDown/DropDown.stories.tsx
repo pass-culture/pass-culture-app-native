@@ -19,21 +19,22 @@ const baseProps = {
 
 const variantConfig: Variants<typeof DropDown> = [
   {
-    label: 'DateInput',
+    label: 'DropDown',
     props: { ...baseProps },
   },
   {
-    label: 'DateInput with error',
+    label: 'DropDown with error',
     props: { ...baseProps, isError: true },
   },
   {
-    label: 'DateInput with default selected value',
+    label: 'DropDown with default selected value',
     props: { ...baseProps, value: CAPITALIZED_MONTHS[7] },
   },
 ]
 
-const Template: VariantsStory<typeof DropDown> = (args) => (
-  <VariantsTemplate variants={variantConfig} Component={DropDown} defaultProps={args} />
-)
-
-export const AllVariants = Template.bind({})
+export const Template: VariantsStory<typeof DropDown> = {
+  name: 'DropDown',
+  render: (props) => (
+    <VariantsTemplate variants={variantConfig} Component={DropDown} defaultProps={props} />
+  ),
+}

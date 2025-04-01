@@ -80,14 +80,13 @@ const variantConfig: Variants<typeof AttachedCardDisplay> = [
 
 type Story = StoryObj<typeof AttachedCardDisplay>
 
-const Template = (args: ComponentProps<typeof AttachedCardDisplay>) => (
-  <VariantsTemplate
-    variants={variantConfig}
-    Component={AttachedCardDisplay}
-    defaultProps={{ ...baseProps, ...args }}
-  />
-)
-
 export const AllVariants: Story = {
-  render: Template,
+  name: 'AttachedCardDisplay',
+  render: (args: ComponentProps<typeof AttachedCardDisplay>) => (
+    <VariantsTemplate
+      variants={variantConfig}
+      Component={AttachedCardDisplay}
+      defaultProps={{ ...baseProps, ...args }}
+    />
+  ),
 }
