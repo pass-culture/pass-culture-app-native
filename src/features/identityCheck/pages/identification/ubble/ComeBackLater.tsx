@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { analytics } from 'libs/analytics/provider'
 import { BatchEvent, BatchProfile } from 'libs/react-native-batch'
-import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
+import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { BicolorIdCardInvalid } from 'ui/svg/icons/BicolorIdCardInvalid'
 import { getSpacing, Typo } from 'ui/theme'
 
@@ -14,7 +14,7 @@ export const ComeBackLater: FunctionComponent = () => {
   }, [])
 
   return (
-    <GenericInfoPageWhite
+    <GenericInfoPage
       withGoBack
       illustration={BicolorIdCardInvalid}
       title="Reviens plus tard"
@@ -30,7 +30,7 @@ export const ComeBackLater: FunctionComponent = () => {
         </Typo.BodyAccent>
       </StyledText>
       <StyledText>N’hésite pas à revenir t’identifier quand tu l’auras avec toi&nbsp;!</StyledText>
-    </GenericInfoPageWhite>
+    </GenericInfoPage>
   )
 }
 

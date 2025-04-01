@@ -5,7 +5,7 @@ import { useLogoutRoutine } from 'features/auth/helpers/useLogoutRoutine'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { Emoji } from 'ui/components/Emoji'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
+import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { ProfileDeletion } from 'ui/svg/icons/ProfileDeletion'
 import { Typo } from 'ui/theme'
 
@@ -17,7 +17,7 @@ export function DeleteProfileSuccess() {
   }, [signOut])
 
   return (
-    <GenericInfoPageWhite
+    <GenericInfoPage
       illustration={ProfileDeletion}
       title="Ton compte a été supprimé"
       buttonPrimary={{
@@ -34,7 +34,7 @@ export function DeleteProfileSuccess() {
           catalogue&nbsp;!
         </StyledBody>
       </ViewGap>
-    </GenericInfoPageWhite>
+    </GenericInfoPage>
   )
 }
 

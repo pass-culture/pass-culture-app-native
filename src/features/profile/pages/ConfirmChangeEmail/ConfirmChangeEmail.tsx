@@ -11,7 +11,7 @@ import { useConfirmChangeEmailMutationV2 } from 'features/profile/helpers/useCon
 import { isTimestampExpired } from 'libs/dates'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
-import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
+import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { BicolorPhonePending } from 'ui/svg/icons/BicolorPhonePending'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
 
@@ -72,7 +72,7 @@ export function ConfirmChangeEmail() {
   }
 
   return (
-    <GenericInfoPageWhite
+    <GenericInfoPage
       illustration={BicolorPhonePending}
       title="Confirmes-tu la demande de changement d’e-mail&nbsp;?"
       buttonPrimary={{

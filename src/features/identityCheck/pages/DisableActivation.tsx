@@ -7,7 +7,7 @@ import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { useFeatureFlagOptions } from 'libs/firebase/firestore/featureFlags/useFeatureFlagOptions'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
+import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { Hourglass } from 'ui/svg/icons/Hourglass'
 import { LINE_BREAK } from 'ui/theme/constants'
 
@@ -25,7 +25,7 @@ export const DisableActivation = () => {
   const externalWording = isWeb ? externalWordingWeb : externalWordingMobile
 
   return (
-    <GenericInfoPageWhite
+    <GenericInfoPage
       illustration={Hourglass}
       title={title}
       buttonPrimary={{

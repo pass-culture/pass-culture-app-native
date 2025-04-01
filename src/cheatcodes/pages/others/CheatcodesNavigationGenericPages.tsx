@@ -9,7 +9,7 @@ export const cheatcodesNavigationGenericPagesButtons: [CheatcodesButtonsWithSubs
     title: 'GenericPages 📄',
     screen: 'CheatcodesNavigationGenericPages',
     subscreens: [
-      { screen: 'CheatcodesScreenGenericInfoPageWhite', title: 'GenericInfoPageWhite' },
+      { screen: 'CheatcodesScreenGenericInfoPage', title: 'GenericInfoPage' },
       { screen: 'CheatcodesScreenGenericErrorPage', title: 'GenericErrorPage' },
     ],
   },

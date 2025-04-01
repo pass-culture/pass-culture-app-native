@@ -8,7 +8,7 @@ import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
 import { Emoji } from 'ui/components/Emoji'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
+import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { Again } from 'ui/svg/icons/Again'
 import { ProfileDeletion } from 'ui/svg/icons/ProfileDeletion'
 import { Typo } from 'ui/theme'
@@ -23,7 +23,7 @@ export function DeactivateProfileSuccess() {
   }, [signOut])
 
   return (
-    <GenericInfoPageWhite
+    <GenericInfoPage
       illustration={ProfileDeletion}
       title="Ton compte a été désactivé"
       buttonPrimary={{
@@ -49,7 +49,7 @@ export function DeactivateProfileSuccess() {
           Une fois ce délai écoulé, tu n’auras plus accès à ton compte pass Culture.
         </StyledBody>
       </ViewGap>
-    </GenericInfoPageWhite>
+    </GenericInfoPage>
   )
 }
 

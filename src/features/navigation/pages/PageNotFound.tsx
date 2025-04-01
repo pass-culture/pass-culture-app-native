@@ -2,7 +2,7 @@ import React from 'react'
 
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { Helmet } from 'libs/react-helmet/Helmet'
-import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
+import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { PageNotFound as PageNotFoundIcon } from 'ui/svg/icons/PageNotFound'
 
 export const PageNotFound: React.FC = () => {
@@ -12,7 +12,7 @@ export const PageNotFound: React.FC = () => {
       <Helmet>
         <title>{helmetTitle}</title>
       </Helmet>
-      <GenericInfoPageWhite
+      <GenericInfoPage
         illustration={PageNotFoundIcon}
         title="Page introuvable&nbsp;!"
         subtitle="Il est possible que cette page soit désactivée ou n’existe pas."

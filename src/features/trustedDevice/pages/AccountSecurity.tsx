@@ -8,7 +8,7 @@ import { DeviceInformationsBanner } from 'features/trustedDevice/components/Devi
 import { formatTokenInfo } from 'features/trustedDevice/helpers/formatTokenInfo'
 import { getTokenInfo } from 'features/trustedDevice/helpers/getTokenInfo'
 import { analytics } from 'libs/analytics/provider'
-import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
+import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { BicolorUserBlocked } from 'ui/svg/icons/UserBlocked'
 import { Spacer, Typo } from 'ui/theme'
@@ -26,7 +26,7 @@ export const AccountSecurity = () => {
   }
 
   return (
-    <GenericInfoPageWhite
+    <GenericInfoPage
       illustration={BicolorUserBlocked}
       title="Sécurise ton compte"
       buttonPrimary={
@@ -78,6 +78,6 @@ export const AccountSecurity = () => {
           ? ' modifier ton mot de passe ou de suspendre ton compte temporairement.'
           : ' sécuriser l’accès à ta boîte mail et de suspendre ton compte pass Culture temporairement.'}
       </Typo.Body>
-    </GenericInfoPageWhite>
+    </GenericInfoPage>
   )
 }

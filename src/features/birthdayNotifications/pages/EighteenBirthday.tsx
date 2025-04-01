@@ -9,7 +9,7 @@ import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay
 import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
 import { useDepositAmountsByAge } from 'shared/user/useDepositAmountsByAge'
 import TutorialPassLogo from 'ui/animations/eighteen_birthday.json'
-import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
+import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { ClockFilled } from 'ui/svg/icons/ClockFilled'
 import { Typo } from 'ui/theme'
 
@@ -22,7 +22,7 @@ export function EighteenBirthday() {
   }, [])
 
   return (
-    <GenericInfoPageWhite
+    <GenericInfoPage
       animation={TutorialPassLogo}
       title="Tu as 18 ans&nbsp;!"
       subtitle={pageWording.text}
@@ -36,7 +36,7 @@ export function EighteenBirthday() {
         icon: ClockFilled,
       }}>
       <ResetText />
-    </GenericInfoPageWhite>
+    </GenericInfoPage>
   )
 }
 

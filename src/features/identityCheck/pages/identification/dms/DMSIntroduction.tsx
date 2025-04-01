@@ -8,7 +8,7 @@ import { env } from 'libs/environment/env'
 import { InformationWithIcon } from 'ui/components/InformationWithIcon'
 import { Li } from 'ui/components/Li'
 import { VerticalUl } from 'ui/components/Ul'
-import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
+import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { BicolorClock } from 'ui/svg/icons/BicolorClock'
 import { BicolorConfirmation } from 'ui/svg/icons/BicolorConfirmation'
 import { BicolorIdCard } from 'ui/svg/icons/BicolorIdCard'
@@ -52,7 +52,7 @@ export const DMSIntroduction = (): React.JSX.Element => {
       }
 
   return (
-    <GenericInfoPageWhite
+    <GenericInfoPage
       withGoBack
       illustration={StyledLogoDMS}
       title="Identifie-toi sur le site demarches-simplifiees.fr"
@@ -69,7 +69,7 @@ export const DMSIntroduction = (): React.JSX.Element => {
       <Typo.BodyAccentXs>
         Le traitement de ton dossier peut prendre jusqu’à 5 jours.
       </Typo.BodyAccentXs>
-    </GenericInfoPageWhite>
+    </GenericInfoPage>
   )
 }
 

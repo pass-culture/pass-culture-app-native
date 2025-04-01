@@ -8,7 +8,7 @@ import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useLocation } from 'libs/location'
 import GeolocationAnimation from 'ui/animations/geolocalisation.json'
-import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
+import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 
 export const OnboardingGeolocation = () => {
   const isPassForAllEnabled = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_PASS_FOR_ALL)
@@ -34,7 +34,7 @@ export const OnboardingGeolocation = () => {
   }, [navigateToNextScreen, requestGeolocPermission])
 
   return (
-    <GenericInfoPageWhite
+    <GenericInfoPage
       withSkipAction={onSkip}
       animation={GeolocationAnimation}
       title="Découvre les offres près de chez toi"

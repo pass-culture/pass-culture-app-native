@@ -37,7 +37,7 @@ export type CheatcodesStackParamList = {
   CheatcodesScreenAccesLibre: undefined
   CheatcodesScreenDebugInformations: undefined
   CheatcodesScreenFeatureFlags: undefined
-  CheatcodesScreenGenericInfoPageWhite: undefined
+  CheatcodesScreenGenericInfoPage: undefined
   CheatcodesScreenGenericErrorPage: undefined
   CheatcodesScreenNewCaledonia: undefined
   CheatcodesScreenRemoteConfig: undefined

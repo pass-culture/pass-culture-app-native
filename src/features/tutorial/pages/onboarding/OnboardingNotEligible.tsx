@@ -4,7 +4,7 @@ import React from 'react'
 import { StepperOrigin, UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import BirthdayCakeAnimation from 'ui/animations/onboarding_birthday_cake.json'
-import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
+import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 
 export const OnboardingNotEligible = () => {
   const { reset } = useNavigation<UseNavigationType>()
@@ -13,7 +13,7 @@ export const OnboardingNotEligible = () => {
   }
 
   return (
-    <GenericInfoPageWhite
+    <GenericInfoPage
       withSkipAction={navigateToHomeWithReset}
       animation={BirthdayCakeAnimation}
       title="Encore un peu de patience&nbsp;!"

@@ -10,7 +10,7 @@ import { ProfileStackParamList } from 'features/navigation/ProfileStackNavigator
 import { RootStackParamList } from 'features/navigation/RootNavigator/types'
 import { useEmailUpdateStatus } from 'features/profile/helpers/useEmailUpdateStatus'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
-import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
+import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { BicolorUserError } from 'ui/svg/BicolorUserError'
 import { Clear } from 'ui/svg/icons/Clear'
 import { Typo } from 'ui/theme'
@@ -73,7 +73,7 @@ export function SuspendAccountConfirmation({
   }, [emailUpdateStatus, isLoadingEmailUpdateStatus, navigation])
 
   return (
-    <GenericInfoPageWhite
+    <GenericInfoPage
       illustration={StyledBicolorUserError}
       title="Souhaites-tu suspendre ton compte pass&nbsp;Culture&nbsp;?"
       buttonPrimary={{
@@ -93,7 +93,7 @@ export function SuspendAccountConfirmation({
         conseillons de suspendre de ton compte&nbsp;:
         <BoldText> toutes les offres seront annulées et l’accès au compte sera bloqué.</BoldText>
       </StyledBody>
-    </GenericInfoPageWhite>
+    </GenericInfoPage>
   )
 }
 

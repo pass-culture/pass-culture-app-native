@@ -7,7 +7,7 @@ import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome
 import { analytics } from 'libs/analytics/provider'
 import { ScreenErrorProps } from 'libs/monitoring/errors'
 import { Helmet } from 'libs/react-helmet/Helmet'
-import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
+import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { Typo } from 'ui/theme'
 
 export const NotEligibleEduConnect = ({
@@ -72,13 +72,13 @@ export const NotEligibleEduConnect = ({
       <Helmet>
         <title>{helmetTitle}</title>
       </Helmet>
-      <GenericInfoPageWhite
+      <GenericInfoPage
         illustration={Illustration}
         title={title}
         buttonPrimary={buttonPrimary ?? defaultGoToHomeButton}
         buttonTertiary={isGoHomeTertiaryButtonVisible ? defaultGoToHomeButton : undefined}>
         <Body textAlign={descriptionAlignment}>{description}</Body>
-      </GenericInfoPageWhite>
+      </GenericInfoPage>
     </React.Fragment>
   )
 }

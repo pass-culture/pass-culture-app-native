@@ -6,7 +6,7 @@ import styled from 'styled-components/native'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
+import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { BicolorEmailSent } from 'ui/svg/icons/BicolorEmailSent'
 import { Email } from 'ui/svg/icons/Email'
 import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
@@ -25,7 +25,7 @@ export const DeleteProfileContactSupport: FC = () => {
 
   const navigateToProfile = () => navigate(...getTabNavConfig('Profile'))
   return (
-    <GenericInfoPageWhite
+    <GenericInfoPage
       withGoBack
       illustration={BicolorEmailSent}
       title="Contacte le support"
@@ -47,7 +47,7 @@ export const DeleteProfileContactSupport: FC = () => {
           Ta demande sera analysée et tu pourras être redirigé vers la meilleure solution.
         </StyledBody>
       </ViewGap>
-    </GenericInfoPageWhite>
+    </GenericInfoPage>
   )
 }
 

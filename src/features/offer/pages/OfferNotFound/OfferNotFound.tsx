@@ -3,7 +3,7 @@ import React, { useEffect, useRef } from 'react'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { ScreenErrorProps } from 'libs/monitoring/errors'
 import { Helmet } from 'libs/react-helmet/Helmet'
-import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
+import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { NoOffer } from 'ui/svg/icons/NoOffer'
 
 export const OfferNotFound = ({ resetErrorBoundary }: ScreenErrorProps) => {
@@ -29,7 +29,7 @@ export const OfferNotFound = ({ resetErrorBoundary }: ScreenErrorProps) => {
       <Helmet>
         <title>{helmetTitle}</title>
       </Helmet>
-      <GenericInfoPageWhite
+      <GenericInfoPage
         illustration={NoOffer}
         title="Offre introuvable&nbsp;!"
         subtitle="Il est possible que cette offre soit désactivée ou n’existe pas."

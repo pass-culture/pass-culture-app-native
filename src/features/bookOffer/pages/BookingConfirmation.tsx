@@ -14,7 +14,7 @@ import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay
 import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
 import { useAvailableCredit } from 'shared/user/useAvailableCredit'
 import { useModal } from 'ui/components/modals/useModal'
-import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
+import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { BicolorTicketBooked } from 'ui/svg/icons/BicolorTicketBooked'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
 import { LINE_BREAK } from 'ui/theme/constants'
@@ -70,7 +70,7 @@ export function BookingConfirmation() {
 
   return (
     <React.Fragment>
-      <GenericInfoPageWhite
+      <GenericInfoPage
         illustration={BicolorTicketBooked}
         title="Réservation confirmée&nbsp;!"
         subtitle={`${amountLeftText}${LINE_BREAK}Tu peux retrouver toutes les informations concernant ta réservation sur l’application.`}

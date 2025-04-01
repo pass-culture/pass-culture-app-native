@@ -12,7 +12,7 @@ import { storage } from 'libs/storage'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
+import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { BicolorPhonePending } from 'ui/svg/icons/BicolorPhonePending'
 import { InfoPlain } from 'ui/svg/icons/InfoPlain'
 import { Typo } from 'ui/theme'
@@ -47,7 +47,7 @@ export const CulturalSurveyIntro = (): React.JSX.Element => {
   const { intro } = useGetCulturalSurveyContent(enableCulturalSurveyMandatory)
 
   return (
-    <GenericInfoPageWhite
+    <GenericInfoPage
       illustration={BicolorPhonePending}
       title={intro.title}
       subtitle={intro.customSubtitle}
@@ -82,7 +82,7 @@ export const CulturalSurveyIntro = (): React.JSX.Element => {
           )}
         </View>
       ) : null}
-    </GenericInfoPageWhite>
+    </GenericInfoPage>
   )
 }
 

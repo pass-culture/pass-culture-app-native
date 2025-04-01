@@ -10,7 +10,7 @@ import { InfoBanner } from 'ui/components/banners/InfoBanner'
 import { ButtonQuaternarySecondary } from 'ui/components/buttons/ButtonQuaternarySecondary'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
-import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
+import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { BicolorProfileDeletion } from 'ui/svg/icons/BicolorProfileDeletion'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
@@ -38,7 +38,7 @@ export const DeleteProfileConfirmation = () => {
     navigate(...getProfileStackConfig('DeleteProfileReason'))
 
   return (
-    <GenericInfoPageWhite
+    <GenericInfoPage
       withGoBack
       illustration={BicolorProfileDeletion}
       title="Ta demande de suppression de compte"
@@ -69,6 +69,6 @@ export const DeleteProfileConfirmation = () => {
           inline
         />
       </InfoBanner>
-    </GenericInfoPageWhite>
+    </GenericInfoPage>
   )
 }

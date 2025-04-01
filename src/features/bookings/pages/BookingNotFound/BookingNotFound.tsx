@@ -3,7 +3,7 @@ import React, { useEffect, useRef } from 'react'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { ScreenErrorProps } from 'libs/monitoring/errors'
 import { Helmet } from 'libs/react-helmet/Helmet'
-import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
+import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { NoBookings } from 'ui/svg/icons/NoBookings'
 
 export const BookingNotFound = ({ resetErrorBoundary }: ScreenErrorProps) => {
@@ -32,7 +32,7 @@ export const BookingNotFound = ({ resetErrorBoundary }: ScreenErrorProps) => {
       <Helmet>
         <title>{title}</title>
       </Helmet>
-      <GenericInfoPageWhite
+      <GenericInfoPage
         illustration={NoBookings}
         title="Réservation introuvable&nbsp;!"
         subtitle="Désolé, nous ne retrouvons pas ta réservation. Peut-être a-t-elle été annulée. N’hésite pas à retrouver la liste de tes réservations terminées et annulées pour t’en assurer."
