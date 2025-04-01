@@ -16,7 +16,7 @@ import { LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render, screen } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 import * as useModalAPI from 'ui/components/modals/useModal'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
@@ -147,6 +147,10 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
+const user = userEvent.setup()
+
+jest.useFakeTimers()
+
 describe('<BookingDetails />', () => {
   beforeAll(() => {
     mockVenueList = []
@@ -243,10 +247,10 @@ describe('<BookingDetails />', () => {
         name: 'J’ai lu et j’accepte les conditions générales d’utilisation',
         checked: false,
       })
-      fireEvent.press(cguCheckbox)
+      await user.press(cguCheckbox)
 
       const ConfirmButton = await screen.findByText('Confirmer la réservation')
-      fireEvent.press(ConfirmButton)
+      await user.press(ConfirmButton)
 
       expect(mockOnPressBookOffer).toHaveBeenCalledTimes(1)
     })
@@ -608,9 +612,7 @@ describe('<BookingDetails />', () => {
 
     renderBookingDetails({ stocks: mockStocks, onPressBookOffer: mockOnPressBookOffer })
 
-    await act(async () => {
-      fireEvent.press(await screen.findByText('Modifier'))
-    })
+    await user.press(await screen.findByText('Modifier'))
 
     expect(mockShowModal).toHaveBeenCalledTimes(1)
   })
@@ -638,13 +640,9 @@ describe('<BookingDetails />', () => {
 
     renderBookingDetails({ stocks: mockStocks, onPressBookOffer: mockOnPressBookOffer })
 
-    await act(async () => {
-      fireEvent.press(screen.getByText('Le Livre Éclaire'))
-    })
+    await user.press(screen.getByText('Le Livre Éclaire'))
 
-    await act(async () => {
-      fireEvent.press(screen.getByText('Choisir ce lieu'))
-    })
+    await user.press(screen.getByText('Choisir ce lieu'))
 
     expect(mockDispatch).toHaveBeenCalledWith({ type: 'CHANGE_OFFER', payload: 2 })
   })
@@ -679,9 +677,7 @@ describe('<BookingDetails />', () => {
         mockPlace = place
         renderBookingDetails({ stocks: mockStocks, onPressBookOffer: mockOnPressBookOffer })
 
-        await act(async () => {
-          fireEvent.press(screen.getByText('Modifier'))
-        })
+        await user.press(screen.getByText('Modifier'))
 
         expect(screen.getByText(headerMessage)).toBeOnTheScreen()
       }
@@ -717,7 +713,7 @@ describe('<BookingDetails />', () => {
       checked: false,
     })
 
-    fireEvent.press(cguCheckbox)
+    await user.press(cguCheckbox)
 
     const bookingButton = screen.getByText('Confirmer la réservation')
 
