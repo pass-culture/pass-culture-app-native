@@ -8,7 +8,7 @@ import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
 import { useModal } from 'ui/components/modals/useModal'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
+import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
 import { HappyFace } from 'ui/svg/icons/HappyFace'
 import { Typo } from 'ui/theme'
@@ -24,7 +24,7 @@ export function IdentityCheckUnavailable() {
   }
 
   return (
-    <GenericInfoPageWhite
+    <GenericInfoPage
       illustration={HappyFace}
       title="Victime de notre succès&nbsp;!"
       buttonPrimary={
@@ -51,7 +51,7 @@ export function IdentityCheckUnavailable() {
         ) : null}
       </ViewGap>
       <DMSModal visible={visible} hideModal={hideModal} />
-    </GenericInfoPageWhite>
+    </GenericInfoPage>
   )
 }
 

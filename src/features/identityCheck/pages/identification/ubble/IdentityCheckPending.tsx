@@ -3,13 +3,13 @@ import styled from 'styled-components/native'
 
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
+import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { BicolorIdCardError } from 'ui/svg/icons/BicolorIdCardError'
 import { Typo } from 'ui/theme'
 
 export function IdentityCheckPending() {
   return (
-    <GenericInfoPageWhite
+    <GenericInfoPage
       illustration={BicolorIdCardError}
       title="Oups&nbsp;!"
       buttonPrimary={{
@@ -25,7 +25,7 @@ export function IdentityCheckPending() {
           dossier sera validé.
         </StyledBody>
       </ViewGap>
-    </GenericInfoPageWhite>
+    </GenericInfoPage>
   )
 }
 

@@ -6,7 +6,7 @@ import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { InfoBanner } from 'ui/components/banners/InfoBanner'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
+import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { Clear } from 'ui/svg/icons/Clear'
 import { Info } from 'ui/svg/icons/Info'
 import { BicolorUserBlocked } from 'ui/svg/icons/UserBlocked'
@@ -22,7 +22,7 @@ export const DeleteProfileAccountHacked: FC = () => {
   }
 
   return (
-    <GenericInfoPageWhite
+    <GenericInfoPage
       withGoBack
       illustration={BicolorUserBlocked}
       title="Sécurise ton compte"
@@ -46,6 +46,6 @@ export const DeleteProfileAccountHacked: FC = () => {
           message="Tu recevras un e-mail pour t’indiquer les étapes à suivre pour récupérer ton compte"
         />
       </ViewGap>
-    </GenericInfoPageWhite>
+    </GenericInfoPage>
   )
 }

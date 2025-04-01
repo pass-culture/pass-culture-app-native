@@ -2,18 +2,18 @@ import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
+import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { MaintenanceCone } from 'ui/svg/icons/MaintenanceCone'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
 import { Typo } from 'ui/theme'
 
-export const CheatcodesScreenGenericInfoPageWhite = () => {
+export const CheatcodesScreenGenericInfoPage = () => {
   const { navigate } = useNavigation<UseNavigationType>()
   const navigateToCheatcodesNavigationGenericPages = () => {
     navigate('CheatcodesNavigationGenericPages')
   }
   return (
-    <GenericInfoPageWhite
+    <GenericInfoPage
       withGoBack
       withSkipAction={navigateToCheatcodesNavigationGenericPages}
       illustration={MaintenanceCone}
@@ -35,6 +35,6 @@ export const CheatcodesScreenGenericInfoPageWhite = () => {
         icon: PlainArrowPrevious,
       }}>
       <Typo.Body>Children...</Typo.Body>
-    </GenericInfoPageWhite>
+    </GenericInfoPage>
   )
 }

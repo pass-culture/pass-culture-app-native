@@ -9,7 +9,7 @@ import { env } from 'libs/environment/env'
 import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonInsideText'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
+import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { BellFilled } from 'ui/svg/icons/BellFilled'
 import { BicolorError } from 'ui/svg/icons/BicolorError'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
@@ -23,7 +23,7 @@ export const DeleteProfileAccountNotDeletable: FC = () => {
   const navigateToNotifications = () => navigate(...getProfileStackConfig('NotificationsSettings'))
 
   return (
-    <GenericInfoPageWhite
+    <GenericInfoPage
       withGoBack
       illustration={BicolorError}
       title="Nous ne pouvons pas encore supprimer ton compte"
@@ -53,7 +53,7 @@ export const DeleteProfileAccountNotDeletable: FC = () => {
           notifications
         </Typo.BodyS>
       </ViewGap>
-    </GenericInfoPageWhite>
+    </GenericInfoPage>
   )
 }
 

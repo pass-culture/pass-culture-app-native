@@ -36,7 +36,7 @@ import { CheatcodesScreenAccesLibre } from 'cheatcodes/pages/others/CheatcodesSc
 import { CheatcodesScreenDebugInformations } from 'cheatcodes/pages/others/CheatcodesScreenDebugInformations'
 import { CheatcodesScreenFeatureFlags } from 'cheatcodes/pages/others/CheatcodesScreenFeatureFlags'
 import { CheatcodesScreenGenericErrorPage } from 'cheatcodes/pages/others/CheatcodesScreenGenericErrorPage'
-import { CheatcodesScreenGenericInfoPageWhite } from 'cheatcodes/pages/others/CheatcodesScreenGenericInfoPageWhite'
+import { CheatcodesScreenGenericInfoPage } from 'cheatcodes/pages/others/CheatcodesScreenGenericInfoPage'
 import { CheatcodesScreenNewCaledonia } from 'cheatcodes/pages/others/CheatcodesScreenNewCaledonia'
 import { CheatcodesScreenRemoteConfig } from 'cheatcodes/pages/others/CheatcodesScreenRemoteConfig'
 import { withAsyncErrorBoundary } from 'features/errors/hocs/withAsyncErrorBoundary'
@@ -192,8 +192,8 @@ const routes: CheatcodesStackRoute[] = [
     component: CheatcodesNavigationGenericPages,
   },
   {
-    name: 'CheatcodesScreenGenericInfoPageWhite',
-    component: CheatcodesScreenGenericInfoPageWhite,
+    name: 'CheatcodesScreenGenericInfoPage',
+    component: CheatcodesScreenGenericInfoPage,
   },
   {
     name: 'CheatcodesScreenGenericErrorPage',

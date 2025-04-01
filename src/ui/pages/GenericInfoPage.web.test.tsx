@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { checkAccessibilityFor, render } from 'tests/utils/web'
-import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
+import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { MaintenanceCone } from 'ui/svg/icons/MaintenanceCone'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
 import { Typo } from 'ui/theme'
@@ -11,11 +11,11 @@ jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 const onPress = jest.fn()
 
-describe('<GenericInfoPageWhite />', () => {
+describe('<GenericInfoPage />', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
       const { container } = render(
-        <GenericInfoPageWhite
+        <GenericInfoPage
           withGoBack
           withSkipAction={onPress}
           illustration={MaintenanceCone}
@@ -35,7 +35,7 @@ describe('<GenericInfoPageWhite />', () => {
             icon: PlainArrowPrevious,
           }}>
           <Typo.Body>Children...</Typo.Body>
-        </GenericInfoPageWhite>
+        </GenericInfoPage>
       )
 
       const results = await checkAccessibilityFor(container)

@@ -4,7 +4,7 @@ import React from 'react'
 import { StepperOrigin, UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import QpiThanks from 'ui/animations/qpi_thanks.json'
-import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
+import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 
 export const OnboardingGeneralPublicWelcome = () => {
   const { reset } = useNavigation<UseNavigationType>()
@@ -13,7 +13,7 @@ export const OnboardingGeneralPublicWelcome = () => {
   }
 
   return (
-    <GenericInfoPageWhite
+    <GenericInfoPage
       withSkipAction={navigateToHomeWithReset}
       animation={QpiThanks}
       title="Explore, découvre, profite"

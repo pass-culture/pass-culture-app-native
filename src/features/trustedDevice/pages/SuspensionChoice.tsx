@@ -15,7 +15,7 @@ import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonI
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { VerticalUl } from 'ui/components/Ul'
-import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
+import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { BicolorUserError } from 'ui/svg/BicolorUserError'
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
@@ -58,7 +58,7 @@ export const SuspensionChoice = () => {
   }
 
   return (
-    <GenericInfoPageWhite
+    <GenericInfoPage
       withGoBack
       illustration={BicolorUserError}
       title="Souhaites-tu suspendre ton compte pass&nbsp;Culture&nbsp;?"
@@ -95,7 +95,7 @@ export const SuspensionChoice = () => {
         Nous gardons toutes les informations personnelles que tu nous as transmises lors de la
         vérification de ton identité.
       </Typo.Body>
-    </GenericInfoPageWhite>
+    </GenericInfoPage>
   )
 }
 

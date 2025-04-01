@@ -19,7 +19,7 @@ import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacific
 import TutorialPassLogo from 'ui/animations/tutorial_pass_logo.json'
 import { AnimatedProgressBar } from 'ui/components/bars/AnimatedProgressBar'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
-import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
+import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { categoriesIcons } from 'ui/svg/icons/bicolor/exports/categoriesIcons'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getNoHeadingAttrs } from 'ui/theme/typographyAttrs/getNoHeadingAttrs'
@@ -76,7 +76,7 @@ export function BeneficiaryAccountCreated() {
   useEnterKeyAction(navigateToHome)
 
   return (
-    <GenericInfoPageWhite
+    <GenericInfoPage
       animation={TutorialPassLogo}
       title="Bonne nouvelle&nbsp;!"
       subtitle={enableCreditV3 ? subtitleV3 : subtitle}
@@ -98,7 +98,7 @@ export function BeneficiaryAccountCreated() {
       </ProgressBarContainer>
       <Spacer.Column numberOfSpaces={4} />
       <StyledBody>{text}</StyledBody>
-    </GenericInfoPageWhite>
+    </GenericInfoPage>
   )
 }
 

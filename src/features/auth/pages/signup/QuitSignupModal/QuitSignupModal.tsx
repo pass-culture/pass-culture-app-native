@@ -4,7 +4,7 @@ import { SignupStep } from 'features/auth/enums'
 import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import { analytics } from 'libs/analytics/provider'
 import { AppFullPageModal } from 'ui/components/modals/AppFullPageModal'
-import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
+import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { BicolorError } from 'ui/svg/icons/BicolorError'
 import { Clear } from 'ui/svg/icons/Clear'
 
@@ -34,7 +34,7 @@ export const QuitSignupModal: FunctionComponent<Props> = ({
 
   return (
     <AppFullPageModal visible={visible} testIdSuffix={testIdSuffix} onRequestClose={continueSignup}>
-      <GenericInfoPageWhite
+      <GenericInfoPage
         illustration={BicolorError}
         title="Veux-tu abandonner l’inscription&nbsp;?"
         subtitle="Les informations que tu as renseignées ne seront pas enregistrées."

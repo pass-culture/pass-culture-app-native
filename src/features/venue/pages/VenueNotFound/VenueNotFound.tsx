@@ -3,7 +3,7 @@ import React, { useEffect, useRef } from 'react'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { ScreenErrorProps } from 'libs/monitoring/errors'
 import { Helmet } from 'libs/react-helmet/Helmet'
-import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
+import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { NoOffer } from 'ui/svg/icons/NoOffer'
 
 export const VenueNotFound = ({ resetErrorBoundary }: ScreenErrorProps) => {
@@ -32,7 +32,7 @@ export const VenueNotFound = ({ resetErrorBoundary }: ScreenErrorProps) => {
         <title>{helmetTitle}</title>
         <meta name="robots" content="noindex" />
       </Helmet>
-      <GenericInfoPageWhite
+      <GenericInfoPage
         illustration={NoOffer}
         title="Lieu introuvable&nbsp;!"
         subtitle="Il est possible que ce lieu soit désactivé ou n’existe pas."

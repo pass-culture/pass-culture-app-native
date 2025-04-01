@@ -2,11 +2,11 @@ import React from 'react'
 
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import QpiThanks from 'ui/animations/qpi_thanks.json'
-import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
+import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { LINE_BREAK } from 'ui/theme/constants'
 
 export const AccountReactivationSuccess = () => (
-  <GenericInfoPageWhite
+  <GenericInfoPage
     animation={QpiThanks}
     title="Ton compte a été réactivé"
     subtitle={`On est ravi de te revoir\u00a0!${LINE_BREAK}Tu peux dès maintenant découvrir l’étendue du catalogue pass Culture.`}

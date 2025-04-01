@@ -4,7 +4,7 @@ import { useGetCulturalSurveyContent } from 'features/culturalSurvey/helpers/use
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import QpiThanks from 'ui/animations/qpi_thanks.json'
-import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
+import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 
 export const CulturalSurveyThanks: React.FC = () => {
   const enableCulturalSurveyMandatory = useFeatureFlag(
@@ -14,7 +14,7 @@ export const CulturalSurveyThanks: React.FC = () => {
   const { thanks } = useGetCulturalSurveyContent(enableCulturalSurveyMandatory)
 
   return (
-    <GenericInfoPageWhite
+    <GenericInfoPage
       animation={QpiThanks}
       title="Un grand merci pour tes réponses&nbsp;!"
       subtitle={thanks.subtitle}

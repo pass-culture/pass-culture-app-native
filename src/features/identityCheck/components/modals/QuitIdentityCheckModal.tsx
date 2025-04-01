@@ -4,7 +4,7 @@ import { useSubscriptionContext } from 'features/identityCheck/context/Subscript
 import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import { analytics } from 'libs/analytics/provider'
 import { AppFullPageModal } from 'ui/components/modals/AppFullPageModal'
-import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
+import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { BicolorError } from 'ui/svg/icons/BicolorError'
 import { Clear } from 'ui/svg/icons/Clear'
 
@@ -37,7 +37,7 @@ export const QuitIdentityCheckModal: FunctionComponent<Props> = ({
       visible={visible}
       testIdSuffix={testIdSuffix}
       onRequestClose={continueIdentityCheck}>
-      <GenericInfoPageWhite
+      <GenericInfoPage
         illustration={BicolorError}
         title="Veux-tu abandonner la vérification d’identité&nbsp;?"
         subtitle="Les informations que tu as renseignées ne seront pas enregistrées."

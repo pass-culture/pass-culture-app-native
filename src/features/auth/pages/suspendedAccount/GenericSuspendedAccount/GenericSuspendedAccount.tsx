@@ -3,7 +3,7 @@ import React, { PropsWithChildren } from 'react'
 import { useLogoutRoutine } from 'features/auth/helpers/useLogoutRoutine'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { env } from 'libs/environment/env'
-import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
+import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
 import { UserBlocked } from 'ui/svg/icons/UserBlocked'
 
@@ -18,7 +18,7 @@ export const GenericSuspendedAccount: React.FC<Props> = ({
   const signOut = useLogoutRoutine()
 
   return (
-    <GenericInfoPageWhite
+    <GenericInfoPage
       illustration={UserBlocked}
       title="Ton compte a été suspendu"
       buttonPrimary={{
@@ -33,6 +33,6 @@ export const GenericSuspendedAccount: React.FC<Props> = ({
         icon: PlainArrowPrevious,
       }}>
       {children}
-    </GenericInfoPageWhite>
+    </GenericInfoPage>
   )
 }

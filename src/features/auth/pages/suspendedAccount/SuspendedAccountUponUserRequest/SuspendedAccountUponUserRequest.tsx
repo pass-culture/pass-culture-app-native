@@ -11,7 +11,7 @@ import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
 import { formatToCompleteFrenchDateTime } from 'libs/parsers/formatDates'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
-import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
+import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
 import { ProfileDeletion } from 'ui/svg/icons/ProfileDeletion'
 import { Typo } from 'ui/theme'
@@ -59,7 +59,7 @@ export const SuspendedAccountUponUserRequest = () => {
   }
 
   return (
-    <GenericInfoPageWhite
+    <GenericInfoPage
       illustration={ProfileDeletion}
       title="Ton compte est désactivé"
       subtitle={`Tu as jusqu’au ${formattedDate} pour réactiver ton compte.`}
@@ -77,7 +77,7 @@ export const SuspendedAccountUponUserRequest = () => {
       <StyledBody>
         Une fois cette date passée, ton compte pass Culture sera définitivement supprimé.
       </StyledBody>
-    </GenericInfoPageWhite>
+    </GenericInfoPage>
   )
 }
 

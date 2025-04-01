@@ -5,7 +5,7 @@ import { usePhoneValidationRemainingAttempts } from 'features/identityCheck/api/
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { timeDiffInHours } from 'libs/dates'
 import { plural } from 'libs/plural'
-import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
+import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
 import { UserBlocked } from 'ui/svg/icons/UserBlocked'
 import { Typo } from 'ui/theme'
@@ -21,7 +21,7 @@ export function PhoneValidationTooManySMSSent() {
   })
 
   return (
-    <GenericInfoPageWhite
+    <GenericInfoPage
       illustration={UserBlocked}
       title="Réessaie plus tard"
       subtitle="Tu as dépassé le nombre de 5 demandes de code autorisées."
@@ -35,7 +35,7 @@ export function PhoneValidationTooManySMSSent() {
         icon: PlainArrowPrevious,
       }}>
       <StyledBody>{hoursLeftWording}</StyledBody>
-    </GenericInfoPageWhite>
+    </GenericInfoPage>
   )
 }
 

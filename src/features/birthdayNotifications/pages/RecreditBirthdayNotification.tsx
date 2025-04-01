@@ -15,7 +15,7 @@ import TutorialPassLogo from 'ui/animations/eighteen_birthday.json'
 import { AnimatedProgressBar } from 'ui/components/bars/AnimatedProgressBar'
 import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { Spacer } from 'ui/components/spacer/Spacer'
-import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
+import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { categoriesIcons } from 'ui/svg/icons/bicolor/exports/categoriesIcons'
 import { getSpacing, Typo } from 'ui/theme'
 import { getNoHeadingAttrs } from 'ui/theme/typographyAttrs/getNoHeadingAttrs'
@@ -62,7 +62,7 @@ export const RecreditBirthdayNotification = () => {
     : 'Tu as jusqu’à la veille de tes 18 ans pour profiter de ton crédit.'
 
   return (
-    <GenericInfoPageWhite
+    <GenericInfoPage
       animation={TutorialPassLogo}
       title="Bonne nouvelle&nbsp;!"
       subtitle={recreditMessage}
@@ -84,7 +84,7 @@ export const RecreditBirthdayNotification = () => {
         <Spacer.Column numberOfSpaces={4} />
         <StyledBody>{text}</StyledBody>
       </React.Fragment>
-    </GenericInfoPageWhite>
+    </GenericInfoPage>
   )
 }
 

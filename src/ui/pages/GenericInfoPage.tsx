@@ -68,7 +68,7 @@ type Props = PropsWithChildren<
   )
 >
 
-export const GenericInfoPageWhite: React.FunctionComponent<Props> = ({
+export const GenericInfoPage: React.FunctionComponent<Props> = ({
   withGoBack = false,
   withSkipAction,
   illustration,

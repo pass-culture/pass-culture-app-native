@@ -5,16 +5,16 @@ import { MaintenanceCone } from 'ui/svg/icons/MaintenanceCone'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
 import { Typo } from 'ui/theme'
 
-import { GenericInfoPageWhite } from './GenericInfoPageWhite'
+import { GenericInfoPage } from './GenericInfoPage'
 
 jest.mock('libs/firebase/analytics/analytics')
 
 const onPress = jest.fn()
 
-describe('<GenericInfoPageWhite />', () => {
+describe('<GenericInfoPage />', () => {
   it('should render correctly', () => {
     render(
-      <GenericInfoPageWhite
+      <GenericInfoPage
         withGoBack
         withSkipAction={onPress}
         illustration={MaintenanceCone}
@@ -34,7 +34,7 @@ describe('<GenericInfoPageWhite />', () => {
           icon: PlainArrowPrevious,
         }}>
         <Typo.Body>Children...</Typo.Body>
-      </GenericInfoPageWhite>
+      </GenericInfoPage>
     )
 
     expect(screen).toMatchSnapshot()

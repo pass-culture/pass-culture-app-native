@@ -5,7 +5,7 @@ import { getProfileStackConfig } from 'features/navigation/ProfileStackNavigator
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
+import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { Clear } from 'ui/svg/icons/Clear'
 import { BicolorUserBlocked } from 'ui/svg/icons/UserBlocked'
 import { Typo } from 'ui/theme'
@@ -22,7 +22,7 @@ export const DeleteProfileEmailHacked: FC = () => {
   }
 
   return (
-    <GenericInfoPageWhite
+    <GenericInfoPage
       withGoBack
       illustration={BicolorUserBlocked}
       title="Sécurise ton compte"
@@ -48,6 +48,6 @@ export const DeleteProfileEmailHacked: FC = () => {
           modifier ton mot de passe ou suspendre ton compte temporairement.
         </Typo.BodyS>
       </ViewGap>
-    </GenericInfoPageWhite>
+    </GenericInfoPage>
   )
 }

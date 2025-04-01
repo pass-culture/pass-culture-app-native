@@ -14,7 +14,7 @@ import { useEmailUpdateStatus } from 'features/profile/helpers/useEmailUpdateSta
 import { eventMonitoring } from 'libs/monitoring/services'
 import { Separator } from 'ui/components/Separator'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
-import { GenericInfoPageWhite } from 'ui/pages/GenericInfoPageWhite'
+import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { BicolorPhonePending } from 'ui/svg/icons/BicolorPhonePending'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { Spacer, Typo, getSpacing } from 'ui/theme'
@@ -86,7 +86,7 @@ export function ValidateEmailChange({ route: { params }, navigation }: ValidateE
   }, [emailUpdateStatus, isLoadingEmailUpdateStatus, navigation])
 
   return (
-    <GenericInfoPageWhite
+    <GenericInfoPage
       illustration={BicolorPhonePending}
       title="Valides-tu la nouvelle adresse e-mail&nbsp;?"
       buttonPrimary={{
@@ -111,7 +111,7 @@ export function ValidateEmailChange({ route: { params }, navigation }: ValidateE
           adresse e-mail.
         </StyledCaption>
       </Wrapper>
-    </GenericInfoPageWhite>
+    </GenericInfoPage>
   )
 }
 
