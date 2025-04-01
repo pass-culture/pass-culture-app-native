@@ -11,6 +11,7 @@ export const cheatcodesNavigationGenericPagesButtons: [CheatcodesButtonsWithSubs
     subscreens: [
       { screen: 'CheatcodesScreenGenericInfoPage', title: 'GenericInfoPage' },
       { screen: 'CheatcodesScreenGenericErrorPage', title: 'GenericErrorPage' },
+      { screen: 'CheatcodesScreenGenericOfficialPage', title: 'GenericOfficialPage' },
     ],
   },
 ]

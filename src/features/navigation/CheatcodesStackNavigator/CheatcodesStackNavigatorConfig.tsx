@@ -14,6 +14,7 @@ export const cheatcodesStackNavigatorConfig = {
       CheatcodesScreenBookingNotFound: 'cheatcodes/bookings/booking-not-found',
       CheatcodesScreenGenericInfoPage: 'cheatcodes/other/generic-info-page',
       CheatcodesScreenGenericErrorPage: 'cheatcodes/other/generic-error-page',
+      CheatcodesScreenGenericOfficialPage: 'cheatcodes/other/generic-official-page',
       CheatcodesNavigationGenericPages: 'cheatcodes/other/generic-pages',
       CheatcodesNavigationHome: 'cheatcodes/home',
       CheatcodesNavigationIdentityCheck: 'cheatcodes/identity-check',
