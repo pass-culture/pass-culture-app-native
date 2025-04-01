@@ -95,10 +95,7 @@ export const VenueContent: React.FunctionComponent<Props> = ({
   return (
     <AnchorProvider scrollViewRef={scrollViewRef} handleCheckScrollY={handleCheckScrollY}>
       <Container>
-        <VenueWebMetaHeader
-          title={venue.publicName ?? venue.name}
-          description={venue.description}
-        />
+        <VenueWebMetaHeader title={venue.name} description={venue.description} />
         <VenueHeaderWrapper
           header={<VenueHeader headerTransition={headerTransition} venue={venue} />}>
           <ContentContainer

@@ -27,14 +27,14 @@ type Props = {
 
 type PartialVenue = Pick<
   VenueResponse,
-  'id' | 'venueTypeCode' | 'name' | 'description' | 'publicName' | 'isOpenToPublic'
+  'id' | 'venueTypeCode' | 'name' | 'description' | 'isOpenToPublic'
 >
 
 const mergeVenueData =
   (venue: PartialVenue) =>
   (prevData: VenueResponse | undefined): VenueResponse => ({
     id: venue.id,
-    name: venue.publicName || venue.name,
+    name: venue.name,
     venueTypeCode: venue.venueTypeCode,
     isVirtual: false,
     description: venue.description,
@@ -84,13 +84,13 @@ export const WhereSection: React.FC<Props> = ({
           <VenueNameContainer
             navigateTo={{ screen: 'Venue', params: { id: venue.id } }}
             onBeforeNavigate={onVenuePress}
-            accessibilityLabel={`Lieu ${venue.publicName || venue.name}`}>
+            accessibilityLabel={`Lieu ${venue.name}`}>
             <Spacer.Row numberOfSpaces={2} />
             <IconContainer>
               <LocationBuilding size={iconSize} />
             </IconContainer>
             <Spacer.Row numberOfSpaces={2} />
-            <StyledVenueName numberOfLines={1}>{venue.publicName || venue.name}</StyledVenueName>
+            <StyledVenueName numberOfLines={1}>{venue.name}</StyledVenueName>
             <Spacer.Flex />
             <ArrowNext />
           </VenueNameContainer>

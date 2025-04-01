@@ -15,8 +15,7 @@ const hasVenue = (offer: Offer) =>
 
 const isFavoriteOffer = (offer: Offer): offer is FavoriteOfferResponse =>
   !!Object.keys(offer).includes('venueName')
-const getVenueName = (offer: Offer) =>
-  isFavoriteOffer(offer) ? offer.venueName : offer.venue.publicName || offer.venue.name
+const getVenueName = (offer: Offer) => (isFavoriteOffer(offer) ? offer.venueName : offer.venue.name)
 
 const offerShareSubject = 'Je t’invite à découvrir une super offre sur le pass Culture\u00a0!'
 
