@@ -82,11 +82,7 @@ const variantConfig: Variants<typeof TicketCutout> = [
 ]
 
 type Story = StoryObj<typeof TicketCutout>
-
-const Template: Story['render'] = () => (
-  <VariantsTemplate variants={variantConfig} Component={TicketCutout} />
-)
-
 export const AllVariants: Story = {
-  render: Template,
+  name: 'TicketCutout',
+  render: () => <VariantsTemplate variants={variantConfig} Component={TicketCutout} />,
 }

@@ -30,10 +30,9 @@ const variantConfig: Variants<typeof ThreeShapesTicket> = [
 
 type Story = StoryObj<typeof ThreeShapesTicket>
 
-const Template = (args: React.ComponentProps<typeof ThreeShapesTicket>) => (
-  <VariantsTemplate variants={variantConfig} Component={ThreeShapesTicket} defaultProps={args} />
-)
-
 export const AllVariants: Story = {
-  render: Template,
+  name: 'ThreeShapesTicket',
+  render: (args: React.ComponentProps<typeof ThreeShapesTicket>) => (
+    <VariantsTemplate variants={variantConfig} Component={ThreeShapesTicket} defaultProps={args} />
+  ),
 }
