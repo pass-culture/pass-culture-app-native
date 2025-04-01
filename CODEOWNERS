@@ -1,4 +1,4 @@
-# also update on Sentry https://sentry.passculture.team/settings/sentry/projects/application-native/ownership/
+# also update on Sentry https://pass-culture.sentry.io/settings/projects/jeunes/ownership/
 
 src/features/accessibility/                          @pass-culture/jeunes-conversion
 src/features/achievements/                           @pass-culture/jeunes-activation

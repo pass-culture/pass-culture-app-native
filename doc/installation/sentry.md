@@ -1,6 +1,6 @@
 ## Error Monitoring with sentry
 
-Sentry helps us monitor crash and errors in the application. See our project [here](https://sentry.passculture.team/organizations/sentry/issues/?project=6)
+Sentry helps us monitor crash and errors in the application. See our project [here](https://pass-culture.sentry.io/issues/?project=4508839229718608)
 
 ### Source maps
 
@@ -16,9 +16,9 @@ For iOS/Android:
 
 ```
 [defaults]
-url = https://sentry.passculture.team/
-org = sentry
-project = application-native
+url = https://6f8956508939cbd25a8dca7492c194e2@o4508142779564032.ingest.de.sentry.io
+org = pass-culture
+project = jeunes
 
 [auth]
 token=<token>
@@ -31,7 +31,7 @@ Create a new `.env.local` at the root of the repo containing your `SENTRY_AUTH_T
 SENTRY_AUTH_TOKEN=your_super_secret_token
 ```
 
-> Click [here](https://sentry.passculture.team/settings/account/api/auth-tokens/) to generate your own auth `<token>`, use the following scope permissions: `event:read`, `event:admin`, `member:read`, `org:read`, `project:read`, `project:releases`, `team:read`, `project:write`, `org:integrations`
+> Click [here](https://pass-culture.sentry.io/settings/account/api/auth-tokens/) to generate your own auth `<token>`, use the following scope permissions: `event:read`, `event:admin`, `member:read`, `org:read`, `project:read`, `project:releases`, `team:read`, `project:write`, `org:integrations`
 
 ### 📦 Create the source maps locally
 
