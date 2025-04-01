@@ -2,7 +2,6 @@ import { useRoute } from '@react-navigation/native'
 import React, { FunctionComponent, useMemo } from 'react'
 
 import { ArtistBody } from 'features/artist/components/ArtistBody/ArtistBody'
-import { PageNotFound } from 'features/navigation/pages/PageNotFound'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { useArtistResults } from 'features/offer/helpers/useArtistResults/useArtistResults'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -29,7 +28,8 @@ export const Artist: FunctionComponent = () => {
     )
   }, [artistPlaylist, artistTopOffers, params.id])
 
-  if (!artist) return <PageNotFound />
+  // TODO(PC-35430): replace null by PageNotFound when wipArtistPage FF deleted
+  if (!artist || !enableArtistPage) return null
 
   const artistInfo: Artist = {
     id: params.id,
@@ -38,13 +38,11 @@ export const Artist: FunctionComponent = () => {
     bio: undefined,
   }
 
-  return enableArtistPage ? (
+  return (
     <ArtistBody
       artist={artistInfo}
       artistPlaylist={artistPlaylist}
       artistTopOffers={artistTopOffers}
     />
-  ) : (
-    <PageNotFound />
   )
 }

@@ -43,14 +43,14 @@ describe('<Artist />', () => {
       expect((await screen.findAllByText('Eiichiro Oda'))[0]).toBeOnTheScreen()
     })
 
-    it('should display page not found when there is no artist', () => {
+    it('should render null when there is no artist', () => {
       spyUseArtistResults.mockReturnValueOnce({
         artistTopOffers: [],
         artistPlaylist: [],
       })
       render(reactQueryProviderHOC(<Artist />))
 
-      expect(screen.getByText('Page introuvable !')).toBeOnTheScreen()
+      expect(screen.toJSON()).toBeNull()
     })
   })
 
@@ -59,14 +59,14 @@ describe('<Artist />', () => {
       setFeatureFlags()
     })
 
-    it('should page not found', () => {
+    it('should render null', () => {
       spyUseArtistResults.mockReturnValueOnce({
         artistTopOffers: mockedAlgoliaOffersWithSameArtistResponse.slice(0, 4),
         artistPlaylist: [],
       })
       render(reactQueryProviderHOC(<Artist />))
 
-      expect(screen.getByText('Page introuvable !')).toBeOnTheScreen()
+      expect(screen.toJSON()).toBeNull()
     })
   })
 })
