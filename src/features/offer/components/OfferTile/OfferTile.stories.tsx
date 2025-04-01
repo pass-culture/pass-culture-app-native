@@ -1,8 +1,14 @@
 import { NavigationContainer } from '@react-navigation/native'
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta } from '@storybook/react'
 import React from 'react'
+import styled from 'styled-components/native'
 
-import { CategoryIdEnum, SubcategoryIdEnum } from 'api/gen'
+import { InteractionTag } from 'features/offer/components/InteractionTag/InteractionTag'
+import { theme } from 'theme'
+import { Variants, VariantsStory, VariantsTemplate } from 'ui/storybook/VariantsTemplate'
+import { BookClubCertification } from 'ui/svg/BookClubCertification'
+import { ThumbUpFilled } from 'ui/svg/icons/ThumbUpFilled'
+import { Star } from 'ui/svg/Star'
 
 import { OfferTile } from './OfferTile'
 
@@ -19,33 +25,77 @@ const meta: Meta<typeof OfferTile> = {
 }
 export default meta
 
-type Story = StoryObj<typeof OfferTile>
+const LikeTag = styled(InteractionTag).attrs(({ theme }) => ({
+  Icon: <ThumbUpFilled color={theme.colors.primary} size={16} />,
+  backgroundColor: theme.colors.greyLight,
+}))``
 
-export const Default: Story = {
-  args: {
-    date: 'le 18 juin 2024',
-    name: 'The Fall Guy',
-    price: 'dès 15,60\u00a0€',
-    categoryLabel: 'Cinéma',
-    width: 200,
-    height: 300,
-    offerLocation: { lat: 48.94374, lng: 2.48171 },
-    categoryId: CategoryIdEnum.CINEMA,
-    subcategoryId: SubcategoryIdEnum.SEANCE_CINE,
-    offerId: 123456,
-    analyticsFrom: 'home',
-  },
-}
+const HeadlineTag = styled(InteractionTag).attrs(() => ({
+  Icon: <Star size={16} />,
+  backgroundColor: theme.colors.goldLight100,
+}))``
 
-export const WithTags = {
-  name: 'WithTags',
-  args: {
-    date: 'le 18 juin 2024',
-    name: 'The Fall Guy',
-    price: 'dès 15,60\u00a0€',
-    categoryLabel: 'Cinéma',
-    width: 200,
-    height: 300,
-    likes: 99,
+const ChronicleTag = styled(InteractionTag).attrs(() => ({
+  Icon: <BookClubCertification size={16} />,
+  backgroundColor: theme.colors.skyBlueLight,
+}))``
+
+const variantConfig: Variants<typeof OfferTile> = [
+  {
+    label: 'Default',
+    props: {
+      date: 'le 18 juin 2024',
+      name: 'The Fall Guy',
+      price: 'dès 15,60\u00a0€',
+      categoryLabel: 'Cinéma',
+      width: 200,
+      height: 300,
+      offerLocation: { lat: 48.94374, lng: 2.48171 },
+    },
   },
-}
+  {
+    label: 'With Likes',
+    props: {
+      date: 'le 18 juin 2024',
+      name: 'The Fall Guy',
+      price: 'dès 15,60\u00a0€',
+      categoryLabel: 'Cinéma',
+      width: 200,
+      height: 300,
+      interactionTag: <LikeTag label="100 j’aime" />,
+      offerLocation: { lat: 48.94374, lng: 2.48171 },
+    },
+  },
+  {
+    label: 'WithChronicles',
+    props: {
+      date: 'le 18 juin 2024',
+      name: 'The Fall Guy',
+      price: 'dès 15,60\u00a0€',
+      categoryLabel: 'Cinéma',
+      width: 200,
+      height: 300,
+      interactionTag: <ChronicleTag label="Reco du Book Club" />,
+      offerLocation: { lat: 48.94374, lng: 2.48171 },
+    },
+  },
+  {
+    label: 'WithHeadlines',
+    props: {
+      date: 'le 18 juin 2024',
+      name: 'The Fall Guy',
+      price: 'dès 15,60\u00a0€',
+      categoryLabel: 'Cinéma',
+      width: 200,
+      height: 300,
+      interactionTag: <HeadlineTag label="Reco par les lieux" />,
+      offerLocation: { lat: 48.94374, lng: 2.48171 },
+    },
+  },
+]
+
+const Template: VariantsStory<typeof OfferTile> = (args) => (
+  <VariantsTemplate variants={variantConfig} Component={OfferTile} defaultProps={{ ...args }} />
+)
+
+export const AllVariants = Template.bind({})

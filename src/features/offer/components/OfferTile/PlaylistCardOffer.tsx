@@ -22,24 +22,6 @@ type Props = {
   interactionTag?: ReactNode
 }
 
-const renderTags = ({
-  distance = '',
-  interactionTag,
-}: {
-  distance?: string
-  interactionTag?: ReactNode
-}) => {
-  if (!distance && !interactionTag) {
-    return null
-  }
-  return (
-    <TagContainer>
-      {distance ? <DistanceTag label={`à ${distance}`} /> : null}
-      {interactionTag ?? null}
-    </TagContainer>
-  )
-}
-
 export const PlaylistCardOffer: FC<Props> = ({
   thumbnailUrl,
   categoryId,
@@ -55,8 +37,9 @@ export const PlaylistCardOffer: FC<Props> = ({
   return (
     <Container maxWidth={width}>
       <NewOfferCaption name={name} date={date} price={price} categoryLabel={categoryLabel} />
+      {interactionTag ?? null}
       <View>
-        {renderTags({ distance, interactionTag })}
+        {distance ? <DistanceTag label={`à ${distance}`} /> : null}
         <ImageTile categoryId={categoryId} uri={thumbnailUrl} width={width} height={height} />
       </View>
     </Container>
@@ -70,19 +53,12 @@ const Container = styled(ViewGap).attrs({
   maxWidth,
 }))
 
-const TagContainer = styled.View({
-  position: 'absolute',
-  width: '100%',
-  padding: getSpacing(2),
-  columnGap: getSpacing(2),
-  top: 0,
-  left: 0,
-  zIndex: 1,
-  flexDirection: 'row',
-})
-
 const DistanceTag = styled(Tag).attrs(() => ({
   testID: 'DistanceId',
 }))(({ theme }) => ({
+  position: 'absolute',
+  top: getSpacing(2),
+  left: getSpacing(2),
+  zIndex: 1,
   backgroundColor: theme.colors.white,
 }))
