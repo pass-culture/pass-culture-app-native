@@ -29,7 +29,7 @@ export const Artist: FunctionComponent = () => {
   }, [artistPlaylist, artistTopOffers, params.id])
 
   // TODO(PC-35430): replace null by PageNotFound when wipArtistPage FF deleted
-  if (!artist) return null
+  if (!artist || !enableArtistPage) return null
 
   const artistInfo: Artist = {
     id: params.id,
@@ -38,11 +38,11 @@ export const Artist: FunctionComponent = () => {
     bio: undefined,
   }
 
-  return enableArtistPage ? (
+  return (
     <ArtistBody
       artist={artistInfo}
       artistPlaylist={artistPlaylist}
       artistTopOffers={artistTopOffers}
     />
-  ) : null
+  )
 }
