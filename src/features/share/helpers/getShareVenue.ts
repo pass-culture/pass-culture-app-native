@@ -24,8 +24,7 @@ export const getShareVenue = ({
   if (!venue) return { share: () => new Promise((r) => r()), shareContent: null }
 
   const url = getVenueUrl(venue.id, utmMedium)
-  const venueName = venue.publicName || venue.name
-  const body = `Retrouve "${venueName}" sur le pass Culture`
+  const body = `Retrouve "${venue.name}" sur le pass Culture`
 
   const shareContent = {
     url,

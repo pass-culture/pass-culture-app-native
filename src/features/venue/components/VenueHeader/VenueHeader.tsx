@@ -32,8 +32,6 @@ export const VenueHeader: React.FC<Props> = ({ headerTransition, venue }) => {
     hideModal: hideShareVenueModal,
   } = useModal(false)
 
-  const title = venue.publicName || venue.name
-
   const onSharePress = () => {
     analytics.logShare({ type: 'Venue', from: 'venue', venueId: venue.id })
     shareVenue()
@@ -45,7 +43,7 @@ export const VenueHeader: React.FC<Props> = ({ headerTransition, venue }) => {
   return (
     <React.Fragment>
       <ContentHeader
-        headerTitle={title}
+        headerTitle={venue.name}
         headerTransition={headerTransition}
         onBackPress={goBack}
         titleTestID="venueHeaderName"

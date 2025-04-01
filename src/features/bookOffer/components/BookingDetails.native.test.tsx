@@ -401,29 +401,7 @@ describe('<BookingDetails />', () => {
       expect(await screen.findByText('PATHE MONTPARNASSE')).toBeOnTheScreen()
     })
 
-    it('should display venue publicName when offer.address is not present', async () => {
-      mockUseBookingOffer.mockReturnValueOnce({
-        ...mockOffer,
-        address: undefined,
-        venue: {
-          ...mockOffer.venue,
-          name: 'Cinéma de la fin',
-          publicName: 'Cinéma du début',
-        },
-        isDuo: true,
-        subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
-      })
-
-      mockUseSubcategoriesMapping.mockReturnValueOnce({
-        LIVRE_PAPIER: { isEvent: false },
-      })
-
-      renderBookingDetails({ stocks: mockStocks, onPressBookOffer: mockOnPressBookOffer })
-
-      expect(await screen.findByText('Cinéma du début')).toBeOnTheScreen()
-    })
-
-    it('should display venue name when offer.address and venue.publicName are not present', async () => {
+    it('should display venue name when offer address is not present', async () => {
       mockUseBookingOffer.mockReturnValueOnce({
         ...mockOffer,
         address: undefined,

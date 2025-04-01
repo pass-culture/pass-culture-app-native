@@ -66,7 +66,7 @@ export function getVenueList(hits: Offer[], userLocation: Position) {
       offerId: Number(hit.objectID),
       price: offerPrice ?? 0,
       venueId: hit.venue.id,
-      title: hit.venue.publicName ? hit.venue.publicName : hit.venue.name ?? '',
+      title: hit.venue.name ?? '',
       address: formatFullAddressStartsWithPostalCode(
         hit.venue.address,
         hit.venue.postalCode,

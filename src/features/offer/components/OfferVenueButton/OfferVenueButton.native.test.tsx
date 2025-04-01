@@ -12,42 +12,6 @@ const user = userEvent.setup()
 jest.useFakeTimers()
 
 describe('<OfferVenueButton />', () => {
-  it('should display public name when informed', () => {
-    const venue: OfferVenueResponse = {
-      ...offerResponseSnap.venue,
-      publicName: 'PATHE GAUMONT BEAUGRENELLE',
-    }
-    render(<OfferVenueButton venue={venue} />)
-
-    expect(screen.getByText('PATHE GAUMONT BEAUGRENELLE')).toBeOnTheScreen()
-  })
-
-  it('should not display name when public name informed', () => {
-    const venue: OfferVenueResponse = {
-      ...offerResponseSnap.venue,
-      publicName: 'PATHE GAUMONT BEAUGRENELLE',
-    }
-    render(<OfferVenueButton venue={venue} />)
-
-    expect(screen.queryByText('PATHE BEAUGRENELLE')).not.toBeOnTheScreen()
-  })
-
-  it('should display name when public name not informed', () => {
-    render(<OfferVenueButton venue={offerResponseSnap.venue} />)
-
-    expect(screen.getByText('PATHE BEAUGRENELLE')).toBeOnTheScreen()
-  })
-
-  it('should display name when public name is empty', () => {
-    const venue: OfferVenueResponse = {
-      ...offerResponseSnap.venue,
-      publicName: '',
-    }
-    render(<OfferVenueButton venue={venue} />)
-
-    expect(screen.getByText('PATHE BEAUGRENELLE')).toBeOnTheScreen()
-  })
-
   it('should display subtitle when city informed', () => {
     render(<OfferVenueButton venue={offerResponseSnap.venue} />)
 
