@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/native'
 import { StackScreenProps } from '@react-navigation/stack'
-import React, { useCallback } from 'react'
+import React from 'react'
 import { useQuery } from 'react-query'
 
 import { api } from 'api/api'
@@ -9,7 +9,6 @@ import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { AsyncError, LogTypeEnum } from 'libs/monitoring/errors'
 import { QueryKeys } from 'libs/queryKeys'
-import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { LayoutExpiredLink } from 'ui/components/LayoutExpiredLink'
 
 type Props = StackScreenProps<RootStackParamList, 'ResetPasswordExpiredLink'>
@@ -39,20 +38,15 @@ export function ResetPasswordExpiredLink(props: Props) {
     }
   )
 
-  const renderResendEmailButton = useCallback(
-    () => (
-      <ButtonPrimaryWhite
-        wording="Renvoyer l’email"
-        onPress={resetPasswordEmailQuery}
-        disabled={isFetching}
-      />
-    ),
-    [isFetching, resetPasswordEmailQuery]
-  )
+  const renderCustomButton = {
+    wording: 'Renvoyer l’email',
+    onPress: resetPasswordEmailQuery,
+    disabled: isFetching,
+  }
 
   return (
     <LayoutExpiredLink
-      renderCustomButton={renderResendEmailButton}
+      primaryButtonInformations={renderCustomButton}
       urlFAQ={env.FAQ_LINK_RESET_PASSORD_EMAIL_NOT_RECEIVED}
     />
   )

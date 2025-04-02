@@ -5,7 +5,7 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
   style={
     [
       {
-        "alignItems": "center",
+        "backgroundColor": "#ffffff",
         "flexBasis": 0,
         "flexGrow": 1,
         "flexShrink": 1,
@@ -14,45 +14,21 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
   }
 >
   <View
-    height="100%"
+    accessibilityRole="header"
     style={
       [
         {
-          "bottom": 0,
-          "height": "100%",
+          "backgroundColor": "rgba(255,255,255,0)",
+          "borderBottomColor": "#cbcdd2",
+          "borderBottomWidth": 1,
           "left": 0,
           "position": "absolute",
           "right": 0,
           "top": 0,
-          "width": "100%",
-          "zIndex": -1,
+          "zIndex": 1,
         },
-      ]
-    }
-    width="100%"
-  >
-    <View
-      height="100%"
-      width="100%"
-    >
-      <Text>
-        undefined-SVG-Mock
-      </Text>
-    </View>
-  </View>
-  <View
-    style={
-      [
         {
-          "alignItems": "center",
-          "flexBasis": 0,
-          "flexDirection": "column",
-          "flexGrow": 1,
-          "flexShrink": 1,
-          "justifyContent": "center",
-          "maxWidth": 360,
-          "overflowY": "auto",
-          "paddingHorizontal": 16,
+          "borderBottomWidth": 0,
         },
       ]
     }
@@ -72,6 +48,95 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
       style={
         [
           {
+            "alignItems": "center",
+            "height": 48,
+            "justifyContent": "center",
+          },
+        ]
+      }
+    >
+      <View
+        style={
+          [
+            {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+              "width": "100%",
+            },
+          ]
+        }
+      >
+        <View
+          positionInHeader="left"
+          style={
+            [
+              {
+                "alignItems": "center",
+                "flexBasis": 0,
+                "flexDirection": "row",
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "justifyContent": "flex-start",
+                "paddingLeft": 12,
+                "paddingRight": 12,
+              },
+            ]
+          }
+          testID="back-button-container"
+        />
+        <View
+          positionInHeader="right"
+          style={
+            [
+              {
+                "alignItems": "center",
+                "flexBasis": 0,
+                "flexDirection": "row",
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "justifyContent": "flex-end",
+                "paddingLeft": 12,
+                "paddingRight": 12,
+              },
+            ]
+          }
+          testID="close-button-container"
+        />
+      </View>
+    </View>
+  </View>
+  <View
+    bottom={16}
+    style={
+      [
+        {
+          "flexBasis": 0,
+          "flexGrow": 1,
+          "flexShrink": 1,
+          "justifyContent": "space-between",
+          "overflow": "scroll",
+          "paddingHorizontal": 24,
+          "paddingVertical": 24,
+        },
+      ]
+    }
+  >
+    <View
+      height={16}
+      style={
+        [
+          {
+            "height": 16,
+          },
+        ]
+      }
+    />
+    <View
+      flex={1}
+      style={
+        [
+          {
             "flexBasis": 0,
             "flexGrow": 1,
             "flexShrink": 1,
@@ -80,390 +145,243 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
       }
     />
     <View
-      numberOfSpaces={10}
+      animation={false}
       style={
         [
           {
-            "height": 40,
+            "alignItems": "center",
+            "justifyContent": "center",
+            "marginBottom": 24,
           },
         ]
       }
-    />
-    <View
-      height={156}
-      width={200}
     >
-      <Text>
-        undefined-SVG-Mock
+      <View
+        height={156}
+        width={200}
+      >
+        <Text>
+          undefined-SVG-Mock
+        </Text>
+      </View>
+    </View>
+    <View
+      gap={4}
+      style={
+        [
+          {
+            "alignItems": "center",
+            "gap": 16,
+            "marginBottom": 24,
+          },
+        ]
+      }
+    >
+      <Text
+        style={
+          [
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 21,
+              "lineHeight": 33.6,
+              "textAlign": "center",
+            },
+          ]
+        }
+      >
+        Oups !
+      </Text>
+      <Text
+        style={
+          [
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Medium",
+              "fontSize": 16,
+              "lineHeight": 25.6,
+              "textAlign": "center",
+            },
+          ]
+        }
+      >
+        Custom subtitle
       </Text>
     </View>
     <View
-      numberOfSpaces={5}
       style={
         [
           {
-            "height": 20,
+            "marginBottom": 24,
           },
         ]
       }
-    />
-    <Text
-      style={
-        [
-          {
-            "color": "#ffffff",
-            "fontFamily": "Montserrat-Bold",
-            "fontSize": 21,
-            "lineHeight": 33.6,
-            "textAlign": "center",
-          },
-        ]
-      }
-    >
-      Oups !
-    </Text>
-    <View
-      numberOfSpaces={5}
-      style={
-        [
-          {
-            "height": 20,
-          },
-        ]
-      }
-    />
-    <Text
-      style={
-        [
-          {
-            "color": "#ffffff",
-            "fontFamily": "Montserrat-Medium",
-            "fontSize": 16,
-            "lineHeight": 25.6,
-            "textAlign": "center",
-          },
-        ]
-      }
-    >
-      Le lien est expiré !
-    </Text>
-    <Text
-      style={
-        [
-          {
-            "color": "#ffffff",
-            "fontFamily": "Montserrat-Medium",
-            "fontSize": 16,
-            "lineHeight": 25.6,
-            "textAlign": "center",
-          },
-        ]
-      }
-    >
-      Clique sur « Renvoyer l’e-mail » pour recevoir un nouveau lien.
-    </Text>
-    <View
-      numberOfSpaces={6}
-      style={
-        [
-          {
-            "height": 24,
-          },
-        ]
-      }
-    />
-    <Text
-      style={
-        [
-          {
-            "color": "#ffffff",
-            "fontFamily": "Montserrat-Medium",
-            "fontSize": 16,
-            "lineHeight": 25.6,
-            "textAlign": "center",
-          },
-        ]
-      }
-    >
-      Si tu as besoin d’aide n’hésite pas à :
-    </Text>
-    <View
-      numberOfSpaces={2}
-      style={
-        [
-          {
-            "height": 8,
-          },
-        ]
-      }
-    />
-    <View
-      accessibilityLabel="Consulter l’article d’aide"
-      accessibilityState={
-        {
-          "busy": undefined,
-          "checked": undefined,
-          "disabled": undefined,
-          "expanded": undefined,
-          "selected": undefined,
-        }
-      }
-      accessibilityValue={
-        {
-          "max": undefined,
-          "min": undefined,
-          "now": undefined,
-          "text": undefined,
-        }
-      }
-      accessible={true}
-      focusable={true}
-      onClick={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
-      style={
-        [
-          [
-            {
-              "userSelect": "auto",
-            },
-            {
-              "alignItems": "center",
-              "borderRadius": 24,
-              "flexDirection": "row",
-              "justifyContent": "center",
-              "maxWidth": 500,
-              "minHeight": 40,
-              "paddingBottom": 2,
-              "paddingLeft": 2,
-              "paddingRight": 2,
-              "paddingTop": 2,
-              "width": "100%",
-            },
-            {
-              "backgroundColor": "transparent",
-            },
-          ],
-          {
-            "opacity": 1,
-          },
-        ]
-      }
-      testID="Consulter l’article d’aide"
     >
       <View
+        gap={2}
         style={
           [
             {
               "alignItems": "center",
-              "flexDirection": "row",
+              "gap": 8,
             },
           ]
         }
       >
-        <View
+        <Text
           style={
             [
               {
-                "flexDirection": "row",
-                "flexShrink": 0,
+                "color": "#161617",
+                "fontFamily": "Montserrat-Medium",
+                "fontSize": 16,
+                "lineHeight": 25.6,
+                "textAlign": "center",
               },
             ]
           }
         >
+          Si tu as besoin d’aide n’hésite pas à :
+        </Text>
+        <View
+          accessibilityLabel="Consulter l’article d’aide"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            [
+              [
+                {
+                  "userSelect": "auto",
+                },
+                {
+                  "alignItems": "center",
+                  "borderRadius": 24,
+                  "flexDirection": "row",
+                  "justifyContent": "center",
+                  "maxWidth": 500,
+                  "minHeight": 40,
+                  "paddingBottom": 2,
+                  "paddingLeft": 2,
+                  "paddingRight": 2,
+                  "paddingTop": 2,
+                  "width": "100%",
+                },
+                {
+                  "backgroundColor": "#ffffff",
+                },
+              ],
+              {
+                "opacity": 1,
+              },
+            ]
+          }
+          testID="Consulter l’article d’aide"
+        >
           <View
-            accessibilityLabel="Nouvelle fenêtre"
-            height={20}
-            testID="button-icon-left"
-            width={20}
-          >
-            <Text>
-              button-icon-left-SVG-Mock
-            </Text>
-          </View>
-          <View
-            numberOfSpaces={2}
             style={
               [
                 {
-                  "width": 8,
+                  "alignItems": "center",
+                  "flexDirection": "row",
                 },
               ]
             }
-          />
-        </View>
-        <Text
-          adjustsFontSizeToFit={false}
-          numberOfLines={1}
-          style={
-            [
-              {
-                "color": "#ffffff",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 16,
-                "lineHeight": 25.6,
-                "maxWidth": "100%",
-              },
-            ]
-          }
-        >
-          Consulter l’article d’aide
-        </Text>
-      </View>
-    </View>
-    <View
-      accessibilityLabel="Ouvrir le gestionnaire mail pour contacter le support"
-      accessibilityState={
-        {
-          "busy": undefined,
-          "checked": undefined,
-          "disabled": undefined,
-          "expanded": undefined,
-          "selected": undefined,
-        }
-      }
-      accessibilityValue={
-        {
-          "max": undefined,
-          "min": undefined,
-          "now": undefined,
-          "text": undefined,
-        }
-      }
-      accessible={true}
-      focusable={true}
-      onClick={[Function]}
-      onResponderGrant={[Function]}
-      onResponderMove={[Function]}
-      onResponderRelease={[Function]}
-      onResponderTerminate={[Function]}
-      onResponderTerminationRequest={[Function]}
-      onStartShouldSetResponder={[Function]}
-      style={
-        [
-          [
-            {
-              "userSelect": "auto",
-            },
-            {
-              "alignItems": "center",
-              "borderRadius": 24,
-              "flexDirection": "row",
-              "justifyContent": "center",
-              "maxWidth": 500,
-              "minHeight": 40,
-              "paddingBottom": 2,
-              "paddingLeft": 2,
-              "paddingRight": 2,
-              "paddingTop": 2,
-              "width": "100%",
-            },
-            {
-              "backgroundColor": "transparent",
-            },
-          ],
-          {
-            "opacity": 1,
-          },
-        ]
-      }
-      testID="Ouvrir le gestionnaire mail pour contacter le support"
-    >
-      <View
-        style={
-          [
-            {
-              "alignItems": "center",
-              "flexDirection": "row",
-            },
-          ]
-        }
-      >
-        <View
-          style={
-            [
-              {
-                "flexDirection": "row",
-                "flexShrink": 0,
-              },
-            ]
-          }
-        >
-          <View
-            height={20}
-            testID="button-icon-left"
-            width={20}
           >
-            <Text>
-              button-icon-left-SVG-Mock
+            <View
+              style={
+                [
+                  {
+                    "flexDirection": "row",
+                    "flexShrink": 0,
+                  },
+                ]
+              }
+            >
+              <View
+                accessibilityLabel="Nouvelle fenêtre"
+                height={20}
+                testID="button-icon-left"
+                width={20}
+              >
+                <Text>
+                  button-icon-left-SVG-Mock
+                </Text>
+              </View>
+              <View
+                numberOfSpaces={2}
+                style={
+                  [
+                    {
+                      "width": 8,
+                    },
+                  ]
+                }
+              />
+            </View>
+            <Text
+              adjustsFontSizeToFit={false}
+              numberOfLines={1}
+              style={
+                [
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                    "maxWidth": "100%",
+                  },
+                ]
+              }
+            >
+              Consulter l’article d’aide
             </Text>
           </View>
-          <View
-            numberOfSpaces={2}
-            style={
-              [
-                {
-                  "width": 8,
-                },
-              ]
-            }
-          />
         </View>
-        <Text
-          adjustsFontSizeToFit={false}
-          numberOfLines={1}
-          style={
-            [
-              {
-                "color": "#ffffff",
-                "fontFamily": "Montserrat-Bold",
-                "fontSize": 16,
-                "lineHeight": 25.6,
-                "maxWidth": "100%",
-              },
-            ]
-          }
-        >
-          Contacter le support
-        </Text>
       </View>
     </View>
     <View
-      numberOfSpaces={30}
+      flex={1}
       style={
         [
           {
-            "height": 120,
-          },
-        ]
-      }
-    />
-    <View
-      flex={0.5}
-      style={
-        [
-          {
-            "flexBasis": 0,
-            "flexGrow": 0.5,
-            "flexShrink": 1,
-          },
-        ]
-      }
-    />
-    <View
-      style={
-        [
-          {
-            "alignSelf": "stretch",
             "flexBasis": 0,
             "flexGrow": 1,
             "flexShrink": 1,
-            "justifyContent": "flex-end",
-            "marginBottom": 32,
+          },
+        ]
+      }
+    />
+    <View
+      gap={4}
+      style={
+        [
+          {
+            "alignItems": "center",
+            "gap": 16,
           },
         ]
       }
@@ -504,7 +422,7 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
               },
               {
                 "alignItems": "center",
-                "backgroundColor": "#ffffff",
+                "backgroundColor": "#eb0055",
                 "borderRadius": 24,
                 "flexDirection": "row",
                 "justifyContent": "center",
@@ -541,7 +459,7 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
             style={
               [
                 {
-                  "color": "#eb0055",
+                  "color": "#ffffff",
                   "fontFamily": "Montserrat-Bold",
                   "fontSize": 16,
                   "lineHeight": 25.6,
@@ -554,16 +472,6 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
           </Text>
         </View>
       </View>
-      <View
-        numberOfSpaces={4}
-        style={
-          [
-            {
-              "height": 16,
-            },
-          ]
-        }
-      />
       <View
         accessibilityLabel="Retourner à l’accueil"
         accessibilityState={
@@ -612,7 +520,7 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
                 "width": "100%",
               },
               {
-                "backgroundColor": "transparent",
+                "backgroundColor": "#ffffff",
               },
             ],
             {
@@ -668,7 +576,7 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
             style={
               [
                 {
-                  "color": "#ffffff",
+                  "color": "#161617",
                   "fontFamily": "Montserrat-Bold",
                   "fontSize": 16,
                   "lineHeight": 25.6,
@@ -682,17 +590,6 @@ exports[`<LayoutExpiredLink/> should render correctly 1`] = `
         </View>
       </View>
     </View>
-    <View
-      customHeight={8}
-      enable={true}
-      style={
-        [
-          {
-            "height": 8,
-          },
-        ]
-      }
-    />
   </View>
 </View>
 `;

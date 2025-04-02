@@ -5,7 +5,6 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { getProfileStackConfig } from 'features/navigation/ProfileStackNavigator/getProfileStackConfig'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
-import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { LayoutExpiredLink } from 'ui/components/LayoutExpiredLink'
 import { DOUBLE_LINE_BREAK } from 'ui/theme/constants'
 
@@ -26,17 +25,17 @@ export function ChangeEmailExpiredLink() {
   const lowerBodyText = isLoggedIn
     ? 'Tu peux faire une nouvelle demande de modification dans ton profil.'
     : 'Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de modification.'
-  const customBodyText = upperBodyText + DOUBLE_LINE_BREAK + lowerBodyText
+  const customSubtitle = upperBodyText + DOUBLE_LINE_BREAK + lowerBodyText
 
   const resendEmailButtonText = isLoggedIn ? 'Faire une nouvelle demande' : 'Se connecter'
-  const renderResendEmailButton = () => (
-    <ButtonPrimaryWhite wording={resendEmailButtonText} onPress={changeEmailExpiredLink} />
-  )
 
   return (
     <LayoutExpiredLink
-      renderCustomButton={renderResendEmailButton}
-      customBodyText={customBodyText}
+      primaryButtonInformations={{
+        wording: resendEmailButtonText,
+        onPress: changeEmailExpiredLink,
+      }}
+      customSubtitle={customSubtitle}
     />
   )
 }
