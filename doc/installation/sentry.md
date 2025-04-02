@@ -44,9 +44,22 @@ For iOS/Android:
 
 - add a file at the root of your machine `~/.sentryclirc`:
 
+For Sentry self-hosted 23.6.1:
+
 ```
 [defaults]
-url = https://6f8956508939cbd25a8dca7492c194e2@o4508142779564032.ingest.de.sentry.io
+url = https://sentry.passculture.team/
+org = sentry
+project = application-native
+
+[auth]
+token=<token>
+```
+
+For Sentry SaaS (`url` is no longer needed):
+
+```
+[defaults]
 org = pass-culture
 project = jeunes
 
