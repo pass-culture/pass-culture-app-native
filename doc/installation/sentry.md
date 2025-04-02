@@ -8,6 +8,36 @@ To have a better understanding of the potential crashes and errors, we have to p
 
 The build is configured to upload the source maps automatically, on every new release (or new version), but you may want to do it manually. If so, follow along.
 
+### Generate your auth token
+
+For Sentry self-hosted 23.6.1, follow these instructions:
+
+> Click [here](https://sentry.passculture.team/settings/account/api/auth-tokens/) to generate your own auth `<token>`, use the following scope permissions: `event:read`, `event:admin`, `member:read`, `org:read`, `project:read`, `project:releases`, `team:read`, `project:write`, `org:integrations`
+
+For Sentry SaaS, follow these instructions:
+
+> Click [here](https://pass-culture.sentry.io/settings/account/api/auth-tokens/) to generate your own auth `<token>`, use the following scope permissions:
+
+- Project: Read & Write
+- Team: Read
+- Release: No Access (or Admin if you plan on uploading locally built source maps)
+- Issue & Event: Read
+- Organization: Read
+- Member: Read
+- Alerts: Read
+
+Your "Permissions Preview" should look like this:
+
+```
+event:read
+team:read
+member:read
+project:write
+release:admin
+organization:read
+alerts:read
+```
+
 ### 🗝 Configure sentry cli
 
 For iOS/Android:
@@ -30,8 +60,6 @@ Create a new `.env.local` at the root of the repo containing your `SENTRY_AUTH_T
 ```sh
 SENTRY_AUTH_TOKEN=your_super_secret_token
 ```
-
-> Click [here](https://pass-culture.sentry.io/settings/account/api/auth-tokens/) to generate your own auth `<token>`, use the following scope permissions: `event:read`, `event:admin`, `member:read`, `org:read`, `project:read`, `project:releases`, `team:read`, `project:write`, `org:integrations`
 
 ### 📦 Create the source maps locally
 
