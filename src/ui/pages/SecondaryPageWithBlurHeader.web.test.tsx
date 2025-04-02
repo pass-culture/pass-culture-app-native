@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { render, screen } from 'tests/utils'
+import { checkAccessibilityFor, render } from 'tests/utils/web'
 import { Typo } from 'ui/theme'
 
 import { SecondaryPageWithBlurHeader } from './SecondaryPageWithBlurHeader'
@@ -12,8 +12,8 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 })
 
 describe('<SecondaryPageWithBlurHeader />', () => {
-  it('should render correctly', () => {
-    render(
+  it('should not have basic accessibility issues', async () => {
+    const { container } = render(
       <SecondaryPageWithBlurHeader
         title="SecondaryPageWithBlurHeader"
         shouldDisplayBackButton
@@ -22,6 +22,8 @@ describe('<SecondaryPageWithBlurHeader />', () => {
       </SecondaryPageWithBlurHeader>
     )
 
-    expect(screen).toMatchSnapshot()
+    const results = await checkAccessibilityFor(container)
+
+    expect(results).toHaveNoViolations()
   })
 })
