@@ -81,8 +81,9 @@ const variantConfig: Variants<typeof InfoHeader> = [
   },
 ]
 
-const Template: VariantsStory<typeof InfoHeader> = (args) => (
-  <VariantsTemplate variants={variantConfig} Component={InfoHeader} defaultProps={args} />
-)
-
-export const AllVariants = Template.bind({})
+export const Template: VariantsStory<typeof InfoHeader> = {
+  name: 'InfoHeader',
+  render: (props) => (
+    <VariantsTemplate variants={variantConfig} Component={InfoHeader} defaultProps={props} />
+  ),
+}

@@ -1,4 +1,4 @@
-import type { StoryFn } from '@storybook/react'
+import type { StoryObj } from '@storybook/react'
 import React, { type ComponentProps } from 'react'
 import styled from 'styled-components/native'
 
@@ -69,7 +69,7 @@ export const VariantsTemplate = <
 export type VariantsStory<
   ComponentType extends React.ComponentType<Props>,
   Props extends Record<string, unknown> = ComponentProps<ComponentType>,
-> = StoryFn<ComponentType>
+> = StoryObj<ComponentType>
 
 const ComponentContainer = styled.View<{ withBackground?: boolean; minHeight: number }>(
   ({ withBackground, minHeight, theme }) => ({

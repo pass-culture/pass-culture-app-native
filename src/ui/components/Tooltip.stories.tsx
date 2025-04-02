@@ -24,6 +24,7 @@ export default meta
 type Story = StoryObj<typeof Tooltip>
 
 export const Default: Story = {
+  name: 'Tooltip',
   render: (props) => <Tooltip {...props} />,
   args: {
     label: 'Configure ta position et découvre les offres dans la zone géographique de ton choix.',

@@ -24,8 +24,9 @@ const variantConfig: Variants<typeof OfferTitle> = [
   },
 ]
 
-const Template: VariantsStory<typeof OfferTitle> = (args) => (
-  <VariantsTemplate variants={variantConfig} Component={OfferTitle} defaultProps={{ ...args }} />
-)
-
-export const AllVariants = Template.bind({})
+export const Template: VariantsStory<typeof OfferTitle> = {
+  name: 'OfferTitle',
+  render: (props) => (
+    <VariantsTemplate variants={variantConfig} Component={OfferTitle} defaultProps={{ ...props }} />
+  ),
+}

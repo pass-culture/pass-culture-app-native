@@ -41,10 +41,9 @@ const variantConfig: Variants<typeof ChronicleCard> = [
 
 type Story = StoryObj<typeof ChronicleCard>
 
-const Template = (args: React.ComponentProps<typeof ChronicleCard>) => (
-  <VariantsTemplate variants={variantConfig} Component={ChronicleCard} defaultProps={args} />
-)
-
 export const AllVariants: Story = {
-  render: Template,
+  name: 'ChronicleCard',
+  render: (args: React.ComponentProps<typeof ChronicleCard>) => (
+    <VariantsTemplate variants={variantConfig} Component={ChronicleCard} defaultProps={args} />
+  ),
 }

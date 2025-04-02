@@ -29,8 +29,9 @@ const variantConfig: Variants<typeof EditButton> = [
   },
 ]
 
-const Template: VariantsStory<typeof EditButton> = (args) => (
-  <VariantsTemplate variants={variantConfig} Component={EditButton} defaultProps={args} />
-)
-
-export const AllVariants = Template.bind({})
+export const Template: VariantsStory<typeof EditButton> = {
+  render: (props) => (
+    <VariantsTemplate variants={variantConfig} Component={EditButton} defaultProps={props} />
+  ),
+  name: 'EditButton',
+}

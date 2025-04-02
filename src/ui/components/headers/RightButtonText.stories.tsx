@@ -27,12 +27,13 @@ const variantConfig: Variants<typeof RightButtonText> = [
   },
 ]
 
-const Template: VariantsStory<typeof RightButtonText> = (args) => (
-  <VariantsTemplate
-    variants={variantConfig}
-    Component={RightButtonText}
-    defaultProps={{ ...args }}
-  />
-)
-
-export const AllVariants = Template.bind({})
+export const Template: VariantsStory<typeof RightButtonText> = {
+  name: 'RightButtonText',
+  render: (props) => (
+    <VariantsTemplate
+      variants={variantConfig}
+      Component={RightButtonText}
+      defaultProps={{ ...props }}
+    />
+  ),
+}

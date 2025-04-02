@@ -30,8 +30,13 @@ const variantConfig: Variants<typeof CreditBlock> = [
   },
 ]
 
-const Template: VariantsStory<typeof CreditBlock> = (args) => (
-  <VariantsTemplate variants={variantConfig} Component={CreditBlock} defaultProps={args} />
-)
-
-export const AllVariants = Template.bind({})
+export const Template: VariantsStory<typeof CreditBlock> = {
+  name: 'CreditBlock',
+  render: (props) => (
+    <VariantsTemplate
+      variants={variantConfig}
+      Component={CreditBlock}
+      defaultProps={{ ...props }}
+    />
+  ),
+}

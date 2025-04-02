@@ -49,8 +49,9 @@ const variantConfig: Variants<typeof ToggleButton> = [
   },
 ]
 
-const Template: VariantsStory<typeof ToggleButton> = (args) => (
-  <VariantsTemplate variants={variantConfig} Component={ToggleButton} defaultProps={args} />
-)
-
-export const AllVariants = Template.bind({})
+export const Template: VariantsStory<typeof ToggleButton> = {
+  name: 'ToggleButton',
+  render: (props) => (
+    <VariantsTemplate variants={variantConfig} Component={ToggleButton} defaultProps={props} />
+  ),
+}

@@ -42,12 +42,13 @@ const variantConfig: Variants<typeof IconWithCaption> = [
   },
 ]
 
-const Template: VariantsStory<typeof IconWithCaption> = (args) => (
-  <VariantsTemplate
-    variants={variantConfig}
-    Component={IconWithCaption}
-    defaultProps={{ ...args }}
-  />
-)
-
-export const AllVariants = Template.bind({})
+export const Template: VariantsStory<typeof IconWithCaption> = {
+  name: 'IconWithCaption',
+  render: (props) => (
+    <VariantsTemplate
+      variants={variantConfig}
+      Component={IconWithCaption}
+      defaultProps={{ ...props }}
+    />
+  ),
+}

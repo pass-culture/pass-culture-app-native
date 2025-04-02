@@ -42,7 +42,7 @@ const ChronicleTag = styled(InteractionTag).attrs(() => ({
 
 const variantConfig: Variants<typeof OfferTile> = [
   {
-    label: 'Default',
+    label: 'OfferTile Default',
     props: {
       date: 'le 18 juin 2024',
       name: 'The Fall Guy',
@@ -54,7 +54,7 @@ const variantConfig: Variants<typeof OfferTile> = [
     },
   },
   {
-    label: 'With Likes',
+    label: 'OfferTile With Likes',
     props: {
       date: 'le 18 juin 2024',
       name: 'The Fall Guy',
@@ -67,7 +67,7 @@ const variantConfig: Variants<typeof OfferTile> = [
     },
   },
   {
-    label: 'WithChronicles',
+    label: 'OfferTile WithChronicles',
     props: {
       date: 'le 18 juin 2024',
       name: 'The Fall Guy',
@@ -80,7 +80,7 @@ const variantConfig: Variants<typeof OfferTile> = [
     },
   },
   {
-    label: 'WithHeadlines',
+    label: 'OfferTile WithHeadlines',
     props: {
       date: 'le 18 juin 2024',
       name: 'The Fall Guy',
@@ -94,8 +94,9 @@ const variantConfig: Variants<typeof OfferTile> = [
   },
 ]
 
-const Template: VariantsStory<typeof OfferTile> = (args) => (
-  <VariantsTemplate variants={variantConfig} Component={OfferTile} defaultProps={{ ...args }} />
-)
-
-export const AllVariants = Template.bind({})
+export const Template: VariantsStory<typeof OfferTile> = {
+  name: 'OfferTile',
+  render: (props) => (
+    <VariantsTemplate variants={variantConfig} Component={OfferTile} defaultProps={{ ...props }} />
+  ),
+}

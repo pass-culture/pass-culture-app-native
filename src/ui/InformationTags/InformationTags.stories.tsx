@@ -72,8 +72,13 @@ const variantConfig: Variants<typeof InformationTags> = [
   },
 ]
 
-const Template: VariantsStory<typeof InformationTags> = (args) => (
-  <VariantsTemplate variants={variantConfig} Component={InformationTags} defaultProps={args} />
-)
-
-export const AllVariants = Template.bind({})
+export const Template: VariantsStory<typeof InformationTags> = {
+  name: 'InformationTags',
+  render: (props) => (
+    <VariantsTemplate
+      variants={variantConfig}
+      Component={InformationTags}
+      defaultProps={{ ...props }}
+    />
+  ),
+}

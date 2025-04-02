@@ -32,10 +32,13 @@ const variantConfig: Variants<typeof AuthenticationButton> = [
 
 type Story = StoryObj<typeof AuthenticationButton>
 
-const Template = (args: React.ComponentProps<typeof AuthenticationButton>) => (
-  <VariantsTemplate variants={variantConfig} Component={AuthenticationButton} defaultProps={args} />
-)
-
 export const AllVariants: Story = {
-  render: Template,
+  name: 'AuthenticationButton',
+  render: (args: React.ComponentProps<typeof AuthenticationButton>) => (
+    <VariantsTemplate
+      variants={variantConfig}
+      Component={AuthenticationButton}
+      defaultProps={args}
+    />
+  ),
 }

@@ -19,6 +19,7 @@ export default meta
 
 type Story = StoryObj<typeof AchievementBanner>
 
-export const Default: Story = {
+export const Template: Story = {
   render: (props) => <AchievementBanner {...props} />,
+  name: 'AchievementBanner',
 }

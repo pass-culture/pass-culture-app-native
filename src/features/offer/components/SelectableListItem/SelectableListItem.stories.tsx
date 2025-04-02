@@ -54,8 +54,7 @@ const variantConfig: Variants<typeof SelectableListItem> = [
   },
 ]
 
-const Template: VariantsStory<typeof SelectableListItem> = () => (
-  <VariantsTemplate variants={variantConfig} Component={SelectableListItem} />
-)
-
-export const AllVariants = Template.bind({})
+export const Template: VariantsStory<typeof SelectableListItem> = {
+  name: 'SelectableListItem',
+  render: () => <VariantsTemplate variants={variantConfig} Component={SelectableListItem} />,
+}

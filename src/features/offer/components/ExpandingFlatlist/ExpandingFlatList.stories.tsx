@@ -44,18 +44,18 @@ const variantConfig: Variants<typeof ExpandingFlatList<Item>> = [
   },
 ]
 
-export const Template: VariantsStory<typeof ExpandingFlatList> = (args) => (
-  <VariantsTemplate
-    variants={variantConfig.map((variant) => ({
-      ...variant,
-      props: {
-        ...variant.props,
-        ...args,
-      },
-    }))}
-    Component={ExpandingFlatList}
-  />
-)
+export const Template: VariantsStory<typeof ExpandingFlatList> = {
+  name: 'ExpandingFlatList',
+  render: (args) => (
+    <VariantsTemplate
+      variants={variantConfig.map((variant) => ({
+        ...variant,
+        props: { ...variant.props, ...args },
+      }))}
+      Component={ExpandingFlatList}
+    />
+  ),
+}
 
 const StyledItem = styled.View({
   borderColor: 'black',

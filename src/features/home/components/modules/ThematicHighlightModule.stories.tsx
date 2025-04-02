@@ -10,7 +10,7 @@ import { ThematicHighlightModule } from './ThematicHighlightModule'
 mockDate.set(CURRENT_DATE)
 
 const meta: Meta<typeof ThematicHighlightModule> = {
-  title: 'Features/Home/ThematicHighlightModule',
+  title: 'Features/home/ThematicHighlightModule',
   component: ThematicHighlightModule,
   decorators: [
     (Story) => (

@@ -22,8 +22,9 @@ const variantConfig: Variants<typeof Badge> = [
   },
 ]
 
-const Template: VariantsStory<typeof Badge> = (args) => (
-  <VariantsTemplate variants={variantConfig} Component={Badge} defaultProps={args} />
-)
-
-export const AllVariants = Template.bind({})
+export const Template: VariantsStory<typeof Badge> = {
+  name: 'Badge',
+  render: (props) => (
+    <VariantsTemplate variants={variantConfig} Component={Badge} defaultProps={props} />
+  ),
+}

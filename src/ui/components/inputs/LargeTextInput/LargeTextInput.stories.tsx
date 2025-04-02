@@ -38,12 +38,13 @@ const variantConfig: Variants<typeof LargeTextInput> = [
   },
 ]
 
-const Template: VariantsStory<typeof LargeTextInput> = (args) => (
-  <VariantsTemplate
-    variants={variantConfig}
-    Component={LargeTextInput}
-    defaultProps={{ ...args }}
-  />
-)
-
-export const AllVariants = Template.bind({})
+export const Template: VariantsStory<typeof LargeTextInput> = {
+  name: 'LargeTextInput',
+  render: (props) => (
+    <VariantsTemplate
+      variants={variantConfig}
+      Component={LargeTextInput}
+      defaultProps={{ ...props }}
+    />
+  ),
+}

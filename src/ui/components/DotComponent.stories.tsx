@@ -36,8 +36,13 @@ const variantConfig: Variants<typeof DotComponent> = [
   },
 ]
 
-const Template: VariantsStory<typeof DotComponent> = (args) => (
-  <VariantsTemplate variants={variantConfig} Component={DotComponent} defaultProps={{ ...args }} />
-)
-
-export const AllVariants = Template.bind({})
+export const Template: VariantsStory<typeof DotComponent> = {
+  name: 'DotComponent',
+  render: (props) => (
+    <VariantsTemplate
+      variants={variantConfig}
+      Component={DotComponent}
+      defaultProps={{ ...props }}
+    />
+  ),
+}

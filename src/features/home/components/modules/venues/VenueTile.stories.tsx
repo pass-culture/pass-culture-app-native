@@ -9,7 +9,7 @@ import { LENGTH_S } from 'ui/theme'
 import { VenueTile } from './VenueTile'
 
 const meta: Meta<typeof VenueTile> = {
-  title: 'Features/Home/VenueTile',
+  title: 'Features/home/VenueTile',
   component: VenueTile,
   decorators: [
     (Story) => (

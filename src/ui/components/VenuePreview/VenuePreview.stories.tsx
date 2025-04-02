@@ -46,8 +46,9 @@ const variantConfig: Variants<typeof VenuePreview> = [
   },
 ]
 
-const Template: VariantsStory<typeof VenuePreview> = (args) => (
-  <VariantsTemplate variants={variantConfig} Component={VenuePreview} defaultProps={args} />
-)
-
-export const AllVariants = Template.bind({})
+export const Template: VariantsStory<typeof VenuePreview> = {
+  name: 'VenuePreview',
+  render: (props) => (
+    <VariantsTemplate variants={variantConfig} Component={VenuePreview} defaultProps={props} />
+  ),
+}

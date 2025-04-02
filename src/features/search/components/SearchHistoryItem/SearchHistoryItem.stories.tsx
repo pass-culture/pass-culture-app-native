@@ -60,12 +60,13 @@ const variantConfig: Variants<typeof SearchHistoryItem> = [
   },
 ]
 
-const Template: VariantsStory<typeof SearchHistoryItem> = (args) => (
-  <VariantsTemplate
-    variants={variantConfig}
-    Component={SearchHistoryItem}
-    defaultProps={{ ...args }}
-  />
-)
-
-export const AllVariants = Template.bind({})
+export const Template: VariantsStory<typeof SearchHistoryItem> = {
+  name: 'SearchHistoryItem',
+  render: (props) => (
+    <VariantsTemplate
+      variants={variantConfig}
+      Component={SearchHistoryItem}
+      defaultProps={{ ...props }}
+    />
+  ),
+}

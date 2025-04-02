@@ -43,8 +43,13 @@ const variantConfig: Variants<typeof SingleFilterButton> = [
   },
 ]
 
-const Template: VariantsStory<typeof SingleFilterButton> = (args) => (
-  <VariantsTemplate variants={variantConfig} Component={SingleFilterButton} defaultProps={args} />
-)
-
-export const AllVariants = Template.bind({})
+export const Template: VariantsStory<typeof SingleFilterButton> = {
+  name: 'SingleFilterButton',
+  render: (props) => (
+    <VariantsTemplate
+      variants={variantConfig}
+      Component={SingleFilterButton}
+      defaultProps={props}
+    />
+  ),
+}

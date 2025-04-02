@@ -91,8 +91,9 @@ const variantConfig: Variants<typeof Avatar> = [
   },
 ]
 
-const Template: VariantsStory<typeof Avatar> = (args) => (
-  <VariantsTemplate variants={variantConfig} Component={Avatar} defaultProps={{ ...args }} />
-)
-
-export const AllVariants = Template.bind({})
+export const Template: VariantsStory<typeof Avatar> = {
+  name: 'Avatar',
+  render: (props) => (
+    <VariantsTemplate variants={variantConfig} Component={Avatar} defaultProps={props} />
+  ),
+}

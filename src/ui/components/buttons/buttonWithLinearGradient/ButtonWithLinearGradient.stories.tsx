@@ -46,12 +46,13 @@ const variantConfig: Variants<typeof ButtonWithLinearGradient> = [
   },
 ]
 
-const Template: VariantsStory<typeof ButtonWithLinearGradient> = (args) => (
-  <VariantsTemplate
-    variants={variantConfig}
-    Component={ButtonWithLinearGradient}
-    defaultProps={{ ...args }}
-  />
-)
-
-export const AllVariants = Template.bind({})
+export const Template: VariantsStory<typeof ButtonWithLinearGradient> = {
+  name: 'ButtonWithLinearGradient',
+  render: (props) => (
+    <VariantsTemplate
+      variants={variantConfig}
+      Component={ButtonWithLinearGradient}
+      defaultProps={{ ...props }}
+    />
+  ),
+}

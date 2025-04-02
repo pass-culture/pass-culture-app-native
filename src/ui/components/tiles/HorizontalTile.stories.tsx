@@ -70,8 +70,9 @@ const variantConfig: Variants<typeof HorizontalTile> = [
   },
 ]
 
-const Template: VariantsStory<typeof HorizontalTile> = (args) => (
-  <VariantsTemplate variants={variantConfig} Component={HorizontalTile} defaultProps={args} />
-)
-
-export const AllVariants = Template.bind({})
+export const Template: VariantsStory<typeof HorizontalTile> = {
+  name: 'HorizontalTile',
+  render: (props) => (
+    <VariantsTemplate variants={variantConfig} Component={HorizontalTile} defaultProps={props} />
+  ),
+}

@@ -26,12 +26,13 @@ const variantConfig: Variants<typeof SeparatorWithText> = [
   },
 ]
 
-const Template: VariantsStory<typeof SeparatorWithText> = (args) => (
-  <VariantsTemplate
-    variants={variantConfig}
-    Component={SeparatorWithText}
-    defaultProps={{ ...args }}
-  />
-)
-
-export const AllVariants = Template.bind({})
+export const Template: VariantsStory<typeof SeparatorWithText> = {
+  name: 'SeparatorWithText',
+  render: (props) => (
+    <VariantsTemplate
+      variants={variantConfig}
+      Component={SeparatorWithText}
+      defaultProps={{ ...props }}
+    />
+  ),
+}

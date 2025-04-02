@@ -27,10 +27,11 @@ const variantConfig: Variants<typeof BulletListItem> = [
   },
 ]
 
-const Template: VariantsStory<typeof BulletListItem> = (args) => (
-  <VerticalUl>
-    <VariantsTemplate variants={variantConfig} Component={BulletListItem} defaultProps={args} />
-  </VerticalUl>
-)
-
-export const AllVariants = Template.bind({})
+export const Template: VariantsStory<typeof BulletListItem> = {
+  name: 'BulletListItem',
+  render: (props) => (
+    <VerticalUl>
+      <VariantsTemplate variants={variantConfig} Component={BulletListItem} defaultProps={props} />
+    </VerticalUl>
+  ),
+}

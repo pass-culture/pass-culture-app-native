@@ -77,13 +77,14 @@ const variantConfig: Variants<typeof StickyBookingButton> = [
   },
 ]
 
-const Template: VariantsStory<typeof StickyBookingButton> = () => (
-  <ImageBackground source={SHARE_APP_IMAGE_SOURCE}>
-    <VariantsTemplate variants={variantConfig} Component={StickyBookingButton} />
-  </ImageBackground>
-)
-
-export const AllVariants = Template.bind({})
+export const Template: VariantsStory<typeof StickyBookingButton> = {
+  name: 'StickyBookingButton',
+  render: () => (
+    <ImageBackground source={SHARE_APP_IMAGE_SOURCE}>
+      <VariantsTemplate variants={variantConfig} Component={StickyBookingButton} />
+    </ImageBackground>
+  ),
+}
 
 const ImageBackground = styled.ImageBackground({
   width: '100%',

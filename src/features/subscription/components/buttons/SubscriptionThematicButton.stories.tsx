@@ -30,12 +30,14 @@ const variantConfig: Variants<typeof SubscriptionThematicButton> = [
     props: { thematic: SubscriptionTheme.CINEMA, checked: true },
   },
 ]
-const Template: VariantsStory<typeof SubscriptionThematicButton> = (args) => (
-  <VariantsTemplate
-    variants={variantConfig}
-    Component={SubscriptionThematicButton}
-    defaultProps={{ ...args }}
-  />
-)
 
-export const AllVariants = Template.bind({})
+export const Template: VariantsStory<typeof SubscriptionThematicButton> = {
+  name: 'SubscriptionThematicButton',
+  render: (props) => (
+    <VariantsTemplate
+      variants={variantConfig}
+      Component={SubscriptionThematicButton}
+      defaultProps={{ ...props }}
+    />
+  ),
+}

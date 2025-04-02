@@ -24,14 +24,13 @@ const variantConfig: Variants<typeof EmailAttemptsLeft> = [
 
 type Story = StoryObj<typeof EmailAttemptsLeft>
 
-const Template = (args: React.ComponentProps<typeof EmailAttemptsLeft>) => (
-  <VariantsTemplate
-    variants={variantConfig}
-    Component={EmailAttemptsLeft}
-    defaultProps={{ ...args }}
-  />
-)
-
 export const AllVariants: Story = {
-  render: Template,
+  name: 'EmailAttemptsLeft',
+  render: (args: React.ComponentProps<typeof EmailAttemptsLeft>) => (
+    <VariantsTemplate
+      variants={variantConfig}
+      Component={EmailAttemptsLeft}
+      defaultProps={{ ...args }}
+    />
+  ),
 }

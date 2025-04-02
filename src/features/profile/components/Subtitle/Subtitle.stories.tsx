@@ -22,8 +22,9 @@ const variantConfig: Variants<typeof Subtitle> = [
   },
 ]
 
-const Template: VariantsStory<typeof Subtitle> = (args) => (
-  <VariantsTemplate variants={variantConfig} Component={Subtitle} defaultProps={args} />
-)
-
-export const AllVariants = Template.bind({})
+export const Template: VariantsStory<typeof Subtitle> = {
+  name: 'Subtitle',
+  render: (props) => (
+    <VariantsTemplate variants={variantConfig} Component={Subtitle} defaultProps={props} />
+  ),
+}

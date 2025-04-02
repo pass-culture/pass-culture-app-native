@@ -9,9 +9,6 @@ import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storyboo
 
 import { MarketingBlockExclusivity } from './MarketingBlockExclusivity'
 
-// @ts-ignore import is unresolved
-// eslint-disable-next-line import/no-unresolved
-
 const meta: Meta<typeof MarketingBlockExclusivity> = {
   title: 'features/home/MarketingBlock/MarketingBlockExclusivity',
   component: MarketingBlockExclusivity,
@@ -50,17 +47,18 @@ const variantConfig: Variants<typeof MarketingBlockExclusivity> = [
   },
 ]
 
-const Template: VariantsStory<typeof MarketingBlockExclusivity> = (args) => (
-  <VariantsTemplate
-    variants={variantConfig}
-    Component={MarketingBlockExclusivity}
-    defaultProps={args}
-  />
-)
-
-export const AllVariants = Template.bind({})
-AllVariants.parameters = {
-  chromatic: {
-    viewports: [theme.breakpoints.xs, theme.breakpoints.xl],
+export const Template: VariantsStory<typeof MarketingBlockExclusivity> = {
+  name: 'MarketingBlockExclusivity',
+  render: (props) => (
+    <VariantsTemplate
+      variants={variantConfig}
+      Component={MarketingBlockExclusivity}
+      defaultProps={props}
+    />
+  ),
+  parameters: {
+    chromatic: {
+      viewports: [theme.breakpoints.xs, theme.breakpoints.xl],
+    },
   },
 }
