@@ -61,7 +61,7 @@ Create a new `.env.local` at the root of the repo containing your `SENTRY_AUTH_T
 SENTRY_AUTH_TOKEN=your_super_secret_token
 ```
 
-### 📦 Create the source maps locally
+### 📦 Create the source maps locally (mobile)
 
 #### Android
 
@@ -96,3 +96,15 @@ node_modules/@sentry/cli/bin/sentry-cli releases files 1.132.3 \
   --url-prefix "app:///" \
   --no-rewrite
 ```
+
+### 📦 Create the source maps locally (web)
+
+Source maps for the web app are generated during the build if `UPLOAD_SOURCEMAPS_TO_SENTRY` is true.
+
+You can test like this:
+
+```sh
+UPLOAD_SOURCEMAPS_TO_SENTRY=true yarn build:testing
+```
+
+You should be able to see the generated source maps [here](https://pass-culture.sentry.io/settings/projects/jeunes/source-maps/)
