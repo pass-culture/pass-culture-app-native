@@ -38,6 +38,7 @@ describe('fetchVenues', () => {
     snapchat: null,
     twitter: null,
     isPermanent: true,
+    isOpenToPublic: true,
     venue_type: VenueTypeCodeKey.PERFORMING_ARTS,
     visual_disability: false,
     website: 'https://my.website.com',

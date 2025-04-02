@@ -7,7 +7,7 @@ import { AlgoliaVenue, LocationMode } from 'libs/algolia/types'
 import { analytics } from 'libs/analytics/provider'
 import { ILocationContext } from 'libs/location'
 import { SuggestedPlace } from 'libs/place/types'
-import { userEvent, render, screen } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 
 import { SearchVenueItem } from './SearchVenueItem'
 
@@ -24,6 +24,7 @@ const mockAlgoliaVenue: AlgoliaVenue = {
   motor_disability: null,
   visual_disability: null,
   isPermanent: true,
+  isOpenToPublic: true,
   email: null,
   phone_number: null,
   website: null,

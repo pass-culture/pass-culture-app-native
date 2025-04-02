@@ -26,7 +26,7 @@ describe('Venue component', () => {
   it('should display the venue label when a venue is selected', async () => {
     mockSearchState = {
       ...initialSearchState,
-      venue: { label: 'Venue label', info: 'info', venueId: 123 },
+      venue: { label: 'Venue label', info: 'info', venueId: 123, isOpenToPublic: true },
     }
     render(<Venue />)
 

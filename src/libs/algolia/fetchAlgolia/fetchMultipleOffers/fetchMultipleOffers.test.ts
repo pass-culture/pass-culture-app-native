@@ -31,6 +31,7 @@ const mockParams1: PlaylistOffersParams = {
       info: 'PARIS 6',
       label: 'Cinéma St André des Arts',
       venueId: 26235,
+      isOpenToPublic: true,
     },
   },
   locationParams: {

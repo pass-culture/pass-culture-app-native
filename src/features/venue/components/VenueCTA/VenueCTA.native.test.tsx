@@ -31,6 +31,7 @@ const defaultParams: SearchState = {
     info: 'Paris',
     label: 'Le Petit Rintintin 1',
     venueId: 5543,
+    isOpenToPublic: true,
   },
 } as SearchState
 
@@ -67,6 +68,7 @@ describe('<VenueCTA />', () => {
               info: 'Paris',
               label: 'Le Petit Rintintin 1',
               venueId: 5543,
+              isOpenToPublic: true,
             },
           },
           screen: 'SearchResults',

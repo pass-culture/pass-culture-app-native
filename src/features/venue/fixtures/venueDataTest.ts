@@ -45,6 +45,7 @@ export const venueDataTest: VenueResponse = {
   externalAccessibilityUrl: 'https://site-d-accessibilite.com/erps/slug-d-accessibilite-1/',
   id: 5543,
   isPermanent: true,
+  isOpenToPublic: true,
   isVirtual: false,
   latitude: 48.87004,
   longitude: 2.3785,

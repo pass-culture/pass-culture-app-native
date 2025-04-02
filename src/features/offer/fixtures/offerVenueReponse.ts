@@ -10,5 +10,6 @@ export const offerVenueResponseSnap: OfferVenueResponse = {
   postalCode: '75000',
   address: '1 boulevard Poissonnière',
   isPermanent: true,
+  isOpenToPublic: true,
   timezone: 'Europe/Paris',
 }

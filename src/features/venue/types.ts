@@ -13,7 +13,7 @@ export interface Venue {
   venue_type?: VenueTypeCode | null
   postalCode?: string | null
   isPermanent?: boolean | null
-  isOpenToPublic?: boolean | null
+  isOpenToPublic: boolean
 }
 
 export enum Tab {

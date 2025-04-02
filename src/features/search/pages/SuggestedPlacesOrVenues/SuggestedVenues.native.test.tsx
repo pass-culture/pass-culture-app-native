@@ -9,12 +9,14 @@ const firstVenue = {
   info: 'Paris',
   label: 'La librairie quantique DATA',
   venueId: 9384,
+  isOpenToPublic: true,
 }
 const secondVenue = {
   _geoloc: { lat: 48.94083, lng: 2.47987 },
   info: 'Paris',
   label: 'La librairie quantique',
   venueId: 9299,
+  isOpenToPublic: true,
 }
 const mockedSuggestedVenues: Venue[] = [firstVenue, secondVenue]
 const mockVenues: Venue[] = []

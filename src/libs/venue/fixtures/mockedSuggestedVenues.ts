@@ -10,4 +10,5 @@ export const mockedSuggestedVenue: Venue = {
     'https://storage.googleapis.com/passculture-metier-ehp-testing-assets-fine-grained/assets/venue_default_images/krists-luhaers-AtPWnYNDJnM-unsplash.png',
   postalCode: '75014',
   venue_type: VenueTypeCodeKey.MOVIE,
+  isOpenToPublic: true,
 }

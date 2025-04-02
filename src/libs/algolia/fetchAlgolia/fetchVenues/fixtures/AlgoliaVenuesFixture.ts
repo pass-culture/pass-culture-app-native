@@ -11,6 +11,7 @@ export const algoliaVenuesFixture: AlgoliaVenue[] = [
     email: 'contact@venue.com',
     facebook: null,
     isPermanent: true,
+    isOpenToPublic: true,
 
     instagram: 'http://instagram.com/@venue',
 

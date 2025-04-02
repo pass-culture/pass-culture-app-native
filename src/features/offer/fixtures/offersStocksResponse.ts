@@ -39,6 +39,7 @@ export const offersStocksResponseSnap = toMutable({
           longitude: -2.4297,
         },
         isPermanent: true,
+        isOpenToPublic: true,
         timezone: 'Europe/Paris',
         bannerUrl:
           'https://storage.googleapis.com/passculture-metier-ehp-staging-assets-fine-grained/thumbs/venues/AHUPK_1717691489',
@@ -230,6 +231,7 @@ export const offersStocksResponseSnap = toMutable({
           longitude: -2.4297,
         },
         isPermanent: true,
+        isOpenToPublic: true,
         timezone: 'Europe/Paris',
         bannerUrl:
           'https://storage.googleapis.com/passculture-metier-ehp-staging-assets-fine-grained/thumbs/venues/AHUPK_1717691489',
@@ -347,6 +349,7 @@ export const offersStocksResponseSnap = toMutable({
           longitude: -2.4297,
         },
         isPermanent: true,
+        isOpenToPublic: true,
         timezone: 'Europe/Paris',
         bannerUrl:
           'https://storage.googleapis.com/passculture-metier-ehp-staging-assets-fine-grained/thumbs/venues/AHUPK_1717691489',
@@ -539,6 +542,7 @@ export const offersStocksResponseSnap = toMutable({
           longitude: -2.4297,
         },
         isPermanent: true,
+        isOpenToPublic: true,
         timezone: 'Europe/Paris',
         bannerUrl:
           'https://storage.googleapis.com/passculture-metier-ehp-staging-assets-fine-grained/thumbs/venues/AHUPK_1717691489',

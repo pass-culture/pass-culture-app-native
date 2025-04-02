@@ -190,6 +190,7 @@ export const mockedAlgoliaVenueResponse = toMutable({
       facebook: null,
       twitter: null,
       isPermanent: true,
+      isOpenToPublic: true,
       instagram: null,
       snapchat: null,
       banner_url:
@@ -227,6 +228,7 @@ export const mockedAlgoliaVenueResponse = toMutable({
       instagram: null,
       snapchat: null,
       isPermanent: true,
+      isOpenToPublic: true,
       banner_url:
         'https://storage.googleapis.com/passculture-metier-ehp-staging-assets-fine-grained/assets/venue_default_images/jan-antonin-kolar-hN_zCni3ILg-unsplash_1.png',
       _geoloc: {

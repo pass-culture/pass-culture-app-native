@@ -35,7 +35,7 @@ export type OfferPlaceProps = {
 
 type PartialVenue = Pick<
   VenueResponse,
-  'id' | 'venueTypeCode' | 'name' | 'description' | 'publicName'
+  'id' | 'venueTypeCode' | 'name' | 'description' | 'publicName' | 'isOpenToPublic'
 >
 
 const mergeVenueData =
@@ -49,6 +49,7 @@ const mergeVenueData =
     accessibility: {},
     contact: {},
     timezone: '',
+    isOpenToPublic: venue.isOpenToPublic,
     ...(prevData ?? {}),
   })
 

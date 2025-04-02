@@ -36,6 +36,7 @@ describe('fetchOffersByGTL', () => {
           venueId: 123,
           info: 'BAYONNE',
           label: 'DARRIEUMERLOU',
+          isOpenToPublic: true,
         },
       },
       locationParams: {

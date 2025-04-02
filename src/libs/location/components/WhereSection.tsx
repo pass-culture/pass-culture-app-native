@@ -14,7 +14,7 @@ import { Spacer } from 'ui/components/spacer/Spacer'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { ArrowNext as DefaultArrowNext } from 'ui/svg/icons/ArrowNext'
 import { BicolorLocationBuilding as LocationBuilding } from 'ui/svg/icons/BicolorLocationBuilding'
-import { Typo, getSpacing } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type Props = {
@@ -27,7 +27,7 @@ type Props = {
 
 type PartialVenue = Pick<
   VenueResponse,
-  'id' | 'venueTypeCode' | 'name' | 'description' | 'publicName'
+  'id' | 'venueTypeCode' | 'name' | 'description' | 'publicName' | 'isOpenToPublic'
 >
 
 const mergeVenueData =
@@ -41,6 +41,7 @@ const mergeVenueData =
     accessibility: {},
     contact: {},
     timezone: '',
+    isOpenToPublic: venue.isOpenToPublic,
     ...(prevData || {}),
   })
 
