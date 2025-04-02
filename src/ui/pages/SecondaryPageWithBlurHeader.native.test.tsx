@@ -18,7 +18,7 @@ describe('<SecondaryPageWithBlurHeader />', () => {
         title="SecondaryPageWithBlurHeader"
         shouldDisplayBackButton
         onGoBack={jest.fn}>
-        <Typo.Title3>Children</Typo.Title3>
+        <Typo.Title2>Children</Typo.Title2>
       </SecondaryPageWithBlurHeader>
     )
 
