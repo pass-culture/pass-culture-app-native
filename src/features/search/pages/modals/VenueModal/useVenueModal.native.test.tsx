@@ -171,7 +171,12 @@ describe('useVenueModal', () => {
     })
 
     await act(() => {
-      result.current.doSetSelectedVenue({ label: 'venueLabel', info: 'info', venueId: 1234 })
+      result.current.doSetSelectedVenue({
+        label: 'venueLabel',
+        info: 'info',
+        venueId: 1234,
+        isOpenToPublic: true,
+      })
     })
     await act(() => {
       result.current.doApplySearch()

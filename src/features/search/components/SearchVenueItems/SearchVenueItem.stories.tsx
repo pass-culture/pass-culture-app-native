@@ -42,6 +42,7 @@ const venue: AlgoliaVenue = {
   instagram: null,
   snapchat: null,
   isPermanent: true,
+  isOpenToPublic: true,
   banner_url:
     'https://www.gamewallpapers.com/wallpapers_slechte_compressie/wallpaper_magic_the_gathering_arena_01_1920x1080.jpg',
   _geoloc: {

@@ -12,6 +12,7 @@ describe('transformGeoLocatedVenueToVenueResponse', () => {
       },
       info: 'INFO',
       venueId: 123,
+      isOpenToPublic: true,
     } satisfies GeolocatedVenue
 
     const expectedVenueResponse = {
@@ -22,6 +23,7 @@ describe('transformGeoLocatedVenueToVenueResponse', () => {
       accessibility: {},
       timezone: '',
       isVirtual: false,
+      isOpenToPublic: true,
     } satisfies VenueResponse
 
     expect(transformGeoLocatedVenueToVenueResponse(geolocatedData)).toMatchObject(

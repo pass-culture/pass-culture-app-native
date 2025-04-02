@@ -11,6 +11,7 @@ export const geolocatedVenuesFixture: GeolocatedVenue[] = [
     postalCode: '75116',
     venueId: 2628,
     venue_type: VenueTypeCodeKey.MUSEUM,
+    isOpenToPublic: true,
   },
   {
     _geoloc: { lat: 48.8829762, lng: 2.3076797 },
@@ -21,5 +22,6 @@ export const geolocatedVenuesFixture: GeolocatedVenue[] = [
     postalCode: '75017',
     venueId: 5391,
     venue_type: VenueTypeCodeKey.MUSEUM,
+    isOpenToPublic: true,
   },
 ]

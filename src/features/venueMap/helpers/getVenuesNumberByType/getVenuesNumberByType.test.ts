@@ -14,6 +14,7 @@ const venues: GeolocatedVenue[] = [
     postalCode: '94220',
     venueId: 19322,
     venue_type: VenueTypeCodeKey.BOOKSTORE,
+    isOpenToPublic: true,
   },
   {
     _geoloc: { lat: 48.85569, lng: 2.43935 },
@@ -23,6 +24,7 @@ const venues: GeolocatedVenue[] = [
     label: 'LIBRAIRIE LIBERTALIA',
     postalCode: '93100',
     venueId: 9340,
+    isOpenToPublic: true,
   },
   {
     _geoloc: { lat: 48.86252, lng: 2.4428 },
@@ -33,6 +35,7 @@ const venues: GeolocatedVenue[] = [
     postalCode: '93100',
     venueId: 2893,
     venue_type: null,
+    isOpenToPublic: true,
   },
 ]
 

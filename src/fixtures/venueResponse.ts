@@ -9,6 +9,7 @@ export default {
   longitude: 2.34199,
   id: 26235,
   isPermanent: true,
+  isOpenToPublic: true,
   name: 'SHELLAC EXPLOITATION',
   postalCode: '75006',
   publicName: 'Cinéma St André des Arts',

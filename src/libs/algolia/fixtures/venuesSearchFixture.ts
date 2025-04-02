@@ -40,6 +40,7 @@ export const venuesSearchFixture = toMutable({
         'https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/mediations/AMHA',
       postalCode: '75000',
       city: 'Paris',
+      isOpenToPublic: true,
     },
     {
       id: 5544,
@@ -70,6 +71,7 @@ export const venuesSearchFixture = toMutable({
         'https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/mediations/AMHA',
       postalCode: '75000',
       city: 'Paris',
+      isOpenToPublic: true,
     },
     {
       id: 5545,
@@ -100,6 +102,7 @@ export const venuesSearchFixture = toMutable({
         'https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/mediations/AMHA',
       postalCode: '75000',
       city: 'Paris',
+      isOpenToPublic: true,
     },
     {
       id: 5546,
@@ -130,6 +133,7 @@ export const venuesSearchFixture = toMutable({
         'https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/mediations/AMHA',
       postalCode: '75000',
       city: 'Paris',
+      isOpenToPublic: true,
     },
     {
       id: 5547,
@@ -160,6 +164,7 @@ export const venuesSearchFixture = toMutable({
         'https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/mediations/AMHA',
       postalCode: '75000',
       city: 'Paris',
+      isOpenToPublic: true,
     },
   ],
   nbHits: 5,

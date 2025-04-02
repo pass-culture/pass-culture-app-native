@@ -439,6 +439,7 @@ describe('[Analytics utils]', () => {
           label: 'Accor Arena',
           info: 'Salle de spectacle, Paris',
           venueId: 1,
+          isOpenToPublic: true,
         },
       }
       const locationFilterParam = buildLocationFilterParam(venueTypeSearchState)
@@ -455,6 +456,7 @@ describe('[Analytics utils]', () => {
           label: 'Accor Arena, la MEILLEURE salle de France avec une acoustique incroyable',
           info: 'Salle de spectacle, Paris',
           venueId: 1,
+          isOpenToPublic: true,
         },
       }
       const locationFilterParam = buildLocationFilterParam(venueTypeSearchState)

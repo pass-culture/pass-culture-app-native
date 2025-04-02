@@ -94,7 +94,7 @@ export const VenueMapBottomSheet = forwardRef<BottomSheetMethods, VenueMapBottom
     const venueMapPreview = useMemo(() => {
       if (venue) {
         const address = venue.postalCode ? `${venue.info}, ${venue.postalCode}` : venue.info
-        const isOpenToPublicVenue = venue.isOpenToPublic ?? false
+        const isOpenToPublicVenue = venue.isOpenToPublic
         const enableNavigate = shouldUseIsOpenToPublic ? isOpenToPublicVenue : venue.isPermanent
 
         return (

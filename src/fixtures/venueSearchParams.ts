@@ -17,6 +17,7 @@ export default {
       lng: mockVenueResponse.longitude,
     },
     venueId: mockVenueResponse.id,
+    isOpenToPublic: true,
   },
   offerCategories: [],
   offerSubcategories: [],

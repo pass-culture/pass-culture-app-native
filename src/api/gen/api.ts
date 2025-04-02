@@ -2874,7 +2874,7 @@ export interface OfferVenueResponse {
    * @type {boolean}
    * @memberof OfferVenueResponse
    */
-  isOpenToPublic?: boolean | null
+  isOpenToPublic: boolean
   /**
    * @type {boolean}
    * @memberof OfferVenueResponse
@@ -4604,7 +4604,7 @@ export interface VenueResponse {
    * @type {boolean}
    * @memberof VenueResponse
    */
-  isOpenToPublic?: boolean | null
+  isOpenToPublic: boolean
   /**
    * @type {boolean}
    * @memberof VenueResponse

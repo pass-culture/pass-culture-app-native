@@ -95,6 +95,7 @@ export const mockVenueHits = toMutable([
     instagram: null,
     snapchat: null,
     isPermanent: true,
+    isOpenToPublic: true,
     tags: [],
     banner_url:
       'https://storage.googleapis.com/passculture-metier-ehp-staging-assets-fine-grained/assets/venue_default_images/denise-jans-OaVJQZ-nFD0-unsplash.png',
@@ -132,6 +133,7 @@ export const mockVenueHits = toMutable([
     instagram: null,
     snapchat: null,
     isPermanent: true,
+    isOpenToPublic: true,
     tags: [],
     banner_url: null,
     _geoloc: {

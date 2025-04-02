@@ -104,6 +104,7 @@ export const mockOffer = toMutable({
       longitude: -52.63741,
     },
     isPermanent: true,
+    isOpenToPublic: true,
   },
   withdrawalDetails: null,
   metadata: {
@@ -202,6 +203,7 @@ export const mockDigitalOffer = toMutable({
       longitude: -52.63741,
     },
     isPermanent: true,
+    isOpenToPublic: true,
   },
   withdrawalDetails: null,
   metadata: {

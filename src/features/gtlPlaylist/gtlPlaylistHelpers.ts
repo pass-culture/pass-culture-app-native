@@ -1,4 +1,4 @@
-import { VenueTypeCodeKey, VenueResponse } from 'api/gen'
+import { VenueResponse, VenueTypeCodeKey } from 'api/gen'
 import { GtlPlaylistRequest } from 'features/gtlPlaylist/types'
 import { OffersModuleParameters, PlaylistOffersParams } from 'features/home/types'
 import { ContentfulLabelCategories } from 'libs/contentful/types'
@@ -53,6 +53,7 @@ export const getGtlPlaylistsParams = (
               venueId: venue.id,
               info: venue.city ?? '',
               label: venue.name,
+              isOpenToPublic: venue.isOpenToPublic,
             },
           },
         }

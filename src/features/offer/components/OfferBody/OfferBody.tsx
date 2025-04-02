@@ -115,7 +115,7 @@ export const OfferBody: FunctionComponent<Props> = ({
     navigate('Artist', { id: artists[0].id })
   }
 
-  const isOpenToPublicVenue = offer.venue.isOpenToPublic ?? false
+  const isOpenToPublicVenue = offer.venue.isOpenToPublic
 
   const fullAddressOffer = formatFullAddress(
     offer.address?.street,

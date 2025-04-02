@@ -5,11 +5,11 @@ import { ContentfulLabelCategories, DisplayParametersFields } from 'libs/content
 import { LocationMode } from 'libs/location/types'
 
 import {
-  getContentfulLabelByVenueType,
   filterByContentfulLabel,
-  getLabelFilter,
   filterGtlPlaylistConfigByLabel,
+  getContentfulLabelByVenueType,
   getGtlPlaylistsParams,
+  getLabelFilter,
 } from './gtlPlaylistHelpers'
 
 const mockVenue: VenueResponse = {
@@ -20,6 +20,7 @@ const mockVenue: VenueResponse = {
   accessibility: {},
   timezone: 'Europe/Paris',
   venueTypeCode: VenueTypeCodeKey.DISTRIBUTION_STORE,
+  isOpenToPublic: true,
 }
 
 const defaultDisplayParameters: DisplayParametersFields = {
@@ -175,6 +176,7 @@ describe('gtlPlaylist helpers functions', () => {
         venueId: mockVenue.id,
         info: mockVenue.city,
         label: mockVenue.name,
+        isOpenToPublic: mockVenue.isOpenToPublic,
       })
     })
 

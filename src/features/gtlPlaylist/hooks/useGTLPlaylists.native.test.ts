@@ -21,6 +21,7 @@ const defaultVenue: VenueResponse = {
   accessibility: {},
   timezone: 'Europe/Paris',
   venueTypeCode: VenueTypeCodeKey.DISTRIBUTION_STORE,
+  isOpenToPublic: true,
 }
 
 const mockVenue = (venueTypeCode: VenueTypeCodeKey) => ({ ...defaultVenue, venueTypeCode })
@@ -71,7 +72,7 @@ describe('useGTLPlaylists', () => {
             offerParams: expect.objectContaining({
               offerGtlLabel: 'Jeunesse',
               offerGtlLevel: 1,
-              venue: { info: 'Jest', label: 'Une librairie', venueId: 123 },
+              venue: { info: 'Jest', label: 'Une librairie', venueId: 123, isOpenToPublic: true },
             }),
           },
         ]),

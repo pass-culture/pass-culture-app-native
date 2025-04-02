@@ -17,7 +17,7 @@ jest.useFakeTimers()
 const dismissModalMock = jest.fn()
 
 const mockVenues = [
-  { label: 'venueLabel', info: 'info', venueId: 1234 },
+  { label: 'venueLabel', info: 'info', venueId: 1234, isOpenToPublic: true },
 ] as const satisfies readonly Venue[]
 
 jest.mock('libs/place/useVenues', () => ({

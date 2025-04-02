@@ -169,6 +169,7 @@ export type VenueHit = Pick<
   | 'publicName'
   | 'city'
   | 'postalCode'
+  | 'isOpenToPublic'
 > & {
   venueTypeCode: VenueTypeCode
 }
@@ -231,7 +232,7 @@ export interface AlgoliaVenue {
   snapchat: string | null
   banner_url: string | null
   isPermanent: boolean | null
-  isOpenToPublic?: boolean | null
+  isOpenToPublic: boolean
   _geoloc: Geoloc
   _highlightResult?: AlgoliaVenueHighlightResult
 }

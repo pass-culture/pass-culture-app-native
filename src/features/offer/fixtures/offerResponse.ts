@@ -105,6 +105,7 @@ export const offerResponseSnap = toMutable({
     publicName: undefined,
     coordinates: { latitude: 20, longitude: 2 },
     isPermanent: true,
+    isOpenToPublic: true,
     timezone: 'Europe/Paris',
   },
   withdrawalDetails: 'How to withdraw, https://test.com',
