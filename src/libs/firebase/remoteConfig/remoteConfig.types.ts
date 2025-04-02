@@ -15,6 +15,8 @@ export type CustomRemoteConfig = {
   homeEntryIdWithoutBooking_15_17: string
   homeEntryId_18: string
   homeEntryId_15_17: string
+  maxLikesValue: number
+  minLikesValue: number
   reactionFakeDoorCategories: Record<'categories', NativeCategoryIdEnumv2[]>
   sameAuthorPlaylist: string
   shouldDisplayReassuranceMention: boolean
