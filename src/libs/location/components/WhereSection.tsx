@@ -14,7 +14,7 @@ import { Spacer } from 'ui/components/spacer/Spacer'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { ArrowNext as DefaultArrowNext } from 'ui/svg/icons/ArrowNext'
 import { BicolorLocationBuilding as LocationBuilding } from 'ui/svg/icons/BicolorLocationBuilding'
-import { Typo, getSpacing } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type Props = {
@@ -25,16 +25,13 @@ type Props = {
   showVenueBanner?: boolean
 }
 
-type PartialVenue = Pick<
-  VenueResponse,
-  'id' | 'venueTypeCode' | 'name' | 'description' | 'publicName'
->
+type PartialVenue = Pick<VenueResponse, 'id' | 'venueTypeCode' | 'name' | 'description'>
 
 const mergeVenueData =
   (venue: PartialVenue) =>
   (prevData: VenueResponse | undefined): VenueResponse => ({
     id: venue.id,
-    name: venue.publicName || venue.name,
+    name: venue.name,
     venueTypeCode: venue.venueTypeCode,
     isVirtual: false,
     description: venue.description,
@@ -83,13 +80,13 @@ export const WhereSection: React.FC<Props> = ({
           <VenueNameContainer
             navigateTo={{ screen: 'Venue', params: { id: venue.id } }}
             onBeforeNavigate={onVenuePress}
-            accessibilityLabel={`Lieu ${venue.publicName || venue.name}`}>
+            accessibilityLabel={`Lieu ${venue.name}`}>
             <Spacer.Row numberOfSpaces={2} />
             <IconContainer>
               <LocationBuilding size={iconSize} />
             </IconContainer>
             <Spacer.Row numberOfSpaces={2} />
-            <StyledVenueName numberOfLines={1}>{venue.publicName || venue.name}</StyledVenueName>
+            <StyledVenueName numberOfLines={1}>{venue.name}</StyledVenueName>
             <Spacer.Flex />
             <ArrowNext />
           </VenueNameContainer>

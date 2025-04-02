@@ -21,16 +21,3 @@ export function formatFullAddressStartsWithPostalCode(
 
   return [firstPart, address].filter(Boolean).join(', ')
 }
-
-export function formatFullAddressWithVenueName(
-  address: FullAddressType,
-  postalCode: FullAddressType,
-  city: FullAddressType,
-  publicName: FullAddressType,
-  name: FullAddressType
-) {
-  let fullAddress = `${publicName || name || ''}`
-  const placeAddress = formatFullAddress(address, postalCode, city)
-  if (isNotEmpty(placeAddress)) fullAddress = fullAddress.concat(`, ${placeAddress}`)
-  return fullAddress
-}

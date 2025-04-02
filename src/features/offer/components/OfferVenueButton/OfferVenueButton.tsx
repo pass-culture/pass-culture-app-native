@@ -14,18 +14,17 @@ interface Props {
 
 export function OfferVenueButton({ venue }: Readonly<Props>) {
   const theme = useTheme()
-  const venueName = venue.publicName || venue.name
 
   return (
     <HeroButtonList
-      Title={<Typo.BodyAccent>{venueName}</Typo.BodyAccent>}
+      Title={<Typo.BodyAccent>{venue.name}</Typo.BodyAccent>}
       Subtitle={
         venue.city ? <SubtitleText testID="subtitle">{venue.city}</SubtitleText> : undefined
       }
       Icon={<LocationBuildingFilled color={theme.colors.black} size={theme.icons.sizes.small} />}
       navigateTo={{ screen: 'Venue', params: { id: venue.id } }}
       onBeforeNavigate={() => analytics.logConsultVenue({ venueId: venue.id, from: 'offer' })}
-      accessibilityLabel={`Accéder à la page du lieu ${venueName}`}
+      accessibilityLabel={`Accéder à la page du lieu ${venue.name}`}
     />
   )
 }

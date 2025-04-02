@@ -6,7 +6,7 @@ import { VenueHeader } from 'features/venue/components/VenueHeader/VenueHeader'
 import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
 import { analytics } from 'libs/analytics/provider'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, userEvent, render, screen } from 'tests/utils'
+import { act, render, screen, userEvent } from 'tests/utils'
 
 jest.unmock('react-native/Libraries/Animated/createAnimatedComponent')
 jest.mock('features/venue/api/useVenue')
@@ -69,15 +69,6 @@ describe('<VenueHeader />', () => {
       from: 'venue',
       venueId: venueDataTest.id,
     })
-  })
-
-  it('should display venue name if venue has no public name', async () => {
-    const venue = { ...venueDataTest, publicName: null, name: 'venueNameWithoutPublicName' }
-    render(
-      reactQueryProviderHOC(<VenueHeader headerTransition={new Animated.Value(0)} venue={venue} />)
-    )
-
-    expect(await screen.findByText('venueNameWithoutPublicName')).toBeOnTheScreen()
   })
 })
 
