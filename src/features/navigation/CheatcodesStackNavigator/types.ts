@@ -35,6 +35,7 @@ export type CheatcodesStackParamList = {
   CheatcodesNavigationNotScreensPages: undefined
   CheatcodesNavigationSignUp: undefined
   CheatcodesScreenAccesLibre: undefined
+  CheatcodesScreenLayoutExpiredLink: undefined
   CheatcodesScreenDebugInformations: undefined
   CheatcodesScreenFeatureFlags: undefined
   CheatcodesScreenGenericInfoPage: undefined

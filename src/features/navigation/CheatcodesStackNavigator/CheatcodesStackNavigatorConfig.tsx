@@ -31,6 +31,7 @@ export const cheatcodesStackNavigatorConfig = {
       CheatcodesNavigationTrustedDevice: 'cheatcodes/trusted-device',
       CheatcodesNavigationTutorial: 'cheatcodes/tutorial',
       CheatcodesScreenAccesLibre: 'cheatcodes/other/acces-libre',
+      CheatcodesScreenLayoutExpiredLink: 'cheatcodes/other/layout-expired-link',
       CheatcodesScreenCategoryThematicHomeHeader: 'cheatcodes/home/category-thematic-home-header',
       CheatcodesScreenDebugInformations: 'cheatcodes/other/debug-informations',
       CheatcodesScreenDefaultThematicHomeHeader: 'cheatcodes/home/default-thematic-home-header',

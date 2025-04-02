@@ -102,6 +102,7 @@ export function CheatcodesMenu(): React.JSX.Element {
     { title: 'Nouvelle-Calédonie 🇳🇨', screen: 'CheatcodesScreenNewCaledonia', subscreens: [] },
     { title: 'Pages non écrans ❌', screen: 'CheatcodesNavigationNotScreensPages', subscreens: [] },
     { title: 'Remote config 📊', screen: 'CheatcodesScreenRemoteConfig', subscreens: [] },
+    { title: 'LayoutExpiredLink 🔗', screen: 'CheatcodesScreenLayoutExpiredLink', subscreens: [] },
   ]
 
   const filteredFeaturesButtons = filterAndSortCheatcodesButtons(searchValue, featuresButtons)
