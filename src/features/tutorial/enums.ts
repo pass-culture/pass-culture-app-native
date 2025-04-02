@@ -8,6 +8,7 @@ export enum NonEligible {
   UNDER_15 = 'under_15',
   UNDER_17 = 'under_17', // For credit V3
   OVER_18 = 'over_18',
+  OTHER = 'other',
 }
 
 export enum UserOnboardingRole {

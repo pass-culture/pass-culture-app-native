@@ -2,6 +2,7 @@ import { StackScreenProps } from '@react-navigation/stack'
 import React from 'react'
 
 import { reset } from '__mocks__/@react-navigation/native'
+import { setSettings } from 'features/auth/tests/setSettings'
 import { TutorialRootStackParamList } from 'features/navigation/RootNavigator/types'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import * as useGoBack from 'features/navigation/useGoBack'
@@ -41,6 +42,7 @@ jest.useFakeTimers()
 describe('AgeSelectionOther', () => {
   beforeEach(async () => {
     setFeatureFlags()
+    setSettings({ wipEnableCreditV3: true })
     await storage.clear('user_age')
   })
 

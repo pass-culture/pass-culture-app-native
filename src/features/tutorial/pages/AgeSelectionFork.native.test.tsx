@@ -7,6 +7,7 @@ import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome
 import { TutorialRootStackParamList } from 'features/navigation/RootNavigator/types'
 import { TutorialTypes, NonEligible } from 'features/tutorial/enums'
 import { AgeSelectionFork } from 'features/tutorial/pages/AgeSelectionFork'
+import { analytics } from 'libs/analytics/__mocks__/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { storage } from 'libs/storage'
 import { render, screen, userEvent } from 'tests/utils'
@@ -191,6 +192,15 @@ describe('AgeSelectionFork', () => {
           age: 18,
           type: TutorialTypes.ONBOARDING,
         })
+      })
+
+      it('should call logSelectAge', async () => {
+        renderAgeSelectionFork({ type: TutorialTypes.ONBOARDING })
+
+        const button = screen.getByLabelText('J’ai 19 ans ou plus')
+        await user.press(button)
+
+        expect(analytics.logSelectAge).toHaveBeenCalledWith({ age: 'over_18', from: 'onboarding' })
       })
     })
   })

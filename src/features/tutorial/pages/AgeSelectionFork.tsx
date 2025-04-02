@@ -1,5 +1,5 @@
 import { StackScreenProps } from '@react-navigation/stack'
-import React, { FunctionComponent, useCallback } from 'react'
+import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
 import { useSettingsContext } from 'features/auth/context/SettingsContext'
@@ -9,6 +9,8 @@ import { AgeButton } from 'features/tutorial/components/AgeButton'
 import { useOnboardingContext } from 'features/tutorial/context/OnboardingWrapper'
 import { NonEligible, TutorialTypes } from 'features/tutorial/enums'
 import { TutorialPage } from 'features/tutorial/pages/TutorialPage'
+import { EligibleAges } from 'features/tutorial/types'
+import { analytics } from 'libs/analytics/provider'
 import { storage } from 'libs/storage'
 import { AccessibleUnorderedList } from 'ui/components/accessibility/AccessibleUnorderedList'
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
@@ -23,6 +25,10 @@ type AgeButtonProps = {
   onBeforeNavigate?: () => Promise<void>
 }
 
+const isNotEligible = (age: NonEligible | EligibleAges): age is NonEligible => {
+  return age in NonEligible
+}
+
 type Props = StackScreenProps<TutorialRootStackParamList, 'AgeSelectionFork'>
 
 export const AgeSelectionFork: FunctionComponent<Props> = ({ route }: Props) => {
@@ -34,20 +40,14 @@ export const AgeSelectionFork: FunctionComponent<Props> = ({ route }: Props) => 
 
   const { showNotEligibleModal } = useOnboardingContext()
 
-  const onUnder15Press = useCallback(async () => {
-    showNotEligibleModal(NonEligible.UNDER_15, type)
-    if (isOnboarding) await storage.saveObject('user_age', NonEligible.UNDER_15)
-  }, [type, isOnboarding, showNotEligibleModal])
+  const onAgeChoice = async (age: NonEligible | EligibleAges) => {
+    if (isNotEligible(age)) {
+      showNotEligibleModal(age, type)
+    }
 
-  const onUnder17Press = useCallback(async () => {
-    showNotEligibleModal(NonEligible.UNDER_17, type)
-    if (isOnboarding) await storage.saveObject('user_age', NonEligible.UNDER_17)
-  }, [type, isOnboarding, showNotEligibleModal])
-
-  const onOver18Press = useCallback(async () => {
-    showNotEligibleModal(NonEligible.OVER_18, type)
-    if (isOnboarding) await storage.saveObject('user_age', NonEligible.OVER_18)
-  }, [type, isOnboarding, showNotEligibleModal])
+    analytics.logSelectAge({ age, from: type })
+    if (isOnboarding) await storage.saveObject('user_age', age)
+  }
 
   const ageButtonsV2: AgeButtonProps[] = [
     {
@@ -55,7 +55,7 @@ export const AgeSelectionFork: FunctionComponent<Props> = ({ route }: Props) => 
       age: '14 ans',
       endButtonTitle: ' ou moins',
       navigateTo: navigateToHomeConfig,
-      onBeforeNavigate: onUnder15Press,
+      onBeforeNavigate: () => onAgeChoice(NonEligible.UNDER_15),
     },
     {
       startButtonTitle: 'J’ai entre ',
@@ -68,7 +68,7 @@ export const AgeSelectionFork: FunctionComponent<Props> = ({ route }: Props) => 
       age: '19 ans',
       endButtonTitle: ' ou plus',
       navigateTo: { screen: 'OnboardingGeneralPublicWelcome' },
-      onBeforeNavigate: onOver18Press,
+      onBeforeNavigate: () => onAgeChoice(NonEligible.OVER_18),
     },
   ]
 
@@ -78,26 +78,28 @@ export const AgeSelectionFork: FunctionComponent<Props> = ({ route }: Props) => 
       age: '16 ans',
       endButtonTitle: ' ou moins',
       navigateTo: { screen: 'OnboardingNotEligible' },
-      onBeforeNavigate: onUnder17Press,
+      onBeforeNavigate: () => onAgeChoice(NonEligible.UNDER_17),
     },
     {
       startButtonTitle: 'J’ai ',
       age: '17 ans',
       endButtonTitle: '',
       navigateTo: { screen: 'OnboardingAgeInformation', params: { age: 17 } },
+      onBeforeNavigate: () => onAgeChoice(17),
     },
     {
       startButtonTitle: 'J’ai ',
       age: '18 ans',
       endButtonTitle: '',
       navigateTo: { screen: 'OnboardingAgeInformation', params: { age: 18 } },
+      onBeforeNavigate: () => onAgeChoice(18),
     },
     {
       startButtonTitle: 'J’ai ',
       age: '19 ans',
       endButtonTitle: ' ou plus',
       navigateTo: { screen: 'OnboardingGeneralPublicWelcome' },
-      onBeforeNavigate: onOver18Press,
+      onBeforeNavigate: () => onAgeChoice(NonEligible.OVER_18),
     },
   ]
 
