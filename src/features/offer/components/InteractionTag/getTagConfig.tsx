@@ -8,17 +8,17 @@ import { Star } from 'ui/svg/Star'
 
 type TagConfig = {
   theme: typeof theme
+  maxLikesValue: number
+  minLikesValue: number
   likesCount?: number
   chroniclesCount?: number
   headlineCount?: number
 }
 
-// TODO(PC-35427) handle logic values with remote config
-const MIN_LIKES_VALUE = 20
-const MAX_LIKES_VALUE = 50
-
 export function getTagConfig({
   theme,
+  maxLikesValue,
+  minLikesValue,
   likesCount,
   chroniclesCount,
   headlineCount,
@@ -44,11 +44,11 @@ export function getTagConfig({
   const hasLikes = !!likesCount
 
   if (hasHeadline && !hasChronicles) {
-    return likesCount && likesCount >= MIN_LIKES_VALUE ? likesTagConfig : headlineTagConfig
+    return likesCount && likesCount >= minLikesValue ? likesTagConfig : headlineTagConfig
   }
 
   if (hasHeadline && hasChronicles) {
-    return likesCount && likesCount >= MAX_LIKES_VALUE ? likesTagConfig : bookClubTagConfig
+    return likesCount && likesCount >= maxLikesValue ? likesTagConfig : bookClubTagConfig
   }
 
   if (hasLikes) return likesTagConfig
