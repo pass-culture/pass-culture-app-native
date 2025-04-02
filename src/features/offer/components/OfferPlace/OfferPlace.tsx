@@ -150,7 +150,7 @@ export function OfferPlace({ offer, subcategory, distance }: Readonly<OfferPlace
 
   const isOfferAMovieScreening = offer.subcategoryId === SubcategoryIdEnum.SEANCE_CINE
 
-  const isOpenToPublicVenue = offer.venue.isOpenToPublic ?? false
+  const isOpenToPublicVenue = offer.venue.isOpenToPublic
 
   const canSeeVenue = shouldUseIsOpenToPublic ? isOpenToPublicVenue : offer.venue.isPermanent
 
