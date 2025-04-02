@@ -93,9 +93,8 @@ export default ({ mode }) => {
       }),
       // Put the Sentry vite plugin after all other plugins as specified in plugin's documentation
       sentryVitePlugin({
-        url: 'https://sentry.passculture.team/',
-        org: 'sentry',
-        project: 'application-native',
+        org: 'pass-culture',
+        project: 'jeunes',
         disable: !authToken,
         authToken,
         release: {

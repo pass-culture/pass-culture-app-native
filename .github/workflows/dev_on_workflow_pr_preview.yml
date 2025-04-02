@@ -84,9 +84,8 @@ jobs:
         uses: getsentry/action-release@v1
         env:
           SENTRY_AUTH_TOKEN: ${{ steps.secrets.outputs.SENTRY_TOKEN }}
-          SENTRY_ORG: sentry
-          SENTRY_PROJECT: native
-          SENTRY_URL: https://sentry.passculture.team/
+          SENTRY_ORG: pass-culture
+          SENTRY_PROJECT: jeunes
         with:
           sourcemaps: ./build
           working_directory: .
