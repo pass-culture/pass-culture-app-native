@@ -40,6 +40,7 @@ import { CheatcodesScreenGenericInfoPage } from 'cheatcodes/pages/others/Cheatco
 import { CheatcodesScreenGenericOfficialPage } from 'cheatcodes/pages/others/CheatcodesScreenGenericOfficialPage'
 import { CheatcodesScreenLayoutExpiredLink } from 'cheatcodes/pages/others/CheatcodesScreenLayoutExpiredLink'
 import { CheatcodesScreenNewCaledonia } from 'cheatcodes/pages/others/CheatcodesScreenNewCaledonia'
+import { CheatcodesScreenPageWithHeader } from 'cheatcodes/pages/others/CheatcodesScreenPageWithHeader'
 import { CheatcodesScreenRemoteConfig } from 'cheatcodes/pages/others/CheatcodesScreenRemoteConfig'
 import { CheatcodesScreenSecondaryPageWithBlurHeader } from 'cheatcodes/pages/others/CheatcodesScreenSecondaryPageWithBlurHeader'
 import { withAsyncErrorBoundary } from 'features/errors/hocs/withAsyncErrorBoundary'
@@ -205,6 +206,9 @@ const routes: CheatcodesStackRoute[] = [
   {
     name: 'CheatcodesScreenSecondaryPageWithBlurHeader',
     component: CheatcodesScreenSecondaryPageWithBlurHeader,
+  },
+    name: 'CheatcodesScreenPageWithHeader',
+    component: CheatcodesScreenPageWithHeader,
   },
   {
     name: 'CheatcodesScreenGenericErrorPage',

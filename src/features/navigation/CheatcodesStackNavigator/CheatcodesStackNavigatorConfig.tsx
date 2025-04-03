@@ -17,6 +17,7 @@ export const cheatcodesStackNavigatorConfig = {
       CheatcodesScreenSecondaryPageWithBlurHeader:
         'cheatcodes/other/secondary-page-with-blur-header',
       CheatcodesScreenGenericOfficialPage: 'cheatcodes/other/generic-official-page',
+      CheatcodesScreenPageWithHeader: 'cheatcodes/other/page-with-header',
       CheatcodesNavigationGenericPages: 'cheatcodes/other/generic-pages',
       CheatcodesNavigationHome: 'cheatcodes/home',
       CheatcodesNavigationIdentityCheck: 'cheatcodes/identity-check',
