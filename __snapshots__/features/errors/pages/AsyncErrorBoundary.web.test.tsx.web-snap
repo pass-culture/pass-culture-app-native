@@ -1,60 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`AsyncErrorBoundary component should render correctly 1`] = `
-.c2 {
-  -webkit-flex-direction: row;
-  -ms-flex-direction: row;
-  flex-direction: row;
-  -webkit-align-items: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  border-radius: 24px;
-  padding: 2px;
-  padding-left: 24px;
-  padding-right: 24px;
-  min-height: 48px;
-  width: 100%;
-  background-color: #ffffff;
-  max-width: 500px;
-  cursor: pointer;
-  outline: none;
-  border-width: 0;
-  display: -webkit-box;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  overflow: hidden;
-  -webkit-text-decoration: none;
-  text-decoration: none;
-  box-sizing: border-box;
-}
-
-.c2:disabled {
-  cursor: initial;
-  background: none;
-}
-
-.c2:hover {
-  -webkit-text-decoration: underline;
-  text-decoration: underline;
-  -webkit-text-decoration-color: #eb0055;
-  text-decoration-color: #eb0055;
-}
-
-.c2:hover:disabled {
-  -webkit-text-decoration: none;
-  text-decoration: none;
-}
-
-.c3:disabled {
-  background-color: #F1F1F4;
-}
-
 .c0 {
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
@@ -94,6 +40,60 @@ exports[`AsyncErrorBoundary component should render correctly 1`] = `
   text-decoration: none;
 }
 
+.c2 {
+  -webkit-flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  border-radius: 24px;
+  padding: 2px;
+  padding-left: 24px;
+  padding-right: 24px;
+  min-height: 48px;
+  width: 100%;
+  background-color: #eb0055;
+  max-width: 500px;
+  cursor: pointer;
+  outline: none;
+  border-width: 0;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  overflow: hidden;
+  -webkit-text-decoration: none;
+  text-decoration: none;
+  box-sizing: border-box;
+}
+
+.c2:disabled {
+  cursor: initial;
+  background: none;
+}
+
+.c2:hover {
+  -webkit-text-decoration: underline;
+  text-decoration: underline;
+  -webkit-text-decoration-color: #ffffff;
+  text-decoration-color: #ffffff;
+}
+
+.c2:hover:disabled {
+  -webkit-text-decoration: none;
+  text-decoration: none;
+}
+
+.c3:disabled {
+  background-color: #f1f1f4;
+}
+
 .c1 {
   position: absolute;
   top: 30px;
@@ -103,22 +103,8 @@ exports[`AsyncErrorBoundary component should render correctly 1`] = `
 
 <div>
   <div
-    class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
+    class="css-view-175oi2r r-backgroundColor-14lw9ot r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
   >
-    <div
-      class="css-view-175oi2r r-bottom-1p0dtai r-height-1pi2tsx r-left-1d2f490 r-position-u8s1d r-right-zchlnj r-top-ipm5af r-width-13qz1uu r-zIndex-1wyyakw"
-    >
-      <div
-        class="css-view-175oi2r"
-      >
-        <div
-          class="css-text-1rynq56"
-          dir="ltr"
-        >
-          undefined-SVG-Mock
-        </div>
-      </div>
-    </div>
     <button
       aria-label="Revenir en arrière"
       class="c0 c1 sc-dcJsrY c1"
@@ -139,7 +125,7 @@ exports[`AsyncErrorBoundary component should render correctly 1`] = `
       </div>
     </button>
     <div
-      class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-eqz5dr r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-1777fci r-maxWidth-7mdpej r-paddingHorizontal-ymttw5"
+      class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-1wtj0ep r-overflow-1jwulwa r-paddingHorizontal-1guathk r-paddingVertical-1h4fu65"
     >
       <div
         class="css-view-175oi2r r-height-10ptun7"
@@ -148,40 +134,41 @@ exports[`AsyncErrorBoundary component should render correctly 1`] = `
         class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
       />
       <div
-        class="css-view-175oi2r"
+        class="css-view-175oi2r r-alignItems-1awozwy r-justifyContent-1777fci r-marginBottom-1peese0"
       >
         <div
-          class="css-text-1rynq56"
-          dir="ltr"
+          class="css-view-175oi2r"
         >
-          undefined-SVG-Mock
+          <div
+            class="css-text-1rynq56"
+            dir="ltr"
+          >
+            undefined-SVG-Mock
+          </div>
         </div>
       </div>
       <div
-        class="css-view-175oi2r r-height-z80fyv"
-      />
-      <h1
-        aria-level="1"
-        class="css-text-1rynq56 r-color-jwli3a r-fontFamily-1gknse6 r-fontSize-1a2aj48 r-lineHeight-758dxi r-textAlign-q4m81j"
-        dir="ltr"
-        role="heading"
+        class="css-view-175oi2r r-alignItems-1awozwy r-gap-f4gmv6 r-marginBottom-zd98yo"
       >
-        Oups !
-      </h1>
-      <div
-        class="css-view-175oi2r r-height-z80fyv"
-      />
-      <div
-        class="css-text-1rynq56 r-color-jwli3a r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm r-textAlign-q4m81j"
-        dir="ltr"
-      >
-        Une erreur s’est produite pendant le chargement.
+        <h1
+          aria-level="1"
+          class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-1a2aj48 r-lineHeight-758dxi r-textAlign-q4m81j"
+          dir="ltr"
+          role="heading"
+        >
+          Oups !
+        </h1>
+        <h2
+          aria-level="2"
+          class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm r-textAlign-q4m81j"
+          dir="ltr"
+          role="heading"
+        >
+          Une erreur s’est produite pendant le chargement.
+        </h2>
       </div>
       <div
-        class="css-view-175oi2r r-height-eu3ka"
-      />
-      <div
-        class="css-view-175oi2r r-alignSelf-1pz39u2 r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
+        class="css-view-175oi2r r-alignItems-1awozwy"
       >
         <button
           aria-label="Réessayer"
@@ -194,7 +181,7 @@ exports[`AsyncErrorBoundary component should render correctly 1`] = `
             class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
           >
             <div
-              class="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-ntw818 r-fontFamily-1gknse6 r-fontSize-cygvgh r-lineHeight-u6qrkm r-maxWidth-dnmrzs"
+              class="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-1gknse6 r-fontSize-cygvgh r-lineHeight-u6qrkm r-maxWidth-dnmrzs"
               dir="ltr"
             >
               Réessayer
@@ -204,9 +191,6 @@ exports[`AsyncErrorBoundary component should render correctly 1`] = `
       </div>
       <div
         class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
-      />
-      <div
-        class="css-view-175oi2r r-height-3da1kt"
       />
     </div>
   </div>

@@ -10,14 +10,12 @@ import { useGoBack } from 'features/navigation/useGoBack'
 import { useLogTypeFromRemoteConfig } from 'libs/hooks/useLogTypeFromRemoteConfig'
 import { LogTypeEnum, ScreenError, AsyncError, MonitoringError } from 'libs/monitoring/errors'
 import { eventMonitoring } from 'libs/monitoring/services'
-import { Helmet } from 'libs/react-helmet/Helmet'
-import { ButtonPrimaryWhite } from 'ui/components/buttons/ButtonPrimaryWhite'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { GenericErrorPage } from 'ui/pages/GenericErrorPage'
 import { BicolorBrokenConnection } from 'ui/svg/BicolorBrokenConnection'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
-import { getSpacing, Typo } from 'ui/theme'
+import { getSpacing } from 'ui/theme'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 interface AsyncFallbackProps extends FallbackProps {
@@ -26,6 +24,10 @@ interface AsyncFallbackProps extends FallbackProps {
   header?: ReactNode
 }
 
+// NEVER EVER USE NAVIGATION (OR ANYTHING FROM @react-navigation)
+// ON THIS PAGE OR IT WILL BREAK!!!
+// THE NAVIGATION CONTEXT IS NOT ALWAYS LOADED WHEN WE DISPLAY
+// EX: ScreenErrorProvider IS OUTSIDE NAVIGATION !
 export const AsyncErrorBoundaryWithoutNavigation = ({
   resetErrorBoundary,
   error,
@@ -74,30 +76,15 @@ export const AsyncErrorBoundaryWithoutNavigation = ({
 
   const helmetTitle = 'Page erreur\u00a0: Erreur pendant le chargement | pass Culture'
 
-  // NEVER EVER USE NAVIGATION (OR ANYTHING FROM @react-navigation)
-  // ON THIS PAGE OR IT WILL BREAK!!!
-  // THE NAVIGATION CONTEXT IS NOT ALWAYS LOADED WHEN WE DISPLAY
-  // EX: ScreenErrorProvider IS OUTSIDE NAVIGATION !
   return (
-    <React.Fragment>
-      <Helmet>
-        <title>{helmetTitle}</title>
-      </Helmet>
-      <GenericErrorPage
-        title="Oups&nbsp;!"
-        icon={BrokenConnection}
-        header={header}
-        buttons={[
-          <ButtonPrimaryWhite
-            key={1}
-            wording="Réessayer"
-            onPress={handleRetry}
-            buttonHeight="tall"
-          />,
-        ]}>
-        <StyledBody>Une erreur s’est produite pendant le chargement.</StyledBody>
-      </GenericErrorPage>
-    </React.Fragment>
+    <GenericErrorPage
+      helmetTitle={helmetTitle}
+      header={header}
+      title="Oups&nbsp;!"
+      subtitle="Une erreur s’est produite pendant le chargement."
+      illustration={BicolorBrokenConnection}
+      button={{ wording: 'Réessayer', onPress: handleRetry }}
+    />
   )
 }
 
@@ -123,7 +110,7 @@ export const AsyncErrorBoundary = (props: AsyncFallbackProps) => {
 }
 
 const StyledArrowPrevious = styled(ArrowPrevious).attrs(({ theme }) => ({
-  color: theme.colors.white,
+  color: theme.designSystem.color.icon.default,
   size: theme.icons.sizes.small,
 }))``
 
@@ -133,13 +120,3 @@ const HeaderContainer = styledButton(Touchable)<{ top: number }>(({ theme, top }
   left: getSpacing(6),
   zIndex: theme.zIndex.floatingButton,
 }))
-
-const StyledBody = styled(Typo.Body)(({ theme }) => ({
-  color: theme.colors.white,
-  textAlign: 'center',
-}))
-
-const BrokenConnection = styled(BicolorBrokenConnection).attrs(({ theme }) => ({
-  color: theme.colors.white,
-  color2: theme.colors.white,
-}))``

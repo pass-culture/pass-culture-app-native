@@ -5,7 +5,7 @@ exports[`NoContentError should render correctly 1`] = `
   style={
     [
       {
-        "alignItems": "center",
+        "backgroundColor": "#ffffff",
         "flexBasis": 0,
         "flexGrow": 1,
         "flexShrink": 1,
@@ -14,51 +14,23 @@ exports[`NoContentError should render correctly 1`] = `
   }
 >
   <View
-    height="100%"
+    bottom={16}
     style={
       [
         {
-          "bottom": 0,
-          "height": "100%",
-          "left": 0,
-          "position": "absolute",
-          "right": 0,
-          "top": 0,
-          "width": "100%",
-          "zIndex": -1,
-        },
-      ]
-    }
-    width="100%"
-  >
-    <View
-      height="100%"
-      width="100%"
-    >
-      <Text>
-        undefined-SVG-Mock
-      </Text>
-    </View>
-  </View>
-  <View
-    style={
-      [
-        {
-          "alignItems": "center",
           "flexBasis": 0,
-          "flexDirection": "column",
           "flexGrow": 1,
           "flexShrink": 1,
-          "justifyContent": "center",
-          "maxWidth": 360,
-          "paddingHorizontal": 16,
+          "justifyContent": "space-between",
+          "overflow": "scroll",
+          "paddingHorizontal": 24,
+          "paddingVertical": 24,
         },
       ]
     }
   >
     <View
-      customHeight={16}
-      enable={true}
+      height={16}
       style={
         [
           {
@@ -68,6 +40,7 @@ exports[`NoContentError should render correctly 1`] = `
       }
     />
     <View
+      flex={1}
       style={
         [
           {
@@ -79,91 +52,73 @@ exports[`NoContentError should render correctly 1`] = `
       }
     />
     <View
-      numberOfSpaces={10}
       style={
         [
           {
-            "height": 40,
+            "alignItems": "center",
+            "justifyContent": "center",
+            "marginBottom": 24,
           },
         ]
       }
-    />
-    <View
-      height={156}
-      width={200}
     >
-      <Text>
-        undefined-SVG-Mock
+      <View
+        height={156}
+        width={200}
+      >
+        <Text>
+          undefined-SVG-Mock
+        </Text>
+      </View>
+    </View>
+    <View
+      gap={4}
+      style={
+        [
+          {
+            "alignItems": "center",
+            "gap": 16,
+            "marginBottom": 32,
+          },
+        ]
+      }
+    >
+      <Text
+        style={
+          [
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 21,
+              "lineHeight": 33.6,
+              "textAlign": "center",
+            },
+          ]
+        }
+      >
+        Oups !
+      </Text>
+      <Text
+        style={
+          [
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Medium",
+              "fontSize": 16,
+              "lineHeight": 25.6,
+              "textAlign": "center",
+            },
+          ]
+        }
+      >
+        Une erreur s’est produite pendant le chargement de nos recommandations.
       </Text>
     </View>
     <View
-      numberOfSpaces={5}
       style={
         [
           {
-            "height": 20,
-          },
-        ]
-      }
-    />
-    <Text
-      style={
-        [
-          {
-            "color": "#ffffff",
-            "fontFamily": "Montserrat-Bold",
-            "fontSize": 21,
-            "lineHeight": 33.6,
-            "textAlign": "center",
-          },
-        ]
-      }
-    >
-      Oups !
-    </Text>
-    <View
-      numberOfSpaces={5}
-      style={
-        [
-          {
-            "height": 20,
-          },
-        ]
-      }
-    />
-    <Text
-      style={
-        [
-          {
-            "color": "#ffffff",
-            "fontFamily": "Montserrat-Medium",
-            "fontSize": 16,
-            "lineHeight": 25.6,
-            "textAlign": "center",
-          },
-        ]
-      }
-    >
-      Une erreur s’est produite pendant le chargement de nos recommandations.
-    </Text>
-    <View
-      numberOfSpaces={10}
-      style={
-        [
-          {
-            "height": 40,
-          },
-        ]
-      }
-    />
-    <View
-      style={
-        [
-          {
-            "alignSelf": "stretch",
-            "flexBasis": 0,
-            "flexGrow": 1,
-            "flexShrink": 1,
+            "alignItems": "center",
           },
         ]
       }
@@ -204,7 +159,7 @@ exports[`NoContentError should render correctly 1`] = `
               },
               {
                 "alignItems": "center",
-                "backgroundColor": "transparent",
+                "backgroundColor": "#eb0055",
                 "borderRadius": 24,
                 "flexDirection": "row",
                 "justifyContent": "center",
@@ -216,10 +171,7 @@ exports[`NoContentError should render correctly 1`] = `
                 "paddingTop": 2,
                 "width": "100%",
               },
-              {
-                "borderColor": "#ffffff",
-                "borderWidth": 2,
-              },
+              {},
             ],
             {
               "opacity": 1,
@@ -289,33 +241,13 @@ exports[`NoContentError should render correctly 1`] = `
       </View>
     </View>
     <View
-      numberOfSpaces={10}
-      style={
-        [
-          {
-            "height": 40,
-          },
-        ]
-      }
-    />
-    <View
+      flex={1}
       style={
         [
           {
             "flexBasis": 0,
             "flexGrow": 1,
             "flexShrink": 1,
-          },
-        ]
-      }
-    />
-    <View
-      customHeight={8}
-      enable={true}
-      style={
-        [
-          {
-            "height": 8,
           },
         ]
       }
