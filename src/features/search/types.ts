@@ -65,7 +65,6 @@ export interface SearchState {
   isFromHistory?: boolean
   venue?: Venue
   gtls?: GTL[]
-  shouldRedirect?: boolean
 }
 
 export type UserData = {

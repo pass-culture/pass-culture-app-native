@@ -1,20 +1,17 @@
 import { Hit, SearchResponse } from '@algolia/client-search'
 import flatten from 'lodash/flatten'
-import { Dispatch, useMemo, useRef } from 'react'
+import { useMemo, useRef } from 'react'
 import { useInfiniteQuery } from 'react-query'
 
 import { useAccessibilityFiltersContext } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
-import { Action } from 'features/search/context/reducer'
 import { useSearch } from 'features/search/context/SearchWrapper'
-import { useNavigateToSearch } from 'features/search/helpers/useNavigateToSearch/useNavigateToSearch'
 import { SearchState } from 'features/search/types'
 import { Venue } from 'features/venue/types'
 import { GeolocatedVenue } from 'features/venueMap/components/VenueMapView/types'
 import { isGeolocValid } from 'features/venueMap/helpers/isGeolocValid'
 import { removeSelectedVenue, setVenues } from 'features/venueMap/store/venueMapStore'
 import { useSearchAnalyticsState } from 'libs/algolia/analytics/SearchAnalyticsWrapper'
-import { doAlgoliaRedirect } from 'libs/algolia/doAlgoliaRedirect'
 import { fetchSearchResults } from 'libs/algolia/fetchAlgolia/fetchSearchResults/fetchSearchResults'
 import { adaptAlgoliaVenues } from 'libs/algolia/fetchAlgolia/fetchVenues/adaptAlgoliaVenues'
 import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
@@ -37,7 +34,7 @@ export type SearchOfferHits = {
   duplicatedOffers: Offer[]
 }
 
-export const useSearchInfiniteQuery = (searchState: SearchState, dispatch: Dispatch<Action>) => {
+export const useSearchInfiniteQuery = (searchState: SearchState) => {
   const { userLocation, selectedLocationMode, aroundPlaceRadius, aroundMeRadius, geolocPosition } =
     useLocation()
   const { disabilities } = useAccessibilityFiltersContext()
@@ -45,7 +42,6 @@ export const useSearchInfiniteQuery = (searchState: SearchState, dispatch: Dispa
   const transformHits = useTransformOfferHits()
   const { setCurrentQueryID } = useSearchAnalyticsState()
   const previousPageObjectIds = useRef<string[]>([])
-  const { replaceToSearch: navigateToThematicSearch } = useNavigateToSearch('ThematicSearch')
   const { aroundPrecision } = useRemoteConfigQuery()
 
   const { data, ...infiniteQuery } = useInfiniteQuery<SearchOfferResponse>(
@@ -59,39 +55,24 @@ export const useSearchInfiniteQuery = (searchState: SearchState, dispatch: Dispa
       disabilities,
     ],
     async ({ pageParam: page = 0 }) => {
-      const {
-        offersResponse,
-        venuesResponse,
-        facetsResponse,
-        duplicatedOffersResponse,
-        redirectUrl,
-      } = await fetchSearchResults({
-        parameters: { page, ...searchState },
-        buildLocationParameterParams: {
-          userLocation,
-          selectedLocationMode,
-          aroundPlaceRadius,
-          aroundMeRadius,
-          geolocPosition,
-        },
-        isUserUnderage,
-        storeQueryID: setCurrentQueryID,
-        excludedObjectIds: previousPageObjectIds.current,
-        disabilitiesProperties: disabilities,
-        aroundPrecision,
-      })
+      const { offersResponse, venuesResponse, facetsResponse, duplicatedOffersResponse } =
+        await fetchSearchResults({
+          parameters: { page, ...searchState },
+          buildLocationParameterParams: {
+            userLocation,
+            selectedLocationMode,
+            aroundPlaceRadius,
+            aroundMeRadius,
+            geolocPosition,
+          },
+          isUserUnderage,
+          storeQueryID: setCurrentQueryID,
+          excludedObjectIds: previousPageObjectIds.current,
+          disabilitiesProperties: disabilities,
+          aroundPrecision,
+        })
 
       previousPageObjectIds.current = offersResponse.hits.map((hit: Hit<Offer>) => hit.objectID)
-
-      if (redirectUrl && searchState.shouldRedirect) {
-        doAlgoliaRedirect(
-          new URL(redirectUrl),
-          searchState,
-          disabilities,
-          dispatch,
-          navigateToThematicSearch
-        )
-      }
 
       return {
         offers: offersResponse,
@@ -167,6 +148,6 @@ export const useSearchInfiniteQuery = (searchState: SearchState, dispatch: Dispa
 }
 
 export const useSearchResults = () => {
-  const { searchState, dispatch } = useSearch()
-  return useSearchInfiniteQuery(searchState, dispatch)
+  const { searchState } = useSearch()
+  return useSearchInfiniteQuery(searchState)
 }
