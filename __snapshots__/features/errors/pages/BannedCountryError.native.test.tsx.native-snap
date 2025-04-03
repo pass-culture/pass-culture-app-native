@@ -5,7 +5,7 @@ exports[`BannedCountryError should render correctly 1`] = `
   style={
     [
       {
-        "alignItems": "center",
+        "backgroundColor": "#ffffff",
         "flexBasis": 0,
         "flexGrow": 1,
         "flexShrink": 1,
@@ -14,24 +14,23 @@ exports[`BannedCountryError should render correctly 1`] = `
   }
 >
   <View
+    bottom={16}
     style={
       [
         {
-          "alignItems": "center",
           "flexBasis": 0,
-          "flexDirection": "column",
           "flexGrow": 1,
           "flexShrink": 1,
-          "justifyContent": "center",
-          "maxWidth": 360,
-          "paddingHorizontal": 16,
+          "justifyContent": "space-between",
+          "overflow": "scroll",
+          "paddingHorizontal": 24,
+          "paddingVertical": 24,
         },
       ]
     }
   >
     <View
-      customHeight={16}
-      enable={true}
+      height={16}
       style={
         [
           {
@@ -41,6 +40,7 @@ exports[`BannedCountryError should render correctly 1`] = `
       }
     />
     <View
+      flex={1}
       style={
         [
           {
@@ -52,92 +52,73 @@ exports[`BannedCountryError should render correctly 1`] = `
       }
     />
     <View
-      numberOfSpaces={10}
       style={
         [
           {
-            "height": 40,
+            "alignItems": "center",
+            "justifyContent": "center",
+            "marginBottom": 24,
           },
         ]
       }
-    />
-    <View
-      height={156}
-      width={200}
     >
-      <Text>
-        undefined-SVG-Mock
+      <View
+        height={156}
+        width={200}
+      >
+        <Text>
+          undefined-SVG-Mock
+        </Text>
+      </View>
+    </View>
+    <View
+      gap={4}
+      style={
+        [
+          {
+            "alignItems": "center",
+            "gap": 16,
+            "marginBottom": 32,
+          },
+        ]
+      }
+    >
+      <Text
+        style={
+          [
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 21,
+              "lineHeight": 33.6,
+              "textAlign": "center",
+            },
+          ]
+        }
+      >
+        Tu n’es pas en France ?
+      </Text>
+      <Text
+        style={
+          [
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Medium",
+              "fontSize": 16,
+              "lineHeight": 25.6,
+              "textAlign": "center",
+            },
+          ]
+        }
+      >
+        Pour des raisons de sécurité, l’usage du pass Culture est interdit dans certains pays ou en cas d’utilisation d’un VPN.
       </Text>
     </View>
     <View
-      numberOfSpaces={5}
       style={
         [
           {
-            "height": 20,
-          },
-        ]
-      }
-    />
-    <Text
-      noBackground={true}
-      style={
-        [
-          {
-            "color": "#161617",
-            "fontFamily": "Montserrat-Bold",
-            "fontSize": 21,
-            "lineHeight": 33.6,
-            "textAlign": "center",
-          },
-        ]
-      }
-    >
-      Tu n’es pas en France ?
-    </Text>
-    <View
-      numberOfSpaces={5}
-      style={
-        [
-          {
-            "height": 20,
-          },
-        ]
-      }
-    />
-    <Text
-      style={
-        [
-          {
-            "color": "#161617",
-            "fontFamily": "Montserrat-Medium",
-            "fontSize": 16,
-            "lineHeight": 25.6,
-            "textAlign": "center",
-          },
-        ]
-      }
-    >
-      Pour des raisons de sécurité, l’usage du pass Culture est interdit dans certains pays ou en cas d’utilisation d’un VPN.
-    </Text>
-    <View
-      numberOfSpaces={10}
-      style={
-        [
-          {
-            "height": 40,
-          },
-        ]
-      }
-    />
-    <View
-      style={
-        [
-          {
-            "alignSelf": "stretch",
-            "flexBasis": 0,
-            "flexGrow": 1,
-            "flexShrink": 1,
+            "alignItems": "center",
           },
         ]
       }
@@ -230,33 +211,13 @@ exports[`BannedCountryError should render correctly 1`] = `
       </View>
     </View>
     <View
-      numberOfSpaces={10}
-      style={
-        [
-          {
-            "height": 40,
-          },
-        ]
-      }
-    />
-    <View
+      flex={1}
       style={
         [
           {
             "flexBasis": 0,
             "flexGrow": 1,
             "flexShrink": 1,
-          },
-        ]
-      }
-    />
-    <View
-      customHeight={8}
-      enable={true}
-      style={
-        [
-          {
-            "height": 8,
           },
         ]
       }
