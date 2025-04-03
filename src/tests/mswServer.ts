@@ -1,13 +1,4 @@
-import {
-  DefaultBodyType,
-  delay as delayFunction,
-  http,
-  HttpResponse,
-  passthrough,
-  ResponseResolver,
-  type PathParams,
-} from 'msw'
-import { type HttpRequestResolverExtras } from 'msw/lib/core/handlers/HttpHandler'
+import { DefaultBodyType, delay as delayFunction, http, HttpResponse, passthrough } from 'msw'
 import { setupServer } from 'msw/node'
 
 import { env } from 'libs/environment/env'
@@ -161,7 +152,7 @@ class MswMockServer
     fullUrl: string,
     options: MockOptions<string, DefaultBodyType, string | RegExp | Buffer>,
     method: SupportedMethod
-  ): ResponseResolver<HttpRequestResolverExtras<PathParams>, Record<string, unknown>> => {
+  ) => {
     const {
       persist,
       headers = undefined,

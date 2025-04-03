@@ -33,7 +33,7 @@ describe('<AppModal />', () => {
   it('should hide the modal when set to hidden', () => {
     render(<AppModal {...defaultProps} visible={false} />)
 
-    expect(screen.getByTestId('modal')).toHaveProp('visible', false)
+    expect(screen.queryByTestId('modal')).not.toBeOnTheScreen()
   })
 
   it('without children', () => {
