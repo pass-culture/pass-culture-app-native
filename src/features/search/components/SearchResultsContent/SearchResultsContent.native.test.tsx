@@ -23,7 +23,7 @@ import { GeolocPermissionState, Position } from 'libs/location'
 import { LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
 import { mockedSuggestedVenue } from 'libs/venue/fixtures/mockedSuggestedVenues'
-import { useVenuesInRegionQuery } from 'queries/useVenuesInRegionQuery/useVenuesInRegionQuery'
+import { useVenuesInRegionQuery } from 'queries/venueMap/useVenuesInRegionQuery'
 import { Offer } from 'shared/offer/types'
 import { mockAuthContextWithUser, mockAuthContextWithoutUser } from 'tests/AuthContextUtils'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -163,7 +163,7 @@ jest.mock('libs/location/LocationWrapper', () => ({
   useLocation: () => mockUseLocation(),
 }))
 
-jest.mock('queries/useVenuesInRegionQuery/useVenuesInRegionQuery.ts')
+jest.mock('queries/venueMap/useVenuesInRegionQuery')
 const mockUseVenuesInRegionQuery = useVenuesInRegionQuery as jest.Mock
 
 jest.mock('@react-navigation/native')
