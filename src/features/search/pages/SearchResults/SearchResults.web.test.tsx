@@ -6,12 +6,12 @@ import { ISearchContext } from 'features/search/context/SearchWrapper'
 import * as useFilterCountAPI from 'features/search/helpers/useFilterCount/useFilterCount'
 import { SearchResults } from 'features/search/pages/SearchResults/SearchResults'
 import { useCenterOnLocation } from 'features/venueMap/hook/useCenterOnLocation'
-import { useVenuesInRegionQuery } from 'features/venueMap/useVenuesInRegionQuery'
 import { venuesFixture } from 'libs/algolia/fetchAlgolia/fetchVenues/fixtures/venuesFixture'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
+import { useVenuesInRegionQuery } from 'queries/venueMap/useVenuesInRegionQuery'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, checkAccessibilityFor, render } from 'tests/utils/web'
@@ -71,7 +71,7 @@ jest.mock('features/venue/api/useVenueOffers')
 jest.mock('features/venueMap/helpers/zoomOutIfMapEmpty')
 jest.mock('features/navigation/TabBar/tabBarRoutes')
 
-jest.mock('features/venueMap/useVenuesInRegionQuery')
+jest.mock('queries/venueMap/useVenuesInRegionQuery')
 const mockUseVenuesInRegionQuery = useVenuesInRegionQuery as jest.Mock
 
 describe('<SearchResults/>', () => {

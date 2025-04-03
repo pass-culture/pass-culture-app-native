@@ -16,11 +16,11 @@ import { VenueMapViewContainer } from 'features/venueMap/components/VenueMapView
 import { useCenterOnLocation } from 'features/venueMap/hook/useCenterOnLocation'
 import * as useVenueMapFilters from 'features/venueMap/hook/useVenueMapFilters'
 import * as useVenueMapStore from 'features/venueMap/store/venueMapStore'
-import { useVenuesInRegionQuery } from 'features/venueMap/useVenuesInRegionQuery'
 import mockVenueSearchParams from 'fixtures/venueSearchParams'
 import { venuesFixture } from 'libs/algolia/fetchAlgolia/fetchVenues/fixtures/venuesFixture'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { useVenuesInRegionQuery } from 'queries/venueMap/useVenuesInRegionQuery'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, userEvent, waitFor } from 'tests/utils'
 
@@ -36,7 +36,7 @@ mockUseNavigation.mockReturnValue({ navigate: mockNavigate })
 const mockUseRoute = useRoute as jest.Mock
 mockUseRoute.mockReturnValue({ name: 'venueMap' })
 
-jest.mock('features/venueMap/useVenuesInRegionQuery')
+jest.mock('queries/venueMap/useVenuesInRegionQuery')
 const mockUseVenuesInRegionQuery = useVenuesInRegionQuery as jest.Mock
 
 jest.mock('features/venueMap/hook/useCenterOnLocation')
