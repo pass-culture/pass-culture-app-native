@@ -11099,7 +11099,7 @@ __metadata:
     typescript: 5.0.4
     url-loader: ^4.1.1
     uuid: ^8.3.2
-    vite: ^5.3.1
+    vite: ^5.4.16
     vite-bundle-analyzer: ^0.16.2
     vite-plugin-commonjs: ^0.10.4
     vite-plugin-html: ^3.2.2
@@ -28755,9 +28755,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vite@npm:^5.3.1":
-  version: 5.4.8
-  resolution: "vite@npm:5.4.8"
+"vite@npm:^5.4.16":
+  version: 5.4.16
+  resolution: "vite@npm:5.4.16"
   dependencies:
     esbuild: ^0.21.3
     fsevents: ~2.3.3
@@ -28794,7 +28794,7 @@ __metadata:
       optional: true
   bin:
     vite: bin/vite.js
-  checksum: b5686ff76a60d53092dc13a5c1e5627165226b8e3da7736931adf87bbe58d383bca386383cea134750108c2d42750c916db3f2314ac90a9477d693950145f140
+  checksum: 7458c69288bd7dbc6df97a4edd76dc53a7e8960ca24f73ad55faed02743c5732d5a7dbc5db5055df418de8cde0bffc17290f1159c5c419f08d88fb0f9cbb0b25
   languageName: node
   linkType: hard
 
