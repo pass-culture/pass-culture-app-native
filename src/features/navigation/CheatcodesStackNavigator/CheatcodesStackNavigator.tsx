@@ -207,6 +207,7 @@ const routes: CheatcodesStackRoute[] = [
     name: 'CheatcodesScreenSecondaryPageWithBlurHeader',
     component: CheatcodesScreenSecondaryPageWithBlurHeader,
   },
+  {
     name: 'CheatcodesScreenPageWithHeader',
     component: CheatcodesScreenPageWithHeader,
   },
