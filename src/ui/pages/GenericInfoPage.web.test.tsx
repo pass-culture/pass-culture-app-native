@@ -1,10 +1,11 @@
 import React from 'react'
 
 import { checkAccessibilityFor, render } from 'tests/utils/web'
-import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { MaintenanceCone } from 'ui/svg/icons/MaintenanceCone'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
 import { Typo } from 'ui/theme'
+
+import { GenericInfoPage } from './GenericInfoPage'
 
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')

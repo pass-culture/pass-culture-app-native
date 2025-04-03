@@ -1,80 +1,72 @@
-import React from 'react'
+import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
-import { ButtonTertiaryWhite } from 'ui/components/buttons/ButtonTertiaryWhite'
+import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
-import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
-import { GenericInfoPageDeprecated } from 'ui/pages/GenericInfoPageDeprecated'
-import { EmailFilled } from 'ui/svg/icons/EmailFilled'
-import { ExternalSite } from 'ui/svg/icons/ExternalSite'
+import { ExternalNavigationProps } from 'ui/components/touchableLink/types'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
+import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
 import { SadFace } from 'ui/svg/icons/SadFace'
-import { Spacer, Typo } from 'ui/theme'
+import { AccessibleIcon } from 'ui/svg/icons/types'
+import { Typo } from 'ui/theme'
 
 type Props = {
-  renderCustomButton?: () => React.ReactNode
+  customSubtitle?: string
   urlFAQ?: string
-  contactSupport?: () => void
-  customBodyText?: string
+  primaryButtonInformations?:
+    | {
+        wording: string
+        externalNav: ExternalNavigationProps['externalNav']
+        onPress?: never
+        icon?: FunctionComponent<AccessibleIcon>
+      }
+    | {
+        wording: string
+        onPress: () => void
+        externalNav?: never
+        icon?: FunctionComponent<AccessibleIcon>
+      }
 }
 
-export function LayoutExpiredLink({
-  renderCustomButton,
-  urlFAQ,
-  contactSupport,
-  customBodyText,
-}: Props) {
+export function LayoutExpiredLink({ primaryButtonInformations, urlFAQ, customSubtitle }: Props) {
+  const defaultSubtitle =
+    'Clique sur «\u00a0Renvoyer l’e-mail\u00a0» pour recevoir un nouveau lien.'
+
+  const goToHomeButtonInformations = {
+    wording: 'Retourner à l’accueil',
+    navigateTo: navigateToHomeConfig,
+    icon: PlainArrowPrevious,
+  }
+
   return (
-    <GenericInfoPageDeprecated
+    <GenericInfoPage
+      illustration={SadFace}
       title="Oups&nbsp;!"
-      icon={SadFace}
-      buttons={[
-        renderCustomButton?.(),
-        <InternalTouchableLink
-          key={1}
-          as={ButtonTertiaryWhite}
-          wording="Retourner à l’accueil"
-          navigateTo={navigateToHomeConfig}
-          icon={PlainArrowPrevious}
-        />,
-      ].filter(Boolean)}>
-      <StyledBody>Le lien est expiré&nbsp;!</StyledBody>
-      <StyledBody>
-        {customBodyText ||
-          'Clique sur «\u00a0Renvoyer l’e-mail\u00a0» pour recevoir un nouveau lien.'}
-      </StyledBody>
-      <Spacer.Column numberOfSpaces={6} />
-
-      {!!urlFAQ || !!contactSupport ? (
-        <React.Fragment>
-          <StyledBody>Si tu as besoin d’aide n’hésite pas à&nbsp;:</StyledBody>
-          <Spacer.Column numberOfSpaces={2} />
-        </React.Fragment>
-      ) : null}
-
+      subtitle={customSubtitle ?? defaultSubtitle}
+      buttonPrimary={primaryButtonInformations ?? goToHomeButtonInformations}
+      buttonTertiary={primaryButtonInformations ? goToHomeButtonInformations : undefined}>
       {urlFAQ ? (
-        <ExternalTouchableLink
-          as={ButtonTertiaryWhite}
-          wording="Consulter l’article d’aide"
-          externalNav={{ url: urlFAQ }}
-          icon={ExternalSite}
-        />
+        <FAQContainer gap={2}>
+          <StyledBody>Si tu as besoin d’aide n’hésite pas à&nbsp;:</StyledBody>
+          <ExternalTouchableLink
+            as={ButtonTertiaryBlack}
+            wording="Consulter l’article d’aide"
+            externalNav={{ url: urlFAQ }}
+            icon={ExternalSiteFilled}
+          />
+        </FAQContainer>
       ) : null}
-
-      {contactSupport ? (
-        <ButtonTertiaryWhite
-          wording="Contacter le support"
-          accessibilityLabel="Ouvrir le gestionnaire mail pour contacter le support"
-          onPress={contactSupport}
-          icon={EmailFilled}
-        />
-      ) : null}
-    </GenericInfoPageDeprecated>
+    </GenericInfoPage>
   )
 }
 
-const StyledBody = styled(Typo.Body)(({ theme }) => ({
-  color: theme.colors.white,
+const FAQContainer = styled(ViewGap)({
+  alignItems: 'center',
+})
+
+const StyledBody = styled(Typo.Body)({
   textAlign: 'center',
-}))
+})

@@ -6,11 +6,16 @@ import { CheatcodesButtonsWithSubscreensProps } from 'cheatcodes/types'
 
 export const cheatcodesNavigationGenericPagesButtons: [CheatcodesButtonsWithSubscreensProps] = [
   {
-    title: 'GenericPages 📄',
+    title: 'Pages génériques 📄',
     screen: 'CheatcodesNavigationGenericPages',
     subscreens: [
       { screen: 'CheatcodesScreenGenericInfoPage', title: 'GenericInfoPage' },
       { screen: 'CheatcodesScreenGenericErrorPage', title: 'GenericErrorPage' },
+      { screen: 'CheatcodesScreenGenericOfficialPage', title: 'GenericOfficialPage' },
+      {
+        screen: 'CheatcodesScreenSecondaryPageWithBlurHeader',
+        title: 'SecondaryPageWithBlurHeader',
+      },
     ],
   },
 ]

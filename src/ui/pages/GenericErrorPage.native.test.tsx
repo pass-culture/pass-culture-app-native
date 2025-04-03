@@ -1,8 +1,9 @@
 import React from 'react'
 
 import { render, screen } from 'tests/utils'
-import { GenericErrorPage } from 'ui/pages/GenericErrorPage'
 import { BicolorPhonePending } from 'ui/svg/icons/BicolorPhonePending'
+
+import { GenericErrorPage } from './GenericErrorPage'
 
 // We unmock these modules to make sure they are not used because
 // navigation with @react-navigation is not always defined in GenericErrorPage

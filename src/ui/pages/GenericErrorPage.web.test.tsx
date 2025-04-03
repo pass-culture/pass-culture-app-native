@@ -1,8 +1,9 @@
 import React from 'react'
 
-import { render } from 'tests/utils/web'
-import { GenericErrorPage } from 'ui/pages/GenericErrorPage'
+import { checkAccessibilityFor, render } from 'tests/utils/web'
 import { BicolorPhonePending } from 'ui/svg/icons/BicolorPhonePending'
+
+import { GenericErrorPage } from './GenericErrorPage'
 
 // We unmock these modules to make sure they are not used because
 // navigation with @react-navigation is not always defined in GenericErrorPage
@@ -18,5 +19,17 @@ describe('<GenericErrorPage />', () => {
     )
 
     expect(container).toMatchSnapshot()
+  })
+
+  describe('Accessibility', () => {
+    it('should not have basic accessibility issues', async () => {
+      const { container } = render(
+        <GenericErrorPage title="GenericErrorPage" icon={BicolorPhonePending} />
+      )
+
+      const results = await checkAccessibilityFor(container)
+
+      expect(results).toHaveNoViolations()
+    })
   })
 })

@@ -37,8 +37,11 @@ import { CheatcodesScreenDebugInformations } from 'cheatcodes/pages/others/Cheat
 import { CheatcodesScreenFeatureFlags } from 'cheatcodes/pages/others/CheatcodesScreenFeatureFlags'
 import { CheatcodesScreenGenericErrorPage } from 'cheatcodes/pages/others/CheatcodesScreenGenericErrorPage'
 import { CheatcodesScreenGenericInfoPage } from 'cheatcodes/pages/others/CheatcodesScreenGenericInfoPage'
+import { CheatcodesScreenGenericOfficialPage } from 'cheatcodes/pages/others/CheatcodesScreenGenericOfficialPage'
+import { CheatcodesScreenLayoutExpiredLink } from 'cheatcodes/pages/others/CheatcodesScreenLayoutExpiredLink'
 import { CheatcodesScreenNewCaledonia } from 'cheatcodes/pages/others/CheatcodesScreenNewCaledonia'
 import { CheatcodesScreenRemoteConfig } from 'cheatcodes/pages/others/CheatcodesScreenRemoteConfig'
+import { CheatcodesScreenSecondaryPageWithBlurHeader } from 'cheatcodes/pages/others/CheatcodesScreenSecondaryPageWithBlurHeader'
 import { withAsyncErrorBoundary } from 'features/errors/hocs/withAsyncErrorBoundary'
 import { CheatcodesStackParamList } from 'features/navigation/CheatcodesStackNavigator/types'
 import { ROOT_NAVIGATOR_SCREEN_OPTIONS } from 'features/navigation/RootNavigator/navigationOptions'
@@ -176,6 +179,10 @@ const routes: CheatcodesStackRoute[] = [
     component: withAsyncErrorBoundary(CheatcodesNavigationNotScreensPages),
   },
   {
+    name: 'CheatcodesScreenLayoutExpiredLink',
+    component: CheatcodesScreenLayoutExpiredLink,
+  },
+  {
     name: 'CheatcodesScreenAccesLibre',
     component: CheatcodesScreenAccesLibre,
   },
@@ -196,8 +203,16 @@ const routes: CheatcodesStackRoute[] = [
     component: CheatcodesScreenGenericInfoPage,
   },
   {
+    name: 'CheatcodesScreenSecondaryPageWithBlurHeader',
+    component: CheatcodesScreenSecondaryPageWithBlurHeader,
+  },
+  {
     name: 'CheatcodesScreenGenericErrorPage',
     component: CheatcodesScreenGenericErrorPage,
+  },
+  {
+    name: 'CheatcodesScreenGenericOfficialPage',
+    component: CheatcodesScreenGenericOfficialPage,
   },
   {
     name: 'CheatcodesScreenBookingNotFound',

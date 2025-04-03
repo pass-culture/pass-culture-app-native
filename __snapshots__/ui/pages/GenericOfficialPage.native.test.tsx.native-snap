@@ -1,0 +1,243 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<GenericOfficialPage /> should render correctly 1`] = `
+<View
+  style={
+    [
+      {
+        "backgroundColor": "#ffffff",
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+      },
+    ]
+  }
+>
+  <View
+    style={
+      [
+        {
+          "alignItems": "center",
+          "flexBasis": 0,
+          "flexGrow": 1,
+          "flexShrink": 1,
+          "overflowY": "auto",
+        },
+      ]
+    }
+  >
+    <View
+      customHeight={16}
+      enable={true}
+      style={
+        [
+          {
+            "height": 16,
+          },
+        ]
+      }
+    />
+    <View
+      style={
+        [
+          {
+            "maxWidth": 400,
+            "paddingHorizontal": 24,
+            "paddingTop": 16,
+            "width": "100%",
+          },
+        ]
+      }
+    >
+      <View
+        style={
+          [
+            {
+              "alignSelf": "stretch",
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+            },
+          ]
+        }
+      >
+        <View
+          style={
+            [
+              {
+                "height": 88,
+                "width": 132,
+              },
+            ]
+          }
+        >
+          <View
+            accessibilityLabel="République Française - Liberté Égalité Fraternité"
+            fill="none"
+            height={80}
+            width={80}
+          >
+            <Text>
+              undefined-SVG-Mock
+            </Text>
+          </View>
+        </View>
+        <View
+          style={
+            [
+              {
+                "justifyContent": "center",
+              },
+            ]
+          }
+        >
+          <View
+            accessibilityLabel="pass culture"
+            height={53}
+            width={157}
+          >
+            <Text>
+              undefined-SVG-Mock
+            </Text>
+          </View>
+        </View>
+      </View>
+      <View
+        style={
+          [
+            {
+              "borderBottomColor": "#CBCDD2",
+              "borderBottomWidth": 1,
+              "paddingVertical": 12,
+            },
+          ]
+        }
+      />
+    </View>
+    <View
+      style={
+        [
+          {
+            "flexBasis": "auto",
+            "flexDirection": "column",
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "justifyContent": "center",
+            "maxWidth": 400,
+            "paddingHorizontal": 24,
+            "width": "100%",
+          },
+        ]
+      }
+    >
+      <View
+        style={
+          [
+            {
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
+            },
+          ]
+        }
+      />
+      <View
+        numberOfSpaces={10}
+        style={
+          [
+            {
+              "height": 40,
+            },
+          ]
+        }
+      />
+      <Text
+        style={
+          [
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 21,
+              "lineHeight": 33.6,
+            },
+          ]
+        }
+      >
+        Title
+      </Text>
+      <View
+        numberOfSpaces={5}
+        style={
+          [
+            {
+              "height": 20,
+            },
+          ]
+        }
+      />
+      <Text
+        style={
+          [
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Medium",
+              "fontSize": 16,
+              "lineHeight": 25.6,
+            },
+          ]
+        }
+      >
+        Children...
+      </Text>
+      <View
+        numberOfSpaces={10}
+        style={
+          [
+            {
+              "height": 40,
+            },
+          ]
+        }
+      />
+      <View
+        flex={0.5}
+        style={
+          [
+            {
+              "flexBasis": 0,
+              "flexGrow": 0.5,
+              "flexShrink": 1,
+            },
+          ]
+        }
+      />
+    </View>
+    <View
+      style={
+        [
+          {
+            "flexBasis": "auto",
+            "flexDirection": "column",
+            "flexGrow": 1,
+            "flexShrink": 1,
+            "maxWidth": 400,
+            "paddingHorizontal": 24,
+            "width": "100%",
+          },
+        ]
+      }
+    >
+      <View
+        customHeight={8}
+        enable={true}
+        style={
+          [
+            {
+              "height": 8,
+            },
+          ]
+        }
+      />
+    </View>
+  </View>
+</View>
+`;

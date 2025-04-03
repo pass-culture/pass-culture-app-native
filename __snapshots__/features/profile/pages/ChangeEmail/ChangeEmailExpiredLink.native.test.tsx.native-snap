@@ -5,7 +5,7 @@ exports[`<ChangeEmailExpiredLink /> should render correctly 1`] = `
   style={
     [
       {
-        "alignItems": "center",
+        "backgroundColor": "#ffffff",
         "flexBasis": 0,
         "flexGrow": 1,
         "flexShrink": 1,
@@ -14,45 +14,21 @@ exports[`<ChangeEmailExpiredLink /> should render correctly 1`] = `
   }
 >
   <View
-    height="100%"
+    accessibilityRole="header"
     style={
       [
         {
-          "bottom": 0,
-          "height": "100%",
+          "backgroundColor": "rgba(255,255,255,0)",
+          "borderBottomColor": "#cbcdd2",
+          "borderBottomWidth": 1,
           "left": 0,
           "position": "absolute",
           "right": 0,
           "top": 0,
-          "width": "100%",
-          "zIndex": -1,
+          "zIndex": 1,
         },
-      ]
-    }
-    width="100%"
-  >
-    <View
-      height="100%"
-      width="100%"
-    >
-      <Text>
-        undefined-SVG-Mock
-      </Text>
-    </View>
-  </View>
-  <View
-    style={
-      [
         {
-          "alignItems": "center",
-          "flexBasis": 0,
-          "flexDirection": "column",
-          "flexGrow": 1,
-          "flexShrink": 1,
-          "justifyContent": "center",
-          "maxWidth": 360,
-          "overflowY": "auto",
-          "paddingHorizontal": 16,
+          "borderBottomWidth": 0,
         },
       ]
     }
@@ -72,6 +48,95 @@ exports[`<ChangeEmailExpiredLink /> should render correctly 1`] = `
       style={
         [
           {
+            "alignItems": "center",
+            "height": 48,
+            "justifyContent": "center",
+          },
+        ]
+      }
+    >
+      <View
+        style={
+          [
+            {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+              "width": "100%",
+            },
+          ]
+        }
+      >
+        <View
+          positionInHeader="left"
+          style={
+            [
+              {
+                "alignItems": "center",
+                "flexBasis": 0,
+                "flexDirection": "row",
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "justifyContent": "flex-start",
+                "paddingLeft": 12,
+                "paddingRight": 12,
+              },
+            ]
+          }
+          testID="back-button-container"
+        />
+        <View
+          positionInHeader="right"
+          style={
+            [
+              {
+                "alignItems": "center",
+                "flexBasis": 0,
+                "flexDirection": "row",
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "justifyContent": "flex-end",
+                "paddingLeft": 12,
+                "paddingRight": 12,
+              },
+            ]
+          }
+          testID="close-button-container"
+        />
+      </View>
+    </View>
+  </View>
+  <View
+    bottom={16}
+    style={
+      [
+        {
+          "flexBasis": 0,
+          "flexGrow": 1,
+          "flexShrink": 1,
+          "justifyContent": "space-between",
+          "overflow": "scroll",
+          "paddingHorizontal": 24,
+          "paddingVertical": 24,
+        },
+      ]
+    }
+  >
+    <View
+      height={16}
+      style={
+        [
+          {
+            "height": 16,
+          },
+        ]
+      }
+    />
+    <View
+      flex={1}
+      style={
+        [
+          {
             "flexBasis": 0,
             "flexGrow": 1,
             "flexShrink": 1,
@@ -80,132 +145,90 @@ exports[`<ChangeEmailExpiredLink /> should render correctly 1`] = `
       }
     />
     <View
-      numberOfSpaces={10}
+      animation={false}
       style={
         [
           {
-            "height": 40,
+            "alignItems": "center",
+            "justifyContent": "center",
+            "marginBottom": 24,
           },
         ]
       }
-    />
-    <View
-      height={156}
-      width={200}
     >
-      <Text>
-        undefined-SVG-Mock
+      <View
+        height={156}
+        width={200}
+      >
+        <Text>
+          undefined-SVG-Mock
+        </Text>
+      </View>
+    </View>
+    <View
+      gap={4}
+      style={
+        [
+          {
+            "alignItems": "center",
+            "gap": 16,
+            "marginBottom": 24,
+          },
+        ]
+      }
+    >
+      <Text
+        style={
+          [
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 21,
+              "lineHeight": 33.6,
+              "textAlign": "center",
+            },
+          ]
+        }
+      >
+        Oups !
+      </Text>
+      <Text
+        style={
+          [
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Medium",
+              "fontSize": 16,
+              "lineHeight": 25.6,
+              "textAlign": "center",
+            },
+          ]
+        }
+      >
+        Ton adresse e-mail n’a pas été modifiée. Le lien que tu reçois par e-mail expire 24h après sa réception.
+
+Tu peux faire une nouvelle demande de modification dans ton profil.
       </Text>
     </View>
     <View
-      numberOfSpaces={5}
+      flex={1}
       style={
         [
           {
-            "height": 20,
-          },
-        ]
-      }
-    />
-    <Text
-      style={
-        [
-          {
-            "color": "#ffffff",
-            "fontFamily": "Montserrat-Bold",
-            "fontSize": 21,
-            "lineHeight": 33.6,
-            "textAlign": "center",
-          },
-        ]
-      }
-    >
-      Oups !
-    </Text>
-    <View
-      numberOfSpaces={5}
-      style={
-        [
-          {
-            "height": 20,
-          },
-        ]
-      }
-    />
-    <Text
-      style={
-        [
-          {
-            "color": "#ffffff",
-            "fontFamily": "Montserrat-Medium",
-            "fontSize": 16,
-            "lineHeight": 25.6,
-            "textAlign": "center",
-          },
-        ]
-      }
-    >
-      Le lien est expiré !
-    </Text>
-    <Text
-      style={
-        [
-          {
-            "color": "#ffffff",
-            "fontFamily": "Montserrat-Medium",
-            "fontSize": 16,
-            "lineHeight": 25.6,
-            "textAlign": "center",
-          },
-        ]
-      }
-    >
-      Ton adresse e-mail n’a pas été modifiée. Le lien que tu reçois par e-mail expire 24h après sa réception.
-
-Tu peux faire une nouvelle demande de modification dans ton profil.
-    </Text>
-    <View
-      numberOfSpaces={6}
-      style={
-        [
-          {
-            "height": 24,
-          },
-        ]
-      }
-    />
-    <View
-      numberOfSpaces={30}
-      style={
-        [
-          {
-            "height": 120,
-          },
-        ]
-      }
-    />
-    <View
-      flex={0.5}
-      style={
-        [
-          {
-            "flexBasis": 0,
-            "flexGrow": 0.5,
-            "flexShrink": 1,
-          },
-        ]
-      }
-    />
-    <View
-      style={
-        [
-          {
-            "alignSelf": "stretch",
             "flexBasis": 0,
             "flexGrow": 1,
             "flexShrink": 1,
-            "justifyContent": "flex-end",
-            "marginBottom": 32,
+          },
+        ]
+      }
+    />
+    <View
+      gap={4}
+      style={
+        [
+          {
+            "alignItems": "center",
+            "gap": 16,
           },
         ]
       }
@@ -246,7 +269,7 @@ Tu peux faire une nouvelle demande de modification dans ton profil.
               },
               {
                 "alignItems": "center",
-                "backgroundColor": "#ffffff",
+                "backgroundColor": "#eb0055",
                 "borderRadius": 24,
                 "flexDirection": "row",
                 "justifyContent": "center",
@@ -283,7 +306,7 @@ Tu peux faire une nouvelle demande de modification dans ton profil.
             style={
               [
                 {
-                  "color": "#eb0055",
+                  "color": "#ffffff",
                   "fontFamily": "Montserrat-Bold",
                   "fontSize": 16,
                   "lineHeight": 25.6,
@@ -296,16 +319,6 @@ Tu peux faire une nouvelle demande de modification dans ton profil.
           </Text>
         </View>
       </View>
-      <View
-        numberOfSpaces={4}
-        style={
-          [
-            {
-              "height": 16,
-            },
-          ]
-        }
-      />
       <View
         accessibilityLabel="Retourner à l’accueil"
         accessibilityState={
@@ -354,7 +367,7 @@ Tu peux faire une nouvelle demande de modification dans ton profil.
                 "width": "100%",
               },
               {
-                "backgroundColor": "transparent",
+                "backgroundColor": "#ffffff",
               },
             ],
             {
@@ -410,7 +423,7 @@ Tu peux faire une nouvelle demande de modification dans ton profil.
             style={
               [
                 {
-                  "color": "#ffffff",
+                  "color": "#161617",
                   "fontFamily": "Montserrat-Bold",
                   "fontSize": 16,
                   "lineHeight": 25.6,
@@ -424,17 +437,6 @@ Tu peux faire une nouvelle demande de modification dans ton profil.
         </View>
       </View>
     </View>
-    <View
-      customHeight={8}
-      enable={true}
-      style={
-        [
-          {
-            "height": 8,
-          },
-        ]
-      }
-    />
   </View>
 </View>
 `;
@@ -444,7 +446,7 @@ exports[`<ChangeEmailExpiredLink /> should render correctly when logged out 1`] 
   style={
     [
       {
-        "alignItems": "center",
+        "backgroundColor": "#ffffff",
         "flexBasis": 0,
         "flexGrow": 1,
         "flexShrink": 1,
@@ -453,45 +455,21 @@ exports[`<ChangeEmailExpiredLink /> should render correctly when logged out 1`] 
   }
 >
   <View
-    height="100%"
+    accessibilityRole="header"
     style={
       [
         {
-          "bottom": 0,
-          "height": "100%",
+          "backgroundColor": "rgba(255,255,255,0)",
+          "borderBottomColor": "#cbcdd2",
+          "borderBottomWidth": 1,
           "left": 0,
           "position": "absolute",
           "right": 0,
           "top": 0,
-          "width": "100%",
-          "zIndex": -1,
+          "zIndex": 1,
         },
-      ]
-    }
-    width="100%"
-  >
-    <View
-      height="100%"
-      width="100%"
-    >
-      <Text>
-        undefined-SVG-Mock
-      </Text>
-    </View>
-  </View>
-  <View
-    style={
-      [
         {
-          "alignItems": "center",
-          "flexBasis": 0,
-          "flexDirection": "column",
-          "flexGrow": 1,
-          "flexShrink": 1,
-          "justifyContent": "center",
-          "maxWidth": 360,
-          "overflowY": "auto",
-          "paddingHorizontal": 16,
+          "borderBottomWidth": 0,
         },
       ]
     }
@@ -511,6 +489,95 @@ exports[`<ChangeEmailExpiredLink /> should render correctly when logged out 1`] 
       style={
         [
           {
+            "alignItems": "center",
+            "height": 48,
+            "justifyContent": "center",
+          },
+        ]
+      }
+    >
+      <View
+        style={
+          [
+            {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+              "width": "100%",
+            },
+          ]
+        }
+      >
+        <View
+          positionInHeader="left"
+          style={
+            [
+              {
+                "alignItems": "center",
+                "flexBasis": 0,
+                "flexDirection": "row",
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "justifyContent": "flex-start",
+                "paddingLeft": 12,
+                "paddingRight": 12,
+              },
+            ]
+          }
+          testID="back-button-container"
+        />
+        <View
+          positionInHeader="right"
+          style={
+            [
+              {
+                "alignItems": "center",
+                "flexBasis": 0,
+                "flexDirection": "row",
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "justifyContent": "flex-end",
+                "paddingLeft": 12,
+                "paddingRight": 12,
+              },
+            ]
+          }
+          testID="close-button-container"
+        />
+      </View>
+    </View>
+  </View>
+  <View
+    bottom={16}
+    style={
+      [
+        {
+          "flexBasis": 0,
+          "flexGrow": 1,
+          "flexShrink": 1,
+          "justifyContent": "space-between",
+          "overflow": "scroll",
+          "paddingHorizontal": 24,
+          "paddingVertical": 24,
+        },
+      ]
+    }
+  >
+    <View
+      height={16}
+      style={
+        [
+          {
+            "height": 16,
+          },
+        ]
+      }
+    />
+    <View
+      flex={1}
+      style={
+        [
+          {
             "flexBasis": 0,
             "flexGrow": 1,
             "flexShrink": 1,
@@ -519,132 +586,90 @@ exports[`<ChangeEmailExpiredLink /> should render correctly when logged out 1`] 
       }
     />
     <View
-      numberOfSpaces={10}
+      animation={false}
       style={
         [
           {
-            "height": 40,
+            "alignItems": "center",
+            "justifyContent": "center",
+            "marginBottom": 24,
           },
         ]
       }
-    />
-    <View
-      height={156}
-      width={200}
     >
-      <Text>
-        undefined-SVG-Mock
+      <View
+        height={156}
+        width={200}
+      >
+        <Text>
+          undefined-SVG-Mock
+        </Text>
+      </View>
+    </View>
+    <View
+      gap={4}
+      style={
+        [
+          {
+            "alignItems": "center",
+            "gap": 16,
+            "marginBottom": 24,
+          },
+        ]
+      }
+    >
+      <Text
+        style={
+          [
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 21,
+              "lineHeight": 33.6,
+              "textAlign": "center",
+            },
+          ]
+        }
+      >
+        Oups !
+      </Text>
+      <Text
+        style={
+          [
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Medium",
+              "fontSize": 16,
+              "lineHeight": 25.6,
+              "textAlign": "center",
+            },
+          ]
+        }
+      >
+        Ton adresse e-mail n’a pas été modifiée. Le lien que tu reçois par e-mail expire 24h après sa réception.
+
+Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de modification.
       </Text>
     </View>
     <View
-      numberOfSpaces={5}
+      flex={1}
       style={
         [
           {
-            "height": 20,
-          },
-        ]
-      }
-    />
-    <Text
-      style={
-        [
-          {
-            "color": "#ffffff",
-            "fontFamily": "Montserrat-Bold",
-            "fontSize": 21,
-            "lineHeight": 33.6,
-            "textAlign": "center",
-          },
-        ]
-      }
-    >
-      Oups !
-    </Text>
-    <View
-      numberOfSpaces={5}
-      style={
-        [
-          {
-            "height": 20,
-          },
-        ]
-      }
-    />
-    <Text
-      style={
-        [
-          {
-            "color": "#ffffff",
-            "fontFamily": "Montserrat-Medium",
-            "fontSize": 16,
-            "lineHeight": 25.6,
-            "textAlign": "center",
-          },
-        ]
-      }
-    >
-      Le lien est expiré !
-    </Text>
-    <Text
-      style={
-        [
-          {
-            "color": "#ffffff",
-            "fontFamily": "Montserrat-Medium",
-            "fontSize": 16,
-            "lineHeight": 25.6,
-            "textAlign": "center",
-          },
-        ]
-      }
-    >
-      Ton adresse e-mail n’a pas été modifiée. Le lien que tu reçois par e-mail expire 24h après sa réception.
-
-Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de modification.
-    </Text>
-    <View
-      numberOfSpaces={6}
-      style={
-        [
-          {
-            "height": 24,
-          },
-        ]
-      }
-    />
-    <View
-      numberOfSpaces={30}
-      style={
-        [
-          {
-            "height": 120,
-          },
-        ]
-      }
-    />
-    <View
-      flex={0.5}
-      style={
-        [
-          {
-            "flexBasis": 0,
-            "flexGrow": 0.5,
-            "flexShrink": 1,
-          },
-        ]
-      }
-    />
-    <View
-      style={
-        [
-          {
-            "alignSelf": "stretch",
             "flexBasis": 0,
             "flexGrow": 1,
             "flexShrink": 1,
-            "justifyContent": "flex-end",
-            "marginBottom": 32,
+          },
+        ]
+      }
+    />
+    <View
+      gap={4}
+      style={
+        [
+          {
+            "alignItems": "center",
+            "gap": 16,
           },
         ]
       }
@@ -685,7 +710,7 @@ Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de
               },
               {
                 "alignItems": "center",
-                "backgroundColor": "#ffffff",
+                "backgroundColor": "#eb0055",
                 "borderRadius": 24,
                 "flexDirection": "row",
                 "justifyContent": "center",
@@ -722,7 +747,7 @@ Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de
             style={
               [
                 {
-                  "color": "#eb0055",
+                  "color": "#ffffff",
                   "fontFamily": "Montserrat-Bold",
                   "fontSize": 16,
                   "lineHeight": 25.6,
@@ -735,16 +760,6 @@ Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de
           </Text>
         </View>
       </View>
-      <View
-        numberOfSpaces={4}
-        style={
-          [
-            {
-              "height": 16,
-            },
-          ]
-        }
-      />
       <View
         accessibilityLabel="Retourner à l’accueil"
         accessibilityState={
@@ -793,7 +808,7 @@ Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de
                 "width": "100%",
               },
               {
-                "backgroundColor": "transparent",
+                "backgroundColor": "#ffffff",
               },
             ],
             {
@@ -849,7 +864,7 @@ Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de
             style={
               [
                 {
-                  "color": "#ffffff",
+                  "color": "#161617",
                   "fontFamily": "Montserrat-Bold",
                   "fontSize": 16,
                   "lineHeight": 25.6,
@@ -863,17 +878,6 @@ Connecte-toi avec ton ancienne adresse e-mail pour faire une nouvelle demande de
         </View>
       </View>
     </View>
-    <View
-      customHeight={8}
-      enable={true}
-      style={
-        [
-          {
-            "height": 8,
-          },
-        ]
-      }
-    />
   </View>
 </View>
 `;

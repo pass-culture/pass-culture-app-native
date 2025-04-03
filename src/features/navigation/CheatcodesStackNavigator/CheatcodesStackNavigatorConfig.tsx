@@ -14,6 +14,9 @@ export const cheatcodesStackNavigatorConfig = {
       CheatcodesScreenBookingNotFound: 'cheatcodes/bookings/booking-not-found',
       CheatcodesScreenGenericInfoPage: 'cheatcodes/other/generic-info-page',
       CheatcodesScreenGenericErrorPage: 'cheatcodes/other/generic-error-page',
+      CheatcodesScreenSecondaryPageWithBlurHeader:
+        'cheatcodes/other/secondary-page-with-blur-header',
+      CheatcodesScreenGenericOfficialPage: 'cheatcodes/other/generic-official-page',
       CheatcodesNavigationGenericPages: 'cheatcodes/other/generic-pages',
       CheatcodesNavigationHome: 'cheatcodes/home',
       CheatcodesNavigationIdentityCheck: 'cheatcodes/identity-check',
@@ -30,6 +33,7 @@ export const cheatcodesStackNavigatorConfig = {
       CheatcodesNavigationTrustedDevice: 'cheatcodes/trusted-device',
       CheatcodesNavigationTutorial: 'cheatcodes/tutorial',
       CheatcodesScreenAccesLibre: 'cheatcodes/other/acces-libre',
+      CheatcodesScreenLayoutExpiredLink: 'cheatcodes/other/layout-expired-link',
       CheatcodesScreenCategoryThematicHomeHeader: 'cheatcodes/home/category-thematic-home-header',
       CheatcodesScreenDebugInformations: 'cheatcodes/other/debug-informations',
       CheatcodesScreenDefaultThematicHomeHeader: 'cheatcodes/home/default-thematic-home-header',
