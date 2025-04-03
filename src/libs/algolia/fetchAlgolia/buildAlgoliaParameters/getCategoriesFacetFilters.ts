@@ -25,5 +25,6 @@ export const getCategoriesFacetFilters = (
   categoryLabel: ContentfulLabelCategories
 ): SearchGroupNameEnumv2 => {
   const searchGroup = CONTENTFUL_LABELS[categoryLabel]
-  return CATEGORY_CRITERIA[searchGroup].facetFilter
+
+  return CATEGORY_CRITERIA[searchGroup]?.facetFilter ?? SearchGroupNameEnumv2.NONE
 }
