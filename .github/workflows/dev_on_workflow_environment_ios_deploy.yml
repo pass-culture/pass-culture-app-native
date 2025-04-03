@@ -77,7 +77,7 @@ jobs:
             MATCH_PASSWORD:passculture-metier-ehp/passculture-app-native-match-password
             MATCH_SSH_KEY:passculture-metier-ehp/passculture-app-native-match-ssh-key
             MATCH_USERNAME:passculture-metier-ehp/passculture-app-native-match-username
-            SENTRY_AUTH_TOKEN:passculture-metier-ehp/passculture-app-native-sentry-token
+            SENTRY_AUTH_TOKEN:passculture-metier-ehp/pcapi-native-sentry-saas-token
       - name: Get Secret for App Distribution from Secret Manager (EHP only)
         id: 'app_distribution_secret'
         uses: 'google-github-actions/get-secretmanager-secrets@v2'

@@ -60,7 +60,7 @@ jobs:
         uses: 'google-github-actions/get-secretmanager-secrets@v2'
         with:
           secrets: |-
-            SENTRY_AUTH_TOKEN:passculture-metier-ehp/passculture-app-native-sentry-token
+            SENTRY_AUTH_TOKEN:passculture-metier-ehp/pcapi-native-sentry-saas-token
       - name: Switch to google prod account for prod
         if: ${{ inputs.ENV == 'production' }}
         uses: 'google-github-actions/auth@v2'

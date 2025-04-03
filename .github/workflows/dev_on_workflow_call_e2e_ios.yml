@@ -70,7 +70,7 @@ jobs:
             MATCH_PASSWORD:passculture-metier-ehp/passculture-app-native-match-password
             MATCH_SSH_KEY:passculture-metier-ehp/passculture-app-native-match-ssh-key
             MATCH_USERNAME:passculture-metier-ehp/passculture-app-native-match-username
-            SENTRY_AUTH_TOKEN:passculture-metier-ehp/passculture-app-native-sentry-token
+            SENTRY_AUTH_TOKEN:passculture-metier-ehp/pcapi-native-sentry-saas-token
             ROBIN_API_KEY:passculture-metier-ehp/passculture-app-native-e2e-robin-api-key
             MAESTRO_PASSWORD:passculture-metier-ehp/passculture-app-native-e2e-maestro-password
       - name: 'Render Template'
