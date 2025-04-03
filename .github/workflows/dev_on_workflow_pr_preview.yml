@@ -57,7 +57,7 @@ jobs:
         with:
           secrets: |-
             FIREBASE_TOKEN:passculture-metier-ehp/pc_native_${{ inputs.ENV }}_firebase_json
-            SENTRY_TOKEN:passculture-metier-ehp/passculture-app-native-sentry-token
+            SENTRY_TOKEN:passculture-metier-ehp/pcapi-native-sentry-saas-token
       - name: 'Cache the node_modules'
         id: 'yarn-modules-cache'
         uses: pass-culture-github-actions/cache@v1.0.0
