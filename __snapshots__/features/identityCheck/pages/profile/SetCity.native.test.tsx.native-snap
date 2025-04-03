@@ -1,7 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<SetCity/> should render correctly 1`] = `
-[
+<View
+  style={
+    [
+      {
+        "backgroundColor": "#ffffff",
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+      },
+    ]
+  }
+>
   <View
     accessibilityRole="header"
     style={
@@ -179,7 +190,7 @@ exports[`<SetCity/> should render correctly 1`] = `
         />
       </View>
     </View>
-  </View>,
+  </View>
   <View
     style={
       [
@@ -567,7 +578,7 @@ exports[`<SetCity/> should render correctly 1`] = `
         </View>
       </View>
     </View>
-  </View>,
+  </View>
   <View
     height={65}
     style={
@@ -602,6 +613,6 @@ exports[`<SetCity/> should render correctly 1`] = `
         ]
       }
     />
-  </View>,
-]
+  </View>
+</View>
 `;

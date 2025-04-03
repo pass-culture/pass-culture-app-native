@@ -4,7 +4,6 @@ import React from 'react'
 import { Controller, useForm } from 'react-hook-form'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { CityForm, cityResolver } from 'features/identityCheck/pages/profile/SetCity'
 import { cityActions, useCity } from 'features/identityCheck/pages/profile/store/cityStore'
 import { getProfileStackConfig } from 'features/navigation/ProfileStackNavigator/getProfileStackConfig'
@@ -14,6 +13,7 @@ import { CitySearchInput } from 'features/profile/components/CitySearchInput/Cit
 import { analytics } from 'libs/analytics/provider'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 

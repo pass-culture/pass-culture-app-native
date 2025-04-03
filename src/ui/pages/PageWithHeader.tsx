@@ -2,13 +2,14 @@ import React, { FunctionComponent, ReactNode, useState } from 'react'
 import { LayoutChangeEvent, ScrollView, View } from 'react-native'
 import styled from 'styled-components/native'
 
-import { CustomKeyboardAvoidingView } from 'features/identityCheck/components/CustomKeyboardAvoidingView'
-import { useShouldEnableScrollOnView } from 'features/identityCheck/components/layout/helpers/useShouldEnableScrollView'
 import { BlurHeader } from 'ui/components/headers/BlurHeader'
 import {
   PageHeaderWithoutPlaceholder,
   useGetHeaderHeight,
 } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
+import { CustomKeyboardAvoidingView } from 'ui/pages/components/CustomKeyboardAvoidingView'
+import { useShouldEnableScrollOnView } from 'ui/pages/helpers/useShouldEnableScrollView'
+import { Page } from 'ui/pages/Page'
 import { getSpacing, Spacer } from 'ui/theme'
 
 interface Props {
@@ -19,19 +20,18 @@ interface Props {
 }
 
 export const PageWithHeader: FunctionComponent<Props> = (props) => {
+  const headerHeight = useGetHeaderHeight()
+
   const { onScrollViewLayout, onScrollViewContentSizeChange } = useShouldEnableScrollOnView()
 
   const [bottomChildrenViewHeight, setBottomChildrenViewHeight] = useState(0)
-
-  const headerHeight = useGetHeaderHeight()
-
   function onFixedBottomChildrenViewLayout(event: LayoutChangeEvent) {
     const { height } = event.nativeEvent.layout
     setBottomChildrenViewHeight(height)
   }
 
   return (
-    <React.Fragment>
+    <Page>
       <PageHeaderWithoutPlaceholder title={props.title} onGoBack={props.onGoBack} />
       <CustomKeyboardAvoidingView>
         {props.scrollChildren ? (
@@ -51,7 +51,7 @@ export const PageWithHeader: FunctionComponent<Props> = (props) => {
         ) : null}
       </CustomKeyboardAvoidingView>
       <BlurHeader height={headerHeight} />
-    </React.Fragment>
+    </Page>
   )
 }
 
@@ -73,6 +73,6 @@ const FixedBottomChildrenView = styled(View)(({ theme }) => ({
   right: 0,
   paddingBottom: getSpacing(5),
   paddingTop: getSpacing(3),
-  backgroundColor: theme.colors.white,
+  backgroundColor: theme.designSystem.color.background.default,
   paddingHorizontal: getSpacing(5),
 }))
