@@ -18,6 +18,7 @@ export const CheatcodesScreenPageWithHeader = () => {
       scrollChildren={<Typo.Body>Children...</Typo.Body>}
       fixedBottomChildren={
         <ButtonPrimary wording="Retour" onPress={navigateToCheatcodesNavigationGenericPages} />
-      }></PageWithHeader>
+      }
+    />
   )
 }
