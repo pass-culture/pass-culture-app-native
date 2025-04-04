@@ -6,7 +6,7 @@ import type { BookingsResponse } from 'api/gen'
 import {
   BookingDetailsCancelButton,
   BookingDetailsCancelButtonProps,
-} from 'features/bookings/components/BookingDetailsCancelButton'
+} from 'features/bookings/components/OldTicketBody/BookingDetailsCancelButton'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { Booking } from 'features/bookings/types'
 import { isUserExBeneficiary } from 'features/profile/helpers/isUserExBeneficiary'

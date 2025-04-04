@@ -3,19 +3,27 @@ import { ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
 import { BookingOfferResponseAddress, BookingReponse, BookingVenueResponse } from 'api/gen'
+import { ArchiveBookingModal } from 'features/bookings/components/ArchiveBookingModal'
+import { BookingDetailsCancelButton } from 'features/bookings/components/BookingDetailsCancelButton'
 import { BookingPrecisions } from 'features/bookings/components/BookingPrecision'
+import { CancelBookingModal } from 'features/bookings/components/CancelBookingModal'
 import { TicketBody } from 'features/bookings/components/TicketBody/TicketBody'
 import { TicketCutout } from 'features/bookings/components/TicketCutout'
 import { getBookingLabels } from 'features/bookings/helpers'
 import { BookingProperties } from 'features/bookings/types'
+import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
+import { useGoBack } from 'features/navigation/useGoBack'
 import { VenueBlockAddress, VenueBlockVenue } from 'features/offer/components/OfferVenueBlock/type'
 import { VenueBlockWithItinerary } from 'features/offer/components/OfferVenueBlock/VenueBlockWithItinerary'
 import { analytics } from 'libs/analytics/provider'
 import { useLocation } from 'libs/location'
 import { getDistance } from 'libs/location/getDistance'
 import { formatFullAddress } from 'shared/address/addressFormatter'
+import { theme } from 'theme'
 import { ErrorBanner } from 'ui/components/banners/ErrorBanner'
 import { InfoBanner } from 'ui/components/banners/InfoBanner'
+import { RoundedButton } from 'ui/components/buttons/RoundedButton'
+import { useModal } from 'ui/components/modals/useModal'
 import { Separator } from 'ui/components/Separator'
 import { IdCard } from 'ui/svg/icons/IdCard'
 import { getSpacing } from 'ui/theme'
@@ -30,6 +38,12 @@ export const BookingDetailsContent = ({
   booking: BookingReponse
 }) => {
   const { address } = booking?.stock.offer ?? {}
+  const { visible: cancelModalVisible, showModal: showCancelModal, hideModal } = useModal(false)
+  const {
+    visible: archiveModalVisible,
+    showModal: showArchiveModal,
+    hideModal: hideArchiveModal,
+  } = useModal(false)
   const offerFullAddress = address
     ? formatFullAddress(address.street, address.postalCode, address.city)
     : undefined
@@ -52,9 +66,22 @@ export const BookingDetailsContent = ({
   const onEmailPress = () => {
     analytics.logClickEmailOrganizer()
   }
+  const cancelBooking = () => {
+    showCancelModal()
+    analytics.logCancelBooking(offer.id)
+  }
+
+  const { goBack } = useGoBack(...getTabNavConfig('Bookings'))
 
   return (
     <ScrollView>
+      <RoundedButton
+        iconName="back"
+        onPress={goBack}
+        accessibilityLabel="Revenir en arrière"
+        finalColor={theme.colors.black}
+        initialColor={theme.colors.black}
+      />
       <TicketCutout
         hour={hourLabel == '' ? undefined : hourLabel}
         day={dayLabel == '' ? undefined : dayLabel}
@@ -93,6 +120,19 @@ export const BookingDetailsContent = ({
         </React.Fragment>
       ) : null}
       <StyledSeparator height={getSpacing(8)} />
+      <BookingDetailsCancelButton
+        booking={booking}
+        onCancel={cancelBooking}
+        onTerminate={showArchiveModal}
+        fullWidth
+      />
+      <CancelBookingModal visible={cancelModalVisible} dismissModal={hideModal} booking={booking} />
+      <ArchiveBookingModal
+        visible={archiveModalVisible}
+        bookingId={booking.id}
+        bookingTitle={offer.name}
+        onDismiss={hideArchiveModal}
+      />
     </ScrollView>
   )
 }
