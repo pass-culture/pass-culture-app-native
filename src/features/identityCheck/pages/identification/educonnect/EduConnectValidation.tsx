@@ -3,13 +3,13 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { CenteredTitle } from 'features/identityCheck/components/CenteredTitle'
-import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
 import { useNavigateForwardToStepper } from 'features/identityCheck/helpers/useNavigateForwardToStepper'
 import { useSaveStep } from 'features/identityCheck/pages/helpers/useSaveStep'
 import { IdentityCheckStep } from 'features/identityCheck/types'
 import { analytics } from 'libs/analytics/provider'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { Spacer, Typo } from 'ui/theme'
 
 export function EduConnectValidation() {

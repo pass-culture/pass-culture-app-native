@@ -30,7 +30,7 @@ const StyledKeyboardAvoidingView = styled(KeyboardAvoidingView).attrs({
   height: '100%',
   display: 'flex',
   flexDirection: 'column',
-  backgroundColor: theme.colors.white,
+  backgroundColor: theme.designSystem.color.background.default,
   borderTopLeftRadius: 22,
   borderTopRightRadius: 22,
   paddingTop: getSpacing(8),

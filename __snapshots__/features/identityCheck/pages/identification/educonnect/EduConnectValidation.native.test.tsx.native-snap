@@ -1,7 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<EduConnectValidation /> should render EduConnectValidation component correctly 1`] = `
-[
+<View
+  style={
+    [
+      {
+        "backgroundColor": "#ffffff",
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+      },
+    ]
+  }
+>
   <View
     accessibilityRole="header"
     style={
@@ -179,7 +190,7 @@ exports[`<EduConnectValidation /> should render EduConnectValidation component c
         />
       </View>
     </View>
-  </View>,
+  </View>
   <View
     style={
       [
@@ -552,7 +563,7 @@ exports[`<EduConnectValidation /> should render EduConnectValidation component c
         </View>
       </View>
     </View>
-  </View>,
+  </View>
   <View
     height={65}
     style={
@@ -587,6 +598,6 @@ exports[`<EduConnectValidation /> should render EduConnectValidation component c
         ]
       }
     />
-  </View>,
-]
+  </View>
+</View>
 `;

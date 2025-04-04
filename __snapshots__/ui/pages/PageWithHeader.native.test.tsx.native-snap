@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`ChangeCity should render correctly 1`] = `
+exports[`<PageWithHeader/> should render correctly 1`] = `
 <View
   style={
     [
@@ -168,7 +168,7 @@ exports[`ChangeCity should render correctly 1`] = `
             ]
           }
         >
-          Modifier ma ville de résidence
+          Page with header title
         </Text>
         <View
           positionInHeader="right"
@@ -267,186 +267,9 @@ exports[`ChangeCity should render correctly 1`] = `
                 }
               }
             />
-            <Text
-              style={
-                [
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": 19,
-                    "lineHeight": 30.4,
-                  },
-                ]
-              }
-            >
-              Renseigne ta ville de résidence
+            <Text>
+              scroll children
             </Text>
-            <View
-              numberOfSpaces={5}
-              style={
-                [
-                  {
-                    "height": 20,
-                  },
-                ]
-              }
-            />
-            <View
-              style={
-                [
-                  {
-                    "maxWidth": 500,
-                    "width": "100%",
-                  },
-                ]
-              }
-            >
-              <View
-                style={
-                  [
-                    {
-                      "marginBottom": 8,
-                    },
-                  ]
-                }
-              >
-                <View
-                  style={
-                    [
-                      {
-                        "marginBottom": 8,
-                      },
-                    ]
-                  }
-                >
-                  <View>
-                    <View
-                      style={
-                        [
-                          {
-                            "alignItems": "flex-end",
-                            "flexDirection": "row",
-                            "justifyContent": "space-between",
-                            "width": "100%",
-                          },
-                        ]
-                      }
-                    >
-                      <Text
-                        style={
-                          [
-                            {
-                              "color": "#161617",
-                              "fontFamily": "Montserrat-Medium",
-                              "fontSize": 16,
-                              "lineHeight": 25.6,
-                            },
-                          ]
-                        }
-                      >
-                        Indique ton code postal et choisis ta ville
-                      </Text>
-                    </View>
-                  </View>
-                </View>
-                <View
-                  height="small"
-                  isDisabled={false}
-                  isError={false}
-                  isFocus={false}
-                  style={
-                    [
-                      {
-                        "alignItems": "center",
-                        "backgroundColor": "#ffffff",
-                        "borderColor": "#90949d",
-                        "borderRadius": 22,
-                        "borderStyle": "solid",
-                        "borderWidth": 1,
-                        "flexDirection": "row",
-                        "height": 40,
-                        "paddingBottom": 0,
-                        "paddingLeft": 17,
-                        "paddingRight": 17,
-                        "paddingTop": 0,
-                        "width": "100%",
-                      },
-                      {
-                        "borderRadius": 24,
-                        "outlineOffset": 0,
-                      },
-                    ]
-                  }
-                  testID="styled-input-container"
-                >
-                  <TextInput
-                    accessibilityDescribedBy="testUuidV4"
-                    accessibilityHidden={false}
-                    autoComplete="postal-code"
-                    autoCorrect={false}
-                    editable={true}
-                    enablesReturnKeyAutomatically={true}
-                    focusable={true}
-                    isEmpty={true}
-                    keyboardType="number-pad"
-                    multiline={false}
-                    nativeID="testUuidV4"
-                    onBlur={[Function]}
-                    onChangeText={[Function]}
-                    onFocus={[Function]}
-                    placeholder="Ex : 75017"
-                    placeholderTextColor="#696A6F"
-                    returnKeyType="search"
-                    selectionColor="#696A6F"
-                    style={
-                      [
-                        {
-                          "color": "#161617",
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                          "fontFamily": "Montserrat-MediumItalic",
-                          "fontSize": 16,
-                          "height": "100%",
-                          "paddingBottom": 0,
-                          "paddingLeft": 0,
-                          "paddingRight": 0,
-                          "paddingTop": 0,
-                        },
-                        {},
-                      ]
-                    }
-                    testID="Entrée pour la ville"
-                    textAlignVertical="center"
-                    textContentType="postalCode"
-                    value=""
-                  />
-                </View>
-              </View>
-            </View>
-            <View
-              accessibilityRole="radiogroup"
-              style={
-                [
-                  {
-                    "flexGrow": 1,
-                    "overflowY": "scroll",
-                  },
-                ]
-              }
-            >
-              <View
-                accessibilityRole="list"
-                style={
-                  [
-                    {
-                      "flexDirection": "column",
-                      "paddingLeft": 0,
-                    },
-                  ]
-                }
-              />
-            </View>
           </View>
         </RCTScrollView>
         <View
@@ -466,92 +289,9 @@ exports[`ChangeCity should render correctly 1`] = `
             ]
           }
         >
-          <View
-            accessibilityLabel="Valider ma ville de résidence"
-            accessibilityState={
-              {
-                "busy": undefined,
-                "checked": undefined,
-                "disabled": true,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
-            focusable={false}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              [
-                [
-                  {
-                    "userSelect": "auto",
-                  },
-                  {
-                    "alignItems": "center",
-                    "backgroundColor": "#f1f1f4",
-                    "borderRadius": 24,
-                    "flexDirection": "row",
-                    "justifyContent": "center",
-                    "maxWidth": 500,
-                    "minHeight": 40,
-                    "paddingBottom": 2,
-                    "paddingLeft": 20,
-                    "paddingRight": 20,
-                    "paddingTop": 2,
-                    "width": "100%",
-                  },
-                  {},
-                ],
-                {
-                  "opacity": 1,
-                },
-              ]
-            }
-            testID="Valider ma ville de résidence"
-          >
-            <View
-              style={
-                [
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                  },
-                ]
-              }
-            >
-              <Text
-                adjustsFontSizeToFit={false}
-                numberOfLines={1}
-                style={
-                  [
-                    {
-                      "color": "#696a6f",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                      "maxWidth": "100%",
-                    },
-                  ]
-                }
-              >
-                Valider ma ville de résidence
-              </Text>
-            </View>
-          </View>
+          <Text>
+            fixed bottom children
+          </Text>
           <View
             customHeight={8}
             enable={true}
@@ -601,6 +341,316 @@ exports[`ChangeCity should render correctly 1`] = `
         ]
       }
     />
+  </View>
+</View>
+`;
+
+exports[`<PageWithHeader/> should render correctly on Android, with white header 1`] = `
+<View
+  style={
+    [
+      {
+        "backgroundColor": "#ffffff",
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+      },
+    ]
+  }
+>
+  <View
+    accessibilityRole="header"
+    style={
+      [
+        {
+          "backgroundColor": "#ffffff",
+          "borderBottomColor": "#cbcdd2",
+          "borderBottomWidth": 1,
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+          "zIndex": 1,
+        },
+      ]
+    }
+  >
+    <View
+      customHeight={16}
+      enable={true}
+      style={
+        [
+          {
+            "height": 16,
+          },
+        ]
+      }
+    />
+    <View
+      style={
+        [
+          {
+            "alignItems": "center",
+            "height": 48,
+            "justifyContent": "center",
+          },
+        ]
+      }
+    >
+      <View
+        style={
+          [
+            {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+              "width": "100%",
+            },
+          ]
+        }
+      >
+        <View
+          positionInHeader="left"
+          style={
+            [
+              {
+                "alignItems": "center",
+                "flexBasis": 0,
+                "flexDirection": "row",
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "justifyContent": "flex-start",
+                "paddingLeft": 12,
+                "paddingRight": 12,
+              },
+            ]
+          }
+          testID="back-button-container"
+        >
+          <View
+            accessibilityLabel="Revenir en arrière"
+            accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "alignItems": "center",
+                    "flexGrow": 1,
+                    "height": 40,
+                    "justifyContent": "center",
+                    "maxWidth": 40,
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
+            }
+            testID="Revenir en arrière"
+          >
+            <View
+              height={24}
+              testID="icon-back"
+              width={24}
+            >
+              <Text>
+                icon-back-SVG-Mock
+              </Text>
+            </View>
+            <Text
+              style={
+                [
+                  {
+                    "display": "none",
+                  },
+                ]
+              }
+            >
+              Retour
+            </Text>
+          </View>
+        </View>
+        <Text
+          numberOfLines={1}
+          style={
+            [
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 17,
+                "lineHeight": 27.2,
+                "textAlign": "center",
+              },
+            ]
+          }
+        >
+          Page with header title
+        </Text>
+        <View
+          positionInHeader="right"
+          style={
+            [
+              {
+                "alignItems": "center",
+                "flexBasis": 0,
+                "flexDirection": "row",
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "justifyContent": "flex-end",
+                "paddingLeft": 12,
+                "paddingRight": 12,
+              },
+            ]
+          }
+          testID="close-button-container"
+        />
+      </View>
+    </View>
+  </View>
+  <View
+    style={
+      [
+        {
+          "flexBasis": 0,
+          "flexGrow": 1,
+          "flexShrink": 1,
+        },
+      ]
+    }
+  >
+    <View
+      onLayout={[Function]}
+      style={
+        [
+          [
+            {
+              "alignItems": "center",
+              "backgroundColor": "#ffffff",
+              "borderTopLeftRadius": 22,
+              "borderTopRightRadius": 22,
+              "display": "flex",
+              "flexBasis": 0,
+              "flexDirection": "column",
+              "flexGrow": 1,
+              "height": "100%",
+              "overflow": "scroll",
+              "paddingTop": 32,
+            },
+          ],
+          {
+            "paddingBottom": 0,
+          },
+        ]
+      }
+    >
+      <View
+        style={
+          [
+            {
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "maxWidth": 500,
+              "width": "100%",
+            },
+          ]
+        }
+      >
+        <RCTScrollView
+          bottomChildrenViewHeight={0}
+          contentContainerStyle={
+            {
+              "flexDirection": "column",
+              "flexGrow": 1,
+              "paddingBottom": 0,
+              "paddingHorizontal": 20,
+            }
+          }
+          keyboardShouldPersistTaps="handled"
+          onContentSizeChange={[Function]}
+          onLayout={[Function]}
+          style={
+            [
+              {},
+            ]
+          }
+        >
+          <View>
+            <View
+              style={
+                {
+                  "height": 65,
+                }
+              }
+            />
+            <Text>
+              scroll children
+            </Text>
+          </View>
+        </RCTScrollView>
+        <View
+          onLayout={[Function]}
+          style={
+            [
+              {
+                "backgroundColor": "#ffffff",
+                "bottom": 0,
+                "left": 0,
+                "paddingBottom": 20,
+                "paddingHorizontal": 20,
+                "paddingTop": 12,
+                "position": "absolute",
+                "right": 0,
+              },
+            ]
+          }
+        >
+          <Text>
+            fixed bottom children
+          </Text>
+          <View
+            customHeight={8}
+            enable={true}
+            style={
+              [
+                {
+                  "height": 8,
+                },
+              ]
+            }
+          />
+        </View>
+      </View>
+    </View>
   </View>
 </View>
 `;

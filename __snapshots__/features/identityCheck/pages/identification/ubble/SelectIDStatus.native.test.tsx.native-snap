@@ -1,7 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
-[
+<View
+  style={
+    [
+      {
+        "backgroundColor": "#ffffff",
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+      },
+    ]
+  }
+>
   <View
     accessibilityRole="header"
     style={
@@ -179,7 +190,7 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
         />
       </View>
     </View>
-  </View>,
+  </View>
   <View
     style={
       [
@@ -920,7 +931,7 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
         </RCTScrollView>
       </View>
     </View>
-  </View>,
+  </View>
   <View
     height={65}
     style={
@@ -955,6 +966,6 @@ exports[`SelectIDStatus should render SelectIDStatus page correctly 1`] = `
         ]
       }
     />
-  </View>,
-]
+  </View>
+</View>
 `;

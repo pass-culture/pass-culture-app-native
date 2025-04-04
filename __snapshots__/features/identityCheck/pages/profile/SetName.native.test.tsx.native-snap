@@ -1,7 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<SetName/> should render correctly 1`] = `
-[
+<View
+  style={
+    [
+      {
+        "backgroundColor": "#ffffff",
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+      },
+    ]
+  }
+>
   <View
     accessibilityRole="header"
     style={
@@ -179,7 +190,7 @@ exports[`<SetName/> should render correctly 1`] = `
         />
       </View>
     </View>
-  </View>,
+  </View>
   <View
     style={
       [
@@ -767,7 +778,7 @@ Nous les vérifions et ils ne pourront plus être modifiés par la suite.
         </View>
       </View>
     </View>
-  </View>,
+  </View>
   <View
     height={65}
     style={
@@ -802,6 +813,6 @@ Nous les vérifions et ils ne pourront plus être modifiés par la suite.
         ]
       }
     />
-  </View>,
-]
+  </View>
+</View>
 `;

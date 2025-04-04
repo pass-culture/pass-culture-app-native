@@ -5,13 +5,13 @@ import { Controller, useForm } from 'react-hook-form'
 import { object, string } from 'yup'
 
 import { CenteredTitle } from 'features/identityCheck/components/CenteredTitle'
-import { PageWithHeader } from 'features/identityCheck/components/layout/PageWithHeader'
 import { cityActions, useCity } from 'features/identityCheck/pages/profile/store/cityStore'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { CitySearchInput } from 'features/profile/components/CitySearchInput/CitySearchInput'
 import { analytics } from 'libs/analytics/provider'
 import { SuggestedCity } from 'libs/place/types'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { Spacer } from 'ui/theme'
 
 export type CityForm = { city: SuggestedCity }
