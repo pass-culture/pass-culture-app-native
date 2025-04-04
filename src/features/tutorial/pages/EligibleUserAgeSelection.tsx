@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 
 import { TutorialRootStackParamList } from 'features/navigation/RootNavigator/types'
 import { AgeButton } from 'features/tutorial/components/AgeButton'
-import { TutorialTypes } from 'features/tutorial/enums'
+import { NonEligible, TutorialTypes } from 'features/tutorial/enums'
 import { TutorialPage } from 'features/tutorial/pages/TutorialPage'
 import { EligibleAges } from 'features/tutorial/types'
 import { analytics } from 'libs/analytics/provider'
@@ -18,8 +18,6 @@ import { getNoHeadingAttrs } from 'ui/theme/typographyAttrs/getNoHeadingAttrs'
 
 type Props = StackScreenProps<TutorialRootStackParamList, 'EligibleUserAgeSelection'>
 
-const OTHER = 'other'
-
 const ageButtons: { age?: EligibleAges }[] = [
   { age: 15 },
   { age: 16 },
@@ -29,7 +27,7 @@ const ageButtons: { age?: EligibleAges }[] = [
 ]
 
 const onBeforeNavigate = async (type: TutorialTypes, age?: EligibleAges) => {
-  analytics.logSelectAge({ age: age ?? OTHER, from: type })
+  analytics.logSelectAge({ age: age ?? NonEligible.OTHER, from: type })
   age && (await storage.saveObject('user_age', age))
 }
 
@@ -62,24 +60,24 @@ export const EligibleUserAgeSelection: FunctionComponent<Props> = ({ route }: Pr
     }
     if (isPassForAllEnabled) {
       return null
-    } else {
-      return (
-        <AgeButton
-          key="other"
-          dense
-          onBeforeNavigate={async () => onBeforeNavigate(type)}
-          navigateTo={{ screen: 'AgeSelectionOther', params: { type } }}
-          accessibilityLabel={`${startButtonTitle} moins de 15 ans ou plus de 18 ans`}>
-          <StyledTitle4>Autre</StyledTitle4>
-          <React.Fragment>
-            <Spacer.Column numberOfSpaces={1} />
-            <StyledBodyAccentXs numberOfLines={2}>
-              {startButtonTitle} moins de 15 ans ou plus de 18 ans
-            </StyledBodyAccentXs>
-          </React.Fragment>
-        </AgeButton>
-      )
     }
+
+    return (
+      <AgeButton
+        key="other"
+        dense
+        onBeforeNavigate={async () => onBeforeNavigate(type)}
+        navigateTo={{ screen: 'AgeSelectionOther', params: { type } }}
+        accessibilityLabel={`${startButtonTitle} moins de 15 ans ou plus de 18 ans`}>
+        <StyledTitle4>Autre</StyledTitle4>
+        <React.Fragment>
+          <Spacer.Column numberOfSpaces={1} />
+          <StyledBodyAccentXs numberOfLines={2}>
+            {startButtonTitle} moins de 15 ans ou plus de 18 ans
+          </StyledBodyAccentXs>
+        </React.Fragment>
+      </AgeButton>
+    )
   })
 
   const title =
