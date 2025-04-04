@@ -37,12 +37,14 @@ export const VideoModuleDesktop: FunctionComponent<VideoModuleProps> = (props) =
 
   function renderSoloOffer() {
     return props.offers[0] ? (
-      <StyledVideoMonoOfferTile
-        offer={props.offers[0]}
-        color={props.color}
-        hideModal={props.hideVideoModal}
-        analyticsParams={props.analyticsParams}
-      />
+      <VideoMonoOfferTileWrapper>
+        <VideoMonoOfferTile
+          offer={props.offers[0]}
+          color={props.color}
+          hideModal={props.hideVideoModal}
+          analyticsParams={props.analyticsParams}
+        />
+      </VideoMonoOfferTileWrapper>
     ) : null
   }
 
@@ -102,6 +104,12 @@ export const VideoModuleDesktop: FunctionComponent<VideoModuleProps> = (props) =
     </React.Fragment>
   )
 }
+
+const VideoMonoOfferTileWrapper = styled(View)({
+  flexGrow: 1,
+  marginHorizontal: getSpacing(8),
+  justifyContent: 'center',
+})
 
 const StyledView = styled.View({
   flex: 1,
@@ -187,12 +195,6 @@ const StyledTitleContainer = styled.View({
   flexDirection: 'row',
   marginBottom: getSpacing(5),
   alignItems: 'center',
-})
-
-const StyledVideoMonoOfferTile = styled(VideoMonoOfferTile)({
-  flexGrow: 1,
-  justifyContent: 'center',
-  marginHorizontal: getSpacing(8),
 })
 
 const StyledMultiOfferList = styled(View)<{

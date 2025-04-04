@@ -53,24 +53,25 @@ export const VideoModuleMobile: FunctionComponent<VideoModuleProps> = (props) =>
         </StyledTouchableHighlight>
         <View>
           <Spacer.Column numberOfSpaces={4} />
-          {props.isMultiOffer ? (
-            <VideoOfferContainer>
-              <VideoMultiOfferPlaylist
-                offers={props.offers}
-                hideModal={props.hideVideoModal}
-                analyticsParams={props.analyticsParams}
-              />
-            </VideoOfferContainer>
-          ) : (
+          {!props.isMultiOffer && props.offers[0] ? (
             <VideoOfferContainer
               onLayout={(event: LayoutChangeEvent) => {
                 const { height } = event.nativeEvent.layout
                 setMonoOfferCardHeight(height)
               }}>
-              <StyledVideoMonoOfferTile
-                // @ts-expect-error: because of noUncheckedIndexedAccess
-                offer={props.offers[0]}
-                color={props.color}
+              <VideoMonoOfferTileWrapper>
+                <VideoMonoOfferTile
+                  offer={props.offers[0]}
+                  color={props.color}
+                  hideModal={props.hideVideoModal}
+                  analyticsParams={props.analyticsParams}
+                />
+              </VideoMonoOfferTileWrapper>
+            </VideoOfferContainer>
+          ) : (
+            <VideoOfferContainer>
+              <VideoMultiOfferPlaylist
+                offers={props.offers}
                 hideModal={props.hideVideoModal}
                 analyticsParams={props.analyticsParams}
               />
@@ -156,7 +157,7 @@ const VideoOfferContainer = styled.View({
   marginBottom: getSpacing(8),
 })
 
-const StyledVideoMonoOfferTile = styled(VideoMonoOfferTile)(({ theme }) => ({
+const VideoMonoOfferTileWrapper = styled(View)(({ theme }) => ({
   flexGrow: 1,
   marginHorizontal: theme.contentPage.marginHorizontal,
 }))

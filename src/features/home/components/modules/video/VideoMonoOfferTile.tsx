@@ -123,6 +123,7 @@ export const VideoMonoOfferTile: FunctionComponent<Props> = ({
 }
 
 const StyledInternalTouchableLink = styled(InternalTouchableLink)(({ theme }) => ({
+  borderRadius: getSpacing(3),
   ...getShadow({
     shadowOffset: {
       width: 0,
