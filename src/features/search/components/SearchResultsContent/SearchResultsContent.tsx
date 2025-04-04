@@ -413,6 +413,7 @@ export const SearchResultsContent: React.FC = () => {
           errorDescription="Élargis la zone de recherche pour plus de résultats."
           ctaWording="Élargir la zone de recherche"
           onPress={() => {
+            analytics.logExtendSearchRadius()
             onResetPlace()
             navigateToSearchResults({
               ...searchState,
