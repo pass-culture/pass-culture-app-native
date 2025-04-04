@@ -1,5 +1,7 @@
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta } from '@storybook/react'
 import React from 'react'
+
+import { Variants, VariantsStory, VariantsTemplate } from 'ui/storybook/VariantsTemplate'
 
 import { ProgressBar } from './ProgressBar'
 
@@ -15,28 +17,28 @@ const meta: Meta<typeof ProgressBar> = {
 }
 export default meta
 
-type Story = StoryObj<typeof ProgressBar>
-
-export const FirstStep: Story = {
-  render: (props) => <ProgressBar {...props} />,
-  args: {
-    totalStep: 5,
-    currentStep: 0,
+const variantConfig: Variants<typeof ProgressBar> = [
+  {
+    label: 'ProgressBar FirstStep',
+    props: { totalStep: 5, currentStep: 0 },
   },
-}
-
-export const SecondStep: Story = {
-  render: (props) => <ProgressBar {...props} />,
-  args: {
-    totalStep: 5,
-    currentStep: 1,
+  {
+    label: 'ProgressBar SecondStep',
+    props: { totalStep: 5, currentStep: 1 },
   },
-}
-
-export const LastStep: Story = {
-  render: (props) => <ProgressBar {...props} />,
-  args: {
-    totalStep: 5,
-    currentStep: 5,
+  {
+    label: 'ProgressBar LastStep',
+    props: { totalStep: 5, currentStep: 5 },
   },
+]
+
+export const Template: VariantsStory<typeof ProgressBar> = {
+  name: 'ProgressBar',
+  render: (props) => (
+    <VariantsTemplate
+      variants={variantConfig}
+      Component={ProgressBar}
+      defaultProps={{ ...props }}
+    />
+  ),
 }

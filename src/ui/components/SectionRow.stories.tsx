@@ -1,8 +1,9 @@
 import { NavigationContainer } from '@react-navigation/native'
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta } from '@storybook/react'
 import React from 'react'
 
 import { SectionRow } from 'ui/components/SectionRow'
+import { Variants, VariantsStory, VariantsTemplate } from 'ui/storybook/VariantsTemplate'
 import { EditPen } from 'ui/svg/icons/EditPen'
 import { Email } from 'ui/svg/icons/Email'
 
@@ -31,38 +32,28 @@ const meta: Meta<typeof SectionRow> = {
 }
 export default meta
 
-type Story = StoryObj<typeof SectionRow>
-
-export const Navigable: Story = {
-  render: (props) => <SectionRow {...props} />,
-  args: {
-    title: 'Section row navigable',
-    type: 'navigable',
+const variantConfig: Variants<typeof SectionRow> = [
+  {
+    label: 'SectionRow Navigable',
+    props: { title: 'Section row navigable', type: 'navigable' },
   },
-}
-
-export const NavigableWithIcon: Story = {
-  render: (props) => <SectionRow {...props} />,
-  args: {
-    title: 'Section row navigable',
-    type: 'navigable',
-    icon: Email,
+  {
+    label: 'SectionRow NavigableWithIcon',
+    props: { title: 'Section row navigable', type: 'navigable', icon: Email },
   },
-}
-
-export const Clickable: Story = {
-  render: (props) => <SectionRow {...props} />,
-  args: {
-    title: 'Section row clickable',
-    type: 'clickable',
+  {
+    label: 'SectionRow Clickable',
+    props: { title: 'Section row clickable', type: 'clickable' },
   },
-}
-
-export const ClickableWithIcon: Story = {
-  render: (props) => <SectionRow {...props} />,
-  args: {
-    title: 'Section row clickable',
-    type: 'clickable',
-    icon: Email,
+  {
+    label: 'SectionRow ClickableWithIcon',
+    props: { title: 'Section row clickable', type: 'clickable', icon: Email },
   },
+]
+
+export const Template: VariantsStory<typeof SectionRow> = {
+  name: 'SectionRow',
+  render: (props) => (
+    <VariantsTemplate variants={variantConfig} Component={SectionRow} defaultProps={props} />
+  ),
 }

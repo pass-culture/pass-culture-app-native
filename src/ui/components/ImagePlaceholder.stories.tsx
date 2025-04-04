@@ -1,4 +1,4 @@
-import { StoryFn } from '@storybook/react'
+import type { StoryObj } from '@storybook/react'
 import React from 'react'
 
 import { CategoryIdEnum } from 'api/gen'
@@ -16,9 +16,11 @@ export default {
   },
 }
 
-export const Default: StoryFn<typeof ImagePlaceholder> = (props) => <ImagePlaceholder {...props} />
-Default.args = {
-  size: getSpacing(24),
-  borderRadius: 4,
-  Icon: mapCategoryToIcon(CategoryIdEnum.FILM),
+type Story = StoryObj<typeof ImagePlaceholder>
+
+export const Default: Story = {
+  name: 'ImagePlaceholder',
+  render: () => (
+    <ImagePlaceholder size={getSpacing(24)} Icon={mapCategoryToIcon(CategoryIdEnum.FILM)} />
+  ),
 }

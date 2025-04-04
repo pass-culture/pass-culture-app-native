@@ -13,8 +13,7 @@ const Template = (props: React.ComponentProps<typeof OfferMetadataItem>) => (
   <OfferMetadataItem {...props} />
 )
 
-export const Default = () =>
-  Template({
-    label: 'Intervenant',
-    value: 'Jean Paul Sartre',
-  })
+export const Default = {
+  name: 'OfferMetadataItem',
+  render: () => Template({ label: 'Intervenant', value: 'Jean Paul Sartre' }),
+}

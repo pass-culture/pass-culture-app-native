@@ -22,9 +22,7 @@ const WrappedTemplate: StoryFn<typeof HoursSlider> = (args) => {
 }
 
 export const Default = WrappedTemplate.bind({})
-Default.args = {
-  field: { value: [8, 22] },
-}
+Default.args = { field: { value: [8, 22] } }
 
 const styles = StyleSheet.create({
   wrapper: {
