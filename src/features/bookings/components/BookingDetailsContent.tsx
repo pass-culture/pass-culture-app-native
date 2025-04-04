@@ -7,8 +7,8 @@ import { ArchiveBookingModal } from 'features/bookings/components/ArchiveBooking
 import { BookingDetailsCancelButton } from 'features/bookings/components/BookingDetailsCancelButton'
 import { BookingPrecisions } from 'features/bookings/components/BookingPrecision'
 import { CancelBookingModal } from 'features/bookings/components/CancelBookingModal'
-import { TicketBody } from 'features/bookings/components/TicketBody/TicketBody'
 import { TicketCutout } from 'features/bookings/components/TicketCutout'
+import { TicketCutoutBottom } from 'features/bookings/components/TicketCutoutBottom'
 import { getBookingLabels } from 'features/bookings/helpers'
 import { BookingProperties } from 'features/bookings/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
@@ -104,7 +104,7 @@ export const BookingDetailsContent = ({
             icon={IdCard}
           />
         }>
-        <TicketBody withdrawalType={offer.withdrawalType} />
+        <TicketCutoutBottom offer={offer} booking={booking} />
       </TicketCutout>
       <ErrorBannerContainer>
         <ErrorBanner message="Tu n’as pas le droit de céder ou de revendre ton billet." />
