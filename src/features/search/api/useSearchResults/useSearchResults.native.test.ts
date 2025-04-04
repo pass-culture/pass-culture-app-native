@@ -1,13 +1,10 @@
 import { Hit } from '@algolia/client-search'
-import { Dispatch } from 'react'
 
 import algoliasearch from '__mocks__/algoliasearch'
-import { defaultDisabilitiesProperties } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { useSearchInfiniteQuery } from 'features/search/api/useSearchResults/useSearchResults'
-import { Action, initialSearchState } from 'features/search/context/reducer'
+import { initialSearchState } from 'features/search/context/reducer'
 import { SearchState } from 'features/search/types'
 import * as useVenueMapStore from 'features/venueMap/store/venueMapStore'
-import * as doAlgoliaRedirect from 'libs/algolia/doAlgoliaRedirect'
 import { offerAttributesToRetrieve } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/offerAttributesToRetrieve'
 import * as fetchSearchResults from 'libs/algolia/fetchAlgolia/fetchSearchResults/fetchSearchResults'
 import { adaptAlgoliaVenues } from 'libs/algolia/fetchAlgolia/fetchVenues/adaptAlgoliaVenues'
@@ -19,7 +16,7 @@ import {
 import { AlgoliaVenue } from 'libs/algolia/types'
 import { GeoCoordinates, GeolocPermissionState, GeolocationError } from 'libs/location'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, renderHook, waitFor } from 'tests/utils'
+import { renderHook, waitFor } from 'tests/utils'
 
 const { multipleQueries } = algoliasearch()
 
@@ -56,7 +53,6 @@ const mockFetchSearchResultsResponse = {
 }
 
 const fetchSearchResultsSpy = jest.spyOn(fetchSearchResults, 'fetchSearchResults')
-const doAlgoliaRedirectSpy = jest.spyOn(doAlgoliaRedirect, 'doAlgoliaRedirect')
 
 const mockReplaceToSearch = jest.fn()
 jest.mock('features/search/helpers/useNavigateToSearch/useNavigateToSearch', () => ({
@@ -216,39 +212,11 @@ describe('useSearchResults', () => {
       })
     })
   })
-
-  describe('When a redirect url is configured', () => {
-    const mockRedirectUrl =
-      'http://passculture.app/recherche/resultats?offerCategories=%5B%22CINEMA%22%5D&query=%22%22'
-
-    beforeAll(() => {
-      fetchSearchResultsSpy.mockResolvedValueOnce({
-        ...mockFetchSearchResultsResponse,
-        redirectUrl: mockRedirectUrl,
-      })
-    })
-
-    it('should redirect to thematicSearch', async () => {
-      const mockSearchstate = { ...initialSearchState, shouldRedirect: true }
-      renderUseSearchResults(mockSearchstate)
-
-      await act(async () => {})
-
-      expect(doAlgoliaRedirectSpy).toHaveBeenCalledWith(
-        new URL(mockRedirectUrl),
-        mockSearchstate,
-        defaultDisabilitiesProperties,
-        mockDispatch,
-        mockReplaceToSearch
-      )
-    })
-  })
 })
 
 const renderUseSearchResults = (newSearchState?: SearchState) =>
   renderHook(
-    ({ searchState, dispatch }: { searchState: SearchState; dispatch: Dispatch<Action> }) =>
-      useSearchInfiniteQuery(searchState, dispatch),
+    ({ searchState }: { searchState: SearchState }) => useSearchInfiniteQuery(searchState),
     {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
       initialProps: { searchState: newSearchState ?? initialSearchState, dispatch: mockDispatch },
