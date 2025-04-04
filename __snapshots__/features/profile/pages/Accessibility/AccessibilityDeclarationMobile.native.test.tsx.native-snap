@@ -1,7 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`AccessibilityDeclarationMobile should render correctly 1`] = `
-[
+<View
+  style={
+    [
+      {
+        "backgroundColor": "#ffffff",
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+      },
+    ]
+  }
+>
   <View
     accessibilityRole="header"
     style={
@@ -179,7 +190,7 @@ exports[`AccessibilityDeclarationMobile should render correctly 1`] = `
         />
       </View>
     </View>
-  </View>,
+  </View>
   <RCTScrollView
     contentContainerStyle={
       {
@@ -997,7 +1008,7 @@ exports[`AccessibilityDeclarationMobile should render correctly 1`] = `
         }
       />
     </View>
-  </RCTScrollView>,
+  </RCTScrollView>
   <View
     height={65}
     style={
@@ -1032,6 +1043,6 @@ exports[`AccessibilityDeclarationMobile should render correctly 1`] = `
         ]
       }
     />
-  </View>,
-]
+  </View>
+</View>
 `;
