@@ -893,6 +893,31 @@ describe('SearchResultsContent component', () => {
       })
     })
 
+    it('should log ExtendSearchRadiusClicked when `Élargir la zone de recherche` cta is pressed', async () => {
+      const query = 'cinéma'
+      const newSearchState = {
+        ...mockSearchState,
+        locationFilter: {
+          locationType: LocationMode.AROUND_ME,
+          aroundRadius: MAX_RADIUS,
+          place: mockedPlace,
+        },
+        query,
+      }
+
+      mockUseSearch.mockReturnValueOnce({
+        searchState: newSearchState,
+        dispatch: mockDispatch,
+      })
+
+      render(<SearchResultsContent />)
+
+      const cta = await screen.findByText('Élargir la zone de recherche')
+      await user.press(cta)
+
+      expect(analytics.logExtendSearchRadiusClicked).toHaveBeenCalledWith()
+    })
+
     it('should not log NoSearchResult when there is not search query execution', async () => {
       render(<SearchResultsContent />)
       await screen.findByText('Lieu culturel')

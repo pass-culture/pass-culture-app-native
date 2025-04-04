@@ -83,6 +83,7 @@ export const logEventAnalytics: typeof actualLogEventAnalytics = {
   logEmailValidated: jest.fn(),
   logErrorSavingNewEmail: jest.fn(),
   logExclusivityBlockClicked: jest.fn(),
+  logExtendSearchRadiusClicked: jest.fn(),
   logGoToProfil: jest.fn(),
   logGoToUbble: jest.fn(),
   logHasAcceptedAllCookies: jest.fn(),
