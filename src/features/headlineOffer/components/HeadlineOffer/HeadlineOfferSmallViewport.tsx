@@ -55,6 +55,7 @@ const TileContent = styled.View({
 
 const ContentContainer = styled.View({
   justifyContent: 'center',
+  flexShrink: 1,
 })
 
 const IconContainer = styled.View({
