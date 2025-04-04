@@ -3,7 +3,6 @@ import React from 'react'
 import * as ReactQueryAPI from 'react-query'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { withAsyncErrorBoundary } from 'features/errors/hocs/withAsyncErrorBoundary'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { navigateFromRef } from 'features/navigation/navigationRef'
 import { RootStackParamList } from 'features/navigation/RootNavigator/types'
@@ -64,8 +63,7 @@ describe('<ResetPasswordExpiredLink/>', () => {
       responseOptions: { statusCode: 401, data: {} },
     })
 
-    const ResetPasswordExpiredLinkWithBoundary = withAsyncErrorBoundary(ResetPasswordExpiredLink)
-    render(reactQueryProviderHOC(<ResetPasswordExpiredLinkWithBoundary {...navigationProps} />))
+    renderResetPasswordExpiredLink()
 
     await user.press(screen.getByText(`Renvoyer l’email`))
 

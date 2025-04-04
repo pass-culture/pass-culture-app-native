@@ -115,10 +115,12 @@ exports[`BannedCountryError should render correctly 1`] = `
       </Text>
     </View>
     <View
+      gap={4}
       style={
         [
           {
             "alignItems": "center",
+            "gap": 16,
           },
         ]
       }
