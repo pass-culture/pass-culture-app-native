@@ -14,6 +14,7 @@ exports[`<Maintenance /> should match snapshot with custom message 1`] = `
   }
 >
   <View
+    bottom={16}
     style={
       [
         {
@@ -28,6 +29,16 @@ exports[`<Maintenance /> should match snapshot with custom message 1`] = `
       ]
     }
   >
+    <View
+      height={16}
+      style={
+        [
+          {
+            "height": 16,
+          },
+        ]
+      }
+    />
     <View
       flex={1}
       style={
@@ -67,7 +78,7 @@ exports[`<Maintenance /> should match snapshot with custom message 1`] = `
           {
             "alignItems": "center",
             "gap": 16,
-            "marginBottom": 24,
+            "marginBottom": 32,
           },
         ]
       }
@@ -133,6 +144,7 @@ exports[`<Maintenance /> should match snapshot with default message 1`] = `
   }
 >
   <View
+    bottom={16}
     style={
       [
         {
@@ -147,6 +159,16 @@ exports[`<Maintenance /> should match snapshot with default message 1`] = `
       ]
     }
   >
+    <View
+      height={16}
+      style={
+        [
+          {
+            "height": 16,
+          },
+        ]
+      }
+    />
     <View
       flex={1}
       style={
@@ -186,7 +208,7 @@ exports[`<Maintenance /> should match snapshot with default message 1`] = `
           {
             "alignItems": "center",
             "gap": 16,
-            "marginBottom": 24,
+            "marginBottom": 32,
           },
         ]
       }
