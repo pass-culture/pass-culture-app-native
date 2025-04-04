@@ -15,12 +15,6 @@ platform :ios do
   end
 
   lane :build do |options|
-  # We explicitly set the SaaS as an unidentified config is still pointing to the self-hosted Sentry
-  sentry_properties = {
-    "sentry.url" => "https://sentry.io/",
-    "sentry.org" => "pass-culture",
-    "sentry.projectName" => "jeunes",
-  }
     gym(
       scheme: ENV['IOS_SCHEME'],
       output_directory: "#{ENV['IOS_IPA_DIRECTORY']}",
@@ -132,13 +126,8 @@ end
 # Android
 
 platform :android do
+
   lane :build do |options|
-  # We explicitly set the SaaS as an unidentified config is still pointing to the self-hosted Sentry
-  sentry_properties = {
-    "sentry.url" => "https://sentry.io/",
-    "sentry.org" => "pass-culture",
-    "sentry.projectName" => "jeunes",
-  }
     gradle(
       task: ENV['ANDROID_GRADLE_TASK'],
       project_dir: ENV['ANDROID_PROJECT_DIR']
