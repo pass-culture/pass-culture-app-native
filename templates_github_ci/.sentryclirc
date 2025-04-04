@@ -1,7 +1,7 @@
 [defaults]
-url=https://sentry.passculture.team/
-org=sentry
-project=application-native
+url=https://sentry.io/
+org=pass-culture
+project=jeunes
 
 [auth]
 token={{.token}}
