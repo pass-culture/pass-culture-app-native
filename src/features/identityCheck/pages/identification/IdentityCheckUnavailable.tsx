@@ -10,7 +10,8 @@ import { useModal } from 'ui/components/modals/useModal'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
-import { HappyFace } from 'ui/svg/icons/HappyFace'
+import { HappyFaceWithTear } from 'ui/svg/icons/HappyFaceWithTear'
+import { PlainArrowPrevious } from 'ui/svg/icons/PlainArrowPrevious'
 import { Typo } from 'ui/theme'
 
 export function IdentityCheckUnavailable() {
@@ -25,16 +26,20 @@ export function IdentityCheckUnavailable() {
 
   return (
     <GenericInfoPage
-      illustration={HappyFace}
+      illustration={HappyFaceWithTear}
       title="Victime de notre succès&nbsp;!"
       buttonPrimary={
         params?.withDMS
           ? { wording: 'Transmettre un dossier', onPress: showDMSModal, icon: ExternalSite }
           : { wording: 'Retourner à l’accueil', navigateTo: navigateToHomeConfig }
       }
-      buttonSecondary={
+      buttonTertiary={
         params?.withDMS
-          ? { wording: 'Retourner à l’accueil', navigateTo: navigateToHomeConfig }
+          ? {
+              wording: 'Retourner à l’accueil',
+              navigateTo: navigateToHomeConfig,
+              icon: PlainArrowPrevious,
+            }
           : undefined
       }>
       <ViewGap gap={5}>

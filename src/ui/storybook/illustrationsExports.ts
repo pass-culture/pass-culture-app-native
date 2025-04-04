@@ -60,7 +60,7 @@ import { BicolorUserFavorite } from 'ui/svg/icons/BicolorUserFavorite'
 import { CalendarIllustration } from 'ui/svg/icons/CalendarIllustration'
 import { EmailSent } from 'ui/svg/icons/EmailSent'
 import { EmptyFavorites } from 'ui/svg/icons/EmptyFavorites'
-import { HappyFace } from 'ui/svg/icons/HappyFace'
+import { HappyFaceWithTear } from 'ui/svg/icons/HappyFaceWithTear'
 import { MaintenanceCone } from 'ui/svg/icons/MaintenanceCone'
 import { NoBookings } from 'ui/svg/icons/NoBookings'
 import { NoOffer } from 'ui/svg/icons/NoOffer'
@@ -101,7 +101,7 @@ export const UniqueColorIllustrations = {
   CalendarIllustration,
   EmailSent,
   EmptyFavorites,
-  HappyFace,
+  HappyFaceWithTear,
   MaintenanceCone,
   NoBookings,
   NoOffer,
