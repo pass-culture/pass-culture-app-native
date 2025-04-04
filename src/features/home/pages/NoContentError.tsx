@@ -20,7 +20,7 @@ export const NoContentError = () => {
       title="Oups&nbsp;!"
       subtitle="Une erreur s’est produite pendant le chargement de nos recommandations."
       illustration={BicolorBrokenConnection}
-      button={{
+      buttonPrimary={{
         wording: 'Rechercher une offre',
         icon: MagnifyingGlass,
         onPress: navigateToSearchTab,

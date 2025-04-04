@@ -75,7 +75,7 @@ export const AsyncErrorBoundaryWithoutNavigation = ({
       title="Oups&nbsp;!"
       subtitle="Une erreur s’est produite pendant le chargement."
       illustration={BicolorBrokenConnection}
-      button={{ wording: 'Réessayer', onPress: handleRetry }}
+      buttonPrimary={{ wording: 'Réessayer', onPress: handleRetry }}
     />
   )
 }

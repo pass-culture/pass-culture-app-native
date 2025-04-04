@@ -14,6 +14,7 @@ exports[`<ForceUpdateWithResetErrorBoundary/> should match snapshot 1`] = `
   }
 >
   <View
+    bottom={16}
     style={
       [
         {
@@ -28,6 +29,16 @@ exports[`<ForceUpdateWithResetErrorBoundary/> should match snapshot 1`] = `
       ]
     }
   >
+    <View
+      height={16}
+      style={
+        [
+          {
+            "height": 16,
+          },
+        ]
+      }
+    />
     <View
       flex={1}
       style={
@@ -67,7 +78,7 @@ exports[`<ForceUpdateWithResetErrorBoundary/> should match snapshot 1`] = `
           {
             "alignItems": "center",
             "gap": 16,
-            "marginBottom": 24,
+            "marginBottom": 32,
           },
         ]
       }
@@ -104,18 +115,6 @@ exports[`<ForceUpdateWithResetErrorBoundary/> should match snapshot 1`] = `
   Pour des questions de performance et de sécurité merci de télécharger la dernière version disponible.
       </Text>
     </View>
-    <View
-      flex={1}
-      style={
-        [
-          {
-            "flexBasis": 0,
-            "flexGrow": 1,
-            "flexShrink": 1,
-          },
-        ]
-      }
-    />
     <View
       gap={4}
       style={
@@ -168,10 +167,10 @@ exports[`<ForceUpdateWithResetErrorBoundary/> should match snapshot 1`] = `
                 "flexDirection": "row",
                 "justifyContent": "center",
                 "maxWidth": 500,
-                "minHeight": 40,
+                "minHeight": 48,
                 "paddingBottom": 2,
-                "paddingLeft": 20,
-                "paddingRight": 20,
+                "paddingLeft": 24,
+                "paddingRight": 24,
                 "paddingTop": 2,
                 "width": "100%",
               },
@@ -332,6 +331,18 @@ exports[`<ForceUpdateWithResetErrorBoundary/> should match snapshot 1`] = `
         </View>
       </View>
     </View>
+    <View
+      flex={1}
+      style={
+        [
+          {
+            "flexBasis": 0,
+            "flexGrow": 1,
+            "flexShrink": 1,
+          },
+        ]
+      }
+    />
   </View>
 </View>
 `;
