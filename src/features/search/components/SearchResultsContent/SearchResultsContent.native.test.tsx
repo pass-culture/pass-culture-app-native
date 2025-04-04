@@ -893,7 +893,7 @@ describe('SearchResultsContent component', () => {
       })
     })
 
-    it('should log ExtendSearchRadius when `Élargir la zone de recherche` cta is pressed', async () => {
+    it('should log ExtendSearchRadiusClicked when `Élargir la zone de recherche` cta is pressed', async () => {
       const query = 'cinéma'
       const newSearchState = {
         ...mockSearchState,
@@ -915,7 +915,7 @@ describe('SearchResultsContent component', () => {
       const cta = await screen.findByText('Élargir la zone de recherche')
       await user.press(cta)
 
-      expect(analytics.logExtendSearchRadius).toHaveBeenCalledWith()
+      expect(analytics.logExtendSearchRadiusClicked).toHaveBeenCalledWith()
     })
 
     it('should not log NoSearchResult when there is not search query execution', async () => {

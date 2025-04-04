@@ -317,8 +317,8 @@ export const logEventAnalytics = {
     moduleId: string
     homeEntryId?: string
   }) => analytics.logEvent({ firebase: AnalyticsEvent.EXCLUSIVITY_BLOCK_CLICKED }, params),
-  logExtendSearchRadius: () =>
-    analytics.logEvent({ firebase: AnalyticsEvent.EXTEND_SEARCH_RADIUS }),
+  logExtendSearchRadiusClicked: () =>
+    analytics.logEvent({ firebase: AnalyticsEvent.EXTEND_SEARCH_RADIUS_CLICKED }),
   logGoToProfil: ({ from, offerId }: { from: string; offerId: number }) =>
     analytics.logEvent(
       { firebase: AnalyticsEvent.GO_TO_PROFIL },

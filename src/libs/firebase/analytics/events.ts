@@ -78,7 +78,7 @@ export enum AnalyticsEvent {
   DISPLAY_FORCED_LOGIN_HELP_MESSAGE = 'DisplayForcedLoginHelpMessage',
   ERROR_SAVING_NEW_EMAIL = 'ErrorSavingNewMail',
   EXCLUSIVITY_BLOCK_CLICKED = 'ExclusivityBlockClicked',
-  EXTEND_SEARCH_RADIUS = 'ExtendSearchRadius',
+  EXTEND_SEARCH_RADIUS_CLICKED = 'ExtendSearchRadiusClicked',
   GO_TO_PARENTS_FAQ = 'GoToParentsFAQ',
   GO_TO_PROFIL = 'GoToProfil',
   HAS_ACCEPTED_ALL_COOKIES = 'HasAcceptedAllCookies',
