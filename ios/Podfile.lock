@@ -1156,7 +1156,7 @@ SPEC CHECKSUMS:
   FirebaseCore: 5743c5785c074a794d35f2fff7ecc254a91e08b1
   FirebaseCoreDiagnostics: 92e07a649aeb66352b319d43bdd2ee3942af84cb
   FirebaseDynamicLinks: 1dc816ef789c5adac6fede0b46d11478175c70e4
-  FirebaseFirestore: cb361b7f8f225a225c9f11b8d42066baebb1630c
+  FirebaseFirestore: c3dadcf89ba4b89f493d1a34c37be94a4f9dd76e
   FirebaseInstallations: 40bd9054049b2eae9a2c38ef1c3dd213df3605cd
   FirebasePerformance: 66eb58c3e3568a0501a9be271c8ff424dea0ff34
   FirebaseRemoteConfig: 2d6e2cfdb49af79535c8af8a80a4a5009038ec2b
@@ -1188,7 +1188,7 @@ SPEC CHECKSUMS:
   Permission-LocationWhenInUse: 02d8eff562bd0743762c59a7f0919ccc8acb6565
   Permission-Notifications: c5842ced07b9f181ed638193533eb11e35b5e947
   PromisesObjC: f5707f49cb48b9636751c5b2e7d227e43fba9f47
-  RCT-Folly: 424b8c9a7a0b9ab2886ffe9c3b041ef628fd4fb1
+  RCT-Folly: 8dc08ca5a393b48b1c523ab6220dfdcc0fe000ad
   RCTRequired: b6cea797b684c6d8d82ba0107cef58cbb679afdb
   RCTTypeSafety: d2eb5e0e8af9181b24034f5171f9b659994b4678
   React: e5aafc4c18040e8fbe0870a1f6df890d35f5af1d
