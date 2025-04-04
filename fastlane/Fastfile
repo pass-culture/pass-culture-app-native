@@ -69,7 +69,6 @@ platform :ios do
         export APPCENTER_ACCESS_TOKEN=#{ENV['IOS_APPCENTER_API_TOKEN']} && \
         export BUILD=`jq -r .build package.json` && \
         export VERSION=`jq -r .version package.json` && \
-        export SENTRY_URL=https://sentry.io/ && \
         export CODEPUSH_LABEL=$(npx appcenter codepush deployment history #{ENV['CODEPUSH_DEPLOYMENT_NAME']} --app #{ENV['APPCENTER_ORGANISATION']}/#{ENV['APPCENTER_IOS_APP_ID']} | grep \" ${VERSION} \" | tail -1 | awk -F ' ' '{print $2}') && \
         npx sentry-cli react-native appcenter \
             #{ENV['APPCENTER_ORGANISATION']}/#{ENV['APPCENTER_IOS_APP_ID']} \
@@ -171,7 +170,6 @@ platform :android do
         export APPCENTER_ACCESS_TOKEN=#{ENV['ANDROID_APPCENTER_API_TOKEN']} && \
         export BUILD=`jq -r .build package.json` && \
         export VERSION=`jq -r .version package.json` && \
-        export SENTRY_URL=https://sentry.io/ && \
         export CODEPUSH_LABEL=$(npx appcenter codepush deployment history #{ENV['CODEPUSH_DEPLOYMENT_NAME']} --app #{ENV['APPCENTER_ORGANISATION']}/#{ENV['APPCENTER_ANDROID_APP_ID']} | grep \" ${VERSION} \" | tail -1 | awk -F ' ' '{print $2}') && \
         npx sentry-cli react-native appcenter \
             #{ENV['APPCENTER_ORGANISATION']}/#{ENV['APPCENTER_ANDROID_APP_ID']} \
