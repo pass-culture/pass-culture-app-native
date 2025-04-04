@@ -70,8 +70,6 @@ platform :ios do
         export BUILD=`jq -r .build package.json` && \
         export VERSION=`jq -r .version package.json` && \
         export SENTRY_URL=https://sentry.io/ && \
-        export SENTRY_ORG='pass-culture' && \
-        export SENTRY_PROJECT='jeunes' && \
         export CODEPUSH_LABEL=$(npx appcenter codepush deployment history #{ENV['CODEPUSH_DEPLOYMENT_NAME']} --app #{ENV['APPCENTER_ORGANISATION']}/#{ENV['APPCENTER_IOS_APP_ID']} | grep \" ${VERSION} \" | tail -1 | awk -F ' ' '{print $2}') && \
         npx sentry-cli react-native appcenter \
             #{ENV['APPCENTER_ORGANISATION']}/#{ENV['APPCENTER_IOS_APP_ID']} \
@@ -174,8 +172,6 @@ platform :android do
         export BUILD=`jq -r .build package.json` && \
         export VERSION=`jq -r .version package.json` && \
         export SENTRY_URL=https://sentry.io/ && \
-        export SENTRY_ORG='pass-culture' && \
-        export SENTRY_PROJECT='jeunes' && \
         export CODEPUSH_LABEL=$(npx appcenter codepush deployment history #{ENV['CODEPUSH_DEPLOYMENT_NAME']} --app #{ENV['APPCENTER_ORGANISATION']}/#{ENV['APPCENTER_ANDROID_APP_ID']} | grep \" ${VERSION} \" | tail -1 | awk -F ' ' '{print $2}') && \
         npx sentry-cli react-native appcenter \
             #{ENV['APPCENTER_ORGANISATION']}/#{ENV['APPCENTER_ANDROID_APP_ID']} \
