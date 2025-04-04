@@ -318,6 +318,7 @@ module.exports = {
           ['libs', './src/libs'],
           ['queries', './src/queries'],
           ['shared', './src/shared'],
+          ['store', './src/store'],
           ['tests', './src/tests'],
           ['theme', './src/theme'],
           ['types', './src/types'],

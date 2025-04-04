@@ -1,4 +1,4 @@
-import { useScrollToTop } from '@react-navigation/native'
+import { useFocusEffect, useRoute, useScrollToTop } from '@react-navigation/native'
 import { without } from 'lodash'
 import React, { FunctionComponent, useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import {
@@ -21,6 +21,7 @@ import { useGetVenuesData } from 'features/home/api/useGetVenuesData'
 import { useShowSkeleton } from 'features/home/api/useShowSkeleton'
 import { HomeBodyPlaceholder } from 'features/home/components/HomeBodyPlaceholder'
 import { HomeModule } from 'features/home/components/modules/HomeModule'
+import { OffersModuleProps } from 'features/home/components/modules/OffersModule'
 import { VideoCarouselModule } from 'features/home/components/modules/video/VideoCarouselModule'
 import { useOnScroll } from 'features/home/pages/helpers/useOnScroll'
 import {
@@ -39,6 +40,16 @@ import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { OfflinePage } from 'libs/network/OfflinePage'
 import { BatchEvent, BatchEventAttributes, BatchProfile } from 'libs/react-native-batch'
 import { AccessibilityFooter } from 'shared/AccessibilityFooter/AccessibilityFooter'
+import {
+  setOfferPlaylistViewTrackingFn,
+  trackOfferPlaylistView,
+} from 'shared/analytics/trackOfferPlaylistView'
+import {
+  resetPageTrackingInfo,
+  setPageTrackingInfo,
+  setPlaylistTrackingInfo,
+  useOfferPlaylistTrackingStore,
+} from 'store/tracking/offerPlaylistTrackingStore'
 import { ScrollToTopButton } from 'ui/components/ScrollToTopButton'
 import { Spinner } from 'ui/components/Spinner'
 import { getSpacing, Spacer } from 'ui/theme'
@@ -61,6 +72,31 @@ type GenericHomeProps = {
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 const keyExtractor = (item: any) => item.id
 
+const trackingFn = (params: unknown) =>
+  new Promise<void>((resolve) => {
+    setTimeout(() => {
+      console.log('TRACKING', JSON.stringify(params))
+      resolve()
+    }, 1000)
+  })
+setOfferPlaylistViewTrackingFn(trackingFn)
+
+const handleViewableItemsChanged = ({
+  index,
+  moduleId,
+  changedItemIds,
+  homeEntryId,
+}: Pick<OffersModuleProps, 'homeEntryId' | 'index' | 'moduleId'> & {
+  changedItemIds: string[]
+}) => {
+  setPlaylistTrackingInfo({
+    index,
+    playlistId: moduleId,
+    offerIds: changedItemIds,
+    callId: homeEntryId ?? '',
+  })
+}
+
 const renderModule = (
   { item, index }: { item: HomepageModule; index: number },
   homeId: string,
@@ -72,6 +108,7 @@ const renderModule = (
     homeEntryId={homeId}
     data={isOffersModule(item) || isVenuesModule(item) ? item.data : undefined}
     videoModuleId={videoModuleId}
+    onModuleViewableItemsChanged={handleViewableItemsChanged}
   />
 )
 
@@ -185,6 +222,7 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = ({
   const { height } = useWindowDimensions()
   const { isLoggedIn } = useAuthContext()
   const { current: triggerStorage } = useRef(createInMemoryScreenSeenCountTriggerStorage())
+  const { name } = useRoute()
 
   const triggerHasSeenEnoughHomeContent = async (screenSeenCount: ScreenSeenCount) => {
     const attributes = new BatchEventAttributes()
@@ -232,6 +270,25 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = ({
       modulesIntervalId.current = undefined
     }
   }, [modules.length, isLoading, maxIndex])
+
+  useFocusEffect(
+    useCallback(() => {
+      setPageTrackingInfo({
+        pageId: homeId,
+        pageLocation: name,
+        playlists: [],
+      })
+    }, [])
+  )
+
+  useFocusEffect(
+    useCallback(() => {
+      return () => {
+        trackOfferPlaylistView(useOfferPlaylistTrackingStore.getState())
+        resetPageTrackingInfo()
+      }
+    }, [])
+  )
 
   const renderItem = useCallback(
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -316,6 +373,7 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = ({
 
 export const GenericHome: FunctionComponent<GenericHomeProps> = (props) => {
   const netInfo = useNetInfoContext()
+
   if (netInfo.isConnected) {
     return <OnlineHome {...props} />
   }
