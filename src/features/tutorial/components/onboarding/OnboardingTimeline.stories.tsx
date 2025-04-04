@@ -1,7 +1,8 @@
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta } from '@storybook/react'
 import React from 'react'
 
 import { ANIMATION_DELAY } from 'features/home/api/useShowSkeleton'
+import { Variants, VariantsStory, VariantsTemplate } from 'ui/storybook/VariantsTemplate'
 
 import { OnboardingTimeline } from './OnboardingTimeline'
 
@@ -15,32 +16,32 @@ const meta: Meta<typeof OnboardingTimeline> = {
 }
 export default meta
 
-type Story = StoryObj<typeof OnboardingTimeline>
-
-export const Eighteen: Story = {
-  render: (props) => <OnboardingTimeline {...props} />,
-  args: {
-    age: 18,
+const variantConfig: Variants<typeof OnboardingTimeline> = [
+  {
+    label: 'OnboardingTimeline Eighteen',
+    props: { age: 18 },
   },
-}
-
-export const Seventeen: Story = {
-  render: (props) => <OnboardingTimeline {...props} />,
-  args: {
-    age: 17,
+  {
+    label: 'OnboardingTimeline Seventeen',
+    props: { age: 17 },
   },
-}
-
-export const Sixteen: Story = {
-  render: (props) => <OnboardingTimeline {...props} />,
-  args: {
-    age: 16,
+  {
+    label: 'OnboardingTimeline Sixteen',
+    props: { age: 16 },
   },
-}
-
-export const Fifteen: Story = {
-  render: (props) => <OnboardingTimeline {...props} />,
-  args: {
-    age: 15,
+  {
+    label: 'OnboardingTimeline Fifteen',
+    props: { age: 15 },
   },
+]
+
+export const Template: VariantsStory<typeof OnboardingTimeline> = {
+  name: 'OnboardingTimeline',
+  render: (props) => (
+    <VariantsTemplate
+      variants={variantConfig}
+      Component={OnboardingTimeline}
+      defaultProps={{ ...props }}
+    />
+  ),
 }
