@@ -2,6 +2,9 @@ import React from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
+import { BookingOfferResponse } from 'api/gen'
+import { LinkToOffer } from 'features/bookings/components/LinkToOffer'
+import { SubcategoriesMapping } from 'libs/subcategories/types'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { CalendarS } from 'ui/svg/icons/CalendarS'
 import { ClockFilled } from 'ui/svg/icons/ClockFilled'
@@ -19,6 +22,8 @@ type Props = {
   children: React.JSX.Element
   infoBanner?: React.JSX.Element
   venueInfo?: React.JSX.Element
+  offer: BookingOfferResponse
+  mapping: SubcategoriesMapping
 }
 
 export const TicketCutout = ({
@@ -29,6 +34,8 @@ export const TicketCutout = ({
   infoBanner,
   children,
   venueInfo,
+  offer,
+  mapping,
 }: Props) => {
   return (
     <View testID="ticket-punched">
@@ -54,6 +61,9 @@ export const TicketCutout = ({
                 <Typo.Body>Pour deux personnes</Typo.Body>
               </Row>
             ) : null}
+            <Container>
+              <LinkToOffer offer={offer} mapping={mapping} />
+            </Container>
           </ViewGap>
           {venueInfo}
         </ViewGap>
@@ -96,7 +106,6 @@ const StyledClockFilled = styled(ClockFilled).attrs(({ theme }) => ({
 const StyledCalendarS = styled(CalendarS).attrs(({ theme }) => ({
   size: theme.icons.sizes.small,
 }))({})
-
 const StyledStock = styled(Stock).attrs(({ theme }) => ({
   size: theme.icons.sizes.small,
 }))({})
@@ -105,6 +114,7 @@ const Row = styled.View({
   flexDirection: 'row',
   gap: getSpacing(2),
   alignContent: 'center',
+  justifyContent: 'flex-start',
 })
 
 const ContentBlock = styled.View(({ theme }) => ({
@@ -133,4 +143,8 @@ const TopBlock = styled(ContentBlock)({
   borderTopLeftRadius: getSpacing(6),
   borderTopRightRadius: getSpacing(6),
   paddingTop: getSpacing(6),
+})
+
+const Container = styled(View)({
+  marginLeft: getSpacing(1),
 })

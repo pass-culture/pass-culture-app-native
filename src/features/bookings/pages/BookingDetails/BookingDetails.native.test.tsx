@@ -704,6 +704,45 @@ describe('BookingDetails', () => {
       expect(mockedOpenUrl).toHaveBeenCalledWith(`mailto:${organizerEmail}`, undefined, true)
     })
 
+    it('should redirect to the Offer page and log event', async () => {
+      const booking: BookingsResponse['ongoing_bookings'][number] = ongoingBookings
+      renderBookingDetails(booking)
+
+      const text = screen.getByText('Voir l’offre')
+
+      await user.press(text)
+
+      const offerId = booking.stock.offer.id
+
+      expect(navigate).toHaveBeenCalledWith('Offer', {
+        id: offerId,
+        from: 'bookingdetails',
+      })
+      expect(analytics.logConsultOffer).toHaveBeenCalledWith({ offerId, from: 'bookings' })
+    })
+
+    it('should not redirect to the Offer and showSnackBarError when not connected', async () => {
+      mockUseNetInfoContext.mockReturnValueOnce({ isConnected: false })
+
+      renderBookingDetails(ongoingBookings)
+
+      const text = screen.getByText('Voir l’offre')
+
+      await user.press(text)
+
+      const offerId = ongoingBookings.stock.offer.id
+
+      expect(navigate).not.toHaveBeenCalledWith('Offer', {
+        id: offerId,
+        from: 'bookingdetails',
+      })
+      expect(analytics.logConsultOffer).not.toHaveBeenCalledWith({ offerId, from: 'bookings' })
+      expect(mockShowErrorSnackBar).toHaveBeenCalledWith({
+        message: `Impossible d’afficher le détail de l’offre. Connecte-toi à internet avant de réessayer.`,
+        timeout: SNACK_BAR_TIME_OUT,
+      })
+    })
+
     it('should render correctly when withdrawal type is no ticket', async () => {
       renderBookingDetails({
         ...ongoingBookings,

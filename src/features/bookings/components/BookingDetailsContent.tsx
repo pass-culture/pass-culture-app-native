@@ -18,6 +18,7 @@ import { VenueBlockWithItinerary } from 'features/offer/components/OfferVenueBlo
 import { analytics } from 'libs/analytics/provider'
 import { useLocation } from 'libs/location'
 import { getDistance } from 'libs/location/getDistance'
+import { SubcategoriesMapping } from 'libs/subcategories/types'
 import { formatFullAddress } from 'shared/address/addressFormatter'
 import { theme } from 'theme'
 import { ErrorBanner } from 'ui/components/banners/ErrorBanner'
@@ -33,9 +34,11 @@ const VENUE_THUMBNAIL_SIZE = getSpacing(15)
 export const BookingDetailsContent = ({
   properties,
   booking,
+  mapping,
 }: {
   properties: BookingProperties
   booking: BookingReponse
+  mapping: SubcategoriesMapping
 }) => {
   const { address } = booking?.stock.offer ?? {}
   const { visible: cancelModalVisible, showModal: showCancelModal, hideModal } = useModal(false)
@@ -86,6 +89,8 @@ export const BookingDetailsContent = ({
         hour={hourLabel == '' ? undefined : hourLabel}
         day={dayLabel == '' ? undefined : dayLabel}
         isDuo={properties.isDuo}
+        offer={offer}
+        mapping={mapping}
         venueInfo={
           <VenueBlockWithItinerary
             shouldDisplayItineraryButton={shouldDisplayItineraryButton}
