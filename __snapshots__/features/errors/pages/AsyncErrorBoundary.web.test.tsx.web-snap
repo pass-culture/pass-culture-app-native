@@ -107,7 +107,7 @@ exports[`AsyncErrorBoundary component should render correctly 1`] = `
   >
     <button
       aria-label="Revenir en arrière"
-      class="c0 c1 sc-dcJsrY c1"
+      class="c0 c1 sc-dtInlm c1"
       data-testid="Revenir en arrière"
       tabindex="0"
       title="Revenir en arrière"
@@ -168,7 +168,7 @@ exports[`AsyncErrorBoundary component should render correctly 1`] = `
         </h2>
       </div>
       <div
-        class="css-view-175oi2r r-alignItems-1awozwy"
+        class="css-view-175oi2r r-alignItems-1awozwy r-gap-f4gmv6"
       >
         <button
           aria-label="Réessayer"

@@ -12,6 +12,7 @@ import { AsyncError, MonitoringError, ScreenError, LogTypeEnum } from 'libs/moni
 import { eventMonitoring } from 'libs/monitoring/services'
 import { fireEvent, render, screen } from 'tests/utils'
 
+jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/monitoring/services')
 
 const mockGoBack = jest.fn()
