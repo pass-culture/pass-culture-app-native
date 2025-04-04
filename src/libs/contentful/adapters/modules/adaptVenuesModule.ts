@@ -5,12 +5,10 @@ import {
   VenuesParameters,
 } from 'libs/contentful/types'
 
-import { ContentfulAdapter } from '../contentfulAdapters'
-
 const venuesHaveFields = (parameters: VenuesParameters): parameters is ProvidedVenuesParameters =>
   !!parameters?.fields
 
-export const adaptVenuesModule: ContentfulAdapter<VenuesContentModel, VenuesModule> = (modules) => {
+export const adaptVenuesModule = (modules: VenuesContentModel): VenuesModule | null => {
   // if a mandatory module is unpublished/deleted, we can't handle the module, so we return null
   if (modules.fields === undefined) return null
   if (modules.fields.displayParameters.fields === undefined) return null

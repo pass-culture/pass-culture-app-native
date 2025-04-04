@@ -2,12 +2,9 @@ import { HighlightOfferModule, HomepageModuleType } from 'features/home/types'
 import { buildImageUrl } from 'libs/contentful/adapters/helpers/buildImageUrl'
 import { HighlightOfferContentModel } from 'libs/contentful/types'
 
-import { ContentfulAdapter } from '../contentfulAdapters'
-
-export const adaptHighlightOfferModule: ContentfulAdapter<
-  HighlightOfferContentModel,
-  HighlightOfferModule
-> = (module) => {
+export const adaptHighlightOfferModule = (
+  module: HighlightOfferContentModel
+): HighlightOfferModule | null => {
   if (module.fields === undefined) return null
 
   const offerImage = buildImageUrl(module.fields.offerImage.fields?.file.url)

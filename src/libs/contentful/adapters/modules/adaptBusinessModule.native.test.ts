@@ -1,6 +1,7 @@
 import { BusinessModule, HomepageModuleType } from 'features/home/types'
 import { adaptBusinessModule } from 'libs/contentful/adapters/modules/adaptBusinessModule'
 import { businessNatifModuleFixture } from 'libs/contentful/fixtures/businessModule.fixture'
+import { isBusinessContentModel } from 'libs/contentful/types'
 
 describe('adaptBusinessModule', () => {
   it('should adapt a business module', () => {
@@ -21,6 +22,7 @@ describe('adaptBusinessModule', () => {
     }
     const rawBusinessModule = businessNatifModuleFixture
 
+    expect(isBusinessContentModel(rawBusinessModule)).toBe(true)
     expect(adaptBusinessModule(rawBusinessModule)).toEqual(formattedBusinessModule)
   })
 

@@ -3,12 +3,9 @@ import { buildImageUrl } from 'libs/contentful/adapters/helpers/buildImageUrl'
 import { parseStringToNumber } from 'libs/contentful/adapters/helpers/parseStringToNumber'
 import { ExclusivityContentModel } from 'libs/contentful/types'
 
-import { ContentfulAdapter } from '../contentfulAdapters'
-
-export const adaptExclusivityModule: ContentfulAdapter<
-  ExclusivityContentModel,
-  ExclusivityModule
-> = (modules) => {
+export const adaptExclusivityModule = (
+  modules: ExclusivityContentModel
+): ExclusivityModule | null => {
   // if a mandatory module is unpublished/deleted, we can't handle the module, so we return null
   if (modules.fields === undefined) return null
 

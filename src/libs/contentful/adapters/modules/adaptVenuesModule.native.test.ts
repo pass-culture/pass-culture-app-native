@@ -1,12 +1,13 @@
 import { formattedVenuesModule } from 'features/home/fixtures/homepage.fixture'
 import { adaptVenuesModule } from 'libs/contentful/adapters/modules/adaptVenuesModule'
 import { venuesNatifModuleFixture } from 'libs/contentful/fixtures/venuesModule.fixture'
-import { VenuesFields } from 'libs/contentful/types'
+import { VenuesFields, isVenuesContentModel } from 'libs/contentful/types'
 
 describe('adaptVenuesModule', () => {
   it('should adapt a venues module', () => {
     const rawVenuesModule = venuesNatifModuleFixture
 
+    expect(isVenuesContentModel(rawVenuesModule)).toBe(true)
     expect(adaptVenuesModule(rawVenuesModule)).toEqual(formattedVenuesModule)
   })
 

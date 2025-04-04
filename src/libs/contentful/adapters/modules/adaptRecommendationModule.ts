@@ -5,8 +5,6 @@ import {
   RecommendationParametersFields,
 } from 'libs/contentful/types'
 
-import { ContentfulAdapter } from '../contentfulAdapters'
-
 const mapRecommendationSubcategories = (
   recoSubcategories: RecommendationParametersFields['recommendationSubcategories']
 ) => recoSubcategories?.fields?.subcategories
@@ -52,10 +50,9 @@ export const buildRecommendationParams = (
     categories: mapRecommendationCategories(recommendationCategories),
   }
 }
-export const adaptRecommendationModule: ContentfulAdapter<
-  RecommendationContentModel,
-  RecommendedOffersModule
-> = (modules) => {
+export const adaptRecommendationModule = (
+  modules: RecommendationContentModel
+): RecommendedOffersModule | null => {
   // if a mandatory module is unpublished/deleted, we can't handle the module, so we return null
   if (modules.fields === undefined) return null
   if (modules.fields.displayParameters.fields === undefined) return null

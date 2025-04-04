@@ -4,12 +4,9 @@ import {
   VideoCarouselItemContentModel as VideoCarouselItemListContentModel,
 } from 'libs/contentful/types'
 
-import { ContentfulAdapter } from '../contentfulAdapters'
-
-export const adaptVideoCarouselModule: ContentfulAdapter<
-  VideoCarouselContentModel,
-  VideoCarouselModule
-> = (module) => {
+export const adaptVideoCarouselModule = (
+  module: VideoCarouselContentModel
+): VideoCarouselModule | null => {
   if (module.fields === undefined) return null
 
   return {

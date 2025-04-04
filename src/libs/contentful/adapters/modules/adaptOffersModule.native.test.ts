@@ -6,11 +6,13 @@ import {
   additionalAlgoliaParametersWithoutOffersFixture,
   algoliaNatifModuleFixture,
 } from 'libs/contentful/fixtures/algoliaModules.fixture'
-import { AlgoliaFields, AlgoliaParameters } from 'libs/contentful/types'
+import { AlgoliaFields, AlgoliaParameters, isAlgoliaContentModel } from 'libs/contentful/types'
 
 describe('adaptOffersModule', () => {
   it('should adapt an offers module without additional offers', () => {
     const rawAlgoliaNatifModule = algoliaNatifModuleFixture
+
+    expect(isAlgoliaContentModel(rawAlgoliaNatifModule)).toBe(true)
 
     expect(adaptOffersModule(rawAlgoliaNatifModule)).toEqual(formattedOffersModule)
   })

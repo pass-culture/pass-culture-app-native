@@ -3,9 +3,7 @@ import { buildOffersParams } from 'libs/contentful/adapters/helpers/buildOffersP
 import { buildRecommendationParams } from 'libs/contentful/adapters/modules/adaptRecommendationModule'
 import { AlgoliaContentModel } from 'libs/contentful/types'
 
-import { ContentfulAdapter } from '../contentfulAdapters'
-
-export const adaptOffersModule: ContentfulAdapter<AlgoliaContentModel, OffersModule> = (module) => {
+export const adaptOffersModule = (module: AlgoliaContentModel): OffersModule | null => {
   // if a mandatory module is unpublished/deleted, we can't handle the module, so we return null
   if (module.fields === undefined) return null
   if (module.fields.displayParameters.fields === undefined) return null

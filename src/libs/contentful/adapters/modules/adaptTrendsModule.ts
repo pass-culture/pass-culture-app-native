@@ -12,9 +12,7 @@ import {
 } from 'libs/contentful/types'
 import { isNonNullable } from 'shared/typeguards/isNonNullable'
 
-import { ContentfulAdapter } from '../contentfulAdapters'
-
-export const adaptTrendsModule: ContentfulAdapter<TrendsContentModel, TrendsModule> = (module) => {
+export const adaptTrendsModule = (module: TrendsContentModel): TrendsModule | null => {
   if (module.fields === undefined) return null
 
   return {

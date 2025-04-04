@@ -1,11 +1,7 @@
 import { HomepageModuleType, VenueMapModule } from 'features/home/types'
 import { VenueMapBlockContentModel } from 'libs/contentful/types'
 
-import { ContentfulAdapter } from '../contentfulAdapters'
-
-export const adaptVenueMapModule: ContentfulAdapter<VenueMapBlockContentModel, VenueMapModule> = (
-  module
-) => {
+export const adaptVenueMapModule = (module: VenueMapBlockContentModel): VenueMapModule | null => {
   if (module.fields === undefined) return null
 
   return {

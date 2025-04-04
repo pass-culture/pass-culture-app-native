@@ -1,68 +1,75 @@
 import {
-  adaptedHomepage,
   formattedBusinessModule,
+  formattedCategoryListModule,
+  formattedExclusivityModule,
   formattedOffersModule,
+  formattedRecommendedOffersModule,
+  formattedThematicHighlightModule,
+  formattedTrendsModule,
+  formattedVenuesModule,
+  formattedVideoCarouselModule,
 } from 'features/home/fixtures/homepage.fixture'
-import { homepageNatifEntryFixture } from 'libs/contentful/fixtures/homepageNatifEntry.fixture'
+import { adaptHomepageNatifModules } from 'libs/contentful/adapters/adaptHomepageModules'
+import { algoliaNatifModuleFixture } from 'libs/contentful/fixtures/algoliaModules.fixture'
+import { businessNatifModuleFixture } from 'libs/contentful/fixtures/businessModule.fixture'
+import { categoryListFixture } from 'libs/contentful/fixtures/categoryList.fixture'
+import { exclusivityNatifModuleFixture } from 'libs/contentful/fixtures/exclusivityModule.fixture'
+import { recommendationNatifModuleFixture } from 'libs/contentful/fixtures/recommendationNatifModule.fixture'
+import { thematicHighlightModuleFixture } from 'libs/contentful/fixtures/thematicHighlightModule.fixture'
+import { trendsModuleFixture } from 'libs/contentful/fixtures/trendsModule.fixture'
+import { venuesNatifModuleFixture } from 'libs/contentful/fixtures/venuesModule.fixture'
+import { videoCarouselFixture } from 'libs/contentful/fixtures/videoCarousel.fixture'
 import { eventMonitoring } from 'libs/monitoring/services'
 
-import { algoliaNatifModuleFixture } from '../fixtures/algoliaModules.fixture'
-import { businessNatifModuleFixture } from '../fixtures/businessModule.fixture'
+describe('adaptHomepageModules', () => {
+  it('should adapt a list of HomepageNatifModules', () => {
+    const rawHomepageNatifModules = [
+      algoliaNatifModuleFixture,
+      businessNatifModuleFixture,
+      venuesNatifModuleFixture,
+      exclusivityNatifModuleFixture,
+      recommendationNatifModuleFixture,
+      thematicHighlightModuleFixture,
+      categoryListFixture,
+      videoCarouselFixture,
+      trendsModuleFixture,
+    ]
 
-import { adaptHomepageEntries } from './adaptHomepageEntries'
+    const formattedHomepageModules = [
+      formattedOffersModule,
+      formattedBusinessModule,
+      formattedVenuesModule,
+      formattedExclusivityModule,
+      formattedRecommendedOffersModule,
+      formattedThematicHighlightModule,
+      formattedCategoryListModule,
+      formattedVideoCarouselModule,
+      formattedTrendsModule,
+    ]
 
-describe('adaptHomepageEntries', () => {
-  it('should adapt a list of HomepageNatifEntries without modules', () => {
-    const adaptedHomepageList = adaptHomepageEntries([
-      {
-        ...homepageNatifEntryFixture,
-        fields: { ...homepageNatifEntryFixture.fields, modules: [] },
-      },
-    ])
-
-    expect(adaptedHomepageList).toStrictEqual([{ ...adaptedHomepage, modules: [] }])
+    expect(adaptHomepageNatifModules(rawHomepageNatifModules)).toStrictEqual(
+      formattedHomepageModules
+    )
   })
 
-  describe('modules', () => {
-    it('should adapt a list of HomepageNatifModules', () => {
-      const rawHomepageNatifModules = [algoliaNatifModuleFixture, businessNatifModuleFixture]
+  it('should catch the error and log to Sentry if the provided data is corrupted', () => {
+    const spyWarn = jest.spyOn(global.console, 'warn').mockImplementationOnce(() => null)
 
-      const formattedHomepageModules = [formattedOffersModule, formattedBusinessModule]
-      const adaptedHomepageList = adaptHomepageEntries([
-        {
-          ...homepageNatifEntryFixture,
-          fields: { ...homepageNatifEntryFixture.fields, modules: rawHomepageNatifModules },
-        },
-      ])
+    const contentModel = structuredClone(businessNatifModuleFixture)
+    // @ts-ignore: the following content model is voluntarily broken, cf. PC-21362
+    contentModel.fields.image = undefined
 
-      expect(adaptedHomepageList).toStrictEqual([
-        { ...adaptedHomepage, modules: formattedHomepageModules },
-      ])
-    })
+    adaptHomepageNatifModules([contentModel])
 
-    it('should catch the error and log to Sentry if the provided data is corrupted', () => {
-      const spyWarn = jest.spyOn(global.console, 'warn').mockImplementationOnce(() => null)
-
-      const contentModel = structuredClone(businessNatifModuleFixture)
-
-      // @ts-ignore: the following content model is voluntarily broken, cf. PC-21362
-      contentModel.fields.image = undefined
-
-      adaptHomepageEntries([
-        {
-          ...homepageNatifEntryFixture,
-          fields: { ...homepageNatifEntryFixture.fields, modules: [contentModel] },
-        },
-      ])
-
-      expect(spyWarn).toHaveBeenNthCalledWith(
-        1,
-        'Error while computing home modules, with module of ID: 20SId61p6EFTG7kgBTFrOa',
-        expect.objectContaining({}) // is supposed to be a TypeError, but we don't care
-      )
-      expect(eventMonitoring.captureException).toHaveBeenNthCalledWith(1, expect.any(TypeError), {
-        extra: { moduleId: '20SId61p6EFTG7kgBTFrOa' },
-      })
-    })
+    expect(spyWarn).toHaveBeenNthCalledWith(
+      1,
+      'Error while computing home modules, with module of ID: 20SId61p6EFTG7kgBTFrOa',
+      expect.objectContaining({}) // is supposed to be a TypeError, but we don't care
+    )
+    expect(eventMonitoring.captureException).toHaveBeenNthCalledWith(
+      1,
+      'Error while computing home modules',
+      { extra: { moduleId: '20SId61p6EFTG7kgBTFrOa' } }
+    )
   })
 })

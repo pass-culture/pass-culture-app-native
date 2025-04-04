@@ -3,9 +3,7 @@ import { buildImageUrl } from 'libs/contentful/adapters/helpers/buildImageUrl'
 import { buildOffersParams } from 'libs/contentful/adapters/helpers/buildOffersParams'
 import { VideoContentModel } from 'libs/contentful/types'
 
-import { ContentfulAdapter } from '../contentfulAdapters'
-
-export const adaptVideoModule: ContentfulAdapter<VideoContentModel, VideoModule> = (module) => {
+export const adaptVideoModule = (module: VideoContentModel): VideoModule | null => {
   if (module.fields === undefined) return null
 
   const videoThumbnail = buildImageUrl(module.fields.videoThumbnail.fields?.file.url)

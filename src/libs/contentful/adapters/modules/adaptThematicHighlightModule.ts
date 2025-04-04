@@ -2,12 +2,9 @@ import { ThematicHighlightModule, HomepageModuleType } from 'features/home/types
 import { buildImageUrl } from 'libs/contentful/adapters/helpers/buildImageUrl'
 import { ThematicHighlightContentModel } from 'libs/contentful/types'
 
-import { ContentfulAdapter } from '../contentfulAdapters'
-
-export const adaptThematicHighlightModule: ContentfulAdapter<
-  ThematicHighlightContentModel,
-  ThematicHighlightModule
-> = (module) => {
+export const adaptThematicHighlightModule = (
+  module: ThematicHighlightContentModel
+): ThematicHighlightModule | null => {
   // if a mandatory module is unpublished/deleted, we can't handle the module, so we return null
   if (module.fields === undefined) return null
 
