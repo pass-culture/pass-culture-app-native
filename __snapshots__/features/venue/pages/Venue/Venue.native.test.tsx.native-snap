@@ -5936,6 +5936,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                               style={
                                 [
                                   {
+                                    "flexShrink": 1,
                                     "justifyContent": "center",
                                   },
                                 ]
