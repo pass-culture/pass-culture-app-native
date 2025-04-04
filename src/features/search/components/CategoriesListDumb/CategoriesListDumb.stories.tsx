@@ -23,6 +23,7 @@ const BodyWrapper = styled.View({
 type Story = StoryObj<typeof CategoriesListDumb>
 
 export const Default: Story = {
+  name: 'CategoriesButtons',
   render: (props) => (
     <BodyWrapper>
       <NavigationContainer>

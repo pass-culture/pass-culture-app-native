@@ -9,10 +9,9 @@ const meta: Meta<typeof BottomBanner> = {
 }
 export default meta
 
-export const Default = (props: React.ComponentProps<typeof BottomBanner>) => (
-  <BottomBanner {...props} />
-)
-
-Default.args = {
-  text: 'Tu ne peux pas réserver cette offre car tu n’es pas éligible au pass Culture.',
+export const Default = {
+  name: 'BottomBanner',
+  render: () => (
+    <BottomBanner text="Tu ne peux pas réserver cette offre car tu n’es pas éligible au pass Culture." />
+  ),
 }

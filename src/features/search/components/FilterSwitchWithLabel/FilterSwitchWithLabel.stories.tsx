@@ -1,8 +1,9 @@
 import { NavigationContainer } from '@react-navigation/native'
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta } from '@storybook/react'
 import React from 'react'
 
 import { FilterSwitchWithLabel } from 'features/search/components/FilterSwitchWithLabel/FilterSwitchWithLabel'
+import { Variants, VariantsStory, VariantsTemplate } from 'ui/storybook/VariantsTemplate'
 
 const meta: Meta<typeof FilterSwitchWithLabel> = {
   title: 'Features/search/FilterSwitchWithLabel',
@@ -17,21 +18,24 @@ const meta: Meta<typeof FilterSwitchWithLabel> = {
 }
 export default meta
 
-type Story = StoryObj<typeof FilterSwitchWithLabel>
-
-export const Default: Story = {
-  render: (props) => <FilterSwitchWithLabel {...props} />,
-  args: {
-    isActive: true,
-    label: 'Ceci est un label',
+const variantConfig: Variants<typeof FilterSwitchWithLabel> = [
+  {
+    label: 'FilterSwitchWithLabel Default',
+    props: { isActive: true, label: 'Ceci est un label' },
   },
-}
-
-export const WithSubtitle: Story = {
-  render: (props) => <FilterSwitchWithLabel {...props} />,
-  args: {
-    isActive: true,
-    label: 'Ceci est un label',
-    subtitle: 'Ceci est un sous-titre',
+  {
+    label: 'FilterSwitchWithLabel Without Subtitle',
+    props: { isActive: true, label: 'Ceci est un label', subtitle: 'Ceci est un sous-titre' },
   },
+]
+
+export const Template: VariantsStory<typeof FilterSwitchWithLabel> = {
+  name: 'FilterSwitchWithLabel',
+  render: (props) => (
+    <VariantsTemplate
+      variants={variantConfig}
+      Component={FilterSwitchWithLabel}
+      defaultProps={props}
+    />
+  ),
 }

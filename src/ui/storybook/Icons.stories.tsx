@@ -59,4 +59,7 @@ const Template: StoryFn<typeof Icons> = () => (
   </React.Fragment>
 )
 
-export const AllIcons = Template.bind({})
+export const AllIcons = {
+  name: 'Icons',
+  render: Template,
+}

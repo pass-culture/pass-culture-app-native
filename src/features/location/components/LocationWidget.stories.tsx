@@ -21,4 +21,7 @@ export default meta
 
 const Template = () => <LocationWidget screenOrigin={ScreenOrigin.HOME} />
 
-export const Default = Template.bind({})
+export const Default = {
+  name: 'LocationWidget',
+  render: () => Template(),
+}

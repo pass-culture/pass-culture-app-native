@@ -56,4 +56,7 @@ const Template: StoryFn<typeof Illustrations> = () => (
   </React.Fragment>
 )
 
-export const AllIllustrations = Template.bind({})
+export const AllIllustrations = {
+  name: 'Illustrations',
+  render: Template,
+}
