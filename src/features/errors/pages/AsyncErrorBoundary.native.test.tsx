@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
 
 import { ApiError } from 'api/ApiError'
+import { AsyncErrorBoundary } from 'features/errors/pages/AsyncErrorBoundary'
 import { useMaintenance } from 'features/maintenance/helpers/useMaintenance/useMaintenance'
 import { MaintenanceErrorPage } from 'features/maintenance/pages/MaintenanceErrorPage'
 import * as useGoBack from 'features/navigation/useGoBack'
@@ -11,8 +12,7 @@ import { AsyncError, MonitoringError, ScreenError, LogTypeEnum } from 'libs/moni
 import { eventMonitoring } from 'libs/monitoring/services'
 import { fireEvent, render, screen } from 'tests/utils'
 
-import { AsyncErrorBoundary } from './AsyncErrorBoundary'
-
+jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/monitoring/services')
 
 const mockGoBack = jest.fn()

@@ -1,7 +1,7 @@
 import React, { ComponentType } from 'react'
 import { withErrorBoundary } from 'react-error-boundary'
 
-import { AsyncErrorBoundary } from '../pages/AsyncErrorBoundary'
+import { AsyncErrorBoundary } from 'features/errors/pages/AsyncErrorBoundary'
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export function withAsyncErrorBoundary(component: ComponentType<any>) {
