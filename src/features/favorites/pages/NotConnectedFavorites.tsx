@@ -8,6 +8,7 @@ import { analytics } from 'libs/analytics/provider'
 import { ButtonWithLinearGradient } from 'ui/components/buttons/buttonWithLinearGradient/ButtonWithLinearGradient'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Page } from 'ui/pages/Page'
 import { BicolorUserFavorite } from 'ui/svg/icons/BicolorUserFavorite'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -54,8 +55,7 @@ export const NotConnectedFavorites = () => {
   )
 }
 
-const Container = styled.View<{ top: number; bottom: number }>(({ theme }) => ({
-  flex: 1,
+const Container = styled(Page)<{ top: number; bottom: number }>(({ theme }) => ({
   justifyContent: 'space-between',
   paddingHorizontal: theme.contentPage.marginHorizontal,
   paddingVertical: theme.contentPage.marginVertical,

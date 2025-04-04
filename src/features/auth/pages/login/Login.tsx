@@ -32,7 +32,6 @@ import { SUGGESTION_DELAY_IN_MS } from 'ui/components/inputs/EmailInputWithSpell
 import { InputError } from 'ui/components/inputs/InputError'
 import { SeparatorWithText } from 'ui/components/SeparatorWithText'
 import { SNACK_BAR_TIME_OUT_LONG, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
-import { Page } from 'ui/pages/Page'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
 import { Key } from 'ui/svg/icons/Key'
 import { Spacer, Typo } from 'ui/theme'
@@ -197,7 +196,7 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
   const titlePage = 'Connecte-toi'
 
   return (
-    <Page>
+    <React.Fragment>
       {isRecaptchaEnabled ? (
         <ReCaptcha
           onClose={onReCaptchaClose}
@@ -255,7 +254,7 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
         </Form.MaxWidth>
         <SignUpButton onAdditionalPress={onLogSignUpAnalytics} />
       </SecondaryPageWithBlurHeader>
-    </Page>
+    </React.Fragment>
   )
 })
 

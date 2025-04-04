@@ -6,6 +6,7 @@ exports[`<OfflinePage /> should match snapshot with default message 1`] = `
     [
       {
         "alignItems": "center",
+        "backgroundColor": "#ffffff",
         "flexBasis": 0,
         "flexGrow": 1,
         "flexShrink": 1,

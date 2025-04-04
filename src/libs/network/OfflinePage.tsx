@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
+import { Page } from 'ui/pages/Page'
 import { BicolorBrokenConnection } from 'ui/svg/BicolorBrokenConnection'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -24,8 +25,7 @@ export const OfflinePage = () => {
   )
 }
 
-const Container = styled.View({
-  flex: 1,
+const Container = styled(Page)({
   alignItems: 'center',
 })
 

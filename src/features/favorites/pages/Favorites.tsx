@@ -1,5 +1,4 @@
 import React from 'react'
-import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { FavoritesResults } from 'features/favorites/components/FavoritesResults'
@@ -7,6 +6,7 @@ import { NotConnectedFavorites } from 'features/favorites/pages/NotConnectedFavo
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { OfflinePage } from 'libs/network/OfflinePage'
 import { PageHeader } from 'ui/components/headers/PageHeader'
+import { Page } from 'ui/pages/Page'
 
 export const Favorites: React.FC = () => {
   const { isConnected } = useNetInfoContext()
@@ -21,11 +21,9 @@ export const Favorites: React.FC = () => {
   }
 
   return (
-    <Container>
+    <Page>
       <PageHeader title="Mes favoris" />
       <FavoritesResults />
-    </Container>
+    </Page>
   )
 }
-
-const Container = styled.View({ flex: 1 })

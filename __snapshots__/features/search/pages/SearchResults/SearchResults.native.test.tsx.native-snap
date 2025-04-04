@@ -5,6 +5,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
   style={
     [
       {
+        "backgroundColor": "#ffffff",
         "flexBasis": 0,
         "flexGrow": 1,
         "flexShrink": 1,
@@ -13,34 +14,34 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
   }
 >
   <View
-    customHeight={16}
-    enable={true}
     style={
       [
         {
-          "height": 16,
-        },
-      ]
-    }
-  />
-  <View
-    style={
-      [
-        {
-          "marginTop": 24,
-          "paddingHorizontal": 24,
-          "zIndex": 1,
+          "flexBasis": 0,
+          "flexGrow": 1,
+          "flexShrink": 1,
         },
       ]
     }
   >
     <View
+      customHeight={16}
+      enable={true}
       style={
         [
           {
-            "alignItems": "center",
-            "flexDirection": "row",
-            "paddingBottom": 16,
+            "height": 16,
+          },
+        ]
+      }
+    />
+    <View
+      style={
+        [
+          {
+            "marginTop": 24,
+            "paddingHorizontal": 24,
+            "zIndex": 1,
           },
         ]
       }
@@ -49,9 +50,9 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
         style={
           [
             {
+              "alignItems": "center",
               "flexDirection": "row",
-              "justifyContent": "space-between",
-              "width": "100%",
+              "paddingBottom": 16,
             },
           ]
         }
@@ -60,79 +61,76 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
           style={
             [
               {
-                "flexShrink": 1,
+                "flexDirection": "row",
+                "justifyContent": "space-between",
                 "width": "100%",
               },
             ]
           }
-          testID="SearchHeaderTitleContainer"
         >
           <View
             style={
               [
                 {
-                  "alignItems": "flex-start",
-                  "flexDirection": "row",
-                  "justifyContent": "flex-start",
+                  "flexShrink": 1,
+                  "width": "100%",
                 },
               ]
             }
+            testID="SearchHeaderTitleContainer"
           >
             <View
               style={
                 [
                   {
-                    "alignItems": "center",
-                    "flexWrap": "wrap",
+                    "alignItems": "flex-start",
+                    "flexDirection": "row",
                     "justifyContent": "flex-start",
-                    "maxWidth": "75%",
                   },
                 ]
               }
             >
-              <Text
-                htmlFor="testUuidV4"
+              <View
                 style={
                   [
                     {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 28,
-                      "lineHeight": 44.8,
+                      "alignItems": "center",
+                      "flexWrap": "wrap",
+                      "justifyContent": "flex-start",
+                      "maxWidth": "75%",
                     },
                   ]
                 }
               >
-                Rechercher
-              </Text>
+                <Text
+                  htmlFor="testUuidV4"
+                  style={
+                    [
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 28,
+                        "lineHeight": 44.8,
+                      },
+                    ]
+                  }
+                >
+                  Rechercher
+                </Text>
+              </View>
             </View>
           </View>
+          <View
+            testID="InsideLocationWidget"
+          />
         </View>
-        <View
-          testID="InsideLocationWidget"
-        />
       </View>
-    </View>
-    <View>
-      <View
-        style={
-          [
-            {
-              "flexDirection": "row",
-            },
-          ]
-        }
-      >
+      <View>
         <View
           style={
             [
               {
-                "alignItems": "center",
-                "flexBasis": 0,
                 "flexDirection": "row",
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "justifyContent": "center",
               },
             ]
           }
@@ -146,6 +144,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                   "flexDirection": "row",
                   "flexGrow": 1,
                   "flexShrink": 1,
+                  "justifyContent": "center",
                 },
               ]
             }
@@ -154,6 +153,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
               style={
                 [
                   {
+                    "alignItems": "center",
                     "flexBasis": 0,
                     "flexDirection": "row",
                     "flexGrow": 1,
@@ -163,768 +163,129 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
               }
             >
               <View
-                height="regular"
-                isDisabled={false}
-                isError={false}
-                isFocus={false}
                 style={
                   [
                     {
-                      "alignItems": "center",
-                      "backgroundColor": "#ffffff",
-                      "borderColor": "#90949d",
-                      "borderRadius": 22,
-                      "borderStyle": "solid",
-                      "borderWidth": 1,
+                      "flexBasis": 0,
                       "flexDirection": "row",
-                      "height": 48,
-                      "paddingBottom": 0,
-                      "paddingLeft": 17,
-                      "paddingRight": 17,
-                      "paddingTop": 0,
-                      "width": "100%",
-                    },
-                    {
-                      "borderRadius": 24,
-                      "outlineOffset": 0,
-                    },
-                    {
-                      "flex": 1,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
                     },
                   ]
                 }
-                testID="styled-input-container"
               >
                 <View
+                  height="regular"
+                  isDisabled={false}
+                  isError={false}
+                  isFocus={false}
                   style={
                     [
                       {
-                        "flexShrink": 0,
-                        "marginRight": 8,
+                        "alignItems": "center",
+                        "backgroundColor": "#ffffff",
+                        "borderColor": "#90949d",
+                        "borderRadius": 22,
+                        "borderStyle": "solid",
+                        "borderWidth": 1,
+                        "flexDirection": "row",
+                        "height": 48,
+                        "paddingBottom": 0,
+                        "paddingLeft": 17,
+                        "paddingRight": 17,
+                        "paddingTop": 0,
+                        "width": "100%",
+                      },
+                      {
+                        "borderRadius": 24,
+                        "outlineOffset": 0,
+                      },
+                      {
+                        "flex": 1,
                       },
                     ]
                   }
+                  testID="styled-input-container"
                 >
                   <View
-                    height={20}
-                    width={20}
-                  >
-                    <Text>
-                      undefined-SVG-Mock
-                    </Text>
-                  </View>
-                </View>
-                <TextInput
-                  accessibilityDescribedBy="testUuidV4"
-                  accessibilityHidden={true}
-                  autoCorrect={false}
-                  autoFocus={false}
-                  editable={true}
-                  enablesReturnKeyAutomatically={true}
-                  focusable={false}
-                  isEmpty={true}
-                  multiline={false}
-                  nativeID="testUuidV4"
-                  onBlur={[Function]}
-                  onChangeText={[Function]}
-                  onFocus={[Function]}
-                  onSubmitEditing={[Function]}
-                  placeholder="Offre, artiste, lieu culturel..."
-                  placeholderTextColor="#696A6F"
-                  returnKeyType="search"
-                  selectionColor="#696A6F"
-                  style={
-                    [
-                      {
-                        "color": "#161617",
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "fontFamily": "Montserrat-MediumItalic",
-                        "fontSize": 16,
-                        "height": "100%",
-                        "paddingBottom": 0,
-                        "paddingLeft": 0,
-                        "paddingRight": 0,
-                        "paddingTop": 0,
-                      },
-                      {},
-                    ]
-                  }
-                  testID="searchInput"
-                  textAlignVertical="center"
-                  value=""
-                />
-              </View>
-            </View>
-          </View>
-        </View>
-        <Text
-          nativeID="testUuidV4"
-          style={
-            [
-              {
-                "display": "none",
-              },
-            ]
-          }
-        >
-          Indique le nom d’une offre ou d’un lieu puis lance la recherche à l’aide de la touche ”Entrée”
-        </Text>
-      </View>
-    </View>
-  </View>
-  <View
-    numberOfSpaces={2}
-    style={
-      [
-        {
-          "height": 8,
-        },
-      ]
-    }
-  />
-  <View>
-    <RCTScrollView
-      horizontal={true}
-      showsHorizontalScrollIndicator={false}
-    >
-      <View>
-        <View
-          numberOfSpaces={5}
-          style={
-            [
-              {
-                "width": 20,
-              },
-            ]
-          }
-        />
-        <View
-          accessibilityRole="list"
-          style={
-            [
-              {
-                "flexDirection": "row",
-                "paddingLeft": 0,
-              },
-            ]
-          }
-        >
-          <View
-            accessibilityRole="none"
-            style={
-              [
-                {
-                  "display": "flex",
-                  "marginBottom": 4,
-                  "marginLeft": 4,
-                  "marginTop": 4,
-                },
-              ]
-            }
-          >
-            <View
-              accessibilityLabel="Voir tous les filtres : 3 filtres actifs"
-              accessibilityRole="link"
-              accessibilityState={
-                {
-                  "busy": undefined,
-                  "checked": undefined,
-                  "disabled": undefined,
-                  "expanded": undefined,
-                  "selected": undefined,
-                }
-              }
-              accessibilityValue={
-                {
-                  "max": undefined,
-                  "min": undefined,
-                  "now": undefined,
-                  "text": undefined,
-                }
-              }
-              accessible={true}
-              focusable={true}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                [
-                  [
-                    {
-                      "userSelect": "auto",
-                    },
-                    {},
-                    {
-                      "display": "flex",
-                      "height": 32,
-                      "width": 32,
-                    },
-                  ],
-                  {
-                    "opacity": 1,
-                  },
-                ]
-              }
-              testID="Voir tous les filtres : 3 filtres actifs"
-            >
-              <View
-                style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "borderColor": "#161617",
-                      "borderRadius": 16,
-                      "borderWidth": 1,
-                      "height": 32,
-                      "justifyContent": "center",
-                      "width": 32,
-                    },
-                  ]
-                }
-              >
-                <View
-                  fill="#161617"
-                  height={16}
-                  width={16}
-                >
-                  <Text>
-                    undefined-SVG-Mock
-                  </Text>
-                </View>
-              </View>
-              <View
-                style={
-                  [
-                    {
-                      "alignSelf": "center",
-                      "backgroundColor": "#eb0055",
-                      "borderColor": "#ffffff",
-                      "borderRadius": 16,
-                      "borderStyle": "solid",
-                      "borderWidth": 1,
-                    },
-                    {
-                      "backgroundColor": "#161617",
-                      "bottom": 0,
-                      "position": "absolute",
-                      "right": 0,
-                    },
-                  ]
-                }
-                testID="searchFilterBadge"
-              >
-                <View
-                  style={
-                    [
-                      {
-                        "height": 16,
-                        "minWidth": 16,
-                        "paddingHorizontal": 2,
-                      },
-                    ]
-                  }
-                >
-                  <Text
                     style={
                       [
                         {
-                          "color": "#ffffff",
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 12,
-                          "lineHeight": 16,
-                          "textAlign": "center",
+                          "flexShrink": 0,
+                          "marginRight": 8,
                         },
                       ]
                     }
                   >
-                    3
-                  </Text>
+                    <View
+                      height={20}
+                      width={20}
+                    >
+                      <Text>
+                        undefined-SVG-Mock
+                      </Text>
+                    </View>
+                  </View>
+                  <TextInput
+                    accessibilityDescribedBy="testUuidV4"
+                    accessibilityHidden={true}
+                    autoCorrect={false}
+                    autoFocus={false}
+                    editable={true}
+                    enablesReturnKeyAutomatically={true}
+                    focusable={false}
+                    isEmpty={true}
+                    multiline={false}
+                    nativeID="testUuidV4"
+                    onBlur={[Function]}
+                    onChangeText={[Function]}
+                    onFocus={[Function]}
+                    onSubmitEditing={[Function]}
+                    placeholder="Offre, artiste, lieu culturel..."
+                    placeholderTextColor="#696A6F"
+                    returnKeyType="search"
+                    selectionColor="#696A6F"
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "Montserrat-MediumItalic",
+                          "fontSize": 16,
+                          "height": "100%",
+                          "paddingBottom": 0,
+                          "paddingLeft": 0,
+                          "paddingRight": 0,
+                          "paddingTop": 0,
+                        },
+                        {},
+                      ]
+                    }
+                    testID="searchInput"
+                    textAlignVertical="center"
+                    value=""
+                  />
                 </View>
               </View>
             </View>
           </View>
-          <View
-            accessibilityRole="none"
+          <Text
+            nativeID="testUuidV4"
             style={
               [
                 {
-                  "display": "flex",
-                  "marginBottom": 4,
-                  "marginLeft": 4,
-                  "marginTop": 4,
+                  "display": "none",
                 },
               ]
             }
           >
-            <View
-              accessibilityLabel="Le Petit Rintintin 1 : Filtre sélectionné"
-              accessibilityRole="button"
-              accessibilityState={
-                {
-                  "busy": undefined,
-                  "checked": undefined,
-                  "disabled": undefined,
-                  "expanded": undefined,
-                  "selected": undefined,
-                }
-              }
-              accessibilityValue={
-                {
-                  "max": undefined,
-                  "min": undefined,
-                  "now": undefined,
-                  "text": undefined,
-                }
-              }
-              accessible={true}
-              focusable={true}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                [
-                  [
-                    {
-                      "userSelect": "auto",
-                    },
-                    {
-                      "alignItems": "center",
-                      "backgroundColor": "#F1F1F4",
-                      "borderColor": "#161617",
-                      "borderRadius": 24,
-                      "borderWidth": 2,
-                      "boxSizing": "border-box",
-                      "columnGap": 4,
-                      "flexDirection": "row-reverse",
-                      "height": 32,
-                      "justifyContent": "center",
-                      "paddingLeft": 16,
-                      "paddingRight": 16,
-                    },
-                  ],
-                  {
-                    "opacity": 1,
-                  },
-                ]
-              }
-              testID="Le Petit Rintintin 1 : Filtre sélectionné"
-            >
-              <Text
-                style={
-                  [
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 12,
-                      "lineHeight": 19.2,
-                    },
-                  ]
-                }
-                testID="venueButtonLabel"
-              >
-                Le Petit Rintintin 1
-              </Text>
-              <View
-                height={16}
-                testID="venueButtonIcon"
-                width={16}
-              >
-                <Text>
-                  venueButtonIcon-SVG-Mock
-                </Text>
-              </View>
-            </View>
-          </View>
-          <View
-            accessibilityRole="none"
-            style={
-              [
-                {
-                  "display": "flex",
-                  "marginBottom": 4,
-                  "marginLeft": 4,
-                  "marginTop": 4,
-                },
-              ]
-            }
-          >
-            <View
-              accessibilityLabel="Catégories : Filtre sélectionné"
-              accessibilityRole="button"
-              accessibilityState={
-                {
-                  "busy": undefined,
-                  "checked": undefined,
-                  "disabled": undefined,
-                  "expanded": undefined,
-                  "selected": undefined,
-                }
-              }
-              accessibilityValue={
-                {
-                  "max": undefined,
-                  "min": undefined,
-                  "now": undefined,
-                  "text": undefined,
-                }
-              }
-              accessible={true}
-              focusable={true}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                [
-                  [
-                    {
-                      "userSelect": "auto",
-                    },
-                    {
-                      "alignItems": "center",
-                      "backgroundColor": "#F1F1F4",
-                      "borderColor": "#161617",
-                      "borderRadius": 24,
-                      "borderWidth": 2,
-                      "boxSizing": "border-box",
-                      "columnGap": 4,
-                      "flexDirection": "row-reverse",
-                      "height": 32,
-                      "justifyContent": "center",
-                      "paddingLeft": 16,
-                      "paddingRight": 16,
-                    },
-                  ],
-                  {
-                    "opacity": 1,
-                  },
-                ]
-              }
-              testID="Catégories : Filtre sélectionné"
-            >
-              <Text
-                style={
-                  [
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 12,
-                      "lineHeight": 19.2,
-                    },
-                  ]
-                }
-                testID="categoryButtonLabel"
-              >
-                Catégories
-              </Text>
-              <View
-                height={16}
-                testID="categoryButtonIcon"
-                width={16}
-              >
-                <Text>
-                  categoryButtonIcon-SVG-Mock
-                </Text>
-              </View>
-            </View>
-          </View>
-          <View
-            accessibilityRole="none"
-            style={
-              [
-                {
-                  "display": "flex",
-                  "marginBottom": 4,
-                  "marginLeft": 4,
-                  "marginTop": 4,
-                },
-              ]
-            }
-          >
-            <View
-              accessibilityLabel="Prix : Filtre sélectionné"
-              accessibilityRole="button"
-              accessibilityState={
-                {
-                  "busy": undefined,
-                  "checked": undefined,
-                  "disabled": undefined,
-                  "expanded": undefined,
-                  "selected": undefined,
-                }
-              }
-              accessibilityValue={
-                {
-                  "max": undefined,
-                  "min": undefined,
-                  "now": undefined,
-                  "text": undefined,
-                }
-              }
-              accessible={true}
-              focusable={true}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                [
-                  [
-                    {
-                      "userSelect": "auto",
-                    },
-                    {
-                      "alignItems": "center",
-                      "backgroundColor": "#F1F1F4",
-                      "borderColor": "#161617",
-                      "borderRadius": 24,
-                      "borderWidth": 2,
-                      "boxSizing": "border-box",
-                      "columnGap": 4,
-                      "flexDirection": "row-reverse",
-                      "height": 32,
-                      "justifyContent": "center",
-                      "paddingLeft": 16,
-                      "paddingRight": 16,
-                    },
-                  ],
-                  {
-                    "opacity": 1,
-                  },
-                ]
-              }
-              testID="Prix : Filtre sélectionné"
-            >
-              <Text
-                style={
-                  [
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 12,
-                      "lineHeight": 19.2,
-                    },
-                  ]
-                }
-                testID="priceButtonLabel"
-              >
-                Prix
-              </Text>
-              <View
-                height={16}
-                testID="priceButtonIcon"
-                width={16}
-              >
-                <Text>
-                  priceButtonIcon-SVG-Mock
-                </Text>
-              </View>
-            </View>
-          </View>
-          <View
-            accessibilityRole="none"
-            style={
-              [
-                {
-                  "display": "flex",
-                  "marginBottom": 4,
-                  "marginLeft": 4,
-                  "marginTop": 4,
-                },
-              ]
-            }
-          >
-            <View
-              accessibilityLabel="Dates & heures"
-              accessibilityRole="button"
-              accessibilityState={
-                {
-                  "busy": undefined,
-                  "checked": undefined,
-                  "disabled": undefined,
-                  "expanded": undefined,
-                  "selected": undefined,
-                }
-              }
-              accessibilityValue={
-                {
-                  "max": undefined,
-                  "min": undefined,
-                  "now": undefined,
-                  "text": undefined,
-                }
-              }
-              accessible={true}
-              focusable={true}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                [
-                  [
-                    {
-                      "userSelect": "auto",
-                    },
-                    {
-                      "alignItems": "center",
-                      "backgroundColor": "#ffffff",
-                      "borderColor": "#161617",
-                      "borderRadius": 24,
-                      "borderWidth": 1,
-                      "boxSizing": "border-box",
-                      "columnGap": 4,
-                      "flexDirection": "row-reverse",
-                      "height": 32,
-                      "justifyContent": "center",
-                      "paddingLeft": 16,
-                      "paddingRight": 16,
-                    },
-                  ],
-                  {
-                    "opacity": 1,
-                  },
-                ]
-              }
-              testID="Dates & heures"
-            >
-              <Text
-                style={
-                  [
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 12,
-                      "lineHeight": 19.2,
-                    },
-                  ]
-                }
-                testID="datesHoursButtonLabel"
-              >
-                Dates & heures
-              </Text>
-            </View>
-          </View>
-          <View
-            accessibilityRole="none"
-            style={
-              [
-                {
-                  "display": "flex",
-                  "marginBottom": 4,
-                  "marginLeft": 4,
-                  "marginRight": 4,
-                  "marginTop": 4,
-                },
-              ]
-            }
-          >
-            <View
-              accessibilityLabel="Accessibilité"
-              accessibilityRole="button"
-              accessibilityState={
-                {
-                  "busy": undefined,
-                  "checked": undefined,
-                  "disabled": undefined,
-                  "expanded": undefined,
-                  "selected": undefined,
-                }
-              }
-              accessibilityValue={
-                {
-                  "max": undefined,
-                  "min": undefined,
-                  "now": undefined,
-                  "text": undefined,
-                }
-              }
-              accessible={true}
-              focusable={true}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                [
-                  [
-                    {
-                      "userSelect": "auto",
-                    },
-                    {
-                      "alignItems": "center",
-                      "backgroundColor": "#ffffff",
-                      "borderColor": "#161617",
-                      "borderRadius": 24,
-                      "borderWidth": 1,
-                      "boxSizing": "border-box",
-                      "columnGap": 4,
-                      "flexDirection": "row-reverse",
-                      "height": 32,
-                      "justifyContent": "center",
-                      "paddingLeft": 16,
-                      "paddingRight": 16,
-                    },
-                  ],
-                  {
-                    "opacity": 1,
-                  },
-                ]
-              }
-              testID="Accessibilité"
-            >
-              <Text
-                style={
-                  [
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-SemiBold",
-                      "fontSize": 12,
-                      "lineHeight": 19.2,
-                    },
-                  ]
-                }
-                testID="lieuxAccessiblesButtonLabel"
-              >
-                Accessibilité
-              </Text>
-            </View>
-          </View>
+            Indique le nom d’une offre ou d’un lieu puis lance la recherche à l’aide de la touche ”Entrée”
+          </Text>
         </View>
-        <View
-          numberOfSpaces={5}
-          style={
-            [
-              {
-                "width": 20,
-              },
-            ]
-          }
-        />
       </View>
-    </RCTScrollView>
+    </View>
     <View
       numberOfSpaces={2}
       style={
@@ -935,430 +296,1082 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
         ]
       }
     />
-  </View>
-  <View
-    style={
-      [
-        {
-          "flexBasis": 0,
-          "flexGrow": 1,
-          "flexShrink": 1,
-        },
-      ]
-    }
-    testID="searchResults"
-  >
+    <View>
+      <RCTScrollView
+        horizontal={true}
+        showsHorizontalScrollIndicator={false}
+      >
+        <View>
+          <View
+            numberOfSpaces={5}
+            style={
+              [
+                {
+                  "width": 20,
+                },
+              ]
+            }
+          />
+          <View
+            accessibilityRole="list"
+            style={
+              [
+                {
+                  "flexDirection": "row",
+                  "paddingLeft": 0,
+                },
+              ]
+            }
+          >
+            <View
+              accessibilityRole="none"
+              style={
+                [
+                  {
+                    "display": "flex",
+                    "marginBottom": 4,
+                    "marginLeft": 4,
+                    "marginTop": 4,
+                  },
+                ]
+              }
+            >
+              <View
+                accessibilityLabel="Voir tous les filtres : 3 filtres actifs"
+                accessibilityRole="link"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {},
+                      {
+                        "display": "flex",
+                        "height": 32,
+                        "width": 32,
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
+                }
+                testID="Voir tous les filtres : 3 filtres actifs"
+              >
+                <View
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "borderColor": "#161617",
+                        "borderRadius": 16,
+                        "borderWidth": 1,
+                        "height": 32,
+                        "justifyContent": "center",
+                        "width": 32,
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    fill="#161617"
+                    height={16}
+                    width={16}
+                  >
+                    <Text>
+                      undefined-SVG-Mock
+                    </Text>
+                  </View>
+                </View>
+                <View
+                  style={
+                    [
+                      {
+                        "alignSelf": "center",
+                        "backgroundColor": "#eb0055",
+                        "borderColor": "#ffffff",
+                        "borderRadius": 16,
+                        "borderStyle": "solid",
+                        "borderWidth": 1,
+                      },
+                      {
+                        "backgroundColor": "#161617",
+                        "bottom": 0,
+                        "position": "absolute",
+                        "right": 0,
+                      },
+                    ]
+                  }
+                  testID="searchFilterBadge"
+                >
+                  <View
+                    style={
+                      [
+                        {
+                          "height": 16,
+                          "minWidth": 16,
+                          "paddingHorizontal": 2,
+                        },
+                      ]
+                    }
+                  >
+                    <Text
+                      style={
+                        [
+                          {
+                            "color": "#ffffff",
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 12,
+                            "lineHeight": 16,
+                            "textAlign": "center",
+                          },
+                        ]
+                      }
+                    >
+                      3
+                    </Text>
+                  </View>
+                </View>
+              </View>
+            </View>
+            <View
+              accessibilityRole="none"
+              style={
+                [
+                  {
+                    "display": "flex",
+                    "marginBottom": 4,
+                    "marginLeft": 4,
+                    "marginTop": 4,
+                  },
+                ]
+              }
+            >
+              <View
+                accessibilityLabel="Le Petit Rintintin 1 : Filtre sélectionné"
+                accessibilityRole="button"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "alignItems": "center",
+                        "backgroundColor": "#F1F1F4",
+                        "borderColor": "#161617",
+                        "borderRadius": 24,
+                        "borderWidth": 2,
+                        "boxSizing": "border-box",
+                        "columnGap": 4,
+                        "flexDirection": "row-reverse",
+                        "height": 32,
+                        "justifyContent": "center",
+                        "paddingLeft": 16,
+                        "paddingRight": 16,
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
+                }
+                testID="Le Petit Rintintin 1 : Filtre sélectionné"
+              >
+                <Text
+                  style={
+                    [
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 19.2,
+                      },
+                    ]
+                  }
+                  testID="venueButtonLabel"
+                >
+                  Le Petit Rintintin 1
+                </Text>
+                <View
+                  height={16}
+                  testID="venueButtonIcon"
+                  width={16}
+                >
+                  <Text>
+                    venueButtonIcon-SVG-Mock
+                  </Text>
+                </View>
+              </View>
+            </View>
+            <View
+              accessibilityRole="none"
+              style={
+                [
+                  {
+                    "display": "flex",
+                    "marginBottom": 4,
+                    "marginLeft": 4,
+                    "marginTop": 4,
+                  },
+                ]
+              }
+            >
+              <View
+                accessibilityLabel="Catégories : Filtre sélectionné"
+                accessibilityRole="button"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "alignItems": "center",
+                        "backgroundColor": "#F1F1F4",
+                        "borderColor": "#161617",
+                        "borderRadius": 24,
+                        "borderWidth": 2,
+                        "boxSizing": "border-box",
+                        "columnGap": 4,
+                        "flexDirection": "row-reverse",
+                        "height": 32,
+                        "justifyContent": "center",
+                        "paddingLeft": 16,
+                        "paddingRight": 16,
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
+                }
+                testID="Catégories : Filtre sélectionné"
+              >
+                <Text
+                  style={
+                    [
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 19.2,
+                      },
+                    ]
+                  }
+                  testID="categoryButtonLabel"
+                >
+                  Catégories
+                </Text>
+                <View
+                  height={16}
+                  testID="categoryButtonIcon"
+                  width={16}
+                >
+                  <Text>
+                    categoryButtonIcon-SVG-Mock
+                  </Text>
+                </View>
+              </View>
+            </View>
+            <View
+              accessibilityRole="none"
+              style={
+                [
+                  {
+                    "display": "flex",
+                    "marginBottom": 4,
+                    "marginLeft": 4,
+                    "marginTop": 4,
+                  },
+                ]
+              }
+            >
+              <View
+                accessibilityLabel="Prix : Filtre sélectionné"
+                accessibilityRole="button"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "alignItems": "center",
+                        "backgroundColor": "#F1F1F4",
+                        "borderColor": "#161617",
+                        "borderRadius": 24,
+                        "borderWidth": 2,
+                        "boxSizing": "border-box",
+                        "columnGap": 4,
+                        "flexDirection": "row-reverse",
+                        "height": 32,
+                        "justifyContent": "center",
+                        "paddingLeft": 16,
+                        "paddingRight": 16,
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
+                }
+                testID="Prix : Filtre sélectionné"
+              >
+                <Text
+                  style={
+                    [
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 19.2,
+                      },
+                    ]
+                  }
+                  testID="priceButtonLabel"
+                >
+                  Prix
+                </Text>
+                <View
+                  height={16}
+                  testID="priceButtonIcon"
+                  width={16}
+                >
+                  <Text>
+                    priceButtonIcon-SVG-Mock
+                  </Text>
+                </View>
+              </View>
+            </View>
+            <View
+              accessibilityRole="none"
+              style={
+                [
+                  {
+                    "display": "flex",
+                    "marginBottom": 4,
+                    "marginLeft": 4,
+                    "marginTop": 4,
+                  },
+                ]
+              }
+            >
+              <View
+                accessibilityLabel="Dates & heures"
+                accessibilityRole="button"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "alignItems": "center",
+                        "backgroundColor": "#ffffff",
+                        "borderColor": "#161617",
+                        "borderRadius": 24,
+                        "borderWidth": 1,
+                        "boxSizing": "border-box",
+                        "columnGap": 4,
+                        "flexDirection": "row-reverse",
+                        "height": 32,
+                        "justifyContent": "center",
+                        "paddingLeft": 16,
+                        "paddingRight": 16,
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
+                }
+                testID="Dates & heures"
+              >
+                <Text
+                  style={
+                    [
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 19.2,
+                      },
+                    ]
+                  }
+                  testID="datesHoursButtonLabel"
+                >
+                  Dates & heures
+                </Text>
+              </View>
+            </View>
+            <View
+              accessibilityRole="none"
+              style={
+                [
+                  {
+                    "display": "flex",
+                    "marginBottom": 4,
+                    "marginLeft": 4,
+                    "marginRight": 4,
+                    "marginTop": 4,
+                  },
+                ]
+              }
+            >
+              <View
+                accessibilityLabel="Accessibilité"
+                accessibilityRole="button"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "alignItems": "center",
+                        "backgroundColor": "#ffffff",
+                        "borderColor": "#161617",
+                        "borderRadius": 24,
+                        "borderWidth": 1,
+                        "boxSizing": "border-box",
+                        "columnGap": 4,
+                        "flexDirection": "row-reverse",
+                        "height": 32,
+                        "justifyContent": "center",
+                        "paddingLeft": 16,
+                        "paddingRight": 16,
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
+                }
+                testID="Accessibilité"
+              >
+                <Text
+                  style={
+                    [
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 19.2,
+                      },
+                    ]
+                  }
+                  testID="lieuxAccessiblesButtonLabel"
+                >
+                  Accessibilité
+                </Text>
+              </View>
+            </View>
+          </View>
+          <View
+            numberOfSpaces={5}
+            style={
+              [
+                {
+                  "width": 20,
+                },
+              ]
+            }
+          />
+        </View>
+      </RCTScrollView>
+      <View
+        numberOfSpaces={2}
+        style={
+          [
+            {
+              "height": 8,
+            },
+          ]
+        }
+      />
+    </View>
     <View
       style={
         [
           {
             "flexBasis": 0,
-            "flexDirection": "row",
             "flexGrow": 1,
             "flexShrink": 1,
           },
         ]
       }
+      testID="searchResults"
     >
       <View
-        accessibilityRole="none"
         style={
           [
             {
-              "alignItems": "center",
               "flexBasis": 0,
+              "flexDirection": "row",
               "flexGrow": 1,
               "flexShrink": 1,
-              "justifyContent": "center",
-              "marginHorizontal": 24,
             },
           ]
         }
       >
         <View
+          accessibilityRole="none"
           style={
             [
               {
-                "flexShrink": 0,
-                "marginTop": -104,
+                "alignItems": "center",
+                "flexBasis": 0,
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "justifyContent": "center",
+                "marginHorizontal": 24,
               },
             ]
           }
         >
           <View
-            height={109.2}
-            width={140}
-          >
-            <Text>
-              undefined-SVG-Mock
-            </Text>
-          </View>
-        </View>
-        <View
-          style={
-            [
-              {
-                "alignItems": "center",
-              },
-            ]
-          }
-        >
-          <Text
             style={
               [
                 {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 17,
-                  "lineHeight": 27.2,
-                  "marginTop": 16,
+                  "flexShrink": 0,
+                  "marginTop": -104,
                 },
               ]
             }
           >
-            Pas de résultat
-          </Text>
-          <Text
+            <View
+              height={109.2}
+              width={140}
+            >
+              <Text>
+                undefined-SVG-Mock
+              </Text>
+            </View>
+          </View>
+          <View
             style={
               [
                 {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
-                  "marginTop": 24,
-                  "textAlign": "center",
+                  "alignItems": "center",
                 },
               ]
             }
           >
             <Text
-              accessibilityLiveRegion="assertive"
               style={
                 [
                   {
-                    "color": "#696A6F",
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 17,
+                    "lineHeight": 27.2,
+                    "marginTop": 16,
                   },
                 ]
               }
             >
-              Vérifie ta localisation ou modifie tes filtres pour trouver plus de résultats.
+              Pas de résultat
             </Text>
-          </Text>
-        </View>
-        <View
-          numberOfSpaces={6}
-          style={
-            [
-              {
-                "height": 24,
-              },
-            ]
-          }
-        />
-        <View>
-          <View
-            accessibilityLabel="Modifier mes filtres"
-            accessibilityState={
-              {
-                "busy": undefined,
-                "checked": undefined,
-                "disabled": undefined,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              [
-                [
-                  {
-                    "userSelect": "auto",
-                  },
-                  {
-                    "alignItems": "center",
-                    "backgroundColor": "#eb0055",
-                    "borderRadius": 24,
-                    "flexDirection": "row",
-                    "justifyContent": "center",
-                    "maxWidth": 500,
-                    "minHeight": 40,
-                    "paddingBottom": 2,
-                    "paddingLeft": 20,
-                    "paddingRight": 20,
-                    "paddingTop": 2,
-                    "width": "100%",
-                  },
-                  {},
-                ],
-                {
-                  "opacity": 1,
-                },
-              ]
-            }
-            testID="Modifier mes filtres"
-          >
-            <View
+            <Text
               style={
                 [
                   {
-                    "alignItems": "center",
-                    "flexDirection": "row",
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                    "marginTop": 24,
+                    "textAlign": "center",
                   },
                 ]
               }
             >
               <Text
-                adjustsFontSizeToFit={false}
-                numberOfLines={1}
+                accessibilityLiveRegion="assertive"
                 style={
                   [
                     {
-                      "color": "#ffffff",
-                      "fontFamily": "Montserrat-Bold",
+                      "color": "#696A6F",
+                      "fontFamily": "Montserrat-Medium",
                       "fontSize": 16,
                       "lineHeight": 25.6,
-                      "maxWidth": "100%",
                     },
                   ]
                 }
               >
-                Modifier mes filtres
+                Vérifie ta localisation ou modifie tes filtres pour trouver plus de résultats.
               </Text>
+            </Text>
+          </View>
+          <View
+            numberOfSpaces={6}
+            style={
+              [
+                {
+                  "height": 24,
+                },
+              ]
+            }
+          />
+          <View>
+            <View
+              accessibilityLabel="Modifier mes filtres"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                [
+                  [
+                    {
+                      "userSelect": "auto",
+                    },
+                    {
+                      "alignItems": "center",
+                      "backgroundColor": "#eb0055",
+                      "borderRadius": 24,
+                      "flexDirection": "row",
+                      "justifyContent": "center",
+                      "maxWidth": 500,
+                      "minHeight": 40,
+                      "paddingBottom": 2,
+                      "paddingLeft": 20,
+                      "paddingRight": 20,
+                      "paddingTop": 2,
+                      "width": "100%",
+                    },
+                    {},
+                  ],
+                  {
+                    "opacity": 1,
+                  },
+                ]
+              }
+              testID="Modifier mes filtres"
+            >
+              <View
+                style={
+                  [
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                    },
+                  ]
+                }
+              >
+                <Text
+                  adjustsFontSizeToFit={false}
+                  numberOfLines={1}
+                  style={
+                    [
+                      {
+                        "color": "#ffffff",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
+                        "maxWidth": "100%",
+                      },
+                    ]
+                  }
+                >
+                  Modifier mes filtres
+                </Text>
+              </View>
             </View>
           </View>
         </View>
       </View>
     </View>
+    <Modal
+      accessibilityLabelledBy="testUuidV4"
+      accessibilityModal={true}
+      animationType="none"
+      deviceHeight={1334}
+      deviceWidth={750}
+      hardwareAccelerated={false}
+      hideModalContentWhileAnimating={false}
+      onBackdropPress={[Function]}
+      onModalHide={[Function]}
+      onModalWillHide={[Function]}
+      onModalWillShow={[Function]}
+      onRequestClose={[Function]}
+      panResponderThreshold={4}
+      scrollHorizontal={false}
+      scrollOffset={0}
+      scrollOffsetMax={0}
+      scrollTo={null}
+      statusBarTranslucent={true}
+      supportedOrientations={
+        [
+          "portrait",
+          "landscape",
+        ]
+      }
+      swipeThreshold={100}
+      testID="modal"
+      transparent={true}
+      visible={false}
+    />
+    <Modal
+      accessibilityLabelledBy="testUuidV4"
+      accessibilityModal={true}
+      animationType="none"
+      deviceHeight={1334}
+      deviceWidth={750}
+      hardwareAccelerated={false}
+      hideModalContentWhileAnimating={false}
+      onBackdropPress={[Function]}
+      onModalHide={[Function]}
+      onModalWillHide={[Function]}
+      onModalWillShow={[Function]}
+      onRequestClose={[Function]}
+      panResponderThreshold={4}
+      scrollHorizontal={false}
+      scrollOffset={0}
+      scrollOffsetMax={0}
+      scrollTo={null}
+      statusBarTranslucent={true}
+      supportedOrientations={
+        [
+          "portrait",
+          "landscape",
+        ]
+      }
+      swipeThreshold={100}
+      testID="modal"
+      transparent={true}
+      visible={false}
+    />
+    <Modal
+      accessibilityLabelledBy="testUuidV4"
+      accessibilityModal={true}
+      animationType="none"
+      deviceHeight={1334}
+      deviceWidth={750}
+      hardwareAccelerated={false}
+      hideModalContentWhileAnimating={false}
+      onBackdropPress={[Function]}
+      onModalHide={[Function]}
+      onModalWillHide={[Function]}
+      onModalWillShow={[Function]}
+      onRequestClose={[Function]}
+      panResponderThreshold={4}
+      scrollHorizontal={false}
+      scrollOffset={0}
+      scrollOffsetMax={0}
+      scrollTo={null}
+      statusBarTranslucent={true}
+      supportedOrientations={
+        [
+          "portrait",
+          "landscape",
+        ]
+      }
+      swipeThreshold={100}
+      testID="modal"
+      transparent={true}
+      visible={false}
+    />
+    <Modal
+      accessibilityLabelledBy="testUuidV4"
+      accessibilityModal={true}
+      animationType="none"
+      deviceHeight={1334}
+      deviceWidth={750}
+      hardwareAccelerated={false}
+      hideModalContentWhileAnimating={false}
+      onBackdropPress={[Function]}
+      onModalHide={[Function]}
+      onModalWillHide={[Function]}
+      onModalWillShow={[Function]}
+      onRequestClose={[Function]}
+      panResponderThreshold={4}
+      scrollHorizontal={false}
+      scrollOffset={0}
+      scrollOffsetMax={0}
+      scrollTo={null}
+      statusBarTranslucent={true}
+      supportedOrientations={
+        [
+          "portrait",
+          "landscape",
+        ]
+      }
+      swipeThreshold={100}
+      testID="modal"
+      transparent={true}
+      visible={false}
+    />
+    <Modal
+      accessibilityLabelledBy="testUuidV4"
+      accessibilityModal={true}
+      animationType="none"
+      deviceHeight={1334}
+      deviceWidth={750}
+      hardwareAccelerated={false}
+      hideModalContentWhileAnimating={false}
+      onBackdropPress={[Function]}
+      onModalHide={[Function]}
+      onModalWillHide={[Function]}
+      onModalWillShow={[Function]}
+      onRequestClose={[Function]}
+      panResponderThreshold={4}
+      scrollHorizontal={false}
+      scrollOffset={0}
+      scrollOffsetMax={0}
+      scrollTo={null}
+      statusBarTranslucent={true}
+      supportedOrientations={
+        [
+          "portrait",
+          "landscape",
+        ]
+      }
+      swipeThreshold={100}
+      testID="modal"
+      transparent={true}
+      visible={false}
+    />
+    <Modal
+      accessibilityLabelledBy="testUuidV4"
+      accessibilityModal={true}
+      animationType="none"
+      deviceHeight={1334}
+      deviceWidth={750}
+      hardwareAccelerated={false}
+      hideModalContentWhileAnimating={false}
+      onBackdropPress={[Function]}
+      onModalHide={[Function]}
+      onModalWillHide={[Function]}
+      onModalWillShow={[Function]}
+      onRequestClose={[Function]}
+      panResponderThreshold={4}
+      scrollHorizontal={false}
+      scrollOffset={0}
+      scrollOffsetMax={0}
+      scrollTo={null}
+      statusBarTranslucent={true}
+      supportedOrientations={
+        [
+          "portrait",
+          "landscape",
+        ]
+      }
+      swipeThreshold={100}
+      testID="modal"
+      transparent={true}
+      visible={false}
+    />
+    <Modal
+      accessibilityLabelledBy="testUuidV4"
+      accessibilityModal={true}
+      animationType="none"
+      deviceHeight={1334}
+      deviceWidth={750}
+      hardwareAccelerated={false}
+      hideModalContentWhileAnimating={false}
+      onBackdropPress={[Function]}
+      onModalHide={[MockFunction]}
+      onModalWillHide={[Function]}
+      onModalWillShow={[Function]}
+      onRequestClose={[Function]}
+      panResponderThreshold={4}
+      scrollHorizontal={false}
+      scrollOffset={0}
+      scrollOffsetMax={0}
+      scrollTo={null}
+      statusBarTranslucent={true}
+      supportedOrientations={
+        [
+          "portrait",
+          "landscape",
+        ]
+      }
+      swipeThreshold={100}
+      testID="modal"
+      transparent={true}
+      visible={false}
+    />
   </View>
-  <Modal
-    accessibilityLabelledBy="testUuidV4"
-    accessibilityModal={true}
-    animationType="none"
-    deviceHeight={1334}
-    deviceWidth={750}
-    hardwareAccelerated={false}
-    hideModalContentWhileAnimating={false}
-    onBackdropPress={[Function]}
-    onModalHide={[Function]}
-    onModalWillHide={[Function]}
-    onModalWillShow={[Function]}
-    onRequestClose={[Function]}
-    panResponderThreshold={4}
-    scrollHorizontal={false}
-    scrollOffset={0}
-    scrollOffsetMax={0}
-    scrollTo={null}
-    statusBarTranslucent={true}
-    supportedOrientations={
-      [
-        "portrait",
-        "landscape",
-      ]
-    }
-    swipeThreshold={100}
-    testID="modal"
-    transparent={true}
-    visible={false}
-  />
-  <Modal
-    accessibilityLabelledBy="testUuidV4"
-    accessibilityModal={true}
-    animationType="none"
-    deviceHeight={1334}
-    deviceWidth={750}
-    hardwareAccelerated={false}
-    hideModalContentWhileAnimating={false}
-    onBackdropPress={[Function]}
-    onModalHide={[Function]}
-    onModalWillHide={[Function]}
-    onModalWillShow={[Function]}
-    onRequestClose={[Function]}
-    panResponderThreshold={4}
-    scrollHorizontal={false}
-    scrollOffset={0}
-    scrollOffsetMax={0}
-    scrollTo={null}
-    statusBarTranslucent={true}
-    supportedOrientations={
-      [
-        "portrait",
-        "landscape",
-      ]
-    }
-    swipeThreshold={100}
-    testID="modal"
-    transparent={true}
-    visible={false}
-  />
-  <Modal
-    accessibilityLabelledBy="testUuidV4"
-    accessibilityModal={true}
-    animationType="none"
-    deviceHeight={1334}
-    deviceWidth={750}
-    hardwareAccelerated={false}
-    hideModalContentWhileAnimating={false}
-    onBackdropPress={[Function]}
-    onModalHide={[Function]}
-    onModalWillHide={[Function]}
-    onModalWillShow={[Function]}
-    onRequestClose={[Function]}
-    panResponderThreshold={4}
-    scrollHorizontal={false}
-    scrollOffset={0}
-    scrollOffsetMax={0}
-    scrollTo={null}
-    statusBarTranslucent={true}
-    supportedOrientations={
-      [
-        "portrait",
-        "landscape",
-      ]
-    }
-    swipeThreshold={100}
-    testID="modal"
-    transparent={true}
-    visible={false}
-  />
-  <Modal
-    accessibilityLabelledBy="testUuidV4"
-    accessibilityModal={true}
-    animationType="none"
-    deviceHeight={1334}
-    deviceWidth={750}
-    hardwareAccelerated={false}
-    hideModalContentWhileAnimating={false}
-    onBackdropPress={[Function]}
-    onModalHide={[Function]}
-    onModalWillHide={[Function]}
-    onModalWillShow={[Function]}
-    onRequestClose={[Function]}
-    panResponderThreshold={4}
-    scrollHorizontal={false}
-    scrollOffset={0}
-    scrollOffsetMax={0}
-    scrollTo={null}
-    statusBarTranslucent={true}
-    supportedOrientations={
-      [
-        "portrait",
-        "landscape",
-      ]
-    }
-    swipeThreshold={100}
-    testID="modal"
-    transparent={true}
-    visible={false}
-  />
-  <Modal
-    accessibilityLabelledBy="testUuidV4"
-    accessibilityModal={true}
-    animationType="none"
-    deviceHeight={1334}
-    deviceWidth={750}
-    hardwareAccelerated={false}
-    hideModalContentWhileAnimating={false}
-    onBackdropPress={[Function]}
-    onModalHide={[Function]}
-    onModalWillHide={[Function]}
-    onModalWillShow={[Function]}
-    onRequestClose={[Function]}
-    panResponderThreshold={4}
-    scrollHorizontal={false}
-    scrollOffset={0}
-    scrollOffsetMax={0}
-    scrollTo={null}
-    statusBarTranslucent={true}
-    supportedOrientations={
-      [
-        "portrait",
-        "landscape",
-      ]
-    }
-    swipeThreshold={100}
-    testID="modal"
-    transparent={true}
-    visible={false}
-  />
-  <Modal
-    accessibilityLabelledBy="testUuidV4"
-    accessibilityModal={true}
-    animationType="none"
-    deviceHeight={1334}
-    deviceWidth={750}
-    hardwareAccelerated={false}
-    hideModalContentWhileAnimating={false}
-    onBackdropPress={[Function]}
-    onModalHide={[Function]}
-    onModalWillHide={[Function]}
-    onModalWillShow={[Function]}
-    onRequestClose={[Function]}
-    panResponderThreshold={4}
-    scrollHorizontal={false}
-    scrollOffset={0}
-    scrollOffsetMax={0}
-    scrollTo={null}
-    statusBarTranslucent={true}
-    supportedOrientations={
-      [
-        "portrait",
-        "landscape",
-      ]
-    }
-    swipeThreshold={100}
-    testID="modal"
-    transparent={true}
-    visible={false}
-  />
-  <Modal
-    accessibilityLabelledBy="testUuidV4"
-    accessibilityModal={true}
-    animationType="none"
-    deviceHeight={1334}
-    deviceWidth={750}
-    hardwareAccelerated={false}
-    hideModalContentWhileAnimating={false}
-    onBackdropPress={[Function]}
-    onModalHide={[MockFunction]}
-    onModalWillHide={[Function]}
-    onModalWillShow={[Function]}
-    onRequestClose={[Function]}
-    panResponderThreshold={4}
-    scrollHorizontal={false}
-    scrollOffset={0}
-    scrollOffsetMax={0}
-    scrollTo={null}
-    statusBarTranslucent={true}
-    supportedOrientations={
-      [
-        "portrait",
-        "landscape",
-      ]
-    }
-    swipeThreshold={100}
-    testID="modal"
-    transparent={true}
-    visible={false}
-  />
 </View>
 `;

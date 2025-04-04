@@ -41,6 +41,7 @@ import { BatchEvent, BatchEventAttributes, BatchProfile } from 'libs/react-nativ
 import { AccessibilityFooter } from 'shared/AccessibilityFooter/AccessibilityFooter'
 import { ScrollToTopButton } from 'ui/components/ScrollToTopButton'
 import { Spinner } from 'ui/components/Spinner'
+import { Page } from 'ui/pages/Page'
 import { getSpacing, Spacer } from 'ui/theme'
 
 import { createInMemoryScreenSeenCountTriggerStorage } from '../api/inMemoryScreenSeenTriggerStorage'
@@ -328,7 +329,7 @@ const HomeBodyLoadingContainer = styled.View<{ hide: boolean }>(({ hide }) => ({
   marginVertical: getSpacing(6),
 }))
 
-const Container = styled.View({
+const Container = styled(Page)({
   flexBasis: 1,
   flexGrow: 1,
   flexShrink: 0,

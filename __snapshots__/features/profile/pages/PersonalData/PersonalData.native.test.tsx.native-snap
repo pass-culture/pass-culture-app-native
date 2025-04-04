@@ -1,7 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`PersonalData should render personal data success 1`] = `
-[
+<View
+  style={
+    [
+      {
+        "backgroundColor": "#ffffff",
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+      },
+    ]
+  }
+>
   <View
     accessibilityRole="header"
     style={
@@ -179,7 +190,7 @@ exports[`PersonalData should render personal data success 1`] = `
         />
       </View>
     </View>
-  </View>,
+  </View>
   <RCTScrollView
     contentContainerStyle={
       {
@@ -1353,7 +1364,7 @@ exports[`PersonalData should render personal data success 1`] = `
         </View>
       </View>
     </View>
-  </RCTScrollView>,
+  </RCTScrollView>
   <View
     height={65}
     style={
@@ -1388,6 +1399,6 @@ exports[`PersonalData should render personal data success 1`] = `
         ]
       }
     />
-  </View>,
-]
+  </View>
+</View>
 `;
