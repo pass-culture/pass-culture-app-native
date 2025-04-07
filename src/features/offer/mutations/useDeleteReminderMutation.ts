@@ -2,7 +2,7 @@ import { useMutation, useQueryClient } from 'react-query'
 
 import { api } from 'api/api'
 import { MutationOptions } from 'features/offer/mutations/types'
-import { GetReminderResponse, ReminderResponse } from 'features/offer/types'
+import { GetReminderResponse } from 'features/offer/types'
 import { QueryKeys } from 'libs/queryKeys'
 
 export const useDeleteReminderMutation = (options?: MutationOptions) => {
@@ -20,23 +20,25 @@ export const useDeleteReminderMutation = (options?: MutationOptions) => {
         const previousReminders = queryClient.getQueryData<GetReminderResponse>([
           QueryKeys.REMINDERS,
         ])
+
         if (reminder_id) {
           const reminders = previousReminders?.reminders.filter(
             (reminder) => reminder.id !== reminder_id
-          ) as ReminderResponse[]
-
-          queryClient.setQueryData<GetReminderResponse>([QueryKeys.REMINDERS], {
-            reminders,
-          })
+          )
+          if (reminders)
+            queryClient.setQueryData<GetReminderResponse>([QueryKeys.REMINDERS], {
+              reminders,
+            })
         }
-
-        return { previousReminders }
+        return {
+          previousReminders,
+        }
       },
       onError: (err, newReminders, context) => {
         queryClient.setQueryData([QueryKeys.REMINDERS], context?.previousReminders)
         options?.onError?.(err)
       },
-      onSettled: () => queryClient.invalidateQueries(QueryKeys.REMINDERS),
+      onSettled: () => queryClient.invalidateQueries([QueryKeys.REMINDERS]),
     }
   )
 }
