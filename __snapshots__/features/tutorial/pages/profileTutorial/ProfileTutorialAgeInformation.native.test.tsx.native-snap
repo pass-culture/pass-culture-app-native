@@ -107,7 +107,7 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
                 style={
                   [
                     {
-                      "backgroundColor": "#CBCDD2",
+                      "backgroundColor": "#90949d",
                       "borderRadius": 2,
                       "borderTopLeftRadius": 2,
                       "borderTopRightRadius": 2,
@@ -2241,7 +2241,7 @@ exports[`<ProfileTutorialAgeInformation /> should display not logged in version 
                 style={
                   [
                     {
-                      "backgroundColor": "#CBCDD2",
+                      "backgroundColor": "#90949d",
                       "borderRadius": 2,
                       "flexBasis": 0,
                       "flexGrow": 1,
@@ -2957,7 +2957,7 @@ exports[`<ProfileTutorialAgeInformation /> should render correctly when logged i
                 style={
                   [
                     {
-                      "backgroundColor": "#CBCDD2",
+                      "backgroundColor": "#90949d",
                       "borderRadius": 2,
                       "borderTopLeftRadius": 2,
                       "borderTopRightRadius": 2,
@@ -5091,7 +5091,7 @@ exports[`<ProfileTutorialAgeInformation /> should render correctly when logged i
                 style={
                   [
                     {
-                      "backgroundColor": "#CBCDD2",
+                      "backgroundColor": "#90949d",
                       "borderRadius": 2,
                       "flexBasis": 0,
                       "flexGrow": 1,

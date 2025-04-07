@@ -168,7 +168,14 @@ type DotProps = {
 }
 
 const Dot = styled.View<DotProps>(
-  ({ dotSize, theme, spacing, color = theme.colors.greyMedium, endsWithDot, isLast }) => ({
+  ({
+    dotSize,
+    theme,
+    spacing,
+    color = theme.designSystem.separator.color.default,
+    endsWithDot,
+    isLast,
+  }) => ({
     width: getDotWidth(dotSize),
     height: getDotHeight(dotSize),
     borderRadius: Math.max(getDotWidth(dotSize), getDotHeight(dotSize)) / 2,

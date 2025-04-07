@@ -1,7 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<ProfileTutorialAgeInformationCreditV3 /> should render correctly 1`] = `
-[
+<View
+  style={
+    [
+      {
+        "backgroundColor": "#ffffff",
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+      },
+    ]
+  }
+>
   <RCTScrollView
     contentContainerStyle={
       {
@@ -132,7 +143,7 @@ exports[`<ProfileTutorialAgeInformationCreditV3 /> should render correctly 1`] =
                 style={
                   [
                     {
-                      "backgroundColor": "#CBCDD2",
+                      "backgroundColor": "#90949d",
                       "borderRadius": 2,
                       "borderTopLeftRadius": 2,
                       "borderTopRightRadius": 2,
@@ -170,7 +181,7 @@ exports[`<ProfileTutorialAgeInformationCreditV3 /> should render correctly 1`] =
                 style={
                   [
                     {
-                      "backgroundColor": "#CBCDD2",
+                      "backgroundColor": "#90949d",
                       "borderRadius": 2,
                       "flexBasis": 0,
                       "flexGrow": 1,
@@ -229,8 +240,7 @@ exports[`<ProfileTutorialAgeInformationCreditV3 /> should render correctly 1`] =
                   collapsable={false}
                   style={
                     {
-                      "backgroundColor": "#ffffff",
-                      "borderColor": "#90949D",
+                      "borderColor": "#cbcdd2",
                       "borderRadius": 4,
                       "borderWidth": 1,
                       "overflow": "hidden",
@@ -525,7 +535,7 @@ exports[`<ProfileTutorialAgeInformationCreditV3 /> should render correctly 1`] =
                 style={
                   [
                     {
-                      "backgroundColor": "#CBCDD2",
+                      "backgroundColor": "#90949d",
                       "borderRadius": 2,
                       "borderTopLeftRadius": 0,
                       "borderTopRightRadius": 0,
@@ -563,7 +573,7 @@ exports[`<ProfileTutorialAgeInformationCreditV3 /> should render correctly 1`] =
                 style={
                   [
                     {
-                      "backgroundColor": "#CBCDD2",
+                      "backgroundColor": "#90949d",
                       "borderRadius": 2,
                       "flexBasis": 0,
                       "flexGrow": 1,
@@ -622,8 +632,7 @@ exports[`<ProfileTutorialAgeInformationCreditV3 /> should render correctly 1`] =
                   collapsable={false}
                   style={
                     {
-                      "backgroundColor": "#ffffff",
-                      "borderColor": "#90949D",
+                      "borderColor": "#cbcdd2",
                       "borderRadius": 4,
                       "borderWidth": 1,
                       "overflow": "hidden",
@@ -1012,7 +1021,7 @@ exports[`<ProfileTutorialAgeInformationCreditV3 /> should render correctly 1`] =
                 style={
                   [
                     {
-                      "backgroundColor": "#CBCDD2",
+                      "backgroundColor": "#90949d",
                       "borderRadius": 2,
                       "borderTopLeftRadius": 0,
                       "borderTopRightRadius": 0,
@@ -1049,7 +1058,7 @@ exports[`<ProfileTutorialAgeInformationCreditV3 /> should render correctly 1`] =
                 style={
                   [
                     {
-                      "backgroundColor": "#CBCDD2",
+                      "backgroundColor": "#90949d",
                       "borderRadius": 2,
                       "flexBasis": 0,
                       "flexGrow": 1,
@@ -1329,7 +1338,7 @@ Les récents ajustements du dispositif peuvent en être la raison.
         }
       />
     </View>
-  </RCTScrollView>,
+  </RCTScrollView>
   <View
     collapsable={false}
     height={80}
@@ -1553,6 +1562,6 @@ Les récents ajustements du dispositif peuvent en être la raison.
         </Text>
       </View>
     </View>
-  </View>,
-]
+  </View>
+</View>
 `;

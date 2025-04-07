@@ -70,13 +70,16 @@ const Content = styled.View(({ theme }) => ({
   alignSelf: 'center',
   position: 'static',
   bottom: 0,
-  backgroundColor: theme.colors.white,
+  backgroundColor: theme.designSystem.color.background.default,
   paddingHorizontal: getSpacing(6),
   paddingBottom: getSpacing(8),
 }))
 
 const Gradient = styled(LinearGradient).attrs(({ theme }) => ({
-  colors: [colorAlpha(theme.colors.white, 0), theme.colors.white],
+  colors: [
+    colorAlpha(theme.designSystem.color.background.default, 0),
+    theme.designSystem.color.background.default,
+  ],
   locations: [0, 0.85],
 }))(({ theme }) => ({
   height: theme.isSmallScreen ? getSpacing(30) : getSpacing(50),
@@ -99,5 +102,5 @@ const StyledBody = styled(Typo.Body)({
 })
 
 const StyledAuthenticationButton = styled(AuthenticationButton).attrs(({ theme }) => ({
-  linkColor: theme.colors.secondary,
+  linkColor: theme.designSystem.color.text.brandSecondary,
 }))``

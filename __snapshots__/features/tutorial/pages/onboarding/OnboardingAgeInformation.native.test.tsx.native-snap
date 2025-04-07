@@ -1,7 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`OnboardingAgeInformation should render correctly for 15-year-old 1`] = `
-[
+<View
+  style={
+    [
+      {
+        "backgroundColor": "#ffffff",
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+      },
+    ]
+  }
+>
   <View
     style={
       [
@@ -11,7 +22,7 @@ exports[`OnboardingAgeInformation should render correctly for 15-year-old 1`] = 
       ]
     }
     top={16}
-  />,
+  />
   <View
     style={
       [
@@ -118,7 +129,7 @@ exports[`OnboardingAgeInformation should render correctly for 15-year-old 1`] = 
         </Text>
       </View>
     </View>
-  </View>,
+  </View>
   <RCTScrollView
     contentContainerStyle={
       {
@@ -243,7 +254,7 @@ exports[`OnboardingAgeInformation should render correctly for 15-year-old 1`] = 
                   style={
                     [
                       {
-                        "backgroundColor": "#CBCDD2",
+                        "backgroundColor": "#90949d",
                         "borderRadius": 2,
                         "borderTopLeftRadius": 2,
                         "borderTopRightRadius": 2,
@@ -1194,7 +1205,7 @@ exports[`OnboardingAgeInformation should render correctly for 15-year-old 1`] = 
                   style={
                     [
                       {
-                        "backgroundColor": "#CBCDD2",
+                        "backgroundColor": "#90949d",
                         "borderRadius": 2,
                         "flexBasis": 0,
                         "flexGrow": 1,
@@ -1392,7 +1403,7 @@ exports[`OnboardingAgeInformation should render correctly for 15-year-old 1`] = 
         </View>
       </View>
     </View>
-  </RCTScrollView>,
+  </RCTScrollView>
   <View
     style={
       [
@@ -1636,7 +1647,7 @@ exports[`OnboardingAgeInformation should render correctly for 15-year-old 1`] = 
         </Text>
       </View>
     </View>
-  </View>,
+  </View>
   <View
     customHeight={8}
     enable={true}
@@ -1647,12 +1658,23 @@ exports[`OnboardingAgeInformation should render correctly for 15-year-old 1`] = 
         },
       ]
     }
-  />,
-]
+  />
+</View>
 `;
 
 exports[`OnboardingAgeInformation should render correctly for 16-year-old 1`] = `
-[
+<View
+  style={
+    [
+      {
+        "backgroundColor": "#ffffff",
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+      },
+    ]
+  }
+>
   <View
     style={
       [
@@ -1662,7 +1684,7 @@ exports[`OnboardingAgeInformation should render correctly for 16-year-old 1`] = 
       ]
     }
     top={16}
-  />,
+  />
   <View
     style={
       [
@@ -1769,7 +1791,7 @@ exports[`OnboardingAgeInformation should render correctly for 16-year-old 1`] = 
         </Text>
       </View>
     </View>
-  </View>,
+  </View>
   <RCTScrollView
     contentContainerStyle={
       {
@@ -1894,7 +1916,7 @@ exports[`OnboardingAgeInformation should render correctly for 16-year-old 1`] = 
                   style={
                     [
                       {
-                        "backgroundColor": "#CBCDD2",
+                        "backgroundColor": "#90949d",
                         "borderRadius": 2,
                         "borderTopLeftRadius": 2,
                         "borderTopRightRadius": 2,
@@ -1932,7 +1954,7 @@ exports[`OnboardingAgeInformation should render correctly for 16-year-old 1`] = 
                   style={
                     [
                       {
-                        "backgroundColor": "#CBCDD2",
+                        "backgroundColor": "#90949d",
                         "borderRadius": 2,
                         "flexBasis": 0,
                         "flexGrow": 1,
@@ -2135,7 +2157,7 @@ exports[`OnboardingAgeInformation should render correctly for 16-year-old 1`] = 
                   style={
                     [
                       {
-                        "backgroundColor": "#CBCDD2",
+                        "backgroundColor": "#90949d",
                         "borderRadius": 2,
                         "borderTopLeftRadius": 0,
                         "borderTopRightRadius": 0,
@@ -2832,7 +2854,7 @@ exports[`OnboardingAgeInformation should render correctly for 16-year-old 1`] = 
                   style={
                     [
                       {
-                        "backgroundColor": "#CBCDD2",
+                        "backgroundColor": "#90949d",
                         "borderRadius": 2,
                         "flexBasis": 0,
                         "flexGrow": 1,
@@ -3030,7 +3052,7 @@ exports[`OnboardingAgeInformation should render correctly for 16-year-old 1`] = 
         </View>
       </View>
     </View>
-  </RCTScrollView>,
+  </RCTScrollView>
   <View
     style={
       [
@@ -3274,7 +3296,7 @@ exports[`OnboardingAgeInformation should render correctly for 16-year-old 1`] = 
         </Text>
       </View>
     </View>
-  </View>,
+  </View>
   <View
     customHeight={8}
     enable={true}
@@ -3285,12 +3307,23 @@ exports[`OnboardingAgeInformation should render correctly for 16-year-old 1`] = 
         },
       ]
     }
-  />,
-]
+  />
+</View>
 `;
 
 exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = `
-[
+<View
+  style={
+    [
+      {
+        "backgroundColor": "#ffffff",
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+      },
+    ]
+  }
+>
   <View
     style={
       [
@@ -3300,7 +3333,7 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
       ]
     }
     top={16}
-  />,
+  />
   <View
     style={
       [
@@ -3407,7 +3440,7 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
         </Text>
       </View>
     </View>
-  </View>,
+  </View>
   <RCTScrollView
     contentContainerStyle={
       {
@@ -3532,7 +3565,7 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                   style={
                     [
                       {
-                        "backgroundColor": "#CBCDD2",
+                        "backgroundColor": "#90949d",
                         "borderRadius": 2,
                         "borderTopLeftRadius": 2,
                         "borderTopRightRadius": 2,
@@ -3570,7 +3603,7 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                   style={
                     [
                       {
-                        "backgroundColor": "#CBCDD2",
+                        "backgroundColor": "#90949d",
                         "borderRadius": 2,
                         "flexBasis": 0,
                         "flexGrow": 1,
@@ -3773,7 +3806,7 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                   style={
                     [
                       {
-                        "backgroundColor": "#CBCDD2",
+                        "backgroundColor": "#90949d",
                         "borderRadius": 2,
                         "borderTopLeftRadius": 0,
                         "borderTopRightRadius": 0,
@@ -3811,7 +3844,7 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                   style={
                     [
                       {
-                        "backgroundColor": "#CBCDD2",
+                        "backgroundColor": "#90949d",
                         "borderRadius": 2,
                         "flexBasis": 0,
                         "flexGrow": 1,
@@ -4014,7 +4047,7 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                   style={
                     [
                       {
-                        "backgroundColor": "#CBCDD2",
+                        "backgroundColor": "#90949d",
                         "borderRadius": 2,
                         "borderTopLeftRadius": 0,
                         "borderTopRightRadius": 0,
@@ -4457,7 +4490,7 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                   style={
                     [
                       {
-                        "backgroundColor": "#CBCDD2",
+                        "backgroundColor": "#90949d",
                         "borderRadius": 2,
                         "flexBasis": 0,
                         "flexGrow": 1,
@@ -4655,7 +4688,7 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
         </View>
       </View>
     </View>
-  </RCTScrollView>,
+  </RCTScrollView>
   <View
     style={
       [
@@ -4899,7 +4932,7 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
         </Text>
       </View>
     </View>
-  </View>,
+  </View>
   <View
     customHeight={8}
     enable={true}
@@ -4910,12 +4943,23 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
         },
       ]
     }
-  />,
-]
+  />
+</View>
 `;
 
 exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = `
-[
+<View
+  style={
+    [
+      {
+        "backgroundColor": "#ffffff",
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+      },
+    ]
+  }
+>
   <View
     style={
       [
@@ -4925,7 +4969,7 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
       ]
     }
     top={16}
-  />,
+  />
   <View
     style={
       [
@@ -5032,7 +5076,7 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
         </Text>
       </View>
     </View>
-  </View>,
+  </View>
   <RCTScrollView
     contentContainerStyle={
       {
@@ -5157,7 +5201,7 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
                   style={
                     [
                       {
-                        "backgroundColor": "#CBCDD2",
+                        "backgroundColor": "#90949d",
                         "borderRadius": 2,
                         "borderTopLeftRadius": 2,
                         "borderTopRightRadius": 2,
@@ -5195,7 +5239,7 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
                   style={
                     [
                       {
-                        "backgroundColor": "#CBCDD2",
+                        "backgroundColor": "#90949d",
                         "borderRadius": 2,
                         "flexBasis": 0,
                         "flexGrow": 1,
@@ -5398,7 +5442,7 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
                   style={
                     [
                       {
-                        "backgroundColor": "#CBCDD2",
+                        "backgroundColor": "#90949d",
                         "borderRadius": 2,
                         "borderTopLeftRadius": 0,
                         "borderTopRightRadius": 0,
@@ -5436,7 +5480,7 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
                   style={
                     [
                       {
-                        "backgroundColor": "#CBCDD2",
+                        "backgroundColor": "#90949d",
                         "borderRadius": 2,
                         "flexBasis": 0,
                         "flexGrow": 1,
@@ -5639,7 +5683,7 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
                   style={
                     [
                       {
-                        "backgroundColor": "#CBCDD2",
+                        "backgroundColor": "#90949d",
                         "borderRadius": 2,
                         "borderTopLeftRadius": 0,
                         "borderTopRightRadius": 0,
@@ -5677,7 +5721,7 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
                   style={
                     [
                       {
-                        "backgroundColor": "#CBCDD2",
+                        "backgroundColor": "#90949d",
                         "borderRadius": 2,
                         "flexBasis": 0,
                         "flexGrow": 1,
@@ -5880,7 +5924,7 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
                   style={
                     [
                       {
-                        "backgroundColor": "#CBCDD2",
+                        "backgroundColor": "#90949d",
                         "borderRadius": 2,
                         "borderTopLeftRadius": 0,
                         "borderTopRightRadius": 0,
@@ -5912,7 +5956,7 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
                   style={
                     [
                       {
-                        "backgroundColor": "#CBCDD2",
+                        "backgroundColor": "#90949d",
                         "borderRadius": 2,
                         "flexBasis": 0,
                         "flexGrow": 1,
@@ -6120,7 +6164,7 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
         </View>
       </View>
     </View>
-  </RCTScrollView>,
+  </RCTScrollView>
   <View
     style={
       [
@@ -6364,7 +6408,7 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
         </Text>
       </View>
     </View>
-  </View>,
+  </View>
   <View
     customHeight={8}
     enable={true}
@@ -6375,12 +6419,23 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
         },
       ]
     }
-  />,
-]
+  />
+</View>
 `;
 
 exports[`OnboardingAgeInformation when enableCreditV3 activated should render correctly for 15-year-old 1`] = `
-[
+<View
+  style={
+    [
+      {
+        "backgroundColor": "#ffffff",
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+      },
+    ]
+  }
+>
   <View
     style={
       [
@@ -6390,7 +6445,7 @@ exports[`OnboardingAgeInformation when enableCreditV3 activated should render co
       ]
     }
     top={16}
-  />,
+  />
   <View
     style={
       [
@@ -6497,7 +6552,7 @@ exports[`OnboardingAgeInformation when enableCreditV3 activated should render co
         </Text>
       </View>
     </View>
-  </View>,
+  </View>
   <RCTScrollView
     contentContainerStyle={
       {
@@ -6583,7 +6638,7 @@ exports[`OnboardingAgeInformation when enableCreditV3 activated should render co
         />
       </View>
     </View>
-  </RCTScrollView>,
+  </RCTScrollView>
   <View
     style={
       [
@@ -6827,7 +6882,7 @@ exports[`OnboardingAgeInformation when enableCreditV3 activated should render co
         </Text>
       </View>
     </View>
-  </View>,
+  </View>
   <View
     customHeight={8}
     enable={true}
@@ -6838,12 +6893,23 @@ exports[`OnboardingAgeInformation when enableCreditV3 activated should render co
         },
       ]
     }
-  />,
-]
+  />
+</View>
 `;
 
 exports[`OnboardingAgeInformation when enableCreditV3 activated should render correctly for 16-year-old 1`] = `
-[
+<View
+  style={
+    [
+      {
+        "backgroundColor": "#ffffff",
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+      },
+    ]
+  }
+>
   <View
     style={
       [
@@ -6853,7 +6919,7 @@ exports[`OnboardingAgeInformation when enableCreditV3 activated should render co
       ]
     }
     top={16}
-  />,
+  />
   <View
     style={
       [
@@ -6960,7 +7026,7 @@ exports[`OnboardingAgeInformation when enableCreditV3 activated should render co
         </Text>
       </View>
     </View>
-  </View>,
+  </View>
   <RCTScrollView
     contentContainerStyle={
       {
@@ -7046,7 +7112,7 @@ exports[`OnboardingAgeInformation when enableCreditV3 activated should render co
         />
       </View>
     </View>
-  </RCTScrollView>,
+  </RCTScrollView>
   <View
     style={
       [
@@ -7290,7 +7356,7 @@ exports[`OnboardingAgeInformation when enableCreditV3 activated should render co
         </Text>
       </View>
     </View>
-  </View>,
+  </View>
   <View
     customHeight={8}
     enable={true}
@@ -7301,12 +7367,23 @@ exports[`OnboardingAgeInformation when enableCreditV3 activated should render co
         },
       ]
     }
-  />,
-]
+  />
+</View>
 `;
 
 exports[`OnboardingAgeInformation when enableCreditV3 activated should render correctly for 17-year-old 1`] = `
-[
+<View
+  style={
+    [
+      {
+        "backgroundColor": "#ffffff",
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+      },
+    ]
+  }
+>
   <View
     style={
       [
@@ -7316,7 +7393,7 @@ exports[`OnboardingAgeInformation when enableCreditV3 activated should render co
       ]
     }
     top={16}
-  />,
+  />
   <View
     style={
       [
@@ -7423,7 +7500,7 @@ exports[`OnboardingAgeInformation when enableCreditV3 activated should render co
         </Text>
       </View>
     </View>
-  </View>,
+  </View>
   <RCTScrollView
     contentContainerStyle={
       {
@@ -7548,7 +7625,7 @@ exports[`OnboardingAgeInformation when enableCreditV3 activated should render co
                   style={
                     [
                       {
-                        "backgroundColor": "#CBCDD2",
+                        "backgroundColor": "#90949d",
                         "borderRadius": 2,
                         "borderTopLeftRadius": 2,
                         "borderTopRightRadius": 2,
@@ -7844,7 +7921,7 @@ exports[`OnboardingAgeInformation when enableCreditV3 activated should render co
                   style={
                     [
                       {
-                        "backgroundColor": "#CBCDD2",
+                        "backgroundColor": "#90949d",
                         "borderRadius": 2,
                         "flexBasis": 0,
                         "flexGrow": 1,
@@ -8042,7 +8119,7 @@ exports[`OnboardingAgeInformation when enableCreditV3 activated should render co
         </View>
       </View>
     </View>
-  </RCTScrollView>,
+  </RCTScrollView>
   <View
     style={
       [
@@ -8286,7 +8363,7 @@ exports[`OnboardingAgeInformation when enableCreditV3 activated should render co
         </Text>
       </View>
     </View>
-  </View>,
+  </View>
   <View
     customHeight={8}
     enable={true}
@@ -8297,12 +8374,23 @@ exports[`OnboardingAgeInformation when enableCreditV3 activated should render co
         },
       ]
     }
-  />,
-]
+  />
+</View>
 `;
 
 exports[`OnboardingAgeInformation when enableCreditV3 activated should render correctly for 18-year-old 1`] = `
-[
+<View
+  style={
+    [
+      {
+        "backgroundColor": "#ffffff",
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+      },
+    ]
+  }
+>
   <View
     style={
       [
@@ -8312,7 +8400,7 @@ exports[`OnboardingAgeInformation when enableCreditV3 activated should render co
       ]
     }
     top={16}
-  />,
+  />
   <View
     style={
       [
@@ -8419,7 +8507,7 @@ exports[`OnboardingAgeInformation when enableCreditV3 activated should render co
         </Text>
       </View>
     </View>
-  </View>,
+  </View>
   <RCTScrollView
     contentContainerStyle={
       {
@@ -8544,7 +8632,7 @@ exports[`OnboardingAgeInformation when enableCreditV3 activated should render co
                   style={
                     [
                       {
-                        "backgroundColor": "#CBCDD2",
+                        "backgroundColor": "#90949d",
                         "borderRadius": 2,
                         "borderTopLeftRadius": 2,
                         "borderTopRightRadius": 2,
@@ -8582,7 +8670,7 @@ exports[`OnboardingAgeInformation when enableCreditV3 activated should render co
                   style={
                     [
                       {
-                        "backgroundColor": "#CBCDD2",
+                        "backgroundColor": "#90949d",
                         "borderRadius": 2,
                         "flexBasis": 0,
                         "flexGrow": 1,
@@ -8785,7 +8873,7 @@ exports[`OnboardingAgeInformation when enableCreditV3 activated should render co
                   style={
                     [
                       {
-                        "backgroundColor": "#CBCDD2",
+                        "backgroundColor": "#90949d",
                         "borderRadius": 2,
                         "borderTopLeftRadius": 0,
                         "borderTopRightRadius": 0,
@@ -8817,7 +8905,7 @@ exports[`OnboardingAgeInformation when enableCreditV3 activated should render co
                   style={
                     [
                       {
-                        "backgroundColor": "#CBCDD2",
+                        "backgroundColor": "#90949d",
                         "borderRadius": 2,
                         "flexBasis": 0,
                         "flexGrow": 1,
@@ -9025,7 +9113,7 @@ exports[`OnboardingAgeInformation when enableCreditV3 activated should render co
         </View>
       </View>
     </View>
-  </RCTScrollView>,
+  </RCTScrollView>
   <View
     style={
       [
@@ -9269,7 +9357,7 @@ exports[`OnboardingAgeInformation when enableCreditV3 activated should render co
         </Text>
       </View>
     </View>
-  </View>,
+  </View>
   <View
     customHeight={8}
     enable={true}
@@ -9280,6 +9368,6 @@ exports[`OnboardingAgeInformation when enableCreditV3 activated should render co
         },
       ]
     }
-  />,
-]
+  />
+</View>
 `;

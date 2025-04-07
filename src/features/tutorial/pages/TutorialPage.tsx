@@ -4,6 +4,7 @@ import styled from 'styled-components/native'
 import { customEaseInOut, DURATION_IN_MS } from 'features/tutorial/helpers/animationProps'
 import { AnimatedView, NAV_DELAY_IN_MS } from 'libs/react-native-animatable'
 import { EmptyHeader } from 'ui/components/headers/EmptyHeader'
+import { Page } from 'ui/pages/Page'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -34,7 +35,7 @@ export const TutorialPage: FunctionComponent<Props> = ({
   children,
 }) => {
   return (
-    <React.Fragment>
+    <Page>
       <EmptyHeader onGoBack={onGoBack} />
       <StyledScrollView>
         <Container>
@@ -72,7 +73,7 @@ export const TutorialPage: FunctionComponent<Props> = ({
         </ButtonsContainer>
       ) : null}
       <Spacer.BottomScreen />
-    </React.Fragment>
+    </Page>
   )
 }
 
@@ -91,5 +92,5 @@ const Container = styled.View(({ theme }) => ({
 const ButtonsContainer = styled(AnimatedView)(({ theme }) => ({
   marginHorizontal: theme.contentPage.marginHorizontal,
   paddingVertical: getSpacing(6),
-  backgroundColor: theme.colors.white,
+  backgroundColor: theme.designSystem.color.background.default,
 }))
