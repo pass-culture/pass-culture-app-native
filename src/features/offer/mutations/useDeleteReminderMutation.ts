@@ -32,11 +32,11 @@ export const useDeleteReminderMutation = (options?: MutationOptions) => {
 
         return { previousReminders }
       },
-
-      onSuccess: () => {
-        queryClient.invalidateQueries(QueryKeys.REMINDERS)
-        options?.onSuccess?.()
+      onError: (err, newReminders, context) => {
+        queryClient.setQueryData([QueryKeys.REMINDERS], context?.previousReminders)
+        options?.onError?.(err)
       },
+      onSettled: () => queryClient.invalidateQueries(QueryKeys.REMINDERS),
     }
   )
 }

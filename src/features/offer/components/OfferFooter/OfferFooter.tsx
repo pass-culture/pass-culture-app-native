@@ -50,7 +50,7 @@ export const OfferFooter: FC<OfferFooterProps> = ({
     },
   })
 
-  const { mutate: deleteReminder, isLoading: isDeleteReminderLoading } = useDeleteReminderMutation({
+  const { mutate: deleteReminder } = useDeleteReminderMutation({
     onError: () => {
       showErrorSnackBar({
         message: 'L’offre n’a pas pu être retirée de tes rappels',
@@ -91,7 +91,7 @@ export const OfferFooter: FC<OfferFooterProps> = ({
         onPressReminderCTA={onPressReminderCTA}
         favoriteAuthModal={favoriteAuthModal}
         reminderAuthModal={reminderAuthModal}
-        areRemindersLoading={isAddReminderLoading || isDeleteReminderLoading}
+        areRemindersLoading={isAddReminderLoading}
       />
     )
   }
