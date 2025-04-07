@@ -1,22 +1,16 @@
-import * as API from 'api/api'
 import { remindersResponse } from 'features/offer/fixtures/remindersResponse'
 import { GetReminderResponse } from 'features/offer/types'
+import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, renderHook } from 'tests/utils'
 
 import { useGetRemindersQuery } from './useGetRemindersQuery'
 
-const mockGetReminders = jest.spyOn(API.api, 'getNativeV1MeReminders')
+jest.mock('libs/jwt/jwt')
 
 describe('useGetRemindersQuery', () => {
-  beforeEach(() => mockGetReminders.mockResolvedValueOnce(remindersResponse))
-
-  it('should call the correct API endpoint', async () => {
-    renderUseGetRemindersQuery()
-
-    await act(async () => {})
-
-    expect(mockGetReminders).toHaveBeenCalledTimes(1)
+  beforeEach(() => {
+    mockServer.getApi<GetReminderResponse>('/v1/me/reminders', remindersResponse)
   })
 
   it('should allow selecting a subset of data', async () => {
