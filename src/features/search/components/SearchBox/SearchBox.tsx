@@ -24,7 +24,6 @@ import { useSearch } from 'features/search/context/SearchWrapper'
 import { useNavigateToSearch } from 'features/search/helpers/useNavigateToSearch/useNavigateToSearch'
 import { CreateHistoryItem, SearchView, SearchState } from 'features/search/types'
 import { analytics } from 'libs/analytics/provider'
-import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { BackButton } from 'ui/components/headers/BackButton'
 import { HiddenAccessibleText } from 'ui/components/HiddenAccessibleText'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
@@ -45,7 +44,7 @@ type Props = UseSearchBoxProps & {
 const accessibilityDescribedBy = uuidv4()
 
 const BOOK_KEYWORD_PATTERN = /\bLIVRES?\b$/i
-const CINEMA_KEYWORD_PATTERN = /\bCINEMAS?\b$/i
+const CINEMA_KEYWORD_PATTERN = /\bCIN[ÉE]MA?S?\b$/i
 
 export const SearchBox: React.FunctionComponent<Props> = ({
   searchInputID,
@@ -66,7 +65,6 @@ export const SearchBox: React.FunctionComponent<Props> = ({
   const route = useRoute()
   const { navigateToSearch: navigateToSearchResults } = useNavigateToSearch('SearchResults')
   const { navigateToSearch: navigateToThematicSearch } = useNavigateToSearch('ThematicSearch')
-  const { shouldRedirectToThematicSearch } = useRemoteConfigQuery()
   const currentView = route.name
 
   // Autocompletion inspired by https://github.com/algolia/doc-code-samples/tree/master/react-instantsearch-hooks-native/getting-started
@@ -92,15 +90,13 @@ export const SearchBox: React.FunctionComponent<Props> = ({
     (
       partialSearchState: Partial<SearchState>,
       options: { reset?: boolean } = {},
-      hasSearchedForBookKeyword?: boolean
+      hasSearchedForBookKeyword?: boolean,
+      hasSearchedForCinemaKeyword?: boolean
     ) => {
       const newSearchState = {
         ...searchState,
         ...(options.reset ? initialSearchState : {}),
         ...partialSearchState,
-        ...(currentView === SearchView.Landing
-          ? { shouldRedirect: shouldRedirectToThematicSearch }
-          : undefined),
       }
 
       dispatch({
@@ -108,7 +104,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
         payload: newSearchState,
       })
 
-      if (hasSearchedForBookKeyword) {
+      if (hasSearchedForBookKeyword || hasSearchedForCinemaKeyword) {
         return navigateToThematicSearch(newSearchState, defaultDisabilitiesProperties)
       }
 
@@ -116,14 +112,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
         navigateToSearchResults(newSearchState, defaultDisabilitiesProperties)
       }
     },
-    [
-      dispatch,
-      navigateToThematicSearch,
-      navigateToSearchResults,
-      searchState,
-      currentView,
-      shouldRedirectToThematicSearch,
-    ]
+    [dispatch, navigateToThematicSearch, navigateToSearchResults, searchState]
   )
 
   const hasEditableSearchInput =
@@ -242,15 +231,18 @@ export const SearchBox: React.FunctionComponent<Props> = ({
       }
 
       let hasSearchedForBookKeyword = false
-
+      let hasSearchedForCinemaKeyword = false
       if (currentView === SearchView.Landing) {
         hasSearchedForBookKeyword = BOOK_KEYWORD_PATTERN.test(queryText.trim())
+        hasSearchedForCinemaKeyword = CINEMA_KEYWORD_PATTERN.test(queryText.trim())
 
-        if (hasSearchedForBookKeyword) {
+        if (hasSearchedForBookKeyword || hasSearchedForCinemaKeyword) {
           partialSearchState = {
             ...partialSearchState,
             query: queryText.trim(),
-            offerCategories: [SearchGroupNameEnumv2.LIVRES],
+            offerCategories: hasSearchedForBookKeyword
+              ? [SearchGroupNameEnumv2.LIVRES]
+              : [SearchGroupNameEnumv2.CINEMA],
           }
         }
 
@@ -266,7 +258,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
         }
       }
 
-      pushWithSearch(partialSearchState, {}, hasSearchedForBookKeyword)
+      pushWithSearch(partialSearchState, {}, hasSearchedForBookKeyword, hasSearchedForCinemaKeyword)
       hideSuggestions()
     },
     [
