@@ -7,7 +7,7 @@ import { fetchHeadlineOffersCount } from '../api/headlineOffers/fetchHeadlineOff
 
 export const useFetchHeadlineOffersCountQuery = (offer?: OfferResponseV2) => {
   return useQuery({
-    queryKey: [QueryKeys.HEADLINE_OFFERS_COUNT],
+    queryKey: [QueryKeys.HEADLINE_OFFERS_COUNT, offer?.extraData?.ean],
     queryFn: () => fetchHeadlineOffersCount(offer),
   })
 }
