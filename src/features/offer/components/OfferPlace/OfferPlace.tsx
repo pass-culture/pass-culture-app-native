@@ -35,14 +35,14 @@ export type OfferPlaceProps = {
 
 type PartialVenue = Pick<
   VenueResponse,
-  'id' | 'venueTypeCode' | 'name' | 'description' | 'publicName' | 'isOpenToPublic'
+  'id' | 'venueTypeCode' | 'name' | 'description' | 'isOpenToPublic'
 >
 
 const mergeVenueData =
   (venue: PartialVenue) =>
   (prevData: VenueResponse | undefined): VenueResponse => ({
     id: venue.id,
-    name: venue.publicName || venue.name,
+    name: venue.name,
     venueTypeCode: venue.venueTypeCode,
     isVirtual: false,
     description: venue.description,
@@ -145,8 +145,11 @@ export function OfferPlace({ offer, subcategory, distance }: Readonly<OfferPlace
   const shouldDisplaySeeItineraryButton = Boolean(
     offer.venue.address && offer.venue.postalCode && offer.venue.city
   )
-  const venueName = offer.venue.publicName || offer.venue.name
-  const headerMessage = getVenueSelectionHeaderMessage(selectedLocationMode, place, venueName)
+  const headerMessage = getVenueSelectionHeaderMessage(
+    selectedLocationMode,
+    place,
+    offer.venue.name
+  )
 
   const isOfferAMovieScreening = offer.subcategoryId === SubcategoryIdEnum.SEANCE_CINE
 

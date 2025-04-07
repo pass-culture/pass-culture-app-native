@@ -83,7 +83,7 @@ export function BookingDetails({ stocks, onPressBookOffer, isLoading }: BookingD
 
   const { onScroll: onScrollModal } = useOpacityTransition()
   const { userLocation, selectedLocationMode, place } = useLocation()
-  const venueName = offer?.address?.label ?? offer?.venue.publicName ?? offer?.venue.name
+  const venueName = offer?.address?.label || offer?.venue.name
 
   const headerMessage = getVenueSelectionHeaderMessage(selectedLocationMode, place, venueName)
 

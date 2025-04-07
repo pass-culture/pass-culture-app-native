@@ -14,18 +14,7 @@ describe('getOfferLocationName', () => {
   describe('not digital offer', () => {
     const isDigital = false
 
-    it('should return venue publicName when venue.publicName is defined', () => {
-      const venue = {
-        ...offerVenueResponseSnap,
-        name: 'Le Grande Rex - name',
-        publicName: 'Le Grande Rex - publicName',
-      }
-      const locationName = getOfferLocationName(venue, isDigital)
-
-      expect(locationName).toEqual('Le Grande Rex - publicName')
-    })
-
-    it('should return venue name when venue.publicName is undefined', () => {
+    it('should return venue name', () => {
       const venue = {
         ...offerVenueResponseSnap,
         name: 'Le Grande Rex - name',
