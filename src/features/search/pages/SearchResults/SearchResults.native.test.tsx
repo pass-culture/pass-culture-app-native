@@ -54,8 +54,8 @@ const initialSearchResults = {
 }
 
 const mockUseSearchResults = jest.fn(() => initialSearchResults)
-jest.mock('features/search/api/useSearchResults/useSearchResults', () => ({
-  useSearchResults: () => mockUseSearchResults(),
+jest.mock('features/search/queries/useSearchResultsQuery', () => ({
+  useSearchResultsQuery: () => mockUseSearchResults(),
 }))
 
 jest.mock('libs/network/NetInfoWrapper')

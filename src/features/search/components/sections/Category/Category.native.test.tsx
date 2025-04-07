@@ -28,8 +28,8 @@ jest.mock('features/profile/api/usePatchProfile')
 
 const mockHasNextPage = true
 const mockFetchNextPage = jest.fn()
-jest.mock('features/search/api/useSearchResults/useSearchResults', () => ({
-  useSearchResults: () => ({
+jest.mock('features/search/queries/useSearchResultsQuery', () => ({
+  useSearchResultsQuery: () => ({
     data: mockData,
     hits: [],
     nbHits: 0,

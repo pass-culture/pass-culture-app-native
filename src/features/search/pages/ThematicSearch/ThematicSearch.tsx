@@ -8,7 +8,6 @@ import { SearchGroupNameEnumv2 } from 'api/gen'
 import { useAccessibilityFiltersContext } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { SearchStackRouteName } from 'features/navigation/SearchStackNavigator/types'
-import { useSearchResults } from 'features/search/api/useSearchResults/useSearchResults'
 import { VenuePlaylist } from 'features/search/components/VenuePlaylist/VenuePlaylist'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { getSearchVenuePlaylistTitle } from 'features/search/helpers/getSearchVenuePlaylistTitle/getSearchVenuePlaylistTitle'
@@ -18,6 +17,7 @@ import { ConcertsAndFestivalsPlaylists } from 'features/search/pages/ThematicSea
 import { FilmsPlaylists } from 'features/search/pages/ThematicSearch/Films/FilmsPlaylists'
 import { MusicPlaylists } from 'features/search/pages/ThematicSearch/Music/MusicPlaylists'
 import { ThematicSearchBar } from 'features/search/pages/ThematicSearch/ThematicSearchBar'
+import { useSearchResultsQuery } from 'features/search/queries/useSearchResultsQuery'
 import { getShouldDisplayGtlPlaylist } from 'features/venue/pages/Venue/getShouldDisplayGtlPlaylist'
 import { useLocation } from 'libs/location'
 import { LocationMode } from 'libs/location/types'
@@ -40,7 +40,7 @@ export const ThematicSearch: React.FC = () => {
   const {
     hits: { venues },
     venuesUserData,
-  } = useSearchResults()
+  } = useSearchResultsQuery()
 
   const { searchState, dispatch } = useSearch()
 

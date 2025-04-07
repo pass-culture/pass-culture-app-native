@@ -42,8 +42,8 @@ const defaultUseSearchResults = {
   isFetchingNextPage: false,
 }
 const mockUseSearchResults = jest.fn(() => defaultUseSearchResults)
-jest.mock('features/search/api/useSearchResults/useSearchResults', () => ({
-  useSearchResults: () => mockUseSearchResults(),
+jest.mock('features/search/queries/useSearchResultsQuery', () => ({
+  useSearchResultsQuery: () => mockUseSearchResults(),
 }))
 
 const defaultUseLocation = {
