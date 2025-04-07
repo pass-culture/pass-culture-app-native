@@ -24,7 +24,7 @@ export const appModalContainerStyle = ({
   desktopConstraints,
 }: Props): CSSObject => ({
   alignItems: 'center',
-  backgroundColor: theme.colors.white,
+  backgroundColor: theme.designSystem.color.background.default,
   borderTopStartRadius: BORDER_VERTICAL_RADIUS,
   borderTopEndRadius: BORDER_VERTICAL_RADIUS,
   borderTopRightRadius: BORDER_HORIZTONAL_RADIUS,
