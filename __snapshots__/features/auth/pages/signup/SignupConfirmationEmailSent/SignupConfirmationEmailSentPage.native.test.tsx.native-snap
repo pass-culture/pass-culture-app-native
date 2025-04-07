@@ -1,7 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<SignupConfirmationEmailSentPage /> should render correctly 1`] = `
-[
+<View
+  style={
+    [
+      {
+        "backgroundColor": "#ffffff",
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+      },
+    ]
+  }
+>
   <View
     accessibilityRole="header"
     style={
@@ -179,7 +190,7 @@ exports[`<SignupConfirmationEmailSentPage /> should render correctly 1`] = `
         />
       </View>
     </View>
-  </View>,
+  </View>
   <RCTScrollView
     contentContainerStyle={
       {
@@ -762,7 +773,7 @@ exports[`<SignupConfirmationEmailSentPage /> should render correctly 1`] = `
         visible={false}
       />
     </View>
-  </RCTScrollView>,
+  </RCTScrollView>
   <View
     height={65}
     style={
@@ -797,6 +808,6 @@ exports[`<SignupConfirmationEmailSentPage /> should render correctly 1`] = `
         ]
       }
     />
-  </View>,
-]
+  </View>
+</View>
 `;

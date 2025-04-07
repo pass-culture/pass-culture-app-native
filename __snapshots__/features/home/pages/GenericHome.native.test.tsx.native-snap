@@ -5,6 +5,7 @@ exports[`GenericHome With not displayed skeleton by default should display real 
   style={
     [
       {
+        "backgroundColor": "#ffffff",
         "flexBasis": 1,
         "flexGrow": 1,
         "flexShrink": 0,
@@ -194,6 +195,7 @@ exports[`GenericHome With not displayed skeleton by default should display skele
   style={
     [
       {
+        "backgroundColor": "#ffffff",
         "flexBasis": 1,
         "flexGrow": 1,
         "flexShrink": 0,

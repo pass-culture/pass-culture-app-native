@@ -128,7 +128,7 @@ export const VideoCarouselModule: FunctionComponent<VideoCarouselModuleBaseProps
         : undefined
 
       return (
-        <StyledInternalTouchableLink key={index} {...containerProps}>
+        <StyledInternalTouchableLink key={index} color={color} {...containerProps}>
           <AttachedOfferCard offer={offer} shouldFixHeight />
         </StyledInternalTouchableLink>
       )
@@ -148,7 +148,7 @@ export const VideoCarouselModule: FunctionComponent<VideoCarouselModuleBaseProps
     }
 
     return (
-      <StyledInternalTouchableLink key={index} {...containerProps}>
+      <StyledInternalTouchableLink key={index} color={color} {...containerProps}>
         <AttachedThematicCard
           title={thematicHomeTitle ?? ''}
           subtitle={thematicHomeSubtitle}
@@ -229,7 +229,12 @@ const ColoredAttachedTileContainer = styled.View<{
   backgroundColor: colorMapping[color].fill,
 }))
 
-const StyledInternalTouchableLink = styled(InternalTouchableLink)(({ theme }) => ({
+const StyledInternalTouchableLink = styled(InternalTouchableLink)<{
+  color: Color
+}>(({ theme, color }) => ({
+  backgroundColor: colorMapping[color].fill,
+  borderRadius: getSpacing(3),
+  marginHorizontal: getSpacing(1),
   ...getShadow({
     shadowOffset: {
       width: 0,
@@ -239,7 +244,6 @@ const StyledInternalTouchableLink = styled(InternalTouchableLink)(({ theme }) =>
     shadowColor: theme.colors.black,
     shadowOpacity: 0.15,
   }),
-  paddingHorizontal: getSpacing(1),
 }))
 
 const SingleItemContainer = styled.View({

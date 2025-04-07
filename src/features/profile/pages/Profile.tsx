@@ -39,6 +39,7 @@ import { VerticalUl } from 'ui/components/Ul'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { useDebounce } from 'ui/hooks/useDebounce'
 import { useVersion } from 'ui/hooks/useVersion'
+import { Page } from 'ui/pages/Page'
 import { Bell } from 'ui/svg/icons/Bell'
 import { BicolorProfile } from 'ui/svg/icons/BicolorProfile'
 import { Bulb } from 'ui/svg/icons/Bulb'
@@ -156,7 +157,7 @@ const OnlineProfile: React.FC = () => {
   }, [])
 
   return (
-    <Container>
+    <Page>
       <ScrollView
         bounces
         ref={scrollViewRef}
@@ -331,7 +332,7 @@ const OnlineProfile: React.FC = () => {
         </ScrollViewContentContainer>
       </ScrollView>
       <StatusBarBlurredBackground />
-    </Container>
+    </Page>
   )
 }
 
@@ -343,10 +344,8 @@ export function Profile() {
   return <OfflinePage />
 }
 
-const Container = styled.View({ flex: 1 })
-
 const ProfileContainer = styled.View(({ theme }) => ({
-  backgroundColor: theme.colors.white,
+  backgroundColor: theme.designSystem.color.background.default,
   flexDirection: 'column',
   paddingHorizontal: theme.contentPage.marginHorizontal,
 }))

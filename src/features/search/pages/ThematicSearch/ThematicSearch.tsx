@@ -23,6 +23,7 @@ import { useLocation } from 'libs/location'
 import { LocationMode } from 'libs/location/types'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { SubcategoryButtonListWrapper } from 'ui/components/buttons/SubcategoryButton/SubcategoryButtonListWrapper'
+import { Page } from 'ui/pages/Page'
 import { getSpacing } from 'ui/theme'
 
 const titles = PLACEHOLDER_DATA.searchGroups.reduce((previousValue, currentValue) => {
@@ -93,26 +94,28 @@ export const ThematicSearch: React.FC = () => {
     : undefined
 
   return (
-    <ThematicSearchBar
-      offerCategories={offerCategories}
-      placeholder={`${titles[offerCategory]}...`}
-      title={titles[offerCategory]}>
-      <StyledScrollView>
-        <SubcategoryButtonListWrapper offerCategory={offerCategory} />
-        {shouldDisplayVenuesPlaylist ? (
-          <VenuePlaylist
-            venuePlaylistTitle={venuePlaylistTitle}
-            venues={venues}
-            isLocated={isLocated}
-            currentView={currentView}
-            offerCategory={offerCategory}
-            shouldDisplaySeparator={false}
-            searchGroup={searchGroupWithGtlPlaylist}
-          />
-        ) : null}
-        {playlistsComponent[offerCategory]}
-      </StyledScrollView>
-    </ThematicSearchBar>
+    <Page>
+      <ThematicSearchBar
+        offerCategories={offerCategories}
+        placeholder={`${titles[offerCategory]}...`}
+        title={titles[offerCategory]}>
+        <StyledScrollView>
+          <SubcategoryButtonListWrapper offerCategory={offerCategory} />
+          {shouldDisplayVenuesPlaylist ? (
+            <VenuePlaylist
+              venuePlaylistTitle={venuePlaylistTitle}
+              venues={venues}
+              isLocated={isLocated}
+              currentView={currentView}
+              offerCategory={offerCategory}
+              shouldDisplaySeparator={false}
+              searchGroup={searchGroupWithGtlPlaylist}
+            />
+          ) : null}
+          {playlistsComponent[offerCategory]}
+        </StyledScrollView>
+      </ThematicSearchBar>
+    </Page>
   )
 }
 

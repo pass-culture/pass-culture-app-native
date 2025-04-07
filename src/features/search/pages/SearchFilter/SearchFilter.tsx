@@ -25,6 +25,7 @@ import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay
 import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
 import { Li } from 'ui/components/Li'
 import { VerticalUl } from 'ui/components/Ul'
+import { Page } from 'ui/pages/Page'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
 import { Spacer } from 'ui/theme'
 
@@ -107,7 +108,7 @@ export const SearchFilter: React.FC = () => {
   const onClose = isMobileViewport ? onGoBack : undefined
 
   return (
-    <Container>
+    <Page>
       <SecondaryPageWithBlurHeader
         title="Filtres"
         onGoBack={onGoBack}
@@ -146,7 +147,7 @@ export const SearchFilter: React.FC = () => {
         isModal={false}
         filterBehaviour={FilterBehaviour.SEARCH}
       />
-    </Container>
+    </Page>
   )
 }
 
@@ -163,10 +164,6 @@ const SectionWrapper: React.FunctionComponent<{
     </StyledLi>
   )
 }
-
-const Container = styled.View(({ theme }) => ({
-  backgroundColor: theme.colors.white,
-}))
 
 const Separator = styled.View(({ theme }) => ({
   width: '100%',
