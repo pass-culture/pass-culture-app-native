@@ -4,7 +4,7 @@ import { BookingOfferModalFooter } from 'features/bookOffer/components/BookingOf
 import { BookingState, Step } from 'features/bookOffer/context/reducer'
 import { IBookingContext } from 'features/bookOffer/types'
 import { analytics } from 'libs/analytics/provider'
-import { fireEvent, render, screen } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 
 const mockDispatch = jest.fn()
 const mockUseBookingContext: jest.Mock<IBookingContext> = jest.fn(() => ({
@@ -17,6 +17,8 @@ jest.mock('features/bookOffer/context/useBookingContext', () => ({
 }))
 
 jest.mock('libs/firebase/analytics/analytics')
+const user = userEvent.setup()
+jest.useFakeTimers()
 
 describe('BookingOfferModalFooter', () => {
   describe('when current step is date selection', () => {
@@ -26,14 +28,14 @@ describe('BookingOfferModalFooter', () => {
       expect(screen.getByText('Valider la date')).toBeOnTheScreen()
     })
 
-    it('should not change step when date not selected', () => {
+    it('should not change step when date not selected', async () => {
       render(<BookingOfferModalFooter />)
-      fireEvent.press(screen.getByText('Valider la date'))
+      await user.press(screen.getByText('Valider la date'))
 
       expect(mockDispatch).not.toHaveBeenCalled()
     })
 
-    it('should change step to hour selection when date selected', () => {
+    it('should change step to hour selection when date selected', async () => {
       mockUseBookingContext.mockReturnValueOnce({
         bookingState: {
           offerId: 1,
@@ -47,12 +49,12 @@ describe('BookingOfferModalFooter', () => {
         dismissModal: jest.fn(),
       })
       render(<BookingOfferModalFooter />)
-      fireEvent.press(screen.getByText('Valider la date'))
+      await user.press(screen.getByText('Valider la date'))
 
       expect(mockDispatch).toHaveBeenCalledWith({ type: 'CHANGE_STEP', payload: Step.HOUR })
     })
 
-    it('should reset potential previous hour when date selected', () => {
+    it('should reset potential previous hour when date selected', async () => {
       mockUseBookingContext.mockReturnValueOnce({
         bookingState: {
           offerId: 1,
@@ -66,7 +68,7 @@ describe('BookingOfferModalFooter', () => {
         dismissModal: jest.fn(),
       })
       render(<BookingOfferModalFooter />)
-      fireEvent.press(screen.getByText('Valider la date'))
+      await user.press(screen.getByText('Valider la date'))
 
       expect(mockDispatch).toHaveBeenCalledWith({ type: 'RESET_HOUR' })
     })
@@ -91,14 +93,14 @@ describe('BookingOfferModalFooter', () => {
       expect(screen.getByText('Valider lʼhoraire')).toBeOnTheScreen()
     })
 
-    it('should not change step when hour not selected', () => {
+    it('should not change step when hour not selected', async () => {
       render(<BookingOfferModalFooter />)
-      fireEvent.press(screen.getByText('Valider lʼhoraire'))
+      await user.press(screen.getByText('Valider lʼhoraire'))
 
       expect(mockDispatch).not.toHaveBeenCalled()
     })
 
-    it('should change step to price selection when hour selected and has several prices', () => {
+    it('should change step to price selection when hour selected and has several prices', async () => {
       mockUseBookingContext.mockReturnValueOnce({
         bookingState: {
           offerId: 1,
@@ -112,12 +114,12 @@ describe('BookingOfferModalFooter', () => {
         dismissModal: jest.fn(),
       })
       render(<BookingOfferModalFooter hasPricesStep />)
-      fireEvent.press(screen.getByText('Valider lʼhoraire'))
+      await user.press(screen.getByText('Valider lʼhoraire'))
 
       expect(mockDispatch).toHaveBeenCalledWith({ type: 'CHANGE_STEP', payload: Step.PRICE })
     })
 
-    it('should reset stock selection when hour selected and has several prices', () => {
+    it('should reset stock selection when hour selected and has several prices', async () => {
       mockUseBookingContext.mockReturnValueOnce({
         bookingState: {
           offerId: 1,
@@ -131,12 +133,12 @@ describe('BookingOfferModalFooter', () => {
         dismissModal: jest.fn(),
       })
       render(<BookingOfferModalFooter hasPricesStep />)
-      fireEvent.press(screen.getByText('Valider lʼhoraire'))
+      await user.press(screen.getByText('Valider lʼhoraire'))
 
       expect(mockDispatch).toHaveBeenCalledWith({ type: 'RESET_STOCK' })
     })
 
-    it('should change step to quantity selection when hour selected, has not several prices and offer is duo', () => {
+    it('should change step to quantity selection when hour selected, has not several prices and offer is duo', async () => {
       mockUseBookingContext.mockReturnValueOnce({
         bookingState: {
           offerId: 1,
@@ -150,12 +152,12 @@ describe('BookingOfferModalFooter', () => {
         dismissModal: jest.fn(),
       })
       render(<BookingOfferModalFooter isDuo />)
-      fireEvent.press(screen.getByText('Valider lʼhoraire'))
+      await user.press(screen.getByText('Valider lʼhoraire'))
 
       expect(mockDispatch).toHaveBeenCalledWith({ type: 'CHANGE_STEP', payload: Step.DUO })
     })
 
-    it('should change step to confirmation when hour selected, has not several prices and offer is not duo', () => {
+    it('should change step to confirmation when hour selected, has not several prices and offer is not duo', async () => {
       mockUseBookingContext.mockReturnValueOnce({
         bookingState: {
           offerId: 1,
@@ -169,7 +171,7 @@ describe('BookingOfferModalFooter', () => {
         dismissModal: jest.fn(),
       })
       render(<BookingOfferModalFooter />)
-      fireEvent.press(screen.getByText('Valider lʼhoraire'))
+      await user.press(screen.getByText('Valider lʼhoraire'))
 
       expect(mockDispatch).toHaveBeenCalledWith({ type: 'VALIDATE_OPTIONS' })
     })
@@ -195,14 +197,14 @@ describe('BookingOfferModalFooter', () => {
       expect(screen.getByText('Valider le prix')).toBeOnTheScreen()
     })
 
-    it('should not change step when stock not selected', () => {
+    it('should not change step when stock not selected', async () => {
       render(<BookingOfferModalFooter />)
-      fireEvent.press(screen.getByText('Valider le prix'))
+      await user.press(screen.getByText('Valider le prix'))
 
       expect(mockDispatch).not.toHaveBeenCalled()
     })
 
-    it('should change step to quantity selection when stock selected and offer is duo', () => {
+    it('should change step to quantity selection when stock selected and offer is duo', async () => {
       mockUseBookingContext.mockReturnValueOnce({
         bookingState: {
           stockId: 1,
@@ -216,12 +218,12 @@ describe('BookingOfferModalFooter', () => {
         dismissModal: jest.fn(),
       })
       render(<BookingOfferModalFooter isDuo />)
-      fireEvent.press(screen.getByText('Valider le prix'))
+      await user.press(screen.getByText('Valider le prix'))
 
       expect(mockDispatch).toHaveBeenCalledWith({ type: 'CHANGE_STEP', payload: Step.DUO })
     })
 
-    it('should change step to confirmation when stock selected and offer is not duo', () => {
+    it('should change step to confirmation when stock selected and offer is not duo', async () => {
       mockUseBookingContext.mockReturnValueOnce({
         bookingState: {
           stockId: 1,
@@ -235,7 +237,7 @@ describe('BookingOfferModalFooter', () => {
         dismissModal: jest.fn(),
       })
       render(<BookingOfferModalFooter />)
-      fireEvent.press(screen.getByText('Valider le prix'))
+      await user.press(screen.getByText('Valider le prix'))
 
       expect(mockDispatch).toHaveBeenCalledWith({ type: 'VALIDATE_OPTIONS' })
     })
@@ -262,14 +264,14 @@ describe('BookingOfferModalFooter', () => {
       expect(screen.getByText('Finaliser ma réservation')).toBeOnTheScreen()
     })
 
-    it('should not change step when quantity not selected', () => {
+    it('should not change step when quantity not selected', async () => {
       render(<BookingOfferModalFooter isDuo />)
-      fireEvent.press(screen.getByText('Finaliser ma réservation'))
+      await user.press(screen.getByText('Finaliser ma réservation'))
 
       expect(mockDispatch).not.toHaveBeenCalled()
     })
 
-    it('should change step to confirmation when quantity selected', () => {
+    it('should change step to confirmation when quantity selected', async () => {
       mockUseBookingContext.mockReturnValueOnce({
         bookingState: {
           stockId: 1,
@@ -283,7 +285,7 @@ describe('BookingOfferModalFooter', () => {
         dismissModal: jest.fn(),
       })
       render(<BookingOfferModalFooter isDuo />)
-      fireEvent.press(screen.getByText('Finaliser ma réservation'))
+      await user.press(screen.getByText('Finaliser ma réservation'))
 
       expect(mockDispatch).toHaveBeenCalledWith({ type: 'VALIDATE_OPTIONS' })
     })
@@ -330,7 +332,7 @@ describe('BookingOfferModalFooter', () => {
       render(<BookingOfferModalFooter hasPricesStep />)
 
       const submitButton = await screen.findByText('Valider le prix')
-      fireEvent.press(submitButton)
+      await user.press(submitButton)
 
       expect(analytics.logHasChosenPrice).toHaveBeenCalledTimes(1)
     })
@@ -352,7 +354,7 @@ describe('BookingOfferModalFooter', () => {
       render(<BookingOfferModalFooter hasPricesStep isDuo />)
 
       const submitButton = await screen.findByText(`Valider lʼhoraire`)
-      fireEvent.press(submitButton)
+      await user.press(submitButton)
 
       expect(analytics.logHasChosenTime).toHaveBeenCalledTimes(1)
     })
@@ -374,7 +376,7 @@ describe('BookingOfferModalFooter', () => {
       render(<BookingOfferModalFooter isDuo />)
 
       const submitButton = await screen.findByText('Finaliser ma réservation')
-      fireEvent.press(submitButton)
+      await user.press(submitButton)
 
       expect(analytics.logHasClickedDuoStep).toHaveBeenCalledTimes(1)
     })

@@ -6,7 +6,7 @@ import { navigateFromRef } from 'features/navigation/navigationRef'
 import * as useGoBack from 'features/navigation/useGoBack'
 import { analytics } from 'libs/analytics/provider'
 import { BatchEvent, BatchProfile } from 'libs/react-native-batch'
-import { fireEvent, render, screen, waitFor } from 'tests/utils'
+import { render, screen, userEvent, waitFor } from 'tests/utils'
 
 jest.mock('libs/firebase/analytics/analytics')
 
@@ -24,6 +24,9 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
+const user = userEvent.setup()
+jest.useFakeTimers()
+
 describe('ComeBackLater', () => {
   it('should render correctly', () => {
     render(<ComeBackLater />)
@@ -34,15 +37,11 @@ describe('ComeBackLater', () => {
   it("should navigate to the home page when the 'M'identifier' plus tard' button is pressed", async () => {
     render(<ComeBackLater />)
 
-    const button = screen.getByText('M’identifier plus tard')
+    await user.press(screen.getByText('M’identifier plus tard'))
 
-    fireEvent.press(button)
-
-    await waitFor(() =>
-      expect(navigateFromRef).toHaveBeenCalledWith(
-        navigateToHomeConfig.screen,
-        navigateToHomeConfig.params
-      )
+    expect(navigateFromRef).toHaveBeenCalledWith(
+      navigateToHomeConfig.screen,
+      navigateToHomeConfig.params
     )
   })
 
@@ -57,9 +56,8 @@ describe('ComeBackLater', () => {
   it("should log analytics when the 'M'identifier plus tard' button is pressed", async () => {
     render(<ComeBackLater />)
 
-    const button = screen.getByText('M’identifier plus tard')
-    fireEvent.press(button)
+    await user.press(screen.getByText('M’identifier plus tard'))
 
-    await waitFor(() => expect(analytics.logComeBackLaterClicked).toHaveBeenCalledTimes(1))
+    expect(analytics.logComeBackLaterClicked).toHaveBeenCalledTimes(1)
   })
 })

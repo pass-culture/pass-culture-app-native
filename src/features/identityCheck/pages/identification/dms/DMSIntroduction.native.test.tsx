@@ -6,7 +6,7 @@ import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import * as useGoBack from 'features/navigation/useGoBack'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
-import { fireEvent, render, screen, waitFor } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 
 const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
 
@@ -22,6 +22,8 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
     return Component
   }
 })
+const user = userEvent.setup()
+jest.useFakeTimers()
 
 describe('DMSIntroduction', () => {
   describe('french version', () => {
@@ -41,20 +43,16 @@ describe('DMSIntroduction', () => {
 
     it('should open french dms link when pressing "Aller sur demarches-simplifiees.fr" button', async () => {
       render(<DMSIntroduction />)
-      const button = screen.getByText('Aller sur demarches-simplifiees.fr')
 
-      fireEvent.press(button)
+      await user.press(screen.getByText('Aller sur demarches-simplifiees.fr'))
 
-      await waitFor(() => {
-        expect(openUrl).toHaveBeenCalledWith(env.DMS_FRENCH_CITIZEN_URL, undefined, true)
-      })
+      expect(openUrl).toHaveBeenCalledWith(env.DMS_FRENCH_CITIZEN_URL, undefined, true)
     })
 
-    it('should log french DMS event when pressing "Aller sur demarches-simplifiees.fr" button', () => {
+    it('should log french DMS event when pressing "Aller sur demarches-simplifiees.fr" button', async () => {
       render(<DMSIntroduction />)
 
-      const button = screen.getByText('Aller sur demarches-simplifiees.fr')
-      fireEvent.press(button)
+      await user.press(screen.getByText('Aller sur demarches-simplifiees.fr'))
 
       expect(analytics.logOpenDMSFrenchCitizenURL).toHaveBeenCalledTimes(1)
     })
@@ -77,20 +75,16 @@ describe('DMSIntroduction', () => {
 
     it('should open foreign dms link when pressing "Aller sur demarches-simplifiees.fr" button', async () => {
       render(<DMSIntroduction />)
-      const button = screen.getByText('Aller sur demarches-simplifiees.fr')
 
-      fireEvent.press(button)
+      await user.press(screen.getByText('Aller sur demarches-simplifiees.fr'))
 
-      await waitFor(() => {
-        expect(openUrl).toHaveBeenCalledWith(env.DMS_FOREIGN_CITIZEN_URL, undefined, true)
-      })
+      expect(openUrl).toHaveBeenCalledWith(env.DMS_FOREIGN_CITIZEN_URL, undefined, true)
     })
 
-    it('should log foreign DMS event when pressing "Aller sur demarches-simplifiees.fr" button', () => {
+    it('should log foreign DMS event when pressing "Aller sur demarches-simplifiees.fr" button', async () => {
       render(<DMSIntroduction />)
 
-      const button = screen.getByText('Aller sur demarches-simplifiees.fr')
-      fireEvent.press(button)
+      await user.press(screen.getByText('Aller sur demarches-simplifiees.fr'))
 
       expect(analytics.logOpenDMSForeignCitizenURL).toHaveBeenCalledTimes(1)
     })

@@ -4,7 +4,7 @@ import { ExclusivityExternalLink } from 'features/home/components/modules/exclus
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { analytics } from 'libs/analytics/provider'
 import { ContentTypes } from 'libs/contentful/types'
-import { fireEvent, render, screen } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 
 const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
 
@@ -21,6 +21,9 @@ const props = {
 
 jest.mock('libs/firebase/analytics/analytics')
 
+const user = userEvent.setup()
+jest.useFakeTimers()
+
 describe('ExclusivityExternalLink component', () => {
   it('should trigger logEvent "ModuleDisplayedOnHomepage" on render', () => {
     render(<ExclusivityExternalLink {...props} />)
@@ -33,10 +36,10 @@ describe('ExclusivityExternalLink component', () => {
     })
   })
 
-  it('should open url when clicking on the component', () => {
+  it('should open url when clicking on the component', async () => {
     render(<ExclusivityExternalLink {...props} />)
 
-    fireEvent.press(screen.getByTestId('Image d’Adèle'))
+    await user.press(screen.getByTestId('Image d’Adèle'))
 
     expect(openUrl).toHaveBeenCalledWith(props.url, undefined, false)
   })

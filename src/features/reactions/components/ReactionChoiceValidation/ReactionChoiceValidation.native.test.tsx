@@ -2,7 +2,10 @@ import React from 'react'
 
 import { ReactionTypeEnum } from 'api/gen'
 import { ReactionChoiceValidation } from 'features/reactions/components/ReactionChoiceValidation/ReactionChoiceValidation'
-import { fireEvent, render, screen } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
+
+const user = userEvent.setup()
+jest.useFakeTimers()
 
 describe('ReactionChoiceValidation', () => {
   it('should display like and dislike buttons', () => {
@@ -29,7 +32,7 @@ describe('ReactionChoiceValidation', () => {
     expect(screen.getByTestId('thumbDown')).toBeOnTheScreen()
   })
 
-  it('should trigger handleOnPressReactionButton when pressing like button', () => {
+  it('should trigger handleOnPressReactionButton when pressing like button', async () => {
     const mockHandleOnPress = jest.fn()
     render(
       <ReactionChoiceValidation
@@ -38,7 +41,7 @@ describe('ReactionChoiceValidation', () => {
       />
     )
 
-    fireEvent.press(screen.getByText('J’aime'))
+    await user.press(screen.getByText('J’aime'))
 
     expect(mockHandleOnPress).toHaveBeenCalledWith(ReactionTypeEnum.LIKE)
   })

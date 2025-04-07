@@ -3,7 +3,7 @@ import React from 'react'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { SelectIDStatus } from 'features/identityCheck/pages/identification/ubble/SelectIDStatus'
 import { analytics } from 'libs/analytics/provider'
-import { fireEvent, render, screen, waitFor } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 
 jest.mock('libs/firebase/analytics/analytics')
 
@@ -12,6 +12,8 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
     return Component
   }
 })
+const user = userEvent.setup()
+jest.useFakeTimers()
 
 describe('SelectIDStatus', () => {
   it('should render SelectIDStatus page correctly', () => {
@@ -24,65 +26,53 @@ describe('SelectIDStatus', () => {
     render(<SelectIDStatus />)
 
     const button = screen.getByText('J’ai ma pièce d’identité en cours de validité')
-    fireEvent.press(button)
+    await user.press(button)
 
-    await waitFor(() => {
-      expect(navigate).toHaveBeenCalledWith('UbbleWebview', undefined)
-    })
+    expect(navigate).toHaveBeenCalledWith('UbbleWebview', undefined)
   })
 
   it('should navigate to ComeBackLater when pressing "Je n’ai pas ma pièce d’identité originale" button', async () => {
     render(<SelectIDStatus />)
 
     const button = screen.getByText('Je n’ai pas ma pièce d’identité originale avec moi')
-    fireEvent.press(button)
+    await user.press(button)
 
-    await waitFor(() => {
-      expect(navigate).toHaveBeenCalledWith('ComeBackLater', undefined)
-    })
+    expect(navigate).toHaveBeenCalledWith('ComeBackLater', undefined)
   })
 
   it("should navigate to ExpiredOrLostID when pressing 'Ma pièce d'identité est expirée ou perdue' button", async () => {
     render(<SelectIDStatus />)
 
     const button = screen.getByText('Ma pièce d’identité est expirée ou perdue')
-    fireEvent.press(button)
+    await user.press(button)
 
-    await waitFor(() => {
-      expect(navigate).toHaveBeenCalledWith('ExpiredOrLostID', undefined)
-    })
+    expect(navigate).toHaveBeenCalledWith('ExpiredOrLostID', undefined)
   })
 
   it('should log analytics with id_ok type when pressing "J’ai ma pièce d’identité" button', async () => {
     render(<SelectIDStatus />)
 
     const button = screen.getByText('J’ai ma pièce d’identité en cours de validité')
-    fireEvent.press(button)
+    await user.press(button)
 
-    await waitFor(() => {
-      expect(analytics.logSelectIdStatusClicked).toHaveBeenNthCalledWith(1, 'id_ok')
-    })
+    expect(analytics.logSelectIdStatusClicked).toHaveBeenNthCalledWith(1, 'id_ok')
   })
 
   it("should log analytics with no_id type when pressing 'Je n’ai pas ma pièce d’identité originale' button", async () => {
     render(<SelectIDStatus />)
 
     const button = screen.getByText('Je n’ai pas ma pièce d’identité originale avec moi')
-    fireEvent.press(button)
+    await user.press(button)
 
-    await waitFor(() => {
-      expect(analytics.logSelectIdStatusClicked).toHaveBeenNthCalledWith(1, 'no_id')
-    })
+    expect(analytics.logSelectIdStatusClicked).toHaveBeenNthCalledWith(1, 'no_id')
   })
 
   it("should log analytics with expired_or_lost type when pressing 'Ma pièce d'identité est expirée ou perdue' button", async () => {
     render(<SelectIDStatus />)
 
     const button = screen.getByText('Ma pièce d’identité est expirée ou perdue')
-    fireEvent.press(button)
+    await user.press(button)
 
-    await waitFor(() => {
-      expect(analytics.logSelectIdStatusClicked).toHaveBeenNthCalledWith(1, 'expired_or_lost')
-    })
+    expect(analytics.logSelectIdStatusClicked).toHaveBeenNthCalledWith(1, 'expired_or_lost')
   })
 })

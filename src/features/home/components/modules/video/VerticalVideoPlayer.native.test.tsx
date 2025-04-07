@@ -8,7 +8,7 @@ import {
   VideoPlayerProps,
 } from 'features/home/components/modules/video/VerticalVideoPlayer'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
-import { fireEvent, render, screen } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 
 jest.mock('libs/firebase/analytics/analytics')
 
@@ -35,6 +35,9 @@ const defaultVerticalVideoPlayerProps = {
   homeEntryId: '',
   moduleId: '',
 }
+
+const user = userEvent.setup()
+jest.useFakeTimers()
 
 describe('VerticalVideoPlayer', () => {
   beforeEach(() => {
@@ -83,7 +86,7 @@ describe('VerticalVideoPlayer', () => {
 
       expect(replayButton).toBeOnTheScreen()
 
-      fireEvent.press(replayButton)
+      await user.press(replayButton)
 
       expect(mockSetIsPlaying).toHaveBeenCalledWith(true)
     })

@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { render, screen, fireEvent } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 
 import { MarketingBlockHighlight, MarketingBlockHighlightProps } from './MarketingBlockHighlight'
 
@@ -14,12 +14,15 @@ const props: MarketingBlockHighlightProps = {
   subtitle: 'Du 12/06 au 24/06',
 }
 
+const user = userEvent.setup()
+jest.useFakeTimers()
+
 describe('MarketingBlockHighlight', () => {
-  it('navigate to highlight thematic home when pressing', () => {
+  it('navigate to highlight thematic home when pressing', async () => {
     render(<MarketingBlockHighlight {...props} />)
 
     const titlelink = screen.getByText('Harry Potter et l’Ordre du Phénix')
-    fireEvent.press(titlelink)
+    await user.press(titlelink)
 
     expect(navigate).toHaveBeenNthCalledWith(1, 'ThematicHome', {
       homeId: 'fakeEntryId',

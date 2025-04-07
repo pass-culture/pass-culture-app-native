@@ -5,7 +5,7 @@ import { initialSubscriptionState as mockState } from 'features/identityCheck/co
 import { SelectIDOrigin } from 'features/identityCheck/pages/identification/ubble/SelectIDOrigin'
 // eslint-disable-next-line no-restricted-imports
 import { analytics } from 'libs/analytics/provider'
-import { fireEvent, render, screen, waitFor } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 
 jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
   useSubscriptionContext: jest.fn(() => ({
@@ -22,6 +22,9 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
+const user = userEvent.setup()
+jest.useFakeTimers()
+
 describe('SelectIDOrigin', () => {
   it('should render correctly', () => {
     render(<SelectIDOrigin />)
@@ -35,9 +38,9 @@ describe('SelectIDOrigin', () => {
     const HeroButtonListFrench = screen.getByTestId(
       'J’ai une carte d’identité ou un passeport français'
     )
-    fireEvent.press(HeroButtonListFrench)
+    await user.press(HeroButtonListFrench)
 
-    await waitFor(() => expect(navigate).toHaveBeenCalledWith('SelectIDStatus', undefined))
+    expect(navigate).toHaveBeenCalledWith('SelectIDStatus', undefined)
   })
 
   it('should navigate to DMSIntroduction with foreign parameter on press foreign HeroButtonList', async () => {
@@ -46,13 +49,11 @@ describe('SelectIDOrigin', () => {
     const ButtonForeign = screen.getByText(
       'J’ai un titre de séjour, une carte d’identité ou un passeport étranger.'
     )
-    fireEvent.press(ButtonForeign)
+    await user.press(ButtonForeign)
 
-    await waitFor(() =>
-      expect(navigate).toHaveBeenCalledWith('DMSIntroduction', {
-        isForeignDMSInformation: true,
-      })
-    )
+    expect(navigate).toHaveBeenCalledWith('DMSIntroduction', {
+      isForeignDMSInformation: true,
+    })
   })
 
   it('should log analytics with french type on press french HeroButtonList', async () => {
@@ -61,11 +62,9 @@ describe('SelectIDOrigin', () => {
     const HeroButtonListFrench = screen.getByTestId(
       'J’ai une carte d’identité ou un passeport français'
     )
-    fireEvent.press(HeroButtonListFrench)
+    await user.press(HeroButtonListFrench)
 
-    await waitFor(() =>
-      expect(analytics.logSetIdOriginClicked).toHaveBeenNthCalledWith(1, 'France')
-    )
+    expect(analytics.logSetIdOriginClicked).toHaveBeenNthCalledWith(1, 'France')
   })
 
   it('should log analytics with foregin type on press foreign HeroButtonList', async () => {
@@ -74,10 +73,8 @@ describe('SelectIDOrigin', () => {
     const ButtonForeign = screen.getByText(
       'J’ai un titre de séjour, une carte d’identité ou un passeport étranger.'
     )
-    fireEvent.press(ButtonForeign)
+    await user.press(ButtonForeign)
 
-    await waitFor(() =>
-      expect(analytics.logSetIdOriginClicked).toHaveBeenNthCalledWith(1, 'Foreign')
-    )
+    expect(analytics.logSetIdOriginClicked).toHaveBeenNthCalledWith(1, 'Foreign')
   })
 })

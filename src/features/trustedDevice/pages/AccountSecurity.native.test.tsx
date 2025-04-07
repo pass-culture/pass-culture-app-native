@@ -6,7 +6,7 @@ import { ROUTE_PARAMS } from 'features/trustedDevice/fixtures/fixtures'
 import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics/provider'
 import { mockAuthContextWithoutUser, mockAuthContextWithUser } from 'tests/AuthContextUtils'
-import { fireEvent, render, screen } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 
 import { AccountSecurity } from './AccountSecurity'
 
@@ -21,6 +21,8 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
     return Component
   }
 })
+const user = userEvent.setup()
+jest.useFakeTimers()
 
 describe('<AccountSecurity/>', () => {
   describe('with route params', () => {
@@ -39,10 +41,10 @@ describe('<AccountSecurity/>', () => {
         expect(screen).toMatchSnapshot()
       })
 
-      it('should navigate to reinitialize password when choosing this option', () => {
+      it('should navigate to reinitialize password when choosing this option', async () => {
         render(<AccountSecurity />)
 
-        fireEvent.press(screen.getByText('Modifier mon mot de passe'))
+        await user.press(screen.getByText('Modifier mon mot de passe'))
 
         expect(navigate).toHaveBeenCalledWith('ReinitializePassword', {
           email: ROUTE_PARAMS.email,
@@ -52,26 +54,26 @@ describe('<AccountSecurity/>', () => {
         })
       })
 
-      it('should navigate to home password when choosing no security', () => {
+      it('should navigate to home password when choosing no security', async () => {
         render(<AccountSecurity />)
 
-        fireEvent.press(screen.getByText('Ne pas sécuriser mon compte'))
+        await user.press(screen.getByText('Ne pas sécuriser mon compte'))
 
         expect(navigateToHome).toHaveBeenCalledTimes(1)
       })
 
-      it('should log analytics when choosing no security', () => {
+      it('should log analytics when choosing no security', async () => {
         render(<AccountSecurity />)
 
-        fireEvent.press(screen.getByText('Ne pas sécuriser mon compte'))
+        await user.press(screen.getByText('Ne pas sécuriser mon compte'))
 
         expect(analytics.logDismissAccountSecurity).toHaveBeenCalledTimes(1)
       })
 
-      it('should navigate to account suspension confirmation when choosing this option', () => {
+      it('should navigate to account suspension confirmation when choosing this option', async () => {
         render(<AccountSecurity />)
 
-        fireEvent.press(screen.getByText('Suspendre mon compte'))
+        await user.press(screen.getByText('Suspendre mon compte'))
 
         expect(navigate).toHaveBeenCalledWith('SuspensionChoice', { token: ROUTE_PARAMS.token })
       })
