@@ -61,7 +61,7 @@ export const BookingDetails = () => {
     mapping[booking.stock.offer.subcategoryId].isEvent
   )
   return enableNewBookingPage && properties.isEvent === true ? (
-    <BookingDetailsContent properties={properties} booking={booking} />
+    <BookingDetailsContent properties={properties} booking={booking} mapping={mapping} />
   ) : (
     <OldBookingDetailsContent
       properties={properties}
