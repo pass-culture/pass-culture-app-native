@@ -24,7 +24,9 @@ describe('<GenericErrorPage />', () => {
           helmetTitle="HelmetTitle"
           illustration={BicolorPhonePending}
           title="GenericErrorPage"
-          subtitle="Subtitle">
+          subtitle="Subtitle"
+          buttonPrimary={{ wording: 'Primary button', onPress: jest.fn() }}
+          buttonTertiary={{ wording: 'Tertiary button', onPress: jest.fn() }}>
           <Typo.Body>Children...</Typo.Body>
         </GenericErrorPage>
       )

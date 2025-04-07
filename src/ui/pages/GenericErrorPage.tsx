@@ -6,11 +6,8 @@ import { Helmet } from 'libs/react-helmet/Helmet'
 import { getPrimaryIllustration } from 'shared/illustrations/getPrimaryIllustration'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
-import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
-import { ExternalNavigationProps } from 'ui/components/touchableLink/types'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Page } from 'ui/pages/Page'
-import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -20,20 +17,8 @@ type ButtonProps = {
   icon?: FunctionComponent<AccessibleIcon>
   disabled?: boolean
   isLoading?: boolean
-} & (
-  | {
-      onPress: () => void
-      externalNav?: never
-      onBeforeNavigate?: never
-      onAfterNavigate?: never
-    }
-  | {
-      externalNav: ExternalNavigationProps['externalNav']
-      onPress?: never
-      onBeforeNavigate?: () => void
-      onAfterNavigate?: () => void
-    }
-)
+  onPress: () => void
+}
 
 type Props = PropsWithChildren<{
   illustration: FunctionComponent<AccessibleIcon>
@@ -44,6 +29,7 @@ type Props = PropsWithChildren<{
   noIndex?: boolean
   buttonPrimary?: ButtonProps
   buttonTertiary?: ButtonProps
+  buttonTertiaryExternalNav?: ReactNode
 }>
 
 // NEVER EVER USE NAVIGATION (OR ANYTHING FROM @react-navigation)
@@ -59,6 +45,7 @@ export const GenericErrorPage: FunctionComponent<Props> = ({
   noIndex = true,
   buttonPrimary,
   buttonTertiary,
+  buttonTertiaryExternalNav,
   children,
 }) => {
   const { top, bottom } = useSafeAreaInsets()
@@ -87,7 +74,7 @@ export const GenericErrorPage: FunctionComponent<Props> = ({
             {subtitle ? <StyledSubtitle {...getHeadingAttrs(2)}>{subtitle}</StyledSubtitle> : null}
           </TextContainer>
           {children ? <ChildrenContainer>{children}</ChildrenContainer> : null}
-          {buttonPrimary || buttonTertiary ? (
+          {buttonPrimary || buttonTertiary || buttonTertiaryExternalNav ? (
             <ButtonContainer gap={4}>
               {buttonPrimary?.onPress ? (
                 <ButtonPrimary
@@ -97,21 +84,6 @@ export const GenericErrorPage: FunctionComponent<Props> = ({
                   isLoading={buttonPrimary.isLoading}
                   disabled={buttonPrimary.disabled}
                   icon={buttonPrimary.icon}
-                  buttonHeight="tall"
-                />
-              ) : null}
-
-              {buttonPrimary?.externalNav ? (
-                <ExternalTouchableLink
-                  key={1}
-                  as={ButtonPrimary}
-                  wording={buttonPrimary.wording}
-                  externalNav={buttonPrimary.externalNav}
-                  onBeforeNavigate={buttonPrimary.onBeforeNavigate}
-                  onAfterNavigate={buttonPrimary.onAfterNavigate}
-                  isLoading={buttonPrimary.isLoading}
-                  disabled={buttonPrimary.disabled}
-                  icon={buttonPrimary.icon ?? ExternalSiteFilled}
                   buttonHeight="tall"
                 />
               ) : null}
@@ -127,19 +99,7 @@ export const GenericErrorPage: FunctionComponent<Props> = ({
                 />
               ) : null}
 
-              {buttonTertiary?.externalNav ? (
-                <ExternalTouchableLink
-                  key={2}
-                  as={ButtonTertiaryBlack}
-                  wording={buttonTertiary.wording}
-                  externalNav={buttonTertiary.externalNav}
-                  onBeforeNavigate={buttonTertiary.onBeforeNavigate}
-                  onAfterNavigate={buttonTertiary.onAfterNavigate}
-                  isLoading={buttonTertiary.isLoading}
-                  disabled={buttonTertiary.disabled}
-                  icon={ExternalSiteFilled}
-                />
-              ) : null}
+              {buttonTertiaryExternalNav}
             </ButtonContainer>
           ) : null}
           <Spacer.Flex flex={1} />

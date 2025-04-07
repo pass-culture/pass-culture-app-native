@@ -29,7 +29,8 @@ export const CheatcodesScreenGenericErrorPage = () => {
       illustration={MaintenanceCone}
       title="Title"
       subtitle="Subtitle"
-      buttonPrimary={{ wording: 'Primary button', onPress: () => 'doNothing' }}>
+      buttonPrimary={{ wording: 'Primary button', onPress: () => 'doNothing' }}
+      buttonTertiary={{ wording: 'Tertiary button', onPress: () => 'doNothing' }}>
       <Typo.Body>Children...</Typo.Body>
     </GenericErrorPage>
   )
