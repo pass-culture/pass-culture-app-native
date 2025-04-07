@@ -4,6 +4,7 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { NoContentError } from 'features/home/pages/NoContentError'
 import { render, screen, userEvent } from 'tests/utils'
 
+jest.mock('libs/firebase/analytics/analytics')
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   return function createAnimatedComponent(Component: unknown) {
     return Component

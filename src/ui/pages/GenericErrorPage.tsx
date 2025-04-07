@@ -1,123 +1,149 @@
-import React, { ReactNode, FunctionComponent } from 'react'
-import styled, { useTheme } from 'styled-components/native'
+import React, { FunctionComponent, PropsWithChildren, ReactNode } from 'react'
+import { useSafeAreaInsets } from 'react-native-safe-area-context'
+import styled from 'styled-components/native'
 
-import { useWhiteStatusBarWithoutReactNavigation } from 'libs/hooks/useWhiteStatusBarWithoutReactNavigation'
 import { Helmet } from 'libs/react-helmet/Helmet'
-import { BackgroundWithDefaultStatusBar } from 'ui/svg/Background'
+import { getPrimaryIllustration } from 'shared/illustrations/getPrimaryIllustration'
+import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Page } from 'ui/pages/Page'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
-type Props = {
-  header?: ReactNode
-  noIndex?: boolean
+type ButtonProps = {
+  wording: string
   icon?: FunctionComponent<AccessibleIcon>
-  title: string
-  buttons?: Array<ReactNode>
-  noBackground?: boolean
-  children?: React.ReactNode
+  disabled?: boolean
+  isLoading?: boolean
+  onPress: () => void
 }
+
+type Props = PropsWithChildren<{
+  illustration: FunctionComponent<AccessibleIcon>
+  title: string
+  helmetTitle?: string
+  header?: ReactNode
+  subtitle?: string
+  noIndex?: boolean
+  buttonPrimary?: ButtonProps
+  buttonTertiary?: ButtonProps
+  buttonTertiaryExternalNav?: ReactNode
+}>
 
 // NEVER EVER USE NAVIGATION (OR ANYTHING FROM @react-navigation)
 // ON THIS PAGE OR IT WILL BREAK!!!
 // THE NAVIGATION CONTEXT IS NOT ALWAYS LOADED WHEN WE DISPLAY
 // EX: ScreenErrorProvider IS OUTSIDE NAVIGATION!
 export const GenericErrorPage: FunctionComponent<Props> = ({
-  children,
   header,
-  noIndex = true,
-  icon,
+  illustration,
   title,
-  buttons,
-  noBackground,
+  subtitle,
+  helmetTitle,
+  noIndex = true,
+  buttonPrimary,
+  buttonTertiary,
+  buttonTertiaryExternalNav,
+  children,
 }) => {
-  useWhiteStatusBarWithoutReactNavigation(noBackground)
-
-  const { isTouch } = useTheme()
-  const Icon =
-    !!icon &&
-    styled(icon).attrs(({ theme }) => ({
-      size: theme.illustrations.sizes.fullPage,
-      color: noBackground ? undefined : theme.colors.white,
-    }))``
+  const { top, bottom } = useSafeAreaInsets()
+  const Illustration = getPrimaryIllustration(illustration)
 
   return (
-    <Container>
-      {noIndex ? (
+    <React.Fragment>
+      {helmetTitle && !noIndex ? (
+        <Helmet>
+          <title>{helmetTitle}</title>
+        </Helmet>
+      ) : null}
+      {noIndex && !helmetTitle ? (
         <Helmet>
           <meta name="robots" content="noindex" />
         </Helmet>
       ) : null}
-      {/**
-       * BackgroundWithWhiteStatusBar set the light theme
-       * to do it, it use `useFocusEffect` that is provided by `react-navigation` that is potentialy not mounted at this moment
-       *
-       * BackgroundWithDefaultStatusBar is the same background but don't set the light nor dark theme
-       */}
-      {noBackground ? null : <BackgroundWithDefaultStatusBar />}
-      {header}
-      <Content>
-        <Spacer.TopScreen />
-        <Spacer.Flex />
-        {isTouch ? <Spacer.Column numberOfSpaces={spacingMatrix.top} /> : null}
-        {Icon ? (
-          <React.Fragment>
-            <Icon />
-            <Spacer.Column numberOfSpaces={spacingMatrix.afterIcon} />
-          </React.Fragment>
-        ) : null}
-        <StyledTitle noBackground={noBackground}>{title}</StyledTitle>
-        <Spacer.Column numberOfSpaces={spacingMatrix.afterTitle} />
-        {children}
-        <Spacer.Column numberOfSpaces={spacingMatrix.afterChildren} />
-        {buttons ? (
-          <BottomContainer>
-            {buttons.map((button, index) => (
-              <React.Fragment key={index}>
-                {index === 0 ? null : <Spacer.Column numberOfSpaces={4} />}
-                {button}
-              </React.Fragment>
-            ))}
-          </BottomContainer>
-        ) : null}
-        {isTouch ? <Spacer.Column numberOfSpaces={spacingMatrix.bottom} /> : null}
-        <Spacer.Flex />
-        <Spacer.BottomScreen />
-      </Content>
-    </Container>
+      <Page>
+        {header}
+        <Container bottom={bottom}>
+          <Placeholder height={top} />
+          <Spacer.Flex flex={1} />
+          <IllustrationContainer>{Illustration ? <Illustration /> : null}</IllustrationContainer>
+          <TextContainer gap={4}>
+            <StyledTitle {...getHeadingAttrs(1)}>{title}</StyledTitle>
+            {subtitle ? <StyledSubtitle {...getHeadingAttrs(2)}>{subtitle}</StyledSubtitle> : null}
+          </TextContainer>
+          {children ? <ChildrenContainer>{children}</ChildrenContainer> : null}
+          {buttonPrimary || buttonTertiary || buttonTertiaryExternalNav ? (
+            <ButtonContainer gap={4}>
+              {buttonPrimary?.onPress ? (
+                <ButtonPrimary
+                  key={1}
+                  wording={buttonPrimary.wording}
+                  onPress={buttonPrimary.onPress}
+                  isLoading={buttonPrimary.isLoading}
+                  disabled={buttonPrimary.disabled}
+                  icon={buttonPrimary.icon}
+                  buttonHeight="tall"
+                />
+              ) : null}
+
+              {buttonTertiary?.onPress ? (
+                <ButtonTertiaryBlack
+                  key={2}
+                  wording={buttonTertiary.wording}
+                  onPress={buttonTertiary.onPress}
+                  isLoading={buttonTertiary.isLoading}
+                  disabled={buttonTertiary.disabled}
+                  icon={buttonTertiary.icon}
+                />
+              ) : null}
+
+              {buttonTertiaryExternalNav}
+            </ButtonContainer>
+          ) : null}
+          <Spacer.Flex flex={1} />
+        </Container>
+      </Page>
+    </React.Fragment>
   )
 }
 
-const Container = styled.View({
+const Container = styled.View<{ top: number; bottom: number }>(({ theme }) => ({
   flex: 1,
-  alignItems: 'center',
-})
-
-const spacingMatrix = {
-  top: 10,
-  afterIcon: 5,
-  afterTitle: 5,
-  afterChildren: 10,
-  bottom: 10,
-}
-
-const StyledTitle = styled(Typo.Title2).attrs(() => getHeadingAttrs(1))<{
-  noBackground?: boolean
-}>(({ theme, noBackground }) => ({
-  color: noBackground ? undefined : theme.colors.white,
-  textAlign: 'center',
+  justifyContent: 'space-between',
+  paddingHorizontal: theme.contentPage.marginHorizontal,
+  paddingVertical: theme.contentPage.marginVertical,
+  overflow: 'scroll',
 }))
 
-const Content = styled.View({
-  flexDirection: 'column',
-  flex: 1,
-  justifyContent: 'center',
+const Placeholder = styled.View<{ height: number }>(({ height }) => ({
+  height,
+}))
+
+const IllustrationContainer = styled.View({
   alignItems: 'center',
-  paddingHorizontal: getSpacing(4),
-  maxWidth: getSpacing(90),
+  justifyContent: 'center',
+  marginBottom: getSpacing(6),
 })
 
-const BottomContainer = styled.View({
-  flex: 1,
-  alignSelf: 'stretch',
+const StyledTitle = styled(Typo.Title2)({
+  textAlign: 'center',
+})
+
+const StyledSubtitle = styled(Typo.Body)({
+  textAlign: 'center',
+})
+
+const TextContainer = styled(ViewGap)({
+  alignItems: 'center',
+  marginBottom: getSpacing(8),
+})
+
+const ChildrenContainer = styled.View({
+  marginBottom: getSpacing(8),
+})
+
+const ButtonContainer = styled(ViewGap)({
+  alignItems: 'center',
 })

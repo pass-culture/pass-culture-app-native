@@ -158,6 +158,14 @@ exports[`<WebShareModal/> should render correctly when shown 1`] = `
   text-decoration: none;
 }
 
+.c6:disabled {
+  background-color: #f1f1f4;
+}
+
+.c3 {
+  background-color: #ffffff;
+}
+
 .c0 {
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
@@ -195,14 +203,6 @@ exports[`<WebShareModal/> should render correctly when shown 1`] = `
 .c0:hover:disabled {
   -webkit-text-decoration: none;
   text-decoration: none;
-}
-
-.c6:disabled {
-  background-color: #f1f1f4;
-}
-
-.c3 {
-  background-color: #ffffff;
 }
 
 .c1 {
@@ -276,7 +276,7 @@ exports[`<WebShareModal/> should render correctly when shown 1`] = `
                   >
                     <button
                       aria-label="Fermer la modale"
-                      class="c0 c1 sc-dhKdcB c1"
+                      class="c0 c1 sc-jXbUNg c1"
                       data-testid="Fermer la modale"
                       tabindex="0"
                       title="Fermer la modale"

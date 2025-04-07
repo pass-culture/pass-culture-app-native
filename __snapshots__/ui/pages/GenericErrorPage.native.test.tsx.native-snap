@@ -5,7 +5,7 @@ exports[`<GenericErrorPage /> should render correctly 1`] = `
   style={
     [
       {
-        "alignItems": "center",
+        "backgroundColor": "#ffffff",
         "flexBasis": 0,
         "flexGrow": 1,
         "flexShrink": 1,
@@ -14,51 +14,23 @@ exports[`<GenericErrorPage /> should render correctly 1`] = `
   }
 >
   <View
-    height="100%"
+    bottom={16}
     style={
       [
         {
-          "bottom": 0,
-          "height": "100%",
-          "left": 0,
-          "position": "absolute",
-          "right": 0,
-          "top": 0,
-          "width": "100%",
-          "zIndex": -1,
-        },
-      ]
-    }
-    width="100%"
-  >
-    <View
-      height="100%"
-      width="100%"
-    >
-      <Text>
-        undefined-SVG-Mock
-      </Text>
-    </View>
-  </View>
-  <View
-    style={
-      [
-        {
-          "alignItems": "center",
           "flexBasis": 0,
-          "flexDirection": "column",
           "flexGrow": 1,
           "flexShrink": 1,
-          "justifyContent": "center",
-          "maxWidth": 360,
-          "paddingHorizontal": 16,
+          "justifyContent": "space-between",
+          "overflow": "scroll",
+          "paddingHorizontal": 24,
+          "paddingVertical": 24,
         },
       ]
     }
   >
     <View
-      customHeight={16}
-      enable={true}
+      height={16}
       style={
         [
           {
@@ -68,6 +40,7 @@ exports[`<GenericErrorPage /> should render correctly 1`] = `
       }
     />
     <View
+      flex={1}
       style={
         [
           {
@@ -79,97 +52,269 @@ exports[`<GenericErrorPage /> should render correctly 1`] = `
       }
     />
     <View
-      numberOfSpaces={10}
       style={
         [
           {
-            "height": 40,
+            "alignItems": "center",
+            "justifyContent": "center",
+            "marginBottom": 24,
           },
         ]
       }
-    />
-    <View
-      fill="none"
-      height={156}
-      width={200}
     >
-      <Text>
-        undefined-SVG-Mock
+      <View
+        fill="none"
+        height={156}
+        width={200}
+      >
+        <Text>
+          undefined-SVG-Mock
+        </Text>
+      </View>
+    </View>
+    <View
+      gap={4}
+      style={
+        [
+          {
+            "alignItems": "center",
+            "gap": 16,
+            "marginBottom": 32,
+          },
+        ]
+      }
+    >
+      <Text
+        style={
+          [
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Bold",
+              "fontSize": 21,
+              "lineHeight": 33.6,
+              "textAlign": "center",
+            },
+          ]
+        }
+      >
+        GenericErrorPage
+      </Text>
+      <Text
+        style={
+          [
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Medium",
+              "fontSize": 16,
+              "lineHeight": 25.6,
+              "textAlign": "center",
+            },
+          ]
+        }
+      >
+        Subtitle
       </Text>
     </View>
     <View
-      numberOfSpaces={5}
       style={
         [
           {
-            "height": 20,
-          },
-        ]
-      }
-    />
-    <Text
-      style={
-        [
-          {
-            "color": "#ffffff",
-            "fontFamily": "Montserrat-Bold",
-            "fontSize": 21,
-            "lineHeight": 33.6,
-            "textAlign": "center",
+            "marginBottom": 32,
           },
         ]
       }
     >
-      GenericErrorPage
-    </Text>
+      <Text
+        style={
+          [
+            {
+              "color": "#161617",
+              "fontFamily": "Montserrat-Medium",
+              "fontSize": 16,
+              "lineHeight": 25.6,
+            },
+          ]
+        }
+      >
+        Children...
+      </Text>
+    </View>
     <View
-      numberOfSpaces={5}
+      gap={4}
       style={
         [
           {
-            "height": 20,
+            "alignItems": "center",
+            "gap": 16,
           },
         ]
       }
-    />
-    <View
-      numberOfSpaces={10}
-      style={
-        [
+    >
+      <View
+        accessibilityLabel="Primary button"
+        accessibilityState={
           {
-            "height": 40,
-          },
-        ]
-      }
-    />
-    <View
-      numberOfSpaces={10}
-      style={
-        [
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
           {
-            "height": 40,
-          },
-        ]
-      }
-    />
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          {
+            "alignItems": "center",
+            "backgroundColor": "#eb0055",
+            "borderRadius": 24,
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "maxWidth": 500,
+            "minHeight": 48,
+            "opacity": 1,
+            "paddingBottom": 2,
+            "paddingLeft": 24,
+            "paddingRight": 24,
+            "paddingTop": 2,
+            "userSelect": "auto",
+            "width": "100%",
+          }
+        }
+        testID="Primary button"
+      >
+        <View
+          style={
+            [
+              {
+                "alignItems": "center",
+                "flexDirection": "row",
+              },
+            ]
+          }
+        >
+          <Text
+            adjustsFontSizeToFit={false}
+            numberOfLines={1}
+            style={
+              [
+                {
+                  "color": "#ffffff",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 16,
+                  "lineHeight": 25.6,
+                  "maxWidth": "100%",
+                },
+              ]
+            }
+          >
+            Primary button
+          </Text>
+        </View>
+      </View>
+      <View
+        accessibilityLabel="Tertiary button"
+        accessibilityState={
+          {
+            "busy": undefined,
+            "checked": undefined,
+            "disabled": undefined,
+            "expanded": undefined,
+            "selected": undefined,
+          }
+        }
+        accessibilityValue={
+          {
+            "max": undefined,
+            "min": undefined,
+            "now": undefined,
+            "text": undefined,
+          }
+        }
+        accessible={true}
+        collapsable={false}
+        focusable={true}
+        onClick={[Function]}
+        onResponderGrant={[Function]}
+        onResponderMove={[Function]}
+        onResponderRelease={[Function]}
+        onResponderTerminate={[Function]}
+        onResponderTerminationRequest={[Function]}
+        onStartShouldSetResponder={[Function]}
+        style={
+          {
+            "alignItems": "center",
+            "backgroundColor": "#ffffff",
+            "borderRadius": 24,
+            "flexDirection": "row",
+            "justifyContent": "center",
+            "maxWidth": 500,
+            "minHeight": 40,
+            "opacity": 1,
+            "paddingBottom": 2,
+            "paddingLeft": 2,
+            "paddingRight": 2,
+            "paddingTop": 2,
+            "userSelect": "auto",
+            "width": "100%",
+          }
+        }
+        testID="Tertiary button"
+      >
+        <View
+          style={
+            [
+              {
+                "alignItems": "center",
+                "flexDirection": "row",
+              },
+            ]
+          }
+        >
+          <Text
+            adjustsFontSizeToFit={false}
+            numberOfLines={1}
+            style={
+              [
+                {
+                  "color": "#161617",
+                  "fontFamily": "Montserrat-Bold",
+                  "fontSize": 16,
+                  "lineHeight": 25.6,
+                  "maxWidth": "100%",
+                },
+              ]
+            }
+          >
+            Tertiary button
+          </Text>
+        </View>
+      </View>
+    </View>
     <View
+      flex={1}
       style={
         [
           {
             "flexBasis": 0,
             "flexGrow": 1,
             "flexShrink": 1,
-          },
-        ]
-      }
-    />
-    <View
-      customHeight={8}
-      enable={true}
-      style={
-        [
-          {
-            "height": 8,
           },
         ]
       }

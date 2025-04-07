@@ -2,8 +2,12 @@ import React from 'react'
 
 import { checkAccessibilityFor, render } from 'tests/utils/web'
 import { BicolorPhonePending } from 'ui/svg/icons/BicolorPhonePending'
+import { Typo } from 'ui/theme'
 
 import { GenericErrorPage } from './GenericErrorPage'
+
+jest.mock('libs/firebase/analytics/analytics')
+jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 // We unmock these modules to make sure they are not used because
 // navigation with @react-navigation is not always defined in GenericErrorPage
@@ -13,18 +17,18 @@ jest.unmock('@react-navigation/bottom-tabs')
 jest.unmock('features/navigation/useGoBack')
 
 describe('<GenericErrorPage />', () => {
-  it('should render correctly', () => {
-    const { container } = render(
-      <GenericErrorPage title="GenericErrorPage" icon={BicolorPhonePending} />
-    )
-
-    expect(container).toMatchSnapshot()
-  })
-
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
       const { container } = render(
-        <GenericErrorPage title="GenericErrorPage" icon={BicolorPhonePending} />
+        <GenericErrorPage
+          helmetTitle="HelmetTitle"
+          illustration={BicolorPhonePending}
+          title="GenericErrorPage"
+          subtitle="Subtitle"
+          buttonPrimary={{ wording: 'Primary button', onPress: jest.fn() }}
+          buttonTertiary={{ wording: 'Tertiary button', onPress: jest.fn() }}>
+          <Typo.Body>Children...</Typo.Body>
+        </GenericErrorPage>
       )
 
       const results = await checkAccessibilityFor(container)

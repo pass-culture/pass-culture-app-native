@@ -1,12 +1,11 @@
 import React from 'react'
 
+import { AsyncErrorBoundary } from 'features/errors/pages/AsyncErrorBoundary'
 import * as useGoBack from 'features/navigation/useGoBack'
 import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import { AsyncError, LogTypeEnum } from 'libs/monitoring/errors'
 import { checkAccessibilityFor, fireEvent, render, screen } from 'tests/utils/web'
-
-import { AsyncErrorBoundary } from './AsyncErrorBoundary'
 
 jest.mock('libs/monitoring/services')
 

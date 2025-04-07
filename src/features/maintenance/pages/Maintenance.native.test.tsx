@@ -4,6 +4,8 @@ import { render, screen } from 'tests/utils'
 
 import { Maintenance } from './Maintenance'
 
+jest.mock('libs/firebase/analytics/analytics')
+
 describe('<Maintenance />', () => {
   it('should match snapshot with default message', async () => {
     await render(<Maintenance />)
