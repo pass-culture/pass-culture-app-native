@@ -3,7 +3,6 @@ import React from 'react'
 
 import { SubcategoriesResponseModelv2 } from 'api/gen'
 import { useHighlightOffer } from 'features/home/api/useHighlightOffer'
-import { useVideoOffers } from 'features/home/api/useVideoOffers'
 import { highlightOfferModuleFixture } from 'features/home/fixtures/highlightOfferModule.fixture'
 import {
   formattedBusinessModule,
@@ -16,6 +15,7 @@ import {
   formattedVenuesModule,
 } from 'features/home/fixtures/homepage.fixture'
 import { videoModuleFixture } from 'features/home/fixtures/videoModule.fixture'
+import { useVideoOffersQuery } from 'features/home/queries/useVideoOffersQuery'
 import { HomepageModule, ModuleData } from 'features/home/types'
 import { SimilarOffersResponse } from 'features/offer/types'
 import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
@@ -62,8 +62,8 @@ jest.mock('features/home/api/useAlgoliaRecommendedOffers', () => ({
   useAlgoliaRecommendedOffers: jest.fn(() => mockedAlgoliaResponse.hits),
 }))
 
-jest.mock('features/home/api/useVideoOffers')
-const mockUseVideoOffers = useVideoOffers as jest.Mock
+jest.mock('features/home/queries/useVideoOffersQuery')
+const mockuseVideoOffersQuery = useVideoOffersQuery as jest.Mock
 
 const offerFixture = [
   {
@@ -176,8 +176,8 @@ describe('<HomeModule />', () => {
   })
 
   it('should display VideoModule', async () => {
-    mockUseVideoOffers.mockReturnValueOnce({ offers: [offerFixture[0]] })
-    mockUseVideoOffers.mockReturnValueOnce({ offers: [offerFixture[1]] })
+    mockuseVideoOffersQuery.mockReturnValueOnce({ offers: [offerFixture[0]] })
+    mockuseVideoOffersQuery.mockReturnValueOnce({ offers: [offerFixture[1]] })
 
     renderHomeModule(videoModuleFixture)
 

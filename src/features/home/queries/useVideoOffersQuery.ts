@@ -18,7 +18,7 @@ const MAX_NUMBER_OF_OFFERS = 20
 const isSearchQueryParameters = (parameter: unknown): parameter is SearchQueryParameters =>
   typeof parameter === 'object' && parameter !== null
 
-export const useVideoOffers = (
+export const useVideoOffersQuery = (
   offersModuleParameters: OffersModuleParameters[],
   id: string,
   offerIds?: string[],
