@@ -31,7 +31,6 @@ export enum SearchView {
   Landing = 'SearchLanding',
   Results = 'SearchResults',
   Thematic = 'ThematicSearch',
-  Filter = 'SearchFilter',
 }
 
 export type OfferGenreType = { key: GenreType } & GenreTypeContentModel

@@ -9,7 +9,6 @@ import { AccessibilityFiltersModal } from 'features/accessibility/components/Acc
 import { useAccessibilityFiltersContext } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { VenueMapLocationModal } from 'features/location/components/VenueMapLocationModal'
-import { getSearchNavConfig } from 'features/navigation/SearchStackNavigator/searchStackHelpers'
 import { PlaylistType } from 'features/offer/enums'
 import { useSearchResults } from 'features/search/api/useSearchResults/useSearchResults'
 import { AutoScrollSwitch } from 'features/search/components/AutoScrollSwitch/AutoScrollSwitch'
@@ -33,7 +32,6 @@ import { DatesHoursModal } from 'features/search/pages/modals/DatesHoursModal/Da
 import { OfferDuoModal } from 'features/search/pages/modals/OfferDuoModal/OfferDuoModal'
 import { PriceModal } from 'features/search/pages/modals/PriceModal/PriceModal'
 import { VenueModal } from 'features/search/pages/modals/VenueModal/VenueModal'
-import { SearchView } from 'features/search/types'
 import { TabLayout } from 'features/venue/components/TabLayout/TabLayout'
 import { GeolocatedVenue } from 'features/venueMap/components/VenueMapView/types'
 import { VenueMapViewContainer } from 'features/venueMap/components/VenueMapView/VenueMapViewContainer'
@@ -450,7 +448,7 @@ export const SearchResultsContent: React.FC = () => {
             <StyledLi>
               <FilterButton
                 activeFilters={activeFiltersCount}
-                navigateTo={getSearchNavConfig(SearchView.Filter)}
+                navigateTo={{ screen: 'SearchFilter' }}
               />
             </StyledLi>
             <StyledLi>

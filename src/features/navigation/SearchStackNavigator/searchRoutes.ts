@@ -41,16 +41,6 @@ const searchRoutes: SearchStackRoute[] = [
     },
     options: { title: 'recherche dans les sous-catégories' },
   },
-  {
-    name: SearchView.Filter,
-    component: ComponentForPathConfig,
-    pathConfig: {
-      path: 'recherche/filtres',
-      parse: screenParamsParser[SearchView.Filter],
-      stringify: screenParamsStringifier[SearchView.Filter],
-    },
-    options: { title: 'Filtres de recherche' },
-  },
 ]
 
 const { screensConfig: searchScreensConfig } = getScreensAndConfig(searchRoutes, SearchStack.Screen)

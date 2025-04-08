@@ -34,12 +34,13 @@ import { subscriptionRoutes } from 'features/navigation/RootNavigator/subscripti
 import { SuspenseAchievements } from 'features/navigation/RootNavigator/SuspenseAchievements'
 import { trustedDeviceRoutes } from 'features/navigation/RootNavigator/trustedDeviceRoutes'
 import { tutorialRoutes } from 'features/navigation/RootNavigator/tutorialRoutes'
-import { screenParamsParser } from 'features/navigation/screenParamsUtils'
+import { screenParamsParser, screenParamsStringifier } from 'features/navigation/screenParamsUtils'
 import { tabNavigatorPathConfig } from 'features/navigation/TabBar/tabBarRoutes'
 import { TabNavigator } from 'features/navigation/TabBar/TabNavigator'
 import { Offer } from 'features/offer/pages/Offer/Offer'
 import { OfferPreview } from 'features/offer/pages/OfferPreview/OfferPreview'
 import { ChangeEmailExpiredLink } from 'features/profile/pages/ChangeEmail/ChangeEmailExpiredLink'
+import { SearchFilter } from 'features/search/pages/SearchFilter/SearchFilter'
 import { OnboardingSubscription } from 'features/subscription/page/OnboardingSubscription'
 import { ProfileTutorialAgeInformation } from 'features/tutorial/pages/profileTutorial/ProfileTutorialAgeInformation'
 import { Venue } from 'features/venue/pages/Venue/Venue'
@@ -237,6 +238,17 @@ export const rootRoutes: RootRoute[] = [
     options: { title: 'Email création de compte expiré' },
   },
   { name: 'TabNavigator', component: TabNavigator, pathConfig: tabNavigatorPathConfig },
+  // SearchFilter could have been in TabNavigator > SearchStackNavigator but we don't want a tabBar on this screen
+  {
+    name: 'SearchFilter',
+    component: SearchFilter,
+    pathConfig: {
+      path: 'recherche/filtres',
+      parse: screenParamsParser['SearchFilter'],
+      stringify: screenParamsStringifier['SearchFilter'],
+    },
+    options: { title: 'Filtres de recherche' },
+  },
   {
     name: 'ProfileStackNavigator',
     component: SuspenseProfileStackNavigator,
