@@ -31,7 +31,14 @@
 - useCookiesChoiceByCategory => ça commence par "use" mais ça n'appelle aucun hook
 - useUserHasBookingsQuery => select
 - src/features/favorites/hooks/useFavorite.ts => select + à déplacer dans les select communs
+- src/features/home/queries/useVideoOffersQuery => extraire query + supprimer
+- src/features/home/queries/useGetOffersDataQuery
 
 ### Devrait utiliser react-query
 
 - getCookiesLastUpdate => useIsCookiesListUpToDate est plus complexe que nécessaire
+
+### Split
+
+- useVideoOffersQuery
+- useGetOffersDataQuery
