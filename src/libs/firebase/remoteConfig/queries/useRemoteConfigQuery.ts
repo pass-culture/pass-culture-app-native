@@ -28,6 +28,7 @@ export function useRemoteConfigQuery() {
     fetchRemoteConfig,
     {
       placeholderData: DEFAULT_REMOTE_CONFIG,
+      staleTime: 1000 * 60 * 5,
     }
   )
   return data
