@@ -5,7 +5,7 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { QueryKeys } from 'libs/queryKeys'
 
-export function useBanner(hasGeolocPosition: boolean) {
+export const useBannerQuery = (hasGeolocPosition: boolean) => {
   const { isLoggedIn } = useAuthContext()
 
   return useQuery(
