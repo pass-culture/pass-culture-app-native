@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { EmailReceived } from 'features/bookings/components/TicketBody/EmailWithdrawal/EmailReceived'
+import { EmailReceived } from 'features/bookings/components/TicketCutout/TicketCutoutBottom/EmailWithdrawal/EmailReceived'
 import { render, screen } from 'tests/utils'
 
 let mockIsMailAppAvailable = true

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { TicketCutout } from 'features/bookings/components/TicketCutout'
+import { TicketCutout } from 'features/bookings/components/TicketCutout/TicketCutout'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { subcategoriesMappingSnap } from 'libs/subcategories/fixtures/mappings'
 import { SubcategoriesMapping } from 'libs/subcategories/types'

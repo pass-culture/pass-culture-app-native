@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { OnSiteWithdrawal } from 'features/bookings/components/TicketBody/OnSiteWithdrawal/OnSiteWithdrawal'
+import { OnSiteWithdrawal } from 'features/bookings/components/TicketCutout/TicketCutoutBottom/OnSiteWithdrawal/OnSiteWithdrawal'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { render, screen } from 'tests/utils'
 

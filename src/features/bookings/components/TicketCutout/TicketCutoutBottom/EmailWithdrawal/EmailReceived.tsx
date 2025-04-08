@@ -3,7 +3,7 @@ import { openInbox } from 'react-native-email-link'
 import styled from 'styled-components/native'
 
 import { useIsMailAppAvailable } from 'features/auth/helpers/useIsMailAppAvailable'
-import { TicketText } from 'features/bookings/components/TicketBody/TicketText'
+import { TicketText } from 'features/bookings/components/TicketCutout/TicketCutoutBottom/TicketText'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { Email } from 'ui/svg/icons/Email'
 import { LINE_BREAK } from 'ui/theme/constants'
