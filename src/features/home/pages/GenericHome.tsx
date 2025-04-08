@@ -124,7 +124,7 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = ({
   videoModuleId,
   statusBar,
 }) => {
-  const { offersModulesData } = useGetOffersData(modules.filter(isOffersModule))
+  const offersModulesData = useGetOffersData(modules.filter(isOffersModule))
   const { venuesModulesData } = useGetVenuesData(modules.filter(isVenuesModule))
   const logHasSeenAllModules = useFunctionOnce(async () =>
     analytics.logAllModulesSeen(modules.length)
