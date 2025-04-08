@@ -2,7 +2,7 @@ import React from 'react'
 import { UseQueryResult } from 'react-query'
 
 import { OfferResponseV2 } from 'api/gen'
-import * as excluOfferAPI from 'features/home/api/useExcluOffer'
+import * as excluOfferAPI from 'features/home/queries/useExcluOfferQuery'
 import { offerResponseSnap as mockOffer } from 'features/offer/fixtures/offerResponse'
 import { render, screen } from 'tests/utils'
 
@@ -12,7 +12,7 @@ jest.mock('features/search/helpers/useMaxPrice/useMaxPrice', () => ({
   useMaxPrice: jest.fn(() => 300_00),
 }))
 
-const excluOfferAPISpy = jest.spyOn(excluOfferAPI, 'useExcluOffer')
+const excluOfferAPISpy = jest.spyOn(excluOfferAPI, 'useExcluOfferQuery')
 excluOfferAPISpy.mockImplementation(() => {
   return {
     isLoading: false,

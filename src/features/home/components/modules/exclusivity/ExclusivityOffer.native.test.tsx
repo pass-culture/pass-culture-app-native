@@ -3,7 +3,7 @@ import { UseQueryResult } from 'react-query'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { OfferResponseV2 } from 'api/gen'
-import * as excluOfferAPI from 'features/home/api/useExcluOffer'
+import * as excluOfferAPI from 'features/home/queries/useExcluOfferQuery'
 import { ExclusivityOffer } from 'features/home/components/modules/exclusivity/ExclusivityOffer'
 import { offerResponseSnap as mockOffer } from 'features/offer/fixtures/offerResponse'
 import { analytics } from 'libs/analytics/provider'
@@ -26,7 +26,7 @@ const props = {
 }
 
 describe('ExclusivityModule component', () => {
-  const excluOfferAPISpy = jest.spyOn(excluOfferAPI, 'useExcluOffer')
+  const excluOfferAPISpy = jest.spyOn(excluOfferAPI, 'useExcluOfferQuery')
 
   beforeEach(() => {
     excluOfferAPISpy.mockImplementation(() => {
