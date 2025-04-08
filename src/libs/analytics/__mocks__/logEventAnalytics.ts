@@ -144,6 +144,7 @@ export const logEventAnalytics: typeof actualLogEventAnalytics = {
   logPhoneValidationCodeClicked: jest.fn(),
   logPinMapPressed: jest.fn(),
   logPlaylistHorizontalScroll: jest.fn(),
+  logPlaylistOfferView: jest.fn(),
   logPlaylistVerticalScroll: jest.fn(),
   logProfilScrolledToBottom: jest.fn(),
   logProfilSignUp: jest.fn(),

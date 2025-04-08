@@ -1,5 +1,6 @@
 import mockdate from 'mockdate'
 import React from 'react'
+import { InViewProps } from 'react-native-intersection-observer'
 
 import { SubcategoriesResponseModelv2 } from 'api/gen'
 import { useHighlightOffer } from 'features/home/api/useHighlightOffer'
@@ -26,7 +27,7 @@ import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategories
 import { offersFixture } from 'shared/offer/offer.fixture'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, render, screen, waitFor } from 'tests/utils'
+import { act, render, screen, userEvent, waitFor } from 'tests/utils'
 
 import { HomeModule } from './HomeModule'
 
@@ -34,6 +35,18 @@ const index = 1
 const homeEntryId = '7tfixfH64pd5TMZeEKfNQ'
 
 const highlightOfferFixture = offersFixture[0]
+
+const mockInView = jest.fn()
+jest.mock('react-native-intersection-observer', () => {
+  const InView = (props: InViewProps) => {
+    mockInView.mockImplementation(props.onChange)
+    return null
+  }
+  return {
+    ...jest.requireActual('react-native-intersection-observer'),
+    InView,
+  }
+})
 
 jest.mock('features/home/api/useHighlightOffer')
 const mockUseHighlightOffer = useHighlightOffer as jest.Mock
@@ -117,9 +130,14 @@ jest.mock('@shopify/flash-list', () => {
   }
 })
 
+const mockModuleViewableItemsChanged = jest.fn()
+
 describe('<HomeModule />', () => {
+  const user = userEvent.setup()
+
   beforeEach(() => {
     setFeatureFlags()
+    mockInView(true)
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
   })
 
@@ -131,6 +149,33 @@ describe('<HomeModule />', () => {
     await act(async () => {
       expect(screen.getByText('L’offre du moment')).toBeOnTheScreen()
     })
+  })
+
+  it('should dispatch viewable items for module', async () => {
+    renderHomeModule(formattedOffersModule, defaultData)
+
+    const allPlaylistElements = await screen.findAllByTestId('offersModuleList')
+    const playlistElement = allPlaylistElements.at(0)
+
+    if (!playlistElement) {
+      throw new Error('Playlist not found')
+    }
+    mockInView(true)
+
+    await user.scrollTo(playlistElement, {
+      layoutMeasurement: { width: 600, height: 300 },
+      contentSize: { width: 1200, height: 300 },
+      x: 0,
+    })
+
+    await waitFor(() =>
+      expect(mockModuleViewableItemsChanged).toHaveBeenCalledWith({
+        changedItemIds: ['102280', '102272', '102249', '102310'],
+        homeEntryId: '7tfixfH64pd5TMZeEKfNQ',
+        index: 1,
+        moduleId: '2DYuR6KoSLElDuiMMjxx8g',
+      })
+    )
   })
 
   it('should not display old ExclusivityOfferModule', async () => {
@@ -222,7 +267,13 @@ describe('<HomeModule />', () => {
 function renderHomeModule(item: HomepageModule, data?: ModuleData) {
   return render(
     reactQueryProviderHOC(
-      <HomeModule item={item} index={index} homeEntryId={homeEntryId} data={data} />
+      <HomeModule
+        item={item}
+        index={index}
+        homeEntryId={homeEntryId}
+        data={data}
+        onModuleViewableItemsChanged={mockModuleViewableItemsChanged}
+      />
     )
   )
 }

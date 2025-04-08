@@ -11,7 +11,7 @@ import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategories
 import * as bookingsAPI from 'queries/bookings/useBookingsQuery'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, render, screen, userEvent } from 'tests/utils'
+import { act, render, screen, userEvent, waitFor } from 'tests/utils'
 
 import { Bookings } from './Bookings'
 
@@ -120,7 +120,7 @@ describe('Bookings', () => {
 
     await user.press(await screen.findByText('En cours'))
 
-    expect(mockMutate).toHaveBeenCalledTimes(1)
+    await waitFor(() => expect(mockMutate).toHaveBeenCalledTimes(1))
   })
 
   it('should update reactions for ended bookings without user reaction', async () => {

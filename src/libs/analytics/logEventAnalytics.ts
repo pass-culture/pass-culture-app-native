@@ -40,6 +40,8 @@ import { ConsultOfferLogParams } from 'libs/analytics/types'
 import { buildAccessibilityFilterParam, buildModuleDisplayedOnHomepage } from 'libs/analytics/utils'
 import { ContentTypes } from 'libs/contentful/types'
 import { AnalyticsEvent } from 'libs/firebase/analytics/events'
+import { LocationMode } from 'libs/location/types'
+import { PageTrackingInfo } from 'store/tracking/types'
 
 type ConsultHomeParams = { homeEntryId: string }
 
@@ -564,6 +566,8 @@ export const logEventAnalytics = {
         playlistType,
       }
     ),
+  logPlaylistOfferView: (params: PageTrackingInfo & { locationType: LocationMode }) =>
+    analytics.logEvent({ firebase: AnalyticsEvent.PLAYLIST_OFFER_VIEW }, params),
   logPlaylistVerticalScroll: (params: {
     offerId: number
     playlistType: PlaylistType
