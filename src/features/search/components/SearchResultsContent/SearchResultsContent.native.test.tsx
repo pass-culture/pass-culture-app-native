@@ -915,7 +915,7 @@ describe('SearchResultsContent component', () => {
       const cta = await screen.findByText('Élargir la zone de recherche')
       await user.press(cta)
 
-      expect(analytics.logExtendSearchRadiusClicked).toHaveBeenCalledWith()
+      expect(analytics.logExtendSearchRadiusClicked).toHaveBeenNthCalledWith(1, searchId)
     })
 
     it('should not log NoSearchResult when there is not search query execution', async () => {
