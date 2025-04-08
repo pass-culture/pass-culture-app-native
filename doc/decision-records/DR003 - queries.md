@@ -31,8 +31,8 @@
 - useCookiesChoiceByCategory => ça commence par "use" mais ça n'appelle aucun hook
 - useUserHasBookingsQuery => select
 - src/features/favorites/hooks/useFavorite.ts => select + à déplacer dans les select communs
-- src/features/home/queries/useVideoOffersQuery => extraire query + supprimer
-- src/features/home/queries/useGetOffersDataQuery
+- src/features/home/queries/useVideoOffersQuery => extraire query + déplacer les logiques dans des selects + tester
+- src/features/home/queries/useGetOffersDataQuery => extraire query + déplacer les logiques dans des selects + tester
 
 ### Devrait utiliser react-query
 
