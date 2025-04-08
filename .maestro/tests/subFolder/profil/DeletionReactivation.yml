@@ -35,6 +35,8 @@ appId: ${MAESTRO_APP_ID}
 - assertVisible: "Suspendre mon compte"
 - assertVisible: "Ne pas sécuriser mon compte"
 - tapOn: "Revenir en arrière"
+- scrollUntilVisible: 
+    element: "Autre"
 
 - tapOn: "Autre"
 - assertVisible: "Contacte le support"
