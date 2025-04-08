@@ -1,12 +1,12 @@
 import React, { useCallback, useMemo } from 'react'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
-import { useSearchResults } from 'features/search/api/useSearchResults/useSearchResults'
 import { FilterRow } from 'features/search/components/FilterRow/FilterRow'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { FilterBehaviour } from 'features/search/enums'
 import { getDescription } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
 import { CategoriesModal } from 'features/search/pages/modals/CategoriesModal/CategoriesModal'
+import { useSearchResultsQuery } from 'features/search/queries/useSearchResultsQuery'
 import { DescriptionContext } from 'features/search/types'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
 import { useModal } from 'ui/components/modals/useModal'
@@ -19,7 +19,7 @@ type Props = {
 export const Category = ({ onClose }: Props) => {
   const { searchState } = useSearch()
   const { data } = useSubcategories()
-  const { facets } = useSearchResults()
+  const { facets } = useSearchResultsQuery()
   const {
     visible: categoriesModalVisible,
     showModal: showCategoriesModal,

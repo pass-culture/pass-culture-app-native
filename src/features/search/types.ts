@@ -10,8 +10,8 @@ import {
   SearchGroupNameEnumv2,
   SubcategoryIdEnumv2,
 } from 'api/gen'
-import { SearchOfferHits } from 'features/search/api/useSearchResults/useSearchResults'
 import { DATE_FILTER_OPTIONS } from 'features/search/enums'
+import { SearchOfferHits } from 'features/search/queries/useSearchResultsQuery'
 import { Venue } from 'features/venue/types'
 import { LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'

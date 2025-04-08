@@ -32,8 +32,8 @@ jest.mock('features/search/context/SearchWrapper', () => ({
 
 jest.mock('features/auth/context/AuthContext')
 
-jest.mock('features/search/api/useSearchResults/useSearchResults', () => ({
-  useSearchResults: () => ({
+jest.mock('features/search/queries/useSearchResultsQuery', () => ({
+  useSearchResultsQuery: () => ({
     data: { pages: [{ nbHits: 0, hits: [], page: 0 }] },
     hits: [],
     nbHits: 0,

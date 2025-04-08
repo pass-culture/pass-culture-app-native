@@ -10,7 +10,6 @@ import {
   SubcategoriesResponseModelv2,
   SubcategoryIdEnumv2,
 } from 'api/gen'
-import { useSearchResults } from 'features/search/api/useSearchResults/useSearchResults'
 import { ALL_CATEGORIES_LABEL } from 'features/search/constants'
 import { CATEGORY_CRITERIA, CategoriesModalView } from 'features/search/enums'
 import {
@@ -22,6 +21,7 @@ import {
   getKeyFromStringLabel,
 } from 'features/search/helpers/categoriesHelpers/mapping-tree'
 import { CategoriesModalFormProps } from 'features/search/pages/modals/CategoriesModal/CategoriesModal'
+import { useSearchResultsQuery } from 'features/search/queries/useSearchResultsQuery'
 import {
   BooksNativeCategoriesEnum,
   DescriptionContext,
@@ -349,7 +349,7 @@ function typedEntries<T extends Record<string, unknown>>(obj: T): Entries<T> {
 
 export const useNativeCategories = (searchGroup?: SearchGroupNameEnumv2) => {
   const { data: subcategories } = useSubcategories()
-  const { facets } = useSearchResults()
+  const { facets } = useSearchResultsQuery()
   if (!searchGroup || !subcategories) return []
 
   const tree = createMappingTree(subcategories, facets)

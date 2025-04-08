@@ -45,8 +45,8 @@ const mockData = { pages: [{ nbHits: 0, hits: [], page: 0 }] }
 const mockHasNextPage = true
 const mockFetchNextPage = jest.fn()
 
-jest.mock('features/search/api/useSearchResults/useSearchResults', () => ({
-  useSearchResults: () => ({
+jest.mock('features/search/queries/useSearchResultsQuery', () => ({
+  useSearchResultsQuery: () => ({
     data: mockData,
     hits: [],
     nbHits: 0,

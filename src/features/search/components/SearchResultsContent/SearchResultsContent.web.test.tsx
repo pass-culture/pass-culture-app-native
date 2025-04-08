@@ -31,8 +31,8 @@ const mockUseSearchResult = jest.fn(() => ({
   refetch: jest.fn(),
   venuesUserData: [{ venue_playlist_title: 'test' }],
 }))
-jest.mock('features/search/api/useSearchResults/useSearchResults', () => ({
-  useSearchResults: () => mockUseSearchResult(),
+jest.mock('features/search/queries/useSearchResultsQuery', () => ({
+  useSearchResultsQuery: () => mockUseSearchResult(),
 }))
 
 const DEFAULT_POSITION = { latitude: 2, longitude: 40 } as GeoCoordinates

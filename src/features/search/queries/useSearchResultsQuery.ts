@@ -147,7 +147,7 @@ export const useSearchInfiniteQuery = (searchState: SearchState) => {
   }
 }
 
-export const useSearchResults = () => {
+export const useSearchResultsQuery = () => {
   const { searchState } = useSearch()
   return useSearchInfiniteQuery(searchState)
 }

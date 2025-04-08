@@ -43,8 +43,8 @@ jest.mock('libs/location/LocationWrapper', () => ({
 }))
 
 const mockData = PLACEHOLDER_DATA
-jest.mock('features/search/api/useSearchResults/useSearchResults', () => ({
-  useSearchResults: () => ({
+jest.mock('features/search/queries/useSearchResultsQuery', () => ({
+  useSearchResultsQuery: () => ({
     data: mockData,
     hits: [],
     nbHits: 0,

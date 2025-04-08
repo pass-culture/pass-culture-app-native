@@ -1,8 +1,8 @@
 import { Hit } from '@algolia/client-search'
 
 import algoliasearch from '__mocks__/algoliasearch'
-import { useSearchInfiniteQuery } from 'features/search/api/useSearchResults/useSearchResults'
 import { initialSearchState } from 'features/search/context/reducer'
+import { useSearchInfiniteQuery } from 'features/search/queries/useSearchResultsQuery'
 import { SearchState } from 'features/search/types'
 import * as useVenueMapStore from 'features/venueMap/store/venueMapStore'
 import { offerAttributesToRetrieve } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/offerAttributesToRetrieve'
@@ -62,7 +62,7 @@ jest.mock('features/search/helpers/useNavigateToSearch/useNavigateToSearch', () 
   }),
 }))
 
-describe('useSearchResults', () => {
+describe('useSearchResultsQuery', () => {
   describe('useSearchInfiniteQuery', () => {
     it('should fetch offers, venues and all facets', async () => {
       renderUseSearchResults()
