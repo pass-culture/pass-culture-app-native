@@ -15,7 +15,7 @@ import { useSearch } from 'features/search/context/SearchWrapper'
 import { FilterBehaviour } from 'features/search/enums'
 import { useNavigateToSearch } from 'features/search/helpers/useNavigateToSearch/useNavigateToSearch'
 import { useSync } from 'features/search/helpers/useSync/useSync'
-import { LocationFilter, SearchView } from 'features/search/types'
+import { LocationFilter } from 'features/search/types'
 import { analytics } from 'libs/analytics/provider'
 import { useFunctionOnce } from 'libs/hooks'
 import { useLocation } from 'libs/location'
@@ -36,7 +36,7 @@ export const SearchFilter: React.FC = () => {
   const { disabilities, setDisabilities } = useAccessibilityFiltersContext()
   const routes = useNavigationState((state) => state?.routes)
   const currentRoute = routes?.[routes?.length - 1]?.name
-  useSync(currentRoute === SearchView.Filter)
+  useSync(currentRoute === 'SearchFilter')
 
   const { searchState, dispatch } = useSearch()
   const { navigateToSearch } = useNavigateToSearch('SearchResults')

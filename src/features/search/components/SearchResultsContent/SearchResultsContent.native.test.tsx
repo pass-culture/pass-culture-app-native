@@ -856,10 +856,7 @@ describe('SearchResultsContent component', () => {
       const cta = await screen.findByText('Modifier mes filtres')
       await user.press(cta)
 
-      expect(navigate).toHaveBeenNthCalledWith(1, 'TabNavigator', {
-        screen: 'SearchStackNavigator',
-        params: { screen: 'SearchFilter', params: newSearchState },
-      })
+      expect(navigate).toHaveBeenNthCalledWith(1, 'SearchFilter', newSearchState)
     })
 
     it('should navigate to SearchResults when location is not EVERYWHERE', async () => {

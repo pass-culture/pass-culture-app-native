@@ -68,12 +68,12 @@ describe('getScreenFromDeeplink()', () => {
     expect(params).toEqual({ screen: 'SearchStackNavigator', params: undefined })
   })
 
-  it('should return SearchStackNavigator when url = /recherche/filter', () => {
-    const url = getFullUrl(getScreenPath(...getSearchStackConfig('SearchFilter')))
+  it('should return SearchFilter when url = /recherche/filter', () => {
+    const url = getFullUrl(getScreenPath('SearchFilter', undefined))
     const { screen, params } = getScreenFromDeeplink(url)
 
-    expect(screen).toEqual('TabNavigator')
-    expect(params).toEqual({ screen: 'SearchStackNavigator', params: undefined })
+    expect(screen).toEqual('SearchFilter')
+    expect(params).toEqual(undefined)
   })
 
   it('should return SearchStackNavigator when url = /recherche/thematic', () => {

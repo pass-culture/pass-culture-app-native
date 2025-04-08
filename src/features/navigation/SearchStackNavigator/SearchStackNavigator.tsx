@@ -2,7 +2,6 @@ import React from 'react'
 
 import { SEARCH_STACK_NAVIGATOR_SCREEN_OPTIONS } from 'features/navigation/SearchStackNavigator/searchStackNavigationOptions'
 import { SearchStack } from 'features/navigation/SearchStackNavigator/Stack'
-import { SearchFilter } from 'features/search/pages/SearchFilter/SearchFilter'
 import { SearchLanding } from 'features/search/pages/SearchLanding/SearchLanding'
 import { SearchResults } from 'features/search/pages/SearchResults/SearchResults'
 import { ThematicSearch } from 'features/search/pages/ThematicSearch/ThematicSearch'
@@ -16,7 +15,6 @@ export const SearchStackNavigator = () => {
       <SearchStack.Screen name={SearchView.Landing} component={SearchLanding} />
       <SearchStack.Screen name={SearchView.Results} component={SearchResults} />
       <SearchStack.Screen name={SearchView.Thematic} component={ThematicSearch} />
-      <SearchStack.Screen name={SearchView.Filter} component={SearchFilter} />
     </SearchStack.Navigator>
   )
 }
