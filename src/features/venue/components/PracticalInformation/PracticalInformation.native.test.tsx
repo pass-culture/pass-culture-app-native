@@ -3,6 +3,7 @@ import React from 'react'
 import { PracticalInformation } from 'features/venue/components/PracticalInformation/PracticalInformation'
 import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils'
 
@@ -35,12 +36,6 @@ describe('PracticalInformation', () => {
     render(reactQueryProviderHOC(<PracticalInformation venue={venueOpenToPublic} />))
 
     expect(await screen.findByText('contact@venue.com')).toBeOnTheScreen()
-  })
-
-  it('should display accessibility block', async () => {
-    render(reactQueryProviderHOC(<PracticalInformation venue={venueOpenToPublic} />))
-
-    expect(await screen.findAllByTestId('accessibilityBadgeContainer')).not.toHaveLength(0)
   })
 
   it('should display placeholder when no practical information provided', async () => {
@@ -114,26 +109,56 @@ describe('PracticalInformation', () => {
     expect(screen.queryByText('Contact')).not.toBeOnTheScreen()
   })
 
-  it('should not display accessibility section when no accessibility info provided', async () => {
-    render(
-      reactQueryProviderHOC(
-        <PracticalInformation
-          venue={{
-            ...venueOpenToPublic,
-            externalAccessibilityUrl: undefined,
-            externalAccessibilityData: undefined,
-            accessibility: {
-              audioDisability: null,
-              mentalDisability: null,
-              motorDisability: null,
-              visualDisability: null,
-            },
-          }}
-        />
-      )
-    )
+  describe('When enableAccesLibre FF deactivated', () => {
+    it('should display basic accessibility block when enableAccesLibre FF deactivated', async () => {
+      render(reactQueryProviderHOC(<PracticalInformation venue={venueOpenToPublic} />))
 
-    expect(screen.queryByText('Accessibilité')).not.toBeOnTheScreen()
+      expect(await screen.findByTestId('BasicAccessibilityInfo')).toBeOnTheScreen()
+    })
+
+    it('should not display basic accessibility section when no accessibility info provided', async () => {
+      render(
+        reactQueryProviderHOC(
+          <PracticalInformation
+            venue={{
+              ...venueOpenToPublic,
+              externalAccessibilityUrl: undefined,
+              externalAccessibilityData: undefined,
+              accessibility: {
+                audioDisability: null,
+                mentalDisability: null,
+                motorDisability: null,
+                visualDisability: null,
+              },
+            }}
+          />
+        )
+      )
+
+      expect(screen.queryByTestId('BasicAccessibilityInfo')).not.toBeOnTheScreen()
+      expect(screen.queryByText('Accessibilité')).not.toBeOnTheScreen()
+    })
+
+    it('should not display AccesLibre banner when url is provided', () => {
+      render(reactQueryProviderHOC(<PracticalInformation venue={venueOpenToPublic} />))
+
+      expect(
+        screen.queryByText(
+          'Tu peux retrouver des informations supplémentaires sur l’accessibilité de ce lieu sur le site d’acceslibre.'
+        )
+      ).not.toBeOnTheScreen()
+    })
+  })
+
+  it('should display AccesLibre banner when url is provided when enableAccesLibre FF activated', () => {
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_ACCES_LIBRE])
+    render(reactQueryProviderHOC(<PracticalInformation venue={venueOpenToPublic} />))
+
+    expect(
+      screen.getByText(
+        'Tu peux retrouver des informations supplémentaires sur l’accessibilité de ce lieu sur le site d’acceslibre.'
+      )
+    ).toBeOnTheScreen()
   })
 
   it('should display opening hours section', async () => {
