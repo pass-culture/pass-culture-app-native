@@ -11,6 +11,9 @@ const noTruthyCheckAfterQueryAllMatchers = require('./eslint-custom-rules/no-tru
 const noUseOfAlgoliaMultipleQueries = require('./eslint-custom-rules/no-use-of-algolia-multiple-queries')
 const todoFormat = require('./eslint-custom-rules/todo-format')
 const useTheRightTestUtils = require('./eslint-custom-rules/use-the-right-test-utils')
+const noQueriesOutsideQueryFiles = require('./eslint-custom-rules/no-queries-outside-query-files.js')
+const queriesOnlyInUseQueryFunctions = require('./eslint-custom-rules/queries-only-in-use-query-functions.js')
+const queriesMustBeInQueriesFolder = require('./eslint-custom-rules/queries-must-be-in-queries-folder.js')
 
 module.exports = {
   'apostrophe-in-text': apostropheInText,
@@ -26,4 +29,7 @@ module.exports = {
   'todo-format': todoFormat,
   'use-ternary-operator-in-jsx': noStringCheckBeforeComponent,
   'use-the-right-test-utils': useTheRightTestUtils,
+  'no-queries-outside-query-files': noQueriesOutsideQueryFiles,
+  'queries-only-in-use-query-functions': queriesOnlyInUseQueryFunctions,
+  'queries-must-be-in-queries-folder': queriesMustBeInQueriesFolder,
 }
