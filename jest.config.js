@@ -26,6 +26,7 @@ module.exports = {
     '^libs(.*)$': '<rootDir>/src/libs$1',
     '^queries(.*)$': '<rootDir>/src/queries$1',
     '^shared(.*)$': '<rootDir>/src/shared$1',
+    '^store(.*)$': '<rootDir>/src/store$1',
     '^tests(.*)$': '<rootDir>/src/tests$1',
     '^theme(.*)$': '<rootDir>/src/theme$1',
     '^types(.*)$': '<rootDir>/src/types$1',
