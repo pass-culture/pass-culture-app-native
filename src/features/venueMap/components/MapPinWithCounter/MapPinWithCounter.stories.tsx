@@ -12,8 +12,7 @@ export default meta
 type Story = StoryObj<typeof MapPinWithCounter>
 
 export const Default: Story = {
+  name: 'MapPinWithCounter',
   render: (props) => <MapPinWithCounter {...props} />,
-  args: {
-    count: 100,
-  },
+  args: { count: 100 },
 }

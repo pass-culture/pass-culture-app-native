@@ -2,10 +2,11 @@
 // eslint-disable-next-line import/no-unresolved
 
 import { NavigationContainer } from '@react-navigation/native'
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta } from '@storybook/react'
 import React from 'react'
 
 import { formattedTrendsModule } from 'features/home/fixtures/homepage.fixture'
+import { Variants, VariantsStory, VariantsTemplate } from 'ui/storybook/VariantsTemplate'
 
 import { TrendsModule } from './TrendsModule'
 
@@ -28,9 +29,16 @@ const meta: Meta<typeof TrendsModule> = {
 
 export default meta
 
-type Story = StoryObj<typeof TrendsModule>
+const variantConfig: Variants<typeof TrendsModule> = [
+  {
+    label: 'TrendsModule with domain credit V3',
+    props: { ...formattedTrendsModule },
+  },
+]
 
-export const Default: Story = {
-  render: (props: React.ComponentProps<typeof TrendsModule>) => <TrendsModule {...props} />,
-  args: formattedTrendsModule,
+export const Template: VariantsStory<typeof TrendsModule> = {
+  name: 'TrendsModule',
+  render: (props) => (
+    <VariantsTemplate variants={variantConfig} Component={TrendsModule} defaultProps={props} />
+  ),
 }

@@ -136,7 +136,10 @@ const HoverAnimation: React.FC<HoverAnimationProps> = ({
   )
 }
 
-export const AllAnimations = Template
+export const AllAnimations = {
+  name: 'Animations',
+  render: Template,
+}
 
 const AnimationContainer = styled.View<{ hasBackground: boolean }>(({ theme, hasBackground }) => ({
   margin: getSpacing(2),

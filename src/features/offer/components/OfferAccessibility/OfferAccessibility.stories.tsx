@@ -13,12 +13,15 @@ const Template = (props: React.ComponentProps<typeof OfferAccessibility>) => (
   <OfferAccessibility {...props} />
 )
 
-export const Default = () =>
-  Template({
-    accessibility: {
-      audioDisability: true,
-      mentalDisability: true,
-      motorDisability: false,
-      visualDisability: true,
-    },
-  })
+export const Default = {
+  name: 'OfferAccessibility',
+  render: () =>
+    Template({
+      accessibility: {
+        audioDisability: true,
+        mentalDisability: true,
+        motorDisability: false,
+        visualDisability: true,
+      },
+    }),
+}
