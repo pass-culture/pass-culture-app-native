@@ -65,7 +65,7 @@ const ClickAwayArea = styled(TouchableOpacity).attrs({ activeOpacity: 1 })(({ th
 }))
 
 const Container = styled.View(({ theme }) => ({
-  backgroundColor: theme.colors.white,
+  backgroundColor: theme.designSystem.color.background.default,
   alignItems: 'center',
   alignSelf: 'center',
   borderRadius: getSpacing(4),
