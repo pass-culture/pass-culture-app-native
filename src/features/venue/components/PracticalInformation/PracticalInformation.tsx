@@ -5,8 +5,6 @@ import { VenueResponse } from 'api/gen'
 import { ContactBlock } from 'features/venue/components/ContactBlock/ContactBlock'
 import { NoInformationPlaceholder } from 'features/venue/components/Placeholders/NoInformationPlaceholder'
 import { isSectionWithBody } from 'features/venue/helpers/isSectionWithBody/isSectionWithBody'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { BasicAccessibilityInfo } from 'ui/components/accessibility/BasicAccessibilityInfo'
 import { DetailedAccessibilityInfo } from 'ui/components/accessibility/DetailedAccessibilityInfo'
 import { Separator } from 'ui/components/Separator'
@@ -14,11 +12,12 @@ import { Typo, getSpacing } from 'ui/theme'
 
 import { OpeningHours } from '../OpeningHours/OpeningHours'
 
-type Props = { venue: VenueResponse }
+type Props = {
+  venue: VenueResponse
+  enableAccesLibre?: boolean
+}
 
-export const PracticalInformation: FunctionComponent<Props> = ({ venue }) => {
-  const enableAccesLibre = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_ACCES_LIBRE)
-
+export const PracticalInformation: FunctionComponent<Props> = ({ venue, enableAccesLibre }) => {
   const {
     withdrawalDetails,
     description,

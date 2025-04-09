@@ -12,10 +12,6 @@ jest.mock('libs/firebase/analytics/analytics')
 const venueOpenToPublic = { ...venueDataTest, isOpenToPublic: true }
 
 describe('PracticalInformation', () => {
-  beforeEach(() => {
-    setFeatureFlags()
-  })
-
   it('should display withdrawal information', async () => {
     render(reactQueryProviderHOC(<PracticalInformation venue={venueOpenToPublic} />))
 
@@ -109,8 +105,8 @@ describe('PracticalInformation', () => {
     expect(screen.queryByText('Contact')).not.toBeOnTheScreen()
   })
 
-  describe('When enableAccesLibre FF deactivated', () => {
-    it('should display basic accessibility block when enableAccesLibre FF deactivated', async () => {
+  describe('Without AccesLibre use', () => {
+    it('should display basic accessibility block', async () => {
       render(reactQueryProviderHOC(<PracticalInformation venue={venueOpenToPublic} />))
 
       expect(await screen.findByTestId('BasicAccessibilityInfo')).toBeOnTheScreen()
@@ -150,9 +146,11 @@ describe('PracticalInformation', () => {
     })
   })
 
-  it('should display AccesLibre banner when url is provided when enableAccesLibre FF activated', () => {
+  it('should display AccesLibre banner when url is provided and AccesLibre used', () => {
     setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_ACCES_LIBRE])
-    render(reactQueryProviderHOC(<PracticalInformation venue={venueOpenToPublic} />))
+    render(
+      reactQueryProviderHOC(<PracticalInformation venue={venueOpenToPublic} enableAccesLibre />)
+    )
 
     expect(
       screen.getByText(
