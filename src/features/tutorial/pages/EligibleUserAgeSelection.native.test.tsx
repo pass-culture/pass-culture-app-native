@@ -45,18 +45,6 @@ describe('EligibleUserAgeSelection', () => {
         expect(screen).toMatchSnapshot()
       })
 
-      it.each(AGES)(
-        'should navigate to OnboardingAgeInformation page with params age=%s when pressing "j’ai %s ans"',
-        async (age) => {
-          renderEligibleUserAgeSelection({ type: TutorialTypes.ONBOARDING })
-
-          const button = screen.getByText(`${age} ans`)
-          await user.press(button)
-
-          expect(navigate).toHaveBeenCalledWith('OnboardingAgeInformation', { age })
-        }
-      )
-
       it('should navigate to AgeSelectionOther page when pressing "Autre"', async () => {
         useRoute.mockReturnValueOnce({ params: { type: TutorialTypes.ONBOARDING } })
         renderEligibleUserAgeSelection({ type: TutorialTypes.ONBOARDING })
@@ -107,43 +95,6 @@ describe('EligibleUserAgeSelection', () => {
           const userAge = await storage.readObject('user_age')
 
           expect(userAge).toBe(age)
-        }
-      )
-    })
-
-    describe('profileTutorial', () => {
-      it('should render correctly', () => {
-        renderEligibleUserAgeSelection({ type: TutorialTypes.PROFILE_TUTORIAL })
-
-        expect(screen).toMatchSnapshot()
-      })
-
-      it.each(AGES)(
-        'should navigate to ProfileTutorialAgeInformation page with params age=%s when pressing "à %s ans"',
-        async (age) => {
-          renderEligibleUserAgeSelection({ type: TutorialTypes.PROFILE_TUTORIAL })
-
-          const button = screen.getByText(`à ${age} ans`)
-          await user.press(button)
-
-          expect(navigate).toHaveBeenCalledWith('ProfileTutorialAgeInformation', {
-            age,
-          })
-        }
-      )
-
-      it.each(AGES)(
-        'should log analytics with params age=%s when pressing "j’ai %s ans"',
-        async (age) => {
-          renderEligibleUserAgeSelection({ type: TutorialTypes.PROFILE_TUTORIAL })
-
-          const button = screen.getByText(`${age} ans`)
-          await user.press(button)
-
-          expect(analytics.logSelectAge).toHaveBeenCalledWith({
-            age: age,
-            from: TutorialTypes.PROFILE_TUTORIAL,
-          })
         }
       )
     })

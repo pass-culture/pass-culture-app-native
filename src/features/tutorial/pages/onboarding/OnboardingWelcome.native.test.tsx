@@ -1,7 +1,6 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { setSettings } from 'features/auth/tests/setSettings'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { OnboardingWelcome } from 'features/tutorial/pages/onboarding/OnboardingWelcome'
 import { analytics } from 'libs/analytics/provider'
@@ -22,15 +21,6 @@ describe('OnboardingWelcome', () => {
     render(<OnboardingWelcome />)
 
     expect(screen).toMatchSnapshot()
-  })
-
-  it('should display subtitle with credit V2', () => {
-    render(<OnboardingWelcome />)
-
-    const subtitle =
-      'Plus de 3 millions d’offres culturelles et un crédit à dépenser sur l’application si tu as entre 15 et 18 ans.'
-
-    expect(screen.getByText(subtitle)).toBeOnTheScreen()
   })
 
   it('should redirect to OnboardingGeolocation when "C’est parti !" is clicked', async () => {
@@ -85,20 +75,5 @@ describe('OnboardingWelcome', () => {
     await user.press(loginButton)
 
     expect(analytics.logOnboardingStarted).toHaveBeenCalledWith({ type: 'login' })
-  })
-
-  describe('when enableCreditV3 activated', () => {
-    beforeEach(() => {
-      setSettings({ wipEnableCreditV3: true })
-    })
-
-    it('should display subtitle with credit V3', () => {
-      render(<OnboardingWelcome />)
-
-      const subtitle =
-        'Plus de 3 millions d’offres culturelles et un crédit à dépenser sur l’application si tu as 17 ou 18 ans.'
-
-      expect(screen.getByText(subtitle)).toBeOnTheScreen()
-    })
   })
 })

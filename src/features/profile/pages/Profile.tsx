@@ -5,7 +5,6 @@ import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { useLogoutRoutine } from 'features/auth/helpers/useLogoutRoutine'
 import { useFavoritesState } from 'features/favorites/context/FavoritesWrapper'
 import { getProfileNavConfig } from 'features/navigation/ProfileStackNavigator/getProfileNavConfig'
@@ -14,7 +13,6 @@ import { SectionWithSwitch } from 'features/profile/components/SectionWithSwitch
 import { SocialNetwork } from 'features/profile/components/SocialNetwork/SocialNetwork'
 import { SHARE_APP_BANNER_IMAGE_SOURCE } from 'features/share/components/shareAppBannerImage'
 import { shareApp } from 'features/share/helpers/shareApp'
-import { TutorialTypes } from 'features/tutorial/enums'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { isCloseToBottom } from 'libs/analytics'
 import { analytics } from 'libs/analytics/provider'
@@ -34,7 +32,6 @@ import { BannerWithBackground } from 'ui/components/ModuleBanner/BannerWithBackg
 import { Section } from 'ui/components/Section'
 import { SectionRow } from 'ui/components/SectionRow'
 import { StatusBarBlurredBackground } from 'ui/components/statusBar/statusBarBlurredBackground'
-import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 import { VerticalUl } from 'ui/components/Ul'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { useDebounce } from 'ui/hooks/useDebounce'
@@ -65,8 +62,6 @@ const OnlineProfile: React.FC = () => {
 
   const { dispatch: favoritesDispatch } = useFavoritesState()
   const { isLoggedIn, user } = useAuthContext()
-  const { data: settings } = useSettingsContext()
-  const enableCreditV3 = settings?.wipEnableCreditV3
   const signOut = useLogoutRoutine()
   const version = useVersion()
   const scrollViewRef = useRef<ScrollView | null>(null)
@@ -84,22 +79,15 @@ const OnlineProfile: React.FC = () => {
   )
 
   const isCreditEmpty = user?.domainsCredit?.all.remaining === 0
+
   const isDepositExpired = user?.depositExpirationDate
     ? new Date(user?.depositExpirationDate) < new Date()
     : false
+
   const isExpiredOrCreditEmptyWithNoUpcomingCredit =
     userAge && userAge >= 18 && (isDepositExpired || isCreditEmpty)
 
   const shouldDisplayTutorial = !user?.isBeneficiary || isExpiredOrCreditEmptyWithNoUpcomingCredit
-
-  const navigateTo15to18: InternalNavigationProps['navigateTo'] = enableCreditV3
-    ? { screen: 'ProfileTutorialAgeInformationCreditV3' }
-    : { screen: 'ProfileTutorialAgeInformation', params: { age: userAge } }
-  const navigateToUnder15AndAbove18: InternalNavigationProps['navigateTo'] = enableCreditV3
-    ? { screen: 'ProfileTutorialAgeInformationCreditV3' }
-    : { screen: 'EligibleUserAgeSelection', params: { type: TutorialTypes.PROFILE_TUTORIAL } }
-  const tutorialNavigateTo =
-    userAge && userAge < 19 && userAge > 14 ? navigateTo15to18 : navigateToUnder15AndAbove18
 
   useFocusEffect(
     useCallback(() => {
@@ -225,7 +213,7 @@ const OnlineProfile: React.FC = () => {
                       <Row
                         title="Comment ça marche&nbsp;?"
                         type="navigable"
-                        navigateTo={tutorialNavigateTo}
+                        navigateTo={{ screen: 'ProfileTutorialAgeInformationCreditV3' }}
                         onPress={() =>
                           analytics.logConsultTutorial({ age: userAge, from: 'ProfileHelp' })
                         }

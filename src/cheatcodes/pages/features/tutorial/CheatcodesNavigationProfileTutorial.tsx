@@ -19,26 +19,6 @@ export function CheatcodesNavigationProfileTutorial(): React.JSX.Element {
         screen="AgeSelectionOther"
         navigationParams={{ type: TutorialTypes.PROFILE_TUTORIAL }}
       />
-      <LinkToScreen
-        screen="ProfileTutorialAgeInformation"
-        title="Page 15 ans"
-        navigationParams={{ age: 15 }}
-      />
-      <LinkToScreen
-        screen="ProfileTutorialAgeInformation"
-        title="Page 16 ans"
-        navigationParams={{ age: 16 }}
-      />
-      <LinkToScreen
-        screen="ProfileTutorialAgeInformation"
-        title="Page 17 ans"
-        navigationParams={{ age: 17 }}
-      />
-      <LinkToScreen
-        screen="ProfileTutorialAgeInformation"
-        title="Page 18 ans"
-        navigationParams={{ age: 18 }}
-      />
       <LinkToScreen screen="ProfileTutorialAgeInformationCreditV3" title="Page 17-18 ans (V3)" />
     </CheatcodesTemplateScreen>
   )

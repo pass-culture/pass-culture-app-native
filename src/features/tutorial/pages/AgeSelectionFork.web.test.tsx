@@ -2,7 +2,6 @@ import { StackScreenProps } from '@react-navigation/stack'
 import React from 'react'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
-import { setSettings } from 'features/auth/tests/setSettings'
 import { TutorialRootStackParamList } from 'features/navigation/RootNavigator/types'
 import { TutorialTypes } from 'features/tutorial/enums'
 import { AgeSelectionFork } from 'features/tutorial/pages/AgeSelectionFork'
@@ -24,20 +23,6 @@ describe('AgeSelectionFork', () => {
     const results = await checkAccessibilityFor(container)
 
     expect(results).toHaveNoViolations()
-  })
-
-  describe('when enableCreditV3 activated', () => {
-    beforeEach(() => {
-      setSettings({ wipEnableCreditV3: true })
-    })
-
-    it('should not have basic accessibility', async () => {
-      const { container } = renderAgeSelectionFork({ type: TutorialTypes.ONBOARDING })
-
-      const results = await checkAccessibilityFor(container)
-
-      expect(results).toHaveNoViolations()
-    })
   })
 })
 

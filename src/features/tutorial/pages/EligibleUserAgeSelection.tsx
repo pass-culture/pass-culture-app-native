@@ -26,8 +26,8 @@ const ageButtons: { age?: EligibleAges }[] = [
   { age: undefined },
 ]
 
-const onBeforeNavigate = async (type: TutorialTypes, age?: EligibleAges) => {
-  analytics.logSelectAge({ age: age ?? NonEligible.OTHER, from: type })
+const onBeforeNavigate = async (age?: EligibleAges) => {
+  analytics.logSelectAge({ age: age ?? NonEligible.OTHER, from: TutorialTypes.ONBOARDING })
   age && (await storage.saveObject('user_age', age))
 }
 
@@ -37,23 +37,16 @@ export const EligibleUserAgeSelection: FunctionComponent<Props> = ({ route }: Pr
   const type = route.params.type
 
   const EligibleUserAgeSelectionButtons = ageButtons.map(({ age }) => {
-    const isOnboarding = type === TutorialTypes.ONBOARDING
-    const startButtonTitle = isOnboarding ? 'J’ai' : 'à'
-    const AgeInformationScreen = isOnboarding
-      ? 'OnboardingAgeInformation'
-      : 'ProfileTutorialAgeInformation'
-
     if (age) {
       return (
         <AgeButton
           key={age}
           Icon={isPassForAllEnabled ? undefined : <BicolorAll />}
-          onBeforeNavigate={async () => onBeforeNavigate(type, age)}
-          navigateTo={{ screen: AgeInformationScreen, params: { age } }}
-          accessibilityLabel={`${startButtonTitle} ${age} ans`}>
+          onBeforeNavigate={async () => onBeforeNavigate(age)}
+          navigateTo={{ screen: 'OnboardingAgeInformation' }}
+          accessibilityLabel={`J’ai ${age} ans`}>
           <StyledBody>
-            {startButtonTitle}
-            <StyledTitle4> {age} ans</StyledTitle4>
+            J’ai<StyledTitle4> {age} ans</StyledTitle4>
           </StyledBody>
         </AgeButton>
       )
@@ -66,14 +59,14 @@ export const EligibleUserAgeSelection: FunctionComponent<Props> = ({ route }: Pr
       <AgeButton
         key="other"
         dense
-        onBeforeNavigate={async () => onBeforeNavigate(type)}
+        onBeforeNavigate={async () => onBeforeNavigate()}
         navigateTo={{ screen: 'AgeSelectionOther', params: { type } }}
-        accessibilityLabel={`${startButtonTitle} moins de 15 ans ou plus de 18 ans`}>
+        accessibilityLabel="J’ai moins de 15 ans ou plus de 18 ans">
         <StyledTitle4>Autre</StyledTitle4>
         <React.Fragment>
           <Spacer.Column numberOfSpaces={1} />
           <StyledBodyAccentXs numberOfLines={2}>
-            {startButtonTitle} moins de 15 ans ou plus de 18 ans
+            J’ai moins de 15 ans ou plus de 18 ans
           </StyledBodyAccentXs>
         </React.Fragment>
       </AgeButton>

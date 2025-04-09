@@ -2,7 +2,6 @@ import { StackScreenProps } from '@react-navigation/stack'
 import React from 'react'
 
 import { reset } from '__mocks__/@react-navigation/native'
-import { setSettings } from 'features/auth/tests/setSettings'
 import { TutorialRootStackParamList } from 'features/navigation/RootNavigator/types'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import * as useGoBack from 'features/navigation/useGoBack'
@@ -42,188 +41,95 @@ jest.useFakeTimers()
 describe('AgeSelectionOther', () => {
   beforeEach(async () => {
     setFeatureFlags()
-    setSettings({ wipEnableCreditV3: true })
     await storage.clear('user_age')
   })
 
-  describe('onboarding', () => {
-    it('should render correctly', () => {
-      renderAgeSelectionOther({ type: TutorialTypes.ONBOARDING })
+  it('should render correctly', () => {
+    renderAgeSelectionOther({ type: TutorialTypes.ONBOARDING })
 
-      expect(screen).toMatchSnapshot()
-    })
+    expect(screen).toMatchSnapshot()
+  })
 
-    it('should show modal when pressing "j’ai moins de 15 ans"', async () => {
-      renderAgeSelectionOther({ type: TutorialTypes.ONBOARDING })
+  it('should show modal when pressing "j’ai moins de 15 ans"', async () => {
+    renderAgeSelectionOther({ type: TutorialTypes.ONBOARDING })
 
-      const button = screen.getByText('moins de 15 ans')
-      await user.press(button)
+    const button = screen.getByText('moins de 15 ans')
+    await user.press(button)
 
-      expect(mockShowModal).toHaveBeenCalledTimes(1)
-    })
+    expect(mockShowModal).toHaveBeenCalledTimes(1)
+  })
 
-    it('should show modal when pressing "j’ai plus de 18 ans"', async () => {
-      renderAgeSelectionOther({ type: TutorialTypes.ONBOARDING })
+  it('should show modal when pressing "j’ai plus de 18 ans"', async () => {
+    renderAgeSelectionOther({ type: TutorialTypes.ONBOARDING })
 
-      const button = screen.getByText('plus de 18 ans')
-      await user.press(button)
+    const button = screen.getByText('plus de 18 ans')
+    await user.press(button)
 
-      expect(mockShowModal).toHaveBeenCalledTimes(1)
-    })
+    expect(mockShowModal).toHaveBeenCalledTimes(1)
+  })
 
-    it('should navigate to home when pressing "j’ai moins de 15 ans"', async () => {
-      renderAgeSelectionOther({ type: TutorialTypes.ONBOARDING })
+  it('should navigate to home when pressing "j’ai moins de 15 ans"', async () => {
+    renderAgeSelectionOther({ type: TutorialTypes.ONBOARDING })
 
-      const button = screen.getByText('moins de 15 ans')
-      await user.press(button)
+    const button = screen.getByText('moins de 15 ans')
+    await user.press(button)
 
-      expect(reset).toHaveBeenCalledWith({ index: 0, routes: [{ name: homeNavConfig[0] }] })
-    })
+    expect(reset).toHaveBeenCalledWith({ index: 0, routes: [{ name: homeNavConfig[0] }] })
+  })
 
-    it('should navigate to home when pressing "j’ai plus de 18 ans"', async () => {
-      renderAgeSelectionOther({ type: TutorialTypes.ONBOARDING })
+  it('should navigate to home when pressing "j’ai plus de 18 ans"', async () => {
+    renderAgeSelectionOther({ type: TutorialTypes.ONBOARDING })
 
-      const button = screen.getByText('plus de 18 ans')
-      await user.press(button)
+    const button = screen.getByText('plus de 18 ans')
+    await user.press(button)
 
-      expect(reset).toHaveBeenCalledWith({ index: 0, routes: [{ name: homeNavConfig[0] }] })
-    })
+    expect(reset).toHaveBeenCalledWith({ index: 0, routes: [{ name: homeNavConfig[0] }] })
+  })
 
-    it('should log analytics when pressing "j’ai moins de 15 ans"', async () => {
-      renderAgeSelectionOther({ type: TutorialTypes.ONBOARDING })
+  it('should log analytics when pressing "j’ai moins de 15 ans"', async () => {
+    renderAgeSelectionOther({ type: TutorialTypes.ONBOARDING })
 
-      const button = screen.getByText('moins de 15 ans')
-      await user.press(button)
+    const button = screen.getByText('moins de 15 ans')
+    await user.press(button)
 
-      expect(analytics.logSelectAge).toHaveBeenCalledWith({
-        age: NonEligible.UNDER_15,
-        from: TutorialTypes.ONBOARDING,
-      })
-    })
-
-    it('should log analytics when pressing "j’ai plus de 18 ans"', async () => {
-      renderAgeSelectionOther({ type: TutorialTypes.ONBOARDING })
-
-      const button = screen.getByText('plus de 18 ans')
-      await user.press(button)
-
-      expect(analytics.logSelectAge).toHaveBeenCalledWith({
-        age: NonEligible.OVER_18,
-        from: TutorialTypes.ONBOARDING,
-      })
-    })
-
-    it('should save user age to local storage "j’ai moins de 15 ans"', async () => {
-      renderAgeSelectionOther({ type: TutorialTypes.ONBOARDING })
-
-      const button = screen.getByText('moins de 15 ans')
-      await user.press(button)
-
-      const userAge = await storage.readObject('user_age')
-
-      expect(userAge).toBe(NonEligible.UNDER_15)
-    })
-
-    it('should save user age to local storage when pressing "j’ai plus de 18 ans"', async () => {
-      renderAgeSelectionOther({ type: TutorialTypes.ONBOARDING })
-
-      const button = screen.getByText('plus de 18 ans')
-      await user.press(button)
-
-      const userAge = await storage.readObject('user_age')
-
-      expect(userAge).toBe(NonEligible.OVER_18)
+    expect(analytics.logSelectAge).toHaveBeenCalledWith({
+      age: NonEligible.UNDER_15,
+      from: TutorialTypes.ONBOARDING,
     })
   })
 
-  describe('profileTutorial', () => {
-    it('should render correctly', () => {
-      renderAgeSelectionOther({ type: TutorialTypes.PROFILE_TUTORIAL })
+  it('should log analytics when pressing "j’ai plus de 18 ans"', async () => {
+    renderAgeSelectionOther({ type: TutorialTypes.ONBOARDING })
 
-      expect(screen).toMatchSnapshot()
+    const button = screen.getByText('plus de 18 ans')
+    await user.press(button)
+
+    expect(analytics.logSelectAge).toHaveBeenCalledWith({
+      age: NonEligible.OVER_18,
+      from: TutorialTypes.ONBOARDING,
     })
+  })
 
-    it('should show modal when pressing "j’ai moins de 15 ans"', async () => {
-      renderAgeSelectionOther({ type: TutorialTypes.PROFILE_TUTORIAL })
-      const button = screen.getByText('moins de 15 ans')
+  it('should save user age to local storage "j’ai moins de 15 ans"', async () => {
+    renderAgeSelectionOther({ type: TutorialTypes.ONBOARDING })
 
-      await user.press(button)
+    const button = screen.getByText('moins de 15 ans')
+    await user.press(button)
 
-      expect(mockShowModal).toHaveBeenCalledTimes(1)
-    })
+    const userAge = await storage.readObject('user_age')
 
-    it('should show modal when pressing "j’ai plus de 18 ans"', async () => {
-      renderAgeSelectionOther({ type: TutorialTypes.PROFILE_TUTORIAL })
+    expect(userAge).toBe(NonEligible.UNDER_15)
+  })
 
-      const button = screen.getByText('plus de 18 ans')
-      await user.press(button)
+  it('should save user age to local storage when pressing "j’ai plus de 18 ans"', async () => {
+    renderAgeSelectionOther({ type: TutorialTypes.ONBOARDING })
 
-      expect(mockShowModal).toHaveBeenCalledTimes(1)
-    })
+    const button = screen.getByText('plus de 18 ans')
+    await user.press(button)
 
-    it('should not navigate to home when pressing "j’ai moins de 15 ans"', async () => {
-      renderAgeSelectionOther({ type: TutorialTypes.PROFILE_TUTORIAL })
+    const userAge = await storage.readObject('user_age')
 
-      const button = screen.getByText('moins de 15 ans')
-      await user.press(button)
-
-      expect(reset).not.toHaveBeenCalled()
-    })
-
-    it('should not navigate to home when pressing "j’ai plus de 18 ans"', async () => {
-      renderAgeSelectionOther({ type: TutorialTypes.PROFILE_TUTORIAL })
-
-      const button = screen.getByText('plus de 18 ans')
-      await user.press(button)
-
-      expect(reset).not.toHaveBeenCalled()
-    })
-
-    it('should log analytics when pressing "j’ai moins de 15 ans"', async () => {
-      renderAgeSelectionOther({ type: TutorialTypes.PROFILE_TUTORIAL })
-
-      const button = screen.getByText('moins de 15 ans')
-      await user.press(button)
-
-      expect(analytics.logSelectAge).toHaveBeenCalledWith({
-        age: NonEligible.UNDER_15,
-        from: TutorialTypes.PROFILE_TUTORIAL,
-      })
-    })
-
-    it('should log analytics when pressing "j’ai plus de 18 ans"', async () => {
-      renderAgeSelectionOther({ type: TutorialTypes.PROFILE_TUTORIAL })
-
-      const button = screen.getByText('plus de 18 ans')
-      await user.press(button)
-
-      expect(analytics.logSelectAge).toHaveBeenCalledWith({
-        age: NonEligible.OVER_18,
-        from: TutorialTypes.PROFILE_TUTORIAL,
-      })
-    })
-
-    it('should not save user age to local storage "j’ai moins de 15 ans"', async () => {
-      renderAgeSelectionOther({ type: TutorialTypes.PROFILE_TUTORIAL })
-
-      const button = screen.getByText('moins de 15 ans')
-      await user.press(button)
-
-      const userAge = await storage.readObject('user_age')
-
-      expect(userAge).toBeNull()
-    })
-
-    it('should not save user age to local storage when pressing "j’ai plus de 18 ans"', async () => {
-      renderAgeSelectionOther({ type: TutorialTypes.PROFILE_TUTORIAL })
-
-      const button = screen.getByText('plus de 18 ans')
-      await user.press(button)
-
-      const userAge = await storage.readObject('user_age')
-
-      expect(userAge).toBeNull()
-    })
+    expect(userAge).toBe(NonEligible.OVER_18)
   })
 })
 

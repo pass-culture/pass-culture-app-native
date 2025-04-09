@@ -96,7 +96,6 @@ export type TutorialRootStackParamList = {
   OnboardingGeolocation: undefined
   OnboardingNotEligible: undefined
   OnboardingWelcome: undefined
-  ProfileTutorialAgeInformation: { age: 15 | 16 | 17 | 18 }
   ProfileTutorialAgeInformationCreditV3: undefined
 }
 

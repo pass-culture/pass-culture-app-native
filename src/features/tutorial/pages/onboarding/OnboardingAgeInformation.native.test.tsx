@@ -2,7 +2,6 @@ import { StackScreenProps } from '@react-navigation/stack'
 import React from 'react'
 
 import { navigate, reset } from '__mocks__/@react-navigation/native'
-import { setSettings } from 'features/auth/tests/setSettings'
 import { StepperOrigin, TutorialRootStackParamList } from 'features/navigation/RootNavigator/types'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import * as useGoBack from 'features/navigation/useGoBack'
@@ -19,7 +18,7 @@ jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
   canGoBack: jest.fn(() => true),
 })
 
-const AGES = [15, 16, 17, 18]
+const AGES = [17, 18]
 
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   return function createAnimatedComponent(Component: unknown) {
@@ -52,7 +51,7 @@ describe('OnboardingAgeInformation', () => {
     renderOnboardingAgeInformation({ age })
     const goneTags = screen.queryAllByText(CreditStatus.GONE)
 
-    expect(goneTags).toHaveLength(age - 15)
+    expect(goneTags).toHaveLength(age - 17)
   })
 
   it.each(AGES)('should display correct amount of coming credit blocks for %s-year-old', (age) => {
@@ -125,18 +124,6 @@ describe('OnboardingAgeInformation', () => {
 
     expect(analytics.logOnboardingAgeInformationClicked).toHaveBeenNthCalledWith(1, {
       type: 'account_creation_skipped',
-    })
-  })
-
-  describe('when enableCreditV3 activated', () => {
-    beforeEach(() => {
-      setSettings({ wipEnableCreditV3: true })
-    })
-
-    it.each(AGES)('should render correctly for %s-year-old', (age) => {
-      renderOnboardingAgeInformation({ age })
-
-      expect(screen).toMatchSnapshot()
     })
   })
 })

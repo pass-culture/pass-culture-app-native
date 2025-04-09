@@ -2,8 +2,6 @@ import { StackScreenProps } from '@react-navigation/stack'
 import React from 'react'
 
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
-import { setSettings } from 'features/auth/tests/setSettings'
-import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { TutorialRootStackParamList } from 'features/navigation/RootNavigator/types'
 import { TutorialTypes, NonEligible } from 'features/tutorial/enums'
 import { AgeSelectionFork } from 'features/tutorial/pages/AgeSelectionFork'
@@ -35,173 +33,65 @@ describe('AgeSelectionFork', () => {
       useRoute.mockReturnValueOnce({ params: { type: TutorialTypes.ONBOARDING } })
     })
 
-    it('should navigate to Home page when pressing "J’ai 14 ans ou moins"', async () => {
+    it('should render correctly', () => {
       renderAgeSelectionFork({ type: TutorialTypes.ONBOARDING })
 
-      const button = screen.getByLabelText('J’ai 14 ans ou moins')
+      expect(screen).toMatchSnapshot()
+    })
+
+    it('should navigate to OnboardingNotEligible page when pressing "J’ai 16 ans ou moins"', async () => {
+      renderAgeSelectionFork({ type: TutorialTypes.ONBOARDING })
+
+      const button = screen.getByLabelText('J’ai 16 ans ou moins')
       await user.press(button)
 
-      expect(navigate).toHaveBeenCalledWith(navigateToHomeConfig.screen, {
+      expect(navigate).toHaveBeenCalledWith('OnboardingNotEligible', {
         type: TutorialTypes.ONBOARDING,
-        screen: 'Home',
       })
     })
 
-    it('should save user age to local storage when pressing "J’ai 14 ans ou moins"', async () => {
+    it('should save user age to local storage when pressing "J’ai 16 ans ou moins"', async () => {
       renderAgeSelectionFork({ type: TutorialTypes.ONBOARDING })
 
-      const button = screen.getByLabelText('J’ai 14 ans ou moins')
+      const button = screen.getByLabelText('J’ai 16 ans ou moins')
       await user.press(button)
 
       const userAge = await storage.readObject('user_age')
 
-      expect(userAge).toBe(NonEligible.UNDER_15)
+      expect(userAge).toBe(NonEligible.UNDER_17)
     })
 
-    it('should navigate to EligibleUserAgeSelection page when pressing "J’ai entre 15 et 18 ans"', async () => {
+    it('should navigate to OnboardingAgeInformation page when pressing "J’ai 17 ans"', async () => {
       renderAgeSelectionFork({ type: TutorialTypes.ONBOARDING })
 
-      const button = screen.getByLabelText('J’ai entre 15 et 18 ans')
+      const button = screen.getByLabelText('J’ai 17 ans')
       await user.press(button)
 
-      expect(navigate).toHaveBeenCalledWith('EligibleUserAgeSelection', {
+      expect(navigate).toHaveBeenCalledWith('OnboardingAgeInformation', {
+        age: 17,
         type: TutorialTypes.ONBOARDING,
       })
     })
 
-    it('should navigate to OnboardingGeneralPublicWelcome page when pressing "J’ai 19 ans ou plus"', async () => {
+    it('should navigate to OnboardingAgeInformation page when pressing "J’ai 18 ans"', async () => {
       renderAgeSelectionFork({ type: TutorialTypes.ONBOARDING })
 
-      const button = screen.getByLabelText('J’ai 19 ans ou plus')
+      const button = screen.getByLabelText('J’ai 18 ans')
       await user.press(button)
 
-      expect(navigate).toHaveBeenCalledWith('OnboardingGeneralPublicWelcome', {
+      expect(navigate).toHaveBeenCalledWith('OnboardingAgeInformation', {
+        age: 18,
         type: TutorialTypes.ONBOARDING,
       })
     })
 
-    it('should save user age to local storage when pressing "J’ai 19 ans ou plus"', async () => {
+    it('should call logSelectAge', async () => {
       renderAgeSelectionFork({ type: TutorialTypes.ONBOARDING })
 
       const button = screen.getByLabelText('J’ai 19 ans ou plus')
       await user.press(button)
 
-      const userAge = await storage.readObject('user_age')
-
-      expect(userAge).toBe(NonEligible.OVER_18)
-    })
-  })
-
-  describe('profileTutorial', () => {
-    beforeEach(() => {
-      useRoute.mockReturnValueOnce({ params: { type: TutorialTypes.PROFILE_TUTORIAL } })
-    })
-
-    it('should navigate to Home page when pressing "J’ai 14 ans ou moins"', async () => {
-      renderAgeSelectionFork({ type: TutorialTypes.PROFILE_TUTORIAL })
-
-      const button = screen.getByLabelText('J’ai 14 ans ou moins')
-      await user.press(button)
-
-      expect(navigate).toHaveBeenCalledWith(navigateToHomeConfig.screen, {
-        type: TutorialTypes.PROFILE_TUTORIAL,
-        screen: 'Home',
-      })
-    })
-
-    it('should navigate to EligibleUserAgeSelection page when pressing "J’ai entre 15 et 18 ans"', async () => {
-      renderAgeSelectionFork({ type: TutorialTypes.PROFILE_TUTORIAL })
-
-      const button = screen.getByLabelText('J’ai entre 15 et 18 ans')
-      await user.press(button)
-
-      expect(navigate).toHaveBeenCalledWith('EligibleUserAgeSelection', {
-        type: TutorialTypes.PROFILE_TUTORIAL,
-      })
-    })
-
-    it('should navigate to OnboardingGeneralPublicWelcome page when pressing "J’ai 19 ans ou plus"', async () => {
-      renderAgeSelectionFork({ type: TutorialTypes.PROFILE_TUTORIAL })
-
-      const button = screen.getByLabelText('J’ai 19 ans ou plus')
-      await user.press(button)
-
-      expect(navigate).toHaveBeenCalledWith('OnboardingGeneralPublicWelcome', {
-        type: TutorialTypes.PROFILE_TUTORIAL,
-      })
-    })
-  })
-
-  describe('when enableCreditV3 activated', () => {
-    beforeEach(() => {
-      setSettings({ wipEnableCreditV3: true })
-    })
-
-    describe('onboarding', () => {
-      beforeEach(() => {
-        useRoute.mockReturnValueOnce({ params: { type: TutorialTypes.ONBOARDING } })
-      })
-
-      it('should render correctly', () => {
-        renderAgeSelectionFork({ type: TutorialTypes.ONBOARDING })
-
-        expect(screen).toMatchSnapshot()
-      })
-
-      it('should navigate to OnboardingNotEligible page when pressing "J’ai 16 ans ou moins"', async () => {
-        renderAgeSelectionFork({ type: TutorialTypes.ONBOARDING })
-
-        const button = screen.getByLabelText('J’ai 16 ans ou moins')
-        await user.press(button)
-
-        expect(navigate).toHaveBeenCalledWith('OnboardingNotEligible', {
-          type: TutorialTypes.ONBOARDING,
-        })
-      })
-
-      it('should save user age to local storage when pressing "J’ai 16 ans ou moins"', async () => {
-        renderAgeSelectionFork({ type: TutorialTypes.ONBOARDING })
-
-        const button = screen.getByLabelText('J’ai 16 ans ou moins')
-        await user.press(button)
-
-        const userAge = await storage.readObject('user_age')
-
-        expect(userAge).toBe(NonEligible.UNDER_17)
-      })
-
-      it('should navigate to OnboardingAgeInformation page when pressing "J’ai 17 ans"', async () => {
-        renderAgeSelectionFork({ type: TutorialTypes.ONBOARDING })
-
-        const button = screen.getByLabelText('J’ai 17 ans')
-        await user.press(button)
-
-        expect(navigate).toHaveBeenCalledWith('OnboardingAgeInformation', {
-          age: 17,
-          type: TutorialTypes.ONBOARDING,
-        })
-      })
-
-      it('should navigate to OnboardingAgeInformation page when pressing "J’ai 18 ans"', async () => {
-        renderAgeSelectionFork({ type: TutorialTypes.ONBOARDING })
-
-        const button = screen.getByLabelText('J’ai 18 ans')
-        await user.press(button)
-
-        expect(navigate).toHaveBeenCalledWith('OnboardingAgeInformation', {
-          age: 18,
-          type: TutorialTypes.ONBOARDING,
-        })
-      })
-
-      it('should call logSelectAge', async () => {
-        renderAgeSelectionFork({ type: TutorialTypes.ONBOARDING })
-
-        const button = screen.getByLabelText('J’ai 19 ans ou plus')
-        await user.press(button)
-
-        expect(analytics.logSelectAge).toHaveBeenCalledWith({ age: 'over_18', from: 'onboarding' })
-      })
+      expect(analytics.logSelectAge).toHaveBeenCalledWith({ age: 'over_18', from: 'onboarding' })
     })
   })
 })

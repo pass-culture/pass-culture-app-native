@@ -4,7 +4,6 @@ import LinearGradient from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
 
 import { AuthenticationButton } from 'features/auth/components/AuthenticationButton/AuthenticationButton'
-import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { WELCOME_BACKGROUND_SOURCE } from 'features/tutorial/components/onboarding/welcomeBackground'
 import { analytics } from 'libs/analytics/provider'
@@ -27,10 +26,6 @@ const onLoginPress = () => {
 }
 
 export const OnboardingWelcome: FunctionComponent = () => {
-  const { data: settings } = useSettingsContext()
-  const enableCreditV3 = settings?.wipEnableCreditV3
-  const subtitle = `Plus de 3 millions d’offres culturelles et un crédit à dépenser sur l’application si tu as ${enableCreditV3 ? '17 ou 18' : 'entre 15 et 18'} ans.`
-
   return (
     <Container>
       <ImageBackground source={WELCOME_BACKGROUND_SOURCE} />
@@ -39,7 +34,10 @@ export const OnboardingWelcome: FunctionComponent = () => {
       <Content>
         <StyledTitle1>Bienvenue sur&nbsp;le&nbsp;pass&nbsp;Culture</StyledTitle1>
         <Spacer.Column numberOfSpaces={4} />
-        <StyledBody>{subtitle}</StyledBody>
+        <StyledBody>
+          Plus de 3 millions d’offres culturelles et un crédit à dépenser sur l’application si tu as
+          17 ou 18 ans.
+        </StyledBody>
         <Spacer.Column numberOfSpaces={6} />
         <InternalTouchableLink
           as={ButtonWithLinearGradient}

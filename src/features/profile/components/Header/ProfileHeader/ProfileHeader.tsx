@@ -31,7 +31,7 @@ export function ProfileHeader(props: ProfileHeaderProps) {
 
   const ProfileHeader = useMemo(() => {
     if (!isLoggedIn || !user) {
-      return <LoggedOutHeader />
+      return <LoggedOutHeader featureFlags={{ enablePassForAll: featureFlags.enablePassForAll }} />
     }
 
     if (!user.isBeneficiary || user.isEligibleForBeneficiaryUpgrade) {
