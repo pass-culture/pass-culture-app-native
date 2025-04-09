@@ -24,7 +24,7 @@ export const venuesFixture = toMutable([
     banner_url:
       'https://storage.googleapis.com/passculture-metier-ehp-testing-assets-fine-grained/thumbs/venues/CBQA_1678748459',
     postalCode: '',
-    isPermanent: true,
+    isPermanent: false,
     venue_type: VenueTypeCodeKey.VISUAL_ARTS,
     isOpenToPublic: false,
   },

@@ -215,7 +215,7 @@ export const VenueMapViewContainer: FunctionComponent = () => {
   const handleFlingUp = () => {
     if (
       shouldNavigateToVenueOnFling &&
-      selectedVenue &&
+      selectedVenue?.isPermanent &&
       bottomSheetIndex === snapPoints.length - 1
     ) {
       navigateToVenue(selectedVenue.venueId)
