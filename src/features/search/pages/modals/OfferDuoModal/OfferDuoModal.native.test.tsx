@@ -30,7 +30,7 @@ mockAuthContextWithUser(mockUser)
 const mockHideModal = jest.fn()
 const mockOnClose = jest.fn()
 
-jest.mock('react-native/Libraries/Animated/animations/TimingAnimation.js')
+jest.mock('react-native/Libraries/Animated/animations/TimingAnimation')
 
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   return function createAnimatedComponent(Component: unknown) {

@@ -18,6 +18,7 @@ const noFireEvent = require('./eslint-custom-rules/no-fireEvent')
 const noSpacer = require('./eslint-custom-rules/no-spacer')
 const noTsExpectError = require('./eslint-custom-rules/no-ts-expect-error')
 const noUselessHook = require('./eslint-custom-rules/no-useless-hook')
+const jestMockPathExists = require('./eslint-custom-rules/jest-mock-path-exists')
 
 module.exports = {
   'apostrophe-in-text': apostropheInText,
@@ -40,4 +41,5 @@ module.exports = {
   'no-spacer': noSpacer,
   'no-ts-expect-error': noTsExpectError,
   'no-useless-hook': noUselessHook,
+  'jest-mock-path-exists': jestMockPathExists,
 }

@@ -11,7 +11,7 @@ import { act, render, screen, userEvent, waitFor } from 'tests/utils'
 
 import { BookingConfirmation } from './BookingConfirmation'
 
-jest.mock('react-native/Libraries/Animated/animations/TimingAnimation.js')
+jest.mock('react-native/Libraries/Animated/animations/TimingAnimation')
 
 jest.mock('queries/offer/useOfferQuery')
 
