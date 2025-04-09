@@ -71,7 +71,8 @@ module.exports = {
       { argsIgnorePattern: '^_', varsIgnorePattern: '^_' },
     ],
     '@typescript-eslint/explicit-module-boundary-types': 'off',
-    '@typescript-eslint/restrict-template-expressions': ['error',
+    '@typescript-eslint/restrict-template-expressions': [
+      'error',
       {
         allowAny: true,
       },
