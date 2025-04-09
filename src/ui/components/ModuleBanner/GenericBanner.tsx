@@ -35,6 +35,7 @@ export const GenericBanner: FunctionComponent<GenericBannerProps> = ({
 
 const StyledArrowNextIcon = styled(ArrowNext).attrs(({ theme }) => ({
   size: theme.icons.sizes.small,
+  color: theme.designSystem.color.icon.default,
 }))``
 
 export const BANNER_BORDER_WIDTH = getSpacing(0.25)

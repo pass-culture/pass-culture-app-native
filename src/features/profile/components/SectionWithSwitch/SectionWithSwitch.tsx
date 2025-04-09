@@ -20,7 +20,7 @@ interface Props {
 }
 
 export const SectionWithSwitch: React.FC<Props> = (props: Props) => {
-  const { isMobileViewport } = useTheme()
+  const { isMobileViewport, designSystem } = useTheme()
   const labelID = uuidv4()
   const checkboxID = uuidv4()
   const {
@@ -40,7 +40,11 @@ export const SectionWithSwitch: React.FC<Props> = (props: Props) => {
       <TitleContainer toggleLabel={!!toggleLabel}>
         {Icon ? (
           <React.Fragment>
-            <Icon size={iconSize} />
+            <Icon
+              size={iconSize}
+              color={designSystem.color.icon.default}
+              color2={designSystem.color.icon.default}
+            />
             <Spacer.Row numberOfSpaces={2} />
           </React.Fragment>
         ) : null}

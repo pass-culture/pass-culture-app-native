@@ -372,7 +372,7 @@ const StyledButtonText = styled(Typo.BodyAccent)(({ theme }) => ({
 }))
 
 const Version = styled(Typo.BodyAccentXs)(({ theme }) => ({
-  color: theme.colors.greyDark,
+  color: theme.designSystem.color.text.subtle,
   marginVertical: getSpacing(4),
 }))
 

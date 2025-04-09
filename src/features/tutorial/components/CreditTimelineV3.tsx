@@ -63,12 +63,8 @@ export const CreditTimelineV3 = ({ stepperProps, age, testID }: Props) => {
         }
 
         const containerAnimation = {
-          from: {
-            transform: [{ scale: 0.95 }],
-          },
-          to: {
-            transform: [{ scale: 1 }],
-          },
+          from: { transform: [{ scale: 0.95 }] },
+          to: { transform: [{ scale: 1 }] },
         }
 
         const animatedViewProps = {
@@ -106,15 +102,15 @@ export const CreditTimelineV3 = ({ stepperProps, age, testID }: Props) => {
 }
 
 const BodySecondary = styled(Typo.Body)(({ theme }) => ({
-  color: theme.colors.secondary,
+  color: theme.designSystem.color.text.brandSecondary,
 }))
 
 const GreyCakeOneCandle = styled(CakeOneCandle).attrs(({ theme }) => ({
-  color: theme.colors.greySemiDark,
+  color: theme.designSystem.color.icon.subtle,
 }))``
 
 const GreyCakeTwoCandles = styled(CakeTwoCandles).attrs(({ theme }) => ({
-  color: theme.colors.greySemiDark,
+  color: theme.designSystem.color.icon.subtle,
 }))``
 
 const Container = styled.View({
@@ -123,22 +119,21 @@ const Container = styled.View({
 })
 
 const GreyWarning = styled(Warning).attrs(({ theme }) => ({
-  color: theme.colors.greySemiDark,
+  color: theme.designSystem.color.icon.subtle,
   size: theme.icons.sizes.smaller,
 }))({
   marginHorizontal: getSpacing(1.5),
 })
 
 const TitleSecondary = styled(Typo.Title3).attrs(getNoHeadingAttrs)(({ theme }) => ({
-  color: theme.colors.secondary,
+  color: theme.designSystem.color.text.brandSecondary,
   marginBottom: getSpacing(2),
 }))
 
 const StyledAnimatedView = styled(AnimatedView)(({ theme }) => ({
-  borderColor: theme.colors.greySemiDark,
+  borderColor: theme.designSystem.color.border.subtle,
   borderWidth: getSpacing(0.25),
   borderRadius: getSpacing(1),
-  backgroundColor: theme.colors.white,
   padding: getSpacing(4),
   overflow: 'hidden',
 }))

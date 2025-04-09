@@ -1,7 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`AgeSelectionFork should render correctly 1`] = `
-[
+<View
+  style={
+    [
+      {
+        "backgroundColor": "#ffffff",
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+      },
+    ]
+  }
+>
   <View
     style={
       [
@@ -11,7 +22,7 @@ exports[`AgeSelectionFork should render correctly 1`] = `
       ]
     }
     top={16}
-  />,
+  />
   <View
     style={
       [
@@ -111,7 +122,7 @@ exports[`AgeSelectionFork should render correctly 1`] = `
         </Text>
       </View>
     </View>
-  </View>,
+  </View>
   <RCTScrollView
     contentContainerStyle={
       {
@@ -590,7 +601,7 @@ exports[`AgeSelectionFork should render correctly 1`] = `
         }
       />
     </View>
-  </RCTScrollView>,
+  </RCTScrollView>
   <View
     customHeight={8}
     enable={true}
@@ -601,12 +612,23 @@ exports[`AgeSelectionFork should render correctly 1`] = `
         },
       ]
     }
-  />,
-]
+  />
+</View>
 `;
 
 exports[`AgeSelectionFork when enableCreditV3 activated onboarding should render correctly 1`] = `
-[
+<View
+  style={
+    [
+      {
+        "backgroundColor": "#ffffff",
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+      },
+    ]
+  }
+>
   <View
     style={
       [
@@ -616,7 +638,7 @@ exports[`AgeSelectionFork when enableCreditV3 activated onboarding should render
       ]
     }
     top={16}
-  />,
+  />
   <View
     style={
       [
@@ -716,7 +738,7 @@ exports[`AgeSelectionFork when enableCreditV3 activated onboarding should render
         </Text>
       </View>
     </View>
-  </View>,
+  </View>
   <RCTScrollView
     contentContainerStyle={
       {
@@ -1328,7 +1350,7 @@ exports[`AgeSelectionFork when enableCreditV3 activated onboarding should render
         }
       />
     </View>
-  </RCTScrollView>,
+  </RCTScrollView>
   <View
     customHeight={8}
     enable={true}
@@ -1339,6 +1361,6 @@ exports[`AgeSelectionFork when enableCreditV3 activated onboarding should render
         },
       ]
     }
-  />,
-]
+  />
+</View>
 `;

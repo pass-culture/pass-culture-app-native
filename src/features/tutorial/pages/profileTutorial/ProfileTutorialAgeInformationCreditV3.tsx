@@ -17,6 +17,7 @@ import { ButtonQuaternarySecondary } from 'ui/components/buttons/ButtonQuaternar
 import { ContentHeader } from 'ui/components/headers/ContentHeader'
 import { useGetHeaderHeight } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
+import { Page } from 'ui/pages/Page'
 import { BicolorClock } from 'ui/svg/icons/BicolorClock'
 import { BicolorLock } from 'ui/svg/icons/BicolorLock'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
@@ -32,7 +33,7 @@ export const ProfileTutorialAgeInformationCreditV3: FunctionComponent = () => {
   const headerTitle = 'Comment ça marche\u00a0?'
 
   return (
-    <React.Fragment>
+    <Page>
       <StyledScrollView onScroll={onScroll} scrollEventThrottle={16}>
         <Placeholder height={headerHeight} />
         <Spacer.Column numberOfSpaces={7} />
@@ -120,7 +121,7 @@ export const ProfileTutorialAgeInformationCreditV3: FunctionComponent = () => {
         headerTransition={headerTransition}
         onBackPress={goBack}
       />
-    </React.Fragment>
+    </Page>
   )
 }
 
@@ -139,14 +140,14 @@ const Placeholder = styled.View<{ height: number }>(({ height }) => ({
 
 const SmallLock = styled(BicolorLock).attrs(({ theme }) => ({
   size: theme.icons.sizes.extraSmall,
-  color: theme.colors.greySemiDark,
+  color: theme.designSystem.color.icon.subtle,
 }))``
 
 const SmallClock = styled(BicolorClock).attrs(({ theme }) => ({
   size: theme.icons.sizes.extraSmall,
-  color: theme.colors.greySemiDark,
+  color: theme.designSystem.color.icon.subtle,
 }))``
 
 const GreyOffers = styled(Offers).attrs(({ theme }) => ({
-  color: theme.colors.greySemiDark,
+  color: theme.designSystem.color.icon.subtle,
 }))``

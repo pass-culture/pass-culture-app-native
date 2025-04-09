@@ -18,7 +18,11 @@ export const IconRetryStep: FunctionComponent<IconStepRetryProps> = ({ Icon, tes
 
   return (
     <Container testID={testID}>
-      <Icon size={theme.icons.sizes.standard} />
+      <Icon
+        size={theme.icons.sizes.standard}
+        color={theme.designSystem.color.icon.brandPrimary}
+        color2={theme.designSystem.color.icon.brandPrimary}
+      />
       <IconContainer>
         <StyledTryAgain />
       </IconContainer>

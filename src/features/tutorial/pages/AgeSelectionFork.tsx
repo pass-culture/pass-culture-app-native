@@ -131,9 +131,9 @@ export const AgeSelectionFork: FunctionComponent<Props> = ({ route }: Props) => 
 }
 
 const StyledTitle4 = styled(Typo.Title4).attrs(getNoHeadingAttrs)(({ theme }) => ({
-  color: theme.colors.secondary,
+  color: theme.designSystem.color.text.brandSecondary,
 }))
 
 const StyledBody = styled(Typo.Body)(({ theme }) => ({
-  color: theme.colors.secondary,
+  color: theme.designSystem.color.text.brandSecondary,
 }))
