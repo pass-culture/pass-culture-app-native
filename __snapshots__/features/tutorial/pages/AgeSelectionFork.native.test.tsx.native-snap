@@ -1,7 +1,18 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`AgeSelectionFork onboarding should render correctly 1`] = `
-[
+<View
+  style={
+    [
+      {
+        "backgroundColor": "#ffffff",
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+      },
+    ]
+  }
+>
   <View
     style={
       [
@@ -11,7 +22,7 @@ exports[`AgeSelectionFork onboarding should render correctly 1`] = `
       ]
     }
     top={16}
-  />,
+  />
   <View
     style={
       [
@@ -111,7 +122,7 @@ exports[`AgeSelectionFork onboarding should render correctly 1`] = `
         </Text>
       </View>
     </View>
-  </View>,
+  </View>
   <RCTScrollView
     contentContainerStyle={
       {
@@ -723,7 +734,7 @@ exports[`AgeSelectionFork onboarding should render correctly 1`] = `
         }
       />
     </View>
-  </RCTScrollView>,
+  </RCTScrollView>
   <View
     customHeight={8}
     enable={true}
@@ -734,12 +745,23 @@ exports[`AgeSelectionFork onboarding should render correctly 1`] = `
         },
       ]
     }
-  />,
-]
+  />
+</View>
 `;
 
 exports[`AgeSelectionFork should render correctly 1`] = `
-[
+<View
+  style={
+    [
+      {
+        "backgroundColor": "#ffffff",
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+      },
+    ]
+  }
+>
   <View
     style={
       [
