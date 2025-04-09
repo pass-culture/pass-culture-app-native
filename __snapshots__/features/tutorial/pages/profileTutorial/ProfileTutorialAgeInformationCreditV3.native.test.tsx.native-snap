@@ -294,7 +294,7 @@ exports[`<ProfileTutorialAgeInformationCreditV3 /> should render correctly 1`] =
                         ]
                       }
                     >
-                      Tu reçois 30 €
+                      Tu reçois 50 €
                     </Text>
                     <View
                       style={
@@ -686,7 +686,7 @@ exports[`<ProfileTutorialAgeInformationCreditV3 /> should render correctly 1`] =
                         ]
                       }
                     >
-                      Tu reçois 300 €
+                      Tu reçois 150 €
                     </Text>
                     <View
                       style={

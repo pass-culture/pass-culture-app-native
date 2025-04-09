@@ -235,7 +235,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                 class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm"
                 dir="ltr"
               >
-                Tu as entre 15 et 18 ans ?
+                Tu as 17 ou 18 ans ?
               </div>
             </div>
             <div
@@ -245,7 +245,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                 class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm"
                 dir="ltr"
               >
-                Envie d’explorer des offres culturelles ou de débloquer ton crédit si tu as entre 15 et 18 ans ?
+                Envie d’explorer des offres culturelles ou de débloquer ton crédit si tu as 17 ou 18 ans ?
               </div>
               <div
                 class="css-view-175oi2r r-height-z80fyv"
@@ -1390,7 +1390,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                 class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm"
                 dir="ltr"
               >
-                Tu as entre 15 et 18 ans ?
+                Tu as 17 ou 18 ans ?
               </div>
             </div>
             <div
@@ -1400,7 +1400,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                 class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm"
                 dir="ltr"
               >
-                Envie d’explorer des offres culturelles ou de débloquer ton crédit si tu as entre 15 et 18 ans ?
+                Envie d’explorer des offres culturelles ou de débloquer ton crédit si tu as 17 ou 18 ans ?
               </div>
               <div
                 class="css-view-175oi2r r-height-z80fyv"

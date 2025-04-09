@@ -1,18 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`AgeSelectionFork should render correctly 1`] = `
-<View
-  style={
-    [
-      {
-        "backgroundColor": "#ffffff",
-        "flexBasis": 0,
-        "flexGrow": 1,
-        "flexShrink": 1,
-      },
-    ]
-  }
->
+exports[`AgeSelectionFork onboarding should render correctly 1`] = `
+[
   <View
     style={
       [
@@ -22,7 +11,7 @@ exports[`AgeSelectionFork should render correctly 1`] = `
       ]
     }
     top={16}
-  />
+  />,
   <View
     style={
       [
@@ -122,7 +111,7 @@ exports[`AgeSelectionFork should render correctly 1`] = `
         </Text>
       </View>
     </View>
-  </View>
+  </View>,
   <RCTScrollView
     contentContainerStyle={
       {
@@ -208,7 +197,7 @@ exports[`AgeSelectionFork should render correctly 1`] = `
             }
           >
             <View
-              accessibilityLabel="J’ai 14 ans ou moins"
+              accessibilityLabel="J’ai 16 ans ou moins"
               accessibilityRole="link"
               accessibilityState={
                 {
@@ -243,7 +232,7 @@ exports[`AgeSelectionFork should render correctly 1`] = `
                   "userSelect": "auto",
                 }
               }
-              testID="J’ai 14 ans ou moins"
+              testID="J’ai 16 ans ou moins"
             >
               <View
                 style={
@@ -303,7 +292,7 @@ exports[`AgeSelectionFork should render correctly 1`] = `
                         ]
                       }
                     >
-                      14 ans
+                      16 ans
                     </Text>
                      ou moins
                   </Text>
@@ -342,7 +331,7 @@ exports[`AgeSelectionFork should render correctly 1`] = `
             }
           >
             <View
-              accessibilityLabel="J’ai entre 15 et 18 ans"
+              accessibilityLabel="J’ai 17 ans"
               accessibilityRole="link"
               accessibilityState={
                 {
@@ -377,7 +366,7 @@ exports[`AgeSelectionFork should render correctly 1`] = `
                   "userSelect": "auto",
                 }
               }
-              testID="J’ai entre 15 et 18 ans"
+              testID="J’ai 17 ans"
             >
               <View
                 style={
@@ -424,7 +413,7 @@ exports[`AgeSelectionFork should render correctly 1`] = `
                       ]
                     }
                   >
-                    J’ai entre 
+                    J’ai 
                     <Text
                       style={
                         [
@@ -437,7 +426,140 @@ exports[`AgeSelectionFork should render correctly 1`] = `
                         ]
                       }
                     >
-                      15 et 18 ans
+                      17 ans
+                    </Text>
+                  </Text>
+                </View>
+                <View>
+                  <View
+                    height={24}
+                    width={24}
+                  >
+                    <Text>
+                      undefined-SVG-Mock
+                    </Text>
+                  </View>
+                </View>
+              </View>
+            </View>
+            <View
+              numberOfSpaces={4}
+              style={
+                [
+                  {
+                    "height": 16,
+                  },
+                ]
+              }
+            />
+          </View>
+          <View
+            accessibilityRole="none"
+            style={
+              [
+                {
+                  "display": "flex",
+                },
+              ]
+            }
+          >
+            <View
+              accessibilityLabel="J’ai 18 ans"
+              accessibilityRole="link"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              collapsable={false}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                {
+                  "opacity": 1,
+                  "userSelect": "auto",
+                }
+              }
+              testID="J’ai 18 ans"
+            >
+              <View
+                style={
+                  [
+                    {
+                      "alignItems": "center",
+                      "borderColor": "#90949D",
+                      "borderRadius": 7,
+                      "borderStyle": "solid",
+                      "borderWidth": 1,
+                      "flexDirection": "row",
+                      "padding": 16,
+                      "width": "100%",
+                    },
+                    [
+                      {
+                        "paddingVertical": 24,
+                      },
+                    ],
+                  ]
+                }
+              >
+                <View
+                  style={
+                    [
+                      {
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "marginRight": 16,
+                        "textAlign": "start",
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#320096",
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                        },
+                      ]
+                    }
+                  >
+                    J’ai 
+                    <Text
+                      style={
+                        [
+                          {
+                            "color": "#320096",
+                            "fontFamily": "Montserrat-Bold",
+                            "fontSize": 17,
+                            "lineHeight": 27.2,
+                          },
+                        ]
+                      }
+                    >
+                      18 ans
                     </Text>
                   </Text>
                 </View>
@@ -601,7 +723,7 @@ exports[`AgeSelectionFork should render correctly 1`] = `
         }
       />
     </View>
-  </RCTScrollView>
+  </RCTScrollView>,
   <View
     customHeight={8}
     enable={true}
@@ -612,23 +734,12 @@ exports[`AgeSelectionFork should render correctly 1`] = `
         },
       ]
     }
-  />
-</View>
+  />,
+]
 `;
 
-exports[`AgeSelectionFork when enableCreditV3 activated onboarding should render correctly 1`] = `
-<View
-  style={
-    [
-      {
-        "backgroundColor": "#ffffff",
-        "flexBasis": 0,
-        "flexGrow": 1,
-        "flexShrink": 1,
-      },
-    ]
-  }
->
+exports[`AgeSelectionFork should render correctly 1`] = `
+[
   <View
     style={
       [
