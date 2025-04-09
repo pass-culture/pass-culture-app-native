@@ -3,6 +3,16 @@ appId: ${MAESTRO_APP_ID}
 - assertVisible: "Bienvenue\_!"
 - waitForAnimationToEnd
 - assertVisible: 'Débloque ton crédit'
-- tapOn: 'Débloque ton crédit'
+- runFlow:
+    when:
+      platform: Android
+    commands:
+    - tapOn: "Débloque ton crédit"
+- runFlow:
+    when:
+      platform: iOS
+    commands:
+    - tapOn:
+        id: "BicolorUnlock"
 - assertVisible: 'Inscription'
 - assertVisible: 'Crée-toi un compte'
