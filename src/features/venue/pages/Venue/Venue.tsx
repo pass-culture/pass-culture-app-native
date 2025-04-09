@@ -69,6 +69,7 @@ export const Venue: FunctionComponent = () => {
   const isVenueHeadlineOfferActive = useFeatureFlag(
     RemoteStoreFeatureFlags.WIP_VENUE_HEADLINE_OFFER
   )
+  const enableAccesLibre = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_ACCES_LIBRE)
 
   const headlineOfferData = isVenueHeadlineOfferActive
     ? offerToHeadlineOfferData({
@@ -106,6 +107,7 @@ export const Venue: FunctionComponent = () => {
               venueArtists={venueArtists}
               headlineOfferData={headlineOfferData}
               arePlaylistsLoading={arePlaylistsLoading}
+              enableAccesLibre={enableAccesLibre}
             />
 
             <VenueThematicSection venue={venue} />
