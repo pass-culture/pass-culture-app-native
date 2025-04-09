@@ -2,7 +2,7 @@ appId: ${MAESTRO_APP_ID}
 ---
 - assertVisible: "Bienvenue\_!"
 - waitForAnimationToEnd
-- tapOn: "Bienvenue\_!"
+- assertVisible: 'Débloque ton crédit'
 - tapOn: 'Débloque ton crédit'
 - assertVisible: 'Inscription'
 - assertVisible: 'Crée-toi un compte'
