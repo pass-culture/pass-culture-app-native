@@ -7,9 +7,9 @@ PODS:
   - AppAuth/Core (1.7.6)
   - AppAuth/ExternalUserAgent (1.7.6):
     - AppAuth/Core
-  - AppsFlyerFramework (6.15.3):
-    - AppsFlyerFramework/Main (= 6.15.3)
-  - AppsFlyerFramework/Main (6.15.3)
+  - AppsFlyerFramework (6.16.2):
+    - AppsFlyerFramework/Main (= 6.16.2)
+  - AppsFlyerFramework/Main (6.16.2)
   - Base64 (1.1.2)
   - Batch (2.0.2)
   - BatchFirebaseDispatcher (3.2.0):
@@ -1137,8 +1137,8 @@ PODS:
   - React-Mapbuffer (0.73.11):
     - glog
     - React-debug
-  - react-native-appsflyer (6.15.3):
-    - AppsFlyerFramework (= 6.15.3)
+  - react-native-appsflyer (6.16.2):
+    - AppsFlyerFramework (= 6.16.2)
     - React
   - react-native-blur (4.4.1):
     - glog
@@ -1783,7 +1783,7 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   amplitude-react-native: 2d4f45edd2c2fd91923fdbadab85fb7b37d87092
   AppAuth: d4f13a8fe0baf391b2108511793e4b479691fb73
-  AppsFlyerFramework: ad7ff0d22aa36c7f8cc4f71a5424e19b89ccb8ae
+  AppsFlyerFramework: fe5303bffcdfd941d5f570c2d21eaaea982e7bdc
   Base64: cecfb41a004124895a7bcee567a89bae5a89d49b
   Batch: 5910c05091914c3ca415ca8793e5ce6fcc36cfee
   BatchFirebaseDispatcher: 1711b32884f4b6b3513553beab4c766056794ae1
@@ -1800,7 +1800,6 @@ SPEC CHECKSUMS:
   FirebaseCore: 5743c5785c074a794d35f2fff7ecc254a91e08b1
   FirebaseCoreDiagnostics: 92e07a649aeb66352b319d43bdd2ee3942af84cb
   FirebaseDynamicLinks: 1dc816ef789c5adac6fede0b46d11478175c70e4
-  FirebaseFirestore: c3dadcf89ba4b89f493d1a34c37be94a4f9dd76e
   FirebaseFirestore: c3dadcf89ba4b89f493d1a34c37be94a4f9dd76e
   FirebaseInstallations: 40bd9054049b2eae9a2c38ef1c3dd213df3605cd
   FirebasePerformance: 66eb58c3e3568a0501a9be271c8ff424dea0ff34
@@ -1854,7 +1853,7 @@ SPEC CHECKSUMS:
   React-jsinspector: a98428936fb888cc15d857226a26d9ac0a668a0e
   React-logger: 6e4873d1f9c54cca30f6c91a6617f8c91b75ba4c
   React-Mapbuffer: 57bf49a458398d329dad2bf8bc660e3e35b96989
-  react-native-appsflyer: f6929760b13373fd33fd9f3ee6eb7e4d90e9c2c2
+  react-native-appsflyer: 4ac00a02833e9e81cc08da668728817fdc2a94e0
   react-native-blur: 9a53b0cc99ebd9d2dcd48f30cb61d0e32392a17d
   react-native-config: fbeedf79faed94a27f0929a16ce87d17436e86a8
   react-native-date-picker: 4ca4a37b0c77c55af81b46983318af5c300b3595

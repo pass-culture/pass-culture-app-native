@@ -10934,7 +10934,6 @@ __metadata:
     react-native-webview: ^11.26.1
     react-native-youtube-iframe: ^2.2.2
     react-query: 3.39.3
-    react-query-native-devtools: ^3.0.1
     react-test-renderer: 18.2.0
     react-window: ^1.8.9
     react-youtube: ^10.1.0
@@ -16660,7 +16659,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"flatted@npm:^3.1.0, flatted@npm:^3.2.9":
+"flatted@npm:^3.2.9":
   version: 3.3.1
   resolution: "flatted@npm:3.3.1"
   checksum: 85ae7181650bb728c221e7644cbc9f4bf28bc556f2fc89bb21266962bdf0ce1029cc7acc44bb646cd469d9baac7c317f64e841c4c4c00516afa97320cdac7f94
@@ -24984,18 +24983,6 @@ __metadata:
   bin:
     react-native: cli.js
   checksum: 50681466ead762ac902dcbd36f273ec8db9f8ec50d33f07339608d281e7e20a0bc8d221d63d68c1ee98e3701fbbabff3b2d923ac8a1d36ecb956d7b827437b2f
-  languageName: node
-  linkType: hard
-
-"react-query-native-devtools@npm:^3.0.1":
-  version: 3.0.1
-  resolution: "react-query-native-devtools@npm:3.0.1"
-  dependencies:
-    flatted: ^3.1.0
-  peerDependencies:
-    react-native-flipper: ^0.81.0
-    react-query: ^3.13.0
-  checksum: b0716cf0da8f71ac986edec275eee98c17e30e1c5ffe95544446f8a78a396da89417b24bdaea826b614727e9342336d9ea4b49534243eed8f840ece20637c10f
   languageName: node
   linkType: hard
 

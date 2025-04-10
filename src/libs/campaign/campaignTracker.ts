@@ -26,7 +26,7 @@ function init(hasAcceptedMarketingCookie: boolean) {
 }
 
 function storeConsentAndInitSdk(trackingStatus: TrackingStatus) {
-  const consentData = AppsFlyerConsent.forGDPRUser(true, trackingStatus === 'authorized')
+  const consentData = new AppsFlyerConsent(true, true, trackingStatus === 'authorized', false)
   appsFlyer.setConsentData(consentData)
 
   if (__DEV__) return
