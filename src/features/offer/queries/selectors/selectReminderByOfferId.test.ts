@@ -1,6 +1,6 @@
+import { GetRemindersResponse } from 'api/gen'
 import { remindersResponse } from 'features/offer/fixtures/remindersResponse'
 import { selectReminderByOfferId } from 'features/offer/queries/selectors/selectReminderByOfferId'
-import { GetReminderResponse } from 'features/offer/types'
 
 describe('selectReminderByOfferId', () => {
   it('should return the correct reminder when a matching offer ID is found', () => {
@@ -17,7 +17,7 @@ describe('selectReminderByOfferId', () => {
   })
 
   it('should return undefined when the input data is an empty object', () => {
-    const emptyData: GetReminderResponse = { reminders: [] }
+    const emptyData: GetRemindersResponse = { reminders: [] }
     const result = selectReminderByOfferId(emptyData, 10)
 
     expect(result).toBeUndefined()

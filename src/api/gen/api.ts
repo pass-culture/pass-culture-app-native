@@ -16,7 +16,6 @@ import { getAuthenticationHeaders, handleGeneratedApiResponse, safeFetch } from 
 import { EmptyResponse } from 'libs/fetch'
 
 import { Configuration } from './configuration'
-import { GetReminderResponse, ReminderResponse } from 'features/offer/types'
 
 const BASE_PATH = '/'.replace(/\/+$/, '')
 
@@ -1715,6 +1714,17 @@ export interface GetAvailableReactionsResponse {
 }
 /**
  * @export
+ * @interface GetRemindersResponse
+ */
+export interface GetRemindersResponse {
+  /**
+   * @type {Array<ReminderResponse>}
+   * @memberof GetRemindersResponse
+   */
+  reminders: Array<ReminderResponse>
+}
+/**
+ * @export
  * @interface GoogleAccountRequest
  */
 export interface GoogleAccountRequest {
@@ -3319,6 +3329,33 @@ export interface RefreshResponse {
    * @memberof RefreshResponse
    */
   accessToken: string
+}
+/**
+ * @export
+ * @interface ReminderOfferResponse
+ */
+export interface ReminderOfferResponse {
+  /**
+   * @type {number}
+   * @memberof ReminderOfferResponse
+   */
+  id: number
+}
+/**
+ * @export
+ * @interface ReminderResponse
+ */
+export interface ReminderResponse {
+  /**
+   * @type {number}
+   * @memberof ReminderResponse
+   */
+  id: number
+  /**
+   * @type {ReminderOfferResponse}
+   * @memberof ReminderResponse
+   */
+  offer: ReminderOfferResponse
 }
 /**
  * @export
@@ -7061,7 +7098,7 @@ export const DefaultApiFp = function (api: DefaultApi, configuration?: Configura
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      */
-    async getNativeV1MeReminders(options?: any): Promise<GetReminderResponse> {
+    async getNativeV1MeReminders(options?: any): Promise<GetRemindersResponse> {
       const localVarFetchArgs =
         await DefaultApiFetchParamCreator(configuration).getNativeV1MeReminders(options)
       const response = await safeFetch(

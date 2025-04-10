@@ -1,6 +1,6 @@
-import { GetReminderResponse, ReminderResponse } from 'features/offer/types'
+import { GetRemindersResponse, ReminderResponse } from 'api/gen'
 
-export const remindersResponse: GetReminderResponse = {
+export const remindersResponse: GetRemindersResponse = {
   reminders: [
     {
       id: 1,

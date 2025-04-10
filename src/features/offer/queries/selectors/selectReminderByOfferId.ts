@@ -1,9 +1,9 @@
 import { isEmpty } from 'lodash'
 
-import { GetReminderResponse, ReminderResponse } from 'features/offer/types'
+import { GetRemindersResponse, ReminderResponse } from 'api/gen'
 
 export const selectReminderByOfferId = (
-  data: GetReminderResponse,
+  data: GetRemindersResponse,
   offerId: number
 ): ReminderResponse | undefined => {
   if (isEmpty(data)) return undefined

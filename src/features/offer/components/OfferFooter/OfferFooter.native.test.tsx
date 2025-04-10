@@ -5,6 +5,7 @@ import { Button } from 'react-native'
 import { QueryObserverSuccessResult } from 'react-query'
 
 import { api } from 'api/api'
+import { GetRemindersResponse } from 'api/gen'
 import * as Auth from 'features/auth/context/AuthContext'
 import { favoriteOfferResponseSnap } from 'features/favorites/fixtures/favoriteOfferResponseSnap'
 import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteResponseSnap'
@@ -14,7 +15,6 @@ import { OfferFooter, OfferFooterProps } from 'features/offer/components/OfferFo
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { remindersResponse } from 'features/offer/fixtures/remindersResponse'
 import * as useGetRemindersQueryModule from 'features/offer/queries/useGetRemindersQuery'
-import { GetReminderResponse } from 'features/offer/types'
 import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -32,7 +32,7 @@ const useOfferCTASpy = jest.spyOn(useOfferCTAContextModule, 'useOfferCTA')
 const useGetRemindersQuerySpy = jest.spyOn(
   useGetRemindersQueryModule,
   'useGetRemindersQuery'
-) as jest.Mock<Partial<QueryObserverSuccessResult<GetReminderResponse, Error>>>
+) as jest.Mock<Partial<QueryObserverSuccessResult<GetRemindersResponse, Error>>>
 
 const addReminderMutationSpy = jest.spyOn(api, 'postNativeV1MeReminders')
 const deleteReminderMutationSpy = jest.spyOn(api, 'deleteNativeV1MeRemindersreminderId')

@@ -94,16 +94,3 @@ export type OfferImageContainerDimensions = {
     borderRadius: number
   }
 }
-
-type ReminderOfferResponse = {
-  id: number
-}
-
-export type ReminderResponse = {
-  id: number
-  offer: ReminderOfferResponse
-}
-
-export type GetReminderResponse = {
-  reminders: ReminderResponse[]
-}

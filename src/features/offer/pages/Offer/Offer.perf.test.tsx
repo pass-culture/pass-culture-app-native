@@ -1,12 +1,16 @@
 import React from 'react'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
-import { OfferResponseV2, SimilarOffersResponse, SubcategoriesResponseModelv2 } from 'api/gen'
+import {
+  GetRemindersResponse,
+  OfferResponseV2,
+  SimilarOffersResponse,
+  SubcategoriesResponseModelv2,
+} from 'api/gen'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import * as GetInstalledAppsAPI from 'features/offer/helpers/getInstalledApps/getInstalledApps'
 import * as useArtistResults from 'features/offer/helpers/useArtistResults/useArtistResults'
 import { Offer } from 'features/offer/pages/Offer/Offer'
-import { GetReminderResponse } from 'features/offer/types'
 import {
   mockedAlgoliaOffersWithSameArtistResponse,
   mockedAlgoliaResponse,
@@ -79,7 +83,7 @@ describe('<Offer />', () => {
       }
     )
     mockServer.getApi<SubcategoriesResponseModelv2>(`/v1/subcategories/v2`, subcategoriesDataTest)
-    mockServer.getApi<GetReminderResponse>('/v1/me/reminders', {})
+    mockServer.getApi<GetRemindersResponse>('/v1/me/reminders', {})
   })
 
   it('Performance test for Offer page', async () => {

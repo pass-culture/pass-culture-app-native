@@ -7,6 +7,7 @@ import { ReactTestInstance } from 'react-test-renderer'
 import { api } from 'api/api'
 import {
   FavoriteResponse,
+  GetRemindersResponse,
   NativeCategoryIdEnumv2,
   OfferResponseV2,
   PaginatedFavoritesResponse,
@@ -26,7 +27,6 @@ import { PlaylistType } from 'features/offer/enums'
 import { mockSubcategory } from 'features/offer/fixtures/mockSubcategory'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import * as useArtistResults from 'features/offer/helpers/useArtistResults/useArtistResults'
-import { GetReminderResponse } from 'features/offer/types'
 import { beneficiaryUser } from 'fixtures/user'
 import {
   mockedAlgoliaOffersWithSameArtistResponse,
@@ -196,7 +196,7 @@ describe('<OfferContent />', () => {
   beforeEach(() => {
     spyApiDeleteFavorite.mockResolvedValue({})
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
-    mockServer.getApi<GetReminderResponse>('/v1/me/reminders', {})
+    mockServer.getApi<GetRemindersResponse>('/v1/me/reminders', {})
     useFavoriteSpy.mockReturnValue(favoriteResponseSnap)
     mockPosition = { latitude: 90.4773245, longitude: 90.4773245 }
     mockAuthContextWithoutUser({ persist: true })
