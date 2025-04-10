@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react'
 import { Text, View } from 'react-native'
 import styled from 'styled-components/native'
 
-import { isStyledComponent } from 'shared/typeguards/isStyledComponent'
+import { isStyledIcon } from 'shared/typeguards/isStyledIcon'
 import { ArrowRight } from 'ui/svg/icons/ArrowRight'
 
 const StyledArrowRight = styled(ArrowRight).attrs(({ theme }) => ({
@@ -11,7 +11,7 @@ const StyledArrowRight = styled(ArrowRight).attrs(({ theme }) => ({
 
 describe('isStyledComponent', () => {
   it('should return true for styled components', () => {
-    expect(isStyledComponent(StyledArrowRight)).toEqual(true)
+    expect(isStyledIcon(StyledArrowRight)).toEqual(true)
   })
 
   it('should return false for non-styled components', () => {
@@ -21,7 +21,7 @@ describe('isStyledComponent', () => {
       </View>
     )
 
-    expect(isStyledComponent(NonStyledComponent)).toEqual(false)
+    expect(isStyledIcon(NonStyledComponent)).toEqual(false)
   })
 
   it('should return false for regular React components', () => {
@@ -31,6 +31,6 @@ describe('isStyledComponent', () => {
       </View>
     )
 
-    expect(isStyledComponent(RegularComponent)).toEqual(false)
+    expect(isStyledIcon(RegularComponent)).toEqual(false)
   })
 })

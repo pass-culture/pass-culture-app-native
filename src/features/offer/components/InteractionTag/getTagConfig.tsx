@@ -30,7 +30,7 @@ export function getTagConfig({
   }
   const likesTagConfig = {
     label: likesCount ? `${likesCount} j’aime` : '',
-    backgroundColor: theme.colors.white,
+    backgroundColor: theme.colors.greyLight,
     Icon: CustomThumbUp,
   }
   const bookClubTagConfig = {
