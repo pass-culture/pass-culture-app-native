@@ -28,7 +28,8 @@ export function EighteenBirthday() {
         wording: 'Plus tard',
         navigateTo: { screen: 'TabNavigator', params: { screen: 'Home' } },
         icon: ClockFilled,
-      }}></GenericInfoPage>
+      }}
+    />
   )
 }
 
