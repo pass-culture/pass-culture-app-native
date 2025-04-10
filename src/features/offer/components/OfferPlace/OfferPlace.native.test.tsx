@@ -423,46 +423,6 @@ describe('<OfferPlace />', () => {
     })
   })
 
-  describe('Venue is open to public', () => {
-    const offerWithIsOpenToPublic: OfferResponseV2 = {
-      ...mockOffer,
-      venue: {
-        ...mockOffer.venue,
-        isPermanent: false,
-        isOpenToPublic: true,
-      },
-      address: {
-        street: 'RUE DE CALI',
-        city: 'Kourou',
-        timezone: 'Europe/Paris',
-        label: 'Cinéma de la fin',
-        postalCode: '97310',
-        coordinates: {
-          latitude: 5.15839,
-          longitude: -52.63741,
-        },
-      },
-    }
-
-    it('should navigate to venue page when pressing venue button and wipIsOpenToPublic feature flag activated', async () => {
-      mockUseSearchVenueOffers.mockReturnValueOnce(searchVenueOfferEmpty)
-      setFeatureFlags([RemoteStoreFeatureFlags.WIP_IS_OPEN_TO_PUBLIC])
-      renderOfferPlace({ offer: offerWithIsOpenToPublic })
-
-      await user.press(screen.getByTestId('RightFilled'))
-
-      expect(navigate).toHaveBeenCalledWith('Venue', { id: mockOffer.venue.id })
-    })
-
-    it('should not navigate to venue page when pressing venue button and wipIsOpenToPublic feature flag deactivated', async () => {
-      mockUseSearchVenueOffers.mockReturnValueOnce(searchVenueOfferEmpty)
-      setFeatureFlags()
-      renderOfferPlace({ offer: offerWithIsOpenToPublic })
-
-      expect(screen.queryByTestId('RightFilled')).not.toBeOnTheScreen()
-    })
-  })
-
   describe('"Voir l’itinéraire" button', () => {
     it('should display "Voir l’itinéraire" button when complete venue address specified', () => {
       mockUseSearchVenueOffers.mockReturnValueOnce(searchVenueOfferEmpty)

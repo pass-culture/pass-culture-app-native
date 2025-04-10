@@ -62,7 +62,6 @@ export function OfferPlace({ offer, subcategory, distance }: Readonly<OfferPlace
   const { isDesktopViewport } = useTheme()
 
   const enableCineFromOffer = useFeatureFlag(RemoteStoreFeatureFlags.TARGET_XP_CINE_FROM_OFFER)
-  const shouldUseIsOpenToPublic = useFeatureFlag(RemoteStoreFeatureFlags.WIP_IS_OPEN_TO_PUBLIC)
 
   const venueSectionTitle = getVenueSectionTitle(offer.subcategoryId, subcategory.isEvent)
 
@@ -153,9 +152,7 @@ export function OfferPlace({ offer, subcategory, distance }: Readonly<OfferPlace
 
   const isOfferAMovieScreening = offer.subcategoryId === SubcategoryIdEnum.SEANCE_CINE
 
-  const isOpenToPublicVenue = offer.venue.isOpenToPublic
-
-  const canSeeVenue = shouldUseIsOpenToPublic ? isOpenToPublicVenue : offer.venue.isPermanent
+  const canSeeVenue = offer.venue.isPermanent
 
   const renderOfferVenueBlock = () => {
     return (

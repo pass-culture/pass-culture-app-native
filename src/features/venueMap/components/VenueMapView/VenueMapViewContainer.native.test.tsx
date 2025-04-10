@@ -278,7 +278,7 @@ describe('VenueMapViewContainer', () => {
     })
   })
 
-  it('should navigate to Venue page when bottom sheet is open and fling gesture detected', async () => {
+  it('should navigate to Venue page when bottom sheet is open and fling gesture detected if venue is permanent', async () => {
     setFeatureFlags([
       RemoteStoreFeatureFlags.WIP_FLING_BOTTOM_SHEET_NAVIGATE_TO_VENUE,
       RemoteStoreFeatureFlags.WIP_OFFERS_IN_BOTTOM_SHEET,
@@ -301,10 +301,32 @@ describe('VenueMapViewContainer', () => {
     expect(mockNavigate).toHaveBeenCalledWith('Venue', { id: venuesFixture[0].venueId })
   })
 
-  it('should deactivate navigation to Venue page when bottom sheet is open, pressing venue button, wipIsOpenToPublic feature flag is true and venue is not open to public', async () => {
+  it('should not navigate to Venue page when bottom sheet is open and fling gesture detected if venue is not permanent', async () => {
+    setFeatureFlags([
+      RemoteStoreFeatureFlags.WIP_FLING_BOTTOM_SHEET_NAVIGATE_TO_VENUE,
+      RemoteStoreFeatureFlags.WIP_OFFERS_IN_BOTTOM_SHEET,
+      RemoteStoreFeatureFlags.WIP_VENUE_MAP,
+    ])
+    mockUseVenueOffers(true)
+    renderVenueMapViewContainer()
+
+    await screen.findByTestId(`marker-${venuesFixture[0].venueId}`)
+
+    await pressVenueMarker(venuesFixture[1])
+    await waitFor(() => expect(screen.getByTestId('venueMapPreview')).toBeOnTheScreen())
+
+    fireGestureHandler(getByGestureTestId('flingGesture'), [
+      { state: State.BEGAN, absoluteY: 0 },
+      { state: State.ACTIVE, absoluteY: -10 },
+      { state: State.END, absoluteY: -30 },
+    ])
+
+    expect(mockNavigate).not.toHaveBeenCalled()
+  })
+
+  it('should deactivate navigation to Venue page when bottom sheet is open, pressing venue button and venue is not permanent', async () => {
     mockUseVenueOffers(true)
     setFeatureFlags([
-      RemoteStoreFeatureFlags.WIP_IS_OPEN_TO_PUBLIC,
       RemoteStoreFeatureFlags.WIP_OFFERS_IN_BOTTOM_SHEET,
       RemoteStoreFeatureFlags.WIP_VENUE_MAP,
     ])
@@ -322,7 +344,7 @@ describe('VenueMapViewContainer', () => {
     expect(screen.queryByTestId('RightFilled')).not.toBeOnTheScreen()
   })
 
-  it('should activate navigation to Venue page when bottom sheet is open, pressing venue button, wipIsOpenToPublic feature flag is true and venue is open to public', async () => {
+  it('should activate navigation to Venue page when bottom sheet is open, pressing venue button and venue is permanent', async () => {
     mockUseVenueOffers(true)
     setFeatureFlags([
       RemoteStoreFeatureFlags.WIP_IS_OPEN_TO_PUBLIC,

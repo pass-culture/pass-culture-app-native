@@ -60,7 +60,6 @@ export const OfferBody: FunctionComponent<Props> = ({
   const { navigate } = useNavigation<UseNavigationType>()
 
   const hasArtistPage = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ARTIST_PAGE)
-  const shouldUseIsOpenToPublic = useFeatureFlag(RemoteStoreFeatureFlags.WIP_IS_OPEN_TO_PUBLIC)
 
   const { user } = useAuthContext()
   const currency = useGetCurrencyToDisplay()
@@ -115,8 +114,6 @@ export const OfferBody: FunctionComponent<Props> = ({
     navigate('Artist', { id: artists[0].id })
   }
 
-  const isOpenToPublicVenue = offer.venue.isOpenToPublic
-
   const fullAddressOffer = formatFullAddress(
     offer.address?.street,
     offer.address?.postalCode,
@@ -130,7 +127,7 @@ export const OfferBody: FunctionComponent<Props> = ({
 
   const hasSameAddress = fullAddressOffer === fullAddressVenue
 
-  const hasVenuePage = shouldUseIsOpenToPublic ? isOpenToPublicVenue : offer.venue.isPermanent
+  const hasVenuePage = offer.venue.isPermanent
 
   return (
     <Container>
@@ -159,7 +156,7 @@ export const OfferBody: FunctionComponent<Props> = ({
         />
 
         <GroupWithSeparator
-          showTopComponent={shouldUseIsOpenToPublic ? isOpenToPublicVenue : offer.venue.isPermanent}
+          showTopComponent={hasVenuePage}
           TopComponent={
             isCinemaOffer || !hasSameAddress ? null : <OfferVenueButton venue={offer.venue} />
           }
