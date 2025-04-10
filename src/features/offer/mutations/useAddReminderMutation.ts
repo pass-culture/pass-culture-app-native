@@ -1,15 +1,42 @@
-import { useMutation } from 'react-query'
+import { useMutation, useQueryClient } from 'react-query'
 
 import { api } from 'api/api'
-import { MutationOptions } from 'features/offer/mutations/types'
+import { GetRemindersResponse } from 'api/gen'
+import { MutationOptions, RemindersMutationOnErrorArgs } from 'features/offer/mutations/types'
 import { QueryKeys } from 'libs/queryKeys'
-import { queryClient } from 'libs/react-query/queryClient'
 
-export const useAddReminderMutation = (options?: MutationOptions) =>
-  useMutation((offerId: number) => api.postNativeV1MeReminders({ offerId }), {
-    ...options,
-    onSuccess: () => {
-      queryClient.invalidateQueries(QueryKeys.REMINDERS)
-      options?.onSuccess?.()
+export const useAddReminderMutation = (options?: MutationOptions) => {
+  const queryClient = useQueryClient()
+
+  return useMutation((offerId: number) => api.postNativeV1MeReminders({ offerId }), {
+    onMutate: async (offerId) => {
+      await queryClient.cancelQueries([QueryKeys.REMINDERS])
+      const previousReminders = queryClient.getQueryData<GetRemindersResponse>([
+        QueryKeys.REMINDERS,
+      ])
+
+      const newReminder = {
+        id: Math.random(),
+        offer: { id: offerId },
+      }
+
+      const reminders = previousReminders?.reminders.length
+        ? [...previousReminders.reminders, newReminder]
+        : [newReminder]
+
+      queryClient.setQueryData<GetRemindersResponse>([QueryKeys.REMINDERS], {
+        reminders,
+      })
+
+      return {
+        previousReminders,
+      }
     },
+    onError: (args: RemindersMutationOnErrorArgs) => {
+      const { context, error } = args
+      queryClient.setQueryData([QueryKeys.REMINDERS], context?.previousReminders)
+      options?.onError?.(error)
+    },
+    onSettled: () => queryClient.invalidateQueries([QueryKeys.REMINDERS]),
   })
+}

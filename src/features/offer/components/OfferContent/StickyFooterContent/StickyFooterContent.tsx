@@ -19,7 +19,6 @@ export const StickyFooterContent: FC<Props> = (props) => {
         wording={props.hasReminder ? 'Désactiver le rappel' : 'Ajouter un rappel'}
         onPress={props.onPressReminderCTA}
         icon={props.hasReminder ? BellFilled : Bell}
-        isLoading={props.areRemindersLoading}
       />
       <NotificationAuthModal
         visible={props.reminderAuthModal.visible}

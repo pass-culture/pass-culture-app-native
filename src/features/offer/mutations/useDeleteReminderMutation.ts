@@ -1,8 +1,8 @@
 import { useMutation, useQueryClient } from 'react-query'
 
 import { api } from 'api/api'
-import { MutationOptions } from 'features/offer/mutations/types'
-import { GetReminderResponse } from 'features/offer/types'
+import { GetRemindersResponse } from 'api/gen'
+import { MutationOptions, RemindersMutationOnErrorArgs } from 'features/offer/mutations/types'
 import { QueryKeys } from 'libs/queryKeys'
 
 export const useDeleteReminderMutation = (options?: MutationOptions) => {
@@ -17,7 +17,7 @@ export const useDeleteReminderMutation = (options?: MutationOptions) => {
       */
       onMutate: async (reminder_id) => {
         await queryClient.cancelQueries([QueryKeys.REMINDERS])
-        const previousReminders = queryClient.getQueryData<GetReminderResponse>([
+        const previousReminders = queryClient.getQueryData<GetRemindersResponse>([
           QueryKeys.REMINDERS,
         ])
 
@@ -26,7 +26,7 @@ export const useDeleteReminderMutation = (options?: MutationOptions) => {
             (reminder) => reminder.id !== reminder_id
           )
           if (reminders)
-            queryClient.setQueryData<GetReminderResponse>([QueryKeys.REMINDERS], {
+            queryClient.setQueryData<GetRemindersResponse>([QueryKeys.REMINDERS], {
               reminders,
             })
         }
@@ -34,9 +34,10 @@ export const useDeleteReminderMutation = (options?: MutationOptions) => {
           previousReminders,
         }
       },
-      onError: (err, newReminders, context) => {
+      onError: (args: RemindersMutationOnErrorArgs) => {
+        const { context, error } = args
         queryClient.setQueryData([QueryKeys.REMINDERS], context?.previousReminders)
-        options?.onError?.(err)
+        options?.onError?.(error)
       },
       onSettled: () => queryClient.invalidateQueries([QueryKeys.REMINDERS]),
     }

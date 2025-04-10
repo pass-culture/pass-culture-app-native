@@ -4,5 +4,4 @@ export type StickyFooterNotificationsProps = {
   onPressReminderCTA: () => void
   hasReminder: boolean
   reminderAuthModal: ModalSettings
-  areRemindersLoading: boolean
 }

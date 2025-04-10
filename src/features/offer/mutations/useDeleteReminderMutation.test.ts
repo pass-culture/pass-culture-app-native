@@ -1,7 +1,7 @@
 import { QueryClient } from 'react-query'
 
+import { GetRemindersResponse } from 'api/gen'
 import { remindersResponse } from 'features/offer/fixtures/remindersResponse'
-import { GetReminderResponse } from 'features/offer/types'
 import { QueryKeys } from 'libs/queryKeys'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -14,23 +14,19 @@ jest.mock('libs/jwt/jwt')
 const reminderId = 1
 
 const cancelQueriesMock = jest.fn()
+const invalidateQueriesMock = jest.fn()
 
 let queryClient: QueryClient
 const setupWithReminders = (client: QueryClient) => {
   queryClient = client
   queryClient.setQueryData([QueryKeys.REMINDERS], remindersResponse)
   queryClient.cancelQueries = cancelQueriesMock
+  queryClient.invalidateQueries = invalidateQueriesMock
 }
-const expectedRemindersInCache = [
-  {
-    id: 2,
-    offer: { id: 20 },
-  },
-]
 
 describe('useDeleteReminderMutation', () => {
   beforeEach(() => {
-    mockServer.getApi<GetReminderResponse>('/v1/me/reminders', remindersResponse)
+    mockServer.getApi<GetRemindersResponse>('/v1/me/reminders', remindersResponse)
     mockServer.deleteApi(`/v1/me/reminders/${reminderId}`, {
       responseOptions: { statusCode: 201, data: {} },
     })
@@ -39,6 +35,13 @@ describe('useDeleteReminderMutation', () => {
   })
 
   it('should update the query cache optimistically on mutation', async () => {
+    const expectedRemindersInCache = [
+      {
+        id: 2,
+        offer: { id: 20 },
+      },
+    ]
+
     const { result } = renderUseDeleteReminderMutation()
 
     expect(queryClient.getQueryData([QueryKeys.REMINDERS])).toEqual(remindersResponse)
@@ -49,18 +52,21 @@ describe('useDeleteReminderMutation', () => {
 
     expect(cancelQueriesMock).toHaveBeenCalledWith([QueryKeys.REMINDERS])
 
-    const updatedCache = queryClient.getQueryData<GetReminderResponse>([QueryKeys.REMINDERS])
+    const updatedCache = queryClient.getQueryData<GetRemindersResponse>([QueryKeys.REMINDERS])
 
     expect(updatedCache?.reminders).toEqual(expectedRemindersInCache)
   })
 
   it('should revert the cache if mutation fails', async () => {
-    const onErrorMock = jest.fn()
+    const doRevertCache = jest.fn(() =>
+      queryClient.getQueryData<GetRemindersResponse>([QueryKeys.REMINDERS])
+    )
+
     mockServer.deleteApi(`/v1/me/reminders/${reminderId}`, {
       responseOptions: { statusCode: 500, data: { message: 'Server error' } },
     })
 
-    const { result } = renderUseDeleteReminderMutation({ onError: onErrorMock })
+    const { result } = renderUseDeleteReminderMutation({ onError: doRevertCache })
 
     expect(queryClient.getQueryData([QueryKeys.REMINDERS])).toEqual(remindersResponse)
 
@@ -68,10 +74,35 @@ describe('useDeleteReminderMutation', () => {
       result.current.mutate(reminderId)
     })
 
-    const cacheAfterError = queryClient.getQueryData<GetReminderResponse>([QueryKeys.REMINDERS])
+    expect(doRevertCache).toHaveBeenCalledTimes(1)
+  })
 
-    expect(cacheAfterError).toEqual(remindersResponse)
-    expect(onErrorMock).toHaveBeenCalledTimes(1)
+  it('should invalidate reminders query after successful mutation', async () => {
+    const { result } = renderUseDeleteReminderMutation()
+
+    await act(async () => {
+      result.current.mutate(reminderId)
+    })
+
+    await act(async () => expect(result.current.isSuccess).toBe(true))
+
+    expect(invalidateQueriesMock).toHaveBeenCalledWith([QueryKeys.REMINDERS])
+  })
+
+  it('should invalidate reminders query after mutation fails', async () => {
+    mockServer.deleteApi(`/v1/me/reminders/${reminderId}`, {
+      responseOptions: { statusCode: 500, data: { message: 'Server error' } },
+    })
+
+    const { result } = renderUseDeleteReminderMutation()
+
+    await act(async () => {
+      result.current.mutate(reminderId)
+    })
+
+    await act(async () => expect(result.current.isSuccess).toBe(false))
+
+    expect(invalidateQueriesMock).toHaveBeenCalledWith([QueryKeys.REMINDERS])
   })
 })
 

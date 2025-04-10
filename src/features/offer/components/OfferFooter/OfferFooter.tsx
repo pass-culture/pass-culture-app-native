@@ -41,7 +41,7 @@ export const OfferFooter: FC<OfferFooterProps> = ({
   const { data: reminder } = useGetRemindersQuery((data) => selectReminderByOfferId(data, offer.id))
   const hasReminder = !!reminder
 
-  const { mutate: addReminder, isLoading: isAddReminderLoading } = useAddReminderMutation({
+  const { mutate: addReminder } = useAddReminderMutation({
     onError: () => {
       showErrorSnackBar({
         message: 'L’offre n’a pas pu être ajoutée à tes rappels',
@@ -91,7 +91,6 @@ export const OfferFooter: FC<OfferFooterProps> = ({
         onPressReminderCTA={onPressReminderCTA}
         favoriteAuthModal={favoriteAuthModal}
         reminderAuthModal={reminderAuthModal}
-        areRemindersLoading={isAddReminderLoading}
       />
     )
   }
