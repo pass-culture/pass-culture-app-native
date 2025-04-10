@@ -8,7 +8,6 @@ import { Star } from 'ui/svg/Star'
 
 type TagConfig = {
   theme: typeof theme
-  maxLikesValue: number
   minLikesValue: number
   likesCount?: number
   chroniclesCount?: number
@@ -17,11 +16,10 @@ type TagConfig = {
 
 export function getTagConfig({
   theme,
-  maxLikesValue,
   minLikesValue,
-  likesCount,
-  chroniclesCount,
-  headlineCount,
+  likesCount = 0,
+  chroniclesCount = 0,
+  headlineCount = 0,
 }: TagConfig): InteractionTagProps | null {
   const headlineTagConfig = {
     label: 'Reco par les lieux',
@@ -39,21 +37,21 @@ export function getTagConfig({
     Icon: CustomBookClub,
   }
 
-  const hasHeadline = !!headlineCount
-  const hasChronicles = !!chroniclesCount
-  const hasLikes = !!likesCount
+  const hasLikes = likesCount > 0
+  const hasChronicles = chroniclesCount > 0
+  const hasHeadline = headlineCount > 0
 
-  if (hasHeadline && !hasChronicles) {
-    return likesCount && likesCount >= minLikesValue ? likesTagConfig : headlineTagConfig
-  }
+  const hasLikesAboveThreshold = likesCount >= minLikesValue
 
-  if (hasHeadline && hasChronicles) {
-    return likesCount && likesCount >= maxLikesValue ? likesTagConfig : bookClubTagConfig
-  }
+  if (hasLikesAboveThreshold) return likesTagConfig
 
-  if (hasLikes) return likesTagConfig
-  if (hasChronicles) return bookClubTagConfig
-  if (hasHeadline) return headlineTagConfig
+  if (hasHeadline && !hasChronicles && !hasLikesAboveThreshold) return headlineTagConfig
+
+  if (hasHeadline && hasChronicles && !hasLikesAboveThreshold) return bookClubTagConfig
+
+  if (hasHeadline && !hasChronicles && hasLikes && !hasLikesAboveThreshold) return headlineTagConfig
+
+  if (!hasHeadline && hasChronicles) return bookClubTagConfig
 
   return null
 }

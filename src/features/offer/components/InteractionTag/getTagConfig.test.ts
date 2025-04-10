@@ -3,99 +3,88 @@ import { theme } from 'theme'
 
 describe('getTagConfig', () => {
   it('should return null if no parameters are provided', () => {
-    expect(getTagConfig({ theme, minLikesValue: 20, maxLikesValue: 50 })).toEqual(null)
+    expect(getTagConfig({ theme, minLikesValue: 50 })).toEqual(null)
   })
 
-  it('should return the "Reco par les lieux" tag if headlineCount is set and chroniclesCount is not set', () => {
-    expect(getTagConfig({ theme, headlineCount: 1, minLikesValue: 20, maxLikesValue: 50 })).toEqual(
-      {
-        label: 'Reco par les lieux',
-        backgroundColor: theme.colors.goldLight100,
-        Icon: expect.anything(),
-      }
-    )
-  })
-
-  it('should return the "Reco par les lieux" tag if headlineCount is set but likesCount is lower than minLikesValues', () => {
-    expect(
-      getTagConfig({
-        theme,
-        headlineCount: 1,
-        likesCount: 10,
-        minLikesValue: 20,
-        maxLikesValue: 50,
-      })
-    ).toEqual({
+  it('should return the "Reco par les lieux" tag if headlineCount is set and chroniclesCount is not set and likes are below threshold', () => {
+    expect(getTagConfig({ theme, headlineCount: 1, minLikesValue: 50, likesCount: 10 })).toEqual({
       label: 'Reco par les lieux',
       backgroundColor: theme.colors.goldLight100,
       Icon: expect.anything(),
     })
   })
 
-  it('should return the "j’aime" tag if headlineCount is set and likesCount is >= minLikesValue', () => {
+  it('should return the "j’aime" tag if headlineCount is set and likesCount >= minLikesValue', () => {
     expect(
       getTagConfig({
         theme,
         headlineCount: 1,
-        likesCount: 20,
-        minLikesValue: 20,
-        maxLikesValue: 50,
-      })
-    ).toEqual({
-      label: '20 j’aime',
-      backgroundColor: theme.colors.white,
-      Icon: expect.anything(),
-    })
-  })
-
-  it('should return the "Reco du Book Club" tag if both headlineCount and chroniclesCount are set and likesCount is < maxLikesValue', () => {
-    expect(
-      getTagConfig({
-        theme,
-        headlineCount: 1,
-        chroniclesCount: 1,
-        likesCount: 40,
-        minLikesValue: 20,
-        maxLikesValue: 50,
-      })
-    ).toEqual({
-      label: 'Reco du Book Club',
-      backgroundColor: theme.colors.skyBlueLight,
-      Icon: expect.anything(),
-    })
-  })
-
-  it('should return the "j’aime" tag if both headlineCount and chroniclesCount are set and likesCount is >= maxLikesValue', () => {
-    expect(
-      getTagConfig({
-        theme,
-        headlineCount: 1,
-        chroniclesCount: 1,
         likesCount: 50,
-        minLikesValue: 20,
-        maxLikesValue: 50,
+        minLikesValue: 50,
       })
     ).toEqual({
       label: '50 j’aime',
-      backgroundColor: theme.colors.white,
+      backgroundColor: theme.colors.greyLight,
       Icon: expect.anything(),
     })
   })
 
-  it('should return the "j’aime" tag if likesCount is set without headlineCount or chroniclesCount', () => {
-    expect(getTagConfig({ theme, likesCount: 15, minLikesValue: 20, maxLikesValue: 50 })).toEqual({
-      label: '15 j’aime',
-      backgroundColor: theme.colors.white,
-      Icon: expect.anything(),
-    })
-  })
-
-  it('should return the "Reco du Book Club" tag if chroniclesCount is set without headlineCount or likesCount', () => {
+  it('should return the "Reco du Book Club" tag if headlineCount and chroniclesCount are set and likesCount is below threshold', () => {
     expect(
-      getTagConfig({ theme, chroniclesCount: 1, minLikesValue: 20, maxLikesValue: 50 })
+      getTagConfig({
+        theme,
+        headlineCount: 1,
+        chroniclesCount: 1,
+        likesCount: 30,
+        minLikesValue: 50,
+      })
     ).toEqual({
       label: 'Reco du Book Club',
       backgroundColor: theme.colors.skyBlueLight,
+      Icon: expect.anything(),
+    })
+  })
+
+  it('should return the "j’aime" tag if headlineCount and chroniclesCount are set and likesCount >= minLikesValue', () => {
+    expect(
+      getTagConfig({
+        theme,
+        headlineCount: 1,
+        chroniclesCount: 1,
+        likesCount: 100,
+        minLikesValue: 50,
+      })
+    ).toEqual({
+      label: '100 j’aime',
+      backgroundColor: theme.colors.greyLight,
+      Icon: expect.anything(),
+    })
+  })
+
+  it('should return the "j’aime" tag if only likesCount is set and >= minLikesValue', () => {
+    expect(getTagConfig({ theme, likesCount: 75, minLikesValue: 50 })).toEqual({
+      label: '75 j’aime',
+      backgroundColor: theme.colors.greyLight,
+      Icon: expect.anything(),
+    })
+  })
+
+  it('should return null if only likesCount is set and < minLikesValue', () => {
+    expect(getTagConfig({ theme, likesCount: 10, minLikesValue: 50 })).toEqual(null)
+  })
+
+  it('should return the "Reco du Book Club" tag if only chroniclesCount is set', () => {
+    expect(getTagConfig({ theme, chroniclesCount: 1, minLikesValue: 50 })).toEqual({
+      label: 'Reco du Book Club',
+      backgroundColor: theme.colors.skyBlueLight,
+      Icon: expect.anything(),
+    })
+  })
+
+  it('should return the "Reco par les lieux" tag if only headlineCount is set', () => {
+    expect(getTagConfig({ theme, headlineCount: 1, minLikesValue: 50 })).toEqual({
+      label: 'Reco par les lieux',
+      backgroundColor: theme.colors.goldLight100,
       Icon: expect.anything(),
     })
   })
