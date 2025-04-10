@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<AuthenticationModal /> should match previous snapshot 1`] = `
+exports[`<AuthenticationModal /> should render correctly 1`] = `
 <Modal
   accessibilityLabelledBy="testUuidV4"
   accessibilityModal={true}
@@ -382,7 +382,7 @@ pour réserver l’offre
                   ]
                 }
               >
-                Tu as entre 15 et 18 ans ?
+                Tu as 17 ou 18 ans ?
               </Text>
               <View
                 numberOfSpaces={2}

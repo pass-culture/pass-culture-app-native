@@ -76,7 +76,7 @@ const variantConfig: Variants<typeof AgeButton> = [
     props: {
       children: TextExample({}),
       navigateTo: {
-        screen: 'EligibleUserAgeSelection',
+        screen: 'AgeSelectionFork',
         params: { type: TutorialTypes.ONBOARDING },
       },
     },
@@ -86,7 +86,7 @@ const variantConfig: Variants<typeof AgeButton> = [
     props: {
       children: TextExample({}),
       navigateTo: {
-        screen: 'EligibleUserAgeSelection',
+        screen: 'AgeSelectionFork',
         params: { type: TutorialTypes.ONBOARDING },
       },
       dense: true,
@@ -97,7 +97,7 @@ const variantConfig: Variants<typeof AgeButton> = [
     props: {
       children: TextExample({ withSubtitle: true }),
       navigateTo: {
-        screen: 'EligibleUserAgeSelection',
+        screen: 'AgeSelectionFork',
         params: { type: TutorialTypes.ONBOARDING },
       },
     },
@@ -107,7 +107,7 @@ const variantConfig: Variants<typeof AgeButton> = [
     props: {
       children: TextExample({ withSubtitle: true }),
       navigateTo: {
-        screen: 'EligibleUserAgeSelection',
+        screen: 'AgeSelectionFork',
         params: { type: TutorialTypes.ONBOARDING },
       },
       dense: true,
@@ -118,7 +118,7 @@ const variantConfig: Variants<typeof AgeButton> = [
     props: {
       children: TextExample({}),
       navigateTo: {
-        screen: 'EligibleUserAgeSelection',
+        screen: 'AgeSelectionFork',
         params: { type: TutorialTypes.ONBOARDING },
       },
       Icon: <BicolorAll />,
@@ -129,7 +129,7 @@ const variantConfig: Variants<typeof AgeButton> = [
     props: {
       children: TextExample({ withSubtitle: true }),
       navigateTo: {
-        screen: 'EligibleUserAgeSelection',
+        screen: 'AgeSelectionFork',
         params: { type: TutorialTypes.ONBOARDING },
       },
       Icon: <BicolorAll />,
@@ -140,7 +140,7 @@ const variantConfig: Variants<typeof AgeButton> = [
     props: {
       children: TextExample({ withSubtitle: true }),
       navigateTo: {
-        screen: 'EligibleUserAgeSelection',
+        screen: 'AgeSelectionFork',
         params: { type: TutorialTypes.ONBOARDING },
       },
       dense: true,

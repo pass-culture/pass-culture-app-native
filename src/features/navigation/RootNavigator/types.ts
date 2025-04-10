@@ -89,15 +89,12 @@ export type CulturalSurveyRootStackParamList = {
 
 export type TutorialRootStackParamList = {
   AgeSelectionFork: TutorialType
-  AgeSelectionOther: TutorialType
-  EligibleUserAgeSelection: TutorialType
   OnboardingAgeInformation: { age: 15 | 16 | 17 | 18 }
   OnboardingGeneralPublicWelcome: undefined
   OnboardingGeolocation: undefined
   OnboardingNotEligible: undefined
   OnboardingWelcome: undefined
-  ProfileTutorialAgeInformation: { age: 15 | 16 | 17 | 18 }
-  ProfileTutorialAgeInformationCreditV3: undefined
+  ProfileTutorialAgeInformationCredit: undefined
 }
 
 export type TrustedDeviceRootStackParamList = {

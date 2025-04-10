@@ -202,7 +202,7 @@ exports[`<BeneficiaryAccountCreated/> should render correctly for 18 year-old be
             ]
           }
         >
-          300 € viennent d’être crédités sur ton compte pass Culture
+          150 € viennent d’être crédités sur ton compte pass Culture
         </Text>
       </View>
       <View
@@ -322,7 +322,7 @@ exports[`<BeneficiaryAccountCreated/> should render correctly for 18 year-old be
               ]
             }
           >
-            300 €
+            150 €
           </Text>
         </View>
         <View
@@ -348,7 +348,7 @@ exports[`<BeneficiaryAccountCreated/> should render correctly for 18 year-old be
             ]
           }
         >
-          Tu as deux ans pour profiter de ton crédit.
+          Tu as jusqu’à la veille de tes 21 ans pour utiliser tout ton crédit.
         </Text>
       </View>
       <View
@@ -677,7 +677,7 @@ exports[`<BeneficiaryAccountCreated/> should render correctly for underage benef
             ]
           }
         >
-          300 € viennent d’être crédités sur ton compte pass Culture
+          50 € viennent d’être crédités sur ton compte pass Culture
         </Text>
       </View>
       <View
@@ -797,7 +797,7 @@ exports[`<BeneficiaryAccountCreated/> should render correctly for underage benef
               ]
             }
           >
-            300 €
+            50 €
           </Text>
         </View>
         <View
@@ -823,7 +823,7 @@ exports[`<BeneficiaryAccountCreated/> should render correctly for underage benef
             ]
           }
         >
-          Tu as jusqu’à la veille de tes 18 ans pour profiter de ton crédit.
+          Tu as jusqu’à la veille de tes 21 ans pour utiliser tout ton crédit.
         </Text>
       </View>
       <View

@@ -1,17 +1,11 @@
 import React, { useEffect } from 'react'
-import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { storage } from 'libs/storage'
-import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
-import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
-import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
 import { useDepositAmountsByAge } from 'shared/user/useDepositAmountsByAge'
 import TutorialPassLogo from 'ui/animations/eighteen_birthday.json'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { ClockFilled } from 'ui/svg/icons/ClockFilled'
-import { Typo } from 'ui/theme'
 
 export function EighteenBirthday() {
   const { user } = useAuthContext()
@@ -34,9 +28,8 @@ export function EighteenBirthday() {
         wording: 'Plus tard',
         navigateTo: { screen: 'TabNavigator', params: { screen: 'Home' } },
         icon: ClockFilled,
-      }}>
-      <ResetText />
-    </GenericInfoPage>
+      }}
+    />
   )
 }
 
@@ -53,20 +46,3 @@ const useGetPageWording = (userRequiresIdCheck?: boolean) => {
     buttonText: 'Confirmer mes informations',
   }
 }
-
-function ResetText() {
-  const { data: settings } = useSettingsContext()
-  const enableCreditV3 = settings?.wipEnableCreditV3
-
-  const currency = useGetCurrencyToDisplay()
-  const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
-  const zero = formatCurrencyFromCents(0, currency, euroToPacificFrancRate)
-
-  if (enableCreditV3) return null
-
-  return <StyledBodyAccentXs>Ton crédit précédent a été remis à {zero}.</StyledBodyAccentXs>
-}
-
-const StyledBodyAccentXs = styled(Typo.BodyAccentXs)({
-  textAlign: 'center',
-})

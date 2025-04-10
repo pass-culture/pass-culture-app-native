@@ -6,13 +6,11 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { SubscriptionStepperResponseV2 } from 'api/gen'
 import * as Auth from 'features/auth/context/AuthContext'
 import { CURRENT_DATE } from 'features/auth/fixtures/fixtures'
-import { setSettings } from 'features/auth/tests/setSettings'
 import { FavoritesWrapper } from 'features/favorites/context/FavoritesWrapper'
 import { initialFavoritesState } from 'features/favorites/context/reducer'
 import { subscriptionStepperFixture } from 'features/identityCheck/fixtures/subscriptionStepperFixture'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { domains_exhausted_credit_v3 } from 'features/profile/fixtures/domainsCredit'
-import { TutorialTypes } from 'features/tutorial/enums'
 import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
@@ -310,42 +308,14 @@ describe('Profile component', () => {
   })
 
   describe('help section', () => {
-    beforeEach(() => {
-      setSettings()
-    })
-
-    it('should navigate to EligibleUserAgeSelection when tutorial row is clicked and user is not logged in', async () => {
-      mockedUseAuthContext.mockReturnValueOnce({ isLoggedIn: false })
-      renderProfile()
-
-      const howItWorkButton = screen.getByText('Comment ça marche\u00a0?')
-      await user.press(howItWorkButton)
-
-      expect(navigate).toHaveBeenCalledWith('EligibleUserAgeSelection', {
-        type: TutorialTypes.PROFILE_TUTORIAL,
-      })
-    })
-
-    it('should navigate to Age Information when tutorial row is clicked and user is logged in', async () => {
+    it('should navigate to Age Information when tutorial row is clicked, user is logged in', async () => {
       mockdate.set(CURRENT_DATE)
       renderProfile()
 
       const howItWorkButton = screen.getByText('Comment ça marche\u00a0?')
       await user.press(howItWorkButton)
 
-      expect(navigate).toHaveBeenCalledWith('ProfileTutorialAgeInformation', { age: 18 })
-    })
-
-    it('should navigate to Age Information V3 when tutorial row is clicked, user is logged in and enableCreditV3 is true', async () => {
-      setSettings({ wipEnableCreditV3: true })
-
-      mockdate.set(CURRENT_DATE)
-      renderProfile()
-
-      const howItWorkButton = screen.getByText('Comment ça marche\u00a0?')
-      await user.press(howItWorkButton)
-
-      expect(navigate).toHaveBeenCalledWith('ProfileTutorialAgeInformationCreditV3', undefined)
+      expect(navigate).toHaveBeenCalledWith('ProfileTutorialAgeInformationCredit', undefined)
     })
 
     it('should navigate when the faq row is clicked', async () => {

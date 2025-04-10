@@ -26,7 +26,7 @@ import { Spacer, Typo, getSpacing } from 'ui/theme'
 import { LINE_BREAK } from 'ui/theme/constants'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
-export const ProfileTutorialAgeInformationCreditV3: FunctionComponent = () => {
+export const ProfileTutorialAgeInformationCredit: FunctionComponent = () => {
   const { goBack } = useNavigation<UseNavigationType>()
   const { onScroll, headerTransition } = useOpacityTransition()
   const headerHeight = useGetHeaderHeight()

@@ -11,11 +11,11 @@ describe('<EligibleFooter />', () => {
     setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])
   })
 
-  it('should display correct deposit for 15 years old', () => {
-    render(<EligibleFooter age={15} />)
+  it('should display correct deposit for 17 years old', () => {
+    render(<EligibleFooter age={17} />)
 
     expect(
-      screen.getByText('Vérifie ton identité et active tes 20 € de crédit dès maintenant !')
+      screen.getByText('Vérifie ton identité et active tes 50 € de crédit dès maintenant !')
     ).toBeOnTheScreen()
   })
 
@@ -23,7 +23,7 @@ describe('<EligibleFooter />', () => {
     render(<EligibleFooter age={18} />)
 
     expect(
-      screen.getByText('Vérifie ton identité et active tes 300 € de crédit dès maintenant !')
+      screen.getByText('Vérifie ton identité et active tes 150 € de crédit dès maintenant !')
     ).toBeOnTheScreen()
   })
 

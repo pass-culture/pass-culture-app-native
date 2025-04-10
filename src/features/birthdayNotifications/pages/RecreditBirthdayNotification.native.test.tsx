@@ -44,30 +44,4 @@ describe('<RecreditBirthdayNotification />', () => {
 
     expect(recreditText).toBeOnTheScreen()
   })
-
-  it('should have correct credit information text', async () => {
-    render(reactQueryProviderHOC(<RecreditBirthdayNotification />))
-
-    const recreditText = screen.getByText(
-      'Tu as jusqu’à la veille de tes 18 ans pour profiter de ton crédit.'
-    )
-
-    expect(recreditText).toBeOnTheScreen()
-  })
-
-  describe('when enableCreditV3 activated', () => {
-    beforeEach(() => {
-      setSettings({ wipEnableCreditV3: true })
-    })
-
-    it('should have correct credit information text', async () => {
-      render(reactQueryProviderHOC(<RecreditBirthdayNotification />))
-
-      const recreditText = screen.getByText(
-        'Tu as jusqu’à la veille de tes 21 ans pour utiliser tout ton crédit.'
-      )
-
-      expect(recreditText).toBeOnTheScreen()
-    })
-  })
 })

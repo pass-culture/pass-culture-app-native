@@ -42,7 +42,6 @@ import { OfferPreview } from 'features/offer/pages/OfferPreview/OfferPreview'
 import { ChangeEmailExpiredLink } from 'features/profile/pages/ChangeEmail/ChangeEmailExpiredLink'
 import { SearchFilter } from 'features/search/pages/SearchFilter/SearchFilter'
 import { OnboardingSubscription } from 'features/subscription/page/OnboardingSubscription'
-import { ProfileTutorialAgeInformation } from 'features/tutorial/pages/profileTutorial/ProfileTutorialAgeInformation'
 import { Venue } from 'features/venue/pages/Venue/Venue'
 import { VenuePreviewCarousel } from 'features/venue/pages/VenuePreviewCarousel/VenuePreviewCarousel'
 import { VenueMap } from 'features/venueMap/pages/VenueMap/VenueMap'
@@ -265,12 +264,6 @@ export const rootRoutes: RootRoute[] = [
     component: NotYetUnderageEligibility,
     path: 'cest-pour-bientot',
     options: { title: 'C’est pour bientôt' },
-  },
-  {
-    name: 'Tutorial',
-    component: ProfileTutorialAgeInformation,
-    path: 'comment-ca-marche',
-    options: { title: 'Tutoriel "Comment ça marche"' },
   },
   {
     name: 'Venue',

@@ -2,7 +2,6 @@ import React, { FunctionComponent, useCallback } from 'react'
 import styled from 'styled-components/native'
 
 import { AuthenticationButton } from 'features/auth/components/AuthenticationButton/AuthenticationButton'
-import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
 import { ButtonWithLinearGradient } from 'ui/components/buttons/buttonWithLinearGradient/ButtonWithLinearGradient'
@@ -26,10 +25,6 @@ export const AuthenticationModal: FunctionComponent<Props> = ({
   offerId,
   from,
 }) => {
-  const { data: settings } = useSettingsContext()
-  const enableCreditV3 = settings?.wipEnableCreditV3
-  const title = `Tu as ${enableCreditV3 ? '17 ou 18' : 'entre 15 et 18'} ans\u00a0?`
-
   const closeModal = useCallback(() => {
     analytics.logQuitAuthenticationModal(offerId)
     hideModal()
@@ -52,7 +47,7 @@ export const AuthenticationModal: FunctionComponent<Props> = ({
       title={'Identifie-toi' + LINE_BREAK + 'pour réserver l’offre'}
       Illustration={BicolorUserIdentification}
       hideModal={closeModal}>
-      <Typo.BodyAccent>{title}</Typo.BodyAccent>
+      <Typo.BodyAccent>Tu as 17 ou 18 ans&nbsp;?</Typo.BodyAccent>
       <Spacer.Column numberOfSpaces={2} />
       <StyledBody>
         Identifie-toi pour bénéficier de ton crédit et profiter des offres culturelles.

@@ -112,7 +112,7 @@ describe('ProfileHeader', () => {
 
     expect(
       screen.getByText(
-        'Envie d’explorer des offres culturelles ou de débloquer ton crédit si tu as entre 15 et 18 ans ?'
+        'Envie d’explorer des offres culturelles ou de débloquer ton crédit si tu as 17 ou 18 ans ?'
       )
     ).toBeOnTheScreen()
   })
