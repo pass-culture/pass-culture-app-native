@@ -6,7 +6,7 @@ export type MutationOptions = {
   onError?: (error: unknown) => void
 }
 
-export type RemindersMutationContext = {
+type RemindersMutationContext = {
   previousReminders: GetRemindersResponse | undefined
 }
 

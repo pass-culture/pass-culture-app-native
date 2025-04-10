@@ -83,7 +83,6 @@ const renderStickyFooterContent = ({
       onPressReminderCTA={jest.fn()}
       favoriteAuthModal={favoriteAuthModal}
       reminderAuthModal={reminderAuthModal}
-      areRemindersLoading={false}
     />
   )
 }
