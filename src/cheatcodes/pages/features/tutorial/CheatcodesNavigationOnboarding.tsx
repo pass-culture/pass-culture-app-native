@@ -26,16 +26,6 @@ export function CheatcodesNavigationOnboarding(): React.JSX.Element {
       />
       <LinkToScreen
         screen="OnboardingAgeInformation"
-        title="AgeInfo - 15 ans"
-        navigationParams={{ age: 15 }}
-      />
-      <LinkToScreen
-        screen="OnboardingAgeInformation"
-        title="AgeInfo - 16 ans"
-        navigationParams={{ age: 16 }}
-      />
-      <LinkToScreen
-        screen="OnboardingAgeInformation"
         title="AgeInfo - 17 ans"
         navigationParams={{ age: 17 }}
       />
