@@ -4,21 +4,17 @@ import React, { useCallback } from 'react'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { TutorialTypes } from 'features/tutorial/enums'
 import { analytics } from 'libs/analytics/provider'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useLocation } from 'libs/location'
 import GeolocationAnimation from 'ui/animations/geolocalisation.json'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 
 export const OnboardingGeolocation = () => {
-  const isPassForAllEnabled = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_PASS_FOR_ALL)
   const { navigate } = useNavigation<UseNavigationType>()
   const { requestGeolocPermission } = useLocation()
 
   const navigateToNextScreen = useCallback(() => {
-    const nextScreen = isPassForAllEnabled ? 'AgeSelectionFork' : 'EligibleUserAgeSelection'
-    navigate(nextScreen, { type: TutorialTypes.ONBOARDING })
-  }, [isPassForAllEnabled, navigate])
+    navigate('AgeSelectionFork', { type: TutorialTypes.ONBOARDING })
+  }, [navigate])
 
   const onSkip = useCallback(() => {
     analytics.logOnboardingGeolocationClicked({ type: 'skipped' })

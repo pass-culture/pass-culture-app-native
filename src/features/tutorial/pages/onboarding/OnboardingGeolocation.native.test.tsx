@@ -25,25 +25,10 @@ const user = userEvent.setup()
 jest.useFakeTimers()
 
 describe('OnboardingGeolocation', () => {
-  beforeEach(() => {
-    setFeatureFlags()
-  })
-
   it('should render correctly', () => {
     render(<OnboardingGeolocation />)
 
     expect(screen).toMatchSnapshot()
-  })
-
-  it('should redirect to EligibleUserAgeSelection when "Passer" is clicked', async () => {
-    render(<OnboardingGeolocation />)
-
-    const button = screen.getByLabelText('Passer à la page suivante')
-    await user.press(button)
-
-    expect(navigate).toHaveBeenCalledWith('EligibleUserAgeSelection', {
-      type: TutorialTypes.ONBOARDING,
-    })
   })
 
   it('should redirect to AgeSelectionFork when "Passer" is clicked when feature flag passForAll is enable', async () => {

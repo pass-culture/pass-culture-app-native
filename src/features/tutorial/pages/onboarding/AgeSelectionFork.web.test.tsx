@@ -4,7 +4,7 @@ import React from 'react'
 import { useRoute } from '__mocks__/@react-navigation/native'
 import { TutorialRootStackParamList } from 'features/navigation/RootNavigator/types'
 import { TutorialTypes } from 'features/tutorial/enums'
-import { AgeSelectionFork } from 'features/tutorial/pages/AgeSelectionFork'
+import { AgeSelectionFork } from 'features/tutorial/pages/onboarding/AgeSelectionFork'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { checkAccessibilityFor, render } from 'tests/utils/web'
 
