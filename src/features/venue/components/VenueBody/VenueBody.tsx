@@ -28,6 +28,7 @@ interface Props {
   playlists: GtlPlaylistData[]
   headlineOfferData?: HeadlineOfferData | null
   arePlaylistsLoading: boolean
+  enableAccesLibre?: boolean
 }
 
 export const VenueBody: FunctionComponent<Props> = ({
@@ -37,6 +38,7 @@ export const VenueBody: FunctionComponent<Props> = ({
   playlists,
   headlineOfferData,
   arePlaylistsLoading,
+  enableAccesLibre,
 }) => {
   const currency = useGetCurrencyToDisplay()
   const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
@@ -83,7 +85,7 @@ export const VenueBody: FunctionComponent<Props> = ({
         />
       </React.Fragment>
     ),
-    [Tab.INFOS]: <PracticalInformation venue={venue} />,
+    [Tab.INFOS]: <PracticalInformation venue={venue} enableAccesLibre={enableAccesLibre} />,
   }
 
   return (

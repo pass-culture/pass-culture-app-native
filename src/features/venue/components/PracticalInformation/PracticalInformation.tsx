@@ -1,69 +1,106 @@
-import React, { FunctionComponent } from 'react'
+import React, { FunctionComponent, ReactNode, useMemo } from 'react'
 import styled from 'styled-components/native'
 
 import { VenueResponse } from 'api/gen'
 import { ContactBlock } from 'features/venue/components/ContactBlock/ContactBlock'
 import { NoInformationPlaceholder } from 'features/venue/components/Placeholders/NoInformationPlaceholder'
-import { AccessibilityBlock } from 'shared/accessibility/AccessibilityBlock'
+import { isSectionWithBody } from 'features/venue/helpers/isSectionWithBody/isSectionWithBody'
+import { BasicAccessibilityInfo } from 'ui/components/accessibility/BasicAccessibilityInfo'
+import { DetailedAccessibilityInfo } from 'ui/components/accessibility/DetailedAccessibilityInfo'
 import { Separator } from 'ui/components/Separator'
 import { Typo, getSpacing } from 'ui/theme'
 
 import { OpeningHours } from '../OpeningHours/OpeningHours'
 
-type Props = { venue: VenueResponse }
-type Section = { title: string; body: React.JSX.Element; shouldBeDisplayed: boolean }
+type Props = {
+  venue: VenueResponse
+  enableAccesLibre?: boolean
+}
 
-export const PracticalInformation: FunctionComponent<Props> = ({ venue }) => {
-  const sections: Section[] = [
+export const PracticalInformation: FunctionComponent<Props> = ({ venue, enableAccesLibre }) => {
+  const {
+    withdrawalDetails,
+    description,
+    contact,
+    isOpenToPublic,
+    accessibility,
+    openingHours,
+    externalAccessibilityData,
+    externalAccessibilityId,
+    externalAccessibilityUrl,
+  } = venue
+
+  const shouldDisplayDetailedAccessibility =
+    enableAccesLibre &&
+    !!externalAccessibilityUrl &&
+    !!externalAccessibilityData &&
+    !!externalAccessibilityId
+
+  const shouldDisplayBasicAccessibility =
+    !!isOpenToPublic &&
+    !!accessibility &&
+    Object.values(accessibility).some((value) => value != null)
+
+  const accessibilitySection = useMemo(() => {
+    if (shouldDisplayDetailedAccessibility) {
+      return (
+        <DetailedAccessibilityInfo
+          url={externalAccessibilityUrl}
+          accessibilities={externalAccessibilityData}
+          acceslibreId={externalAccessibilityId}
+        />
+      )
+    }
+    if (shouldDisplayBasicAccessibility) {
+      return <BasicAccessibilityInfo accessibility={accessibility} />
+    }
+    return null
+  }, [
+    shouldDisplayDetailedAccessibility,
+    shouldDisplayBasicAccessibility,
+    externalAccessibilityUrl,
+    externalAccessibilityData,
+    externalAccessibilityId,
+    accessibility,
+  ])
+
+  const sections = [
     {
       title: 'Modalités de retrait',
-      body: <Typo.Body>{venue.withdrawalDetails}</Typo.Body>,
-      shouldBeDisplayed: !!venue.withdrawalDetails,
+      body: <Typo.Body>{withdrawalDetails}</Typo.Body>,
+      shouldBeDisplayed: !!withdrawalDetails,
     },
     {
       title: 'Description',
-      body: <Typo.Body>{venue.description}</Typo.Body>,
-      shouldBeDisplayed: !!venue.description,
+      body: <Typo.Body>{description}</Typo.Body>,
+      shouldBeDisplayed: !!description,
     },
     {
       title: 'Contact',
       body: <ContactBlock venue={venue} />,
-      shouldBeDisplayed:
-        !!venue.contact &&
-        !!(venue.contact.phoneNumber || venue.contact.email || venue.contact.website),
+      shouldBeDisplayed: !!contact && !!(contact.phoneNumber || contact.email || contact.website),
     },
     {
       title: 'Accessibilité',
-      body: (
-        <AccessibilityBlock
-          basicAccessibility={venue.accessibility}
-          detailedAccessibilityUrl={venue.externalAccessibilityUrl}
-          detailedAccessibilityData={venue.externalAccessibilityData}
-          detailedAccessibilityId={venue.externalAccessibilityId}
-        />
-      ),
-      shouldBeDisplayed:
-        !!venue.isOpenToPublic &&
-        !!venue.accessibility &&
-        Object.values(venue.accessibility).some((value) => value !== null && value !== undefined),
+      body: accessibilitySection,
+      shouldBeDisplayed: !!accessibilitySection,
     },
     {
       title: 'Horaires d’ouverture',
-      body: <OpeningHours openingHours={venue.openingHours} />,
-      shouldBeDisplayed: !!venue.isOpenToPublic && !!venue.openingHours,
+      body: <OpeningHours openingHours={openingHours} />,
+      shouldBeDisplayed: !!isOpenToPublic && !!openingHours,
     },
-  ]
-  const sectionsToDisplay = sections.filter((section) => section.shouldBeDisplayed)
+  ].filter(isSectionWithBody)
 
-  if (sectionsToDisplay.length === 0) {
+  if (sections.length === 0) {
     return <NoInformationPlaceholder />
   }
 
   return (
     <Container>
-      {sectionsToDisplay.map((section, index) => (
+      {sections.map((section, index) => (
         <React.Fragment key={`${section.title}-${index}`}>
-          <Section title={section.title}>{section.body}</Section>
+          <SectionComponent title={section.title}>{section.body}</SectionComponent>
           <Separator.Horizontal />
         </React.Fragment>
       ))}
@@ -76,7 +113,7 @@ const Container = styled.View(({ theme }) => ({
   marginVertical: getSpacing(2),
 }))
 
-const Section: FunctionComponent<{ title: string; children?: React.JSX.Element }> = ({
+const SectionComponent: FunctionComponent<{ title: string; children?: ReactNode }> = ({
   title,
   children,
 }) => (
