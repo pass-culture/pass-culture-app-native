@@ -8,31 +8,48 @@ const ruleTester = new RuleTester({
   },
 })
 
-// Simuler différents chemins de fichiers
 const mockContext = {
   getFilename: () => '',
   getSourceCode: () => ({ ast: {} }),
 }
 
-const createTest = (filename, shouldError) => ({
+const createValidTest = (filename) => ({
   code: '// test',
   filename,
-  errors: shouldError ? [{ messageId: 'mustBeInQueriesFolder' }] : [],
+  errors: [],
 })
 
+const createInvalidTest = (filename) => ({
+  code: '// test',
+  filename,
+  errors: [{ messageId: 'mustBeInQueriesFolder' }],
+})
+
+const validFilenames = [
+  '/src/queries/useGetDataQuery.js',
+  '/src/queries/nested/folder/useGetDataQuery.js',
+  '/src/queries/useUpdateDataMutation.js',
+  '/src/queries/nested/folder/useUpdateDataMutation.js',
+  '/src/queries/useGetDataQuery.ts',
+  '/src/features/offers/queries/useGetDataQuery.ts',
+  '/src/queries/useUpdateDataMutation.tsx',
+  '/src/queries/nested/folder/useUpdateDataMutation.tsx',
+  '/src/components/Button.tsx',
+  '/src/queries/Button.tsx',
+]
+
+const invalidFilenames = [
+  '/src/components/useGetDataQuery.js',
+  '/src/useGetDataQuery.js',
+  '/src/useUpdateDataMutation.js',
+  '/src/components/useUpdateDataMutation.js',
+  '/src/components/useGetDataQuery.ts',
+  '/src/useGetDataQuery.ts',
+  '/src/useUpdateDataMutation.tsx',
+  '/src/components/useUpdateDataMutation.tsx',
+]
+
 ruleTester.run('queries-must-be-in-queries-folder', rule, {
-  valid: [
-    createTest('/src/queries/useGetDataQuery.js', false),
-    createTest('/src/queries/nested/folder/useGetDataQuery.js', false),
-    createTest('/src/queries/useUpdateDataMutation.js', false),
-    createTest('/src/queries/nested/folder/useUpdateDataMutation.js', false),
-    createTest('/src/components/Button.js', false),
-    createTest('/src/queries/Button.js', false),
-  ],
-  invalid: [
-    createTest('/src/components/useGetDataQuery.js', true),
-    createTest('/src/useGetDataQuery.js', true),
-    createTest('/src/useUpdateDataMutation.js', true),
-    createTest('/src/components/useUpdateDataMutation.js', true),
-  ],
+  valid: validFilenames.map(createValidTest),
+  invalid: invalidFilenames.map(createInvalidTest),
 })

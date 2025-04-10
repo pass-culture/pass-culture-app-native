@@ -147,5 +147,21 @@ ruleTester.run('queries-only-in-use-query-functions', rule, {
       `,
       errors: [{ messageId: 'forbiddenUseMutation' }],
     },
+    {
+      code: `
+        const useGetDataQuery = () => {
+          useMutation()
+        }
+      `,
+      errors: [{ messageId: 'forbiddenUseMutation' }],
+    },
+    {
+      code: `
+        const useUpdateDataMutation = () => {
+          useQuery()
+        }
+      `,
+      errors: [{ messageId: 'forbiddenUseQuery' }],
+    },
   ],
 })

@@ -1,3 +1,7 @@
+const path = require('path')
+
+const QUERY_OR_MUTATION_FILE_PATTERN = /(use.*(Query|Mutation)|(Query|Mutation))\.(ts|tsx|js)$/
+
 module.exports = {
   name: 'queries-must-be-in-queries-folder',
   meta: {
@@ -15,10 +19,10 @@ module.exports = {
 
   create(context) {
     const filename = context.getFilename()
-    const isQueryOrMutationFile = /(Query|Mutation)\.(js|jsx|ts|tsx)$/.test(filename)
+    const isQueryOrMutationFile = QUERY_OR_MUTATION_FILE_PATTERN.test(filename)
 
     if (isQueryOrMutationFile) {
-      const normalizedPath = filename.replace(/\\/g, '/')
+      const normalizedPath = path.normalize(filename)
       const hasQueriesFolder = normalizedPath.includes('/queries/')
 
       if (!hasQueriesFolder) {

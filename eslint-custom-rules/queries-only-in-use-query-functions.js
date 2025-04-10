@@ -1,3 +1,45 @@
+function isInValidFunction(node, expectedSuffix) {
+  if (!node) return false
+
+  if (node.type === 'FunctionDeclaration') {
+    const functionName = node.id?.name
+    return functionName
+      ? functionName.startsWith('use') && functionName.endsWith(expectedSuffix)
+      : false
+  }
+
+  if (node.type === 'ArrowFunctionExpression' || node.type === 'FunctionExpression') {
+    const parent = node.parent
+    if (parent.type === 'VariableDeclarator' && parent.id.type === 'Identifier') {
+      const functionName = parent.id.name
+      return functionName.startsWith('use') && functionName.endsWith(expectedSuffix)
+    }
+    return false
+  }
+
+  return isInValidFunction(node.parent, expectedSuffix)
+}
+
+function checkForUseQuery(node, context) {
+  const callee = node.callee
+  if (callee.type === 'Identifier') {
+    if (callee.name === 'useQuery' && !isInValidFunction(node, 'Query')) {
+      context.report({
+        node: callee,
+        loc: callee.loc,
+        messageId: 'forbiddenUseQuery',
+      })
+    }
+    if (callee.name === 'useMutation' && !isInValidFunction(node, 'Mutation')) {
+      context.report({
+        node: callee,
+        loc: callee.loc,
+        messageId: 'forbiddenUseMutation',
+      })
+    }
+  }
+}
+
 module.exports = {
   name: 'queries-only-in-use-query-functions',
   meta: {
@@ -18,55 +60,9 @@ module.exports = {
   defaultOptions: [],
 
   create(context) {
-    function isInValidFunction(node, expectedSuffix) {
-      let current = node
-      while (current) {
-        if (
-          current.type === 'FunctionDeclaration' ||
-          current.type === 'ArrowFunctionExpression' ||
-          current.type === 'FunctionExpression'
-        ) {
-          if (current.type === 'FunctionDeclaration') {
-            const functionName = current.id?.name
-            return functionName
-              ? /^use.*$/.test(functionName) && functionName.endsWith(expectedSuffix)
-              : false
-          }
-          const parent = current.parent
-          if (parent.type === 'VariableDeclarator' && parent.id.type === 'Identifier') {
-            const functionName = parent.id.name
-            return /^use.*$/.test(functionName) && functionName.endsWith(expectedSuffix)
-          }
-          return false
-        }
-        current = current.parent
-      }
-      return false
-    }
-
-    function checkForUseQuery(node) {
-      const callee = node.callee
-      if (callee.type === 'Identifier') {
-        if (callee.name === 'useQuery' && !isInValidFunction(node, 'Query')) {
-          context.report({
-            node: callee,
-            loc: callee.loc,
-            messageId: 'forbiddenUseQuery',
-          })
-        }
-        if (callee.name === 'useMutation' && !isInValidFunction(node, 'Mutation')) {
-          context.report({
-            node: callee,
-            loc: callee.loc,
-            messageId: 'forbiddenUseMutation',
-          })
-        }
-      }
-    }
-
     return {
       CallExpression(node) {
-        checkForUseQuery(node)
+        checkForUseQuery(node, context)
       },
     }
   },

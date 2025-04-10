@@ -12,19 +12,19 @@ ruleTester.run('no-queries-outside-query-files', rule, {
   valid: [
     {
       code: 'const { data } = useQuery()',
-      filename: 'src/api/offerQuery.ts',
+      filename: 'src/queries/offerQuery.ts',
     },
     {
       code: 'const { data } = useQuery()',
-      filename: 'src/api/bookingQuery.ts',
+      filename: 'src/queries/bookingQuery.ts',
     },
     {
       code: 'const { mutate } = useMutation()',
-      filename: 'src/api/offerMutation.ts',
+      filename: 'src/queries/offerMutation.ts',
     },
     {
       code: 'const { mutate } = useMutation()',
-      filename: 'src/api/bookingMutation.ts',
+      filename: 'src/queries/bookingMutation.ts',
     },
     {
       code: 'const { data } = useOtherHook()',
