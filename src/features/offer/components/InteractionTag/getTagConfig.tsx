@@ -12,6 +12,7 @@ type TagConfig = {
   likesCount?: number
   chroniclesCount?: number
   headlineCount?: number
+  hasSmallLayout?: boolean
 }
 
 export function getTagConfig({
@@ -20,9 +21,10 @@ export function getTagConfig({
   likesCount = 0,
   chroniclesCount = 0,
   headlineCount = 0,
+  hasSmallLayout,
 }: TagConfig): InteractionTagProps | null {
   const headlineTagConfig = {
-    label: 'Reco par les lieux',
+    label: hasSmallLayout ? 'Reco lieux' : 'Reco par les lieux',
     backgroundColor: theme.colors.goldLight100,
     Icon: CustomStar,
   }
@@ -32,7 +34,7 @@ export function getTagConfig({
     Icon: CustomThumbUp,
   }
   const bookClubTagConfig = {
-    label: 'Reco du Book Club',
+    label: hasSmallLayout ? 'Reco Club' : 'Reco du Book Club',
     backgroundColor: theme.colors.skyBlueLight,
     Icon: CustomBookClub,
   }

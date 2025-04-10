@@ -2,6 +2,7 @@ import { useRoute } from '@react-navigation/native'
 import React, { createRef, RefObject, useRef } from 'react'
 import { ViewToken } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
+import { useTheme } from 'styled-components/native'
 
 import { OfferResponseV2, RecommendationApiParams } from 'api/gen'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
@@ -12,6 +13,7 @@ import { useLogPlaylist } from 'features/offer/helpers/useLogPlaylistVertical/us
 import { useLogScrollHandler } from 'features/offer/helpers/useLogScrolHandler/useLogScrollHandler'
 import { analytics } from 'libs/analytics/provider'
 import { usePlaylistItemDimensionsFromLayout } from 'libs/contentful/usePlaylistItemDimensionsFromLayout'
+import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import {
   formatStartPrice,
   getDisplayedPrice,
@@ -45,7 +47,9 @@ export function OfferPlaylistList({
   apiRecoParamsOtherCategories,
   onPlaylistViewableItemsChanged,
 }: Readonly<OfferPlaylistListProps>) {
+  const theme = useTheme()
   const route = useRoute<UseRouteType<'Offer'>>()
+  const { minLikesValue } = useRemoteConfigQuery()
   const fromOfferId = route.params?.fromOfferId
   const categoryMapping = useCategoryIdMapping()
   const labelMapping = useCategoryHomeLabelMapping()
@@ -177,6 +181,8 @@ export function OfferPlaylistList({
                       ? undefined
                       : formatStartPrice
                   ),
+                minLikesValue,
+                theme,
               })}
               title={playlist.title}
               onEndReached={() => trackingOnHorizontalScroll(playlist.type, playlist.apiRecoParams)}

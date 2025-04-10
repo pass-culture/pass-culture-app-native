@@ -1,5 +1,5 @@
 import React, { cloneElement, FunctionComponent, ReactElement } from 'react'
-import { View, ViewProps } from 'react-native'
+import { Platform, View, ViewProps } from 'react-native'
 import styled from 'styled-components/native'
 
 import { isReactElement } from 'shared/typeguards/isReactElement'
@@ -57,6 +57,9 @@ const Wrapper = styled(View)<{ backgroundColor?: string; paddingHorizontal?: num
 const LabelText = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.colors.black,
   lineHeight: getSpacingString(NUMBER_OF_SPACES_LINE_HEIGHT),
+  ...(Platform.OS === 'web' && {
+    textWrap: 'nowrap',
+  }),
 }))
 
 const IconContainer = styled(View)({

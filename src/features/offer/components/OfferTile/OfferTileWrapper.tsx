@@ -1,8 +1,12 @@
 import React from 'react'
+import { useTheme } from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { getTagConfig } from 'features/offer/components/InteractionTag/getTagConfig'
+import { InteractionTag } from 'features/offer/components/InteractionTag/InteractionTag'
 import { OfferTile } from 'features/offer/components/OfferTile/OfferTile'
 import { OfferTileProps } from 'features/offer/types'
+import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import {
   formatPrice,
   getDisplayedPrice,
@@ -19,11 +23,13 @@ type Props = Omit<
   'offerLocation' | 'categoryLabel' | 'categoryId' | 'subcategoryId' | 'offerId' | 'price'
 > & {
   item: Offer
+  hasSmallLayout?: boolean
 }
 
 export const OfferTileWrapper = (props: Props) => {
-  const { item } = props
-
+  const { item, hasSmallLayout } = props
+  const { minLikesValue } = useRemoteConfigQuery()
+  const theme = useTheme()
   const { user } = useAuthContext()
   const currency = useGetCurrencyToDisplay()
   const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
@@ -44,6 +50,15 @@ export const OfferTileWrapper = (props: Props) => {
     })
   )
 
+  const tagConfig = getTagConfig({
+    theme,
+    minLikesValue,
+    likesCount: item.offer.likes,
+    chroniclesCount: item.offer.chroniclesCount,
+    headlineCount: item.offer.headlineCount,
+    hasSmallLayout,
+  })
+
   return (
     <OfferTile
       offerLocation={item._geoloc}
@@ -55,6 +70,7 @@ export const OfferTileWrapper = (props: Props) => {
       date={formattedDate}
       thumbUrl={item.offer.thumbUrl}
       price={formattedPrice}
+      interactionTag={tagConfig ? <InteractionTag {...tagConfig} /> : null}
       {...props}
     />
   )

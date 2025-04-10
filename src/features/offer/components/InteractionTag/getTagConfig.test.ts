@@ -88,4 +88,30 @@ describe('getTagConfig', () => {
       Icon: expect.anything(),
     })
   })
+
+  it('should use short label when hasSmallLayout is true "Reco lieux"', () => {
+    expect(
+      getTagConfig({
+        theme,
+        headlineCount: 1,
+        likesCount: 10,
+        minLikesValue: 50,
+        hasSmallLayout: true,
+      })
+    ).toEqual({
+      label: 'Reco lieux',
+      backgroundColor: theme.colors.goldLight100,
+      Icon: expect.anything(),
+    })
+  })
+
+  it('should use short label when hasSmallLayout is true "Reco Club"', () => {
+    expect(
+      getTagConfig({ theme, chroniclesCount: 1, minLikesValue: 50, hasSmallLayout: true })
+    ).toEqual({
+      label: 'Reco Club',
+      backgroundColor: theme.colors.skyBlueLight,
+      Icon: expect.anything(),
+    })
+  })
 })

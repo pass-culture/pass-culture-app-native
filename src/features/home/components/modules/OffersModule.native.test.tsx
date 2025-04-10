@@ -95,6 +95,8 @@ describe('OffersModule', () => {
   it('should not render hybrid playlist if no recommended parameters', async () => {
     renderOffersModule({ recommendationParameters: undefined })
 
+    await screen.findByText('Module title')
+
     expect(screen.queryByText('Un lit sous une rivière')).not.toBeOnTheScreen()
   })
 
@@ -164,8 +166,10 @@ describe('OffersModule', () => {
       expect(analytics.logAllTilesSeen).toHaveBeenCalledTimes(1)
     })
 
-    it('should trigger logEvent "ModuleDisplayedOnHomepage" when shouldModuleBeDisplayed is true', () => {
+    it('should trigger logEvent "ModuleDisplayedOnHomepage" when shouldModuleBeDisplayed is true', async () => {
       renderOffersModule()
+
+      await screen.findByText('Module title')
 
       expect(analytics.logModuleDisplayedOnHomepage).toHaveBeenNthCalledWith(1, {
         call_id: undefined,
@@ -204,10 +208,12 @@ describe('OffersModule', () => {
       })
     })
 
-    it('should trigger logEvent "ModuleDisplayedOnHomepage" with hybrid module type', () => {
+    it('should trigger logEvent "ModuleDisplayedOnHomepage" with hybrid module type', async () => {
       mockUseAlgoliaRecommendedOffers.mockReturnValueOnce(mockRecommendationOffers)
 
       renderOffersModule({ recommendationParameters: { categories: ['Cinéma'] } })
+
+      await screen.findByText('Module title')
 
       expect(analytics.logModuleDisplayedOnHomepage).toHaveBeenNthCalledWith(1, {
         call_id: undefined,
@@ -220,12 +226,14 @@ describe('OffersModule', () => {
       })
     })
 
-    it('should trigger logEvent "ModuleDisplayedOnHomepage" with hybridModuleOffsetIndex equal to one when playlist is only recommendedOffers', () => {
+    it('should trigger logEvent "ModuleDisplayedOnHomepage" with hybridModuleOffsetIndex equal to one when playlist is only recommendedOffers', async () => {
       mockUseAlgoliaRecommendedOffers.mockReturnValueOnce(mockRecommendationOffers)
       renderOffersModule({
         data: { playlistItems: [], nbPlaylistResults: mockNbHits, moduleId: 'fakeModuleId' },
         recommendationParameters: { categories: ['Cinéma'] },
       })
+
+      await screen.findByText('Module title')
 
       expect(analytics.logModuleDisplayedOnHomepage).toHaveBeenNthCalledWith(1, {
         call_id: undefined,

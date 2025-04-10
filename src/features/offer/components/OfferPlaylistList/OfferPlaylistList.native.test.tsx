@@ -14,7 +14,7 @@ import {
 } from 'libs/algolia/fixtures/algoliaFixtures'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { userEvent, render, screen, waitFor } from 'tests/utils'
+import { userEvent, render, screen, waitFor, act } from 'tests/utils'
 
 jest.mock('libs/subcategories/useSubcategories')
 
@@ -48,17 +48,21 @@ describe('<OfferPlaylistList />', () => {
 
   describe('Similar offers', () => {
     describe('Same category playlist', () => {
-      it('should not display same category playlist when offer has not it', () => {
+      it('should not display same category playlist when offer has not it', async () => {
         renderOfferPlaylistList(offerPlaylistListProps)
 
-        expect(screen.queryByText('Dans la même catégorie')).not.toBeOnTheScreen()
+        await act(() => {})
+
+        await expect(screen.queryByText('Dans la même catégorie')).not.toBeOnTheScreen()
       })
 
-      it('should display same category playlist when offer has it', () => {
+      it('should display same category playlist when offer has it', async () => {
         renderOfferPlaylistList({
           ...offerPlaylistListProps,
           sameCategorySimilarOffers: mockSearchHits,
         })
+
+        await screen.findByText('Dans la même catégorie')
 
         expect(screen.getByText('Dans la même catégorie')).toBeOnTheScreen()
       })
@@ -81,17 +85,21 @@ describe('<OfferPlaylistList />', () => {
     })
 
     describe('Other categories differents from that of the offer', () => {
-      it('should not display other categories playlist when offer has not it', () => {
+      it('should not display other categories playlist when offer has not it', async () => {
         renderOfferPlaylistList(offerPlaylistListProps)
+
+        await act(() => {})
 
         expect(screen.queryByText('Ça peut aussi te plaire')).not.toBeOnTheScreen()
       })
 
-      it('should display other categories playlist when offer has it', () => {
+      it('should display other categories playlist when offer has it', async () => {
         renderOfferPlaylistList({
           ...offerPlaylistListProps,
           otherCategoriesSimilarOffers: mockSearchHits,
         })
+
+        await screen.findByText('Ça peut aussi te plaire')
 
         expect(screen.getByText('Ça peut aussi te plaire')).toBeOnTheScreen()
       })

@@ -35,6 +35,9 @@ export type HitOffer = {
   artist?: string
   ean?: string
   publicationDate?: number
+  likes?: number
+  chroniclesCount?: number
+  headlineCount?: number
 }
 
 export type AlgoliaOfferWithArtistAndEan = AlgoliaOffer<
