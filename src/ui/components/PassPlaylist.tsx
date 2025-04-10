@@ -1,5 +1,6 @@
+import { FlashList } from '@shopify/flash-list'
 import React, { ComponentProps, Ref, useCallback } from 'react'
-import { FlatList } from 'react-native-gesture-handler'
+import { FlatList, FlatList as RNGHFlatList } from 'react-native-gesture-handler'
 import styled, { useTheme } from 'styled-components/native'
 
 import { AccessibleTitle } from 'features/home/components/AccessibleTitle'
@@ -32,6 +33,7 @@ type Props = Pick<
   renderFooter?: RenderFooterItem
   titleSeeMoreLink?: InternalNavigationProps['navigateTo']
   playlistRef?: Ref<FlatList>
+  FlatListComponent?: typeof FlashList | typeof RNGHFlatList
 }
 
 export const PassPlaylist = ({
@@ -52,6 +54,7 @@ export const PassPlaylist = ({
   playlistRef,
   testID: _testID,
   noMarginBottom,
+  FlatListComponent,
   ...props
 }: Props) => {
   const { isTouch } = useTheme()
@@ -103,6 +106,7 @@ export const PassPlaylist = ({
         tileType={tileType}
         ref={playlistRef}
         onViewableItemsChanged={onViewableItemsChanged}
+        FlatListComponent={FlatListComponent}
       />
     </StyledViewGap>
   )

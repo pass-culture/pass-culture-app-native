@@ -9,6 +9,7 @@ import { env } from 'libs/environment/env'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useSearchGroupLabelMapping } from 'libs/subcategories/mappings'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 
 export const BookPlaylists: React.FC = () => {
   const isReplicaAlgoliaIndexActive = useFeatureFlag(
@@ -32,7 +33,7 @@ export const BookPlaylists: React.FC = () => {
   }
 
   return (
-    <React.Fragment>
+    <ViewGap gap={6}>
       {bookGtlPlaylists.map((playlist) => (
         <GtlPlaylist
           key={playlist.entryId}
@@ -42,6 +43,6 @@ export const BookPlaylists: React.FC = () => {
           noMarginBottom
         />
       ))}
-    </React.Fragment>
+    </ViewGap>
   )
 }

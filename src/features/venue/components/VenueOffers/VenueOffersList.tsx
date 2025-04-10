@@ -1,6 +1,7 @@
 import { useRoute } from '@react-navigation/native'
 import React, { FunctionComponent } from 'react'
 import { Platform } from 'react-native'
+import { FlatList } from 'react-native-gesture-handler'
 import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
@@ -118,6 +119,7 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
         titleSeeMoreLink={showSeeMore ? searchNavConfig : undefined}
         renderFooter={renderFooter}
         keyExtractor={keyExtractor}
+        FlatListComponent={FlatList}
       />
       {shouldDisplayArtistsPlaylist ? (
         <ArtistsPlaylistContainer gap={2}>

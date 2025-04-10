@@ -1,5 +1,4 @@
 import React, { FC, ReactNode } from 'react'
-import { View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { CategoryIdEnum } from 'api/gen'
@@ -36,12 +35,10 @@ export const PlaylistCardOffer: FC<Props> = ({
 }) => {
   return (
     <Container maxWidth={width}>
-      <NewOfferCaption name={name} date={date} price={price} categoryLabel={categoryLabel} />
+      <ImageTile categoryId={categoryId} uri={thumbnailUrl} width={width} height={height} />
       {interactionTag ?? null}
-      <View>
-        {distance ? <DistanceTag label={`à ${distance}`} /> : null}
-        <ImageTile categoryId={categoryId} uri={thumbnailUrl} width={width} height={height} />
-      </View>
+      <NewOfferCaption name={name} date={date} price={price} categoryLabel={categoryLabel} />
+      {distance ? <DistanceTag label={`à ${distance}`} /> : null}
     </Container>
   )
 }
@@ -49,7 +46,6 @@ export const PlaylistCardOffer: FC<Props> = ({
 const Container = styled(ViewGap).attrs({
   gap: 2,
 })<{ maxWidth: number }>(({ maxWidth }) => ({
-  flexDirection: 'column-reverse',
   maxWidth,
 }))
 

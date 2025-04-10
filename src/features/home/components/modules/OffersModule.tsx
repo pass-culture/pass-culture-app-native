@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useMemo } from 'react'
+import { FlatList } from 'react-native-gesture-handler'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useHomeRecommendedOffers } from 'features/home/api/useHomeRecommendedOffers'
@@ -187,6 +188,7 @@ export const OffersModule = (props: OffersModuleProps) => {
       renderFooter={renderFooter}
       keyExtractor={keyExtractor}
       onEndReached={logHasSeenAllTilesOnce}
+      FlatListComponent={FlatList}
     />
   )
 }
