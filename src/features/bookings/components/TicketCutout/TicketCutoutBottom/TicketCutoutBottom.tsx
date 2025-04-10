@@ -27,7 +27,7 @@ export const TicketCutoutBottom = ({
     case WithdrawalTypeEnum.in_app:
       return <View />
     case WithdrawalTypeEnum.on_site:
-      return <OnSiteWithdrawal booking={booking} />
+      return booking.token ? <OnSiteWithdrawal token={booking.token} /> : null
     default:
       return booking.activationCode ? (
         <TicketCodeTitle>{booking.activationCode.code}</TicketCodeTitle>
