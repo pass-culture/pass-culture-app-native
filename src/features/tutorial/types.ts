@@ -17,12 +17,6 @@ export interface AgeButtonProps {
   children: React.ReactNode
 }
 
-export interface ProfileTutorialAgeButtonOtherProps {
-  accessibilityLabel: string
-  onPress?: () => void
-  children: React.ReactNode
-}
-
 export interface TutorialType {
   type: TutorialTypes.ONBOARDING | TutorialTypes.PROFILE_TUTORIAL
 }
