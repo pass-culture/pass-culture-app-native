@@ -30,7 +30,7 @@ describe('<ControlComponent />', () => {
     expect(() => screen.getByTestId('arrowNext')).toThrow()
   })
 
-  it('renders display next arrow when type is next', () => {
+  it('should display next arrow when type is next', () => {
     renderControlComponent({
       onPress,
       title: 'Next',
@@ -41,7 +41,7 @@ describe('<ControlComponent />', () => {
     expect(() => screen.getByTestId('arrowPrevious')).toThrow()
   })
 
-  it('renders trigger onPress when pressed', async () => {
+  it('should trigger onPress when pressed', async () => {
     renderControlComponent({
       onPress,
       title: 'Previous',
