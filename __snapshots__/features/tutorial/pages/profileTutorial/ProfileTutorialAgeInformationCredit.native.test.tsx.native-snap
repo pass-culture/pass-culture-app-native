@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`<ProfileTutorialAgeInformationCreditV3 /> should render correctly 1`] = `
+exports[`<ProfileTutorialAgeInformationCredit /> should render correctly 1`] = `
 <View
   style={
     [

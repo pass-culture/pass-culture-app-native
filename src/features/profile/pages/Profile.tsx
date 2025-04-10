@@ -213,7 +213,7 @@ const OnlineProfile: React.FC = () => {
                       <Row
                         title="Comment ça marche&nbsp;?"
                         type="navigable"
-                        navigateTo={{ screen: 'ProfileTutorialAgeInformationCreditV3' }}
+                        navigateTo={{ screen: 'ProfileTutorialAgeInformationCredit' }}
                         onPress={() =>
                           analytics.logConsultTutorial({ age: userAge, from: 'ProfileHelp' })
                         }

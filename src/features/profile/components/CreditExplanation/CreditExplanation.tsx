@@ -47,7 +47,7 @@ export const CreditExplanation: FunctionComponent<Props> = ({ age, isDepositExpi
         as={StyledButtonQuaternaryBlack}
         icon={Question}
         wording="Comment ça marche&nbsp;?"
-        navigateTo={{ screen: 'ProfileTutorialAgeInformationCreditV3' }}
+        navigateTo={{ screen: 'ProfileTutorialAgeInformationCredit' }}
         onBeforeNavigate={onTutorialClick}
       />
     </React.Fragment>

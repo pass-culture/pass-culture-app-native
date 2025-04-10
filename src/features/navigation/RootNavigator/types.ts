@@ -94,7 +94,7 @@ export type TutorialRootStackParamList = {
   OnboardingGeolocation: undefined
   OnboardingNotEligible: undefined
   OnboardingWelcome: undefined
-  ProfileTutorialAgeInformationCreditV3: undefined
+  ProfileTutorialAgeInformationCredit: undefined
 }
 
 export type TrustedDeviceRootStackParamList = {

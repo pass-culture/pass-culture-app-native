@@ -315,7 +315,7 @@ describe('Profile component', () => {
       const howItWorkButton = screen.getByText('Comment ça marche\u00a0?')
       await user.press(howItWorkButton)
 
-      expect(navigate).toHaveBeenCalledWith('ProfileTutorialAgeInformationCreditV3', undefined)
+      expect(navigate).toHaveBeenCalledWith('ProfileTutorialAgeInformationCredit', undefined)
     })
 
     it('should navigate when the faq row is clicked', async () => {

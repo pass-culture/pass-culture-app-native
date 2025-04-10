@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { ProfileTutorialAgeInformationCreditV3 } from 'features/tutorial/pages/profileTutorial/ProfileTutorialAgeInformationCreditV3'
+import { ProfileTutorialAgeInformationCredit } from 'features/tutorial/pages/profileTutorial/ProfileTutorialAgeInformationCredit'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -11,19 +11,19 @@ jest.mock('libs/firebase/analytics/analytics')
 
 jest.useFakeTimers()
 
-describe('<ProfileTutorialAgeInformationCreditV3 />', () => {
+describe('<ProfileTutorialAgeInformationCredit />', () => {
   beforeEach(() => {
     setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])
   })
 
   it('should render correctly', () => {
-    render(<ProfileTutorialAgeInformationCreditV3 />)
+    render(<ProfileTutorialAgeInformationCredit />)
 
     expect(screen).toMatchSnapshot()
   })
 
   it("should log to analytics when pressing 'Plus d’infos dans notre FAQ'", async () => {
-    render(<ProfileTutorialAgeInformationCreditV3 />)
+    render(<ProfileTutorialAgeInformationCredit />)
 
     const link = screen.getByText('Plus d’infos dans notre FAQ')
     await userEvent.press(link)
