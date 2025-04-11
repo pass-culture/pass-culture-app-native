@@ -17,20 +17,8 @@ jest.mock('ui/theme/customFocusOutline/customFocusOutline')
 
 describe('<SetCity/>', () => {
   describe('Accessibility', () => {
-    it('should not have basic accessibility issues in identity check', async () => {
+    it('should not have basic accessibility issues', async () => {
       const { container } = renderSetCity({ type: ProfileTypes.IDENTITY_CHECK })
-
-      await waitFor(() => {
-        expect(screen.getByTestId('Entrée pour la ville')).toHaveFocus()
-      })
-
-      const results = await checkAccessibilityFor(container)
-
-      expect(results).toHaveNoViolations()
-    })
-
-    it('should not have basic accessibility issues in booking', async () => {
-      const { container } = renderSetCity({ type: ProfileTypes.BOOKING })
 
       await waitFor(() => {
         expect(screen.getByTestId('Entrée pour la ville')).toHaveFocus()

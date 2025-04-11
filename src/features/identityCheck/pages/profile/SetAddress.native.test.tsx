@@ -48,7 +48,7 @@ describe('<SetAddress/>', () => {
 
   mockUseNetInfoContext.mockReturnValue({ isConnected: true, isInternetReachable: true })
 
-  it('should render correctly in identity check', async () => {
+  it('should render correctly', async () => {
     renderSetAddress({ type: ProfileTypes.IDENTITY_CHECK })
 
     await screen.findByText('Recherche et sélectionne ton adresse')
@@ -56,12 +56,18 @@ describe('<SetAddress/>', () => {
     expect(screen).toMatchSnapshot()
   })
 
-  it('should render correctly in booking', async () => {
+  it('should display correct infos in identity check', async () => {
+    renderSetAddress({ type: ProfileTypes.IDENTITY_CHECK })
+
+    expect(await screen.findByText('Profil')).toBeTruthy()
+    expect(await screen.findByText('Quelle est ton adresse\u00a0?')).toBeTruthy()
+  })
+
+  it('should display correct infos in booking', async () => {
     renderSetAddress({ type: ProfileTypes.BOOKING })
 
-    await screen.findByText('Recherche et sélectionne ton adresse')
-
-    expect(screen).toMatchSnapshot()
+    expect(await screen.findByText('Informations personnelles')).toBeTruthy()
+    expect(await screen.findByText('Saisis ton adresse postale')).toBeTruthy()
   })
 
   it('should display a list of addresses when user add an address', async () => {

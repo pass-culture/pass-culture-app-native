@@ -135,7 +135,7 @@ export const SetAddress: FunctionComponent<Props> = ({ route }: Props) => {
       scrollChildren={
         <React.Fragment>
           <Form.MaxWidth>
-            <Typo.Title3 {...getHeadingAttrs(2)}>Quelle est ton adresse&nbsp;?</Typo.Title3>
+            <Typo.Title3 {...getHeadingAttrs(2)}>{pageInfos.title}</Typo.Title3>
             <Spacer.Column numberOfSpaces={5} />
             <SearchInput
               autoFocus

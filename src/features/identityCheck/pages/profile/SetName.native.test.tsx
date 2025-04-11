@@ -19,16 +19,34 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 })
 
 describe('<SetName/>', () => {
-  it('should render correctly in identity check', () => {
+  it('should render correctly', () => {
     renderSetName({ type: ProfileTypes.IDENTITY_CHECK })
 
     expect(screen).toMatchSnapshot()
   })
 
-  it('should render correctly in booking', () => {
+  it('should display correct infos in identity check', async () => {
+    renderSetName({ type: ProfileTypes.IDENTITY_CHECK })
+
+    expect(await screen.findByText('Profil')).toBeTruthy()
+    expect(await screen.findByText('Comment t’appelles-tu\u00a0?')).toBeTruthy()
+    expect(
+      await screen.findByText(
+        'Saisis ton nom et ton prénom tels qu’ils sont affichés sur ta pièce d’identité. Nous les vérifions et ils ne pourront plus être modifiés par la suite.'
+      )
+    ).toBeTruthy()
+  })
+
+  it('should display correct infos in booking', async () => {
     renderSetName({ type: ProfileTypes.BOOKING })
 
-    expect(screen).toMatchSnapshot()
+    expect(await screen.findByText('Informations personnelles')).toBeTruthy()
+    expect(await screen.findByText('Renseigne ton prénom et ton nom')).toBeTruthy()
+    expect(
+      await screen.findByText(
+        'Pour réserver une offre gratuite, on a besoin de ton prénom, nom, ton lieu de résidence et adresse, ainsi que ton statut. Ces informations seront vérifiées par le partenaire culturel.'
+      )
+    ).toBeTruthy()
   })
 
   it('should enable the submit button when first name and last name is not empty', async () => {

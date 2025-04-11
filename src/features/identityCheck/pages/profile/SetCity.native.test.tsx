@@ -25,16 +25,22 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 })
 
 describe('<SetCity/>', () => {
-  it('should render correctly in identity check', () => {
+  it('should render correctly', () => {
     renderSetCity({ type: ProfileTypes.IDENTITY_CHECK })
 
     expect(screen).toMatchSnapshot()
   })
 
-  it('should render correctly in booking', () => {
+  it('should display correct infos in identity check', async () => {
+    renderSetCity({ type: ProfileTypes.IDENTITY_CHECK })
+
+    expect(await screen.findByText('Profil')).toBeTruthy()
+  })
+
+  it('should display correct infos in booking', async () => {
     renderSetCity({ type: ProfileTypes.BOOKING })
 
-    expect(screen).toMatchSnapshot()
+    expect(await screen.findByText('Informations personnelles')).toBeTruthy()
   })
 
   it('should navigate to SetAddress with identityCheck params when clicking on "Continuer"', async () => {

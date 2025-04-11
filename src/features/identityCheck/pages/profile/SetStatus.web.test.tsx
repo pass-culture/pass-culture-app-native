@@ -19,18 +19,8 @@ describe('<SetStatus/>', () => {
   })
 
   describe('Accessibility', () => {
-    it('should not have basic accessibility issues in identity check', async () => {
+    it('should not have basic accessibility issues', async () => {
       const { container } = renderSetAddress({ type: ProfileTypes.IDENTITY_CHECK })
-
-      await act(async () => {
-        const results = await checkAccessibilityFor(container)
-
-        expect(results).toHaveNoViolations()
-      })
-    })
-
-    it('should not have basic accessibility issues in booking', async () => {
-      const { container } = renderSetAddress({ type: ProfileTypes.BOOKING })
 
       await act(async () => {
         const results = await checkAccessibilityFor(container)

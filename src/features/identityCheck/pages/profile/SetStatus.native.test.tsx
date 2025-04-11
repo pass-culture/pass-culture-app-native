@@ -94,18 +94,23 @@ describe('<SetStatus/>', () => {
     mockServer.postApi('/v1/subscription/profile', {})
   })
 
-  it('should render correctly in identity check', async () => {
+  it('should render correctly', async () => {
     mockedUseIsUserUnderage.mockReturnValueOnce(true)
     renderSetStatus({ type: ProfileTypes.IDENTITY_CHECK })
 
     await waitFor(() => expect(screen).toMatchSnapshot())
   })
 
-  it('should render correctly in booking', async () => {
-    mockedUseIsUserUnderage.mockReturnValueOnce(true)
+  it('should display correct infos in identity check', async () => {
+    renderSetStatus({ type: ProfileTypes.IDENTITY_CHECK })
+
+    expect(await screen.findByText('Profil')).toBeTruthy()
+  })
+
+  it('should display correct infos in booking', async () => {
     renderSetStatus({ type: ProfileTypes.BOOKING })
 
-    await waitFor(() => expect(screen).toMatchSnapshot())
+    expect(await screen.findByText('Informations personnelles')).toBeTruthy()
   })
 
   it('should navigate to stepper on press "Continuer"', async () => {

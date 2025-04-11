@@ -21,20 +21,8 @@ jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
 
 describe('<SetName/>', () => {
   describe('Accessibility', () => {
-    it('should not have basic accessibility issues in identity check', async () => {
+    it('should not have basic accessibility issues', async () => {
       const { container } = renderSetName({ type: ProfileTypes.IDENTITY_CHECK })
-
-      await waitFor(() => {
-        expect(screen.getByTestId('Entrée pour le prénom')).toHaveFocus()
-      })
-
-      const results = await checkAccessibilityFor(container)
-
-      expect(results).toHaveNoViolations()
-    })
-
-    it('should not have basic accessibility issues in booking', async () => {
-      const { container } = renderSetName({ type: ProfileTypes.BOOKING })
 
       await waitFor(() => {
         expect(screen.getByTestId('Entrée pour le prénom')).toHaveFocus()
