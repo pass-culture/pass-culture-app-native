@@ -19,7 +19,9 @@ const meta: Meta<typeof LoggedOutHeader> = {
 }
 export default meta
 
-const variantConfig: Variants<typeof LoggedOutHeader> = [{ label: 'LoggedOutHeader' }]
+const variantConfig: Variants<typeof LoggedOutHeader> = [
+  { label: 'LoggedOutHeader', props: { featureFlags: { enablePassForAll: true } } },
+]
 
 export const Template: VariantsStory<typeof LoggedOutHeader> = {
   render: () => <VariantsTemplate variants={variantConfig} Component={LoggedOutHeader} />,
