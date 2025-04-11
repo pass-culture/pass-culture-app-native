@@ -4,6 +4,7 @@ import LinearGradient from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
 
 import { AuthenticationButton } from 'features/auth/components/AuthenticationButton/AuthenticationButton'
+import { getOnboardingNavConfig } from 'features/navigation/OnboardingStackNavigator/getOnboardingNavConfig'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { WELCOME_BACKGROUND_SOURCE } from 'features/tutorial/components/onboarding/welcomeBackground'
 import { analytics } from 'libs/analytics/provider'
@@ -12,7 +13,6 @@ import { ButtonWithLinearGradient } from 'ui/components/buttons/buttonWithLinear
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
-import { getActivationNavConfig } from 'features/navigation/ActivationStackNavigator/getActivationNavConfig'
 
 const setHasSeenTutorials = () => storage.saveObject('has_seen_tutorials', true)
 
@@ -45,7 +45,7 @@ export const OnboardingWelcome: FunctionComponent = () => {
           wording="C’est parti&nbsp;!"
           icon={PlainArrowNext}
           iconAfterWording
-          navigateTo={getActivationNavConfig('OnboardingGeolocation')}
+          navigateTo={getOnboardingNavConfig('OnboardingGeolocation')}
           onBeforeNavigate={onStartPress}
         />
         <Spacer.Column numberOfSpaces={4} />

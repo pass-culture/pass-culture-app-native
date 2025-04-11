@@ -43,7 +43,7 @@ describe('<CreditExplanation/>', () => {
       const explanationButton = screen.getByTestId('Comment ça marche\u00a0?')
       await user.press(explanationButton)
 
-      expect(navigate).toHaveBeenCalledWith('ActivationStackNavigator', {
+      expect(navigate).toHaveBeenCalledWith('OnboardingStackNavigator', {
         screen: 'ProfileTutorialAgeInformationCredit',
         params: undefined,
       })

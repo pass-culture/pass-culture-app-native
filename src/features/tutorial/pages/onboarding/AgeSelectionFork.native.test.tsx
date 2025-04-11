@@ -54,7 +54,7 @@ describe('AgeSelectionFork', () => {
       const button = screen.getByLabelText('J’ai 16 ans ou moins')
       await user.press(button)
 
-      expect(navigate).toHaveBeenCalledWith('ActivationStackNavigator', {
+      expect(navigate).toHaveBeenCalledWith('OnboardingStackNavigator', {
         screen: 'OnboardingNotEligible',
         params: undefined,
       })
@@ -77,7 +77,7 @@ describe('AgeSelectionFork', () => {
       const button = screen.getByLabelText('J’ai 17 ans')
       await user.press(button)
 
-      expect(navigate).toHaveBeenCalledWith('ActivationStackNavigator', {
+      expect(navigate).toHaveBeenCalledWith('OnboardingStackNavigator', {
         screen: 'OnboardingAgeInformation',
         params: {
           age: 17,
@@ -91,7 +91,7 @@ describe('AgeSelectionFork', () => {
       const button = screen.getByLabelText('J’ai 18 ans')
       await user.press(button)
 
-      expect(navigate).toHaveBeenCalledWith('ActivationStackNavigator', {
+      expect(navigate).toHaveBeenCalledWith('OnboardingStackNavigator', {
         screen: 'OnboardingAgeInformation',
         params: {
           age: 18,

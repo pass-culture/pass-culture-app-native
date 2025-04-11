@@ -2,8 +2,8 @@ import { StackScreenProps } from '@react-navigation/stack'
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
-import { getActivationNavConfig } from 'features/navigation/ActivationStackNavigator/getActivationNavConfig'
 import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
+import { getOnboardingNavConfig } from 'features/navigation/OnboardingStackNavigator/getOnboardingNavConfig'
 import { TutorialRootStackParamList } from 'features/navigation/RootNavigator/types'
 import { AgeButton } from 'features/tutorial/components/AgeButton'
 import { useOnboardingContext } from 'features/tutorial/context/OnboardingWrapper'
@@ -59,28 +59,28 @@ export const AgeSelectionFork: FunctionComponent<Props> = ({ route }: Props) => 
       startButtonTitle: 'J’ai ',
       age: '16 ans',
       endButtonTitle: ' ou moins',
-      navigateTo: getActivationNavConfig('OnboardingNotEligible'),
+      navigateTo: getOnboardingNavConfig('OnboardingNotEligible'),
       onBeforeNavigate: () => onAgeChoice(NonEligible.UNDER_17),
     },
     {
       startButtonTitle: 'J’ai ',
       age: '17 ans',
       endButtonTitle: '',
-      navigateTo: getActivationNavConfig('OnboardingAgeInformation', { age: 17 }),
+      navigateTo: getOnboardingNavConfig('OnboardingAgeInformation', { age: 17 }),
       onBeforeNavigate: () => onAgeChoice(17),
     },
     {
       startButtonTitle: 'J’ai ',
       age: '18 ans',
       endButtonTitle: '',
-      navigateTo: getActivationNavConfig('OnboardingAgeInformation', { age: 18 }),
+      navigateTo: getOnboardingNavConfig('OnboardingAgeInformation', { age: 18 }),
       onBeforeNavigate: () => onAgeChoice(18),
     },
     {
       startButtonTitle: 'J’ai ',
       age: '19 ans',
       endButtonTitle: ' ou plus',
-      navigateTo: getActivationNavConfig('OnboardingGeneralPublicWelcome'),
+      navigateTo: getOnboardingNavConfig('OnboardingGeneralPublicWelcome'),
       onBeforeNavigate: () => onAgeChoice(NonEligible.OVER_18),
     },
   ]

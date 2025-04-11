@@ -4,7 +4,7 @@ import { StatusBar } from 'react-native'
 
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
 import { LinkToScreenWithNavigateTo } from 'cheatcodes/components/LinkToScreenWithNavigateTo'
-import { getActivationNavConfig } from 'features/navigation/ActivationStackNavigator/getActivationNavConfig'
+import { getOnboardingNavConfig } from 'features/navigation/OnboardingStackNavigator/getOnboardingNavConfig'
 import { TutorialTypes } from 'features/tutorial/enums'
 
 export function CheatcodesNavigationOnboarding(): React.JSX.Element {
@@ -19,34 +19,31 @@ export function CheatcodesNavigationOnboarding(): React.JSX.Element {
     <CheatcodesTemplateScreen title="Onboarding 🛶">
       <LinkToScreenWithNavigateTo
         title="OnboardingNotEligible"
-        navigateTo={{
-          screen: 'ActivationStackNavigator',
-          params: { screen: 'OnboardingNotEligible', params: { type: TutorialTypes.ONBOARDING } },
-        }}
+        navigateTo={getOnboardingNavConfig('OnboardingNotEligible')}
       />
       <LinkToScreenWithNavigateTo
         title="OnboardingGeneralPublicWelcome"
-        navigateTo={getActivationNavConfig('OnboardingGeneralPublicWelcome')}
+        navigateTo={getOnboardingNavConfig('OnboardingGeneralPublicWelcome')}
       />
       <LinkToScreenWithNavigateTo
         title="OnboardingWelcome"
-        navigateTo={getActivationNavConfig('OnboardingWelcome')}
+        navigateTo={getOnboardingNavConfig('OnboardingWelcome')}
       />
       <LinkToScreenWithNavigateTo
         title="OnboardingGeolocation"
-        navigateTo={getActivationNavConfig('OnboardingGeolocation')}
+        navigateTo={getOnboardingNavConfig('OnboardingGeolocation')}
       />
       <LinkToScreenWithNavigateTo
         title="AgeSelectionFork"
-        navigateTo={getActivationNavConfig('AgeSelectionFork', { type: TutorialTypes.ONBOARDING })}
+        navigateTo={getOnboardingNavConfig('AgeSelectionFork', { type: TutorialTypes.ONBOARDING })}
       />
       <LinkToScreenWithNavigateTo
         title="AgeInfo - 17 ans"
-        navigateTo={getActivationNavConfig('OnboardingAgeInformation', { age: 17 })}
+        navigateTo={getOnboardingNavConfig('OnboardingAgeInformation', { age: 17 })}
       />
       <LinkToScreenWithNavigateTo
         title="AgeInfo - 18 ans"
-        navigateTo={getActivationNavConfig('OnboardingAgeInformation', { age: 18 })}
+        navigateTo={getOnboardingNavConfig('OnboardingAgeInformation', { age: 18 })}
       />
     </CheatcodesTemplateScreen>
   )

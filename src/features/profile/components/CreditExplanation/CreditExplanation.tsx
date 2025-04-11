@@ -1,6 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
+import { getOnboardingNavConfig } from 'features/navigation/OnboardingStackNavigator/getOnboardingNavConfig'
 import { ExpiredCreditModal } from 'features/profile/components/Modals/ExpiredCreditModal'
 import { analytics } from 'libs/analytics/provider'
 import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
@@ -10,7 +11,6 @@ import { Separator } from 'ui/components/Separator'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { Question } from 'ui/svg/icons/Question'
 import { Spacer } from 'ui/theme'
-import { getActivationNavConfig } from 'features/navigation/ActivationStackNavigator/getActivationNavConfig'
 
 interface Props {
   age: number
@@ -48,7 +48,7 @@ export const CreditExplanation: FunctionComponent<Props> = ({ age, isDepositExpi
         as={StyledButtonQuaternaryBlack}
         icon={Question}
         wording="Comment ça marche&nbsp;?"
-        navigateTo={getActivationNavConfig('ProfileTutorialAgeInformationCredit')}
+        navigateTo={getOnboardingNavConfig('ProfileTutorialAgeInformationCredit')}
         onBeforeNavigate={onTutorialClick}
       />
     </React.Fragment>

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { ActivationNavigatorBase } from 'features/navigation/ActivationStackNavigator/ActivationNavigatorBase'
+import { OnboardingNavigatorBase } from 'features/navigation/OnboardingStackNavigator/OnboardingNavigatorBase'
 import { ROOT_NAVIGATOR_SCREEN_OPTIONS } from 'features/navigation/RootNavigator/navigationOptions'
 import { TutorialTypes } from 'features/tutorial/enums'
 import { AgeSelectionFork } from 'features/tutorial/pages/onboarding/AgeSelectionFork'
@@ -11,45 +11,45 @@ import { OnboardingNotEligible } from 'features/tutorial/pages/onboarding/Onboar
 import { OnboardingWelcome } from 'features/tutorial/pages/onboarding/OnboardingWelcome'
 import { ProfileTutorialAgeInformationCredit } from 'features/tutorial/pages/profileTutorial/ProfileTutorialAgeInformationCredit'
 
-export const ActivationStackNavigator = () => (
-  <ActivationNavigatorBase.Navigator
+export const OnboardingStackNavigator = () => (
+  <OnboardingNavigatorBase.Navigator
     initialRouteName="OnboardingWelcome"
     screenOptions={ROOT_NAVIGATOR_SCREEN_OPTIONS}>
-    <ActivationNavigatorBase.Screen
+    <OnboardingNavigatorBase.Screen
       name="OnboardingWelcome"
       component={OnboardingWelcome}
       options={{ title: 'Bienvenue' }}
-      initialParams={{ type: TutorialTypes.ONBOARDING }} // This will be used when getInitialScreen resolves to ActivationStackNavigator
+      initialParams={{ type: TutorialTypes.ONBOARDING }} // This will be used when getInitialScreen resolves to OnboardingStackNavigator
     />
-    <ActivationNavigatorBase.Screen
+    <OnboardingNavigatorBase.Screen
       name="AgeSelectionFork"
       component={AgeSelectionFork}
       options={{ title: 'Sélection d’âge' }}
     />
-    <ActivationNavigatorBase.Screen
+    <OnboardingNavigatorBase.Screen
       name="OnboardingAgeInformation"
       component={OnboardingAgeInformation}
       options={{ title: 'Information d’âge' }}
     />
-    <ActivationNavigatorBase.Screen
+    <OnboardingNavigatorBase.Screen
       name="OnboardingGeolocation"
       component={OnboardingGeolocation}
       options={{ title: 'Active ta géolocalisation' }}
     />
-    <ActivationNavigatorBase.Screen
+    <OnboardingNavigatorBase.Screen
       name="OnboardingGeneralPublicWelcome"
       component={OnboardingGeneralPublicWelcome}
       options={{ title: 'Bienvenue' }}
     />
-    <ActivationNavigatorBase.Screen
+    <OnboardingNavigatorBase.Screen
       name="OnboardingNotEligible"
       component={OnboardingNotEligible}
       options={{ title: 'Encore un peu de patience' }}
     />
-    <ActivationNavigatorBase.Screen
+    <OnboardingNavigatorBase.Screen
       name="ProfileTutorialAgeInformationCredit"
       component={ProfileTutorialAgeInformationCredit}
       options={{ title: 'Information d’âge' }}
     />
-  </ActivationNavigatorBase.Navigator>
+  </OnboardingNavigatorBase.Navigator>
 )

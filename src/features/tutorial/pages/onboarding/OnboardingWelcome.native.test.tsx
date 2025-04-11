@@ -29,7 +29,7 @@ describe('OnboardingWelcome', () => {
     const button = screen.getByText('C’est parti\u00a0!')
     await user.press(button)
 
-    expect(navigate).toHaveBeenCalledWith('ActivationStackNavigator', {
+    expect(navigate).toHaveBeenCalledWith('OnboardingStackNavigator', {
       params: undefined,
       screen: 'OnboardingGeolocation',
     })

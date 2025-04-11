@@ -5,11 +5,11 @@ import { ComponentType } from 'react'
 import { CulturalSurveyQuestionEnum } from 'api/gen/api'
 import { DisabilitiesProperties } from 'features/accessibility/types'
 import { BookingsTab } from 'features/bookings/enum'
-import {
-  ActivationStackParamList,
-  ActivationStackRouteName,
-} from 'features/navigation/ActivationStackNavigator/ActivationStackTypes'
 import { CheatcodesStackParamList } from 'features/navigation/CheatcodesStackNavigator/types'
+import {
+  OnboardingStackParamList,
+  OnboardingStackRouteName,
+} from 'features/navigation/OnboardingStackNavigator/OnboardingStackTypes'
 import {
   ProfileStackParamList,
   ProfileStackRouteName,
@@ -202,9 +202,9 @@ export type SubscriptionRootStackParamList = {
  * please update the deeplink handler in consequence.
  */
 export type RootStackParamList = {
-  ActivationStackNavigator?: {
-    screen: ActivationStackRouteName
-    params: ActivationStackParamList[ActivationStackRouteName]
+  OnboardingStackNavigator?: {
+    screen: OnboardingStackRouteName
+    params: OnboardingStackParamList[OnboardingStackRouteName]
   }
   ABTestingPOC: undefined
   AccountCreated: undefined
@@ -297,7 +297,7 @@ export type AllNavParamList = RootStackParamList &
   TabParamList &
   SearchStackParamList &
   ProfileStackParamList &
-  ActivationStackParamList
+  OnboardingStackParamList
 
 /** Type helpers to share screen names */
 export type RootScreenNames = keyof RootStackParamList
@@ -366,7 +366,7 @@ export type GenericRoute<
 }
 export type RootRoute = GenericRoute<
   RootStackParamList,
-  TabParamList & ProfileStackParamList & ActivationStackParamList
+  TabParamList & ProfileStackParamList & OnboardingStackParamList
 >
 
 // Typeguard for screen params

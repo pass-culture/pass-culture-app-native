@@ -3,7 +3,7 @@ import type { Meta } from '@storybook/react'
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { getActivationNavConfig } from 'features/navigation/ActivationStackNavigator/getActivationNavConfig'
+import { getOnboardingNavConfig } from 'features/navigation/OnboardingStackNavigator/getOnboardingNavConfig'
 import { TutorialTypes } from 'features/tutorial/enums'
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 import { All } from 'ui/svg/icons/bicolor/All'
@@ -76,7 +76,7 @@ const variantConfig: Variants<typeof AgeButton> = [
     label: 'AgeButton default',
     props: {
       children: TextExample({}),
-      navigateTo: getActivationNavConfig('AgeSelectionFork', {
+      navigateTo: getOnboardingNavConfig('AgeSelectionFork', {
         type: TutorialTypes.ONBOARDING,
       }),
     },
@@ -85,7 +85,7 @@ const variantConfig: Variants<typeof AgeButton> = [
     label: 'AgeButton dense',
     props: {
       children: TextExample({}),
-      navigateTo: getActivationNavConfig('AgeSelectionFork', {
+      navigateTo: getOnboardingNavConfig('AgeSelectionFork', {
         type: TutorialTypes.ONBOARDING,
       }),
       dense: true,
@@ -95,7 +95,7 @@ const variantConfig: Variants<typeof AgeButton> = [
     label: 'AgeButton with subtitle',
     props: {
       children: TextExample({ withSubtitle: true }),
-      navigateTo: getActivationNavConfig('AgeSelectionFork', {
+      navigateTo: getOnboardingNavConfig('AgeSelectionFork', {
         type: TutorialTypes.ONBOARDING,
       }),
     },
@@ -104,7 +104,7 @@ const variantConfig: Variants<typeof AgeButton> = [
     label: 'AgeButton dense with subtitle',
     props: {
       children: TextExample({ withSubtitle: true }),
-      navigateTo: getActivationNavConfig('AgeSelectionFork', {
+      navigateTo: getOnboardingNavConfig('AgeSelectionFork', {
         type: TutorialTypes.ONBOARDING,
       }),
       dense: true,
@@ -114,7 +114,7 @@ const variantConfig: Variants<typeof AgeButton> = [
     label: 'AgeButton with icon',
     props: {
       children: TextExample({}),
-      navigateTo: getActivationNavConfig('AgeSelectionFork', {
+      navigateTo: getOnboardingNavConfig('AgeSelectionFork', {
         type: TutorialTypes.ONBOARDING,
       }),
       Icon: <BicolorAll />,
@@ -124,7 +124,7 @@ const variantConfig: Variants<typeof AgeButton> = [
     label: 'AgeButton with subtitle and icon',
     props: {
       children: TextExample({ withSubtitle: true }),
-      navigateTo: getActivationNavConfig('AgeSelectionFork', {
+      navigateTo: getOnboardingNavConfig('AgeSelectionFork', {
         type: TutorialTypes.ONBOARDING,
       }),
       Icon: <BicolorAll />,
@@ -134,7 +134,7 @@ const variantConfig: Variants<typeof AgeButton> = [
     label: 'AgeButton dense with subtitle and icon',
     props: {
       children: TextExample({ withSubtitle: true }),
-      navigateTo: getActivationNavConfig('AgeSelectionFork', {
+      navigateTo: getOnboardingNavConfig('AgeSelectionFork', {
         type: TutorialTypes.ONBOARDING,
       }),
       dense: true,
