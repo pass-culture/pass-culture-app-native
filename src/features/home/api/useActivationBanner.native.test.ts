@@ -19,7 +19,7 @@ jest.mock('features/home/api/useBanner', () => ({
   useBanner: jest.fn(() => ({
     data: {
       banner: {
-        title: 'API - Débloque tes 300\u00a0€',
+        title: 'Débloque tes 150\u00a0€',
         text: 'API - Bénéficie de ton crédit maintenant !',
         name: mockBannerName,
       },
@@ -53,7 +53,7 @@ const mockUseGetStepperInfo = (
 
 jest.mock('shared/user/useGetDepositAmountsByAge')
 const mockDepositAmounts = jest.mocked(useGetDepositAmountsByAge)
-mockDepositAmounts.mockReturnValue('300\u00a0€')
+mockDepositAmounts.mockReturnValue('150\u00a0€')
 
 const defaultUseLocation = {
   selectedLocationMode: LocationMode.EVERYWHERE,
@@ -79,7 +79,7 @@ describe('useActivationBanner', () => {
       await act(async () => {})
 
       expect(result.current.banner).toEqual({
-        title: 'API - Débloque tes 300\u00a0€',
+        title: 'Débloque tes 150\u00a0€',
         text: 'API - Bénéficie de ton crédit maintenant !',
         name: BannerName.activation_banner,
       })
@@ -103,7 +103,7 @@ describe('useActivationBanner', () => {
       await act(async () => {})
 
       expect(result.current.banner).toEqual({
-        title: 'API - Débloque tes 300\u00a0€',
+        title: 'Débloque tes 150\u00a0€',
         text: 'API - Bénéficie de ton crédit maintenant !',
         name: BannerName.activation_banner,
       })
@@ -119,7 +119,7 @@ describe('useActivationBanner', () => {
       await act(async () => {})
 
       expect(result.current.banner).toEqual({
-        title: 'API - Débloque tes 300\u00a0€',
+        title: 'Débloque tes 150\u00a0€',
         text: 'API - Bénéficie de ton crédit maintenant !',
         name: BannerName.activation_banner,
       })
@@ -142,7 +142,7 @@ describe('useActivationBanner', () => {
       await act(async () => {})
 
       expect(result.current.banner).toEqual({
-        title: 'API - Débloque tes 300\u00a0€',
+        title: 'Débloque tes 150\u00a0€',
         text: 'API - Bénéficie de ton crédit maintenant !',
         name: BannerName.activation_banner,
       })
@@ -159,7 +159,7 @@ describe('useActivationBanner', () => {
       await act(async () => {})
 
       expect(result.current.banner).toEqual({
-        title: 'API - Débloque tes 300\u00a0€',
+        title: 'Débloque ton crédit',
         text: 'API - Bénéficie de ton crédit maintenant !',
         name: BannerName.activation_banner,
       })
@@ -177,7 +177,7 @@ describe('useActivationBanner', () => {
       await act(async () => {})
 
       expect(result.current.banner).toEqual({
-        title: 'API - Débloque tes 300\u00a0€',
+        title: 'Débloque tes 150\u00a0€',
         text: 'API - Bénéficie de ton crédit maintenant !',
         name: BannerName.activation_banner,
       })
