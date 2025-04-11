@@ -88,7 +88,9 @@ describe('<SetAddress/>', () => {
     fireEvent.press(screen.getByText('Continuer'))
 
     await waitFor(() => {
-      expect(navigate).toHaveBeenNthCalledWith(1, 'SetStatus')
+      expect(navigate).toHaveBeenNthCalledWith(1, 'SetStatus', {
+        type: ProfileTypes.IDENTITY_CHECK,
+      })
     })
   })
 

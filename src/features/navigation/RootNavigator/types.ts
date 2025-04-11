@@ -155,7 +155,7 @@ export type SubscriptionRootStackParamList = {
   SetName: ProfileType
   SetCity: ProfileType
   SetAddress: ProfileType
-  SetStatus: undefined
+  SetStatus: ProfileType
   // Identification
   ComeBackLater: undefined
   DMSIntroduction: { isForeignDMSInformation: boolean }

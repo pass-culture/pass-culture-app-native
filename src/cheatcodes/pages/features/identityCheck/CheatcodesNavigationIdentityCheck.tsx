@@ -42,7 +42,7 @@ export const cheatcodesNavigationIdentityCheckButtons: [CheatcodesButtonsWithSub
       { screen: 'SetPhoneNumber' },
       { screen: 'SetPhoneNumberWithoutValidation' },
       { screen: 'SetPhoneValidationCode' },
-      { screen: 'SetStatus' },
+      { screen: 'SetStatus', navigationParams: { type: ProfileTypes.IDENTITY_CHECK } },
       { screen: 'Stepper' },
       { screen: 'VerifyEligibility' },
       { title: 'DuplicateUser Error', showOnlyInSearch: true },

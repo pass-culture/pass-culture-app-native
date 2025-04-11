@@ -1,7 +1,10 @@
+import { StackScreenProps } from '@react-navigation/stack'
 import React from 'react'
 
 import { ActivityTypesResponse } from 'api/gen'
+import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
 import { ActivityTypesSnap } from 'features/identityCheck/pages/profile/fixtures/mockedActivityTypes'
+import { SubscriptionRootStackParamList } from 'features/navigation/RootNavigator/types'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, checkAccessibilityFor, act } from 'tests/utils/web'
@@ -16,8 +19,18 @@ describe('<SetStatus/>', () => {
   })
 
   describe('Accessibility', () => {
-    it('should not have basic accessibility issues', async () => {
-      const { container } = render(reactQueryProviderHOC(<SetStatus />))
+    it('should not have basic accessibility issues in identity check', async () => {
+      const { container } = renderSetAddress({ type: ProfileTypes.IDENTITY_CHECK })
+
+      await act(async () => {
+        const results = await checkAccessibilityFor(container)
+
+        expect(results).toHaveNoViolations()
+      })
+    })
+
+    it('should not have basic accessibility issues in booking', async () => {
+      const { container } = renderSetAddress({ type: ProfileTypes.BOOKING })
 
       await act(async () => {
         const results = await checkAccessibilityFor(container)
@@ -27,3 +40,11 @@ describe('<SetStatus/>', () => {
     })
   })
 })
+
+const renderSetAddress = (navigationParams: { type: string }) => {
+  const navProps = { route: { params: navigationParams } } as StackScreenProps<
+    SubscriptionRootStackParamList,
+    'SetStatus'
+  >
+  return render(reactQueryProviderHOC(<SetStatus {...navProps} />))
+}

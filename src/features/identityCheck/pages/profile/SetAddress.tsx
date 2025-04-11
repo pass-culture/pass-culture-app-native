@@ -45,10 +45,12 @@ export const SetAddress: FunctionComponent<Props> = ({ route }: Props) => {
     ? {
         headerTitle: 'Profil',
         title: 'Quelle est ton adresse\u00a0?',
+        navigateParamsType: ProfileTypes.IDENTITY_CHECK,
       }
     : {
         headerTitle: 'Informations personnelles',
         title: 'Saisis ton adresse postale',
+        navigateParamsType: ProfileTypes.BOOKING,
       }
 
   const { data: settings } = useSettingsContext()
@@ -122,7 +124,7 @@ export const SetAddress: FunctionComponent<Props> = ({ route }: Props) => {
     if (!enabled) return
     setStoreAddress(selectedAddress ?? query)
     analytics.logSetAddressClicked()
-    navigate('SetStatus')
+    navigate('SetStatus', { type: pageInfos.navigateParamsType })
   }
 
   useEnterKeyAction(enabled ? submitAddress : undefined)
