@@ -3,12 +3,16 @@ import React from 'react'
 import { CheatcodesSubscreensButtonList } from 'cheatcodes/components/CheatcodesSubscreenButtonList'
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
 import { CheatcodesButtonsWithSubscreensProps } from 'cheatcodes/types'
+import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
 
 export const cheatcodesNavigationBookingsButtons: [CheatcodesButtonsWithSubscreensProps] = [
   {
     title: 'Bookings 🛍️',
     screen: 'CheatcodesNavigationBookings',
-    subscreens: [{ screen: 'CheatcodesScreenBookingNotFound', title: 'BookingNotFound' }],
+    subscreens: [
+      { screen: 'CheatcodesScreenBookingNotFound', title: 'BookingNotFound' },
+      { screen: 'SetName', navigationParams: { type: ProfileTypes.BOOKING } },
+    ],
   },
 ]
 

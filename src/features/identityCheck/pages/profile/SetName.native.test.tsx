@@ -1,7 +1,10 @@
+import { StackScreenProps } from '@react-navigation/stack'
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
+import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
 import { SetName } from 'features/identityCheck/pages/profile/SetName'
+import { SubscriptionRootStackParamList } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
 import { storage } from 'libs/storage'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
@@ -16,14 +19,20 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 })
 
 describe('<SetName/>', () => {
-  it('should render correctly', () => {
-    render(<SetName />)
+  it('should render correctly in identity check', () => {
+    renderSetName({ type: ProfileTypes.IDENTITY_CHECK })
+
+    expect(screen).toMatchSnapshot()
+  })
+
+  it('should render correctly in booking', () => {
+    renderSetName({ type: ProfileTypes.BOOKING })
 
     expect(screen).toMatchSnapshot()
   })
 
   it('should enable the submit button when first name and last name is not empty', async () => {
-    render(<SetName />)
+    renderSetName({ type: ProfileTypes.IDENTITY_CHECK })
 
     const continueButton = screen.getByTestId('Continuer vers la ville de résidence')
 
@@ -41,7 +50,7 @@ describe('<SetName/>', () => {
   })
 
   it('should store name in storage when submit name', async () => {
-    render(<SetName />)
+    renderSetName({ type: ProfileTypes.IDENTITY_CHECK })
 
     const firstNameInput = screen.getByPlaceholderText('Ton prénom')
     await act(async () => fireEvent.changeText(firstNameInput, firstName))
@@ -60,7 +69,7 @@ describe('<SetName/>', () => {
   })
 
   it('should navigate to SetCity when submit name', async () => {
-    render(<SetName />)
+    renderSetName({ type: ProfileTypes.IDENTITY_CHECK })
 
     const firstNameInput = screen.getByPlaceholderText('Ton prénom')
     await act(async () => fireEvent.changeText(firstNameInput, firstName))
@@ -77,7 +86,7 @@ describe('<SetName/>', () => {
   })
 
   it('should log analytics on press Continuer', async () => {
-    render(<SetName />)
+    renderSetName({ type: ProfileTypes.IDENTITY_CHECK })
 
     const firstNameInput = screen.getByPlaceholderText('Ton prénom')
     await act(async () => fireEvent.changeText(firstNameInput, firstName))
@@ -93,3 +102,11 @@ describe('<SetName/>', () => {
     })
   })
 })
+
+const renderSetName = (navigationParams: { type: string }) => {
+  const navProps = { route: { params: navigationParams } } as StackScreenProps<
+    SubscriptionRootStackParamList,
+    'SetName'
+  >
+  return render(<SetName {...navProps} />)
+}

@@ -1,12 +1,17 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useNavigation } from '@react-navigation/native'
-import React from 'react'
+import { StackScreenProps } from '@react-navigation/stack'
+import React, { FunctionComponent } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import { v4 as uuidv4 } from 'uuid'
 
+import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
 import { setNameSchema } from 'features/identityCheck/pages/profile/schemas/setNameSchema'
 import { nameActions, useName } from 'features/identityCheck/pages/profile/store/nameStore'
-import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import {
+  SubscriptionRootStackParamList,
+  UseNavigationType,
+} from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
 import { InfoBanner } from 'ui/components/banners/InfoBanner'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -23,7 +28,26 @@ type FormValues = {
   firstName: string
   lastName: string
 }
-export const SetName = () => {
+
+type Props = StackScreenProps<SubscriptionRootStackParamList, 'SetName'>
+
+export const SetName: FunctionComponent<Props> = ({ route }: Props) => {
+  const type = route.params.type
+  const isIdentityCheck = type === ProfileTypes.IDENTITY_CHECK
+  const pageInfos = isIdentityCheck
+    ? {
+        headerTitle: 'Profil',
+        title: 'Comment t’appelles-tu\u00a0?',
+        bannerMessage:
+          'Saisis ton nom et ton prénom tels qu’ils sont affichés sur ta pièce d’identité. Nous les vérifions et ils ne pourront plus être modifiés par la suite.',
+      }
+    : {
+        headerTitle: 'Informations personnelles',
+        title: 'Renseigne ton prénom et ton nom',
+        bannerMessage:
+          'Pour réserver une offre gratuite, on a besoin de ton prénom, nom, ton lieu de résidence et adresse, ainsi que ton statut. Ces informations seront vérifiées par le partenaire culturel.',
+      }
+
   const storedName = useName()
   const { setName: setStoredName } = nameActions
   const { navigate } = useNavigation<UseNavigationType>()
@@ -54,16 +78,12 @@ export const SetName = () => {
 
   return (
     <PageWithHeader
-      title="Profil"
+      title={pageInfos.headerTitle}
       scrollChildren={
         <Form.MaxWidth>
-          <Typo.Title3 {...getHeadingAttrs(2)}>Comment t’appelles-tu&nbsp;?</Typo.Title3>
+          <Typo.Title3 {...getHeadingAttrs(2)}>{pageInfos.title}</Typo.Title3>
           <Spacer.Column numberOfSpaces={5} />
-          <InfoBanner
-            icon={BicolorIdCard}
-            message="Saisis ton nom et ton prénom tels qu’ils sont affichés sur ta pièce d’identité.
-Nous les vérifions et ils ne pourront plus être modifiés par la suite."
-          />
+          <InfoBanner icon={BicolorIdCard} message={pageInfos.bannerMessage} />
           <Spacer.Column numberOfSpaces={4} />
           <Controller
             control={control}

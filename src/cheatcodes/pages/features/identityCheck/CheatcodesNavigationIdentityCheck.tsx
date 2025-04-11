@@ -8,6 +8,7 @@ import { CheatcodesButtonsWithSubscreensProps } from 'cheatcodes/types'
 import { NotEligibleEduConnect } from 'features/identityCheck/pages/identification/errors/eduConnect/NotEligibleEduConnect'
 import { EduConnectErrorMessageEnum } from 'features/identityCheck/pages/identification/errors/hooks/useNotEligibleEduConnectErrorData'
 import { PhoneValidationTipsModal } from 'features/identityCheck/pages/phoneValidation/PhoneValidationTipsModal'
+import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { useLogTypeFromRemoteConfig } from 'libs/hooks/useLogTypeFromRemoteConfig'
 import { ScreenError } from 'libs/monitoring/errors'
@@ -37,7 +38,7 @@ export const cheatcodesNavigationIdentityCheckButtons: [CheatcodesButtonsWithSub
       { screen: 'SelectPhoneStatus' },
       { screen: 'SetAddress' },
       { screen: 'SetCity' },
-      { screen: 'SetName' },
+      { screen: 'SetName', navigationParams: { type: ProfileTypes.IDENTITY_CHECK } },
       { screen: 'SetPhoneNumber' },
       { screen: 'SetPhoneNumberWithoutValidation' },
       { screen: 'SetPhoneValidationCode' },

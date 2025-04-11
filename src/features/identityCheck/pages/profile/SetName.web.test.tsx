@@ -1,7 +1,9 @@
+import { StackScreenProps } from '@react-navigation/stack'
 import React from 'react'
 
 import { initialSubscriptionState as mockState } from 'features/identityCheck/context/reducer'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
+import { SubscriptionRootStackParamList } from 'features/navigation/RootNavigator/types'
 import { render, checkAccessibilityFor, waitFor, screen } from 'tests/utils/web'
 
 import { SetName } from './SetName'
@@ -19,8 +21,20 @@ jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
 
 describe('<SetName/>', () => {
   describe('Accessibility', () => {
-    it('should not have basic accessibility issues', async () => {
-      const { container } = render(reactQueryProviderHOC(<SetName />))
+    it('should not have basic accessibility issues in identity check', async () => {
+      const { container } = renderSetName({ type: ProfileTypes.IDENTITY_CHECK })
+
+      await waitFor(() => {
+        expect(screen.getByTestId('Entrée pour le prénom')).toHaveFocus()
+      })
+
+      const results = await checkAccessibilityFor(container)
+
+      expect(results).toHaveNoViolations()
+    })
+
+    it('should not have basic accessibility issues in booking', async () => {
+      const { container } = renderSetName({ type: ProfileTypes.BOOKING })
 
       await waitFor(() => {
         expect(screen.getByTestId('Entrée pour le prénom')).toHaveFocus()
@@ -32,3 +46,11 @@ describe('<SetName/>', () => {
     })
   })
 })
+
+const renderSetName = (navigationParams: { type: string }) => {
+  const navProps = { route: { params: navigationParams } } as StackScreenProps<
+    SubscriptionRootStackParamList,
+    'SetName'
+  >
+  return render(<SetName {...navProps} />)
+}
