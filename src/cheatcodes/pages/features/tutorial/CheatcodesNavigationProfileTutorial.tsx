@@ -8,7 +8,7 @@ export function CheatcodesNavigationProfileTutorial(): React.JSX.Element {
   return (
     <CheatcodesTemplateScreen title="ProfileTutorial 👤">
       <LinkToScreenWithNavigateTo
-        title="Page 17-18 ans (V3)"
+        title="ProfileTutorialAgeInformationCredit"
         navigateTo={getOnboardingNavConfig('ProfileTutorialAgeInformationCredit')}
       />
     </CheatcodesTemplateScreen>
