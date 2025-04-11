@@ -4,7 +4,6 @@ import React from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import { v4 as uuidv4 } from 'uuid'
 
-import { CenteredTitle } from 'features/identityCheck/components/CenteredTitle'
 import { setNameSchema } from 'features/identityCheck/pages/profile/schemas/setNameSchema'
 import { nameActions, useName } from 'features/identityCheck/pages/profile/store/nameStore'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
@@ -17,7 +16,8 @@ import { TextInput } from 'ui/components/inputs/TextInput'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { BicolorIdCard } from 'ui/svg/icons/BicolorIdCard'
-import { Spacer } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
+import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type FormValues = {
   firstName: string
@@ -57,7 +57,7 @@ export const SetName = () => {
       title="Profil"
       scrollChildren={
         <Form.MaxWidth>
-          <CenteredTitle title="Comment t’appelles-tu&nbsp;?" />
+          <Typo.Title3 {...getHeadingAttrs(2)}>Comment t’appelles-tu&nbsp;?</Typo.Title3>
           <Spacer.Column numberOfSpaces={5} />
           <InfoBanner
             icon={BicolorIdCard}

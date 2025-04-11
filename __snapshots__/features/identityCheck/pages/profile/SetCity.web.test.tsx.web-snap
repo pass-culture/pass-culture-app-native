@@ -210,18 +210,14 @@ exports[`<SetCity/> should render correctly 1`] = `
                 class="css-view-175oi2r"
                 style="height: 65px;"
               />
-              <div
-                class="css-view-175oi2r r-alignItems-1awozwy r-width-13qz1uu"
+              <h2
+                aria-level="2"
+                class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-19e3y8m r-lineHeight-1w51ilw"
+                dir="ltr"
+                role="heading"
               >
-                <h2
-                  aria-level="2"
-                  class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-1wf0xld r-lineHeight-1ln193j r-textAlign-q4m81j"
-                  dir="ltr"
-                  role="heading"
-                >
-                  Renseigne ta ville de résidence
-                </h2>
-              </div>
+                Renseigne ta ville de résidence
+              </h2>
               <div
                 class="css-view-175oi2r r-height-z80fyv"
               />

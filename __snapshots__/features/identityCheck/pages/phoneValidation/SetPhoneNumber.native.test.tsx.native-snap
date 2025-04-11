@@ -267,43 +267,20 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
                 }
               }
             />
-            <View
-              numberOfSpaces={5}
+            <Text
               style={
                 [
                   {
-                    "height": 20,
-                  },
-                ]
-              }
-            />
-            <View
-              style={
-                [
-                  {
-                    "alignItems": "center",
-                    "width": "100%",
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 19,
+                    "lineHeight": 30.4,
                   },
                 ]
               }
             >
-              <Text
-                nativeID="testUuidV4"
-                style={
-                  [
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 17,
-                      "lineHeight": 27.2,
-                      "textAlign": "center",
-                    },
-                  ]
-                }
-              >
-                Quel est ton numéro de téléphone ?
-              </Text>
-            </View>
+              Quel est ton numéro de téléphone ?
+            </Text>
             <View
               numberOfSpaces={6}
               style={
@@ -324,9 +301,7 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
                 ]
               }
             >
-              <View
-                accessibilityLabelledBy="testUuidV4"
-              >
+              <View>
                 <Text
                   style={
                     [
@@ -335,7 +310,6 @@ exports[`SetPhoneNumber should match snapshot without modal appearance 1`] = `
                         "fontFamily": "Montserrat-Medium",
                         "fontSize": 16,
                         "lineHeight": 25.6,
-                        "textAlign": "center",
                       },
                     ]
                   }

@@ -7,7 +7,6 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { AddressOption } from 'features/identityCheck/components/AddressOption'
-import { CenteredTitle } from 'features/identityCheck/components/CenteredTitle'
 import { IdentityCheckError } from 'features/identityCheck/pages/profile/errors'
 import { addressActions, useAddress } from 'features/identityCheck/pages/profile/store/addressStore'
 import { useCity } from 'features/identityCheck/pages/profile/store/cityStore'
@@ -25,7 +24,8 @@ import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/S
 import { Spinner } from 'ui/components/Spinner'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
-import { Spacer } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
+import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 const snackbarMessage =
   'Nous avons eu un problème pour trouver l’adresse associée à ton code postal. Réessaie plus tard.'
@@ -114,7 +114,7 @@ export const SetAddress = () => {
       scrollChildren={
         <React.Fragment>
           <Form.MaxWidth>
-            <CenteredTitle title="Quelle est ton adresse&nbsp;?" />
+            <Typo.Title3 {...getHeadingAttrs(2)}>Quelle est ton adresse&nbsp;?</Typo.Title3>
             <Spacer.Column numberOfSpaces={5} />
             <SearchInput
               autoFocus
