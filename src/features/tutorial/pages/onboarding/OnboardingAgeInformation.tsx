@@ -3,7 +3,8 @@ import React from 'react'
 
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { useNavigateToHomeWithReset } from 'features/navigation/helpers/useNavigateToHomeWithReset'
-import { StepperOrigin, TutorialRootStackParamList } from 'features/navigation/RootNavigator/types'
+import { OnboardingStackParamList } from 'features/navigation/OnboardingStackNavigator/OnboardingStackTypes'
+import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { OnboardingTimeline } from 'features/tutorial/components/onboarding/OnboardingTimeline'
 import { TutorialTypes } from 'features/tutorial/enums'
 import { TutorialPage } from 'features/tutorial/pages/TutorialPage'
@@ -16,7 +17,7 @@ import { ClockFilled } from 'ui/svg/icons/ClockFilled'
 import { Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
-type Props = StackScreenProps<TutorialRootStackParamList, 'OnboardingAgeInformation'>
+type Props = StackScreenProps<OnboardingStackParamList, 'OnboardingAgeInformation'>
 
 const onSignupPress = () => {
   analytics.logOnboardingAgeInformationClicked({ type: 'account_creation' })

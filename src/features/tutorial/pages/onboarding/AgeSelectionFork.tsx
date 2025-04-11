@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 
 import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import { getOnboardingNavConfig } from 'features/navigation/OnboardingStackNavigator/getOnboardingNavConfig'
-import { TutorialRootStackParamList } from 'features/navigation/RootNavigator/types'
+import { OnboardingStackParamList } from 'features/navigation/OnboardingStackNavigator/OnboardingStackTypes'
 import { AgeButton } from 'features/tutorial/components/AgeButton'
 import { useOnboardingContext } from 'features/tutorial/context/OnboardingWrapper'
 import { NonEligible, TutorialTypes } from 'features/tutorial/enums'
@@ -30,7 +30,7 @@ const isNotEligible = (age: NonEligible | EligibleAges): age is NonEligible => {
   return age in NonEligible
 }
 
-type Props = StackScreenProps<TutorialRootStackParamList, 'AgeSelectionFork'>
+type Props = StackScreenProps<OnboardingStackParamList, 'AgeSelectionFork'>
 
 export const AgeSelectionFork: FunctionComponent<Props> = ({ route }: Props) => {
   const { showNotEligibleModal } = useOnboardingContext()

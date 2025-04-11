@@ -17,7 +17,6 @@ import {
 import { SearchStackParamList } from 'features/navigation/SearchStackNavigator/types'
 import { PlaylistType } from 'features/offer/enums'
 import { SearchState } from 'features/search/types'
-import { TutorialType } from 'features/tutorial/types'
 import { Venue } from 'features/venue/types'
 import { ContentfulLabelCategories } from 'libs/contentful/types'
 import { SuggestedPlace } from 'libs/place/types'
@@ -89,16 +88,6 @@ export type CulturalSurveyRootStackParamList = {
   CulturalSurveyQuestions: { question: CulturalSurveyQuestionEnum }
   CulturalSurveyThanks: undefined
   FAQWebview: undefined
-}
-
-export type TutorialRootStackParamList = {
-  AgeSelectionFork: TutorialType | undefined
-  OnboardingAgeInformation: { age: 15 | 16 | 17 | 18 } | undefined
-  OnboardingGeneralPublicWelcome: undefined
-  OnboardingGeolocation: undefined
-  OnboardingNotEligible: undefined
-  OnboardingWelcome: TutorialType | undefined
-  ProfileTutorialAgeInformationCredit: undefined
 }
 
 export type TrustedDeviceRootStackParamList = {

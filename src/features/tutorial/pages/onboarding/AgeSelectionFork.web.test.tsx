@@ -2,7 +2,7 @@ import { StackScreenProps } from '@react-navigation/stack'
 import React from 'react'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
-import { TutorialRootStackParamList } from 'features/navigation/RootNavigator/types'
+import { OnboardingStackParamList } from 'features/navigation/OnboardingStackNavigator/OnboardingStackTypes'
 import { TutorialTypes } from 'features/tutorial/enums'
 import { AgeSelectionFork } from 'features/tutorial/pages/onboarding/AgeSelectionFork'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
@@ -28,7 +28,7 @@ describe('AgeSelectionFork', () => {
 
 const renderAgeSelectionFork = (navigationParams: { type: string }) => {
   const navProps = { route: { params: navigationParams } } as StackScreenProps<
-    TutorialRootStackParamList,
+    OnboardingStackParamList,
     'AgeSelectionFork'
   >
   return render(<AgeSelectionFork {...navProps} />)

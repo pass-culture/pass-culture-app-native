@@ -3,7 +3,7 @@ import React from 'react'
 
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
-import { TutorialRootStackParamList } from 'features/navigation/RootNavigator/types'
+import { OnboardingStackParamList } from 'features/navigation/OnboardingStackNavigator/OnboardingStackTypes'
 import { TutorialTypes, NonEligible } from 'features/tutorial/enums'
 import { AgeSelectionFork } from 'features/tutorial/pages/onboarding/AgeSelectionFork'
 import { analytics } from 'libs/analytics/__mocks__/provider'
@@ -112,7 +112,7 @@ describe('AgeSelectionFork', () => {
 
 const renderAgeSelectionFork = (navigationParams: { type: string } | undefined) => {
   const navProps = { route: { params: navigationParams } } as StackScreenProps<
-    TutorialRootStackParamList,
+    OnboardingStackParamList,
     'AgeSelectionFork'
   >
   return render(<AgeSelectionFork {...navProps} />)

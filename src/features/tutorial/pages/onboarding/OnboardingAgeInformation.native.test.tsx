@@ -2,7 +2,8 @@ import { StackScreenProps } from '@react-navigation/stack'
 import React from 'react'
 
 import { navigate, reset } from '__mocks__/@react-navigation/native'
-import { StepperOrigin, TutorialRootStackParamList } from 'features/navigation/RootNavigator/types'
+import { OnboardingStackParamList } from 'features/navigation/OnboardingStackNavigator/OnboardingStackTypes'
+import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import * as useGoBack from 'features/navigation/useGoBack'
 import { CreditStatus, TutorialTypes } from 'features/tutorial/enums'
@@ -141,7 +142,7 @@ describe('OnboardingAgeInformation', () => {
 
 const renderOnboardingAgeInformation = (navigationParams: { age: number } | undefined) => {
   const navProps = { route: { params: navigationParams } } as StackScreenProps<
-    TutorialRootStackParamList,
+    OnboardingStackParamList,
     'OnboardingAgeInformation'
   >
   return render(reactQueryProviderHOC(<OnboardingAgeInformation {...navProps} />))
