@@ -23,9 +23,12 @@ export const OnSiteWithdrawal = ({ token }: { token: string }) => {
 }
 
 const TicketCodeTitleContainer = styled.View(({ theme }) => ({
-  borderRadius: getSpacing(1),
+  display: 'flex',
   border: '1px dashed',
   borderColor: theme.colors.primary,
-  width: getSpacing(24),
+  flexDirection: 'row',
   height: getSpacing(10),
+  alignItems: 'center',
+  justifyContent: 'center',
+  borderRadius: getSpacing(1),
 }))
