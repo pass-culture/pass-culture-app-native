@@ -19,7 +19,7 @@ jest.mock('features/home/api/useBanner', () => ({
   useBanner: jest.fn(() => ({
     data: {
       banner: {
-        title: 'Débloque tes 150\u00a0€',
+        title: 'API - Débloque tes 150\u00a0€',
         text: 'API - Bénéficie de ton crédit maintenant !',
         name: mockBannerName,
       },
@@ -177,7 +177,7 @@ describe('useActivationBanner', () => {
       await act(async () => {})
 
       expect(result.current.banner).toEqual({
-        title: 'Débloque tes 150\u00a0€',
+        title: 'API - Débloque tes 150\u00a0€',
         text: 'API - Bénéficie de ton crédit maintenant !',
         name: BannerName.activation_banner,
       })
