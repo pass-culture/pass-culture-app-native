@@ -7,7 +7,7 @@ export type OnboardingStackParamList = {
   OnboardingGeneralPublicWelcome: undefined
   OnboardingGeolocation: undefined
   OnboardingNotEligible: undefined
-  OnboardingWelcome: TutorialType | undefined
+  OnboardingWelcome: undefined
   ProfileTutorialAgeInformationCredit: undefined
 }
 

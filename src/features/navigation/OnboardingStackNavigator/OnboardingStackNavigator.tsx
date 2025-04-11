@@ -2,7 +2,6 @@ import React from 'react'
 
 import { OnboardingNavigatorBase } from 'features/navigation/OnboardingStackNavigator/OnboardingNavigatorBase'
 import { ROOT_NAVIGATOR_SCREEN_OPTIONS } from 'features/navigation/RootNavigator/navigationOptions'
-import { TutorialTypes } from 'features/tutorial/enums'
 import { AgeSelectionFork } from 'features/tutorial/pages/onboarding/AgeSelectionFork'
 import { OnboardingAgeInformation } from 'features/tutorial/pages/onboarding/OnboardingAgeInformation'
 import { OnboardingGeneralPublicWelcome } from 'features/tutorial/pages/onboarding/OnboardingGeneralPublicWelcome'
@@ -13,13 +12,12 @@ import { ProfileTutorialAgeInformationCredit } from 'features/tutorial/pages/pro
 
 export const OnboardingStackNavigator = () => (
   <OnboardingNavigatorBase.Navigator
-    initialRouteName="OnboardingWelcome"
+    initialRouteName="OnboardingWelcome" // This will be used when getInitialScreen resolves to OnboardingStackNavigator
     screenOptions={ROOT_NAVIGATOR_SCREEN_OPTIONS}>
     <OnboardingNavigatorBase.Screen
       name="OnboardingWelcome"
       component={OnboardingWelcome}
       options={{ title: 'Bienvenue' }}
-      initialParams={{ type: TutorialTypes.ONBOARDING }} // This will be used when getInitialScreen resolves to OnboardingStackNavigator
     />
     <OnboardingNavigatorBase.Screen
       name="AgeSelectionFork"
