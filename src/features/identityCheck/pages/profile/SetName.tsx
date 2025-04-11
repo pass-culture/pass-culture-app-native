@@ -47,7 +47,7 @@ export const SetName: FunctionComponent<Props> = ({ route }: Props) => {
         title: 'Renseigne ton prénom et ton nom',
         bannerMessage:
           'Pour réserver une offre gratuite, on a besoin de ton prénom, nom, ton lieu de résidence et adresse, ainsi que ton statut. Ces informations seront vérifiées par le partenaire culturel.',
-        navigateParamsType: ProfileTypes.BOOKING,
+        navigateParamsType: ProfileTypes.BOOKING_FREE_OFFER_15_16,
       }
 
   const storedName = useName()

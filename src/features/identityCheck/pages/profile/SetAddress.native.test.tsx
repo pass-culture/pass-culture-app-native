@@ -63,8 +63,8 @@ describe('<SetAddress/>', () => {
     expect(await screen.findByText('Quelle est ton adresse\u00a0?')).toBeTruthy()
   })
 
-  it('should display correct infos in booking', async () => {
-    renderSetAddress({ type: ProfileTypes.BOOKING })
+  it('should display correct infos in booking free offer 15/16 years', async () => {
+    renderSetAddress({ type: ProfileTypes.BOOKING_FREE_OFFER_15_16 })
 
     expect(await screen.findByText('Informations personnelles')).toBeTruthy()
     expect(await screen.findByText('Saisis ton adresse postale')).toBeTruthy()

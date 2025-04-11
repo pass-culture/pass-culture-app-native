@@ -50,7 +50,7 @@ export const SetAddress: FunctionComponent<Props> = ({ route }: Props) => {
     : {
         headerTitle: 'Informations personnelles',
         title: 'Saisis ton adresse postale',
-        navigateParamsType: ProfileTypes.BOOKING,
+        navigateParamsType: ProfileTypes.BOOKING_FREE_OFFER_15_16,
       }
 
   const { data: settings } = useSettingsContext()

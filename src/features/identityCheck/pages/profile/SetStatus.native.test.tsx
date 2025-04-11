@@ -107,8 +107,8 @@ describe('<SetStatus/>', () => {
     expect(await screen.findByText('Profil')).toBeTruthy()
   })
 
-  it('should display correct infos in booking', async () => {
-    renderSetStatus({ type: ProfileTypes.BOOKING })
+  it('should display correct infos in booking free offer 15/16 years', async () => {
+    renderSetStatus({ type: ProfileTypes.BOOKING_FREE_OFFER_15_16 })
 
     expect(await screen.findByText('Informations personnelles')).toBeTruthy()
   })

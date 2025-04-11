@@ -11,10 +11,10 @@ export const cheatcodesNavigationBookingsButtons: [CheatcodesButtonsWithSubscree
     screen: 'CheatcodesNavigationBookings',
     subscreens: [
       { screen: 'CheatcodesScreenBookingNotFound', title: 'BookingNotFound' },
-      { screen: 'SetName', navigationParams: { type: ProfileTypes.BOOKING } },
-      { screen: 'SetCity', navigationParams: { type: ProfileTypes.BOOKING } },
-      { screen: 'SetAddress', navigationParams: { type: ProfileTypes.BOOKING } },
-      { screen: 'SetStatus', navigationParams: { type: ProfileTypes.BOOKING } },
+      { screen: 'SetName', navigationParams: { type: ProfileTypes.BOOKING_FREE_OFFER_15_16 } },
+      { screen: 'SetCity', navigationParams: { type: ProfileTypes.BOOKING_FREE_OFFER_15_16 } },
+      { screen: 'SetAddress', navigationParams: { type: ProfileTypes.BOOKING_FREE_OFFER_15_16 } },
+      { screen: 'SetStatus', navigationParams: { type: ProfileTypes.BOOKING_FREE_OFFER_15_16 } },
     ],
   },
 ]

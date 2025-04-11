@@ -37,8 +37,8 @@ describe('<SetCity/>', () => {
     expect(await screen.findByText('Profil')).toBeTruthy()
   })
 
-  it('should display correct infos in booking', async () => {
-    renderSetCity({ type: ProfileTypes.BOOKING })
+  it('should display correct infos in booking free offer 15/16 years', async () => {
+    renderSetCity({ type: ProfileTypes.BOOKING_FREE_OFFER_15_16 })
 
     expect(await screen.findByText('Informations personnelles')).toBeTruthy()
   })
@@ -71,7 +71,7 @@ describe('<SetCity/>', () => {
   it('should navigate to SetAddress with booking params when clicking on "Continuer"', async () => {
     const city = mockedSuggestedCities[0]
     mockServer.universalGet<CitiesResponse>(CITIES_API_URL, mockedSuggestedCities)
-    renderSetCity({ type: ProfileTypes.BOOKING })
+    renderSetCity({ type: ProfileTypes.BOOKING_FREE_OFFER_15_16 })
 
     await act(async () => {
       const input = screen.getByPlaceholderText('Ex\u00a0: 75017')
@@ -88,7 +88,7 @@ describe('<SetCity/>', () => {
 
     await waitFor(async () => {
       expect(navigate).toHaveBeenNthCalledWith(1, 'SetAddress', {
-        type: ProfileTypes.BOOKING,
+        type: ProfileTypes.BOOKING_FREE_OFFER_15_16,
       })
     })
   })

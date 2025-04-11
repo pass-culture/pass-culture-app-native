@@ -43,7 +43,7 @@ export const SetCity: FunctionComponent<Props> = ({ route }: Props) => {
       }
     : {
         headerTitle: 'Informations personnelles',
-        navigateParamsType: ProfileTypes.BOOKING,
+        navigateParamsType: ProfileTypes.BOOKING_FREE_OFFER_15_16,
       }
 
   const { navigate } = useNavigation<UseNavigationType>()

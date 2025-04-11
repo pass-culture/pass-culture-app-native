@@ -1,4 +1,4 @@
 export enum ProfileTypes {
-  BOOKING = 'booking',
+  BOOKING_FREE_OFFER_15_16 = 'booking',
   IDENTITY_CHECK = 'identityCheck',
 }

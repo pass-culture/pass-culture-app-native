@@ -37,8 +37,8 @@ describe('<SetName/>', () => {
     ).toBeTruthy()
   })
 
-  it('should display correct infos in booking', async () => {
-    renderSetName({ type: ProfileTypes.BOOKING })
+  it('should display correct infos in booking free offer 15/16 years', async () => {
+    renderSetName({ type: ProfileTypes.BOOKING_FREE_OFFER_15_16 })
 
     expect(await screen.findByText('Informations personnelles')).toBeTruthy()
     expect(await screen.findByText('Renseigne ton prénom et ton nom')).toBeTruthy()
@@ -104,7 +104,7 @@ describe('<SetName/>', () => {
   })
 
   it('should navigate to SetCity with booking params when submit name', async () => {
-    renderSetName({ type: ProfileTypes.BOOKING })
+    renderSetName({ type: ProfileTypes.BOOKING_FREE_OFFER_15_16 })
 
     const firstNameInput = screen.getByPlaceholderText('Ton prénom')
     await act(async () => fireEvent.changeText(firstNameInput, firstName))
@@ -116,7 +116,9 @@ describe('<SetName/>', () => {
     await act(async () => fireEvent.press(continueButton))
 
     await waitFor(() => {
-      expect(navigate).toHaveBeenNthCalledWith(1, 'SetCity', { type: ProfileTypes.BOOKING })
+      expect(navigate).toHaveBeenNthCalledWith(1, 'SetCity', {
+        type: ProfileTypes.BOOKING_FREE_OFFER_15_16,
+      })
     })
   })
 
