@@ -40,12 +40,14 @@ export const SetName: FunctionComponent<Props> = ({ route }: Props) => {
         title: 'Comment t’appelles-tu\u00a0?',
         bannerMessage:
           'Saisis ton nom et ton prénom tels qu’ils sont affichés sur ta pièce d’identité. Nous les vérifions et ils ne pourront plus être modifiés par la suite.',
+        navigateParamsType: ProfileTypes.IDENTITY_CHECK,
       }
     : {
         headerTitle: 'Informations personnelles',
         title: 'Renseigne ton prénom et ton nom',
         bannerMessage:
           'Pour réserver une offre gratuite, on a besoin de ton prénom, nom, ton lieu de résidence et adresse, ainsi que ton statut. Ces informations seront vérifiées par le partenaire culturel.',
+        navigateParamsType: ProfileTypes.BOOKING,
       }
 
   const storedName = useName()
@@ -71,7 +73,7 @@ export const SetName: FunctionComponent<Props> = ({ route }: Props) => {
     if (disabled) return
     setStoredName({ firstName, lastName })
     analytics.logSetNameClicked()
-    navigate('SetCity')
+    navigate('SetCity', { type: pageInfos.navigateParamsType })
   }
 
   useEnterKeyAction(disabled ? undefined : () => handleSubmit(submitName))

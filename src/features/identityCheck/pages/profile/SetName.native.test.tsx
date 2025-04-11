@@ -68,7 +68,7 @@ describe('<SetName/>', () => {
     })
   })
 
-  it('should navigate to SetCity when submit name', async () => {
+  it('should navigate to SetCity with identityCheck params when submit name', async () => {
     renderSetName({ type: ProfileTypes.IDENTITY_CHECK })
 
     const firstNameInput = screen.getByPlaceholderText('Ton prénom')
@@ -81,7 +81,24 @@ describe('<SetName/>', () => {
     await act(async () => fireEvent.press(continueButton))
 
     await waitFor(() => {
-      expect(navigate).toHaveBeenNthCalledWith(1, 'SetCity')
+      expect(navigate).toHaveBeenNthCalledWith(1, 'SetCity', { type: ProfileTypes.IDENTITY_CHECK })
+    })
+  })
+
+  it('should navigate to SetCity with booking params when submit name', async () => {
+    renderSetName({ type: ProfileTypes.BOOKING })
+
+    const firstNameInput = screen.getByPlaceholderText('Ton prénom')
+    await act(async () => fireEvent.changeText(firstNameInput, firstName))
+
+    const lastNameInput = screen.getByPlaceholderText('Ton nom')
+    await act(async () => fireEvent.changeText(lastNameInput, lastName))
+
+    const continueButton = await screen.findByText('Continuer')
+    await act(async () => fireEvent.press(continueButton))
+
+    await waitFor(() => {
+      expect(navigate).toHaveBeenNthCalledWith(1, 'SetCity', { type: ProfileTypes.BOOKING })
     })
   })
 

@@ -12,6 +12,8 @@ export const cheatcodesNavigationBookingsButtons: [CheatcodesButtonsWithSubscree
     subscreens: [
       { screen: 'CheatcodesScreenBookingNotFound', title: 'BookingNotFound' },
       { screen: 'SetName', navigationParams: { type: ProfileTypes.BOOKING } },
+      { screen: 'SetCity', navigationParams: { type: ProfileTypes.BOOKING } },
+      { screen: 'SetAddress', navigationParams: { type: ProfileTypes.BOOKING } },
     ],
   },
 ]

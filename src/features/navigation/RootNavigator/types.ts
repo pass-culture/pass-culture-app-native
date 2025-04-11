@@ -153,8 +153,8 @@ export type SubscriptionRootStackParamList = {
   // Profile
   SetEmail: undefined
   SetName: ProfileType
-  SetCity: undefined
-  SetAddress: undefined
+  SetCity: ProfileType
+  SetAddress: ProfileType
   SetStatus: undefined
   // Identification
   ComeBackLater: undefined

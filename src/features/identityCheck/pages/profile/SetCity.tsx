@@ -1,11 +1,16 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useNavigation } from '@react-navigation/native'
-import React from 'react'
+import { StackScreenProps } from '@react-navigation/stack'
+import React, { FunctionComponent } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import { object, string } from 'yup'
 
+import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
 import { cityActions, useCity } from 'features/identityCheck/pages/profile/store/cityStore'
-import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import {
+  SubscriptionRootStackParamList,
+  UseNavigationType,
+} from 'features/navigation/RootNavigator/types'
 import { CitySearchInput } from 'features/profile/components/CitySearchInput/CitySearchInput'
 import { analytics } from 'libs/analytics/provider'
 import { SuggestedCity } from 'libs/place/types'
@@ -26,7 +31,21 @@ export const cityResolver = object().shape({
     .required(),
 })
 
-export const SetCity = () => {
+type Props = StackScreenProps<SubscriptionRootStackParamList, 'SetCity'>
+
+export const SetCity: FunctionComponent<Props> = ({ route }: Props) => {
+  const type = route.params.type
+  const isIdentityCheck = type === ProfileTypes.IDENTITY_CHECK
+  const pageInfos = isIdentityCheck
+    ? {
+        headerTitle: 'Profil',
+        navigateParamsType: ProfileTypes.IDENTITY_CHECK,
+      }
+    : {
+        headerTitle: 'Informations personnelles',
+        navigateParamsType: ProfileTypes.BOOKING,
+      }
+
   const { navigate } = useNavigation<UseNavigationType>()
   const storedCity = useCity()
   const { setCity } = cityActions
@@ -43,12 +62,12 @@ export const SetCity = () => {
   const onSubmit = ({ city }: CityForm) => {
     setCity(city)
     analytics.logSetPostalCodeClicked()
-    navigate('SetAddress')
+    navigate('SetAddress', { type: pageInfos.navigateParamsType })
   }
 
   return (
     <PageWithHeader
-      title="Profil"
+      title={pageInfos.headerTitle}
       scrollChildren={
         <React.Fragment>
           <Typo.Title3 {...getHeadingAttrs(2)}>Renseigne ta ville de résidence</Typo.Title3>

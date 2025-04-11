@@ -1,16 +1,21 @@
 import { useNavigation } from '@react-navigation/native'
+import { StackScreenProps } from '@react-navigation/stack'
 import { debounce } from 'lodash'
-import React, { useEffect, useRef, useState } from 'react'
+import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
 import { Keyboard, Platform } from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { AddressOption } from 'features/identityCheck/components/AddressOption'
+import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
 import { IdentityCheckError } from 'features/identityCheck/pages/profile/errors'
 import { addressActions, useAddress } from 'features/identityCheck/pages/profile/store/addressStore'
 import { useCity } from 'features/identityCheck/pages/profile/store/cityStore'
-import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import {
+  SubscriptionRootStackParamList,
+  UseNavigationType,
+} from 'features/navigation/RootNavigator/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/analytics/provider'
 import { eventMonitoring } from 'libs/monitoring/services'
@@ -31,7 +36,21 @@ const snackbarMessage =
   'Nous avons eu un problème pour trouver l’adresse associée à ton code postal. Réessaie plus tard.'
 const exception = 'Failed to fetch data from API: https://api-adresse.data.gouv.fr/search'
 
-export const SetAddress = () => {
+type Props = StackScreenProps<SubscriptionRootStackParamList, 'SetAddress'>
+
+export const SetAddress: FunctionComponent<Props> = ({ route }: Props) => {
+  const type = route.params.type
+  const isIdentityCheck = type === ProfileTypes.IDENTITY_CHECK
+  const pageInfos = isIdentityCheck
+    ? {
+        headerTitle: 'Profil',
+        title: 'Quelle est ton adresse\u00a0?',
+      }
+    : {
+        headerTitle: 'Informations personnelles',
+        title: 'Saisis ton adresse postale',
+      }
+
   const { data: settings } = useSettingsContext()
   const storedAddress = useAddress()
   const storedCity = useCity()
@@ -110,7 +129,7 @@ export const SetAddress = () => {
 
   return (
     <PageWithHeader
-      title="Profil"
+      title={pageInfos.headerTitle}
       scrollChildren={
         <React.Fragment>
           <Form.MaxWidth>

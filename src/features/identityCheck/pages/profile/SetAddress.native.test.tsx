@@ -1,3 +1,4 @@
+import { StackScreenProps } from '@react-navigation/stack'
 import { FeatureCollection, Point } from 'geojson'
 import React from 'react'
 
@@ -5,7 +6,9 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { SettingsResponse } from 'api/gen'
 import { SettingsWrapper } from 'features/auth/context/SettingsContext'
 import { defaultSettings } from 'features/auth/fixtures/fixtures'
+import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
 import { SetAddress } from 'features/identityCheck/pages/profile/SetAddress'
+import { SubscriptionRootStackParamList } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
 import { mockedSuggestedPlaces } from 'libs/place/fixtures/mockedSuggestedPlaces'
@@ -45,8 +48,16 @@ describe('<SetAddress/>', () => {
 
   mockUseNetInfoContext.mockReturnValue({ isConnected: true, isInternetReachable: true })
 
-  it('should render correctly', async () => {
-    renderSetAddress()
+  it('should render correctly in identity check', async () => {
+    renderSetAddress({ type: ProfileTypes.IDENTITY_CHECK })
+
+    await screen.findByText('Recherche et sélectionne ton adresse')
+
+    expect(screen).toMatchSnapshot()
+  })
+
+  it('should render correctly in booking', async () => {
+    renderSetAddress({ type: ProfileTypes.BOOKING })
 
     await screen.findByText('Recherche et sélectionne ton adresse')
 
@@ -54,7 +65,7 @@ describe('<SetAddress/>', () => {
   })
 
   it('should display a list of addresses when user add an address', async () => {
-    renderSetAddress()
+    renderSetAddress({ type: ProfileTypes.IDENTITY_CHECK })
 
     const input = screen.getByPlaceholderText('Ex\u00a0: 34 avenue de l’Opéra')
     fireEvent.changeText(input, QUERY_ADDRESS)
@@ -67,7 +78,7 @@ describe('<SetAddress/>', () => {
   })
 
   it('should navigate to SetStatus when clicking on "Continuer"', async () => {
-    renderSetAddress()
+    renderSetAddress({ type: ProfileTypes.IDENTITY_CHECK })
 
     const input = screen.getByPlaceholderText('Ex\u00a0: 34 avenue de l’Opéra')
     fireEvent.changeText(input, QUERY_ADDRESS)
@@ -82,7 +93,7 @@ describe('<SetAddress/>', () => {
   })
 
   it('should save address in local storage when clicking on "Continuer"', async () => {
-    renderSetAddress()
+    renderSetAddress({ type: ProfileTypes.IDENTITY_CHECK })
 
     const input = screen.getByPlaceholderText('Ex\u00a0: 34 avenue de l’Opéra')
     fireEvent.changeText(input, QUERY_ADDRESS)
@@ -101,7 +112,7 @@ describe('<SetAddress/>', () => {
   })
 
   it('should log analytics on press Continuer', async () => {
-    renderSetAddress()
+    renderSetAddress({ type: ProfileTypes.IDENTITY_CHECK })
 
     const input = screen.getByPlaceholderText('Ex\u00a0: 34 avenue de l’Opéra')
     fireEvent.changeText(input, QUERY_ADDRESS)
@@ -114,11 +125,15 @@ describe('<SetAddress/>', () => {
   })
 })
 
-function renderSetAddress() {
+const renderSetAddress = (navigationParams: { type: string }) => {
+  const navProps = { route: { params: navigationParams } } as StackScreenProps<
+    SubscriptionRootStackParamList,
+    'SetAddress'
+  >
   return render(
     reactQueryProviderHOC(
       <SettingsWrapper>
-        <SetAddress />
+        <SetAddress {...navProps} />
       </SettingsWrapper>
     )
   )
