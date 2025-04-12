@@ -28,17 +28,3 @@ jest.unmock('react-native-modal')
 
 // TODO(PC-34456): remove this global mock
 jest.mock('features/navigation/RootNavigator/rootRoutes')
-
-jest.mock('@react-native-firebase/perf', () => {
-  const mockTrace = {
-    putMetric: jest.fn(),
-    // Mock for trace.stop() - needs to return a resolved Promise because it's awaited
-    stop: jest.fn().mockResolvedValue(undefined),
-  }
-  const mockPerfInstance = {
-    // Mock for perf().startTrace() - needs to return a resolved Promise containing the mockTrace object because it's awaited
-    startTrace: jest.fn().mockResolvedValue(mockTrace),
-  }
-  // Return the mock function for the default export `perf()`
-  return jest.fn(() => mockPerfInstance)
-})
