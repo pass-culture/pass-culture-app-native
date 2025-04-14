@@ -1,9 +1,9 @@
 import React from 'react'
-import { View } from 'react-native'
 
 import { ThematicSearchPlaylist } from 'features/search/pages/ThematicSearch/ThematicSearchPlaylist'
 import { ThematicSearchSkeleton } from 'features/search/pages/ThematicSearch/ThematicSearchSkeleton'
 import { ThematicSearchPlaylistData } from 'features/search/pages/ThematicSearch/types'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 
 export type ThematicSearchPlaylistListProps = {
   playlists: ThematicSearchPlaylistData[]
@@ -19,21 +19,20 @@ export const ThematicSearchPlaylistList: React.FC<ThematicSearchPlaylistListProp
   }
 
   return (
-    <React.Fragment>
+    <ViewGap gap={6}>
       {playlists?.map((playlist) => {
         if (playlist.offers.hits.length > 0) {
           return (
-            <View key={playlist.title}>
-              <ThematicSearchPlaylist
-                playlist={playlist}
-                analyticsFrom="thematicsearch"
-                route="ThematicSearch"
-              />
-            </View>
+            <ThematicSearchPlaylist
+              playlist={playlist}
+              analyticsFrom="thematicsearch"
+              route="ThematicSearch"
+              key={playlist.title}
+            />
           )
         }
         return null
       })}
-    </React.Fragment>
+    </ViewGap>
   )
 }

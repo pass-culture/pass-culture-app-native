@@ -185,7 +185,7 @@ describe('<HomeModule />', () => {
 
     await act(async () => {})
 
-    expect(screen.getByText('I want something more')).toBeInTheDocument()
+    expect(screen.getAllByText('I want something more')[0]).toBeInTheDocument()
 
     let results
     await act(async () => {
