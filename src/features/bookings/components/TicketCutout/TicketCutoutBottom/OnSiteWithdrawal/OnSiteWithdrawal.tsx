@@ -10,7 +10,7 @@ export const OnSiteWithdrawal = ({ token }: { token: string }) => {
   return (
     <React.Fragment>
       <TicketVisual>
-        <TicketCodeTitleContainer>
+        <TicketCodeTitleContainer testID="withdrawal-on-site">
           <TicketCodeTitle>{token}</TicketCodeTitle>
         </TicketCodeTitleContainer>
       </TicketVisual>
