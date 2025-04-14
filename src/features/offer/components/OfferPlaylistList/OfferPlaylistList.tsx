@@ -124,13 +124,21 @@ export function OfferPlaylistList({
   const shouldDisplayPlaylist =
     isArrayNotEmpty(sameCategorySimilarOffers) || isArrayNotEmpty(otherCategoriesSimilarOffers)
 
-  const handleViewableItemsChange = (playlist: SimilarOfferPlaylist, changed: ViewToken[]) => {
-    if (inViewPlaylists.current.includes(playlist.title)) {
-      onPlaylistViewableItemsChanged?.(
-        playlist.title,
-        changed.map((value) => value.key)
-      )
-    }
+  const viewableItemsHandlersRef = useRef<Record<string, (info: { changed: ViewToken[] }) => void>>(
+    {}
+  )
+
+  if (Object.keys(viewableItemsHandlersRef.current).length === 0) {
+    similarOffersPlaylist.forEach((playlist) => {
+      viewableItemsHandlersRef.current[playlist.type] = ({ changed }) => {
+        if (inViewPlaylists.current.includes(playlist.title)) {
+          onPlaylistViewableItemsChanged?.(
+            playlist.title,
+            changed.map((value) => value.key)
+          )
+        }
+      }
+    })
   }
 
   return (
@@ -173,7 +181,7 @@ export function OfferPlaylistList({
               title={playlist.title}
               onEndReached={() => trackingOnHorizontalScroll(playlist.type, playlist.apiRecoParams)}
               playlistType={playlist.type}
-              onViewableItemsChanged={({ changed }) => handleViewableItemsChange(playlist, changed)}
+              onViewableItemsChanged={viewableItemsHandlersRef.current[playlist.type]}
             />
           </IntersectionObserver>
         )
