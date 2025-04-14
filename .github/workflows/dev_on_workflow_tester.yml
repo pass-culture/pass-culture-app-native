@@ -23,7 +23,7 @@ env:
 jobs:
   yarn_test_web:
     name: 'Run Web unit tests'
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     strategy:
       fail-fast: false
       matrix:
@@ -78,7 +78,7 @@ jobs:
 
   yarn_test_native:
     name: 'Run native unit tests'
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     strategy:
       fail-fast: false
       matrix:
@@ -146,7 +146,7 @@ jobs:
   allure-report:
     name: Update Allure report
     if: github.ref == 'refs/heads/master'
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     permissions:
       id-token: write
       contents: read
@@ -236,7 +236,7 @@ jobs:
           user_email: 'PassCulture-SA@users.noreply.github.com'
 
   report-coverage:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     needs: yarn_test_native
     steps:
       - name: Enable Corepack
@@ -280,7 +280,7 @@ jobs:
           projectBaseDir: .
 
   yarn_test_proxy:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     steps:
       - name: Enable Corepack
         run: corepack enable
@@ -323,7 +323,7 @@ jobs:
         with:
           projectBaseDir: server
   slack_notify:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     if: ${{ always() && github.ref == 'refs/heads/master' }}
     needs:
       - yarn_test_native
