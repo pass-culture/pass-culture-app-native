@@ -52,6 +52,7 @@ export const VenueMapOfferPlaylist = ({
         likesCount: item.offer.likes,
         chroniclesCount: item.offer.chroniclesCount,
         headlineCount: item.offer.headlineCount,
+        hasSmallLayout: true,
       })
       return (
         <OfferTile
