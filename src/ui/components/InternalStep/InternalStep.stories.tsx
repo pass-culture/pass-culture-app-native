@@ -2,11 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { StepCard } from 'features/profile/components/StepCard/StepCard'
-import { StepButtonState } from 'ui/components/StepButton/types'
 import { Variants, VariantsStory, VariantsTemplate } from 'ui/storybook/VariantsTemplate'
-import { BicolorAroundMe } from 'ui/svg/icons/BicolorAroundMe'
-import { Email } from 'ui/svg/icons/Email'
 import { Typo } from 'ui/theme'
 
 import { StepVariant } from '../VerticalStepper/types'
@@ -69,29 +65,6 @@ const variantConfig: Variants<typeof InternalStep> = [
     props: {
       ...Complete.args,
       variant: StepVariant.future,
-    },
-  },
-  {
-    label: 'InternalStep with ActiveStepCard',
-    props: {
-      variant: StepVariant.in_progress,
-      children: (
-        <StepCard title="Active" icon={<BicolorAroundMe />} subtitle="Renseigne ton texte" />
-      ),
-    },
-  },
-  {
-    label: 'InternalStep with DoneStepCard',
-    props: {
-      variant: StepVariant.complete,
-      children: <StepCard title="Done" icon={<Email />} type={StepButtonState.COMPLETED} />,
-    },
-  },
-  {
-    label: 'InternalStep with DisabledStepCard',
-    props: {
-      variant: StepVariant.future,
-      children: <StepCard title="Disabled" icon={<Email />} type={StepButtonState.DISABLED} />,
     },
   },
 ]

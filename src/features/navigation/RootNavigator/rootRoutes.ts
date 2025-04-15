@@ -45,7 +45,6 @@ import { OnboardingSubscription } from 'features/subscription/page/OnboardingSub
 import { Venue } from 'features/venue/pages/Venue/Venue'
 import { VenuePreviewCarousel } from 'features/venue/pages/VenuePreviewCarousel/VenuePreviewCarousel'
 import { VenueMap } from 'features/venueMap/pages/VenueMap/VenueMap'
-import { ABTestingPOC } from 'libs/firebase/remoteConfig/ABTestingPOC'
 
 import { RootRoute, RootScreenNames } from './types'
 
@@ -315,14 +314,6 @@ export const rootRoutes: RootRoute[] = [
       path: 'liens/utm',
     },
     options: { title: 'Paramètres UTM' },
-  },
-  {
-    name: 'ABTestingPOC',
-    component: ABTestingPOC,
-    pathConfig: {
-      path: 'ab-testing-poc',
-    },
-    options: { title: 'POC A/B Testing' },
   },
   {
     name: 'ThematicHome',
