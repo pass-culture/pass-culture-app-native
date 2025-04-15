@@ -315,7 +315,10 @@ describe('Profile component', () => {
       const howItWorkButton = screen.getByText('Comment ça marche\u00a0?')
       await user.press(howItWorkButton)
 
-      expect(navigate).toHaveBeenCalledWith('ProfileTutorialAgeInformationCredit', undefined)
+      expect(navigate).toHaveBeenCalledWith('OnboardingStackNavigator', {
+        params: undefined,
+        screen: 'ProfileTutorialAgeInformationCredit',
+      })
     })
 
     it('should navigate when the faq row is clicked', async () => {

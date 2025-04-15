@@ -38,8 +38,11 @@ describe('OnboardingGeolocation', () => {
     const button = screen.getByLabelText('Passer à la page suivante')
     await user.press(button)
 
-    expect(navigate).toHaveBeenCalledWith('AgeSelectionFork', {
-      type: TutorialTypes.ONBOARDING,
+    expect(navigate).toHaveBeenCalledWith('OnboardingStackNavigator', {
+      screen: 'AgeSelectionFork',
+      params: {
+        type: TutorialTypes.ONBOARDING,
+      },
     })
   })
 

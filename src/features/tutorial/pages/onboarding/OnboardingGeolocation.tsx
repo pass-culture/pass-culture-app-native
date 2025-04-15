@@ -1,6 +1,7 @@
 import { useNavigation } from '@react-navigation/native'
 import React, { useCallback } from 'react'
 
+import { getOnboardingStackConfig } from 'features/navigation/OnboardingStackNavigator/getOnboardingStackConfig'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { TutorialTypes } from 'features/tutorial/enums'
 import { analytics } from 'libs/analytics/provider'
@@ -13,7 +14,7 @@ export const OnboardingGeolocation = () => {
   const { requestGeolocPermission } = useLocation()
 
   const navigateToNextScreen = useCallback(() => {
-    navigate('AgeSelectionFork', { type: TutorialTypes.ONBOARDING })
+    navigate(...getOnboardingStackConfig('AgeSelectionFork', { type: TutorialTypes.ONBOARDING }))
   }, [navigate])
 
   const onSkip = useCallback(() => {

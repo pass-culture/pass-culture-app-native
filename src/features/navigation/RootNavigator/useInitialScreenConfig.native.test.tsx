@@ -135,10 +135,10 @@ describe('useInitialScreen()', () => {
     const result = await renderUseInitialScreen()
 
     await waitFor(() => {
-      expect(result.current).toEqual('OnboardingWelcome')
+      expect(result.current).toEqual('OnboardingStackNavigator')
     })
 
-    expect(analytics.logScreenView).toHaveBeenNthCalledWith(1, 'OnboardingWelcome')
+    expect(analytics.logScreenView).toHaveBeenNthCalledWith(1, 'OnboardingStackNavigator')
   })
 })
 

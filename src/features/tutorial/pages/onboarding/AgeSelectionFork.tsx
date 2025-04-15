@@ -2,13 +2,16 @@ import { StackScreenProps } from '@react-navigation/stack'
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
-import { TutorialRootStackParamList } from 'features/navigation/RootNavigator/types'
+import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
+import { getOnboardingNavConfig } from 'features/navigation/OnboardingStackNavigator/getOnboardingNavConfig'
+import { OnboardingStackParamList } from 'features/navigation/OnboardingStackNavigator/OnboardingStackTypes'
 import { AgeButton } from 'features/tutorial/components/AgeButton'
 import { useOnboardingContext } from 'features/tutorial/context/OnboardingWrapper'
 import { NonEligible, TutorialTypes } from 'features/tutorial/enums'
 import { TutorialPage } from 'features/tutorial/pages/TutorialPage'
 import { EligibleAges } from 'features/tutorial/types'
 import { analytics } from 'libs/analytics/provider'
+import { eventMonitoring } from 'libs/monitoring/services'
 import { storage } from 'libs/storage'
 import { AccessibleUnorderedList } from 'ui/components/accessibility/AccessibleUnorderedList'
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
@@ -27,13 +30,20 @@ const isNotEligible = (age: NonEligible | EligibleAges): age is NonEligible => {
   return age in NonEligible
 }
 
-type Props = StackScreenProps<TutorialRootStackParamList, 'AgeSelectionFork'>
+type Props = StackScreenProps<OnboardingStackParamList, 'AgeSelectionFork'>
 
 export const AgeSelectionFork: FunctionComponent<Props> = ({ route }: Props) => {
-  const type = route.params.type
-  const isOnboarding = type === TutorialTypes.ONBOARDING
-
   const { showNotEligibleModal } = useOnboardingContext()
+
+  const type = route?.params?.type
+
+  if (!type) {
+    eventMonitoring.captureException('route.params.type is falsy')
+    navigateToHome()
+    return null
+  }
+
+  const isOnboarding = type === TutorialTypes.ONBOARDING
 
   const onAgeChoice = async (age: NonEligible | EligibleAges) => {
     if (isNotEligible(age)) {
@@ -49,28 +59,28 @@ export const AgeSelectionFork: FunctionComponent<Props> = ({ route }: Props) => 
       startButtonTitle: 'J’ai ',
       age: '16 ans',
       endButtonTitle: ' ou moins',
-      navigateTo: { screen: 'OnboardingNotEligible' },
+      navigateTo: getOnboardingNavConfig('OnboardingNotEligible'),
       onBeforeNavigate: () => onAgeChoice(NonEligible.UNDER_17),
     },
     {
       startButtonTitle: 'J’ai ',
       age: '17 ans',
       endButtonTitle: '',
-      navigateTo: { screen: 'OnboardingAgeInformation', params: { age: 17 } },
+      navigateTo: getOnboardingNavConfig('OnboardingAgeInformation', { age: 17 }),
       onBeforeNavigate: () => onAgeChoice(17),
     },
     {
       startButtonTitle: 'J’ai ',
       age: '18 ans',
       endButtonTitle: '',
-      navigateTo: { screen: 'OnboardingAgeInformation', params: { age: 18 } },
+      navigateTo: getOnboardingNavConfig('OnboardingAgeInformation', { age: 18 }),
       onBeforeNavigate: () => onAgeChoice(18),
     },
     {
       startButtonTitle: 'J’ai ',
       age: '19 ans',
       endButtonTitle: ' ou plus',
-      navigateTo: { screen: 'OnboardingGeneralPublicWelcome' },
+      navigateTo: getOnboardingNavConfig('OnboardingGeneralPublicWelcome'),
       onBeforeNavigate: () => onAgeChoice(NonEligible.OVER_18),
     },
   ]
@@ -82,10 +92,7 @@ export const AgeSelectionFork: FunctionComponent<Props> = ({ route }: Props) => 
           <AgeButton
             key={button.age}
             onBeforeNavigate={button.onBeforeNavigate}
-            navigateTo={{
-              screen: button.navigateTo.screen,
-              params: { ...button.navigateTo.params, type },
-            }}
+            navigateTo={button.navigateTo}
             accessibilityLabel={`${button.startButtonTitle}${button.age}${button.endButtonTitle}`}>
             <StyledBody>
               {button.startButtonTitle}
