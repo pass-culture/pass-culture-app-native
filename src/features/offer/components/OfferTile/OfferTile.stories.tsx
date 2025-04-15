@@ -4,7 +4,6 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { InteractionTag } from 'features/offer/components/InteractionTag/InteractionTag'
-import { theme } from 'theme'
 import { Variants, VariantsStory, VariantsTemplate } from 'ui/storybook/VariantsTemplate'
 import { BookClubCertification } from 'ui/svg/BookClubCertification'
 import { ThumbUpFilled } from 'ui/svg/icons/ThumbUpFilled'
@@ -30,12 +29,12 @@ const LikeTag = styled(InteractionTag).attrs(({ theme }) => ({
   backgroundColor: theme.colors.greyLight,
 }))``
 
-const HeadlineTag = styled(InteractionTag).attrs(() => ({
+const HeadlineTag = styled(InteractionTag).attrs(({ theme }) => ({
   Icon: <Star size={16} />,
   backgroundColor: theme.colors.goldLight100,
 }))``
 
-const ChronicleTag = styled(InteractionTag).attrs(() => ({
+const ChronicleTag = styled(InteractionTag).attrs(({ theme }) => ({
   Icon: <BookClubCertification size={16} />,
   backgroundColor: theme.colors.skyBlueLight,
 }))``

@@ -1,7 +1,10 @@
 import React from 'react'
+import { DefaultTheme } from 'styled-components/native'
 
 import { OfferResponseV2, RecommendationApiParams } from 'api/gen'
 import { Referrals } from 'features/navigation/RootNavigator/types'
+import { getTagConfig } from 'features/offer/components/InteractionTag/getTagConfig'
+import { InteractionTag } from 'features/offer/components/InteractionTag/InteractionTag'
 import { OfferTile } from 'features/offer/components/OfferTile/OfferTile'
 import { PlaylistType } from 'features/offer/enums'
 import { OfferTileProps } from 'features/offer/types'
@@ -20,11 +23,14 @@ type OfferPlaylistItemProps = {
   labelMapping: CategoryHomeLabelMapping | SubcategoryOfferLabelMapping
   currency: Currency
   euroToPacificFrancRate: number
+  minLikesValue: number
+  theme: DefaultTheme
   artistName?: string
   apiRecoParams?: RecommendationApiParams
   analyticsFrom?: Referrals
   priceDisplay: (item: Offer) => string
   navigationMethod?: OfferTileProps['navigationMethod']
+  hasSmallLayout?: boolean
 }
 
 type RenderOfferPlaylistItemProps = {
@@ -40,15 +46,25 @@ export const OfferPlaylistItem = ({
   labelMapping,
   artistName,
   apiRecoParams,
+  minLikesValue,
+  theme,
   analyticsFrom = 'offer',
   navigationMethod,
   priceDisplay,
+  hasSmallLayout,
 }: OfferPlaylistItemProps) => {
   return function RenderItem({ item, width, height, playlistType }: RenderOfferPlaylistItemProps) {
     const timestampsInMillis = item.offer.dates && getTimeStampInMillis(item.offer.dates)
     const categoryLabel = item.offer.bookFormat || labelMapping[item.offer.subcategoryId] || ''
     const categoryId = categoryMapping[item.offer.subcategoryId]
-
+    const tagConfig = getTagConfig({
+      theme,
+      minLikesValue,
+      likesCount: item.offer.likes,
+      chroniclesCount: item.offer.chroniclesCount,
+      headlineCount: item.offer.headlineCount,
+      hasSmallLayout,
+    })
     return (
       <OfferTile
         offerLocation={item._geoloc}
@@ -68,6 +84,7 @@ export const OfferPlaylistItem = ({
         apiRecoParams={apiRecoParams}
         artistName={artistName}
         navigationMethod={navigationMethod}
+        interactionTag={tagConfig ? <InteractionTag {...tagConfig} /> : undefined}
       />
     )
   }

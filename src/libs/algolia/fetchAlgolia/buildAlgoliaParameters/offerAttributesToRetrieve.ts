@@ -16,4 +16,7 @@ export const offerAttributesToRetrieve = [
   'objectID',
   '_geoloc',
   'venue',
+  'offer.likes',
+  'offer.chroniclesCount',
+  'offer.headlineCount',
 ]

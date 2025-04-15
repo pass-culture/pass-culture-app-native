@@ -1,9 +1,12 @@
 import React, { Fragment, useCallback } from 'react'
 import { FlatList } from 'react-native-gesture-handler'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
+import { getTagConfig } from 'features/offer/components/InteractionTag/getTagConfig'
+import { InteractionTag } from 'features/offer/components/InteractionTag/InteractionTag'
 import { OfferTile } from 'features/offer/components/OfferTile/OfferTile'
 import { PlaylistType } from 'features/offer/enums'
+import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import {
   formatStartPrice,
   getDisplayedPrice,
@@ -34,34 +37,47 @@ export const VenueMapOfferPlaylist = ({
   onPressMore,
   playlistType,
 }: VenueMapOfferPlaylistProps) => {
+  const theme = useTheme()
+  const { minLikesValue } = useRemoteConfigQuery()
   const currency = useGetCurrencyToDisplay()
   const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
   const mapping = useCategoryIdMapping()
   const labelMapping = useCategoryHomeLabelMapping()
 
   const renderItem: CustomListRenderItem<Offer> = useCallback(
-    ({ item }) => (
-      <OfferTile
-        offerId={Number(item.objectID)}
-        categoryLabel={labelMapping[item.offer.subcategoryId]}
-        categoryId={mapping[item.offer.subcategoryId]}
-        subcategoryId={item.offer.subcategoryId}
-        name={item.offer.name}
-        offerLocation={item._geoloc}
-        analyticsFrom="venueMap"
-        thumbUrl={item.offer.thumbUrl}
-        price={getDisplayedPrice(
-          item.offer.prices,
-          currency,
-          euroToPacificFrancRate,
-          getIfPricesShouldBeFixed(item.offer.subcategoryId) ? undefined : formatStartPrice
-        )}
-        width={PLAYLIST_ITEM_WIDTH}
-        height={PLAYLIST_ITEM_HEIGHT}
-        playlistType={playlistType}
-      />
-    ),
-    [currency, euroToPacificFrancRate, labelMapping, mapping, playlistType]
+    ({ item }) => {
+      const tagConfig = getTagConfig({
+        theme,
+        minLikesValue,
+        likesCount: item.offer.likes,
+        chroniclesCount: item.offer.chroniclesCount,
+        headlineCount: item.offer.headlineCount,
+        hasSmallLayout: true,
+      })
+      return (
+        <OfferTile
+          offerId={Number(item.objectID)}
+          categoryLabel={labelMapping[item.offer.subcategoryId]}
+          categoryId={mapping[item.offer.subcategoryId]}
+          subcategoryId={item.offer.subcategoryId}
+          name={item.offer.name}
+          offerLocation={item._geoloc}
+          analyticsFrom="venueMap"
+          thumbUrl={item.offer.thumbUrl}
+          price={getDisplayedPrice(
+            item.offer.prices,
+            currency,
+            euroToPacificFrancRate,
+            getIfPricesShouldBeFixed(item.offer.subcategoryId) ? undefined : formatStartPrice
+          )}
+          width={PLAYLIST_ITEM_WIDTH}
+          height={PLAYLIST_ITEM_HEIGHT}
+          playlistType={playlistType}
+          interactionTag={tagConfig ? <InteractionTag {...tagConfig} /> : undefined}
+        />
+      )
+    },
+    [currency, euroToPacificFrancRate, labelMapping, mapping, minLikesValue, playlistType, theme]
   )
 
   return (

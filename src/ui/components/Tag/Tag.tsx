@@ -1,9 +1,9 @@
 import React, { cloneElement, FunctionComponent, ReactElement } from 'react'
-import { View, ViewProps } from 'react-native'
+import { Platform, View, ViewProps } from 'react-native'
 import styled from 'styled-components/native'
 
 import { isReactElement } from 'shared/typeguards/isReactElement'
-import { isStyledComponent } from 'shared/typeguards/isStyledComponent'
+import { isStyledIcon } from 'shared/typeguards/isStyledIcon'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 import { getSpacing, getSpacingString, Typo } from 'ui/theme'
 
@@ -27,7 +27,7 @@ export const Tag: FunctionComponent<TagProps> = ({ label, Icon, ...props }) => {
     if (isReactElement(Icon)) {
       return cloneElement(Icon, { testID: 'tagIcon' })
     }
-    if (isStyledComponent(Icon)) {
+    if (isStyledIcon(Icon)) {
       return <Icon testID="tagIcon" />
     }
 
@@ -57,6 +57,9 @@ const Wrapper = styled(View)<{ backgroundColor?: string; paddingHorizontal?: num
 const LabelText = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.colors.black,
   lineHeight: getSpacingString(NUMBER_OF_SPACES_LINE_HEIGHT),
+  ...(Platform.OS === 'web' && {
+    textWrap: 'nowrap',
+  }),
 }))
 
 const IconContainer = styled(View)({

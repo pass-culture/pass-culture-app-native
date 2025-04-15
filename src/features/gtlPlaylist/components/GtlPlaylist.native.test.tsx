@@ -110,8 +110,10 @@ describe('GtlPlaylist', () => {
       expect(analytics.logAllTilesSeen).toHaveBeenCalledTimes(1)
     })
 
-    it('should log ModuleDisplayed when scrolling to the playlist', () => {
+    it('should log ModuleDisplayed when scrolling to the playlist', async () => {
       renderGtlPlaylistOnVenuePage()
+
+      await screen.findByText('Mon abonnement bibliothèque')
 
       mockInView(true)
 
@@ -122,8 +124,10 @@ describe('GtlPlaylist', () => {
       })
     })
 
-    it('should not log ModuleDisplayed when not scrolling to the playlist', () => {
+    it('should not log ModuleDisplayed when not scrolling to the playlist', async () => {
       renderGtlPlaylistOnVenuePage()
+
+      await screen.findByText('Mon abonnement bibliothèque')
 
       mockInView(false)
 
@@ -173,8 +177,10 @@ describe('GtlPlaylist', () => {
       expect(analytics.logAllTilesSeen).toHaveBeenCalledTimes(1)
     })
 
-    it('should log ModuleDisplayed when scrolling to the playlist', () => {
+    it('should log ModuleDisplayed when scrolling to the playlist', async () => {
       renderGtlPlaylistOnThematicSearch()
+
+      await screen.findByText('Mon abonnement bibliothèque')
 
       mockInView(true)
 
@@ -184,8 +190,10 @@ describe('GtlPlaylist', () => {
       })
     })
 
-    it('should not log ModuleDisplayed when not scrolling to the playlist', () => {
+    it('should not log ModuleDisplayed when not scrolling to the playlist', async () => {
       renderGtlPlaylistOnVenuePage()
+
+      await screen.findByText('Mon abonnement bibliothèque')
 
       mockInView(false)
 
