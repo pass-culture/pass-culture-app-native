@@ -5,6 +5,7 @@ import { ComponentType } from 'react'
 import { CulturalSurveyQuestionEnum } from 'api/gen/api'
 import { DisabilitiesProperties } from 'features/accessibility/types'
 import { BookingsTab } from 'features/bookings/enum'
+import { ProfileType } from 'features/identityCheck/pages/profile/types'
 import { CheatcodesStackParamList } from 'features/navigation/CheatcodesStackNavigator/types'
 import {
   OnboardingStackParamList,
@@ -144,10 +145,10 @@ export type SubscriptionRootStackParamList = {
   NewSignup: undefined
   // Profile
   SetEmail: undefined
-  SetName: undefined
-  SetCity: undefined
-  SetAddress: undefined
-  SetStatus: undefined
+  SetName: ProfileType
+  SetCity: ProfileType
+  SetAddress: ProfileType
+  SetStatus: ProfileType
   // Identification
   ComeBackLater: undefined
   DMSIntroduction: { isForeignDMSInformation: boolean }

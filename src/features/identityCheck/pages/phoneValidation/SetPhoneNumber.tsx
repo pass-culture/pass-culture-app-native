@@ -7,7 +7,6 @@ import { v4 as uuidv4 } from 'uuid'
 import { extractApiErrorMessage, isApiError } from 'api/apiHelpers'
 import { usePhoneValidationRemainingAttempts } from 'features/identityCheck/api/usePhoneValidationRemainingAttempts'
 import { useSendPhoneValidationMutation } from 'features/identityCheck/api/useSendPhoneValidationMutation'
-import { CenteredTitle } from 'features/identityCheck/components/CenteredTitle'
 import { METROPOLITAN_FRANCE } from 'features/identityCheck/components/countryPicker/constants'
 import { CountryPicker } from 'features/identityCheck/components/countryPicker/CountryPicker'
 import { Country } from 'features/identityCheck/components/countryPicker/types'
@@ -32,11 +31,11 @@ import { TextInput } from 'ui/components/inputs/TextInput'
 import { useModal } from 'ui/components/modals/useModal'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { Spacer, Typo } from 'ui/theme'
+import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 const INITIAL_COUNTRY = METROPOLITAN_FRANCE
 
 export const SetPhoneNumber = () => {
-  const titleID = uuidv4()
   const { dispatch, phoneValidation } = useSubscriptionContext()
   const [phoneNumber, setPhoneNumber] = useState(phoneValidation?.phoneNumber ?? '')
   const [invalidPhoneNumberMessage, setInvalidPhoneNumberMessage] = useSafeState('')
@@ -114,11 +113,10 @@ export const SetPhoneNumber = () => {
       title="Numéro de téléphone"
       scrollChildren={
         <React.Fragment>
-          <Spacer.Column numberOfSpaces={5} />
-          <CenteredTitle titleID={titleID} title="Quel est ton numéro de téléphone&nbsp;?" />
+          <Typo.Title3 {...getHeadingAttrs(2)}>Quel est ton numéro de téléphone&nbsp;?</Typo.Title3>
           <Spacer.Column numberOfSpaces={6} />
           <Form.MaxWidth>
-            <View accessibilityLabelledBy={titleID}>
+            <View>
               <StyledBody>
                 Tu vas recevoir un code de validation pour confirmer ton numéro.
               </StyledBody>
@@ -190,7 +188,6 @@ const RemainingAttemptsContainer = styled.View({
 
 const StyledBody = styled(Typo.Body)(({ theme }) => ({
   color: theme.colors.greyDark,
-  textAlign: 'center',
 }))
 
 const BottomContentContainer = styled.View({

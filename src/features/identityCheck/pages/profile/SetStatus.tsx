@@ -1,5 +1,6 @@
 import { yupResolver } from '@hookform/resolvers/yup'
-import React, { useCallback, useState } from 'react'
+import { StackScreenProps } from '@react-navigation/stack'
+import React, { FunctionComponent, useCallback, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { v4 as uuidv4 } from 'uuid'
 import * as yup from 'yup'
@@ -7,10 +8,12 @@ import * as yup from 'yup'
 import { usePostProfile } from 'features/identityCheck/api/usePostProfile'
 import { useNavigateForwardToStepper } from 'features/identityCheck/helpers/useNavigateForwardToStepper'
 import { useSaveStep } from 'features/identityCheck/pages/helpers/useSaveStep'
+import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
 import { useAddress } from 'features/identityCheck/pages/profile/store/addressStore'
 import { useCity } from 'features/identityCheck/pages/profile/store/cityStore'
 import { useName } from 'features/identityCheck/pages/profile/store/nameStore'
 import { IdentityCheckStep } from 'features/identityCheck/types'
+import { SubscriptionRootStackParamList } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
 import { BlurHeader } from 'ui/components/headers/BlurHeader'
 import {
@@ -23,7 +26,14 @@ import { StatusFlatList, StatusForm } from './StatusFlatList'
 const schema = yup.object().shape({
   selectedStatus: yup.string().required(),
 })
-export const SetStatus = () => {
+
+type Props = StackScreenProps<SubscriptionRootStackParamList, 'SetStatus'>
+
+export const SetStatus: FunctionComponent<Props> = ({ route }: Props) => {
+  const type = route.params.type
+  const isIdentityCheck = type === ProfileTypes.IDENTITY_CHECK
+  const title = isIdentityCheck ? 'Profil' : 'Informations personnelles'
+
   const saveStep = useSaveStep()
   const storedName = useName()
   const storedCity = useCity()
@@ -73,7 +83,7 @@ export const SetStatus = () => {
 
   return (
     <React.Fragment>
-      <PageHeaderWithoutPlaceholder title="Profil" />
+      <PageHeaderWithoutPlaceholder title={title} />
       <StatusFlatList
         handleSubmit={handleSubmit}
         isLoading={isLoading}

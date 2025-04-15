@@ -1,7 +1,10 @@
+import { StackScreenProps } from '@react-navigation/stack'
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
+import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
 import { SetCity } from 'features/identityCheck/pages/profile/SetCity'
+import { SubscriptionRootStackParamList } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
 import { mockedSuggestedCities } from 'libs/place/fixtures/mockedSuggestedCities'
 import { CitiesResponse, CITIES_API_URL } from 'libs/place/useCities'
@@ -23,15 +26,27 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 
 describe('<SetCity/>', () => {
   it('should render correctly', () => {
-    renderSetCity()
+    renderSetCity({ type: ProfileTypes.IDENTITY_CHECK })
 
     expect(screen).toMatchSnapshot()
   })
 
-  it('should navigate to SetAddress when clicking on "Continuer"', async () => {
+  it('should display correct infos in identity check', async () => {
+    renderSetCity({ type: ProfileTypes.IDENTITY_CHECK })
+
+    expect(await screen.findByText('Profil')).toBeTruthy()
+  })
+
+  it('should display correct infos in booking free offer 15/16 years', async () => {
+    renderSetCity({ type: ProfileTypes.BOOKING_FREE_OFFER_15_16 })
+
+    expect(await screen.findByText('Informations personnelles')).toBeTruthy()
+  })
+
+  it('should navigate to SetAddress with identityCheck params when clicking on "Continuer"', async () => {
     const city = mockedSuggestedCities[0]
     mockServer.universalGet<CitiesResponse>(CITIES_API_URL, mockedSuggestedCities)
-    renderSetCity()
+    renderSetCity({ type: ProfileTypes.IDENTITY_CHECK })
 
     await act(async () => {
       const input = screen.getByPlaceholderText('Ex\u00a0: 75017')
@@ -47,14 +62,41 @@ describe('<SetCity/>', () => {
     })
 
     await waitFor(async () => {
-      expect(navigate).toHaveBeenNthCalledWith(1, 'SetAddress')
+      expect(navigate).toHaveBeenNthCalledWith(1, 'SetAddress', {
+        type: ProfileTypes.IDENTITY_CHECK,
+      })
+    })
+  })
+
+  it('should navigate to SetAddress with booking params when clicking on "Continuer"', async () => {
+    const city = mockedSuggestedCities[0]
+    mockServer.universalGet<CitiesResponse>(CITIES_API_URL, mockedSuggestedCities)
+    renderSetCity({ type: ProfileTypes.BOOKING_FREE_OFFER_15_16 })
+
+    await act(async () => {
+      const input = screen.getByPlaceholderText('Ex\u00a0: 75017')
+      fireEvent.changeText(input, POSTAL_CODE)
+    })
+
+    await screen.findByText(city.nom)
+    await act(async () => {
+      fireEvent.press(screen.getByText(city.nom))
+    })
+    await act(async () => {
+      fireEvent.press(screen.getByText('Continuer'))
+    })
+
+    await waitFor(async () => {
+      expect(navigate).toHaveBeenNthCalledWith(1, 'SetAddress', {
+        type: ProfileTypes.BOOKING_FREE_OFFER_15_16,
+      })
     })
   })
 
   it('should save city in storage when clicking on "Continuer"', async () => {
     const city = mockedSuggestedCities[0]
     mockServer.universalGet<CitiesResponse>(CITIES_API_URL, mockedSuggestedCities)
-    renderSetCity()
+    renderSetCity({ type: ProfileTypes.IDENTITY_CHECK })
 
     await act(async () => {
       const input = screen.getByPlaceholderText('Ex\u00a0: 75017')
@@ -84,7 +126,7 @@ describe('<SetCity/>', () => {
   it('should log analytics on press Continuer', async () => {
     const city = mockedSuggestedCities[0]
     mockServer.universalGet<CitiesResponse>(CITIES_API_URL, mockedSuggestedCities)
-    renderSetCity()
+    renderSetCity({ type: ProfileTypes.IDENTITY_CHECK })
 
     await act(async () => {
       const input = screen.getByPlaceholderText('Ex\u00a0: 75017')
@@ -108,6 +150,10 @@ describe('<SetCity/>', () => {
   })
 })
 
-function renderSetCity() {
-  return render(reactQueryProviderHOC(<SetCity />))
+const renderSetCity = (navigationParams: { type: string }) => {
+  const navProps = { route: { params: navigationParams } } as StackScreenProps<
+    SubscriptionRootStackParamList,
+    'SetCity'
+  >
+  return render(reactQueryProviderHOC(<SetCity {...navProps} />))
 }

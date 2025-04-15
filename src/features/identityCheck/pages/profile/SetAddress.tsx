@@ -1,17 +1,21 @@
 import { useNavigation } from '@react-navigation/native'
+import { StackScreenProps } from '@react-navigation/stack'
 import { debounce } from 'lodash'
-import React, { useEffect, useRef, useState } from 'react'
+import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
 import { Keyboard, Platform } from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { AddressOption } from 'features/identityCheck/components/AddressOption'
-import { CenteredTitle } from 'features/identityCheck/components/CenteredTitle'
+import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
 import { IdentityCheckError } from 'features/identityCheck/pages/profile/errors'
 import { addressActions, useAddress } from 'features/identityCheck/pages/profile/store/addressStore'
 import { useCity } from 'features/identityCheck/pages/profile/store/cityStore'
-import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import {
+  SubscriptionRootStackParamList,
+  UseNavigationType,
+} from 'features/navigation/RootNavigator/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/analytics/provider'
 import { eventMonitoring } from 'libs/monitoring/services'
@@ -25,13 +29,30 @@ import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/S
 import { Spinner } from 'ui/components/Spinner'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
-import { Spacer } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
+import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 const snackbarMessage =
   'Nous avons eu un problème pour trouver l’adresse associée à ton code postal. Réessaie plus tard.'
 const exception = 'Failed to fetch data from API: https://api-adresse.data.gouv.fr/search'
 
-export const SetAddress = () => {
+type Props = StackScreenProps<SubscriptionRootStackParamList, 'SetAddress'>
+
+export const SetAddress: FunctionComponent<Props> = ({ route }: Props) => {
+  const type = route.params.type
+  const isIdentityCheck = type === ProfileTypes.IDENTITY_CHECK
+  const pageInfos = isIdentityCheck
+    ? {
+        headerTitle: 'Profil',
+        title: 'Quelle est ton adresse\u00a0?',
+        navigateParamsType: ProfileTypes.IDENTITY_CHECK,
+      }
+    : {
+        headerTitle: 'Informations personnelles',
+        title: 'Saisis ton adresse postale',
+        navigateParamsType: ProfileTypes.BOOKING_FREE_OFFER_15_16,
+      }
+
   const { data: settings } = useSettingsContext()
   const storedAddress = useAddress()
   const storedCity = useCity()
@@ -103,18 +124,18 @@ export const SetAddress = () => {
     if (!enabled) return
     setStoreAddress(selectedAddress ?? query)
     analytics.logSetAddressClicked()
-    navigate('SetStatus')
+    navigate('SetStatus', { type: pageInfos.navigateParamsType })
   }
 
   useEnterKeyAction(enabled ? submitAddress : undefined)
 
   return (
     <PageWithHeader
-      title="Profil"
+      title={pageInfos.headerTitle}
       scrollChildren={
         <React.Fragment>
           <Form.MaxWidth>
-            <CenteredTitle title="Quelle est ton adresse&nbsp;?" />
+            <Typo.Title3 {...getHeadingAttrs(2)}>{pageInfos.title}</Typo.Title3>
             <Spacer.Column numberOfSpaces={5} />
             <SearchInput
               autoFocus
