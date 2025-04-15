@@ -41,7 +41,6 @@ exports[`BookingDetails OldBookingDetails : when FF WIP_NEW_BOOKING_PAGE is off 
           [
             {
               "alignItems": "center",
-              "minHeight": 0,
             },
             {
               "marginBottom": 128,
