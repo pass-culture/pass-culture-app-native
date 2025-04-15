@@ -1,16 +1,12 @@
 import { parse, format } from 'date-fns'
 import React from 'react'
-import styled from 'styled-components/native'
 
-import { CenteredTitle } from 'features/identityCheck/components/CenteredTitle'
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
 import { useNavigateForwardToStepper } from 'features/identityCheck/helpers/useNavigateForwardToStepper'
 import { useSaveStep } from 'features/identityCheck/pages/helpers/useSaveStep'
+import { EduconnectValidationPage } from 'features/identityCheck/pages/identification/educonnect/EduconnectValidationPage'
 import { IdentityCheckStep } from 'features/identityCheck/types'
 import { analytics } from 'libs/analytics/provider'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { PageWithHeader } from 'ui/pages/PageWithHeader'
-import { Spacer, Typo } from 'ui/theme'
 
 export function EduConnectValidation() {
   const { identification } = useSubscriptionContext()
@@ -28,43 +24,11 @@ export function EduConnectValidation() {
   }
 
   return (
-    <PageWithHeader
-      title="Mon identité"
-      scrollChildren={
-        <React.Fragment>
-          <CenteredTitle title="Les informations extraites sont-elles correctes&nbsp;?" />
-          <BodyContainer>
-            <StyledBody>Ton prénom</StyledBody>
-            <Spacer.Column numberOfSpaces={2} />
-            <Typo.Title3 testID="validation-first-name">{identification.firstName}</Typo.Title3>
-            <Spacer.Column numberOfSpaces={5} />
-            <StyledBody>Ton nom de famille</StyledBody>
-            <Spacer.Column numberOfSpaces={2} />
-            <Typo.Title3 testID="validation-name">{identification.lastName}</Typo.Title3>
-            <Spacer.Column numberOfSpaces={5} />
-            <StyledBody>Ta date de naissance</StyledBody>
-            <Spacer.Column numberOfSpaces={2} />
-            <Typo.Title3 testID="validation-birth-date">{birthDate}</Typo.Title3>
-          </BodyContainer>
-        </React.Fragment>
-      }
-      fixedBottomChildren={
-        <ButtonPrimary
-          type="submit"
-          wording="Valider mes informations"
-          onPress={onValidateInformation}
-        />
-      }
+    <EduconnectValidationPage
+      birthDate={birthDate}
+      firstName={identification.firstName}
+      lastName={identification.lastName}
+      onValidate={onValidateInformation}
     />
   )
 }
-
-const StyledBody = styled(Typo.Body)(({ theme }) => ({
-  color: theme.colors.greyDark,
-}))
-
-const BodyContainer = styled.View({
-  alignItems: 'center',
-  justifyContent: 'center',
-  flex: 1,
-})

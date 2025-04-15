@@ -165,7 +165,7 @@ exports[`<EduConnectValidation /> should render EduConnectValidation component c
             dir="ltr"
             role="heading"
           >
-            Mon identité
+            Informations personnelles
           </h1>
           <div
             class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-justifyContent-17s6mgv r-paddingLeft-f727ji r-paddingRight-j2kj52"
@@ -195,76 +195,89 @@ exports[`<EduConnectValidation /> should render EduConnectValidation component c
                 style="height: 65px;"
               />
               <div
-                class="css-view-175oi2r r-alignItems-1awozwy r-width-13qz1uu"
-              >
-                <h2
-                  aria-level="2"
-                  class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-1wf0xld r-lineHeight-1ln193j r-textAlign-q4m81j"
-                  dir="ltr"
-                  role="heading"
-                >
-                  Les informations extraites sont-elles correctes ?
-                </h2>
-              </div>
-              <div
-                class="css-view-175oi2r r-alignItems-1awozwy"
+                class="css-view-175oi2r r-gap-16pcm1t"
               >
                 <div
-                  class="css-view-175oi2r r-height-1472mwg"
-                />
-                <div
-                  class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm"
-                  dir="ltr"
-                >
-                  Ton prénom
-                </div>
-                <div
-                  class="css-view-175oi2r r-height-3da1kt"
-                />
-                <div
                   class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-19e3y8m r-lineHeight-1w51ilw"
-                  data-testid="validation-first-name"
                   dir="ltr"
                 >
-                  John
+                  Tu valides que ces informations sont correctes ?
                 </div>
                 <div
-                  class="css-view-175oi2r r-height-z80fyv"
-                />
-                <div
-                  class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm"
-                  dir="ltr"
+                  class="css-view-175oi2r r-backgroundColor-14a9t8x r-borderRadius-1xfd6ze r-paddingHorizontal-1guathk r-paddingVertical-mfjstv"
                 >
-                  Ton nom de famille
-                </div>
-                <div
-                  class="css-view-175oi2r r-height-3da1kt"
-                />
-                <div
-                  class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-19e3y8m r-lineHeight-1w51ilw"
-                  data-testid="validation-name"
-                  dir="ltr"
-                >
-                  Doe
-                </div>
-                <div
-                  class="css-view-175oi2r r-height-z80fyv"
-                />
-                <div
-                  class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm"
-                  dir="ltr"
-                >
-                  Ta date de naissance
-                </div>
-                <div
-                  class="css-view-175oi2r r-height-3da1kt"
-                />
-                <div
-                  class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-19e3y8m r-lineHeight-1w51ilw"
-                  data-testid="validation-birth-date"
-                  dir="ltr"
-                >
-                  28/01/1993
+                  <div
+                    class="css-view-175oi2r r-WebkitOverflowScrolling-150rngu r-flexDirection-eqz5dr r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-overflowX-11yh6sk r-overflowY-1rnoaur r-transform-1sncvnh"
+                  >
+                    <div
+                      class="css-view-175oi2r"
+                      style="gap: 24px;"
+                    >
+                      <div
+                        class="css-view-175oi2r"
+                      >
+                        <div
+                          class="css-view-175oi2r r-gap-9aw3ui"
+                        >
+                          <div
+                            class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-1r11ck1 r-lineHeight-66i6z8"
+                            dir="ltr"
+                          >
+                            Ton prénom
+                          </div>
+                          <div
+                            class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
+                            data-testid="validation-first-name"
+                            dir="ltr"
+                          >
+                            John
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        class="css-view-175oi2r"
+                      >
+                        <div
+                          class="css-view-175oi2r r-gap-9aw3ui"
+                        >
+                          <div
+                            class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-1r11ck1 r-lineHeight-66i6z8"
+                            dir="ltr"
+                          >
+                            Ton nom de famille
+                          </div>
+                          <div
+                            class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
+                            data-testid="validation-name"
+                            dir="ltr"
+                          >
+                            Doe
+                          </div>
+                        </div>
+                      </div>
+                      <div
+                        class="css-view-175oi2r"
+                      >
+                        <div
+                          class="css-view-175oi2r r-gap-9aw3ui"
+                        >
+                          <div
+                            class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-1r11ck1 r-lineHeight-66i6z8"
+                            dir="ltr"
+                          >
+                            Ville de résidence
+                          </div>
+                          <div
+                            class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
+                            data-testid="validation-birth-date"
+                            dir="ltr"
+                          >
+                            28/01/1993
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -273,9 +286,9 @@ exports[`<EduConnectValidation /> should render EduConnectValidation component c
             class="css-view-175oi2r r-backgroundColor-14lw9ot r-bottom-1p0dtai r-left-1d2f490 r-paddingBottom-k8qxaj r-paddingHorizontal-d9fdf6 r-paddingTop-ttdzmv r-position-u8s1d r-right-zchlnj"
           >
             <button
-              aria-label="Valider mes informations"
+              aria-label="Continuer"
               class="c2 c3"
-              data-testid="Valider mes informations"
+              data-testid="Continuer"
               tabindex="0"
               type="submit"
             >
@@ -286,7 +299,7 @@ exports[`<EduConnectValidation /> should render EduConnectValidation component c
                   class="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-jwli3a r-fontFamily-1gknse6 r-fontSize-cygvgh r-lineHeight-u6qrkm r-maxWidth-dnmrzs"
                   dir="ltr"
                 >
-                  Valider mes informations
+                  Continuer
                 </div>
               </div>
             </button>

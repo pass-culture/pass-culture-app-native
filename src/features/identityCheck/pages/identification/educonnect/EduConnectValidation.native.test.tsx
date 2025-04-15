@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { dispatch, useRoute } from '__mocks__/@react-navigation/native'
+import { EduconnectValidationPageButtonName } from 'features/identityCheck/pages/identification/educonnect/EduconnectValidationPage'
 import { analytics } from 'libs/analytics/provider'
 import { render, screen, userEvent } from 'tests/utils'
 
@@ -38,7 +39,7 @@ describe('<EduConnectValidation />', () => {
 
   it('should redirect to Stepper when logged in with EduConnect', async () => {
     render(<EduConnectValidation />)
-    const validateButton = screen.getByText('Valider mes informations')
+    const validateButton = screen.getByText(EduconnectValidationPageButtonName)
     await user.press(validateButton)
 
     expect(dispatch).toHaveBeenCalledWith({
@@ -61,10 +62,10 @@ describe('<EduConnectValidation />', () => {
     expect(screen.getByText('28/01/1993')).toBeOnTheScreen()
   })
 
-  it("should trigger tracker when the 'Valider mes informations' button is pressed", async () => {
+  it(`should trigger tracker when the "${EduconnectValidationPageButtonName}" button is pressed`, async () => {
     render(<EduConnectValidation />)
 
-    await user.press(screen.getByText('Valider mes informations'))
+    await user.press(screen.getByText(EduconnectValidationPageButtonName))
 
     expect(analytics.logCheckEduconnectDataClicked).toHaveBeenCalledTimes(1)
   })

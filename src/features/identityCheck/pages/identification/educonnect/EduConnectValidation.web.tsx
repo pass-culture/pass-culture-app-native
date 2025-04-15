@@ -1,20 +1,15 @@
 import { useFocusEffect, useRoute } from '@react-navigation/native'
 import { parse, format } from 'date-fns'
 import React, { useCallback } from 'react'
-import styled from 'styled-components/native'
 
 import { logoutFromEduConnectIfAllowed } from 'features/identityCheck/api/logoutFromEduConnectIfAllowed'
-import { CenteredTitle } from 'features/identityCheck/components/CenteredTitle'
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
 import { useNavigateForwardToStepper } from 'features/identityCheck/helpers/useNavigateForwardToStepper'
 import { invalidateStepperInfoQuery } from 'features/identityCheck/pages/helpers/invalidateStepperQuery'
+import { EduconnectValidationPage } from 'features/identityCheck/pages/identification/educonnect/EduconnectValidationPage'
 import { DeprecatedIdentityCheckStep } from 'features/identityCheck/types'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
-import { PageWithHeader } from 'ui/pages/PageWithHeader'
-import { Spacer, Typo } from 'ui/theme'
-import { getNoHeadingAttrs } from 'ui/theme/typographyAttrs/getNoHeadingAttrs'
 
 export function EduConnectValidation() {
   const { params } = useRoute<UseRouteType<'EduConnectValidation'>>()
@@ -54,46 +49,11 @@ export function EduConnectValidation() {
   useEnterKeyAction(navigateToNextEduConnectStep)
 
   return (
-    <PageWithHeader
-      title="Mon identité"
-      scrollChildren={
-        <React.Fragment>
-          <CenteredTitle title="Les informations extraites sont-elles correctes&nbsp;?" />
-          <BodyContainer>
-            <Spacer.Column numberOfSpaces={6} />
-            <StyledBody>Ton prénom</StyledBody>
-            <Spacer.Column numberOfSpaces={2} />
-            <TextToValidate testID="validation-first-name">
-              {identification.firstName}
-            </TextToValidate>
-            <Spacer.Column numberOfSpaces={5} />
-            <StyledBody>Ton nom de famille</StyledBody>
-            <Spacer.Column numberOfSpaces={2} />
-            <TextToValidate testID="validation-name">{identification.lastName}</TextToValidate>
-            <Spacer.Column numberOfSpaces={5} />
-            <StyledBody>Ta date de naissance</StyledBody>
-            <Spacer.Column numberOfSpaces={2} />
-            <TextToValidate testID="validation-birth-date">{birthDate}</TextToValidate>
-          </BodyContainer>
-        </React.Fragment>
-      }
-      fixedBottomChildren={
-        <ButtonPrimary
-          type="submit"
-          wording="Valider mes informations"
-          onPress={navigateToNextEduConnectStep}
-        />
-      }
+    <EduconnectValidationPage
+      birthDate={birthDate}
+      firstName={identification.firstName}
+      lastName={identification.lastName}
+      onValidate={navigateToNextEduConnectStep}
     />
   )
 }
-
-const BodyContainer = styled.View({
-  alignItems: 'center',
-})
-
-const StyledBody = styled(Typo.Body)(({ theme }) => ({
-  color: theme.colors.greyDark,
-}))
-
-const TextToValidate = styled(Typo.Title3).attrs(getNoHeadingAttrs())``
