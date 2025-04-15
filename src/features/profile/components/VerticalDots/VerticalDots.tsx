@@ -3,7 +3,6 @@ import styled from 'styled-components/native'
 
 // Disable ESLint because I need this colors enum.
 // eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 
 import { AutomaticVerticalDots } from './AutomaticVerticalDots'
 
@@ -34,14 +33,6 @@ export interface VerticalDotsProps {
    */
   dotSize?: DotSize
   /**
-   * Space between each dot.
-   * Note that it won't be respected exactly since dot count is dynamic and that will avoid
-   * getting weird space at the end
-   *
-   * @default dotSize
-   */
-  minimumDotSpacing?: number
-  /**
    * Specifies if it should end with a dot.
    *
    * - When you only have one dotted line it should be set to `true`.
@@ -49,12 +40,6 @@ export interface VerticalDotsProps {
    * it seems linear.
    */
   endsWithDot?: boolean
-  /**
-   * Custom dot color.
-   *
-   * @default theme.colors.greyMedium
-   */
-  dotColor?: ColorsEnum
   /**
    * If you want a custom size for the first dot.
    *
@@ -115,13 +100,13 @@ export function VerticalDots({
   parentHeight,
   parentWidth,
   dotSize = parentWidth,
-  minimumDotSpacing = getDotHeight(dotSize),
   endsWithDot,
-  dotColor,
   testID,
   firstDotSize = dotSize,
   lastDotSize = dotSize,
 }: VerticalDotsProps) {
+  const minimumDotSpacing = getDotWidth(dotSize)
+
   const dotCount = getDotCount({
     dotHeight: getDotHeight(dotSize),
     minimumDotSpacing,
@@ -142,7 +127,6 @@ export function VerticalDots({
             key={index}
             dotSize={size}
             spacing={minimumDotSpacing}
-            color={dotColor}
             endsWithDot={endsWithDot}
             isLast={isLast}
           />
@@ -162,24 +146,14 @@ const Wrapper = styled.View({
 type DotProps = {
   dotSize: DotSize
   spacing: number
-  color?: ColorsEnum
   endsWithDot?: boolean
   isLast: boolean
 }
 
-const Dot = styled.View<DotProps>(
-  ({
-    dotSize,
-    theme,
-    spacing,
-    color = theme.designSystem.separator.color.default,
-    endsWithDot,
-    isLast,
-  }) => ({
-    width: getDotWidth(dotSize),
-    height: getDotHeight(dotSize),
-    borderRadius: Math.max(getDotWidth(dotSize), getDotHeight(dotSize)) / 2,
-    backgroundColor: color,
-    marginBottom: isLast && !endsWithDot ? spacing : 0,
-  })
-)
+const Dot = styled.View<DotProps>(({ dotSize, theme, spacing, endsWithDot, isLast }) => ({
+  width: getDotWidth(dotSize),
+  height: getDotHeight(dotSize),
+  borderRadius: Math.max(getDotWidth(dotSize), getDotHeight(dotSize)) / 2,
+  backgroundColor: theme.designSystem.separator.color.default,
+  marginBottom: isLast && !endsWithDot ? spacing : 0,
+}))
