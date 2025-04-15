@@ -46,6 +46,7 @@ module.exports = {
     'local-rules/apostrophe-in-text': 'error',
     'local-rules/no-truthy-check-after-queryAll-matchers': 'error',
     'local-rules/todo-format': 'error',
+    'local-rules/mock-path-exists': 'error',
     'local-rules/use-the-right-test-utils': 'error',
     'local-rules/no-use-of-algolia-multiple-queries': 'error',
     'local-rules/no-currency-symbols': 'error',
