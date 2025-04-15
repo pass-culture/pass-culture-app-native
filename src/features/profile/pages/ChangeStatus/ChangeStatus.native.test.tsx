@@ -13,7 +13,7 @@ import { analytics } from 'libs/analytics/provider'
 import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render, screen, waitFor, act, fireEvent } from 'tests/utils'
+import { render, screen, waitFor, userEvent } from 'tests/utils'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 const mockStatus: ActivityIdEnum | null = null
@@ -92,6 +92,8 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
     return Component
   }
 })
+const user = userEvent.setup()
+jest.useFakeTimers()
 
 describe('<ChangeStatus/>', () => {
   beforeEach(async () => {
@@ -118,13 +120,9 @@ describe('<ChangeStatus/>', () => {
     renderChangedStatus()
     mockServer.patchApi<UserProfileResponse>('/v1/profile', beneficiaryUser)
 
-    await act(async () => {
-      fireEvent.press(screen.getByText('Employé'))
-    })
+    await user.press(screen.getByText('Employé'))
 
-    await act(async () => {
-      fireEvent.press(screen.getByText('Continuer'))
-    })
+    await user.press(screen.getByText('Continuer'))
 
     expect(analytics.logUpdateStatus).toHaveBeenCalledWith({
       oldStatus: beneficiaryUser.activityId,

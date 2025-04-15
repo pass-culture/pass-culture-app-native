@@ -4,7 +4,7 @@ import React from 'react'
 
 import { AutocompleteVenue } from 'features/search/components/AutocompleteVenue/AutocompleteVenue'
 import { mockVenueHits } from 'features/search/fixtures/algolia'
-import { fireEvent, render, screen } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 
 let mockHits: Hit<BaseHit>[] = []
 jest.mock('react-instantsearch-core', () => ({
@@ -12,6 +12,8 @@ jest.mock('react-instantsearch-core', () => ({
     hits: mockHits,
   }),
 }))
+const user = userEvent.setup()
+jest.useFakeTimers()
 
 describe('AutocompleteVenue component', () => {
   describe('With venue hits', () => {
@@ -29,7 +31,7 @@ describe('AutocompleteVenue component', () => {
       const onItemPress = jest.fn()
       render(<AutocompleteVenue onItemPress={onItemPress} />)
 
-      await fireEvent.press(screen.getByTestId('autocompleteVenueItem_9898'))
+      await user.press(screen.getByTestId('autocompleteVenueItem_9898'))
 
       expect(onItemPress).toHaveBeenCalledWith(9898)
     })

@@ -3,7 +3,7 @@ import React from 'react'
 import { IdentityCheckPending } from 'features/identityCheck/pages/identification/ubble/IdentityCheckPending'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { navigateFromRef } from 'features/navigation/navigationRef'
-import { fireEvent, render, screen } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 
 jest.mock('libs/firebase/analytics/analytics')
 
@@ -15,6 +15,8 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
     return Component
   }
 })
+const user = userEvent.setup()
+jest.useFakeTimers()
 
 describe('<IdentityCheckPending/>', () => {
   it('should render correctly', () => {
@@ -23,10 +25,10 @@ describe('<IdentityCheckPending/>', () => {
     expect(screen).toMatchSnapshot()
   })
 
-  it('should navigate to next screen after timeout', () => {
+  it('should navigate to next screen after timeout', async () => {
     render(<IdentityCheckPending />)
 
-    fireEvent.press(screen.getByText(`Retourner à l’accueil`))
+    await user.press(screen.getByText(`Retourner à l’accueil`))
 
     expect(navigateFromRef).toHaveBeenNthCalledWith(
       1,

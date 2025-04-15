@@ -1,12 +1,15 @@
 import React from 'react'
 
 import { ReactionToggleButton } from 'features/reactions/components/ReactionToggleButton/ReactionToggleButton'
-import { fireEvent, render, screen } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 import { ThumbUp } from 'ui/svg/icons/ThumbUp'
 import { ThumbUpFilled } from 'ui/svg/icons/ThumbUpFilled'
 
 const MockIcon = () => <ThumbUp testID="icon" />
 const MockFilledIcon = () => <ThumbUpFilled testID="filledIcon" />
+
+const user = userEvent.setup()
+jest.useFakeTimers()
 
 describe('ReactionToggleButton', () => {
   const props = {
@@ -33,11 +36,11 @@ describe('ReactionToggleButton', () => {
     expect(screen.getByTestId('filledIcon')).toBeOnTheScreen()
   })
 
-  it('should call onPress when pressing the button', () => {
+  it('should call onPress when pressing the button', async () => {
     const mockOnPress = jest.fn()
     render(<ReactionToggleButton {...props} onPress={mockOnPress} />)
 
-    fireEvent.press(screen.getByText('Toggle Button'))
+    await user.press(screen.getByText('Toggle Button'))
 
     expect(mockOnPress).toHaveBeenCalledTimes(1)
   })

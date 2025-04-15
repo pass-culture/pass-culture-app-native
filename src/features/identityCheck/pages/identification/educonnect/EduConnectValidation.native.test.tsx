@@ -2,7 +2,7 @@ import React from 'react'
 
 import { dispatch, useRoute } from '__mocks__/@react-navigation/native'
 import { analytics } from 'libs/analytics/provider'
-import { fireEvent, render, waitFor, screen } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 
 import { EduConnectValidation } from './EduConnectValidation'
 
@@ -26,6 +26,9 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
+const user = userEvent.setup()
+jest.useFakeTimers()
+
 describe('<EduConnectValidation />', () => {
   beforeEach(() =>
     useRoute.mockImplementation(() => ({
@@ -36,13 +39,11 @@ describe('<EduConnectValidation />', () => {
   it('should redirect to Stepper when logged in with EduConnect', async () => {
     render(<EduConnectValidation />)
     const validateButton = screen.getByText('Valider mes informations')
-    fireEvent.press(validateButton)
+    await user.press(validateButton)
 
-    await waitFor(() => {
-      expect(dispatch).toHaveBeenCalledWith({
-        payload: { index: 1, routes: [{ name: 'TabNavigator' }, { name: 'Stepper' }] },
-        type: 'RESET',
-      })
+    expect(dispatch).toHaveBeenCalledWith({
+      payload: { index: 1, routes: [{ name: 'TabNavigator' }, { name: 'Stepper' }] },
+      type: 'RESET',
     })
   })
 
@@ -60,12 +61,10 @@ describe('<EduConnectValidation />', () => {
     expect(screen.getByText('28/01/1993')).toBeOnTheScreen()
   })
 
-  it("should trigger tracker when the 'Valider mes informations' button is pressed", () => {
+  it("should trigger tracker when the 'Valider mes informations' button is pressed", async () => {
     render(<EduConnectValidation />)
 
-    const button = screen.getByText('Valider mes informations')
-
-    fireEvent.press(button)
+    await user.press(screen.getByText('Valider mes informations'))
 
     expect(analytics.logCheckEduconnectDataClicked).toHaveBeenCalledTimes(1)
   })

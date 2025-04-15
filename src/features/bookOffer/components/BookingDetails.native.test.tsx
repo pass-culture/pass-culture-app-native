@@ -146,9 +146,7 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
     return Component
   }
 })
-
 const user = userEvent.setup()
-
 jest.useFakeTimers()
 
 describe('<BookingDetails />', () => {

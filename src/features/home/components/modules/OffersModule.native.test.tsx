@@ -13,7 +13,7 @@ import { ThemeProvider } from 'libs/styled'
 import { Offer } from 'shared/offer/types'
 import { computedTheme } from 'tests/computedTheme'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render, screen } from 'tests/utils'
+import { act, render, screen, userEvent } from 'tests/utils'
 
 import { OffersModule, OffersModuleProps } from './OffersModule'
 
@@ -71,6 +71,8 @@ jest.mock('@shopify/flash-list', () => {
     FlashList: MockFlashList,
   }
 })
+const user = userEvent.setup()
+jest.useFakeTimers()
 
 describe('OffersModule', () => {
   beforeEach(() => {
@@ -103,9 +105,7 @@ describe('OffersModule', () => {
       data: { playlistItems: mockHitsItems, nbPlaylistResults: 10, moduleId: 'fakeModuleId' },
     })
 
-    await act(() => {
-      fireEvent.press(screen.getByText('En voir plus'))
-    })
+    await user.press(screen.getByText('En voir plus'))
 
     expect(push).toHaveBeenCalledWith('TabNavigator', {
       screen: 'SearchStackNavigator',
@@ -194,9 +194,7 @@ describe('OffersModule', () => {
         data: { playlistItems: mockHitsItems, nbPlaylistResults: 10, moduleId: 'fakeModuleId' },
       })
 
-      await act(() => {
-        fireEvent.press(screen.getByText('En voir plus'))
-      })
+      await user.press(screen.getByText('En voir plus'))
 
       expect(analytics.logClickSeeMore).toHaveBeenCalledWith({
         moduleId: 'fakeModuleId',

@@ -12,7 +12,7 @@ import {
   GeoCoordinates,
   GEOLOCATION_USER_ERROR_MESSAGE,
 } from 'libs/location'
-import { fireEvent, render, waitFor, screen } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 
 const DEFAULT_POSITION = { latitude: 66, longitude: 66 } as GeoCoordinates | null
 const mockPositionError = null as GeolocationError | null
@@ -40,6 +40,8 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
     return Component
   }
 })
+const user = userEvent.setup()
+jest.useFakeTimers()
 
 describe('<FavoritesSorts/>', () => {
   it('should render correctly', () => {
@@ -53,11 +55,9 @@ describe('<FavoritesSorts/>', () => {
     mockUseLocation.mockReturnValueOnce(defaultUseLocation)
     renderFavoritesSort()
 
-    fireEvent.press(screen.getByText('Valider'))
+    await user.press(screen.getByText('Valider'))
 
-    await waitFor(() => {
-      expect(mockGoBack).toHaveBeenCalledTimes(1)
-    })
+    expect(mockGoBack).toHaveBeenCalledTimes(1)
   })
 
   it.each`
@@ -76,13 +76,11 @@ describe('<FavoritesSorts/>', () => {
       mockUseLocation.mockReturnValueOnce(defaultUseLocation)
       renderFavoritesSort()
 
-      fireEvent.press(screen.getByText(sortByWording))
-      fireEvent.press(screen.getByText('Valider'))
+      user.press(screen.getByText(sortByWording))
+      await user.press(screen.getByText('Valider'))
 
-      await waitFor(() => {
-        expect(analytics.logHasAppliedFavoritesSorting).toHaveBeenCalledWith({
-          sortBy: expectedAnalytics,
-        })
+      expect(analytics.logHasAppliedFavoritesSorting).toHaveBeenCalledWith({
+        sortBy: expectedAnalytics,
       })
     }
   )
@@ -99,7 +97,7 @@ describe('<FavoritesSorts/>', () => {
 
     renderFavoritesSort()
 
-    fireEvent.press(screen.getByText('Proximité géographique'))
+    await user.press(screen.getByText('Proximité géographique'))
 
     expect(
       screen.getByText(GEOLOCATION_USER_ERROR_MESSAGE[GeolocPositionError.SETTINGS_NOT_SATISFIED])
@@ -110,16 +108,14 @@ describe('<FavoritesSorts/>', () => {
     mockUseLocation.mockReturnValueOnce(defaultUseLocation)
     renderFavoritesSort()
 
-    fireEvent.press(screen.getByText('Proximité géographique'))
-    fireEvent.press(screen.getByText('Valider'))
+    user.press(screen.getByText('Proximité géographique'))
+    await user.press(screen.getByText('Valider'))
 
-    await waitFor(() => {
-      expect(
-        screen.queryByText(`La géolocalisation est temporairement inutilisable sur ton téléphone`)
-      ).not.toBeOnTheScreen()
-      expect(analytics.logHasAppliedFavoritesSorting).toHaveBeenCalledWith({
-        sortBy: 'AROUND_ME',
-      })
+    expect(
+      screen.queryByText(`La géolocalisation est temporairement inutilisable sur ton téléphone`)
+    ).not.toBeOnTheScreen()
+    expect(analytics.logHasAppliedFavoritesSorting).toHaveBeenCalledWith({
+      sortBy: 'AROUND_ME',
     })
   })
 
@@ -132,16 +128,14 @@ describe('<FavoritesSorts/>', () => {
 
     renderFavoritesSort()
 
-    fireEvent.press(screen.getByText('Proximité géographique'))
-    fireEvent.press(screen.getByText('Valider'))
+    user.press(screen.getByText('Proximité géographique'))
+    await user.press(screen.getByText('Valider'))
 
-    await waitFor(() => {
-      expect(analytics.logHasAppliedFavoritesSorting).toHaveBeenCalledWith({
-        sortBy: 'RECENTLY_ADDED',
-      })
-      expect(analytics.logHasAppliedFavoritesSorting).not.toHaveBeenCalledWith({
-        sortBy: 'AROUND_ME',
-      })
+    expect(analytics.logHasAppliedFavoritesSorting).toHaveBeenCalledWith({
+      sortBy: 'RECENTLY_ADDED',
+    })
+    expect(analytics.logHasAppliedFavoritesSorting).not.toHaveBeenCalledWith({
+      sortBy: 'AROUND_ME',
     })
   })
 })
