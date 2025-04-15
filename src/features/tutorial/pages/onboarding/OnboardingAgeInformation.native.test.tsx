@@ -43,7 +43,7 @@ describe('OnboardingAgeInformation', () => {
       index: 0,
       routes: [{ name: homeNavConfig[0] }],
     })
-    expect(eventMonitoring.captureException).toHaveBeenCalledWith('route.params.type is undefined')
+    expect(eventMonitoring.captureException).toHaveBeenCalledWith('route.params.type is falsy')
   })
 
   it.each(AGES)('should render correctly for %s-year-old', (age) => {

@@ -34,7 +34,7 @@ describe('AgeSelectionFork', () => {
     renderAgeSelectionFork(undefined)
 
     expect(navigateToHome).toHaveBeenCalledTimes(1)
-    expect(eventMonitoring.captureException).toHaveBeenCalledWith('route.params.type is undefined')
+    expect(eventMonitoring.captureException).toHaveBeenCalledWith('route.params.type is falsy')
   })
 
   describe('onboarding', () => {

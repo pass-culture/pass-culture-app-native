@@ -38,7 +38,7 @@ export const AgeSelectionFork: FunctionComponent<Props> = ({ route }: Props) => 
   const type = route?.params?.type
 
   if (!type) {
-    eventMonitoring.captureException('route.params.type is undefined')
+    eventMonitoring.captureException('route.params.type is falsy')
     navigateToHome()
     return null
   }

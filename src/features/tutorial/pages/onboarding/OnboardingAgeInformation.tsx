@@ -30,7 +30,7 @@ export const OnboardingAgeInformation = ({ route }: Props): React.JSX.Element | 
   const userAge = route?.params?.age
 
   if (!userAge) {
-    eventMonitoring.captureException('route.params.type is undefined')
+    eventMonitoring.captureException('route.params.type is falsy')
     navigateToHomeWithReset()
     return null
   }
