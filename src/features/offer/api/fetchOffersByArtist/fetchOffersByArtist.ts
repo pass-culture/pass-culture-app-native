@@ -30,7 +30,7 @@ export const fetchOffersByArtist = async ({ artistId, userLocation }: FetchOffer
   const queries: MultipleQueriesQuery[] = [
     // Playlist
     {
-      indexName: env.ALGOLIA_OFFERS_INDEX_NAME_B,
+      indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
       query: '',
       params: {
         ...defaultQueryParams,
