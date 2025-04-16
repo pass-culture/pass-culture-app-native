@@ -27,7 +27,7 @@ import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategories
 import { offersFixture } from 'shared/offer/offer.fixture'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, render, screen, userEvent, waitFor } from 'tests/utils'
+import { act, fireEvent, render, screen, userEvent, waitFor } from 'tests/utils'
 
 import { HomeModule } from './HomeModule'
 
@@ -158,8 +158,31 @@ describe('<HomeModule />', () => {
     const playlistElement = allPlaylistElements.at(0)
 
     if (!playlistElement) {
-      throw new Error('Playlist not found')
+      throw new Error('playlist not found')
     }
+
+    act(() => {
+      const items = screen.getAllByTestId(/OfferTile/)
+      items.forEach((item, index) => {
+        fireEvent(item, 'layout', {
+          nativeEvent: {
+            layout: {
+              width: 200,
+              x: 200 * index,
+            },
+          },
+        })
+      })
+
+      fireEvent(playlistElement, 'layout', {
+        nativeEvent: {
+          layout: {
+            width: 1400,
+          },
+        },
+      })
+    })
+
     mockInView(true)
 
     await user.scrollTo(playlistElement, {

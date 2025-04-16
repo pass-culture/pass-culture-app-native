@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useRef } from 'react'
-import { FlatListProps } from 'react-native'
+import { ViewToken } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
@@ -184,20 +184,20 @@ export const OffersModule = (props: OffersModuleProps) => {
     }
   }
 
-  const handleViewableItemsChanged: FlatListProps<unknown>['onViewableItemsChanged'] = ({
-    changed,
-  }) => {
-    if (isInView.current) {
-      onViewableItemsChanged?.(changed.map((item) => item.key))
-    }
-  }
+  const handleViewableItemsChanged = useCallback(
+    ({ changed }: { changed: ViewToken[] }) => {
+      if (isInView.current) {
+        onViewableItemsChanged?.(changed.map((item) => item.key))
+      }
+    },
+    [onViewableItemsChanged]
+  )
 
   if (!shouldModuleBeDisplayed) return null
 
   return (
     <IntersectionObserver onChange={handleIntersectionObserverChange}>
       <PassPlaylist
-        testID="offersModuleList"
         title={displayParameters.title}
         subtitle={displayParameters.subtitle}
         data={offersToDisplay}
@@ -211,7 +211,7 @@ export const OffersModule = (props: OffersModuleProps) => {
         onEndReached={logHasSeenAllTilesOnce}
         playlistRef={listRef}
         FlatListComponent={FlatList}
-        onViewableItemsChanged={onViewableItemsChanged ? handleViewableItemsChanged : undefined}
+        onViewableItemsChanged={handleViewableItemsChanged}
       />
     </IntersectionObserver>
   )

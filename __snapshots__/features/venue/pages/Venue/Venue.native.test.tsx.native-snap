@@ -1138,7 +1138,9 @@ exports[`<Venue /> should match snapshot 1`] = `
                               ]
                             }
                           >
-                            <View>
+                            <View
+                              testID="OfferTile"
+                            >
                               <View
                                 accessibilityLabel="Offre Titane - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
                                 accessibilityRole="link"
@@ -1352,7 +1354,9 @@ exports[`<Venue /> should match snapshot 1`] = `
                               ]
                             }
                           >
-                            <View>
+                            <View
+                              testID="OfferTile"
+                            >
                               <View
                                 accessibilityLabel="Offre Bac Nord - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
                                 accessibilityRole="link"
@@ -1566,7 +1570,9 @@ exports[`<Venue /> should match snapshot 1`] = `
                               ]
                             }
                           >
-                            <View>
+                            <View
+                              testID="OfferTile"
+                            >
                               <View
                                 accessibilityLabel="Offre Black Widow - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
                                 accessibilityRole="link"
@@ -2017,7 +2023,9 @@ exports[`<Venue /> should match snapshot 1`] = `
                                 ]
                               }
                             >
-                              <View>
+                              <View
+                                testID="OfferTile"
+                              >
                                 <View
                                   accessibilityLabel="Offre Test de la catégorie Livre,   prix . "
                                   accessibilityRole="link"
@@ -5127,7 +5135,9 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                               ]
                             }
                           >
-                            <View>
+                            <View
+                              testID="OfferTile"
+                            >
                               <View
                                 accessibilityLabel="Offre Titane - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
                                 accessibilityRole="link"
@@ -5341,7 +5351,9 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                               ]
                             }
                           >
-                            <View>
+                            <View
+                              testID="OfferTile"
+                            >
                               <View
                                 accessibilityLabel="Offre Bac Nord - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
                                 accessibilityRole="link"
@@ -5555,7 +5567,9 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                               ]
                             }
                           >
-                            <View>
+                            <View
+                              testID="OfferTile"
+                            >
                               <View
                                 accessibilityLabel="Offre Black Widow - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
                                 accessibilityRole="link"
@@ -6006,7 +6020,9 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                 ]
                               }
                             >
-                              <View>
+                              <View
+                                testID="OfferTile"
+                              >
                                 <View
                                   accessibilityLabel="Offre Test de la catégorie Livre,   prix . "
                                   accessibilityRole="link"

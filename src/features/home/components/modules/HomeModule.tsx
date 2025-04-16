@@ -69,9 +69,9 @@ const UnmemoizedModule = ({
       moduleId={item.id}
       data={data}
       shouldShowModal={item.id === videoModuleId}
-      onViewableItemsChanged={(changedItemIds: string[]) =>
+      onViewableItemsChanged={(changedItemIds: string[]) => {
         onModuleViewableItemsChanged?.({ index, moduleId: item.id, changedItemIds, homeEntryId })
-      }
+      }}
     />
   )
 }
