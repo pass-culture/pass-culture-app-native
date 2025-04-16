@@ -1,4 +1,5 @@
-import React, { useCallback, useEffect, useMemo } from 'react'
+import React, { useCallback, useEffect, useMemo, useRef } from 'react'
+import { ViewToken } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
@@ -16,6 +17,7 @@ import { ContentTypes } from 'libs/contentful/types'
 import { usePlaylistItemDimensionsFromLayout } from 'libs/contentful/usePlaylistItemDimensionsFromLayout'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { useLocation } from 'libs/location'
+import { IntersectionObserver } from 'shared/IntersectionObserver/IntersectionObserver'
 import { Offer } from 'shared/offer/types'
 import { PassPlaylist } from 'ui/components/PassPlaylist'
 import { CustomListRenderItem, ItemDimensions, RenderFooterItem } from 'ui/components/Playlist'
@@ -29,6 +31,7 @@ export type OffersModuleProps = {
   homeEntryId: string | undefined
   data: ModuleData | undefined
   recommendationParameters?: RecommendedOffersModule['recommendationParameters']
+  onViewableItemsChanged?: (items: string[]) => void
 }
 
 const keyExtractor = (item: Offer) => item.objectID
@@ -42,10 +45,12 @@ export const OffersModule = (props: OffersModuleProps) => {
     homeEntryId,
     data,
     recommendationParameters,
+    onViewableItemsChanged,
   } = props
   const adaptedPlaylistParameters = useAdaptOffersPlaylistParameters()
   const { user } = useAuthContext()
   const { userLocation } = useLocation()
+  const isInView = useRef(false)
 
   const { offers: recommandationOffers, recommendationApiParams } = useHomeRecommendedOffers(
     userLocation,
@@ -59,12 +64,10 @@ export const OffersModule = (props: OffersModuleProps) => {
     nbPlaylistResults: 0,
   }
 
-  const [parameters] = offersModuleParameters
+  const [parameters = { title: '', hitsPerPage: 0 }] = offersModuleParameters
   // When we navigate to the search page, we want to show 20 results per page,
   // not what is configured in contentful
-  // eslint-disable-next-line react-hooks/exhaustive-deps
 
-  // @ts-expect-error: because of noUncheckedIndexedAccess
   const { offerParams, locationParams } = adaptedPlaylistParameters(parameters)
   const searchParams = {
     ...offerParams,
@@ -173,23 +176,44 @@ export const OffersModule = (props: OffersModuleProps) => {
     shouldModuleBeDisplayed,
   ])
 
+  const listRef = useRef<FlatList>(null)
+
+  const handleIntersectionObserverChange = (value: boolean) => {
+    isInView.current = value
+    if (value) {
+      listRef.current?.recordInteraction()
+    }
+  }
+
+  const handleViewableItemsChanged = useCallback(
+    ({ changed }: { changed: ViewToken[] }) => {
+      if (isInView.current) {
+        onViewableItemsChanged?.(changed.map((item) => item.key))
+      }
+    },
+    [onViewableItemsChanged]
+  )
+
   if (!shouldModuleBeDisplayed) return null
 
   return (
-    <PassPlaylist
-      testID="offersModuleList"
-      title={displayParameters.title}
-      subtitle={displayParameters.subtitle}
-      data={offersToDisplay}
-      itemHeight={itemHeight}
-      itemWidth={itemWidth}
-      onPressSeeMore={onPressSeeMore}
-      titleSeeMoreLink={{ ...searchTabConfig }}
-      renderItem={renderItem}
-      renderFooter={renderFooter}
-      keyExtractor={keyExtractor}
-      onEndReached={logHasSeenAllTilesOnce}
-      FlatListComponent={FlatList}
-    />
+    <IntersectionObserver onChange={handleIntersectionObserverChange}>
+      <PassPlaylist
+        title={displayParameters.title}
+        subtitle={displayParameters.subtitle}
+        data={offersToDisplay}
+        itemHeight={itemHeight}
+        itemWidth={itemWidth}
+        onPressSeeMore={onPressSeeMore}
+        titleSeeMoreLink={{ ...searchTabConfig }}
+        renderItem={renderItem}
+        renderFooter={renderFooter}
+        keyExtractor={keyExtractor}
+        onEndReached={logHasSeenAllTilesOnce}
+        playlistRef={listRef}
+        FlatListComponent={FlatList}
+        onViewableItemsChanged={handleViewableItemsChanged}
+      />
+    </IntersectionObserver>
   )
 }

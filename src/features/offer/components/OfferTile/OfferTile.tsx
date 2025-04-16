@@ -80,7 +80,7 @@ const UnmemoizedOfferTile = (props: OfferTileProps) => {
   }
 
   return (
-    <View {...getHeadingAttrs(3)}>
+    <View {...getHeadingAttrs(3)} testID="OfferTile">
       <StyledTouchableLink
         highlight
         navigateTo={{

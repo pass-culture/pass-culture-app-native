@@ -2596,7 +2596,9 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                       ]
                     }
                   >
-                    <View>
+                    <View
+                      testID="OfferTile"
+                    >
                       <View
                         accessibilityLabel="Offre Mon abonnement bibliothèque de la catégorie Livre,   prix . "
                         accessibilityRole="link"
@@ -2958,7 +2960,9 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                       ]
                     }
                   >
-                    <View>
+                    <View
+                      testID="OfferTile"
+                    >
                       <View
                         accessibilityLabel="Offre Mon abonnement médiathèque de la catégorie Films,   prix . "
                         accessibilityRole="link"
@@ -3320,7 +3324,9 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                       ]
                     }
                   >
-                    <View>
+                    <View
+                      testID="OfferTile"
+                    >
                       <View
                         accessibilityLabel="Offre Mon abonnement livres numériques de la catégorie Livre,   prix . "
                         accessibilityRole="link"
@@ -3682,7 +3688,9 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                       ]
                     }
                   >
-                    <View>
+                    <View
+                      testID="OfferTile"
+                    >
                       <View
                         accessibilityLabel="Offre Mon abonnement ludothèque de la catégorie Jeux,   prix . "
                         accessibilityRole="link"
@@ -4044,7 +4052,9 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                       ]
                     }
                   >
-                    <View>
+                    <View
+                      testID="OfferTile"
+                    >
                       <View
                         accessibilityLabel="Offre Mon abonnement concert de la catégorie Concert,   prix . "
                         accessibilityRole="link"
@@ -4406,7 +4416,9 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                       ]
                     }
                   >
-                    <View>
+                    <View
+                      testID="OfferTile"
+                    >
                       <View
                         accessibilityLabel="Offre Mon abonnement jeu vidéo de la catégorie Jeux,   prix . "
                         accessibilityRole="link"
