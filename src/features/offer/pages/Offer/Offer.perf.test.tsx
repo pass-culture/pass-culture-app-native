@@ -1,7 +1,12 @@
 import React from 'react'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
-import { OfferResponseV2, SimilarOffersResponse, SubcategoriesResponseModelv2 } from 'api/gen'
+import {
+  GetRemindersResponse,
+  OfferResponseV2,
+  SimilarOffersResponse,
+  SubcategoriesResponseModelv2,
+} from 'api/gen'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import * as GetInstalledAppsAPI from 'features/offer/helpers/getInstalledApps/getInstalledApps'
 import * as useArtistResults from 'features/offer/helpers/useArtistResults/useArtistResults'
@@ -17,8 +22,8 @@ import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, measurePerformance, screen } from 'tests/utils'
 
+jest.mock('libs/jwt/jwt')
 jest.mock('libs/firebase/analytics/analytics')
-
 jest.mock('react-native/Libraries/Animated/NativeAnimatedHelper')
 
 jest.mock('react-native/Libraries/Alert/Alert', () => ({
@@ -78,6 +83,7 @@ describe('<Offer />', () => {
       }
     )
     mockServer.getApi<SubcategoriesResponseModelv2>(`/v1/subcategories/v2`, subcategoriesDataTest)
+    mockServer.getApi<GetRemindersResponse>('/v1/me/reminders', {})
   })
 
   it('Performance test for Offer page', async () => {

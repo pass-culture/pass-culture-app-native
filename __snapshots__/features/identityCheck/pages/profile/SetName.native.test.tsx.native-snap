@@ -277,32 +277,20 @@ exports[`<SetName/> should render correctly 1`] = `
                 ]
               }
             >
-              <View
+              <Text
                 style={
                   [
                     {
-                      "alignItems": "center",
-                      "width": "100%",
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 19,
+                      "lineHeight": 30.4,
                     },
                   ]
                 }
               >
-                <Text
-                  style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 17,
-                        "lineHeight": 27.2,
-                        "textAlign": "center",
-                      },
-                    ]
-                  }
-                >
-                  Comment t’appelles-tu ?
-                </Text>
-              </View>
+                Comment t’appelles-tu ?
+              </Text>
               <View
                 numberOfSpaces={5}
                 style={
@@ -373,8 +361,7 @@ exports[`<SetName/> should render correctly 1`] = `
                     }
                     textColor="#161617"
                   >
-                    Saisis ton nom et ton prénom tels qu’ils sont affichés sur ta pièce d’identité.
-Nous les vérifions et ils ne pourront plus être modifiés par la suite.
+                    Saisis ton nom et ton prénom tels qu’ils sont affichés sur ta pièce d’identité. Nous les vérifions et ils ne pourront plus être modifiés par la suite.
                   </Text>
                 </View>
               </View>

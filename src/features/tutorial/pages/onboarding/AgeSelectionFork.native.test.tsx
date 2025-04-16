@@ -2,11 +2,13 @@ import { StackScreenProps } from '@react-navigation/stack'
 import React from 'react'
 
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
-import { TutorialRootStackParamList } from 'features/navigation/RootNavigator/types'
+import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
+import { OnboardingStackParamList } from 'features/navigation/OnboardingStackNavigator/OnboardingStackTypes'
 import { TutorialTypes, NonEligible } from 'features/tutorial/enums'
 import { AgeSelectionFork } from 'features/tutorial/pages/onboarding/AgeSelectionFork'
 import { analytics } from 'libs/analytics/__mocks__/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { eventMonitoring } from 'libs/monitoring/services'
 import { storage } from 'libs/storage'
 import { render, screen, userEvent } from 'tests/utils'
 
@@ -28,6 +30,13 @@ describe('AgeSelectionFork', () => {
     expect(screen).toMatchSnapshot()
   })
 
+  it('should navigate to Home and send log when route.params are undefined', () => {
+    renderAgeSelectionFork(undefined)
+
+    expect(navigateToHome).toHaveBeenCalledTimes(1)
+    expect(eventMonitoring.captureException).toHaveBeenCalledWith('route.params.type is falsy')
+  })
+
   describe('onboarding', () => {
     beforeEach(() => {
       useRoute.mockReturnValueOnce({ params: { type: TutorialTypes.ONBOARDING } })
@@ -45,8 +54,9 @@ describe('AgeSelectionFork', () => {
       const button = screen.getByLabelText('J’ai 16 ans ou moins')
       await user.press(button)
 
-      expect(navigate).toHaveBeenCalledWith('OnboardingNotEligible', {
-        type: TutorialTypes.ONBOARDING,
+      expect(navigate).toHaveBeenCalledWith('OnboardingStackNavigator', {
+        screen: 'OnboardingNotEligible',
+        params: undefined,
       })
     })
 
@@ -67,9 +77,11 @@ describe('AgeSelectionFork', () => {
       const button = screen.getByLabelText('J’ai 17 ans')
       await user.press(button)
 
-      expect(navigate).toHaveBeenCalledWith('OnboardingAgeInformation', {
-        age: 17,
-        type: TutorialTypes.ONBOARDING,
+      expect(navigate).toHaveBeenCalledWith('OnboardingStackNavigator', {
+        screen: 'OnboardingAgeInformation',
+        params: {
+          age: 17,
+        },
       })
     })
 
@@ -79,9 +91,11 @@ describe('AgeSelectionFork', () => {
       const button = screen.getByLabelText('J’ai 18 ans')
       await user.press(button)
 
-      expect(navigate).toHaveBeenCalledWith('OnboardingAgeInformation', {
-        age: 18,
-        type: TutorialTypes.ONBOARDING,
+      expect(navigate).toHaveBeenCalledWith('OnboardingStackNavigator', {
+        screen: 'OnboardingAgeInformation',
+        params: {
+          age: 18,
+        },
       })
     })
 
@@ -96,9 +110,9 @@ describe('AgeSelectionFork', () => {
   })
 })
 
-const renderAgeSelectionFork = (navigationParams: { type: string }) => {
+const renderAgeSelectionFork = (navigationParams: { type: string } | undefined) => {
   const navProps = { route: { params: navigationParams } } as StackScreenProps<
-    TutorialRootStackParamList,
+    OnboardingStackParamList,
     'AgeSelectionFork'
   >
   return render(<AgeSelectionFork {...navProps} />)

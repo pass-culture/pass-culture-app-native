@@ -1,13 +1,16 @@
+import { StackScreenProps } from '@react-navigation/stack'
 import React from 'react'
 
 import { dispatch } from '__mocks__/@react-navigation/native'
 import { ActivityIdEnum } from 'api/gen'
 import { initialSubscriptionState as mockState } from 'features/identityCheck/context/reducer'
+import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
 import { ActivityTypesSnap } from 'features/identityCheck/pages/profile/fixtures/mockedActivityTypes'
 import { SetStatus } from 'features/identityCheck/pages/profile/SetStatus'
 import { useAddress } from 'features/identityCheck/pages/profile/store/addressStore'
 import { useCity } from 'features/identityCheck/pages/profile/store/cityStore'
 import { useName } from 'features/identityCheck/pages/profile/store/nameStore'
+import { SubscriptionRootStackParamList } from 'features/navigation/RootNavigator/types'
 import * as UnderageUserAPI from 'features/profile/helpers/useIsUserUnderage'
 import { analytics } from 'libs/analytics/provider'
 import { mockServer } from 'tests/mswServer'
@@ -93,14 +96,26 @@ describe('<SetStatus/>', () => {
 
   it('should render correctly', async () => {
     mockedUseIsUserUnderage.mockReturnValueOnce(true)
-    renderSetStatus()
+    renderSetStatus({ type: ProfileTypes.IDENTITY_CHECK })
 
     await waitFor(() => expect(screen).toMatchSnapshot())
   })
 
+  it('should display correct infos in identity check', async () => {
+    renderSetStatus({ type: ProfileTypes.IDENTITY_CHECK })
+
+    expect(await screen.findByText('Profil')).toBeTruthy()
+  })
+
+  it('should display correct infos in booking free offer 15/16 years', async () => {
+    renderSetStatus({ type: ProfileTypes.BOOKING_FREE_OFFER_15_16 })
+
+    expect(await screen.findByText('Informations personnelles')).toBeTruthy()
+  })
+
   it('should navigate to stepper on press "Continuer"', async () => {
     mockStatus = ActivityTypesSnap.activities[2].id
-    renderSetStatus()
+    renderSetStatus({ type: ProfileTypes.IDENTITY_CHECK })
 
     await act(async () => {
       fireEvent.press(screen.getByText(ActivityTypesSnap.activities[2].label)) // select student status
@@ -119,7 +134,7 @@ describe('<SetStatus/>', () => {
   })
 
   it('should log analytics on press Continuer', async () => {
-    renderSetStatus()
+    renderSetStatus({ type: ProfileTypes.IDENTITY_CHECK })
 
     await act(async () => {
       fireEvent.press(screen.getByText(ActivityTypesSnap.activities[1].label))
@@ -134,6 +149,10 @@ describe('<SetStatus/>', () => {
   })
 })
 
-function renderSetStatus() {
-  return render(reactQueryProviderHOC(<SetStatus />))
+const renderSetStatus = (navigationParams: { type: string }) => {
+  const navProps = { route: { params: navigationParams } } as StackScreenProps<
+    SubscriptionRootStackParamList,
+    'SetStatus'
+  >
+  return render(reactQueryProviderHOC(<SetStatus {...navProps} />))
 }

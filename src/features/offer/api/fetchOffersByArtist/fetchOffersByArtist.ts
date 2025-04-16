@@ -30,7 +30,7 @@ export const fetchOffersByArtist = async ({ artistId, userLocation }: FetchOffer
   const queries: MultipleQueriesQuery[] = [
     // Playlist
     {
-      indexName: env.ALGOLIA_OFFERS_INDEX_NAME_B,
+      indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
       query: '',
       params: {
         ...defaultQueryParams,
@@ -65,5 +65,5 @@ export const fetchOffersByArtist = async ({ artistId, userLocation }: FetchOffer
 export function buildAlgoliaFilter({ artistId }: BuildAlgoliaFilterType) {
   if (!artistId) return ''
 
-  return `artists.id:"${artistId}"`
+  return `artists.id:${artistId}`
 }

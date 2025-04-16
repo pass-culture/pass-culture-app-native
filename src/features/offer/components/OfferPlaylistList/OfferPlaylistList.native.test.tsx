@@ -14,7 +14,7 @@ import {
 } from 'libs/algolia/fixtures/algoliaFixtures'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { userEvent, render, screen, waitFor } from 'tests/utils'
+import { userEvent, render, screen, waitFor, act, fireEvent } from 'tests/utils'
 
 jest.mock('libs/subcategories/useSubcategories')
 
@@ -48,17 +48,21 @@ describe('<OfferPlaylistList />', () => {
 
   describe('Similar offers', () => {
     describe('Same category playlist', () => {
-      it('should not display same category playlist when offer has not it', () => {
+      it('should not display same category playlist when offer has not it', async () => {
         renderOfferPlaylistList(offerPlaylistListProps)
 
-        expect(screen.queryByText('Dans la même catégorie')).not.toBeOnTheScreen()
+        await act(() => {})
+
+        await expect(screen.queryByText('Dans la même catégorie')).not.toBeOnTheScreen()
       })
 
-      it('should display same category playlist when offer has it', () => {
+      it('should display same category playlist when offer has it', async () => {
         renderOfferPlaylistList({
           ...offerPlaylistListProps,
           sameCategorySimilarOffers: mockSearchHits,
         })
+
+        await screen.findByText('Dans la même catégorie')
 
         expect(screen.getByText('Dans la même catégorie')).toBeOnTheScreen()
       })
@@ -81,17 +85,21 @@ describe('<OfferPlaylistList />', () => {
     })
 
     describe('Other categories differents from that of the offer', () => {
-      it('should not display other categories playlist when offer has not it', () => {
+      it('should not display other categories playlist when offer has not it', async () => {
         renderOfferPlaylistList(offerPlaylistListProps)
+
+        await act(() => {})
 
         expect(screen.queryByText('Ça peut aussi te plaire')).not.toBeOnTheScreen()
       })
 
-      it('should display other categories playlist when offer has it', () => {
+      it('should display other categories playlist when offer has it', async () => {
         renderOfferPlaylistList({
           ...offerPlaylistListProps,
           otherCategoriesSimilarOffers: mockSearchHits,
         })
+
+        await screen.findByText('Ça peut aussi te plaire')
 
         expect(screen.getByText('Ça peut aussi te plaire')).toBeOnTheScreen()
       })
@@ -114,8 +122,7 @@ describe('<OfferPlaylistList />', () => {
     })
 
     describe('For tracking purpose...', () => {
-      // TODO(PC-0000) to unskip the test we need to mock the layout on FlatList
-      it.skip('should expose viewable items of visible playlists', async () => {
+      it('should expose viewable items of visible playlists', async () => {
         renderOfferPlaylistList({
           ...offerPlaylistListProps,
           sameCategorySimilarOffers: mockSearchHits,
@@ -127,11 +134,27 @@ describe('<OfferPlaylistList />', () => {
         if (!playlistElement) {
           throw new Error('Playlist not found')
         }
+
+        const items = screen.getAllByTestId(/playlistCardOffer/)
+
+        items.forEach((item, index) => {
+          fireEvent(item, 'layout', {
+            nativeEvent: {
+              layout: { width: 80, x: 80 * index },
+            },
+          })
+        })
+        fireEvent(playlistElement, 'layout', {
+          nativeEvent: {
+            layout: { width: 2000 },
+          },
+        })
+
         mockInView(true)
 
         await user.scrollTo(playlistElement, {
-          layoutMeasurement: { width: 600, height: 300 },
-          contentSize: { width: 1200, height: 300 },
+          layoutMeasurement: { width: 2000, height: 300 },
+          contentSize: { width: 700, height: 300 },
           x: 0,
         })
 
@@ -142,6 +165,9 @@ describe('<OfferPlaylistList />', () => {
             '102249',
             '102310',
             '102281',
+            '102273',
+            '102250',
+            '102311',
           ])
         )
       })

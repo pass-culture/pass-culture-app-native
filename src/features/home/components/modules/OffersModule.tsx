@@ -106,11 +106,12 @@ export const OffersModule = (props: OffersModuleProps) => {
           width={width}
           height={height}
           analyticsFrom="home"
+          hasSmallLayout={displayParameters.layout === 'three-items'}
         />
       )
     },
 
-    [moduleName, moduleId, homeEntryId]
+    [moduleName, moduleId, homeEntryId, displayParameters.layout]
   )
 
   const { itemWidth, itemHeight } = usePlaylistItemDimensionsFromLayout(displayParameters.layout)

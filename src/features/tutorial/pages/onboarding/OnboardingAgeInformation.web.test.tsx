@@ -1,7 +1,7 @@
 import { StackScreenProps } from '@react-navigation/stack'
 import React from 'react'
 
-import { TutorialRootStackParamList } from 'features/navigation/RootNavigator/types'
+import { OnboardingStackParamList } from 'features/navigation/OnboardingStackNavigator/OnboardingStackTypes'
 import { OnboardingAgeInformation } from 'features/tutorial/pages/onboarding/OnboardingAgeInformation'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render } from 'tests/utils/web'
@@ -18,7 +18,7 @@ describe('OnboardingAgeInformation', () => {
 
 const renderOnboardingAgeInformation = (navigationParams: { age: number }) => {
   const navProps = { route: { params: navigationParams } } as StackScreenProps<
-    TutorialRootStackParamList,
+    OnboardingStackParamList,
     'OnboardingAgeInformation'
   >
   return render(reactQueryProviderHOC(<OnboardingAgeInformation {...navProps} />))

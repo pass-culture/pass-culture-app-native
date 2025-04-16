@@ -38,7 +38,6 @@ export const Default: Story = {
   render: (args) => <TemplateRenderer {...args} />,
   args: {
     dotSize: 8,
-    minimumDotSpacing: 4,
     parentWidth: 30,
     parentHeight: 200,
     endsWithDot: true,
@@ -47,21 +46,6 @@ export const Default: Story = {
     docs: {
       description: {
         story: 'This is a simple example where all dots are rounded.',
-      },
-    },
-  },
-}
-
-export const WithCustomColor: Story = {
-  render: (args) => <TemplateRenderer {...args} />,
-  args: {
-    ...Default.args,
-    dotColor: theme.colors.secondary,
-  },
-  parameters: {
-    docs: {
-      description: {
-        story: 'You can change dot color.',
       },
     },
   },

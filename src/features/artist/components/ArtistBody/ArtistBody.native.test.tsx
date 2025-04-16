@@ -60,12 +60,14 @@ describe('<ArtistBody />', () => {
     })
   })
 
-  it('should display only the main artist when there are several artists on header title', () => {
+  it('should display only the main artist when there are several artists on header title', async () => {
     render(
       reactQueryProviderHOC(
         <ArtistBody artist={mockArtist} artistPlaylist={[]} artistTopOffers={[]} />
       )
     )
+
+    await screen.findAllByText('Céline Dion')
 
     expect(screen.getAllByText('Céline Dion')[0]).toBeOnTheScreen()
   })
@@ -117,12 +119,14 @@ describe('<ArtistBody />', () => {
     expect(await screen.findByTestId('BicolorProfile')).toBeOnTheScreen()
   })
 
-  it('should display artist description', () => {
+  it('should display artist description', async () => {
     render(
       reactQueryProviderHOC(
         <ArtistBody artist={mockArtist} artistPlaylist={[]} artistTopOffers={[]} />
       )
     )
+
+    await screen.findAllByText('Quelques infos à son sujet')
 
     expect(screen.getByText('Quelques infos à son sujet')).toBeOnTheScreen()
     expect(screen.getByText('chanteuse')).toBeOnTheScreen()

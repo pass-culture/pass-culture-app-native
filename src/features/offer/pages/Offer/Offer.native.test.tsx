@@ -1,4 +1,9 @@
-import { BookingsResponse, PaginatedFavoritesResponse, SubcategoriesResponseModelv2 } from 'api/gen'
+import {
+  BookingsResponse,
+  GetRemindersResponse,
+  PaginatedFavoritesResponse,
+  SubcategoriesResponseModelv2,
+} from 'api/gen'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import * as useSimilarOffers from 'features/offer/api/useSimilarOffers'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
@@ -66,6 +71,7 @@ describe('<Offer />', () => {
     mockServer.getApi<BookingsResponse>('/v1/bookings', {})
     mockServer.getApi<PaginatedFavoritesResponse>('/v1/favorites', {})
     mockServer.getApi<PaginatedFavoritesResponse>('/v1/me/favorites', {})
+    mockServer.getApi<GetRemindersResponse>('/v1/me/reminders', {})
     setFeatureFlags()
     mockAuthContext()
   })

@@ -16,14 +16,14 @@ export const StickyFooterContent: FC<Props> = (props) => {
   return (
     <StickyFooterContentBase {...props}>
       <ButtonTertiaryBlack
-        wording={props.hasEnabledNotifications ? 'Désactiver le rappel' : 'Ajouter un rappel'}
-        onPress={props.onPressNotificationsCTA}
-        icon={props.hasEnabledNotifications ? BellFilled : Bell}
+        wording={props.hasReminder ? 'Désactiver le rappel' : 'Ajouter un rappel'}
+        onPress={props.onPressReminderCTA}
+        icon={props.hasReminder ? BellFilled : Bell}
       />
       <NotificationAuthModal
-        visible={props.notificationAuthModal.visible}
+        visible={props.reminderAuthModal.visible}
         offerId={props.offerId}
-        dismissModal={props.notificationAuthModal.hideModal}
+        dismissModal={props.reminderAuthModal.hideModal}
       />
     </StickyFooterContentBase>
   )

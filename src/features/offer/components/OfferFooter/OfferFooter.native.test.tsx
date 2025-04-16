@@ -1,7 +1,10 @@
+import { addDays } from 'date-fns'
 import mockDate from 'mockdate'
 import React from 'react'
 import { Button } from 'react-native'
 
+import { api } from 'api/api'
+import { GetRemindersResponse } from 'api/gen'
 import * as Auth from 'features/auth/context/AuthContext'
 import { favoriteOfferResponseSnap } from 'features/favorites/fixtures/favoriteOfferResponseSnap'
 import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteResponseSnap'
@@ -9,16 +12,31 @@ import { OfferCTAProvider } from 'features/offer/components/OfferContent/OfferCT
 import * as useOfferCTAContextModule from 'features/offer/components/OfferContent/OfferCTAProvider'
 import { OfferFooter, OfferFooterProps } from 'features/offer/components/OfferFooter/OfferFooter'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
+import { reminder, remindersResponse } from 'features/offer/fixtures/remindersResponse'
 import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
+import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render, screen, userEvent } from 'tests/utils'
+import { act, render, screen, userEvent } from 'tests/utils'
+import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
+
+jest.mock('libs/jwt/jwt')
 
 const useRemoteConfigSpy = jest.spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
 
 const useAuthContextSpy = jest.spyOn(Auth, 'useAuthContext')
 
 const useOfferCTASpy = jest.spyOn(useOfferCTAContextModule, 'useOfferCTA')
+
+const addReminderMutationSpy = jest.spyOn(api, 'postNativeV1MeReminders')
+const deleteReminderMutationSpy = jest.spyOn(api, 'deleteNativeV1MeRemindersreminderId')
+
+const mockShowErrorSnackBar = jest.fn()
+jest.mock('ui/components/snackBar/SnackBarContext', () => ({
+  useSnackBarContext: () => ({
+    showErrorSnackBar: mockShowErrorSnackBar,
+  }),
+}))
 
 const mockUseOfferCTAReturnValue = {
   wording: 'Cine content CTA',
@@ -45,6 +63,8 @@ describe('OfferFooter', () => {
     useAuthContextSpy.mockReturnValue(mockAuthContextReturnValue)
   })
 
+  beforeEach(() => mockServer.getApi<GetRemindersResponse>('/v1/me/reminders', remindersResponse))
+
   describe('Content when offer is a movie screening', () => {
     beforeEach(() => {
       useRemoteConfigSpy.mockReturnValue({
@@ -70,7 +90,7 @@ describe('OfferFooter', () => {
     const offerWithPublicationDate = {
       ...offerResponseSnap,
       isReleased: false,
-      publicationDate: '2025-04-01T14:15:00Z',
+      publicationDate: addDays(CURRENT_DATE, 20).toString(),
     }
 
     beforeEach(() => {
@@ -84,13 +104,14 @@ describe('OfferFooter', () => {
     it('should display coming soon banner', async () => {
       renderOfferFooter({ offer: offerWithPublicationDate })
 
-      expect(screen.getByText('Cette offre sera bientôt disponible')).toBeOnTheScreen()
+      expect(await screen.findByText('Cette offre sera bientôt disponible')).toBeOnTheScreen()
     })
 
     it('should display addToFavorites button when offer has not been added to favorites', async () => {
       renderOfferFooter({ offer: offerWithPublicationDate, favorite: null })
+      await screen.findByText('Cette offre sera bientôt disponible')
 
-      expect(screen.getByText('Mettre en favori')).toBeOnTheScreen()
+      expect(await screen.findByText('Mettre en favori')).toBeOnTheScreen()
     })
 
     it('should display removeFromFavorites button when offer has been added to favorites', async () => {
@@ -99,42 +120,51 @@ describe('OfferFooter', () => {
         favorite: { id: favoriteOfferResponseSnap.id, offer: favoriteOfferResponseSnap },
       })
 
-      expect(screen.getByText('Retirer des favoris')).toBeOnTheScreen()
+      await screen.findByText('Cette offre sera bientôt disponible')
+
+      expect(await screen.findByText('Retirer des favoris')).toBeOnTheScreen()
     })
 
-    it('should display enableNotifications button', async () => {
+    it('should display addReminder button', async () => {
       renderOfferFooter({ offer: offerWithPublicationDate })
 
-      expect(screen.getByText('Ajouter un rappel')).toBeOnTheScreen()
+      await screen.findByText('Cette offre sera bientôt disponible')
+
+      expect(await screen.findByText('Ajouter un rappel')).toBeOnTheScreen()
     })
 
-    it('should display disableNotifications button', async () => {
+    it('should display disableReminder button', async () => {
       useAuthContextSpy.mockReturnValueOnce({ ...mockAuthContextReturnValue, isLoggedIn: true })
+      renderOfferFooter({
+        offer: {
+          ...offerWithPublicationDate,
 
-      renderOfferFooter({ offer: offerWithPublicationDate })
+          id: reminder.offer.id,
+        },
+      })
 
-      await user.press(await screen.findByText('Ajouter un rappel'))
+      await screen.findByText('Cette offre sera bientôt disponible')
 
-      expect(screen.getByText('Désactiver le rappel')).toBeOnTheScreen()
+      expect(await screen.findByText('Désactiver le rappel')).toBeOnTheScreen()
     })
 
     it('should display signinModal when user presses favorite button but is not logged in', async () => {
       renderOfferFooter({ offer: offerWithPublicationDate })
 
+      await screen.findByText('Cette offre sera bientôt disponible')
+
       await user.press(await screen.findByText('Mettre en favori'))
 
-      expect(screen.getByText('Identifie-toi pour retrouver tes favoris')).toBeOnTheScreen()
+      expect(await screen.findByText('Identifie-toi pour retrouver tes favoris')).toBeOnTheScreen()
     })
 
     it('should add offer to favorites when user is logged in and presses addTofavorite button', async () => {
-      useAuthContextSpy.mockReturnValueOnce({
-        isLoggedIn: true,
-        isUserLoading: false,
-        setIsLoggedIn: jest.fn(),
-        refetchUser: jest.fn(),
-      })
+      useAuthContextSpy.mockReturnValueOnce({ ...mockAuthContextReturnValue, isLoggedIn: true })
+      useAuthContextSpy.mockReturnValueOnce({ ...mockAuthContextReturnValue, isLoggedIn: true })
 
       const { addFavorite } = renderOfferFooter({ offer: offerWithPublicationDate })
+
+      await screen.findByText('Cette offre sera bientôt disponible')
 
       await user.press(await screen.findByText('Mettre en favori'))
 
@@ -142,17 +172,15 @@ describe('OfferFooter', () => {
     })
 
     it('should remove offer from favorites when user is logged in and presses removeFromfavorite button', async () => {
-      useAuthContextSpy.mockReturnValueOnce({
-        isLoggedIn: true,
-        isUserLoading: false,
-        setIsLoggedIn: jest.fn(),
-        refetchUser: jest.fn(),
-      })
+      useAuthContextSpy.mockReturnValueOnce({ ...mockAuthContextReturnValue, isLoggedIn: true })
+      useAuthContextSpy.mockReturnValueOnce({ ...mockAuthContextReturnValue, isLoggedIn: true })
 
       const { removeFavorite, favorite } = renderOfferFooter({
         offer: offerWithPublicationDate,
         favorite: { id: favoriteResponseSnap.id, offer: favoriteResponseSnap.offer },
       })
+
+      await screen.findByText('Cette offre sera bientôt disponible')
 
       await user.press(await screen.findByText('Retirer des favoris'))
 
@@ -162,9 +190,83 @@ describe('OfferFooter', () => {
     it('should display loader when addToFavorite button is loading', async () => {
       renderOfferFooter({ offer: offerWithPublicationDate, isAddFavoriteLoading: true })
 
+      await screen.findByText('Cette offre sera bientôt disponible')
+
       expect(screen.queryByText('Mettre en favori')).not.toBeOnTheScreen()
 
-      expect(screen.getByLabelText('Chargement en cours')).toBeOnTheScreen()
+      expect(await screen.findByLabelText('Chargement en cours')).toBeOnTheScreen()
+    })
+
+    it('should display snackbar when addReminder fails', async () => {
+      useAuthContextSpy.mockReturnValueOnce({ ...mockAuthContextReturnValue, isLoggedIn: true })
+      useAuthContextSpy.mockReturnValueOnce({ ...mockAuthContextReturnValue, isLoggedIn: true })
+      addReminderMutationSpy.mockRejectedValueOnce({ status: 400 })
+
+      renderOfferFooter({
+        offer: offerWithPublicationDate,
+      })
+
+      await screen.findByText('Cette offre sera bientôt disponible')
+
+      await user.press(await screen.findByText('Ajouter un rappel'))
+
+      expect(mockShowErrorSnackBar).toHaveBeenCalledWith({
+        message: 'L’offre n’a pas pu être ajoutée à tes rappels',
+        timeout: SNACK_BAR_TIME_OUT,
+      })
+    })
+
+    it('should show reminder authentication modal when not logged in', async () => {
+      useAuthContextSpy.mockReturnValueOnce({ ...mockAuthContextReturnValue, isLoggedIn: false })
+      useAuthContextSpy.mockReturnValueOnce({ ...mockAuthContextReturnValue, isLoggedIn: false })
+
+      mockServer.getApi<GetRemindersResponse>('/v1/me/reminders', {})
+      renderOfferFooter({ offer: offerWithPublicationDate })
+
+      await screen.findByText('Cette offre sera bientôt disponible')
+
+      await user.press(await screen.findByText('Ajouter un rappel'))
+
+      expect(screen.getByText('Identifie-toi pour activer un rappel')).toBeOnTheScreen()
+    })
+
+    it('should call addReminder when no existing reminder', async () => {
+      useAuthContextSpy.mockReturnValueOnce({ ...mockAuthContextReturnValue, isLoggedIn: true })
+      useAuthContextSpy.mockReturnValueOnce({ ...mockAuthContextReturnValue, isLoggedIn: true })
+
+      mockServer.getApi<GetRemindersResponse>('/v1/me/reminders', {})
+      mockServer.postApi(`/v1/me/reminders`, {
+        responseOptions: { statusCode: 201, data: {} },
+      })
+
+      renderOfferFooter({
+        offer: offerWithPublicationDate,
+      })
+
+      await screen.findByText('Cette offre sera bientôt disponible')
+
+      await user.press(await screen.findByText('Ajouter un rappel'))
+
+      expect(addReminderMutationSpy).toHaveBeenCalledWith({ offerId: offerWithPublicationDate.id })
+    })
+
+    it('should call deleteReminder when existing reminder', async () => {
+      useAuthContextSpy.mockReturnValueOnce({ ...mockAuthContextReturnValue, isLoggedIn: true })
+      useAuthContextSpy.mockReturnValueOnce({ ...mockAuthContextReturnValue, isLoggedIn: true })
+
+      mockServer.deleteApi(`/v1/me/reminders/${reminder.id}`, {
+        responseOptions: { statusCode: 201, data: {} },
+      })
+
+      renderOfferFooter({
+        offer: { ...offerWithPublicationDate, id: reminder.offer.id },
+      })
+
+      await screen.findByText('Cette offre sera bientôt disponible')
+
+      await user.press(await screen.findByText('Désactiver le rappel'))
+
+      expect(deleteReminderMutationSpy).toHaveBeenCalledWith(reminder.id)
     })
   })
 
@@ -187,7 +289,7 @@ describe('OfferFooter', () => {
         children: <Button title="Réserver l’offre" />,
       })
 
-      expect(screen.getByText('Réserver l’offre')).toBeOnTheScreen()
+      expect(await screen.findByText('Réserver l’offre')).toBeOnTheScreen()
     })
   })
 
@@ -197,6 +299,8 @@ describe('OfferFooter', () => {
         children: <Button title="Réserver l’offre" />,
         isDesktopViewport: true,
       })
+
+      await act(async () => {})
 
       expect(screen.queryByText("Réserver l'offre")).toBeNull()
     })

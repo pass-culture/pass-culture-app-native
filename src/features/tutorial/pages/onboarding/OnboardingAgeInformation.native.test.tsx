@@ -2,7 +2,8 @@ import { StackScreenProps } from '@react-navigation/stack'
 import React from 'react'
 
 import { navigate, reset } from '__mocks__/@react-navigation/native'
-import { StepperOrigin, TutorialRootStackParamList } from 'features/navigation/RootNavigator/types'
+import { OnboardingStackParamList } from 'features/navigation/OnboardingStackNavigator/OnboardingStackTypes'
+import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import * as useGoBack from 'features/navigation/useGoBack'
 import { CreditStatus, TutorialTypes } from 'features/tutorial/enums'
@@ -10,6 +11,7 @@ import { OnboardingAgeInformation } from 'features/tutorial/pages/onboarding/Onb
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { eventMonitoring } from 'libs/monitoring/services'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { userEvent, render, screen } from 'tests/utils'
 
@@ -32,6 +34,16 @@ jest.useFakeTimers()
 describe('OnboardingAgeInformation', () => {
   beforeEach(() => {
     setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])
+  })
+
+  it('should navigate to Home and send log when route.params are undefined', () => {
+    renderOnboardingAgeInformation(undefined)
+
+    expect(reset).toHaveBeenCalledWith({
+      index: 0,
+      routes: [{ name: homeNavConfig[0] }],
+    })
+    expect(eventMonitoring.captureException).toHaveBeenCalledWith('route.params.type is falsy')
   })
 
   it.each(AGES)('should render correctly for %s-year-old', (age) => {
@@ -128,9 +140,9 @@ describe('OnboardingAgeInformation', () => {
   })
 })
 
-const renderOnboardingAgeInformation = (navigationParams: { age: number }) => {
+const renderOnboardingAgeInformation = (navigationParams: { age: number } | undefined) => {
   const navProps = { route: { params: navigationParams } } as StackScreenProps<
-    TutorialRootStackParamList,
+    OnboardingStackParamList,
     'OnboardingAgeInformation'
   >
   return render(reactQueryProviderHOC(<OnboardingAgeInformation {...navProps} />))
