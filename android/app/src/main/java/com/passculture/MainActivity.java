@@ -7,7 +7,9 @@ import com.facebook.react.ReactActivityDelegate; //@react-navigation
 import com.facebook.react.defaults.DefaultNewArchitectureEntryPoint;
 import com.facebook.react.defaults.DefaultReactActivityDelegate;
 import android.content.Intent;
+import android.content.res.Configuration;
 import com.batch.android.Batch;
+import org.wonday.orientation.OrientationActivityLifecycle;
 
 public class MainActivity extends ReactActivity {
     /**
@@ -24,6 +26,7 @@ public class MainActivity extends ReactActivity {
     protected void onCreate(Bundle savedInstanceState) {
         SplashScreen.show(this, R.id.lottie);
         SplashScreen.setAnimationFinished(true); // We want the animation dialog to be forced to close when hide is called, so we use this
+        registerActivityLifecycleCallbacks(OrientationActivityLifecycle.getInstance());
         super.onCreate(null); // known fix for react-native-screens: https://github.com/software-mansion/react-native-screens#android
     }
 
@@ -46,4 +49,13 @@ public class MainActivity extends ReactActivity {
                 // If you opted-in for the New Architecture, we enable the Fabric Renderer.
                 DefaultNewArchitectureEntryPoint.getFabricEnabled());
     }
+
+    // react-native-orientation-locker
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+       super.onConfigurationChanged(newConfig);
+       Intent intent = new Intent("onConfigurationChanged");
+       intent.putExtra("newConfig", newConfig);
+       this.sendBroadcast(intent);
+   }
 }
