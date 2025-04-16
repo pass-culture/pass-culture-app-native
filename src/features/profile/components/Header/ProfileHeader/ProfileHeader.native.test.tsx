@@ -62,7 +62,7 @@ const exUnderageBeneficiaryUser: UserProfileResponse = {
 }
 
 jest.mock('libs/jwt/jwt')
-jest.mock('/queries/profile/usePatchProfileMutation')
+jest.mock('queries/profile/usePatchProfileMutation')
 jest.mock('features/profile/helpers/isUserUnderageBeneficiary')
 const mockedisUserUnderageBeneficiary = jest.mocked(isUserUnderageBeneficiary)
 

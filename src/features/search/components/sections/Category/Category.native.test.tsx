@@ -24,7 +24,7 @@ jest.mock('libs/subcategories/useSubcategories', () => ({
   }),
 }))
 
-jest.mock('/queries/profile/usePatchProfileMutation')
+jest.mock('queries/profile/usePatchProfileMutation')
 
 const mockHasNextPage = true
 const mockFetchNextPage = jest.fn()

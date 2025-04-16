@@ -38,7 +38,7 @@ const user: UserProfileResponse = {
   achievements: [],
 }
 
-jest.mock('/queries/profile/usePatchProfileMutation')
+jest.mock('queries/profile/usePatchProfileMutation')
 
 const exBeneficiaryUser: UserProfileResponse = {
   ...user,
