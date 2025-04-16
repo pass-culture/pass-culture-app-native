@@ -65,5 +65,5 @@ export const fetchOffersByArtist = async ({ artistId, userLocation }: FetchOffer
 export function buildAlgoliaFilter({ artistId }: BuildAlgoliaFilterType) {
   if (!artistId) return ''
 
-  return `artists.id:"${artistId}"`
+  return `artists.id:${artistId}`
 }
