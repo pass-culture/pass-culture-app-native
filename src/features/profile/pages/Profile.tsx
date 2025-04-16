@@ -1,6 +1,7 @@
 import { useFocusEffect } from '@react-navigation/native'
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { NativeScrollEvent, Platform, ScrollView, View } from 'react-native'
+import Orientation from 'react-native-orientation-locker'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -144,6 +145,13 @@ const OnlineProfile: React.FC = () => {
     shareApp('profile_banner')
   }, [])
 
+  const [isOrientationLocked, setIsOrientationLocked] = useState(Orientation.isLocked())
+
+  useEffect(() => {
+    Orientation.addLockListener(() => setIsOrientationLocked(Orientation.isLocked()))
+    return () => Orientation.removeAllListeners()
+  }, [])
+
   return (
     <Page>
       <ScrollView
@@ -185,6 +193,19 @@ const OnlineProfile: React.FC = () => {
                     />
                   </Li>
                   <LiWithMarginVertical>
+                    <SectionWithSwitch
+                      icon={LocationPointer}
+                      iconSize={SECTION_ROW_ICON_SIZE}
+                      title="Permettre l’orientation"
+                      active={!isOrientationLocked}
+                      accessibilityDescribedBy={locationActivationErrorId}
+                      toggle={() => {
+                        Orientation.isLocked()
+                          ? Orientation.unlockAllOrientations()
+                          : Orientation.lockToPortrait()
+                      }}
+                      toggleLabel="Changer l’orientation"
+                    />
                     <SectionWithSwitch
                       icon={LocationPointer}
                       iconSize={SECTION_ROW_ICON_SIZE}

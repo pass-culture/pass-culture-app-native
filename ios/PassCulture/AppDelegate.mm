@@ -1,3 +1,5 @@
+#import "Orientation.h"
+
 #import "AppDelegate.h"
 
 #import <React/RCTBundleURLProvider.h>
@@ -95,6 +97,10 @@
 #else
   return [CodePush bundleURL]; // @codepush
 #endif
+}
+
+- (UIInterfaceOrientationMask)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window {
+  return [Orientation getOrientation];
 }
 
 @end
