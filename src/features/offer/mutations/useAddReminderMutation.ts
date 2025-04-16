@@ -16,11 +16,11 @@ export const useAddReminderMutation = (options?: MutationOptions) => {
       ])
 
       const newReminder = {
-        id: Math.random(),
+        id: 0,
         offer: { id: offerId },
       }
 
-      const reminders = previousReminders?.reminders.length
+      const reminders = previousReminders?.reminders?.length
         ? [...previousReminders.reminders, newReminder]
         : [newReminder]
 

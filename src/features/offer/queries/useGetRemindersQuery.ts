@@ -4,7 +4,7 @@ import { api } from 'api/api'
 import { GetRemindersResponse } from 'api/gen'
 import { QueryKeys } from 'libs/queryKeys'
 
-const STALE_TIME = 5 * 60 * 1000
+const STALE_TIME_REMINDERS = 5 * 60 * 1000
 
 export const useGetRemindersQuery = <TData = GetRemindersResponse>(
   select?: (data: GetRemindersResponse) => TData
@@ -14,7 +14,7 @@ export const useGetRemindersQuery = <TData = GetRemindersResponse>(
     () => api.getNativeV1MeReminders(),
     {
       select,
-      staleTime: STALE_TIME,
+      staleTime: STALE_TIME_REMINDERS,
     }
   )
 }

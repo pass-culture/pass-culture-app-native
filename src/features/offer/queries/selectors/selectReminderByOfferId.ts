@@ -6,6 +6,7 @@ export const selectReminderByOfferId = (
   data: GetRemindersResponse,
   offerId: number
 ): ReminderResponse | undefined => {
-  if (isEmpty(data)) return undefined
-  return data.reminders.find((reminder) => reminder.offer.id === offerId)
+  return isEmpty(data)
+    ? undefined
+    : data.reminders.find((reminder) => reminder.offer.id === offerId)
 }

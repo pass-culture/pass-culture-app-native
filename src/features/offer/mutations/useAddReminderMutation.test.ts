@@ -12,7 +12,7 @@ import { useAddReminderMutation } from './useAddReminderMutation'
 jest.mock('libs/jwt/jwt')
 
 const offerId = 30
-const reminderIdMock = 1234
+const reminderIdMock = 0
 
 const cancelQueriesMock = jest.fn()
 const invalidateQueriesMock = jest.fn()
@@ -31,7 +31,6 @@ describe('useAddReminderMutation', () => {
     mockServer.postApi(`/v1/me/reminders`, {
       responseOptions: { statusCode: 201, data: reminder },
     })
-    jest.spyOn(global.Math, 'random').mockReturnValue(reminderIdMock)
 
     jest.clearAllMocks()
   })
