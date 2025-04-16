@@ -95,6 +95,8 @@ export const BookingDetailsContent = ({
     navigate('Venue', { id: offer.venue.id })
   }
 
+  const errorBannerMessage = `Tu n’as pas le droit de céder ou de revendre ${properties.isDuo ? 'tes billets' : 'ton billet'}.`
+
   return (
     <Container>
       <ScrollView
@@ -138,7 +140,7 @@ export const BookingDetailsContent = ({
           <TicketCutoutBottom offer={offer} booking={booking} userEmail={user?.email} />
         </TicketCutout>
         <ErrorBannerContainer>
-          <ErrorBanner message="Tu n’as pas le droit de céder ou de revendre ton billet." />
+          <ErrorBanner message={errorBannerMessage} />
         </ErrorBannerContainer>
         {booking.stock.offer.bookingContact || offer.withdrawalDetails ? (
           <React.Fragment>

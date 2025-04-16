@@ -741,6 +741,46 @@ describe('BookingDetails', () => {
         screen.getByText('Tu n’as pas besoin de billet pour profiter de cette offre !')
       ).toBeOnTheScreen()
     })
+
+    it('should render error message with plural when booking is duo', async () => {
+      renderBookingDetails({
+        ...ongoingBookings,
+        quantity: 2,
+        stock: {
+          ...ongoingBookings.stock,
+          offer: {
+            ...ongoingBookings.stock.offer,
+            withdrawalType: WithdrawalTypeEnum.no_ticket,
+          },
+        },
+      })
+
+      await screen.findAllByText(ongoingBookings.stock.offer.name)
+
+      expect(
+        screen.getByText('Tu n’as pas le droit de céder ou de revendre tes billets.')
+      ).toBeOnTheScreen()
+    })
+
+    it('should render error message singular when booking is not duo', async () => {
+      renderBookingDetails({
+        ...ongoingBookings,
+        quantity: 1,
+        stock: {
+          ...ongoingBookings.stock,
+          offer: {
+            ...ongoingBookings.stock.offer,
+            withdrawalType: WithdrawalTypeEnum.no_ticket,
+          },
+        },
+      })
+
+      await screen.findAllByText(ongoingBookings.stock.offer.name)
+
+      expect(
+        screen.getByText('Tu n’as pas le droit de céder ou de revendre ton billet.')
+      ).toBeOnTheScreen()
+    })
   })
 })
 
