@@ -1,7 +1,6 @@
 import { useFocusEffect } from '@react-navigation/native'
 import React, { useCallback, useEffect, useRef, useState } from 'react'
 import { NativeScrollEvent, Platform, ScrollView, View } from 'react-native'
-import Orientation from 'react-native-orientation-locker'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -27,6 +26,7 @@ import { GeolocPermissionState, useLocation } from 'libs/location'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { OfflinePage } from 'libs/network/OfflinePage'
 import { AccessibilityFooter } from 'shared/AccessibilityFooter/AccessibilityFooter'
+import { useOrientationLocked } from 'shared/hook/useOrientationLocked'
 import { getAge } from 'shared/user/getAge'
 import { InputError } from 'ui/components/inputs/InputError'
 import { Li } from 'ui/components/Li'
@@ -62,6 +62,7 @@ const OnlineProfile: React.FC = () => {
   const disableActivation = useFeatureFlag(RemoteStoreFeatureFlags.DISABLE_ACTIVATION)
   const enablePassForAll = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_PASS_FOR_ALL)
 
+  const [isOrientationLocked, toggleIsOrientationLocked] = useOrientationLocked()
   const { dispatch: favoritesDispatch } = useFavoritesState()
   const { isLoggedIn, user } = useAuthContext()
   const signOut = useLogoutRoutine()
@@ -145,13 +146,6 @@ const OnlineProfile: React.FC = () => {
     shareApp('profile_banner')
   }, [])
 
-  const [isOrientationLocked, setIsOrientationLocked] = useState(Orientation.isLocked())
-
-  useEffect(() => {
-    Orientation.addLockListener(() => setIsOrientationLocked(Orientation.isLocked()))
-    return () => Orientation.removeAllListeners()
-  }, [])
-
   return (
     <Page>
       <ScrollView
@@ -199,11 +193,7 @@ const OnlineProfile: React.FC = () => {
                       title="Permettre l’orientation"
                       active={!isOrientationLocked}
                       accessibilityDescribedBy={locationActivationErrorId}
-                      toggle={() => {
-                        Orientation.isLocked()
-                          ? Orientation.unlockAllOrientations()
-                          : Orientation.lockToPortrait()
-                      }}
+                      toggle={() => toggleIsOrientationLocked()}
                       toggleLabel="Changer l’orientation"
                     />
                     <SectionWithSwitch
