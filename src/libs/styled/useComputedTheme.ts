@@ -1,11 +1,12 @@
 import { useMemo } from 'react'
-import { ColorSchemeName, useWindowDimensions } from 'react-native'
+import { useWindowDimensions } from 'react-native'
 
 import { useMediaQuery } from 'libs/react-responsive/useMediaQuery'
+import { ColorScheme } from 'libs/styled/useColorScheme'
 import { BaseAppThemeType, AppThemeType } from 'theme'
 import { designTokensDark, designTokensLight } from 'theme/designTokens'
 
-export function useComputedTheme(theme: BaseAppThemeType, colorScheme: ColorSchemeName) {
+export function useComputedTheme(theme: BaseAppThemeType, colorScheme: ColorScheme) {
   const { width: windowWidth } = useWindowDimensions()
   const tabletMinWidth = theme.breakpoints.md
   const desktopMinWidth = theme.breakpoints.lg
