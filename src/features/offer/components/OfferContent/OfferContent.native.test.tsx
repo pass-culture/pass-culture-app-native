@@ -1,4 +1,5 @@
 import { NavigationContainer } from '@react-navigation/native'
+import { addDays } from 'date-fns'
 import mockdate from 'mockdate'
 import React, { ComponentProps } from 'react'
 import { ReactTestInstance } from 'react-test-renderer'
@@ -6,6 +7,7 @@ import { ReactTestInstance } from 'react-test-renderer'
 import { api } from 'api/api'
 import {
   FavoriteResponse,
+  GetRemindersResponse,
   NativeCategoryIdEnumv2,
   OfferResponseV2,
   PaginatedFavoritesResponse,
@@ -194,6 +196,7 @@ describe('<OfferContent />', () => {
   beforeEach(() => {
     spyApiDeleteFavorite.mockResolvedValue({})
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
+    mockServer.getApi<GetRemindersResponse>('/v1/me/reminders', {})
     useFavoriteSpy.mockReturnValue(favoriteResponseSnap)
     mockPosition = { latitude: 90.4773245, longitude: 90.4773245 }
     mockAuthContextWithoutUser({ persist: true })
@@ -465,13 +468,14 @@ describe('<OfferContent />', () => {
       const comingSoonOffer = {
         ...offerResponseSnap,
         isReleased: false,
-        publicationDate: '2025-04-01T14:15:00Z',
+        publicationDate: addDays(new Date(), 20).toString(),
       }
       mockdate.set(new Date('2025-03-31T10:00:00Z'))
 
       it('should display "Mettre en favori" button', async () => {
         useFavoriteSpy.mockReturnValueOnce(undefined)
         renderOfferContent({ offer: comingSoonOffer })
+        await screen.findByText('Cette offre sera bientôt disponible')
 
         expect(await screen.findByText('Mettre en favori')).toBeOnTheScreen()
       })

@@ -21,13 +21,13 @@ const defaultModalSettings = {
 
 describe('StickyFooterContent', () => {
   it.each`
-    hasEnabledNotifications | expectedButtonText
-    ${false}                | ${'Ajouter un rappel'}
-    ${true}                 | ${'Désactiver le rappel'}
+    hasReminder | expectedButtonText
+    ${false}    | ${'Ajouter un rappel'}
+    ${true}     | ${'Désactiver le rappel'}
   `(
-    'should render notification button with text `$expectedButtonText` when hasEnabledNotifications props is $hasEnabledNotifications',
-    async ({ hasEnabledNotifications, expectedButtonText }) => {
-      renderStickyFooterContent({ hasEnabledNotifications })
+    'should render reminder button with text `$expectedButtonText` when hasReminder props is $hasReminder',
+    async ({ hasReminder, expectedButtonText }) => {
+      renderStickyFooterContent({ hasReminder })
 
       expect(await screen.findByText(expectedButtonText)).toBeOnTheScreen()
     }
@@ -49,9 +49,9 @@ describe('StickyFooterContent', () => {
   )
 
   it.each`
-    authModal                  | expectedModalText
-    ${'favoriteAuthModal'}     | ${'Identifie-toi pour retrouver tes favoris'}
-    ${'notificationAuthModal'} | ${'Identifie-toi pour activer un rappel'}
+    authModal              | expectedModalText
+    ${'favoriteAuthModal'} | ${'Identifie-toi pour retrouver tes favoris'}
+    ${'reminderAuthModal'} | ${'Identifie-toi pour activer un rappel'}
   `('should render $authModal properly', async ({ authModal, expectedModalText }) => {
     renderStickyFooterContent({
       ...{ [authModal]: { ...defaultModalSettings, visible: true } },
@@ -64,13 +64,13 @@ describe('StickyFooterContent', () => {
 const renderStickyFooterContent = ({
   favorite = null,
   favoriteAuthModal = defaultModalSettings,
-  hasEnabledNotifications = false,
-  notificationAuthModal = defaultModalSettings,
+  hasReminder = false,
+  reminderAuthModal = defaultModalSettings,
 }: {
   favorite?: FavoriteResponse | null
   favoriteAuthModal?: ModalSettings
-  hasEnabledNotifications?: boolean
-  notificationAuthModal?: ModalSettings
+  hasReminder?: boolean
+  reminderAuthModal?: ModalSettings
 }) => {
   return render(
     <StickyFooterContent
@@ -79,10 +79,10 @@ const renderStickyFooterContent = ({
       onPressFavoriteCTA={jest.fn()}
       isAddFavoriteLoading={false}
       isRemoveFavoriteLoading={false}
-      hasEnabledNotifications={hasEnabledNotifications}
-      onPressNotificationsCTA={jest.fn()}
+      hasReminder={hasReminder}
+      onPressReminderCTA={jest.fn()}
       favoriteAuthModal={favoriteAuthModal}
-      notificationAuthModal={notificationAuthModal}
+      reminderAuthModal={reminderAuthModal}
     />
   )
 }

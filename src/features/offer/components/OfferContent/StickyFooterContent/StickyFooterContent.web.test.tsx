@@ -2,7 +2,7 @@ import React from 'react'
 
 import { FavoriteResponse } from 'api/gen'
 import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteResponseSnap'
-import { StickyFooterContent } from 'features/offer/components/OfferContent/StickyFooterContent/StickyFooterContent'
+import { StickyFooterContent } from 'features/offer/components/OfferContent/StickyFooterContent/StickyFooterContent.web'
 import { render, screen } from 'tests/utils/web'
 import { ModalSettings } from 'ui/components/modals/useModal'
 
@@ -60,10 +60,10 @@ const renderStickyFooterContent = ({
       onPressFavoriteCTA={jest.fn()}
       isAddFavoriteLoading={false}
       isRemoveFavoriteLoading={false}
-      hasEnabledNotifications={false}
-      onPressNotificationsCTA={jest.fn()}
+      hasReminder={false}
+      onPressReminderCTA={jest.fn()}
       favoriteAuthModal={favoriteAuthModal}
-      notificationAuthModal={defaultModalSettings}
+      reminderAuthModal={defaultModalSettings}
     />
   )
 }
