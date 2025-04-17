@@ -24,7 +24,7 @@ jest.mock('libs/network/NetInfoWrapper')
 jest.mock('libs/jwt/jwt')
 jest.mock('features/auth/context/AuthContext')
 
-jest.mock('features/profile/api/usePatchProfile')
+jest.mock('queries/profile/usePatchProfileMutation')
 
 const mockedSubscriptionMessage = {
   popOverIcon: 'FILE',

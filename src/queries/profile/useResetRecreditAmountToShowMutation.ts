@@ -1,9 +1,13 @@
 import { useMutation } from 'react-query'
 
 import { api } from 'api/api'
-import { ResetRecreditAmountToShowMutationOptions } from 'features/profile/types'
 
-export function useResetRecreditAmountToShow({
+type ResetRecreditAmountToShowMutationOptions = {
+  onSuccess?: () => void
+  onError?: (error: unknown) => void
+}
+
+export function useResetRecreditAmountToShowMutation({
   onSuccess,
   onError,
 }: ResetRecreditAmountToShowMutationOptions) {

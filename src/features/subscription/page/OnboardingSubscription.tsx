@@ -9,7 +9,6 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getTabNavConfig, homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
-import { usePatchProfile } from 'features/profile/api/usePatchProfile'
 import { usePushPermission } from 'features/profile/pages/NotificationSettings/usePushPermission'
 import { SubscriptionThematicButton } from 'features/subscription/components/buttons/SubscriptionThematicButton'
 import { mapSubscriptionThemeToName } from 'features/subscription/helpers/mapSubscriptionThemeToName'
@@ -19,6 +18,7 @@ import { SubscriptionTheme, SUSBCRIPTION_THEMES } from 'features/subscription/ty
 import { analytics } from 'libs/analytics/provider'
 import { createAnimatableComponent, AnimatedViewRefType } from 'libs/react-native-animatable'
 import { storage } from 'libs/storage'
+import { usePatchProfileMutation } from 'queries/profile/usePatchProfileMutation'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { EmptyHeader } from 'ui/components/headers/EmptyHeader'
@@ -65,7 +65,7 @@ export const OnboardingSubscription = () => {
     initialSubscribedThemes
   )
 
-  const { mutate: patchProfile, isLoading: isUpdatingProfile } = usePatchProfile({
+  const { mutate: patchProfile, isLoading: isUpdatingProfile } = usePatchProfileMutation({
     onSuccess: () => {
       analytics.logSubscriptionUpdate({ type: 'update', from: 'home' })
       showSuccessSnackBar({

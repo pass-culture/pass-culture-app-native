@@ -8,8 +8,8 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { StatusForm } from 'features/identityCheck/pages/profile/StatusFlatList'
 import { getProfileStackConfig } from 'features/navigation/ProfileStackNavigator/getProfileStackConfig'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { usePatchProfile } from 'features/profile/api/usePatchProfile'
 import { analytics } from 'libs/analytics/provider'
+import { usePatchProfileMutation } from 'queries/profile/usePatchProfileMutation'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
 const schema = yup.object().shape({
@@ -20,7 +20,7 @@ export const useSubmitChangeStatus = () => {
   const { user } = useAuthContext()
   const { navigate } = useNavigation<UseNavigationType>()
   const { showSuccessSnackBar, showErrorSnackBar } = useSnackBarContext()
-  const { mutate: patchProfile, isLoading } = usePatchProfile({
+  const { mutate: patchProfile, isLoading } = usePatchProfileMutation({
     onSuccess: (_, variables) => {
       analytics.logUpdateStatus({
         oldStatus: user?.activityId ?? '',

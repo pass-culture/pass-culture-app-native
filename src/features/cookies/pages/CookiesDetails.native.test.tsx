@@ -4,7 +4,7 @@ import { CookiesDetails } from 'features/cookies/pages/CookiesDetails'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { screen, render } from 'tests/utils'
 
-jest.mock('features/profile/api/usePatchProfile')
+jest.mock('queries/profile/usePatchProfileMutation')
 
 jest.mock('libs/firebase/analytics/analytics')
 

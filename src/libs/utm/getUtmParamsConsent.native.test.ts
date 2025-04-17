@@ -7,7 +7,7 @@ import { getUtmParamsConsent } from 'libs/utm/getUtmParamsConsent'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, renderHook } from 'tests/utils'
 
-jest.mock('features/profile/api/usePatchProfile')
+jest.mock('queries/profile/usePatchProfileMutation')
 jest.mock('api/api')
 
 const COOKIES_CONSENT_KEY = 'cookies'

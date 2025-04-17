@@ -19,7 +19,7 @@ import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRem
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import { fireEvent, render, screen } from 'tests/utils'
 
-jest.mock('features/profile/api/useResetRecreditAmountToShow')
+jest.mock('queries/profile/useResetRecreditAmountToShowMutation')
 
 jest
   .spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
