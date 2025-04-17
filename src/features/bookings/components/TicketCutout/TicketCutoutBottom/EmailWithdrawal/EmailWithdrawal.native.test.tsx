@@ -13,7 +13,13 @@ describe('<EmailWithdrawal/>', () => {
   describe('EmailWillBeSend', () => {
     it('should return the correct delay when the ticket will be send', () => {
       const delay = '24 heures'
-      render(<EmailWithdrawal beginningDatetime={later} withdrawalDelay={oneDayWithdrawalDelay} />)
+      render(
+        <EmailWithdrawal
+          beginningDatetime={later}
+          withdrawalDelay={oneDayWithdrawalDelay}
+          isDuo={false}
+        />
+      )
 
       expect(screen.getByText(delay)).toBeOnTheScreen()
     })

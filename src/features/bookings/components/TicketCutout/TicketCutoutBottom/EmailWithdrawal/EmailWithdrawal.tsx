@@ -11,9 +11,10 @@ import { Typo, getSpacing } from 'ui/theme'
 type Props = {
   beginningDatetime?: string | null
   withdrawalDelay?: number | null
+  isDuo: boolean
 }
 
-export const EmailWithdrawal = ({ beginningDatetime, withdrawalDelay }: Props) => {
+export const EmailWithdrawal = ({ beginningDatetime, withdrawalDelay, isDuo }: Props) => {
   if (beginningDatetime && withdrawalDelay) {
     // Calculation approximate date send e-mail
     const nbDays = withdrawalDelay / 60 / 60 / 24
@@ -21,7 +22,8 @@ export const EmailWithdrawal = ({ beginningDatetime, withdrawalDelay }: Props) =
     const today = new Date()
     const startOfferDate = new Date(beginningDatetime)
     const isEventDay = isSameDay(startOfferDate, today)
-    if (isEventDay || today > dateSendEmail) return <EmailReceived isEventDay={isEventDay} />
+    if (isEventDay || today > dateSendEmail)
+      return <EmailReceived isEventDay={isEventDay} isDuo={isDuo} />
   }
 
   return (

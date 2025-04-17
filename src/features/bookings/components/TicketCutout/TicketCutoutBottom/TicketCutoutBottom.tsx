@@ -20,6 +20,7 @@ export const TicketCutoutBottom = ({
     case WithdrawalTypeEnum.by_email:
       return (
         <EmailWithdrawal
+          isDuo={booking.quantity === 2}
           beginningDatetime={booking.stock.beginningDatetime}
           withdrawalDelay={offer.withdrawalDelay}
         />
