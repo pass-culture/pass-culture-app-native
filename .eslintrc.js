@@ -1,3 +1,5 @@
+const { softRules } = require('./eslint-soft-rules')
+
 module.exports = {
   root: true,
   plugins: [
@@ -30,9 +32,9 @@ module.exports = {
     tsconfigRootDir: __dirname,
   },
   rules: {
-    'react-hooks/exhaustive-deps': 'error',
-    'react/no-unused-prop-types': 'off', // has false positives
     'react/no-unstable-nested-components': 'off', // TODO(PC-25291): enable when its issues are fixed
+    'react/no-unused-prop-types': 'off', // has false positives
+    'react-hooks/exhaustive-deps': 'error',
     'local-rules/independent-mocks': 'error',
     'local-rules/no-direct-consult-offer-log': 'error',
     'local-rules/no-empty-arrow-function': 'off',
@@ -46,10 +48,7 @@ module.exports = {
     'local-rules/use-the-right-test-utils': 'error',
     'local-rules/no-use-of-algolia-multiple-queries': 'error',
     'local-rules/no-currency-symbols': 'error',
-    'local-rules/no-useQuery-outside-query-files': 'off',
-    'local-rules/useQuery-only-in-use-query-functions': 'off',
-    'local-rules/queries-must-be-in-queries-folder': 'off',
-    'no-negated-condition': 'warn',
+    'no-negated-condition': 'error',
     '@typescript-eslint/no-explicit-any': 'error',
     '@typescript-eslint/no-non-null-assertion': 'error',
     '@typescript-eslint/switch-exhaustiveness-check': 'error',
@@ -202,8 +201,9 @@ module.exports = {
           },
           {
             group: ['design-system/*'],
-            message: 'use useTheme() | styled(Component).attrs(({ theme }) => ({})`` | styled(Component)(({ theme }) => ({}) when you want yo use design tokens',
-          }
+            message:
+              'use useTheme() | styled(Component).attrs(({ theme }) => ({})`` | styled(Component)(({ theme }) => ({}) when you want yo use design tokens',
+          },
         ],
       },
     ],
@@ -290,6 +290,7 @@ module.exports = {
       },
     ],
     'sort-keys-fix/sort-keys-fix': 'off',
+    ...softRules,
   },
   settings: {
     react: {
@@ -316,7 +317,7 @@ module.exports = {
       },
       alias: {
         map: [
-           // if you change those lines, check this doc https://github.com/pass-culture/pass-culture-app-native/blob/5ff5fba596244a759d60f8c9cdb67d56ac86a1a7/doc/development/alias.md
+          // if you change those lines, check this doc https://github.com/pass-culture/pass-culture-app-native/blob/5ff5fba596244a759d60f8c9cdb67d56ac86a1a7/doc/development/alias.md
           ['__mocks__', './__mocks__'],
           ['api', './src/api'],
           ['cheatcodes', './src/cheatcodes'],

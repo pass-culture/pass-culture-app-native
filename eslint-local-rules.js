@@ -14,6 +14,7 @@ const useTheRightTestUtils = require('./eslint-custom-rules/use-the-right-test-u
 const noQueriesOutsideQueryFiles = require('./eslint-custom-rules/no-queries-outside-query-files.js')
 const queriesOnlyInUseQueryFunctions = require('./eslint-custom-rules/queries-only-in-use-query-functions.js')
 const queriesMustBeInQueriesFolder = require('./eslint-custom-rules/queries-must-be-in-queries-folder.js')
+const noFireEvent = require('./eslint-custom-rules/no-fireEvent')
 
 module.exports = {
   'apostrophe-in-text': apostropheInText,
@@ -32,4 +33,5 @@ module.exports = {
   'no-queries-outside-query-files': noQueriesOutsideQueryFiles,
   'queries-only-in-use-query-functions': queriesOnlyInUseQueryFunctions,
   'queries-must-be-in-queries-folder': queriesMustBeInQueriesFolder,
+  'no-fireEvent': noFireEvent,
 }
