@@ -1,11 +1,14 @@
+import { UserProfileResponse } from 'api/gen'
 import { LINE_BREAK } from 'ui/theme/constants'
 
 export const getEmailReceivedWithdrawalMessage = ({
   isEventDay,
   isDuo,
+  userEmail,
 }: {
   isEventDay: boolean
   isDuo: boolean
+  userEmail: UserProfileResponse['email']
 }) => {
   const startTextEventDay =
     'C’est aujourd’hui\u00a0!' +
@@ -14,7 +17,7 @@ export const getEmailReceivedWithdrawalMessage = ({
   const startTextBeforeEventDay = isDuo
     ? 'Tes billets t’ont été envoyés'
     : 'Ton billet t’a été envoyé'
-  const endText = ' par e-mail. Pense à vérifier tes spams.'
+  const endText = ` par e-mail à l’adresse ${userEmail}. Pense à vérifier tes spams.`
 
   return (isEventDay ? startTextEventDay : startTextBeforeEventDay) + endText
 }
