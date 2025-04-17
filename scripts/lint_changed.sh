@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
 CHANGED_FILES=$(
   (git diff --name-only origin/master... ;
@@ -11,5 +11,5 @@ CHANGED_FILES=$(
 
 if [ -n "$CHANGED_FILES" ]; then
   echo "$CHANGED_FILES"
-  npx eslint $CHANGED_FILES
+  yarn eslint $CHANGED_FILES
 fi
