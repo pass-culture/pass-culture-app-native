@@ -20,6 +20,7 @@ jobs:
   create_and_push_staging_tag:
     name: 'Create and push staging tag'
     runs-on: ubuntu-24.04
+    timeout-minutes: 60
     steps:
       - name: 'Checkout commit hash'
         uses: actions/checkout@v4
@@ -43,6 +44,7 @@ jobs:
   create_and_push_testing_tag:
     name: 'Create and push testing tag'
     runs-on: ubuntu-24.04
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
         with:

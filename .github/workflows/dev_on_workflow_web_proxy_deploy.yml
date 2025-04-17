@@ -20,6 +20,7 @@ on:
 jobs:
   web_proxy_deploy:
     runs-on: ubuntu-24.04
+    timeout-minutes: 60
     steps:
       - name: Enable Corepack
         run: corepack enable
@@ -77,6 +78,7 @@ jobs:
             | xargs gcloud app versions delete --service=web-proxy-${{ inputs.ENV }}
   slack_notify:
     runs-on: ubuntu-24.04
+    timeout-minutes: 60
     if: ${{ always() && (contains(needs.web_proxy_deploy.result, 'success') || contains(needs.web_proxy_deploy.result, 'failure'))}}
     needs: web_proxy_deploy
     steps:
