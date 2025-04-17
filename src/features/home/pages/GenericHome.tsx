@@ -70,8 +70,7 @@ type GenericHomeProps = {
   statusBar?: React.JSX.Element
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const keyExtractor = (item: any) => item.id
+const keyExtractor = (item: HomepageModule) => item.id
 
 const handleViewableItemsChanged = ({
   index,
@@ -297,10 +296,8 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = ({
     [homeId, videoModuleId]
   )
 
-  const modulesToDisplayHandlingVideoCarousel = buildModulesHandlingVideoCarouselPosition(
-    modulesToDisplay,
-    thematicHeader
-  )
+  const modulesToDisplayHandlingVideoCarousel: HomepageModule[] =
+    buildModulesHandlingVideoCarouselPosition(modulesToDisplay, thematicHeader)
   const videoCarouselModules = modulesToDisplay.filter(isVideoCarouselModule)
 
   const shouldDisplayVideoInHeader =
@@ -404,7 +401,7 @@ const ScrollToTopContainer = styled.View(({ theme }) => ({
   zIndex: theme.zIndex.floatingButton,
 }))
 
-const FlatListContainer = styled(IntersectionObserverFlatlist)({
+const FlatListContainer = styled(IntersectionObserverFlatlist<HomepageModule>)({
   overflow: 'visible',
 })
 
