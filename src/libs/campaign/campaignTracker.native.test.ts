@@ -29,8 +29,10 @@ describe('campaignTracker', () => {
     campaignTracker.init(true)
     await waitFor(() => {
       expect(appsFlyer.setConsentData).toHaveBeenCalledWith({
+        isUserSubjectToGDPR: true,
         hasConsentForAdsPersonalization: true,
         hasConsentForDataUsage: true,
+        hasConsentForAdStorage: false,
       })
     })
   })
@@ -42,8 +44,10 @@ describe('campaignTracker', () => {
 
     await waitFor(() => {
       expect(appsFlyer.setConsentData).toHaveBeenCalledWith({
+        isUserSubjectToGDPR: true,
         hasConsentForAdsPersonalization: false,
         hasConsentForDataUsage: true,
+        hasConsentForAdStorage: false,
       })
     })
   })

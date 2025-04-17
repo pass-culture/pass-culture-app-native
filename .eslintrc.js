@@ -72,7 +72,11 @@ module.exports = {
       { argsIgnorePattern: '^_', varsIgnorePattern: '^_' },
     ],
     '@typescript-eslint/explicit-module-boundary-types': 'off',
-    '@typescript-eslint/restrict-template-expressions': 'error',
+    '@typescript-eslint/restrict-template-expressions': ['error',
+      {
+        allowAny: true,
+      },
+    ],
     'react/prop-types': 'off',
     'react-native/sort-styles': 'off',
     'react-native/no-raw-text': 'off', // We use 'local-rules/no-raw-text' instead

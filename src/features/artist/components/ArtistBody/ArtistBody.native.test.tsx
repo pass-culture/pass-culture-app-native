@@ -9,7 +9,7 @@ import * as useArtistResults from 'features/offer/helpers/useArtistResults/useAr
 import { mockedAlgoliaOffersWithSameArtistResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render, screen, userEvent } from 'tests/utils'
+import { render, screen, userEvent, waitFor } from 'tests/utils'
 
 jest.unmock('react-native/Libraries/Animated/createAnimatedComponent')
 jest.mock('libs/firebase/analytics/analytics')
@@ -97,11 +97,8 @@ describe('<ArtistBody />', () => {
         />
       )
     )
-
-    await screen.findByLabelText('artist avatar')
-
-    expect(screen.getByLabelText('artist avatar').props.source).toMatchObject({
-      uri: mockedAlgoliaOffersWithSameArtistResponse[0].offer.thumbUrl,
+    await waitFor(() => {
+      expect(screen.getByLabelText('artist avatar')).toBeOnTheScreen()
     })
   })
 

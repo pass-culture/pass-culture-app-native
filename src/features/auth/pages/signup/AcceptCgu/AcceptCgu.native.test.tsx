@@ -107,9 +107,8 @@ describe('<AcceptCgu/>', () => {
 
   it("should open reCAPTCHA challenge's modal when pressing on signup button", async () => {
     renderAcceptCGU()
-    const recaptchaWebviewModal = screen.getByTestId('recaptcha-webview-modal')
 
-    expect(recaptchaWebviewModal.props.visible).toBeFalsy()
+    expect(screen.queryByTestId('recaptcha-webview-modal')).not.toBeOnTheScreen()
 
     user.press(screen.getByText('J’ai lu et j’accepte les conditions générales d’utilisation*'))
 
@@ -117,7 +116,7 @@ describe('<AcceptCgu/>', () => {
 
     await user.press(screen.getByText('S’inscrire'))
 
-    expect(recaptchaWebviewModal.props.visible).toBe(true)
+    expect(screen.getByTestId('recaptcha-webview-modal')).toBeOnTheScreen()
   })
 
   it('should call API to create user account when reCAPTCHA challenge is successful', async () => {

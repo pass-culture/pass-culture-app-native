@@ -9,11 +9,6 @@ import {
 import { queryClient } from 'libs/react-query/queryClient'
 import { usePrefetchQueries } from 'libs/react-query/usePrefetchQueries'
 
-if (__DEV__ && process.env.JEST !== 'true') {
-  // eslint-disable-next-line import/no-extraneous-dependencies
-  import('react-query-native-devtools').then(({ addPlugin }) => addPlugin({ queryClient }))
-}
-
 // By default, on the web, if a user leaves the app and returns to stale data,
 // React Query automatically requests fresh data in the background.
 // To have the equivalent behaviour for React-Native, we provide focus information through

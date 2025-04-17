@@ -1,14 +1,27 @@
-export default {
-  logEvent: jest.fn(),
-  setConsentData: jest.fn(),
-  initSdk: jest.fn(),
-  getAppsFlyerUID: jest.fn(),
-}
-
-export const AppsFlyerConsent = {
-  forGDPRUser: jest.fn((hasConsentForDataUsage, hasConsentForAdsPersonalization) => ({
-    hasConsentForDataUsage,
-    hasConsentForAdsPersonalization,
-  })),
-  forNonGDPRUser: jest.fn(),
+module.exports = {
+  __esModule: true,
+  default: {
+    setConsentData: jest.fn(),
+    initSdk: jest.fn(),
+    logEvent: jest.fn(),
+    getAppsFlyerUID: jest.fn((callback) => callback(null, 'mocked-uid')),
+    stop: jest.fn(),
+  },
+  AppsFlyerConsent: jest
+    .fn()
+    .mockImplementation(
+      (
+        isUserSubjectToGDPR,
+        hasConsentForDataUsage,
+        hasConsentForAdsPersonalization,
+        hasConsentForAdStorage
+      ) => {
+        return {
+          isUserSubjectToGDPR,
+          hasConsentForDataUsage,
+          hasConsentForAdsPersonalization,
+          hasConsentForAdStorage,
+        }
+      }
+    ),
 }

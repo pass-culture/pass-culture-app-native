@@ -797,14 +797,5 @@ exports[`SearchLocationModal should render correctly if modal visible 1`] = `
       </View>
     </View>
   </Modal>,
-  <Modal
-    animationType="fade"
-    hardwareAccelerated={false}
-    onRequestClose={[Function]}
-    statusBarTranslucent={true}
-    testID="modal-geoloc-permission-modal"
-    transparent={true}
-    visible={false}
-  />,
 ]
 `;

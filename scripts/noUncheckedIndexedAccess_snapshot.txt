@@ -11,14 +11,13 @@
 ./src/features/navigation/helpers/useCurrentRoute.ts:4
 ./src/features/navigation/helpers/usePreviousRoute.ts:4
 ./src/features/navigation/sanitizeNavigationState.ts:5
-./src/features/profile/components/CreditInfo/CreditProgressBar.tsx:32
 ./src/features/search/components/sections/Accessibility/Accessibility.tsx:33
 ./src/features/venue/components/OpeningHoursStatus/OpeningHoursStatus.native.test.tsx:68
 ./src/libs/hooks/useShowReview.native.test.tsx:117
 ./src/libs/itinerary/useItinerary.native.test.ts:61
 ./src/libs/parsers/highlightLinks.native.test.tsx:34
-./src/libs/parsers/highlightLinks.tsx:18
-./src/libs/parsers/highlightLinks.tsx:22
+./src/libs/parsers/highlightLinks.tsx:19
+./src/libs/parsers/highlightLinks.tsx:23
 ./src/libs/parsers/snakeCaseToUppercaseFirstLetter.ts:2
 ./src/libs/place/fetchPlaces.ts:8
 ./src/libs/react-query/tests/usePersistQuery.native.test.tsx:113

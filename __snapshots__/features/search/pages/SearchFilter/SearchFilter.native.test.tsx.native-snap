@@ -395,36 +395,6 @@ exports[`<SearchFilter/> should render correctly 1`] = `
                 </Text>
               </View>
             </View>
-            <Modal
-              accessibilityLabelledBy="testUuidV4"
-              accessibilityModal={true}
-              animationType="none"
-              deviceHeight={1334}
-              deviceWidth={750}
-              hardwareAccelerated={false}
-              hideModalContentWhileAnimating={false}
-              onBackdropPress={[Function]}
-              onModalHide={[Function]}
-              onModalWillHide={[Function]}
-              onModalWillShow={[Function]}
-              onRequestClose={[Function]}
-              panResponderThreshold={4}
-              scrollHorizontal={false}
-              scrollOffset={0}
-              scrollOffsetMax={0}
-              scrollTo={null}
-              statusBarTranslucent={true}
-              supportedOrientations={
-                [
-                  "portrait",
-                  "landscape",
-                ]
-              }
-              swipeThreshold={100}
-              testID="modal"
-              transparent={true}
-              visible={false}
-            />
             <View
               numberOfSpaces={6}
               style={
@@ -582,36 +552,6 @@ exports[`<SearchFilter/> should render correctly 1`] = `
                 </Text>
               </View>
             </View>
-            <Modal
-              accessibilityLabelledBy="testUuidV4"
-              accessibilityModal={true}
-              animationType="none"
-              deviceHeight={1334}
-              deviceWidth={750}
-              hardwareAccelerated={false}
-              hideModalContentWhileAnimating={false}
-              onBackdropPress={[Function]}
-              onModalHide={[Function]}
-              onModalWillHide={[Function]}
-              onModalWillShow={[Function]}
-              onRequestClose={[Function]}
-              panResponderThreshold={4}
-              scrollHorizontal={false}
-              scrollOffset={0}
-              scrollOffsetMax={0}
-              scrollTo={null}
-              statusBarTranslucent={true}
-              supportedOrientations={
-                [
-                  "portrait",
-                  "landscape",
-                ]
-              }
-              swipeThreshold={100}
-              testID="modal"
-              transparent={true}
-              visible={false}
-            />
             <View
               numberOfSpaces={6}
               style={
@@ -769,36 +709,6 @@ exports[`<SearchFilter/> should render correctly 1`] = `
                 </Text>
               </View>
             </View>
-            <Modal
-              accessibilityLabelledBy="testUuidV4"
-              accessibilityModal={true}
-              animationType="none"
-              deviceHeight={1334}
-              deviceWidth={750}
-              hardwareAccelerated={false}
-              hideModalContentWhileAnimating={false}
-              onBackdropPress={[Function]}
-              onModalHide={[Function]}
-              onModalWillHide={[Function]}
-              onModalWillShow={[Function]}
-              onRequestClose={[Function]}
-              panResponderThreshold={4}
-              scrollHorizontal={false}
-              scrollOffset={0}
-              scrollOffsetMax={0}
-              scrollTo={null}
-              statusBarTranslucent={true}
-              supportedOrientations={
-                [
-                  "portrait",
-                  "landscape",
-                ]
-              }
-              swipeThreshold={100}
-              testID="modal"
-              transparent={true}
-              visible={false}
-            />
             <View
               numberOfSpaces={6}
               style={
@@ -956,36 +866,6 @@ exports[`<SearchFilter/> should render correctly 1`] = `
                 </Text>
               </View>
             </View>
-            <Modal
-              accessibilityLabelledBy="testUuidV4"
-              accessibilityModal={true}
-              animationType="none"
-              deviceHeight={1334}
-              deviceWidth={750}
-              hardwareAccelerated={false}
-              hideModalContentWhileAnimating={false}
-              onBackdropPress={[Function]}
-              onModalHide={[Function]}
-              onModalWillHide={[Function]}
-              onModalWillShow={[Function]}
-              onRequestClose={[Function]}
-              panResponderThreshold={4}
-              scrollHorizontal={false}
-              scrollOffset={0}
-              scrollOffsetMax={0}
-              scrollTo={null}
-              statusBarTranslucent={true}
-              supportedOrientations={
-                [
-                  "portrait",
-                  "landscape",
-                ]
-              }
-              swipeThreshold={100}
-              testID="modal"
-              transparent={true}
-              visible={false}
-            />
             <View
               numberOfSpaces={6}
               style={
@@ -1142,36 +1022,6 @@ exports[`<SearchFilter/> should render correctly 1`] = `
                 </Text>
               </View>
             </View>
-            <Modal
-              accessibilityLabelledBy="testUuidV4"
-              accessibilityModal={true}
-              animationType="none"
-              deviceHeight={1334}
-              deviceWidth={750}
-              hardwareAccelerated={false}
-              hideModalContentWhileAnimating={false}
-              onBackdropPress={[Function]}
-              onModalHide={[Function]}
-              onModalWillHide={[Function]}
-              onModalWillShow={[Function]}
-              onRequestClose={[Function]}
-              panResponderThreshold={4}
-              scrollHorizontal={false}
-              scrollOffset={0}
-              scrollOffsetMax={0}
-              scrollTo={null}
-              statusBarTranslucent={true}
-              supportedOrientations={
-                [
-                  "portrait",
-                  "landscape",
-                ]
-              }
-              swipeThreshold={100}
-              testID="modal"
-              transparent={true}
-              visible={false}
-            />
             <View
               numberOfSpaces={6}
               style={
