@@ -10824,7 +10824,7 @@ __metadata:
     babel-plugin-styled-components: ^2.1.4
     babel-preset-react-app: ^10.0.1
     chromatic: ^11.27.0
-    color-alpha: ^1.1.3
+    color-alpha: ^2.0.0
     console-fail-test: ^0.2.3
     contentful-resolve-response: ^1.3.0
     cross-fetch: ^3.1.5
@@ -13186,12 +13186,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"color-alpha@npm:^1.1.3":
-  version: 1.1.3
-  resolution: "color-alpha@npm:1.1.3"
+"color-alpha@npm:^2.0.0":
+  version: 2.0.0
+  resolution: "color-alpha@npm:2.0.0"
   dependencies:
-    color-parse: ^1.4.1
-  checksum: 7c47fa16e1ceffd567731439e4c84f7c971767eb522fa3ba74be1f5a4f22b204962b02a969ce32c40b0f2358b63ec44ddf1115f29264d07369c6103c0fed97e7
+    color-parse: ^2.0.0
+  checksum: 54b692e6b8a9648bd04617d571438dccc83d46841f2dcf27e0a8b708ea5698682d9845848117c4cfe43f1e31b7b6d21db7e2dd72bb47096874bac21bb34535c6
   languageName: node
   linkType: hard
 
@@ -13220,12 +13220,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"color-parse@npm:^1.4.1":
-  version: 1.4.3
-  resolution: "color-parse@npm:1.4.3"
+"color-parse@npm:^2.0.0":
+  version: 2.0.2
+  resolution: "color-parse@npm:2.0.2"
   dependencies:
-    color-name: ^1.0.0
-  checksum: 3fb417857664c3f16250e60cf97a2b48b36b414c2ea6b163719fb4632879d98505ce4fe1c2a4afd870a399abcf1a794f9a0366556cb3f8eaebd41fddeebddc38
+    color-name: ^2.0.0
+  checksum: 4e9446a9b1320da14e9b552b9be767b4fa78c18fbadf8a5c37e83f7fc9687723e2083cf2a17cecc818dcc9d64771f74db7815f218251e18535d1e8f52951c841
   languageName: node
   linkType: hard
 
