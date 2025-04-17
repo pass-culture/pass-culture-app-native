@@ -24,6 +24,7 @@ jobs:
   yarn_test_web:
     name: 'Run Web unit tests'
     runs-on: ubuntu-24.04
+    timeout-minutes: 60
     strategy:
       fail-fast: false
       matrix:
@@ -79,6 +80,7 @@ jobs:
   yarn_test_native:
     name: 'Run native unit tests'
     runs-on: ubuntu-24.04
+    timeout-minutes: 60
     strategy:
       fail-fast: false
       matrix:
@@ -147,6 +149,7 @@ jobs:
     name: Update Allure report
     if: ${{ always() && github.ref == 'refs/heads/master' }}
     runs-on: ubuntu-24.04
+    timeout-minutes: 60
     permissions:
       id-token: write
       contents: read
@@ -237,6 +240,7 @@ jobs:
 
   report-coverage:
     runs-on: ubuntu-24.04
+    timeout-minutes: 60
     needs: yarn_test_native
     steps:
       - name: Enable Corepack
@@ -281,6 +285,7 @@ jobs:
 
   yarn_test_proxy:
     runs-on: ubuntu-24.04
+    timeout-minutes: 60
     steps:
       - name: Enable Corepack
         run: corepack enable
@@ -324,6 +329,7 @@ jobs:
           projectBaseDir: server
   slack_notify:
     runs-on: ubuntu-24.04
+    timeout-minutes: 60
     if: ${{ always() && github.ref == 'refs/heads/master' }}
     needs:
       - yarn_test_native

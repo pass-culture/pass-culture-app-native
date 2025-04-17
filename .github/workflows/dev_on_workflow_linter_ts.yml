@@ -19,6 +19,7 @@ concurrency:
 jobs:
   yarn_lint:
     runs-on: ubuntu-24.04
+    timeout-minutes: 60
     steps:
       - name: Enable Corepack
         run: corepack enable
@@ -42,6 +43,7 @@ jobs:
 
   yarn_typescript:
     runs-on: ubuntu-24.04
+    timeout-minutes: 60
     steps:
       - name: Enable Corepack
         run: corepack enable
