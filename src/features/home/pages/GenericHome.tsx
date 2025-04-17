@@ -24,6 +24,7 @@ import { HomeModule } from 'features/home/components/modules/HomeModule'
 import { OffersModuleProps } from 'features/home/components/modules/OffersModule'
 import { VideoCarouselModule } from 'features/home/components/modules/video/VideoCarouselModule'
 import { useOnScroll } from 'features/home/pages/helpers/useOnScroll'
+import { onLayoutHome } from 'features/home/pages/onLayoutHome'
 import {
   HomepageModule,
   HomepageModuleType,
@@ -333,6 +334,7 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = ({
       ) : null}
       <HomeBodyLoadingContainer hide={showSkeleton}>
         <FlatListContainer
+          onLayout={onLayoutHome}
           accessibilityRole={AccessibilityRole.MAIN}
           ref={scrollRef}
           testID="homeBodyScrollView"
