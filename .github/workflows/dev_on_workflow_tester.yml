@@ -145,12 +145,12 @@ jobs:
 
   allure-report:
     name: Update Allure report
-    if: github.ref == 'refs/heads/master'
+    if: ${{ always() && github.ref == 'refs/heads/master' }}
     runs-on: ubuntu-24.04
     permissions:
       id-token: write
       contents: read
-    needs: yarn_test_native
+    needs: [yarn_test_native, yarn_test_web]
 
     steps:
       - name: Enable Corepack
