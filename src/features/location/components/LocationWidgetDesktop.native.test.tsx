@@ -6,7 +6,7 @@ import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/
 import { useLocation } from 'libs/location'
 import { LocationLabel, LocationMode } from 'libs/location/types'
 import { storage } from 'libs/storage'
-import { act, fireEvent, render, screen } from 'tests/utils'
+import { act, render, screen, userEvent } from 'tests/utils'
 
 jest.unmock('@react-navigation/native')
 jest.mock('libs/splashscreen')
@@ -23,6 +23,9 @@ jest.mock('ui/components/modals/useModal', () => ({
 jest.mock('libs/location')
 const mockUseLocation = useLocation as jest.Mock
 
+const user = userEvent.setup()
+jest.useFakeTimers()
+
 describe('LocationWidgetDesktop', () => {
   beforeEach(() => {
     setFeatureFlags()
@@ -38,7 +41,7 @@ describe('LocationWidgetDesktop', () => {
 
     const button = screen.getByTestId('Ouvrir la modale de localisation depuis le titre')
 
-    fireEvent.press(button)
+    await user.press(button)
 
     expect(mockShowModal).toHaveBeenCalledTimes(1)
   })
@@ -122,7 +125,7 @@ describe('LocationWidgetDesktop', () => {
 
       const closeButton = screen.getByLabelText('Fermer le tooltip')
 
-      fireEvent.press(closeButton)
+      await user.press(closeButton)
 
       expect(
         screen.queryByText(
@@ -182,7 +185,7 @@ describe('LocationWidgetDesktop', () => {
       )
 
       const locationButton = screen.getByText(LocationLabel.everywhereLabel)
-      fireEvent.press(locationButton)
+      await user.press(locationButton)
 
       expect(
         screen.queryByText(
