@@ -185,14 +185,13 @@ export const OffersModule = (props: OffersModuleProps) => {
     }
   }
 
-  const handleViewableItemsChanged = useCallback(
-    ({ changed }: { changed: ViewToken[] }) => {
-      if (isInView.current) {
-        onViewableItemsChanged?.(changed.map((item) => item.key))
-      }
-    },
-    [onViewableItemsChanged]
-  )
+  const handleViewableItemsChanged = useCallback(({ changed }: { changed: ViewToken[] }) => {
+    if (isInView.current) {
+      onViewableItemsChanged?.(changed.map((item) => item.key))
+    }
+    // We cannot change onViewableItemsChanged on the fly
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   if (!shouldModuleBeDisplayed) return null
 
