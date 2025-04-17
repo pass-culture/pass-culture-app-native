@@ -7,7 +7,7 @@ import { SetName } from 'features/identityCheck/pages/profile/SetName'
 import { SubscriptionRootStackParamList } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
 import { storage } from 'libs/storage'
-import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
+import { act, fireEvent, render, screen, userEvent, waitFor } from 'tests/utils'
 
 const firstName = 'John'
 const lastName = 'Doe'
@@ -17,6 +17,10 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
     return Component
   }
 })
+
+const user = userEvent.setup()
+
+jest.useFakeTimers()
 
 describe('<SetName/>', () => {
   it('should render correctly', () => {
@@ -76,8 +80,7 @@ describe('<SetName/>', () => {
     const lastNameInput = screen.getByPlaceholderText('Ton nom')
     await act(async () => fireEvent.changeText(lastNameInput, lastName))
 
-    const continueButton = await screen.findByText('Continuer')
-    await act(async () => fireEvent.press(continueButton))
+    await user.press(screen.getByText('Continuer'))
 
     expect(await storage.readObject('profile-name')).toMatchObject({
       state: {
@@ -95,12 +98,9 @@ describe('<SetName/>', () => {
     const lastNameInput = screen.getByPlaceholderText('Ton nom')
     await act(async () => fireEvent.changeText(lastNameInput, lastName))
 
-    const continueButton = await screen.findByText('Continuer')
-    await act(async () => fireEvent.press(continueButton))
+    await user.press(screen.getByText('Continuer'))
 
-    await waitFor(() => {
-      expect(navigate).toHaveBeenNthCalledWith(1, 'SetCity', { type: ProfileTypes.IDENTITY_CHECK })
-    })
+    expect(navigate).toHaveBeenNthCalledWith(1, 'SetCity', { type: ProfileTypes.IDENTITY_CHECK })
   })
 
   it('should navigate to SetCity with booking params when submit name', async () => {
@@ -112,13 +112,10 @@ describe('<SetName/>', () => {
     const lastNameInput = screen.getByPlaceholderText('Ton nom')
     await act(async () => fireEvent.changeText(lastNameInput, lastName))
 
-    const continueButton = await screen.findByText('Continuer')
-    await act(async () => fireEvent.press(continueButton))
+    await user.press(screen.getByText('Continuer'))
 
-    await waitFor(() => {
-      expect(navigate).toHaveBeenNthCalledWith(1, 'SetCity', {
-        type: ProfileTypes.BOOKING_FREE_OFFER_15_16,
-      })
+    expect(navigate).toHaveBeenNthCalledWith(1, 'SetCity', {
+      type: ProfileTypes.BOOKING_FREE_OFFER_15_16,
     })
   })
 
@@ -131,12 +128,9 @@ describe('<SetName/>', () => {
     const lastNameInput = screen.getByPlaceholderText('Ton nom')
     await act(async () => fireEvent.changeText(lastNameInput, lastName))
 
-    const continueButton = await screen.findByText('Continuer')
-    await act(async () => fireEvent.press(continueButton))
+    await user.press(screen.getByText('Continuer'))
 
-    await waitFor(() => {
-      expect(analytics.logSetNameClicked).toHaveBeenCalledTimes(1)
-    })
+    expect(analytics.logSetNameClicked).toHaveBeenCalledTimes(1)
   })
 })
 

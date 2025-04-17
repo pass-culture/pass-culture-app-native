@@ -32,7 +32,7 @@ import { NetworkErrorFixture, UnknownErrorFixture } from 'libs/recaptcha/fixture
 import { storage } from 'libs/storage'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render, screen, simulateWebviewMessage } from 'tests/utils'
+import { act, fireEvent, render, screen, simulateWebviewMessage, userEvent } from 'tests/utils'
 import { SUGGESTION_DELAY_IN_MS } from 'ui/components/inputs/EmailInputWithSpellingHelp/useEmailSpellingHelp'
 import { SNACK_BAR_TIME_OUT_LONG } from 'ui/components/snackBar/SnackBarContext'
 
@@ -85,6 +85,8 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
+const user = userEvent.setup()
+
 describe('<Login/>', () => {
   beforeEach(() => {
     setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_GOOGLE_SSO])
@@ -119,7 +121,7 @@ describe('<Login/>', () => {
     await screen.findByText('Connecte-toi')
 
     await fillInputs()
-    await act(() => fireEvent.press(screen.getByText('Se connecter')))
+    await user.press(screen.getByText('Se connecter'))
 
     expect(apiSignInSpy).toHaveBeenCalledWith(
       {
@@ -146,7 +148,7 @@ describe('<Login/>', () => {
 
     renderLogin()
 
-    await act(async () => fireEvent.press(await screen.findByTestId('Se connecter avec Google')))
+    await user.press(await screen.findByTestId('Se connecter avec Google'))
 
     expect(apiPostGoogleAuthorize).toHaveBeenCalledWith({
       authorizationCode: 'mockServerAuthCode',
@@ -172,7 +174,7 @@ describe('<Login/>', () => {
 
     renderLogin()
 
-    await act(async () => fireEvent.press(await screen.findByTestId('Se connecter avec Google')))
+    await user.press(await screen.findByTestId('Se connecter avec Google'))
 
     expect(mockShowErrorSnackBar).toHaveBeenCalledWith({
       message:
@@ -196,7 +198,7 @@ describe('<Login/>', () => {
 
     renderLogin()
 
-    await act(async () => fireEvent.press(await screen.findByTestId('Se connecter avec Google')))
+    await user.press(await screen.findByTestId('Se connecter avec Google'))
 
     expect(navigate).toHaveBeenCalledWith('SignupForm', {
       accountCreationToken: 'accountCreationToken',
@@ -225,7 +227,7 @@ describe('<Login/>', () => {
     const recaptchaWebviewModal = screen.queryByTestId('recaptcha-webview-modal')
 
     await fillInputs()
-    await act(() => fireEvent.press(screen.getByText('Se connecter')))
+    await user.press(screen.getByText('Se connecter'))
 
     expect(recaptchaWebviewModal).not.toBeOnTheScreen()
   })
@@ -234,7 +236,7 @@ describe('<Login/>', () => {
     renderLogin()
 
     await fillInputs()
-    await act(() => fireEvent.press(screen.getByText('Se connecter')))
+    await user.press(screen.getByText('Se connecter'))
 
     expect(BatchProfile.identify).toHaveBeenCalledWith(FAKE_USER_ID.toString())
     expect(firebaseAnalytics.setUserId).toHaveBeenCalledWith(FAKE_USER_ID)
@@ -255,7 +257,7 @@ describe('<Login/>', () => {
     renderLogin()
 
     await fillInputs()
-    await act(() => fireEvent.press(screen.getByText('Se connecter')))
+    await user.press(screen.getByText('Se connecter'))
 
     expect(navigate).toHaveBeenNthCalledWith(1, 'CulturalSurveyIntro')
   })
@@ -272,7 +274,7 @@ describe('<Login/>', () => {
     renderLogin()
 
     await fillInputs()
-    await act(() => fireEvent.press(screen.getByText('Se connecter')))
+    await user.press(screen.getByText('Se connecter'))
 
     expect(navigateToHome).toHaveBeenCalledTimes(1)
   })
@@ -286,7 +288,7 @@ describe('<Login/>', () => {
     renderLogin()
 
     await fillInputs()
-    await act(() => fireEvent.press(screen.getByText('Se connecter')))
+    await user.press(screen.getByText('Se connecter'))
 
     expect(navigateToHome).toHaveBeenCalledTimes(1)
   })
@@ -299,7 +301,7 @@ describe('<Login/>', () => {
     renderLogin()
 
     await fillInputs()
-    await act(() => fireEvent.press(screen.getByText('Se connecter')))
+    await user.press(screen.getByText('Se connecter'))
 
     expect(navigate).toHaveBeenCalledWith('EighteenBirthday')
   })
@@ -313,7 +315,7 @@ describe('<Login/>', () => {
     renderLogin()
 
     await fillInputs()
-    await act(() => fireEvent.press(screen.getByText('Se connecter')))
+    await user.press(screen.getByText('Se connecter'))
 
     expect(navigate).toHaveBeenNthCalledWith(1, 'RecreditBirthdayNotification')
   })
@@ -327,7 +329,7 @@ describe('<Login/>', () => {
     renderLogin()
 
     await fillInputs()
-    await act(() => fireEvent.press(screen.getByText('Se connecter')))
+    await user.press(screen.getByText('Se connecter'))
 
     expect(navigate).toHaveBeenCalledWith('EighteenBirthday')
   })
@@ -337,7 +339,7 @@ describe('<Login/>', () => {
     renderLogin()
 
     await fillInputs()
-    await act(() => fireEvent.press(screen.getByText('Se connecter')))
+    await user.press(screen.getByText('Se connecter'))
 
     expect(navigate).toHaveBeenNthCalledWith(1, 'SignupConfirmationEmailSent', {
       email: 'email@gmail.com',
@@ -349,7 +351,7 @@ describe('<Login/>', () => {
     renderLogin()
 
     await fillInputs()
-    await act(() => fireEvent.press(screen.getByText('Se connecter')))
+    await user.press(screen.getByText('Se connecter'))
 
     expect(navigate).toHaveBeenNthCalledWith(1, 'AccountStatusScreenHandler')
   })
@@ -359,7 +361,7 @@ describe('<Login/>', () => {
     renderLogin()
 
     await fillInputs()
-    await act(() => fireEvent.press(screen.getByText('Se connecter')))
+    await user.press(screen.getByText('Se connecter'))
 
     expect(navigate).toHaveBeenNthCalledWith(1, 'AccountStatusScreenHandler')
   })
@@ -369,7 +371,7 @@ describe('<Login/>', () => {
     renderLogin()
 
     await fillInputs()
-    await act(() => fireEvent.press(screen.getByText('Se connecter')))
+    await user.press(screen.getByText('Se connecter'))
 
     expect(navigate).toHaveBeenNthCalledWith(1, 'AccountStatusScreenHandler')
   })
@@ -379,7 +381,7 @@ describe('<Login/>', () => {
     renderLogin()
 
     await fillInputs()
-    await act(() => fireEvent.press(screen.getByText('Se connecter')))
+    await user.press(screen.getByText('Se connecter'))
 
     expect(navigate).toHaveBeenNthCalledWith(1, 'AccountStatusScreenHandler')
   })
@@ -389,7 +391,7 @@ describe('<Login/>', () => {
     renderLogin()
 
     await fillInputs()
-    await act(() => fireEvent.press(screen.getByText('Se connecter')))
+    await user.press(screen.getByText('Se connecter'))
 
     expect(navigate).toHaveBeenNthCalledWith(1, 'AccountStatusScreenHandler')
   })
@@ -399,7 +401,7 @@ describe('<Login/>', () => {
     renderLogin()
 
     await fillInputs()
-    await act(() => fireEvent.press(screen.getByText('Se connecter')))
+    await user.press(screen.getByText('Se connecter'))
 
     const errorMessage = screen.getByText('Ton compte à été supprimé')
 
@@ -411,7 +413,7 @@ describe('<Login/>', () => {
     renderLogin()
 
     await fillInputs()
-    await act(() => fireEvent.press(screen.getByText('Se connecter')))
+    await user.press(screen.getByText('Se connecter'))
 
     const errorMessage = screen.getByText('Ton compte à été supprimé')
 
@@ -438,7 +440,7 @@ describe('<Login/>', () => {
     renderLogin()
 
     await fillInputs()
-    await act(() => fireEvent.press(screen.getByText('Se connecter')))
+    await user.press(screen.getByText('Se connecter'))
 
     expect(screen.getByText('E-mail ou mot de passe incorrect')).toBeOnTheScreen()
     expect(navigate).not.toHaveBeenCalled()
@@ -452,7 +454,7 @@ describe('<Login/>', () => {
     renderLogin()
 
     await fillInputs()
-    await act(() => fireEvent.press(screen.getByText('Se connecter')))
+    await user.press(screen.getByText('Se connecter'))
 
     expect(
       screen.getByText('Erreur réseau. Tu peux réessayer une fois la connexion réétablie')
@@ -465,7 +467,7 @@ describe('<Login/>', () => {
     renderLogin()
 
     await fillInputs()
-    await act(() => fireEvent.press(screen.getByText('Se connecter')))
+    await user.press(screen.getByText('Se connecter'))
 
     expect(
       screen.getByText('Nombre de tentatives dépassé. Réessaye dans 1 minute')
@@ -497,9 +499,7 @@ describe('<Login/>', () => {
     renderLogin()
 
     const signupButton = screen.getByText('Créer un compte')
-    await act(async () => {
-      fireEvent.press(signupButton)
-    })
+    await user.press(signupButton)
 
     expect(analytics.logSignUpClicked).toHaveBeenNthCalledWith(1, { from: 'login' })
   })
@@ -509,7 +509,7 @@ describe('<Login/>', () => {
     await screen.findByText('Connecte-toi')
 
     await fillInputs()
-    await act(() => fireEvent.press(screen.getByText('Se connecter')))
+    await user.press(screen.getByText('Se connecter'))
 
     expect(analytics.logLogin).toHaveBeenCalledWith({ method: 'fromLogin', type: undefined })
   })
@@ -523,7 +523,7 @@ describe('<Login/>', () => {
 
     renderLogin()
 
-    await act(async () => fireEvent.press(await screen.findByTestId('Se connecter avec Google')))
+    await user.press(await screen.findByTestId('Se connecter avec Google'))
 
     expect(analytics.logLogin).toHaveBeenCalledWith({ method: 'fromLogin', type: 'SSO_login' })
   })
@@ -567,9 +567,7 @@ describe('<Login/>', () => {
     it('should redirect to Offer page when signin is successful', async () => {
       renderLogin()
       await fillInputs()
-      await act(async () => {
-        fireEvent.press(screen.getByText('Se connecter'))
-      })
+      await user.press(screen.getByText('Se connecter'))
 
       expect(navigate).toHaveBeenNthCalledWith(1, 'Offer', {
         id: OFFER_ID,
@@ -581,9 +579,7 @@ describe('<Login/>', () => {
 
       renderLogin()
       await fillInputs()
-      await act(async () => {
-        fireEvent.press(screen.getByText('Se connecter'))
-      })
+      await user.press(screen.getByText('Se connecter'))
 
       expect(apiPostFavoriteSpy).toHaveBeenCalledTimes(1)
     })
@@ -593,9 +589,7 @@ describe('<Login/>', () => {
       renderLogin()
 
       await fillInputs()
-      await act(async () => {
-        fireEvent.press(screen.getByText('Se connecter'))
-      })
+      await user.press(screen.getByText('Se connecter'))
 
       expect(analytics.logHasAddedOfferToFavorites).toHaveBeenCalledWith({
         from: 'login',
@@ -612,9 +606,7 @@ describe('<Login/>', () => {
       renderLogin()
 
       await fillInputs()
-      await act(async () => {
-        fireEvent.press(screen.getByText('Se connecter'))
-      })
+      await user.press(screen.getByText('Se connecter'))
 
       expect(navigate).toHaveBeenCalledWith('CulturalSurveyIntro')
     })
@@ -631,9 +623,7 @@ describe('<Login/>', () => {
       renderLogin()
 
       await fillInputs()
-      await act(async () => {
-        fireEvent.press(screen.getByText('Se connecter'))
-      })
+      await user.press(screen.getByText('Se connecter'))
 
       expect(navigate).toHaveBeenNthCalledWith(1, 'Offer', {
         id: OFFER_ID,
@@ -662,7 +652,7 @@ describe('<Login/>', () => {
       expect(screen.queryByTestId('recaptcha-webview-modal')).not.toBeOnTheScreen()
 
       await fillInputs()
-      await act(() => fireEvent.press(screen.getByText('Se connecter')))
+      await user.press(screen.getByText('Se connecter'))
 
       expect(screen.getByTestId('recaptcha-webview-modal')).toBeOnTheScreen()
     })
@@ -671,7 +661,7 @@ describe('<Login/>', () => {
       renderLogin()
 
       await fillInputs()
-      await act(() => fireEvent.press(screen.getByText('Se connecter')))
+      await user.press(screen.getByText('Se connecter'))
 
       expect(screen.getByText('Se connecter')).toBeDisabled()
     })
@@ -680,7 +670,7 @@ describe('<Login/>', () => {
       renderLogin()
 
       await fillInputs()
-      await act(() => fireEvent.press(screen.getByText('Se connecter')))
+      await user.press(screen.getByText('Se connecter'))
 
       const recaptchaWebview = screen.getByTestId('recaptcha-webview')
       await simulateWebviewMessage(
@@ -707,7 +697,7 @@ describe('<Login/>', () => {
       renderLogin()
 
       await fillInputs()
-      await act(() => fireEvent.press(screen.getByText('Se connecter')))
+      await user.press(screen.getByText('Se connecter'))
 
       const recaptchaWebview = screen.getByTestId('recaptcha-webview')
       await simulateWebviewMessage(recaptchaWebview, UnknownErrorFixture)
@@ -719,7 +709,7 @@ describe('<Login/>', () => {
       renderLogin()
 
       await fillInputs()
-      await act(() => fireEvent.press(screen.getByText('Se connecter')))
+      await user.press(screen.getByText('Se connecter'))
 
       const recaptchaWebview = screen.getByTestId('recaptcha-webview')
       await simulateWebviewMessage(recaptchaWebview, UnknownErrorFixture)
@@ -731,7 +721,7 @@ describe('<Login/>', () => {
       renderLogin()
 
       await fillInputs()
-      await act(() => fireEvent.press(screen.getByText('Se connecter')))
+      await user.press(screen.getByText('Se connecter'))
 
       const recaptchaWebview = screen.getByTestId('recaptcha-webview')
       await simulateWebviewMessage(recaptchaWebview, UnknownErrorFixture)
@@ -746,7 +736,7 @@ describe('<Login/>', () => {
       renderLogin()
 
       await fillInputs()
-      await act(() => fireEvent.press(screen.getByText('Se connecter')))
+      await user.press(screen.getByText('Se connecter'))
 
       const recaptchaWebview = screen.getByTestId('recaptcha-webview')
       await simulateWebviewMessage(recaptchaWebview, NetworkErrorFixture)
@@ -758,7 +748,7 @@ describe('<Login/>', () => {
       renderLogin()
 
       await fillInputs()
-      await act(() => fireEvent.press(screen.getByText('Se connecter')))
+      await user.press(screen.getByText('Se connecter'))
 
       const recaptchaWebview = screen.getByTestId('recaptcha-webview')
       await simulateWebviewMessage(recaptchaWebview, NetworkErrorFixture)
@@ -774,7 +764,7 @@ describe('<Login/>', () => {
       renderLogin()
 
       await fillInputs()
-      await act(() => fireEvent.press(screen.getByText('Se connecter')))
+      await user.press(screen.getByText('Se connecter'))
 
       const recaptchaWebview = screen.getByTestId('recaptcha-webview')
       await simulateWebviewMessage(recaptchaWebview, '{ "message": "expire" }')
@@ -786,7 +776,7 @@ describe('<Login/>', () => {
       renderLogin()
 
       await fillInputs()
-      await act(() => fireEvent.press(screen.getByText('Se connecter')))
+      await user.press(screen.getByText('Se connecter'))
 
       const recaptchaWebview = screen.getByTestId('recaptcha-webview')
       await simulateWebviewMessage(recaptchaWebview, '{ "message": "expire" }')
@@ -798,7 +788,7 @@ describe('<Login/>', () => {
       renderLogin()
 
       await fillInputs()
-      await act(() => fireEvent.press(screen.getByText('Se connecter')))
+      await user.press(screen.getByText('Se connecter'))
 
       const recaptchaWebview = screen.getByTestId('recaptcha-webview')
       await simulateWebviewMessage(recaptchaWebview, `{ "message": "${reason}" }`)

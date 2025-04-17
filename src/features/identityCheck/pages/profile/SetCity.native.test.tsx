@@ -7,11 +7,11 @@ import { SetCity } from 'features/identityCheck/pages/profile/SetCity'
 import { SubscriptionRootStackParamList } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
 import { mockedSuggestedCities } from 'libs/place/fixtures/mockedSuggestedCities'
-import { CitiesResponse, CITIES_API_URL } from 'libs/place/useCities'
+import { CITIES_API_URL, CitiesResponse } from 'libs/place/useCities'
 import { storage } from 'libs/storage'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
+import { act, fireEvent, render, screen, userEvent } from 'tests/utils'
 
 jest.mock('libs/subcategories/useSubcategory')
 jest.mock('libs/network/NetInfoWrapper')
@@ -23,6 +23,10 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
     return Component
   }
 })
+
+const user = userEvent.setup()
+
+jest.useFakeTimers()
 
 describe('<SetCity/>', () => {
   it('should render correctly', () => {
@@ -54,17 +58,12 @@ describe('<SetCity/>', () => {
     })
 
     await screen.findByText(city.nom)
-    await act(async () => {
-      fireEvent.press(screen.getByText(city.nom))
-    })
-    await act(async () => {
-      fireEvent.press(screen.getByText('Continuer'))
-    })
+    await user.press(screen.getByText(city.nom))
 
-    await waitFor(async () => {
-      expect(navigate).toHaveBeenNthCalledWith(1, 'SetAddress', {
-        type: ProfileTypes.IDENTITY_CHECK,
-      })
+    await user.press(screen.getByText('Continuer'))
+
+    expect(navigate).toHaveBeenNthCalledWith(1, 'SetAddress', {
+      type: ProfileTypes.IDENTITY_CHECK,
     })
   })
 
@@ -79,17 +78,12 @@ describe('<SetCity/>', () => {
     })
 
     await screen.findByText(city.nom)
-    await act(async () => {
-      fireEvent.press(screen.getByText(city.nom))
-    })
-    await act(async () => {
-      fireEvent.press(screen.getByText('Continuer'))
-    })
+    await user.press(screen.getByText(city.nom))
 
-    await waitFor(async () => {
-      expect(navigate).toHaveBeenNthCalledWith(1, 'SetAddress', {
-        type: ProfileTypes.BOOKING_FREE_OFFER_15_16,
-      })
+    await user.press(screen.getByText('Continuer'))
+
+    expect(navigate).toHaveBeenNthCalledWith(1, 'SetAddress', {
+      type: ProfileTypes.BOOKING_FREE_OFFER_15_16,
     })
   })
 
@@ -103,23 +97,14 @@ describe('<SetCity/>', () => {
       fireEvent.changeText(input, POSTAL_CODE)
     })
 
-    await screen.findByText(city.nom)
-    await act(async () => {
-      const cityInput = screen.getByText(city.nom)
-      fireEvent.press(cityInput)
-    })
+    await user.press(screen.getByText(city.nom))
 
-    await act(async () => {
-      const continueButton = screen.getByText('Continuer')
-      fireEvent.press(continueButton)
-    })
+    await user.press(screen.getByText('Continuer'))
 
-    await waitFor(async () => {
-      expect(await storage.readObject('profile-city')).toMatchObject({
-        state: {
-          city: { name: city.nom, code: city.code, postalCode: POSTAL_CODE },
-        },
-      })
+    expect(await storage.readObject('profile-city')).toMatchObject({
+      state: {
+        city: { name: city.nom, code: city.code, postalCode: POSTAL_CODE },
+      },
     })
   })
 
@@ -133,20 +118,11 @@ describe('<SetCity/>', () => {
       fireEvent.changeText(input, POSTAL_CODE)
     })
 
-    await screen.findByText(city.nom)
-    await act(async () => {
-      const cityInput = screen.getByText(city.nom)
-      fireEvent.press(cityInput)
-    })
+    await user.press(screen.getByText(city.nom))
 
-    await act(async () => {
-      const ContinueButton = screen.getByText('Continuer')
-      fireEvent.press(ContinueButton)
-    })
+    await user.press(screen.getByText('Continuer'))
 
-    await waitFor(() => {
-      expect(analytics.logSetPostalCodeClicked).toHaveBeenCalledTimes(1)
-    })
+    expect(analytics.logSetPostalCodeClicked).toHaveBeenCalledTimes(1)
   })
 })
 

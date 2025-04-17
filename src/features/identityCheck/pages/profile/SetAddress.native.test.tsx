@@ -16,7 +16,7 @@ import { Properties } from 'libs/place/types'
 import { storage } from 'libs/storage'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render, waitFor, screen } from 'tests/utils'
+import { fireEvent, render, screen, userEvent, waitFor } from 'tests/utils'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 const QUERY_ADDRESS = '1 rue Poissonnière'
@@ -36,6 +36,10 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
     return Component
   }
 })
+
+const user = userEvent.setup()
+
+jest.useFakeTimers()
 
 describe('<SetAddress/>', () => {
   beforeEach(() => {
@@ -89,14 +93,11 @@ describe('<SetAddress/>', () => {
     const input = screen.getByPlaceholderText('Ex\u00a0: 34 avenue de l’Opéra')
     fireEvent.changeText(input, QUERY_ADDRESS)
 
-    await screen.findByText(mockedSuggestedPlaces.features[1].properties.label)
-    fireEvent.press(screen.getByText(mockedSuggestedPlaces.features[1].properties.label))
-    fireEvent.press(screen.getByText('Continuer'))
+    await user.press(await screen.findByText(mockedSuggestedPlaces.features[1].properties.label))
+    await user.press(screen.getByText('Continuer'))
 
-    await waitFor(() => {
-      expect(navigate).toHaveBeenNthCalledWith(1, 'SetStatus', {
-        type: ProfileTypes.IDENTITY_CHECK,
-      })
+    expect(navigate).toHaveBeenNthCalledWith(1, 'SetStatus', {
+      type: ProfileTypes.IDENTITY_CHECK,
     })
   })
 
@@ -106,16 +107,13 @@ describe('<SetAddress/>', () => {
     const input = screen.getByPlaceholderText('Ex\u00a0: 34 avenue de l’Opéra')
     fireEvent.changeText(input, QUERY_ADDRESS)
 
-    await screen.findByText(mockedSuggestedPlaces.features[1].properties.label)
-    fireEvent.press(screen.getByText(mockedSuggestedPlaces.features[1].properties.label))
-    fireEvent.press(screen.getByText('Continuer'))
+    await user.press(await screen.findByText(mockedSuggestedPlaces.features[1].properties.label))
+    await user.press(screen.getByText('Continuer'))
 
-    await waitFor(async () => {
-      expect(await storage.readObject('profile-address')).toMatchObject({
-        state: {
-          address: mockedSuggestedPlaces.features[1].properties.label,
-        },
-      })
+    expect(await storage.readObject('profile-address')).toMatchObject({
+      state: {
+        address: mockedSuggestedPlaces.features[1].properties.label,
+      },
     })
   })
 
@@ -125,11 +123,9 @@ describe('<SetAddress/>', () => {
     const input = screen.getByPlaceholderText('Ex\u00a0: 34 avenue de l’Opéra')
     fireEvent.changeText(input, QUERY_ADDRESS)
 
-    fireEvent.press(screen.getByText('Continuer'))
+    await user.press(screen.getByText('Continuer'))
 
-    await screen.findByText('Recherche et sélectionne ton adresse')
-
-    await waitFor(() => expect(analytics.logSetAddressClicked).toHaveBeenCalledTimes(1))
+    expect(analytics.logSetAddressClicked).toHaveBeenCalledTimes(1)
   })
 })
 

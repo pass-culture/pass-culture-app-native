@@ -13,7 +13,7 @@ import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/
 import { mockAuthContextWithoutUser, mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
+import { fireEvent, render, screen, userEvent, waitFor } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 
 jest.mock('libs/network/NetInfoWrapper')
@@ -72,6 +72,8 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
+const user = userEvent.setup()
+
 describe('<OfferCTAButton />', () => {
   beforeEach(() => {
     mockAuthContextWithoutUser({ persist: true })
@@ -98,7 +100,7 @@ describe('<OfferCTAButton />', () => {
   it('should display authentication modal when clicking on "Réserver l’offre"', async () => {
     renderOfferCTAButton(offerNotEventCTAButtonProps)
 
-    fireEvent.press(await screen.findByText('Réserver l’offre'))
+    await user.press(screen.getByText('Réserver l’offre'))
 
     expect(screen.getByText('Identifie-toi pour réserver l’offre')).toBeOnTheScreen()
   })
@@ -106,7 +108,7 @@ describe('<OfferCTAButton />', () => {
   it('should log analytics when display authentication modal', async () => {
     renderOfferCTAButton(offerNotEventCTAButtonProps)
 
-    fireEvent.press(await screen.findByText('Réserver l’offre'))
+    await user.press(screen.getByText('Réserver l’offre'))
 
     expect(analytics.logConsultAuthenticationModal).toHaveBeenNthCalledWith(1, offerId)
   })
@@ -140,7 +142,7 @@ describe('<OfferCTAButton />', () => {
 
     renderOfferCTAButton(offerNotEventCTAButtonProps)
 
-    fireEvent.press(screen.getByText('Réserver l’offre'))
+    await user.press(screen.getByText('Réserver l’offre'))
 
     expect(await screen.findByText('Réservation impossible')).toBeOnTheScreen()
   })
@@ -181,6 +183,7 @@ describe('<OfferCTAButton />', () => {
           subcategory: mockSubcategoryNotEvent,
         })
 
+        // userEvent.press not working correctly here
         fireEvent.press(screen.getByText('Accéder à l’offre en ligne'))
 
         await waitFor(() => {
@@ -197,7 +200,7 @@ describe('<OfferCTAButton />', () => {
           subcategory: mockSubcategoryNotEvent,
         })
 
-        fireEvent.press(screen.getByText('Accéder à l’offre en ligne'))
+        await user.press(screen.getByText('Accéder à l’offre en ligne'))
 
         await waitFor(() => {
           expect(mockedOpenUrl).toHaveBeenNthCalledWith(1, 'https://www.google.fr/')
@@ -212,6 +215,7 @@ describe('<OfferCTAButton />', () => {
           offer: { ...offerResponseSnap, ...offerDigitalAndFree },
         })
 
+        // userEvent.press not working correctly here
         fireEvent.press(screen.getByText('Accéder à l’offre en ligne'))
 
         jest.advanceTimersByTime(500)
@@ -232,11 +236,9 @@ describe('<OfferCTAButton />', () => {
           offer: { ...offerResponseSnap, ...offerDigitalAndFree },
         })
 
-        fireEvent.press(await screen.findByText('Accéder à l’offre en ligne'))
+        await user.press(screen.getByText('Accéder à l’offre en ligne'))
 
-        await waitFor(() => {
-          expect(mockShowErrorSnackBar).not.toHaveBeenCalled()
-        })
+        expect(mockShowErrorSnackBar).not.toHaveBeenCalled()
       })
     })
 
@@ -262,7 +264,7 @@ describe('<OfferCTAButton />', () => {
           offer: { ...offerResponseSnap, ...offerDigitalAndFree },
         })
 
-        fireEvent.press(await screen.findByText('Accéder à l’offre en ligne'))
+        await user.press(screen.getByText('Accéder à l’offre en ligne'))
 
         expect(mockedOpenUrl).not.toHaveBeenCalled()
       })
@@ -275,7 +277,7 @@ describe('<OfferCTAButton />', () => {
           offer: { ...offerResponseSnap, ...offerDigitalAndFree },
         })
 
-        fireEvent.press(await screen.findByText('Accéder à l’offre en ligne'))
+        await user.press(screen.getByText('Accéder à l’offre en ligne'))
 
         expect(analytics.logBookingConfirmation).not.toHaveBeenCalled()
       })
@@ -299,9 +301,7 @@ describe('<OfferCTAButton />', () => {
         offer: { ...offerResponseSnap, ...offerDigitalAndFree },
       })
 
-      await act(async () => {
-        fireEvent.press(screen.getByText('Accéder à l’offre en ligne'))
-      })
+      await user.press(screen.getByText('Accéder à l’offre en ligne'))
 
       expect(mockShowErrorSnackBar).toHaveBeenNthCalledWith(1, {
         message: 'Désolé, il est impossible d’ouvrir le lien. Réessaie plus tard.',
@@ -340,9 +340,8 @@ describe('<OfferCTAButton />', () => {
         offer: { ...offerResponseSnap, ...offerDigitalAndFree },
       })
       const bookingOfferButton = screen.getByText('Accéder à l’offre en ligne')
-      await act(async () => {
-        fireEvent.press(bookingOfferButton)
-      })
+
+      await user.press(bookingOfferButton)
 
       expect(mockedOpenUrl).toHaveBeenCalledTimes(1)
     })
@@ -361,9 +360,8 @@ describe('<OfferCTAButton />', () => {
           offer: { ...offerResponseSnap, ...offerDigitalAndFree },
         })
         const bookingOfferButton = screen.getByText('Voir ma réservation')
-        await act(async () => {
-          fireEvent.press(bookingOfferButton)
-        })
+
+        await user.press(bookingOfferButton)
 
         expect(screen.queryByText('Valider la date')).not.toBeOnTheScreen()
       })

@@ -7,7 +7,7 @@ import { paginatedFavoritesResponseSnap } from 'features/favorites/fixtures/pagi
 import { AddToFavoritesButton } from 'features/offer/components/AddToFavoritesButton/AddToFavoritesButton'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render, screen, waitFor } from 'tests/utils'
+import { render, screen, userEvent, waitFor } from 'tests/utils'
 
 jest.mock('libs/network/NetInfoWrapper')
 
@@ -15,6 +15,10 @@ jest.mock('libs/jwt/jwt')
 jest.mock('features/auth/context/AuthContext')
 
 const postFavoritesSpy = jest.spyOn(api, 'postNativeV1MeFavorites')
+
+const user = userEvent.setup()
+
+jest.useFakeTimers()
 
 describe('<AddToFavoriteButton />', () => {
   beforeEach(() => {
@@ -40,11 +44,9 @@ describe('<AddToFavoriteButton />', () => {
       offerId: favoriteResponseSnap.offer.id,
     })
 
-    fireEvent.press(screen.getByText('Mettre en favori'))
+    await user.press(screen.getByText('Mettre en favori'))
 
-    await waitFor(() => {
-      expect(postFavoritesSpy).toHaveBeenCalledTimes(1)
-    })
+    expect(postFavoritesSpy).toHaveBeenCalledTimes(1)
   })
 })
 

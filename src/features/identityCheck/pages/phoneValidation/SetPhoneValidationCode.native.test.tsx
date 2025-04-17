@@ -3,13 +3,13 @@ import React from 'react'
 import { dispatch, navigate } from '__mocks__/@react-navigation/native'
 import { ApiError } from 'api/ApiError'
 import {
-  hasCodeCorrectFormat,
   SetPhoneValidationCode,
+  hasCodeCorrectFormat,
 } from 'features/identityCheck/pages/phoneValidation/SetPhoneValidationCode'
 import { analytics } from 'libs/analytics/provider'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
+import { act, fireEvent, render, screen, userEvent, waitFor } from 'tests/utils'
 
 jest.mock('libs/jwt/jwt')
 
@@ -39,6 +39,10 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
     return Component
   }
 })
+
+const user = userEvent.setup()
+
+jest.useFakeTimers()
 
 describe('SetPhoneValidationCode', () => {
   const mockFetch = jest.spyOn(global, 'fetch')
@@ -89,7 +93,7 @@ describe('SetPhoneValidationCode', () => {
 
     expect(screen.queryByText('Demander un autre code')).not.toBeOnTheScreen()
 
-    fireEvent.press(screen.getByText('Code non reçu\u00a0?'))
+    await user.press(screen.getByText('Code non reçu\u00a0?'))
 
     expect(screen.getByText('Demander un autre code')).toBeOnTheScreen()
   })
@@ -104,19 +108,16 @@ describe('SetPhoneValidationCode', () => {
     )
     renderSetPhoneValidationCode()
 
-    const continueButton = screen.getByTestId('Continuer')
     const input = screen.getByPlaceholderText('012345')
     fireEvent.changeText(input, '000000')
 
-    fireEvent.press(continueButton)
+    await user.press(screen.getByTestId('Continuer'))
 
-    await waitFor(() => {
-      expect(
-        screen.getByText(
-          'Le code est invalide. Saisis le dernier code reçu par SMS. Il te reste 4 tentatives.'
-        )
-      ).toBeOnTheScreen()
-    })
+    expect(
+      screen.getByText(
+        'Le code est invalide. Saisis le dernier code reçu par SMS. Il te reste 4 tentatives.'
+      )
+    ).toBeOnTheScreen()
   })
 
   it('should navigate to TooManyAttempts if too many attempts', async () => {
@@ -128,11 +129,10 @@ describe('SetPhoneValidationCode', () => {
     )
     renderSetPhoneValidationCode()
 
-    const continueButton = screen.getByTestId('Continuer')
     const input = screen.getByPlaceholderText('012345')
     fireEvent.changeText(input, '000000')
 
-    fireEvent.press(continueButton)
+    await user.press(screen.getByTestId('Continuer'))
 
     await waitFor(() => {
       expect(navigate).toHaveBeenCalledWith('PhoneValidationTooManyAttempts')
@@ -150,25 +150,21 @@ describe('SetPhoneValidationCode', () => {
     )
     renderSetPhoneValidationCode()
 
-    const continueButton = screen.getByTestId('Continuer')
     const input = screen.getByPlaceholderText('012345')
     fireEvent.changeText(input, '000000')
 
-    fireEvent.press(continueButton)
+    await user.press(screen.getByTestId('Continuer'))
 
-    await waitFor(() => {
-      expect(dispatch).toHaveBeenCalledWith({
-        payload: { index: 1, routes: [{ name: 'TabNavigator' }, { name: 'Stepper' }] },
-        type: 'RESET',
-      })
+    expect(dispatch).toHaveBeenCalledWith({
+      payload: { index: 1, routes: [{ name: 'TabNavigator' }, { name: 'Stepper' }] },
+      type: 'RESET',
     })
   })
 
   it('should log event when pressing "Code non reçu ?" button', async () => {
     renderSetPhoneValidationCode()
-    const button = screen.getByText('Code non reçu ?')
 
-    fireEvent.press(button)
+    await user.press(screen.getByText('Code non reçu ?'))
 
     expect(analytics.logHasClickedMissingCode).toHaveBeenCalledTimes(1)
   })
@@ -176,20 +172,15 @@ describe('SetPhoneValidationCode', () => {
   it('should log analytics on press continue', async () => {
     renderSetPhoneValidationCode()
 
-    const continueButton = screen.getByTestId('Continuer')
     const input = screen.getByPlaceholderText('012345')
 
     await act(async () => {
       fireEvent.changeText(input, '000000')
     })
 
-    await act(async () => {
-      fireEvent.press(continueButton)
-    })
+    await user.press(screen.getByTestId('Continuer'))
 
-    await waitFor(() => {
-      expect(analytics.logPhoneValidationCodeClicked).toHaveBeenCalledTimes(1)
-    })
+    expect(analytics.logPhoneValidationCodeClicked).toHaveBeenCalledTimes(1)
   })
 })
 

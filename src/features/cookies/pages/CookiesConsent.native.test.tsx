@@ -14,7 +14,7 @@ import * as PackageJson from 'libs/packageJson'
 import { storage } from 'libs/storage'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render, screen } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 
 jest.mock('libs/campaign')
 jest.mock('libs/react-native-device-info/getDeviceId')
@@ -63,10 +63,15 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
+const user = userEvent.setup()
+
+jest.useFakeTimers()
+
 describe('<CookiesConsent/>', () => {
   beforeEach(() => {
     storage.clear(COOKIES_CONSENT_KEY)
     mockServer.postApi<EmptyResponse>('/v1/cookies_consent', {})
+    mockdate.set(Today)
   })
 
   it('should render correctly', async () => {
@@ -80,11 +85,8 @@ describe('<CookiesConsent/>', () => {
   describe('accept all cookies', () => {
     it('should persist cookies consent information', async () => {
       renderCookiesConsent()
-      const acceptAllButton = screen.getByText('Tout accepter')
 
-      await act(async () => {
-        fireEvent.press(acceptAllButton)
-      })
+      await user.press(screen.getByText('Tout accepter'))
 
       const storageContent = {
         buildVersion,
@@ -102,55 +104,40 @@ describe('<CookiesConsent/>', () => {
 
     it('should enable tracking', async () => {
       renderCookiesConsent()
-      const acceptAllButton = screen.getByText('Tout accepter')
 
-      await act(async () => {
-        fireEvent.press(acceptAllButton)
-      })
+      await user.press(screen.getByText('Tout accepter'))
 
       expect(mockStartTracking).toHaveBeenCalledWith(true)
     })
 
     it('should log analytics', async () => {
       renderCookiesConsent()
-      const acceptAllButton = screen.getByText('Tout accepter')
 
-      await act(async () => {
-        fireEvent.press(acceptAllButton)
-      })
+      await user.press(screen.getByText('Tout accepter'))
 
       expect(analytics.logHasAcceptedAllCookies).toHaveBeenCalledTimes(1)
     })
 
     it('should init AppsFlyer', async () => {
       renderCookiesConsent()
-      const acceptAllButton = screen.getByText('Tout accepter')
 
-      await act(async () => {
-        fireEvent.press(acceptAllButton)
-      })
+      await user.press(screen.getByText('Tout accepter'))
 
       expect(campaignTracker.init).toHaveBeenNthCalledWith(1, true)
     })
 
     it('should save UTM params', async () => {
       renderCookiesConsent()
-      const acceptAllButton = screen.getByText('Tout accepter')
 
-      await act(async () => {
-        fireEvent.press(acceptAllButton)
-      })
+      await user.press(screen.getByText('Tout accepter'))
 
       expect(setMarketingParamsSpy).toHaveBeenNthCalledWith(1, UTM_PARAMS, ALL_OPTIONAL_COOKIES)
     })
 
     it('should hide modal', async () => {
       renderCookiesConsent()
-      const acceptAllButton = screen.getByText('Tout accepter')
 
-      await act(async () => {
-        fireEvent.press(acceptAllButton)
-      })
+      await user.press(screen.getByText('Tout accepter'))
 
       expect(hideModal).toHaveBeenCalledTimes(1)
     })
@@ -159,11 +146,8 @@ describe('<CookiesConsent/>', () => {
   describe('refuse all cookies', () => {
     it('should persist cookies consent information', async () => {
       renderCookiesConsent()
-      const declineAllButton = screen.getByText('Tout refuser')
 
-      await act(async () => {
-        fireEvent.press(declineAllButton)
-      })
+      await user.press(screen.getByText('Tout refuser'))
 
       const storageContent = {
         buildVersion,
@@ -181,44 +165,32 @@ describe('<CookiesConsent/>', () => {
 
     it('should disable tracking', async () => {
       renderCookiesConsent()
-      const declineAllButton = screen.getByText('Tout refuser')
 
-      await act(async () => {
-        fireEvent.press(declineAllButton)
-      })
+      await user.press(screen.getByText('Tout refuser'))
 
       expect(mockStartTracking).toHaveBeenCalledWith(false)
     })
 
     it('should not init AppsFlyer', async () => {
       renderCookiesConsent()
-      const declineAllButton = screen.getByText('Tout refuser')
 
-      await act(async () => {
-        fireEvent.press(declineAllButton)
-      })
+      await user.press(screen.getByText('Tout refuser'))
 
       expect(campaignTracker.init).not.toHaveBeenCalled()
     })
 
     it('should not set marketing params', async () => {
       renderCookiesConsent()
-      const declineAllButton = screen.getByText('Tout refuser')
 
-      await act(async () => {
-        fireEvent.press(declineAllButton)
-      })
+      await user.press(screen.getByText('Tout refuser'))
 
       expect(setMarketingParamsSpy).not.toHaveBeenCalled()
     })
 
     it('should hide modal', async () => {
       renderCookiesConsent()
-      const declineAllButton = screen.getByText('Tout refuser')
 
-      await act(async () => {
-        fireEvent.press(declineAllButton)
-      })
+      await user.press(screen.getByText('Tout refuser'))
 
       expect(hideModal).toHaveBeenCalledTimes(1)
     })
@@ -228,18 +200,13 @@ describe('<CookiesConsent/>', () => {
     it('should persist cookies consent information when user partially accepts cookies', async () => {
       renderCookiesConsent()
 
-      const chooseCookies = screen.getByText('Choisir les cookies')
-      fireEvent.press(chooseCookies)
+      await user.press(screen.getByText('Choisir les cookies'))
 
-      const performanceSwitch = screen.getByTestId(
-        'Interrupteur Enregistrer des statistiques de navigation'
+      await user.press(
+        screen.getByTestId('Interrupteur Enregistrer des statistiques de navigation')
       )
-      fireEvent.press(performanceSwitch)
 
-      const saveChoice = screen.getByText('Enregistrer mes choix')
-      await act(async () => {
-        fireEvent.press(saveChoice)
-      })
+      await user.press(screen.getByText('Enregistrer mes choix'))
 
       const storageContent = {
         buildVersion,
@@ -258,13 +225,9 @@ describe('<CookiesConsent/>', () => {
     it('should call startTrackingAcceptedCookies with empty array if all cookies are refused', async () => {
       renderCookiesConsent()
 
-      const chooseCookies = screen.getByText('Choisir les cookies')
-      fireEvent.press(chooseCookies)
+      await user.press(screen.getByText('Choisir les cookies'))
 
-      const saveChoice = screen.getByText('Enregistrer mes choix')
-      await act(async () => {
-        fireEvent.press(saveChoice)
-      })
+      await user.press(screen.getByText('Enregistrer mes choix'))
 
       expect(mockStartTrackingAcceptedCookies).toHaveBeenCalledWith([])
     })
@@ -272,18 +235,13 @@ describe('<CookiesConsent/>', () => {
     it('should call startTrackingAcceptedCookies with performance if performance cookies are accepted', async () => {
       renderCookiesConsent()
 
-      const chooseCookies = screen.getByText('Choisir les cookies')
-      fireEvent.press(chooseCookies)
+      await user.press(screen.getByText('Choisir les cookies'))
 
-      const performanceSwitch = screen.getByTestId(
-        'Interrupteur Enregistrer des statistiques de navigation'
+      await user.press(
+        screen.getByTestId('Interrupteur Enregistrer des statistiques de navigation')
       )
-      fireEvent.press(performanceSwitch)
 
-      const saveChoice = screen.getByText('Enregistrer mes choix')
-      await act(async () => {
-        fireEvent.press(saveChoice)
-      })
+      await user.press(screen.getByText('Enregistrer mes choix'))
 
       expect(mockStartTrackingAcceptedCookies).toHaveBeenCalledWith(COOKIES_BY_CATEGORY.performance)
     })
@@ -291,18 +249,13 @@ describe('<CookiesConsent/>', () => {
     it('should log analytics if performance cookies are accepted', async () => {
       renderCookiesConsent()
 
-      const chooseCookies = screen.getByText('Choisir les cookies')
-      fireEvent.press(chooseCookies)
+      await user.press(screen.getByText('Choisir les cookies'))
 
-      const performanceSwitch = screen.getByTestId(
-        'Interrupteur Enregistrer des statistiques de navigation'
+      await user.press(
+        screen.getByTestId('Interrupteur Enregistrer des statistiques de navigation')
       )
-      fireEvent.press(performanceSwitch)
 
-      const saveChoice = screen.getByText('Enregistrer mes choix')
-      await act(async () => {
-        fireEvent.press(saveChoice)
-      })
+      await user.press(screen.getByText('Enregistrer mes choix'))
 
       expect(analytics.logHasMadeAChoiceForCookies).toHaveBeenCalledWith({
         from: 'Modal',
@@ -313,13 +266,9 @@ describe('<CookiesConsent/>', () => {
     it('should call setMarketingParams with empty array when all cookies are refused', async () => {
       renderCookiesConsent()
 
-      const chooseCookies = screen.getByText('Choisir les cookies')
-      fireEvent.press(chooseCookies)
+      await user.press(screen.getByText('Choisir les cookies'))
 
-      const saveChoice = screen.getByText('Enregistrer mes choix')
-      await act(async () => {
-        fireEvent.press(saveChoice)
-      })
+      await user.press(screen.getByText('Enregistrer mes choix'))
 
       expect(setMarketingParamsSpy).toHaveBeenNthCalledWith(1, UTM_PARAMS, [])
     })
@@ -327,16 +276,11 @@ describe('<CookiesConsent/>', () => {
     it('should call setMarketingParams with customization cookies when they are accepted', async () => {
       renderCookiesConsent()
 
-      const chooseCookies = screen.getByText('Choisir les cookies')
-      fireEvent.press(chooseCookies)
+      await user.press(screen.getByText('Choisir les cookies'))
 
-      const customizationSwitch = screen.getByTestId('Interrupteur Personnaliser ta navigation')
-      fireEvent.press(customizationSwitch)
+      await user.press(screen.getByTestId('Interrupteur Personnaliser ta navigation'))
 
-      const saveChoice = screen.getByText('Enregistrer mes choix')
-      await act(async () => {
-        fireEvent.press(saveChoice)
-      })
+      await user.press(screen.getByText('Enregistrer mes choix'))
 
       expect(setMarketingParamsSpy).toHaveBeenNthCalledWith(
         1,
@@ -348,13 +292,9 @@ describe('<CookiesConsent/>', () => {
     it('should hide modale when user saves cookies choice', async () => {
       renderCookiesConsent()
 
-      const chooseCookies = screen.getByText('Choisir les cookies')
-      fireEvent.press(chooseCookies)
+      await user.press(screen.getByText('Choisir les cookies'))
 
-      const saveChoice = screen.getByText('Enregistrer mes choix')
-      await act(async () => {
-        fireEvent.press(saveChoice)
-      })
+      await user.press(screen.getByText('Enregistrer mes choix'))
 
       expect(hideModal).toHaveBeenCalledTimes(1)
     })

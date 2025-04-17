@@ -8,7 +8,7 @@ import { MaintenanceErrorPage } from 'features/maintenance/pages/MaintenanceErro
 import * as useGoBack from 'features/navigation/useGoBack'
 import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
-import { AsyncError, MonitoringError, ScreenError, LogTypeEnum } from 'libs/monitoring/errors'
+import { AsyncError, LogTypeEnum, MonitoringError, ScreenError } from 'libs/monitoring/errors'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { render, screen, userEvent } from 'tests/utils'
 
@@ -59,11 +59,10 @@ describe('AsyncErrorBoundary component', () => {
         resetErrorBoundary={jest.fn()}
       />
     )
-    const button = await screen.findByText('Réessayer')
 
     expect(retry).not.toHaveBeenCalled()
 
-    await user.press(button)
+    await user.press(screen.getByText('Réessayer'))
 
     expect(retry).toHaveBeenCalledTimes(1)
   })

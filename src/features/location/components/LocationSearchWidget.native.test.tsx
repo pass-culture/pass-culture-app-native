@@ -23,7 +23,9 @@ jest.mock('features/search/context/SearchWrapper', () => ({
     dispatch: jest.fn(),
   }),
 }))
+
 const user = userEvent.setup()
+
 jest.useFakeTimers()
 
 describe('LocationSearchWidget', () => {

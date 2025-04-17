@@ -8,7 +8,7 @@ import { getGeolocPosition } from 'libs/location/geolocation/getGeolocPosition/g
 import { requestGeolocPermission } from 'libs/location/geolocation/requestGeolocPermission/requestGeolocPermission'
 import { SuggestedPlace } from 'libs/place/types'
 import { MODAL_TO_HIDE_TIME, MODAL_TO_SHOW_TIME } from 'tests/constants'
-import { fireEvent, render, screen, act } from 'tests/utils'
+import { act, fireEvent, render, screen, userEvent } from 'tests/utils'
 
 jest.useFakeTimers()
 
@@ -47,6 +47,10 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
+const user = userEvent.setup()
+
+jest.useFakeTimers()
+
 describe('HomeLocationModal', () => {
   it('should render correctly if modal visible', async () => {
     renderHomeLocationModal()
@@ -65,16 +69,17 @@ describe('HomeLocationModal', () => {
     })
 
     const openLocationModalButton = screen.getByText('Choisir une localisation')
-    fireEvent.press(openLocationModalButton)
+    await user.press(openLocationModalButton)
 
     const searchInput = screen.getByTestId('styled-input-container')
     fireEvent.changeText(searchInput, mockPlaces[0].label)
 
     const suggestedPlace = await screen.findByText(mockPlaces[0].label)
+    // userEvent.press not working correctly here
     fireEvent.press(suggestedPlace)
 
     const validateButon = screen.getByText('Valider la localisation')
-    fireEvent.press(validateButon)
+    await user.press(validateButon)
 
     expect(analytics.logUserSetLocation).toHaveBeenCalledWith('home')
   })
@@ -85,7 +90,7 @@ describe('HomeLocationModal', () => {
       jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
     })
 
-    fireEvent.press(screen.getByLabelText('Fermer la modale'))
+    await user.press(screen.getByLabelText('Fermer la modale'))
 
     expect(hideModalMock).toHaveBeenCalledTimes(1)
   })
@@ -98,7 +103,7 @@ describe('HomeLocationModal', () => {
       jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
     })
     const geolocPositionButton = screen.getByText('Utiliser ma position actuelle')
-    fireEvent.press(geolocPositionButton)
+    await user.press(geolocPositionButton)
 
     expect(screen.getByText('Utiliser ma position actuelle')).toHaveStyle({ color: '#eb0055' })
   })
@@ -122,9 +127,7 @@ describe('HomeLocationModal', () => {
       jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
     })
 
-    await act(async () => {
-      fireEvent.press(screen.getByText('Utiliser ma position actuelle'))
-    })
+    await user.press(screen.getByText('Utiliser ma position actuelle'))
 
     expect(mockRequestGeolocPermission).toHaveBeenCalledTimes(1)
   })
@@ -133,6 +136,7 @@ describe('HomeLocationModal', () => {
     mockCheckGeolocPermission.mockResolvedValueOnce(GeolocPermissionState.NEVER_ASK_AGAIN)
     hideModalMock.mockImplementationOnce(() => {
       // simulate the modal closing
+      // userEvent.press not working correctly here
       fireEvent.press(screen.getByText('Close'))
     })
 
@@ -152,7 +156,7 @@ describe('HomeLocationModal', () => {
       jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
     })
 
-    fireEvent.press(screen.getByText('Utiliser ma position actuelle'))
+    await user.press(screen.getByText('Utiliser ma position actuelle'))
 
     expect(hideModalMock).toHaveBeenCalledTimes(1)
 
