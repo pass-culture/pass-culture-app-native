@@ -1,4 +1,5 @@
 import React, { useMemo } from 'react'
+import { Platform } from 'react-native'
 import styled from 'styled-components/native'
 
 import { UserProfileResponse } from 'api/gen'
@@ -19,11 +20,13 @@ type ProfileHeaderProps = {
   user?: UserProfileResponse
 }
 
+const isWeb = Platform.OS === 'web'
+
 export function ProfileHeader(props: ProfileHeaderProps) {
   const { featureFlags, user } = props
   const { isLoggedIn } = useAuthContext()
 
-  const shouldShowAchievementsBanner = user?.isBeneficiary
+  const shouldShowAchievementsBanner = !isWeb && user?.isBeneficiary
 
   const ProfileHeader = useMemo(() => {
     if (!isLoggedIn || !user) {

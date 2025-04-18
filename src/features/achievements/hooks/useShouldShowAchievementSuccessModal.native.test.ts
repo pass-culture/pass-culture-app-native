@@ -66,12 +66,4 @@ describe('useShouldShowAchievementSuccessModal', () => {
       }),
     ])
   })
-
-  it('should return an array even if there are achievements to show to the user', () => {
-    mockAuthContextWithUser({ ...beneficiaryUser, achievements })
-
-    const { result } = renderHook(useShouldShowAchievementSuccessModal)
-
-    expect(result.current.achievementsToShow).toEqual([])
-  })
 })

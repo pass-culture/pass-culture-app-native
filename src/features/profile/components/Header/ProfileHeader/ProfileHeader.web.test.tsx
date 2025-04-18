@@ -76,4 +76,17 @@ describe('ProfileHeader', () => {
 
     expect(screen.getByText('Ton crédit a expiré le')).toBeInTheDocument()
   })
+
+  it('should not display achievement banner', () => {
+    render(
+      <ProfileHeader
+        featureFlags={{ disableActivation: false, enablePassForAll: false }}
+        user={user}
+      />
+    )
+
+    const achievementBannerTitle = screen.queryByText('Mes succès')
+
+    expect(achievementBannerTitle).not.toBeInTheDocument()
+  })
 })

@@ -1,6 +1,10 @@
+import { Platform } from 'react-native'
+
 import { AchievementResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { ModalDisplayState } from 'features/home/components/helpers/useBookingsReactionHelpers'
+
+const isWeb = Platform.OS === 'web'
 
 export const useShouldShowAchievementSuccessModal = (): {
   shouldShowAchievementSuccessModal: ModalDisplayState
@@ -13,6 +17,13 @@ export const useShouldShowAchievementSuccessModal = (): {
   const isThereAtLeastOneUnseenAchievement = user?.achievements?.some(
     (achievement) => !achievement.seenDate
   )
+
+  if (isWeb) {
+    return {
+      shouldShowAchievementSuccessModal: ModalDisplayState.SHOULD_NOT_SHOW,
+      achievementsToShow: [],
+    }
+  }
 
   if (!user || isThereAtLeastOneUnseenAchievement === undefined || isUserLoading)
     return {
