@@ -32,12 +32,12 @@ export const DisplayPreference = () => {
           {isWeb ? null : (
             <FilterSwitchWithLabel
               label="Permettre l’orientation"
+              subtitle="L’affichage en mode paysage peut être moins optimal"
               isActive={!isOrientationLocked}
               toggle={() => {
                 toggleIsOrientationLocked()
                 debouncedLogChangeOrientationToggle(!isOrientationLocked)
               }}
-              subtitle="L’affichage en mode paysage peut être moins optimal"
             />
           )}
           <Spacer.BottomScreen />

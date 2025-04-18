@@ -315,11 +315,11 @@ exports[`debouncedLogChangeOrientationToggle should render correctly 1`] = `
                 </Text>
               </View>
               <View
-                numberOfSpaces={2}
+                numberOfSpaces={6}
                 style={
                   [
                     {
-                      "width": 8,
+                      "width": 24,
                     },
                   ]
                 }
