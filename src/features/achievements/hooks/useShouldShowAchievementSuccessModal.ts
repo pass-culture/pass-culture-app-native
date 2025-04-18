@@ -1,16 +1,11 @@
 import { AchievementResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { ModalDisplayState } from 'features/home/components/helpers/useBookingsReactionHelpers'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 
 export const useShouldShowAchievementSuccessModal = (): {
   shouldShowAchievementSuccessModal: ModalDisplayState
   achievementsToShow: AchievementResponse[]
 } => {
-  const areAchievementsEnabled = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_ACHIEVEMENTS)
-  const { displayAchievements } = useRemoteConfigQuery()
   const { user, isUserLoading } = useAuthContext()
 
   const unseenAchievements = user?.achievements?.filter((achievement) => !achievement.seenDate)
@@ -25,12 +20,7 @@ export const useShouldShowAchievementSuccessModal = (): {
       achievementsToShow: [],
     }
 
-  if (
-    !areAchievementsEnabled ||
-    !displayAchievements ||
-    user?.achievements.length === 0 ||
-    !isThereAtLeastOneUnseenAchievement
-  )
+  if (user?.achievements.length === 0 || !isThereAtLeastOneUnseenAchievement)
     return {
       shouldShowAchievementSuccessModal: ModalDisplayState.SHOULD_NOT_SHOW,
       achievementsToShow: [],

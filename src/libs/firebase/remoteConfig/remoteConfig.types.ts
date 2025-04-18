@@ -21,7 +21,6 @@ export type CustomRemoteConfig = {
   sameAuthorPlaylist: string
   shouldDisplayReassuranceMention: boolean
   shouldLogInfo: boolean
-  displayAchievements: boolean
   displayInAppFeedback: boolean
   subscriptionHomeEntryIds: Record<SubscriptionTheme, string>
   shareAppModalVersion: 'default' | 'A' | 'B'

@@ -57,7 +57,6 @@ const isWeb = Platform.OS === 'web'
 const DEBOUNCE_TOGGLE_DELAY_MS = 5000
 
 const OnlineProfile: React.FC = () => {
-  const enableAchievements = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_ACHIEVEMENTS)
   const disableActivation = useFeatureFlag(RemoteStoreFeatureFlags.DISABLE_ACTIVATION)
   const enablePassForAll = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_PASS_FOR_ALL)
 
@@ -154,14 +153,7 @@ const OnlineProfile: React.FC = () => {
         testID="profile-scrollview">
         <ScrollViewContentContainer>
           <View accessibilityRole={AccessibilityRole.MAIN}>
-            <ProfileHeader
-              featureFlags={{
-                enableAchievements,
-                disableActivation,
-                enablePassForAll,
-              }}
-              user={user}
-            />
+            <ProfileHeader featureFlags={{ disableActivation, enablePassForAll }} user={user} />
             <ProfileContainer>
               <Spacer.Column numberOfSpaces={4} />
               <Section title={isLoggedIn ? 'Paramètres du compte' : 'Paramètres de l’application'}>
