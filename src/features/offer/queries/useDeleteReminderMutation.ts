@@ -2,7 +2,7 @@ import { useMutation, useQueryClient } from 'react-query'
 
 import { api } from 'api/api'
 import { GetRemindersResponse } from 'api/gen'
-import { MutationOptions, RemindersMutationOnErrorArgs } from 'features/offer/mutations/types'
+import { MutationOptions, RemindersMutationOnErrorArgs } from 'features/offer/queries/types'
 import { QueryKeys } from 'libs/queryKeys'
 
 export const useDeleteReminderMutation = (options?: MutationOptions) => {
