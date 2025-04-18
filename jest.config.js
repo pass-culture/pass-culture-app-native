@@ -53,6 +53,7 @@ module.exports = {
       '|@react-native-firebase/remote-config' +
       '|@sentry/react-native' +
       '|react-native-geolocation-service' +
+      '|react-native-orientation-locker' +
       '|instantsearch.js' +
       '|design-system' +
       '/(?!(lib)))',

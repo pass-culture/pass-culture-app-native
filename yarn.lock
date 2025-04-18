@@ -10916,6 +10916,7 @@ __metadata:
     react-native-map-clustering: ^3.4.2
     react-native-maps: ^1.11.3
     react-native-modal: ^13.0.0
+    react-native-orientation-locker: ^1.7.0
     react-native-permissions: ^3.8.0
     react-native-qrcode-svg: ^6.1.2
     react-native-reanimated: 3.6.3
@@ -24694,6 +24695,20 @@ __metadata:
     react: "*"
     react-native: ">=0.65.0"
   checksum: 0eac02e67a1c00a68b1537346b6a1abea234d56ea713e83af4673fda6b27841d8646339b4a64c2772a697f3f208ab74e1aabe7967e87b52d4e2db4ee3fc6166d
+  languageName: node
+  linkType: hard
+
+"react-native-orientation-locker@npm:^1.7.0":
+  version: 1.7.0
+  resolution: "react-native-orientation-locker@npm:1.7.0"
+  peerDependencies:
+    react: ">=16.13.1"
+    react-native: ">=0.63.2"
+    react-native-windows: ">=0.63.3"
+  peerDependenciesMeta:
+    react-native-windows:
+      optional: true
+  checksum: 495010b3150adcbc1dcb24e0ca5c13838f02dbcee7c6ec391fe07bd47f9b75ac57b0ec1144aaab5d6ed62e7a354497e9fa5399359d896099ecbea439908817cf
   languageName: node
   linkType: hard
 
