@@ -49,7 +49,7 @@ describe('<Profile/>', () => {
   it('should not display display preference', () => {
     renderProfile()
 
-    expect(screen.queryByText('Préférence d’affichage')).not.toBeInTheDocument()
+    expect(screen.queryByText('Préférences d’affichage')).not.toBeInTheDocument()
   })
 
   it('should render correctly on desktop', async () => {

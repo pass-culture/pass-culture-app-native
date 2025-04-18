@@ -230,7 +230,7 @@ const OnlineProfile: React.FC = () => {
                   {isWeb ? null : (
                     <Li>
                       <Row
-                        title="Préférence d’affichage"
+                        title="Préférences d’affichage"
                         type="navigable"
                         navigateTo={getProfileNavConfig('DisplayPreference')}
                         icon={ArtMaterial}

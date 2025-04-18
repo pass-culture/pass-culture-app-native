@@ -1163,7 +1163,7 @@ exports[`Profile component should render correctly 1`] = `
                   }
                 >
                   <View
-                    accessibilityLabel="Préférence d’affichage"
+                    accessibilityLabel="Préférences d’affichage"
                     accessibilityRole="link"
                     accessibilityState={
                       {
@@ -1204,7 +1204,7 @@ exports[`Profile component should render correctly 1`] = `
                         },
                       ]
                     }
-                    testID="Préférence d’affichage"
+                    testID="Préférences d’affichage"
                   >
                     <View
                       style={
@@ -1265,7 +1265,7 @@ exports[`Profile component should render correctly 1`] = `
                             ]
                           }
                         >
-                          Préférence d’affichage
+                          Préférences d’affichage
                         </Text>
                       </View>
                       <View

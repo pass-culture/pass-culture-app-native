@@ -343,7 +343,7 @@ describe('Profile component', () => {
     it('should navigate when the display preference row is clicked', async () => {
       renderProfile()
 
-      const accessibilityButton = screen.getByText('Préférence d’affichage')
+      const accessibilityButton = screen.getByText('Préférences d’affichage')
       await user.press(accessibilityButton)
 
       expect(navigate).toHaveBeenCalledWith('ProfileStackNavigator', {
