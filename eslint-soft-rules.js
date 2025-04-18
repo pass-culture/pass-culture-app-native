@@ -3,6 +3,7 @@ const softRules = {
     'react/no-unstable-nested-components', // TODO(PC-25291): enable when its issues are fixed
     'local-rules/no-fireEvent',
     'react/no-unused-prop-types', // has false positives
+    'local-rules/no-spacer',
   ],
   archi: [
     'local-rules/no-queries-outside-query-files',
