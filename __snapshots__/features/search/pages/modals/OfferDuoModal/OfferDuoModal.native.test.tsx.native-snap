@@ -431,11 +431,11 @@ exports[`<OfferDuoModal/> should render modal correctly after animation and with
                 </Text>
               </View>
               <View
-                numberOfSpaces={2}
+                numberOfSpaces={6}
                 style={
                   [
                     {
-                      "width": 8,
+                      "width": 24,
                     },
                   ]
                 }

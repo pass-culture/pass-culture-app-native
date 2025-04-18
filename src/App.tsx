@@ -44,6 +44,7 @@ import { ReactQueryClientProvider } from 'libs/react-query/ReactQueryClientProvi
 import { SplashScreenProvider } from 'libs/splashscreen'
 import { ThemeProvider } from 'libs/styled'
 import { ThemeWrapper } from 'libs/styled/ThemeWrapper'
+import { useOrientationLocked } from 'shared/hook/useOrientationLocked'
 import { theme } from 'theme'
 import { SnackBarProvider } from 'ui/components/snackBar/SnackBarContext'
 
@@ -57,6 +58,8 @@ LogBox.ignoreLogs([
 ])
 
 const App: FunctionComponent = function () {
+  useOrientationLocked()
+
   useEffect(() => {
     StatusBar.setBarStyle('dark-content')
     if (Platform.OS === 'android') {

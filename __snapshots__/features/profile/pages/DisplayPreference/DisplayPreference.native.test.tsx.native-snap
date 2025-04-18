@@ -1,0 +1,490 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`debouncedLogChangeOrientationToggle should render correctly 1`] = `
+<View
+  style={
+    [
+      {
+        "backgroundColor": "#ffffff",
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+      },
+    ]
+  }
+>
+  <View
+    accessibilityRole="header"
+    style={
+      [
+        {
+          "backgroundColor": "rgba(255,255,255,0)",
+          "borderBottomColor": "#cbcdd2",
+          "borderBottomWidth": 1,
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+          "zIndex": 1,
+        },
+      ]
+    }
+  >
+    <View
+      customHeight={16}
+      enable={true}
+      style={
+        [
+          {
+            "height": 16,
+          },
+        ]
+      }
+    />
+    <View
+      style={
+        [
+          {
+            "alignItems": "center",
+            "height": 48,
+            "justifyContent": "center",
+          },
+        ]
+      }
+    >
+      <View
+        style={
+          [
+            {
+              "alignItems": "center",
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+              "width": "100%",
+            },
+          ]
+        }
+      >
+        <View
+          positionInHeader="left"
+          style={
+            [
+              {
+                "alignItems": "center",
+                "flexBasis": 0,
+                "flexDirection": "row",
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "justifyContent": "flex-start",
+                "paddingLeft": 12,
+                "paddingRight": 12,
+              },
+            ]
+          }
+          testID="back-button-container"
+        >
+          <View
+            accessibilityLabel="Revenir en arrière"
+            accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            collapsable={false}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              {
+                "alignItems": "center",
+                "flexGrow": 1,
+                "height": 40,
+                "justifyContent": "center",
+                "maxWidth": 40,
+                "opacity": 1,
+                "userSelect": "auto",
+              }
+            }
+            testID="Revenir en arrière"
+          >
+            <View
+              height={24}
+              testID="icon-back"
+              width={24}
+            >
+              <Text>
+                icon-back-SVG-Mock
+              </Text>
+            </View>
+            <Text
+              style={
+                [
+                  {
+                    "display": "none",
+                  },
+                ]
+              }
+            >
+              Retour
+            </Text>
+          </View>
+        </View>
+        <Text
+          numberOfLines={1}
+          style={
+            [
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 17,
+                "lineHeight": 27.2,
+                "textAlign": "center",
+              },
+            ]
+          }
+        >
+          Préférences d’affichage
+        </Text>
+        <View
+          positionInHeader="right"
+          style={
+            [
+              {
+                "alignItems": "center",
+                "flexBasis": 0,
+                "flexDirection": "row",
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "justifyContent": "flex-end",
+                "paddingLeft": 12,
+                "paddingRight": 12,
+              },
+            ]
+          }
+          testID="close-button-container"
+        />
+      </View>
+    </View>
+  </View>
+  <View
+    style={
+      [
+        {
+          "flexBasis": 0,
+          "flexGrow": 1,
+          "flexShrink": 1,
+        },
+      ]
+    }
+  >
+    <View
+      onLayout={[Function]}
+      style={
+        [
+          [
+            {
+              "alignItems": "center",
+              "backgroundColor": "#ffffff",
+              "borderTopLeftRadius": 22,
+              "borderTopRightRadius": 22,
+              "display": "flex",
+              "flexBasis": 0,
+              "flexDirection": "column",
+              "flexGrow": 1,
+              "height": "100%",
+              "overflow": "scroll",
+              "paddingTop": 32,
+            },
+          ],
+          {
+            "paddingBottom": 0,
+          },
+        ]
+      }
+    >
+      <View
+        style={
+          [
+            {
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
+              "maxWidth": 500,
+              "width": "100%",
+            },
+          ]
+        }
+      >
+        <RCTScrollView
+          bottomChildrenViewHeight={0}
+          contentContainerStyle={
+            {
+              "flexDirection": "column",
+              "flexGrow": 1,
+              "paddingBottom": 0,
+              "paddingHorizontal": 20,
+            }
+          }
+          keyboardShouldPersistTaps="handled"
+          onContentSizeChange={[Function]}
+          onLayout={[Function]}
+          style={
+            [
+              {},
+            ]
+          }
+        >
+          <View>
+            <View
+              style={
+                {
+                  "height": 65,
+                }
+              }
+            />
+            <View
+              inverseLayout={false}
+              style={
+                [
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "justifyContent": "space-between",
+                  },
+                ]
+              }
+            >
+              <View
+                style={
+                  [
+                    {
+                      "flexShrink": 1,
+                    },
+                  ]
+                }
+              >
+                <Text
+                  accessibilityDescribedBy="testUuidV4"
+                  htmlFor="testUuidV4"
+                  id="testUuidV4"
+                  style={
+                    [
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
+                      },
+                    ]
+                  }
+                >
+                  Permettre l’orientation
+                </Text>
+                <Text
+                  nativeID="testUuidV4"
+                  style={
+                    [
+                      {
+                        "color": "#696A6F",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 19.2,
+                      },
+                    ]
+                  }
+                >
+                  L’affichage en mode paysage peut être moins optimal
+                </Text>
+              </View>
+              <View
+                numberOfSpaces={6}
+                style={
+                  [
+                    {
+                      "width": 24,
+                    },
+                  ]
+                }
+              />
+              <View
+                style={
+                  [
+                    {
+                      "flexShrink": 0,
+                    },
+                  ]
+                }
+              >
+                <View
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "flexDirection": "row",
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    accessibilityHidden={true}
+                    style={
+                      [
+                        {
+                          "display": "none",
+                        },
+                      ]
+                    }
+                  >
+                    Case à cocher - 
+                    non cochée
+                  </Text>
+                  <View
+                    accessibilityRole="checkbox"
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": false,
+                        "disabled": false,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={false}
+                    collapsable={false}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      {
+                        "opacity": 1,
+                        "userSelect": "auto",
+                      }
+                    }
+                    testID="Interrupteur"
+                  >
+                    <View
+                      active={false}
+                      style={
+                        [
+                          {
+                            "backgroundColor": "#90949D",
+                            "borderRadius": 16,
+                            "height": 32,
+                            "justifyContent": "center",
+                            "width": 56,
+                          },
+                        ]
+                      }
+                    >
+                      <View
+                        collapsable={false}
+                        disabled={false}
+                        style={
+                          {
+                            "alignItems": "center",
+                            "aspectRatio": 1,
+                            "backgroundColor": "#ffffff",
+                            "borderRadius": 28,
+                            "height": 28,
+                            "justifyContent": "center",
+                            "marginLeft": 2,
+                            "shadowColor": "#161617",
+                            "shadowOffset": {
+                              "height": 2,
+                              "width": 0,
+                            },
+                            "shadowOpacity": 0.2,
+                            "shadowRadius": 2.5,
+                            "width": 28,
+                          }
+                        }
+                      />
+                    </View>
+                  </View>
+                </View>
+              </View>
+            </View>
+            <View
+              customHeight={8}
+              enable={true}
+              style={
+                [
+                  {
+                    "height": 8,
+                  },
+                ]
+              }
+            />
+          </View>
+        </RCTScrollView>
+      </View>
+    </View>
+  </View>
+  <View
+    height={65}
+    style={
+      [
+        {
+          "backdropFilter": "blur(20px)",
+          "height": 65,
+          "left": 0,
+          "overflow": "hidden",
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        },
+      ]
+    }
+  >
+    <BlurView
+      blurAmount={8}
+      blurType="light"
+      style={
+        [
+          {
+            "backgroundColor": "transparent",
+          },
+          [
+            {
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
+            },
+          ],
+        ]
+      }
+    />
+  </View>
+</View>
+`;

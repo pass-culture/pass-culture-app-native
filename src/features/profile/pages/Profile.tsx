@@ -39,6 +39,7 @@ import { useDebounce } from 'ui/hooks/useDebounce'
 import { useVersion } from 'ui/hooks/useVersion'
 import { Page } from 'ui/pages/Page'
 import { Bell } from 'ui/svg/icons/Bell'
+import { ArtMaterial } from 'ui/svg/icons/bicolor/ArtMaterial'
 import { BicolorProfile } from 'ui/svg/icons/BicolorProfile'
 import { Bulb } from 'ui/svg/icons/Bulb'
 import { Confidentiality } from 'ui/svg/icons/Confidentiality'
@@ -225,6 +226,17 @@ const OnlineProfile: React.FC = () => {
               </Section>
               <Section title="Autres">
                 <VerticalUl>
+                  {/* TODO(PC-35459): Remove this condition when add dark theme button in DisplayPreference */}
+                  {isWeb ? null : (
+                    <Li>
+                      <Row
+                        title="Préférences d’affichage"
+                        type="navigable"
+                        navigateTo={getProfileNavConfig('DisplayPreference')}
+                        icon={ArtMaterial}
+                      />
+                    </Li>
+                  )}
                   <Li>
                     <Row
                       title="Accessibilité"

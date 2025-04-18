@@ -491,11 +491,11 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                 </Text>
               </View>
               <View
-                numberOfSpaces={2}
+                numberOfSpaces={6}
                 style={
                   [
                     {
-                      "width": 8,
+                      "width": 24,
                     },
                   ]
                 }
@@ -671,11 +671,11 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                 </Text>
               </View>
               <View
-                numberOfSpaces={2}
+                numberOfSpaces={6}
                 style={
                   [
                     {
-                      "width": 8,
+                      "width": 24,
                     },
                   ]
                 }

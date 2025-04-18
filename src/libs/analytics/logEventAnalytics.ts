@@ -151,6 +151,8 @@ export const logEventAnalytics = {
     entryId: string
     toEntryId: string
   }) => analytics.logEvent({ firebase: AnalyticsEvent.CATEGORY_BLOCK_CLICKED }, params),
+  logChangeOrientationToggle: (enabled: boolean) =>
+    analytics.logEvent({ firebase: AnalyticsEvent.CHANGE_ORIENTATION_TOGGLE }, { enabled }),
   logCheckEduconnectDataClicked: () =>
     analytics.logEvent({ amplitude: AmplitudeEvent.CHECK_EDUCONNECT_DATA_CLICKED }),
   logChooseEduConnectMethod: () =>

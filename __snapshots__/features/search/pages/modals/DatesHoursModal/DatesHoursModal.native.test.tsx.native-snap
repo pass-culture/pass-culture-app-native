@@ -440,11 +440,11 @@ exports[`<DatesHoursModal/> should render modal correctly after animation and wi
                   </Text>
                 </View>
                 <View
-                  numberOfSpaces={2}
+                  numberOfSpaces={6}
                   style={
                     [
                       {
-                        "width": 8,
+                        "width": 24,
                       },
                     ]
                   }
@@ -654,11 +654,11 @@ exports[`<DatesHoursModal/> should render modal correctly after animation and wi
                   </Text>
                 </View>
                 <View
-                  numberOfSpaces={2}
+                  numberOfSpaces={6}
                   style={
                     [
                       {
-                        "width": 8,
+                        "width": 24,
                       },
                     ]
                   }
