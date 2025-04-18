@@ -4,7 +4,7 @@ import React from 'react'
 import { LocationSearchWidget } from 'features/location/components/LocationSearchWidget'
 import { useLocation } from 'libs/location'
 import { LocationLabel, LocationMode } from 'libs/location/types'
-import { act, fireEvent, render, screen } from 'tests/utils'
+import { act, render, screen, userEvent } from 'tests/utils'
 
 const mockShowModal = jest.fn()
 jest.mock('ui/components/modals/useModal', () => ({
@@ -23,6 +23,8 @@ jest.mock('features/search/context/SearchWrapper', () => ({
     dispatch: jest.fn(),
   }),
 }))
+const user = userEvent.setup()
+jest.useFakeTimers()
 
 describe('LocationSearchWidget', () => {
   it('should show modal when pressing widget', async () => {
@@ -34,7 +36,7 @@ describe('LocationSearchWidget', () => {
 
     const button = screen.getByTestId('Ouvrir la modale de localisation depuis la recherche')
 
-    fireEvent.press(button)
+    await user.press(button)
 
     expect(mockShowModal).toHaveBeenCalledTimes(1)
   })

@@ -4,7 +4,10 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { EligibleFooter } from 'features/tutorial/components/profileTutorial/EligibleFooter'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { fireEvent, render, screen } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
+
+const user = userEvent.setup()
+jest.useFakeTimers()
 
 describe('<EligibleFooter />', () => {
   beforeEach(() => {
@@ -27,10 +30,10 @@ describe('<EligibleFooter />', () => {
     ).toBeOnTheScreen()
   })
 
-  it('should navigate to Stepper when user press "Activer mon crédit"', () => {
+  it('should navigate to Stepper when user press "Activer mon crédit"', async () => {
     render(<EligibleFooter age={18} />)
 
-    fireEvent.press(screen.getByText('Activer mon crédit'))
+    await user.press(screen.getByText('Activer mon crédit'))
 
     expect(navigate).toHaveBeenCalledWith('Stepper', { from: 'Tutorial' })
   })

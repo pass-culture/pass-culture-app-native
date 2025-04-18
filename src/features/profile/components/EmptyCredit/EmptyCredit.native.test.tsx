@@ -6,11 +6,14 @@ import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
-import { fireEvent, render, screen } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 
 jest
   .spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
   .mockReturnValue({ ...DEFAULT_REMOTE_CONFIG, homeEntryIdFreeOffers: 'homeEntryIdFreeOffers' })
+
+const user = userEvent.setup()
+jest.useFakeTimers()
 
 describe('<EmptyCredit />', () => {
   beforeEach(() => {
@@ -29,10 +32,10 @@ describe('<EmptyCredit />', () => {
     expect(screen.queryByText('Profite d’offres gratuites')).not.toBeOnTheScreen()
   })
 
-  it('should navigate to thematic home with remote config homeId on button press', () => {
+  it('should navigate to thematic home with remote config homeId on button press', async () => {
     render(<EmptyCredit age={16} />)
 
-    fireEvent.press(screen.getByText('Profite d’offres gratuites'))
+    await user.press(screen.getByText('Profite d’offres gratuites'))
 
     expect(navigate).toHaveBeenCalledWith('ThematicHome', {
       homeId: 'homeEntryIdFreeOffers',
