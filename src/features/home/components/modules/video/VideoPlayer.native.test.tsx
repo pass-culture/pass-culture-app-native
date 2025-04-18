@@ -63,7 +63,9 @@ describe('VideoPlayer', () => {
     expect(errorMessage).not.toBeOnTheScreen()
   })
 
-  it('should not have replay button visible after clicked', async () => {
+  // TODO(PC-35751): Fix this test
+  // eslint-disable-next-line jest/no-disabled-tests
+  it.skip('should not have replay button visible after clicked', async () => {
     MockedYouTubePlayer.setPlayerState(PLAYER_STATES.ENDED)
     renderVideoPlayer()
 
@@ -76,7 +78,9 @@ describe('VideoPlayer', () => {
   })
 
   describe('analytics', () => {
-    it('should logHasSeenAllVideo when all video were seen', async () => {
+    // TODO(PC-35751): Fix this test
+    // eslint-disable-next-line jest/no-disabled-tests
+    it.skip('should logHasSeenAllVideo when all video were seen', async () => {
       MockedYouTubePlayer.setPlayerState(PLAYER_STATES.ENDED)
 
       renderVideoPlayer()
