@@ -8,7 +8,7 @@ import { ExclusivityOffer } from 'features/home/components/modules/exclusivity/E
 import { offerResponseSnap as mockOffer } from 'features/offer/fixtures/offerResponse'
 import { analytics } from 'libs/analytics/provider'
 import { ContentTypes } from 'libs/contentful/types'
-import { fireEvent, render, screen } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 
 jest.mock('features/search/helpers/useMaxPrice/useMaxPrice', () => ({
   useMaxPrice: jest.fn(() => 300_00),
@@ -24,6 +24,8 @@ const props = {
   homeEntryId: 'abcd',
   index: 1,
 }
+const user = userEvent.setup()
+jest.useFakeTimers()
 
 describe('ExclusivityModule component', () => {
   const excluOfferAPISpy = jest.spyOn(excluOfferAPI, 'useExcluOffer')
@@ -39,9 +41,9 @@ describe('ExclusivityModule component', () => {
 
   afterAll(() => jest.resetAllMocks())
 
-  it('should navigate to the offer when clicking on the image', () => {
+  it('should navigate to the offer when clicking on the image', async () => {
     render(<ExclusivityOffer {...props} />)
-    fireEvent.press(screen.getByTestId('Image d’Adèle'))
+    await user.press(screen.getByTestId('Image d’Adèle'))
 
     expect(navigate).toHaveBeenCalledWith('Offer', {
       id: mockOffer.id,
@@ -49,9 +51,9 @@ describe('ExclusivityModule component', () => {
     })
   })
 
-  it('should log a click event when clicking on the image', () => {
+  it('should log a click event when clicking on the image', async () => {
     render(<ExclusivityOffer {...props} />)
-    fireEvent.press(screen.getByTestId('Image d’Adèle'))
+    await user.press(screen.getByTestId('Image d’Adèle'))
 
     expect(analytics.logExclusivityBlockClicked).toHaveBeenCalledWith({
       moduleName: props.title,

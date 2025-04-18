@@ -4,7 +4,7 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { NotificationsLoggedOutModal } from 'features/subscription/NotificationsLoggedOutModal'
 import { analytics } from 'libs/analytics/provider'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render, screen, waitFor } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 
 jest.mock('features/profile/pages/NotificationSettings/usePushPermission', () => ({
   usePushPermission: jest.fn(() => ({
@@ -20,6 +20,9 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
+const user = userEvent.setup()
+jest.useFakeTimers()
+
 describe('<NotificationsLoggedOutModal />', () => {
   it('should render correctly', () => {
     renderModal(true)
@@ -27,22 +30,22 @@ describe('<NotificationsLoggedOutModal />', () => {
     expect(screen).toMatchSnapshot()
   })
 
-  it('should dismiss modal on press rightIconButton', () => {
+  it('should dismiss modal on press rightIconButton', async () => {
     renderModal(true)
 
     const dismissModalButton = screen.getByTestId('rightIcon')
 
-    fireEvent.press(dismissModalButton)
+    await user.press(dismissModalButton)
 
     expect(mockDismissModal).toHaveBeenCalledTimes(1)
   })
 
-  it('should dismiss modal on press "Créer un compte"', () => {
+  it('should dismiss modal on press "Créer un compte"', async () => {
     renderModal(true)
 
     const authButton = screen.getByText('Créer un compte')
 
-    fireEvent.press(authButton)
+    await user.press(authButton)
 
     expect(mockDismissModal).toHaveBeenCalledTimes(1)
   })
@@ -52,19 +55,17 @@ describe('<NotificationsLoggedOutModal />', () => {
 
     const authButton = screen.getByText('Créer un compte')
 
-    fireEvent.press(authButton)
+    await user.press(authButton)
 
-    await waitFor(() => {
-      expect(navigate).toHaveBeenCalledWith('SignupForm', { from: 'thematicHome' })
-    })
+    expect(navigate).toHaveBeenCalledWith('SignupForm', { from: 'thematicHome' })
   })
 
-  it('should dismiss modal on press "Se connecter"', () => {
+  it('should dismiss modal on press "Se connecter"', async () => {
     renderModal(true)
 
     const authButton = screen.getByText('Se connecter')
 
-    fireEvent.press(authButton)
+    await user.press(authButton)
 
     expect(mockDismissModal).toHaveBeenCalledTimes(1)
   })
@@ -74,18 +75,16 @@ describe('<NotificationsLoggedOutModal />', () => {
 
     const authButton = screen.getByText('Se connecter')
 
-    fireEvent.press(authButton)
+    await user.press(authButton)
 
-    await waitFor(() => {
-      expect(navigate).toHaveBeenCalledWith('Login', { from: 'thematicHome' })
-    })
+    expect(navigate).toHaveBeenCalledWith('Login', { from: 'thematicHome' })
   })
 
   it('should log analytics when clicking on "Créer un compte" button', async () => {
     renderModal(true)
 
     const authButton = screen.getByText('Créer un compte')
-    fireEvent.press(authButton)
+    await user.press(authButton)
 
     expect(analytics.logSignUpClicked).toHaveBeenNthCalledWith(1, { from: 'ThematicHome' })
   })
@@ -94,7 +93,7 @@ describe('<NotificationsLoggedOutModal />', () => {
     renderModal(true)
 
     const authButton = screen.getByText('Se connecter')
-    fireEvent.press(authButton)
+    await user.press(authButton)
 
     expect(analytics.logLoginClicked).toHaveBeenNthCalledWith(1, { from: 'ThematicHome' })
   })

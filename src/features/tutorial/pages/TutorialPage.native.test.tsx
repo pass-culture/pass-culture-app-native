@@ -1,7 +1,7 @@
 import React from 'react'
 
 import * as useGoBack from 'features/navigation/useGoBack'
-import { fireEvent, render, screen } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 
 import { TutorialPage } from './TutorialPage'
@@ -17,6 +17,9 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
+const user = userEvent.setup()
+jest.useFakeTimers()
+
 describe('TutorialPage', () => {
   it('should render correctly', () => {
     renderTutorialPage()
@@ -28,7 +31,7 @@ describe('TutorialPage', () => {
     renderTutorialPage()
 
     const button = screen.getByLabelText('Continuer')
-    fireEvent.press(button)
+    await user.press(button)
 
     expect(onPress).toHaveBeenCalledTimes(1)
   })

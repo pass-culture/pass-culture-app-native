@@ -5,7 +5,7 @@ import Share, { Social } from 'react-native-share'
 import * as GetInstalledAppsAPI from 'features/offer/helpers/getInstalledApps/getInstalledApps'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { Network } from 'libs/share/types'
-import { act, fireEvent, render, screen } from 'tests/utils'
+import { act, render, screen, userEvent } from 'tests/utils'
 
 import { InstalledMessagingApps } from './InstalledMessagingApps'
 
@@ -20,6 +20,9 @@ const props = {
 const canOpenURLSpy = jest.spyOn(Linking, 'canOpenURL')
 const mockShareSingle = jest.spyOn(Share, 'shareSingle')
 const getInstalledAppsMock = jest.spyOn(GetInstalledAppsAPI, 'getInstalledApps')
+
+const user = userEvent.setup()
+jest.useFakeTimers()
 
 describe('<InstalledMessagingApps />', () => {
   it('should display social medium when installed', async () => {
@@ -53,9 +56,7 @@ describe('<InstalledMessagingApps />', () => {
     canOpenURLSpy.mockResolvedValueOnce(true)
     render(<InstalledMessagingApps {...props} />)
 
-    await act(async () => {
-      fireEvent.press(await screen.findByText(`Envoyer sur ${Network.instagram}`))
-    })
+    await user.press(await screen.findByText(`Envoyer sur ${Network.instagram}`))
 
     expect(mockShareSingle).toHaveBeenCalledWith({
       social: Social.Instagram,
@@ -71,9 +72,7 @@ describe('<InstalledMessagingApps />', () => {
     canOpenURLSpy.mockResolvedValueOnce(true).mockResolvedValueOnce(true) // First mock for Instagram, second for Whatsapp
     render(<InstalledMessagingApps {...props} />)
 
-    await act(async () => {
-      fireEvent.press(await screen.findByText(`Envoyer sur ${Network.whatsapp}`))
-    })
+    await user.press(await screen.findByText(`Envoyer sur ${Network.whatsapp}`))
 
     expect(mockShareSingle).toHaveBeenCalledWith({
       social: Social.Whatsapp,
@@ -87,9 +86,7 @@ describe('<InstalledMessagingApps />', () => {
     canOpenURLSpy.mockResolvedValueOnce(true)
     render(<InstalledMessagingApps {...props} />)
 
-    await act(async () => {
-      fireEvent.press(await screen.findByText(`Envoyer sur ${Network.instagram}`))
-    })
+    await user.press(await screen.findByText(`Envoyer sur ${Network.instagram}`))
 
     expect(logShareMock).toHaveBeenCalledWith(Social.Instagram)
   })
@@ -112,10 +109,8 @@ describe('<InstalledMessagingApps />', () => {
     canOpenURLSpy.mockResolvedValueOnce(true)
     render(<InstalledMessagingApps {...props} />)
 
-    await act(async () => {
-      const socialMediumButton = await screen.findByText(`Envoyer sur ${Network.instagram}`)
-      fireEvent.press(socialMediumButton)
-    })
+    const socialMediumButton = await screen.findByText(`Envoyer sur ${Network.instagram}`)
+    await user.press(socialMediumButton)
 
     expect(eventMonitoring.captureException).toHaveBeenCalledWith(
       `MessagingApp click: ${error.message}`,

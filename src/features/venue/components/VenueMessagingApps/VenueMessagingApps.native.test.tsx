@@ -8,12 +8,15 @@ import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
 import { analytics } from 'libs/analytics/provider'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render, screen } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 
 const mockShareSingle = jest.spyOn(Share, 'shareSingle')
 const canOpenURLSpy = jest.spyOn(Linking, 'canOpenURL').mockResolvedValue(false)
 
 jest.mock('libs/firebase/analytics/analytics')
+
+const user = userEvent.setup()
+jest.useFakeTimers()
 
 describe('<VenueMessagingApps />', () => {
   beforeEach(() => {
@@ -26,7 +29,7 @@ describe('<VenueMessagingApps />', () => {
 
     const instagramButton = await screen.findByText(`Envoyer sur Instagram`)
 
-    fireEvent.press(instagramButton)
+    await user.press(instagramButton)
 
     expect(mockShareSingle).toHaveBeenCalledWith({
       social: Social.Instagram,
@@ -44,7 +47,7 @@ describe('<VenueMessagingApps />', () => {
 
     const instagramButton = await screen.findByText(`Envoyer sur Instagram`)
 
-    fireEvent.press(instagramButton)
+    await user.press(instagramButton)
 
     expect(analytics.logShare).toHaveBeenCalledWith({
       from: 'venue',
