@@ -4,7 +4,13 @@ import mockdate from 'mockdate'
 import React from 'react'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
-import { OffersStocksResponseV2, SubcategoryIdEnum, VenueResponse, VenueTypeCodeKey } from 'api/gen'
+import {
+  OffersStocksResponseV2,
+  SubcategoryIdEnum,
+  UserProfileResponse,
+  VenueResponse,
+  VenueTypeCodeKey,
+} from 'api/gen'
 import { useGTLPlaylists } from 'features/gtlPlaylist/hooks/useGTLPlaylists'
 import { Referrals } from 'features/navigation/RootNavigator/types'
 import { CineContentCTAID } from 'features/offer/components/OfferCine/CineContentCTA'
@@ -112,6 +118,7 @@ describe('<Venue />', () => {
   beforeEach(() => {
     setFeatureFlags()
     getItemSpy.mockReset()
+    mockServer.patchApi<UserProfileResponse>('/v1/profile', {})
     mockServer.getApi<VenueResponse>(`/v1/venue/${venueId}`, {
       ...venueDataTest,
       isOpenToPublic: true,
@@ -152,6 +159,7 @@ describe('<Venue />', () => {
   describe('CTA', () => {
     it('should not display CTA if venueTypeCode is Movie', async () => {
       const mockedVenue = { ...venueDataTest, venueTypeCode: VenueTypeCodeKey.MOVIE }
+
       mockServer.getApi<VenueResponse>(`/v1/venue/${venueId}`, mockedVenue)
 
       renderVenue(venueId)
