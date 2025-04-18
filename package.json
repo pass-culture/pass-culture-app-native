@@ -31,7 +31,7 @@
     "build:perf": "yarn build --mode=perf",
     "build-storybook": "NODE_OPTIONS=--openssl-legacy-provider storybook build",
     "chromatic": "chromatic --exit-zero-on-changes --exit-once-uploaded",
-    "fix:lint": "eslint . --ext .js,.ts,.tsx,.mjs --fix",
+    "fix:lint": "eslint . --ext .js,.ts,.tsx,.mjs --fix --quiet",
     "generate:api:client": "SWAGGER_CODEGEN_CLI_VERSION=3.0.32 ./scripts/generate_api_client.sh",
     "generate:api:client:silicon": "SWAGGER_CODEGEN_CLI_VERSION=3.0.32 ./scripts/generate_api_client_silicon.sh",
     "generate:allure-report": "allure generate allure-results --clean -o allure-report",
