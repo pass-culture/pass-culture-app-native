@@ -84,11 +84,7 @@ describe('ProfileHeader', () => {
 
   it('should not display subtitle with passForAll enabled', async () => {
     renderProfileHeader({
-      featureFlags: {
-        enableAchievements: false,
-        disableActivation: false,
-        enablePassForAll: true,
-      },
+      featureFlags: { disableActivation: false, enablePassForAll: true },
       user: undefined,
     })
     await screen.findByText('Cheatcodes')
@@ -100,11 +96,7 @@ describe('ProfileHeader', () => {
 
   it('should display the LoggedOutHeader if no user', async () => {
     renderProfileHeader({
-      featureFlags: {
-        enableAchievements: false,
-        disableActivation: false,
-        enablePassForAll: false,
-      },
+      featureFlags: { disableActivation: false, enablePassForAll: false },
       user: undefined,
     })
 
@@ -119,11 +111,7 @@ describe('ProfileHeader', () => {
 
   it('should display the BeneficiaryHeader if user is beneficiary', async () => {
     renderProfileHeader({
-      featureFlags: {
-        enableAchievements: false,
-        disableActivation: false,
-        enablePassForAll: false,
-      },
+      featureFlags: { disableActivation: false, enablePassForAll: false },
       user,
     })
 
@@ -135,11 +123,7 @@ describe('ProfileHeader', () => {
   it('should display the BeneficiaryHeader if user is underage beneficiary', async () => {
     mockedisUserUnderageBeneficiary.mockReturnValueOnce(true)
     renderProfileHeader({
-      featureFlags: {
-        enableAchievements: false,
-        disableActivation: false,
-        enablePassForAll: false,
-      },
+      featureFlags: { disableActivation: false, enablePassForAll: false },
       user,
     })
 
@@ -150,11 +134,7 @@ describe('ProfileHeader', () => {
 
   it('should display the ExBeneficiary Header if credit is expired', async () => {
     renderProfileHeader({
-      featureFlags: {
-        enableAchievements: false,
-        disableActivation: false,
-        enablePassForAll: false,
-      },
+      featureFlags: { disableActivation: false, enablePassForAll: false },
       user: exBeneficiaryUser,
     })
 
@@ -173,11 +153,7 @@ describe('ProfileHeader', () => {
     })
 
     renderProfileHeader({
-      featureFlags: {
-        enableAchievements: false,
-        disableActivation: false,
-        enablePassForAll: false,
-      },
+      featureFlags: { disableActivation: false, enablePassForAll: false },
       user: notBeneficiaryUser,
     })
 
@@ -187,11 +163,7 @@ describe('ProfileHeader', () => {
   it('should display the NonBeneficiaryHeader Header if user is eligible exunderage beneficiary', async () => {
     mockServer.getApi<BannerResponse>('/v1/banner', {})
     renderProfileHeader({
-      featureFlags: {
-        enableAchievements: false,
-        disableActivation: false,
-        enablePassForAll: false,
-      },
+      featureFlags: { disableActivation: false, enablePassForAll: false },
       user: exUnderageBeneficiaryUser,
     })
 
@@ -203,10 +175,6 @@ const renderProfileHeader = ({
   featureFlags,
   user,
 }: {
-  featureFlags: {
-    enableAchievements: boolean
-    disableActivation: boolean
-    enablePassForAll: boolean
-  }
+  featureFlags: { disableActivation: boolean; enablePassForAll: boolean }
   user?: UserProfileResponse
 }) => render(reactQueryProviderHOC(<ProfileHeader featureFlags={featureFlags} user={user} />))

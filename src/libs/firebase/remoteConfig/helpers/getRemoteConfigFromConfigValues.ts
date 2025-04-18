@@ -37,7 +37,6 @@ export const getRemoteConfigFromConfigValues = (
     parameters.shouldDisplayReassuranceMention
   ).asBoolean(),
   shouldLogInfo: getConfigValue(parameters.shouldLogInfo).asBoolean(),
-  displayAchievements: getConfigValue(parameters.displayAchievements).asBoolean(),
   displayInAppFeedback: getConfigValue(parameters.displayInAppFeedback).asBoolean(),
   subscriptionHomeEntryIds: JSON.parse(
     getConfigValue(parameters.subscriptionHomeEntryIds).asString()

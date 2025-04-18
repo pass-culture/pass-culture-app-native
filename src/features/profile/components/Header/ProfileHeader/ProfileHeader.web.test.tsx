@@ -58,11 +58,7 @@ describe('ProfileHeader', () => {
   it('should display the BeneficiaryHeader if user is beneficiary', () => {
     render(
       <ProfileHeader
-        featureFlags={{
-          enableAchievements: false,
-          disableActivation: false,
-          enablePassForAll: false,
-        }}
+        featureFlags={{ disableActivation: false, enablePassForAll: false }}
         user={user}
       />
     )
@@ -73,15 +69,24 @@ describe('ProfileHeader', () => {
   it('should display the ExBeneficiary Header if credit is expired', () => {
     render(
       <ProfileHeader
-        featureFlags={{
-          enableAchievements: false,
-          disableActivation: false,
-          enablePassForAll: false,
-        }}
+        featureFlags={{ disableActivation: false, enablePassForAll: false }}
         user={exBeneficiaryUser}
       />
     )
 
     expect(screen.getByText('Ton crédit a expiré le')).toBeInTheDocument()
+  })
+
+  it('should not display achievement banner', () => {
+    render(
+      <ProfileHeader
+        featureFlags={{ disableActivation: false, enablePassForAll: false }}
+        user={user}
+      />
+    )
+
+    const achievementBannerTitle = screen.queryByText('Mes succès')
+
+    expect(achievementBannerTitle).not.toBeInTheDocument()
   })
 })

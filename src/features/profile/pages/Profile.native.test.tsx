@@ -15,7 +15,6 @@ import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import {
@@ -116,7 +115,6 @@ describe('Profile component', () => {
     useRemoteConfigSpy.mockReturnValue({
       ...DEFAULT_REMOTE_CONFIG,
       displayInAppFeedback: true,
-      displayAchievements: true,
     })
   })
 
@@ -159,11 +157,7 @@ describe('Profile component', () => {
   })
 
   describe('achievements banner', () => {
-    beforeEach(() => {
-      setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_ACHIEVEMENTS])
-    })
-
-    it('should show banner when FF is enabled and user is a beneficiary', async () => {
+    it('should show banner when user is a beneficiary', async () => {
       mockedUseAuthContext.mockReturnValueOnce({ user: beneficiaryUser })
       renderProfile()
 
@@ -181,13 +175,6 @@ describe('Profile component', () => {
         // this banner is not shown if the force update banner is shown (which needs to wait for firestore, thus the achievement banner must wait for firestore as well).
         expect(screen.queryByText('Mes succès')).not.toBeOnTheScreen()
       })
-    })
-
-    it('should not show banner when FF is disabled', async () => {
-      renderProfile()
-      await screen.findByText('Mon profil')
-
-      expect(screen.queryByText('Mes succès')).not.toBeOnTheScreen()
     })
 
     it('should go to achievements when user clicks the banner', async () => {
