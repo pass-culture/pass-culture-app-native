@@ -27,6 +27,7 @@ export type ProfileStackParamList = {
   ChangePassword: undefined
   SuspendAccountConfirmation: { token: string } | undefined
   FeedbackInApp: undefined
+  DisplayPreference: undefined
   ConsentSettings: { onGoBack?: () => void } | undefined
   ConfirmChangeEmail: { token: string; expiration_timestamp: number } | undefined
   ChangeEmailSetPassword:

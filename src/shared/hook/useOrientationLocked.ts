@@ -12,7 +12,7 @@ export const useOrientationLocked = () => {
   }, [isOrientationLocked])
 
   useEffect(() => {
-    void fetchOrientationLocked()
+    fetchOrientationLocked()
     Orientation.addLockListener(() => setIsOrientationLocked(Orientation.isLocked()))
     return () => Orientation.removeAllListeners()
   }, [fetchOrientationLocked])

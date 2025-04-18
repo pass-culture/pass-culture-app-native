@@ -45,6 +45,13 @@ describe('<Profile/>', () => {
     expect(screen.queryByText('Partage le pass Culture')).not.toBeInTheDocument()
   })
 
+  // TODO(PC-35459): Remove this test when add dark theme button in DisplayPreference
+  it('should not display display preference', () => {
+    renderProfile()
+
+    expect(screen.queryByText('Préférence d’affichage')).not.toBeInTheDocument()
+  })
+
   it('should render correctly on desktop', async () => {
     const { container } = render(reactQueryProviderHOC(<Profile />), {
       theme: { isDesktopViewport: true },

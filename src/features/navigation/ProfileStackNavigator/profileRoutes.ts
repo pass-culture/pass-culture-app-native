@@ -110,6 +110,11 @@ export const profileRoutes: ProfileStackRoute[] = [
     path: 'profil/formulaire-suggestion',
   },
   {
+    name: 'DisplayPreference',
+    component: ComponentForPathConfig,
+    path: 'profil/preference-affichage',
+  },
+  {
     name: 'ConsentSettings',
     component: ComponentForPathConfig,
     path: 'profil/confidentialite',

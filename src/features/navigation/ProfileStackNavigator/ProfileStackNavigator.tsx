@@ -25,6 +25,7 @@ import { DeleteProfileContactSupport } from 'features/profile/pages/DeleteProfil
 import { DeleteProfileEmailHacked } from 'features/profile/pages/DeleteProfile/DeleteProfileEmailHacked'
 import { SuspendAccountConfirmationWithoutAuthentication } from 'features/profile/pages/DeleteProfile/SuspendAccountConfirmationWithoutAuthentication'
 import { DeleteProfileReason } from 'features/profile/pages/DeleteProfileReason/DeleteProfileReason'
+import { DisplayPreference } from 'features/profile/pages/DisplayPreference/DisplayPreference'
 import { FeedbackInApp } from 'features/profile/pages/FeedbackInApp/FeedbackInApp'
 import { LegalNotices } from 'features/profile/pages/LegalNotices/LegalNotices'
 import { NewEmailSelection } from 'features/profile/pages/NewEmailSelection/NewEmailSelection'
@@ -187,6 +188,11 @@ export const ProfileStackNavigator = () => (
       name="FeedbackInApp"
       component={withAuthProtection(FeedbackInApp)}
       options={{ title: 'Formulaire de suggestion' }}
+    />
+    <ProfileStack.Screen
+      name="DisplayPreference"
+      component={DisplayPreference}
+      options={{ title: 'Préférence d’affichage' }}
     />
   </ProfileStack.Navigator>
 )
