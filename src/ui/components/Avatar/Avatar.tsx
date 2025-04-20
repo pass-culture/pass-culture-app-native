@@ -37,6 +37,7 @@ export const Avatar = ({
       <Container
         rounded={rounded}
         size={size}
+        testID="Avatar"
         borderWidth={borderWidth}
         borderColor={borderColor}
         borderRadius={borderRadius}>

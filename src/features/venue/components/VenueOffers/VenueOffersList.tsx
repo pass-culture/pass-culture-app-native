@@ -25,7 +25,7 @@ import {
 import { CategoryHomeLabelMapping, CategoryIdMapping } from 'libs/subcategories/types'
 import { Currency } from 'shared/currency/useGetCurrencyToDisplay'
 import { Offer } from 'shared/offer/types'
-import { AvatarsList } from 'ui/components/Avatar/AvatarList'
+import { AvatarList } from 'ui/components/Avatar/AvatarList'
 import { PassPlaylist } from 'ui/components/PassPlaylist'
 import { CustomListRenderItem, RenderFooterItem } from 'ui/components/Playlist'
 import { SeeMore } from 'ui/components/SeeMore'
@@ -138,7 +138,7 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
       {shouldDisplayArtistsPlaylist ? (
         <ArtistsPlaylistContainer gap={2}>
           <ArtistsPlaylistTitleText>Les artistes disponibles dans ce lieu</ArtistsPlaylistTitleText>
-          <AvatarsList data={artists} onItemPress={handleArtistsPlaylistPress} />
+          <AvatarList data={artists} onItemPress={handleArtistsPlaylistPress} />
         </ArtistsPlaylistContainer>
       ) : null}
       {playlists.length
