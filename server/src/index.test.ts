@@ -2,16 +2,21 @@ import { Server } from 'http'
 import { AddressInfo } from 'net'
 
 import { env } from './libs/environment/__mocks__/env'
+import { logger } from './utils/logging'
+
 
 describe('express server', () => {
   let server: Server
   let initialEnv: string | undefined
 
+  const PORT = 8080
+
   beforeAll(async () => {
     initialEnv = process.env.ENV
     process.env.ENV = 'testing'
-    const { server: newServer } = await import('./index')
-    server = newServer
+    const {app} = await import ('./app')
+    server = app.listen(PORT, () => {logger.info(`[${env.ENV}] Listening on port ${PORT}`)
+    })
   })
 
   afterAll((done) => {
