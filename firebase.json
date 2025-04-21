@@ -3,13 +3,17 @@
     "rules": "firestore.rules",
     "indexes": "firestore.indexes.json"
   },
+  "functions": {
+    "source": "server/build/src"
+  },
   "hosting": {
     "public": "dist",
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+    "site": "passculture-proxy",
     "rewrites": [
       {
         "source": "**",
-        "destination": "/index.html"
+        "function": "appFunction"
       }
     ]
   }
