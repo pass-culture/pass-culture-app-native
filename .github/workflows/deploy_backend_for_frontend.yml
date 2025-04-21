@@ -1,0 +1,78 @@
+name: 'WIP : Deploy Backend For Frontend on Firebase'
+
+on:
+  push:
+    branches: chore/proxy-firebase-hosting
+
+permissions:
+  checks: write
+  contents: read
+  id-token: write
+  pull-requests: write
+
+defaults:
+  run:
+    working-directory: '.'
+
+jobs:
+  deploy_on_firebase:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    steps:
+      - name: Enable Corepack
+        run: corepack enable
+
+      - uses: actions/checkout@v4.2.1
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+
+      - name: 'OpenID Connect Authentication'
+        id: 'openid-auth'
+        uses: 'google-github-actions/auth@v2'
+        with:
+          workload_identity_provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+
+      - name: 'Get Secret'
+        id: 'secrets'
+        uses: 'google-github-actions/get-secretmanager-secrets@v2'
+        with:
+          secrets: |-
+            FIREBASE_TOKEN:passculture-metier-ehp/pc_native_testing_firebase_json
+            SENTRY_TOKEN:passculture-metier-ehp/pcapi-native-sentry-saas-token
+      - name: 'Build Frontend'
+        run: |
+          yarn install
+          yarn build:testing
+
+      - name: 'Build BFF'
+        working-directory: ./server
+        run: |
+          yarn install
+          yarn build
+
+      - name: 'Cache the node_modules'
+        id: 'yarn-modules-cache'
+        uses: pass-culture-github-actions/cache@v1.0.0
+        with:
+          compression-method: 'gzip'
+          bucket: 'passculture-metier-ehp'
+          path: |
+            **/node_modules
+          key: v1-yarn-pro-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            v1-yarn-pro-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+
+        env:
+          # By default NodeJS processes are limited to 512MB of memory
+          # This is not enough for the build process when compiling sourcemaps
+          # Increases the limit so that the build doesnt fail
+          NODE_OPTIONS: --max_old_space_size=4096
+
+      - name: Install Firebase CLI
+        run: npm install -g firebase-tools
+
+      - name: Deploy to Firebase (Hosting + Functions)
+        run: firebase deploy --only hosting,functions --project pc-native-testing
