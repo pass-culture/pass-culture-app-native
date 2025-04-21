@@ -6,7 +6,8 @@
     "pc-native-testing": {
       "hosting": {
         "testing": [
-          "pc-native-testing"
+          "pc-native-testing",
+          "passculture-proxy"
         ]
       }
     }
