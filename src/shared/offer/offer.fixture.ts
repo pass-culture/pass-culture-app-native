@@ -26,6 +26,7 @@ export const offersFixture = toMutable([
       postalCode: '75000',
       city: 'Paris',
     },
+    artists: [{ id: '1', name: 'Artist 1' }],
   },
   {
     offer: {
@@ -48,6 +49,10 @@ export const offersFixture = toMutable([
       postalCode: '75000',
       city: 'Paris',
     },
+    artists: [
+      { id: '2', name: 'Artist 2' },
+      { id: '3', name: 'Artist 3' },
+    ],
   },
   {
     offer: {
@@ -92,5 +97,9 @@ export const offersFixture = toMutable([
       postalCode: '75000',
       city: 'Paris',
     },
+    artists: [
+      { id: '4', name: 'Artist 4' },
+      { id: '5', name: 'Artist 4' },
+    ],
   },
 ] as const satisfies ReadonlyDeep<Offer[]>)

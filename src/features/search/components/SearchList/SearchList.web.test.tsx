@@ -33,7 +33,7 @@ const renderItem = jest.fn()
 
 const props: SearchListProps = {
   nbHits: mockNbHits,
-  hits: { offers: mockHits, venues: [], duplicatedOffers: mockHits },
+  hits: { offers: mockHits, venues: [], duplicatedOffers: mockHits, artists: [] },
   renderItem,
   autoScrollEnabled: true,
   refreshing: false,
