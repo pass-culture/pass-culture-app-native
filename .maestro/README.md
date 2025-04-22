@@ -234,9 +234,6 @@ Les tests Maestro sont organisés avec un système de tags qui permet de catégo
 - `local` : Tests qui peuvent être exécutés en local
 - `nightlyAndroid` : Tests spécifiques pour les runs nocturnes sur Android
 - `nightlyIOS` : Tests spécifiques pour les runs nocturnes sur iOS
-- `conversion` : Tests liés aux parcours de conversion
-- `activation` : Tests liés aux parcours d'activation
-- `decouverte` : Tests liés aux parcours de découverte
 - `squad-conversion` : Tests liés aux parcours de conversion
 - `squad-activation` : Tests liés aux parcours d'activation
 - `squad-decouverte` : Tests liés aux parcours de découverte

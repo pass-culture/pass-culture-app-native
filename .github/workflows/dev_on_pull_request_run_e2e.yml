@@ -61,9 +61,6 @@ jobs:
           contains(github.event.label.name, ':squad-activation') && 'squad-activation' ||
           contains(github.event.label.name, ':squad-decouverte') && 'squad-decouverte' ||
           contains(github.event.label.name, ':squad-conversion') && 'squad-conversion' ||
-          contains(github.event.label.name, ':activation') && 'activation' ||
-          contains(github.event.label.name, ':decouverte') && 'decouverte' ||
-          contains(github.event.label.name, ':conversion') && 'conversion' ||
           'nightlyIOS'
         }}
     secrets:
@@ -84,9 +81,6 @@ jobs:
           contains(github.event.label.name, ':squad-activation') && 'squad-activation' ||
           contains(github.event.label.name, ':squad-decouverte') && 'squad-decouverte' ||
           contains(github.event.label.name, ':squad-conversion') && 'squad-conversion' ||
-          contains(github.event.label.name, ':activation') && 'activation' ||
-          contains(github.event.label.name, ':decouverte') && 'decouverte' ||
-          contains(github.event.label.name, ':conversion') && 'conversion' ||
           'nightlyAndroid'
         }}
     secrets:
