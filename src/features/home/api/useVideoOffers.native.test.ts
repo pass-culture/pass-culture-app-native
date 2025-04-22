@@ -1,5 +1,5 @@
 import { SubcategoriesResponseModelv2 } from 'api/gen'
-import { useVideoOffersQuery } from 'features/home/queries/useVideoOffersQuery'
+import { useVideoOffers } from 'features/home/api/useVideoOffers'
 import { OffersModuleParameters } from 'features/home/types'
 import { fetchMultipleOffers } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/fetchMultipleOffers'
 import { fetchOffersByEan } from 'libs/algolia/fetchAlgolia/fetchOffersByEan'
@@ -32,7 +32,7 @@ const mockOffers = mockedAlgoliaResponse.hits
 
 jest.mock('libs/firebase/analytics/analytics')
 
-describe('useVideoOffersQuery', () => {
+describe('useVideoOffers', () => {
   beforeEach(() => {
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
   })
@@ -41,8 +41,7 @@ describe('useVideoOffersQuery', () => {
     mockfetchOffersByIds.mockResolvedValueOnce([mockOffers[0], mockOffers[1]])
 
     const { result } = renderHook(
-      () =>
-        useVideoOffersQuery([{}] as OffersModuleParameters[], 'moduleId', ['offerId1', 'offerId2']),
+      () => useVideoOffers([{}] as OffersModuleParameters[], 'moduleId', ['offerId1', 'offerId2']),
       {
         wrapper: ({ children }) => reactQueryProviderHOC(children),
       }
@@ -58,10 +57,7 @@ describe('useVideoOffersQuery', () => {
 
     const { result } = renderHook(
       () =>
-        useVideoOffersQuery([{}] as OffersModuleParameters[], 'moduleId', undefined, [
-          'ean1',
-          'ean2',
-        ]),
+        useVideoOffers([{}] as OffersModuleParameters[], 'moduleId', undefined, ['ean1', 'ean2']),
       {
         wrapper: ({ children }) => reactQueryProviderHOC(children),
       }
@@ -77,7 +73,7 @@ describe('useVideoOffersQuery', () => {
     mockFetchMultipleOffers.mockResolvedValueOnce([{ hits: mockOffers, nbHits: 6 }])
 
     const { result } = renderHook(
-      () => useVideoOffersQuery([{}] as OffersModuleParameters[], 'moduleId', undefined, undefined),
+      () => useVideoOffers([{}] as OffersModuleParameters[], 'moduleId', undefined, undefined),
       {
         wrapper: ({ children }) => reactQueryProviderHOC(children),
       }
