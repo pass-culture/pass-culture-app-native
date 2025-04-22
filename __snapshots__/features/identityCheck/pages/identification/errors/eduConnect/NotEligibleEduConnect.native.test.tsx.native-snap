@@ -531,6 +531,7 @@ exports[`NotEligibleEduConnect should render correctly 1`] = `
               },
               "size": 24,
             },
+            "colorScheme": "light",
             "colors": {
               "accent": "#0066ff",
               "aquamarine": "#27DCA8",
