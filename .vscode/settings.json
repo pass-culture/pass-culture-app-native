@@ -31,5 +31,6 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "devbox.autoShellOnTerminal": false,
-  "window.confirmBeforeClose": "keyboardOnly"
+  "window.confirmBeforeClose": "keyboardOnly",
+  "typescript.enablePromptUseWorkspaceTsdk": true
 }
