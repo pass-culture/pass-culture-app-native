@@ -3,13 +3,15 @@ import React from 'react'
 
 import { SubscribeButtonWithTooltip } from 'features/home/components/SubscribeButtonWithTooltip'
 import { storage } from 'libs/storage'
-import { act, fireEvent, render, screen } from 'tests/utils'
+import { act, render, screen, userEvent } from 'tests/utils'
 
 const DISPLAY_START_OFFSET_IN_MS = 1000
 const TOOLTIP_TEXT = 'Suis ce thème pour recevoir de l’actualité sur ce sujet !'
 
 jest.unmock('@react-navigation/native')
 jest.useFakeTimers()
+
+const user = userEvent.setup()
 
 describe('<SubscribeButtonWithTooltip />', () => {
   beforeEach(() => storage.clear('times_subscription_tooltip_has_been_displayed'))
@@ -74,7 +76,7 @@ describe('<SubscribeButtonWithTooltip />', () => {
 
     await act(() => jest.advanceTimersByTime(DISPLAY_START_OFFSET_IN_MS))
 
-    fireEvent.press(screen.getByLabelText('Fermer le tooltip'))
+    await user.press(screen.getByLabelText('Fermer le tooltip'))
 
     expect(screen.queryByText(TOOLTIP_TEXT)).not.toBeOnTheScreen()
   })
@@ -83,7 +85,7 @@ describe('<SubscribeButtonWithTooltip />', () => {
     renderSubscribeButtonWithTooltip()
 
     await act(() => jest.advanceTimersByTime(DISPLAY_START_OFFSET_IN_MS))
-    fireEvent.press(screen.getByLabelText('Fermer le tooltip'))
+    await user.press(screen.getByLabelText('Fermer le tooltip'))
 
     renderSubscribeButtonWithTooltip()
     await act(() => jest.advanceTimersByTime(DISPLAY_START_OFFSET_IN_MS))

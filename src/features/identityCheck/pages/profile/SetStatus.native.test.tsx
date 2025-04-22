@@ -15,7 +15,7 @@ import * as UnderageUserAPI from 'features/profile/helpers/useIsUserUnderage'
 import { analytics } from 'libs/analytics/provider'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
+import { render, screen, userEvent, waitFor } from 'tests/utils'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 let mockStatus: ActivityIdEnum | null = null
@@ -89,6 +89,10 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
+const user = userEvent.setup()
+
+jest.useFakeTimers()
+
 describe('<SetStatus/>', () => {
   beforeEach(async () => {
     mockServer.postApi('/v1/subscription/profile', {})
@@ -117,35 +121,23 @@ describe('<SetStatus/>', () => {
     mockStatus = ActivityTypesSnap.activities[2].id
     renderSetStatus({ type: ProfileTypes.IDENTITY_CHECK })
 
-    await act(async () => {
-      fireEvent.press(screen.getByText(ActivityTypesSnap.activities[2].label)) // select student status
-    })
+    await user.press(screen.getByText(ActivityTypesSnap.activities[2].label)) // select student status
 
-    await act(async () => {
-      fireEvent.press(screen.getByText('Continuer'))
-    })
+    await user.press(screen.getByText('Continuer'))
 
-    await waitFor(() => {
-      expect(dispatch).toHaveBeenCalledWith({
-        payload: { index: 1, routes: [{ name: 'TabNavigator' }, { name: 'Stepper' }] },
-        type: 'RESET',
-      })
+    expect(dispatch).toHaveBeenCalledWith({
+      payload: { index: 1, routes: [{ name: 'TabNavigator' }, { name: 'Stepper' }] },
+      type: 'RESET',
     })
   })
 
   it('should log analytics on press Continuer', async () => {
     renderSetStatus({ type: ProfileTypes.IDENTITY_CHECK })
 
-    await act(async () => {
-      fireEvent.press(screen.getByText(ActivityTypesSnap.activities[1].label))
-    })
-    await act(async () => {
-      fireEvent.press(screen.getByText('Continuer'))
-    })
+    await user.press(screen.getByText(ActivityTypesSnap.activities[1].label))
+    await user.press(screen.getByText('Continuer'))
 
-    await waitFor(() => {
-      expect(analytics.logSetStatusClicked).toHaveBeenCalledTimes(1)
-    })
+    expect(analytics.logSetStatusClicked).toHaveBeenCalledTimes(1)
   })
 })
 

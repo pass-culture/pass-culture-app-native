@@ -3,11 +3,17 @@ import CodePush, { LocalPackage, RemotePackage } from 'react-native-code-push' /
 import TestRenderer from 'react-test-renderer'
 
 import { tick } from 'libs/tick'
-import { fireEvent, render, screen } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 
 import { CodePushButton } from './CodePushButton'
 
+const user = userEvent.setup()
+
 describe('CodePushButton', () => {
+  afterEach(() => {
+    jest.useRealTimers()
+  })
+
   it('gets the metadata on mount', async () => {
     // We fake CodePush update metdata
     CodePush.getUpdateMetadata = jest.fn(() =>
@@ -50,7 +56,9 @@ describe('CodePushButton', () => {
     expect.assertions(2)
   })
 
-  it('prints that a new version is available if version mismatches', () => {
+  it('prints that a new version is available if version mismatches', async () => {
+    jest.useFakeTimers()
+
     // We fake that a new version is available
     CodePush.sync = jest.fn((_, __, ___, mismatchCb) => {
       if (mismatchCb) {
@@ -60,7 +68,7 @@ describe('CodePushButton', () => {
     })
 
     render(<CodePushButton />)
-    fireEvent.press(screen.getByTestId('Check update'))
+    await user.press(screen.getByTestId('Check update'))
 
     expect(CodePush.sync).toHaveBeenCalledTimes(1)
 
@@ -79,13 +87,15 @@ describe('CodePushButton', () => {
     ${undefined}                                | ${'No update found'}
   `(
     'prints $status with message status : $displayStatusMessage',
-    ({
+    async ({
       status,
       displayStatusMessage,
     }: {
       status: CodePush.SyncStatus
       displayStatusMessage: string
     }) => {
+      jest.useFakeTimers()
+
       // We fake that a new version is available
       CodePush.sync = jest.fn((_options, syncCb) => {
         if (syncCb) {
@@ -96,7 +106,7 @@ describe('CodePushButton', () => {
 
       // We press the sync button
       render(<CodePushButton />)
-      fireEvent.press(screen.getByTestId('Check update'))
+      await user.press(screen.getByTestId('Check update'))
 
       expect(CodePush.sync).toHaveBeenCalledTimes(1)
 

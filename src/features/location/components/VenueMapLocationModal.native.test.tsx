@@ -71,7 +71,6 @@ jest.spyOn(reactNavigationNative, 'useNavigation').mockReturnValue({
 const removeSelectedVenueSpy = jest.spyOn(useVenueMapStore, 'removeSelectedVenue')
 
 const user = userEvent.setup()
-jest.useFakeTimers()
 
 describe('VenueMapLocationModal', () => {
   it('should render correctly if modal visible', async () => {
@@ -89,16 +88,17 @@ describe('VenueMapLocationModal', () => {
       jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
     })
     const openLocationModalButton = screen.getByText('Choisir une localisation')
-    fireEvent.press(openLocationModalButton)
+    await user.press(openLocationModalButton)
 
     const searchInput = screen.getByTestId('styled-input-container')
     fireEvent.changeText(searchInput, mockPlaces[0].label)
 
     const suggestedPlace = await screen.findByText(mockPlaces[0].label)
+    // userEvent.press not working correctly here
     fireEvent.press(suggestedPlace)
 
     const validateButon = screen.getByText('Valider et voir sur la carte')
-    fireEvent.press(validateButon)
+    await user.press(validateButon)
 
     expect(analytics.logUserSetLocation).toHaveBeenCalledWith('venueMap')
   })
@@ -153,7 +153,7 @@ describe('VenueMapLocationModal', () => {
       jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
     })
     const openLocationModalButton = screen.getByText('Choisir une localisation')
-    fireEvent.press(openLocationModalButton)
+    await user.press(openLocationModalButton)
 
     const searchInput = screen.getByTestId('styled-input-container')
     await act(async () => {
@@ -161,6 +161,7 @@ describe('VenueMapLocationModal', () => {
     })
 
     const suggestedPlace = await screen.findByText(mockPlaces[0].label)
+    // userEvent.press not working correctly here
     fireEvent.press(suggestedPlace)
 
     await act(async () => {
@@ -169,7 +170,7 @@ describe('VenueMapLocationModal', () => {
     })
 
     const validateButon = screen.getByText('Valider et voir sur la carte')
-    fireEvent.press(validateButon)
+    await user.press(validateButon)
 
     expect(mockNavigate).toHaveBeenNthCalledWith(1, 'VenueMap')
   })
@@ -184,7 +185,7 @@ describe('VenueMapLocationModal', () => {
       jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
     })
     const openLocationModalButton = screen.getByText('Choisir une localisation')
-    fireEvent.press(openLocationModalButton)
+    await user.press(openLocationModalButton)
 
     const searchInput = screen.getByTestId('styled-input-container')
     await act(async () => {
@@ -192,6 +193,7 @@ describe('VenueMapLocationModal', () => {
     })
 
     const suggestedPlace = await screen.findByText(mockPlaces[0].label)
+    // userEvent.press not working correctly here
     fireEvent.press(suggestedPlace)
 
     await act(async () => {
@@ -200,7 +202,7 @@ describe('VenueMapLocationModal', () => {
     })
 
     const validateButon = screen.getByText('Valider et voir sur la carte')
-    fireEvent.press(validateButon)
+    await user.press(validateButon)
 
     expect(analytics.logConsultVenueMap).toHaveBeenNthCalledWith(1, { from: 'searchPlaylist' })
   })
@@ -215,7 +217,7 @@ describe('VenueMapLocationModal', () => {
       jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
     })
     const openLocationModalButton = screen.getByText('Choisir une localisation')
-    fireEvent.press(openLocationModalButton)
+    await user.press(openLocationModalButton)
 
     const searchInput = screen.getByTestId('styled-input-container')
     await act(async () => {
@@ -223,6 +225,7 @@ describe('VenueMapLocationModal', () => {
     })
 
     const suggestedPlace = await screen.findByText(mockPlaces[0].label)
+    // userEvent.press not working correctly here
     fireEvent.press(suggestedPlace)
 
     await act(async () => {
@@ -231,7 +234,7 @@ describe('VenueMapLocationModal', () => {
     })
 
     const validateButon = screen.getByText('Valider et voir sur la carte')
-    fireEvent.press(validateButon)
+    await user.press(validateButon)
 
     expect(removeSelectedVenueSpy).toHaveBeenCalledTimes(1)
   })
@@ -246,7 +249,7 @@ describe('VenueMapLocationModal', () => {
       jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
     })
     const openLocationModalButton = screen.getByText('Choisir une localisation')
-    fireEvent.press(openLocationModalButton)
+    await user.press(openLocationModalButton)
 
     const searchInput = screen.getByTestId('styled-input-container')
     await act(async () => {
@@ -254,6 +257,7 @@ describe('VenueMapLocationModal', () => {
     })
 
     const suggestedPlace = await screen.findByText(mockPlaces[0].label)
+    // userEvent.press not working correctly here
     fireEvent.press(suggestedPlace)
 
     await act(async () => {
@@ -262,7 +266,7 @@ describe('VenueMapLocationModal', () => {
     })
 
     const validateButon = screen.getByText('Valider et voir sur la carte')
-    fireEvent.press(validateButon)
+    await user.press(validateButon)
 
     expect(mockNavigate).not.toHaveBeenCalled()
   })
@@ -278,7 +282,7 @@ describe('VenueMapLocationModal', () => {
       jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
     })
     const openLocationModalButton = screen.getByText('Choisir une localisation')
-    fireEvent.press(openLocationModalButton)
+    await user.press(openLocationModalButton)
 
     const searchInput = screen.getByTestId('styled-input-container')
     await act(async () => {
@@ -286,6 +290,7 @@ describe('VenueMapLocationModal', () => {
     })
 
     const suggestedPlace = await screen.findByText(mockPlaces[0].label)
+    // userEvent.press not working correctly here
     fireEvent.press(suggestedPlace)
 
     await act(async () => {
@@ -294,7 +299,7 @@ describe('VenueMapLocationModal', () => {
     })
 
     const validateButon = screen.getByText('Valider et voir sur la carte')
-    fireEvent.press(validateButon)
+    await user.press(validateButon)
 
     expect(mockSetLocationMode).toHaveBeenNthCalledWith(1, LocationMode.AROUND_PLACE)
   })
@@ -322,6 +327,7 @@ describe('VenueMapLocationModal', () => {
           <React.Fragment>
             <SearchLocationModal
               visible={visible}
+              // userEvent.press not working correctly here
               dismissModal={() => fireEvent.press(screen.getByText('Close'))}
             />
             <Button title="Close" onPress={() => setVisible(false)} />
@@ -359,6 +365,7 @@ describe('VenueMapLocationModal', () => {
       })
       await act(async () => {
         const suggestedPlace = await screen.findByText(mockPlaces[0].label)
+        // userEvent.press not working correctly here
         fireEvent.press(suggestedPlace)
       })
 
@@ -380,12 +387,13 @@ describe('VenueMapLocationModal', () => {
       })
 
       const openLocationModalButton = screen.getByText('Choisir une localisation')
-      fireEvent.press(openLocationModalButton)
+      await user.press(openLocationModalButton)
 
       const searchInput = screen.getByTestId('styled-input-container')
       fireEvent.changeText(searchInput, mockPlaces[0].label)
 
       const suggestedPlace = await screen.findByText(mockPlaces[0].label)
+      // userEvent.press not working correctly here
       fireEvent.press(suggestedPlace)
 
       expect(screen.getByText(radiusWithKm(DEFAULT_RADIUS))).toBeOnTheScreen()
@@ -418,7 +426,7 @@ describe('VenueMapLocationModal', () => {
         jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
       })
       const openLocationModalButton = screen.getByText('Choisir une localisation')
-      fireEvent.press(openLocationModalButton)
+      await user.press(openLocationModalButton)
 
       const searchInput = screen.getByTestId('styled-input-container')
       await act(async () => {
@@ -426,6 +434,7 @@ describe('VenueMapLocationModal', () => {
       })
 
       const suggestedPlace = await screen.findByText(mockPlaces[0].label)
+      // userEvent.press not working correctly here
       fireEvent.press(suggestedPlace)
 
       await act(async () => {
@@ -434,15 +443,13 @@ describe('VenueMapLocationModal', () => {
       })
 
       const validateButon = screen.getByText('Valider et voir sur la carte')
-      fireEvent.press(validateButon)
+      await user.press(validateButon)
 
       const mockOpenModalButton = screen.getByText('Open modal')
-      fireEvent.press(mockOpenModalButton)
+      await user.press(mockOpenModalButton)
 
-      await act(async () => {
-        const openGeolocationModalButton = screen.getByText('Utiliser ma position actuelle')
-        fireEvent.press(openGeolocationModalButton)
-      })
+      const openGeolocationModalButton = screen.getByText('Utiliser ma position actuelle')
+      await user.press(openGeolocationModalButton)
 
       expect(screen.getByText(radiusWithKm(DEFAULT_RADIUS))).toBeOnTheScreen()
     })

@@ -22,6 +22,7 @@ describe('VideoEndView', () => {
     renderVideoEndView()
 
     const replayButton = await screen.findByText('Revoir')
+    // userEvent.press is not working correctly
     fireEvent.press(replayButton)
 
     expect(mockReplay).toHaveBeenCalledTimes(1)

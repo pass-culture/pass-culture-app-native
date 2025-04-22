@@ -14,7 +14,7 @@ import { requestGeolocPermission } from 'libs/location/geolocation/requestGeoloc
 import { LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
 import { MODAL_TO_HIDE_TIME, MODAL_TO_SHOW_TIME } from 'tests/constants'
-import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
+import { act, fireEvent, render, screen, userEvent, waitFor } from 'tests/utils'
 
 jest.useFakeTimers()
 jest.unmock('react-native/Libraries/Animated/createAnimatedComponent')
@@ -67,6 +67,8 @@ jest.spyOn(useSearch, 'useSearch').mockReturnValue({
   hideSuggestions: jest.fn(),
 })
 
+const user = userEvent.setup()
+
 describe('SearchLocationModal', () => {
   it('should render correctly if modal visible', async () => {
     renderSearchLocationModal()
@@ -83,16 +85,18 @@ describe('SearchLocationModal', () => {
       jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
     })
     const openLocationModalButton = screen.getByText('Choisir une localisation')
-    fireEvent.press(openLocationModalButton)
+    await user.press(openLocationModalButton)
 
     const searchInput = screen.getByTestId('styled-input-container')
+
     fireEvent.changeText(searchInput, mockPlaces[0].label)
 
     const suggestedPlace = await screen.findByText(mockPlaces[0].label)
+    // userEvent.press not working correctly here
     fireEvent.press(suggestedPlace)
 
     const validateButon = screen.getByText('Valider la localisation')
-    fireEvent.press(validateButon)
+    await user.press(validateButon)
 
     expect(analytics.logUserSetLocation).toHaveBeenCalledWith('search')
   })
@@ -103,7 +107,7 @@ describe('SearchLocationModal', () => {
       jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
     })
 
-    fireEvent.press(screen.getByLabelText('Fermer la modale'))
+    await user.press(screen.getByLabelText('Fermer la modale'))
 
     await waitFor(() => {
       expect(screen.queryByText('Localisation')).not.toBeOnTheScreen()
@@ -120,9 +124,8 @@ describe('SearchLocationModal', () => {
     })
 
     const geolocPositionButton = screen.getByText('Utiliser ma position actuelle')
-    await act(() => {
-      fireEvent.press(geolocPositionButton)
-    })
+
+    await user.press(geolocPositionButton)
 
     expect(screen.getByText('Utiliser ma position actuelle')).toHaveStyle({ color: '#eb0055' })
   })
@@ -146,9 +149,7 @@ describe('SearchLocationModal', () => {
       jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
     })
 
-    await act(async () => {
-      fireEvent.press(screen.getByText('Utiliser ma position actuelle'))
-    })
+    await user.press(screen.getByText('Utiliser ma position actuelle'))
 
     expect(mockRequestGeolocPermission).toHaveBeenCalledTimes(1)
   })
@@ -163,7 +164,8 @@ describe('SearchLocationModal', () => {
           <React.Fragment>
             <SearchLocationModal
               visible={visible}
-              dismissModal={() => fireEvent.press(screen.getByText('Close'))}
+              // userEvent.press not working correctly here
+              dismissModal={async () => fireEvent.press(screen.getByText('Close'))}
             />
             <Button title="Close" onPress={() => setVisible(false)} />
           </React.Fragment>
@@ -174,7 +176,7 @@ describe('SearchLocationModal', () => {
     await act(async () => {
       jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
     })
-    fireEvent.press(screen.getByText('Utiliser ma position actuelle'))
+    await user.press(screen.getByText('Utiliser ma position actuelle'))
 
     await act(async () => {
       jest.advanceTimersByTime(MODAL_TO_HIDE_TIME)
@@ -190,16 +192,17 @@ describe('SearchLocationModal', () => {
       await act(async () => {
         jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
       })
-      await act(async () => {
-        const openLocationModalButton = screen.getByText('Choisir une localisation')
-        fireEvent.press(openLocationModalButton)
-      })
+
+      const openLocationModalButton = screen.getByText('Choisir une localisation')
+      await user.press(openLocationModalButton)
+
       await act(async () => {
         const searchInput = screen.getByTestId('styled-input-container')
         fireEvent.changeText(searchInput, mockPlaces[0].label)
       })
       await act(async () => {
         const suggestedPlace = await screen.findByText(mockPlaces[0].label)
+        // userEvent.press not working correctly here
         fireEvent.press(suggestedPlace)
       })
 
@@ -212,7 +215,7 @@ describe('SearchLocationModal', () => {
         jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
       })
       const openLocationModalButton = screen.getByText('Choisir une localisation')
-      fireEvent.press(openLocationModalButton)
+      await user.press(openLocationModalButton)
 
       const searchInput = screen.getByTestId('styled-input-container')
       await act(async () => {
@@ -220,6 +223,7 @@ describe('SearchLocationModal', () => {
       })
 
       const suggestedPlace = await screen.findByText(mockPlaces[0].label)
+      // userEvent.press not working correctly here
       fireEvent.press(suggestedPlace)
 
       await act(async () => {
@@ -227,7 +231,7 @@ describe('SearchLocationModal', () => {
         slider.props.onValuesChange([mockRadiusPlace])
       })
 
-      fireEvent.press(screen.getByText('Valider la localisation'))
+      await user.press(screen.getByText('Valider la localisation'))
 
       expect(mockDispatch).toHaveBeenCalledWith({
         payload: {
@@ -244,9 +248,8 @@ describe('SearchLocationModal', () => {
       await act(async () => {
         jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
       })
-      await act(async () => {
-        fireEvent.press(screen.getByText('Utiliser ma position actuelle'))
-      })
+
+      await user.press(screen.getByText('Utiliser ma position actuelle'))
 
       await act(async () => {
         const slider = screen.getByTestId('slider').children[0] as ReactTestInstance
@@ -254,12 +257,13 @@ describe('SearchLocationModal', () => {
       })
 
       const openLocationModalButton = screen.getByText('Choisir une localisation')
-      fireEvent.press(openLocationModalButton)
+      await user.press(openLocationModalButton)
 
       const searchInput = screen.getByTestId('styled-input-container')
       fireEvent.changeText(searchInput, mockPlaces[0].label)
 
       const suggestedPlace = await screen.findByText(mockPlaces[0].label)
+      // userEvent.press not working correctly here
       fireEvent.press(suggestedPlace)
 
       expect(screen.getByText(radiusWithKm(DEFAULT_RADIUS))).toBeOnTheScreen()
@@ -274,9 +278,7 @@ describe('SearchLocationModal', () => {
         jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
       })
       const geolocPositionButton = screen.getByText('Utiliser ma position actuelle')
-      await act(() => {
-        fireEvent.press(geolocPositionButton)
-      })
+      await user.press(geolocPositionButton)
 
       expect(screen.getByText('Utiliser ma position actuelle')).toHaveStyle({ color: '#eb0055' })
 
@@ -292,16 +294,14 @@ describe('SearchLocationModal', () => {
         jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
       })
       const geolocPositionButton = screen.getByText('Utiliser ma position actuelle')
-      await act(() => {
-        fireEvent.press(geolocPositionButton)
-      })
+      await user.press(geolocPositionButton)
 
       await act(async () => {
         const slider = screen.getByTestId('slider').children[0] as ReactTestInstance
         slider.props.onValuesChange([mockAroundMeRadius])
       })
 
-      fireEvent.press(screen.getByText('Valider la localisation'))
+      await user.press(screen.getByText('Valider la localisation'))
 
       expect(mockDispatch).toHaveBeenCalledWith({
         payload: mockAroundMeRadius,
@@ -319,7 +319,7 @@ describe('SearchLocationModal', () => {
         jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
       })
       const openLocationModalButton = screen.getByText('Choisir une localisation')
-      fireEvent.press(openLocationModalButton)
+      await user.press(openLocationModalButton)
 
       const searchInput = screen.getByTestId('styled-input-container')
       await act(async () => {
@@ -327,6 +327,7 @@ describe('SearchLocationModal', () => {
       })
 
       const suggestedPlace = await screen.findByText(mockPlaces[0].label)
+      // userEvent.press not working correctly here
       fireEvent.press(suggestedPlace)
 
       await act(async () => {
@@ -335,15 +336,13 @@ describe('SearchLocationModal', () => {
       })
 
       const validateButon = screen.getByText('Valider la localisation')
-      fireEvent.press(validateButon)
+      await user.press(validateButon)
 
       const mockOpenModalButton = screen.getByText('Open modal')
-      fireEvent.press(mockOpenModalButton)
+      await user.press(mockOpenModalButton)
 
-      await act(async () => {
-        const openGeolocationModalButton = screen.getByText('Utiliser ma position actuelle')
-        fireEvent.press(openGeolocationModalButton)
-      })
+      const openGeolocationModalButton = screen.getByText('Utiliser ma position actuelle')
+      await user.press(openGeolocationModalButton)
 
       expect(screen.getByText(radiusWithKm(DEFAULT_RADIUS))).toBeOnTheScreen()
     })

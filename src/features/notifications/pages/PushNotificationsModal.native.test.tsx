@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { analytics } from 'libs/analytics/provider'
-import { fireEvent, render, screen } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 
 import { PushNotificationsModal } from './PushNotificationsModal'
 
@@ -13,6 +13,10 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
     return Component
   }
 })
+
+const user = userEvent.setup()
+
+jest.useFakeTimers()
 
 describe('PushNotificationsModal', () => {
   it('should render properly', () => {
@@ -27,7 +31,7 @@ describe('PushNotificationsModal', () => {
     expect(screen).toMatchSnapshot()
   })
 
-  it('should open settings and log event logOpenNotificationSettings', () => {
+  it('should open settings and log event logOpenNotificationSettings', async () => {
     render(
       <PushNotificationsModal
         onDismiss={onDismiss}
@@ -35,7 +39,7 @@ describe('PushNotificationsModal', () => {
         onRequestPermission={onRequestPermission}
       />
     )
-    fireEvent.press(screen.getByText('Autoriser les notifications'))
+    await user.press(screen.getByText('Autoriser les notifications'))
 
     expect(analytics.logOpenNotificationSettings).toHaveBeenCalledTimes(1)
     expect(onRequestPermission).toHaveBeenCalledTimes(1)

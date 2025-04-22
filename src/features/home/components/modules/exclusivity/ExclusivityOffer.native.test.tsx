@@ -24,7 +24,9 @@ const props = {
   homeEntryId: 'abcd',
   index: 1,
 }
+
 const user = userEvent.setup()
+
 jest.useFakeTimers()
 
 describe('ExclusivityModule component', () => {
