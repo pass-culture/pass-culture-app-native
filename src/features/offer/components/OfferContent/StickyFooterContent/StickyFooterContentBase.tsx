@@ -10,7 +10,6 @@ import { StickyBottomWrapper } from 'ui/components/StickyBottomWrapper/StickyBot
 import { Favorite } from 'ui/svg/icons/Favorite'
 import { FavoriteFilled } from 'ui/svg/icons/FavoriteFilled'
 import { getSpacing, getShadow, Typo } from 'ui/theme'
-import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 export type StickyFooterContentProps = {
   offerId: number
@@ -29,40 +28,43 @@ export const StickyFooterContentBase: FC<StickyFooterContentBaseProps> = ({
   favoriteAuthModal,
   children,
 }) => {
-  const { bottom } = useCustomSafeInsets()
-
   return (
-    <StickyFooterWrapper bottom={bottom}>
-      <Caption>Cette offre sera bientôt disponible</Caption>
-      {favorite ? (
-        <ButtonSecondary
-          wording="Retirer des favoris"
-          onPress={onPressFavoriteCTA}
-          icon={FavoriteFilled}
-          isLoading={isRemoveFavoriteLoading}
-        />
-      ) : (
-        <React.Fragment>
-          <ButtonPrimary
-            wording="Mettre en favori"
+    <StyledStickyFooterContentBase>
+      <StickyFooterWrapper>
+        <Caption>Cette offre sera bientôt disponible</Caption>
+        {favorite ? (
+          <ButtonSecondary
+            wording="Retirer des favoris"
             onPress={onPressFavoriteCTA}
-            icon={Favorite}
-            isLoading={isAddFavoriteLoading}
+            icon={FavoriteFilled}
+            isLoading={isRemoveFavoriteLoading}
           />
-          <FavoriteAuthModal
-            visible={favoriteAuthModal.visible}
-            offerId={offerId}
-            dismissModal={favoriteAuthModal.hideModal}
-          />
-        </React.Fragment>
-      )}
-      {children}
-    </StickyFooterWrapper>
+        ) : (
+          <React.Fragment>
+            <ButtonPrimary
+              wording="Mettre en favori"
+              onPress={onPressFavoriteCTA}
+              icon={Favorite}
+              isLoading={isAddFavoriteLoading}
+            />
+            <FavoriteAuthModal
+              visible={favoriteAuthModal.visible}
+              offerId={offerId}
+              dismissModal={favoriteAuthModal.hideModal}
+            />
+          </React.Fragment>
+        )}
+        {children}
+      </StickyFooterWrapper>
+    </StyledStickyFooterContentBase>
   )
 }
 
-const StickyFooterWrapper = styled(StickyBottomWrapper)(({ theme, bottom }) => ({
-  bottom,
+const StyledStickyFooterContentBase = styled.View({
+  marginTop: getSpacing(8),
+})
+
+const StickyFooterWrapper = styled(StickyBottomWrapper)(({ theme }) => ({
   backgroundColor: theme.colors.white,
   paddingTop: getSpacing(4),
   paddingHorizontal: getSpacing(6),
