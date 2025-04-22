@@ -37,6 +37,7 @@ module.exports = {
     '<rootDir>/jest/jest.setup.ts',
     'react-native-gesture-handler/jestSetup.js',
     '@react-native-google-signin/google-signin/jest/build/setup.js',
+    'react-native-gesture-handler/jestSetup.js',
   ],
   setupFilesAfterEnv: ['./src/tests/setupTests.js'],
   transform: {
