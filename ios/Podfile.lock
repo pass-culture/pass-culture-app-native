@@ -1448,7 +1448,7 @@ PODS:
     - RNFBApp
   - RNFlashList (1.6.4):
     - React-Core
-  - RNGestureHandler (2.15.0):
+  - RNGestureHandler (2.18.1):
     - DoubleConversion
     - glog
     - hermes-engine
@@ -2018,7 +2018,7 @@ SPEC CHECKSUMS:
   RNFBPerf: 87432bcf04f3099fb1792dd46b52c0acd1626f98
   RNFBRemoteConfig: a9af3336af4d082013bf86ac048672c578a2c847
   RNFlashList: 23b2c67aa684179d29c8c2f468c6f5334e609951
-  RNGestureHandler: 293aea360e79439e2272b8a5ffebd582a1e4c486
+  RNGestureHandler: d5aafad9a7d1506a8bcab6fbc04384372c8ca86b
   RNGoogleSignin: 30e1aee80140dc0706cd78a4951c411376c88329
   RNKeychain: 3194f1c9d8599f39e570b4b5ecbcdd8cd610e771
   RNLaunchNavigator: 2011701d73aba8517d17cc82a8c98131c7a580c6
