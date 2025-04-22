@@ -9,7 +9,7 @@ import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, render, screen, userEvent } from 'tests/utils'
 
 jest.unmock('react-native/Libraries/Animated/createAnimatedComponent')
-jest.mock('features/venue/api/useVenue')
+jest.mock('features/venue/queries/useVenueQuery')
 jest.useFakeTimers()
 
 jest.spyOn(Share, 'share').mockResolvedValue({ action: Share.sharedAction })

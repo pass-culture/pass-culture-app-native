@@ -10,9 +10,6 @@ import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { OfferCTAProvider } from 'features/offer/components/OfferContent/OfferCTAProvider'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { useSearch } from 'features/search/context/SearchWrapper'
-import { useVenue } from 'features/venue/api/useVenue'
-import { useVenueOffers } from 'features/venue/api/useVenueOffers'
-import { useVenueOffersArtists } from 'features/venue/api/useVenueOffersArtists/useVenueOffersArtists'
 import { VenueBody } from 'features/venue/components/VenueBody/VenueBody'
 import { VenueContent } from 'features/venue/components/VenueContent/VenueContent'
 import { VENUE_CTA_HEIGHT_IN_SPACES } from 'features/venue/components/VenueCTA/VenueCTA'
@@ -20,6 +17,8 @@ import { VenueMessagingApps } from 'features/venue/components/VenueMessagingApps
 import { VenueThematicSection } from 'features/venue/components/VenueThematicSection/VenueThematicSection'
 import { VenueTopComponent } from 'features/venue/components/VenueTopComponent/VenueTopComponent'
 import { useVenueSearchParameters } from 'features/venue/helpers/useVenueSearchParameters'
+import { useVenueOffersArtists } from 'features/venue/hooks/useVenueOffersArtists/useVenueOffersArtists'
+import { useVenueQuery } from 'features/venue/queries/useVenueQuery'
 import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { analytics } from 'libs/analytics/provider'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -27,6 +26,7 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { useLocation } from 'libs/location'
 import { useCategoryHomeLabelMapping, useCategoryIdMapping } from 'libs/subcategories'
+import { useVenueOffersQuery } from 'queries/venue/useVenueOffersQuery/useVenueOffersQuery'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
 import { SectionWithDivider } from 'ui/components/SectionWithDivider'
@@ -35,7 +35,7 @@ import { getSpacing } from 'ui/theme'
 
 export const Venue: FunctionComponent = () => {
   const { params } = useRoute<UseRouteType<'Venue'>>()
-  const { data: venue } = useVenue(params.id)
+  const { data: venue } = useVenueQuery(params.id)
   const { gtlPlaylists, isLoading: arePlaylistsLoading } = useGTLPlaylists({
     venue,
     searchGroupLabel: params?.fromThematicSearch,
@@ -46,7 +46,7 @@ export const Venue: FunctionComponent = () => {
   const venueSearchParams = useVenueSearchParameters(venue)
   const { searchState } = useSearch()
   const isUserUnderage = useIsUserUnderage()
-  const { data: venueOffers } = useVenueOffers({
+  const { data: venueOffers } = useVenueOffersQuery({
     userLocation,
     selectedLocationMode,
     isUserUnderage,

@@ -3,7 +3,7 @@ import { View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
-import { useVenue } from 'features/venue/api/useVenue'
+import { useVenueQuery } from 'features/venue/queries/useVenueQuery'
 import { getDetailedAccessibilityInfo } from 'shared/accessibility/getDetailedAccessibilityInfo'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { TextInput } from 'ui/components/inputs/TextInput'
@@ -16,12 +16,16 @@ import { ColorsEnum } from 'ui/theme/colors'
 export const CheatcodesScreenAccesLibre = () => {
   const [value, setValue] = useState('')
   const [venueId, setVenueId] = useState<number | null>(null)
-  const { data: venue } = useVenue(venueId)
+
+  const { data: venue } = useVenueQuery(venueId || 0, { enabled: !!venueId })
 
   const details = getDetailedAccessibilityInfo(venue?.externalAccessibilityData)
 
   const onPress = () => {
-    setVenueId(parseInt(value))
+    const parsedId = parseInt(value, 10)
+    if (!isNaN(parsedId)) {
+      setVenueId(parsedId)
+    }
   }
 
   return (
