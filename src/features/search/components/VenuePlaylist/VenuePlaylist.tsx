@@ -124,7 +124,7 @@ export const VenuePlaylist: React.FC<Props> = ({
   return (
     <React.Fragment>
       <Container>
-        <Title>{venuePlaylistTitle}</Title>
+        <Title numberOfLines={isWeb ? 1 : undefined}>{venuePlaylistTitle}</Title>
         {shouldDisplaySeeOnMapButton ? (
           <ButtonContainer>
             <Spacer.Column numberOfSpaces={1} />
