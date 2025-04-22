@@ -5,7 +5,6 @@ import { Button } from 'react-native'
 
 import { api } from 'api/api'
 import { GetRemindersResponse } from 'api/gen'
-import * as Auth from 'features/auth/context/AuthContext'
 import { favoriteOfferResponseSnap } from 'features/favorites/fixtures/favoriteOfferResponseSnap'
 import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteResponseSnap'
 import { OfferCTAProvider } from 'features/offer/components/OfferContent/OfferCTAProvider'
@@ -13,8 +12,10 @@ import * as useOfferCTAContextModule from 'features/offer/components/OfferConten
 import { OfferFooter, OfferFooterProps } from 'features/offer/components/OfferFooter/OfferFooter'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { reminder, remindersResponse } from 'features/offer/fixtures/remindersResponse'
+import { beneficiaryUser } from 'fixtures/user'
 import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
+import { mockAuthContextWithoutUser, mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, render, screen, userEvent } from 'tests/utils'
@@ -23,8 +24,6 @@ import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 jest.mock('libs/jwt/jwt')
 
 const useRemoteConfigSpy = jest.spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
-
-const useAuthContextSpy = jest.spyOn(Auth, 'useAuthContext')
 
 const useOfferCTASpy = jest.spyOn(useOfferCTAContextModule, 'useOfferCTA')
 
@@ -38,19 +37,14 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
   }),
 }))
 
+jest.mock('features/auth/context/AuthContext')
+
 const mockUseOfferCTAReturnValue = {
   wording: 'Cine content CTA',
   onPress: jest.fn(),
   setButton: jest.fn(),
   showButton: jest.fn(),
   isButtonVisible: false,
-}
-
-const mockAuthContextReturnValue = {
-  isLoggedIn: false,
-  isUserLoading: false,
-  setIsLoggedIn: jest.fn(),
-  refetchUser: jest.fn(),
 }
 
 jest.useFakeTimers()
@@ -60,7 +54,6 @@ describe('OfferFooter', () => {
   beforeAll(() => {
     useRemoteConfigSpy.mockReturnValue(DEFAULT_REMOTE_CONFIG)
     useOfferCTASpy.mockReturnValue(mockUseOfferCTAReturnValue)
-    useAuthContextSpy.mockReturnValue(mockAuthContextReturnValue)
   })
 
   beforeEach(() => mockServer.getApi<GetRemindersResponse>('/v1/me/reminders', remindersResponse))
@@ -134,7 +127,8 @@ describe('OfferFooter', () => {
     })
 
     it('should display disableReminder button', async () => {
-      useAuthContextSpy.mockReturnValueOnce({ ...mockAuthContextReturnValue, isLoggedIn: true })
+      mockAuthContextWithUser(beneficiaryUser, { persist: true })
+
       renderOfferFooter({
         offer: {
           ...offerWithPublicationDate,
@@ -149,6 +143,8 @@ describe('OfferFooter', () => {
     })
 
     it('should display signinModal when user presses favorite button but is not logged in', async () => {
+      mockAuthContextWithoutUser({ persist: true })
+
       renderOfferFooter({ offer: offerWithPublicationDate })
 
       await screen.findByText('Cette offre sera bientôt disponible')
@@ -159,8 +155,7 @@ describe('OfferFooter', () => {
     })
 
     it('should add offer to favorites when user is logged in and presses addTofavorite button', async () => {
-      useAuthContextSpy.mockReturnValueOnce({ ...mockAuthContextReturnValue, isLoggedIn: true })
-      useAuthContextSpy.mockReturnValueOnce({ ...mockAuthContextReturnValue, isLoggedIn: true })
+      mockAuthContextWithUser(beneficiaryUser, { persist: true })
 
       const { addFavorite } = renderOfferFooter({ offer: offerWithPublicationDate })
 
@@ -172,8 +167,7 @@ describe('OfferFooter', () => {
     })
 
     it('should remove offer from favorites when user is logged in and presses removeFromfavorite button', async () => {
-      useAuthContextSpy.mockReturnValueOnce({ ...mockAuthContextReturnValue, isLoggedIn: true })
-      useAuthContextSpy.mockReturnValueOnce({ ...mockAuthContextReturnValue, isLoggedIn: true })
+      mockAuthContextWithUser(beneficiaryUser, { persist: true })
 
       const { removeFavorite, favorite } = renderOfferFooter({
         offer: offerWithPublicationDate,
@@ -198,8 +192,8 @@ describe('OfferFooter', () => {
     })
 
     it('should display snackbar when addReminder fails', async () => {
-      useAuthContextSpy.mockReturnValueOnce({ ...mockAuthContextReturnValue, isLoggedIn: true })
-      useAuthContextSpy.mockReturnValueOnce({ ...mockAuthContextReturnValue, isLoggedIn: true })
+      mockAuthContextWithUser(beneficiaryUser, { persist: true })
+
       addReminderMutationSpy.mockRejectedValueOnce({ status: 400 })
 
       renderOfferFooter({
@@ -217,8 +211,7 @@ describe('OfferFooter', () => {
     })
 
     it('should show reminder authentication modal when not logged in', async () => {
-      useAuthContextSpy.mockReturnValueOnce({ ...mockAuthContextReturnValue, isLoggedIn: false })
-      useAuthContextSpy.mockReturnValueOnce({ ...mockAuthContextReturnValue, isLoggedIn: false })
+      mockAuthContextWithoutUser({ persist: true })
 
       mockServer.getApi<GetRemindersResponse>('/v1/me/reminders', {})
       renderOfferFooter({ offer: offerWithPublicationDate })
@@ -231,8 +224,7 @@ describe('OfferFooter', () => {
     })
 
     it('should call addReminder when no existing reminder', async () => {
-      useAuthContextSpy.mockReturnValueOnce({ ...mockAuthContextReturnValue, isLoggedIn: true })
-      useAuthContextSpy.mockReturnValueOnce({ ...mockAuthContextReturnValue, isLoggedIn: true })
+      mockAuthContextWithUser(beneficiaryUser, { persist: true })
 
       mockServer.getApi<GetRemindersResponse>('/v1/me/reminders', {})
       mockServer.postApi(`/v1/me/reminders`, {
@@ -251,8 +243,7 @@ describe('OfferFooter', () => {
     })
 
     it('should call deleteReminder when existing reminder', async () => {
-      useAuthContextSpy.mockReturnValueOnce({ ...mockAuthContextReturnValue, isLoggedIn: true })
-      useAuthContextSpy.mockReturnValueOnce({ ...mockAuthContextReturnValue, isLoggedIn: true })
+      mockAuthContextWithUser(beneficiaryUser, { persist: true })
 
       mockServer.deleteApi(`/v1/me/reminders/${reminder.id}`, {
         responseOptions: { statusCode: 201, data: {} },
