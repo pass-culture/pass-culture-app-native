@@ -3,7 +3,7 @@ import { useQuery } from 'react-query'
 import { api } from 'api/api'
 import { QueryKeys } from 'libs/queryKeys'
 
-export const useExcluOfferQuery = (id: number) => {
+export const useExcluOffer = (id: number) => {
   return useQuery(
     [QueryKeys.OFFER, id],
     async () => {
