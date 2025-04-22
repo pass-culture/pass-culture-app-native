@@ -7,7 +7,6 @@ import { CreditProgressBar } from 'features/profile/components/CreditInfo/Credit
 import { CreditTimelineV3 } from 'features/tutorial/components/CreditTimelineV3'
 import { BlockDescriptionItem } from 'features/tutorial/components/profileTutorial/BlockDescriptionItem'
 import { InformationStepContent } from 'features/tutorial/components/profileTutorial/InformationStepContent'
-import { TutorialTypes } from 'features/tutorial/enums'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
@@ -97,7 +96,6 @@ export const ProfileTutorialAgeInformationCredit: FunctionComponent = () => {
               ),
             },
           ]}
-          type={TutorialTypes.PROFILE_TUTORIAL}
           testID="seventeen-timeline"
         />
         <Spacer.Column numberOfSpaces={4} />

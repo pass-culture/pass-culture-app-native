@@ -2,7 +2,6 @@ import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
 import { CreditComponentProps, CreditTimeline } from 'features/tutorial/components/CreditTimeline'
-import { TutorialTypes } from 'features/tutorial/enums'
 import { useDepositAmountsByAge } from 'shared/user/useDepositAmountsByAge'
 import { Spacer, Typo, getSpacingString } from 'ui/theme'
 
@@ -14,7 +13,7 @@ export const OnboardingTimeline: FunctionComponent<Props> = ({ age }) => {
   const stepperProps = stepperPropsMapping.get(age)
   if (!stepperProps) return null
 
-  return <CreditTimeline age={age} stepperProps={stepperProps} type={TutorialTypes.ONBOARDING} />
+  return <CreditTimeline age={age} stepperProps={stepperProps} />
 }
 
 const CreditBlockContent: FunctionComponent<{ enableCreditV3: boolean }> = ({ enableCreditV3 }) => {

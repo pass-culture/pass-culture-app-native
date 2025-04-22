@@ -1,9 +1,8 @@
 import React, { useCallback } from 'react'
 import styled from 'styled-components/native'
 
-import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import { openUrl } from 'features/navigation/helpers/openUrl'
-import { NonEligible, TutorialTypes } from 'features/tutorial/enums'
+import { NonEligible } from 'features/tutorial/enums'
 import { env } from 'libs/environment/env'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
@@ -16,19 +15,15 @@ type Props = {
   visible: boolean
   hideModal: () => void
   userStatus: NonEligible
-  type: TutorialTypes
 }
 
-export const NotEligibleModal = ({ visible, userStatus, hideModal, type }: Props) => {
-  const withFAQLink = type === TutorialTypes.ONBOARDING
-
+export const NotEligibleModal = ({ visible, userStatus, hideModal }: Props) => {
   const onPress = useCallback(() => {
     openUrl(env.FAQ_LINK_CREDIT)
   }, [])
 
   const onButtonPress = () => {
     hideModal()
-    if (type === TutorialTypes.PROFILE_TUTORIAL) navigateToHome()
   }
 
   if (userStatus === NonEligible.UNDER_15)
@@ -43,16 +38,14 @@ export const NotEligibleModal = ({ visible, userStatus, hideModal, type }: Props
         <StyledBody>
           Tu peux bénéficier de ton crédit sur l’application à partir de tes 15 ans.
         </StyledBody>
-        {withFAQLink ? (
-          <React.Fragment>
-            <Spacer.Column numberOfSpaces={4} />
-            <ButtonTertiaryBlack
-              wording="comment ça marche&nbsp;?"
-              icon={ExternalSiteFilled}
-              onPress={onPress}
-            />
-          </React.Fragment>
-        ) : null}
+        <React.Fragment>
+          <Spacer.Column numberOfSpaces={4} />
+          <ButtonTertiaryBlack
+            wording="comment ça marche&nbsp;?"
+            icon={ExternalSiteFilled}
+            onPress={onPress}
+          />
+        </React.Fragment>
         <Spacer.Column numberOfSpaces={4} />
         <StyledBody>
           En attendant, tu peux explorer le catalogue des offres et découvrir des lieux culturels

@@ -2,7 +2,7 @@ import React from 'react'
 
 import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
-import { NonEligible, TutorialTypes } from 'features/tutorial/enums'
+import { NonEligible } from 'features/tutorial/enums'
 import { NotEligibleModal } from 'features/tutorial/pages/onboarding/NotEligibleModal'
 import { env } from 'libs/environment/fixtures'
 import { userEvent, render, screen } from 'tests/utils'
@@ -24,7 +24,7 @@ jest.useFakeTimers()
 
 describe('NotEligibleModal', () => {
   it('should display subtitle with credit V2', () => {
-    renderNotEligibleModal(NonEligible.UNDER_15, TutorialTypes.ONBOARDING)
+    renderNotEligibleModal(NonEligible.UNDER_15)
 
     const subtitle = 'Tu peux bénéficier de ton crédit sur l’application à partir de tes 15 ans.'
 
@@ -33,7 +33,7 @@ describe('NotEligibleModal', () => {
 
   describe('for user over 18 years old', () => {
     it('should return null', () => {
-      renderNotEligibleModal(NonEligible.OVER_18, TutorialTypes.ONBOARDING)
+      renderNotEligibleModal(NonEligible.OVER_18)
 
       expect(screen.toJSON()).toBeNull()
     })
@@ -41,19 +41,19 @@ describe('NotEligibleModal', () => {
 
   describe('for user under 15 years old', () => {
     it('should render correctly for onboarding', () => {
-      renderNotEligibleModal(NonEligible.UNDER_15, TutorialTypes.ONBOARDING)
+      renderNotEligibleModal(NonEligible.UNDER_15)
 
       expect(screen).toMatchSnapshot()
     })
 
     it('should render correctly for profile tutorial', () => {
-      renderNotEligibleModal(NonEligible.UNDER_15, TutorialTypes.PROFILE_TUTORIAL)
+      renderNotEligibleModal(NonEligible.UNDER_15)
 
       expect(screen).toMatchSnapshot()
     })
 
     it('should close modal when pressing right header icon', async () => {
-      renderNotEligibleModal(NonEligible.UNDER_15, TutorialTypes.ONBOARDING)
+      renderNotEligibleModal(NonEligible.UNDER_15)
 
       const button = screen.getByTestId('Fermer la modale')
       await user.press(button)
@@ -62,7 +62,7 @@ describe('NotEligibleModal', () => {
     })
 
     it('should close modal when pressing "Explorer le catalogue" on onboarding', async () => {
-      renderNotEligibleModal(NonEligible.UNDER_15, TutorialTypes.ONBOARDING)
+      renderNotEligibleModal(NonEligible.UNDER_15)
 
       const button = screen.getByText('Explorer le catalogue')
       await user.press(button)
@@ -71,7 +71,7 @@ describe('NotEligibleModal', () => {
     })
 
     it('should navigate to home when pressing "Explorer le catalogue" on profile tutorial', async () => {
-      renderNotEligibleModal(NonEligible.UNDER_15, TutorialTypes.PROFILE_TUTORIAL)
+      renderNotEligibleModal(NonEligible.UNDER_15)
 
       const button = screen.getByText('Explorer le catalogue')
       await user.press(button)
@@ -80,7 +80,7 @@ describe('NotEligibleModal', () => {
     })
 
     it('should not navigate to home when pressing "Explorer le catalogue" on onboarding', async () => {
-      renderNotEligibleModal(NonEligible.UNDER_15, TutorialTypes.ONBOARDING)
+      renderNotEligibleModal(NonEligible.UNDER_15)
 
       const button = screen.getByText('Explorer le catalogue')
       await user.press(button)
@@ -89,7 +89,7 @@ describe('NotEligibleModal', () => {
     })
 
     it('should redirect to FAQ when pressing "comment ça marche ?" on onboarding', async () => {
-      renderNotEligibleModal(NonEligible.UNDER_15, TutorialTypes.ONBOARDING)
+      renderNotEligibleModal(NonEligible.UNDER_15)
 
       const button = screen.getByText('comment ça marche\u00a0?')
       await user.press(button)
@@ -99,8 +99,6 @@ describe('NotEligibleModal', () => {
   })
 })
 
-const renderNotEligibleModal = (userStatus: NonEligible, type: TutorialTypes) => {
-  return render(
-    <NotEligibleModal visible hideModal={hideModal} userStatus={userStatus} type={type} />
-  )
+const renderNotEligibleModal = (userStatus: NonEligible) => {
+  return render(<NotEligibleModal visible hideModal={hideModal} userStatus={userStatus} />)
 }

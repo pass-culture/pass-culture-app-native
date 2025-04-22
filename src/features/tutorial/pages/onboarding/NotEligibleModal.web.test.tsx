@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { NonEligible, TutorialTypes } from 'features/tutorial/enums'
+import { NonEligible } from 'features/tutorial/enums'
 import { checkAccessibilityFor, render } from 'tests/utils/web'
 
 import { NotEligibleModal } from './NotEligibleModal'
@@ -12,27 +12,7 @@ describe('<NotEligibleModal/>', () => {
   describe('Accessibility', () => {
     it('should render correctly for onboarding', async () => {
       const { container } = render(
-        <NotEligibleModal
-          visible
-          userStatus={NonEligible.UNDER_15}
-          hideModal={jest.fn()}
-          type={TutorialTypes.ONBOARDING}
-        />
-      )
-
-      const results = await checkAccessibilityFor(container)
-
-      expect(results).toHaveNoViolations()
-    })
-
-    it('should render correctly for profile tutorial', async () => {
-      const { container } = render(
-        <NotEligibleModal
-          userStatus={NonEligible.UNDER_15}
-          visible
-          hideModal={jest.fn()}
-          type={TutorialTypes.PROFILE_TUTORIAL}
-        />
+        <NotEligibleModal visible userStatus={NonEligible.UNDER_15} hideModal={jest.fn()} />
       )
 
       const results = await checkAccessibilityFor(container)

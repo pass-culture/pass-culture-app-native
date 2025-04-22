@@ -1,9 +1,7 @@
 import { StackScreenProps } from '@react-navigation/stack'
 import React from 'react'
 
-import { useRoute } from '__mocks__/@react-navigation/native'
 import { OnboardingStackParamList } from 'features/navigation/OnboardingStackNavigator/OnboardingStackTypes'
-import { TutorialTypes } from 'features/tutorial/enums'
 import { AgeSelectionFork } from 'features/tutorial/pages/onboarding/AgeSelectionFork'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { checkAccessibilityFor, render } from 'tests/utils/web'
@@ -13,12 +11,11 @@ jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 describe('AgeSelectionFork', () => {
   beforeEach(() => {
-    useRoute.mockReturnValueOnce({ params: { type: TutorialTypes.ONBOARDING } })
     setFeatureFlags()
   })
 
   it('should not have basic accessibility', async () => {
-    const { container } = renderAgeSelectionFork({ type: TutorialTypes.ONBOARDING })
+    const { container } = renderAgeSelectionFork()
 
     const results = await checkAccessibilityFor(container)
 
@@ -26,10 +23,7 @@ describe('AgeSelectionFork', () => {
   })
 })
 
-const renderAgeSelectionFork = (navigationParams: { type: string }) => {
-  const navProps = { route: { params: navigationParams } } as StackScreenProps<
-    OnboardingStackParamList,
-    'AgeSelectionFork'
-  >
+const renderAgeSelectionFork = () => {
+  const navProps = {} as StackScreenProps<OnboardingStackParamList, 'AgeSelectionFork'>
   return render(<AgeSelectionFork {...navProps} />)
 }

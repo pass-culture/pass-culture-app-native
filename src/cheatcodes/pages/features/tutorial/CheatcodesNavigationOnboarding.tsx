@@ -5,7 +5,6 @@ import { StatusBar } from 'react-native'
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
 import { LinkToScreenWithNavigateTo } from 'cheatcodes/components/LinkToScreenWithNavigateTo'
 import { getOnboardingNavConfig } from 'features/navigation/OnboardingStackNavigator/getOnboardingNavConfig'
-import { TutorialTypes } from 'features/tutorial/enums'
 
 export function CheatcodesNavigationOnboarding(): React.JSX.Element {
   useFocusEffect(
@@ -35,7 +34,7 @@ export function CheatcodesNavigationOnboarding(): React.JSX.Element {
       />
       <LinkToScreenWithNavigateTo
         title="AgeSelectionFork"
-        navigateTo={getOnboardingNavConfig('AgeSelectionFork', { type: TutorialTypes.ONBOARDING })}
+        navigateTo={getOnboardingNavConfig('AgeSelectionFork')}
       />
       <LinkToScreenWithNavigateTo
         title="AgeInfo - 17 ans"

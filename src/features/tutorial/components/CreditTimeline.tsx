@@ -4,12 +4,10 @@ import styled from 'styled-components/native'
 import { AgeCreditBlock } from 'features/tutorial/components/AgeCreditBlock'
 import { CreditBlock } from 'features/tutorial/components/CreditBlock'
 import { OnboardingCreditBlockTitle } from 'features/tutorial/components/onboarding/OnboardingCreditBlockTitle'
-import { ProfileTutorialCreditBlockTitle } from 'features/tutorial/components/profileTutorial/ProfileTutorialCreditBlockTitle'
-import { CreditStatus, TutorialTypes } from 'features/tutorial/enums'
+import { CreditStatus } from 'features/tutorial/enums'
 import { getCreditStatusFromAge } from 'features/tutorial/helpers/getCreditStatusFromAge'
 import { getStepperIconFromCreditStatus } from 'features/tutorial/helpers/getStepperIconFromCreditStatus'
 import { getStepperVariantFromCreditStatus } from 'features/tutorial/helpers/getStepperVariantFromCreditStatus'
-import { TutorialType } from 'features/tutorial/types'
 import { analytics } from 'libs/analytics/provider'
 import { useDepositAmountsByAge } from 'shared/user/useDepositAmountsByAge'
 import { InternalStep } from 'ui/components/InternalStep/InternalStep'
@@ -27,13 +25,13 @@ export type CreditComponentProps = {
   children?: React.ReactNode
 }
 
-interface Props extends TutorialType {
+interface Props {
   age: Age
   stepperProps: CreditComponentProps[]
   testID?: string
 }
 
-export const CreditTimeline = ({ stepperProps, age, type, testID }: Props) => {
+export const CreditTimeline = ({ stepperProps, age, testID }: Props) => {
   const {
     fifteenYearsOldDeposit,
     sixteenYearsOldDeposit,
@@ -47,9 +45,6 @@ export const CreditTimeline = ({ stepperProps, age, type, testID }: Props) => {
     [17, seventeenYearsOldDeposit],
     [18, eighteenYearsOldDeposit],
   ])
-
-  const CreditBlockTitle =
-    type === TutorialTypes.ONBOARDING ? OnboardingCreditBlockTitle : ProfileTutorialCreditBlockTitle
 
   return (
     <Container testID={testID}>
@@ -101,7 +96,7 @@ export const CreditTimeline = ({ stepperProps, age, type, testID }: Props) => {
               creditStatus={creditStatus}
               age={props.creditStep}
               onPress={() => analytics.logTrySelectDeposit(age)}>
-              <CreditBlockTitle
+              <OnboardingCreditBlockTitle
                 age={props.creditStep}
                 userAge={age}
                 deposit={depositsByAge.get(props.creditStep) ?? ''}

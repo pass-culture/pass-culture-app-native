@@ -31,7 +31,7 @@ import {
 import { SearchState } from 'features/search/types'
 import { ShareAppModalType } from 'features/share/types'
 import { SubscriptionAnalyticsParams } from 'features/subscription/types'
-import { NonEligible, TutorialTypes } from 'features/tutorial/enums'
+import { NonEligible } from 'features/tutorial/enums'
 import { EligibleAges } from 'features/tutorial/types'
 import { AmplitudeEvent } from 'libs/amplitude/events'
 import { buildPerformSearchState, urlWithValueMaxLength } from 'libs/analytics'
@@ -611,13 +611,13 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.SEARCH_SCROLL_TO_PAGE }, { page, searchId }),
   logSeeMyBooking: (offerId: number) =>
     analytics.logEvent({ firebase: AnalyticsEvent.SEE_MY_BOOKING }, { offerId }),
-  logSelectAge: ({ age, from }: { age: EligibleAges | NonEligible; from: TutorialTypes }) =>
+  logSelectAge: ({ age }: { age: EligibleAges | NonEligible }) =>
     analytics.logEvent(
       {
         amplitude: AmplitudeEvent.ONBOARDING_AGE_SELECTION_CLICKED,
         firebase: AnalyticsEvent.SELECT_AGE,
       },
-      { age, from }
+      { age }
     ),
   logSelectDeletionReason: (type: string) =>
     analytics.logEvent({ firebase: AnalyticsEvent.SELECT_DELETION_REASON }, { type }),

@@ -2,16 +2,14 @@ import { StackScreenProps } from '@react-navigation/stack'
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
-import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import { getOnboardingNavConfig } from 'features/navigation/OnboardingStackNavigator/getOnboardingNavConfig'
 import { OnboardingStackParamList } from 'features/navigation/OnboardingStackNavigator/OnboardingStackTypes'
 import { AgeButton } from 'features/tutorial/components/AgeButton'
 import { useOnboardingContext } from 'features/tutorial/context/OnboardingWrapper'
-import { NonEligible, TutorialTypes } from 'features/tutorial/enums'
+import { NonEligible } from 'features/tutorial/enums'
 import { TutorialPage } from 'features/tutorial/pages/TutorialPage'
 import { EligibleAges } from 'features/tutorial/types'
 import { analytics } from 'libs/analytics/provider'
-import { eventMonitoring } from 'libs/monitoring/services'
 import { storage } from 'libs/storage'
 import { AccessibleUnorderedList } from 'ui/components/accessibility/AccessibleUnorderedList'
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
@@ -32,26 +30,16 @@ const isNotEligible = (age: NonEligible | EligibleAges): age is NonEligible => {
 
 type Props = StackScreenProps<OnboardingStackParamList, 'AgeSelectionFork'>
 
-export const AgeSelectionFork: FunctionComponent<Props> = ({ route }: Props) => {
+export const AgeSelectionFork: FunctionComponent<Props> = () => {
   const { showNotEligibleModal } = useOnboardingContext()
-
-  const type = route?.params?.type
-
-  if (!type) {
-    eventMonitoring.captureException('route.params.type is falsy')
-    navigateToHome()
-    return null
-  }
-
-  const isOnboarding = type === TutorialTypes.ONBOARDING
 
   const onAgeChoice = async (age: NonEligible | EligibleAges) => {
     if (isNotEligible(age)) {
-      showNotEligibleModal(age, type)
+      showNotEligibleModal(age)
     }
 
-    analytics.logSelectAge({ age, from: type })
-    if (isOnboarding) await storage.saveObject('user_age', age)
+    analytics.logSelectAge({ age })
+    await storage.saveObject('user_age', age)
   }
 
   const ageButtons: AgeButtonProps[] = [

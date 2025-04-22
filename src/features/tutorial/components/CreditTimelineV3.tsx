@@ -4,7 +4,6 @@ import { TouchableWithoutFeedback } from 'react-native-gesture-handler'
 import styled from 'styled-components/native'
 
 import { DURATION_IN_MS, customEaseInOut } from 'features/tutorial/helpers/animationProps'
-import { TutorialType } from 'features/tutorial/types'
 import { analytics } from 'libs/analytics/provider'
 import { AnimatedView, NAV_DELAY_IN_MS } from 'libs/react-native-animatable'
 import { useDepositAmountsByAge } from 'shared/user/useDepositAmountsByAge'
@@ -26,7 +25,7 @@ type CreditComponentPropsV3 = {
   children?: React.ReactNode
 }
 
-interface Props extends TutorialType {
+interface Props {
   age: Age
   stepperProps: CreditComponentPropsV3[]
   testID?: string

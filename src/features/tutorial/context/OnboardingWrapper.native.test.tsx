@@ -2,7 +2,7 @@ import {
   OnboardingWrapper,
   useOnboardingContext,
 } from 'features/tutorial/context/OnboardingWrapper'
-import { NonEligible, TutorialTypes } from 'features/tutorial/enums'
+import { NonEligible } from 'features/tutorial/enums'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { renderHook, act } from 'tests/utils'
 
@@ -25,7 +25,7 @@ describe('useOnboardingContext()', () => {
     const { result } = renderOnboardingHook()
 
     act(() => {
-      result.current.showNotEligibleModal(NonEligible.UNDER_15, TutorialTypes.PROFILE_TUTORIAL)
+      result.current.showNotEligibleModal(NonEligible.UNDER_15)
     })
 
     expect(mockShowModal).toHaveBeenCalledTimes(1)
