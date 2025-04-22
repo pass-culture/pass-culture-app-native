@@ -4,7 +4,6 @@ module.exports = {
     type: 'suggestion',
     docs: {
       description: 'Forbids the use of Spacer.Column, Spacer.Row and Spacer.Flex components',
-      category: 'Best Practices',
       recommended: true,
     },
     messages: {
