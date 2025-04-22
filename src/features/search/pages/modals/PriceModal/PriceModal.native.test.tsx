@@ -38,7 +38,7 @@ const mockedUseAuthContext = jest.spyOn(Auth, 'useAuthContext').mockReturnValue(
 const mockHideModal = jest.fn()
 const mockOnClose = jest.fn()
 
-jest.mock('react-native/Libraries/Animated/animations/TimingAnimation.js')
+jest.mock('react-native/Libraries/Animated/animations/TimingAnimation')
 
 jest.mock('libs/firebase/analytics/analytics')
 
