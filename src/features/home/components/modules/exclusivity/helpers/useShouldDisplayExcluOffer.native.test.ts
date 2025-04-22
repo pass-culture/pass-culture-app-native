@@ -1,8 +1,8 @@
 import { UseQueryResult } from 'react-query'
 
 import { OfferResponseV2 } from 'api/gen'
-import * as excluOfferAPI from 'features/home/queries/useExcluOfferQuery'
 import { useShouldDisplayExcluOffer } from 'features/home/components/modules/exclusivity/helpers/useShouldDisplayExcluOffer'
+import * as excluOfferAPI from 'features/home/queries/useExcluOfferQuery'
 import { ExclusivityModule } from 'features/home/types'
 import { offerResponseSnap as mockOffer } from 'features/offer/fixtures/offerResponse'
 import { useMaxPrice } from 'features/search/helpers/useMaxPrice/useMaxPrice'
