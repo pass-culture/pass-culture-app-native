@@ -520,12 +520,12 @@ exports[`<Venue /> should match snapshot 1`] = `
         }
       >
         <View
-          animatedStyle={
+          collapsable={false}
+          jestAnimatedStyle={
             {
               "value": {},
             }
           }
-          collapsable={false}
           layout={
             LinearTransition {
               "build": [Function],
@@ -3592,12 +3592,12 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
         }
       >
         <View
-          animatedStyle={
+          collapsable={false}
+          jestAnimatedStyle={
             {
               "value": {},
             }
           }
-          collapsable={false}
           layout={
             LinearTransition {
               "build": [Function],
@@ -6990,12 +6990,12 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
         }
       >
         <View
-          animatedStyle={
+          collapsable={false}
+          jestAnimatedStyle={
             {
               "value": {},
             }
           }
-          collapsable={false}
           layout={
             LinearTransition {
               "build": [Function],
