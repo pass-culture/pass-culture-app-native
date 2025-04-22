@@ -5559,13 +5559,13 @@ __metadata:
   linkType: hard
 
 "@eslint-community/eslint-utils@npm:^4.4.0":
-  version: 4.7.0
-  resolution: "@eslint-community/eslint-utils@npm:4.7.0"
+  version: 4.6.1
+  resolution: "@eslint-community/eslint-utils@npm:4.6.1"
   dependencies:
     eslint-visitor-keys: ^3.4.3
   peerDependencies:
     eslint: ^6.0.0 || ^7.0.0 || >=8.0.0
-  checksum: b177e3b75c0b8d0e5d71f1c532edb7e40b31313db61f0c879f9bf19c3abb2783c6c372b5deb2396dab4432f2946b9972122ac682e77010376c029dfd0149c681
+  checksum: 924f38a069cc281dacd231f1293f5969dff98d4ad867f044ee384f1ad35937c27d12222a45a7da0b294253ffbaccc0a6f7878aed3eea8f4f9345f195ae24dea2
   languageName: node
   linkType: hard
 
@@ -10006,11 +10006,11 @@ __metadata:
   linkType: hard
 
 "@types/node@npm:^18.0.0":
-  version: 18.19.104
-  resolution: "@types/node@npm:18.19.104"
+  version: 18.19.86
+  resolution: "@types/node@npm:18.19.86"
   dependencies:
     undici-types: ~5.26.4
-  checksum: f4384c88db4e65e38b3e833af8669d026b7648bc8995e3575e145d1319f532c43c4825a29e2927bc7cf397b40e49b1b594dfeb15339cac7d173ecf399f774cdf
+  checksum: 3f2352b5f8da276874cd22555931088298808d384b09d0911bfda5403a93e196c9db48254013bb349be6c069975ea1601981a1d20641867139c47f70348fb81d
   languageName: node
   linkType: hard
 
@@ -11100,7 +11100,7 @@ __metadata:
     typescript: 5.0.4
     url-loader: ^4.1.1
     uuid: ^8.3.2
-    vite: ^5.4.19
+    vite: ^5.3.1
     vite-bundle-analyzer: ^0.16.2
     vite-plugin-commonjs: ^0.10.4
     vite-plugin-html: ^3.2.2
@@ -28670,7 +28670,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vite@npm:^5.4.19":
+"vite@npm:^5.3.1":
   version: 5.4.19
   resolution: "vite@npm:5.4.19"
   dependencies:
