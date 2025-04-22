@@ -3,7 +3,7 @@ tags:
   - local
   - nightlyIOS
   - nightlyAndroid
-  - decouverte
+  - squad-decouverte
 ---
 - runFlow: subFolder/commons/LaunchApp.yml
 

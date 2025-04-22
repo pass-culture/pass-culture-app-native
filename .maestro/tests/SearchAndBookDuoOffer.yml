@@ -3,7 +3,7 @@ jsengine: graaljs
 tags:
   - local
   - nightlyAndroid
-  - conversion
+  - squad-conversion
 ---
 - runFlow:
     when:

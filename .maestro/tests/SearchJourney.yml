@@ -2,7 +2,7 @@ appId: ${MAESTRO_APP_ID}
 tags:
   - nightlyAndroid
   - local
-  - conversion
+  - squad-conversion
 ---
 - runFlow: subFolder/commons/LaunchApp.yml
 - runFlow: subFolder/cookies/AcceptCookies.yml

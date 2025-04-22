@@ -11,13 +11,7 @@ permissions:
 
 jobs:
   notify_test_launch:
-    if: |
-      github.event.label.name == 'e2e iOS' ||
-      github.event.label.name == 'e2e Android' ||
-      github.event.label.name == 'e2e' ||
-      github.event.label.name == 'e2e:activation' ||
-      github.event.label.name == 'e2e:decouverte' ||
-      github.event.label.name == 'e2e:conversion'
+    if: ${{ startsWith(github.event.label.name, 'e2e') }}
     runs-on: ubuntu-latest
     steps:
       - name: Comment PR
@@ -54,12 +48,7 @@ jobs:
             })
 
   e2e-tests-ios:
-    if: |
-      github.event.label.name == 'e2e iOS' ||
-      github.event.label.name == 'e2e' ||
-      github.event.label.name == 'e2e:activation' ||
-      github.event.label.name == 'e2e:decouverte' ||
-      github.event.label.name == 'e2e:conversion'
+    if: ${{ startsWith(github.event.label.name, 'e2e') && (contains(github.event.label.name, 'iOS') || !contains(github.event.label.name, 'Android')) }}
     needs: notify_test_launch
     concurrency:
       group: e2e-ios-${{ github.head_ref }}
@@ -69,9 +58,12 @@ jobs:
       upload_name_prefix: '[PR]'
       test_tags: >-
         ${{
-          github.event.label.name == 'e2e:activation' && 'activation' ||
-          github.event.label.name == 'e2e:decouverte' && 'decouverte' ||
-          github.event.label.name == 'e2e:conversion' && 'conversion' ||
+          contains(github.event.label.name, ':squad-activation') && 'squad-activation' ||
+          contains(github.event.label.name, ':squad-decouverte') && 'squad-decouverte' ||
+          contains(github.event.label.name, ':squad-conversion') && 'squad-conversion' ||
+          contains(github.event.label.name, ':activation') && 'activation' ||
+          contains(github.event.label.name, ':decouverte') && 'decouverte' ||
+          contains(github.event.label.name, ':conversion') && 'conversion' ||
           'nightlyIOS'
         }}
     secrets:
@@ -79,12 +71,7 @@ jobs:
       GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
 
   e2e-tests-android:
-    if: |
-      github.event.label.name == 'e2e Android' ||
-      github.event.label.name == 'e2e' ||
-      github.event.label.name == 'e2e:activation' ||
-      github.event.label.name == 'e2e:decouverte' ||
-      github.event.label.name == 'e2e:conversion'
+    if: ${{ startsWith(github.event.label.name, 'e2e') && (contains(github.event.label.name, 'Android') || !contains(github.event.label.name, 'iOS')) }}
     needs: notify_test_launch
     concurrency:
       group: e2e-android-${{ github.head_ref }}
@@ -94,9 +81,12 @@ jobs:
       upload_name_prefix: '[PR]'
       test_tags: >-
         ${{
-          github.event.label.name == 'e2e:activation' && 'activation' ||
-          github.event.label.name == 'e2e:decouverte' && 'decouverte' ||
-          github.event.label.name == 'e2e:conversion' && 'conversion' ||
+          contains(github.event.label.name, ':squad-activation') && 'squad-activation' ||
+          contains(github.event.label.name, ':squad-decouverte') && 'squad-decouverte' ||
+          contains(github.event.label.name, ':squad-conversion') && 'squad-conversion' ||
+          contains(github.event.label.name, ':activation') && 'activation' ||
+          contains(github.event.label.name, ':decouverte') && 'decouverte' ||
+          contains(github.event.label.name, ':conversion') && 'conversion' ||
           'nightlyAndroid'
         }}
     secrets:

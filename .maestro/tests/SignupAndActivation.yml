@@ -3,7 +3,7 @@ tags:
   - nightlyAndroid
   - nightlyIOS
   - local
-  - activation
+  - squad-activation
 ---
 - runFlow: subFolder/commons/LaunchApp.yml
 

@@ -237,8 +237,11 @@ Les tests Maestro sont organisés avec un système de tags qui permet de catégo
 - `conversion` : Tests liés aux parcours de conversion
 - `activation` : Tests liés aux parcours d'activation
 - `decouverte` : Tests liés aux parcours de découverte
+- `squad-conversion` : Tests liés aux parcours de conversion
+- `squad-activation` : Tests liés aux parcours d'activation
+- `squad-decouverte` : Tests liés aux parcours de découverte
 
-Pour lancer des tests avec un tag spécifique, vous pouvez utiliser l'option  
+Pour lancer des tests avec un tag spécifique, vous pouvez utiliser l'option
 
 ## Lancer les tests avec l'utilisation de variables
 
