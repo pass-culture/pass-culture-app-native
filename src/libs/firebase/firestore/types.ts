@@ -60,6 +60,7 @@ export enum RemoteStoreFeatureFlags {
   WIP_APP_V2_MULTI_VIDEO_MODULE = 'wipAppV2MultiVideoModule',
   WIP_APP_V2_VIDEO_9_16 = 'wipAppV2Video9:16',
   WIP_ARTIST_PAGE = 'wipArtistPage',
+  WIP_ARTIST_PAGE_IN_SEARCH = 'wipArtistPageInSearch',
   WIP_DISABLE_STORE_REVIEW = 'wipDisabledStoreReview',
   WIP_DISPLAY_SEARCH_NB_FACET_RESULTS = 'wipDisplaySearchNbFacetResults',
   WIP_ENABLE_ACCES_LIBRE = 'wipEnableAccesLibre',
