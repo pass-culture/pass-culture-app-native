@@ -18,19 +18,7 @@ const MAX_NUMBER_OF_OFFERS = 20
 const isSearchQueryParameters = (parameter: unknown): parameter is SearchQueryParameters =>
   typeof parameter === 'object' && parameter !== null
 
-enum QueryMode {
-  OFFER_IDS = 'OFFER_IDS',
-  MULTIPLE_OFFERS = 'MULTIPLE_OFFERS',
-  EAN = 'EAN',
-}
-
-const selectQueryMode = (offerIds?: string[], eanList?: string[]) => {
-  if (offerIds && offerIds?.length > 0) return QueryMode.OFFER_IDS
-  if (eanList && eanList?.length > 0) return QueryMode.EAN
-  return QueryMode.MULTIPLE_OFFERS
-}
-
-export const useVideoOffers = (
+export const useVideoOffersQuery = (
   offersModuleParameters: OffersModuleParameters[],
   id: string,
   offerIds?: string[],
@@ -45,46 +33,31 @@ export const useVideoOffers = (
     .map(adaptPlaylistParameters)
     .filter(isSearchQueryParameters)
 
-  const queryMode = selectQueryMode(offerIds, eanList)
-
-  const offersByIdsQuery = async () => {
-    if (!offerIds) return []
-
-    const result = await fetchOffersByIds({
-      objectIds: offerIds,
-      isUserUnderage,
-    })
-
-    return result
-  }
-
-  const eanQuery = async () => {
-    if (!eanList) return []
-
-    return fetchOffersByEan({
-      eanList,
-      userLocation,
-      isUserUnderage,
-    })
-  }
-
-  const multipleOffersQuery = async () => {
-    const result = await fetchMultipleOffers({
-      paramsList: adaptedPlaylistParameters,
-      isUserUnderage,
-    })
-
-    return result.flatMap((data) => data.hits)
-  }
-  const queryByQueryMode = {
-    [QueryMode.OFFER_IDS]: offersByIdsQuery,
-    [QueryMode.EAN]: eanQuery,
-    [QueryMode.MULTIPLE_OFFERS]: multipleOffersQuery,
-  }
-
   const { data, refetch } = useQuery({
     queryKey: [QueryKeys.VIDEO_OFFER, id],
-    queryFn: queryByQueryMode[queryMode],
+    queryFn: async () => {
+      if (offerIds && offerIds?.length > 0) {
+        return fetchOffersByIds({
+          objectIds: offerIds,
+          isUserUnderage,
+        })
+      }
+
+      if (eanList && eanList?.length > 0) {
+        return fetchOffersByEan({
+          eanList,
+          userLocation,
+          isUserUnderage,
+        })
+      }
+
+      return (
+        await fetchMultipleOffers({
+          paramsList: adaptedPlaylistParameters,
+          isUserUnderage,
+        })
+      ).flatMap((data) => data.hits)
+    },
   })
 
   useEffect(() => {

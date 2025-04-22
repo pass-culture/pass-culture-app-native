@@ -31,7 +31,15 @@
 - useCookiesChoiceByCategory => ça commence par "use" mais ça n'appelle aucun hook
 - useUserHasBookingsQuery => select
 - src/features/favorites/hooks/useFavorite.ts => select + à déplacer dans les select communs
+- src/features/home/queries/useVideoOffersQuery => extraire query + déplacer les logiques dans des selects + tester + simplifier la logique
+- src/features/home/queries/useGetOffersDataQuery => extraire query + déplacer les logiques dans des selects + tester
 
 ### Devrait utiliser react-query
 
 - getCookiesLastUpdate => useIsCookiesListUpToDate est plus complexe que nécessaire
+
+## Propositions
+
+### Queries invalidées au changement de localisation
+
+Tester un POC de mise en place d'une logique pour l'invalidation des queries au changement de la localisation.

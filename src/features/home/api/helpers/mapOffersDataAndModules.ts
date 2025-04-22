@@ -1,6 +1,5 @@
 import { SearchResponse } from '@algolia/client-search'
 import { flatten, uniqBy } from 'lodash'
-import { UseQueryResult } from 'react-query'
 
 import { ModuleData, OfferModuleParamsInfo } from 'features/home/types'
 import { filterOfferHitWithImage } from 'libs/algolia/fetchAlgolia/transformOfferHit'
@@ -13,41 +12,37 @@ const isOfferModuleParamsInfo = (module: unknown): module is OfferModuleParamsIn
 const hasParams = (module: OfferModuleParamsInfo) => module.adaptedPlaylistParameters.length > 0
 
 interface MapProps {
-  results: UseQueryResult<SearchResponse<Offer>[], unknown>
+  data: SearchResponse<Offer>[]
   modulesParams: (OfferModuleParamsInfo | undefined)[]
   transformHits: (hit: AlgoliaOffer) => AlgoliaOffer
 }
 
-export const mapOffersDataAndModules = ({ results, modulesParams, transformHits }: MapProps) => {
-  const { data } = results
+export const mapOffersDataAndModules = ({
+  data,
+  modulesParams,
+  transformHits,
+}: MapProps): ModuleData[] => {
+  let moduleIterator = 0
 
-  if (data) {
-    let moduleIterator = 0
+  return modulesParams
+    .filter(isOfferModuleParamsInfo)
+    .filter(hasParams)
+    .map((module) => {
+      const nbParams = module.adaptedPlaylistParameters.length
 
-    const offersModulesData: ModuleData[] = modulesParams
-      .filter(isOfferModuleParamsInfo)
-      .filter(hasParams)
-      .map((module) => {
-        const nbParams = module.adaptedPlaylistParameters.length
+      const moduleOffers = data.slice(moduleIterator, moduleIterator + nbParams)
+      const hits = flatten(moduleOffers.map((hits) => hits.hits))
+        .filter(filterOfferHitWithImage)
+        .map(transformHits)
 
-        const moduleOffers = data.slice(moduleIterator, moduleIterator + nbParams)
-        const hits = flatten(moduleOffers.map((hits) => hits.hits))
-          .filter(filterOfferHitWithImage)
-          .map(transformHits)
+      const value: ModuleData = {
+        playlistItems: uniqBy(hits, 'objectID') as Offer[],
+        nbPlaylistResults: moduleOffers.reduce((prev, curr) => prev + curr.nbHits, 0),
+        moduleId: module.moduleId,
+      }
 
-        const value: ModuleData = {
-          playlistItems: uniqBy(hits, 'objectID') as Offer[],
-          nbPlaylistResults: moduleOffers.reduce((prev, curr) => prev + curr.nbHits, 0),
-          moduleId: module.moduleId,
-        }
+      moduleIterator += nbParams
 
-        moduleIterator += nbParams
-
-        return value
-      })
-
-    return offersModulesData
-  }
-
-  return [] as ModuleData[]
+      return value
+    })
 }
