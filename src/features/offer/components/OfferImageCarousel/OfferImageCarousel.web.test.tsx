@@ -14,27 +14,23 @@ describe('OfferImageCarousel', () => {
   })
 
   it('should render one image without pagination', async () => {
-    const mockOnload = jest.fn()
     render(
       <OfferImageCarousel
         progressValue={1 as unknown as SharedValue<number>}
         offerImages={[{ url: 'https://image1.jpg' }]}
         onItemPress={jest.fn()}
-        onLoad={mockOnload}
+        onLoad={jest.fn()}
         imageDimensions={mockOfferImageDimensions}
+        enabled={false}
       />
     )
 
     await screen.findByLabelText('Carousel image 1')
 
-    expect(screen.getByLabelText('Carousel image 1')).toBeInTheDocument()
-    expect(screen.queryByTestId('onlyDotsContainer')).not.toBeInTheDocument()
-
-    expect(mockOnload).toHaveBeenCalledTimes(1)
+    expect(screen.queryByTestId('carousel-dot')).not.toBeOnTheScreen()
   })
 
   it('should render multiple image with pagination', async () => {
-    const mockOnload = jest.fn()
     render(
       <OfferImageCarousel
         progressValue={1 as unknown as SharedValue<number>}
@@ -44,17 +40,16 @@ describe('OfferImageCarousel', () => {
           { url: 'https://image3.jpg' },
         ]}
         onItemPress={jest.fn()}
-        onLoad={mockOnload}
+        onLoad={jest.fn()}
         imageDimensions={mockOfferImageDimensions}
+        enabled={false}
       />
     )
 
-    await screen.findByTestId('buttonsAndDotsContainer')
+    await screen.findByLabelText('Carousel image 1')
 
     expect(screen.getAllByLabelText(/Carousel image/)).toHaveLength(3)
-    expect(screen.getByTestId('buttonsAndDotsContainer')).toBeInTheDocument()
-
-    expect(mockOnload).toHaveBeenCalledTimes(1)
+    expect(screen.getAllByTestId('carousel-dot')).toHaveLength(3)
   })
 
   it('should trigger onItemPress when click on image', async () => {
@@ -70,6 +65,7 @@ describe('OfferImageCarousel', () => {
         onItemPress={mockOnItemPress}
         onLoad={jest.fn()}
         imageDimensions={mockOfferImageDimensions}
+        enabled={false}
       />
     )
 

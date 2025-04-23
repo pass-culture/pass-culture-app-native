@@ -1,21 +1,28 @@
 import React, { FunctionComponent } from 'react'
+import { SharedValue } from 'react-native-reanimated'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
-import { OfferImageCarouselPaginationProps } from 'features/offer/types'
 import { CarouselDot } from 'ui/CarouselDot/CarouselDot'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 
-export const OfferImageCarouselPagination: FunctionComponent<OfferImageCarouselPaginationProps> = ({
+type Props = {
+  progressValue: SharedValue<number>
+  offerImages: string[]
+  gap: number
+}
+
+export const OfferImageCarouselDots: FunctionComponent<Props> = ({
   progressValue,
   offerImages,
+  gap,
 }) => {
   const carouselDotId = uuidv4()
 
   if (!progressValue) return null
 
   return (
-    <Container gap={2} testID="onlyDotsContainer">
+    <Container gap={gap}>
       {offerImages.map((_, index) => (
         <CarouselDot animValue={progressValue} index={index} key={index + carouselDotId} />
       ))}

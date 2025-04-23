@@ -1,5 +1,6 @@
 import React, {
   ReactElement,
+  ReactNode,
   forwardRef,
   useCallback,
   useImperativeHandle,
@@ -12,7 +13,6 @@ import Carousel, { ICarouselInstance } from 'react-native-reanimated-carousel'
 import styled, { useTheme } from 'styled-components/native'
 
 import { OfferImageCarouselItem } from 'features/offer/components/OfferImageCarousel/OfferImageCarouselItem'
-import { OfferImageCarouselPagination } from 'features/offer/components/OfferImageCarouselPagination/OfferImageCarouselPagination'
 import { OfferImageContainerDimensions } from 'features/offer/types'
 import { ImageWithCredit } from 'shared/types'
 import { Typo, getSpacing } from 'ui/theme'
@@ -21,10 +21,11 @@ export type OfferImageCarouselBaseProps = {
   progressValue: SharedValue<number>
   offerImages: ImageWithCredit[]
   imageDimensions: OfferImageContainerDimensions
+  enabled?: boolean
   onItemPress?: (index: number) => void
   onLoad?: () => void
   style?: StyleProp<ViewStyle>
-  handlePressPaginationButton?: (direction: 1 | -1) => void
+  pagination?: ReactNode
 }
 
 export const OfferImageCarouselBase = forwardRef<ICarouselInstance, OfferImageCarouselBaseProps>(
@@ -33,10 +34,11 @@ export const OfferImageCarouselBase = forwardRef<ICarouselInstance, OfferImageCa
       progressValue,
       offerImages,
       imageDimensions,
+      enabled,
       onItemPress,
       onLoad,
       style,
-      handlePressPaginationButton,
+      pagination,
     },
     ref
   ) {
@@ -75,7 +77,6 @@ export const OfferImageCarouselBase = forwardRef<ICarouselInstance, OfferImageCa
         [handleImageLoad, imageDimensions, onItemPress]
       )
 
-    const offerImagesUrl = offerImages.map((image) => image.url)
     const currentCredit = offerImages[Math.round(currentIndex)]?.credit
 
     return (
@@ -87,7 +88,7 @@ export const OfferImageCarouselBase = forwardRef<ICarouselInstance, OfferImageCa
           height={imageDimensions.imageStyle.height}
           width={imageDimensions.imageStyle.width}
           loop={false}
-          enabled={offerImages.length > 1 && !handlePressPaginationButton}
+          enabled={enabled}
           scrollAnimationDuration={500}
           onProgressChange={(_, absoluteProgress) => {
             progressValue.value = absoluteProgress
@@ -104,13 +105,7 @@ export const OfferImageCarouselBase = forwardRef<ICarouselInstance, OfferImageCa
           ) : null}
         </Container>
 
-        {offerImages.length > 1 && progressValue ? (
-          <OfferImageCarouselPagination
-            progressValue={progressValue}
-            offerImages={offerImagesUrl}
-            handlePressButton={handlePressPaginationButton}
-          />
-        ) : null}
+        {pagination}
       </View>
     )
   }
