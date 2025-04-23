@@ -9,7 +9,7 @@ type Props = {
 
 export const BlurView = ({ blurAmount = 8, blurType }: Props) => {
   const { colorScheme } = useTheme()
-  const computedBlurType = blurType || (colorScheme === 'dark' ? 'dark' : 'light')
+  const computedBlurType = blurType || colorScheme
 
   return <Blurred blurType={computedBlurType} blurAmount={blurAmount} />
 }
