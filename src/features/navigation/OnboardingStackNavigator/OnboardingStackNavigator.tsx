@@ -2,13 +2,12 @@ import React from 'react'
 
 import { OnboardingNavigatorBase } from 'features/navigation/OnboardingStackNavigator/OnboardingNavigatorBase'
 import { ROOT_NAVIGATOR_SCREEN_OPTIONS } from 'features/navigation/RootNavigator/navigationOptions'
-import { AgeSelectionFork } from 'features/tutorial/pages/onboarding/AgeSelectionFork'
-import { OnboardingAgeInformation } from 'features/tutorial/pages/onboarding/OnboardingAgeInformation'
-import { OnboardingGeneralPublicWelcome } from 'features/tutorial/pages/onboarding/OnboardingGeneralPublicWelcome'
-import { OnboardingGeolocation } from 'features/tutorial/pages/onboarding/OnboardingGeolocation'
-import { OnboardingNotEligible } from 'features/tutorial/pages/onboarding/OnboardingNotEligible'
-import { OnboardingWelcome } from 'features/tutorial/pages/onboarding/OnboardingWelcome'
-import { ProfileTutorialAgeInformationCredit } from 'features/tutorial/pages/profileTutorial/ProfileTutorialAgeInformationCredit'
+import { OnboardingAgeInformation } from 'features/onboarding/pages/onboarding/OnboardingAgeInformation'
+import { OnboardingAgeSelectionFork } from 'features/onboarding/pages/onboarding/OnboardingAgeSelectionFork'
+import { OnboardingGeneralPublicWelcome } from 'features/onboarding/pages/onboarding/OnboardingGeneralPublicWelcome'
+import { OnboardingGeolocation } from 'features/onboarding/pages/onboarding/OnboardingGeolocation'
+import { OnboardingNotEligible } from 'features/onboarding/pages/onboarding/OnboardingNotEligible'
+import { OnboardingWelcome } from 'features/onboarding/pages/onboarding/OnboardingWelcome'
 
 export const OnboardingStackNavigator = () => (
   <OnboardingNavigatorBase.Navigator
@@ -20,8 +19,8 @@ export const OnboardingStackNavigator = () => (
       options={{ title: 'Bienvenue' }}
     />
     <OnboardingNavigatorBase.Screen
-      name="AgeSelectionFork"
-      component={AgeSelectionFork}
+      name="OnboardingAgeSelectionFork"
+      component={OnboardingAgeSelectionFork}
       options={{ title: 'Sélection d’âge' }}
     />
     <OnboardingNavigatorBase.Screen
@@ -43,11 +42,6 @@ export const OnboardingStackNavigator = () => (
       name="OnboardingNotEligible"
       component={OnboardingNotEligible}
       options={{ title: 'Encore un peu de patience' }}
-    />
-    <OnboardingNavigatorBase.Screen
-      name="ProfileTutorialAgeInformationCredit"
-      component={ProfileTutorialAgeInformationCredit}
-      options={{ title: 'Information d’âge' }}
     />
   </OnboardingNavigatorBase.Navigator>
 )

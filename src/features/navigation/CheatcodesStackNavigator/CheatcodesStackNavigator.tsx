@@ -18,15 +18,13 @@ import { CheatcodesNavigationNewIdentificationFlow } from 'cheatcodes/pages/feat
 import { CheatcodesScreenNotEligibleEduConnect } from 'cheatcodes/pages/features/identityCheck/CheatcodesScreenNotEligibleEduConnect'
 import { CheatcodesNavigationInternal } from 'cheatcodes/pages/features/internal/CheatcodesNavigationInternal'
 import { CheatcodesScreenMaintenance } from 'cheatcodes/pages/features/maintenance/CheatcodesScreenMaintenance'
+import { CheatcodesNavigationOnboarding } from 'cheatcodes/pages/features/onboarding/CheatcodesNavigationOnboarding'
 import { CheatcodesNavigationProfile } from 'cheatcodes/pages/features/profile/CheatcodesNavigationProfile'
 import { CheatcodesScreenRemoteBanners } from 'cheatcodes/pages/features/remoteBanners/CheatcodesScreenRemoteBanners'
 import { CheatcodesNavigationShare } from 'cheatcodes/pages/features/share/CheatcodesNavigationShare'
 import { CheatcodesNavigationSubscription } from 'cheatcodes/pages/features/subscription/CheatcodesNavigationSubscription'
 import { CheatcodesNavigationTrustedDevice } from 'cheatcodes/pages/features/trustedDevice/CheatcodesNavigationTrustedDevice'
 import { CheatcodesScreenTrustedDeviceInfos } from 'cheatcodes/pages/features/trustedDevice/CheatcodesScreenTrustedDeviceInfos'
-import { CheatcodesNavigationOnboarding } from 'cheatcodes/pages/features/tutorial/CheatcodesNavigationOnboarding'
-import { CheatcodesNavigationProfileTutorial } from 'cheatcodes/pages/features/tutorial/CheatcodesNavigationProfileTutorial'
-import { CheatcodesNavigationTutorial } from 'cheatcodes/pages/features/tutorial/CheatcodesNavigationTutorial'
 import { CheatcodesNavigationAccountManagement } from 'cheatcodes/pages/others/CheatcodesNavigationAccountManagement'
 import { CheatcodesNavigationErrors } from 'cheatcodes/pages/others/CheatcodesNavigationErrors'
 import { CheatcodesNavigationGenericPages } from 'cheatcodes/pages/others/CheatcodesNavigationGenericPages'
@@ -99,16 +97,8 @@ const routes: CheatcodesStackRoute[] = [
     component: withAsyncErrorBoundary(CheatcodesNavigationCulturalSurvey),
   },
   {
-    name: 'CheatcodesNavigationTutorial',
-    component: CheatcodesNavigationTutorial,
-  },
-  {
     name: 'CheatcodesNavigationOnboarding',
     component: CheatcodesNavigationOnboarding,
-  },
-  {
-    name: 'CheatcodesNavigationProfileTutorial',
-    component: CheatcodesNavigationProfileTutorial,
   },
   {
     name: 'CheatcodesNavigationTrustedDevice',

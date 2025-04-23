@@ -7,7 +7,6 @@ import { v4 as uuidv4 } from 'uuid'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useLogoutRoutine } from 'features/auth/helpers/useLogoutRoutine'
 import { useFavoritesState } from 'features/favorites/context/FavoritesWrapper'
-import { getOnboardingNavConfig } from 'features/navigation/OnboardingStackNavigator/getOnboardingNavConfig'
 import { getProfileNavConfig } from 'features/navigation/ProfileStackNavigator/getProfileNavConfig'
 import { ProfileHeader } from 'features/profile/components/Header/ProfileHeader/ProfileHeader'
 import { SectionWithSwitch } from 'features/profile/components/SectionWithSwitch/SectionWithSwitch'
@@ -206,7 +205,7 @@ const OnlineProfile: React.FC = () => {
                       <Row
                         title="Comment ça marche&nbsp;?"
                         type="navigable"
-                        navigateTo={getOnboardingNavConfig('ProfileTutorialAgeInformationCredit')}
+                        navigateTo={getProfileNavConfig('ProfileTutorialAgeInformationCredit')}
                         onPress={() =>
                           analytics.logConsultTutorial({ age: userAge, from: 'ProfileHelp' })
                         }

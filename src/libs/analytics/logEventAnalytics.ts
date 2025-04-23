@@ -24,6 +24,8 @@ import {
 } from 'features/navigation/RootNavigator/types'
 import { SearchStackRouteName } from 'features/navigation/SearchStackNavigator/types'
 import { PlaylistType } from 'features/offer/enums'
+import { NonEligible } from 'features/onboarding/enums'
+import { EligibleAges } from 'features/onboarding/types'
 import {
   RemoteBannerType,
   RemoteBannerOrigin,
@@ -31,8 +33,6 @@ import {
 import { SearchState } from 'features/search/types'
 import { ShareAppModalType } from 'features/share/types'
 import { SubscriptionAnalyticsParams } from 'features/subscription/types'
-import { NonEligible } from 'features/tutorial/enums'
-import { EligibleAges } from 'features/tutorial/types'
 import { AmplitudeEvent } from 'libs/amplitude/events'
 import { buildPerformSearchState, urlWithValueMaxLength } from 'libs/analytics'
 import { analytics } from 'libs/analytics/provider'

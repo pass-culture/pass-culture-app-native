@@ -44,7 +44,6 @@ export const BookingEventChoices: React.FC<Props> = ({ stocks, offerIsDuo }) => 
             <React.Fragment>
               <Spacer.Column numberOfSpaces={6} />
               <BookHourChoice />
-
               <Spacer.Column numberOfSpaces={6} />
             </React.Fragment>
           ) : null}
@@ -56,7 +55,6 @@ export const BookingEventChoices: React.FC<Props> = ({ stocks, offerIsDuo }) => 
             <React.Fragment>
               <Spacer.Column numberOfSpaces={6} />
               <BookPricesChoice stocks={stocksWithCategory} isDuo={offerIsDuo} />
-
               <Spacer.Column numberOfSpaces={6} />
             </React.Fragment>
           ) : null}
@@ -65,9 +63,7 @@ export const BookingEventChoices: React.FC<Props> = ({ stocks, offerIsDuo }) => 
       {step && step >= Step.DUO ? (
         <React.Fragment>
           <Spacer.Column numberOfSpaces={6} />
-
           <BookDuoChoice />
-
           <Spacer.Column numberOfSpaces={6} />
         </React.Fragment>
       ) : null}
