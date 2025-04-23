@@ -7,9 +7,13 @@ export const useOrientationLocked = () => {
 
   const fetchOrientationLocked = useCallback(async () => {
     const storedValue = await AsyncStorage.getItem('orientationLocked')
-    if (storedValue !== null) setIsOrientationLocked(storedValue === 'true')
-    if (isOrientationLocked) Orientation.lockToPortrait()
-  }, [isOrientationLocked])
+    const shouldLock = storedValue === null || storedValue === 'true'
+
+    setIsOrientationLocked(shouldLock)
+
+    if (shouldLock) Orientation.lockToPortrait()
+    else Orientation.unlockAllOrientations()
+  }, [])
 
   useEffect(() => {
     fetchOrientationLocked()
