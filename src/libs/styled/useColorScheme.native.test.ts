@@ -42,7 +42,7 @@ describe('colorSchemeStore', () => {
     }
   )
 
-  it('should react to system color scheme change from light to dark', async () => {
+  it('should react to system color scheme change', async () => {
     const { result } = renderHook(() => useColorScheme())
 
     expect(result.current).toBe('light')
@@ -55,7 +55,7 @@ describe('colorSchemeStore', () => {
   })
 
   it.each([null, undefined])(
-    'should keep light theme when system color scheme becomes unavailable (%s)',
+    'should default to light theme when system color scheme becomes unavailable (%s)',
     async (value) => {
       const { result } = renderHook(() => useColorScheme())
 
