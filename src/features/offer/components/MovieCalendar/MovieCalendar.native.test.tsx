@@ -2,10 +2,8 @@ import mockDate from 'mockdate'
 import React from 'react'
 import { FlatList } from 'react-native'
 
-import {
-  MOVIE_CALENDAR_PADDING,
-  MovieCalendar,
-} from 'features/offer/components/MovieCalendar/MovieCalendar'
+import { MovieCalendar } from 'features/offer/components/MovieCalendar/MovieCalendar'
+import { MOVIE_CALENDAR_PADDING } from 'features/offer/components/MoviesScreeningCalendar/utils'
 import { toMutable } from 'shared/types/toMutable'
 import { CustomRenderOptions, fireEvent, render, screen, userEvent } from 'tests/utils'
 

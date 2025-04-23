@@ -2,7 +2,8 @@ import React, { useCallback, useState } from 'react'
 import { LayoutChangeEvent, LayoutRectangle, View } from 'react-native'
 import styled from 'styled-components/native'
 
-import type { VerticalDotsProps } from './VerticalDots'
+import { VerticalDotsProps } from 'features/profile/types'
+
 import { VerticalDots } from './VerticalDots'
 
 type AutomaticVerticalDotsProps = Omit<VerticalDotsProps, 'parentHeight' | 'parentWidth'>

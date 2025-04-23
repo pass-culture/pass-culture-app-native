@@ -1,8 +1,8 @@
 import React, { memo, useCallback } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
-import { DotSize, VerticalDots } from 'features/profile/components/VerticalDots/VerticalDots'
-import { FirstOrLastProps, StepVariantProps } from 'features/profile/types'
+import { VerticalDots } from 'features/profile/components/VerticalDots/VerticalDots'
+import { DotSize, FirstOrLastProps, StepVariantProps } from 'features/profile/types'
 import { StepperValidate } from 'ui/svg/icons/StepperValidate'
 import { getSpacing } from 'ui/theme'
 

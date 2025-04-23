@@ -1,4 +1,4 @@
-import { Animated } from 'react-native'
+import { Animated, ViewStyle } from 'react-native'
 
 import { VenueAccessibilityModel, VenueContactModel } from 'api/gen'
 import { BuildLocationParameterParams } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildLocationParameter'
@@ -8,6 +8,7 @@ import { ContentfulLabelCategories, ContentTypes, Layout } from 'libs/contentful
 import { VenueTypeCode } from 'libs/parsers/venueType'
 import { GtlLevel } from 'shared/gtl/types'
 import { Offer } from 'shared/offer/types'
+import { InternalNavigationProps } from 'ui/components/touchableLink/types'
 
 export enum HomepageModuleType {
   'OffersModule' = 'OffersModule',
@@ -106,6 +107,16 @@ export type VideoCarouselItem = {
   thematicHomeSubtitle?: string
 }
 
+export type MarketingBlockProps = {
+  navigateTo: InternalNavigationProps['navigateTo']
+  onBeforeNavigate?: () => void
+  accessibilityLabel?: string
+  backgroundImageUrl?: string
+  AttachedCardComponent: React.ReactNode
+  withGradient?: boolean
+  gradientHeight?: string
+}
+
 export type OffersModule = {
   type: HomepageModuleType.OffersModule
   id: string
@@ -173,6 +184,22 @@ export type BusinessModule = {
   callToAction?: string
 }
 
+export interface BusinessModuleProps {
+  homeEntryId: string | undefined
+  moduleId: string
+  analyticsTitle: string
+  title?: string
+  subtitle?: string
+  index: number
+  image: string
+  imageWeb?: string
+  url?: string
+  shouldTargetNotConnectedUsers?: boolean
+  localizationArea?: LocationCircleArea
+  callToAction?: string
+  date?: string
+}
+
 export type LocationCircleArea = {
   latitude: number
   longitude: number
@@ -189,6 +216,21 @@ export type ExclusivityModule = {
   url?: string
   displayParameters?: ExclusivityDisplayParameters
 }
+
+export interface ExclusivityModuleProps {
+  title: string
+  alt: string
+  image: string
+  moduleId: string
+  offerId?: number
+  displayParameters?: ExclusivityModule['displayParameters']
+  url?: string
+  homeEntryId: string | undefined
+  index: number
+  style?: ViewStyle
+}
+
+export type ExclusivityBannerProps = Omit<ExclusivityModuleProps, 'offerId' | 'url'>
 
 type ExclusivityDisplayParameters = {
   isGeolocated?: boolean

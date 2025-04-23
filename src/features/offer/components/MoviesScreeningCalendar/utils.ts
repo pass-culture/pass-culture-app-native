@@ -1,4 +1,6 @@
-import { MOVIE_CALENDAR_PADDING } from 'features/offer/components/MovieCalendar/MovieCalendar'
+import { getSpacing } from 'ui/theme'
+
+export const MOVIE_CALENDAR_PADDING = getSpacing(6)
 
 export const handleMovieCalendarScroll = (
   currentIndex: number,
