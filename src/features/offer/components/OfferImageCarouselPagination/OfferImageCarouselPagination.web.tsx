@@ -15,13 +15,19 @@ export const OfferImageCarouselPagination: FunctionComponent<OfferImageCarouselP
 }) => {
   const carouselDotId = uuidv4()
 
+  const onPressButton = (direction: 1 | -1) => {
+    if (handlePressButton) {
+      handlePressButton(direction)
+    }
+  }
+
   if (!progressValue) return null
 
   return (
     <Container testID="buttonsAndDotsContainer">
       <RoundedButton
         iconName="previous"
-        onPress={() => handlePressButton(-1)}
+        onPress={() => onPressButton(-1)}
         accessibilityLabel="Image précédente"
       />
 
@@ -33,7 +39,7 @@ export const OfferImageCarouselPagination: FunctionComponent<OfferImageCarouselP
 
       <RoundedButton
         iconName="next"
-        onPress={() => handlePressButton(1)}
+        onPress={() => onPressButton(1)}
         accessibilityLabel="Image suivante"
       />
     </Container>

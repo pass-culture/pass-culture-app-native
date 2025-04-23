@@ -71,7 +71,7 @@ export interface VenueDetail {
 export type OfferImageCarouselPaginationProps = {
   progressValue: SharedValue<number>
   offerImages: string[]
-  handlePressButton: (direction: 1 | -1) => void
+  handlePressButton?: (direction: 1 | -1) => void
 }
 
 export type OfferContentProps = {
