@@ -1,6 +1,6 @@
 import { Appearance, ColorSchemeName } from 'react-native'
 
-import { useColorScheme } from 'libs/styled/useColorScheme'
+import { colorSchemeActions, useColorScheme } from 'libs/styled/useColorScheme'
 import { act, renderHook } from 'tests/utils'
 
 const mockCurrentColorScheme = jest.fn((): ColorSchemeName => 'light')
@@ -24,8 +24,15 @@ describe('colorSchemeStore', () => {
     mockCurrentColorScheme.mockReset()
   })
 
+  it('should initialize with system colorScheme default (light)', () => {
+    const { result } = renderHook(() => useColorScheme())
+
+    expect(result.current).toBe('light')
+  })
+
   it('should initialize with system colorScheme when is available', () => {
     mockCurrentColorScheme.mockReturnValueOnce('dark')
+    colorSchemeActions.init()
     const { result } = renderHook(() => useColorScheme())
 
     expect(result.current).toBe('dark')
@@ -35,7 +42,7 @@ describe('colorSchemeStore', () => {
     'should default to light theme if no color scheme is detected (%s)',
     (value) => {
       mockCurrentColorScheme.mockReturnValueOnce(value)
-
+      colorSchemeActions.init()
       const { result } = renderHook(() => useColorScheme())
 
       expect(result.current).toBe('light')
@@ -43,6 +50,7 @@ describe('colorSchemeStore', () => {
   )
 
   it('should react to system color scheme change', async () => {
+    colorSchemeActions.init()
     const { result } = renderHook(() => useColorScheme())
 
     expect(result.current).toBe('light')
@@ -57,6 +65,7 @@ describe('colorSchemeStore', () => {
   it.each([null, undefined])(
     'should default to light theme when system color scheme becomes unavailable (%s)',
     async (value) => {
+      colorSchemeActions.init()
       const { result } = renderHook(() => useColorScheme())
 
       expect(result.current).toBe('light')
