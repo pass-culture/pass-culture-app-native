@@ -6,7 +6,7 @@ import { EmptyResponse } from 'libs/fetch'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render, screen } from 'tests/utils'
+import { act, fireEvent, render, screen, userEvent } from 'tests/utils'
 import { SUGGESTION_DELAY_IN_MS } from 'ui/components/inputs/EmailInputWithSpellingHelp/useEmailSpellingHelp'
 import * as SnackBarContextModule from 'ui/components/snackBar/SnackBarContext'
 
@@ -29,6 +29,8 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
     return Component
   }
 })
+
+const user = userEvent.setup()
 
 describe('<NewEmailSelection />', () => {
   it('should match snapshot', () => {
@@ -66,8 +68,9 @@ describe('<NewEmailSelection />', () => {
     const emailInput = screen.getByPlaceholderText('email@exemple.com')
     await act(async () => {
       fireEvent.changeText(emailInput, 'john.doe@gmail.com')
-      fireEvent.press(await screen.findByLabelText('Modifier mon adresse e-mail'))
     })
+
+    await user.press(screen.getByLabelText('Modifier mon adresse e-mail'))
 
     expect(replace).toHaveBeenCalledWith('ProfileStackNavigator', {
       params: undefined,
@@ -86,8 +89,9 @@ describe('<NewEmailSelection />', () => {
     const emailInput = screen.getByPlaceholderText('email@exemple.com')
     await act(async () => {
       fireEvent.changeText(emailInput, 'john.doe@gmail.com')
-      fireEvent.press(await screen.findByLabelText('Modifier mon adresse e-mail'))
     })
+
+    await user.press(screen.getByLabelText('Modifier mon adresse e-mail'))
 
     expect(mockShowSuccessSnackBar).toHaveBeenCalledWith({
       message:
@@ -111,8 +115,9 @@ describe('<NewEmailSelection />', () => {
     const emailInput = screen.getByPlaceholderText('email@exemple.com')
     await act(async () => {
       fireEvent.changeText(emailInput, 'john.doe@gmail.com')
-      fireEvent.press(await screen.findByLabelText('Modifier mon adresse e-mail'))
     })
+
+    await user.press(screen.getByLabelText('Modifier mon adresse e-mail'))
 
     expect(mockShowSuccessSnackBar).not.toHaveBeenCalledWith({
       message:
@@ -135,8 +140,9 @@ describe('<NewEmailSelection />', () => {
     const emailInput = screen.getByPlaceholderText('email@exemple.com')
     await act(async () => {
       fireEvent.changeText(emailInput, 'john.doe@gmail.com')
-      fireEvent.press(await screen.findByLabelText('Modifier mon adresse e-mail'))
     })
+
+    await user.press(screen.getByLabelText('Modifier mon adresse e-mail'))
 
     expect(mockShowErrorSnackBar).toHaveBeenCalledWith({
       message: 'Une erreur s’est produite lors du choix de l’adresse e-mail. Réessaie plus tard.',

@@ -7,7 +7,7 @@ import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 
 import { ConfirmDeleteProfile } from './ConfirmDeleteProfile'
@@ -38,6 +38,10 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
+const user = userEvent.setup()
+
+jest.useFakeTimers()
+
 describe('ConfirmDeleteProfile component', () => {
   it('should render confirm delete profile', () => {
     renderConfirmDeleteProfile()
@@ -49,7 +53,7 @@ describe('ConfirmDeleteProfile component', () => {
     mockServer.postApi('/v1/account/suspend', {})
     renderConfirmDeleteProfile()
 
-    await act(async () => fireEvent.press(screen.getByText('Supprimer mon compte')))
+    await user.press(screen.getByText('Supprimer mon compte'))
 
     expect(reset).toHaveBeenCalledWith({
       index: 0,
@@ -73,7 +77,7 @@ describe('ConfirmDeleteProfile component', () => {
     mockServer.postApi('/v1/account/suspend', { responseOptions: { statusCode: 400 } })
     renderConfirmDeleteProfile()
 
-    await act(async () => fireEvent.press(screen.getByText('Supprimer mon compte')))
+    await user.press(screen.getByText('Supprimer mon compte'))
 
     expect(mockShowErrorSnackBar).toHaveBeenCalledWith({
       message: 'Une erreur s’est produite pendant le chargement.',
@@ -84,26 +88,24 @@ describe('ConfirmDeleteProfile component', () => {
   it('should log analytics and redirect to FAQ when clicking on FAQ link', async () => {
     renderConfirmDeleteProfile()
 
-    fireEvent.press(screen.getByText('Consulter l’article d’aide'))
+    await user.press(screen.getByText('Consulter l’article d’aide'))
 
-    await waitFor(() => {
-      expect(analytics.logConsultArticleAccountDeletion).toHaveBeenCalledTimes(1)
-      expect(openUrl).toHaveBeenCalledWith(env.FAQ_LINK_DELETE_ACCOUNT, undefined, true)
-    })
+    expect(analytics.logConsultArticleAccountDeletion).toHaveBeenCalledTimes(1)
+    expect(openUrl).toHaveBeenCalledWith(env.FAQ_LINK_DELETE_ACCOUNT, undefined, true)
   })
 
-  it('should go back when clicking on go back button', () => {
+  it('should go back when clicking on go back button', async () => {
     renderConfirmDeleteProfile()
 
-    fireEvent.press(screen.getByTestId('Revenir en arrière'))
+    await user.press(screen.getByTestId('Revenir en arrière'))
 
     expect(mockGoBack).toHaveBeenCalledTimes(1)
   })
 
-  it('should open CGU when clicking on "conditions générales d’utilisation"', () => {
+  it('should open CGU when clicking on "conditions générales d’utilisation"', async () => {
     renderConfirmDeleteProfile()
 
-    fireEvent.press(screen.getByLabelText('conditions générales d’utilisation'))
+    await user.press(screen.getByLabelText('conditions générales d’utilisation'))
 
     expect(openUrl).toHaveBeenNthCalledWith(1, env.CGU_LINK, undefined, true)
   })

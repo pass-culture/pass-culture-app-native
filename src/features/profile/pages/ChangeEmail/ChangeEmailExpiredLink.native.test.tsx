@@ -7,7 +7,7 @@ import { ChangeEmailExpiredLink } from 'features/profile/pages/ChangeEmail/Chang
 import { nonBeneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics/provider'
 import { mockAuthContextWithoutUser, mockAuthContextWithUser } from 'tests/AuthContextUtils'
-import { fireEvent, render, screen } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 
 jest.mock('features/navigation/helpers/navigateToHome')
 jest.mock('features/navigation/navigationRef')
@@ -21,6 +21,10 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
     return Component
   }
 })
+
+const user = userEvent.setup()
+
+jest.useFakeTimers()
 
 describe('<ChangeEmailExpiredLink />', () => {
   beforeEach(() => {
@@ -40,10 +44,10 @@ describe('<ChangeEmailExpiredLink />', () => {
     expect(screen).toMatchSnapshot()
   })
 
-  it('should redirect to home page when go back to home button is clicked', () => {
+  it('should redirect to home page when go back to home button is clicked', async () => {
     render(<ChangeEmailExpiredLink />)
 
-    fireEvent.press(screen.getByText(`Retourner à l’accueil`))
+    await user.press(screen.getByText(`Retourner à l’accueil`))
 
     expect(navigateFromRef).toHaveBeenCalledWith(
       navigateToHomeConfig.screen,
@@ -51,11 +55,11 @@ describe('<ChangeEmailExpiredLink />', () => {
     )
   })
 
-  it('should navigate when clicking on resend email button', () => {
+  it('should navigate when clicking on resend email button', async () => {
     render(<ChangeEmailExpiredLink />)
 
     const resendEmailButton = screen.getByText('Faire une nouvelle demande')
-    fireEvent.press(resendEmailButton)
+    await user.press(resendEmailButton)
 
     expect(navigate).toHaveBeenCalledWith('ProfileStackNavigator', {
       params: undefined,
@@ -63,26 +67,26 @@ describe('<ChangeEmailExpiredLink />', () => {
     })
   })
 
-  it('should log event when clicking on resend email button', () => {
+  it('should log event when clicking on resend email button', async () => {
     render(<ChangeEmailExpiredLink />)
 
     const resendEmailButton = screen.getByText('Faire une nouvelle demande')
-    fireEvent.press(resendEmailButton)
+    await user.press(resendEmailButton)
 
     expect(analytics.logSendActivationMailAgain).toHaveBeenCalledWith(1)
 
-    fireEvent.press(resendEmailButton)
+    await user.press(resendEmailButton)
 
     expect(analytics.logSendActivationMailAgain).toHaveBeenCalledWith(2)
   })
 
-  it('should navigate when clicking on resend email button when logged out', () => {
+  it('should navigate when clicking on resend email button when logged out', async () => {
     mockAuthContextWithoutUser()
 
     render(<ChangeEmailExpiredLink />)
 
     const resendEmailButton = screen.getByText('Se connecter')
-    fireEvent.press(resendEmailButton)
+    await user.press(resendEmailButton)
 
     expect(navigate).toHaveBeenCalledWith('Login')
   })
