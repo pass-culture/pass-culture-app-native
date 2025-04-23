@@ -8,6 +8,11 @@ on:
         required: false
         type: string
         default: '[MES]'
+      test_tags:
+        description: 'Tags to include in the test run (activation, decouverte, conversion, or nightlyIOS)'
+        required: false
+        type: string
+        default: 'nightlyIOS'
     secrets:
       GCP_EHP_SERVICE_ACCOUNT:
         required: true
@@ -122,7 +127,7 @@ jobs:
           workspace: .maestro/tests/
           device-locale: fr_FR
           ios-version: 17
-          include-tags: nightlyIOS
+          include-tags: ${{ inputs.test_tags }}
           env: |
             MAESTRO_APP_ID=app.passculture.staging
             MAESTRO_PASSWORD=${{ steps.secrets.outputs.MAESTRO_PASSWORD }}

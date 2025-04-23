@@ -2,6 +2,7 @@ appId: ${MAESTRO_APP_ID}
 tags:
   - nightlyIOS
   - local
+  - squad-decouverte
 ---
 - runFlow: subFolder/commons/LaunchAppWithPermissions.yml
 - runFlow: subFolder/cookies/AcceptCookies.yml
