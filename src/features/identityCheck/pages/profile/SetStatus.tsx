@@ -1,4 +1,5 @@
 import { yupResolver } from '@hookform/resolvers/yup'
+import { useNavigation } from '@react-navigation/native'
 import { StackScreenProps } from '@react-navigation/stack'
 import React, { FunctionComponent, useCallback, useState } from 'react'
 import { useForm } from 'react-hook-form'
@@ -13,7 +14,12 @@ import { useAddress } from 'features/identityCheck/pages/profile/store/addressSt
 import { useCity } from 'features/identityCheck/pages/profile/store/cityStore'
 import { useName } from 'features/identityCheck/pages/profile/store/nameStore'
 import { IdentityCheckStep } from 'features/identityCheck/types'
-import { SubscriptionRootStackParamList } from 'features/navigation/RootNavigator/types'
+import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
+import {
+  SubscriptionRootStackParamList,
+  UseNavigationType,
+} from 'features/navigation/RootNavigator/types'
+import { useFreeOfferId } from 'features/offer/store/freeOfferIdStore'
 import { analytics } from 'libs/analytics/provider'
 import { BlurHeader } from 'ui/components/headers/BlurHeader'
 import {
@@ -30,14 +36,18 @@ const schema = yup.object().shape({
 type Props = StackScreenProps<SubscriptionRootStackParamList, 'SetStatus'>
 
 export const SetStatus: FunctionComponent<Props> = ({ route }: Props) => {
+  const { reset } = useNavigation<UseNavigationType>()
+
   const type = route.params.type
   const isIdentityCheck = type === ProfileTypes.IDENTITY_CHECK
+  const isBookingFreeOffer = type === ProfileTypes.BOOKING_FREE_OFFER_15_16
   const title = isIdentityCheck ? 'Profil' : 'Informations personnelles'
 
   const saveStep = useSaveStep()
   const storedName = useName()
   const storedCity = useCity()
   const storedAddress = useAddress()
+  const storedFreeOfferId = useFreeOfferId()
 
   const { mutateAsync: postProfile } = usePostProfile()
   // isLoading from react-query is not support with mutateAsync
@@ -74,9 +84,29 @@ export const SetStatus: FunctionComponent<Props> = ({ route }: Props) => {
       await postProfile(profile)
       await saveStep(IdentityCheckStep.PROFILE)
       setIsLoading(false)
-      navigateForwardToStepper()
+
+      if (isBookingFreeOffer) {
+        if (storedFreeOfferId) {
+          reset({ routes: [{ name: 'Offer', params: { id: storedFreeOfferId } }] })
+        } else {
+          // TODO(PC-35543) Navigate to the error page if no offer ID ?
+          navigateToHome()
+        }
+      } else {
+        navigateForwardToStepper()
+      }
     },
-    [storedName, storedCity, storedAddress, postProfile, saveStep, navigateForwardToStepper]
+    [
+      isBookingFreeOffer,
+      navigateForwardToStepper,
+      postProfile,
+      reset,
+      saveStep,
+      storedAddress,
+      storedCity,
+      storedFreeOfferId,
+      storedName,
+    ]
   )
 
   const headerHeight = useGetHeaderHeight()

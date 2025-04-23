@@ -1,7 +1,7 @@
 import { StackScreenProps } from '@react-navigation/stack'
 import React from 'react'
 
-import { dispatch } from '__mocks__/@react-navigation/native'
+import { dispatch, reset } from '__mocks__/@react-navigation/native'
 import { ActivityIdEnum } from 'api/gen'
 import { initialSubscriptionState as mockState } from 'features/identityCheck/context/reducer'
 import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
@@ -42,6 +42,11 @@ jest.mock('features/identityCheck/pages/profile/store/cityStore')
 
 jest.mock('features/identityCheck/pages/profile/store/addressStore')
 ;(useAddress as jest.Mock).mockReturnValue(profile.address)
+
+let mockOfferId: number | null = 123456
+jest.mock('features/offer/store/freeOfferIdStore', () => ({
+  useFreeOfferId: () => mockOfferId,
+}))
 
 jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
   useSubscriptionContext: jest.fn(() => ({
@@ -138,6 +143,31 @@ describe('<SetStatus/>', () => {
     await user.press(screen.getByText('Continuer'))
 
     expect(analytics.logSetStatusClicked).toHaveBeenCalledTimes(1)
+  })
+
+  it('should navigate to Offer screen if booking free offer and offer ID exists', async () => {
+    mockStatus = ActivityTypesSnap.activities[0].id
+
+    renderSetStatus({ type: ProfileTypes.BOOKING_FREE_OFFER_15_16 })
+
+    await user.press(screen.getByText(ActivityTypesSnap.activities[0].label))
+    await user.press(screen.getByText('Continuer'))
+
+    expect(reset).toHaveBeenCalledWith({
+      routes: [{ name: 'Offer', params: { id: mockOfferId } }],
+    })
+  })
+
+  it('should not navigate to Offer screen when booking free offer but no offer ID is stored', async () => {
+    mockStatus = ActivityTypesSnap.activities[0].id
+    mockOfferId = null
+
+    renderSetStatus({ type: ProfileTypes.BOOKING_FREE_OFFER_15_16 })
+
+    await user.press(screen.getByText(ActivityTypesSnap.activities[0].label))
+    await user.press(screen.getByText('Continuer'))
+
+    expect(reset).not.toHaveBeenCalled()
   })
 })
 
