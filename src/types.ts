@@ -1,5 +1,7 @@
 export {}
 
+type NotAny<T> = 0 extends 1 & T ? never : T
+
 type Enumerate<N extends number, Acc extends number[] = []> = Acc['length'] extends N
   ? Acc[number]
   : Enumerate<N, [...Acc, Acc['length']]>
@@ -13,6 +15,11 @@ declare global {
     getMonth(): NumberRange<0, 12>
 
     getDate(): NumberRange<0, 31>
+  }
+
+  interface ObjectConstructor {
+    keys<T extends object>(obj: NotAny<T>): (keyof T)[]
+    keys(obj: unknown): string[]
   }
 
   // Web only
