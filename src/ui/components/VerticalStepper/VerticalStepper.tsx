@@ -142,13 +142,13 @@ const BottomFilledLine = styled(FilledLine)<FirstOrLastProps>(({ isLast }) => ({
 }))
 
 const InProgressIcon = styled.View(({ theme }) => ({
-  backgroundColor: theme.designSystem.color.text.default, // Need theme.designSystem.color.background.inverted
+  backgroundColor: theme.designSystem.color.background.inverted,
   width: IN_PROGRESS_ICON_SIZE,
   height: IN_PROGRESS_ICON_SIZE,
   borderRadius: IN_PROGRESS_ICON_SIZE / 2,
   marginHorizontal: (20 - IN_PROGRESS_ICON_SIZE) / 2,
   borderWidth: 2,
-  borderColor: theme.designSystem.color.background.default, // Need theme.designSystem.color.border.inverted
+  borderColor: theme.designSystem.color.border.inverted,
 }))
 
 const FutureIcon = styled(InProgressIcon)(({ theme }) => ({
