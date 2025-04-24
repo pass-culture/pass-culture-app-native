@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 // Disable ESLint because I need this colors enum.
 // eslint-disable-next-line no-restricted-imports
 
-import { DotSize, VerticalDotsProps } from 'features/profile/types'
+import { DotSize, VerticalDotsProps } from 'ui/components/types'
 
 import { AutomaticVerticalDots } from './AutomaticVerticalDots'
 

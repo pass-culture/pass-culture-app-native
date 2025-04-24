@@ -2,7 +2,7 @@ import React, { useCallback, useState } from 'react'
 import { LayoutChangeEvent, LayoutRectangle, View } from 'react-native'
 import styled from 'styled-components/native'
 
-import { VerticalDotsProps } from 'features/profile/types'
+import { VerticalDotsProps } from 'ui/components/types'
 
 import { VerticalDots } from './VerticalDots'
 

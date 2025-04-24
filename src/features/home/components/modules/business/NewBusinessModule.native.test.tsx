@@ -3,7 +3,7 @@ import { Linking } from 'react-native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { NewBusinessModule } from 'features/home/components/modules/business/NewBusinessModule'
-import { BusinessModuleProps } from 'features/home/types'
+import { BusinessModuleProps } from 'features/home/components/modules/business/types'
 import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics/provider'
 import { ContentTypes } from 'libs/contentful/types'

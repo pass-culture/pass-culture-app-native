@@ -3,7 +3,7 @@ import { View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { ExclusivityImage } from 'features/home/components/modules/exclusivity/ExclusivityImage'
-import { ExclusivityBannerProps } from 'features/home/types'
+import { ExclusivityBannerProps } from 'features/home/components/modules/exclusivity/types'
 import { analytics } from 'libs/analytics/provider'
 import { ContentTypes } from 'libs/contentful/types'
 

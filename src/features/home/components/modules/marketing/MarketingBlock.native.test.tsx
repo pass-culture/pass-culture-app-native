@@ -1,7 +1,7 @@
 import React from 'react'
 import { Text } from 'react-native'
 
-import { MarketingBlockProps } from 'features/home/types'
+import { MarketingBlockProps } from 'features/home/components/modules/marketing/types'
 import { render, screen } from 'tests/utils'
 
 import { MarketingBlock } from './MarketingBlock'

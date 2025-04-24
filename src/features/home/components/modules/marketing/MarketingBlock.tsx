@@ -3,7 +3,7 @@ import { useTheme } from 'styled-components/native'
 
 import { MarketingBlockContent } from 'features/home/components/modules/marketing/MarketingBlockContent'
 import { MarketingBlockContentDesktop } from 'features/home/components/modules/marketing/MarketingBlockContentDesktop'
-import { MarketingBlockProps } from 'features/home/types'
+import { MarketingBlockProps } from 'features/home/components/modules/marketing/types'
 
 const GRADIENT_HEIGHT = '100%'
 

@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 import { ExclusivityImage } from 'features/home/components/modules/exclusivity/ExclusivityImage'
 import { useShouldDisplayExcluOffer } from 'features/home/components/modules/exclusivity/helpers/useShouldDisplayExcluOffer'
-import { ExclusivityBannerProps } from 'features/home/types'
+import { ExclusivityBannerProps } from 'features/home/components/modules/exclusivity/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
 import { analytics } from 'libs/analytics/provider'

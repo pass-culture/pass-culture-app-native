@@ -3,9 +3,10 @@ import React from 'react'
 import { FlatList } from 'react-native'
 
 import { MovieCalendar } from 'features/offer/components/MovieCalendar/MovieCalendar'
-import { MOVIE_CALENDAR_PADDING } from 'features/offer/components/MoviesScreeningCalendar/utils'
 import { toMutable } from 'shared/types/toMutable'
 import { CustomRenderOptions, fireEvent, render, screen, userEvent } from 'tests/utils'
+
+import { MOVIE_CALENDAR_PADDING } from '../MoviesScreeningCalendar/helpers/handleMovieCalendarScroll'
 
 const dummyDates = toMutable([
   new Date('2024-07-18T00:00:00.000Z'), // Jeudi 18 juillet 2024

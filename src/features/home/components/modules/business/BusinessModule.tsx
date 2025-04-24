@@ -2,7 +2,7 @@ import React from 'react'
 
 import { NewBusinessModule } from 'features/home/components/modules/business/NewBusinessModule'
 import { OldBusinessModule } from 'features/home/components/modules/business/OldBusinessModule'
-import { BusinessModuleProps } from 'features/home/types'
+import { BusinessModuleProps } from 'features/home/components/modules/business/types'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 
