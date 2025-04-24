@@ -81,6 +81,7 @@ type Props = {
 export type ICTAWordingAndAction = {
   modalToDisplay?: OfferModal
   wording?: string
+  onBeforeNavigate?: () => void
   navigateTo?: InternalNavigationProps['navigateTo']
   externalNav?: ExternalNavigationProps['externalNav']
   onPress?: () => void
@@ -138,10 +139,10 @@ export const getCtaWordingAndAction = ({
   }
 
   if (isEligibleFreeOffer15To16 && isProfileIncomplete) {
-    setFreeOfferId(offer.id)
     return {
       wording: 'Réserver l’offre',
       isDisabled: false,
+      onBeforeNavigate: () => setFreeOfferId(offer.id),
       navigateTo: { screen: 'SetName', params: { type: ProfileTypes.BOOKING_FREE_OFFER_15_16 } },
     }
   }
@@ -409,7 +410,7 @@ export const useCtaWordingAndAction = (props: UseGetCtaWordingAndActionProps) =>
    * and preload the Offer details page. As a result, checking that venue.id
    * exists is equivalent to making sure the API call is successful.
    */
-  if (isLoggedIn === null || user === null || user === undefined || !offer.venue.id) return
+  if (isLoggedIn === null || user === null || !offer.venue.id) return
 
   const userStatus = status?.statusType ? status : { statusType: YoungStatusType.non_eligible }
   return getCtaWordingAndAction({

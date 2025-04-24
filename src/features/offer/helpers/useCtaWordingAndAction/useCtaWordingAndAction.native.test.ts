@@ -64,6 +64,7 @@ describe('getCtaWordingAndAction', () => {
 
   describe('Free user', () => {
     it('should display "Réserver l’offre" wording with navigate to SetName screen and params type', () => {
+      const mockSetFreeOfferId = expect.any(Function)
       const result = getCtaWordingAndAction({
         ...defaultParameters,
         offer: buildOffer({ stocks: [{ ...baseOffer.stocks[0], price: 0 }] }),
@@ -75,6 +76,7 @@ describe('getCtaWordingAndAction', () => {
         isDisabled: false,
         wording: 'Réserver l’offre',
         navigateTo: { screen: 'SetName', params: { type: ProfileTypes.BOOKING_FREE_OFFER_15_16 } },
+        onBeforeNavigate: mockSetFreeOfferId,
       })
     })
   })
