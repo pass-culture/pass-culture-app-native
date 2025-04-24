@@ -68,8 +68,9 @@ export const ImagesCarouselModal = ({
       })
       progressValue.value = newIndex
       carouselRef.current?.scrollTo({ index: newIndex, animated: true })
+      setTitle(getTitleLabel(newIndex))
     },
-    [imagesURL, progressValue]
+    [getTitleLabel, imagesURL, progressValue]
   )
 
   const handleProgressChange = useCallback(

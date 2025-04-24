@@ -1,5 +1,4 @@
 import { ReactNode } from 'react'
-import { SharedValue } from 'react-native-reanimated'
 
 import {
   CategoryIdEnum,
@@ -66,12 +65,6 @@ export interface VenueDetail {
   title: string
   address: string
   distance?: string
-}
-
-export type OfferImageCarouselPaginationProps = {
-  progressValue: SharedValue<number>
-  offerImages: string[]
-  handlePressButton: (direction: 1 | -1) => void
 }
 
 export type OfferContentProps = {

@@ -1,125 +1,30 @@
-import React, { FunctionComponent, ReactElement, useCallback, useRef, useState } from 'react'
-import { Platform, StyleProp, View, ViewStyle } from 'react-native'
-import Animated, { FadeIn, SharedValue } from 'react-native-reanimated'
-import Carousel, { ICarouselInstance } from 'react-native-reanimated-carousel'
-import styled, { useTheme } from 'styled-components/native'
+import React, { forwardRef } from 'react'
+import { ICarouselInstance } from 'react-native-reanimated-carousel'
 
-import { OfferImageCarouselItem } from 'features/offer/components/OfferImageCarousel/OfferImageCarouselItem'
-import { OfferImageCarouselPagination } from 'features/offer/components/OfferImageCarouselPagination/OfferImageCarouselPagination'
-import { calculateCarouselIndex } from 'features/offer/helpers/calculateCarouselIndex/calculateCarouselIndex'
-import { OfferImageContainerDimensions } from 'features/offer/types'
-import { ImageWithCredit } from 'shared/types'
-import { Typo, getSpacing } from 'ui/theme'
+import { OfferImageCarouselDots } from 'features/offer/components/OfferImageCarouselDots/OfferImageCarouselDots'
 
-type Props = {
-  progressValue: SharedValue<number>
-  offerImages: ImageWithCredit[]
-  imageDimensions: OfferImageContainerDimensions
-  onItemPress?: (index: number) => void
-  onLoad?: () => void
-  style?: StyleProp<ViewStyle>
-}
+import { OfferImageCarouselBase, OfferImageCarouselBaseProps } from './OfferImageCarouselBase'
 
-const isWeb = Platform.OS === 'web'
+export const OfferImageCarousel = forwardRef<ICarouselInstance, OfferImageCarouselBaseProps>(
+  function OfferImageCarousel(props, ref) {
+    const { progressValue, offerImages } = props
+    const offerImagesUrl = offerImages.map((image) => image.url)
 
-export const OfferImageCarousel: FunctionComponent<Props> = ({
-  progressValue,
-  offerImages,
-  imageDimensions,
-  onItemPress,
-  onLoad,
-  style,
-}) => {
-  const { borderRadius } = useTheme()
-  const carouselRef = useRef<ICarouselInstance>(null)
-  const carouselStyle = useRef({
-    borderRadius: borderRadius.radius,
-  }).current
-  const imagesLoadedCount = useRef(0)
-  const [currentIndex, setCurrentIndex] = useState(0)
-
-  // TODO(PC-000): this method should be excluded in a dedicated .web file
-  const handlePressButton = (direction: 1 | -1) => {
-    const newIndex = calculateCarouselIndex({
-      currentIndex: progressValue.value,
-      direction,
-      maxIndex: offerImages.length - 1,
-    })
-    progressValue.value = newIndex
-    carouselRef.current?.scrollTo({ index: newIndex, animated: true })
-  }
-
-  const handleImageLoad = useCallback(() => {
-    imagesLoadedCount.current += 1
-
-    if (imagesLoadedCount.current === offerImages.length) {
-      onLoad?.()
-    }
-  }, [offerImages.length, onLoad])
-
-  const renderItem: ({ item, index }: { item: ImageWithCredit; index: number }) => ReactElement =
-    useCallback(
-      ({ index, item }) => (
-        <Animated.View entering={FadeIn}>
-          <OfferImageCarouselItem
-            index={index}
-            imageDimensions={imageDimensions}
-            imageURL={item.url}
-            onLoad={handleImageLoad}
-            onPress={onItemPress}
-            isInCarousel
-          />
-        </Animated.View>
-      ),
-      [handleImageLoad, imageDimensions, onItemPress]
-    )
-
-  const offerImagesUrl = offerImages.map((image) => image.url)
-  const currentCredit = offerImages[Math.round(currentIndex)]?.credit
-
-  return (
-    <View style={style}>
-      <Carousel
-        ref={carouselRef}
-        testID="offerImageContainerCarousel"
-        vertical={false}
-        height={imageDimensions.imageStyle.height}
-        width={imageDimensions.imageStyle.width}
-        loop={false}
-        enabled={!isWeb && offerImages.length > 1}
-        scrollAnimationDuration={500}
-        onProgressChange={(_, absoluteProgress) => {
-          progressValue.value = absoluteProgress
-          setCurrentIndex(absoluteProgress)
-        }}
-        data={offerImages}
-        renderItem={renderItem}
-        style={carouselStyle}
+    return (
+      <OfferImageCarouselBase
+        {...props}
+        ref={ref}
+        pagination={
+          offerImages.length > 1 && progressValue ? (
+            <OfferImageCarouselDots
+              progressValue={progressValue}
+              offerImages={offerImagesUrl}
+              gap={2}
+            />
+          ) : undefined
+        }
+        enabled={offerImages.length > 1}
       />
-
-      <Container>
-        {currentCredit ? <CopyrightText numberOfLines={2}>© {currentCredit}</CopyrightText> : null}
-      </Container>
-
-      {offerImages.length > 1 && progressValue ? (
-        <OfferImageCarouselPagination
-          progressValue={progressValue}
-          offerImages={offerImagesUrl}
-          handlePressButton={handlePressButton}
-        />
-      ) : null}
-    </View>
-  )
-}
-
-const CopyrightText = styled(Typo.BodyAccentXs)(({ theme }) => ({
-  color: theme.colors.greySemiDark,
-  width: 0,
-  flexGrow: 1,
-  textAlign: 'right',
-}))
-
-const Container = styled.View(({ theme }) => ({
-  marginBottom: theme.isDesktopViewport ? getSpacing(2) : 0,
-  flexDirection: 'row',
-}))
+    )
+  }
+)
