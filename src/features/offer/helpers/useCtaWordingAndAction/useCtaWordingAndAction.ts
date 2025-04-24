@@ -138,12 +138,20 @@ export const getCtaWordingAndAction = ({
     }
   }
 
-  if (isEligibleFreeOffer15To16 && isProfileIncomplete) {
-    return {
-      wording: 'Réserver l’offre',
-      isDisabled: false,
-      onBeforeNavigate: () => setFreeOfferId(offer.id),
-      navigateTo: { screen: 'SetName', params: { type: ProfileTypes.BOOKING_FREE_OFFER_15_16 } },
+  if (isEligibleFreeOffer15To16) {
+    if (isProfileIncomplete) {
+      return {
+        wording: 'Réserver l’offre',
+        isDisabled: false,
+        onBeforeNavigate: () => setFreeOfferId(offer.id),
+        navigateTo: { screen: 'SetName', params: { type: ProfileTypes.BOOKING_FREE_OFFER_15_16 } },
+      }
+    } else {
+      return {
+        wording: 'Réserver l’offre',
+        modalToDisplay: OfferModal.BOOKING,
+        isDisabled: false,
+      }
     }
   }
 
@@ -171,7 +179,7 @@ export const getCtaWordingAndAction = ({
     }
   }
 
-  if (userStatus.statusType === YoungStatusType.eligible || isEligibleFreeOffer15To16) {
+  if (userStatus.statusType === YoungStatusType.eligible) {
     const common = {
       wording: isMovieScreeningOffer ? undefined : 'Réserver l’offre',
       isDisabled: false,

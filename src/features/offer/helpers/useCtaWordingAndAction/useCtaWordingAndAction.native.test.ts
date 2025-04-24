@@ -79,6 +79,22 @@ describe('getCtaWordingAndAction', () => {
         onBeforeNavigate: mockSetFreeOfferId,
       })
     })
+
+    it('should display "Réserver l’offre" wording and open booking modale when user profile complete', () => {
+      const result = getCtaWordingAndAction({
+        ...defaultParameters,
+        user: { ...beneficiaryUser },
+        offer: buildOffer({ stocks: [{ ...baseOffer.stocks[0], price: 0 }] }),
+        subcategory: buildSubcategory({}),
+        featureFlags: { enableBookingFreeOfferFifteenSixteen: true },
+      })
+
+      expect(result).toEqual({
+        isDisabled: false,
+        wording: 'Réserver l’offre',
+        modalToDisplay: OfferModal.BOOKING,
+      })
+    })
   })
 
   describe('Non eligible user', () => {
