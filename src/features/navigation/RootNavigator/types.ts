@@ -149,6 +149,7 @@ export type SubscriptionRootStackParamList = {
   SetCity: ProfileType
   SetAddress: ProfileType
   SetStatus: ProfileType
+  SetProfileBookingError: { offerId?: number }
   // Identification
   ComeBackLater: undefined
   DMSIntroduction: { isForeignDMSInformation: boolean }

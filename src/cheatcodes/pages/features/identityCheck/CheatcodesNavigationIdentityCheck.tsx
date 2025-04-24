@@ -53,6 +53,16 @@ export const cheatcodesNavigationIdentityCheckButtons: [CheatcodesButtonsWithSub
       { title: 'UserAgeNotValid18YearsOld Error', showOnlyInSearch: true },
       { title: 'UserTypeNotStudent Error', showOnlyInSearch: true },
       {
+        screen: 'SetProfileBookingError',
+        title: 'SetProfileBookingError with offer',
+        navigationParams: { offerId: 1 },
+      },
+      {
+        screen: 'SetProfileBookingError',
+        title: 'SetProfileBookingError without offer',
+        navigationParams: { offerId: undefined },
+      },
+      {
         screen: 'EduConnectValidation',
         navigationParams: {
           firstName: 'firstName',
