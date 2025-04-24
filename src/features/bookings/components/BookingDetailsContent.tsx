@@ -3,6 +3,7 @@ import { ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
 import { BookingOfferResponseAddress, BookingReponse, BookingVenueResponse } from 'api/gen'
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { ArchiveBookingModal } from 'features/bookings/components/ArchiveBookingModal'
 import { BookingDetailsCancelButton } from 'features/bookings/components/BookingDetailsCancelButton'
 import { BookingPrecisions } from 'features/bookings/components/BookingPrecision'
@@ -40,6 +41,8 @@ export const BookingDetailsContent = ({
   booking: BookingReponse
   mapping: SubcategoriesMapping
 }) => {
+  const { user } = useAuthContext()
+
   const { address } = booking?.stock.offer ?? {}
   const { visible: cancelModalVisible, showModal: showCancelModal, hideModal } = useModal(false)
   const {
@@ -109,7 +112,7 @@ export const BookingDetailsContent = ({
             icon={IdCard}
           />
         }>
-        <TicketCutoutBottom offer={offer} booking={booking} />
+        <TicketCutoutBottom offer={offer} booking={booking} userEmail={user?.email} />
       </TicketCutout>
       <ErrorBannerContainer>
         <ErrorBanner message="Tu n’as pas le droit de céder ou de revendre ton billet." />

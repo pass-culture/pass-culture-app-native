@@ -2,6 +2,7 @@ import { addDays, isSameDay } from 'date-fns'
 import React from 'react'
 import styled from 'styled-components/native'
 
+import { UserProfileResponse } from 'api/gen'
 import { EmailReceived } from 'features/bookings/components/TicketCutout/TicketCutoutBottom/EmailWithdrawal/EmailReceived'
 import { TicketVisual } from 'features/bookings/components/TicketCutout/TicketCutoutBottom/TicketVisual'
 import { getDelayMessage } from 'features/bookings/helpers/getDelayMessage'
@@ -11,9 +12,16 @@ import { Typo, getSpacing } from 'ui/theme'
 type Props = {
   beginningDatetime?: string | null
   withdrawalDelay?: number | null
+  isDuo: boolean
+  userEmail: UserProfileResponse['email']
 }
 
-export const EmailWithdrawal = ({ beginningDatetime, withdrawalDelay }: Props) => {
+export const EmailWithdrawal = ({
+  beginningDatetime,
+  withdrawalDelay,
+  isDuo,
+  userEmail,
+}: Props) => {
   if (beginningDatetime && withdrawalDelay) {
     // Calculation approximate date send e-mail
     const nbDays = withdrawalDelay / 60 / 60 / 24
@@ -21,7 +29,8 @@ export const EmailWithdrawal = ({ beginningDatetime, withdrawalDelay }: Props) =
     const today = new Date()
     const startOfferDate = new Date(beginningDatetime)
     const isEventDay = isSameDay(startOfferDate, today)
-    if (isEventDay || today > dateSendEmail) return <EmailReceived isEventDay={isEventDay} />
+    if (isEventDay || today > dateSendEmail)
+      return <EmailReceived isEventDay={isEventDay} isDuo={isDuo} userEmail={userEmail} />
   }
 
   return (
