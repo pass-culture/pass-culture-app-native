@@ -18,6 +18,7 @@ export const nonBeneficiaryUser: UserProfileResponse = {
     physical: { initial: 0, remaining: 0 },
     digital: { initial: 0, remaining: 0 },
   },
+  eligibility: EligibilityType['free'],
   birthDate: format(EIGHTEEN_AGE_DATE, 'yyyy-MM-dd'),
   email: 'email@domain.ext',
   hasPassword: true,

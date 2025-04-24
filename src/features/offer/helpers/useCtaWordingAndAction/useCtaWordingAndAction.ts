@@ -121,7 +121,7 @@ export const getCtaWordingAndAction = ({
   const { setFreeOfferId } = freeOfferIdActions
 
   const enableBookingFreeOfferFifteenSixteen = featureFlags.enableBookingFreeOfferFifteenSixteen
-  const isUserFreeStatus = true // TODO(PC-35543) Use YoungStatusType.free from API instead
+  const isUserFreeStatus = true // TODO(PC-35543) Use user?.eligibility === EligibilityType.free from API instead
   const isFreeOffer = getIsFreeOffer(offer)
   const isProfileIncomplete = getIsProfileIncomplete(user)
 
@@ -155,10 +155,10 @@ export const getCtaWordingAndAction = ({
     }
   }
 
-  // TODO(PC-35543) Check if the following problem is still present when we have the status YoungStatusType.free
+  // TODO(PC-35543) Check if the following problem is still present when we have the status EligibilityType.free
   // Currently, when a 15-16 year-old user completes their profile (first name, last name, etc.), they are redirected to the offer with the disabled CTA.
-  // But this offer is inaccessible because their status is YoungStatusType.non_eligible, as they haven't yet obtained their new YoungStatusType.free status, so this condition is met.
-  // When the backend has the new YoungStatusType.free status, the problem should no longer occur.
+  // But this offer is inaccessible because their status is YoungStatusType.non_eligible, as they haven't yet obtained their new EligibilityType.free status, so this condition is met.
+  // When the backend has EligibilityType.free status, the problem should no longer occur.
   if (userStatus.statusType === YoungStatusType.non_eligible && !externalTicketOfficeUrl) {
     return {
       wording: isMovieScreeningOffer ? undefined : 'Réserver l’offre',
