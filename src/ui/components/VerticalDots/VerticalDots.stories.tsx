@@ -3,6 +3,7 @@ import React from 'react'
 import { StyleSheet, View } from 'react-native'
 
 import { theme } from 'theme'
+import { AutomaticVerticalDots } from 'ui/components/VerticalDots/AutomaticVerticalDots'
 
 import { VerticalDots } from './VerticalDots'
 
@@ -13,7 +14,7 @@ const meta: Meta<typeof VerticalDots> = {
 export default meta
 
 type Story = StoryObj<typeof VerticalDots>
-type AutoStory = StoryObj<typeof VerticalDots.Auto>
+type AutoStory = StoryObj<typeof AutomaticVerticalDots>
 
 const TemplateRenderer = (props: React.ComponentProps<typeof VerticalDots>) => (
   <View style={{ width: props.parentWidth, height: props.parentHeight }}>
@@ -28,9 +29,9 @@ const MultipleRenderer = (props: React.ComponentProps<typeof VerticalDots>) => (
   </View>
 )
 
-const AutomaticRenderer = (props: React.ComponentProps<typeof VerticalDots.Auto>) => (
+const AutomaticRenderer = (props: React.ComponentProps<typeof AutomaticVerticalDots>) => (
   <View style={styles.automaticWrapper}>
-    <VerticalDots.Auto {...props} />
+    <AutomaticVerticalDots {...props} />
   </View>
 )
 

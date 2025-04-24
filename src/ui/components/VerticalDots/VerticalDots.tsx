@@ -6,8 +6,6 @@ import styled from 'styled-components/native'
 
 import { DotSize, VerticalDotsProps } from 'ui/components/types'
 
-import { AutomaticVerticalDots } from './AutomaticVerticalDots'
-
 /**
  * A dot size can either be a number so the dot will be rounded,
  * or an object with width and height that allows you to get
@@ -76,14 +74,16 @@ export function VerticalDots({
   return (
     <Wrapper testID={testID}>
       {Array.from({ length: dotCount }).map((_, index) => {
+        const key = `dot-${index}`
         const isFirst = index === 0
         const isLast = index === dotCount - 1
 
-        const size = isFirst ? firstDotSize : isLast ? lastDotSize : dotSize
+        const defaultOrLastSize = isLast ? lastDotSize : dotSize
+        const size = isFirst ? firstDotSize : defaultOrLastSize
 
         return (
           <Dot
-            key={index}
+            key={key}
             dotSize={size}
             spacing={minimumDotSpacing}
             endsWithDot={endsWithDot}
@@ -94,8 +94,6 @@ export function VerticalDots({
     </Wrapper>
   )
 }
-
-VerticalDots.Auto = AutomaticVerticalDots
 
 const Wrapper = styled.View({
   justifyContent: 'space-between',
