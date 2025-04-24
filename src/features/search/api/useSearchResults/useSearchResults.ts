@@ -1,13 +1,14 @@
 import { Hit, SearchResponse } from '@algolia/client-search'
+import { uniqBy } from 'lodash'
 import flatten from 'lodash/flatten'
 import { useMemo, useRef } from 'react'
-import { useInfiniteQuery } from 'react-query'
+import { onlineManager, useInfiniteQuery } from 'react-query'
 
 import { useAccessibilityFiltersContext } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { SearchState } from 'features/search/types'
-import { Venue } from 'features/venue/types'
+import { Artist, Venue } from 'features/venue/types'
 import { GeolocatedVenue } from 'features/venueMap/components/VenueMapView/types'
 import { isGeolocValid } from 'features/venueMap/helpers/isGeolocValid'
 import { removeSelectedVenue, setVenues } from 'features/venueMap/store/venueMapStore'
@@ -26,11 +27,13 @@ type SearchOfferResponse = {
   venues: Pick<SearchResponse<AlgoliaVenue>, 'hits' | 'nbHits' | 'page' | 'nbPages' | 'userData'>
   facets: Pick<SearchResponse<Offer>, 'facets'>
   duplicatedOffers: Pick<SearchResponse<Offer>, 'hits' | 'nbHits' | 'page' | 'nbPages' | 'userData'>
+  offerArtists: Pick<SearchResponse<Offer>, 'hits' | 'nbHits' | 'page' | 'nbPages' | 'userData'>
 }
 
 export type SearchOfferHits = {
   offers: Offer[]
   venues: AlgoliaVenue[]
+  artists: Artist[]
   duplicatedOffers: Offer[]
 }
 
@@ -55,22 +58,27 @@ export const useSearchInfiniteQuery = (searchState: SearchState) => {
       disabilities,
     ],
     async ({ pageParam: page = 0 }) => {
-      const { offersResponse, venuesResponse, facetsResponse, duplicatedOffersResponse } =
-        await fetchSearchResults({
-          parameters: { page, ...searchState },
-          buildLocationParameterParams: {
-            userLocation,
-            selectedLocationMode,
-            aroundPlaceRadius,
-            aroundMeRadius,
-            geolocPosition,
-          },
-          isUserUnderage,
-          storeQueryID: setCurrentQueryID,
-          excludedObjectIds: previousPageObjectIds.current,
-          disabilitiesProperties: disabilities,
-          aroundPrecision,
-        })
+      const {
+        offersResponse,
+        venuesResponse,
+        facetsResponse,
+        duplicatedOffersResponse,
+        offerArtistsResponse,
+      } = await fetchSearchResults({
+        parameters: { page, ...searchState },
+        buildLocationParameterParams: {
+          userLocation,
+          selectedLocationMode,
+          aroundPlaceRadius,
+          aroundMeRadius,
+          geolocPosition,
+        },
+        isUserUnderage,
+        storeQueryID: setCurrentQueryID,
+        excludedObjectIds: previousPageObjectIds.current,
+        disabilitiesProperties: disabilities,
+        aroundPrecision,
+      })
 
       previousPageObjectIds.current = offersResponse.hits.map((hit: Hit<Offer>) => hit.objectID)
 
@@ -79,6 +87,7 @@ export const useSearchInfiniteQuery = (searchState: SearchState) => {
         venues: venuesResponse,
         facets: facetsResponse,
         duplicatedOffers: duplicatedOffersResponse,
+        offerArtists: offerArtistsResponse,
       }
     },
     // first page is 0
@@ -86,12 +95,15 @@ export const useSearchInfiniteQuery = (searchState: SearchState) => {
       getNextPageParam: ({ offers: { nbPages, page } }) => {
         return page + 1 < nbPages ? page + 1 : undefined
       },
+      enabled: onlineManager.isOnline(),
     }
   )
 
-  const hits = useMemo<SearchOfferHits>(() => {
+  const hits: SearchOfferHits = useMemo(() => {
+    const { pages = [] } = data ?? {}
+
     removeSelectedVenue()
-    const venues = flatten(data?.pages?.[0]?.venues.hits)
+    const venues = flatten(pages[0]?.venues.hits)
     if (userLocation && venues.length) {
       setVenues(
         adaptAlgoliaVenues(venues).filter((venue): venue is GeolocatedVenue =>
@@ -101,16 +113,19 @@ export const useSearchInfiniteQuery = (searchState: SearchState) => {
     } else {
       setVenues([])
     }
+
     return {
-      offers: flatten(data?.pages.map((page) => page.offers.hits.map(transformHits))).filter(
-        (hit) => typeof hit.offer.subcategoryId !== 'undefined'
-      ) as Offer[],
+      offers: flatten(pages.map((page) => page.offers.hits.map(transformHits))),
       venues,
-      duplicatedOffers: flatten(
-        data?.pages.map((page) => page.duplicatedOffers.hits.map(transformHits))
-      ).filter((hit) => typeof hit.offer.subcategoryId !== 'undefined') as Offer[],
+      duplicatedOffers: flatten(pages.map((page) => page.duplicatedOffers.hits.map(transformHits))),
+      artists: uniqBy(
+        pages[0]?.offerArtists.hits
+          .filter((offer) => offer.artists?.length)
+          .flatMap((offer) => offer.artists ?? []),
+        'name'
+      ),
     }
-  }, [data?.pages, transformHits, userLocation])
+  }, [data, transformHits, userLocation])
 
   const offersData = data?.pages[0]?.offers
   const { nbHits, userData } = offersData ?? { nbHits: 0, userData: [] }

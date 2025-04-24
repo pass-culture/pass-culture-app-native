@@ -15,6 +15,14 @@ import { env } from 'libs/environment/env'
 import { CustomRemoteConfig } from 'libs/firebase/remoteConfig/remoteConfig.types'
 import { Offer } from 'shared/offer/types'
 
+const getDefaultReponse = <H>() => ({
+  hits: [] as Hit<H>[],
+  nbHits: 0,
+  page: 0,
+  nbPages: 0,
+  userData: null,
+})
+
 type FetchOfferAndVenuesArgs = {
   parameters: SearchQueryParameters
   buildLocationParameterParams: BuildLocationParameterParams
@@ -130,16 +138,32 @@ export const fetchSearchResults = async ({
         typoTolerance: false,
       },
     },
+    // Artists in offers
+    {
+      ...offersQuery,
+      params: {
+        ...offersQuery.params,
+        attributesToRetrieve: ['artists'],
+        ...buildHitsPerPage(100),
+        ...(aroundPrecision && { aroundPrecision }),
+      },
+    },
   ]
 
   try {
-    const [offersResponse, venuesResponse, facetsResponse, duplicatedOffersResponse] =
-      (await multipleQueries<Offer | AlgoliaVenue>(queries)) as [
-        SearchResponse<Offer>,
-        SearchResponse<AlgoliaVenue>,
-        SearchResponse<Offer>,
-        SearchResponse<Offer>,
-      ]
+    const [
+      offersResponse,
+      venuesResponse,
+      facetsResponse,
+      duplicatedOffersResponse,
+      offerArtistsResponse,
+    ] = (await multipleQueries<Offer | AlgoliaVenue>(queries)) as [
+      SearchResponse<Offer>,
+      SearchResponse<AlgoliaVenue>,
+      SearchResponse<Offer>,
+      SearchResponse<Offer>,
+      SearchResponse<Offer>,
+    ]
 
     if (storeQueryID) storeQueryID(offersResponse.queryID)
     const { renderingContent } = offersResponse
@@ -150,27 +174,17 @@ export const fetchSearchResults = async ({
       venuesResponse,
       facetsResponse,
       duplicatedOffersResponse,
+      offerArtistsResponse,
       redirectUrl,
     }
   } catch (error) {
     captureAlgoliaError(error)
     return {
-      offersResponse: { hits: [] as Hit<Offer>[], nbHits: 0, page: 0, nbPages: 0, userData: null },
-      venuesResponse: {
-        hits: [] as Hit<AlgoliaVenue>[],
-        nbHits: 0,
-        page: 0,
-        nbPages: 0,
-        userData: null,
-      },
+      offersResponse: getDefaultReponse<Offer>(),
+      venuesResponse: getDefaultReponse<AlgoliaVenue>(),
       facetsResponse: {},
-      duplicatedOffersResponse: {
-        hits: [] as Hit<Offer>[],
-        nbHits: 0,
-        page: 0,
-        nbPages: 0,
-        userData: null,
-      },
+      offerArtistsResponse: getDefaultReponse<Offer>(),
+      duplicatedOffersResponse: getDefaultReponse<Offer>(),
       redirectUrl: undefined,
     }
   }
