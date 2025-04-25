@@ -9,7 +9,7 @@ type PostProfileMutationOptions = {
   onError?: (error: unknown) => void
 }
 
-export function usePostProfile({ onSuccess, onError }: PostProfileMutationOptions) {
+export function usePostProfileMutation({ onSuccess, onError }: PostProfileMutationOptions) {
   return useMutation(
     (profile: SubscriptionState['profile']) => {
       const body = getCompleteProfile(profile)

@@ -7,7 +7,6 @@ import { v4 as uuidv4 } from 'uuid'
 import * as yup from 'yup'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { usePostProfile } from 'features/identityCheck/api/usePostProfile'
 import { useNavigateForwardToStepper } from 'features/identityCheck/helpers/useNavigateForwardToStepper'
 import { useSaveStep } from 'features/identityCheck/pages/helpers/useSaveStep'
 import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
@@ -15,6 +14,7 @@ import { useAddress } from 'features/identityCheck/pages/profile/store/addressSt
 import { useCity } from 'features/identityCheck/pages/profile/store/cityStore'
 import { useName } from 'features/identityCheck/pages/profile/store/nameStore'
 import { resetProfileStores } from 'features/identityCheck/pages/profile/store/resetProfileStores'
+import { usePostProfileMutation } from 'features/identityCheck/queries/usePostProfileMutation'
 import { IdentityCheckStep } from 'features/identityCheck/types'
 import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import {
@@ -81,7 +81,7 @@ export const SetStatus: FunctionComponent<Props> = ({ route }: Props) => {
     })
   }
 
-  const { mutateAsync: postProfile } = usePostProfile({
+  const { mutateAsync: postProfile } = usePostProfileMutation({
     onSuccess: () => handlePostProfileSuccess(),
     onError: () => handlePostProfileError(),
   })

@@ -5,7 +5,7 @@ import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, renderHook } from 'tests/utils'
 
-import { usePostProfile } from './usePostProfile'
+import { usePostProfileMutation } from './usePostProfileMutation'
 
 jest.mock('features/auth/context/AuthContext')
 
@@ -29,14 +29,14 @@ const postSubscriptionProfileSpy = jest
   .spyOn(API.api, 'postNativeV1SubscriptionProfile')
   .mockImplementation()
 
-describe('usePostProfile', () => {
+describe('usePostProfileMutation', () => {
   beforeEach(() => {
     mockAuthContextWithUser(beneficiaryUser, { persist: true })
   })
 
   it('should call api when profile is complete', async () => {
     const { result } = renderHook(
-      () => usePostProfile({ onError: jest.fn(), onSuccess: jest.fn() }),
+      () => usePostProfileMutation({ onError: jest.fn(), onSuccess: jest.fn() }),
       {
         wrapper: ({ children }) => reactQueryProviderHOC(children),
       }
