@@ -76,6 +76,7 @@ module.exports = {
   ],
   coveragePathIgnorePatterns: ['\\.web\\.(test|spec)', '/node_modules/', '/src/environment'],
   collectCoverage: false,
+  coverageReporters: ['json'],
   // TODO(PC-20887): Investigate how to avoid timeouts in CI without increasing default timeout
   testTimeout: 10_000,
 }

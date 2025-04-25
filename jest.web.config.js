@@ -51,6 +51,7 @@ module.exports = {
       '|design-system' +
       ')',
   ],
+  coverageReporters: ['json'],
   verbose: true,
   globals: {
     __DEV__: true,
