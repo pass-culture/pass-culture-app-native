@@ -42,4 +42,16 @@ describe('getIsProfileIncomplete', () => {
 
     expect(getIsProfileIncomplete(userMissingFields as UserProfileResponse)).toBe(true)
   })
+
+  it('returns true if one required field is empty string', () => {
+    const completeUser: Partial<UserProfileResponse> = {
+      firstName: '',
+      lastName: 'Curie',
+      postalCode: '75005',
+      city: 'Paris',
+      activityId: ActivityIdEnum.EMPLOYEE,
+    }
+
+    expect(getIsProfileIncomplete(completeUser as UserProfileResponse)).toBe(true)
+  })
 })

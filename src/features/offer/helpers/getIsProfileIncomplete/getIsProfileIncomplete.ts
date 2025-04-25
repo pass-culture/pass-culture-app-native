@@ -2,6 +2,7 @@ import { UserProfileResponse } from 'api/gen'
 
 export const getIsProfileIncomplete = (user?: UserProfileResponse): boolean => {
   if (!user) return true
-  const { firstName, lastName, postalCode, city, activityId } = user
-  return [firstName, lastName, postalCode, city, activityId].some((field) => field == null)
+
+  const isEmpty = (field) => field == null || field === ''
+  return [user.firstName, user.lastName, user.postalCode, user.city, user.activityId].some(isEmpty)
 }
