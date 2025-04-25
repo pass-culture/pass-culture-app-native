@@ -1,0 +1,109 @@
+name: '[on_pr] Run E2E smoke tests on Web'
+
+on:
+  push:
+    branches:
+      - PC-35750
+
+permissions:
+  contents: read
+  id-token: write
+  pull-requests: write
+
+jobs:
+  run_e2e_web:
+    name: 'Smoke test Staging Web'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: '.nvmrc'
+      - name: Enable Corepack
+        run: corepack enable
+      - uses: pass-culture-github-actions/cache@v1.0.0
+        id: yarn-modules-cache
+        with:
+          path: |
+            node_modules
+            ~/.cache/yarn
+          key: v1-yarn-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            v1-yarn-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
+          bucket: ${{ secrets.CACHE_BUCKET_NAME }}
+          workload-identity-provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+          service-account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+      - name: Yarn install
+        run: yarn install
+
+      - name: Set Maestro Version
+        run: echo "MAESTRO_VERSION=1.40.0" >> $GITHUB_ENV
+
+      - name: Cache Maestro CLI
+        id: maestro-cache
+        uses: actions/cache@v4
+        with:
+          path: ~/.maestro
+          key: ${{ runner.os }}-maestro-${{ env.MAESTRO_VERSION }}
+          restore-keys: |
+            ${{ runner.os }}-maestro-
+
+      - name: Install Maestro CLI
+        if: steps.maestro-cache.outputs.cache-hit!= 'true'
+        run: |
+          echo "Installing Maestro CLI version ${MAESTRO_VERSION}..."
+          curl --location --silent "https://get.maestro.mobile.dev" | bash
+          echo "$HOME/.maestro/bin" >> $GITHUB_PATH
+        env:
+          MAESTRO_VERSION: ${{ env.MAESTRO_VERSION }}
+
+      - name: Add Maestro to PATH (from cache)
+        if: steps.maestro-cache.outputs.cache-hit == 'true'
+        run: |
+          echo "Using cached Maestro CLI."
+          echo "$HOME/.maestro/bin" >> $GITHUB_PATH
+          maestro --version
+
+      # - name: Remove current Chrome
+      #   run: sudo apt-get remove google-chrome-stable chromium-browser -y || true
+
+      # - name: Install Chrome v102
+      #   run: |
+      #     wget https://dl.google.com/linux/chrome/deb/pool/main/g/google-chrome-stable/google-chrome-stable_102.0.5005.61-1_amd64.deb
+      #     sudo apt-get update
+      #     sudo apt-get install -y ./google-chrome-stable_102.0.5005.61-1_amd64.deb
+
+      # - name: Install ChromeDriver v102
+      #   run: |
+      #     wget https://chromedriver.storage.googleapis.com/102.0.5005.61/chromedriver_linux64.zip
+      #     unzip chromedriver_linux64.zip
+      #     sudo mv chromedriver /usr/local/bin/chromedriver
+      #     sudo chmod +x /usr/local/bin/chromedriver
+
+      # - name: Check Chrome and ChromeDriver version
+      #   run: |
+      #     google-chrome --version
+      #     chromedriver --version
+
+      - name: Start Vite server
+        run: yarn start:web:staging --host > /dev/null 2>&1 &
+
+      # - name: Wait for Vite Server
+      #   run: >
+      #     echo "Waiting for server at http://localhost:5173/ ..." ;
+      #     curl
+      #       --silent
+      #       --output /dev/null
+      #       --location
+      #       --retry 30
+      #       --retry-max-time 60
+      #       --retry-delay 2
+      #       http://localhost:5173/
+
+      - name: Run Maestro E2E Tests
+        run: |
+          echo "Running Maestro tests against on web Staging"
+          mkdir toto
+          export MAESTRO_CHROME_ARGS="--user-data-dir=toto"
+          maestro test .maestro/tests/SmokeTestWeb.yaml
