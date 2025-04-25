@@ -159,6 +159,7 @@ export const getCtaWordingAndAction = ({
   // Currently, when a 15-16 year-old user completes their profile (first name, last name, etc.), they are redirected to the offer with the disabled CTA.
   // But this offer is inaccessible because their status is YoungStatusType.non_eligible, as they haven't yet obtained their new EligibilityType.free status, so this condition is met.
   // When the backend has EligibilityType.free status, the problem should no longer occur.
+  // console.log(userStatus.statusType) et console.log(user?.eligibility)
   if (userStatus.statusType === YoungStatusType.non_eligible && !externalTicketOfficeUrl) {
     return {
       wording: isMovieScreeningOffer ? undefined : 'Réserver l’offre',

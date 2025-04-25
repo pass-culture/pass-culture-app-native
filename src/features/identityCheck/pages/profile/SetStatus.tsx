@@ -63,8 +63,17 @@ export const SetStatus: FunctionComponent<Props> = ({ route }: Props) => {
   const handlePostProfileSuccess = () => {
     if (isBookingFreeOffer && enableBookingFreeOfferFifteenSixteen) {
       if (storedFreeOfferId) {
+        // TODO(PC-35543) Pour l'affichage de la modal, il faut peut-être utiliser useBookOfferModal une fois que la redirection est faite
+        // Utiliser la valeur de showBookOfferModal pour afficher ou non la modale dans l'offre
+        // const { OfferModal: BookOfferModal, showModal: showBookOfferModal } = useBookOfferModal({
+        //   modalToDisplay: OfferModal.BOOKING,
+        //   offerId: storedFreeOfferId,
+        //   from: StepperOrigin.PROFILE,
+        // })
         reset({ routes: [{ name: 'Offer', params: { id: storedFreeOfferId } }] })
       } else {
+        // TODO(PC-35543): Navigate (reset) to SetProfileBookingError instead navigateToHome()
+        // reset({ routes: [{ name: 'SetProfileBookingError' }]})
         navigateToHome()
       }
     } else {
@@ -79,6 +88,21 @@ export const SetStatus: FunctionComponent<Props> = ({ route }: Props) => {
       message: 'Une erreur est survenue lors de la mise à jour de ton profil',
       timeout: SNACK_BAR_TIME_OUT,
     })
+    // TODO(PC-35543): Navigate (reset) to SetProfileBookingError if is isBookingFreeOffer
+    // if (isBookingFreeOffer) {
+    //   if (storedFreeOfferId) {
+    //     reset({
+    //       routes: [{ name: 'SetProfileBookingError', params: { offerId: storedFreeOfferId } }],
+    //     })
+    //   } else {
+    //     reset({ routes: [{ name: 'SetProfileBookingError' }] })
+    //   }
+    // } else {
+    //   showErrorSnackBar({
+    //     message: 'Une erreur est survenue lors de la mise à jour de ton profil',
+    //     timeout: SNACK_BAR_TIME_OUT,
+    //   })
+    // }
   }
 
   const { mutateAsync: postProfile } = usePostProfileMutation({
