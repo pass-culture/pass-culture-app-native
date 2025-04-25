@@ -1,10 +1,9 @@
 import * as API from 'api/api'
 import { ActivityIdEnum } from 'api/gen'
 import { beneficiaryUser } from 'fixtures/user'
-import { storage } from 'libs/storage'
 import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, renderHook, waitFor } from 'tests/utils'
+import { act, renderHook } from 'tests/utils'
 
 import { usePostProfile } from './usePostProfile'
 
@@ -36,9 +35,12 @@ describe('usePostProfile', () => {
   })
 
   it('should call api when profile is complete', async () => {
-    const { result } = renderHook(() => usePostProfile(), {
-      wrapper: ({ children }) => reactQueryProviderHOC(children),
-    })
+    const { result } = renderHook(
+      () => usePostProfile({ onError: jest.fn(), onSuccess: jest.fn() }),
+      {
+        wrapper: ({ children }) => reactQueryProviderHOC(children),
+      }
+    )
 
     const { mutateAsync: postProfile } = result.current
 
@@ -55,46 +57,5 @@ describe('usePostProfile', () => {
       activityId: ActivityIdEnum.APPRENTICE,
       schoolTypeId: null,
     })
-  })
-
-  it('should clear activation profile from storage when query succeeds', async () => {
-    storage.saveObject('profile-name', profile.name)
-    storage.saveObject('profile-city', profile.city)
-    storage.saveObject('profile-address', profile.address)
-
-    const { result } = renderHook(() => usePostProfile(), {
-      wrapper: ({ children }) => reactQueryProviderHOC(children),
-    })
-
-    const { mutateAsync: postProfile } = result.current
-
-    await act(async () => {
-      await postProfile(profile)
-    })
-
-    await waitFor(async () => {
-      expect(await storage.readObject('profile-name')).toMatchObject({ state: { name: null } })
-      expect(await storage.readObject('profile-city')).toMatchObject({ state: { city: null } })
-      expect(await storage.readObject('profile-address')).toMatchObject({
-        state: { address: null },
-      })
-    })
-  })
-
-  it('should call refetchUser when query succeeds', async () => {
-    const refetchUserSpy = jest.fn()
-    mockAuthContextWithUser(beneficiaryUser, { refetchUser: refetchUserSpy })
-
-    const { result } = renderHook(() => usePostProfile(), {
-      wrapper: ({ children }) => reactQueryProviderHOC(children),
-    })
-
-    const { mutateAsync: postProfile } = result.current
-
-    await act(async () => {
-      await postProfile(profile)
-    })
-
-    expect(refetchUserSpy).toHaveBeenCalledWith()
   })
 })

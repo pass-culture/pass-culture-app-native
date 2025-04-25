@@ -10,6 +10,7 @@ import { SetStatus } from 'features/identityCheck/pages/profile/SetStatus'
 import { useAddress } from 'features/identityCheck/pages/profile/store/addressStore'
 import { useCity } from 'features/identityCheck/pages/profile/store/cityStore'
 import { useName } from 'features/identityCheck/pages/profile/store/nameStore'
+import * as resetStores from 'features/identityCheck/pages/profile/store/resetProfileStores'
 import { SubscriptionRootStackParamList } from 'features/navigation/RootNavigator/types'
 import * as UnderageUserAPI from 'features/profile/helpers/useIsUserUnderage'
 import { analytics } from 'libs/analytics/provider'
@@ -95,6 +96,11 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
     return Component
   }
 })
+
+const mockRefetchUser = jest.fn()
+jest.mock('features/auth/context/AuthContext', () => ({
+  useAuthContext: jest.fn(() => ({ refetchUser: mockRefetchUser })),
+}))
 
 const user = userEvent.setup()
 
@@ -196,6 +202,30 @@ describe('<SetStatus/>', () => {
     await user.press(screen.getByText('Continuer'))
 
     expect(reset).not.toHaveBeenCalled()
+  })
+
+  it('should reset profile stores after submission succeeds', async () => {
+    const resetStoresSpy = jest.spyOn(resetStores, 'resetProfileStores')
+
+    renderSetStatus({ type: ProfileTypes.IDENTITY_CHECK })
+
+    await user.press(screen.getByText(ActivityTypesSnap.activities[1].label))
+    await user.press(screen.getByText('Continuer'))
+
+    await waitFor(() => {
+      expect(resetStoresSpy).toHaveBeenCalledTimes(1)
+    })
+  })
+
+  it('should call refetchUser after submission succeeds', async () => {
+    renderSetStatus({ type: ProfileTypes.IDENTITY_CHECK })
+
+    await user.press(screen.getByText(ActivityTypesSnap.activities[1].label))
+    await user.press(screen.getByText('Continuer'))
+
+    await waitFor(() => {
+      expect(mockRefetchUser).toHaveBeenCalledTimes(1)
+    })
   })
 })
 

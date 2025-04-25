@@ -2,15 +2,14 @@ import { useMutation } from 'react-query'
 
 import { api } from 'api/api'
 import { ProfileUpdateRequest } from 'api/gen'
-import { useAuthContext } from 'features/auth/context/AuthContext'
 import { SubscriptionState } from 'features/identityCheck/context/types'
-import { resetProfileStores } from 'features/identityCheck/pages/profile/store/resetProfileStores'
-import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
-export function usePostProfile() {
-  const { showErrorSnackBar } = useSnackBarContext()
-  const { refetchUser } = useAuthContext()
+type PostProfileMutationOptions = {
+  onSuccess?: () => void
+  onError?: (error: unknown) => void
+}
 
+export function usePostProfile({ onSuccess, onError }: PostProfileMutationOptions) {
   return useMutation(
     (profile: SubscriptionState['profile']) => {
       const body = getCompleteProfile(profile)
@@ -18,24 +17,11 @@ export function usePostProfile() {
         return api.postNativeV1SubscriptionProfile(body)
       } else {
         const profileWithMissingFileds = JSON.stringify(profile, (_, value) => value ?? null, 2)
-        return Promise.reject(
-          new Error(
-            `No body was provided for subscription profile. "getCompleteProfile()" return null because: ${profileWithMissingFileds}`
-          )
-        )
+        const errorMessage = `No body was provided for subscription profile. "getCompleteProfile()" return null because: ${profileWithMissingFileds}`
+        return Promise.reject(new Error(errorMessage))
       }
     },
-    {
-      onSuccess: () => {
-        resetProfileStores()
-        refetchUser()
-      },
-      onError: () =>
-        showErrorSnackBar({
-          message: 'Une erreur est survenue lors de la mise à jour de ton profil',
-          timeout: SNACK_BAR_TIME_OUT,
-        }),
-    }
+    { onSuccess, onError }
   )
 }
 

@@ -6,6 +6,7 @@ import { useForm } from 'react-hook-form'
 import { v4 as uuidv4 } from 'uuid'
 import * as yup from 'yup'
 
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { usePostProfile } from 'features/identityCheck/api/usePostProfile'
 import { useNavigateForwardToStepper } from 'features/identityCheck/helpers/useNavigateForwardToStepper'
 import { useSaveStep } from 'features/identityCheck/pages/helpers/useSaveStep'
@@ -13,6 +14,7 @@ import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
 import { useAddress } from 'features/identityCheck/pages/profile/store/addressStore'
 import { useCity } from 'features/identityCheck/pages/profile/store/cityStore'
 import { useName } from 'features/identityCheck/pages/profile/store/nameStore'
+import { resetProfileStores } from 'features/identityCheck/pages/profile/store/resetProfileStores'
 import { IdentityCheckStep } from 'features/identityCheck/types'
 import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import {
@@ -28,6 +30,7 @@ import {
   PageHeaderWithoutPlaceholder,
   useGetHeaderHeight,
 } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
+import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
 import { StatusFlatList, StatusForm } from './StatusFlatList'
 
@@ -39,7 +42,9 @@ type Props = StackScreenProps<SubscriptionRootStackParamList, 'SetStatus'>
 
 export const SetStatus: FunctionComponent<Props> = ({ route }: Props) => {
   const { reset } = useNavigation<UseNavigationType>()
-
+  const { refetchUser } = useAuthContext()
+  const { navigateForwardToStepper } = useNavigateForwardToStepper()
+  const { showErrorSnackBar } = useSnackBarContext()
   const enableBookingFreeOfferFifteenSixteen = useFeatureFlag(
     RemoteStoreFeatureFlags.ENABLE_BOOKING_FREE_OFFER_15_16
   )
@@ -55,11 +60,35 @@ export const SetStatus: FunctionComponent<Props> = ({ route }: Props) => {
   const storedAddress = useAddress()
   const storedFreeOfferId = useFreeOfferId()
 
-  const { mutateAsync: postProfile } = usePostProfile()
+  const handlePostProfileSuccess = () => {
+    if (isBookingFreeOffer && enableBookingFreeOfferFifteenSixteen) {
+      if (storedFreeOfferId) {
+        reset({ routes: [{ name: 'Offer', params: { id: storedFreeOfferId } }] })
+      } else {
+        navigateToHome()
+      }
+    } else {
+      navigateForwardToStepper()
+    }
+    resetProfileStores()
+    refetchUser()
+  }
+
+  const handlePostProfileError = () => {
+    showErrorSnackBar({
+      message: 'Une erreur est survenue lors de la mise à jour de ton profil',
+      timeout: SNACK_BAR_TIME_OUT,
+    })
+  }
+
+  const { mutateAsync: postProfile } = usePostProfile({
+    onSuccess: () => handlePostProfileSuccess(),
+    onError: () => handlePostProfileError(),
+  })
+
   // isLoading from react-query is not support with mutateAsync
   const [isLoading, setIsLoading] = useState<boolean>(false)
 
-  const { navigateForwardToStepper } = useNavigateForwardToStepper()
   const titleID = uuidv4()
   const {
     control,
@@ -90,30 +119,8 @@ export const SetStatus: FunctionComponent<Props> = ({ route }: Props) => {
       await postProfile(profile)
       await saveStep(IdentityCheckStep.PROFILE)
       setIsLoading(false)
-
-      if (isBookingFreeOffer && enableBookingFreeOfferFifteenSixteen) {
-        if (storedFreeOfferId) {
-          reset({ routes: [{ name: 'Offer', params: { id: storedFreeOfferId } }] })
-        } else {
-          // TODO(PC-35543) Navigate to the error page if no offer ID ?
-          navigateToHome()
-        }
-      } else {
-        navigateForwardToStepper()
-      }
     },
-    [
-      enableBookingFreeOfferFifteenSixteen,
-      isBookingFreeOffer,
-      navigateForwardToStepper,
-      postProfile,
-      reset,
-      saveStep,
-      storedAddress,
-      storedCity,
-      storedFreeOfferId,
-      storedName,
-    ]
+    [postProfile, saveStep, storedAddress, storedCity, storedName]
   )
 
   const headerHeight = useGetHeaderHeight()
