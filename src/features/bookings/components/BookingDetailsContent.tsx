@@ -3,7 +3,12 @@ import React from 'react'
 import { ScrollView } from 'react-native'
 import styled from 'styled-components/native'
 
-import { BookingOfferResponseAddress, BookingReponse, BookingVenueResponse } from 'api/gen'
+import {
+  BookingOfferResponseAddress,
+  BookingReponse,
+  BookingVenueResponse,
+  SubcategoryIdEnum,
+} from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { ArchiveBookingModal } from 'features/bookings/components/ArchiveBookingModal'
 import { BookingDetailsCancelButton } from 'features/bookings/components/BookingDetailsCancelButton'
@@ -20,6 +25,9 @@ import { VenueBlockAddress, VenueBlockVenue } from 'features/offer/components/Of
 import { VenueBlockWithItinerary } from 'features/offer/components/OfferVenueBlock/VenueBlockWithItinerary'
 import { getAddress } from 'features/offer/helpers/getVenueBlockProps'
 import { analytics } from 'libs/analytics/provider'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { useCategoryId, useSubcategory } from 'libs/subcategories'
 import { SubcategoriesMapping } from 'libs/subcategories/types'
 import { formatFullAddress } from 'shared/address/addressFormatter'
 import { theme } from 'theme'
@@ -33,6 +41,14 @@ import { getSpacing } from 'ui/theme'
 
 const VENUE_THUMBNAIL_SIZE = getSpacing(15)
 
+const CATEGORIES_SHOULD_NOT_HAVE_QR_CODE = [
+  SubcategoryIdEnum.FESTIVAL_MUSIQUE,
+  SubcategoryIdEnum.CONCERT,
+  SubcategoryIdEnum.EVENEMENT_MUSIQUE,
+  SubcategoryIdEnum.FESTIVAL_SPECTACLE,
+  SubcategoryIdEnum.SPECTACLE_REPRESENTATION,
+]
+
 export const BookingDetailsContent = ({
   properties,
   booking,
@@ -44,6 +60,13 @@ export const BookingDetailsContent = ({
 }) => {
   const { user } = useAuthContext()
   const { navigate } = useNavigation<UseNavigationType>()
+  const enableHideTicket = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_HIDE_TICKET)
+  const offerSubcategory = booking.stock.offer.subcategoryId
+  const categoryId = useCategoryId(offerSubcategory)
+  const { isEvent } = useSubcategory(offerSubcategory)
+  const subcategoryShouldHaveQrCode = !CATEGORIES_SHOULD_NOT_HAVE_QR_CODE.includes(
+    booking.stock.offer.subcategoryId
+  )
   const { address } = booking?.stock.offer ?? {}
   const { visible: cancelModalVisible, showModal: showCancelModal, hideModal } = useModal(false)
   const {
@@ -112,7 +135,14 @@ export const BookingDetailsContent = ({
             icon={IdCard}
           />
         }>
-        <TicketCutoutBottom offer={offer} booking={booking} userEmail={user?.email} />
+        <TicketCutoutBottom
+          booking={booking}
+          userEmail={user?.email}
+          enableHideTicket={enableHideTicket}
+          categoryId={categoryId}
+          isEvent={isEvent}
+          subcategoryShouldHaveQrCode={subcategoryShouldHaveQrCode}
+        />
       </TicketCutout>
       <ErrorBannerContainer>
         <ErrorBanner message={errorBannerMessage} />

@@ -723,7 +723,7 @@ describe('BookingDetails', () => {
       })
     })
 
-    it('should render correctly when withdrawal type is no ticket', async () => {
+    it('should render correctly when offer is not digital withdrawal type is no ticket', async () => {
       renderBookingDetails({
         ...ongoingBookings,
         stock: {
@@ -731,6 +731,7 @@ describe('BookingDetails', () => {
           offer: {
             ...ongoingBookings.stock.offer,
             withdrawalType: WithdrawalTypeEnum.no_ticket,
+            isDigital: false,
           },
         },
       })
@@ -771,6 +772,7 @@ describe('BookingDetails', () => {
           offer: {
             ...ongoingBookings.stock.offer,
             withdrawalType: WithdrawalTypeEnum.no_ticket,
+            isDigital: false,
           },
         },
       })
