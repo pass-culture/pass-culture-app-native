@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import { ScrollView } from 'react-native'
 import styled from 'styled-components/native'
@@ -12,13 +13,13 @@ import { TicketCutout } from 'features/bookings/components/TicketCutout/TicketCu
 import { TicketCutoutBottom } from 'features/bookings/components/TicketCutout/TicketCutoutBottom/TicketCutoutBottom'
 import { getBookingLabels } from 'features/bookings/helpers'
 import { BookingProperties } from 'features/bookings/types'
+import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { VenueBlockAddress, VenueBlockVenue } from 'features/offer/components/OfferVenueBlock/type'
 import { VenueBlockWithItinerary } from 'features/offer/components/OfferVenueBlock/VenueBlockWithItinerary'
+import { getAddress } from 'features/offer/helpers/getVenueBlockProps'
 import { analytics } from 'libs/analytics/provider'
-import { useLocation } from 'libs/location'
-import { getDistance } from 'libs/location/getDistance'
 import { SubcategoriesMapping } from 'libs/subcategories/types'
 import { formatFullAddress } from 'shared/address/addressFormatter'
 import { theme } from 'theme'
@@ -42,7 +43,7 @@ export const BookingDetailsContent = ({
   mapping: SubcategoriesMapping
 }) => {
   const { user } = useAuthContext()
-
+  const { navigate } = useNavigation<UseNavigationType>()
   const { address } = booking?.stock.offer ?? {}
   const { visible: cancelModalVisible, showModal: showCancelModal, hideModal } = useModal(false)
   const {
@@ -55,19 +56,8 @@ export const BookingDetailsContent = ({
     : undefined
 
   const { offer } = booking.stock
-  const shouldDisplayItineraryButton =
-    !!offerFullAddress && (properties.isEvent || (properties.isPhysical && !properties.isDigital))
 
   const { hourLabel, dayLabel } = getBookingLabels(booking, properties)
-
-  const { userLocation, selectedPlace, selectedLocationMode } = useLocation()
-
-  const distance = offer.venue.coordinates
-    ? getDistance(
-        { lat: offer.venue.coordinates.latitude, lng: offer.venue.coordinates.longitude },
-        { userLocation, selectedPlace, selectedLocationMode }
-      )
-    : null
 
   const onEmailPress = () => {
     analytics.logClickEmailOrganizer()
@@ -78,6 +68,13 @@ export const BookingDetailsContent = ({
   }
 
   const { goBack } = useGoBack(...getTabNavConfig('Bookings'))
+
+  const venueBlockAddress = getAddress(offer.address)
+
+  const handleOnSeeVenuePress = () => {
+    analytics.logConsultVenue({ venueId: offer.venue.id, from: 'bookings' })
+    navigate('Venue', { id: offer.venue.id })
+  }
 
   return (
     <ScrollView>
@@ -96,13 +93,14 @@ export const BookingDetailsContent = ({
         mapping={mapping}
         venueInfo={
           <VenueBlockWithItinerary
-            shouldDisplayItineraryButton={shouldDisplayItineraryButton}
+            properties={properties}
             offerFullAddress={offerFullAddress}
             venue={getVenueBlockVenue(booking.stock.offer.venue)}
             address={getVenueBlockAddress(booking.stock.offer.address)}
             offerId={offer.id}
             thumbnailSize={VENUE_THUMBNAIL_SIZE}
-            distance={distance}
+            addressLabel={venueBlockAddress?.label ?? undefined}
+            onSeeVenuePress={offer.venue.isOpenToPublic ? handleOnSeeVenuePress : undefined}
           />
         }
         title={offer.name}

@@ -8,7 +8,7 @@ export type VenueBlockVenue = {
   name: string
   postalCode?: string | null
   publicName?: string | null
-  bannerUrl?: string
+  bannerUrl?: string | null
 }
 
 export type VenueBlockAddress = {
