@@ -14,11 +14,12 @@ import { Easing } from 'react-native-reanimated'
 import styled from 'styled-components/native'
 
 import { MovieCalendar } from 'features/offer/components/MovieCalendar/MovieCalendar'
-import { handleMovieCalendarScroll } from 'features/offer/components/MoviesScreeningCalendar/utils'
 import { useDaysSelector } from 'features/offer/helpers/useDaysSelector/useDaysSelector'
 import { Anchor } from 'ui/components/anchor/Anchor'
 import { useScrollToAnchor } from 'ui/components/anchor/AnchorContext'
 import { useLayout } from 'ui/hooks/useLayout'
+
+import { handleMovieCalendarScroll } from './helpers/handleMovieCalendarScroll'
 
 type MovieCalendarContextType = {
   selectedDate: Date

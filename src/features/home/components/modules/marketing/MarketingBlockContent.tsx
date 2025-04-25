@@ -3,7 +3,7 @@ import { PixelRatio } from 'react-native'
 import styled from 'styled-components/native'
 
 import { BlackGradient } from 'features/home/components/BlackGradient'
-import { MarketingBlockProps } from 'features/home/components/modules/marketing/MarketingBlock'
+import { MarketingBlockProps } from 'features/home/components/modules/marketing/types'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { All } from 'ui/svg/icons/bicolor/All'
 import { getSpacing } from 'ui/theme'

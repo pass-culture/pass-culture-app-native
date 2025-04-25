@@ -3,10 +3,11 @@ import { UseQueryResult } from 'react-query'
 
 import { OfferResponseV2 } from 'api/gen'
 import * as excluOfferAPI from 'features/home/api/useExcluOffer'
+import { ExclusivityModuleProps } from 'features/home/components/modules/exclusivity/types'
 import { offerResponseSnap as mockOffer } from 'features/offer/fixtures/offerResponse'
 import { render, screen } from 'tests/utils'
 
-import { ExclusivityModule, ExclusivityModuleProps } from './ExclusivityModule'
+import { ExclusivityModule } from './ExclusivityModule'
 
 jest.mock('features/search/helpers/useMaxPrice/useMaxPrice', () => ({
   useMaxPrice: jest.fn(() => 300_00),

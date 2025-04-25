@@ -1,5 +1,6 @@
 import React from 'react'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
+import styled from 'styled-components/native'
 
 import { UserProfileResponse } from 'api/gen'
 import { AlreadyChangedEmailDisclaimer } from 'features/profile/components/Disclaimers/AlreadyChangedEmailDisclaimer'
@@ -11,8 +12,6 @@ import { Form } from 'ui/components/Form'
 import { EmailInput } from 'ui/components/inputs/EmailInput/EmailInput'
 import { Info } from 'ui/svg/icons/Info'
 import { Spacer } from 'ui/theme'
-
-import { CenteredContainer, ButtonContainer } from './ChangeEmail'
 
 export function ChangeEmailContent({
   hasCurrentEmailChange,
@@ -70,3 +69,14 @@ export function ChangeEmailContent({
     </React.Fragment>
   )
 }
+
+const CenteredContainer = styled.View({
+  flex: 1,
+  alignItems: 'center',
+})
+
+const ButtonContainer = styled.View<{ paddingBottom: number }>(({ paddingBottom }) => ({
+  paddingBottom,
+  alignItems: 'center',
+  width: '100%',
+}))

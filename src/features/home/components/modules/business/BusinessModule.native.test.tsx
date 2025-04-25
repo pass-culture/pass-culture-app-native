@@ -1,9 +1,7 @@
 import React from 'react'
 
-import {
-  BusinessModule,
-  BusinessModuleProps,
-} from 'features/home/components/modules/business/BusinessModule'
+import { BusinessModule } from 'features/home/components/modules/business/BusinessModule'
+import { BusinessModuleProps } from 'features/home/components/modules/business/types'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'

@@ -4,56 +4,13 @@ import styled from 'styled-components/native'
 // Disable ESLint because I need this colors enum.
 // eslint-disable-next-line no-restricted-imports
 
-import { AutomaticVerticalDots } from './AutomaticVerticalDots'
+import { DotSize, VerticalDotsProps } from 'ui/components/types'
 
 /**
  * A dot size can either be a number so the dot will be rounded,
  * or an object with width and height that allows you to get
  * nice shapes.
  */
-export type DotSize = number | { width: number; height: number }
-
-export interface VerticalDotsProps {
-  /**
-   * Only used to compute dot size when `dotSize` is not passed.
-   */
-  parentWidth: number
-  /**
-   * This is the **VerticalDots** parent height.
-   *
-   * Used to compute dot count.
-   */
-  parentHeight: number
-  /**
-   * Manually set dot size.
-   *
-   * If not given, it will automatically set dot size based on parentWidth value.
-   *
-   * @default parentWidth
-   */
-  dotSize?: DotSize
-  /**
-   * Specifies if it should end with a dot.
-   *
-   * - When you only have one dotted line it should be set to `true`.
-   * - When you have multiple dotted lines following each other, it should be set to `false` so
-   * it seems linear.
-   */
-  endsWithDot?: boolean
-  /**
-   * If you want a custom size for the first dot.
-   *
-   * @default dotSize
-   */
-  firstDotSize?: DotSize
-  /**
-   * If you want a custom size for the last dot.
-   *
-   * @default dotSize
-   */
-  lastDotSize?: DotSize
-  testID?: string
-}
 
 type GetDotCountOptions = {
   availableHeight: number
@@ -117,14 +74,16 @@ export function VerticalDots({
   return (
     <Wrapper testID={testID}>
       {Array.from({ length: dotCount }).map((_, index) => {
+        const key = `dot-${index}`
         const isFirst = index === 0
         const isLast = index === dotCount - 1
 
-        const size = isFirst ? firstDotSize : isLast ? lastDotSize : dotSize
+        const defaultOrLastSize = isLast ? lastDotSize : dotSize
+        const size = isFirst ? firstDotSize : defaultOrLastSize
 
         return (
           <Dot
-            key={index}
+            key={key}
             dotSize={size}
             spacing={minimumDotSpacing}
             endsWithDot={endsWithDot}
@@ -135,8 +94,6 @@ export function VerticalDots({
     </Wrapper>
   )
 }
-
-VerticalDots.Auto = AutomaticVerticalDots
 
 const Wrapper = styled.View({
   justifyContent: 'space-between',

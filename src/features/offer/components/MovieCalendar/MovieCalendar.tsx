@@ -6,10 +6,14 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { MovieCalendarBottomBar } from 'features/offer/components/MovieCalendar/components/MovieCalendarBottomBar'
 import { MovieCalendarDay } from 'features/offer/components/MovieCalendar/components/MovieCalendarDay'
-import { handleMovieCalendarScroll } from 'features/offer/components/MoviesScreeningCalendar/utils'
 import { useHorizontalFlatListScroll } from 'ui/hooks/useHorizontalFlatListScroll'
 import { PlaylistArrowButton } from 'ui/Playlist/PlaylistArrowButton'
 import { getSpacing } from 'ui/theme'
+
+import {
+  handleMovieCalendarScroll,
+  MOVIE_CALENDAR_PADDING,
+} from '../MoviesScreeningCalendar/helpers/handleMovieCalendarScroll'
 
 type Props = {
   dates: Date[]
@@ -22,8 +26,6 @@ type Props = {
   itemWidth?: number
   onItemLayout?: (event: LayoutChangeEvent) => void
 }
-
-export const MOVIE_CALENDAR_PADDING = getSpacing(6)
 
 export const MovieCalendar: React.FC<Props> = ({
   dates,
