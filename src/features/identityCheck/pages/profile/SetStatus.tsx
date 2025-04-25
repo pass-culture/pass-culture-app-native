@@ -21,6 +21,8 @@ import {
 } from 'features/navigation/RootNavigator/types'
 import { useFreeOfferId } from 'features/offer/store/freeOfferIdStore'
 import { analytics } from 'libs/analytics/provider'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { BlurHeader } from 'ui/components/headers/BlurHeader'
 import {
   PageHeaderWithoutPlaceholder,
@@ -37,6 +39,10 @@ type Props = StackScreenProps<SubscriptionRootStackParamList, 'SetStatus'>
 
 export const SetStatus: FunctionComponent<Props> = ({ route }: Props) => {
   const { reset } = useNavigation<UseNavigationType>()
+
+  const enableBookingFreeOfferFifteenSixteen = useFeatureFlag(
+    RemoteStoreFeatureFlags.ENABLE_BOOKING_FREE_OFFER_15_16
+  )
 
   const type = route.params.type
   const isIdentityCheck = type === ProfileTypes.IDENTITY_CHECK
@@ -85,7 +91,7 @@ export const SetStatus: FunctionComponent<Props> = ({ route }: Props) => {
       await saveStep(IdentityCheckStep.PROFILE)
       setIsLoading(false)
 
-      if (isBookingFreeOffer) {
+      if (isBookingFreeOffer && enableBookingFreeOfferFifteenSixteen) {
         if (storedFreeOfferId) {
           reset({ routes: [{ name: 'Offer', params: { id: storedFreeOfferId } }] })
         } else {
@@ -97,6 +103,7 @@ export const SetStatus: FunctionComponent<Props> = ({ route }: Props) => {
       }
     },
     [
+      enableBookingFreeOfferFifteenSixteen,
       isBookingFreeOffer,
       navigateForwardToStepper,
       postProfile,

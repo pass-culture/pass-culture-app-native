@@ -13,6 +13,8 @@ import { useName } from 'features/identityCheck/pages/profile/store/nameStore'
 import { SubscriptionRootStackParamList } from 'features/navigation/RootNavigator/types'
 import * as UnderageUserAPI from 'features/profile/helpers/useIsUserUnderage'
 import { analytics } from 'libs/analytics/provider'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent, waitFor } from 'tests/utils'
@@ -100,6 +102,7 @@ jest.useFakeTimers()
 
 describe('<SetStatus/>', () => {
   beforeEach(async () => {
+    setFeatureFlags()
     mockServer.postApi('/v1/subscription/profile', {})
   })
 
@@ -145,7 +148,19 @@ describe('<SetStatus/>', () => {
     expect(analytics.logSetStatusClicked).toHaveBeenCalledTimes(1)
   })
 
-  it('should navigate to Offer screen if booking free offer and offer ID exists', async () => {
+  it('should not navigate to Offer screen if booking free offer and offer ID exists but FF ENABLE_BOOKING_FREE_OFFER_15_16 is disable', async () => {
+    mockStatus = ActivityTypesSnap.activities[0].id
+
+    renderSetStatus({ type: ProfileTypes.BOOKING_FREE_OFFER_15_16 })
+
+    await user.press(screen.getByText(ActivityTypesSnap.activities[0].label))
+    await user.press(screen.getByText('Continuer'))
+
+    expect(reset).not.toHaveBeenCalled()
+  })
+
+  it('should navigate to Offer screen if booking free offer and offer ID exists when FF ENABLE_BOOKING_FREE_OFFER_15_16 is enable', async () => {
+    setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_BOOKING_FREE_OFFER_15_16])
     mockStatus = ActivityTypesSnap.activities[0].id
 
     renderSetStatus({ type: ProfileTypes.BOOKING_FREE_OFFER_15_16 })
@@ -158,7 +173,20 @@ describe('<SetStatus/>', () => {
     })
   })
 
-  it('should not navigate to Offer screen when booking free offer but no offer ID is stored', async () => {
+  it('should not navigate to Offer screen when booking free offer but no offer ID is stored with FF ENABLE_BOOKING_FREE_OFFER_15_16 is disable', async () => {
+    mockStatus = ActivityTypesSnap.activities[0].id
+    mockOfferId = null
+
+    renderSetStatus({ type: ProfileTypes.BOOKING_FREE_OFFER_15_16 })
+
+    await user.press(screen.getByText(ActivityTypesSnap.activities[0].label))
+    await user.press(screen.getByText('Continuer'))
+
+    expect(reset).not.toHaveBeenCalled()
+  })
+
+  it('should not navigate to Offer screen when booking free offer but no offer ID is stored with FF ENABLE_BOOKING_FREE_OFFER_15_16 is enable', async () => {
+    setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_BOOKING_FREE_OFFER_15_16])
     mockStatus = ActivityTypesSnap.activities[0].id
     mockOfferId = null
 
