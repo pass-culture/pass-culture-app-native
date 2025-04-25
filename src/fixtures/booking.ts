@@ -5,7 +5,13 @@ export const mockedBookingOfferResponse: BookingOfferResponse = {
   isDigital: true,
   isPermanent: true,
   name: 'mockedBookingName',
-  venue: { name: 'venueName', id: 3131, coordinates: {}, timezone: 'Europe/Paris' },
+  venue: {
+    name: 'venueName',
+    id: 3131,
+    coordinates: {},
+    timezone: 'Europe/Paris',
+    isOpenToPublic: true,
+  },
   subcategoryId: SubcategoryIdEnum.ABO_CONCERT,
 }
 

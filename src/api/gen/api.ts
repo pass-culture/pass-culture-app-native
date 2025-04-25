@@ -759,6 +759,11 @@ export interface BookingVenueResponse {
    * @type {string}
    * @memberof BookingVenueResponse
    */
+  bannerUrl?: string | null
+  /**
+   * @type {string}
+   * @memberof BookingVenueResponse
+   */
   city?: string | null
   /**
    * @type {Coordinates}
@@ -770,6 +775,11 @@ export interface BookingVenueResponse {
    * @memberof BookingVenueResponse
    */
   id: number
+  /**
+   * @type {boolean}
+   * @memberof BookingVenueResponse
+   */
+  isOpenToPublic: boolean
   /**
    * @type {string}
    * @memberof BookingVenueResponse
