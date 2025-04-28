@@ -8,7 +8,7 @@ import {
 } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { AlgoliaOffer, HitOffer } from 'libs/algolia/types'
 import { LocationMode, Position } from 'libs/location/types'
-import { useVenueOffersQuery } from 'queries/venue/useVenueOffersQuery/useVenueOffersQuery'
+import { useVenueOffersQuery } from 'queries/venue/useVenueOffersQuery'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, waitFor } from 'tests/utils'
 

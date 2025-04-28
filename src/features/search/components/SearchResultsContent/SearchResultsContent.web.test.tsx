@@ -73,7 +73,7 @@ jest.mock('features/location/helpers/useLocationState', () => ({
 jest.mock('features/venueMap/hook/useCenterOnLocation')
 const mockUseCenterOnLocation = useCenterOnLocation as jest.Mock
 
-jest.mock('queries/venue/useVenueOffersQuery/useVenueOffersQuery')
+jest.mock('queries/venue/useVenueOffersQuery')
 jest.mock('features/venueMap/helpers/zoomOutIfMapEmpty')
 jest.mock('ui/theme/customFocusOutline/customFocusOutline')
 

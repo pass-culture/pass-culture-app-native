@@ -15,7 +15,7 @@ import * as useVenueSearchParameters from 'features/venue/helpers/useVenueSearch
 import mockVenueSearchParams from 'fixtures/venueSearchParams'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
-import { useVenueOffersQuery } from 'queries/venue/useVenueOffersQuery/useVenueOffersQuery'
+import { useVenueOffersQuery } from 'queries/venue/useVenueOffersQuery'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
 
@@ -26,7 +26,7 @@ jest
   .spyOn(useGTLPlaylists, 'useGTLPlaylists')
   .mockReturnValue({ isLoading: false, gtlPlaylists: gtlPlaylistAlgoliaSnapshot })
 
-jest.mock('queries/venue/useVenueOffersQuery/useVenueOffersQuery')
+jest.mock('queries/venue/useVenueOffersQuery')
 const mockUseVenueOffers = useVenueOffersQuery as jest.Mock
 mockUseVenueOffers.mockReturnValue({
   isLoading: false,

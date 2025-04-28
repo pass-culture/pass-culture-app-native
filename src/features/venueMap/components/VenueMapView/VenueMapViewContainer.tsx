@@ -38,7 +38,7 @@ import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useLocation } from 'libs/location'
 import { Map, MarkerPressEvent, Region } from 'libs/maps/maps'
-import { useVenueOffersQuery } from 'queries/venue/useVenueOffersQuery/useVenueOffersQuery'
+import { useVenueOffersQuery } from 'queries/venue/useVenueOffersQuery'
 import { LENGTH_L } from 'ui/theme'
 
 import { VenueMapView } from './VenueMapView'

@@ -20,7 +20,7 @@ import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { LocationMode } from 'libs/location/types'
-import * as useVenueOffers from 'queries/venue/useVenueOffersQuery/useVenueOffersQuery'
+import * as useVenueOffersQueryAPI from 'queries/venue/useVenueOffersQuery'
 import { Currency } from 'shared/currency/useGetCurrencyToDisplay'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
@@ -28,7 +28,7 @@ import { AnchorProvider } from 'ui/components/anchor/AnchorContext'
 
 const venueId = venueDataTest.id
 
-jest.spyOn(useVenueOffers, 'useVenueOffersQuery').mockReturnValue({
+jest.spyOn(useVenueOffersQueryAPI, 'useVenueOffersQuery').mockReturnValue({
   isLoading: false,
   data: { hits: VenueOffersResponseSnap, nbHits: 10 },
 } as unknown as UseQueryResult<VenueOffersType, unknown>)
@@ -99,7 +99,7 @@ describe('<VenueOffers />', () => {
   })
 
   it('should display skeleton if offers are fetching', () => {
-    jest.spyOn(useVenueOffers, 'useVenueOffersQuery').mockReturnValueOnce({
+    jest.spyOn(useVenueOffersQueryAPI, 'useVenueOffersQuery').mockReturnValueOnce({
       isLoading: true,
     } as UseQueryResult<VenueOffersType, unknown>)
     renderVenueOffers({})

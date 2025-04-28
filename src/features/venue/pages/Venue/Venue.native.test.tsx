@@ -27,7 +27,7 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import { Network } from 'libs/share/types'
-import { useVenueOffersQuery } from 'queries/venue/useVenueOffersQuery/useVenueOffersQuery'
+import { useVenueOffersQuery } from 'queries/venue/useVenueOffersQuery'
 import { Offer } from 'shared/offer/types'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -45,7 +45,7 @@ jest.mock('libs/firebase/analytics/analytics')
 jest.unmock('react-native/Libraries/Animated/createAnimatedComponent')
 
 jest.mock('libs/itinerary/useItinerary')
-jest.mock('queries/venue/useVenueOffersQuery/useVenueOffersQuery')
+jest.mock('queries/venue/useVenueOffersQuery')
 const mockUseVenueOffers = useVenueOffersQuery as jest.Mock
 
 jest.mock('features/search/context/SearchWrapper')
