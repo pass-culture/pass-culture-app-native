@@ -44,6 +44,7 @@ SECRET_KEYTOOL_PASSWORD=THE_PASSWORD # replace THE_PASSWORD with the one from Ke
 then in your terminal run :
 
 ```sh
+sudo xcodebuild -license # read and accept Apple license to be abble to use git inside Android Studio
 ./scripts/install_certificate_java.sh # this script ask root password
 direnv reload
 ```
