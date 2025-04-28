@@ -3,10 +3,8 @@ module.exports = {
     type: 'suggestion',
     docs: {
       description: 'Forbids the use of fireEvent and recommends userEvent',
-      category: 'Best Practices',
       recommended: true,
     },
-    schema: [],
     messages: {
       useUserEvent: 'Use userEvent instead of fireEvent for better user interaction simulation',
     },
