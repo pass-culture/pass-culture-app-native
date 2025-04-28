@@ -14,6 +14,8 @@ import { TicketCutoutLeft } from 'ui/svg/TicketCutoutLeft'
 import { TicketCutoutRight } from 'ui/svg/TicketCutoutRight'
 import { getShadow, getSpacing, Typo } from 'ui/theme'
 
+export const TICKET_SEPARATION_HEIGHT = getSpacing(21.5)
+
 type Props = {
   title: string
   hour?: string
@@ -24,6 +26,7 @@ type Props = {
   venueInfo?: React.JSX.Element
   offer: BookingOfferResponse
   mapping: SubcategoriesMapping
+  onTopBlockLayout?: (height: number) => void
 }
 
 export const TicketCutout = ({
@@ -36,10 +39,15 @@ export const TicketCutout = ({
   venueInfo,
   offer,
   mapping,
+  onTopBlockLayout,
 }: Props) => {
   return (
     <View testID="ticket-punched">
-      <TopBlock>
+      <TopBlock
+        onLayout={(e) => {
+          const { height } = e.nativeEvent.layout
+          onTopBlockLayout?.(height)
+        }}>
         <ViewGap gap={6}>
           <Typo.Title2>{title}</Typo.Title2>
           <ViewGap gap={2}>
@@ -83,9 +91,10 @@ export const TicketCutout = ({
   )
 }
 
-const ContainerStrokedLine = styled.View({
+const ContainerStrokedLine = styled.View(({ theme }) => ({
   flex: 1,
-})
+  backgroundColor: theme.colors.white,
+}))
 
 const StyledStrokedLine = styled(Stroke).attrs(({ theme }) => ({
   size: '100%',
@@ -95,8 +104,7 @@ const StyledStrokedLine = styled(Stroke).attrs(({ theme }) => ({
 const MiddleBlock = styled.View({
   flexDirection: 'row',
   width: '100%',
-  height: getSpacing(21.5),
-  backgroundColor: 'white',
+  height: TICKET_SEPARATION_HEIGHT,
   zIndex: 1,
 })
 

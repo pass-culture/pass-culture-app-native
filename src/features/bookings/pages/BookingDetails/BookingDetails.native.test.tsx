@@ -596,7 +596,7 @@ describe('BookingDetails', () => {
     it('should render BookingPageContent', async () => {
       renderBookingDetails(ongoingBookings)
 
-      await screen.findByText(ongoingBookings.stock.offer.name)
+      await screen.findAllByText(ongoingBookings.stock.offer.name)
 
       expect(screen.getByTestId('ticket-punched')).toBeOnTheScreen()
     })
@@ -608,7 +608,7 @@ describe('BookingDetails', () => {
 
       renderBookingDetails(ongoingBookings)
 
-      await screen.findByText(ongoingBookings.stock.offer.name)
+      await screen.findAllByText(ongoingBookings.stock.offer.name)
 
       const itineraryButton = await screen.findByText('Voir l’itinéraire')
 
@@ -620,7 +620,7 @@ describe('BookingDetails', () => {
     it('should display banner warning about disposal', async () => {
       renderBookingDetails(ongoingBookings)
 
-      await screen.findByText(ongoingBookings.stock.offer.name)
+      await screen.findAllByText(ongoingBookings.stock.offer.name)
 
       expect(
         screen.getByText('Tu n’as pas le droit de céder ou de revendre ton billet.')
@@ -641,7 +641,7 @@ describe('BookingDetails', () => {
         },
       })
 
-      await screen.findByText(ongoingBookings.stock.offer.name)
+      await screen.findAllByText(ongoingBookings.stock.offer.name)
 
       expect(screen.getByText(withdrawalDetails)).toBeOnTheScreen()
     })
@@ -659,7 +659,7 @@ describe('BookingDetails', () => {
         },
       })
 
-      await screen.findByText(ongoingBookings.stock.offer.name)
+      await screen.findAllByText(ongoingBookings.stock.offer.name)
 
       expect(screen.getByText(organizerEmail)).toBeOnTheScreen()
     })
@@ -735,7 +735,7 @@ describe('BookingDetails', () => {
         },
       })
 
-      await screen.findByText(ongoingBookings.stock.offer.name)
+      await screen.findAllByText(ongoingBookings.stock.offer.name)
 
       expect(
         screen.getByText('Tu n’as pas besoin de billet pour profiter de cette offre !')
