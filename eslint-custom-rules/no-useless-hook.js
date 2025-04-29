@@ -1,3 +1,72 @@
+const fs = require('fs')
+const path = require('path')
+
+const MESSAGES = {
+  noUselessHook:
+    '"{{ name }}" is named like a hook but doesn\'t use any hooks. Rename it without the "use" prefix.',
+}
+
+const CONFIG = {
+  testFilePatterns: ['/__tests__/', '/__mocks__/', '.test.ts', '.test.tsx'],
+  fileExtensions: ['.ts', '.tsx'],
+}
+
+const isHookName = (name) => {
+  if (!name || typeof name !== 'string') return false
+
+  const startsWithUse = name.startsWith('use')
+  const hasEnoughCharacters = name.length >= 4
+  const hasUppercaseAfterUse = name[3] && name[3].toUpperCase() === name[3]
+
+  return startsWithUse && hasEnoughCharacters && hasUppercaseAfterUse
+}
+
+const hasHookCall = (context) => {
+  const sourceCode = context.getSourceCode()
+  return sourceCode.ast.body.some((node) =>
+    sourceCode
+      .getTokens(node)
+      .some(
+        (token) =>
+          sourceCode.getNodeByRangeIndex(token.range[0])?.type === 'CallExpression' &&
+          isHookName(sourceCode.getNodeByRangeIndex(token.range[0])?.callee?.name)
+      )
+  )
+}
+
+const isTestFile = (context) => {
+  const filename = context.getFilename()
+
+  return CONFIG.testFilePatterns.some((pattern) => filename.includes(pattern))
+}
+
+const getCorrespondingFiles = (filename) => {
+  const dir = path.dirname(filename)
+  const baseName = path.basename(filename, path.extname(filename))
+  const isWebFile = filename.includes('.web.')
+
+  return CONFIG.fileExtensions.map((ext) =>
+    path.join(dir, isWebFile ? baseName.replace('.web', '') + ext : baseName + '.web' + ext)
+  )
+}
+
+const hasCorrespondingFileWithHooks = (context) => {
+  const filename = context.getFilename()
+  const correspondingFiles = getCorrespondingFiles(filename)
+
+  return correspondingFiles.some((file) => {
+    if (!fs.existsSync(file)) return false
+
+    try {
+      const content = fs.readFileSync(file, 'utf8')
+      return /use[A-Z][a-zA-Z]*\s*\([^)]*\)/.test(content)
+    } catch (error) {
+      console.error(`Error reading file ${file}:`, error)
+      return false
+    }
+  })
+}
+
 module.exports = {
   name: 'no-useless-hook',
   meta: {
@@ -5,110 +74,38 @@ module.exports = {
       description: "Prevent creating hooks that don't use other hooks",
       recommended: true,
     },
-    messages: {
-      noUselessHook:
-        '"{{ name }}" is named like a hook but doesn\'t use any hooks. Rename it without the "use" prefix.',
-    },
+    messages: MESSAGES,
   },
   create(context) {
-    // Ignore test files
-    const filename = context.getFilename()
-    if (
-      filename.includes('/__tests__/') ||
-      filename.includes('/__mocks__/') ||
-      filename.endsWith('.test.ts') ||
-      filename.endsWith('.test.tsx')
-    ) {
+    if (isTestFile(context)) {
       return {}
     }
 
-    const fs = require('fs')
-    const path = require('path')
-    const dir = path.dirname(filename)
-    const baseName = path.basename(filename, path.extname(filename))
-    const isWebFile = filename.includes('.web.')
-
-    const getCorrespondingFile = (baseName) => {
-      const extensions = ['.ts', '.tsx']
-      if (isWebFile) {
-        return extensions.map((ext) => path.join(dir, `${baseName}${ext}`))
-      } else {
-        return extensions.map((ext) => path.join(dir, `${baseName}.web${ext}`))
-      }
-    }
-
-    const correspondingFiles = getCorrespondingFile(baseName)
-
-    const hasCorrespondingFileWithHooks = correspondingFiles.some((file) => {
-      if (!fs.existsSync(file)) return false
-
-      try {
-        const content = fs.readFileSync(file, 'utf8')
-        return content.includes('use') && content.includes('(')
-      } catch (e) {
-        return false
-      }
-    })
-
-    if (hasCorrespondingFileWithHooks) {
+    if (hasCorrespondingFileWithHooks(context)) {
       return {}
-    }
-
-    const isHookName = (name) =>
-      name.startsWith('use') && name[3] && name[3].toUpperCase() === name[3]
-
-    const hasHook = (node) => {
-      const visited = new WeakSet()
-
-      const checkNode = (node) => {
-        if (!node || visited.has(node)) return false
-        visited.add(node)
-
-        if (
-          node.type === 'CallExpression' &&
-          node.callee.name &&
-          node.callee.name.startsWith('use')
-        ) {
-          return true
-        }
-
-        for (const key in node) {
-          if (node[key] && typeof node[key] === 'object') {
-            if (checkNode(node[key])) return true
-          }
-        }
-
-        return false
-      }
-
-      return checkNode(node)
     }
 
     return {
       FunctionDeclaration(node) {
-        if (node.id && isHookName(node.id.name) && !hasHook(node)) {
+        if (node.id && isHookName(node.id.name) && !hasHookCall(context)) {
           context.report({
             node,
             messageId: 'noUselessHook',
-            data: {
-              name: node.id.name,
-            },
+            data: { name: node.id.name },
           })
         }
       },
-      ArrowFunctionExpression(node) {
+      VariableDeclarator(node) {
         if (
-          node.parent.type === 'VariableDeclarator' &&
-          node.parent.id.name &&
-          isHookName(node.parent.id.name) &&
-          !hasHook(node.body)
+          node.init?.type === 'ArrowFunctionExpression' &&
+          node.id.name &&
+          isHookName(node.id.name) &&
+          !hasHookCall(context)
         ) {
           context.report({
             node,
             messageId: 'noUselessHook',
-            data: {
-              name: node.parent.id.name,
-            },
+            data: { name: node.id.name },
           })
         }
       },
