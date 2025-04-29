@@ -51,7 +51,7 @@
     "start:web:testing": "yarn start:web --mode=testing",
     "storybook": "NODE_OPTIONS='--openssl-legacy-provider' TZ=UTC storybook dev -p 6006",
     "test": "yarn test:lint && yarn test:types && yarn test:unit && yarn test:unit:web",
-    "test:deadcode": "yarn knip --include-libs",
+    "test:deadcode": "yarn knip --include-libs && NODE_ENV=production yarn knip --production --include-libs",
     "test:e2e:android:staging": "./scripts/run_e2e_tests.sh test android staging",
     "test:e2e:ios:staging": "./scripts/run_e2e_tests.sh test ios staging",
     "test:e2e:web:staging": "./scripts/run_e2e_tests.sh test web staging",
