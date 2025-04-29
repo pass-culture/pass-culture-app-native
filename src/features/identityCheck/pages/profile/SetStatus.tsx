@@ -16,7 +16,6 @@ import { useName } from 'features/identityCheck/pages/profile/store/nameStore'
 import { resetProfileStores } from 'features/identityCheck/pages/profile/store/resetProfileStores'
 import { usePostProfileMutation } from 'features/identityCheck/queries/usePostProfileMutation'
 import { IdentityCheckStep } from 'features/identityCheck/types'
-import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import {
   SubscriptionRootStackParamList,
   UseNavigationType,
@@ -72,9 +71,7 @@ export const SetStatus: FunctionComponent<Props> = ({ route }: Props) => {
         // })
         reset({ routes: [{ name: 'Offer', params: { id: storedFreeOfferId } }] })
       } else {
-        // TODO(PC-35543): Navigate (reset) to SetProfileBookingError instead navigateToHome()
-        // reset({ routes: [{ name: 'SetProfileBookingError' }]})
-        navigateToHome()
+        reset({ routes: [{ name: 'SetProfileBookingError' }] })
       }
     } else {
       navigateForwardToStepper()

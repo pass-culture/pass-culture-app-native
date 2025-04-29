@@ -191,7 +191,7 @@ describe('<SetStatus/>', () => {
     expect(reset).not.toHaveBeenCalled()
   })
 
-  it('should not navigate to Offer screen when booking free offer but no offer ID is stored with FF ENABLE_BOOKING_FREE_OFFER_15_16 is enable', async () => {
+  it('should navigate to error screen when booking free offer but no offer ID is stored with FF ENABLE_BOOKING_FREE_OFFER_15_16 is enable', async () => {
     setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_BOOKING_FREE_OFFER_15_16])
     mockStatus = ActivityTypesSnap.activities[0].id
     mockOfferId = null
@@ -201,7 +201,7 @@ describe('<SetStatus/>', () => {
     await user.press(screen.getByText(ActivityTypesSnap.activities[0].label))
     await user.press(screen.getByText('Continuer'))
 
-    expect(reset).not.toHaveBeenCalled()
+    expect(reset).toHaveBeenCalledWith({ routes: [{ name: 'SetProfileBookingError' }] })
   })
 
   it('should reset profile stores after submission succeeds', async () => {
