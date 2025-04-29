@@ -6,6 +6,7 @@ import {
   BookingReponse,
   BookOfferRequest,
   BookOfferResponse,
+  EligibilityType,
   FavoriteOfferResponse,
   OfferResponseV2,
   RecommendationApiParams,
@@ -121,7 +122,7 @@ export const getCtaWordingAndAction = ({
   const { setFreeOfferId } = freeOfferIdActions
 
   const enableBookingFreeOfferFifteenSixteen = featureFlags.enableBookingFreeOfferFifteenSixteen
-  const isUserFreeStatus = true // TODO(PC-35543) Use user?.eligibility === EligibilityType.free from API instead
+  const isUserFreeStatus = user?.eligibility === EligibilityType.free
   const isFreeOffer = getIsFreeOffer(offer)
   const isProfileIncomplete = getIsProfileIncomplete(user)
 

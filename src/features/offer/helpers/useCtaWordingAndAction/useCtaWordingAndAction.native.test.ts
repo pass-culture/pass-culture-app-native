@@ -1,6 +1,7 @@
 import mockdate from 'mockdate'
 
 import {
+  EligibilityType,
   OfferResponseV2,
   SearchGroupNameEnumv2,
   SubcategoryIdEnum,
@@ -62,7 +63,7 @@ describe('getCtaWordingAndAction', () => {
     })
   })
 
-  describe('Free user', () => {
+  describe('Free offer', () => {
     it('should display "Réserver l’offre" wording with navigate to SetName screen and params type', () => {
       const mockSetFreeOfferId = expect.any(Function)
       const result = getCtaWordingAndAction({
@@ -80,10 +81,10 @@ describe('getCtaWordingAndAction', () => {
       })
     })
 
-    it('should display "Réserver l’offre" wording and open booking modale when user profile complete', () => {
+    it('should display "Réserver l’offre" wording and open booking modal when user profile complete', () => {
       const result = getCtaWordingAndAction({
         ...defaultParameters,
-        user: { ...beneficiaryUser },
+        user: { ...beneficiaryUser, eligibility: EligibilityType.free },
         offer: buildOffer({ stocks: [{ ...baseOffer.stocks[0], price: 0 }] }),
         subcategory: buildSubcategory({}),
         featureFlags: { enableBookingFreeOfferFifteenSixteen: true },
