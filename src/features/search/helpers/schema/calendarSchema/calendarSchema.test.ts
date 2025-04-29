@@ -1,3 +1,5 @@
+import { startOfDay } from 'date-fns'
+
 import { calendarSchema } from 'features/search/helpers/schema/calendarSchema/calendarSchema'
 
 describe('calendarSchema', () => {
@@ -37,6 +39,17 @@ describe('calendarSchema', () => {
   it('should pass when only selectedStartDate is provided and it is today', async () => {
     const validData = {
       selectedStartDate: new Date(now),
+    }
+
+    await expect(calendarSchema.validate(validData)).resolves.toEqual({
+      ...validData,
+      selectedEndDate: undefined,
+    })
+  })
+
+  it('should pass when only selectedStartDate is provided and it is today at midnight', async () => {
+    const validData = {
+      selectedStartDate: startOfDay(new Date()),
     }
 
     await expect(calendarSchema.validate(validData)).resolves.toEqual({

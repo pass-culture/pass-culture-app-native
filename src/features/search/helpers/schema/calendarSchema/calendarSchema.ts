@@ -1,9 +1,10 @@
+import { startOfDay } from 'date-fns'
 import { date, object } from 'yup'
 
 export const calendarSchema = object().shape({
   selectedStartDate: date()
     .optional()
-    .min(new Date(), 'La date de début ne peut pas être dans le passé'),
+    .min(startOfDay(new Date()), 'La date de début ne peut pas être dans le passé'),
   selectedEndDate: date()
     .optional()
     .when('selectedStartDate', (selectedStartDate, schema) =>
