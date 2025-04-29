@@ -87,6 +87,6 @@ type TextBodyProps = TextProps & {
   textAlign?: Exclude<TextStyle['textAlign'], 'auto'>
 }
 
-const Body = styled(Typo.Body).attrs<TextBodyProps>((props) => props)<TextBodyProps>(
-  ({ textAlign }) => ({ textAlign })
-)
+const Body = styled(Typo.Body)<TextBodyProps>(({ textAlign }) => ({
+  textAlign,
+}))
