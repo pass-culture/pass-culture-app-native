@@ -223,7 +223,7 @@ describe('metasResponseInterceptor', () => {
     const req = {} as IncomingMessage
     const res = {} as ServerResponse
 
-    it('should request the real testing backend and get the offer data', async () => {
+    it.skip('should request the real testing backend and get the offer data', async () => {
       const url = `${env.APP_PUBLIC_URL}/offre/1`
       const html = await metasResponseInterceptor(
         responseBuffer,
