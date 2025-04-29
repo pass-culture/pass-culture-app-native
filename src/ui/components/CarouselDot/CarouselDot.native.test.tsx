@@ -2,7 +2,7 @@ import React from 'react'
 import { SharedValue } from 'react-native-reanimated'
 
 import { render, screen } from 'tests/utils'
-import { CarouselDot } from 'ui/CarouselDot/CarouselDot'
+import { CarouselDot } from 'ui/components/CarouselDot/CarouselDot'
 
 jest.useFakeTimers()
 

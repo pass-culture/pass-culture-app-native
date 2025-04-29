@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
-import { CarouselDot } from 'ui/CarouselDot/CarouselDot'
+import { CarouselDot } from 'ui/components/CarouselDot/CarouselDot'
 import { CarouselPaginationProps } from 'ui/components/CarouselPagination/types'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 

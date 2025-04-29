@@ -2,7 +2,7 @@ import React from 'react'
 import { SharedValue } from 'react-native-reanimated'
 
 import { render, screen } from 'tests/utils'
-import { CarouselBar } from 'ui/CarouselBar/CarouselBar'
+import { CarouselBar } from 'ui/components/CarouselBar/CarouselBar'
 
 jest.useFakeTimers()
 
