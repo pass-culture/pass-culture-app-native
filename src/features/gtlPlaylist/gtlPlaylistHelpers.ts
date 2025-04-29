@@ -1,6 +1,7 @@
 import { VenueResponse, VenueTypeCodeKey } from 'api/gen'
 import { GtlPlaylistRequest } from 'features/gtlPlaylist/types'
-import { OffersModuleParameters, PlaylistOffersParams } from 'features/home/types'
+import { OffersModuleParameters } from 'features/home/types'
+import { PlaylistOffersParams } from 'libs/algolia/types'
 import { ContentfulLabelCategories } from 'libs/contentful/types'
 
 const VenueTypeToContentfulLabelMapping: Partial<

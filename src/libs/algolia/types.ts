@@ -263,3 +263,16 @@ export type MultipleOffersResult = {
   hits: AlgoliaOffer[]
   nbHits: number
 }[]
+
+export type PlaylistOffersParams = {
+  offerParams: SearchQueryParameters
+  locationParams: BuildLocationParameterParams
+  indexName?: string
+}
+
+export type fetchOffersByGTLArgs = {
+  parameters: PlaylistOffersParams[]
+  buildLocationParameterParams: BuildLocationParameterParams
+  isUserUnderage: boolean
+  searchIndex?: string
+}
