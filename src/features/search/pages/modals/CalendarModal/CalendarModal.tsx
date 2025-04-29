@@ -11,6 +11,7 @@ import { SearchFixedModalBottom } from 'features/search/components/SearchFixedMo
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { FilterBehaviour } from 'features/search/enums'
 import { getMarkedDates } from 'features/search/helpers/getMarkedDates/getMarkedDates'
+import { getPastScrollRange } from 'features/search/helpers/getPastScrollRange/getPastScrollRange'
 import { calendarSchema } from 'features/search/helpers/schema/calendarSchema/calendarSchema'
 import { SearchState } from 'features/search/types'
 import { AppModal } from 'ui/components/modals/AppModal'
@@ -174,10 +175,19 @@ export const CalendarModal: FunctionComponent<CalendarModalProps> = ({
       }
       scrollEnabled={false}>
       <CalendarList
+        current={
+          searchState.beginningDatetime
+            ? format(new Date(searchState.beginningDatetime), 'yyyy-MM-dd')
+            : undefined
+        }
         minDate={format(today, 'yyyy-MM-dd')}
         maxDate={format(twoYearsLater, 'yyyy-MM-dd')}
-        pastScrollRange={0} // month before today not visible
         futureScrollRange={24} // 24 months to have scrolling
+        pastScrollRange={
+          searchState.beginningDatetime
+            ? getPastScrollRange(new Date(searchState.beginningDatetime), today)
+            : 0
+        }
         markingType="period" // to have visible period
         onDayPress={onDayPress}
         markedDates={markedDates}
