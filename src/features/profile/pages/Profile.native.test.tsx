@@ -302,7 +302,7 @@ describe('Profile component', () => {
       const howItWorkButton = screen.getByText('Comment ça marche\u00a0?')
       await user.press(howItWorkButton)
 
-      expect(navigate).toHaveBeenCalledWith('OnboardingStackNavigator', {
+      expect(navigate).toHaveBeenCalledWith('ProfileStackNavigator', {
         params: undefined,
         screen: 'ProfileTutorialAgeInformationCredit',
       })

@@ -25,7 +25,6 @@ import { AppNavigationContainer } from 'features/navigation/NavigationContainer'
 import { PushNotificationsWrapper } from 'features/notifications/context/PushNotificationsWrapper'
 import { SearchWrapper } from 'features/search/context/SearchWrapper'
 import { ShareAppWrapper } from 'features/share/context/ShareAppWrapper'
-import { OnboardingWrapper } from 'features/tutorial/context/OnboardingWrapper'
 import { initAlgoliaAnalytics } from 'libs/algolia/analytics/initAlgoliaAnalytics'
 import { SearchAnalyticsWrapper } from 'libs/algolia/analytics/SearchAnalyticsWrapper'
 import { AutoImmediate, NextResume } from 'libs/codepush/options'
@@ -108,13 +107,11 @@ const App: FunctionComponent = function () {
                                         <SplashScreenProvider>
                                           <PushNotificationsWrapper>
                                             <ShareAppWrapper>
-                                              <OnboardingWrapper>
-                                                <OfflineModeContainer>
-                                                  <ScreenErrorProvider>
-                                                    <AppNavigationContainer />
-                                                  </ScreenErrorProvider>
-                                                </OfflineModeContainer>
-                                              </OnboardingWrapper>
+                                              <OfflineModeContainer>
+                                                <ScreenErrorProvider>
+                                                  <AppNavigationContainer />
+                                                </ScreenErrorProvider>
+                                              </OfflineModeContainer>
                                             </ShareAppWrapper>
                                           </PushNotificationsWrapper>
                                         </SplashScreenProvider>

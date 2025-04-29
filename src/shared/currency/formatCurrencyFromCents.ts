@@ -30,12 +30,12 @@ export const formatCurrencyFromCents = (
       maximumFractionDigits: 0,
     })
     return XPFformatter.format(priceInPacificFrancs).replace('FCFP', 'F')
-  } else {
-    const EURformatter = new Intl.NumberFormat('fr-FR', {
-      style: 'currency',
-      currency: 'EUR',
-      minimumFractionDigits: getFractionDigits(priceInEuro, options),
-    })
-    return EURformatter.format(priceInEuro)
   }
+
+  const EURformatter = new Intl.NumberFormat('fr-FR', {
+    style: 'currency',
+    currency: 'EUR',
+    minimumFractionDigits: getFractionDigits(priceInEuro, options),
+  })
+  return EURformatter.format(priceInEuro)
 }

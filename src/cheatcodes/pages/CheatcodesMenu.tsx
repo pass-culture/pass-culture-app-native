@@ -13,10 +13,10 @@ import { cheatcodesNavigationForceUpdateButtons } from 'cheatcodes/pages/feature
 import { cheatcodesNavigationHomeButtons } from 'cheatcodes/pages/features/home/CheatcodesNavigationHome'
 import { cheatcodesNavigationIdentityCheckButtons } from 'cheatcodes/pages/features/identityCheck/CheatcodesNavigationIdentityCheck'
 import { cheatcodesNavigationInternalButtons } from 'cheatcodes/pages/features/internal/CheatcodesNavigationInternal'
+import { cheatcodesNavigationOnboardingButtons } from 'cheatcodes/pages/features/onboarding/CheatcodesNavigationOnboarding'
 import { cheatcodesNavigationProfileButtons } from 'cheatcodes/pages/features/profile/CheatcodesNavigationProfile'
 import { cheatcodesNavigationSubscriptionButtons } from 'cheatcodes/pages/features/subscription/CheatcodesNavigationSubscription'
 import { cheatcodesNavigationTrustedDeviceButtons } from 'cheatcodes/pages/features/trustedDevice/CheatcodesNavigationTrustedDevice'
-import { cheatcodesNavigationTutorialButtons } from 'cheatcodes/pages/features/tutorial/CheatcodesNavigationTutorial'
 import { cheatcodesNavigationAccountManagementButtons } from 'cheatcodes/pages/others/CheatcodesNavigationAccountManagement'
 import { cheatcodesNavigationErrorsButtons } from 'cheatcodes/pages/others/CheatcodesNavigationErrors'
 import { cheatcodesNavigationGenericPagesButtons } from 'cheatcodes/pages/others/CheatcodesNavigationGenericPages'
@@ -83,7 +83,7 @@ export function CheatcodesMenu(): React.JSX.Element {
     ...cheatcodesNavigationProfileButtons,
     ...cheatcodesNavigationSubscriptionButtons,
     ...cheatcodesNavigationTrustedDeviceButtons,
-    ...cheatcodesNavigationTutorialButtons,
+    ...cheatcodesNavigationOnboardingButtons,
     { title: 'RemoteBanners 🆒', screen: 'CheatcodesScreenRemoteBanners', subscreens: [] },
     { title: 'Share 🔗', screen: 'CheatcodesNavigationShare', subscreens: [] },
     { title: 'Maintenance 🔗', screen: 'CheatcodesScreenMaintenance', subscreens: [] },

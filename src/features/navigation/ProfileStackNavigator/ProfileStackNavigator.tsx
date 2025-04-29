@@ -33,6 +33,7 @@ import { NotificationsSettings } from 'features/profile/pages/NotificationSettin
 import { PersonalData } from 'features/profile/pages/PersonalData/PersonalData'
 import { SuspendAccountConfirmation } from 'features/profile/pages/SuspendAccountConfirmation/SuspendAccountConfirmation'
 import { TrackEmailChange } from 'features/profile/pages/TrackEmailChange/TrackEmailChange'
+import { ProfileTutorialAgeInformationCredit } from 'features/profile/pages/TutorialAgeInformationCredit/ProfileTutorialAgeInformationCredit'
 import { ValidateEmailChange } from 'features/profile/pages/ValidateEmailChange/ValidateEmailChange'
 
 export const ProfileStackNavigator = () => (
@@ -192,6 +193,11 @@ export const ProfileStackNavigator = () => (
     <ProfileStack.Screen
       name="DisplayPreference"
       component={DisplayPreference}
+      options={{ title: 'Préférence d’affichage' }}
+    />
+    <ProfileStack.Screen
+      name="ProfileTutorialAgeInformationCredit"
+      component={ProfileTutorialAgeInformationCredit}
       options={{ title: 'Préférence d’affichage' }}
     />
   </ProfileStack.Navigator>

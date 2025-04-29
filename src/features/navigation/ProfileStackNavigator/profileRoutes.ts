@@ -134,4 +134,9 @@ export const profileRoutes: ProfileStackRoute[] = [
     component: ComponentForPathConfig,
     path: 'profil/nouvelle-adresse-email',
   },
+  {
+    name: 'ProfileTutorialAgeInformationCredit',
+    component: ComponentForPathConfig,
+    path: 'profil/tutoriel',
+  },
 ]
