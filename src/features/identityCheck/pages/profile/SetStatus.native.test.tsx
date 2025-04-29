@@ -2,6 +2,7 @@ import { StackScreenProps } from '@react-navigation/stack'
 import React from 'react'
 
 import { dispatch, reset } from '__mocks__/@react-navigation/native'
+import { ApiError } from 'api/ApiError'
 import { ActivityIdEnum } from 'api/gen'
 import { initialSubscriptionState as mockState } from 'features/identityCheck/context/reducer'
 import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
@@ -11,6 +12,7 @@ import { useAddress } from 'features/identityCheck/pages/profile/store/addressSt
 import { useCity } from 'features/identityCheck/pages/profile/store/cityStore'
 import { useName } from 'features/identityCheck/pages/profile/store/nameStore'
 import * as resetStores from 'features/identityCheck/pages/profile/store/resetProfileStores'
+import * as usePostProfileMutation from 'features/identityCheck/queries/usePostProfileMutation'
 import { SubscriptionRootStackParamList } from 'features/navigation/RootNavigator/types'
 import * as UnderageUserAPI from 'features/profile/helpers/useIsUserUnderage'
 import { analytics } from 'libs/analytics/provider'
@@ -20,6 +22,16 @@ import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent, waitFor } from 'tests/utils'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
+
+const usePostProfileMutationSpy = jest.spyOn(usePostProfileMutation, 'usePostProfileMutation')
+
+const mockUseMutationError = (error?: ApiError) => {
+  // @ts-ignore we don't use the other properties of UseMutationResult (such as failureCount)
+  usePostProfileMutationSpy.mockImplementation(({ onError }) => ({
+    // @ts-ignore it's a mock
+    mutateAsync: jest.fn(() => onError(error)),
+  }))
+}
 
 let mockStatus: ActivityIdEnum | null = null
 
@@ -225,6 +237,27 @@ describe('<SetStatus/>', () => {
 
     await waitFor(() => {
       expect(mockRefetchUser).toHaveBeenCalledTimes(1)
+    })
+  })
+
+  it('should navigate to error screen if posting profile fails', async () => {
+    mockUseMutationError({
+      content: {},
+      name: 'ApiError',
+      statusCode: 400,
+      message: 'erreur',
+    })
+    setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_BOOKING_FREE_OFFER_15_16])
+    mockStatus = ActivityTypesSnap.activities[0].id
+    mockOfferId = 1
+
+    renderSetStatus({ type: ProfileTypes.BOOKING_FREE_OFFER_15_16 })
+
+    await user.press(screen.getByText(ActivityTypesSnap.activities[0].label))
+    await user.press(screen.getByText('Continuer'))
+
+    expect(reset).toHaveBeenCalledWith({
+      routes: [{ name: 'SetProfileBookingError', params: { offerId: mockOfferId } }],
     })
   })
 })

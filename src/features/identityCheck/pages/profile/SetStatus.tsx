@@ -81,25 +81,20 @@ export const SetStatus: FunctionComponent<Props> = ({ route }: Props) => {
   }
 
   const handlePostProfileError = () => {
-    showErrorSnackBar({
-      message: 'Une erreur est survenue lors de la mise à jour de ton profil',
-      timeout: SNACK_BAR_TIME_OUT,
-    })
-    // TODO(PC-35543): Navigate (reset) to SetProfileBookingError if is isBookingFreeOffer
-    // if (isBookingFreeOffer) {
-    //   if (storedFreeOfferId) {
-    //     reset({
-    //       routes: [{ name: 'SetProfileBookingError', params: { offerId: storedFreeOfferId } }],
-    //     })
-    //   } else {
-    //     reset({ routes: [{ name: 'SetProfileBookingError' }] })
-    //   }
-    // } else {
-    //   showErrorSnackBar({
-    //     message: 'Une erreur est survenue lors de la mise à jour de ton profil',
-    //     timeout: SNACK_BAR_TIME_OUT,
-    //   })
-    // }
+    if (isBookingFreeOffer) {
+      if (storedFreeOfferId) {
+        reset({
+          routes: [{ name: 'SetProfileBookingError', params: { offerId: storedFreeOfferId } }],
+        })
+      } else {
+        reset({ routes: [{ name: 'SetProfileBookingError' }] })
+      }
+    } else {
+      showErrorSnackBar({
+        message: 'Une erreur est survenue lors de la mise à jour de ton profil',
+        timeout: SNACK_BAR_TIME_OUT,
+      })
+    }
   }
 
   const { mutateAsync: postProfile } = usePostProfileMutation({
