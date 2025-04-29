@@ -16,8 +16,15 @@ export const BookingButton: FunctionComponent<Props> = ({
   isFreeDigitalOffer,
   isLoggedIn,
 }) => {
-  const { wording, onPress, navigateTo, externalNav, isDisabled, bottomBannerText } =
-    ctaWordingAndAction
+  const {
+    wording,
+    onPress,
+    navigateTo,
+    externalNav,
+    isDisabled,
+    bottomBannerText,
+    onBeforeNavigate,
+  } = ctaWordingAndAction
 
   if (!wording) {
     return null
@@ -28,6 +35,7 @@ export const BookingButton: FunctionComponent<Props> = ({
       <View testID="booking-button">
         <CTAButton
           wording={wording}
+          onBeforeNavigate={onBeforeNavigate}
           onPress={onPress}
           navigateTo={navigateTo}
           externalNav={externalNav}
@@ -36,7 +44,6 @@ export const BookingButton: FunctionComponent<Props> = ({
           isLoggedIn={isLoggedIn}
         />
       </View>
-
       {bottomBannerText ? <BottomBanner text={bottomBannerText} /> : null}
     </React.Fragment>
   )

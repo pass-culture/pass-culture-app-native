@@ -1,25 +1,36 @@
 import { yupResolver } from '@hookform/resolvers/yup'
+import { useNavigation } from '@react-navigation/native'
 import { StackScreenProps } from '@react-navigation/stack'
 import React, { FunctionComponent, useCallback, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { v4 as uuidv4 } from 'uuid'
 import * as yup from 'yup'
 
-import { usePostProfile } from 'features/identityCheck/api/usePostProfile'
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useNavigateForwardToStepper } from 'features/identityCheck/helpers/useNavigateForwardToStepper'
 import { useSaveStep } from 'features/identityCheck/pages/helpers/useSaveStep'
 import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
 import { useAddress } from 'features/identityCheck/pages/profile/store/addressStore'
 import { useCity } from 'features/identityCheck/pages/profile/store/cityStore'
 import { useName } from 'features/identityCheck/pages/profile/store/nameStore'
+import { resetProfileStores } from 'features/identityCheck/pages/profile/store/resetProfileStores'
+import { usePostProfileMutation } from 'features/identityCheck/queries/usePostProfileMutation'
 import { IdentityCheckStep } from 'features/identityCheck/types'
-import { SubscriptionRootStackParamList } from 'features/navigation/RootNavigator/types'
+import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
+import {
+  SubscriptionRootStackParamList,
+  UseNavigationType,
+} from 'features/navigation/RootNavigator/types'
+import { useFreeOfferId } from 'features/offer/store/freeOfferIdStore'
 import { analytics } from 'libs/analytics/provider'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { BlurHeader } from 'ui/components/headers/BlurHeader'
 import {
   PageHeaderWithoutPlaceholder,
   useGetHeaderHeight,
 } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
+import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
 import { StatusFlatList, StatusForm } from './StatusFlatList'
 
@@ -30,20 +41,78 @@ const schema = yup.object().shape({
 type Props = StackScreenProps<SubscriptionRootStackParamList, 'SetStatus'>
 
 export const SetStatus: FunctionComponent<Props> = ({ route }: Props) => {
+  const { reset } = useNavigation<UseNavigationType>()
+  const { refetchUser } = useAuthContext()
+  const { navigateForwardToStepper } = useNavigateForwardToStepper()
+  const { showErrorSnackBar } = useSnackBarContext()
+  const enableBookingFreeOfferFifteenSixteen = useFeatureFlag(
+    RemoteStoreFeatureFlags.ENABLE_BOOKING_FREE_OFFER_15_16
+  )
+
   const type = route.params.type
   const isIdentityCheck = type === ProfileTypes.IDENTITY_CHECK
+  const isBookingFreeOffer = type === ProfileTypes.BOOKING_FREE_OFFER_15_16
   const title = isIdentityCheck ? 'Profil' : 'Informations personnelles'
 
   const saveStep = useSaveStep()
   const storedName = useName()
   const storedCity = useCity()
   const storedAddress = useAddress()
+  const storedFreeOfferId = useFreeOfferId()
 
-  const { mutateAsync: postProfile } = usePostProfile()
+  const handlePostProfileSuccess = () => {
+    if (isBookingFreeOffer && enableBookingFreeOfferFifteenSixteen) {
+      if (storedFreeOfferId) {
+        // TODO(PC-35543) Pour l'affichage de la modal, il faut peut-être utiliser useBookOfferModal une fois que la redirection est faite
+        // Utiliser la valeur de showBookOfferModal pour afficher ou non la modale dans l'offre
+        // const { OfferModal: BookOfferModal, showModal: showBookOfferModal } = useBookOfferModal({
+        //   modalToDisplay: OfferModal.BOOKING,
+        //   offerId: storedFreeOfferId,
+        //   from: StepperOrigin.PROFILE,
+        // })
+        reset({ routes: [{ name: 'Offer', params: { id: storedFreeOfferId } }] })
+      } else {
+        // TODO(PC-35543): Navigate (reset) to SetProfileBookingError instead navigateToHome()
+        // reset({ routes: [{ name: 'SetProfileBookingError' }]})
+        navigateToHome()
+      }
+    } else {
+      navigateForwardToStepper()
+    }
+    resetProfileStores()
+    refetchUser()
+  }
+
+  const handlePostProfileError = () => {
+    showErrorSnackBar({
+      message: 'Une erreur est survenue lors de la mise à jour de ton profil',
+      timeout: SNACK_BAR_TIME_OUT,
+    })
+    // TODO(PC-35543): Navigate (reset) to SetProfileBookingError if is isBookingFreeOffer
+    // if (isBookingFreeOffer) {
+    //   if (storedFreeOfferId) {
+    //     reset({
+    //       routes: [{ name: 'SetProfileBookingError', params: { offerId: storedFreeOfferId } }],
+    //     })
+    //   } else {
+    //     reset({ routes: [{ name: 'SetProfileBookingError' }] })
+    //   }
+    // } else {
+    //   showErrorSnackBar({
+    //     message: 'Une erreur est survenue lors de la mise à jour de ton profil',
+    //     timeout: SNACK_BAR_TIME_OUT,
+    //   })
+    // }
+  }
+
+  const { mutateAsync: postProfile } = usePostProfileMutation({
+    onSuccess: () => handlePostProfileSuccess(),
+    onError: () => handlePostProfileError(),
+  })
+
   // isLoading from react-query is not support with mutateAsync
   const [isLoading, setIsLoading] = useState<boolean>(false)
 
-  const { navigateForwardToStepper } = useNavigateForwardToStepper()
   const titleID = uuidv4()
   const {
     control,
@@ -74,9 +143,8 @@ export const SetStatus: FunctionComponent<Props> = ({ route }: Props) => {
       await postProfile(profile)
       await saveStep(IdentityCheckStep.PROFILE)
       setIsLoading(false)
-      navigateForwardToStepper()
     },
-    [storedName, storedCity, storedAddress, postProfile, saveStep, navigateForwardToStepper]
+    [postProfile, saveStep, storedAddress, storedCity, storedName]
   )
 
   const headerHeight = useGetHeaderHeight()

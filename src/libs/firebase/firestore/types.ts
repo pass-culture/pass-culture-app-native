@@ -48,6 +48,7 @@ export type Maintenance =
 
 export enum RemoteStoreFeatureFlags {
   DISABLE_ACTIVATION = 'disableActivation',
+  ENABLE_BOOKING_FREE_OFFER_15_16 = 'enableBookingFreeOfferFifteenSixteen',
   ENABLE_CULTURAL_SURVEY_MANDATORY = 'enableCulturalSurveyMandatory',
   ENABLE_HIDE_TICKET = 'enableHideTicket',
   ENABLE_PACIFIC_FRANC_CURRENCY = 'enablePacificFrancCurrency',

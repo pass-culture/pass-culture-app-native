@@ -1250,22 +1250,22 @@ export interface DepositAmountsByAge {
    * @type {number}
    * @memberof DepositAmountsByAge
    */
-  age_15?: number
+  age_15: number
   /**
    * @type {number}
    * @memberof DepositAmountsByAge
    */
-  age_16?: number
+  age_16: number
   /**
    * @type {number}
    * @memberof DepositAmountsByAge
    */
-  age_17?: number
+  age_17: number
   /**
    * @type {number}
    * @memberof DepositAmountsByAge
    */
-  age_18?: number
+  age_18: number
 }
 /**
  * An enumeration.
@@ -1273,6 +1273,7 @@ export interface DepositAmountsByAge {
  * @enum {string}
  */
 export enum DepositType {
+  'GRANT_17_18' = 'GRANT_17_18',
   'GRANT_15_17' = 'GRANT_15_17',
   'GRANT_18' = 'GRANT_18',
 }
@@ -1303,6 +1304,8 @@ export interface DomainsCredit {
  * @enum {string}
  */
 export enum EligibilityType {
+  'age-17-18' = 'age-17-18',
+  'free' = 'free',
   'underage' = 'underage',
   'age-18' = 'age-18',
 }
@@ -3530,7 +3533,7 @@ export interface SettingsResponse {
    * @type {DepositAmountsByAge}
    * @memberof SettingsResponse
    */
-  depositAmountsByAge?: DepositAmountsByAge
+  depositAmountsByAge: DepositAmountsByAge
   /**
    * @type {boolean}
    * @memberof SettingsResponse
