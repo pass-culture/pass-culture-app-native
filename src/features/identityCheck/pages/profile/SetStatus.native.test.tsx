@@ -1,7 +1,7 @@
 import { StackScreenProps } from '@react-navigation/stack'
 import React from 'react'
 
-import { dispatch } from '__mocks__/@react-navigation/native'
+import { dispatch, reset } from '__mocks__/@react-navigation/native'
 import { ActivityIdEnum } from 'api/gen'
 import { initialSubscriptionState as mockState } from 'features/identityCheck/context/reducer'
 import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
@@ -10,9 +10,12 @@ import { SetStatus } from 'features/identityCheck/pages/profile/SetStatus'
 import { useAddress } from 'features/identityCheck/pages/profile/store/addressStore'
 import { useCity } from 'features/identityCheck/pages/profile/store/cityStore'
 import { useName } from 'features/identityCheck/pages/profile/store/nameStore'
+import * as resetStores from 'features/identityCheck/pages/profile/store/resetProfileStores'
 import { SubscriptionRootStackParamList } from 'features/navigation/RootNavigator/types'
 import * as UnderageUserAPI from 'features/profile/helpers/useIsUserUnderage'
 import { analytics } from 'libs/analytics/provider'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent, waitFor } from 'tests/utils'
@@ -42,6 +45,11 @@ jest.mock('features/identityCheck/pages/profile/store/cityStore')
 
 jest.mock('features/identityCheck/pages/profile/store/addressStore')
 ;(useAddress as jest.Mock).mockReturnValue(profile.address)
+
+let mockOfferId: number | null = 123456
+jest.mock('features/offer/store/freeOfferIdStore', () => ({
+  useFreeOfferId: () => mockOfferId,
+}))
 
 jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
   useSubscriptionContext: jest.fn(() => ({
@@ -89,12 +97,18 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
+const mockRefetchUser = jest.fn()
+jest.mock('features/auth/context/AuthContext', () => ({
+  useAuthContext: jest.fn(() => ({ refetchUser: mockRefetchUser })),
+}))
+
 const user = userEvent.setup()
 
 jest.useFakeTimers()
 
 describe('<SetStatus/>', () => {
   beforeEach(async () => {
+    setFeatureFlags()
     mockServer.postApi('/v1/subscription/profile', {})
   })
 
@@ -138,6 +152,80 @@ describe('<SetStatus/>', () => {
     await user.press(screen.getByText('Continuer'))
 
     expect(analytics.logSetStatusClicked).toHaveBeenCalledTimes(1)
+  })
+
+  it('should not navigate to Offer screen if booking free offer and offer ID exists but FF ENABLE_BOOKING_FREE_OFFER_15_16 is disable', async () => {
+    mockStatus = ActivityTypesSnap.activities[0].id
+
+    renderSetStatus({ type: ProfileTypes.BOOKING_FREE_OFFER_15_16 })
+
+    await user.press(screen.getByText(ActivityTypesSnap.activities[0].label))
+    await user.press(screen.getByText('Continuer'))
+
+    expect(reset).not.toHaveBeenCalled()
+  })
+
+  it('should navigate to Offer screen if booking free offer and offer ID exists when FF ENABLE_BOOKING_FREE_OFFER_15_16 is enable', async () => {
+    setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_BOOKING_FREE_OFFER_15_16])
+    mockStatus = ActivityTypesSnap.activities[0].id
+
+    renderSetStatus({ type: ProfileTypes.BOOKING_FREE_OFFER_15_16 })
+
+    await user.press(screen.getByText(ActivityTypesSnap.activities[0].label))
+    await user.press(screen.getByText('Continuer'))
+
+    expect(reset).toHaveBeenCalledWith({
+      routes: [{ name: 'Offer', params: { id: mockOfferId } }],
+    })
+  })
+
+  it('should not navigate to Offer screen when booking free offer but no offer ID is stored with FF ENABLE_BOOKING_FREE_OFFER_15_16 is disable', async () => {
+    mockStatus = ActivityTypesSnap.activities[0].id
+    mockOfferId = null
+
+    renderSetStatus({ type: ProfileTypes.BOOKING_FREE_OFFER_15_16 })
+
+    await user.press(screen.getByText(ActivityTypesSnap.activities[0].label))
+    await user.press(screen.getByText('Continuer'))
+
+    expect(reset).not.toHaveBeenCalled()
+  })
+
+  it('should not navigate to Offer screen when booking free offer but no offer ID is stored with FF ENABLE_BOOKING_FREE_OFFER_15_16 is enable', async () => {
+    setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_BOOKING_FREE_OFFER_15_16])
+    mockStatus = ActivityTypesSnap.activities[0].id
+    mockOfferId = null
+
+    renderSetStatus({ type: ProfileTypes.BOOKING_FREE_OFFER_15_16 })
+
+    await user.press(screen.getByText(ActivityTypesSnap.activities[0].label))
+    await user.press(screen.getByText('Continuer'))
+
+    expect(reset).not.toHaveBeenCalled()
+  })
+
+  it('should reset profile stores after submission succeeds', async () => {
+    const resetStoresSpy = jest.spyOn(resetStores, 'resetProfileStores')
+
+    renderSetStatus({ type: ProfileTypes.IDENTITY_CHECK })
+
+    await user.press(screen.getByText(ActivityTypesSnap.activities[1].label))
+    await user.press(screen.getByText('Continuer'))
+
+    await waitFor(() => {
+      expect(resetStoresSpy).toHaveBeenCalledTimes(1)
+    })
+  })
+
+  it('should call refetchUser after submission succeeds', async () => {
+    renderSetStatus({ type: ProfileTypes.IDENTITY_CHECK })
+
+    await user.press(screen.getByText(ActivityTypesSnap.activities[1].label))
+    await user.press(screen.getByText('Continuer'))
+
+    await waitFor(() => {
+      expect(mockRefetchUser).toHaveBeenCalledTimes(1)
+    })
   })
 })
 

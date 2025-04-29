@@ -453,6 +453,14 @@ export const SearchResultsContent: React.FC = () => {
             </StyledLi>
             <StyledLi>
               <StyledSingleFilterButton
+                label="Dates & heures"
+                testID="datesHoursButton"
+                onPress={showDatesHoursModal}
+                isSelected={appliedFilters.includes(FILTER_TYPES.DATES_HOURS)}
+              />
+            </StyledLi>
+            <StyledLi>
+              <StyledSingleFilterButton
                 label={
                   searchState.venue
                     ? ellipseString(searchState.venue.label, MAX_VENUE_CHARACTERS)
@@ -489,14 +497,6 @@ export const SearchResultsContent: React.FC = () => {
                 />
               </StyledLi>
             ) : null}
-            <StyledLi>
-              <StyledSingleFilterButton
-                label="Dates & heures"
-                testID="datesHoursButton"
-                onPress={showDatesHoursModal}
-                isSelected={appliedFilters.includes(FILTER_TYPES.DATES_HOURS)}
-              />
-            </StyledLi>
             <StyledLastLi>
               <StyledSingleFilterButton
                 label="Accessibilité"

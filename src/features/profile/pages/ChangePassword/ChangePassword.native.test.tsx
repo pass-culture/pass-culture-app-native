@@ -6,7 +6,7 @@ import { analytics } from 'libs/analytics/provider'
 import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
+import { act, fireEvent, render, screen, userEvent, waitFor } from 'tests/utils'
 import { showSuccessSnackBar } from 'ui/components/snackBar/__mocks__/SnackBarContext'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
@@ -35,6 +35,10 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
     return Component
   }
 })
+
+const user = userEvent.setup()
+
+jest.useFakeTimers()
 
 describe('ChangePassword', () => {
   it('should render correctly', async () => {
@@ -115,9 +119,7 @@ describe('ChangePassword', () => {
       fireEvent.changeText(confirmationInput, 'user@AZERTY123')
     })
 
-    await act(async () => {
-      fireEvent.press(screen.getByTestId('Enregistrer les modifications'))
-    })
+    await user.press(screen.getByTestId('Enregistrer les modifications'))
 
     expect(mockShowSuccessSnackBar).toHaveBeenCalledWith({
       message: 'Ton mot de passe est modifié',
@@ -150,9 +152,7 @@ describe('ChangePassword', () => {
     })
 
     const continueButton = screen.getByTestId('Enregistrer les modifications')
-    await act(async () => {
-      fireEvent.press(continueButton)
-    })
+    await user.press(continueButton)
 
     await waitFor(() => {
       expect(screen.getByText('Mot de passe incorrect')).toBeOnTheScreen()

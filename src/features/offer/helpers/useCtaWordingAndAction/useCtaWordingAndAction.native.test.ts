@@ -7,8 +7,10 @@ import {
   SubscriptionStatus,
   YoungStatusType,
 } from 'api/gen'
+import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
 import { PlaylistType } from 'features/offer/enums'
 import { offerResponseSnap as baseOffer } from 'features/offer/fixtures/offerResponse'
+import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics/provider'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { Subcategory } from 'libs/subcategories/types'
@@ -26,34 +28,29 @@ const CineScreeningOffer = {
 
 const defaultParameters = {
   isLoggedIn: true,
+  user: { ...nonBeneficiaryUser, bookedOffer: {} },
   userStatus: { statusType: YoungStatusType.non_eligible },
   isBeneficiary: false,
   hasEnoughCredit: false,
-  bookedOffers: {},
   isUnderageBeneficiary: false,
   bookOffer: jest.fn(),
   isBookingLoading: false,
   booking: undefined,
   isDepositExpired: false,
+  featureFlags: { enableBookingFreeOfferFifteenSixteen: false }, // TODO(PC-35543) Change to true by default when new status from backend is use in isUserFreeStatus
 }
 
 jest.mock('libs/firebase/analytics/analytics')
 
 describe('getCtaWordingAndAction', () => {
-  describe('logged out user', () => {
+  describe('Logged out user', () => {
     it('should display "Réserver l’offre" wording and modal "authentication"', () => {
       const result = getCtaWordingAndAction({
+        ...defaultParameters,
         isLoggedIn: false,
-        userStatus: { statusType: YoungStatusType.non_eligible },
-        isBeneficiary: false,
+        user: undefined,
         offer: buildOffer({}),
         subcategory: buildSubcategory({}),
-        hasEnoughCredit: false,
-        bookedOffers: {},
-        isUnderageBeneficiary: false,
-        bookOffer: jest.fn(),
-        isBookingLoading: false,
-        booking: undefined,
       })
 
       expect(result).toEqual({
@@ -65,20 +62,47 @@ describe('getCtaWordingAndAction', () => {
     })
   })
 
-  describe('Non eligible', () => {
+  describe('Free user', () => {
+    it('should display "Réserver l’offre" wording with navigate to SetName screen and params type', () => {
+      const mockSetFreeOfferId = expect.any(Function)
+      const result = getCtaWordingAndAction({
+        ...defaultParameters,
+        offer: buildOffer({ stocks: [{ ...baseOffer.stocks[0], price: 0 }] }),
+        subcategory: buildSubcategory({}),
+        featureFlags: { enableBookingFreeOfferFifteenSixteen: true },
+      })
+
+      expect(result).toEqual({
+        isDisabled: false,
+        wording: 'Réserver l’offre',
+        navigateTo: { screen: 'SetName', params: { type: ProfileTypes.BOOKING_FREE_OFFER_15_16 } },
+        onBeforeNavigate: mockSetFreeOfferId,
+      })
+    })
+
+    it('should display "Réserver l’offre" wording and open booking modale when user profile complete', () => {
+      const result = getCtaWordingAndAction({
+        ...defaultParameters,
+        user: { ...beneficiaryUser },
+        offer: buildOffer({ stocks: [{ ...baseOffer.stocks[0], price: 0 }] }),
+        subcategory: buildSubcategory({}),
+        featureFlags: { enableBookingFreeOfferFifteenSixteen: true },
+      })
+
+      expect(result).toEqual({
+        isDisabled: false,
+        wording: 'Réserver l’offre',
+        modalToDisplay: OfferModal.BOOKING,
+      })
+    })
+  })
+
+  describe('Non eligible user', () => {
     it('should display "Réserver l’offre" disabled wording with bottom banner when no external url', () => {
       const result = getCtaWordingAndAction({
-        isLoggedIn: true,
-        userStatus: { statusType: YoungStatusType.non_eligible },
-        isBeneficiary: false,
+        ...defaultParameters,
         offer: buildOffer({}),
         subcategory: buildSubcategory({}),
-        hasEnoughCredit: false,
-        bookedOffers: {},
-        isUnderageBeneficiary: false,
-        bookOffer: jest.fn(),
-        isBookingLoading: false,
-        booking: undefined,
       })
 
       expect(result).toEqual({
@@ -94,17 +118,9 @@ describe('getCtaWordingAndAction', () => {
 
     it('should display "Accéder au site partenaire" wording when external url', () => {
       const result = getCtaWordingAndAction({
-        isLoggedIn: true,
-        userStatus: { statusType: YoungStatusType.non_eligible },
-        isBeneficiary: false,
+        ...defaultParameters,
         offer: buildOffer({ externalTicketOfficeUrl: 'https://url-externe' }),
         subcategory: buildSubcategory({}),
-        hasEnoughCredit: false,
-        bookedOffers: {},
-        isUnderageBeneficiary: false,
-        bookOffer: jest.fn(),
-        isBookingLoading: false,
-        booking: undefined,
       })
 
       expect(result).toEqual({
@@ -116,21 +132,13 @@ describe('getCtaWordingAndAction', () => {
 
     it('should display "Accéder au site partenaire" wording when external url and offer is digital and free', () => {
       const result = getCtaWordingAndAction({
-        isLoggedIn: true,
-        userStatus: { statusType: YoungStatusType.non_eligible },
-        isBeneficiary: false,
+        ...defaultParameters,
         offer: buildOffer({
           externalTicketOfficeUrl: 'https://url-externe',
           isDigital: true,
           stocks: [{ ...baseOffer.stocks[0], price: 0 }],
         }),
         subcategory: buildSubcategory({}),
-        hasEnoughCredit: false,
-        bookedOffers: {},
-        isUnderageBeneficiary: false,
-        bookOffer: jest.fn(),
-        isBookingLoading: false,
-        booking: undefined,
       })
 
       expect(result).toEqual({
@@ -141,23 +149,16 @@ describe('getCtaWordingAndAction', () => {
     })
   })
 
-  describe('Eligible but non Beneficiary yet', () => {
+  describe('Eligible but non Beneficiary yet user', () => {
     it('should return finish subscription modal when user has not finished subscription', () => {
       const result = getCtaWordingAndAction({
-        isLoggedIn: true,
+        ...defaultParameters,
         userStatus: {
           statusType: YoungStatusType.eligible,
           subscriptionStatus: SubscriptionStatus.has_to_complete_subscription,
         },
-        isBeneficiary: false,
         offer: buildOffer({ externalTicketOfficeUrl: 'https://url-externe' }),
         subcategory: buildSubcategory({}),
-        hasEnoughCredit: false,
-        bookedOffers: {},
-        isUnderageBeneficiary: false,
-        bookOffer: jest.fn(),
-        isBookingLoading: false,
-        booking: undefined,
       })
 
       expect(result).toEqual({
@@ -170,20 +171,13 @@ describe('getCtaWordingAndAction', () => {
 
     it('should return application pending modal when user is waiting for his application to complete', () => {
       const result = getCtaWordingAndAction({
-        isLoggedIn: true,
+        ...defaultParameters,
         userStatus: {
           statusType: YoungStatusType.eligible,
           subscriptionStatus: SubscriptionStatus.has_subscription_pending,
         },
-        isBeneficiary: false,
         offer: buildOffer({ externalTicketOfficeUrl: 'https://url-externe' }),
         subcategory: buildSubcategory({}),
-        hasEnoughCredit: false,
-        bookedOffers: {},
-        isUnderageBeneficiary: false,
-        bookOffer: jest.fn(),
-        isBookingLoading: false,
-        booking: undefined,
       })
 
       expect(result).toEqual({
@@ -196,20 +190,13 @@ describe('getCtaWordingAndAction', () => {
 
     it('should return application error modal when user has an issue with his application', () => {
       const result = getCtaWordingAndAction({
-        isLoggedIn: true,
+        ...defaultParameters,
         userStatus: {
           statusType: YoungStatusType.eligible,
           subscriptionStatus: SubscriptionStatus.has_subscription_issues,
         },
-        isBeneficiary: false,
         offer: buildOffer({ externalTicketOfficeUrl: 'https://url-externe' }),
         subcategory: buildSubcategory({}),
-        hasEnoughCredit: false,
-        bookedOffers: {},
-        isUnderageBeneficiary: false,
-        bookOffer: jest.fn(),
-        isBookingLoading: false,
-        booking: undefined,
       })
 
       expect(result).toEqual({
@@ -221,7 +208,7 @@ describe('getCtaWordingAndAction', () => {
     })
   })
 
-  describe('Non Beneficiary', () => {
+  describe('Non Beneficiary user', () => {
     it.each`
       isEvent  | url                      | bookedOffers                 | expected                        | disabled | modalToDisplay
       ${true}  | ${undefined}             | ${{}}                        | ${undefined}                    | ${true}  | ${undefined}
@@ -236,17 +223,12 @@ describe('getCtaWordingAndAction', () => {
         const subcategory = buildSubcategory({ isEvent })
 
         const result = getCtaWordingAndAction({
-          isLoggedIn: true,
+          ...defaultParameters,
+          user: { ...beneficiaryUser, bookedOffers },
           userStatus: { statusType: YoungStatusType.ex_beneficiary },
-          isBeneficiary: false,
           offer,
           subcategory,
           hasEnoughCredit: true,
-          bookedOffers,
-          isUnderageBeneficiary: false,
-          bookOffer: jest.fn(),
-          isBookingLoading: false,
-          booking: undefined,
         })
         const { wording, onPress, navigateTo, externalNav } = result || {}
 
@@ -261,7 +243,7 @@ describe('getCtaWordingAndAction', () => {
   })
 
   // same as non beneficiary use cases, beneficiary users should not be able to book educational offers
-  describe('educational offer', () => {
+  describe('Educational offer', () => {
     it.each`
       isEvent  | url                      | bookedOffers                 | expected                        | disabled | modalToDisplay
       ${true}  | ${undefined}             | ${{}}                        | ${undefined}                    | ${true}  | ${undefined}
@@ -276,17 +258,13 @@ describe('getCtaWordingAndAction', () => {
         const subcategory = buildSubcategory({ isEvent })
 
         const result = getCtaWordingAndAction({
-          isLoggedIn: true,
+          ...defaultParameters,
+          user: { ...beneficiaryUser, bookedOffers },
           userStatus: { statusType: YoungStatusType.beneficiary },
           isBeneficiary: true,
           offer,
           subcategory,
           hasEnoughCredit: true,
-          bookedOffers,
-          isUnderageBeneficiary: false,
-          bookOffer: jest.fn(),
-          isBookingLoading: false,
-          booking: undefined,
         })
         const { wording, onPress, navigateTo, externalNav } = result || {}
 
@@ -300,24 +278,21 @@ describe('getCtaWordingAndAction', () => {
     )
   })
 
-  describe('Beneficiary', () => {
+  describe('Beneficiary user', () => {
     const getCta = (
       partialOffer: Partial<OfferResponseV2>,
       parameters?: Partial<Parameters<typeof getCtaWordingAndAction>[0]>,
       partialSubcategory?: Partial<Subcategory>
     ) =>
       getCtaWordingAndAction({
-        isLoggedIn: true,
+        ...defaultParameters,
+        user: { ...beneficiaryUser },
         userStatus: { statusType: YoungStatusType.beneficiary },
         isBeneficiary: true,
         offer: buildOffer({ ...partialOffer, subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER }),
         subcategory: buildSubcategory(partialSubcategory || {}),
         hasEnoughCredit: true,
-        bookedOffers: {},
         isUnderageBeneficiary: true,
-        bookOffer: jest.fn(),
-        isBookingLoading: false,
-        booking: undefined,
         ...parameters,
       }) || { wording: '' }
 
@@ -504,7 +479,7 @@ describe('getCtaWordingAndAction', () => {
     )
 
     // same as beneficiaries except for video games and non free digital offers except press category
-    describe('underage beneficiary', () => {
+    describe('Underage beneficiary user', () => {
       it.each`
         isEvent  | expected                     | disabled | isDigital | category                                  | price | isForbiddenToUnderage | modalToDisplay
         ${false} | ${'Réserver l’offre'}        | ${false} | ${true}   | ${SearchGroupNameEnumv2.MEDIA_PRESSE}     | ${20} | ${false}              | ${OfferModal.BOOKING}
@@ -572,17 +547,13 @@ describe('getCtaWordingAndAction', () => {
 
       const { onPress } =
         getCtaWordingAndAction({
-          isLoggedIn: true,
+          ...defaultParameters,
+          user: { ...beneficiaryUser },
           userStatus: { statusType: YoungStatusType.beneficiary },
           isBeneficiary: true,
           offer,
           subcategory,
           hasEnoughCredit: true,
-          bookedOffers: {},
-          isUnderageBeneficiary: false,
-          bookOffer: jest.fn(),
-          isBookingLoading: false,
-          booking: undefined,
           apiRecoParams: defaultApiRecoParams,
           playlistType: defaultPlaylistType,
         }) || {}
@@ -626,13 +597,13 @@ describe('getCtaWordingAndAction', () => {
 
       const { onPress } =
         getCtaWordingAndAction({
+          ...defaultParameters,
           isLoggedIn: true,
           userStatus: { statusType: YoungStatusType.beneficiary },
           isBeneficiary: true,
           offer,
           subcategory,
           hasEnoughCredit: true,
-          bookedOffers: {},
           isUnderageBeneficiary: false,
           bookOffer: jest.fn(),
           isBookingLoading: false,
@@ -657,16 +628,13 @@ describe('getCtaWordingAndAction', () => {
 
       const { onPress } =
         getCtaWordingAndAction({
-          isLoggedIn: true,
+          ...defaultParameters,
+          user: { ...beneficiaryUser, bookedOffers: { [offer.id]: offer.id } },
           userStatus: { statusType: YoungStatusType.beneficiary },
           isBeneficiary: true,
           offer,
           subcategory,
           hasEnoughCredit: true,
-          bookedOffers: { [offer.id]: offer.id },
-          isUnderageBeneficiary: false,
-          bookOffer: jest.fn(),
-          isBookingLoading: false,
           booking,
           apiRecoParams: defaultApiRecoParams,
           playlistType: defaultPlaylistType,
@@ -686,17 +654,14 @@ describe('getCtaWordingAndAction', () => {
 
       const { onPress } =
         getCtaWordingAndAction({
+          ...defaultParameters,
           isLoggedIn: true,
+          user: { ...beneficiaryUser },
           userStatus: { statusType: YoungStatusType.beneficiary },
           isBeneficiary: true,
           offer,
           subcategory,
           hasEnoughCredit: true,
-          bookedOffers: {},
-          isUnderageBeneficiary: false,
-          bookOffer: jest.fn(),
-          isBookingLoading: false,
-          booking: undefined,
           apiRecoParams: defaultApiRecoParams,
           playlistType: defaultPlaylistType,
         }) || {}
@@ -716,17 +681,14 @@ describe('getCtaWordingAndAction', () => {
 
       const { onPress } =
         getCtaWordingAndAction({
-          isLoggedIn: true,
+          ...defaultParameters,
+          user: { ...beneficiaryUser },
           userStatus: { statusType: YoungStatusType.beneficiary },
           isBeneficiary: true,
           offer,
           subcategory,
           hasEnoughCredit: true,
-          bookedOffers: {},
-          isUnderageBeneficiary: false,
-          bookOffer: jest.fn(),
           isBookingLoading: false,
-          booking: undefined,
         }) || {}
 
       onPress?.()
@@ -737,20 +699,14 @@ describe('getCtaWordingAndAction', () => {
     it('logs event ConsultFinishSubscriptionModal when we click CTA "Réserver l’offre" with has_to_complete_subscription status', () => {
       const { onPress } =
         getCtaWordingAndAction({
-          isLoggedIn: true,
+          ...defaultParameters,
+          user: { ...nonBeneficiaryUser },
           userStatus: {
             statusType: YoungStatusType.eligible,
             subscriptionStatus: SubscriptionStatus.has_to_complete_subscription,
           },
-          isBeneficiary: false,
           offer: buildOffer({ externalTicketOfficeUrl: 'https://url-externe' }),
           subcategory: buildSubcategory({}),
-          hasEnoughCredit: false,
-          bookedOffers: {},
-          isUnderageBeneficiary: false,
-          bookOffer: jest.fn(),
-          isBookingLoading: false,
-          booking: undefined,
         }) || {}
 
       onPress?.()
@@ -761,20 +717,14 @@ describe('getCtaWordingAndAction', () => {
     it('logs event ConsultApplicationProcessingModal when we click CTA "Réserver l’offre" with has_subscription_pending status', () => {
       const { onPress } =
         getCtaWordingAndAction({
-          isLoggedIn: true,
+          ...defaultParameters,
+          user: { ...nonBeneficiaryUser },
           userStatus: {
             statusType: YoungStatusType.eligible,
             subscriptionStatus: SubscriptionStatus.has_subscription_pending,
           },
-          isBeneficiary: false,
           offer: buildOffer({ externalTicketOfficeUrl: 'https://url-externe' }),
           subcategory: buildSubcategory({}),
-          hasEnoughCredit: false,
-          bookedOffers: {},
-          isUnderageBeneficiary: false,
-          bookOffer: jest.fn(),
-          isBookingLoading: false,
-          booking: undefined,
         }) || {}
 
       onPress?.()
@@ -788,20 +738,14 @@ describe('getCtaWordingAndAction', () => {
     it('logs event ConsultErrorApplicationModal when we click CTA "Réserver l’offre" with has_subscription_issues status', () => {
       const { onPress } =
         getCtaWordingAndAction({
-          isLoggedIn: true,
+          ...defaultParameters,
+          user: { ...nonBeneficiaryUser },
           userStatus: {
             statusType: YoungStatusType.eligible,
             subscriptionStatus: SubscriptionStatus.has_subscription_issues,
           },
-          isBeneficiary: false,
           offer: buildOffer({ externalTicketOfficeUrl: 'https://url-externe' }),
           subcategory: buildSubcategory({}),
-          hasEnoughCredit: false,
-          bookedOffers: {},
-          isUnderageBeneficiary: false,
-          bookOffer: jest.fn(),
-          isBookingLoading: false,
-          booking: undefined,
         }) || {}
 
       onPress?.()
@@ -874,10 +818,10 @@ describe('getCtaWordingAndAction', () => {
       async (isOfferEvent) => {
         const result = getCtaWordingAndAction({
           ...defaultParameters,
+          user: { ...beneficiaryUser, bookedOffers: { [baseOffer.id]: 116656 } },
           userStatus: { statusType: YoungStatusType.beneficiary },
           isBeneficiary: true,
           offer: CineScreeningOffer,
-          bookedOffers: { [baseOffer.id]: 116656 },
           subcategory: buildSubcategory(isOfferEvent),
           hasEnoughCredit: true,
         })
@@ -908,17 +852,12 @@ describe('getCtaWordingAndAction', () => {
 
     it('should display "Réserver l’offre" wording and modal "authentication" if user is not logged in', () => {
       const result = getCtaWordingAndAction({
+        ...defaultParameters,
         isLoggedIn: false,
+        user: undefined,
         userStatus: { statusType: YoungStatusType.non_eligible },
-        isBeneficiary: false,
         offer: buildOffer({}),
         subcategory: buildSubcategory({ isEvent: true }),
-        hasEnoughCredit: false,
-        bookedOffers: {},
-        isUnderageBeneficiary: false,
-        bookOffer: jest.fn(),
-        isBookingLoading: false,
-        booking: undefined,
       })
 
       expect(result).toEqual({
@@ -931,20 +870,15 @@ describe('getCtaWordingAndAction', () => {
 
     it('should return application pending modal when user is waiting for his application to complete', () => {
       const result = getCtaWordingAndAction({
+        ...defaultParameters,
         isLoggedIn: true,
+        user: { ...nonBeneficiaryUser },
         userStatus: {
           statusType: YoungStatusType.eligible,
           subscriptionStatus: SubscriptionStatus.has_subscription_pending,
         },
-        isBeneficiary: false,
         offer: CineScreeningOffer,
         subcategory: buildSubcategory({ isEvent: true }),
-        hasEnoughCredit: false,
-        bookedOffers: {},
-        isUnderageBeneficiary: false,
-        bookOffer: jest.fn(),
-        isBookingLoading: false,
-        booking: undefined,
       })
 
       expect(result).toEqual({
