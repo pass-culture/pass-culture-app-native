@@ -17,6 +17,7 @@ import { LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
 import { Range } from 'libs/typesUtils/typeHelpers'
 import { Offer } from 'shared/offer/types'
+import { ColorsType } from 'theme/types'
 interface SelectedDate {
   option: DATE_FILTER_OPTIONS
   selectedDate: string
@@ -130,3 +131,5 @@ export enum BooksNativeCategoriesEnum {
 }
 
 export type NativeCategoryEnum = NativeCategoryIdEnumv2 | BooksNativeCategoriesEnum
+
+export type MarkedDatesColors = { backgroundColor: ColorsType; textColor: ColorsType }

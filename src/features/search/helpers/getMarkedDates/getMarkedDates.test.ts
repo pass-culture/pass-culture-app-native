@@ -1,6 +1,7 @@
 import { getMarkedDates } from 'features/search/helpers/getMarkedDates/getMarkedDates'
+import { MarkedDatesColors } from 'features/search/types'
 
-const colors = { primary: 'blue', white: 'white' }
+const colors: MarkedDatesColors = { backgroundColor: '#ffffff', textColor: '#cbcdd2' }
 
 describe('getMarkedDates', () => {
   it('should return an empty object if no start date', () => {
@@ -15,8 +16,8 @@ describe('getMarkedDates', () => {
       '2025-04-28': {
         startingDay: true,
         endingDay: true,
-        color: 'blue',
-        textColor: 'white',
+        color: '#ffffff',
+        textColor: '#cbcdd2',
       },
     })
   })
@@ -31,20 +32,20 @@ describe('getMarkedDates', () => {
       '2025-04-28': {
         startingDay: true,
         endingDay: false,
-        color: 'blue',
-        textColor: 'white',
+        color: '#ffffff',
+        textColor: '#cbcdd2',
       },
       '2025-04-29': {
         startingDay: false,
         endingDay: false,
-        color: 'blue',
-        textColor: 'white',
+        color: '#ffffff',
+        textColor: '#cbcdd2',
       },
       '2025-04-30': {
         startingDay: false,
         endingDay: true,
-        color: 'blue',
-        textColor: 'white',
+        color: '#ffffff',
+        textColor: '#cbcdd2',
       },
     })
   })

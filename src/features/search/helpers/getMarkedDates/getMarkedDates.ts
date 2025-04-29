@@ -1,14 +1,14 @@
 import { addDays, differenceInCalendarDays, format } from 'date-fns'
 import { MarkingProps } from 'react-native-calendars/src/calendar/day/marking'
 
-type Colors = { primary: string; white: string }
+import { MarkedDatesColors } from 'features/search/types'
 
 const formatDate = (date: Date) => format(date, 'yyyy-MM-dd')
 
 export function getMarkedDates(
   selectedStartDate: Date | undefined,
   selectedEndDate: Date | undefined,
-  colors: Colors
+  colors: MarkedDatesColors
 ): Record<string, MarkingProps> | undefined {
   if (!selectedStartDate) return undefined
 
@@ -17,8 +17,8 @@ export function getMarkedDates(
       [formatDate(selectedStartDate)]: {
         startingDay: true,
         endingDay: true,
-        color: colors.primary,
-        textColor: colors.white,
+        color: colors.backgroundColor,
+        textColor: colors.textColor,
       },
     }
   }
@@ -26,19 +26,22 @@ export function getMarkedDates(
   // +1 to include end date
   const dayCount = differenceInCalendarDays(selectedEndDate, selectedStartDate) + 1
 
-  const marked: Record<string, MarkingProps> = {}
+  const marked = Array.from({ length: dayCount }).reduce<Record<string, MarkingProps>>(
+    (acc, _, index) => {
+      const date = addDays(selectedStartDate, index)
+      const dateString = formatDate(date)
 
-  Array.from({ length: dayCount }).forEach((_, index) => {
-    const date = addDays(selectedStartDate, index)
-    const dateString = formatDate(date)
+      acc[dateString] = {
+        color: colors.backgroundColor,
+        textColor: colors.textColor,
+        startingDay: index === 0,
+        endingDay: index === dayCount - 1,
+      }
 
-    marked[dateString] = {
-      color: colors.primary,
-      textColor: colors.white,
-      startingDay: index === 0,
-      endingDay: index === dayCount - 1,
-    }
-  })
+      return acc
+    },
+    {}
+  )
 
   return marked
 }

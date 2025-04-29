@@ -43,7 +43,7 @@ export const CalendarModal: FunctionComponent<CalendarModalProps> = ({
   filterBehaviour,
   onClose,
 }) => {
-  const { modal, colors } = useTheme()
+  const { modal, designSystem } = useTheme()
   const { searchState, dispatch } = useSearch()
 
   const defaultValues = useMemo(() => {
@@ -73,10 +73,15 @@ export const CalendarModal: FunctionComponent<CalendarModalProps> = ({
   const markedDates = useMemo(
     () =>
       getMarkedDates(selectedStartDate, selectedEndDate, {
-        primary: colors.primary,
-        white: colors.white,
+        backgroundColor: designSystem.color.background.brandPrimary,
+        textColor: designSystem.color.text.locked,
       }),
-    [colors.primary, colors.white, selectedEndDate, selectedStartDate]
+    [
+      designSystem.color.background.brandPrimary,
+      designSystem.color.text.locked,
+      selectedEndDate,
+      selectedStartDate,
+    ]
   )
 
   useEffect(() => {
