@@ -39,7 +39,7 @@ const defaultParameters = {
   isBookingLoading: false,
   booking: undefined,
   isDepositExpired: false,
-  featureFlags: { enableBookingFreeOfferFifteenSixteen: false }, // TODO(PC-35543) Change to true by default when new status from backend is use in isUserFreeStatus
+  featureFlags: { enableBookingFreeOfferFifteenSixteen: true },
 }
 
 jest.mock('libs/firebase/analytics/analytics')
@@ -70,6 +70,7 @@ describe('getCtaWordingAndAction', () => {
     it('should display "Réserver l’offre" wording with navigate to SetName screen and params type', () => {
       const result = getCtaWordingAndAction({
         ...defaultParameters,
+        user: { ...nonBeneficiaryUser, eligibility: EligibilityType.free },
         offer: buildOffer({ stocks: [{ ...baseOffer.stocks[0], price: 0 }] }),
         subcategory: buildSubcategory({}),
         featureFlags: { enableBookingFreeOfferFifteenSixteen: true },
