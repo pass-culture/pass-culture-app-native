@@ -10,8 +10,8 @@ const mockUseVenue = jest.fn((): { data: VenueResponse } => ({
   data: mockVenueResponse,
 }))
 
-jest.mock('features/venue/api/useVenue', () => ({
-  useVenue: () => mockUseVenue(),
+jest.mock('features/venue/queries/useVenueQuery', () => ({
+  useVenueQuery: () => mockUseVenue(),
 }))
 
 describe('VenuePreviewCarousel', () => {

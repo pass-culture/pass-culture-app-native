@@ -28,7 +28,7 @@ type UseVenueOffersParams = {
   includeHitsWithoutImage?: boolean
 }
 
-export const useVenueOffers = ({
+export const useVenueOffersQuery = ({
   userLocation,
   selectedLocationMode,
   isUserUnderage,

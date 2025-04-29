@@ -1,7 +1,7 @@
 import { shuffle } from 'lodash'
 
 import { SubcategoryIdEnum } from 'api/gen'
-import { useVenueOffersArtists } from 'features/venue/api/useVenueOffersArtists/useVenueOffersArtists'
+import { useVenueOffersArtists } from 'features/venue/hooks/useVenueOffersArtists/useVenueOffersArtists'
 import { Offer } from 'shared/offer/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, waitFor } from 'tests/utils'

@@ -26,8 +26,8 @@ jest.unmock('react-native/Libraries/Animated/createAnimatedComponent')
 jest.mock('features/gtlPlaylist/hooks/useGTLPlaylists', () => ({
   useGTLPlaylists: () => ({ isLoading: false }),
 }))
-jest.mock('features/venue/api/useVenueOffers', () => ({
-  useVenueOffers: () => ({ isLoading: false }),
+jest.mock('queries/venue/useVenueOffersQuery', () => ({
+  useVenueOffersQuery: () => ({ isLoading: false }),
 }))
 
 jest.mock('libs/subcategories/useSubcategories')
