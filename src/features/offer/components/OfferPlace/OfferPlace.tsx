@@ -154,7 +154,7 @@ export function OfferPlace({ offer, subcategory, distance }: Readonly<OfferPlace
 
   const canSeeVenue = offer.venue.isPermanent
 
-  const renderOfferVenueBlock = () => {
+  const renderOfferVenueBlock = useCallback(() => {
     return (
       <ViewGap gap={8}>
         {isOfferAMovieScreening && enableCineFromOffer ? (
@@ -182,7 +182,20 @@ export function OfferPlace({ offer, subcategory, distance }: Readonly<OfferPlace
         ) : null}
       </ViewGap>
     )
-  }
+  }, [
+    canSeeVenue,
+    distance,
+    enableCineFromOffer,
+    handleBeforeNavigateToItinerary,
+    handleOnSeeVenuePress,
+    isOfferAMovieScreening,
+    offer,
+    onShowChangeVenueModal,
+    shouldDisplayChangeVenueButton,
+    shouldDisplaySeeItineraryButton,
+    subcategory,
+    venueSectionTitle,
+  ])
 
   return (
     <React.Fragment>
