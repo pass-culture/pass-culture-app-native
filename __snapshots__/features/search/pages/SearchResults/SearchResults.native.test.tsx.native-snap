@@ -475,6 +475,93 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
               }
             >
               <View
+                accessibilityLabel="Dates & heures"
+                accessibilityRole="button"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "alignItems": "center",
+                        "backgroundColor": "#ffffff",
+                        "borderColor": "#161617",
+                        "borderRadius": 24,
+                        "borderWidth": 1,
+                        "boxSizing": "border-box",
+                        "columnGap": 4,
+                        "flexDirection": "row-reverse",
+                        "height": 32,
+                        "justifyContent": "center",
+                        "paddingLeft": 16,
+                        "paddingRight": 16,
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
+                }
+                testID="Dates & heures"
+              >
+                <Text
+                  style={
+                    [
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 19.2,
+                      },
+                    ]
+                  }
+                  testID="datesHoursButtonLabel"
+                >
+                  Dates & heures
+                </Text>
+              </View>
+            </View>
+            <View
+              accessibilityRole="none"
+              style={
+                [
+                  {
+                    "display": "flex",
+                    "marginBottom": 4,
+                    "marginLeft": 4,
+                    "marginTop": 4,
+                  },
+                ]
+              }
+            >
+              <View
                 accessibilityLabel="Le Petit Rintintin 1 : Filtre sélectionné"
                 accessibilityRole="button"
                 accessibilityState={
@@ -747,93 +834,6 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                     priceButtonIcon-SVG-Mock
                   </Text>
                 </View>
-              </View>
-            </View>
-            <View
-              accessibilityRole="none"
-              style={
-                [
-                  {
-                    "display": "flex",
-                    "marginBottom": 4,
-                    "marginLeft": 4,
-                    "marginTop": 4,
-                  },
-                ]
-              }
-            >
-              <View
-                accessibilityLabel="Dates & heures"
-                accessibilityRole="button"
-                accessibilityState={
-                  {
-                    "busy": undefined,
-                    "checked": undefined,
-                    "disabled": undefined,
-                    "expanded": undefined,
-                    "selected": undefined,
-                  }
-                }
-                accessibilityValue={
-                  {
-                    "max": undefined,
-                    "min": undefined,
-                    "now": undefined,
-                    "text": undefined,
-                  }
-                }
-                accessible={true}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                style={
-                  [
-                    [
-                      {
-                        "userSelect": "auto",
-                      },
-                      {
-                        "alignItems": "center",
-                        "backgroundColor": "#ffffff",
-                        "borderColor": "#161617",
-                        "borderRadius": 24,
-                        "borderWidth": 1,
-                        "boxSizing": "border-box",
-                        "columnGap": 4,
-                        "flexDirection": "row-reverse",
-                        "height": 32,
-                        "justifyContent": "center",
-                        "paddingLeft": 16,
-                        "paddingRight": 16,
-                      },
-                    ],
-                    {
-                      "opacity": 1,
-                    },
-                  ]
-                }
-                testID="Dates & heures"
-              >
-                <Text
-                  style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 12,
-                        "lineHeight": 19.2,
-                      },
-                    ]
-                  }
-                  testID="datesHoursButtonLabel"
-                >
-                  Dates & heures
-                </Text>
               </View>
             </View>
             <View
