@@ -82,7 +82,6 @@ type Props = {
 export type ICTAWordingAndAction = {
   modalToDisplay?: OfferModal
   wording?: string
-  onBeforeNavigate?: () => void
   navigateTo?: InternalNavigationProps['navigateTo']
   externalNav?: ExternalNavigationProps['externalNav']
   onPress?: () => void
@@ -141,10 +140,10 @@ export const getCtaWordingAndAction = ({
 
   if (isEligibleFreeOffer15To16) {
     if (isProfileIncomplete) {
+      setFreeOfferId(offer.id)
       return {
         wording: 'Réserver l’offre',
         isDisabled: false,
-        onBeforeNavigate: () => setFreeOfferId(offer.id),
         navigateTo: { screen: 'SetName', params: { type: ProfileTypes.BOOKING_FREE_OFFER_15_16 } },
       }
     } else {

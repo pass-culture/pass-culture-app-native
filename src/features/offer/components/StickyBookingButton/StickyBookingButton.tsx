@@ -21,15 +21,8 @@ export const StickyBookingButton: FunctionComponent<Props> = ({
   isLoggedIn,
 }) => {
   const { bottom } = useCustomSafeInsets()
-  const {
-    wording,
-    onPress,
-    navigateTo,
-    externalNav,
-    isDisabled,
-    bottomBannerText,
-    onBeforeNavigate,
-  } = ctaWordingAndAction
+  const { wording, onPress, navigateTo, externalNav, isDisabled, bottomBannerText } =
+    ctaWordingAndAction
 
   if (!wording && !bottomBannerText) {
     return null
@@ -44,7 +37,6 @@ export const StickyBookingButton: FunctionComponent<Props> = ({
               wording={wording}
               onPress={onPress}
               navigateTo={navigateTo}
-              onBeforeNavigate={onBeforeNavigate}
               externalNav={externalNav}
               isDisabled={isDisabled}
               isFreeDigitalOffer={isFreeDigitalOffer}
