@@ -64,7 +64,8 @@ export const fetchSearchResults = async ({
         parameters,
         buildLocationParameterParams,
         isUserUnderage,
-        disabilitiesProperties
+        disabilitiesProperties,
+        true
       ),
       attributesToRetrieve: offerAttributesToRetrieve,
       attributesToHighlight: [], // We disable highlighting because we don't need it
@@ -116,7 +117,8 @@ export const fetchSearchResults = async ({
           },
           buildLocationParameterParams,
           isUserUnderage,
-          disabilitiesProperties
+          disabilitiesProperties,
+          true
         ),
       },
       facets: [
