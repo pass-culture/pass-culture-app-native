@@ -23,7 +23,7 @@ import {
 import { SearchState } from 'features/search/types'
 import { mockedSuggestedVenue } from 'libs/venue/fixtures/mockedSuggestedVenues'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render, screen } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 
 const venue = mockedSuggestedVenue
 
@@ -50,6 +50,9 @@ const searchId = uuidv4()
 
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('features/navigation/TabBar/tabBarRoutes')
+
+const user = userEvent.setup()
+jest.useFakeTimers()
 
 describe('AutocompleteOfferItem component', () => {
   beforeEach(() => {
@@ -90,9 +93,7 @@ describe('AutocompleteOfferItem component', () => {
       }
     )
 
-    await fireEvent.press(screen.getByTestId('autocompleteOfferItem_1'))
-
-    await screen.findByText('cinéma')
+    await user.press(screen.getByTestId('autocompleteOfferItem_1'))
 
     expect(mockSendEvent).toHaveBeenCalledTimes(1)
   })
@@ -146,7 +147,7 @@ describe('AutocompleteOfferItem component', () => {
         }
       )
 
-      fireEvent.press(screen.getByTestId('autocompleteOfferItem_1'))
+      await user.press(screen.getByTestId('autocompleteOfferItem_1'))
 
       expect(mockDispatch).toHaveBeenNthCalledWith(1, {
         type: 'SET_STATE',
@@ -155,7 +156,7 @@ describe('AutocompleteOfferItem component', () => {
         }),
       })
 
-      expect(await screen.findByText('E-books')).toBeOnTheScreen()
+      expect(screen.getByText('E-books')).toBeOnTheScreen()
     })
   })
 
@@ -213,9 +214,7 @@ describe('AutocompleteOfferItem component', () => {
           wrapper: ({ children }) => reactQueryProviderHOC(children),
         }
       )
-      fireEvent.press(screen.getByTestId('autocompleteOfferItem_1'))
-
-      await screen.findByText('cinéma')
+      await user.press(screen.getByTestId('autocompleteOfferItem_1'))
 
       expect(mockDispatch).toHaveBeenNthCalledWith(1, {
         type: 'SET_STATE',
@@ -271,9 +270,7 @@ describe('AutocompleteOfferItem component', () => {
             wrapper: ({ children }) => reactQueryProviderHOC(children),
           }
         )
-        fireEvent.press(screen.getByTestId('autocompleteOfferItem_1'))
-
-        await screen.findByText('cinéma')
+        await user.press(screen.getByTestId('autocompleteOfferItem_1'))
 
         expect(mockDispatch).toHaveBeenNthCalledWith(1, {
           type: 'SET_STATE',
@@ -303,9 +300,7 @@ describe('AutocompleteOfferItem component', () => {
             wrapper: ({ children }) => reactQueryProviderHOC(children),
           }
         )
-        fireEvent.press(screen.getByTestId('autocompleteOfferItem_1'))
-
-        await screen.findByText('cinéma')
+        await user.press(screen.getByTestId('autocompleteOfferItem_1'))
 
         expect(mockDispatch).toHaveBeenNthCalledWith(1, {
           type: 'SET_STATE',
@@ -335,9 +330,7 @@ describe('AutocompleteOfferItem component', () => {
             wrapper: ({ children }) => reactQueryProviderHOC(children),
           }
         )
-        fireEvent.press(screen.getByTestId('autocompleteOfferItem_1'))
-
-        await screen.findByText('cinéma')
+        await user.press(screen.getByTestId('autocompleteOfferItem_1'))
 
         expect(mockDispatch).toHaveBeenNthCalledWith(1, {
           type: 'SET_STATE',
@@ -366,9 +359,7 @@ describe('AutocompleteOfferItem component', () => {
             wrapper: ({ children }) => reactQueryProviderHOC(children),
           }
         )
-        fireEvent.press(screen.getByTestId('autocompleteOfferItem_1'))
-
-        await screen.findByText('cinéma')
+        await user.press(screen.getByTestId('autocompleteOfferItem_1'))
 
         expect(mockDispatch).toHaveBeenNthCalledWith(1, {
           type: 'SET_STATE',
@@ -398,9 +389,7 @@ describe('AutocompleteOfferItem component', () => {
           }
         )
 
-        fireEvent.press(screen.getByTestId('autocompleteOfferItem_1'))
-
-        await screen.findByText('cinéma')
+        await user.press(screen.getByTestId('autocompleteOfferItem_1'))
 
         expect(mockDispatch).toHaveBeenNthCalledWith(1, {
           type: 'SET_STATE',
@@ -429,9 +418,7 @@ describe('AutocompleteOfferItem component', () => {
             wrapper: ({ children }) => reactQueryProviderHOC(children),
           }
         )
-        fireEvent.press(screen.getByTestId('autocompleteOfferItem_1'))
-
-        await screen.findByText('cinéma')
+        await user.press(screen.getByTestId('autocompleteOfferItem_1'))
 
         expect(mockDispatch).toHaveBeenNthCalledWith(1, {
           type: 'SET_STATE',
@@ -460,9 +447,7 @@ describe('AutocompleteOfferItem component', () => {
             wrapper: ({ children }) => reactQueryProviderHOC(children),
           }
         )
-        fireEvent.press(screen.getByTestId('autocompleteOfferItem_1'))
-
-        await screen.findByText('cinéma')
+        await user.press(screen.getByTestId('autocompleteOfferItem_1'))
 
         expect(mockDispatch).toHaveBeenNthCalledWith(1, {
           type: 'SET_STATE',

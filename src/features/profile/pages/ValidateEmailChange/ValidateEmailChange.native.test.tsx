@@ -13,7 +13,7 @@ import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import * as useEmailUpdateStatus from 'features/profile/helpers/useEmailUpdateStatus'
 import { ValidateEmailChange } from 'features/profile/pages/ValidateEmailChange/ValidateEmailChange'
 import { eventMonitoring } from 'libs/monitoring/services'
-import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 
 const useEmailUpdateStatusSpy = jest
   .spyOn(useEmailUpdateStatus, 'useEmailUpdateStatus')
@@ -85,6 +85,9 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
+const user = userEvent.setup()
+jest.useFakeTimers()
+
 describe('ValidateEmailChange', () => {
   it('should render new email address', () => {
     renderValidateEmailChange()
@@ -95,11 +98,9 @@ describe('ValidateEmailChange', () => {
   it('should sign out if submit is success and user is logged in', async () => {
     renderValidateEmailChange()
 
-    fireEvent.press(screen.getByText('Valider l’adresse e-mail'))
+    await user.press(screen.getByText('Valider l’adresse e-mail'))
 
-    await waitFor(() => {
-      expect(mockSignOut).toHaveBeenCalledTimes(1)
-    })
+    expect(mockSignOut).toHaveBeenCalledTimes(1)
   })
 
   it('should not sign out if submit is success and user is not logged in', async () => {
@@ -111,19 +112,15 @@ describe('ValidateEmailChange', () => {
     })
     renderValidateEmailChange()
 
-    fireEvent.press(screen.getByText('Valider l’adresse e-mail'))
+    await user.press(screen.getByText('Valider l’adresse e-mail'))
 
-    await waitFor(() => {
-      expect(mockSignOut).not.toHaveBeenCalled()
-    })
+    expect(mockSignOut).not.toHaveBeenCalled()
   })
 
   it('should redirect to Login if submit is success', async () => {
     renderValidateEmailChange()
 
-    await act(async () => {
-      fireEvent.press(screen.getByText('Valider l’adresse e-mail'))
-    })
+    await user.press(screen.getByText('Valider l’adresse e-mail'))
 
     expect(navigation.reset).toHaveBeenNthCalledWith(1, {
       routes: [{ name: 'Login', params: { from: StepperOrigin.VALIDATE_EMAIL_CHANGE } }],
@@ -133,9 +130,7 @@ describe('ValidateEmailChange', () => {
   it('should display a snackbar if submit is success', async () => {
     renderValidateEmailChange()
 
-    await act(async () => {
-      fireEvent.press(screen.getByText('Valider l’adresse e-mail'))
-    })
+    await user.press(screen.getByText('Valider l’adresse e-mail'))
 
     expect(mockShowSuccessSnackbar).toHaveBeenCalledTimes(1)
   })
@@ -145,9 +140,7 @@ describe('ValidateEmailChange', () => {
 
     renderValidateEmailChange()
 
-    await act(async () => {
-      fireEvent.press(screen.getByText('Valider l’adresse e-mail'))
-    })
+    await user.press(screen.getByText('Valider l’adresse e-mail'))
 
     expect(navigation.reset).toHaveBeenCalledWith({ routes: [{ name: 'ChangeEmailExpiredLink' }] })
   })
@@ -157,9 +150,7 @@ describe('ValidateEmailChange', () => {
 
     renderValidateEmailChange()
 
-    await act(async () => {
-      fireEvent.press(screen.getByText('Valider l’adresse e-mail'))
-    })
+    await user.press(screen.getByText('Valider l’adresse e-mail'))
 
     expect(mockShowErrorSnackbar).toHaveBeenCalledTimes(1)
   })
@@ -169,9 +160,7 @@ describe('ValidateEmailChange', () => {
 
     renderValidateEmailChange()
 
-    await act(async () => {
-      fireEvent.press(screen.getByText('Valider l’adresse e-mail'))
-    })
+    await user.press(screen.getByText('Valider l’adresse e-mail'))
 
     expect(mockShowErrorSnackbar).not.toHaveBeenCalled()
   })
@@ -205,9 +194,7 @@ describe('ValidateEmailChange', () => {
   it('should log to sentry, redirect to home and show error message when token is falsy', async () => {
     renderValidateEmailChange(routeWithUndefinedToken)
 
-    await act(async () => {
-      fireEvent.press(screen.getByText('Valider l’adresse e-mail'))
-    })
+    await user.press(screen.getByText('Valider l’adresse e-mail'))
 
     expect(eventMonitoring.captureException).toHaveBeenCalledWith(
       new Error('Expected a string, but received undefined')

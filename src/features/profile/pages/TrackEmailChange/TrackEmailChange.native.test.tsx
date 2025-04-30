@@ -6,7 +6,7 @@ import { TrackEmailChange } from 'features/profile/pages/TrackEmailChange/TrackE
 import { nonBeneficiaryUser } from 'fixtures/user'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render, screen } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 
 jest.mock('libs/network/NetInfoWrapper')
 
@@ -28,6 +28,9 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
+const user = userEvent.setup()
+jest.useFakeTimers()
+
 describe('TrackEmailChange', () => {
   it('should redirect to previous screen when clicking on ArrowPrevious icon', async () => {
     mockServer.getApi<EmailUpdateStatusResponse>('/v2/profile/email_update/status', {
@@ -38,7 +41,7 @@ describe('TrackEmailChange', () => {
     })
     render(reactQueryProviderHOC(<TrackEmailChange />))
 
-    fireEvent.press(await screen.findByLabelText('Revenir en arrière'))
+    await user.press(await screen.findByLabelText('Revenir en arrière'))
 
     expect(mockGoBack).toHaveBeenCalledTimes(1)
   })
