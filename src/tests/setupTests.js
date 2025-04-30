@@ -21,7 +21,7 @@ consoleFailTestModule.cft({
     debug: false,
     error: false,
     log: false,
-    warn: false,
+    warn: true,
   },
 })
 
