@@ -15,7 +15,7 @@ import {
   mockedAlgoliaOffersWithSameArtistResponse,
   mockedAlgoliaResponse,
 } from 'libs/algolia/fixtures/algoliaFixtures'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { Network } from 'libs/share/types'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'

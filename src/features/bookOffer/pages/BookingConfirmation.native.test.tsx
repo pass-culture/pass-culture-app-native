@@ -5,7 +5,7 @@ import { reset, useRoute } from '__mocks__/@react-navigation/native'
 import reactNativeInAppReview from '__mocks__/react-native-in-app-review'
 import { useReviewInAppInformation } from 'features/bookOffer/helpers/useReviewInAppInformation'
 import { analytics } from 'libs/analytics/provider'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { BatchProfile } from 'libs/react-native-batch'
 import { act, render, screen, userEvent, waitFor } from 'tests/utils'
 

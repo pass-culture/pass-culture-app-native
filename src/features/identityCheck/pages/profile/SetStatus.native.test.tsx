@@ -14,7 +14,7 @@ import * as resetStores from 'features/identityCheck/pages/profile/store/resetPr
 import { SubscriptionRootStackParamList } from 'features/navigation/RootNavigator/types'
 import * as UnderageUserAPI from 'features/profile/helpers/useIsUserUnderage'
 import { analytics } from 'libs/analytics/provider'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'

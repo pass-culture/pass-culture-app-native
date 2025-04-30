@@ -7,7 +7,7 @@ import { FilterBehaviour } from 'features/search/enums'
 import { MAX_PRICE_IN_CENTS } from 'features/search/helpers/reducer.helpers'
 import { SearchState } from 'features/search/types'
 import { beneficiaryUser } from 'fixtures/user'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { convertCentsToEuros } from 'libs/parsers/pricesConversion'
 import { render, screen, userEvent, waitFor } from 'tests/utils'
 

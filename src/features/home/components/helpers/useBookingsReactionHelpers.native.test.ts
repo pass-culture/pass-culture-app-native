@@ -4,7 +4,7 @@ import {
   ModalDisplayState,
   useBookingsReactionHelpers,
 } from 'features/home/components/helpers/useBookingsReactionHelpers'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { renderHook } from 'tests/utils'

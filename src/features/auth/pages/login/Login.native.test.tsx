@@ -25,7 +25,7 @@ import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics/provider'
 // eslint-disable-next-line no-restricted-imports
 import { firebaseAnalytics } from 'libs/firebase/analytics/analytics'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import * as monitoringErrorsModule from 'libs/monitoring/errors'
 import { NetworkErrorFixture, UnknownErrorFixture } from 'libs/recaptcha/fixtures'

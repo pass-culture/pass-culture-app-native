@@ -7,7 +7,7 @@ import { mockOffer } from 'features/bookOffer/fixtures/offer'
 import * as useGoBack from 'features/navigation/useGoBack'
 import * as useArtistResults from 'features/offer/helpers/useArtistResults/useArtistResults'
 import { mockedAlgoliaOffersWithSameArtistResponse } from 'libs/algolia/fixtures/algoliaFixtures'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent, waitFor } from 'tests/utils'
 

@@ -3,7 +3,7 @@ import React from 'react'
 
 import { SubcategoryIdEnum, WithdrawalTypeEnum } from 'api/gen'
 import { TicketBody } from 'features/bookings/components/OldBookingDetails/TicketBody/TicketBody'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { mockBuilder } from 'tests/mockBuilder'
 import { render, screen } from 'tests/utils'

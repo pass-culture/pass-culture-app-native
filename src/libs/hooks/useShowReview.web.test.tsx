@@ -2,7 +2,7 @@ import React from 'react'
 import InAppReview from 'react-native-in-app-review'
 
 import { useReviewInAppInformation } from 'features/bookOffer/helpers/useReviewInAppInformation'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { useShowReview } from 'libs/hooks/useShowReview'
 import { render } from 'tests/utils/web'
 

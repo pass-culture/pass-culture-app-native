@@ -11,7 +11,7 @@ import {
 } from 'features/navigation/TabBar/TabNavigationStateContext'
 import { initialSearchState } from 'features/search/context/reducer'
 import { LocationFilter } from 'features/search/types'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { LocationMode } from 'libs/location/types'
 import { ThemeProvider } from 'libs/styled'

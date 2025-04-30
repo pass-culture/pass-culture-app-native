@@ -11,7 +11,7 @@ import { SearchResults } from 'features/search/pages/SearchResults/SearchResults
 import { SearchState } from 'features/search/types'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { ILocationContext, Position } from 'libs/location'
 import { LocationMode } from 'libs/location/types'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'

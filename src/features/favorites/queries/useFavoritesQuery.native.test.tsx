@@ -3,7 +3,7 @@ import { View } from 'react-native'
 
 import { FavoritesWrapper } from 'features/favorites/context/FavoritesWrapper'
 import { paginatedFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedFavoritesResponseSnap'
-import { simulateBackend } from 'features/favorites/helpers/simulateBackend'
+import { simulateBackend } from 'features/favorites/tests/simulateBackend'
 import { mockAuthContextWithoutUser } from 'tests/AuthContextUtils'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, renderHook } from 'tests/utils'

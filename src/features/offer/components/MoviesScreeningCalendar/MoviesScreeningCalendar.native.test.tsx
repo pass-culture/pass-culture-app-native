@@ -12,7 +12,7 @@ import { MoviesScreeningCalendar } from 'features/offer/components/MoviesScreeni
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { offersStocksResponseSnap } from 'features/offer/fixtures/offersStocksResponse'
 import { VenueOffers } from 'features/venue/types'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'

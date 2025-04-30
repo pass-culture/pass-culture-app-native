@@ -4,7 +4,7 @@ import { BookPricesChoice } from 'features/bookOffer/components/BookPricesChoice
 import { BookingState, initialBookingState } from 'features/bookOffer/context/reducer'
 import { mockStocks } from 'features/bookOffer/fixtures/stocks'
 import { IBookingContext } from 'features/bookOffer/types'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { userEvent, render, screen } from 'tests/utils'
 
 const mockInitialBookingState = initialBookingState

@@ -14,7 +14,7 @@ import { VenueOffersResponseSnap } from 'features/venue/fixtures/venueOffersResp
 import * as useVenueSearchParameters from 'features/venue/helpers/useVenueSearchParameters'
 import mockVenueSearchParams from 'fixtures/venueSearchParams'
 import { analytics } from 'libs/analytics/provider'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { useVenueOffersQuery } from 'queries/venue/useVenueOffersQuery'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'

@@ -5,7 +5,7 @@ import { NextSubscriptionStepResponse } from 'api/gen'
 import { stepsDetailsFixture } from 'features/identityCheck/pages/helpers/stepDetails.fixture'
 import { useRehydrateProfile } from 'features/identityCheck/pages/helpers/useRehydrateProfile'
 import { useStepperInfo } from 'features/identityCheck/pages/helpers/useStepperInfo'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { checkAccessibilityFor, render } from 'tests/utils/web'
 
 import { Stepper } from './Stepper'
