@@ -196,6 +196,7 @@ export const CalendarModal: FunctionComponent<CalendarModalProps> = ({
         markingType="period" // to have visible period
         onDayPress={onDayPress}
         markedDates={markedDates}
+        testID="calendar"
       />
     </AppModal>
   )

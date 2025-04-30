@@ -2,7 +2,7 @@ import { useFocusEffect, useIsFocused } from '@react-navigation/native'
 import { FlashList } from '@shopify/flash-list'
 import { debounce } from 'lodash'
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import { FlatList, Platform, ScrollView, View, useWindowDimensions } from 'react-native'
+import { FlatList, Platform, ScrollView, useWindowDimensions, View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { AccessibilityFiltersModal } from 'features/accessibility/components/AccessibilityFiltersModal'
@@ -27,6 +27,7 @@ import { useFilterCount } from 'features/search/helpers/useFilterCount/useFilter
 import { useNavigateToSearch } from 'features/search/helpers/useNavigateToSearch/useNavigateToSearch'
 import { useNavigateToSearchFilter } from 'features/search/helpers/useNavigateToSearchFilter/useNavigateToSearchFilter'
 import { usePrevious } from 'features/search/helpers/usePrevious'
+import { CalendarModal } from 'features/search/pages/modals/CalendarModal/CalendarModal'
 import { CategoriesModal } from 'features/search/pages/modals/CategoriesModal/CategoriesModal'
 import { DatesHoursModal } from 'features/search/pages/modals/DatesHoursModal/DatesHoursModal'
 import { OfferDuoModal } from 'features/search/pages/modals/OfferDuoModal/OfferDuoModal'
@@ -111,6 +112,7 @@ export const SearchResultsContent: React.FC = () => {
   const shouldDisplayVenueMapInSearch = useFeatureFlag(
     RemoteStoreFeatureFlags.WIP_VENUE_MAP_IN_SEARCH
   )
+  const shouldDisplayCalendarModal = useFeatureFlag(RemoteStoreFeatureFlags.WIP_TIME_FILTER_V2)
 
   const [isSearchListTab, setIsSearchListTab] = useState(true)
   const [defaultTab, setDefaultTab] = useState(Tab.SEARCHLIST)
@@ -207,6 +209,11 @@ export const SearchResultsContent: React.FC = () => {
     visible: venueMapLocationModalVisible,
     showModal: showVenueMapLocationModal,
     hideModal: hideVenueMapLocationModal,
+  } = useModal(false)
+  const {
+    visible: calendarModalVisible,
+    showModal: showCalendarModal,
+    hideModal: hideCalendarModal,
   } = useModal(false)
 
   const activeFiltersCount = useFilterCount(searchState)
@@ -452,9 +459,9 @@ export const SearchResultsContent: React.FC = () => {
             </StyledLi>
             <StyledLi>
               <StyledSingleFilterButton
-                label="Dates & heures"
+                label={shouldDisplayCalendarModal ? 'Dates' : 'Dates & heures'}
                 testID="datesHoursButton"
-                onPress={showDatesHoursModal}
+                onPress={shouldDisplayCalendarModal ? showCalendarModal : showDatesHoursModal}
                 isSelected={appliedFilters.includes(FILTER_TYPES.DATES_HOURS)}
               />
             </StyledLi>
@@ -546,6 +553,13 @@ export const SearchResultsContent: React.FC = () => {
         accessibilityLabel="Ne pas filtrer sur les dates et heures puis retourner aux résultats"
         isVisible={datesHoursModalVisible}
         hideModal={hideDatesHoursModal}
+        filterBehaviour={FilterBehaviour.SEARCH}
+      />
+      <CalendarModal
+        title="Dates"
+        accessibilityLabel="Ne pas filtrer sur les dates puis retourner aux résultats"
+        isVisible={calendarModalVisible}
+        hideModal={hideCalendarModal}
         filterBehaviour={FilterBehaviour.SEARCH}
       />
       <AccessibilityFiltersModal
