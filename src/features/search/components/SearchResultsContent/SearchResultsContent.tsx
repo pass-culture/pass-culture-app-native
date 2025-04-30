@@ -442,9 +442,8 @@ export const SearchResultsContent: React.FC = () => {
         toggle={() => setAutoScrollEnabled((autoScroll) => !autoScroll)}
       />
       <View>
-        <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-          <Spacer.Row numberOfSpaces={5} />
-          <Ul>
+        <FiltersScrollView horizontal showsHorizontalScrollIndicator={false}>
+          <StyledUl>
             <StyledLi>
               <FilterButton
                 activeFilters={activeFiltersCount}
@@ -505,10 +504,8 @@ export const SearchResultsContent: React.FC = () => {
                 isSelected={appliedFilters.includes(FILTER_TYPES.ACCESSIBILITY)}
               />
             </StyledLastLi>
-          </Ul>
-          <Spacer.Row numberOfSpaces={5} />
-        </ScrollView>
-        <Spacer.Column numberOfSpaces={2} />
+          </StyledUl>
+        </FiltersScrollView>
       </View>
       <Container testID="searchResults">{renderSearchList()}</Container>
       {shouldRenderScrollToTopButton ? (
@@ -621,6 +618,14 @@ const ScrollToTopContainer = styled.View(({ theme }) => ({
   bottom: theme.tabBar.height + getSpacing(6),
   zIndex: theme.zIndex.floatingButton,
 }))
+
+const StyledUl = styled(Ul)({
+  marginHorizontal: getSpacing(5),
+})
+
+const FiltersScrollView = styled(ScrollView)({
+  marginBottom: getSpacing(2),
+})
 
 const FAVORITE_LIST_PLACEHOLDER = Array.from({ length: 20 }).map((_, index) => ({
   key: index.toString(),
