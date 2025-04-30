@@ -1168,4 +1168,30 @@ describe('SearchResultsContent component', () => {
       })
     })
   })
+
+  describe('When calendar filter feature flag activated', () => {
+    beforeEach(() => {
+      mockUseSearchResults.mockReturnValue({
+        ...initialSearchResults,
+        hits: mockedAlgoliaResponse.hits,
+        nbHits: mockedAlgoliaResponse.nbHits,
+      })
+      setFeatureFlags([RemoteStoreFeatureFlags.WIP_TIME_FILTER_V2])
+      mockUseLocation.mockReturnValue(aroundMeUseLocation)
+    })
+
+    it('should display Dates in button filter', async () => {
+      render(<SearchResultsContent />)
+
+      expect(await screen.findByText('Dates')).toBeOnTheScreen()
+    })
+
+    it('should open calendar modal', async () => {
+      render(<SearchResultsContent />)
+
+      await user.press(await screen.findByText('Dates'))
+
+      expect(screen.getByTestId('calendar')).toBeOnTheScreen()
+    })
+  })
 })

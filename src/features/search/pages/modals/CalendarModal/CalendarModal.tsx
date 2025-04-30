@@ -2,7 +2,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { addYears, format } from 'date-fns'
 import React, { FunctionComponent, useCallback, useEffect, useMemo } from 'react'
 import { SetValueConfig, useForm } from 'react-hook-form'
-import { CalendarList, DateData } from 'react-native-calendars'
+import { CalendarList, DateData, LocaleConfig } from 'react-native-calendars'
 import { useTheme } from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -14,6 +14,8 @@ import { getMarkedDates } from 'features/search/helpers/getMarkedDates/getMarked
 import { getPastScrollRange } from 'features/search/helpers/getPastScrollRange/getPastScrollRange'
 import { calendarSchema } from 'features/search/helpers/schema/calendarSchema/calendarSchema'
 import { SearchState } from 'features/search/types'
+import { DAYS, dayNamesShort } from 'shared/date/days'
+import { CAPITALIZED_MONTHS, CAPITALIZED_SHORT_MONTHS } from 'shared/date/months'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { Close } from 'ui/svg/icons/Close'
 
@@ -30,6 +32,14 @@ export type CalendarModalProps = {
   filterBehaviour: FilterBehaviour
   onClose?: VoidFunction
 }
+
+LocaleConfig.locales['fr'] = {
+  monthNames: [...CAPITALIZED_MONTHS],
+  monthNamesShort: [...CAPITALIZED_SHORT_MONTHS],
+  dayNames: [...DAYS],
+  dayNamesShort,
+}
+LocaleConfig.defaultLocale = 'fr'
 
 const titleId = uuidv4()
 const today = new Date()
@@ -187,7 +197,7 @@ export const CalendarModal: FunctionComponent<CalendarModalProps> = ({
         }
         minDate={format(today, 'yyyy-MM-dd')}
         maxDate={format(twoYearsLater, 'yyyy-MM-dd')}
-        futureScrollRange={24} // 24 months to have scrolling
+        futureScrollRange={12} // 1 year to have scrolling
         pastScrollRange={
           searchState.beginningDatetime
             ? getPastScrollRange(new Date(searchState.beginningDatetime), today)
@@ -196,6 +206,7 @@ export const CalendarModal: FunctionComponent<CalendarModalProps> = ({
         markingType="period" // to have visible period
         onDayPress={onDayPress}
         markedDates={markedDates}
+        testID="calendar"
       />
     </AppModal>
   )

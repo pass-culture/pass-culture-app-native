@@ -17,6 +17,8 @@ import { useNavigateToSearch } from 'features/search/helpers/useNavigateToSearch
 import { useSync } from 'features/search/helpers/useSync/useSync'
 import { LocationFilter } from 'features/search/types'
 import { analytics } from 'libs/analytics/provider'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useFunctionOnce } from 'libs/hooks'
 import { useLocation } from 'libs/location'
 import { LocationMode } from 'libs/location/types'
@@ -27,7 +29,7 @@ import { Li } from 'ui/components/Li'
 import { VerticalUl } from 'ui/components/Ul'
 import { Page } from 'ui/pages/Page'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
-import { Spacer } from 'ui/theme'
+import { getSpacing } from 'ui/theme'
 
 export const SearchFilter: React.FC = () => {
   const currency = useGetCurrencyToDisplay()
@@ -46,6 +48,7 @@ export const SearchFilter: React.FC = () => {
   const { place, selectedLocationMode, aroundMeRadius, aroundPlaceRadius } = useLocation()
   const { user } = useAuthContext()
   const { isMobileViewport } = useTheme()
+  const shouldDisplayCalendarModal = useFeatureFlag(RemoteStoreFeatureFlags.WIP_TIME_FILTER_V2)
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const oldAccessibilityFilter = useMemo(() => disabilities, [])
@@ -109,12 +112,19 @@ export const SearchFilter: React.FC = () => {
 
   return (
     <Page>
-      <SecondaryPageWithBlurHeader
+      <StyledSecondaryPageWithBlurHeader
         title="Filtres"
         onGoBack={onGoBack}
         scrollViewProps={{ keyboardShouldPersistTaps: 'always' }}>
         <VerticalUl>
           <SectionWrapper isFirstSectionItem>
+            {shouldDisplayCalendarModal ? (
+              <Section.CalendarFilter onClose={onClose} />
+            ) : (
+              <Section.DateHour onClose={onClose} />
+            )}
+          </SectionWrapper>
+          <SectionWrapper>
             <Section.Category onClose={onClose} />
           </SectionWrapper>
           {hasDuoOfferToggle ? (
@@ -133,14 +143,10 @@ export const SearchFilter: React.FC = () => {
             />
           </SectionWrapper>
           <SectionWrapper>
-            <Section.DateHour onClose={onClose} />
-          </SectionWrapper>
-          <SectionWrapper>
             <Section.Accessibility onClose={onClose} />
           </SectionWrapper>
         </VerticalUl>
-      </SecondaryPageWithBlurHeader>
-      <Spacer.Column numberOfSpaces={4} />
+      </StyledSecondaryPageWithBlurHeader>
       <FilterPageButtons
         onResetPress={onResetPress}
         onSearchPress={onSearchPress}
@@ -156,11 +162,9 @@ const SectionWrapper: React.FunctionComponent<{
   isFirstSectionItem?: boolean
 }> = ({ children, isFirstSectionItem = false }) => {
   return (
-    <StyledLi>
+    <StyledLi isFirstSectionItem={isFirstSectionItem}>
       {isFirstSectionItem ? null : <Separator />}
-      <Spacer.Column numberOfSpaces={6} />
       {children}
-      <Spacer.Column numberOfSpaces={6} />
     </StyledLi>
   )
 }
@@ -169,8 +173,15 @@ const Separator = styled.View(({ theme }) => ({
   width: '100%',
   height: 2,
   backgroundColor: theme.colors.greyLight,
+  marginBottom: getSpacing(6),
 }))
 
-const StyledLi = styled(Li)({
+const StyledLi = styled(Li)<{ isFirstSectionItem?: boolean }>(({ isFirstSectionItem }) => ({
   display: 'flex',
+  marginBottom: getSpacing(6),
+  marginTop: isFirstSectionItem ? getSpacing(6) : undefined,
+}))
+
+const StyledSecondaryPageWithBlurHeader = styled(SecondaryPageWithBlurHeader)({
+  marginBottom: getSpacing(4),
 })

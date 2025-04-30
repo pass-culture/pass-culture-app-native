@@ -300,24 +300,22 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
       <RCTScrollView
         horizontal={true}
         showsHorizontalScrollIndicator={false}
+        style={
+          [
+            {
+              "marginBottom": 8,
+            },
+          ]
+        }
       >
         <View>
-          <View
-            numberOfSpaces={5}
-            style={
-              [
-                {
-                  "width": 20,
-                },
-              ]
-            }
-          />
           <View
             accessibilityRole="list"
             style={
               [
                 {
                   "flexDirection": "row",
+                  "marginHorizontal": 20,
                   "paddingLeft": 0,
                 },
               ]
@@ -925,28 +923,8 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
               </View>
             </View>
           </View>
-          <View
-            numberOfSpaces={5}
-            style={
-              [
-                {
-                  "width": 20,
-                },
-              ]
-            }
-          />
         </View>
       </RCTScrollView>
-      <View
-        numberOfSpaces={2}
-        style={
-          [
-            {
-              "height": 8,
-            },
-          ]
-        }
-      />
     </View>
     <View
       style={
