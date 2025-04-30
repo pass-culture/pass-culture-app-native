@@ -358,6 +358,146 @@ exports[`<SearchFilter/> should render correctly 1`] = `
                       ]
                     }
                   >
+                    Dates & heures
+                  </Text>
+                </View>
+              </View>
+              <View
+                accessibilityLabel="Affiner la recherche"
+                height={20}
+                width={20}
+              >
+                <Text>
+                  undefined-SVG-Mock
+                </Text>
+              </View>
+            </View>
+          </View>
+          <View
+            accessibilityRole="none"
+            isFirstSectionItem={false}
+            style={
+              [
+                {
+                  "display": "flex",
+                  "marginBottom": 24,
+                },
+              ]
+            }
+          >
+            <View
+              style={
+                [
+                  {
+                    "backgroundColor": "#F1F1F4",
+                    "height": 2,
+                    "marginBottom": 24,
+                    "width": "100%",
+                  },
+                ]
+              }
+            />
+            <View
+              accessibilityRole="button"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={false}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                [
+                  [
+                    {
+                      "userSelect": "auto",
+                    },
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                    },
+                  ],
+                  {
+                    "opacity": 1,
+                  },
+                ]
+              }
+              testID="FilterRow"
+            >
+              <View
+                style={
+                  [
+                    {
+                      "marginRight": 16,
+                    },
+                  ]
+                }
+              >
+                <View
+                  fill="#161617"
+                  height={24}
+                  width={24}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
+              </View>
+              <View
+                style={
+                  [
+                    {
+                      "alignItems": "flex-start",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "marginRight": 16,
+                    },
+                  ]
+                }
+              >
+                <View
+                  style={
+                    [
+                      {
+                        "flexDirection": "row",
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    numberOfLines={2}
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "flexShrink": 1,
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                        },
+                      ]
+                    }
+                  >
                     Catégorie
                   </Text>
                 </View>
@@ -655,146 +795,6 @@ exports[`<SearchFilter/> should render correctly 1`] = `
                     }
                   >
                     Prix
-                  </Text>
-                </View>
-              </View>
-              <View
-                accessibilityLabel="Affiner la recherche"
-                height={20}
-                width={20}
-              >
-                <Text>
-                  undefined-SVG-Mock
-                </Text>
-              </View>
-            </View>
-          </View>
-          <View
-            accessibilityRole="none"
-            isFirstSectionItem={false}
-            style={
-              [
-                {
-                  "display": "flex",
-                  "marginBottom": 24,
-                },
-              ]
-            }
-          >
-            <View
-              style={
-                [
-                  {
-                    "backgroundColor": "#F1F1F4",
-                    "height": 2,
-                    "marginBottom": 24,
-                    "width": "100%",
-                  },
-                ]
-              }
-            />
-            <View
-              accessibilityRole="button"
-              accessibilityState={
-                {
-                  "busy": undefined,
-                  "checked": undefined,
-                  "disabled": undefined,
-                  "expanded": undefined,
-                  "selected": undefined,
-                }
-              }
-              accessibilityValue={
-                {
-                  "max": undefined,
-                  "min": undefined,
-                  "now": undefined,
-                  "text": undefined,
-                }
-              }
-              accessible={false}
-              focusable={true}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                [
-                  [
-                    {
-                      "userSelect": "auto",
-                    },
-                    {
-                      "alignItems": "center",
-                      "flexDirection": "row",
-                    },
-                  ],
-                  {
-                    "opacity": 1,
-                  },
-                ]
-              }
-              testID="FilterRow"
-            >
-              <View
-                style={
-                  [
-                    {
-                      "marginRight": 16,
-                    },
-                  ]
-                }
-              >
-                <View
-                  fill="#161617"
-                  height={24}
-                  width={24}
-                >
-                  <Text>
-                    undefined-SVG-Mock
-                  </Text>
-                </View>
-              </View>
-              <View
-                style={
-                  [
-                    {
-                      "alignItems": "flex-start",
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "marginRight": 16,
-                    },
-                  ]
-                }
-              >
-                <View
-                  style={
-                    [
-                      {
-                        "flexDirection": "row",
-                      },
-                    ]
-                  }
-                >
-                  <Text
-                    numberOfLines={2}
-                    style={
-                      [
-                        {
-                          "color": "#161617",
-                          "flexShrink": 1,
-                          "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 16,
-                          "lineHeight": 25.6,
-                        },
-                      ]
-                    }
-                  >
-                    Dates & heures
                   </Text>
                 </View>
               </View>

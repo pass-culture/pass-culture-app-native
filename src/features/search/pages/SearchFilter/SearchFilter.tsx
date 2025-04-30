@@ -115,6 +115,9 @@ export const SearchFilter: React.FC = () => {
         scrollViewProps={{ keyboardShouldPersistTaps: 'always' }}>
         <VerticalUl>
           <SectionWrapper isFirstSectionItem>
+            <Section.DateHour onClose={onClose} />
+          </SectionWrapper>
+          <SectionWrapper>
             <Section.Category onClose={onClose} />
           </SectionWrapper>
           {hasDuoOfferToggle ? (
@@ -131,9 +134,6 @@ export const SearchFilter: React.FC = () => {
               euroToPacificFrancRate={euroToPacificFrancRate}
               onClose={onClose}
             />
-          </SectionWrapper>
-          <SectionWrapper>
-            <Section.DateHour onClose={onClose} />
           </SectionWrapper>
           <SectionWrapper>
             <Section.Accessibility onClose={onClose} />
