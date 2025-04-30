@@ -4,7 +4,7 @@ import React from 'react'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
 import { SubcategoriesResponseModelv2 } from 'api/gen'
-import { useGTLPlaylists } from 'features/gtlPlaylist/hooks/useGTLPlaylists'
+import { useGTLPlaylistsQuery } from 'features/gtlPlaylist/queries/useGTLPlaylistsQuery'
 import { initialSearchState } from 'features/search/context/reducer'
 import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
 import { Venue } from 'features/venue/pages/Venue/Venue'
@@ -45,8 +45,8 @@ jest.mock('features/profile/helpers/useIsUserUnderage', () => ({
   useIsUserUnderage: jest.fn().mockReturnValue(false),
 }))
 
-jest.mock('features/gtlPlaylist/hooks/useGTLPlaylists')
-const mockUseGTLPlaylists = useGTLPlaylists as jest.Mock
+jest.mock('features/gtlPlaylist/queries/useGTLPlaylistsQuery')
+const mockUseGTLPlaylists = useGTLPlaylistsQuery as jest.Mock
 mockUseGTLPlaylists.mockReturnValue({
   gtlPlaylists: [
     {

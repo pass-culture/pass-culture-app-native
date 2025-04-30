@@ -4,7 +4,7 @@ import Animated, { Layout } from 'react-native-reanimated'
 import styled, { useTheme } from 'styled-components/native'
 
 import { VenueTypeCodeKey } from 'api/gen'
-import { useGTLPlaylists } from 'features/gtlPlaylist/hooks/useGTLPlaylists'
+import { useGTLPlaylistsQuery } from 'features/gtlPlaylist/queries/useGTLPlaylistsQuery'
 import { offerToHeadlineOfferData } from 'features/headlineOffer/adapters/offerToHeadlineOfferData'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { OfferCTAProvider } from 'features/offer/components/OfferContent/OfferCTAProvider'
@@ -42,7 +42,7 @@ export const Venue: FunctionComponent = () => {
   const isUserUnderage = useIsUserUnderage()
   const adaptPlaylistParameters = useAdaptOffersPlaylistParameters()
   const transformHits = useTransformOfferHits()
-  const { data: gtlPlaylists, isLoading: arePlaylistsLoading } = useGTLPlaylists({
+  const { data: gtlPlaylists, isLoading: arePlaylistsLoading } = useGTLPlaylistsQuery({
     venue,
     searchGroupLabel: params?.fromThematicSearch,
     userLocation,

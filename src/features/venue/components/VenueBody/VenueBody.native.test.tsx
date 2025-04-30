@@ -5,7 +5,6 @@ import { Linking } from 'react-native'
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { CategoryIdEnum, VenueResponse } from 'api/gen'
 import { gtlPlaylistAlgoliaSnapshot } from 'features/gtlPlaylist/fixtures/gtlPlaylistAlgoliaSnapshot'
-import * as useGTLPlaylists from 'features/gtlPlaylist/hooks/useGTLPlaylists'
 import { GtlPlaylistData } from 'features/gtlPlaylist/types'
 import { HeadlineOfferData } from 'features/headlineOffer/type'
 import { VenueBody } from 'features/venue/components/VenueBody/VenueBody'
@@ -22,9 +21,9 @@ import { render, screen, userEvent } from 'tests/utils'
 mockdate.set(new Date('2021-08-15T00:00:00Z'))
 
 const canOpenURLSpy = jest.spyOn(Linking, 'canOpenURL').mockResolvedValue(false)
-jest
-  .spyOn(useGTLPlaylists, 'useGTLPlaylists')
-  .mockReturnValue({ isLoading: false, gtlPlaylists: gtlPlaylistAlgoliaSnapshot })
+jest.mock('features/gtlPlaylist/queries/useGTLPlaylistsQuery', () => ({
+  useGTLPlaylistsQuery: () => ({ isLoading: false }),
+}))
 
 jest.mock('queries/venue/useVenueOffersQuery')
 const mockUseVenueOffers = useVenueOffersQuery as jest.Mock
