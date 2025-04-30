@@ -2,7 +2,7 @@ import React from 'react'
 
 import { BookingState, Step } from 'features/bookOffer/context/reducer'
 import { mockOffer } from 'features/bookOffer/fixtures/offer'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { render, screen, userEvent } from 'tests/utils'
 
 import { BookDuoChoice } from './BookDuoChoice'

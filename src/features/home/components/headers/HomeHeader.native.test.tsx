@@ -11,7 +11,7 @@ import {
 } from 'api/gen'
 import * as Auth from 'features/auth/context/AuthContext'
 import { nonBeneficiaryUser } from 'fixtures/user'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { LocationLabel } from 'libs/location/types'
 import { Credit, useAvailableCredit } from 'shared/user/useAvailableCredit'
 import { mockServer } from 'tests/mswServer'

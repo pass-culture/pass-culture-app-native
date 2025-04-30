@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { checkAccessibilityFor, render, screen } from 'tests/utils/web'
 
 import { AccountCreated } from './AccountCreated'

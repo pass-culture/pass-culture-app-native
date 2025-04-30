@@ -16,7 +16,7 @@ import {
 import { HomepageModule, ModuleData } from 'features/home/types'
 import { SimilarOffersResponse } from 'features/offer/types'
 import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { GeoCoordinates, Position } from 'libs/location'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'

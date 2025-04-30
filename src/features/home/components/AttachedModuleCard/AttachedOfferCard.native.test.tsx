@@ -4,7 +4,7 @@ import { UseQueryResult } from 'react-query'
 
 import { SubcategoriesResponseModelv2 } from 'api/gen'
 import { AttachedOfferCard } from 'features/home/components/AttachedModuleCard/AttachedOfferCard'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { ILocationContext, LocationMode } from 'libs/location/types'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'

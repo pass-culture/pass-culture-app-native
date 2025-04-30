@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { VenueMapModule } from 'features/home/components/modules/VenueMapModule'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { render, screen } from 'tests/utils/web'
 
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')

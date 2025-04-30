@@ -16,9 +16,8 @@ import { Booking } from 'features/bookings/types'
 import { withAsyncErrorBoundary } from 'features/errors/hocs/withAsyncErrorBoundary'
 import { openUrl } from 'features/navigation/helpers/openUrl'
 import { analytics } from 'libs/analytics/provider'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import * as OpenItinerary from 'libs/itinerary/useOpenItinerary'
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'
@@ -29,10 +28,6 @@ import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 import { BookingDetails as BookingDetailsDefault } from './BookingDetails'
 
 const BookingDetails = withAsyncErrorBoundary(BookingDetailsDefault)
-
-jest.mock('libs/itinerary/useItinerary', () => ({
-  useItinerary: jest.fn(() => ({ availableApps: ['waze'], navigateTo: jest.fn() })),
-}))
 
 jest.unmock('react-native/Libraries/Animated/createAnimatedComponent')
 jest.useFakeTimers()
@@ -499,10 +494,6 @@ describe('BookingDetails', () => {
         ['isEvent == true', { isEvent: true }],
         ['isPhysical == true', { isPhysical: true, isDigital: false }],
       ])('should render the itinerary button when %s', async (_testLabel, dataProvider) => {
-        const openItinerary = jest.spyOn(OpenItinerary, 'default').mockReturnValue({
-          openItinerary: jest.fn(),
-          canOpenItinerary: true,
-        })
         const getBookingProperties = jest
           .spyOn(bookingPropertiesAPI, 'getBookingProperties')
           .mockReturnValue(dataProvider)
@@ -515,7 +506,6 @@ describe('BookingDetails', () => {
 
         expect(itineraryButton).toBeOnTheScreen()
 
-        openItinerary.mockRestore()
         getBookingProperties.mockRestore()
       })
 
@@ -534,10 +524,6 @@ describe('BookingDetails', () => {
       ])(
         'should not render the itinerary button when %s',
         async (_testLabel, canOpenItinerary, dataProvider) => {
-          const openItinerary = jest.spyOn(OpenItinerary, 'default').mockReturnValue({
-            openItinerary: jest.fn(),
-            canOpenItinerary,
-          })
           const getBookingProperties = jest
             .spyOn(bookingPropertiesAPI, 'getBookingProperties')
             .mockReturnValue(dataProvider)
@@ -550,7 +536,6 @@ describe('BookingDetails', () => {
 
           expect(itineraryButton).not.toBeOnTheScreen()
 
-          openItinerary.mockRestore()
           getBookingProperties.mockRestore()
         }
       )
@@ -617,10 +602,6 @@ describe('BookingDetails', () => {
     })
 
     it('should render the itinerary button when offer is Event', async () => {
-      const openItinerary = jest.spyOn(OpenItinerary, 'default').mockReturnValue({
-        openItinerary: jest.fn(),
-        canOpenItinerary: true,
-      })
       const getBookingProperties = jest
         .spyOn(bookingPropertiesAPI, 'getBookingProperties')
         .mockReturnValue({ isEvent: true })
@@ -633,7 +614,6 @@ describe('BookingDetails', () => {
 
       expect(itineraryButton).toBeOnTheScreen()
 
-      openItinerary.mockRestore()
       getBookingProperties.mockRestore()
     })
 

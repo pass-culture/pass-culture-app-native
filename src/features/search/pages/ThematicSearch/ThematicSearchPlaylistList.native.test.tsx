@@ -2,7 +2,7 @@ import React from 'react'
 
 import { ThematicSearchPlaylistList } from 'features/search/pages/ThematicSearch/ThematicSearchPlaylistList'
 import { ThematicSearchPlaylistData } from 'features/search/pages/ThematicSearch/types'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { mockBuilder } from 'tests/mockBuilder'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, cleanup } from 'tests/utils'

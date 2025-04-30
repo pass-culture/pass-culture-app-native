@@ -2,7 +2,7 @@ import React from 'react'
 
 import { CategoryIdEnum, NativeCategoryIdEnumv2, SubcategoryIdEnum } from 'api/gen'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { checkAccessibilityFor, render } from 'tests/utils/web'
 

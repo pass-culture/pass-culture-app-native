@@ -11,7 +11,6 @@ import { Micro as Conference } from '../Micro'
 import { Microphone } from '../Microphone'
 import { Museum } from '../Museum'
 import { Music } from '../Music'
-import { Numeric } from '../Numeric'
 import { Palette } from '../Palette'
 import { Piano as Instrument } from '../Piano'
 import { Press } from '../Press'
@@ -34,7 +33,6 @@ export const categoriesIcons = {
   Microphone,
   Museum,
   Music,
-  Numeric,
   Palette,
   Press,
   Show,

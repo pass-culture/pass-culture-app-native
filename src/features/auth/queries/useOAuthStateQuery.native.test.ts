@@ -1,7 +1,7 @@
 import * as API from 'api/api'
 import { OauthStateResponse } from 'api/gen'
 import { useOAuthStateQuery } from 'features/auth/queries/useOAuthStateQuery'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'

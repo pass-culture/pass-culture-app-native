@@ -2,7 +2,7 @@ import React from 'react'
 import { LogBox } from 'react-native'
 
 import { campaignTracker } from 'libs/campaign'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { BatchMessaging, BatchPush } from 'libs/react-native-batch'
 import { configureGoogleSignin } from 'libs/react-native-google-sso/configureGoogleSignin'
 import { render, waitFor } from 'tests/utils'

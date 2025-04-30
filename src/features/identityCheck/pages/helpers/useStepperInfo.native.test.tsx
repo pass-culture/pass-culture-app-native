@@ -12,7 +12,7 @@ import {
 import { useStepperInfo } from 'features/identityCheck/pages/helpers/useStepperInfo'
 import { IdentityCheckStep } from 'features/identityCheck/types'
 import { beneficiaryUser } from 'fixtures/user'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
 

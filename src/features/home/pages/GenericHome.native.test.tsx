@@ -10,7 +10,7 @@ import {
 } from 'features/home/fixtures/homepage.fixture'
 import { GenericHome } from 'features/home/pages/GenericHome'
 import { analytics } from 'libs/analytics/provider'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
 import { BatchProfile } from 'libs/react-native-batch'

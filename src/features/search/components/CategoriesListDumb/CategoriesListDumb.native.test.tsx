@@ -2,7 +2,7 @@ import React, { ComponentProps } from 'react'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { CategoriesListDumb } from 'features/search/components/CategoriesListDumb/CategoriesListDumb'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { render, screen } from 'tests/utils'
 // eslint-disable-next-line no-restricted-imports

@@ -2,7 +2,7 @@ import React from 'react'
 
 import { ArtistPlaylist } from 'features/artist/components/ArtistPlaylist/ArtistPlaylist'
 import { mockedAlgoliaOffersWithSameArtistResponse } from 'libs/algolia/fixtures/algoliaFixtures'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, waitFor } from 'tests/utils'
 

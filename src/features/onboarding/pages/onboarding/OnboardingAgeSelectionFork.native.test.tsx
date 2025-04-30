@@ -4,7 +4,7 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { NonEligible } from 'features/onboarding/enums'
 import { OnboardingAgeSelectionFork } from 'features/onboarding/pages/onboarding/OnboardingAgeSelectionFork'
 import { analytics } from 'libs/analytics/__mocks__/provider'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { storage } from 'libs/storage'
 import { render, screen, userEvent } from 'tests/utils'
 

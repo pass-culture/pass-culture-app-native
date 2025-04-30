@@ -7,7 +7,7 @@ import {
   domains_exhausted_credit_v3,
 } from 'features/profile/fixtures/domainsCredit'
 import * as ProfileUtils from 'features/profile/helpers/useIsUserUnderageBeneficiary'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { render, screen, waitFor } from 'tests/utils'
 
 const mockUseIsUserUnderageBeneficiary = jest

@@ -13,7 +13,7 @@ import { subscriptionStepperFixture } from 'features/identityCheck/fixtures/subs
 import { ProfileHeader } from 'features/profile/components/Header/ProfileHeader/ProfileHeader'
 import { domains_credit_v3 } from 'features/profile/fixtures/domainsCredit'
 import { isUserUnderageBeneficiary } from 'features/profile/helpers/isUserUnderageBeneficiary'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils'

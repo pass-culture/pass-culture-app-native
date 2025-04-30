@@ -6,7 +6,7 @@ import { useBookingContext } from 'features/bookOffer/context/useBookingContext'
 import { mockOffer as baseOffer } from 'features/bookOffer/fixtures/offer'
 import { useBookingStock } from 'features/bookOffer/helpers/useBookingStock'
 import { offerStockResponseSnap } from 'features/offer/fixtures/offerStockResponse'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { formatDateTimezone } from 'libs/parsers/formatDates'
 import { render, screen } from 'tests/utils'
 

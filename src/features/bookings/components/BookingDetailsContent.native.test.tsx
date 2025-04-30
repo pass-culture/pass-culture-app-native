@@ -7,7 +7,7 @@ import { BookingDetailsContent } from 'features/bookings/components/BookingDetai
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { BookingProperties } from 'features/bookings/types'
 import { analytics } from 'libs/analytics/provider'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { subcategoriesMappingSnap } from 'libs/subcategories/fixtures/mappings'
 import { SubcategoriesMapping } from 'libs/subcategories/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'

@@ -5,7 +5,6 @@ export enum RemoteStoreDocuments {
   COOKIES_LAST_UPDATE = 'cookiesLastUpdate',
   FEATURE_FLAGS = 'featureFlags',
   MAINTENANCE = 'maintenance',
-  UBBLE = 'ubble',
 }
 
 export enum RemoteStoreMaintenance {
@@ -20,10 +19,6 @@ export enum RemoteStoreCookies {
 
 export enum RemoteStoreAppVersion {
   MINIMAL_BUILD_NUMBER = 'minimalBuildNumber',
-}
-
-export enum RemoteStoreUbble {
-  UBBLE_ETA_MESSAGE = 'etaMessage',
 }
 
 export enum MAINTENANCE {

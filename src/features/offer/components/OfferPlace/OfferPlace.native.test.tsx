@@ -8,7 +8,7 @@ import { OfferCTAProvider } from 'features/offer/components/OfferContent/OfferCT
 import { OfferPlace, OfferPlaceProps } from 'features/offer/components/OfferPlace/OfferPlace'
 import { mockSubcategory } from 'features/offer/fixtures/mockSubcategory'
 import { analytics } from 'libs/analytics/provider'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { ILocationContext, LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'

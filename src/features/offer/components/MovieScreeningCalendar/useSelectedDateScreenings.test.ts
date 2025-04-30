@@ -1,5 +1,5 @@
 import { convertToMinutes } from 'features/offer/components/MovieScreeningCalendar/useSelectedDateScreenings'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
