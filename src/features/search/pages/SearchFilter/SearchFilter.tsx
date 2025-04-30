@@ -27,7 +27,7 @@ import { Li } from 'ui/components/Li'
 import { VerticalUl } from 'ui/components/Ul'
 import { Page } from 'ui/pages/Page'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
-import { Spacer } from 'ui/theme'
+import { getSpacing } from 'ui/theme'
 
 export const SearchFilter: React.FC = () => {
   const currency = useGetCurrencyToDisplay()
@@ -109,7 +109,7 @@ export const SearchFilter: React.FC = () => {
 
   return (
     <Page>
-      <SecondaryPageWithBlurHeader
+      <StyledSecondaryPageWithBlurHeader
         title="Filtres"
         onGoBack={onGoBack}
         scrollViewProps={{ keyboardShouldPersistTaps: 'always' }}>
@@ -139,8 +139,7 @@ export const SearchFilter: React.FC = () => {
             <Section.Accessibility onClose={onClose} />
           </SectionWrapper>
         </VerticalUl>
-      </SecondaryPageWithBlurHeader>
-      <Spacer.Column numberOfSpaces={4} />
+      </StyledSecondaryPageWithBlurHeader>
       <FilterPageButtons
         onResetPress={onResetPress}
         onSearchPress={onSearchPress}
@@ -156,11 +155,9 @@ const SectionWrapper: React.FunctionComponent<{
   isFirstSectionItem?: boolean
 }> = ({ children, isFirstSectionItem = false }) => {
   return (
-    <StyledLi>
+    <StyledLi isFirstSectionItem={isFirstSectionItem}>
       {isFirstSectionItem ? null : <Separator />}
-      <Spacer.Column numberOfSpaces={6} />
       {children}
-      <Spacer.Column numberOfSpaces={6} />
     </StyledLi>
   )
 }
@@ -169,8 +166,15 @@ const Separator = styled.View(({ theme }) => ({
   width: '100%',
   height: 2,
   backgroundColor: theme.colors.greyLight,
+  marginBottom: getSpacing(6),
 }))
 
-const StyledLi = styled(Li)({
+const StyledLi = styled(Li)<{ isFirstSectionItem?: boolean }>(({ isFirstSectionItem }) => ({
   display: 'flex',
+  marginBottom: getSpacing(6),
+  marginTop: isFirstSectionItem ? getSpacing(6) : undefined,
+}))
+
+const StyledSecondaryPageWithBlurHeader = styled(SecondaryPageWithBlurHeader)({
+  marginBottom: getSpacing(4),
 })

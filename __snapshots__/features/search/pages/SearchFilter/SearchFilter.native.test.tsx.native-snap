@@ -246,24 +246,17 @@ exports[`<SearchFilter/> should render correctly 1`] = `
         >
           <View
             accessibilityRole="none"
+            isFirstSectionItem={true}
             style={
               [
                 {
                   "display": "flex",
+                  "marginBottom": 24,
+                  "marginTop": 24,
                 },
               ]
             }
           >
-            <View
-              numberOfSpaces={6}
-              style={
-                [
-                  {
-                    "height": 24,
-                  },
-                ]
-              }
-            />
             <View
               accessibilityRole="button"
               accessibilityState={
@@ -395,23 +388,15 @@ exports[`<SearchFilter/> should render correctly 1`] = `
                 </Text>
               </View>
             </View>
-            <View
-              numberOfSpaces={6}
-              style={
-                [
-                  {
-                    "height": 24,
-                  },
-                ]
-              }
-            />
           </View>
           <View
             accessibilityRole="none"
+            isFirstSectionItem={false}
             style={
               [
                 {
                   "display": "flex",
+                  "marginBottom": 24,
                 },
               ]
             }
@@ -422,17 +407,8 @@ exports[`<SearchFilter/> should render correctly 1`] = `
                   {
                     "backgroundColor": "#F1F1F4",
                     "height": 2,
+                    "marginBottom": 24,
                     "width": "100%",
-                  },
-                ]
-              }
-            />
-            <View
-              numberOfSpaces={6}
-              style={
-                [
-                  {
-                    "height": 24,
                   },
                 ]
               }
@@ -552,23 +528,15 @@ exports[`<SearchFilter/> should render correctly 1`] = `
                 </Text>
               </View>
             </View>
-            <View
-              numberOfSpaces={6}
-              style={
-                [
-                  {
-                    "height": 24,
-                  },
-                ]
-              }
-            />
           </View>
           <View
             accessibilityRole="none"
+            isFirstSectionItem={false}
             style={
               [
                 {
                   "display": "flex",
+                  "marginBottom": 24,
                 },
               ]
             }
@@ -579,17 +547,8 @@ exports[`<SearchFilter/> should render correctly 1`] = `
                   {
                     "backgroundColor": "#F1F1F4",
                     "height": 2,
+                    "marginBottom": 24,
                     "width": "100%",
-                  },
-                ]
-              }
-            />
-            <View
-              numberOfSpaces={6}
-              style={
-                [
-                  {
-                    "height": 24,
                   },
                 ]
               }
@@ -709,23 +668,15 @@ exports[`<SearchFilter/> should render correctly 1`] = `
                 </Text>
               </View>
             </View>
-            <View
-              numberOfSpaces={6}
-              style={
-                [
-                  {
-                    "height": 24,
-                  },
-                ]
-              }
-            />
           </View>
           <View
             accessibilityRole="none"
+            isFirstSectionItem={false}
             style={
               [
                 {
                   "display": "flex",
+                  "marginBottom": 24,
                 },
               ]
             }
@@ -736,17 +687,8 @@ exports[`<SearchFilter/> should render correctly 1`] = `
                   {
                     "backgroundColor": "#F1F1F4",
                     "height": 2,
+                    "marginBottom": 24,
                     "width": "100%",
-                  },
-                ]
-              }
-            />
-            <View
-              numberOfSpaces={6}
-              style={
-                [
-                  {
-                    "height": 24,
                   },
                 ]
               }
@@ -866,23 +808,15 @@ exports[`<SearchFilter/> should render correctly 1`] = `
                 </Text>
               </View>
             </View>
-            <View
-              numberOfSpaces={6}
-              style={
-                [
-                  {
-                    "height": 24,
-                  },
-                ]
-              }
-            />
           </View>
           <View
             accessibilityRole="none"
+            isFirstSectionItem={false}
             style={
               [
                 {
                   "display": "flex",
+                  "marginBottom": 24,
                 },
               ]
             }
@@ -893,17 +827,8 @@ exports[`<SearchFilter/> should render correctly 1`] = `
                   {
                     "backgroundColor": "#F1F1F4",
                     "height": 2,
+                    "marginBottom": 24,
                     "width": "100%",
-                  },
-                ]
-              }
-            />
-            <View
-              numberOfSpaces={6}
-              style={
-                [
-                  {
-                    "height": 24,
                   },
                 ]
               }
@@ -1022,16 +947,6 @@ exports[`<SearchFilter/> should render correctly 1`] = `
                 </Text>
               </View>
             </View>
-            <View
-              numberOfSpaces={6}
-              style={
-                [
-                  {
-                    "height": 24,
-                  },
-                ]
-              }
-            />
           </View>
         </View>
       </View>
@@ -1072,16 +987,6 @@ exports[`<SearchFilter/> should render correctly 1`] = `
       />
     </View>
   </View>
-  <View
-    numberOfSpaces={4}
-    style={
-      [
-        {
-          "height": 16,
-        },
-      ]
-    }
-  />
   <View
     isModal={false}
     style={
