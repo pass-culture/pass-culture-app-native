@@ -20,7 +20,7 @@ import { GeolocationBanner } from 'shared/Banners/GeolocationBanner'
 import { Offer } from 'shared/offer/types'
 import { InfoBanner } from 'ui/components/banners/InfoBanner'
 import { Error } from 'ui/svg/icons/Error'
-import { Spacer, Typo, getSpacing } from 'ui/theme'
+import { Typo, getSpacing } from 'ui/theme'
 
 interface SearchListHeaderProps extends ScrollViewProps {
   nbHits: number
@@ -79,8 +79,7 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
   return (
     <View testID="searchListHeader">
       {shouldDisplayGeolocationButton ? (
-        <React.Fragment>
-          <Spacer.Column numberOfSpaces={4} />
+        <Container>
           <GeolocationButtonContainer>
             <GeolocationBanner
               title="Géolocalise-toi"
@@ -89,7 +88,7 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
               onPress={onPress}
             />
           </GeolocationButtonContainer>
-        </React.Fragment>
+        </Container>
       ) : null}
       {shouldDisplayAvailableUserDataMessage ? (
         <BannerOfferNotPresentContainer
@@ -100,21 +99,22 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
         </BannerOfferNotPresentContainer>
       ) : null}
       {shouldDisplayVenuesPlaylist ? (
-        <React.Fragment>
-          <Spacer.Column numberOfSpaces={4} />
+        <Container>
           <VenuePlaylist
             venuePlaylistTitle={venuePlaylistTitle}
             venues={venues}
             isLocated={isLocated}
           />
-        </React.Fragment>
+        </Container>
       ) : null}
-      <Spacer.Column numberOfSpaces={4} />
-      <Title>{offerTitle}</Title>
-      <NumberOfResults nbHits={nbHits} />
+      <Container>
+        <Title>{offerTitle}</Title>
+        <NumberOfResults nbHits={nbHits} />
+      </Container>
     </View>
   )
 }
+const Container = styled.View({ marginTop: getSpacing(4) })
 
 const GeolocationButtonContainer = styled.View(({ theme }) => ({
   marginLeft: theme.contentPage.marginHorizontal,
