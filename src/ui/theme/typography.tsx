@@ -26,6 +26,7 @@ const createStyledText = (
   })<{ color?: TextColorKey }>(({ theme, color }) => ({
     ...theme.designSystem.typography[typographyStyle],
     color: theme.designSystem.color.text[color ?? DEFAULT_COLOR_TEXT],
+    direction: 'ltr',
   }))
 }
 
