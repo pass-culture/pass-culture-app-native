@@ -6,6 +6,7 @@ import {
   BookingReponse,
   BookOfferRequest,
   BookOfferResponse,
+  EligibilityType,
   FavoriteOfferResponse,
   OfferResponseV2,
   RecommendationApiParams,
@@ -81,7 +82,6 @@ type Props = {
 export type ICTAWordingAndAction = {
   modalToDisplay?: OfferModal
   wording?: string
-  onBeforeNavigate?: () => void
   navigateTo?: InternalNavigationProps['navigateTo']
   externalNav?: ExternalNavigationProps['externalNav']
   onPress?: () => void
@@ -121,7 +121,7 @@ export const getCtaWordingAndAction = ({
   const { setFreeOfferId } = freeOfferIdActions
 
   const enableBookingFreeOfferFifteenSixteen = featureFlags.enableBookingFreeOfferFifteenSixteen
-  const isUserFreeStatus = true // TODO(PC-35543) Use user?.eligibility === EligibilityType.free from API instead
+  const isUserFreeStatus = user?.eligibility === EligibilityType.free
   const isFreeOffer = getIsFreeOffer(offer)
   const isProfileIncomplete = getIsProfileIncomplete(user)
 
@@ -140,10 +140,10 @@ export const getCtaWordingAndAction = ({
 
   if (isEligibleFreeOffer15To16) {
     if (isProfileIncomplete) {
+      setFreeOfferId(offer.id)
       return {
         wording: 'Réserver l’offre',
         isDisabled: false,
-        onBeforeNavigate: () => setFreeOfferId(offer.id),
         navigateTo: { screen: 'SetName', params: { type: ProfileTypes.BOOKING_FREE_OFFER_15_16 } },
       }
     } else {
@@ -155,11 +155,6 @@ export const getCtaWordingAndAction = ({
     }
   }
 
-  // TODO(PC-35543) Check if the following problem is still present when we have the status EligibilityType.free
-  // Currently, when a 15-16 year-old user completes their profile (first name, last name, etc.), they are redirected to the offer with the disabled CTA.
-  // But this offer is inaccessible because their status is YoungStatusType.non_eligible, as they haven't yet obtained their new EligibilityType.free status, so this condition is met.
-  // When the backend has EligibilityType.free status, the problem should no longer occur.
-  // console.log(userStatus.statusType) et console.log(user?.eligibility)
   if (userStatus.statusType === YoungStatusType.non_eligible && !externalTicketOfficeUrl) {
     return {
       wording: isMovieScreeningOffer ? undefined : 'Réserver l’offre',

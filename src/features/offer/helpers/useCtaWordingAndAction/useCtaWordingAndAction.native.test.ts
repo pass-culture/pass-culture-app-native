@@ -1,6 +1,7 @@
 import mockdate from 'mockdate'
 
 import {
+  EligibilityType,
   OfferResponseV2,
   SearchGroupNameEnumv2,
   SubcategoryIdEnum,
@@ -10,6 +11,7 @@ import {
 import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
 import { PlaylistType } from 'features/offer/enums'
 import { offerResponseSnap as baseOffer } from 'features/offer/fixtures/offerResponse'
+import { freeOfferIdActions } from 'features/offer/store/freeOfferIdStore'
 import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics/provider'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
@@ -37,10 +39,12 @@ const defaultParameters = {
   isBookingLoading: false,
   booking: undefined,
   isDepositExpired: false,
-  featureFlags: { enableBookingFreeOfferFifteenSixteen: false }, // TODO(PC-35543) Change to true by default when new status from backend is use in isUserFreeStatus
+  featureFlags: { enableBookingFreeOfferFifteenSixteen: true },
 }
 
 jest.mock('libs/firebase/analytics/analytics')
+
+const setFreeOfferIdSpy = jest.spyOn(freeOfferIdActions, 'setFreeOfferId')
 
 describe('getCtaWordingAndAction', () => {
   describe('Logged out user', () => {
@@ -62,11 +66,11 @@ describe('getCtaWordingAndAction', () => {
     })
   })
 
-  describe('Free user', () => {
+  describe('Free offer', () => {
     it('should display "Réserver l’offre" wording with navigate to SetName screen and params type', () => {
-      const mockSetFreeOfferId = expect.any(Function)
       const result = getCtaWordingAndAction({
         ...defaultParameters,
+        user: { ...nonBeneficiaryUser, eligibility: EligibilityType.free },
         offer: buildOffer({ stocks: [{ ...baseOffer.stocks[0], price: 0 }] }),
         subcategory: buildSubcategory({}),
         featureFlags: { enableBookingFreeOfferFifteenSixteen: true },
@@ -76,14 +80,14 @@ describe('getCtaWordingAndAction', () => {
         isDisabled: false,
         wording: 'Réserver l’offre',
         navigateTo: { screen: 'SetName', params: { type: ProfileTypes.BOOKING_FREE_OFFER_15_16 } },
-        onBeforeNavigate: mockSetFreeOfferId,
       })
+      expect(setFreeOfferIdSpy).toHaveBeenCalledTimes(1)
     })
 
-    it('should display "Réserver l’offre" wording and open booking modale when user profile complete', () => {
+    it('should display "Réserver l’offre" wording and open booking modal when user profile complete', () => {
       const result = getCtaWordingAndAction({
         ...defaultParameters,
-        user: { ...beneficiaryUser },
+        user: { ...beneficiaryUser, eligibility: EligibilityType.free },
         offer: buildOffer({ stocks: [{ ...baseOffer.stocks[0], price: 0 }] }),
         subcategory: buildSubcategory({}),
         featureFlags: { enableBookingFreeOfferFifteenSixteen: true },
