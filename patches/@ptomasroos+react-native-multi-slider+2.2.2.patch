@@ -1,5 +1,5 @@
 diff --git a/node_modules/@ptomasroos/react-native-multi-slider/DefaultMarker.js b/node_modules/@ptomasroos/react-native-multi-slider/DefaultMarker.js
-index aeb46ff..cbd8591 100644
+index aeb46ff..5f58a18 100644
 --- a/node_modules/@ptomasroos/react-native-multi-slider/DefaultMarker.js
 +++ b/node_modules/@ptomasroos/react-native-multi-slider/DefaultMarker.js
 @@ -4,7 +4,7 @@ import { View, StyleSheet, Platform, TouchableHighlight } from 'react-native';
@@ -11,3 +11,33 @@ index aeb46ff..cbd8591 100644
          <View
            style={
              this.props.enabled
+@@ -36,13 +36,7 @@ const styles = StyleSheet.create({
+         borderWidth: 1,
+         borderColor: '#DDDDDD',
+         backgroundColor: '#FFFFFF',
+-        shadowColor: '#000000',
+-        shadowOffset: {
+-          width: 0,
+-          height: 3,
+-        },
+-        shadowRadius: 1,
+-        shadowOpacity: 0.2,
++        boxShadow: '0px 3px 1px rgba(0, 0, 0, 0.2)',
+       },
+       android: {
+         height: 12,
+@@ -57,13 +51,7 @@ const styles = StyleSheet.create({
+         borderWidth: 1,
+         borderColor: '#DDDDDD',
+         backgroundColor: '#FFFFFF',
+-        shadowColor: '#000000',
+-        shadowOffset: {
+-          width: 0,
+-          height: 3,
+-        },
+-        shadowRadius: 1,
+-        shadowOpacity: 0.2,
++        boxShadow: '0px 3px 1px rgba(0, 0, 0, 0.2)',
+       },
+     }),
+   },
