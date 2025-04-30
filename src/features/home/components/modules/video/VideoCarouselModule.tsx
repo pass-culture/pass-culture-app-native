@@ -22,7 +22,7 @@ import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useCategoryIdMapping } from 'libs/subcategories'
 import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
-import { CarouselBar } from 'ui/CarouselBar/CarouselBar'
+import { CarouselBar } from 'ui/components/CarouselBar/CarouselBar'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { getShadow, getSpacing } from 'ui/theme'
 import { colorMapping } from 'ui/theme/colorMapping'

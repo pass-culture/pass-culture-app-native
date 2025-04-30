@@ -17,7 +17,6 @@ describe('OfferImageCarousel', () => {
         onItemPress={jest.fn()}
         onLoad={jest.fn()}
         imageDimensions={mockOfferImageDimensions}
-        enabled
       />
     )
 
@@ -38,7 +37,6 @@ describe('OfferImageCarousel', () => {
         onItemPress={jest.fn()}
         onLoad={jest.fn()}
         imageDimensions={mockOfferImageDimensions}
-        enabled
       />
     )
 
@@ -62,7 +60,6 @@ describe('OfferImageCarousel', () => {
         onItemPress={mockOnItemPress}
         onLoad={jest.fn()}
         imageDimensions={mockOfferImageDimensions}
-        enabled
       />
     )
 
@@ -81,7 +78,6 @@ describe('OfferImageCarousel', () => {
         onItemPress={jest.fn()}
         onLoad={jest.fn()}
         imageDimensions={mockOfferImageDimensions}
-        enabled
       />
     )
 
