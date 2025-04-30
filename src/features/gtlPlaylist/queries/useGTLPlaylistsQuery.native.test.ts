@@ -1,7 +1,11 @@
 import { SubcategoriesResponseModelv2, VenueResponse, VenueTypeCodeKey } from 'api/gen'
 import { contentfulGtlPlaylistSnap } from 'features/gtlPlaylist/fixtures/contentfulGtlPlaylistSnap'
+import { useGTLPlaylistsQuery } from 'features/gtlPlaylist/queries/useGTLPlaylistsQuery'
+import { OffersModuleParameters } from 'features/home/types'
 import { fetchOffersByGTL } from 'libs/algolia/fetchAlgolia/fetchOffersByGTL'
+import { transformOfferHit } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
+import { PlaylistOffersParams } from 'libs/algolia/types'
 import { ContentfulLabelCategories } from 'libs/contentful/types'
 import { LocationMode, Position } from 'libs/location/types'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
@@ -10,8 +14,6 @@ import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, renderHook } from 'tests/utils'
 
 jest.mock('libs/network/NetInfoWrapper')
-
-import { useGTLPlaylists } from './useGTLPlaylists'
 
 const defaultVenue: VenueResponse = {
   name: 'Une librairie',
@@ -49,7 +51,7 @@ mockFetchOffersByGTL.mockResolvedValue([mockedAlgoliaResponse])
 
 jest.mock('libs/firebase/analytics/analytics')
 
-describe('useGTLPlaylists', () => {
+describe('useGTLPlaylistsQuery', () => {
   beforeEach(() => {
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
   })
@@ -61,7 +63,7 @@ describe('useGTLPlaylists', () => {
         contentfulGtlPlaylistSnap
       )
 
-      renderUseGtlPlaylists({ venue: defaultVenue })
+      renderUseGtlPlaylistsQuery({ venue: defaultVenue })
 
       await act(async () => {})
 
@@ -88,7 +90,7 @@ describe('useGTLPlaylists', () => {
         contentfulGtlPlaylistSnap
       )
 
-      const { result } = renderUseGtlPlaylists({ venue: defaultVenue })
+      const { result } = renderUseGtlPlaylistsQuery({ venue: defaultVenue })
 
       await act(async () => {})
 
@@ -116,7 +118,7 @@ describe('useGTLPlaylists', () => {
 
       mockFetchOffersByGTL.mockResolvedValueOnce([])
 
-      const { result } = renderUseGtlPlaylists({ venue: defaultVenue })
+      const { result } = renderUseGtlPlaylistsQuery({ venue: defaultVenue })
 
       await act(async () => {})
 
@@ -147,7 +149,7 @@ describe('useGTLPlaylists', () => {
         { ...mockedAlgoliaResponse, hits: [mockedAlgoliaResponse.hits[0]] },
       ])
 
-      const { result } = renderUseGtlPlaylists({ venue: defaultVenue })
+      const { result } = renderUseGtlPlaylistsQuery({ venue: defaultVenue })
 
       await act(async () => {})
 
@@ -168,7 +170,7 @@ describe('useGTLPlaylists', () => {
           contentfulGtlPlaylistSnap
         )
 
-        renderUseGtlPlaylists({ venue })
+        renderUseGtlPlaylistsQuery({ venue })
 
         await act(async () => {})
 
@@ -184,7 +186,7 @@ describe('useGTLPlaylists', () => {
         contentfulGtlPlaylistSnap
       )
 
-      renderUseGtlPlaylists({})
+      renderUseGtlPlaylistsQuery({})
 
       await act(async () => {})
 
@@ -226,7 +228,7 @@ describe('useGTLPlaylists', () => {
           contentfulGtlPlaylistSnap
         )
 
-        renderUseGtlPlaylists({ searchGroupLabel })
+        renderUseGtlPlaylistsQuery({ searchGroupLabel })
 
         await act(async () => {})
 
@@ -236,13 +238,53 @@ describe('useGTLPlaylists', () => {
   })
 })
 
-const renderUseGtlPlaylists = ({
+const mockAdaptPlaylistParameters = (parameters: OffersModuleParameters): PlaylistOffersParams => ({
+  offerParams: {
+    hitsPerPage: parameters.hitsPerPage,
+    offerCategories: [],
+    offerSubcategories: [],
+    offerIsDuo: false,
+    isDigital: false,
+    priceRange: [0, 300],
+    tags: [],
+    date: null,
+    timeRange: null,
+    query: '',
+    minBookingsThreshold: parameters.minBookingsThreshold,
+    offerGenreTypes: [],
+    offerGtlLabel: 'Romance',
+    offerGtlLevel: 3,
+  },
+  locationParams: {
+    selectedLocationMode: LocationMode.EVERYWHERE,
+    userLocation: null,
+    aroundMeRadius: 'all',
+    aroundPlaceRadius: 'all',
+  },
+})
+
+const transformHits = transformOfferHit()
+
+const renderUseGtlPlaylistsQuery = ({
   venue,
   searchGroupLabel,
 }: {
   venue?: VenueResponse
   searchGroupLabel?: ContentfulLabelCategories
 }) =>
-  renderHook(() => useGTLPlaylists({ venue, searchGroupLabel }), {
-    wrapper: ({ children }) => reactQueryProviderHOC(children),
-  })
+  renderHook(
+    () =>
+      useGTLPlaylistsQuery({
+        venue,
+        searchGroupLabel,
+        searchIndex: undefined,
+        userLocation: { latitude: 48, longitude: -1 },
+        selectedLocationMode: LocationMode.AROUND_ME,
+        isUserUnderage: false,
+        adaptPlaylistParameters: mockAdaptPlaylistParameters,
+        transformHits,
+      }),
+    {
+      wrapper: ({ children }) => reactQueryProviderHOC(children),
+    }
+  )

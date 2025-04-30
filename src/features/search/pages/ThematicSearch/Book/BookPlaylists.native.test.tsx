@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { gtlPlaylistAlgoliaSnapshot } from 'features/gtlPlaylist/fixtures/gtlPlaylistAlgoliaSnapshot'
-import * as useGTLPlaylists from 'features/gtlPlaylist/hooks/useGTLPlaylists'
+import * as useGTLPlaylists from 'features/gtlPlaylist/queries/useGTLPlaylistsQuery'
 import { BookPlaylists } from 'features/search/pages/ThematicSearch/Book/BookPlaylists'
 import { env } from 'libs/environment/__mocks__/env'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'

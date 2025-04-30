@@ -1,5 +1,5 @@
 import { contentfulGtlPlaylistSnap } from 'features/gtlPlaylist/fixtures/contentfulGtlPlaylistSnap'
-import { useGetGTLPlaylistConfigQuery } from 'features/gtlPlaylist/queries/useGetGTLPlaylistConfigQuery'
+import { useGetGTLPlaylistsConfigQuery } from 'features/gtlPlaylist/queries/useGetGTLPlaylistsConfigQuery'
 import { GtlPlaylistRequest } from 'features/gtlPlaylist/types'
 import { CONTENTFUL_BASE_URL } from 'libs/contentful/constants'
 import { mockServer } from 'tests/mswServer'
@@ -42,6 +42,6 @@ describe('useGetGTLPlaylistConfigQuery', () => {
 const renderUseGetGTLPlaylistConfigQuery = <TData = GtlPlaylistRequest[]>(
   select?: (data: GtlPlaylistRequest[]) => TData
 ) =>
-  renderHook(() => useGetGTLPlaylistConfigQuery(select), {
+  renderHook(() => useGetGTLPlaylistsConfigQuery(select), {
     wrapper: ({ children }) => reactQueryProviderHOC(children),
   })

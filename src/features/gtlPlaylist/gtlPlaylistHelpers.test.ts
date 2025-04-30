@@ -1,6 +1,7 @@
 import { VenueResponse, VenueTypeCodeKey } from 'api/gen'
 import { GtlPlaylistRequest } from 'features/gtlPlaylist/types'
-import { OffersModuleParameters, PlaylistOffersParams } from 'features/home/types'
+import { OffersModuleParameters } from 'features/home/types'
+import { PlaylistOffersParams } from 'libs/algolia/types'
 import { ContentfulLabelCategories, DisplayParametersFields } from 'libs/contentful/types'
 import { LocationMode } from 'libs/location/types'
 

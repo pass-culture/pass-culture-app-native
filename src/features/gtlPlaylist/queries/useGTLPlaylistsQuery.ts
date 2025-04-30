@@ -1,6 +1,6 @@
 import { VenueResponse } from 'api/gen'
-import { useGetGTLPlaylistConfigByLabelQuery } from 'features/gtlPlaylist/queries/useGetGTLPlaylistConfigQuery'
-import { useGetFormattedAndFilteredOffersByGtl } from 'features/gtlPlaylist/queries/useGetOffersByGtlQuery'
+import { useGetFormattedAndFilteredOffersByGtl } from 'features/gtlPlaylist/queries/useGetFormattedAndFilteredOffersByGtl'
+import { useGetGTLPlaylistsConfigByLabelQuery } from 'features/gtlPlaylist/queries/useGetGTLPlaylistConfigByLabelQuery'
 import { OffersModuleParameters } from 'features/home/types'
 import { AlgoliaOffer, HitOffer, PlaylistOffersParams } from 'libs/algolia/types'
 import { ContentfulLabelCategories } from 'libs/contentful/types'
@@ -18,8 +18,7 @@ type UseGTLPlaylistsProps = {
   transformHits: (hit: AlgoliaOffer<HitOffer>) => AlgoliaOffer<HitOffer>
 }
 
-// TODO(PC-35123): refactor this hook
-export const useGTLPlaylists = ({
+export const useGTLPlaylistsQuery = ({
   venue,
   searchIndex,
   searchGroupLabel,
@@ -29,14 +28,13 @@ export const useGTLPlaylists = ({
   adaptPlaylistParameters,
   transformHits,
 }: UseGTLPlaylistsProps) => {
-  const { data: gtlPlaylistsByLabel } = useGetGTLPlaylistConfigByLabelQuery(
+  const { data: filteredGtlPlaylistsConfig = [] } = useGetGTLPlaylistsConfigByLabelQuery(
     searchGroupLabel,
     venue?.venueTypeCode
   )
-
   return useGetFormattedAndFilteredOffersByGtl(
     {
-      filteredGtlPlaylistsConfig: gtlPlaylistsByLabel || [],
+      filteredGtlPlaylistsConfig,
       venue,
       searchIndex,
       userLocation,

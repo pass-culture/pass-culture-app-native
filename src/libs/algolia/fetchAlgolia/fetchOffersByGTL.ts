@@ -8,12 +8,12 @@ import { fetchOffersByGTLArgs } from 'libs/algolia/types'
 import { env } from 'libs/environment/env'
 import { Offer } from 'shared/offer/types'
 
-export function fetchOffersByGTL({
+export const fetchOffersByGTL = async ({
   parameters,
   buildLocationParameterParams,
   isUserUnderage,
   searchIndex,
-}: fetchOffersByGTLArgs) {
+}: fetchOffersByGTLArgs) => {
   // Build a query list to send to Algolia
   const queries = parameters.map(({ offerParams }) => ({
     indexName: searchIndex || env.ALGOLIA_TOP_OFFERS_INDEX_NAME,
@@ -34,8 +34,7 @@ export function fetchOffersByGTL({
 
   // Fetch all offers
   const allQueries = await multipleQueries<Offer>(queries)
-  const searchResponseQueries = allQueries.filter(searchResponsePredicate)
 
   // Assign offers to playlist list
-  return searchResponseQueries
+  return allQueries.filter(searchResponsePredicate)
 }

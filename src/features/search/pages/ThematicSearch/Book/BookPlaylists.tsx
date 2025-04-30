@@ -2,7 +2,7 @@ import React from 'react'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { GtlPlaylist } from 'features/gtlPlaylist/components/GtlPlaylist'
-import { useGTLPlaylists } from 'features/gtlPlaylist/hooks/useGTLPlaylists'
+import { useGTLPlaylistsQuery } from 'features/gtlPlaylist/queries/useGTLPlaylistsQuery'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { ThematicSearchSkeleton } from 'features/search/pages/ThematicSearch/ThematicSearchSkeleton'
 import { useAdaptOffersPlaylistParameters } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/helpers/useAdaptOffersPlaylistParameters'
@@ -30,7 +30,7 @@ export const BookPlaylists: React.FC = () => {
   const adaptPlaylistParameters = useAdaptOffersPlaylistParameters()
   const transformHits = useTransformOfferHits()
 
-  const { data: bookGtlPlaylists, isLoading: areGtlPlaylistsLoading } = useGTLPlaylists({
+  const { data: bookGtlPlaylists, isLoading: areGtlPlaylistsLoading } = useGTLPlaylistsQuery({
     searchIndex: isReplicaAlgoliaIndexActive
       ? env.ALGOLIA_OFFERS_INDEX_NAME_B
       : env.ALGOLIA_OFFERS_INDEX_NAME,
