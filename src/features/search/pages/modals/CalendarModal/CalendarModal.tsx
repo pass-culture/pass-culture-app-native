@@ -187,7 +187,7 @@ export const CalendarModal: FunctionComponent<CalendarModalProps> = ({
         }
         minDate={format(today, 'yyyy-MM-dd')}
         maxDate={format(twoYearsLater, 'yyyy-MM-dd')}
-        futureScrollRange={24} // 24 months to have scrolling
+        futureScrollRange={12} // 1 year to have scrolling
         pastScrollRange={
           searchState.beginningDatetime
             ? getPastScrollRange(new Date(searchState.beginningDatetime), today)
