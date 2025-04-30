@@ -36,10 +36,6 @@ const productionConfig: KnipConfig = {
   ignore: [
     ...(defaultConfig.ignore || []),
     'src/features/bookings/components/Ticket/ControlComponent.tsx',
-    'src/features/search/helpers/getMarkedDates/getMarkedDates.ts',
-    'src/features/search/helpers/getPastScrollRange/getPastScrollRange.ts',
-    'src/features/search/helpers/schema/calendarSchema/calendarSchema.ts',
-    'src/features/search/pages/modals/CalendarModal/CalendarModal.tsx',
     'src/libs/tick.ts', // only used in a codepush button appearing in cheatcodes, should be deleted soon
   ],
   rules: {
