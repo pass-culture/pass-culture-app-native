@@ -16,6 +16,7 @@ const queriesOnlyInUseQueryFunctions = require('./eslint-custom-rules/queries-on
 const queriesMustBeInQueriesFolder = require('./eslint-custom-rules/queries-must-be-in-queries-folder.js')
 const noFireEvent = require('./eslint-custom-rules/no-fireEvent')
 const noSpacer = require('./eslint-custom-rules/no-spacer')
+const noUselessHook = require('./eslint-custom-rules/no-useless-hook')
 
 module.exports = {
   'apostrophe-in-text': apostropheInText,
@@ -35,5 +36,6 @@ module.exports = {
   'queries-only-in-use-query-functions': queriesOnlyInUseQueryFunctions,
   'queries-must-be-in-queries-folder': queriesMustBeInQueriesFolder,
   'no-fireEvent': noFireEvent,
-  'no-spacer': noSpacer
+  'no-spacer': noSpacer,
+  'no-useless-hook': noUselessHook,
 }
