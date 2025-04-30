@@ -93,8 +93,8 @@ describe('CalendarModal', () => {
   it('should execute search with selected dates and close the modal when pressing search button', async () => {
     renderCalendarModal()
 
-    await user.press(screen.getByLabelText(' Saturday 14 June 2025 '))
-    await user.press(screen.getByLabelText(' Tuesday 17 June 2025 '))
+    await user.press(screen.getByLabelText(' Samedi 14 Juin 2025 '))
+    await user.press(screen.getByLabelText(' Mardi 17 Juin 2025 '))
 
     await user.press(screen.getByText('Rechercher'))
 
