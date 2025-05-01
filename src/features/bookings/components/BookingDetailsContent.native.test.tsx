@@ -27,18 +27,20 @@ const mockProperties = {
   hasActivationCode: false,
 }
 
+jest.mock('libs/subcategories/useSubcategory')
 jest.mock('libs/firebase/analytics/analytics')
 
+const mockUseSubcategoriesMapping = jest.fn()
+jest.mock('libs/subcategories/mappings', () => ({
+  useSubcategoriesMapping: jest.fn(() => mockUseSubcategoriesMapping()),
+}))
+
+const booking: BookingsResponse['ongoing_bookings'][number] = bookingsSnap.ongoing_bookings[0]
+
 describe('<BookingDetailsContent />', () => {
-  beforeEach(() => {
-    setFeatureFlags()
-  })
+  beforeEach(() => setFeatureFlags())
 
   it('should navigate to Venue page when venue isOpenToPublic', async () => {
-    const booking: BookingsResponse['ongoing_bookings'][number] = {
-      ...bookingsSnap.ongoing_bookings[0],
-    }
-
     renderBookingDetailsContent({ booking, properties: mockProperties })
 
     const venueBlock = screen.getByText('Maison de la Brique')
@@ -48,10 +50,6 @@ describe('<BookingDetailsContent />', () => {
   })
 
   it('should locConsultVenue when click on venue which is OpenToPublic', async () => {
-    const booking: BookingsResponse['ongoing_bookings'][number] = {
-      ...bookingsSnap.ongoing_bookings[0],
-    }
-
     renderBookingDetailsContent({ booking, properties: mockProperties })
 
     const venueBlock = screen.getByText('Maison de la Brique')
@@ -61,12 +59,13 @@ describe('<BookingDetailsContent />', () => {
   })
 
   it('should not navigate to Venue page when venue is not OpenToPublic', async () => {
-    const booking: BookingsResponse['ongoing_bookings'][number] = {
-      ...bookingsSnap.ongoing_bookings[0],
-    }
-    booking.stock.offer.venue.isOpenToPublic = false
+    const bookingWithVenueNotOpenedToPublic = booking
+    bookingWithVenueNotOpenedToPublic.stock.offer.venue.isOpenToPublic = false
 
-    renderBookingDetailsContent({ booking, properties: mockProperties })
+    renderBookingDetailsContent({
+      booking: bookingWithVenueNotOpenedToPublic,
+      properties: mockProperties,
+    })
 
     const venueBlock = screen.getByText('Maison de la Brique')
     await user.press(venueBlock)
@@ -75,19 +74,12 @@ describe('<BookingDetailsContent />', () => {
   })
 
   it('should display seeItineraryButton when offer is event and offer address is defined', async () => {
-    const booking: BookingsResponse['ongoing_bookings'][number] = {
-      ...bookingsSnap.ongoing_bookings[0],
-    }
-
     renderBookingDetailsContent({ booking, properties: { ...mockProperties, isEvent: true } })
 
     expect(screen.getByText('Voir l’itinéraire')).toBeOnTheScreen()
   })
 
   it('should display seeItineraryButton when offer is physical and not digital and offer address is defined', async () => {
-    const booking: BookingsResponse['ongoing_bookings'][number] = {
-      ...bookingsSnap.ongoing_bookings[0],
-    }
     renderBookingDetailsContent({
       booking,
       properties: { ...mockProperties, isEvent: false, isDigital: false, isPhysical: true },
@@ -97,9 +89,6 @@ describe('<BookingDetailsContent />', () => {
   })
 
   it('should not display seeItineraryButton when offer is physical and digital and offer address is defined', async () => {
-    const booking: BookingsResponse['ongoing_bookings'][number] = {
-      ...bookingsSnap.ongoing_bookings[0],
-    }
     renderBookingDetailsContent({
       booking,
       properties: { ...mockProperties, isEvent: false, isDigital: true, isPhysical: true },
@@ -121,10 +110,6 @@ describe('<BookingDetailsContent />', () => {
   })
 
   it('should logConsultItinerary when click on itinerary', async () => {
-    const booking: BookingsResponse['ongoing_bookings'][number] = {
-      ...bookingsSnap.ongoing_bookings[0],
-    }
-
     renderBookingDetailsContent({ booking, properties: mockProperties })
 
     const seeItineraryButton = screen.getByText('Voir l’itinéraire')
@@ -137,10 +122,6 @@ describe('<BookingDetailsContent />', () => {
   })
 
   it('should logCancelBooking when booking is canceled', async () => {
-    const booking: BookingsResponse['ongoing_bookings'][number] = {
-      ...bookingsSnap.ongoing_bookings[0],
-    }
-
     renderBookingDetailsContent({ booking, properties: mockProperties })
 
     const cancelBookingButton = screen.getByText('Annuler ma réservation')
@@ -150,16 +131,47 @@ describe('<BookingDetailsContent />', () => {
   })
 
   it('should display CancelModal when booking is canceled', async () => {
-    const booking: BookingsResponse['ongoing_bookings'][number] = {
-      ...bookingsSnap.ongoing_bookings[0],
-    }
-
     renderBookingDetailsContent({ booking, properties: mockProperties })
 
     const cancelBookingButton = screen.getByText('Annuler ma réservation')
     await user.press(cancelBookingButton)
 
     expect(screen.getByText('Retourner à ma réservation')).toBeOnTheScreen()
+  })
+
+  it('should log cancelBooking when cancel button is clicked', async () => {
+    renderBookingDetailsContent({ properties: mockProperties, booking })
+
+    const cancelButton = screen.getByText('Annuler ma réservation')
+    await user.press(cancelButton)
+
+    expect(analytics.logCancelBooking).toHaveBeenNthCalledWith(1, booking.stock.offer.id)
+  })
+
+  it('should trigger logEvent "ConsultAllOffer" when reaching the end', async () => {
+    renderBookingDetailsContent({ properties: mockProperties, booking })
+
+    const scrollView = await screen.findByTestId('BookingDetailsScrollView')
+
+    // Scroll a bit
+    user.scrollTo(scrollView, {
+      layoutMeasurement: { height: 1000, width: 400 },
+      contentSize: { height: 1900, width: 400 },
+      y: 400,
+    })
+
+    expect(analytics.logViewedBookingPage).not.toHaveBeenCalled()
+
+    // Scroll to the bottom
+    user.scrollTo(scrollView, {
+      layoutMeasurement: { height: 1000, width: 400 },
+      contentSize: { height: 1900, width: 400 },
+      y: 1900,
+    })
+
+    await screen.findByTestId('Annuler ma réservation')
+
+    expect(analytics.logBookingDetailsScrolledToBottom).toHaveBeenCalledTimes(1)
   })
 })
 
