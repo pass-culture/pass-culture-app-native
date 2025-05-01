@@ -1,11 +1,10 @@
-import { PlaylistOffersParams } from 'features/home/types'
 import * as captureAlgoliaError from 'libs/algolia/fetchAlgolia/AlgoliaError'
 import { buildOfferSearchParameters } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildOfferSearchParameters'
 import { offerAttributesToRetrieve } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/offerAttributesToRetrieve'
 import { fetchMultipleOffers } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/fetchMultipleOffers'
 import * as multipleQueries from 'libs/algolia/fetchAlgolia/multipleQueries'
 import { buildHitsPerPage } from 'libs/algolia/fetchAlgolia/utils'
-import { LocationMode } from 'libs/algolia/types'
+import { LocationMode, PlaylistOffersParams } from 'libs/algolia/types'
 import { env } from 'libs/environment/env'
 
 const mockMultipleQueries = jest.spyOn(multipleQueries, 'multipleQueries')

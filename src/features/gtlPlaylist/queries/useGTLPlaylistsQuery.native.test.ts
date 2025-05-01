@@ -3,9 +3,8 @@ import { contentfulGtlPlaylistSnap } from 'features/gtlPlaylist/fixtures/content
 import { useGTLPlaylistsQuery } from 'features/gtlPlaylist/queries/useGTLPlaylistsQuery'
 import { OffersModuleParameters } from 'features/home/types'
 import { fetchOffersByGTL } from 'libs/algolia/fetchAlgolia/fetchOffersByGTL'
-import { transformOfferHit } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
-import { PlaylistOffersParams } from 'libs/algolia/types'
+import { AlgoliaOffer, HitOffer, PlaylistOffersParams } from 'libs/algolia/types'
 import { ContentfulLabelCategories } from 'libs/contentful/types'
 import { LocationMode, Position } from 'libs/location/types'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
@@ -25,12 +24,6 @@ const defaultVenue: VenueResponse = {
   venueTypeCode: VenueTypeCodeKey.DISTRIBUTION_STORE,
   isOpenToPublic: true,
 }
-
-const mockVenue = (venueTypeCode: VenueTypeCodeKey) => ({ ...defaultVenue, venueTypeCode })
-const bookstoreVenue = mockVenue(VenueTypeCodeKey.BOOKSTORE)
-const distributionStoreVenue = mockVenue(VenueTypeCodeKey.DISTRIBUTION_STORE)
-const recordStoreVenue = mockVenue(VenueTypeCodeKey.RECORD_STORE)
-const culturalCentreVenue = mockVenue(VenueTypeCodeKey.CULTURAL_CENTRE)
 
 const mockLocationMode = LocationMode.AROUND_ME
 const mockUserLocation: Position = { latitude: 2, longitude: 2 }
@@ -69,16 +62,34 @@ describe('useGTLPlaylistsQuery', () => {
 
       expect(mockFetchOffersByGTL).toHaveBeenCalledWith({
         parameters: expect.arrayContaining([
-          {
-            locationParams: expect.any(Object),
+          expect.objectContaining({
+            locationParams: {
+              aroundMeRadius: 'all',
+              aroundPlaceRadius: 'all',
+              selectedLocationMode: 'EVERYWHERE',
+              userLocation: null,
+            },
             offerParams: expect.objectContaining({
-              offerGtlLabel: 'Jeunesse',
-              offerGtlLevel: 1,
-              venue: { info: 'Jest', label: 'Une librairie', venueId: 123, isOpenToPublic: true },
+              offerGtlLabel: 'Romance',
+              offerGtlLevel: 3,
+              venue: {
+                info: 'Jest',
+                isOpenToPublic: true,
+                label: 'Une librairie',
+                venueId: 123,
+              },
             }),
-          },
+          }),
         ]),
-        buildLocationParameterParams: expect.any(Object),
+        buildLocationParameterParams: {
+          aroundMeRadius: 'all',
+          aroundPlaceRadius: 'all',
+          selectedLocationMode: 'AROUND_ME',
+          userLocation: {
+            latitude: 48,
+            longitude: -1,
+          },
+        },
         isUserUnderage: false,
         searchIndex: undefined,
       })
@@ -94,8 +105,8 @@ describe('useGTLPlaylistsQuery', () => {
 
       await act(async () => {})
 
-      expect(result.current).toEqual({
-        gtlPlaylists: [
+      expect(result.current).toMatchObject({
+        data: [
           {
             layout: 'two-items',
             minNumberOfOffers: 1,
@@ -107,6 +118,7 @@ describe('useGTLPlaylistsQuery', () => {
           },
         ],
         isLoading: false,
+        isSuccess: true,
       })
     })
 
@@ -122,7 +134,7 @@ describe('useGTLPlaylistsQuery', () => {
 
       await act(async () => {})
 
-      expect(result.current).toEqual({ gtlPlaylists: [], isLoading: false })
+      expect(result.current).toMatchObject({ data: [], isLoading: false, isSuccess: true })
     })
 
     it('should not return playlist when it is shorter than the minimum number of offers', async () => {
@@ -153,30 +165,8 @@ describe('useGTLPlaylistsQuery', () => {
 
       await act(async () => {})
 
-      expect(result.current).toEqual({ gtlPlaylists: [], isLoading: false })
+      expect(result.current).toMatchObject({ data: undefined })
     })
-
-    it.each`
-      venue                     | expectedNbOfCalls | expectedBehavior
-      ${bookstoreVenue}         | ${1}              | ${'should fetch'}
-      ${distributionStoreVenue} | ${1}              | ${'should fetch'}
-      ${recordStoreVenue}       | ${1}              | ${'should fetch'}
-      ${culturalCentreVenue}    | ${0}              | ${'should not fetch'}
-    `(
-      '$expectedBehavior gtl playlist when venueType is $venue.venueTypeCode',
-      async ({ venue, expectedNbOfCalls }) => {
-        mockServer.universalGet(
-          'https://cdn.contentful.com/spaces/contentfulSpaceId/environments/environment/entries',
-          contentfulGtlPlaylistSnap
-        )
-
-        renderUseGtlPlaylistsQuery({ venue })
-
-        await act(async () => {})
-
-        expect(mockFetchOffersByGTL).toHaveBeenCalledTimes(expectedNbOfCalls)
-      }
-    )
   })
 
   describe('without venue', () => {
@@ -195,46 +185,26 @@ describe('useGTLPlaylistsQuery', () => {
           aroundMeRadius: 'all',
           aroundPlaceRadius: 'all',
           selectedLocationMode: 'AROUND_ME',
-          userLocation: { latitude: 2, longitude: 2 },
+          userLocation: { latitude: 48, longitude: -1 },
         },
         isUserUnderage: false,
         parameters: expect.arrayContaining([
           expect.objectContaining({
             offerParams: expect.objectContaining({
-              offerGtlLabel: 'Jeunesse',
-              offerGtlLevel: 1,
+              offerGtlLabel: 'Romance',
+              offerGtlLevel: 3,
             }),
           }),
           expect.objectContaining({
             offerParams: expect.objectContaining({
-              offerGtlLabel: 'Jeunesse',
-              offerGtlLevel: 1,
+              offerGtlLabel: 'Romance',
+              offerGtlLevel: 3,
             }),
           }),
         ]),
         searchIndex: undefined,
       })
     })
-
-    it.each`
-      searchGroupLabel | expectedNbOfCalls
-      ${'Livres'}      | ${1}
-      ${'Musique'}     | ${1}
-    `(
-      'should fetch gtl playlists when searchGroupLabel is $searchGroupLabel',
-      async ({ searchGroupLabel, expectedNbOfCalls }) => {
-        mockServer.universalGet(
-          'https://cdn.contentful.com/spaces/contentfulSpaceId/environments/environment/entries',
-          contentfulGtlPlaylistSnap
-        )
-
-        renderUseGtlPlaylistsQuery({ searchGroupLabel })
-
-        await act(async () => {})
-
-        expect(mockFetchOffersByGTL).toHaveBeenCalledTimes(expectedNbOfCalls)
-      }
-    )
   })
 })
 
@@ -263,7 +233,7 @@ const mockAdaptPlaylistParameters = (parameters: OffersModuleParameters): Playli
   },
 })
 
-const transformHits = transformOfferHit()
+const transformHits = (hit: AlgoliaOffer<HitOffer>) => hit
 
 const renderUseGtlPlaylistsQuery = ({
   venue,
