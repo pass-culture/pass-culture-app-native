@@ -347,7 +347,6 @@ function typedEntries<T extends Record<string, unknown>>(obj: T): Entries<T> {
   return Object.entries(obj) as Entries<T>
 }
 
-// voir si je peux passer les subcategories et les facets en props et donc transformer ce hook en fonction
 export const useNativeCategories = (searchGroup?: SearchGroupNameEnumv2) => {
   const { data: subcategories } = useSubcategories()
   const { facets } = useSearchResults()

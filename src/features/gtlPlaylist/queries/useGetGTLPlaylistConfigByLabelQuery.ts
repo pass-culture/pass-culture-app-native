@@ -7,6 +7,6 @@ export const useGetGTLPlaylistsConfigByLabelQuery = (
   searchGroupLabel?: ContentfulLabelCategories,
   venueTypeCode?: VenueTypeCodeKey | null
 ) =>
-  useGetGTLPlaylistsConfigQuery((data) =>
+  useGetGTLPlaylistsConfigQuery({ searchGroupLabel, venueTypeCode }, (data) =>
     filterGtlPlaylistConfigByLabel(data, venueTypeCode, searchGroupLabel)
   )
