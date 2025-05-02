@@ -71,19 +71,26 @@ describe('<SearchList />', () => {
 
 describe('getHeaderSize', () => {
   it.each`
-    userData                    | isGeolocated | hasVenuesPlaylist | windowWidth | expected
-    ${undefined}                | ${true}      | ${false}          | ${465}      | ${112}
-    ${undefined}                | ${false}     | ${false}          | ${465}      | ${218}
-    ${undefined}                | ${false}     | ${false}          | ${464}      | ${242}
-    ${undefined}                | ${false}     | ${true}           | ${464}      | ${539}
-    ${undefined}                | ${true}      | ${true}           | ${464}      | ${409}
-    ${[{ message: 'coucou ' }]} | ${false}     | ${false}          | ${464}      | ${184}
+    userData                    | isGeolocated | hasVenuesPlaylist | windowWidth | hasArtistsPlaylist | expected
+    ${undefined}                | ${true}      | ${false}          | ${465}      | ${false}           | ${112}
+    ${undefined}                | ${false}     | ${false}          | ${465}      | ${false}           | ${218}
+    ${undefined}                | ${false}     | ${false}          | ${464}      | ${false}           | ${242}
+    ${undefined}                | ${false}     | ${true}           | ${464}      | ${false}           | ${539}
+    ${undefined}                | ${true}      | ${true}           | ${464}      | ${false}           | ${409}
+    ${[{ message: 'coucou ' }]} | ${false}     | ${false}          | ${464}      | ${false}           | ${184}
+    ${[{ message: 'coucou ' }]} | ${false}     | ${true}           | ${464}      | ${true}            | ${781}
   `(
     'getHeaderSize should render correct header size',
-    ({ userData, isGeolocated, hasVenuesPlaylist, windowWidth, expected }) => {
-      expect(getHeaderSize({ userData, isGeolocated, hasVenuesPlaylist, windowWidth })).toBe(
-        expected
-      )
+    ({ userData, isGeolocated, hasVenuesPlaylist, windowWidth, hasArtistsPlaylist, expected }) => {
+      expect(
+        getHeaderSize({
+          userData,
+          isGeolocated,
+          hasVenuesPlaylist,
+          windowWidth,
+          hasArtistsPlaylist,
+        })
+      ).toBe(expected)
     }
   )
 })

@@ -1,5 +1,5 @@
 import React from 'react'
-import { View } from 'react-native'
+import { StyleProp, View, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
 import { NumberOfResults } from 'features/search/components/NumberOfResults/NumberOfResults'
@@ -12,11 +12,12 @@ const TITLE = 'Les artistes'
 
 type ArtistSectionProps = {
   artists: Artist[]
+  style?: StyleProp<ViewStyle>
 }
 
-export const ArtistSection = ({ artists }: ArtistSectionProps) => {
+export const ArtistSection = ({ artists, style }: ArtistSectionProps) => {
   return (
-    <View>
+    <View style={style}>
       <Title>{TITLE}</Title>
       <NumberOfResults nbHits={artists.length} />
       <AvatarList
