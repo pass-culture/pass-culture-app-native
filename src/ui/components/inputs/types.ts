@@ -14,6 +14,7 @@ type InputProps = {
 
 type CustomTextInputProps = InputProps & {
   isError?: boolean
+  format?: string
   disabled?: boolean
   containerStyle?: ViewStyle
   isRequiredField?: boolean
@@ -30,6 +31,7 @@ type CustomTextInputProps = InputProps & {
 
 type CustomSearchInputProps = InputProps & {
   inputHeight?: 'small' | 'regular' | 'tall'
+  format?: string
   LeftIcon?: React.FC
   onPressRightIcon?: () => void
   searchInputID?: string

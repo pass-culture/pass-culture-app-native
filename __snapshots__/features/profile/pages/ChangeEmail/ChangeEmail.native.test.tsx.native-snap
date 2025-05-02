@@ -346,6 +346,7 @@ exports[`<ChangeEmail/> should render correctly 1`] = `
                       "alignItems": "flex-end",
                       "flexDirection": "row",
                       "justifyContent": "space-between",
+                      "marginBottom": 8,
                       "width": "100%",
                     },
                   ]
@@ -368,15 +369,29 @@ exports[`<ChangeEmail/> should render correctly 1`] = `
               </View>
             </View>
             <View
-              numberOfSpaces={2}
               style={
                 [
                   {
-                    "height": 8,
+                    "marginBottom": 8,
                   },
                 ]
               }
-            />
+            >
+              <Text
+                style={
+                  [
+                    {
+                      "color": "#696a6f",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 19.2,
+                    },
+                  ]
+                }
+              >
+                Exemple : tonadresse@email.com
+              </Text>
+            </View>
             <View
               height="small"
               isDisabled={true}

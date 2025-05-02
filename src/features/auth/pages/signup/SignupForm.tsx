@@ -28,7 +28,7 @@ import {
 import { RightButtonText } from 'ui/components/headers/RightButtonText'
 import { useModal } from 'ui/components/modals/useModal'
 import { Page } from 'ui/pages/Page'
-import { getSpacing, Spacer } from 'ui/theme'
+import { getSpacing } from 'ui/theme'
 import { Helmet } from 'ui/web/global/Helmet'
 
 export const SignupForm: FunctionComponent = () => {
@@ -172,7 +172,6 @@ export const SignupForm: FunctionComponent = () => {
       </PageHeaderWithoutPlaceholder>
       <StyledScrollView>
         <Placeholder height={headerHeight} />
-        <Spacer.Column numberOfSpaces={8} />
         {stepConfig ? (
           <React.Fragment>
             <stepConfig.Component
@@ -210,4 +209,5 @@ const StyledScrollView = styled.ScrollView.attrs(({ theme }) => ({
 
 const Placeholder = styled.View<{ height: number }>(({ height }) => ({
   height,
+  marginBottom: getSpacing(8),
 }))

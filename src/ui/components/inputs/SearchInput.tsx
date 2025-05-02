@@ -62,6 +62,11 @@ const WithRefSearchInput: React.ForwardRefRenderFunction<RNTextInput, SearchInpu
           </FlexInputLabel>
         </StyledView>
       ) : null}
+      {props.format ? (
+        <StyledView>
+          <TextFormat>{`Exemple\u00a0: ${props.format}`}</TextFormat>
+        </StyledView>
+      ) : null}
       <StyledInputContainer
         inputHeight={props.inputHeight}
         isFocus={isFocus}
@@ -124,3 +129,7 @@ const StyledInputContainer = styled(InputContainer)({
 const StyledView = styled.View({
   marginBottom: getSpacing(2),
 })
+
+const TextFormat = styled(Typo.BodyAccentXs)(({ theme }) => ({
+  color: theme.designSystem.color.text.subtle,
+}))
