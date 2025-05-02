@@ -677,7 +677,7 @@ describe('BookingDetails', () => {
         },
       })
 
-      await user.press(screen.getByText(organizerEmail))
+      await user.press(screen.getByText('Contacter l’organisateur'))
 
       expect(analytics.logClickEmailOrganizer).toHaveBeenCalledTimes(1)
 
