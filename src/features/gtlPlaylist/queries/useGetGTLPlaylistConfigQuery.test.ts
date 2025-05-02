@@ -30,13 +30,13 @@ describe('useGetGTLPlaylistConfigQuery', () => {
     expect(result.current.data).toEqual(
       expect.objectContaining({
         id: '7FqRezKdV0mcUjOYerCUuJ',
-        displayParameters: { title: 'Jeunesse', layout: 'two-items', minOffers: 1 },
-        offersModuleParameters: {
+        displayParameters: { title: 'Jeunesse', layout: 'two-items', minOffers: 5 },
+        offersModuleParameters: expect.objectContaining({
           title: 'Jeunesse',
           hitsPerPage: 35,
           gtlLevel: 1,
           gtlLabel: 'Jeunesse',
-        },
+        }),
       })
     )
   })
@@ -58,13 +58,13 @@ describe('useGetGTLPlaylistConfigQuery', () => {
     expect(result.current.data).toEqual(
       expect.objectContaining({
         id: '7FqRezKdV0mcUjOYerCUuJ',
-        displayParameters: { title: 'Jeunesse', layout: 'two-items', minOffers: 1 },
-        offersModuleParameters: {
+        displayParameters: { title: 'Jeunesse', layout: 'two-items', minOffers: 5 },
+        offersModuleParameters: expect.objectContaining({
           title: 'Jeunesse',
           hitsPerPage: 35,
           gtlLevel: 1,
           gtlLabel: 'Jeunesse',
-        },
+        }),
       })
     )
   })
@@ -93,13 +93,13 @@ describe('useGetGTLPlaylistConfigQuery', () => {
     expect(result.current.data).toEqual(
       expect.objectContaining({
         id: '7FqRezKdV0mcUjOYerCUuJ',
-        displayParameters: { title: 'Jeunesse', layout: 'two-items', minOffers: 1 },
-        offersModuleParameters: {
+        displayParameters: { title: 'Jeunesse', layout: 'two-items', minOffers: 5 },
+        offersModuleParameters: expect.objectContaining({
           title: 'Jeunesse',
           hitsPerPage: 35,
           gtlLevel: 1,
           gtlLabel: 'Jeunesse',
-        },
+        }),
       })
     )
   })

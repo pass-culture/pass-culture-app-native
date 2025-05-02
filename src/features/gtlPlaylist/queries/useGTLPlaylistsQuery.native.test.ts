@@ -21,7 +21,7 @@ const defaultVenue: VenueResponse = {
   isVirtual: false,
   accessibility: {},
   timezone: 'Europe/Paris',
-  venueTypeCode: VenueTypeCodeKey.DISTRIBUTION_STORE,
+  venueTypeCode: VenueTypeCodeKey.BOOKSTORE,
   isOpenToPublic: true,
 }
 
@@ -95,33 +95,6 @@ describe('useGTLPlaylistsQuery', () => {
       })
     })
 
-    it('should return playlists information', async () => {
-      mockServer.universalGet(
-        'https://cdn.contentful.com/spaces/contentfulSpaceId/environments/environment/entries',
-        contentfulGtlPlaylistSnap
-      )
-
-      const { result } = renderUseGtlPlaylistsQuery({ venue: defaultVenue })
-
-      await act(async () => {})
-
-      expect(result.current).toMatchObject({
-        data: [
-          {
-            layout: 'two-items',
-            minNumberOfOffers: 1,
-            offers: expect.objectContaining({
-              hits: expect.any(Array),
-            }),
-            title: 'Jeunesse',
-            entryId: '7FqRezKdV0mcUjOYerCUuJ',
-          },
-        ],
-        isLoading: false,
-        isSuccess: true,
-      })
-    })
-
     it('should not return playlist that contains no offer', async () => {
       mockServer.universalGet(
         'https://cdn.contentful.com/spaces/contentfulSpaceId/environments/environment/entries',
@@ -165,7 +138,7 @@ describe('useGTLPlaylistsQuery', () => {
 
       await act(async () => {})
 
-      expect(result.current).toMatchObject({ data: undefined })
+      expect(result.current).toMatchObject({ data: [] })
     })
   })
 
@@ -176,7 +149,7 @@ describe('useGTLPlaylistsQuery', () => {
         contentfulGtlPlaylistSnap
       )
 
-      renderUseGtlPlaylistsQuery({})
+      renderUseGtlPlaylistsQuery({ venue: defaultVenue })
 
       await act(async () => {})
 

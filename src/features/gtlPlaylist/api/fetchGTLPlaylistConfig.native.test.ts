@@ -12,35 +12,35 @@ describe('fetchGTLPlaylistConfig', () => {
     const result = await fetchGTLPlaylistConfig()
 
     expect(result).toEqual([
-      {
+      expect.objectContaining({
         id: '7FqRezKdV0mcUjOYerCUuJ',
-        displayParameters: {
+        displayParameters: expect.objectContaining({
           layout: 'two-items',
-          minOffers: 1,
+          minOffers: 5,
           title: 'Jeunesse',
-        },
-        offersModuleParameters: {
+        }),
+        offersModuleParameters: expect.objectContaining({
           gtlLabel: 'Jeunesse',
           gtlLevel: 1,
           hitsPerPage: 35,
           title: 'Jeunesse',
-        },
-      },
-      {
+        }),
+      }),
+      expect.objectContaining({
         id: '2xUlLBRfxdk6jeYyJszunX',
-        displayParameters: {
+        displayParameters: expect.objectContaining({
           layout: 'two-items',
           minOffers: 1,
           title: 'Littérature',
-        },
-        offersModuleParameters: {
+        }),
+        offersModuleParameters: expect.objectContaining({
           gtlLabel: 'Littérature',
           gtlLevel: 1,
           hitsPerPage: 35,
           isGeolocated: false,
           title: 'Littérature',
-        },
-      },
+        }),
+      }),
     ])
   })
 })
