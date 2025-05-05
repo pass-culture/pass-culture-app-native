@@ -2,6 +2,7 @@ import { useNavigation } from '@react-navigation/native'
 import React, { useCallback, useMemo } from 'react'
 import { useForm } from 'react-hook-form'
 import { UseQueryResult } from 'react-query'
+import styled from 'styled-components/native'
 
 import { api } from 'api/api'
 import { ApiError } from 'api/ApiError'
@@ -19,7 +20,7 @@ import { Form } from 'ui/components/Form'
 import { isEmailValid } from 'ui/components/inputs/emailCheck'
 import { isValueEmpty } from 'ui/components/inputs/helpers'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
-import { Spacer, Typo } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type FormValues = {
@@ -62,25 +63,34 @@ export const ForgottenPassword = () => {
         />
       ) : null}
       <Typo.Title3 {...getHeadingAttrs(2)}>Mot de passe oublié&nbsp;?</Typo.Title3>
-      <Spacer.Column numberOfSpaces={2} />
-      <Typo.Body>
-        Saisis ton adresse e-mail pour recevoir un lien qui te permettra de réinitialiser ton mot de
-        passe&nbsp;!
-      </Typo.Body>
-      <Spacer.Column numberOfSpaces={8} />
+      <Container>
+        <Typo.Body>
+          Saisis ton adresse e-mail pour recevoir un lien qui te permettra de réinitialiser ton mot
+          de passe&nbsp;!
+        </Typo.Body>
+      </Container>
       <Form.MaxWidth>
         <EmailInputController control={control} name="email" autoFocus />
-        <Spacer.Column numberOfSpaces={8} />
-        <ButtonPrimary
-          wording="Valider"
-          onPress={settings?.isRecaptchaEnabled ? openReCaptchaChallenge : requestPasswordReset}
-          isLoading={isDoingReCaptchaChallenge || isFetching || areSettingsLoading}
-          disabled={shouldDisableValidateButton}
-        />
+        <ButtonContainer>
+          <ButtonPrimary
+            wording="Valider"
+            onPress={settings?.isRecaptchaEnabled ? openReCaptchaChallenge : requestPasswordReset}
+            isLoading={isDoingReCaptchaChallenge || isFetching || areSettingsLoading}
+            disabled={shouldDisableValidateButton}
+          />
+        </ButtonContainer>
       </Form.MaxWidth>
     </SecondaryPageWithBlurHeader>
   )
 }
+const ButtonContainer = styled.View({
+  marginTop: getSpacing(8),
+})
+
+const Container = styled.View({
+  marginTop: getSpacing(2),
+  marginBottom: getSpacing(8),
+})
 
 const useForgottenPasswordForm = (settings: UseQueryResult<SettingsResponse, unknown>['data']) => {
   const { navigate } = useNavigation<UseNavigationType>()

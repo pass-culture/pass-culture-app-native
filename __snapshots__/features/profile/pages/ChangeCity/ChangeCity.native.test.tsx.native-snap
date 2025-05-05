@@ -267,30 +267,30 @@ exports[`ChangeCity should render correctly 1`] = `
                 }
               }
             />
-            <Text
+            <View
               style={
                 [
                   {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": 19,
-                    "lineHeight": 30.4,
+                    "marginBottom": 20,
                   },
                 ]
               }
             >
-              Renseigne ta ville de résidence
-            </Text>
-            <View
-              numberOfSpaces={5}
-              style={
-                [
-                  {
-                    "height": 20,
-                  },
-                ]
-              }
-            />
+              <Text
+                style={
+                  [
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 19,
+                      "lineHeight": 30.4,
+                    },
+                  ]
+                }
+              >
+                Renseigne ta ville de résidence
+              </Text>
+            </View>
             <View
               style={
                 [
@@ -348,6 +348,30 @@ exports[`ChangeCity should render correctly 1`] = `
                       </Text>
                     </View>
                   </View>
+                </View>
+                <View
+                  style={
+                    [
+                      {
+                        "marginBottom": 8,
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#696a6f",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 19.2,
+                        },
+                      ]
+                    }
+                  >
+                    Exemple : 75017
+                  </Text>
                 </View>
                 <View
                   height="small"

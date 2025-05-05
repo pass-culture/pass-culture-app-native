@@ -350,6 +350,30 @@ exports[`<SetCity/> should render correctly 1`] = `
                   </View>
                 </View>
                 <View
+                  style={
+                    [
+                      {
+                        "marginBottom": 8,
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#696a6f",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 19.2,
+                        },
+                      ]
+                    }
+                  >
+                    Exemple : 75017
+                  </Text>
+                </View>
+                <View
                   height="small"
                   isDisabled={false}
                   isError={false}

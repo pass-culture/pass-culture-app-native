@@ -32,9 +32,10 @@ import { SUGGESTION_DELAY_IN_MS } from 'ui/components/inputs/EmailInputWithSpell
 import { InputError } from 'ui/components/inputs/InputError'
 import { SeparatorWithText } from 'ui/components/SeparatorWithText'
 import { SNACK_BAR_TIME_OUT_LONG, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
 import { Key } from 'ui/svg/icons/Key'
-import { Spacer, Typo } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type LoginFormData = {
@@ -207,8 +208,9 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
         />
       ) : null}
       <SecondaryPageWithBlurHeader title="Connexion" shouldDisplayBackButton>
-        <Typo.Title3 {...getHeadingAttrs(2)}>{titlePage}</Typo.Title3>
-        <Spacer.Column numberOfSpaces={2} />
+        <TitleContainer>
+          <Typo.Title3 {...getHeadingAttrs(2)}>{titlePage}</Typo.Title3>
+        </TitleContainer>
         <Form.MaxWidth>
           <InputError
             visible={!!errorMessage}
@@ -216,16 +218,15 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
             numberOfSpacesTop={5}
             centered
           />
-          <Spacer.Column numberOfSpaces={7} />
-          <EmailInputController name="email" control={control} isRequiredField />
-          <Spacer.Column numberOfSpaces={6} />
+          <Container>
+            <EmailInputController name="email" control={control} isRequiredField />
+          </Container>
           <PasswordInputController
             name="password"
             control={control}
             onSubmitEditing={handleSubmit(onSubmit)}
             isRequiredField
           />
-          <Spacer.Column numberOfSpaces={5} />
           <ButtonContainer>
             <ButtonTertiaryBlack
               wording="Mot de passe oublié&nbsp;?"
@@ -234,22 +235,18 @@ export const Login: FunctionComponent<Props> = memo(function Login(props) {
               inline
             />
           </ButtonContainer>
-          <Spacer.Column numberOfSpaces={8} />
           <ButtonPrimary
             wording="Se connecter"
             onPress={handleSubmit(onSubmit)}
             disabled={shouldDisableLoginButton}
           />
           {enableGoogleSSO ? (
-            <React.Fragment>
-              <Spacer.Column numberOfSpaces={4} />
+            <StyledViewGap gap={4}>
               <StyledSeparatorWithText label="ou" />
-              <Spacer.Column numberOfSpaces={4} />
               <SSOButtonBase type="login" onSuccess={signIn} />
-              <Spacer.Column numberOfSpaces={10} />
-            </React.Fragment>
+            </StyledViewGap>
           ) : (
-            <Spacer.Column numberOfSpaces={8} />
+            <NoSSOSpace />
           )}
         </Form.MaxWidth>
         <SignUpButton onAdditionalPress={onLogSignUpAnalytics} />
@@ -262,7 +259,14 @@ const ButtonContainer = styled.View(({ theme }) => ({
   flexDirection: 'row',
   width: '100%',
   maxWidth: theme.buttons.maxWidth,
+  marginTop: getSpacing(5),
+  marginBottom: getSpacing(8),
 }))
+
+const Container = styled.View({
+  marginTop: getSpacing(7),
+  marginBottom: getSpacing(6),
+})
 
 const SignUpButton = styled(AuthenticationButton).attrs(({ theme }) => ({
   linkColor: theme.designSystem.color.text.brandSecondary,
@@ -272,3 +276,9 @@ const SignUpButton = styled(AuthenticationButton).attrs(({ theme }) => ({
 const StyledSeparatorWithText = styled(SeparatorWithText).attrs(({ theme }) => ({
   backgroundColor: theme.designSystem.separator.color.subtle,
 }))``
+
+const TitleContainer = styled.View({ marginBottom: getSpacing(2) })
+
+const StyledViewGap = styled(ViewGap)({ marginTop: getSpacing(4), marginBottom: getSpacing(10) })
+
+const NoSSOSpace = styled.View({ height: getSpacing(8) })

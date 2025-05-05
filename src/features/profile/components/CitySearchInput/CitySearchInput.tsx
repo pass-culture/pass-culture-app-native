@@ -125,6 +125,7 @@ export const CitySearchInput = ({ city, onCitySelected }: CitySearchInputProps) 
                 }}
                 value={value}
                 label="Indique ton code postal et choisis ta ville"
+                format="75017"
                 placeholder="Ex&nbsp;: 75017"
                 onPressRightIcon={resetSearch}
                 keyboardType="number-pad"

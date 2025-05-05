@@ -27,7 +27,7 @@ import { AppModal } from 'ui/components/modals/AppModal'
 import { Separator } from 'ui/components/Separator'
 import { Close } from 'ui/svg/icons/Close'
 import { Error } from 'ui/svg/icons/Error'
-import { Spacer, getSpacing } from 'ui/theme'
+import { getSpacing } from 'ui/theme'
 
 type PriceModalFormData = {
   minPrice: string
@@ -304,66 +304,66 @@ export const PriceModal: FunctionComponent<PriceModalProps> = ({
           filterBehaviour={filterBehaviour}
         />
       }>
-      <Spacer.Column numberOfSpaces={6} />
-      <Form.MaxWidth>
-        {isLoggedInAndBeneficiary ? (
-          <React.Fragment>
-            <InfoBanner message={bannerTitle} icon={Error} testID="creditBanner" />
-            <Spacer.Column numberOfSpaces={6} />
-          </React.Fragment>
-        ) : null}
-        <Controller
-          control={control}
-          name="isOnlyFreeOffersSearch"
-          render={({ field: { value } }) => (
-            <FilterSwitchWithLabel
-              isActive={value}
-              toggle={toggleOnlyFreeOffersSearch}
-              label="Uniquement les offres gratuites"
-              testID="onlyFreeOffers"
-            />
-          )}
-        />
-        <StyledSeparator />
-        {isLoggedInAndBeneficiary ? (
+      <FormContainer isKeyboardOpen={isKeyboardOpen}>
+        <Form.MaxWidth>
+          {isLoggedInAndBeneficiary ? (
+            <Container>
+              <InfoBanner message={bannerTitle} icon={Error} testID="creditBanner" />
+            </Container>
+          ) : null}
           <Controller
             control={control}
-            name="isLimitCreditSearch"
+            name="isOnlyFreeOffersSearch"
             render={({ field: { value } }) => (
-              <React.Fragment>
-                <FilterSwitchWithLabel
-                  isActive={value}
-                  toggle={toggleLimitCreditSearch}
-                  label="Limiter la recherche à mon crédit"
-                  testID="limitCreditSearch"
-                />
-                <StyledSeparator />
-              </React.Fragment>
+              <FilterSwitchWithLabel
+                isActive={value}
+                toggle={toggleOnlyFreeOffersSearch}
+                label="Uniquement les offres gratuites"
+                testID="onlyFreeOffers"
+              />
             )}
           />
-        ) : null}
-        <PriceInputController
-          control={control}
-          name="minPrice"
-          label={`Prix minimum (en\u00a0${currencyFull})`}
-          placeholder="0"
-          accessibilityId={minPriceInputId}
-          testID="Entrée pour le prix minimum"
-          isDisabled={getValues('isOnlyFreeOffersSearch')}
-        />
-        <Spacer.Column numberOfSpaces={6} />
-        <PriceInputController
-          control={control}
-          name="maxPrice"
-          label={`Prix maximum (en\u00a0${currencyFull})`}
-          placeholder={`${formatInitialCredit}`}
-          rightLabel={`max\u00a0: ${formatInitialCreditWithCurrency}`}
-          accessibilityId={maxPriceInputId}
-          testID="Entrée pour le prix maximum"
-          isDisabled={getValues('isLimitCreditSearch') || getValues('isOnlyFreeOffersSearch')}
-        />
-      </Form.MaxWidth>
-      {isKeyboardOpen ? <Spacer.Column numberOfSpaces={8} /> : null}
+          <StyledSeparator />
+          {isLoggedInAndBeneficiary ? (
+            <Controller
+              control={control}
+              name="isLimitCreditSearch"
+              render={({ field: { value } }) => (
+                <React.Fragment>
+                  <FilterSwitchWithLabel
+                    isActive={value}
+                    toggle={toggleLimitCreditSearch}
+                    label="Limiter la recherche à mon crédit"
+                    testID="limitCreditSearch"
+                  />
+                  <StyledSeparator />
+                </React.Fragment>
+              )}
+            />
+          ) : null}
+          <Container>
+            <PriceInputController
+              control={control}
+              name="minPrice"
+              label={`Prix minimum (en\u00a0${currencyFull})`}
+              placeholder="0"
+              accessibilityId={minPriceInputId}
+              testID="Entrée pour le prix minimum"
+              isDisabled={getValues('isOnlyFreeOffersSearch')}
+            />
+          </Container>
+          <PriceInputController
+            control={control}
+            name="maxPrice"
+            label={`Prix maximum (en\u00a0${currencyFull})`}
+            placeholder={`${formatInitialCredit}`}
+            rightLabel={`max\u00a0: ${formatInitialCreditWithCurrency}`}
+            accessibilityId={maxPriceInputId}
+            testID="Entrée pour le prix maximum"
+            isDisabled={getValues('isLimitCreditSearch') || getValues('isOnlyFreeOffersSearch')}
+          />
+        </Form.MaxWidth>
+      </FormContainer>
     </AppModal>
   )
 }
@@ -371,3 +371,10 @@ export const PriceModal: FunctionComponent<PriceModalProps> = ({
 const StyledSeparator = styled(Separator.Horizontal)({
   marginVertical: getSpacing(6),
 })
+
+const Container = styled.View({ marginBottom: getSpacing(6) })
+
+const FormContainer = styled.View<{ isKeyboardOpen: boolean }>(({ isKeyboardOpen }) => ({
+  marginTop: getSpacing(6),
+  marginBottom: isKeyboardOpen ? getSpacing(8) : 0,
+}))

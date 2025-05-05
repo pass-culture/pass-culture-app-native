@@ -103,6 +103,7 @@ export const SetPhoneNumberWithoutValidation = () => {
                     isError={!!fieldState.error}
                     keyboardType="number-pad"
                     label="Numéro de téléphone"
+                    format="0610203040"
                     value={field.value}
                     onChangeText={field.onChange}
                     onSubmitEditing={submit}

@@ -30,6 +30,35 @@ describe('SearchInput component', () => {
     expect(onReset).toHaveBeenCalledTimes(1)
   })
 
+  it('should display format when format is given', async () => {
+    render(
+      <SearchInput
+        value="Some text"
+        label="Label"
+        onChangeText={onChangeText}
+        onPressRightIcon={onReset}
+        isRequiredField
+        format="75011"
+      />
+    )
+
+    expect(screen.getByText('Exemple : 75011')).toBeOnTheScreen()
+  })
+
+  it('should not display format when no format is given', async () => {
+    render(
+      <SearchInput
+        value="Some text"
+        label="Label"
+        onChangeText={onChangeText}
+        onPressRightIcon={onReset}
+        isRequiredField
+      />
+    )
+
+    expect(screen.queryByText('Exemple : 75011')).not.toBeOnTheScreen()
+  })
+
   it('should display "Obligatoire" when isRequiredField = true and has label', async () => {
     render(
       <SearchInput

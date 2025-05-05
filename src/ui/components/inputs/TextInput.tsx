@@ -10,7 +10,7 @@ import { ContainerWithMaxWidth } from 'ui/components/inputs/ContainerWithMaxWidt
 import { LabelContainer } from 'ui/components/inputs/LabelContainer'
 import { RequiredLabel } from 'ui/components/inputs/RequiredLabel'
 import { Touchable } from 'ui/components/touchable/Touchable'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 
 import { BaseTextInput } from './BaseTextInput'
 import { InputContainer } from './InputContainer'
@@ -44,30 +44,27 @@ const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, TextInputPro
   return (
     <ContainerWithMaxWidth>
       {customProps.label ? (
-        <React.Fragment>
-          <FlexInputLabel htmlFor={textInputID}>
-            <LabelContainer>
-              <Typo.Body>{customProps.label}</Typo.Body>
-              <RightLabel
-                isRequiredField={customProps.isRequiredField}
-                rightLabel={customProps.rightLabel}
-              />
-            </LabelContainer>
-          </FlexInputLabel>
-          <Spacer.Column numberOfSpaces={2} />
-        </React.Fragment>
+        <FlexInputLabel htmlFor={textInputID}>
+          <StyledLabelContainer>
+            <Typo.Body>{customProps.label}</Typo.Body>
+            <RightLabel
+              isRequiredField={customProps.isRequiredField}
+              rightLabel={customProps.rightLabel}
+            />
+          </StyledLabelContainer>
+        </FlexInputLabel>
+      ) : null}
+      {props.format ? (
+        <StyledView>
+          <Subtitle>{`Exemple\u00a0: ${props.format}`}</Subtitle>
+        </StyledView>
       ) : null}
       <InputContainer
         isFocus={isFocus}
         isError={customProps.isError}
         isDisabled={customProps.disabled}
         style={customProps.containerStyle}>
-        {customProps.leftComponent ? (
-          <React.Fragment>
-            {customProps.leftComponent}
-            <Spacer.Row numberOfSpaces={2} />
-          </React.Fragment>
-        ) : null}
+        {customProps.leftComponent ? <StyledView>{customProps.leftComponent}</StyledView> : null}
         <BaseTextInput
           {...nativeProps}
           nativeID={textInputID}
@@ -79,15 +76,14 @@ const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, TextInputPro
           multiline={props.multiline}
         />
         {customProps.rightButton && StyledIcon ? (
-          <React.Fragment>
-            <Spacer.Row numberOfSpaces={2} />
+          <IconContainer>
             <IconTouchableOpacity
               testID={customProps.rightButton.testID}
               accessibilityLabel={customProps.rightButton.accessibilityLabel}
               onPress={customProps.rightButton.onPress}>
               <StyledIcon />
             </IconTouchableOpacity>
-          </React.Fragment>
+          </IconContainer>
         ) : null}
       </InputContainer>
     </ContainerWithMaxWidth>
@@ -113,3 +109,15 @@ const IconTouchableOpacity = styledButton(Touchable)({
 const Subtitle = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.designSystem.color.text.subtle,
 }))
+
+const StyledView = styled.View({
+  marginBottom: getSpacing(2),
+})
+
+const IconContainer = styled.View({
+  marginTop: getSpacing(2),
+})
+
+const StyledLabelContainer = styled(LabelContainer)({
+  marginBottom: getSpacing(2),
+})
