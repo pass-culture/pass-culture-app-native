@@ -26,21 +26,25 @@
 #### Observations
 
 * `src/features/search/helpers/useSync/useSync.ts` hook permettant de synchroniser la navigation avec les états des contextes de recherche et de localisation
+* sur la page thématic search `src/features/gtlPlaylist/hooks/useGTLPlaylists.ts` il y a une cascade de requetes
 
 #### Points de friction
 
 * `src/features/search/helpers/useSync/useSync.ts` difficile à maintenir, source de bug
+* les hooks en cascades sont complexes à gérer
+    * notamment à cause des données absentes lors du premier rendus
 
 #### Recommandations
 
 * l'URL devrait etre la source de véritée
 * pour les états locaux (ex : localisation), le stata manager (Zustand) devrait etre la source de vérité
+* les requetes devraient etre gérées au niveau de la page
 
 ### Réserve d’une Offre
 
 #### Observations
 
-* sur une page offre, pour déterminer quel bouton afficher (ex : "Résverver") le comportement que le bouton doit avoir, on utilise le hook `src/features/offer/helpers/useCtaWordingAndAction/useCtaWordingAndAction.ts`
+* sur une page offre, pour déterminer quel bouton afficher (ex : "Réserver") le comportement que le bouton doit avoir, on utilise le hook `src/features/offer/helpers/useCtaWordingAndAction/useCtaWordingAndAction.ts`
     * ce hook est décomposé en 2 parties
         * un hook qui montre le hook hell dans lequel nous sommes : un hook qui appelle plein de hooks pour récupérer toutes les informations nécessaires et les passer à la fonction suivante
         * une fonction pure avec niveau de compléxité cognitive de 58
