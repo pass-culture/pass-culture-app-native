@@ -11,48 +11,32 @@ const ruleTester = new RuleTester({
 ruleTester.run('no-ts-expect-error', rule, {
   valid: [
     {
-      code: `// @ts-ignore\nconst a = {};`,
+      code: `// @ts-expect-error: something else\nconst a = {};`,
       filename: 'test.ts',
     },
     {
-      code: `// Just a comment\nconst a = 1;`,
+      code: `// @ts-ignore\nconst a = {};`,
       filename: 'test.ts',
     },
     {
       code: `/* @ts-expect-error */\nconst a = 1;`,
       filename: 'test.ts',
     },
+    {
+      code: `// Just a comment\nconst a = 1;`,
+      filename: 'test.ts',
+    },
   ],
   invalid: [
     {
-      code: `// @ts-expect-error\nconst a = {};`,
+      code: `// @ts-expect-error: because of noUncheckedIndexedAccess\nconst a = {};`,
       filename: 'test.ts',
-      errors: [
-        {
-          messageId: 'doNotUseTsExpectError',
-          line: 1,
-        },
-      ],
+      errors: [{ messageId: 'doNotUseTsExpectError', line: 1 }],
     },
     {
-      code: `// @ts-expect-error: because of index access\nconst a = {};`,
+      code: `// @ts-expect-error: because of noUncheckedIndexedAccess – optional props\nconst a = {};`,
       filename: 'test.ts',
-      errors: [
-        {
-          messageId: 'doNotUseTsExpectError',
-          line: 1,
-        },
-      ],
-    },
-    {
-      code: `//   @ts-expect-error extra space\nconst a = {};`,
-      filename: 'test.ts',
-      errors: [
-        {
-          messageId: 'doNotUseTsExpectError',
-          line: 1,
-        },
-      ],
+      errors: [{ messageId: 'doNotUseTsExpectError', line: 1 }],
     },
   ],
 })

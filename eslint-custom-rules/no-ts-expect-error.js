@@ -3,12 +3,12 @@ module.exports = {
     type: 'suggestion',
     docs: {
       description:
-        'Forbids the use of @ts-expect-error and recommends fixing the issue or documenting it properly',
+        'Forbids the use of @ts-expect-error: because of noUncheckedIndexedAccess and recommends fixing the issue',
       recommended: true,
     },
     messages: {
       doNotUseTsExpectError:
-        'Do not use `@ts-expect-error`. Prefer to fix the problem or document properly with a specific eslint-disable.',
+        'Do not use `@ts-expect-error: because of noUncheckedIndexedAccess`. Prefer to fix the problem.',
     },
     schema: [],
   },
@@ -20,7 +20,10 @@ module.exports = {
         const comments = sourceCode.getAllComments()
 
         for (const comment of comments) {
-          if (comment.type === 'Line' && comment.value.trim().startsWith('@ts-expect-error')) {
+          if (
+            comment.type === 'Line' &&
+            comment.value.trim().startsWith('@ts-expect-error: because of noUncheckedIndexedAccess')
+          ) {
             context.report({
               loc: comment.loc,
               messageId: 'doNotUseTsExpectError',
