@@ -16,6 +16,7 @@ const queriesOnlyInUseQueryFunctions = require('./eslint-custom-rules/queries-on
 const queriesMustBeInQueriesFolder = require('./eslint-custom-rules/queries-must-be-in-queries-folder.js')
 const noFireEvent = require('./eslint-custom-rules/no-fireEvent')
 const noSpacer = require('./eslint-custom-rules/no-spacer')
+const noTsExpectError = require('./eslint-custom-rules/no-ts-expect-error')
 const noUselessHook = require('./eslint-custom-rules/no-useless-hook')
 
 module.exports = {
@@ -37,5 +38,6 @@ module.exports = {
   'queries-must-be-in-queries-folder': queriesMustBeInQueriesFolder,
   'no-fireEvent': noFireEvent,
   'no-spacer': noSpacer,
+  'no-ts-expect-error': noTsExpectError,
   'no-useless-hook': noUselessHook,
 }

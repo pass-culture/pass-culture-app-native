@@ -4,6 +4,7 @@ const softRules = {
     'local-rules/no-fireEvent',
     'react/no-unused-prop-types', // has false positives
     'local-rules/no-spacer',
+    'local-rules/no-ts-expect-error',
   ],
   archi: [
     'local-rules/no-queries-outside-query-files',
