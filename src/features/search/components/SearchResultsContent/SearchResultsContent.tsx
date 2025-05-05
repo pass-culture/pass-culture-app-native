@@ -78,7 +78,9 @@ enum Tab {
 
 const isWeb = Platform.OS === 'web'
 
-export const SearchResultsContent: React.FC = () => {
+type SearchResultsContentProps = ReturnType<typeof useSearchResults>
+
+export const SearchResultsContent: React.FC<SearchResultsContentProps> = (props) => {
   const [autoScrollEnabled, setAutoScrollEnabled] = useState(true)
   const searchListRef = useRef<FlashList<Offer> | null>(null)
   const {
@@ -95,7 +97,7 @@ export const SearchResultsContent: React.FC = () => {
     venuesUserData,
     facets,
     offerVenues,
-  } = useSearchResults()
+  } = props
 
   const { disabilities } = useAccessibilityFiltersContext()
   const { searchState } = useSearch()

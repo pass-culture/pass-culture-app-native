@@ -43,6 +43,7 @@ export const SearchList: React.FC<SearchListProps> = React.forwardRef<
             nbHits={nbHits}
             userData={userData}
             venues={hits.venues}
+            artists={hits.artists}
             venuesUserData={venuesUserData}
           />
         }

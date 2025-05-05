@@ -5,6 +5,7 @@ import { StatusBar } from 'react-native'
 import AlgoliaSearchInsights from 'search-insights'
 import { v4 as uuidv4 } from 'uuid'
 
+import { useSearchResults } from 'features/search/api/useSearchResults/useSearchResults'
 import { SearchHeader } from 'features/search/components/SearchHeader/SearchHeader'
 import { SearchResultsContent } from 'features/search/components/SearchResultsContent/SearchResultsContent'
 import { SearchSuggestions } from 'features/search/components/SearchSuggestions/SearchSuggestions'
@@ -13,6 +14,8 @@ import { getSearchClient } from 'features/search/helpers/getSearchClient'
 import { useSearchHistory } from 'features/search/helpers/useSearchHistory/useSearchHistory'
 import { useSync } from 'features/search/helpers/useSync/useSync'
 import { env } from 'libs/environment/env'
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { OfflinePage } from 'libs/network/OfflinePage'
 import { Form } from 'ui/components/Form'
@@ -36,6 +39,12 @@ export const SearchResults = () => {
     (query: string) => setQueryHistory(query),
     [setQueryHistory]
   )
+
+  const isArtistInSearchActive = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ARTIST_PAGE_IN_SEARCH)
+
+  const { hits, ...rest } = useSearchResults()
+
+  const searchResultHits = isArtistInSearchActive ? hits : { ...hits, artists: [] }
 
   if (!netInfo.isConnected) {
     return <OfflinePage />
@@ -64,7 +73,7 @@ export const SearchResults = () => {
               filteredHistory={filteredHistory}
             />
           ) : (
-            <SearchResultsContent />
+            <SearchResultsContent hits={searchResultHits} {...rest} />
           )}
         </InstantSearch>
       </Form.Flex>

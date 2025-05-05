@@ -31,6 +31,7 @@ const GEOLOCATION_BUTTON_HEIGHT_ONE_LINE = 106
 const GEOLOCATION_BUTTON_HEIGHT_TWO_LINE = 130
 const VENUES_PLAYLIST_HEIGHT = 297
 const BREAKING_POINT_GEOLOCATION_MODAL_HEIGHT = 465
+const ARTISTS_PLAYLIST_HEIGHT = 300
 
 const FOOTER_SIZE = 104
 const LOAD_MORE_THRESHOLD = 300
@@ -41,6 +42,7 @@ type GetHeaderSizeType = {
   userData: CustomUserData
   isGeolocated: boolean
   hasVenuesPlaylist: boolean
+  hasArtistsPlaylist: boolean
   windowWidth: number
 }
 
@@ -48,6 +50,7 @@ export const getHeaderSize = ({
   userData,
   isGeolocated,
   hasVenuesPlaylist,
+  hasArtistsPlaylist,
   windowWidth,
 }: GetHeaderSizeType) => {
   let totalHeight = BASE_HEADER_HEIGHT
@@ -64,6 +67,10 @@ export const getHeaderSize = ({
   if (hasVenuesPlaylist) {
     totalHeight += VENUES_PLAYLIST_HEIGHT
   }
+  if (hasArtistsPlaylist) {
+    totalHeight += ARTISTS_PLAYLIST_HEIGHT
+  }
+
   return totalHeight
 }
 
@@ -73,6 +80,7 @@ type GetItemSizeType = {
   itemsCount: number
   userData: CustomUserData
   hasVenuesPlaylist: boolean
+  hasArtistsPlaylist: boolean
   windowWidth: number
 }
 
@@ -86,13 +94,20 @@ const getItemSize = ({
   itemsCount,
   userData,
   hasVenuesPlaylist,
+  hasArtistsPlaylist,
   windowWidth,
 }: GetItemSizeType) => {
   const isHeader = index === 0
   const isFooter = index === itemsCount - 1
 
   if (isHeader) {
-    return getHeaderSize({ userData, isGeolocated, hasVenuesPlaylist, windowWidth })
+    return getHeaderSize({
+      userData,
+      isGeolocated,
+      hasVenuesPlaylist,
+      hasArtistsPlaylist,
+      windowWidth,
+    })
   }
 
   if (isFooter) {
@@ -169,6 +184,7 @@ export const SearchList = forwardRef<never, SearchListProps>(
       nbHits,
       offers: hits.offers,
       venues: hits.venues,
+      artists: hits.artists,
       isFetchingNextPage,
       autoScrollEnabled,
       onPress,
@@ -198,9 +214,10 @@ export const SearchList = forwardRef<never, SearchListProps>(
           itemsCount: data.items.length,
           userData,
           hasVenuesPlaylist,
+          hasArtistsPlaylist: !!data.artists?.length,
           windowWidth,
         }),
-      [hasGeolocPosition, data.items.length, userData, hasVenuesPlaylist, windowWidth]
+      [hasGeolocPosition, data.items.length, userData, hasVenuesPlaylist, data.artists, windowWidth]
     )
 
     return (
