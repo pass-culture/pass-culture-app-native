@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { SearchList } from 'features/search/components/SearchList/SearchList'
+import { getHeaderSize } from 'features/search/components/SearchList/SearchList.web'
 import { initialSearchState } from 'features/search/context/reducer'
 import { SearchListProps } from 'features/search/types'
 import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
@@ -45,6 +46,17 @@ const props: SearchListProps = {
   venuesUserData: [],
 }
 
+const WIDTH_MOCK = 465
+
+const mockUseWindowDimensions = jest.fn().mockReturnValue({
+  width: WIDTH_MOCK,
+  scale: 1,
+  fontScale: 1,
+})
+jest.mock('react-native/Libraries/Utilities/useWindowDimensions', () => ({
+  default: mockUseWindowDimensions,
+}))
+
 describe('<SearchList />', () => {
   beforeEach(() => {
     setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])
@@ -55,4 +67,23 @@ describe('<SearchList />', () => {
 
     expect(screen.getByTestId('searchListHeader')).toBeInTheDocument()
   })
+})
+
+describe('getHeaderSize', () => {
+  it.each`
+    userData                    | isGeolocated | hasVenuesPlaylist | windowWidth | expected
+    ${undefined}                | ${true}      | ${false}          | ${465}      | ${112}
+    ${undefined}                | ${false}     | ${false}          | ${465}      | ${218}
+    ${undefined}                | ${false}     | ${false}          | ${464}      | ${242}
+    ${undefined}                | ${false}     | ${true}           | ${464}      | ${539}
+    ${undefined}                | ${true}      | ${true}           | ${464}      | ${409}
+    ${[{ message: 'coucou ' }]} | ${false}     | ${false}          | ${464}      | ${184}
+  `(
+    'getHeaderSize should render correct header size',
+    ({ userData, isGeolocated, hasVenuesPlaylist, windowWidth, expected }) => {
+      expect(getHeaderSize({ userData, isGeolocated, hasVenuesPlaylist, windowWidth })).toBe(
+        expected
+      )
+    }
+  )
 })
