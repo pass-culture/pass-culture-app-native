@@ -8,7 +8,7 @@ import { TrackEmailChangeContent } from 'features/profile/pages/TrackEmailChange
 import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render, screen, waitFor } from 'tests/utils'
+import { render, screen, userEvent, waitFor } from 'tests/utils'
 
 jest.mock('libs/network/NetInfoWrapper')
 
@@ -32,6 +32,9 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
+const user = userEvent.setup()
+jest.useFakeTimers()
+
 describe('TrackEmailChangeContent', () => {
   it('should open mail app when pressing first step and first step is active', async () => {
     mockServer.getApi<EmailUpdateStatusResponse>(
@@ -41,7 +44,7 @@ describe('TrackEmailChangeContent', () => {
 
     render(reactQueryProviderHOC(<TrackEmailChangeContent />))
 
-    fireEvent.press(await screen.findByText('Confirme ta demande'))
+    await user.press(screen.getByText('Confirme ta demande'))
 
     expect(openInbox).toHaveBeenCalledTimes(1)
   })
@@ -55,7 +58,7 @@ describe('TrackEmailChangeContent', () => {
 
     render(reactQueryProviderHOC(<TrackEmailChangeContent />))
 
-    fireEvent.press(await screen.findByText('Choisis ta nouvelle adresse e-mail'))
+    await user.press(await screen.findByText('Choisis ta nouvelle adresse e-mail'))
 
     expect(navigate).toHaveBeenCalledWith('ProfileStackNavigator', {
       params: {
@@ -74,7 +77,7 @@ describe('TrackEmailChangeContent', () => {
 
     render(reactQueryProviderHOC(<TrackEmailChangeContent />))
 
-    fireEvent.press(await screen.findByText('Valide ta nouvelle adresse'))
+    await user.press(await screen.findByText('Valide ta nouvelle adresse'))
 
     expect(openInbox).toHaveBeenCalledTimes(1)
   })
@@ -121,7 +124,7 @@ describe('TrackEmailChangeContent', () => {
 
       render(reactQueryProviderHOC(<TrackEmailChangeContent />))
 
-      fireEvent.press(await screen.findByText('Crée ton mot de passe'))
+      await user.press(await screen.findByText('Crée ton mot de passe'))
 
       expect(navigate).toHaveBeenCalledWith('ProfileStackNavigator', {
         params: {

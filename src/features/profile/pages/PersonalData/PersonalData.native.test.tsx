@@ -9,7 +9,7 @@ import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/fixtures'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render, screen, waitFor } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 
 import { PersonalData } from './PersonalData'
 
@@ -45,6 +45,10 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
     return Component
   }
 })
+
+const user = userEvent.setup()
+
+jest.useFakeTimers()
 
 describe('PersonalData', () => {
   beforeEach(() => {
@@ -154,7 +158,7 @@ describe('PersonalData', () => {
 
     render(reactQueryProviderHOC(<PersonalData />))
 
-    fireEvent.press(await screen.findByTestId('Modifier mot de passe'))
+    await user.press(screen.getByTestId('Modifier mot de passe'))
 
     expect(navigate).toHaveBeenCalledWith('ProfileStackNavigator', {
       params: undefined,
@@ -169,7 +173,7 @@ describe('PersonalData', () => {
 
     render(reactQueryProviderHOC(<PersonalData />))
 
-    fireEvent.press(await screen.findByTestId('Modifier la ville de résidence'))
+    await user.press(screen.getByTestId('Modifier la ville de résidence'))
 
     expect(navigate).toHaveBeenCalledWith('ProfileStackNavigator', {
       params: undefined,
@@ -188,14 +192,12 @@ describe('PersonalData', () => {
 
     render(reactQueryProviderHOC(<PersonalData />))
 
-    fireEvent.press(await screen.findByText('Supprimer mon compte'))
+    await user.press(screen.getByText('Supprimer mon compte'))
 
-    await waitFor(() => {
-      expect(analytics.logAccountDeletion).toHaveBeenCalledTimes(1)
-      expect(navigate).toHaveBeenCalledWith('ProfileStackNavigator', {
-        params: undefined,
-        screen: 'DeleteProfileReason',
-      })
+    expect(analytics.logAccountDeletion).toHaveBeenCalledTimes(1)
+    expect(navigate).toHaveBeenCalledWith('ProfileStackNavigator', {
+      params: undefined,
+      screen: 'DeleteProfileReason',
     })
   })
 
@@ -218,9 +220,7 @@ describe('PersonalData', () => {
 
     render(reactQueryProviderHOC(<PersonalData />))
 
-    await screen.findByText('Informations personnelles')
-
-    fireEvent.press(screen.getByText('Comment gérer tes données personnelles ?'))
+    await user.press(screen.getByText('Comment gérer tes données personnelles ?'))
 
     expect(openUrl).toHaveBeenNthCalledWith(1, env.FAQ_LINK_PERSONAL_DATA, undefined, true)
   })
@@ -232,7 +232,7 @@ describe('PersonalData', () => {
 
     render(reactQueryProviderHOC(<PersonalData />))
 
-    fireEvent.press(await screen.findByTestId('Modifier e-mail'))
+    await user.press(screen.getByTestId('Modifier e-mail'))
 
     expect(screen.getByTestId('Modifier e-mail')).toBeOnTheScreen()
 
