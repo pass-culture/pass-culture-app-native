@@ -1,5 +1,6 @@
 import { Hit } from '@algolia/client-search'
 import React from 'react'
+import { FlatList } from 'react-native-gesture-handler'
 
 import { Referrals, ScreenNames } from 'features/navigation/RootNavigator/types'
 import { ThematicSearchPlaylistData } from 'features/search/pages/ThematicSearch/types'
@@ -31,6 +32,7 @@ export function ThematicSearchPlaylist({
       keyExtractor={(item: Hit<Offer>) => item.objectID}
       title={playlist.title}
       noMarginBottom
+      FlatListComponent={FlatList}
     />
   )
 }
