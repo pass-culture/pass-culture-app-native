@@ -126,7 +126,8 @@ jobs:
           name: ${{ steps.generate_name.outputs.CUSTOM_NAME }}
           workspace: .maestro/tests/
           device-locale: fr_FR
-          ios-version: 17
+          device-os: iOS-17-5
+          device-model: iPhone-11
           include-tags: ${{ inputs.test_tags }}
           env: |
             MAESTRO_APP_ID=app.passculture.staging
