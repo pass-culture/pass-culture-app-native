@@ -55,8 +55,8 @@ import { Spinner } from 'ui/components/Spinner'
 import { Page } from 'ui/pages/Page'
 import { getSpacing, Spacer } from 'ui/theme'
 
+import { ScreenSeenCount, getScreenSeenCount } from '../api/getScreenSeenCount'
 import { createInMemoryScreenSeenCountTriggerStorage } from '../api/inMemoryScreenSeenTriggerStorage'
-import { ScreenSeenCount, useScreenSeenCount } from '../api/useScreenSeenCount'
 
 type GenericHomeProps = {
   Header: React.JSX.Element
@@ -226,7 +226,7 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = ({
     BatchProfile.trackEvent(BatchEvent.hasSeenEnoughHomeContent, attributes)
   }
 
-  const { checkTrigger } = useScreenSeenCount({
+  const { checkTrigger } = getScreenSeenCount({
     isLoggedIn,
     screenHeight: height,
     onTrigger: triggerHasSeenEnoughHomeContent,

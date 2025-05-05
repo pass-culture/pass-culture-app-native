@@ -2,10 +2,10 @@ import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 
 import { LocationModal } from 'features/location/components/LocationModal'
+import { getLocationSubmit } from 'features/location/helpers/getLocationSubmit'
+import { getPlaceSelection } from 'features/location/helpers/getPlaceSelection'
 import { useLocationMode } from 'features/location/helpers/useLocationMode'
 import { useLocationState } from 'features/location/helpers/useLocationState'
-import { useLocationSubmit } from 'features/location/helpers/useLocationSubmit'
-import { usePlaceSelection } from 'features/location/helpers/usePlaceSelection'
 import { useRadiusChange } from 'features/location/helpers/useRadiusChange'
 import { Referrals, UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { removeSelectedVenue } from 'features/venueMap/store/venueMapStore'
@@ -44,7 +44,7 @@ export const VenueMapLocationModal = ({
     tempAroundMeRadius,
   } = locationStateProps
 
-  const locationSubmitProps = useLocationSubmit({
+  const locationSubmitProps = getLocationSubmit({
     dismissModal,
     from: 'venueMap',
     ...locationStateProps,
@@ -58,7 +58,7 @@ export const VenueMapLocationModal = ({
     visible,
     ...locationStateProps,
   })
-  const { onPlaceSelection: onSetSelectedPlace } = usePlaceSelection({
+  const { onPlaceSelection: onSetSelectedPlace } = getPlaceSelection({
     ...locationStateProps,
   })
   const { selectLocationMode } = useLocationMode({

@@ -4,7 +4,7 @@ export type ScreenSeenCountTriggerStorage = {
   setTriggered: (screenSeenCount: ScreenSeenCount) => Promise<void>
 }
 
-export const useScreenSeenCount = ({
+export const getScreenSeenCount = ({
   onTrigger,
   screenHeight,
   triggerStorage,

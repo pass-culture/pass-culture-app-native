@@ -2,14 +2,14 @@ import { Keyboard } from 'react-native'
 
 import { mockLocationState } from 'features/location/fixtures/mockLocationState'
 import { mockPlaces } from 'features/location/fixtures/mockPlaces'
-import { usePlaceSelection } from 'features/location/helpers/usePlaceSelection'
+import { getPlaceSelection } from 'features/location/helpers/getPlaceSelection'
 import { renderHook } from 'tests/utils'
 
 const keyboardDismissSpy = jest.spyOn(Keyboard, 'dismiss')
 
-describe('usePlaceSelection', () => {
+describe('getPlaceSelection', () => {
   it('should call onSetSelectedPlace when onPlaceSelection is called', () => {
-    const { result } = renderHook(() => usePlaceSelection(mockLocationState))
+    const { result } = renderHook(() => getPlaceSelection(mockLocationState))
     const { onPlaceSelection } = result.current
 
     onPlaceSelection(mockPlaces[0])
@@ -18,7 +18,7 @@ describe('usePlaceSelection', () => {
   })
 
   it('should dismiss the keyboard when onPlaceSelection is called', () => {
-    const { result } = renderHook(() => usePlaceSelection(mockLocationState))
+    const { result } = renderHook(() => getPlaceSelection(mockLocationState))
     const { onPlaceSelection } = result.current
 
     onPlaceSelection(mockPlaces[0])

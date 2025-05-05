@@ -10,7 +10,7 @@ type Props = {
   dispatch?: React.Dispatch<Action>
 } & LocationState
 
-export const useLocationSubmit = ({
+export const getLocationSubmit = ({
   dismissModal,
   from,
   dispatch,

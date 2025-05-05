@@ -5,7 +5,7 @@ import { analytics } from 'libs/analytics/provider'
 import { LocationMode } from 'libs/location/types'
 import { renderHook } from 'tests/utils'
 
-import { useLocationSubmit } from './useLocationSubmit'
+import { getLocationSubmit } from './getLocationSubmit'
 
 const mockProps = {
   ...mockLocationState,
@@ -15,9 +15,9 @@ const mockProps = {
   selectedPlace: mockPlaces[0],
 } as const
 
-describe('useLocationSubmit', () => {
+describe('getLocationSubmit', () => {
   it('should call dismissModal on onClose', () => {
-    const { result } = renderHook(() => useLocationSubmit(mockProps))
+    const { result } = renderHook(() => getLocationSubmit(mockProps))
 
     result.current.onClose()
 
@@ -26,7 +26,7 @@ describe('useLocationSubmit', () => {
 
   describe('When on onSubmit with location mode is AROUND_PLACE', () => {
     it('should call setSelectedLocationMode with AROUND_PLACE', () => {
-      const { result } = renderHook(() => useLocationSubmit(mockProps))
+      const { result } = renderHook(() => getLocationSubmit(mockProps))
 
       result.current.onSubmit(LocationMode.AROUND_PLACE)
 
@@ -37,7 +37,7 @@ describe('useLocationSubmit', () => {
     })
 
     it('should call setPlaceGlobally with the selected place', () => {
-      const { result } = renderHook(() => useLocationSubmit(mockProps))
+      const { result } = renderHook(() => getLocationSubmit(mockProps))
 
       result.current.onSubmit(LocationMode.AROUND_PLACE)
 
@@ -45,7 +45,7 @@ describe('useLocationSubmit', () => {
     })
 
     it('should call setTempAroundMeRadius with the default radius', () => {
-      const { result } = renderHook(() => useLocationSubmit(mockProps))
+      const { result } = renderHook(() => getLocationSubmit(mockProps))
 
       result.current.onSubmit(LocationMode.AROUND_PLACE)
 
@@ -53,7 +53,7 @@ describe('useLocationSubmit', () => {
     })
 
     it('should call dispatch with SET_LOCATION_PLACE with the selected place when dispatch defined', () => {
-      const { result } = renderHook(() => useLocationSubmit(mockProps))
+      const { result } = renderHook(() => getLocationSubmit(mockProps))
 
       result.current.onSubmit(LocationMode.AROUND_PLACE)
 
@@ -67,7 +67,7 @@ describe('useLocationSubmit', () => {
     })
 
     it('should not call dispatch with SET_LOCATION_PLACE with the selected place when dispatch not defined', () => {
-      const { result } = renderHook(() => useLocationSubmit({ ...mockProps, dispatch: undefined }))
+      const { result } = renderHook(() => getLocationSubmit({ ...mockProps, dispatch: undefined }))
 
       result.current.onSubmit(LocationMode.AROUND_PLACE)
 
@@ -75,7 +75,7 @@ describe('useLocationSubmit', () => {
     })
 
     it('should call logUserSetLocation', () => {
-      const { result } = renderHook(() => useLocationSubmit(mockProps))
+      const { result } = renderHook(() => getLocationSubmit(mockProps))
 
       result.current.onSubmit(LocationMode.AROUND_PLACE)
 
@@ -85,7 +85,7 @@ describe('useLocationSubmit', () => {
 
   describe('When on onSubmit with location mode is AROUND_ME', () => {
     it('should call setPlaceGlobally with null', () => {
-      const { result } = renderHook(() => useLocationSubmit(mockProps))
+      const { result } = renderHook(() => getLocationSubmit(mockProps))
 
       result.current.onSubmit(LocationMode.AROUND_ME)
 
@@ -93,7 +93,7 @@ describe('useLocationSubmit', () => {
     })
 
     it('should call setAroundMeRadius with the selected radius', () => {
-      const { result } = renderHook(() => useLocationSubmit(mockProps))
+      const { result } = renderHook(() => getLocationSubmit(mockProps))
 
       result.current.onSubmit(LocationMode.AROUND_ME)
 
@@ -101,7 +101,7 @@ describe('useLocationSubmit', () => {
     })
 
     it('should call setTempAroundPlaceRadius with the default radius', () => {
-      const { result } = renderHook(() => useLocationSubmit(mockProps))
+      const { result } = renderHook(() => getLocationSubmit(mockProps))
 
       result.current.onSubmit(LocationMode.AROUND_ME)
 
@@ -109,7 +109,7 @@ describe('useLocationSubmit', () => {
     })
 
     it('should call dispatch with SET_LOCATION_AROUND_ME with the selected radius when dispatch defined', () => {
-      const { result } = renderHook(() => useLocationSubmit(mockProps))
+      const { result } = renderHook(() => getLocationSubmit(mockProps))
 
       result.current.onSubmit(LocationMode.AROUND_ME)
 
@@ -120,7 +120,7 @@ describe('useLocationSubmit', () => {
     })
 
     it('should not call dispatch with SET_LOCATION_AROUND_ME with the selected radius when dispatch not defined', () => {
-      const { result } = renderHook(() => useLocationSubmit({ ...mockProps, dispatch: undefined }))
+      const { result } = renderHook(() => getLocationSubmit({ ...mockProps, dispatch: undefined }))
 
       result.current.onSubmit(LocationMode.AROUND_ME)
 
@@ -130,7 +130,7 @@ describe('useLocationSubmit', () => {
 
   describe('When on onSubmit with location mode is EVERYWHERE', () => {
     it('should call setPlaceGlobally with null', () => {
-      const { result } = renderHook(() => useLocationSubmit(mockProps))
+      const { result } = renderHook(() => getLocationSubmit(mockProps))
 
       result.current.onSubmit(LocationMode.EVERYWHERE)
 
@@ -138,7 +138,7 @@ describe('useLocationSubmit', () => {
     })
 
     it('should call dispatch with SET_LOCATION_EVERYWHERE  when dispatch defined', () => {
-      const { result } = renderHook(() => useLocationSubmit(mockProps))
+      const { result } = renderHook(() => getLocationSubmit(mockProps))
 
       result.current.onSubmit(LocationMode.EVERYWHERE)
 
@@ -148,7 +148,7 @@ describe('useLocationSubmit', () => {
     })
 
     it('should not call dispatch with SET_LOCATION_EVERYWHERE  when dispatch not defined', () => {
-      const { result } = renderHook(() => useLocationSubmit({ ...mockProps, dispatch: undefined }))
+      const { result } = renderHook(() => getLocationSubmit({ ...mockProps, dispatch: undefined }))
 
       result.current.onSubmit(LocationMode.EVERYWHERE)
 

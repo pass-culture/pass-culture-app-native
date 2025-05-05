@@ -2,8 +2,8 @@ import { renderHook } from 'tests/utils'
 
 import {
   EmailProvider,
-  useContactSupportForDeletionProfile,
-} from './useContactSupportForDeletionProfile'
+  getContactSupportForDeletionProfile,
+} from './getContactSupportForDeletionProfile'
 
 type StubEmailProvider = ReturnType<typeof stubEmailProvider>
 const stubEmailProvider = () => {
@@ -16,7 +16,7 @@ const stubEmailProvider = () => {
   } satisfies EmailProvider & { [key: string]: unknown }
 }
 
-describe('Use contact support for deletion profile', () => {
+describe('Get contact support for deletion profile', () => {
   let emailProvider: StubEmailProvider
 
   beforeEach(() => {
@@ -28,7 +28,7 @@ describe('Use contact support for deletion profile', () => {
       result: {
         current: { requestSendMail },
       },
-    } = renderHook(() => useContactSupportForDeletionProfile({ emailProvider }))
+    } = renderHook(() => getContactSupportForDeletionProfile({ emailProvider }))
 
     await requestSendMail()
 

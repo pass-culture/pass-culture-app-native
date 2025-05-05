@@ -16,8 +16,8 @@ import { VENUE_CTA_HEIGHT_IN_SPACES } from 'features/venue/components/VenueCTA/V
 import { VenueMessagingApps } from 'features/venue/components/VenueMessagingApps/VenueMessagingApps'
 import { VenueThematicSection } from 'features/venue/components/VenueThematicSection/VenueThematicSection'
 import { VenueTopComponent } from 'features/venue/components/VenueTopComponent/VenueTopComponent'
+import { getVenueOffersArtists } from 'features/venue/helpers/getVenueOffersArtists'
 import { useVenueSearchParameters } from 'features/venue/helpers/useVenueSearchParameters'
-import { useVenueOffersArtists } from 'features/venue/hooks/useVenueOffersArtists/useVenueOffersArtists'
 import { useVenueQuery } from 'features/venue/queries/useVenueQuery'
 import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { analytics } from 'libs/analytics/provider'
@@ -56,7 +56,7 @@ export const Venue: FunctionComponent = () => {
     venue,
   })
   const { artistPageSubcategories } = useRemoteConfigQuery()
-  const { data: venueArtists } = useVenueOffersArtists(
+  const { data: venueArtists } = getVenueOffersArtists(
     artistPageSubcategories.subcategories,
     venueOffers?.hits
   )

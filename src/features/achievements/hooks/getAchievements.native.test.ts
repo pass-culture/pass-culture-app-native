@@ -11,7 +11,7 @@ import {
   userCompletedBookBooking,
   userCompletedMovieBooking,
 } from 'features/achievements/data/AchievementData'
-import { UseAchivementsProps, useAchievements } from 'features/achievements/hooks/useAchievements'
+import { GetAchivementsParams, getAchievements } from 'features/achievements/hooks/getAchievements'
 import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics/__mocks__/provider'
 import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
@@ -51,15 +51,15 @@ const testAchievement = {
 const testUseAchievements = ({
   achievements = [],
   completedAchievements = [],
-}: Partial<UseAchivementsProps> = {}) =>
+}: Partial<GetAchivementsParams> = {}) =>
   renderHook(() =>
-    useAchievements({
+    getAchievements({
       achievements,
       completedAchievements,
     })
   ).result.current
 
-describe('useAchievements', () => {
+describe('getAchievements', () => {
   beforeEach(() => {
     mockAuthContextWithUser({
       ...beneficiaryUser,

@@ -1,4 +1,4 @@
-import { EmailProvider } from './useContactSupportForDeletionProfile'
+import { EmailProvider } from './getContactSupportForDeletionProfile'
 
 export const webEmailProvider = (): EmailProvider => {
   return {

@@ -2,7 +2,7 @@ import { COOKIES_BY_CATEGORY } from 'features/cookies/CookiesPolicy'
 import { ConsentState } from 'features/cookies/enums'
 import { Cookies, CookiesChoiceByCategory, ConsentStatus } from 'features/cookies/types'
 
-export const useCookiesChoiceByCategory = (
+export const getCookiesChoiceByCategory = (
   cookiesChoice: ConsentStatus
 ): CookiesChoiceByCategory => {
   if (

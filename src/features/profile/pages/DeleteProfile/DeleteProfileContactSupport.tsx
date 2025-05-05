@@ -13,14 +13,14 @@ import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
 import { Typo } from 'ui/theme'
 
 import { nativeEmailProvider } from './EmailProvider'
-import { useContactSupportForDeletionProfile } from './useContactSupportForDeletionProfile'
+import { getContactSupportForDeletionProfile } from './getContactSupportForDeletionProfile'
 import { webEmailProvider } from './WebEmailProvider.web'
 
 const isWeb = Platform.OS === 'web'
 
 export const DeleteProfileContactSupport: FC = () => {
   const emailProvider = isWeb ? webEmailProvider() : nativeEmailProvider()
-  const { requestSendMail } = useContactSupportForDeletionProfile({ emailProvider })
+  const { requestSendMail } = getContactSupportForDeletionProfile({ emailProvider })
   const { navigate } = useNavigation<UseNavigationType>()
 
   const navigateToProfile = () => navigate(...getTabNavConfig('Profile'))

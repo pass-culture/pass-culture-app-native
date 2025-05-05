@@ -25,7 +25,7 @@ type ReportOfferModalContent = {
   fixedModalBottom: React.JSX.Element
 } & ModalLeftIconProps
 
-export const useCookiesModalContent = ({
+export const getCookiesModalContent = ({
   cookiesStep,
   settingsCookiesChoice,
   setCookiesStep,

@@ -1,14 +1,14 @@
 import { shuffle } from 'lodash'
 
 import { SubcategoryIdEnum } from 'api/gen'
-import { useVenueOffersArtists } from 'features/venue/hooks/useVenueOffersArtists/useVenueOffersArtists'
+import { getVenueOffersArtists } from 'features/venue/helpers/getVenueOffersArtists'
 import { Offer } from 'shared/offer/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, waitFor } from 'tests/utils'
 
-describe('useVenueOffersArtists', () => {
+describe('getVenueOffersArtists', () => {
   it('should return empty artists array when venueOffers is undefined', () => {
-    const { result } = renderHook(() => useVenueOffersArtists([SubcategoryIdEnum.LIVRE_PAPIER]), {
+    const { result } = renderHook(() => getVenueOffersArtists([SubcategoryIdEnum.LIVRE_PAPIER]), {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
 
@@ -17,7 +17,7 @@ describe('useVenueOffersArtists', () => {
 
   it('should return empty artists array when there are no offers', async () => {
     const { result } = renderHook(
-      () => useVenueOffersArtists([SubcategoryIdEnum.LIVRE_PAPIER], []),
+      () => getVenueOffersArtists([SubcategoryIdEnum.LIVRE_PAPIER], []),
       {
         wrapper: ({ children }) => reactQueryProviderHOC(children),
       }
@@ -31,7 +31,7 @@ describe('useVenueOffersArtists', () => {
   it('should return artists when there are offers', async () => {
     const { result } = renderHook(
       () =>
-        useVenueOffersArtists(
+        getVenueOffersArtists(
           [SubcategoryIdEnum.SUPPORT_PHYSIQUE_MUSIQUE_VINYLE],
           [
             {
@@ -148,7 +148,7 @@ describe('useVenueOffersArtists', () => {
 
     const { result } = renderHook(
       () =>
-        useVenueOffersArtists(
+        getVenueOffersArtists(
           [SubcategoryIdEnum.SUPPORT_PHYSIQUE_MUSIQUE_VINYLE],
           shuffle(mockedArtistList)
         ),

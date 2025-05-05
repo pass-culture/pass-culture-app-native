@@ -6,7 +6,7 @@ import { LENGTH_M, MARGIN_DP, RATIO_HOME_IMAGE } from 'ui/theme'
 const LENGTH_S = PixelRatio.roundToNearestPixel(6.5 * MARGIN_DP)
 const LENGTH_XL = PixelRatio.roundToNearestPixel(17.5 * MARGIN_DP)
 
-export function usePlaylistItemDimensionsFromLayout(layout: Layout): {
+export function getPlaylistItemDimensionsFromLayout(layout: Layout): {
   itemWidth: number
   itemHeight: number
 } {

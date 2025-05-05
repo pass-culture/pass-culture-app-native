@@ -5,7 +5,7 @@ import { useTheme } from 'styled-components/native'
 import { OfferPlaylistItem } from 'features/offer/components/OfferPlaylistItem/OfferPlaylistItem'
 import { PlaylistType } from 'features/offer/enums'
 import { AlgoliaOfferWithArtistAndEan } from 'libs/algolia/types'
-import { usePlaylistItemDimensionsFromLayout } from 'libs/contentful/usePlaylistItemDimensionsFromLayout'
+import { getPlaylistItemDimensionsFromLayout } from 'libs/contentful/getPlaylistItemDimensionsFromLayout'
 import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import {
   formatStartPrice,
@@ -33,7 +33,7 @@ export const ArtistPlaylist: FunctionComponent<ArtistPlaylistProps> = ({ artistN
   const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
   const categoryMapping = useCategoryIdMapping()
   const labelMapping = useSubcategoryOfferLabelMapping()
-  const { itemWidth, itemHeight } = usePlaylistItemDimensionsFromLayout('three-items')
+  const { itemWidth, itemHeight } = getPlaylistItemDimensionsFromLayout('three-items')
 
   return items.length > 0 ? (
     <PassPlaylist

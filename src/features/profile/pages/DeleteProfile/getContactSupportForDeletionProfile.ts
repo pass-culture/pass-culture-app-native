@@ -2,7 +2,7 @@ export type EmailProvider = {
   requestSendEmail: (options: { to: string; subject: string; body?: string }) => Promise<void>
 }
 
-export const useContactSupportForDeletionProfile = ({
+export const getContactSupportForDeletionProfile = ({
   emailProvider,
 }: {
   emailProvider: EmailProvider
