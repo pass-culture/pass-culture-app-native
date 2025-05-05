@@ -4,7 +4,7 @@ set -o errexit -o nounset -o pipefail
 GCP_LOGGIN_QUERY='
 resource.labels.project_id="passculture-metier-prod"
 resource.labels.target_proxy_name="image-resizing-https-proxy"
-timestamp>="2025-04-30T00:00:00"
+timestamp>="2025-04-30T12:00:00"
 timestamp<"2025-05-01T00:00:00"
 '
 JQ_SUM_RESPONSE_SIZE='[.[].httpRequest.responseSize | select(. != null) | tonumber] | add'
