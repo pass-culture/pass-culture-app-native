@@ -1,27 +1,28 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-data=$(npx eslint . --format json | \
-  jq -r '.[].messages[] | select(.severity == 1) | .ruleId' | \
-  sort | \
-  uniq -c | \
-  sort -nr)
+set -o errexit
+set -o nounset
+set -o pipefail
 
-max_rule_length=$(echo "$data" | awk '{print length($2)}' | sort -nr | head -n1)
-max_count_length=$(echo "$data" | awk '{print length($1)}' | sort -nr | head -n1)
+QUERY="
+def pad(n): 
+  tostring + (\" \" * (n - (tostring | length)));
 
-max_rule_length=$((max_rule_length > 4 ? max_rule_length : 4))
-max_count_length=$((max_count_length > 5 ? max_count_length : 5))
+[.[].messages[] 
+  | select(.severity == 1) 
+  | select(.ruleId != null) 
+  | .ruleId]
+  | reduce .[] as \$rule ({}; .[\$rule] += 1)
+  | to_entries
+  | sort_by(-.value)
+  | .[]
+  | \"| \(.key + \" \" * (50 - (.key | length))) | \(.value | pad(6)) |\"
+"
 
-rule_sep=$(printf "%${max_rule_length}s" | tr " " "-")
-count_sep=$(printf "%${max_count_length}s" | tr " " "-")
-
-echo -e "\nESLint Warnings Summary"
-echo "======================"
-printf "\n| %-${max_rule_length}s | %${max_count_length}s |\n" "Rule" "Count"
-printf "| %${max_rule_length}s | %${max_count_length}s |\n" "$rule_sep" "$count_sep"
-
-echo "$data" | awk -v rule_len="$max_rule_length" -v count_len="$max_count_length" '{
-  printf "| %-'$max_rule_length's | %'$max_count_length'd |\n", $2, $1
-}'
-
-echo -e "\n" 
+echo 'ESLint Warnings Summary'
+echo '======================='
+echo ''
+echo '| Rule                                               | Count  |'
+echo '|----------------------------------------------------|--------|'
+yarn eslint . --format json --cache |
+  jq --raw-output "$QUERY"
