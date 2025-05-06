@@ -42,11 +42,14 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
-          
+
       - name: Setup Android SDK
         uses: android-actions/setup-android@v3
         with:
           cmdline-tools-version: 11076708 # correspond to cmdline-tools version 12.0
+          
+      - name: Yarn install
+        run: yarn install
 
       - uses: ruby/setup-ruby@v1
         with:
