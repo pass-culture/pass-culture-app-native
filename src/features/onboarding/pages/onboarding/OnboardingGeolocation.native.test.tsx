@@ -1,10 +1,7 @@
 import React from 'react'
 
-import { navigate } from '__mocks__/@react-navigation/native'
 import { OnboardingGeolocation } from 'features/onboarding/pages/onboarding/OnboardingGeolocation'
 import { analytics } from 'libs/analytics/provider'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { render, screen, userEvent } from 'tests/utils'
 
 jest.mock('libs/firebase/analytics/analytics')
@@ -30,46 +27,23 @@ describe('OnboardingGeolocation', () => {
     expect(screen).toMatchSnapshot()
   })
 
-  it('should redirect to OnboardingAgeSelectionFork when "Passer" is clicked when feature flag passForAll is enable', async () => {
-    setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PASS_FOR_ALL])
+  it('should request geoloc permission when "Continuer" is clicked', async () => {
     render(<OnboardingGeolocation />)
 
-    const button = screen.getByLabelText('Passer à la page suivante')
-    await user.press(button)
-
-    expect(navigate).toHaveBeenCalledWith('OnboardingStackNavigator', {
-      screen: 'OnboardingAgeSelectionFork',
-    })
-  })
-
-  it('should request geoloc permission when "Utiliser ma position" is clicked', async () => {
-    render(<OnboardingGeolocation />)
-
-    const loginButton = screen.getByLabelText('Utiliser ma position')
+    const loginButton = screen.getByLabelText('Continuer')
     await user.press(loginButton)
 
     expect(mockRequestGeolocPermission).toHaveBeenCalledTimes(1)
   })
 
-  it('should log analytics when "Utiliser ma position" is clicked', async () => {
+  it('should log analytics when "Continuer" is clicked', async () => {
     render(<OnboardingGeolocation />)
 
-    const loginButton = screen.getByLabelText('Utiliser ma position')
+    const loginButton = screen.getByLabelText('Continuer')
     await user.press(loginButton)
 
     expect(analytics.logOnboardingGeolocationClicked).toHaveBeenNthCalledWith(1, {
       type: 'use_my_position',
-    })
-  })
-
-  it('should log analytics when skip button is clicked', async () => {
-    render(<OnboardingGeolocation />)
-
-    const loginButton = screen.getByLabelText('Passer à la page suivante')
-    await user.press(loginButton)
-
-    expect(analytics.logOnboardingGeolocationClicked).toHaveBeenNthCalledWith(1, {
-      type: 'skipped',
     })
   })
 })
