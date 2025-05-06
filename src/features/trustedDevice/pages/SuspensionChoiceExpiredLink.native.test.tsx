@@ -5,7 +5,7 @@ import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { SuspensionChoiceExpiredLink } from 'features/trustedDevice/pages/SuspensionChoiceExpiredLink'
 import { env } from 'libs/environment/env'
-import { render, screen, fireEvent } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 
 const mockOpenUrl = jest.spyOn(NavigationHelpers, 'openUrl')
 
@@ -17,6 +17,9 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
+const user = userEvent.setup()
+jest.useFakeTimers()
+
 describe('<SuspensionChoiceExpiredLink/>', () => {
   it('should match snapshot', () => {
     render(<SuspensionChoiceExpiredLink />)
@@ -24,11 +27,11 @@ describe('<SuspensionChoiceExpiredLink/>', () => {
     expect(screen).toMatchSnapshot()
   })
 
-  it('should redirect to home page when "Retourner à l’accueil" button is clicked', () => {
+  it('should redirect to home page when "Retourner à l’accueil" button is clicked', async () => {
     render(<SuspensionChoiceExpiredLink />)
 
     const goHomeButton = screen.getByText('Retourner à l’accueil')
-    fireEvent.press(goHomeButton)
+    await user.press(goHomeButton)
 
     expect(navigate).toHaveBeenNthCalledWith(
       1,
@@ -41,7 +44,7 @@ describe('<SuspensionChoiceExpiredLink/>', () => {
     render(<SuspensionChoiceExpiredLink />)
 
     const contactFraudButton = screen.getByText('Contacter le service fraude')
-    fireEvent.press(contactFraudButton)
+    await user.press(contactFraudButton)
 
     expect(mockOpenUrl).toHaveBeenNthCalledWith(
       1,

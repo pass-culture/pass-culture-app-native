@@ -1,13 +1,15 @@
 import React from 'react'
 import { View } from 'react-native'
 
-import { act, fireEvent, render, screen } from 'tests/utils'
+import { act, render, screen, userEvent } from 'tests/utils'
 
 import { Accordion } from './Accordion'
 
 const Children = () => <View testID="accordion-child-view" />
 
 const accordionTitle = 'accordion title'
+
+const user = userEvent.setup()
 
 jest.unmock('react-native/Libraries/Animated/createAnimatedComponent')
 jest.useFakeTimers()
@@ -25,10 +27,7 @@ describe('Accordion', () => {
 
     expect(screen.queryByTestId('accordion-child-view')).not.toBeOnTheScreen()
 
-    act(() => {
-      fireEvent.press(screen.getByText('accordion title'))
-      jest.runAllTimers()
-    })
+    await user.press(screen.getByText('accordion title'))
 
     expect(screen.getByTestId('accordion-child-view')).toBeOnTheScreen()
   })
@@ -38,8 +37,8 @@ describe('Accordion', () => {
 
     expect(screen.getByTestId('accordionTouchable')).toHaveAccessibilityState({ expanded: false })
 
+    await user.press(screen.getByText('accordion title'))
     act(() => {
-      fireEvent.press(screen.getByText('accordion title'))
       jest.runAllTimers()
     })
 
@@ -53,8 +52,8 @@ describe('Accordion', () => {
     // ArrowNext (right) + 90° => arrow facing up.
     expect(accordionArrow.props.style.transform[0]).toEqual({ rotateZ: `${Math.PI / 2}rad` })
 
+    await user.press(screen.getByText('accordion title'))
     act(() => {
-      fireEvent.press(screen.getByText('accordion title'))
       jest.runAllTimers()
     })
 

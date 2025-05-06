@@ -3,7 +3,7 @@ import React from 'react'
 import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
 import { analytics } from 'libs/analytics/provider'
-import { fireEvent, render, screen, waitFor } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 
 import { ContactBlock } from './ContactBlock'
 
@@ -20,35 +20,32 @@ const openUrlSpy = jest.spyOn(NavigationHelpers, 'openUrl')
 
 jest.mock('libs/firebase/analytics/analytics')
 
+const user = userEvent.setup()
+jest.useFakeTimers()
+
 describe('<ContactBlock/>', () => {
   it('should navigate to mail when pressing on email', async () => {
     render(<ContactBlock venue={venueDataTest} />)
 
-    fireEvent.press(screen.getByText('contact@venue.com'))
+    await user.press(screen.getByText('contact@venue.com'))
 
-    await waitFor(() => {
-      expect(openUrlSpy).toHaveBeenCalledWith('mailto:contact@venue.com', undefined, true)
-    })
+    expect(openUrlSpy).toHaveBeenCalledWith('mailto:contact@venue.com', undefined, true)
   })
 
   it('should navigate to tel when pressing on phoneNumber', async () => {
     render(<ContactBlock venue={venueDataTest} />)
 
-    fireEvent.press(screen.getByText('+33102030405'))
+    await user.press(screen.getByText('+33102030405'))
 
-    await waitFor(() => {
-      expect(openUrlSpy).toHaveBeenCalledWith('tel:+33102030405', undefined, true)
-    })
+    expect(openUrlSpy).toHaveBeenCalledWith('tel:+33102030405', undefined, true)
   })
 
   it('should navigate to website when pressing on website adress', async () => {
     render(<ContactBlock venue={venueDataTest} />)
 
-    fireEvent.press(screen.getByText('https://my@website.com'))
+    await user.press(screen.getByText('https://my@website.com'))
 
-    await waitFor(() => {
-      expect(openUrlSpy).toHaveBeenCalledWith('https://my@website.com', undefined, true)
-    })
+    expect(openUrlSpy).toHaveBeenCalledWith('https://my@website.com', undefined, true)
   })
 
   it('should display the email, phoneNumber and website', () => {
@@ -59,9 +56,9 @@ describe('<ContactBlock/>', () => {
     expect(screen.getByText('https://my@website.com')).toBeOnTheScreen()
   })
 
-  it('should log event VenueContact when opening email', () => {
+  it('should log event VenueContact when opening email', async () => {
     render(<ContactBlock venue={venueDataTest} />)
-    fireEvent.press(screen.getByText('contact@venue.com'))
+    await user.press(screen.getByText('contact@venue.com'))
 
     expect(analytics.logVenueContact).toHaveBeenNthCalledWith(1, {
       type: 'email',
@@ -69,9 +66,9 @@ describe('<ContactBlock/>', () => {
     })
   })
 
-  it('should log event VenueContact when opening phone number', () => {
+  it('should log event VenueContact when opening phone number', async () => {
     render(<ContactBlock venue={venueDataTest} />)
-    fireEvent.press(screen.getByText('+33102030405'))
+    await user.press(screen.getByText('+33102030405'))
 
     expect(analytics.logVenueContact).toHaveBeenNthCalledWith(1, {
       type: 'phoneNumber',
@@ -79,9 +76,9 @@ describe('<ContactBlock/>', () => {
     })
   })
 
-  it('should log event VenueContact when opening website', () => {
+  it('should log event VenueContact when opening website', async () => {
     render(<ContactBlock venue={venueDataTest} />)
-    fireEvent.press(screen.getByText('https://my@website.com'))
+    await user.press(screen.getByText('https://my@website.com'))
 
     expect(analytics.logVenueContact).toHaveBeenNthCalledWith(1, {
       type: 'website',
@@ -93,11 +90,9 @@ describe('<ContactBlock/>', () => {
     openUrlSpy.mockRejectedValueOnce(new Error('error'))
     render(<ContactBlock venue={venueDataTest} />)
 
-    fireEvent.press(screen.getByText('https://my@website.com'))
+    await user.press(screen.getByText('https://my@website.com'))
 
-    await waitFor(() => {
-      expect(mockShowErrorSnackBar).toHaveBeenCalledWith({ message: 'Une erreur est survenue.' })
-    })
+    expect(mockShowErrorSnackBar).toHaveBeenCalledWith({ message: 'Une erreur est survenue.' })
   })
 
   it('should display nothing when contact section is empty', () => {
