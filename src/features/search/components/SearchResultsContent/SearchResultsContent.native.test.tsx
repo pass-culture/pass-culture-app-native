@@ -1097,4 +1097,30 @@ describe('SearchResultsContent component', () => {
       expect(screen.getByTestId('calendar')).toBeOnTheScreen()
     })
   })
+
+  describe('Artists section', () => {
+    beforeEach(() => {
+      mockUseLocation.mockReturnValue(aroundMeUseLocation)
+    })
+
+    it('should display artists playlist when there are artists', async () => {
+      renderSearchResultContent()
+
+      await initSearchResultsFlashlist()
+
+      expect(await screen.findByText('Les artistes')).toBeOnTheScreen()
+    })
+
+    it('should not display artists playlist when there are not artists', async () => {
+      renderSearchResultContent({
+        ...DEFAULT_SEARCH_RESULT_CONTENT_PROPS,
+        hits: { ...DEFAULT_SEARCH_RESULT_CONTENT_PROPS.hits, artists: [] },
+      })
+
+      await initSearchResultsFlashlist()
+
+      expect(screen.queryByText('Les artistes')).not.toBeOnTheScreen()
+    })
+
+  })
 })

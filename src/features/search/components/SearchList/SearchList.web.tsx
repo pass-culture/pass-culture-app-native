@@ -128,6 +128,7 @@ export const SearchList = forwardRef<never, SearchListProps>(
       onPress,
       userData,
       venuesUserData,
+      artistSection,
     },
     _ref
   ) => {
@@ -184,7 +185,7 @@ export const SearchList = forwardRef<never, SearchListProps>(
       nbHits,
       offers: hits.offers,
       venues: hits.venues,
-      artists: hits.artists,
+      artistSection,
       isFetchingNextPage,
       autoScrollEnabled,
       onPress,
@@ -214,10 +215,17 @@ export const SearchList = forwardRef<never, SearchListProps>(
           itemsCount: data.items.length,
           userData,
           hasVenuesPlaylist,
-          hasArtistsPlaylist: !!data.artists?.length,
+          hasArtistsPlaylist: !!artistSection,
           windowWidth,
         }),
-      [hasGeolocPosition, data.items.length, userData, hasVenuesPlaylist, data.artists, windowWidth]
+      [
+        hasGeolocPosition,
+        data.items.length,
+        userData,
+        hasVenuesPlaylist,
+        artistSection,
+        windowWidth,
+      ]
     )
 
     return (

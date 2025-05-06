@@ -16,6 +16,7 @@ import { FilterButton } from 'features/search/components/Buttons/FilterButton/Fi
 import { SingleFilterButton } from 'features/search/components/Buttons/SingleFilterButton/SingleFilterButton'
 import { NoSearchResult } from 'features/search/components/NoSearchResults/NoSearchResult'
 import { SearchList } from 'features/search/components/SearchList/SearchList'
+import { ArtistSection } from 'features/search/components/SearchListHeader/ArtistSection'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { FilterBehaviour } from 'features/search/enums'
 import { getStringifySearchStateWithoutLocation } from 'features/search/helpers/getStringifySearchStateWithoutLocation/getStringifySearchStateWithoutLocation'
@@ -357,6 +358,14 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
         onPress={onEndReached}
         userData={userData}
         venuesUserData={venuesUserData}
+        artistSection={
+          hits.artists.length ? (
+            <StyledArtistSection
+              artists={hits.artists}
+              onItemPress={() => false}
+            />
+          ) : undefined
+        }
       />
     ),
     [Tab.MAP]: selectedLocationMode === LocationMode.EVERYWHERE ? null : <VenueMapViewContainer />,
