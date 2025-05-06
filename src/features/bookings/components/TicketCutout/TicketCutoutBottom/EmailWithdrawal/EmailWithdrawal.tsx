@@ -38,12 +38,10 @@ export const EmailWithdrawal = ({
       <TicketVisual>
         <EmailSent />
       </TicketVisual>
-      <WithDrawalContainer testID="withdrawal-info">
+      <WithDrawalContainer testID="withdrawal-email-will-be-send">
         {'Tu vas recevoir ton billet par e-mail '}
         {withdrawalDelay ? (
-          <TicketWithdrawalDelay testID="withdrawal-info-delay">
-            {getDelayMessage(withdrawalDelay)}
-          </TicketWithdrawalDelay>
+          <TicketWithdrawalDelay>{getDelayMessage(withdrawalDelay)}</TicketWithdrawalDelay>
         ) : null}
         {'avant le début de l’évènement.'}
       </WithDrawalContainer>
