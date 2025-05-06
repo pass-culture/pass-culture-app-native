@@ -5,7 +5,6 @@ import { SubcategoriesResponseModelv2 } from 'api/gen'
 import { useHighlightOffer } from 'features/home/api/useHighlightOffer'
 import { highlightOfferModuleFixture } from 'features/home/fixtures/highlightOfferModule.fixture'
 import {
-  formattedBusinessModule,
   formattedCategoryListModule,
   formattedExclusivityModule,
   formattedNewBusinessModule,
@@ -76,19 +75,7 @@ describe('<HomeModule />', () => {
   // Test a11y rules on each module instead of testing them on the whole page
   // because it's easier to test them one by one
   describe('Accessibility', () => {
-    it('OldBusiness module should not have basic accessibility issues', async () => {
-      const { container } = renderHomeModule(formattedBusinessModule)
-
-      expect(screen.getByText('Débloque ton crédit !')).toBeInTheDocument()
-
-      const results = await checkAccessibilityFor(container)
-
-      expect(results).toHaveNoViolations()
-    })
-
-    it('NewBusiness module should not have basic accessibility issues', async () => {
-      setFeatureFlags([RemoteStoreFeatureFlags.WIP_APP_V2_BUSINESS_BLOCK])
-
+    it('Business module should not have basic accessibility issues', async () => {
       const { container } = renderHomeModule(formattedNewBusinessModule)
 
       expect(screen.getByText('Rencontre d’arles participe à notre concours')).toBeInTheDocument()
