@@ -16,11 +16,6 @@ export const OnboardingGeolocation = () => {
     navigate(...getOnboardingStackConfig('OnboardingAgeSelectionFork'))
   }, [navigate])
 
-  const onSkip = useCallback(() => {
-    analytics.logOnboardingGeolocationClicked({ type: 'skipped' })
-    navigateToNextScreen()
-  }, [navigateToNextScreen])
-
   const onGeolocationButtonPress = useCallback(async () => {
     analytics.logOnboardingGeolocationClicked({ type: 'use_my_position' })
     await requestGeolocPermission({
@@ -31,12 +26,11 @@ export const OnboardingGeolocation = () => {
 
   return (
     <GenericInfoPage
-      withSkipAction={onSkip}
       animation={GeolocationAnimation}
       title="Découvre les offres près de chez toi"
       subtitle="Librairie, ciné, festival... Active ta géolocalisation pour retrouver les offres culturelles à proximité."
       buttonPrimary={{
-        wording: 'Utiliser ma position',
+        wording: 'Continuer',
         onPress: onGeolocationButtonPress,
       }}
     />
