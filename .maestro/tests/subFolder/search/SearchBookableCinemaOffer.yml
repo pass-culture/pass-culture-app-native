@@ -1,23 +1,22 @@
 appId: ${MAESTRO_APP_ID}
-env:
-    hasSwipeOnDatePicker: false
+onFlowStart:
+  - runScript: ../../subFolder/commons/GetCurrentDay.js
 ---
 - assertVisible: 'Rechercher'
 - runFlow:
     when:
       platform: iOS
     commands:
-    - tapOn: "Catégorie Cinéma.*"
+      - tapOn: 'Catégorie Cinéma.*'
 
 - runFlow:
     when:
       platform: Android
     commands:
-    - tapOn: 'Cinéma'
+      - tapOn: 'Cinéma'
 
 - tapOn: "Films à l'affiche"
 
-# TODO(e2e): Attendre que "Catégories soit check"
 - tapOn: 'Catégories'
 
 - assertVisible: "Films à l'affiche"
@@ -25,36 +24,12 @@ env:
 - tapOn: 'Rechercher'
 
 - tapOn:
-    id: '.*Voir tous les filtres.*' # Sélection de l'icone filtre pour ouvrir la modale
-- tapOn: 'Dates & heures'
+    id: '.*Voir tous les filtres.*'
+- tapOn: 'Dates'
 
-- assertVisible: 'Dates & heures'
+- assertVisible: 'Dates'
 - tapOn:
-    id: 'Interrupteur date'
-- tapOn: 'Date précise'
-
-- runFlow: # Si fin du mois permet de passer au mois suivant
-    when:
-      visible: '30'
-    commands:
-      - swipe:
-          from:
-            id: 'android:id/numberpicker_input'
-            index: 1
-          start: 47%, 73%
-          end: 47%, 65%
-      - swipe:
-          from:
-            id: 'android:id/numberpicker_input'
-          start: 29%, 73%
-          end: 29%, 45%
-      - evalScript: ${hasSwipeOnDatePicker = true}
-
-- runFlow:
-    when:
-      true: ${!hasSwipeOnDatePicker}
-    file: ../../subFolder/cloud/commands/SwipeOnDatePicker.yml
-- tapOn: 'Valider la date'
+    id: "native.calendar.SELECT_DATE_SLOT-${targetDateTest}"
 
 - tapOn: 'Appliquer le filtre'
 - doubleTapOn: 'Rechercher'
