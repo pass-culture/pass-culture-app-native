@@ -5,6 +5,8 @@ const softRules = {
     'react/no-unused-prop-types', // has false positives
     'local-rules/no-spacer',
     'local-rules/no-ts-expect-error',
+    'prefer-arrow-callback',
+    'func-style',
   ],
   archi: [
     'local-rules/no-queries-outside-query-files',
