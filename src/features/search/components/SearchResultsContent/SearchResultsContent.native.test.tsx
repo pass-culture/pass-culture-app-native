@@ -1122,5 +1122,17 @@ describe('SearchResultsContent component', () => {
       expect(screen.queryByText('Les artistes')).not.toBeOnTheScreen()
     })
 
+    it('should trigger consult artist log when pressing artists playlist item', async () => {
+      renderSearchResultContent()
+
+      await initSearchResultsFlashlist()
+
+      await user.press(screen.getByText('Artist 1'))
+
+      expect(analytics.logConsultArtist).toHaveBeenCalledWith({
+        artistName: 'Artist 1',
+        from: 'search',
+      })
+    })
   })
 })

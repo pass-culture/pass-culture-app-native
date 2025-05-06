@@ -323,6 +323,10 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
     hideVenueMapLocationModal()
   }
 
+  const handleOnArtistPlaylistItemPress = (artistName: string) => {
+    analytics.logConsultArtist({ artistName, from: 'search' })
+  }
+
   if (showSkeleton) return <SearchResultsPlaceHolder />
 
   const numberOfResults =
@@ -362,7 +366,7 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
           hits.artists.length ? (
             <StyledArtistSection
               artists={hits.artists}
-              onItemPress={() => false}
+              onItemPress={handleOnArtistPlaylistItemPress}
             />
           ) : undefined
         }
@@ -639,6 +643,10 @@ const StyledUl = styled(Ul)({
 
 const FiltersScrollView = styled(ScrollView)({
   marginBottom: getSpacing(2),
+})
+
+const StyledArtistSection = styled(ArtistSection)({
+  marginTop: getSpacing(4),
 })
 
 const FAVORITE_LIST_PLACEHOLDER = Array.from({ length: 20 }).map((_, index) => ({
