@@ -4,6 +4,7 @@ import styled from 'styled-components/native'
 import { SearchListFooter } from 'features/search/components/SearchListFooter/SearchListFooter.web'
 import { SearchListHeader } from 'features/search/components/SearchListHeader/SearchListHeader'
 import { SearchListProps, SearchState } from 'features/search/types'
+import { Artist } from 'features/venue/types'
 import { AlgoliaVenue } from 'libs/algolia/types'
 import { Offer } from 'shared/offer/types'
 import { HorizontalOfferTile } from 'ui/components/tiles/HorizontalOfferTile'
@@ -17,6 +18,7 @@ export type RowData = {
   userData: SearchListProps['userData']
   venuesUserData: SearchListProps['venuesUserData']
   nbHits: SearchListProps['nbHits']
+  artists?: Artist[]
   offers: Offer[]
   venues: AlgoliaVenue[]
   isFetchingNextPage: SearchListProps['isFetchingNextPage']
@@ -42,6 +44,7 @@ export function SearchListItem({ index, style, data }: Readonly<RowProps>) {
       <li style={style}>
         <SearchListHeader
           nbHits={data.nbHits}
+          artists={data.artists}
           userData={data.userData}
           venuesUserData={data.venuesUserData}
           venues={data.venues}

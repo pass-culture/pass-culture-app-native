@@ -67,10 +67,6 @@ export interface SearchState {
   gtls?: GTL[]
 }
 
-export type UserData = {
-  message: string
-}
-
 export type DescriptionContext = {
   category: SearchGroupNameEnumv2
   nativeCategory: NativeCategoryIdEnumv2 | BooksNativeCategoriesEnum | null

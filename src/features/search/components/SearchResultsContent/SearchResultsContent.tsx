@@ -10,7 +10,7 @@ import { useAccessibilityFiltersContext } from 'features/accessibility/context/A
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { VenueMapLocationModal } from 'features/location/components/VenueMapLocationModal'
 import { PlaylistType } from 'features/offer/enums'
-import { useSearchResults } from 'features/search/api/useSearchResults/useSearchResults'
+import { SearchOfferHits } from 'features/search/api/useSearchResults/useSearchResults'
 import { AutoScrollSwitch } from 'features/search/components/AutoScrollSwitch/AutoScrollSwitch'
 import { FilterButton } from 'features/search/components/Buttons/FilterButton/FilterButton'
 import { SingleFilterButton } from 'features/search/components/Buttons/SingleFilterButton/SingleFilterButton'
@@ -33,7 +33,9 @@ import { DatesHoursModal } from 'features/search/pages/modals/DatesHoursModal/Da
 import { OfferDuoModal } from 'features/search/pages/modals/OfferDuoModal/OfferDuoModal'
 import { PriceModal } from 'features/search/pages/modals/PriceModal/PriceModal'
 import { VenueModal } from 'features/search/pages/modals/VenueModal/VenueModal'
+import { VenuesUserData } from 'features/search/types'
 import { TabLayout } from 'features/venue/components/TabLayout/TabLayout'
+import { Venue } from 'features/venue/types'
 import { GeolocatedVenue } from 'features/venueMap/components/VenueMapView/types'
 import { VenueMapViewContainer } from 'features/venueMap/components/VenueMapView/VenueMapViewContainer'
 import { getRegionFromPosition } from 'features/venueMap/helpers/getRegionFromPosition/getRegionFromPosition'
@@ -46,6 +48,7 @@ import {
   setVenues,
   useVenueMapStore,
 } from 'features/venueMap/store/venueMapStore'
+import { FacetData } from 'libs/algolia/types'
 import { analytics } from 'libs/analytics/provider'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -78,36 +81,46 @@ enum Tab {
 
 const isWeb = Platform.OS === 'web'
 
-export const SearchResultsContent: React.FC = () => {
+export type SearchResultsContentProps = {
+  onEndReached: () => void
+  onSearchResultsRefresh: () => void
+  hits: SearchOfferHits
+  nbHits: number
+  isLoading?: boolean
+  isFetching?: boolean
+  isFetchingNextPage?: boolean
+  userData: unknown
+  venuesUserData: VenuesUserData
+  facets: FacetData
+  offerVenues: Venue[]
+}
+
+export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
+  onEndReached,
+  onSearchResultsRefresh,
+  hits,
+  nbHits,
+  isLoading,
+  isFetching,
+  isFetchingNextPage,
+  userData,
+  venuesUserData,
+  facets,
+  offerVenues,
+}) => {
   const [autoScrollEnabled, setAutoScrollEnabled] = useState(true)
   const searchListRef = useRef<FlashList<Offer> | null>(null)
-  const {
-    hasNextPage,
-    fetchNextPage,
-    refetch,
-    data,
-    hits,
-    nbHits,
-    isLoading,
-    isFetching,
-    isFetchingNextPage,
-    userData,
-    venuesUserData,
-    facets,
-    offerVenues,
-  } = useSearchResults()
 
   const { disabilities } = useAccessibilityFiltersContext()
   const { searchState } = useSearch()
   const { navigateToSearchFilter } = useNavigateToSearchFilter()
   const { navigateToSearch: navigateToSearchResults } = useNavigateToSearch('SearchResults')
 
-  const showSkeleton = useIsFalseWithDelay(isLoading, ANIMATION_DURATION)
-  const isRefreshing = useIsFalseWithDelay(isFetching, ANIMATION_DURATION)
+  const showSkeleton = useIsFalseWithDelay(!!isLoading, ANIMATION_DURATION)
+  const isRefreshing = useIsFalseWithDelay(!!isFetching, ANIMATION_DURATION)
   const isFocused = useIsFocused()
   const { user } = useAuthContext()
   const { geolocPosition, selectedLocationMode, selectedPlace, onResetPlace } = useLocation()
-  const previousGeolocPosition = usePrevious(geolocPosition)
   const { width, height } = useWindowDimensions()
   const shouldDisplayVenueMapInSearch = useFeatureFlag(
     RemoteStoreFeatureFlags.WIP_VENUE_MAP_IN_SEARCH
@@ -233,16 +246,6 @@ export const SearchResultsContent: React.FC = () => {
     [nbHits, searchState]
   )
 
-  const shouldRefetchResults = Boolean(
-    (geolocPosition && !previousGeolocPosition) || (!geolocPosition && previousGeolocPosition)
-  )
-
-  useEffect(() => {
-    if (shouldRefetchResults) {
-      refetch()
-    }
-  }, [refetch, shouldRefetchResults])
-
   useEffect(() => {
     if (selectedLocationMode === LocationMode.EVERYWHERE) {
       setDefaultTab(Tab.SEARCHLIST)
@@ -268,18 +271,6 @@ export const SearchResultsContent: React.FC = () => {
       stringifySearchStateWithoutLocation.current = currentFiltersWithoutLocation
     }
   }, [searchState])
-
-  const onEndReached = useCallback(() => {
-    if (data && hasNextPage) {
-      const [lastPage] = data.pages.slice(-1)
-
-      if (lastPage && lastPage.offers.page > 0) {
-        analytics.logSearchScrollToPage(lastPage.offers.page, searchState.searchId)
-      }
-      fetchNextPage()
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [hasNextPage])
 
   const renderItem = useCallback<
     ({ item, index }: { item: Offer; index: number }) => React.JSX.Element
@@ -354,7 +345,7 @@ export const SearchResultsContent: React.FC = () => {
     [Tab.SEARCHLIST]: (
       <SearchList
         ref={searchListRef}
-        isFetchingNextPage={isFetchingNextPage}
+        isFetchingNextPage={!!isFetchingNextPage}
         hits={hits}
         nbHits={nbHits}
         renderItem={renderItem}
@@ -362,7 +353,7 @@ export const SearchResultsContent: React.FC = () => {
         onEndReached={onEndReached}
         onScroll={onScroll}
         refreshing={isRefreshing}
-        onRefresh={refetch}
+        onRefresh={onSearchResultsRefresh}
         onPress={onEndReached}
         userData={userData}
         venuesUserData={venuesUserData}

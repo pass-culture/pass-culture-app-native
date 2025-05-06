@@ -8,10 +8,12 @@ import { useAccessibilityFiltersContext } from 'features/accessibility/context/A
 import { usePreviousRoute } from 'features/navigation/helpers/usePreviousRoute'
 import { SearchOfferHits } from 'features/search/api/useSearchResults/useSearchResults'
 import { NumberOfResults } from 'features/search/components/NumberOfResults/NumberOfResults'
+import { ArtistSection } from 'features/search/components/SearchListHeader/ArtistSection'
 import { VenuePlaylist } from 'features/search/components/VenuePlaylist/VenuePlaylist'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { getSearchVenuePlaylistTitle } from 'features/search/helpers/getSearchVenuePlaylistTitle/getSearchVenuePlaylistTitle'
 import { SearchView, VenuesUserData } from 'features/search/types'
+import { Artist } from 'features/venue/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/analytics/provider'
 import { useLocation } from 'libs/location'
@@ -27,6 +29,7 @@ interface SearchListHeaderProps extends ScrollViewProps {
   userData: SearchResponse<Offer[]>['userData']
   venues?: SearchOfferHits['venues']
   venuesUserData: VenuesUserData
+  artists?: Artist[]
 }
 
 export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
@@ -34,6 +37,7 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
   userData,
   venues,
   venuesUserData,
+  artists,
 }) => {
   const { geolocPosition, showGeolocPermissionModal, selectedLocationMode } = useLocation()
   const { disabilities } = useAccessibilityFiltersContext()
@@ -79,16 +83,14 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
   return (
     <View testID="searchListHeader">
       {shouldDisplayGeolocationButton ? (
-        <Container>
-          <GeolocationButtonContainer>
-            <GeolocationBanner
-              title="Géolocalise-toi"
-              subtitle="Pour trouver des offres autour de toi"
-              analyticsFrom="search"
-              onPress={onPress}
-            />
-          </GeolocationButtonContainer>
-        </Container>
+        <GeolocationButtonContainer>
+          <GeolocationBanner
+            title="Géolocalise-toi"
+            subtitle="Pour trouver des offres autour de toi"
+            analyticsFrom="search"
+            onPress={onPress}
+          />
+        </GeolocationButtonContainer>
       ) : null}
       {shouldDisplayAvailableUserDataMessage ? (
         <BannerOfferNotPresentContainer
@@ -98,28 +100,24 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
           <InfoBanner message={unavailableOfferMessage} icon={Error} />
         </BannerOfferNotPresentContainer>
       ) : null}
+      {artists?.length ? <StyledArtistSection artists={artists} /> : null}
       {shouldDisplayVenuesPlaylist ? (
-        <Container>
-          <VenuePlaylist
-            venuePlaylistTitle={venuePlaylistTitle}
-            venues={venues}
-            isLocated={isLocated}
-          />
-        </Container>
+        <StyledVenuePlaylist
+          venuePlaylistTitle={venuePlaylistTitle}
+          venues={venues}
+          isLocated={isLocated}
+        />
       ) : null}
-      <Container>
-        <Title>{offerTitle}</Title>
-        <NumberOfResults nbHits={nbHits} />
-      </Container>
+      <Title>{offerTitle}</Title>
+      <NumberOfResults nbHits={nbHits} />
     </View>
   )
 }
-const Container = styled.View({ marginTop: getSpacing(4) })
 
 const GeolocationButtonContainer = styled.View(({ theme }) => ({
+  marginVertical: getSpacing(4),
   marginLeft: theme.contentPage.marginHorizontal,
   marginRight: theme.contentPage.marginHorizontal,
-  marginBottom: getSpacing(4),
 }))
 
 const BannerOfferNotPresentContainer = styled.View<{ nbHits: number }>(({ nbHits }) => ({
@@ -129,4 +127,13 @@ const BannerOfferNotPresentContainer = styled.View<{ nbHits: number }>(({ nbHits
 
 const Title = styled(Typo.Title3)({
   marginHorizontal: getSpacing(6),
+  marginTop: getSpacing(4),
+})
+
+const StyledArtistSection = styled(ArtistSection)({
+  marginTop: getSpacing(4),
+})
+
+const StyledVenuePlaylist = styled(VenuePlaylist)({
+  marginTop: getSpacing(4),
 })
