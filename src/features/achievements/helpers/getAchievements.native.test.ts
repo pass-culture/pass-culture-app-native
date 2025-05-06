@@ -11,11 +11,13 @@ import {
   userCompletedBookBooking,
   userCompletedMovieBooking,
 } from 'features/achievements/data/AchievementData'
-import { GetAchivementsParams, getAchievements } from 'features/achievements/hooks/getAchievements'
+import {
+  GetAchivementsParams,
+  getAchievements,
+} from 'features/achievements/helpers/getAchievements'
 import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics/__mocks__/provider'
 import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
-import { renderHook } from 'tests/utils'
 import { FirstArtLessonBookingLocked } from 'ui/svg/icons/achievements/Simple/FirstArtLessonBookingLocked'
 import { FirstArtLessonBookingUnlocked } from 'ui/svg/icons/achievements/Simple/FirstArtLessonBookingUnlocked'
 
@@ -48,16 +50,14 @@ const testAchievement = {
   category: CombinedAchievementCategory.TEST,
 }
 
-const testUseAchievements = ({
+const testGetAchievements = ({
   achievements = [],
   completedAchievements = [],
 }: Partial<GetAchivementsParams> = {}) =>
-  renderHook(() =>
-    getAchievements({
-      achievements,
-      completedAchievements,
-    })
-  ).result.current
+  getAchievements({
+    achievements,
+    completedAchievements,
+  })
 
 describe('getAchievements', () => {
   beforeEach(() => {
@@ -68,13 +68,13 @@ describe('getAchievements', () => {
   })
 
   it('should return empty array when there are no achievements', () => {
-    const { categories } = testUseAchievements()
+    const { categories } = testGetAchievements()
 
     expect(categories).toEqual([])
   })
 
   it('should return achievements grouped by category', () => {
-    const { categories } = testUseAchievements({
+    const { categories } = testGetAchievements({
       achievements: [firstArtLessonBooking, testAchievement as unknown as Achievement],
     })
 
@@ -101,7 +101,7 @@ describe('getAchievements', () => {
   })
 
   it('achievement is NOT completed when user has not already completed it', () => {
-    const { categories } = testUseAchievements({
+    const { categories } = testGetAchievements({
       achievements: [firstArtLessonBooking, firstBookBooking],
     })
 
@@ -124,7 +124,7 @@ describe('getAchievements', () => {
   })
 
   it('achievement is completed when user has already completed it', () => {
-    const { categories } = testUseAchievements({
+    const { categories } = testGetAchievements({
       achievements: [firstArtLessonBooking, firstBookBooking],
       completedAchievements: [userCompletedArtLessonBooking, userCompletedBookBooking],
     })
@@ -148,7 +148,7 @@ describe('getAchievements', () => {
   })
 
   it('achievement name is "Succès non débloqué" when achievement is not completed', () => {
-    const { categories } = testUseAchievements({
+    const { categories } = testGetAchievements({
       achievements: [firstArtLessonBooking, firstBookBooking],
       completedAchievements: [],
     })
@@ -172,7 +172,7 @@ describe('getAchievements', () => {
   })
 
   it('achievement completed name is the achievement name', () => {
-    const { categories } = testUseAchievements({
+    const { categories } = testGetAchievements({
       achievements: [firstArtLessonBooking, firstBookBooking],
       completedAchievements: [userCompletedArtLessonBooking, userCompletedBookBooking],
     })
@@ -196,7 +196,7 @@ describe('getAchievements', () => {
   })
 
   it('achivements are sorted by name', () => {
-    const { categories } = testUseAchievements({
+    const { categories } = testGetAchievements({
       achievements: [firstArtLessonBooking, firstBookBooking],
       completedAchievements: [userCompletedArtLessonBooking, userCompletedBookBooking],
     })
@@ -218,7 +218,7 @@ describe('getAchievements', () => {
   })
 
   it('achievement completed is sorted before achievement not completed', () => {
-    const { categories } = testUseAchievements({
+    const { categories } = testGetAchievements({
       achievements: [firstBookBooking, firstArtLessonBooking],
       completedAchievements: [userCompletedArtLessonBooking],
     })
@@ -242,7 +242,7 @@ describe('getAchievements', () => {
   describe('Category Achievements completion', () => {
     describe('Remaining achievements to complete', () => {
       it('should return "0 succès restant" when all achievements of category are completed', () => {
-        const { categories } = testUseAchievements({
+        const { categories } = testGetAchievements({
           achievements: [firstArtLessonBooking, firstBookBooking],
           completedAchievements: [userCompletedArtLessonBooking, userCompletedBookBooking],
         })
@@ -256,7 +256,7 @@ describe('getAchievements', () => {
       })
 
       it('should return "1 succès restants" when 1 achievement are not completed', () => {
-        const { categories } = testUseAchievements({
+        const { categories } = testGetAchievements({
           achievements: [firstArtLessonBooking, firstBookBooking],
           completedAchievements: [userCompletedArtLessonBooking],
         })
@@ -270,7 +270,7 @@ describe('getAchievements', () => {
       })
 
       it('should return "2 succès restants" when 2 achievement are not completed', () => {
-        const { categories } = testUseAchievements({
+        const { categories } = testGetAchievements({
           achievements: [firstArtLessonBooking, firstBookBooking],
         })
 
@@ -285,7 +285,7 @@ describe('getAchievements', () => {
 
     describe('Achievements progression', () => {
       it('should be 1 when all achievements are completed', () => {
-        const { categories } = testUseAchievements({
+        const { categories } = testGetAchievements({
           achievements: [firstArtLessonBooking],
           completedAchievements: [userCompletedArtLessonBooking],
         })
@@ -299,7 +299,7 @@ describe('getAchievements', () => {
       })
 
       it('should be 0 when no achievements are completed', () => {
-        const { categories } = testUseAchievements({
+        const { categories } = testGetAchievements({
           achievements: [firstArtLessonBooking],
         })
 
@@ -312,7 +312,7 @@ describe('getAchievements', () => {
       })
 
       it('should be 0.5 when 1 achievement of 2 are completed', () => {
-        const { categories } = testUseAchievements({
+        const { categories } = testGetAchievements({
           achievements: [firstArtLessonBooking, firstBookBooking],
           completedAchievements: [userCompletedArtLessonBooking],
         })
@@ -326,7 +326,7 @@ describe('getAchievements', () => {
       })
 
       it('should be 0.75 when 3 achievement of 4 are completed', () => {
-        const { categories } = testUseAchievements({
+        const { categories } = testGetAchievements({
           achievements: [
             firstArtLessonBooking,
             firstBookBooking,
@@ -350,7 +350,7 @@ describe('getAchievements', () => {
 
       describe('text', () => {
         it('should return 0/2 when no achievements are completed', () => {
-          const { categories } = testUseAchievements({
+          const { categories } = testGetAchievements({
             achievements: [firstArtLessonBooking, firstBookBooking],
           })
 
@@ -363,7 +363,7 @@ describe('getAchievements', () => {
         })
 
         it('should return 2/2 when all achievements are completed', () => {
-          const { categories } = testUseAchievements({
+          const { categories } = testGetAchievements({
             achievements: [firstArtLessonBooking, firstBookBooking],
             completedAchievements: [userCompletedArtLessonBooking, userCompletedBookBooking],
           })
@@ -377,7 +377,7 @@ describe('getAchievements', () => {
         })
 
         it('should return 1/2 when 1 achievement of 2 are completed', () => {
-          const { categories } = testUseAchievements({
+          const { categories } = testGetAchievements({
             achievements: [firstArtLessonBooking, firstBookBooking],
             completedAchievements: [userCompletedArtLessonBooking],
           })
@@ -400,7 +400,7 @@ describe('getAchievements', () => {
         ${'profile'}
         ${'success'}
       `('send DisplayAchievements event with from $from when track from $from', ({ from }) => {
-        const { track } = testUseAchievements()
+        const { track } = testGetAchievements()
 
         track(from)
 
@@ -413,7 +413,7 @@ describe('getAchievements', () => {
 
   describe('Number unlocked', () => {
     it('send 0 when no achievements are completed', () => {
-      const { track } = testUseAchievements()
+      const { track } = testGetAchievements()
 
       track('profile')
 
@@ -423,7 +423,7 @@ describe('getAchievements', () => {
     })
 
     it('send 2 when 2 achievement are completed', () => {
-      const { track } = testUseAchievements({
+      const { track } = testGetAchievements({
         achievements: [firstArtLessonBooking, firstBookBooking],
         completedAchievements: [userCompletedArtLessonBooking, userCompletedBookBooking],
       })

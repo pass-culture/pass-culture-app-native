@@ -3,121 +3,102 @@ import { shuffle } from 'lodash'
 import { SubcategoryIdEnum } from 'api/gen'
 import { getVenueOffersArtists } from 'features/venue/helpers/getVenueOffersArtists'
 import { Offer } from 'shared/offer/types'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { renderHook, waitFor } from 'tests/utils'
 
 describe('getVenueOffersArtists', () => {
   it('should return empty artists array when venueOffers is undefined', () => {
-    const { result } = renderHook(() => getVenueOffersArtists([SubcategoryIdEnum.LIVRE_PAPIER]), {
-      wrapper: ({ children }) => reactQueryProviderHOC(children),
-    })
+    const result = getVenueOffersArtists([SubcategoryIdEnum.LIVRE_PAPIER])
 
-    expect(result.current.data).toEqual({ artists: [] })
+    expect(result.data).toEqual({ artists: [] })
   })
 
-  it('should return empty artists array when there are no offers', async () => {
-    const { result } = renderHook(
-      () => getVenueOffersArtists([SubcategoryIdEnum.LIVRE_PAPIER], []),
-      {
-        wrapper: ({ children }) => reactQueryProviderHOC(children),
-      }
-    )
+  it('should return empty artists array when there are no offers', () => {
+    const result = getVenueOffersArtists([SubcategoryIdEnum.LIVRE_PAPIER], [])
 
-    await waitFor(async () => {
-      expect(result.current.data).toEqual({ artists: [] })
-    })
+    expect(result.data).toEqual({ artists: [] })
   })
 
-  it('should return artists when there are offers', async () => {
-    const { result } = renderHook(
-      () =>
-        getVenueOffersArtists(
-          [SubcategoryIdEnum.SUPPORT_PHYSIQUE_MUSIQUE_VINYLE],
-          [
-            {
-              offer: {
-                dates: [],
-                isDigital: false,
-                isDuo: false,
-                name: 'I want something more',
-                prices: [28.0],
-                subcategoryId: SubcategoryIdEnum.SUPPORT_PHYSIQUE_MUSIQUE_VINYLE,
-                thumbUrl:
-                  'https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDZQ',
-                artist: 'Céline Dion',
-              },
-              _geoloc: { lat: 4.90339, lng: -52.31663 },
-              objectID: '102310',
-              venue: {
-                id: 4,
-                name: 'Lieu 4',
-                publicName: 'Lieu 4',
-                address: '4 rue de la paix',
-                postalCode: '75000',
-                city: 'Paris',
-              },
-              artists: [
-                {
-                  id: '1',
-                  name: 'Céline Dion',
-                  image:
-                    'https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDZQ',
-                },
-              ],
-            },
-            {
-              offer: {
-                dates: [],
-                isDigital: false,
-                isDuo: false,
-                name: 'I want something more',
-                prices: [28.0],
-                subcategoryId: SubcategoryIdEnum.SUPPORT_PHYSIQUE_MUSIQUE_VINYLE,
-                thumbUrl:
-                  'https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDZQ',
-                artist: 'Céline Dion',
-              },
-              _geoloc: { lat: 4.90339, lng: -52.31663 },
-              objectID: '102310',
-              venue: {
-                id: 4,
-                name: 'Lieu 4',
-                publicName: 'Lieu 4',
-                address: '4 rue de la paix',
-                postalCode: '75000',
-                city: 'Paris',
-              },
-              artists: [
-                {
-                  id: '1',
-                  name: 'Céline Dion',
-                  image:
-                    'https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDZQ',
-                },
-              ],
-            },
-          ]
-        ),
-      {
-        wrapper: ({ children }) => reactQueryProviderHOC(children),
-      }
-    )
-
-    await waitFor(async () => {
-      expect(result.current.data).toEqual({
-        artists: [
-          {
-            id: '1',
-            image:
+  it('should return artists when there are offers', () => {
+    const result = getVenueOffersArtists(
+      [SubcategoryIdEnum.SUPPORT_PHYSIQUE_MUSIQUE_VINYLE],
+      [
+        {
+          offer: {
+            dates: [],
+            isDigital: false,
+            isDuo: false,
+            name: 'I want something more',
+            prices: [28.0],
+            subcategoryId: SubcategoryIdEnum.SUPPORT_PHYSIQUE_MUSIQUE_VINYLE,
+            thumbUrl:
               'https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDZQ',
-            name: 'Céline Dion',
+            artist: 'Céline Dion',
           },
-        ],
-      })
+          _geoloc: { lat: 4.90339, lng: -52.31663 },
+          objectID: '102310',
+          venue: {
+            id: 4,
+            name: 'Lieu 4',
+            publicName: 'Lieu 4',
+            address: '4 rue de la paix',
+            postalCode: '75000',
+            city: 'Paris',
+          },
+          artists: [
+            {
+              id: '1',
+              name: 'Céline Dion',
+              image:
+                'https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDZQ',
+            },
+          ],
+        },
+        {
+          offer: {
+            dates: [],
+            isDigital: false,
+            isDuo: false,
+            name: 'I want something more',
+            prices: [28.0],
+            subcategoryId: SubcategoryIdEnum.SUPPORT_PHYSIQUE_MUSIQUE_VINYLE,
+            thumbUrl:
+              'https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDZQ',
+            artist: 'Céline Dion',
+          },
+          _geoloc: { lat: 4.90339, lng: -52.31663 },
+          objectID: '102310',
+          venue: {
+            id: 4,
+            name: 'Lieu 4',
+            publicName: 'Lieu 4',
+            address: '4 rue de la paix',
+            postalCode: '75000',
+            city: 'Paris',
+          },
+          artists: [
+            {
+              id: '1',
+              name: 'Céline Dion',
+              image:
+                'https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDZQ',
+            },
+          ],
+        },
+      ]
+    )
+
+    expect(result.data).toEqual({
+      artists: [
+        {
+          id: '1',
+          image:
+            'https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDZQ',
+          name: 'Céline Dion',
+        },
+      ],
     })
   })
 
-  it('should return 30 artists max / unique by id / ordered by number of offers / ordered by names', async () => {
+  it('should return 30 artists max / unique by id / ordered by number of offers / ordered by names', () => {
     // We have 2 times Artist 1 to 15 and 1 time Artist 16 to 30
     const mockedArtistList: Offer[] = Array.from({ length: 45 }, (_, index) => ({
       objectID: ((index % 30) + 1).toString(),
@@ -146,15 +127,9 @@ describe('getVenueOffersArtists', () => {
       ],
     }))
 
-    const { result } = renderHook(
-      () =>
-        getVenueOffersArtists(
-          [SubcategoryIdEnum.SUPPORT_PHYSIQUE_MUSIQUE_VINYLE],
-          shuffle(mockedArtistList)
-        ),
-      {
-        wrapper: ({ children }) => reactQueryProviderHOC(children),
-      }
+    const result = getVenueOffersArtists(
+      [SubcategoryIdEnum.SUPPORT_PHYSIQUE_MUSIQUE_VINYLE],
+      shuffle(mockedArtistList)
     )
 
     const expectedArtistsList =
@@ -188,10 +163,8 @@ describe('getVenueOffersArtists', () => {
         }))
       )
 
-    await waitFor(async () => {
-      expect(result.current.data).toEqual({
-        artists: expectedArtistsList,
-      })
+    expect(result.data).toEqual({
+      artists: expectedArtistsList,
     })
   })
 })

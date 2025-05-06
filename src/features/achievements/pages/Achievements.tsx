@@ -11,7 +11,7 @@ import {
   achievementCategoryDisplayTitles,
   achievementData,
 } from 'features/achievements/data/AchievementData'
-import { getAchievements } from 'features/achievements/hooks/getAchievements'
+import { getAchievements } from 'features/achievements/helpers/getAchievements'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { ProgressBar } from 'ui/components/bars/ProgressBar'

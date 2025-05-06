@@ -1,5 +1,3 @@
-import { renderHook } from 'tests/utils'
-
 import {
   EmailProvider,
   getContactSupportForDeletionProfile,
@@ -24,11 +22,7 @@ describe('Get contact support for deletion profile', () => {
   })
 
   it('Should request sending mail with object and recipient', async () => {
-    const {
-      result: {
-        current: { requestSendMail },
-      },
-    } = renderHook(() => getContactSupportForDeletionProfile({ emailProvider }))
+    const { requestSendMail } = getContactSupportForDeletionProfile({ emailProvider })
 
     await requestSendMail()
 

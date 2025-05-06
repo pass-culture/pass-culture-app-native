@@ -1,4 +1,4 @@
-import { ScreenSeenCount, ScreenSeenCountTriggerStorage } from './getScreenSeenCount'
+import { ScreenSeenCount, ScreenSeenCountTriggerStorage } from '../helpers/getScreenSeenCount'
 
 export const createInMemoryScreenSeenCountTriggerStorage = (): ScreenSeenCountTriggerStorage => {
   const triggered: number[] = []
