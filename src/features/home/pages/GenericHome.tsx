@@ -16,6 +16,7 @@ import {
 import styled, { useTheme } from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { useGetOffersData } from 'features/home/api/useGetOffersData'
 import { useGetVenuesData } from 'features/home/api/useGetVenuesData'
 import { useShowSkeleton } from 'features/home/api/useShowSkeleton'
 import { HomeBodyPlaceholder } from 'features/home/components/HomeBodyPlaceholder'
@@ -23,7 +24,6 @@ import { HomeModule } from 'features/home/components/modules/HomeModule'
 import { OffersModuleProps } from 'features/home/components/modules/OffersModule'
 import { VideoCarouselModule } from 'features/home/components/modules/video/VideoCarouselModule'
 import { useOnScroll } from 'features/home/pages/helpers/useOnScroll'
-import { useGetOffersDataQuery } from 'features/home/queries/useGetOffersDataQuery'
 import {
   HomepageModule,
   HomepageModuleType,
@@ -151,7 +151,7 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = ({
   videoModuleId,
   statusBar,
 }) => {
-  const offersModulesData = useGetOffersDataQuery(modules.filter(isOffersModule))
+  const { offersModulesData } = useGetOffersData(modules.filter(isOffersModule))
   const { venuesModulesData } = useGetVenuesData(modules.filter(isVenuesModule))
   const logHasSeenAllModules = useFunctionOnce(async () =>
     analytics.logAllModulesSeen(modules.length)

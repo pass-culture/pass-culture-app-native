@@ -1,9 +1,9 @@
 import React from 'react'
 
 import { SubcategoriesResponseModelv2 } from 'api/gen'
+import { useVideoOffers } from 'features/home/api/useVideoOffers'
 import { VideoModule } from 'features/home/components/modules/video/VideoModule'
 import { videoModuleFixture } from 'features/home/fixtures/videoModule.fixture'
-import { useVideoOffersQuery } from 'features/home/queries/useVideoOffersQuery'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
@@ -20,8 +20,8 @@ jest.mock('ui/components/modals/useModal', () => ({
   }),
 }))
 
-jest.mock('features/home/queries/useVideoOffersQuery')
-const mockUseVideoOffersQuery = useVideoOffersQuery as jest.Mock
+jest.mock('features/home/api/useVideoOffers')
+const mockUseVideoOffers = useVideoOffers as jest.Mock
 
 jest.mock('libs/firebase/analytics/analytics')
 
@@ -35,14 +35,14 @@ describe('VideoModule', () => {
   })
 
   it('should render properly', async () => {
-    mockUseVideoOffersQuery.mockReturnValueOnce({ offers: [offerFixture] })
+    mockUseVideoOffers.mockReturnValueOnce({ offers: [offerFixture] })
     renderVideoModule()
 
     expect(await screen.findByText(offerFixture.offer.name)).toBeOnTheScreen()
   })
 
   it('should show modal when pressing video thumbnail', async () => {
-    mockUseVideoOffersQuery.mockReturnValueOnce({ offers: [offerFixture] })
+    mockUseVideoOffers.mockReturnValueOnce({ offers: [offerFixture] })
     renderVideoModule()
 
     const button = screen.getByTestId('video-thumbnail')
@@ -53,7 +53,7 @@ describe('VideoModule', () => {
   })
 
   it('should log ModuleDisplayedOnHomePage event when seeing the module', async () => {
-    mockUseVideoOffersQuery.mockReturnValueOnce({ offers: [offerFixture] })
+    mockUseVideoOffers.mockReturnValueOnce({ offers: [offerFixture] })
     renderVideoModule()
 
     await screen.findByText(offerFixture.offer.name)
@@ -68,14 +68,14 @@ describe('VideoModule', () => {
   })
 
   it('should not log ModuleDisplayedOnHomePage event when module is not rendered', async () => {
-    mockUseVideoOffersQuery.mockReturnValueOnce({ offers: [] })
+    mockUseVideoOffers.mockReturnValueOnce({ offers: [] })
     renderVideoModule()
 
     expect(analytics.logModuleDisplayedOnHomepage).not.toHaveBeenCalled()
   })
 
   it('should render multi offer component if multiples offers', async () => {
-    mockUseVideoOffersQuery.mockReturnValueOnce({ offers: [offerFixture, offerFixture2] })
+    mockUseVideoOffers.mockReturnValueOnce({ offers: [offerFixture, offerFixture2] })
     renderVideoModule()
 
     const multiOfferList = screen.getByTestId('video-multi-offers-module-list')
@@ -86,14 +86,14 @@ describe('VideoModule', () => {
   })
 
   it('should render one offer component when one offer', async () => {
-    mockUseVideoOffersQuery.mockReturnValueOnce({ offers: [offerFixture] })
+    mockUseVideoOffers.mockReturnValueOnce({ offers: [offerFixture] })
     renderVideoModule()
 
     expect(await screen.findByTestId('videoMonoOfferTile')).toBeOnTheScreen()
   })
 
   it('should render mobile design if mobile viewport', async () => {
-    mockUseVideoOffersQuery.mockReturnValueOnce({ offers: [offerFixture] })
+    mockUseVideoOffers.mockReturnValueOnce({ offers: [offerFixture] })
     renderVideoModule()
 
     const multiOfferList = screen.getByTestId('mobile-video-module')
@@ -104,7 +104,7 @@ describe('VideoModule', () => {
   })
 
   it('should render desktop design if desktop viewport', async () => {
-    mockUseVideoOffersQuery.mockReturnValueOnce({ offers: [offerFixture] })
+    mockUseVideoOffers.mockReturnValueOnce({ offers: [offerFixture] })
     renderVideoModule(true)
 
     const multiOfferList = screen.getByTestId('desktop-video-module')
@@ -115,7 +115,7 @@ describe('VideoModule', () => {
   })
 
   it('should show SeeMore button when is multiples offers and more than three offers', async () => {
-    mockUseVideoOffersQuery.mockReturnValueOnce({
+    mockUseVideoOffers.mockReturnValueOnce({
       offers: [offerFixture, offerFixture2, offerFixture3, offerFixture4],
     })
     renderVideoModule(true)
@@ -128,7 +128,7 @@ describe('VideoModule', () => {
   })
 
   it('should not show SeeMore button when is multiples offers and less than three offers', async () => {
-    mockUseVideoOffersQuery.mockReturnValueOnce({
+    mockUseVideoOffers.mockReturnValueOnce({
       offers: [offerFixture, offerFixture2],
     })
     renderVideoModule(true)

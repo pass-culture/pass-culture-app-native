@@ -1,4 +1,4 @@
-import { useExcluOfferQuery } from 'features/home/queries/useExcluOfferQuery'
+import { useExcluOffer } from 'features/home/api/useExcluOffer'
 import { ExclusivityModule } from 'features/home/types'
 import { getOfferPrice } from 'features/offer/helpers/getOfferPrice/getOfferPrice'
 import { useMaxPrice } from 'features/search/helpers/useMaxPrice/useMaxPrice'
@@ -12,7 +12,7 @@ export function useShouldDisplayExcluOffer(
   const { userLocation } = useLocation()
 
   const maxPrice = useMaxPrice()
-  const { data: offer } = useExcluOfferQuery(offerId)
+  const { data: offer } = useExcluOffer(offerId)
 
   if (!offer) return false
 

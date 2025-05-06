@@ -4,14 +4,14 @@ import { PlaylistRequestBody, RecommendationApiParams, SubcategoryIdEnumv2 } fro
 import { buildRecommendationOfferTypesList } from 'features/home/api/helpers/buildRecommendationOfferTypesList'
 import { computeBeginningAndEndingDatetimes } from 'features/home/api/helpers/computeBeginningAndEndingDatetimes'
 import { RecommendedOffersModule } from 'features/home/types'
-import { useAlgoliaSimilarOffers } from 'features/offer/api/useAlgoliaSimilarOffers'
 import { useSubcategoryIdsFromSearchGroups } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
 import { getCategoriesFacetFilters } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/getCategoriesFacetFilters'
 import { Position } from 'libs/location'
-import { QueryKeys } from 'libs/queryKeys'
 import { useHomeRecommendedIdsQuery } from 'libs/recommendation/useHomeRecommendedIdsQuery'
 import { useSubcategoryLabelMapping } from 'libs/subcategories/mappings'
 import { Offer } from 'shared/offer/types'
+
+import { useAlgoliaRecommendedOffers } from './useAlgoliaRecommendedOffers'
 
 export function getRecommendationParameters(
   parameters: RecommendedOffersModule['recommendationParameters'] | undefined,
@@ -83,10 +83,9 @@ export const useHomeRecommendedOffers = (
     userId,
   })
 
-  const ids = data?.playlistRecommendedOffers ?? []
   return {
     offers:
-      useAlgoliaSimilarOffers(ids, true, [QueryKeys.RECOMMENDATION_HITS, moduleId, ids]) || [],
+      useAlgoliaRecommendedOffers(data?.playlistRecommendedOffers ?? [], moduleId, true) || [],
     recommendationApiParams: data?.params,
   }
 }

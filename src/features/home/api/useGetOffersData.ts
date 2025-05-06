@@ -18,7 +18,7 @@ const isPlaylistOffersParamsArrayWithoutUndefined = (
   params: unknown
 ): params is PlaylistOffersParams[] => params !== undefined
 
-export const useGetOffersDataQuery = (modules: OffersModule[]) => {
+export const useGetOffersData = (modules: OffersModule[]) => {
   const { userLocation } = useLocation()
   const transformHits = useTransformOfferHits()
 
@@ -33,7 +33,7 @@ export const useGetOffersDataQuery = (modules: OffersModule[]) => {
       .filter(isPlaylistOffersParameters)
     offersModuleIds.push(module.id)
     return {
-      adaptedPlaylistParameters,
+      adaptedPlaylistParameters: adaptedPlaylistParameters,
       moduleId: module.id,
     } as OfferModuleParamsInfo
   })
@@ -47,8 +47,9 @@ export const useGetOffersDataQuery = (modules: OffersModule[]) => {
       paramsList: offersAdaptedPlaylistParametersWithoutUndefined,
       isUserUnderage,
     })
+    const searchResponseResult = result.filter(searchResponsePredicate)
 
-    return result.filter(searchResponsePredicate)
+    return searchResponseResult
   }
 
   const offersResultList = useQuery({
@@ -65,11 +66,11 @@ export const useGetOffersDataQuery = (modules: OffersModule[]) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userLocation?.latitude, userLocation?.longitude])
 
-  return offersResultList.data
-    ? mapOffersDataAndModules({
-        data: offersResultList.data,
-        modulesParams: offersParameters,
-        transformHits,
-      })
-    : []
+  const offersModulesData = mapOffersDataAndModules({
+    results: offersResultList,
+    modulesParams: offersParameters,
+    transformHits,
+  })
+
+  return { offersModulesData }
 }
