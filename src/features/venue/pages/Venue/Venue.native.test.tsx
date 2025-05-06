@@ -11,7 +11,7 @@ import {
   VenueResponse,
   VenueTypeCodeKey,
 } from 'api/gen'
-import { useGTLPlaylists } from 'features/gtlPlaylist/hooks/useGTLPlaylists'
+import { useGTLPlaylistsQuery } from 'features/gtlPlaylist/queries/useGTLPlaylistsQuery'
 import { Referrals } from 'features/navigation/RootNavigator/types'
 import { CineContentCTAID } from 'features/offer/components/OfferCine/CineContentCTA'
 import * as useOfferCTAContextModule from 'features/offer/components/OfferContent/OfferCTAProvider'
@@ -53,8 +53,8 @@ jest.mock('libs/location')
 
 jest.mock('libs/subcategories/useSubcategories')
 const venueId = venueDataTest.id
-jest.mock('features/gtlPlaylist/hooks/useGTLPlaylists')
-const mockUseGTLPlaylists = useGTLPlaylists as jest.Mock
+jest.mock('features/gtlPlaylist/queries/useGTLPlaylistsQuery')
+const mockUseGTLPlaylists = useGTLPlaylistsQuery as jest.Mock
 mockUseGTLPlaylists.mockReturnValue({
   gtlPlaylists: [
     {

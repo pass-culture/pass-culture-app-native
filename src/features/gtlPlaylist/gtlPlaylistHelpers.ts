@@ -1,6 +1,7 @@
 import { VenueResponse, VenueTypeCodeKey } from 'api/gen'
 import { GtlPlaylistRequest } from 'features/gtlPlaylist/types'
-import { OffersModuleParameters, PlaylistOffersParams } from 'features/home/types'
+import { OffersModuleParameters } from 'features/home/types'
+import { PlaylistOffersParams } from 'libs/algolia/types'
 import { ContentfulLabelCategories } from 'libs/contentful/types'
 
 const VenueTypeToContentfulLabelMapping: Partial<
@@ -16,9 +17,9 @@ export const getContentfulLabelByVenueType = (venueTypeCode?: VenueTypeCodeKey |
 }
 
 export const filterByContentfulLabel = (
-  playlistConfig: GtlPlaylistRequest[],
+  gtlPlaylistConfig: GtlPlaylistRequest[],
   label: ContentfulLabelCategories
-) => playlistConfig.filter((config) => config.offersModuleParameters.categories?.[0] === label)
+) => gtlPlaylistConfig.filter((config) => config.offersModuleParameters.categories?.[0] === label)
 
 export const getLabelFilter = (
   venueTypeCode?: VenueTypeCodeKey | null,
@@ -29,12 +30,12 @@ export const getLabelFilter = (
 }
 
 export const filterGtlPlaylistConfigByLabel = (
-  playlistConfig: GtlPlaylistRequest[],
+  gtlPlaylistConfig: GtlPlaylistRequest[],
   venueTypeCode?: VenueTypeCodeKey | null,
   searchGroupLabel?: ContentfulLabelCategories
 ): GtlPlaylistRequest[] => {
   const label = getLabelFilter(venueTypeCode, searchGroupLabel)
-  return label ? filterByContentfulLabel(playlistConfig, label) : playlistConfig
+  return label ? filterByContentfulLabel(gtlPlaylistConfig, label) : gtlPlaylistConfig
 }
 
 export const getGtlPlaylistsParams = (

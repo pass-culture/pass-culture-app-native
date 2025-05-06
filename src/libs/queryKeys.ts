@@ -24,6 +24,7 @@ export enum QueryKeys {
   FEATURE_FLAGS = 'featureFlags',
   FILMS_OFFERS = 'filmsOffers',
   FIRESTORE_UBBLE_ETA_MESSAGE = 'firestoreUbbleETAMessage',
+  GTL_PLAYLISTS_CONFIG = 'GtlPlaylistsConfig',
   GTL_PLAYLISTS = 'GtlPlaylists',
   HEADLINE_OFFERS_COUNT = 'headlineOffersCount',
   HIGHLIGHT_OFFER = 'highlightOffer',

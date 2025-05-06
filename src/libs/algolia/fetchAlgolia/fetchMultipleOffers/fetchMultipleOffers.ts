@@ -1,11 +1,10 @@
-import { PlaylistOffersParams } from 'features/home/types'
 import { captureAlgoliaError } from 'libs/algolia/fetchAlgolia/AlgoliaError'
 import { buildOfferSearchParameters } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildOfferSearchParameters'
 import { offerAttributesToRetrieve } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/offerAttributesToRetrieve'
 import { multipleQueries } from 'libs/algolia/fetchAlgolia/multipleQueries'
 import { searchResponsePredicate } from 'libs/algolia/fetchAlgolia/searchResponsePredicate'
 import { buildHitsPerPage } from 'libs/algolia/fetchAlgolia/utils'
-import { MultipleOffersResult } from 'libs/algolia/types'
+import { MultipleOffersResult, PlaylistOffersParams } from 'libs/algolia/types'
 import { env } from 'libs/environment/env'
 import { Offer } from 'shared/offer/types'
 

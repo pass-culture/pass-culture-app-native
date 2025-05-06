@@ -12,7 +12,7 @@ import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { checkAccessibilityFor, render, screen } from 'tests/utils/web'
+import { act, checkAccessibilityFor, render, screen } from 'tests/utils/web'
 
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
@@ -66,7 +66,7 @@ describe('<ThematicSearch/>', () => {
       contentfulGtlPlaylistSnap
     )
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', PLACEHOLDER_DATA)
-    MockOfferCategoriesParams({ offerCategories: [SearchGroupNameEnumv2.LIVRES] })
+    MockOfferCategoriesParams({ offerCategories: [SearchGroupNameEnumv2.MUSIQUE] })
     mockUseSearchResults.mockReturnValue(defaultUseSearchResults)
     mockUseLocation.mockReturnValue(defaultUseLocation)
   })
@@ -74,7 +74,7 @@ describe('<ThematicSearch/>', () => {
   it('should render', async () => {
     render(reactQueryProviderHOC(<ThematicSearch />))
 
-    await screen.findByText('Romans et littérature')
+    await screen.findByText('Musique')
 
     expect(screen).toMatchSnapshot()
   })
@@ -82,12 +82,14 @@ describe('<ThematicSearch/>', () => {
   it('should dispatch action with offerCategories when params change', async () => {
     render(reactQueryProviderHOC(<ThematicSearch />))
 
-    await screen.findByText('Romans et littérature')
+    await screen.findByText('Musique')
+
+    await act(async () => {})
 
     expect(mockDispatch).toHaveBeenCalledWith({
       type: 'SET_STATE',
       payload: expect.objectContaining({
-        offerCategories: [SearchGroupNameEnumv2.LIVRES],
+        offerCategories: [SearchGroupNameEnumv2.MUSIQUE],
       }),
     })
   })
@@ -97,7 +99,7 @@ describe('<ThematicSearch/>', () => {
 
     const { container } = render(reactQueryProviderHOC(<ThematicSearch />))
 
-    await screen.findByText('Romans et littérature')
+    await screen.findByText('Musique')
 
     const results = await checkAccessibilityFor(container)
 
@@ -109,7 +111,7 @@ describe('<ThematicSearch/>', () => {
 
     const { container } = render(reactQueryProviderHOC(<ThematicSearch />))
 
-    await screen.findByText('Romans et littérature')
+    await screen.findByText('Musique')
 
     const results = await checkAccessibilityFor(container)
 
