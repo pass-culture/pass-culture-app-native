@@ -15,8 +15,8 @@ import { renderHook, act } from 'tests/utils'
 import { useActivationBanner } from './useActivationBanner'
 
 const mockBannerName = BannerName.activation_banner
-jest.mock('features/home/api/useBanner', () => ({
-  useBanner: jest.fn(() => ({
+jest.mock('features/home/queries/useBannerQuery', () => ({
+  useBannerQuery: jest.fn(() => ({
     data: {
       banner: {
         title: 'API - Débloque tes 150\u00a0€',
