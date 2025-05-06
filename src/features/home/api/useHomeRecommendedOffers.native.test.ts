@@ -2,14 +2,15 @@ import mockdate from 'mockdate'
 import { UseQueryResult } from 'react-query'
 
 import { PlaylistResponse, SubcategoryIdEnumv2 } from 'api/gen'
-import * as algoliaRecommendedOffersAPI from 'features/home/api/useAlgoliaRecommendedOffers'
 import {
   getRecommendationParameters,
   useHomeRecommendedOffers,
 } from 'features/home/api/useHomeRecommendedOffers'
 import { RecommendedOffersModule, RecommendedOffersParameters } from 'features/home/types'
+import * as algoliaSimilarOffersAPI from 'features/offer/api/useAlgoliaSimilarOffers'
 import { useSubcategoryIdsFromSearchGroups } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
 import { getCategoriesFacetFilters } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/getCategoriesFacetFilters'
+import { QueryKeys } from 'libs/queryKeys'
 import * as recommendedIdsAPI from 'libs/recommendation/useHomeRecommendedIdsQuery'
 import { useSubcategoryLabelMapping } from 'libs/subcategories/mappings'
 import { renderHook } from 'tests/utils'
@@ -35,12 +36,16 @@ describe('useHomeRecommendedOffers', () => {
       >)
 
     const algoliaSpy = jest
-      .spyOn(algoliaRecommendedOffersAPI, 'useAlgoliaRecommendedOffers')
+      .spyOn(algoliaSimilarOffersAPI, 'useAlgoliaSimilarOffers')
       .mockImplementationOnce(jest.fn())
 
     renderHook(() => useHomeRecommendedOffers(position, mockModuleId))
 
-    expect(algoliaSpy).toHaveBeenCalledWith(['1234'], 'abcd', true)
+    expect(algoliaSpy).toHaveBeenCalledWith(['1234'], true, [
+      QueryKeys.RECOMMENDATION_HITS,
+      'abcd',
+      ['1234'],
+    ])
   })
 })
 
