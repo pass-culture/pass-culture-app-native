@@ -62,11 +62,11 @@ jobs:
       - run: yarn test:unit:web:ci --shard=${{ matrix.shard }}/${{ strategy.job-total }}
 
       - name: Rename allure reports folder
-        if: github.ref == 'refs/heads/master'
+        if: ${{ always() && github.ref == 'refs/heads/master' }}
         run: mv allure-results allure-results-web-${{matrix.shard}}
 
       - name: Cache the allure reports
-        if: github.ref == 'refs/heads/master'
+        if: ${{ always() && github.ref == 'refs/heads/master' }}
         id: allure-report-cache-web
         uses: pass-culture-github-actions/gcs-cache@v1.0.0
         with:
@@ -119,7 +119,7 @@ jobs:
       - run: mv coverage/coverage-final.json coverage/${{matrix.shard}}.json
 
       - name: Rename allure reports folder
-        if: github.ref == 'refs/heads/master'
+        if: ${{ always() && github.ref == 'refs/heads/master' }}
         run: mv allure-results allure-results-${{matrix.shard}}
 
       - name: Cache the coverage report
@@ -134,7 +134,7 @@ jobs:
           key: v1-coverage-dependency-cache-${{ runner.os }}-${{ github.sha }}-${{ matrix.shard }}
 
       - name: Cache the allure reports
-        if: github.ref == 'refs/heads/master'
+        if: ${{ always() && github.ref == 'refs/heads/master' }}
         id: allure-report-cache-native
         uses: pass-culture-github-actions/gcs-cache@v1.0.0
         with:
