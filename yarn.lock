@@ -8025,6 +8025,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@react-native/normalize-colors@npm:^0.74.1":
+  version: 0.74.89
+  resolution: "@react-native/normalize-colors@npm:0.74.89"
+  checksum: df62772f029dd132d3061a8ee7f90b6aaf5c525bb7e33c22908249daffa42995cddd91adc790ec9ce701636c14eeafc1809a9d0d879e3f8c71c9f340145abfce
+  languageName: node
+  linkType: hard
+
 "@react-native/typescript-config@npm:0.73.1":
   version: 0.73.1
   resolution: "@react-native/typescript-config@npm:0.73.1"
@@ -8044,11 +8051,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-navigation/bottom-tabs@npm:6.3.3":
-  version: 6.3.3
-  resolution: "@react-navigation/bottom-tabs@npm:6.3.3"
+"@react-navigation/bottom-tabs@npm:^6.6.1":
+  version: 6.6.1
+  resolution: "@react-navigation/bottom-tabs@npm:6.6.1"
   dependencies:
-    "@react-navigation/elements": ^1.3.5
+    "@react-navigation/elements": ^1.3.31
     color: ^4.2.3
     warn-once: ^0.1.0
   peerDependencies:
@@ -8057,7 +8064,7 @@ __metadata:
     react-native: "*"
     react-native-safe-area-context: ">= 3.0.0"
     react-native-screens: ">= 3.0.0"
-  checksum: 087e782c6dbf65287c90b10e44b717681348d2b350ed3969fab631b2b8d7c4595b3a5d53dc3ed1d8552fc6f857158053263576c921aa8fd0b6271c217825a69c
+  checksum: 07d6da4b91d7f372b67bcb9f1ff97fba96f1fe226bd95d43d7877362ce71d99c6eebe9ca41d84ea8828f055713386262e089a8207a6c849f33bae49b4df4b196
   languageName: node
   linkType: hard
 
@@ -8076,30 +8083,30 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-navigation/elements@npm:^1.3.5":
-  version: 1.3.12
-  resolution: "@react-navigation/elements@npm:1.3.12"
+"@react-navigation/elements@npm:^1.3.31":
+  version: 1.3.31
+  resolution: "@react-navigation/elements@npm:1.3.31"
   peerDependencies:
     "@react-navigation/native": ^6.0.0
     react: "*"
     react-native: "*"
     react-native-safe-area-context: ">= 3.0.0"
-  checksum: 070bedf8caf0f35fb7c80452eff21413d41c9ac72f9017da969373f9caac74dfd3541df028a648852fe6e6881cd4158b4ddf3eda1afa1a414a9297cd475f902f
+  checksum: 1e4a65ccd9fab757d01bf41f605aafd6ca8301ae25ad7d3f1769320793418cca9fe2f25ac9337578ce1e0a1560bbbc3a88f18b899867aacd4d31de7a789e417e
   languageName: node
   linkType: hard
 
-"@react-navigation/native@npm:6.0.12":
-  version: 6.0.12
-  resolution: "@react-navigation/native@npm:6.0.12"
+"@react-navigation/native@npm:^6.1.17":
+  version: 6.1.18
+  resolution: "@react-navigation/native@npm:6.1.18"
   dependencies:
-    "@react-navigation/core": ^6.3.0
+    "@react-navigation/core": ^6.4.17
     escape-string-regexp: ^4.0.0
     fast-deep-equal: ^3.1.3
     nanoid: ^3.1.23
   peerDependencies:
     react: "*"
     react-native: "*"
-  checksum: 7b5a83fb3167b74a0e9956297910abe793cfb965c0db411473ffc73ff7e5f3bd5b554a883fff17c9ad9ee7566fa20458428e17f34e46a6c8ee02fde16e142c19
+  checksum: 82aeea67723f5dc41403e1c260f04942696f6cde95e30629c383521c3837d18d2d5c21bd78f0ade50beb81ac5edca2d7d38980dcd3a79e3acc86f45d0c09a4b8
   languageName: node
   linkType: hard
 
@@ -8112,11 +8119,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@react-navigation/stack@npm:6.2.3":
-  version: 6.2.3
-  resolution: "@react-navigation/stack@npm:6.2.3"
+"@react-navigation/stack@npm:^6.4.1":
+  version: 6.4.1
+  resolution: "@react-navigation/stack@npm:6.4.1"
   dependencies:
-    "@react-navigation/elements": ^1.3.5
+    "@react-navigation/elements": ^1.3.31
     color: ^4.2.3
     warn-once: ^0.1.0
   peerDependencies:
@@ -8126,7 +8133,7 @@ __metadata:
     react-native-gesture-handler: ">= 1.0.0"
     react-native-safe-area-context: ">= 3.0.0"
     react-native-screens: ">= 3.0.0"
-  checksum: ed1f5bc6b464d42cc0893d78e3c2f52bc048372d5e1303f94375bd538b8c4650639c06484c9eb154225f7951fca84e82177dabd7f5aa8936c51a4cae0b43c1ff
+  checksum: 09bcfb001db0f411df881da9f2551b7015c4d5259a77fcb93196de308838035d016dc4dcb654d16d9cd4cc99f09f5e48add796aa903f9a253678947c35b18199
   languageName: node
   linkType: hard
 
@@ -10753,10 +10760,10 @@ __metadata:
     "@react-native/eslint-config": 0.73.2
     "@react-native/metro-config": 0.73.5
     "@react-native/typescript-config": 0.73.1
-    "@react-navigation/bottom-tabs": 6.3.3
-    "@react-navigation/core": 6.2.2
-    "@react-navigation/native": 6.0.12
-    "@react-navigation/stack": 6.2.3
+    "@react-navigation/bottom-tabs": ^6.6.1
+    "@react-navigation/core": ^6.4.17
+    "@react-navigation/native": ^6.1.17
+    "@react-navigation/stack": ^6.4.1
     "@react-oauth/google": ^0.11.1
     "@rollup/plugin-commonjs": ^28.0.3
     "@sentry/react": ^8.55.0
@@ -10929,7 +10936,7 @@ __metadata:
     react-native-svg-web: ^1.0.9
     react-native-tracking-transparency: ^0.1.2
     react-native-url-polyfill: ^1.3.0
-    react-native-web: ^0.18.10
+    react-native-web: ^0.19.13
     react-native-web-linear-gradient: ^1.1.2
     react-native-web-lottie: ^1.4.4
     react-native-web-swiper: 2.2.4
@@ -13710,16 +13717,6 @@ __metadata:
   bin:
     create-jest: bin/create-jest.js
   checksum: 1427d49458adcd88547ef6fa39041e1fe9033a661293aa8d2c3aa1b4967cb5bf4f0c00436c7a61816558f28ba2ba81a94d5c962e8022ea9a883978fc8e1f2945
-  languageName: node
-  linkType: hard
-
-"create-react-class@npm:^15.7.0":
-  version: 15.7.0
-  resolution: "create-react-class@npm:15.7.0"
-  dependencies:
-    loose-envify: ^1.3.1
-    object-assign: ^4.1.1
-  checksum: 0c5f43da705fa9f67ec289051dd5780792652d440dfa17cd2c7d8423c1f604609596f895dabf46fda1960ddd93ee96fe1b61ef4d55a94fc4271b07d515486714
   languageName: node
   linkType: hard
 
@@ -20941,7 +20938,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"loose-envify@npm:^1.0.0, loose-envify@npm:^1.1.0, loose-envify@npm:^1.3.1, loose-envify@npm:^1.4.0":
+"loose-envify@npm:^1.0.0, loose-envify@npm:^1.1.0, loose-envify@npm:^1.4.0":
   version: 1.4.0
   resolution: "loose-envify@npm:1.4.0"
   dependencies:
@@ -21282,6 +21279,13 @@ __metadata:
   version: 5.2.1
   resolution: "memoize-one@npm:5.2.1"
   checksum: a3cba7b824ebcf24cdfcd234aa7f86f3ad6394b8d9be4c96ff756dafb8b51c7f71320785fbc2304f1af48a0467cbbd2a409efc9333025700ed523f254cb52e3d
+  languageName: node
+  linkType: hard
+
+"memoize-one@npm:^6.0.0":
+  version: 6.0.0
+  resolution: "memoize-one@npm:6.0.0"
+  checksum: f185ea69f7cceae5d1cb596266dcffccf545e8e7b4106ec6aa93b71ab9d16460dd118ac8b12982c55f6d6322fcc1485de139df07eacffaae94888b9b3ad7675f
   languageName: node
   linkType: hard
 
@@ -22558,13 +22562,6 @@ __metadata:
   bin:
     nopt: bin/nopt.js
   checksum: 2cfc65e7ee38af2e04aea98f054753b0230011c0eeca4ecf131bd7d25984cbbf6f214586e0ae5dfcc2e830bc0bffa5a7fb28ea8d0b306ffd4ae8ea2d814c1ab3
-  languageName: node
-  linkType: hard
-
-"normalize-css-color@npm:^1.0.2":
-  version: 1.0.2
-  resolution: "normalize-css-color@npm:1.0.2"
-  checksum: 7433dc995a8d27c9384059ef0b52ceef47f4fab1bab55f1f085058b27e7472466ce321f46391fc85b6851db5212b9bd2bf55f5dc361da01a8a8cf4c360f69dab
   languageName: node
   linkType: hard
 
@@ -24926,21 +24923,22 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-web@npm:^0.18.10":
-  version: 0.18.10
-  resolution: "react-native-web@npm:0.18.10"
+"react-native-web@npm:^0.19.13":
+  version: 0.19.13
+  resolution: "react-native-web@npm:0.19.13"
   dependencies:
     "@babel/runtime": ^7.18.6
-    create-react-class: ^15.7.0
+    "@react-native/normalize-colors": ^0.74.1
     fbjs: ^3.0.4
     inline-style-prefixer: ^6.0.1
-    normalize-css-color: ^1.0.2
+    memoize-one: ^6.0.0
+    nullthrows: ^1.1.1
     postcss-value-parser: ^4.2.0
-    styleq: ^0.1.2
+    styleq: ^0.1.3
   peerDependencies:
-    react: ^17.0.2 || ^18.0.0
-    react-dom: ^17.0.2 || ^18.0.0
-  checksum: 2549a7e316e5e6ac2b59eac0c500bc8e021f32854bd852d4bf719eebad9ef9fbccbeb6fd3f4654d3d3f971c7af43240139affc8b3f36ad288908e7aeea32c43e
+    react: ^18.0.0
+    react-dom: ^18.0.0
+  checksum: 15077f88204cb980203b8e3784c092c8c25c972bf281db43fd4ccc9696b603380a49f5289fb9a742daddd8e7599baab5798a1f1c857bdd634add827bc39fd8d8
   languageName: node
   linkType: hard
 
@@ -27099,7 +27097,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"styleq@npm:^0.1.2":
+"styleq@npm:^0.1.3":
   version: 0.1.3
   resolution: "styleq@npm:0.1.3"
   checksum: 14a8d23abd914166a9b4bd04ed753bd91363f0e029ee4a94ec2c7dc37d3213fe01fceee22dc655288da3ae89f5dc01cec42d5e2b58478b0dea33bf5bdf509be1
