@@ -16,7 +16,7 @@ import { ImageBackground } from 'libs/resizing-image-on-demand/ImageBackground'
 import { SNACK_BAR_TIME_OUT_LONG, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { ArrowRight } from 'ui/svg/icons/ArrowRight'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 import { customFocusOutline } from 'ui/theme/customFocusOutline/customFocusOutline'
 
 const FIXED_SIZE = getSpacing(81.75)
@@ -121,7 +121,7 @@ const UnmemoizedBusinessModule = (props: BusinessModuleProps) => {
                 </IconContainer>
               </Row>
             ) : (
-              <Spacer.Column numberOfSpaces={4} />
+              <BlankSpace />
             )}
           </ColumnLargeScreen>
           <StyledImageBackgroundLargeScreen
@@ -154,7 +154,7 @@ const UnmemoizedBusinessModule = (props: BusinessModuleProps) => {
                   </IconContainer>
                 </Row>
               ) : (
-                <Spacer.Column numberOfSpaces={4} />
+                <BlankSpace />
               )}
             </Column>
           </StyledLinearGradient>
@@ -165,6 +165,8 @@ const UnmemoizedBusinessModule = (props: BusinessModuleProps) => {
 }
 
 export const BusinessModule = memo(UnmemoizedBusinessModule)
+
+const BlankSpace = styled.View({ height: getSpacing(4) })
 
 const FlexRow = styled.View(({ theme }) => ({
   borderRadius: theme.borderRadius.radius,
