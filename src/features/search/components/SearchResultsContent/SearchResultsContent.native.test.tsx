@@ -74,8 +74,8 @@ jest.mock('features/location/helpers/useLocationState', () => ({
   }),
 }))
 
-jest.mock('features/location/helpers/useLocationSubmit', () => ({
-  useLocationSubmit: () => ({
+jest.mock('features/location/helpers/getLocationSubmit', () => ({
+  getLocationSubmit: () => ({
     setTempAroundMeRadius: jest.fn(),
   }),
 }))

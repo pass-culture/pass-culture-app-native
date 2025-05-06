@@ -5,7 +5,7 @@ import { SubcategoryIdEnum } from 'api/gen'
 import { Artist, VenueOffersArtists } from 'features/venue/types'
 import { Offer } from 'shared/offer/types'
 
-export const useVenueOffersArtists = (
+export const getVenueOffersArtists = (
   artistPageSubcategories: SubcategoryIdEnum[],
   venueOffers?: Offer[]
 ): Partial<UseQueryResult<VenueOffersArtists>> => {

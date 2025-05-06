@@ -11,7 +11,7 @@ import {
   achievementCategoryDisplayTitles,
   achievementData,
 } from 'features/achievements/data/AchievementData'
-import { useAchievements } from 'features/achievements/hooks/useAchievements'
+import { getAchievements } from 'features/achievements/helpers/getAchievements'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { ProgressBar } from 'ui/components/bars/ProgressBar'
@@ -35,7 +35,7 @@ export const Achievements = () => {
   } = useRoute<UseRouteType<'Achievements'>>()
   const { user } = useAuthContext()
   const { uniqueColors } = useTheme()
-  const { categories, track } = useAchievements({
+  const { categories, track } = getAchievements({
     achievements: achievementData,
     completedAchievements: user?.achievements || [],
   })

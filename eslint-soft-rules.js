@@ -10,7 +10,6 @@ const softRules = {
     'local-rules/no-queries-outside-query-files',
     'local-rules/queries-only-in-use-query-functions',
     'local-rules/queries-must-be-in-queries-folder',
-    'local-rules/no-useless-hook',
   ],
 }
 

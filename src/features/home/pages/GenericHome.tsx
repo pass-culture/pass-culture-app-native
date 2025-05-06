@@ -56,7 +56,7 @@ import { Page } from 'ui/pages/Page'
 import { getSpacing, Spacer } from 'ui/theme'
 
 import { createInMemoryScreenSeenCountTriggerStorage } from '../api/inMemoryScreenSeenTriggerStorage'
-import { ScreenSeenCount, useScreenSeenCount } from '../api/useScreenSeenCount'
+import { ScreenSeenCount, getScreenSeenCount } from '../helpers/getScreenSeenCount'
 
 type GenericHomeProps = {
   Header: React.JSX.Element
@@ -226,7 +226,7 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = ({
     BatchProfile.trackEvent(BatchEvent.hasSeenEnoughHomeContent, attributes)
   }
 
-  const { checkTrigger } = useScreenSeenCount({
+  const { checkTrigger } = getScreenSeenCount({
     isLoggedIn,
     screenHeight: height,
     onTrigger: triggerHasSeenEnoughHomeContent,

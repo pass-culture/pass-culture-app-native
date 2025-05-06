@@ -13,8 +13,8 @@ import { getSearchNavConfig } from 'features/navigation/SearchStackNavigator/sea
 import { OfferTileWrapper } from 'features/offer/components/OfferTile/OfferTileWrapper'
 import { useAdaptOffersPlaylistParameters } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/helpers/useAdaptOffersPlaylistParameters'
 import { analytics } from 'libs/analytics/provider'
+import { getPlaylistItemDimensionsFromLayout } from 'libs/contentful/getPlaylistItemDimensionsFromLayout'
 import { ContentTypes } from 'libs/contentful/types'
-import { usePlaylistItemDimensionsFromLayout } from 'libs/contentful/usePlaylistItemDimensionsFromLayout'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { useLocation } from 'libs/location'
 import { IntersectionObserver } from 'shared/IntersectionObserver/IntersectionObserver'
@@ -117,7 +117,7 @@ export const OffersModule = (props: OffersModuleProps) => {
     [moduleName, moduleId, homeEntryId, displayParameters.layout]
   )
 
-  const { itemWidth, itemHeight } = usePlaylistItemDimensionsFromLayout(displayParameters.layout)
+  const { itemWidth, itemHeight } = getPlaylistItemDimensionsFromLayout(displayParameters.layout)
 
   const renderFooter: RenderFooterItem = useCallback(
     ({ width, height }: ItemDimensions) => {
