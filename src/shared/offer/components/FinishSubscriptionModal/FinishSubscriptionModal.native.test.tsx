@@ -8,7 +8,7 @@ import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useGetDepositAmountsByAge } from 'shared/user/useGetDepositAmountsByAge'
 import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
-import { fireEvent, render, screen } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 
 import { FinishSubscriptionModal } from './FinishSubscriptionModal'
 
@@ -35,6 +35,9 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
     return Component
   }
 })
+
+const user = userEvent.setup()
+jest.useFakeTimers()
 
 describe('<FinishSubscriptionModal />', () => {
   beforeEach(() => {
@@ -63,19 +66,19 @@ describe('<FinishSubscriptionModal />', () => {
     expect(screen).toMatchSnapshot()
   })
 
-  it('should close modal and navigate to stepper when pressing "Confirmer mes informations" button', () => {
+  it('should close modal and navigate to stepper when pressing "Confirmer mes informations" button', async () => {
     render(<FinishSubscriptionModal {...modalProps} />)
 
-    fireEvent.press(screen.getByText('Confirmer mes informations'))
+    await user.press(screen.getByText('Confirmer mes informations'))
 
     expect(hideModal).toHaveBeenCalledTimes(1)
     expect(navigate).toHaveBeenCalledWith('Stepper', { from: StepperOrigin.FAVORITE })
   })
 
-  it('should close modal when pressing right header icon', () => {
+  it('should close modal when pressing right header icon', async () => {
     render(<FinishSubscriptionModal {...modalProps} />)
 
-    fireEvent.press(screen.getByTestId('Fermer la modale'))
+    await user.press(screen.getByTestId('Fermer la modale'))
 
     expect(hideModal).toHaveBeenCalledTimes(1)
   })
