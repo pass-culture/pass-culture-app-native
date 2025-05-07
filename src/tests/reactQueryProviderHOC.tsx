@@ -1,13 +1,18 @@
 import React from 'react'
 import { QueryCache, QueryClient, QueryClientProvider, setLogger } from 'react-query'
 
+import { defaultOptions } from 'libs/react-query/queryClient'
+
 export const queryCache = new QueryCache()
 
 export const reactQueryProviderHOC = (
   component: React.ReactNode,
   setup?: (queryClient: QueryClient) => void
 ) => {
-  const queryClient = new QueryClient({ queryCache })
+  const queryClient = new QueryClient({
+    queryCache,
+    defaultOptions,
+  })
   if (setup) setup(queryClient)
   setLogger({
     log: jest.fn(),
