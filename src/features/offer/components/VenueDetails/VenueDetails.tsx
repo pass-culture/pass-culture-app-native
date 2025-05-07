@@ -4,7 +4,8 @@ import styled from 'styled-components/native'
 
 import { VenueDetail } from 'features/offer/types'
 import { Tag } from 'ui/components/Tag/Tag'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { getSpacing, Typo } from 'ui/theme'
 import { getHoverStyle } from 'ui/theme/getHoverStyle/getHoverStyle'
 
 export interface VenueDetailsProps extends VenueDetail, ViewProps {
@@ -32,18 +33,12 @@ export function VenueDetails({
 
   return (
     <Wrapper height={height} {...props}>
-      <View>
+      <ViewGap gap={1}>
         <Title isHover={isHover}>{title}</Title>
-        <Spacer.Column numberOfSpaces={1} />
         <VenueAddress isHover={isHover}>{address}</VenueAddress>
-      </View>
+      </ViewGap>
 
-      {distance ? (
-        <React.Fragment>
-          <Spacer.Column numberOfSpaces={4} />
-          <Tag label={`à ${distance}`} />
-        </React.Fragment>
-      ) : null}
+      {distance ? <StyledTag label={`à ${distance}`} /> : null}
     </Wrapper>
   )
 }
@@ -69,3 +64,7 @@ const VenueAddress = styled(Typo.BodyAccentXs).attrs({
   color: theme.colors.greyDark,
   ...getHoverStyle(theme.colors.black, isHover),
 }))
+
+const StyledTag = styled(Tag)({
+  marginTop: getSpacing(4),
+})
