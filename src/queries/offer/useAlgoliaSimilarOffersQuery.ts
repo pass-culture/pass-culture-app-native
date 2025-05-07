@@ -12,7 +12,7 @@ import { QueryKeys } from 'libs/queryKeys'
 import { getSimilarOrRecoOffersInOrder } from 'shared/offer/getSimilarOrRecoOffersInOrder'
 import { Offer } from 'shared/offer/types'
 
-export const useAlgoliaSimilarOffers = (
+export const useAlgoliaSimilarOffersQuery = (
   ids: string[],
   shouldPreserveIdsOrder?: boolean,
   queryKey?: UseQueryOptions['queryKey']

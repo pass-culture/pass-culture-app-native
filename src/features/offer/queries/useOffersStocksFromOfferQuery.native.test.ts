@@ -1,7 +1,7 @@
 import mockdate from 'mockdate'
 
 import * as getStocksByOfferIdsModule from 'features/offer/api/getStocksByOfferIds'
-import { useOffersStocksFromOfferQuery } from 'features/offer/helpers/useOffersStocksFromOfferQuery/useOffersStocksFromOfferQuery'
+import { useOffersStocksFromOfferQuery } from 'features/offer/queries/useOffersStocksFromOfferQuery'
 import * as fetchAlgoliaOffer from 'libs/algolia/fetchAlgolia/fetchOffers'
 import { LocationMode, Position } from 'libs/location/types'
 import { dateBuilder, mockBuilder } from 'tests/mockBuilder'

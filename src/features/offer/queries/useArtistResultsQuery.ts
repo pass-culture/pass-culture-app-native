@@ -16,7 +16,7 @@ type UseArtistResultsProps = {
   artistId?: string
 }
 
-export const useArtistResults = ({ artistId, subcategoryId }: UseArtistResultsProps) => {
+export const useArtistResultsQuery = ({ artistId, subcategoryId }: UseArtistResultsProps) => {
   const transformHits = useTransformOfferHits()
   const { userLocation } = useLocation()
   const { artistPageSubcategories } = useRemoteConfigQuery()
