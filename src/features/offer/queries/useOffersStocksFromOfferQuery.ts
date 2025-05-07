@@ -1,9 +1,9 @@
 import { Hit } from '@algolia/client-search'
 
 import { OfferResponseV2 } from 'api/gen'
-import { useFetchOffers } from 'features/offer/api/useFetchOffers'
-import { useOffersStocks } from 'features/offer/api/useOffersStocks'
 import { useUserLocation } from 'features/offer/helpers/useUserLocation/useUserLocation'
+import { useFetchOffersQuery } from 'features/offer/queries/useFetchOffersQuery'
+import { useOffersStocksQuery } from 'features/offer/queries/useOffersStocksQuery'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { initialSearchState } from 'features/search/context/reducer'
 import { SearchQueryParameters } from 'libs/algolia/types'
@@ -31,7 +31,7 @@ export const useOffersStocksFromOfferQuery = (
     searchQueryParameters = { ...searchQueryParameters, objectIds: [offer.id.toString()] }
   }
 
-  const { data } = useFetchOffers({
+  const { data } = useFetchOffersQuery({
     parameters: searchQueryParameters,
     buildLocationParameterParams: {
       userLocation,
@@ -44,7 +44,7 @@ export const useOffersStocksFromOfferQuery = (
 
   const offerIds = extractOfferIdsFromHits(data?.hits)
 
-  const offersStocks = useOffersStocks({ offerIds })
+  const offersStocks = useOffersStocksQuery({ offerIds })
 
   return { ...offersStocks, data: offersStocks.data ?? { offers: [] } }
 }

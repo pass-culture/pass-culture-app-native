@@ -5,7 +5,7 @@ import { api } from 'api/api'
 import { ApiError } from 'api/ApiError'
 import { isAPIExceptionNotCaptured } from 'api/apiHelpers'
 import { SearchGroupNameEnumv2, SearchGroupResponseModelv2 } from 'api/gen'
-import { useAlgoliaSimilarOffers } from 'features/offer/api/useAlgoliaSimilarOffers'
+import { useAlgoliaSimilarOffersQuery } from 'features/offer/queries/useAlgoliaSimilarOffersQuery'
 import { Position } from 'libs/location'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { QueryKeys } from 'libs/queryKeys'
@@ -48,7 +48,7 @@ export const getCategories = (
   return []
 }
 
-export const useSimilarOffers = ({
+export const useSimilarOffersQuery = ({
   offerId,
   shouldFetch,
   position,
@@ -104,7 +104,7 @@ export const useSimilarOffers = ({
   )
 
   return {
-    similarOffers: useAlgoliaSimilarOffers(apiRecoResponse?.results ?? [], true),
+    similarOffers: useAlgoliaSimilarOffersQuery(apiRecoResponse?.results ?? [], true),
     apiRecoParams: apiRecoResponse?.params,
   }
 }

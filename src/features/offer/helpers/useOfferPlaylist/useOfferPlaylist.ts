@@ -7,7 +7,7 @@ import {
   SearchGroupNameEnumv2,
   SearchGroupResponseModelv2,
 } from 'api/gen'
-import { useSimilarOffers } from 'features/offer/api/useSimilarOffers'
+import { useSimilarOffersQuery } from 'features/offer/queries/useSimilarOffersQuery'
 import { Position, useLocation } from 'libs/location'
 import { Offer } from 'shared/offer/types'
 
@@ -44,7 +44,7 @@ export const useOfferPlaylist = ({
   const position = userLocation ? roundedPosition : undefined
 
   const { similarOffers: sameCategorySimilarOffers, apiRecoParams: apiRecoParamsSameCategory } =
-    useSimilarOffers({
+    useSimilarOffersQuery({
       offerId: offer.id,
       shouldFetch: isFocused,
       position,
@@ -54,7 +54,7 @@ export const useOfferPlaylist = ({
   const {
     similarOffers: otherCategoriesSimilarOffers,
     apiRecoParams: apiRecoParamsOtherCategories,
-  } = useSimilarOffers({
+  } = useSimilarOffersQuery({
     offerId: offer.id,
     shouldFetch: isFocused,
     position,

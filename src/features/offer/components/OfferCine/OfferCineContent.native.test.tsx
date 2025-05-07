@@ -31,12 +31,9 @@ const defaultOffersStocksFromOfferQuery = {
   data: mockBuilder.offerResponseV2({}),
 }
 const mockuseOffersStocksFromOfferQuery = jest.fn(() => defaultOffersStocksFromOfferQuery)
-jest.mock(
-  'features/offer/helpers/useOffersStocksFromOfferQuery/useOffersStocksFromOfferQuery',
-  () => ({
-    useOffersStocksFromOfferQuery: () => mockuseOffersStocksFromOfferQuery(),
-  })
-)
+jest.mock('features/offer/queries/useOffersStocksFromOfferQuery', () => ({
+  useOffersStocksFromOfferQuery: () => mockuseOffersStocksFromOfferQuery(),
+}))
 
 jest.mock('features/offer/helpers/useGetVenueByDay/useGetVenuesByDay', () => ({
   useGetVenuesByDay: () => ({
