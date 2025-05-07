@@ -11,7 +11,6 @@ import {
 import { GenericHome } from 'features/home/pages/GenericHome'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
 import { BatchProfile } from 'libs/react-native-batch'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
@@ -83,10 +82,6 @@ describe('GenericHome', () => {
   })
 
   describe('VideoCarouselModule', () => {
-    beforeEach(() => {
-      setFeatureFlags([RemoteStoreFeatureFlags.WIP_APP_V2_VIDEO_9_16])
-    })
-
     describe('Home N-1', () => {
       it('should not display video in header if videoCarouselModule is the first module given', async () => {
         const modules = [formattedVideoCarouselModuleWithMultipleItems, formattedVenuesModule]
