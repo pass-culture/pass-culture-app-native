@@ -47,6 +47,34 @@ export const TextPlaceholder = ({
   )
 }
 
+const FilterPillsPlaceholder = () => {
+  const pillsWidth = [8, 17.5, 28, 30.5, 14.5, 19.5]
+  return (
+    <PillsContainer gap={1}>
+      {pillsWidth.map((width) => (
+        <SkeletonTile
+          borderRadius={24}
+          height={getSpacing(8)}
+          width={getSpacing(width)}
+          key={`pill-${width}`}
+        />
+      ))}
+    </PillsContainer>
+  )
+}
+
+export const HeaderSearchResultsPlaceholder = () => {
+  return (
+    <React.Fragment>
+      <FilterPillsPlaceholder />
+      <TitleContainer>
+        <TextPlaceholder height={getSpacing(4.5)} width={getSpacing(50)} />
+      </TitleContainer>
+      <NumberOfResultsPlaceholder />
+    </React.Fragment>
+  )
+}
+
 export const NumberOfResultsPlaceholder = () => {
   return (
     <Container>
@@ -139,3 +167,15 @@ const FirstButtonContainer = styled(ButtonContainer)({
 const TextPlaceholderContainer = styled.View<{ marginBottom: number }>(({ marginBottom }) => ({
   marginBottom: getSpacing(marginBottom),
 }))
+
+const PillsContainer = styled(ViewGap)({
+  flexDirection: 'row',
+  marginHorizontal: getSpacing(6),
+  marginVertical: getSpacing(1),
+})
+
+const TitleContainer = styled.View({
+  marginHorizontal: getSpacing(6),
+  marginTop: getSpacing(6),
+  marginBottom: getSpacing(2),
+})
