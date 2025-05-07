@@ -6,10 +6,11 @@ import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTempla
 import { useVenueQuery } from 'features/venue/queries/useVenueQuery'
 import { getDetailedAccessibilityInfo } from 'shared/accessibility/getDetailedAccessibilityInfo'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { styledButton } from 'ui/components/buttons/styledButton'
 import { TextInput } from 'ui/components/inputs/TextInput'
 import { Separator } from 'ui/components/Separator'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { Spacer, Typo } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
@@ -37,14 +38,18 @@ export const CheatcodesScreenAccesLibre = () => {
         value={value}
         onChangeText={setValue}
       />
-      <Spacer.Column numberOfSpaces={3} />
-      <ButtonPrimary wording="Rechercher un lieu" onPress={onPress} disabled={value.length < 1} />
-      <Spacer.Column numberOfSpaces={6} />
+
+      <SearchVenueButton
+        wording="Rechercher un lieu"
+        onPress={onPress}
+        disabled={value.length < 1}
+      />
+
       {venue ? (
         venue.externalAccessibilityData ? (
           details?.map((detail, index) => (
             <View key={index}>
-              <ViewGap gap={5}>
+              <StyledViewGap gap={5}>
                 <StyledView>
                   <detail.icon
                     color={detail.isAccessible ? ColorsEnum.GREEN_VALID : ColorsEnum.ERROR}
@@ -57,10 +62,8 @@ export const CheatcodesScreenAccesLibre = () => {
                     <Typo.Body>{value}</Typo.Body>
                   </View>
                 ))}
-                <Spacer.Column numberOfSpaces={2} />
-              </ViewGap>
-              <Separator.Horizontal />
-              <Spacer.Column numberOfSpaces={4} />
+              </StyledViewGap>
+              <StyledSeparator />
             </View>
           ))
         ) : (
@@ -70,6 +73,20 @@ export const CheatcodesScreenAccesLibre = () => {
     </CheatcodesTemplateScreen>
   )
 }
+
+const SearchVenueButton = styledButton(ButtonPrimary)({
+  marginTop: getSpacing(3),
+  marginBottom: getSpacing(6),
+})
+
+const StyledSeparator = styled(Separator.Horizontal)({
+  marginTop: getSpacing(5),
+  marginBottom: getSpacing(4),
+})
+
+const StyledViewGap = styled(ViewGap)({
+  marginBottom: getSpacing(2),
+})
 
 const StyledView = styled.View({
   flexDirection: 'row',
