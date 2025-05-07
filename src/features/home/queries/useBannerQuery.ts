@@ -8,14 +8,13 @@ import { QueryKeys } from 'libs/queryKeys'
 export const useBannerQuery = (hasGeolocPosition: boolean) => {
   const { isLoggedIn } = useAuthContext()
 
-  return useQuery(
-    [QueryKeys.HOME_BANNER, hasGeolocPosition],
-    () => api.getNativeV1Banner(hasGeolocPosition),
-    {
-      enabled: isLoggedIn,
-      onError: (error: string) => {
-        eventMonitoring.captureException(error)
-      },
-    }
-  )
+  return useQuery({
+    queryKey: [QueryKeys.HOME_BANNER, hasGeolocPosition],
+    queryFn: () => api.getNativeV1Banner(hasGeolocPosition),
+    enabled: isLoggedIn,
+    onError: (error: string) => {
+      eventMonitoring.captureException(error)
+    },
+    retry: 0,
+  })
 }
