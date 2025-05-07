@@ -7,7 +7,7 @@ import { Offer } from 'shared/offer/types'
 import { theme } from 'theme'
 import { Separator } from 'ui/components/Separator'
 import { HorizontalOfferTile } from 'ui/components/tiles/HorizontalOfferTile'
-import { Spacer, Typo, getSpacing } from 'ui/theme'
+import { Typo, getSpacing } from 'ui/theme'
 
 type Props = {
   artistName: string
@@ -41,12 +41,7 @@ export const ArtistTopOffers: FunctionComponent<Props> = ({ artistName, items })
     <FlatList
       data={items}
       keyExtractor={keyExtractor}
-      ListHeaderComponent={
-        <React.Fragment>
-          <Typo.Title3>Ses oeuvres populaires</Typo.Title3>
-          <Spacer.Column numberOfSpaces={4} />
-        </React.Fragment>
-      }
+      ListHeaderComponent={<StyledTitle3>Ses oeuvres populaires</StyledTitle3>}
       ItemSeparatorComponent={StyledSeparator}
       contentContainerStyle={contentContainerStyle}
       scrollEnabled={false}
@@ -54,6 +49,10 @@ export const ArtistTopOffers: FunctionComponent<Props> = ({ artistName, items })
     />
   ) : null
 }
+
+const StyledTitle3 = styled(Typo.Title3)({
+  marginBottom: getSpacing(4),
+})
 
 const contentContainerStyle = {
   marginHorizontal: theme.contentPage.marginHorizontal,

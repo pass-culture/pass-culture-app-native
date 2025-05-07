@@ -15,8 +15,9 @@ import { FilterBehaviour } from 'features/search/enums'
 import { Checkbox } from 'ui/components/inputs/Checkbox/Checkbox'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { Ul } from 'ui/components/Ul'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Close } from 'ui/svg/icons/Close'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 
 const titleId = uuidv4()
 
@@ -102,8 +103,7 @@ export const AccessibilityFiltersModal: React.FC<AccessibilityModalProps> = ({
           filterBehaviour={filterBehaviour}
         />
       }>
-      <Spacer.Column numberOfSpaces={6} />
-      <AccessibilityFiltersContainer>
+      <AccessibilityFiltersContainer gap={8}>
         <Typo.BodyAccent>
           Filtrer par l’accessibilité des lieux en fonction d’un ou plusieurs handicaps
         </Typo.BodyAccent>
@@ -134,8 +134,8 @@ export const AccessibilityFiltersModal: React.FC<AccessibilityModalProps> = ({
   )
 }
 
-const AccessibilityFiltersContainer = styled.View({
-  gap: getSpacing(8),
+const AccessibilityFiltersContainer = styled(ViewGap)({
+  marginTop: getSpacing(6),
 })
 
 const StyledCheckBox = styled(Ul)({

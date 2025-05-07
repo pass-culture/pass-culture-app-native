@@ -3,15 +3,14 @@ import styled from 'styled-components/native'
 
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
 import { useDeviceInfo } from 'features/trustedDevice/helpers/useDeviceInfo'
-import { Spacer, Typo } from 'ui/theme'
+import { Typo, getSpacing } from 'ui/theme'
 
 export const CheatcodesScreenTrustedDeviceInfos = () => {
   const deviceInfo = useDeviceInfo()
 
   return (
     <CheatcodesTemplateScreen title="Trusted device debug infos" flexDirection="column">
-      <Typo.Title3>Informations du device actuel</Typo.Title3>
-      <Spacer.Column numberOfSpaces={2} />
+      <StyledTitle3>Informations du device actuel</StyledTitle3>
       <Data title="Device ID" data={deviceInfo?.deviceId} />
       <Data title="Device Model ou Browser" data={deviceInfo?.source} />
       <Data title="Device OS" data={deviceInfo?.os} />
@@ -25,17 +24,23 @@ type DataProps = {
 }
 
 const Data = ({ title, data }: DataProps) => (
-  <React.Fragment>
-    <Spacer.Column numberOfSpaces={2} />
+  <DataContainer>
     <Typo.Button>{title}</Typo.Button>
     {data ? (
       <ButtonTextSecondary>{data}</ButtonTextSecondary>
     ) : (
       <ButtonTextPrimary>Information non disponible</ButtonTextPrimary>
     )}
-    <Spacer.Column numberOfSpaces={2} />
-  </React.Fragment>
+  </DataContainer>
 )
+
+const StyledTitle3 = styled(Typo.Title3)({
+  marginBottom: getSpacing(2),
+})
+
+const DataContainer = styled.View({
+  marginVertical: getSpacing(2),
+})
 
 const ButtonTextPrimary = styled(Typo.Button)(({ theme }) => ({
   color: theme.colors.primary,
