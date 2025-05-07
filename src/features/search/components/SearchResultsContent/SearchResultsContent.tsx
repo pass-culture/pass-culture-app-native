@@ -62,7 +62,10 @@ import { ellipseString } from 'shared/string/ellipseString'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { Li } from 'ui/components/Li'
 import { useModal } from 'ui/components/modals/useModal'
-import { HitPlaceholder, NumberOfResultsPlaceholder } from 'ui/components/placeholders/Placeholders'
+import {
+  HeaderSearchResultsPlaceholder,
+  HitPlaceholder,
+} from 'ui/components/placeholders/Placeholders'
 import { ScrollToTopButton } from 'ui/components/ScrollToTopButton'
 import { HorizontalOfferTile } from 'ui/components/tiles/HorizontalOfferTile'
 import { Ul } from 'ui/components/Ul'
@@ -653,9 +656,9 @@ const FAVORITE_LIST_PLACEHOLDER = Array.from({ length: 20 }).map((_, index) => (
   key: index.toString(),
 }))
 
-function SearchResultsPlaceHolder() {
+const SearchResultsPlaceHolder = () => {
   const renderItem = useCallback(() => <HitPlaceholder />, [])
-  const ListHeaderComponent = useMemo(() => <NumberOfResultsPlaceholder />, [])
+  const ListHeaderComponent = useMemo(() => <HeaderSearchResultsPlaceholder />, [])
   const ListFooterComponent = useMemo(() => <Footer />, [])
 
   return (
