@@ -15,12 +15,12 @@ const imageHeight = getSpacing(24) // ratio 2/3
 const bookingImageWidth = getSpacing(18)
 const bookingImageHeight = getSpacing(28)
 
-function BasePlaceholder(props: {
+const BasePlaceholder = (props: {
   height: number
   width: number
   radius?: number
   fullWidth?: boolean
-}) {
+}) => {
   return (
     <SkeletonTile
       borderRadius={props.radius ?? borderRadius}
@@ -31,7 +31,7 @@ function BasePlaceholder(props: {
   )
 }
 
-export function TextPlaceholder({
+export const TextPlaceholder = ({
   width,
   height,
   marginBottom,
@@ -39,7 +39,7 @@ export function TextPlaceholder({
   width: number
   height?: number
   marginBottom?: number
-}) {
+}) => {
   return (
     <TextPlaceholderContainer marginBottom={marginBottom ?? undefined}>
       <SkeletonTile borderRadius={2} height={height ?? getSpacing(3)} width={width} />
@@ -47,7 +47,7 @@ export function TextPlaceholder({
   )
 }
 
-export function NumberOfResultsPlaceholder() {
+export const NumberOfResultsPlaceholder = () => {
   return (
     <Container>
       <SkeletonTile width={getSpacing(20)} height={getSpacing(3)} borderRadius={2} />
@@ -55,7 +55,7 @@ export function NumberOfResultsPlaceholder() {
   )
 }
 
-export function NumberOfBookingsPlaceholder() {
+export const NumberOfBookingsPlaceholder = () => {
   return (
     <Container>
       <SkeletonTile width={getSpacing(42)} height={getSpacing(3)} borderRadius={2} />
@@ -63,7 +63,7 @@ export function NumberOfBookingsPlaceholder() {
   )
 }
 
-export function HitPlaceholder() {
+export const HitPlaceholder = () => {
   return (
     <Row gap={4}>
       <BasePlaceholder height={imageHeight} width={imageWidth} />
@@ -77,7 +77,7 @@ export function HitPlaceholder() {
   )
 }
 
-export function BookingHitPlaceholder() {
+export const BookingHitPlaceholder = () => {
   return (
     <Row gap={4}>
       <BasePlaceholder height={bookingImageHeight} width={bookingImageWidth} />
@@ -91,7 +91,7 @@ export function BookingHitPlaceholder() {
   )
 }
 
-export function FavoriteHitPlaceholder() {
+export const FavoriteHitPlaceholder = () => {
   return (
     <React.Fragment>
       <Row gap={4}>
