@@ -1,6 +1,6 @@
 import { CurrencyEnum } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { useBanner } from 'features/home/api/useBanner'
+import { useBannerQuery } from 'features/home/queries/useBannerQuery'
 import { useGetStepperInfo } from 'features/identityCheck/api/useGetStepperInfo'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags as featureFlags } from 'libs/firebase/firestore/types'
@@ -25,7 +25,7 @@ export function useActivationBanner() {
   const isUserInRelevantLocation = isUserLocated || isUserRegisteredInPacificFrancRegion
 
   const isGeolocated = permissionState === GeolocPermissionState.GRANTED
-  const { data } = useBanner(isGeolocated)
+  const { data } = useBannerQuery(isGeolocated)
 
   if (enablePacificFrancCurrency) {
     if (isActivationProcessEnable || isUserInRelevantLocation) {
