@@ -4,7 +4,8 @@ import styled from 'styled-components/native'
 
 import { FavoriteButtonsContainer } from 'features/favorites/components/Favorite'
 import { SkeletonTile } from 'ui/components/placeholders/SkeletonTile'
-import { getSpacing, Spacer } from 'ui/theme'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { getSpacing } from 'ui/theme'
 
 const borderRadius = 4
 
@@ -30,16 +31,26 @@ function BasePlaceholder(props: {
   )
 }
 
-export function TextPlaceholder({ width, height }: { width: number; height?: number }) {
-  return <SkeletonTile borderRadius={2} height={height ?? getSpacing(3)} width={width} />
+export function TextPlaceholder({
+  width,
+  height,
+  marginBottom,
+}: {
+  width: number
+  height?: number
+  marginBottom?: number
+}) {
+  return (
+    <TextPlaceholderContainer marginBottom={marginBottom ?? undefined}>
+      <SkeletonTile borderRadius={2} height={height ?? getSpacing(3)} width={width} />
+    </TextPlaceholderContainer>
+  )
 }
 
 export function NumberOfResultsPlaceholder() {
   return (
     <Container>
-      <Spacer.Column numberOfSpaces={1} />
       <SkeletonTile width={getSpacing(20)} height={getSpacing(3)} borderRadius={2} />
-      <Spacer.Column numberOfSpaces={5} />
     </Container>
   )
 }
@@ -47,77 +58,55 @@ export function NumberOfResultsPlaceholder() {
 export function NumberOfBookingsPlaceholder() {
   return (
     <Container>
-      <Spacer.Column numberOfSpaces={1} />
       <SkeletonTile width={getSpacing(42)} height={getSpacing(3)} borderRadius={2} />
-      <Spacer.Column numberOfSpaces={5} />
     </Container>
   )
 }
 
 export function HitPlaceholder() {
   return (
-    <Container>
-      <Row>
-        <BasePlaceholder height={imageHeight} width={imageWidth} />
-        <Spacer.Row numberOfSpaces={4} />
-        <View>
-          <TextPlaceholder width={getSpacing(60)} />
-          <Spacer.Column numberOfSpaces={3} />
-          <TextPlaceholder width={getSpacing(30)} />
-          <Spacer.Column numberOfSpaces={1} />
-          <TextPlaceholder width={getSpacing(40)} />
-          <Spacer.Column numberOfSpaces={2} />
-          <TextPlaceholder width={getSpacing(8)} />
-        </View>
-      </Row>
-    </Container>
+    <Row gap={4}>
+      <BasePlaceholder height={imageHeight} width={imageWidth} />
+      <View>
+        <TextPlaceholder width={getSpacing(60)} marginBottom={3} />
+        <TextPlaceholder width={getSpacing(30)} marginBottom={1} />
+        <TextPlaceholder width={getSpacing(40)} marginBottom={2} />
+        <TextPlaceholder width={getSpacing(8)} />
+      </View>
+    </Row>
   )
 }
 
 export function BookingHitPlaceholder() {
   return (
-    <Container>
-      <Row>
-        <BasePlaceholder height={bookingImageHeight} width={bookingImageWidth} />
-        <Spacer.Row numberOfSpaces={4} />
-        <View>
-          <TextPlaceholder width={getSpacing(60)} />
-          <Spacer.Column numberOfSpaces={1} />
-          <TextPlaceholder width={getSpacing(30)} />
-          <Spacer.Column numberOfSpaces={7} />
-          <TextPlaceholder width={getSpacing(24)} />
-          <Spacer.Column numberOfSpaces={3} />
-          <TextPlaceholder width={getSpacing(8)} />
-          <Spacer.Column numberOfSpaces={2} />
-        </View>
-      </Row>
-    </Container>
+    <Row gap={4}>
+      <BasePlaceholder height={bookingImageHeight} width={bookingImageWidth} />
+      <View>
+        <TextPlaceholder width={getSpacing(60)} marginBottom={1} />
+        <TextPlaceholder width={getSpacing(30)} marginBottom={7} />
+        <TextPlaceholder width={getSpacing(24)} marginBottom={3} />
+        <TextPlaceholder width={getSpacing(8)} marginBottom={2} />
+      </View>
+    </Row>
   )
 }
 
 export function FavoriteHitPlaceholder() {
   return (
     <React.Fragment>
-      <Container>
-        <Row>
-          <BasePlaceholder height={imageHeight} width={imageWidth} />
-          <Spacer.Row numberOfSpaces={4} />
-          <View>
-            <TextPlaceholder width={getSpacing(60)} />
-            <Spacer.Column numberOfSpaces={3} />
-            <TextPlaceholder width={getSpacing(30)} />
-            <Spacer.Column numberOfSpaces={1} />
-            <TextPlaceholder width={getSpacing(40)} />
-            <Spacer.Column numberOfSpaces={2} />
-            <TextPlaceholder width={getSpacing(8)} />
-          </View>
-        </Row>
-      </Container>
+      <Row gap={4}>
+        <BasePlaceholder height={imageHeight} width={imageWidth} />
+        <View>
+          <TextPlaceholder width={getSpacing(60)} marginBottom={3} />
+          <TextPlaceholder width={getSpacing(30)} marginBottom={1} />
+          <TextPlaceholder width={getSpacing(40)} marginBottom={2} />
+          <TextPlaceholder width={getSpacing(8)} />
+        </View>
+      </Row>
       <FavoriteButtonsContainer>
-        <ButtonContainer>
+        <FirstButtonContainer>
           <BasePlaceholder radius={24} height={getSpacing(12)} width={getSpacing(40)} fullWidth />
-        </ButtonContainer>
-        <Spacer.Row numberOfSpaces={5} />
+        </FirstButtonContainer>
         <ButtonContainer>
           <BasePlaceholder radius={24} height={getSpacing(12)} width={getSpacing(40)} fullWidth />
         </ButtonContainer>
@@ -126,10 +115,27 @@ export function FavoriteHitPlaceholder() {
   )
 }
 
-const Container = styled.View({ marginHorizontal: getSpacing(6) })
-const Row = styled.View({ flexDirection: 'row', alignItems: 'center' })
+const Container = styled.View({
+  marginHorizontal: getSpacing(6),
+  marginTop: getSpacing(1),
+  marginBottom: getSpacing(5),
+})
+
+const Row = styled(ViewGap)({
+  flexDirection: 'row',
+  alignItems: 'center',
+  marginHorizontal: getSpacing(6),
+})
+
 const ButtonContainer = styled.View({
   minWidth: getSpacing(30),
   maxWidth: getSpacing(70),
   width: '47%',
 })
+const FirstButtonContainer = styled(ButtonContainer)({
+  marginRight: getSpacing(5),
+})
+
+const TextPlaceholderContainer = styled.View<{ marginBottom: number }>(({ marginBottom }) => ({
+  marginBottom: getSpacing(marginBottom),
+}))
