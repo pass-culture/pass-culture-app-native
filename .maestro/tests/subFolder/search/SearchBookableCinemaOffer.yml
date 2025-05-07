@@ -1,6 +1,6 @@
 appId: ${MAESTRO_APP_ID}
 onFlowStart:
-  - runScript: ../../subFolder/commons/GetCurrentDay.js
+  - runScript: ../commons/getCurrentDay.js
 ---
 - assertVisible: 'Rechercher'
 - runFlow:

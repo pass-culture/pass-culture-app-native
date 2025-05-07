@@ -1,6 +1,6 @@
 appId: ${MAESTRO_APP_ID}
 onFlowStart:
-  - runScript: ../../subFolder/commons/GetCurrentDay.js
+  - runScript: ../commons/getCurrentDay.js
 ---
 - assertVisible: 'Rechercher'
 - runFlow:
@@ -17,7 +17,6 @@ onFlowStart:
 
 - tapOn: "Films à l'affiche"
 
-# TODO(e2e): Attendre que "Catégories soit check"
 - tapOn: 'Catégories'
 
 - assertVisible: "Films à l'affiche"
