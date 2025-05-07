@@ -965,7 +965,6 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
           }
           ListHeaderComponent={
             <SearchListHeader
-              artists={[]}
               nbHits={4}
               venues={
                 [
@@ -1369,7 +1368,6 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                   "withComponent": [Function],
                 },
                 "ListHeaderComponent": <SearchListHeader
-                  artists={[]}
                   nbHits={4}
                   venues={
                     [
