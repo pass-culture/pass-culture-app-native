@@ -62,13 +62,6 @@ export const SetStatus: FunctionComponent<Props> = ({ route }: Props) => {
   const handlePostProfileSuccess = () => {
     if (isBookingFreeOffer && enableBookingFreeOfferFifteenSixteen) {
       if (storedFreeOfferId) {
-        // TODO(PC-35935) Pour l'affichage de la modal, il faut peut-être utiliser useBookOfferModal une fois que la redirection est faite
-        // Utiliser la valeur de showBookOfferModal pour afficher ou non la modale dans l'offre
-        // const { OfferModal: BookOfferModal, showModal: showBookOfferModal } = useBookOfferModal({
-        //   modalToDisplay: OfferModal.BOOKING,
-        //   offerId: storedFreeOfferId,
-        //   from: StepperOrigin.PROFILE,
-        // })
         reset({ routes: [{ name: 'Offer', params: { id: storedFreeOfferId } }] })
       } else {
         reset({ routes: [{ name: 'SetProfileBookingError' }] })

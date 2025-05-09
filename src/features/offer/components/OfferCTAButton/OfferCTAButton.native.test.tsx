@@ -6,6 +6,7 @@ import { openUrl } from 'features/navigation/helpers/openUrl'
 import { OfferCTAButton } from 'features/offer/components/OfferCTAButton/OfferCTAButton'
 import { mockSubcategory, mockSubcategoryNotEvent } from 'features/offer/fixtures/mockSubcategory'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
+import * as freeOfferIdStore from 'features/offer/store/freeOfferIdStore'
 import { mockedBookingApi } from 'fixtures/booking'
 import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics/provider'
@@ -13,7 +14,7 @@ import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setF
 import { mockAuthContextWithoutUser, mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render, screen, userEvent, waitFor } from 'tests/utils'
+import { act, fireEvent, render, screen, userEvent, waitFor } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 
 jest.mock('libs/network/NetInfoWrapper')
@@ -73,6 +74,13 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 })
 
 const user = userEvent.setup()
+
+jest.mock('features/offer/store/freeOfferIdStore', () => ({
+  freeOfferIdActions: {
+    resetFreeOfferId: jest.fn(),
+  },
+  useFreeOfferId: jest.fn(),
+}))
 
 describe('<OfferCTAButton />', () => {
   beforeEach(() => {
@@ -365,6 +373,25 @@ describe('<OfferCTAButton />', () => {
 
         expect(screen.queryByText('Valider la date')).not.toBeOnTheScreen()
       })
+    })
+  })
+
+  describe('When there is a stored free offer id', () => {
+    beforeEach(() => {
+      jest.spyOn(freeOfferIdStore, 'useFreeOfferId').mockReturnValue(123)
+    })
+
+    it('should reset free offer id and show modal when screen is focused', async () => {
+      mockAuthContextWithUser(beneficiaryUser, { persist: true })
+      mockServer.getApi<OfferResponseV2>(`/v2/offer/${offerResponseSnap.id}`, offerResponseSnap)
+      mockServer.getApi<BookingsResponse>('/v1/bookings', {})
+
+      renderOfferCTAButton(offerNotEventCTAButtonProps)
+
+      await act(async () => {})
+
+      expect(freeOfferIdStore.freeOfferIdActions.resetFreeOfferId).toHaveBeenCalledWith()
+      expect(screen.getByText('Valider la date')).toBeOnTheScreen()
     })
   })
 })
