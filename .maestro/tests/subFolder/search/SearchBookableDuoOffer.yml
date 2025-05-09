@@ -32,7 +32,7 @@ onFlowStart:
 - tapOn: 'Dates'
 
 - tapOn:
-    id: "native.calendar.SELECT_DATE_SLOT-${targetDateTest}"
+    id: "native.calendar.SELECT_DATE_SLOT-${output.targetDateTest}"
 
 - tapOn:
     text: 'Appliquer le filtre'
