@@ -1,0 +1,10 @@
+appId: team.passculture.app.staging
+---
+- tapOn: 'Recherche'
+- assertVisible: 'Rechercher'
+- assertVisible: 'Parcours les catégories'
+- tapOn: "CINÉMA"
+- assertVisible: 'Cinéma'
+- tapOn: "Films à l'affiche"
+- assertVisible: 'Les offres'
+- assertVisible: '.*résultats'

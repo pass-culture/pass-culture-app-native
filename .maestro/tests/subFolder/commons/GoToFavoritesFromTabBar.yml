@@ -1,3 +1,19 @@
 appId: ${MAESTRO_APP_ID}
 ---
-- tapOn: 'Mes favoris'
+- runFlow:
+    when:
+      platform: Android
+    commands:
+    - tapOn: "Mes favoris"
+
+- runFlow:
+    when:
+      platform: iOS
+    commands:
+    - tapOn: "Mes favoris"
+
+- runFlow:
+    when:
+      platform: Web
+    commands:
+    - tapOn: "Favoris"
