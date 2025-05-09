@@ -34,3 +34,9 @@ appId: ${MAESTRO_APP_ID}
       visible: 'Partager l’appli'
     commands:
       - tapOn: 'Non merci'
+
+- runFlow:
+    when:
+      visible: 'Plus tard'
+    commands:
+      - tapOn: 'Plus tard'
