@@ -88,7 +88,7 @@ yarn start
 
    Example: `Google APIs ARM 64 v8a System Image`
 
-   This type of image is known to work unlike to "Google APIs **ATD**" which is known to have issues
+   This type of image is known to work unlike to "Google APIs **ATD**" or "Google Play" which are known to have issues
 
 1. Click on "OK", this will download stuff
 
