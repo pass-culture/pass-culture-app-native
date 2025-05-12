@@ -55,7 +55,7 @@ const tests = {
   valid: [
     {
       code: `jest.mock('components/Button')`,
-      filename: path.join(process.cwd(), 'src/components/Test.tsx'),
+      filename: path.join(process.cwd(), 'src/components/Component.test.tsx'),
     },
     {
       code: `jest.mock('./Button')`,

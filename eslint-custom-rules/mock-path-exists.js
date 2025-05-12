@@ -31,16 +31,6 @@ function validateMockPath(mockPath, context, node, extensions) {
 
   let resolvedPath = mockPath
 
-  const getFilename = () => {
-    if (typeof context.getFilename === 'function') {
-      return context.getFilename()
-    }
-    if (context.filename) {
-      return context.filename
-    }
-    return 'unknown-file.js'
-  }
-
   if (mockPath.startsWith('./') || mockPath.startsWith('../')) {
     const currentFileDir = path.dirname(context.getFilename())
     resolvedPath = path.resolve(currentFileDir, mockPath)
@@ -81,11 +71,6 @@ module.exports = {
   },
 
   create(context) {
-    const sourceCode = context.getSourceCode().getText()
-    if (!sourceCode.includes('jest.mock(')) {
-      return {}
-    }
-
     // Clear cache before each execution to ensure fresh results
     pathExistsCache.clear()
 
