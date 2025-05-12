@@ -2,7 +2,7 @@ import React, { useCallback } from 'react'
 import { Text } from 'react-native'
 import styled from 'styled-components/native'
 
-import { Highlight } from 'features/search/components/Highlight/Highlight'
+import { HistoryItemHighlight } from 'features/search/components/Highlight/Highlight'
 import { Highlighted, HistoryItem } from 'features/search/types'
 import { ClockFilled } from 'ui/svg/icons/ClockFilled'
 import { getSpacing, Typo } from 'ui/theme'
@@ -32,7 +32,7 @@ export function SearchHistoryItem({ item, queryHistory, onPress }: Props) {
           {queryHistory === '' ? (
             <Typo.BodyItalic testID="withoutUsingHighlight">{item.query}</Typo.BodyItalic>
           ) : (
-            <Highlight historyItem={item} />
+            <HistoryItemHighlight historyItem={item} />
           )}
           {shouldDisplaySearchGroupOrNativeCategory ? (
             <React.Fragment>

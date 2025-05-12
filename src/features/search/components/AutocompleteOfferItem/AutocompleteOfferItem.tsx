@@ -7,7 +7,7 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { NativeCategoryIdEnumv2, SearchGroupNameEnumv2 } from 'api/gen'
 import { useAccessibilityFiltersContext } from 'features/accessibility/context/AccessibilityFiltersWrapper'
-import { Highlight } from 'features/search/components/Highlight/Highlight'
+import { SuggestionHitHighlight } from 'features/search/components/Highlight/Highlight'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import {
   getNativeCategoryFromEnum,
@@ -224,7 +224,7 @@ const SuggestionContainer: FunctionComponent<{
       <MagnifyingGlassFilledIcon />
     </MagnifyingGlassIconContainer>
     <StyledText numberOfLines={1} ellipsizeMode="tail">
-      <Highlight suggestionHit={hit} attribute="query" />
+      <SuggestionHitHighlight suggestionHit={hit} attribute="query" />
       {children}
     </StyledText>
   </AutocompleteItemTouchable>
