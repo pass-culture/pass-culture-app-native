@@ -2,10 +2,10 @@ import { useFocusEffect, useRoute } from '@react-navigation/native'
 import { parse, format } from 'date-fns'
 import React, { useCallback } from 'react'
 
-import { logoutFromEduConnectIfAllowed } from 'features/identityCheck/api/logoutFromEduConnectIfAllowed'
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
+import { logoutFromEduConnectIfAllowed } from 'features/identityCheck/helpers/logoutFromEduConnectIfAllowed'
 import { useNavigateForwardToStepper } from 'features/identityCheck/helpers/useNavigateForwardToStepper'
-import { invalidateStepperInfoQuery } from 'features/identityCheck/pages/helpers/invalidateStepperQuery'
+import { invalidateStepperInfoQueries } from 'features/identityCheck/pages/helpers/invalidateStepperQueries'
 import { EduconnectValidationPage } from 'features/identityCheck/pages/identification/educonnect/EduconnectValidationPage'
 import { DeprecatedIdentityCheckStep } from 'features/identityCheck/types'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
@@ -28,7 +28,7 @@ export function EduConnectValidation() {
     // in web context, we are redirected to this page after educonnect login in a new tab.
     // Therefore, the identity check context loses the state before educonnect login and we
     // cannot use navigateToNextScreen here. We need to navigated explicitly to next page.
-    invalidateStepperInfoQuery()
+    invalidateStepperInfoQueries()
     navigateForwardToStepper()
   }
 
