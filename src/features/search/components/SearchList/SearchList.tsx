@@ -26,6 +26,7 @@ export const SearchList: React.FC<SearchListProps> = React.forwardRef<
       onScroll,
       userData,
       venuesUserData,
+      artistSection,
     },
     ref
   ) => {
@@ -43,7 +44,7 @@ export const SearchList: React.FC<SearchListProps> = React.forwardRef<
             nbHits={nbHits}
             userData={userData}
             venues={hits.venues}
-            artists={hits.artists}
+            artistSection={artistSection}
             venuesUserData={venuesUserData}
           />
         }

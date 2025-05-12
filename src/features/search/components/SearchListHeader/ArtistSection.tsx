@@ -12,10 +12,11 @@ const TITLE = 'Les artistes'
 
 type ArtistSectionProps = {
   artists: Artist[]
+  onItemPress: (artistName: string) => void
   style?: StyleProp<ViewStyle>
 }
 
-export const ArtistSection = ({ artists, style }: ArtistSectionProps) => {
+export const ArtistSection = ({ artists, onItemPress, style }: ArtistSectionProps) => {
   return (
     <View style={style}>
       <Title>{TITLE}</Title>
@@ -23,7 +24,7 @@ export const ArtistSection = ({ artists, style }: ArtistSectionProps) => {
       <AvatarList
         data={artists}
         avatarConfig={{ size: AVATAR_MEDIUM, borderWidth: 4 }}
-        onItemPress={() => false}
+        onItemPress={onItemPress}
       />
     </View>
   )

@@ -54,7 +54,7 @@ export const VideoModuleDesktop: FunctionComponent<VideoModuleProps> = (props) =
         <AccessibleTitle testID="playlistTitle" title={props.title} />
         {renderTitleSeeMore()}
       </StyledTitleContainer>
-      <View>
+      <View testID="desktop-video-module">
         <ColorCategoryBackgroundWrapper>
           <ColorCategoryBackground
             backgroundColor={videoModuleColorsMapping[props.color]}

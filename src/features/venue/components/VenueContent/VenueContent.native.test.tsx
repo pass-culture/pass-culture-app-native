@@ -23,8 +23,8 @@ jest.useFakeTimers()
 mockdate.set(new Date('2021-08-15T00:00:00Z'))
 
 jest.unmock('react-native/Libraries/Animated/createAnimatedComponent')
-jest.mock('features/gtlPlaylist/hooks/useGTLPlaylists', () => ({
-  useGTLPlaylists: () => ({ isLoading: false }),
+jest.mock('features/gtlPlaylist/queries/useGTLPlaylistsQuery', () => ({
+  useGTLPlaylistsQuery: () => ({ isLoading: false }),
 }))
 jest.mock('queries/venue/useVenueOffersQuery', () => ({
   useVenueOffersQuery: () => ({ isLoading: false }),

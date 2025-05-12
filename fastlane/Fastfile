@@ -60,7 +60,7 @@ platform :ios do
         release_notes: escaped_release_notes,
         ipa_path: "#{ENV['IOS_IPA_DIRECTORY']}/#{ENV['IOS_IPA_NAME']}",
         service_credentials_file: options[:firebase_token],
-        groups: "devs"
+        groups: "devs, pms, designers, qa"
     )
   end
 
@@ -161,7 +161,7 @@ platform :android do
         android_artifact_type: 'APK' ,
         android_artifact_path: ENV["ANDROID_FILE_PATH"],
         service_credentials_file: options[:firebase_token],
-        groups: "devs"
+        groups: "devs, pms, designers, qa"
     )
   end
 

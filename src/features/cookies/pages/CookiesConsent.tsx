@@ -1,7 +1,7 @@
 import React, { useCallback, useState } from 'react'
 
 import { CookiesConsentModal } from 'features/cookies/components/CookiesConsentModal'
-import { useCookiesModalContent } from 'features/cookies/components/useCookiesModalContent'
+import { getCookiesModalContent } from 'features/cookies/components/getCookiesModalContent'
 import { ALL_OPTIONAL_COOKIES, COOKIES_BY_CATEGORY } from 'features/cookies/CookiesPolicy'
 import { CookiesSteps } from 'features/cookies/enums'
 import { getCookiesChoiceFromCategories } from 'features/cookies/helpers/getCookiesChoiceFromCategories'
@@ -67,7 +67,7 @@ export const CookiesConsent = ({ visible, hideModal }: Props) => {
     await setMarketingParams(params, accepted)
   }, [params, settingsCookiesChoice, hideModal, setCookiesConsent])
 
-  const { childrenProps } = useCookiesModalContent({
+  const { childrenProps } = getCookiesModalContent({
     cookiesStep,
     settingsCookiesChoice,
     setCookiesStep,

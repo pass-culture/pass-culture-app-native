@@ -1,4 +1,4 @@
-import { useCookiesModalContent } from 'features/cookies/components/useCookiesModalContent'
+import { getCookiesModalContent } from 'features/cookies/components/getCookiesModalContent'
 import { CookiesSteps } from 'features/cookies/enums'
 
 const settingsCookiesChoice = {
@@ -14,9 +14,9 @@ const customChoice = jest.fn()
 
 jest.mock('libs/firebase/analytics/analytics')
 
-describe('useCookiesModalContent hook description', () => {
+describe('getCookiesModalContent hook description', () => {
   it('should display the CookiesDescription and not show back button if first step', () => {
-    const { childrenProps } = useCookiesModalContent({
+    const { childrenProps } = getCookiesModalContent({
       cookiesStep: CookiesSteps.COOKIES_CONSENT,
       settingsCookiesChoice,
       setCookiesStep,
@@ -30,7 +30,7 @@ describe('useCookiesModalContent hook description', () => {
   })
 
   it('should display the CookiesSettings and show back button if second step', () => {
-    const { childrenProps } = useCookiesModalContent({
+    const { childrenProps } = getCookiesModalContent({
       cookiesStep: CookiesSteps.COOKIES_SETTINGS,
       settingsCookiesChoice,
       setCookiesStep,

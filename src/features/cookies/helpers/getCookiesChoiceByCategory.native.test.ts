@@ -1,15 +1,15 @@
 import { ALL_OPTIONAL_COOKIES, COOKIES_BY_CATEGORY } from 'features/cookies/CookiesPolicy'
 import { ConsentState } from 'features/cookies/enums'
-import { useCookiesChoiceByCategory } from 'features/cookies/helpers/useCookiesChoiceByCategory'
+import { getCookiesChoiceByCategory } from 'features/cookies/helpers/getCookiesChoiceByCategory'
 import { ConsentStatus } from 'features/cookies/types'
 
-describe('useCookiesChoiceByCategory', () => {
+describe('getCookiesChoiceByCategory', () => {
   it('should have every categories disabled when constent status is loading', () => {
     const cookiesChoice: ConsentStatus = {
       state: ConsentState.LOADING,
     }
 
-    const cookiesChoiceByCategory = useCookiesChoiceByCategory(cookiesChoice)
+    const cookiesChoiceByCategory = getCookiesChoiceByCategory(cookiesChoice)
 
     expect(cookiesChoiceByCategory).toEqual({
       marketing: false,
@@ -23,7 +23,7 @@ describe('useCookiesChoiceByCategory', () => {
       state: ConsentState.UNKNOWN,
     }
 
-    const cookiesChoiceByCategory = useCookiesChoiceByCategory(cookiesChoice)
+    const cookiesChoiceByCategory = getCookiesChoiceByCategory(cookiesChoice)
 
     expect(cookiesChoiceByCategory).toEqual({
       marketing: false,
@@ -42,7 +42,7 @@ describe('useCookiesChoiceByCategory', () => {
       },
     }
 
-    const cookiesChoiceByCategory = useCookiesChoiceByCategory(cookiesChoice)
+    const cookiesChoiceByCategory = getCookiesChoiceByCategory(cookiesChoice)
 
     expect(cookiesChoiceByCategory).toEqual({
       marketing: false,
@@ -61,7 +61,7 @@ describe('useCookiesChoiceByCategory', () => {
       },
     }
 
-    const cookiesChoiceByCategory = useCookiesChoiceByCategory(cookiesChoice)
+    const cookiesChoiceByCategory = getCookiesChoiceByCategory(cookiesChoice)
 
     expect(cookiesChoiceByCategory).toEqual({
       marketing: true,
@@ -80,7 +80,7 @@ describe('useCookiesChoiceByCategory', () => {
       },
     }
 
-    const cookiesChoiceByCategory = useCookiesChoiceByCategory(cookiesChoice)
+    const cookiesChoiceByCategory = getCookiesChoiceByCategory(cookiesChoice)
 
     expect(cookiesChoiceByCategory).toEqual({
       marketing: false,

@@ -9,7 +9,7 @@ import { VideoMultiOfferPlaylist } from 'features/home/components/modules/video/
 import { VideoModuleProps } from 'features/home/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { Play } from 'ui/svg/icons/Play'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 import { videoModuleColorsMapping } from 'ui/theme/videoModuleColorsMapping'
@@ -51,8 +51,7 @@ export const VideoModuleMobile: FunctionComponent<VideoModuleProps> = (props) =>
             </PlayerContainer>
           </Thumbnail>
         </StyledTouchableHighlight>
-        <View>
-          <Spacer.Column numberOfSpaces={4} />
+        <StyledView>
           {!props.isMultiOffer && props.offers[0] ? (
             <VideoOfferContainer
               onLayout={(event: LayoutChangeEvent) => {
@@ -82,12 +81,13 @@ export const VideoModuleMobile: FunctionComponent<VideoModuleProps> = (props) =>
             backgroundColor={videoModuleColorsMapping[props.color]}
             isMultiOffer={props.isMultiOffer}
           />
-        </View>
+        </StyledView>
       </View>
     </Container>
   )
 }
 
+const StyledView = styled.View({ paddingTop: getSpacing(4) })
 const Container = styled.View(({ theme }) => ({
   paddingBottom: theme.home.spaceBetweenModules,
 }))

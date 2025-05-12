@@ -102,97 +102,7 @@ exports[`OnboardingGeolocation should render correctly 1`] = `
             ]
           }
           testID="close-button-container"
-        >
-          <View
-            accessibilityLabel="Passer à la page suivante"
-            accessibilityState={
-              {
-                "busy": undefined,
-                "checked": undefined,
-                "disabled": undefined,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              [
-                [
-                  {
-                    "userSelect": "auto",
-                  },
-                  {
-                    "alignItems": "center",
-                    "borderRadius": 0,
-                    "borderWidth": 0,
-                    "flexDirection": "row",
-                    "justifyContent": "center",
-                    "marginTop": 0,
-                    "maxWidth": 500,
-                    "minHeight": 16,
-                    "paddingBottom": 0,
-                    "paddingLeft": 0,
-                    "paddingRight": 0,
-                    "paddingTop": 0,
-                    "width": "auto",
-                  },
-                  {
-                    "backgroundColor": "#ffffff",
-                  },
-                ],
-                {
-                  "opacity": 1,
-                },
-              ]
-            }
-            testID="Passer à la page suivante"
-          >
-            <View
-              style={
-                [
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                  },
-                ]
-              }
-            >
-              <Text
-                adjustsFontSizeToFit={false}
-                numberOfLines={1}
-                style={
-                  [
-                    {
-                      "color": "#696a6f",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                      "maxWidth": "100%",
-                    },
-                  ]
-                }
-              >
-                Passer
-              </Text>
-            </View>
-          </View>
-        </View>
+        />
       </View>
     </View>
   </View>
@@ -213,11 +123,11 @@ exports[`OnboardingGeolocation should render correctly 1`] = `
     }
   >
     <View
-      height={65}
+      height={16}
       style={
         [
           {
-            "height": 65,
+            "height": 16,
           },
         ]
       }
@@ -318,7 +228,7 @@ exports[`OnboardingGeolocation should render correctly 1`] = `
       }
     >
       <View
-        accessibilityLabel="Utiliser ma position"
+        accessibilityLabel="Continuer"
         accessibilityState={
           {
             "busy": undefined,
@@ -372,7 +282,7 @@ exports[`OnboardingGeolocation should render correctly 1`] = `
             },
           ]
         }
-        testID="Utiliser ma position"
+        testID="Continuer"
       >
         <View
           style={
@@ -399,7 +309,7 @@ exports[`OnboardingGeolocation should render correctly 1`] = `
               ]
             }
           >
-            Utiliser ma position
+            Continuer
           </Text>
         </View>
       </View>

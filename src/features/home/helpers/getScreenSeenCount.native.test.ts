@@ -1,4 +1,4 @@
-import { ScreenSeenCount, useScreenSeenCount } from './useScreenSeenCount'
+import { ScreenSeenCount, getScreenSeenCount } from './getScreenSeenCount'
 
 const createStubTriggerStorage = () => {
   const triggered: number[] = []
@@ -13,12 +13,12 @@ const createStubTriggerStorage = () => {
   }
 }
 
-describe('useScreenSeenCount', () => {
+describe('getScreenSeenCount', () => {
   it('should call batch  when user has seen 3 times their screen of 500px height', async () => {
     const triggerStorage = createStubTriggerStorage()
     const onTrigger = jest.fn()
 
-    const { checkTrigger } = useScreenSeenCount({
+    const { checkTrigger } = getScreenSeenCount({
       screenHeight: 500,
       onTrigger,
       triggerStorage,
@@ -35,7 +35,7 @@ describe('useScreenSeenCount', () => {
     hasSeenEnoughHomeContent.givenHasTriggered(3)
     const onTrigger = jest.fn()
 
-    const { checkTrigger } = useScreenSeenCount({
+    const { checkTrigger } = getScreenSeenCount({
       screenHeight: 500,
       onTrigger,
       triggerStorage: hasSeenEnoughHomeContent,
@@ -51,7 +51,7 @@ describe('useScreenSeenCount', () => {
     const hasSeenEnoughHomeContent = createStubTriggerStorage()
     const onTrigger = jest.fn()
 
-    const { checkTrigger } = useScreenSeenCount({
+    const { checkTrigger } = getScreenSeenCount({
       screenHeight: 500,
       onTrigger,
       triggerStorage: hasSeenEnoughHomeContent,
@@ -67,7 +67,7 @@ describe('useScreenSeenCount', () => {
     const hasSeenEnoughHomeContent = createStubTriggerStorage()
     const onTrigger = jest.fn()
 
-    const { checkTrigger } = useScreenSeenCount({
+    const { checkTrigger } = getScreenSeenCount({
       screenHeight: 300,
       onTrigger,
       triggerStorage: hasSeenEnoughHomeContent,
@@ -83,7 +83,7 @@ describe('useScreenSeenCount', () => {
     const hasSeenEnoughHomeContent = createStubTriggerStorage()
     const onTrigger = jest.fn()
 
-    const { checkTrigger } = useScreenSeenCount({
+    const { checkTrigger } = getScreenSeenCount({
       screenHeight: 300,
       onTrigger,
       triggerStorage: hasSeenEnoughHomeContent,
@@ -101,7 +101,7 @@ describe('useScreenSeenCount', () => {
 
     const onTrigger = jest.fn()
 
-    const { checkTrigger } = useScreenSeenCount({
+    const { checkTrigger } = getScreenSeenCount({
       screenHeight: 300,
       onTrigger,
       triggerStorage: hasSeenEnoughHomeContent,
@@ -116,7 +116,7 @@ describe('useScreenSeenCount', () => {
   it('should save that hasSeenEnoughHomeContent when triggered', async () => {
     const hasSeenEnoughHomeContent = createStubTriggerStorage()
 
-    const { checkTrigger } = useScreenSeenCount({
+    const { checkTrigger } = getScreenSeenCount({
       screenHeight: 300,
       onTrigger: jest.fn(),
       triggerStorage: hasSeenEnoughHomeContent,
@@ -131,7 +131,7 @@ describe('useScreenSeenCount', () => {
   it('should NOT save that hasSeenEnoughHomeContent when not triggered', async () => {
     const hasSeenEnoughHomeContent = createStubTriggerStorage()
 
-    const { checkTrigger } = useScreenSeenCount({
+    const { checkTrigger } = getScreenSeenCount({
       screenHeight: 300,
       onTrigger: jest.fn(),
       triggerStorage: hasSeenEnoughHomeContent,
@@ -148,7 +148,7 @@ describe('useScreenSeenCount', () => {
 
     const onTrigger = jest.fn()
 
-    const { checkTrigger } = useScreenSeenCount({
+    const { checkTrigger } = getScreenSeenCount({
       screenHeight: 300,
       onTrigger,
       triggerStorage: hasSeenEnoughHomeContent,

@@ -1,6 +1,6 @@
 import { SearchResponse } from '@algolia/client-search'
 import { FlashList } from '@shopify/flash-list'
-import React, { Ref } from 'react'
+import React, { ReactNode, Ref } from 'react'
 
 import {
   GenreType,
@@ -91,6 +91,7 @@ export interface SearchListProps {
   userData: SearchResponse<Offer[]>['userData']
   onScroll?: () => void
   onPress?: () => void
+  artistSection?: ReactNode
 }
 
 export type CreateHistoryItem = {

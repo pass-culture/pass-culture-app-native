@@ -4,7 +4,7 @@ import Animated, { Layout } from 'react-native-reanimated'
 import styled, { useTheme } from 'styled-components/native'
 
 import { VenueTypeCodeKey } from 'api/gen'
-import { useGTLPlaylists } from 'features/gtlPlaylist/hooks/useGTLPlaylists'
+import { useGTLPlaylistsQuery } from 'features/gtlPlaylist/queries/useGTLPlaylistsQuery'
 import { offerToHeadlineOfferData } from 'features/headlineOffer/adapters/offerToHeadlineOfferData'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { OfferCTAProvider } from 'features/offer/components/OfferContent/OfferCTAProvider'
@@ -16,9 +16,10 @@ import { VENUE_CTA_HEIGHT_IN_SPACES } from 'features/venue/components/VenueCTA/V
 import { VenueMessagingApps } from 'features/venue/components/VenueMessagingApps/VenueMessagingApps'
 import { VenueThematicSection } from 'features/venue/components/VenueThematicSection/VenueThematicSection'
 import { VenueTopComponent } from 'features/venue/components/VenueTopComponent/VenueTopComponent'
+import { getVenueOffersArtists } from 'features/venue/helpers/getVenueOffersArtists'
 import { useVenueSearchParameters } from 'features/venue/helpers/useVenueSearchParameters'
-import { useVenueOffersArtists } from 'features/venue/hooks/useVenueOffersArtists/useVenueOffersArtists'
 import { useVenueQuery } from 'features/venue/queries/useVenueQuery'
+import { useAdaptOffersPlaylistParameters } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/helpers/useAdaptOffersPlaylistParameters'
 import { useTransformOfferHits } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { analytics } from 'libs/analytics/provider'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
@@ -36,16 +37,23 @@ import { getSpacing } from 'ui/theme'
 export const Venue: FunctionComponent = () => {
   const { params } = useRoute<UseRouteType<'Venue'>>()
   const { data: venue } = useVenueQuery(params.id)
-  const { gtlPlaylists, isLoading: arePlaylistsLoading } = useGTLPlaylists({
-    venue,
-    searchGroupLabel: params?.fromThematicSearch,
-  })
 
   const { userLocation, selectedLocationMode } = useLocation()
+  const isUserUnderage = useIsUserUnderage()
+  const adaptPlaylistParameters = useAdaptOffersPlaylistParameters()
   const transformHits = useTransformOfferHits()
+  const { data: gtlPlaylists, isLoading: arePlaylistsLoading } = useGTLPlaylistsQuery({
+    venue,
+    searchGroupLabel: params?.fromThematicSearch,
+    userLocation,
+    selectedLocationMode,
+    isUserUnderage,
+    adaptPlaylistParameters,
+    transformHits,
+  })
+
   const venueSearchParams = useVenueSearchParameters(venue)
   const { searchState } = useSearch()
-  const isUserUnderage = useIsUserUnderage()
   const { data: venueOffers } = useVenueOffersQuery({
     userLocation,
     selectedLocationMode,
@@ -56,7 +64,7 @@ export const Venue: FunctionComponent = () => {
     venue,
   })
   const { artistPageSubcategories } = useRemoteConfigQuery()
-  const { data: venueArtists } = useVenueOffersArtists(
+  const { data: venueArtists } = getVenueOffersArtists(
     artistPageSubcategories.subcategories,
     venueOffers?.hits
   )
@@ -102,7 +110,7 @@ export const Venue: FunctionComponent = () => {
           <Animated.View layout={Layout.duration(200)}>
             <VenueBody
               venue={venue}
-              playlists={gtlPlaylists}
+              playlists={gtlPlaylists || []}
               venueOffers={venueOffers}
               venueArtists={venueArtists}
               headlineOfferData={headlineOfferData}

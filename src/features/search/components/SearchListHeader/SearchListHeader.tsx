@@ -8,12 +8,10 @@ import { useAccessibilityFiltersContext } from 'features/accessibility/context/A
 import { usePreviousRoute } from 'features/navigation/helpers/usePreviousRoute'
 import { SearchOfferHits } from 'features/search/api/useSearchResults/useSearchResults'
 import { NumberOfResults } from 'features/search/components/NumberOfResults/NumberOfResults'
-import { ArtistSection } from 'features/search/components/SearchListHeader/ArtistSection'
 import { VenuePlaylist } from 'features/search/components/VenuePlaylist/VenuePlaylist'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { getSearchVenuePlaylistTitle } from 'features/search/helpers/getSearchVenuePlaylistTitle/getSearchVenuePlaylistTitle'
 import { SearchView, VenuesUserData } from 'features/search/types'
-import { Artist } from 'features/venue/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/analytics/provider'
 import { useLocation } from 'libs/location'
@@ -29,7 +27,7 @@ interface SearchListHeaderProps extends ScrollViewProps {
   userData: SearchResponse<Offer[]>['userData']
   venues?: SearchOfferHits['venues']
   venuesUserData: VenuesUserData
-  artists?: Artist[]
+  artistSection?: React.ReactNode
 }
 
 export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
@@ -37,7 +35,7 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
   userData,
   venues,
   venuesUserData,
-  artists,
+  artistSection,
 }) => {
   const { geolocPosition, showGeolocPermissionModal, selectedLocationMode } = useLocation()
   const { disabilities } = useAccessibilityFiltersContext()
@@ -100,7 +98,7 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
           <InfoBanner message={unavailableOfferMessage} icon={Error} />
         </BannerOfferNotPresentContainer>
       ) : null}
-      {artists?.length ? <StyledArtistSection artists={artists} /> : null}
+      {artistSection}
       {shouldDisplayVenuesPlaylist ? (
         <StyledVenuePlaylist
           venuePlaylistTitle={venuePlaylistTitle}
@@ -127,10 +125,6 @@ const BannerOfferNotPresentContainer = styled.View<{ nbHits: number }>(({ nbHits
 
 const Title = styled(Typo.Title3)({
   marginHorizontal: getSpacing(6),
-  marginTop: getSpacing(4),
-})
-
-const StyledArtistSection = styled(ArtistSection)({
   marginTop: getSpacing(4),
 })
 
