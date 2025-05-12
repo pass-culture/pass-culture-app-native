@@ -74,8 +74,8 @@ jest.mock('features/location/helpers/useLocationState', () => ({
   }),
 }))
 
-jest.mock('features/location/helpers/useLocationSubmit', () => ({
-  useLocationSubmit: () => ({
+jest.mock('features/location/helpers/getLocationSubmit', () => ({
+  getLocationSubmit: () => ({
     setTempAroundMeRadius: jest.fn(),
   }),
 }))
@@ -1095,6 +1095,44 @@ describe('SearchResultsContent component', () => {
       await user.press(await screen.findByText('Dates'))
 
       expect(screen.getByTestId('calendar')).toBeOnTheScreen()
+    })
+  })
+
+  describe('Artists section', () => {
+    beforeEach(() => {
+      mockUseLocation.mockReturnValue(aroundMeUseLocation)
+    })
+
+    it('should display artists playlist when there are artists', async () => {
+      renderSearchResultContent()
+
+      await initSearchResultsFlashlist()
+
+      expect(await screen.findByText('Les artistes')).toBeOnTheScreen()
+    })
+
+    it('should not display artists playlist when there are not artists', async () => {
+      renderSearchResultContent({
+        ...DEFAULT_SEARCH_RESULT_CONTENT_PROPS,
+        hits: { ...DEFAULT_SEARCH_RESULT_CONTENT_PROPS.hits, artists: [] },
+      })
+
+      await initSearchResultsFlashlist()
+
+      expect(screen.queryByText('Les artistes')).not.toBeOnTheScreen()
+    })
+
+    it('should trigger consult artist log when pressing artists playlist item', async () => {
+      renderSearchResultContent()
+
+      await initSearchResultsFlashlist()
+
+      await user.press(screen.getByText('Artist 1'))
+
+      expect(analytics.logConsultArtist).toHaveBeenCalledWith({
+        artistName: 'Artist 1',
+        from: 'search',
+      })
     })
   })
 })

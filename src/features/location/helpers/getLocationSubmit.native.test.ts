@@ -3,9 +3,8 @@ import { mockPlaces } from 'features/location/fixtures/mockPlaces'
 import { DEFAULT_RADIUS } from 'features/search/constants'
 import { analytics } from 'libs/analytics/provider'
 import { LocationMode } from 'libs/location/types'
-import { renderHook } from 'tests/utils'
 
-import { useLocationSubmit } from './useLocationSubmit'
+import { getLocationSubmit } from './getLocationSubmit'
 
 const mockProps = {
   ...mockLocationState,
@@ -15,20 +14,20 @@ const mockProps = {
   selectedPlace: mockPlaces[0],
 } as const
 
-describe('useLocationSubmit', () => {
+describe('getLocationSubmit', () => {
   it('should call dismissModal on onClose', () => {
-    const { result } = renderHook(() => useLocationSubmit(mockProps))
+    const result = getLocationSubmit(mockProps)
 
-    result.current.onClose()
+    result.onClose()
 
     expect(mockProps.dismissModal).toHaveBeenCalledTimes(1)
   })
 
   describe('When on onSubmit with location mode is AROUND_PLACE', () => {
     it('should call setSelectedLocationMode with AROUND_PLACE', () => {
-      const { result } = renderHook(() => useLocationSubmit(mockProps))
+      const result = getLocationSubmit(mockProps)
 
-      result.current.onSubmit(LocationMode.AROUND_PLACE)
+      result.onSubmit(LocationMode.AROUND_PLACE)
 
       expect(mockProps.setSelectedLocationMode).toHaveBeenNthCalledWith(
         1,
@@ -37,25 +36,25 @@ describe('useLocationSubmit', () => {
     })
 
     it('should call setPlaceGlobally with the selected place', () => {
-      const { result } = renderHook(() => useLocationSubmit(mockProps))
+      const result = getLocationSubmit(mockProps)
 
-      result.current.onSubmit(LocationMode.AROUND_PLACE)
+      result.onSubmit(LocationMode.AROUND_PLACE)
 
       expect(mockProps.setPlaceGlobally).toHaveBeenNthCalledWith(1, mockPlaces[0])
     })
 
     it('should call setTempAroundMeRadius with the default radius', () => {
-      const { result } = renderHook(() => useLocationSubmit(mockProps))
+      const result = getLocationSubmit(mockProps)
 
-      result.current.onSubmit(LocationMode.AROUND_PLACE)
+      result.onSubmit(LocationMode.AROUND_PLACE)
 
       expect(mockProps.setTempAroundMeRadius).toHaveBeenNthCalledWith(1, DEFAULT_RADIUS)
     })
 
     it('should call dispatch with SET_LOCATION_PLACE with the selected place when dispatch defined', () => {
-      const { result } = renderHook(() => useLocationSubmit(mockProps))
+      const result = getLocationSubmit(mockProps)
 
-      result.current.onSubmit(LocationMode.AROUND_PLACE)
+      result.onSubmit(LocationMode.AROUND_PLACE)
 
       expect(mockProps.dispatch).toHaveBeenNthCalledWith(1, {
         type: 'SET_LOCATION_PLACE',
@@ -67,17 +66,17 @@ describe('useLocationSubmit', () => {
     })
 
     it('should not call dispatch with SET_LOCATION_PLACE with the selected place when dispatch not defined', () => {
-      const { result } = renderHook(() => useLocationSubmit({ ...mockProps, dispatch: undefined }))
+      const result = getLocationSubmit({ ...mockProps, dispatch: undefined })
 
-      result.current.onSubmit(LocationMode.AROUND_PLACE)
+      result.onSubmit(LocationMode.AROUND_PLACE)
 
       expect(mockProps.dispatch).not.toHaveBeenCalled()
     })
 
     it('should call logUserSetLocation', () => {
-      const { result } = renderHook(() => useLocationSubmit(mockProps))
+      const result = getLocationSubmit(mockProps)
 
-      result.current.onSubmit(LocationMode.AROUND_PLACE)
+      result.onSubmit(LocationMode.AROUND_PLACE)
 
       expect(analytics.logUserSetLocation).toHaveBeenNthCalledWith(1, 'search')
     })
@@ -85,33 +84,33 @@ describe('useLocationSubmit', () => {
 
   describe('When on onSubmit with location mode is AROUND_ME', () => {
     it('should call setPlaceGlobally with null', () => {
-      const { result } = renderHook(() => useLocationSubmit(mockProps))
+      const result = getLocationSubmit(mockProps)
 
-      result.current.onSubmit(LocationMode.AROUND_ME)
+      result.onSubmit(LocationMode.AROUND_ME)
 
       expect(mockProps.setPlaceGlobally).toHaveBeenNthCalledWith(1, null)
     })
 
     it('should call setAroundMeRadius with the selected radius', () => {
-      const { result } = renderHook(() => useLocationSubmit(mockProps))
+      const result = getLocationSubmit(mockProps)
 
-      result.current.onSubmit(LocationMode.AROUND_ME)
+      result.onSubmit(LocationMode.AROUND_ME)
 
       expect(mockProps.setAroundMeRadius).toHaveBeenNthCalledWith(1, DEFAULT_RADIUS)
     })
 
     it('should call setTempAroundPlaceRadius with the default radius', () => {
-      const { result } = renderHook(() => useLocationSubmit(mockProps))
+      const result = getLocationSubmit(mockProps)
 
-      result.current.onSubmit(LocationMode.AROUND_ME)
+      result.onSubmit(LocationMode.AROUND_ME)
 
       expect(mockProps.setTempAroundPlaceRadius).toHaveBeenNthCalledWith(1, DEFAULT_RADIUS)
     })
 
     it('should call dispatch with SET_LOCATION_AROUND_ME with the selected radius when dispatch defined', () => {
-      const { result } = renderHook(() => useLocationSubmit(mockProps))
+      const result = getLocationSubmit(mockProps)
 
-      result.current.onSubmit(LocationMode.AROUND_ME)
+      result.onSubmit(LocationMode.AROUND_ME)
 
       expect(mockProps.dispatch).toHaveBeenNthCalledWith(1, {
         type: 'SET_LOCATION_AROUND_ME',
@@ -120,9 +119,9 @@ describe('useLocationSubmit', () => {
     })
 
     it('should not call dispatch with SET_LOCATION_AROUND_ME with the selected radius when dispatch not defined', () => {
-      const { result } = renderHook(() => useLocationSubmit({ ...mockProps, dispatch: undefined }))
+      const result = getLocationSubmit({ ...mockProps, dispatch: undefined })
 
-      result.current.onSubmit(LocationMode.AROUND_ME)
+      result.onSubmit(LocationMode.AROUND_ME)
 
       expect(mockProps.dispatch).not.toHaveBeenCalled()
     })
@@ -130,17 +129,17 @@ describe('useLocationSubmit', () => {
 
   describe('When on onSubmit with location mode is EVERYWHERE', () => {
     it('should call setPlaceGlobally with null', () => {
-      const { result } = renderHook(() => useLocationSubmit(mockProps))
+      const result = getLocationSubmit(mockProps)
 
-      result.current.onSubmit(LocationMode.EVERYWHERE)
+      result.onSubmit(LocationMode.EVERYWHERE)
 
       expect(mockProps.setPlaceGlobally).toHaveBeenNthCalledWith(1, null)
     })
 
     it('should call dispatch with SET_LOCATION_EVERYWHERE  when dispatch defined', () => {
-      const { result } = renderHook(() => useLocationSubmit(mockProps))
+      const result = getLocationSubmit(mockProps)
 
-      result.current.onSubmit(LocationMode.EVERYWHERE)
+      result.onSubmit(LocationMode.EVERYWHERE)
 
       expect(mockProps.dispatch).toHaveBeenNthCalledWith(1, {
         type: 'SET_LOCATION_EVERYWHERE',
@@ -148,9 +147,9 @@ describe('useLocationSubmit', () => {
     })
 
     it('should not call dispatch with SET_LOCATION_EVERYWHERE  when dispatch not defined', () => {
-      const { result } = renderHook(() => useLocationSubmit({ ...mockProps, dispatch: undefined }))
+      const result = getLocationSubmit({ ...mockProps, dispatch: undefined })
 
-      result.current.onSubmit(LocationMode.EVERYWHERE)
+      result.onSubmit(LocationMode.EVERYWHERE)
 
       expect(mockProps.dispatch).not.toHaveBeenCalled()
     })

@@ -16,6 +16,7 @@ import { FilterButton } from 'features/search/components/Buttons/FilterButton/Fi
 import { SingleFilterButton } from 'features/search/components/Buttons/SingleFilterButton/SingleFilterButton'
 import { NoSearchResult } from 'features/search/components/NoSearchResults/NoSearchResult'
 import { SearchList } from 'features/search/components/SearchList/SearchList'
+import { ArtistSection } from 'features/search/components/SearchListHeader/ArtistSection'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { FilterBehaviour } from 'features/search/enums'
 import { getStringifySearchStateWithoutLocation } from 'features/search/helpers/getStringifySearchStateWithoutLocation/getStringifySearchStateWithoutLocation'
@@ -61,7 +62,10 @@ import { ellipseString } from 'shared/string/ellipseString'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { Li } from 'ui/components/Li'
 import { useModal } from 'ui/components/modals/useModal'
-import { HitPlaceholder, NumberOfResultsPlaceholder } from 'ui/components/placeholders/Placeholders'
+import {
+  HeaderSearchResultsPlaceholder,
+  HitPlaceholder,
+} from 'ui/components/placeholders/Placeholders'
 import { ScrollToTopButton } from 'ui/components/ScrollToTopButton'
 import { HorizontalOfferTile } from 'ui/components/tiles/HorizontalOfferTile'
 import { Ul } from 'ui/components/Ul'
@@ -143,13 +147,14 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
   useFocusEffect(
     useCallback(() => {
       const location = selectedPlace?.geolocation ?? geolocPosition
-      if (location) {
-        const region = getRegionFromPosition(location, width / height)
-        if (!initialRegion) {
-          setInitialRegion(region)
-        }
-        setRegion(region)
+      if (!location) {
+        return
       }
+      const region = getRegionFromPosition(location, width / height)
+      if (!initialRegion) {
+        setInitialRegion(region)
+      }
+      setRegion(region)
     }, [geolocPosition, selectedPlace, width, height, initialRegion])
   )
 
@@ -322,6 +327,10 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
     hideVenueMapLocationModal()
   }
 
+  const handleOnArtistPlaylistItemPress = (artistName: string) => {
+    analytics.logConsultArtist({ artistName, from: 'search' })
+  }
+
   if (showSkeleton) return <SearchResultsPlaceHolder />
 
   const numberOfResults =
@@ -357,6 +366,14 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
         onPress={onEndReached}
         userData={userData}
         venuesUserData={venuesUserData}
+        artistSection={
+          hits.artists.length ? (
+            <StyledArtistSection
+              artists={hits.artists}
+              onItemPress={handleOnArtistPlaylistItemPress}
+            />
+          ) : undefined
+        }
       />
     ),
     [Tab.MAP]: selectedLocationMode === LocationMode.EVERYWHERE ? null : <VenueMapViewContainer />,
@@ -632,14 +649,16 @@ const FiltersScrollView = styled(ScrollView)({
   marginBottom: getSpacing(2),
 })
 
+const StyledArtistSection = styled(ArtistSection)({
+  marginTop: getSpacing(4),
+})
+
 const FAVORITE_LIST_PLACEHOLDER = Array.from({ length: 20 }).map((_, index) => ({
   key: index.toString(),
 }))
 
-function SearchResultsPlaceHolder() {
+const SearchResultsPlaceHolder = () => {
   const renderItem = useCallback(() => <HitPlaceholder />, [])
-  const ListHeaderComponent = useMemo(() => <NumberOfResultsPlaceholder />, [])
-  const ListFooterComponent = useMemo(() => <Footer />, [])
 
   return (
     <Container>
@@ -647,9 +666,9 @@ function SearchResultsPlaceHolder() {
         data={FAVORITE_LIST_PLACEHOLDER}
         renderItem={renderItem}
         contentContainerStyle={contentContainerStyle}
-        ListHeaderComponent={ListHeaderComponent}
+        ListHeaderComponent={<HeaderSearchResultsPlaceholder />}
         ItemSeparatorComponent={Separator}
-        ListFooterComponent={ListFooterComponent}
+        ListFooterComponent={<Footer />}
         scrollEnabled={false}
       />
     </Container>

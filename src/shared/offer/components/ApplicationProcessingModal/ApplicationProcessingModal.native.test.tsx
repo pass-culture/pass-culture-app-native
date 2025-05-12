@@ -4,10 +4,9 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { PaginatedFavoritesResponse } from 'api/gen'
 import { paginatedFavoritesResponseSnap } from 'features/favorites/fixtures/paginatedFavoritesResponseSnap'
 import { analytics } from 'libs/analytics/provider'
-import { MODAL_TO_HIDE_TIME } from 'tests/constants'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 
 import { ApplicationProcessingModal } from './ApplicationProcessingModal'
 
@@ -23,6 +22,9 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
     return Component
   }
 })
+
+const user = userEvent.setup()
+jest.useFakeTimers()
 
 describe('<ApplicationProcessingModal />', () => {
   it('should match previous snapshot', () => {
@@ -43,21 +45,19 @@ describe('<ApplicationProcessingModal />', () => {
     )
 
     const button = screen.getByTestId('Aller sur mon profil')
-    fireEvent.press(button)
+    await user.press(button)
 
-    await waitFor(() => {
-      expect(navigate).toHaveBeenCalledWith('TabNavigator', { screen: 'Profile' })
-    })
+    expect(navigate).toHaveBeenCalledWith('TabNavigator', { screen: 'Profile' })
   })
 
-  it('should log analytics when clicking on button "Aller sur mon profil"', () => {
+  it('should log analytics when clicking on button "Aller sur mon profil"', async () => {
     render(
       reactQueryProviderHOC(
         <ApplicationProcessingModal visible hideModal={hideModal} offerId={offerId} />
       )
     )
 
-    fireEvent.press(screen.getByTestId('Aller sur mon profil'))
+    await user.press(screen.getByTestId('Aller sur mon profil'))
 
     expect(analytics.logGoToProfil).toHaveBeenCalledWith({
       from: 'ApplicationProcessingModal',
@@ -76,13 +76,7 @@ describe('<ApplicationProcessingModal />', () => {
       )
     )
 
-    fireEvent.press(screen.getByText('Mettre en favori'))
-
-    // TODO(PC-29011): Use fakeTimers instead this hack
-    await act(async () => {
-      const sleep = (ms: number) => new Promise((resolve) => setTimeout(resolve, ms))
-      await sleep(MODAL_TO_HIDE_TIME)
-    })
+    await user.press(screen.getByText('Mettre en favori'))
 
     expect(hideModal).toHaveBeenCalledTimes(1)
   })
@@ -98,13 +92,11 @@ describe('<ApplicationProcessingModal />', () => {
       )
     )
 
-    fireEvent.press(screen.getByText('Mettre en favori'))
+    await user.press(screen.getByText('Mettre en favori'))
 
-    await waitFor(() => {
-      expect(analytics.logHasAddedOfferToFavorites).toHaveBeenCalledWith({
-        from: 'ApplicationProcessingModal',
-        offerId,
-      })
+    expect(analytics.logHasAddedOfferToFavorites).toHaveBeenCalledWith({
+      from: 'ApplicationProcessingModal',
+      offerId,
     })
   })
 })

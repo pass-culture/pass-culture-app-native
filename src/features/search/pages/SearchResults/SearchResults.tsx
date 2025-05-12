@@ -3,6 +3,7 @@ import React, { useCallback, useEffect } from 'react'
 import { Configure, InstantSearch } from 'react-instantsearch-core'
 import { StatusBar } from 'react-native'
 import AlgoliaSearchInsights from 'search-insights'
+import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { useSearchResults } from 'features/search/api/useSearchResults/useSearchResults'
@@ -23,7 +24,7 @@ import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { OfflinePage } from 'libs/network/OfflinePage'
 import { Form } from 'ui/components/Form'
 import { Page } from 'ui/pages/Page'
-import { Spacer } from 'ui/theme'
+import { getSpacing } from 'ui/theme'
 
 const searchInputID = uuidv4()
 const suggestionsIndex = env.ALGOLIA_SUGGESTIONS_INDEX_NAME
@@ -100,12 +101,13 @@ export const SearchResults = () => {
           indexName={suggestionsIndex}
           insights={{ insightsClient: AlgoliaSearchInsights }}>
           <Configure hitsPerPage={5} clickAnalytics />
-          <SearchHeader
-            searchInputID={searchInputID}
-            addSearchHistory={addToHistory}
-            searchInHistory={setQueryHistoryMemoized}
-          />
-          <Spacer.Column numberOfSpaces={2} />
+          <Container>
+            <SearchHeader
+              searchInputID={searchInputID}
+              addSearchHistory={addToHistory}
+              searchInHistory={setQueryHistoryMemoized}
+            />
+          </Container>
           {isFocusOnSuggestions ? (
             <SearchSuggestions
               queryHistory={queryHistory}
@@ -133,3 +135,5 @@ export const SearchResults = () => {
     </Page>
   )
 }
+
+const Container = styled.View({ marginBottom: getSpacing(2) })

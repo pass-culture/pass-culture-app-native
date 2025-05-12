@@ -7,8 +7,8 @@
     "name": "pass Culture",
     "twitter": "@pass_Culture"
   },
-  "version": "1.339.3",
-  "build": 10339003,
+  "version": "1.340.0",
+  "build": 10340000,
   "private": true,
   "engines": {
     "node": ">=20.10"
@@ -63,6 +63,7 @@
     "test:e2e:android:testing:cloud": "./scripts/run_e2e_tests.sh cloud android testing",
     "test:e2e:ios:testing:cloud": "./scripts/run_e2e_tests.sh cloud ios testing",
     "test:lint": "eslint . --ext .js,.ts,.tsx,.mjs --cache --quiet",
+    "test:lint:count": "./scripts/eslint-warnings.sh",
     "test:lint:archi": "ESLINT_SCOPE=archi eslint . --ext .js,.ts,.tsx,.mjs --cache",
     "test:lint:cleancode": "ESLINT_SCOPE=cleancode eslint . --ext .js,.ts,.tsx,.mjs --cache",
     "test:lint:changed": "./scripts/lint_changed.sh",

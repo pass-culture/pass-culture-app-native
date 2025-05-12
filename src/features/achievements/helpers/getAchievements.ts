@@ -16,20 +16,20 @@ type Categories = {
   }[]
 }[]
 
-type UseAchievements = {
+type GetAchievements = {
   categories: Categories
   track: (from: 'profile' | 'success' | 'cheatcodes') => void
 }
 
-export type UseAchivementsProps = {
+export type GetAchivementsParams = {
   achievements: Achievement[]
   completedAchievements: AchievementResponse[]
 }
 
-export const useAchievements = ({
+export const getAchievements = ({
   achievements,
   completedAchievements,
-}: UseAchivementsProps): UseAchievements => {
+}: GetAchivementsParams): GetAchievements => {
   const categories = getAchievementsCategories(achievements).map(
     createCategory(achievements, completedAchievements)
   )

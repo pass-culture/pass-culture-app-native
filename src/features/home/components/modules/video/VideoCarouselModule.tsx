@@ -18,8 +18,6 @@ import { Color, VideoCarouselModule as VideoCarouselModuleType } from 'features/
 import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
 import { analytics } from 'libs/analytics/provider'
 import { ContentTypes } from 'libs/contentful/types'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useCategoryIdMapping } from 'libs/subcategories'
 import { usePrePopulateOffer } from 'shared/offer/usePrePopulateOffer'
 import { CarouselBar } from 'ui/components/CarouselBar/CarouselBar'
@@ -45,15 +43,13 @@ export const VideoCarouselModule: FunctionComponent<VideoCarouselModuleBaseProps
   const progressValue = useSharedValue<number>(0)
   const carouselDotId = uuidv4()
 
-  const enableVideoCarousel = useFeatureFlag(RemoteStoreFeatureFlags.WIP_APP_V2_VIDEO_9_16)
-
   const { homeEntryId, items, color, id, autoplay, index } = props
   const itemsWithRelatedData = useVideoCarouselData(items, id)
 
   const hasItems = itemsWithRelatedData.length > 0
   const videoSources = videoSourceExtractor(itemsWithRelatedData)
 
-  const shouldModuleBeDisplayed = Platform.OS !== 'web' && hasItems && enableVideoCarousel
+  const shouldModuleBeDisplayed = Platform.OS !== 'web' && hasItems
 
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isPlaying, setIsPlaying] = useState(autoplay ? true : false)
@@ -159,15 +155,11 @@ export const VideoCarouselModule: FunctionComponent<VideoCarouselModuleBaseProps
     )
   }
 
-  const SingleAttachedItem = () => {
-    if (itemsWithRelatedData[0])
-      return (
-        <SingleItemContainer>
-          {renderItem({ item: itemsWithRelatedData[0], index: 1 })}
-        </SingleItemContainer>
-      )
-    return null
-  }
+  const SingleItemWithRelatedData = itemsWithRelatedData[0] ? (
+    <SingleItemContainer>
+      {renderItem({ item: itemsWithRelatedData[0], index: 1 })}
+    </SingleItemContainer>
+  ) : null
 
   return (
     <Container>
@@ -212,7 +204,7 @@ export const VideoCarouselModule: FunctionComponent<VideoCarouselModuleBaseProps
             </DotContainer>
           </React.Fragment>
         ) : (
-          <SingleAttachedItem />
+          SingleItemWithRelatedData
         )}
       </ColoredAttachedTileContainer>
     </Container>

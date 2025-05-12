@@ -324,21 +324,13 @@ exports[`<Favorites/> should render correctly 1`] = `
             style={
               [
                 {
+                  "marginBottom": 20,
                   "marginHorizontal": 24,
+                  "marginTop": 4,
                 },
               ]
             }
           >
-            <View
-              numberOfSpaces={1}
-              style={
-                [
-                  {
-                    "height": 4,
-                  },
-                ]
-              }
-            />
             <View
               borderRadius={2}
               height={12}
@@ -394,16 +386,6 @@ exports[`<Favorites/> should render correctly 1`] = `
                 }
               />
             </View>
-            <View
-              numberOfSpaces={5}
-              style={
-                [
-                  {
-                    "height": 20,
-                  },
-                ]
-              }
-            />
           </View>
         </View>
         <View
@@ -412,90 +394,84 @@ exports[`<Favorites/> should render correctly 1`] = `
           style={null}
         >
           <View
+            gap={4}
             style={
               [
                 {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "gap": 16,
                   "marginHorizontal": 24,
                 },
               ]
             }
           >
             <View
+              borderRadius={4}
+              height={96}
               style={
                 [
                   {
-                    "alignItems": "center",
-                    "flexDirection": "row",
+                    "backgroundColor": "#DDDDDD",
+                    "borderRadius": 4,
+                    "height": 96,
+                    "overflow": "hidden",
+                    "width": 64,
                   },
                 ]
               }
+              width={64}
             >
-              <View
-                borderRadius={4}
-                height={96}
-                style={
+              <BVLinearGradient
+                colors={
                   [
-                    {
-                      "backgroundColor": "#DDDDDD",
-                      "borderRadius": 4,
-                      "height": 96,
-                      "overflow": "hidden",
-                      "width": 64,
-                    },
+                    4292730333,
+                    4293848814,
+                    4293848814,
+                    4292730333,
                   ]
                 }
-                width={64}
-              >
-                <BVLinearGradient
-                  colors={
-                    [
-                      4292730333,
-                      4293848814,
-                      4293848814,
-                      4292730333,
-                    ]
+                endPoint={
+                  {
+                    "x": 1,
+                    "y": 0,
                   }
-                  endPoint={
-                    {
-                      "x": 1,
-                      "y": 0,
-                    }
+                }
+                locations={null}
+                startPoint={
+                  {
+                    "x": 0,
+                    "y": 0,
                   }
-                  locations={null}
-                  startPoint={
-                    {
-                      "x": 0,
-                      "y": 0,
-                    }
-                  }
-                  style={
-                    {
-                      "borderRadius": 4,
-                      "bottom": 0,
-                      "left": 0,
-                      "position": "absolute",
-                      "right": 0,
-                      "top": 0,
-                      "transform": [
-                        {
-                          "translateX": -80,
-                        },
-                      ],
-                    }
-                  }
-                />
-              </View>
-              <View
-                numberOfSpaces={4}
+                }
                 style={
-                  [
-                    {
-                      "width": 16,
-                    },
-                  ]
+                  {
+                    "borderRadius": 4,
+                    "bottom": 0,
+                    "left": 0,
+                    "position": "absolute",
+                    "right": 0,
+                    "top": 0,
+                    "transform": [
+                      {
+                        "translateX": -80,
+                      },
+                    ],
+                  }
                 }
               />
-              <View>
+            </View>
+            <View>
+              <View
+                marginBottom={3}
+                style={
+                  [
+                    {
+                      "marginBottom": 12,
+                    },
+                  ]
+                }
+              >
                 <View
                   borderRadius={2}
                   height={12}
@@ -551,16 +527,17 @@ exports[`<Favorites/> should render correctly 1`] = `
                     }
                   />
                 </View>
-                <View
-                  numberOfSpaces={3}
-                  style={
-                    [
-                      {
-                        "height": 12,
-                      },
-                    ]
-                  }
-                />
+              </View>
+              <View
+                marginBottom={1}
+                style={
+                  [
+                    {
+                      "marginBottom": 4,
+                    },
+                  ]
+                }
+              >
                 <View
                   borderRadius={2}
                   height={12}
@@ -616,16 +593,17 @@ exports[`<Favorites/> should render correctly 1`] = `
                     }
                   />
                 </View>
-                <View
-                  numberOfSpaces={1}
-                  style={
-                    [
-                      {
-                        "height": 4,
-                      },
-                    ]
-                  }
-                />
+              </View>
+              <View
+                marginBottom={2}
+                style={
+                  [
+                    {
+                      "marginBottom": 8,
+                    },
+                  ]
+                }
+              >
                 <View
                   borderRadius={2}
                   height={12}
@@ -681,16 +659,16 @@ exports[`<Favorites/> should render correctly 1`] = `
                     }
                   />
                 </View>
-                <View
-                  numberOfSpaces={2}
-                  style={
-                    [
-                      {
-                        "height": 8,
-                      },
-                    ]
-                  }
-                />
+              </View>
+              <View
+                style={
+                  [
+                    {
+                      "marginBottom": "NaNpx",
+                    },
+                  ]
+                }
+              >
                 <View
                   borderRadius={2}
                   height={12}
@@ -765,6 +743,7 @@ exports[`<Favorites/> should render correctly 1`] = `
               style={
                 [
                   {
+                    "marginRight": 20,
                     "maxWidth": 280,
                     "minWidth": 120,
                     "width": "47%",
@@ -829,16 +808,6 @@ exports[`<Favorites/> should render correctly 1`] = `
                 />
               </View>
             </View>
-            <View
-              numberOfSpaces={5}
-              style={
-                [
-                  {
-                    "width": 20,
-                  },
-                ]
-              }
-            />
             <View
               style={
                 [
@@ -933,90 +902,84 @@ exports[`<Favorites/> should render correctly 1`] = `
           style={null}
         >
           <View
+            gap={4}
             style={
               [
                 {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "gap": 16,
                   "marginHorizontal": 24,
                 },
               ]
             }
           >
             <View
+              borderRadius={4}
+              height={96}
               style={
                 [
                   {
-                    "alignItems": "center",
-                    "flexDirection": "row",
+                    "backgroundColor": "#DDDDDD",
+                    "borderRadius": 4,
+                    "height": 96,
+                    "overflow": "hidden",
+                    "width": 64,
                   },
                 ]
               }
+              width={64}
             >
-              <View
-                borderRadius={4}
-                height={96}
-                style={
+              <BVLinearGradient
+                colors={
                   [
-                    {
-                      "backgroundColor": "#DDDDDD",
-                      "borderRadius": 4,
-                      "height": 96,
-                      "overflow": "hidden",
-                      "width": 64,
-                    },
+                    4292730333,
+                    4293848814,
+                    4293848814,
+                    4292730333,
                   ]
                 }
-                width={64}
-              >
-                <BVLinearGradient
-                  colors={
-                    [
-                      4292730333,
-                      4293848814,
-                      4293848814,
-                      4292730333,
-                    ]
+                endPoint={
+                  {
+                    "x": 1,
+                    "y": 0,
                   }
-                  endPoint={
-                    {
-                      "x": 1,
-                      "y": 0,
-                    }
+                }
+                locations={null}
+                startPoint={
+                  {
+                    "x": 0,
+                    "y": 0,
                   }
-                  locations={null}
-                  startPoint={
-                    {
-                      "x": 0,
-                      "y": 0,
-                    }
-                  }
-                  style={
-                    {
-                      "borderRadius": 4,
-                      "bottom": 0,
-                      "left": 0,
-                      "position": "absolute",
-                      "right": 0,
-                      "top": 0,
-                      "transform": [
-                        {
-                          "translateX": -80,
-                        },
-                      ],
-                    }
-                  }
-                />
-              </View>
-              <View
-                numberOfSpaces={4}
+                }
                 style={
-                  [
-                    {
-                      "width": 16,
-                    },
-                  ]
+                  {
+                    "borderRadius": 4,
+                    "bottom": 0,
+                    "left": 0,
+                    "position": "absolute",
+                    "right": 0,
+                    "top": 0,
+                    "transform": [
+                      {
+                        "translateX": -80,
+                      },
+                    ],
+                  }
                 }
               />
-              <View>
+            </View>
+            <View>
+              <View
+                marginBottom={3}
+                style={
+                  [
+                    {
+                      "marginBottom": 12,
+                    },
+                  ]
+                }
+              >
                 <View
                   borderRadius={2}
                   height={12}
@@ -1072,16 +1035,17 @@ exports[`<Favorites/> should render correctly 1`] = `
                     }
                   />
                 </View>
-                <View
-                  numberOfSpaces={3}
-                  style={
-                    [
-                      {
-                        "height": 12,
-                      },
-                    ]
-                  }
-                />
+              </View>
+              <View
+                marginBottom={1}
+                style={
+                  [
+                    {
+                      "marginBottom": 4,
+                    },
+                  ]
+                }
+              >
                 <View
                   borderRadius={2}
                   height={12}
@@ -1137,16 +1101,17 @@ exports[`<Favorites/> should render correctly 1`] = `
                     }
                   />
                 </View>
-                <View
-                  numberOfSpaces={1}
-                  style={
-                    [
-                      {
-                        "height": 4,
-                      },
-                    ]
-                  }
-                />
+              </View>
+              <View
+                marginBottom={2}
+                style={
+                  [
+                    {
+                      "marginBottom": 8,
+                    },
+                  ]
+                }
+              >
                 <View
                   borderRadius={2}
                   height={12}
@@ -1202,16 +1167,16 @@ exports[`<Favorites/> should render correctly 1`] = `
                     }
                   />
                 </View>
-                <View
-                  numberOfSpaces={2}
-                  style={
-                    [
-                      {
-                        "height": 8,
-                      },
-                    ]
-                  }
-                />
+              </View>
+              <View
+                style={
+                  [
+                    {
+                      "marginBottom": "NaNpx",
+                    },
+                  ]
+                }
+              >
                 <View
                   borderRadius={2}
                   height={12}
@@ -1286,6 +1251,7 @@ exports[`<Favorites/> should render correctly 1`] = `
               style={
                 [
                   {
+                    "marginRight": 20,
                     "maxWidth": 280,
                     "minWidth": 120,
                     "width": "47%",
@@ -1350,16 +1316,6 @@ exports[`<Favorites/> should render correctly 1`] = `
                 />
               </View>
             </View>
-            <View
-              numberOfSpaces={5}
-              style={
-                [
-                  {
-                    "width": 20,
-                  },
-                ]
-              }
-            />
             <View
               style={
                 [
@@ -1454,90 +1410,84 @@ exports[`<Favorites/> should render correctly 1`] = `
           style={null}
         >
           <View
+            gap={4}
             style={
               [
                 {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "gap": 16,
                   "marginHorizontal": 24,
                 },
               ]
             }
           >
             <View
+              borderRadius={4}
+              height={96}
               style={
                 [
                   {
-                    "alignItems": "center",
-                    "flexDirection": "row",
+                    "backgroundColor": "#DDDDDD",
+                    "borderRadius": 4,
+                    "height": 96,
+                    "overflow": "hidden",
+                    "width": 64,
                   },
                 ]
               }
+              width={64}
             >
-              <View
-                borderRadius={4}
-                height={96}
-                style={
+              <BVLinearGradient
+                colors={
                   [
-                    {
-                      "backgroundColor": "#DDDDDD",
-                      "borderRadius": 4,
-                      "height": 96,
-                      "overflow": "hidden",
-                      "width": 64,
-                    },
+                    4292730333,
+                    4293848814,
+                    4293848814,
+                    4292730333,
                   ]
                 }
-                width={64}
-              >
-                <BVLinearGradient
-                  colors={
-                    [
-                      4292730333,
-                      4293848814,
-                      4293848814,
-                      4292730333,
-                    ]
+                endPoint={
+                  {
+                    "x": 1,
+                    "y": 0,
                   }
-                  endPoint={
-                    {
-                      "x": 1,
-                      "y": 0,
-                    }
+                }
+                locations={null}
+                startPoint={
+                  {
+                    "x": 0,
+                    "y": 0,
                   }
-                  locations={null}
-                  startPoint={
-                    {
-                      "x": 0,
-                      "y": 0,
-                    }
-                  }
-                  style={
-                    {
-                      "borderRadius": 4,
-                      "bottom": 0,
-                      "left": 0,
-                      "position": "absolute",
-                      "right": 0,
-                      "top": 0,
-                      "transform": [
-                        {
-                          "translateX": -80,
-                        },
-                      ],
-                    }
-                  }
-                />
-              </View>
-              <View
-                numberOfSpaces={4}
+                }
                 style={
-                  [
-                    {
-                      "width": 16,
-                    },
-                  ]
+                  {
+                    "borderRadius": 4,
+                    "bottom": 0,
+                    "left": 0,
+                    "position": "absolute",
+                    "right": 0,
+                    "top": 0,
+                    "transform": [
+                      {
+                        "translateX": -80,
+                      },
+                    ],
+                  }
                 }
               />
-              <View>
+            </View>
+            <View>
+              <View
+                marginBottom={3}
+                style={
+                  [
+                    {
+                      "marginBottom": 12,
+                    },
+                  ]
+                }
+              >
                 <View
                   borderRadius={2}
                   height={12}
@@ -1593,16 +1543,17 @@ exports[`<Favorites/> should render correctly 1`] = `
                     }
                   />
                 </View>
-                <View
-                  numberOfSpaces={3}
-                  style={
-                    [
-                      {
-                        "height": 12,
-                      },
-                    ]
-                  }
-                />
+              </View>
+              <View
+                marginBottom={1}
+                style={
+                  [
+                    {
+                      "marginBottom": 4,
+                    },
+                  ]
+                }
+              >
                 <View
                   borderRadius={2}
                   height={12}
@@ -1658,16 +1609,17 @@ exports[`<Favorites/> should render correctly 1`] = `
                     }
                   />
                 </View>
-                <View
-                  numberOfSpaces={1}
-                  style={
-                    [
-                      {
-                        "height": 4,
-                      },
-                    ]
-                  }
-                />
+              </View>
+              <View
+                marginBottom={2}
+                style={
+                  [
+                    {
+                      "marginBottom": 8,
+                    },
+                  ]
+                }
+              >
                 <View
                   borderRadius={2}
                   height={12}
@@ -1723,16 +1675,16 @@ exports[`<Favorites/> should render correctly 1`] = `
                     }
                   />
                 </View>
-                <View
-                  numberOfSpaces={2}
-                  style={
-                    [
-                      {
-                        "height": 8,
-                      },
-                    ]
-                  }
-                />
+              </View>
+              <View
+                style={
+                  [
+                    {
+                      "marginBottom": "NaNpx",
+                    },
+                  ]
+                }
+              >
                 <View
                   borderRadius={2}
                   height={12}
@@ -1807,6 +1759,7 @@ exports[`<Favorites/> should render correctly 1`] = `
               style={
                 [
                   {
+                    "marginRight": 20,
                     "maxWidth": 280,
                     "minWidth": 120,
                     "width": "47%",
@@ -1871,16 +1824,6 @@ exports[`<Favorites/> should render correctly 1`] = `
                 />
               </View>
             </View>
-            <View
-              numberOfSpaces={5}
-              style={
-                [
-                  {
-                    "width": 20,
-                  },
-                ]
-              }
-            />
             <View
               style={
                 [
@@ -1975,90 +1918,84 @@ exports[`<Favorites/> should render correctly 1`] = `
           style={null}
         >
           <View
+            gap={4}
             style={
               [
                 {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "gap": 16,
                   "marginHorizontal": 24,
                 },
               ]
             }
           >
             <View
+              borderRadius={4}
+              height={96}
               style={
                 [
                   {
-                    "alignItems": "center",
-                    "flexDirection": "row",
+                    "backgroundColor": "#DDDDDD",
+                    "borderRadius": 4,
+                    "height": 96,
+                    "overflow": "hidden",
+                    "width": 64,
                   },
                 ]
               }
+              width={64}
             >
-              <View
-                borderRadius={4}
-                height={96}
-                style={
+              <BVLinearGradient
+                colors={
                   [
-                    {
-                      "backgroundColor": "#DDDDDD",
-                      "borderRadius": 4,
-                      "height": 96,
-                      "overflow": "hidden",
-                      "width": 64,
-                    },
+                    4292730333,
+                    4293848814,
+                    4293848814,
+                    4292730333,
                   ]
                 }
-                width={64}
-              >
-                <BVLinearGradient
-                  colors={
-                    [
-                      4292730333,
-                      4293848814,
-                      4293848814,
-                      4292730333,
-                    ]
+                endPoint={
+                  {
+                    "x": 1,
+                    "y": 0,
                   }
-                  endPoint={
-                    {
-                      "x": 1,
-                      "y": 0,
-                    }
+                }
+                locations={null}
+                startPoint={
+                  {
+                    "x": 0,
+                    "y": 0,
                   }
-                  locations={null}
-                  startPoint={
-                    {
-                      "x": 0,
-                      "y": 0,
-                    }
-                  }
-                  style={
-                    {
-                      "borderRadius": 4,
-                      "bottom": 0,
-                      "left": 0,
-                      "position": "absolute",
-                      "right": 0,
-                      "top": 0,
-                      "transform": [
-                        {
-                          "translateX": -80,
-                        },
-                      ],
-                    }
-                  }
-                />
-              </View>
-              <View
-                numberOfSpaces={4}
+                }
                 style={
-                  [
-                    {
-                      "width": 16,
-                    },
-                  ]
+                  {
+                    "borderRadius": 4,
+                    "bottom": 0,
+                    "left": 0,
+                    "position": "absolute",
+                    "right": 0,
+                    "top": 0,
+                    "transform": [
+                      {
+                        "translateX": -80,
+                      },
+                    ],
+                  }
                 }
               />
-              <View>
+            </View>
+            <View>
+              <View
+                marginBottom={3}
+                style={
+                  [
+                    {
+                      "marginBottom": 12,
+                    },
+                  ]
+                }
+              >
                 <View
                   borderRadius={2}
                   height={12}
@@ -2114,16 +2051,17 @@ exports[`<Favorites/> should render correctly 1`] = `
                     }
                   />
                 </View>
-                <View
-                  numberOfSpaces={3}
-                  style={
-                    [
-                      {
-                        "height": 12,
-                      },
-                    ]
-                  }
-                />
+              </View>
+              <View
+                marginBottom={1}
+                style={
+                  [
+                    {
+                      "marginBottom": 4,
+                    },
+                  ]
+                }
+              >
                 <View
                   borderRadius={2}
                   height={12}
@@ -2179,16 +2117,17 @@ exports[`<Favorites/> should render correctly 1`] = `
                     }
                   />
                 </View>
-                <View
-                  numberOfSpaces={1}
-                  style={
-                    [
-                      {
-                        "height": 4,
-                      },
-                    ]
-                  }
-                />
+              </View>
+              <View
+                marginBottom={2}
+                style={
+                  [
+                    {
+                      "marginBottom": 8,
+                    },
+                  ]
+                }
+              >
                 <View
                   borderRadius={2}
                   height={12}
@@ -2244,16 +2183,16 @@ exports[`<Favorites/> should render correctly 1`] = `
                     }
                   />
                 </View>
-                <View
-                  numberOfSpaces={2}
-                  style={
-                    [
-                      {
-                        "height": 8,
-                      },
-                    ]
-                  }
-                />
+              </View>
+              <View
+                style={
+                  [
+                    {
+                      "marginBottom": "NaNpx",
+                    },
+                  ]
+                }
+              >
                 <View
                   borderRadius={2}
                   height={12}
@@ -2328,6 +2267,7 @@ exports[`<Favorites/> should render correctly 1`] = `
               style={
                 [
                   {
+                    "marginRight": 20,
                     "maxWidth": 280,
                     "minWidth": 120,
                     "width": "47%",
@@ -2392,16 +2332,6 @@ exports[`<Favorites/> should render correctly 1`] = `
                 />
               </View>
             </View>
-            <View
-              numberOfSpaces={5}
-              style={
-                [
-                  {
-                    "width": 20,
-                  },
-                ]
-              }
-            />
             <View
               style={
                 [
@@ -2496,90 +2426,84 @@ exports[`<Favorites/> should render correctly 1`] = `
           style={null}
         >
           <View
+            gap={4}
             style={
               [
                 {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "gap": 16,
                   "marginHorizontal": 24,
                 },
               ]
             }
           >
             <View
+              borderRadius={4}
+              height={96}
               style={
                 [
                   {
-                    "alignItems": "center",
-                    "flexDirection": "row",
+                    "backgroundColor": "#DDDDDD",
+                    "borderRadius": 4,
+                    "height": 96,
+                    "overflow": "hidden",
+                    "width": 64,
                   },
                 ]
               }
+              width={64}
             >
-              <View
-                borderRadius={4}
-                height={96}
-                style={
+              <BVLinearGradient
+                colors={
                   [
-                    {
-                      "backgroundColor": "#DDDDDD",
-                      "borderRadius": 4,
-                      "height": 96,
-                      "overflow": "hidden",
-                      "width": 64,
-                    },
+                    4292730333,
+                    4293848814,
+                    4293848814,
+                    4292730333,
                   ]
                 }
-                width={64}
-              >
-                <BVLinearGradient
-                  colors={
-                    [
-                      4292730333,
-                      4293848814,
-                      4293848814,
-                      4292730333,
-                    ]
+                endPoint={
+                  {
+                    "x": 1,
+                    "y": 0,
                   }
-                  endPoint={
-                    {
-                      "x": 1,
-                      "y": 0,
-                    }
+                }
+                locations={null}
+                startPoint={
+                  {
+                    "x": 0,
+                    "y": 0,
                   }
-                  locations={null}
-                  startPoint={
-                    {
-                      "x": 0,
-                      "y": 0,
-                    }
-                  }
-                  style={
-                    {
-                      "borderRadius": 4,
-                      "bottom": 0,
-                      "left": 0,
-                      "position": "absolute",
-                      "right": 0,
-                      "top": 0,
-                      "transform": [
-                        {
-                          "translateX": -80,
-                        },
-                      ],
-                    }
-                  }
-                />
-              </View>
-              <View
-                numberOfSpaces={4}
+                }
                 style={
-                  [
-                    {
-                      "width": 16,
-                    },
-                  ]
+                  {
+                    "borderRadius": 4,
+                    "bottom": 0,
+                    "left": 0,
+                    "position": "absolute",
+                    "right": 0,
+                    "top": 0,
+                    "transform": [
+                      {
+                        "translateX": -80,
+                      },
+                    ],
+                  }
                 }
               />
-              <View>
+            </View>
+            <View>
+              <View
+                marginBottom={3}
+                style={
+                  [
+                    {
+                      "marginBottom": 12,
+                    },
+                  ]
+                }
+              >
                 <View
                   borderRadius={2}
                   height={12}
@@ -2635,16 +2559,17 @@ exports[`<Favorites/> should render correctly 1`] = `
                     }
                   />
                 </View>
-                <View
-                  numberOfSpaces={3}
-                  style={
-                    [
-                      {
-                        "height": 12,
-                      },
-                    ]
-                  }
-                />
+              </View>
+              <View
+                marginBottom={1}
+                style={
+                  [
+                    {
+                      "marginBottom": 4,
+                    },
+                  ]
+                }
+              >
                 <View
                   borderRadius={2}
                   height={12}
@@ -2700,16 +2625,17 @@ exports[`<Favorites/> should render correctly 1`] = `
                     }
                   />
                 </View>
-                <View
-                  numberOfSpaces={1}
-                  style={
-                    [
-                      {
-                        "height": 4,
-                      },
-                    ]
-                  }
-                />
+              </View>
+              <View
+                marginBottom={2}
+                style={
+                  [
+                    {
+                      "marginBottom": 8,
+                    },
+                  ]
+                }
+              >
                 <View
                   borderRadius={2}
                   height={12}
@@ -2765,16 +2691,16 @@ exports[`<Favorites/> should render correctly 1`] = `
                     }
                   />
                 </View>
-                <View
-                  numberOfSpaces={2}
-                  style={
-                    [
-                      {
-                        "height": 8,
-                      },
-                    ]
-                  }
-                />
+              </View>
+              <View
+                style={
+                  [
+                    {
+                      "marginBottom": "NaNpx",
+                    },
+                  ]
+                }
+              >
                 <View
                   borderRadius={2}
                   height={12}
@@ -2849,6 +2775,7 @@ exports[`<Favorites/> should render correctly 1`] = `
               style={
                 [
                   {
+                    "marginRight": 20,
                     "maxWidth": 280,
                     "minWidth": 120,
                     "width": "47%",
@@ -2913,16 +2840,6 @@ exports[`<Favorites/> should render correctly 1`] = `
                 />
               </View>
             </View>
-            <View
-              numberOfSpaces={5}
-              style={
-                [
-                  {
-                    "width": 20,
-                  },
-                ]
-              }
-            />
             <View
               style={
                 [
@@ -3017,90 +2934,84 @@ exports[`<Favorites/> should render correctly 1`] = `
           style={null}
         >
           <View
+            gap={4}
             style={
               [
                 {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "gap": 16,
                   "marginHorizontal": 24,
                 },
               ]
             }
           >
             <View
+              borderRadius={4}
+              height={96}
               style={
                 [
                   {
-                    "alignItems": "center",
-                    "flexDirection": "row",
+                    "backgroundColor": "#DDDDDD",
+                    "borderRadius": 4,
+                    "height": 96,
+                    "overflow": "hidden",
+                    "width": 64,
                   },
                 ]
               }
+              width={64}
             >
-              <View
-                borderRadius={4}
-                height={96}
-                style={
+              <BVLinearGradient
+                colors={
                   [
-                    {
-                      "backgroundColor": "#DDDDDD",
-                      "borderRadius": 4,
-                      "height": 96,
-                      "overflow": "hidden",
-                      "width": 64,
-                    },
+                    4292730333,
+                    4293848814,
+                    4293848814,
+                    4292730333,
                   ]
                 }
-                width={64}
-              >
-                <BVLinearGradient
-                  colors={
-                    [
-                      4292730333,
-                      4293848814,
-                      4293848814,
-                      4292730333,
-                    ]
+                endPoint={
+                  {
+                    "x": 1,
+                    "y": 0,
                   }
-                  endPoint={
-                    {
-                      "x": 1,
-                      "y": 0,
-                    }
+                }
+                locations={null}
+                startPoint={
+                  {
+                    "x": 0,
+                    "y": 0,
                   }
-                  locations={null}
-                  startPoint={
-                    {
-                      "x": 0,
-                      "y": 0,
-                    }
-                  }
-                  style={
-                    {
-                      "borderRadius": 4,
-                      "bottom": 0,
-                      "left": 0,
-                      "position": "absolute",
-                      "right": 0,
-                      "top": 0,
-                      "transform": [
-                        {
-                          "translateX": -80,
-                        },
-                      ],
-                    }
-                  }
-                />
-              </View>
-              <View
-                numberOfSpaces={4}
+                }
                 style={
-                  [
-                    {
-                      "width": 16,
-                    },
-                  ]
+                  {
+                    "borderRadius": 4,
+                    "bottom": 0,
+                    "left": 0,
+                    "position": "absolute",
+                    "right": 0,
+                    "top": 0,
+                    "transform": [
+                      {
+                        "translateX": -80,
+                      },
+                    ],
+                  }
                 }
               />
-              <View>
+            </View>
+            <View>
+              <View
+                marginBottom={3}
+                style={
+                  [
+                    {
+                      "marginBottom": 12,
+                    },
+                  ]
+                }
+              >
                 <View
                   borderRadius={2}
                   height={12}
@@ -3156,16 +3067,17 @@ exports[`<Favorites/> should render correctly 1`] = `
                     }
                   />
                 </View>
-                <View
-                  numberOfSpaces={3}
-                  style={
-                    [
-                      {
-                        "height": 12,
-                      },
-                    ]
-                  }
-                />
+              </View>
+              <View
+                marginBottom={1}
+                style={
+                  [
+                    {
+                      "marginBottom": 4,
+                    },
+                  ]
+                }
+              >
                 <View
                   borderRadius={2}
                   height={12}
@@ -3221,16 +3133,17 @@ exports[`<Favorites/> should render correctly 1`] = `
                     }
                   />
                 </View>
-                <View
-                  numberOfSpaces={1}
-                  style={
-                    [
-                      {
-                        "height": 4,
-                      },
-                    ]
-                  }
-                />
+              </View>
+              <View
+                marginBottom={2}
+                style={
+                  [
+                    {
+                      "marginBottom": 8,
+                    },
+                  ]
+                }
+              >
                 <View
                   borderRadius={2}
                   height={12}
@@ -3286,16 +3199,16 @@ exports[`<Favorites/> should render correctly 1`] = `
                     }
                   />
                 </View>
-                <View
-                  numberOfSpaces={2}
-                  style={
-                    [
-                      {
-                        "height": 8,
-                      },
-                    ]
-                  }
-                />
+              </View>
+              <View
+                style={
+                  [
+                    {
+                      "marginBottom": "NaNpx",
+                    },
+                  ]
+                }
+              >
                 <View
                   borderRadius={2}
                   height={12}
@@ -3370,6 +3283,7 @@ exports[`<Favorites/> should render correctly 1`] = `
               style={
                 [
                   {
+                    "marginRight": 20,
                     "maxWidth": 280,
                     "minWidth": 120,
                     "width": "47%",
@@ -3434,16 +3348,6 @@ exports[`<Favorites/> should render correctly 1`] = `
                 />
               </View>
             </View>
-            <View
-              numberOfSpaces={5}
-              style={
-                [
-                  {
-                    "width": 20,
-                  },
-                ]
-              }
-            />
             <View
               style={
                 [
@@ -3538,90 +3442,84 @@ exports[`<Favorites/> should render correctly 1`] = `
           style={null}
         >
           <View
+            gap={4}
             style={
               [
                 {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "gap": 16,
                   "marginHorizontal": 24,
                 },
               ]
             }
           >
             <View
+              borderRadius={4}
+              height={96}
               style={
                 [
                   {
-                    "alignItems": "center",
-                    "flexDirection": "row",
+                    "backgroundColor": "#DDDDDD",
+                    "borderRadius": 4,
+                    "height": 96,
+                    "overflow": "hidden",
+                    "width": 64,
                   },
                 ]
               }
+              width={64}
             >
-              <View
-                borderRadius={4}
-                height={96}
-                style={
+              <BVLinearGradient
+                colors={
                   [
-                    {
-                      "backgroundColor": "#DDDDDD",
-                      "borderRadius": 4,
-                      "height": 96,
-                      "overflow": "hidden",
-                      "width": 64,
-                    },
+                    4292730333,
+                    4293848814,
+                    4293848814,
+                    4292730333,
                   ]
                 }
-                width={64}
-              >
-                <BVLinearGradient
-                  colors={
-                    [
-                      4292730333,
-                      4293848814,
-                      4293848814,
-                      4292730333,
-                    ]
+                endPoint={
+                  {
+                    "x": 1,
+                    "y": 0,
                   }
-                  endPoint={
-                    {
-                      "x": 1,
-                      "y": 0,
-                    }
+                }
+                locations={null}
+                startPoint={
+                  {
+                    "x": 0,
+                    "y": 0,
                   }
-                  locations={null}
-                  startPoint={
-                    {
-                      "x": 0,
-                      "y": 0,
-                    }
-                  }
-                  style={
-                    {
-                      "borderRadius": 4,
-                      "bottom": 0,
-                      "left": 0,
-                      "position": "absolute",
-                      "right": 0,
-                      "top": 0,
-                      "transform": [
-                        {
-                          "translateX": -80,
-                        },
-                      ],
-                    }
-                  }
-                />
-              </View>
-              <View
-                numberOfSpaces={4}
+                }
                 style={
-                  [
-                    {
-                      "width": 16,
-                    },
-                  ]
+                  {
+                    "borderRadius": 4,
+                    "bottom": 0,
+                    "left": 0,
+                    "position": "absolute",
+                    "right": 0,
+                    "top": 0,
+                    "transform": [
+                      {
+                        "translateX": -80,
+                      },
+                    ],
+                  }
                 }
               />
-              <View>
+            </View>
+            <View>
+              <View
+                marginBottom={3}
+                style={
+                  [
+                    {
+                      "marginBottom": 12,
+                    },
+                  ]
+                }
+              >
                 <View
                   borderRadius={2}
                   height={12}
@@ -3677,16 +3575,17 @@ exports[`<Favorites/> should render correctly 1`] = `
                     }
                   />
                 </View>
-                <View
-                  numberOfSpaces={3}
-                  style={
-                    [
-                      {
-                        "height": 12,
-                      },
-                    ]
-                  }
-                />
+              </View>
+              <View
+                marginBottom={1}
+                style={
+                  [
+                    {
+                      "marginBottom": 4,
+                    },
+                  ]
+                }
+              >
                 <View
                   borderRadius={2}
                   height={12}
@@ -3742,16 +3641,17 @@ exports[`<Favorites/> should render correctly 1`] = `
                     }
                   />
                 </View>
-                <View
-                  numberOfSpaces={1}
-                  style={
-                    [
-                      {
-                        "height": 4,
-                      },
-                    ]
-                  }
-                />
+              </View>
+              <View
+                marginBottom={2}
+                style={
+                  [
+                    {
+                      "marginBottom": 8,
+                    },
+                  ]
+                }
+              >
                 <View
                   borderRadius={2}
                   height={12}
@@ -3807,16 +3707,16 @@ exports[`<Favorites/> should render correctly 1`] = `
                     }
                   />
                 </View>
-                <View
-                  numberOfSpaces={2}
-                  style={
-                    [
-                      {
-                        "height": 8,
-                      },
-                    ]
-                  }
-                />
+              </View>
+              <View
+                style={
+                  [
+                    {
+                      "marginBottom": "NaNpx",
+                    },
+                  ]
+                }
+              >
                 <View
                   borderRadius={2}
                   height={12}
@@ -3891,6 +3791,7 @@ exports[`<Favorites/> should render correctly 1`] = `
               style={
                 [
                   {
+                    "marginRight": 20,
                     "maxWidth": 280,
                     "minWidth": 120,
                     "width": "47%",
@@ -3955,16 +3856,6 @@ exports[`<Favorites/> should render correctly 1`] = `
                 />
               </View>
             </View>
-            <View
-              numberOfSpaces={5}
-              style={
-                [
-                  {
-                    "width": 20,
-                  },
-                ]
-              }
-            />
             <View
               style={
                 [
@@ -4059,90 +3950,84 @@ exports[`<Favorites/> should render correctly 1`] = `
           style={null}
         >
           <View
+            gap={4}
             style={
               [
                 {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "gap": 16,
                   "marginHorizontal": 24,
                 },
               ]
             }
           >
             <View
+              borderRadius={4}
+              height={96}
               style={
                 [
                   {
-                    "alignItems": "center",
-                    "flexDirection": "row",
+                    "backgroundColor": "#DDDDDD",
+                    "borderRadius": 4,
+                    "height": 96,
+                    "overflow": "hidden",
+                    "width": 64,
                   },
                 ]
               }
+              width={64}
             >
-              <View
-                borderRadius={4}
-                height={96}
-                style={
+              <BVLinearGradient
+                colors={
                   [
-                    {
-                      "backgroundColor": "#DDDDDD",
-                      "borderRadius": 4,
-                      "height": 96,
-                      "overflow": "hidden",
-                      "width": 64,
-                    },
+                    4292730333,
+                    4293848814,
+                    4293848814,
+                    4292730333,
                   ]
                 }
-                width={64}
-              >
-                <BVLinearGradient
-                  colors={
-                    [
-                      4292730333,
-                      4293848814,
-                      4293848814,
-                      4292730333,
-                    ]
+                endPoint={
+                  {
+                    "x": 1,
+                    "y": 0,
                   }
-                  endPoint={
-                    {
-                      "x": 1,
-                      "y": 0,
-                    }
+                }
+                locations={null}
+                startPoint={
+                  {
+                    "x": 0,
+                    "y": 0,
                   }
-                  locations={null}
-                  startPoint={
-                    {
-                      "x": 0,
-                      "y": 0,
-                    }
-                  }
-                  style={
-                    {
-                      "borderRadius": 4,
-                      "bottom": 0,
-                      "left": 0,
-                      "position": "absolute",
-                      "right": 0,
-                      "top": 0,
-                      "transform": [
-                        {
-                          "translateX": -80,
-                        },
-                      ],
-                    }
-                  }
-                />
-              </View>
-              <View
-                numberOfSpaces={4}
+                }
                 style={
-                  [
-                    {
-                      "width": 16,
-                    },
-                  ]
+                  {
+                    "borderRadius": 4,
+                    "bottom": 0,
+                    "left": 0,
+                    "position": "absolute",
+                    "right": 0,
+                    "top": 0,
+                    "transform": [
+                      {
+                        "translateX": -80,
+                      },
+                    ],
+                  }
                 }
               />
-              <View>
+            </View>
+            <View>
+              <View
+                marginBottom={3}
+                style={
+                  [
+                    {
+                      "marginBottom": 12,
+                    },
+                  ]
+                }
+              >
                 <View
                   borderRadius={2}
                   height={12}
@@ -4198,16 +4083,17 @@ exports[`<Favorites/> should render correctly 1`] = `
                     }
                   />
                 </View>
-                <View
-                  numberOfSpaces={3}
-                  style={
-                    [
-                      {
-                        "height": 12,
-                      },
-                    ]
-                  }
-                />
+              </View>
+              <View
+                marginBottom={1}
+                style={
+                  [
+                    {
+                      "marginBottom": 4,
+                    },
+                  ]
+                }
+              >
                 <View
                   borderRadius={2}
                   height={12}
@@ -4263,16 +4149,17 @@ exports[`<Favorites/> should render correctly 1`] = `
                     }
                   />
                 </View>
-                <View
-                  numberOfSpaces={1}
-                  style={
-                    [
-                      {
-                        "height": 4,
-                      },
-                    ]
-                  }
-                />
+              </View>
+              <View
+                marginBottom={2}
+                style={
+                  [
+                    {
+                      "marginBottom": 8,
+                    },
+                  ]
+                }
+              >
                 <View
                   borderRadius={2}
                   height={12}
@@ -4328,16 +4215,16 @@ exports[`<Favorites/> should render correctly 1`] = `
                     }
                   />
                 </View>
-                <View
-                  numberOfSpaces={2}
-                  style={
-                    [
-                      {
-                        "height": 8,
-                      },
-                    ]
-                  }
-                />
+              </View>
+              <View
+                style={
+                  [
+                    {
+                      "marginBottom": "NaNpx",
+                    },
+                  ]
+                }
+              >
                 <View
                   borderRadius={2}
                   height={12}
@@ -4412,6 +4299,7 @@ exports[`<Favorites/> should render correctly 1`] = `
               style={
                 [
                   {
+                    "marginRight": 20,
                     "maxWidth": 280,
                     "minWidth": 120,
                     "width": "47%",
@@ -4476,16 +4364,6 @@ exports[`<Favorites/> should render correctly 1`] = `
                 />
               </View>
             </View>
-            <View
-              numberOfSpaces={5}
-              style={
-                [
-                  {
-                    "width": 20,
-                  },
-                ]
-              }
-            />
             <View
               style={
                 [
@@ -4580,90 +4458,84 @@ exports[`<Favorites/> should render correctly 1`] = `
           style={null}
         >
           <View
+            gap={4}
             style={
               [
                 {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "gap": 16,
                   "marginHorizontal": 24,
                 },
               ]
             }
           >
             <View
+              borderRadius={4}
+              height={96}
               style={
                 [
                   {
-                    "alignItems": "center",
-                    "flexDirection": "row",
+                    "backgroundColor": "#DDDDDD",
+                    "borderRadius": 4,
+                    "height": 96,
+                    "overflow": "hidden",
+                    "width": 64,
                   },
                 ]
               }
+              width={64}
             >
-              <View
-                borderRadius={4}
-                height={96}
-                style={
+              <BVLinearGradient
+                colors={
                   [
-                    {
-                      "backgroundColor": "#DDDDDD",
-                      "borderRadius": 4,
-                      "height": 96,
-                      "overflow": "hidden",
-                      "width": 64,
-                    },
+                    4292730333,
+                    4293848814,
+                    4293848814,
+                    4292730333,
                   ]
                 }
-                width={64}
-              >
-                <BVLinearGradient
-                  colors={
-                    [
-                      4292730333,
-                      4293848814,
-                      4293848814,
-                      4292730333,
-                    ]
+                endPoint={
+                  {
+                    "x": 1,
+                    "y": 0,
                   }
-                  endPoint={
-                    {
-                      "x": 1,
-                      "y": 0,
-                    }
+                }
+                locations={null}
+                startPoint={
+                  {
+                    "x": 0,
+                    "y": 0,
                   }
-                  locations={null}
-                  startPoint={
-                    {
-                      "x": 0,
-                      "y": 0,
-                    }
-                  }
-                  style={
-                    {
-                      "borderRadius": 4,
-                      "bottom": 0,
-                      "left": 0,
-                      "position": "absolute",
-                      "right": 0,
-                      "top": 0,
-                      "transform": [
-                        {
-                          "translateX": -80,
-                        },
-                      ],
-                    }
-                  }
-                />
-              </View>
-              <View
-                numberOfSpaces={4}
+                }
                 style={
-                  [
-                    {
-                      "width": 16,
-                    },
-                  ]
+                  {
+                    "borderRadius": 4,
+                    "bottom": 0,
+                    "left": 0,
+                    "position": "absolute",
+                    "right": 0,
+                    "top": 0,
+                    "transform": [
+                      {
+                        "translateX": -80,
+                      },
+                    ],
+                  }
                 }
               />
-              <View>
+            </View>
+            <View>
+              <View
+                marginBottom={3}
+                style={
+                  [
+                    {
+                      "marginBottom": 12,
+                    },
+                  ]
+                }
+              >
                 <View
                   borderRadius={2}
                   height={12}
@@ -4719,16 +4591,17 @@ exports[`<Favorites/> should render correctly 1`] = `
                     }
                   />
                 </View>
-                <View
-                  numberOfSpaces={3}
-                  style={
-                    [
-                      {
-                        "height": 12,
-                      },
-                    ]
-                  }
-                />
+              </View>
+              <View
+                marginBottom={1}
+                style={
+                  [
+                    {
+                      "marginBottom": 4,
+                    },
+                  ]
+                }
+              >
                 <View
                   borderRadius={2}
                   height={12}
@@ -4784,16 +4657,17 @@ exports[`<Favorites/> should render correctly 1`] = `
                     }
                   />
                 </View>
-                <View
-                  numberOfSpaces={1}
-                  style={
-                    [
-                      {
-                        "height": 4,
-                      },
-                    ]
-                  }
-                />
+              </View>
+              <View
+                marginBottom={2}
+                style={
+                  [
+                    {
+                      "marginBottom": 8,
+                    },
+                  ]
+                }
+              >
                 <View
                   borderRadius={2}
                   height={12}
@@ -4849,16 +4723,16 @@ exports[`<Favorites/> should render correctly 1`] = `
                     }
                   />
                 </View>
-                <View
-                  numberOfSpaces={2}
-                  style={
-                    [
-                      {
-                        "height": 8,
-                      },
-                    ]
-                  }
-                />
+              </View>
+              <View
+                style={
+                  [
+                    {
+                      "marginBottom": "NaNpx",
+                    },
+                  ]
+                }
+              >
                 <View
                   borderRadius={2}
                   height={12}
@@ -4933,6 +4807,7 @@ exports[`<Favorites/> should render correctly 1`] = `
               style={
                 [
                   {
+                    "marginRight": 20,
                     "maxWidth": 280,
                     "minWidth": 120,
                     "width": "47%",
@@ -4997,16 +4872,6 @@ exports[`<Favorites/> should render correctly 1`] = `
                 />
               </View>
             </View>
-            <View
-              numberOfSpaces={5}
-              style={
-                [
-                  {
-                    "width": 20,
-                  },
-                ]
-              }
-            />
             <View
               style={
                 [
@@ -5101,90 +4966,84 @@ exports[`<Favorites/> should render correctly 1`] = `
           style={null}
         >
           <View
+            gap={4}
             style={
               [
                 {
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "gap": 16,
                   "marginHorizontal": 24,
                 },
               ]
             }
           >
             <View
+              borderRadius={4}
+              height={96}
               style={
                 [
                   {
-                    "alignItems": "center",
-                    "flexDirection": "row",
+                    "backgroundColor": "#DDDDDD",
+                    "borderRadius": 4,
+                    "height": 96,
+                    "overflow": "hidden",
+                    "width": 64,
                   },
                 ]
               }
+              width={64}
             >
-              <View
-                borderRadius={4}
-                height={96}
-                style={
+              <BVLinearGradient
+                colors={
                   [
-                    {
-                      "backgroundColor": "#DDDDDD",
-                      "borderRadius": 4,
-                      "height": 96,
-                      "overflow": "hidden",
-                      "width": 64,
-                    },
+                    4292730333,
+                    4293848814,
+                    4293848814,
+                    4292730333,
                   ]
                 }
-                width={64}
-              >
-                <BVLinearGradient
-                  colors={
-                    [
-                      4292730333,
-                      4293848814,
-                      4293848814,
-                      4292730333,
-                    ]
+                endPoint={
+                  {
+                    "x": 1,
+                    "y": 0,
                   }
-                  endPoint={
-                    {
-                      "x": 1,
-                      "y": 0,
-                    }
+                }
+                locations={null}
+                startPoint={
+                  {
+                    "x": 0,
+                    "y": 0,
                   }
-                  locations={null}
-                  startPoint={
-                    {
-                      "x": 0,
-                      "y": 0,
-                    }
-                  }
-                  style={
-                    {
-                      "borderRadius": 4,
-                      "bottom": 0,
-                      "left": 0,
-                      "position": "absolute",
-                      "right": 0,
-                      "top": 0,
-                      "transform": [
-                        {
-                          "translateX": -80,
-                        },
-                      ],
-                    }
-                  }
-                />
-              </View>
-              <View
-                numberOfSpaces={4}
+                }
                 style={
-                  [
-                    {
-                      "width": 16,
-                    },
-                  ]
+                  {
+                    "borderRadius": 4,
+                    "bottom": 0,
+                    "left": 0,
+                    "position": "absolute",
+                    "right": 0,
+                    "top": 0,
+                    "transform": [
+                      {
+                        "translateX": -80,
+                      },
+                    ],
+                  }
                 }
               />
-              <View>
+            </View>
+            <View>
+              <View
+                marginBottom={3}
+                style={
+                  [
+                    {
+                      "marginBottom": 12,
+                    },
+                  ]
+                }
+              >
                 <View
                   borderRadius={2}
                   height={12}
@@ -5240,16 +5099,17 @@ exports[`<Favorites/> should render correctly 1`] = `
                     }
                   />
                 </View>
-                <View
-                  numberOfSpaces={3}
-                  style={
-                    [
-                      {
-                        "height": 12,
-                      },
-                    ]
-                  }
-                />
+              </View>
+              <View
+                marginBottom={1}
+                style={
+                  [
+                    {
+                      "marginBottom": 4,
+                    },
+                  ]
+                }
+              >
                 <View
                   borderRadius={2}
                   height={12}
@@ -5305,16 +5165,17 @@ exports[`<Favorites/> should render correctly 1`] = `
                     }
                   />
                 </View>
-                <View
-                  numberOfSpaces={1}
-                  style={
-                    [
-                      {
-                        "height": 4,
-                      },
-                    ]
-                  }
-                />
+              </View>
+              <View
+                marginBottom={2}
+                style={
+                  [
+                    {
+                      "marginBottom": 8,
+                    },
+                  ]
+                }
+              >
                 <View
                   borderRadius={2}
                   height={12}
@@ -5370,16 +5231,16 @@ exports[`<Favorites/> should render correctly 1`] = `
                     }
                   />
                 </View>
-                <View
-                  numberOfSpaces={2}
-                  style={
-                    [
-                      {
-                        "height": 8,
-                      },
-                    ]
-                  }
-                />
+              </View>
+              <View
+                style={
+                  [
+                    {
+                      "marginBottom": "NaNpx",
+                    },
+                  ]
+                }
+              >
                 <View
                   borderRadius={2}
                   height={12}
@@ -5454,6 +5315,7 @@ exports[`<Favorites/> should render correctly 1`] = `
               style={
                 [
                   {
+                    "marginRight": 20,
                     "maxWidth": 280,
                     "minWidth": 120,
                     "width": "47%",
@@ -5518,16 +5380,6 @@ exports[`<Favorites/> should render correctly 1`] = `
                 />
               </View>
             </View>
-            <View
-              numberOfSpaces={5}
-              style={
-                [
-                  {
-                    "width": 20,
-                  },
-                ]
-              }
-            />
             <View
               style={
                 [

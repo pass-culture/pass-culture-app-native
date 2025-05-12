@@ -85,7 +85,7 @@ jest.mock('features/offer/store/freeOfferIdStore', () => ({
 describe('<OfferCTAButton />', () => {
   beforeEach(() => {
     mockAuthContextWithoutUser({ persist: true })
-    setFeatureFlags() // No tests for WIP_APP_V2_CATEGORY_BLOCK
+    setFeatureFlags()
   })
 
   it('should open booking modal when login after booking attempt', async () => {

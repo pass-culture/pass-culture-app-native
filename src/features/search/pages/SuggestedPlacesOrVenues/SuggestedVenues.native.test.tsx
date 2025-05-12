@@ -40,6 +40,7 @@ describe('<SuggestedVenues/>', () => {
     mockUseVenues.mockReturnValueOnce(useVenuesWithData)
     render(<SuggestedVenues query="Librairie" setSelectedVenue={mockSetSelectedVenue} />)
     // TO-DO(PC-34194): simply replacing by a userEvent is not working, should be investigated
+    // eslint-disable-next-line local-rules/no-fireEvent
     fireEvent.press(screen.getByText('La librairie quantique DATA'))
 
     expect(mockSetSelectedVenue).toHaveBeenCalledWith(firstVenue)

@@ -1,4 +1,4 @@
-import React, { CSSProperties } from 'react'
+import React, { CSSProperties, ReactNode } from 'react'
 import styled from 'styled-components/native'
 
 import { SearchListFooter } from 'features/search/components/SearchListFooter/SearchListFooter.web'
@@ -25,6 +25,7 @@ export type RowData = {
   autoScrollEnabled: SearchListProps['autoScrollEnabled']
   onPress: SearchListProps['onPress']
   searchState: SearchState
+  artistSection?: ReactNode
 }
 
 interface RowProps {
@@ -44,7 +45,7 @@ export function SearchListItem({ index, style, data }: Readonly<RowProps>) {
       <li style={style}>
         <SearchListHeader
           nbHits={data.nbHits}
-          artists={data.artists}
+          artistSection={data.artistSection}
           userData={data.userData}
           venuesUserData={data.venuesUserData}
           venues={data.venues}

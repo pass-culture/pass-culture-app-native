@@ -2,7 +2,7 @@ import React from 'react'
 
 import { NotificationsSettingsModal } from 'features/subscription/NotificationsSettingsModal'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render, screen, act } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 
 jest.mock('features/profile/pages/NotificationSettings/usePushPermission', () => ({
   usePushPermission: jest.fn(() => ({
@@ -19,6 +19,9 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
+const user = userEvent.setup()
+jest.useFakeTimers()
+
 describe('<NotificationsSettingsModal />', () => {
   it('should render correctly', () => {
     renderModal(true)
@@ -26,46 +29,46 @@ describe('<NotificationsSettingsModal />', () => {
     expect(screen).toMatchSnapshot()
   })
 
-  it('should dismiss modal on press rightIconButton', () => {
+  it('should dismiss modal on press rightIconButton', async () => {
     renderModal(true)
 
     const dismissModalButton = screen.getByTestId('rightIcon')
 
-    fireEvent.press(dismissModalButton)
+    await user.press(dismissModalButton)
 
     expect(mockDismissModal).toHaveBeenCalledTimes(1)
   })
 
-  it('should reset the switch when dismissing the modal', () => {
+  it('should reset the switch when dismissing the modal', async () => {
     renderModal(true)
 
     const toggleSwitch = screen.getByTestId('Interrupteur Autoriser l’envoi d’e-mails')
-    fireEvent.press(toggleSwitch)
+    await user.press(toggleSwitch)
 
     const dismissModalButton = screen.getByTestId('rightIcon')
-    fireEvent.press(dismissModalButton)
+    await user.press(dismissModalButton)
 
     expect(toggleSwitch).toHaveAccessibilityState({ checked: false })
   })
 
-  it('should dismiss modal on press "Tout refuser..."', () => {
+  it('should dismiss modal on press "Tout refuser..."', async () => {
     renderModal(true)
 
     const declineButton = screen.getByText('Tout refuser et ne pas recevoir d’actus')
 
-    fireEvent.press(declineButton)
+    await user.press(declineButton)
 
     expect(mockDismissModal).toHaveBeenCalledTimes(1)
   })
 
-  it('should reset the switch on press "Tout refuser..."', () => {
+  it('should reset the switch on press "Tout refuser..."', async () => {
     renderModal(true)
 
     const toggleSwitch = screen.getByTestId('Interrupteur Autoriser l’envoi d’e-mails')
-    fireEvent.press(toggleSwitch)
+    await user.press(toggleSwitch)
 
     const declineButton = screen.getByText('Tout refuser et ne pas recevoir d’actus')
-    fireEvent.press(declineButton)
+    await user.press(declineButton)
 
     expect(toggleSwitch).toHaveAccessibilityState({ checked: false })
   })
@@ -74,11 +77,9 @@ describe('<NotificationsSettingsModal />', () => {
     renderModal(true)
 
     const toggleSwitch = screen.getByTestId('Interrupteur Autoriser l’envoi d’e-mails')
-    fireEvent.press(toggleSwitch)
+    await user.press(toggleSwitch)
 
-    await act(async () => {
-      fireEvent.press(screen.getByText('Valider'))
-    })
+    await user.press(screen.getByText('Valider'))
 
     expect(mockDismissModal).toHaveBeenCalledTimes(1)
   })
@@ -87,11 +88,9 @@ describe('<NotificationsSettingsModal />', () => {
     renderModal(true)
 
     const toggleSwitch = screen.getByTestId('Interrupteur Autoriser l’envoi d’e-mails')
-    fireEvent.press(toggleSwitch)
+    await user.press(toggleSwitch)
 
-    await act(async () => {
-      fireEvent.press(screen.getByText('Valider'))
-    })
+    await user.press(screen.getByText('Valider'))
 
     expect(mockOnPressSaveChanges).toHaveBeenCalledWith({ allowEmails: true, allowPush: false })
   })
@@ -100,11 +99,9 @@ describe('<NotificationsSettingsModal />', () => {
     renderModal(true)
 
     const toggleSwitch = screen.getByTestId('Interrupteur Autoriser l’envoi d’e-mails')
-    fireEvent.press(toggleSwitch)
+    await user.press(toggleSwitch)
 
-    await act(async () => {
-      fireEvent.press(screen.getByText('Valider'))
-    })
+    await user.press(screen.getByText('Valider'))
 
     expect(mockOnPressSaveChanges).toHaveBeenCalledWith({ allowEmails: true, allowPush: false })
   })
@@ -113,11 +110,9 @@ describe('<NotificationsSettingsModal />', () => {
     renderModal(true)
 
     const toggleSwitch = screen.getByTestId('Interrupteur Autoriser les notifications')
-    fireEvent.press(toggleSwitch)
+    await user.press(toggleSwitch)
 
-    await act(async () => {
-      fireEvent.press(screen.getByText('Valider'))
-    })
+    await user.press(screen.getByText('Valider'))
 
     expect(mockOnPressSaveChanges).toHaveBeenCalledWith({ allowEmails: false, allowPush: true })
   })

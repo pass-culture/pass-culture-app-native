@@ -2,8 +2,6 @@ import React, { FunctionComponent, useEffect } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
 import { useVideoOffers } from 'features/home/api/useVideoOffers'
-import { OldVideoModuleDesktop } from 'features/home/components/modules/video/OldVideoModuleDesktop'
-import { OldVideoModuleMobile } from 'features/home/components/modules/video/OldVideoModuleMobile'
 import { VideoModal } from 'features/home/components/modules/video/VideoModal'
 import { VideoModuleDesktop } from 'features/home/components/modules/video/VideoModuleDesktop'
 import { VideoModuleMobile } from 'features/home/components/modules/video/VideoModuleMobile'
@@ -11,8 +9,6 @@ import { VideoModuleProps, VideoModule as VideoModuleType } from 'features/home/
 import { analytics } from 'libs/analytics/provider'
 import { OfferAnalyticsParams } from 'libs/analytics/types'
 import { ContentTypes } from 'libs/contentful/types'
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useModal } from 'ui/components/modals/useModal'
 
 interface VideoModuleBaseProps extends VideoModuleType {
@@ -21,24 +17,12 @@ interface VideoModuleBaseProps extends VideoModuleType {
   shouldShowModal: boolean
 }
 
-const VideoModuleFF: FunctionComponent<VideoModuleProps> = (props) => {
+const VideoModuleContent: FunctionComponent<VideoModuleProps> = (props) => {
   const theme = useTheme()
 
-  const enableMultiVideoModule = useFeatureFlag(
-    RemoteStoreFeatureFlags.WIP_APP_V2_MULTI_VIDEO_MODULE
-  )
-
   const videoModule = {
-    DESKTOP: enableMultiVideoModule ? (
-      <VideoModuleDesktop {...props} />
-    ) : (
-      <OldVideoModuleDesktop {...props} />
-    ),
-    MOBILE: enableMultiVideoModule ? (
-      <VideoModuleMobile {...props} />
-    ) : (
-      <OldVideoModuleMobile {...props} />
-    ),
+    DESKTOP: <VideoModuleDesktop {...props} />,
+    MOBILE: <VideoModuleMobile {...props} />,
   }
 
   return theme.isDesktopViewport ? videoModule.DESKTOP : videoModule.MOBILE
@@ -93,7 +77,7 @@ export const VideoModule: FunctionComponent<VideoModuleBaseProps> = (props) => {
 
   return (
     <Container>
-      <VideoModuleFF {...props} {...videoModuleParams} />
+      <VideoModuleContent {...props} {...videoModuleParams} />
 
       <VideoModal
         visible={videoModalVisible}
