@@ -20,16 +20,14 @@ const BasePlaceholder = (props: {
   width: number
   radius?: number
   fullWidth?: boolean
-}) => {
-  return (
-    <SkeletonTile
-      borderRadius={props.radius ?? borderRadius}
-      height={props.height}
-      width={props.width}
-      fullWidth={props.fullWidth}
-    />
-  )
-}
+}) => (
+  <SkeletonTile
+    borderRadius={props.radius ?? borderRadius}
+    height={props.height}
+    width={props.width}
+    fullWidth={props.fullWidth}
+  />
+)
 
 export const TextPlaceholder = ({
   width,
@@ -39,13 +37,11 @@ export const TextPlaceholder = ({
   width: number
   height?: number
   marginBottom?: number
-}) => {
-  return (
-    <TextPlaceholderContainer marginBottom={marginBottom ?? undefined}>
-      <SkeletonTile borderRadius={2} height={height ?? getSpacing(3)} width={width} />
-    </TextPlaceholderContainer>
-  )
-}
+}) => (
+  <TextPlaceholderContainer marginBottom={marginBottom ?? undefined}>
+    <SkeletonTile borderRadius={2} height={height ?? getSpacing(3)} width={width} />
+  </TextPlaceholderContainer>
+)
 
 const FilterPillsPlaceholder = () => {
   const pillsWidth = [8, 17.5, 28, 30.5, 14.5, 19.5]
@@ -63,36 +59,54 @@ const FilterPillsPlaceholder = () => {
   )
 }
 
-export const HeaderSearchResultsPlaceholder = () => {
-  return (
-    <React.Fragment>
-      <FilterPillsPlaceholder />
-      <TitleContainer>
-        <TextPlaceholder height={getSpacing(4.5)} width={getSpacing(50)} />
-      </TitleContainer>
-      <NumberOfResultsPlaceholder />
-    </React.Fragment>
-  )
-}
+export const HeaderSearchResultsPlaceholder = () => (
+  <React.Fragment>
+    <FilterPillsPlaceholder />
+    <TitleContainer>
+      <TextPlaceholder height={getSpacing(4.5)} width={getSpacing(50)} />
+    </TitleContainer>
+    <NumberOfResultsPlaceholder />
+  </React.Fragment>
+)
 
-export const NumberOfResultsPlaceholder = () => {
-  return (
-    <Container>
-      <SkeletonTile width={getSpacing(20)} height={getSpacing(3)} borderRadius={2} />
-    </Container>
-  )
-}
+export const NumberOfResultsPlaceholder = () => (
+  <Container>
+    <SkeletonTile width={getSpacing(20)} height={getSpacing(3)} borderRadius={2} />
+  </Container>
+)
 
-export const NumberOfBookingsPlaceholder = () => {
-  return (
-    <Container>
-      <SkeletonTile width={getSpacing(42)} height={getSpacing(3)} borderRadius={2} />
-    </Container>
-  )
-}
+export const NumberOfBookingsPlaceholder = () => (
+  <Container>
+    <SkeletonTile width={getSpacing(42)} height={getSpacing(3)} borderRadius={2} />
+  </Container>
+)
 
-export const HitPlaceholder = () => {
-  return (
+export const HitPlaceholder = () => (
+  <Row gap={4}>
+    <BasePlaceholder height={imageHeight} width={imageWidth} />
+    <View>
+      <TextPlaceholder width={getSpacing(60)} marginBottom={3} />
+      <TextPlaceholder width={getSpacing(30)} marginBottom={1} />
+      <TextPlaceholder width={getSpacing(40)} marginBottom={2} />
+      <TextPlaceholder width={getSpacing(8)} />
+    </View>
+  </Row>
+)
+
+export const BookingHitPlaceholder = () => (
+  <Row gap={4}>
+    <BasePlaceholder height={bookingImageHeight} width={bookingImageWidth} />
+    <View>
+      <TextPlaceholder width={getSpacing(60)} marginBottom={1} />
+      <TextPlaceholder width={getSpacing(30)} marginBottom={7} />
+      <TextPlaceholder width={getSpacing(24)} marginBottom={3} />
+      <TextPlaceholder width={getSpacing(8)} marginBottom={2} />
+    </View>
+  </Row>
+)
+
+export const FavoriteHitPlaceholder = () => (
+  <React.Fragment>
     <Row gap={4}>
       <BasePlaceholder height={imageHeight} width={imageWidth} />
       <View>
@@ -102,46 +116,16 @@ export const HitPlaceholder = () => {
         <TextPlaceholder width={getSpacing(8)} />
       </View>
     </Row>
-  )
-}
-
-export const BookingHitPlaceholder = () => {
-  return (
-    <Row gap={4}>
-      <BasePlaceholder height={bookingImageHeight} width={bookingImageWidth} />
-      <View>
-        <TextPlaceholder width={getSpacing(60)} marginBottom={1} />
-        <TextPlaceholder width={getSpacing(30)} marginBottom={7} />
-        <TextPlaceholder width={getSpacing(24)} marginBottom={3} />
-        <TextPlaceholder width={getSpacing(8)} marginBottom={2} />
-      </View>
-    </Row>
-  )
-}
-
-export const FavoriteHitPlaceholder = () => {
-  return (
-    <React.Fragment>
-      <Row gap={4}>
-        <BasePlaceholder height={imageHeight} width={imageWidth} />
-        <View>
-          <TextPlaceholder width={getSpacing(60)} marginBottom={3} />
-          <TextPlaceholder width={getSpacing(30)} marginBottom={1} />
-          <TextPlaceholder width={getSpacing(40)} marginBottom={2} />
-          <TextPlaceholder width={getSpacing(8)} />
-        </View>
-      </Row>
-      <FavoriteButtonsContainer>
-        <FirstButtonContainer>
-          <BasePlaceholder radius={24} height={getSpacing(12)} width={getSpacing(40)} fullWidth />
-        </FirstButtonContainer>
-        <ButtonContainer>
-          <BasePlaceholder radius={24} height={getSpacing(12)} width={getSpacing(40)} fullWidth />
-        </ButtonContainer>
-      </FavoriteButtonsContainer>
-    </React.Fragment>
-  )
-}
+    <FavoriteButtonsContainer>
+      <FirstButtonContainer>
+        <BasePlaceholder radius={24} height={getSpacing(12)} width={getSpacing(40)} fullWidth />
+      </FirstButtonContainer>
+      <ButtonContainer>
+        <BasePlaceholder radius={24} height={getSpacing(12)} width={getSpacing(40)} fullWidth />
+      </ButtonContainer>
+    </FavoriteButtonsContainer>
+  </React.Fragment>
+)
 
 const Container = styled.View({
   marginHorizontal: getSpacing(6),
