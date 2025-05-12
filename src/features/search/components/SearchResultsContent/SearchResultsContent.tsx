@@ -147,13 +147,14 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
   useFocusEffect(
     useCallback(() => {
       const location = selectedPlace?.geolocation ?? geolocPosition
-      if (location) {
-        const region = getRegionFromPosition(location, width / height)
-        if (!initialRegion) {
-          setInitialRegion(region)
-        }
-        setRegion(region)
+      if (!location) {
+        return
       }
+      const region = getRegionFromPosition(location, width / height)
+      if (!initialRegion) {
+        setInitialRegion(region)
+      }
+      setRegion(region)
     }, [geolocPosition, selectedPlace, width, height, initialRegion])
   )
 
