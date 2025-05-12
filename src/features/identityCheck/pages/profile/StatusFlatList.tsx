@@ -6,7 +6,7 @@ import LinearGradient from 'react-native-linear-gradient'
 import styled from 'styled-components/native'
 
 import { ActivityIdEnum, ActivityResponseModel } from 'api/gen'
-import { useActivityTypes } from 'features/identityCheck/api/useActivityTypes'
+import { useActivityTypes } from 'features/identityCheck/queries/useActivityTypesQuery'
 import { useOnViewableItemsChanged } from 'features/subscription/helpers/useOnViewableItemsChanged'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { AnimatedViewRefType, createAnimatableComponent } from 'libs/react-native-animatable'
