@@ -3,7 +3,6 @@ import { isEmpty } from 'lodash'
 import { HomepageModule } from 'features/home/types'
 import { adaptBusinessModule } from 'libs/contentful/adapters/modules/adaptBusinessModule'
 import { adaptCategoryListModule } from 'libs/contentful/adapters/modules/adaptCategoryListModule'
-import { adaptExclusivityModule } from 'libs/contentful/adapters/modules/adaptExclusivityModule'
 import { adaptHighlightOfferModule } from 'libs/contentful/adapters/modules/adaptHighlightOfferModule'
 import { adaptOffersModule } from 'libs/contentful/adapters/modules/adaptOffersModule'
 import { adaptRecommendationModule } from 'libs/contentful/adapters/modules/adaptRecommendationModule'
@@ -18,7 +17,6 @@ import {
   isAlgoliaContentModel,
   isBusinessContentModel,
   isCategoryListContentModel,
-  isExclusivityContentModel,
   isHighlightOfferContentModel,
   isRecommendationContentModel,
   isThematicHighlightContentModel,
@@ -54,10 +52,6 @@ export const adaptHomepageNatifModules = (modules: HomepageNatifModule[]): Homep
 
       if (isVenuesContentModel(module)) {
         return adaptVenuesModule(module)
-      }
-
-      if (isExclusivityContentModel(module)) {
-        return adaptExclusivityModule(module)
       }
 
       if (isCategoryListContentModel(module)) {

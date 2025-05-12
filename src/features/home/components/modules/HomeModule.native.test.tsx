@@ -9,7 +9,6 @@ import { highlightOfferModuleFixture } from 'features/home/fixtures/highlightOff
 import {
   formattedBusinessModule,
   formattedCategoryListModule,
-  formattedExclusivityModule,
   formattedOffersModule,
   formattedRecommendedOffersModule,
   formattedThematicHighlightModule,
@@ -199,14 +198,6 @@ describe('<HomeModule />', () => {
         moduleId: '2DYuR6KoSLElDuiMMjxx8g',
       })
     )
-  })
-
-  it('should not display old ExclusivityOfferModule', async () => {
-    renderHomeModule(formattedExclusivityModule)
-
-    await waitFor(() => {
-      expect(screen.queryByLabelText('Week-end FRAC')).not.toBeOnTheScreen()
-    })
   })
 
   it('should display BusinessModule', async () => {
