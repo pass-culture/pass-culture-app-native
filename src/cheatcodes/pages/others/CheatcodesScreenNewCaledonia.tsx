@@ -13,7 +13,7 @@ import { DEFAULT_PACIFIC_FRANC_TO_EURO_RATE } from 'shared/exchangeRates/default
 import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
 import { TextInput } from 'ui/components/inputs/TextInput'
 import { Separator } from 'ui/components/Separator'
-import { Spacer, Typo, getSpacing } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 import { SPACE } from 'ui/theme/constants'
 
 export const CheatcodesScreenNewCaledonia = () => {
@@ -69,13 +69,11 @@ export const CheatcodesScreenNewCaledonia = () => {
         placeholder="Entrez le montant en&nbsp;€"
         textContentType="none" // Keep textContentType="none" to prevent incorrect suggestions.
       />
-      <Spacer.Column numberOfSpaces={4} />
-      <Typo.Body>Franc Pacifique sans arrondi&nbsp;:</Typo.Body>
+      <StyledText>Franc Pacifique sans arrondi&nbsp;:</StyledText>
       <Typo.Title3>
         {convertEuroToPacificFranc(priceInEuro, pacificFrancToEuroRate)}&nbsp;F
       </Typo.Title3>
-      <Spacer.Column numberOfSpaces={4} />
-      <Typo.Body>Franc Pacifique avec l’arrondi à l’unité&nbsp;:</Typo.Body>
+      <StyledText>Franc Pacifique avec l’arrondi à l’unité&nbsp;:</StyledText>
       <Typo.Title3>
         {convertEuroToPacificFranc(priceInEuro, pacificFrancToEuroRate, RoundUnit.UNITS)}&nbsp;F
       </Typo.Title3>
@@ -90,4 +88,8 @@ const StyledTitle3 = styled(Typo.Title3)<{ active: boolean }>(({ theme, active }
 
 const StyledSeparator = styled(Separator.Horizontal)({
   marginVertical: getSpacing(4),
+})
+
+const StyledText = styled(Typo.Body)({
+  marginTop: getSpacing(4),
 })

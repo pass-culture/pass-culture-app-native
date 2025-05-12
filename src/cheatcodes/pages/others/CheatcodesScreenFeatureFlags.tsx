@@ -9,7 +9,7 @@ import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonI
 import { Separator } from 'ui/components/Separator'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
-import { Spacer, Typo, getSpacing } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 
 export const CheatcodesScreenFeatureFlags = () => {
   const featureFlags = useFeatureFlagAllQuery()
@@ -66,44 +66,49 @@ export const CheatcodesScreenFeatureFlags = () => {
           externalNav={{ url: 'https://passculture.app/cheatcodes/other/feature-flags' }}
         />
       ) : null}
-      <Spacer.Column numberOfSpaces={6} />
-      <Typo.BodyItalicAccent>
-        Nombre de feature flags&nbsp;: {totalFeatureFlags}
-      </Typo.BodyItalicAccent>
+
+      <NbFeatureFlagText>Nombre de feature flags&nbsp;: {totalFeatureFlags}</NbFeatureFlagText>
       <StyledSeparator />
       <SectionList
         sections={sections}
         keyExtractor={(item) => item.featureFlag}
         renderSectionHeader={({ section: { title, data } }) => (
           <React.Fragment>
-            <Typo.Title2>
+            <StyledTitle2>
               {title} ({data.length})
-            </Typo.Title2>
-            <Spacer.Column numberOfSpaces={5} />
+            </StyledTitle2>
           </React.Fragment>
         )}
         renderItem={({ item, index, section }) => (
           <React.Fragment>
-            <StyledFeatureFlag>
+            <StyledFeatureFlag isLastItem={index === section.data.length - 1}>
               <Typo.Body numberOfLines={1}>{item.featureFlag}</Typo.Body>
               <StyledTitle4 active={!!item.isFeatureFlagActive}>
                 {item.isFeatureFlagActive ? 'Actif' : 'Inactif'}
               </StyledTitle4>
             </StyledFeatureFlag>
-            {index === section.data.length - 1 ? <Spacer.Column numberOfSpaces={10} /> : null}
           </React.Fragment>
         )}
-        ItemSeparatorComponent={() => <StyledSeparator />}
+        ItemSeparatorComponent={ItemSeparator}
       />
     </CheatcodesTemplateScreen>
   )
 }
 
-const StyledFeatureFlag = styled.View({
+const NbFeatureFlagText = styled(Typo.BodyItalicAccent)({
+  marginTop: getSpacing(6),
+})
+
+const StyledTitle2 = styled(Typo.Title2)({
+  marginBottom: getSpacing(5),
+})
+
+const StyledFeatureFlag = styled.View<{ isLastItem: boolean }>(({ isLastItem }) => ({
   flexDirection: 'row',
   justifyContent: 'space-between',
   alignItems: 'center',
-})
+  marginBottom: isLastItem ? getSpacing(10) : undefined,
+}))
 
 const StyledTitle4 = styled(Typo.Title4)<{ active: boolean }>(({ theme, active }) => ({
   color: active ? theme.colors.greenValid : theme.colors.error,
@@ -116,3 +121,5 @@ const StyledSeparator = styled(Separator.Horizontal)({
 const ButtonInsideTextBlack = styled(ButtonInsideText).attrs(({ theme }) => ({
   buttonColor: theme.colors.black,
 }))``
+
+const ItemSeparator = () => <StyledSeparator />

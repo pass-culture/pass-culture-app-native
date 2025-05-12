@@ -418,20 +418,12 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
         >
           <View>
             <View
-              numberOfSpaces={6}
-              style={
-                [
-                  {
-                    "height": 24,
-                  },
-                ]
-              }
-            />
-            <View
+              gap={8}
               style={
                 [
                   {
                     "gap": 32,
+                    "marginTop": 24,
                   },
                 ]
               }
