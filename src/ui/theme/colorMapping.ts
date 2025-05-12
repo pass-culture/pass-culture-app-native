@@ -1,10 +1,15 @@
 import { Color } from 'features/home/types'
+import { BackgroundColorKey, BorderColorKey, TextColorKey } from 'theme/types'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 
 export const colorMapping: Record<
   keyof typeof Color,
-  { border: ColorsEnum; text: ColorsEnum; fill: ColorsEnum }
+  {
+    border: ColorsEnum | BorderColorKey
+    text: ColorsEnum | TextColorKey
+    fill: ColorsEnum | BackgroundColorKey
+  }
 > = {
   SkyBlue: {
     border: ColorsEnum.SKY_BLUE_DARK,
@@ -35,5 +40,30 @@ export const colorMapping: Record<
     border: ColorsEnum.AQUAMARINE_DARK,
     text: ColorsEnum.LILAC_DARK,
     fill: ColorsEnum.AQUAMARINE_LIGHT,
+  },
+  Blue: {
+    border: 'decorative02',
+    text: 'locked',
+    fill: 'decorative02',
+  },
+  Orange: {
+    border: 'decorative01',
+    text: 'locked',
+    fill: 'decorative01',
+  },
+  Pink: {
+    border: 'decorative05',
+    text: 'locked',
+    fill: 'decorative05',
+  },
+  Purple: {
+    border: 'decorative04',
+    text: 'locked',
+    fill: 'decorative04',
+  },
+  Green: {
+    border: 'decorative03',
+    text: 'locked',
+    fill: 'decorative03',
   },
 }

@@ -10834,7 +10834,7 @@ __metadata:
     date-fns-tz: ^2.0.0
     deepmerge: ^4.2.2
     deprecated-react-native-prop-types: ^5.0.0
-    design-system: "https://github.com/pass-culture/design-system.git#v0.0.28"
+    design-system: "https://github.com/pass-culture/design-system.git#v0.0.29"
     dotenv: ^8.2.0
     dotenv-expand: ^5.1.0
     eslint: ^8.57.0
@@ -14386,10 +14386,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"design-system@https://github.com/pass-culture/design-system.git#v0.0.28":
-  version: 0.0.28
-  resolution: "design-system@https://github.com/pass-culture/design-system.git#commit=c8db8c1139411edba18f00078db1d9c3357a59b8"
-  checksum: a0bec0bff934cbcddf50167539d0feb608a3e3e4359a8b1a82da71151cc9f1cade01b75ff79d0463d5de08a0bf43227e082493f38abccd1d1a94cea012fe080e
+"design-system@https://github.com/pass-culture/design-system.git#v0.0.29":
+  version: 0.0.29
+  resolution: "design-system@https://github.com/pass-culture/design-system.git#commit=c6227fff19989caf297744f81dc0a658e7ca8064"
+  checksum: 042416c857a427be635692d974027b03e166518de5e6a5f74216ef4acb8ca2eaa5f7a66971279cd4981bf6acf8faf34344d13364c5b66350fa8b08fb3cbebec7
   languageName: node
   linkType: hard
 

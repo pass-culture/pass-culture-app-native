@@ -59,8 +59,8 @@ const renderSubcategoryButton = () =>
     reactQueryProviderHOC(
       <SubcategoryButton
         label="Mangas"
-        backgroundColor={theme.colors.deepPink}
-        borderColor={theme.colors.deepPinkDark}
+        backgroundColor={theme.designSystem.color.background.decorative01}
+        borderColor={theme.designSystem.color.border.decorative01}
         searchParams={defaultSearchParams}
         onBeforeNavigate={jest.fn()}
       />
