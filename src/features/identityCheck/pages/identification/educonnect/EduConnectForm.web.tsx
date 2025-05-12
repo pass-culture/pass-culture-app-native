@@ -2,9 +2,9 @@ import React, { useEffect } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
 import styled from 'styled-components/native'
 
-import { useEduConnectLogin } from 'features/identityCheck/api/useEduConnectLogin'
 import { ErrorTrigger } from 'features/identityCheck/components/ErrorTrigger'
 import { EduConnectErrorBoundary } from 'features/identityCheck/pages/identification/errors/eduConnect/EduConnectErrorBoundary'
+import { useEduConnectLoginMutation } from 'features/identityCheck/queries/useEduConnectLoginMutation'
 import { InfoBanner } from 'ui/components/banners/InfoBanner'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
@@ -14,7 +14,7 @@ import { Info } from 'ui/svg/icons/Info'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 export const EduConnectForm = () => {
-  const { error, openEduConnectTab } = useEduConnectLogin()
+  const { error, openEduConnectTab } = useEduConnectLoginMutation()
 
   useEffect(() => {
     openEduConnectTab()

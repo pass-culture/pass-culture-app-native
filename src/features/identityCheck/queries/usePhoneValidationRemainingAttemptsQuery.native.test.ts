@@ -1,6 +1,6 @@
 import { PhoneValidationRemainingAttemptsRequest } from 'api/gen'
-import { usePhoneValidationRemainingAttempts } from 'features/identityCheck/api/usePhoneValidationRemainingAttempts'
 import { phoneValidationRemainingAttemptsFixture } from 'features/identityCheck/fixtures/phoneValidationRemainingAttemptsFixture'
+import { usePhoneValidationRemainingAttemptsQuery } from 'features/identityCheck/queries/usePhoneValidationRemainingAttemptsQuery'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, renderHook } from 'tests/utils'
@@ -14,7 +14,7 @@ describe('usePhoneValidationRemainingAttempts', () => {
       phoneValidationRemainingAttemptsFixture
     )
 
-    const { result } = renderHook(usePhoneValidationRemainingAttempts, {
+    const { result } = renderHook(usePhoneValidationRemainingAttemptsQuery, {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
 

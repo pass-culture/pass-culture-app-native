@@ -24,9 +24,9 @@ jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
   }),
 }))
 
-jest.mock('features/identityCheck/api/usePhoneValidationRemainingAttempts', () => {
+jest.mock('features/identityCheck/queries/usePhoneValidationRemainingAttemptsQuery', () => {
   return {
-    usePhoneValidationRemainingAttempts: jest.fn().mockReturnValue({
+    usePhoneValidationRemainingAttemptsQuery: jest.fn().mockReturnValue({
       remainingAttempts: 5,
       counterResetDatetime: 'time',
       isLastAttempt: false,

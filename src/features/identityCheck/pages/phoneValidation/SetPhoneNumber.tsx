@@ -5,8 +5,6 @@ import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { extractApiErrorMessage, isApiError } from 'api/apiHelpers'
-import { usePhoneValidationRemainingAttempts } from 'features/identityCheck/api/usePhoneValidationRemainingAttempts'
-import { useSendPhoneValidationMutation } from 'features/identityCheck/api/useSendPhoneValidationMutation'
 import { METROPOLITAN_FRANCE } from 'features/identityCheck/components/countryPicker/constants'
 import { CountryPicker } from 'features/identityCheck/components/countryPicker/CountryPicker'
 import { Country } from 'features/identityCheck/components/countryPicker/types'
@@ -15,6 +13,8 @@ import { useSaveStep } from 'features/identityCheck/pages/helpers/useSaveStep'
 import { formatPhoneNumberWithPrefix } from 'features/identityCheck/pages/phoneValidation/helpers/formatPhoneNumber'
 import { isPhoneNumberValid } from 'features/identityCheck/pages/phoneValidation/helpers/isPhoneNumberValid'
 import { PhoneValidationTipsModal } from 'features/identityCheck/pages/phoneValidation/PhoneValidationTipsModal'
+import { usePhoneValidationRemainingAttemptsQuery } from 'features/identityCheck/queries/usePhoneValidationRemainingAttemptsQuery'
+import { useSendPhoneValidationMutation } from 'features/identityCheck/queries/useSendPhoneValidationMutation'
 import { IdentityCheckStep } from 'features/identityCheck/types'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
@@ -45,7 +45,7 @@ export const SetPhoneNumber = () => {
   const isContinueButtonEnabled = isPhoneNumberValid(phoneNumber, country.id)
   const saveStep = useSaveStep()
 
-  const { remainingAttempts, isLastAttempt } = usePhoneValidationRemainingAttempts()
+  const { remainingAttempts, isLastAttempt } = usePhoneValidationRemainingAttemptsQuery()
 
   const requestsWording = plural(remainingAttempts ?? 0, {
     singular: '# demande',

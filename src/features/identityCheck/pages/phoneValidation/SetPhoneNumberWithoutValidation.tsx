@@ -8,7 +8,7 @@ import { METROPOLITAN_FRANCE } from 'features/identityCheck/components/countryPi
 import { CountryPicker } from 'features/identityCheck/components/countryPicker/CountryPicker'
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
 import { useNavigateForwardToStepper } from 'features/identityCheck/helpers/useNavigateForwardToStepper'
-import { invalidateStepperInfoQuery } from 'features/identityCheck/pages/helpers/invalidateStepperQuery'
+import { invalidateStepperInfoQueries } from 'features/identityCheck/pages/helpers/invalidateStepperQueries'
 import { useSaveStep } from 'features/identityCheck/pages/helpers/useSaveStep'
 import { findCountry } from 'features/identityCheck/pages/phoneValidation/helpers/findCountry'
 import { formatPhoneNumberWithPrefix } from 'features/identityCheck/pages/phoneValidation/helpers/formatPhoneNumber'
@@ -60,7 +60,7 @@ export const SetPhoneNumberWithoutValidation = () => {
         },
       })
       saveStep(IdentityCheckStep.PHONE_VALIDATION)
-      invalidateStepperInfoQuery()
+      invalidateStepperInfoQueries()
       navigateForwardToStepper()
     },
     onError: (error) => {

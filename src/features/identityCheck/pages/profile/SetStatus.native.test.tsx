@@ -89,7 +89,7 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
 }))
 
 const mockActivities = ActivityTypesSnap.activities
-jest.mock('features/identityCheck/api/useActivityTypes', () => {
+jest.mock('features/identityCheck/queries/useActivityTypesQuery', () => {
   return {
     useActivityTypes: jest.fn(() => {
       return {
