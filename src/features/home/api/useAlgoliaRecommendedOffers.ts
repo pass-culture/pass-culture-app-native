@@ -1,5 +1,5 @@
-import { useAlgoliaSimilarOffers } from 'features/offer/api/useAlgoliaSimilarOffers'
 import { QueryKeys } from 'libs/queryKeys'
+import { useAlgoliaSimilarOffersQuery } from 'queries/offer/useAlgoliaSimilarOffersQuery'
 import { Offer } from 'shared/offer/types'
 
 export const useAlgoliaRecommendedOffers = (
@@ -7,7 +7,7 @@ export const useAlgoliaRecommendedOffers = (
   moduleId: string,
   shouldPreserveIdsOrder?: boolean
 ): Offer[] | undefined => {
-  return useAlgoliaSimilarOffers(ids, shouldPreserveIdsOrder, [
+  return useAlgoliaSimilarOffersQuery(ids, shouldPreserveIdsOrder, [
     QueryKeys.RECOMMENDATION_HITS,
     moduleId,
     ids,

@@ -2,9 +2,9 @@ import React, { ComponentProps } from 'react'
 import * as ReactQueryAPI from 'react-query'
 
 import { OfferResponseV2, SubcategoriesResponseModelv2 } from 'api/gen'
-import * as useSimilarOffers from 'features/offer/api/useSimilarOffers'
 import { mockSubcategory } from 'features/offer/fixtures/mockSubcategory'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
+import * as useSimilarOffersAPI from 'features/offer/queries/useSimilarOffersQuery'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { Position } from 'libs/location'
@@ -52,7 +52,7 @@ useQueryClientSpy.mockReturnValue({
 } as unknown as ReactQueryAPI.QueryClient)
 
 jest
-  .spyOn(useSimilarOffers, 'useSimilarOffers')
+  .spyOn(useSimilarOffersAPI, 'useSimilarOffersQuery')
   .mockReturnValue({ similarOffers: undefined, apiRecoParams: undefined })
 
 jest.mock('features/auth/context/AuthContext')

@@ -3,7 +3,7 @@ import React from 'react'
 import { useRoute } from '__mocks__/@react-navigation/native'
 import { Artist } from 'features/artist/pages/Artist'
 import * as useGoBack from 'features/navigation/useGoBack'
-import * as useArtistResults from 'features/offer/helpers/useArtistResults/useArtistResults'
+import * as useArtistResultsAPI from 'features/offer/queries/useArtistResultsQuery'
 import { mockedAlgoliaOffersWithSameArtistResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -15,7 +15,7 @@ jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
   canGoBack: jest.fn(() => true),
 })
 
-const spyUseArtistResults = jest.spyOn(useArtistResults, 'useArtistResults')
+const spyUseArtistResults = jest.spyOn(useArtistResultsAPI, 'useArtistResultsQuery')
 
 jest.unmock('react-native/Libraries/Animated/createAnimatedComponent')
 

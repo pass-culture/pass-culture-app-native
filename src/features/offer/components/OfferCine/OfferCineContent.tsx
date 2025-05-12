@@ -16,7 +16,7 @@ import {
   useGetVenuesByDay,
 } from 'features/offer/helpers/useGetVenueByDay/useGetVenuesByDay'
 import { useListExpander } from 'features/offer/helpers/useListExpander/useListExpander'
-import { useOffersStocksFromOfferQuery } from 'features/offer/helpers/useOffersStocksFromOfferQuery/useOffersStocksFromOfferQuery'
+import { useOffersStocksFromOfferQuery } from 'features/offer/queries/useOffersStocksFromOfferQuery'
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
 import { PlainMore } from 'ui/svg/icons/PlainMore'
 import { Typo, getSpacing } from 'ui/theme'

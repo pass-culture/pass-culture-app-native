@@ -21,12 +21,12 @@ import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteRespon
 import * as useFavorite from 'features/favorites/hooks/useFavorite'
 import * as useGoBack from 'features/navigation/useGoBack'
 import { chroniclePreviewToChronicalCardData } from 'features/offer/adapters/chroniclePreviewToChronicleCardData'
-import * as useSimilarOffers from 'features/offer/api/useSimilarOffers'
 import { CineContentCTAID } from 'features/offer/components/OfferCine/CineContentCTA'
 import { PlaylistType } from 'features/offer/enums'
 import { mockSubcategory } from 'features/offer/fixtures/mockSubcategory'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
-import * as useArtistResults from 'features/offer/helpers/useArtistResults/useArtistResults'
+import * as useArtistResultsAPI from 'features/offer/queries/useArtistResultsQuery'
+import * as useSimilarOffersAPI from 'features/offer/queries/useSimilarOffersQuery'
 import { beneficiaryUser } from 'fixtures/user'
 import {
   mockedAlgoliaOffersWithSameArtistResponse,
@@ -104,10 +104,10 @@ const apiRecoParams: RecommendationApiParams = {
 }
 
 const useSimilarOffersSpy = jest
-  .spyOn(useSimilarOffers, 'useSimilarOffers')
+  .spyOn(useSimilarOffersAPI, 'useSimilarOffersQuery')
   .mockReturnValue({ similarOffers: undefined, apiRecoParams: undefined })
 
-jest.spyOn(useArtistResults, 'useArtistResults').mockReturnValue({
+jest.spyOn(useArtistResultsAPI, 'useArtistResultsQuery').mockReturnValue({
   artistPlaylist: mockedAlgoliaOffersWithSameArtistResponse,
   artistTopOffers: mockedAlgoliaOffersWithSameArtistResponse.slice(0, 4),
 })

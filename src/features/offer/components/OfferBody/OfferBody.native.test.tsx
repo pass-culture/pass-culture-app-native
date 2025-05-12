@@ -14,7 +14,7 @@ import {
 import { OfferBody } from 'features/offer/components/OfferBody/OfferBody'
 import { mockSubcategory, mockSubcategoryBook } from 'features/offer/fixtures/mockSubcategory'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
-import * as useArtistResults from 'features/offer/helpers/useArtistResults/useArtistResults'
+import * as useArtistResultsAPI from 'features/offer/queries/useArtistResultsQuery'
 import { mockedAlgoliaOffersWithSameArtistResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
@@ -61,7 +61,7 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 })
 
 const useArtistResultsSpy = jest
-  .spyOn(useArtistResults, 'useArtistResults')
+  .spyOn(useArtistResultsAPI, 'useArtistResultsQuery')
   .mockImplementation()
   .mockReturnValue({
     artistPlaylist: mockedAlgoliaOffersWithSameArtistResponse,

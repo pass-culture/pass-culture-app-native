@@ -1,7 +1,7 @@
-import { useAlgoliaSimilarOffers } from 'features/offer/api/useAlgoliaSimilarOffers'
 import * as fetchOffersByIdsAPI from 'libs/algolia/fetchAlgolia/fetchOffersByIds'
 import * as filterOfferHitWithImageAPI from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
+import { useAlgoliaSimilarOffersQuery } from 'queries/offer/useAlgoliaSimilarOffersQuery'
 import * as getSimilarOrRecoOffersInOrder from 'shared/offer/getSimilarOrRecoOffersInOrder'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, renderHook, waitFor } from 'tests/utils'
@@ -15,7 +15,7 @@ const getSimilarOffersInOrderSpy = jest.spyOn(
 
 const ids = ['102280', '102272', '102249', '102310']
 
-describe('useAlgoliaSimilarOffers', () => {
+describe('useAlgoliaSimilarOffersQuery', () => {
   const mockFetchAlgoliaHits = jest.fn().mockResolvedValue(mockedAlgoliaResponse.hits)
   const fetchAlgoliaHitsSpy = jest
     .spyOn(fetchOffersByIdsAPI, 'fetchOffersByIds')
@@ -26,7 +26,7 @@ describe('useAlgoliaSimilarOffers', () => {
     .mockImplementation(jest.fn())
 
   it('should fetch algolia when ids are provided', async () => {
-    renderHook(() => useAlgoliaSimilarOffers(ids), {
+    renderHook(() => useAlgoliaSimilarOffersQuery(ids), {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
     await waitFor(() => {
@@ -35,7 +35,7 @@ describe('useAlgoliaSimilarOffers', () => {
   })
 
   it('should filter algolia hits', async () => {
-    renderHook(() => useAlgoliaSimilarOffers(ids), {
+    renderHook(() => useAlgoliaSimilarOffersQuery(ids), {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
     await waitFor(() => {
@@ -45,7 +45,7 @@ describe('useAlgoliaSimilarOffers', () => {
 
   it('should return undefined when algolia does not return any hit', async () => {
     jest.spyOn(fetchOffersByIdsAPI, 'fetchOffersByIds').mockResolvedValueOnce([])
-    const { result } = renderHook(() => useAlgoliaSimilarOffers(ids), {
+    const { result } = renderHook(() => useAlgoliaSimilarOffersQuery(ids), {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
     await waitFor(() => {
@@ -55,7 +55,7 @@ describe('useAlgoliaSimilarOffers', () => {
   })
 
   it('should return undefined when ids are not provided', async () => {
-    const { result } = renderHook(() => useAlgoliaSimilarOffers([]), {
+    const { result } = renderHook(() => useAlgoliaSimilarOffersQuery([]), {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
 
@@ -63,7 +63,7 @@ describe('useAlgoliaSimilarOffers', () => {
   })
 
   it('should call function to preserve ids offer order when shouldPreserveIdsOrder is true', async () => {
-    renderHook(() => useAlgoliaSimilarOffers(ids, true), {
+    renderHook(() => useAlgoliaSimilarOffersQuery(ids, true), {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
     await act(async () => {})
@@ -72,7 +72,7 @@ describe('useAlgoliaSimilarOffers', () => {
   })
 
   it('should not call function to preserve ids offer order when shouldPreserveIdsOrder is undefined', async () => {
-    renderHook(() => useAlgoliaSimilarOffers(ids), {
+    renderHook(() => useAlgoliaSimilarOffersQuery(ids), {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
     await act(async () => {})
@@ -81,7 +81,7 @@ describe('useAlgoliaSimilarOffers', () => {
   })
 
   it('should not call function to preserve ids offer order when shouldPreserveIdsOrder is false', async () => {
-    renderHook(() => useAlgoliaSimilarOffers(ids, false), {
+    renderHook(() => useAlgoliaSimilarOffersQuery(ids, false), {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
     await act(async () => {})

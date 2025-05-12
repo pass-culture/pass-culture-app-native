@@ -1,7 +1,7 @@
 import { RecommendationApiParams, SearchGroupNameEnumv2 } from 'api/gen'
-import * as useSimilarOffers from 'features/offer/api/useSimilarOffers'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { useOfferPlaylist } from 'features/offer/helpers/useOfferPlaylist/useOfferPlaylist'
+import * as useSimilarOffersAPI from 'features/offer/queries/useSimilarOffersQuery'
 import { moreHitsForSimilarOffersPlaylist } from 'libs/algolia/fixtures/algoliaFixtures'
 import { Position } from 'libs/location'
 import { searchGroupsDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
@@ -22,7 +22,7 @@ const offerSearchGroup = SearchGroupNameEnumv2.CINEMA
 const searchGroupList = searchGroupsDataTest
 
 const useSimilarOffersSpy = jest
-  .spyOn(useSimilarOffers, 'useSimilarOffers')
+  .spyOn(useSimilarOffersAPI, 'useSimilarOffersQuery')
   .mockImplementation()
   .mockReturnValue({ similarOffers: moreHitsForSimilarOffersPlaylist, apiRecoParams })
 

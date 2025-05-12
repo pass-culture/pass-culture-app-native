@@ -1,5 +1,5 @@
 import { SubcategoryIdEnum } from 'api/gen'
-import { useArtistResults } from 'features/offer/helpers/useArtistResults/useArtistResults'
+import { useArtistResultsQuery } from 'features/offer/queries/useArtistResultsQuery'
 import { mockedAlgoliaOffersWithSameArtistResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
@@ -7,7 +7,7 @@ import { Position } from 'libs/location/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, waitFor } from 'tests/utils'
 
-import * as fetchOffersByArtist from '../../api/fetchOffersByArtist/fetchOffersByArtist'
+import * as fetchOffersByArtist from '../api/fetchOffersByArtist/fetchOffersByArtist'
 
 jest.mock('libs/react-query/usePersistQuery', () => ({
   usePersistQuery: jest.requireActual('react-query').useQuery,
@@ -29,7 +29,7 @@ jest.mock('libs/location/LocationWrapper', () => ({
 
 const useRemoteConfigSpy = jest.spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
 
-describe('useArtistResults', () => {
+describe('useArtistResultsQuery', () => {
   beforeAll(() => {
     useRemoteConfigSpy.mockReturnValue({
       ...DEFAULT_REMOTE_CONFIG,
@@ -40,7 +40,7 @@ describe('useArtistResults', () => {
   it('should fetch same artist playlist when artistId and subcategory compatible with artist page defined', async () => {
     renderHook(
       () =>
-        useArtistResults({
+        useArtistResultsQuery({
           artistId: '1',
           subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
         }),
@@ -60,7 +60,7 @@ describe('useArtistResults', () => {
   it('should fetch same artist playlist when artistId defined and subcategory not defined', async () => {
     renderHook(
       () =>
-        useArtistResults({
+        useArtistResultsQuery({
           artistId: '1',
         }),
       {
@@ -79,7 +79,7 @@ describe('useArtistResults', () => {
   it('should not fetch same artist playlist when subcategory compatible with artist page defined and artistId not defined', async () => {
     renderHook(
       () =>
-        useArtistResults({
+        useArtistResultsQuery({
           subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
         }),
       {
@@ -91,7 +91,7 @@ describe('useArtistResults', () => {
   })
 
   it('should not fetch same artist playlist when subcategory compatible with artist page and artistId not defined', async () => {
-    renderHook(() => useArtistResults({}), {
+    renderHook(() => useArtistResultsQuery({}), {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
 
@@ -103,7 +103,7 @@ describe('useArtistResults', () => {
 
     const { result } = renderHook(
       () =>
-        useArtistResults({
+        useArtistResultsQuery({
           artistId: '1',
           subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
         }),
@@ -122,7 +122,7 @@ describe('useArtistResults', () => {
 
     const { result } = renderHook(
       () =>
-        useArtistResults({
+        useArtistResultsQuery({
           artistId: '1',
           subcategoryId: SubcategoryIdEnum.LIVRE_PAPIER,
         }),

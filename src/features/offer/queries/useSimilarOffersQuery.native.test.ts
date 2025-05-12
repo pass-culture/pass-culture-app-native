@@ -1,13 +1,13 @@
 import { onlineManager } from 'react-query'
 
 import { SearchGroupNameEnumv2, SimilarOffersResponse } from 'api/gen'
-import * as useAlgoliaSimilarOffers from 'features/offer/api/useAlgoliaSimilarOffers'
-import { getCategories, useSimilarOffers } from 'features/offer/api/useSimilarOffers'
+import { getCategories, useSimilarOffersQuery } from 'features/offer/queries/useSimilarOffersQuery'
 import { env } from 'libs/environment/fixtures'
 import { EmptyResponse } from 'libs/fetch'
 import { eventMonitoring } from 'libs/monitoring/services'
 import * as PackageJson from 'libs/packageJson'
 import { searchGroupsDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
+import * as useAlgoliaSimilarOffersAPI from 'queries/offer/useAlgoliaSimilarOffersQuery'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, waitFor } from 'tests/utils'
@@ -22,14 +22,12 @@ const position = {
 jest.mock('features/auth/context/AuthContext')
 jest.mock('libs/subcategories/useSubcategories')
 
-const algoliaSpy = jest
-  .spyOn(useAlgoliaSimilarOffers, 'useAlgoliaSimilarOffers')
-  .mockImplementation()
+const algoliaSpy = jest.spyOn(useAlgoliaSimilarOffersAPI, 'useAlgoliaSimilarOffersQuery')
 const fetchApiRecoSpy = jest.spyOn(global, 'fetch')
 
 jest.spyOn(PackageJson, 'getAppVersion').mockReturnValue('1.10.5')
 
-describe('useSimilarOffers', () => {
+describe('useSimilarOffersQuery', () => {
   describe('When success API response', () => {
     beforeEach(() => {
       mockServer.getApi<SimilarOffersResponse>(`/v1/recommendation/similar_offers/${mockOfferId}`, {
@@ -41,7 +39,7 @@ describe('useSimilarOffers', () => {
     it('should call Algolia hook with category included', async () => {
       renderHook(
         () =>
-          useSimilarOffers({
+          useSimilarOffersQuery({
             offerId: mockOfferId,
             shouldFetch: true,
             position,
@@ -59,7 +57,7 @@ describe('useSimilarOffers', () => {
     it('should call Algolia hook with category excluded', async () => {
       renderHook(
         () =>
-          useSimilarOffers({
+          useSimilarOffersQuery({
             offerId: mockOfferId,
             shouldFetch: true,
             position,
@@ -77,7 +75,7 @@ describe('useSimilarOffers', () => {
     it('should call similar offers API when offer id provided and user share his position', async () => {
       renderHook(
         () =>
-          useSimilarOffers({
+          useSimilarOffersQuery({
             offerId: mockOfferId,
             shouldFetch: true,
             categoryIncluded: SearchGroupNameEnumv2.CINEMA,
@@ -111,7 +109,7 @@ describe('useSimilarOffers', () => {
     it('should call similar offers API when offer id provided and user not share his position', async () => {
       renderHook(
         () =>
-          useSimilarOffers({
+          useSimilarOffersQuery({
             offerId: mockOfferId,
             shouldFetch: true,
             categoryIncluded: SearchGroupNameEnumv2.CINEMA,
@@ -145,7 +143,7 @@ describe('useSimilarOffers', () => {
     it('should not call similar offers API when offer id provided, user share his position and shouldFetch is false', () => {
       renderHook(
         () =>
-          useSimilarOffers({
+          useSimilarOffersQuery({
             offerId: mockOfferId,
             shouldFetch: false,
             categoryIncluded: SearchGroupNameEnumv2.CINEMA,
@@ -167,7 +165,7 @@ describe('useSimilarOffers', () => {
       })
       const { result } = renderHook(
         () =>
-          useSimilarOffers({
+          useSimilarOffersQuery({
             offerId: mockOfferId,
             shouldFetch: true,
             categoryIncluded: SearchGroupNameEnumv2.CINEMA,
@@ -190,7 +188,7 @@ describe('useSimilarOffers', () => {
     })
     renderHook(
       () =>
-        useSimilarOffers({
+        useSimilarOffersQuery({
           offerId: mockOfferId,
           shouldFetch: true,
           categoryIncluded: SearchGroupNameEnumv2.CINEMA,
@@ -232,7 +230,7 @@ describe('useSimilarOffers', () => {
       })
       renderHook(
         () =>
-          useSimilarOffers({
+          useSimilarOffersQuery({
             offerId: mockOfferId,
             shouldFetch: true,
             categoryIncluded: SearchGroupNameEnumv2.CINEMA,
@@ -254,7 +252,7 @@ describe('useSimilarOffers', () => {
 
     renderHook(
       () =>
-        useSimilarOffers({
+        useSimilarOffersQuery({
           offerId: mockOfferId,
           shouldFetch: true,
           categoryIncluded: SearchGroupNameEnumv2.CINEMA,
