@@ -2,7 +2,9 @@ import React from 'react'
 
 import { NativeCategoryIdEnumv2, SearchGroupNameEnumv2 } from 'api/gen'
 import {
-  Highlight,
+  HistoryItemHighlight,
+  SuggestionHitHighlight,
+  VenueHitHighlight,
   HighlightHistoryItemPart,
   HighlightPart,
 } from 'features/search/components/Highlight/Highlight'
@@ -12,7 +14,7 @@ import { AlgoliaSuggestionHit } from 'libs/algolia/types'
 import { env } from 'libs/environment/env'
 import { render, screen } from 'tests/utils'
 
-describe('Highlight component for a offer suggestion', () => {
+describe('SuggestionHitHighlight for a offer suggestion', () => {
   const hit = {
     query: 'guerre et youpi matin',
     objectID: 'guerre et youpi matin',
@@ -55,45 +57,45 @@ describe('Highlight component for a offer suggestion', () => {
   } as AlgoliaSuggestionHit
 
   it('should use highlight part for display', () => {
-    render(<Highlight suggestionHit={hit} attribute="query" />)
+    render(<SuggestionHitHighlight suggestionHit={hit} attribute="query" />)
 
     expect(screen.getByTestId('nonHighlightedText')).toBeOnTheScreen()
   })
 
   it('should not use highlight history item part for display', () => {
-    render(<Highlight suggestionHit={hit} attribute="query" />)
+    render(<SuggestionHitHighlight suggestionHit={hit} attribute="query" />)
 
     expect(screen.queryByTestId('nonHighlightedHistoryItemText')).not.toBeOnTheScreen()
   })
 })
 
-describe('Highlight component for a venue suggestion', () => {
+describe('VenueHitHighlight for a venue suggestion', () => {
   const hit = mockVenueHits[0]
 
   it('should use highlight part for display', () => {
-    render(<Highlight venueHit={hit} attribute="name" />)
+    render(<VenueHitHighlight venueHit={hit} />)
 
     expect(screen.getByTestId('nonHighlightedText')).toBeOnTheScreen()
   })
 
   it('should not use highlight history item part for display', () => {
-    render(<Highlight venueHit={hit} attribute="name" />)
+    render(<VenueHitHighlight venueHit={hit} />)
 
     expect(screen.queryByTestId('nonHighlightedHistoryItemText')).not.toBeOnTheScreen()
   })
 })
 
-describe('Highlight component for an history item', () => {
+describe('HistoryItemHighlight for an history item', () => {
   const historyItem = { ...mockedSearchHistory[0], _highlightResult: { query: { value: 'manga' } } }
 
   it('should use highlight history item part for display', () => {
-    render(<Highlight historyItem={historyItem} />)
+    render(<HistoryItemHighlight historyItem={historyItem} />)
 
     expect(screen.getByTestId('nonHighlightedHistoryItemText')).toBeOnTheScreen()
   })
 
   it('should not use highlight part for display', () => {
-    render(<Highlight historyItem={historyItem} />)
+    render(<HistoryItemHighlight historyItem={historyItem} />)
 
     expect(screen.queryByTestId('nonHighlightedText')).not.toBeOnTheScreen()
   })
