@@ -658,8 +658,6 @@ const FAVORITE_LIST_PLACEHOLDER = Array.from({ length: 20 }).map((_, index) => (
 
 const SearchResultsPlaceHolder = () => {
   const renderItem = useCallback(() => <HitPlaceholder />, [])
-  const ListHeaderComponent = useMemo(() => <HeaderSearchResultsPlaceholder />, [])
-  const ListFooterComponent = useMemo(() => <Footer />, [])
 
   return (
     <Container>
@@ -667,9 +665,9 @@ const SearchResultsPlaceHolder = () => {
         data={FAVORITE_LIST_PLACEHOLDER}
         renderItem={renderItem}
         contentContainerStyle={contentContainerStyle}
-        ListHeaderComponent={ListHeaderComponent}
+        ListHeaderComponent={<HeaderSearchResultsPlaceholder />}
         ItemSeparatorComponent={Separator}
-        ListFooterComponent={ListFooterComponent}
+        ListFooterComponent={<Footer />}
         scrollEnabled={false}
       />
     </Container>
