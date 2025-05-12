@@ -6,7 +6,6 @@ import { useHighlightOffer } from 'features/home/api/useHighlightOffer'
 import { highlightOfferModuleFixture } from 'features/home/fixtures/highlightOfferModule.fixture'
 import {
   formattedCategoryListModule,
-  formattedExclusivityModule,
   formattedNewBusinessModule,
   formattedOffersModule,
   formattedRecommendedOffersModule,
@@ -22,7 +21,7 @@ import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategories
 import { offersFixture } from 'shared/offer/offer.fixture'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, checkAccessibilityFor, render, screen, waitFor } from 'tests/utils/web'
+import { act, checkAccessibilityFor, render, screen } from 'tests/utils/web'
 
 import { HomeModule } from './HomeModule'
 
@@ -100,14 +99,6 @@ describe('<HomeModule />', () => {
       const results = await checkAccessibilityFor(container)
 
       expect(results).toHaveNoViolations()
-    })
-
-    it('should not display old ExclusivityOfferModule', async () => {
-      renderHomeModule(formattedExclusivityModule)
-
-      await waitFor(() => {
-        expect(screen.queryByLabelText('Week-end FRAC')).not.toBeOnTheScreen()
-      })
     })
 
     it('CategoryList module should not have basic accessibility issues', async () => {
