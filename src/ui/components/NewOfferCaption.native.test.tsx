@@ -9,6 +9,7 @@ const props = {
   date: 'Dès le 2 mars 2020',
   price: 'Dès 5€',
   categoryLabel: 'Cinéma',
+  width: 160,
 }
 
 describe('NewOfferCaption component', () => {

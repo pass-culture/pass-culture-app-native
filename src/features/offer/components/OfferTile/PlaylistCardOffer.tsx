@@ -41,6 +41,7 @@ export const PlaylistCardOffer: FC<Props> = ({
         price={price}
         categoryLabel={categoryLabel}
         distance={distance}
+        width={width}
       />
     </Container>
   )

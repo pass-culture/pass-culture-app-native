@@ -11,6 +11,7 @@ type Props = {
   price: string
   categoryLabel: string | null
   distance?: string
+  width: number
 }
 
 export const NewOfferCaption: FC<Props> = ({
@@ -19,8 +20,9 @@ export const NewOfferCaption: FC<Props> = ({
   price,
   categoryLabel,
   distance,
+  width,
 }: Props) => {
-  const distanceDate = formatDistanceDate(distance, date)
+  const distanceDate = formatDistanceDate(width, distance, date)
 
   return (
     <Fragment>
