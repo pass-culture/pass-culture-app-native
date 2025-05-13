@@ -146,12 +146,11 @@ export const getCtaWordingAndAction = ({
         isDisabled: false,
         navigateTo: { screen: 'SetName', params: { type: ProfileTypes.BOOKING_FREE_OFFER_15_16 } },
       }
-    } else {
-      return {
-        wording: 'Réserver l’offre',
-        modalToDisplay: OfferModal.BOOKING,
-        isDisabled: false,
-      }
+    }
+    return {
+      wording: 'Réserver l’offre',
+      modalToDisplay: OfferModal.BOOKING,
+      isDisabled: false,
     }
   }
 
