@@ -32,6 +32,7 @@ export const OnboardingGeolocation = () => {
       buttonPrimary={{
         wording: 'Continuer',
         onPress: onGeolocationButtonPress,
+        accessibilityLabel: 'Continuer vers l’étape suivante',
       }}
     />
   )
