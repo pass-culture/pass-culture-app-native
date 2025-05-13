@@ -2783,7 +2783,6 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                                     },
                                   ]
                                 }
-                                testID="priceIsDuo"
                               />
                             </View>
                           </View>
@@ -3147,7 +3146,6 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                                     },
                                   ]
                                 }
-                                testID="priceIsDuo"
                               />
                             </View>
                           </View>
@@ -3511,7 +3509,6 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                                     },
                                   ]
                                 }
-                                testID="priceIsDuo"
                               />
                             </View>
                           </View>
@@ -3875,7 +3872,6 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                                     },
                                   ]
                                 }
-                                testID="priceIsDuo"
                               />
                             </View>
                           </View>
@@ -4239,7 +4235,6 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                                     },
                                   ]
                                 }
-                                testID="priceIsDuo"
                               />
                             </View>
                           </View>
@@ -4603,7 +4598,6 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                                     },
                                   ]
                                 }
-                                testID="priceIsDuo"
                               />
                             </View>
                           </View>

@@ -1342,7 +1342,6 @@ exports[`<Venue /> should match snapshot 1`] = `
                                             },
                                           ]
                                         }
-                                        testID="priceIsDuo"
                                       >
                                         Gratuit
                                       </Text>
@@ -1604,7 +1603,6 @@ exports[`<Venue /> should match snapshot 1`] = `
                                             },
                                           ]
                                         }
-                                        testID="priceIsDuo"
                                       >
                                         Gratuit
                                       </Text>
@@ -1866,7 +1864,6 @@ exports[`<Venue /> should match snapshot 1`] = `
                                             },
                                           ]
                                         }
-                                        testID="priceIsDuo"
                                       >
                                         Gratuit
                                       </Text>
@@ -4917,7 +4914,6 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                             },
                                           ]
                                         }
-                                        testID="priceIsDuo"
                                       >
                                         Gratuit
                                       </Text>
@@ -5179,7 +5175,6 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                             },
                                           ]
                                         }
-                                        testID="priceIsDuo"
                                       >
                                         Gratuit
                                       </Text>
@@ -5441,7 +5436,6 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                             },
                                           ]
                                         }
-                                        testID="priceIsDuo"
                                       >
                                         Gratuit
                                       </Text>
