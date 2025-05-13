@@ -27,7 +27,7 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
     navigate('OfferPreview', { id: offer.id, defaultIndex })
   }
 
-  const { onLayout, height } = useLayout()
+  const { onLayout, height: comingSoonFooterHeight } = useLayout()
 
   return (
     <OfferCTAProvider>
@@ -43,7 +43,12 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
         defaultReaction={defaultReaction}
         onReactionButtonPress={onReactionButtonPress}
         onLayout={onLayout}>
-        {height ? <ComingSoonFooterOffset height={height} /> : null}
+        {comingSoonFooterHeight ? (
+          <ComingSoonFooterOffset
+            testID="coming-soon-footer-offset"
+            height={comingSoonFooterHeight}
+          />
+        ) : null}
       </OfferContentBase>
     </OfferCTAProvider>
   )

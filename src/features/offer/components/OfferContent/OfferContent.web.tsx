@@ -47,7 +47,7 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
     [headerHeight]
   )
 
-  const { onLayout, height } = useLayout()
+  const { onLayout, height: comingSoonFooterHeight } = useLayout()
 
   return (
     <OfferCTAProvider>
@@ -69,7 +69,9 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
           onReactionButtonPress={onReactionButtonPress}
           headlineOffersCount={headlineOffersCount}
           onLayout={onLayout}>
-          {height ? <ComingSoonFooterOffset height={height} /> : null}
+          {comingSoonFooterHeight ? (
+            <ComingSoonFooterOffset height={comingSoonFooterHeight} />
+          ) : null}
         </StyledOfferContentBase>
       </React.Fragment>
     </OfferCTAProvider>
