@@ -1,5 +1,4 @@
 import { SubcategoriesResponseModelv2 } from 'api/gen'
-import { useVideoOffers } from 'features/home/api/useVideoOffers'
 import { OffersModuleParameters } from 'features/home/types'
 import { fetchMultipleOffers } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/fetchMultipleOffers'
 import { fetchOffersByEan } from 'libs/algolia/fetchAlgolia/fetchOffersByEan'
@@ -10,6 +9,8 @@ import { offersFixture } from 'shared/offer/offer.fixture'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, act } from 'tests/utils'
+
+import { useVideoOffersQuery } from './useVideoOffersQuery'
 
 jest.mock('libs/algolia/fetchAlgolia/fetchOffersByIds', () => ({
   fetchOffersByIds: jest.fn(),
@@ -32,7 +33,7 @@ const mockOffers = mockedAlgoliaResponse.hits
 
 jest.mock('libs/firebase/analytics/analytics')
 
-describe('useVideoOffers', () => {
+describe('useVideoOffersQuery', () => {
   beforeEach(() => {
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
   })
@@ -41,7 +42,8 @@ describe('useVideoOffers', () => {
     mockfetchOffersByIds.mockResolvedValueOnce([mockOffers[0], mockOffers[1]])
 
     const { result } = renderHook(
-      () => useVideoOffers([{}] as OffersModuleParameters[], 'moduleId', ['offerId1', 'offerId2']),
+      () =>
+        useVideoOffersQuery([{}] as OffersModuleParameters[], 'moduleId', ['offerId1', 'offerId2']),
       {
         wrapper: ({ children }) => reactQueryProviderHOC(children),
       }
@@ -57,7 +59,10 @@ describe('useVideoOffers', () => {
 
     const { result } = renderHook(
       () =>
-        useVideoOffers([{}] as OffersModuleParameters[], 'moduleId', undefined, ['ean1', 'ean2']),
+        useVideoOffersQuery([{}] as OffersModuleParameters[], 'moduleId', undefined, [
+          'ean1',
+          'ean2',
+        ]),
       {
         wrapper: ({ children }) => reactQueryProviderHOC(children),
       }
@@ -73,7 +78,7 @@ describe('useVideoOffers', () => {
     mockFetchMultipleOffers.mockResolvedValueOnce([{ hits: mockOffers, nbHits: 6 }])
 
     const { result } = renderHook(
-      () => useVideoOffers([{}] as OffersModuleParameters[], 'moduleId', undefined, undefined),
+      () => useVideoOffersQuery([{}] as OffersModuleParameters[], 'moduleId', undefined, undefined),
       {
         wrapper: ({ children }) => reactQueryProviderHOC(children),
       }
