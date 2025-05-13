@@ -3,13 +3,13 @@ import React from 'react'
 import { NativeScrollEvent, NativeSyntheticEvent } from 'react-native'
 
 import { push } from '__mocks__/@react-navigation/native'
-import * as useAlgoliaRecommendedOffers from 'features/home/api/useAlgoliaRecommendedOffers'
 import { OffersModuleParameters } from 'features/home/types'
 import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { analytics } from 'libs/analytics/provider'
 import { ContentTypes, DisplayParametersFields } from 'libs/contentful/types'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { ThemeProvider } from 'libs/styled'
+import * as algoliaSimilarOffersAPI from 'queries/offer/useAlgoliaSimilarOffersQuery'
 import { Offer } from 'shared/offer/types'
 import { computedTheme } from 'tests/computedTheme'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -20,7 +20,7 @@ import { OffersModule, OffersModuleProps } from './OffersModule'
 mockdate.set(new Date(2020, 10, 16))
 
 const mockHitsItems: Offer[] = [mockedAlgoliaResponse.hits[0], mockedAlgoliaResponse.hits[1]]
-const mockRecommendationOffers: Offer[] = [mockedAlgoliaResponse.hits[2]]
+const mockSimilarOffers: Offer[] = [mockedAlgoliaResponse.hits[2]]
 const mockNbHits = mockHitsItems.length
 const mockData = {
   playlistItems: mockHitsItems,
@@ -42,9 +42,9 @@ const props = {
   data: mockData,
 }
 
-const mockUseAlgoliaRecommendedOffers = jest
-  .spyOn(useAlgoliaRecommendedOffers, 'useAlgoliaRecommendedOffers')
-  .mockReturnValue(mockRecommendationOffers)
+const mockUseAlgoliaSimilarOffers = jest
+  .spyOn(algoliaSimilarOffersAPI, 'useAlgoliaSimilarOffersQuery')
+  .mockReturnValue(mockSimilarOffers)
 
 const nativeEventEnd = {
   layoutMeasurement: { width: 1000 },
@@ -86,7 +86,7 @@ describe('OffersModule', () => {
   })
 
   it('should render hybrid playlist if recommended parameters', async () => {
-    mockUseAlgoliaRecommendedOffers.mockReturnValueOnce(mockRecommendationOffers)
+    mockUseAlgoliaSimilarOffers.mockReturnValueOnce(mockSimilarOffers)
     renderOffersModule({
       recommendationParameters: { categories: ['Cinéma'] },
     })
@@ -185,7 +185,7 @@ describe('OffersModule', () => {
     })
 
     it('should not trigger logEvent "ModuleDisplayedOnHomepage" when shouldModuleBeDisplayed is false', () => {
-      mockUseAlgoliaRecommendedOffers.mockReturnValueOnce(mockRecommendationOffers)
+      mockUseAlgoliaSimilarOffers.mockReturnValueOnce(mockSimilarOffers)
 
       renderOffersModule({
         offersModuleParameters: [{ title: 'Search title' } as OffersModuleParameters],
@@ -209,7 +209,7 @@ describe('OffersModule', () => {
     })
 
     it('should trigger logEvent "ModuleDisplayedOnHomepage" with hybrid module type', async () => {
-      mockUseAlgoliaRecommendedOffers.mockReturnValueOnce(mockRecommendationOffers)
+      mockUseAlgoliaSimilarOffers.mockReturnValueOnce(mockSimilarOffers)
 
       renderOffersModule({ recommendationParameters: { categories: ['Cinéma'] } })
 
@@ -227,7 +227,7 @@ describe('OffersModule', () => {
     })
 
     it('should trigger logEvent "ModuleDisplayedOnHomepage" with hybridModuleOffsetIndex equal to one when playlist is only recommendedOffers', async () => {
-      mockUseAlgoliaRecommendedOffers.mockReturnValueOnce(mockRecommendationOffers)
+      mockUseAlgoliaSimilarOffers.mockReturnValueOnce(mockSimilarOffers)
       renderOffersModule({
         data: { playlistItems: [], nbPlaylistResults: mockNbHits, moduleId: 'fakeModuleId' },
         recommendationParameters: { categories: ['Cinéma'] },

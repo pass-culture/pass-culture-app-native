@@ -7,11 +7,11 @@ import { RecommendedOffersModule } from 'features/home/types'
 import { useSubcategoryIdsFromSearchGroups } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
 import { getCategoriesFacetFilters } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/getCategoriesFacetFilters'
 import { Position } from 'libs/location'
+import { QueryKeys } from 'libs/queryKeys'
 import { useHomeRecommendedIdsQuery } from 'libs/recommendation/useHomeRecommendedIdsQuery'
 import { useSubcategoryLabelMapping } from 'libs/subcategories/mappings'
+import { useAlgoliaSimilarOffersQuery } from 'queries/offer/useAlgoliaSimilarOffersQuery'
 import { Offer } from 'shared/offer/types'
-
-import { useAlgoliaRecommendedOffers } from './useAlgoliaRecommendedOffers'
 
 export function getRecommendationParameters(
   parameters: RecommendedOffersModule['recommendationParameters'] | undefined,
@@ -83,9 +83,10 @@ export const useHomeRecommendedOffers = (
     userId,
   })
 
+  const ids = data?.playlistRecommendedOffers ?? []
   return {
     offers:
-      useAlgoliaRecommendedOffers(data?.playlistRecommendedOffers ?? [], moduleId, true) || [],
+      useAlgoliaSimilarOffersQuery(ids, true, [QueryKeys.RECOMMENDATION_HITS, moduleId, ids]) || [],
     recommendationApiParams: data?.params,
   }
 }
