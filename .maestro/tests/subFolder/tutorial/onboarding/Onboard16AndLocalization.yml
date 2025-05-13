@@ -8,14 +8,6 @@ appId: ${MAESTRO_APP_ID}
 
 - runFlow:
     when:
-      platform: iOS
-      visible: 'Ne pas autoriser'
-    commands:
-      - tapOn: "Lorsque vous utilisez l'appli"
-
-- runFlow:
-    when:
-      platform: Android
       visible: 'Ne pas autoriser'
     commands:
       - tapOn: "Lorsque vous utilisez l'appli"

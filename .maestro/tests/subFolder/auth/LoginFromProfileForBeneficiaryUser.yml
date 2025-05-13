@@ -35,7 +35,7 @@ appId: ${MAESTRO_APP_ID}
     commands:
       - tapOn: 'Non merci'
 
-- runFlow:
+- runFlow: # Si apparition de la modale native iOS
     when:
       visible: 'Plus tard'
     commands:

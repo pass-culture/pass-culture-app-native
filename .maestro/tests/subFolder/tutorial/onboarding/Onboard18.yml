@@ -5,16 +5,9 @@ appId: ${MAESTRO_APP_ID}
 
 - assertVisible: 'Découvre les offres près de chez toi'
 - tapOn: 'Continuer'
-- runFlow:
-    when:
-      platform: iOS
-      visible: 'Ne pas autoriser'
-    commands:
-      - tapOn: 'Ne pas autoriser'
 
 - runFlow:
     when:
-      platform: Android
       visible: 'Ne pas autoriser'
     commands:
       - tapOn: 'Ne pas autoriser'

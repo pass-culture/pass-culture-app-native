@@ -23,13 +23,11 @@ onFlowStart:
 
 - tapOn: 'Rechercher'
 
-- tapOn:
-    id: '.*Voir tous les filtres.*'
+- tapOn: '.*Voir tous les filtres.*'
 - tapOn: 'Dates'
 
 - assertVisible: 'Dates'
-- tapOn:
-    id: "native.calendar.SELECT_DATE_SLOT-${output.targetDateTest}"
+- tapOn: ".*${output.targetDateTest}.*"
 
 - tapOn: 'Appliquer le filtre'
 - doubleTapOn: 'Rechercher'

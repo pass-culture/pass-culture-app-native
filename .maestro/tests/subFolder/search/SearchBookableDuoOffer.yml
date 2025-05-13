@@ -22,8 +22,7 @@ onFlowStart:
 - assertVisible: "Films à l'affiche"
 
 - tapOn: 'Rechercher'
-- tapOn:
-    id: '.*Voir tous les filtres.*'
+- tapOn: '.*Voir tous les filtres.*'
 - tapOn: 'Duo'
 - tapOn:
     id: 'Interrupteur limitDuoOfferSearch'
@@ -31,8 +30,7 @@ onFlowStart:
 
 - tapOn: 'Dates'
 
-- tapOn:
-    id: "native.calendar.SELECT_DATE_SLOT-${output.targetDateTest}"
+- tapOn: ".*${output.targetDateTest}.*"
 
 - tapOn:
     text: 'Appliquer le filtre'

@@ -1,8 +1,15 @@
-const targetDate = new Date();
-targetDate.setDate(targetDate.getDate() + 3);
-const year = targetDate.getFullYear();
-const month = ('0' + (targetDate.getMonth() + 1)).slice(-2);
-const day = ('0' + targetDate.getDate()).slice(-2);
-const formattedTargetDate = year + '-' + month + '-' + day;
+const MINIMUM_CANCELLATION_DAYS = 3;
 
-output.targetDateTest = formattedTargetDate;
+const targetDate = new Date();
+targetDate.setDate(targetDate.getDate() + MINIMUM_CANCELLATION_DAYS);
+
+output.targetDateIso = targetDate.toISOString().slice(0, 10);
+
+output.targetDateTest = targetDate
+  .toLocaleDateString('fr-FR', {
+    weekday: 'long',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  })
+  .replace(/(^|\s)([a-zà-ÿ])/g, (m) => m.toUpperCase());
