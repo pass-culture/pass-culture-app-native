@@ -1,66 +1,38 @@
 appId: ${MAESTRO_APP_ID}
+onFlowStart:
+  - runScript: ../commons/getCurrentDay.js
 ---
 - assertVisible: 'Rechercher'
 - runFlow:
     when:
       platform: iOS
     commands:
-    - tapOn: "Catégories Cinéma.*"
+      - tapOn: 'Catégories Cinéma.*'
 
 - runFlow:
     when:
       platform: Android
     commands:
-    - tapOn: 'Cinéma'
+      - tapOn: 'Cinéma'
 
 - tapOn: "Films à l'affiche"
 
-# TODO(e2e): Attendre que "Catégories soit check"
 - tapOn: 'Catégories'
 
 - assertVisible: "Films à l'affiche"
 
 - tapOn: 'Rechercher'
-- tapOn:
-    id: '.*Voir tous les filtres.*'
-- tapOn:
-    id: 'FilterRow' # Sélectionne le filtre Duo dans la modale Filtres
-    index: 1
+- tapOn: '.*Voir tous les filtres.*'
+- tapOn: 'Duo'
 - tapOn:
     id: 'Interrupteur limitDuoOfferSearch'
 - tapOn: 'Appliquer le filtre'
 
-- tapOn: 'Dates & heures'
+- tapOn: 'Dates'
 
-- assertVisible: 'Dates & heures'
+- tapOn: ".*${output.targetDateTest}.*"
+
 - tapOn:
-    id: 'Interrupteur date'
-- tapOn: 'Date précise'
-
-- runFlow: # Si fin du mois permet de passer au mois suivant
-    when:
-      visible: '30'
-    commands:
-      - swipe:
-          from:
-            id: 'android:id/numberpicker_input'
-            index: 1
-          start: 47%, 73%
-          end: 47%, 65%
-
-- runFlow:
-    file: ../../subFolder/cloud/commands/SwipeOnDatePicker.yml
-- tapOn: 
-    text: 'Valider la date'
-    retryTapIfNoChange: true
-
-- runFlow: 
-    when:
-      visible: 'Choisis une date'
-    commands:
-        - tapOn: 'Valider la date'
-
-- tapOn: 
     text: 'Appliquer le filtre'
     retryTapIfNoChange: true
 - tapOn: 'Rechercher'

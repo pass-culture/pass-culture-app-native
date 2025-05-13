@@ -4,7 +4,13 @@ appId: ${MAESTRO_APP_ID}
 - tapOn: "C’est parti\_!"
 
 - assertVisible: 'Découvre les offres près de chez toi'
-- tapOn: 'Utiliser ma position'
+- tapOn: 'Continuer'
+
+- runFlow:
+    when:
+      visible: 'Ne pas autoriser'
+    commands:
+      - tapOn: "Lorsque vous utilisez l'appli"
 
 - assertVisible: "Pour commencer, peux-tu nous dire ton âge\_?"
 - tapOn: "J’ai 16 ans ou moins"

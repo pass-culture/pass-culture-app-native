@@ -34,3 +34,9 @@ appId: ${MAESTRO_APP_ID}
       visible: 'Partager l’appli'
     commands:
       - tapOn: 'Non merci'
+
+- runFlow: # Si apparition de la modale native iOS de sauvegarde du mot de passe
+    when:
+      visible: 'Plus tard'
+    commands:
+      - tapOn: 'Plus tard'
