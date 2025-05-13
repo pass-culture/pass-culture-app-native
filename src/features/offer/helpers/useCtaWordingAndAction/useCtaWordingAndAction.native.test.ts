@@ -99,6 +99,38 @@ describe('getCtaWordingAndAction', () => {
         modalToDisplay: OfferModal.BOOKING,
       })
     })
+
+    it('should disable CTA with bottom banner when profile is incomplete and offer is not free', () => {
+      const result = getCtaWordingAndAction({
+        ...defaultParameters,
+        user: { ...nonBeneficiaryUser, eligibility: EligibilityType.free },
+        offer: buildOffer({ stocks: [{ ...baseOffer.stocks[0], price: 2000 }] }),
+        subcategory: buildSubcategory({}),
+        featureFlags: { enableBookingFreeOfferFifteenSixteen: true },
+      })
+
+      expect(result).toEqual({
+        isDisabled: true,
+        wording: 'Réserver l’offre',
+        bottomBannerText:
+          'Tu peux uniquement réserver des offres gratuites entre tes 15 et 16 ans.',
+      })
+    })
+
+    it('should disable CTA with "Crédit insuffisant" wording when profile is complete and offer is not free', () => {
+      const result = getCtaWordingAndAction({
+        ...defaultParameters,
+        user: { ...beneficiaryUser, eligibility: EligibilityType.free },
+        offer: buildOffer({ stocks: [{ ...baseOffer.stocks[0], price: 2000 }] }),
+        subcategory: buildSubcategory({}),
+        featureFlags: { enableBookingFreeOfferFifteenSixteen: true },
+      })
+
+      expect(result).toEqual({
+        isDisabled: true,
+        wording: 'Crédit insuffisant',
+      })
+    })
   })
 
   describe('Non eligible user', () => {
