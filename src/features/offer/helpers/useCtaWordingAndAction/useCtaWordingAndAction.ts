@@ -123,10 +123,10 @@ export const getCtaWordingAndAction = ({
   const enableBookingFreeOfferFifteenSixteen = featureFlags.enableBookingFreeOfferFifteenSixteen
   const isUserFreeStatus = user?.eligibility === EligibilityType.free
   const isFreeOffer = getIsFreeOffer(offer)
+  const isNotFreeOffer = !isFreeOffer
   const isProfileIncomplete = getIsProfileIncomplete(user)
 
-  const isEligibleFreeOffer15To16 =
-    enableBookingFreeOfferFifteenSixteen && isUserFreeStatus && isFreeOffer
+  const isEligibleFreeOffer15To16 = enableBookingFreeOfferFifteenSixteen && isUserFreeStatus
 
   if (!isLoggedIn) {
     return {
@@ -140,13 +140,33 @@ export const getCtaWordingAndAction = ({
 
   if (isEligibleFreeOffer15To16) {
     if (isProfileIncomplete) {
-      setFreeOfferId(offer.id)
+      if (isFreeOffer) {
+        setFreeOfferId(offer.id)
+        return {
+          wording: 'Réserver l’offre',
+          isDisabled: false,
+          navigateTo: {
+            screen: 'SetName',
+            params: { type: ProfileTypes.BOOKING_FREE_OFFER_15_16 },
+          },
+        }
+      }
+
       return {
         wording: 'Réserver l’offre',
-        isDisabled: false,
-        navigateTo: { screen: 'SetName', params: { type: ProfileTypes.BOOKING_FREE_OFFER_15_16 } },
+        isDisabled: true,
+        bottomBannerText:
+          'Tu peux uniquement réserver des offres gratuites entre tes 15 et 16 ans.',
       }
     }
+
+    if (isNotFreeOffer) {
+      return {
+        wording: 'Crédit insuffisant',
+        isDisabled: true,
+      }
+    }
+
     return {
       wording: 'Réserver l’offre',
       modalToDisplay: OfferModal.BOOKING,
@@ -174,6 +194,7 @@ export const getCtaWordingAndAction = ({
     }
   }
 
+  // Actuellement ce qui s'affiche
   if (userStatus.statusType === YoungStatusType.eligible) {
     const common = {
       wording: isMovieScreeningOffer ? undefined : 'Réserver l’offre',
