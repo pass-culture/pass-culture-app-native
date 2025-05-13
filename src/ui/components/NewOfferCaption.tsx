@@ -20,7 +20,7 @@ export const NewOfferCaption: FC<Props> = ({ name, date, price, categoryLabel }:
       <View>
         <OfferText>{name}</OfferText>
         {date ? <DateText>{date}</DateText> : null}
-        <Typo.BodyAccentXs testID="priceIsDuo">{price}</Typo.BodyAccentXs>
+        <Typo.BodyAccentXs>{price}</Typo.BodyAccentXs>
       </View>
     </ViewGap>
   )
