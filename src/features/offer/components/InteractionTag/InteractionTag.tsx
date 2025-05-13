@@ -1,7 +1,8 @@
 import React, { FunctionComponent } from 'react'
 
+import { ColorsTypeLegacy } from 'theme/types'
 import { Tag } from 'ui/components/Tag/Tag'
-import { AccessibleIcon, ColorsTypeLegacy } from 'ui/svg/icons/types'
+import { AccessibleIcon } from 'ui/svg/icons/types'
 import { getSpacing } from 'ui/theme'
 
 export type InteractionTagProps = {

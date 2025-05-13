@@ -1,8 +1,7 @@
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
+import { ColorsTypeLegacy } from 'theme/types'
 
 export type Argument = {
-  color?: ColorsEnum
+  color?: ColorsTypeLegacy
   width?: number
   isFocus?: boolean
   noOffset?: boolean

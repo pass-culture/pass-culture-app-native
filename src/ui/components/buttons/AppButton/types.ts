@@ -7,9 +7,8 @@ import {
   ViewStyle,
 } from 'react-native'
 
-import { AccessibleIcon, ColorsTypeLegacy } from 'ui/svg/icons/types'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
+import { ColorsTypeLegacy } from 'theme/types'
+import { AccessibleIcon } from 'ui/svg/icons/types'
 
 export interface TouchableOpacityButtonProps {
   buttonHeight: 'extraSmall' | 'small' | 'tall'
@@ -20,8 +19,8 @@ export interface TouchableOpacityButtonProps {
   justifyContent?: 'center' | 'flex-start'
   numberOfLines?: number
   center?: boolean
-  focusOutlineColor?: ColorsEnum
-  hoverUnderlineColor?: ColorsEnum | null
+  focusOutlineColor?: ColorsTypeLegacy
+  hoverUnderlineColor?: ColorsTypeLegacy | null
   backgroundColor?: string
 }
 
