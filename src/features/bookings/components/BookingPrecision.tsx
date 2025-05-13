@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
+import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'
@@ -12,42 +12,36 @@ export const BookingPrecisions: React.FC<{
   bookingContactEmail?: string | null
   onEmailPress: () => void
 }> = ({ bookingContactEmail, withdrawalDetails, onEmailPress }) => (
-  <Container>
+  <Container gap={6}>
     {withdrawalDetails ? (
-      <ExplanationContainer>
+      <ViewGap gap={4}>
         <Typo.BodyAccentS>Précisions de l’organisateur</Typo.BodyAccentS>
         <Typo.BodyS testID="withdrawalDetails">{withdrawalDetails}</Typo.BodyS>
-      </ExplanationContainer>
+      </ViewGap>
     ) : null}
     {bookingContactEmail ? (
-      <ViewGap gap={2}>
-        <CaptionNeutralInfo>
-          Pour toute question à propos de ta réservation, contacte l’organisateur.
-        </CaptionNeutralInfo>
-        <SendEmailContainer>
-          <ExternalTouchableLink
-            as={ButtonTertiaryBlack}
-            inline
-            wording={bookingContactEmail}
-            accessibilityLabel="Ouvrir le gestionnaire mail pour contacter l’organisateur"
-            externalNav={{ url: `mailto:${bookingContactEmail}` }}
-            icon={EmailFilled}
-            onBeforeNavigate={onEmailPress}
-          />
-        </SendEmailContainer>
-      </ViewGap>
+      <EmailContainer gap={2}>
+        <CaptionNeutralInfo numberOfLines={2}>{bookingContactEmail}</CaptionNeutralInfo>
+        <ExternalTouchableLink
+          as={ButtonQuaternaryBlack}
+          inline
+          wording="Contacter l’organisateur"
+          accessibilityLabel="Ouvrir le gestionnaire mail pour contacter l’organisateur"
+          externalNav={{ url: `mailto:${bookingContactEmail}` }}
+          icon={EmailFilled}
+          onBeforeNavigate={onEmailPress}
+        />
+      </EmailContainer>
     ) : null}
   </Container>
 )
 
-const SendEmailContainer = styled.View({
+const EmailContainer = styled(ViewGap)({
   alignItems: 'flex-start',
 })
 
-const Container = styled.View({ marginHorizontal: getSpacing(6), gap: getSpacing(6) })
+const Container = styled(ViewGap)({ marginHorizontal: getSpacing(6) })
 
-const ExplanationContainer = styled.View({ gap: getSpacing(4) })
-
-const CaptionNeutralInfo = styled(Typo.BodyAccentXs)(({ theme }) => ({
+const CaptionNeutralInfo = styled(Typo.BodyAccentS)(({ theme }) => ({
   color: theme.colors.greyDark,
 }))
