@@ -2470,11 +2470,13 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
           }
         >
           <View
+            gap={4}
             isModal={true}
             style={
               [
                 {
                   "flexDirection": "row",
+                  "gap": 16,
                   "justifyContent": "center",
                   "paddingHorizontal": 24,
                   "paddingTop": 8,
@@ -2531,7 +2533,6 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                     },
                     {
                       "backgroundColor": "transparent",
-                      "marginRight": 16,
                       "width": "auto",
                     },
                   ],
@@ -2601,16 +2602,6 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                 </Text>
               </View>
             </View>
-            <View
-              numberOfSpaces={4}
-              style={
-                [
-                  {
-                    "height": 16,
-                  },
-                ]
-              }
-            />
             <View
               accessibilityLabel="Rechercher"
               accessibilityState={

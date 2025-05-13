@@ -988,11 +988,13 @@ exports[`<SearchFilter/> should render correctly 1`] = `
     </View>
   </View>
   <View
+    gap={4}
     isModal={false}
     style={
       [
         {
           "flexDirection": "row",
+          "gap": 16,
           "justifyContent": "center",
           "paddingBottom": 24,
           "paddingHorizontal": 24,
@@ -1050,7 +1052,6 @@ exports[`<SearchFilter/> should render correctly 1`] = `
             },
             {
               "backgroundColor": "transparent",
-              "marginRight": 16,
               "width": "auto",
             },
           ],
@@ -1120,16 +1121,6 @@ exports[`<SearchFilter/> should render correctly 1`] = `
         </Text>
       </View>
     </View>
-    <View
-      numberOfSpaces={4}
-      style={
-        [
-          {
-            "height": 16,
-          },
-        ]
-      }
-    />
     <View
       accessibilityLabel="Rechercher"
       accessibilityState={
