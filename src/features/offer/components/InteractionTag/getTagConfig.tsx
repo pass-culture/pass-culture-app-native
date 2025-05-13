@@ -3,6 +3,7 @@ import styled from 'styled-components/native'
 import { InteractionTagProps } from 'features/offer/components/InteractionTag/InteractionTag'
 import { theme } from 'theme'
 import { BookClubCertification } from 'ui/svg/BookClubCertification'
+import { ClockFilled } from 'ui/svg/icons/ClockFilled'
 import { ThumbUpFilled } from 'ui/svg/icons/ThumbUpFilled'
 import { Star } from 'ui/svg/Star'
 
@@ -13,6 +14,7 @@ type TagConfig = {
   chroniclesCount?: number
   headlineCount?: number
   hasSmallLayout?: boolean
+  hasSoonOffer?: boolean
 }
 
 export function getTagConfig({
@@ -22,6 +24,7 @@ export function getTagConfig({
   chroniclesCount = 0,
   headlineCount = 0,
   hasSmallLayout,
+  hasSoonOffer,
 }: TagConfig): InteractionTagProps | null {
   const headlineTagConfig = {
     label: hasSmallLayout ? 'Reco lieux' : 'Reco par les lieux',
@@ -38,12 +41,19 @@ export function getTagConfig({
     backgroundColor: theme.colors.skyBlueLight,
     Icon: CustomBookClub,
   }
+  const soonOfferTagConfig = {
+    label: hasSmallLayout ? 'Bientôt' : 'Bientôt dispo',
+    backgroundColor: theme.designSystem.color.background.warning,
+    Icon: CustomWait,
+  }
 
   const hasLikes = likesCount > 0
   const hasChronicles = chroniclesCount > 0
   const hasHeadline = headlineCount > 0
 
   const hasLikesAboveThreshold = likesCount >= minLikesValue
+
+  if (hasSoonOffer) return soonOfferTagConfig
 
   if (hasLikesAboveThreshold) return likesTagConfig
 
@@ -68,5 +78,10 @@ const CustomBookClub = styled(BookClubCertification).attrs(({ theme }) => ({
 }))``
 
 const CustomStar = styled(Star).attrs(({ theme }) => ({
+  size: theme.icons.sizes.extraSmall,
+}))``
+
+const CustomWait = styled(ClockFilled).attrs(({ theme }) => ({
+  color: theme.designSystem.color.icon.warning,
   size: theme.icons.sizes.extraSmall,
 }))``

@@ -114,4 +114,18 @@ describe('getTagConfig', () => {
       Icon: expect.anything(),
     })
   })
+
+  it('should return the "Bientôt dispo" tag if hasSoonOffer is true', () => {
+    expect(
+      getTagConfig({
+        theme,
+        minLikesValue: 50,
+        hasSoonOffer: true,
+      })
+    ).toEqual({
+      label: 'Bientôt dispo',
+      backgroundColor: theme.designSystem.color.background.warning,
+      Icon: expect.anything(),
+    })
+  })
 })
