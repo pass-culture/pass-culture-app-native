@@ -1,8 +1,9 @@
 export type PlaylistTrackingInfo = {
-  playlistId: string
+  moduleId: string
   callId: string
   index: number
-  offerIds: string[]
+  items: { key: string; index: number | null }[]
+  extra?: Record<string, string | undefined>
 }
 
 export type PageTrackingInfo = {

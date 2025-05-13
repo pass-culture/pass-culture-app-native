@@ -1,4 +1,5 @@
-import React, { memo } from 'react'
+import React, { memo, useCallback } from 'react'
+import { ViewToken } from 'react-native'
 
 import { BusinessModule } from 'features/home/components/modules/business/BusinessModule'
 import { CategoryListModule } from 'features/home/components/modules/categories/CategoryListModule'
@@ -43,12 +44,21 @@ const UnmemoizedModule = ({
   onModuleViewableItemsChanged?: ({
     moduleId,
     index,
-    changedItemIds,
+    changedItems,
     homeEntryId,
   }: Pick<OffersModuleProps, 'homeEntryId' | 'index' | 'moduleId'> & {
-    changedItemIds: string[]
+    changedItems: Pick<ViewToken, 'key' | 'index'>[]
   }) => void
 }) => {
+  const handleOnViewableItemsChanged = useCallback(
+    (changedItems: Pick<ViewToken, 'key' | 'index'>[]) => {
+      onModuleViewableItemsChanged?.({ index, moduleId: item.id, changedItems, homeEntryId })
+    },
+    // Changing onViewableItemsChanged on the fly is not supported
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    []
+  )
+
   /* eslint-disable @typescript-eslint/no-explicit-any */
   const ComponentModule: any = modules[item.type]
   if (!ComponentModule) return null
@@ -61,9 +71,7 @@ const UnmemoizedModule = ({
       moduleId={item.id}
       data={data}
       shouldShowModal={item.id === videoModuleId}
-      onViewableItemsChanged={(changedItemIds: string[]) => {
-        onModuleViewableItemsChanged?.({ index, moduleId: item.id, changedItemIds, homeEntryId })
-      }}
+      onViewableItemsChanged={handleOnViewableItemsChanged}
     />
   )
 }
