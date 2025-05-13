@@ -1,6 +1,6 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import { addYears, format } from 'date-fns'
-import React, { FunctionComponent, useCallback, useEffect, useMemo } from 'react'
+import React, { FunctionComponent, useCallback, useMemo } from 'react'
 import { SetValueConfig, useForm } from 'react-hook-form'
 import { CalendarList, DateData, LocaleConfig } from 'react-native-calendars'
 import { useTheme } from 'styled-components/native'
@@ -94,10 +94,6 @@ export const CalendarModal: FunctionComponent<CalendarModalProps> = ({
     ]
   )
 
-  useEffect(() => {
-    reset(defaultValues)
-  }, [defaultValues, reset])
-
   const closeModal = useCallback(() => {
     reset(defaultValues)
     hideModal()
@@ -109,11 +105,23 @@ export const CalendarModal: FunctionComponent<CalendarModalProps> = ({
   }, [closeModal, onClose])
 
   const onResetPress = useCallback(() => {
-    reset({
-      selectedStartDate: undefined,
-      selectedEndDate: undefined,
+    reset(
+      {
+        selectedStartDate: undefined,
+        selectedEndDate: undefined,
+      },
+      { keepDefaultValues: true }
+    )
+
+    dispatch({
+      type: 'SET_STATE',
+      payload: {
+        ...searchState,
+        beginningDatetime: undefined,
+        endingDatetime: undefined,
+      },
     })
-  }, [reset])
+  }, [dispatch, reset, searchState])
 
   const search = useCallback(
     ({ selectedStartDate, selectedEndDate }: CalendarModalFormData) => {
@@ -159,6 +167,7 @@ export const CalendarModal: FunctionComponent<CalendarModalProps> = ({
 
   const disabled = !isValid || isSubmitting
   const shouldDisplayBackButton = filterBehaviour === FilterBehaviour.APPLY_WITHOUT_SEARCHING
+  const hasDefaultValues = !selectedStartDate && !selectedEndDate
 
   return (
     <AppModal
@@ -186,6 +195,7 @@ export const CalendarModal: FunctionComponent<CalendarModalProps> = ({
           onResetPress={onResetPress}
           isSearchDisabled={disabled}
           filterBehaviour={filterBehaviour}
+          isResetDisabled={hasDefaultValues}
         />
       }
       scrollEnabled={false}>
