@@ -1,3 +1,4 @@
+import { waitFor } from '@testing-library/react'
 import React from 'react'
 
 import { BannerName, BannerResponse, SubscriptionStepperResponseV2 } from 'api/gen'
@@ -7,6 +8,7 @@ import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { ILocationContext, useLocation } from 'libs/location'
 import { LocationMode } from 'libs/location/types'
+import { eventMonitoring } from 'libs/monitoring/services'
 import { useGetDepositAmountsByAge } from 'shared/user/useGetDepositAmountsByAge'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -135,6 +137,21 @@ describe('<HomeBanner/>', () => {
       await screen.findByText('Débloque tes 600\u00a0€')
 
       expect(screen.getByTestId('BirthdayCake')).toBeOnTheScreen()
+    })
+
+    it('should notify errors when query fails', async () => {
+      mockSubscriptionStepper()
+      mockServer.getApi<BannerResponse>('/v1/banner', {
+        responseOptions: {
+          statusCode: 'network-error',
+        },
+      })
+
+      renderHomeBanner({})
+
+      await waitFor(() => {
+        expect(eventMonitoring.captureException).toHaveBeenCalled()
+      })
     })
   })
 })
