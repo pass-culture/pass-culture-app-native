@@ -7,6 +7,7 @@ import { OfferContentBase } from 'features/offer/components/OfferContent/OfferCo
 import { OfferCTAProvider } from 'features/offer/components/OfferContent/OfferCTAProvider'
 import { OfferContentProps } from 'features/offer/types'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { useLayout } from 'ui/hooks/useLayout'
 import { getSpacing } from 'ui/theme'
 
 const CONTENT_CONTAINER_STYLE = { paddingBottom: getSpacing(22) }
@@ -26,6 +27,8 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
     navigate('OfferPreview', { id: offer.id, defaultIndex })
   }
 
+  const { onLayout, height } = useLayout()
+
   return (
     <OfferCTAProvider>
       <OfferContentBase
@@ -39,9 +42,15 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
         subcategory={subcategory}
         defaultReaction={defaultReaction}
         onReactionButtonPress={onReactionButtonPress}
-      />
+        onLayout={onLayout}>
+        {height ? <ComingSoonFooterOffset height={height} /> : null}
+      </OfferContentBase>
     </OfferCTAProvider>
   )
 }
 
 const BodyWrapper = styled(ViewGap).attrs(() => ({ gap: 8, testID: 'offer-body-mobile' }))``
+
+const ComingSoonFooterOffset = styled.View<{ height: number }>(({ height }) => ({
+  height: height + getSpacing(8) - CONTENT_CONTAINER_STYLE.paddingBottom,
+}))

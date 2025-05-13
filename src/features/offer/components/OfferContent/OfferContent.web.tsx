@@ -9,6 +9,7 @@ import { ImageWithCredit } from 'shared/types'
 import { useGetHeaderHeight } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
 import { ImagesCarouselModal } from 'ui/components/ImagesCarouselModal/ImagesCarouselModal'
 import { useModal } from 'ui/components/modals/useModal'
+import { useLayout } from 'ui/hooks/useLayout'
 import { getSpacing } from 'ui/theme'
 
 export const OfferContent: FunctionComponent<OfferContentProps> = ({
@@ -46,6 +47,8 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
     [headerHeight]
   )
 
+  const { onLayout, height } = useLayout()
+
   return (
     <OfferCTAProvider>
       <React.Fragment>
@@ -65,7 +68,9 @@ export const OfferContent: FunctionComponent<OfferContentProps> = ({
           defaultReaction={defaultReaction}
           onReactionButtonPress={onReactionButtonPress}
           headlineOffersCount={headlineOffersCount}
-        />
+          onLayout={onLayout}>
+          {height ? <ComingSoonFooterOffset height={height} /> : null}
+        </StyledOfferContentBase>
       </React.Fragment>
     </OfferCTAProvider>
   )
@@ -93,3 +98,7 @@ const StyledWrapper = styled.View<{ headerHeight: number }>(
     }
   }
 )
+
+const ComingSoonFooterOffset = styled.View<{ height: number }>(({ height }) => ({
+  height,
+}))
