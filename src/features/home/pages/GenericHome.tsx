@@ -8,6 +8,7 @@ import {
   ScrollView,
   useWindowDimensions,
   View,
+  ViewToken,
 } from 'react-native'
 import {
   IOFlatList as IntersectionObserverFlatlist,
@@ -35,15 +36,13 @@ import {
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { isCloseToBottom } from 'libs/analytics'
 import { analytics } from 'libs/analytics/provider'
+import { useAppStateChange } from 'libs/appState'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { OfflinePage } from 'libs/network/OfflinePage'
 import { BatchEvent, BatchEventAttributes, BatchProfile } from 'libs/react-native-batch'
 import { AccessibilityFooter } from 'shared/AccessibilityFooter/AccessibilityFooter'
-import {
-  logPlaylistOfferView,
-  setPlaylistOfferViewTrackingFn,
-} from 'shared/analytics/logPlaylistOfferView'
+import { logViewOffer, setViewOfferTrackingFn } from 'shared/analytics/logViewOffer'
 import {
   resetPageTrackingInfo,
   setPageTrackingInfo,
@@ -75,16 +74,17 @@ const keyExtractor = (item: HomepageModule) => item.id
 const handleViewableItemsChanged = ({
   index,
   moduleId,
-  changedItemIds,
+  changedItems,
   homeEntryId,
 }: Pick<OffersModuleProps, 'homeEntryId' | 'index' | 'moduleId'> & {
-  changedItemIds: string[]
+  changedItems: Pick<ViewToken, 'key' | 'index'>[]
 }) => {
   setPlaylistTrackingInfo({
     index,
-    playlistId: moduleId,
-    offerIds: changedItemIds,
-    callId: homeEntryId ?? '',
+    moduleId,
+    items: changedItems,
+    extra: { homeEntryId },
+    callId: '',
   })
 }
 
@@ -263,7 +263,7 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = ({
   }, [modules.length, isLoading, maxIndex])
 
   useEffect(() => {
-    setPlaylistOfferViewTrackingFn(analytics.logPlaylistOfferView)
+    setViewOfferTrackingFn(analytics.logViewOffer)
   }, [])
 
   useFocusEffect(
@@ -271,19 +271,21 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = ({
       if (!homeId || !name) {
         return
       }
-
       setPageTrackingInfo({
         pageId: homeId,
         pageLocation: name,
-        playlists: [],
       })
     }, [homeId, name])
   )
 
+  // log view offer for current page if app is closed
+  useAppStateChange(undefined, () => logViewOffer(useOfferPlaylistTrackingStore.getState()))
+
+  // log view offer when changing page
   useFocusEffect(
     useCallback(() => {
       return () => {
-        logPlaylistOfferView(useOfferPlaylistTrackingStore.getState())
+        logViewOffer(useOfferPlaylistTrackingStore.getState())
         resetPageTrackingInfo()
       }
     }, [])
