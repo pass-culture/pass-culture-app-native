@@ -47,6 +47,8 @@ jobs:
           bucket: ${{ secrets.CACHE_BUCKET_NAME }}
           workload-identity-provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
           service-account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+      - name: Yarn install
+        run: yarn install
       - uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
