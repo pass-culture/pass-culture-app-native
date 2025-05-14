@@ -63,6 +63,14 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
   }),
 }))
 
+let mockComingSoonFooterHeight = 0
+jest.mock('ui/hooks/useLayout', () => ({
+  useLayout: () => ({
+    height: mockComingSoonFooterHeight,
+    onLayout: jest.fn(),
+  }),
+}))
+
 const Kourou: SuggestedPlace = {
   label: 'Kourou',
   info: 'Guyane',
@@ -805,6 +813,28 @@ describe('<OfferContent />', () => {
       renderOfferContent({})
 
       expect(await screen.findByText('Passe le bon plan\u00a0!')).toBeOnTheScreen()
+    })
+  })
+
+  describe('coming soon footer', () => {
+    it('should render a footer offset when the coming soon footer has a height', async () => {
+      mockComingSoonFooterHeight = 100
+
+      renderOfferContent({})
+
+      await screen.findByTestId('offerHeaderName')
+
+      expect(await screen.findByTestId('coming-soon-footer-offset')).toBeOnTheScreen()
+    })
+
+    it('should not render a footer offset when the coming soon footer does not have a height', async () => {
+      mockComingSoonFooterHeight = 0
+
+      renderOfferContent({})
+
+      await screen.findByTestId('offerHeaderName')
+
+      expect(screen.queryByTestId('coming-soon-footer-offset')).not.toBeOnTheScreen()
     })
   })
 })

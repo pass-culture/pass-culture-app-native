@@ -60,29 +60,6 @@ jest.mock('features/auth/context/AuthContext')
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
-type RenderOfferContentType = Partial<ComponentProps<typeof OfferContent>> & {
-  isDesktopViewport?: boolean
-}
-
-function renderOfferContent({
-  offer = offerResponseSnap,
-  subcategory = mockSubcategory,
-  isDesktopViewport = false,
-}: RenderOfferContentType) {
-  return render(
-    reactQueryProviderHOC(
-      <OfferContent
-        offer={offer}
-        searchGroupList={PLACEHOLDER_DATA.searchGroups}
-        subcategory={subcategory}
-      />
-    ),
-    {
-      theme: { isDesktopViewport },
-    }
-  )
-}
-
 describe('<OfferContent />', () => {
   const user = userEvent.setup()
 
@@ -182,3 +159,26 @@ describe('<OfferContent />', () => {
     unmount()
   })
 })
+
+type RenderOfferContentType = Partial<ComponentProps<typeof OfferContent>> & {
+  isDesktopViewport?: boolean
+}
+
+const renderOfferContent = ({
+  offer = offerResponseSnap,
+  subcategory = mockSubcategory,
+  isDesktopViewport = false,
+}: RenderOfferContentType) => {
+  return render(
+    reactQueryProviderHOC(
+      <OfferContent
+        offer={offer}
+        searchGroupList={PLACEHOLDER_DATA.searchGroups}
+        subcategory={subcategory}
+      />
+    ),
+    {
+      theme: { isDesktopViewport },
+    }
+  )
+}
