@@ -120,7 +120,7 @@ export function CreditHeader({
               </Typo.Body>
             </React.Fragment>
           ) : null}
-          {isCreditEmpty ? <EmptyCredit age={age} /> : null}
+          {isCreditEmpty ? <EmptyCredit age={age} eligibility={eligibility} /> : null}
           <Spacer.Column numberOfSpaces={1} />
           <CreditExplanation isDepositExpired={isDepositExpired} age={age} />
         </React.Fragment>
