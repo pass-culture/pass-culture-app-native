@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { DomainsCredit } from 'api/gen/api'
+import { DomainsCredit, EligibilityType } from 'api/gen/api'
 import { BeneficiaryCeilings } from 'features/profile/components/BeneficiaryCeilings/BeneficiaryCeilings'
 import { CreditExplanation } from 'features/profile/components/CreditExplanation/CreditExplanation'
 import { CreditInfo } from 'features/profile/components/CreditInfo/CreditInfo'
@@ -25,6 +25,7 @@ export type CreditHeaderProps = {
   age?: number
   domainsCredit?: DomainsCredit | null
   depositExpirationDate?: string
+  eligibility?: EligibilityType | null
 }
 
 export function CreditHeader({
@@ -33,6 +34,7 @@ export function CreditHeader({
   age,
   domainsCredit,
   depositExpirationDate,
+  eligibility,
 }: CreditHeaderProps) {
   const { homeEntryIdFreeOffers } = useRemoteConfigQuery()
   const depositAmount = useDepositAmountsByAge()
@@ -64,6 +66,7 @@ export function CreditHeader({
     isCreditEmpty,
     isDepositExpired,
     depositExpirationDate,
+    eligibility,
   })
 
   const isExpiredOrCreditEmptyWithNoUpcomingCredit =

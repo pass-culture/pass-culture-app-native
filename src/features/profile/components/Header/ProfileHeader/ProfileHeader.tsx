@@ -51,6 +51,7 @@ export function ProfileHeader(props: ProfileHeaderProps) {
           age={getAge(user.birthDate)}
           domainsCredit={user.domainsCredit}
           depositExpirationDate={user.depositExpirationDate ?? undefined}
+          eligibility={user.eligibility}
         />
         <Spacer.Column numberOfSpaces={4} />
         {shouldShowAchievementsBanner ? (

@@ -1,13 +1,16 @@
+import { EligibilityType } from 'api/gen'
 import { formatToSlashedFrenchDate, setDateOneDayEarlier } from 'libs/dates'
 
 export const getHeaderSubtitleProps = ({
   isCreditEmpty,
   isDepositExpired,
   depositExpirationDate,
+  eligibility,
 }: {
   isCreditEmpty: boolean
   isDepositExpired: boolean
   depositExpirationDate?: string
+  eligibility?: EligibilityType | null
 }) => {
   const displayedExpirationDate = depositExpirationDate
     ? formatToSlashedFrenchDate(setDateOneDayEarlier(depositExpirationDate))
@@ -16,7 +19,9 @@ export const getHeaderSubtitleProps = ({
   if (isDepositExpired)
     return { startSubtitle: 'Ton crédit a expiré le', boldEndSubtitle: displayedExpirationDate }
 
-  if (isCreditEmpty) return { startSubtitle: 'Tu as dépensé tout ton crédit' }
+  const isUserFreeStatus = eligibility === EligibilityType.free
+  const creditEmptySubtitle = isUserFreeStatus ? '' : 'Tu as dépensé tout ton crédit'
+  if (isCreditEmpty) return { startSubtitle: creditEmptySubtitle }
 
   return {
     startSubtitle: 'Profite de ton crédit jusqu’au',
