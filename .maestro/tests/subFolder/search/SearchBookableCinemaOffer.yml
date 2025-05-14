@@ -27,7 +27,7 @@ onFlowStart:
 - tapOn: 'Dates'
 
 - assertVisible: 'Dates'
-- tapOn: ".*${output.targetDateTest}.*"
+- tapOn: '${output.targetDateTest}'
 
 - tapOn: 'Appliquer le filtre'
 - doubleTapOn: 'Rechercher'
