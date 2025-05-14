@@ -1,4 +1,5 @@
 import { useNavigationState } from '@react-navigation/native'
+import { isEqual } from 'lodash'
 import React, { useCallback, useMemo } from 'react'
 import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
@@ -56,32 +57,42 @@ export const SearchFilter: React.FC = () => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const oldSearchState = useMemo(() => searchState, [])
 
-  const onGoBack = useCallback(() => {
-    navigateToSearch(oldSearchState, oldAccessibilityFilter)
-  }, [navigateToSearch, oldSearchState, oldAccessibilityFilter])
+  const getLocationFilter = useCallback((): LocationFilter => {
+    switch (selectedLocationMode) {
+      case LocationMode.AROUND_PLACE:
+        return {
+          locationType: selectedLocationMode,
+          place: place as SuggestedPlace,
+          aroundRadius: aroundPlaceRadius,
+        }
+      case LocationMode.AROUND_ME:
+        return {
+          locationType: selectedLocationMode,
+          aroundRadius: aroundMeRadius,
+        }
+      case LocationMode.EVERYWHERE:
+        return { locationType: selectedLocationMode }
+    }
+  }, [aroundMeRadius, aroundPlaceRadius, place, selectedLocationMode])
+
+  const hasDefaultValues = isEqual(searchState, {
+    ...initialSearchState,
+    locationFilter: getLocationFilter(),
+  })
 
   const onSearchPress = useCallback(() => {
     navigateToSearch({ ...searchState }, disabilities)
   }, [navigateToSearch, searchState, disabilities])
 
-  const onResetPress = useCallback(() => {
-    const getLocationFilter = (): LocationFilter => {
-      switch (selectedLocationMode) {
-        case LocationMode.AROUND_PLACE:
-          return {
-            locationType: selectedLocationMode,
-            place: place as SuggestedPlace,
-            aroundRadius: aroundPlaceRadius,
-          }
-        case LocationMode.AROUND_ME:
-          return {
-            locationType: selectedLocationMode,
-            aroundRadius: aroundMeRadius,
-          }
-        case LocationMode.EVERYWHERE:
-          return { locationType: selectedLocationMode }
-      }
+  const onGoBack = useCallback(() => {
+    if (hasDefaultValues) {
+      onSearchPress()
+      return
     }
+    navigateToSearch(oldSearchState, oldAccessibilityFilter)
+  }, [hasDefaultValues, onSearchPress, navigateToSearch, oldSearchState, oldAccessibilityFilter])
+
+  const onResetPress = useCallback(() => {
     dispatch({
       type: 'SET_STATE',
       payload: {
@@ -91,15 +102,7 @@ export const SearchFilter: React.FC = () => {
     })
     setDisabilities(defaultDisabilitiesProperties)
     logReinitializeFilters()
-  }, [
-    dispatch,
-    logReinitializeFilters,
-    selectedLocationMode,
-    place,
-    aroundPlaceRadius,
-    aroundMeRadius,
-    setDisabilities,
-  ])
+  }, [dispatch, getLocationFilter, setDisabilities, logReinitializeFilters])
 
   const hasDuoOfferToggle = useMemo(() => {
     const isBeneficiary = !!user?.isBeneficiary
@@ -152,6 +155,7 @@ export const SearchFilter: React.FC = () => {
         onSearchPress={onSearchPress}
         isModal={false}
         filterBehaviour={FilterBehaviour.SEARCH}
+        isResetDisabled={hasDefaultValues}
       />
     </Page>
   )
