@@ -4,7 +4,7 @@ import {
   QueryClientProvider,
   onlineManager,
   focusManager as reactQueryFocusManager,
-} from 'react-query'
+} from '@tanstack/react-query'
 
 import { queryClient } from 'libs/react-query/queryClient'
 import { usePrefetchQueries } from 'libs/react-query/usePrefetchQueries'

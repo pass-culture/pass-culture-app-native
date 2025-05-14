@@ -1,5 +1,5 @@
 import React from 'react'
-import { useQueryClient } from 'react-query'
+import { useQueryClient } from '@tanstack/react-query'
 
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { pushFromRef } from 'features/navigation/navigationRef'

@@ -1,5 +1,5 @@
 import React, { ComponentProps } from 'react'
-import * as ReactQueryAPI from 'react-query'
+import * as ReactQueryAPI from '@tanstack/react-query'
 
 import { OfferResponseV2, SubcategoriesResponseModelv2 } from 'api/gen'
 import { mockSubcategory } from 'features/offer/fixtures/mockSubcategory'

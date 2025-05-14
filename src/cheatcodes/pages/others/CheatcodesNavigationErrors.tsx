@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/native'
+import { useQuery } from '@tanstack/react-query'
 import React, { createElement, FunctionComponent, useState } from 'react'
-import { useQuery } from 'react-query'
 import styled from 'styled-components/native'
 
 import { CheatcodesSubscreensButtonList } from 'cheatcodes/components/CheatcodesSubscreenButtonList'

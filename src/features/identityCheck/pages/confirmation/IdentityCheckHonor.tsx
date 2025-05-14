@@ -1,7 +1,7 @@
 import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import { ScrollView } from 'react-native'
-import { useQueryClient } from 'react-query'
+import { useQueryClient } from '@tanstack/react-query'
 import styled from 'styled-components/native'
 
 import { extractApiErrorMessage } from 'api/apiHelpers'

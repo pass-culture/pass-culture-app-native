@@ -1,4 +1,4 @@
-import { onlineManager } from 'react-query'
+import { onlineManager } from '@tanstack/react-query'
 
 import { SearchGroupNameEnumv2, SimilarOffersResponse } from 'api/gen'
 import { getCategories, useSimilarOffersQuery } from 'features/offer/queries/useSimilarOffersQuery'

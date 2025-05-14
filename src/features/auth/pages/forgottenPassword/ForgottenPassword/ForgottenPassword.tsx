@@ -1,7 +1,7 @@
 import { useNavigation } from '@react-navigation/native'
 import React, { useCallback, useMemo } from 'react'
 import { useForm } from 'react-hook-form'
-import { UseQueryResult } from 'react-query'
+import { UseQueryResult } from '@tanstack/react-query'
 import styled from 'styled-components/native'
 
 import { api } from 'api/api'
