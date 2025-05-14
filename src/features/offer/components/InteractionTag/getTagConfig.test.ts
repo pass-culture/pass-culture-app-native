@@ -115,12 +115,12 @@ describe('getTagConfig', () => {
     })
   })
 
-  it('should return the "Bientôt dispo" tag if hasSoonOffer is true', () => {
+  it('should return the "Bientôt dispo" tag if isComingSoonOffer is true', () => {
     expect(
       getTagConfig({
         theme,
         minLikesValue: 50,
-        hasSoonOffer: true,
+        isComingSoonOffer: true,
       })
     ).toEqual({
       label: 'Bientôt dispo',

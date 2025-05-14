@@ -14,7 +14,7 @@ type TagConfig = {
   chroniclesCount?: number
   headlineCount?: number
   hasSmallLayout?: boolean
-  hasSoonOffer?: boolean
+  isComingSoonOffer?: boolean
 }
 
 export function getTagConfig({
@@ -24,7 +24,7 @@ export function getTagConfig({
   chroniclesCount = 0,
   headlineCount = 0,
   hasSmallLayout,
-  hasSoonOffer,
+  isComingSoonOffer,
 }: TagConfig): InteractionTagProps | null {
   const headlineTagConfig = {
     label: hasSmallLayout ? 'Reco lieux' : 'Reco par les lieux',
@@ -53,7 +53,7 @@ export function getTagConfig({
 
   const hasLikesAboveThreshold = likesCount >= minLikesValue
 
-  if (hasSoonOffer) return soonOfferTagConfig
+  if (isComingSoonOffer) return soonOfferTagConfig
 
   if (hasLikesAboveThreshold) return likesTagConfig
 

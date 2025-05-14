@@ -67,6 +67,7 @@ export interface AlgoliaOffer<T = HitOffer> {
     city?: string
   }
   artists?: Artist[]
+  _tags?: string[]
 }
 
 interface AlgoliaFacetsAnalyticsKey {
