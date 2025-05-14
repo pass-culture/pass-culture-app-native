@@ -3,13 +3,12 @@ import styled from 'styled-components/native'
 
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
+import { ColorsTypeLegacy } from 'theme/types'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { HiddenAccessibleText } from 'ui/components/HiddenAccessibleText'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { ArrowPrevious as DefaultArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
-import { ColorsTypeLegacy } from 'ui/svg/icons/types'
 import { getSpacing } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
 
 interface HeaderIconProps {
   onGoBack?: () => void

@@ -196,6 +196,11 @@ module.exports = {
             name: 'react-native-maps',
             message: 'react-native-maps is not supported on the web. Use libs/maps/maps instead',
           },
+          {
+            name: 'ui/theme',
+            importNames: ['theme'],
+            message: 'Use StyledComponent or import theme via the useTheme() hook instead of directly importing it',
+          }          
         ],
         patterns: [
           {

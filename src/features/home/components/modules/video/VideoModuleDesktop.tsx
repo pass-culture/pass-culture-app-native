@@ -2,7 +2,7 @@ import colorAlpha from 'color-alpha'
 import React, { FunctionComponent } from 'react'
 // eslint-disable-next-line no-restricted-imports
 import { ImageBackground, View } from 'react-native'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { AccessibleTitle } from 'features/home/components/AccessibleTitle'
 import { VideoMonoOfferTile } from 'features/home/components/modules/video/VideoMonoOfferTile'
@@ -25,6 +25,7 @@ const COLOR_CATEGORY_BACKGROUND_HEIGHT = getSpacing(55.5)
 const COLOR_CATEGORY_BACKGROUND_WIDTH = getSpacing(160)
 
 export const VideoModuleDesktop: FunctionComponent<VideoModuleProps> = (props) => {
+  const theme = useTheme()
   const showSeeMore = props.offers.length > 3
   const hasOnlyTwoOffers = props.offers.length === 2
   const nbOfSeparators = hasOnlyTwoOffers ? 1 : 2
@@ -48,6 +49,9 @@ export const VideoModuleDesktop: FunctionComponent<VideoModuleProps> = (props) =
     ) : null
   }
 
+  const fillFromDesignSystem =
+    theme.designSystem.color.background[videoModuleColorsMapping[props.color] ?? 'default']
+
   return (
     <React.Fragment>
       <StyledTitleContainer>
@@ -57,7 +61,7 @@ export const VideoModuleDesktop: FunctionComponent<VideoModuleProps> = (props) =
       <View testID="desktop-video-module">
         <ColorCategoryBackgroundWrapper>
           <ColorCategoryBackground
-            backgroundColor={videoModuleColorsMapping[props.color]}
+            backgroundColor={fillFromDesignSystem || videoModuleColorsMapping[props.color]}
             isMultiOffer={props.isMultiOffer}
           />
         </ColorCategoryBackgroundWrapper>

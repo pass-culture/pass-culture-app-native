@@ -9,8 +9,8 @@ import { SubcategoryButtonItem } from 'ui/components/buttons/SubcategoryButton/S
 import { SubcategoryButtonList } from 'ui/components/buttons/SubcategoryButton/SubcategoryButtonList'
 
 const createSubcategoryButtonItem = (label: string, nativeCategory: NativeCategoryEnum) => ({
-  backgroundColor: theme.colors.deepPink,
-  borderColor: theme.colors.deepPinkDark,
+  backgroundColor: theme.designSystem.color.background.decorative01,
+  borderColor: theme.designSystem.color.border.decorative01,
   label,
   nativeCategory,
   searchParams: initialSearchState,

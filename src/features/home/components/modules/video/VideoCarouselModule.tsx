@@ -217,14 +217,18 @@ const Container = styled.View({
 
 const ColoredAttachedTileContainer = styled.View<{
   color: Color
-}>(({ color }) => ({
-  backgroundColor: colorMapping[color].fill,
+}>(({ theme, color }) => ({
+  backgroundColor:
+    theme.designSystem.color.background[colorMapping[color].fill ?? 'default'] ||
+    colorMapping[color].fill,
 }))
 
 const StyledInternalTouchableLink = styled(InternalTouchableLink)<{
   color: Color
 }>(({ theme, color }) => ({
-  backgroundColor: colorMapping[color].fill,
+  backgroundColor:
+    theme.designSystem.color.background[colorMapping[color].fill ?? 'default'] ||
+    colorMapping[color].fill,
   borderRadius: getSpacing(3),
   marginHorizontal: getSpacing(1),
   ...getShadow({

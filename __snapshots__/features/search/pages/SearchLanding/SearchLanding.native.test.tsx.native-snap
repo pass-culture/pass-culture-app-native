@@ -132,7 +132,7 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                 style={
                   [
                     {
-                      "color": "#696A6F",
+                      "color": "#696a6f",
                       "fontFamily": "Montserrat-SemiBold",
                       "fontSize": 12,
                       "lineHeight": 19.2,
@@ -499,8 +499,8 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                     },
                     {},
                     {
-                      "backgroundColor": "#FFF5D8",
-                      "borderColor": "#FBDBAC",
+                      "backgroundColor": "#94f0d6",
+                      "borderColor": "#0e8474",
                       "borderRadius": 8,
                       "borderWidth": 1.6,
                       "display": "flex",
@@ -593,8 +593,8 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                     },
                     {},
                     {
-                      "backgroundColor": "#D6F8FF",
-                      "borderColor": "#20C5E9",
+                      "backgroundColor": "#ffeae2",
+                      "borderColor": "#d63d00",
                       "borderRadius": 8,
                       "borderWidth": 1.6,
                       "display": "flex",
@@ -687,8 +687,8 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                     },
                     {},
                     {
-                      "backgroundColor": "#EAE3FF",
-                      "borderColor": "#AD87FF",
+                      "backgroundColor": "#9be3f3",
+                      "borderColor": "#20c5e9",
                       "borderRadius": 8,
                       "borderWidth": 1.6,
                       "display": "flex",
@@ -781,8 +781,8 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                     },
                     {},
                     {
-                      "backgroundColor": "#FFDECC",
-                      "borderColor": "#F8733D",
+                      "backgroundColor": "#ffa5c0",
+                      "borderColor": "#eb0055",
                       "borderRadius": 8,
                       "borderWidth": 1.6,
                       "display": "flex",
@@ -875,8 +875,8 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                     },
                     {},
                     {
-                      "backgroundColor": "#DBFFEA",
-                      "borderColor": "#0E8474",
+                      "backgroundColor": "#c1a3ff",
+                      "borderColor": "#320096",
                       "borderRadius": 8,
                       "borderWidth": 1.6,
                       "display": "flex",
@@ -969,8 +969,8 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                     },
                     {},
                     {
-                      "backgroundColor": "#FFD7E9",
-                      "borderColor": "#EC3478",
+                      "backgroundColor": "#94f0d6",
+                      "borderColor": "#0e8474",
                       "borderRadius": 8,
                       "borderWidth": 1.6,
                       "display": "flex",
@@ -1063,8 +1063,8 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                     },
                     {},
                     {
-                      "backgroundColor": "#FFF5D8",
-                      "borderColor": "#FBDBAC",
+                      "backgroundColor": "#ffeae2",
+                      "borderColor": "#d63d00",
                       "borderRadius": 8,
                       "borderWidth": 1.6,
                       "display": "flex",
@@ -1157,8 +1157,8 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                     },
                     {},
                     {
-                      "backgroundColor": "#D6F8FF",
-                      "borderColor": "#20C5E9",
+                      "backgroundColor": "#9be3f3",
+                      "borderColor": "#20c5e9",
                       "borderRadius": 8,
                       "borderWidth": 1.6,
                       "display": "flex",
@@ -1251,8 +1251,8 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                     },
                     {},
                     {
-                      "backgroundColor": "#EAE3FF",
-                      "borderColor": "#AD87FF",
+                      "backgroundColor": "#ffa5c0",
+                      "borderColor": "#eb0055",
                       "borderRadius": 8,
                       "borderWidth": 1.6,
                       "display": "flex",
@@ -1345,8 +1345,8 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                     },
                     {},
                     {
-                      "backgroundColor": "#FFDECC",
-                      "borderColor": "#F8733D",
+                      "backgroundColor": "#c1a3ff",
+                      "borderColor": "#320096",
                       "borderRadius": 8,
                       "borderWidth": 1.6,
                       "display": "flex",
@@ -1439,8 +1439,8 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                     },
                     {},
                     {
-                      "backgroundColor": "#DBFFEA",
-                      "borderColor": "#0E8474",
+                      "backgroundColor": "#94f0d6",
+                      "borderColor": "#0e8474",
                       "borderRadius": 8,
                       "borderWidth": 1.6,
                       "display": "flex",
@@ -1533,8 +1533,8 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                     },
                     {},
                     {
-                      "backgroundColor": "#FFD7E9",
-                      "borderColor": "#EC3478",
+                      "backgroundColor": "#ffeae2",
+                      "borderColor": "#d63d00",
                       "borderRadius": 8,
                       "borderWidth": 1.6,
                       "display": "flex",
@@ -1627,8 +1627,8 @@ exports[`<SearchLanding /> should render SearchLanding 1`] = `
                     },
                     {},
                     {
-                      "backgroundColor": "#FFF5D8",
-                      "borderColor": "#FBDBAC",
+                      "backgroundColor": "#9be3f3",
+                      "borderColor": "#20c5e9",
                       "borderRadius": 8,
                       "borderWidth": 1.6,
                       "display": "flex",
