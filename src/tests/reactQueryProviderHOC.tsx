@@ -12,6 +12,7 @@ export const reactQueryProviderHOC = (
     defaultOptions: {
       queries: {
         retry: false, // react-query documentation recommends to disable retry when testing https://tanstack.com/query/v3/docs/framework/react/guides/testing#turn-off-retries
+        cacheTime: Infinity, // react-query documentation recommends to disable cache when testing https://tanstack.com/query/v3/docs/framework/react/guides/testing#set-cachetime-to-infinity-with-jest
       },
     },
   })
