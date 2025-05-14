@@ -73,7 +73,7 @@ export const formatDates = (timestamps?: number[]): string | undefined => {
 export const formatReleaseDate = (releaseDate: Date): string => {
   const formattedDate = formatToFrenchDate(releaseDate)
 
-  return isAfter(releaseDate, new Date()) ? `Dès le ${formattedDate}` : `Sorti le ${formattedDate}`
+  return isAfter(releaseDate, new Date()) ? `Dès le ${formattedDate}` : ''
 }
 
 /**

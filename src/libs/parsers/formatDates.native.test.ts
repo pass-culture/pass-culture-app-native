@@ -2,23 +2,23 @@ import mockdate from 'mockdate'
 import timezoneMock from 'timezone-mock'
 
 import {
+  GroupResult,
+  capitalizeFirstLetter,
+  decomposeDate,
   formatDatePeriod,
   formatDateToISOStringWithoutTime,
   formatDates,
-  getUniqueSortedTimestamps,
+  formatGroupedDates,
+  formatPublicationDate,
+  formatReleaseDate,
   formatToCompleteFrenchDate,
   formatToFrenchDate,
-  getFormattedDates,
-  groupByYearAndMonth,
-  decomposeDate,
-  joinArrayElement,
-  GroupResult,
-  formatGroupedDates,
-  capitalizeFirstLetter,
-  formatReleaseDate,
   formatToFrenchDateWithoutYear,
-  formatPublicationDate,
+  getFormattedDates,
   getTimeStampInMillis,
+  getUniqueSortedTimestamps,
+  groupByYearAndMonth,
+  joinArrayElement,
 } from './formatDates'
 
 const OCTOBER_5_2020 = new Date(2020, 9, 5)
@@ -502,7 +502,7 @@ describe('formatReleaseDate', () => {
     const TODAY = NOVEMBER_1_2020
     const result = formatReleaseDate(TODAY)
 
-    expect(result).toEqual(`Sorti le 1er novembre 2020`)
+    expect(result).toEqual('')
   })
 
   it('should format date properly when given date is before today', () => {
@@ -510,7 +510,7 @@ describe('formatReleaseDate', () => {
 
     const result = formatReleaseDate(BEFORE_TODAY)
 
-    expect(result).toEqual(`Sorti le 5 octobre 2020`)
+    expect(result).toEqual('')
   })
 
   it('should format date properly when given date is after today', () => {
