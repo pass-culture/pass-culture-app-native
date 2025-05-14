@@ -1,8 +1,6 @@
 import React from 'react'
 import { QueryCache, QueryClient, QueryClientProvider, setLogger } from 'react-query'
 
-import { defaultOptions } from 'libs/react-query/queryClient'
-
 export const queryCache = new QueryCache()
 
 export const reactQueryProviderHOC = (
@@ -11,7 +9,11 @@ export const reactQueryProviderHOC = (
 ) => {
   const queryClient = new QueryClient({
     queryCache,
-    defaultOptions,
+    defaultOptions: {
+      queries: {
+        retry: false, // react-query documentation recommends to disable retry when testing https://tanstack.com/query/v3/docs/framework/react/guides/testing#turn-off-retries
+      },
+    },
   })
   if (setup) setup(queryClient)
   setLogger({
