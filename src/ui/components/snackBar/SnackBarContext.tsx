@@ -36,7 +36,7 @@ export const SnackBarProvider = memo(function SnackBarProviderComponent({
     icon: undefined,
     backgroundColor: theme.colors.transparent,
     progressBarColor: theme.colors.transparent,
-    color: 'locked',
+    color: 'lockedInverted',
     refresher: 0,
     timeout: SNACK_BAR_TIME_OUT,
   })

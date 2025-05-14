@@ -84,11 +84,11 @@ export const CalendarModal: FunctionComponent<CalendarModalProps> = ({
     () =>
       getMarkedDates(selectedStartDate, selectedEndDate, {
         backgroundColor: designSystem.color.background.brandPrimary,
-        textColor: designSystem.color.text.locked,
+        textColor: designSystem.color.text.lockedInverted,
       }),
     [
       designSystem.color.background.brandPrimary,
-      designSystem.color.text.locked,
+      designSystem.color.text.lockedInverted,
       selectedEndDate,
       selectedStartDate,
     ]

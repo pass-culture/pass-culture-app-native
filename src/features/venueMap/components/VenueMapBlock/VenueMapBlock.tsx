@@ -70,8 +70,7 @@ const StyledImageBackground = styled.ImageBackground.attrs(({ theme }) => ({
 })
 
 const CardText = styled(Typo.BodyAccent)(({ theme }) => ({
-  // Todo(PC-35971) we need a new token like a lockedInverted on text
-  color: theme.designSystem.color.background.locked,
+  color: theme.designSystem.color.text.locked,
   position: 'absolute',
   left: getSpacing(4),
   bottom: getSpacing(4),
