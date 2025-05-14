@@ -1,4 +1,4 @@
-import { useQueryClient } from 'react-query'
+import { useQueryClient } from '@tanstack/react-query'
 
 import { ExpenseDomain, OfferResponseV2, OfferStockResponse, OfferVenueResponse } from 'api/gen'
 import { OfferTileProps } from 'features/offer/types'

@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { useQuery } from 'react-query'
+import { useQuery } from '@tanstack/react-query'
 
 import { mapOffersDataAndModules } from 'features/home/api/helpers/mapOffersDataAndModules'
 import { OfferModuleParamsInfo, OffersModule } from 'features/home/types'

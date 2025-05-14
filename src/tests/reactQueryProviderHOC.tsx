@@ -1,5 +1,5 @@
 import React from 'react'
-import { QueryCache, QueryClient, QueryClientProvider, setLogger } from 'react-query'
+import { QueryCache, QueryClient, QueryClientProvider, setLogger } from '@tanstack/react-query'
 
 export const queryCache = new QueryCache()
 

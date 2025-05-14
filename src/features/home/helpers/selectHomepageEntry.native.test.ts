@@ -1,5 +1,5 @@
 import { shuffle } from 'lodash'
-import { UseQueryResult } from 'react-query'
+import { UseQueryResult } from '@tanstack/react-query'
 
 import { BookingsResponse, EligibilityType, UserProfileResponse, UserRole } from 'api/gen'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'

@@ -1,6 +1,6 @@
 import React, { memo } from 'react'
 import { View } from 'react-native'
-import { useQueryClient } from 'react-query'
+import { useQueryClient } from '@tanstack/react-query'
 import { useTheme } from 'styled-components'
 import styled from 'styled-components/native'
 

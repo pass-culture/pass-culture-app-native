@@ -3,7 +3,7 @@ import { useNavigation, useRoute } from '@react-navigation/native'
 import React from 'react'
 import { State } from 'react-native-gesture-handler'
 import { fireGestureHandler, getByGestureTestId } from 'react-native-gesture-handler/jest-utils'
-import { UseQueryResult } from 'react-query'
+import { UseQueryResult } from '@tanstack/react-query'
 import { ReactTestInstance } from 'react-test-renderer'
 
 import { PlaylistType } from 'features/offer/enums'

@@ -2,7 +2,7 @@
 import { NetInfoState, NetInfoStateType } from '@react-native-community/netinfo'
 import React, { PropsWithChildren, createContext, memo, useContext, useEffect } from 'react'
 import { Platform } from 'react-native'
-import { onlineManager } from 'react-query'
+import { onlineManager } from '@tanstack/react-query'
 
 import { analytics } from 'libs/analytics/provider'
 import { useNetInfo } from 'libs/network/useNetInfo'

@@ -1,4 +1,4 @@
-import { UseQueryOptions, useQuery } from 'react-query'
+import { UseQueryOptions, useQuery } from '@tanstack/react-query'
 
 import { api } from 'api/api'
 import { OauthStateResponse } from 'api/gen'
