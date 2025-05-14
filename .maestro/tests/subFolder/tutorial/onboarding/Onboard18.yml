@@ -4,7 +4,8 @@ appId: ${MAESTRO_APP_ID}
 - tapOn: "C’est parti\_!"
 
 - assertVisible: 'Découvre les offres près de chez toi'
-- tapOn: 'Continuer'
+
+- tapOn: 'Continuer.*'
 
 - runFlow:
     when:
