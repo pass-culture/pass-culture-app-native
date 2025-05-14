@@ -57,6 +57,7 @@ export const OfferTileWrapper = (props: Props) => {
     chroniclesCount: item.offer.chroniclesCount,
     headlineCount: item.offer.headlineCount,
     hasSmallLayout,
+    isComingSoonOffer: item._tags?.includes('is_future'),
   })
 
   return (

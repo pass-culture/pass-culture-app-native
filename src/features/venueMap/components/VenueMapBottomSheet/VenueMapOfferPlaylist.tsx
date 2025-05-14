@@ -53,6 +53,7 @@ export const VenueMapOfferPlaylist = ({
         chroniclesCount: item.offer.chroniclesCount,
         headlineCount: item.offer.headlineCount,
         hasSmallLayout: true,
+        isComingSoonOffer: item._tags?.includes('is_future'),
       })
       return (
         <OfferTile
