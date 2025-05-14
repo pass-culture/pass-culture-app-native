@@ -15,6 +15,13 @@ appId: ${MAESTRO_APP_ID}
     commands:
     - tapOn: "Revenir en arrière"
 
+- runFlow:
+    when:
+      platform: Web
+    commands:
+    - tapOn:
+        id: "Revenir en arrière"
+
 
 - tapOn: 'Créer un compte'
 - assertVisible: 'Crée-toi un compte'
@@ -29,5 +36,12 @@ appId: ${MAESTRO_APP_ID}
       platform: iOS
     commands:
     - tapOn: "Revenir en arrière"
+
+- runFlow:
+    when:
+      platform: Web
+    commands:
+    - tapOn:
+        id: "Revenir en arrière"
     
 - waitForAnimationToEnd
