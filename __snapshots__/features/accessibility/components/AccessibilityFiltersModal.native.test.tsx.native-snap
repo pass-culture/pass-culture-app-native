@@ -847,7 +847,7 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
                   {
                     "busy": undefined,
                     "checked": undefined,
-                    "disabled": undefined,
+                    "disabled": true,
                     "expanded": undefined,
                     "selected": undefined,
                   }
@@ -861,7 +861,7 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
                   }
                 }
                 accessible={true}
-                focusable={true}
+                focusable={false}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
                 onResponderMove={[Function]}
@@ -946,7 +946,7 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
                     style={
                       [
                         {
-                          "color": "#161617",
+                          "color": "#696A6F",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 12,
                           "lineHeight": 19.2,
