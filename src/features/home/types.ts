@@ -301,11 +301,11 @@ export enum Color {
   DeepPink = 'DeepPink',
   Coral = 'Coral',
   Lilac = 'Lilac',
-  Blue = 'Blue',
-  Orange = 'Orange',
-  Pink = 'Pink',
-  Purple = 'Purple',
-  Green = 'Green',
+  Decorative01 = 'Decorative01',
+  Decorative02 = 'Decorative02',
+  Decorative03 = 'Decorative03',
+  Decorative04 = 'Decorative04',
+  Decorative05 = 'Decorative05',
 }
 
 export type VenueMapModule = {

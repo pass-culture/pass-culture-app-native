@@ -41,29 +41,29 @@ export const colorMapping: Record<
     text: ColorsEnum.LILAC_DARK,
     fill: ColorsEnum.AQUAMARINE_LIGHT,
   },
-  Blue: {
-    border: 'decorative02',
-    text: 'locked',
-    fill: 'decorative02',
-  },
-  Orange: {
+  Decorative01: {
     border: 'decorative01',
     text: 'locked',
     fill: 'decorative01',
   },
-  Pink: {
-    border: 'decorative05',
+  Decorative02: {
+    border: 'decorative02',
     text: 'locked',
-    fill: 'decorative05',
+    fill: 'decorative02',
   },
-  Purple: {
+  Decorative03: {
+    border: 'decorative03',
+    text: 'locked',
+    fill: 'decorative03',
+  },
+  Decorative04: {
     border: 'decorative04',
     text: 'locked',
     fill: 'decorative04',
   },
-  Green: {
-    border: 'decorative03',
+  Decorative05: {
+    border: 'decorative05',
     text: 'locked',
-    fill: 'decorative03',
+    fill: 'decorative05',
   },
 }

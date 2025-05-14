@@ -199,7 +199,7 @@ module.exports = {
           {
             name: 'ui/theme',
             importNames: ['theme'],
-            message: 'Import theme via the useTheme() hook instead of directly importing it',
+            message: 'Use StyledComponent or import theme via the useTheme() hook instead of directly importing it',
           }          
         ],
         patterns: [
