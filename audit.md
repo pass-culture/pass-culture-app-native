@@ -148,6 +148,6 @@
 
 TODO
 
-safeFetch -> axios axios-auth-refresh
+safeFetch -> axios axios-auth-refresh / XHRInterceptor https://nikunj09.medium.com/intercept-http-request-in-react-native-1f07754e12d1
 
 useSafeState
