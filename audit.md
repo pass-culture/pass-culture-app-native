@@ -113,7 +113,7 @@
 #### Observations
 
 - `src/features/search/helpers/useSync/useSync.ts` hook permettant de synchroniser la navigation avec les états des contextes de recherche et de localisation
-- sur la page thématic search `src/features/gtlPlaylist/hooks/useGTLPlaylists.ts` il y a une cascade de requetes
+- sur la page thématique search `src/features/gtlPlaylist/hooks/useGTLPlaylists.ts` il y a une cascade de requetes
 
 #### Points de friction
 
@@ -155,7 +155,7 @@
 
 ### Recommandations
 
-- Suivre les préconnisations de la guilde architecture
+- Suivre les préconisations de la guilde architecture
   - découper :
     - composant Page : qui fait les requetes
     - composant Container : qui centralise les logiques en appelant des fonctions pures
