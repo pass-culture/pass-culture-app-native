@@ -217,6 +217,7 @@ export const CalendarModal: FunctionComponent<CalendarModalProps> = ({
         onDayPress={onDayPress}
         markedDates={markedDates}
         testID="calendar"
+        firstDay={1}
       />
     </AppModal>
   )
