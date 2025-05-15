@@ -14,7 +14,7 @@ type Props = {
   width: number
 }
 
-export const NewOfferCaption: FC<Props> = ({
+export const OfferCaption: FC<Props> = ({
   name,
   date,
   price,

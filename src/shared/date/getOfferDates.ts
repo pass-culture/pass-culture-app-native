@@ -15,9 +15,10 @@ export const getOfferDates = (
   const isOfferAMovieScreeningWithAReleaseDate =
     subcategoryId === SubcategoryIdEnum.SEANCE_CINE && typeof releaseDate === 'number' // we do this because for now, some offers' releaseDate attribute have the wrong type
 
+  const handleFormatDates = (timestamps?: number[]) =>
+    isPlaylist ? formatPlaylistDates(timestamps) : formatDates(timestamps)
+
   return isOfferAMovieScreeningWithAReleaseDate
     ? formatReleaseDate(new Date(releaseDate * 1000), isPlaylist)
-    : isPlaylist
-      ? formatPlaylistDates(dates && getTimeStampInMillis(dates))
-      : formatDates(dates && getTimeStampInMillis(dates))
+    : handleFormatDates(dates && getTimeStampInMillis(dates))
 }

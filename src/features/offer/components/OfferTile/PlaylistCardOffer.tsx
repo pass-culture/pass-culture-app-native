@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 import { CategoryIdEnum } from 'api/gen'
 import { ImageTile } from 'ui/components/ImageTile'
-import { NewOfferCaption } from 'ui/components/NewOfferCaption'
+import { OfferCaption } from 'ui/components/OfferCaption'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 
 type Props = {
@@ -35,7 +35,7 @@ export const PlaylistCardOffer: FC<Props> = ({
     <Container maxWidth={width} testID="playlistCardOffer">
       <ImageTile categoryId={categoryId} uri={thumbnailUrl} width={width} height={height} />
       {interactionTag ?? null}
-      <NewOfferCaption
+      <OfferCaption
         name={name}
         date={date}
         price={price}
