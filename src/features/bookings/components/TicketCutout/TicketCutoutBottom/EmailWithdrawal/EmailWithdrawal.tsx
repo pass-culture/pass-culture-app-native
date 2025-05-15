@@ -1,13 +1,9 @@
 import { addDays, isSameDay } from 'date-fns'
 import React from 'react'
-import styled from 'styled-components/native'
 
 import { UserProfileResponse } from 'api/gen'
 import { EmailReceived } from 'features/bookings/components/TicketCutout/TicketCutoutBottom/EmailWithdrawal/EmailReceived'
-import { TicketVisual } from 'features/bookings/components/TicketCutout/TicketCutoutBottom/TicketVisual'
-import { getDelayMessage } from 'features/bookings/helpers/getDelayMessage'
-import { EmailSent } from 'ui/svg/icons/EmailSent'
-import { Typo, getSpacing } from 'ui/theme'
+import { EmailWillBeSend } from 'features/bookings/components/TicketCutout/TicketCutoutBottom/EmailWithdrawal/EmailWillBeSend'
 
 type Props = {
   beginningDatetime?: string | null
@@ -32,31 +28,5 @@ export const EmailWithdrawal = ({
     if (isEventDay || today > dateSendEmail)
       return <EmailReceived isEventDay={isEventDay} isDuo={isDuo} userEmail={userEmail} />
   }
-
-  return (
-    <React.Fragment>
-      <TicketVisual>
-        <EmailSent />
-      </TicketVisual>
-      <WithDrawalContainer testID="withdrawal-info">
-        {'Tu vas recevoir ton billet par e-mail '}
-        {withdrawalDelay ? (
-          <TicketWithdrawalDelay testID="withdrawal-info-delay">
-            {getDelayMessage(withdrawalDelay)}
-          </TicketWithdrawalDelay>
-        ) : null}
-        {'avant le début de l’évènement.'}
-      </WithDrawalContainer>
-    </React.Fragment>
-  )
+  return <EmailWillBeSend isDuo={isDuo} userEmail={userEmail} withdrawalDelay={withdrawalDelay} />
 }
-
-const WithDrawalContainer = styled(Typo.Body)({
-  textAlign: 'center',
-  maxWidth: '100%',
-  paddingBottom: getSpacing(6),
-})
-
-const TicketWithdrawalDelay = styled(Typo.Body)(({ theme }) => ({
-  fontFamily: theme.fontFamily.bold,
-}))
