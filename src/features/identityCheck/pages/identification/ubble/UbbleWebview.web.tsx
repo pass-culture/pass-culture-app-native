@@ -2,8 +2,8 @@ import { useNavigation } from '@react-navigation/native'
 import React, { useEffect } from 'react'
 
 import { IdentityCheckMethod } from 'api/gen'
-import { useIdentificationUrl } from 'features/identityCheck/api/useIdentificationUrl'
 import { REDIRECT_URL_UBBLE } from 'features/identityCheck/constants'
+import { useIdentificationUrlMutation } from 'features/identityCheck/queries/useIdentificationUrlMutation'
 import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
@@ -28,7 +28,7 @@ interface AbortEvent {
 // https://ubbleai.github.io/developer-documentation/#webview-integration
 // If you get a double navigation bar on the web version at the end of the Ubble identity check it is potentially because of our mock. Please try the identity check without the mock before creating a ticket (using the XXXXXXX+ubble_test@XXXX.XX pattern for the mail used to register to bypass the age check).
 export const UbbleWebview: React.FC = () => {
-  const identificationUrl = useIdentificationUrl()
+  const identificationUrl = useIdentificationUrlMutation()
   const { navigate } = useNavigation<UseNavigationType>()
 
   useEffect(() => {
