@@ -73,11 +73,20 @@ export const getUniqueSortedTimestamps = (timestamps: number[] | undefined): num
 /**
  * @param timestamps: Array of timestamps in millisecond
  */
-export const formatDates = (timestamps?: number[], isPlaylist?: boolean): string | undefined => {
+export const formatDates = (timestamps?: number[]): string | undefined => {
   const uniques = getUniqueSortedTimestamps(timestamps)
   const firstUnique = uniques[0]
   if (firstUnique) {
-    return `${uniques.length === 1 || isPlaylist ? '' : 'Dès le '}${isPlaylist ? formatToFrenchDateForPlaylist(new Date(firstUnique), uniques.length) : formatToFrenchDate(new Date(firstUnique))}`
+    return `${uniques.length === 1 ? '' : 'Dès le '}${formatToFrenchDate(new Date(firstUnique))}`
+  }
+  return undefined
+}
+
+export const formatPlaylistDates = (timestamps?: number[]): string | undefined => {
+  const uniques = getUniqueSortedTimestamps(timestamps)
+  const firstUnique = uniques[0]
+  if (firstUnique) {
+    return `${formatToFrenchDateForPlaylist(new Date(firstUnique), uniques.length)}`
   }
   return undefined
 }

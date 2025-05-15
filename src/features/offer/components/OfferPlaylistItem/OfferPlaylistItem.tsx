@@ -8,7 +8,7 @@ import { InteractionTag } from 'features/offer/components/InteractionTag/Interac
 import { OfferTile } from 'features/offer/components/OfferTile/OfferTile'
 import { PlaylistType } from 'features/offer/enums'
 import { OfferTileProps } from 'features/offer/types'
-import { formatDates, getTimeStampInMillis } from 'libs/parsers/formatDates'
+import { formatPlaylistDates, getTimeStampInMillis } from 'libs/parsers/formatDates'
 import {
   CategoryHomeLabelMapping,
   CategoryIdMapping,
@@ -74,7 +74,7 @@ export const OfferPlaylistItem = ({
         subcategoryId={item.offer.subcategoryId}
         offerId={+item.objectID}
         name={item.offer.name}
-        date={formatDates(timestampsInMillis, true)}
+        date={formatPlaylistDates(timestampsInMillis)}
         thumbUrl={item.offer.thumbUrl}
         price={priceDisplay(item)}
         width={width}

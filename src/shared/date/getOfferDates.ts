@@ -1,5 +1,10 @@
 import { SubcategoryIdEnum } from 'api/gen'
-import { formatDates, formatReleaseDate, getTimeStampInMillis } from 'libs/parsers/formatDates'
+import {
+  formatDates,
+  formatPlaylistDates,
+  formatReleaseDate,
+  getTimeStampInMillis,
+} from 'libs/parsers/formatDates'
 
 export const getOfferDates = (
   subcategoryId: SubcategoryIdEnum,
@@ -12,5 +17,7 @@ export const getOfferDates = (
 
   return isOfferAMovieScreeningWithAReleaseDate
     ? formatReleaseDate(new Date(releaseDate * 1000), isPlaylist)
-    : formatDates(dates && getTimeStampInMillis(dates), isPlaylist)
+    : isPlaylist
+      ? formatPlaylistDates(dates && getTimeStampInMillis(dates))
+      : formatDates(dates && getTimeStampInMillis(dates))
 }

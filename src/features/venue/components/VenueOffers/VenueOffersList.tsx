@@ -16,7 +16,7 @@ import { analytics } from 'libs/analytics/provider'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
-import { formatDates, getTimeStampInMillis } from 'libs/parsers/formatDates'
+import { formatPlaylistDates, getTimeStampInMillis } from 'libs/parsers/formatDates'
 import {
   formatPrice,
   getDisplayedPrice,
@@ -96,7 +96,7 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
         subcategoryId={item.offer.subcategoryId}
         offerId={+item.objectID}
         name={item.offer.name}
-        date={formatDates(timestampsInMillis, true)}
+        date={formatPlaylistDates(timestampsInMillis)}
         isDuo={item.offer.isDuo}
         thumbUrl={item.offer.thumbUrl}
         price={getDisplayedPrice(
