@@ -39,6 +39,7 @@ export const BookPlaylists: React.FC = () => {
     selectedLocationMode,
     isUserUnderage,
     adaptPlaylistParameters,
+    queryKey: 'THEMATIC_SEARCH_BOOKS_GTL_PLAYLISTS',
     transformHits,
   })
 

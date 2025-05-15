@@ -6,6 +6,7 @@ import { AlgoliaOffer, HitOffer, PlaylistOffersParams } from 'libs/algolia/types
 import { ContentfulLabelCategories } from 'libs/contentful/types'
 import { Position } from 'libs/location'
 import { LocationMode } from 'libs/location/types'
+import { QueryKeys } from 'libs/queryKeys'
 
 type UseGTLPlaylistsProps = {
   venue?: VenueResponse
@@ -16,6 +17,7 @@ type UseGTLPlaylistsProps = {
   isUserUnderage: boolean
   adaptPlaylistParameters: (parameters: OffersModuleParameters) => PlaylistOffersParams
   transformHits: (hit: AlgoliaOffer<HitOffer>) => AlgoliaOffer<HitOffer>
+  queryKey: keyof typeof QueryKeys
 }
 
 export const useGTLPlaylistsQuery = ({
@@ -27,6 +29,7 @@ export const useGTLPlaylistsQuery = ({
   isUserUnderage,
   adaptPlaylistParameters,
   transformHits,
+  queryKey,
 }: UseGTLPlaylistsProps) => {
   const { data: filteredGtlPlaylistsConfig = [] } = useGetGTLPlaylistsConfigByLabelQuery(
     searchGroupLabel,
@@ -42,6 +45,7 @@ export const useGTLPlaylistsQuery = ({
       selectedLocationMode,
       isUserUnderage,
       adaptPlaylistParameters,
+      queryKey,
     },
     transformHits
   )
