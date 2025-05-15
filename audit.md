@@ -2,16 +2,10 @@
 
 ## Audit de différents parcours
 
-### Chargement Initial et Accueil
+### Chargement Initial
 
 #### Observations
 
-- Le fichier `src/features/home/pages/Home.tsx` contient de nombreux hooks dont plusieurs `useEffect`
-- on a des durées éparpillées dans la codebase
-  - `src/features/home/constants.ts`
-- sur [Sentry, `accueil-thematique`](https://pass-culture.sentry.io/insights/frontend/pageloads/overview/?environment=production&project=4508839229718608&statsPeriod=7d&transaction=%2Faccueil-thematique) fait parti des pages avec un score de performance faible et pourtant très visité
-  - Largest Contentful Paint ~10s : 10s parfois jusqu'à 15s pour complètement charger la page
-  - Interaction to Next Paint 1s : l'app freeze pendant 1s
 - Nous avons actuellement beaucoup de `Provider` / `Context`
   - Mobile & Web
     - `ReactQueryClientProvider`
@@ -44,14 +38,12 @@
     - `AppWebHead`
     - `Suspense`
 
-#### Points de friction
+#### Points de Friction
 
-- Utiliser de nombreux hooks peut engendrer des problèmes de performance en causant de nombreux re-render
 - Utiliser des contextes peut engendrer des problèmes de performance en causant des re-render d'une grande partie de l'arborecanse de composants
 
 #### Recommandations
 
-- Utiliser un state manager (comme Zustand) pour centraliser les états de l'application et limiter le nombre de hooks utiliser pour limiter le nombre de re-render
 - Remplacer les contextes
   - À garder
     - `ReactQueryClientProvider`
@@ -72,21 +64,49 @@
   - Source de vérité venant des query params / URL
     - `SearchWrapper`
     - `CulturalSurveyContextProvider` et / ou react-hook-form, ou Zustand, ou faire une requete au backend pour envoyer la réponse partielle, ou au minimum mettre ce Context qu'au niveau du Navigator
+  - probablement une fonction à appeler directement dans App
+    - `AnalyticsInitializer`
+    - `FirestoreNetworkObserver`
   - TBD mécanisme global
     - `SnackBarProvider`
+      - supprimer ces contexts au passage
+        - `OfflineModeContainer` supprimer complètement lorsqu'on retravaillera l'offline
     - pareil pour les modales
-  - TODO trier
+      - supprimer ces contexts au passage
+        - `PushNotificationsWrapper`
+        - `ShareAppWrapper`
+    - `NetInfoWrapper` centraliser les requetes
+  - TBD lorsqu'on s'en occupera
     - `Suspense` à supprimer ? à bouger top level ?
-    - `ScreenErrorProvider`
-    - `AnalyticsInitializer`
-    - `NetInfoWrapper`
-    - `FirestoreNetworkObserver`
-    - `SplashScreenProvider`
-    - `PushNotificationsWrapper`
-    - `ShareAppWrapper`
-    - `OfflineModeContainer`
+    - `ScreenErrorProvider` je ne sais pas encore mais pas de cette manière
+    - `SplashScreenProvider` revoir le splash screen et la navigation pour supprimer ce context
     - `SupportedBrowsersGate`
-    - `GoogleOAuthProvider`
+      - revoir le wording du bouton qui est trop long
+      - vérifier que ça fonctionne sur ces browsers
+      - bump aux versions réellement supportées
+        - aligner le reste du projet
+          - `src/cheatcodes/pages/others/CheatcodesNavigationNotScreensPages.tsx`
+          - la [config `browserslist`](https://browsersl.ist/) utilisée par vite
+    - `GoogleOAuthProvider` est-ce qu'il ne pourrait pas etre bougé au moins dans le bundle qui contient l'inscription et la connexion ?
+
+### Accueil
+
+#### Observations
+
+- Le fichier `src/features/home/pages/Home.tsx` contient de nombreux hooks dont plusieurs `useEffect`
+- on a des durées éparpillées dans la codebase
+  - `src/features/home/constants.ts`
+- sur [Sentry, `accueil-thematique`](https://pass-culture.sentry.io/insights/frontend/pageloads/overview/?environment=production&project=4508839229718608&statsPeriod=7d&transaction=%2Faccueil-thematique) fait parti des pages avec un score de performance faible et pourtant très visité
+  - Largest Contentful Paint ~10s : 10s parfois jusqu'à 15s pour complètement charger la page
+  - Interaction to Next Paint 1s : l'app freeze pendant 1s
+
+#### Points de friction
+
+- Utiliser de nombreux hooks peut engendrer des problèmes de performance en causant de nombreux re-render
+
+#### Recommandations
+
+- Utiliser un state manager (comme Zustand) pour centraliser les états de l'application et limiter le nombre de hooks utiliser pour limiter le nombre de re-render
 
 ### Réalisation d’une Recherche
 
