@@ -48,7 +48,7 @@ export const SetCity: FunctionComponent<Props> = ({ route }: Props) => {
 
   const { navigate } = useNavigation<UseNavigationType>()
   const storedCity = useCity()
-  const { setCity } = cityActions
+  const { setCity: setStoreCity } = cityActions
   const {
     control,
     formState: { isValid },
@@ -60,7 +60,7 @@ export const SetCity: FunctionComponent<Props> = ({ route }: Props) => {
   })
 
   const onSubmit = ({ city }: CityForm) => {
-    setCity(city)
+    setStoreCity(city)
     analytics.logSetPostalCodeClicked()
     navigate('SetAddress', { type: pageInfos.navigateParamsType })
   }
@@ -72,7 +72,6 @@ export const SetCity: FunctionComponent<Props> = ({ route }: Props) => {
         <React.Fragment>
           <Typo.Title3 {...getHeadingAttrs(2)}>Renseigne ta ville de résidence</Typo.Title3>
           <Spacer.Column numberOfSpaces={5} />
-
           <Controller
             control={control}
             name="city"

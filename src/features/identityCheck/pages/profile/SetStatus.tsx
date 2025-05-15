@@ -1,7 +1,7 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useNavigation } from '@react-navigation/native'
 import { StackScreenProps } from '@react-navigation/stack'
-import React, { FunctionComponent, useCallback, useState } from 'react'
+import React, { FunctionComponent, useCallback, useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { v4 as uuidv4 } from 'uuid'
 import * as yup from 'yup'
@@ -14,6 +14,7 @@ import { useAddress } from 'features/identityCheck/pages/profile/store/addressSt
 import { useCity } from 'features/identityCheck/pages/profile/store/cityStore'
 import { useName } from 'features/identityCheck/pages/profile/store/nameStore'
 import { resetProfileStores } from 'features/identityCheck/pages/profile/store/resetProfileStores'
+import { statusActions, useStatus } from 'features/identityCheck/pages/profile/store/statusStore'
 import { usePostProfileMutation } from 'features/identityCheck/queries/usePostProfileMutation'
 import { IdentityCheckStep } from 'features/identityCheck/types'
 import {
@@ -57,6 +58,8 @@ export const SetStatus: FunctionComponent<Props> = ({ route }: Props) => {
   const storedName = useName()
   const storedCity = useCity()
   const storedAddress = useAddress()
+  const storedStatus = useStatus()
+  const { setStatus: setStoreStatus } = statusActions
   const storedFreeOfferId = useFreeOfferId()
 
   const handlePostProfileSuccess = () => {
@@ -105,11 +108,16 @@ export const SetStatus: FunctionComponent<Props> = ({ route }: Props) => {
     watch,
     formState: { isValid: formIsValid },
   } = useForm<StatusForm>({
+    defaultValues: { selectedStatus: storedStatus ?? undefined },
     resolver: yupResolver(schema),
     mode: 'onChange',
   })
 
   const selectedStatus = watch('selectedStatus')
+
+  useEffect(() => {
+    if (selectedStatus) setStoreStatus(selectedStatus)
+  }, [selectedStatus, setStoreStatus])
 
   const submitStatus = useCallback(
     async (formValues: StatusForm) => {
