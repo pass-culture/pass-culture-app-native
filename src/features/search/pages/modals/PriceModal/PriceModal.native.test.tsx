@@ -90,18 +90,6 @@ describe('<PriceModal/>', () => {
       expect(minPriceInput.props.value).toStrictEqual('')
     })
 
-    it('should call dispatch with default search when pressing reset button', async () => {
-      renderSearchPrice()
-
-      const resetButton = screen.getByText('Réinitialiser')
-      await user.press(resetButton)
-
-      expect(mockDispatch).toHaveBeenCalledWith({
-        type: 'SET_STATE',
-        payload: searchState,
-      })
-    })
-
     it('should reset maximum price when pressing reset button', async () => {
       renderSearchPrice()
 
@@ -148,6 +136,19 @@ describe('<PriceModal/>', () => {
       await user.press(resetButton)
 
       expect(minPriceInput.props.value).toStrictEqual('')
+    })
+
+    it('should call dispatch with default search when pressing reset button', async () => {
+      mockSearchState = { ...searchState, minPrice: '5', defaultMinPrice: '5' }
+      renderSearchPrice()
+
+      const resetButton = screen.getByText('Réinitialiser')
+      await user.press(resetButton)
+
+      expect(mockDispatch).toHaveBeenCalledWith({
+        type: 'SET_STATE',
+        payload: searchState,
+      })
     })
 
     it('should preserve minimum price when closing the modal', async () => {

@@ -2,6 +2,7 @@ import React from 'react'
 
 import { useNavigationState, useRoute } from '__mocks__/@react-navigation/native'
 import { SubcategoriesResponseModelv2 } from 'api/gen'
+import { defaultDisabilitiesProperties } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { DEFAULT_RADIUS } from 'features/search/constants'
 import { initialSearchState } from 'features/search/context/reducer'
 import { ISearchContext } from 'features/search/context/SearchWrapper'
@@ -66,6 +67,14 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
+const mockNavigateToSearch = jest.fn()
+jest.mock('features/search/helpers/useNavigateToSearch/useNavigateToSearch', () => ({
+  useNavigateToSearch: () => ({
+    navigateToSearch: mockNavigateToSearch,
+    replaceToSearch: jest.fn(),
+  }),
+}))
+
 const user = userEvent.setup()
 jest.useFakeTimers()
 
@@ -90,6 +99,29 @@ describe('<SearchFilter/>', () => {
     await waitFor(() => {
       expect(screen).toMatchSnapshot()
     })
+  })
+
+  it('should reset search when pressing reset button and use back button', async () => {
+    mockUseSearch.mockReturnValueOnce({
+      ...initialMockUseSearch,
+      searchState: {
+        ...initialSearchState,
+        locationFilter: { locationType: LocationMode.AROUND_ME, aroundRadius: DEFAULT_RADIUS },
+        minPrice: '5',
+        defaultMinPrice: '5',
+      },
+    })
+    renderSearchFilter()
+
+    await screen.findByText('Filtres')
+    await user.press(screen.getByText('Réinitialiser'))
+
+    await user.press(screen.getByTestId('Revenir en arrière'))
+
+    expect(mockNavigateToSearch).toHaveBeenCalledWith(
+      initialSearchState,
+      defaultDisabilitiesProperties
+    )
   })
 
   it('should setLocationMode to AROUND-ME in location context, when URI params contains AROUND-ME, and user has a geolocposition', async () => {
