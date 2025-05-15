@@ -66,7 +66,7 @@ jobs:
             SENTRY_AUTH_TOKEN:passculture-metier-ehp/pcapi-native-sentry-saas-token
       - name: 'Render Sentry Template'
         id: render_template
-        uses: chuhlomin/render-template@v1.9
+        uses: chuhlomin/render-template@v1.10
         with:
           template: templates_github_ci/.sentryclirc
           vars: |
