@@ -49,6 +49,7 @@ export const Venue: FunctionComponent = () => {
     selectedLocationMode,
     isUserUnderage,
     adaptPlaylistParameters,
+    queryKey: 'VENUE_GTL_PLAYLISTS',
     transformHits,
   })
 

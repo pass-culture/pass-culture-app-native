@@ -109,6 +109,7 @@ const renderUseGetFormattedAndFilteredOffersByGtl = (
           selectedLocationMode: LocationMode.AROUND_ME,
           isUserUnderage: false,
           adaptPlaylistParameters: mockAdaptPlaylistParameters,
+          queryKey: 'THEMATIC_SEARCH_BOOKS_GTL_PLAYLISTS',
         },
         transformHits
       ),
