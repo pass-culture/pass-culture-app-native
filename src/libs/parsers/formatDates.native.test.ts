@@ -41,12 +41,30 @@ const FEBRUARY_2_2022 = new Date(2022, 1, 2)
 describe('groupByYearAndMonth', () => {
   it('should group an array of decomposed dates by year and month', () => {
     const decomposedDates: ReturnType<typeof decomposeDate>[] = [
-      { year: 2022, month: 'janvier', day: 1 },
-      { year: 2022, month: 'janvier', day: 15 },
-      { year: 2022, month: 'février', day: 10 },
-      { year: 2023, month: 'mars', day: 21 },
-      { year: 2023, month: 'mars', day: 22 },
-      { year: 2023, month: 'avril', day: 5 },
+      {
+        year: 2022,
+        month: 'janvier',
+        day: 1,
+        shortMonth: 'janv.',
+        capitalizedShortMonth: 'Janv.',
+      },
+      {
+        year: 2022,
+        month: 'janvier',
+        day: 15,
+        shortMonth: 'janv.',
+        capitalizedShortMonth: 'Janv.',
+      },
+      {
+        year: 2022,
+        month: 'février',
+        day: 10,
+        shortMonth: 'févr.',
+        capitalizedShortMonth: 'Févr.',
+      },
+      { year: 2023, month: 'mars', day: 21, shortMonth: 'mars', capitalizedShortMonth: 'Mars' },
+      { year: 2023, month: 'mars', day: 22, shortMonth: 'mars', capitalizedShortMonth: 'Mars' },
+      { year: 2023, month: 'avril', day: 5, shortMonth: 'avril', capitalizedShortMonth: 'Avril' },
     ]
 
     const result = groupByYearAndMonth(decomposedDates)

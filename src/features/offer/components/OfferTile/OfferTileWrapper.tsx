@@ -38,7 +38,8 @@ export const OfferTileWrapper = (props: Props) => {
   const formattedDate = getOfferDates(
     item.offer.subcategoryId,
     item.offer.dates,
-    item.offer.releaseDate
+    item.offer.releaseDate,
+    true
   )
   const formattedPrice = getDisplayedPrice(
     item.offer?.prices,
