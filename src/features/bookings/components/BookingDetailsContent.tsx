@@ -3,8 +3,12 @@ import React from 'react'
 import { ScrollView, useWindowDimensions } from 'react-native'
 import styled from 'styled-components/native'
 
-import { BookingOfferResponseAddress, BookingReponse, BookingVenueResponse } from 'api/gen'
-import { useAuthContext } from 'features/auth/context/AuthContext'
+import {
+  BookingOfferResponseAddress,
+  BookingReponse,
+  BookingVenueResponse,
+  UserProfileResponse,
+} from 'api/gen'
 import { ArchiveBookingModal } from 'features/bookings/components/ArchiveBookingModal'
 import { BookingDetailsCancelButton } from 'features/bookings/components/BookingDetailsCancelButton'
 import { BookingDetailsHeader } from 'features/bookings/components/BookingDetailsHeader'
@@ -41,12 +45,13 @@ export const BookingDetailsContent = ({
   properties,
   booking,
   mapping,
+  user,
 }: {
   properties: BookingProperties
   booking: BookingReponse
   mapping: SubcategoriesMapping
+  user: UserProfileResponse
 }) => {
-  const { user } = useAuthContext()
   const { height: windowHeight } = useWindowDimensions()
   const [topBlockHeight, setTopBlockHeight] = React.useState<number>(0)
 
@@ -97,7 +102,7 @@ export const BookingDetailsContent = ({
 
   const errorBannerMessage = `Tu n’as pas le droit de céder ou de revendre ${properties.isDuo ? 'tes billets' : 'ton billet'}.`
 
-  return (
+  return user ? (
     <Container>
       <ScrollView
         onScroll={onScroll}
@@ -174,7 +179,7 @@ export const BookingDetailsContent = ({
       {/* BookingDetailsHeader is called after Body to implement the BlurView for iOS */}
       <BookingDetailsHeader headerTransition={headerTransition} title={offer.name} />
     </Container>
-  )
+  ) : null
 }
 
 function getVenueBlockVenue(venue: BookingVenueResponse): VenueBlockVenue {
