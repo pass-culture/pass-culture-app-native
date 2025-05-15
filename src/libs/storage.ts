@@ -18,6 +18,7 @@ export type StorageKey =
   | 'profile-address'
   | 'profile-city'
   | 'profile-name'
+  | 'profile-status'
   | 'phone_validation_code_asked_at'
   | 'react_navigation_persistence'
   | 'times_location_tooltip_has_been_displayed'
