@@ -16,7 +16,7 @@ import { analytics } from 'libs/analytics/provider'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
-import { formatDates, getTimeStampInMillis } from 'libs/parsers/formatDates'
+import { formatPlaylistDates, getTimeStampInMillis } from 'libs/parsers/formatDates'
 import {
   formatPrice,
   getDisplayedPrice,
@@ -30,7 +30,7 @@ import { PassPlaylist } from 'ui/components/PassPlaylist'
 import { CustomListRenderItem, RenderFooterItem } from 'ui/components/Playlist'
 import { SeeMore } from 'ui/components/SeeMore'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { LENGTH_M, RATIO_HOME_IMAGE, Typo, getSpacing } from 'ui/theme'
+import { getSpacing, LENGTH_M, RATIO_HOME_IMAGE, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 const keyExtractor = (item: Offer) => item.objectID
@@ -96,7 +96,7 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
         subcategoryId={item.offer.subcategoryId}
         offerId={+item.objectID}
         name={item.offer.name}
-        date={formatDates(timestampsInMillis)}
+        date={formatPlaylistDates(timestampsInMillis)}
         isDuo={item.offer.isDuo}
         thumbUrl={item.offer.thumbUrl}
         price={getDisplayedPrice(

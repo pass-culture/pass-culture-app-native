@@ -28,6 +28,21 @@ export const CAPITALIZED_SHORT_MONTHS = [
   'Déc.',
 ] as const
 
+export const SHORT_MONTHS = [
+  'janv.',
+  'févr.',
+  'mars',
+  'avril',
+  'mai',
+  'juin',
+  'juil.',
+  'août',
+  'sept.',
+  'oct.',
+  'nov.',
+  'déc.',
+] as const
+
 export const MONTHS = [
   'janvier',
   'février',
