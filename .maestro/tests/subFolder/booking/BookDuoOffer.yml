@@ -10,7 +10,8 @@ appId: ${MAESTRO_APP_ID}
     text: 'Séance de cinéma'
     index: 1
 
-- waitForAnimationToEnd
+- waitForAnimationToEnd: # TODO:(PC-36170) améliorer les perfs de la page offre (cinéma)
+    timeout: 5000
 
 - repeat:
     while:
@@ -21,6 +22,8 @@ appId: ${MAESTRO_APP_ID}
       - tapOn:
           text: 'Séance de cinéma'
           index: 1
+      - waitForAnimationToEnd: # TODO:(PC-36170) améliorer les perfs de la page offre (cinéma)
+          timeout: 5000
 
 - runFlow:
     when:
@@ -34,6 +37,7 @@ appId: ${MAESTRO_APP_ID}
     enabled: true
     below:
       id: VenuePreviewImage
+    label: 'Sélection de la séance'
 
 - runFlow:
     when:

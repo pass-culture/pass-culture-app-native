@@ -24,10 +24,10 @@ onFlowStart:
 - tapOn: 'Rechercher'
 
 - tapOn: '.*Voir tous les filtres.*'
-- tapOn: 'Dates'
+- doubleTapOn: 'Dates'
 
 - assertVisible: 'Dates'
-- tapOn: ".*${output.targetDateTest}.*"
+- tapOn: '${output.targetDateTest}'
 
 - tapOn: 'Appliquer le filtre'
 - doubleTapOn: 'Rechercher'

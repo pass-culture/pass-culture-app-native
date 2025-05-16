@@ -30,7 +30,7 @@ onFlowStart:
 
 - tapOn: 'Dates'
 
-- tapOn: ".*${output.targetDateTest}.*"
+- tapOn: '${output.targetDateTest}'
 
 - tapOn:
     text: 'Appliquer le filtre'
