@@ -1,4 +1,5 @@
 const { softRules } = require('./eslint-soft-rules')
+const { boundariesRule, boundariesElements } = require('./eslint-custom-rules/boundaries-rule')
 
 module.exports = {
   root: true,
@@ -10,6 +11,7 @@ module.exports = {
     'eslint-plugin-local-rules',
     'testing-library',
     'jest',
+    'boundaries',
   ],
   parser: '@typescript-eslint/parser', // Specifies the ESLint parser
   extends: [
@@ -21,6 +23,7 @@ module.exports = {
     'plugin:prettier/recommended', // Enables eslint-plugin-prettier and displays prettier errors as ESLint errors. Make sure this is always the last configuration in the extends array.
     'plugin:import/errors',
     'plugin:react-hooks/recommended',
+    'plugin:boundaries/recommended',
   ],
   parserOptions: {
     ecmaVersion: 2018, // Allows for the parsing of modern ECMAScript features
@@ -304,6 +307,7 @@ module.exports = {
     react: {
       version: 'detect', // Tells eslint-plugin-react to automatically detect the version of React to use
     },
+    'boundaries/elements': boundariesElements,
     'import/resolver': {
       node: {
         extensions: [
