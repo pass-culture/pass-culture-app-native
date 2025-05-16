@@ -23,8 +23,8 @@ export const EmailReceived = ({
   const isMailAppAvailable = useIsMailAppAvailable()
 
   return (
-    <TicketContainer testID="withdrawal-info-email">
-      <TicketText testID="withdrawal-info-email-msg">{emailMessage}</TicketText>
+    <TicketContainer testID="withdrawal-email-received">
+      <TicketText>{emailMessage}</TicketText>
       {isMailAppAvailable ? (
         <ButtonTertiaryBlack
           wording="Consulter mes e-mails"
