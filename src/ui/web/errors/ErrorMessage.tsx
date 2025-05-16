@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react'
 
-interface Props {
+type Props = {
+  // eslint-disable-next-line react/no-unused-prop-types
   relatedInputId?: string
   children: React.ReactNode
 }
