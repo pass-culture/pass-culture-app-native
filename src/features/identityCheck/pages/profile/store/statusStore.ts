@@ -2,10 +2,10 @@ import { ActivityIdEnum } from 'api/gen'
 import { createStore } from 'libs/store/createStore'
 
 type State = {
-  status: ActivityIdEnum | undefined
+  status: ActivityIdEnum | null
 }
 
-const defaultState: State = { status: undefined }
+const defaultState: State = { status: null }
 
 const statusStore = createStore({
   name: 'profile-status',

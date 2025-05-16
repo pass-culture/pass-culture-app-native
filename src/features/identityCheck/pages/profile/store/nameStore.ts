@@ -1,6 +1,6 @@
 import { createStore } from 'libs/store/createStore'
 
-interface Name {
+export interface Name {
   firstName: string
   lastName: string
 }

@@ -18,6 +18,10 @@ import {
 } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useOngoingOrEndedBookingQuery } from 'features/bookings/queries'
+import {
+  ValidStoredProfileInfos,
+  useStoredProfileInfos,
+} from 'features/identityCheck/pages/helpers/useStoredProfileInfos'
 import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
 import { openUrl } from 'features/navigation/helpers/openUrl'
 import { Referrals, UseRouteType } from 'features/navigation/RootNavigator/types'
@@ -76,6 +80,7 @@ type Props = {
   isDepositExpired?: boolean
   apiRecoParams?: RecommendationApiParams
   playlistType?: PlaylistType
+  storedProfileInfos?: ValidStoredProfileInfos
   featureFlags: { enableBookingFreeOfferFifteenSixteen: boolean }
 }
 
@@ -110,6 +115,7 @@ export const getCtaWordingAndAction = ({
   isDepositExpired,
   apiRecoParams,
   playlistType,
+  storedProfileInfos,
   featureFlags,
 }: Props): ICTAWordingAndAction | undefined => {
   const { externalTicketOfficeUrl, subcategoryId } = offer
@@ -146,7 +152,7 @@ export const getCtaWordingAndAction = ({
           wording: 'Réserver l’offre',
           isDisabled: false,
           navigateTo: {
-            screen: 'SetName',
+            screen: storedProfileInfos ? 'ProfileInformationValidation' : 'SetName',
             params: { type: ProfileTypes.BOOKING_FREE_OFFER_15_16 },
           },
         }
@@ -196,7 +202,6 @@ export const getCtaWordingAndAction = ({
     }
   }
 
-  // Actuellement ce qui s'affiche
   if (userStatus.statusType === YoungStatusType.eligible) {
     const common = {
       wording: isMovieScreeningOffer ? undefined : 'Réserver l’offre',
@@ -375,6 +380,8 @@ export const useCtaWordingAndAction = (props: UseGetCtaWordingAndActionProps) =>
     RemoteStoreFeatureFlags.ENABLE_BOOKING_FREE_OFFER_15_16
   )
 
+  const storedProfileInfos = useStoredProfileInfos()
+
   const { offer, from, searchId, subcategory } = props
   const offerId = offer.id
 
@@ -458,5 +465,6 @@ export const useCtaWordingAndAction = (props: UseGetCtaWordingAndActionProps) =>
     apiRecoParams,
     playlistType,
     featureFlags: { enableBookingFreeOfferFifteenSixteen },
+    storedProfileInfos,
   })
 }
