@@ -36,6 +36,7 @@ export const cheatcodesNavigationIdentityCheckButtons: [CheatcodesButtonsWithSub
       { screen: 'SelectIDOrigin' },
       { screen: 'SelectIDStatus' },
       { screen: 'SelectPhoneStatus' },
+      { screen: 'ProfileInformationValidation' },
       { screen: 'SetAddress', navigationParams: { type: ProfileTypes.IDENTITY_CHECK } },
       { screen: 'SetCity', navigationParams: { type: ProfileTypes.IDENTITY_CHECK } },
       { screen: 'SetName', navigationParams: { type: ProfileTypes.IDENTITY_CHECK } },

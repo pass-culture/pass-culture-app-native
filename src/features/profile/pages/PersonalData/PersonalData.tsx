@@ -1,8 +1,8 @@
 import React, { useMemo } from 'react'
 import styled from 'styled-components/native'
 
-import { ActivityIdEnum } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { getActivityLabel } from 'features/identityCheck/helpers/getActivityLabel'
 import { getProfileNavConfig } from 'features/navigation/ProfileStackNavigator/getProfileNavConfig'
 import { ProfileNavigateParams } from 'features/navigation/RootNavigator/types'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
@@ -16,6 +16,7 @@ import { ButtonQuaternarySecondary } from 'ui/components/buttons/ButtonQuaternar
 import { SectionRow } from 'ui/components/SectionRow'
 import { Separator } from 'ui/components/Separator'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { Trash } from 'ui/svg/icons/Trash'
@@ -24,18 +25,6 @@ import { SECTION_ROW_ICON_SIZE } from 'ui/theme/constants'
 
 function onEmailChangeClick() {
   void analytics.logModifyMail()
-}
-
-const ACTIVITIES: Record<ActivityIdEnum, string> = {
-  [ActivityIdEnum.MIDDLE_SCHOOL_STUDENT]: 'Collégien',
-  [ActivityIdEnum.HIGH_SCHOOL_STUDENT]: 'Lycéen',
-  [ActivityIdEnum.STUDENT]: 'Étudiant',
-  [ActivityIdEnum.EMPLOYEE]: 'Employé',
-  [ActivityIdEnum.APPRENTICE]: 'Apprenti',
-  [ActivityIdEnum.APPRENTICE_STUDENT]: 'Alternant',
-  [ActivityIdEnum.VOLUNTEER]: 'Volontaire',
-  [ActivityIdEnum.INACTIVE]: 'Inactif',
-  [ActivityIdEnum.UNEMPLOYED]: 'Demandeur d’emploi',
 }
 
 export function PersonalData() {
@@ -57,15 +46,15 @@ export function PersonalData() {
     <SecondaryPageWithBlurHeader onGoBack={goBack} title="Informations personnelles">
       {user?.isBeneficiary ? (
         <React.Fragment>
-          <CaptionNeutralInfo>Prénom et nom</CaptionNeutralInfo>
-          <Spacer.Column numberOfSpaces={2} />
-          <Typo.Body>{fullname}</Typo.Body>
+          <ViewGap gap={2}>
+            <CaptionNeutralInfo>Prénom et nom</CaptionNeutralInfo>
+            <Typo.Body>{fullname}</Typo.Body>
+          </ViewGap>
           <StyledSeparator />
         </React.Fragment>
       ) : null}
 
       <CaptionNeutralInfo>Adresse e-mail</CaptionNeutralInfo>
-      <Spacer.Column numberOfSpaces={2} />
       <EditContainer>
         <EditText>{user?.email}</EditText>
         <EditButton
@@ -80,9 +69,10 @@ export function PersonalData() {
 
       {user?.isBeneficiary && user?.phoneNumber ? (
         <React.Fragment>
-          <CaptionNeutralInfo>Numéro de téléphone</CaptionNeutralInfo>
-          <Spacer.Column numberOfSpaces={2} />
-          <Typo.Body>{user?.phoneNumber}</Typo.Body>
+          <ViewGap gap={2}>
+            <CaptionNeutralInfo>Numéro de téléphone</CaptionNeutralInfo>
+            <Typo.Body>{user?.phoneNumber}</Typo.Body>
+          </ViewGap>
           <StyledSeparator />
         </React.Fragment>
       ) : null}
@@ -90,7 +80,6 @@ export function PersonalData() {
       {user?.hasPassword ? (
         <React.Fragment>
           <CaptionNeutralInfo>Mot de passe</CaptionNeutralInfo>
-          <Spacer.Column numberOfSpaces={2} />
           <EditContainer>
             <EditText>{'*'.repeat(12)}</EditText>
             <EditButton
@@ -106,9 +95,8 @@ export function PersonalData() {
       {user?.isBeneficiary ? (
         <React.Fragment>
           <CaptionNeutralInfo>Statut</CaptionNeutralInfo>
-          <Spacer.Column numberOfSpaces={2} />
           <EditContainer>
-            <EditText>{user?.activityId && ACTIVITIES[user.activityId]}</EditText>
+            <EditText>{getActivityLabel(user?.activityId)}</EditText>
             <EditButton
               navigateTo={getProfileNavConfig('ChangeStatus')}
               wording="Modifier"
@@ -122,7 +110,6 @@ export function PersonalData() {
       {user?.isBeneficiary ? (
         <React.Fragment>
           <CaptionNeutralInfo>Ville de résidence</CaptionNeutralInfo>
-          <Spacer.Column numberOfSpaces={2} />
           <EditContainer>
             <EditText numberOfLines={2}>{city}</EditText>
             <EditButton
@@ -135,26 +122,27 @@ export function PersonalData() {
         </React.Fragment>
       ) : null}
 
-      <InfoBanner message="Le pass Culture traite tes données pour la gestion de ton compte et pour l’inscription à la newsletter.">
-        <Spacer.Column numberOfSpaces={3} />
-        <ExternalTouchableLink
-          as={ButtonQuaternarySecondary}
-          externalNav={{ url: env.FAQ_LINK_PERSONAL_DATA }}
-          wording="Comment gérer tes données personnelles&nbsp;?"
-          icon={ExternalSiteFilled}
-          justifyContent="flex-start"
-          inline
+      <ViewGap gap={8}>
+        <InfoBanner message="Le pass Culture traite tes données pour la gestion de ton compte et pour l’inscription à la newsletter.">
+          <Spacer.Column numberOfSpaces={3} />
+          <ExternalTouchableLink
+            as={ButtonQuaternarySecondary}
+            externalNav={{ url: env.FAQ_LINK_PERSONAL_DATA }}
+            wording="Comment gérer tes données personnelles&nbsp;?"
+            icon={ExternalSiteFilled}
+            justifyContent="flex-start"
+            inline
+          />
+        </InfoBanner>
+        <SectionRow
+          title="Supprimer mon compte"
+          type="navigable"
+          navigateTo={getProfileNavConfig('DeleteProfileReason')}
+          onPress={analytics.logAccountDeletion}
+          icon={Trash}
+          iconSize={SECTION_ROW_ICON_SIZE}
         />
-      </InfoBanner>
-      <Spacer.Column numberOfSpaces={8} />
-      <SectionRow
-        title="Supprimer mon compte"
-        type="navigable"
-        navigateTo={getProfileNavConfig('DeleteProfileReason')}
-        onPress={analytics.logAccountDeletion}
-        icon={Trash}
-        iconSize={SECTION_ROW_ICON_SIZE}
-      />
+      </ViewGap>
     </SecondaryPageWithBlurHeader>
   )
 }
@@ -164,6 +152,7 @@ const StyledSeparator = styled(Separator.Horizontal)({
 })
 
 const EditContainer = styled.View({
+  marginTop: getSpacing(2),
   flexDirection: 'row',
   justifyContent: 'space-between',
 })
