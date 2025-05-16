@@ -1,0 +1,120 @@
+diff --git a/node_modules/react-native-web/dist/cjs/exports/Image/index.js b/node_modules/react-native-web/dist/cjs/exports/Image/index.js
+index c76ecde..007abd6 100644
+--- a/node_modules/react-native-web/dist/cjs/exports/Image/index.js
++++ b/node_modules/react-native-web/dist/cjs/exports/Image/index.js
+@@ -155,6 +155,7 @@ var Image = /*#__PURE__*/React.forwardRef((props, ref) => {
+     onLoadStart = props.onLoadStart,
+     pointerEvents = props.pointerEvents,
+     source = props.source,
++    transform = props.transform,
+     style = props.style,
+     rest = (0, _objectWithoutPropertiesLoose2.default)(props, _excluded);
+   var ariaLabel = _ariaLabel || accessibilityLabel;
+@@ -279,7 +280,8 @@ var Image = /*#__PURE__*/React.forwardRef((props, ref) => {
+   }), /*#__PURE__*/React.createElement(_View.default, {
+     style: [styles.image, resizeModeStyles[resizeMode], {
+       backgroundImage,
+-      filter
++      filter,
++      transform
+     }, backgroundSize != null && {
+       backgroundSize
+     }],
+diff --git a/node_modules/react-native-web/dist/cjs/exports/Text/index.js b/node_modules/react-native-web/dist/cjs/exports/Text/index.js
+index 8411b58..6c04c77 100644
+--- a/node_modules/react-native-web/dist/cjs/exports/Text/index.js
++++ b/node_modules/react-native-web/dist/cjs/exports/Text/index.js
+@@ -108,9 +108,9 @@ var Text = /*#__PURE__*/React.forwardRef((props, forwardedRef) => {
+   var writingDirection = componentDirection || contextDirection;
+   var supportedProps = pickProps(rest);
+   supportedProps.dir = componentDirection;
+-  // 'auto' by default allows browsers to infer writing direction (root elements only)
++  // 'ltr' by default allows browsers to infer writing direction (root elements only)
+   if (!hasTextAncestor) {
+-    supportedProps.dir = componentDirection != null ? componentDirection : 'auto';
++    supportedProps.dir = componentDirection != null ? componentDirection : 'ltr';
+   }
+   if (onClick || onPress) {
+     supportedProps.onClick = handleClick;
+diff --git a/node_modules/react-native-web/dist/cjs/exports/TextInput/index.js b/node_modules/react-native-web/dist/cjs/exports/TextInput/index.js
+index ec92278..b6a43cb 100644
+--- a/node_modules/react-native-web/dist/cjs/exports/TextInput/index.js
++++ b/node_modules/react-native-web/dist/cjs/exports/TextInput/index.js
+@@ -352,7 +352,7 @@ var TextInput = /*#__PURE__*/React.forwardRef((props, forwardedRef) => {
+   supportedProps.autoComplete = autoComplete || autoCompleteType || 'on';
+   supportedProps.autoCorrect = autoCorrect ? 'on' : 'off';
+   // 'auto' by default allows browsers to infer writing direction
+-  supportedProps.dir = dir !== undefined ? dir : 'auto';
++  supportedProps.dir = dir !== undefined ? dir : 'ltr';
+   /*
+   if (returnKeyType != null) {
+     warnOnce('returnKeyType', 'returnKeyType is deprecated. Use enterKeyHint.');
+diff --git a/node_modules/react-native-web/dist/cjs/vendor/react-native/VirtualizedList/VirtualizedListCellRenderer.js b/node_modules/react-native-web/dist/cjs/vendor/react-native/VirtualizedList/VirtualizedListCellRenderer.js
+index 2099ca6..82081d0 100644
+--- a/node_modules/react-native-web/dist/cjs/vendor/react-native/VirtualizedList/VirtualizedListCellRenderer.js
++++ b/node_modules/react-native-web/dist/cjs/vendor/react-native/VirtualizedList/VirtualizedListCellRenderer.js
+@@ -143,7 +143,7 @@ class CellRenderer extends React.Component {
+     }), element, itemSeparator);
+     return /*#__PURE__*/React.createElement(_VirtualizedListContext.VirtualizedListCellContextProvider, {
+       cellKey: this.props.cellKey
+-    }, result);
++    }, this.props.parentProps && this.props.parentProps.itemAs ? React.createElement(this.props.parentProps.itemAs, {}, result) : result);
+   }
+ }
+ exports.default = CellRenderer;
+diff --git a/node_modules/react-native-web/dist/cjs/vendor/react-native/VirtualizedList/index.js b/node_modules/react-native-web/dist/cjs/vendor/react-native/VirtualizedList/index.js
+index f9df024..748e65d 100644
+--- a/node_modules/react-native-web/dist/cjs/vendor/react-native/VirtualizedList/index.js
++++ b/node_modules/react-native-web/dist/cjs/vendor/react-native/VirtualizedList/index.js
+@@ -1135,7 +1135,14 @@ class VirtualizedList extends _StateSafePureComponent.default {
+       style: inversionStyle ? [inversionStyle, this.props.style] : this.props.style
+     });
+     this._hasMore = this.state.cellsAroundViewport.last < itemCount - 1;
+-    var innerRet = /*#__PURE__*/React.createElement(_VirtualizedListContext.VirtualizedListContextProvider, {
++    const headerIdx = cells.findIndex((cell) => cell.key === "$header");
++    const footerIdx = cells.findIndex((cell) => cell.key === "$footer");
++    const emptyComponentIdx = cells.findIndex((cell) => cell.key === "$empty");
++    const cellsWithoutHeaderAndFooter = cells.filter((_, idx) => !([headerIdx, footerIdx].includes(idx)));
++    const isListWithNonNullItems = cellsWithoutHeaderAndFooter && this.props.listAs && emptyComponentIdx === -1;
++    const cellsAsListItem = isListWithNonNullItems ? React.createElement(this.props.listAs, { key: 'listCells' }, cellsWithoutHeaderAndFooter) : null;
++    const cellsToDisplay = isListWithNonNullItems ? [cells[headerIdx], cellsAsListItem, cells[footerIdx]] : cells;
++    var ret = /*#__PURE__*/React.createElement(_VirtualizedListContext.VirtualizedListContextProvider, {
+       value: {
+         cellKey: null,
+         getScrollMetrics: this._getScrollMetrics,
+@@ -1146,34 +1153,7 @@ class VirtualizedList extends _StateSafePureComponent.default {
+       }
+     }, /*#__PURE__*/React.cloneElement((this.props.renderScrollComponent || this._defaultRenderScrollComponent)(scrollProps), {
+       ref: this._captureScrollRef
+-    }, cells));
+-    var ret = innerRet;
+-    /* https://github.com/necolas/react-native-web/issues/2239: Re-enable when ScrollView.Context.Consumer is available.
+-    if (__DEV__) {
+-      ret = (
+-        <ScrollView.Context.Consumer>
+-          {scrollContext => {
+-            if (
+-              scrollContext != null &&
+-              !scrollContext.horizontal ===
+-                !horizontalOrDefault(this.props.horizontal) &&
+-              !this._hasWarned.nesting &&
+-              this.context == null &&
+-              this.props.scrollEnabled !== false
+-            ) {
+-              // TODO (T46547044): use React.warn once 16.9 is sync'd: https://github.com/facebook/react/pull/15170
+-              console.error(
+-                'VirtualizedLists should never be nested inside plain ScrollViews with the same ' +
+-                  'orientation because it can break windowing and other functionality - use another ' +
+-                  'VirtualizedList-backed container instead.',
+-              );
+-              this._hasWarned.nesting = true;
+-            }
+-            return innerRet;
+-          }}
+-        </ScrollView.Context.Consumer>
+-      );
+-    }*/
++    }, cellsToDisplay));
+     if (this.props.debug) {
+       return /*#__PURE__*/React.createElement(_View.default, {
+         style: styles.debug

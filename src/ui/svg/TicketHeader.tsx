@@ -1,4 +1,4 @@
-import React, { memo } from 'react'
+import React from 'react'
 import { Path } from 'react-native-svg'
 import styled, { useTheme } from 'styled-components/native'
 
@@ -11,7 +11,6 @@ const viewBox = '0 0 309 50'
 
 interface Props {
   width: number
-  color?: ColorsEnum
 }
 
 function TicketHeaderComponent(props: Props) {
@@ -38,8 +37,8 @@ function TicketHeaderComponent(props: Props) {
   )
 }
 
-export const TicketHeader = memo(
-  styled(TicketHeaderComponent).attrs(({ color, theme }) => ({
+export const TicketHeader = styled(TicketHeaderComponent).attrs<{ color: ColorsEnum }>(
+  ({ color, theme }) => ({
     color: color ?? theme.colors.white,
-  }))``
-)
+  })
+)``

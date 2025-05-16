@@ -5,6 +5,6 @@ type Props = {
   children: React.ReactNode
 }
 
-export const GoogleOAuthProvider = ({ children }: Props) => (
+export const GoogleOAuthProvider = ({ clientId: _clientId, children }: Props) => (
   <React.Fragment>{children}</React.Fragment>
 )
