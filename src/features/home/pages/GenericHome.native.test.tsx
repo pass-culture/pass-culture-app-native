@@ -191,8 +191,7 @@ describe('GenericHome page - Analytics', () => {
 
     // Because of the way useFocusEffect is mocked, it is called more than it should be.
     // Therefore we just test that the log method is called at least once.
-    // eslint-disable-next-line jest/prefer-called-with
-    await waitFor(() => expect(logPlaylistOfferView).toHaveBeenCalled())
+    await waitFor(() => expect(logPlaylistOfferView).toHaveBeenCalledWith(undefined))
   })
 
   it('should trigger logEvent "AllModulesSeen" when reaching the end', async () => {

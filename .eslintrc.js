@@ -406,7 +406,7 @@ module.exports = {
         'local-rules/no-currency-symbols': 'off',
         'local-rules/no-empty-arrow-function': 'error',
         'react/jsx-no-constructed-context-values': 'off',
-        'jest/prefer-called-with': 'warn',
+        'jest/prefer-called-with': 'error',
         'jest/no-disabled-tests': 'warn',
         'jest/no-focused-tests': 'warn',
         'jest/no-identical-title': 'error',
