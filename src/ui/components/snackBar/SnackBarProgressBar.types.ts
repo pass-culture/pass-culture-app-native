@@ -1,8 +1,7 @@
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
+import { ColorsType } from 'theme/types'
 
 export type SnackBarProgressBarProps = {
-  color: ColorsEnum
+  color: ColorsType
   timeout: number
   refresher: number
 }

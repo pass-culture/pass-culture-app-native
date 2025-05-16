@@ -51,8 +51,8 @@ const BookClubCertificationSvg: React.FunctionComponent<AccessibleIcon> = ({
 
 export const BookClubCertification = styled(BookClubCertificationSvg).attrs(
   ({ color, color2, size, theme }) => ({
-    color: color ?? theme.colors.skyBlue,
-    color2: color2 ?? theme.colors.skyBlueDark,
+    color: color ?? theme.designSystem.color.icon.default,
+    color2: color2 ?? theme.designSystem.color.icon.default,
     size: size ?? theme.icons.sizes.standard,
   })
 )``

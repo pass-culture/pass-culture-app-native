@@ -14,30 +14,30 @@ export const mapSnackBarTypeToStyle = (
     case SnackBarType.SUCCESS:
       return {
         icon: AccessibleCheck,
-        backgroundColor: theme.colors.greenValid,
-        progressBarColor: theme.colors.greenLight,
-        color: 'lockedInverted',
+        backgroundColor: theme.designSystem.color.background.success,
+        progressBarColor: theme.designSystem.color.background.success,
+        color: 'default',
       }
     case SnackBarType.ERROR:
       return {
         icon: AccessibleError,
-        backgroundColor: theme.colors.error,
-        progressBarColor: theme.colors.primaryDisabled,
-        color: 'lockedInverted',
+        backgroundColor: theme.designSystem.color.background.error,
+        progressBarColor: theme.designSystem.color.background.error,
+        color: 'default',
       }
     case SnackBarType.INFO:
       return {
         icon: AccessibleInfo,
-        backgroundColor: theme.colors.accent,
-        progressBarColor: theme.colors.white,
-        color: 'lockedInverted',
+        backgroundColor: theme.designSystem.color.background.info,
+        progressBarColor: theme.designSystem.color.background.info,
+        color: 'default',
       }
     default:
       return {
         icon: undefined,
-        backgroundColor: theme.colors.transparent,
-        progressBarColor: theme.colors.transparent,
-        color: 'lockedInverted',
+        backgroundColor: theme.designSystem.color.background.default,
+        progressBarColor: theme.designSystem.color.background.default,
+        color: 'default',
       }
   }
 }

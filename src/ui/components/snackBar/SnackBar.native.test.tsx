@@ -33,8 +33,8 @@ describe('SnackBar Component', () => {
           visible: true,
           message: 'message',
           icon: Check,
-          backgroundColor: theme.colors.accent,
-          progressBarColor: theme.colors.greenLight,
+          backgroundColor: theme.designSystem.color.background.success,
+          progressBarColor: theme.designSystem.color.background.success,
           color: 'inverted',
           timeout: 1000,
           refresher: 1,
@@ -47,8 +47,8 @@ describe('SnackBar Component', () => {
       const progressBar = screen.getByTestId('snackbar-progressbar')
       const message = screen.getByTestId('snackbar-message')
 
-      expect(view.props.backgroundColor).toEqual(theme.colors.accent)
-      expect(progressBar.props.backgroundColor).toEqual(theme.colors.greenLight)
+      expect(view.props.backgroundColor).toEqual(theme.designSystem.color.background.success)
+      expect(progressBar.props.backgroundColor).toEqual(theme.designSystem.color.background.success)
       expect(message.props.color).toEqual('inverted')
     })
 
@@ -58,8 +58,8 @@ describe('SnackBar Component', () => {
           visible: true,
           message: 'message',
           icon: Check,
-          backgroundColor: theme.colors.accent,
-          progressBarColor: theme.colors.greenLight,
+          backgroundColor: theme.designSystem.color.background.success,
+          progressBarColor: theme.designSystem.color.text.success,
           color: 'inverted',
           refresher: 1,
         })
@@ -102,8 +102,8 @@ describe('SnackBar Component', () => {
           visible: true,
           message: 'message',
           icon: undefined,
-          backgroundColor: theme.colors.accent,
-          progressBarColor: theme.colors.greenLight,
+          backgroundColor: theme.designSystem.color.background.success,
+          progressBarColor: theme.designSystem.color.text.success,
           color: 'inverted',
           refresher: 1,
         })
@@ -266,8 +266,8 @@ function renderHelperSnackBar(visible: boolean, props: SnackBarHelperSettings, r
       icon={Check}
       onClose={props.onClose}
       timeout={props.timeout}
-      backgroundColor={theme.colors.primary}
-      progressBarColor={theme.colors.secondary}
+      backgroundColor={theme.designSystem.color.background.brandPrimary}
+      progressBarColor={theme.designSystem.color.background.brandSecondary}
       color="inverted"
       refresher={refresher}
       animationDuration={props.animationDuration}
