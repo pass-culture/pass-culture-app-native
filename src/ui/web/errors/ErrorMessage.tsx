@@ -1,9 +1,9 @@
 import React, { Fragment } from 'react'
 
-interface Props {
+type Props = {
   relatedInputId?: string
   children: React.ReactNode
 }
-export const ErrorMessage: React.FC<Props> = (props) => {
-  return <Fragment>{props.children}</Fragment>
+export const ErrorMessage: React.FC<Props> = ({ children, relatedInputId: _relatedInputId }) => {
+  return <Fragment>{children}</Fragment>
 }

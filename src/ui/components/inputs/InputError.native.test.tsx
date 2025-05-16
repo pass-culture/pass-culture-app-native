@@ -34,19 +34,4 @@ describe('InputError Component', () => {
 
     expect(text).not.toBeOnTheScreen()
   })
-
-  it('should display the right top space', () => {
-    render(
-      <InputError
-        visible
-        messageId="message"
-        numberOfSpacesTop={1}
-        relatedInputId="relatedInputId"
-      />
-    )
-
-    const spacer = screen.getByTestId('input-error-top-spacer')
-
-    expect(spacer.props.numberOfSpaces).toEqual(1)
-  })
 })

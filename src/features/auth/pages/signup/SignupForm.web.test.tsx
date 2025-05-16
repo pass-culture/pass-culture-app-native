@@ -1,3 +1,5 @@
+// eslint-disable-next-line no-restricted-imports
+import { GoogleOAuthProvider } from '@react-oauth/google'
 import React from 'react'
 import { SafeAreaProvider } from 'react-native-safe-area-context'
 
@@ -6,7 +8,6 @@ import { EmailValidationRemainingResendsResponse, OauthStateResponse } from 'api
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { env } from 'libs/environment/fixtures'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
-import { GoogleOAuthProvider } from 'libs/react-native-google-sso/GoogleOAuthProvider'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, checkAccessibilityFor, render } from 'tests/utils/web'

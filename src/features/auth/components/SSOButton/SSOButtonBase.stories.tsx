@@ -1,8 +1,9 @@
+// eslint-disable-next-line no-restricted-imports
+import { GoogleOAuthProvider } from '@react-oauth/google'
 import type { Meta } from '@storybook/react'
 import React from 'react'
 
 import { env } from 'libs/environment/fixtures'
-import { GoogleOAuthProvider } from 'libs/react-native-google-sso/GoogleOAuthProvider'
 import { Variants, VariantsStory, VariantsTemplate } from 'ui/storybook/VariantsTemplate'
 
 import { SSOButtonBase } from './SSOButtonBase'

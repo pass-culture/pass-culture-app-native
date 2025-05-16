@@ -7,28 +7,26 @@ import { svgIdentifier } from 'ui/svg/utils'
 
 import { getSpacing } from '../theme'
 
-interface HeaderBackgroundProps {
+type HeaderBackgroundProps = {
   height?: string | number
   width?: string | number
-  position?: 'absolute' | 'relative'
 }
 
 const HEADER_BACKGROUND_DEFAULT_SIZE = getSpacing(73.5)
 
-function NotMemoizedHeaderBackground({
+const NotMemoizedHeaderBackground: React.FC<HeaderBackgroundProps> = ({
   width,
   height = HEADER_BACKGROUND_DEFAULT_SIZE,
-  position = 'absolute',
-}: HeaderBackgroundProps) {
+}) => {
   return (
-    <BackgroundContainer height={height} width={width} position={position}>
+    <BackgroundContainer height={height} width={width}>
       <HeaderBackgroundSvg height={height} width={width} />
     </BackgroundContainer>
   )
 }
 
-const BackgroundContainer = styled.View<HeaderBackgroundProps>(({ height, position, theme }) => ({
-  position,
+const BackgroundContainer = styled.View<HeaderBackgroundProps>(({ height, theme }) => ({
+  position: 'absolute',
   top: 0,
   left: 0,
   right: 0,
