@@ -1,6 +1,7 @@
 import mockdate from 'mockdate'
 
 import {
+  ActivityIdEnum,
   EligibilityType,
   OfferResponseV2,
   SearchGroupNameEnumv2,
@@ -73,6 +74,7 @@ describe('getCtaWordingAndAction', () => {
         user: { ...nonBeneficiaryUser, eligibility: EligibilityType.free },
         offer: buildOffer({ stocks: [{ ...baseOffer.stocks[0], price: 0 }] }),
         subcategory: buildSubcategory({}),
+        storedProfileInfos: undefined,
         featureFlags: { enableBookingFreeOfferFifteenSixteen: true },
       })
 
@@ -80,6 +82,32 @@ describe('getCtaWordingAndAction', () => {
         isDisabled: false,
         wording: 'Réserver l’offre',
         navigateTo: { screen: 'SetName', params: { type: ProfileTypes.BOOKING_FREE_OFFER_15_16 } },
+      })
+      expect(setFreeOfferIdSpy).toHaveBeenCalledTimes(1)
+    })
+
+    it('should display "Réserver l’offre" wording with navigate to ProfileInformationValidation screen and params type', () => {
+      const result = getCtaWordingAndAction({
+        ...defaultParameters,
+        user: { ...nonBeneficiaryUser, eligibility: EligibilityType.free },
+        offer: buildOffer({ stocks: [{ ...baseOffer.stocks[0], price: 0 }] }),
+        subcategory: buildSubcategory({}),
+        storedProfileInfos: {
+          name: { firstName: 'Jean', lastName: 'Dupont' },
+          city: { name: 'Paris', postalCode: '75011', code: '1234' },
+          address: '1 rue du Test',
+          status: ActivityIdEnum.STUDENT,
+        },
+        featureFlags: { enableBookingFreeOfferFifteenSixteen: true },
+      })
+
+      expect(result).toEqual({
+        isDisabled: false,
+        wording: 'Réserver l’offre',
+        navigateTo: {
+          screen: 'ProfileInformationValidation',
+          params: { type: ProfileTypes.BOOKING_FREE_OFFER_15_16 },
+        },
       })
       expect(setFreeOfferIdSpy).toHaveBeenCalledTimes(1)
     })
