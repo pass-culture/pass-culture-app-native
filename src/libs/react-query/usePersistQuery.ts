@@ -1,7 +1,12 @@
 import AsyncStorage from '@react-native-async-storage/async-storage'
+import {
+  QueryKey,
+  QueryFunction,
+  UseQueryOptions,
+  UseQueryResult,
+  useQuery,
+} from '@tanstack/react-query'
 import { useEffect, useMemo, useState } from 'react'
-import { QueryKey, UseQueryOptions, UseQueryResult, useQuery } from '@tanstack/react-query'
-import { QueryFunction } from 'react-query/types/core/types'
 
 import { eventMonitoring } from 'libs/monitoring/services'
 
