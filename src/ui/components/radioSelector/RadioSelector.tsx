@@ -7,22 +7,29 @@ import { accessibleRadioProps } from 'shared/accessibilityProps/accessibleRadioP
 import { useSpaceBarAction } from 'ui/hooks/useSpaceBarAction'
 import { getSpacing, Typo } from 'ui/theme'
 
-interface RadioSelectorProps {
+type RightContentProps =
+  | { rightText: string; rightElement?: never }
+  | { rightText?: never; rightElement: React.ReactNode }
+  | { rightText?: undefined; rightElement?: undefined }
+
+interface BaseRadioSelectorProps {
   label: string
   onPress: VoidFunction
   checked: boolean
   description?: string | null
-  rightText?: string
   disabled?: boolean
   testID?: string
   accessibilityLabel?: string
 }
+
+type RadioSelectorProps = BaseRadioSelectorProps & RightContentProps
 
 export const RadioSelector = ({
   label,
   onPress,
   description,
   rightText,
+  rightElement,
   checked,
   disabled,
   testID,
@@ -59,9 +66,15 @@ export const RadioSelector = ({
             }
           </LeftContent>
 
-          <RightText disabled={disabled} testID={testID ? `${testID}-right-text` : undefined}>
-            {rightText}
-          </RightText>
+          {rightElement ? <RightContainer>{rightElement}</RightContainer> : null}
+
+          {rightText ? (
+            <RightContainer>
+              <RightText disabled={disabled} testID={testID ? `${testID}-right-text` : undefined}>
+                {rightText}
+              </RightText>
+            </RightContainer>
+          ) : null}
         </Container>
       )}
       isSelected={checked}
@@ -95,6 +108,10 @@ const Description = styled(Typo.BodyAccentXs)<{ isHover?: boolean }>(
     textDecoration: isHover ? 'underline' : undefined,
   })
 )
+
+const RightContainer = styled.View({
+  marginLeft: getSpacing(4),
+})
 
 const RightText = styled(Typo.Body)(({ theme, disabled }) => ({
   color: disabled ? theme.colors.greyDark : theme.colors.black,

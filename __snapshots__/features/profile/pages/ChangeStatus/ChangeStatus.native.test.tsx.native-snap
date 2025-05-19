@@ -519,18 +519,6 @@ exports[`<ChangeStatus/> should render correctly 1`] = `
                         Collégien
                       </Text>
                     </View>
-                    <Text
-                      style={
-                        [
-                          {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-Medium",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
-                          },
-                        ]
-                      }
-                    />
                   </View>
                 </View>
               </View>
@@ -700,18 +688,6 @@ exports[`<ChangeStatus/> should render correctly 1`] = `
                         Lycéen
                       </Text>
                     </View>
-                    <Text
-                      style={
-                        [
-                          {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-Medium",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
-                          },
-                        ]
-                      }
-                    />
                   </View>
                 </View>
               </View>
@@ -881,18 +857,6 @@ exports[`<ChangeStatus/> should render correctly 1`] = `
                         Étudiant
                       </Text>
                     </View>
-                    <Text
-                      style={
-                        [
-                          {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-Medium",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
-                          },
-                        ]
-                      }
-                    />
                   </View>
                 </View>
               </View>
@@ -1062,18 +1026,6 @@ exports[`<ChangeStatus/> should render correctly 1`] = `
                         Employé
                       </Text>
                     </View>
-                    <Text
-                      style={
-                        [
-                          {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-Medium",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
-                          },
-                        ]
-                      }
-                    />
                   </View>
                 </View>
               </View>
@@ -1243,18 +1195,6 @@ exports[`<ChangeStatus/> should render correctly 1`] = `
                         Apprenti
                       </Text>
                     </View>
-                    <Text
-                      style={
-                        [
-                          {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-Medium",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
-                          },
-                        ]
-                      }
-                    />
                   </View>
                 </View>
               </View>
@@ -1424,18 +1364,6 @@ exports[`<ChangeStatus/> should render correctly 1`] = `
                         Alternant
                       </Text>
                     </View>
-                    <Text
-                      style={
-                        [
-                          {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-Medium",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
-                          },
-                        ]
-                      }
-                    />
                   </View>
                 </View>
               </View>
@@ -1620,18 +1548,6 @@ exports[`<ChangeStatus/> should render correctly 1`] = `
                         En service civique
                       </Text>
                     </View>
-                    <Text
-                      style={
-                        [
-                          {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-Medium",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
-                          },
-                        ]
-                      }
-                    />
                   </View>
                 </View>
               </View>
@@ -1816,18 +1732,6 @@ exports[`<ChangeStatus/> should render correctly 1`] = `
                         En incapacité de travailler
                       </Text>
                     </View>
-                    <Text
-                      style={
-                        [
-                          {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-Medium",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
-                          },
-                        ]
-                      }
-                    />
                   </View>
                 </View>
               </View>
@@ -2012,18 +1916,6 @@ exports[`<ChangeStatus/> should render correctly 1`] = `
                         En recherche d’emploi
                       </Text>
                     </View>
-                    <Text
-                      style={
-                        [
-                          {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-Medium",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
-                          },
-                        ]
-                      }
-                    />
                   </View>
                 </View>
               </View>
@@ -2755,18 +2647,6 @@ exports[`<ChangeStatus/> should show loading component 1`] = `
                         Collégien
                       </Text>
                     </View>
-                    <Text
-                      style={
-                        [
-                          {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-Medium",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
-                          },
-                        ]
-                      }
-                    />
                   </View>
                 </View>
               </View>
@@ -2936,18 +2816,6 @@ exports[`<ChangeStatus/> should show loading component 1`] = `
                         Lycéen
                       </Text>
                     </View>
-                    <Text
-                      style={
-                        [
-                          {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-Medium",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
-                          },
-                        ]
-                      }
-                    />
                   </View>
                 </View>
               </View>
@@ -3117,18 +2985,6 @@ exports[`<ChangeStatus/> should show loading component 1`] = `
                         Étudiant
                       </Text>
                     </View>
-                    <Text
-                      style={
-                        [
-                          {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-Medium",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
-                          },
-                        ]
-                      }
-                    />
                   </View>
                 </View>
               </View>
@@ -3298,18 +3154,6 @@ exports[`<ChangeStatus/> should show loading component 1`] = `
                         Employé
                       </Text>
                     </View>
-                    <Text
-                      style={
-                        [
-                          {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-Medium",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
-                          },
-                        ]
-                      }
-                    />
                   </View>
                 </View>
               </View>
@@ -3479,18 +3323,6 @@ exports[`<ChangeStatus/> should show loading component 1`] = `
                         Apprenti
                       </Text>
                     </View>
-                    <Text
-                      style={
-                        [
-                          {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-Medium",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
-                          },
-                        ]
-                      }
-                    />
                   </View>
                 </View>
               </View>
@@ -3660,18 +3492,6 @@ exports[`<ChangeStatus/> should show loading component 1`] = `
                         Alternant
                       </Text>
                     </View>
-                    <Text
-                      style={
-                        [
-                          {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-Medium",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
-                          },
-                        ]
-                      }
-                    />
                   </View>
                 </View>
               </View>
@@ -3856,18 +3676,6 @@ exports[`<ChangeStatus/> should show loading component 1`] = `
                         En service civique
                       </Text>
                     </View>
-                    <Text
-                      style={
-                        [
-                          {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-Medium",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
-                          },
-                        ]
-                      }
-                    />
                   </View>
                 </View>
               </View>
@@ -4052,18 +3860,6 @@ exports[`<ChangeStatus/> should show loading component 1`] = `
                         En incapacité de travailler
                       </Text>
                     </View>
-                    <Text
-                      style={
-                        [
-                          {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-Medium",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
-                          },
-                        ]
-                      }
-                    />
                   </View>
                 </View>
               </View>
@@ -4248,18 +4044,6 @@ exports[`<ChangeStatus/> should show loading component 1`] = `
                         En recherche d’emploi
                       </Text>
                     </View>
-                    <Text
-                      style={
-                        [
-                          {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-Medium",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
-                          },
-                        ]
-                      }
-                    />
                   </View>
                 </View>
               </View>
