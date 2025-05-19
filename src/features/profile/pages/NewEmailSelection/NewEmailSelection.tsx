@@ -78,7 +78,6 @@ export const NewEmailSelection = () => {
           control={control}
           name="newEmail"
           label="Nouvelle adresse e-mail"
-          placeholder="email@exemple.com"
           autoFocus
         />
         <Container>
