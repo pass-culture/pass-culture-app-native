@@ -78,6 +78,7 @@ export const SetStatus: FunctionComponent<Props> = ({ route }: Props) => {
     onError: () =>
       handlePostProfileError({
         isBookingFreeOffer,
+        enableBookingFreeOfferFifteenSixteen,
         storedFreeOfferId,
         reset,
         showErrorSnackBar,

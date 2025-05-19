@@ -74,6 +74,7 @@ export const ProfileInformationValidation = ({ route }: Props) => {
     onError: () =>
       handlePostProfileError({
         isBookingFreeOffer,
+        enableBookingFreeOfferFifteenSixteen,
         storedFreeOfferId,
         reset,
         showErrorSnackBar,
