@@ -18,6 +18,7 @@ import * as UnderageUserAPI from 'features/profile/helpers/useIsUserUnderage'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { storage } from 'libs/storage'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent, waitFor } from 'tests/utils'
@@ -258,6 +259,18 @@ describe('<SetStatus/>', () => {
 
     expect(reset).toHaveBeenCalledWith({
       routes: [{ name: 'SetProfileBookingError', params: { offerId: mockOfferId } }],
+    })
+  })
+
+  it('should save status in local storage when clicking on status', async () => {
+    renderSetStatus({ type: ProfileTypes.BOOKING_FREE_OFFER_15_16 })
+
+    await user.press(screen.getByText(ActivityTypesSnap.activities[1].label))
+
+    expect(await storage.readObject('profile-status')).toMatchObject({
+      state: {
+        status: ActivityTypesSnap.activities[1].id,
+      },
     })
   })
 })
