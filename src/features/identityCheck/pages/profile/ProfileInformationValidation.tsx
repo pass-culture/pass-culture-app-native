@@ -9,7 +9,10 @@ import { useNavigateForwardToStepper } from 'features/identityCheck/helpers/useN
 import { useSaveStep } from 'features/identityCheck/pages/helpers/useSaveStep'
 import { useStoredProfileInfos } from 'features/identityCheck/pages/helpers/useStoredProfileInfos'
 import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
-import { resetProfileStores } from 'features/identityCheck/pages/profile/store/resetProfileStores'
+import {
+  handlePostProfileError,
+  handlePostProfileSuccess,
+} from 'features/identityCheck/queries/profileSubmissionHandlers'
 import { usePostProfileMutation } from 'features/identityCheck/queries/usePostProfileMutation'
 import { IdentityCheckStep } from 'features/identityCheck/types'
 import {
@@ -58,40 +61,24 @@ export const ProfileInformationValidation = ({ route }: Props) => {
     ? `${storedProfileInfos.city.name} ${storedProfileInfos.city.postalCode}`
     : undefined
 
-  const handlePostProfileSuccess = () => {
-    if (isBookingFreeOffer && enableBookingFreeOfferFifteenSixteen) {
-      if (storedFreeOfferId) {
-        reset({ routes: [{ name: 'Offer', params: { id: storedFreeOfferId } }] })
-      } else {
-        reset({ routes: [{ name: 'SetProfileBookingError' }] })
-      }
-    } else {
-      navigateForwardToStepper()
-    }
-    resetProfileStores()
-    refetchUser()
-  }
-
-  const handlePostProfileError = () => {
-    if (isBookingFreeOffer) {
-      if (storedFreeOfferId) {
-        reset({
-          routes: [{ name: 'SetProfileBookingError', params: { offerId: storedFreeOfferId } }],
-        })
-      } else {
-        reset({ routes: [{ name: 'SetProfileBookingError' }] })
-      }
-    } else {
-      showErrorSnackBar({
-        message: 'Une erreur est survenue lors de la mise à jour de ton profil',
-        timeout: SNACK_BAR_TIME_OUT,
-      })
-    }
-  }
-
   const { mutateAsync: postProfile } = usePostProfileMutation({
-    onSuccess: () => handlePostProfileSuccess(),
-    onError: () => handlePostProfileError(),
+    onSuccess: () =>
+      handlePostProfileSuccess({
+        isBookingFreeOffer,
+        enableBookingFreeOfferFifteenSixteen,
+        storedFreeOfferId,
+        navigateForwardToStepper,
+        reset,
+        refetchUser,
+      }),
+    onError: () =>
+      handlePostProfileError({
+        isBookingFreeOffer,
+        storedFreeOfferId,
+        reset,
+        showErrorSnackBar,
+        SNACK_BAR_TIME_OUT,
+      }),
   })
 
   // isLoading from react-query is not support with mutateAsync
