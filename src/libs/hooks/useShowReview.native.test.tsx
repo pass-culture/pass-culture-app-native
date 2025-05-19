@@ -1,11 +1,12 @@
-import { AppState } from 'react-native'
+import React, { useState } from 'react'
+import { AppState, Button, Text } from 'react-native'
 import InAppReview from 'react-native-in-app-review'
 
 import { useReviewInAppInformation } from 'features/bookOffer/helpers/useReviewInAppInformation'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useShowReview } from 'libs/hooks/useShowReview'
-import { renderHook, waitFor } from 'tests/utils'
+import { render, renderHook, waitFor, userEvent, screen } from 'tests/utils'
 
 jest.unmock('libs/appState')
 const appStateSpy = jest.spyOn(AppState, 'addEventListener')
@@ -20,6 +21,34 @@ const mockUseReviewInAppInformation = useReviewInAppInformation as jest.Mock
 const mockUpdateInformationWhenReviewHasBeenRequested = jest.fn()
 
 jest.useFakeTimers()
+
+const CompA = ({ onPress }) => {
+  useShowReview()
+  return (
+    <React.Fragment>
+      <Button onPress={onPress} title="press" />
+      <Text>State A</Text>
+    </React.Fragment>
+  )
+}
+
+const CompB = () => {
+  return <Text>State B</Text>
+}
+
+const Comp = () => {
+  const [toggle, setToggle] = useState(true)
+
+  return toggle ? (
+    <CompA
+      onPress={() => {
+        setToggle(false)
+      }}
+    />
+  ) : (
+    <CompB />
+  )
+}
 
 describe('useShowReview', () => {
   beforeEach(() => {
@@ -77,7 +106,7 @@ describe('useShowReview', () => {
     })
   })
 
-  it('should not update information if the review doesnt end successfully', async () => {
+  it('should not update information if the review does not end successfully', async () => {
     mockIsAvailable.mockReturnValueOnce(true)
     mockUseReviewInAppInformation.mockReturnValueOnce({
       shouldReviewBeRequested: true,
@@ -90,6 +119,42 @@ describe('useShowReview', () => {
     jest.advanceTimersByTime(3000)
 
     expect(mockUpdateInformationWhenReviewHasBeenRequested).not.toHaveBeenCalled()
+  })
+
+  it('should not call the review if something is wrong before timeout', async () => {
+    const user = userEvent.setup()
+    mockIsAvailable.mockReturnValueOnce(true)
+    mockUseReviewInAppInformation.mockReturnValueOnce({ shouldReviewBeRequested: true })
+    mockRequestInAppReview.mockResolvedValueOnce(undefined)
+
+    render(<Comp />)
+
+    expect(screen.getByText('State A')).toBeVisible()
+    expect(mockRequestInAppReview).not.toHaveBeenCalled()
+
+    await user.press(screen.getByText('press'))
+
+    expect(screen.getByText('State B')).toBeVisible()
+
+    jest.advanceTimersByTime(3000)
+
+    expect(mockRequestInAppReview).not.toHaveBeenCalled()
+  })
+
+  it('should call the review if nothing is wrong before timeout', async () => {
+    mockIsAvailable.mockReturnValueOnce(true)
+    mockUseReviewInAppInformation.mockReturnValueOnce({ shouldReviewBeRequested: true })
+    mockRequestInAppReview.mockResolvedValueOnce(undefined)
+
+    render(<Comp />)
+
+    expect(screen.getByText('State A')).toBeVisible()
+    expect(mockRequestInAppReview).not.toHaveBeenCalled()
+
+    jest.advanceTimersByTime(3000)
+
+    expect(screen.getByText('State A')).toBeVisible()
+    expect(mockRequestInAppReview).toHaveBeenCalledTimes(1)
   })
 
   describe('FF disableStoreReview', () => {
