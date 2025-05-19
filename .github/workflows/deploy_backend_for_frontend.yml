@@ -2,7 +2,7 @@ name: 'WIP : Deploy Backend For Frontend on Firebase'
 
 on:
   push:
-    branches: chore/proxy-firebase-hosting
+    branches: chore/proxy-firebase-hosting-lgd
 
 permissions:
   checks: write
@@ -29,7 +29,6 @@ jobs:
           node-version-file: '.nvmrc'
 
       - name: 'OpenID Connect Authentication'
-        id: 'openid-auth'
         uses: 'google-github-actions/auth@v2'
         with:
           workload_identity_provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
@@ -41,7 +40,15 @@ jobs:
         with:
           secrets: |-
             FIREBASE_TOKEN:passculture-metier-ehp/pc_native_testing_firebase_json
+            FIREBASE_DEPLOY_SA:passculture-metier-ehp/pc-native-testing-deployer-sa
             SENTRY_TOKEN:passculture-metier-ehp/pcapi-native-sentry-saas-token
+
+      - name: 'OpenID Connect Authentication'
+        uses: 'google-github-actions/auth@v2'
+        with:
+          workload_identity_provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ steps.secrets.outputs.FIREBASE_DEPLOY_SA }}
+
       - name: 'Build Frontend'
         run: |
           yarn install
@@ -75,4 +82,5 @@ jobs:
         run: npm install -g firebase-tools
 
       - name: Deploy to Firebase (Hosting + Functions)
-        run: firebase deploy --only hosting,functions --project pc-native-testing
+        run: |
+          firebase deploy --only hosting,functions --project pc-native-testing
