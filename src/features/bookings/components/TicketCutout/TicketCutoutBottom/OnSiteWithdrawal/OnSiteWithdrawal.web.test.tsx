@@ -10,7 +10,7 @@ jest.mock('libs/useCopyToClipboard/useCopyToClipboard', () => ({
 
 describe('<OnSiteWithdrawal>', () => {
   it('should copy to clickboard on press', () => {
-    render(<OnSiteWithdrawal token="NBFJ55K8" />)
+    render(<OnSiteWithdrawal token="NBFJ55K8" isDuo={false} />)
     fireEvent.click(screen.getByText('NBFJ55K8'))
 
     expect(mockCopyToClipboard).toHaveBeenCalledTimes(1)

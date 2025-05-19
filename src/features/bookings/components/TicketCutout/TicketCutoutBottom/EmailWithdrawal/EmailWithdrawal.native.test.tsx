@@ -18,33 +18,24 @@ const lineBreak = '\n'
 
 describe('<EmailWithdrawal/>', () => {
   describe('EmailWillBeSend', () => {
-    it('should return future message without delay when no withdrawaldelay', () => {
-      renderEmailWithdrawal({
-        beginningDatetime: later,
-        withdrawalDelay: undefined,
-        isDuo: false,
-      })
+    it.each`
+      withdrawalDelay          | isDuo    | expectedMessage
+      ${oneDayWithdrawalDelay} | ${false} | ${`Tu vas recevoir ton billet par e-mail, à l’adresse toto@email.com, 24 heures avant le début de l’évènement.`}
+      ${undefined}             | ${false} | ${`Tu vas recevoir ton billet par e-mail, à l’adresse toto@email.com, avant le début de l’évènement.`}
+      ${oneDayWithdrawalDelay} | ${true}  | ${`Tu vas recevoir tes billets par e-mail, à l’adresse toto@email.com, 24 heures avant le début de l’évènement.`}
+      ${undefined}             | ${true}  | ${`Tu vas recevoir tes billets par e-mail, à l’adresse toto@email.com, avant le début de l’évènement.`}
+    `(
+      `should return $expectedMessage when withdrawalDelay is $withdrawalDelay and isDuo is $isDuo`,
+      async ({ withdrawalDelay, isDuo, expectedMessage }) => {
+        renderEmailWithdrawal({
+          beginningDatetime: later,
+          withdrawalDelay,
+          isDuo,
+        })
 
-      expect(
-        screen.getByText('Tu vas recevoir ton billet par e-mail avant le début de l’évènement.')
-      ).toBeOnTheScreen()
-    })
-  })
-
-  it('should return future message with delay when a withdrawal delay was given', () => {
-    const delay = '24 heures'
-
-    renderEmailWithdrawal({
-      beginningDatetime: later,
-      withdrawalDelay: oneDayWithdrawalDelay,
-      isDuo: false,
-    })
-
-    expect(
-      screen.getByText(
-        `Tu vas recevoir ton billet par e-mail ${delay} avant le début de l’évènement.`
-      )
-    ).toBeOnTheScreen()
+        expect(screen.getByText(expectedMessage)).toBeOnTheScreen()
+      }
+    )
   })
 
   describe('<EmailReceived/>', () => {
@@ -82,7 +73,7 @@ describe('<EmailWithdrawal/>', () => {
       ${yesterday}      | ${true}  | ${'Tes billets t’ont été envoyés par e-mail à l’adresse toto@email.com. Pense à vérifier tes spams.'}
       ${yesterday}      | ${false} | ${'Ton billet t’a été envoyé par e-mail à l’adresse toto@email.com. Pense à vérifier tes spams.'}
     `(
-      `should return $expected when isEventDay is $isEventDay and isDuo is $isDuo`,
+      `should return $expectedMessage when beginningDatetime is $beginningDatetime and isDuo is $isDuo`,
       async ({ beginningDatetime, isDuo, expectedMessage }) => {
         renderEmailWithdrawal({
           beginningDatetime,

@@ -29,6 +29,8 @@ import { BookingDetails as BookingDetailsDefault } from './BookingDetails'
 
 const BookingDetails = withAsyncErrorBoundary(BookingDetailsDefault)
 
+jest.mock('features/auth/context/AuthContext')
+
 jest.unmock('react-native/Libraries/Animated/createAnimatedComponent')
 jest.useFakeTimers()
 
@@ -723,9 +725,30 @@ describe('BookingDetails', () => {
       })
     })
 
-    it('should render correctly when withdrawal type is no ticket', async () => {
+    it('should render correctly when offer is not digital withdrawal type is no ticket', async () => {
       renderBookingDetails({
         ...ongoingBookings,
+        stock: {
+          ...ongoingBookings.stock,
+          offer: {
+            ...ongoingBookings.stock.offer,
+            withdrawalType: WithdrawalTypeEnum.no_ticket,
+            isDigital: false,
+          },
+        },
+      })
+
+      await screen.findAllByText(ongoingBookings.stock.offer.name)
+
+      expect(
+        screen.getByText('Tu n’as pas besoin de billet pour profiter de cette offre !')
+      ).toBeOnTheScreen()
+    })
+
+    it('should render error message with plural when booking is duo', async () => {
+      renderBookingDetails({
+        ...ongoingBookings,
+        quantity: 2,
         stock: {
           ...ongoingBookings.stock,
           offer: {
@@ -738,7 +761,28 @@ describe('BookingDetails', () => {
       await screen.findAllByText(ongoingBookings.stock.offer.name)
 
       expect(
-        screen.getByText('Tu n’as pas besoin de billet pour profiter de cette offre !')
+        screen.getByText('Tu n’as pas le droit de céder ou de revendre tes billets.')
+      ).toBeOnTheScreen()
+    })
+
+    it('should render error message singular when booking is not duo', async () => {
+      renderBookingDetails({
+        ...ongoingBookings,
+        quantity: 1,
+        stock: {
+          ...ongoingBookings.stock,
+          offer: {
+            ...ongoingBookings.stock.offer,
+            withdrawalType: WithdrawalTypeEnum.no_ticket,
+            isDigital: false,
+          },
+        },
+      })
+
+      await screen.findAllByText(ongoingBookings.stock.offer.name)
+
+      expect(
+        screen.getByText('Tu n’as pas le droit de céder ou de revendre ton billet.')
       ).toBeOnTheScreen()
     })
   })

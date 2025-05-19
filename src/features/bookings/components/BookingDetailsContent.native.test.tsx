@@ -6,6 +6,7 @@ import type { BookingReponse, BookingsResponse } from 'api/gen'
 import { BookingDetailsContent } from 'features/bookings/components/BookingDetailsContent'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { BookingProperties } from 'features/bookings/types'
+import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics/provider'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { subcategoriesMappingSnap } from 'libs/subcategories/fixtures/mappings'
@@ -185,6 +186,7 @@ const renderBookingDetailsContent = ({
   return render(
     reactQueryProviderHOC(
       <BookingDetailsContent
+        user={beneficiaryUser}
         properties={properties}
         booking={booking}
         mapping={subcategoriesMappingSnap as SubcategoriesMapping}

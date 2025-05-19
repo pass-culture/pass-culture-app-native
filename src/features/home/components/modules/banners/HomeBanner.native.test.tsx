@@ -1,6 +1,6 @@
-import { waitFor } from '@testing-library/react'
 import React from 'react'
 
+import { ApiError } from 'api/ApiError'
 import { BannerName, BannerResponse, SubscriptionStepperResponseV2 } from 'api/gen'
 import { HomeBanner } from 'features/home/components/modules/banners/HomeBanner'
 import { subscriptionStepperFixture } from 'features/identityCheck/fixtures/subscriptionStepperFixture'
@@ -149,9 +149,9 @@ describe('<HomeBanner/>', () => {
 
       renderHomeBanner({})
 
-      await waitFor(() => {
-        expect(eventMonitoring.captureException).toHaveBeenCalled()
-      })
+      await act(async () => {})
+
+      expect(eventMonitoring.captureException).toHaveBeenCalledWith(expect.any(ApiError))
     })
   })
 })
