@@ -19,24 +19,26 @@ export const TicketCutoutBottom = ({
 }: {
   offer: BookingOfferResponse
   booking: BookingReponse
-  userEmail?: UserProfileResponse['email']
+  userEmail: UserProfileResponse['email']
 }) => {
   switch (offer.withdrawalType) {
     case WithdrawalTypeEnum.no_ticket:
       return <NoTicket />
     case WithdrawalTypeEnum.by_email:
-      return userEmail ? (
+      return (
         <EmailWithdrawal
           isDuo={booking.quantity === 2}
           beginningDatetime={booking.stock.beginningDatetime}
           withdrawalDelay={offer.withdrawalDelay}
           userEmail={userEmail}
         />
-      ) : null
+      )
     case WithdrawalTypeEnum.in_app:
       return <View />
     case WithdrawalTypeEnum.on_site:
-      return booking.token ? <OnSiteWithdrawal token={booking.token} /> : null
+      return booking.token ? (
+        <OnSiteWithdrawal token={booking.token} isDuo={booking.quantity === 2} />
+      ) : null
     default:
       return booking.activationCode ? (
         <TicketCodeTitle>{booking.activationCode.code}</TicketCodeTitle>
