@@ -16,6 +16,7 @@ import { ChangePassword } from 'features/profile/pages/ChangePassword'
 import { ChangeStatus } from 'features/profile/pages/ChangeStatus/ChangeStatus'
 import { ConfirmChangeEmail } from 'features/profile/pages/ConfirmChangeEmail/ConfirmChangeEmail'
 import { ConsentSettings } from 'features/profile/pages/ConsentSettings/ConsentSettings'
+import { DebugScreen } from 'features/profile/pages/DebugScreen/DebugScreen'
 import { ConfirmDeleteProfile } from 'features/profile/pages/DeleteProfile/ConfirmDeleteProfile'
 import { DeactivateProfileSuccess } from 'features/profile/pages/DeleteProfile/DeactivateProfileSuccess'
 import { DeleteProfileAccountHacked } from 'features/profile/pages/DeleteProfile/DeleteProfileAccountHacked'
@@ -99,6 +100,11 @@ export const ProfileStackNavigator = () => (
       name="DeleteProfileAccountNotDeletable"
       component={withAuthProtection(DeleteProfileAccountNotDeletable)}
       options={{ title: 'Compte non supprimable' }}
+    />
+    <ProfileStack.Screen
+      name="DebugScreen"
+      component={withAuthProtection(DebugScreen)}
+      options={{ title: 'Débuggage' }}
     />
     <ProfileStack.Screen
       name="ConfirmDeleteProfile"
