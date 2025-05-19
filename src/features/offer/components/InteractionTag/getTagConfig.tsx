@@ -26,44 +26,33 @@ export function getTagConfig({
   hasSmallLayout,
   isComingSoonOffer,
 }: TagConfig): InteractionTagProps | null {
-  const headlineTagConfig = {
-    label: hasSmallLayout ? 'Reco lieux' : 'Reco par les lieux',
-    backgroundColor: theme.colors.goldLight100,
-    Icon: CustomStar,
-  }
-  const likesTagConfig = {
-    label: likesCount ? `${likesCount} j’aime` : '',
-    backgroundColor: theme.colors.greyLight,
-    Icon: CustomThumbUp,
-  }
-  const bookClubTagConfig = {
-    label: hasSmallLayout ? 'Reco Club' : 'Reco du Book Club',
-    backgroundColor: theme.colors.skyBlueLight,
-    Icon: CustomBookClub,
-  }
-  const soonOfferTagConfig = {
-    label: hasSmallLayout ? 'Bientôt' : 'Bientôt dispo',
-    backgroundColor: theme.designSystem.color.background.warning,
-    Icon: CustomWait,
-  }
+  if (isComingSoonOffer)
+    return {
+      label: hasSmallLayout ? 'Bientôt' : 'Bientôt dispo',
+      backgroundColor: theme.designSystem.color.background.warning,
+      Icon: CustomWait,
+    }
 
-  const hasLikes = likesCount > 0
-  const hasChronicles = chroniclesCount > 0
-  const hasHeadline = headlineCount > 0
+  if (likesCount >= minLikesValue)
+    return {
+      label: `${likesCount} j’aime`,
+      backgroundColor: theme.colors.greyLight,
+      Icon: CustomThumbUp,
+    }
 
-  const hasLikesAboveThreshold = likesCount >= minLikesValue
+  if (chroniclesCount > 0)
+    return {
+      label: hasSmallLayout ? 'Reco Club' : 'Reco du Book Club',
+      backgroundColor: theme.colors.skyBlueLight,
+      Icon: CustomBookClub,
+    }
 
-  if (isComingSoonOffer) return soonOfferTagConfig
-
-  if (hasLikesAboveThreshold) return likesTagConfig
-
-  if (hasHeadline && !hasChronicles && !hasLikesAboveThreshold) return headlineTagConfig
-
-  if (hasHeadline && hasChronicles && !hasLikesAboveThreshold) return bookClubTagConfig
-
-  if (hasHeadline && !hasChronicles && hasLikes && !hasLikesAboveThreshold) return headlineTagConfig
-
-  if (!hasHeadline && hasChronicles) return bookClubTagConfig
+  if (headlineCount > 0)
+    return {
+      label: hasSmallLayout ? 'Reco lieux' : 'Reco par les lieux',
+      backgroundColor: theme.colors.goldLight100,
+      Icon: CustomStar,
+    }
 
   return null
 }
