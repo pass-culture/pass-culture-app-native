@@ -26,12 +26,14 @@ import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { OfflinePage } from 'libs/network/OfflinePage'
 import { AccessibilityFooter } from 'shared/AccessibilityFooter/AccessibilityFooter'
 import { getAge } from 'shared/user/getAge'
+import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
 import { InputError } from 'ui/components/inputs/InputError'
 import { Li } from 'ui/components/Li'
 import { BannerWithBackground } from 'ui/components/ModuleBanner/BannerWithBackground'
 import { Section } from 'ui/components/Section'
 import { SectionRow } from 'ui/components/SectionRow'
 import { StatusBarBlurredBackground } from 'ui/components/statusBar/statusBarBlurredBackground'
+import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { VerticalUl } from 'ui/components/Ul'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { useDebounce } from 'ui/hooks/useDebounce'
@@ -59,6 +61,7 @@ const DEBOUNCE_TOGGLE_DELAY_MS = 5000
 const OnlineProfile: React.FC = () => {
   const disableActivation = useFeatureFlag(RemoteStoreFeatureFlags.DISABLE_ACTIVATION)
   const enablePassForAll = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_PASS_FOR_ALL)
+  const enableDebugSection = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_DEBUG_SECTION)
 
   const { dispatch: favoritesDispatch } = useFavoritesState()
   const { isLoggedIn, user } = useAuthContext()
@@ -306,6 +309,17 @@ const OnlineProfile: React.FC = () => {
                   {version}
                   {isWeb ? `-${String(env.COMMIT_HASH)}` : ''}
                 </Version>
+                {enableDebugSection && isLoggedIn ? (
+                  <DebugButtonContainer>
+                    <InternalTouchableLink
+                      as={ButtonQuaternaryBlack}
+                      wording="Débuggage"
+                      navigateTo={getProfileNavConfig('DebugScreen')}
+                      justifyContent="flex-start"
+                      inline
+                    />
+                  </DebugButtonContainer>
+                ) : null}
                 {isWeb ? null : (
                   <LogoFrenchRepublicContainer>
                     <LogoFrenchRepublic />
@@ -366,6 +380,10 @@ const Version = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.designSystem.color.text.subtle,
   marginVertical: getSpacing(4),
 }))
+
+const DebugButtonContainer = styled.View({
+  marginBottom: getSpacing(4),
+})
 
 const LogoFrenchRepublicContainer = styled.View({
   width: getSpacing(40),

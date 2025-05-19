@@ -131,6 +131,8 @@ describe('<Login/>', () => {
           deviceId: 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
           os: 'iOS',
           source: 'iPhone 13',
+          resolution: '750x1334',
+          screenZoomLevel: 2,
         },
       },
       { credentials: 'omit' }
@@ -157,6 +159,8 @@ describe('<Login/>', () => {
         deviceId: 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
         os: 'iOS',
         source: 'iPhone 13',
+        resolution: '750x1334',
+        screenZoomLevel: 2,
       },
     })
   })
@@ -687,6 +691,8 @@ describe('<Login/>', () => {
             deviceId: 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
             os: 'unknown',
             source: 'none',
+            resolution: '750x1334',
+            screenZoomLevel: 2,
           },
         },
         { credentials: 'omit' }
