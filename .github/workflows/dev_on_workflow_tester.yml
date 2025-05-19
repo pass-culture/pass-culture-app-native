@@ -153,6 +153,7 @@ jobs:
     permissions:
       id-token: write
       contents: read
+      pages: write
     needs: [yarn_test_native, yarn_test_web]
 
     steps:
@@ -208,13 +209,6 @@ jobs:
       - name: Generate Allure Report
         run: yarn generate:allure-report
 
-      - name: 'Get secrets (github)'
-        id: 'secrets'
-        uses: 'google-github-actions/get-secretmanager-secrets@v2'
-        with:
-          secrets: |-
-            API_TOKEN_GITHUB:passculture-metier-ehp/passculture-main-sa-access-token
-
       - name: 'Save Allure history to bucket'
         run: |
           # Check if history was generated and save it
@@ -232,7 +226,7 @@ jobs:
       - name: Deploy to GitHub Pages on gh
         uses: peaceiris/actions-gh-pages@v4
         with:
-          github_token: ${{ steps.secrets.outputs.API_TOKEN_GITHUB }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./allure-report
           publish_branch: allure-report
           user_name: ${{ github.actor }}
