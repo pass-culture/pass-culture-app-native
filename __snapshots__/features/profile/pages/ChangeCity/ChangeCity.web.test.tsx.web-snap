@@ -233,6 +233,7 @@ exports[`ChangeCity should render correctly 1`] = `
                   >
                     <label
                       class="c3 c4"
+                      for="postal-code-input"
                     >
                       <div
                         class="css-view-175oi2r r-alignItems-obd0qt r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-width-13qz1uu"
@@ -268,8 +269,9 @@ exports[`ChangeCity should render correctly 1`] = `
                       data-testid="Entrée pour la ville"
                       dir="ltr"
                       enterkeyhint="search"
+                      id="postal-code-input"
                       inputmode="numeric"
-                      placeholder="Ex : 75017"
+                      placeholder=""
                       spellcheck="false"
                       style="--placeholderTextColor: #696A6F;"
                       value=""
