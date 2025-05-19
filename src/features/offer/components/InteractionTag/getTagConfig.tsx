@@ -9,20 +9,18 @@ import { Star } from 'ui/svg/Star'
 
 type TagConfig = {
   theme: typeof theme
-  minLikesValue: number
   likesCount?: number
   chroniclesCount?: number
-  headlineCount?: number
+  headlinesCount?: number
   hasSmallLayout?: boolean
   isComingSoonOffer?: boolean
 }
 
 export function getTagConfig({
   theme,
-  minLikesValue,
   likesCount = 0,
   chroniclesCount = 0,
-  headlineCount = 0,
+  headlinesCount = 0,
   hasSmallLayout,
   isComingSoonOffer,
 }: TagConfig): InteractionTagProps | null {
@@ -33,25 +31,25 @@ export function getTagConfig({
       Icon: CustomWait,
     }
 
-  if (likesCount >= minLikesValue)
-    return {
-      label: `${likesCount} j’aime`,
-      backgroundColor: theme.colors.greyLight,
-      Icon: CustomThumbUp,
-    }
-
   if (chroniclesCount > 0)
     return {
-      label: hasSmallLayout ? 'Reco Club' : 'Reco du Book Club',
+      label: hasSmallLayout ? 'Reco Club' : 'Reco du Club',
       backgroundColor: theme.colors.skyBlueLight,
       Icon: CustomBookClub,
     }
 
-  if (headlineCount > 0)
+  if (headlinesCount > 0)
     return {
       label: hasSmallLayout ? 'Reco lieux' : 'Reco par les lieux',
       backgroundColor: theme.colors.goldLight100,
       Icon: CustomStar,
+    }
+
+  if (likesCount > 0)
+    return {
+      label: `${likesCount} j’aime`,
+      backgroundColor: theme.colors.greyLight,
+      Icon: CustomThumbUp,
     }
 
   return null

@@ -56,7 +56,7 @@ export const OfferTileWrapper = (props: Props) => {
     minLikesValue,
     likesCount: item.offer.likes,
     chroniclesCount: item.offer.chroniclesCount,
-    headlineCount: item.offer.headlineCount,
+    headlinesCount: item.offer.headlineCount,
     hasSmallLayout,
     isComingSoonOffer: item._tags?.includes('is_future'),
   })

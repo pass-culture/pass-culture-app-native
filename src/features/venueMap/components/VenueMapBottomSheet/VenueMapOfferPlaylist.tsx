@@ -51,7 +51,7 @@ export const VenueMapOfferPlaylist = ({
         minLikesValue,
         likesCount: item.offer.likes,
         chroniclesCount: item.offer.chroniclesCount,
-        headlineCount: item.offer.headlineCount,
+        headlinesCount: item.offer.headlineCount,
         hasSmallLayout: true,
         isComingSoonOffer: item._tags?.includes('is_future'),
       })
