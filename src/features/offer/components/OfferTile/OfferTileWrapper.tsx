@@ -6,7 +6,6 @@ import { getTagConfig } from 'features/offer/components/InteractionTag/getTagCon
 import { InteractionTag } from 'features/offer/components/InteractionTag/InteractionTag'
 import { OfferTile } from 'features/offer/components/OfferTile/OfferTile'
 import { OfferTileProps } from 'features/offer/types'
-import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import {
   formatPrice,
   getDisplayedPrice,
@@ -28,7 +27,6 @@ type Props = Omit<
 
 export const OfferTileWrapper = (props: Props) => {
   const { item, hasSmallLayout } = props
-  const { minLikesValue } = useRemoteConfigQuery()
   const theme = useTheme()
   const { user } = useAuthContext()
   const currency = useGetCurrencyToDisplay()
@@ -53,7 +51,6 @@ export const OfferTileWrapper = (props: Props) => {
 
   const tagConfig = getTagConfig({
     theme,
-    minLikesValue,
     likesCount: item.offer.likes,
     chroniclesCount: item.offer.chroniclesCount,
     headlinesCount: item.offer.headlineCount,

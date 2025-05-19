@@ -6,7 +6,6 @@ import { getTagConfig } from 'features/offer/components/InteractionTag/getTagCon
 import { InteractionTag } from 'features/offer/components/InteractionTag/InteractionTag'
 import { OfferTile } from 'features/offer/components/OfferTile/OfferTile'
 import { PlaylistType } from 'features/offer/enums'
-import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import {
   formatStartPrice,
   getDisplayedPrice,
@@ -38,7 +37,6 @@ export const VenueMapOfferPlaylist = ({
   playlistType,
 }: VenueMapOfferPlaylistProps) => {
   const theme = useTheme()
-  const { minLikesValue } = useRemoteConfigQuery()
   const currency = useGetCurrencyToDisplay()
   const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
   const mapping = useCategoryIdMapping()
@@ -48,7 +46,6 @@ export const VenueMapOfferPlaylist = ({
     ({ item }) => {
       const tagConfig = getTagConfig({
         theme,
-        minLikesValue,
         likesCount: item.offer.likes,
         chroniclesCount: item.offer.chroniclesCount,
         headlinesCount: item.offer.headlineCount,
@@ -78,7 +75,7 @@ export const VenueMapOfferPlaylist = ({
         />
       )
     },
-    [currency, euroToPacificFrancRate, labelMapping, mapping, minLikesValue, playlistType, theme]
+    [currency, euroToPacificFrancRate, labelMapping, mapping, playlistType, theme]
   )
 
   return (

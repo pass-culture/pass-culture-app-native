@@ -23,7 +23,6 @@ type OfferPlaylistItemProps = {
   labelMapping: CategoryHomeLabelMapping | SubcategoryOfferLabelMapping
   currency: Currency
   euroToPacificFrancRate: number
-  minLikesValue: number
   theme: DefaultTheme
   artistName?: string
   apiRecoParams?: RecommendationApiParams
@@ -46,7 +45,6 @@ export const OfferPlaylistItem = ({
   labelMapping,
   artistName,
   apiRecoParams,
-  minLikesValue,
   theme,
   analyticsFrom = 'offer',
   navigationMethod,
@@ -59,7 +57,6 @@ export const OfferPlaylistItem = ({
     const categoryId = categoryMapping[item.offer.subcategoryId]
     const tagConfig = getTagConfig({
       theme,
-      minLikesValue,
       likesCount: item.offer.likes,
       chroniclesCount: item.offer.chroniclesCount,
       headlinesCount: item.offer.headlineCount,

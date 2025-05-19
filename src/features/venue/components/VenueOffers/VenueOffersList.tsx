@@ -15,7 +15,6 @@ import { useNavigateToSearchWithVenueOffers } from 'features/venue/helpers/useNa
 import { analytics } from 'libs/analytics/provider'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { formatPlaylistDates, getTimeStampInMillis } from 'libs/parsers/formatDates'
 import {
   formatPrice,
@@ -57,7 +56,6 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
   const theme = useTheme()
   const { user } = useAuthContext()
   const artistsPlaylistEnabled = useFeatureFlag(RemoteStoreFeatureFlags.WIP_VENUE_ARTISTS_PLAYLIST)
-  const { minLikesValue } = useRemoteConfigQuery()
   const { params: routeParams } = useRoute<UseRouteType<'Offer'>>()
   const searchNavConfig = useNavigateToSearchWithVenueOffers(venue)
 
@@ -80,7 +78,6 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
     const timestampsInMillis = item.offer.dates && getTimeStampInMillis(item.offer.dates)
     const tagConfig = getTagConfig({
       theme,
-      minLikesValue,
       likesCount: item.offer.likes,
       chroniclesCount: item.offer.chroniclesCount,
       headlinesCount: item.offer.headlineCount,
