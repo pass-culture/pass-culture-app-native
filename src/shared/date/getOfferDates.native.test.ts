@@ -25,6 +25,8 @@ const defaultConcertOffer = {
 const OCTOBER_5_2020 = 1601856000
 const NOVEMBER_1_2020 = 1604188800
 const NOVEMBER_12_2020 = 1605139200
+const JANUARY_12_2021 = 1610578800
+const JANUARY_21_2021 = 1611183600
 
 describe('useOfferDates', () => {
   beforeAll(() => {
@@ -37,6 +39,12 @@ describe('useOfferDates', () => {
     ).toBe('Dès le 12 novembre 2020')
   })
 
+  it('should return formatted release date for a movie screening offer providing release date next year for playlist', async () => {
+    expect(
+      getOfferDates(defaultMovieScreeningOffer.offer.subcategoryId, [], JANUARY_12_2021, true)
+    ).toBe('Janv. 2021')
+  })
+
   it('should return formatted dates for an offer that is not a movie screening', () => {
     expect(
       getOfferDates(
@@ -45,6 +53,28 @@ describe('useOfferDates', () => {
         OCTOBER_5_2020
       )
     ).toBe('Dès le 1er novembre 2020')
+  })
+
+  it('should return formatted dates for an offer that is not a movie screening for next year for playlist', () => {
+    expect(
+      getOfferDates(
+        defaultConcertOffer.offer.subcategoryId,
+        [JANUARY_12_2021, JANUARY_21_2021],
+        undefined,
+        true
+      )
+    ).toBe('Janv. 2021')
+  })
+
+  it('should return formatted dates for an offer that is not a movie screening for playlist', () => {
+    expect(
+      getOfferDates(
+        defaultConcertOffer.offer.subcategoryId,
+        [NOVEMBER_1_2020, NOVEMBER_12_2020],
+        OCTOBER_5_2020,
+        true
+      )
+    ).toBe('Dès le 1er nov.')
   })
 
   it('should return undefined if no dates or release date are provided', () => {

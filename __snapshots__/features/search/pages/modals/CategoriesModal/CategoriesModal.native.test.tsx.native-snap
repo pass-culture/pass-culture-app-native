@@ -357,19 +357,11 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
       >
         <View>
           <View
-            numberOfSpaces={3}
+            marginTop={12}
             style={
               [
                 {
-                  "height": 12,
-                },
-              ]
-            }
-          />
-          <View
-            style={
-              [
-                {
+                  "marginTop": 12,
                   "maxWidth": 500,
                   "width": "100%",
                 },
@@ -2470,11 +2462,13 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
           }
         >
           <View
+            gap={4}
             isModal={true}
             style={
               [
                 {
                   "flexDirection": "row",
+                  "gap": 16,
                   "justifyContent": "center",
                   "paddingHorizontal": 24,
                   "paddingTop": 8,
@@ -2488,7 +2482,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                 {
                   "busy": undefined,
                   "checked": undefined,
-                  "disabled": undefined,
+                  "disabled": true,
                   "expanded": undefined,
                   "selected": undefined,
                 }
@@ -2502,7 +2496,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                 }
               }
               accessible={true}
-              focusable={true}
+              focusable={false}
               onClick={[Function]}
               onResponderGrant={[Function]}
               onResponderMove={[Function]}
@@ -2531,7 +2525,6 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                     },
                     {
                       "backgroundColor": "transparent",
-                      "marginRight": 16,
                       "width": "auto",
                     },
                   ],
@@ -2588,7 +2581,7 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                   style={
                     [
                       {
-                        "color": "#161617",
+                        "color": "#696A6F",
                         "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 12,
                         "lineHeight": 19.2,
@@ -2601,16 +2594,6 @@ exports[`<CategoriesModal/> With categories view should render correctly 1`] = `
                 </Text>
               </View>
             </View>
-            <View
-              numberOfSpaces={4}
-              style={
-                [
-                  {
-                    "height": 16,
-                  },
-                ]
-              }
-            />
             <View
               accessibilityLabel="Rechercher"
               accessibilityState={

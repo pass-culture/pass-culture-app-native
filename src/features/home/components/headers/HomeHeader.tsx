@@ -1,6 +1,7 @@
 import React, { FunctionComponent, useMemo } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
+import { EligibilityType } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { LocationWidget } from 'features/location/components/LocationWidget'
 import { LocationWidgetDesktop } from 'features/location/components/LocationWidgetDesktop'
@@ -29,6 +30,9 @@ export const HomeHeader: FunctionComponent = function () {
       const shouldSeeDefaultSubtitle =
         !isLoggedIn || !user || !isUserBeneficiary(user) || user.isEligibleForBeneficiaryUpgrade
       if (shouldSeeDefaultSubtitle) return 'Toute la culture à portée de main'
+
+      const isUserFreeStatus = user.eligibility === EligibilityType.free
+      if (isUserFreeStatus) return ''
 
       const shouldSeeBeneficiarySubtitle =
         isUserBeneficiary(user) && !!availableCredit && !availableCredit.isExpired

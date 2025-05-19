@@ -1,6 +1,7 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
+import { EligibilityType } from 'api/gen'
 import { EmptyCredit } from 'features/profile/components/EmptyCredit/EmptyCredit'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -59,5 +60,19 @@ describe('<EmptyCredit />', () => {
     render(<EmptyCredit age={17} />)
 
     expect(screen.getByText(/sera débloqué à 18 ans/)).toBeOnTheScreen()
+  })
+
+  it('should default to standard phrasing when eligibility is null', () => {
+    render(<EmptyCredit age={15} />)
+
+    expect(screen.getByText(/Ton prochain crédit de/)).toBeOnTheScreen()
+    expect(screen.getByText(/sera débloqué à 17 ans/)).toBeOnTheScreen()
+  })
+
+  it('should use free user phrasing when eligibility is free', () => {
+    render(<EmptyCredit age={15} eligibility={EligibilityType.free} />)
+
+    expect(screen.getByText(/Tu pourras débloquer ton prochain crédit de/)).toBeOnTheScreen()
+    expect(screen.getByText(/à 17 ans/)).toBeOnTheScreen()
   })
 })

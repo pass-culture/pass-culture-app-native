@@ -28,6 +28,7 @@ export const VenueModal = ({ visible, dismissModal }: Props) => {
     shouldShowSuggestedVenues,
     venueQuery,
     isSearchButtonDisabled,
+    isResetButtonDisabled,
     onClose,
   } = useVenueModal({ dismissModal })
 
@@ -58,6 +59,7 @@ export const VenueModal = ({ visible, dismissModal }: Props) => {
           onSearchPress={doApplySearch}
           onResetPress={onResetPress}
           isSearchDisabled={isSearchButtonDisabled}
+          isResetDisabled={isResetButtonDisabled}
           filterBehaviour={FilterBehaviour.SEARCH}
         />
       }>

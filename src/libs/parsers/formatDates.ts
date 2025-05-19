@@ -2,7 +2,7 @@ import { isAfter, isFirstDayOfMonth } from 'date-fns'
 import { utcToZonedTime } from 'date-fns-tz'
 
 import { DAYS } from 'shared/date/days'
-import { FullMonth, MONTHS } from 'shared/date/months'
+import { CAPITALIZED_SHORT_MONTHS, FullMonth, MONTHS, SHORT_MONTHS } from 'shared/date/months'
 
 export const pad = (num: number): string => {
   const res = num.toString()
@@ -30,8 +30,10 @@ export const decomposeDate = (timestamp: number) => {
   const date = new Date(timestamp)
   const day = date.getDate()
   const month = MONTHS[date.getMonth()]
+  const shortMonth = SHORT_MONTHS[date.getMonth()]
+  const capitalizedShortMonth = CAPITALIZED_SHORT_MONTHS[date.getMonth()]
   const year = date.getFullYear()
-  return { day, month, year }
+  return { day, month, shortMonth, capitalizedShortMonth, year }
 }
 
 export const formatToFrenchDate = (date: Date) => {
@@ -39,10 +41,23 @@ export const formatToFrenchDate = (date: Date) => {
   return `${formatToFrenchDateWithoutYear(date)} ${year}`
 }
 
-export const formatToFrenchDateWithoutYear = (date: Date) => {
-  const { day, month } = decomposeDate(date.getTime())
+const isCurrentYear = (dateYear: number) => {
+  const today = new Date()
+  return dateYear === today.getFullYear()
+}
+
+const formatToFrenchDateForPlaylist = (date: Date, nbDates: number) => {
+  const { year, capitalizedShortMonth } = decomposeDate(date.getTime())
+  const startLabel = nbDates === 1 ? '' : 'Dès le '
+  return isCurrentYear(year)
+    ? `${startLabel}${formatToFrenchDateWithoutYear(date, true)}`
+    : `${capitalizedShortMonth} ${year}`
+}
+
+export const formatToFrenchDateWithoutYear = (date: Date, withShortMonth?: boolean) => {
+  const { day, month, shortMonth } = decomposeDate(date.getTime())
   const suffix = isFirstDayOfMonth(date) ? 'er' : ''
-  return `${day}${suffix} ${month}`
+  return `${day}${suffix} ${withShortMonth ? shortMonth : month}`
 }
 
 /**
@@ -67,13 +82,35 @@ export const formatDates = (timestamps?: number[]): string | undefined => {
   return undefined
 }
 
+export const formatPlaylistDates = (timestamps?: number[]): string | undefined => {
+  const uniques = getUniqueSortedTimestamps(timestamps)
+  const firstUnique = uniques[0]
+  if (firstUnique) {
+    return `${formatToFrenchDateForPlaylist(new Date(firstUnique), uniques.length)}`
+  }
+  return undefined
+}
+
 /**
  * @param releaseDate: Date
  */
-export const formatReleaseDate = (releaseDate: Date): string => {
+const formatPlaylistReleaseDate = (releaseDate: Date): string => {
+  const formattedDate = formatToFrenchDateForPlaylist(releaseDate, 1)
+  const { year, capitalizedShortMonth } = decomposeDate(releaseDate.getTime())
+  const label = isCurrentYear(year) ? `Dès le ${formattedDate}` : `${capitalizedShortMonth} ${year}`
+
+  return isAfter(releaseDate, new Date()) ? label : ''
+}
+
+/**
+ * @param releaseDate: Date
+ */
+export const formatReleaseDate = (releaseDate: Date, isPlaylist?: boolean): string => {
   const formattedDate = formatToFrenchDate(releaseDate)
 
-  return isAfter(releaseDate, new Date()) ? `Dès le ${formattedDate}` : `Sorti le ${formattedDate}`
+  if (isPlaylist) return formatPlaylistReleaseDate(releaseDate)
+
+  return isAfter(releaseDate, new Date()) ? `Dès le ${formattedDate}` : ''
 }
 
 /**

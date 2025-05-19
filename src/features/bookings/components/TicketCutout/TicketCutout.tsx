@@ -127,7 +127,7 @@ const Row = styled.View({
 
 const ContentBlock = styled.View(({ theme }) => ({
   marginHorizontal: getSpacing(6),
-  backgroundColor: 'white',
+  backgroundColor: theme.designSystem.color.background.default,
   gap: getSpacing(6),
   paddingHorizontal: getSpacing(7.5),
   ...getShadow({

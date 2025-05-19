@@ -3,19 +3,29 @@ import { offerResponseSnap as baseOffer } from 'features/offer/fixtures/offerRes
 import { getIsFreeOffer } from './getIsFreeOffer'
 
 describe('getIsFreeOffer', () => {
-  it('returns true if the first stock price is 0', () => {
+  it('returns true if there is only free stocks', () => {
     const offer = {
       ...baseOffer,
-      stocks: [{ ...baseOffer.stocks[0], price: 0 }],
+      stocks: [
+        { ...baseOffer.stocks[0], price: 0 },
+        { ...baseOffer.stocks[0], price: 0 },
+        { ...baseOffer.stocks[0], price: 0 },
+        { ...baseOffer.stocks[0], price: 0 },
+      ],
     }
 
     expect(getIsFreeOffer(offer)).toBe(true)
   })
 
-  it('returns false if the first stock price is greater than 0', () => {
+  it('returns false if there is at least one paying stock', () => {
     const offer = {
       ...baseOffer,
-      stocks: [{ ...baseOffer.stocks[0], price: 100 }],
+      stocks: [
+        { ...baseOffer.stocks[0], price: 0 },
+        { ...baseOffer.stocks[0], price: 0 },
+        { ...baseOffer.stocks[0], price: 100 },
+        { ...baseOffer.stocks[0], price: 0 },
+      ],
     }
 
     expect(getIsFreeOffer(offer)).toBe(false)

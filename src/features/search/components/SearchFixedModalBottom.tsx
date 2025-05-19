@@ -9,15 +9,17 @@ import { useForHeightKeyboardEvents } from 'ui/components/keyboard/useKeyboardEv
 type Props = {
   onResetPress: () => void
   onSearchPress: () => void
-  isSearchDisabled?: boolean
   filterBehaviour: FilterBehaviour
+  isSearchDisabled?: boolean
+  isResetDisabled?: boolean
 }
 
 export const SearchFixedModalBottom = memo(function SearchFixedModalBottom({
   onResetPress,
   onSearchPress,
-  isSearchDisabled,
   filterBehaviour,
+  isSearchDisabled,
+  isResetDisabled,
 }: Props) {
   const { modal } = useTheme()
   const [keyboardHeight, setKeyboardHeight] = useState(0)
@@ -33,6 +35,7 @@ export const SearchFixedModalBottom = memo(function SearchFixedModalBottom({
         isModal
         isSearchDisabled={isSearchDisabled}
         filterBehaviour={filterBehaviour}
+        isResetDisabled={isResetDisabled}
       />
     </FilterPageButtonsContainer>
   )

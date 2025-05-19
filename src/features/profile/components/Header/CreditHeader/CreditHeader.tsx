@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { DomainsCredit } from 'api/gen/api'
+import { DomainsCredit, EligibilityType } from 'api/gen/api'
 import { BeneficiaryCeilings } from 'features/profile/components/BeneficiaryCeilings/BeneficiaryCeilings'
 import { CreditExplanation } from 'features/profile/components/CreditExplanation/CreditExplanation'
 import { CreditInfo } from 'features/profile/components/CreditInfo/CreditInfo'
@@ -16,8 +16,9 @@ import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemo
 import { useDepositAmountsByAge } from 'shared/user/useDepositAmountsByAge'
 import { GenericBanner } from 'ui/components/ModuleBanner/GenericBanner'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { BicolorOffers } from 'ui/svg/icons/BicolorOffers'
-import { Spacer, Typo } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 
 export type CreditHeaderProps = {
   firstName?: string | null
@@ -25,6 +26,7 @@ export type CreditHeaderProps = {
   age?: number
   domainsCredit?: DomainsCredit | null
   depositExpirationDate?: string
+  eligibility?: EligibilityType | null
 }
 
 export function CreditHeader({
@@ -33,6 +35,7 @@ export function CreditHeader({
   age,
   domainsCredit,
   depositExpirationDate,
+  eligibility,
 }: CreditHeaderProps) {
   const { homeEntryIdFreeOffers } = useRemoteConfigQuery()
   const depositAmount = useDepositAmountsByAge()
@@ -64,6 +67,7 @@ export function CreditHeader({
     isCreditEmpty,
     isDepositExpired,
     depositExpirationDate,
+    eligibility,
   })
 
   const isExpiredOrCreditEmptyWithNoUpcomingCredit =
@@ -89,11 +93,12 @@ export function CreditHeader({
             params: { homeId: homeEntryIdFreeOffers, from: 'profile' },
           }}>
           <GenericBanner LeftIcon={<BicolorOffers />}>
-            <Typo.BodyAccent>L’aventure continue&nbsp;!</Typo.BodyAccent>
-            <Spacer.Column numberOfSpaces={1} />
-            <StyledBody numberOfLines={3}>
-              Tu peux profiter d’offres gratuites autour de toi.
-            </StyledBody>
+            <ViewGap gap={1}>
+              <Typo.BodyAccent>L’aventure continue&nbsp;!</Typo.BodyAccent>
+              <StyledBody numberOfLines={3}>
+                Tu peux profiter d’offres gratuites autour de toi.
+              </StyledBody>
+            </ViewGap>
           </GenericBanner>
         </InternalTouchableLink>
       ) : (
@@ -105,8 +110,7 @@ export function CreditHeader({
             </React.Fragment>
           )}
           {incomingCreditLabelsMap[age] && !isCreditEmpty ? (
-            <React.Fragment>
-              <Spacer.Column numberOfSpaces={6} />
+            <ViewWithMarginTop top={6}>
               <Typo.Body>
                 {
                   /* @ts-expect-error: because of noUncheckedIndexedAccess */
@@ -115,11 +119,12 @@ export function CreditHeader({
                 {/* @ts-expect-error: because of noUncheckedIndexedAccess */}
                 <HighlightedBody>{incomingCreditLabelsMap[age].highlightedLabel}</HighlightedBody>
               </Typo.Body>
-            </React.Fragment>
+            </ViewWithMarginTop>
           ) : null}
-          {isCreditEmpty ? <EmptyCredit age={age} /> : null}
-          <Spacer.Column numberOfSpaces={1} />
-          <CreditExplanation isDepositExpired={isDepositExpired} age={age} />
+          {isCreditEmpty ? <EmptyCredit age={age} eligibility={eligibility} /> : null}
+          <ViewWithMarginTop top={1}>
+            <CreditExplanation isDepositExpired={isDepositExpired} age={age} />
+          </ViewWithMarginTop>
         </React.Fragment>
       )}
     </HeaderWithGreyContainer>
@@ -132,4 +137,8 @@ const HighlightedBody = styled(Typo.Body)(({ theme }) => ({
 
 const StyledBody = styled(Typo.Body)(({ theme }) => ({
   color: theme.colors.greyDark,
+}))
+
+const ViewWithMarginTop = styled.View<{ top: number }>(({ top }) => ({
+  marginTop: getSpacing(top),
 }))

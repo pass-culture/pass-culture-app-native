@@ -156,14 +156,16 @@ export const getCtaWordingAndAction = ({
         wording: 'Réserver l’offre',
         isDisabled: true,
         bottomBannerText:
-          'Tu peux uniquement réserver des offres gratuites entre tes 15 et 16 ans.',
+          'Entre tes 15 et 16 ans tu peux réserver uniquement des offres gratuites.',
       }
     }
 
     if (isNotFreeOffer) {
       return {
-        wording: 'Crédit insuffisant',
+        wording: 'Réserver l’offre',
         isDisabled: true,
+        bottomBannerText:
+          'Entre tes 15 et 16 ans tu peux réserver uniquement des offres gratuites.',
       }
     }
 

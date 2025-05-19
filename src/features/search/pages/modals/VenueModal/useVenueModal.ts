@@ -43,7 +43,15 @@ const useVenueModal = ({ dismissModal }: VenueModalHookProps): VenueModalHook =>
   const doResetVenue = useCallback(() => {
     setVenueQuery('')
     setSelectedVenue(null)
-  }, [])
+    const payload: SearchState = {
+      ...searchState,
+      venue: undefined,
+    }
+    dispatch({
+      type: 'SET_STATE',
+      payload,
+    })
+  }, [dispatch, searchState])
 
   const doSetSelectedVenue = useCallback((venue: Venue) => {
     setSelectedVenue(venue)
@@ -75,6 +83,7 @@ const useVenueModal = ({ dismissModal }: VenueModalHookProps): VenueModalHook =>
   const isQueryProvided = !!venueQuery && !!debouncedVenueQuery
   const shouldShowSuggestedVenues = isQueryProvided && !selectedVenue
   const isSearchButtonDisabled = !selectedVenue && !!venueQuery
+  const isResetButtonDisabled = !selectedVenue
 
   return {
     doChangeVenue,
@@ -85,6 +94,7 @@ const useVenueModal = ({ dismissModal }: VenueModalHookProps): VenueModalHook =>
     shouldShowSuggestedVenues,
     venueQuery,
     isSearchButtonDisabled,
+    isResetButtonDisabled,
     onClose,
   }
 }

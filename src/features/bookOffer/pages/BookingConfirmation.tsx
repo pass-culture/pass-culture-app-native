@@ -1,6 +1,8 @@
 import { useNavigation, useRoute } from '@react-navigation/native'
 import React, { useCallback } from 'react'
 
+import { EligibilityType } from 'api/gen'
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { getShareOffer } from 'features/share/helpers/getShareOffer'
@@ -21,6 +23,7 @@ import { LINE_BREAK } from 'ui/theme/constants'
 
 export function BookingConfirmation() {
   const { params } = useRoute<UseRouteType<'BookingConfirmation'>>()
+  const { user } = useAuthContext()
   const { data: offer } = useOfferQuery({ offerId: params.offerId })
   const { share: shareOffer, shareContent } = getShareOffer({
     offer,
@@ -66,14 +69,18 @@ export function BookingConfirmation() {
     currency,
     euroToPacificFrancRate
   )
-  const amountLeftText = `Il te reste encore ${amountLeftWithCurrency} à dépenser sur le pass Culture.`
+
+  const isUserFreeStatus = user?.eligibility === EligibilityType.free
+  const amountLeftText = isUserFreeStatus
+    ? ''
+    : `Il te reste encore ${amountLeftWithCurrency} à dépenser sur le pass Culture.${LINE_BREAK}`
 
   return (
     <React.Fragment>
       <GenericInfoPage
         illustration={BicolorTicketBooked}
         title="Réservation confirmée&nbsp;!"
-        subtitle={`${amountLeftText}${LINE_BREAK}Tu peux retrouver toutes les informations concernant ta réservation sur l’application.`}
+        subtitle={`${amountLeftText}Tu peux retrouver toutes les informations concernant ta réservation sur l’application.`}
         buttonPrimary={{
           wording: 'Voir ma réservation',
           onPress: displayBookingDetails,

@@ -113,11 +113,11 @@ describe('getCtaWordingAndAction', () => {
         isDisabled: true,
         wording: 'Réserver l’offre',
         bottomBannerText:
-          'Tu peux uniquement réserver des offres gratuites entre tes 15 et 16 ans.',
+          'Entre tes 15 et 16 ans tu peux réserver uniquement des offres gratuites.',
       })
     })
 
-    it('should disable CTA with "Crédit insuffisant" wording when profile is complete and offer is not free', () => {
+    it('should disable CTA with "Réserver l’offre" wording when profile is complete and offer is not free', () => {
       const result = getCtaWordingAndAction({
         ...defaultParameters,
         user: { ...beneficiaryUser, eligibility: EligibilityType.free },
@@ -128,7 +128,9 @@ describe('getCtaWordingAndAction', () => {
 
       expect(result).toEqual({
         isDisabled: true,
-        wording: 'Crédit insuffisant',
+        wording: 'Réserver l’offre',
+        bottomBannerText:
+          'Entre tes 15 et 16 ans tu peux réserver uniquement des offres gratuites.',
       })
     })
   })

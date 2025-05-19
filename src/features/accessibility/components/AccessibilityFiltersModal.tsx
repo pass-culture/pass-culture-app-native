@@ -58,6 +58,7 @@ export const AccessibilityFiltersModal: React.FC<AccessibilityModalProps> = ({
 
   const handleFilterReset = () => {
     setDisplayedDisabilities(defaultDisabilitiesProperties)
+    setDisabilities(defaultDisabilitiesProperties)
   }
 
   const capitalizeFirstLetter = (word: string) => {
@@ -75,6 +76,8 @@ export const AccessibilityFiltersModal: React.FC<AccessibilityModalProps> = ({
     setDisabilities(displayedDisabilities)
     hideModal()
   }
+
+  const hasDefaultValues = isEqual(defaultDisabilitiesProperties, displayedDisabilities)
 
   return (
     <AppModal
@@ -101,6 +104,7 @@ export const AccessibilityFiltersModal: React.FC<AccessibilityModalProps> = ({
           onResetPress={handleFilterReset}
           onSearchPress={handleSubmit}
           filterBehaviour={filterBehaviour}
+          isResetDisabled={hasDefaultValues}
         />
       }>
       <AccessibilityFiltersContainer gap={8}>

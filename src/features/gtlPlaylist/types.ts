@@ -3,6 +3,7 @@ import { OffersModuleParameters } from 'features/home/types'
 import { AlgoliaOffer, LocationMode, PlaylistOffersParams } from 'libs/algolia/types'
 import { Layout, DisplayParametersFields } from 'libs/contentful/types'
 import { Position } from 'libs/location/types'
+import { QueryKeys } from 'libs/queryKeys'
 
 export type GtlPlaylistRequest = {
   id: string
@@ -26,4 +27,5 @@ export type UseGetOffersByGtlQueryArgs = {
   selectedLocationMode: LocationMode
   isUserUnderage: boolean
   adaptPlaylistParameters: (parameters: OffersModuleParameters) => PlaylistOffersParams
+  queryKey: keyof typeof QueryKeys
 }

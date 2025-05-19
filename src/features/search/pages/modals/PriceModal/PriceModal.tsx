@@ -171,15 +171,14 @@ export const PriceModal: FunctionComponent<PriceModalProps> = ({
     setValue,
     trigger,
     formState: { isSubmitting, isValid, isValidating },
+    watch,
   } = useForm<PriceModalFormData>({
     mode: 'onChange',
     defaultValues: initialFormValues,
     resolver: yupResolver(searchPriceSchema),
   })
 
-  useEffect(() => {
-    reset(initialFormValues)
-  }, [initialFormValues, reset])
+  const { minPrice, maxPrice, isLimitCreditSearch, isOnlyFreeOffersSearch } = watch()
 
   const onSubmit = handleSubmit(search)
 
@@ -275,6 +274,8 @@ export const PriceModal: FunctionComponent<PriceModalProps> = ({
   const disabled = !isValid || (!isValidating && isSubmitting)
   const isKeyboardOpen = keyboardHeight > 0
   const shouldDisplayBackButton = filterBehaviour === FilterBehaviour.APPLY_WITHOUT_SEARCHING
+  const hasDefaultValues =
+    !isLimitCreditSearch && !isOnlyFreeOffersSearch && maxPrice === '' && minPrice === ''
 
   return (
     <AppModal
@@ -302,6 +303,7 @@ export const PriceModal: FunctionComponent<PriceModalProps> = ({
           onResetPress={onResetPress}
           isSearchDisabled={disabled}
           filterBehaviour={filterBehaviour}
+          isResetDisabled={hasDefaultValues}
         />
       }>
       <FormContainer isKeyboardOpen={isKeyboardOpen}>

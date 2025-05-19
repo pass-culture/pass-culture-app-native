@@ -13,5 +13,6 @@ export type VenueModalHook = {
   shouldShowSuggestedVenues: boolean
   venueQuery: string
   isSearchButtonDisabled: boolean
+  isResetButtonDisabled: boolean
   onClose: VoidFunction
 }

@@ -1,19 +1,18 @@
-import React, { FunctionComponent, useCallback, useEffect } from 'react'
-import { useForm, Controller, ControllerRenderProps } from 'react-hook-form'
+import React, { FunctionComponent, useCallback } from 'react'
+import { Controller, ControllerRenderProps, useForm } from 'react-hook-form'
 import { useTheme } from 'styled-components'
 import { v4 as uuidv4 } from 'uuid'
 
 import { FilterSwitchWithLabel } from 'features/search/components/FilterSwitchWithLabel/FilterSwitchWithLabel'
 import { SearchCustomModalHeader } from 'features/search/components/SearchCustomModalHeader'
 import { SearchFixedModalBottom } from 'features/search/components/SearchFixedModalBottom'
-import { initialSearchState } from 'features/search/context/reducer'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { FilterBehaviour } from 'features/search/enums'
 import { SearchState } from 'features/search/types'
 import { Form } from 'ui/components/Form'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { Close } from 'ui/svg/icons/Close'
-import { Spacer } from 'ui/theme'
+import { getSpacing } from 'ui/theme'
 
 type SearchTypeFormData = {
   offerIsDuo: boolean
@@ -48,6 +47,7 @@ export const OfferDuoModal: FunctionComponent<OfferDuoModalProps> = ({
     getValues,
     setValue,
     formState: { isSubmitting },
+    watch,
   } = useForm<SearchTypeFormData>({
     mode: 'onChange',
     defaultValues: {
@@ -55,9 +55,7 @@ export const OfferDuoModal: FunctionComponent<OfferDuoModalProps> = ({
     },
   })
 
-  useEffect(() => {
-    reset({ offerIsDuo: searchState.offerIsDuo })
-  }, [reset, searchState])
+  const { offerIsDuo } = watch()
 
   const toggleLimitDuoOfferSearch = useCallback(() => {
     const toggleLimitDuoOffer = !getValues('offerIsDuo')
@@ -74,25 +72,29 @@ export const OfferDuoModal: FunctionComponent<OfferDuoModalProps> = ({
     }) => React.ReactElement
   >(
     ({ field: { value } }) => (
-      <React.Fragment>
-        <FilterSwitchWithLabel
-          isActive={value}
-          toggle={toggleLimitDuoOfferSearch}
-          label="Uniquement les offres duo"
-          subtitle={subtitleToggle}
-          testID="limitDuoOfferSearch"
-        />
-        <Spacer.Column numberOfSpaces={6} />
-      </React.Fragment>
+      <FilterSwitchWithLabel
+        isActive={value}
+        toggle={toggleLimitDuoOfferSearch}
+        label="Uniquement les offres duo"
+        subtitle={subtitleToggle}
+        testID="limitDuoOfferSearch"
+      />
     ),
     [toggleLimitDuoOfferSearch]
   )
 
   const onResetPress = useCallback(() => {
     reset({
-      offerIsDuo: initialSearchState.offerIsDuo,
+      offerIsDuo: false,
     })
-  }, [reset])
+
+    const additionalSearchState: SearchState = {
+      ...searchState,
+      offerIsDuo: false,
+    }
+
+    dispatch({ type: 'SET_STATE', payload: additionalSearchState })
+  }, [dispatch, reset, searchState])
 
   const closeModal = useCallback(() => {
     reset({
@@ -123,6 +125,7 @@ export const OfferDuoModal: FunctionComponent<OfferDuoModalProps> = ({
 
   const onSubmit = handleSubmit(search)
   const shouldDisplayBackButton = filterBehaviour === FilterBehaviour.APPLY_WITHOUT_SEARCHING
+  const hasDefaultValue = !offerIsDuo
 
   return (
     <AppModal
@@ -150,10 +153,10 @@ export const OfferDuoModal: FunctionComponent<OfferDuoModalProps> = ({
           onResetPress={onResetPress}
           isSearchDisabled={isSubmitting}
           filterBehaviour={filterBehaviour}
+          isResetDisabled={hasDefaultValue}
         />
       }>
-      <Spacer.Column numberOfSpaces={6} />
-      <Form.MaxWidth>
+      <Form.MaxWidth marginTop={getSpacing(6)}>
         <Controller control={control} name="offerIsDuo" render={ToggleOfferDuoController} />
       </Form.MaxWidth>
     </AppModal>

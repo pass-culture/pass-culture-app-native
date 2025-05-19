@@ -3,10 +3,8 @@ import styled from 'styled-components/native'
 
 import { CategoryIdEnum } from 'api/gen'
 import { ImageTile } from 'ui/components/ImageTile'
-import { NewOfferCaption } from 'ui/components/NewOfferCaption'
-import { Tag } from 'ui/components/Tag/Tag'
+import { OfferCaption } from 'ui/components/OfferCaption'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { getSpacing } from 'ui/theme'
 
 type Props = {
   categoryId?: CategoryIdEnum | null
@@ -37,8 +35,14 @@ export const PlaylistCardOffer: FC<Props> = ({
     <Container maxWidth={width} testID="playlistCardOffer">
       <ImageTile categoryId={categoryId} uri={thumbnailUrl} width={width} height={height} />
       {interactionTag ?? null}
-      <NewOfferCaption name={name} date={date} price={price} categoryLabel={categoryLabel} />
-      {distance ? <DistanceTag label={`à ${distance}`} /> : null}
+      <OfferCaption
+        name={name}
+        date={date}
+        price={price}
+        categoryLabel={categoryLabel}
+        distance={distance}
+        width={width}
+      />
     </Container>
   )
 }
@@ -47,14 +51,4 @@ const Container = styled(ViewGap).attrs({
   gap: 2,
 })<{ maxWidth: number }>(({ maxWidth }) => ({
   maxWidth,
-}))
-
-const DistanceTag = styled(Tag).attrs(() => ({
-  testID: 'DistanceId',
-}))(({ theme }) => ({
-  position: 'absolute',
-  top: getSpacing(2),
-  left: getSpacing(2),
-  zIndex: 1,
-  backgroundColor: theme.colors.white,
 }))

@@ -25,7 +25,6 @@ export enum QueryKeys {
   FILMS_OFFERS = 'filmsOffers',
   FIRESTORE_UBBLE_ETA_MESSAGE = 'firestoreUbbleETAMessage',
   GTL_PLAYLISTS_CONFIG = 'GtlPlaylistsConfig',
-  GTL_PLAYLISTS = 'GtlPlaylists',
   HEADLINE_OFFERS_COUNT = 'headlineOffersCount',
   HIGHLIGHT_OFFER = 'highlightOffer',
   HOME_BANNER = 'homeBanner',
@@ -56,10 +55,12 @@ export enum QueryKeys {
   USER_PROFILE = 'userProfile',
   VENUE = 'venue',
   VENUE_OFFERS = 'venueOffers',
+  VENUE_GTL_PLAYLISTS = 'venueGtlPlaylists',
   VENUES = 'venues',
   VIDEO_CAROUSEL_OFFERS = 'videoCarouselOffers',
   VIDEO_OFFER = 'video_offer',
   REMINDERS = 'reminders',
+  THEMATIC_SEARCH_BOOKS_GTL_PLAYLISTS = 'thematicSearchBooksGtlPlaylists',
 }
 
 export enum MutationKeys {

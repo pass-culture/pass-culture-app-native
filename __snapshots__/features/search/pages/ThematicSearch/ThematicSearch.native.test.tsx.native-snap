@@ -2731,23 +2731,14 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                               }
                             />
                           </View>
-                          <View
-                            gap={1}
-                            style={
-                              [
-                                {
-                                  "gap": 4,
-                                },
-                              ]
-                            }
-                          >
+                          <View>
                             <Text
                               numberOfLines={1}
                               style={
                                 [
                                   {
-                                    "color": "#696A6F",
-                                    "fontFamily": "Montserrat-SemiBold",
+                                    "color": "#696a6f",
+                                    "fontFamily": "Montserrat-Medium",
                                     "fontSize": 12,
                                     "lineHeight": 19.2,
                                   },
@@ -2756,35 +2747,36 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                             >
                               Livre
                             </Text>
-                            <View>
-                              <Text
-                                numberOfLines={2}
-                                style={
-                                  [
-                                    {
-                                      "color": "#161617",
-                                      "fontFamily": "Montserrat-SemiBold",
-                                      "fontSize": 12,
-                                      "lineHeight": 19.2,
-                                    },
-                                  ]
-                                }
-                              >
-                                Mon abonnement bibliothèque
-                              </Text>
-                              <Text
-                                style={
-                                  [
-                                    {
-                                      "color": "#161617",
-                                      "fontFamily": "Montserrat-SemiBold",
-                                      "fontSize": 12,
-                                      "lineHeight": 19.2,
-                                    },
-                                  ]
-                                }
-                              />
-                            </View>
+                            <Text
+                              numberOfLines={2}
+                              style={
+                                [
+                                  {
+                                    "color": "#161617",
+                                    "fontFamily": "Montserrat-SemiBold",
+                                    "fontSize": 12,
+                                    "lineHeight": 19.2,
+                                  },
+                                ]
+                              }
+                            >
+                              Mon abonnement bibliothèque
+                            </Text>
+                          </View>
+                          <View>
+                            <Text
+                              style={
+                                [
+                                  {
+                                    "color": "#161617",
+                                    "fontFamily": "Montserrat-Medium",
+                                    "fontSize": 12,
+                                    "lineHeight": 19.2,
+                                  },
+                                ]
+                              }
+                              testID="priceIsDuo"
+                            />
                           </View>
                         </View>
                       </View>
@@ -3094,23 +3086,14 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                               }
                             />
                           </View>
-                          <View
-                            gap={1}
-                            style={
-                              [
-                                {
-                                  "gap": 4,
-                                },
-                              ]
-                            }
-                          >
+                          <View>
                             <Text
                               numberOfLines={1}
                               style={
                                 [
                                   {
-                                    "color": "#696A6F",
-                                    "fontFamily": "Montserrat-SemiBold",
+                                    "color": "#696a6f",
+                                    "fontFamily": "Montserrat-Medium",
                                     "fontSize": 12,
                                     "lineHeight": 19.2,
                                   },
@@ -3119,35 +3102,36 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                             >
                               Films
                             </Text>
-                            <View>
-                              <Text
-                                numberOfLines={2}
-                                style={
-                                  [
-                                    {
-                                      "color": "#161617",
-                                      "fontFamily": "Montserrat-SemiBold",
-                                      "fontSize": 12,
-                                      "lineHeight": 19.2,
-                                    },
-                                  ]
-                                }
-                              >
-                                Mon abonnement médiathèque
-                              </Text>
-                              <Text
-                                style={
-                                  [
-                                    {
-                                      "color": "#161617",
-                                      "fontFamily": "Montserrat-SemiBold",
-                                      "fontSize": 12,
-                                      "lineHeight": 19.2,
-                                    },
-                                  ]
-                                }
-                              />
-                            </View>
+                            <Text
+                              numberOfLines={2}
+                              style={
+                                [
+                                  {
+                                    "color": "#161617",
+                                    "fontFamily": "Montserrat-SemiBold",
+                                    "fontSize": 12,
+                                    "lineHeight": 19.2,
+                                  },
+                                ]
+                              }
+                            >
+                              Mon abonnement médiathèque
+                            </Text>
+                          </View>
+                          <View>
+                            <Text
+                              style={
+                                [
+                                  {
+                                    "color": "#161617",
+                                    "fontFamily": "Montserrat-Medium",
+                                    "fontSize": 12,
+                                    "lineHeight": 19.2,
+                                  },
+                                ]
+                              }
+                              testID="priceIsDuo"
+                            />
                           </View>
                         </View>
                       </View>
@@ -3457,23 +3441,14 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                               }
                             />
                           </View>
-                          <View
-                            gap={1}
-                            style={
-                              [
-                                {
-                                  "gap": 4,
-                                },
-                              ]
-                            }
-                          >
+                          <View>
                             <Text
                               numberOfLines={1}
                               style={
                                 [
                                   {
-                                    "color": "#696A6F",
-                                    "fontFamily": "Montserrat-SemiBold",
+                                    "color": "#696a6f",
+                                    "fontFamily": "Montserrat-Medium",
                                     "fontSize": 12,
                                     "lineHeight": 19.2,
                                   },
@@ -3482,35 +3457,36 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                             >
                               Livre
                             </Text>
-                            <View>
-                              <Text
-                                numberOfLines={2}
-                                style={
-                                  [
-                                    {
-                                      "color": "#161617",
-                                      "fontFamily": "Montserrat-SemiBold",
-                                      "fontSize": 12,
-                                      "lineHeight": 19.2,
-                                    },
-                                  ]
-                                }
-                              >
-                                Mon abonnement livres numériques
-                              </Text>
-                              <Text
-                                style={
-                                  [
-                                    {
-                                      "color": "#161617",
-                                      "fontFamily": "Montserrat-SemiBold",
-                                      "fontSize": 12,
-                                      "lineHeight": 19.2,
-                                    },
-                                  ]
-                                }
-                              />
-                            </View>
+                            <Text
+                              numberOfLines={2}
+                              style={
+                                [
+                                  {
+                                    "color": "#161617",
+                                    "fontFamily": "Montserrat-SemiBold",
+                                    "fontSize": 12,
+                                    "lineHeight": 19.2,
+                                  },
+                                ]
+                              }
+                            >
+                              Mon abonnement livres numériques
+                            </Text>
+                          </View>
+                          <View>
+                            <Text
+                              style={
+                                [
+                                  {
+                                    "color": "#161617",
+                                    "fontFamily": "Montserrat-Medium",
+                                    "fontSize": 12,
+                                    "lineHeight": 19.2,
+                                  },
+                                ]
+                              }
+                              testID="priceIsDuo"
+                            />
                           </View>
                         </View>
                       </View>
@@ -3820,23 +3796,14 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                               }
                             />
                           </View>
-                          <View
-                            gap={1}
-                            style={
-                              [
-                                {
-                                  "gap": 4,
-                                },
-                              ]
-                            }
-                          >
+                          <View>
                             <Text
                               numberOfLines={1}
                               style={
                                 [
                                   {
-                                    "color": "#696A6F",
-                                    "fontFamily": "Montserrat-SemiBold",
+                                    "color": "#696a6f",
+                                    "fontFamily": "Montserrat-Medium",
                                     "fontSize": 12,
                                     "lineHeight": 19.2,
                                   },
@@ -3845,35 +3812,36 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                             >
                               Jeux
                             </Text>
-                            <View>
-                              <Text
-                                numberOfLines={2}
-                                style={
-                                  [
-                                    {
-                                      "color": "#161617",
-                                      "fontFamily": "Montserrat-SemiBold",
-                                      "fontSize": 12,
-                                      "lineHeight": 19.2,
-                                    },
-                                  ]
-                                }
-                              >
-                                Mon abonnement ludothèque
-                              </Text>
-                              <Text
-                                style={
-                                  [
-                                    {
-                                      "color": "#161617",
-                                      "fontFamily": "Montserrat-SemiBold",
-                                      "fontSize": 12,
-                                      "lineHeight": 19.2,
-                                    },
-                                  ]
-                                }
-                              />
-                            </View>
+                            <Text
+                              numberOfLines={2}
+                              style={
+                                [
+                                  {
+                                    "color": "#161617",
+                                    "fontFamily": "Montserrat-SemiBold",
+                                    "fontSize": 12,
+                                    "lineHeight": 19.2,
+                                  },
+                                ]
+                              }
+                            >
+                              Mon abonnement ludothèque
+                            </Text>
+                          </View>
+                          <View>
+                            <Text
+                              style={
+                                [
+                                  {
+                                    "color": "#161617",
+                                    "fontFamily": "Montserrat-Medium",
+                                    "fontSize": 12,
+                                    "lineHeight": 19.2,
+                                  },
+                                ]
+                              }
+                              testID="priceIsDuo"
+                            />
                           </View>
                         </View>
                       </View>
@@ -4183,23 +4151,14 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                               }
                             />
                           </View>
-                          <View
-                            gap={1}
-                            style={
-                              [
-                                {
-                                  "gap": 4,
-                                },
-                              ]
-                            }
-                          >
+                          <View>
                             <Text
                               numberOfLines={1}
                               style={
                                 [
                                   {
-                                    "color": "#696A6F",
-                                    "fontFamily": "Montserrat-SemiBold",
+                                    "color": "#696a6f",
+                                    "fontFamily": "Montserrat-Medium",
                                     "fontSize": 12,
                                     "lineHeight": 19.2,
                                   },
@@ -4208,35 +4167,36 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                             >
                               Concert
                             </Text>
-                            <View>
-                              <Text
-                                numberOfLines={2}
-                                style={
-                                  [
-                                    {
-                                      "color": "#161617",
-                                      "fontFamily": "Montserrat-SemiBold",
-                                      "fontSize": 12,
-                                      "lineHeight": 19.2,
-                                    },
-                                  ]
-                                }
-                              >
-                                Mon abonnement concert
-                              </Text>
-                              <Text
-                                style={
-                                  [
-                                    {
-                                      "color": "#161617",
-                                      "fontFamily": "Montserrat-SemiBold",
-                                      "fontSize": 12,
-                                      "lineHeight": 19.2,
-                                    },
-                                  ]
-                                }
-                              />
-                            </View>
+                            <Text
+                              numberOfLines={2}
+                              style={
+                                [
+                                  {
+                                    "color": "#161617",
+                                    "fontFamily": "Montserrat-SemiBold",
+                                    "fontSize": 12,
+                                    "lineHeight": 19.2,
+                                  },
+                                ]
+                              }
+                            >
+                              Mon abonnement concert
+                            </Text>
+                          </View>
+                          <View>
+                            <Text
+                              style={
+                                [
+                                  {
+                                    "color": "#161617",
+                                    "fontFamily": "Montserrat-Medium",
+                                    "fontSize": 12,
+                                    "lineHeight": 19.2,
+                                  },
+                                ]
+                              }
+                              testID="priceIsDuo"
+                            />
                           </View>
                         </View>
                       </View>
@@ -4546,23 +4506,14 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                               }
                             />
                           </View>
-                          <View
-                            gap={1}
-                            style={
-                              [
-                                {
-                                  "gap": 4,
-                                },
-                              ]
-                            }
-                          >
+                          <View>
                             <Text
                               numberOfLines={1}
                               style={
                                 [
                                   {
-                                    "color": "#696A6F",
-                                    "fontFamily": "Montserrat-SemiBold",
+                                    "color": "#696a6f",
+                                    "fontFamily": "Montserrat-Medium",
                                     "fontSize": 12,
                                     "lineHeight": 19.2,
                                   },
@@ -4571,35 +4522,36 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                             >
                               Jeux
                             </Text>
-                            <View>
-                              <Text
-                                numberOfLines={2}
-                                style={
-                                  [
-                                    {
-                                      "color": "#161617",
-                                      "fontFamily": "Montserrat-SemiBold",
-                                      "fontSize": 12,
-                                      "lineHeight": 19.2,
-                                    },
-                                  ]
-                                }
-                              >
-                                Mon abonnement jeu vidéo
-                              </Text>
-                              <Text
-                                style={
-                                  [
-                                    {
-                                      "color": "#161617",
-                                      "fontFamily": "Montserrat-SemiBold",
-                                      "fontSize": 12,
-                                      "lineHeight": 19.2,
-                                    },
-                                  ]
-                                }
-                              />
-                            </View>
+                            <Text
+                              numberOfLines={2}
+                              style={
+                                [
+                                  {
+                                    "color": "#161617",
+                                    "fontFamily": "Montserrat-SemiBold",
+                                    "fontSize": 12,
+                                    "lineHeight": 19.2,
+                                  },
+                                ]
+                              }
+                            >
+                              Mon abonnement jeu vidéo
+                            </Text>
+                          </View>
+                          <View>
+                            <Text
+                              style={
+                                [
+                                  {
+                                    "color": "#161617",
+                                    "fontFamily": "Montserrat-Medium",
+                                    "fontSize": 12,
+                                    "lineHeight": 19.2,
+                                  },
+                                ]
+                              }
+                              testID="priceIsDuo"
+                            />
                           </View>
                         </View>
                       </View>

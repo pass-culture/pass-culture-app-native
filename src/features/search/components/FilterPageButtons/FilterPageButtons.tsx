@@ -5,24 +5,27 @@ import { FilterBehaviour } from 'features/search/enums'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
 import { styledButton } from 'ui/components/buttons/styledButton'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Again } from 'ui/svg/icons/Again'
-import { getSpacing, Spacer } from 'ui/theme'
+import { getSpacing } from 'ui/theme'
 
 type Props = {
-  isModal?: boolean
   onResetPress: () => void
   onSearchPress: () => void
+  filterBehaviour: FilterBehaviour
+  isModal?: boolean
   isSearchDisabled?: boolean
   children?: never
-  filterBehaviour: FilterBehaviour
+  isResetDisabled?: boolean
 }
 
 export const FilterPageButtons: FunctionComponent<Props> = ({
   isModal = false,
   onResetPress,
   onSearchPress,
-  isSearchDisabled,
   filterBehaviour,
+  isSearchDisabled,
+  isResetDisabled,
 }) => {
   let searchButtonText = ''
   switch (filterBehaviour) {
@@ -37,9 +40,13 @@ export const FilterPageButtons: FunctionComponent<Props> = ({
   }
 
   return (
-    <Container isModal={isModal}>
-      <ResetButton wording="Réinitialiser" icon={Again} onPress={onResetPress} />
-      <Spacer.Column numberOfSpaces={4} />
+    <Container isModal={isModal} gap={4}>
+      <ResetButton
+        wording="Réinitialiser"
+        icon={Again}
+        onPress={onResetPress}
+        disabled={isResetDisabled}
+      />
       <SearchButton
         wording={searchButtonText}
         onPress={onSearchPress}
@@ -49,7 +56,7 @@ export const FilterPageButtons: FunctionComponent<Props> = ({
   )
 }
 
-const Container = styled.View<{ isModal: boolean }>(({ isModal, theme }) => ({
+const Container = styled(ViewGap)<{ isModal: boolean }>(({ isModal, theme }) => ({
   flexDirection: theme.appContentWidth > theme.breakpoints.xs ? 'row' : 'column',
   justifyContent: 'center',
   paddingHorizontal: theme.modal.spacing.MD,
@@ -59,7 +66,6 @@ const Container = styled.View<{ isModal: boolean }>(({ isModal, theme }) => ({
 
 const ResetButton = styledButton(ButtonQuaternaryBlack)({
   width: 'auto',
-  marginRight: getSpacing(4),
 })
 
 const SearchButton = styledButton(ButtonPrimary)({

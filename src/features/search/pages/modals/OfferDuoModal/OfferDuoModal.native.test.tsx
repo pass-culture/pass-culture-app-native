@@ -2,6 +2,7 @@ import React from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
 import { initialSearchState } from 'features/search/context/reducer'
+import { ISearchContext } from 'features/search/context/SearchWrapper'
 import { FilterBehaviour } from 'features/search/enums'
 import {
   OfferDuoModal,
@@ -14,13 +15,14 @@ import { render, screen, userEvent, waitFor } from 'tests/utils'
 
 const searchId = uuidv4()
 const searchState = { ...initialSearchState, searchId }
-const mockSearchState = searchState
 const mockDispatch = jest.fn()
+const initialMockUseSearch = {
+  searchState,
+  dispatch: mockDispatch,
+}
+const mockUseSearch: jest.Mock<Partial<ISearchContext>> = jest.fn(() => initialMockUseSearch)
 jest.mock('features/search/context/SearchWrapper', () => ({
-  useSearch: () => ({
-    searchState: mockSearchState,
-    dispatch: mockDispatch,
-  }),
+  useSearch: () => mockUseSearch(),
 }))
 
 jest.mock('features/auth/context/AuthContext')
@@ -124,6 +126,29 @@ describe('<OfferDuoModal/>', () => {
         checked: false,
       })
     })
+
+    it('should reset search when pressing reset button', async () => {
+      mockUseSearch.mockReturnValueOnce({
+        ...initialMockUseSearch,
+        searchState: {
+          ...searchState,
+          offerIsDuo: true,
+        },
+      })
+      renderOfferDuoModal()
+
+      const resetButton = screen.getByText('Réinitialiser')
+
+      await user.press(resetButton)
+
+      expect(mockDispatch).toHaveBeenCalledWith({
+        type: 'SET_STATE',
+        payload: {
+          ...searchState,
+          offerIsDuo: false,
+        },
+      })
+    })
   })
 
   describe('should close the modal', () => {
@@ -186,16 +211,15 @@ describe('<OfferDuoModal/>', () => {
     it('should set search state view to Search results when selecting DUO offer and pressing button', async () => {
       renderOfferDuoModal()
       const toggle = screen.getByTestId('Interrupteur limitDuoOfferSearch')
-      const button = screen.getByText('Rechercher')
 
       await user.press(toggle)
 
-      await user.press(button)
+      await user.press(screen.getByText('Rechercher'))
 
       expect(mockDispatch).toHaveBeenCalledWith({
         type: 'SET_STATE',
         payload: {
-          ...mockSearchState,
+          ...searchState,
           offerIsDuo: true,
         },
       })
@@ -209,7 +233,7 @@ describe('<OfferDuoModal/>', () => {
       expect(mockDispatch).toHaveBeenCalledWith({
         type: 'SET_STATE',
         payload: {
-          ...mockSearchState,
+          ...searchState,
           offerIsDuo: false,
         },
       })
