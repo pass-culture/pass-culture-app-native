@@ -1,23 +1,24 @@
+import { StackScreenProps } from '@react-navigation/stack'
 import React from 'react'
 
-import { ProfileInformationValidation } from './ProfileInformationValidation'
-import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
-import { StackScreenProps } from '@react-navigation/stack'
-import { SubscriptionRootStackParamList } from 'features/navigation/RootNavigator/types'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { initialSubscriptionState as mockState } from 'features/identityCheck/context/reducer'
+import { reset, navigate } from '__mocks__/@react-navigation/native'
+import { ApiError } from 'api/ApiError'
 import { ActivityIdEnum } from 'api/gen'
+import { initialSubscriptionState as mockState } from 'features/identityCheck/context/reducer'
+import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
 import { useAddress } from 'features/identityCheck/pages/profile/store/addressStore'
 import { useCity } from 'features/identityCheck/pages/profile/store/cityStore'
 import { useName } from 'features/identityCheck/pages/profile/store/nameStore'
-import { useStatus } from 'features/identityCheck/pages/profile/store/statusStore'
-import { render, screen, userEvent, waitFor } from 'tests/utils'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import * as resetStores from 'features/identityCheck/pages/profile/store/resetProfileStores'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { ApiError } from 'api/ApiError'
-import { reset, navigate } from '__mocks__/@react-navigation/native'
+import { useStatus } from 'features/identityCheck/pages/profile/store/statusStore'
 import * as usePostProfileMutation from 'features/identityCheck/queries/usePostProfileMutation'
+import { SubscriptionRootStackParamList } from 'features/navigation/RootNavigator/types'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { render, screen, userEvent, waitFor } from 'tests/utils'
+
+import { ProfileInformationValidation } from './ProfileInformationValidation'
 
 const usePostProfileMutationSpy = jest.spyOn(usePostProfileMutation, 'usePostProfileMutation')
 
@@ -29,7 +30,7 @@ const mockUseMutationError = (error?: ApiError) => {
   }))
 }
 
-let mockOfferId: number | null = 123456
+const mockOfferId: number | null = 123456
 jest.mock('features/offer/store/freeOfferIdStore', () => ({
   useFreeOfferId: () => mockOfferId,
 }))

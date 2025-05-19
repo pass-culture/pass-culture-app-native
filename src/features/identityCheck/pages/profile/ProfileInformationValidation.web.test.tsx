@@ -1,18 +1,19 @@
+import { StackScreenProps } from '@react-navigation/stack'
 import React from 'react'
 
-import { ProfileInformationValidation } from './ProfileInformationValidation'
-import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
-import { StackScreenProps } from '@react-navigation/stack'
-import { SubscriptionRootStackParamList } from 'features/navigation/RootNavigator/types'
-import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { initialSubscriptionState as mockState } from 'features/identityCheck/context/reducer'
 import { ActivityIdEnum } from 'api/gen'
+import { initialSubscriptionState as mockState } from 'features/identityCheck/context/reducer'
+import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
 import { useAddress } from 'features/identityCheck/pages/profile/store/addressStore'
 import { useCity } from 'features/identityCheck/pages/profile/store/cityStore'
 import { useName } from 'features/identityCheck/pages/profile/store/nameStore'
 import { useStatus } from 'features/identityCheck/pages/profile/store/statusStore'
-import { checkAccessibilityFor, render, screen } from 'tests/utils/web'
+import { SubscriptionRootStackParamList } from 'features/navigation/RootNavigator/types'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
+import { checkAccessibilityFor, render, screen } from 'tests/utils/web'
+
+import { ProfileInformationValidation } from './ProfileInformationValidation'
 
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
@@ -63,6 +64,7 @@ describe('ProfileInformationValidation', () => {
     await screen.findByText('Informations personnelles')
 
     const results = await checkAccessibilityFor(container)
+
     expect(results).toHaveNoViolations()
   })
 })
