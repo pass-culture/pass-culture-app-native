@@ -60,8 +60,8 @@ export const DebugScreen = () => {
       title="Débuggage"
       scrollChildren={
         <ViewGap gap={2}>
-          {sortedDebugData.map((item, index) => (
-            <Typo.Button key={index}>
+          {sortedDebugData.map((item) => (
+            <Typo.Button key={item.label}>
               {item.label}&nbsp;: <Typo.Body>{item.value}</Typo.Body>
             </Typo.Button>
           ))}
