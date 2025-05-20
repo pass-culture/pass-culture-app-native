@@ -208,27 +208,27 @@ Aujourd'hui, nos pages ressemblent +/- à ça
 flowchart TB
   OfferPage
   -->|get offer id from URL| OfferDetails["OfferDetails ({ offerId?: number })"]
-  -->|load offer| useGetOffer{{"useGetOffer(offerId)"}}
+  -->|load offer| useGetOfferQuery{{"useGetOfferQuery(offerId)"}}
 
-  useGetOffer
+  useGetOfferQuery
   -->|loading| null["rien : la plupart du temps, on return null"]
 
-  useGetOffer
+  useGetOfferQuery
   -->|has no offer or error| ErrorNotFound
 
-  useGetOffer
+  useGetOfferQuery
   -->|has offer| OfferDetail["Display offer details"]
 
   OfferDetails
-  -->|load recommanded offers| useRecommandedOffers{{"useRecommandedOffers(offerId: number)"}}
+  -->|load recommanded offers| useRecommandedOffersQuery{{"useRecommandedOffersQuery(offerId: number)"}}
 
-  useRecommandedOffers
+  useRecommandedOffersQuery
   -->|loading| PlaceholderPlaylists
 
-  useRecommandedOffers
+  useRecommandedOffersQuery
   -->|has no recommanded offers or error| DisplayNothing
 
-  useRecommandedOffers
+  useRecommandedOffersQuery
   -->|has recommanded offers| RecommandedOffers
 ```
 
@@ -252,28 +252,28 @@ flowchart TB
 
   parseOfferIdFromURL
   -->|get offer id from URL| MaybeOfferContainer["MaybeOfferContainer ({ offerId: number })"]
-  -->|load offer| useGetOffer{{"useGetOffer(offerId)"}}
+  -->|load offer| useGetOfferQuery{{"useGetOfferQuery(offerId)"}}
 
-  useGetOffer
+  useGetOfferQuery
   -->|loading| LoadingPage
 
-  useGetOffer
+  useGetOfferQuery
   -->|has no offer or error| ErrorNotFound
 
-  useGetOffer
+  useGetOfferQuery
   -->|has offer| OfferContainer["OfferContainer ({ offer: Offer })"]
   --> OfferDetail
 
   OfferContainer
-  -->|load recommanded offers| useRecommandedOffers{{"useRecommandedOffers(offerId: number)"}}
+  -->|load recommanded offers| useRecommandedOffersQuery{{"useRecommandedOffersQuery(offerId: number)"}}
 
-  useRecommandedOffers
+  useRecommandedOffersQuery
   -->|loading| PlaceholderPlaylists
 
-  useRecommandedOffers
+  useRecommandedOffersQuery
   -->|has no recommanded offers or error| DisplayNothing
 
-  useRecommandedOffers
+  useRecommandedOffersQuery
   -->|has recommanded offers| RecommandedOffers
 ```
 
@@ -298,7 +298,7 @@ flowchart TB
   -->|loading| LoadingPage
 
   Suspense
-  -->|load offer| useGetOffer{{"useGetOffer(offerId)"}}
+  -->|load offer| useGetOfferQuery{{"useGetOfferQuery(offerId)"}}
   -->|has offer| OfferContainer
 
   OfferContainer["OfferContainer ({ offer: Offer })"]
@@ -313,12 +313,45 @@ flowchart TB
   -->|loading| PlaceholderPlaylists
 
   Suspense2
-  -->|load recommanded offers| useRecommandedOffers{{"useRecommandedOffers(offerId: number)"}}
+  -->|load recommanded offers| useRecommandedOffersQuery{{"useRecommandedOffersQuery(offerId: number)"}}
 
-  useRecommandedOffers
+  useRecommandedOffersQuery
   -->|has recommanded offers| RecommandedOffers
 
-  MaybeOfferContainer -..->|"prefetch (si on veut améliorer les perfs)"| useRecommandedOffers
+  MaybeOfferContainer -..->|"prefetch (si on veut améliorer les perfs)"| useRecommandedOffersQuery
+```
+
+```mermaid
+flowchart LR
+  subgraph AppState
+    selectors@{ shape: das }
+    actions
+    store@{ shape: bow-rect }
+  end
+
+  subgraph ServerState
+    query@{ shape: lean-l }
+    mutation@{ shape: lean-r }
+    QueryCache@{ shape: win-pane }
+  end
+
+  subgraph Navigation
+    queryParams@{ shape: win-pane }
+    Modals@{ shape: processes }
+    OthersPages@{ shape: processes }
+  end
+
+  Page
+  -->|render| Container@{ shape: processes }
+  -->|render| Dumb@{ shape: processes }
+
+  Page -->|read| queryParams
+  Container -->|read| selectors
+  Container -->|write| actions
+  Container -->|get| query
+  Container -->|post| mutation
+  Container -->|display| Modals
+  Container -->|navigate to| OthersPages
 ```
 
 ## TODO
