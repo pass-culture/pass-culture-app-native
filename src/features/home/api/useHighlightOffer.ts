@@ -99,11 +99,7 @@ function newFunction(
   const offerByTagQuery = async () => {
     if (!offerTag) return undefined
 
-    const result = await fetchOffersByTags({
-      tags: [offerTag],
-      isUserUnderage,
-      userLocation,
-    })
+    const result = await newFunction_3(offerTag, isUserUnderage, userLocation)
 
     return result
   }
@@ -132,6 +128,14 @@ function newFunction(
   })
   return newVariable
 }
+async function newFunction_3(offerTag: string, isUserUnderage: boolean, userLocation: Position) {
+  return fetchOffersByTags({
+    tags: [offerTag],
+    isUserUnderage,
+    userLocation,
+  })
+}
+
 function newFunction_2(offerEan: string, userLocation: Position, isUserUnderage: boolean) {
   return fetchOffersByEan({
     eanList: [offerEan],
