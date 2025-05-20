@@ -93,7 +93,7 @@ function newFunction(
   const offerByTagQuery = async () => {
     if (!offerTag) return undefined
 
-    const result = await newFunction_3(offerTag, isUserUnderage, userLocation)
+    const result = await getOfferByTagQuery(offerTag, isUserUnderage, userLocation)
 
     return result
   }
@@ -114,7 +114,11 @@ function newFunction(
   })
   return newVariable
 }
-async function newFunction_3(offerTag: string, isUserUnderage: boolean, userLocation: Position) {
+async function getOfferByTagQuery(
+  offerTag: string,
+  isUserUnderage: boolean,
+  userLocation: Position
+) {
   return fetchOffersByTags({
     tags: [offerTag],
     isUserUnderage,
