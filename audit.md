@@ -321,6 +321,8 @@ flowchart TB
   MaybeOfferContainer -..->|"prefetch (si on veut améliorer les perfs)"| useRecommandedOffersQuery
 ```
 
+##### Macro
+
 ```mermaid
 flowchart LR
   subgraph AppState
