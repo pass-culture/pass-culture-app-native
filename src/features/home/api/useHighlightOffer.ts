@@ -91,11 +91,7 @@ function newFunction(
   const offerByIdQuery = async () => {
     if (!offerId) return undefined
 
-    const result = await fetchOffersByIds({
-      objectIds: [offerId],
-      isUserUnderage,
-      shouldExcludeFutureOffers: false,
-    })
+    const result = await newFunction_1(offerId, isUserUnderage)
 
     return result
   }
@@ -139,4 +135,11 @@ function newFunction(
     queryFn: queryByQueryMode[queryMode],
   })
   return newVariable
+}
+async function newFunction_1(offerId: string, isUserUnderage: boolean) {
+  return fetchOffersByIds({
+    objectIds: [offerId],
+    isUserUnderage,
+    shouldExcludeFutureOffers: false,
+  })
 }
