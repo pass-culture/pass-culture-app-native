@@ -35,7 +35,13 @@ export const useHighlightOffer = ({
   const transformOfferHits = useTransformOfferHits()
   const { userLocation } = useLocation()
 
-  const newVariable = newFunction(offerId, isUserUnderage, offerTag, userLocation, offerEan, id)
+  const getHighlightOffer = async () => {
+    if (offerTag) return getOffersByTagQuery(offerTag, isUserUnderage, userLocation)
+    if (offerEan) return getOfferByEanQuery(offerEan, userLocation, isUserUnderage)
+    if (!offerId) return undefined
+    return getOfferByIdQuery(offerId, isUserUnderage)
+  }
+  const newVariable = useGetHighlightOfferQuery(id, getHighlightOffer)
   const { data } = newVariable
   const offers = (data?.map(transformOfferHits) as Offer[]) ?? []
   const highlightOffer = offers[0]
@@ -67,23 +73,6 @@ const shouldDisplayHighlightOffer = (
     position.longitude
   )
   return distance <= 1000 * aroundRadius
-}
-function newFunction(
-  offerId: string | undefined,
-  isUserUnderage: boolean,
-  offerTag: string | undefined,
-  userLocation: Position,
-  offerEan: string | undefined,
-  id: string
-) {
-  const getHighlightOffer = async () => {
-    if (offerTag) return getOffersByTagQuery(offerTag, isUserUnderage, userLocation)
-    if (offerEan) return getOfferByEanQuery(offerEan, userLocation, isUserUnderage)
-    if (!offerId) return undefined
-    return getOfferByIdQuery(offerId, isUserUnderage)
-  }
-  const newVariable = useGetHighlightOfferQuery(id, getHighlightOffer)
-  return newVariable
 }
 
 const getOffersByTagQuery = async (
