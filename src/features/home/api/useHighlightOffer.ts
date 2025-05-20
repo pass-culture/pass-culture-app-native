@@ -50,6 +50,7 @@ export const useHighlightOffer = ({
       })
 
     if (!offerId) return undefined
+
     return fetchOffersByIds({
       objectIds: [offerId],
       isUserUnderage,
