@@ -47,6 +47,47 @@ export const useHighlightOffer = ({
   const transformOfferHits = useTransformOfferHits()
   const { userLocation } = useLocation()
 
+  const newVariable = newFunction(offerId, isUserUnderage, offerTag, userLocation, offerEan, id)
+  const { data } = newVariable
+  const offers = (data?.map(transformOfferHits) as Offer[]) ?? []
+  const highlightOffer = offers[0]
+
+  if (
+    shouldDisplayHighlightOffer(userLocation, highlightOffer?._geoloc, isGeolocated, aroundRadius)
+  ) {
+    return highlightOffer
+  }
+  return undefined
+}
+
+const shouldDisplayHighlightOffer = (
+  position: Position,
+  offerLocation?: AlgoliaGeoloc,
+  isGeolocated?: boolean,
+  aroundRadius?: number
+) => {
+  if (!isGeolocated || !aroundRadius) return true
+  if (!position || !offerLocation) return false
+
+  const { lat: latitude, lng: longitude } = offerLocation
+  if (!latitude || !longitude) return false
+
+  const distance = computeDistanceInMeters(
+    latitude,
+    longitude,
+    position.latitude,
+    position.longitude
+  )
+  return distance <= 1000 * aroundRadius
+}
+function newFunction(
+  offerId: string | undefined,
+  isUserUnderage: boolean,
+  offerTag: string | undefined,
+  userLocation: Position,
+  offerEan: string | undefined,
+  id: string
+) {
   const offerByIdQuery = async () => {
     if (!offerId) return undefined
 
@@ -87,40 +128,15 @@ export const useHighlightOffer = ({
     [QueryMode.EAN]: offerByEanQuery,
   }
 
-  const queryMode = selectQueryMode(offerTag, offerEan)
+  const queryMode = ((offerTag?: string, offerEan?: string) => {
+    if (offerTag) return QueryMode.TAG
+    if (offerEan) return QueryMode.EAN
+    return QueryMode.ID
+  })(offerTag, offerEan)
 
-  const { data } = useQuery({
+  const newVariable = useQuery({
     queryKey: [QueryKeys.HIGHLIGHT_OFFER, id],
     queryFn: queryByQueryMode[queryMode],
   })
-  const offers = (data?.map(transformOfferHits) as Offer[]) ?? []
-  const highlightOffer = offers[0]
-
-  if (
-    shouldDisplayHighlightOffer(userLocation, highlightOffer?._geoloc, isGeolocated, aroundRadius)
-  ) {
-    return highlightOffer
-  }
-  return undefined
-}
-
-const shouldDisplayHighlightOffer = (
-  position: Position,
-  offerLocation?: AlgoliaGeoloc,
-  isGeolocated?: boolean,
-  aroundRadius?: number
-) => {
-  if (!isGeolocated || !aroundRadius) return true
-  if (!position || !offerLocation) return false
-
-  const { lat: latitude, lng: longitude } = offerLocation
-  if (!latitude || !longitude) return false
-
-  const distance = computeDistanceInMeters(
-    latitude,
-    longitude,
-    position.latitude,
-    position.longitude
-  )
-  return distance <= 1000 * aroundRadius
+  return newVariable
 }
