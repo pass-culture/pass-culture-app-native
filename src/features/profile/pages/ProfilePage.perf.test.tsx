@@ -3,7 +3,6 @@ import React from 'react'
 import * as jwt from '__mocks__/jwt-decode'
 import { UserProfileResponse } from 'api/gen'
 import { AuthWrapper } from 'features/auth/context/AuthWrapper'
-import { Profile } from 'features/profile/pages/Profile'
 import { beneficiaryUser } from 'fixtures/user'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { decodedTokenWithRemainingLifetime } from 'libs/jwt/fixtures'
@@ -11,6 +10,8 @@ import { storage } from 'libs/storage'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, measurePerformance } from 'tests/utils'
+
+import { ProfilePage } from './ProfilePage'
 
 jest.mock('libs/firebase/analytics/analytics')
 
@@ -36,7 +37,7 @@ describe('<Profile />', () => {
     await measurePerformance(
       reactQueryProviderHOC(
         <AuthWrapper>
-          <Profile />
+          <ProfilePage />
         </AuthWrapper>
       ),
       {

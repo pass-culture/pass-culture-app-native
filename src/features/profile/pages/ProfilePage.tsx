@@ -340,7 +340,7 @@ const OnlineProfile: React.FC = () => {
   )
 }
 
-export const Profile = () => (
+export const ProfilePage = () => (
   <OfflineWrapper>
     <OnlineProfile />
   </OfflineWrapper>

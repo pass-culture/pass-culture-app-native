@@ -8,7 +8,7 @@ import { getScreensAndConfig } from 'features/navigation/RootNavigator/linking/g
 import { screenParamsParser } from 'features/navigation/screenParamsUtils'
 import { searchNavigatorPathConfig } from 'features/navigation/SearchStackNavigator/searchRoutes'
 import { SuspenseSearchStackNavigator } from 'features/navigation/SearchStackNavigator/SuspenseSearchStackNavigator'
-import { Profile } from 'features/profile/pages/Profile'
+import { ProfilePage } from 'features/profile/pages/ProfilePage'
 
 import { TabStack } from './Stack'
 import { TabParamList, TabRoute, TabRouteName } from './types'
@@ -45,7 +45,7 @@ const tabBarRoutes: TabRoute[] = [
   },
   {
     name: 'Profile',
-    component: Profile,
+    component: ProfilePage,
     path: 'profil',
     options: { title: 'Mon profil' },
   },

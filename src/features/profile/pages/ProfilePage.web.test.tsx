@@ -7,7 +7,7 @@ import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { checkAccessibilityFor, render, screen } from 'tests/utils/web'
 import * as useVersion from 'ui/hooks/useVersion.web'
 
-import { Profile } from './Profile'
+import { ProfilePage } from './ProfilePage'
 
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 jest.spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery').mockReturnValue(DEFAULT_REMOTE_CONFIG)
@@ -53,7 +53,7 @@ describe('<Profile/>', () => {
   })
 
   it('should render correctly on desktop', async () => {
-    const { container } = render(reactQueryProviderHOC(<Profile />), {
+    const { container } = render(reactQueryProviderHOC(<ProfilePage />), {
       theme: { isDesktopViewport: true },
     })
 
@@ -63,7 +63,7 @@ describe('<Profile/>', () => {
   })
 
   it('should render correctly on mobile browser', async () => {
-    const { container } = render(reactQueryProviderHOC(<Profile />), {
+    const { container } = render(reactQueryProviderHOC(<ProfilePage />), {
       theme: { isDesktopViewport: false },
     })
 
@@ -73,4 +73,4 @@ describe('<Profile/>', () => {
   })
 })
 
-const renderProfile = () => render(reactQueryProviderHOC(<Profile />))
+const renderProfile = () => render(reactQueryProviderHOC(<ProfilePage />))

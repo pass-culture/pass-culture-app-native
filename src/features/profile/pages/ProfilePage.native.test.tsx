@@ -40,7 +40,7 @@ import {
 } from 'tests/utils'
 import * as useVersion from 'ui/hooks/useVersion'
 
-import { Profile } from './Profile'
+import { ProfilePage } from './ProfilePage'
 
 const GEOLOC_SWITCH = 'Interrupteur Activer ma géolocalisation'
 
@@ -538,5 +538,5 @@ const defaultOptions = {
 
 function renderProfile(options: Options = defaultOptions) {
   const { wrapper } = { ...defaultOptions, ...options }
-  render(reactQueryProviderHOC(<Profile />), { wrapper })
+  render(reactQueryProviderHOC(<ProfilePage />), { wrapper })
 }
