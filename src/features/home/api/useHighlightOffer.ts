@@ -112,13 +112,12 @@ async function getOfferByTagQuery(
   })
 }
 
-function getOfferByEanQuery(offerEan: string, userLocation: Position, isUserUnderage: boolean) {
-  return fetchOffersByEan({
+const getOfferByEanQuery = (offerEan: string, userLocation: Position, isUserUnderage: boolean) =>
+  fetchOffersByEan({
     eanList: [offerEan],
     userLocation,
     isUserUnderage,
   })
-}
 
 const getOfferByIdQuery = async (offerId: string, isUserUnderage: boolean) =>
   fetchOffersByIds({
