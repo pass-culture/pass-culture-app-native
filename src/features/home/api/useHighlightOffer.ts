@@ -82,10 +82,7 @@ function newFunction(
     if (!offerId) return undefined
     return getOfferByIdQuery(offerId, isUserUnderage)
   }
-  const newVariable = useQuery({
-    queryKey: [QueryKeys.HIGHLIGHT_OFFER, id],
-    queryFn: getHighlightOffer,
-  })
+  const newVariable = useGetHighlightOfferQuery(id, getHighlightOffer)
   return newVariable
 }
 
@@ -113,3 +110,12 @@ const getOfferByIdQuery = async (offerId: string, isUserUnderage: boolean) =>
     isUserUnderage,
     shouldExcludeFutureOffers: false,
   })
+function useGetHighlightOfferQuery(
+  id: string,
+  getHighlightOffer: () => Promise<Offer[] | undefined>
+) {
+  return useQuery({
+    queryKey: [QueryKeys.HIGHLIGHT_OFFER, id],
+    queryFn: getHighlightOffer,
+  })
+}
