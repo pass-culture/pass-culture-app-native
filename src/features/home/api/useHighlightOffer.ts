@@ -22,12 +22,6 @@ type UseHightlightOfferParams = {
   publicationDate?: number
 }
 
-enum QueryMode {
-  ID = 'ID',
-  TAG = 'TAG',
-  EAN = 'EAN',
-}
-
 export const useHighlightOffer = ({
   id,
   offerId,
@@ -82,28 +76,6 @@ function newFunction(
   offerEan: string | undefined,
   id: string
 ) {
-  const offerByIdQuery = async () => {
-    if (!offerId) return undefined
-
-    const result = await getOfferByIdQuery(offerId, isUserUnderage)
-
-    return result
-  }
-
-  const offerByTagQuery = async () => {
-    if (!offerTag) return undefined
-
-    const result = await getOfferByTagQuery(offerTag, isUserUnderage, userLocation)
-
-    return result
-  }
-
-  const offerByEanQuery = async () => {
-    if (!offerEan) return undefined
-
-    return getOfferByEanQuery(offerEan, userLocation, isUserUnderage)
-  }
-
   const newVariable = useQuery({
     queryKey: [QueryKeys.HIGHLIGHT_OFFER, id],
     queryFn: (() => {
