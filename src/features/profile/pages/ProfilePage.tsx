@@ -1,6 +1,6 @@
 import { useFocusEffect } from '@react-navigation/native'
 import React, { FunctionComponent, useCallback, useEffect, useRef, useState } from 'react'
-import { NativeScrollEvent, Platform, ScrollView, View } from 'react-native'
+import { NativeScrollEvent, NativeSyntheticEvent, Platform, ScrollView, View } from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -172,7 +172,7 @@ const OnlineProfile: React.FC = () => {
 
 type Props = {
   scrollViewRef: React.MutableRefObject<ScrollView | null>
-  onScroll: ({ nativeEvent }: { nativeEvent: NativeScrollEvent }) => void
+  onScroll: (event: NativeSyntheticEvent<NativeScrollEvent>) => void
   disableActivation: boolean
   enablePassForAll: boolean
   user: UserProfileResponse | undefined
