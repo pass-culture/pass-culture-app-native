@@ -6,7 +6,10 @@ import { Offer } from 'shared/offer/types'
 export const useGetHighlightOfferQuery = (
   id: string,
   getHighlightOffer: () => Promise<Offer[] | undefined>,
-  options?: Partial<{}>
+  options?: Partial<{
+    id: string
+    getHighlightOffer: () => Promise<Offer[] | undefined>
+  }>
 ) =>
   useQuery({
     queryKey: [QueryKeys.HIGHLIGHT_OFFER, id],
