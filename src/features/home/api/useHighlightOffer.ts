@@ -128,7 +128,13 @@ function newFunction(
       [QueryMode.ID]: offerByIdQuery,
       [QueryMode.TAG]: offerByTagQuery,
       [QueryMode.EAN]: offerByEanQuery,
-    }[queryMode],
+    }[
+      ((offerTag?: string, offerEan?: string) => {
+        if (offerTag) return QueryMode.TAG
+        if (offerEan) return QueryMode.EAN
+        return QueryMode.ID
+      })(offerTag, offerEan)
+    ],
   })
   return newVariable
 }
