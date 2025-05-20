@@ -81,14 +81,10 @@ function newFunction(
     queryFn: (() => {
       if (offerTag)
         return async () => {
-          if (!offerTag) return undefined
-
           return getOffersByTagQuery(offerTag, isUserUnderage, userLocation)
         }
       if (offerEan)
         return async () => {
-          if (!offerEan) return undefined
-
           return getOfferByEanQuery(offerEan, userLocation, isUserUnderage)
         }
       return async () => {
@@ -100,6 +96,7 @@ function newFunction(
   })
   return newVariable
 }
+
 const getOffersByTagQuery = async (
   offerTag: string,
   isUserUnderage: boolean,
