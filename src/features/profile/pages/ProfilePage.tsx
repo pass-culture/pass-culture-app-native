@@ -87,7 +87,7 @@ const ProfileContainer: FunctionComponent = () => {
     : false
 
   const isExpiredOrCreditEmptyWithNoUpcomingCredit =
-    userAge && userAge >= 18 && (isDepositExpired || isCreditEmpty)
+    userAge && userAge >= 18 && (isDepositExpired || isCreditEmpty) // je préfèrerais que ce calcul soit fait coté backend, et qu'on réceptionne un status
 
   const shouldDisplayTutorial = !user?.isBeneficiary || isExpiredOrCreditEmptyWithNoUpcomingCredit
 
@@ -103,8 +103,9 @@ const ProfileContainer: FunctionComponent = () => {
   )
 
   const switchGeolocation = useCallback(async () => {
+    // en voyant le code actuel, ça me donne envie de gérer la géoloc dans son propre container
     if (permissionState === GeolocPermissionState.GRANTED) {
-      favoritesDispatch({ type: 'SET_SORT_BY', payload: 'RECENTLY_ADDED' })
+      favoritesDispatch({ type: 'SET_SORT_BY', payload: 'RECENTLY_ADDED' }) // WTF ? pourquoi les favoris sont liés à la géoloc ?
       showGeolocPermissionModal()
     } else if (permissionState === GeolocPermissionState.NEVER_ASK_AGAIN) {
       showGeolocPermissionModal()
@@ -128,7 +129,7 @@ const ProfileContainer: FunctionComponent = () => {
 
   useEffect(() => {
     if (!isLoggedIn) {
-      debouncedScrollToTop()
+      debouncedScrollToTop() // devrait etre appelé par la déconnexion
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isLoggedIn])
@@ -223,6 +224,7 @@ const ProfileDumb: FunctionComponent<Props> = ({
           <ProfileHeader featureFlags={{ disableActivation, enablePassForAll }} user={user} />
           <Container>
             <Spacer.Column numberOfSpaces={4} />
+            {/* IMHO, "Paramètres" serait plus court et suffisant */}
             <Section title={isLoggedIn ? 'Paramètres du compte' : 'Paramètres de l’application'}>
               <VerticalUl>
                 {isLoggedIn ? (
@@ -273,8 +275,8 @@ const ProfileDumb: FunctionComponent<Props> = ({
                       title="Comment ça marche&nbsp;?"
                       type="navigable"
                       navigateTo={getProfileNavConfig('ProfileTutorialAgeInformationCredit')}
-                      onPress={() =>
-                        analytics.logConsultTutorial({ age: userAge, from: 'ProfileHelp' })
+                      onPress={
+                        () => analytics.logConsultTutorial({ age: userAge, from: 'ProfileHelp' }) // pourquoi le log sur la page ne suffit pas ? ne devrait-on pas déclencher ce log à l'affichage de la page et non au clic redirigeant vers la page ?
                       }
                       icon={LifeBuoy}
                     />

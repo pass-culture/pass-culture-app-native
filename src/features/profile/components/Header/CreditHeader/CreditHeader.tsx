@@ -46,7 +46,7 @@ export function CreditHeader({
   }
 
   const incomingCreditLabelsMap: Record<number, { label: string; highlightedLabel: string }> = {
-    15: sixteenYearsOldIncomingDeposit,
+    15: sixteenYearsOldIncomingDeposit, // 15 != sixteen
     16: sixteenYearsOldIncomingDeposit,
     17: {
       label: 'À venir pour tes 18 ans\u00a0: ',
