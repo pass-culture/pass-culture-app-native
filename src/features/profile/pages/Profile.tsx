@@ -22,8 +22,7 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { GeolocPermissionState, useLocation } from 'libs/location'
-import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
-import { OfflinePage } from 'libs/network/OfflinePage'
+import { OfflineWrapper } from 'libs/network/OfflineWrapper'
 import { AccessibilityFooter } from 'shared/AccessibilityFooter/AccessibilityFooter'
 import { getAge } from 'shared/user/getAge'
 import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
@@ -341,13 +340,11 @@ const OnlineProfile: React.FC = () => {
   )
 }
 
-export function Profile() {
-  const netInfo = useNetInfoContext()
-  if (netInfo.isConnected) {
-    return <OnlineProfile />
-  }
-  return <OfflinePage />
-}
+export const Profile = () => (
+  <OfflineWrapper>
+    <OnlineProfile />
+  </OfflineWrapper>
+)
 
 const ProfileContainer = styled.View(({ theme }) => ({
   backgroundColor: theme.designSystem.color.background.default,
