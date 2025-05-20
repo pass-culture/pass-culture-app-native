@@ -111,11 +111,7 @@ function newFunction(
   const offerByEanQuery = async () => {
     if (!offerEan) return undefined
 
-    return fetchOffersByEan({
-      eanList: [offerEan],
-      userLocation,
-      isUserUnderage,
-    })
+    return newFunction_2(offerEan, userLocation, isUserUnderage)
   }
 
   const queryByQueryMode = {
@@ -136,6 +132,14 @@ function newFunction(
   })
   return newVariable
 }
+function newFunction_2(offerEan: string, userLocation: Position, isUserUnderage: boolean) {
+  return fetchOffersByEan({
+    eanList: [offerEan],
+    userLocation,
+    isUserUnderage,
+  })
+}
+
 async function newFunction_1(offerId: string, isUserUnderage: boolean) {
   return fetchOffersByIds({
     objectIds: [offerId],
