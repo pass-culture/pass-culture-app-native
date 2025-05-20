@@ -46,9 +46,24 @@ export const useHighlightOffer = ({
           isUserUnderage,
           userLocation,
         }))(offerTag, isUserUnderage, userLocation)
-    if (offerEan) return getOfferByEanQuery(offerEan, userLocation, isUserUnderage)
+    if (offerEan)
+      return (async (
+        offerEan: string,
+        userLocation: Position,
+        isUserUnderage: boolean
+      ): Promise<Offer[]> =>
+        fetchOffersByEan({
+          eanList: [offerEan],
+          userLocation,
+          isUserUnderage,
+        }))(offerEan, userLocation, isUserUnderage)
     if (!offerId) return undefined
-    return getOfferByIdQuery(offerId, isUserUnderage)
+    return (async (offerId: string, isUserUnderage: boolean): Promise<Offer[]> =>
+      fetchOffersByIds({
+        objectIds: [offerId],
+        isUserUnderage,
+        shouldExcludeFutureOffers: false,
+      }))(offerId, isUserUnderage)
   }
   const { data } = useGetHighlightOfferQuery({ id, getHighlightOffer })
   const offers = (data?.map(transformOfferHits) as Offer[]) ?? []
