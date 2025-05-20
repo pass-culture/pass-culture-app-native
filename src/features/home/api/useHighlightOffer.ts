@@ -9,7 +9,7 @@ import { Position } from 'libs/location/types'
 import { computeDistanceInMeters } from 'libs/parsers/formatDistance'
 import { Offer } from 'shared/offer/types'
 
-import { useGetHighlightOfferQuery } from '../queries/useGetHighlightOfferQuery'
+import { useGetHighlightOfferQuery2 } from '../queries/useGetHighlightOfferQuery'
 
 type UseHightlightOfferParams = {
   id: string
@@ -40,7 +40,7 @@ export const useHighlightOffer = ({
     if (!offerId) return undefined
     return getOfferByIdQuery(offerId, isUserUnderage)
   }
-  const { data } = useGetHighlightOfferQuery(id, getHighlightOffer, { id, getHighlightOffer })
+  const { data } = useGetHighlightOfferQuery2({ id, getHighlightOffer })
   const offers = (data?.map(transformOfferHits) as Offer[]) ?? []
   const highlightOffer = offers[0]
 
