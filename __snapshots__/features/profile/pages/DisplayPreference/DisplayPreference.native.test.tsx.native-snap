@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`debouncedLogChangeOrientationToggle should render correctly 1`] = `
+exports[`DisplayPreference should render correctly 1`] = `
 <View
   style={
     [
