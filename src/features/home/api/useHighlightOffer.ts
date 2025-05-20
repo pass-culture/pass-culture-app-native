@@ -124,17 +124,11 @@ function newFunction(
 
   const newVariable = useQuery({
     queryKey: [QueryKeys.HIGHLIGHT_OFFER, id],
-    queryFn: {
-      [QueryMode.ID]: offerByIdQuery,
-      [QueryMode.TAG]: offerByTagQuery,
-      [QueryMode.EAN]: offerByEanQuery,
-    }[
-      ((offerTag?: string, offerEan?: string) => {
-        if (offerTag) return QueryMode.TAG
-        if (offerEan) return QueryMode.EAN
-        return QueryMode.ID
-      })(offerTag, offerEan)
-    ],
+    queryFn: (() => {
+      if (offerTag) return offerByTagQuery
+      if (offerEan) return offerByEanQuery
+      return offerByIdQuery
+    })(),
   })
   return newVariable
 }
