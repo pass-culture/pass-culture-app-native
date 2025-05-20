@@ -1,5 +1,3 @@
-import { useQuery } from 'react-query'
-
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { fetchOffersByEan } from 'libs/algolia/fetchAlgolia/fetchOffersByEan'
 import { fetchOffersByIds } from 'libs/algolia/fetchAlgolia/fetchOffersByIds'
@@ -9,8 +7,9 @@ import { AlgoliaGeoloc } from 'libs/algolia/types'
 import { useLocation } from 'libs/location'
 import { Position } from 'libs/location/types'
 import { computeDistanceInMeters } from 'libs/parsers/formatDistance'
-import { QueryKeys } from 'libs/queryKeys'
 import { Offer } from 'shared/offer/types'
+
+import { useGetHighlightOfferQuery } from './useGetHighlightOfferQuery'
 
 type UseHightlightOfferParams = {
   id: string
@@ -97,12 +96,4 @@ const getOfferByIdQuery = async (offerId: string, isUserUnderage: boolean) =>
     objectIds: [offerId],
     isUserUnderage,
     shouldExcludeFutureOffers: false,
-  })
-const useGetHighlightOfferQuery = (
-  id: string,
-  getHighlightOffer: () => Promise<Offer[] | undefined>
-) =>
-  useQuery({
-    queryKey: [QueryKeys.HIGHLIGHT_OFFER, id],
-    queryFn: getHighlightOffer,
   })
