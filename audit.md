@@ -324,7 +324,7 @@ flowchart TB
 ##### Macro
 
 ```mermaid
-flowchart TB
+flowchart LR
   subgraph AppState["AppState (Zustand)"]
     selectors@{ shape: das }
     actions
