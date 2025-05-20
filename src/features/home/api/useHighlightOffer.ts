@@ -83,7 +83,7 @@ function newFunction(
         return async () => {
           if (!offerTag) return undefined
 
-          return getOfferByTagQuery(offerTag, isUserUnderage, userLocation)
+          return getOffersByTagsQuery(offerTag, isUserUnderage, userLocation)
         }
       if (offerEan)
         return async () => {
@@ -100,7 +100,7 @@ function newFunction(
   })
   return newVariable
 }
-const getOfferByTagQuery = async (
+const getOffersByTagsQuery = async (
   offerTag: string,
   isUserUnderage: boolean,
   userLocation: Position
