@@ -1,9 +1,10 @@
 import { useFocusEffect } from '@react-navigation/native'
-import React, { useCallback, useEffect, useRef, useState } from 'react'
+import React, { FunctionComponent, useCallback, useEffect, useRef, useState } from 'react'
 import { NativeScrollEvent, Platform, ScrollView, View } from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
+import { UserProfileResponse } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useLogoutRoutine } from 'features/auth/helpers/useLogoutRoutine'
 import { useFavoritesState } from 'features/favorites/context/FavoritesWrapper'
@@ -21,7 +22,7 @@ import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
-import { GeolocPermissionState, useLocation } from 'libs/location'
+import { GeolocationError, GeolocPermissionState, useLocation } from 'libs/location'
 import { OfflineWrapper } from 'libs/network/OfflineWrapper'
 import { AccessibilityFooter } from 'shared/AccessibilityFooter/AccessibilityFooter'
 import { getAge } from 'shared/user/getAge'
@@ -146,199 +147,262 @@ const OnlineProfile: React.FC = () => {
   }, [])
 
   return (
-    <Page>
-      <ScrollView
-        bounces
-        ref={scrollViewRef}
-        onScroll={onScroll}
-        scrollEventThrottle={16}
-        testID="profile-scrollview">
-        <ScrollViewContentContainer>
-          <View accessibilityRole={AccessibilityRole.MAIN}>
-            <ProfileHeader featureFlags={{ disableActivation, enablePassForAll }} user={user} />
-            <ProfileContainer>
-              <Spacer.Column numberOfSpaces={4} />
-              <Section title={isLoggedIn ? 'Paramètres du compte' : 'Paramètres de l’application'}>
-                <VerticalUl>
-                  {isLoggedIn ? (
-                    <Li>
-                      <Row
-                        title="Informations personnelles"
-                        type="navigable"
-                        navigateTo={getProfileNavConfig('PersonalData')}
-                        icon={BicolorProfile}
-                      />
-                    </Li>
-                  ) : null}
-                  <Li>
-                    <Row
-                      type="navigable"
-                      title="Notifications"
-                      icon={Bell}
-                      navigateTo={getProfileNavConfig('NotificationsSettings')}
-                    />
-                  </Li>
-                  <LiWithMarginVertical>
-                    <SectionWithSwitch
-                      icon={LocationPointer}
-                      iconSize={SECTION_ROW_ICON_SIZE}
-                      title="Activer ma géolocalisation"
-                      active={isGeolocSwitchActive}
-                      accessibilityDescribedBy={locationActivationErrorId}
-                      toggle={() => {
-                        switchGeolocation()
-                        debouncedLogLocationToggle(!isGeolocSwitchActive)
-                      }}
-                      toggleLabel="Activer ma géolocalisation"
-                    />
-                    <InputError
-                      visible={!!geolocPositionError}
-                      messageId={geolocPositionError?.message}
-                      numberOfSpacesTop={1}
-                      relatedInputId={locationActivationErrorId}
-                    />
-                  </LiWithMarginVertical>
-                </VerticalUl>
-              </Section>
-              <Section title="Aides">
-                <VerticalUl>
-                  {shouldDisplayTutorial ? (
-                    <Li>
-                      <Row
-                        title="Comment ça marche&nbsp;?"
-                        type="navigable"
-                        navigateTo={getProfileNavConfig('ProfileTutorialAgeInformationCredit')}
-                        onPress={() =>
-                          analytics.logConsultTutorial({ age: userAge, from: 'ProfileHelp' })
-                        }
-                        icon={LifeBuoy}
-                      />
-                    </Li>
-                  ) : null}
-                  <Li>
-                    <Row
-                      title="Centre d’aide"
-                      type="clickable"
-                      externalNav={{ url: env.FAQ_LINK }}
-                      icon={ExternalSite}
-                    />
-                  </Li>
-                </VerticalUl>
-              </Section>
-              <Section title="Autres">
-                <VerticalUl>
-                  {/* TODO(PC-35459): Remove this condition when add dark theme button in DisplayPreference */}
-                  {isWeb ? null : (
-                    <Li>
-                      <Row
-                        title="Préférences d’affichage"
-                        type="navigable"
-                        navigateTo={getProfileNavConfig('DisplayPreference')}
-                        icon={ArtMaterial}
-                      />
-                    </Li>
-                  )}
-                  <Li>
-                    <Row
-                      title="Accessibilité"
-                      type="navigable"
-                      navigateTo={getProfileNavConfig('Accessibility')}
-                      icon={HandicapMental}
-                    />
-                  </Li>
-                  {displayInAppFeedback ? (
-                    <Li>
-                      <Row
-                        title="Faire une suggestion"
-                        type="navigable"
-                        navigateTo={getProfileNavConfig('FeedbackInApp')}
-                        icon={Bulb}
-                      />
-                    </Li>
-                  ) : null}
-                  <Li>
-                    <Row
-                      title="Informations légales"
-                      type="navigable"
-                      navigateTo={getProfileNavConfig('LegalNotices')}
-                      icon={LegalNotices}
-                    />
-                  </Li>
-                  <Li>
-                    <Row
-                      title="Confidentialité"
-                      type="navigable"
-                      navigateTo={getProfileNavConfig('ConsentSettings')}
-                      icon={Confidentiality}
-                    />
-                  </Li>
-                </VerticalUl>
-              </Section>
-              {isWeb ? null : (
-                <Section title="Partager le pass Culture">
-                  <Spacer.Column numberOfSpaces={4} />
-                  <BannerWithBackground
-                    backgroundSource={SHARE_APP_BANNER_IMAGE_SOURCE}
-                    onPress={onShareBannerPress}>
-                    <ShareAppContainer gap={1}>
-                      <StyledButtonText>Partage le pass Culture</StyledButtonText>
-                      <StyledBody>Recommande le bon plan à&nbsp;tes&nbsp;amis&nbsp;!</StyledBody>
-                    </ShareAppContainer>
-                  </BannerWithBackground>
-                  <Spacer.Column numberOfSpaces={4} />
-                </Section>
-              )}
-              <Section title="Suivre le pass Culture">
-                <SocialNetwork />
-              </Section>
-              {isLoggedIn ? (
-                <Section>
-                  <Spacer.Column numberOfSpaces={4} />
-                  <SectionRow
-                    title="Déconnexion"
-                    onPress={signOut}
-                    type="clickable"
-                    icon={SignOut}
-                    iconSize={SECTION_ROW_ICON_SIZE}
-                  />
-                </Section>
-              ) : null}
-              <Section>
-                <Version>
-                  {version}
-                  {isWeb ? `-${String(env.COMMIT_HASH)}` : ''}
-                </Version>
-                {enableDebugSection && isLoggedIn ? (
-                  <DebugButtonContainer>
-                    <InternalTouchableLink
-                      as={ButtonQuaternaryBlack}
-                      wording="Débuggage"
-                      navigateTo={getProfileNavConfig('DebugScreen')}
-                      justifyContent="flex-start"
-                      inline
-                    />
-                  </DebugButtonContainer>
-                ) : null}
-                {isWeb ? null : (
-                  <LogoFrenchRepublicContainer>
-                    <LogoFrenchRepublic />
-                  </LogoFrenchRepublicContainer>
-                )}
-              </Section>
-              {isWeb ? null : <Spacer.TabBar />}
-            </ProfileContainer>
-          </View>
-          {isWeb ? (
-            <View accessibilityRole={AccessibilityRole.FOOTER}>
-              <AccessibilityFooter />
-            </View>
-          ) : null}
-        </ScrollViewContentContainer>
-      </ScrollView>
-      <StatusBarBlurredBackground />
-    </Page>
+    <ProfileDumb
+      scrollViewRef={scrollViewRef}
+      onScroll={onScroll}
+      disableActivation={disableActivation}
+      enablePassForAll={enablePassForAll}
+      user={user}
+      isLoggedIn={isLoggedIn}
+      isGeolocSwitchActive={isGeolocSwitchActive}
+      locationActivationErrorId={locationActivationErrorId}
+      switchGeolocation={switchGeolocation}
+      debouncedLogLocationToggle={debouncedLogLocationToggle}
+      geolocPositionError={geolocPositionError}
+      shouldDisplayTutorial={shouldDisplayTutorial}
+      userAge={userAge}
+      displayInAppFeedback={displayInAppFeedback}
+      onShareBannerPress={onShareBannerPress}
+      signOut={signOut}
+      version={version}
+      enableDebugSection={enableDebugSection}
+    />
   )
 }
+
+type Props = {
+  scrollViewRef: React.MutableRefObject<ScrollView | null>
+  onScroll: ({ nativeEvent }: { nativeEvent: NativeScrollEvent }) => void
+  disableActivation: boolean
+  enablePassForAll: boolean
+  user: UserProfileResponse | undefined
+  isLoggedIn: boolean
+  isGeolocSwitchActive: boolean
+  locationActivationErrorId: string
+  switchGeolocation: () => Promise<void>
+  debouncedLogLocationToggle: (props: boolean) => Promise<void>
+  geolocPositionError: GeolocationError | null
+  shouldDisplayTutorial: number | boolean | undefined
+  userAge: number | undefined
+  displayInAppFeedback: boolean
+  onShareBannerPress: () => void
+  signOut: () => Promise<void>
+  version: string
+  enableDebugSection: boolean
+}
+
+const ProfileDumb: FunctionComponent<Props> = ({
+  scrollViewRef,
+  onScroll,
+  disableActivation,
+  enablePassForAll,
+  user,
+  isLoggedIn,
+  isGeolocSwitchActive,
+  locationActivationErrorId,
+  switchGeolocation,
+  debouncedLogLocationToggle,
+  geolocPositionError,
+  shouldDisplayTutorial,
+  userAge,
+  displayInAppFeedback,
+  onShareBannerPress,
+  signOut,
+  version,
+  enableDebugSection,
+}) => (
+  <Page>
+    <ScrollView
+      bounces
+      ref={scrollViewRef}
+      onScroll={onScroll}
+      scrollEventThrottle={16}
+      testID="profile-scrollview">
+      <ScrollViewContentContainer>
+        <View accessibilityRole={AccessibilityRole.MAIN}>
+          <ProfileHeader featureFlags={{ disableActivation, enablePassForAll }} user={user} />
+          <ProfileContainer>
+            <Spacer.Column numberOfSpaces={4} />
+            <Section title={isLoggedIn ? 'Paramètres du compte' : 'Paramètres de l’application'}>
+              <VerticalUl>
+                {isLoggedIn ? (
+                  <Li>
+                    <Row
+                      title="Informations personnelles"
+                      type="navigable"
+                      navigateTo={getProfileNavConfig('PersonalData')}
+                      icon={BicolorProfile}
+                    />
+                  </Li>
+                ) : null}
+                <Li>
+                  <Row
+                    type="navigable"
+                    title="Notifications"
+                    icon={Bell}
+                    navigateTo={getProfileNavConfig('NotificationsSettings')}
+                  />
+                </Li>
+                <LiWithMarginVertical>
+                  <SectionWithSwitch
+                    icon={LocationPointer}
+                    iconSize={SECTION_ROW_ICON_SIZE}
+                    title="Activer ma géolocalisation"
+                    active={isGeolocSwitchActive}
+                    accessibilityDescribedBy={locationActivationErrorId}
+                    toggle={() => {
+                      switchGeolocation()
+                      debouncedLogLocationToggle(!isGeolocSwitchActive)
+                    }}
+                    toggleLabel="Activer ma géolocalisation"
+                  />
+                  <InputError
+                    visible={!!geolocPositionError}
+                    messageId={geolocPositionError?.message}
+                    numberOfSpacesTop={1}
+                    relatedInputId={locationActivationErrorId}
+                  />
+                </LiWithMarginVertical>
+              </VerticalUl>
+            </Section>
+            <Section title="Aides">
+              <VerticalUl>
+                {shouldDisplayTutorial ? (
+                  <Li>
+                    <Row
+                      title="Comment ça marche&nbsp;?"
+                      type="navigable"
+                      navigateTo={getProfileNavConfig('ProfileTutorialAgeInformationCredit')}
+                      onPress={() =>
+                        analytics.logConsultTutorial({ age: userAge, from: 'ProfileHelp' })
+                      }
+                      icon={LifeBuoy}
+                    />
+                  </Li>
+                ) : null}
+                <Li>
+                  <Row
+                    title="Centre d’aide"
+                    type="clickable"
+                    externalNav={{ url: env.FAQ_LINK }}
+                    icon={ExternalSite}
+                  />
+                </Li>
+              </VerticalUl>
+            </Section>
+            <Section title="Autres">
+              <VerticalUl>
+                {/* TODO(PC-35459): Remove this condition when add dark theme button in DisplayPreference */}
+                {isWeb ? null : (
+                  <Li>
+                    <Row
+                      title="Préférences d’affichage"
+                      type="navigable"
+                      navigateTo={getProfileNavConfig('DisplayPreference')}
+                      icon={ArtMaterial}
+                    />
+                  </Li>
+                )}
+                <Li>
+                  <Row
+                    title="Accessibilité"
+                    type="navigable"
+                    navigateTo={getProfileNavConfig('Accessibility')}
+                    icon={HandicapMental}
+                  />
+                </Li>
+                {displayInAppFeedback ? (
+                  <Li>
+                    <Row
+                      title="Faire une suggestion"
+                      type="navigable"
+                      navigateTo={getProfileNavConfig('FeedbackInApp')}
+                      icon={Bulb}
+                    />
+                  </Li>
+                ) : null}
+                <Li>
+                  <Row
+                    title="Informations légales"
+                    type="navigable"
+                    navigateTo={getProfileNavConfig('LegalNotices')}
+                    icon={LegalNotices}
+                  />
+                </Li>
+                <Li>
+                  <Row
+                    title="Confidentialité"
+                    type="navigable"
+                    navigateTo={getProfileNavConfig('ConsentSettings')}
+                    icon={Confidentiality}
+                  />
+                </Li>
+              </VerticalUl>
+            </Section>
+            {isWeb ? null : (
+              <Section title="Partager le pass Culture">
+                <Spacer.Column numberOfSpaces={4} />
+                <BannerWithBackground
+                  backgroundSource={SHARE_APP_BANNER_IMAGE_SOURCE}
+                  onPress={onShareBannerPress}>
+                  <ShareAppContainer gap={1}>
+                    <StyledButtonText>Partage le pass Culture</StyledButtonText>
+                    <StyledBody>Recommande le bon plan à&nbsp;tes&nbsp;amis&nbsp;!</StyledBody>
+                  </ShareAppContainer>
+                </BannerWithBackground>
+                <Spacer.Column numberOfSpaces={4} />
+              </Section>
+            )}
+            <Section title="Suivre le pass Culture">
+              <SocialNetwork />
+            </Section>
+            {isLoggedIn ? (
+              <Section>
+                <Spacer.Column numberOfSpaces={4} />
+                <SectionRow
+                  title="Déconnexion"
+                  onPress={signOut}
+                  type="clickable"
+                  icon={SignOut}
+                  iconSize={SECTION_ROW_ICON_SIZE}
+                />
+              </Section>
+            ) : null}
+            <Section>
+              <Version>
+                {version}
+                {isWeb ? `-${String(env.COMMIT_HASH)}` : ''}
+              </Version>
+              {enableDebugSection && isLoggedIn ? (
+                <DebugButtonContainer>
+                  <InternalTouchableLink
+                    as={ButtonQuaternaryBlack}
+                    wording="Débuggage"
+                    navigateTo={getProfileNavConfig('DebugScreen')}
+                    justifyContent="flex-start"
+                    inline
+                  />
+                </DebugButtonContainer>
+              ) : null}
+              {isWeb ? null : (
+                <LogoFrenchRepublicContainer>
+                  <LogoFrenchRepublic />
+                </LogoFrenchRepublicContainer>
+              )}
+            </Section>
+            {isWeb ? null : <Spacer.TabBar />}
+          </ProfileContainer>
+        </View>
+        {isWeb ? (
+          <View accessibilityRole={AccessibilityRole.FOOTER}>
+            <AccessibilityFooter />
+          </View>
+        ) : null}
+      </ScrollViewContentContainer>
+    </ScrollView>
+    <StatusBarBlurredBackground />
+  </Page>
+)
 
 export const ProfilePage = () => (
   <OfflineWrapper>
