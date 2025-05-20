@@ -95,6 +95,7 @@ const SwitchWrapper = styled.View({
 
 const StyledInputLabel = styledInputLabel(InputLabel)(({ theme }) => ({
   ...theme.designSystem.typography.bodyAccent,
+  color: theme.designSystem.color.text.default,
 }))
 
 const Subtitle = styled(Typo.BodyAccentXs)(({ theme }) => ({
