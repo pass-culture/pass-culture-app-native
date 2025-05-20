@@ -1,4 +1,3 @@
-import { Partial } from 'lodash'
 import { useQuery } from 'react-query'
 
 import { QueryKeys } from 'libs/queryKeys'
