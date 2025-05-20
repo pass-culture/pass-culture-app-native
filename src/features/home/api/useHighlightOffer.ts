@@ -35,19 +35,21 @@ export const useHighlightOffer = ({
   const { userLocation } = useLocation()
 
   const getHighlightOffer = async () => {
-    if (offerTag)
+    if (offerTag) {
       return fetchOffersByTags({
         tags: [offerTag],
         isUserUnderage,
         userLocation,
       })
+    }
 
-    if (offerEan)
+    if (offerEan) {
       return fetchOffersByEan({
         eanList: [offerEan],
         userLocation,
         isUserUnderage,
       })
+    }
 
     if (!offerId) return undefined
 
