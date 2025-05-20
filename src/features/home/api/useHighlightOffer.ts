@@ -9,7 +9,7 @@ import { Position } from 'libs/location/types'
 import { computeDistanceInMeters } from 'libs/parsers/formatDistance'
 import { Offer } from 'shared/offer/types'
 
-import { useGetHighlightOfferQuery } from './useGetHighlightOfferQuery'
+import { useGetHighlightOfferQuery } from '../queries/useGetHighlightOfferQuery'
 
 type UseHightlightOfferParams = {
   id: string
