@@ -324,8 +324,8 @@ flowchart TB
 ##### Macro
 
 ```mermaid
-flowchart LR
-  subgraph AppState
+flowchart TB
+  subgraph AppState["AppState (Zustand)"]
     selectors@{ shape: das }
     actions
     store@{ shape: bow-rect }
@@ -334,32 +334,31 @@ flowchart LR
     actions -->|write| store
   end
 
-  subgraph ServerState
+  subgraph ServerState["ServerState (react-query)"]
     query@{ shape: lean-l }
     mutation@{ shape: lean-r }
-    QueryCache@{ shape: win-pane }
 
-    query -->|get| QueryCache
-    mutation -->|post| QueryCache
+    query -->|get| QueryCache@{ shape: win-pane }
+    mutation -->|post| MutationCache@{ shape: win-pane }
   end
 
-  subgraph Navigation
+  subgraph Navigation["Navigation (react-navigation)"]
     queryParams@{ shape: win-pane }
     Modals@{ shape: processes }
     OthersPages@{ shape: processes }
   end
 
-  Page
+  Page@{ shape: doc }
   -->|render| Container@{ shape: processes }
   -->|render| Dumb@{ shape: processes }
 
-  Page -->|read| queryParams
+  Page -->|parse| queryParams
   Container -->|read| selectors
   Container -->|write| actions
   Container -->|get| query
   Container -->|post| mutation
-  Container -->|display| Modals
-  Container -->|navigate to| OthersPages
+  Container -->|display| Modals@{ shape: docs }
+  Container -->|navigate to| OthersPages@{ shape: docs }
 ```
 
 ## TODO
