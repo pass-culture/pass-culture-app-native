@@ -84,7 +84,11 @@ const getOffersByTagQuery = async (
     userLocation,
   })
 
-const getOfferByEanQuery = (offerEan: string, userLocation: Position, isUserUnderage: boolean) =>
+const getOfferByEanQuery = async (
+  offerEan: string,
+  userLocation: Position,
+  isUserUnderage: boolean
+) =>
   fetchOffersByEan({
     eanList: [offerEan],
     userLocation,
