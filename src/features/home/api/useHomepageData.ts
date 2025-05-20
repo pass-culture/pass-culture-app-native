@@ -1,5 +1,5 @@
 import { useMemo } from 'react'
-import { useQuery } from 'react-query'
+import { UseQueryResult, useQuery } from 'react-query'
 
 import { useSelectHomepageEntry } from 'features/home/helpers/selectHomepageEntry'
 import { NoContentError } from 'features/home/pages/NoContentError'
@@ -34,15 +34,14 @@ export const useHomepageData = (paramsHomepageEntryId?: string): Homepage => {
   const { logType } = useLogTypeFromRemoteConfig()
 
   // this fetches all homepages available in contentful
-  const { data: homepages } = useQuery<Homepage[]>(
-    [QueryKeys.HOMEPAGE_MODULES],
-    () => getHomepageNatifContent(logType),
-    {
-      staleTime: STALE_TIME_CONTENTFUL,
-    }
-  )
+  const { data: homepages } = useGetHomepageListQuery(logType)
 
   const homepage = selectHomepageEntry(homepages ?? []) ?? emptyHomepage
 
   return useMemo(() => homepage, [homepage])
 }
+
+const useGetHomepageListQuery = (logType: LogTypeEnum): UseQueryResult<Homepage[]> =>
+  useQuery<Homepage[]>([QueryKeys.HOMEPAGE_MODULES], () => getHomepageNatifContent(logType), {
+    staleTime: STALE_TIME_CONTENTFUL,
+  })
