@@ -85,7 +85,7 @@ function newFunction(
   const offerByIdQuery = async () => {
     if (!offerId) return undefined
 
-    const result = await newFunction_1(offerId, isUserUnderage)
+    const result = await getOfferByIdQuery(offerId, isUserUnderage)
 
     return result
   }
@@ -134,7 +134,7 @@ function getOfferByEanQuery(offerEan: string, userLocation: Position, isUserUnde
   })
 }
 
-async function newFunction_1(offerId: string, isUserUnderage: boolean) {
+async function getOfferByIdQuery(offerId: string, isUserUnderage: boolean) {
   return fetchOffersByIds({
     objectIds: [offerId],
     isUserUnderage,
