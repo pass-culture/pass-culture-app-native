@@ -41,8 +41,7 @@ export const useHighlightOffer = ({
     if (!offerId) return undefined
     return getOfferByIdQuery(offerId, isUserUnderage)
   }
-  const newVariable = useGetHighlightOfferQuery(id, getHighlightOffer)
-  const { data } = newVariable
+  const { data } = useGetHighlightOfferQuery(id, getHighlightOffer)
   const offers = (data?.map(transformOfferHits) as Offer[]) ?? []
   const highlightOffer = offers[0]
 
