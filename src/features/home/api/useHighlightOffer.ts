@@ -120,10 +120,9 @@ function getOfferByEanQuery(offerEan: string, userLocation: Position, isUserUnde
   })
 }
 
-async function getOfferByIdQuery(offerId: string, isUserUnderage: boolean) {
-  return fetchOffersByIds({
+const getOfferByIdQuery = async (offerId: string, isUserUnderage: boolean) =>
+  fetchOffersByIds({
     objectIds: [offerId],
     isUserUnderage,
     shouldExcludeFutureOffers: false,
   })
-}
