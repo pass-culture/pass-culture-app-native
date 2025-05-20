@@ -28,12 +28,6 @@ enum QueryMode {
   EAN = 'EAN',
 }
 
-const selectQueryMode = (offerTag?: string, offerEan?: string) => {
-  if (offerTag) return QueryMode.TAG
-  if (offerEan) return QueryMode.EAN
-  return QueryMode.ID
-}
-
 export const useHighlightOffer = ({
   id,
   offerId,
@@ -109,18 +103,6 @@ function newFunction(
 
     return newFunction_2(offerEan, userLocation, isUserUnderage)
   }
-
-  const queryByQueryMode = {
-    [QueryMode.ID]: offerByIdQuery,
-    [QueryMode.TAG]: offerByTagQuery,
-    [QueryMode.EAN]: offerByEanQuery,
-  }
-
-  const queryMode = ((offerTag?: string, offerEan?: string) => {
-    if (offerTag) return QueryMode.TAG
-    if (offerEan) return QueryMode.EAN
-    return QueryMode.ID
-  })(offerTag, offerEan)
 
   const newVariable = useQuery({
     queryKey: [QueryKeys.HIGHLIGHT_OFFER, id],
