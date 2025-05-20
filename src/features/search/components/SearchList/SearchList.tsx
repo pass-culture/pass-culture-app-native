@@ -1,6 +1,6 @@
 import { FlashList } from '@shopify/flash-list'
 import React from 'react'
-import styled, { useTheme } from 'styled-components/native'
+import { useTheme } from 'styled-components/native'
 
 import { SearchListHeader } from 'features/search/components/SearchListHeader/SearchListHeader'
 import { LIST_ITEM_HEIGHT } from 'features/search/constants'
@@ -27,6 +27,7 @@ export const SearchList: React.FC<SearchListProps> = React.forwardRef<
       userData,
       venuesUserData,
       artistSection,
+      numColumns,
     },
     ref
   ) => {
@@ -48,14 +49,17 @@ export const SearchList: React.FC<SearchListProps> = React.forwardRef<
             venuesUserData={venuesUserData}
           />
         }
-        ItemSeparatorComponent={Separator}
         renderItem={renderItem}
+        numColumns={numColumns}
         refreshing={refreshing}
         onRefresh={onRefresh}
         onEndReached={autoScrollEnabled ? onEndReached : undefined}
         scrollEnabled={nbHits > 0}
         onScroll={onScroll}
-        contentContainerStyle={{ paddingBottom: theme.tabBar.height + getSpacing(10) }}
+        contentContainerStyle={{
+          paddingBottom: theme.tabBar.height + getSpacing(10),
+          paddingHorizontal: getSpacing(6),
+        }}
         keyboardShouldPersistTaps="handled"
         keyboardDismissMode="on-drag"
       />
@@ -64,9 +68,9 @@ export const SearchList: React.FC<SearchListProps> = React.forwardRef<
 )
 SearchList.displayName = 'SearchList'
 
-const Separator = styled.View(({ theme }) => ({
-  height: 2,
-  backgroundColor: theme.colors.greyLight,
-  marginHorizontal: getSpacing(6),
-  marginVertical: getSpacing(4),
-}))
+// const Separator = styled.View(({ theme }) => ({
+//   height: 2,
+//   backgroundColor: theme.colors.greyLight,
+//   marginHorizontal: getSpacing(6),
+//   marginVertical: getSpacing(4),
+// }))

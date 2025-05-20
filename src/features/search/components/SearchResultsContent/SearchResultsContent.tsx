@@ -9,6 +9,7 @@ import { AccessibilityFiltersModal } from 'features/accessibility/components/Acc
 import { useAccessibilityFiltersContext } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { VenueMapLocationModal } from 'features/location/components/VenueMapLocationModal'
+import { OfferTileWrapper } from 'features/offer/components/OfferTile/OfferTileWrapper'
 import { PlaylistType } from 'features/offer/enums'
 import { SearchOfferHits } from 'features/search/api/useSearchResults/useSearchResults'
 import { AutoScrollSwitch } from 'features/search/components/AutoScrollSwitch/AutoScrollSwitch'
@@ -19,6 +20,7 @@ import { SearchList } from 'features/search/components/SearchList/SearchList'
 import { ArtistSection } from 'features/search/components/SearchListHeader/ArtistSection'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { FilterBehaviour } from 'features/search/enums'
+import { getGridTileRatio } from 'features/search/helpers/getGridTileRatio'
 import { getStringifySearchStateWithoutLocation } from 'features/search/helpers/getStringifySearchStateWithoutLocation/getStringifySearchStateWithoutLocation'
 import {
   FILTER_TYPES,
@@ -67,12 +69,11 @@ import {
   HitPlaceholder,
 } from 'ui/components/placeholders/Placeholders'
 import { ScrollToTopButton } from 'ui/components/ScrollToTopButton'
-import { HorizontalOfferTile } from 'ui/components/tiles/HorizontalOfferTile'
 import { Ul } from 'ui/components/Ul'
 import { Check } from 'ui/svg/icons/Check'
 import { Map } from 'ui/svg/icons/Map'
 import { Sort } from 'ui/svg/icons/Sort'
-import { getSpacing, Spacer } from 'ui/theme'
+import { getSpacing, RATIO_HOME_IMAGE, Spacer } from 'ui/theme'
 import { Helmet } from 'ui/web/global/Helmet'
 
 const ANIMATION_DURATION = 700
@@ -277,21 +278,21 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
     }
   }, [searchState])
 
+  const { tileWidth, nbrOfTilesToDisplay } = getGridTileRatio(width)
+
   const renderItem = useCallback<
     ({ item, index }: { item: Offer; index: number }) => React.JSX.Element
   >(
-    ({ item: hit, index }) => (
-      <StyledHorizontalOfferTile
-        offer={hit}
-        analyticsParams={{
-          query: searchState.query,
-          index,
-          searchId: searchState.searchId,
-          from: 'searchresults',
-        }}
+    ({ item }) => (
+      <StyledOfferTileWrapper
+        item={item}
+        analyticsFrom="searchresults"
+        venueId={item.venue.id}
+        height={tileWidth / RATIO_HOME_IMAGE}
+        width={tileWidth}
       />
     ),
-    [searchState.query, searchState.searchId]
+    [tileWidth]
   )
 
   const hasDuoOfferToggle = useMemo(() => {
@@ -352,12 +353,13 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
 
   const tabPanels = {
     [Tab.SEARCHLIST]: (
-      <SearchList
+      <StyledSearchList
         ref={searchListRef}
         isFetchingNextPage={!!isFetchingNextPage}
         hits={hits}
         nbHits={nbHits}
         renderItem={renderItem}
+        numColumns={nbrOfTilesToDisplay}
         autoScrollEnabled={autoScrollEnabled}
         onEndReached={onEndReached}
         onScroll={onScroll}
@@ -601,16 +603,19 @@ const Footer = styled.View(({ theme }) => ({
   alignItems: 'center',
 }))
 
-const StyledHorizontalOfferTile = styled(HorizontalOfferTile)({
-  marginHorizontal: getSpacing(6),
+const StyledOfferTileWrapper = styled(OfferTileWrapper)({
+  flex: 1,
+  alignItems: 'center',
+  justifyContent: 'center',
+  backgroundColor: 'yellow',
 })
 
-const Separator = styled.View(({ theme }) => ({
+/* const Separator = styled.View(({ theme }) => ({
   height: 2,
   backgroundColor: theme.colors.greyLight,
   marginHorizontal: getSpacing(6),
   marginVertical: getSpacing(4),
-}))
+})) */
 
 const StyledLi = styled(Li)({
   marginLeft: getSpacing(1),
@@ -667,7 +672,6 @@ const SearchResultsPlaceHolder = () => {
         renderItem={renderItem}
         contentContainerStyle={contentContainerStyle}
         ListHeaderComponent={<HeaderSearchResultsPlaceholder />}
-        ItemSeparatorComponent={Separator}
         ListFooterComponent={<Footer />}
         scrollEnabled={false}
       />
@@ -678,4 +682,8 @@ const SearchResultsPlaceHolder = () => {
 const NoSearchResultsWrapper = styled.View({
   flex: 1,
   flexDirection: 'row',
+})
+
+const StyledSearchList = styled(SearchList)({
+  marginHorizontal: getSpacing(3),
 })

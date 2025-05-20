@@ -92,6 +92,7 @@ export interface SearchListProps {
   onScroll?: () => void
   onPress?: () => void
   artistSection?: ReactNode
+  numColumns?: number
 }
 
 export type CreateHistoryItem = {
