@@ -78,21 +78,13 @@ function newFunction(
 ) {
   const newVariable = useQuery({
     queryKey: [QueryKeys.HIGHLIGHT_OFFER, id],
-    queryFn: (() => {
-      if (offerTag)
-        return async () => {
-          return getOffersByTagQuery(offerTag, isUserUnderage, userLocation)
-        }
-      if (offerEan)
-        return async () => {
-          return getOfferByEanQuery(offerEan, userLocation, isUserUnderage)
-        }
-      return async () => {
-        if (!offerId) return undefined
+    queryFn: async () => {
+      if (offerTag) return getOffersByTagQuery(offerTag, isUserUnderage, userLocation)
+      if (offerEan) return getOfferByEanQuery(offerEan, userLocation, isUserUnderage)
+      if (!offerId) return undefined
 
-        return getOfferByIdQuery(offerId, isUserUnderage)
-      }
-    })(),
+      return getOfferByIdQuery(offerId, isUserUnderage)
+    },
   })
   return newVariable
 }
