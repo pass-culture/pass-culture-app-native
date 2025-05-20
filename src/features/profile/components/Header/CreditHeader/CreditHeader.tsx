@@ -80,6 +80,8 @@ export function CreditHeader({
         })
       : undefined
 
+  const incomingCreditLabel = incomingCreditLabelsMap[age]
+
   return (
     <HeaderWithGreyContainer
       title={name}
@@ -109,15 +111,11 @@ export function CreditHeader({
               <BeneficiaryCeilings domainsCredit={domainsCredit} />
             </React.Fragment>
           )}
-          {incomingCreditLabelsMap[age] && !isCreditEmpty ? (
+          {incomingCreditLabel && !isCreditEmpty ? (
             <ViewWithMarginTop top={6}>
               <Typo.Body>
-                {
-                  /* @ts-expect-error: because of noUncheckedIndexedAccess */
-                  incomingCreditLabelsMap[age].label
-                }
-                {/* @ts-expect-error: because of noUncheckedIndexedAccess */}
-                <HighlightedBody>{incomingCreditLabelsMap[age].highlightedLabel}</HighlightedBody>
+                {incomingCreditLabel.label}
+                <HighlightedBody>{incomingCreditLabel.highlightedLabel}</HighlightedBody>
               </Typo.Body>
             </ViewWithMarginTop>
           ) : null}
