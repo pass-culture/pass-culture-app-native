@@ -42,6 +42,8 @@ export const useHomepageData = (paramsHomepageEntryId?: string): Homepage => {
 }
 
 const useGetHomepageListQuery = (logType: LogTypeEnum): UseQueryResult<Homepage[]> =>
-  useQuery<Homepage[]>([QueryKeys.HOMEPAGE_MODULES], () => getHomepageNatifContent(logType), {
+  useQuery<Homepage[]>({
+    queryKey: [QueryKeys.HOMEPAGE_MODULES],
+    queryFn: () => getHomepageNatifContent(logType),
     staleTime: STALE_TIME_CONTENTFUL,
   })
