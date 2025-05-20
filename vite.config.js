@@ -50,6 +50,8 @@ export default ({ mode }) => {
       },
     },
   }
+  const shouldUploadSourcemaps = process.env.UPLOAD_SOURCEMAPS_TO_SENTRY // Set to true in CI
+
   return defineConfig({
     define: {
       global: 'window',
@@ -95,7 +97,7 @@ export default ({ mode }) => {
       sentryVitePlugin({
         org: 'pass-culture',
         project: 'jeunes',
-        disable: !authToken,
+        disable: !authToken || !shouldUploadSourcemaps,
         authToken,
         release: {
           uploadLegacySourcemaps: {
@@ -152,7 +154,7 @@ export default ({ mode }) => {
       },
     },
     build: {
-      sourcemap: process.env.UPLOAD_SOURCEMAPS_TO_SENTRY, // Only set to true in CI
+      sourcemap: shouldUploadSourcemaps,
       commonjsOptions: {
         // https://github.com/rollup/plugins/tree/master/packages/commonjs
         // Here go the options to pass on to @rollup/plugin-commonjs:

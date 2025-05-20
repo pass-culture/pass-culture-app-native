@@ -124,7 +124,7 @@ It is in this `src/index.html` file that we also set several meta tags.
 You can build the app locally (with `yarn build:testing` for example), and then use the following command to visualize your build:
 
 ```sh
-yarn vite preview
+yarn vite preview --mode=testing
 ```
 
 Keep in mind to [do the following change to not run into CORS errors](./general-info-web.md#requests-blocked-by-cors-policy).
