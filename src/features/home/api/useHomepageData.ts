@@ -22,9 +22,18 @@ const getHomepageNatifContent = async (logType: LogTypeEnum) => {
     })
   }
 }
-const useGetHomepageList = () => {
+
+const emptyHomepage: Homepage = {
+  id: '-1',
+  modules: [],
+  tags: [],
+}
+
+export const useHomepageData = (paramsHomepageEntryId?: string): Homepage => {
+  const selectHomepageEntry = useSelectHomepageEntry(paramsHomepageEntryId)
   const { logType } = useLogTypeFromRemoteConfig()
 
+  // this fetches all homepages available in contentful
   const { data: homepages } = useQuery<Homepage[]>(
     [QueryKeys.HOMEPAGE_MODULES],
     () => getHomepageNatifContent(logType),
@@ -32,18 +41,6 @@ const useGetHomepageList = () => {
       staleTime: STALE_TIME_CONTENTFUL,
     }
   )
-  return homepages
-}
-
-const emptyHomepage: Homepage = {
-  id: '-1',
-  modules: [],
-  tags: [],
-}
-export const useHomepageData = (paramsHomepageEntryId?: string): Homepage => {
-  const selectHomepageEntry = useSelectHomepageEntry(paramsHomepageEntryId)
-  // this fetches all homepages available in contentful
-  const homepages = useGetHomepageList()
 
   const homepage = selectHomepageEntry(homepages ?? []) ?? emptyHomepage
 
