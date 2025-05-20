@@ -12,6 +12,6 @@ export const useGetHighlightOfferQuery = (
   }>
 ) =>
   useQuery({
-    queryKey: [QueryKeys.HIGHLIGHT_OFFER, id],
+    queryKey: [QueryKeys.HIGHLIGHT_OFFER, options.id || id],
     queryFn: getHighlightOffer,
   })
