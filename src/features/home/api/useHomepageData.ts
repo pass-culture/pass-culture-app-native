@@ -1,27 +1,10 @@
 import { useMemo } from 'react'
-import { UseQueryResult, useQuery } from 'react-query'
 
 import { useSelectHomepageEntry } from 'features/home/helpers/selectHomepageEntry'
-import { NoContentError } from 'features/home/pages/NoContentError'
 import { Homepage } from 'features/home/types'
-import { fetchHomepageNatifContent } from 'libs/contentful/fetchHomepageNatifContent'
 import { useLogTypeFromRemoteConfig } from 'libs/hooks/useLogTypeFromRemoteConfig'
-import { ScreenError, LogTypeEnum } from 'libs/monitoring/errors'
-import { QueryKeys } from 'libs/queryKeys'
 
-const STALE_TIME_CONTENTFUL = 5 * 60 * 1000
-
-const getHomepageNatifContent = async (logType: LogTypeEnum) => {
-  try {
-    return await fetchHomepageNatifContent()
-  } catch (e) {
-    const error = e as Error
-    throw new ScreenError(error.message, {
-      Screen: NoContentError,
-      logType,
-    })
-  }
-}
+import { useGetHomepageListQuery } from '../queries/useGetHomepageListQuery'
 
 const emptyHomepage: Homepage = {
   id: '-1',
@@ -40,10 +23,3 @@ export const useHomepageData = (paramsHomepageEntryId?: string): Homepage => {
 
   return useMemo(() => homepage, [homepage])
 }
-
-const useGetHomepageListQuery = (logType: LogTypeEnum): UseQueryResult<Homepage[]> =>
-  useQuery<Homepage[]>({
-    queryKey: [QueryKeys.HOMEPAGE_MODULES],
-    queryFn: () => getHomepageNatifContent(logType),
-    staleTime: STALE_TIME_CONTENTFUL,
-  })
