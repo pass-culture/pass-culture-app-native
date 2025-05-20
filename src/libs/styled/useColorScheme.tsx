@@ -2,7 +2,7 @@ import { ColorSchemeName, Appearance } from 'react-native'
 
 import { createStore } from 'libs/store/createStore'
 
-export type ColorScheme = 'dark' | 'light'
+export type ColorScheme = 'dark' | 'light' | 'system'
 
 type State = { colorScheme: ColorScheme }
 
@@ -27,9 +27,7 @@ const colorSchemeStore = createStore({
       (state): ColorScheme =>
         state.colorScheme,
   },
-  options: {
-    persist: true,
-  },
+  options: { persist: true },
 })
 
 export const colorSchemeActions = colorSchemeStore.actions

@@ -228,17 +228,14 @@ const OnlineProfile: React.FC = () => {
               </Section>
               <Section title="Autres">
                 <VerticalUl>
-                  {/* TODO(PC-35459): Remove this condition when add dark theme button in DisplayPreference */}
-                  {isWeb ? null : (
-                    <Li>
-                      <Row
-                        title="Préférences d’affichage"
-                        type="navigable"
-                        navigateTo={getProfileNavConfig('DisplayPreference')}
-                        icon={ArtMaterial}
-                      />
-                    </Li>
-                  )}
+                  <Li>
+                    <Row
+                      title="Préférences d’affichage"
+                      type="navigable"
+                      navigateTo={getProfileNavConfig('DisplayPreference')}
+                      icon={ArtMaterial}
+                    />
+                  </Li>
                   <Li>
                     <Row
                       title="Accessibilité"
