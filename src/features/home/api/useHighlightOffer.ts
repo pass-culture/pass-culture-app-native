@@ -83,9 +83,7 @@ function newFunction(
         return async () => {
           if (!offerTag) return undefined
 
-          const result = await getOfferByTagQuery(offerTag, isUserUnderage, userLocation)
-
-          return result
+          return getOfferByTagQuery(offerTag, isUserUnderage, userLocation)
         }
       if (offerEan)
         return async () => {
