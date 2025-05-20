@@ -98,12 +98,11 @@ const getOfferByIdQuery = async (offerId: string, isUserUnderage: boolean) =>
     isUserUnderage,
     shouldExcludeFutureOffers: false,
   })
-function useGetHighlightOfferQuery(
+const useGetHighlightOfferQuery = (
   id: string,
   getHighlightOffer: () => Promise<Offer[] | undefined>
-) {
-  return useQuery({
+) =>
+  useQuery({
     queryKey: [QueryKeys.HIGHLIGHT_OFFER, id],
     queryFn: getHighlightOffer,
   })
-}
