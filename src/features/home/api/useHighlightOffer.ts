@@ -124,7 +124,11 @@ function newFunction(
 
   const newVariable = useQuery({
     queryKey: [QueryKeys.HIGHLIGHT_OFFER, id],
-    queryFn: queryByQueryMode[queryMode],
+    queryFn: {
+      [QueryMode.ID]: offerByIdQuery,
+      [QueryMode.TAG]: offerByTagQuery,
+      [QueryMode.EAN]: offerByEanQuery,
+    }[queryMode],
   })
   return newVariable
 }
