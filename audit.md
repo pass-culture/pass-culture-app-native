@@ -151,6 +151,38 @@
 
 #### Recommandations
 
+### Test
+
+#### Observations
+
+Nos tests vérifient souvent des détails d'implémentations
+
+Un refactoring avec aucun changement de comportement casse souvent les tests
+
+Nous vérifions peu les comportements métier
+
+Les tests sont souvent écrit après l'implem :
+
+- rendant les tests difficiles à écrire
+- il y a des règles métiers qui ne sont pas testés
+  - rendant les refactoring et évolution dangereuses car pouvant casser des comportements sans le signaler
+
+#### Points de Friction
+
+C'est très verbeux d'écrire des tests sur des composants
+
+C'est difficile de faire du tests first sur notre codebase avec les hooks hells qui rendent les mocks difficiles à écrire
+
+#### Recommandations
+
+Il faudrait :
+
+- tester en vérifiant des comportements métiers
+- avoir au moins un test qui vérifie le bon usage d'un container dans un dumb component :
+  - vérifier que la glue entre les règles métiers et l'UI est bien faite
+  - dans les cas simples, tester directement l'UI via le container
+  - dans les cas complexes, tester un peu la glue et tester la combinatoire dans une fonction pure isolée
+
 ## Conclusion
 
 ### Recommandations
@@ -166,11 +198,141 @@
     - cache de react-query utilisés pour éviter de refaire des requetes inutiles tout en limitant le cache en mémoire
     - utilisation de Zustand pour centraliser les états locaux de l'app
 
-TODO
+#### Architecture
+
+##### Grossomodo maintenant
+
+Aujourd'hui, nos pages ressemblent +/- à ça
+
+```mermaid
+flowchart TB
+  OfferPage
+  -->|get offer id from URL| OfferDetails["OfferDetails ({ offerId?: number })"]
+  -->|load offer| useGetOffer{{"useGetOffer(offerId)"}}
+
+  useGetOffer
+  -->|loading| null["rien : la plupart du temps, on return null"]
+
+  useGetOffer
+  -->|has no offer or error| ErrorNotFound
+
+  useGetOffer
+  -->|has offer| OfferDetail["Display offer details"]
+
+  OfferDetails
+  -->|load recommanded offers| useRecommandedOffers{{"useRecommandedOffers(offerId: number)"}}
+
+  useRecommandedOffers
+  -->|loading| PlaceholderPlaylists
+
+  useRecommandedOffers
+  -->|has no recommanded offers or error| DisplayNothing
+
+  useRecommandedOffers
+  -->|has recommanded offers| RecommandedOffers
+```
+
+##### Intermédiaire
+
+Découpage en
+
+- Page
+- Container
+- Dumb Component
+
+Parfois une information détermine si on doit en charger une autre
+
+-> découpage en sous container pour avoir un bon typage et éviter les `offer?.id` partout
+
+```mermaid
+flowchart TB
+  OfferPage
+  --> parseOfferIdFromURL{{"parseOfferIdFromURL ({ offerId?: number })"}}
+  -->|has no offer or error| ErrorNotFound
+
+  parseOfferIdFromURL
+  -->|get offer id from URL| MaybeOfferContainer["MaybeOfferContainer ({ offerId: number })"]
+  -->|load offer| useGetOffer{{"useGetOffer(offerId)"}}
+
+  useGetOffer
+  -->|loading| LoadingPage
+
+  useGetOffer
+  -->|has no offer or error| ErrorNotFound
+
+  useGetOffer
+  -->|has offer| OfferContainer["OfferContainer ({ offer: Offer })"]
+  --> OfferDetail
+
+  OfferContainer
+  -->|load recommanded offers| useRecommandedOffers{{"useRecommandedOffers(offerId: number)"}}
+
+  useRecommandedOffers
+  -->|loading| PlaceholderPlaylists
+
+  useRecommandedOffers
+  -->|has no recommanded offers or error| DisplayNothing
+
+  useRecommandedOffers
+  -->|has recommanded offers| RecommandedOffers
+```
+
+##### Archi cible
+
+Avec `ErrorBoundary` et `Suspense`
+
+```mermaid
+flowchart TB
+  ErrorBoundary
+  --> OfferPage
+  --> parseOfferIdFromURL{{"parseOfferIdFromURL ({ offerId?: number })"}}
+
+  ErrorBoundary
+  -->|invalid offer id| ErrorNotFound
+
+  parseOfferIdFromURL
+  -->|get offer id from URL| MaybeOfferContainer
+
+  MaybeOfferContainer["MaybeOfferContainer ({ offerId: number })"]
+  --> Suspense
+  -->|loading| LoadingPage
+
+  Suspense
+  -->|load offer| useGetOffer{{"useGetOffer(offerId)"}}
+  -->|has offer| OfferContainer
+
+  OfferContainer["OfferContainer ({ offer: Offer })"]
+  --> OfferDetail
+
+  OfferContainer
+  --> ErrorBoundary2[ErrorBoundary]
+  -->|has no recommanded offers or error| DisplayNothingAndIgnoreSilently["Display nothing and ignore silently"]
+
+  ErrorBoundary2
+  --> Suspense2[Suspense]
+  -->|loading| PlaceholderPlaylists
+
+  Suspense2
+  -->|load recommanded offers| useRecommandedOffers{{"useRecommandedOffers(offerId: number)"}}
+
+  useRecommandedOffers
+  -->|has recommanded offers| RecommandedOffers
+
+  MaybeOfferContainer -..->|"prefetch (si on veut améliorer les perfs)"| useRecommandedOffers
+```
+
+## TODO
+
+<details>
+
+<summary>
+safeFetch
 
 safeFetch -> axios [axios-auth-refresh](https://www.npmjs.com/package/axios-auth-refresh) / [XHRInterceptor](https://nikunj09.medium.com/intercept-http-request-in-react-native-1f07754e12d1)
 
 useSafeState
+
+</summary>
 
 [React Query] [Test] (la suite)
 En réutilisant la config de react-query de production pour les tests, on s'est aperçue que la doc dit de mettre [une config particulière pour les tests](https://github.com/pass-culture/pass-culture-app-native/pull/8108/files#diff-47cca32323f1c6e76693acd86657e71cac0b7e2cdda86fd2c490b3359e4c026bR14)
@@ -215,3 +377,5 @@ on a cherché à comprendre, on faisant un focus sur `<SearchResults />` (car il
 pourquoi lorsqu'on passe de `retry: 3` (config par défaut de react-query) à `retry: 0`, on a plus de re-render ?
 
 est-ce qu'on accepte ces perfs en tant que nouvelles base de performance ?
+
+</details>
