@@ -89,7 +89,7 @@ function newFunction(
         return async () => {
           if (!offerEan) return undefined
 
-          return getOfferByEanQuery(offerEan, userLocation, isUserUnderage)
+          return getOffersByEanQuery(offerEan, userLocation, isUserUnderage)
         }
       return async () => {
         if (!offerId) return undefined
@@ -111,7 +111,7 @@ const getOffersByTagsQuery = async (
     userLocation,
   })
 
-const getOfferByEanQuery = (offerEan: string, userLocation: Position, isUserUnderage: boolean) =>
+const getOffersByEanQuery = (offerEan: string, userLocation: Position, isUserUnderage: boolean) =>
   fetchOffersByEan({
     eanList: [offerEan],
     userLocation,
