@@ -58,7 +58,7 @@ const isWeb = Platform.OS === 'web'
 
 const DEBOUNCE_TOGGLE_DELAY_MS = 5000
 
-const OnlineProfile: React.FC = () => {
+const ProfileContainer: FunctionComponent = () => {
   const disableActivation = useFeatureFlag(RemoteStoreFeatureFlags.DISABLE_ACTIVATION)
   const enablePassForAll = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_PASS_FOR_ALL)
   const enableDebugSection = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_DEBUG_SECTION)
@@ -221,7 +221,7 @@ const ProfileDumb: FunctionComponent<Props> = ({
       <ScrollViewContentContainer>
         <View accessibilityRole={AccessibilityRole.MAIN}>
           <ProfileHeader featureFlags={{ disableActivation, enablePassForAll }} user={user} />
-          <ProfileContainer>
+          <Container>
             <Spacer.Column numberOfSpaces={4} />
             <Section title={isLoggedIn ? 'Paramètres du compte' : 'Paramètres de l’application'}>
               <VerticalUl>
@@ -391,7 +391,7 @@ const ProfileDumb: FunctionComponent<Props> = ({
               )}
             </Section>
             {isWeb ? null : <Spacer.TabBar />}
-          </ProfileContainer>
+          </Container>
         </View>
         {isWeb ? (
           <View accessibilityRole={AccessibilityRole.FOOTER}>
@@ -406,11 +406,11 @@ const ProfileDumb: FunctionComponent<Props> = ({
 
 export const ProfilePage = () => (
   <OfflineWrapper>
-    <OnlineProfile />
+    <ProfileContainer />
   </OfflineWrapper>
 )
 
-const ProfileContainer = styled.View(({ theme }) => ({
+const Container = styled.View(({ theme }) => ({
   backgroundColor: theme.designSystem.color.background.default,
   flexDirection: 'column',
   paddingHorizontal: theme.contentPage.marginHorizontal,
