@@ -329,12 +329,18 @@ flowchart LR
     selectors@{ shape: das }
     actions
     store@{ shape: bow-rect }
+
+    selectors -->|read| store
+    actions -->|write| store
   end
 
   subgraph ServerState
     query@{ shape: lean-l }
     mutation@{ shape: lean-r }
     QueryCache@{ shape: win-pane }
+
+    query -->|get| QueryCache
+    mutation -->|post| QueryCache
   end
 
   subgraph Navigation
