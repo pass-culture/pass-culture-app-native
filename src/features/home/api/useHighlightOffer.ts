@@ -100,17 +100,16 @@ function newFunction(
   })
   return newVariable
 }
-async function getOfferByTagQuery(
+const getOfferByTagQuery = async (
   offerTag: string,
   isUserUnderage: boolean,
   userLocation: Position
-) {
-  return fetchOffersByTags({
+) =>
+  fetchOffersByTags({
     tags: [offerTag],
     isUserUnderage,
     userLocation,
   })
-}
 
 const getOfferByEanQuery = (offerEan: string, userLocation: Position, isUserUnderage: boolean) =>
   fetchOffersByEan({
