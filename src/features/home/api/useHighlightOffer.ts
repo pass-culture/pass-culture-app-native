@@ -77,7 +77,7 @@ const getOffersByTagQuery = async (
   offerTag: string,
   isUserUnderage: boolean,
   userLocation: Position
-) =>
+): Promise<Offer[]> =>
   fetchOffersByTags({
     tags: [offerTag],
     isUserUnderage,
@@ -88,14 +88,14 @@ const getOfferByEanQuery = async (
   offerEan: string,
   userLocation: Position,
   isUserUnderage: boolean
-) =>
+): Promise<Offer[]> =>
   fetchOffersByEan({
     eanList: [offerEan],
     userLocation,
     isUserUnderage,
   })
 
-const getOfferByIdQuery = async (offerId: string, isUserUnderage: boolean) =>
+const getOfferByIdQuery = async (offerId: string, isUserUnderage: boolean): Promise<Offer[]> =>
   fetchOffersByIds({
     objectIds: [offerId],
     isUserUnderage,
