@@ -3,8 +3,7 @@ import { DefaultTheme } from 'styled-components/native'
 
 import { OfferResponseV2, RecommendationApiParams } from 'api/gen'
 import { Referrals } from 'features/navigation/RootNavigator/types'
-import { getTagConfig } from 'features/offer/components/InteractionTag/getTagConfig'
-import { InteractionTag } from 'features/offer/components/InteractionTag/InteractionTag'
+import { renderInteractionTag } from 'features/offer/components/InteractionTag/InteractionTag'
 import { OfferTile } from 'features/offer/components/OfferTile/OfferTile'
 import { PlaylistType } from 'features/offer/enums'
 import { OfferTileProps } from 'features/offer/types'
@@ -55,7 +54,7 @@ export const OfferPlaylistItem = ({
     const timestampsInMillis = item.offer.dates && getTimeStampInMillis(item.offer.dates)
     const categoryLabel = item.offer.bookFormat || labelMapping[item.offer.subcategoryId] || ''
     const categoryId = categoryMapping[item.offer.subcategoryId]
-    const tagConfig = getTagConfig({
+    const tag = renderInteractionTag({
       theme,
       likesCount: item.offer.likes,
       chroniclesCount: item.offer.chroniclesCount,
@@ -82,7 +81,7 @@ export const OfferPlaylistItem = ({
         apiRecoParams={apiRecoParams}
         artistName={artistName}
         navigationMethod={navigationMethod}
-        interactionTag={tagConfig ? <InteractionTag {...tagConfig} /> : undefined}
+        interactionTag={tag}
       />
     )
   }

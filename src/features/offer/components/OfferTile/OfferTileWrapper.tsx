@@ -2,8 +2,7 @@ import React from 'react'
 import { useTheme } from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { getTagConfig } from 'features/offer/components/InteractionTag/getTagConfig'
-import { InteractionTag } from 'features/offer/components/InteractionTag/InteractionTag'
+import { renderInteractionTag } from 'features/offer/components/InteractionTag/InteractionTag'
 import { OfferTile } from 'features/offer/components/OfferTile/OfferTile'
 import { OfferTileProps } from 'features/offer/types'
 import {
@@ -49,7 +48,7 @@ export const OfferTileWrapper = (props: Props) => {
     })
   )
 
-  const tagConfig = getTagConfig({
+  const tag = renderInteractionTag({
     theme,
     likesCount: item.offer.likes,
     chroniclesCount: item.offer.chroniclesCount,
@@ -69,7 +68,7 @@ export const OfferTileWrapper = (props: Props) => {
       date={formattedDate}
       thumbUrl={item.offer.thumbUrl}
       price={formattedPrice}
-      interactionTag={tagConfig ? <InteractionTag {...tagConfig} /> : null}
+      interactionTag={tag}
       {...props}
     />
   )
