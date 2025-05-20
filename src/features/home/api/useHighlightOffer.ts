@@ -96,9 +96,7 @@ function newFunction(
       return async () => {
         if (!offerId) return undefined
 
-        const result = await getOfferByIdQuery(offerId, isUserUnderage)
-
-        return result
+        return getOfferByIdQuery(offerId, isUserUnderage)
       }
     })(),
   })
