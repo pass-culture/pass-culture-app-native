@@ -1,6 +1,8 @@
 import 'jest-canvas-mock'
 import mockFirestore from 'libs/firebase/shims/firestore/index.web'
 
+jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
+
 jest.unmock('react-native-modal')
 jest.mock('libs/firebase/firestore/client.web', () => {
   const firestoreRemoteStore = mockFirestore()
