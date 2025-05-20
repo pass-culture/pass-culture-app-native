@@ -48,13 +48,13 @@ export const useHighlightOffer = ({
         userLocation,
         isUserUnderage,
       })
+
     if (!offerId) return undefined
-    return (async (offerId: string, isUserUnderage: boolean): Promise<Offer[]> =>
-      fetchOffersByIds({
-        objectIds: [offerId],
-        isUserUnderage,
-        shouldExcludeFutureOffers: false,
-      }))(offerId, isUserUnderage)
+    return fetchOffersByIds({
+      objectIds: [offerId],
+      isUserUnderage,
+      shouldExcludeFutureOffers: false,
+    })
   }
   const { data } = useGetHighlightOfferQuery({ id, getHighlightOffer })
   const offers = (data?.map(transformOfferHits) as Offer[]) ?? []
