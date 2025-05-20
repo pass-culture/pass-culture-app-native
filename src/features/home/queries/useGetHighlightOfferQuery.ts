@@ -15,3 +15,15 @@ export const useGetHighlightOfferQuery = (
     queryKey: [QueryKeys.HIGHLIGHT_OFFER, options.id || id],
     queryFn: options.getHighlightOffer || getHighlightOffer,
   })
+export const useGetHighlightOfferQuery2 = (
+  id: string,
+  getHighlightOffer: () => Promise<Offer[] | undefined>,
+  options: {
+    id: string
+    getHighlightOffer: () => Promise<Offer[] | undefined>
+  }
+) =>
+  useQuery({
+    queryKey: [QueryKeys.HIGHLIGHT_OFFER, options.id || id],
+    queryFn: options.getHighlightOffer || getHighlightOffer,
+  })
