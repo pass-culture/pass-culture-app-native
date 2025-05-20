@@ -41,17 +41,13 @@ export const useHighlightOffer = ({
         isUserUnderage,
         userLocation,
       })
+
     if (offerEan)
-      return (async (
-        offerEan: string,
-        userLocation: Position,
-        isUserUnderage: boolean
-      ): Promise<Offer[]> =>
-        fetchOffersByEan({
-          eanList: [offerEan],
-          userLocation,
-          isUserUnderage,
-        }))(offerEan, userLocation, isUserUnderage)
+      return fetchOffersByEan({
+        eanList: [offerEan],
+        userLocation,
+        isUserUnderage,
+      })
     if (!offerId) return undefined
     return (async (offerId: string, isUserUnderage: boolean): Promise<Offer[]> =>
       fetchOffersByIds({
