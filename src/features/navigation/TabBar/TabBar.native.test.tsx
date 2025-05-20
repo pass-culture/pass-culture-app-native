@@ -15,6 +15,7 @@ import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { LocationMode } from 'libs/location/types'
 import { ThemeProvider } from 'libs/styled'
+import { ColorSchemeEnum } from 'libs/styled/useColorScheme'
 import { computedTheme } from 'tests/computedTheme'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { userEvent, render, screen } from 'tests/utils'
@@ -391,7 +392,7 @@ describe('TabBar', () => {
 function renderTabBar(tabNavigationState: TabNavigationState<ParamListBase>) {
   render(
     reactQueryProviderHOC(
-      <ThemeProvider theme={computedTheme} colorScheme="light">
+      <ThemeProvider theme={computedTheme} colorScheme={ColorSchemeEnum.LIGHT}>
         <TabBar navigation={navigation} state={tabNavigationState} />
       </ThemeProvider>
     )
