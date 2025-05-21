@@ -1,10 +1,10 @@
-import React from 'react'
-import { AppState, AppStateStatus } from 'react-native'
 import {
   QueryClientProvider,
   onlineManager,
   focusManager as reactQueryFocusManager,
 } from '@tanstack/react-query'
+import React from 'react'
+import { AppState, AppStateStatus } from 'react-native'
 
 import { queryClient } from 'libs/react-query/queryClient'
 import { usePrefetchQueries } from 'libs/react-query/usePrefetchQueries'

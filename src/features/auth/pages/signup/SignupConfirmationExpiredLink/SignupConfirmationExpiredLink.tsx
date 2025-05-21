@@ -1,7 +1,7 @@
 import { useNavigation } from '@react-navigation/native'
 import { StackScreenProps } from '@react-navigation/stack'
-import React from 'react'
 import { useQuery } from '@tanstack/react-query'
+import React from 'react'
 
 import { api } from 'api/api'
 import { RootStackParamList, UseNavigationType } from 'features/navigation/RootNavigator/types'

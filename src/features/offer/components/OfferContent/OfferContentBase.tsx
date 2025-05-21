@@ -1,4 +1,5 @@
 import { useNavigation, useRoute } from '@react-navigation/native'
+import { useQueryClient } from '@tanstack/react-query'
 import React, {
   FunctionComponent,
   PropsWithChildren,
@@ -16,7 +17,6 @@ import {
   ViewStyle,
 } from 'react-native'
 import { IOScrollView as IntersectionObserverScrollView } from 'react-native-intersection-observer'
-import { useQueryClient } from '@tanstack/react-query'
 import styled, { useTheme } from 'styled-components/native'
 
 import { OfferResponseV2, ReactionTypeEnum, RecommendationApiParams } from 'api/gen'

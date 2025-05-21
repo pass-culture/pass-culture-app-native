@@ -1,5 +1,5 @@
-import { useEffect } from 'react'
 import { useQuery } from '@tanstack/react-query'
+import { useEffect } from 'react'
 
 import { OffersModuleParameters } from 'features/home/types'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'

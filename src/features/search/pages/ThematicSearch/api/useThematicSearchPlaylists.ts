@@ -1,6 +1,6 @@
+import { useQuery } from '@tanstack/react-query'
 import { SearchResponse } from 'instantsearch.js'
 import { useEffect } from 'react'
-import { useQuery } from '@tanstack/react-query'
 
 import { ThematicSearchPlaylistListProps } from 'features/search/pages/ThematicSearch/ThematicSearchPlaylistList'
 import {

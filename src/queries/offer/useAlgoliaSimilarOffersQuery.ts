@@ -1,5 +1,5 @@
-import { useMemo } from 'react'
 import { UseQueryOptions, useQuery } from '@tanstack/react-query'
+import { useMemo } from 'react'
 
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { fetchOffersByIds } from 'libs/algolia/fetchAlgolia/fetchOffersByIds'

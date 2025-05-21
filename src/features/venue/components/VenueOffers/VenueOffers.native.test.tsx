@@ -1,7 +1,7 @@
+import { UseQueryResult } from '@tanstack/react-query'
 import mockdate from 'mockdate'
 import React, { ComponentProps, createRef } from 'react'
 import { ScrollView } from 'react-native'
-import { UseQueryResult } from '@tanstack/react-query'
 
 import { push } from '__mocks__/@react-navigation/native'
 import { gtlPlaylistAlgoliaSnapshot } from 'features/gtlPlaylist/fixtures/gtlPlaylistAlgoliaSnapshot'

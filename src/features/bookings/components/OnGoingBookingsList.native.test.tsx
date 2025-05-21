@@ -1,5 +1,5 @@
-import React from 'react'
 import { UseQueryResult } from '@tanstack/react-query'
+import React from 'react'
 
 import { BookingsResponse, SubcategoriesResponseModelv2 } from 'api/gen'
 import { bookingsSnap as mockBookings } from 'features/bookings/fixtures/bookingsSnap'

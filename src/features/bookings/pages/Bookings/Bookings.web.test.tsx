@@ -1,5 +1,5 @@
-import React from 'react'
 import { QueryObserverResult, UseQueryResult } from '@tanstack/react-query'
+import React from 'react'
 
 import {
   BookingsResponse,

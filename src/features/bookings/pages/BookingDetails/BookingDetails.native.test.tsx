@@ -1,5 +1,5 @@
-import React from 'react'
 import { UseQueryResult } from '@tanstack/react-query'
+import React from 'react'
 
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import {
