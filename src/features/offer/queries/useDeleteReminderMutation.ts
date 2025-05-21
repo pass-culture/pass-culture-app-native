@@ -2,7 +2,7 @@ import { useMutation, useQueryClient } from '@tanstack/react-query'
 
 import { api } from 'api/api'
 import { GetRemindersResponse } from 'api/gen'
-import { MutationOptions, RemindersMutationOnErrorArgs } from 'features/offer/queries/types'
+import { MutationOptions } from 'features/offer/queries/types'
 import { QueryKeys } from 'libs/queryKeys'
 
 export const useDeleteReminderMutation = (options?: MutationOptions) => {
@@ -34,8 +34,11 @@ export const useDeleteReminderMutation = (options?: MutationOptions) => {
           previousReminders,
         }
       },
-      onError: (args: RemindersMutationOnErrorArgs) => {
-        const { context, error } = args
+      onError: (
+        error,
+        _reminder_id,
+        context: { previousReminders?: GetRemindersResponse } | undefined
+      ) => {
         queryClient.setQueryData([QueryKeys.REMINDERS], context?.previousReminders)
         options?.onError?.(error)
       },
