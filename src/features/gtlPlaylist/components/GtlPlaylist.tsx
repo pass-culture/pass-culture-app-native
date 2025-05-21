@@ -1,6 +1,6 @@
 import { Hit } from '@algolia/client-search'
+import { FlashList } from '@shopify/flash-list'
 import React from 'react'
-import { FlatList } from 'react-native-gesture-handler'
 
 import { VenueResponse } from 'api/gen'
 import { GtlPlaylistData } from 'features/gtlPlaylist/types'
@@ -67,7 +67,7 @@ export function GtlPlaylist({
         title={playlist.title}
         onEndReached={logHasSeenAllTilesOnce}
         noMarginBottom={noMarginBottom}
-        FlatListComponent={FlatList}
+        FlatListComponent={FlashList}
       />
     </IntersectionObserver>
   )
