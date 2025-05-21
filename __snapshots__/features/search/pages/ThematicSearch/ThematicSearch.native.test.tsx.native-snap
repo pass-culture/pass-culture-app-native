@@ -559,6 +559,13 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                     "paddingLeft": 8,
                     "paddingRight": 8,
                     "paddingTop": 8,
+                    "shadowColor": "#696A6F",
+                    "shadowOffset": {
+                      "height": 4,
+                      "width": 0,
+                    },
+                    "shadowOpacity": 0.2,
+                    "shadowRadius": 4,
                     "textAlign": "left",
                     "width": 343,
                   },
@@ -637,6 +644,13 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                     "paddingLeft": 8,
                     "paddingRight": 8,
                     "paddingTop": 8,
+                    "shadowColor": "#696A6F",
+                    "shadowOffset": {
+                      "height": 4,
+                      "width": 0,
+                    },
+                    "shadowOpacity": 0.2,
+                    "shadowRadius": 4,
                     "textAlign": "left",
                     "width": 343,
                   },
@@ -715,6 +729,13 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                     "paddingLeft": 8,
                     "paddingRight": 8,
                     "paddingTop": 8,
+                    "shadowColor": "#696A6F",
+                    "shadowOffset": {
+                      "height": 4,
+                      "width": 0,
+                    },
+                    "shadowOpacity": 0.2,
+                    "shadowRadius": 4,
                     "textAlign": "left",
                     "width": 343,
                   },
@@ -793,6 +814,13 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                     "paddingLeft": 8,
                     "paddingRight": 8,
                     "paddingTop": 8,
+                    "shadowColor": "#696A6F",
+                    "shadowOffset": {
+                      "height": 4,
+                      "width": 0,
+                    },
+                    "shadowOpacity": 0.2,
+                    "shadowRadius": 4,
                     "textAlign": "left",
                     "width": 343,
                   },
@@ -871,6 +899,13 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                     "paddingLeft": 8,
                     "paddingRight": 8,
                     "paddingTop": 8,
+                    "shadowColor": "#696A6F",
+                    "shadowOffset": {
+                      "height": 4,
+                      "width": 0,
+                    },
+                    "shadowOpacity": 0.2,
+                    "shadowRadius": 4,
                     "textAlign": "left",
                     "width": 343,
                   },
@@ -949,6 +984,13 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                     "paddingLeft": 8,
                     "paddingRight": 8,
                     "paddingTop": 8,
+                    "shadowColor": "#696A6F",
+                    "shadowOffset": {
+                      "height": 4,
+                      "width": 0,
+                    },
+                    "shadowOpacity": 0.2,
+                    "shadowRadius": 4,
                     "textAlign": "left",
                     "width": 343,
                   },
@@ -1027,6 +1069,13 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                     "paddingLeft": 8,
                     "paddingRight": 8,
                     "paddingTop": 8,
+                    "shadowColor": "#696A6F",
+                    "shadowOffset": {
+                      "height": 4,
+                      "width": 0,
+                    },
+                    "shadowOpacity": 0.2,
+                    "shadowRadius": 4,
                     "textAlign": "left",
                     "width": 343,
                   },
@@ -1105,6 +1154,13 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                     "paddingLeft": 8,
                     "paddingRight": 8,
                     "paddingTop": 8,
+                    "shadowColor": "#696A6F",
+                    "shadowOffset": {
+                      "height": 4,
+                      "width": 0,
+                    },
+                    "shadowOpacity": 0.2,
+                    "shadowRadius": 4,
                     "textAlign": "left",
                     "width": 343,
                   },
@@ -1183,6 +1239,13 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                     "paddingLeft": 8,
                     "paddingRight": 8,
                     "paddingTop": 8,
+                    "shadowColor": "#696A6F",
+                    "shadowOffset": {
+                      "height": 4,
+                      "width": 0,
+                    },
+                    "shadowOpacity": 0.2,
+                    "shadowRadius": 4,
                     "textAlign": "left",
                     "width": 343,
                   },
@@ -1261,6 +1324,13 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                     "paddingLeft": 8,
                     "paddingRight": 8,
                     "paddingTop": 8,
+                    "shadowColor": "#696A6F",
+                    "shadowOffset": {
+                      "height": 4,
+                      "width": 0,
+                    },
+                    "shadowOpacity": 0.2,
+                    "shadowRadius": 4,
                     "textAlign": "left",
                     "width": 343,
                   },
@@ -1339,6 +1409,13 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                     "paddingLeft": 8,
                     "paddingRight": 8,
                     "paddingTop": 8,
+                    "shadowColor": "#696A6F",
+                    "shadowOffset": {
+                      "height": 4,
+                      "width": 0,
+                    },
+                    "shadowOpacity": 0.2,
+                    "shadowRadius": 4,
                     "textAlign": "left",
                     "width": 343,
                   },
@@ -1417,6 +1494,13 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                     "paddingLeft": 8,
                     "paddingRight": 8,
                     "paddingTop": 8,
+                    "shadowColor": "#696A6F",
+                    "shadowOffset": {
+                      "height": 4,
+                      "width": 0,
+                    },
+                    "shadowOpacity": 0.2,
+                    "shadowRadius": 4,
                     "textAlign": "left",
                     "width": 343,
                   },
@@ -1495,6 +1579,13 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                     "paddingLeft": 8,
                     "paddingRight": 8,
                     "paddingTop": 8,
+                    "shadowColor": "#696A6F",
+                    "shadowOffset": {
+                      "height": 4,
+                      "width": 0,
+                    },
+                    "shadowOpacity": 0.2,
+                    "shadowRadius": 4,
                     "textAlign": "left",
                     "width": 343,
                   },
@@ -1527,11 +1618,11 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
         </View>
       </RCTScrollView>
       <View
-        gap={20}
+        gap={6}
         style={
           [
             {
-              "gap": 80,
+              "gap": 24,
             },
           ]
         }
@@ -4133,15 +4224,6 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                             }
                           >
                             <View
-                              style={
-                                [
-                                  {
-                                    "borderColor": "purple",
-                                    "borderStyle": "solid",
-                                    "borderWidth": 2,
-                                  },
-                                ]
-                              }
                               testID="OfferTile"
                             >
                               <View
@@ -4193,11 +4275,11 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                                   testID="playlistCardOffer"
                                 >
                                   <View
-                                    height={380}
+                                    height={420}
                                     style={
                                       [
                                         {
-                                          "height": 380,
+                                          "height": 420,
                                           "width": 280,
                                         },
                                       ]
@@ -4622,15 +4704,6 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                             }
                           >
                             <View
-                              style={
-                                [
-                                  {
-                                    "borderColor": "purple",
-                                    "borderStyle": "solid",
-                                    "borderWidth": 2,
-                                  },
-                                ]
-                              }
                               testID="OfferTile"
                             >
                               <View
@@ -4682,11 +4755,11 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                                   testID="playlistCardOffer"
                                 >
                                   <View
-                                    height={380}
+                                    height={420}
                                     style={
                                       [
                                         {
-                                          "height": 380,
+                                          "height": 420,
                                           "width": 280,
                                         },
                                       ]
@@ -5111,15 +5184,6 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                             }
                           >
                             <View
-                              style={
-                                [
-                                  {
-                                    "borderColor": "purple",
-                                    "borderStyle": "solid",
-                                    "borderWidth": 2,
-                                  },
-                                ]
-                              }
                               testID="OfferTile"
                             >
                               <View
@@ -5171,11 +5235,11 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                                   testID="playlistCardOffer"
                                 >
                                   <View
-                                    height={380}
+                                    height={420}
                                     style={
                                       [
                                         {
-                                          "height": 380,
+                                          "height": 420,
                                           "width": 280,
                                         },
                                       ]
@@ -5616,15 +5680,6 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                         }
                       >
                         <View
-                          style={
-                            [
-                              {
-                                "borderColor": "purple",
-                                "borderStyle": "solid",
-                                "borderWidth": 2,
-                              },
-                            ]
-                          }
                           testID="OfferTile"
                         >
                           <View
@@ -5676,11 +5731,11 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                               testID="playlistCardOffer"
                             >
                               <View
-                                height={380}
+                                height={420}
                                 style={
                                   [
                                     {
-                                      "height": 380,
+                                      "height": 420,
                                       "width": 280,
                                     },
                                   ]
