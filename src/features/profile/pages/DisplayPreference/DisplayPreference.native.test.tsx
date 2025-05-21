@@ -30,7 +30,7 @@ describe('DisplayPreference', () => {
   })
 
   it('should not display dark mode section when feature flag is disable', async () => {
-    setFeatureFlags([])
+    setFeatureFlags()
     render(<DisplayPreference />)
 
     const subtitle = screen.queryByText('Thème')
