@@ -2,17 +2,9 @@ import '@testing-library/jest-native/extend-expect'
 
 import { TextEncoder } from 'util'
 
-import { notifyManager } from '@tanstack/query-core'
 import * as consoleFailTestModule from 'console-fail-test'
 import { toHaveNoViolations } from 'jest-axe'
 import { configure } from 'reassure'
-import { batch } from 'solid-js'
-
-import { queryCache } from './reactQueryProviderHOC'
-
-// React Query v4 does not expose a safe batchedUpdates for React Native + Jest
-// Solid.js's batch() is compatible with TanStack's notifyManager batching logic
-notifyManager.setBatchNotifyFunction(batch)
 
 // Configuration for performance tests
 configure({ testingLibrary: 'react-native' })
@@ -29,10 +21,6 @@ consoleFailTestModule.cft({
     log: false,
     warn: false,
   },
-})
-
-global.afterEach(async () => {
-  queryCache.clear()
 })
 
 global.AbortController = jest.fn(() => ({

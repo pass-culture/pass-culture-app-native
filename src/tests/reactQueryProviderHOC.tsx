@@ -1,7 +1,8 @@
-import { QueryCache, QueryClient, QueryClientProvider } from '@tanstack/react-query'
+import { QueryCache, MutationCache, QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import React from 'react'
 
 export const queryCache = new QueryCache()
+const mutationCache = new MutationCache()
 
 export const reactQueryProviderHOC = (
   component: React.ReactNode,
@@ -15,8 +16,19 @@ export const reactQueryProviderHOC = (
         cacheTime: Infinity, // react-query documentation recommends to disable cache when testing https://tanstack.com/query/v3/docs/framework/react/guides/testing#set-cachetime-to-infinity-with-jest
       },
     },
+    logger: {
+      log: jest.fn(),
+      warn: jest.fn(),
+      error: jest.fn(),
+    },
   })
+
   if (setup) setup(queryClient)
 
   return <QueryClientProvider client={queryClient}>{component}</QueryClientProvider>
 }
+
+global.afterEach(async () => {
+  queryCache.clear()
+  mutationCache.clear()
+})
