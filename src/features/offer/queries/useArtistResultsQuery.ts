@@ -1,6 +1,6 @@
 import { Hit } from '@algolia/client-search'
-import { useCallback, useMemo } from 'react'
 import { useQuery } from '@tanstack/react-query'
+import { useCallback, useMemo } from 'react'
 
 import { SubcategoryIdEnum } from 'api/gen'
 import { fetchOffersByArtist } from 'features/offer/api/fetchOffersByArtist/fetchOffersByArtist'

@@ -1,5 +1,5 @@
-import { omit } from 'lodash'
 import { useMutation } from '@tanstack/react-query'
+import { omit } from 'lodash'
 
 import { api } from 'api/api'
 import { CookiesConsent } from 'features/cookies/types'

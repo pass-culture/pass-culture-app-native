@@ -1,6 +1,6 @@
 import { SearchResponse } from '@algolia/client-search'
-import { useEffect } from 'react'
 import { useQuery, UseQueryResult } from '@tanstack/react-query'
+import { useEffect } from 'react'
 
 import { VideoCarouselItem } from 'features/home/types'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'

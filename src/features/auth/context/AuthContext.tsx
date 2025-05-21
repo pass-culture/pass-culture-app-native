@@ -1,5 +1,5 @@
-import React, { useContext } from 'react'
 import { QueryObserverResult } from '@tanstack/react-query'
+import React, { useContext } from 'react'
 
 import { UserProfileResponse } from 'api/gen'
 

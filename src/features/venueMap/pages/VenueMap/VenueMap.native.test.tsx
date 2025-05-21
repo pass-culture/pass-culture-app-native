@@ -1,6 +1,6 @@
 import { useRoute } from '@react-navigation/native'
-import React from 'react'
 import { UseQueryResult } from '@tanstack/react-query'
+import React from 'react'
 
 import { VenueTypeCodeKey } from 'api/gen'
 import * as useGoBack from 'features/navigation/useGoBack'

@@ -1,5 +1,5 @@
-import React from 'react'
 import { QueryClientProvider } from '@tanstack/react-query'
+import React from 'react'
 
 import { queryClient } from 'libs/react-query/queryClient'
 import { usePrefetchQueries } from 'libs/react-query/usePrefetchQueries'

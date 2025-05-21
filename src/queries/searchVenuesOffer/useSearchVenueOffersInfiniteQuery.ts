@@ -1,7 +1,7 @@
 import { Hit, SearchResponse } from '@algolia/client-search'
+import { InfiniteQueryObserverOptions, useInfiniteQuery } from '@tanstack/react-query'
 import { flatten } from 'lodash'
 import { useMemo, useRef } from 'react'
-import { InfiniteQueryObserverOptions, useInfiniteQuery } from '@tanstack/react-query'
 
 import { VenueListItem } from 'features/offer/components/VenueSelectionList/VenueSelectionList'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
