@@ -22,13 +22,13 @@ export interface GtlPlaylistProps {
   noMarginBottom?: boolean
 }
 
-export function GtlPlaylist({
+export const GtlPlaylist = ({
   venue,
   playlist,
   analyticsFrom,
   route,
   noMarginBottom,
-}: Readonly<GtlPlaylistProps>) {
+}: Readonly<GtlPlaylistProps>) => {
   const entryId = playlist.entryId
 
   const logHasSeenAllTilesOnce = useFunctionOnce(() => {
