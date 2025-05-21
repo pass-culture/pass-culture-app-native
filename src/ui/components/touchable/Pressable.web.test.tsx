@@ -2,12 +2,12 @@ import React from 'react'
 
 import { fireEvent, render, screen } from 'tests/utils/web'
 
-import { TouchableWithoutFeedback } from './TouchableWithoutFeedback.web'
+import { Pressable } from './Pressable.web'
 
-describe('TouchableWithoutFeedback', () => {
+describe('Pressable', () => {
   it('calls onPress when clicked', () => {
     const onPress = jest.fn()
-    render(<TouchableWithoutFeedback onPress={onPress} />)
+    render(<Pressable onPress={onPress} />)
     const button = screen.getByRole('button')
     fireEvent.click(button)
 

@@ -1,6 +1,5 @@
 import React from 'react'
 import { View } from 'react-native'
-import { TouchableWithoutFeedback } from 'react-native-gesture-handler'
 import styled from 'styled-components/native'
 
 import { DURATION_IN_MS, customEaseInOut } from 'features/onboarding/helpers/animationProps'
@@ -8,6 +7,7 @@ import { analytics } from 'libs/analytics/provider'
 import { AnimatedView, NAV_DELAY_IN_MS } from 'libs/react-native-animatable'
 import { useDepositAmountsByAge } from 'shared/user/useDepositAmountsByAge'
 import { InternalStep } from 'ui/components/InternalStep/InternalStep'
+import { Pressable } from 'ui/components/touchable/Pressable'
 import { StepVariant } from 'ui/components/VerticalStepper/types'
 import { Warning } from 'ui/svg/icons/BicolorWarning'
 import { CakeOneCandle } from 'ui/svg/icons/CakeOneCandle'
@@ -82,7 +82,7 @@ export const CreditTimelineV3 = ({ stepperProps, age, testID }: Props) => {
             isLast={isLast}
             addMoreSpacingToIcons>
             <Spacer.Column numberOfSpaces={SpaceBetweenBlock} />
-            <TouchableWithoutFeedback onPress={() => analytics.logTrySelectDeposit(age)}>
+            <Pressable onPress={() => analytics.logTrySelectDeposit(age)}>
               <StyledAnimatedView {...animatedViewProps}>
                 <View>
                   <BodySecondary>{`à ${props.creditStep} ans`}</BodySecondary>
@@ -91,7 +91,7 @@ export const CreditTimelineV3 = ({ stepperProps, age, testID }: Props) => {
                   {props.children}
                 </View>
               </StyledAnimatedView>
-            </TouchableWithoutFeedback>
+            </Pressable>
             <Spacer.Column numberOfSpaces={SpaceBetweenBlock} />
           </InternalStep>
         )

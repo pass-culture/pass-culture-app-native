@@ -7,7 +7,7 @@ import { CreditStatus } from 'features/onboarding/enums'
 import { customEaseInOut, DURATION_IN_MS } from 'features/onboarding/helpers/animationProps'
 import { getBackgroundColor } from 'features/onboarding/helpers/getBackgroundColor'
 import { AnimatedView, NAV_DELAY_IN_MS } from 'libs/react-native-animatable'
-import { TouchableWithoutFeedback } from 'ui/components/touchable/TouchableWithoutFeedback'
+import { Pressable } from 'ui/components/touchable/Pressable'
 import { getSpacing } from 'ui/theme'
 
 type Props = {
@@ -37,14 +37,14 @@ export const CreditBlock = ({ creditStatus, animated, onPress, children }: Props
       }
     : {}
   return (
-    <TouchableWithoutFeedback onPress={onPress}>
+    <Pressable onPress={onPress}>
       <Container as={ViewComponent} status={creditStatus} {...viewProps}>
         <View>{children}</View>
         <TagContainer>
           <CreditStatusTag status={creditStatus} />
         </TagContainer>
       </Container>
-    </TouchableWithoutFeedback>
+    </Pressable>
   )
 }
 
