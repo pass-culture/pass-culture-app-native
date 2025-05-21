@@ -2,9 +2,14 @@ import '@testing-library/jest-native/extend-expect'
 
 import { TextEncoder } from 'util'
 
+import { notifyManager } from '@tanstack/query-core'
 import * as consoleFailTestModule from 'console-fail-test'
 import { toHaveNoViolations } from 'jest-axe'
 import { configure } from 'reassure'
+import { batch } from 'solid-js'
+
+// Configure React Query to batch updates with `act` in tests
+notifyManager.setBatchNotifyFunction(batch)
 
 // Configuration for performance tests
 configure({ testingLibrary: 'react-native' })
@@ -23,11 +28,14 @@ consoleFailTestModule.cft({
   },
 })
 
+// AbortController needs to be mocked because it is not supported in our current version of Jest
 global.AbortController = jest.fn(() => ({
   signal: {},
   abort: jest.fn(),
 }))
 
+// WEB MOCKS
+// To replicate the browser behaviour in our node test environement (jsdom), we have to make the following mocks :
 global.GeolocationPositionError = {
   PERMISSION_DENIED: 1,
   POSITION_UNAVAILABLE: 2,
