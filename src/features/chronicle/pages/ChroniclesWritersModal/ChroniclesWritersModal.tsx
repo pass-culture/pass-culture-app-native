@@ -19,7 +19,6 @@ export const ChroniclesWritersModal: FunctionComponent<Props> = ({
 }) => {
   return (
     <AppModal
-      animationOutTiming={1}
       visible={isVisible}
       title="Qui écrit les avis&nbsp;?"
       rightIconAccessibilityLabel="Fermer la modale"

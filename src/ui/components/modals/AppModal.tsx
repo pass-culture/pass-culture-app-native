@@ -1,6 +1,7 @@
 import React, { FunctionComponent, useRef, useState, useMemo, useCallback } from 'react'
 import {
   LayoutChangeEvent,
+  Modal,
   Platform,
   ScrollView,
   ScrollViewProps,
@@ -8,7 +9,6 @@ import {
   useWindowDimensions,
   ViewProps,
 } from 'react-native'
-import { ReactNativeModal } from 'react-native-modal'
 import { CSSObject } from 'styled-components'
 import styled, { useTheme } from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
@@ -24,10 +24,9 @@ import { getSpacing, Spacer } from 'ui/theme'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 import { ModalHeader } from './ModalHeader'
-import { ModalIconProps, ModalSwipeDirection } from './types'
+import { ModalIconProps } from './types'
 
 type Props = {
-  animationOutTiming?: number
   title: string
   visible: boolean
   titleNumberOfLines?: number
@@ -48,20 +47,13 @@ type Props = {
   testID?: string
   isUpToStatusBar?: boolean
   children: React.ReactNode
-  onSwipe?: () => void
-  swipeDirection?: ModalSwipeDirection
-  propagateSwipe?: boolean
   desktopConstraints?: CSSObject
 } & ModalIconProps &
   Pick<ViewProps, 'onLayout'>
 
-// Without this, the margin is recomputed with arbitrary values
-const modalStyles = { margin: 'auto' }
-
 const DESKTOP_FULLSCREEN_RATIO = 0.75
 
 export const AppModal: FunctionComponent<Props> = ({
-  animationOutTiming,
   title,
   visible,
   leftIconAccessibilityLabel,
@@ -88,9 +80,6 @@ export const AppModal: FunctionComponent<Props> = ({
   shouldAddSpacerBetweenHeaderAndContent = true,
   testID = 'modal',
   isUpToStatusBar,
-  onSwipe,
-  swipeDirection,
-  propagateSwipe,
   onLayout,
   desktopConstraints,
 }) => {
@@ -103,7 +92,7 @@ export const AppModal: FunctionComponent<Props> = ({
     onLeftIconPress,
   } as ModalIconProps
 
-  const { height: windowHeight, width: windowWidth } = useWindowDimensions()
+  const { height: windowHeight } = useWindowDimensions()
   const { bottom, top } = useCustomSafeInsets()
   const { isSmallScreen, modal, isDesktopViewport } = useTheme()
 
@@ -214,78 +203,93 @@ export const AppModal: FunctionComponent<Props> = ({
     setFullscreenScrollViewRef,
   ])
 
+  // Fonction pour gérer le clic sur le backdrop
+  const handleBackdropPress = useCallback(() => {
+    if (onBackdropPress) {
+      onBackdropPress()
+    } else if (onLeftIconPress) {
+      onLeftIconPress()
+    } else if (onRightIconPress) {
+      onRightIconPress()
+    }
+  }, [onBackdropPress, onLeftIconPress, onRightIconPress])
+
   return (
-    <StyledModal
-      accessibilityModal
-      animationOutTiming={animationOutTiming}
-      style={modalStyles}
+    <Modal
+      transparent
+      visible={visible}
+      animationType={isDesktopViewport ? 'fade' : 'slide'}
+      onRequestClose={handleBackdropPress}
+      onDismiss={onModalHide}
       supportedOrientations={['portrait', 'landscape']}
       statusBarTranslucent
-      hasBackdrop={shouldDisplayOverlay}
-      isVisible={visible}
-      onBackdropPress={onBackdropPress ?? onLeftIconPress ?? onRightIconPress}
       testID={testID}
-      deviceHeight={windowHeight}
-      deviceWidth={windowWidth}
-      accessibilityLabelledBy={titleId}
-      onModalHide={onModalHide}
-      onSwipeComplete={onSwipe}
-      swipeDirection={swipeDirection}
-      propagateSwipe={propagateSwipe}>
-      <StatusBar barStyle="light-content" translucent />
-      <ModalContainer
-        height={maxHeight ? undefined : modalContainerHeight}
-        testID="modalContainer"
-        maxHeight={maxContainerHeight}
-        desktopConstraints={containerDesktopConstraints}
-        onLayout={onLayout}
-        noPadding={noPadding}
-        noPaddingBottom={noPaddingBottom}>
-        {customModalHeader ? (
-          <CustomModalHeaderContainer nativeID={titleId} testID="customModalHeader">
-            {customModalHeader}
-          </CustomModalHeaderContainer>
-        ) : (
-          <ModalHeader
-            title={title}
-            numberOfLines={titleNumberOfLines}
-            onLayout={updateHeaderHeight}
-            titleID={titleId}
-            modalSpacing={modalSpacing}
-            {...iconProps}
+      accessible
+      accessibilityViewIsModal
+      accessibilityLabelledBy={titleId}>
+      <ModalView>
+        {shouldDisplayOverlay ? (
+          <StyledPressable
+            onPress={handleBackdropPress}
+            accessibilityRole="button"
+            accessibilityHint="Ferme la fenêtre modale"
           />
-        )}
-        {isFullscreen || maxHeight || isUpToStatusBar ? (
-          fullscreenModalBody
-        ) : (
-          <React.Fragment>
-            {shouldAddSpacerBetweenHeaderAndContent ? (
-              <SpacerBetweenHeaderAndContent testID="spacerBetweenHeaderAndContent" />
-            ) : null}
-            <ScrollViewContainer
-              paddingBottom={scrollViewPaddingBottom}
-              modalSpacing={modalSpacing}>
-              <ScrollView
-                contentContainerStyle={fixedModalBottom ? undefined : contentContainerStyle}
-                ref={scrollViewRef}
-                scrollEnabled={scrollEnabled}
-                onContentSizeChange={updateScrollViewContentHeight}
-                testID="modalScrollView">
-                {children}
-              </ScrollView>
-            </ScrollViewContainer>
-          </React.Fragment>
-        )}
-        {fixedModalBottom ? (
-          <React.Fragment>
-            <FixedModalBottomContainer testID="fixedModalBottom">
-              {fixedModalBottom}
-            </FixedModalBottomContainer>
-            <Spacer.BottomScreen />
-          </React.Fragment>
         ) : null}
-      </ModalContainer>
-    </StyledModal>
+        <StatusBar barStyle="light-content" translucent />
+        <ModalContainer
+          height={maxHeight ? undefined : modalContainerHeight}
+          testID="modalContainer"
+          maxHeight={maxContainerHeight}
+          desktopConstraints={containerDesktopConstraints}
+          onLayout={onLayout}
+          noPadding={noPadding}
+          noPaddingBottom={noPaddingBottom}>
+          {customModalHeader ? (
+            <CustomModalHeaderContainer nativeID={titleId} testID="customModalHeader">
+              {customModalHeader}
+            </CustomModalHeaderContainer>
+          ) : (
+            <ModalHeader
+              title={title}
+              numberOfLines={titleNumberOfLines}
+              onLayout={updateHeaderHeight}
+              titleID={titleId}
+              modalSpacing={modalSpacing}
+              {...iconProps}
+            />
+          )}
+          {isFullscreen || maxHeight || isUpToStatusBar ? (
+            fullscreenModalBody
+          ) : (
+            <React.Fragment>
+              {shouldAddSpacerBetweenHeaderAndContent ? (
+                <SpacerBetweenHeaderAndContent testID="spacerBetweenHeaderAndContent" />
+              ) : null}
+              <ScrollViewContainer
+                paddingBottom={scrollViewPaddingBottom}
+                modalSpacing={modalSpacing}>
+                <ScrollView
+                  contentContainerStyle={fixedModalBottom ? undefined : contentContainerStyle}
+                  ref={scrollViewRef}
+                  scrollEnabled={scrollEnabled}
+                  onContentSizeChange={updateScrollViewContentHeight}
+                  testID="modalScrollView">
+                  {children}
+                </ScrollView>
+              </ScrollViewContainer>
+            </React.Fragment>
+          )}
+          {fixedModalBottom ? (
+            <React.Fragment>
+              <FixedModalBottomContainer testID="fixedModalBottom">
+                {fixedModalBottom}
+              </FixedModalBottomContainer>
+              <Spacer.BottomScreen />
+            </React.Fragment>
+          ) : null}
+        </ModalContainer>
+      </ModalView>
+    </Modal>
   )
 }
 
@@ -316,18 +320,6 @@ const ScrollViewContainer = styled.View.attrs(({ theme }) => ({
 }))
 
 const MODAL_PADDING = getSpacing(5)
-// @ts-ignore Argument of type 'typeof ReactNativeModal' is not assignable to parameter of type 'Any<StyledComponent>'
-const StyledModal = styled(ReactNativeModal)<{ height: number }>(({ theme }) => {
-  const { isDesktopViewport } = theme
-  return {
-    position: 'absolute',
-    right: 0,
-    left: 0,
-    bottom: 0,
-    top: isDesktopViewport ? 0 : 'auto',
-    alignItems: 'center',
-  }
-})
 
 const MAX_HEIGHT = 650
 const ModalContainer = styled.View<{
@@ -369,4 +361,19 @@ const CustomModalHeaderContainer = styled.View({
 
 const FixedModalBottomContainer = styled.View({
   width: '100%',
+})
+
+const ModalView = styled.View({
+  flex: 1,
+  justifyContent: 'center',
+  alignItems: 'center',
+})
+
+const StyledPressable = styled.Pressable({
+  position: 'absolute',
+  top: 0,
+  left: 0,
+  right: 0,
+  bottom: 0,
+  backgroundColor: 'rgba(0, 0, 0, 0.5)',
 })

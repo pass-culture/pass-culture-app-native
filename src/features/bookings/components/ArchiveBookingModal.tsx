@@ -47,7 +47,6 @@ export const ArchiveBookingModal = (props: ArchiveBookingModalProps) => {
 
   return (
     <AppModal
-      animationOutTiming={1}
       visible={props.visible}
       title="Tu es sur le point d’archiver"
       rightIconAccessibilityLabel="Ne pas archiver"

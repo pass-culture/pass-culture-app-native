@@ -25,7 +25,6 @@ export const UnsavedSettingsModal: FunctionComponent<Props> = ({
 
   return (
     <AppModal
-      animationOutTiming={1}
       visible={visible}
       title="Quitter sans enregistrer&nbsp;?"
       rightIconAccessibilityLabel="Ne pas quitter"
