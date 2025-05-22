@@ -318,7 +318,7 @@
     "mockdate": "^3.0.2",
     "msw": "^2.7.3",
     "playwright": "^1.28.1",
-    "prettier": "^3.2.5",
+    "prettier": "^3.5.3",
     "react-native-svg-web": "^1.0.9",
     "react-native-web-linear-gradient": "^1.1.2",
     "react-test-renderer": "18.2.0",
