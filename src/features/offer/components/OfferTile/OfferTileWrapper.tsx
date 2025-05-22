@@ -26,7 +26,7 @@ type Props = Omit<
   hasSmallLayout?: boolean
 }
 
-export const OfferTileWrapper = (props: Props) => {
+export const OfferTileWrapper = React.memo(function OfferTileWrapper(props: Props) {
   const { item, hasSmallLayout } = props
   const { minLikesValue } = useRemoteConfigQuery()
   const theme = useTheme()
@@ -76,4 +76,4 @@ export const OfferTileWrapper = (props: Props) => {
       {...props}
     />
   )
-}
+})

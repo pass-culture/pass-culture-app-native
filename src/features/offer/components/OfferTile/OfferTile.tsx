@@ -80,7 +80,11 @@ const UnmemoizedOfferTile = (props: OfferTileProps) => {
   }
 
   return (
-    <View {...getHeadingAttrs(3)} testID="OfferTile">
+    <View
+      {...getHeadingAttrs(3)}
+      testID="OfferTile"
+      renderToHardwareTextureAndroid
+      shouldRasterizeIOS>
       <StyledTouchableLink
         highlight
         navigateTo={{
