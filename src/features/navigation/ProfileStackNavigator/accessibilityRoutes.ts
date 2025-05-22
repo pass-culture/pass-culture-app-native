@@ -41,4 +41,10 @@ export const accessibilityRoutes: GenericRoute<AccessibilityRootStackParamList>[
     path: 'accessibilite/parcours-recommandes',
     options: { title: 'Parcours recommandés' },
   },
+  {
+    name: 'SiteMapScreen',
+    component: ComponentForPathConfig,
+    path: 'accessibilite/plan-du-site',
+    options: { title: 'Plan du site' },
+  },
 ]
