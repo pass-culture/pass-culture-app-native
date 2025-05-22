@@ -2,14 +2,14 @@ import { UseQueryResult } from 'react-query'
 
 import { SubscriptionStepperResponseV2 } from 'api/gen'
 import { setSettings } from 'features/auth/tests/setSettings'
-import { useGetStepperInfo } from 'features/identityCheck/api/useGetStepperInfo'
-import { usePhoneValidationRemainingAttempts } from 'features/identityCheck/api/usePhoneValidationRemainingAttempts'
 import { initialSubscriptionState as mockState } from 'features/identityCheck/context/reducer'
 import {
   SubscriptionStepperResponseFixture as mockSubscriptionStepper,
   SubscriptionStepperResponseWithPhoneValidationFixture as mockSubscriptionStepperWithPhoneValidation,
 } from 'features/identityCheck/pages/helpers/stepperInfo.fixture'
 import { useStepperInfo } from 'features/identityCheck/pages/helpers/useStepperInfo'
+import { useGetStepperInfoQuery } from 'features/identityCheck/queries/useGetStepperInfoQuery'
+import { usePhoneValidationRemainingAttemptsQuery } from 'features/identityCheck/queries/usePhoneValidationRemainingAttemptsQuery'
 import { IdentityCheckStep } from 'features/identityCheck/types'
 import { beneficiaryUser } from 'fixtures/user'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
@@ -25,12 +25,12 @@ const mockRemainingAttempts = {
 
 jest.mock('features/auth/context/AuthContext')
 
-jest.mock('features/identityCheck/api/useGetStepperInfo', () => ({
-  useGetStepperInfo: jest.fn(() => mockUseGetStepperInfo),
+jest.mock('features/identityCheck/queries/useGetStepperInfoQuery', () => ({
+  useGetStepperInfoQuery: jest.fn(() => mockUseGetStepperInfo),
 }))
 
 const mockUseGetStepperInfo = (
-  useGetStepperInfo as jest.Mock<
+  useGetStepperInfoQuery as jest.Mock<
     Partial<UseQueryResult<Partial<SubscriptionStepperResponseV2>, unknown>>
   >
 ).mockReturnValue({
@@ -41,10 +41,10 @@ const mockUseGetStepperInfo = (
   },
 })
 
-jest.mock('features/identityCheck/api/usePhoneValidationRemainingAttempts')
+jest.mock('features/identityCheck/queries/usePhoneValidationRemainingAttemptsQuery')
 
 const mockUsePhoneValidationRemainingAttempts = (
-  usePhoneValidationRemainingAttempts as jest.Mock
+  usePhoneValidationRemainingAttemptsQuery as jest.Mock
 ).mockReturnValue(mockRemainingAttempts)
 
 jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({

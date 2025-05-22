@@ -1,12 +1,12 @@
 import React from 'react'
 
-import * as useEduConnectLoginAPI from 'features/identityCheck/api/useEduConnectLogin'
+import * as useEduConnectLoginAPI from 'features/identityCheck/queries/useEduConnectLoginMutation'
 import { checkAccessibilityFor, fireEvent, render, screen } from 'tests/utils/web'
 
 import { EduConnectForm } from './EduConnectForm'
 
 const mockOpenEduConnectTab = jest.fn()
-jest.spyOn(useEduConnectLoginAPI, 'useEduConnectLogin').mockReturnValue({
+jest.spyOn(useEduConnectLoginAPI, 'useEduConnectLoginMutation').mockReturnValue({
   openEduConnectTab: mockOpenEduConnectTab,
   error: null,
 })

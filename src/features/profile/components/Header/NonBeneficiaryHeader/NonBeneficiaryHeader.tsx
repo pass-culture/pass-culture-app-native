@@ -4,7 +4,7 @@ import styled from 'styled-components/native'
 
 import { Banner, BannerName } from 'api/gen'
 import { useActivationBanner } from 'features/home/api/useActivationBanner'
-import { useGetStepperInfo } from 'features/identityCheck/api/useGetStepperInfo'
+import { useGetStepperInfoQuery } from 'features/identityCheck/queries/useGetStepperInfoQuery'
 import { StepperOrigin, UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { IdentityCheckPendingBadge } from 'features/profile/components/Badges/IdentityCheckPendingBadge'
 import { SubscriptionMessageBadge } from 'features/profile/components/Badges/SubscriptionMessageBadge'
@@ -98,7 +98,7 @@ function NonBeneficiaryBanner({
   eligibilityEndDatetime,
 }: Readonly<NonBeneficiaryHeaderProps>) {
   const today = new Date()
-  const { data: subscription } = useGetStepperInfo()
+  const { data: subscription } = useGetStepperInfoQuery()
   const { banner } = useActivationBanner()
   const { options: remoteActivationBannerOptions } = useFeatureFlagOptions(
     RemoteStoreFeatureFlags.DISABLE_ACTIVATION

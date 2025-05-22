@@ -1,7 +1,7 @@
 import { CurrencyEnum } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useBannerQuery } from 'features/home/queries/useBannerQuery'
-import { useGetStepperInfo } from 'features/identityCheck/api/useGetStepperInfo'
+import { useGetStepperInfoQuery } from 'features/identityCheck/queries/useGetStepperInfoQuery'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags as featureFlags } from 'libs/firebase/firestore/types'
 import { GeolocPermissionState, useLocation } from 'libs/location'
@@ -12,7 +12,7 @@ export function useActivationBanner() {
   const enablePacificFrancCurrency = useFeatureFlag(featureFlags.ENABLE_PACIFIC_FRANC_CURRENCY)
   const { user } = useAuthContext()
   const { selectedLocationMode, permissionState } = useLocation()
-  const { data: subscription } = useGetStepperInfo()
+  const { data: subscription } = useGetStepperInfoQuery()
 
   const amount = useGetDepositAmountsByAge(user?.birthDate)
 
