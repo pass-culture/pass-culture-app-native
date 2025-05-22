@@ -4,13 +4,14 @@ import styled from 'styled-components/native'
 import { SelectableListItem } from 'features/offer/components/SelectableListItem/SelectableListItem'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { accessibleRadioProps } from 'shared/accessibilityProps/accessibleRadioProps'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { useSpaceBarAction } from 'ui/hooks/useSpaceBarAction'
 import { getSpacing, Typo } from 'ui/theme'
 
 type RightContentProps =
   | { rightText: string; rightElement?: never }
   | { rightText?: never; rightElement: React.ReactNode }
-  | { rightText?: string; rightElement?: React.ReactNode }
+  | { rightText?: never; rightElement?: never }
 
 interface BaseRadioSelectorProps {
   label: string
@@ -51,7 +52,7 @@ export const RadioSelector = ({
       {...accessibleRadioProps({ label: accessibilityLabel ?? label, checked })}
       onSelect={handlePress}
       render={({ isHover }) => (
-        <Container>
+        <Container gap={4}>
           <LeftContent>
             <Label
               disabled={disabled}
@@ -65,16 +66,14 @@ export const RadioSelector = ({
               ) : null /* conditionally render description since it applies a margin even when nothing is displayed */
             }
           </LeftContent>
-
-          {rightElement ? <RightContainer>{rightElement}</RightContainer> : null}
-
-          {rightText ? (
-            <RightContainer>
+          <RightContent>
+            {rightText ? (
               <RightText disabled={disabled} testID={testID ? `${testID}-right-text` : undefined}>
                 {rightText}
               </RightText>
-            </RightContainer>
-          ) : null}
+            ) : null}
+            {rightElement}
+          </RightContent>
         </Container>
       )}
       isSelected={checked}
@@ -86,15 +85,16 @@ export const RadioSelector = ({
   )
 }
 
-const Container = styled.View({
+const Container = styled(ViewGap)({
   alignItems: 'center',
   flexDirection: 'row',
 })
 
 const LeftContent = styled.View({
   flex: 1,
-  marginVertical: getSpacing(4),
 })
+
+const RightContent = styled.View({})
 
 const Label = styled(Typo.BodyAccent)<{ isHover?: boolean }>(({ theme, disabled, isHover }) => ({
   color: disabled ? theme.colors.greyDark : undefined,
@@ -108,10 +108,6 @@ const Description = styled(Typo.BodyAccentXs)<{ isHover?: boolean }>(
     textDecoration: isHover ? 'underline' : undefined,
   })
 )
-
-const RightContainer = styled.View({
-  marginLeft: getSpacing(4),
-})
 
 const RightText = styled(Typo.Body)(({ theme, disabled }) => ({
   color: disabled ? theme.colors.greyDark : theme.colors.black,

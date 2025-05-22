@@ -631,61 +631,6 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                     role="listitem"
                   >
                     <div
-                      aria-label="Préférences d’affichage"
-                      class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
-                      data-testid="Préférences d’affichage"
-                      style="transition-duration: 0s;"
-                      tabindex="0"
-                    >
-                      <div
-                        class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-paddingVertical-1yzf0co"
-                      >
-                        <div
-                          class="css-view-175oi2r"
-                        >
-                          <div
-                            class="css-text-1rynq56"
-                            dir="ltr"
-                          >
-                            undefined-SVG-Mock
-                          </div>
-                        </div>
-                        <div
-                          class="css-view-175oi2r r-width-1jg9483"
-                        />
-                        <div
-                          class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-textAlign-fdjqy7"
-                        >
-                          <div
-                            class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
-                            dir="ltr"
-                          >
-                            Préférences d’affichage
-                          </div>
-                        </div>
-                        <div
-                          class="css-view-175oi2r r-alignItems-obd0qt"
-                        >
-                          <div
-                            class="css-view-175oi2r"
-                            data-testid="section-row-navigable-icon"
-                          >
-                            <div
-                              class="css-text-1rynq56"
-                              dir="ltr"
-                            >
-                              section-row-navigable-icon-SVG-Mock
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </li>
-                  <li
-                    class="css-view-175oi2r r-display-ixj5dj"
-                    role="listitem"
-                  >
-                    <div
                       aria-label="Accessibilité"
                       class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
                       data-testid="Accessibilité"
@@ -1848,61 +1793,6 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                   class="css-view-175oi2r r-flexDirection-eqz5dr r-overflow-1dqxon3 r-paddingLeft-gy4na3"
                   role="list"
                 >
-                  <li
-                    class="css-view-175oi2r r-display-ixj5dj"
-                    role="listitem"
-                  >
-                    <div
-                      aria-label="Préférences d’affichage"
-                      class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
-                      data-testid="Préférences d’affichage"
-                      style="transition-duration: 0s;"
-                      tabindex="0"
-                    >
-                      <div
-                        class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-paddingVertical-1yzf0co"
-                      >
-                        <div
-                          class="css-view-175oi2r"
-                        >
-                          <div
-                            class="css-text-1rynq56"
-                            dir="ltr"
-                          >
-                            undefined-SVG-Mock
-                          </div>
-                        </div>
-                        <div
-                          class="css-view-175oi2r r-width-1jg9483"
-                        />
-                        <div
-                          class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-textAlign-fdjqy7"
-                        >
-                          <div
-                            class="css-text-1rynq56 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-cygvgh r-lineHeight-u6qrkm"
-                            dir="ltr"
-                          >
-                            Préférences d’affichage
-                          </div>
-                        </div>
-                        <div
-                          class="css-view-175oi2r r-alignItems-obd0qt"
-                        >
-                          <div
-                            class="css-view-175oi2r"
-                            data-testid="section-row-navigable-icon"
-                          >
-                            <div
-                              class="css-text-1rynq56"
-                              dir="ltr"
-                            >
-                              section-row-navigable-icon-SVG-Mock
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </li>
                   <li
                     class="css-view-175oi2r r-display-ixj5dj"
                     role="listitem"

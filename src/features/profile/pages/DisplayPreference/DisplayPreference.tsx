@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { Platform } from 'react-native'
 import styled from 'styled-components/native'
 
@@ -8,12 +8,7 @@ import { FilterSwitchWithLabel } from 'features/search/components/FilterSwitchWi
 import { analytics } from 'libs/analytics/provider'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import {
-  colorSchemeActions,
-  ColorSchemeEnum,
-  ColorSchemeFull,
-  useStoredColorScheme,
-} from 'libs/styled/useColorScheme'
+import { colorSchemeActions, ColorScheme, useStoredColorScheme } from 'libs/styled/useColorScheme'
 import { useOrientationLocked } from 'shared/hook/useOrientationLocked'
 import { RadioSelector } from 'ui/components/radioSelector/RadioSelector'
 import { Separator } from 'ui/components/Separator'
@@ -40,11 +35,7 @@ export const DisplayPreference = () => {
     DEBOUNCE_TOGGLE_DELAY_MS
   )
 
-  const [selectedTheme, setSelectedTheme] = useState<ColorSchemeFull>(useStoredColorScheme())
-
-  useEffect(() => {
-    colorSchemeActions.setColorScheme({ colorScheme: selectedTheme })
-  }, [selectedTheme])
+  const selectedTheme = useStoredColorScheme()
 
   return (
     <PageWithHeader
@@ -52,21 +43,17 @@ export const DisplayPreference = () => {
       onGoBack={goBack}
       scrollChildren={
         <React.Fragment>
-          <FilterSwitchWithLabel
-            disabled={isWeb}
-            testID="Rotation"
-            label="Permettre l’orientation"
-            subtitle={
-              isWeb
-                ? 'L’affichage en mode paysage n’est pas disponible en web'
-                : 'L’affichage en mode paysage peut être moins optimal'
-            }
-            isActive={!isOrientationLocked}
-            toggle={() => {
-              toggleIsOrientationLocked()
-              debouncedLogChangeOrientationToggle(!isOrientationLocked)
-            }}
-          />
+          {isWeb ? null : (
+            <FilterSwitchWithLabel
+              label="Permettre l’orientation"
+              subtitle="L’affichage en mode paysage peut être moins optimal"
+              isActive={!isOrientationLocked}
+              toggle={() => {
+                toggleIsOrientationLocked()
+                debouncedLogChangeOrientationToggle(!isOrientationLocked)
+              }}
+            />
+          )}
           {enableDarkMode ? (
             <DarkThemeContainer>
               <Typo.BodyAccentS>Thème</Typo.BodyAccentS>
@@ -75,22 +62,28 @@ export const DisplayPreference = () => {
                 <RadioSelector
                   label="Mode clair"
                   description="Affichage classique"
-                  checked={selectedTheme === ColorSchemeEnum.LIGHT}
-                  onPress={() => setSelectedTheme(ColorSchemeEnum.LIGHT)}
+                  checked={selectedTheme === ColorScheme.LIGHT}
+                  onPress={() =>
+                    colorSchemeActions.setColorScheme({ colorScheme: ColorScheme.LIGHT })
+                  }
                   rightElement={<DefaultThemeIllustration />}
                 />
                 <RadioSelector
                   label="Mode sombre"
                   description="Réduit la fatigue visuelle"
-                  checked={selectedTheme === ColorSchemeEnum.DARK}
-                  onPress={() => setSelectedTheme(ColorSchemeEnum.DARK)}
+                  checked={selectedTheme === ColorScheme.DARK}
+                  onPress={() =>
+                    colorSchemeActions.setColorScheme({ colorScheme: ColorScheme.DARK })
+                  }
                   rightElement={<DarkThemeIllustration />}
                 />
                 <RadioSelector
                   label="Réglages appareil"
                   description="Automatique selon les réglages de ton appareil"
-                  checked={selectedTheme === ColorSchemeEnum.SYSTEM}
-                  onPress={() => setSelectedTheme(ColorSchemeEnum.SYSTEM)}
+                  checked={selectedTheme === ColorScheme.SYSTEM}
+                  onPress={() =>
+                    colorSchemeActions.setColorScheme({ colorScheme: ColorScheme.SYSTEM })
+                  }
                   rightElement={<SystemThemeIllustration />}
                 />
               </SelectorContainer>

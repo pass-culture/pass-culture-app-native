@@ -16,7 +16,7 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
 import { ThemeProvider } from 'libs/styled'
-import { ColorSchemeEnum } from 'libs/styled/useColorScheme'
+import { ColorScheme } from 'libs/styled/useColorScheme'
 import { computedTheme } from 'tests/computedTheme'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen } from 'tests/utils/web'
@@ -177,7 +177,7 @@ function renderTabBar() {
   return render(
     reactQueryProviderHOC(
       <NavigationContainer>
-        <ThemeProvider theme={computedTheme} colorScheme={ColorSchemeEnum.LIGHT}>
+        <ThemeProvider theme={computedTheme} colorScheme={ColorScheme.LIGHT}>
           <AccessibleTabBar id="tabBarID" />
         </ThemeProvider>
       </NavigationContainer>

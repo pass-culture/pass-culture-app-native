@@ -24,8 +24,18 @@ export const SystemThemeIllustration = () => {
 
   return (
     <AccessibleSvg width="62" height="108" viewBox="0 0 62 108" fill="none">
-      <G filter="url(#filter0_d_13949_3561)">
-        <G ClipPath="url(#clip0_13949_3561)">
+      <Rect
+        x="0.5"
+        y="0.5"
+        width="61"
+        height="107"
+        rx="4"
+        fill="none"
+        stroke="white"
+        strokeWidth={1}
+      />
+      <G>
+        <G clipPath={`url(#${ida})`}>
           <Rect x="2" y="1" width="58" height="104" rx="4" fill="#161617" />
           <Path
             d="M26.2607 56H8.74325C7.78156 56 7.00195 56.7766 7.00195 57.7347V85.2653C7.00195 86.2234 7.78156 87 8.74325 87H26.2607C27.2223 87 28.002 86.2234 28.002 85.2653V57.7347C28.002 56.7766 27.2223 56 26.2607 56Z"
@@ -108,7 +118,7 @@ export const SystemThemeIllustration = () => {
           <Rect x="7" y="9" width="32" height="5" rx="2.5" fill="#D9D9D9" />
         </G>
       </G>
-      <G ClipPath="url(#clip1_13949_3561)">
+      <G clipPath={`url(#${idb})`}>
         <Path
           d="M31 1H56C58.2091 1 60 2.79086 60 5V101C60 103.209 58.2091 105 56 105H31V1Z"
           fill="#F1F1F4"
@@ -164,15 +174,7 @@ export const SystemThemeIllustration = () => {
         <Rect x="7" y="9" width="32" height="5" rx="2.5" fill="#161617" />
       </G>
       <Defs>
-        <Filter
-          id={idc}
-          x="0"
-          y="0"
-          width="62"
-          height="108"
-          filterUnits="userSpaceOnUse"
-          // colorInterpolationFilters="sRGB"
-        >
+        <Filter id={idc} x="0" y="0" width="62" height="108" filterUnits="userSpaceOnUse">
           <FeFlood floodOpacity="0" result="BackgroundImageFix" />
           <FeColorMatrix
             in="SourceAlpha"
