@@ -104,7 +104,7 @@ export const DisplayPreference = () => {
 }
 
 const DarkThemeContainer = styled.View({
-  marginTop: getSpacing(10),
+  marginVertical: getSpacing(10),
 })
 
 const GreySeparator = styled(Separator.Horizontal).attrs(({ theme }) => ({
