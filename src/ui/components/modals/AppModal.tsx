@@ -215,81 +215,84 @@ export const AppModal: FunctionComponent<Props> = ({
   }, [onBackdropPress, onLeftIconPress, onRightIconPress])
 
   return (
-    <Modal
-      transparent
-      visible={visible}
-      animationType={isDesktopViewport ? 'fade' : 'slide'}
-      onRequestClose={handleBackdropPress}
-      onDismiss={onModalHide}
-      supportedOrientations={['portrait', 'landscape']}
-      statusBarTranslucent
-      testID={testID}
-      accessible
-      accessibilityViewIsModal
-      accessibilityLabelledBy={titleId}>
-      <ModalView>
-        {shouldDisplayOverlay ? (
-          <StyledPressable
-            onPress={handleBackdropPress}
-            accessibilityRole="button"
-            accessibilityHint="Ferme la fenêtre modale"
-          />
-        ) : null}
-        <StatusBar barStyle="light-content" translucent />
-        <ModalContainer
-          height={maxHeight ? undefined : modalContainerHeight}
-          testID="modalContainer"
-          maxHeight={maxContainerHeight}
-          desktopConstraints={containerDesktopConstraints}
-          onLayout={onLayout}
-          noPadding={noPadding}
-          noPaddingBottom={noPaddingBottom}>
-          {customModalHeader ? (
-            <CustomModalHeaderContainer nativeID={titleId} testID="customModalHeader">
-              {customModalHeader}
-            </CustomModalHeaderContainer>
-          ) : (
-            <ModalHeader
-              title={title}
-              numberOfLines={titleNumberOfLines}
-              onLayout={updateHeaderHeight}
-              titleID={titleId}
-              modalSpacing={modalSpacing}
-              {...iconProps}
+    <React.Fragment>
+      {visible ? <Blackscreen /> : null}
+      <Modal
+        transparent
+        visible={visible}
+        animationType={isDesktopViewport ? 'fade' : 'slide'}
+        onRequestClose={handleBackdropPress}
+        onDismiss={onModalHide}
+        supportedOrientations={['portrait', 'landscape']}
+        statusBarTranslucent
+        testID={testID}
+        accessible
+        accessibilityViewIsModal
+        accessibilityLabelledBy={titleId}>
+        <ModalView>
+          {shouldDisplayOverlay && visible ? (
+            <StyledPressable
+              onPress={handleBackdropPress}
+              accessibilityRole="button"
+              accessibilityHint="Ferme la fenêtre modale"
             />
-          )}
-          {isFullscreen || maxHeight || isUpToStatusBar ? (
-            fullscreenModalBody
-          ) : (
-            <React.Fragment>
-              {shouldAddSpacerBetweenHeaderAndContent ? (
-                <SpacerBetweenHeaderAndContent testID="spacerBetweenHeaderAndContent" />
-              ) : null}
-              <ScrollViewContainer
-                paddingBottom={scrollViewPaddingBottom}
-                modalSpacing={modalSpacing}>
-                <ScrollView
-                  contentContainerStyle={fixedModalBottom ? undefined : contentContainerStyle}
-                  ref={scrollViewRef}
-                  scrollEnabled={scrollEnabled}
-                  onContentSizeChange={updateScrollViewContentHeight}
-                  testID="modalScrollView">
-                  {children}
-                </ScrollView>
-              </ScrollViewContainer>
-            </React.Fragment>
-          )}
-          {fixedModalBottom ? (
-            <React.Fragment>
-              <FixedModalBottomContainer testID="fixedModalBottom">
-                {fixedModalBottom}
-              </FixedModalBottomContainer>
-              <Spacer.BottomScreen />
-            </React.Fragment>
           ) : null}
-        </ModalContainer>
-      </ModalView>
-    </Modal>
+          <StatusBar barStyle="light-content" translucent />
+          <ModalContainer
+            height={maxHeight ? undefined : modalContainerHeight}
+            testID="modalContainer"
+            maxHeight={maxContainerHeight}
+            desktopConstraints={containerDesktopConstraints}
+            onLayout={onLayout}
+            noPadding={noPadding}
+            noPaddingBottom={noPaddingBottom}>
+            {customModalHeader ? (
+              <CustomModalHeaderContainer nativeID={titleId} testID="customModalHeader">
+                {customModalHeader}
+              </CustomModalHeaderContainer>
+            ) : (
+              <ModalHeader
+                title={title}
+                numberOfLines={titleNumberOfLines}
+                onLayout={updateHeaderHeight}
+                titleID={titleId}
+                modalSpacing={modalSpacing}
+                {...iconProps}
+              />
+            )}
+            {isFullscreen || maxHeight || isUpToStatusBar ? (
+              fullscreenModalBody
+            ) : (
+              <React.Fragment>
+                {shouldAddSpacerBetweenHeaderAndContent ? (
+                  <SpacerBetweenHeaderAndContent testID="spacerBetweenHeaderAndContent" />
+                ) : null}
+                <ScrollViewContainer
+                  paddingBottom={scrollViewPaddingBottom}
+                  modalSpacing={modalSpacing}>
+                  <ScrollView
+                    contentContainerStyle={fixedModalBottom ? undefined : contentContainerStyle}
+                    ref={scrollViewRef}
+                    scrollEnabled={scrollEnabled}
+                    onContentSizeChange={updateScrollViewContentHeight}
+                    testID="modalScrollView">
+                    {children}
+                  </ScrollView>
+                </ScrollViewContainer>
+              </React.Fragment>
+            )}
+            {fixedModalBottom ? (
+              <React.Fragment>
+                <FixedModalBottomContainer testID="fixedModalBottom">
+                  {fixedModalBottom}
+                </FixedModalBottomContainer>
+                <Spacer.BottomScreen />
+              </React.Fragment>
+            ) : null}
+          </ModalContainer>
+        </ModalView>
+      </Modal>
+    </React.Fragment>
   )
 }
 
@@ -328,16 +331,36 @@ const ModalContainer = styled.View<{
   maxHeight?: number
   noPadding?: boolean
   noPaddingBottom?: boolean
-}>(({ height, desktopConstraints, maxHeight, noPadding, theme, noPaddingBottom }) => {
-  return appModalContainerStyle({
-    theme,
+  isDesktopViewport?: boolean
+}>(
+  ({
     height,
     desktopConstraints,
-    maxHeight: maxHeight ?? MAX_HEIGHT,
+    maxHeight,
     noPadding,
+    theme,
     noPaddingBottom,
-  })
-})
+    isDesktopViewport,
+  }) => {
+    return {
+      ...appModalContainerStyle({
+        theme,
+        height,
+        desktopConstraints,
+        maxHeight: maxHeight ?? MAX_HEIGHT,
+        noPadding,
+        noPaddingBottom,
+      }),
+      position: 'absolute',
+      right: 0,
+      left: 0,
+      bottom: isDesktopViewport ? 'auto' : 0,
+      top: isDesktopViewport ? 0 : 'auto',
+      alignItems: 'center',
+      margin: 'auto',
+    }
+  }
+)
 
 const StyledScrollView = styled(ScrollView)<{
   modalSpacing?: ModalSpacing
@@ -369,11 +392,21 @@ const ModalView = styled.View({
   alignItems: 'center',
 })
 
-const StyledPressable = styled.Pressable({
+const StyledPressable = styled.Pressable(({ theme }) => ({
   position: 'absolute',
   top: 0,
   left: 0,
   right: 0,
   bottom: 0,
-  backgroundColor: 'rgba(0, 0, 0, 0.5)',
-})
+  // backgroundColor: theme.uniqueColors.greyOverlay,
+}))
+
+const Blackscreen = styled.Pressable(({ theme }) => ({
+  position: 'absolute',
+  top: 0,
+  left: 0,
+  right: 0,
+  bottom: 0,
+  backgroundColor: theme.uniqueColors.greyOverlay,
+  zIndex: theme.zIndex.header,
+}))
