@@ -31,7 +31,7 @@ describe('<EmailInputController />', () => {
   it('should not show spelling help when not asked', async () => {
     renderEmailInputController({ withSpellingHelp: false })
 
-    const input = screen.getByPlaceholderText('tonadresse@email.com')
+    const input = screen.getByTestId('Entrée pour l’email')
     fireEvent.changeText(input, 'firstname.lastname@gmal.com')
 
     await act(async () => {
@@ -46,7 +46,7 @@ describe('<EmailInputController />', () => {
   it('should show spelling help by default', async () => {
     renderEmailInputController({})
 
-    const input = screen.getByPlaceholderText('tonadresse@email.com')
+    const input = screen.getByTestId('Entrée pour l’email')
     fireEvent.changeText(input, 'firstname.lastname@gmal.com')
 
     await act(async () => {
@@ -63,7 +63,7 @@ describe('<EmailInputController />', () => {
       onSpellingHelpPress: mockOnSpellingHelpPress,
     })
 
-    const input = screen.getByPlaceholderText('tonadresse@email.com')
+    const input = screen.getByTestId('Entrée pour l’email')
     fireEvent.changeText(input, 'firstname.lastname@gmal.com')
 
     await screen.findByText('Veux-tu plutôt dire firstname.lastname@gmail.com ?')

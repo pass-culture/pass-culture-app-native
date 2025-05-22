@@ -215,7 +215,7 @@ describe('<Login/>', () => {
     renderLogin()
 
     await act(async () => {
-      const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
+      const emailInput = screen.getByTestId('Entrée pour l’email')
       fireEvent.changeText(emailInput, 'john.doe@gmal.com')
     })
 
@@ -427,7 +427,7 @@ describe('<Login/>', () => {
   it('should show email error message WHEN invalid e-mail format', async () => {
     renderLogin()
 
-    const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
+    const emailInput = screen.getByTestId('Entrée pour l’email')
 
     fireEvent.changeText(emailInput, 'not_valid_email@gmail')
     fireEvent(emailInput, 'onBlur')
@@ -805,7 +805,7 @@ describe('<Login/>', () => {
 })
 
 const fillInputs = async () => {
-  const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
+  const emailInput = screen.getByTestId('Entrée pour l’email')
   const passwordInput = screen.getByPlaceholderText('Ton mot de passe')
   fireEvent.changeText(emailInput, 'email@gmail.com')
   await act(async () => {
