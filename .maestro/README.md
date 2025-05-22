@@ -331,3 +331,10 @@ export PATH=$ANDROID_HOME/tools/bin:$PATH
 Enfin, redémarrer le terminal.
 
 </details>
+<details>
+  <summary>Unable to launch app app.passculture.staging: null</summary>
+  <br/>
+
+Fermer maestro studio et relancer le test.
+
+</details>

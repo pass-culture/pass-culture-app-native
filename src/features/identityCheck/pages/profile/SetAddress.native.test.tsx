@@ -77,7 +77,7 @@ describe('<SetAddress/>', () => {
   it('should display a list of addresses when user add an address', async () => {
     renderSetAddress({ type: ProfileTypes.IDENTITY_CHECK })
 
-    const input = screen.getByPlaceholderText('Ex\u00a0: 34 avenue de l’Opéra')
+    const input = screen.getByTestId('Entrée pour l’adresse')
     fireEvent.changeText(input, QUERY_ADDRESS)
 
     await waitFor(() => {
@@ -90,7 +90,7 @@ describe('<SetAddress/>', () => {
   it('should navigate to SetStatus when clicking on "Continuer"', async () => {
     renderSetAddress({ type: ProfileTypes.IDENTITY_CHECK })
 
-    const input = screen.getByPlaceholderText('Ex\u00a0: 34 avenue de l’Opéra')
+    const input = screen.getByTestId('Entrée pour l’adresse')
     fireEvent.changeText(input, QUERY_ADDRESS)
 
     await user.press(await screen.findByText(mockedSuggestedPlaces.features[1].properties.label))
@@ -104,7 +104,7 @@ describe('<SetAddress/>', () => {
   it('should save address in local storage when clicking on "Continuer"', async () => {
     renderSetAddress({ type: ProfileTypes.IDENTITY_CHECK })
 
-    const input = screen.getByPlaceholderText('Ex\u00a0: 34 avenue de l’Opéra')
+    const input = screen.getByTestId('Entrée pour l’adresse')
     fireEvent.changeText(input, QUERY_ADDRESS)
 
     await user.press(await screen.findByText(mockedSuggestedPlaces.features[1].properties.label))
@@ -120,7 +120,7 @@ describe('<SetAddress/>', () => {
   it('should log analytics on press Continuer', async () => {
     renderSetAddress({ type: ProfileTypes.IDENTITY_CHECK })
 
-    const input = screen.getByPlaceholderText('Ex\u00a0: 34 avenue de l’Opéra')
+    const input = screen.getByTestId('Entrée pour l’adresse')
     fireEvent.changeText(input, QUERY_ADDRESS)
 
     await user.press(screen.getByText('Continuer'))

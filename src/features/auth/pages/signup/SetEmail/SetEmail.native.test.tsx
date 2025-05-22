@@ -74,7 +74,7 @@ describe('<SetEmail />', () => {
     renderSetEmail()
 
     await act(async () => {
-      const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
+      const emailInput = screen.getByTestId('Entrée pour l’email')
       fireEvent.changeText(emailInput, '    ')
     })
 
@@ -87,7 +87,7 @@ describe('<SetEmail />', () => {
     renderSetEmail()
 
     await act(async () => {
-      const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
+      const emailInput = screen.getByTestId('Entrée pour l’email')
       fireEvent.changeText(emailInput, 'john.doe@gmail.com')
     })
 
@@ -100,7 +100,7 @@ describe('<SetEmail />', () => {
     renderSetEmail()
 
     await act(async () => {
-      const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
+      const emailInput = screen.getByTestId('Entrée pour l’email')
       fireEvent.changeText(emailInput, 'john.doe@gmail.com')
     })
 
@@ -117,7 +117,7 @@ describe('<SetEmail />', () => {
     renderSetEmail()
 
     await act(async () => {
-      const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
+      const emailInput = screen.getByTestId('Entrée pour l’email')
       fireEvent.changeText(emailInput, 'john.doe@gmail.com')
     })
     await user.press(screen.getByText('Continuer'))
@@ -129,7 +129,7 @@ describe('<SetEmail />', () => {
     renderSetEmail()
 
     await act(async () => {
-      const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
+      const emailInput = screen.getByTestId('Entrée pour l’email')
       fireEvent.changeText(emailInput, 'john.doe')
     })
 
@@ -150,7 +150,7 @@ describe('<SetEmail />', () => {
     renderSetEmail()
 
     await act(async () => {
-      const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
+      const emailInput = screen.getByTestId('Entrée pour l’email')
       fireEvent.changeText(emailInput, 'john.doe@gmal.com')
     })
 
@@ -165,7 +165,7 @@ describe('<SetEmail />', () => {
     renderSetEmail()
 
     await act(async () => {
-      const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
+      const emailInput = screen.getByTestId('Entrée pour l’email')
       fireEvent.changeText(emailInput, 'john.doe@gmal.com')
     })
 
