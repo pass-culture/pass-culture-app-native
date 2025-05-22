@@ -8,13 +8,14 @@ import { TabBar } from './TabBar'
 
 const TAB_NAVIGATOR_SCREEN_OPTIONS: BottomTabNavigationOptions = {
   headerShown: false,
+  freezeOnBlur: true,
+}
+
+function renderTabBar({ state, navigation }: BottomTabBarProps) {
+  return <TabBar navigation={navigation} state={state} />
 }
 
 export const TabNavigator: React.FC = () => {
-  function renderTabBar({ state, navigation }: BottomTabBarProps) {
-    return <TabBar navigation={navigation} state={state} />
-  }
-
   return (
     <TabStack.Navigator
       initialRouteName={initialRouteName}
