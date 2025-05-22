@@ -41,13 +41,15 @@ export const useStoredColorScheme: () => ColorSchemeFull = colorSchemeStore.hook
 export const useColorScheme = (): ColorScheme => {
   const storedScheme = useStoredColorScheme()
   const systemScheme = useSystemColorScheme()
-
   const enableDarkMode = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_DARK_MODE)
-  if (!enableDarkMode) return ColorSchemeEnum.LIGHT
 
-  return storedScheme === ColorSchemeEnum.SYSTEM
-    ? systemScheme === 'dark'
-      ? ColorSchemeEnum.DARK
-      : ColorSchemeEnum.LIGHT
-    : storedScheme
+  if (!enableDarkMode) {
+    return ColorSchemeEnum.LIGHT
+  }
+
+  if (storedScheme === ColorSchemeEnum.SYSTEM) {
+    return systemScheme === 'dark' ? ColorSchemeEnum.DARK : ColorSchemeEnum.LIGHT
+  }
+
+  return storedScheme
 }
