@@ -25,6 +25,12 @@ const sections = [
   />,
   <StyledSectionRow
     key={2}
+    title="Plan du site"
+    type="navigable"
+    navigateTo={getProfileNavConfig('SiteMapScreen')}
+  />,
+  <StyledSectionRow
+    key={2}
     title="Schéma pluriannuel"
     type="navigable"
     navigateTo={getProfileNavConfig('AccessibilityActionPlan')}
