@@ -4,10 +4,11 @@ import { browserName, browserVersion } from 'react-device-detect'
 import { ScrollView, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
 import { Li } from 'ui/components/Li'
 import { VerticalUl } from 'ui/components/Ul'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { getSpacing, Typo } from 'ui/theme'
 
 // The following list was made manually using SauceLab. If it's been a while, feel free to make a new audit to update this list.
 export const supportedBrowsers = {
@@ -50,16 +51,16 @@ export const BrowserNotSupportedPage: React.FC<{
   return (
     <ScrollView contentContainerStyle={contentContainerStyle}>
       <Container>
-        <Title>{title}</Title>
-        <Spacer.Column numberOfSpaces={5} />
-        <Typo.Body>
-          Nous ne supportons pas certaines versions et/ou navigateurs qui ne permettraient pas une
-          expérience optimale.
-        </Typo.Body>
-        <Spacer.Column numberOfSpaces={5} />
-        <Typo.Body>
-          Voici ceux que nous te conseillons pour profiter pleinement du pass Culture&nbsp;:
-        </Typo.Body>
+        <ViewGap gap={5}>
+          <Title>{title}</Title>
+          <Typo.Body>
+            Nous ne supportons pas certaines versions et/ou navigateurs qui ne permettraient pas une
+            expérience optimale.
+          </Typo.Body>
+          <Typo.Body>
+            Voici ceux que nous te conseillons pour profiter pleinement du pass Culture&nbsp;:
+          </Typo.Body>
+        </ViewGap>
         <VerticalUl>
           {Object.entries(supportedBrowsers).map(([browser, version]) => {
             let displayedMessage = `- ${browser}`
@@ -73,16 +74,16 @@ export const BrowserNotSupportedPage: React.FC<{
             )
           })}
         </VerticalUl>
-        <Spacer.Column numberOfSpaces={5} />
-        <Typo.BodyAccentXs>
-          Mets vite à jour ton navigateur en allant dans les paramètres
-        </Typo.BodyAccentXs>
-        <Spacer.Column numberOfSpaces={2} />
-        <Typo.BodyAccentXs>
-          J’accède au pass Culture sans mettre à jour mon navigateur
-        </Typo.BodyAccentXs>
-        <Spacer.Column numberOfSpaces={2} />
-        <ButtonPrimary
+        <StyledViewGap gap={4}>
+          <Typo.BodyAccent>
+            Mets vite à jour ton navigateur en allant dans les paramètres&nbsp;!
+          </Typo.BodyAccent>
+          <Typo.BodyAccentXs>
+            Tu peux néanmoins accèder au pass Culture, sans mettre à jour ton navigateur, avec le
+            risque de ne pas bénéficier d’une expérience optimale&nbsp;:
+          </Typo.BodyAccentXs>
+        </StyledViewGap>
+        <ButtonSecondary
           wording="Continuer quand même"
           onPress={onPress}
           buttonHeight="tall"
@@ -113,4 +114,9 @@ const Title = styled(Typo.Title3)({
 
 const StyledBody = styled(Typo.Body)({
   padding: getSpacing(5),
+})
+
+const StyledViewGap = styled(ViewGap)({
+  marginTop: getSpacing(5),
+  marginBottom: getSpacing(3),
 })
