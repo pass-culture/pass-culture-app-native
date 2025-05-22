@@ -1,0 +1,51 @@
+diff --git a/node_modules/react-native-modal/dist/modal.js b/node_modules/react-native-modal/dist/modal.js
+index 80f4e75..0243846 100644
+--- a/node_modules/react-native-modal/dist/modal.js
++++ b/node_modules/react-native-modal/dist/modal.js
+@@ -1,5 +1,5 @@
+ import * as React from 'react';
+-import { Animated, DeviceEventEmitter, Dimensions, InteractionManager, KeyboardAvoidingView, Modal, PanResponder, BackHandler, Platform, TouchableWithoutFeedback, View, } from 'react-native';
++import { Animated, DeviceEventEmitter, Dimensions, InteractionManager, KeyboardAvoidingView, Modal, PanResponder, BackHandler, Platform, Pressable, View, } from 'react-native';
+ import * as PropTypes from 'prop-types';
+ import * as animatable from 'react-native-animatable';
+ import { initializeAnimations, buildAnimations, reversePercentage, } from './utils';
+@@ -418,7 +418,7 @@ export class ReactNativeModal extends React.Component {
+             }
+             // If there's no custom backdrop, handle presses with
+             // TouchableWithoutFeedback
+-            return (React.createElement(TouchableWithoutFeedback, { onPress: onBackdropPress }, backdropWrapper));
++            return (React.createElement(Pressable, { onPress: onBackdropPress }, backdropWrapper));
+         };
+         const { animationIn, animationOut } = buildAnimations(extractAnimationFromProps(props));
+         this.animationIn = animationIn;
+@@ -453,10 +453,14 @@ export class ReactNativeModal extends React.Component {
+         if (this.state.isVisible) {
+             this.open();
+         }
+-        BackHandler.addEventListener('hardwareBackPress', this.onBackButtonPress);
++        if (Platform.OS !== 'web') {
++          BackHandler.addEventListener('hardwareBackPress', this.onBackButtonPress);
++        }
+     }
+     componentWillUnmount() {
+-        BackHandler.removeEventListener('hardwareBackPress', this.onBackButtonPress);
++        if (Platform.OS !== 'web') {
++          BackHandler.removeEventListener('hardwareBackPress', this.onBackButtonPress);
++        }
+         if (this.didUpdateDimensionsEmitter) {
+             this.didUpdateDimensionsEmitter.remove();
+         }
+@@ -515,11 +519,11 @@ export class ReactNativeModal extends React.Component {
+         const _children = this.props.hideModalContentWhileAnimating &&
+             this.props.useNativeDriver &&
+             !this.state.showContent ? (React.createElement(animatable.View, null)) : (children);
+-        const containerView = (React.createElement(animatable.View, Object.assign({}, panHandlers, { ref: ref => (this.contentRef = ref), style: [panPosition, computedStyle], pointerEvents: "box-none", useNativeDriver: useNativeDriver }, containerProps), _children));
++        const containerView = (React.createElement(animatable.View, Object.assign({}, panHandlers, { ref: ref => (this.contentRef = ref), style: [panPosition, computedStyle, { pointerEvents: "box-none" }], useNativeDriver: useNativeDriver }, containerProps), _children));
+         // If coverScreen is set to false by the user
+         // we render the modal inside the parent view directly
+         if (!coverScreen && this.state.isVisible) {
+-            return (React.createElement(View, { pointerEvents: "box-none", style: [styles.backdrop, styles.containerBox] },
++            return (React.createElement(View, { style: [styles.backdrop, styles.containerBox, { pointerEvents: "box-none" }] },
+                 this.makeBackdrop(),
+                 containerView));
+         }
