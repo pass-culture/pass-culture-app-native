@@ -1,5 +1,3 @@
-import { useQuery } from 'react-query'
-
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { fetchOffersByEan } from 'libs/algolia/fetchAlgolia/fetchOffersByEan'
 import { fetchOffersByIds } from 'libs/algolia/fetchAlgolia/fetchOffersByIds'
@@ -9,8 +7,9 @@ import { AlgoliaGeoloc } from 'libs/algolia/types'
 import { useLocation } from 'libs/location'
 import { Position } from 'libs/location/types'
 import { computeDistanceInMeters } from 'libs/parsers/formatDistance'
-import { QueryKeys } from 'libs/queryKeys'
 import { Offer } from 'shared/offer/types'
+
+import { useGetHighlightOfferQuery } from '../queries/useGetHighlightOfferQuery'
 
 type UseHightlightOfferParams = {
   id: string
@@ -20,18 +19,6 @@ type UseHightlightOfferParams = {
   isGeolocated?: boolean
   aroundRadius?: number
   publicationDate?: number
-}
-
-enum QueryMode {
-  ID = 'ID',
-  TAG = 'TAG',
-  EAN = 'EAN',
-}
-
-const selectQueryMode = (offerTag?: string, offerEan?: string) => {
-  if (offerTag) return QueryMode.TAG
-  if (offerEan) return QueryMode.EAN
-  return QueryMode.ID
 }
 
 export const useHighlightOffer = ({
@@ -47,52 +34,32 @@ export const useHighlightOffer = ({
   const transformOfferHits = useTransformOfferHits()
   const { userLocation } = useLocation()
 
-  const offerByIdQuery = async () => {
+  const getHighlightOffer = async () => {
+    if (offerTag) {
+      return fetchOffersByTags({
+        tags: [offerTag],
+        isUserUnderage,
+        userLocation,
+      })
+    }
+
+    if (offerEan) {
+      return fetchOffersByEan({
+        eanList: [offerEan],
+        userLocation,
+        isUserUnderage,
+      })
+    }
+
     if (!offerId) return undefined
 
-    const result = await fetchOffersByIds({
+    return fetchOffersByIds({
       objectIds: [offerId],
       isUserUnderage,
       shouldExcludeFutureOffers: false,
     })
-
-    return result
   }
-
-  const offerByTagQuery = async () => {
-    if (!offerTag) return undefined
-
-    const result = await fetchOffersByTags({
-      tags: [offerTag],
-      isUserUnderage,
-      userLocation,
-    })
-
-    return result
-  }
-
-  const offerByEanQuery = async () => {
-    if (!offerEan) return undefined
-
-    return fetchOffersByEan({
-      eanList: [offerEan],
-      userLocation,
-      isUserUnderage,
-    })
-  }
-
-  const queryByQueryMode = {
-    [QueryMode.ID]: offerByIdQuery,
-    [QueryMode.TAG]: offerByTagQuery,
-    [QueryMode.EAN]: offerByEanQuery,
-  }
-
-  const queryMode = selectQueryMode(offerTag, offerEan)
-
-  const { data } = useQuery({
-    queryKey: [QueryKeys.HIGHLIGHT_OFFER, id],
-    queryFn: queryByQueryMode[queryMode],
-  })
+  const { data } = useGetHighlightOfferQuery({ id, getHighlightOffer })
   const offers = (data?.map(transformOfferHits) as Offer[]) ?? []
   const highlightOffer = offers[0]
 
