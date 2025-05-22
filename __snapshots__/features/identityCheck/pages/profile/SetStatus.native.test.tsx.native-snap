@@ -482,11 +482,13 @@ exports[`<SetStatus/> should render correctly 1`] = `
                   }
                 >
                   <View
+                    gap={4}
                     style={
                       [
                         {
                           "alignItems": "center",
                           "flexDirection": "row",
+                          "gap": 16,
                         },
                       ]
                     }
@@ -498,7 +500,6 @@ exports[`<SetStatus/> should render correctly 1`] = `
                             "flexBasis": 0,
                             "flexGrow": 1,
                             "flexShrink": 1,
-                            "marginVertical": 16,
                           },
                         ]
                       }
@@ -519,6 +520,13 @@ exports[`<SetStatus/> should render correctly 1`] = `
                         Collégien
                       </Text>
                     </View>
+                    <View
+                      style={
+                        [
+                          {},
+                        ]
+                      }
+                    />
                   </View>
                 </View>
               </View>
@@ -651,11 +659,13 @@ exports[`<SetStatus/> should render correctly 1`] = `
                   }
                 >
                   <View
+                    gap={4}
                     style={
                       [
                         {
                           "alignItems": "center",
                           "flexDirection": "row",
+                          "gap": 16,
                         },
                       ]
                     }
@@ -667,7 +677,6 @@ exports[`<SetStatus/> should render correctly 1`] = `
                             "flexBasis": 0,
                             "flexGrow": 1,
                             "flexShrink": 1,
-                            "marginVertical": 16,
                           },
                         ]
                       }
@@ -688,6 +697,13 @@ exports[`<SetStatus/> should render correctly 1`] = `
                         Lycéen
                       </Text>
                     </View>
+                    <View
+                      style={
+                        [
+                          {},
+                        ]
+                      }
+                    />
                   </View>
                 </View>
               </View>
@@ -820,11 +836,13 @@ exports[`<SetStatus/> should render correctly 1`] = `
                   }
                 >
                   <View
+                    gap={4}
                     style={
                       [
                         {
                           "alignItems": "center",
                           "flexDirection": "row",
+                          "gap": 16,
                         },
                       ]
                     }
@@ -836,7 +854,6 @@ exports[`<SetStatus/> should render correctly 1`] = `
                             "flexBasis": 0,
                             "flexGrow": 1,
                             "flexShrink": 1,
-                            "marginVertical": 16,
                           },
                         ]
                       }
@@ -857,6 +874,13 @@ exports[`<SetStatus/> should render correctly 1`] = `
                         Étudiant
                       </Text>
                     </View>
+                    <View
+                      style={
+                        [
+                          {},
+                        ]
+                      }
+                    />
                   </View>
                 </View>
               </View>
@@ -989,11 +1013,13 @@ exports[`<SetStatus/> should render correctly 1`] = `
                   }
                 >
                   <View
+                    gap={4}
                     style={
                       [
                         {
                           "alignItems": "center",
                           "flexDirection": "row",
+                          "gap": 16,
                         },
                       ]
                     }
@@ -1005,7 +1031,6 @@ exports[`<SetStatus/> should render correctly 1`] = `
                             "flexBasis": 0,
                             "flexGrow": 1,
                             "flexShrink": 1,
-                            "marginVertical": 16,
                           },
                         ]
                       }
@@ -1026,6 +1051,13 @@ exports[`<SetStatus/> should render correctly 1`] = `
                         Employé
                       </Text>
                     </View>
+                    <View
+                      style={
+                        [
+                          {},
+                        ]
+                      }
+                    />
                   </View>
                 </View>
               </View>
@@ -1158,11 +1190,13 @@ exports[`<SetStatus/> should render correctly 1`] = `
                   }
                 >
                   <View
+                    gap={4}
                     style={
                       [
                         {
                           "alignItems": "center",
                           "flexDirection": "row",
+                          "gap": 16,
                         },
                       ]
                     }
@@ -1174,7 +1208,6 @@ exports[`<SetStatus/> should render correctly 1`] = `
                             "flexBasis": 0,
                             "flexGrow": 1,
                             "flexShrink": 1,
-                            "marginVertical": 16,
                           },
                         ]
                       }
@@ -1195,6 +1228,13 @@ exports[`<SetStatus/> should render correctly 1`] = `
                         Apprenti
                       </Text>
                     </View>
+                    <View
+                      style={
+                        [
+                          {},
+                        ]
+                      }
+                    />
                   </View>
                 </View>
               </View>
@@ -1327,11 +1367,13 @@ exports[`<SetStatus/> should render correctly 1`] = `
                   }
                 >
                   <View
+                    gap={4}
                     style={
                       [
                         {
                           "alignItems": "center",
                           "flexDirection": "row",
+                          "gap": 16,
                         },
                       ]
                     }
@@ -1343,7 +1385,6 @@ exports[`<SetStatus/> should render correctly 1`] = `
                             "flexBasis": 0,
                             "flexGrow": 1,
                             "flexShrink": 1,
-                            "marginVertical": 16,
                           },
                         ]
                       }
@@ -1364,6 +1405,13 @@ exports[`<SetStatus/> should render correctly 1`] = `
                         Alternant
                       </Text>
                     </View>
+                    <View
+                      style={
+                        [
+                          {},
+                        ]
+                      }
+                    />
                   </View>
                 </View>
               </View>
@@ -1496,11 +1544,13 @@ exports[`<SetStatus/> should render correctly 1`] = `
                   }
                 >
                   <View
+                    gap={4}
                     style={
                       [
                         {
                           "alignItems": "center",
                           "flexDirection": "row",
+                          "gap": 16,
                         },
                       ]
                     }
@@ -1512,7 +1562,6 @@ exports[`<SetStatus/> should render correctly 1`] = `
                             "flexBasis": 0,
                             "flexGrow": 1,
                             "flexShrink": 1,
-                            "marginVertical": 16,
                           },
                         ]
                       }
@@ -1548,6 +1597,13 @@ exports[`<SetStatus/> should render correctly 1`] = `
                         En service civique
                       </Text>
                     </View>
+                    <View
+                      style={
+                        [
+                          {},
+                        ]
+                      }
+                    />
                   </View>
                 </View>
               </View>
@@ -1680,11 +1736,13 @@ exports[`<SetStatus/> should render correctly 1`] = `
                   }
                 >
                   <View
+                    gap={4}
                     style={
                       [
                         {
                           "alignItems": "center",
                           "flexDirection": "row",
+                          "gap": 16,
                         },
                       ]
                     }
@@ -1696,7 +1754,6 @@ exports[`<SetStatus/> should render correctly 1`] = `
                             "flexBasis": 0,
                             "flexGrow": 1,
                             "flexShrink": 1,
-                            "marginVertical": 16,
                           },
                         ]
                       }
@@ -1732,6 +1789,13 @@ exports[`<SetStatus/> should render correctly 1`] = `
                         En incapacité de travailler
                       </Text>
                     </View>
+                    <View
+                      style={
+                        [
+                          {},
+                        ]
+                      }
+                    />
                   </View>
                 </View>
               </View>
@@ -1864,11 +1928,13 @@ exports[`<SetStatus/> should render correctly 1`] = `
                   }
                 >
                   <View
+                    gap={4}
                     style={
                       [
                         {
                           "alignItems": "center",
                           "flexDirection": "row",
+                          "gap": 16,
                         },
                       ]
                     }
@@ -1880,7 +1946,6 @@ exports[`<SetStatus/> should render correctly 1`] = `
                             "flexBasis": 0,
                             "flexGrow": 1,
                             "flexShrink": 1,
-                            "marginVertical": 16,
                           },
                         ]
                       }
@@ -1916,6 +1981,13 @@ exports[`<SetStatus/> should render correctly 1`] = `
                         En recherche d’emploi
                       </Text>
                     </View>
+                    <View
+                      style={
+                        [
+                          {},
+                        ]
+                      }
+                    />
                   </View>
                 </View>
               </View>

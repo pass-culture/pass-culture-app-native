@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import { ThemeProvider as DefaultThemeProvider } from 'styled-components/native'
 
-import { ColorScheme } from 'libs/styled/useColorScheme'
+import { ColorSchemeType } from 'libs/styled/useColorScheme'
 import { BaseAppThemeType } from 'theme'
 
 import { useComputedTheme } from '../useComputedTheme'
@@ -9,7 +9,7 @@ import { useComputedTheme } from '../useComputedTheme'
 export type ThemeProviderProps = {
   theme: BaseAppThemeType
   children: React.ReactNode
-  colorScheme: ColorScheme
+  colorScheme: ColorSchemeType
 }
 
 export const ThemeProvider: FunctionComponent<ThemeProviderProps> = ({

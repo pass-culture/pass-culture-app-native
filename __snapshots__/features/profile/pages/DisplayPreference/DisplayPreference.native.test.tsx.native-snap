@@ -391,7 +391,7 @@ exports[`DisplayPreference should render correctly 1`] = `
                         "userSelect": "auto",
                       }
                     }
-                    testID="Interrupteur Rotation"
+                    testID="Interrupteur"
                   >
                     <View
                       active={false}
@@ -575,11 +575,13 @@ exports[`DisplayPreference should render correctly 1`] = `
                     }
                   >
                     <View
+                      gap={4}
                       style={
                         [
                           {
                             "alignItems": "center",
                             "flexDirection": "row",
+                            "gap": 16,
                           },
                         ]
                       }
@@ -591,7 +593,6 @@ exports[`DisplayPreference should render correctly 1`] = `
                               "flexBasis": 0,
                               "flexGrow": 1,
                               "flexShrink": 1,
-                              "marginVertical": 16,
                             },
                           ]
                         }
@@ -630,9 +631,7 @@ exports[`DisplayPreference should render correctly 1`] = `
                       <View
                         style={
                           [
-                            {
-                              "marginLeft": 16,
-                            },
+                            {},
                           ]
                         }
                       >
@@ -743,11 +742,13 @@ exports[`DisplayPreference should render correctly 1`] = `
                     }
                   >
                     <View
+                      gap={4}
                       style={
                         [
                           {
                             "alignItems": "center",
                             "flexDirection": "row",
+                            "gap": 16,
                           },
                         ]
                       }
@@ -759,7 +760,6 @@ exports[`DisplayPreference should render correctly 1`] = `
                               "flexBasis": 0,
                               "flexGrow": 1,
                               "flexShrink": 1,
-                              "marginVertical": 16,
                             },
                           ]
                         }
@@ -798,9 +798,7 @@ exports[`DisplayPreference should render correctly 1`] = `
                       <View
                         style={
                           [
-                            {
-                              "marginLeft": 16,
-                            },
+                            {},
                           ]
                         }
                       >
@@ -911,11 +909,13 @@ exports[`DisplayPreference should render correctly 1`] = `
                     }
                   >
                     <View
+                      gap={4}
                       style={
                         [
                           {
                             "alignItems": "center",
                             "flexDirection": "row",
+                            "gap": 16,
                           },
                         ]
                       }
@@ -927,7 +927,6 @@ exports[`DisplayPreference should render correctly 1`] = `
                               "flexBasis": 0,
                               "flexGrow": 1,
                               "flexShrink": 1,
-                              "marginVertical": 16,
                             },
                           ]
                         }
@@ -966,9 +965,7 @@ exports[`DisplayPreference should render correctly 1`] = `
                       <View
                         style={
                           [
-                            {
-                              "marginLeft": 16,
-                            },
+                            {},
                           ]
                         }
                       >
