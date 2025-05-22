@@ -439,7 +439,7 @@ exports[`DisplayPreference should render correctly 1`] = `
               style={
                 [
                   {
-                    "marginTop": 40,
+                    "marginVertical": 40,
                   },
                 ]
               }
