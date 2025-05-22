@@ -4,51 +4,49 @@ import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { createStore } from 'libs/store/createStore'
 
-export enum ColorSchemeEnum {
+export enum ColorScheme {
   LIGHT = 'light',
   DARK = 'dark',
   SYSTEM = 'system',
 }
 
-export type ColorScheme = ColorSchemeEnum.LIGHT | ColorSchemeEnum.DARK
-export type ColorSchemeFull = ColorSchemeEnum
+export type ColorSchemeType = ColorScheme.LIGHT | ColorScheme.DARK
+type ColorSchemeTypeFull = ColorScheme
+type State = { colorScheme: ColorSchemeTypeFull }
 
-type State = { colorScheme: ColorSchemeFull }
-
-const DEFAULT_COLOR_SCHEME: ColorSchemeFull = ColorSchemeEnum.LIGHT
-const defaultState: State = { colorScheme: DEFAULT_COLOR_SCHEME }
+const defaultState: State = { colorScheme: ColorScheme.LIGHT }
 
 const colorSchemeStore = createStore({
   name: 'colorScheme',
   defaultState,
   actions: (set) => ({
-    setColorScheme: ({ colorScheme }: { colorScheme: ColorSchemeFull }) => {
+    setColorScheme: ({ colorScheme }: { colorScheme: ColorSchemeTypeFull }) => {
       set({ colorScheme })
     },
   }),
   selectors: {
     selectColorScheme:
       () =>
-      (state): ColorSchemeFull =>
+      (state): ColorSchemeTypeFull =>
         state.colorScheme,
   },
   options: { persist: true },
 })
 
 export const colorSchemeActions = colorSchemeStore.actions
-export const useStoredColorScheme: () => ColorSchemeFull = colorSchemeStore.hooks.useColorScheme
+export const useStoredColorScheme: () => ColorSchemeTypeFull = colorSchemeStore.hooks.useColorScheme
 
-export const useColorScheme = (): ColorScheme => {
+export const useColorScheme = (): ColorSchemeType => {
   const storedScheme = useStoredColorScheme()
   const systemScheme = useSystemColorScheme()
   const enableDarkMode = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_DARK_MODE)
 
   if (!enableDarkMode) {
-    return ColorSchemeEnum.LIGHT
+    return ColorScheme.LIGHT
   }
 
-  if (storedScheme === ColorSchemeEnum.SYSTEM) {
-    return systemScheme === 'dark' ? ColorSchemeEnum.DARK : ColorSchemeEnum.LIGHT
+  if (storedScheme === ColorScheme.SYSTEM) {
+    return systemScheme === 'dark' ? ColorScheme.DARK : ColorScheme.LIGHT
   }
 
   return storedScheme

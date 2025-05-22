@@ -164,15 +164,7 @@ export const SystemThemeIllustration = () => {
         <Rect x="7" y="9" width="32" height="5" rx="2.5" fill="#161617" />
       </G>
       <Defs>
-        <Filter
-          id={idc}
-          x="0"
-          y="0"
-          width="62"
-          height="108"
-          filterUnits="userSpaceOnUse"
-          // colorInterpolationFilters="sRGB"
-        >
+        <Filter id={idc} x="0" y="0" width="62" height="108" filterUnits="userSpaceOnUse">
           <FeFlood floodOpacity="0" result="BackgroundImageFix" />
           <FeColorMatrix
             in="SourceAlpha"

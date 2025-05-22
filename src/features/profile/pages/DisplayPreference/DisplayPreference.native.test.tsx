@@ -15,13 +15,6 @@ describe('DisplayPreference', () => {
     expect(screen).toMatchSnapshot()
   })
 
-  it('should display correct subtitle', async () => {
-    render(<DisplayPreference />)
-
-    const subtitle = screen.getByText('L’affichage en mode paysage peut être moins optimal')
-    await act(() => expect(subtitle).toBeOnTheScreen())
-  })
-
   it('should display dark mode section when feature flag is enable', async () => {
     render(<DisplayPreference />)
 

@@ -108,15 +108,7 @@ export const DarkThemeIllustration = () => {
         </G>
       </G>
       <Defs>
-        <Filter
-          id={ida}
-          x="0"
-          y="0"
-          width="62"
-          height="108"
-          filterUnits="userSpaceOnUse"
-          // colorInterpolationFilters="sRGB"
-        >
+        <Filter id={ida} x="0" y="0" width="62" height="108" filterUnits="userSpaceOnUse">
           <FeFlood floodOpacity="0" result="BackgroundImageFix" />
           <FeColorMatrix
             in="SourceAlpha"

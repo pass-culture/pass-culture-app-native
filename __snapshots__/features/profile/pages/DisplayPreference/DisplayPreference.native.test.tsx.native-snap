@@ -391,7 +391,7 @@ exports[`DisplayPreference should render correctly 1`] = `
                         "userSelect": "auto",
                       }
                     }
-                    testID="Interrupteur Rotation"
+                    testID="Interrupteur"
                   >
                     <View
                       active={false}

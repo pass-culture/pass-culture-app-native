@@ -20,18 +20,12 @@ describe('DisplayPreference', () => {
     expect(results).toHaveNoViolations()
   })
 
-  it('should display correct subtitle', async () => {
+  it('should not display orientation toggle', () => {
     renderDisplayPreference()
 
-    const webSubtitle = screen.getByText('L’affichage en mode paysage n’est pas disponible en web')
+    const rotationTitle = screen.queryByText('Permettre l’orientation')
 
-    expect(webSubtitle).toBeInTheDocument()
-  })
-
-  it('should disable phone rotation toggle', async () => {
-    renderDisplayPreference()
-
-    expect(screen.getByTestId('Interrupteur Rotation')).toHaveAttribute('aria-disabled', 'true')
+    expect(rotationTitle).not.toBeInTheDocument()
   })
 })
 

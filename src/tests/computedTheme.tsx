@@ -1,9 +1,9 @@
-import { ColorSchemeEnum } from 'libs/styled/useColorScheme'
+import { ColorScheme } from 'libs/styled/useColorScheme'
 import { AppThemeType, theme } from 'theme'
 
 export const computedTheme: Readonly<AppThemeType> = {
   ...theme,
-  colorScheme: ColorSchemeEnum.LIGHT,
+  colorScheme: ColorScheme.LIGHT,
   isMobileViewport: true,
   isTabletViewport: false,
   isDesktopViewport: false,

@@ -10,7 +10,7 @@ import { getSpacing, Typo } from 'ui/theme'
 type RightContentProps =
   | { rightText: string; rightElement?: never }
   | { rightText?: never; rightElement: React.ReactNode }
-  | { rightText?: string; rightElement?: React.ReactNode }
+  | { rightText?: never; rightElement?: never }
 
 interface BaseRadioSelectorProps {
   label: string
