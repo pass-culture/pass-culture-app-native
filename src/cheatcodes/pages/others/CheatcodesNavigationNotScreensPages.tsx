@@ -4,7 +4,7 @@ import * as DeviceDetect from 'react-device-detect'
 
 import { CheatcodesTemplateScreen } from 'cheatcodes/components/CheatcodesTemplateScreen'
 import { LinkToScreen } from 'cheatcodes/components/LinkToScreen'
-import { BrowserNotSupportedPage, supportedBrowsers } from 'web/SupportedBrowsersGate'
+import { BrowserNotSupportedPage, supportedBrowsers } from 'web/SupportedBrowsersGate.web'
 
 enum Page {
   BrowserNotSupportedPage = 'BrowserNotSupportedPage',

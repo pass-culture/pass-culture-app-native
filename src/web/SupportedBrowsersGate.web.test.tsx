@@ -3,7 +3,7 @@ import React from 'react'
 import * as DeviceDetect from 'react-device-detect'
 
 import { render, screen } from 'tests/utils/web'
-import { SupportedBrowsersGate } from 'web/SupportedBrowsersGate'
+import { SupportedBrowsersGate } from 'web/SupportedBrowsersGate.web'
 
 describe('SupportedBrowsersGate', () => {
   describe.each`
