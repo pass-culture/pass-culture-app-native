@@ -1,6 +1,6 @@
 import { Hit } from '@algolia/client-search'
+import { FlashList } from '@shopify/flash-list'
 import React from 'react'
-import { FlatList } from 'react-native-gesture-handler'
 
 import { VenueResponse } from 'api/gen'
 import { GtlPlaylistData } from 'features/gtlPlaylist/types'
@@ -21,14 +21,15 @@ export interface GtlPlaylistProps {
   venue?: VenueResponse
   noMarginBottom?: boolean
 }
+const keyExtractor = (item: Hit<Offer>) => item.objectID
 
-export function GtlPlaylist({
+export const GtlPlaylist = ({
   venue,
   playlist,
   analyticsFrom,
   route,
   noMarginBottom,
-}: Readonly<GtlPlaylistProps>) {
+}: Readonly<GtlPlaylistProps>) => {
   const entryId = playlist.entryId
 
   const logHasSeenAllTilesOnce = useFunctionOnce(() => {
@@ -63,11 +64,11 @@ export function GtlPlaylist({
         itemWidth={itemWidth}
         itemHeight={itemHeight}
         renderItem={renderPassPlaylist}
-        keyExtractor={(item: Hit<Offer>) => item.objectID}
+        keyExtractor={keyExtractor}
         title={playlist.title}
         onEndReached={logHasSeenAllTilesOnce}
         noMarginBottom={noMarginBottom}
-        FlatListComponent={FlatList}
+        FlatListComponent={FlashList}
       />
     </IntersectionObserver>
   )

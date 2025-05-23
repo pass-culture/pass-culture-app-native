@@ -1,3 +1,4 @@
+import { FlashList } from '@shopify/flash-list'
 import React, { useCallback, useEffect, useMemo, useRef } from 'react'
 import { ViewToken } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
@@ -210,7 +211,7 @@ export const OffersModule = (props: OffersModuleProps) => {
         keyExtractor={keyExtractor}
         onEndReached={logHasSeenAllTilesOnce}
         playlistRef={listRef}
-        FlatListComponent={FlatList}
+        FlatListComponent={FlashList}
         onViewableItemsChanged={handleViewableItemsChanged}
       />
     </IntersectionObserver>
