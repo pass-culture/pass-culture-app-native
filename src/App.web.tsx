@@ -31,7 +31,7 @@ import { ThemeWrapper } from 'libs/styled/ThemeWrapper'
 import { theme } from 'theme'
 import { SnackBarProvider } from 'ui/components/snackBar/SnackBarContext'
 import { LoadingPage } from 'ui/pages/LoadingPage'
-import { SupportedBrowsersGate } from 'web/SupportedBrowsersGate'
+import { SupportedBrowsersGate } from 'web/SupportedBrowsersGate.web'
 import 'reset-css'
 
 globalThisShim()
