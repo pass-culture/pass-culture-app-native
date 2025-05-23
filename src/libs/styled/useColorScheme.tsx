@@ -1,38 +1,53 @@
-import { ColorSchemeName, Appearance } from 'react-native'
+import { useColorScheme as useSystemColorScheme } from 'react-native'
 
+import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { createStore } from 'libs/store/createStore'
 
-export type ColorScheme = 'dark' | 'light'
-
-type State = { colorScheme: ColorScheme }
-
-const DEFAULT_COLOR_SCHEME = 'light'
-
-const defaultState: State = {
-  colorScheme: DEFAULT_COLOR_SCHEME,
+export enum ColorScheme {
+  LIGHT = 'light',
+  DARK = 'dark',
+  SYSTEM = 'system',
 }
+
+export type ColorSchemeType = ColorScheme.LIGHT | ColorScheme.DARK
+type ColorSchemeTypeFull = ColorScheme
+type State = { colorScheme: ColorSchemeTypeFull }
+
+const defaultState: State = { colorScheme: ColorScheme.LIGHT }
 
 const colorSchemeStore = createStore({
   name: 'colorScheme',
   defaultState,
   actions: (set) => ({
-    init: () => set({ colorScheme: Appearance.getColorScheme() || DEFAULT_COLOR_SCHEME }),
-    setColorScheme: ({ colorScheme }: { colorScheme: ColorSchemeName }) => {
-      set({ colorScheme: colorScheme || DEFAULT_COLOR_SCHEME })
+    setColorScheme: ({ colorScheme }: { colorScheme: ColorSchemeTypeFull }) => {
+      set({ colorScheme })
     },
   }),
   selectors: {
     selectColorScheme:
       () =>
-      (state): ColorScheme =>
+      (state): ColorSchemeTypeFull =>
         state.colorScheme,
   },
-  options: {
-    persist: true,
-  },
+  options: { persist: true },
 })
 
 export const colorSchemeActions = colorSchemeStore.actions
-export const { useColorScheme } = colorSchemeStore.hooks
+export const useStoredColorScheme: () => ColorSchemeTypeFull = colorSchemeStore.hooks.useColorScheme
 
-Appearance.addChangeListener(colorSchemeStore.actions.setColorScheme)
+export const useColorScheme = (): ColorSchemeType => {
+  const storedScheme = useStoredColorScheme()
+  const systemScheme = useSystemColorScheme()
+  const enableDarkMode = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_DARK_MODE)
+
+  if (!enableDarkMode) {
+    return ColorScheme.LIGHT
+  }
+
+  if (storedScheme === ColorScheme.SYSTEM) {
+    return systemScheme === 'dark' ? ColorScheme.DARK : ColorScheme.LIGHT
+  }
+
+  return storedScheme
+}

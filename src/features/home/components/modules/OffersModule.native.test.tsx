@@ -9,6 +9,7 @@ import { analytics } from 'libs/analytics/provider'
 import { ContentTypes, DisplayParametersFields } from 'libs/contentful/types'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { ThemeProvider } from 'libs/styled'
+import { ColorScheme } from 'libs/styled/useColorScheme'
 import * as algoliaSimilarOffersAPI from 'queries/offer/useAlgoliaSimilarOffersQuery'
 import { Offer } from 'shared/offer/types'
 import { computedTheme } from 'tests/computedTheme'
@@ -251,7 +252,7 @@ describe('OffersModule', () => {
 const renderOffersModule = (additionalProps: Partial<OffersModuleProps> = {}) =>
   render(
     reactQueryProviderHOC(
-      <ThemeProvider theme={computedTheme} colorScheme="light">
+      <ThemeProvider theme={computedTheme} colorScheme={ColorScheme.LIGHT}>
         <OffersModule {...props} {...additionalProps} />
       </ThemeProvider>
     )
