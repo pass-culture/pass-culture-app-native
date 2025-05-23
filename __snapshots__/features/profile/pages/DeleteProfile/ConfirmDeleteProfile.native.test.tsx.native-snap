@@ -313,6 +313,7 @@ exports[`ConfirmDeleteProfile component should render confirm delete profile 1`]
             style={
               [
                 {
+                  "alignItems": "center",
                   "flexDirection": "row",
                   "marginLeft": 12,
                   "marginTop": 0,
@@ -475,6 +476,7 @@ exports[`ConfirmDeleteProfile component should render confirm delete profile 1`]
             style={
               [
                 {
+                  "alignItems": "center",
                   "flexDirection": "row",
                   "marginLeft": 12,
                   "marginTop": 0,
@@ -537,6 +539,7 @@ exports[`ConfirmDeleteProfile component should render confirm delete profile 1`]
             style={
               [
                 {
+                  "alignItems": "center",
                   "flexDirection": "row",
                   "marginLeft": 12,
                   "marginTop": 0,

@@ -238,6 +238,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
             style={
               [
                 {
+                  "alignItems": "center",
                   "flexDirection": "row",
                   "marginLeft": 12,
                   "marginTop": 0,
@@ -382,6 +383,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
             style={
               [
                 {
+                  "alignItems": "center",
                   "flexDirection": "row",
                   "marginLeft": 12,
                   "marginTop": 0,
@@ -526,6 +528,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
             style={
               [
                 {
+                  "alignItems": "center",
                   "flexDirection": "row",
                   "marginLeft": 12,
                   "marginTop": 0,
@@ -670,6 +673,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
             style={
               [
                 {
+                  "alignItems": "center",
                   "flexDirection": "row",
                   "marginLeft": 12,
                   "marginTop": 0,
@@ -814,6 +818,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
             style={
               [
                 {
+                  "alignItems": "center",
                   "flexDirection": "row",
                   "marginLeft": 12,
                   "marginTop": 0,
@@ -957,6 +962,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                 style={
                   [
                     {
+                      "alignItems": "center",
                       "flexDirection": "row",
                       "marginLeft": 28,
                       "marginTop": 0,
@@ -1089,6 +1095,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                 style={
                   [
                     {
+                      "alignItems": "center",
                       "flexDirection": "row",
                       "marginLeft": 28,
                       "marginTop": 0,
@@ -1221,6 +1228,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                 style={
                   [
                     {
+                      "alignItems": "center",
                       "flexDirection": "row",
                       "marginLeft": 28,
                       "marginTop": 0,
@@ -1353,6 +1361,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                 style={
                   [
                     {
+                      "alignItems": "center",
                       "flexDirection": "row",
                       "marginLeft": 28,
                       "marginTop": 0,
@@ -1485,6 +1494,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                 style={
                   [
                     {
+                      "alignItems": "center",
                       "flexDirection": "row",
                       "marginLeft": 28,
                       "marginTop": 0,
@@ -1617,6 +1627,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                 style={
                   [
                     {
+                      "alignItems": "center",
                       "flexDirection": "row",
                       "marginLeft": 28,
                       "marginTop": 0,
@@ -1749,6 +1760,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                 style={
                   [
                     {
+                      "alignItems": "center",
                       "flexDirection": "row",
                       "marginLeft": 28,
                       "marginTop": 0,
@@ -1881,6 +1893,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                 style={
                   [
                     {
+                      "alignItems": "center",
                       "flexDirection": "row",
                       "marginLeft": 28,
                       "marginTop": 0,
@@ -2013,6 +2026,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                 style={
                   [
                     {
+                      "alignItems": "center",
                       "flexDirection": "row",
                       "marginLeft": 28,
                       "marginTop": 0,
@@ -2145,6 +2159,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                 style={
                   [
                     {
+                      "alignItems": "center",
                       "flexDirection": "row",
                       "marginLeft": 28,
                       "marginTop": 0,
@@ -2277,6 +2292,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                 style={
                   [
                     {
+                      "alignItems": "center",
                       "flexDirection": "row",
                       "marginLeft": 28,
                       "marginTop": 0,
@@ -2409,6 +2425,7 @@ exports[`SiteMapScreen should render correctly 1`] = `
                 style={
                   [
                     {
+                      "alignItems": "center",
                       "flexDirection": "row",
                       "marginLeft": 28,
                       "marginTop": 0,
