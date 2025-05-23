@@ -192,7 +192,12 @@ describe('<HomeModule />', () => {
 
     await waitFor(() =>
       expect(mockModuleViewableItemsChanged).toHaveBeenCalledWith({
-        changedItemIds: ['102280', '102272', '102249', '102310'],
+        changedItems: [
+          { index: 0, key: '102280' },
+          { index: 1, key: '102272' },
+          { index: 2, key: '102249' },
+          { index: 3, key: '102310' },
+        ],
         homeEntryId: '7tfixfH64pd5TMZeEKfNQ',
         index: 1,
         moduleId: '2DYuR6KoSLElDuiMMjxx8g',

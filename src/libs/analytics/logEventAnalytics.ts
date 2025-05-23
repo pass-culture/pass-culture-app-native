@@ -568,8 +568,6 @@ export const logEventAnalytics = {
         playlistType,
       }
     ),
-  logPlaylistOfferView: (params: PageTrackingInfo & { locationType: LocationMode }) =>
-    analytics.logEvent({ firebase: AnalyticsEvent.PLAYLIST_OFFER_VIEW }, params),
   logPlaylistVerticalScroll: (params: {
     offerId: number
     playlistType: PlaylistType
@@ -741,6 +739,8 @@ export const logEventAnalytics = {
     homeEntryId: string
     moduleId: string
   }) => analytics.logEvent({ firebase: AnalyticsEvent.VIDEO_PAUSED }, params),
+  logViewOffer: (params: PageTrackingInfo & { locationType: LocationMode }) =>
+    analytics.logEvent({ firebase: AnalyticsEvent.VIEW_OFFER }, params),
   logViewedBookingPage: (params: { from: Referrals; offerId: number }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.VIEWED_BOOKING_PAGE }, params),
 }
