@@ -140,7 +140,7 @@ const buildModulesHandlingVideoCarouselPosition = (
 
 const MODULES_TIMEOUT_VALUE_IN_MS = 3000
 
-const OnlineHome: FunctionComponent<GenericHomeProps> = ({
+const OnlineHome: FunctionComponent<GenericHomeProps> = React.memo(function OnlineHome({
   Header,
   HomeBanner,
   modules,
@@ -150,7 +150,7 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = ({
   onScroll: givenOnScroll,
   videoModuleId,
   statusBar,
-}) => {
+}) {
   const offersModulesData = useGetOffersDataQuery(modules.filter(isOffersModule))
   const { venuesModulesData } = useGetVenuesData(modules.filter(isVenuesModule))
   const logHasSeenAllModules = useFunctionOnce(async () =>
@@ -168,8 +168,8 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = ({
   })
 
   const showSkeleton = useShowSkeleton()
-  const initialNumToRender = 10
-  const maxToRenderPerBatch = 5
+  const initialNumToRender = 4
+  const maxToRenderPerBatch = 6
   const [maxIndex, setMaxIndex] = useState(initialNumToRender)
   const [isLoading, setIsLoading] = useState(false)
   const { height: screenHeight } = useWindowDimensions()
@@ -283,6 +283,7 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = ({
   useFocusEffect(
     useCallback(() => {
       return () => {
+        setIsLoading(false)
         logPlaylistOfferView(useOfferPlaylistTrackingStore.getState())
         resetPageTrackingInfo()
       }
@@ -340,12 +341,15 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = ({
           data={modulesToDisplayHandlingVideoCarousel}
           renderItem={renderItem}
           keyExtractor={keyExtractor}
+          windowSize={5}
+          maxToRenderPerBatch={maxToRenderPerBatch}
           ListFooterComponent={
             <FooterComponent hasShownAll={modulesToDisplay.length >= modules.length} />
           }
           ListHeaderComponent={ListHeader}
           ListHeaderComponentStyle={flatListHeaderStyle}
           initialNumToRender={initialNumToRender}
+          updateCellsBatchingPeriod={200}
           removeClippedSubviews={false}
           onContentSizeChange={onContentSizeChange}
           scrollEventThrottle={16}
@@ -366,7 +370,7 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = ({
       {statusBar ?? null}
     </Container>
   )
-}
+})
 
 export const GenericHome: FunctionComponent<GenericHomeProps> = (props) => {
   const netInfo = useNetInfoContext()

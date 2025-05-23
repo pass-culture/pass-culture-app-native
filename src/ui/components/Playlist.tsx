@@ -55,7 +55,7 @@ const PLAYLIST_VIEWABILITY_CONFIG = {
   minimumViewTime: 300,
 } satisfies ViewabilityConfig
 
-export const Playlist = forwardRef<FlatList, Props>(function Playlist(props, ref) {
+const InnerPlaylist = forwardRef<FlatList, Props>(function Playlist(props, ref) {
   const {
     data,
     itemWidth,
@@ -149,6 +149,15 @@ export const Playlist = forwardRef<FlatList, Props>(function Playlist(props, ref
   // To avoid a bug of cropped display on some home modules with Android, we need to add minHeigth to the FlashList Container
   const minHeight = Platform.OS === 'android' ? itemHeight + maxCaptionHeight : undefined
 
+  const getItemLayout = useCallback(
+    (data, index) => ({
+      length: itemWidth,
+      offset: (itemWidth + itemSeparatorSize) * index,
+      index,
+    }),
+    [itemWidth, itemSeparatorSize]
+  )
+
   return (
     <FlatListContainer onLayout={onContainerLayout} minHeight={minHeight}>
       {!isStart && isWeb ? (
@@ -179,6 +188,12 @@ export const Playlist = forwardRef<FlatList, Props>(function Playlist(props, ref
         showsHorizontalScrollIndicator={false}
         scrollEventThrottle={16}
         horizontal
+        windowSize={7}
+        initialNumToRender={4}
+        maxToRenderPerBatch={6}
+        removeClippedSubviews
+        updateCellsBatchingPeriod={100}
+        getItemLayout={getItemLayout}
         ItemSeparatorComponent={MemoizedItemSeparatorComponent}
         ListHeaderComponent={MemoizedHorizontalMargin}
         ListFooterComponent={MemoizedHorizontalMargin}
@@ -190,6 +205,8 @@ export const Playlist = forwardRef<FlatList, Props>(function Playlist(props, ref
     </FlatListContainer>
   )
 })
+
+export const Playlist = React.memo(InnerPlaylist)
 
 const FlatListContainer = styled.View<{ minHeight?: number }>(({ minHeight }) => ({
   position: 'relative',
