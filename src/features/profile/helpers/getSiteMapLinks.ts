@@ -9,12 +9,7 @@ type SubPage = {
   isLoggedIn: boolean
 }
 
-type SiteMap = {
-  wording: string
-  navigateTo: InternalNavigationProps['navigateTo']
-  subPages: SubPage[]
-  isLoggedIn: boolean
-}
+type SiteMap = SubPage & { subPages: SubPage[] }
 
 const toInternalNavigationProps = ([screen, params]: ReturnType<typeof getTabNavConfig>) => ({
   screen,

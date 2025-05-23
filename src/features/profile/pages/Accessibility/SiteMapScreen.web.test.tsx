@@ -3,7 +3,7 @@ import React from 'react'
 import { initialSearchState } from 'features/search/context/reducer'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { checkAccessibilityFor, render } from 'tests/utils/web'
+import { checkAccessibilityFor, render, screen } from 'tests/utils/web'
 
 import { SiteMapScreen } from './SiteMapScreen'
 
@@ -29,6 +29,7 @@ describe('<SiteMapScreen />', () => {
     it('should not have basic accessibility issues', async () => {
       const { container } = render(reactQueryProviderHOC(<SiteMapScreen />))
 
+      await screen.findByText('Plan du site')
       const results = await checkAccessibilityFor(container)
 
       expect(results).toHaveNoViolations()
