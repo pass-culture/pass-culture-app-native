@@ -5,14 +5,14 @@ import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBla
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'
-import { Typo, getSpacing } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 export const BookingPrecisions: React.FC<{
   withdrawalDetails?: string | null
   bookingContactEmail?: string | null
   onEmailPress: () => void
 }> = ({ bookingContactEmail, withdrawalDetails, onEmailPress }) => (
-  <Container gap={6}>
+  <ViewGap gap={6}>
     {withdrawalDetails ? (
       <ViewGap gap={4}>
         <Typo.BodyAccentS>Précisions de l’organisateur</Typo.BodyAccentS>
@@ -33,14 +33,12 @@ export const BookingPrecisions: React.FC<{
         />
       </EmailContainer>
     ) : null}
-  </Container>
+  </ViewGap>
 )
 
 const EmailContainer = styled(ViewGap)({
   alignItems: 'flex-start',
 })
-
-const Container = styled(ViewGap)({ marginHorizontal: getSpacing(6) })
 
 const CaptionNeutralInfo = styled(Typo.BodyAccentS)(({ theme }) => ({
   color: theme.colors.greyDark,
