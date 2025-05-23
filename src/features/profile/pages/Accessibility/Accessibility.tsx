@@ -18,37 +18,37 @@ const StyledSectionRow = styled(SectionRow)<{ noTopMargin?: boolean }>(({ noTopM
 const sections = [
   <StyledSectionRow
     key={1}
-    title="Les engagements du pass Culture"
+    title="Plan du site"
     type="navigable"
-    navigateTo={getProfileNavConfig('AccessibilityEngagement')}
+    navigateTo={getProfileNavConfig('SiteMapScreen')}
     noTopMargin
   />,
   <StyledSectionRow
     key={2}
-    title="Plan du site"
+    title="Les engagements du pass Culture"
     type="navigable"
-    navigateTo={getProfileNavConfig('SiteMapScreen')}
+    navigateTo={getProfileNavConfig('AccessibilityEngagement')}
   />,
   <StyledSectionRow
-    key={2}
+    key={3}
     title="Schéma pluriannuel"
     type="navigable"
     navigateTo={getProfileNavConfig('AccessibilityActionPlan')}
   />,
   <StyledSectionRow
-    key={3}
+    key={4}
     title="Déclaration d’accessibilité des&nbsp;applications&nbsp;iOS&nbsp;et&nbsp;Android"
     type="navigable"
     navigateTo={getProfileNavConfig('AccessibilityDeclarationMobile')}
   />,
   <StyledSectionRow
-    key={4}
+    key={5}
     title="Déclaration d’accessibilité de&nbsp;la&nbsp;version&nbsp;web"
     type="navigable"
     navigateTo={getProfileNavConfig('AccessibilityDeclarationWeb')}
   />,
   <StyledSectionRow
-    key={5}
+    key={6}
     title="Parcours recommandés de&nbsp;la&nbsp;version&nbsp;web"
     type="navigable"
     navigateTo={getProfileNavConfig('RecommendedPaths')}

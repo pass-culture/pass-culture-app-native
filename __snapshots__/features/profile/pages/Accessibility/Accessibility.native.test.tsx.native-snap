@@ -246,138 +246,6 @@ exports[`Accessibility should render correctly 1`] = `
           }
         >
           <View
-            accessibilityLabel="Les engagements du pass Culture"
-            accessibilityRole="link"
-            accessibilityState={
-              {
-                "busy": undefined,
-                "checked": undefined,
-                "disabled": false,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
-            style={
-              [
-                [
-                  {
-                    "userSelect": "auto",
-                  },
-                  {},
-                ],
-                {
-                  "opacity": 1,
-                },
-              ]
-            }
-            testID="Les engagements du pass Culture"
-          >
-            <View
-              style={
-                [
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                    "justifyContent": "space-between",
-                  },
-                  [
-                    {
-                      "marginBottom": 24,
-                      "marginTop": 0,
-                    },
-                  ],
-                ]
-              }
-            >
-              <View
-                style={
-                  [
-                    {
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                      "textAlign": "left",
-                    },
-                  ]
-                }
-              >
-                <Text
-                  numberOfLines={2}
-                  style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                      },
-                    ]
-                  }
-                >
-                  Les engagements du pass Culture
-                </Text>
-              </View>
-              <View
-                style={
-                  [
-                    {
-                      "alignItems": "flex-end",
-                    },
-                  ]
-                }
-              >
-                <View
-                  height={20}
-                  testID="section-row-navigable-icon"
-                  width={20}
-                >
-                  <Text>
-                    section-row-navigable-icon-SVG-Mock
-                  </Text>
-                </View>
-              </View>
-            </View>
-          </View>
-          <View
-            style={
-              [
-                {
-                  "backgroundColor": "#F1F1F4",
-                  "height": 1,
-                  "width": "100%",
-                },
-              ]
-            }
-          />
-        </View>
-        <View
-          accessibilityRole="none"
-          style={
-            [
-              {
-                "display": "flex",
-              },
-            ]
-          }
-        >
-          <View
             accessibilityLabel="Plan du site"
             accessibilityRole="link"
             accessibilityState={
@@ -432,7 +300,7 @@ exports[`Accessibility should render correctly 1`] = `
                   [
                     {
                       "marginBottom": 24,
-                      "marginTop": 24,
+                      "marginTop": 0,
                     },
                   ],
                 ]
@@ -464,6 +332,138 @@ exports[`Accessibility should render correctly 1`] = `
                   }
                 >
                   Plan du site
+                </Text>
+              </View>
+              <View
+                style={
+                  [
+                    {
+                      "alignItems": "flex-end",
+                    },
+                  ]
+                }
+              >
+                <View
+                  height={20}
+                  testID="section-row-navigable-icon"
+                  width={20}
+                >
+                  <Text>
+                    section-row-navigable-icon-SVG-Mock
+                  </Text>
+                </View>
+              </View>
+            </View>
+          </View>
+          <View
+            style={
+              [
+                {
+                  "backgroundColor": "#F1F1F4",
+                  "height": 1,
+                  "width": "100%",
+                },
+              ]
+            }
+          />
+        </View>
+        <View
+          accessibilityRole="none"
+          style={
+            [
+              {
+                "display": "flex",
+              },
+            ]
+          }
+        >
+          <View
+            accessibilityLabel="Les engagements du pass Culture"
+            accessibilityRole="link"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": false,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {},
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
+            }
+            testID="Les engagements du pass Culture"
+          >
+            <View
+              style={
+                [
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                    "justifyContent": "space-between",
+                  },
+                  [
+                    {
+                      "marginBottom": 24,
+                      "marginTop": 24,
+                    },
+                  ],
+                ]
+              }
+            >
+              <View
+                style={
+                  [
+                    {
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "textAlign": "left",
+                    },
+                  ]
+                }
+              >
+                <Text
+                  numberOfLines={2}
+                  style={
+                    [
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
+                      },
+                    ]
+                  }
+                >
+                  Les engagements du pass Culture
                 </Text>
               </View>
               <View

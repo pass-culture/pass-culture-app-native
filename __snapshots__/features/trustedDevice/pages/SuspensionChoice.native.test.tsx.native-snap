@@ -313,7 +313,6 @@ exports[`<SuspensionChoice/> should match snapshot 1`] = `
             style={
               [
                 {
-                  "alignItems": "center",
                   "flexDirection": "row",
                   "marginLeft": 12,
                   "marginTop": 0,
@@ -488,7 +487,6 @@ exports[`<SuspensionChoice/> should match snapshot 1`] = `
             style={
               [
                 {
-                  "alignItems": "center",
                   "flexDirection": "row",
                   "marginLeft": 12,
                   "marginTop": 0,
@@ -551,7 +549,6 @@ exports[`<SuspensionChoice/> should match snapshot 1`] = `
             style={
               [
                 {
-                  "alignItems": "center",
                   "flexDirection": "row",
                   "marginLeft": 12,
                   "marginTop": 0,
