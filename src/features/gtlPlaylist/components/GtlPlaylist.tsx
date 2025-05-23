@@ -21,6 +21,7 @@ export interface GtlPlaylistProps {
   venue?: VenueResponse
   noMarginBottom?: boolean
 }
+const keyExtractor = (item: Hit<Offer>) => item.objectID
 
 export const GtlPlaylist = ({
   venue,
@@ -63,7 +64,7 @@ export const GtlPlaylist = ({
         itemWidth={itemWidth}
         itemHeight={itemHeight}
         renderItem={renderPassPlaylist}
-        keyExtractor={(item: Hit<Offer>) => item.objectID}
+        keyExtractor={keyExtractor}
         title={playlist.title}
         onEndReached={logHasSeenAllTilesOnce}
         noMarginBottom={noMarginBottom}
