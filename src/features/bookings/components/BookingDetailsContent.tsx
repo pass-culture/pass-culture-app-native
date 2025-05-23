@@ -103,7 +103,7 @@ export const BookingDetailsContent = ({
   const errorBannerMessage = `Tu n’as pas le droit de céder ou de revendre ${properties.isDuo ? 'tes billets' : 'ton billet'}.`
 
   return user ? (
-    <Container>
+    <MainContainer>
       <ScrollView
         onScroll={onScroll}
         scrollEventThrottle={16}
@@ -150,20 +150,24 @@ export const BookingDetailsContent = ({
         {booking.stock.offer.bookingContact || offer.withdrawalDetails ? (
           <React.Fragment>
             <StyledSeparator height={getSpacing(8)} />
-            <BookingPrecisions
-              bookingContactEmail={booking.stock.offer.bookingContact}
-              withdrawalDetails={offer.withdrawalDetails}
-              onEmailPress={onEmailPress}
-            />
+            <Container>
+              <BookingPrecisions
+                bookingContactEmail={booking.stock.offer.bookingContact}
+                withdrawalDetails={offer.withdrawalDetails}
+                onEmailPress={onEmailPress}
+              />
+            </Container>
           </React.Fragment>
         ) : null}
         <StyledSeparator height={getSpacing(8)} />
-        <BookingDetailsCancelButton
-          booking={booking}
-          onCancel={cancelBooking}
-          onTerminate={showArchiveModal}
-          fullWidth
-        />
+        <BookingDetailsCancelButtonContainer>
+          <BookingDetailsCancelButton
+            booking={booking}
+            onCancel={cancelBooking}
+            onTerminate={showArchiveModal}
+            fullWidth
+          />
+        </BookingDetailsCancelButtonContainer>
         <CancelBookingModal
           visible={cancelModalVisible}
           dismissModal={hideModal}
@@ -178,7 +182,7 @@ export const BookingDetailsContent = ({
       </ScrollView>
       {/* BookingDetailsHeader is called after Body to implement the BlurView for iOS */}
       <BookingDetailsHeader headerTransition={headerTransition} title={offer.name} />
-    </Container>
+    </MainContainer>
   ) : null
 }
 
@@ -192,20 +196,27 @@ function getVenueBlockAddress(
   return address ?? undefined
 }
 
-const ErrorBannerContainer = styled.View({
-  marginHorizontal: getSpacing(6),
-  marginTop: getSpacing(8),
-})
 const StyledSeparator = styled(Separator.Horizontal)({
   marginVertical: getSpacing(8),
   height: getSpacing(2),
 })
 
-const Container = styled.View(({ theme }) => ({
+const MainContainer = styled.View(({ theme }) => ({
   flex: 1,
   backgroundColor: theme.colors.white,
 }))
 
 const StyledHeaderWithImage = styled(HeaderWithImage)({
   marginBottom: getSpacing(offerImageContainerMarginTop),
+})
+
+const Container = styled.View({
+  marginHorizontal: getSpacing(6),
+})
+const ErrorBannerContainer = styled(Container)({
+  marginTop: getSpacing(8),
+})
+
+const BookingDetailsCancelButtonContainer = styled(Container)({
+  marginBottom: getSpacing(10),
 })
