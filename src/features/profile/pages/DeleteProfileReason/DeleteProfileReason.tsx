@@ -98,8 +98,6 @@ export function DeleteProfileReason() {
     <React.Fragment>
       <PageHeaderWithoutPlaceholder onGoBack={goBack} />
       <FlatList
-        listAs="ul"
-        itemAs="li"
         onViewableItemsChanged={isWeb ? null : onViewableItemsChanged}
         viewabilityConfig={VIEWABILITY_CONFIG}
         ListHeaderComponent={
