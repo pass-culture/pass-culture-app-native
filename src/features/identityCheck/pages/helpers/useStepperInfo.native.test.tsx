@@ -1,4 +1,4 @@
-import { UseQueryResult } from 'react-query'
+import { UseQueryResult } from '@tanstack/react-query'
 
 import { SubscriptionStepperResponseV2 } from 'api/gen'
 import { setSettings } from 'features/auth/tests/setSettings'
