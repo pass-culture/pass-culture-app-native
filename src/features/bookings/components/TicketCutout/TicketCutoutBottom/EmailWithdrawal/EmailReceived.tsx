@@ -1,6 +1,5 @@
 import React from 'react'
 import { openInbox } from 'react-native-email-link'
-import styled from 'styled-components/native'
 
 import { UserProfileResponse } from 'api/gen'
 import { useIsMailAppAvailable } from 'features/auth/helpers/useIsMailAppAvailable'
@@ -19,12 +18,11 @@ export const EmailReceived = ({
   userEmail: UserProfileResponse['email']
 }) => {
   const emailMessage = getEmailReceivedWithdrawalMessage({ isEventDay, isDuo, userEmail })
-
   const isMailAppAvailable = useIsMailAppAvailable()
 
   return (
-    <TicketContainer testID="withdrawal-email-received">
-      <TicketText>{emailMessage}</TicketText>
+    <React.Fragment>
+      <TicketText testID="withdrawal-email-received">{emailMessage}</TicketText>
       {isMailAppAvailable ? (
         <ButtonTertiaryBlack
           wording="Consulter mes e-mails"
@@ -34,10 +32,6 @@ export const EmailReceived = ({
           icon={Email}
         />
       ) : null}
-    </TicketContainer>
+    </React.Fragment>
   )
 }
-
-const TicketContainer = styled.View({
-  width: '100%',
-})

@@ -2,9 +2,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { UserProfileResponse } from 'api/gen'
-import { TicketVisual } from 'features/bookings/components/TicketCutout/TicketCutoutBottom/TicketVisual'
 import { getDelayMessage } from 'features/bookings/helpers/getDelayMessage'
-import { EmailSent } from 'ui/svg/icons/EmailSent'
 import { Typo, getSpacing } from 'ui/theme'
 
 export const EmailWillBeSend = ({
@@ -20,20 +18,15 @@ export const EmailWillBeSend = ({
   const endText = `avant le début de l’évènement.`
 
   return (
-    <React.Fragment>
-      <TicketVisual>
-        <EmailSent />
-      </TicketVisual>
-      <WithDrawalContainer testID="withdrawal-email-will-be-send">
-        {startText}
-        {withdrawalDelay ? (
-          <TicketWithdrawalDelay>{getDelayMessage(withdrawalDelay)}</TicketWithdrawalDelay>
-        ) : (
-          ' '
-        )}
-        {endText}
-      </WithDrawalContainer>
-    </React.Fragment>
+    <WithDrawalContainer testID="withdrawal-email-will-be-send">
+      {startText}
+      {withdrawalDelay ? (
+        <TicketWithdrawalDelay>{getDelayMessage(withdrawalDelay)}</TicketWithdrawalDelay>
+      ) : (
+        ' '
+      )}
+      {endText}
+    </WithDrawalContainer>
   )
 }
 
