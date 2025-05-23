@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { getProfileNavConfig } from 'features/navigation/ProfileStackNavigator/getProfileNavConfig'
+import { ProfileStackParamList } from 'features/navigation/ProfileStackNavigator/ProfileStack'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { AccessibleUnorderedList } from 'ui/components/accessibility/AccessibleUnorderedList'
@@ -15,45 +16,47 @@ const StyledSectionRow = styled(SectionRow)<{ noTopMargin?: boolean }>(({ noTopM
   marginTop: noTopMargin ? 0 : getSpacing(6),
 }))
 
-const sections = [
-  <StyledSectionRow
-    key={1}
-    title="Plan du site"
-    type="navigable"
-    navigateTo={getProfileNavConfig('SiteMapScreen')}
-    noTopMargin
-  />,
-  <StyledSectionRow
-    key={2}
-    title="Les engagements du pass Culture"
-    type="navigable"
-    navigateTo={getProfileNavConfig('AccessibilityEngagement')}
-  />,
-  <StyledSectionRow
-    key={3}
-    title="Schéma pluriannuel"
-    type="navigable"
-    navigateTo={getProfileNavConfig('AccessibilityActionPlan')}
-  />,
-  <StyledSectionRow
-    key={4}
-    title="Déclaration d’accessibilité des&nbsp;applications&nbsp;iOS&nbsp;et&nbsp;Android"
-    type="navigable"
-    navigateTo={getProfileNavConfig('AccessibilityDeclarationMobile')}
-  />,
-  <StyledSectionRow
-    key={5}
-    title="Déclaration d’accessibilité de&nbsp;la&nbsp;version&nbsp;web"
-    type="navigable"
-    navigateTo={getProfileNavConfig('AccessibilityDeclarationWeb')}
-  />,
-  <StyledSectionRow
-    key={6}
-    title="Parcours recommandés de&nbsp;la&nbsp;version&nbsp;web"
-    type="navigable"
-    navigateTo={getProfileNavConfig('RecommendedPaths')}
-  />,
+const sectionConfig: {
+  title: string
+  screen: keyof ProfileStackParamList
+  noTopMargin?: boolean
+}[] = [
+  {
+    title: 'Plan du site',
+    screen: 'SiteMapScreen',
+    noTopMargin: true,
+  },
+  {
+    title: 'Les engagements du pass Culture',
+    screen: 'AccessibilityEngagement',
+  },
+  {
+    title: 'Schéma pluriannuel',
+    screen: 'AccessibilityActionPlan',
+  },
+  {
+    title: 'Déclaration d’accessibilité des applications iOS et Android',
+    screen: 'AccessibilityDeclarationMobile',
+  },
+  {
+    title: 'Déclaration d’accessibilité de la version web',
+    screen: 'AccessibilityDeclarationWeb',
+  },
+  {
+    title: 'Parcours recommandés de la version web',
+    screen: 'RecommendedPaths',
+  },
 ]
+
+const sections = sectionConfig.map(({ title, screen, noTopMargin }) => (
+  <StyledSectionRow
+    key={title}
+    title={title}
+    type="navigable"
+    navigateTo={getProfileNavConfig(screen)}
+    noTopMargin={noTopMargin}
+  />
+))
 
 export function Accessibility() {
   const { goBack } = useGoBack(...getTabNavConfig('Profile'))
