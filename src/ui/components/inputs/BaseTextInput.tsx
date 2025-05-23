@@ -23,14 +23,6 @@ export const BaseTextInput = forwardRef<RNTextInput, Props>(function BaseTextInp
       return
     }
 
-    /** BUG FIX for :
-     * text input of type password (with secureTextEntry set to True) has not the
-     * correct fontFamily despite the style
-     */
-    props.secureTextEntry &&
-      props.value &&
-      inputRef.current.setNativeProps({ style: { fontFamily: 'Montserrat-Regular' } })
-
     /** FEATURE HACK for : autoFocus with keyboard display on Android
      * Why / issue : on Android with react-navigation used, the inputs are focused without
      *   displaying the keyboard.
