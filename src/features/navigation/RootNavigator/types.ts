@@ -81,6 +81,7 @@ export type AccessibilityRootStackParamList = {
   AccessibilityDeclarationMobile?: undefined
   AccessibilityDeclarationWeb?: undefined
   AccessibilityEngagement?: undefined
+  SiteMapScreen?: undefined
   RecommendedPaths?: undefined
 }
 

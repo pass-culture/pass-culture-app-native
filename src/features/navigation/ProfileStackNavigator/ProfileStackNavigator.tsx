@@ -9,6 +9,7 @@ import { AccessibilityDeclarationMobile } from 'features/profile/pages/Accessibi
 import { AccessibilityDeclarationWeb } from 'features/profile/pages/Accessibility/AccessibilityDeclarationWeb'
 import { AccessibilityEngagement } from 'features/profile/pages/Accessibility/AccessibilityEngagement'
 import { RecommendedPaths } from 'features/profile/pages/Accessibility/RecommendedPaths'
+import { SiteMapScreen } from 'features/profile/pages/Accessibility/SiteMapScreen'
 import { ChangeCity } from 'features/profile/pages/ChangeCity/ChangeCity'
 import { ChangeEmail } from 'features/profile/pages/ChangeEmail/ChangeEmail'
 import { ChangeEmailSetPassword } from 'features/profile/pages/ChangeEmailSetPassword/ChangeEmailSetPassword'
@@ -70,6 +71,11 @@ export const ProfileStackNavigator = () => (
       name="RecommendedPaths"
       component={RecommendedPaths}
       options={{ title: 'Parcours recommandés' }}
+    />
+    <ProfileStack.Screen
+      name="SiteMapScreen"
+      component={SiteMapScreen}
+      options={{ title: 'Plan du site' }}
     />
     <ProfileStack.Screen
       name="NotificationsSettings"
