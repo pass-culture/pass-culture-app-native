@@ -49,14 +49,12 @@ const ItemContainer = styled.View<{ spacing?: number }>(({ spacing }) => ({
   flexDirection: 'row',
   marginLeft: getSpacing(3),
   marginTop: spacing ? getSpacing(spacing) : 0,
-  alignItems: 'center',
 }))
 
 const NestedItemContainer = styled.View<{ spacing?: number }>(({ spacing }) => ({
   flexDirection: 'row',
   marginLeft: getSpacing(7),
   marginTop: spacing ? getSpacing(spacing) : 0,
-  alignItems: 'center',
 }))
 
 const StyledUl = styled(VerticalUl)({

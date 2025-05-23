@@ -1,17 +1,33 @@
 import React from 'react'
 
+import { initialSearchState } from 'features/search/context/reducer'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
+import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { checkAccessibilityFor, render } from 'tests/utils/web'
 
 import { SiteMapScreen } from './SiteMapScreen'
+
+jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 jest.mock('features/auth/context/AuthContext', () => ({
   useAuthContext: jest.fn(() => ({ isLoggedIn: true })),
 }))
 
+const mockSearchState = initialSearchState
+jest.mock('features/search/context/SearchWrapper', () => ({
+  useSearch: () => ({
+    searchState: mockSearchState,
+    dispatch: jest.fn(),
+    hideSuggestions: jest.fn(),
+  }),
+}))
+
 describe('<SiteMapScreen />', () => {
+  beforeEach(() => setFeatureFlags())
+
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {
-      const { container } = render(<SiteMapScreen />)
+      const { container } = render(reactQueryProviderHOC(<SiteMapScreen />))
 
       const results = await checkAccessibilityFor(container)
 

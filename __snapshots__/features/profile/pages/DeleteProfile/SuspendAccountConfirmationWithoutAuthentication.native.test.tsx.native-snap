@@ -306,7 +306,6 @@ exports[`SuspendAccountConfirmationWithoutAuthentication should render correctly
             style={
               [
                 {
-                  "alignItems": "center",
                   "flexDirection": "row",
                   "marginLeft": 12,
                   "marginTop": 0,
@@ -474,7 +473,6 @@ exports[`SuspendAccountConfirmationWithoutAuthentication should render correctly
             style={
               [
                 {
-                  "alignItems": "center",
                   "flexDirection": "row",
                   "marginLeft": 12,
                   "marginTop": 0,
@@ -537,7 +535,6 @@ exports[`SuspendAccountConfirmationWithoutAuthentication should render correctly
             style={
               [
                 {
-                  "alignItems": "center",
                   "flexDirection": "row",
                   "marginLeft": 12,
                   "marginTop": 0,

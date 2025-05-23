@@ -8,6 +8,7 @@ import { ButtonQuaternaryGrey } from 'ui/components/buttons/ButtonQuaternaryGrey
 import { Separator } from 'ui/components/Separator'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
 import { LogoPassCulture } from 'ui/svg/icons/LogoPassCulture'
 import { LogoFrenchRepublic } from 'ui/svg/LogoFrenchRepublic'
@@ -20,13 +21,16 @@ export const AccessibilityFooter = () => {
     return (
       <AccessibilityFooterContainer>
         <Separator.Horizontal />
-        <Container>
+        <Container gap={5}>
           <LogoContainer>
             <ColoredPassCultureLogo />
           </LogoContainer>
-          <LinksContainer>
+          <LinksContainer gap={4}>
             <InternalTouchableLink navigateTo={getProfileNavConfig('Accessibility')}>
               <StyledBodyAccentXs>Accessibilité&nbsp;: partiellement conforme</StyledBodyAccentXs>
+            </InternalTouchableLink>
+            <InternalTouchableLink navigateTo={getProfileNavConfig('SiteMapScreen')}>
+              <StyledBodyAccentXs>Plan du site</StyledBodyAccentXs>
             </InternalTouchableLink>
             <InternalTouchableLink navigateTo={getProfileNavConfig('LegalNotices')}>
               <StyledBodyAccentXs>Informations légales</StyledBodyAccentXs>
@@ -51,8 +55,8 @@ export const AccessibilityFooter = () => {
           <LogoContainer>
             <LogoFrenchRepublic />
           </LogoContainer>
-          <Spacer.TabBar />
         </Container>
+        <Spacer.TabBar />
       </AccessibilityFooterContainer>
     )
   }
@@ -63,27 +67,28 @@ const AccessibilityFooterContainer = styled.View(({ theme }) => ({
   marginHorizontal: theme.contentPage.marginHorizontal,
 }))
 
-const Container = styled.View(({ theme }) => ({
+const Container = styled(ViewGap)(({ theme }) => ({
   alignItems: theme.isDesktopViewport ? 'center' : undefined,
-  gap: getSpacing(8),
-  paddingTop: theme.isDesktopViewport ? getSpacing(8) : getSpacing(6),
-  paddingBottom: getSpacing(8),
+  paddingVertical: getSpacing(5),
   flexDirection: theme.isDesktopViewport ? 'row' : 'column',
 }))
 
-const LinksContainer = styled.View(({ theme }) => ({
+const LinksContainer = styled(ViewGap)(({ theme }) => ({
   alignItems: theme.isDesktopViewport ? 'center' : undefined,
-  gap: theme.isDesktopViewport ? getSpacing(6) : getSpacing(8),
   flexDirection: theme.isDesktopViewport ? 'row' : 'column',
+  flexWrap: 'wrap',
+  justifyContent: 'center',
+  flex: theme.isDesktopViewport ? 1 : undefined,
+  marginHorizontal: getSpacing(theme.isDesktopViewport ? 25 : 0),
 }))
 
 const ColoredPassCultureLogo = styled(LogoPassCulture).attrs(({ theme }) => ({
   color: theme.uniqueColors.brand,
-  width: '100%',
+  width: getSpacing(20),
 }))``
 
 const LogoContainer = styled.View({
-  width: getSpacing(15),
+  width: getSpacing(20),
 })
 
 const StyledBodyAccentXs = styled(Typo.BodyAccentXs)(({ theme }) => ({

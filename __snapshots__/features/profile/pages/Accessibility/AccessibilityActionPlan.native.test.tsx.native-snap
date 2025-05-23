@@ -367,7 +367,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             style={
               [
                 {
-                  "alignItems": "center",
                   "flexDirection": "row",
                   "marginLeft": 12,
                   "marginTop": 0,
@@ -430,7 +429,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             style={
               [
                 {
-                  "alignItems": "center",
                   "flexDirection": "row",
                   "marginLeft": 12,
                   "marginTop": 0,
@@ -493,7 +491,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             style={
               [
                 {
-                  "alignItems": "center",
                   "flexDirection": "row",
                   "marginLeft": 12,
                   "marginTop": 0,
@@ -556,7 +553,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             style={
               [
                 {
-                  "alignItems": "center",
                   "flexDirection": "row",
                   "marginLeft": 12,
                   "marginTop": 0,
@@ -732,7 +728,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             style={
               [
                 {
-                  "alignItems": "center",
                   "flexDirection": "row",
                   "marginLeft": 12,
                   "marginTop": 0,
@@ -795,7 +790,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             style={
               [
                 {
-                  "alignItems": "center",
                   "flexDirection": "row",
                   "marginLeft": 12,
                   "marginTop": 0,
@@ -858,7 +852,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             style={
               [
                 {
-                  "alignItems": "center",
                   "flexDirection": "row",
                   "marginLeft": 12,
                   "marginTop": 0,
@@ -921,7 +914,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             style={
               [
                 {
-                  "alignItems": "center",
                   "flexDirection": "row",
                   "marginLeft": 12,
                   "marginTop": 0,
@@ -984,7 +976,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             style={
               [
                 {
-                  "alignItems": "center",
                   "flexDirection": "row",
                   "marginLeft": 12,
                   "marginTop": 0,
@@ -1169,7 +1160,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             style={
               [
                 {
-                  "alignItems": "center",
                   "flexDirection": "row",
                   "marginLeft": 12,
                   "marginTop": 0,
@@ -1232,7 +1222,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             style={
               [
                 {
-                  "alignItems": "center",
                   "flexDirection": "row",
                   "marginLeft": 12,
                   "marginTop": 0,
@@ -1295,7 +1284,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             style={
               [
                 {
-                  "alignItems": "center",
                   "flexDirection": "row",
                   "marginLeft": 12,
                   "marginTop": 0,
@@ -1358,7 +1346,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             style={
               [
                 {
-                  "alignItems": "center",
                   "flexDirection": "row",
                   "marginLeft": 12,
                   "marginTop": 0,
@@ -1535,7 +1522,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             style={
               [
                 {
-                  "alignItems": "center",
                   "flexDirection": "row",
                   "marginLeft": 12,
                   "marginTop": 0,
@@ -1598,7 +1584,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             style={
               [
                 {
-                  "alignItems": "center",
                   "flexDirection": "row",
                   "marginLeft": 12,
                   "marginTop": 0,
@@ -2223,7 +2208,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             style={
               [
                 {
-                  "alignItems": "center",
                   "flexDirection": "row",
                   "marginLeft": 12,
                   "marginTop": 0,
@@ -2286,7 +2270,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             style={
               [
                 {
-                  "alignItems": "center",
                   "flexDirection": "row",
                   "marginLeft": 12,
                   "marginTop": 0,
@@ -2349,7 +2332,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             style={
               [
                 {
-                  "alignItems": "center",
                   "flexDirection": "row",
                   "marginLeft": 12,
                   "marginTop": 0,
@@ -2412,7 +2394,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             style={
               [
                 {
-                  "alignItems": "center",
                   "flexDirection": "row",
                   "marginLeft": 12,
                   "marginTop": 0,
@@ -2475,7 +2456,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             style={
               [
                 {
-                  "alignItems": "center",
                   "flexDirection": "row",
                   "marginLeft": 12,
                   "marginTop": 0,
@@ -3131,7 +3111,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             style={
               [
                 {
-                  "alignItems": "center",
                   "flexDirection": "row",
                   "marginLeft": 12,
                   "marginTop": 0,
@@ -3211,7 +3190,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             style={
               [
                 {
-                  "alignItems": "center",
                   "flexDirection": "row",
                   "marginLeft": 12,
                   "marginTop": 0,
@@ -3291,7 +3269,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             style={
               [
                 {
-                  "alignItems": "center",
                   "flexDirection": "row",
                   "marginLeft": 12,
                   "marginTop": 0,
@@ -3371,7 +3348,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             style={
               [
                 {
-                  "alignItems": "center",
                   "flexDirection": "row",
                   "marginLeft": 12,
                   "marginTop": 0,
@@ -3451,7 +3427,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             style={
               [
                 {
-                  "alignItems": "center",
                   "flexDirection": "row",
                   "marginLeft": 12,
                   "marginTop": 0,
@@ -3531,7 +3506,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             style={
               [
                 {
-                  "alignItems": "center",
                   "flexDirection": "row",
                   "marginLeft": 12,
                   "marginTop": 0,
@@ -3611,7 +3585,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             style={
               [
                 {
-                  "alignItems": "center",
                   "flexDirection": "row",
                   "marginLeft": 12,
                   "marginTop": 0,
@@ -3691,7 +3664,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             style={
               [
                 {
-                  "alignItems": "center",
                   "flexDirection": "row",
                   "marginLeft": 12,
                   "marginTop": 0,
@@ -3771,7 +3743,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             style={
               [
                 {
-                  "alignItems": "center",
                   "flexDirection": "row",
                   "marginLeft": 12,
                   "marginTop": 0,
@@ -3851,7 +3822,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             style={
               [
                 {
-                  "alignItems": "center",
                   "flexDirection": "row",
                   "marginLeft": 12,
                   "marginTop": 0,
@@ -3979,7 +3949,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             style={
               [
                 {
-                  "alignItems": "center",
                   "flexDirection": "row",
                   "marginLeft": 12,
                   "marginTop": 0,
@@ -4059,7 +4028,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             style={
               [
                 {
-                  "alignItems": "center",
                   "flexDirection": "row",
                   "marginLeft": 12,
                   "marginTop": 0,
@@ -4250,7 +4218,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             style={
               [
                 {
-                  "alignItems": "center",
                   "flexDirection": "row",
                   "marginLeft": 12,
                   "marginTop": 0,
@@ -4330,7 +4297,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             style={
               [
                 {
-                  "alignItems": "center",
                   "flexDirection": "row",
                   "marginLeft": 12,
                   "marginTop": 0,
@@ -4410,7 +4376,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             style={
               [
                 {
-                  "alignItems": "center",
                   "flexDirection": "row",
                   "marginLeft": 12,
                   "marginTop": 0,
@@ -4601,7 +4566,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             style={
               [
                 {
-                  "alignItems": "center",
                   "flexDirection": "row",
                   "marginLeft": 12,
                   "marginTop": 0,
@@ -4792,7 +4756,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             style={
               [
                 {
-                  "alignItems": "center",
                   "flexDirection": "row",
                   "marginLeft": 12,
                   "marginTop": 0,
@@ -4872,7 +4835,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             style={
               [
                 {
-                  "alignItems": "center",
                   "flexDirection": "row",
                   "marginLeft": 12,
                   "marginTop": 0,
@@ -5066,7 +5028,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             style={
               [
                 {
-                  "alignItems": "center",
                   "flexDirection": "row",
                   "marginLeft": 12,
                   "marginTop": 0,
@@ -5147,7 +5108,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             style={
               [
                 {
-                  "alignItems": "center",
                   "flexDirection": "row",
                   "marginLeft": 12,
                   "marginTop": 0,
@@ -5228,7 +5188,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             style={
               [
                 {
-                  "alignItems": "center",
                   "flexDirection": "row",
                   "marginLeft": 12,
                   "marginTop": 0,
@@ -5357,7 +5316,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             style={
               [
                 {
-                  "alignItems": "center",
                   "flexDirection": "row",
                   "marginLeft": 12,
                   "marginTop": 0,
@@ -5437,7 +5395,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             style={
               [
                 {
-                  "alignItems": "center",
                   "flexDirection": "row",
                   "marginLeft": 12,
                   "marginTop": 0,
@@ -5517,7 +5474,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             style={
               [
                 {
-                  "alignItems": "center",
                   "flexDirection": "row",
                   "marginLeft": 12,
                   "marginTop": 0,
@@ -5694,7 +5650,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             style={
               [
                 {
-                  "alignItems": "center",
                   "flexDirection": "row",
                   "marginLeft": 12,
                   "marginTop": 0,
@@ -5871,7 +5826,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             style={
               [
                 {
-                  "alignItems": "center",
                   "flexDirection": "row",
                   "marginLeft": 12,
                   "marginTop": 0,
@@ -5951,7 +5905,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             style={
               [
                 {
-                  "alignItems": "center",
                   "flexDirection": "row",
                   "marginLeft": 12,
                   "marginTop": 0,
@@ -6144,7 +6097,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             style={
               [
                 {
-                  "alignItems": "center",
                   "flexDirection": "row",
                   "marginLeft": 12,
                   "marginTop": 0,
@@ -6272,7 +6224,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             style={
               [
                 {
-                  "alignItems": "center",
                   "flexDirection": "row",
                   "marginLeft": 12,
                   "marginTop": 0,
@@ -6352,7 +6303,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             style={
               [
                 {
-                  "alignItems": "center",
                   "flexDirection": "row",
                   "marginLeft": 12,
                   "marginTop": 0,
@@ -6432,7 +6382,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             style={
               [
                 {
-                  "alignItems": "center",
                   "flexDirection": "row",
                   "marginLeft": 12,
                   "marginTop": 0,
@@ -6512,7 +6461,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             style={
               [
                 {
-                  "alignItems": "center",
                   "flexDirection": "row",
                   "marginLeft": 12,
                   "marginTop": 0,
@@ -6592,7 +6540,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             style={
               [
                 {
-                  "alignItems": "center",
                   "flexDirection": "row",
                   "marginLeft": 12,
                   "marginTop": 0,
@@ -6672,7 +6619,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             style={
               [
                 {
-                  "alignItems": "center",
                   "flexDirection": "row",
                   "marginLeft": 12,
                   "marginTop": 0,
@@ -6752,7 +6698,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             style={
               [
                 {
-                  "alignItems": "center",
                   "flexDirection": "row",
                   "marginLeft": 12,
                   "marginTop": 0,
@@ -6832,7 +6777,6 @@ exports[`AccessibilityActionPlan should render correctly 1`] = `
             style={
               [
                 {
-                  "alignItems": "center",
                   "flexDirection": "row",
                   "marginLeft": 12,
                   "marginTop": 0,
