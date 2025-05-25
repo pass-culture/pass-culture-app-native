@@ -15,6 +15,8 @@ const defaultConfig: KnipConfig = {
     'src/api/gen/**',
     'src/**/fixtures/**',
     'src/**/__mocks__/**',
+    // PC-33580 - wait for amplitude to be updated
+    'src/libs/amplitude/**',
   ],
   ignoreDependencies: ['@sentry/vite-plugin'],
   rules: {
