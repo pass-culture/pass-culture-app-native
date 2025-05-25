@@ -1,4 +1,5 @@
 import { useNavigation, useRoute } from '@react-navigation/native'
+import { StackNavigationProp } from '@react-navigation/stack'
 import { debounce } from 'lodash'
 import React, { useEffect, useRef, useState } from 'react'
 import { Keyboard, Platform } from 'react-native'
@@ -11,10 +12,9 @@ import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
 import { IdentityCheckError } from 'features/identityCheck/pages/profile/errors'
 import { addressActions, useAddress } from 'features/identityCheck/pages/profile/store/addressStore'
 import { useCity } from 'features/identityCheck/pages/profile/store/cityStore'
-import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
-import { getSubscriptionHookConfig } from 'features/navigation/SubscriptionStackNavigator/getSubscriptionHookConfig'
+import { UseRouteType } from 'features/navigation/RootNavigator/types'
+import { SubscriptionStackParamList } from 'features/navigation/SubscriptionStackNavigator/SubscriptionStackTypes'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
-import { analytics } from 'libs/analytics/provider'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { useAddresses } from 'libs/place/useAddresses'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -54,7 +54,7 @@ export const SetAddress = () => {
   const storedCity = useCity()
   const { setAddress: setStoreAddress } = addressActions
   const { showErrorSnackBar } = useSnackBarContext()
-  const { navigate } = useNavigation<UseNavigationType>()
+  const { navigate } = useNavigation<StackNavigationProp<SubscriptionStackParamList>>()
   const [query, setQuery] = useState<string>(storedAddress ?? '')
   const [debouncedQuery, setDebouncedQuery] = useState<string>(query)
   const [selectedAddress, setSelectedAddress] = useState<string | null>(storedAddress ?? null)
@@ -112,8 +112,7 @@ export const SetAddress = () => {
   const submitAddress = async () => {
     if (!enabled) return
     setStoreAddress(selectedAddress ?? query)
-    analytics.logSetAddressClicked()
-    navigate(...getSubscriptionHookConfig('SetStatus', { type: pageInfos.navigateParamsType }))
+    navigate('SetStatus', { type: pageInfos.navigateParamsType })
   }
 
   useEnterKeyAction(enabled ? submitAddress : undefined)

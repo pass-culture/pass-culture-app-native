@@ -3,7 +3,6 @@ import React, { useCallback, useEffect } from 'react'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { useShareAppContext } from 'features/share/context/ShareAppWrapper'
 import { ShareAppModalType } from 'features/share/types'
-import { analytics } from 'libs/analytics/provider'
 import { BatchEvent, BatchProfile } from 'libs/react-native-batch'
 import QpiThanks from 'ui/animations/qpi_thanks.json'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
@@ -18,7 +17,6 @@ export function AccountCreated() {
   const onBeforeNavigate = useCallback(() => {
     BatchProfile.trackEvent(BatchEvent.hasValidatedAccount)
     showShareAppModal(ShareAppModalType.NOT_ELIGIBLE)
-    analytics.logAccountCreatedStartClicked()
   }, [showShareAppModal])
 
   return (

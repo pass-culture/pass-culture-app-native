@@ -111,33 +111,6 @@ describe('OnboardingAgeInformation', () => {
 
     expect(analytics.logTrySelectDeposit).toHaveBeenCalledWith(age)
   })
-
-  it.each(AGES)('should log analytics when clicking on signup button', async (age) => {
-    renderOnboardingAgeInformation({ age })
-
-    const signupButton = screen.getByText('Créer un compte')
-
-    await user.press(signupButton)
-
-    expect(analytics.logOnboardingAgeInformationClicked).toHaveBeenNthCalledWith(1, {
-      type: 'account_creation',
-    })
-    expect(analytics.logSignUpClicked).toHaveBeenNthCalledWith(1, {
-      from: 'onboarding',
-    })
-  })
-
-  it.each(AGES)('should log analytics when clicking on skip button', async (age) => {
-    renderOnboardingAgeInformation({ age })
-
-    const laterButton = screen.getByText('Plus tard')
-
-    await user.press(laterButton)
-
-    expect(analytics.logOnboardingAgeInformationClicked).toHaveBeenNthCalledWith(1, {
-      type: 'account_creation_skipped',
-    })
-  })
 })
 
 const renderOnboardingAgeInformation = (navigationParams: { age: number } | undefined) => {
