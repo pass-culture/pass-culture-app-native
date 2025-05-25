@@ -2,7 +2,6 @@ import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
 import { SecondButtonList } from 'features/identityCheck/components/SecondButtonList'
-import { analytics } from 'libs/analytics/provider'
 import { AccessibleUnorderedList } from 'ui/components/accessibility/AccessibleUnorderedList'
 import { HeroButtonList } from 'ui/components/buttons/HeroButtonList'
 import { SeparatorWithText } from 'ui/components/SeparatorWithText'
@@ -12,16 +11,6 @@ import { LostId as InitialLostId } from 'ui/svg/icons/LostId'
 import { NoId as InitialNoId } from 'ui/svg/icons/NoId'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
-
-export enum IDStatus {
-  'ID_OK' = 'id_ok',
-  'NO_ID' = 'no_id',
-  'EXPIRED_OR_LOST' = 'expired_or_lost',
-}
-
-const logEventSelectIdStatusClicked = (type: IDStatus) => {
-  analytics.logSelectIdStatusClicked(type)
-}
 
 export const SelectIDStatus: FunctionComponent = () => (
   <PageWithHeader title="Identification" scrollChildren={<SelectIDStatusContent />} />
@@ -37,7 +26,6 @@ const MainOptionButton = (
     Subtitle={<Typo.BodyAccentXs>Les copies ne sont pas acceptées</Typo.BodyAccentXs>}
     Icon={<IdCard />}
     navigateTo={{ screen: 'UbbleWebview' }}
-    onBeforeNavigate={() => logEventSelectIdStatusClicked(IDStatus.ID_OK)}
   />
 )
 
@@ -50,7 +38,6 @@ const FirstOtherOption = (
     label="Je n’ai pas ma pièce d’identité originale avec moi"
     leftIcon={NoId}
     navigateTo={{ screen: 'ComeBackLater' }}
-    onBeforeNavigate={() => logEventSelectIdStatusClicked(IDStatus.NO_ID)}
   />
 )
 
@@ -63,7 +50,6 @@ const SecondOtherOption = (
     label="Ma pièce d’identité est expirée ou perdue"
     leftIcon={LostId}
     navigateTo={{ screen: 'ExpiredOrLostID' }}
-    onBeforeNavigate={() => logEventSelectIdStatusClicked(IDStatus.EXPIRED_OR_LOST)}
   />
 )
 

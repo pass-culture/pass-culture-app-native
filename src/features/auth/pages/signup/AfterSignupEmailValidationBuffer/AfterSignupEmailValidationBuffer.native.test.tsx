@@ -8,7 +8,6 @@ import { UserProfileResponse, ValidateEmailResponse } from 'api/gen'
 import * as LoginAndRedirectAPI from 'features/auth/pages/signup/helpers/useLoginAndRedirect'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { nonBeneficiaryUser } from 'fixtures/user'
-import { analytics } from 'libs/analytics/provider'
 import * as datesLib from 'libs/dates'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -74,15 +73,6 @@ describe('<AfterSignupEmailValidationBuffer />', () => {
         accessToken: 'access_token',
         refreshToken: 'refresh_token',
       })
-    })
-
-    it('should log analytics on email validation success', async () => {
-      mockServer.getApi<UserProfileResponse>('/v1/me', nonBeneficiaryUser)
-      renderPage()
-
-      await act(async () => {})
-
-      expect(analytics.logEmailValidated).toHaveBeenCalledTimes(1)
     })
 
     it('should redirect to Home with a snackbar message on error', async () => {

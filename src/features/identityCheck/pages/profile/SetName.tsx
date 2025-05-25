@@ -12,7 +12,6 @@ import {
   SubscriptionRootStackParamList,
   UseNavigationType,
 } from 'features/navigation/RootNavigator/types'
-import { analytics } from 'libs/analytics/provider'
 import { InfoBanner } from 'ui/components/banners/InfoBanner'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
@@ -72,7 +71,6 @@ export const SetName: FunctionComponent<Props> = ({ route }: Props) => {
   async function submitName({ firstName, lastName }: FormValues) {
     if (disabled) return
     setStoredName({ firstName, lastName })
-    analytics.logSetNameClicked()
     navigate('SetCity', { type: pageInfos.navigateParamsType })
   }
 

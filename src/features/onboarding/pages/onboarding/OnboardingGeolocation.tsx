@@ -24,7 +24,6 @@ export const OnboardingGeolocation = () => {
   }, [navigate])
 
   const onGeolocationButtonPress = useCallback(async () => {
-    analytics.logOnboardingGeolocationClicked({ type: 'use_my_position' })
     await requestGeolocPermission({
       onSubmit: navigateToNextScreen,
       onAcceptance: analytics.logHasActivateGeolocFromTutorial,

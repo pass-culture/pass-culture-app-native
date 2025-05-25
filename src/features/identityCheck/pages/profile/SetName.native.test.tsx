@@ -5,7 +5,6 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
 import { SetName } from 'features/identityCheck/pages/profile/SetName'
 import { SubscriptionRootStackParamList } from 'features/navigation/RootNavigator/types'
-import { analytics } from 'libs/analytics/provider'
 import { storage } from 'libs/storage'
 import { act, fireEvent, render, screen, userEvent, waitFor } from 'tests/utils'
 
@@ -117,20 +116,6 @@ describe('<SetName/>', () => {
     expect(navigate).toHaveBeenNthCalledWith(1, 'SetCity', {
       type: ProfileTypes.BOOKING_FREE_OFFER_15_16,
     })
-  })
-
-  it('should log analytics on press Continuer', async () => {
-    renderSetName({ type: ProfileTypes.IDENTITY_CHECK })
-
-    const firstNameInput = screen.getByPlaceholderText('Ton prénom')
-    await act(async () => fireEvent.changeText(firstNameInput, firstName))
-
-    const lastNameInput = screen.getByPlaceholderText('Ton nom')
-    await act(async () => fireEvent.changeText(lastNameInput, lastName))
-
-    await user.press(screen.getByText('Continuer'))
-
-    expect(analytics.logSetNameClicked).toHaveBeenCalledTimes(1)
   })
 })
 

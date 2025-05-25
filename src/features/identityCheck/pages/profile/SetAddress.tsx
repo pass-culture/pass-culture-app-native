@@ -17,7 +17,6 @@ import {
   UseNavigationType,
 } from 'features/navigation/RootNavigator/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
-import { analytics } from 'libs/analytics/provider'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { useAddresses } from 'libs/place/useAddresses'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
@@ -123,7 +122,6 @@ export const SetAddress: FunctionComponent<Props> = ({ route }: Props) => {
   const submitAddress = async () => {
     if (!enabled) return
     setStoreAddress(selectedAddress ?? query)
-    analytics.logSetAddressClicked()
     navigate('SetStatus', { type: pageInfos.navigateParamsType })
   }
 

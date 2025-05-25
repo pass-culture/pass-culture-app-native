@@ -100,8 +100,6 @@ export const SetPhoneValidationCode = () => {
         validatePhoneNumber(code)
       }
     }
-
-    analytics.logPhoneValidationCodeClicked()
   }
 
   const enterCodeInstructions =

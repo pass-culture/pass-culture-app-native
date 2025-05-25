@@ -3,7 +3,6 @@ import { Platform, Text } from 'react-native'
 import styled from 'styled-components/native'
 
 import { SecondButtonList } from 'features/identityCheck/components/SecondButtonList'
-import { analytics } from 'libs/analytics/provider'
 import { HeroButtonList } from 'ui/components/buttons/HeroButtonList'
 import { SeparatorWithText } from 'ui/components/SeparatorWithText'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
@@ -12,11 +11,6 @@ import { France as FranceIcon } from 'ui/svg/icons/France'
 import { IdCardWithMagnifyingGlass as InitialIdCardWithMagnifyingGlass } from 'ui/svg/icons/IdCardWithMagnifyingGlass'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
-
-export enum IDOrigin {
-  'FRANCE' = 'France',
-  'FOREIGN' = 'Foreign',
-}
 
 export const SelectIDOrigin: FunctionComponent = () => (
   <PageWithHeader title="Identification" scrollChildren={<SelectIDOriginContent />} />
@@ -44,7 +38,6 @@ const SelectIDOriginContent: FunctionComponent = () => {
         navigateTo={{ screen: Platform.OS === 'web' ? 'SelectPhoneStatus' : 'SelectIDStatus' }}
         key={1}
         accessibilityLabel="J’ai une carte d’identité ou un passeport français"
-        onBeforeNavigate={() => analytics.logSetIdOriginClicked(IDOrigin.FRANCE)}
       />
       <Spacer.Column numberOfSpaces={7} />
       <SeparatorWithText label="ou" />
@@ -53,7 +46,6 @@ const SelectIDOriginContent: FunctionComponent = () => {
         label="J’ai un titre de séjour, une carte d’identité ou un passeport étranger."
         leftIcon={Earth}
         navigateTo={{ screen: 'DMSIntroduction', params: { isForeignDMSInformation: true } }}
-        onBeforeNavigate={() => analytics.logSetIdOriginClicked(IDOrigin.FOREIGN)}
       />
     </Container>
   )

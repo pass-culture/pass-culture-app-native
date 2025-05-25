@@ -20,7 +20,7 @@ def usage():
     print("""Usage: python scripts/add_tracker.py [-h] [-p <provider>] <tracker_name>
           
 -h, --help: Show this message
--p, --provider: is one of: firebase, amplitude. Default: firebase
+-p, --provider Default: firebase
 <tracker_name>: Name of the tracker to add. Must be PascalCase.""")
 
 
@@ -67,10 +67,6 @@ PROVIDERS = {
     "firebase": {
         "prefix":"AnalyticsEvent",
         "event_name_formatter": lambda name: name
-    },
-    "amplitude": {
-        "prefix":"AmplitudeEvent",
-        "event_name_formatter": pascal_case_to_snake_case
     }
 }
 

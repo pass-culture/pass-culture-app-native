@@ -31,7 +31,6 @@ export const SignupConfirmationEmailSent: FunctionComponent<Props> = ({ email })
         email={email}
         consultFaq={contactSupport.forSignupConfirmationEmailNotReceived}
         consultFaqAnalytics={analytics.logHelpCenterContactSignupConfirmationEmailSent}
-        openInBoxAnalytics={analytics.logEmailConfirmationConsultEmailClicked}
         additionalCTA={additionalCTA}
       />
       <EmailResendModal email={email} visible={visible} onDismiss={hideModal} />
