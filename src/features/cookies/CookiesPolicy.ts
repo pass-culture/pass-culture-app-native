@@ -13,7 +13,6 @@ export const COOKIES_BY_CATEGORY: Record<CookieCategoriesEnum, Cookies> = {
   ],
   [CookieCategoriesEnum.performance]: [
     CookieNameEnum.ALGOLIA_INSIGHTS,
-    CookieNameEnum.AMPLITUDE,
     CookieNameEnum.GOOGLE_ANALYTICS,
   ],
   [CookieCategoriesEnum.essential]: [

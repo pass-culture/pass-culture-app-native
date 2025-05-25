@@ -33,7 +33,6 @@ import {
 import { SearchState } from 'features/search/types'
 import { ShareAppModalType } from 'features/share/types'
 import { SubscriptionAnalyticsParams } from 'features/subscription/types'
-import { AmplitudeEvent } from 'libs/amplitude/events'
 import { buildPerformSearchState, urlWithValueMaxLength } from 'libs/analytics'
 import { analytics } from 'libs/analytics/provider'
 import { ConsultOfferLogParams } from 'libs/analytics/types'
@@ -157,12 +156,10 @@ export const logEventAnalytics = {
     analytics.logEvent({ amplitude: AmplitudeEvent.CHECK_EDUCONNECT_DATA_CLICKED }),
   logChooseEduConnectMethod: () =>
     analytics.logEvent({
-      amplitude: AmplitudeEvent.CHOOSE_METHOD_EDUCONNECT,
       firebase: AnalyticsEvent.CHOOSE_EDUCONNECT_METHOD,
     }),
   logChooseUbbleMethod: () =>
     analytics.logEvent({
-      amplitude: AmplitudeEvent.CHOOSE_METHOD_UBBLE,
       firebase: AnalyticsEvent.CHOOSE_UBBLE_METHOD,
     }),
   logClickBookOffer: (params: {
@@ -424,7 +421,6 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.HAS_STARTED_CULTURAL_SURVEY }),
   logHelpCenterContactSignupConfirmationEmailSent: () =>
     analytics.logEvent({
-      amplitude: AmplitudeEvent.EMAIL_CONFIRMATION_HELPCENTER_CLICKED,
       firebase: AnalyticsEvent.HELP_CENTER_CONTACT_SIGNUP_CONFIRMATION_EMAIL_SENT,
     }),
   logHighlightBlockClicked: (params: { moduleId: string; entryId: string; toEntryId: string }) =>
@@ -436,7 +432,7 @@ export const logEventAnalytics = {
   }) => analytics.logEvent({ firebase: AnalyticsEvent.IDENTITY_CHECK_ABORT }, params),
   logIdentityCheckStep: (nextStep: DeprecatedIdentityCheckStep | IdentityCheckStep) =>
     analytics.logEvent(
-      { amplitude: AmplitudeEvent.STEPPER_CLICKED, firebase: AnalyticsEvent.IDENTITY_CHECK_STEP },
+      { firebase: AnalyticsEvent.IDENTITY_CHECK_STEP },
       { nextStep, step: nextStep }
     ),
   logIdentityCheckSuccess: (params: { method: IdentityCheckMethod }) =>
@@ -512,7 +508,6 @@ export const logEventAnalytics = {
   logOnboardingStarted: (params: { type: 'login' | 'start' }) =>
     analytics.logEvent(
       {
-        amplitude: AmplitudeEvent.ONBOARDING_STARTED,
         firebase: AnalyticsEvent.ONBOARDING_STARTED,
       },
       params
@@ -612,7 +607,6 @@ export const logEventAnalytics = {
   logSelectAge: ({ age }: { age: EligibleAges | NonEligible }) =>
     analytics.logEvent(
       {
-        amplitude: AmplitudeEvent.ONBOARDING_AGE_SELECTION_CLICKED,
         firebase: AnalyticsEvent.SELECT_AGE,
       },
       { age }
@@ -654,10 +648,7 @@ export const logEventAnalytics = {
   logSignInFromOffer: (offerId: number) =>
     analytics.logEvent({ firebase: AnalyticsEvent.SIGN_IN_FROM_OFFER }, { offerId }),
   logSignUpClicked: ({ from }: { from: string }) =>
-    analytics.logEvent(
-      { amplitude: AmplitudeEvent.CREATE_ACCOUNT_CLICKED, firebase: AnalyticsEvent.SIGN_UP },
-      { from }
-    ),
+    analytics.logEvent({ firebase: AnalyticsEvent.SIGN_UP }, { from }),
   logSignUpFromAuthenticationModal: (offerId: number) =>
     analytics.logEvent(
       { firebase: AnalyticsEvent.SIGN_UP_FROM_AUTHENTICATION_MODAL },
