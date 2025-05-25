@@ -5,12 +5,10 @@ import {
   generateUTMKeys,
   startTrackingAcceptedCookies,
 } from 'features/cookies/helpers/startTrackingAcceptedCookies'
-import { amplitude } from 'libs/amplitude'
 import { campaignTracker } from 'libs/campaign'
 import { firebaseAnalytics } from 'libs/firebase/analytics/analytics'
 import { Batch } from 'libs/react-native-batch'
 
-jest.mock('libs/amplitude/amplitude')
 jest.mock('libs/campaign')
 
 jest.mock('features/cookies/helpers/removeGeneratedStorageKey')
@@ -22,7 +20,6 @@ describe('startTrackingAcceptedCookies', () => {
   it('should disable tracking when refused all cookies', () => {
     startTrackingAcceptedCookies([])
 
-    expect(amplitude.disableCollection).toHaveBeenCalledTimes(1)
     expect(firebaseAnalytics.disableCollection).toHaveBeenCalledTimes(1)
     expect(campaignTracker.startAppsFlyer).toHaveBeenCalledWith(false)
     expect(Batch.optOut).toHaveBeenCalledTimes(1)
@@ -31,7 +28,6 @@ describe('startTrackingAcceptedCookies', () => {
   it('should enable tracking if accepted all cookies', () => {
     startTrackingAcceptedCookies(ALL_OPTIONAL_COOKIES)
 
-    expect(amplitude.enableCollection).toHaveBeenCalledTimes(1)
     expect(firebaseAnalytics.enableCollection).toHaveBeenCalledTimes(1)
     expect(campaignTracker.startAppsFlyer).toHaveBeenCalledWith(true)
     expect(Batch.optIn).toHaveBeenCalledTimes(1)
@@ -42,13 +38,6 @@ describe('startTrackingAcceptedCookies', () => {
     startTrackingAcceptedCookies(googleAnalyticsAccepted)
 
     expect(firebaseAnalytics.enableCollection).toHaveBeenCalledTimes(1)
-  })
-
-  it('should enable Amplitude when performance cookies are accepted', () => {
-    const amplitudeAccepted = COOKIES_BY_CATEGORY.performance
-    startTrackingAcceptedCookies(amplitudeAccepted)
-
-    expect(amplitude.enableCollection).toHaveBeenCalledTimes(1)
   })
 
   it('should init AppsFlyers when marketing cookies are accepted', () => {
@@ -72,13 +61,12 @@ describe('startTrackingAcceptedCookies', () => {
     expect(Batch.optIn).toHaveBeenCalledTimes(1)
   })
 
-  it('should disable Amplitude, Batch and Google Analytics when only marketing cookies are accepted', () => {
+  it('should disable Batch and Google Analytics when only marketing cookies are accepted', () => {
     startTrackingAcceptedCookies(COOKIES_BY_CATEGORY.marketing)
 
     expect(campaignTracker.startAppsFlyer).toHaveBeenCalledWith(true)
 
     expect(Batch.optOut).toHaveBeenCalledTimes(1)
-    expect(amplitude.disableCollection).toHaveBeenCalledTimes(1)
     expect(firebaseAnalytics.disableCollection).toHaveBeenCalledTimes(1)
   })
 

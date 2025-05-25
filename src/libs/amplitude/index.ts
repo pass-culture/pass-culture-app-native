@@ -1,1 +1,0 @@
-export { amplitude } from './amplitude'

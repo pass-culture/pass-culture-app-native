@@ -1,9 +1,8 @@
 import React from 'react'
 
-import { navigate, useRoute } from '__mocks__/@react-navigation/native'
+import { useRoute, navigate } from '__mocks__/@react-navigation/native'
 import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
 import { SetName } from 'features/identityCheck/pages/profile/SetName'
-import { analytics } from 'libs/analytics/provider'
 import { storage } from 'libs/storage'
 import { act, fireEvent, render, screen, userEvent, waitFor } from 'tests/utils'
 
@@ -21,20 +20,14 @@ const user = userEvent.setup()
 jest.useFakeTimers()
 
 describe('<SetName/>', () => {
-  beforeEach(() => {
-    useRoute.mockReturnValue({
-      params: { type: ProfileTypes.IDENTITY_CHECK },
-    })
-  })
-
   it('should render correctly', () => {
-    renderSetName()
+    renderSetName({ type: ProfileTypes.IDENTITY_CHECK })
 
     expect(screen).toMatchSnapshot()
   })
 
   it('should display correct infos in identity check', async () => {
-    renderSetName()
+    renderSetName({ type: ProfileTypes.IDENTITY_CHECK })
 
     expect(await screen.findByText('Profil')).toBeTruthy()
     expect(await screen.findByText('Comment t’appelles-tu\u00a0?')).toBeTruthy()
@@ -46,11 +39,7 @@ describe('<SetName/>', () => {
   })
 
   it('should display correct infos in booking free offer 15/16 years', async () => {
-    useRoute.mockReturnValueOnce({
-      params: { type: ProfileTypes.BOOKING_FREE_OFFER_15_16 },
-    })
-
-    renderSetName()
+    renderSetName({ type: ProfileTypes.BOOKING_FREE_OFFER_15_16 })
 
     expect(await screen.findByText('Informations personnelles')).toBeTruthy()
     expect(await screen.findByText('Renseigne ton prénom et ton nom')).toBeTruthy()
@@ -62,7 +51,7 @@ describe('<SetName/>', () => {
   })
 
   it('should enable the submit button when first name and last name is not empty', async () => {
-    renderSetName()
+    renderSetName({ type: ProfileTypes.IDENTITY_CHECK })
 
     const continueButton = screen.getByTestId('Continuer vers la ville de résidence')
 
@@ -80,7 +69,7 @@ describe('<SetName/>', () => {
   })
 
   it('should store name in storage when submit name', async () => {
-    renderSetName()
+    renderSetName({ type: ProfileTypes.IDENTITY_CHECK })
 
     const firstNameInput = screen.getByPlaceholderText('Ton prénom')
     await act(async () => fireEvent.changeText(firstNameInput, firstName))
@@ -98,7 +87,7 @@ describe('<SetName/>', () => {
   })
 
   it('should navigate to SetCity with identityCheck params when submit name', async () => {
-    renderSetName()
+    renderSetName({ type: ProfileTypes.IDENTITY_CHECK })
 
     const firstNameInput = screen.getByPlaceholderText('Ton prénom')
     await act(async () => fireEvent.changeText(firstNameInput, firstName))
@@ -108,22 +97,11 @@ describe('<SetName/>', () => {
 
     await user.press(screen.getByText('Continuer'))
 
-    expect(navigate).toHaveBeenNthCalledWith(1, 'SubscriptionStackNavigator', {
-      screen: 'SetCity',
-      params: {
-        type: ProfileTypes.IDENTITY_CHECK,
-      },
-    })
+    expect(navigate).toHaveBeenNthCalledWith(1, 'SetCity', { type: ProfileTypes.IDENTITY_CHECK })
   })
 
   it('should navigate to SetCity with booking params when submit name', async () => {
-    // Test fails if mockReturnValueOnce
-    // eslint-disable-next-line local-rules/independent-mocks
-    useRoute.mockReturnValue({
-      params: { type: ProfileTypes.BOOKING_FREE_OFFER_15_16 },
-    })
-
-    renderSetName()
+    renderSetName({ type: ProfileTypes.BOOKING_FREE_OFFER_15_16 })
 
     const firstNameInput = screen.getByPlaceholderText('Ton prénom')
     await act(async () => fireEvent.changeText(firstNameInput, firstName))
@@ -133,29 +111,13 @@ describe('<SetName/>', () => {
 
     await user.press(screen.getByText('Continuer'))
 
-    expect(navigate).toHaveBeenNthCalledWith(1, 'SubscriptionStackNavigator', {
-      screen: 'SetCity',
-      params: {
-        type: ProfileTypes.BOOKING_FREE_OFFER_15_16,
-      },
+    expect(navigate).toHaveBeenNthCalledWith(1, 'SetCity', {
+      type: ProfileTypes.BOOKING_FREE_OFFER_15_16,
     })
-  })
-
-  it('should log analytics on press Continuer', async () => {
-    renderSetName()
-
-    const firstNameInput = screen.getByPlaceholderText('Ton prénom')
-    await act(async () => fireEvent.changeText(firstNameInput, firstName))
-
-    const lastNameInput = screen.getByPlaceholderText('Ton nom')
-    await act(async () => fireEvent.changeText(lastNameInput, lastName))
-
-    await user.press(screen.getByText('Continuer'))
-
-    expect(analytics.logSetNameClicked).toHaveBeenCalledTimes(1)
   })
 })
 
-const renderSetName = () => {
+const renderSetName = (navigationParams: { type: string }) => {
+  useRoute.mockReturnValue({ params: navigationParams })
   return render(<SetName />)
 }

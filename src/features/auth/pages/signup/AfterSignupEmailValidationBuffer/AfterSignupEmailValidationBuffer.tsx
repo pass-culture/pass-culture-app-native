@@ -7,7 +7,6 @@ import { useValidateEmailMutation } from 'features/auth/queries/useValidateEmail
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { homeNavigationConfig } from 'features/navigation/TabBar/helpers'
 import { useDeviceInfo } from 'features/trustedDevice/helpers/useDeviceInfo'
-import { analytics } from 'libs/analytics/provider'
 import { isTimestampExpired } from 'libs/dates'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { LoadingPage } from 'ui/pages/LoadingPage'
@@ -62,7 +61,6 @@ export function AfterSignupEmailValidationBuffer() {
   }
 
   async function onEmailValidationSuccess(props: ValidateEmailResponse) {
-    await analytics.logEmailValidated()
     await loginAndRedirect(props)
   }
 

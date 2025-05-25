@@ -1,4 +1,3 @@
-import { pick } from 'lodash'
 import React, { memo, useCallback, useEffect, useMemo, useRef, useState } from 'react'
 
 import { api } from 'api/api'
@@ -7,18 +6,15 @@ import { AuthContext } from 'features/auth/context/AuthContext'
 import { useConnectServicesRequiringUserId } from 'features/auth/helpers/useConnectServicesRequiringUserId'
 import { navigateFromRef } from 'features/navigation/navigationRef'
 // eslint-disable-next-line no-restricted-imports
-import { amplitude } from 'libs/amplitude'
 import { useAppStateChange } from 'libs/appState'
 import { getTokenExpirationDate } from 'libs/jwt/getTokenExpirationDate'
 import { computeTokenRemainingLifetimeInMs, getTokenStatus } from 'libs/jwt/jwt'
 import { clearRefreshToken, getRefreshToken } from 'libs/keychain/keychain'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
-import { getAppVersion } from 'libs/packageJson'
 import { QueryKeys } from 'libs/queryKeys'
 import { usePersistQuery } from 'libs/react-query/usePersistQuery'
 import { storage } from 'libs/storage'
-import { getAge } from 'shared/user/getAge'
 
 const NAVIGATION_DELAY_FOR_EXPIRED_REFRESH_TOKEN_IN_MS = 1000
 
@@ -101,26 +97,6 @@ export const AuthWrapper = memo(function AuthWrapper({
   }, [readTokenAndConnectUser])
 
   useAppStateChange(readTokenAndConnectUser, () => void 0, [isLoggedIn])
-
-  useEffect(() => {
-    if (!user?.id) return
-
-    const partialUser = pick(user, [
-      'depositType',
-      'eligibility',
-      'eligibilityEndDatetime',
-      'id',
-      'isBeneficiary',
-      'needsToFillCulturalSurvey',
-    ])
-    amplitude.setUserProperties({
-      ...partialUser,
-      ...(user.birthDate ? { age: getAge(user.birthDate) } : {}),
-      status: user.status?.statusType, // eligible, beneficiaire, suspendu, etc
-      appVersion: getAppVersion(),
-    })
-    amplitude.setUserId(user.id.toString())
-  }, [user])
 
   const value = useMemo(
     () => ({ isLoggedIn, setIsLoggedIn, user, refetchUser, isUserLoading }),
