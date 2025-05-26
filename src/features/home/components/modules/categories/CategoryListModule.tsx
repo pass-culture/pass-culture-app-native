@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { AccessibleTitle } from 'features/home/components/AccessibleTitle'
 import { CategoryBlock as CategoryBlockData } from 'features/home/types'
@@ -29,6 +29,7 @@ export const CategoryListModule = ({
   index,
   homeEntryId,
 }: CategoryListProps) => {
+  const theme = useTheme()
   useEffect(() => {
     analytics.logModuleDisplayedOnHomepage({
       moduleId: id,
@@ -42,32 +43,39 @@ export const CategoryListModule = ({
     <Container>
       <AccessibleTitle title={title} />
       <StyledView>
-        {categoryBlockList.map((item) => (
-          <StyledCategoryButton
-            key={item.id}
-            label={item.title}
-            height={BLOCK_HEIGHT}
-            fillColor={colorMapping[item.color].fill}
-            borderColor={colorMapping[item.color].border}
-            onBeforeNavigate={() => {
-              analytics.logCategoryBlockClicked({
-                moduleId: item.id,
-                moduleListID: id,
-                entryId: homeEntryId,
-                toEntryId: item.homeEntryId,
-              })
-            }}
-            navigateTo={{
-              screen: 'ThematicHome',
-              params: {
-                homeId: item.homeEntryId,
-                from: 'category_block',
-                moduleId: item.id,
-                moduleListId: id,
-              },
-            }}
-          />
-        ))}
+        {categoryBlockList.map((item) => {
+          const fillFromDesignSystem =
+            theme.designSystem.color.background[colorMapping[item.color].fill ?? 'default']
+
+          const borderFromDesignSystem =
+            theme.designSystem.color.border[colorMapping[item.color].border ?? 'default']
+          return (
+            <StyledCategoryButton
+              key={item.id}
+              label={item.title}
+              height={BLOCK_HEIGHT}
+              fillColor={fillFromDesignSystem || colorMapping[item.color].fill}
+              borderColor={borderFromDesignSystem || colorMapping[item.color].border}
+              onBeforeNavigate={() => {
+                analytics.logCategoryBlockClicked({
+                  moduleId: item.id,
+                  moduleListID: id,
+                  entryId: homeEntryId,
+                  toEntryId: item.homeEntryId,
+                })
+              }}
+              navigateTo={{
+                screen: 'ThematicHome',
+                params: {
+                  homeId: item.homeEntryId,
+                  from: 'category_block',
+                  moduleId: item.id,
+                  moduleListId: id,
+                },
+              }}
+            />
+          )
+        })}
       </StyledView>
     </Container>
   )

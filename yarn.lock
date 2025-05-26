@@ -10834,12 +10834,13 @@ __metadata:
     date-fns-tz: ^2.0.0
     deepmerge: ^4.2.2
     deprecated-react-native-prop-types: ^5.0.0
-    design-system: "https://github.com/pass-culture/design-system.git#v0.0.28"
+    design-system: "https://github.com/pass-culture/design-system.git#v0.0.29"
     dotenv: ^8.2.0
     dotenv-expand: ^5.1.0
     eslint: ^8.57.0
     eslint-config-prettier: ^9.1.0
     eslint-import-resolver-alias: ^1.1.2
+    eslint-plugin-boundaries: ^5.0.1
     eslint-plugin-import: ^2.22.1
     eslint-plugin-jest: ^27.1.4
     eslint-plugin-jest-formatting: ^3.1.0
@@ -10880,7 +10881,7 @@ __metadata:
     mailparser: ^3.6.3
     mockdate: ^3.0.2
     msw: ^2.7.3
-    patch-package: ^6.2.0
+    patch-package: ^8.0.0
     playwright: ^1.28.1
     prettier: ^3.2.5
     prop-types: ^15.7.2
@@ -10956,7 +10957,7 @@ __metadata:
     typescript: 5.0.4
     url-loader: ^4.1.1
     uuid: ^8.3.2
-    vite: ^5.3.1
+    vite: ^5.4.19
     vite-bundle-analyzer: ^0.16.2
     vite-plugin-commonjs: ^0.10.4
     vite-plugin-html: ^3.2.2
@@ -12665,6 +12666,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"call-bound@npm:^1.0.4":
+  version: 1.0.4
+  resolution: "call-bound@npm:1.0.4"
+  dependencies:
+    call-bind-apply-helpers: ^1.0.2
+    get-intrinsic: ^1.3.0
+  checksum: 2f6399488d1c272f56306ca60ff696575e2b7f31daf23bc11574798c84d9f2759dceb0cb1f471a85b77f28962a7ac6411f51d283ea2e45319009a19b6ccab3b2
+  languageName: node
+  linkType: hard
+
 "caller-callsite@npm:^2.0.0":
   version: 2.0.0
   resolution: "caller-callsite@npm:2.0.0"
@@ -12989,6 +13000,13 @@ __metadata:
   version: 3.3.1
   resolution: "ci-info@npm:3.3.1"
   checksum: 244546317cca96955860d2cb8d0bf47dd66d9078bbe83a215fa87464ab24b352c6fc6f56027d1c82f002e3f833be253f1320d35ed7199bd81134f7788c657f3a
+  languageName: node
+  linkType: hard
+
+"ci-info@npm:^3.7.0":
+  version: 3.9.0
+  resolution: "ci-info@npm:3.9.0"
+  checksum: 6b19dc9b2966d1f8c2041a838217299718f15d6c4b63ae36e4674edd2bee48f780e94761286a56aa59eb305a85fbea4ddffb7630ec063e7ec7e7e5ad42549a87
   languageName: node
   linkType: hard
 
@@ -14386,10 +14404,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"design-system@https://github.com/pass-culture/design-system.git#v0.0.28":
-  version: 0.0.28
-  resolution: "design-system@https://github.com/pass-culture/design-system.git#commit=c8db8c1139411edba18f00078db1d9c3357a59b8"
-  checksum: a0bec0bff934cbcddf50167539d0feb608a3e3e4359a8b1a82da71151cc9f1cade01b75ff79d0463d5de08a0bf43227e082493f38abccd1d1a94cea012fe080e
+"design-system@https://github.com/pass-culture/design-system.git#v0.0.29":
+  version: 0.0.29
+  resolution: "design-system@https://github.com/pass-culture/design-system.git#commit=c6227fff19989caf297744f81dc0a658e7ca8064"
+  checksum: 042416c857a427be635692d974027b03e166518de5e6a5f74216ef4acb8ca2eaa5f7a66971279cd4981bf6acf8faf34344d13364c5b66350fa8b08fb3cbebec7
   languageName: node
   linkType: hard
 
@@ -15497,6 +15515,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"eslint-import-resolver-node@npm:0.3.9":
+  version: 0.3.9
+  resolution: "eslint-import-resolver-node@npm:0.3.9"
+  dependencies:
+    debug: ^3.2.7
+    is-core-module: ^2.13.0
+    resolve: ^1.22.4
+  checksum: 439b91271236b452d478d0522a44482e8c8540bf9df9bd744062ebb89ab45727a3acd03366a6ba2bdbcde8f9f718bab7fe8db64688aca75acf37e04eafd25e22
+  languageName: node
+  linkType: hard
+
 "eslint-import-resolver-node@npm:^0.3.6":
   version: 0.3.6
   resolution: "eslint-import-resolver-node@npm:0.3.6"
@@ -15504,6 +15533,18 @@ __metadata:
     debug: ^3.2.7
     resolve: ^1.20.0
   checksum: 6266733af1e112970e855a5bcc2d2058fb5ae16ad2a6d400705a86b29552b36131ffc5581b744c23d550de844206fb55e9193691619ee4dbf225c4bde526b1c8
+  languageName: node
+  linkType: hard
+
+"eslint-module-utils@npm:2.12.0":
+  version: 2.12.0
+  resolution: "eslint-module-utils@npm:2.12.0"
+  dependencies:
+    debug: ^3.2.7
+  peerDependenciesMeta:
+    eslint:
+      optional: true
+  checksum: be3ac52e0971c6f46daeb1a7e760e45c7c45f820c8cc211799f85f10f04ccbf7afc17039165d56cb2da7f7ca9cec2b3a777013cddf0b976784b37eb9efa24180
   languageName: node
   linkType: hard
 
@@ -15515,6 +15556,20 @@ __metadata:
     find-up: ^2.1.0
     pkg-dir: ^2.0.0
   checksum: c30dfa125aafe65e5f6a30a31c26932106fcf09934a2f47d7f8a393ed9106da7b07416f2337b55c85f9db0175c873ee0827be5429a24ec381b49940f342b9ac3
+  languageName: node
+  linkType: hard
+
+"eslint-plugin-boundaries@npm:^5.0.1":
+  version: 5.0.1
+  resolution: "eslint-plugin-boundaries@npm:5.0.1"
+  dependencies:
+    chalk: 4.1.2
+    eslint-import-resolver-node: 0.3.9
+    eslint-module-utils: 2.12.0
+    micromatch: 4.0.8
+  peerDependencies:
+    eslint: ">=6.0.0"
+  checksum: f698c908d09cadc4fb17d0da1cae4070676522f91d52fadf39538cadb28a6dfb90ac1772c029939fad9f3f30906e6ff660dd445a70131451659d878c3af2e930
   languageName: node
   linkType: hard
 
@@ -16881,17 +16936,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fs-extra@npm:^7.0.1":
-  version: 7.0.1
-  resolution: "fs-extra@npm:7.0.1"
-  dependencies:
-    graceful-fs: ^4.1.2
-    jsonfile: ^4.0.0
-    universalify: ^0.1.0
-  checksum: 141b9dccb23b66a66cefdd81f4cda959ff89282b1d721b98cea19ba08db3dcbe6f862f28841f3cf24bb299e0b7e6c42303908f65093cb7e201708e86ea5a8dcf
-  languageName: node
-  linkType: hard
-
 "fs-extra@npm:^8.1.0":
   version: 8.1.0
   resolution: "fs-extra@npm:8.1.0"
@@ -16903,7 +16947,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fs-extra@npm:^9.1.0":
+"fs-extra@npm:^9.0.0, fs-extra@npm:^9.1.0":
   version: 9.1.0
   resolution: "fs-extra@npm:9.1.0"
   dependencies:
@@ -17176,7 +17220,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"get-intrinsic@npm:^1.2.4, get-intrinsic@npm:^1.2.5, get-intrinsic@npm:^1.2.6":
+"get-intrinsic@npm:^1.2.4, get-intrinsic@npm:^1.2.5, get-intrinsic@npm:^1.2.6, get-intrinsic@npm:^1.3.0":
   version: 1.3.0
   resolution: "get-intrinsic@npm:1.3.0"
   dependencies:
@@ -20288,6 +20332,19 @@ __metadata:
   languageName: node
   linkType: hard
 
+"json-stable-stringify@npm:^1.0.2":
+  version: 1.3.0
+  resolution: "json-stable-stringify@npm:1.3.0"
+  dependencies:
+    call-bind: ^1.0.8
+    call-bound: ^1.0.4
+    isarray: ^2.0.5
+    jsonify: ^0.0.1
+    object-keys: ^1.1.1
+  checksum: aaa8b56b7dbee2234adc5e318cf71e38ecd7b8a3811a420a77add8c870d281f7f5050008e2964a7ced4857f501f4667f3ac88b44bf70197bd0682e068a4d93ea
+  languageName: node
+  linkType: hard
+
 "json-stringify-safe@npm:~5.0.1":
   version: 5.0.1
   resolution: "json-stringify-safe@npm:5.0.1"
@@ -20337,6 +20394,13 @@ __metadata:
     graceful-fs:
       optional: true
   checksum: 7af3b8e1ac8fe7f1eccc6263c6ca14e1966fcbc74b618d3c78a0a2075579487547b94f72b7a1114e844a1e15bb00d440e5d1720bfc4612d790a6f285d5ea8354
+  languageName: node
+  linkType: hard
+
+"jsonify@npm:^0.0.1":
+  version: 0.0.1
+  resolution: "jsonify@npm:0.0.1"
+  checksum: 027287e1c0294fce15f18c0ff990cfc2318e7f01fb76515f784d5cd0784abfec6fc5c2355c3a2f2cb0ad7f4aa2f5b74ebbfe4e80476c35b2d13cabdb572e1134
   languageName: node
   linkType: hard
 
@@ -21803,7 +21867,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"micromatch@npm:^4.0.2, micromatch@npm:^4.0.4, micromatch@npm:^4.0.8":
+"micromatch@npm:4.0.8, micromatch@npm:^4.0.2, micromatch@npm:^4.0.4, micromatch@npm:^4.0.8":
   version: 4.0.8
   resolution: "micromatch@npm:4.0.8"
   dependencies:
@@ -23279,26 +23343,28 @@ __metadata:
   languageName: node
   linkType: hard
 
-"patch-package@npm:^6.2.0":
-  version: 6.4.7
-  resolution: "patch-package@npm:6.4.7"
+"patch-package@npm:^8.0.0":
+  version: 8.0.0
+  resolution: "patch-package@npm:8.0.0"
   dependencies:
     "@yarnpkg/lockfile": ^1.1.0
-    chalk: ^2.4.2
-    cross-spawn: ^6.0.5
+    chalk: ^4.1.2
+    ci-info: ^3.7.0
+    cross-spawn: ^7.0.3
     find-yarn-workspace-root: ^2.0.0
-    fs-extra: ^7.0.1
-    is-ci: ^2.0.0
+    fs-extra: ^9.0.0
+    json-stable-stringify: ^1.0.2
     klaw-sync: ^6.0.0
-    minimist: ^1.2.0
+    minimist: ^1.2.6
     open: ^7.4.2
     rimraf: ^2.6.3
-    semver: ^5.6.0
+    semver: ^7.5.3
     slash: ^2.0.0
     tmp: ^0.0.33
+    yaml: ^2.2.2
   bin:
     patch-package: index.js
-  checksum: f36d5324da3b69ee635e7cd2c68f4d3dd89dc91d60ffdaad3b602fd953277f4da901c91033683bf6ff31c14799bc049849af3a389455c25d0435fe9cfb0d4088
+  checksum: d23cddc4d1622e2d8c7ca31b145c6eddb24bd271f69905e766de5e1f199f0b9a5479a6a6939ea857288399d4ed249285639d539a2c00fbddb7daa39934b007a2
   languageName: node
   linkType: hard
 
@@ -25635,7 +25701,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"resolve@npm:^1.22.1, resolve@npm:^1.22.8":
+"resolve@npm:^1.22.1, resolve@npm:^1.22.4, resolve@npm:^1.22.8":
   version: 1.22.10
   resolution: "resolve@npm:1.22.10"
   dependencies:
@@ -25674,7 +25740,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"resolve@patch:resolve@^1.22.1#~builtin<compat/resolve>, resolve@patch:resolve@^1.22.8#~builtin<compat/resolve>":
+"resolve@patch:resolve@^1.22.1#~builtin<compat/resolve>, resolve@patch:resolve@^1.22.4#~builtin<compat/resolve>, resolve@patch:resolve@^1.22.8#~builtin<compat/resolve>":
   version: 1.22.10
   resolution: "resolve@patch:resolve@npm%3A1.22.10#~builtin<compat/resolve>::version=1.22.10&hash=c3c19d"
   dependencies:
@@ -28453,9 +28519,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vite@npm:^5.3.1":
-  version: 5.4.8
-  resolution: "vite@npm:5.4.8"
+"vite@npm:^5.4.19":
+  version: 5.4.19
+  resolution: "vite@npm:5.4.19"
   dependencies:
     esbuild: ^0.21.3
     fsevents: ~2.3.3
@@ -28492,7 +28558,7 @@ __metadata:
       optional: true
   bin:
     vite: bin/vite.js
-  checksum: b5686ff76a60d53092dc13a5c1e5627165226b8e3da7736931adf87bbe58d383bca386383cea134750108c2d42750c916db3f2314ac90a9477d693950145f140
+  checksum: c15af65f2370b59e674c5fab22d8e05ec5c7f8f0345ed99ffec155c77feb5636b4e0680dbd096a6f06d7c386b259dc0b9c67c4f1ec08486a2f2a677c9ea6971b
   languageName: node
   linkType: hard
 
@@ -29163,6 +29229,15 @@ __metadata:
   bin:
     yaml: bin.mjs
   checksum: 4c391d07a5d5e935e058babb71026c9cdc9a6fd889e35dd91b53cfb0a12691b67c6c5c740858e71345fef18cd9c13c554a6dda9196f59820d769d94041badb0b
+  languageName: node
+  linkType: hard
+
+"yaml@npm:^2.2.2":
+  version: 2.8.0
+  resolution: "yaml@npm:2.8.0"
+  bin:
+    yaml: bin.mjs
+  checksum: 66f103ca5a2f02dac0526895cc7ae7626d91aa8c43aad6fdcff15edf68b1199be4012140b390063877913441aaa5288fdf57eca30e06268a8282dd741525e626
   languageName: node
   linkType: hard
 

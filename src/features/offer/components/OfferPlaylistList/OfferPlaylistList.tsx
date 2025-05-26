@@ -13,7 +13,6 @@ import { useLogPlaylist } from 'features/offer/helpers/useLogPlaylistVertical/us
 import { useLogScrollHandler } from 'features/offer/helpers/useLogScrolHandler/useLogScrollHandler'
 import { analytics } from 'libs/analytics/provider'
 import { getPlaylistItemDimensionsFromLayout } from 'libs/contentful/getPlaylistItemDimensionsFromLayout'
-import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import {
   formatStartPrice,
   getDisplayedPrice,
@@ -49,7 +48,6 @@ export function OfferPlaylistList({
 }: Readonly<OfferPlaylistListProps>) {
   const theme = useTheme()
   const route = useRoute<UseRouteType<'Offer'>>()
-  const { minLikesValue } = useRemoteConfigQuery()
   const fromOfferId = route.params?.fromOfferId
   const categoryMapping = useCategoryIdMapping()
   const labelMapping = useCategoryHomeLabelMapping()
@@ -181,7 +179,6 @@ export function OfferPlaylistList({
                       ? undefined
                       : formatStartPrice
                   ),
-                minLikesValue,
                 theme,
               })}
               title={playlist.title}

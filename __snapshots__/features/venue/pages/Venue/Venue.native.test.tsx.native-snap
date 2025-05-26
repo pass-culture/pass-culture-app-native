@@ -1068,7 +1068,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                           ]
                         }
                         drawDistance={187.5}
-                        estimatedItemSize={144}
+                        estimatedItemSize={160}
                         getItem={[Function]}
                         getItemCount={[Function]}
                         handlerTag={1}
@@ -1144,7 +1144,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                               testID="OfferTile"
                             >
                               <View
-                                accessibilityLabel="Offre Titane - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
+                                accessibilityLabel="Offre Titane - VF de la catégorie Cinéma,   Dès le 18 août, Gratuit. Possibilité de réserver 2 places."
                                 accessibilityRole="link"
                                 accessibilityValue={
                                   {
@@ -1176,16 +1176,16 @@ exports[`<Venue /> should match snapshot 1`] = `
                                     },
                                   ]
                                 }
-                                testID="Offre Titane - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
+                                testID="Offre Titane - VF de la catégorie Cinéma,   Dès le 18 août, Gratuit. Possibilité de réserver 2 places."
                               >
                                 <View
                                   gap={2}
-                                  maxWidth={144}
+                                  maxWidth={160}
                                   style={
                                     [
                                       {
                                         "gap": 8,
-                                        "maxWidth": 144,
+                                        "maxWidth": 160,
                                       },
                                     ]
                                   }
@@ -1203,8 +1203,8 @@ exports[`<Venue /> should match snapshot 1`] = `
                                           },
                                           {
                                             "borderRadius": 8,
-                                            "height": 216,
-                                            "width": 144,
+                                            "height": 240,
+                                            "width": 160,
                                           },
                                         ],
                                       ]
@@ -1225,73 +1225,14 @@ exports[`<Venue /> should match snapshot 1`] = `
                                       testID="tileImage"
                                     />
                                   </View>
-                                  <View
-                                    backgroundColor="#F1F1F4"
-                                    paddingHorizontal={4}
-                                    style={
-                                      [
-                                        {
-                                          "alignItems": "center",
-                                          "alignSelf": "flex-start",
-                                          "backgroundColor": "#F1F1F4",
-                                          "borderRadius": 6,
-                                          "flexDirection": "row",
-                                          "paddingHorizontal": 4,
-                                          "paddingVertical": 4,
-                                        },
-                                      ]
-                                    }
-                                    testID="interaction-tag"
-                                  >
-                                    <View
-                                      style={
-                                        [
-                                          {
-                                            "marginRight": 4,
-                                          },
-                                        ]
-                                      }
-                                    >
-                                      <View
-                                        height={16}
-                                        testID="tagIcon"
-                                        width={16}
-                                      >
-                                        <Text>
-                                          tagIcon-SVG-Mock
-                                        </Text>
-                                      </View>
-                                    </View>
-                                    <Text
-                                      style={
-                                        [
-                                          {
-                                            "color": "#161617",
-                                            "fontFamily": "Montserrat-SemiBold",
-                                            "fontSize": 12,
-                                            "lineHeight": 16,
-                                          },
-                                        ]
-                                      }
-                                    />
-                                  </View>
-                                  <View
-                                    gap={1}
-                                    style={
-                                      [
-                                        {
-                                          "gap": 4,
-                                        },
-                                      ]
-                                    }
-                                  >
+                                  <View>
                                     <Text
                                       numberOfLines={1}
                                       style={
                                         [
                                           {
-                                            "color": "#696A6F",
-                                            "fontFamily": "Montserrat-SemiBold",
+                                            "color": "#696a6f",
+                                            "fontFamily": "Montserrat-Medium",
                                             "fontSize": 12,
                                             "lineHeight": 19.2,
                                           },
@@ -1300,53 +1241,53 @@ exports[`<Venue /> should match snapshot 1`] = `
                                     >
                                       Cinéma
                                     </Text>
-                                    <View>
-                                      <Text
-                                        numberOfLines={2}
-                                        style={
-                                          [
-                                            {
-                                              "color": "#161617",
-                                              "fontFamily": "Montserrat-SemiBold",
-                                              "fontSize": 12,
-                                              "lineHeight": 19.2,
-                                            },
-                                          ]
-                                        }
-                                      >
-                                        Titane - VF
-                                      </Text>
-                                      <Text
-                                        numberOfLines={1}
-                                        style={
-                                          [
-                                            {
-                                              "color": "#161617",
-                                              "fontFamily": "Montserrat-SemiBold",
-                                              "fontSize": 12,
-                                              "lineHeight": 19.2,
-                                            },
-                                          ]
-                                        }
-                                      >
-                                        Dès le 18 août 2021
-                                      </Text>
-                                      <Text
-                                        style={
-                                          [
-                                            {
-                                              "color": "#161617",
-                                              "fontFamily": "Montserrat-SemiBold",
-                                              "fontSize": 12,
-                                              "lineHeight": 19.2,
-                                            },
-                                          ]
-                                        }
-                                        testID="priceIsDuo"
-                                      >
-                                        Gratuit
-                                      </Text>
-                                    </View>
+                                    <Text
+                                      numberOfLines={2}
+                                      style={
+                                        [
+                                          {
+                                            "color": "#161617",
+                                            "fontFamily": "Montserrat-SemiBold",
+                                            "fontSize": 12,
+                                            "lineHeight": 19.2,
+                                          },
+                                        ]
+                                      }
+                                    >
+                                      Titane - VF
+                                    </Text>
+                                  </View>
+                                  <View>
+                                    <Text
+                                      style={
+                                        [
+                                          {
+                                            "color": "#161617",
+                                            "fontFamily": "Montserrat-Medium",
+                                            "fontSize": 12,
+                                            "lineHeight": 19.2,
+                                          },
+                                        ]
+                                      }
+                                      testID="priceIsDuo"
+                                    >
+                                      Gratuit
+                                    </Text>
+                                    <Text
+                                      numberOfLines={1}
+                                      style={
+                                        [
+                                          {
+                                            "color": "#696a6f",
+                                            "fontFamily": "Montserrat-Medium",
+                                            "fontSize": 12,
+                                            "lineHeight": 19.2,
+                                          },
+                                        ]
+                                      }
+                                    >
+                                      Dès le 18 août
+                                    </Text>
                                   </View>
                                 </View>
                               </View>
@@ -1406,7 +1347,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                               testID="OfferTile"
                             >
                               <View
-                                accessibilityLabel="Offre Bac Nord - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
+                                accessibilityLabel="Offre Bac Nord - VF de la catégorie Cinéma,   Dès le 18 août, Gratuit. Possibilité de réserver 2 places."
                                 accessibilityRole="link"
                                 accessibilityValue={
                                   {
@@ -1438,16 +1379,16 @@ exports[`<Venue /> should match snapshot 1`] = `
                                     },
                                   ]
                                 }
-                                testID="Offre Bac Nord - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
+                                testID="Offre Bac Nord - VF de la catégorie Cinéma,   Dès le 18 août, Gratuit. Possibilité de réserver 2 places."
                               >
                                 <View
                                   gap={2}
-                                  maxWidth={144}
+                                  maxWidth={160}
                                   style={
                                     [
                                       {
                                         "gap": 8,
-                                        "maxWidth": 144,
+                                        "maxWidth": 160,
                                       },
                                     ]
                                   }
@@ -1465,8 +1406,8 @@ exports[`<Venue /> should match snapshot 1`] = `
                                           },
                                           {
                                             "borderRadius": 8,
-                                            "height": 216,
-                                            "width": 144,
+                                            "height": 240,
+                                            "width": 160,
                                           },
                                         ],
                                       ]
@@ -1487,73 +1428,14 @@ exports[`<Venue /> should match snapshot 1`] = `
                                       testID="tileImage"
                                     />
                                   </View>
-                                  <View
-                                    backgroundColor="#F1F1F4"
-                                    paddingHorizontal={4}
-                                    style={
-                                      [
-                                        {
-                                          "alignItems": "center",
-                                          "alignSelf": "flex-start",
-                                          "backgroundColor": "#F1F1F4",
-                                          "borderRadius": 6,
-                                          "flexDirection": "row",
-                                          "paddingHorizontal": 4,
-                                          "paddingVertical": 4,
-                                        },
-                                      ]
-                                    }
-                                    testID="interaction-tag"
-                                  >
-                                    <View
-                                      style={
-                                        [
-                                          {
-                                            "marginRight": 4,
-                                          },
-                                        ]
-                                      }
-                                    >
-                                      <View
-                                        height={16}
-                                        testID="tagIcon"
-                                        width={16}
-                                      >
-                                        <Text>
-                                          tagIcon-SVG-Mock
-                                        </Text>
-                                      </View>
-                                    </View>
-                                    <Text
-                                      style={
-                                        [
-                                          {
-                                            "color": "#161617",
-                                            "fontFamily": "Montserrat-SemiBold",
-                                            "fontSize": 12,
-                                            "lineHeight": 16,
-                                          },
-                                        ]
-                                      }
-                                    />
-                                  </View>
-                                  <View
-                                    gap={1}
-                                    style={
-                                      [
-                                        {
-                                          "gap": 4,
-                                        },
-                                      ]
-                                    }
-                                  >
+                                  <View>
                                     <Text
                                       numberOfLines={1}
                                       style={
                                         [
                                           {
-                                            "color": "#696A6F",
-                                            "fontFamily": "Montserrat-SemiBold",
+                                            "color": "#696a6f",
+                                            "fontFamily": "Montserrat-Medium",
                                             "fontSize": 12,
                                             "lineHeight": 19.2,
                                           },
@@ -1562,53 +1444,53 @@ exports[`<Venue /> should match snapshot 1`] = `
                                     >
                                       Cinéma
                                     </Text>
-                                    <View>
-                                      <Text
-                                        numberOfLines={2}
-                                        style={
-                                          [
-                                            {
-                                              "color": "#161617",
-                                              "fontFamily": "Montserrat-SemiBold",
-                                              "fontSize": 12,
-                                              "lineHeight": 19.2,
-                                            },
-                                          ]
-                                        }
-                                      >
-                                        Bac Nord - VF
-                                      </Text>
-                                      <Text
-                                        numberOfLines={1}
-                                        style={
-                                          [
-                                            {
-                                              "color": "#161617",
-                                              "fontFamily": "Montserrat-SemiBold",
-                                              "fontSize": 12,
-                                              "lineHeight": 19.2,
-                                            },
-                                          ]
-                                        }
-                                      >
-                                        Dès le 18 août 2021
-                                      </Text>
-                                      <Text
-                                        style={
-                                          [
-                                            {
-                                              "color": "#161617",
-                                              "fontFamily": "Montserrat-SemiBold",
-                                              "fontSize": 12,
-                                              "lineHeight": 19.2,
-                                            },
-                                          ]
-                                        }
-                                        testID="priceIsDuo"
-                                      >
-                                        Gratuit
-                                      </Text>
-                                    </View>
+                                    <Text
+                                      numberOfLines={2}
+                                      style={
+                                        [
+                                          {
+                                            "color": "#161617",
+                                            "fontFamily": "Montserrat-SemiBold",
+                                            "fontSize": 12,
+                                            "lineHeight": 19.2,
+                                          },
+                                        ]
+                                      }
+                                    >
+                                      Bac Nord - VF
+                                    </Text>
+                                  </View>
+                                  <View>
+                                    <Text
+                                      style={
+                                        [
+                                          {
+                                            "color": "#161617",
+                                            "fontFamily": "Montserrat-Medium",
+                                            "fontSize": 12,
+                                            "lineHeight": 19.2,
+                                          },
+                                        ]
+                                      }
+                                      testID="priceIsDuo"
+                                    >
+                                      Gratuit
+                                    </Text>
+                                    <Text
+                                      numberOfLines={1}
+                                      style={
+                                        [
+                                          {
+                                            "color": "#696a6f",
+                                            "fontFamily": "Montserrat-Medium",
+                                            "fontSize": 12,
+                                            "lineHeight": 19.2,
+                                          },
+                                        ]
+                                      }
+                                    >
+                                      Dès le 18 août
+                                    </Text>
                                   </View>
                                 </View>
                               </View>
@@ -1668,7 +1550,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                               testID="OfferTile"
                             >
                               <View
-                                accessibilityLabel="Offre Black Widow - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
+                                accessibilityLabel="Offre Black Widow - VF de la catégorie Cinéma,   Dès le 18 août, Gratuit. Possibilité de réserver 2 places."
                                 accessibilityRole="link"
                                 accessibilityValue={
                                   {
@@ -1700,16 +1582,16 @@ exports[`<Venue /> should match snapshot 1`] = `
                                     },
                                   ]
                                 }
-                                testID="Offre Black Widow - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
+                                testID="Offre Black Widow - VF de la catégorie Cinéma,   Dès le 18 août, Gratuit. Possibilité de réserver 2 places."
                               >
                                 <View
                                   gap={2}
-                                  maxWidth={144}
+                                  maxWidth={160}
                                   style={
                                     [
                                       {
                                         "gap": 8,
-                                        "maxWidth": 144,
+                                        "maxWidth": 160,
                                       },
                                     ]
                                   }
@@ -1727,8 +1609,8 @@ exports[`<Venue /> should match snapshot 1`] = `
                                           },
                                           {
                                             "borderRadius": 8,
-                                            "height": 216,
-                                            "width": 144,
+                                            "height": 240,
+                                            "width": 160,
                                           },
                                         ],
                                       ]
@@ -1749,73 +1631,14 @@ exports[`<Venue /> should match snapshot 1`] = `
                                       testID="tileImage"
                                     />
                                   </View>
-                                  <View
-                                    backgroundColor="#F1F1F4"
-                                    paddingHorizontal={4}
-                                    style={
-                                      [
-                                        {
-                                          "alignItems": "center",
-                                          "alignSelf": "flex-start",
-                                          "backgroundColor": "#F1F1F4",
-                                          "borderRadius": 6,
-                                          "flexDirection": "row",
-                                          "paddingHorizontal": 4,
-                                          "paddingVertical": 4,
-                                        },
-                                      ]
-                                    }
-                                    testID="interaction-tag"
-                                  >
-                                    <View
-                                      style={
-                                        [
-                                          {
-                                            "marginRight": 4,
-                                          },
-                                        ]
-                                      }
-                                    >
-                                      <View
-                                        height={16}
-                                        testID="tagIcon"
-                                        width={16}
-                                      >
-                                        <Text>
-                                          tagIcon-SVG-Mock
-                                        </Text>
-                                      </View>
-                                    </View>
-                                    <Text
-                                      style={
-                                        [
-                                          {
-                                            "color": "#161617",
-                                            "fontFamily": "Montserrat-SemiBold",
-                                            "fontSize": 12,
-                                            "lineHeight": 16,
-                                          },
-                                        ]
-                                      }
-                                    />
-                                  </View>
-                                  <View
-                                    gap={1}
-                                    style={
-                                      [
-                                        {
-                                          "gap": 4,
-                                        },
-                                      ]
-                                    }
-                                  >
+                                  <View>
                                     <Text
                                       numberOfLines={1}
                                       style={
                                         [
                                           {
-                                            "color": "#696A6F",
-                                            "fontFamily": "Montserrat-SemiBold",
+                                            "color": "#696a6f",
+                                            "fontFamily": "Montserrat-Medium",
                                             "fontSize": 12,
                                             "lineHeight": 19.2,
                                           },
@@ -1824,53 +1647,53 @@ exports[`<Venue /> should match snapshot 1`] = `
                                     >
                                       Cinéma
                                     </Text>
-                                    <View>
-                                      <Text
-                                        numberOfLines={2}
-                                        style={
-                                          [
-                                            {
-                                              "color": "#161617",
-                                              "fontFamily": "Montserrat-SemiBold",
-                                              "fontSize": 12,
-                                              "lineHeight": 19.2,
-                                            },
-                                          ]
-                                        }
-                                      >
-                                        Black Widow - VF
-                                      </Text>
-                                      <Text
-                                        numberOfLines={1}
-                                        style={
-                                          [
-                                            {
-                                              "color": "#161617",
-                                              "fontFamily": "Montserrat-SemiBold",
-                                              "fontSize": 12,
-                                              "lineHeight": 19.2,
-                                            },
-                                          ]
-                                        }
-                                      >
-                                        Dès le 18 août 2021
-                                      </Text>
-                                      <Text
-                                        style={
-                                          [
-                                            {
-                                              "color": "#161617",
-                                              "fontFamily": "Montserrat-SemiBold",
-                                              "fontSize": 12,
-                                              "lineHeight": 19.2,
-                                            },
-                                          ]
-                                        }
-                                        testID="priceIsDuo"
-                                      >
-                                        Gratuit
-                                      </Text>
-                                    </View>
+                                    <Text
+                                      numberOfLines={2}
+                                      style={
+                                        [
+                                          {
+                                            "color": "#161617",
+                                            "fontFamily": "Montserrat-SemiBold",
+                                            "fontSize": 12,
+                                            "lineHeight": 19.2,
+                                          },
+                                        ]
+                                      }
+                                    >
+                                      Black Widow - VF
+                                    </Text>
+                                  </View>
+                                  <View>
+                                    <Text
+                                      style={
+                                        [
+                                          {
+                                            "color": "#161617",
+                                            "fontFamily": "Montserrat-Medium",
+                                            "fontSize": 12,
+                                            "lineHeight": 19.2,
+                                          },
+                                        ]
+                                      }
+                                      testID="priceIsDuo"
+                                    >
+                                      Gratuit
+                                    </Text>
+                                    <Text
+                                      numberOfLines={1}
+                                      style={
+                                        [
+                                          {
+                                            "color": "#696a6f",
+                                            "fontFamily": "Montserrat-Medium",
+                                            "fontSize": 12,
+                                            "lineHeight": 19.2,
+                                          },
+                                        ]
+                                      }
+                                    >
+                                      Dès le 18 août
+                                    </Text>
                                   </View>
                                 </View>
                               </View>
@@ -4643,7 +4466,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                           ]
                         }
                         drawDistance={187.5}
-                        estimatedItemSize={144}
+                        estimatedItemSize={160}
                         getItem={[Function]}
                         getItemCount={[Function]}
                         handlerTag={3}
@@ -4719,7 +4542,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                               testID="OfferTile"
                             >
                               <View
-                                accessibilityLabel="Offre Titane - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
+                                accessibilityLabel="Offre Titane - VF de la catégorie Cinéma,   Dès le 18 août, Gratuit. Possibilité de réserver 2 places."
                                 accessibilityRole="link"
                                 accessibilityValue={
                                   {
@@ -4751,16 +4574,16 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                     },
                                   ]
                                 }
-                                testID="Offre Titane - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
+                                testID="Offre Titane - VF de la catégorie Cinéma,   Dès le 18 août, Gratuit. Possibilité de réserver 2 places."
                               >
                                 <View
                                   gap={2}
-                                  maxWidth={144}
+                                  maxWidth={160}
                                   style={
                                     [
                                       {
                                         "gap": 8,
-                                        "maxWidth": 144,
+                                        "maxWidth": 160,
                                       },
                                     ]
                                   }
@@ -4778,8 +4601,8 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                           },
                                           {
                                             "borderRadius": 8,
-                                            "height": 216,
-                                            "width": 144,
+                                            "height": 240,
+                                            "width": 160,
                                           },
                                         ],
                                       ]
@@ -4800,73 +4623,14 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                       testID="tileImage"
                                     />
                                   </View>
-                                  <View
-                                    backgroundColor="#F1F1F4"
-                                    paddingHorizontal={4}
-                                    style={
-                                      [
-                                        {
-                                          "alignItems": "center",
-                                          "alignSelf": "flex-start",
-                                          "backgroundColor": "#F1F1F4",
-                                          "borderRadius": 6,
-                                          "flexDirection": "row",
-                                          "paddingHorizontal": 4,
-                                          "paddingVertical": 4,
-                                        },
-                                      ]
-                                    }
-                                    testID="interaction-tag"
-                                  >
-                                    <View
-                                      style={
-                                        [
-                                          {
-                                            "marginRight": 4,
-                                          },
-                                        ]
-                                      }
-                                    >
-                                      <View
-                                        height={16}
-                                        testID="tagIcon"
-                                        width={16}
-                                      >
-                                        <Text>
-                                          tagIcon-SVG-Mock
-                                        </Text>
-                                      </View>
-                                    </View>
-                                    <Text
-                                      style={
-                                        [
-                                          {
-                                            "color": "#161617",
-                                            "fontFamily": "Montserrat-SemiBold",
-                                            "fontSize": 12,
-                                            "lineHeight": 16,
-                                          },
-                                        ]
-                                      }
-                                    />
-                                  </View>
-                                  <View
-                                    gap={1}
-                                    style={
-                                      [
-                                        {
-                                          "gap": 4,
-                                        },
-                                      ]
-                                    }
-                                  >
+                                  <View>
                                     <Text
                                       numberOfLines={1}
                                       style={
                                         [
                                           {
-                                            "color": "#696A6F",
-                                            "fontFamily": "Montserrat-SemiBold",
+                                            "color": "#696a6f",
+                                            "fontFamily": "Montserrat-Medium",
                                             "fontSize": 12,
                                             "lineHeight": 19.2,
                                           },
@@ -4875,53 +4639,53 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                     >
                                       Cinéma
                                     </Text>
-                                    <View>
-                                      <Text
-                                        numberOfLines={2}
-                                        style={
-                                          [
-                                            {
-                                              "color": "#161617",
-                                              "fontFamily": "Montserrat-SemiBold",
-                                              "fontSize": 12,
-                                              "lineHeight": 19.2,
-                                            },
-                                          ]
-                                        }
-                                      >
-                                        Titane - VF
-                                      </Text>
-                                      <Text
-                                        numberOfLines={1}
-                                        style={
-                                          [
-                                            {
-                                              "color": "#161617",
-                                              "fontFamily": "Montserrat-SemiBold",
-                                              "fontSize": 12,
-                                              "lineHeight": 19.2,
-                                            },
-                                          ]
-                                        }
-                                      >
-                                        Dès le 18 août 2021
-                                      </Text>
-                                      <Text
-                                        style={
-                                          [
-                                            {
-                                              "color": "#161617",
-                                              "fontFamily": "Montserrat-SemiBold",
-                                              "fontSize": 12,
-                                              "lineHeight": 19.2,
-                                            },
-                                          ]
-                                        }
-                                        testID="priceIsDuo"
-                                      >
-                                        Gratuit
-                                      </Text>
-                                    </View>
+                                    <Text
+                                      numberOfLines={2}
+                                      style={
+                                        [
+                                          {
+                                            "color": "#161617",
+                                            "fontFamily": "Montserrat-SemiBold",
+                                            "fontSize": 12,
+                                            "lineHeight": 19.2,
+                                          },
+                                        ]
+                                      }
+                                    >
+                                      Titane - VF
+                                    </Text>
+                                  </View>
+                                  <View>
+                                    <Text
+                                      style={
+                                        [
+                                          {
+                                            "color": "#161617",
+                                            "fontFamily": "Montserrat-Medium",
+                                            "fontSize": 12,
+                                            "lineHeight": 19.2,
+                                          },
+                                        ]
+                                      }
+                                      testID="priceIsDuo"
+                                    >
+                                      Gratuit
+                                    </Text>
+                                    <Text
+                                      numberOfLines={1}
+                                      style={
+                                        [
+                                          {
+                                            "color": "#696a6f",
+                                            "fontFamily": "Montserrat-Medium",
+                                            "fontSize": 12,
+                                            "lineHeight": 19.2,
+                                          },
+                                        ]
+                                      }
+                                    >
+                                      Dès le 18 août
+                                    </Text>
                                   </View>
                                 </View>
                               </View>
@@ -4981,7 +4745,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                               testID="OfferTile"
                             >
                               <View
-                                accessibilityLabel="Offre Bac Nord - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
+                                accessibilityLabel="Offre Bac Nord - VF de la catégorie Cinéma,   Dès le 18 août, Gratuit. Possibilité de réserver 2 places."
                                 accessibilityRole="link"
                                 accessibilityValue={
                                   {
@@ -5013,16 +4777,16 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                     },
                                   ]
                                 }
-                                testID="Offre Bac Nord - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
+                                testID="Offre Bac Nord - VF de la catégorie Cinéma,   Dès le 18 août, Gratuit. Possibilité de réserver 2 places."
                               >
                                 <View
                                   gap={2}
-                                  maxWidth={144}
+                                  maxWidth={160}
                                   style={
                                     [
                                       {
                                         "gap": 8,
-                                        "maxWidth": 144,
+                                        "maxWidth": 160,
                                       },
                                     ]
                                   }
@@ -5040,8 +4804,8 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                           },
                                           {
                                             "borderRadius": 8,
-                                            "height": 216,
-                                            "width": 144,
+                                            "height": 240,
+                                            "width": 160,
                                           },
                                         ],
                                       ]
@@ -5062,73 +4826,14 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                       testID="tileImage"
                                     />
                                   </View>
-                                  <View
-                                    backgroundColor="#F1F1F4"
-                                    paddingHorizontal={4}
-                                    style={
-                                      [
-                                        {
-                                          "alignItems": "center",
-                                          "alignSelf": "flex-start",
-                                          "backgroundColor": "#F1F1F4",
-                                          "borderRadius": 6,
-                                          "flexDirection": "row",
-                                          "paddingHorizontal": 4,
-                                          "paddingVertical": 4,
-                                        },
-                                      ]
-                                    }
-                                    testID="interaction-tag"
-                                  >
-                                    <View
-                                      style={
-                                        [
-                                          {
-                                            "marginRight": 4,
-                                          },
-                                        ]
-                                      }
-                                    >
-                                      <View
-                                        height={16}
-                                        testID="tagIcon"
-                                        width={16}
-                                      >
-                                        <Text>
-                                          tagIcon-SVG-Mock
-                                        </Text>
-                                      </View>
-                                    </View>
-                                    <Text
-                                      style={
-                                        [
-                                          {
-                                            "color": "#161617",
-                                            "fontFamily": "Montserrat-SemiBold",
-                                            "fontSize": 12,
-                                            "lineHeight": 16,
-                                          },
-                                        ]
-                                      }
-                                    />
-                                  </View>
-                                  <View
-                                    gap={1}
-                                    style={
-                                      [
-                                        {
-                                          "gap": 4,
-                                        },
-                                      ]
-                                    }
-                                  >
+                                  <View>
                                     <Text
                                       numberOfLines={1}
                                       style={
                                         [
                                           {
-                                            "color": "#696A6F",
-                                            "fontFamily": "Montserrat-SemiBold",
+                                            "color": "#696a6f",
+                                            "fontFamily": "Montserrat-Medium",
                                             "fontSize": 12,
                                             "lineHeight": 19.2,
                                           },
@@ -5137,53 +4842,53 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                     >
                                       Cinéma
                                     </Text>
-                                    <View>
-                                      <Text
-                                        numberOfLines={2}
-                                        style={
-                                          [
-                                            {
-                                              "color": "#161617",
-                                              "fontFamily": "Montserrat-SemiBold",
-                                              "fontSize": 12,
-                                              "lineHeight": 19.2,
-                                            },
-                                          ]
-                                        }
-                                      >
-                                        Bac Nord - VF
-                                      </Text>
-                                      <Text
-                                        numberOfLines={1}
-                                        style={
-                                          [
-                                            {
-                                              "color": "#161617",
-                                              "fontFamily": "Montserrat-SemiBold",
-                                              "fontSize": 12,
-                                              "lineHeight": 19.2,
-                                            },
-                                          ]
-                                        }
-                                      >
-                                        Dès le 18 août 2021
-                                      </Text>
-                                      <Text
-                                        style={
-                                          [
-                                            {
-                                              "color": "#161617",
-                                              "fontFamily": "Montserrat-SemiBold",
-                                              "fontSize": 12,
-                                              "lineHeight": 19.2,
-                                            },
-                                          ]
-                                        }
-                                        testID="priceIsDuo"
-                                      >
-                                        Gratuit
-                                      </Text>
-                                    </View>
+                                    <Text
+                                      numberOfLines={2}
+                                      style={
+                                        [
+                                          {
+                                            "color": "#161617",
+                                            "fontFamily": "Montserrat-SemiBold",
+                                            "fontSize": 12,
+                                            "lineHeight": 19.2,
+                                          },
+                                        ]
+                                      }
+                                    >
+                                      Bac Nord - VF
+                                    </Text>
+                                  </View>
+                                  <View>
+                                    <Text
+                                      style={
+                                        [
+                                          {
+                                            "color": "#161617",
+                                            "fontFamily": "Montserrat-Medium",
+                                            "fontSize": 12,
+                                            "lineHeight": 19.2,
+                                          },
+                                        ]
+                                      }
+                                      testID="priceIsDuo"
+                                    >
+                                      Gratuit
+                                    </Text>
+                                    <Text
+                                      numberOfLines={1}
+                                      style={
+                                        [
+                                          {
+                                            "color": "#696a6f",
+                                            "fontFamily": "Montserrat-Medium",
+                                            "fontSize": 12,
+                                            "lineHeight": 19.2,
+                                          },
+                                        ]
+                                      }
+                                    >
+                                      Dès le 18 août
+                                    </Text>
                                   </View>
                                 </View>
                               </View>
@@ -5243,7 +4948,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                               testID="OfferTile"
                             >
                               <View
-                                accessibilityLabel="Offre Black Widow - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
+                                accessibilityLabel="Offre Black Widow - VF de la catégorie Cinéma,   Dès le 18 août, Gratuit. Possibilité de réserver 2 places."
                                 accessibilityRole="link"
                                 accessibilityValue={
                                   {
@@ -5275,16 +4980,16 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                     },
                                   ]
                                 }
-                                testID="Offre Black Widow - VF de la catégorie Cinéma,   Dès le 18 août 2021, Gratuit. Possibilité de réserver 2 places."
+                                testID="Offre Black Widow - VF de la catégorie Cinéma,   Dès le 18 août, Gratuit. Possibilité de réserver 2 places."
                               >
                                 <View
                                   gap={2}
-                                  maxWidth={144}
+                                  maxWidth={160}
                                   style={
                                     [
                                       {
                                         "gap": 8,
-                                        "maxWidth": 144,
+                                        "maxWidth": 160,
                                       },
                                     ]
                                   }
@@ -5302,8 +5007,8 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                           },
                                           {
                                             "borderRadius": 8,
-                                            "height": 216,
-                                            "width": 144,
+                                            "height": 240,
+                                            "width": 160,
                                           },
                                         ],
                                       ]
@@ -5324,73 +5029,14 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                       testID="tileImage"
                                     />
                                   </View>
-                                  <View
-                                    backgroundColor="#F1F1F4"
-                                    paddingHorizontal={4}
-                                    style={
-                                      [
-                                        {
-                                          "alignItems": "center",
-                                          "alignSelf": "flex-start",
-                                          "backgroundColor": "#F1F1F4",
-                                          "borderRadius": 6,
-                                          "flexDirection": "row",
-                                          "paddingHorizontal": 4,
-                                          "paddingVertical": 4,
-                                        },
-                                      ]
-                                    }
-                                    testID="interaction-tag"
-                                  >
-                                    <View
-                                      style={
-                                        [
-                                          {
-                                            "marginRight": 4,
-                                          },
-                                        ]
-                                      }
-                                    >
-                                      <View
-                                        height={16}
-                                        testID="tagIcon"
-                                        width={16}
-                                      >
-                                        <Text>
-                                          tagIcon-SVG-Mock
-                                        </Text>
-                                      </View>
-                                    </View>
-                                    <Text
-                                      style={
-                                        [
-                                          {
-                                            "color": "#161617",
-                                            "fontFamily": "Montserrat-SemiBold",
-                                            "fontSize": 12,
-                                            "lineHeight": 16,
-                                          },
-                                        ]
-                                      }
-                                    />
-                                  </View>
-                                  <View
-                                    gap={1}
-                                    style={
-                                      [
-                                        {
-                                          "gap": 4,
-                                        },
-                                      ]
-                                    }
-                                  >
+                                  <View>
                                     <Text
                                       numberOfLines={1}
                                       style={
                                         [
                                           {
-                                            "color": "#696A6F",
-                                            "fontFamily": "Montserrat-SemiBold",
+                                            "color": "#696a6f",
+                                            "fontFamily": "Montserrat-Medium",
                                             "fontSize": 12,
                                             "lineHeight": 19.2,
                                           },
@@ -5399,53 +5045,53 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                     >
                                       Cinéma
                                     </Text>
-                                    <View>
-                                      <Text
-                                        numberOfLines={2}
-                                        style={
-                                          [
-                                            {
-                                              "color": "#161617",
-                                              "fontFamily": "Montserrat-SemiBold",
-                                              "fontSize": 12,
-                                              "lineHeight": 19.2,
-                                            },
-                                          ]
-                                        }
-                                      >
-                                        Black Widow - VF
-                                      </Text>
-                                      <Text
-                                        numberOfLines={1}
-                                        style={
-                                          [
-                                            {
-                                              "color": "#161617",
-                                              "fontFamily": "Montserrat-SemiBold",
-                                              "fontSize": 12,
-                                              "lineHeight": 19.2,
-                                            },
-                                          ]
-                                        }
-                                      >
-                                        Dès le 18 août 2021
-                                      </Text>
-                                      <Text
-                                        style={
-                                          [
-                                            {
-                                              "color": "#161617",
-                                              "fontFamily": "Montserrat-SemiBold",
-                                              "fontSize": 12,
-                                              "lineHeight": 19.2,
-                                            },
-                                          ]
-                                        }
-                                        testID="priceIsDuo"
-                                      >
-                                        Gratuit
-                                      </Text>
-                                    </View>
+                                    <Text
+                                      numberOfLines={2}
+                                      style={
+                                        [
+                                          {
+                                            "color": "#161617",
+                                            "fontFamily": "Montserrat-SemiBold",
+                                            "fontSize": 12,
+                                            "lineHeight": 19.2,
+                                          },
+                                        ]
+                                      }
+                                    >
+                                      Black Widow - VF
+                                    </Text>
+                                  </View>
+                                  <View>
+                                    <Text
+                                      style={
+                                        [
+                                          {
+                                            "color": "#161617",
+                                            "fontFamily": "Montserrat-Medium",
+                                            "fontSize": 12,
+                                            "lineHeight": 19.2,
+                                          },
+                                        ]
+                                      }
+                                      testID="priceIsDuo"
+                                    >
+                                      Gratuit
+                                    </Text>
+                                    <Text
+                                      numberOfLines={1}
+                                      style={
+                                        [
+                                          {
+                                            "color": "#696a6f",
+                                            "fontFamily": "Montserrat-Medium",
+                                            "fontSize": 12,
+                                            "lineHeight": 19.2,
+                                          },
+                                        ]
+                                      }
+                                    >
+                                      Dès le 18 août
+                                    </Text>
                                   </View>
                                 </View>
                               </View>

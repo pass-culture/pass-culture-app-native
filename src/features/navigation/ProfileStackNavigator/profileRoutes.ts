@@ -35,6 +35,11 @@ export const profileRoutes: ProfileStackRoute[] = [
     path: 'profil/suppression/information',
   },
   {
+    name: 'DebugScreen',
+    component: ComponentForPathConfig,
+    path: 'profil/débuggage',
+  },
+  {
     name: 'ConfirmDeleteProfile',
     component: ComponentForPathConfig,
     path: 'profil/suppression',

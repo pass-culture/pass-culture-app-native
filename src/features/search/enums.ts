@@ -1,6 +1,6 @@
 import { SearchGroupNameEnumv2, VenueTypeCodeKey } from 'api/gen'
 import { MAP_VENUE_TYPE_TO_LABEL, VenueTypeCode } from 'libs/parsers/venueType'
-import { theme } from 'theme'
+import { BackgroundColorKey, BorderColorKey } from 'theme/types'
 import { categoriesIcons } from 'ui/svg/icons/bicolor/exports/categoriesIcons'
 import { ArtsCrafts } from 'ui/svg/icons/categories/ArtsCrafts'
 import { Books } from 'ui/svg/icons/categories/Books'
@@ -57,8 +57,8 @@ export type CategoryCriteria = {
   facetFilter: SearchGroupNameEnumv2
   gradients: Array<ColorsEnum>
   position: number
-  fillColor: ColorsEnum
-  borderColor: ColorsEnum
+  fillColor: BackgroundColorKey
+  borderColor: BorderColorKey
 }
 
 type CategoryCriteriaWithNone = {
@@ -91,18 +91,17 @@ export const CATEGORY_CRITERIA: CategoryCriteriaWithNone = {
     facetFilter: SearchGroupNameEnumv2.CONCERTS_FESTIVALS,
     position: 1,
     gradients: gradientColorsMapping.Gold,
-    borderColor: theme.colors.goldLight200,
-    fillColor: theme.colors.goldLight100,
+    borderColor: 'decorative03',
+    fillColor: 'decorative03',
   },
   [SearchGroupNameEnumv2.CINEMA]: {
     icon: categoriesIcons.Cinema,
     illustration: SearchCategoriesIllustrations.FilmsSeriesCinema,
     facetFilter: SearchGroupNameEnumv2.CINEMA,
     position: 2,
-
     gradients: gradientColorsMapping.SkyBlue,
-    borderColor: theme.colors.skyBlue,
-    fillColor: theme.colors.skyBlueLight,
+    borderColor: 'decorative01',
+    fillColor: 'decorative01',
   },
   [SearchGroupNameEnumv2.FILMS_DOCUMENTAIRES_SERIES]: {
     icon: categoriesIcons.Cinema,
@@ -110,8 +109,8 @@ export const CATEGORY_CRITERIA: CategoryCriteriaWithNone = {
     facetFilter: SearchGroupNameEnumv2.FILMS_DOCUMENTAIRES_SERIES,
     position: 3,
     gradients: gradientColorsMapping.Lilac,
-    borderColor: theme.colors.lilac,
-    fillColor: theme.colors.lilacLight,
+    borderColor: 'decorative02',
+    fillColor: 'decorative02',
   },
   [SearchGroupNameEnumv2.LIVRES]: {
     icon: categoriesIcons.Book,
@@ -119,8 +118,8 @@ export const CATEGORY_CRITERIA: CategoryCriteriaWithNone = {
     facetFilter: SearchGroupNameEnumv2.LIVRES,
     position: 4,
     gradients: gradientColorsMapping.Gold,
-    borderColor: theme.colors.coral,
-    fillColor: theme.colors.coralLight,
+    borderColor: 'decorative05',
+    fillColor: 'decorative05',
   },
   [SearchGroupNameEnumv2.MUSIQUE]: {
     icon: categoriesIcons.Disk,
@@ -128,8 +127,8 @@ export const CATEGORY_CRITERIA: CategoryCriteriaWithNone = {
     facetFilter: SearchGroupNameEnumv2.MUSIQUE,
     position: 5,
     gradients: gradientColorsMapping.Coral,
-    borderColor: theme.colors.aquamarineDark,
-    fillColor: theme.colors.aquamarineLight,
+    borderColor: 'decorative04',
+    fillColor: 'decorative04',
   },
   [SearchGroupNameEnumv2.ARTS_LOISIRS_CREATIFS]: {
     icon: categoriesIcons.Palette,
@@ -137,8 +136,8 @@ export const CATEGORY_CRITERIA: CategoryCriteriaWithNone = {
     facetFilter: SearchGroupNameEnumv2.ARTS_LOISIRS_CREATIFS,
     position: 6,
     gradients: gradientColorsMapping.DeepPink,
-    borderColor: theme.colors.deepPink,
-    fillColor: theme.colors.deepPinkLight,
+    borderColor: 'decorative03',
+    fillColor: 'decorative03',
   },
   [SearchGroupNameEnumv2.SPECTACLES]: {
     icon: categoriesIcons.Show,
@@ -146,8 +145,8 @@ export const CATEGORY_CRITERIA: CategoryCriteriaWithNone = {
     facetFilter: SearchGroupNameEnumv2.SPECTACLES,
     position: 7,
     gradients: gradientColorsMapping.Aquamarine,
-    borderColor: theme.colors.goldLight200,
-    fillColor: theme.colors.goldLight100,
+    borderColor: 'decorative01',
+    fillColor: 'decorative01',
   },
   [SearchGroupNameEnumv2.MUSEES_VISITES_CULTURELLES]: {
     icon: categoriesIcons.Museum,
@@ -155,8 +154,8 @@ export const CATEGORY_CRITERIA: CategoryCriteriaWithNone = {
     facetFilter: SearchGroupNameEnumv2.MUSEES_VISITES_CULTURELLES,
     position: 8,
     gradients: gradientColorsMapping.SkyBlue,
-    borderColor: theme.colors.skyBlue,
-    fillColor: theme.colors.skyBlueLight,
+    borderColor: 'decorative02',
+    fillColor: 'decorative02',
   },
   [SearchGroupNameEnumv2.JEUX_JEUX_VIDEOS]: {
     icon: categoriesIcons.VideoGame,
@@ -164,8 +163,8 @@ export const CATEGORY_CRITERIA: CategoryCriteriaWithNone = {
     facetFilter: SearchGroupNameEnumv2.JEUX_JEUX_VIDEOS,
     position: 9,
     gradients: gradientColorsMapping.Lilac,
-    borderColor: theme.colors.lilac,
-    fillColor: theme.colors.lilacLight,
+    borderColor: 'decorative05',
+    fillColor: 'decorative05',
   },
   [SearchGroupNameEnumv2.MEDIA_PRESSE]: {
     icon: categoriesIcons.Press,
@@ -173,8 +172,8 @@ export const CATEGORY_CRITERIA: CategoryCriteriaWithNone = {
     facetFilter: SearchGroupNameEnumv2.MEDIA_PRESSE,
     position: 10,
     gradients: gradientColorsMapping.Gold,
-    borderColor: theme.colors.coral,
-    fillColor: theme.colors.coralLight,
+    borderColor: 'decorative04',
+    fillColor: 'decorative04',
   },
   [SearchGroupNameEnumv2.CARTES_JEUNES]: {
     icon: categoriesIcons.Card,
@@ -182,8 +181,8 @@ export const CATEGORY_CRITERIA: CategoryCriteriaWithNone = {
     facetFilter: SearchGroupNameEnumv2.CARTES_JEUNES,
     position: 11,
     gradients: gradientColorsMapping.Gold,
-    borderColor: theme.colors.aquamarineDark,
-    fillColor: theme.colors.aquamarineLight,
+    borderColor: 'decorative03',
+    fillColor: 'decorative03',
   },
   [SearchGroupNameEnumv2.RENCONTRES_CONFERENCES]: {
     icon: categoriesIcons.Microphone,
@@ -191,8 +190,8 @@ export const CATEGORY_CRITERIA: CategoryCriteriaWithNone = {
     facetFilter: SearchGroupNameEnumv2.RENCONTRES_CONFERENCES,
     position: 12,
     gradients: gradientColorsMapping.DeepPink,
-    borderColor: theme.colors.deepPink,
-    fillColor: theme.colors.deepPinkLight,
+    borderColor: 'decorative01',
+    fillColor: 'decorative01',
   },
   [SearchGroupNameEnumv2.EVENEMENTS_EN_LIGNE]: {
     icon: categoriesIcons.LiveEvent,
@@ -200,8 +199,8 @@ export const CATEGORY_CRITERIA: CategoryCriteriaWithNone = {
     position: 13,
     facetFilter: SearchGroupNameEnumv2.EVENEMENTS_EN_LIGNE,
     gradients: gradientColorsMapping.Gold,
-    borderColor: theme.colors.goldLight200,
-    fillColor: theme.colors.goldLight100,
+    borderColor: 'decorative02',
+    fillColor: 'decorative02',
   },
 }
 

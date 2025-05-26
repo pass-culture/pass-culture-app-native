@@ -2,11 +2,9 @@ import React, { Fragment, useCallback } from 'react'
 import { FlatList } from 'react-native-gesture-handler'
 import styled, { useTheme } from 'styled-components/native'
 
-import { getTagConfig } from 'features/offer/components/InteractionTag/getTagConfig'
-import { InteractionTag } from 'features/offer/components/InteractionTag/InteractionTag'
+import { renderInteractionTag } from 'features/offer/components/InteractionTag/InteractionTag'
 import { OfferTile } from 'features/offer/components/OfferTile/OfferTile'
 import { PlaylistType } from 'features/offer/enums'
-import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import {
   formatStartPrice,
   getDisplayedPrice,
@@ -19,7 +17,7 @@ import { Offer } from 'shared/offer/types'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { CustomListRenderItem, Playlist } from 'ui/components/Playlist'
 import { PlainArrowNext } from 'ui/svg/icons/PlainArrowNext'
-import { getSpacing, LENGTH_S, RATIO_HOME_IMAGE } from 'ui/theme'
+import { LENGTH_S, RATIO_HOME_IMAGE, getSpacing } from 'ui/theme'
 
 type VenueMapOfferPlaylistProps = {
   offers: Offer[]
@@ -38,7 +36,6 @@ export const VenueMapOfferPlaylist = ({
   playlistType,
 }: VenueMapOfferPlaylistProps) => {
   const theme = useTheme()
-  const { minLikesValue } = useRemoteConfigQuery()
   const currency = useGetCurrencyToDisplay()
   const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
   const mapping = useCategoryIdMapping()
@@ -46,13 +43,13 @@ export const VenueMapOfferPlaylist = ({
 
   const renderItem: CustomListRenderItem<Offer> = useCallback(
     ({ item }) => {
-      const tagConfig = getTagConfig({
+      const tag = renderInteractionTag({
         theme,
-        minLikesValue,
         likesCount: item.offer.likes,
         chroniclesCount: item.offer.chroniclesCount,
-        headlineCount: item.offer.headlineCount,
+        headlinesCount: item.offer.headlineCount,
         hasSmallLayout: true,
+        isComingSoonOffer: item._tags?.includes('is_future'),
       })
       return (
         <OfferTile
@@ -73,11 +70,11 @@ export const VenueMapOfferPlaylist = ({
           width={PLAYLIST_ITEM_WIDTH}
           height={PLAYLIST_ITEM_HEIGHT}
           playlistType={playlistType}
-          interactionTag={tagConfig ? <InteractionTag {...tagConfig} /> : undefined}
+          interactionTag={tag}
         />
       )
     },
-    [currency, euroToPacificFrancRate, labelMapping, mapping, minLikesValue, playlistType, theme]
+    [currency, euroToPacificFrancRate, labelMapping, mapping, playlistType, theme]
   )
 
   return (

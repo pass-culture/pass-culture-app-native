@@ -1,10 +1,10 @@
 import React, { FunctionComponent, useEffect } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
-import { useVideoOffers } from 'features/home/api/useVideoOffers'
 import { VideoModal } from 'features/home/components/modules/video/VideoModal'
 import { VideoModuleDesktop } from 'features/home/components/modules/video/VideoModuleDesktop'
 import { VideoModuleMobile } from 'features/home/components/modules/video/VideoModuleMobile'
+import { useVideoOffersQuery } from 'features/home/queries/useVideoOffersQuery'
 import { VideoModuleProps, VideoModule as VideoModuleType } from 'features/home/types'
 import { analytics } from 'libs/analytics/provider'
 import { OfferAnalyticsParams } from 'libs/analytics/types'
@@ -35,7 +35,7 @@ export const VideoModule: FunctionComponent<VideoModuleBaseProps> = (props) => {
     hideModal: hideVideoModal,
   } = useModal(props.shouldShowModal)
 
-  const { offers } = useVideoOffers(
+  const { offers } = useVideoOffersQuery(
     props.offersModuleParameters,
     props.id,
     props.offerIds,

@@ -1,4 +1,5 @@
 import React, { FC, PropsWithChildren } from 'react'
+import { LayoutChangeEvent } from 'react-native'
 import styled from 'styled-components/native'
 
 import { FavoriteAuthModal } from 'features/offer/components/FavoriteAuthModal/FavoriteAuthModal'
@@ -14,6 +15,7 @@ import { getSpacing, getShadow, Typo } from 'ui/theme'
 export type StickyFooterContentProps = {
   offerId: number
   onPressFavoriteCTA: () => void
+  onLayout?: (params: LayoutChangeEvent) => void
   favoriteAuthModal: ModalSettings
 } & Partial<FavoriteProps>
 
@@ -26,42 +28,43 @@ export const StickyFooterContentBase: FC<StickyFooterContentBaseProps> = ({
   favorite,
   onPressFavoriteCTA,
   favoriteAuthModal,
+  onLayout,
   children,
 }) => {
   return (
-    <StyledStickyFooterContentBase>
-      <StickyFooterWrapper>
-        <Caption>Cette offre sera bientôt disponible</Caption>
-        {favorite ? (
+    <StickyFooterWrapper onLayout={onLayout}>
+      <Caption>Cette offre sera bientôt disponible</Caption>
+      {favorite ? (
+        <ButtonContainer>
           <ButtonSecondary
             wording="Retirer des favoris"
             onPress={onPressFavoriteCTA}
             icon={FavoriteFilled}
             isLoading={isRemoveFavoriteLoading}
           />
-        ) : (
-          <React.Fragment>
-            <ButtonPrimary
-              wording="Mettre en favori"
-              onPress={onPressFavoriteCTA}
-              icon={Favorite}
-              isLoading={isAddFavoriteLoading}
-            />
-            <FavoriteAuthModal
-              visible={favoriteAuthModal.visible}
-              offerId={offerId}
-              dismissModal={favoriteAuthModal.hideModal}
-            />
-          </React.Fragment>
-        )}
-        {children}
-      </StickyFooterWrapper>
-    </StyledStickyFooterContentBase>
+        </ButtonContainer>
+      ) : (
+        <ButtonContainer>
+          <ButtonPrimary
+            wording="Mettre en favori"
+            onPress={onPressFavoriteCTA}
+            icon={Favorite}
+            isLoading={isAddFavoriteLoading}
+          />
+          <FavoriteAuthModal
+            visible={favoriteAuthModal.visible}
+            offerId={offerId}
+            dismissModal={favoriteAuthModal.hideModal}
+          />
+        </ButtonContainer>
+      )}
+      {children}
+    </StickyFooterWrapper>
   )
 }
 
-const StyledStickyFooterContentBase = styled.View({
-  marginTop: getSpacing(8),
+const ButtonContainer = styled.View({
+  alignItems: 'center',
 })
 
 const StickyFooterWrapper = styled(StickyBottomWrapper)(({ theme }) => ({

@@ -2,13 +2,13 @@ import React, { FunctionComponent, useCallback } from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
-import { useOffersStocks } from 'features/offer/api/useOffersStocks'
 import { getVenueMovieOffers } from 'features/offer/components/MoviesScreeningCalendar/hook/getVenueMovieOffers'
 import {
   useDisplayCalendar,
   useMovieCalendar,
 } from 'features/offer/components/MoviesScreeningCalendar/MovieCalendarContext'
 import { MovieOfferTile } from 'features/offer/components/MoviesScreeningCalendar/MovieOfferTile'
+import { useOffersStocksQuery } from 'features/offer/queries/useOffersStocksQuery'
 import { VenueOffers } from 'features/venue/types'
 import { Spacer } from 'ui/theme'
 
@@ -18,7 +18,7 @@ type Props = {
 }
 
 export const VenueCalendar: FunctionComponent<Props> = ({ venueOffers, offerIds }) => {
-  const { data: offersWithStocks } = useOffersStocks({ offerIds })
+  const { data: offersWithStocks } = useOffersStocksQuery({ offerIds })
 
   const { selectedDate } = useMovieCalendar()
 

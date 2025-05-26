@@ -49,11 +49,12 @@ export const SearchTitleAndWidget: FunctionComponent<Props> = ({
 
 const StyledTitleMainText = styledInputLabel(InputLabel)(({ theme }) => ({
   ...theme.designSystem.typography.title1,
+  color: theme.designSystem.color.text.default,
 }))
 
 const CaptionSubtitle = styled(Typo.BodyAccentXs)(({ theme }) => ({
   marginTop: getSpacing(1),
-  color: theme.colors.greyDark,
+  color: theme.designSystem.color.text.subtle,
 }))
 
 const TitleAndWidgetContainer = styled.View({

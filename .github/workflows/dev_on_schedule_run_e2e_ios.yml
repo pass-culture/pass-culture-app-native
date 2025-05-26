@@ -2,8 +2,8 @@ name: '[Nightly] Run E2E tests on iOS'
 
 on:
   schedule:
-    # 11:00 PM Paris time in UTC (Monday to Friday)
-    - cron: '0 23 * * 1-5'
+    # 6:00 AM Paris time in UTC (Monday to Friday)
+    - cron: '0 6 * * 1-5'
 
 permissions:
   contents: read

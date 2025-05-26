@@ -805,11 +805,13 @@ exports[`<DatesHoursModal/> should render modal correctly after animation and wi
           }
         >
           <View
+            gap={4}
             isModal={true}
             style={
               [
                 {
                   "flexDirection": "row",
+                  "gap": 16,
                   "justifyContent": "center",
                   "paddingHorizontal": 24,
                   "paddingTop": 8,
@@ -866,7 +868,6 @@ exports[`<DatesHoursModal/> should render modal correctly after animation and wi
                     },
                     {
                       "backgroundColor": "transparent",
-                      "marginRight": 16,
                       "width": "auto",
                     },
                   ],
@@ -936,16 +937,6 @@ exports[`<DatesHoursModal/> should render modal correctly after animation and wi
                 </Text>
               </View>
             </View>
-            <View
-              numberOfSpaces={4}
-              style={
-                [
-                  {
-                    "height": 16,
-                  },
-                ]
-              }
-            />
             <View
               accessibilityLabel="Rechercher"
               accessibilityState={
