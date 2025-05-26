@@ -510,4 +510,26 @@ describe('OpeningHoursStatusViewModel', () => {
 
     expect(viewModel.openingLabel).toEqual('Ouvert jusqu’à 19h')
   })
+
+  it('should handle 00:00 to 23:59 opening hours for all days', () => {
+    const fullWeekOpening = {
+      MONDAY: [{ open: '00:00', close: '23:59' }],
+      TUESDAY: [{ open: '00:00', close: '23:59' }],
+      WEDNESDAY: [{ open: '00:00', close: '23:59' }],
+      THURSDAY: [{ open: '00:00', close: '23:59' }],
+      FRIDAY: [{ open: '00:00', close: '23:59' }],
+      SATURDAY: [{ open: '00:00', close: '23:59' }],
+      SUNDAY: [{ open: '00:00', close: '23:59' }],
+    }
+
+    const currentDate = paris.monday('12:00:00')
+    const viewModel = getOpeningHoursStatus({
+      openingHours: fullWeekOpening,
+      currentDate,
+      timezone: PARIS_TIMEZONE,
+    })
+
+    expect(viewModel.openingState).toEqual('open')
+    expect(viewModel.openingLabel).toEqual('Ouvert jusqu’à 23h59')
+  })
 })
