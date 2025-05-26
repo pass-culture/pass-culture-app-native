@@ -22,7 +22,7 @@ export const ButtonSecondary = styledButton(AppButton).attrs<BaseButtonProps>(
       maxWidth: '100%',
       color: disabled
         ? theme.designSystem.color.text.disabled
-        : color ?? theme.designSystem.color.text.brandPrimary,
+        : (color ?? theme.designSystem.color.text.brandPrimary),
       fontSize: textSize,
     })
 

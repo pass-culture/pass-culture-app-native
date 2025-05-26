@@ -62,7 +62,7 @@ export const AcceptCgu: FunctionComponent<PreValidationSignupLastStepProps> = ({
       try {
         const emailSubscription = isSSOSubscription
           ? marketingEmailSubscription
-          : previousSignupData.marketingEmailSubscription ?? false
+          : (previousSignupData.marketingEmailSubscription ?? false)
         setIsFetching(true)
         await signUp(token, emailSubscription)
       } catch {
