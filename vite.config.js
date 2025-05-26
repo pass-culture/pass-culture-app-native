@@ -100,10 +100,6 @@ export default ({ mode }) => {
         disable: !authToken || !shouldUploadSourcemaps,
         authToken,
         release: {
-          uploadLegacySourcemaps: {
-            paths: ['./dist'],
-            ignore: ['node_modules'],
-          },
           finalize: env.ENV !== 'testing',
           cleanArtifacts: false,
           name: `${packageJson.version}-web`,

@@ -60,7 +60,7 @@ describe('<ForgottenPassword />', () => {
   it('should enable validate button when email input is filled', async () => {
     renderForgottenPassword()
 
-    const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
+    const emailInput = screen.getByTestId('Entrée pour l’email')
     fireEvent.changeText(emailInput, 'john.doe@gmail.com')
 
     await waitFor(() => {
@@ -72,7 +72,7 @@ describe('<ForgottenPassword />', () => {
 
   it('should show email suggestion', async () => {
     renderForgottenPassword()
-    const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
+    const emailInput = screen.getByTestId('Entrée pour l’email')
     fireEvent.changeText(emailInput, 'john.doe@gmal.com')
 
     await act(async () => {
@@ -98,7 +98,7 @@ describe('<ForgottenPassword />', () => {
 
     expect(recaptchaWebviewModal).not.toBeOnTheScreen()
 
-    const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
+    const emailInput = screen.getByTestId('Entrée pour l’email')
     fireEvent.changeText(emailInput, 'john.doe@gmail.com')
     await user.press(screen.getByText('Valider'))
 
@@ -113,7 +113,7 @@ describe('<ForgottenPassword />', () => {
 
     expect(recaptchaWebviewModal).not.toBeOnTheScreen()
 
-    const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
+    const emailInput = screen.getByTestId('Entrée pour l’email')
     fireEvent.changeText(emailInput, 'john.doe@gmail.com')
     await user.press(screen.getByText('Valider'))
 
@@ -123,7 +123,7 @@ describe('<ForgottenPassword />', () => {
   it('should redirect to ResetPasswordEmailSent when password reset request is successful', async () => {
     renderForgottenPassword()
 
-    const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
+    const emailInput = screen.getByTestId('Entrée pour l’email')
     fireEvent.changeText(emailInput, 'john.doe@gmail.com')
     await user.press(screen.getByText('Valider'))
     const recaptchaWebview = screen.getByTestId('recaptcha-webview')
@@ -141,7 +141,7 @@ describe('<ForgottenPassword />', () => {
   it('should log to Sentry on reCAPTCHA failure', async () => {
     renderForgottenPassword()
 
-    const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
+    const emailInput = screen.getByTestId('Entrée pour l’email')
     fireEvent.changeText(emailInput, 'john.doe@gmail.com')
     await user.press(screen.getByText('Valider'))
     const recaptchaWebview = screen.getByTestId('recaptcha-webview')
@@ -156,7 +156,7 @@ describe('<ForgottenPassword />', () => {
   it('should not log to Sentry on reCAPTCHA network error', async () => {
     renderForgottenPassword()
 
-    const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
+    const emailInput = screen.getByTestId('Entrée pour l’email')
     fireEvent.changeText(emailInput, 'john.doe@gmail.com')
     await user.press(screen.getByText('Valider'))
     const recaptchaWebview = screen.getByTestId('recaptcha-webview')
@@ -168,7 +168,7 @@ describe('<ForgottenPassword />', () => {
   it('should notifies user on reCAPTCHA network error', async () => {
     renderForgottenPassword()
 
-    const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
+    const emailInput = screen.getByTestId('Entrée pour l’email')
     fireEvent.changeText(emailInput, 'john.doe@gmail.com')
     await user.press(screen.getByText('Valider'))
     const recaptchaWebview = screen.getByTestId('recaptcha-webview')
@@ -184,7 +184,7 @@ describe('<ForgottenPassword />', () => {
   it('should NOT redirect to ResetPasswordEmailSent when reCAPTCHA challenge has failed', async () => {
     renderForgottenPassword()
 
-    const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
+    const emailInput = screen.getByTestId('Entrée pour l’email')
     fireEvent.changeText(emailInput, 'john.doe@gmail.com')
     await user.press(screen.getByText('Valider'))
     const recaptchaWebview = screen.getByTestId('recaptcha-webview')
@@ -203,7 +203,7 @@ describe('<ForgottenPassword />', () => {
     })
     renderForgottenPassword()
 
-    const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
+    const emailInput = screen.getByTestId('Entrée pour l’email')
     fireEvent.changeText(emailInput, 'john.doe@gmail.com')
     await user.press(screen.getByText('Valider'))
     const recaptchaWebview = screen.getByTestId('recaptcha-webview')
@@ -229,7 +229,7 @@ describe('<ForgottenPassword />', () => {
     })
     renderForgottenPassword()
 
-    const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
+    const emailInput = screen.getByTestId('Entrée pour l’email')
     fireEvent.changeText(emailInput, 'john.doe@gmail.com')
     await user.press(screen.getByText('Valider'))
     const recaptchaWebview = screen.getByTestId('recaptcha-webview')
@@ -244,7 +244,7 @@ describe('<ForgottenPassword />', () => {
 
       renderForgottenPassword()
 
-      const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
+      const emailInput = screen.getByTestId('Entrée pour l’email')
       fireEvent.changeText(emailInput, 'john.doe@gmail.com')
 
       const continueButton = screen.getByText('Valider')
@@ -261,7 +261,7 @@ describe('<ForgottenPassword />', () => {
     it('should display invalid email format when email format is valid', async () => {
       renderForgottenPassword()
 
-      const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
+      const emailInput = screen.getByTestId('Entrée pour l’email')
       fireEvent.changeText(emailInput, 'john.doe')
 
       const continueButton = screen.getByText('Valider')

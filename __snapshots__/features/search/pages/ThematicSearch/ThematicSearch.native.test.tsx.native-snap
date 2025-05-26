@@ -2681,56 +2681,6 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                               </View>
                             </BVLinearGradient>
                           </View>
-                          <View
-                            backgroundColor="#F1F1F4"
-                            paddingHorizontal={4}
-                            style={
-                              [
-                                {
-                                  "alignItems": "center",
-                                  "alignSelf": "flex-start",
-                                  "backgroundColor": "#F1F1F4",
-                                  "borderRadius": 6,
-                                  "flexDirection": "row",
-                                  "paddingHorizontal": 4,
-                                  "paddingVertical": 4,
-                                },
-                              ]
-                            }
-                            testID="interaction-tag"
-                          >
-                            <View
-                              style={
-                                [
-                                  {
-                                    "marginRight": 4,
-                                  },
-                                ]
-                              }
-                            >
-                              <View
-                                height={16}
-                                testID="tagIcon"
-                                width={16}
-                              >
-                                <Text>
-                                  tagIcon-SVG-Mock
-                                </Text>
-                              </View>
-                            </View>
-                            <Text
-                              style={
-                                [
-                                  {
-                                    "color": "#161617",
-                                    "fontFamily": "Montserrat-SemiBold",
-                                    "fontSize": 12,
-                                    "lineHeight": 16,
-                                  },
-                                ]
-                              }
-                            />
-                          </View>
                           <View>
                             <Text
                               numberOfLines={1}
@@ -3035,56 +2985,6 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                                 </Text>
                               </View>
                             </BVLinearGradient>
-                          </View>
-                          <View
-                            backgroundColor="#F1F1F4"
-                            paddingHorizontal={4}
-                            style={
-                              [
-                                {
-                                  "alignItems": "center",
-                                  "alignSelf": "flex-start",
-                                  "backgroundColor": "#F1F1F4",
-                                  "borderRadius": 6,
-                                  "flexDirection": "row",
-                                  "paddingHorizontal": 4,
-                                  "paddingVertical": 4,
-                                },
-                              ]
-                            }
-                            testID="interaction-tag"
-                          >
-                            <View
-                              style={
-                                [
-                                  {
-                                    "marginRight": 4,
-                                  },
-                                ]
-                              }
-                            >
-                              <View
-                                height={16}
-                                testID="tagIcon"
-                                width={16}
-                              >
-                                <Text>
-                                  tagIcon-SVG-Mock
-                                </Text>
-                              </View>
-                            </View>
-                            <Text
-                              style={
-                                [
-                                  {
-                                    "color": "#161617",
-                                    "fontFamily": "Montserrat-SemiBold",
-                                    "fontSize": 12,
-                                    "lineHeight": 16,
-                                  },
-                                ]
-                              }
-                            />
                           </View>
                           <View>
                             <Text
@@ -3391,56 +3291,6 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                               </View>
                             </BVLinearGradient>
                           </View>
-                          <View
-                            backgroundColor="#F1F1F4"
-                            paddingHorizontal={4}
-                            style={
-                              [
-                                {
-                                  "alignItems": "center",
-                                  "alignSelf": "flex-start",
-                                  "backgroundColor": "#F1F1F4",
-                                  "borderRadius": 6,
-                                  "flexDirection": "row",
-                                  "paddingHorizontal": 4,
-                                  "paddingVertical": 4,
-                                },
-                              ]
-                            }
-                            testID="interaction-tag"
-                          >
-                            <View
-                              style={
-                                [
-                                  {
-                                    "marginRight": 4,
-                                  },
-                                ]
-                              }
-                            >
-                              <View
-                                height={16}
-                                testID="tagIcon"
-                                width={16}
-                              >
-                                <Text>
-                                  tagIcon-SVG-Mock
-                                </Text>
-                              </View>
-                            </View>
-                            <Text
-                              style={
-                                [
-                                  {
-                                    "color": "#161617",
-                                    "fontFamily": "Montserrat-SemiBold",
-                                    "fontSize": 12,
-                                    "lineHeight": 16,
-                                  },
-                                ]
-                              }
-                            />
-                          </View>
                           <View>
                             <Text
                               numberOfLines={1}
@@ -3745,56 +3595,6 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                                 </Text>
                               </View>
                             </BVLinearGradient>
-                          </View>
-                          <View
-                            backgroundColor="#F1F1F4"
-                            paddingHorizontal={4}
-                            style={
-                              [
-                                {
-                                  "alignItems": "center",
-                                  "alignSelf": "flex-start",
-                                  "backgroundColor": "#F1F1F4",
-                                  "borderRadius": 6,
-                                  "flexDirection": "row",
-                                  "paddingHorizontal": 4,
-                                  "paddingVertical": 4,
-                                },
-                              ]
-                            }
-                            testID="interaction-tag"
-                          >
-                            <View
-                              style={
-                                [
-                                  {
-                                    "marginRight": 4,
-                                  },
-                                ]
-                              }
-                            >
-                              <View
-                                height={16}
-                                testID="tagIcon"
-                                width={16}
-                              >
-                                <Text>
-                                  tagIcon-SVG-Mock
-                                </Text>
-                              </View>
-                            </View>
-                            <Text
-                              style={
-                                [
-                                  {
-                                    "color": "#161617",
-                                    "fontFamily": "Montserrat-SemiBold",
-                                    "fontSize": 12,
-                                    "lineHeight": 16,
-                                  },
-                                ]
-                              }
-                            />
                           </View>
                           <View>
                             <Text
@@ -4101,56 +3901,6 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                               </View>
                             </BVLinearGradient>
                           </View>
-                          <View
-                            backgroundColor="#F1F1F4"
-                            paddingHorizontal={4}
-                            style={
-                              [
-                                {
-                                  "alignItems": "center",
-                                  "alignSelf": "flex-start",
-                                  "backgroundColor": "#F1F1F4",
-                                  "borderRadius": 6,
-                                  "flexDirection": "row",
-                                  "paddingHorizontal": 4,
-                                  "paddingVertical": 4,
-                                },
-                              ]
-                            }
-                            testID="interaction-tag"
-                          >
-                            <View
-                              style={
-                                [
-                                  {
-                                    "marginRight": 4,
-                                  },
-                                ]
-                              }
-                            >
-                              <View
-                                height={16}
-                                testID="tagIcon"
-                                width={16}
-                              >
-                                <Text>
-                                  tagIcon-SVG-Mock
-                                </Text>
-                              </View>
-                            </View>
-                            <Text
-                              style={
-                                [
-                                  {
-                                    "color": "#161617",
-                                    "fontFamily": "Montserrat-SemiBold",
-                                    "fontSize": 12,
-                                    "lineHeight": 16,
-                                  },
-                                ]
-                              }
-                            />
-                          </View>
                           <View>
                             <Text
                               numberOfLines={1}
@@ -4455,56 +4205,6 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                                 </Text>
                               </View>
                             </BVLinearGradient>
-                          </View>
-                          <View
-                            backgroundColor="#F1F1F4"
-                            paddingHorizontal={4}
-                            style={
-                              [
-                                {
-                                  "alignItems": "center",
-                                  "alignSelf": "flex-start",
-                                  "backgroundColor": "#F1F1F4",
-                                  "borderRadius": 6,
-                                  "flexDirection": "row",
-                                  "paddingHorizontal": 4,
-                                  "paddingVertical": 4,
-                                },
-                              ]
-                            }
-                            testID="interaction-tag"
-                          >
-                            <View
-                              style={
-                                [
-                                  {
-                                    "marginRight": 4,
-                                  },
-                                ]
-                              }
-                            >
-                              <View
-                                height={16}
-                                testID="tagIcon"
-                                width={16}
-                              >
-                                <Text>
-                                  tagIcon-SVG-Mock
-                                </Text>
-                              </View>
-                            </View>
-                            <Text
-                              style={
-                                [
-                                  {
-                                    "color": "#161617",
-                                    "fontFamily": "Montserrat-SemiBold",
-                                    "fontSize": 12,
-                                    "lineHeight": 16,
-                                  },
-                                ]
-                              }
-                            />
                           </View>
                           <View>
                             <Text

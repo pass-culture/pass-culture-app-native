@@ -60,7 +60,7 @@ await act(async () => {
   fireEvent.changeText(passwordInput, 'password>=12')
 })
 await act(async () => {
-  const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
+  const emailInput = screen.getByTestId('Entrée pour l’email')
   fireEvent.changeText(emailInput, 'EMAIL@domain.ext')
 })
 expect(submitButton).toBeDisabled()

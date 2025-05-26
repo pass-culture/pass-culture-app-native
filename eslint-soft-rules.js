@@ -5,7 +5,6 @@ const softRules = {
   cleancode: {
     'react/no-unstable-nested-components': 'warn', // TODO(PC-25291): enable when its issues are fixed
     'local-rules/no-fireEvent': 'warn',
-    'react/no-unused-prop-types': 'warn', // has false positives
     'local-rules/no-spacer': 'warn',
     'local-rules/no-ts-expect-error': 'warn',
   },
