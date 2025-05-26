@@ -205,7 +205,6 @@ export const OffersModule = (props: OffersModuleProps) => {
     []
   )
 
-  // send playlist viewable items when page is focused
   useFocusEffect(
     useCallback(() => {
       if (lastViewableItems.current?.length) {

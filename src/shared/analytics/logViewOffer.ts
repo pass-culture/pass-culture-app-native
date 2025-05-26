@@ -52,7 +52,7 @@ export const logViewOffer = async (trackingInfo: PageTrackingInfo) => {
         ...extra,
       }
 
-      await trackingFn?.(
+      await trackingFn(
         omitBy(data, (value) => value === undefined || value === null || value === '')
       )
     }

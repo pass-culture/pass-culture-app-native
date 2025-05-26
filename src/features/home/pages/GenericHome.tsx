@@ -278,10 +278,8 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = ({
     }, [homeId, name])
   )
 
-  // log view offer for current page if app is closed
   useAppStateChange(undefined, () => logViewOffer(useOfferPlaylistTrackingStore.getState()))
 
-  // log view offer when changing page
   useFocusEffect(
     useCallback(() => {
       return () => {
