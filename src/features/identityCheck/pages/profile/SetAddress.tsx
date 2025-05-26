@@ -1,17 +1,21 @@
 import { useNavigation } from '@react-navigation/native'
+import { StackScreenProps } from '@react-navigation/stack'
 import { debounce } from 'lodash'
-import React, { useEffect, useRef, useState } from 'react'
+import React, { FunctionComponent, useEffect, useRef, useState } from 'react'
 import { Keyboard, Platform } from 'react-native'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { AddressOption } from 'features/identityCheck/components/AddressOption'
-import { CenteredTitle } from 'features/identityCheck/components/CenteredTitle'
+import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
 import { IdentityCheckError } from 'features/identityCheck/pages/profile/errors'
 import { addressActions, useAddress } from 'features/identityCheck/pages/profile/store/addressStore'
 import { useCity } from 'features/identityCheck/pages/profile/store/cityStore'
-import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import {
+  SubscriptionRootStackParamList,
+  UseNavigationType,
+} from 'features/navigation/RootNavigator/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/analytics/provider'
 import { eventMonitoring } from 'libs/monitoring/services'
@@ -25,13 +29,30 @@ import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/S
 import { Spinner } from 'ui/components/Spinner'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
-import { Spacer } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
+import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 const snackbarMessage =
   'Nous avons eu un problème pour trouver l’adresse associée à ton code postal. Réessaie plus tard.'
 const exception = 'Failed to fetch data from API: https://api-adresse.data.gouv.fr/search'
 
-export const SetAddress = () => {
+type Props = StackScreenProps<SubscriptionRootStackParamList, 'SetAddress'>
+
+export const SetAddress: FunctionComponent<Props> = ({ route }: Props) => {
+  const type = route.params.type
+  const isIdentityCheck = type === ProfileTypes.IDENTITY_CHECK
+  const pageInfos = isIdentityCheck
+    ? {
+        headerTitle: 'Profil',
+        title: 'Quelle est ton adresse\u00a0?',
+        navigateParamsType: ProfileTypes.IDENTITY_CHECK,
+      }
+    : {
+        headerTitle: 'Informations personnelles',
+        title: 'Saisis ton adresse postale',
+        navigateParamsType: ProfileTypes.BOOKING_FREE_OFFER_15_16,
+      }
+
   const { data: settings } = useSettingsContext()
   const storedAddress = useAddress()
   const storedCity = useCity()
@@ -103,39 +124,40 @@ export const SetAddress = () => {
     if (!enabled) return
     setStoreAddress(selectedAddress ?? query)
     analytics.logSetAddressClicked()
-    navigate('SetStatus')
+    navigate('SetStatus', { type: pageInfos.navigateParamsType })
   }
 
   useEnterKeyAction(enabled ? submitAddress : undefined)
 
   return (
     <PageWithHeader
-      title="Profil"
+      title={pageInfos.headerTitle}
       scrollChildren={
         <React.Fragment>
           <Form.MaxWidth>
-            <CenteredTitle title="Quelle est ton adresse&nbsp;?" />
-            <Spacer.Column numberOfSpaces={5} />
-            <SearchInput
-              autoFocus
-              onChangeText={onChangeAddress}
-              value={query}
-              label={label}
-              placeholder="Ex&nbsp;: 34 avenue de l’Opéra"
-              autoComplete="street-address"
-              textContentType="fullStreetAddress"
-              accessibilityDescribedBy={addressInputErrorId}
-              onPressRightIcon={resetSearch}
-              returnKeyType="next"
-              testID="Entrée pour l’adresse"
-            />
-            <InputError
-              visible={hasError}
-              messageId="Ton adresse ne doit pas contenir de caractères spéciaux ou n’être composée que d’espaces."
-              numberOfSpacesTop={2}
-              relatedInputId={addressInputErrorId}
-            />
-            <Spacer.Column numberOfSpaces={2} />
+            <Typo.Title3 {...getHeadingAttrs(2)}>{pageInfos.title}</Typo.Title3>
+            <Container>
+              <SearchInput
+                autoFocus
+                onChangeText={onChangeAddress}
+                value={query}
+                label={label}
+                format="34 avenue de l’Opéra"
+                autoComplete="street-address"
+                textContentType="fullStreetAddress"
+                accessibilityDescribedBy={addressInputErrorId}
+                onPressRightIcon={resetSearch}
+                returnKeyType="next"
+                testID="Entrée pour l’adresse"
+                searchInputID="street-address-input"
+              />
+              <InputError
+                visible={hasError}
+                messageId="Ton adresse ne doit pas contenir de caractères spéciaux ou n’être composée que d’espaces."
+                numberOfSpacesTop={2}
+                relatedInputId={addressInputErrorId}
+              />
+            </Container>
           </Form.MaxWidth>
           {isLoading ? <Spinner /> : null}
           <AdressesContainer accessibilityRole={AccessibilityRole.RADIOGROUP}>
@@ -170,3 +192,5 @@ const AdressesContainer = styled.View({
   overflowY: 'scroll',
   ...(Platform.OS === 'web' ? { boxSizing: 'content-box' } : {}),
 })
+
+const Container = styled.View({ marginTop: getSpacing(5), marginBottom: getSpacing(2) })

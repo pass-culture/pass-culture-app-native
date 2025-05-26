@@ -1,7 +1,6 @@
 import { algoliaNatifModuleFixture } from 'libs/contentful/fixtures/algoliaModules.fixture'
 import { businessNatifModuleFixture } from 'libs/contentful/fixtures/businessModule.fixture'
 import { categoryListFixture } from 'libs/contentful/fixtures/categoryList.fixture'
-import { exclusivityNatifModuleFixture } from 'libs/contentful/fixtures/exclusivityModule.fixture'
 import { highlightOfferContentModelFixture } from 'libs/contentful/fixtures/highlightOfferContentModel.fixture'
 import { recommendationNatifModuleFixture } from 'libs/contentful/fixtures/recommendationNatifModule.fixture'
 import { thematicHighlightModuleFixture } from 'libs/contentful/fixtures/thematicHighlightModule.fixture'
@@ -65,7 +64,6 @@ export const homepageNatifEntryFixture: HomepageNatifEntry = {
     modules: [
       businessNatifModuleFixture,
       algoliaNatifModuleFixture,
-      exclusivityNatifModuleFixture,
       recommendationNatifModuleFixture,
       venuesNatifModuleFixture,
       categoryListFixture,

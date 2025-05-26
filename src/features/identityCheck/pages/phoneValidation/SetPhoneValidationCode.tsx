@@ -8,7 +8,6 @@ import { v4 as uuidv4 } from 'uuid'
 import { extractApiErrorMessage, isApiError } from 'api/apiHelpers'
 import { usePhoneValidationRemainingAttempts } from 'features/identityCheck/api/usePhoneValidationRemainingAttempts'
 import { useValidatePhoneNumberMutation } from 'features/identityCheck/api/useValidatePhoneNumberMutation'
-import { CenteredTitle } from 'features/identityCheck/components/CenteredTitle'
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
 import { useNavigateForwardToStepper } from 'features/identityCheck/helpers/useNavigateForwardToStepper'
 import { invalidateStepperInfoQuery } from 'features/identityCheck/pages/helpers/invalidateStepperQuery'
@@ -25,6 +24,7 @@ import { useModal } from 'ui/components/modals/useModal'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
 import { Again } from 'ui/svg/icons/Again'
 import { Spacer, Typo } from 'ui/theme'
+import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const SetPhoneValidationCode = () => {
   const { phoneValidation } = useSubscriptionContext()
@@ -62,7 +62,6 @@ export const SetPhoneValidationCode = () => {
   })
   const [errorMessage, setErrorMessage] = useState('')
 
-  const titleID = uuidv4()
   const validationCodeInputErrorId = uuidv4()
 
   const { visible: isCodeNotReceivedModalVisible, hideModal, showModal } = useModal(false)
@@ -116,9 +115,9 @@ export const SetPhoneValidationCode = () => {
       onGoBack={remainingAttempts === 0 ? goBackToPhoneValidationTooManySMSSent : undefined}
       scrollChildren={
         <Form.MaxWidth>
-          <CenteredTitle titleID={titleID} title="Valide ton numéro de téléphone" />
+          <Typo.Title3 {...getHeadingAttrs(2)}>Valide ton numéro de téléphone</Typo.Title3>
           <Spacer.Column numberOfSpaces={5} />
-          <View accessibilityLabelledBy={titleID}>
+          <View>
             <StyledBody>{enterCodeInstructions}</StyledBody>
             <Spacer.Column numberOfSpaces={6} />
             <InputContainer>
@@ -180,7 +179,6 @@ export const hasCodeCorrectFormat = (code: string) => {
 
 const StyledBody = styled(Typo.Body)(({ theme }) => ({
   color: theme.colors.greyDark,
-  textAlign: 'center',
 }))
 
 const InputContainer = styled.View(({ theme }) => ({

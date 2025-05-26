@@ -10,7 +10,7 @@ import {
 import { analytics } from 'libs/analytics/provider'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
@@ -51,6 +51,9 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
+const user = userEvent.setup()
+jest.useFakeTimers()
+
 describe('<CodeNotReceivedModal />', () => {
   const mockFetch = jest.spyOn(global, 'fetch')
 
@@ -71,12 +74,11 @@ describe('<CodeNotReceivedModal />', () => {
     expect(screen).toMatchSnapshot()
   })
 
-  it('should call dismissModal upon pressing on Close', () => {
+  it('should call dismissModal upon pressing on Close', async () => {
     const dismissModalMock = jest.fn()
     renderCodeNotReceivedModal({ dismissModal: dismissModalMock })
 
-    const closeButton = screen.getByTestId('Fermer la modale')
-    fireEvent.press(closeButton)
+    await user.press(screen.getByTestId('Fermer la modale'))
 
     expect(dismissModalMock).toHaveBeenCalledTimes(1)
   })
@@ -93,10 +95,9 @@ describe('<CodeNotReceivedModal />', () => {
     const dismissModalMock = jest.fn()
     renderCodeNotReceivedModal({ dismissModal: dismissModalMock })
 
-    const requestNewCodeButton = screen.getByTestId('Demander un autre code')
-    fireEvent.press(requestNewCodeButton)
+    await user.press(screen.getByTestId('Demander un autre code'))
 
-    await waitFor(() => expect(dismissModalMock).toHaveBeenCalledTimes(1))
+    expect(dismissModalMock).toHaveBeenCalledTimes(1)
   })
 
   it('should dismiss modal if request fails', async () => {
@@ -109,10 +110,9 @@ describe('<CodeNotReceivedModal />', () => {
     const dismissModalMock = jest.fn()
     renderCodeNotReceivedModal({ dismissModal: dismissModalMock })
 
-    const requestNewCodeButton = screen.getByTestId('Demander un autre code')
-    fireEvent.press(requestNewCodeButton)
+    await user.press(screen.getByTestId('Demander un autre code'))
 
-    await waitFor(() => expect(dismissModalMock).toHaveBeenCalledTimes(1))
+    expect(dismissModalMock).toHaveBeenCalledTimes(1)
   })
 
   it('should show toaster with error message if request fails', async () => {
@@ -124,15 +124,12 @@ describe('<CodeNotReceivedModal />', () => {
     )
     renderCodeNotReceivedModal()
 
-    const requestNewCodeButton = screen.getByTestId('Demander un autre code')
-    fireEvent.press(requestNewCodeButton)
+    await user.press(screen.getByTestId('Demander un autre code'))
 
-    await waitFor(() =>
-      expect(mockShowErrorSnackBar).toHaveBeenCalledWith({
-        message: 'some message',
-        timeout: SNACK_BAR_TIME_OUT,
-      })
-    )
+    expect(mockShowErrorSnackBar).toHaveBeenCalledWith({
+      message: 'some message',
+      timeout: SNACK_BAR_TIME_OUT,
+    })
   })
 
   it('should navigate to SetPhoneNumberTooManySMSSent page if request fails with TOO_MANY_SMS_SENT code', async () => {
@@ -144,10 +141,9 @@ describe('<CodeNotReceivedModal />', () => {
     )
     renderCodeNotReceivedModal()
 
-    const requestNewCodeButton = screen.getByTestId('Demander un autre code')
-    fireEvent.press(requestNewCodeButton)
+    await user.press(screen.getByTestId('Demander un autre code'))
 
-    await waitFor(() => expect(navigate).toHaveBeenCalledWith('PhoneValidationTooManySMSSent'))
+    expect(navigate).toHaveBeenCalledWith('PhoneValidationTooManySMSSent')
   })
 
   it('should log event when pressing "Demander un autre code" button', async () => {
@@ -155,10 +151,7 @@ describe('<CodeNotReceivedModal />', () => {
 
     renderCodeNotReceivedModal()
 
-    const requestNewCodeButton = screen.getByTestId('Demander un autre code')
-    await act(async () => {
-      fireEvent.press(requestNewCodeButton)
-    })
+    await user.press(screen.getByTestId('Demander un autre code'))
 
     expect(analytics.logHasRequestedCode).toHaveBeenCalledTimes(1)
   })

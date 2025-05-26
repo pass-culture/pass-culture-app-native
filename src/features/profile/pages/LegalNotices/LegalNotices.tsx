@@ -85,5 +85,5 @@ export function LegalNotices() {
 }
 
 const ButtonInsideTextBlack = styled(ButtonInsideText).attrs(({ theme }) => ({
-  buttonColor: theme.colors.black,
+  buttonColor: theme.designSystem.color.text.default,
 }))``

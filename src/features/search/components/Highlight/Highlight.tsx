@@ -1,6 +1,7 @@
 import { getHighlightedParts, getPropertyByPath } from 'instantsearch.js/es/lib/utils'
 import React from 'react'
 
+import { decodeHTMLValue } from 'features/search/helpers/decodeHTMLValue/decodeHTMLValue'
 import { Highlighted, HistoryItem } from 'features/search/types'
 import { AlgoliaSuggestionHit, AlgoliaVenue } from 'libs/algolia/types'
 import { Typo } from 'ui/theme'
@@ -12,7 +13,7 @@ type HighlightPartProps = {
   isHighlighted: boolean
 }
 
-export function HighlightPart({ children, isHighlighted }: HighlightPartProps) {
+export const HighlightPart = ({ children, isHighlighted }: HighlightPartProps) => {
   return isHighlighted ? (
     <Typo.Body testID="highlightedText">{children}</Typo.Body>
   ) : (
@@ -20,7 +21,7 @@ export function HighlightPart({ children, isHighlighted }: HighlightPartProps) {
   )
 }
 
-export function HighlightHistoryItemPart({ children, isHighlighted }: HighlightPartProps) {
+export const HighlightHistoryItemPart = ({ children, isHighlighted }: HighlightPartProps) => {
   return isHighlighted ? (
     <Typo.BodyItalic testID="highlightedHistoryItemText">{children}</Typo.BodyItalic>
   ) : (
@@ -30,48 +31,41 @@ export function HighlightHistoryItemPart({ children, isHighlighted }: HighlightP
 
 type WithSuggestionHitProps = {
   suggestionHit: AlgoliaSuggestionHit
-  venueHit?: never
-  historyItem?: never
   attribute: string
 }
 
 type WithVenueHitProps = {
   venueHit: AlgoliaVenue
-  suggestionHit?: never
-  historyItem?: never
-  attribute: string
 }
 
 type WithHistoryItemProps = {
   historyItem: Highlighted<HistoryItem>
-  suggestionHit?: never
-  venueHit?: never
-  attribute?: never
 }
 
-type HighlightProps = WithSuggestionHitProps | WithVenueHitProps | WithHistoryItemProps
+export const SuggestionHitHighlight = ({ suggestionHit, attribute }: WithSuggestionHitProps) => {
+  const { value } = getPropertyByPath(suggestionHit._highlightResult, attribute)
+  const attributeValue = value?.toString()
 
-export function Highlight({ suggestionHit, venueHit, historyItem, attribute }: HighlightProps) {
-  let attributeValue = ''
+  return <Highlight attributeValue={attributeValue} />
+}
 
-  if (suggestionHit) {
-    const { value } = getPropertyByPath(suggestionHit._highlightResult, attribute)
-    attributeValue = value?.toString()
-  }
-  if (venueHit) {
-    attributeValue = venueHit._highlightResult?.name?.value?.toString() ?? ''
-  }
-  if (historyItem) {
-    attributeValue = historyItem._highlightResult?.query?.value?.toString() ?? ''
-  }
+export const VenueHitHighlight = ({ venueHit }: WithVenueHitProps) => {
+  const attributeValue = venueHit._highlightResult?.name?.value?.toString() ?? ''
 
+  return <Highlight attributeValue={attributeValue} />
+}
+
+export const HistoryItemHighlight = ({ historyItem }: WithHistoryItemProps) => {
+  const attributeValue = historyItem._highlightResult?.query?.value?.toString() ?? ''
+
+  return <Highlight attributeValue={attributeValue} historyItem={!!historyItem} />
+}
+
+type HighlightProps = { attributeValue: string; historyItem?: boolean }
+
+const Highlight = ({ attributeValue, historyItem }: HighlightProps) => {
   // it is necessary to have a good display when a search was executed and autocomplete redisplayed in iOS and Android
-  const attributeValueEncoded = attributeValue
-    .replaceAll('&lt;em&gt;', '<mark>')
-    .replaceAll('&lt;/em&gt;', '</mark>')
-    .replaceAll('&#39;', "'")
-
-  const parts = getHighlightedParts(attributeValueEncoded)
+  const parts = getHighlightedParts(decodeHTMLValue(attributeValue))
 
   return (
     <React.Fragment>

@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { OfferResponseV2, SubcategoryIdEnum } from 'api/gen'
+import { EligibilityType, OfferResponseV2, SubcategoryIdEnum } from 'api/gen'
 import { BookingState, Step, initialBookingState } from 'features/bookOffer/context/reducer'
 import { mockDigitalOffer, mockOffer } from 'features/bookOffer/fixtures/offer'
 import * as BookingOfferAPI from 'features/bookOffer/helpers/useBookingOffer'
@@ -10,10 +10,12 @@ import { VenueListItem } from 'features/offer/components/VenueSelectionList/Venu
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import { offerStockResponseSnap } from 'features/offer/fixtures/offerStockResponse'
 import * as UnderageUserAPI from 'features/profile/helpers/useIsUserUnderage'
+import { beneficiaryUser } from 'fixtures/user'
 import * as logOfferConversionAPI from 'libs/algolia/analytics/logOfferConversion'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
+import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
@@ -139,6 +141,8 @@ jest.mock('queries/searchVenuesOffer/useSearchVenueOffersInfiniteQuery', () => (
   }),
 }))
 
+jest.mock('features/auth/context/AuthContext')
+
 jest.mock('libs/firebase/analytics/analytics')
 
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
@@ -148,7 +152,6 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 })
 
 const user = userEvent.setup()
-
 jest.useFakeTimers()
 
 describe('<BookingDetails />', () => {
@@ -718,6 +721,39 @@ describe('<BookingDetails />', () => {
     const bookingButton = screen.getByText('Confirmer la réservation')
 
     expect(bookingButton).toBeEnabled()
+  })
+
+  it('should display deducted amount message', async () => {
+    renderBookingDetails({
+      stocks: mockStocks,
+      onPressBookOffer: mockOnPressBookOffer,
+    })
+
+    const deductedAmountMessage = await screen.findByText(
+      '20 € seront déduits de ton crédit pass Culture'
+    )
+
+    expect(deductedAmountMessage).toBeOnTheScreen()
+  })
+
+  it('should not display deducted amount message when free user status', async () => {
+    mockAuthContextWithUser({
+      ...beneficiaryUser,
+      eligibility: EligibilityType.free,
+    })
+
+    renderBookingDetails({
+      stocks: mockStocks,
+      onPressBookOffer: mockOnPressBookOffer,
+    })
+
+    const deductedAmountMessage = screen.queryByText(
+      '20 € seront déduits de ton crédit pass Culture'
+    )
+
+    await screen.findByText('Confirmer la réservation')
+
+    expect(deductedAmountMessage).not.toBeOnTheScreen()
   })
 })
 

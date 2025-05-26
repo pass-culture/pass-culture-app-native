@@ -357,718 +357,702 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
       >
         <View>
           <View
-            numberOfSpaces={6}
+            isKeyboardOpen={false}
             style={
               [
                 {
-                  "height": 24,
-                },
-              ]
-            }
-          />
-          <View
-            style={
-              [
-                {
-                  "maxWidth": 500,
-                  "width": "100%",
+                  "marginBottom": 0,
+                  "marginTop": 24,
                 },
               ]
             }
           >
             <View
-              backgroundColor="#f3ecff"
               style={
                 [
                   {
-                    "alignItems": "center",
-                    "backgroundColor": "#f3ecff",
-                    "borderRadius": 8,
-                    "flexDirection": "row",
-                    "justifyContent": "space-between",
-                    "paddingBottom": 16,
-                    "paddingLeft": 16,
-                    "paddingRight": 16,
-                    "paddingTop": 16,
-                  },
-                ]
-              }
-              testID="creditBanner"
-            >
-              <View
-                style={
-                  [
-                    {
-                      "paddingRight": 16,
-                    },
-                  ]
-                }
-              >
-                <View
-                  height={24}
-                  width={24}
-                >
-                  <Text>
-                    undefined-SVG-Mock
-                  </Text>
-                </View>
-              </View>
-              <View
-                style={
-                  [
-                    {
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                    },
-                  ]
-                }
-              >
-                <Text
-                  style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 12,
-                        "lineHeight": 19.2,
-                      },
-                    ]
-                  }
-                  textColor="#161617"
-                >
-                  Il te reste 70 € sur ton pass Culture.
-                </Text>
-              </View>
-            </View>
-            <View
-              numberOfSpaces={6}
-              style={
-                [
-                  {
-                    "height": 24,
-                  },
-                ]
-              }
-            />
-            <View
-              inverseLayout={false}
-              style={
-                [
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                    "justifyContent": "space-between",
-                  },
-                ]
-              }
-            >
-              <View
-                style={
-                  [
-                    {
-                      "flexShrink": 1,
-                    },
-                  ]
-                }
-              >
-                <Text
-                  accessibilityDescribedBy="testUuidV4"
-                  htmlFor="testUuidV4"
-                  id="testUuidV4"
-                  style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                      },
-                    ]
-                  }
-                >
-                  Uniquement les offres gratuites
-                </Text>
-              </View>
-              <View
-                numberOfSpaces={2}
-                style={
-                  [
-                    {
-                      "width": 8,
-                    },
-                  ]
-                }
-              />
-              <View
-                style={
-                  [
-                    {
-                      "flexShrink": 0,
-                    },
-                  ]
-                }
-              >
-                <View
-                  style={
-                    [
-                      {
-                        "alignItems": "center",
-                        "flexDirection": "row",
-                      },
-                    ]
-                  }
-                >
-                  <Text
-                    accessibilityHidden={true}
-                    style={
-                      [
-                        {
-                          "display": "none",
-                        },
-                      ]
-                    }
-                  >
-                    Case à cocher - 
-                    non cochée
-                  </Text>
-                  <View
-                    accessibilityRole="checkbox"
-                    accessibilityState={
-                      {
-                        "busy": undefined,
-                        "checked": false,
-                        "disabled": false,
-                        "expanded": undefined,
-                        "selected": undefined,
-                      }
-                    }
-                    accessibilityValue={
-                      {
-                        "max": undefined,
-                        "min": undefined,
-                        "now": undefined,
-                        "text": undefined,
-                      }
-                    }
-                    accessible={false}
-                    focusable={true}
-                    onClick={[Function]}
-                    onResponderGrant={[Function]}
-                    onResponderMove={[Function]}
-                    onResponderRelease={[Function]}
-                    onResponderTerminate={[Function]}
-                    onResponderTerminationRequest={[Function]}
-                    onStartShouldSetResponder={[Function]}
-                    style={
-                      [
-                        [
-                          {
-                            "userSelect": "auto",
-                          },
-                        ],
-                        {
-                          "opacity": 1,
-                        },
-                      ]
-                    }
-                    testID="Interrupteur onlyFreeOffers"
-                  >
-                    <View
-                      active={false}
-                      style={
-                        [
-                          {
-                            "backgroundColor": "#90949D",
-                            "borderRadius": 16,
-                            "height": 32,
-                            "justifyContent": "center",
-                            "width": 56,
-                          },
-                        ]
-                      }
-                    >
-                      <View
-                        disabled={false}
-                        style={
-                          [
-                            {
-                              "alignItems": "center",
-                              "aspectRatio": 1,
-                              "backgroundColor": "#ffffff",
-                              "borderRadius": 28,
-                              "height": 28,
-                              "justifyContent": "center",
-                              "shadowColor": "#161617",
-                              "shadowOffset": {
-                                "height": 2,
-                                "width": 0,
-                              },
-                              "shadowOpacity": 0.2,
-                              "shadowRadius": 2.5,
-                              "width": 28,
-                            },
-                            {
-                              "marginLeft": 2,
-                            },
-                          ]
-                        }
-                      />
-                    </View>
-                  </View>
-                </View>
-              </View>
-            </View>
-            <View
-              style={
-                [
-                  {
-                    "backgroundColor": "#F1F1F4",
-                    "height": 1,
-                    "marginVertical": 24,
-                    "width": "100%",
-                  },
-                ]
-              }
-            />
-            <View
-              inverseLayout={false}
-              style={
-                [
-                  {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                    "justifyContent": "space-between",
-                  },
-                ]
-              }
-            >
-              <View
-                style={
-                  [
-                    {
-                      "flexShrink": 1,
-                    },
-                  ]
-                }
-              >
-                <Text
-                  accessibilityDescribedBy="testUuidV4"
-                  htmlFor="testUuidV4"
-                  id="testUuidV4"
-                  style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                      },
-                    ]
-                  }
-                >
-                  Limiter la recherche à mon crédit
-                </Text>
-              </View>
-              <View
-                numberOfSpaces={2}
-                style={
-                  [
-                    {
-                      "width": 8,
-                    },
-                  ]
-                }
-              />
-              <View
-                style={
-                  [
-                    {
-                      "flexShrink": 0,
-                    },
-                  ]
-                }
-              >
-                <View
-                  style={
-                    [
-                      {
-                        "alignItems": "center",
-                        "flexDirection": "row",
-                      },
-                    ]
-                  }
-                >
-                  <Text
-                    accessibilityHidden={true}
-                    style={
-                      [
-                        {
-                          "display": "none",
-                        },
-                      ]
-                    }
-                  >
-                    Case à cocher - 
-                    non cochée
-                  </Text>
-                  <View
-                    accessibilityRole="checkbox"
-                    accessibilityState={
-                      {
-                        "busy": undefined,
-                        "checked": false,
-                        "disabled": false,
-                        "expanded": undefined,
-                        "selected": undefined,
-                      }
-                    }
-                    accessibilityValue={
-                      {
-                        "max": undefined,
-                        "min": undefined,
-                        "now": undefined,
-                        "text": undefined,
-                      }
-                    }
-                    accessible={false}
-                    focusable={true}
-                    onClick={[Function]}
-                    onResponderGrant={[Function]}
-                    onResponderMove={[Function]}
-                    onResponderRelease={[Function]}
-                    onResponderTerminate={[Function]}
-                    onResponderTerminationRequest={[Function]}
-                    onStartShouldSetResponder={[Function]}
-                    style={
-                      [
-                        [
-                          {
-                            "userSelect": "auto",
-                          },
-                        ],
-                        {
-                          "opacity": 1,
-                        },
-                      ]
-                    }
-                    testID="Interrupteur limitCreditSearch"
-                  >
-                    <View
-                      active={false}
-                      style={
-                        [
-                          {
-                            "backgroundColor": "#90949D",
-                            "borderRadius": 16,
-                            "height": 32,
-                            "justifyContent": "center",
-                            "width": 56,
-                          },
-                        ]
-                      }
-                    >
-                      <View
-                        disabled={false}
-                        style={
-                          [
-                            {
-                              "alignItems": "center",
-                              "aspectRatio": 1,
-                              "backgroundColor": "#ffffff",
-                              "borderRadius": 28,
-                              "height": 28,
-                              "justifyContent": "center",
-                              "shadowColor": "#161617",
-                              "shadowOffset": {
-                                "height": 2,
-                                "width": 0,
-                              },
-                              "shadowOpacity": 0.2,
-                              "shadowRadius": 2.5,
-                              "width": 28,
-                            },
-                            {
-                              "marginLeft": 2,
-                            },
-                          ]
-                        }
-                      />
-                    </View>
-                  </View>
-                </View>
-              </View>
-            </View>
-            <View
-              style={
-                [
-                  {
-                    "backgroundColor": "#F1F1F4",
-                    "height": 1,
-                    "marginVertical": 24,
-                    "width": "100%",
-                  },
-                ]
-              }
-            />
-            <View
-              style={
-                [
-                  {
-                    "alignItems": "flex-start",
-                    "display": "flex",
-                    "flexDirection": "column",
                     "maxWidth": 500,
                     "width": "100%",
                   },
                 ]
               }
             >
-              <View>
+              <View
+                style={
+                  [
+                    {
+                      "marginBottom": 24,
+                    },
+                  ]
+                }
+              >
                 <View
+                  backgroundColor="#f3ecff"
                   style={
                     [
                       {
-                        "alignItems": "flex-end",
+                        "alignItems": "center",
+                        "backgroundColor": "#f3ecff",
+                        "borderRadius": 8,
                         "flexDirection": "row",
                         "justifyContent": "space-between",
-                        "width": "100%",
+                        "paddingBottom": 16,
+                        "paddingLeft": 16,
+                        "paddingRight": 16,
+                        "paddingTop": 16,
                       },
                     ]
                   }
+                  testID="creditBanner"
                 >
-                  <Text
+                  <View
                     style={
                       [
                         {
-                          "color": "#161617",
-                          "fontFamily": "Montserrat-Medium",
-                          "fontSize": 16,
-                          "lineHeight": 25.6,
+                          "paddingRight": 16,
                         },
                       ]
                     }
                   >
-                    Prix minimum (en €)
-                  </Text>
+                    <View
+                      height={24}
+                      width={24}
+                    >
+                      <Text>
+                        undefined-SVG-Mock
+                      </Text>
+                    </View>
+                  </View>
+                  <View
+                    style={
+                      [
+                        {
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        },
+                      ]
+                    }
+                  >
+                    <Text
+                      style={
+                        [
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 12,
+                            "lineHeight": 19.2,
+                          },
+                        ]
+                      }
+                      textColor="#161617"
+                    >
+                      Il te reste 70 € sur ton pass Culture.
+                    </Text>
+                  </View>
                 </View>
               </View>
               <View
-                numberOfSpaces={2}
-                style={
-                  [
-                    {
-                      "height": 8,
-                    },
-                  ]
-                }
-              />
-              <View
-                height="small"
-                isDisabled={false}
-                isError={false}
-                isFocus={false}
+                inverseLayout={false}
                 style={
                   [
                     {
                       "alignItems": "center",
-                      "backgroundColor": "#ffffff",
-                      "borderColor": "#90949d",
-                      "borderRadius": 22,
-                      "borderStyle": "solid",
-                      "borderWidth": 1,
                       "flexDirection": "row",
-                      "height": 40,
-                      "paddingBottom": 0,
-                      "paddingLeft": 17,
-                      "paddingRight": 17,
-                      "paddingTop": 0,
-                      "width": "100%",
+                      "justifyContent": "space-between",
                     },
                   ]
                 }
-                testID="styled-input-container"
               >
-                <TextInput
-                  accessibilityDescribedBy="testUuidV4"
-                  autoCapitalize="none"
-                  autoComplete="off"
-                  disabled={false}
-                  editable={true}
-                  isEmpty={true}
-                  keyboardType="numeric"
-                  multiline={false}
-                  nativeID="testUuidV4"
-                  onBlur={[Function]}
-                  onChangeText={[Function]}
-                  onFocus={[Function]}
-                  placeholder="0"
-                  placeholderTextColor="#696A6F"
-                  returnKeyType="next"
-                  style={
-                    [
-                      {
-                        "color": "#161617",
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "fontFamily": "Montserrat-MediumItalic",
-                        "fontSize": 16,
-                        "height": "100%",
-                        "paddingBottom": 0,
-                        "paddingLeft": 0,
-                        "paddingRight": 0,
-                        "paddingTop": 0,
-                      },
-                    ]
-                  }
-                  testID="Entrée pour le prix minimum"
-                  textAlignVertical="center"
-                  textContentType="none"
-                  value=""
-                />
-              </View>
-            </View>
-            <View
-              numberOfSpaces={6}
-              style={
-                [
-                  {
-                    "height": 24,
-                  },
-                ]
-              }
-            />
-            <View
-              style={
-                [
-                  {
-                    "alignItems": "flex-start",
-                    "display": "flex",
-                    "flexDirection": "column",
-                    "maxWidth": 500,
-                    "width": "100%",
-                  },
-                ]
-              }
-            >
-              <View>
                 <View
                   style={
                     [
                       {
-                        "alignItems": "flex-end",
-                        "flexDirection": "row",
-                        "justifyContent": "space-between",
-                        "width": "100%",
+                        "flexShrink": 1,
                       },
                     ]
                   }
                 >
                   <Text
+                    accessibilityDescribedBy="testUuidV4"
+                    htmlFor="testUuidV4"
+                    id="testUuidV4"
                     style={
                       [
                         {
                           "color": "#161617",
-                          "fontFamily": "Montserrat-Medium",
-                          "fontSize": 16,
-                          "lineHeight": 25.6,
-                        },
-                      ]
-                    }
-                  >
-                    Prix maximum (en €)
-                  </Text>
-                  <Text
-                    style={
-                      [
-                        {
-                          "color": "#696a6f",
                           "fontFamily": "Montserrat-SemiBold",
-                          "fontSize": 12,
-                          "lineHeight": 19.2,
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
                         },
                       ]
                     }
                   >
-                    max : 80 €
+                    Uniquement les offres gratuites
                   </Text>
+                </View>
+                <View
+                  numberOfSpaces={6}
+                  style={
+                    [
+                      {
+                        "width": 24,
+                      },
+                    ]
+                  }
+                />
+                <View
+                  style={
+                    [
+                      {
+                        "flexShrink": 0,
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    style={
+                      [
+                        {
+                          "alignItems": "center",
+                          "flexDirection": "row",
+                        },
+                      ]
+                    }
+                  >
+                    <Text
+                      accessibilityHidden={true}
+                      style={
+                        [
+                          {
+                            "display": "none",
+                          },
+                        ]
+                      }
+                    >
+                      Case à cocher - 
+                      non cochée
+                    </Text>
+                    <View
+                      accessibilityRole="checkbox"
+                      accessibilityState={
+                        {
+                          "busy": undefined,
+                          "checked": false,
+                          "disabled": false,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        }
+                      }
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
+                        }
+                      }
+                      accessible={false}
+                      focusable={true}
+                      onClick={[Function]}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
+                      style={
+                        [
+                          [
+                            {
+                              "userSelect": "auto",
+                            },
+                          ],
+                          {
+                            "opacity": 1,
+                          },
+                        ]
+                      }
+                      testID="Interrupteur onlyFreeOffers"
+                    >
+                      <View
+                        active={false}
+                        style={
+                          [
+                            {
+                              "backgroundColor": "#90949D",
+                              "borderRadius": 16,
+                              "height": 32,
+                              "justifyContent": "center",
+                              "width": 56,
+                            },
+                          ]
+                        }
+                      >
+                        <View
+                          disabled={false}
+                          style={
+                            [
+                              {
+                                "alignItems": "center",
+                                "aspectRatio": 1,
+                                "backgroundColor": "#ffffff",
+                                "borderRadius": 28,
+                                "height": 28,
+                                "justifyContent": "center",
+                                "shadowColor": "#161617",
+                                "shadowOffset": {
+                                  "height": 2,
+                                  "width": 0,
+                                },
+                                "shadowOpacity": 0.2,
+                                "shadowRadius": 2.5,
+                                "width": 28,
+                              },
+                              {
+                                "marginLeft": 2,
+                              },
+                            ]
+                          }
+                        />
+                      </View>
+                    </View>
+                  </View>
                 </View>
               </View>
               <View
-                numberOfSpaces={2}
                 style={
                   [
                     {
-                      "height": 8,
+                      "backgroundColor": "#F1F1F4",
+                      "height": 1,
+                      "marginVertical": 24,
+                      "width": "100%",
                     },
                   ]
                 }
               />
               <View
-                height="small"
-                isDisabled={false}
-                isError={false}
-                isFocus={false}
+                inverseLayout={false}
                 style={
                   [
                     {
                       "alignItems": "center",
-                      "backgroundColor": "#ffffff",
-                      "borderColor": "#90949d",
-                      "borderRadius": 22,
-                      "borderStyle": "solid",
-                      "borderWidth": 1,
                       "flexDirection": "row",
-                      "height": 40,
-                      "paddingBottom": 0,
-                      "paddingLeft": 17,
-                      "paddingRight": 17,
-                      "paddingTop": 0,
+                      "justifyContent": "space-between",
+                    },
+                  ]
+                }
+              >
+                <View
+                  style={
+                    [
+                      {
+                        "flexShrink": 1,
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    accessibilityDescribedBy="testUuidV4"
+                    htmlFor="testUuidV4"
+                    id="testUuidV4"
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                        },
+                      ]
+                    }
+                  >
+                    Limiter la recherche à mon crédit
+                  </Text>
+                </View>
+                <View
+                  numberOfSpaces={6}
+                  style={
+                    [
+                      {
+                        "width": 24,
+                      },
+                    ]
+                  }
+                />
+                <View
+                  style={
+                    [
+                      {
+                        "flexShrink": 0,
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    style={
+                      [
+                        {
+                          "alignItems": "center",
+                          "flexDirection": "row",
+                        },
+                      ]
+                    }
+                  >
+                    <Text
+                      accessibilityHidden={true}
+                      style={
+                        [
+                          {
+                            "display": "none",
+                          },
+                        ]
+                      }
+                    >
+                      Case à cocher - 
+                      non cochée
+                    </Text>
+                    <View
+                      accessibilityRole="checkbox"
+                      accessibilityState={
+                        {
+                          "busy": undefined,
+                          "checked": false,
+                          "disabled": false,
+                          "expanded": undefined,
+                          "selected": undefined,
+                        }
+                      }
+                      accessibilityValue={
+                        {
+                          "max": undefined,
+                          "min": undefined,
+                          "now": undefined,
+                          "text": undefined,
+                        }
+                      }
+                      accessible={false}
+                      focusable={true}
+                      onClick={[Function]}
+                      onResponderGrant={[Function]}
+                      onResponderMove={[Function]}
+                      onResponderRelease={[Function]}
+                      onResponderTerminate={[Function]}
+                      onResponderTerminationRequest={[Function]}
+                      onStartShouldSetResponder={[Function]}
+                      style={
+                        [
+                          [
+                            {
+                              "userSelect": "auto",
+                            },
+                          ],
+                          {
+                            "opacity": 1,
+                          },
+                        ]
+                      }
+                      testID="Interrupteur limitCreditSearch"
+                    >
+                      <View
+                        active={false}
+                        style={
+                          [
+                            {
+                              "backgroundColor": "#90949D",
+                              "borderRadius": 16,
+                              "height": 32,
+                              "justifyContent": "center",
+                              "width": 56,
+                            },
+                          ]
+                        }
+                      >
+                        <View
+                          disabled={false}
+                          style={
+                            [
+                              {
+                                "alignItems": "center",
+                                "aspectRatio": 1,
+                                "backgroundColor": "#ffffff",
+                                "borderRadius": 28,
+                                "height": 28,
+                                "justifyContent": "center",
+                                "shadowColor": "#161617",
+                                "shadowOffset": {
+                                  "height": 2,
+                                  "width": 0,
+                                },
+                                "shadowOpacity": 0.2,
+                                "shadowRadius": 2.5,
+                                "width": 28,
+                              },
+                              {
+                                "marginLeft": 2,
+                              },
+                            ]
+                          }
+                        />
+                      </View>
+                    </View>
+                  </View>
+                </View>
+              </View>
+              <View
+                style={
+                  [
+                    {
+                      "backgroundColor": "#F1F1F4",
+                      "height": 1,
+                      "marginVertical": 24,
                       "width": "100%",
                     },
                   ]
                 }
-                testID="styled-input-container"
+              />
+              <View
+                style={
+                  [
+                    {
+                      "marginBottom": 24,
+                    },
+                  ]
+                }
               >
-                <TextInput
-                  accessibilityDescribedBy="testUuidV4"
-                  autoCapitalize="none"
-                  autoComplete="off"
-                  disabled={false}
-                  editable={true}
-                  isEmpty={true}
-                  keyboardType="numeric"
-                  multiline={false}
-                  nativeID="testUuidV4"
-                  onBlur={[Function]}
-                  onChangeText={[Function]}
-                  onFocus={[Function]}
-                  placeholder="80"
-                  placeholderTextColor="#696A6F"
-                  returnKeyType="next"
+                <View
                   style={
                     [
                       {
-                        "color": "#161617",
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "fontFamily": "Montserrat-MediumItalic",
-                        "fontSize": 16,
-                        "height": "100%",
-                        "paddingBottom": 0,
-                        "paddingLeft": 0,
-                        "paddingRight": 0,
-                        "paddingTop": 0,
+                        "alignItems": "flex-start",
+                        "display": "flex",
+                        "flexDirection": "column",
+                        "maxWidth": 500,
+                        "width": "100%",
                       },
                     ]
                   }
-                  testID="Entrée pour le prix maximum"
-                  textAlignVertical="center"
-                  textContentType="none"
-                  value=""
-                />
+                >
+                  <View>
+                    <View
+                      style={
+                        [
+                          {
+                            "alignItems": "flex-end",
+                            "flexDirection": "row",
+                            "justifyContent": "space-between",
+                            "marginBottom": 8,
+                            "width": "100%",
+                          },
+                        ]
+                      }
+                    >
+                      <Text
+                        style={
+                          [
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-Medium",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            },
+                          ]
+                        }
+                      >
+                        Prix minimum (en €)
+                      </Text>
+                    </View>
+                  </View>
+                  <View
+                    height="small"
+                    isDisabled={false}
+                    isError={false}
+                    isFocus={false}
+                    style={
+                      [
+                        {
+                          "alignItems": "center",
+                          "backgroundColor": "#ffffff",
+                          "borderColor": "#90949d",
+                          "borderRadius": 22,
+                          "borderStyle": "solid",
+                          "borderWidth": 1,
+                          "flexDirection": "row",
+                          "height": 40,
+                          "paddingBottom": 0,
+                          "paddingLeft": 17,
+                          "paddingRight": 17,
+                          "paddingTop": 0,
+                          "width": "100%",
+                        },
+                      ]
+                    }
+                    testID="styled-input-container"
+                  >
+                    <TextInput
+                      accessibilityDescribedBy="testUuidV4"
+                      autoCapitalize="none"
+                      autoComplete="off"
+                      disabled={false}
+                      editable={true}
+                      isEmpty={true}
+                      keyboardType="numeric"
+                      multiline={false}
+                      nativeID="testUuidV4"
+                      onBlur={[Function]}
+                      onChangeText={[Function]}
+                      onFocus={[Function]}
+                      placeholder="0"
+                      placeholderTextColor="#696A6F"
+                      returnKeyType="next"
+                      style={
+                        [
+                          {
+                            "color": "#161617",
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                            "fontFamily": "Montserrat-MediumItalic",
+                            "fontSize": 16,
+                            "height": "100%",
+                            "paddingBottom": 0,
+                            "paddingLeft": 0,
+                            "paddingRight": 0,
+                            "paddingTop": 0,
+                          },
+                        ]
+                      }
+                      testID="Entrée pour le prix minimum"
+                      textAlignVertical="center"
+                      textContentType="none"
+                      value=""
+                    />
+                  </View>
+                </View>
+              </View>
+              <View
+                style={
+                  [
+                    {
+                      "alignItems": "flex-start",
+                      "display": "flex",
+                      "flexDirection": "column",
+                      "maxWidth": 500,
+                      "width": "100%",
+                    },
+                  ]
+                }
+              >
+                <View>
+                  <View
+                    style={
+                      [
+                        {
+                          "alignItems": "flex-end",
+                          "flexDirection": "row",
+                          "justifyContent": "space-between",
+                          "marginBottom": 8,
+                          "width": "100%",
+                        },
+                      ]
+                    }
+                  >
+                    <Text
+                      style={
+                        [
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-Medium",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                          },
+                        ]
+                      }
+                    >
+                      Prix maximum (en €)
+                    </Text>
+                    <Text
+                      style={
+                        [
+                          {
+                            "color": "#696a6f",
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 12,
+                            "lineHeight": 19.2,
+                          },
+                        ]
+                      }
+                    >
+                      max : 80 €
+                    </Text>
+                  </View>
+                </View>
+                <View
+                  height="small"
+                  isDisabled={false}
+                  isError={false}
+                  isFocus={false}
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "backgroundColor": "#ffffff",
+                        "borderColor": "#90949d",
+                        "borderRadius": 22,
+                        "borderStyle": "solid",
+                        "borderWidth": 1,
+                        "flexDirection": "row",
+                        "height": 40,
+                        "paddingBottom": 0,
+                        "paddingLeft": 17,
+                        "paddingRight": 17,
+                        "paddingTop": 0,
+                        "width": "100%",
+                      },
+                    ]
+                  }
+                  testID="styled-input-container"
+                >
+                  <TextInput
+                    accessibilityDescribedBy="testUuidV4"
+                    autoCapitalize="none"
+                    autoComplete="off"
+                    disabled={false}
+                    editable={true}
+                    isEmpty={true}
+                    keyboardType="numeric"
+                    multiline={false}
+                    nativeID="testUuidV4"
+                    onBlur={[Function]}
+                    onChangeText={[Function]}
+                    onFocus={[Function]}
+                    placeholder="80"
+                    placeholderTextColor="#696A6F"
+                    returnKeyType="next"
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "Montserrat-MediumItalic",
+                          "fontSize": 16,
+                          "height": "100%",
+                          "paddingBottom": 0,
+                          "paddingLeft": 0,
+                          "paddingRight": 0,
+                          "paddingTop": 0,
+                        },
+                      ]
+                    }
+                    testID="Entrée pour le prix maximum"
+                    textAlignVertical="center"
+                    textContentType="none"
+                    value=""
+                  />
+                </View>
               </View>
             </View>
           </View>
@@ -1093,11 +1077,13 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
           }
         >
           <View
+            gap={4}
             isModal={true}
             style={
               [
                 {
                   "flexDirection": "row",
+                  "gap": 16,
                   "justifyContent": "center",
                   "paddingHorizontal": 24,
                   "paddingTop": 8,
@@ -1111,7 +1097,7 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                 {
                   "busy": undefined,
                   "checked": undefined,
-                  "disabled": undefined,
+                  "disabled": true,
                   "expanded": undefined,
                   "selected": undefined,
                 }
@@ -1125,7 +1111,7 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                 }
               }
               accessible={true}
-              focusable={true}
+              focusable={false}
               onClick={[Function]}
               onResponderGrant={[Function]}
               onResponderMove={[Function]}
@@ -1154,7 +1140,6 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                     },
                     {
                       "backgroundColor": "transparent",
-                      "marginRight": 16,
                       "width": "auto",
                     },
                   ],
@@ -1211,7 +1196,7 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                   style={
                     [
                       {
-                        "color": "#161617",
+                        "color": "#696A6F",
                         "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 12,
                         "lineHeight": 19.2,
@@ -1224,16 +1209,6 @@ exports[`<PriceModal/> should render modal correctly after animation and with en
                 </Text>
               </View>
             </View>
-            <View
-              numberOfSpaces={4}
-              style={
-                [
-                  {
-                    "height": 16,
-                  },
-                ]
-              }
-            />
             <View
               accessibilityLabel="Rechercher"
               accessibilityState={

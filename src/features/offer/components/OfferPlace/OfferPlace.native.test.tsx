@@ -8,7 +8,7 @@ import { OfferCTAProvider } from 'features/offer/components/OfferContent/OfferCT
 import { OfferPlace, OfferPlaceProps } from 'features/offer/components/OfferPlace/OfferPlace'
 import { mockSubcategory } from 'features/offer/fixtures/mockSubcategory'
 import { analytics } from 'libs/analytics/provider'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { ILocationContext, LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
@@ -420,46 +420,6 @@ describe('<OfferPlace />', () => {
         venueId: mockOffer.venue.id,
         from: 'offer',
       })
-    })
-  })
-
-  describe('Venue is open to public', () => {
-    const offerWithIsOpenToPublic: OfferResponseV2 = {
-      ...mockOffer,
-      venue: {
-        ...mockOffer.venue,
-        isPermanent: false,
-        isOpenToPublic: true,
-      },
-      address: {
-        street: 'RUE DE CALI',
-        city: 'Kourou',
-        timezone: 'Europe/Paris',
-        label: 'Cinéma de la fin',
-        postalCode: '97310',
-        coordinates: {
-          latitude: 5.15839,
-          longitude: -52.63741,
-        },
-      },
-    }
-
-    it('should navigate to venue page when pressing venue button and wipIsOpenToPublic feature flag activated', async () => {
-      mockUseSearchVenueOffers.mockReturnValueOnce(searchVenueOfferEmpty)
-      setFeatureFlags([RemoteStoreFeatureFlags.WIP_IS_OPEN_TO_PUBLIC])
-      renderOfferPlace({ offer: offerWithIsOpenToPublic })
-
-      await user.press(screen.getByTestId('RightFilled'))
-
-      expect(navigate).toHaveBeenCalledWith('Venue', { id: mockOffer.venue.id })
-    })
-
-    it('should not navigate to venue page when pressing venue button and wipIsOpenToPublic feature flag deactivated', async () => {
-      mockUseSearchVenueOffers.mockReturnValueOnce(searchVenueOfferEmpty)
-      setFeatureFlags()
-      renderOfferPlace({ offer: offerWithIsOpenToPublic })
-
-      expect(screen.queryByTestId('RightFilled')).not.toBeOnTheScreen()
     })
   })
 

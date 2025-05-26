@@ -201,34 +201,7 @@ exports[`<EighteenBirthday /> should render eighteen birthday 1`] = `
           ]
         }
       >
-        Confirme tes informations personnelles pour débloquer tes 300 €.
-      </Text>
-    </View>
-    <View
-      style={
-        [
-          {
-            "marginBottom": 24,
-          },
-        ]
-      }
-    >
-      <Text
-        style={
-          [
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-SemiBold",
-              "fontSize": 12,
-              "lineHeight": 19.2,
-              "textAlign": "center",
-            },
-          ]
-        }
-      >
-        Ton crédit précédent a été remis à 
-        0 €
-        .
+        Confirme tes informations personnelles pour débloquer tes 150 €.
       </Text>
     </View>
     <View

@@ -1,3 +1,5 @@
+import { Hit } from '@algolia/client-search'
+import { uniqBy } from 'lodash'
 import mockdate from 'mockdate'
 import React from 'react'
 import { Keyboard } from 'react-native'
@@ -9,16 +11,19 @@ import { mockedSearchHistory } from 'features/search/fixtures/mockedSearchHistor
 import * as useFilterCountAPI from 'features/search/helpers/useFilterCount/useFilterCount'
 import { SearchResults } from 'features/search/pages/SearchResults/SearchResults'
 import { SearchState } from 'features/search/types'
+import { transformOfferHit } from 'libs/algolia/fetchAlgolia/transformOfferHit'
+import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
+import { AlgoliaOffer, AlgoliaVenue } from 'libs/algolia/types'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { ILocationContext, Position } from 'libs/location'
 import { LocationMode } from 'libs/location/types'
 import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetInfoWrapper'
 import { SuggestedPlace } from 'libs/place/types'
 import { mockedSuggestedVenue } from 'libs/venue/fixtures/mockedSuggestedVenues'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render, screen, userEvent, waitFor } from 'tests/utils'
+import { fireEvent, render, screen, userEvent, waitFor } from 'tests/utils'
 
 const venue = mockedSuggestedVenue
 
@@ -41,16 +46,29 @@ jest.mock('features/search/context/SearchWrapper', () => ({
   useSearch: () => mockUseSearch(),
 }))
 
+const mockRefetch = jest.fn()
+const mockFecthNextPage = jest.fn()
 const initialSearchResults = {
-  data: undefined,
-  hits: [],
-  nbHits: 0,
+  data: { pages: [{ offers: { page: 0 } }, { offers: { page: 1 } }] },
+  hits: {
+    offers: mockedAlgoliaResponse.hits.map(transformOfferHit('')),
+    artists: uniqBy(
+      mockedAlgoliaResponse.hits.flatMap((hit: Hit<AlgoliaOffer>) => hit.artists ?? []),
+      'name'
+    ),
+    duplicatedOffers: [],
+    venues: mockedAlgoliaResponse.hits.map((hit: Hit<AlgoliaOffer>) => ({
+      ...hit.venue,
+      _geoloc: hit._geoloc,
+    })) as AlgoliaVenue[],
+  },
+  nbHits: mockedAlgoliaResponse.hits.length,
   isFetching: false,
   isLoading: false,
   hasNextPage: true,
-  fetchNextPage: jest.fn(),
+  fetchNextPage: mockFecthNextPage,
   isFetchingNextPage: false,
-  refetch: jest.fn(),
+  refetch: mockRefetch,
 }
 
 const mockUseSearchResults = jest.fn(() => initialSearchResults)
@@ -185,19 +203,23 @@ const MOCKED_PLACE: SuggestedPlace = {
   geolocation: DEFAULT_USER_LOCATION,
 }
 
-const AROUND_PLACE_USER_POSITION: Partial<ILocationContext> = {
+const getAroundPlaceUserPosition = ({
+  geolocPosition,
+}: {
+  geolocPosition?: Position
+}): Partial<ILocationContext> => ({
   setPlace: jest.fn(),
   onModalHideRef: { current: jest.fn() },
   setSelectedLocationMode: jest.fn(),
   userLocation: DEFAULT_USER_LOCATION,
   selectedLocationMode: LocationMode.AROUND_PLACE,
-  geolocPosition: undefined,
+  geolocPosition,
   place: MOCKED_PLACE,
   selectedPlace: MOCKED_PLACE,
   hasGeolocPosition: false,
-}
+})
 
-const mockUseLocation = jest.fn(() => AROUND_PLACE_USER_POSITION)
+const mockUseLocation = jest.fn(() => getAroundPlaceUserPosition({}))
 jest.mock('libs/location/LocationWrapper', () => ({
   useLocation: () => mockUseLocation(),
 }))
@@ -224,9 +246,11 @@ jest.useFakeTimers()
 describe('<SearchResults/>', () => {
   beforeEach(() => {
     setFeatureFlags()
+    mockUseNetInfoContext.mockReturnValue({ isConnected: true })
+    mockUseLocation.mockReturnValue(
+      getAroundPlaceUserPosition({ geolocPosition: { latitude: 123.34, longitude: 0.12238 } })
+    )
   })
-
-  mockUseNetInfoContext.mockReturnValue({ isConnected: true })
 
   afterEach(() => {
     mockUseSearch.mockReturnValue(DEFAULT_MOCK_USE_SEARCH)
@@ -238,6 +262,41 @@ describe('<SearchResults/>', () => {
     await screen.findByText('Rechercher')
 
     expect(screen).toMatchSnapshot()
+  })
+
+  it('should refetch results when location changes', async () => {
+    const { rerender } = render(reactQueryProviderHOC(<SearchResults />))
+
+    await screen.findByTestId('searchResults')
+
+    mockUseLocation.mockReturnValueOnce(
+      getAroundPlaceUserPosition({ geolocPosition: { latitude: 999, longitude: 0.876 } })
+    )
+
+    rerender(reactQueryProviderHOC(<SearchResults />))
+
+    await waitFor(() => expect(mockRefetch).toHaveBeenCalledTimes(1))
+  })
+
+  it('should fetch next page when end of list is reached', async () => {
+    render(reactQueryProviderHOC(<SearchResults />))
+
+    const flashList = await screen.findByTestId('searchResultsFlashlist')
+    fireEvent(flashList, 'layout', {
+      nativeEvent: {
+        layout: { height: 2000, width: 400 },
+      },
+    })
+
+    fireEvent.scroll(flashList, {
+      nativeEvent: {
+        layoutMeasurement: { height: 500 },
+        contentOffset: { y: 1500 },
+        contentSize: { height: 2000 },
+      },
+    })
+
+    await waitFor(() => expect(mockFecthNextPage).toHaveBeenCalledTimes(1))
   })
 
   describe('When SearchResults is focus on suggestions', () => {

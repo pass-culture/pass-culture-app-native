@@ -5,7 +5,6 @@ import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { useLogoutRoutine } from 'features/auth/helpers/useLogoutRoutine'
 import { useFavoritesState } from 'features/favorites/context/FavoritesWrapper'
 import { getProfileNavConfig } from 'features/navigation/ProfileStackNavigator/getProfileNavConfig'
@@ -14,7 +13,6 @@ import { SectionWithSwitch } from 'features/profile/components/SectionWithSwitch
 import { SocialNetwork } from 'features/profile/components/SocialNetwork/SocialNetwork'
 import { SHARE_APP_BANNER_IMAGE_SOURCE } from 'features/share/components/shareAppBannerImage'
 import { shareApp } from 'features/share/helpers/shareApp'
-import { TutorialTypes } from 'features/tutorial/enums'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { isCloseToBottom } from 'libs/analytics'
 import { analytics } from 'libs/analytics/provider'
@@ -28,19 +26,21 @@ import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { OfflinePage } from 'libs/network/OfflinePage'
 import { AccessibilityFooter } from 'shared/AccessibilityFooter/AccessibilityFooter'
 import { getAge } from 'shared/user/getAge'
+import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
 import { InputError } from 'ui/components/inputs/InputError'
 import { Li } from 'ui/components/Li'
 import { BannerWithBackground } from 'ui/components/ModuleBanner/BannerWithBackground'
 import { Section } from 'ui/components/Section'
 import { SectionRow } from 'ui/components/SectionRow'
 import { StatusBarBlurredBackground } from 'ui/components/statusBar/statusBarBlurredBackground'
-import { InternalNavigationProps } from 'ui/components/touchableLink/types'
+import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { VerticalUl } from 'ui/components/Ul'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { useDebounce } from 'ui/hooks/useDebounce'
 import { useVersion } from 'ui/hooks/useVersion'
 import { Page } from 'ui/pages/Page'
 import { Bell } from 'ui/svg/icons/Bell'
+import { ArtMaterial } from 'ui/svg/icons/bicolor/ArtMaterial'
 import { BicolorProfile } from 'ui/svg/icons/BicolorProfile'
 import { Bulb } from 'ui/svg/icons/Bulb'
 import { Confidentiality } from 'ui/svg/icons/Confidentiality'
@@ -59,14 +59,12 @@ const isWeb = Platform.OS === 'web'
 const DEBOUNCE_TOGGLE_DELAY_MS = 5000
 
 const OnlineProfile: React.FC = () => {
-  const enableAchievements = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_ACHIEVEMENTS)
   const disableActivation = useFeatureFlag(RemoteStoreFeatureFlags.DISABLE_ACTIVATION)
   const enablePassForAll = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_PASS_FOR_ALL)
+  const enableDebugSection = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_DEBUG_SECTION)
 
   const { dispatch: favoritesDispatch } = useFavoritesState()
   const { isLoggedIn, user } = useAuthContext()
-  const { data: settings } = useSettingsContext()
-  const enableCreditV3 = settings?.wipEnableCreditV3
   const signOut = useLogoutRoutine()
   const version = useVersion()
   const scrollViewRef = useRef<ScrollView | null>(null)
@@ -82,24 +80,16 @@ const OnlineProfile: React.FC = () => {
   const [isGeolocSwitchActive, setIsGeolocSwitchActive] = useState<boolean>(
     permissionState === GeolocPermissionState.GRANTED
   )
-
   const isCreditEmpty = user?.domainsCredit?.all.remaining === 0
+
   const isDepositExpired = user?.depositExpirationDate
     ? new Date(user?.depositExpirationDate) < new Date()
     : false
+
   const isExpiredOrCreditEmptyWithNoUpcomingCredit =
     userAge && userAge >= 18 && (isDepositExpired || isCreditEmpty)
 
   const shouldDisplayTutorial = !user?.isBeneficiary || isExpiredOrCreditEmptyWithNoUpcomingCredit
-
-  const navigateTo15to18: InternalNavigationProps['navigateTo'] = enableCreditV3
-    ? { screen: 'ProfileTutorialAgeInformationCreditV3' }
-    : { screen: 'ProfileTutorialAgeInformation', params: { age: userAge } }
-  const navigateToUnder15AndAbove18: InternalNavigationProps['navigateTo'] = enableCreditV3
-    ? { screen: 'ProfileTutorialAgeInformationCreditV3' }
-    : { screen: 'EligibleUserAgeSelection', params: { type: TutorialTypes.PROFILE_TUTORIAL } }
-  const tutorialNavigateTo =
-    userAge && userAge < 19 && userAge > 14 ? navigateTo15to18 : navigateToUnder15AndAbove18
 
   useFocusEffect(
     useCallback(() => {
@@ -166,14 +156,7 @@ const OnlineProfile: React.FC = () => {
         testID="profile-scrollview">
         <ScrollViewContentContainer>
           <View accessibilityRole={AccessibilityRole.MAIN}>
-            <ProfileHeader
-              featureFlags={{
-                enableAchievements,
-                disableActivation,
-                enablePassForAll,
-              }}
-              user={user}
-            />
+            <ProfileHeader featureFlags={{ disableActivation, enablePassForAll }} user={user} />
             <ProfileContainer>
               <Spacer.Column numberOfSpaces={4} />
               <Section title={isLoggedIn ? 'Paramètres du compte' : 'Paramètres de l’application'}>
@@ -225,7 +208,7 @@ const OnlineProfile: React.FC = () => {
                       <Row
                         title="Comment ça marche&nbsp;?"
                         type="navigable"
-                        navigateTo={tutorialNavigateTo}
+                        navigateTo={getProfileNavConfig('ProfileTutorialAgeInformationCredit')}
                         onPress={() =>
                           analytics.logConsultTutorial({ age: userAge, from: 'ProfileHelp' })
                         }
@@ -245,6 +228,17 @@ const OnlineProfile: React.FC = () => {
               </Section>
               <Section title="Autres">
                 <VerticalUl>
+                  {/* TODO(PC-35459): Remove this condition when add dark theme button in DisplayPreference */}
+                  {isWeb ? null : (
+                    <Li>
+                      <Row
+                        title="Préférences d’affichage"
+                        type="navigable"
+                        navigateTo={getProfileNavConfig('DisplayPreference')}
+                        icon={ArtMaterial}
+                      />
+                    </Li>
+                  )}
                   <Li>
                     <Row
                       title="Accessibilité"
@@ -315,6 +309,17 @@ const OnlineProfile: React.FC = () => {
                   {version}
                   {isWeb ? `-${String(env.COMMIT_HASH)}` : ''}
                 </Version>
+                {enableDebugSection && isLoggedIn ? (
+                  <DebugButtonContainer>
+                    <InternalTouchableLink
+                      as={ButtonQuaternaryBlack}
+                      wording="Débuggage"
+                      navigateTo={getProfileNavConfig('DebugScreen')}
+                      justifyContent="flex-start"
+                      inline
+                    />
+                  </DebugButtonContainer>
+                ) : null}
                 {isWeb ? null : (
                   <LogoFrenchRepublicContainer>
                     <LogoFrenchRepublic />
@@ -372,9 +377,13 @@ const StyledButtonText = styled(Typo.BodyAccent)(({ theme }) => ({
 }))
 
 const Version = styled(Typo.BodyAccentXs)(({ theme }) => ({
-  color: theme.colors.greyDark,
+  color: theme.designSystem.color.text.subtle,
   marginVertical: getSpacing(4),
 }))
+
+const DebugButtonContainer = styled.View({
+  marginBottom: getSpacing(4),
+})
 
 const LogoFrenchRepublicContainer = styled.View({
   width: getSpacing(40),

@@ -2,11 +2,9 @@ import React, { ComponentProps } from 'react'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { CategoriesListDumb } from 'features/search/components/CategoriesListDumb/CategoriesListDumb'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { render, screen } from 'tests/utils'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 
 const fixtureSortedCategories: ComponentProps<typeof CategoriesListDumb>['sortedCategories'] = [
   {
@@ -21,8 +19,9 @@ const fixtureSortedCategories: ComponentProps<typeof CategoriesListDumb>['sorted
         },
       },
     },
-    fillColor: ColorsEnum.GOLD_LIGHT_100,
-    borderColor: ColorsEnum.GOLD_LIGHT_200,
+    position: undefined,
+    fillColor: 'decorative01',
+    borderColor: 'decorative01',
   },
   {
     label: 'Cinéma',
@@ -36,8 +35,9 @@ const fixtureSortedCategories: ComponentProps<typeof CategoriesListDumb>['sorted
         },
       },
     },
-    fillColor: ColorsEnum.CORAL_LIGHT,
-    borderColor: ColorsEnum.CORAL,
+    position: undefined,
+    fillColor: 'decorative05',
+    borderColor: 'decorative05',
   },
 ]
 

@@ -15,8 +15,7 @@ import * as fetchAlgoliaOffer from 'libs/algolia/fetchAlgolia/fetchCarouselVideo
 import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { analytics } from 'libs/analytics/provider'
 import { ContentTypes } from 'libs/contentful/types'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
 
@@ -37,7 +36,7 @@ describe.skip('<VideoCarouselModule />', () => {
   beforeEach(() => {
     MockedYouTubePlayer.setPlayerState(PLAYER_STATES.UNSTARTED)
     MockedYouTubePlayer.setError(false)
-    setFeatureFlags([RemoteStoreFeatureFlags.WIP_APP_V2_VIDEO_9_16])
+    setFeatureFlags()
   })
 
   it('should call fetchCarouselVideoOffers with properly formatted data', async () => {

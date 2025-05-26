@@ -6,8 +6,7 @@ import { VideoMultiOfferTile } from 'features/home/components/modules/video/Vide
 import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { analytics } from 'libs/analytics/provider'
 import { OfferAnalyticsParams } from 'libs/analytics/types'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -54,18 +53,6 @@ describe('VideoMultiOfferTile', () => {
     expect(analytics.logConsultOffer).toHaveBeenNthCalledWith(1, {
       offerId: +mockOffer.objectID,
       ...mockAnalyticsParams,
-    })
-  })
-
-  describe('With FF on', () => {
-    beforeEach(() => {
-      setFeatureFlags([RemoteStoreFeatureFlags.WIP_APP_V2_MULTI_VIDEO_MODULE])
-    })
-
-    it('should render properly', async () => {
-      renderMultiOfferTile()
-
-      expect(await screen.findByText('La nuit des temps')).toBeOnTheScreen()
     })
   })
 })

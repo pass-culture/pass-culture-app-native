@@ -8,7 +8,7 @@ import * as useGoBack from 'features/navigation/useGoBack'
 import { nonBeneficiaryUser } from 'fixtures/user'
 import { env } from 'libs/environment/fixtures'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render, screen, waitFor } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 
 import { DeleteProfileConfirmation } from './DeleteProfileConfirmation'
@@ -51,6 +51,9 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
 
 const postAnonymizeAccountSpy = jest.spyOn(API.api, 'postNativeV1AccountAnonymize')
 
+const user = userEvent.setup()
+jest.useFakeTimers()
+
 describe('DeleteProfileConfirmation', () => {
   it('should match snapshot', () => {
     renderDeleteProfileConfirmation()
@@ -58,28 +61,28 @@ describe('DeleteProfileConfirmation', () => {
     expect(screen).toMatchSnapshot()
   })
 
-  it('should go back when clicking on go back button', () => {
+  it('should go back when clicking on go back button', async () => {
     renderDeleteProfileConfirmation()
 
     const goBackButton = screen.getByTestId('Revenir en arrière')
-    fireEvent.press(goBackButton)
+    await user.press(goBackButton)
 
     expect(mockGoBack).toHaveBeenCalledTimes(1)
   })
 
-  it('should open FAQ link when clicking on "Consultez notre FAQ" button', () => {
+  it('should open FAQ link when clicking on "Consultez notre FAQ" button', async () => {
     renderDeleteProfileConfirmation()
 
     const faqButton = screen.getByText('Consultez notre FAQ')
-    fireEvent.press(faqButton)
+    await user.press(faqButton)
 
     expect(openUrl).toHaveBeenNthCalledWith(1, env.FAQ_LINK_RIGHT_TO_ERASURE, undefined, true)
   })
 
-  it('should navigate to home when pressing cancel button', () => {
+  it('should navigate to home when pressing cancel button', async () => {
     renderDeleteProfileConfirmation()
 
-    fireEvent.press(screen.getByText('Annuler'))
+    await user.press(screen.getByText('Annuler'))
 
     expect(navigate).toHaveBeenCalledWith('ProfileStackNavigator', {
       params: undefined,
@@ -91,13 +94,11 @@ describe('DeleteProfileConfirmation', () => {
     renderDeleteProfileConfirmation()
     givenAnonymizeAccountSucceeds()
 
-    whenAnonymizeAccount()
+    await user.press(screen.getByText('Supprimer mon compte'))
 
-    await waitFor(() => {
-      expect(navigate).toHaveBeenCalledWith('ProfileStackNavigator', {
-        params: undefined,
-        screen: 'DeleteProfileSuccess',
-      })
+    expect(navigate).toHaveBeenCalledWith('ProfileStackNavigator', {
+      params: undefined,
+      screen: 'DeleteProfileSuccess',
     })
   })
 
@@ -105,34 +106,26 @@ describe('DeleteProfileConfirmation', () => {
     renderDeleteProfileConfirmation()
     givenAnonymizeAccountSucceeds()
 
-    whenAnonymizeAccount()
+    await user.press(screen.getByText('Supprimer mon compte'))
 
-    await waitFor(() => {
-      expect(mockSignOut).toHaveBeenCalledTimes(1)
-    })
+    expect(mockSignOut).toHaveBeenCalledTimes(1)
   })
 
   it('should show error snackbar when account anonymization fails', async () => {
     renderDeleteProfileConfirmation()
     givenAnonymizeAccountFails()
 
-    whenAnonymizeAccount()
+    await user.press(screen.getByText('Supprimer mon compte'))
 
-    await waitFor(() => {
-      expect(mockShowErrorSnackBar).toHaveBeenCalledWith({
-        message:
-          'Une erreur s’est produite lors de ta demande de suppression de compte. Réessaie plus tard.',
-        timeout: SNACK_BAR_TIME_OUT,
-      })
+    expect(mockShowErrorSnackBar).toHaveBeenCalledWith({
+      message:
+        'Une erreur s’est produite lors de ta demande de suppression de compte. Réessaie plus tard.',
+      timeout: SNACK_BAR_TIME_OUT,
     })
   })
 
   function renderDeleteProfileConfirmation() {
     return render(reactQueryProviderHOC(<DeleteProfileConfirmation />))
-  }
-
-  function whenAnonymizeAccount() {
-    fireEvent.press(screen.getByText('Supprimer mon compte'))
   }
 
   function givenAnonymizeAccountSucceeds() {

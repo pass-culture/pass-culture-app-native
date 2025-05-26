@@ -17,11 +17,15 @@ import {
   ColorsType as ColorsTypeLightWeb,
 } from 'design-system/dist/build/jeune/index.light.web'
 
+import { ColorsEnum, UniqueColors } from 'ui/theme/colors'
+
 export type ColorsType =
   | ColorsTypeDarkMobile
   | ColorsTypeDarkWeb
   | ColorsTypeLightMobile
   | ColorsTypeLightWeb
+
+export type ColorsTypeLegacy = ColorsEnum | UniqueColors | ColorsType
 
 export type DesignTokensType =
   | typeof themeDarkMobile
@@ -31,3 +35,5 @@ export type DesignTokensType =
 
 export type TextColorKey = keyof DesignTokensType['color']['text']
 export type IconColorKey = keyof DesignTokensType['color']['icon']
+export type BorderColorKey = keyof DesignTokensType['color']['border']
+export type BackgroundColorKey = keyof DesignTokensType['color']['background']

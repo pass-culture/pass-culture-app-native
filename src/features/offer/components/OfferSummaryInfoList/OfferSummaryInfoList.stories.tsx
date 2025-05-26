@@ -17,32 +17,20 @@ const Template = (props: React.ComponentProps<typeof OfferSummaryInfoList>) => (
   <OfferSummaryInfoList {...props} />
 )
 
-export const Default = () =>
-  Template({
-    summaryInfoItems: [
-      {
-        isDisplayed: true,
-        Icon: <CalendarS />,
-        title: 'Dates',
-        subtitle: 'les 3 et 4 Avril ',
-      },
-      {
-        isDisplayed: true,
-        Icon: <Digital />,
-        title: 'En ligne',
-        subtitle: 'PATHE BEAUGRENELLE',
-      },
-      {
-        isDisplayed: true,
-        Icon: <ClockFilled />,
-        title: 'Durée',
-        subtitle: '1h30',
-      },
-      {
-        isDisplayed: true,
-        Icon: <Stock />,
-        title: 'Duo',
-        subtitle: 'Tu peux prendre deux places',
-      },
-    ],
-  })
+export const Default = {
+  name: 'OfferSummaryInfoList',
+  render: () =>
+    Template({
+      summaryInfoItems: [
+        { isDisplayed: true, Icon: <CalendarS />, title: 'Dates', subtitle: 'les 3 et 4 Avril ' },
+        { isDisplayed: true, Icon: <Digital />, title: 'En ligne', subtitle: 'PATHE BEAUGRENELLE' },
+        { isDisplayed: true, Icon: <ClockFilled />, title: 'Durée', subtitle: '1h30' },
+        {
+          isDisplayed: true,
+          Icon: <Stock />,
+          title: 'Duo',
+          subtitle: 'Tu peux prendre deux places',
+        },
+      ],
+    }),
+}

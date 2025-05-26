@@ -6,7 +6,7 @@ import * as NavigationHelpers from 'features/navigation/helpers/openUrl'
 import { analytics } from 'libs/analytics/provider'
 import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
-import { fireEvent, render, screen, waitFor } from 'tests/utils'
+import { render, screen, userEvent, waitFor } from 'tests/utils'
 
 const openUrl = jest.spyOn(NavigationHelpers, 'openUrl')
 
@@ -22,6 +22,9 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
+const user = userEvent.setup()
+jest.useFakeTimers()
+
 describe('<IdentificationFork />', () => {
   it('should render correctly', () => {
     render(<IdentificationFork />)
@@ -33,52 +36,46 @@ describe('<IdentificationFork />', () => {
     render(<IdentificationFork />)
     const button = screen.getByText('Ma pièce d’identité')
 
-    fireEvent.press(button)
+    await user.press(button)
 
-    await waitFor(() => {
-      expect(navigate).toHaveBeenCalledWith('SelectIDOrigin', undefined)
-    })
+    expect(navigate).toHaveBeenCalledWith('SelectIDOrigin', undefined)
   })
 
   it('should navigate to next screen "EduConnectForm" on press "Mes codes ÉduConnect"', async () => {
     render(<IdentificationFork />)
     const button = screen.getByText('Mes codes ÉduConnect')
 
-    fireEvent.press(button)
+    await user.press(button)
 
-    await waitFor(() => {
-      expect(navigate).toHaveBeenCalledWith('EduConnectForm', undefined)
-    })
+    expect(navigate).toHaveBeenCalledWith('EduConnectForm', undefined)
   })
 
   it('should log analytics on press "Ma pièce d’identité"', async () => {
     render(<IdentificationFork />)
     const button = screen.getByText('Ma pièce d’identité')
 
-    fireEvent.press(button)
+    await user.press(button)
 
-    await waitFor(() => {
-      expect(analytics.logChooseUbbleMethod).toHaveBeenCalledTimes(1)
-    })
+    expect(analytics.logChooseUbbleMethod).toHaveBeenCalledTimes(1)
   })
 
   it('should log analytics on press "Mes codes ÉduConnect"', async () => {
     render(<IdentificationFork />)
     const button = screen.getByText('Mes codes ÉduConnect')
 
-    fireEvent.press(button)
+    user.press(button)
 
     await waitFor(() => {
       expect(analytics.logChooseEduConnectMethod).toHaveBeenCalledTimes(1)
     })
   })
 
-  it('should open data privacy chart when pressing link', () => {
+  it('should open data privacy chart when pressing link', async () => {
     render(<IdentificationFork />)
 
     const externalLink = screen.getByText('Voir la charte des données personnelles')
 
-    fireEvent.press(externalLink)
+    await user.press(externalLink)
 
     expect(openUrl).toHaveBeenCalledWith('https://passculture.privacy', undefined, true)
   })

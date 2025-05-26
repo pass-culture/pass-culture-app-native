@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { FunctionComponent } from 'react'
 
 import { OfferAccessibilityResponse } from 'api/gen'
-import { AccessibilityBlock } from 'shared/accessibility/AccessibilityBlock'
+import { BasicAccessibilityInfo } from 'ui/components/accessibility/BasicAccessibilityInfo'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Typo } from 'ui/theme'
 
@@ -9,11 +9,11 @@ type Props = {
   accessibility: OfferAccessibilityResponse
 }
 
-export function OfferAccessibility({ accessibility }: Readonly<Props>) {
+export const OfferAccessibility: FunctionComponent<Props> = ({ accessibility }) => {
   return (
     <ViewGap gap={4}>
       <Typo.BodyAccent>Accessibilité de l’offre</Typo.BodyAccent>
-      <AccessibilityBlock basicAccessibility={accessibility} />
+      <BasicAccessibilityInfo accessibility={accessibility} />
     </ViewGap>
   )
 }

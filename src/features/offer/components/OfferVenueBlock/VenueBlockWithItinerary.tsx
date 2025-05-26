@@ -1,5 +1,6 @@
 import React from 'react'
 
+import { BookingProperties } from 'features/bookings/types'
 import { VenueBlockAddress, VenueBlockVenue } from 'features/offer/components/OfferVenueBlock/type'
 import { useVenueBlock } from 'features/offer/components/OfferVenueBlock/useVenueBlock'
 import { VenueBlock } from 'features/offer/components/OfferVenueBlock/VenueBlock'
@@ -9,42 +10,48 @@ import { getGoogleMapsItineraryUrl } from 'libs/itinerary/openGoogleMapsItinerar
 
 type Props = {
   offerId: number
-  shouldDisplayItineraryButton?: boolean
+  properties: BookingProperties
   offerFullAddress?: string
   venue: VenueBlockVenue
   address?: VenueBlockAddress
   thumbnailSize: number
-  distance?: string | null
+  onSeeVenuePress?: VoidFunction
+  addressLabel?: string
 }
 
 export const VenueBlockWithItinerary = ({
-  shouldDisplayItineraryButton,
+  offerId,
+  properties,
   offerFullAddress,
   venue,
-  address,
-  offerId,
   thumbnailSize,
-  distance,
+  address,
+  onSeeVenuePress,
+  addressLabel,
 }: Props) => {
-  const { venueName, venueAddress } = useVenueBlock({
+  const { venueName, venueAddress, isOfferAddressDifferent } = useVenueBlock({
     venue,
     offerAddress: address,
   })
+
+  const shouldDisplayItineraryButton =
+    !!offerFullAddress && (properties.isEvent || (properties.isPhysical && !properties.isDigital))
 
   return (
     <React.Fragment>
       {address ? (
         <VenueBlock
           venueId={venue.id}
-          title={venueName}
-          subtitle={venueAddress}
           shouldShowDistances={false}
+          hasVenuePage={!!onSeeVenuePress && !isOfferAddressDifferent}
+          onSeeVenuePress={onSeeVenuePress}
+          title={isOfferAddressDifferent ? addressLabel : venueName}
+          subtitle={venueAddress}
           thumbnailSize={thumbnailSize}
-          venueImageUrl={venue.bannerUrl}
-          distance={distance}
+          venueImageUrl={venue.bannerUrl ?? undefined}
         />
       ) : null}
-      {shouldDisplayItineraryButton && offerFullAddress ? (
+      {shouldDisplayItineraryButton ? (
         <SeeItineraryButton
           externalNav={{
             url: getGoogleMapsItineraryUrl(offerFullAddress),

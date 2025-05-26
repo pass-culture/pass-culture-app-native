@@ -10,7 +10,8 @@ import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { ROUTE_PARAMS } from 'features/trustedDevice/fixtures/fixtures'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { TextInput } from 'ui/components/inputs/TextInput'
-import { Spacer, getSpacing } from 'ui/theme'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { getSpacing } from 'ui/theme'
 
 export const cheatcodesNavigationTrustedDeviceButtons: [CheatcodesButtonsWithSubscreensProps] = [
   {
@@ -41,20 +42,19 @@ export function CheatcodesNavigationTrustedDevice(): React.JSX.Element {
 
       <LinkToScreen screen="AccountSecurity" navigationParams={ROUTE_PARAMS} />
 
-      <BufferContainer>
+      <BufferContainer gap={2}>
         <ButtonPrimary
           wording="AccountSecurityBuffer"
           onPress={navigateToAccountSecurityBuffer}
           disabled={value.length < 1}
         />
-        <Spacer.Column numberOfSpaces={2} />
         <TextInput onChangeText={setValue} placeholder="Rentrer un token pour activer le bouton" />
       </BufferContainer>
     </CheatcodesTemplateScreen>
   )
 }
 
-const BufferContainer = styled.View(({ theme }) => ({
+const BufferContainer = styled(ViewGap)(({ theme }) => ({
   borderWidth: getSpacing(0.5),
   borderColor: theme.colors.greyMedium,
   borderRadius: getSpacing(5),

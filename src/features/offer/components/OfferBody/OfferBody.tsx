@@ -17,8 +17,8 @@ import { OfferVenueButton } from 'features/offer/components/OfferVenueButton/Off
 import { getOfferMetadata } from 'features/offer/helpers/getOfferMetadata/getOfferMetadata'
 import { getOfferPrices } from 'features/offer/helpers/getOfferPrice/getOfferPrice'
 import { getOfferTags } from 'features/offer/helpers/getOfferTags/getOfferTags'
-import { useArtistResults } from 'features/offer/helpers/useArtistResults/useArtistResults'
 import { useOfferSummaryInfoList } from 'features/offer/helpers/useOfferSummaryInfoList/useOfferSummaryInfoList'
+import { useArtistResultsQuery } from 'features/offer/queries/useArtistResultsQuery'
 import { analytics } from 'libs/analytics/provider'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -60,7 +60,6 @@ export const OfferBody: FunctionComponent<Props> = ({
   const { navigate } = useNavigation<UseNavigationType>()
 
   const hasArtistPage = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ARTIST_PAGE)
-  const shouldUseIsOpenToPublic = useFeatureFlag(RemoteStoreFeatureFlags.WIP_IS_OPEN_TO_PUBLIC)
 
   const { user } = useAuthContext()
   const currency = useGetCurrencyToDisplay()
@@ -82,7 +81,7 @@ export const OfferBody: FunctionComponent<Props> = ({
     { fractionDigits: 2 }
   )
 
-  const { artistPlaylist: artistOffers } = useArtistResults({
+  const { artistPlaylist: artistOffers } = useArtistResultsQuery({
     artistId: artists.length > 0 ? artists[0]?.id : undefined,
     subcategoryId: offer.subcategoryId,
   })
@@ -115,8 +114,6 @@ export const OfferBody: FunctionComponent<Props> = ({
     navigate('Artist', { id: artists[0].id })
   }
 
-  const isOpenToPublicVenue = offer.venue.isOpenToPublic
-
   const fullAddressOffer = formatFullAddress(
     offer.address?.street,
     offer.address?.postalCode,
@@ -130,7 +127,7 @@ export const OfferBody: FunctionComponent<Props> = ({
 
   const hasSameAddress = fullAddressOffer === fullAddressVenue
 
-  const hasVenuePage = shouldUseIsOpenToPublic ? isOpenToPublicVenue : offer.venue.isPermanent
+  const hasVenuePage = offer.venue.isPermanent
 
   return (
     <Container>
@@ -159,7 +156,7 @@ export const OfferBody: FunctionComponent<Props> = ({
         />
 
         <GroupWithSeparator
-          showTopComponent={shouldUseIsOpenToPublic ? isOpenToPublicVenue : offer.venue.isPermanent}
+          showTopComponent={hasVenuePage}
           TopComponent={
             isCinemaOffer || !hasSameAddress ? null : <OfferVenueButton venue={offer.venue} />
           }

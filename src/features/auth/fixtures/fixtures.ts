@@ -1,4 +1,5 @@
 import { SettingsResponse } from 'api/gen'
+import { defaultCreditByAge } from 'shared/credits/defaultCreditByAge'
 import { DEFAULT_PACIFIC_FRANC_TO_EURO_RATE } from 'shared/exchangeRates/defaultRateValues'
 
 export const CURRENT_DATE = new Date('2020-12-01T00:00:00.000Z')
@@ -21,6 +22,7 @@ export const defaultSettings: SettingsResponse = {
   isRecaptchaEnabled: true,
   objectStorageUrl: 'https://localhost-storage',
   rates: { pacificFrancToEuro: DEFAULT_PACIFIC_FRANC_TO_EURO_RATE },
-  wipEnableCreditV3: false,
+  wipEnableCreditV3: true,
   ineligiblePostalCodes: [],
+  depositAmountsByAge: defaultCreditByAge,
 }

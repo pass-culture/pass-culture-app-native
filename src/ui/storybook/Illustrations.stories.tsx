@@ -1,5 +1,5 @@
 import { StoryFn } from '@storybook/react'
-import React, { ComponentProps } from 'react'
+import React from 'react'
 
 import { SearchCategoriesIllustrations } from 'features/search/enums'
 import {
@@ -20,7 +20,7 @@ export default {
   },
 }
 
-const illustrationSets: ComponentProps<typeof Illustrations>[] = [
+const illustrationSets = [
   {
     title: 'BicolorIllustrations',
     icons: BicolorIllustrations,
@@ -56,4 +56,7 @@ const Template: StoryFn<typeof Illustrations> = () => (
   </React.Fragment>
 )
 
-export const AllIllustrations = Template.bind({})
+export const AllIllustrations = {
+  name: 'Illustrations',
+  render: Template,
+}

@@ -22,4 +22,7 @@ export default meta
 
 const Template = () => <LocationSearchWidget />
 
-export const Default = () => Template()
+export const Default = {
+  name: 'LocationSearchWidget',
+  render: () => Template(),
+}

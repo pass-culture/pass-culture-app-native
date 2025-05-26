@@ -127,6 +127,20 @@ describe('fetchSearchResults', () => {
         },
         query: 'searched query',
       },
+      {
+        indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
+        params: {
+          attributesToHighlight: [],
+          attributesToRetrieve: ['artists'],
+          clickAnalytics: true,
+          facetFilters: [['offer.isEducational:false']],
+          numericFilters: [['offer.prices: 0 TO 300']],
+          tagFilters: '["-is_future"]',
+          page: 0,
+          hitsPerPage: 100,
+        },
+        query: 'searched query',
+      },
     ]
 
     expect(mockMultipleQueries).toHaveBeenCalledWith(expectedResult)
@@ -189,6 +203,20 @@ describe('fetchSearchResults', () => {
           tagFilters: '["-is_future"]',
           page: 0,
           typoTolerance: false,
+        },
+        query: 'searched query',
+      },
+      {
+        indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
+        params: {
+          attributesToHighlight: [],
+          attributesToRetrieve: ['artists'],
+          clickAnalytics: true,
+          facetFilters: [['offer.isEducational:false']],
+          numericFilters: [['offer.prices: 0 TO 300']],
+          tagFilters: '["-is_future"]',
+          page: 0,
+          hitsPerPage: 100,
         },
         query: 'searched query',
       },
@@ -265,6 +293,22 @@ describe('fetchSearchResults', () => {
           tagFilters: '["-is_future"]',
           page: 0,
           typoTolerance: false,
+        },
+        query: 'searched query',
+      },
+      {
+        indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
+        params: {
+          aroundLatLng: '42, 43',
+          aroundRadius: 'all',
+          attributesToHighlight: [],
+          attributesToRetrieve: ['artists'],
+          clickAnalytics: true,
+          facetFilters: [['offer.isEducational:false']],
+          numericFilters: [['offer.prices: 0 TO 300']],
+          tagFilters: '["-is_future"]',
+          page: 0,
+          hitsPerPage: 100,
         },
         query: 'searched query',
       },
@@ -345,6 +389,22 @@ describe('fetchSearchResults', () => {
         },
         query: 'searched query',
       },
+      {
+        indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
+        params: {
+          aroundLatLng: '42, 43',
+          aroundRadius: 100000,
+          attributesToHighlight: [],
+          attributesToRetrieve: ['artists'],
+          clickAnalytics: true,
+          facetFilters: [['offer.isEducational:false']],
+          numericFilters: [['offer.prices: 0 TO 300']],
+          tagFilters: '["-is_future"]',
+          page: 0,
+          hitsPerPage: 100,
+        },
+        query: 'searched query',
+      },
     ]
 
     expect(mockMultipleQueries).toHaveBeenCalledWith(expectedResult)
@@ -419,6 +479,22 @@ describe('fetchSearchResults', () => {
           tagFilters: '["-is_future"]',
           page: 0,
           typoTolerance: false,
+        },
+        query: 'searched query',
+      },
+      {
+        indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
+        params: {
+          aroundLatLng: '5.16176, -52.669726',
+          aroundRadius: 100000,
+          attributesToHighlight: [],
+          attributesToRetrieve: ['artists'],
+          clickAnalytics: true,
+          facetFilters: [['offer.isEducational:false']],
+          numericFilters: [['offer.prices: 0 TO 300']],
+          tagFilters: '["-is_future"]',
+          page: 0,
+          hitsPerPage: 100,
         },
         query: 'searched query',
       },
@@ -499,6 +575,22 @@ describe('fetchSearchResults', () => {
         },
         query: 'searched query',
       },
+      {
+        indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
+        params: {
+          aroundLatLng: '5.16176, -52.669726',
+          aroundRadius: 100000,
+          attributesToHighlight: [],
+          attributesToRetrieve: ['artists'],
+          clickAnalytics: true,
+          facetFilters: [['offer.isEducational:false']],
+          numericFilters: [['offer.prices: 0 TO 300']],
+          tagFilters: '["-is_future"]',
+          page: 0,
+          hitsPerPage: 100,
+        },
+        query: 'searched query',
+      },
     ]
 
     expect(mockMultipleQueries).toHaveBeenCalledWith(expectedResult)
@@ -573,6 +665,20 @@ describe('fetchSearchResults', () => {
         },
         query: 'searched query',
       },
+      {
+        indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
+        params: {
+          attributesToHighlight: [],
+          attributesToRetrieve: ['artists'],
+          clickAnalytics: true,
+          facetFilters: [['offer.isEducational:false'], ['venue.id:5543']],
+          numericFilters: [['offer.prices: 0 TO 300']],
+          tagFilters: '["-is_future"]',
+          page: 0,
+          hitsPerPage: 100,
+        },
+        query: 'searched query',
+      },
     ]
 
     expect(mockMultipleQueries).toHaveBeenCalledWith(expectedResult)
@@ -644,6 +750,20 @@ describe('fetchSearchResults', () => {
           tagFilters: '["-is_future"]',
           page: 0,
           typoTolerance: false,
+        },
+        query: 'searched query',
+      },
+      {
+        indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
+        params: {
+          attributesToHighlight: [],
+          attributesToRetrieve: ['artists'],
+          clickAnalytics: true,
+          facetFilters: [['offer.isEducational:false'], ['venue.id:5543']],
+          numericFilters: [['offer.prices: 0 TO 300']],
+          tagFilters: '["-is_future"]',
+          page: 0,
+          hitsPerPage: 100,
         },
         query: 'searched query',
       },
@@ -735,6 +855,24 @@ describe('fetchSearchResults', () => {
         },
         query: 'searched query',
       },
+      {
+        indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
+        params: {
+          attributesToHighlight: [],
+          attributesToRetrieve: ['artists'],
+          clickAnalytics: true,
+          facetFilters: [
+            ['offer.isEducational:false'],
+            ['venue.isAudioDisabilityCompliant:true'],
+            ['venue.isMentalDisabilityCompliant:true'],
+          ],
+          numericFilters: [['offer.prices: 0 TO 300']],
+          tagFilters: '["-is_future"]',
+          page: 0,
+          hitsPerPage: 100,
+        },
+        query: 'searched query',
+      },
     ]
 
     expect(mockMultipleQueries).toHaveBeenCalledWith(expectedResult)
@@ -810,6 +948,25 @@ describe('fetchSearchResults', () => {
         },
         query: 'searched query',
       },
+      {
+        indexName: env.ALGOLIA_OFFERS_INDEX_NAME,
+        params: {
+          attributesToHighlight: [],
+          attributesToRetrieve: ['artists'],
+          clickAnalytics: true,
+          facetFilters: [['offer.isEducational:false']],
+          numericFilters: [['offer.prices: 0 TO 300']],
+          tagFilters: '["-is_future"]',
+          page: 0,
+          hitsPerPage: 100,
+          aroundPrecision: [
+            { from: 0, value: 1000 },
+            { from: 1000, value: 4000 },
+            { from: 5000, value: 10000 },
+          ],
+        },
+        query: 'searched query',
+      },
     ]
 
     expect(mockMultipleQueries).toHaveBeenCalledWith(expectedResult)
@@ -873,6 +1030,20 @@ describe('fetchSearchResults', () => {
           tagFilters: '["-is_future"]',
           page: 0,
           typoTolerance: false,
+        },
+        query: 'searched query',
+      },
+      {
+        indexName: 'algoliaOffersIndexName',
+        params: {
+          attributesToHighlight: [],
+          attributesToRetrieve: ['artists'],
+          clickAnalytics: true,
+          facetFilters: [['offer.isEducational:false']],
+          hitsPerPage: 100,
+          numericFilters: [['offer.prices: 0 TO 300']],
+          tagFilters: '["-is_future"]',
+          page: 0,
         },
         query: 'searched query',
       },

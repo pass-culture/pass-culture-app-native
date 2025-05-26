@@ -2,10 +2,9 @@ import React, { useEffect } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
-import { useResetRecreditAmountToShow } from 'features/profile/api/useResetRecreditAmountToShow'
 import { storage } from 'libs/storage'
+import { useResetRecreditAmountToShowMutation } from 'queries/profile/useResetRecreditAmountToShowMutation'
 import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
@@ -23,7 +22,6 @@ import { getNoHeadingAttrs } from 'ui/theme/typographyAttrs/getNoHeadingAttrs'
 export const RecreditBirthdayNotification = () => {
   const { user } = useAuthContext()
   const { uniqueColors } = useTheme()
-  const { data: settings } = useSettingsContext()
 
   const age = getAge(user?.birthDate)
 
@@ -43,7 +41,7 @@ export const RecreditBirthdayNotification = () => {
   const { showErrorSnackBar } = useSnackBarContext()
 
   const { mutate: resetRecreditAmountToShow, isLoading: isResetRecreditAmountToShowLoading } =
-    useResetRecreditAmountToShow({
+    useResetRecreditAmountToShowMutation({
       onSuccess: () => navigateToHome(),
       onError: () => showErrorSnackBar({ message: 'Une erreur est survenue' }),
     })
@@ -55,11 +53,6 @@ export const RecreditBirthdayNotification = () => {
   const recreditMessage = age
     ? `Pour tes ${age} ans, ${creditedAmount} ont été ajoutés à ton compte. Tu disposes maintenant de\u00a0:`
     : undefined
-
-  const enableCreditV3 = settings?.wipEnableCreditV3
-  const text = enableCreditV3
-    ? 'Tu as jusqu’à la veille de tes 21 ans pour utiliser tout ton crédit.'
-    : 'Tu as jusqu’à la veille de tes 18 ans pour profiter de ton crédit.'
 
   return (
     <GenericInfoPage
@@ -82,7 +75,9 @@ export const RecreditBirthdayNotification = () => {
           <Amount>{remainingCredit}</Amount>
         </ProgressBarContainer>
         <Spacer.Column numberOfSpaces={4} />
-        <StyledBody>{text}</StyledBody>
+        <StyledBody>
+          Tu as jusqu’à la veille de tes 21 ans pour utiliser tout ton crédit.
+        </StyledBody>
       </React.Fragment>
     </GenericInfoPage>
   )

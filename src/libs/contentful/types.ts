@@ -139,11 +139,6 @@ export type ProvidedVenuesParameters = ProvidedEntry<
 
 type DisplayParameters = Entry<DisplayParametersFields, ContentTypes.DISPLAY_PARAMETERS>
 
-type ExcluDisplayParameters = Entry<
-  ExclusivityDisplayParametersFields,
-  ContentTypes.EXCLUSIVITY_DISPLAY_PARAMETERS
->
-
 export type RecommendationParameters = Entry<
   RecommendationParametersFields,
   ContentTypes.RECOMMENDATION_PARAMETERS
@@ -290,13 +285,6 @@ export interface DisplayParametersFields {
   subtitle?: string
 }
 
-// Taken from https://app.contentful.com/spaces/2bg01iqy0isv/content_types/exclusivityDisplayParameters/fields
-interface ExclusivityDisplayParametersFields {
-  title: string
-  isGeolocated?: boolean
-  aroundRadius?: number
-}
-
 // Taken from https://app.contentful.com/spaces/2bg01iqy0isv/content_types/business/fields
 interface BusinessFields {
   title: string
@@ -311,16 +299,6 @@ interface BusinessFields {
   radius?: number
   date?: string
   callToAction?: string
-}
-
-// Taken from https://app.contentful.com/spaces/2bg01iqy0isv/content_types/exclusivity/fields
-interface ExclusivityFields {
-  title: string
-  alt: string
-  image: Image
-  offerId: string
-  displayParameters?: ExcluDisplayParameters
-  url?: string
 }
 
 // Taken from https://app.contentful.com/spaces/2bg01iqy0isv/environments/testing/content_types/recommendationSearchParameters/fields
@@ -461,7 +439,6 @@ interface HomepageNatifFields {
 export type HomepageNatifModule =
   | AlgoliaContentModel
   | BusinessContentModel
-  | ExclusivityContentModel
   | RecommendationContentModel
   | ThematicHighlightContentModel
   | TrendBlockContentModel
@@ -476,8 +453,6 @@ export type HomepageNatifModule =
 export type AlgoliaContentModel = Entry<AlgoliaFields, ContentTypes.ALGOLIA>
 
 export type BusinessContentModel = Entry<BusinessFields, ContentTypes.BUSINESS>
-
-export type ExclusivityContentModel = Entry<ExclusivityFields, ContentTypes.EXCLUSIVITY>
 
 export type RecommendationContentModel = Entry<RecommendationFields, ContentTypes.RECOMMENDATION>
 
@@ -549,10 +524,6 @@ export const isAlgoliaContentModel = (module: HomepageNatifModule): module is Al
 export const isBusinessContentModel = (
   module: HomepageNatifModule
 ): module is BusinessContentModel => module.sys.contentType?.sys.id === ContentTypes.BUSINESS
-
-export const isExclusivityContentModel = (
-  module: HomepageNatifModule
-): module is ExclusivityContentModel => module.sys.contentType?.sys.id === ContentTypes.EXCLUSIVITY
 
 export const isRecommendationContentModel = (
   module: HomepageNatifModule

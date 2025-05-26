@@ -9,7 +9,15 @@ import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetI
 import { NetworkErrorFixture, UnknownErrorFixture } from 'libs/recaptcha/fixtures'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render, screen, simulateWebviewMessage, waitFor } from 'tests/utils'
+import {
+  act,
+  fireEvent,
+  render,
+  screen,
+  simulateWebviewMessage,
+  userEvent,
+  waitFor,
+} from 'tests/utils'
 import * as emailCheck from 'ui/components/inputs/emailCheck'
 import { SUGGESTION_DELAY_IN_MS } from 'ui/components/inputs/EmailInputWithSpellingHelp/useEmailSpellingHelp'
 
@@ -36,6 +44,8 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
+const user = userEvent.setup()
+
 describe('<ForgottenPassword />', () => {
   beforeEach(() => {
     setSettings()
@@ -50,7 +60,7 @@ describe('<ForgottenPassword />', () => {
   it('should enable validate button when email input is filled', async () => {
     renderForgottenPassword()
 
-    const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
+    const emailInput = screen.getByTestId('Entrée pour l’email')
     fireEvent.changeText(emailInput, 'john.doe@gmail.com')
 
     await waitFor(() => {
@@ -62,7 +72,7 @@ describe('<ForgottenPassword />', () => {
 
   it('should show email suggestion', async () => {
     renderForgottenPassword()
-    const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
+    const emailInput = screen.getByTestId('Entrée pour l’email')
     fireEvent.changeText(emailInput, 'john.doe@gmal.com')
 
     await act(async () => {
@@ -76,48 +86,46 @@ describe('<ForgottenPassword />', () => {
     renderForgottenPassword()
 
     const leftIcon = screen.getByTestId('Revenir en arrière')
-    fireEvent.press(leftIcon)
+    await user.press(leftIcon)
 
-    await waitFor(() => {
-      expect(navigate).toHaveBeenCalledWith('Login', { from: StepperOrigin.FORGOTTEN_PASSWORD })
-    })
+    expect(navigate).toHaveBeenCalledWith('Login', { from: StepperOrigin.FORGOTTEN_PASSWORD })
   })
 
-  it("should NOT open reCAPTCHA challenge's modal when there is no network", () => {
+  it("should NOT open reCAPTCHA challenge's modal when there is no network", async () => {
     simulateNoNetwork()
     renderForgottenPassword()
-    const recaptchaWebviewModal = screen.getByTestId('recaptcha-webview-modal')
+    const recaptchaWebviewModal = screen.queryByTestId('recaptcha-webview-modal')
 
-    expect(recaptchaWebviewModal.props.visible).toBeFalsy()
+    expect(recaptchaWebviewModal).not.toBeOnTheScreen()
 
-    const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
+    const emailInput = screen.getByTestId('Entrée pour l’email')
     fireEvent.changeText(emailInput, 'john.doe@gmail.com')
-    fireEvent.press(screen.getByText('Valider'))
+    await user.press(screen.getByText('Valider'))
 
-    expect(recaptchaWebviewModal.props.visible).toBeFalsy()
+    expect(recaptchaWebviewModal).not.toBeOnTheScreen()
     expect(screen.getByText('Hors connexion : en attente du réseau.')).toBeOnTheScreen()
     expect(screen.queryByTestId('Chargement en cours')).not.toBeOnTheScreen()
   })
 
-  it("should open reCAPTCHA challenge's modal when pressing on validate button", () => {
+  it("should open reCAPTCHA challenge's modal when pressing on validate button", async () => {
     renderForgottenPassword()
-    const recaptchaWebviewModal = screen.getByTestId('recaptcha-webview-modal')
+    const recaptchaWebviewModal = screen.queryByTestId('recaptcha-webview-modal')
 
-    expect(recaptchaWebviewModal.props.visible).toBeFalsy()
+    expect(recaptchaWebviewModal).not.toBeOnTheScreen()
 
-    const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
+    const emailInput = screen.getByTestId('Entrée pour l’email')
     fireEvent.changeText(emailInput, 'john.doe@gmail.com')
-    fireEvent.press(screen.getByText('Valider'))
+    await user.press(screen.getByText('Valider'))
 
-    expect(recaptchaWebviewModal.props.visible).toBe(true)
+    expect(screen.getByTestId('recaptcha-webview-modal')).toBeOnTheScreen()
   })
 
   it('should redirect to ResetPasswordEmailSent when password reset request is successful', async () => {
     renderForgottenPassword()
 
-    const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
+    const emailInput = screen.getByTestId('Entrée pour l’email')
     fireEvent.changeText(emailInput, 'john.doe@gmail.com')
-    fireEvent.press(screen.getByText('Valider'))
+    await user.press(screen.getByText('Valider'))
     const recaptchaWebview = screen.getByTestId('recaptcha-webview')
     simulateWebviewMessage(recaptchaWebview, '{ "message": "success", "token": "fakeToken" }')
 
@@ -133,9 +141,9 @@ describe('<ForgottenPassword />', () => {
   it('should log to Sentry on reCAPTCHA failure', async () => {
     renderForgottenPassword()
 
-    const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
+    const emailInput = screen.getByTestId('Entrée pour l’email')
     fireEvent.changeText(emailInput, 'john.doe@gmail.com')
-    fireEvent.press(screen.getByText('Valider'))
+    await user.press(screen.getByText('Valider'))
     const recaptchaWebview = screen.getByTestId('recaptcha-webview')
     simulateWebviewMessage(recaptchaWebview, UnknownErrorFixture)
 
@@ -148,9 +156,9 @@ describe('<ForgottenPassword />', () => {
   it('should not log to Sentry on reCAPTCHA network error', async () => {
     renderForgottenPassword()
 
-    const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
+    const emailInput = screen.getByTestId('Entrée pour l’email')
     fireEvent.changeText(emailInput, 'john.doe@gmail.com')
-    fireEvent.press(screen.getByText('Valider'))
+    await user.press(screen.getByText('Valider'))
     const recaptchaWebview = screen.getByTestId('recaptcha-webview')
     simulateWebviewMessage(recaptchaWebview, NetworkErrorFixture)
 
@@ -160,9 +168,9 @@ describe('<ForgottenPassword />', () => {
   it('should notifies user on reCAPTCHA network error', async () => {
     renderForgottenPassword()
 
-    const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
+    const emailInput = screen.getByTestId('Entrée pour l’email')
     fireEvent.changeText(emailInput, 'john.doe@gmail.com')
-    fireEvent.press(screen.getByText('Valider'))
+    await user.press(screen.getByText('Valider'))
     const recaptchaWebview = screen.getByTestId('recaptcha-webview')
     simulateWebviewMessage(recaptchaWebview, NetworkErrorFixture)
 
@@ -176,9 +184,9 @@ describe('<ForgottenPassword />', () => {
   it('should NOT redirect to ResetPasswordEmailSent when reCAPTCHA challenge has failed', async () => {
     renderForgottenPassword()
 
-    const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
+    const emailInput = screen.getByTestId('Entrée pour l’email')
     fireEvent.changeText(emailInput, 'john.doe@gmail.com')
-    fireEvent.press(screen.getByText('Valider'))
+    await user.press(screen.getByText('Valider'))
     const recaptchaWebview = screen.getByTestId('recaptcha-webview')
     await simulateWebviewMessage(recaptchaWebview, UnknownErrorFixture)
 
@@ -195,9 +203,9 @@ describe('<ForgottenPassword />', () => {
     })
     renderForgottenPassword()
 
-    const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
+    const emailInput = screen.getByTestId('Entrée pour l’email')
     fireEvent.changeText(emailInput, 'john.doe@gmail.com')
-    fireEvent.press(screen.getByText('Valider'))
+    await user.press(screen.getByText('Valider'))
     const recaptchaWebview = screen.getByTestId('recaptcha-webview')
     simulateWebviewMessage(recaptchaWebview, '{ "message": "success", "token": "fakeToken" }')
 
@@ -221,9 +229,9 @@ describe('<ForgottenPassword />', () => {
     })
     renderForgottenPassword()
 
-    const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
+    const emailInput = screen.getByTestId('Entrée pour l’email')
     fireEvent.changeText(emailInput, 'john.doe@gmail.com')
-    fireEvent.press(screen.getByText('Valider'))
+    await user.press(screen.getByText('Valider'))
     const recaptchaWebview = screen.getByTestId('recaptcha-webview')
     simulateWebviewMessage(recaptchaWebview, '{ "message": "success", "token": "fakeToken" }')
 
@@ -231,16 +239,16 @@ describe('<ForgottenPassword />', () => {
   })
 
   describe('email format validation', () => {
-    it('should NOT display invalid email format when email format is valid', () => {
+    it('should NOT display invalid email format when email format is valid', async () => {
       const isEmailValid = jest.spyOn(emailCheck, 'isEmailValid')
 
       renderForgottenPassword()
 
-      const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
+      const emailInput = screen.getByTestId('Entrée pour l’email')
       fireEvent.changeText(emailInput, 'john.doe@gmail.com')
 
       const continueButton = screen.getByText('Valider')
-      fireEvent.press(continueButton)
+      await user.press(continueButton)
 
       expect(isEmailValid).toHaveReturnedWith(true)
       expect(
@@ -250,14 +258,14 @@ describe('<ForgottenPassword />', () => {
       ).not.toBeOnTheScreen()
     })
 
-    it('should display invalid email format when email format is valid', () => {
+    it('should display invalid email format when email format is valid', async () => {
       renderForgottenPassword()
 
-      const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
+      const emailInput = screen.getByTestId('Entrée pour l’email')
       fireEvent.changeText(emailInput, 'john.doe')
 
       const continueButton = screen.getByText('Valider')
-      fireEvent.press(continueButton)
+      await user.press(continueButton)
 
       expect(
         screen.getByText(

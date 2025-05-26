@@ -37,11 +37,13 @@ export const ModalHeader: FunctionComponent<ModalHeaderProps> = ({
     !!leftIcon &&
     styled(leftIcon).attrs(({ theme }) => ({
       size: theme.icons.sizes.smaller,
+      color: theme.designSystem.color.icon.default,
     }))``
   const RightIcon =
     !!rightIcon &&
     styled(rightIcon).attrs(({ theme }) => ({
       size: theme.icons.sizes.smaller,
+      color: theme.designSystem.color.icon.default,
     }))``
 
   return (

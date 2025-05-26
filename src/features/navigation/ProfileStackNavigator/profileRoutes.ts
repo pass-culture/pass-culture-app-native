@@ -35,6 +35,11 @@ export const profileRoutes: ProfileStackRoute[] = [
     path: 'profil/suppression/information',
   },
   {
+    name: 'DebugScreen',
+    component: ComponentForPathConfig,
+    path: 'profil/débuggage',
+  },
+  {
     name: 'ConfirmDeleteProfile',
     component: ComponentForPathConfig,
     path: 'profil/suppression',
@@ -110,6 +115,11 @@ export const profileRoutes: ProfileStackRoute[] = [
     path: 'profil/formulaire-suggestion',
   },
   {
+    name: 'DisplayPreference',
+    component: ComponentForPathConfig,
+    path: 'profil/preference-affichage',
+  },
+  {
     name: 'ConsentSettings',
     component: ComponentForPathConfig,
     path: 'profil/confidentialite',
@@ -128,5 +138,10 @@ export const profileRoutes: ProfileStackRoute[] = [
     name: 'NewEmailSelection',
     component: ComponentForPathConfig,
     path: 'profil/nouvelle-adresse-email',
+  },
+  {
+    name: 'ProfileTutorialAgeInformationCredit',
+    component: ComponentForPathConfig,
+    path: 'profil/tutoriel',
   },
 ]

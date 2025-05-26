@@ -14,10 +14,10 @@ import { beneficiaryUser } from 'fixtures/user'
 import * as logOfferConversionAPI from 'libs/algolia/analytics/logOfferConversion'
 import { analytics } from 'libs/analytics/provider'
 import { CampaignEvents, campaignTracker } from 'libs/campaign'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import * as useBookOfferMutation from 'queries/bookOffer/useBookOfferMutation'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 import { BookingOfferModalComponent } from './BookingOfferModal'
@@ -134,66 +134,55 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
+const user = userEvent.setup()
+jest.useFakeTimers()
+
 describe('<BookingOfferModalComponent />', () => {
   beforeEach(() => {
     setFeatureFlags()
   })
 
   it('should dismiss modal when click on rightIconButton and reset state', async () => {
-    render(reactQueryProviderHOC(<BookingOfferModalComponent visible offerId={mockOffer.id} />))
+    renderBookingOfferModal({ offerId: mockOffer.id })
 
     const dismissModalButton = screen.getByTestId('Fermer la modale')
 
-    await act(() => {
-      fireEvent.press(dismissModalButton)
-    })
+    await user.press(dismissModalButton)
 
-    await waitFor(() => {
-      expect(mockDispatch).toHaveBeenCalledWith({ type: 'RESET' })
+    expect(mockDispatch).toHaveBeenCalledWith({ type: 'RESET' })
+    expect(mockDispatch).toHaveBeenNthCalledWith(1, {
+      type: 'SET_OFFER_ID',
+      payload: mockOffer.id,
     })
-    await waitFor(() => {
-      expect(mockDispatch).toHaveBeenNthCalledWith(1, {
-        type: 'SET_OFFER_ID',
-        payload: mockOffer.id,
-      })
-    })
-    await waitFor(() => {
-      expect(mockDismissModal).toHaveBeenCalledTimes(1)
-    })
+    expect(mockDismissModal).toHaveBeenCalledTimes(1)
   })
 
   it('should set offer consulted when dismiss modal and an other venue has been selected', async () => {
-    render(reactQueryProviderHOC(<BookingOfferModalComponent visible offerId={20} />))
+    renderBookingOfferModal({})
 
     const dismissModalButton = screen.getByTestId('Fermer la modale')
 
-    await act(() => {
-      fireEvent.press(dismissModalButton)
-    })
+    await user.press(dismissModalButton)
 
     expect(mockDispatch).toHaveBeenNthCalledWith(2, { type: 'SET_OFFER_ID', payload: 20 })
   })
 
   it('should not log event ClickBookOffer when modal is not visible', () => {
-    render(reactQueryProviderHOC(<BookingOfferModalComponent visible={false} offerId={20} />))
+    renderBookingOfferModal({ visible: false })
 
     expect(analytics.logClickBookOffer).not.toHaveBeenCalled()
   })
 
   it('should log event ClickBookOffer when modal opens', () => {
     const offerId = 30
-    render(reactQueryProviderHOC(<BookingOfferModalComponent visible offerId={offerId} />))
+    renderBookingOfferModal({ offerId })
 
     expect(analytics.logClickBookOffer).toHaveBeenCalledWith({ offerId })
   })
 
   it('should show AlreadyBooked when isEndedUsedBooking is true', () => {
     const offerId = 30
-    render(
-      reactQueryProviderHOC(
-        <BookingOfferModalComponent visible offerId={offerId} isEndedUsedBooking />
-      )
-    )
+    renderBookingOfferModal({ offerId, isEndedUsedBooking: true })
 
     expect(screen.getByText('Tu as déjà réservé :')).toBeOnTheScreen()
     expect(
@@ -202,19 +191,17 @@ describe('<BookingOfferModalComponent />', () => {
   })
 
   it('should log booking funnel cancellation event when closing the modal', async () => {
-    render(reactQueryProviderHOC(<BookingOfferModalComponent visible offerId={20} />))
+    renderBookingOfferModal({})
     const dismissModalButton = screen.getByTestId('Fermer la modale')
 
-    await act(() => {
-      fireEvent.press(dismissModalButton)
-    })
+    await user.press(dismissModalButton)
 
     expect(analytics.logCancelBookingFunnel).toHaveBeenNthCalledWith(1, Step.DATE, 20)
   })
 
   it('should display modal with prices by categories', () => {
     mockUseOfferQuery.mockReturnValueOnce({ data: { ...mockOffer, stocks: mockStocks } })
-    render(reactQueryProviderHOC(<BookingOfferModalComponent visible offerId={20} />))
+    renderBookingOfferModal({})
 
     expect(screen.getByTestId('modalWithPricesByCategories')).toBeOnTheScreen()
   })
@@ -236,15 +223,15 @@ describe('<BookingOfferModalComponent />', () => {
 
     describe('when booking validated', () => {
       it('should dismiss the modal on success', async () => {
-        render(<BookingOfferModalComponent visible offerId={20} />)
+        renderBookingOfferModal({})
 
-        fireEvent.press(
+        await user.press(
           await screen.findByRole('checkbox', {
             name: 'J’ai lu et j’accepte les conditions générales d’utilisation',
           })
         )
 
-        fireEvent.press(screen.getByText('Confirmer la réservation'))
+        await user.press(screen.getByText('Confirmer la réservation'))
 
         expect(mockDismissModal).toHaveBeenCalledTimes(1)
       })
@@ -258,15 +245,15 @@ describe('<BookingOfferModalComponent />', () => {
             playlistType: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
           },
         })
-        render(<BookingOfferModalComponent visible offerId={20} />)
+        renderBookingOfferModal({})
 
-        fireEvent.press(
+        await user.press(
           await screen.findByRole('checkbox', {
             name: 'J’ai lu et j’accepte les conditions générales d’utilisation',
           })
         )
 
-        fireEvent.press(screen.getByText('Confirmer la réservation'))
+        await user.press(screen.getByText('Confirmer la réservation'))
 
         expect(analytics.logBookingConfirmation).toHaveBeenCalledWith({
           ...apiRecoParams,
@@ -279,15 +266,15 @@ describe('<BookingOfferModalComponent />', () => {
       })
 
       it('should log confirmation booking when offer not booked from a similar offer', async () => {
-        render(<BookingOfferModalComponent visible offerId={20} />)
+        renderBookingOfferModal({})
 
-        fireEvent.press(
+        await user.press(
           await screen.findByRole('checkbox', {
             name: 'J’ai lu et j’accepte les conditions générales d’utilisation',
           })
         )
 
-        fireEvent.press(screen.getByText('Confirmer la réservation'))
+        await user.press(screen.getByText('Confirmer la réservation'))
 
         expect(analytics.logBookingConfirmation).toHaveBeenCalledWith({ bookingId: 1, offerId: 20 })
       })
@@ -296,43 +283,42 @@ describe('<BookingOfferModalComponent />', () => {
         useRoute.mockReturnValueOnce({
           params: { from: 'searchresults' },
         })
-        render(<BookingOfferModalComponent visible offerId={20} />)
+        renderBookingOfferModal({})
 
-        fireEvent.press(
+        await user.press(
           await screen.findByRole('checkbox', {
             name: 'J’ai lu et j’accepte les conditions générales d’utilisation',
           })
         )
 
-        fireEvent.press(screen.getByText('Confirmer la réservation'))
+        await user.press(screen.getByText('Confirmer la réservation'))
 
         expect(logOfferConversionSpy).toHaveBeenCalledWith('20')
       })
 
       it('should not log conversion booking when is not from search', async () => {
-        render(<BookingOfferModalComponent visible offerId={20} />)
+        renderBookingOfferModal({})
 
-        fireEvent.press(
+        await user.press(
           await screen.findByRole('checkbox', {
             name: 'J’ai lu et j’accepte les conditions générales d’utilisation',
           })
         )
 
-        fireEvent.press(screen.getByText('Confirmer la réservation'))
+        await user.press(screen.getByText('Confirmer la réservation'))
 
         expect(logOfferConversionSpy).not.toHaveBeenCalled()
       })
 
       it('should log campaign tracker when booking is complete', async () => {
-        render(<BookingOfferModalComponent visible offerId={mockOffer.id} />)
-
-        fireEvent.press(
+        renderBookingOfferModal({ offerId: mockOffer.id })
+        await user.press(
           await screen.findByRole('checkbox', {
             name: 'J’ai lu et j’accepte les conditions générales d’utilisation',
           })
         )
 
-        fireEvent.press(screen.getByText('Confirmer la réservation'))
+        await user.press(screen.getByText('Confirmer la réservation'))
 
         expect(campaignTracker.logEvent).toHaveBeenCalledWith(CampaignEvents.COMPLETE_BOOK_OFFER, {
           af_offer_id: mockOffer.id,
@@ -343,15 +329,15 @@ describe('<BookingOfferModalComponent />', () => {
       })
 
       it('should navigate to booking confirmation when booking is complete', async () => {
-        render(<BookingOfferModalComponent visible offerId={20} />)
+        renderBookingOfferModal({})
 
-        fireEvent.press(
+        await user.press(
           await screen.findByRole('checkbox', {
             name: 'J’ai lu et j’accepte les conditions générales d’utilisation',
           })
         )
 
-        fireEvent.press(screen.getByText('Confirmer la réservation'))
+        await user.press(screen.getByText('Confirmer la réservation'))
 
         expect(navigate).toHaveBeenCalledWith('BookingConfirmation', { offerId: 20, bookingId: 1 })
       })
@@ -378,15 +364,15 @@ describe('<BookingOfferModalComponent />', () => {
           statusCode: 400,
           message: 'erreur',
         })
-        render(<BookingOfferModalComponent visible offerId={20} />)
+        renderBookingOfferModal({})
 
-        fireEvent.press(
+        await user.press(
           await screen.findByRole('checkbox', {
             name: 'J’ai lu et j’accepte les conditions générales d’utilisation',
           })
         )
 
-        fireEvent.press(screen.getByText('Confirmer la réservation'))
+        await user.press(screen.getByText('Confirmer la réservation'))
 
         expect(mockDismissModal).toHaveBeenCalledTimes(1)
       })
@@ -398,15 +384,15 @@ describe('<BookingOfferModalComponent />', () => {
           statusCode: 400,
           message: 'erreur',
         })
-        render(<BookingOfferModalComponent visible offerId={20} />)
+        renderBookingOfferModal({})
 
-        fireEvent.press(
+        await user.press(
           await screen.findByRole('checkbox', {
             name: 'J’ai lu et j’accepte les conditions générales d’utilisation',
           })
         )
 
-        fireEvent.press(screen.getByText('Confirmer la réservation'))
+        await user.press(screen.getByText('Confirmer la réservation'))
 
         expect(analytics.logBookingError).toHaveBeenNthCalledWith(1, 20, 'INSUFFICIENT_CREDIT')
       })
@@ -418,15 +404,15 @@ describe('<BookingOfferModalComponent />', () => {
           statusCode: 400,
           message: 'erreur',
         })
-        render(<BookingOfferModalComponent visible offerId={20} />)
+        renderBookingOfferModal({})
 
-        fireEvent.press(
+        await user.press(
           await screen.findByRole('checkbox', {
             name: 'J’ai lu et j’accepte les conditions générales d’utilisation',
           })
         )
 
-        fireEvent.press(screen.getByText('Confirmer la réservation'))
+        await user.press(screen.getByText('Confirmer la réservation'))
 
         expect(analytics.logBookingError).not.toHaveBeenCalled()
       })
@@ -448,15 +434,15 @@ describe('<BookingOfferModalComponent />', () => {
             statusCode: 400,
             message: 'erreur',
           })
-          render(<BookingOfferModalComponent visible offerId={20} />)
+          renderBookingOfferModal({})
 
-          fireEvent.press(
+          await user.press(
             await screen.findByRole('checkbox', {
               name: 'J’ai lu et j’accepte les conditions générales d’utilisation',
             })
           )
 
-          fireEvent.press(screen.getByText('Confirmer la réservation'))
+          await user.press(screen.getByText('Confirmer la réservation'))
 
           expect(mockShowErrorSnackBar).toHaveBeenNthCalledWith(1, { timeout: 5000, message })
         }
@@ -471,15 +457,7 @@ describe('<BookingOfferModalComponent />', () => {
       }
 
       it('should update bookingState when bookingDataMovieScreening props is received', async () => {
-        render(
-          reactQueryProviderHOC(
-            <BookingOfferModalComponent
-              visible
-              offerId={20}
-              bookingDataMovieScreening={bookingDataMovieScreening}
-            />
-          )
-        )
+        renderBookingOfferModal({ bookingDataMovieScreening })
 
         expect(mockDispatch).toHaveBeenNthCalledWith(2, {
           type: 'SELECT_DATE',
@@ -488,26 +466,45 @@ describe('<BookingOfferModalComponent />', () => {
       })
 
       it('should log HAS_BOOKED_CINE_SCREENING_OFFER', async () => {
-        render(
-          reactQueryProviderHOC(
-            <BookingOfferModalComponent
-              visible
-              offerId={20}
-              bookingDataMovieScreening={bookingDataMovieScreening}
-            />
-          )
-        )
+        renderBookingOfferModal({ bookingDataMovieScreening })
 
-        fireEvent.press(
+        await user.press(
           await screen.findByRole('checkbox', {
             name: 'J’ai lu et j’accepte les conditions générales d’utilisation',
           })
         )
 
-        fireEvent.press(screen.getByText('Confirmer la réservation'))
+        await user.press(screen.getByText('Confirmer la réservation'))
 
         expect(analytics.logHasBookedCineScreeningOffer).toHaveBeenCalledTimes(1)
       })
     })
   })
 })
+
+const renderBookingOfferModal = ({
+  offerId = 20,
+  bookingDataMovieScreening,
+  visible = true,
+  isEndedUsedBooking,
+}: {
+  isEndedUsedBooking?: boolean
+  visible?: boolean
+  offerId?: number
+  bookingDataMovieScreening?: {
+    date: Date
+    hour: number
+    stockId: number
+  }
+}) => {
+  render(
+    reactQueryProviderHOC(
+      <BookingOfferModalComponent
+        isEndedUsedBooking={isEndedUsedBooking}
+        visible={visible}
+        offerId={offerId}
+        bookingDataMovieScreening={bookingDataMovieScreening}
+      />
+    )
+  )
+}

@@ -3,16 +3,13 @@ import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import * as CookiesUpToDate from 'features/cookies/helpers/useIsCookiesListUpToDate'
 import { ModalToShow, useWhichModalToShow } from 'features/home/helpers/useWhichModalToShow'
 import { beneficiaryUser } from 'fixtures/user'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
-import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { renderHook } from 'tests/utils'
 
 jest.mock('features/auth/context/AuthContext')
 jest.mock('libs/firebase/analytics/analytics')
-const useRemoteConfigSpy = jest.spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery')
 
 const mockUseIsCookiesListUpToDate = jest
   .spyOn(CookiesUpToDate, 'useIsCookiesListUpToDate')
@@ -24,30 +21,13 @@ const mockUseIsCookiesListUpToDate = jest
 
 describe('useWhichModalToShow', () => {
   beforeEach(() => {
-    setFeatureFlags([
-      RemoteStoreFeatureFlags.ENABLE_ACHIEVEMENTS,
-      RemoteStoreFeatureFlags.WIP_REACTION_FEATURE,
-    ])
-  })
-
-  beforeAll(() => {
-    useRemoteConfigSpy.mockReturnValue({
-      ...DEFAULT_REMOTE_CONFIG,
-      displayAchievements: true,
-    })
-  })
-
-  afterAll(() => {
-    useRemoteConfigSpy.mockReturnValue(DEFAULT_REMOTE_CONFIG)
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_REACTION_FEATURE])
   })
 
   it('should return pending if the cookies modal should show', () => {
     cookiesNotAccepted()
 
-    mockAuthContextWithUser({
-      ...beneficiaryUser,
-      achievements: achievements,
-    })
+    mockAuthContextWithUser({ ...beneficiaryUser, achievements })
 
     const { result } = renderHook(() => useWhichModalToShow(endedBookingWithoutReaction, false))
 
@@ -55,10 +35,7 @@ describe('useWhichModalToShow', () => {
   })
 
   it('should return achievement if the achievement modal should be shown and the reaction modal should not be shown', () => {
-    mockAuthContextWithUser({
-      ...beneficiaryUser,
-      achievements: achievements,
-    })
+    mockAuthContextWithUser({ ...beneficiaryUser, achievements })
 
     const { result } = renderHook(() => useWhichModalToShow(endedBookingWithReaction, false))
 
@@ -66,10 +43,7 @@ describe('useWhichModalToShow', () => {
   })
 
   it('should return reaction if the reaction modal should be shown and the achievement modal should not be shown', () => {
-    mockAuthContextWithUser({
-      ...beneficiaryUser,
-      achievements: [],
-    })
+    mockAuthContextWithUser({ ...beneficiaryUser, achievements: [] })
 
     const { result } = renderHook(() => useWhichModalToShow(endedBookingWithoutReaction, false))
 
@@ -77,10 +51,7 @@ describe('useWhichModalToShow', () => {
   })
 
   it('should return reaction if the reaction modal should be show, even if the achievement modal should be shown', () => {
-    mockAuthContextWithUser({
-      ...beneficiaryUser,
-      achievements: achievements,
-    })
+    mockAuthContextWithUser({ ...beneficiaryUser, achievements })
 
     const { result } = renderHook(() => useWhichModalToShow(endedBookingWithoutReaction, false))
 
@@ -88,10 +59,7 @@ describe('useWhichModalToShow', () => {
   })
 
   it('should return none if the reaction and achievement both should not be shown', () => {
-    mockAuthContextWithUser({
-      ...beneficiaryUser,
-      achievements: [],
-    })
+    mockAuthContextWithUser({ ...beneficiaryUser, achievements: [] })
 
     const { result } = renderHook(() => useWhichModalToShow(endedBookingWithReaction, false))
 

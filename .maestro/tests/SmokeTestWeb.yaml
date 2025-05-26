@@ -1,0 +1,13 @@
+url: http://localhost:5173/
+tags:
+  - Web
+---
+- launchApp
+- runFlow: subFolder/cookies/AcceptCookies.yml
+- runFlow: subFolder/home/VerifyHomeScreen.yml
+- runFlow: subFolder/search/NavigateToCinemaCategory.yml
+- runFlow: subFolder/commons/GoToFavoritesFromTabBar.yml
+- runFlow: subFolder/favorite/VerifyUnloggedFavorite.yml
+- runFlow: subFolder/commons/GoToProfileFromTabBar.yml
+- runFlow: subFolder/profil/CheckSignupAndLogin.yml
+- stopApp

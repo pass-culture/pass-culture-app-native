@@ -19,7 +19,6 @@ const blurImageTransform = isWeb ? { transform: 'scale(1.1)' } : {}
 export const HeaderWithImage: FunctionComponent<Props> = ({
   imageUrl,
   imageHeight,
-  minHeight,
   style,
   children,
 }) => {
@@ -28,7 +27,7 @@ export const HeaderWithImage: FunctionComponent<Props> = ({
   const blurImageStyle = { height: imageHeight, width: appContentWidth }
 
   return (
-    <Container minHeight={minHeight} style={style}>
+    <Container style={style}>
       <ImageContainer>
         {imageUrl ? (
           <Image
@@ -48,10 +47,9 @@ export const HeaderWithImage: FunctionComponent<Props> = ({
   )
 }
 
-const Container = styled.View<{ minHeight?: number }>(({ minHeight = 0 }) => ({
+const Container = styled.View({
   alignItems: 'center',
-  minHeight,
-}))
+})
 
 const ImageContainer = styled.View({
   alignItems: 'center',

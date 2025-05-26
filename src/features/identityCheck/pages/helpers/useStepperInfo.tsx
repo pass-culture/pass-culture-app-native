@@ -76,7 +76,12 @@ export const useStepperInfo = (): StepperInfo => {
       name: IdentityCheckStep.PROFILE,
       icon: {
         disabled: DisabledProfileIcon,
-        current: BicolorProfile,
+        current: () => (
+          <BicolorProfile
+            color={theme.designSystem.color.icon.brandPrimary}
+            color2={theme.designSystem.color.icon.brandPrimary}
+          />
+        ),
         completed: () => <IconStepDone Icon={BicolorProfile} testID="profile-step-done" />,
         retry: () => <IconRetryStep Icon={BicolorProfile} testID="profile-retry-step" />,
       },
@@ -86,7 +91,12 @@ export const useStepperInfo = (): StepperInfo => {
       name: IdentityCheckStep.IDENTIFICATION,
       icon: {
         disabled: DisabledIdCardIcon,
-        current: BicolorIdCard,
+        current: () => (
+          <BicolorIdCard
+            color={theme.designSystem.color.icon.brandPrimary}
+            color2={theme.designSystem.color.icon.brandPrimary}
+          />
+        ),
         completed: () => <IconStepDone Icon={BicolorIdCard} testID="identification-step-done" />,
         retry: () => <IconRetryStep Icon={BicolorIdCard} testID="identification-retry-step" />,
       },
@@ -99,7 +109,12 @@ export const useStepperInfo = (): StepperInfo => {
       name: IdentityCheckStep.CONFIRMATION,
       icon: {
         disabled: DisabledConfirmationIcon,
-        current: BicolorLegal,
+        current: () => (
+          <BicolorLegal
+            color={theme.designSystem.color.icon.brandPrimary}
+            color2={theme.designSystem.color.icon.brandPrimary}
+          />
+        ),
         completed: () => <IconStepDone Icon={BicolorLegal} testID="confirmation-step-done" />,
         retry: () => <IconRetryStep Icon={BicolorLegal} testID="confirmation-retry-step" />,
       },
@@ -109,7 +124,12 @@ export const useStepperInfo = (): StepperInfo => {
       name: IdentityCheckStep.PHONE_VALIDATION,
       icon: {
         disabled: DisabledSmartphoneIcon,
-        current: BicolorSmartphone,
+        current: () => (
+          <BicolorSmartphone
+            color={theme.designSystem.color.icon.brandPrimary}
+            color2={theme.designSystem.color.icon.brandPrimary}
+          />
+        ),
         completed: () => (
           <IconStepDone Icon={BicolorSmartphone} testID="phone-validation-step-done" />
         ),
@@ -170,32 +190,32 @@ const mapCompletionState = (state: SubscriptionStepCompletionState) => {
 const DisabledSmartphoneIcon: React.FC<AccessibleIcon> = () => (
   <BicolorSmartphone
     size={24}
-    color={theme.colors.greyMedium}
-    color2={theme.colors.greyMedium}
+    color={theme.designSystem.color.icon.disabled}
+    color2={theme.designSystem.color.icon.disabled}
     testID="DisabledSmartphoneIcon"
   />
 )
 const DisabledProfileIcon: React.FC<AccessibleIcon> = () => (
   <BicolorProfile
     size={24}
-    color={theme.colors.greyMedium}
-    color2={theme.colors.greyMedium}
+    color={theme.designSystem.color.icon.disabled}
+    color2={theme.designSystem.color.icon.disabled}
     testID="DisabledProfileIcon"
   />
 )
 const DisabledIdCardIcon: React.FC<AccessibleIcon> = () => (
   <BicolorIdCard
     size={24}
-    color={theme.colors.greyMedium}
-    color2={theme.colors.greyMedium}
+    color={theme.designSystem.color.icon.disabled}
+    color2={theme.designSystem.color.icon.disabled}
     testID="DisabledIdCardIcon"
   />
 )
 const DisabledConfirmationIcon: React.FC<AccessibleIcon> = () => (
   <BicolorLegal
     size={24}
-    color={theme.colors.greyMedium}
-    color2={theme.colors.greyMedium}
+    color={theme.designSystem.color.icon.disabled}
+    color2={theme.designSystem.color.icon.disabled}
     testID="DisabledConfirmationIcon"
   />
 )

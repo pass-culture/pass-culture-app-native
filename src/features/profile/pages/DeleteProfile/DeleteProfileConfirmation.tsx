@@ -4,7 +4,7 @@ import React from 'react'
 import { useLogoutRoutine } from 'features/auth/helpers/useLogoutRoutine'
 import { getProfileStackConfig } from 'features/navigation/ProfileStackNavigator/getProfileStackConfig'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { useAnonymizeAccount } from 'features/profile/api/useAnonymizeAccount'
+import { useAnonymizeAccountMutation } from 'features/profile/queries/useAnonymizeAccountMutation'
 import { env } from 'libs/environment/env'
 import { InfoBanner } from 'ui/components/banners/InfoBanner'
 import { ButtonQuaternarySecondary } from 'ui/components/buttons/ButtonQuaternarySecondary'
@@ -20,7 +20,7 @@ export const DeleteProfileConfirmation = () => {
   const { navigate } = useNavigation<UseNavigationType>()
   const signOut = useLogoutRoutine()
   const { showErrorSnackBar } = useSnackBarContext()
-  const { anonymizeAccount } = useAnonymizeAccount({
+  const { anonymizeAccount } = useAnonymizeAccountMutation({
     onSuccess: async () => {
       await signOut()
       navigate(...getProfileStackConfig('DeleteProfileSuccess'))

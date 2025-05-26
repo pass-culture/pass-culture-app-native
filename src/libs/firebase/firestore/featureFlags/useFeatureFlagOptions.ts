@@ -21,7 +21,7 @@ export type FeatureFlagOptions = {
 // https://www.notion.so/passcultureapp/Feature-Flag-e7b0da7946f64020b8403e3581b4ed42#fff5fb17737240c9996c432117acacd8
 export const useFeatureFlagOptions = (featureFlag: RemoteStoreFeatureFlags): FeatureFlagOptions => {
   const { data: docSnapshot, isLoading } = useQuery(QueryKeys.FEATURE_FLAGS, getAllFeatureFlags, {
-    staleTime: 1000 * 30, // 30 seconds
+    staleTime: 1000 * 60 * 60 * 24, // 24h (re-renders whole app because of usage of feature flag in the ThemeWrapper)
     enabled: onlineManager.isOnline(),
   })
   const { logType } = useLogTypeFromRemoteConfig()

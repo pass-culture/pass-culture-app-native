@@ -1,6 +1,7 @@
 import React, { ComponentType } from 'react'
 
 import { withAsyncErrorBoundary } from 'features/errors/hocs/withAsyncErrorBoundary'
+import { OnboardingStackRoute } from 'features/navigation/OnboardingStackNavigator/OnboardingStackTypes'
 import { ProfileStackRoute } from 'features/navigation/ProfileStackNavigator/ProfileStack'
 import { withScreenWrapper } from 'features/navigation/RootNavigator/withScreenWrapper'
 import { SearchStackRoute } from 'features/navigation/SearchStackNavigator/types'
@@ -12,7 +13,7 @@ import { withAuthProtection } from './withAuthProtection'
 
 export function getScreenComponent(
   name: string,
-  route: RootRoute | TabRoute | SearchStackRoute | ProfileStackRoute,
+  route: RootRoute | TabRoute | SearchStackRoute | ProfileStackRoute | OnboardingStackRoute,
   ScreenComponent: ComponentType<any> // eslint-disable-line @typescript-eslint/no-explicit-any
 ): React.JSX.Element {
   let component = route.component

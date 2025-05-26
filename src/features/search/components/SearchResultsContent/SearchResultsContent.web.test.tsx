@@ -1,39 +1,46 @@
+import { Hit } from '@algolia/client-search'
+import { uniqBy } from 'lodash'
 import React from 'react'
 
 import { initialSearchState } from 'features/search/context/reducer'
 import { useCenterOnLocation } from 'features/venueMap/hook/useCenterOnLocation'
 import { venuesFixture } from 'libs/algolia/fetchAlgolia/fetchVenues/fixtures/venuesFixture'
-import {
-  mockedAlgoliaResponse,
-  mockedAlgoliaVenueResponse,
-} from 'libs/algolia/fixtures/algoliaFixtures'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { transformOfferHit } from 'libs/algolia/fetchAlgolia/transformOfferHit'
+import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
+import { AlgoliaOffer, AlgoliaVenue, FacetData } from 'libs/algolia/types'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { GeoCoordinates, Position } from 'libs/location'
 import { useVenuesInRegionQuery } from 'queries/venueMap/useVenuesInRegionQuery'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils/web'
 
-import { SearchResultsContent } from './SearchResultsContent'
+import { SearchResultsContent, SearchResultsContentProps } from './SearchResultsContent'
 
-const mockData = { pages: [{ nbHits: 0, hits: [], page: 0 }] }
-const mockHasNextPage = true
-const mockFetchNextPage = jest.fn()
-const mockUseSearchResult = jest.fn(() => ({
-  data: mockData,
-  hits: { offers: mockedAlgoliaResponse.hits, venues: mockedAlgoliaVenueResponse.hits },
-  nbHits: mockedAlgoliaResponse.nbHits,
+const DEFAULT_SEARCH_RESULT_CONTENT_PROPS = {
   isFetching: false,
   isLoading: false,
-  hasNextPage: mockHasNextPage,
-  fetchNextPage: mockFetchNextPage,
-  isFetchingNextPage: true,
-  refetch: jest.fn(),
-  venuesUserData: [{ venue_playlist_title: 'test' }],
-}))
-jest.mock('features/search/api/useSearchResults/useSearchResults', () => ({
-  useSearchResults: () => mockUseSearchResult(),
-}))
+  isFetchingNextPage: false,
+  userData: [],
+  onEndReached: jest.fn(),
+  onSearchResultsRefresh: jest.fn(),
+  venuesUserData: [],
+  facets: {} as FacetData,
+  offerVenues: [],
+  hits: {
+    offers: mockedAlgoliaResponse.hits.map(transformOfferHit('')),
+    artists: uniqBy(
+      mockedAlgoliaResponse.hits.flatMap((hit: Hit<AlgoliaOffer>) => hit.artists ?? []),
+      'name'
+    ),
+    duplicatedOffers: [],
+    venues: mockedAlgoliaResponse.hits.map((hit: Hit<AlgoliaOffer>) => ({
+      ...hit.venue,
+      _geoloc: hit._geoloc,
+    })) as AlgoliaVenue[],
+  },
+  nbHits: mockedAlgoliaResponse.hits.length,
+} satisfies SearchResultsContentProps
 
 const DEFAULT_POSITION = { latitude: 2, longitude: 40 } as GeoCoordinates
 const mockPosition: Position = DEFAULT_POSITION
@@ -73,7 +80,7 @@ jest.mock('features/location/helpers/useLocationState', () => ({
 jest.mock('features/venueMap/hook/useCenterOnLocation')
 const mockUseCenterOnLocation = useCenterOnLocation as jest.Mock
 
-jest.mock('features/venue/api/useVenueOffers')
+jest.mock('queries/venue/useVenueOffersQuery')
 jest.mock('features/venueMap/helpers/zoomOutIfMapEmpty')
 jest.mock('ui/theme/customFocusOutline/customFocusOutline')
 
@@ -88,7 +95,7 @@ describe('SearchResultsContent component', () => {
       RemoteStoreFeatureFlags.WIP_VENUE_MAP_IN_SEARCH,
       RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY,
     ])
-    render(reactQueryProviderHOC(<SearchResultsContent />))
+    render(reactQueryProviderHOC(<SearchResultsContent {...DEFAULT_SEARCH_RESULT_CONTENT_PROPS} />))
 
     await screen.findByTestId('searchResultsList')
 

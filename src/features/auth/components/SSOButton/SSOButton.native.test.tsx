@@ -8,14 +8,14 @@ import { AccountState, OauthStateResponse, SigninResponse, UserProfileResponse }
 import { SSOButton } from 'features/auth/components/SSOButton/SSOButton'
 import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics/provider'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render, screen } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 
 jest.mock('libs/monitoring/services')
 jest.mock('libs/react-native-device-info/getDeviceId')
@@ -36,6 +36,7 @@ jest.mock('features/search/context/SearchWrapper', () => ({
   }),
 }))
 
+const user = userEvent.setup()
 jest.useFakeTimers()
 
 jest.mock('libs/firebase/analytics/analytics')
@@ -62,7 +63,7 @@ describe('<SSOButton />', () => {
 
     renderSSOButton()
 
-    await act(async () => fireEvent.press(await screen.findByTestId('S’inscrire avec Google')))
+    await user.press(await screen.findByTestId('S’inscrire avec Google'))
 
     expect(apiPostGoogleAuthorize).toHaveBeenCalledWith({
       authorizationCode: 'mockServerAuthCode',
@@ -71,6 +72,8 @@ describe('<SSOButton />', () => {
         deviceId: 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
         os: 'iOS',
         source: 'iPhone 13',
+        resolution: '750x1334',
+        screenZoomLevel: 2,
       },
     })
   })
@@ -81,7 +84,7 @@ describe('<SSOButton />', () => {
     })
 
     renderSSOButton()
-    await act(async () => fireEvent.press(await screen.findByTestId('S’inscrire avec Google')))
+    await user.press(await screen.findByTestId('S’inscrire avec Google'))
 
     expect(onSignInFailureSpy).toHaveBeenCalledWith({
       isSuccess: false,
@@ -99,7 +102,7 @@ describe('<SSOButton />', () => {
 
     renderSSOButton()
 
-    await act(async () => fireEvent.press(await screen.findByTestId('S’inscrire avec Google')))
+    await user.press(await screen.findByTestId('S’inscrire avec Google'))
 
     expect(analytics.logLogin).toHaveBeenCalledWith({ method: 'fromSignup', type: 'SSO_signup' })
   })
@@ -114,7 +117,7 @@ describe('<SSOButton />', () => {
 
     renderSSOButton('login')
 
-    await act(async () => fireEvent.press(await screen.findByTestId('Se connecter avec Google')))
+    await user.press(await screen.findByTestId('Se connecter avec Google'))
 
     expect(analytics.logLogin).toHaveBeenCalledWith({ method: 'fromLogin', type: 'SSO_login' })
   })
@@ -131,7 +134,7 @@ describe('<SSOButton />', () => {
       jest.spyOn(GoogleSignin, 'signIn').mockRejectedValueOnce('GoogleSignIn Error')
 
       renderSSOButton()
-      await act(async () => fireEvent.press(await screen.findByTestId('S’inscrire avec Google')))
+      await user.press(await screen.findByTestId('S’inscrire avec Google'))
 
       expect(eventMonitoring.captureException).toHaveBeenCalledTimes(0)
     })
@@ -153,7 +156,7 @@ describe('<SSOButton />', () => {
       jest.spyOn(GoogleSignin, 'signIn').mockRejectedValueOnce('GoogleSignIn Error')
 
       renderSSOButton()
-      await act(async () => fireEvent.press(await screen.findByTestId('S’inscrire avec Google')))
+      await user.press(await screen.findByTestId('S’inscrire avec Google'))
 
       expect(eventMonitoring.captureException).toHaveBeenCalledWith(
         'Can’t login via Google: GoogleSignIn Error',

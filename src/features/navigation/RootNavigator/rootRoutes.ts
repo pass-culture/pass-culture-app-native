@@ -26,6 +26,8 @@ import { FavoritesSorts } from 'features/favorites/pages/FavoritesSorts'
 import { ThematicHome } from 'features/home/pages/ThematicHome'
 import { DeeplinksGenerator } from 'features/internal/pages/DeeplinksGenerator'
 import { UTMParameters } from 'features/internal/pages/UTMParameters'
+import { onboardingNavigatorPathConfig } from 'features/navigation/OnboardingStackNavigator/onboardingNavigatorPathConfig'
+import { SuspenseOnboardingStackNavigator } from 'features/navigation/OnboardingStackNavigator/SuspenseActivationStackNavigator'
 import { PageNotFound } from 'features/navigation/pages/PageNotFound'
 import { profileNavigatorPathConfig } from 'features/navigation/ProfileStackNavigator/profileNavigatorPathConfig'
 import { SuspenseProfileStackNavigator } from 'features/navigation/ProfileStackNavigator/SuspenseProfileStackNavigator'
@@ -33,19 +35,17 @@ import { culturalSurveyRoutes } from 'features/navigation/RootNavigator/cultural
 import { subscriptionRoutes } from 'features/navigation/RootNavigator/subscriptionRoutes'
 import { SuspenseAchievements } from 'features/navigation/RootNavigator/SuspenseAchievements'
 import { trustedDeviceRoutes } from 'features/navigation/RootNavigator/trustedDeviceRoutes'
-import { tutorialRoutes } from 'features/navigation/RootNavigator/tutorialRoutes'
-import { screenParamsParser } from 'features/navigation/screenParamsUtils'
+import { screenParamsParser, screenParamsStringifier } from 'features/navigation/screenParamsUtils'
 import { tabNavigatorPathConfig } from 'features/navigation/TabBar/tabBarRoutes'
 import { TabNavigator } from 'features/navigation/TabBar/TabNavigator'
 import { Offer } from 'features/offer/pages/Offer/Offer'
 import { OfferPreview } from 'features/offer/pages/OfferPreview/OfferPreview'
 import { ChangeEmailExpiredLink } from 'features/profile/pages/ChangeEmail/ChangeEmailExpiredLink'
+import { SearchFilter } from 'features/search/pages/SearchFilter/SearchFilter'
 import { OnboardingSubscription } from 'features/subscription/page/OnboardingSubscription'
-import { ProfileTutorialAgeInformation } from 'features/tutorial/pages/profileTutorial/ProfileTutorialAgeInformation'
 import { Venue } from 'features/venue/pages/Venue/Venue'
 import { VenuePreviewCarousel } from 'features/venue/pages/VenuePreviewCarousel/VenuePreviewCarousel'
 import { VenueMap } from 'features/venueMap/pages/VenueMap/VenueMap'
-import { ABTestingPOC } from 'libs/firebase/remoteConfig/ABTestingPOC'
 
 import { RootRoute, RootScreenNames } from './types'
 
@@ -53,7 +53,11 @@ export const rootRoutes: RootRoute[] = [
   ...culturalSurveyRoutes,
   ...subscriptionRoutes,
   ...trustedDeviceRoutes,
-  ...tutorialRoutes,
+  {
+    name: 'OnboardingStackNavigator',
+    component: SuspenseOnboardingStackNavigator,
+    pathConfig: onboardingNavigatorPathConfig,
+  },
   {
     name: 'Offer',
     component: Offer,
@@ -237,6 +241,17 @@ export const rootRoutes: RootRoute[] = [
     options: { title: 'Email création de compte expiré' },
   },
   { name: 'TabNavigator', component: TabNavigator, pathConfig: tabNavigatorPathConfig },
+  // SearchFilter could have been in TabNavigator > SearchStackNavigator but we don't want a tabBar on this screen
+  {
+    name: 'SearchFilter',
+    component: SearchFilter,
+    pathConfig: {
+      path: 'recherche/filtres',
+      parse: screenParamsParser['SearchFilter'],
+      stringify: screenParamsStringifier['SearchFilter'],
+    },
+    options: { title: 'Filtres de recherche' },
+  },
   {
     name: 'ProfileStackNavigator',
     component: SuspenseProfileStackNavigator,
@@ -253,12 +268,6 @@ export const rootRoutes: RootRoute[] = [
     component: NotYetUnderageEligibility,
     path: 'cest-pour-bientot',
     options: { title: 'C’est pour bientôt' },
-  },
-  {
-    name: 'Tutorial',
-    component: ProfileTutorialAgeInformation,
-    path: 'comment-ca-marche',
-    options: { title: 'Tutoriel "Comment ça marche"' },
   },
   {
     name: 'Venue',
@@ -310,14 +319,6 @@ export const rootRoutes: RootRoute[] = [
       path: 'liens/utm',
     },
     options: { title: 'Paramètres UTM' },
-  },
-  {
-    name: 'ABTestingPOC',
-    component: ABTestingPOC,
-    pathConfig: {
-      path: 'ab-testing-poc',
-    },
-    options: { title: 'POC A/B Testing' },
   },
   {
     name: 'ThematicHome',

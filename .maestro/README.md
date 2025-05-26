@@ -227,6 +227,19 @@ Dans notre terminal, à la fin du test nous devrions avoir:
 
 Évidemment, il est préferable de ne pas rajouter ces deux nouvelles lignes dans `.maestro/tests/reusableFlows/LaunchApp.web.yml`, mais de créer un nouvel fichier qui aurait pour responsabilité de tester les cookies (voir `.maestro/tests/reusableFlows/features/cookies/CookiesConsent.yml`). Ensuite on créerait un nouveau flow qui reprendrait le lancement de l'app et le test des cookies.
 
+## Organisation des tests avec les tags
+
+Les tests Maestro sont organisés avec un système de tags qui permet de catégoriser et de filtrer les tests selon différents critères. Les principaux tags utilisés sont :
+
+- `local` : Tests qui peuvent être exécutés en local
+- `nightlyAndroid` : Tests spécifiques pour les runs nocturnes sur Android
+- `nightlyIOS` : Tests spécifiques pour les runs nocturnes sur iOS
+- `squad-conversion` : Tests liés aux parcours de conversion
+- `squad-activation` : Tests liés aux parcours d'activation
+- `squad-decouverte` : Tests liés aux parcours de découverte
+
+Pour lancer des tests avec un tag spécifique, vous pouvez utiliser l'option
+
 ## Lancer les tests avec l'utilisation de variables
 
 ```bash
@@ -316,5 +329,12 @@ export PATH=$ANDROID_HOME/tools/bin:$PATH
 ```
 
 Enfin, redémarrer le terminal.
+
+</details>
+<details>
+  <summary>Unable to launch app app.passculture.staging: null</summary>
+  <br/>
+
+Fermer maestro studio et relancer le test.
 
 </details>

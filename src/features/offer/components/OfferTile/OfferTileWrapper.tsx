@@ -1,6 +1,8 @@
 import React from 'react'
+import { useTheme } from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
+import { renderInteractionTag } from 'features/offer/components/InteractionTag/InteractionTag'
 import { OfferTile } from 'features/offer/components/OfferTile/OfferTile'
 import { OfferTileProps } from 'features/offer/types'
 import {
@@ -19,11 +21,12 @@ type Props = Omit<
   'offerLocation' | 'categoryLabel' | 'categoryId' | 'subcategoryId' | 'offerId' | 'price'
 > & {
   item: Offer
+  hasSmallLayout?: boolean
 }
 
 export const OfferTileWrapper = (props: Props) => {
-  const { item } = props
-
+  const { item, hasSmallLayout } = props
+  const theme = useTheme()
   const { user } = useAuthContext()
   const currency = useGetCurrencyToDisplay()
   const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
@@ -32,7 +35,8 @@ export const OfferTileWrapper = (props: Props) => {
   const formattedDate = getOfferDates(
     item.offer.subcategoryId,
     item.offer.dates,
-    item.offer.releaseDate
+    item.offer.releaseDate,
+    true
   )
   const formattedPrice = getDisplayedPrice(
     item.offer?.prices,
@@ -43,6 +47,15 @@ export const OfferTileWrapper = (props: Props) => {
       isDuo: !!(item.offer.isDuo && user?.isBeneficiary),
     })
   )
+
+  const tag = renderInteractionTag({
+    theme,
+    likesCount: item.offer.likes,
+    chroniclesCount: item.offer.chroniclesCount,
+    headlinesCount: item.offer.headlineCount,
+    hasSmallLayout,
+    isComingSoonOffer: item._tags?.includes('is_future'),
+  })
 
   return (
     <OfferTile
@@ -55,6 +68,7 @@ export const OfferTileWrapper = (props: Props) => {
       date={formattedDate}
       thumbUrl={item.offer.thumbUrl}
       price={formattedPrice}
+      interactionTag={tag}
       {...props}
     />
   )

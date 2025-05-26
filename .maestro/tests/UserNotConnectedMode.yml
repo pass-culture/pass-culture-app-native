@@ -1,8 +1,9 @@
 appId: ${MAESTRO_APP_ID}
 tags:
-  - cloud
+  - nightlyAndroid
   - nightlyIOS
   - local
+  - squad-decouverte
 ---
 - runFlow: subFolder/commons/LaunchApp.yml
 

@@ -1,5 +1,6 @@
 import React, { ComponentProps } from 'react'
 import { View } from 'react-native'
+import { FlatList } from 'react-native-gesture-handler'
 import styled from 'styled-components/native'
 
 import { AlgoliaOfferWithArtistAndEan } from 'libs/algolia/types'
@@ -37,6 +38,7 @@ export function OfferPlaylist({
         onEndReached={onEndReached}
         onViewableItemsChanged={onViewableItemsChanged}
         playlistRef={playlistRef}
+        FlatListComponent={FlatList}
       />
     </View>
   )

@@ -49,7 +49,7 @@ case "$target" in
     if [ "$platform" = "ios" ]; then
       TAGS="--include-tags nightlyIOS"
     else
-      TAGS="--include-tags cloud"
+      TAGS="--include-tags nightlyAndroid"
     fi
     run_tracking_tests=false
     run_cloud_commands=true

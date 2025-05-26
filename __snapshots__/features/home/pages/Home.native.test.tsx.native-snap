@@ -1,287 +1,477 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Home page should render correctly 1`] = `
-[
+<View
+  style={
+    [
+      {
+        "backgroundColor": "#ffffff",
+        "flexBasis": 1,
+        "flexGrow": 1,
+        "flexShrink": 0,
+      },
+    ]
+  }
+>
   <View
+    hide={false}
     style={
       [
         {
-          "backgroundColor": "#ffffff",
-          "flexBasis": 1,
-          "flexGrow": 1,
-          "flexShrink": 0,
+          "height": "100%",
+          "marginVertical": 24,
+          "overflow": "hidden",
         },
       ]
     }
   >
-    <View
-      hide={false}
-      style={
+    <RCTScrollView
+      ListFooterComponent={
+        <FooterComponent
+          hasShownAll={true}
+        />
+      }
+      ListHeaderComponent={
+        <View
+          testID="listHeader"
+        >
+          <Header />
+          <Styled(View)
+            numberOfSpaces={6}
+          />
+          <Styled(View)>
+            <HomeBanner
+              isLoggedIn={false}
+            />
+          </Styled(View)>
+        </View>
+      }
+      ListHeaderComponentStyle={
+        {
+          "zIndex": 1,
+        }
+      }
+      accessibilityRole="none"
+      bounces={true}
+      data={
         [
           {
-            "height": "100%",
-            "marginVertical": 24,
-            "overflow": "hidden",
+            "data": undefined,
+            "displayParameters": {
+              "layout": "one-item-medium",
+              "minOffers": 1,
+              "subtitle": "Ceci n’est pas une playlist de lieux",
+              "title": "Exemple de playlist de lieux",
+            },
+            "id": "105MMz59tftcxXJICXt7ja",
+            "type": "VenuesModule",
+            "venuesParameters": {
+              "hitsPerPage": 15,
+              "title": "Exemple de playlist de lieux",
+              "venueTypes": [
+                "Bibliothèque ou médiathèque",
+                "Arts visuels, arts plastiques et galeries",
+                "Centre culturel",
+                "Cinéma - Salle de projections",
+                "Cours et pratique artistiques",
+                "Culture scientifique",
+                "Festival",
+                "Jeux / Jeux vidéos",
+                "Librairie",
+                "Magasin arts créatifs",
+                "Musique - Disquaire",
+                "Musique - Magasin d’instruments",
+                "Musique - Salle de concerts",
+                "Musée",
+                "Offre numérique",
+                "Patrimoine et tourisme",
+                "Spectacle vivant",
+                "Cinéma itinérant",
+                "Autre type de lieu",
+              ],
+            },
           },
         ]
       }
+      getItem={[Function]}
+      getItemCount={[Function]}
+      initialNumToRender={10}
+      keyExtractor={[Function]}
+      onContentSizeChange={[Function]}
+      onLayout={[Function]}
+      onMomentumScrollBegin={[Function]}
+      onMomentumScrollEnd={[Function]}
+      onScroll={[Function]}
+      onScrollBeginDrag={[Function]}
+      onScrollEndDrag={[Function]}
+      removeClippedSubviews={false}
+      renderItem={[Function]}
+      scrollEventThrottle={16}
+      stickyHeaderIndices={[]}
+      style={
+        [
+          {
+            "overflow": "visible",
+          },
+        ]
+      }
+      testID="homeBodyScrollView"
+      viewabilityConfigCallbackPairs={[]}
     >
-      <RCTScrollView
-        ListFooterComponent={
-          <FooterComponent
-            hasShownAll={true}
-          />
-        }
-        ListHeaderComponent={
+      <View>
+        <View
+          collapsable={false}
+          onLayout={[Function]}
+          style={
+            {
+              "zIndex": 1,
+            }
+          }
+        >
           <View
             testID="listHeader"
           >
-            <Header />
-            <Styled(View)
-              numberOfSpaces={6}
-            />
-            <Styled(View)>
-              <HomeBanner
-                isLoggedIn={false}
-              />
-            </Styled(View)>
-          </View>
-        }
-        ListHeaderComponentStyle={
-          {
-            "zIndex": 1,
-          }
-        }
-        accessibilityRole="none"
-        bounces={true}
-        data={
-          [
-            {
-              "data": undefined,
-              "displayParameters": {
-                "layout": "one-item-medium",
-                "minOffers": 1,
-                "subtitle": "Ceci n’est pas une playlist de lieux",
-                "title": "Exemple de playlist de lieux",
-              },
-              "id": "105MMz59tftcxXJICXt7ja",
-              "type": "VenuesModule",
-              "venuesParameters": {
-                "hitsPerPage": 15,
-                "title": "Exemple de playlist de lieux",
-                "venueTypes": [
-                  "Bibliothèque ou médiathèque",
-                  "Arts visuels, arts plastiques et galeries",
-                  "Centre culturel",
-                  "Cinéma - Salle de projections",
-                  "Cours et pratique artistiques",
-                  "Culture scientifique",
-                  "Festival",
-                  "Jeux / Jeux vidéos",
-                  "Librairie",
-                  "Magasin arts créatifs",
-                  "Musique - Disquaire",
-                  "Musique - Magasin d’instruments",
-                  "Musique - Salle de concerts",
-                  "Musée",
-                  "Offre numérique",
-                  "Patrimoine et tourisme",
-                  "Spectacle vivant",
-                  "Cinéma itinérant",
-                  "Autre type de lieu",
-                ],
-              },
-            },
-          ]
-        }
-        getItem={[Function]}
-        getItemCount={[Function]}
-        initialNumToRender={10}
-        keyExtractor={[Function]}
-        onContentSizeChange={[Function]}
-        onLayout={[Function]}
-        onMomentumScrollBegin={[Function]}
-        onMomentumScrollEnd={[Function]}
-        onScroll={[Function]}
-        onScrollBeginDrag={[Function]}
-        onScrollEndDrag={[Function]}
-        removeClippedSubviews={false}
-        renderItem={[Function]}
-        scrollEventThrottle={16}
-        stickyHeaderIndices={[]}
-        style={
-          [
-            {
-              "overflow": "visible",
-            },
-          ]
-        }
-        testID="homeBodyScrollView"
-        viewabilityConfigCallbackPairs={[]}
-      >
-        <View>
-          <View
-            collapsable={false}
-            onLayout={[Function]}
-            style={
-              {
-                "zIndex": 1,
-              }
-            }
-          >
             <View
-              testID="listHeader"
+              style={
+                [
+                  {
+                    "flexGrow": 1,
+                    "flexShrink": 0,
+                    "zIndex": 1,
+                  },
+                ]
+              }
             >
+              <View
+                customHeight={16}
+                enable={true}
+                style={
+                  [
+                    {
+                      "height": 16,
+                    },
+                  ]
+                }
+              />
               <View
                 style={
                   [
                     {
-                      "flexGrow": 1,
-                      "flexShrink": 0,
+                      "flexDirection": "row",
+                      "justifyContent": "space-between",
+                      "marginHorizontal": 24,
+                      "marginTop": 24,
                       "zIndex": 1,
                     },
                   ]
                 }
               >
                 <View
-                  customHeight={16}
-                  enable={true}
                   style={
                     [
                       {
-                        "height": 16,
-                      },
-                    ]
-                  }
-                />
-                <View
-                  style={
-                    [
-                      {
-                        "flexDirection": "row",
-                        "justifyContent": "space-between",
-                        "marginHorizontal": 24,
-                        "marginTop": 24,
-                        "zIndex": 1,
+                        "flexShrink": 1,
                       },
                     ]
                   }
                 >
-                  <View
+                  <Text
+                    numberOfLines={2}
                     style={
                       [
                         {
-                          "flexShrink": 1,
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 28,
+                          "lineHeight": 44.8,
                         },
                       ]
                     }
                   >
-                    <Text
-                      numberOfLines={2}
-                      style={
-                        [
-                          {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-Bold",
-                            "fontSize": 28,
-                            "lineHeight": 44.8,
-                          },
-                        ]
-                      }
-                    >
-                      Bienvenue !
-                    </Text>
+                    Bienvenue !
+                  </Text>
+                  <View
+                    numberOfSpaces={1}
+                    style={
+                      [
+                        {
+                          "height": 4,
+                        },
+                      ]
+                    }
+                  />
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#696A6F",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 19.2,
+                        },
+                      ]
+                    }
+                  >
+                    Toute la culture à portée de main
+                  </Text>
+                </View>
+                <View
+                  accessibilityLabel="Ouvrir la modale de localisation depuis le widget"
+                  accessibilityRole="button"
+                  accessibilityState={
+                    {
+                      "busy": undefined,
+                      "checked": undefined,
+                      "disabled": undefined,
+                      "expanded": undefined,
+                      "selected": undefined,
+                    }
+                  }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
+                    }
+                  }
+                  accessible={true}
+                  focusable={true}
+                  onClick={[Function]}
+                  onLayout={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    [
+                      [
+                        {
+                          "userSelect": "auto",
+                        },
+                        {
+                          "alignItems": "center",
+                          "marginLeft": 8,
+                        },
+                      ],
+                      {
+                        "opacity": 1,
+                      },
+                    ]
+                  }
+                  testID="Ouvrir la modale de localisation depuis le widget"
+                >
+                  <View
+                    isActive={true}
+                    style={
+                      [
+                        {
+                          "alignItems": "center",
+                          "backgroundColor": "#ffffff",
+                          "borderColor": "#161617",
+                          "borderRadius": 40,
+                          "borderStyle": "solid",
+                          "borderWidth": 2,
+                          "height": 40,
+                          "justifyContent": "center",
+                          "width": 40,
+                        },
+                      ]
+                    }
+                  >
                     <View
-                      numberOfSpaces={1}
-                      style={
-                        [
-                          {
-                            "height": 4,
-                          },
-                        ]
-                      }
-                    />
-                    <Text
-                      style={
-                        [
-                          {
-                            "color": "#696A6F",
-                            "fontFamily": "Montserrat-SemiBold",
-                            "fontSize": 12,
-                            "lineHeight": 19.2,
-                          },
-                        ]
-                      }
+                      height={24}
+                      width={24}
                     >
-                      Toute la culture à portée de main
-                    </Text>
+                      <Text>
+                        undefined-SVG-Mock
+                      </Text>
+                    </View>
                   </View>
-                  <View
-                    accessibilityLabel="Ouvrir la modale de localisation depuis le widget"
-                    accessibilityRole="button"
-                    accessibilityState={
-                      {
-                        "busy": undefined,
-                        "checked": undefined,
-                        "disabled": undefined,
-                        "expanded": undefined,
-                        "selected": undefined,
-                      }
-                    }
-                    accessibilityValue={
-                      {
-                        "max": undefined,
-                        "min": undefined,
-                        "now": undefined,
-                        "text": undefined,
-                      }
-                    }
-                    accessible={true}
-                    focusable={true}
-                    onClick={[Function]}
-                    onLayout={[Function]}
-                    onResponderGrant={[Function]}
-                    onResponderMove={[Function]}
-                    onResponderRelease={[Function]}
-                    onResponderTerminate={[Function]}
-                    onResponderTerminationRequest={[Function]}
-                    onStartShouldSetResponder={[Function]}
+                  <Text
+                    numberOfLines={1}
                     style={
                       [
-                        [
-                          {
-                            "userSelect": "auto",
-                          },
-                          {
-                            "alignItems": "center",
-                            "marginLeft": 8,
-                          },
-                        ],
                         {
-                          "opacity": 1,
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 19.2,
+                          "maxWidth": 100,
+                          "paddingTop": 4,
                         },
                       ]
                     }
-                    testID="Ouvrir la modale de localisation depuis le widget"
+                  >
+                    Ma position
+                  </Text>
+                </View>
+              </View>
+            </View>
+            <View
+              numberOfSpaces={6}
+              style={
+                [
+                  {
+                    "height": 24,
+                  },
+                ]
+              }
+            />
+            <View
+              style={
+                [
+                  {
+                    "marginHorizontal": 24,
+                  },
+                ]
+              }
+            >
+              <View
+                style={
+                  [
+                    {
+                      "marginBottom": 32,
+                    },
+                  ]
+                }
+              >
+                <View
+                  accessibilityLabel="Crée ton compte si tu as 17 ou 18 ans !"
+                  accessibilityState={
+                    {
+                      "busy": undefined,
+                      "checked": undefined,
+                      "disabled": undefined,
+                      "expanded": undefined,
+                      "selected": undefined,
+                    }
+                  }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
+                    }
+                  }
+                  accessible={true}
+                  focusable={true}
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    [
+                      [
+                        {
+                          "userSelect": "auto",
+                        },
+                        {
+                          "borderRadius": 8,
+                        },
+                      ],
+                      {
+                        "opacity": 1,
+                      },
+                    ]
+                  }
+                  testID="Crée ton compte si tu as 17 ou 18 ans !"
+                >
+                  <View
+                    backgroundColor="transparent"
+                    borderColor="#6123DF"
+                    style={
+                      [
+                        {
+                          "alignItems": "center",
+                          "backgroundColor": "transparent",
+                          "borderColor": "#6123DF",
+                          "borderRadius": 8,
+                          "borderStyle": "solid",
+                          "borderWidth": 1,
+                          "flexDirection": "row",
+                          "paddingBottom": 16,
+                          "paddingLeft": 16,
+                          "paddingRight": 16,
+                          "paddingTop": 16,
+                          "width": "100%",
+                        },
+                      ]
+                    }
+                    testID="systemBanner"
                   >
                     <View
-                      isActive={true}
                       style={
                         [
                           {
-                            "alignItems": "center",
-                            "backgroundColor": "#ffffff",
-                            "borderColor": "#161617",
-                            "borderRadius": 40,
-                            "borderStyle": "solid",
-                            "borderWidth": 2,
-                            "height": 40,
-                            "justifyContent": "center",
-                            "width": 40,
+                            "alignContent": "center",
+                            "marginRight": 16,
                           },
                         ]
                       }
                     >
+                      <View
+                        height={32}
+                        testID="BicolorUnlock"
+                        width={32}
+                      >
+                        <Text>
+                          BicolorUnlock-SVG-Mock
+                        </Text>
+                      </View>
+                    </View>
+                    <View
+                      gap={1}
+                      style={
+                        [
+                          {
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                            "gap": 4,
+                            "marginRight": 16,
+                            "textAlign": "start",
+                          },
+                        ]
+                      }
+                    >
+                      <Text
+                        color="default"
+                        style={
+                          [
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            },
+                          ]
+                        }
+                      >
+                        Débloque ton crédit
+                      </Text>
+                      <Text
+                        color="default"
+                        style={
+                          [
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-Medium",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            },
+                          ]
+                        }
+                      >
+                        Crée ton compte si tu as 17 ou 18 ans !
+                      </Text>
+                    </View>
+                    <View>
                       <View
                         height={24}
                         width={24}
@@ -291,320 +481,68 @@ exports[`Home page should render correctly 1`] = `
                         </Text>
                       </View>
                     </View>
-                    <Text
-                      numberOfLines={1}
-                      style={
-                        [
-                          {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-SemiBold",
-                            "fontSize": 12,
-                            "lineHeight": 19.2,
-                            "maxWidth": 100,
-                            "paddingTop": 4,
-                          },
-                        ]
-                      }
-                    >
-                      Ma position
-                    </Text>
-                  </View>
-                  <Modal
-                    accessibilityLabelledBy="testUuidV4"
-                    accessibilityModal={true}
-                    animationType="none"
-                    deviceHeight={1334}
-                    deviceWidth={750}
-                    hardwareAccelerated={false}
-                    hideModalContentWhileAnimating={false}
-                    onBackdropPress={[Function]}
-                    onModalHide={[Function]}
-                    onModalWillHide={[Function]}
-                    onModalWillShow={[Function]}
-                    onRequestClose={[Function]}
-                    panResponderThreshold={4}
-                    scrollHorizontal={false}
-                    scrollOffset={0}
-                    scrollOffsetMax={0}
-                    scrollTo={null}
-                    statusBarTranslucent={true}
-                    supportedOrientations={
-                      [
-                        "portrait",
-                        "landscape",
-                      ]
-                    }
-                    swipeThreshold={100}
-                    testID="modal"
-                    transparent={true}
-                    visible={false}
-                  />
-                </View>
-              </View>
-              <View
-                numberOfSpaces={6}
-                style={
-                  [
-                    {
-                      "height": 24,
-                    },
-                  ]
-                }
-              />
-              <View
-                style={
-                  [
-                    {
-                      "marginHorizontal": 24,
-                    },
-                  ]
-                }
-              >
-                <View
-                  style={
-                    [
-                      {
-                        "marginBottom": 32,
-                      },
-                    ]
-                  }
-                >
-                  <View
-                    accessibilityLabel="Crée ton compte si tu as entre 15 et 18 ans !"
-                    accessibilityState={
-                      {
-                        "busy": undefined,
-                        "checked": undefined,
-                        "disabled": undefined,
-                        "expanded": undefined,
-                        "selected": undefined,
-                      }
-                    }
-                    accessibilityValue={
-                      {
-                        "max": undefined,
-                        "min": undefined,
-                        "now": undefined,
-                        "text": undefined,
-                      }
-                    }
-                    accessible={true}
-                    focusable={true}
-                    onClick={[Function]}
-                    onResponderGrant={[Function]}
-                    onResponderMove={[Function]}
-                    onResponderRelease={[Function]}
-                    onResponderTerminate={[Function]}
-                    onResponderTerminationRequest={[Function]}
-                    onStartShouldSetResponder={[Function]}
-                    style={
-                      [
-                        [
-                          {
-                            "userSelect": "auto",
-                          },
-                          {
-                            "borderRadius": 8,
-                          },
-                        ],
-                        {
-                          "opacity": 1,
-                        },
-                      ]
-                    }
-                    testID="Crée ton compte si tu as entre 15 et 18 ans !"
-                  >
-                    <View
-                      backgroundColor="transparent"
-                      borderColor="#6123DF"
-                      style={
-                        [
-                          {
-                            "alignItems": "center",
-                            "backgroundColor": "transparent",
-                            "borderColor": "#6123DF",
-                            "borderRadius": 8,
-                            "borderStyle": "solid",
-                            "borderWidth": 1,
-                            "flexDirection": "row",
-                            "paddingBottom": 16,
-                            "paddingLeft": 16,
-                            "paddingRight": 16,
-                            "paddingTop": 16,
-                            "width": "100%",
-                          },
-                        ]
-                      }
-                      testID="systemBanner"
-                    >
-                      <View
-                        style={
-                          [
-                            {
-                              "alignContent": "center",
-                              "marginRight": 16,
-                            },
-                          ]
-                        }
-                      >
-                        <View
-                          height={32}
-                          testID="BicolorUnlock"
-                          width={32}
-                        >
-                          <Text>
-                            BicolorUnlock-SVG-Mock
-                          </Text>
-                        </View>
-                      </View>
-                      <View
-                        gap={1}
-                        style={
-                          [
-                            {
-                              "flexGrow": 1,
-                              "flexShrink": 1,
-                              "gap": 4,
-                              "marginRight": 16,
-                              "textAlign": "start",
-                            },
-                          ]
-                        }
-                      >
-                        <Text
-                          color="default"
-                          style={
-                            [
-                              {
-                                "color": "#161617",
-                                "fontFamily": "Montserrat-SemiBold",
-                                "fontSize": 16,
-                                "lineHeight": 25.6,
-                              },
-                            ]
-                          }
-                        >
-                          Débloque ton crédit
-                        </Text>
-                        <Text
-                          color="default"
-                          style={
-                            [
-                              {
-                                "color": "#161617",
-                                "fontFamily": "Montserrat-Medium",
-                                "fontSize": 16,
-                                "lineHeight": 25.6,
-                              },
-                            ]
-                          }
-                        >
-                          Crée ton compte si tu as entre 15 et 18 ans !
-                        </Text>
-                      </View>
-                      <View>
-                        <View
-                          height={24}
-                          width={24}
-                        >
-                          <Text>
-                            undefined-SVG-Mock
-                          </Text>
-                        </View>
-                      </View>
-                    </View>
                   </View>
                 </View>
               </View>
             </View>
           </View>
-          <View
-            onFocusCapture={[Function]}
-            onLayout={[Function]}
-            style={null}
-          />
-          <View
-            onLayout={[Function]}
-          >
-            <View
-              customHeight={72}
-              enable={true}
-              style={
-                [
-                  {
-                    "height": 72,
-                  },
-                ]
-              }
-            />
-          </View>
         </View>
-      </RCTScrollView>
-    </View>
-    <View
-      height={16}
+        <View
+          onFocusCapture={[Function]}
+          onLayout={[Function]}
+          style={null}
+        />
+        <View
+          onLayout={[Function]}
+        >
+          <View
+            customHeight={72}
+            enable={true}
+            style={
+              [
+                {
+                  "height": 72,
+                },
+              ]
+            }
+          />
+        </View>
+      </View>
+    </RCTScrollView>
+  </View>
+  <View
+    height={16}
+    style={
+      [
+        {
+          "backdropFilter": "blur(20px)",
+          "height": 16,
+          "left": 0,
+          "overflow": "hidden",
+          "position": "absolute",
+          "right": 0,
+        },
+      ]
+    }
+  >
+    <BlurView
+      blurAmount={8}
+      blurType="light"
       style={
         [
           {
-            "backdropFilter": "blur(20px)",
-            "height": 16,
-            "left": 0,
-            "overflow": "hidden",
-            "position": "absolute",
-            "right": 0,
+            "backgroundColor": "transparent",
           },
-        ]
-      }
-    >
-      <BlurView
-        blurAmount={8}
-        blurType="light"
-        style={
           [
             {
-              "backgroundColor": "transparent",
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
             },
-            [
-              {
-                "flexBasis": 0,
-                "flexGrow": 1,
-                "flexShrink": 1,
-              },
-            ],
-          ]
-        }
-      />
-    </View>
-  </View>,
-  <Modal
-    accessibilityLabelledBy="testUuidV4"
-    accessibilityModal={true}
-    animationType="none"
-    deviceHeight={1334}
-    deviceWidth={750}
-    hardwareAccelerated={false}
-    hideModalContentWhileAnimating={false}
-    onBackdropPress={[Function]}
-    onModalHide={[Function]}
-    onModalWillHide={[Function]}
-    onModalWillShow={[Function]}
-    onRequestClose={[Function]}
-    panResponderThreshold={4}
-    scrollHorizontal={false}
-    scrollOffset={0}
-    scrollOffsetMax={0}
-    scrollTo={null}
-    statusBarTranslucent={true}
-    supportedOrientations={
-      [
-        "portrait",
-        "landscape",
-      ]
-    }
-    swipeThreshold={100}
-    testID="modal"
-    transparent={true}
-    visible={false}
-  />,
-]
+          ],
+        ]
+      }
+    />
+  </View>
+</View>
 `;

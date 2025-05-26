@@ -6,7 +6,7 @@ import { beneficiaryUser } from 'fixtures/user'
 import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render, screen, fireEvent, act, waitFor } from 'tests/utils'
+import { render, screen, fireEvent, act, waitFor, userEvent } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 
 import { FeedbackInApp } from './FeedbackInApp'
@@ -33,6 +33,9 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
     return Component
   }
 })
+
+const user = userEvent.setup()
+jest.useFakeTimers()
 
 describe('<FeedbackInApp/>', () => {
   it('should match snapshot', () => {
@@ -123,8 +126,6 @@ describe('<FeedbackInApp/>', () => {
       fireEvent.changeText(textBox, feedback)
     })
     const submitButton = screen.getByText('Envoyer ma suggestion')
-    await act(async () => {
-      fireEvent.press(submitButton)
-    })
+    await user.press(submitButton)
   }
 })

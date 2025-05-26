@@ -5,11 +5,11 @@ import { OauthStateResponse } from 'api/gen'
 import { PreValidationSignupNormalStepProps, SignInResponseFailure } from 'features/auth/types'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render, screen } from 'tests/utils'
+import { act, fireEvent, render, screen, userEvent } from 'tests/utils'
 import { SUGGESTION_DELAY_IN_MS } from 'ui/components/inputs/EmailInputWithSpellingHelp/useEmailSpellingHelp'
 import { SNACK_BAR_TIME_OUT_LONG } from 'ui/components/snackBar/SnackBarContext'
 
@@ -55,6 +55,8 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
 
 jest.mock('libs/firebase/analytics/analytics')
 
+const user = userEvent.setup()
+
 describe('<SetEmail />', () => {
   beforeEach(() => {
     setFeatureFlags()
@@ -72,7 +74,7 @@ describe('<SetEmail />', () => {
     renderSetEmail()
 
     await act(async () => {
-      const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
+      const emailInput = screen.getByTestId('Entrée pour l’email')
       fireEvent.changeText(emailInput, '    ')
     })
 
@@ -85,7 +87,7 @@ describe('<SetEmail />', () => {
     renderSetEmail()
 
     await act(async () => {
-      const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
+      const emailInput = screen.getByTestId('Entrée pour l’email')
       fireEvent.changeText(emailInput, 'john.doe@gmail.com')
     })
 
@@ -98,14 +100,11 @@ describe('<SetEmail />', () => {
     renderSetEmail()
 
     await act(async () => {
-      const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
+      const emailInput = screen.getByTestId('Entrée pour l’email')
       fireEvent.changeText(emailInput, 'john.doe@gmail.com')
     })
 
-    await act(async () => {
-      const continueButton = screen.getByText('Continuer')
-      fireEvent.press(continueButton)
-    })
+    await user.press(screen.getByText('Continuer'))
 
     expect(defaultProps.goToNextStep).toHaveBeenCalledWith({
       email: 'john.doe@gmail.com',
@@ -118,13 +117,10 @@ describe('<SetEmail />', () => {
     renderSetEmail()
 
     await act(async () => {
-      const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
+      const emailInput = screen.getByTestId('Entrée pour l’email')
       fireEvent.changeText(emailInput, 'john.doe@gmail.com')
     })
-    await act(async () => {
-      const continueButton = screen.getByText('Continuer')
-      fireEvent.press(continueButton)
-    })
+    await user.press(screen.getByText('Continuer'))
 
     expect(screen.queryByText(INCORRECT_EMAIL_MESSAGE)).not.toBeOnTheScreen()
   })
@@ -133,14 +129,11 @@ describe('<SetEmail />', () => {
     renderSetEmail()
 
     await act(async () => {
-      const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
+      const emailInput = screen.getByTestId('Entrée pour l’email')
       fireEvent.changeText(emailInput, 'john.doe')
     })
 
-    await act(async () => {
-      const continueButton = screen.getByText('Continuer')
-      fireEvent.press(continueButton)
-    })
+    await user.press(screen.getByText('Continuer'))
 
     expect(screen.getByText(INCORRECT_EMAIL_MESSAGE)).toBeOnTheScreen()
   })
@@ -148,10 +141,7 @@ describe('<SetEmail />', () => {
   it('should log analytics when clicking on "Se connecter" button', async () => {
     renderSetEmail()
 
-    await act(async () => {
-      const loginButton = screen.getByText('Se connecter')
-      fireEvent.press(loginButton)
-    })
+    await user.press(screen.getByText('Se connecter'))
 
     expect(analytics.logLoginClicked).toHaveBeenNthCalledWith(1, { from: 'SetEmail' })
   })
@@ -160,7 +150,7 @@ describe('<SetEmail />', () => {
     renderSetEmail()
 
     await act(async () => {
-      const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
+      const emailInput = screen.getByTestId('Entrée pour l’email')
       fireEvent.changeText(emailInput, 'john.doe@gmal.com')
     })
 
@@ -175,7 +165,7 @@ describe('<SetEmail />', () => {
     renderSetEmail()
 
     await act(async () => {
-      const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
+      const emailInput = screen.getByTestId('Entrée pour l’email')
       fireEvent.changeText(emailInput, 'john.doe@gmal.com')
     })
 
@@ -183,8 +173,7 @@ describe('<SetEmail />', () => {
       jest.advanceTimersByTime(SUGGESTION_DELAY_IN_MS)
     })
 
-    const suggestionButton = screen.getByText('Appliquer la modification')
-    fireEvent.press(suggestionButton)
+    await user.press(screen.getByText('Appliquer la modification'))
 
     expect(analytics.logHasCorrectedEmail).toHaveBeenNthCalledWith(1, { from: 'setemail' })
   })
@@ -194,10 +183,7 @@ describe('<SetEmail />', () => {
     useRoute.mockReturnValueOnce({ params: { offerId: OFFER_ID } })
     renderSetEmail()
 
-    await act(async () => {
-      const loginButton = screen.getByText('Se connecter')
-      fireEvent.press(loginButton)
-    })
+    await user.press(screen.getByText('Se connecter'))
 
     expect(navigate).toHaveBeenNthCalledWith(1, 'Login', {
       from: StepperOrigin.SIGNUP,
@@ -284,11 +270,9 @@ describe('<SetEmail />', () => {
 
       renderSetEmail()
 
-      await act(() => {})
+      await screen.findByText('Crée-toi un compte')
 
-      const signupButton = screen.getByText('S’inscrire avec Google')
-
-      await act(async () => fireEvent.press(signupButton))
+      await user.press(screen.getByText('S’inscrire avec Google'))
 
       expect(defaultProps.onSSOEmailNotFoundError).toHaveBeenCalledTimes(1)
       expect(defaultProps.goToNextStep).toHaveBeenCalledWith({
@@ -313,8 +297,7 @@ describe('<SetEmail />', () => {
 
       await screen.findByText('Crée-toi un compte')
 
-      const signupButton = screen.getByText('S’inscrire avec Google')
-      await act(async () => fireEvent.press(signupButton))
+      await user.press(screen.getByText('S’inscrire avec Google'))
 
       expect(mockShowErrorSnackBar).toHaveBeenCalledWith({
         message:

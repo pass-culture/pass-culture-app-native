@@ -235,7 +235,7 @@ exports[`Profile component should render correctly 1`] = `
                 style={
                   [
                     {
-                      "color": "#696A6F",
+                      "color": "#696a6f",
                       "fontFamily": "Montserrat-SemiBold",
                       "fontSize": 12,
                       "lineHeight": 19.2,
@@ -795,7 +795,7 @@ exports[`Profile component should render correctly 1`] = `
                 style={
                   [
                     {
-                      "color": "#696A6F",
+                      "color": "#696a6f",
                       "fontFamily": "Montserrat-SemiBold",
                       "fontSize": 12,
                       "lineHeight": 19.2,
@@ -1110,7 +1110,7 @@ exports[`Profile component should render correctly 1`] = `
                 style={
                   [
                     {
-                      "color": "#696A6F",
+                      "color": "#696a6f",
                       "fontFamily": "Montserrat-SemiBold",
                       "fontSize": 12,
                       "lineHeight": 19.2,
@@ -1152,6 +1152,144 @@ exports[`Profile component should render correctly 1`] = `
                   ]
                 }
               >
+                <View
+                  accessibilityRole="none"
+                  style={
+                    [
+                      {
+                        "display": "flex",
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    accessibilityLabel="Préférences d’affichage"
+                    accessibilityRole="link"
+                    accessibilityState={
+                      {
+                        "busy": undefined,
+                        "checked": undefined,
+                        "disabled": false,
+                        "expanded": undefined,
+                        "selected": undefined,
+                      }
+                    }
+                    accessibilityValue={
+                      {
+                        "max": undefined,
+                        "min": undefined,
+                        "now": undefined,
+                        "text": undefined,
+                      }
+                    }
+                    accessible={true}
+                    focusable={true}
+                    onClick={[Function]}
+                    onResponderGrant={[Function]}
+                    onResponderMove={[Function]}
+                    onResponderRelease={[Function]}
+                    onResponderTerminate={[Function]}
+                    onResponderTerminationRequest={[Function]}
+                    onStartShouldSetResponder={[Function]}
+                    style={
+                      [
+                        [
+                          {
+                            "userSelect": "auto",
+                          },
+                          {},
+                        ],
+                        {
+                          "opacity": 1,
+                        },
+                      ]
+                    }
+                    testID="Préférences d’affichage"
+                  >
+                    <View
+                      style={
+                        [
+                          {
+                            "alignItems": "center",
+                            "flexDirection": "row",
+                            "justifyContent": "space-between",
+                          },
+                          [
+                            {
+                              "paddingVertical": 16,
+                            },
+                          ],
+                        ]
+                      }
+                    >
+                      <View
+                        height={24}
+                        width={24}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
+                      <View
+                        numberOfSpaces={2}
+                        style={
+                          [
+                            {
+                              "width": 8,
+                            },
+                          ]
+                        }
+                      />
+                      <View
+                        style={
+                          [
+                            {
+                              "flexBasis": 0,
+                              "flexGrow": 1,
+                              "flexShrink": 1,
+                              "textAlign": "left",
+                            },
+                          ]
+                        }
+                      >
+                        <Text
+                          numberOfLines={2}
+                          style={
+                            [
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 16,
+                                "lineHeight": 25.6,
+                              },
+                            ]
+                          }
+                        >
+                          Préférences d’affichage
+                        </Text>
+                      </View>
+                      <View
+                        style={
+                          [
+                            {
+                              "alignItems": "flex-end",
+                            },
+                          ]
+                        }
+                      >
+                        <View
+                          height={20}
+                          testID="section-row-navigable-icon"
+                          width={20}
+                        >
+                          <Text>
+                            section-row-navigable-icon-SVG-Mock
+                          </Text>
+                        </View>
+                      </View>
+                    </View>
+                  </View>
+                </View>
                 <View
                   accessibilityRole="none"
                   style={
@@ -1720,7 +1858,7 @@ exports[`Profile component should render correctly 1`] = `
                 style={
                   [
                     {
-                      "color": "#696A6F",
+                      "color": "#696a6f",
                       "fontFamily": "Montserrat-SemiBold",
                       "fontSize": 12,
                       "lineHeight": 19.2,
@@ -1959,7 +2097,7 @@ exports[`Profile component should render correctly 1`] = `
                 style={
                   [
                     {
-                      "color": "#696A6F",
+                      "color": "#696a6f",
                       "fontFamily": "Montserrat-SemiBold",
                       "fontSize": 12,
                       "lineHeight": 19.2,
@@ -2664,7 +2802,7 @@ exports[`Profile component should render correctly 1`] = `
                 style={
                   [
                     {
-                      "color": "#696A6F",
+                      "color": "#696a6f",
                       "fontFamily": "Montserrat-SemiBold",
                       "fontSize": 12,
                       "lineHeight": 19.2,
@@ -2675,6 +2813,105 @@ exports[`Profile component should render correctly 1`] = `
               >
                 Version 1.10.5
               </Text>
+              <View
+                style={
+                  [
+                    {
+                      "marginBottom": 16,
+                    },
+                  ]
+                }
+              >
+                <View
+                  accessibilityLabel="Débuggage"
+                  accessibilityState={
+                    {
+                      "busy": undefined,
+                      "checked": undefined,
+                      "disabled": undefined,
+                      "expanded": undefined,
+                      "selected": undefined,
+                    }
+                  }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
+                    }
+                  }
+                  accessible={true}
+                  focusable={true}
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    [
+                      [
+                        {
+                          "userSelect": "auto",
+                        },
+                        {
+                          "alignItems": "center",
+                          "borderRadius": 0,
+                          "borderWidth": 0,
+                          "flexDirection": "row",
+                          "justifyContent": "flex-start",
+                          "marginTop": 0,
+                          "maxWidth": 500,
+                          "minHeight": 20,
+                          "paddingBottom": 0,
+                          "paddingLeft": 0,
+                          "paddingRight": 0,
+                          "paddingTop": 0,
+                          "width": "auto",
+                        },
+                        {
+                          "backgroundColor": "transparent",
+                        },
+                      ],
+                      {
+                        "opacity": 1,
+                      },
+                    ]
+                  }
+                  testID="Débuggage"
+                >
+                  <View
+                    style={
+                      [
+                        {
+                          "alignItems": "center",
+                          "flexDirection": "row",
+                        },
+                      ]
+                    }
+                  >
+                    <Text
+                      adjustsFontSizeToFit={false}
+                      numberOfLines={1}
+                      style={
+                        [
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-SemiBold",
+                            "fontSize": 12,
+                            "lineHeight": 19.2,
+                            "maxWidth": "100%",
+                          },
+                        ]
+                      }
+                    >
+                      Débuggage
+                    </Text>
+                  </View>
+                </View>
+              </View>
               <View
                 style={
                   [

@@ -7,7 +7,7 @@ import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome
 import { navigateFromRef } from 'features/navigation/navigationRef'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
-import { fireEvent, render, screen, waitFor } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 
 import { DeactivateProfileSuccess } from './DeactivateProfileSuccess'
 
@@ -24,6 +24,9 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
     return Component
   }
 })
+
+const user = userEvent.setup()
+jest.useFakeTimers()
 
 describe('DeactivateProfileSuccess component', () => {
   beforeEach(() => {
@@ -42,10 +45,10 @@ describe('DeactivateProfileSuccess component', () => {
     expect(signOutMock).toHaveBeenCalledTimes(1)
   })
 
-  it('should redirect to Home page when clicking on "Retourner à l’accueil" button', () => {
+  it('should redirect to Home page when clicking on "Retourner à l’accueil" button', async () => {
     render(<DeactivateProfileSuccess />)
 
-    fireEvent.press(screen.getByText(`Retourner à l’accueil`))
+    await user.press(screen.getByText(`Retourner à l’accueil`))
 
     expect(navigateFromRef).toHaveBeenCalledWith(
       navigateToHomeConfig.screen,
@@ -56,13 +59,11 @@ describe('DeactivateProfileSuccess component', () => {
   it('should log analytics and  redirect to Login page when clicking on "Réactiver mon compte" button', async () => {
     render(<DeactivateProfileSuccess />)
 
-    fireEvent.press(screen.getByText('Réactiver mon compte'))
+    await user.press(screen.getByText('Réactiver mon compte'))
 
-    await waitFor(() => {
-      expect(analytics.logAccountReactivation).toHaveBeenCalledWith('deactivateprofilesuccess')
-      expect(navigate).toHaveBeenCalledWith('Login', {
-        from: StepperOrigin.DEACTIVATE_PROFILE_SUCCESS,
-      })
+    expect(analytics.logAccountReactivation).toHaveBeenCalledWith('deactivateprofilesuccess')
+    expect(navigate).toHaveBeenCalledWith('Login', {
+      from: StepperOrigin.DEACTIVATE_PROFILE_SUCCESS,
     })
   })
 })

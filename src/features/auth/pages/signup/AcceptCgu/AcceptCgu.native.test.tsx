@@ -9,7 +9,7 @@ import { useNetInfoContext as useNetInfoContextDefault } from 'libs/network/NetI
 import { UnknownErrorFixture } from 'libs/recaptcha/fixtures'
 import { mockAuthContextWithoutUser } from 'tests/AuthContextUtils'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render, screen, simulateWebviewMessage, waitFor } from 'tests/utils'
+import { render, screen, simulateWebviewMessage, userEvent, waitFor } from 'tests/utils'
 
 import { AcceptCgu } from './AcceptCgu'
 
@@ -48,6 +48,9 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
+const user = userEvent.setup()
+jest.useFakeTimers()
+
 describe('<AcceptCgu/>', () => {
   beforeEach(() => {
     setSettings()
@@ -65,20 +68,20 @@ describe('<AcceptCgu/>', () => {
     expect(screen).toMatchSnapshot()
   })
 
-  it('should redirect to the "CGU" page', () => {
+  it('should redirect to the "CGU" page', async () => {
     renderAcceptCGU()
 
     const link = screen.getByText('Nos conditions générales d’utilisation')
-    fireEvent.press(link)
+    await user.press(link)
 
     expect(Linking.openURL).toHaveBeenCalledWith(env.CGU_LINK)
   })
 
-  it('should redirect to the "Charte des données personnelles" page', () => {
+  it('should redirect to the "Charte des données personnelles" page', async () => {
     renderAcceptCGU()
 
     const link = screen.getByText('La charte des données personnelles')
-    fireEvent.press(link)
+    await user.press(link)
 
     expect(Linking.openURL).toHaveBeenCalledWith(env.PRIVACY_POLICY_LINK)
   })
@@ -86,53 +89,43 @@ describe('<AcceptCgu/>', () => {
   it('should disable the button if the data charted is not checked', () => {
     renderAcceptCGU()
 
-    fireEvent.press(
-      screen.getByText('J’ai lu et j’accepte les conditions générales d’utilisation*')
-    )
+    user.press(screen.getByText('J’ai lu et j’accepte les conditions générales d’utilisation*'))
 
     expect(screen.getByText('S’inscrire')).toBeDisabled()
   })
 
   it('should log analytics when pressing on signup button', async () => {
     renderAcceptCGU()
-    fireEvent.press(
-      screen.getByText('J’ai lu et j’accepte les conditions générales d’utilisation*')
-    )
-    await act(() => {
-      fireEvent.press(screen.getByText('J’ai lu la charte des données personnelles*'))
-    })
-    await act(() => fireEvent.press(screen.getByText('S’inscrire')))
+    user.press(screen.getByText('J’ai lu et j’accepte les conditions générales d’utilisation*'))
+
+    await user.press(screen.getByText('J’ai lu la charte des données personnelles*'))
+
+    await user.press(screen.getByText('S’inscrire'))
 
     expect(analytics.logContinueCGU).toHaveBeenCalledTimes(1)
   })
 
   it("should open reCAPTCHA challenge's modal when pressing on signup button", async () => {
     renderAcceptCGU()
-    const recaptchaWebviewModal = screen.getByTestId('recaptcha-webview-modal')
 
-    expect(recaptchaWebviewModal.props.visible).toBeFalsy()
+    expect(screen.queryByTestId('recaptcha-webview-modal')).not.toBeOnTheScreen()
 
-    fireEvent.press(
-      screen.getByText('J’ai lu et j’accepte les conditions générales d’utilisation*')
-    )
-    await act(() => {
-      fireEvent.press(screen.getByText('J’ai lu la charte des données personnelles*'))
-    })
-    await act(() => fireEvent.press(screen.getByText('S’inscrire')))
+    user.press(screen.getByText('J’ai lu et j’accepte les conditions générales d’utilisation*'))
 
-    expect(recaptchaWebviewModal.props.visible).toBe(true)
+    await user.press(screen.getByText('J’ai lu la charte des données personnelles*'))
+
+    await user.press(screen.getByText('S’inscrire'))
+
+    expect(screen.getByTestId('recaptcha-webview-modal')).toBeOnTheScreen()
   })
 
   it('should call API to create user account when reCAPTCHA challenge is successful', async () => {
     renderAcceptCGU()
 
-    fireEvent.press(
-      screen.getByText('J’ai lu et j’accepte les conditions générales d’utilisation*')
-    )
-    await act(() => {
-      fireEvent.press(screen.getByText('J’ai lu la charte des données personnelles*'))
-    })
-    await act(() => fireEvent.press(screen.getByText('S’inscrire')))
+    user.press(screen.getByText('J’ai lu et j’accepte les conditions générales d’utilisation*'))
+    await user.press(screen.getByText('J’ai lu la charte des données personnelles*'))
+
+    await user.press(screen.getByText('S’inscrire'))
     const recaptchaWebview = screen.getByTestId('recaptcha-webview')
 
     simulateWebviewMessage(recaptchaWebview, '{ "message": "success", "token": "fakeToken" }')
@@ -146,13 +139,10 @@ describe('<AcceptCgu/>', () => {
   it('should call API with previous marketing data to create classic account', async () => {
     renderAcceptCGU({ isSSOSubscription: false, previousMarketingData: true })
 
-    await act(() => {
-      fireEvent.press(
-        screen.getByText('J’ai lu et j’accepte les conditions générales d’utilisation*')
-      )
-      fireEvent.press(screen.getByText('J’ai lu la charte des données personnelles*'))
-    })
-    await act(() => fireEvent.press(screen.getByText('S’inscrire')))
+    user.press(screen.getByText('J’ai lu et j’accepte les conditions générales d’utilisation*'))
+    await user.press(screen.getByText('J’ai lu la charte des données personnelles*'))
+
+    await user.press(screen.getByText('S’inscrire'))
 
     const recaptchaWebview = screen.getByTestId('recaptcha-webview')
     simulateWebviewMessage(recaptchaWebview, '{ "message": "success", "token": "fakeToken" }')
@@ -165,18 +155,16 @@ describe('<AcceptCgu/>', () => {
   it('should call API with marketing email subscription information to create SSO account', async () => {
     renderAcceptCGU({ isSSOSubscription: true, previousMarketingData: false })
 
-    await act(() => {
-      fireEvent.press(
-        screen.getByText(
-          'J’accepte de recevoir les newsletters, bons plans et les recommandations personnalisées du pass Culture.'
-        )
+    user.press(
+      screen.getByText(
+        'J’accepte de recevoir les newsletters, bons plans et les recommandations personnalisées du pass Culture.'
       )
-      fireEvent.press(
-        screen.getByText('J’ai lu et j’accepte les conditions générales d’utilisation*')
-      )
-      fireEvent.press(screen.getByText('J’ai lu la charte des données personnelles*'))
-    })
-    await act(() => fireEvent.press(screen.getByText('S’inscrire')))
+    )
+    await user.press(
+      screen.getByText('J’ai lu et j’accepte les conditions générales d’utilisation*')
+    )
+    await user.press(screen.getByText('J’ai lu la charte des données personnelles*'))
+    await user.press(screen.getByText('S’inscrire'))
 
     const recaptchaWebview = screen.getByTestId('recaptcha-webview')
     simulateWebviewMessage(recaptchaWebview, '{ "message": "success", "token": "fakeToken" }')
@@ -202,13 +190,12 @@ describe('<AcceptCgu/>', () => {
     })
     renderAcceptCGU()
 
-    fireEvent.press(
+    await user.press(
       screen.getByText('J’ai lu et j’accepte les conditions générales d’utilisation*')
     )
-    await act(() => {
-      fireEvent.press(screen.getByText('J’ai lu la charte des données personnelles*'))
-    })
-    await act(() => fireEvent.press(screen.getByText('S’inscrire')))
+    await user.press(screen.getByText('J’ai lu la charte des données personnelles*'))
+
+    await user.press(screen.getByText('S’inscrire'))
     const recaptchaWebview = screen.getByTestId('recaptcha-webview')
 
     simulateWebviewMessage(recaptchaWebview, '{ "message": "success", "token": "fakeToken" }')
@@ -224,13 +211,12 @@ describe('<AcceptCgu/>', () => {
 
   it('should NOT call API to create user account when reCAPTCHA challenge was failed', async () => {
     renderAcceptCGU()
-    fireEvent.press(
+    await user.press(
       screen.getByText('J’ai lu et j’accepte les conditions générales d’utilisation*')
     )
-    await act(() => {
-      fireEvent.press(screen.getByText('J’ai lu la charte des données personnelles*'))
-    })
-    await act(() => fireEvent.press(screen.getByText('S’inscrire')))
+    await user.press(screen.getByText('J’ai lu la charte des données personnelles*'))
+
+    await user.press(screen.getByText('S’inscrire'))
     const recaptchaWebview = screen.getByTestId('recaptcha-webview')
     simulateWebviewMessage(recaptchaWebview, UnknownErrorFixture)
 
@@ -246,13 +232,12 @@ describe('<AcceptCgu/>', () => {
   it('should NOT call API to create user account when reCAPTCHA token has expired', async () => {
     renderAcceptCGU()
 
-    fireEvent.press(
+    await user.press(
       screen.getByText('J’ai lu et j’accepte les conditions générales d’utilisation*')
     )
-    await act(() => {
-      fireEvent.press(screen.getByText('J’ai lu la charte des données personnelles*'))
-    })
-    await act(() => fireEvent.press(screen.getByText('S’inscrire')))
+    await user.press(screen.getByText('J’ai lu la charte des données personnelles*'))
+
+    await user.press(screen.getByText('S’inscrire'))
     const recaptchaWebview = screen.getByTestId('recaptcha-webview')
 
     simulateWebviewMessage(recaptchaWebview, '{ "message": "expire" }')

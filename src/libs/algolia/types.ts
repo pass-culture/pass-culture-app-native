@@ -35,6 +35,10 @@ export type HitOffer = {
   artist?: string
   ean?: string
   publicationDate?: number
+  likes?: number
+  chroniclesCount?: number
+  headlineCount?: number
+  tags?: string[]
 }
 
 export type AlgoliaOfferWithArtistAndEan = AlgoliaOffer<
@@ -63,6 +67,7 @@ export interface AlgoliaOffer<T = HitOffer> {
     city?: string
   }
   artists?: Artist[]
+  _tags?: string[]
 }
 
 interface AlgoliaFacetsAnalyticsKey {
@@ -260,3 +265,16 @@ export type MultipleOffersResult = {
   hits: AlgoliaOffer[]
   nbHits: number
 }[]
+
+export type PlaylistOffersParams = {
+  offerParams: SearchQueryParameters
+  locationParams: BuildLocationParameterParams
+  indexName?: string
+}
+
+export type fetchOffersByGTLArgs = {
+  parameters: PlaylistOffersParams[]
+  buildLocationParameterParams: BuildLocationParameterParams
+  isUserUnderage: boolean
+  searchIndex?: string
+}

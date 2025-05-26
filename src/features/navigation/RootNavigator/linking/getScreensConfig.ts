@@ -1,6 +1,7 @@
 import { PathConfigMap } from '@react-navigation/native'
 import React, { ComponentType } from 'react'
 
+import { OnboardingStackRoute } from 'features/navigation/OnboardingStackNavigator/OnboardingStackTypes'
 import { ProfileStackRoute } from 'features/navigation/ProfileStackNavigator/ProfileStack'
 import { AllNavParamList, RootRoute } from 'features/navigation/RootNavigator/types'
 import { SearchStackRoute } from 'features/navigation/SearchStackNavigator/types'
@@ -11,7 +12,12 @@ import { getScreenComponent } from './getScreenComponent'
 type AnyScreen = keyof AllNavParamList
 
 export function getScreensAndConfig(
-  routes: RootRoute[] | TabRoute[] | SearchStackRoute[] | ProfileStackRoute[],
+  routes:
+    | RootRoute[]
+    | TabRoute[]
+    | SearchStackRoute[]
+    | ProfileStackRoute[]
+    | OnboardingStackRoute[],
   ScreenComponent: ComponentType<any> // eslint-disable-line @typescript-eslint/no-explicit-any
 ) {
   const screensConfig: PathConfigMap<AllNavParamList> = {}

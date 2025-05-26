@@ -45,7 +45,11 @@ export const SectionRowContent = ({
     <View style={[styles.container, style]}>
       {Icon ? (
         <React.Fragment>
-          <Icon size={iconSize} color={theme.colors.black} />
+          <Icon
+            size={iconSize}
+            color={theme.designSystem.color.icon.default}
+            color2={theme.designSystem.color.icon.default}
+          />
           <Spacer.Row numberOfSpaces={2} />
         </React.Fragment>
       ) : null}
@@ -78,4 +82,5 @@ const CTAContainer = styled.View({
 
 const ArrowNext = styled(DefaultArrowNext).attrs(({ theme }) => ({
   size: theme.icons.sizes.smaller,
+  color: theme.designSystem.color.icon.default,
 }))``

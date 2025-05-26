@@ -2,19 +2,20 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import { Controller, useForm } from 'react-hook-form'
+import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { CityForm, cityResolver } from 'features/identityCheck/pages/profile/SetCity'
 import { cityActions, useCity } from 'features/identityCheck/pages/profile/store/cityStore'
 import { getProfileStackConfig } from 'features/navigation/ProfileStackNavigator/getProfileStackConfig'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { usePatchProfile } from 'features/profile/api/usePatchProfile'
 import { CitySearchInput } from 'features/profile/components/CitySearchInput/CitySearchInput'
 import { analytics } from 'libs/analytics/provider'
+import { usePatchProfileMutation } from 'queries/profile/usePatchProfileMutation'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
-import { Spacer, Typo } from 'ui/theme'
+import { Typo, getSpacing } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export const ChangeCity = () => {
@@ -32,7 +33,7 @@ export const ChangeCity = () => {
     resolver: yupResolver(cityResolver),
     defaultValues: { city: storedCity ?? undefined },
   })
-  const { mutate: patchProfile } = usePatchProfile({
+  const { mutate: patchProfile } = usePatchProfileMutation({
     onSuccess: (_, variables) => {
       analytics.logUpdatePostalCode({
         newCity: variables.city ?? '',
@@ -64,9 +65,9 @@ export const ChangeCity = () => {
       title="Modifier ma ville de résidence"
       scrollChildren={
         <React.Fragment>
-          <Typo.Title3 {...getHeadingAttrs(1)}>Renseigne ta ville de résidence</Typo.Title3>
-          <Spacer.Column numberOfSpaces={5} />
-
+          <Container>
+            <Typo.Title3 {...getHeadingAttrs(1)}>Renseigne ta ville de résidence</Typo.Title3>
+          </Container>
           <Controller
             control={control}
             name="city"
@@ -87,3 +88,5 @@ export const ChangeCity = () => {
     />
   )
 }
+
+const Container = styled.View({ marginBottom: getSpacing(5) })

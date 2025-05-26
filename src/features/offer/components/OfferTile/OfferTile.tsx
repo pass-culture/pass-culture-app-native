@@ -1,6 +1,6 @@
 import React, { memo, useEffect } from 'react'
 import { View } from 'react-native'
-import styled, { useTheme } from 'styled-components/native'
+import styled from 'styled-components/native'
 
 import { OfferTileProps } from 'features/offer/types'
 import { triggerConsultOfferLog } from 'libs/analytics/helpers/triggerLogConsultOffer/triggerConsultOfferLog'
@@ -37,7 +37,6 @@ const UnmemoizedOfferTile = (props: OfferTileProps) => {
     ...offer
   } = props
 
-  const theme = useTheme()
   const { onFocus, onBlur, isFocus } = useHandleFocus()
   const prePopulateOffer = usePrePopulateOffer()
   const { userLocation, selectedPlace, selectedLocationMode } = useLocation()
@@ -81,10 +80,9 @@ const UnmemoizedOfferTile = (props: OfferTileProps) => {
   }
 
   return (
-    <View {...getHeadingAttrs(3)}>
+    <View {...getHeadingAttrs(3)} testID="OfferTile">
       <StyledTouchableLink
         highlight
-        height={height + theme.tiles.maxCaptionHeight.offerTile}
         navigateTo={{
           screen: 'Offer',
           params: {
@@ -125,9 +123,8 @@ export const OfferTile = memo(UnmemoizedOfferTile)
 
 const StyledTouchableLink = styled(InternalTouchableLink).attrs(({ theme }) => ({
   underlayColor: theme.colors.white,
-}))<{ height: number; isFocus?: boolean }>(({ height, theme, isFocus }) => ({
+}))<{ isFocus?: boolean }>(({ theme, isFocus }) => ({
   marginVertical: theme.outline.width + theme.outline.offSet,
   borderRadius: theme.borderRadius.radius,
-  height,
   ...customFocusOutline({ isFocus, color: theme.colors.black }),
 }))

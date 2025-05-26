@@ -7,7 +7,7 @@ import { FilterBehaviour } from 'features/search/enums'
 import { MAX_PRICE_IN_CENTS } from 'features/search/helpers/reducer.helpers'
 import { SearchState } from 'features/search/types'
 import { beneficiaryUser } from 'fixtures/user'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { convertCentsToEuros } from 'libs/parsers/pricesConversion'
 import { render, screen, userEvent, waitFor } from 'tests/utils'
 
@@ -38,7 +38,7 @@ const mockedUseAuthContext = jest.spyOn(Auth, 'useAuthContext').mockReturnValue(
 const mockHideModal = jest.fn()
 const mockOnClose = jest.fn()
 
-jest.mock('react-native/Libraries/Animated/animations/TimingAnimation.js')
+jest.mock('react-native/Libraries/Animated/animations/TimingAnimation')
 
 jest.mock('libs/firebase/analytics/analytics')
 
@@ -90,18 +90,6 @@ describe('<PriceModal/>', () => {
       expect(minPriceInput.props.value).toStrictEqual('')
     })
 
-    it('should call dispatch with default search when pressing reset button', async () => {
-      renderSearchPrice()
-
-      const resetButton = screen.getByText('Réinitialiser')
-      await user.press(resetButton)
-
-      expect(mockDispatch).toHaveBeenCalledWith({
-        type: 'SET_STATE',
-        payload: searchState,
-      })
-    })
-
     it('should reset maximum price when pressing reset button', async () => {
       renderSearchPrice()
 
@@ -148,6 +136,19 @@ describe('<PriceModal/>', () => {
       await user.press(resetButton)
 
       expect(minPriceInput.props.value).toStrictEqual('')
+    })
+
+    it('should call dispatch with default search when pressing reset button', async () => {
+      mockSearchState = { ...searchState, minPrice: '5', defaultMinPrice: '5' }
+      renderSearchPrice()
+
+      const resetButton = screen.getByText('Réinitialiser')
+      await user.press(resetButton)
+
+      expect(mockDispatch).toHaveBeenCalledWith({
+        type: 'SET_STATE',
+        payload: searchState,
+      })
     })
 
     it('should preserve minimum price when closing the modal', async () => {

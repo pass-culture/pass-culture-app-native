@@ -8,9 +8,7 @@ import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render, screen, waitFor } from 'tests/utils'
-
-mockdate.set(new Date('2020-12-01T00:00:00.000Z'))
+import { render, screen, userEvent } from 'tests/utils'
 
 jest.mock('libs/jwt/jwt')
 jest.mock('features/auth/context/AuthContext')
@@ -32,12 +30,17 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
+const user = userEvent.setup()
+
+jest.useFakeTimers()
+
 describe('<IdentityCheckHonor/>', () => {
   beforeAll(() => {
     mockAuthContextWithUser(nonBeneficiaryUser, { persist: true })
   })
 
   beforeEach(() => {
+    mockdate.set(new Date('2020-12-01T00:00:00.000Z'))
     mockServer.postApi('/v1/subscription/honor_statement', {})
   })
 
@@ -50,49 +53,40 @@ describe('<IdentityCheckHonor/>', () => {
   it('should navigate to BeneficiaryRequestSent on postHonorStatement request success if user is not beneficiary yet', async () => {
     renderIdentityCheckHonor()
 
-    const button = screen.getByText('Valider et continuer')
-    fireEvent.press(button)
+    await user.press(screen.getByText('Valider et continuer'))
 
-    await waitFor(() => {
-      expect(navigate).toHaveBeenCalledWith('BeneficiaryRequestSent')
-    })
+    expect(navigate).toHaveBeenCalledWith('BeneficiaryRequestSent')
   })
 
   it('should navigate to BeneficiaryAccountCreated on postHonorStatement request success if user is beneficiary', async () => {
-    const user = {
+    const currentUser = {
       ...beneficiaryUser,
       depositExpirationDate: '2021-12-01T00:00:00.000Z',
     }
     mockUseAuthContext.mockReturnValueOnce({
       user,
-      refetchUser: async () => ({ data: user }),
+      refetchUser: async () => ({ data: currentUser }),
     })
 
     renderIdentityCheckHonor()
 
-    const button = screen.getByText('Valider et continuer')
-    fireEvent.press(button)
+    await user.press(screen.getByText('Valider et continuer'))
 
-    await waitFor(() => {
-      expect(navigate).toHaveBeenCalledWith('BeneficiaryAccountCreated')
-    })
+    expect(navigate).toHaveBeenCalledWith('BeneficiaryAccountCreated')
   })
 
   it("should navigate to BeneficiaryRequestSent if user's credit is expired (non beneficiary)", async () => {
-    const user = { ...beneficiaryUser, depositExpirationDate: '2020-11-01T00:00:00.000Z' }
+    const currentUser = { ...beneficiaryUser, depositExpirationDate: '2020-11-01T00:00:00.000Z' }
     mockUseAuthContext.mockReturnValueOnce({
       user,
-      refetchUser: async () => ({ data: user }),
+      refetchUser: async () => ({ data: currentUser }),
     })
 
     renderIdentityCheckHonor()
 
-    const button = screen.getByText('Valider et continuer')
-    fireEvent.press(button)
+    await user.press(screen.getByText('Valider et continuer'))
 
-    await waitFor(() => {
-      expect(navigate).toHaveBeenCalledWith('BeneficiaryRequestSent')
-    })
+    expect(navigate).toHaveBeenCalledWith('BeneficiaryRequestSent')
   })
 })
 

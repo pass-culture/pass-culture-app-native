@@ -400,6 +400,7 @@ exports[`SetPhoneNumberWithoutValidation should match snapshot 1`] = `
                               "alignItems": "flex-end",
                               "flexDirection": "row",
                               "justifyContent": "space-between",
+                              "marginBottom": 8,
                               "width": "100%",
                             },
                           ]
@@ -422,15 +423,29 @@ exports[`SetPhoneNumberWithoutValidation should match snapshot 1`] = `
                       </View>
                     </View>
                     <View
-                      numberOfSpaces={2}
                       style={
                         [
                           {
-                            "height": 8,
+                            "marginBottom": 8,
                           },
                         ]
                       }
-                    />
+                    >
+                      <Text
+                        style={
+                          [
+                            {
+                              "color": "#696a6f",
+                              "fontFamily": "Montserrat-SemiBold",
+                              "fontSize": 12,
+                              "lineHeight": 19.2,
+                            },
+                          ]
+                        }
+                      >
+                        Exemple : 0639980123
+                      </Text>
+                    </View>
                     <View
                       height="small"
                       isDisabled={false}
@@ -458,133 +473,103 @@ exports[`SetPhoneNumberWithoutValidation should match snapshot 1`] = `
                       testID="styled-input-container"
                     >
                       <View
-                        accessibilityLabel="Ouvrir la modale de choix de l’indicatif téléphonique"
-                        accessibilityRole="button"
-                        accessibilityState={
-                          {
-                            "busy": undefined,
-                            "checked": undefined,
-                            "disabled": undefined,
-                            "expanded": undefined,
-                            "selected": undefined,
-                          }
-                        }
-                        accessibilityValue={
-                          {
-                            "max": undefined,
-                            "min": undefined,
-                            "now": undefined,
-                            "text": undefined,
-                          }
-                        }
-                        accessible={true}
-                        collapsable={false}
-                        focusable={true}
-                        onClick={[Function]}
-                        onResponderGrant={[Function]}
-                        onResponderMove={[Function]}
-                        onResponderRelease={[Function]}
-                        onResponderTerminate={[Function]}
-                        onResponderTerminationRequest={[Function]}
-                        onStartShouldSetResponder={[Function]}
-                        style={
-                          {
-                            "alignItems": "center",
-                            "flexDirection": "row",
-                            "flexShrink": 0,
-                            "opacity": 1,
-                            "userSelect": "auto",
-                          }
-                        }
-                        testID="Ouvrir la modale de choix de l’indicatif téléphonique"
-                      >
-                        <Text
-                          style={
-                            [
-                              {
-                                "color": "#161617",
-                                "fontFamily": "Montserrat-Medium",
-                                "fontSize": 16,
-                                "lineHeight": 25.6,
-                                "marginLeft": -4,
-                                "marginRight": 4,
-                              },
-                            ]
-                          }
-                        >
-                          +33
-                        </Text>
-                        <View
-                          fill="#161617"
-                          height={16}
-                          width={16}
-                        >
-                          <Text>
-                            undefined-SVG-Mock
-                          </Text>
-                        </View>
-                        <View
-                          numberOfSpaces={2}
-                          style={
-                            [
-                              {
-                                "width": 8,
-                              },
-                            ]
-                          }
-                        />
-                        <View
-                          style={
-                            [
-                              {
-                                "borderRightColor": "#696A6F",
-                                "borderRightWidth": 1,
-                                "paddingVertical": 10,
-                              },
-                            ]
-                          }
-                        />
-                      </View>
-                      <Modal
-                        accessibilityLabelledBy="testUuidV4"
-                        accessibilityModal={true}
-                        animationType="none"
-                        deviceHeight={1334}
-                        deviceWidth={750}
-                        hardwareAccelerated={false}
-                        hideModalContentWhileAnimating={false}
-                        onBackdropPress={[Function]}
-                        onModalHide={[Function]}
-                        onModalWillHide={[Function]}
-                        onModalWillShow={[Function]}
-                        onRequestClose={[Function]}
-                        panResponderThreshold={4}
-                        scrollHorizontal={false}
-                        scrollOffset={0}
-                        scrollOffsetMax={0}
-                        scrollTo={null}
-                        statusBarTranslucent={true}
-                        supportedOrientations={
-                          [
-                            "portrait",
-                            "landscape",
-                          ]
-                        }
-                        swipeThreshold={100}
-                        testID="modal"
-                        transparent={true}
-                        visible={false}
-                      />
-                      <View
-                        numberOfSpaces={2}
                         style={
                           [
                             {
-                              "width": 8,
+                              "marginBottom": 8,
                             },
                           ]
                         }
-                      />
+                      >
+                        <View
+                          accessibilityLabel="Ouvrir la modale de choix de l’indicatif téléphonique"
+                          accessibilityRole="button"
+                          accessibilityState={
+                            {
+                              "busy": undefined,
+                              "checked": undefined,
+                              "disabled": undefined,
+                              "expanded": undefined,
+                              "selected": undefined,
+                            }
+                          }
+                          accessibilityValue={
+                            {
+                              "max": undefined,
+                              "min": undefined,
+                              "now": undefined,
+                              "text": undefined,
+                            }
+                          }
+                          accessible={true}
+                          collapsable={false}
+                          focusable={true}
+                          onClick={[Function]}
+                          onResponderGrant={[Function]}
+                          onResponderMove={[Function]}
+                          onResponderRelease={[Function]}
+                          onResponderTerminate={[Function]}
+                          onResponderTerminationRequest={[Function]}
+                          onStartShouldSetResponder={[Function]}
+                          style={
+                            {
+                              "alignItems": "center",
+                              "flexDirection": "row",
+                              "flexShrink": 0,
+                              "opacity": 1,
+                              "userSelect": "auto",
+                            }
+                          }
+                          testID="Ouvrir la modale de choix de l’indicatif téléphonique"
+                        >
+                          <Text
+                            style={
+                              [
+                                {
+                                  "color": "#161617",
+                                  "fontFamily": "Montserrat-Medium",
+                                  "fontSize": 16,
+                                  "lineHeight": 25.6,
+                                  "marginLeft": -4,
+                                  "marginRight": 4,
+                                },
+                              ]
+                            }
+                          >
+                            +33
+                          </Text>
+                          <View
+                            fill="#161617"
+                            height={16}
+                            width={16}
+                          >
+                            <Text>
+                              undefined-SVG-Mock
+                            </Text>
+                          </View>
+                          <View
+                            numberOfSpaces={2}
+                            style={
+                              [
+                                {
+                                  "width": 8,
+                                },
+                              ]
+                            }
+                          />
+                          <View
+                            style={
+                              [
+                                {
+                                  "borderRightColor": "#696A6F",
+                                  "borderRightWidth": 1,
+                                  "paddingVertical": 10,
+                                },
+                              ]
+                            }
+                          />
+                        </View>
+                      </View>
                       <TextInput
                         accessibilityDescribedBy="testUuidV4"
                         autoCapitalize="none"

@@ -1,3 +1,5 @@
+import { ReactNode } from 'react'
+
 import { RootNavigateParams } from 'features/navigation/RootNavigator/types'
 import { Geoloc } from 'libs/algolia/types'
 import { VenueTypeCode } from 'libs/parsers/venueType'
@@ -76,4 +78,10 @@ export type SearchNavConfig = {
   withPush?: boolean
   withReset?: boolean
   fromRef?: boolean
+}
+
+export type PracticalInformationSection = {
+  title: string
+  body: ReactNode
+  shouldBeDisplayed: boolean
 }

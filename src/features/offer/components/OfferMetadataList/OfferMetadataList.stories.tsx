@@ -21,7 +21,7 @@ const metadata = getOfferMetadata({
   cast: ['Pauline Auriol', 'Axel Prioton Alcala', 'Valentin Santes', 'Pierre Louis Sémézis'],
 })
 
-export const Default = () =>
-  Template({
-    metadata,
-  })
+export const Default = {
+  name: 'OfferMetadataList',
+  render: () => Template({ metadata }),
+}

@@ -1,18 +1,23 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useNavigation } from '@react-navigation/native'
-import React from 'react'
+import { StackScreenProps } from '@react-navigation/stack'
+import React, { FunctionComponent } from 'react'
 import { Controller, useForm } from 'react-hook-form'
 import { object, string } from 'yup'
 
-import { CenteredTitle } from 'features/identityCheck/components/CenteredTitle'
+import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
 import { cityActions, useCity } from 'features/identityCheck/pages/profile/store/cityStore'
-import { UseNavigationType } from 'features/navigation/RootNavigator/types'
+import {
+  SubscriptionRootStackParamList,
+  UseNavigationType,
+} from 'features/navigation/RootNavigator/types'
 import { CitySearchInput } from 'features/profile/components/CitySearchInput/CitySearchInput'
 import { analytics } from 'libs/analytics/provider'
 import { SuggestedCity } from 'libs/place/types'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
-import { Spacer } from 'ui/theme'
+import { Spacer, Typo } from 'ui/theme'
+import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export type CityForm = { city: SuggestedCity }
 
@@ -26,10 +31,24 @@ export const cityResolver = object().shape({
     .required(),
 })
 
-export const SetCity = () => {
+type Props = StackScreenProps<SubscriptionRootStackParamList, 'SetCity'>
+
+export const SetCity: FunctionComponent<Props> = ({ route }: Props) => {
+  const type = route.params.type
+  const isIdentityCheck = type === ProfileTypes.IDENTITY_CHECK
+  const pageInfos = isIdentityCheck
+    ? {
+        headerTitle: 'Profil',
+        navigateParamsType: ProfileTypes.IDENTITY_CHECK,
+      }
+    : {
+        headerTitle: 'Informations personnelles',
+        navigateParamsType: ProfileTypes.BOOKING_FREE_OFFER_15_16,
+      }
+
   const { navigate } = useNavigation<UseNavigationType>()
   const storedCity = useCity()
-  const { setCity } = cityActions
+  const { setCity: setStoreCity } = cityActions
   const {
     control,
     formState: { isValid },
@@ -41,19 +60,18 @@ export const SetCity = () => {
   })
 
   const onSubmit = ({ city }: CityForm) => {
-    setCity(city)
+    setStoreCity(city)
     analytics.logSetPostalCodeClicked()
-    navigate('SetAddress')
+    navigate('SetAddress', { type: pageInfos.navigateParamsType })
   }
 
   return (
     <PageWithHeader
-      title="Profil"
+      title={pageInfos.headerTitle}
       scrollChildren={
         <React.Fragment>
-          <CenteredTitle title="Renseigne ta ville de résidence" />
+          <Typo.Title3 {...getHeadingAttrs(2)}>Renseigne ta ville de résidence</Typo.Title3>
           <Spacer.Column numberOfSpaces={5} />
-
           <Controller
             control={control}
             name="city"

@@ -2,15 +2,13 @@ import mockdate from 'mockdate'
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { DepositType } from 'api/gen'
-import { setSettings } from 'features/auth/tests/setSettings'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { beneficiaryUser } from 'fixtures/user'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useGetDepositAmountsByAge } from 'shared/user/useGetDepositAmountsByAge'
 import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
-import { fireEvent, render, screen } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 
 import { FinishSubscriptionModal } from './FinishSubscriptionModal'
 
@@ -38,9 +36,11 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
+const user = userEvent.setup()
+jest.useFakeTimers()
+
 describe('<FinishSubscriptionModal />', () => {
   beforeEach(() => {
-    setSettings({ wipEnableCreditV3: false })
     setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])
   })
 
@@ -66,51 +66,20 @@ describe('<FinishSubscriptionModal />', () => {
     expect(screen).toMatchSnapshot()
   })
 
-  it('should close modal and navigate to stepper when pressing "Confirmer mes informations" button', () => {
+  it('should close modal and navigate to stepper when pressing "Confirmer mes informations" button', async () => {
     render(<FinishSubscriptionModal {...modalProps} />)
 
-    fireEvent.press(screen.getByText('Confirmer mes informations'))
+    await user.press(screen.getByText('Confirmer mes informations'))
 
     expect(hideModal).toHaveBeenCalledTimes(1)
     expect(navigate).toHaveBeenCalledWith('Stepper', { from: StepperOrigin.FAVORITE })
   })
 
-  it('should close modal when pressing right header icon', () => {
+  it('should close modal when pressing right header icon', async () => {
     render(<FinishSubscriptionModal {...modalProps} />)
 
-    fireEvent.press(screen.getByTestId('Fermer la modale'))
+    await user.press(screen.getByTestId('Fermer la modale'))
 
     expect(hideModal).toHaveBeenCalledTimes(1)
-  })
-
-  it('should not display reset message', () => {
-    render(<FinishSubscriptionModal {...modalProps} />)
-
-    const subtitle = 'Ton crédit précédent a été remis à 0 €.'
-
-    expect(screen.queryByText(subtitle)).not.toBeOnTheScreen()
-  })
-
-  it('should display reset message', () => {
-    mockAuthContextWithUser({ ...beneficiaryUser, depositType: DepositType.GRANT_15_17 })
-    render(<FinishSubscriptionModal {...modalProps} />)
-
-    const subtitle = 'Ton crédit précédent a été remis à 0 €.'
-
-    expect(screen.getByText(subtitle)).toBeOnTheScreen()
-  })
-
-  describe('when enableCreditV3 activated', () => {
-    beforeEach(() => {
-      setSettings({ wipEnableCreditV3: true })
-    })
-
-    it('should not display reset message', () => {
-      render(<FinishSubscriptionModal {...modalProps} />)
-
-      const subtitle = 'Ton crédit précédent a été remis à 0 €.'
-
-      expect(screen.queryByText(subtitle)).not.toBeOnTheScreen()
-    })
   })
 })

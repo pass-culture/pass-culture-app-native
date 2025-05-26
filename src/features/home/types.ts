@@ -1,8 +1,7 @@
 import { Animated } from 'react-native'
 
 import { VenueAccessibilityModel, VenueContactModel } from 'api/gen'
-import { BuildLocationParameterParams } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildLocationParameter'
-import { SearchQueryParameters, VenueHit } from 'libs/algolia/types'
+import { PlaylistOffersParams, VenueHit } from 'libs/algolia/types'
 import { OfferAnalyticsParams } from 'libs/analytics/types'
 import { ContentfulLabelCategories, ContentTypes, Layout } from 'libs/contentful/types'
 import { VenueTypeCode } from 'libs/parsers/venueType'
@@ -14,7 +13,6 @@ export enum HomepageModuleType {
   'VenuesModule' = 'VenuesModule',
   'BusinessModule' = 'BusinessModule',
   'RecommendedOffersModule' = 'RecommendedOffersModule',
-  'ExclusivityModule' = 'ExclusivityModule',
   'ThematicHighlightModule' = 'ThematicHighlightModule',
   'TrendsModule' = 'TrendsModule',
   'CategoryListModule' = 'CategoryListModule',
@@ -76,7 +74,6 @@ export type Homepage = {
 export type HomepageModule =
   | OffersModule
   | BusinessModule
-  | ExclusivityModule
   | RecommendedOffersModule
   | ThematicHighlightModule
   | TrendsModule
@@ -152,12 +149,6 @@ export type OffersModuleParameters = {
   gtlLabel?: string
 }
 
-export type PlaylistOffersParams = {
-  offerParams: SearchQueryParameters
-  locationParams: BuildLocationParameterParams
-  indexName?: string
-}
-
 export type BusinessModule = {
   type: HomepageModuleType.BusinessModule
   id: string
@@ -177,22 +168,6 @@ export type LocationCircleArea = {
   latitude: number
   longitude: number
   radius: number
-}
-
-export type ExclusivityModule = {
-  type: HomepageModuleType.ExclusivityModule
-  id: string
-  title: string
-  alt: string
-  image: string
-  offerId?: number
-  url?: string
-  displayParameters?: ExclusivityDisplayParameters
-}
-
-type ExclusivityDisplayParameters = {
-  isGeolocated?: boolean
-  aroundRadius?: number
 }
 
 export type RecommendedOffersModule = {
@@ -326,6 +301,11 @@ export enum Color {
   DeepPink = 'DeepPink',
   Coral = 'Coral',
   Lilac = 'Lilac',
+  Decorative01 = 'Decorative01',
+  Decorative02 = 'Decorative02',
+  Decorative03 = 'Decorative03',
+  Decorative04 = 'Decorative04',
+  Decorative05 = 'Decorative05',
 }
 
 export type VenueMapModule = {
@@ -393,7 +373,4 @@ export const isVideoCarouselModule = (module: HomepageModule): module is VideoCa
 
 export const isOffersModule = (module: HomepageModule): module is OffersModule => {
   return module.type === HomepageModuleType.OffersModule
-}
-export const isExclusivityModule = (module: HomepageModule): module is ExclusivityModule => {
-  return module.type === HomepageModuleType.ExclusivityModule
 }

@@ -1,5 +1,8 @@
 appId: ${MAESTRO_APP_ID}
 ---
+- scrollUntilVisible: 
+    element: 'Confidentialité'
+
 - tapOn:
     text: 'Informations légales'
     index: 1

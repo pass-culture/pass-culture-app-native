@@ -2,21 +2,21 @@ import { useFocusEffect, useIsFocused } from '@react-navigation/native'
 import { FlashList } from '@shopify/flash-list'
 import { debounce } from 'lodash'
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import { FlatList, Platform, ScrollView, View, useWindowDimensions } from 'react-native'
+import { FlatList, Platform, ScrollView, useWindowDimensions, View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { AccessibilityFiltersModal } from 'features/accessibility/components/AccessibilityFiltersModal'
 import { useAccessibilityFiltersContext } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { VenueMapLocationModal } from 'features/location/components/VenueMapLocationModal'
-import { getSearchNavConfig } from 'features/navigation/SearchStackNavigator/searchStackHelpers'
 import { PlaylistType } from 'features/offer/enums'
-import { useSearchResults } from 'features/search/api/useSearchResults/useSearchResults'
+import { SearchOfferHits } from 'features/search/api/useSearchResults/useSearchResults'
 import { AutoScrollSwitch } from 'features/search/components/AutoScrollSwitch/AutoScrollSwitch'
 import { FilterButton } from 'features/search/components/Buttons/FilterButton/FilterButton'
 import { SingleFilterButton } from 'features/search/components/Buttons/SingleFilterButton/SingleFilterButton'
 import { NoSearchResult } from 'features/search/components/NoSearchResults/NoSearchResult'
 import { SearchList } from 'features/search/components/SearchList/SearchList'
+import { ArtistSection } from 'features/search/components/SearchListHeader/ArtistSection'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { FilterBehaviour } from 'features/search/enums'
 import { getStringifySearchStateWithoutLocation } from 'features/search/helpers/getStringifySearchStateWithoutLocation/getStringifySearchStateWithoutLocation'
@@ -28,13 +28,15 @@ import { useFilterCount } from 'features/search/helpers/useFilterCount/useFilter
 import { useNavigateToSearch } from 'features/search/helpers/useNavigateToSearch/useNavigateToSearch'
 import { useNavigateToSearchFilter } from 'features/search/helpers/useNavigateToSearchFilter/useNavigateToSearchFilter'
 import { usePrevious } from 'features/search/helpers/usePrevious'
+import { CalendarModal } from 'features/search/pages/modals/CalendarModal/CalendarModal'
 import { CategoriesModal } from 'features/search/pages/modals/CategoriesModal/CategoriesModal'
 import { DatesHoursModal } from 'features/search/pages/modals/DatesHoursModal/DatesHoursModal'
 import { OfferDuoModal } from 'features/search/pages/modals/OfferDuoModal/OfferDuoModal'
 import { PriceModal } from 'features/search/pages/modals/PriceModal/PriceModal'
 import { VenueModal } from 'features/search/pages/modals/VenueModal/VenueModal'
-import { SearchView } from 'features/search/types'
+import { VenuesUserData } from 'features/search/types'
 import { TabLayout } from 'features/venue/components/TabLayout/TabLayout'
+import { Venue } from 'features/venue/types'
 import { GeolocatedVenue } from 'features/venueMap/components/VenueMapView/types'
 import { VenueMapViewContainer } from 'features/venueMap/components/VenueMapView/VenueMapViewContainer'
 import { getRegionFromPosition } from 'features/venueMap/helpers/getRegionFromPosition/getRegionFromPosition'
@@ -47,6 +49,7 @@ import {
   setVenues,
   useVenueMapStore,
 } from 'features/venueMap/store/venueMapStore'
+import { FacetData } from 'libs/algolia/types'
 import { analytics } from 'libs/analytics/provider'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -59,7 +62,10 @@ import { ellipseString } from 'shared/string/ellipseString'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { Li } from 'ui/components/Li'
 import { useModal } from 'ui/components/modals/useModal'
-import { HitPlaceholder, NumberOfResultsPlaceholder } from 'ui/components/placeholders/Placeholders'
+import {
+  HeaderSearchResultsPlaceholder,
+  HitPlaceholder,
+} from 'ui/components/placeholders/Placeholders'
 import { ScrollToTopButton } from 'ui/components/ScrollToTopButton'
 import { HorizontalOfferTile } from 'ui/components/tiles/HorizontalOfferTile'
 import { Ul } from 'ui/components/Ul'
@@ -79,40 +85,51 @@ enum Tab {
 
 const isWeb = Platform.OS === 'web'
 
-export const SearchResultsContent: React.FC = () => {
+export type SearchResultsContentProps = {
+  onEndReached: () => void
+  onSearchResultsRefresh: () => void
+  hits: SearchOfferHits
+  nbHits: number
+  isLoading?: boolean
+  isFetching?: boolean
+  isFetchingNextPage?: boolean
+  userData: unknown
+  venuesUserData: VenuesUserData
+  facets: FacetData
+  offerVenues: Venue[]
+}
+
+export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
+  onEndReached,
+  onSearchResultsRefresh,
+  hits,
+  nbHits,
+  isLoading,
+  isFetching,
+  isFetchingNextPage,
+  userData,
+  venuesUserData,
+  facets,
+  offerVenues,
+}) => {
   const [autoScrollEnabled, setAutoScrollEnabled] = useState(true)
   const searchListRef = useRef<FlashList<Offer> | null>(null)
-  const {
-    hasNextPage,
-    fetchNextPage,
-    refetch,
-    data,
-    hits,
-    nbHits,
-    isLoading,
-    isFetching,
-    isFetchingNextPage,
-    userData,
-    venuesUserData,
-    facets,
-    offerVenues,
-  } = useSearchResults()
 
   const { disabilities } = useAccessibilityFiltersContext()
   const { searchState } = useSearch()
   const { navigateToSearchFilter } = useNavigateToSearchFilter()
   const { navigateToSearch: navigateToSearchResults } = useNavigateToSearch('SearchResults')
 
-  const showSkeleton = useIsFalseWithDelay(isLoading, ANIMATION_DURATION)
-  const isRefreshing = useIsFalseWithDelay(isFetching, ANIMATION_DURATION)
+  const showSkeleton = useIsFalseWithDelay(!!isLoading, ANIMATION_DURATION)
+  const isRefreshing = useIsFalseWithDelay(!!isFetching, ANIMATION_DURATION)
   const isFocused = useIsFocused()
   const { user } = useAuthContext()
   const { geolocPosition, selectedLocationMode, selectedPlace, onResetPlace } = useLocation()
-  const previousGeolocPosition = usePrevious(geolocPosition)
   const { width, height } = useWindowDimensions()
   const shouldDisplayVenueMapInSearch = useFeatureFlag(
     RemoteStoreFeatureFlags.WIP_VENUE_MAP_IN_SEARCH
   )
+  const shouldDisplayCalendarModal = useFeatureFlag(RemoteStoreFeatureFlags.WIP_TIME_FILTER_V2)
 
   const [isSearchListTab, setIsSearchListTab] = useState(true)
   const [defaultTab, setDefaultTab] = useState(Tab.SEARCHLIST)
@@ -130,13 +147,14 @@ export const SearchResultsContent: React.FC = () => {
   useFocusEffect(
     useCallback(() => {
       const location = selectedPlace?.geolocation ?? geolocPosition
-      if (location) {
-        const region = getRegionFromPosition(location, width / height)
-        if (!initialRegion) {
-          setInitialRegion(region)
-        }
-        setRegion(region)
+      if (!location) {
+        return
       }
+      const region = getRegionFromPosition(location, width / height)
+      if (!initialRegion) {
+        setInitialRegion(region)
+      }
+      setRegion(region)
     }, [geolocPosition, selectedPlace, width, height, initialRegion])
   )
 
@@ -210,6 +228,11 @@ export const SearchResultsContent: React.FC = () => {
     showModal: showVenueMapLocationModal,
     hideModal: hideVenueMapLocationModal,
   } = useModal(false)
+  const {
+    visible: calendarModalVisible,
+    showModal: showCalendarModal,
+    hideModal: hideCalendarModal,
+  } = useModal(false)
 
   const activeFiltersCount = useFilterCount(searchState)
 
@@ -227,16 +250,6 @@ export const SearchResultsContent: React.FC = () => {
     ),
     [nbHits, searchState]
   )
-
-  const shouldRefetchResults = Boolean(
-    (geolocPosition && !previousGeolocPosition) || (!geolocPosition && previousGeolocPosition)
-  )
-
-  useEffect(() => {
-    if (shouldRefetchResults) {
-      refetch()
-    }
-  }, [refetch, shouldRefetchResults])
 
   useEffect(() => {
     if (selectedLocationMode === LocationMode.EVERYWHERE) {
@@ -263,18 +276,6 @@ export const SearchResultsContent: React.FC = () => {
       stringifySearchStateWithoutLocation.current = currentFiltersWithoutLocation
     }
   }, [searchState])
-
-  const onEndReached = useCallback(() => {
-    if (data && hasNextPage) {
-      const [lastPage] = data.pages.slice(-1)
-
-      if (lastPage && lastPage.offers.page > 0) {
-        analytics.logSearchScrollToPage(lastPage.offers.page, searchState.searchId)
-      }
-      fetchNextPage()
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [hasNextPage])
 
   const renderItem = useCallback<
     ({ item, index }: { item: Offer; index: number }) => React.JSX.Element
@@ -326,6 +327,10 @@ export const SearchResultsContent: React.FC = () => {
     hideVenueMapLocationModal()
   }
 
+  const handleOnArtistPlaylistItemPress = (artistName: string) => {
+    analytics.logConsultArtist({ artistName, from: 'search' })
+  }
+
   if (showSkeleton) return <SearchResultsPlaceHolder />
 
   const numberOfResults =
@@ -349,7 +354,7 @@ export const SearchResultsContent: React.FC = () => {
     [Tab.SEARCHLIST]: (
       <SearchList
         ref={searchListRef}
-        isFetchingNextPage={isFetchingNextPage}
+        isFetchingNextPage={!!isFetchingNextPage}
         hits={hits}
         nbHits={nbHits}
         renderItem={renderItem}
@@ -357,10 +362,18 @@ export const SearchResultsContent: React.FC = () => {
         onEndReached={onEndReached}
         onScroll={onScroll}
         refreshing={isRefreshing}
-        onRefresh={refetch}
+        onRefresh={onSearchResultsRefresh}
         onPress={onEndReached}
         userData={userData}
         venuesUserData={venuesUserData}
+        artistSection={
+          hits.artists.length ? (
+            <StyledArtistSection
+              artists={hits.artists}
+              onItemPress={handleOnArtistPlaylistItemPress}
+            />
+          ) : undefined
+        }
       />
     ),
     [Tab.MAP]: selectedLocationMode === LocationMode.EVERYWHERE ? null : <VenueMapViewContainer />,
@@ -413,7 +426,7 @@ export const SearchResultsContent: React.FC = () => {
           errorDescription="Élargis la zone de recherche pour plus de résultats."
           ctaWording="Élargir la zone de recherche"
           onPress={() => {
-            analytics.logExtendSearchRadiusClicked()
+            analytics.logExtendSearchRadiusClicked(searchState.searchId)
             onResetPlace()
             navigateToSearchResults({
               ...searchState,
@@ -444,13 +457,20 @@ export const SearchResultsContent: React.FC = () => {
         toggle={() => setAutoScrollEnabled((autoScroll) => !autoScroll)}
       />
       <View>
-        <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-          <Spacer.Row numberOfSpaces={5} />
-          <Ul>
+        <FiltersScrollView horizontal showsHorizontalScrollIndicator={false}>
+          <StyledUl>
             <StyledLi>
               <FilterButton
                 activeFilters={activeFiltersCount}
-                navigateTo={getSearchNavConfig(SearchView.Filter)}
+                navigateTo={{ screen: 'SearchFilter' }}
+              />
+            </StyledLi>
+            <StyledLi>
+              <StyledSingleFilterButton
+                label={shouldDisplayCalendarModal ? 'Dates' : 'Dates & heures'}
+                testID="datesHoursButton"
+                onPress={shouldDisplayCalendarModal ? showCalendarModal : showDatesHoursModal}
+                isSelected={appliedFilters.includes(FILTER_TYPES.DATES_HOURS)}
               />
             </StyledLi>
             <StyledLi>
@@ -491,14 +511,6 @@ export const SearchResultsContent: React.FC = () => {
                 />
               </StyledLi>
             ) : null}
-            <StyledLi>
-              <StyledSingleFilterButton
-                label="Dates & heures"
-                testID="datesHoursButton"
-                onPress={showDatesHoursModal}
-                isSelected={appliedFilters.includes(FILTER_TYPES.DATES_HOURS)}
-              />
-            </StyledLi>
             <StyledLastLi>
               <StyledSingleFilterButton
                 label="Accessibilité"
@@ -507,10 +519,8 @@ export const SearchResultsContent: React.FC = () => {
                 isSelected={appliedFilters.includes(FILTER_TYPES.ACCESSIBILITY)}
               />
             </StyledLastLi>
-          </Ul>
-          <Spacer.Row numberOfSpaces={5} />
-        </ScrollView>
-        <Spacer.Column numberOfSpaces={2} />
+          </StyledUl>
+        </FiltersScrollView>
       </View>
       <Container testID="searchResults">{renderSearchList()}</Container>
       {shouldRenderScrollToTopButton ? (
@@ -551,6 +561,13 @@ export const SearchResultsContent: React.FC = () => {
         accessibilityLabel="Ne pas filtrer sur les dates et heures puis retourner aux résultats"
         isVisible={datesHoursModalVisible}
         hideModal={hideDatesHoursModal}
+        filterBehaviour={FilterBehaviour.SEARCH}
+      />
+      <CalendarModal
+        title="Dates"
+        accessibilityLabel="Ne pas filtrer sur les dates puis retourner aux résultats"
+        isVisible={calendarModalVisible}
+        hideModal={hideCalendarModal}
         filterBehaviour={FilterBehaviour.SEARCH}
       />
       <AccessibilityFiltersModal
@@ -624,14 +641,24 @@ const ScrollToTopContainer = styled.View(({ theme }) => ({
   zIndex: theme.zIndex.floatingButton,
 }))
 
+const StyledUl = styled(Ul)({
+  marginHorizontal: getSpacing(5),
+})
+
+const FiltersScrollView = styled(ScrollView)({
+  marginBottom: getSpacing(2),
+})
+
+const StyledArtistSection = styled(ArtistSection)({
+  marginTop: getSpacing(4),
+})
+
 const FAVORITE_LIST_PLACEHOLDER = Array.from({ length: 20 }).map((_, index) => ({
   key: index.toString(),
 }))
 
-function SearchResultsPlaceHolder() {
+const SearchResultsPlaceHolder = () => {
   const renderItem = useCallback(() => <HitPlaceholder />, [])
-  const ListHeaderComponent = useMemo(() => <NumberOfResultsPlaceholder />, [])
-  const ListFooterComponent = useMemo(() => <Footer />, [])
 
   return (
     <Container>
@@ -639,9 +666,9 @@ function SearchResultsPlaceHolder() {
         data={FAVORITE_LIST_PLACEHOLDER}
         renderItem={renderItem}
         contentContainerStyle={contentContainerStyle}
-        ListHeaderComponent={ListHeaderComponent}
+        ListHeaderComponent={<HeaderSearchResultsPlaceholder />}
         ItemSeparatorComponent={Separator}
-        ListFooterComponent={ListFooterComponent}
+        ListFooterComponent={<Footer />}
         scrollEnabled={false}
       />
     </Container>

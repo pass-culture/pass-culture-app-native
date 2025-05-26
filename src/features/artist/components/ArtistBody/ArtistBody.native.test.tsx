@@ -5,11 +5,11 @@ import { SubcategoryIdEnum } from 'api/gen'
 import { ArtistBody } from 'features/artist/components/ArtistBody/ArtistBody'
 import { mockOffer } from 'features/bookOffer/fixtures/offer'
 import * as useGoBack from 'features/navigation/useGoBack'
-import * as useArtistResults from 'features/offer/helpers/useArtistResults/useArtistResults'
+import * as useArtistResultsAPI from 'features/offer/queries/useArtistResultsQuery'
 import { mockedAlgoliaOffersWithSameArtistResponse } from 'libs/algolia/fixtures/algoliaFixtures'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render, screen, userEvent } from 'tests/utils'
+import { render, screen, userEvent, waitFor } from 'tests/utils'
 
 jest.unmock('react-native/Libraries/Animated/createAnimatedComponent')
 jest.mock('libs/firebase/analytics/analytics')
@@ -41,7 +41,7 @@ useRoute.mockReturnValue({
   },
 })
 
-const spyUseArtistResults = jest.spyOn(useArtistResults, 'useArtistResults')
+const spyUseArtistResults = jest.spyOn(useArtistResultsAPI, 'useArtistResultsQuery')
 
 const mockArtist = {
   id: '1',
@@ -60,12 +60,14 @@ describe('<ArtistBody />', () => {
     })
   })
 
-  it('should display only the main artist when there are several artists on header title', () => {
+  it('should display only the main artist when there are several artists on header title', async () => {
     render(
       reactQueryProviderHOC(
         <ArtistBody artist={mockArtist} artistPlaylist={[]} artistTopOffers={[]} />
       )
     )
+
+    await screen.findAllByText('Céline Dion')
 
     expect(screen.getAllByText('Céline Dion')[0]).toBeOnTheScreen()
   })
@@ -95,11 +97,8 @@ describe('<ArtistBody />', () => {
         />
       )
     )
-
-    await screen.findByLabelText('artist avatar')
-
-    expect(screen.getByLabelText('artist avatar').props.source).toMatchObject({
-      uri: mockedAlgoliaOffersWithSameArtistResponse[0].offer.thumbUrl,
+    await waitFor(() => {
+      expect(screen.getByLabelText('artist avatar')).toBeOnTheScreen()
     })
   })
 
@@ -117,12 +116,14 @@ describe('<ArtistBody />', () => {
     expect(await screen.findByTestId('BicolorProfile')).toBeOnTheScreen()
   })
 
-  it('should display artist description', () => {
+  it('should display artist description', async () => {
     render(
       reactQueryProviderHOC(
         <ArtistBody artist={mockArtist} artistPlaylist={[]} artistTopOffers={[]} />
       )
     )
+
+    await screen.findAllByText('Quelques infos à son sujet')
 
     expect(screen.getByText('Quelques infos à son sujet')).toBeOnTheScreen()
     expect(screen.getByText('chanteuse')).toBeOnTheScreen()

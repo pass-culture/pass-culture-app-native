@@ -1,43 +1,221 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<ChangeEmail/> should render correctly 1`] = `
-[
+<View
+  style={
+    [
+      {
+        "backgroundColor": "#ffffff",
+        "flexBasis": 0,
+        "flexGrow": 1,
+        "flexShrink": 1,
+      },
+    ]
+  }
+>
   <View
+    accessibilityRole="header"
     style={
       [
         {
-          "backgroundColor": "#ffffff",
-          "flexBasis": 0,
-          "flexGrow": 1,
-          "flexShrink": 1,
+          "backgroundColor": "rgba(255,255,255,0)",
+          "borderBottomColor": "#cbcdd2",
+          "borderBottomWidth": 1,
+          "left": 0,
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+          "zIndex": 1,
         },
       ]
     }
   >
     <View
-      accessibilityRole="header"
+      customHeight={16}
+      enable={true}
       style={
         [
           {
-            "backgroundColor": "rgba(255,255,255,0)",
-            "borderBottomColor": "#cbcdd2",
-            "borderBottomWidth": 1,
-            "left": 0,
-            "position": "absolute",
-            "right": 0,
-            "top": 0,
-            "zIndex": 1,
+            "height": 16,
+          },
+        ]
+      }
+    />
+    <View
+      style={
+        [
+          {
+            "alignItems": "center",
+            "height": 48,
+            "justifyContent": "center",
           },
         ]
       }
     >
       <View
-        customHeight={16}
-        enable={true}
         style={
           [
             {
-              "height": 16,
+              "alignItems": "center",
+              "flexDirection": "row",
+              "justifyContent": "space-between",
+              "width": "100%",
+            },
+          ]
+        }
+      >
+        <View
+          positionInHeader="left"
+          style={
+            [
+              {
+                "alignItems": "center",
+                "flexBasis": 0,
+                "flexDirection": "row",
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "justifyContent": "flex-start",
+                "paddingLeft": 12,
+                "paddingRight": 12,
+              },
+            ]
+          }
+          testID="back-button-container"
+        >
+          <View
+            accessibilityLabel="Revenir en arrière"
+            accessibilityRole="button"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "alignItems": "center",
+                    "flexGrow": 1,
+                    "height": 40,
+                    "justifyContent": "center",
+                    "maxWidth": 40,
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
+            }
+            testID="Revenir en arrière"
+          >
+            <View
+              height={24}
+              testID="icon-back"
+              width={24}
+            >
+              <Text>
+                icon-back-SVG-Mock
+              </Text>
+            </View>
+            <Text
+              style={
+                [
+                  {
+                    "display": "none",
+                  },
+                ]
+              }
+            >
+              Retour
+            </Text>
+          </View>
+        </View>
+        <Text
+          numberOfLines={1}
+          style={
+            [
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 17,
+                "lineHeight": 27.2,
+                "textAlign": "center",
+              },
+            ]
+          }
+        >
+          Modifier mon e-mail
+        </Text>
+        <View
+          positionInHeader="right"
+          style={
+            [
+              {
+                "alignItems": "center",
+                "flexBasis": 0,
+                "flexDirection": "row",
+                "flexGrow": 1,
+                "flexShrink": 1,
+                "justifyContent": "flex-end",
+                "paddingLeft": 12,
+                "paddingRight": 12,
+              },
+            ]
+          }
+          testID="close-button-container"
+        />
+      </View>
+    </View>
+  </View>
+  <RCTScrollView
+    contentContainerStyle={
+      {
+        "alignSelf": "center",
+        "maxWidth": 500,
+        "paddingHorizontal": 24,
+        "paddingVertical": 24,
+        "width": "100%",
+      }
+    }
+    enableMaxWidth={true}
+    scrollEnabled={true}
+    style={
+      [
+        {},
+      ]
+    }
+  >
+    <View>
+      <View
+        height={65}
+        style={
+          [
+            {
+              "height": 65,
             },
           ]
         }
@@ -46,9 +224,7 @@ exports[`<ChangeEmail/> should render correctly 1`] = `
         style={
           [
             {
-              "alignItems": "center",
-              "height": 48,
-              "justifyContent": "center",
+              "marginTop": 24,
             },
           ]
         }
@@ -57,249 +233,71 @@ exports[`<ChangeEmail/> should render correctly 1`] = `
           style={
             [
               {
-                "alignItems": "center",
-                "flexDirection": "row",
-                "justifyContent": "space-between",
-                "width": "100%",
+                "marginBottom": 16,
               },
             ]
           }
         >
-          <View
-            positionInHeader="left"
-            style={
-              [
-                {
-                  "alignItems": "center",
-                  "flexBasis": 0,
-                  "flexDirection": "row",
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                  "justifyContent": "flex-start",
-                  "paddingLeft": 12,
-                  "paddingRight": 12,
-                },
-              ]
-            }
-            testID="back-button-container"
-          >
-            <View
-              accessibilityLabel="Revenir en arrière"
-              accessibilityRole="button"
-              accessibilityState={
-                {
-                  "busy": undefined,
-                  "checked": undefined,
-                  "disabled": undefined,
-                  "expanded": undefined,
-                  "selected": undefined,
-                }
-              }
-              accessibilityValue={
-                {
-                  "max": undefined,
-                  "min": undefined,
-                  "now": undefined,
-                  "text": undefined,
-                }
-              }
-              accessible={true}
-              focusable={true}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                [
-                  [
-                    {
-                      "userSelect": "auto",
-                    },
-                    {
-                      "alignItems": "center",
-                      "flexGrow": 1,
-                      "height": 40,
-                      "justifyContent": "center",
-                      "maxWidth": 40,
-                    },
-                  ],
-                  {
-                    "opacity": 1,
-                  },
-                ]
-              }
-              testID="Revenir en arrière"
-            >
-              <View
-                height={24}
-                testID="icon-back"
-                width={24}
-              >
-                <Text>
-                  icon-back-SVG-Mock
-                </Text>
-              </View>
-              <Text
-                style={
-                  [
-                    {
-                      "display": "none",
-                    },
-                  ]
-                }
-              >
-                Retour
-              </Text>
-            </View>
-          </View>
           <Text
-            numberOfLines={1}
             style={
               [
                 {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 17,
-                  "lineHeight": 27.2,
-                  "textAlign": "center",
+                  "color": "#696A6F",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 12,
+                  "lineHeight": 19.2,
                 },
               ]
             }
           >
-            Modifier mon e-mail
+            Pour modifier ton adresse e-mail, tu dois d’abord faire une demande de modification.
           </Text>
           <View
-            positionInHeader="right"
+            numberOfSpaces={4}
             style={
               [
                 {
-                  "alignItems": "center",
-                  "flexBasis": 0,
-                  "flexDirection": "row",
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                  "justifyContent": "flex-end",
-                  "paddingLeft": 12,
-                  "paddingRight": 12,
+                  "height": 16,
                 },
               ]
             }
-            testID="close-button-container"
+          />
+          <Text
+            style={
+              [
+                {
+                  "color": "#696A6F",
+                  "fontFamily": "Montserrat-SemiBold",
+                  "fontSize": 12,
+                  "lineHeight": 19.2,
+                },
+              ]
+            }
+          >
+            Tu ne peux modifier ton adresse e-mail qu’une fois par jour.
+          </Text>
+          <View
+            numberOfSpaces={4}
+            style={
+              [
+                {
+                  "height": 16,
+                },
+              ]
+            }
+          />
+          <View
+            style={
+              [
+                {
+                  "backgroundColor": "#F1F1F4",
+                  "height": 1,
+                  "width": "100%",
+                },
+              ]
+            }
           />
         </View>
-      </View>
-    </View>
-    <RCTScrollView
-      contentContainerStyle={
-        {
-          "alignSelf": "center",
-          "maxWidth": 500,
-          "paddingHorizontal": 24,
-          "paddingVertical": 24,
-          "width": "100%",
-        }
-      }
-      enableMaxWidth={true}
-      scrollEnabled={true}
-      style={
-        [
-          {},
-        ]
-      }
-    >
-      <View>
-        <View
-          height={65}
-          style={
-            [
-              {
-                "height": 65,
-              },
-            ]
-          }
-        />
-        <View
-          numberOfSpaces={6}
-          style={
-            [
-              {
-                "height": 24,
-              },
-            ]
-          }
-        />
-        <Text
-          style={
-            [
-              {
-                "color": "#696A6F",
-                "fontFamily": "Montserrat-SemiBold",
-                "fontSize": 12,
-                "lineHeight": 19.2,
-              },
-            ]
-          }
-        >
-          Pour modifier ton adresse e-mail, tu dois d’abord faire une demande de modification.
-        </Text>
-        <View
-          numberOfSpaces={4}
-          style={
-            [
-              {
-                "height": 16,
-              },
-            ]
-          }
-        />
-        <Text
-          style={
-            [
-              {
-                "color": "#696A6F",
-                "fontFamily": "Montserrat-SemiBold",
-                "fontSize": 12,
-                "lineHeight": 19.2,
-              },
-            ]
-          }
-        >
-          Tu ne peux modifier ton adresse e-mail qu’une fois par jour.
-        </Text>
-        <View
-          numberOfSpaces={4}
-          style={
-            [
-              {
-                "height": 16,
-              },
-            ]
-          }
-        />
-        <View
-          style={
-            [
-              {
-                "backgroundColor": "#F1F1F4",
-                "height": 1,
-                "width": "100%",
-              },
-            ]
-          }
-        />
-        <View
-          numberOfSpaces={4}
-          style={
-            [
-              {
-                "height": 16,
-              },
-            ]
-          }
-        />
         <View
           style={
             [
@@ -308,6 +306,7 @@ exports[`<ChangeEmail/> should render correctly 1`] = `
                 "flexBasis": 0,
                 "flexGrow": 1,
                 "flexShrink": 1,
+                "marginBottom": 24,
               },
             ]
           }
@@ -347,6 +346,7 @@ exports[`<ChangeEmail/> should render correctly 1`] = `
                         "alignItems": "flex-end",
                         "flexDirection": "row",
                         "justifyContent": "space-between",
+                        "marginBottom": 8,
                         "width": "100%",
                       },
                     ]
@@ -369,15 +369,29 @@ exports[`<ChangeEmail/> should render correctly 1`] = `
                 </View>
               </View>
               <View
-                numberOfSpaces={2}
                 style={
                   [
                     {
-                      "height": 8,
+                      "marginBottom": 8,
                     },
                   ]
                 }
-              />
+              >
+                <Text
+                  style={
+                    [
+                      {
+                        "color": "#696a6f",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 19.2,
+                      },
+                    ]
+                  }
+                >
+                  Exemple : tonadresse@email.com
+                </Text>
+              </View>
               <View
                 height="small"
                 isDisabled={true}
@@ -417,7 +431,7 @@ exports[`<ChangeEmail/> should render correctly 1`] = `
                   onBlur={[Function]}
                   onChangeText={[Function]}
                   onFocus={[Function]}
-                  placeholder="tonadresse@email.com"
+                  placeholder=""
                   placeholderTextColor="#696A6F"
                   returnKeyType="next"
                   style={
@@ -445,89 +459,80 @@ exports[`<ChangeEmail/> should render correctly 1`] = `
               </View>
             </View>
             <View
-              numberOfSpaces={4}
               style={
                 [
                   {
-                    "height": 16,
-                  },
-                ]
-              }
-            />
-            <View
-              backgroundColor="#f3ecff"
-              style={
-                [
-                  {
-                    "alignItems": "center",
-                    "backgroundColor": "#f3ecff",
-                    "borderRadius": 8,
-                    "flexDirection": "row",
-                    "justifyContent": "space-between",
-                    "paddingBottom": 16,
-                    "paddingLeft": 16,
-                    "paddingRight": 16,
-                    "paddingTop": 16,
+                    "marginBottom": 48,
+                    "marginTop": 16,
                   },
                 ]
               }
             >
               <View
+                backgroundColor="#f3ecff"
                 style={
                   [
                     {
+                      "alignItems": "center",
+                      "backgroundColor": "#f3ecff",
+                      "borderRadius": 8,
+                      "flexDirection": "row",
+                      "justifyContent": "space-between",
+                      "paddingBottom": 16,
+                      "paddingLeft": 16,
                       "paddingRight": 16,
+                      "paddingTop": 16,
                     },
                   ]
                 }
               >
                 <View
-                  height={24}
-                  width={24}
-                >
-                  <Text>
-                    undefined-SVG-Mock
-                  </Text>
-                </View>
-              </View>
-              <View
-                style={
-                  [
-                    {
-                      "flexBasis": 0,
-                      "flexGrow": 1,
-                      "flexShrink": 1,
-                    },
-                  ]
-                }
-              >
-                <Text
                   style={
                     [
                       {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 12,
-                        "lineHeight": 19.2,
+                        "paddingRight": 16,
                       },
                     ]
                   }
-                  textColor="#161617"
                 >
-                  Tu vas recevoir un lien de confirmation sur ton adresse e-mail actuelle. Ce lien est valable 24h.
-                </Text>
+                  <View
+                    height={24}
+                    width={24}
+                  >
+                    <Text>
+                      undefined-SVG-Mock
+                    </Text>
+                  </View>
+                </View>
+                <View
+                  style={
+                    [
+                      {
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 19.2,
+                        },
+                      ]
+                    }
+                    textColor="#161617"
+                  >
+                    Tu vas recevoir un lien de confirmation sur ton adresse e-mail actuelle. Ce lien est valable 24h.
+                  </Text>
+                </View>
               </View>
             </View>
-            <View
-              numberOfSpaces={12}
-              style={
-                [
-                  {
-                    "height": 48,
-                  },
-                ]
-              }
-            />
             <View
               paddingBottom={16}
               style={
@@ -628,84 +633,44 @@ exports[`<ChangeEmail/> should render correctly 1`] = `
               </View>
             </View>
           </View>
-          <View
-            numberOfSpaces={6}
-            style={
-              [
-                {
-                  "height": 24,
-                },
-              ]
-            }
-          />
         </View>
       </View>
-    </RCTScrollView>
-    <View
-      height={65}
+    </View>
+  </RCTScrollView>
+  <View
+    height={65}
+    style={
+      [
+        {
+          "backdropFilter": "blur(20px)",
+          "height": 65,
+          "left": 0,
+          "overflow": "hidden",
+          "position": "absolute",
+          "right": 0,
+          "top": 0,
+        },
+      ]
+    }
+  >
+    <BlurView
+      blurAmount={8}
+      blurType="light"
       style={
         [
           {
-            "backdropFilter": "blur(20px)",
-            "height": 65,
-            "left": 0,
-            "overflow": "hidden",
-            "position": "absolute",
-            "right": 0,
-            "top": 0,
+            "backgroundColor": "transparent",
           },
-        ]
-      }
-    >
-      <BlurView
-        blurAmount={8}
-        blurType="light"
-        style={
           [
             {
-              "backgroundColor": "transparent",
+              "flexBasis": 0,
+              "flexGrow": 1,
+              "flexShrink": 1,
             },
-            [
-              {
-                "flexBasis": 0,
-                "flexGrow": 1,
-                "flexShrink": 1,
-              },
-            ],
-          ]
-        }
-      />
-    </View>
-  </View>,
-  <Modal
-    accessibilityLabelledBy="testUuidV4"
-    accessibilityModal={true}
-    animationType="none"
-    deviceHeight={1334}
-    deviceWidth={750}
-    hardwareAccelerated={false}
-    hideModalContentWhileAnimating={false}
-    onBackdropPress={[Function]}
-    onModalHide={[Function]}
-    onModalWillHide={[Function]}
-    onModalWillShow={[Function]}
-    onRequestClose={[Function]}
-    panResponderThreshold={4}
-    scrollHorizontal={false}
-    scrollOffset={0}
-    scrollOffsetMax={0}
-    scrollTo={null}
-    statusBarTranslucent={true}
-    supportedOrientations={
-      [
-        "portrait",
-        "landscape",
-      ]
-    }
-    swipeThreshold={100}
-    testID="modal"
-    transparent={true}
-    visible={false}
-  />,
-]
+          ],
+        ]
+      }
+    />
+  </View>
+</View>
 `;

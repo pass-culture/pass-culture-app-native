@@ -2,6 +2,7 @@ import React from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
 import { initialSearchState } from 'features/search/context/reducer'
+import { ISearchContext } from 'features/search/context/SearchWrapper'
 import { FilterBehaviour } from 'features/search/enums'
 import {
   OfferDuoModal,
@@ -10,17 +11,18 @@ import {
 import { SearchState } from 'features/search/types'
 import { beneficiaryUser } from 'fixtures/user'
 import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
-import { fireEvent, render, screen, waitFor } from 'tests/utils'
+import { render, screen, userEvent, waitFor } from 'tests/utils'
 
 const searchId = uuidv4()
 const searchState = { ...initialSearchState, searchId }
-const mockSearchState = searchState
 const mockDispatch = jest.fn()
+const initialMockUseSearch = {
+  searchState,
+  dispatch: mockDispatch,
+}
+const mockUseSearch: jest.Mock<Partial<ISearchContext>> = jest.fn(() => initialMockUseSearch)
 jest.mock('features/search/context/SearchWrapper', () => ({
-  useSearch: () => ({
-    searchState: mockSearchState,
-    dispatch: mockDispatch,
-  }),
+  useSearch: () => mockUseSearch(),
 }))
 
 jest.mock('features/auth/context/AuthContext')
@@ -30,13 +32,16 @@ mockAuthContextWithUser(mockUser)
 const mockHideModal = jest.fn()
 const mockOnClose = jest.fn()
 
-jest.mock('react-native/Libraries/Animated/animations/TimingAnimation.js')
+jest.mock('react-native/Libraries/Animated/animations/TimingAnimation')
 
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   return function createAnimatedComponent(Component: unknown) {
     return Component
   }
 })
+
+const user = userEvent.setup()
+jest.useFakeTimers()
 
 describe('<OfferDuoModal/>', () => {
   it('should render modal correctly after animation and with enabled submit', async () => {
@@ -64,7 +69,7 @@ describe('<OfferDuoModal/>', () => {
         })
 
         const closeButton = screen.getByTestId('Fermer')
-        fireEvent.press(closeButton)
+        await user.press(closeButton)
 
         expect(mockOnClose).toHaveBeenCalledTimes(1)
       })
@@ -73,7 +78,7 @@ describe('<OfferDuoModal/>', () => {
         renderOfferDuoModal()
 
         const closeButton = screen.getByTestId('Fermer')
-        fireEvent.press(closeButton)
+        await user.press(closeButton)
 
         expect(mockOnClose).not.toHaveBeenCalled()
       })
@@ -85,7 +90,7 @@ describe('<OfferDuoModal/>', () => {
       mockAuthContextWithUser(beneficiaryUser)
     })
 
-    it('should toggle offerIsDuo', () => {
+    it('should toggle offerIsDuo', async () => {
       renderOfferDuoModal()
 
       const toggle = screen.getByTestId('Interrupteur limitDuoOfferSearch')
@@ -95,7 +100,7 @@ describe('<OfferDuoModal/>', () => {
         checked: false,
       })
 
-      fireEvent.press(toggle)
+      await user.press(toggle)
 
       expect(toggle.props.accessibilityState).toEqual({
         disabled: false,
@@ -105,20 +110,43 @@ describe('<OfferDuoModal/>', () => {
   })
 
   describe('click reset button', () => {
-    it('should disable duo offer when click on reset button', () => {
+    it('should disable duo offer when click on reset button', async () => {
       renderOfferDuoModal()
 
       const toggle = screen.getByTestId('Interrupteur limitDuoOfferSearch')
 
-      fireEvent.press(toggle)
+      await user.press(toggle)
 
       const resetButton = screen.getByText('Réinitialiser')
 
-      fireEvent.press(resetButton)
+      await user.press(resetButton)
 
       expect(toggle.props.accessibilityState).toEqual({
         disabled: false,
         checked: false,
+      })
+    })
+
+    it('should reset search when pressing reset button', async () => {
+      mockUseSearch.mockReturnValueOnce({
+        ...initialMockUseSearch,
+        searchState: {
+          ...searchState,
+          offerIsDuo: true,
+        },
+      })
+      renderOfferDuoModal()
+
+      const resetButton = screen.getByText('Réinitialiser')
+
+      await user.press(resetButton)
+
+      expect(mockDispatch).toHaveBeenCalledWith({
+        type: 'SET_STATE',
+        payload: {
+          ...searchState,
+          offerIsDuo: false,
+        },
       })
     })
   })
@@ -128,18 +156,16 @@ describe('<OfferDuoModal/>', () => {
       renderOfferDuoModal()
       const button = screen.getByText('Rechercher')
 
-      fireEvent.press(button)
+      await user.press(button)
 
-      await waitFor(() => {
-        expect(mockHideModal).toHaveBeenCalledTimes(1)
-      })
+      expect(mockHideModal).toHaveBeenCalledTimes(1)
     })
 
-    it('when pressing previous button', () => {
+    it('when pressing previous button', async () => {
       renderOfferDuoModal()
 
       const previousButton = screen.getByTestId('Fermer')
-      fireEvent.press(previousButton)
+      await user.press(previousButton)
 
       expect(mockHideModal).toHaveBeenCalledTimes(1)
     })
@@ -163,22 +189,20 @@ describe('<OfferDuoModal/>', () => {
 
       const toggle = screen.getByTestId('Interrupteur limitDuoOfferSearch')
 
-      fireEvent.press(toggle)
+      await user.press(toggle)
 
       const searchButton = screen.getByText('Appliquer le filtre')
 
-      fireEvent.press(searchButton)
+      await user.press(searchButton)
 
       const expectedSearchParams: SearchState = {
         ...searchState,
         offerIsDuo: true,
       }
 
-      await waitFor(() => {
-        expect(mockDispatch).toHaveBeenCalledWith({
-          type: 'SET_STATE',
-          payload: expectedSearchParams,
-        })
+      expect(mockDispatch).toHaveBeenCalledWith({
+        type: 'SET_STATE',
+        payload: expectedSearchParams,
       })
     })
   })
@@ -187,38 +211,31 @@ describe('<OfferDuoModal/>', () => {
     it('should set search state view to Search results when selecting DUO offer and pressing button', async () => {
       renderOfferDuoModal()
       const toggle = screen.getByTestId('Interrupteur limitDuoOfferSearch')
-      const button = screen.getByText('Rechercher')
 
-      fireEvent.press(toggle)
+      await user.press(toggle)
 
-      fireEvent.press(button)
+      await user.press(screen.getByText('Rechercher'))
 
-      await waitFor(() => {
-        expect(mockDispatch).toHaveBeenCalledWith({
-          type: 'SET_STATE',
-          payload: {
-            ...mockSearchState,
-            offerIsDuo: true,
-          },
-        })
+      expect(mockDispatch).toHaveBeenCalledWith({
+        type: 'SET_STATE',
+        payload: {
+          ...searchState,
+          offerIsDuo: true,
+        },
       })
     })
 
     it('should use default filters without change when pressing button', async () => {
       renderOfferDuoModal()
 
-      const button = screen.getByText('Rechercher')
+      await user.press(screen.getByText('Rechercher'))
 
-      fireEvent.press(button)
-
-      await waitFor(() => {
-        expect(mockDispatch).toHaveBeenCalledWith({
-          type: 'SET_STATE',
-          payload: {
-            ...mockSearchState,
-            offerIsDuo: false,
-          },
-        })
+      expect(mockDispatch).toHaveBeenCalledWith({
+        type: 'SET_STATE',
+        payload: {
+          ...searchState,
+          offerIsDuo: false,
+        },
       })
     })
   })

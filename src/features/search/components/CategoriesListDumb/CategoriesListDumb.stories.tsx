@@ -23,6 +23,7 @@ const BodyWrapper = styled.View({
 type Story = StoryObj<typeof CategoriesListDumb>
 
 export const Default: Story = {
+  name: 'CategoriesButtons',
   render: (props) => (
     <BodyWrapper>
       <NavigationContainer>
@@ -45,8 +46,9 @@ export const Default: Story = {
             withPush: true,
           },
         },
-        fillColor: theme.colors.goldLight100,
-        borderColor: theme.colors.goldLight200,
+        position: undefined,
+        fillColor: 'decorative01',
+        borderColor: 'decorative01',
       },
       {
         label: 'Cinéma',
@@ -59,8 +61,9 @@ export const Default: Story = {
             withPush: true,
           },
         },
-        borderColor: theme.colors.skyBlue,
-        fillColor: theme.colors.skyBlueLight,
+        position: undefined,
+        borderColor: 'decorative02',
+        fillColor: 'decorative02',
       },
       {
         label: 'Films, séries et documentaires',
@@ -73,8 +76,9 @@ export const Default: Story = {
             withPush: true,
           },
         },
-        borderColor: theme.colors.lilac,
-        fillColor: theme.colors.lilacLight,
+        position: undefined,
+        borderColor: 'decorative04',
+        fillColor: 'decorative04',
       },
       {
         label: 'Livres',
@@ -87,8 +91,9 @@ export const Default: Story = {
             withPush: true,
           },
         },
-        borderColor: theme.colors.coral,
-        fillColor: theme.colors.coralLight,
+        position: undefined,
+        borderColor: 'decorative05',
+        fillColor: 'decorative05',
       },
       {
         label: 'Musique',
@@ -101,8 +106,9 @@ export const Default: Story = {
             withPush: true,
           },
         },
-        borderColor: theme.colors.aquamarineDark,
-        fillColor: theme.colors.aquamarineLight,
+        position: undefined,
+        borderColor: 'decorative03',
+        fillColor: 'decorative03',
       },
     ],
   },

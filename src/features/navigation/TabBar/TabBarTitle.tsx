@@ -17,7 +17,7 @@ export const TabBarTitle: React.FC<Props> = ({ selected, displayName }) => {
 }
 
 const Title = styled(Typo.BodyAccentXs)<{ selected?: boolean }>(({ theme, selected }) => ({
-  color: selected ? theme.colors.black : theme.colors.greyDark,
+  color: selected ? theme.designSystem.color.text.default : theme.designSystem.color.text.subtle,
   fontSize: theme.tabBar.fontSize,
   textAlign: 'center',
 }))

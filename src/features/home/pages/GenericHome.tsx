@@ -1,4 +1,4 @@
-import { useScrollToTop } from '@react-navigation/native'
+import { useFocusEffect, useRoute, useScrollToTop } from '@react-navigation/native'
 import { without } from 'lodash'
 import React, { FunctionComponent, useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import {
@@ -8,6 +8,7 @@ import {
   ScrollView,
   useWindowDimensions,
   View,
+  ViewToken,
 } from 'react-native'
 import {
   IOFlatList as IntersectionObserverFlatlist,
@@ -16,13 +17,14 @@ import {
 import styled, { useTheme } from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { useGetOffersData } from 'features/home/api/useGetOffersData'
 import { useGetVenuesData } from 'features/home/api/useGetVenuesData'
 import { useShowSkeleton } from 'features/home/api/useShowSkeleton'
 import { HomeBodyPlaceholder } from 'features/home/components/HomeBodyPlaceholder'
 import { HomeModule } from 'features/home/components/modules/HomeModule'
+import { OffersModuleProps } from 'features/home/components/modules/OffersModule'
 import { VideoCarouselModule } from 'features/home/components/modules/video/VideoCarouselModule'
 import { useOnScroll } from 'features/home/pages/helpers/useOnScroll'
+import { useGetOffersDataQuery } from 'features/home/queries/useGetOffersDataQuery'
 import {
   HomepageModule,
   HomepageModuleType,
@@ -34,18 +36,26 @@ import {
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { isCloseToBottom } from 'libs/analytics'
 import { analytics } from 'libs/analytics/provider'
+import { useAppStateChange } from 'libs/appState'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { OfflinePage } from 'libs/network/OfflinePage'
 import { BatchEvent, BatchEventAttributes, BatchProfile } from 'libs/react-native-batch'
 import { AccessibilityFooter } from 'shared/AccessibilityFooter/AccessibilityFooter'
+import { logViewOffer, setViewOfferTrackingFn } from 'shared/analytics/logViewOffer'
+import {
+  resetPageTrackingInfo,
+  setPageTrackingInfo,
+  setPlaylistTrackingInfo,
+  useOfferPlaylistTrackingStore,
+} from 'store/tracking/offerPlaylistTrackingStore'
 import { ScrollToTopButton } from 'ui/components/ScrollToTopButton'
 import { Spinner } from 'ui/components/Spinner'
 import { Page } from 'ui/pages/Page'
 import { getSpacing, Spacer } from 'ui/theme'
 
 import { createInMemoryScreenSeenCountTriggerStorage } from '../api/inMemoryScreenSeenTriggerStorage'
-import { ScreenSeenCount, useScreenSeenCount } from '../api/useScreenSeenCount'
+import { ScreenSeenCount, getScreenSeenCount } from '../helpers/getScreenSeenCount'
 
 type GenericHomeProps = {
   Header: React.JSX.Element
@@ -59,8 +69,24 @@ type GenericHomeProps = {
   statusBar?: React.JSX.Element
 }
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-const keyExtractor = (item: any) => item.id
+const keyExtractor = (item: HomepageModule) => item.id
+
+const handleViewableItemsChanged = ({
+  index,
+  moduleId,
+  changedItems,
+  homeEntryId,
+}: Pick<OffersModuleProps, 'homeEntryId' | 'index' | 'moduleId'> & {
+  changedItems: Pick<ViewToken, 'key' | 'index'>[]
+}) => {
+  setPlaylistTrackingInfo({
+    index,
+    moduleId,
+    items: changedItems,
+    extra: { homeEntryId },
+    callId: '',
+  })
+}
 
 const renderModule = (
   { item, index }: { item: HomepageModule; index: number },
@@ -73,6 +99,7 @@ const renderModule = (
     homeEntryId={homeId}
     data={isOffersModule(item) || isVenuesModule(item) ? item.data : undefined}
     videoModuleId={videoModuleId}
+    onModuleViewableItemsChanged={handleViewableItemsChanged}
   />
 )
 
@@ -124,7 +151,7 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = ({
   videoModuleId,
   statusBar,
 }) => {
-  const { offersModulesData } = useGetOffersData(modules.filter(isOffersModule))
+  const offersModulesData = useGetOffersDataQuery(modules.filter(isOffersModule))
   const { venuesModulesData } = useGetVenuesData(modules.filter(isVenuesModule))
   const logHasSeenAllModules = useFunctionOnce(async () =>
     analytics.logAllModulesSeen(modules.length)
@@ -186,6 +213,7 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = ({
   const { height } = useWindowDimensions()
   const { isLoggedIn } = useAuthContext()
   const { current: triggerStorage } = useRef(createInMemoryScreenSeenCountTriggerStorage())
+  const { name } = useRoute()
 
   const triggerHasSeenEnoughHomeContent = async (screenSeenCount: ScreenSeenCount) => {
     const attributes = new BatchEventAttributes()
@@ -198,7 +226,7 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = ({
     BatchProfile.trackEvent(BatchEvent.hasSeenEnoughHomeContent, attributes)
   }
 
-  const { checkTrigger } = useScreenSeenCount({
+  const { checkTrigger } = getScreenSeenCount({
     isLoggedIn,
     screenHeight: height,
     onTrigger: triggerHasSeenEnoughHomeContent,
@@ -234,6 +262,33 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = ({
     }
   }, [modules.length, isLoading, maxIndex])
 
+  useEffect(() => {
+    setViewOfferTrackingFn(analytics.logViewOffer)
+  }, [])
+
+  useFocusEffect(
+    useCallback(() => {
+      if (!homeId || !name) {
+        return
+      }
+      setPageTrackingInfo({
+        pageId: homeId,
+        pageLocation: name,
+      })
+    }, [homeId, name])
+  )
+
+  useAppStateChange(undefined, () => logViewOffer(useOfferPlaylistTrackingStore.getState()))
+
+  useFocusEffect(
+    useCallback(() => {
+      return () => {
+        logViewOffer(useOfferPlaylistTrackingStore.getState())
+        resetPageTrackingInfo()
+      }
+    }, [])
+  )
+
   const renderItem = useCallback(
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     ({ item, index }: { item: any; index: number }) =>
@@ -241,10 +296,8 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = ({
     [homeId, videoModuleId]
   )
 
-  const modulesToDisplayHandlingVideoCarousel = buildModulesHandlingVideoCarouselPosition(
-    modulesToDisplay,
-    thematicHeader
-  )
+  const modulesToDisplayHandlingVideoCarousel: HomepageModule[] =
+    buildModulesHandlingVideoCarouselPosition(modulesToDisplay, thematicHeader)
   const videoCarouselModules = modulesToDisplay.filter(isVideoCarouselModule)
 
   const shouldDisplayVideoInHeader =
@@ -317,6 +370,7 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = ({
 
 export const GenericHome: FunctionComponent<GenericHomeProps> = (props) => {
   const netInfo = useNetInfoContext()
+
   if (netInfo.isConnected) {
     return <OnlineHome {...props} />
   }
@@ -347,7 +401,7 @@ const ScrollToTopContainer = styled.View(({ theme }) => ({
   zIndex: theme.zIndex.floatingButton,
 }))
 
-const FlatListContainer = styled(IntersectionObserverFlatlist)({
+const FlatListContainer = styled(IntersectionObserverFlatlist<HomepageModule>)({
   overflow: 'visible',
 })
 

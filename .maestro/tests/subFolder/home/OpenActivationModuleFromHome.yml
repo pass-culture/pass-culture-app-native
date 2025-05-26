@@ -1,27 +1,18 @@
 appId: ${MAESTRO_APP_ID}
 ---
 - assertVisible: "Bienvenue\_!"
-
-- runFlow: # Si affichage de la Home sans player
+- waitForAnimationToEnd
+- assertVisible: 'Débloque ton crédit'
+- runFlow:
+    when:
+      platform: Android
+    commands:
+    - tapOn: "Débloque ton crédit"
+- runFlow:
     when:
       platform: iOS
-      visible: "Playlist hybride"
     commands:
-    - assertVisible: "Mise à jour requise.*"
-
-- runFlow: # Si affichage de la Home sans player
-    when:
-      platform: Android
-      visible: "Playlist hybride"
-    commands:
-      - assertVisible: 'Débloque ton crédit'
-      - tapOn: "Débloque ton crédit"
-- runFlow: # Si affichage de la Home avec player
-    when:
-      platform: Android
-      notVisible: 'Playlist hybride'
-    commands:
-      - tapOn: "Débloque ton crédit"
-      - assertVisible: "Inscription"
-      - assertVisible: 'Crée-toi un compte'
-
+    - tapOn:
+        id: "BicolorUnlock"
+- assertVisible: 'Inscription'
+- assertVisible: 'Crée-toi un compte'

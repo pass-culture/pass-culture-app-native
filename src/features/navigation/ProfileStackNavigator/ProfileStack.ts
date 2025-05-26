@@ -7,6 +7,7 @@ import {
 
 export type ProfileStackParamList = {
   NotificationsSettings: undefined
+  DebugScreen: undefined
   DeleteProfileAccountHacked: undefined
   DeleteProfileAccountNotDeletable: undefined
   DeleteProfileConfirmation: undefined
@@ -27,6 +28,8 @@ export type ProfileStackParamList = {
   ChangePassword: undefined
   SuspendAccountConfirmation: { token: string } | undefined
   FeedbackInApp: undefined
+  ProfileTutorialAgeInformationCredit: undefined
+  DisplayPreference: undefined
   ConsentSettings: { onGoBack?: () => void } | undefined
   ConfirmChangeEmail: { token: string; expiration_timestamp: number } | undefined
   ChangeEmailSetPassword:

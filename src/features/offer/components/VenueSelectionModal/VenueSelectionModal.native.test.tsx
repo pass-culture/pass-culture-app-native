@@ -1,9 +1,9 @@
 import React from 'react'
 
 import { VenueListItem } from 'features/offer/components/VenueSelectionList/VenueSelectionList'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { GeoCoordinates, GeolocPermissionState } from 'libs/location'
-import { fireEvent, render, screen } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 import * as useModalAPI from 'ui/components/modals/useModal'
 
 import { VenueSelectionModal } from './VenueSelectionModal'
@@ -28,6 +28,10 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
     return Component
   }
 })
+
+const user = userEvent.setup()
+
+jest.useFakeTimers()
 
 describe('<VenueSelectionModal />', () => {
   beforeEach(() => {
@@ -81,7 +85,7 @@ describe('<VenueSelectionModal />', () => {
     expect(screen.queryAllByTestId('venue-selection-list-item')).toHaveLength(3)
   })
 
-  it('should close modal', () => {
+  it('should close modal', async () => {
     const onClose = jest.fn()
 
     render(
@@ -103,12 +107,12 @@ describe('<VenueSelectionModal />', () => {
       />
     )
 
-    fireEvent.press(screen.getByTestId('Ne pas sélectionner un autre lieu'))
+    await user.press(screen.getByTestId('Ne pas sélectionner un autre lieu'))
 
     expect(onClose).toHaveBeenCalledTimes(1)
   })
 
-  it('should not call onSubmit with no selection', () => {
+  it('should not call onSubmit with no selection', async () => {
     const onSubmit = jest.fn()
 
     render(
@@ -130,12 +134,12 @@ describe('<VenueSelectionModal />', () => {
       />
     )
 
-    fireEvent.press(screen.getByText('Choisir ce lieu'))
+    await user.press(screen.getByText('Choisir ce lieu'))
 
     expect(onSubmit).not.toHaveBeenCalled()
   })
 
-  it('should call onSubmit with item selected', () => {
+  it('should call onSubmit with item selected', async () => {
     const onSubmit = jest.fn()
 
     render(
@@ -157,8 +161,8 @@ describe('<VenueSelectionModal />', () => {
       />
     )
 
-    fireEvent.press(screen.getByText('Hachette Livre'))
-    fireEvent.press(screen.getByText('Choisir ce lieu'))
+    await user.press(screen.getByText('Hachette Livre'))
+    await user.press(screen.getByText('Choisir ce lieu'))
 
     expect(onSubmit).toHaveBeenNthCalledWith(1, 3)
   })
@@ -228,7 +232,7 @@ describe('<VenueSelectionModal />', () => {
       expect(screen.getByText('Active ta géolocalisation')).toBeOnTheScreen()
     })
 
-    it('should open "Paramètres de localisation" modal when pressing "Active ta géolocalisation" button and permission is never ask again', () => {
+    it('should open "Paramètres de localisation" modal when pressing "Active ta géolocalisation" button and permission is never ask again', async () => {
       const mockShowModal = jest.fn()
       jest.spyOn(useModalAPI, 'useModal').mockReturnValueOnce({
         visible: false,
@@ -257,7 +261,7 @@ describe('<VenueSelectionModal />', () => {
       )
       const button = screen.getByText('Active ta géolocalisation')
 
-      fireEvent.press(button)
+      await user.press(button)
 
       expect(mockShowModal).toHaveBeenCalledWith()
     })
@@ -291,9 +295,9 @@ describe('<VenueSelectionModal />', () => {
       )
       const button = screen.getByText('Active ta géolocalisation')
 
-      fireEvent.press(button)
+      await user.press(button)
 
-      fireEvent.press(screen.getByText('Activer la géolocalisation'))
+      await user.press(screen.getByText('Activer la géolocalisation'))
 
       expect(mockHideModal).toHaveBeenCalledWith()
     })
@@ -308,7 +312,7 @@ describe('<VenueSelectionModal />', () => {
       })
     })
 
-    it('should ask for permission when pressing "Active ta géolocalisation" button and permission is denied', () => {
+    it('should ask for permission when pressing "Active ta géolocalisation" button and permission is denied', async () => {
       render(
         <VenueSelectionModal
           headerMessage=""
@@ -329,7 +333,7 @@ describe('<VenueSelectionModal />', () => {
       )
       const button = screen.getByText('Active ta géolocalisation')
 
-      fireEvent.press(button)
+      await user.press(button)
 
       expect(mockRequestGeolocPermission).toHaveBeenCalledWith()
     })

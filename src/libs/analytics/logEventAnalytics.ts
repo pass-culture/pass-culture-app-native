@@ -24,6 +24,8 @@ import {
 } from 'features/navigation/RootNavigator/types'
 import { SearchStackRouteName } from 'features/navigation/SearchStackNavigator/types'
 import { PlaylistType } from 'features/offer/enums'
+import { NonEligible } from 'features/onboarding/enums'
+import { EligibleAges } from 'features/onboarding/types'
 import {
   RemoteBannerType,
   RemoteBannerOrigin,
@@ -31,8 +33,6 @@ import {
 import { SearchState } from 'features/search/types'
 import { ShareAppModalType } from 'features/share/types'
 import { SubscriptionAnalyticsParams } from 'features/subscription/types'
-import { NonEligible, TutorialTypes } from 'features/tutorial/enums'
-import { EligibleAges } from 'features/tutorial/types'
 import { AmplitudeEvent } from 'libs/amplitude/events'
 import { buildPerformSearchState, urlWithValueMaxLength } from 'libs/analytics'
 import { analytics } from 'libs/analytics/provider'
@@ -40,6 +40,8 @@ import { ConsultOfferLogParams } from 'libs/analytics/types'
 import { buildAccessibilityFilterParam, buildModuleDisplayedOnHomepage } from 'libs/analytics/utils'
 import { ContentTypes } from 'libs/contentful/types'
 import { AnalyticsEvent } from 'libs/firebase/analytics/events'
+import { LocationMode } from 'libs/location/types'
+import { PageTrackingInfo } from 'store/tracking/types'
 
 type ConsultHomeParams = { homeEntryId: string }
 
@@ -149,6 +151,8 @@ export const logEventAnalytics = {
     entryId: string
     toEntryId: string
   }) => analytics.logEvent({ firebase: AnalyticsEvent.CATEGORY_BLOCK_CLICKED }, params),
+  logChangeOrientationToggle: (enabled: boolean) =>
+    analytics.logEvent({ firebase: AnalyticsEvent.CHANGE_ORIENTATION_TOGGLE }, { enabled }),
   logCheckEduconnectDataClicked: () =>
     analytics.logEvent({ amplitude: AmplitudeEvent.CHECK_EDUCONNECT_DATA_CLICKED }),
   logChooseEduConnectMethod: () =>
@@ -317,8 +321,8 @@ export const logEventAnalytics = {
     moduleId: string
     homeEntryId?: string
   }) => analytics.logEvent({ firebase: AnalyticsEvent.EXCLUSIVITY_BLOCK_CLICKED }, params),
-  logExtendSearchRadiusClicked: () =>
-    analytics.logEvent({ firebase: AnalyticsEvent.EXTEND_SEARCH_RADIUS_CLICKED }),
+  logExtendSearchRadiusClicked: (searchId?: string) =>
+    analytics.logEvent({ firebase: AnalyticsEvent.EXTEND_SEARCH_RADIUS_CLICKED }, { searchId }),
   logGoToProfil: ({ from, offerId }: { from: string; offerId: number }) =>
     analytics.logEvent(
       { firebase: AnalyticsEvent.GO_TO_PROFIL },
@@ -605,13 +609,13 @@ export const logEventAnalytics = {
     analytics.logEvent({ firebase: AnalyticsEvent.SEARCH_SCROLL_TO_PAGE }, { page, searchId }),
   logSeeMyBooking: (offerId: number) =>
     analytics.logEvent({ firebase: AnalyticsEvent.SEE_MY_BOOKING }, { offerId }),
-  logSelectAge: ({ age, from }: { age: EligibleAges | NonEligible; from: TutorialTypes }) =>
+  logSelectAge: ({ age }: { age: EligibleAges | NonEligible }) =>
     analytics.logEvent(
       {
         amplitude: AmplitudeEvent.ONBOARDING_AGE_SELECTION_CLICKED,
         firebase: AnalyticsEvent.SELECT_AGE,
       },
-      { age, from }
+      { age }
     ),
   logSelectDeletionReason: (type: string) =>
     analytics.logEvent({ firebase: AnalyticsEvent.SELECT_DELETION_REASON }, { type }),
@@ -735,6 +739,8 @@ export const logEventAnalytics = {
     homeEntryId: string
     moduleId: string
   }) => analytics.logEvent({ firebase: AnalyticsEvent.VIDEO_PAUSED }, params),
+  logViewOffer: (params: PageTrackingInfo & { locationType: LocationMode }) =>
+    analytics.logEvent({ firebase: AnalyticsEvent.VIEW_OFFER }, params),
   logViewedBookingPage: (params: { from: Referrals; offerId: number }) =>
     analytics.logEvent({ firebase: AnalyticsEvent.VIEWED_BOOKING_PAGE }, params),
 }

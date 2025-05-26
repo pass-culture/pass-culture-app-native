@@ -7,7 +7,6 @@ import { UseQueryResult } from 'react-query'
 import { ReactTestInstance } from 'react-test-renderer'
 
 import { PlaylistType } from 'features/offer/enums'
-import * as useVenueOffers from 'features/venue/api/useVenueOffers'
 import { VenueOffersResponseSnap } from 'features/venue/fixtures/venueOffersResponseSnap'
 import * as useVenueSearchParameters from 'features/venue/helpers/useVenueSearchParameters'
 import { VenueOffers } from 'features/venue/types'
@@ -18,8 +17,9 @@ import * as useVenueMapFilters from 'features/venueMap/hook/useVenueMapFilters'
 import * as useVenueMapStore from 'features/venueMap/store/venueMapStore'
 import mockVenueSearchParams from 'fixtures/venueSearchParams'
 import { venuesFixture } from 'libs/algolia/fetchAlgolia/fetchVenues/fixtures/venuesFixture'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import * as useVenueOffersQueryAPI from 'queries/venue/useVenueOffersQuery'
 import { useVenuesInRegionQuery } from 'queries/venueMap/useVenuesInRegionQuery'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, userEvent, waitFor } from 'tests/utils'
@@ -44,7 +44,7 @@ const mockUseCenterOnLocation = useCenterOnLocation as jest.Mock
 
 jest.mock('features/venueMap/helpers/zoomOutIfMapEmpty')
 
-const useVenueOffersSpy = jest.spyOn(useVenueOffers, 'useVenueOffers')
+const useVenueOffersSpy = jest.spyOn(useVenueOffersQueryAPI, 'useVenueOffersQuery')
 
 const useVenueMapFiltersSpy = jest.spyOn(useVenueMapFilters, 'useVenueMapFilters')
 useVenueMapFiltersSpy.mockReturnValue({
@@ -93,6 +93,8 @@ const mockUseVenueOffers = (emptyResponse = false) => {
 
 const pressVenueMarker = (venue: GeolocatedVenue, forcedVenueId?: string) => {
   return act(() => {
+    // userEvent.press not working correctly here
+    // eslint-disable-next-line local-rules/no-fireEvent
     fireEvent.press(screen.getByTestId(`marker-${venue.venueId}`), {
       stopPropagation: () => false,
       nativeEvent: {
@@ -278,7 +280,7 @@ describe('VenueMapViewContainer', () => {
     })
   })
 
-  it('should navigate to Venue page when bottom sheet is open and fling gesture detected', async () => {
+  it('should navigate to Venue page when bottom sheet is open and fling gesture detected if venue is permanent', async () => {
     setFeatureFlags([
       RemoteStoreFeatureFlags.WIP_FLING_BOTTOM_SHEET_NAVIGATE_TO_VENUE,
       RemoteStoreFeatureFlags.WIP_OFFERS_IN_BOTTOM_SHEET,
@@ -301,10 +303,32 @@ describe('VenueMapViewContainer', () => {
     expect(mockNavigate).toHaveBeenCalledWith('Venue', { id: venuesFixture[0].venueId })
   })
 
-  it('should deactivate navigation to Venue page when bottom sheet is open, pressing venue button, wipIsOpenToPublic feature flag is true and venue is not open to public', async () => {
+  it('should not navigate to Venue page when bottom sheet is open and fling gesture detected if venue is not permanent', async () => {
+    setFeatureFlags([
+      RemoteStoreFeatureFlags.WIP_FLING_BOTTOM_SHEET_NAVIGATE_TO_VENUE,
+      RemoteStoreFeatureFlags.WIP_OFFERS_IN_BOTTOM_SHEET,
+      RemoteStoreFeatureFlags.WIP_VENUE_MAP,
+    ])
+    mockUseVenueOffers(true)
+    renderVenueMapViewContainer()
+
+    await screen.findByTestId(`marker-${venuesFixture[0].venueId}`)
+
+    await pressVenueMarker(venuesFixture[1])
+    await waitFor(() => expect(screen.getByTestId('venueMapPreview')).toBeOnTheScreen())
+
+    fireGestureHandler(getByGestureTestId('flingGesture'), [
+      { state: State.BEGAN, absoluteY: 0 },
+      { state: State.ACTIVE, absoluteY: -10 },
+      { state: State.END, absoluteY: -30 },
+    ])
+
+    expect(mockNavigate).not.toHaveBeenCalled()
+  })
+
+  it('should deactivate navigation to Venue page when bottom sheet is open, pressing venue button and venue is not permanent', async () => {
     mockUseVenueOffers(true)
     setFeatureFlags([
-      RemoteStoreFeatureFlags.WIP_IS_OPEN_TO_PUBLIC,
       RemoteStoreFeatureFlags.WIP_OFFERS_IN_BOTTOM_SHEET,
       RemoteStoreFeatureFlags.WIP_VENUE_MAP,
     ])
@@ -322,7 +346,7 @@ describe('VenueMapViewContainer', () => {
     expect(screen.queryByTestId('RightFilled')).not.toBeOnTheScreen()
   })
 
-  it('should activate navigation to Venue page when bottom sheet is open, pressing venue button, wipIsOpenToPublic feature flag is true and venue is open to public', async () => {
+  it('should activate navigation to Venue page when bottom sheet is open, pressing venue button and venue is permanent', async () => {
     mockUseVenueOffers(true)
     setFeatureFlags([
       RemoteStoreFeatureFlags.WIP_IS_OPEN_TO_PUBLIC,

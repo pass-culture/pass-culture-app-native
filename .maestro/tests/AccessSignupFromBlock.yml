@@ -1,15 +1,15 @@
 appId: ${MAESTRO_APP_ID}
 tags:
-  - cloud
+  - nightlyAndroid
   - nightlyIOS
   - local
+  - squad-activation
 ---
 - runFlow: subFolder/commons/LaunchApp.yml
 
 - runFlow: subFolder/cookies/AcceptCookies.yml
 - runFlow: subFolder/tutorial/onboarding/Onboard18.yml
 
-- runFlow: subFolder/home/AccessOfferFromCarousel.yml
 - runFlow: subFolder/home/OpenActivationModuleFromHome.yml
 
 - runFlow: subFolder/commons/StopApp.yml

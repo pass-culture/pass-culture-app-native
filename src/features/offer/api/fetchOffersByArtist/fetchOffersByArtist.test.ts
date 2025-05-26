@@ -30,11 +30,11 @@ describe('fetchOffersByArtist', () => {
 
     expect(mockMultipleQueries).toHaveBeenNthCalledWith(1, [
       {
-        indexName: 'algoliaOffersIndexNameB',
+        indexName: 'algoliaOffersIndexName',
         query: '',
         params: {
           page: 0,
-          filters: 'artists.id:"1"',
+          filters: 'artists.id:1',
           hitsPerPage: 100,
           aroundLatLng: '2, 2',
           aroundRadius: 'all',
@@ -47,7 +47,7 @@ describe('fetchOffersByArtist', () => {
         query: '',
         params: {
           page: 0,
-          filters: 'artists.id:"1"',
+          filters: 'artists.id:1',
           hitsPerPage: 4,
           aroundLatLng: '2, 2',
           aroundRadius: 'all',
@@ -76,7 +76,7 @@ describe('buildAlgoliaFilter', () => {
       artistId: '1',
     })
 
-    expect(filter).toEqual('artists.id:"1"')
+    expect(filter).toEqual('artists.id:1')
   })
 
   it('should return an empty string when artist is undefined', () => {

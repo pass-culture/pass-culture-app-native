@@ -17,7 +17,7 @@ import {
   phoneNumberSchema,
 } from 'features/identityCheck/pages/phoneValidation/helpers/phoneNumberSchema'
 import { IdentityCheckStep } from 'features/identityCheck/types'
-import { usePatchProfile } from 'features/profile/api/usePatchProfile'
+import { usePatchProfileMutation } from 'queries/profile/usePatchProfileMutation'
 import { InfoBanner } from 'ui/components/banners/InfoBanner'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
@@ -43,7 +43,7 @@ export const SetPhoneNumberWithoutValidation = () => {
 
   const { navigateForwardToStepper } = useNavigateForwardToStepper()
   const saveStep = useSaveStep()
-  const { mutate: patchProfile } = usePatchProfile({
+  const { mutate: patchProfile } = usePatchProfileMutation({
     onSuccess: () => {
       const { phoneNumber, countryId } = getValues()
       const country = findCountry(countryId)
@@ -103,6 +103,7 @@ export const SetPhoneNumberWithoutValidation = () => {
                     isError={!!fieldState.error}
                     keyboardType="number-pad"
                     label="Numéro de téléphone"
+                    format="0639980123"
                     value={field.value}
                     onChangeText={field.onChange}
                     onSubmitEditing={submit}

@@ -1,7 +1,7 @@
 import colorAlpha from 'color-alpha'
 import React, { FunctionComponent, useState } from 'react'
 import { LayoutChangeEvent, View } from 'react-native'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { AccessibleTitle } from 'features/home/components/AccessibleTitle'
 import { VideoMonoOfferTile } from 'features/home/components/modules/video/VideoMonoOfferTile'
@@ -9,7 +9,7 @@ import { VideoMultiOfferPlaylist } from 'features/home/components/modules/video/
 import { VideoModuleProps } from 'features/home/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { Play } from 'ui/svg/icons/Play'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
 import { ColorsEnum } from 'ui/theme/colors'
 import { videoModuleColorsMapping } from 'ui/theme/videoModuleColorsMapping'
@@ -23,10 +23,14 @@ const COLOR_CATEGORY_BACKGROUND_HEIGHT_MULTI_OFFER = getSpacing(38.5)
 const MONO_OFFER_CARD_VERTICAL_SPACING = getSpacing(8)
 
 export const VideoModuleMobile: FunctionComponent<VideoModuleProps> = (props) => {
+  const theme = useTheme()
   const [monoOfferCardHeight, setMonoOfferCardHeight] = useState<number>(0)
 
   const COLOR_CATEGORY_BACKGROUND_HEIGHT_MONO_OFFER =
     MONO_OFFER_CARD_VERTICAL_SPACING + monoOfferCardHeight
+
+  const fillFromDesignSystem =
+    theme.designSystem.color.background[videoModuleColorsMapping[props.color] ?? 'default']
 
   return (
     <Container>
@@ -51,9 +55,23 @@ export const VideoModuleMobile: FunctionComponent<VideoModuleProps> = (props) =>
             </PlayerContainer>
           </Thumbnail>
         </StyledTouchableHighlight>
-        <View>
-          <Spacer.Column numberOfSpaces={4} />
-          {props.isMultiOffer ? (
+        <StyledView>
+          {!props.isMultiOffer && props.offers[0] ? (
+            <VideoOfferContainer
+              onLayout={(event: LayoutChangeEvent) => {
+                const { height } = event.nativeEvent.layout
+                setMonoOfferCardHeight(height)
+              }}>
+              <VideoMonoOfferTileWrapper>
+                <VideoMonoOfferTile
+                  offer={props.offers[0]}
+                  color={props.color}
+                  hideModal={props.hideVideoModal}
+                  analyticsParams={props.analyticsParams}
+                />
+              </VideoMonoOfferTileWrapper>
+            </VideoOfferContainer>
+          ) : (
             <VideoOfferContainer>
               <VideoMultiOfferPlaylist
                 offers={props.offers}
@@ -61,32 +79,19 @@ export const VideoModuleMobile: FunctionComponent<VideoModuleProps> = (props) =>
                 analyticsParams={props.analyticsParams}
               />
             </VideoOfferContainer>
-          ) : (
-            <VideoOfferContainer
-              onLayout={(event: LayoutChangeEvent) => {
-                const { height } = event.nativeEvent.layout
-                setMonoOfferCardHeight(height)
-              }}>
-              <StyledVideoMonoOfferTile
-                // @ts-expect-error: because of noUncheckedIndexedAccess
-                offer={props.offers[0]}
-                color={props.color}
-                hideModal={props.hideVideoModal}
-                analyticsParams={props.analyticsParams}
-              />
-            </VideoOfferContainer>
           )}
           <ColorCategoryBackground
             colorCategoryBackgroundHeightUniqueOffer={COLOR_CATEGORY_BACKGROUND_HEIGHT_MONO_OFFER}
-            backgroundColor={videoModuleColorsMapping[props.color]}
+            backgroundColor={fillFromDesignSystem || videoModuleColorsMapping[props.color]}
             isMultiOffer={props.isMultiOffer}
           />
-        </View>
+        </StyledView>
       </View>
     </Container>
   )
 }
 
+const StyledView = styled.View({ paddingTop: getSpacing(4) })
 const Container = styled.View(({ theme }) => ({
   paddingBottom: theme.home.spaceBetweenModules,
 }))
@@ -156,7 +161,7 @@ const VideoOfferContainer = styled.View({
   marginBottom: getSpacing(8),
 })
 
-const StyledVideoMonoOfferTile = styled(VideoMonoOfferTile)(({ theme }) => ({
+const VideoMonoOfferTileWrapper = styled(View)(({ theme }) => ({
   flexGrow: 1,
   marginHorizontal: theme.contentPage.marginHorizontal,
 }))

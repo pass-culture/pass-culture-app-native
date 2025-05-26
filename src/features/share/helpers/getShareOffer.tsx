@@ -10,11 +10,9 @@ type Parameters = {
   utmMedium: string
 }
 
-const hasVenue = (offer: Offer) =>
-  Object.keys(offer).includes('venueName') || Object.keys(offer).includes('venue')
+const hasVenue = (offer: Offer) => 'venueName' in offer || 'venue' in offer
 
-const isFavoriteOffer = (offer: Offer): offer is FavoriteOfferResponse =>
-  !!Object.keys(offer).includes('venueName')
+const isFavoriteOffer = (offer: Offer): offer is FavoriteOfferResponse => 'venueName' in offer
 const getVenueName = (offer: Offer) => (isFavoriteOffer(offer) ? offer.venueName : offer.venue.name)
 
 const offerShareSubject = 'Je t’invite à découvrir une super offre sur le pass Culture\u00a0!'

@@ -1,11 +1,10 @@
-import type { Meta, StoryObj } from '@storybook/react'
+// eslint-disable-next-line no-restricted-imports
+import { GoogleOAuthProvider } from '@react-oauth/google'
+import type { Meta } from '@storybook/react'
 import React from 'react'
 
 import { env } from 'libs/environment/fixtures'
-import { GoogleOAuthProvider } from 'libs/react-native-google-sso/GoogleOAuthProvider'
-
-// @ts-ignore import is unresolved
-// eslint-disable-next-line import/no-unresolved
+import { Variants, VariantsStory, VariantsTemplate } from 'ui/storybook/VariantsTemplate'
 
 import { SSOButtonBase } from './SSOButtonBase'
 
@@ -27,18 +26,20 @@ const meta: Meta<typeof SSOButtonBase> = {
 }
 export default meta
 
-type Story = StoryObj<typeof SSOButtonBase>
-
-export const Login: Story = {
-  render: (props) => <SSOButtonBase {...props} />,
-  args: {
-    type: 'login',
+const variantConfig: Variants<typeof SSOButtonBase> = [
+  {
+    label: 'SSOButton Login',
+    props: { type: 'login' },
   },
-}
-
-export const Signup: Story = {
-  render: (props) => <SSOButtonBase {...props} />,
-  args: {
-    type: 'signup',
+  {
+    label: 'SSOButton Signup',
+    props: { type: 'signup' },
   },
+]
+
+export const Template: VariantsStory<typeof SSOButtonBase> = {
+  name: 'SSOButton',
+  render: (props) => (
+    <VariantsTemplate variants={variantConfig} Component={SSOButtonBase} defaultProps={props} />
+  ),
 }

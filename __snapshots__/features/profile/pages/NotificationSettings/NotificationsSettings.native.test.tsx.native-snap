@@ -2316,45 +2316,6 @@ exports[`NotificationsSettings should render correctly when user is logged in 1`
             </View>
           </View>
         </View>
-        <Modal
-          animationType="fade"
-          hardwareAccelerated={false}
-          onRequestClose={[Function]}
-          statusBarTranslucent={true}
-          testID="modal-notifications-permission-modal"
-          transparent={true}
-          visible={false}
-        />
-        <Modal
-          accessibilityLabelledBy="testUuidV4"
-          accessibilityModal={true}
-          animationType="none"
-          deviceHeight={1334}
-          deviceWidth={750}
-          hardwareAccelerated={false}
-          hideModalContentWhileAnimating={false}
-          onBackdropPress={[Function]}
-          onModalHide={[Function]}
-          onModalWillHide={[Function]}
-          onModalWillShow={[Function]}
-          onRequestClose={[Function]}
-          panResponderThreshold={4}
-          scrollHorizontal={false}
-          scrollOffset={0}
-          scrollOffsetMax={0}
-          scrollTo={null}
-          statusBarTranslucent={true}
-          supportedOrientations={
-            [
-              "portrait",
-              "landscape",
-            ]
-          }
-          swipeThreshold={100}
-          testID="modal"
-          transparent={true}
-          visible={false}
-        />
       </View>
     </View>
   </RCTScrollView>
@@ -4704,45 +4665,6 @@ exports[`NotificationsSettings should render correctly when user is not logged i
             </View>
           </View>
         </View>
-        <Modal
-          animationType="fade"
-          hardwareAccelerated={false}
-          onRequestClose={[Function]}
-          statusBarTranslucent={true}
-          testID="modal-notifications-permission-modal"
-          transparent={true}
-          visible={false}
-        />
-        <Modal
-          accessibilityLabelledBy="testUuidV4"
-          accessibilityModal={true}
-          animationType="none"
-          deviceHeight={1334}
-          deviceWidth={750}
-          hardwareAccelerated={false}
-          hideModalContentWhileAnimating={false}
-          onBackdropPress={[Function]}
-          onModalHide={[Function]}
-          onModalWillHide={[Function]}
-          onModalWillShow={[Function]}
-          onRequestClose={[Function]}
-          panResponderThreshold={4}
-          scrollHorizontal={false}
-          scrollOffset={0}
-          scrollOffsetMax={0}
-          scrollTo={null}
-          statusBarTranslucent={true}
-          supportedOrientations={
-            [
-              "portrait",
-              "landscape",
-            ]
-          }
-          swipeThreshold={100}
-          testID="modal"
-          transparent={true}
-          visible={false}
-        />
       </View>
     </View>
   </RCTScrollView>

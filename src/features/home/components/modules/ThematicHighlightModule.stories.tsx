@@ -1,9 +1,10 @@
 import { NavigationContainer } from '@react-navigation/native'
-import type { Meta, StoryObj } from '@storybook/react'
+import type { Meta } from '@storybook/react'
 import mockDate from 'mockdate'
 import React from 'react'
 
 import { CURRENT_DATE } from 'features/auth/fixtures/fixtures'
+import { Variants, VariantsStory, VariantsTemplate } from 'ui/storybook/VariantsTemplate'
 
 import { ThematicHighlightModule } from './ThematicHighlightModule'
 
@@ -22,8 +23,6 @@ const meta: Meta<typeof ThematicHighlightModule> = {
 }
 export default meta
 
-type Story = StoryObj<typeof ThematicHighlightModule>
-
 const defaultArgs = {
   id: 'toto',
   title: 'Lorem ipsum',
@@ -36,16 +35,30 @@ const defaultArgs = {
   index: 0,
 }
 
-export const Default: Story = {
-  render: (props) => <ThematicHighlightModule {...props} />,
-  args: defaultArgs,
-}
-
-export const OneDayHighlight: Story = {
-  render: (props) => <ThematicHighlightModule {...props} />,
-  args: {
-    ...defaultArgs,
-    beginningDate: new Date('2022-12-21'),
-    endingDate: new Date('2022-12-21'),
+const variantConfig: Variants<typeof ThematicHighlightModule> = [
+  {
+    label: 'ThematicHighlightModule Default',
+    props: {
+      ...defaultArgs,
+    },
   },
+  {
+    label: 'ThematicHighlightModule OneDayHighlight',
+    props: {
+      ...defaultArgs,
+      beginningDate: new Date('2022-12-21'),
+      endingDate: new Date('2022-12-21'),
+    },
+  },
+]
+
+export const Template: VariantsStory<typeof ThematicHighlightModule> = {
+  name: 'ThematicHighlightModule',
+  render: (props) => (
+    <VariantsTemplate
+      variants={variantConfig}
+      Component={ThematicHighlightModule}
+      defaultProps={props}
+    />
+  ),
 }

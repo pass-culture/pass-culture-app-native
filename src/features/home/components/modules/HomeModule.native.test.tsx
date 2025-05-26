@@ -1,14 +1,13 @@
 import mockdate from 'mockdate'
 import React from 'react'
+import { InViewProps } from 'react-native-intersection-observer'
 
 import { SubcategoriesResponseModelv2 } from 'api/gen'
 import { useHighlightOffer } from 'features/home/api/useHighlightOffer'
-import { useVideoOffers } from 'features/home/api/useVideoOffers'
 import { highlightOfferModuleFixture } from 'features/home/fixtures/highlightOfferModule.fixture'
 import {
   formattedBusinessModule,
   formattedCategoryListModule,
-  formattedExclusivityModule,
   formattedOffersModule,
   formattedRecommendedOffersModule,
   formattedThematicHighlightModule,
@@ -16,17 +15,18 @@ import {
   formattedVenuesModule,
 } from 'features/home/fixtures/homepage.fixture'
 import { videoModuleFixture } from 'features/home/fixtures/videoModule.fixture'
+import { useVideoOffersQuery } from 'features/home/queries/useVideoOffersQuery'
 import { HomepageModule, ModuleData } from 'features/home/types'
 import { SimilarOffersResponse } from 'features/offer/types'
 import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { venuesSearchFixture } from 'libs/algolia/fixtures/venuesSearchFixture'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { GeoCoordinates, Position } from 'libs/location'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { offersFixture } from 'shared/offer/offer.fixture'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, render, screen, waitFor } from 'tests/utils'
+import { act, fireEvent, render, screen, userEvent, waitFor } from 'tests/utils'
 
 import { HomeModule } from './HomeModule'
 
@@ -34,6 +34,18 @@ const index = 1
 const homeEntryId = '7tfixfH64pd5TMZeEKfNQ'
 
 const highlightOfferFixture = offersFixture[0]
+
+const mockInView = jest.fn()
+jest.mock('react-native-intersection-observer', () => {
+  const InView = (props: InViewProps) => {
+    mockInView.mockImplementation(props.onChange)
+    return null
+  }
+  return {
+    ...jest.requireActual('react-native-intersection-observer'),
+    InView,
+  }
+})
 
 jest.mock('features/home/api/useHighlightOffer')
 const mockUseHighlightOffer = useHighlightOffer as jest.Mock
@@ -58,12 +70,12 @@ jest.mock('libs/location/LocationWrapper', () => ({
   useLocation: () => mockUseLocation(),
 }))
 
-jest.mock('features/home/api/useAlgoliaRecommendedOffers', () => ({
-  useAlgoliaRecommendedOffers: jest.fn(() => mockedAlgoliaResponse.hits),
+jest.mock('queries/offer/useAlgoliaSimilarOffersQuery', () => ({
+  useAlgoliaSimilarOffersQuery: jest.fn(() => mockedAlgoliaResponse.hits),
 }))
 
-jest.mock('features/home/api/useVideoOffers')
-const mockUseVideoOffers = useVideoOffers as jest.Mock
+jest.mock('features/home/queries/useVideoOffersQuery')
+const mockuseVideoOffersQuery = useVideoOffersQuery as jest.Mock
 
 const offerFixture = [
   {
@@ -117,9 +129,14 @@ jest.mock('@shopify/flash-list', () => {
   }
 })
 
+const mockModuleViewableItemsChanged = jest.fn()
+
 describe('<HomeModule />', () => {
+  const user = userEvent.setup()
+
   beforeEach(() => {
     setFeatureFlags()
+    mockInView(true)
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
   })
 
@@ -133,12 +150,59 @@ describe('<HomeModule />', () => {
     })
   })
 
-  it('should not display old ExclusivityOfferModule', async () => {
-    renderHomeModule(formattedExclusivityModule)
+  it('should dispatch viewable items for module', async () => {
+    renderHomeModule(formattedOffersModule, defaultData)
 
-    await waitFor(() => {
-      expect(screen.queryByLabelText('Week-end FRAC')).not.toBeOnTheScreen()
+    const allPlaylistElements = await screen.findAllByTestId('offersModuleList')
+    const playlistElement = allPlaylistElements.at(0)
+
+    if (!playlistElement) {
+      throw new Error('playlist not found')
+    }
+
+    act(() => {
+      const items = screen.getAllByTestId(/OfferTile/)
+      items.forEach((item, index) => {
+        fireEvent(item, 'layout', {
+          nativeEvent: {
+            layout: {
+              width: 200,
+              x: 200 * index,
+            },
+          },
+        })
+      })
+
+      fireEvent(playlistElement, 'layout', {
+        nativeEvent: {
+          layout: {
+            width: 1400,
+          },
+        },
+      })
     })
+
+    mockInView(true)
+
+    await user.scrollTo(playlistElement, {
+      layoutMeasurement: { width: 600, height: 300 },
+      contentSize: { width: 1200, height: 300 },
+      x: 0,
+    })
+
+    await waitFor(() =>
+      expect(mockModuleViewableItemsChanged).toHaveBeenCalledWith({
+        changedItems: [
+          { index: 0, key: '102280' },
+          { index: 1, key: '102272' },
+          { index: 2, key: '102249' },
+          { index: 3, key: '102310' },
+        ],
+        homeEntryId: '7tfixfH64pd5TMZeEKfNQ',
+        index: 1,
+        moduleId: '2DYuR6KoSLElDuiMMjxx8g',
+      })
+    )
   })
 
   it('should display BusinessModule', async () => {
@@ -176,8 +240,8 @@ describe('<HomeModule />', () => {
   })
 
   it('should display VideoModule', async () => {
-    mockUseVideoOffers.mockReturnValueOnce({ offers: [offerFixture[0]] })
-    mockUseVideoOffers.mockReturnValueOnce({ offers: [offerFixture[1]] })
+    mockuseVideoOffersQuery.mockReturnValueOnce({ offers: [offerFixture[0]] })
+    mockuseVideoOffersQuery.mockReturnValueOnce({ offers: [offerFixture[1]] })
 
     renderHomeModule(videoModuleFixture)
 
@@ -222,7 +286,13 @@ describe('<HomeModule />', () => {
 function renderHomeModule(item: HomepageModule, data?: ModuleData) {
   return render(
     reactQueryProviderHOC(
-      <HomeModule item={item} index={index} homeEntryId={homeEntryId} data={data} />
+      <HomeModule
+        item={item}
+        index={index}
+        homeEntryId={homeEntryId}
+        data={data}
+        onModuleViewableItemsChanged={mockModuleViewableItemsChanged}
+      />
     )
   )
 }

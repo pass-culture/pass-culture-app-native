@@ -42,7 +42,7 @@ export const isCloseToBottom = ({
 // we just cast it to string.
 export const prepareLogEventParams = (params: Record<string, unknown>) =>
   Object.keys(params).reduce((acc: Record<string, unknown>, key) => {
-    acc[key] = typeof params[key] === 'number' ? (params[key] as number).toString() : params[key]
+    acc[key] = typeof params[key] === 'number' ? params[key]?.toString() : params[key]
     return acc
   }, {})
 

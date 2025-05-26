@@ -5,7 +5,6 @@ export enum RemoteStoreDocuments {
   COOKIES_LAST_UPDATE = 'cookiesLastUpdate',
   FEATURE_FLAGS = 'featureFlags',
   MAINTENANCE = 'maintenance',
-  UBBLE = 'ubble',
 }
 
 export enum RemoteStoreMaintenance {
@@ -20,10 +19,6 @@ export enum RemoteStoreCookies {
 
 export enum RemoteStoreAppVersion {
   MINIMAL_BUILD_NUMBER = 'minimalBuildNumber',
-}
-
-export enum RemoteStoreUbble {
-  UBBLE_ETA_MESSAGE = 'etaMessage',
 }
 
 export enum MAINTENANCE {
@@ -48,19 +43,17 @@ export type Maintenance =
 
 export enum RemoteStoreFeatureFlags {
   DISABLE_ACTIVATION = 'disableActivation',
-  ENABLE_ACHIEVEMENTS = 'enableAchievements',
+  ENABLE_BOOKING_FREE_OFFER_15_16 = 'enableBookingFreeOfferFifteenSixteen',
   ENABLE_CULTURAL_SURVEY_MANDATORY = 'enableCulturalSurveyMandatory',
+  ENABLE_DEBUG_SECTION = 'enableDebugSection',
   ENABLE_HIDE_TICKET = 'enableHideTicket',
   ENABLE_PACIFIC_FRANC_CURRENCY = 'enablePacificFrancCurrency',
   ENABLE_PASS_FOR_ALL = 'enablePassForAll',
   ENABLE_REPLICA_ALGOLIA_INDEX = 'enableReplicaAlgoliaIndex',
   SHOW_REMOTE_GENERIC_BANNER = 'showRemoteBanner',
   TARGET_XP_CINE_FROM_OFFER = 'targetXpCineFromOffer',
-  WIP_APP_V2_BUSINESS_BLOCK = 'wipAppV2BusinessBlock',
-  WIP_APP_V2_CATEGORY_BLOCK = 'wipAppV2CategoryBlock',
-  WIP_APP_V2_MULTI_VIDEO_MODULE = 'wipAppV2MultiVideoModule',
-  WIP_APP_V2_VIDEO_9_16 = 'wipAppV2Video9:16',
   WIP_ARTIST_PAGE = 'wipArtistPage',
+  WIP_ARTIST_PAGE_IN_SEARCH = 'wipArtistPageInSearch',
   WIP_DISABLE_STORE_REVIEW = 'wipDisabledStoreReview',
   WIP_DISPLAY_SEARCH_NB_FACET_RESULTS = 'wipDisplaySearchNbFacetResults',
   WIP_ENABLE_ACCES_LIBRE = 'wipEnableAccesLibre',
@@ -74,6 +67,7 @@ export enum RemoteStoreFeatureFlags {
   WIP_REACTION_FEATURE = 'wipReactionFeature',
   WIP_THEMATIC_SEARCH_CONCERTS_AND_FESTIVALS = 'wipThematicSearchConcertsAndFestivals',
   WIP_THEMATIC_SEARCH_THEATRE = 'wipThematicSearchTheatre',
+  WIP_TIME_FILTER_V2 = 'wipTimeFilterV2',
   WIP_VENUE_ARTISTS_PLAYLIST = 'wipVenueArtistsPlaylist',
   WIP_VENUE_HEADLINE_OFFER = 'wipVenueHeadlineOffer',
   WIP_VENUE_MAP = 'wipVenueMap',

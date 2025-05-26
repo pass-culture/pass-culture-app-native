@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo } from 'react'
+import React, { useCallback, useMemo } from 'react'
 import { useForm } from 'react-hook-form'
 import { useTheme } from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
@@ -17,9 +17,9 @@ import {
   handleCategoriesSearchPress,
 } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
 import {
-  createMappingTree,
   MappedGenreTypes,
   MappedNativeCategories,
+  createMappingTree,
 } from 'features/search/helpers/categoriesHelpers/mapping-tree'
 import { NativeCategoryEnum, SearchState } from 'features/search/types'
 import { FacetData } from 'libs/algolia/types'
@@ -29,7 +29,7 @@ import { Form } from 'ui/components/Form'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { ArrowPrevious } from 'ui/svg/icons/ArrowPrevious'
 import { Close } from 'ui/svg/icons/Close'
-import { Spacer } from 'ui/theme'
+import { getSpacing } from 'ui/theme'
 
 const titleId = uuidv4()
 
@@ -75,10 +75,6 @@ export const CategoriesModal = ({
     defaultValues: getDefaultFormValues(tree, searchState),
   })
   const { category, currentView, nativeCategory, genreType } = watch()
-
-  useEffect(() => {
-    reset(getDefaultFormValues(tree, searchState))
-  }, [reset, searchState, tree])
 
   const nativeCategories = useMemo(() => {
     return (category &&
@@ -158,7 +154,7 @@ export const CategoriesModal = ({
     }
   }, [currentView, handleModalClose, setValue])
 
-  const handleSearchPress = useCallback(
+  const triggerDispatch = useCallback(
     (form: CategoriesModalFormProps) => {
       const searchPressData = handleCategoriesSearchPress(form, data)
 
@@ -169,19 +165,29 @@ export const CategoriesModal = ({
       }
 
       dispatch({ type: 'SET_STATE', payload: additionalSearchState })
+    },
+    [data, dispatch, searchState]
+  )
+
+  const handleSearchPress = useCallback(
+    (form: CategoriesModalFormProps) => {
+      triggerDispatch(form)
       hideModal()
     },
-    [data, dispatch, hideModal, searchState]
+    [hideModal, triggerDispatch]
   )
 
   const handleReset = useCallback(() => {
-    reset({
+    const resetForm: CategoriesModalFormProps = {
       category: SearchGroupNameEnumv2.NONE,
       nativeCategory: null,
       genreType: null,
       currentView: CategoriesModalView.CATEGORIES,
-    })
-  }, [reset])
+    }
+    reset(resetForm)
+
+    triggerDispatch(resetForm)
+  }, [reset, triggerDispatch])
 
   const descriptionContext = useMemo(
     () => ({
@@ -228,6 +234,8 @@ export const CategoriesModal = ({
     )
   }
 
+  const hasDefaultValue = category === SearchGroupNameEnumv2.NONE
+
   return (
     <AppModal
       customModalHeader={
@@ -257,10 +265,10 @@ export const CategoriesModal = ({
           onSearchPress={handleSubmit(handleSearchPress)}
           isSearchDisabled={isSubmitting}
           filterBehaviour={filterBehaviour}
+          isResetDisabled={hasDefaultValue}
         />
       }>
-      <Spacer.Column numberOfSpaces={3} />
-      <Form.MaxWidth>
+      <Form.MaxWidth marginTop={getSpacing(3)}>
         {currentView === CategoriesModalView.CATEGORIES ? (
           <CategoriesSection
             itemsMapping={tree}

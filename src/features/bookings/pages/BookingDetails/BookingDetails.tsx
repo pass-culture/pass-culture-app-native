@@ -2,8 +2,9 @@ import { useRoute } from '@react-navigation/native'
 import React from 'react'
 import { Platform } from 'react-native'
 
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { BookingDetailsContent } from 'features/bookings/components/BookingDetailsContent'
-import { OldBookingDetailsContent } from 'features/bookings/components/OldBookingDetailsContent'
+import { BookingDetailsContent as OldBookingDetailsContent } from 'features/bookings/components/OldBookingDetails/BookingDetailsContent'
 import { getBookingProperties } from 'features/bookings/helpers'
 import { BookingNotFound } from 'features/bookings/pages/BookingNotFound/BookingNotFound'
 import { useOngoingOrEndedBookingQuery } from 'features/bookings/queries'
@@ -18,6 +19,7 @@ import { LoadingPage } from 'ui/pages/LoadingPage'
 
 export const BookingDetails = () => {
   const enableNewBookingPage = useFeatureFlag(RemoteStoreFeatureFlags.WIP_NEW_BOOKING_PAGE)
+  const { user } = useAuthContext()
   const { params } = useRoute<UseRouteType<'BookingDetails'>>()
   const {
     data: booking,
@@ -60,8 +62,13 @@ export const BookingDetails = () => {
     booking,
     mapping[booking.stock.offer.subcategoryId].isEvent
   )
-  return enableNewBookingPage && properties.isEvent === true ? (
-    <BookingDetailsContent properties={properties} booking={booking} mapping={mapping} />
+  return enableNewBookingPage && properties.isEvent && user ? (
+    <BookingDetailsContent
+      user={user}
+      properties={properties}
+      booking={booking}
+      mapping={mapping}
+    />
   ) : (
     <OldBookingDetailsContent
       properties={properties}

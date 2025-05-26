@@ -10,6 +10,7 @@ import { QuitIdentityCheckModal } from 'features/identityCheck/components/modals
 import { useRehydrateProfile } from 'features/identityCheck/pages/helpers/useRehydrateProfile'
 import { useSetSubscriptionStepAndMethod } from 'features/identityCheck/pages/helpers/useSetCurrentSubscriptionStep'
 import { useStepperInfo } from 'features/identityCheck/pages/helpers/useStepperInfo'
+import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
 import { hasOngoingCredit } from 'shared/user/useAvailableCredit'
@@ -20,6 +21,7 @@ import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/S
 import { StepButton } from 'ui/components/StepButton/StepButton'
 import { StepButtonState } from 'ui/components/StepButton/types'
 import { StepList } from 'ui/components/StepList/StepList'
+import { Page } from 'ui/pages/Page'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
@@ -93,7 +95,7 @@ export const Stepper = () => {
         <StepButtonContainer key={step.name}>
           <StepButton
             step={step}
-            navigateTo={{ screen: step.firstScreen }}
+            navigateTo={{ screen: step.firstScreen, params: { type: ProfileTypes.IDENTITY_CHECK } }}
             onPress={() => {
               analytics.logIdentityCheckStep(step.name)
             }}
@@ -105,7 +107,7 @@ export const Stepper = () => {
   )
 
   return (
-    <React.Fragment>
+    <Page>
       <Container>
         <Spacer.TopScreen />
         {theme.isDesktopViewport ? (
@@ -135,7 +137,7 @@ export const Stepper = () => {
         hideModal={hideModal}
         testIdSuffix="quit-identity-check-stepper"
       />
-    </React.Fragment>
+    </Page>
   )
 }
 
@@ -168,6 +170,7 @@ const StyledSubtitle = ({ subtitle }: { subtitle: string }) => (
     <Spacer.Column numberOfSpaces={8} />
   </React.Fragment>
 )
+
 const StyledErrorMessage = ({ errorMessage }: { errorMessage: string }) => (
   <React.Fragment>
     <Spacer.Column numberOfSpaces={4} />

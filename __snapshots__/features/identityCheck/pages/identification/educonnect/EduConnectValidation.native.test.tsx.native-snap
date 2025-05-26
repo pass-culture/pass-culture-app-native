@@ -168,7 +168,7 @@ exports[`<EduConnectValidation /> should render EduConnectValidation component c
             ]
           }
         >
-          Mon identité
+          Informations personnelles
         </Text>
         <View
           positionInHeader="right"
@@ -268,11 +268,11 @@ exports[`<EduConnectValidation /> should render EduConnectValidation component c
               }
             />
             <View
+              gap={5}
               style={
                 [
                   {
-                    "alignItems": "center",
-                    "width": "100%",
+                    "gap": 20,
                   },
                 ]
               }
@@ -283,166 +283,209 @@ exports[`<EduConnectValidation /> should render EduConnectValidation component c
                     {
                       "color": "#161617",
                       "fontFamily": "Montserrat-Bold",
-                      "fontSize": 17,
-                      "lineHeight": 27.2,
-                      "textAlign": "center",
-                    },
-                  ]
-                }
-              >
-                Les informations extraites sont-elles correctes ?
-              </Text>
-            </View>
-            <View
-              style={
-                [
-                  {
-                    "alignItems": "center",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "justifyContent": "center",
-                  },
-                ]
-              }
-            >
-              <Text
-                style={
-                  [
-                    {
-                      "color": "#696A6F",
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                    },
-                  ]
-                }
-              >
-                Ton prénom
-              </Text>
-              <View
-                numberOfSpaces={2}
-                style={
-                  [
-                    {
-                      "height": 8,
-                    },
-                  ]
-                }
-              />
-              <Text
-                style={
-                  [
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Bold",
                       "fontSize": 19,
                       "lineHeight": 30.4,
                     },
                   ]
                 }
-                testID="validation-first-name"
               >
-                John
+                Tu valides que ces informations sont correctes ?
               </Text>
               <View
-                numberOfSpaces={5}
                 style={
                   [
                     {
-                      "height": 20,
-                    },
-                  ]
-                }
-              />
-              <Text
-                style={
-                  [
-                    {
-                      "color": "#696A6F",
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
+                      "backgroundColor": "#F1F1F4",
+                      "borderRadius": 8,
+                      "paddingHorizontal": 24,
+                      "paddingVertical": 32,
                     },
                   ]
                 }
               >
-                Ton nom de famille
-              </Text>
-              <View
-                numberOfSpaces={2}
-                style={
-                  [
+                <RCTScrollView
+                  contentContainerStyle={
                     {
-                      "height": 8,
-                    },
-                  ]
-                }
-              />
-              <Text
-                style={
-                  [
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 19,
-                      "lineHeight": 30.4,
-                    },
-                  ]
-                }
-                testID="validation-name"
-              >
-                Doe
-              </Text>
-              <View
-                numberOfSpaces={5}
-                style={
-                  [
-                    {
-                      "height": 20,
-                    },
-                  ]
-                }
-              />
-              <Text
-                style={
-                  [
-                    {
-                      "color": "#696A6F",
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                    },
-                  ]
-                }
-              >
-                Ta date de naissance
-              </Text>
-              <View
-                numberOfSpaces={2}
-                style={
-                  [
-                    {
-                      "height": 8,
-                    },
-                  ]
-                }
-              />
-              <Text
-                style={
-                  [
-                    {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 19,
-                      "lineHeight": 30.4,
-                    },
-                  ]
-                }
-                testID="validation-birth-date"
-              >
-                28/01/1993
-              </Text>
+                      "gap": 24,
+                    }
+                  }
+                  data={
+                    [
+                      {
+                        "testID": "validation-first-name",
+                        "title": "Ton prénom",
+                        "value": "John",
+                      },
+                      {
+                        "testID": "validation-name",
+                        "title": "Ton nom de famille",
+                        "value": "Doe",
+                      },
+                      {
+                        "testID": "validation-birth-date",
+                        "title": "Ville de résidence",
+                        "value": "28/01/1993",
+                      },
+                    ]
+                  }
+                  getItem={[Function]}
+                  getItemCount={[Function]}
+                  keyExtractor={[Function]}
+                  onContentSizeChange={[Function]}
+                  onLayout={[Function]}
+                  onMomentumScrollBegin={[Function]}
+                  onMomentumScrollEnd={[Function]}
+                  onScroll={[Function]}
+                  onScrollBeginDrag={[Function]}
+                  onScrollEndDrag={[Function]}
+                  removeClippedSubviews={false}
+                  renderItem={[Function]}
+                  scrollEventThrottle={0.0001}
+                  stickyHeaderIndices={[]}
+                  viewabilityConfigCallbackPairs={[]}
+                >
+                  <View>
+                    <View
+                      onFocusCapture={[Function]}
+                      onLayout={[Function]}
+                      style={null}
+                    >
+                      <View
+                        gap={1}
+                        style={
+                          [
+                            {
+                              "gap": 4,
+                            },
+                          ]
+                        }
+                      >
+                        <Text
+                          style={
+                            [
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-Medium",
+                                "fontSize": 12,
+                                "lineHeight": 19.2,
+                              },
+                            ]
+                          }
+                        >
+                          Ton prénom
+                        </Text>
+                        <Text
+                          style={
+                            [
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 16,
+                                "lineHeight": 25.6,
+                              },
+                            ]
+                          }
+                          testID="validation-first-name"
+                        >
+                          John
+                        </Text>
+                      </View>
+                    </View>
+                    <View
+                      onFocusCapture={[Function]}
+                      onLayout={[Function]}
+                      style={null}
+                    >
+                      <View
+                        gap={1}
+                        style={
+                          [
+                            {
+                              "gap": 4,
+                            },
+                          ]
+                        }
+                      >
+                        <Text
+                          style={
+                            [
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-Medium",
+                                "fontSize": 12,
+                                "lineHeight": 19.2,
+                              },
+                            ]
+                          }
+                        >
+                          Ton nom de famille
+                        </Text>
+                        <Text
+                          style={
+                            [
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 16,
+                                "lineHeight": 25.6,
+                              },
+                            ]
+                          }
+                          testID="validation-name"
+                        >
+                          Doe
+                        </Text>
+                      </View>
+                    </View>
+                    <View
+                      onFocusCapture={[Function]}
+                      onLayout={[Function]}
+                      style={null}
+                    >
+                      <View
+                        gap={1}
+                        style={
+                          [
+                            {
+                              "gap": 4,
+                            },
+                          ]
+                        }
+                      >
+                        <Text
+                          style={
+                            [
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-Medium",
+                                "fontSize": 12,
+                                "lineHeight": 19.2,
+                              },
+                            ]
+                          }
+                        >
+                          Ville de résidence
+                        </Text>
+                        <Text
+                          style={
+                            [
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 16,
+                                "lineHeight": 25.6,
+                              },
+                            ]
+                          }
+                          testID="validation-birth-date"
+                        >
+                          28/01/1993
+                        </Text>
+                      </View>
+                    </View>
+                  </View>
+                </RCTScrollView>
+              </View>
             </View>
           </View>
         </RCTScrollView>
@@ -464,7 +507,7 @@ exports[`<EduConnectValidation /> should render EduConnectValidation component c
           }
         >
           <View
-            accessibilityLabel="Valider mes informations"
+            accessibilityLabel="Continuer"
             accessibilityState={
               {
                 "busy": undefined,
@@ -518,7 +561,7 @@ exports[`<EduConnectValidation /> should render EduConnectValidation component c
                 },
               ]
             }
-            testID="Valider mes informations"
+            testID="Continuer"
           >
             <View
               style={
@@ -545,7 +588,7 @@ exports[`<EduConnectValidation /> should render EduConnectValidation component c
                   ]
                 }
               >
-                Valider mes informations
+                Continuer
               </Text>
             </View>
           </View>

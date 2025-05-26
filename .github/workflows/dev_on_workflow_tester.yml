@@ -1,4 +1,4 @@
-name: '4 [on_workflow] Tester yaml'
+name: "4 [on_workflow] Tester yaml"
 
 on:
   workflow_call:
@@ -22,8 +22,9 @@ env:
 
 jobs:
   yarn_test_web:
-    name: 'Run Web unit tests'
-    runs-on: ubuntu-22.04
+    name: "Run Web unit tests"
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
     strategy:
       fail-fast: false
       matrix:
@@ -32,14 +33,14 @@ jobs:
       - name: Enable Corepack
         run: corepack enable
       - uses: actions/checkout@v4
-      - name: 'OpenID Connect Authentication'
-        uses: 'google-github-actions/auth@v2'
+      - name: "OpenID Connect Authentication"
+        uses: "google-github-actions/auth@v2"
         with:
           workload_identity_provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
           service_account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
       - uses: actions/setup-node@v4
         with:
-          node-version-file: '.nvmrc'
+          node-version-file: ".nvmrc"
       - name: Cache the node_modules
         id: yarn-modules-cache
         uses: pass-culture-github-actions/cache@v1.0.0
@@ -61,11 +62,11 @@ jobs:
       - run: yarn test:unit:web:ci --shard=${{ matrix.shard }}/${{ strategy.job-total }}
 
       - name: Rename allure reports folder
-        if: github.ref == 'refs/heads/master'
+        if: ${{ always() && github.ref == 'refs/heads/master' }}
         run: mv allure-results allure-results-web-${{matrix.shard}}
 
       - name: Cache the allure reports
-        if: github.ref == 'refs/heads/master'
+        if: ${{ always() && github.ref == 'refs/heads/master' }}
         id: allure-report-cache-web
         uses: pass-culture-github-actions/gcs-cache@v1.0.0
         with:
@@ -77,8 +78,9 @@ jobs:
           key: v1-allure-dependency-cache-web-${{ runner.os }}-${{ github.sha }}-${{ matrix.shard }}
 
   yarn_test_native:
-    name: 'Run native unit tests'
-    runs-on: ubuntu-22.04
+    name: "Run native unit tests"
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
     strategy:
       fail-fast: false
       matrix:
@@ -87,14 +89,14 @@ jobs:
       - name: Enable Corepack
         run: corepack enable
       - uses: actions/checkout@v4
-      - name: 'OpenID Connect Authentication'
-        uses: 'google-github-actions/auth@v2'
+      - name: "OpenID Connect Authentication"
+        uses: "google-github-actions/auth@v2"
         with:
           workload_identity_provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
           service_account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
       - uses: actions/setup-node@v4
         with:
-          node-version-file: '.nvmrc'
+          node-version-file: ".nvmrc"
       - name: Cache the node_modules
         id: yarn-modules-cache
         uses: pass-culture-github-actions/cache@v1.0.0
@@ -117,7 +119,7 @@ jobs:
       - run: mv coverage/coverage-final.json coverage/${{matrix.shard}}.json
 
       - name: Rename allure reports folder
-        if: github.ref == 'refs/heads/master'
+        if: ${{ always() && github.ref == 'refs/heads/master' }}
         run: mv allure-results allure-results-${{matrix.shard}}
 
       - name: Cache the coverage report
@@ -132,7 +134,7 @@ jobs:
           key: v1-coverage-dependency-cache-${{ runner.os }}-${{ github.sha }}-${{ matrix.shard }}
 
       - name: Cache the allure reports
-        if: github.ref == 'refs/heads/master'
+        if: ${{ always() && github.ref == 'refs/heads/master' }}
         id: allure-report-cache-native
         uses: pass-culture-github-actions/gcs-cache@v1.0.0
         with:
@@ -145,12 +147,14 @@ jobs:
 
   allure-report:
     name: Update Allure report
-    if: github.ref == 'refs/heads/master'
-    runs-on: ubuntu-22.04
+    if: ${{ always() && github.ref == 'refs/heads/master' }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
     permissions:
       id-token: write
-      contents: read
-    needs: yarn_test_native
+      contents: write
+      pages: write
+    needs: [yarn_test_native, yarn_test_web]
 
     steps:
       - name: Enable Corepack
@@ -158,7 +162,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version-file: '.nvmrc'
+          node-version-file: ".nvmrc"
       - name: Cache the node_modules
         id: yarn-modules-cache
         uses: pass-culture-github-actions/cache@v1.0.0
@@ -171,18 +175,18 @@ jobs:
           restore-keys: |
             v1-yarn-dependency-cache-${{ runner.os }}-${{ hashFiles('**/yarn.lock') }}
 
-      - name: 'Authentification to Google'
-        uses: 'google-github-actions/auth@v2'
+      - name: "Authentification to Google"
+        uses: "google-github-actions/auth@v2"
         with:
           workload_identity_provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
           service_account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
 
       - name: Set up Cloud SDK to get gsutils
-        uses: 'google-github-actions/setup-gcloud@v2'
+        uses: "google-github-actions/setup-gcloud@v2"
         with:
-          version: '>= 416.0.0'
+          version: ">= 416.0.0"
 
-      - name: 'Retrieve reports from bucket'
+      - name: "Retrieve reports from bucket"
         run: |
           mkdir allure-results
           gsutil cp 'gs://${{ inputs.CACHE_BUCKET_NAME }}/pass-culture/pass-culture-app-native/v1-allure-dependency-cache-${{ runner.os }}-${{ github.sha }}-*' allure-results
@@ -194,7 +198,7 @@ jobs:
           done
           rm -rf allure-results-*
 
-      - name: 'Retrieve previous Allure history from bucket'
+      - name: "Retrieve previous Allure history from bucket"
         run: |
           mkdir -p allure-results/history
           # Check if history exists and copy it directly
@@ -205,14 +209,7 @@ jobs:
       - name: Generate Allure Report
         run: yarn generate:allure-report
 
-      - name: 'Get secrets (github)'
-        id: 'secrets'
-        uses: 'google-github-actions/get-secretmanager-secrets@v2'
-        with:
-          secrets: |-
-            API_TOKEN_GITHUB:passculture-metier-ehp/passculture-main-sa-access-token
-
-      - name: 'Save Allure history to bucket'
+      - name: "Save Allure history to bucket"
         run: |
           # Check if history was generated and save it
           if [ -d "allure-report/history" ] && [ "$(ls -A allure-report/history)" ]; then
@@ -221,7 +218,7 @@ jobs:
             echo "Warning: No history generated in allure-report/history"
           fi
 
-      - name: 'Author'
+      - name: "Author"
         run: |
           git config --global user.email PassCulture-SA@users.noreply.github.com
           git config --global user.name ${{ github.actor }}
@@ -229,44 +226,45 @@ jobs:
       - name: Deploy to GitHub Pages on gh
         uses: peaceiris/actions-gh-pages@v4
         with:
-          github_token: ${{ steps.secrets.outputs.API_TOKEN_GITHUB }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./allure-report
           publish_branch: allure-report
           user_name: ${{ github.actor }}
-          user_email: 'PassCulture-SA@users.noreply.github.com'
+          user_email: "PassCulture-SA@users.noreply.github.com"
 
   report-coverage:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
     needs: yarn_test_native
     steps:
       - name: Enable Corepack
         run: corepack enable
       - uses: actions/checkout@v4
-      - name: 'OpenID Connect Authentication'
-        uses: 'google-github-actions/auth@v2'
+      - name: "OpenID Connect Authentication"
+        uses: "google-github-actions/auth@v2"
         with:
           workload_identity_provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
           service_account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
       - name: Get Secret
-        id: 'sonar_secrets'
-        uses: 'google-github-actions/get-secretmanager-secrets@v2'
+        id: "sonar_secrets"
+        uses: "google-github-actions/get-secretmanager-secrets@v2"
         with:
           secrets: |-
             SONAR_TOKEN:passculture-metier-ehp/passculture-app-native-sonar-token
       - uses: actions/setup-node@v4
         with:
-          node-version-file: '.nvmrc'
+          node-version-file: ".nvmrc"
       - name: Set up Cloud SDK to get gsutils
-        uses: 'google-github-actions/setup-gcloud@v2'
+        uses: "google-github-actions/setup-gcloud@v2"
         with:
-          version: '>= 416.0.0'
-      - name: 'Get from bucket the differents coverages'
+          version: ">= 416.0.0"
+      - name: "Get from bucket the differents coverages"
         run: |
           mkdir coverage
           gsutil cp 'gs://${{ inputs.CACHE_BUCKET_NAME }}/pass-culture/pass-culture-app-native/v1-coverage-dependency-cache-${{ runner.os }}-${{ github.sha }}-*' coverage
           for file in `ls coverage/*tar`; do tar  --use-compress-program='zstd --long=30' -xf $file; done 
           rm -f coverage/*.tar
-      - name: 'Merge each coverage into one'
+      - name: "Merge each coverage into one"
         run: |
           npx nyc merge coverage coverage/coverage-final.json
           npx nyc report -t coverage --report-dir coverage --reporter=clover --reporter=lcov
@@ -280,16 +278,17 @@ jobs:
           projectBaseDir: .
 
   yarn_test_proxy:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
     steps:
       - name: Enable Corepack
         run: corepack enable
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version-file: '.nvmrc'
-      - name: 'OpenID Connect Authentication'
-        uses: 'google-github-actions/auth@v2'
+          node-version-file: ".nvmrc"
+      - name: "OpenID Connect Authentication"
+        uses: "google-github-actions/auth@v2"
         with:
           workload_identity_provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
           service_account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
@@ -310,8 +309,8 @@ jobs:
         # the test https://github.com/pass-culture/pass-culture-app-native/blob/64e47e0bd8887e80fa20b6d7df00e110d77fd22e/server/src/middlewares/tests/webAppProxyMiddleware.test.ts#L275 fails sometimes, we suppose the backend doesn't respond sometimes
         run: cd server && (yarn test:unit:ci || yarn test:unit:ci || yarn test:unit:ci) && cd ..
       - name: Get secrets for SonarCloud
-        id: 'sonar_secrets'
-        uses: 'google-github-actions/get-secretmanager-secrets@v2'
+        id: "sonar_secrets"
+        uses: "google-github-actions/get-secretmanager-secrets@v2"
         with:
           secrets: |-
             SONAR_TOKEN:passculture-metier-ehp/passculture-app-native-sonar-token
@@ -323,21 +322,22 @@ jobs:
         with:
           projectBaseDir: server
   slack_notify:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
     if: ${{ always() && github.ref == 'refs/heads/master' }}
     needs:
       - yarn_test_native
       - yarn_test_proxy
       - yarn_test_web
     steps:
-      - name: 'OpenID Connect Authentication'
-        uses: 'google-github-actions/auth@v2'
+      - name: "OpenID Connect Authentication"
+        uses: "google-github-actions/auth@v2"
         with:
           workload_identity_provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
           service_account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
       - name: Get secrets for Slack
-        id: 'slack_secrets'
-        uses: 'google-github-actions/get-secretmanager-secrets@v2'
+        id: "slack_secrets"
+        uses: "google-github-actions/get-secretmanager-secrets@v2"
         with:
           secrets: |-
             SLACK_BOT_TOKEN:passculture-metier-ehp/passculture-ci-slack-bot-token
@@ -349,7 +349,7 @@ jobs:
         uses: slackapi/slack-github-action@v1.27.0
         with:
           # channel #alertes-deploiement-native
-          channel-id: 'C0309RP8K42'
+          channel-id: "C0309RP8K42"
           payload: |
             {
               "attachments": [

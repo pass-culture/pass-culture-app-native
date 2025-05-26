@@ -4,11 +4,11 @@ import React from 'react'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
 import { SubcategoriesResponseModelv2 } from 'api/gen'
-import { useGTLPlaylists } from 'features/gtlPlaylist/hooks/useGTLPlaylists'
+import { useGTLPlaylistsQuery } from 'features/gtlPlaylist/queries/useGTLPlaylistsQuery'
 import { initialSearchState } from 'features/search/context/reducer'
 import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
 import { Venue } from 'features/venue/pages/Venue/Venue'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { Offer } from 'shared/offer/types'
@@ -19,8 +19,8 @@ import { act, checkAccessibilityFor, fireEvent, render, screen } from 'tests/uti
 mockdate.set(new Date('2021-08-15T00:00:00Z'))
 
 jest.mock('libs/subcategories/useSubcategory')
-jest.mock('features/venue/api/useVenue')
-jest.mock('features/venue/api/useVenueOffers')
+jest.mock('features/venue/queries/useVenueQuery')
+jest.mock('queries/venue/useVenueOffersQuery')
 jest.mock('libs/itinerary/useItinerary')
 
 jest.mock('features/auth/context/AuthContext')
@@ -45,8 +45,8 @@ jest.mock('features/profile/helpers/useIsUserUnderage', () => ({
   useIsUserUnderage: jest.fn().mockReturnValue(false),
 }))
 
-jest.mock('features/gtlPlaylist/hooks/useGTLPlaylists')
-const mockUseGTLPlaylists = useGTLPlaylists as jest.Mock
+jest.mock('features/gtlPlaylist/queries/useGTLPlaylistsQuery')
+const mockUseGTLPlaylists = useGTLPlaylistsQuery as jest.Mock
 mockUseGTLPlaylists.mockReturnValue({
   gtlPlaylists: [
     {

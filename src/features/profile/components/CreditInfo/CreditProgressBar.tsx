@@ -29,7 +29,6 @@ const CreditProgressBarComponent: React.FC<CreditProgressBarProps> = ({
   progress,
   height = 'normal',
 }) => {
-  // @ts-expect-error: because of noUncheckedIndexedAccess
   const shadowColors = [colorAlpha(colors[0], 0.1), colorAlpha(colors[1], 0.1)]
 
   return (

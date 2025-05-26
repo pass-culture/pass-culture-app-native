@@ -35,17 +35,19 @@ const GRADIENT_HEIGHT = getSpacing(0.5)
 
 const Gradient = styled(LinearGradient).attrs(({ theme }) => ({
   colors: [
-    colorAlpha(theme.colors.primary, 0),
-    theme.colors.primary,
-    theme.colors.secondary,
-    colorAlpha(theme.colors.secondary, 0),
+    colorAlpha(theme.designSystem.color.icon.brandPrimary, 0),
+    theme.designSystem.color.icon.brandPrimary,
+    theme.designSystem.color.icon.brandPrimary,
+    colorAlpha(theme.designSystem.color.icon.brandPrimary, 0),
   ],
   start: { x: 0, y: 0 },
   end: { x: 1, y: 0 },
 }))({ height: GRADIENT_HEIGHT, width: '100%' })
 
 const StyledIcon = styled(BicolorLogo).attrs<{ selected?: boolean }>(({ theme, selected }) => ({
-  color: selected ? undefined : theme.colors.greyDark,
+  color: selected
+    ? theme.designSystem.color.icon.brandPrimary
+    : theme.designSystem.color.icon.subtle,
   size: theme.icons.sizes.small,
   thin: true,
 }))<{ selected?: boolean }>``

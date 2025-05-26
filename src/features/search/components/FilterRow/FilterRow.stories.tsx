@@ -3,9 +3,9 @@ import React from 'react'
 
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 import { All } from 'ui/svg/icons/bicolor/All'
-import { BicolorAroundMe } from 'ui/svg/icons/BicolorAroundMe'
 import { Calendar } from 'ui/svg/icons/Calendar'
 import { OrderPrice } from 'ui/svg/icons/OrderPrice'
+import { PositionFilled } from 'ui/svg/icons/PositionFilled'
 import { Sort as SortIconDefault } from 'ui/svg/icons/Sort'
 
 import { FilterRow } from './FilterRow'
@@ -19,7 +19,7 @@ export default meta
 const variantConfig: Variants<typeof FilterRow> = [
   {
     label: 'FilterRow Localisation',
-    props: { title: 'Localisation', icon: BicolorAroundMe, description: 'Autour de moi' },
+    props: { title: 'Localisation', icon: PositionFilled, description: 'Autour de moi' },
   },
   {
     label: 'FilterRow Category',

@@ -57,13 +57,15 @@ export function SelectableListItem({
 
 const selectedStyles = (theme: DefaultTheme): CSSProperties => ({
   borderWidth: 2,
-  borderColor: theme.colors.black,
+  borderColor: theme.designSystem.color.border.default,
   padding: getSpacing(4) - 1, // to avoid getting a jumping component
 })
 
 const unselectedStyles = (theme: DefaultTheme, disabled?: boolean): CSSProperties => ({
   borderWidth: 1,
-  borderColor: disabled ? theme.colors.greyLight : theme.colors.greySemiDark,
+  borderColor: disabled
+    ? theme.designSystem.color.border.disabled
+    : theme.designSystem.color.border.subtle,
   padding: getSpacing(4),
 })
 
@@ -73,7 +75,9 @@ const Wrapper = styled(TouchableOpacity)<{
   contentDirection?: 'row' | 'column'
 }>(({ theme, isFocus, isSelected, disabled, contentDirection }) => {
   return {
-    backgroundColor: disabled ? theme.colors.greyLight : theme.colors.white,
+    backgroundColor: disabled
+      ? theme.designSystem.color.background.disabled
+      : theme.designSystem.color.background.default,
     borderRadius: getSpacing(2),
     borderStyle: 'solid',
     flexDirection: contentDirection,
@@ -100,7 +104,9 @@ const RadioWrapper = styled.View<{ isSelected?: boolean }>(({ theme, isSelected 
   justifyContent: 'center',
   borderWidth: 1,
   borderStyle: 'solid',
-  borderColor: isSelected ? theme.colors.primary : theme.colors.greySemiDark,
+  borderColor: isSelected
+    ? theme.designSystem.color.border.brandPrimary
+    : theme.designSystem.color.border.subtle,
   marginRight: getSpacing(4),
 }))
 
@@ -114,7 +120,7 @@ const RadioInner = styled.View<{ isSelected?: boolean; disabled?: boolean }>(
 )
 
 function getRadioInnerBackgroundColor(theme: DefaultTheme, selected?: boolean, disabled?: boolean) {
-  if (disabled) return theme.colors.greyMedium
-  if (selected) return theme.colors.primary
+  if (disabled) return theme.designSystem.color.background.disabled
+  if (selected) return theme.designSystem.color.background.brandPrimary
   return 'transparent'
 }

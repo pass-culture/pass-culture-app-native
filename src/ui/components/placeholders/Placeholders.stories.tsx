@@ -1,4 +1,3 @@
-import { StoryFn } from '@storybook/react'
 import React from 'react'
 
 import { HomeBodyPlaceholder } from 'features/home/components/HomeBodyPlaceholder'
@@ -15,28 +14,31 @@ export default {
   title: 'ui/Placeholders',
 }
 
-export const Template: StoryFn<typeof VariantsTemplate> = () => (
-  <React.Fragment>
-    <VariantsTemplate variants={[{ label: 'HitPlaceholder' }]} Component={HitPlaceholder} />
-    <VariantsTemplate
-      variants={[{ label: 'FavoriteHitPlaceholder' }]}
-      Component={FavoriteHitPlaceholder}
-    />
-    <VariantsTemplate
-      variants={[{ label: 'BookingHitPlaceholder' }]}
-      Component={BookingHitPlaceholder}
-    />
-    <VariantsTemplate
-      variants={[{ label: 'NumberOfResultsPlaceholder' }]}
-      Component={NumberOfResultsPlaceholder}
-    />
-    <VariantsTemplate
-      variants={[{ label: 'NumberOfBookingsPlaceholder' }]}
-      Component={NumberOfBookingsPlaceholder}
-    />
-    <VariantsTemplate
-      variants={[{ label: 'HomeBodyPlaceholder' }]}
-      Component={HomeBodyPlaceholder}
-    />
-  </React.Fragment>
-)
+export const Template = {
+  name: 'Placeholders',
+  render: () => (
+    <React.Fragment>
+      <VariantsTemplate variants={[{ label: 'HitPlaceholder' }]} Component={HitPlaceholder} />
+      <VariantsTemplate
+        variants={[{ label: 'FavoriteHitPlaceholder' }]}
+        Component={FavoriteHitPlaceholder}
+      />
+      <VariantsTemplate
+        variants={[{ label: 'BookingHitPlaceholder' }]}
+        Component={BookingHitPlaceholder}
+      />
+      <VariantsTemplate
+        variants={[{ label: 'NumberOfResultsPlaceholder' }]}
+        Component={NumberOfResultsPlaceholder}
+      />
+      <VariantsTemplate
+        variants={[{ label: 'NumberOfBookingsPlaceholder' }]}
+        Component={NumberOfBookingsPlaceholder}
+      />
+      <VariantsTemplate
+        variants={[{ label: 'HomeBodyPlaceholder' }]}
+        Component={HomeBodyPlaceholder}
+      />
+    </React.Fragment>
+  ),
+}

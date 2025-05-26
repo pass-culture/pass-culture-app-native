@@ -1,9 +1,8 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { setSettings } from 'features/auth/tests/setSettings'
 import { nonBeneficiaryUser } from 'fixtures/user'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { storage } from 'libs/storage'
 import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -28,7 +27,6 @@ jest.useFakeTimers()
 
 describe('<EighteenBirthday />', () => {
   beforeEach(() => {
-    setSettings({ wipEnableCreditV3: false })
     setFeatureFlags()
   })
 
@@ -59,29 +57,7 @@ describe('<EighteenBirthday />', () => {
 
     render(reactQueryProviderHOC(<EighteenBirthday />))
 
-    expect(screen.getByText('Vérifie ton identité pour débloquer tes 300 €.')).toBeOnTheScreen()
+    expect(screen.getByText('Vérifie ton identité pour débloquer tes 150 €.')).toBeOnTheScreen()
     expect(screen.getByText('Vérifier mon identité')).toBeOnTheScreen()
-  })
-
-  it('should display reset message', () => {
-    render(reactQueryProviderHOC(<EighteenBirthday />))
-
-    const subtitle = 'Ton crédit précédent a été remis à 0 €.'
-
-    expect(screen.getByText(subtitle)).toBeOnTheScreen()
-  })
-
-  describe('when enableCreditV3 activated', () => {
-    beforeEach(() => {
-      setSettings({ wipEnableCreditV3: true })
-    })
-
-    it('should not display reset message', () => {
-      render(reactQueryProviderHOC(<EighteenBirthday />))
-
-      const subtitle = 'Ton crédit précédent a été remis à 0 €.'
-
-      expect(screen.queryByText(subtitle)).not.toBeOnTheScreen()
-    })
   })
 })

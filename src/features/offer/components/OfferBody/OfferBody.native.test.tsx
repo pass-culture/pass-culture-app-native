@@ -14,10 +14,10 @@ import {
 import { OfferBody } from 'features/offer/components/OfferBody/OfferBody'
 import { mockSubcategory, mockSubcategoryBook } from 'features/offer/fixtures/mockSubcategory'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
-import * as useArtistResults from 'features/offer/helpers/useArtistResults/useArtistResults'
+import * as useArtistResultsAPI from 'features/offer/queries/useArtistResultsQuery'
 import { mockedAlgoliaOffersWithSameArtistResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { analytics } from 'libs/analytics/provider'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { Position } from 'libs/location'
 import { SuggestedPlace } from 'libs/place/types'
@@ -61,7 +61,7 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 })
 
 const useArtistResultsSpy = jest
-  .spyOn(useArtistResults, 'useArtistResults')
+  .spyOn(useArtistResultsAPI, 'useArtistResultsQuery')
   .mockImplementation()
   .mockReturnValue({
     artistPlaylist: mockedAlgoliaOffersWithSameArtistResponse,
@@ -268,32 +268,6 @@ describe('<OfferBody />', () => {
         ).toBeOnTheScreen()
       })
 
-      it('should display venue button from isOpenToPublic when wipIsOpenToPublic feature flag activated and this is not a cinema offer', async () => {
-        setFeatureFlags([
-          RemoteStoreFeatureFlags.WIP_ARTIST_PAGE,
-          RemoteStoreFeatureFlags.WIP_REACTION_FEATURE,
-          RemoteStoreFeatureFlags.WIP_OFFER_CHRONICLE_SECTION,
-          RemoteStoreFeatureFlags.WIP_IS_OPEN_TO_PUBLIC,
-        ])
-        const offer: OfferResponseV2 = {
-          ...offerResponseSnap,
-          venue: {
-            ...offerResponseSnap.venue,
-            isPermanent: false,
-            isOpenToPublic: true,
-          },
-        }
-        const subcategory: Subcategory = {
-          ...mockSubcategory,
-          categoryId: CategoryIdEnum.LIVRE,
-        }
-        renderOfferBody({ offer, subcategory })
-
-        expect(
-          await screen.findByTestId('Accéder à la page du lieu PATHE BEAUGRENELLE')
-        ).toBeOnTheScreen()
-      })
-
       it('should not display venue button when venue is not permanent', async () => {
         const offer: OfferResponseV2 = {
           ...offerResponseSnap,
@@ -485,36 +459,6 @@ describe('<OfferBody />', () => {
       await user.press(screen.getByText('Proposé par'))
 
       expect(mockNavigate).not.toHaveBeenCalled()
-    })
-
-    describe('When wipIsOpenToPublic activated', () => {
-      beforeEach(() => {
-        setFeatureFlags([RemoteStoreFeatureFlags.WIP_IS_OPEN_TO_PUBLIC])
-      })
-
-      it('should redirect to venue page when pressing proposed by section when venue is open to public', async () => {
-        renderOfferBody({
-          offer: {
-            ...offerWithDifferentAddress,
-            venue: { ...offerWithDifferentAddress.venue, isOpenToPublic: true },
-          },
-        })
-        await user.press(screen.getByText('Proposé par'))
-
-        expect(mockNavigate).toHaveBeenCalledWith('Venue', { id: offerResponseSnap.venue.id })
-      })
-
-      it('should not redirect to venue page when pressing proposed by section when venue is not open to public', async () => {
-        renderOfferBody({
-          offer: {
-            ...offerWithDifferentAddress,
-            venue: { ...offerWithDifferentAddress.venue, isOpenToPublic: false },
-          },
-        })
-        await user.press(screen.getByText('Proposé par'))
-
-        expect(mockNavigate).not.toHaveBeenCalled()
-      })
     })
   })
 

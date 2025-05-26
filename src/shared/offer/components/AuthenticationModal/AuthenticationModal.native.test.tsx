@@ -1,10 +1,9 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { setSettings } from 'features/auth/tests/setSettings'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { userEvent, render, screen } from 'tests/utils'
 
 import { AuthenticationModal } from './AuthenticationModal'
@@ -24,22 +23,7 @@ jest.useFakeTimers()
 describe('<AuthenticationModal />', () => {
   beforeEach(() => setFeatureFlags())
 
-  it('should display subtitle with credit V2', () => {
-    render(
-      <AuthenticationModal
-        visible
-        offerId={OFFER_ID}
-        hideModal={hideModal}
-        from={StepperOrigin.BOOKING}
-      />
-    )
-
-    const subtitle = 'Tu as entre 15 et 18 ans\u00a0?'
-
-    expect(screen.getByText(subtitle)).toBeOnTheScreen()
-  })
-
-  it('should match previous snapshot', () => {
+  it('should render correctly', () => {
     render(
       <AuthenticationModal
         visible
@@ -158,26 +142,5 @@ describe('<AuthenticationModal />', () => {
     await user.press(closeButton)
 
     expect(analytics.logQuitAuthenticationModal).toHaveBeenNthCalledWith(1, OFFER_ID)
-  })
-
-  describe('when enableCreditV3 activated', () => {
-    beforeEach(() => {
-      setSettings({ wipEnableCreditV3: true })
-    })
-
-    it('should display subtitle with credit V3', () => {
-      render(
-        <AuthenticationModal
-          visible
-          offerId={OFFER_ID}
-          hideModal={hideModal}
-          from={StepperOrigin.BOOKING}
-        />
-      )
-
-      const subtitle = 'Tu as 17 ou 18 ans\u00a0?'
-
-      expect(screen.getByText(subtitle)).toBeOnTheScreen()
-    })
   })
 })

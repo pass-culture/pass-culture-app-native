@@ -18,7 +18,7 @@ const fetchRemoteConfig = async (): Promise<CustomRemoteConfig> => {
     eventMonitoring.captureException(`Error fetching remote config: ${errorMessage}`, {
       extra: { error },
     })
-    return DEFAULT_REMOTE_CONFIG
+    throw new Error(`Error fetching remote config: ${errorMessage}`)
   }
 }
 
@@ -28,6 +28,8 @@ export function useRemoteConfigQuery() {
     fetchRemoteConfig,
     {
       placeholderData: DEFAULT_REMOTE_CONFIG,
+      staleTime: 1000 * 60 * 5,
+      useErrorBoundary: false,
     }
   )
   return data

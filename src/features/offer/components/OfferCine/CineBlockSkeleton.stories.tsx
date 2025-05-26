@@ -9,8 +9,7 @@ const meta: Meta<typeof CineBlockSkeleton> = {
 }
 export default meta
 
-export const Default = (props: React.ComponentProps<typeof CineBlockSkeleton>) => (
-  <CineBlockSkeleton {...props} />
-)
-
-Default.args = {}
+export const Default = {
+  name: 'CineBlockSkeleton',
+  render: () => <CineBlockSkeleton />,
+}

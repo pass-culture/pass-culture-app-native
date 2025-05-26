@@ -6,10 +6,10 @@ import { VenueThematicSection } from 'features/venue/components/VenueThematicSec
 import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
 import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics/provider'
-import { mockAuthContextWithoutUser, mockAuthContextWithUser } from 'tests/AuthContextUtils'
+import { mockAuthContextWithUser, mockAuthContextWithoutUser } from 'tests/AuthContextUtils'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
+import { fireEvent, render, screen, userEvent, waitFor } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 
 jest.mock('libs/jwt/jwt')
@@ -40,6 +40,9 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
     return Component
   }
 })
+
+const user = userEvent.setup()
+jest.useFakeTimers()
 
 describe('<VenueThematicSection/>', () => {
   beforeEach(() => {
@@ -76,13 +79,11 @@ describe('<VenueThematicSection/>', () => {
 
       render(reactQueryProviderHOC(<VenueThematicSection venue={venueFixture} />))
 
-      fireEvent.press(screen.getByText('Suivre le thème'))
+      await user.press(screen.getByText('Suivre le thème'))
 
-      await waitFor(() => {
-        expect(mockShowSuccessSnackBar).toHaveBeenCalledWith({
-          message: 'Tu suis le thème “Cinéma”\u00a0! Tu peux gérer tes alertes depuis ton profil.',
-          timeout: SNACK_BAR_TIME_OUT,
-        })
+      expect(mockShowSuccessSnackBar).toHaveBeenCalledWith({
+        message: 'Tu suis le thème “Cinéma”\u00a0! Tu peux gérer tes alertes depuis ton profil.',
+        timeout: SNACK_BAR_TIME_OUT,
       })
     })
 
@@ -93,13 +94,11 @@ describe('<VenueThematicSection/>', () => {
 
       render(reactQueryProviderHOC(<VenueThematicSection venue={venueFixture} />))
 
-      fireEvent.press(screen.getByText('Suivre le thème'))
+      await user.press(screen.getByText('Suivre le thème'))
 
-      await waitFor(() => {
-        expect(mockShowErrorSnackBar).toHaveBeenCalledWith({
-          message: 'Une erreur est survenue, veuillez réessayer',
-          timeout: SNACK_BAR_TIME_OUT,
-        })
+      expect(mockShowErrorSnackBar).toHaveBeenCalledWith({
+        message: 'Une erreur est survenue, veuillez réessayer',
+        timeout: SNACK_BAR_TIME_OUT,
       })
     })
 
@@ -107,6 +106,8 @@ describe('<VenueThematicSection/>', () => {
       mockAuthContextWithoutUser()
       render(reactQueryProviderHOC(<VenueThematicSection venue={venueFixture} />))
 
+      // userEvent.press not working correctly here
+      // eslint-disable-next-line local-rules/no-fireEvent
       fireEvent.press(screen.getByText('Suivre le thème'))
 
       expect(await screen.findByText('Identifie-toi pour t’abonner à un thème')).toBeOnTheScreen()
@@ -120,6 +121,8 @@ describe('<VenueThematicSection/>', () => {
       mockAuthContextWithUser(userWithNoNotifications)
       render(reactQueryProviderHOC(<VenueThematicSection venue={venueFixture} />))
 
+      // userEvent.press not working correctly here
+      // eslint-disable-next-line local-rules/no-fireEvent
       fireEvent.press(screen.getByText('Suivre le thème'))
 
       expect(await screen.findByText('Autoriser l’envoi d’e-mails')).toBeOnTheScreen()
@@ -133,8 +136,11 @@ describe('<VenueThematicSection/>', () => {
       // Due to too many re-renders, we need to mock the auth context globally
       // eslint-disable-next-line local-rules/independent-mocks
       mockAuthContextWithUser(alreadySubscribedUser, { persist: true })
-      await act(async () => fireEvent.press(screen.getByText('Suivre le thème')))
-      fireEvent.press(await screen.findByText('Thème suivi'))
+
+      // userEvent.press not working correctly here
+      // eslint-disable-next-line local-rules/no-fireEvent
+      fireEvent.press(screen.getByText('Suivre le thème'))
+      await user.press(screen.getByText('Thème suivi'))
 
       expect(
         await screen.findByText('Es-tu sûr de ne plus vouloir suivre ce thème ?')
@@ -147,12 +153,12 @@ describe('<VenueThematicSection/>', () => {
 
     render(reactQueryProviderHOC(<VenueThematicSection venue={venueFixture} />))
 
+    // userEvent.press not working correctly here
+    // eslint-disable-next-line local-rules/no-fireEvent
     fireEvent.press(screen.getByText('Suivre le thème'))
 
-    fireEvent.press(await screen.findByText('Se connecter'))
+    await user.press(screen.getByText('Se connecter'))
 
-    await waitFor(() => {
-      expect(analytics.logLoginClicked).toHaveBeenCalledWith({ from: 'venue' })
-    })
+    expect(analytics.logLoginClicked).toHaveBeenCalledWith({ from: 'venue' })
   })
 })

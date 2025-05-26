@@ -43,7 +43,7 @@ export const algoliaVenuesFixture: AlgoliaVenue[] = [
     mental_disability: false,
     motor_disability: false,
     name: 'La librairie quantique',
-    isPermanent: true,
+    isPermanent: false,
     objectID: '4192',
     offerer_name: 'Syndicat des librairies physiques',
     phone_number: '+33102030405',

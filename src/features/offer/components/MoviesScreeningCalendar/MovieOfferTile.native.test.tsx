@@ -15,7 +15,7 @@ import { MovieOfferTile } from 'features/offer/components/MoviesScreeningCalenda
 import { NEXT_SCREENING_WORDING } from 'features/offer/components/MoviesScreeningCalendar/NextScreeningButton'
 import { MovieOffer } from 'features/offer/components/MoviesScreeningCalendar/types'
 import { VenueOffers } from 'features/venue/types'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { getDates } from 'shared/date/getDates'
 import { mockBuilder } from 'tests/mockBuilder'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'

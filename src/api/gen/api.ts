@@ -759,6 +759,11 @@ export interface BookingVenueResponse {
    * @type {string}
    * @memberof BookingVenueResponse
    */
+  bannerUrl?: string | null
+  /**
+   * @type {string}
+   * @memberof BookingVenueResponse
+   */
   city?: string | null
   /**
    * @type {Coordinates}
@@ -770,6 +775,11 @@ export interface BookingVenueResponse {
    * @memberof BookingVenueResponse
    */
   id: number
+  /**
+   * @type {boolean}
+   * @memberof BookingVenueResponse
+   */
+  isOpenToPublic: boolean
   /**
    * @type {string}
    * @memberof BookingVenueResponse
@@ -1250,22 +1260,22 @@ export interface DepositAmountsByAge {
    * @type {number}
    * @memberof DepositAmountsByAge
    */
-  age_15?: number
+  age_15: number
   /**
    * @type {number}
    * @memberof DepositAmountsByAge
    */
-  age_16?: number
+  age_16: number
   /**
    * @type {number}
    * @memberof DepositAmountsByAge
    */
-  age_17?: number
+  age_17: number
   /**
    * @type {number}
    * @memberof DepositAmountsByAge
    */
-  age_18?: number
+  age_18: number
 }
 /**
  * An enumeration.
@@ -1273,6 +1283,7 @@ export interface DepositAmountsByAge {
  * @enum {string}
  */
 export enum DepositType {
+  'GRANT_17_18' = 'GRANT_17_18',
   'GRANT_15_17' = 'GRANT_15_17',
   'GRANT_18' = 'GRANT_18',
 }
@@ -1303,6 +1314,8 @@ export interface DomainsCredit {
  * @enum {string}
  */
 export enum EligibilityType {
+  'age-17-18' = 'age-17-18',
+  'free' = 'free',
   'underage' = 'underage',
   'age-18' = 'age-18',
 }
@@ -1711,6 +1724,17 @@ export interface GetAvailableReactionsResponse {
    * @memberof GetAvailableReactionsResponse
    */
   numberOfReactableBookings: number
+}
+/**
+ * @export
+ * @interface GetRemindersResponse
+ */
+export interface GetRemindersResponse {
+  /**
+   * @type {Array<ReminderResponse>}
+   * @memberof GetRemindersResponse
+   */
+  reminders: Array<ReminderResponse>
 }
 /**
  * @export
@@ -3153,6 +3177,17 @@ export interface PostReactionRequest {
 }
 /**
  * @export
+ * @interface PostReminderRequest
+ */
+export interface PostReminderRequest {
+  /**
+   * @type {number}
+   * @memberof PostReminderRequest
+   */
+  offerId: number
+}
+/**
+ * @export
  * @interface ProfileUpdateRequest
  */
 export interface ProfileUpdateRequest {
@@ -3307,6 +3342,33 @@ export interface RefreshResponse {
    * @memberof RefreshResponse
    */
   accessToken: string
+}
+/**
+ * @export
+ * @interface ReminderOfferResponse
+ */
+export interface ReminderOfferResponse {
+  /**
+   * @type {number}
+   * @memberof ReminderOfferResponse
+   */
+  id: number
+}
+/**
+ * @export
+ * @interface ReminderResponse
+ */
+export interface ReminderResponse {
+  /**
+   * @type {number}
+   * @memberof ReminderResponse
+   */
+  id: number
+  /**
+   * @type {ReminderOfferResponse}
+   * @memberof ReminderResponse
+   */
+  offer: ReminderOfferResponse
 }
 /**
  * @export
@@ -3481,7 +3543,7 @@ export interface SettingsResponse {
    * @type {DepositAmountsByAge}
    * @memberof SettingsResponse
    */
-  depositAmountsByAge?: DepositAmountsByAge
+  depositAmountsByAge: DepositAmountsByAge
   /**
    * @type {boolean}
    * @memberof SettingsResponse
@@ -4788,6 +4850,38 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
       }
     },
     /**
+     * @summary delete_reminder <DELETE>
+     * @param {number} reminder_id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async deleteNativeV1MeRemindersreminderId(
+      reminder_id: number,
+      options: any = {}
+    ): Promise<FetchArgs> {
+      // verify required parameter 'reminder_id' is not null or undefined
+      if (reminder_id === null || reminder_id === undefined) {
+        throw new RequiredError(
+          'reminder_id',
+          'Required parameter reminder_id was null or undefined when calling deleteNativeV1MeRemindersreminderId.'
+        )
+      }
+      let pathname = `/native/v1/me/reminders/{reminder_id}`.replace(
+        `{${'reminder_id'}}`,
+        encodeURIComponent(String(reminder_id))
+      )
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      // authentication JWTAuth required
+      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
+      const localVarRequestOptions = Object.assign({ method: 'DELETE' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
+      return {
+        url: pathname,
+        options: localVarRequestOptions,
+      }
+    },
+    /**
      * @summary account_suspension_token_validation <GET>
      * @param {string} token
      * @param {*} [options] Override http request option.
@@ -5038,6 +5132,24 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
      */
     async getNativeV1MeFavoritesCount(options: any = {}): Promise<FetchArgs> {
       let pathname = `/native/v1/me/favorites/count`
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      // authentication JWTAuth required
+      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
+      const localVarRequestOptions = Object.assign({ method: 'GET' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
+      return {
+        url: pathname,
+        options: localVarRequestOptions,
+      }
+    },
+    /**
+     * @summary get_reminders <GET>
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getNativeV1MeReminders(options: any = {}): Promise<FetchArgs> {
+      let pathname = `/native/v1/me/reminders`
       let secureOptions = Object.assign(options, { credentials: 'omit' })
       // authentication JWTAuth required
       secureOptions = Object.assign(secureOptions, { credentials: 'include' })
@@ -5918,6 +6030,33 @@ export const DefaultApiFetchParamCreator = function (configuration?: Configurati
       }
     },
     /**
+     * @summary post_reminder <POST>
+     * @param {PostReminderRequest} [body]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postNativeV1MeReminders(
+      body?: PostReminderRequest,
+      options: any = {}
+    ): Promise<FetchArgs> {
+      let pathname = `/native/v1/me/reminders`
+      let secureOptions = Object.assign(options, { credentials: 'omit' })
+      // authentication JWTAuth required
+      secureOptions = Object.assign(secureOptions, { credentials: 'include' })
+      const localVarRequestOptions = Object.assign({ method: 'POST' }, secureOptions)
+      const localVarHeaderParameter = await getAuthenticationHeaders(secureOptions)
+      localVarHeaderParameter['Content-Type'] = 'application/json'
+      localVarRequestOptions.headers = Object.assign({}, localVarHeaderParameter, options.headers)
+      const needsSerialization =
+        <any>'PostReminderRequest' !== 'string' ||
+        localVarRequestOptions.headers['Content-Type'] === 'application/json'
+      localVarRequestOptions.body = needsSerialization ? JSON.stringify(body || {}) : body || ''
+      return {
+        url: pathname,
+        options: localVarRequestOptions,
+      }
+    },
+    /**
      * @summary create_account_with_google_sso <POST>
      * @param {GoogleAccountRequest} [body]
      * @param {*} [options] Override http request option.
@@ -6738,6 +6877,27 @@ export const DefaultApiFp = function (api: DefaultApi, configuration?: Configura
     },
     /**
      *
+     * @summary delete_reminder <DELETE>
+     * @param {number} reminder_id
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async deleteNativeV1MeRemindersreminderId(
+      reminder_id: number,
+      options?: any
+    ): Promise<EmptyResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(
+        configuration
+      ).deleteNativeV1MeRemindersreminderId(reminder_id, options)
+      const response = await safeFetch(
+        configuration?.basePath + localVarFetchArgs.url,
+        localVarFetchArgs.options,
+        api
+      )
+      return handleGeneratedApiResponse(response)
+    },
+    /**
+     *
      * @summary account_suspension_token_validation <GET>
      * @param {string} token
      * @param {*} [options] Override http request option.
@@ -6938,6 +7098,22 @@ export const DefaultApiFp = function (api: DefaultApi, configuration?: Configura
     async getNativeV1MeFavoritesCount(options?: any): Promise<FavoritesCountResponse> {
       const localVarFetchArgs =
         await DefaultApiFetchParamCreator(configuration).getNativeV1MeFavoritesCount(options)
+      const response = await safeFetch(
+        configuration?.basePath + localVarFetchArgs.url,
+        localVarFetchArgs.options,
+        api
+      )
+      return handleGeneratedApiResponse(response)
+    },
+    /**
+     *
+     * @summary get_reminders <GET>
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async getNativeV1MeReminders(options?: any): Promise<GetRemindersResponse> {
+      const localVarFetchArgs =
+        await DefaultApiFetchParamCreator(configuration).getNativeV1MeReminders(options)
       const response = await safeFetch(
         configuration?.basePath + localVarFetchArgs.url,
         localVarFetchArgs.options,
@@ -7644,6 +7820,27 @@ export const DefaultApiFp = function (api: DefaultApi, configuration?: Configura
     },
     /**
      *
+     * @summary post_reminder <POST>
+     * @param {PostReminderRequest} [body]
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     */
+    async postNativeV1MeReminders(
+      body?: PostReminderRequest,
+      options?: any
+    ): Promise<ReminderResponse> {
+      const localVarFetchArgs = await DefaultApiFetchParamCreator(
+        configuration
+      ).postNativeV1MeReminders(body, options)
+      const response = await safeFetch(
+        configuration?.basePath + localVarFetchArgs.url,
+        localVarFetchArgs.options,
+        api
+      )
+      return handleGeneratedApiResponse(response)
+    },
+    /**
+     *
      * @summary create_account_with_google_sso <POST>
      * @param {GoogleAccountRequest} [body]
      * @param {*} [options] Override http request option.
@@ -8288,6 +8485,21 @@ export class DefaultApi extends BaseAPI {
   }
   /**
    *
+   * @summary delete_reminder <DELETE>
+   * @param {number} reminder_id
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DefaultApi
+   */
+  public async deleteNativeV1MeRemindersreminderId(reminder_id: number, options?: any) {
+    const configuration = this.getConfiguration()
+    return DefaultApiFp(this, configuration).deleteNativeV1MeRemindersreminderId(
+      reminder_id,
+      options
+    )
+  }
+  /**
+   *
    * @summary account_suspension_token_validation <GET>
    * @param {string} token
    * @param {*} [options] Override http request option.
@@ -8427,6 +8639,17 @@ export class DefaultApi extends BaseAPI {
   public async getNativeV1MeFavoritesCount(options?: any) {
     const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).getNativeV1MeFavoritesCount(options)
+  }
+  /**
+   *
+   * @summary get_reminders <GET>
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DefaultApi
+   */
+  public async getNativeV1MeReminders(options?: any) {
+    const configuration = this.getConfiguration()
+    return DefaultApiFp(this, configuration).getNativeV1MeReminders(options)
   }
   /**
    *
@@ -8901,6 +9124,18 @@ export class DefaultApi extends BaseAPI {
   public async postNativeV1MeFavorites(body?: FavoriteRequest, options?: any) {
     const configuration = this.getConfiguration()
     return DefaultApiFp(this, configuration).postNativeV1MeFavorites(body, options)
+  }
+  /**
+   *
+   * @summary post_reminder <POST>
+   * @param {PostReminderRequest} [body]
+   * @param {*} [options] Override http request option.
+   * @throws {RequiredError}
+   * @memberof DefaultApi
+   */
+  public async postNativeV1MeReminders(body?: PostReminderRequest, options?: any) {
+    const configuration = this.getConfiguration()
+    return DefaultApiFp(this, configuration).postNativeV1MeReminders(body, options)
   }
   /**
    *

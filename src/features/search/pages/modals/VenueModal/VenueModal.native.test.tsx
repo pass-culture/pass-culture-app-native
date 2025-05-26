@@ -78,6 +78,8 @@ describe('VenueModal', () => {
     await user.type(venueSearchInput, mockVenues[0].label) // userEvent.type does more than fireEvent.replaceText so the next fireEvent can't be remove until we find how to properly use userEvent in this case
 
     const suggestedVenue = await screen.findByText(mockVenues[0].label)
+    // userEvent.press not working correctly here
+    // eslint-disable-next-line local-rules/no-fireEvent
     fireEvent.press(suggestedVenue)
 
     const validateButton = screen.getByText('Rechercher')
@@ -146,6 +148,8 @@ describe('VenueModal', () => {
     await user.type(venueSearchInput, mockVenues[0].label)
 
     const suggestedVenue = await screen.findByText(mockVenues[0].label)
+    // userEvent.press not working correctly here
+    // eslint-disable-next-line local-rules/no-fireEvent
     fireEvent.press(suggestedVenue)
 
     const validateButton = screen.getByText('Rechercher')

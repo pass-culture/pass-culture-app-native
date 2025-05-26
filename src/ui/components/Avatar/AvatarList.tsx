@@ -1,40 +1,56 @@
-import React, { FunctionComponent } from 'react'
+import { mergeWith } from 'lodash'
+import React, { FunctionComponent, useCallback } from 'react'
 import { FlatList } from 'react-native-gesture-handler'
 
 import { Artist } from 'features/venue/types'
-import { theme } from 'theme'
+import { AvatarProps } from 'ui/components/Avatar/Avatar'
 import { AvatarListItem, AvatarListItemProps } from 'ui/components/Avatar/AvatarListItem'
 import { Playlist } from 'ui/components/Playlist'
-import { getSpacing } from 'ui/theme'
 import { AVATAR_LARGE } from 'ui/theme/constants'
 
-type AvatarsListProps = {
+type AvatarListProps = {
   data: Artist[]
+  avatarConfig?: AvatarProps
   onItemPress: (artistName: string) => void
 }
 
-const GAP = getSpacing(2)
-const PLAYLIST_ITEM_HEIGHT =
-  AVATAR_LARGE + parseFloat(theme.designSystem.typography.title4.fontSize) + GAP
-const PLAYLIST_ITEM_WIDTH = AVATAR_LARGE
+const AVATAR_DEFAULT_CONFIG = {
+  size: AVATAR_LARGE,
+  rounded: true,
+} satisfies AvatarProps
 
-export const AvatarsList: FunctionComponent<AvatarsListProps> = ({ data, onItemPress }) => {
-  const renderAvatar = ({ item }: { item: AvatarListItemProps }) => (
-    <AvatarListItem
-      id={item.id}
-      image={item.image}
-      name={item.name}
-      width={PLAYLIST_ITEM_WIDTH}
-      onItemPress={onItemPress}
-    />
+export const AvatarList: FunctionComponent<AvatarListProps> = ({
+  data,
+  onItemPress,
+  avatarConfig = {},
+}) => {
+  const mergedAvatarConfig = mergeWith(
+    avatarConfig,
+    AVATAR_DEFAULT_CONFIG,
+    (value, srcValue) => value ?? srcValue
   )
+  const renderAvatar = useCallback(
+    ({ item }: { item: AvatarListItemProps }) => (
+      <AvatarListItem
+        id={item.id}
+        image={item.image}
+        name={item.name}
+        onItemPress={onItemPress}
+        {...mergedAvatarConfig}
+      />
+    ),
+    [onItemPress, mergedAvatarConfig]
+  )
+
+  const size = mergedAvatarConfig.size
+
   return (
     <Playlist
       data={data}
       keyExtractor={(item) => item.id}
       renderItem={renderAvatar}
-      itemHeight={PLAYLIST_ITEM_HEIGHT}
-      itemWidth={PLAYLIST_ITEM_WIDTH}
+      itemHeight={size}
+      itemWidth={size}
       FlatListComponent={FlatList}
     />
   )

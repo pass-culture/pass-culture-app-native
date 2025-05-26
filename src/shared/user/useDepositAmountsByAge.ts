@@ -7,15 +7,13 @@ import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacific
 
 export function useDepositAmountsByAge() {
   const { data: settings } = useSettingsContext()
-  const enableCreditV3 = settings?.wipEnableCreditV3
   const deposit = settings?.depositAmountsByAge
 
   const currency = useGetCurrencyToDisplay()
   const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
 
   const getDefaultAmountByAge = (ageKey: keyof DepositAmountsByAge): number => {
-    const version = enableCreditV3 ? 'v3' : 'v2'
-    return deposit?.[ageKey] ?? defaultCreditByAge[version][ageKey]
+    return deposit?.[ageKey] ?? defaultCreditByAge[ageKey]
   }
 
   const amountsByAge = {

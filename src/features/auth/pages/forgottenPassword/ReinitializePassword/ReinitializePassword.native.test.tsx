@@ -11,7 +11,7 @@ import { analytics } from 'libs/analytics/provider'
 import * as datesLib from 'libs/dates'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
+import { act, fireEvent, render, screen, userEvent, waitFor } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
@@ -57,6 +57,10 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
     return Component
   }
 })
+
+jest.useFakeTimers()
+
+const user = userEvent.setup()
 
 describe('ReinitializePassword Page', () => {
   beforeEach(() => {
@@ -119,9 +123,8 @@ describe('ReinitializePassword Page', () => {
     await act(async () => {
       fireEvent.changeText(confirmationInput, 'user@AZERTY123')
     })
-    await act(async () => {
-      fireEvent.press(screen.getByText('Se connecter'))
-    })
+
+    await user.press(screen.getByText('Se connecter'))
 
     expect(apiReinitializePasswordSpy).toHaveBeenCalledWith({
       newPassword: 'user@AZERTY123',
@@ -130,6 +133,8 @@ describe('ReinitializePassword Page', () => {
         deviceId: 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
         os: 'iOS',
         source: 'iPhone 13',
+        resolution: '750x1334',
+        screenZoomLevel: 2,
       },
     })
   })
@@ -150,9 +155,7 @@ describe('ReinitializePassword Page', () => {
     await act(async () => {
       fireEvent.changeText(confirmationInput, 'user@AZERTY123')
     })
-    await act(async () => {
-      fireEvent.press(screen.getByText('Se connecter'))
-    })
+    await user.press(screen.getByText('Se connecter'))
 
     expect(loginRoutine).toHaveBeenCalledWith(
       {
@@ -178,9 +181,7 @@ describe('ReinitializePassword Page', () => {
     await act(async () => {
       fireEvent.changeText(confirmationInput, 'user@AZERTY123')
     })
-    await act(async () => {
-      fireEvent.press(screen.getByText('Se connecter'))
-    })
+    await user.press(screen.getByText('Se connecter'))
 
     expect(navigateToHome).toHaveBeenCalledTimes(1)
   })
@@ -199,9 +200,7 @@ describe('ReinitializePassword Page', () => {
     await act(async () => {
       fireEvent.changeText(confirmationInput, 'user@AZERTY123')
     })
-    await act(async () => {
-      fireEvent.press(screen.getByText('Se connecter'))
-    })
+    await user.press(screen.getByText('Se connecter'))
 
     expect(analytics.logHasChangedPassword).toHaveBeenCalledWith({
       from: 'forgottenpassword',
@@ -225,9 +224,7 @@ describe('ReinitializePassword Page', () => {
     await act(async () => {
       fireEvent.changeText(confirmationInput, 'user@AZERTY123')
     })
-    await act(async () => {
-      fireEvent.press(screen.getByText('Se connecter'))
-    })
+    await user.press(screen.getByText('Se connecter'))
 
     expect(analytics.logHasChangedPassword).toHaveBeenCalledWith({
       from: 'accountsecurity',
@@ -249,9 +246,7 @@ describe('ReinitializePassword Page', () => {
     await act(async () => {
       fireEvent.changeText(confirmationInput, 'user@AZERTY123')
     })
-    await act(async () => {
-      fireEvent.press(screen.getByText('Se connecter'))
-    })
+    await user.press(screen.getByText('Se connecter'))
 
     expect(mockShowSuccessSnackBar).toHaveBeenCalledWith({
       message: 'Ton mot de passe est modifié\u00a0!',
@@ -270,9 +265,7 @@ describe('ReinitializePassword Page', () => {
     await act(async () => {
       fireEvent.changeText(confirmationInput, 'user@AZERTY123')
     })
-    await act(async () => {
-      fireEvent.press(screen.getByText('Se connecter'))
-    })
+    await user.press(screen.getByText('Se connecter'))
 
     expect(mockShowErrorSnackBar).toHaveBeenCalledWith({
       message: 'Une erreur s’est produite pendant la modification de ton mot de passe.',

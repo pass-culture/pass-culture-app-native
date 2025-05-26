@@ -3,7 +3,6 @@ import {
   BusinessModule,
   CategoryListModule,
   Color,
-  ExclusivityModule,
   Homepage,
   HomepageModuleType,
   HomepageTag,
@@ -132,18 +131,6 @@ export const formattedThematicHighlightModule: ThematicHighlightModule = {
   beginningDate: new Date('2022-12-21T23:00:00.000Z'),
   endingDate: new Date('2023-01-14T23:00:00.000Z'),
   toThematicHomeEntryId: '6DCThxvbPFKAo04SVRZtwY',
-}
-
-export const formattedExclusivityModule: ExclusivityModule = {
-  type: HomepageModuleType.ExclusivityModule,
-  id: 'AEYnm9QjIo2rZKoCfSvMD',
-  title: 'WE FRAC CAEN',
-  alt: 'Week-end FRAC',
-  image:
-    'https://images.ctfassets.net/2bg01iqy0isv/1uTePwMo6qxJo7bMM7VLeX/fdea7eb6fd7ab2003a5f1eeaba2565e9/17-insta-1080x1350_560x800.jpg',
-  url: undefined,
-  offerId: 123456789,
-  displayParameters: undefined,
 }
 
 export const formattedOffersModule: OffersModule = {
@@ -302,7 +289,6 @@ export const adaptedHomepage: Homepage = {
   modules: [
     formattedBusinessModule,
     formattedOffersModule,
-    formattedExclusivityModule,
     formattedRecommendedOffersModule,
     formattedVenuesModule,
     formattedCategoryListModule,

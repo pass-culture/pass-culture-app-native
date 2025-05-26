@@ -1,13 +1,12 @@
 import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
-import { setSettings } from 'features/auth/tests/setSettings'
 import { BeneficiaryAccountCreated } from 'features/identityCheck/pages/confirmation/BeneficiaryAccountCreated'
 import * as ShareAppWrapperModule from 'features/share/context/ShareAppWrapper'
 import { ShareAppWrapper } from 'features/share/context/ShareAppWrapper'
 import { ShareAppModalType } from 'features/share/types'
 import { beneficiaryUser, underageBeneficiaryUser } from 'fixtures/user'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
@@ -109,75 +108,24 @@ describe('<BeneficiaryAccountCreated/>', () => {
     expect(navigate).toHaveBeenNthCalledWith(1, 'TabNavigator', { screen: 'Home' })
   })
 
-  it('should have correct credit information text for beneficiary user', async () => {
-    mockAuthContextWithUser({ ...beneficiaryUser }, { persist: true })
+  it('should have correct amount for underage users', async () => {
     renderBeneficiaryAccountCreated()
 
-    const recreditText = screen.getByText('Tu as deux ans pour profiter de ton crédit.')
-
-    await act(() => {
-      expect(recreditText).toBeOnTheScreen()
-    })
-  })
-
-  it('should have correct credit information text for underage beneficiary', async () => {
-    renderBeneficiaryAccountCreated()
-
-    const recreditText = screen.getByText(
-      'Tu as jusqu’à la veille de tes 18 ans pour profiter de ton crédit.'
-    )
-
-    await act(() => {
-      expect(recreditText).toBeOnTheScreen()
-    })
-  })
-
-  it('should show correct amount', async () => {
-    renderBeneficiaryAccountCreated()
-
-    const recreditAmount = screen.getByText('300 €')
+    const recreditAmount = screen.getByText('50 €')
 
     await act(() => {
       expect(recreditAmount).toBeOnTheScreen()
     })
   })
 
-  describe('when enableCreditV3 activated', () => {
-    beforeEach(() => {
-      setSettings({ wipEnableCreditV3: true })
-    })
+  it('should have correct amount for 18 year old users', async () => {
+    mockAuthContextWithUser(beneficiaryUser, { persist: true })
+    renderBeneficiaryAccountCreated()
 
-    it('should have correct amount for underage users', async () => {
-      renderBeneficiaryAccountCreated()
+    const recreditAmount = screen.getByText('150 €')
 
-      const recreditAmount = screen.getByText('50 €')
-
-      await act(() => {
-        expect(recreditAmount).toBeOnTheScreen()
-      })
-    })
-
-    it('should have correct amount for 18 year old users', async () => {
-      mockAuthContextWithUser(beneficiaryUser, { persist: true })
-      renderBeneficiaryAccountCreated()
-
-      const recreditAmount = screen.getByText('150 €')
-
-      await act(() => {
-        expect(recreditAmount).toBeOnTheScreen()
-      })
-    })
-
-    it('should have correct credit information text', async () => {
-      renderBeneficiaryAccountCreated()
-
-      const recreditText = screen.getByText(
-        'Tu as jusqu’à la veille de tes 21 ans pour utiliser tout ton crédit.'
-      )
-
-      await act(() => {
-        expect(recreditText).toBeOnTheScreen()
-      })
+    await act(() => {
+      expect(recreditAmount).toBeOnTheScreen()
     })
   })
 })

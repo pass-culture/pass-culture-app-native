@@ -7,7 +7,7 @@ import { UserProfileResponse } from 'api/gen'
 import { initialSubscriptionState } from 'features/identityCheck/context/reducer'
 import * as SubscriptionContextProvider from 'features/identityCheck/context/SubscriptionContextProvider'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render, screen } from 'tests/utils'
+import { act, fireEvent, render, screen, userEvent } from 'tests/utils'
 
 import { SetPhoneNumberWithoutValidation } from './SetPhoneNumberWithoutValidation'
 
@@ -17,6 +17,9 @@ const patchProfile = jest.spyOn(API.api, 'patchNativeV1Profile')
 
 const mockDispatch = jest.fn()
 const mockUseSubscriptionContext = jest.spyOn(SubscriptionContextProvider, 'useSubscriptionContext')
+
+const user = userEvent.setup()
+jest.useFakeTimers()
 
 describe('SetPhoneNumberWithoutValidation', () => {
   beforeEach(() => {
@@ -161,10 +164,7 @@ describe('SetPhoneNumberWithoutValidation', () => {
   async function submitWithPhoneNumber(phoneNumber: string) {
     await fillPhoneNumberInput(phoneNumber)
 
-    await act(() => {
-      const button = screen.getByText('Continuer')
-      fireEvent.press(button)
-    })
+    await user.press(screen.getByText('Continuer'))
   }
 
   function givenStoredPhoneNumber(

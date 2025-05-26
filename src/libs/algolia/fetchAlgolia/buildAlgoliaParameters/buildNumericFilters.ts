@@ -4,33 +4,36 @@ import {
   buildOfferLast30DaysBookings,
   buildOfferPriceRangePredicate,
 } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/helpers/buildNumericFiltersHelpers/buildNumericFiltersHelpers'
-import { SearchQueryParameters, FiltersArray } from 'libs/algolia/types'
+import { FiltersArray, SearchQueryParameters } from 'libs/algolia/types'
 
-export const buildNumericFilters = ({
-  date,
-  beginningDatetime,
-  endingDatetime,
-  offerIsFree,
-  priceRange,
-  timeRange,
-  minPrice,
-  maxPrice,
-  maxPossiblePrice,
-  minBookingsThreshold,
-}: Pick<
-  SearchQueryParameters,
-  | 'beginningDatetime'
-  | 'endingDatetime'
-  | 'date'
-  | 'offerIsFree'
-  | 'priceRange'
-  | 'timeRange'
-  | 'minPrice'
-  | 'maxPrice'
-  | 'maxPossiblePrice'
-  | 'minBookingsThreshold'
-  | 'isHeadline'
->): null | {
+export const buildNumericFilters = (
+  {
+    date,
+    beginningDatetime,
+    endingDatetime,
+    offerIsFree,
+    priceRange,
+    timeRange,
+    minPrice,
+    maxPrice,
+    maxPossiblePrice,
+    minBookingsThreshold,
+  }: Pick<
+    SearchQueryParameters,
+    | 'beginningDatetime'
+    | 'endingDatetime'
+    | 'date'
+    | 'offerIsFree'
+    | 'priceRange'
+    | 'timeRange'
+    | 'minPrice'
+    | 'maxPrice'
+    | 'maxPossiblePrice'
+    | 'minBookingsThreshold'
+    | 'isHeadline'
+  >,
+  isUsedFromSearch?: boolean
+): null | {
   numericFilters: FiltersArray
 } => {
   const priceRangePredicate = buildOfferPriceRangePredicate({
@@ -41,7 +44,13 @@ export const buildNumericFilters = ({
     maxPossiblePrice,
   })
   const datePredicate = buildDatePredicate({ date, timeRange })
-  const homepageDatePredicate = buildHomepageDatePredicate({ beginningDatetime, endingDatetime })
+  const homepageDatePredicate = buildHomepageDatePredicate(
+    {
+      beginningDatetime,
+      endingDatetime,
+    },
+    isUsedFromSearch
+  )
   const last30DaysBookingsPredicate = buildOfferLast30DaysBookings(minBookingsThreshold)
   const numericFilters: FiltersArray = []
 

@@ -1,3 +1,4 @@
+import { StackScreenProps } from '@react-navigation/stack'
 import { FeatureCollection, Point } from 'geojson'
 import React from 'react'
 
@@ -5,7 +6,9 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { SettingsResponse } from 'api/gen'
 import { SettingsWrapper } from 'features/auth/context/SettingsContext'
 import { defaultSettings } from 'features/auth/fixtures/fixtures'
+import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
 import { SetAddress } from 'features/identityCheck/pages/profile/SetAddress'
+import { SubscriptionRootStackParamList } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
 import { mockedSuggestedPlaces } from 'libs/place/fixtures/mockedSuggestedPlaces'
@@ -13,7 +16,7 @@ import { Properties } from 'libs/place/types'
 import { storage } from 'libs/storage'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render, waitFor, screen } from 'tests/utils'
+import { fireEvent, render, screen, userEvent, waitFor } from 'tests/utils'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
 const QUERY_ADDRESS = '1 rue Poissonnière'
@@ -34,6 +37,10 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
+const user = userEvent.setup()
+
+jest.useFakeTimers()
+
 describe('<SetAddress/>', () => {
   beforeEach(() => {
     mockServer.universalGet<FeatureCollection<Point, Properties>>(
@@ -46,17 +53,31 @@ describe('<SetAddress/>', () => {
   mockUseNetInfoContext.mockReturnValue({ isConnected: true, isInternetReachable: true })
 
   it('should render correctly', async () => {
-    renderSetAddress()
+    renderSetAddress({ type: ProfileTypes.IDENTITY_CHECK })
 
     await screen.findByText('Recherche et sélectionne ton adresse')
 
     expect(screen).toMatchSnapshot()
   })
 
-  it('should display a list of addresses when user add an address', async () => {
-    renderSetAddress()
+  it('should display correct infos in identity check', async () => {
+    renderSetAddress({ type: ProfileTypes.IDENTITY_CHECK })
 
-    const input = screen.getByPlaceholderText('Ex\u00a0: 34 avenue de l’Opéra')
+    expect(await screen.findByText('Profil')).toBeTruthy()
+    expect(await screen.findByText('Quelle est ton adresse\u00a0?')).toBeTruthy()
+  })
+
+  it('should display correct infos in booking free offer 15/16 years', async () => {
+    renderSetAddress({ type: ProfileTypes.BOOKING_FREE_OFFER_15_16 })
+
+    expect(await screen.findByText('Informations personnelles')).toBeTruthy()
+    expect(await screen.findByText('Saisis ton adresse postale')).toBeTruthy()
+  })
+
+  it('should display a list of addresses when user add an address', async () => {
+    renderSetAddress({ type: ProfileTypes.IDENTITY_CHECK })
+
+    const input = screen.getByTestId('Entrée pour l’adresse')
     fireEvent.changeText(input, QUERY_ADDRESS)
 
     await waitFor(() => {
@@ -67,58 +88,56 @@ describe('<SetAddress/>', () => {
   })
 
   it('should navigate to SetStatus when clicking on "Continuer"', async () => {
-    renderSetAddress()
+    renderSetAddress({ type: ProfileTypes.IDENTITY_CHECK })
 
-    const input = screen.getByPlaceholderText('Ex\u00a0: 34 avenue de l’Opéra')
+    const input = screen.getByTestId('Entrée pour l’adresse')
     fireEvent.changeText(input, QUERY_ADDRESS)
 
-    await screen.findByText(mockedSuggestedPlaces.features[1].properties.label)
-    fireEvent.press(screen.getByText(mockedSuggestedPlaces.features[1].properties.label))
-    fireEvent.press(screen.getByText('Continuer'))
+    await user.press(await screen.findByText(mockedSuggestedPlaces.features[1].properties.label))
+    await user.press(screen.getByText('Continuer'))
 
-    await waitFor(() => {
-      expect(navigate).toHaveBeenNthCalledWith(1, 'SetStatus')
+    expect(navigate).toHaveBeenNthCalledWith(1, 'SetStatus', {
+      type: ProfileTypes.IDENTITY_CHECK,
     })
   })
 
   it('should save address in local storage when clicking on "Continuer"', async () => {
-    renderSetAddress()
+    renderSetAddress({ type: ProfileTypes.IDENTITY_CHECK })
 
-    const input = screen.getByPlaceholderText('Ex\u00a0: 34 avenue de l’Opéra')
+    const input = screen.getByTestId('Entrée pour l’adresse')
     fireEvent.changeText(input, QUERY_ADDRESS)
 
-    await screen.findByText(mockedSuggestedPlaces.features[1].properties.label)
-    fireEvent.press(screen.getByText(mockedSuggestedPlaces.features[1].properties.label))
-    fireEvent.press(screen.getByText('Continuer'))
+    await user.press(await screen.findByText(mockedSuggestedPlaces.features[1].properties.label))
+    await user.press(screen.getByText('Continuer'))
 
-    await waitFor(async () => {
-      expect(await storage.readObject('profile-address')).toMatchObject({
-        state: {
-          address: mockedSuggestedPlaces.features[1].properties.label,
-        },
-      })
+    expect(await storage.readObject('profile-address')).toMatchObject({
+      state: {
+        address: mockedSuggestedPlaces.features[1].properties.label,
+      },
     })
   })
 
   it('should log analytics on press Continuer', async () => {
-    renderSetAddress()
+    renderSetAddress({ type: ProfileTypes.IDENTITY_CHECK })
 
-    const input = screen.getByPlaceholderText('Ex\u00a0: 34 avenue de l’Opéra')
+    const input = screen.getByTestId('Entrée pour l’adresse')
     fireEvent.changeText(input, QUERY_ADDRESS)
 
-    fireEvent.press(screen.getByText('Continuer'))
+    await user.press(screen.getByText('Continuer'))
 
-    await screen.findByText('Recherche et sélectionne ton adresse')
-
-    await waitFor(() => expect(analytics.logSetAddressClicked).toHaveBeenCalledTimes(1))
+    expect(analytics.logSetAddressClicked).toHaveBeenCalledTimes(1)
   })
 })
 
-function renderSetAddress() {
+const renderSetAddress = (navigationParams: { type: string }) => {
+  const navProps = { route: { params: navigationParams } } as StackScreenProps<
+    SubscriptionRootStackParamList,
+    'SetAddress'
+  >
   return render(
     reactQueryProviderHOC(
       <SettingsWrapper>
-        <SetAddress />
+        <SetAddress {...navProps} />
       </SettingsWrapper>
     )
   )

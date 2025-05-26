@@ -1,9 +1,10 @@
 import React from 'react'
 import { Text } from 'react-native'
 
+import { MarketingBlockProps } from 'features/home/components/modules/marketing/types'
 import { render, screen } from 'tests/utils'
 
-import { MarketingBlock, MarketingBlockProps } from './MarketingBlock'
+import { MarketingBlock } from './MarketingBlock'
 
 const props: MarketingBlockProps = {
   accessibilityLabel: 'Accessibility label',

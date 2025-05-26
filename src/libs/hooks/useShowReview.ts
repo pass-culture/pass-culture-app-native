@@ -16,18 +16,30 @@ export const useShowReview = () => {
 
   useEffect(() => {
     // In web InAppReview.isAvailable() is false, so we never ask a review from the webapp with this hook
-    if (InAppReview.isAvailable() && shouldReviewBeRequested && !disableStoreReview) {
+    if (
+      InAppReview.isAvailable() &&
+      shouldReviewBeRequested &&
+      !disableStoreReview &&
+      timeoutRef.current === undefined
+    ) {
       timeoutRef.current = setTimeout(
         () =>
           InAppReview.RequestInAppReview()
             .then((hasFlowFinishedSuccessfully) => {
-              if (hasFlowFinishedSuccessfully) updateInformationWhenReviewHasBeenRequested()
+              if (timeoutRef.current && hasFlowFinishedSuccessfully) {
+                updateInformationWhenReviewHasBeenRequested()
+              }
+              timeoutRef.current = undefined
             })
             .catch((error) => {
               eventMonitoring.captureException(error)
             }),
         3000
       )
+    }
+    return () => {
+      clearTimeout(timeoutRef.current)
+      timeoutRef.current = undefined
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [shouldReviewBeRequested, disableStoreReview])
@@ -36,6 +48,7 @@ export const useShowReview = () => {
     () => undefined,
     () => {
       clearTimeout(timeoutRef.current)
+      timeoutRef.current = undefined
     },
     // eslint-disable-next-line react-hooks/exhaustive-deps
     []

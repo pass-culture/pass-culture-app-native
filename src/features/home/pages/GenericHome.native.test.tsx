@@ -1,5 +1,6 @@
 import React, { ComponentProps } from 'react'
 
+import { useRoute } from '__mocks__/@react-navigation/native'
 import { SubcategoriesResponseModelv2 } from 'api/gen'
 import * as showSkeletonAPI from 'features/home/api/useShowSkeleton'
 import {
@@ -9,11 +10,12 @@ import {
 } from 'features/home/fixtures/homepage.fixture'
 import { GenericHome } from 'features/home/pages/GenericHome'
 import { analytics } from 'libs/analytics/provider'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
 import { BatchProfile } from 'libs/react-native-batch'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
+import { setViewOfferTrackingFn, logViewOffer } from 'shared/analytics/logViewOffer'
+import { setPageTrackingInfo } from 'store/tracking/offerPlaylistTrackingStore'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, render, screen, waitFor, within } from 'tests/utils'
@@ -21,6 +23,8 @@ import { Typo } from 'ui/theme'
 const useShowSkeletonSpy = jest.spyOn(showSkeletonAPI, 'useShowSkeleton').mockReturnValue(false)
 
 const mockUseNetInfoContext = jest.spyOn(useNetInfoContextDefault, 'useNetInfoContext') as jest.Mock
+
+useRoute.mockReturnValue({ name: 'Home' })
 
 jest.mock('features/auth/context/AuthContext', () => ({
   useAuthContext: jest.fn(() => ({ isLoggedIn: true })),
@@ -31,6 +35,8 @@ const homeId = 'fake-id'
 const Header = <Typo.Title1>Header</Typo.Title1>
 
 jest.mock('libs/firebase/analytics/analytics')
+jest.mock('shared/analytics/logViewOffer')
+jest.mock('store/tracking/offerPlaylistTrackingStore')
 
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   return function createAnimatedComponent(Component: unknown) {
@@ -73,10 +79,6 @@ describe('GenericHome', () => {
   })
 
   describe('VideoCarouselModule', () => {
-    beforeEach(() => {
-      setFeatureFlags([RemoteStoreFeatureFlags.WIP_APP_V2_VIDEO_9_16])
-    })
-
     describe('Home N-1', () => {
       it('should not display video in header if videoCarouselModule is the first module given', async () => {
         const modules = [formattedVideoCarouselModuleWithMultipleItems, formattedVenuesModule]
@@ -135,8 +137,6 @@ describe('GenericHome', () => {
   })
 })
 
-jest.mock('libs/firebase/analytics/analytics')
-
 describe('GenericHome page - Analytics', () => {
   const scrollEventMiddle = {
     nativeEvent: {
@@ -158,6 +158,35 @@ describe('GenericHome page - Analytics', () => {
   beforeEach(() => {
     setFeatureFlags()
     mockServer.getApi<SubcategoriesResponseModelv2>('/v1/subcategories/v2', subcategoriesDataTest)
+  })
+
+  it('[OfferView] should set tracking function at start', async () => {
+    renderGenericHome({})
+
+    await waitFor(() => expect(setViewOfferTrackingFn).toHaveBeenCalledWith(analytics.logViewOffer))
+  })
+
+  it('[OfferView] should set page info in store', async () => {
+    renderGenericHome({})
+
+    await waitFor(() =>
+      expect(setPageTrackingInfo).toHaveBeenCalledWith({
+        pageId: 'fake-id',
+        pageLocation: 'Home',
+      })
+    )
+  })
+
+  it('[OfferView] should log offer view when blur', async () => {
+    const { unmount } = renderGenericHome({})
+
+    await waitFor(() => expect(setPageTrackingInfo).toHaveBeenCalledTimes(1))
+    unmount()
+
+    // Because of the way useFocusEffect is mocked, it is called more than it should be.
+    // Therefore we just test that the log method is called at least once.
+    // eslint-disable-next-line jest/prefer-called-with
+    await waitFor(() => expect(logViewOffer).toHaveBeenCalled())
   })
 
   it('should trigger logEvent "AllModulesSeen" when reaching the end', async () => {

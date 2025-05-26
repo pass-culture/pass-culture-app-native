@@ -26,6 +26,7 @@ module.exports = {
     '^libs(.*)$': '<rootDir>/src/libs$1',
     '^queries(.*)$': '<rootDir>/src/queries$1',
     '^shared(.*)$': '<rootDir>/src/shared$1',
+    '^store(.*)$': '<rootDir>/src/store$1',
     '^tests(.*)$': '<rootDir>/src/tests$1',
     '^theme(.*)$': '<rootDir>/src/theme$1',
     '^types(.*)$': '<rootDir>/src/types$1',
@@ -52,6 +53,7 @@ module.exports = {
       '|@react-native-firebase/remote-config' +
       '|@sentry/react-native' +
       '|react-native-geolocation-service' +
+      '|react-native-orientation-locker' +
       '|instantsearch.js' +
       '|design-system' +
       '/(?!(lib)))',
@@ -74,6 +76,7 @@ module.exports = {
   ],
   coveragePathIgnorePatterns: ['\\.web\\.(test|spec)', '/node_modules/', '/src/environment'],
   collectCoverage: false,
+  coverageReporters: ['json'],
   // TODO(PC-20887): Investigate how to avoid timeouts in CI without increasing default timeout
   testTimeout: 10_000,
 }

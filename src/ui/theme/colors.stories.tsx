@@ -28,7 +28,10 @@ const Template: StoryFn<React.FC> = () => (
     <ColorsSection colorsPalette={UniqueColors} />
   </React.Fragment>
 )
-export const AllColors = Template.bind({})
+export const AllColors = {
+  name: 'Colors',
+  render: Template,
+}
 
 const Color: FunctionComponent<ColorProps> = ({ name, color }) => {
   const [copiedColor, setCopiedColor] = useState<string | null>(null)

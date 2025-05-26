@@ -2,7 +2,6 @@ import { useNavigation } from '@react-navigation/native'
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
-import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { StepperOrigin, UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
 import { SystemBanner } from 'ui/components/ModuleBanner/SystemBanner'
@@ -12,11 +11,9 @@ const onBeforeNavigate = () => analytics.logSignUpClicked({ from: 'home' })
 
 export const SignupBanner: FunctionComponent = () => {
   const { navigate } = useNavigation<UseNavigationType>()
-  const { data: settings } = useSettingsContext()
-  const enableCreditV3 = settings?.wipEnableCreditV3
 
   const title = 'Débloque ton crédit'
-  const subtitle = `Crée ton compte si tu as ${enableCreditV3 ? '17 ou 18' : 'entre 15 et 18'} ans\u00a0!`
+  const subtitle = 'Crée ton compte si tu as 17 ou 18 ans\u00a0!'
 
   const onSystemBannerPress = () => {
     onBeforeNavigate()

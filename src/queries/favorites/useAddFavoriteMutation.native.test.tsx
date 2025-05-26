@@ -4,7 +4,7 @@ import { View } from 'react-native'
 import { FavoriteResponse } from 'api/gen'
 import { FavoritesWrapper } from 'features/favorites/context/FavoritesWrapper'
 import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteResponseSnap'
-import { simulateBackend } from 'features/favorites/helpers/simulateBackend'
+import { simulateBackend } from 'features/favorites/tests/simulateBackend'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, waitFor } from 'tests/utils'
 import {

@@ -1,7 +1,6 @@
 import React from 'react'
 
-import { setSettings } from 'features/auth/tests/setSettings'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -46,6 +45,13 @@ describe('<Profile/>', () => {
     expect(screen.queryByText('Partage le pass Culture')).not.toBeInTheDocument()
   })
 
+  // TODO(PC-35459): Remove this test when add dark theme button in DisplayPreference
+  it('should not display display preference', () => {
+    renderProfile()
+
+    expect(screen.queryByText('Préférences d’affichage')).not.toBeInTheDocument()
+  })
+
   it('should render correctly on desktop', async () => {
     const { container } = render(reactQueryProviderHOC(<Profile />), {
       theme: { isDesktopViewport: true },
@@ -64,42 +70,6 @@ describe('<Profile/>', () => {
     await screen.findByText('Centre d’aide')
 
     expect(container).toMatchSnapshot()
-  })
-
-  describe('if enableCreditV3 is true', () => {
-    beforeEach(() => {
-      setSettings({ wipEnableCreditV3: true })
-    })
-
-    it('should see "17 ou 18"', async () => {
-      render(reactQueryProviderHOC(<Profile />), {
-        theme: { isDesktopViewport: true },
-      })
-
-      const text = await screen.findByText(
-        'Envie d’explorer des offres culturelles ou de débloquer ton crédit si tu as 17 ou 18 ans ?'
-      )
-
-      expect(text).toBeTruthy()
-    })
-  })
-
-  describe('if enableCreditV3 is false', () => {
-    beforeEach(() => {
-      setSettings()
-    })
-
-    it('should see "15 et 18"', async () => {
-      render(reactQueryProviderHOC(<Profile />), {
-        theme: { isDesktopViewport: true },
-      })
-
-      const text = await screen.findByText(
-        'Envie d’explorer des offres culturelles ou de débloquer ton crédit si tu as entre 15 et 18 ans ?'
-      )
-
-      expect(text).toBeTruthy()
-    })
   })
 })
 

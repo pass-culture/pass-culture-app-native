@@ -41,7 +41,6 @@ exports[`BookingDetails OldBookingDetails : when FF WIP_NEW_BOOKING_PAGE is off 
           [
             {
               "alignItems": "center",
-              "minHeight": 0,
             },
             {
               "marginBottom": 128,
@@ -139,6 +138,7 @@ exports[`BookingDetails OldBookingDetails : when FF WIP_NEW_BOOKING_PAGE is off 
                           "longitude": 2.43884,
                         },
                         "id": 2185,
+                        "isOpenToPublic": true,
                         "name": "Maison de la Brique",
                         "postalCode": "93700",
                         "timezone": "Europe/Paris",
@@ -171,7 +171,7 @@ exports[`BookingDetails OldBookingDetails : when FF WIP_NEW_BOOKING_PAGE is off 
         removeClippedSubviews={false}
         renderItem={[Function]}
         scrollEnabled={true}
-        scrollEventThrottle={50}
+        scrollEventThrottle={0.0001}
         showsHorizontalScrollIndicator={false}
         snapToInterval={740.8}
         stickyHeaderIndices={[]}
@@ -527,6 +527,126 @@ exports[`BookingDetails OldBookingDetails : when FF WIP_NEW_BOOKING_PAGE is off 
                 ]
               }
             />
+            <View
+              accessibilityLabel="Au nom de Jean Dupond"
+              accessibilityRole="button"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": true,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              collapsable={false}
+              focusable={false}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                {
+                  "opacity": 1,
+                  "userSelect": "auto",
+                }
+              }
+              testID="Au nom de Jean Dupond"
+            >
+              <View
+                style={
+                  [
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                      "justifyContent": "space-between",
+                    },
+                    undefined,
+                  ]
+                }
+              >
+                <View
+                  fill="url(#gradienttestUuid)"
+                  height={20}
+                  testID="BicolorProfile"
+                  width={20}
+                >
+                  <Text>
+                    BicolorProfile-SVG-Mock
+                  </Text>
+                </View>
+                <View
+                  numberOfSpaces={2}
+                  style={
+                    [
+                      {
+                        "width": 8,
+                      },
+                    ]
+                  }
+                />
+                <View
+                  style={
+                    [
+                      {
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "textAlign": "left",
+                      },
+                    ]
+                  }
+                >
+                  <View
+                    style={
+                      [
+                        {
+                          "alignItems": "center",
+                          "flexDirection": "row",
+                        },
+                      ]
+                    }
+                  >
+                    <Text
+                      style={
+                        [
+                          {
+                            "color": "#161617",
+                            "fontFamily": "Montserrat-Medium",
+                            "fontSize": 16,
+                            "lineHeight": 25.6,
+                          },
+                        ]
+                      }
+                    >
+                      Jean Dupond
+                    </Text>
+                    <View
+                      numberOfSpaces={2}
+                      style={
+                        [
+                          {
+                            "width": 8,
+                          },
+                        ]
+                      }
+                    />
+                  </View>
+                </View>
+              </View>
+            </View>
             <View
               numberOfSpaces={5}
               style={
@@ -1065,7 +1185,8 @@ exports[`BookingDetails OldBookingDetails : when FF WIP_NEW_BOOKING_PAGE is off 
               }
               testID="cancel-or-archive-message"
             >
-              Tu ne peux plus annuler ta réservation. Elle expirera automatiquement le 17/03/2021
+              Ton crédit est expiré.
+Tu ne peux plus annuler ta réservation : elle devait être annulée avant le 15 mars 2021
             </Text>
           </View>
         </View>
@@ -1296,65 +1417,5 @@ exports[`BookingDetails OldBookingDetails : when FF WIP_NEW_BOOKING_PAGE is off 
       </View>
     </View>
   </View>
-  <Modal
-    accessibilityLabelledBy="testUuidV4"
-    accessibilityModal={true}
-    animationType="none"
-    deviceHeight={1334}
-    deviceWidth={750}
-    hardwareAccelerated={false}
-    hideModalContentWhileAnimating={false}
-    onBackdropPress={[Function]}
-    onModalHide={[Function]}
-    onModalWillHide={[Function]}
-    onModalWillShow={[Function]}
-    onRequestClose={[Function]}
-    panResponderThreshold={4}
-    scrollHorizontal={false}
-    scrollOffset={0}
-    scrollOffsetMax={0}
-    scrollTo={null}
-    statusBarTranslucent={true}
-    supportedOrientations={
-      [
-        "portrait",
-        "landscape",
-      ]
-    }
-    swipeThreshold={100}
-    testID="modal"
-    transparent={true}
-    visible={false}
-  />
-  <Modal
-    accessibilityLabelledBy="testUuidV4"
-    accessibilityModal={true}
-    animationType="none"
-    deviceHeight={1334}
-    deviceWidth={750}
-    hardwareAccelerated={false}
-    hideModalContentWhileAnimating={false}
-    onBackdropPress={[Function]}
-    onModalHide={[Function]}
-    onModalWillHide={[Function]}
-    onModalWillShow={[Function]}
-    onRequestClose={[Function]}
-    panResponderThreshold={4}
-    scrollHorizontal={false}
-    scrollOffset={0}
-    scrollOffsetMax={0}
-    scrollTo={null}
-    statusBarTranslucent={true}
-    supportedOrientations={
-      [
-        "portrait",
-        "landscape",
-      ]
-    }
-    swipeThreshold={100}
-    testID="modal"
-    transparent={true}
-    visible={false}
-  />
 </View>
 `;

@@ -3,13 +3,13 @@ import React, { FunctionComponent } from 'react'
 
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { useGoBack } from 'features/navigation/useGoBack'
-import { useVenue } from 'features/venue/api/useVenue'
+import { useVenueQuery } from 'features/venue/queries/useVenueQuery'
 import { ImagesCarousel } from 'ui/components/ImagesCarousel/ImagesCarousel'
 
 export const VenuePreviewCarousel: FunctionComponent = () => {
   const { params } = useRoute<UseRouteType<'VenuePreviewCarousel'>>()
   const { goBack } = useGoBack('Venue', { id: params.id })
-  const { data: venue } = useVenue(params.id)
+  const { data: venue } = useVenueQuery(params.id)
 
   const defaultIndex = params.defaultIndex ?? 0
 

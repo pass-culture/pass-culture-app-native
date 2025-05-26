@@ -17,7 +17,6 @@ import styled from 'styled-components/native'
 import { Referrals, UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { useSearch } from 'features/search/context/SearchWrapper'
-import { useVenueOffers } from 'features/venue/api/useVenueOffers'
 import { useVenueSearchParameters } from 'features/venue/helpers/useVenueSearchParameters'
 import { VenueMapBottomSheet } from 'features/venueMap/components/VenueMapBottomSheet/VenueMapBottomSheet'
 import { transformGeoLocatedVenueToVenueResponse } from 'features/venueMap/helpers/geoLocatedVenueToVenueResponse/geoLocatedVenueToVenueResponse'
@@ -39,6 +38,7 @@ import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureF
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { useLocation } from 'libs/location'
 import { Map, MarkerPressEvent, Region } from 'libs/maps/maps'
+import { useVenueOffersQuery } from 'queries/venue/useVenueOffersQuery'
 import { LENGTH_L } from 'ui/theme'
 
 import { VenueMapView } from './VenueMapView'
@@ -89,7 +89,7 @@ export const VenueMapViewContainer: FunctionComponent = () => {
   const venueSearchParams = useVenueSearchParameters(venue)
   const { searchState } = useSearch()
   const isUserUnderage = useIsUserUnderage()
-  const { data: selectedVenueOffers } = useVenueOffers({
+  const { data: selectedVenueOffers } = useVenueOffersQuery({
     userLocation,
     selectedLocationMode,
     isUserUnderage,
@@ -215,7 +215,7 @@ export const VenueMapViewContainer: FunctionComponent = () => {
   const handleFlingUp = () => {
     if (
       shouldNavigateToVenueOnFling &&
-      selectedVenue &&
+      selectedVenue?.isPermanent &&
       bottomSheetIndex === snapPoints.length - 1
     ) {
       navigateToVenue(selectedVenue.venueId)

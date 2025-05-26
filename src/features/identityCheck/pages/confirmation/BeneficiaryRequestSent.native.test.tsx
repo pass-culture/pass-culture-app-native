@@ -5,9 +5,9 @@ import { navigate } from '__mocks__/@react-navigation/native'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { navigateFromRef } from 'features/navigation/navigationRef'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { render, fireEvent, screen } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 
 import { BeneficiaryRequestSent } from './BeneficiaryRequestSent'
 
@@ -25,6 +25,9 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
+const user = userEvent.setup()
+jest.useFakeTimers()
+
 describe('<BeneficiaryRequestSent />', () => {
   beforeEach(() => {
     setFeatureFlags()
@@ -41,7 +44,7 @@ describe('<BeneficiaryRequestSent />', () => {
   it('should redirect to native cultural survey page WHEN "On y va !" is clicked', async () => {
     render(<BeneficiaryRequestSent />)
 
-    fireEvent.press(await screen.findByLabelText('On y va\u00a0!'))
+    await user.press(await screen.findByLabelText('On y va\u00a0!'))
 
     expect(navigateFromRef).not.toHaveBeenCalled()
     expect(navigate).toHaveBeenNthCalledWith(1, 'CulturalSurveyIntro', undefined)
@@ -51,7 +54,7 @@ describe('<BeneficiaryRequestSent />', () => {
     setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_CULTURAL_SURVEY_MANDATORY])
     render(<BeneficiaryRequestSent />)
 
-    fireEvent.press(await screen.findByLabelText('On y va\u00a0!'))
+    await user.press(await screen.findByLabelText('On y va\u00a0!'))
 
     expect(navigateFromRef).toHaveBeenCalledWith(
       navigateToHomeConfig.screen,
@@ -69,7 +72,7 @@ describe('<BeneficiaryRequestSent />', () => {
     })) // re-render because local storage value has been read and set
     render(<BeneficiaryRequestSent />)
 
-    fireEvent.press(await screen.findByLabelText('On y va\u00a0!'))
+    await user.press(await screen.findByLabelText('On y va\u00a0!'))
 
     expect(navigateFromRef).toHaveBeenCalledWith(
       navigateToHomeConfig.screen,

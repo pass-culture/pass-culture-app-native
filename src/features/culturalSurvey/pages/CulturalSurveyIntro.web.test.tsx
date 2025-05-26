@@ -3,7 +3,7 @@ import React from 'react'
 import { FAQ_LINK_USER_DATA } from 'features/culturalSurvey/constants'
 import { CulturalSurveyIntro } from 'features/culturalSurvey/pages/CulturalSurveyIntro'
 import { openUrl } from 'features/navigation/helpers/openUrl'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { checkAccessibilityFor, fireEvent, render, screen } from 'tests/utils/web'
 

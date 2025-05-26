@@ -92,7 +92,7 @@ export const buildAccessibiltyFiltersPredicate = ({
   isMotorDisabilityCompliant,
   isVisualDisabilityCompliant,
 }: DisabilitiesProperties) => {
-  const filters = []
+  const filters: string[][] = []
   if (isAudioDisabilityCompliant) {
     filters.push([`${FACETS_FILTERS_ENUM.VENUE_AUDIO_DISABILITY_COMPLIANT}:true`])
   }

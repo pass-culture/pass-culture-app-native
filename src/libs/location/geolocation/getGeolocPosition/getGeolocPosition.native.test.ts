@@ -1,7 +1,8 @@
 import Geolocation from 'react-native-geolocation-service'
 
+import { EiffelTourCoordinates, getCurrentPositionSuccess } from '../tests/tests.utils'
+
 import { getGeolocPosition } from './getGeolocPosition'
-import { EiffelTourCoordinates, getCurrentPositionSuccess } from './tests.utils'
 
 describe('getGeolocPosition()', () => {
   it('should resolve with the geolocation', async () => {

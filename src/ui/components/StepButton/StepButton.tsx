@@ -105,11 +105,11 @@ const ButtonContent: FunctionComponent<ButtonContentProps> = ({
 
 const BaseStyleComponent = styled(View)(({ theme }) => ({
   marginTop: getSpacing(2),
-  backgroundColor: theme.colors.white,
   borderRadius: theme.borderRadius.radius,
   flexDirection: 'row',
   alignItems: 'center',
   borderWidth: '1px',
+  backgroundColor: theme.designSystem.color.background.default,
 }))
 
 type BaseContainerProps = {
@@ -126,24 +126,24 @@ const BaseContainer: FunctionComponent<BaseContainerProps> = ({ LeftIcon, style,
 
 const CurrentContainer = styled(GenericBanner)(({ theme }) => ({
   minHeight: getSpacing(23),
-  borderColor: theme.colors.black,
+  borderColor: theme.designSystem.color.border.default,
 }))
 
 const RetryContainer = styled(GenericBanner)(({ theme }) => ({
   minHeight: getSpacing(23),
-  borderColor: theme.colors.black,
+  borderColor: theme.designSystem.color.border.default,
 }))
 
 const DisabledContainer = styled(BaseContainer)(({ theme }) => ({
   minHeight: getSpacing(22),
   width: '98%',
-  borderColor: theme.colors.greyMedium,
+  borderColor: theme.designSystem.color.border.disabled,
   paddingVertical: getSpacing(4),
   paddingRight: getSpacing(4),
 }))
 
 const CompletedContainer = styled(DisabledContainer)(({ theme }) => ({
-  borderColor: theme.colors.greyLight,
+  borderColor: theme.designSystem.color.border.disabled,
   borderWidth: '2px',
 }))
 
@@ -188,8 +188,8 @@ const StyledButtonText = styled(Typo.BodyAccent)<{ stepState: StepButtonState }>
   ({ stepState, theme }) => ({
     color:
       stepState === StepButtonState.CURRENT || stepState === StepButtonState.RETRY
-        ? theme.colors.black
-        : theme.colors.greyDark,
+        ? theme.designSystem.color.text.default
+        : theme.designSystem.color.text.disabled,
   })
 )
 
@@ -197,7 +197,7 @@ const StepSubtitle = styled(Typo.BodyAccentXs)<{ stepState: StepButtonState }>(
   ({ stepState, theme }) => ({
     color:
       stepState === StepButtonState.CURRENT || stepState === StepButtonState.RETRY
-        ? theme.colors.greyDark
-        : theme.colors.greySemiDark,
+        ? theme.designSystem.color.text.subtle
+        : theme.designSystem.color.text.disabled,
   })
 )

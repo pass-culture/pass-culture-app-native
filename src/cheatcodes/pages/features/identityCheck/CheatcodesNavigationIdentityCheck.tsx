@@ -8,6 +8,7 @@ import { CheatcodesButtonsWithSubscreensProps } from 'cheatcodes/types'
 import { NotEligibleEduConnect } from 'features/identityCheck/pages/identification/errors/eduConnect/NotEligibleEduConnect'
 import { EduConnectErrorMessageEnum } from 'features/identityCheck/pages/identification/errors/hooks/useNotEligibleEduConnectErrorData'
 import { PhoneValidationTipsModal } from 'features/identityCheck/pages/phoneValidation/PhoneValidationTipsModal'
+import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
 import { useLogTypeFromRemoteConfig } from 'libs/hooks/useLogTypeFromRemoteConfig'
 import { ScreenError } from 'libs/monitoring/errors'
@@ -35,13 +36,14 @@ export const cheatcodesNavigationIdentityCheckButtons: [CheatcodesButtonsWithSub
       { screen: 'SelectIDOrigin' },
       { screen: 'SelectIDStatus' },
       { screen: 'SelectPhoneStatus' },
-      { screen: 'SetAddress' },
-      { screen: 'SetCity' },
-      { screen: 'SetName' },
+      { screen: 'ProfileInformationValidation' },
+      { screen: 'SetAddress', navigationParams: { type: ProfileTypes.IDENTITY_CHECK } },
+      { screen: 'SetCity', navigationParams: { type: ProfileTypes.IDENTITY_CHECK } },
+      { screen: 'SetName', navigationParams: { type: ProfileTypes.IDENTITY_CHECK } },
       { screen: 'SetPhoneNumber' },
       { screen: 'SetPhoneNumberWithoutValidation' },
       { screen: 'SetPhoneValidationCode' },
-      { screen: 'SetStatus' },
+      { screen: 'SetStatus', navigationParams: { type: ProfileTypes.IDENTITY_CHECK } },
       { screen: 'Stepper' },
       { screen: 'VerifyEligibility' },
       { title: 'DuplicateUser Error', showOnlyInSearch: true },
@@ -51,6 +53,16 @@ export const cheatcodesNavigationIdentityCheckButtons: [CheatcodesButtonsWithSub
       { title: 'UserAgeNotValid Educonnect Error', showOnlyInSearch: true },
       { title: 'UserAgeNotValid18YearsOld Error', showOnlyInSearch: true },
       { title: 'UserTypeNotStudent Error', showOnlyInSearch: true },
+      {
+        screen: 'SetProfileBookingError',
+        title: 'SetProfileBookingError with offer',
+        navigationParams: { offerId: 1 },
+      },
+      {
+        screen: 'SetProfileBookingError',
+        title: 'SetProfileBookingError without offer',
+        navigationParams: { offerId: undefined },
+      },
       {
         screen: 'EduConnectValidation',
         navigationParams: {

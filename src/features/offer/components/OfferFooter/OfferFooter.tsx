@@ -1,4 +1,5 @@
-import React, { FC, ReactNode, useCallback, useState } from 'react'
+import React, { FC, PropsWithChildren } from 'react'
+import { LayoutChangeEvent } from 'react-native'
 import { useTheme } from 'styled-components/native'
 
 import { OfferResponseV2 } from 'api/gen'
@@ -7,14 +8,20 @@ import { CineContentCTA } from 'features/offer/components/OfferCine/CineContentC
 import { useOfferCTA } from 'features/offer/components/OfferContent/OfferCTAProvider'
 import { StickyFooterContent } from 'features/offer/components/OfferContent/StickyFooterContent/StickyFooterContent'
 import { getIsAComingSoonOffer } from 'features/offer/helpers/getIsAComingSoonOffer'
+import { selectReminderByOfferId } from 'features/offer/queries/selectors/selectReminderByOfferId'
+import { useAddReminderMutation } from 'features/offer/queries/useAddReminderMutation'
+import { useDeleteReminderMutation } from 'features/offer/queries/useDeleteReminderMutation'
+import { useGetRemindersQuery } from 'features/offer/queries/useGetRemindersQuery'
 import { FavoriteProps } from 'features/offer/types'
 import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { useModal } from 'ui/components/modals/useModal'
+import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
-export type OfferFooterProps = {
+export type OfferFooterProps = PropsWithChildren<{
   offer: OfferResponseV2
-  children: ReactNode
-} & FavoriteProps
+  onLayout?: (params: LayoutChangeEvent) => void
+}> &
+  FavoriteProps
 
 export const OfferFooter: FC<OfferFooterProps> = ({
   offer,
@@ -23,9 +30,10 @@ export const OfferFooter: FC<OfferFooterProps> = ({
   removeFavorite,
   isRemoveFavoriteLoading,
   favorite,
+  onLayout,
   children,
 }) => {
-  const [hasEnabledNotifications, setHasEnabledNotifications] = useState(false)
+  const { showErrorSnackBar } = useSnackBarContext()
 
   const { isLoggedIn } = useAuthContext()
 
@@ -33,28 +41,42 @@ export const OfferFooter: FC<OfferFooterProps> = ({
   const { isButtonVisible } = useOfferCTA()
   const { showAccessScreeningButton } = useRemoteConfigQuery()
 
-  const isAComingSoonOffer = getIsAComingSoonOffer(offer)
+  const { data: reminder } = useGetRemindersQuery((data) => selectReminderByOfferId(data, offer.id))
+  const hasReminder = !!reminder
+
+  const { mutate: addReminder } = useAddReminderMutation({
+    onError: () => {
+      showErrorSnackBar({
+        message: 'L’offre n’a pas pu être ajoutée à tes rappels',
+        timeout: SNACK_BAR_TIME_OUT,
+      })
+    },
+  })
+
+  const { mutate: deleteReminder } = useDeleteReminderMutation({
+    onError: () => {
+      showErrorSnackBar({
+        message: 'L’offre n’a pas pu être retirée de tes rappels',
+        timeout: SNACK_BAR_TIME_OUT,
+      })
+    },
+  })
 
   const favoriteAuthModal = useModal(false)
 
-  const onPressFavoriteCTA = useCallback(() => {
-    if (!isLoggedIn) {
-      favoriteAuthModal.showModal()
-    } else if (favorite) {
-      removeFavorite(favorite.id)
-    } else {
-      addFavorite({ offerId: offer.id })
-    }
-  }, [addFavorite, favorite, favoriteAuthModal, isLoggedIn, offer.id, removeFavorite])
-
-  const notificationAuthModal = useModal(false)
-
-  const onPressNotificationsCTA = () => {
-    if (!isLoggedIn) {
-      notificationAuthModal.showModal()
-    }
-    setHasEnabledNotifications(!hasEnabledNotifications)
+  const onPressFavoriteCTA = () => {
+    if (!isLoggedIn) return favoriteAuthModal.showModal()
+    return favorite ? removeFavorite(favorite.id) : addFavorite({ offerId: offer.id })
   }
+
+  const reminderAuthModal = useModal(false)
+
+  const onPressReminderCTA = () => {
+    if (!isLoggedIn) return reminderAuthModal.showModal()
+    return hasReminder ? deleteReminder(reminder.id) : addReminder(offer.id)
+  }
+
+  const isAComingSoonOffer = getIsAComingSoonOffer(offer)
 
   if (showAccessScreeningButton && isButtonVisible) {
     return <CineContentCTA />
@@ -68,10 +90,11 @@ export const OfferFooter: FC<OfferFooterProps> = ({
         onPressFavoriteCTA={onPressFavoriteCTA}
         isAddFavoriteLoading={isAddFavoriteLoading}
         isRemoveFavoriteLoading={isRemoveFavoriteLoading}
-        hasEnabledNotifications={hasEnabledNotifications}
-        onPressNotificationsCTA={onPressNotificationsCTA}
+        hasReminder={hasReminder}
+        onPressReminderCTA={onPressReminderCTA}
         favoriteAuthModal={favoriteAuthModal}
-        notificationAuthModal={notificationAuthModal}
+        reminderAuthModal={reminderAuthModal}
+        onLayout={onLayout}
       />
     )
   }

@@ -1,6 +1,6 @@
 import { SearchResponse } from '@algolia/client-search'
 import { FlashList } from '@shopify/flash-list'
-import React, { Ref } from 'react'
+import React, { ReactNode, Ref } from 'react'
 
 import {
   GenreType,
@@ -17,6 +17,7 @@ import { LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
 import { Range } from 'libs/typesUtils/typeHelpers'
 import { Offer } from 'shared/offer/types'
+import { ColorsType } from 'theme/types'
 interface SelectedDate {
   option: DATE_FILTER_OPTIONS
   selectedDate: string
@@ -31,7 +32,6 @@ export enum SearchView {
   Landing = 'SearchLanding',
   Results = 'SearchResults',
   Thematic = 'ThematicSearch',
-  Filter = 'SearchFilter',
 }
 
 export type OfferGenreType = { key: GenreType } & GenreTypeContentModel
@@ -67,10 +67,6 @@ export interface SearchState {
   gtls?: GTL[]
 }
 
-export type UserData = {
-  message: string
-}
-
 export type DescriptionContext = {
   category: SearchGroupNameEnumv2
   nativeCategory: NativeCategoryIdEnumv2 | BooksNativeCategoriesEnum | null
@@ -95,6 +91,7 @@ export interface SearchListProps {
   userData: SearchResponse<Offer[]>['userData']
   onScroll?: () => void
   onPress?: () => void
+  artistSection?: ReactNode
 }
 
 export type CreateHistoryItem = {
@@ -131,3 +128,5 @@ export enum BooksNativeCategoriesEnum {
 }
 
 export type NativeCategoryEnum = NativeCategoryIdEnumv2 | BooksNativeCategoriesEnum
+
+export type MarkedDatesColors = { backgroundColor: ColorsType; textColor: ColorsType }

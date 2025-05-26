@@ -7,11 +7,11 @@ import { ChangeCity } from 'features/profile/pages/ChangeCity/ChangeCity'
 import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics/provider'
 import { mockedSuggestedCities } from 'libs/place/fixtures/mockedSuggestedCities'
-import { CitiesResponse, CITIES_API_URL } from 'libs/place/useCities'
+import { CITIES_API_URL, CitiesResponse } from 'libs/place/useCities'
 import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
+import { act, fireEvent, render, screen, userEvent } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 
 jest.mock('libs/jwt/jwt')
@@ -41,6 +41,10 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
+const user = userEvent.setup()
+
+jest.useFakeTimers()
+
 describe('ChangeCity', () => {
   it('should render correctly', () => {
     render(reactQueryProviderHOC(<ChangeCity />))
@@ -55,24 +59,18 @@ describe('ChangeCity', () => {
 
     render(reactQueryProviderHOC(<ChangeCity />))
 
-    const input = screen.getByPlaceholderText('Ex\u00a0: 75017')
+    const input = screen.getByTestId('Entrée pour la ville')
     await act(async () => {
       fireEvent.changeText(input, POSTAL_CODE)
     })
 
-    await screen.findByText(city.nom)
-    await act(async () => {
-      fireEvent.press(screen.getByText(city.nom))
-    })
-    await act(async () => {
-      fireEvent.press(screen.getByText('Valider ma ville de résidence'))
-    })
+    await user.press(screen.getByText(city.nom))
 
-    await waitFor(async () => {
-      expect(patchProfileSpy).toHaveBeenNthCalledWith(1, {
-        city: city.nom,
-        postalCode: POSTAL_CODE,
-      })
+    await user.press(screen.getByText('Valider ma ville de résidence'))
+
+    expect(patchProfileSpy).toHaveBeenNthCalledWith(1, {
+      city: city.nom,
+      postalCode: POSTAL_CODE,
     })
   })
 
@@ -83,24 +81,17 @@ describe('ChangeCity', () => {
 
     render(reactQueryProviderHOC(<ChangeCity />))
 
-    const input = screen.getByPlaceholderText('Ex\u00a0: 75017')
+    const input = screen.getByTestId('Entrée pour la ville')
     await act(async () => {
       fireEvent.changeText(input, POSTAL_CODE)
     })
 
-    await screen.findByText(city.nom)
-    await act(async () => {
-      fireEvent.press(screen.getByText(city.nom))
-    })
-    await act(async () => {
-      fireEvent.press(screen.getByText('Valider ma ville de résidence'))
-    })
+    await user.press(screen.getByText(city.nom))
+    await user.press(screen.getByText('Valider ma ville de résidence'))
 
-    await waitFor(async () => {
-      expect(navigate).toHaveBeenNthCalledWith(1, 'ProfileStackNavigator', {
-        params: undefined,
-        screen: 'PersonalData',
-      })
+    expect(navigate).toHaveBeenNthCalledWith(1, 'ProfileStackNavigator', {
+      params: undefined,
+      screen: 'PersonalData',
     })
   })
 
@@ -111,18 +102,13 @@ describe('ChangeCity', () => {
 
     render(reactQueryProviderHOC(<ChangeCity />))
 
-    const input = screen.getByPlaceholderText('Ex\u00a0: 75017')
+    const input = screen.getByTestId('Entrée pour la ville')
     await act(async () => {
       fireEvent.changeText(input, POSTAL_CODE)
     })
 
-    await screen.findByText(city.nom)
-    await act(async () => {
-      fireEvent.press(screen.getByText(city.nom))
-    })
-    await act(async () => {
-      fireEvent.press(screen.getByText('Valider ma ville de résidence'))
-    })
+    await user.press(screen.getByText(city.nom))
+    await user.press(screen.getByText('Valider ma ville de résidence'))
 
     expect(mockShowSuccessSnackBar).toHaveBeenCalledWith({
       message: 'Ta ville de résidence a bien été modifiée\u00a0!',
@@ -137,18 +123,13 @@ describe('ChangeCity', () => {
 
     render(reactQueryProviderHOC(<ChangeCity />))
 
-    const input = screen.getByPlaceholderText('Ex\u00a0: 75017')
+    const input = screen.getByTestId('Entrée pour la ville')
     await act(async () => {
       fireEvent.changeText(input, POSTAL_CODE)
     })
 
-    await screen.findByText(city.nom)
-    await act(async () => {
-      fireEvent.press(screen.getByText(city.nom))
-    })
-    await act(async () => {
-      fireEvent.press(screen.getByText('Valider ma ville de résidence'))
-    })
+    await user.press(screen.getByText(city.nom))
+    await user.press(screen.getByText('Valider ma ville de résidence'))
 
     expect(analytics.logUpdatePostalCode).toHaveBeenCalledWith({
       oldPostalCode: beneficiaryUser.postalCode,
@@ -166,18 +147,13 @@ describe('ChangeCity', () => {
     })
     render(reactQueryProviderHOC(<ChangeCity />))
 
-    const input = screen.getByPlaceholderText('Ex\u00a0: 75017')
+    const input = screen.getByTestId('Entrée pour la ville')
     await act(async () => {
       fireEvent.changeText(input, POSTAL_CODE)
     })
 
-    await screen.findByText(city.nom)
-    await act(async () => {
-      fireEvent.press(screen.getByText(city.nom))
-    })
-    await act(async () => {
-      fireEvent.press(screen.getByText('Valider ma ville de résidence'))
-    })
+    await user.press(screen.getByText(city.nom))
+    await user.press(screen.getByText('Valider ma ville de résidence'))
 
     expect(mockShowErrorSnackBar).toHaveBeenCalledWith({
       message: 'Une erreur est survenue',

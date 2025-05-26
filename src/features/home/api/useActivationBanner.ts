@@ -1,17 +1,20 @@
 import { CurrencyEnum } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { useBanner } from 'features/home/api/useBanner'
+import { useBannerQuery } from 'features/home/queries/useBannerQuery'
 import { useGetStepperInfo } from 'features/identityCheck/api/useGetStepperInfo'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags as featureFlags } from 'libs/firebase/firestore/types'
 import { GeolocPermissionState, useLocation } from 'libs/location'
 import { LocationMode } from 'libs/location/types'
+import { useGetDepositAmountsByAge } from 'shared/user/useGetDepositAmountsByAge'
 
 export function useActivationBanner() {
   const enablePacificFrancCurrency = useFeatureFlag(featureFlags.ENABLE_PACIFIC_FRANC_CURRENCY)
   const { user } = useAuthContext()
   const { selectedLocationMode, permissionState } = useLocation()
   const { data: subscription } = useGetStepperInfo()
+
+  const amount = useGetDepositAmountsByAge(user?.birthDate)
 
   const nextSubscriptionStepEnable = !!subscription?.nextSubscriptionStep
   const isEligibleForBeneficiaryUpgrade = !!user?.isEligibleForBeneficiaryUpgrade
@@ -22,13 +25,13 @@ export function useActivationBanner() {
   const isUserInRelevantLocation = isUserLocated || isUserRegisteredInPacificFrancRegion
 
   const isGeolocated = permissionState === GeolocPermissionState.GRANTED
-  const { data } = useBanner(isGeolocated)
+  const { data } = useBannerQuery(isGeolocated)
 
   if (enablePacificFrancCurrency) {
     if (isActivationProcessEnable || isUserInRelevantLocation) {
       return {
         banner: {
-          title: data?.banner?.title,
+          title: amount ? `Débloque tes ${amount}` : 'Débloque ton crédit',
           text: data?.banner?.text,
           name: data?.banner?.name,
         },

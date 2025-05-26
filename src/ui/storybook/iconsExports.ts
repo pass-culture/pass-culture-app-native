@@ -9,7 +9,6 @@ import { ArrowRight } from 'ui/svg/icons/ArrowRight'
 import { ArrowRightNew } from 'ui/svg/icons/ArrowRightNew'
 import { Bell } from 'ui/svg/icons/Bell'
 import { BellFilled } from 'ui/svg/icons/BellFilled'
-import { BicolorAroundMe } from 'ui/svg/icons/BicolorAroundMe'
 import { BicolorBookings } from 'ui/svg/icons/BicolorBookings'
 import { BicolorClock } from 'ui/svg/icons/BicolorClock'
 import { BicolorConfirmation } from 'ui/svg/icons/BicolorConfirmation'
@@ -19,7 +18,6 @@ import { BicolorEverywhere } from 'ui/svg/icons/BicolorEverywhere'
 import { BicolorFavorite } from 'ui/svg/icons/BicolorFavorite'
 import { BicolorFrance } from 'ui/svg/icons/BicolorFrance'
 import { BicolorIdCard } from 'ui/svg/icons/BicolorIdCard'
-import { BicolorLocationBuilding } from 'ui/svg/icons/BicolorLocationBuilding'
 import { BicolorLocationPointer } from 'ui/svg/icons/BicolorLocationPointer'
 import { BicolorLock } from 'ui/svg/icons/BicolorLock'
 import { BicolorLogo } from 'ui/svg/icons/BicolorLogo'
@@ -161,7 +159,6 @@ export const SecondaryAndBiggerIcons = {
   ArrowRightNew,
   Bell,
   BellFilled,
-  BicolorAroundMe,
   BicolorBookings,
   BicolorClock,
   BicolorConfirmation,
@@ -171,7 +168,6 @@ export const SecondaryAndBiggerIcons = {
   BicolorFavorite,
   BicolorFrance,
   BicolorIdCard,
-  BicolorLocationBuilding,
   BicolorLocationPointer,
   BicolorLock,
   BicolorLogo,

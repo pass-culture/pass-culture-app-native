@@ -1,8 +1,7 @@
 import React from 'react'
 
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { render, screen, userEvent } from 'tests/utils'
-import { theme } from 'theme'
 
 import { VenueListItem, VenueSelectionList } from './VenueSelectionList'
 
@@ -80,29 +79,6 @@ describe('<VenueSelectionList />', () => {
     await user.press(screen.getByText('Envie de lire'))
 
     expect(onItemSelect).toHaveBeenNthCalledWith(1, 1)
-  })
-
-  it('should mark item as selected', () => {
-    render(
-      <VenueSelectionList
-        headerMessage=""
-        subTitle=""
-        onItemSelect={jest.fn()}
-        selectedItem={1}
-        items={items}
-        nbLoadedHits={nbLoadedHits}
-        nbHits={nbHits}
-        isFetchingNextPage
-        autoScrollEnabled
-        isSharingLocation
-        onEndReached={jest.fn()}
-      />
-    )
-
-    expect(screen.queryAllByTestId('venue-selection-list-item')[0]).toHaveStyle({
-      borderWidth: 2,
-      borderColor: theme.colors.black,
-    })
   })
 
   it('should display distance when user share his position', () => {

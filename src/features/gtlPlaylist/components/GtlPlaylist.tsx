@@ -1,12 +1,13 @@
 import { Hit } from '@algolia/client-search'
 import React from 'react'
+import { FlatList } from 'react-native-gesture-handler'
 
 import { VenueResponse } from 'api/gen'
 import { GtlPlaylistData } from 'features/gtlPlaylist/types'
 import { Referrals, ScreenNames } from 'features/navigation/RootNavigator/types'
 import { useLogScrollHandler } from 'features/offer/helpers/useLogScrolHandler/useLogScrollHandler'
 import { analytics } from 'libs/analytics/provider'
-import { usePlaylistItemDimensionsFromLayout } from 'libs/contentful/usePlaylistItemDimensionsFromLayout'
+import { getPlaylistItemDimensionsFromLayout } from 'libs/contentful/getPlaylistItemDimensionsFromLayout'
 import { useFunctionOnce } from 'libs/hooks'
 import { IntersectionObserver } from 'shared/IntersectionObserver/IntersectionObserver'
 import { Offer } from 'shared/offer/types'
@@ -50,7 +51,7 @@ export function GtlPlaylist({
 
   const renderPassPlaylist = useRenderPassPlaylist({ analyticsFrom, route, playlist, venue })
 
-  const { itemWidth, itemHeight } = usePlaylistItemDimensionsFromLayout(playlist.layout)
+  const { itemWidth, itemHeight } = getPlaylistItemDimensionsFromLayout(playlist.layout)
 
   return (
     <IntersectionObserver
@@ -66,6 +67,7 @@ export function GtlPlaylist({
         title={playlist.title}
         onEndReached={logHasSeenAllTilesOnce}
         noMarginBottom={noMarginBottom}
+        FlatListComponent={FlatList}
       />
     </IntersectionObserver>
   )

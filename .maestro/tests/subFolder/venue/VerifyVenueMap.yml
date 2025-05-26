@@ -4,7 +4,6 @@ appId: ${MAESTRO_APP_ID}
 - assertVisible: "Localisation"
 - tapOn: "Choisir une localisation"
 - inputText: "Paris"
-- hideKeyboard
 
 - runFlow:
     when:
@@ -17,6 +16,7 @@ appId: ${MAESTRO_APP_ID}
       platform: Android
     commands:
     - tapOn: "Paris0Paris"
+    
 - tapOn: "Valider et voir sur la carte"
 
 - tapOn: 

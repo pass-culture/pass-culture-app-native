@@ -26,12 +26,7 @@ const Template = (props: React.ComponentProps<typeof OfferMessagingApps>) => (
   <OfferMessagingApps {...props} />
 )
 
-export const Default = () =>
-  Template({
-    offer: offerResponseSnap,
-  })
-
-export const Event = () =>
-  Template({
-    offer: offerResponseSnap,
-  })
+export const Default = {
+  name: 'OfferMessagingApps',
+  render: () => Template({ offer: offerResponseSnap }),
+}

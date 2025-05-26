@@ -2,7 +2,8 @@ import React, { useCallback, useEffect, useMemo, useState } from 'react'
 import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
-import { OfferStockResponse, SubcategoryIdEnum } from 'api/gen'
+import { EligibilityType, OfferStockResponse, SubcategoryIdEnum } from 'api/gen'
+import { useAuthContext } from 'features/auth/context/AuthContext'
 import { Item } from 'features/bookings/components/BookingItemWithIcon'
 import { FREE_OFFER_CATEGORIES_TO_ARCHIVE } from 'features/bookings/constants'
 import { BookingInformations } from 'features/bookOffer/components/BookingInformations'
@@ -62,6 +63,7 @@ const LOADING_MESSAGES: RotatingTextOptions[] = [
 
 export function BookingDetails({ stocks, onPressBookOffer, isLoading }: BookingDetailsProps) {
   const { bookingState, dispatch } = useBookingContext()
+  const { user } = useAuthContext()
   const selectedStock = useBookingStock()
   const offer = useBookingOffer()
   const currency = useGetCurrencyToDisplay()
@@ -182,6 +184,7 @@ export function BookingDetails({ stocks, onPressBookOffer, isLoading }: BookingD
     euroToPacificFrancRate
   )
 
+  const isNotUserFreeStatus = user?.eligibility !== EligibilityType.free
   const deductedAmount = `${formattedPriceWithEuro} seront déduits de ton crédit pass Culture`
 
   const isStockBookable = !(isUserUnderage && selectedStock.isForbiddenToUnderage)
@@ -271,7 +274,7 @@ export function BookingDetails({ stocks, onPressBookOffer, isLoading }: BookingD
           accessibilityDescribedBy={accessibilityDescribedBy}
         />
       </ButtonContainer>
-      {formattedPriceWithEuro ? (
+      {formattedPriceWithEuro && isNotUserFreeStatus ? (
         <Caption nativeID={accessibilityDescribedBy}>{deductedAmount}</Caption>
       ) : null}
 
