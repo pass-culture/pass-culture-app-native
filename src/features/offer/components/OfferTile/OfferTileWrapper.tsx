@@ -24,7 +24,7 @@ type Props = Omit<
   hasSmallLayout?: boolean
 }
 
-export const OfferTileWrapper = (props: Props) => {
+export const OfferTileWrapper = React.memo(function OfferTileWrapper(props: Props) {
   const { item, hasSmallLayout } = props
   const theme = useTheme()
   const { user } = useAuthContext()
@@ -72,4 +72,4 @@ export const OfferTileWrapper = (props: Props) => {
       {...props}
     />
   )
-}
+})
