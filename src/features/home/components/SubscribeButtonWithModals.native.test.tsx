@@ -5,7 +5,7 @@ import * as useMapSubscriptionHomeIdsToThematic from 'features/subscription/help
 import { SubscriptionTheme } from 'features/subscription/types'
 import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 import { storage } from 'libs/storage'
-import { mockAuthContextWithoutUser, mockAuthContextWithUser } from 'tests/AuthContextUtils'
+import { mockAuthContextWithUser, mockAuthContextWithoutUser } from 'tests/AuthContextUtils'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
@@ -43,6 +43,7 @@ describe('SubscribeButtonWithModals', () => {
 
     render(reactQueryProviderHOC(<SubscribeButtonWithModals homeId="fakeEntryId" />))
 
+    // userEvent.press is not working correctly (MSW warning)
     await act(async () => fireEvent.press(screen.getByText('Suivre')))
 
     expect(screen.getByText('Identifie-toi pour t’abonner à un thème')).toBeOnTheScreen()

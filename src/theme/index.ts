@@ -1,7 +1,8 @@
-import { ColorSchemeName, Platform } from 'react-native'
+import { Platform } from 'react-native'
 
 // eslint-disable-next-line no-restricted-imports
 import { isMobileDeviceDetectOnWeb, isTabletDeviceDetectOnWeb } from 'libs/react-device-detect'
+import { ColorScheme } from 'libs/styled/useColorScheme'
 // eslint-disable-next-line no-restricted-imports
 import { ModalSpacing } from 'ui/components/modals/enum'
 import { getSpacing } from 'ui/theme'
@@ -514,7 +515,7 @@ export const theme = {
 
 export type BaseAppThemeType = typeof theme
 export type AppThemeType = BaseAppThemeType & {
-  colorScheme?: ColorSchemeName
+  colorScheme?: ColorScheme
   isMobileViewport?: boolean
   isTabletViewport?: boolean
   isDesktopViewport?: boolean

@@ -1,32 +1,55 @@
-import React from 'react'
-import { PixelRatio } from 'react-native'
+import React, { FC, Fragment } from 'react'
+import { View } from 'react-native'
 import styled from 'styled-components/native'
 
-import { GUTTER_DP, Typo } from 'ui/theme'
+import { formatDistanceDate } from 'libs/parsers/formatDistanceDate'
+import { Typo } from 'ui/theme'
 
-interface OfferCaptionProps {
-  imageWidth: number
-  price: string
+type Props = {
   name?: string
   date?: string
+  price: string
+  categoryLabel: string | null
+  distance?: string
+  width: number
 }
 
-export const OfferCaption = (props: OfferCaptionProps) => {
-  const { imageWidth, name, date, price } = props
+export const OfferCaption: FC<Props> = ({
+  name,
+  date,
+  price,
+  categoryLabel,
+  distance,
+  width,
+}: Props) => {
+  const distanceDate = formatDistanceDate(width, distance, date)
+
   return (
-    <CaptionContainer imageWidth={imageWidth}>
-      <Typo.BodyAccentXs numberOfLines={2}>{name}</Typo.BodyAccentXs>
-      {date ? <CaptionNeutralInfo numberOfLines={1}>{date}</CaptionNeutralInfo> : null}
-      <CaptionNeutralInfo testID="priceIsDuo">{price}</CaptionNeutralInfo>
-    </CaptionContainer>
+    <Fragment>
+      <View>
+        <CategoryLabel>{categoryLabel}</CategoryLabel>
+        <OfferText>{name}</OfferText>
+      </View>
+      <View>
+        <Typo.BodyXs testID="priceIsDuo">{price}</Typo.BodyXs>
+        {distanceDate ? <DateText>{distanceDate}</DateText> : null}
+      </View>
+    </Fragment>
   )
 }
 
-const CaptionContainer = styled.View<{ imageWidth: number }>(({ imageWidth }) => ({
-  maxWidth: imageWidth,
-  marginTop: PixelRatio.roundToNearestPixel(GUTTER_DP / 2),
+const CategoryLabel = styled(Typo.BodyXs).attrs({
+  numberOfLines: 1,
+})(({ theme }) => ({
+  color: theme.designSystem.color.text.subtle,
 }))
 
-const CaptionNeutralInfo = styled(Typo.BodyAccentXs)(({ theme }) => ({
-  color: theme.colors.greyDark,
+const OfferText = styled(Typo.BodyAccentXs).attrs({
+  numberOfLines: 2,
+})({})
+
+const DateText = styled(Typo.BodyXs).attrs({
+  numberOfLines: 1,
+})(({ theme }) => ({
+  color: theme.designSystem.color.text.subtle,
 }))

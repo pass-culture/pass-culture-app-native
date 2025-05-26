@@ -13,8 +13,9 @@ on:
 
 jobs:
   check:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
     steps:
       - uses: Slashgear/action-check-pr-title@v4.3.0
         with:
-          regexp: '^(\((PC-[0-9]+|BSR)\) )?(build|lint|ci|docs|feat|fix|perf|refactor|test|chore)\(\w+\): \w+'
+          regexp: '^(\((PC-[0-9]+|BSR|IC-[0-9]+)\) )?(build|ci|docs|feat|fix|perf|refactor|test|chore)\(\w+\): \w+'

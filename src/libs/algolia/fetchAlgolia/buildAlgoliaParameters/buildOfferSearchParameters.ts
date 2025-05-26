@@ -51,7 +51,8 @@ export const buildOfferSearchParameters = (
   }: Parameters,
   buildLocationParameterParams: BuildLocationParameterParams,
   isUserUnderage: boolean,
-  disabilitiesProperties: DisabilitiesProperties = defaultDisabilitiesProperties
+  disabilitiesProperties: DisabilitiesProperties = defaultDisabilitiesProperties,
+  isUsedFromSearch?: boolean
 ) => {
   const locationParameter =
     venue || isFullyDigitalOffersCategory
@@ -78,19 +79,22 @@ export const buildOfferSearchParameters = (
       disabilitiesProperties,
       isHeadline,
     }),
-    ...buildNumericFilters({
-      beginningDatetime,
-      date,
-      endingDatetime,
-      maxPossiblePrice,
-      maxPrice,
-      minBookingsThreshold,
-      minPrice,
-      offerIsFree,
-      priceRange,
-      timeRange,
-      isHeadline,
-    }),
+    ...buildNumericFilters(
+      {
+        beginningDatetime,
+        date,
+        endingDatetime,
+        maxPossiblePrice,
+        maxPrice,
+        minBookingsThreshold,
+        minPrice,
+        offerIsFree,
+        priceRange,
+        timeRange,
+        isHeadline,
+      },
+      isUsedFromSearch
+    ),
     ...locationParameter,
     ...buildFilters({ excludedObjectIds }),
     ...buildTagFilters({ shouldExcludeFutureOffers }),

@@ -1,5 +1,6 @@
+import { EiffelTourCoordinates } from '../tests/tests.utils'
+
 import { getGeolocPosition } from './getGeolocPosition'
-import { EiffelTourCoordinates } from './tests.utils'
 
 describe('getPosition()', () => {
   it('should resolve with the geolocation', async () => {

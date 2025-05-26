@@ -5,7 +5,7 @@ import { availableReactionsSnap } from 'features/bookings/fixtures/availableReac
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import * as useGoBack from 'features/navigation/useGoBack'
 import { beneficiaryUser } from 'fixtures/user'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'

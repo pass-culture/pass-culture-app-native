@@ -9,6 +9,7 @@ import { AccessibilityDeclarationMobile } from 'features/profile/pages/Accessibi
 import { AccessibilityDeclarationWeb } from 'features/profile/pages/Accessibility/AccessibilityDeclarationWeb'
 import { AccessibilityEngagement } from 'features/profile/pages/Accessibility/AccessibilityEngagement'
 import { RecommendedPaths } from 'features/profile/pages/Accessibility/RecommendedPaths'
+import { SiteMapScreen } from 'features/profile/pages/Accessibility/SiteMapScreen'
 import { ChangeCity } from 'features/profile/pages/ChangeCity/ChangeCity'
 import { ChangeEmail } from 'features/profile/pages/ChangeEmail/ChangeEmail'
 import { ChangeEmailSetPassword } from 'features/profile/pages/ChangeEmailSetPassword/ChangeEmailSetPassword'
@@ -16,6 +17,7 @@ import { ChangePassword } from 'features/profile/pages/ChangePassword'
 import { ChangeStatus } from 'features/profile/pages/ChangeStatus/ChangeStatus'
 import { ConfirmChangeEmail } from 'features/profile/pages/ConfirmChangeEmail/ConfirmChangeEmail'
 import { ConsentSettings } from 'features/profile/pages/ConsentSettings/ConsentSettings'
+import { DebugScreen } from 'features/profile/pages/DebugScreen/DebugScreen'
 import { ConfirmDeleteProfile } from 'features/profile/pages/DeleteProfile/ConfirmDeleteProfile'
 import { DeactivateProfileSuccess } from 'features/profile/pages/DeleteProfile/DeactivateProfileSuccess'
 import { DeleteProfileAccountHacked } from 'features/profile/pages/DeleteProfile/DeleteProfileAccountHacked'
@@ -25,6 +27,7 @@ import { DeleteProfileContactSupport } from 'features/profile/pages/DeleteProfil
 import { DeleteProfileEmailHacked } from 'features/profile/pages/DeleteProfile/DeleteProfileEmailHacked'
 import { SuspendAccountConfirmationWithoutAuthentication } from 'features/profile/pages/DeleteProfile/SuspendAccountConfirmationWithoutAuthentication'
 import { DeleteProfileReason } from 'features/profile/pages/DeleteProfileReason/DeleteProfileReason'
+import { DisplayPreference } from 'features/profile/pages/DisplayPreference/DisplayPreference'
 import { FeedbackInApp } from 'features/profile/pages/FeedbackInApp/FeedbackInApp'
 import { LegalNotices } from 'features/profile/pages/LegalNotices/LegalNotices'
 import { NewEmailSelection } from 'features/profile/pages/NewEmailSelection/NewEmailSelection'
@@ -32,6 +35,7 @@ import { NotificationsSettings } from 'features/profile/pages/NotificationSettin
 import { PersonalData } from 'features/profile/pages/PersonalData/PersonalData'
 import { SuspendAccountConfirmation } from 'features/profile/pages/SuspendAccountConfirmation/SuspendAccountConfirmation'
 import { TrackEmailChange } from 'features/profile/pages/TrackEmailChange/TrackEmailChange'
+import { ProfileTutorialAgeInformationCredit } from 'features/profile/pages/TutorialAgeInformationCredit/ProfileTutorialAgeInformationCredit'
 import { ValidateEmailChange } from 'features/profile/pages/ValidateEmailChange/ValidateEmailChange'
 
 export const ProfileStackNavigator = () => (
@@ -69,6 +73,11 @@ export const ProfileStackNavigator = () => (
       options={{ title: 'Parcours recommandés' }}
     />
     <ProfileStack.Screen
+      name="SiteMapScreen"
+      component={SiteMapScreen}
+      options={{ title: 'Plan du site' }}
+    />
+    <ProfileStack.Screen
       name="NotificationsSettings"
       component={NotificationsSettings}
       options={{ title: 'Réglages de notifications' }}
@@ -97,6 +106,11 @@ export const ProfileStackNavigator = () => (
       name="DeleteProfileAccountNotDeletable"
       component={withAuthProtection(DeleteProfileAccountNotDeletable)}
       options={{ title: 'Compte non supprimable' }}
+    />
+    <ProfileStack.Screen
+      name="DebugScreen"
+      component={withAuthProtection(DebugScreen)}
+      options={{ title: 'Débuggage' }}
     />
     <ProfileStack.Screen
       name="ConfirmDeleteProfile"
@@ -187,6 +201,16 @@ export const ProfileStackNavigator = () => (
       name="FeedbackInApp"
       component={withAuthProtection(FeedbackInApp)}
       options={{ title: 'Formulaire de suggestion' }}
+    />
+    <ProfileStack.Screen
+      name="DisplayPreference"
+      component={DisplayPreference}
+      options={{ title: 'Préférence d’affichage' }}
+    />
+    <ProfileStack.Screen
+      name="ProfileTutorialAgeInformationCredit"
+      component={ProfileTutorialAgeInformationCredit}
+      options={{ title: 'Préférence d’affichage' }}
     />
   </ProfileStack.Navigator>
 )

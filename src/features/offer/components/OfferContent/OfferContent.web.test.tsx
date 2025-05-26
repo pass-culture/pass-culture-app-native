@@ -2,10 +2,10 @@ import React, { ComponentProps } from 'react'
 import * as ReactQueryAPI from 'react-query'
 
 import { OfferResponseV2, SubcategoriesResponseModelv2 } from 'api/gen'
-import * as useSimilarOffers from 'features/offer/api/useSimilarOffers'
 import { mockSubcategory } from 'features/offer/fixtures/mockSubcategory'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import * as useSimilarOffersAPI from 'features/offer/queries/useSimilarOffersQuery'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { Position } from 'libs/location'
 import { SuggestedPlace } from 'libs/place/types'
@@ -52,36 +52,13 @@ useQueryClientSpy.mockReturnValue({
 } as unknown as ReactQueryAPI.QueryClient)
 
 jest
-  .spyOn(useSimilarOffers, 'useSimilarOffers')
+  .spyOn(useSimilarOffersAPI, 'useSimilarOffersQuery')
   .mockReturnValue({ similarOffers: undefined, apiRecoParams: undefined })
 
 jest.mock('features/auth/context/AuthContext')
 
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
-
-type RenderOfferContentType = Partial<ComponentProps<typeof OfferContent>> & {
-  isDesktopViewport?: boolean
-}
-
-function renderOfferContent({
-  offer = offerResponseSnap,
-  subcategory = mockSubcategory,
-  isDesktopViewport = false,
-}: RenderOfferContentType) {
-  return render(
-    reactQueryProviderHOC(
-      <OfferContent
-        offer={offer}
-        searchGroupList={PLACEHOLDER_DATA.searchGroups}
-        subcategory={subcategory}
-      />
-    ),
-    {
-      theme: { isDesktopViewport },
-    }
-  )
-}
 
 describe('<OfferContent />', () => {
   const user = userEvent.setup()
@@ -182,3 +159,26 @@ describe('<OfferContent />', () => {
     unmount()
   })
 })
+
+type RenderOfferContentType = Partial<ComponentProps<typeof OfferContent>> & {
+  isDesktopViewport?: boolean
+}
+
+const renderOfferContent = ({
+  offer = offerResponseSnap,
+  subcategory = mockSubcategory,
+  isDesktopViewport = false,
+}: RenderOfferContentType) => {
+  return render(
+    reactQueryProviderHOC(
+      <OfferContent
+        offer={offer}
+        searchGroupList={PLACEHOLDER_DATA.searchGroups}
+        subcategory={subcategory}
+      />
+    ),
+    {
+      theme: { isDesktopViewport },
+    }
+  )
+}

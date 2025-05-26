@@ -3,7 +3,7 @@ import React from 'react'
 
 import { setSettings } from 'features/auth/tests/setSettings'
 import { underageBeneficiaryUser } from 'fixtures/user'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen } from 'tests/utils'
@@ -12,7 +12,7 @@ import { RecreditBirthdayNotification } from './RecreditBirthdayNotification'
 
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('features/auth/context/AuthContext')
-jest.mock('features/profile/api/usePatchProfile', () => ({
+jest.mock('queries/profile/usePatchProfileMutation', () => ({
   useResetRecreditAmountToShow: jest.fn().mockReturnValue({ mutate: jest.fn() }),
 }))
 

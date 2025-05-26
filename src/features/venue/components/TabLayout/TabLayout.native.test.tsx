@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 import { TabLayout } from 'features/venue/components/TabLayout/TabLayout'
 import { Tab } from 'features/venue/types'
-import { fireEvent, render, screen } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 import { Map } from 'ui/svg/icons/Map'
 import { Typo } from 'ui/theme'
 
@@ -12,6 +12,8 @@ const tabPanels = {
   [Tab.OFFERS]: <ExampleText>Offres disponibles content</ExampleText>,
   [Tab.INFOS]: <ExampleText>Infos pratiques content</ExampleText>,
 }
+const user = userEvent.setup()
+jest.useFakeTimers()
 
 describe('TabLayout', () => {
   it('should render first tab content by default', () => {
@@ -26,7 +28,7 @@ describe('TabLayout', () => {
     expect(screen.getByText('Offres disponibles content')).toBeOnTheScreen()
   })
 
-  it('should render second tab content when clicking on the second tab title', () => {
+  it('should render second tab content when clicking on the second tab title', async () => {
     render(
       <TabLayout
         tabPanels={tabPanels}
@@ -35,7 +37,7 @@ describe('TabLayout', () => {
       />
     )
 
-    fireEvent.press(screen.getByText('Infos pratiques'))
+    await user.press(screen.getByText('Infos pratiques'))
 
     expect(screen.queryByText('Offres disponibles content')).not.toBeOnTheScreen()
     expect(screen.getByText('Infos pratiques content')).toBeOnTheScreen()

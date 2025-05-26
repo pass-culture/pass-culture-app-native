@@ -5,7 +5,12 @@ import { ComponentType } from 'react'
 import { CulturalSurveyQuestionEnum } from 'api/gen/api'
 import { DisabilitiesProperties } from 'features/accessibility/types'
 import { BookingsTab } from 'features/bookings/enum'
+import { ProfileType } from 'features/identityCheck/pages/profile/types'
 import { CheatcodesStackParamList } from 'features/navigation/CheatcodesStackNavigator/types'
+import {
+  OnboardingStackParamList,
+  OnboardingStackRouteName,
+} from 'features/navigation/OnboardingStackNavigator/OnboardingStackTypes'
 import {
   ProfileStackParamList,
   ProfileStackRouteName,
@@ -13,7 +18,6 @@ import {
 import { SearchStackParamList } from 'features/navigation/SearchStackNavigator/types'
 import { PlaylistType } from 'features/offer/enums'
 import { SearchState } from 'features/search/types'
-import { TutorialType } from 'features/tutorial/types'
 import { Venue } from 'features/venue/types'
 import { ContentfulLabelCategories } from 'libs/contentful/types'
 import { SuggestedPlace } from 'libs/place/types'
@@ -77,6 +81,7 @@ export type AccessibilityRootStackParamList = {
   AccessibilityDeclarationMobile?: undefined
   AccessibilityDeclarationWeb?: undefined
   AccessibilityEngagement?: undefined
+  SiteMapScreen?: undefined
   RecommendedPaths?: undefined
 }
 
@@ -85,16 +90,6 @@ export type CulturalSurveyRootStackParamList = {
   CulturalSurveyQuestions: { question: CulturalSurveyQuestionEnum }
   CulturalSurveyThanks: undefined
   FAQWebview: undefined
-}
-
-export type TutorialRootStackParamList = {
-  AgeSelectionFork: TutorialType
-  OnboardingAgeInformation: { age: 15 | 16 | 17 | 18 }
-  OnboardingGeneralPublicWelcome: undefined
-  OnboardingGeolocation: undefined
-  OnboardingNotEligible: undefined
-  OnboardingWelcome: undefined
-  ProfileTutorialAgeInformationCredit: undefined
 }
 
 export type TrustedDeviceRootStackParamList = {
@@ -150,11 +145,13 @@ export type SubscriptionRootStackParamList = {
   PhoneValidationTooManySMSSent: undefined
   NewSignup: undefined
   // Profile
+  ProfileInformationValidation: ProfileType
   SetEmail: undefined
-  SetName: undefined
-  SetCity: undefined
-  SetAddress: undefined
-  SetStatus: undefined
+  SetName: ProfileType
+  SetCity: ProfileType
+  SetAddress: ProfileType
+  SetStatus: ProfileType
+  SetProfileBookingError: { offerId?: number }
   // Identification
   ComeBackLater: undefined
   DMSIntroduction: { isForeignDMSInformation: boolean }
@@ -198,6 +195,10 @@ export type SubscriptionRootStackParamList = {
  * please update the deeplink handler in consequence.
  */
 export type RootStackParamList = {
+  OnboardingStackNavigator?: {
+    screen: OnboardingStackRouteName
+    params: OnboardingStackParamList[OnboardingStackRouteName]
+  }
   ABTestingPOC: undefined
   AccountCreated: undefined
   AccountReactivationSuccess: undefined
@@ -283,13 +284,13 @@ export type RootStackParamList = {
 } & CheatcodesStackParamList &
   CulturalSurveyRootStackParamList &
   SubscriptionRootStackParamList &
-  TrustedDeviceRootStackParamList &
-  TutorialRootStackParamList
+  TrustedDeviceRootStackParamList
 
 export type AllNavParamList = RootStackParamList &
   TabParamList &
   SearchStackParamList &
-  ProfileStackParamList
+  ProfileStackParamList &
+  OnboardingStackParamList
 
 /** Type helpers to share screen names */
 export type RootScreenNames = keyof RootStackParamList
@@ -356,7 +357,10 @@ export type GenericRoute<
   options?: { title?: string }
   secure?: boolean
 }
-export type RootRoute = GenericRoute<RootStackParamList, TabParamList & ProfileStackParamList>
+export type RootRoute = GenericRoute<
+  RootStackParamList,
+  TabParamList & ProfileStackParamList & OnboardingStackParamList
+>
 
 // Typeguard for screen params
 export function isScreen<Screen extends AllNavigateParams[0]>(

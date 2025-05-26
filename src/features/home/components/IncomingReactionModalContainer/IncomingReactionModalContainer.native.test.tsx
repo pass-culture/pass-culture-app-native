@@ -5,11 +5,12 @@ import { ReactionTypeEnum, SubcategoriesResponseModelv2, SubcategoryIdEnum } fro
 import { CURRENT_DATE } from 'features/auth/fixtures/fixtures'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { IncomingReactionModalContainer } from 'features/home/components/IncomingReactionModalContainer/IncomingReactionModalContainer'
-import { TWENTY_FOUR_HOURS } from 'features/home/constants'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { MODAL_TO_SHOW_TIME } from 'tests/constants'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { act, render, screen, userEvent } from 'tests/utils'
+
+const TWENTY_FOUR_HOURS = 24 * 60 * 60 * 1000 // 24 hours in milliseconds
 
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 jest.mock('libs/firebase/analytics/analytics')

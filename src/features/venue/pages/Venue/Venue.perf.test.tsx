@@ -3,10 +3,10 @@ import React from 'react'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
 import { SubcategoriesResponseModelv2, SubcategoryIdEnum, VenueResponse } from 'api/gen'
-import { useGTLPlaylists } from 'features/gtlPlaylist/hooks/useGTLPlaylists'
+import { useGTLPlaylistsQuery } from 'features/gtlPlaylist/queries/useGTLPlaylistsQuery'
 import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
 import { Venue } from 'features/venue/pages/Venue/Venue'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { Offer } from 'shared/offer/types'
 import { mockServer } from 'tests/mswServer'
@@ -21,8 +21,8 @@ jest.mock('features/search/context/SearchWrapper')
 
 useRoute.mockImplementation(() => ({ params: { id: venueDataTest.id } }))
 
-jest.mock('features/gtlPlaylist/hooks/useGTLPlaylists')
-const mockUseGTLPlaylists = useGTLPlaylists as jest.Mock
+jest.mock('features/gtlPlaylist/queries/useGTLPlaylistsQuery')
+const mockUseGTLPlaylists = useGTLPlaylistsQuery as jest.Mock
 mockUseGTLPlaylists.mockReturnValue({
   gtlPlaylists: [
     {

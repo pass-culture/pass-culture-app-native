@@ -4,12 +4,17 @@ import mockdate from 'mockdate'
 import React from 'react'
 
 import { useRoute } from '__mocks__/@react-navigation/native'
-import { OffersStocksResponseV2, SubcategoryIdEnum, VenueResponse, VenueTypeCodeKey } from 'api/gen'
-import { useGTLPlaylists } from 'features/gtlPlaylist/hooks/useGTLPlaylists'
+import {
+  OffersStocksResponseV2,
+  SubcategoryIdEnum,
+  UserProfileResponse,
+  VenueResponse,
+  VenueTypeCodeKey,
+} from 'api/gen'
+import { useGTLPlaylistsQuery } from 'features/gtlPlaylist/queries/useGTLPlaylistsQuery'
 import { Referrals } from 'features/navigation/RootNavigator/types'
 import { CineContentCTAID } from 'features/offer/components/OfferCine/CineContentCTA'
 import * as useOfferCTAContextModule from 'features/offer/components/OfferContent/OfferCTAProvider'
-import { useVenueOffers } from 'features/venue/api/useVenueOffers'
 import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
 import {
   VenueMoviesOffersResponseSnap,
@@ -17,15 +22,16 @@ import {
 } from 'features/venue/fixtures/venueOffersResponseSnap'
 import { Venue } from 'features/venue/pages/Venue/Venue'
 import { analytics } from 'libs/analytics/provider'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import { Network } from 'libs/share/types'
+import { useVenueOffersQuery } from 'queries/venue/useVenueOffersQuery'
 import { Offer } from 'shared/offer/types'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render, screen, userEvent, waitFor } from 'tests/utils'
+import { act, render, screen, userEvent, waitFor } from 'tests/utils'
 import * as AnchorContextModule from 'ui/components/anchor/AnchorContext'
 
 const getItemSpy = jest.spyOn(AsyncStorage, 'getItem')
@@ -39,16 +45,16 @@ jest.mock('libs/firebase/analytics/analytics')
 jest.unmock('react-native/Libraries/Animated/createAnimatedComponent')
 
 jest.mock('libs/itinerary/useItinerary')
-jest.mock('features/venue/api/useVenueOffers')
-const mockUseVenueOffers = useVenueOffers as jest.Mock
+jest.mock('queries/venue/useVenueOffersQuery')
+const mockUseVenueOffers = useVenueOffersQuery as jest.Mock
 
 jest.mock('features/search/context/SearchWrapper')
 jest.mock('libs/location')
 
 jest.mock('libs/subcategories/useSubcategories')
 const venueId = venueDataTest.id
-jest.mock('features/gtlPlaylist/hooks/useGTLPlaylists')
-const mockUseGTLPlaylists = useGTLPlaylists as jest.Mock
+jest.mock('features/gtlPlaylist/queries/useGTLPlaylistsQuery')
+const mockUseGTLPlaylists = useGTLPlaylistsQuery as jest.Mock
 mockUseGTLPlaylists.mockReturnValue({
   gtlPlaylists: [
     {
@@ -112,6 +118,7 @@ describe('<Venue />', () => {
   beforeEach(() => {
     setFeatureFlags()
     getItemSpy.mockReset()
+    mockServer.patchApi<UserProfileResponse>('/v1/profile', {})
     mockServer.getApi<VenueResponse>(`/v1/venue/${venueId}`, {
       ...venueDataTest,
       isOpenToPublic: true,
@@ -152,6 +159,7 @@ describe('<Venue />', () => {
   describe('CTA', () => {
     it('should not display CTA if venueTypeCode is Movie', async () => {
       const mockedVenue = { ...venueDataTest, venueTypeCode: VenueTypeCodeKey.MOVIE }
+
       mockServer.getApi<VenueResponse>(`/v1/venue/${venueId}`, mockedVenue)
 
       renderVenue(venueId)
@@ -169,6 +177,8 @@ describe('<Venue />', () => {
 
       renderVenue(venueId)
 
+      await act(async () => {})
+
       expect(await screen.findByText('Rechercher une offre')).toBeOnTheScreen()
     })
 
@@ -179,6 +189,8 @@ describe('<Venue />', () => {
       })
 
       renderVenue(venueId)
+
+      await act(async () => {})
 
       expect(await screen.findByText('Rechercher une offre')).toBeOnTheScreen()
     })

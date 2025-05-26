@@ -2,11 +2,10 @@ import { NavigationContainer } from '@react-navigation/native'
 import React from 'react'
 
 import { LocationWidgetDesktop } from 'features/location/components/LocationWidgetDesktop'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
 import { useLocation } from 'libs/location'
 import { LocationLabel, LocationMode } from 'libs/location/types'
 import { storage } from 'libs/storage'
-import { act, fireEvent, render, screen } from 'tests/utils'
+import { act, render, screen, userEvent } from 'tests/utils'
 
 jest.unmock('@react-navigation/native')
 jest.mock('libs/splashscreen')
@@ -23,11 +22,10 @@ jest.mock('ui/components/modals/useModal', () => ({
 jest.mock('libs/location')
 const mockUseLocation = useLocation as jest.Mock
 
-describe('LocationWidgetDesktop', () => {
-  beforeEach(() => {
-    setFeatureFlags()
-  })
+const user = userEvent.setup()
+jest.useFakeTimers()
 
+describe('LocationWidgetDesktop', () => {
   it('should show modal when pressing widget', async () => {
     mockUseLocation.mockReturnValueOnce({
       hasGeolocPosition: true,
@@ -38,7 +36,7 @@ describe('LocationWidgetDesktop', () => {
 
     const button = screen.getByTestId('Ouvrir la modale de localisation depuis le titre')
 
-    fireEvent.press(button)
+    await user.press(button)
 
     expect(mockShowModal).toHaveBeenCalledTimes(1)
   })
@@ -113,7 +111,6 @@ describe('LocationWidgetDesktop', () => {
     afterEach(async () => storageResetDisplayedTooltip())
 
     it('should hide tooltip when pressing close button', async () => {
-      jest.useFakeTimers()
       renderLocationWidgetDesktop()
 
       await act(async () => {
@@ -122,7 +119,7 @@ describe('LocationWidgetDesktop', () => {
 
       const closeButton = screen.getByLabelText('Fermer le tooltip')
 
-      fireEvent.press(closeButton)
+      await user.press(closeButton)
 
       expect(
         screen.queryByText(
@@ -132,7 +129,6 @@ describe('LocationWidgetDesktop', () => {
     })
 
     it('should show tooltip after 1 second', async () => {
-      jest.useFakeTimers()
       renderLocationWidgetDesktop()
 
       await act(async () => {
@@ -147,7 +143,6 @@ describe('LocationWidgetDesktop', () => {
     })
 
     it('should hide tooltip 8 seconds after it appeared', async () => {
-      jest.useFakeTimers()
       renderLocationWidgetDesktop()
 
       await act(async () => {
@@ -170,7 +165,6 @@ describe('LocationWidgetDesktop', () => {
     })
 
     it(`should hide tooltip when taping ${LocationLabel.everywhereLabel}`, async () => {
-      jest.useFakeTimers()
       renderLocationWidgetDesktop()
 
       await act(async () => {
@@ -182,7 +176,7 @@ describe('LocationWidgetDesktop', () => {
       )
 
       const locationButton = screen.getByText(LocationLabel.everywhereLabel)
-      fireEvent.press(locationButton)
+      await user.press(locationButton)
 
       expect(
         screen.queryByText(

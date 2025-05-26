@@ -14,7 +14,7 @@ import { domains_exhausted_credit_v3 } from 'features/profile/fixtures/domainsCr
 import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
@@ -116,12 +116,14 @@ describe('Profile component', () => {
     useRemoteConfigSpy.mockReturnValue({
       ...DEFAULT_REMOTE_CONFIG,
       displayInAppFeedback: true,
-      displayAchievements: true,
     })
   })
 
   beforeEach(() => {
-    setFeatureFlags()
+    setFeatureFlags([
+      RemoteStoreFeatureFlags.ENABLE_DEBUG_SECTION,
+      RemoteStoreFeatureFlags.ENABLE_PASS_FOR_ALL,
+    ])
     mockServer.getApi<SubscriptionStepperResponseV2>(
       '/v2/subscription/stepper',
       subscriptionStepperFixture
@@ -158,12 +160,36 @@ describe('Profile component', () => {
     expect(await screen.findByText('Version\u00A01.10.5')).toBeOnTheScreen()
   })
 
-  describe('achievements banner', () => {
-    beforeEach(() => {
-      setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_ACHIEVEMENTS])
-    })
+  it('should display "Débuggage" button when user is logged in', async () => {
+    mockedUseAuthContext.mockImplementationOnce(() => ({ isLoggedIn: true }))
+    renderProfile()
 
-    it('should show banner when FF is enabled and user is a beneficiary', async () => {
+    const signoutButton = await screen.findByText('Débuggage')
+
+    expect(signoutButton).toBeOnTheScreen()
+  })
+
+  it('should NOT display "Débuggage" button when user is logged in BUT feature flag is disable', async () => {
+    setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PASS_FOR_ALL])
+    mockedUseAuthContext.mockImplementationOnce(() => ({ isLoggedIn: true }))
+    renderProfile()
+
+    const signoutButton = screen.queryByText('Débuggage')
+
+    expect(signoutButton).not.toBeOnTheScreen()
+  })
+
+  it('should NOT display "Débuggage" button when user is not logged in', () => {
+    mockedUseAuthContext.mockImplementationOnce(() => ({ isLoggedIn: false }))
+    renderProfile()
+
+    const signoutButton = screen.queryByText('Débuggage')
+
+    expect(signoutButton).not.toBeOnTheScreen()
+  })
+
+  describe('achievements banner', () => {
+    it('should show banner when user is a beneficiary', async () => {
       mockedUseAuthContext.mockReturnValueOnce({ user: beneficiaryUser })
       renderProfile()
 
@@ -181,13 +207,6 @@ describe('Profile component', () => {
         // this banner is not shown if the force update banner is shown (which needs to wait for firestore, thus the achievement banner must wait for firestore as well).
         expect(screen.queryByText('Mes succès')).not.toBeOnTheScreen()
       })
-    })
-
-    it('should not show banner when FF is disabled', async () => {
-      renderProfile()
-      await screen.findByText('Mon profil')
-
-      expect(screen.queryByText('Mes succès')).not.toBeOnTheScreen()
     })
 
     it('should go to achievements when user clicks the banner', async () => {
@@ -315,7 +334,10 @@ describe('Profile component', () => {
       const howItWorkButton = screen.getByText('Comment ça marche\u00a0?')
       await user.press(howItWorkButton)
 
-      expect(navigate).toHaveBeenCalledWith('ProfileTutorialAgeInformationCredit', undefined)
+      expect(navigate).toHaveBeenCalledWith('ProfileStackNavigator', {
+        params: undefined,
+        screen: 'ProfileTutorialAgeInformationCredit',
+      })
     })
 
     it('should navigate when the faq row is clicked', async () => {
@@ -350,6 +372,18 @@ describe('Profile component', () => {
   })
 
   describe('other section', () => {
+    it('should navigate when the display preference row is clicked', async () => {
+      renderProfile()
+
+      const accessibilityButton = screen.getByText('Préférences d’affichage')
+      await user.press(accessibilityButton)
+
+      expect(navigate).toHaveBeenCalledWith('ProfileStackNavigator', {
+        params: undefined,
+        screen: 'DisplayPreference',
+      })
+    })
+
     it('should navigate when the accessibility row is clicked', async () => {
       renderProfile()
 

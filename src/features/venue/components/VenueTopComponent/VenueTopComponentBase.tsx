@@ -45,7 +45,7 @@ export const VenueTopComponentBase: React.FunctionComponent<Props> = ({
       ? MAP_VENUE_TYPE_TO_LABEL[venue.venueTypeCode]
       : undefined
 
-  const venueTags = []
+  const venueTags: string[] = []
   venueTypeLabel && venueTags.push(venueTypeLabel)
   distanceToVenue && venueTags.push(`À ${distanceToVenue}`)
 

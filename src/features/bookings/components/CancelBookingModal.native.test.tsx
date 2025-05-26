@@ -6,7 +6,7 @@ import { CancelBookingModal } from 'features/bookings/components/CancelBookingMo
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { analytics } from 'libs/analytics/provider'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'

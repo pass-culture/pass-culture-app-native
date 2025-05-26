@@ -3,7 +3,7 @@ import React from 'react'
 import { GenreType, NativeCategoryIdEnumv2, SearchGroupNameEnumv2 } from 'api/gen'
 import { ALL_CATEGORIES_LABEL } from 'features/search/constants'
 import { initialSearchState } from 'features/search/context/reducer'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { PLACEHOLDER_DATA as mockData } from 'libs/subcategories/placeholderData'
 import { render, screen, waitFor, userEvent } from 'tests/utils'
 
@@ -24,7 +24,7 @@ jest.mock('libs/subcategories/useSubcategories', () => ({
   }),
 }))
 
-jest.mock('features/profile/api/usePatchProfile')
+jest.mock('queries/profile/usePatchProfileMutation')
 
 const mockHasNextPage = true
 const mockFetchNextPage = jest.fn()

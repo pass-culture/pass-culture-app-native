@@ -339,9 +339,7 @@ export const DeeplinksGeneratorForm = ({ onCreate }: Props) => {
         <StyledTitle4>Besoin d’un lien&nbsp;?</StyledTitle4>
         <Spacer.Column numberOfSpaces={6} />
         <Accordion title="Pages" defaultOpen>
-          {Object.keys(SCREENS_CONFIG).map((key) =>
-            renderScreenItem(key as ScreensUsedByMarketing)
-          )}
+          {Object.keys(SCREENS_CONFIG).map((key) => renderScreenItem(key))}
         </Accordion>
         {paramsCount > 0 ? (
           <Accordion title={'Paramètres applicatifs' + ` (${paramsCount})`} defaultOpen>

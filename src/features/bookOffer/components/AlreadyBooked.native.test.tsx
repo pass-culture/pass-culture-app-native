@@ -3,7 +3,7 @@ import React from 'react'
 import { navigate } from '__mocks__/@react-navigation/native'
 import { OfferResponseV2 } from 'api/gen'
 import { initialBookingState, Step } from 'features/bookOffer/context/reducer'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { render, screen, userEvent } from 'tests/utils'
 
 import { AlreadyBooked } from './AlreadyBooked'

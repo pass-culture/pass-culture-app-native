@@ -1,4 +1,5 @@
 import React, { FC, PropsWithChildren } from 'react'
+import { LayoutChangeEvent } from 'react-native'
 import styled from 'styled-components/native'
 
 import { FavoriteAuthModal } from 'features/offer/components/FavoriteAuthModal/FavoriteAuthModal'
@@ -10,11 +11,11 @@ import { StickyBottomWrapper } from 'ui/components/StickyBottomWrapper/StickyBot
 import { Favorite } from 'ui/svg/icons/Favorite'
 import { FavoriteFilled } from 'ui/svg/icons/FavoriteFilled'
 import { getSpacing, getShadow, Typo } from 'ui/theme'
-import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 export type StickyFooterContentProps = {
   offerId: number
   onPressFavoriteCTA: () => void
+  onLayout?: (params: LayoutChangeEvent) => void
   favoriteAuthModal: ModalSettings
 } & Partial<FavoriteProps>
 
@@ -27,22 +28,23 @@ export const StickyFooterContentBase: FC<StickyFooterContentBaseProps> = ({
   favorite,
   onPressFavoriteCTA,
   favoriteAuthModal,
+  onLayout,
   children,
 }) => {
-  const { bottom } = useCustomSafeInsets()
-
   return (
-    <StickyFooterWrapper bottom={bottom}>
+    <StickyFooterWrapper onLayout={onLayout}>
       <Caption>Cette offre sera bientôt disponible</Caption>
       {favorite ? (
-        <ButtonSecondary
-          wording="Retirer des favoris"
-          onPress={onPressFavoriteCTA}
-          icon={FavoriteFilled}
-          isLoading={isRemoveFavoriteLoading}
-        />
+        <ButtonContainer>
+          <ButtonSecondary
+            wording="Retirer des favoris"
+            onPress={onPressFavoriteCTA}
+            icon={FavoriteFilled}
+            isLoading={isRemoveFavoriteLoading}
+          />
+        </ButtonContainer>
       ) : (
-        <React.Fragment>
+        <ButtonContainer>
           <ButtonPrimary
             wording="Mettre en favori"
             onPress={onPressFavoriteCTA}
@@ -54,15 +56,18 @@ export const StickyFooterContentBase: FC<StickyFooterContentBaseProps> = ({
             offerId={offerId}
             dismissModal={favoriteAuthModal.hideModal}
           />
-        </React.Fragment>
+        </ButtonContainer>
       )}
       {children}
     </StickyFooterWrapper>
   )
 }
 
-const StickyFooterWrapper = styled(StickyBottomWrapper)(({ theme, bottom }) => ({
-  bottom,
+const ButtonContainer = styled.View({
+  alignItems: 'center',
+})
+
+const StickyFooterWrapper = styled(StickyBottomWrapper)(({ theme }) => ({
   backgroundColor: theme.colors.white,
   paddingTop: getSpacing(4),
   paddingHorizontal: getSpacing(6),

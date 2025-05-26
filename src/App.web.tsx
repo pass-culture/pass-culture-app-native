@@ -1,9 +1,11 @@
+// eslint-disable-next-line no-restricted-imports
+import { GoogleOAuthProvider } from '@react-oauth/google'
 // if __DEV__ import if you want to debug
 // import './why-did-you-render'
 import globalThisShim from 'globalthis/shim'
 import React, { Suspense, useEffect } from 'react'
-import 'react-app-polyfill/stable'
 import { ErrorBoundary } from 'react-error-boundary'
+import 'react-app-polyfill/stable'
 
 import { AccessibilityFiltersWrapper } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { AuthWrapper } from 'features/auth/context/AuthWrapper'
@@ -15,14 +17,12 @@ import { FavoritesWrapper } from 'features/favorites/context/FavoritesWrapper'
 import { SubscriptionContextProvider } from 'features/identityCheck/context/SubscriptionContextProvider'
 import { AppNavigationContainer } from 'features/navigation/NavigationContainer'
 import { SearchWrapper } from 'features/search/context/SearchWrapper'
-import { OnboardingWrapper } from 'features/tutorial/context/OnboardingWrapper'
 import { initAlgoliaAnalytics } from 'libs/algolia/analytics/initAlgoliaAnalytics'
 import { SearchAnalyticsWrapper } from 'libs/algolia/analytics/SearchAnalyticsWrapper'
 import { AppWebHead } from 'libs/appWebHead'
 import { env } from 'libs/environment/env'
 import { LocationWrapper } from 'libs/location'
 import { eventMonitoring } from 'libs/monitoring/services'
-import { GoogleOAuthProvider } from 'libs/react-native-google-sso/GoogleOAuthProvider'
 import { SafeAreaProvider } from 'libs/react-native-save-area-provider'
 import { ReactQueryClientProvider } from 'libs/react-query/ReactQueryClientProvider'
 import { ThemeProvider } from 'libs/styled'
@@ -31,7 +31,7 @@ import { ThemeWrapper } from 'libs/styled/ThemeWrapper'
 import { theme } from 'theme'
 import { SnackBarProvider } from 'ui/components/snackBar/SnackBarContext'
 import { LoadingPage } from 'ui/pages/LoadingPage'
-import { SupportedBrowsersGate } from 'web/SupportedBrowsersGate'
+import { SupportedBrowsersGate } from 'web/SupportedBrowsersGate.web'
 import 'reset-css'
 
 globalThisShim()
@@ -74,13 +74,11 @@ export function App() {
                                     <CulturalSurveyContextProvider>
                                       <SubscriptionContextProvider>
                                         <AppWebHead />
-                                        <OnboardingWrapper>
-                                          <ScreenErrorProvider>
-                                            <Suspense fallback={<LoadingPage />}>
-                                              <AppNavigationContainer />
-                                            </Suspense>
-                                          </ScreenErrorProvider>
-                                        </OnboardingWrapper>
+                                        <ScreenErrorProvider>
+                                          <Suspense fallback={<LoadingPage />}>
+                                            <AppNavigationContainer />
+                                          </Suspense>
+                                        </ScreenErrorProvider>
                                       </SubscriptionContextProvider>
                                     </CulturalSurveyContextProvider>
                                   </SnackBarProvider>

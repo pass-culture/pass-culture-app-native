@@ -11,10 +11,10 @@ import {
   SubcategoryIdEnum,
 } from 'api/gen'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
-import { createDateBuilder } from 'features/offer/components/MoviesScreeningCalendar/createBuilder'
 import { offersStocksResponseSnap } from 'features/offer/fixtures/offersStocksResponse'
 import { mockedBookingOfferResponse } from 'fixtures/booking'
 import { Offer } from 'shared/offer/types'
+import { createDateBuilder } from 'tests/createBuilder'
 
 type PartialDeepWithArrays<T> =
   T extends Array<infer U>

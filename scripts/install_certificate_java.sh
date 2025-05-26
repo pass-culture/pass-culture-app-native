@@ -45,12 +45,12 @@ add_certificate_safe() {
 	fi
 }
 
-if [ -n "${SSL_CERT_FILE+x}" ]; then
+if [ -n "${SSL_CERT_FILE}" ]; then
 	SSL_CERT_DIR="$(dirname "$SSL_CERT_FILE")"
 	SSL_CERT_TENANT="$(realpath "$SSL_CERT_DIR"/*tenantcert.pem)"
 	SSL_CERT_BUNDLE_FILE="$SSL_CERT_DIR/cert-bundle.pem"
 
-	# remove_certificate_safe # to be able to debug, remove everything done, comment this when not debugging
+	remove_certificate_safe # to be able to debug, remove everything done, comment this when not debugging
 
 	if sh "$SCRIPT_FOLDER/is_proxy_enabled.sh"; then
 		if [ -f "$SSL_CERT_TENANT" ]; then

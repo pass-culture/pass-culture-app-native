@@ -96,14 +96,11 @@
 	<true/>
 	<key>NSAppTransportSecurity</key>
 	<dict>
-		<key>NSExceptionDomains</key>
-		<dict>
-			<key>localhost</key>
-			<dict>
-				<key>NSExceptionAllowsInsecureHTTPLoads</key>
+		<!-- Do not change NSAllowsArbitraryLoads to true, or you will risk app rejection! -->
+			<key>NSAllowsArbitraryLoads</key>
+				<false/>
+			<key>NSAllowsLocalNetworking</key>
 				<true/>
-			</dict>
-		</dict>
 	</dict>
 	<key>NSCameraUsageDescription</key>
 	<string>Cette application peut vérifier ton identité avec une photo.</string>
@@ -140,10 +137,6 @@
 	</array>
 	<key>UIRequiresFullScreen</key>
 	<true/>
-	<key>UISupportedInterfaceOrientations</key>
-	<array>
-		<string>UIInterfaceOrientationPortrait</string>
-	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 </dict>

@@ -2,7 +2,7 @@ import React from 'react'
 
 import { UnsavedSettingsModal } from 'features/profile/pages/NotificationSettings/components/UnsavedSettingsModal'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render, screen, act } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 
 const mockDismissModal = jest.fn()
 const mockOnPressSaveChanges = jest.fn()
@@ -13,23 +13,22 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
+const user = userEvent.setup()
+jest.useFakeTimers()
+
 describe('<UnsavedSettingsModal />', () => {
-  it('should dismiss modal on press rightIconButton', () => {
+  it('should dismiss modal on press rightIconButton', async () => {
     renderModal(true)
 
-    const dismissModalButton = screen.getByTestId('Ne pas quitter')
-
-    fireEvent.press(dismissModalButton)
+    await user.press(screen.getByTestId('Ne pas quitter'))
 
     expect(mockDismissModal).toHaveBeenCalledTimes(1)
   })
 
-  it('should dismiss modal on press "Quitter sans enregistrer"', () => {
+  it('should dismiss modal on press "Quitter sans enregistrer"', async () => {
     renderModal(true)
 
-    const goBackButton = screen.getByText('Quitter sans enregistrer')
-
-    fireEvent.press(goBackButton)
+    await user.press(screen.getByText('Quitter sans enregistrer'))
 
     expect(mockDismissModal).toHaveBeenCalledTimes(1)
   })
@@ -37,9 +36,7 @@ describe('<UnsavedSettingsModal />', () => {
   it('should dismiss modal when saving changes', async () => {
     renderModal(true)
 
-    await act(async () => {
-      fireEvent.press(screen.getByText('Enregistrer mes modifications'))
-    })
+    await user.press(screen.getByText('Enregistrer mes modifications'))
 
     expect(mockDismissModal).toHaveBeenCalledTimes(1)
   })
@@ -47,9 +44,7 @@ describe('<UnsavedSettingsModal />', () => {
   it('should call onPressSaveChanges when saving changes', async () => {
     renderModal(true)
 
-    await act(async () => {
-      fireEvent.press(screen.getByText('Enregistrer mes modifications'))
-    })
+    await user.press(screen.getByText('Enregistrer mes modifications'))
 
     expect(mockOnPressSaveChanges).toHaveBeenCalledTimes(1)
   })

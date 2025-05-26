@@ -80,6 +80,7 @@ exports[`EndedBookings should render correctly 1`] = `
                 "longitude": 2.43884,
               },
               "id": 2185,
+              "isOpenToPublic": true,
               "name": "Maison de la Brique",
               "postalCode": "93700",
               "publicName": "Maison de la Brique en mousse",
@@ -138,6 +139,7 @@ exports[`EndedBookings should render correctly 1`] = `
                 "longitude": 2.43884,
               },
               "id": 2185,
+              "isOpenToPublic": true,
               "name": "Maison de la Brique",
               "postalCode": "93700",
               "publicName": "Maison de la Brique en mousse",
@@ -168,7 +170,7 @@ exports[`EndedBookings should render correctly 1`] = `
   onScrollEndDrag={[Function]}
   removeClippedSubviews={false}
   renderItem={[Function]}
-  scrollEventThrottle={50}
+  scrollEventThrottle={0.0001}
   stickyHeaderIndices={[]}
   viewabilityConfigCallbackPairs={[]}
 >
@@ -615,6 +617,7 @@ exports[`EndedBookings should render correctly 1`] = `
                     "longitude": 2.43884,
                   },
                   "id": 2185,
+                  "isOpenToPublic": true,
                   "name": "Maison de la Brique",
                   "postalCode": "93700",
                   "publicName": "Maison de la Brique en mousse",

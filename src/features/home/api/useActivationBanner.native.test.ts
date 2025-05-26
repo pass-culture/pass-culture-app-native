@@ -4,7 +4,7 @@ import { BannerName, CurrencyEnum, SubscriptionStep, SubscriptionStepperResponse
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useGetStepperInfo } from 'features/identityCheck/api/useGetStepperInfo'
 import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { GeolocPermissionState } from 'libs/location'
 import { LocationMode } from 'libs/location/types'
@@ -15,8 +15,8 @@ import { renderHook, act } from 'tests/utils'
 import { useActivationBanner } from './useActivationBanner'
 
 const mockBannerName = BannerName.activation_banner
-jest.mock('features/home/api/useBanner', () => ({
-  useBanner: jest.fn(() => ({
+jest.mock('features/home/queries/useBannerQuery', () => ({
+  useBannerQuery: jest.fn(() => ({
     data: {
       banner: {
         title: 'API - Débloque tes 150\u00a0€',

@@ -2,7 +2,7 @@ import React from 'react'
 
 import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics/provider'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { SplashScreenProvider } from 'libs/splashscreen'
 import { storage } from 'libs/storage'
 import { mockAuthContextWithoutUser, mockAuthContextWithUser } from 'tests/AuthContextUtils'
@@ -135,10 +135,10 @@ describe('useInitialScreen()', () => {
     const result = await renderUseInitialScreen()
 
     await waitFor(() => {
-      expect(result.current).toEqual('OnboardingWelcome')
+      expect(result.current).toEqual('OnboardingStackNavigator')
     })
 
-    expect(analytics.logScreenView).toHaveBeenNthCalledWith(1, 'OnboardingWelcome')
+    expect(analytics.logScreenView).toHaveBeenNthCalledWith(1, 'OnboardingStackNavigator')
   })
 })
 

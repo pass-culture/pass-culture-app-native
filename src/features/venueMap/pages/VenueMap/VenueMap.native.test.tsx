@@ -4,7 +4,6 @@ import { UseQueryResult } from 'react-query'
 
 import { VenueTypeCodeKey } from 'api/gen'
 import * as useGoBack from 'features/navigation/useGoBack'
-import * as useVenueOffers from 'features/venue/api/useVenueOffers'
 import * as useVenueSearchParameters from 'features/venue/helpers/useVenueSearchParameters'
 import { VenueOffers } from 'features/venue/types'
 import { FILTERS_VENUE_TYPE_MAPPING } from 'features/venueMap/constant'
@@ -12,8 +11,9 @@ import { VenueMap } from 'features/venueMap/pages/VenueMap/VenueMap'
 import * as venueMapStore from 'features/venueMap/store/venueMapStore'
 import { venuesFilterActions } from 'features/venueMap/store/venuesFilterStore'
 import mockVenueSearchParams from 'fixtures/venueSearchParams'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import * as useVenueOffersQueryAPI from 'queries/venue/useVenueOffersQuery'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent, waitFor } from 'tests/utils'
 
@@ -25,7 +25,7 @@ jest.mock('react-native-gesture-handler/lib/commonjs/handlers/gestures/GestureDe
 const mockUseRoute = useRoute as jest.Mock
 mockUseRoute.mockReturnValue({ name: 'venueMap' })
 
-jest.spyOn(useVenueOffers, 'useVenueOffers').mockReturnValue({
+jest.spyOn(useVenueOffersQueryAPI, 'useVenueOffersQuery').mockReturnValue({
   isLoading: false,
   data: { hits: [], nbHits: 0 },
 } as unknown as UseQueryResult<VenueOffers, unknown>)

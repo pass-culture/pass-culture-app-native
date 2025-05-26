@@ -210,17 +210,18 @@ exports[`ChangeCity should render correctly 1`] = `
                 class="css-view-175oi2r"
                 style="height: 65px;"
               />
-              <h1
-                aria-level="1"
-                class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-19e3y8m r-lineHeight-1w51ilw"
-                dir="ltr"
-                role="heading"
-              >
-                Renseigne ta ville de résidence
-              </h1>
               <div
-                class="css-view-175oi2r r-height-z80fyv"
-              />
+                class="css-view-175oi2r r-marginBottom-117bsoe"
+              >
+                <h1
+                  aria-level="1"
+                  class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-19e3y8m r-lineHeight-1w51ilw"
+                  dir="ltr"
+                  role="heading"
+                >
+                  Renseigne ta ville de résidence
+                </h1>
+              </div>
               <form
                 class="c2"
               >
@@ -232,6 +233,7 @@ exports[`ChangeCity should render correctly 1`] = `
                   >
                     <label
                       class="c3 c4"
+                      for="postal-code-input"
                     >
                       <div
                         class="css-view-175oi2r r-alignItems-obd0qt r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-width-13qz1uu"
@@ -246,6 +248,16 @@ exports[`ChangeCity should render correctly 1`] = `
                     </label>
                   </div>
                   <div
+                    class="css-view-175oi2r r-marginBottom-5oul0u"
+                  >
+                    <div
+                      class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
+                      dir="ltr"
+                    >
+                      Exemple : 75017
+                    </div>
+                  </div>
+                  <div
                     class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-14lw9ot r-borderColor-w7parf r-borderStyle-1phboty r-borderWidth-rs99b7 r-flexDirection-18u37iz r-height-eu3ka r-paddingBottom-1mdbw0j r-paddingLeft-1937ghh r-paddingRight-145ew9a r-paddingTop-wk8lta r-width-13qz1uu r-borderRadius-1fuqb1j r-outlineOffset-2fw26j"
                     data-testid="styled-input-container"
                   >
@@ -257,8 +269,9 @@ exports[`ChangeCity should render correctly 1`] = `
                       data-testid="Entrée pour la ville"
                       dir="ltr"
                       enterkeyhint="search"
+                      id="postal-code-input"
                       inputmode="numeric"
-                      placeholder="Ex : 75017"
+                      placeholder=""
                       spellcheck="false"
                       style="--placeholderTextColor: #696A6F;"
                       value=""

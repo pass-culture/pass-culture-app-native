@@ -3,7 +3,7 @@ import type { Meta } from '@storybook/react'
 import React from 'react'
 
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
-import { BicolorAroundMe } from 'ui/svg/icons/BicolorAroundMe'
+import { PositionFilled } from 'ui/svg/icons/PositionFilled'
 
 import { CheckboxBlock } from './CheckboxBlock'
 
@@ -48,7 +48,7 @@ const variantConfig: Variants<typeof CheckboxBlock> = [
     props: {
       label: 'Label',
       checked: false,
-      LeftIcon: BicolorAroundMe,
+      LeftIcon: PositionFilled,
     },
   },
   {
@@ -57,7 +57,7 @@ const variantConfig: Variants<typeof CheckboxBlock> = [
       label: 'Label',
       checked: false,
       sublabel: 'Sublabel',
-      LeftIcon: BicolorAroundMe,
+      LeftIcon: PositionFilled,
     },
   },
 ]

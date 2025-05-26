@@ -159,13 +159,25 @@ describe('buildHomepageDatePredicate', () => {
     expect(homepageDatePredicate).toEqual(undefined)
   })
 
-  it('should return an homepage date predicate with only beginning date when beginning date defined and ending date not defined', () => {
+  it('should return an homepage date predicate from beginning date when beginning date defined and ending date not defined', () => {
     const homepageDatePredicate = buildHomepageDatePredicate({
       ...defaultBuildHomepageDatePredicate,
       beginningDatetime: new Date('2023-04-20').toISOString(),
     })
 
     expect(homepageDatePredicate).toEqual(['offer.dates >= 1681948800'])
+  })
+
+  it('should return an homepage date predicate with only beginning date when beginning date defined, ending date not defined and used from search', () => {
+    const homepageDatePredicate = buildHomepageDatePredicate(
+      {
+        ...defaultBuildHomepageDatePredicate,
+        beginningDatetime: new Date('2023-04-20').toISOString(),
+      },
+      true
+    )
+
+    expect(homepageDatePredicate).toEqual(['offer.dates: 1681948800 TO 1682035199'])
   })
 
   it('should return an homepage date predicate with only ending date when ending date defined and beginning date not defined', () => {

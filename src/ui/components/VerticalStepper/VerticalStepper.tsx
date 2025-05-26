@@ -1,8 +1,8 @@
 import React, { memo, useCallback } from 'react'
 import styled, { useTheme } from 'styled-components/native'
 
-import { DotSize, VerticalDots } from 'features/profile/components/VerticalDots/VerticalDots'
-import { FirstOrLastProps, StepVariantProps } from 'features/profile/types'
+import { DotSize, FirstOrLastProps, StepVariantProps } from 'ui/components/types'
+import { AutomaticVerticalDots } from 'ui/components/VerticalDots/AutomaticVerticalDots'
 import { StepperValidate } from 'ui/svg/icons/StepperValidate'
 import { getSpacing } from 'ui/theme'
 
@@ -72,7 +72,7 @@ export const VerticalStepper = memo(function VerticalStepper({
         // Only VerticalStepperVariant.future in this default case
         default:
           return (
-            <VerticalDots.Auto
+            <AutomaticVerticalDots
               dotSize={DOT_SIZE}
               lastDotSize={SPECIAL_DOT_SIZE}
               endsWithDot
@@ -91,7 +91,7 @@ export const VerticalStepper = memo(function VerticalStepper({
         case StepVariant.in_progress:
         case StepVariant.future:
           return (
-            <VerticalDots.Auto
+            <AutomaticVerticalDots
               dotSize={DOT_SIZE}
               firstDotSize={SPECIAL_DOT_SIZE}
               endsWithDot={false}
@@ -142,13 +142,13 @@ const BottomFilledLine = styled(FilledLine)<FirstOrLastProps>(({ isLast }) => ({
 }))
 
 const InProgressIcon = styled.View(({ theme }) => ({
-  backgroundColor: theme.designSystem.color.text.default, // Need theme.designSystem.color.background.inverted
+  backgroundColor: theme.designSystem.color.background.inverted,
   width: IN_PROGRESS_ICON_SIZE,
   height: IN_PROGRESS_ICON_SIZE,
   borderRadius: IN_PROGRESS_ICON_SIZE / 2,
   marginHorizontal: (20 - IN_PROGRESS_ICON_SIZE) / 2,
   borderWidth: 2,
-  borderColor: theme.designSystem.color.background.default, // Need theme.designSystem.color.border.inverted
+  borderColor: theme.designSystem.color.border.inverted,
 }))
 
 const FutureIcon = styled(InProgressIcon)(({ theme }) => ({

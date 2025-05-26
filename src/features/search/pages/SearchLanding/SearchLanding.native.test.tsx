@@ -12,7 +12,7 @@ import { SearchLanding } from 'features/search/pages/SearchLanding/SearchLanding
 import { SearchState } from 'features/search/types'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { LocationMode } from 'libs/location/types'
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
 import { SuggestedPlace } from 'libs/place/types'

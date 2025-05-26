@@ -24,8 +24,8 @@ const EXPECTED_STORAGE: { [key in StorageKey]?: string } = {
   campaign_date: UTM_PARAMS.campaign_date,
 }
 
-const storageKeys = Object.keys(EXPECTED_STORAGE) as StorageKey[]
-const storageKeysWithoutDate = (Object.keys(EXPECTED_STORAGE) as StorageKey[]).filter(
+const storageKeys = Object.keys(EXPECTED_STORAGE)
+const storageKeysWithoutDate = Object.keys(EXPECTED_STORAGE).filter(
   (key) => key !== 'campaign_date'
 )
 const { campaign_date: _campaign_date, ...EXPECTED_STORAGE_WITHOUT_DATE } = EXPECTED_STORAGE

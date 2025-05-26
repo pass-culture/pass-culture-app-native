@@ -25,7 +25,6 @@ import { AppNavigationContainer } from 'features/navigation/NavigationContainer'
 import { PushNotificationsWrapper } from 'features/notifications/context/PushNotificationsWrapper'
 import { SearchWrapper } from 'features/search/context/SearchWrapper'
 import { ShareAppWrapper } from 'features/share/context/ShareAppWrapper'
-import { OnboardingWrapper } from 'features/tutorial/context/OnboardingWrapper'
 import { initAlgoliaAnalytics } from 'libs/algolia/analytics/initAlgoliaAnalytics'
 import { SearchAnalyticsWrapper } from 'libs/algolia/analytics/SearchAnalyticsWrapper'
 import { AutoImmediate, NextResume } from 'libs/codepush/options'
@@ -44,6 +43,7 @@ import { ReactQueryClientProvider } from 'libs/react-query/ReactQueryClientProvi
 import { SplashScreenProvider } from 'libs/splashscreen'
 import { ThemeProvider } from 'libs/styled'
 import { ThemeWrapper } from 'libs/styled/ThemeWrapper'
+import { useOrientationLocked } from 'shared/hook/useOrientationLocked'
 import { theme } from 'theme'
 import { SnackBarProvider } from 'ui/components/snackBar/SnackBarContext'
 
@@ -57,6 +57,8 @@ LogBox.ignoreLogs([
 ])
 
 const App: FunctionComponent = function () {
+  useOrientationLocked()
+
   useEffect(() => {
     StatusBar.setBarStyle('dark-content')
     if (Platform.OS === 'android') {
@@ -105,13 +107,11 @@ const App: FunctionComponent = function () {
                                         <SplashScreenProvider>
                                           <PushNotificationsWrapper>
                                             <ShareAppWrapper>
-                                              <OnboardingWrapper>
-                                                <OfflineModeContainer>
-                                                  <ScreenErrorProvider>
-                                                    <AppNavigationContainer />
-                                                  </ScreenErrorProvider>
-                                                </OfflineModeContainer>
-                                              </OnboardingWrapper>
+                                              <OfflineModeContainer>
+                                                <ScreenErrorProvider>
+                                                  <AppNavigationContainer />
+                                                </ScreenErrorProvider>
+                                              </OfflineModeContainer>
                                             </ShareAppWrapper>
                                           </PushNotificationsWrapper>
                                         </SplashScreenProvider>

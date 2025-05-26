@@ -8,10 +8,10 @@ import { FilterBehaviour } from 'features/search/enums'
 import { BooksNativeCategoriesEnum, SearchState } from 'features/search/types'
 import { algoliaFacets } from 'libs/algolia/fixtures/algoliaFacets'
 import { FacetData } from 'libs/algolia/types'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
-import { fireEvent, render, screen, waitFor } from 'tests/utils'
+import { render, screen, userEvent, waitFor } from 'tests/utils'
 
 import { CategoriesModal, CategoriesModalProps } from './CategoriesModal'
 
@@ -44,6 +44,9 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
     return Component
   }
 })
+
+const user = userEvent.setup()
+jest.useFakeTimers()
 
 describe('<CategoriesModal/>', () => {
   beforeEach(() => {
@@ -103,11 +106,11 @@ describe('<CategoriesModal/>', () => {
       renderCategories()
 
       const someCategoryFilterCheckbox = screen.getByText('Arts & loisirs créatifs')
-      fireEvent.press(someCategoryFilterCheckbox)
+      await user.press(someCategoryFilterCheckbox)
 
       const button = screen.getByText('Rechercher')
 
-      fireEvent.press(button)
+      await user.press(button)
 
       const expectedSearchParams: SearchState = {
         ...searchState,
@@ -115,11 +118,10 @@ describe('<CategoriesModal/>', () => {
         offerNativeCategories: [],
         offerGenreTypes: [],
       }
-      await waitFor(() => {
-        expect(mockDispatch).toHaveBeenCalledWith({
-          type: 'SET_STATE',
-          payload: expectedSearchParams,
-        })
+
+      expect(mockDispatch).toHaveBeenCalledWith({
+        type: 'SET_STATE',
+        payload: expectedSearchParams,
       })
     })
 
@@ -127,10 +129,10 @@ describe('<CategoriesModal/>', () => {
       renderCategories()
 
       const someCategoryFilterCheckbox = screen.getByText(ALL_CATEGORIES_LABEL)
-      fireEvent.press(someCategoryFilterCheckbox)
+      await user.press(someCategoryFilterCheckbox)
 
       const button = screen.getByText('Rechercher')
-      fireEvent.press(button)
+      await user.press(button)
 
       const expectedSearchParams: SearchState = {
         ...searchState,
@@ -138,11 +140,10 @@ describe('<CategoriesModal/>', () => {
         offerNativeCategories: [],
         offerGenreTypes: [],
       }
-      await waitFor(() => {
-        expect(mockDispatch).toHaveBeenCalledWith({
-          type: 'SET_STATE',
-          payload: expectedSearchParams,
-        })
+
+      expect(mockDispatch).toHaveBeenCalledWith({
+        type: 'SET_STATE',
+        payload: expectedSearchParams,
       })
     })
 
@@ -150,7 +151,7 @@ describe('<CategoriesModal/>', () => {
       renderCategories()
 
       const button = await screen.findByText('Réinitialiser')
-      fireEvent.press(button)
+      await user.press(button)
 
       const defaultCategoryFilterCheckbox = await screen.findByText(ALL_CATEGORIES_LABEL)
 
@@ -162,22 +163,18 @@ describe('<CategoriesModal/>', () => {
         renderCategories()
 
         const button = screen.getByText('Rechercher')
-        fireEvent.press(button)
+        await user.press(button)
 
-        await waitFor(() => {
-          expect(mockHideModal).toHaveBeenCalledTimes(1)
-        })
+        expect(mockHideModal).toHaveBeenCalledTimes(1)
       })
 
       it('when pressing previous button', async () => {
         renderCategories()
 
         const previousButton = screen.getByTestId('Fermer')
-        fireEvent.press(previousButton)
+        await user.press(previousButton)
 
-        await waitFor(() => {
-          expect(mockHideModal).toHaveBeenCalledTimes(1)
-        })
+        expect(mockHideModal).toHaveBeenCalledTimes(1)
       })
     })
   })
@@ -198,12 +195,12 @@ describe('<CategoriesModal/>', () => {
       expect(screen.getByText('Films à l’affiche')).toBeOnTheScreen()
     })
 
-    it('should go back to categories view', () => {
+    it('should go back to categories view', async () => {
       renderCategories({
         filterBehaviour: FilterBehaviour.APPLY_WITHOUT_SEARCHING,
       })
       const previousButton = screen.getByTestId('Revenir en arrière')
-      fireEvent.press(previousButton)
+      await user.press(previousButton)
 
       expect(screen.getByText('Catégories')).toBeOnTheScreen()
     })
@@ -212,11 +209,10 @@ describe('<CategoriesModal/>', () => {
       renderCategories()
 
       const someCategoryFilterCheckbox = screen.getByText('Films à l’affiche')
-      fireEvent.press(someCategoryFilterCheckbox)
+      await user.press(someCategoryFilterCheckbox)
 
       const button = screen.getByText('Rechercher')
-
-      fireEvent.press(button)
+      await user.press(button)
 
       const expectedSearchParams: SearchState = {
         ...searchState,
@@ -224,11 +220,10 @@ describe('<CategoriesModal/>', () => {
         offerNativeCategories: [NativeCategoryIdEnumv2.SEANCES_DE_CINEMA],
         offerGenreTypes: [],
       }
-      await waitFor(() => {
-        expect(mockDispatch).toHaveBeenCalledWith({
-          type: 'SET_STATE',
-          payload: expectedSearchParams,
-        })
+
+      expect(mockDispatch).toHaveBeenCalledWith({
+        type: 'SET_STATE',
+        payload: expectedSearchParams,
       })
     })
 
@@ -236,10 +231,10 @@ describe('<CategoriesModal/>', () => {
       renderCategories()
 
       const someCategoryFilterCheckbox = screen.getByText('Tout')
-      fireEvent.press(someCategoryFilterCheckbox)
+      await user.press(someCategoryFilterCheckbox)
 
       const button = screen.getByText('Rechercher')
-      fireEvent.press(button)
+      await user.press(button)
 
       const expectedSearchParams: SearchState = {
         ...searchState,
@@ -247,11 +242,10 @@ describe('<CategoriesModal/>', () => {
         offerNativeCategories: [],
         offerGenreTypes: [],
       }
-      await waitFor(() => {
-        expect(mockDispatch).toHaveBeenCalledWith({
-          type: 'SET_STATE',
-          payload: expectedSearchParams,
-        })
+
+      expect(mockDispatch).toHaveBeenCalledWith({
+        type: 'SET_STATE',
+        payload: expectedSearchParams,
       })
     })
 
@@ -259,12 +253,29 @@ describe('<CategoriesModal/>', () => {
       renderCategories()
 
       const button = screen.getByText('Réinitialiser')
-      fireEvent.press(button)
+      await user.press(button)
 
-      await waitFor(() => {
-        const defaultCategoryFilterCheckbox = screen.getByText(ALL_CATEGORIES_LABEL)
+      const defaultCategoryFilterCheckbox = screen.getByText(ALL_CATEGORIES_LABEL)
 
-        expect(defaultCategoryFilterCheckbox).toHaveProp('isSelected', true)
+      expect(defaultCategoryFilterCheckbox).toHaveProp('isSelected', true)
+    })
+
+    it('should execute search when pressing reset button', async () => {
+      renderCategories()
+
+      const button = await screen.findByText('Réinitialiser')
+      await user.press(button)
+
+      const expectedSearchParams: SearchState = {
+        ...searchState,
+        offerCategories: [],
+        offerNativeCategories: [],
+        offerGenreTypes: [],
+      }
+
+      expect(mockDispatch).toHaveBeenCalledWith({
+        type: 'SET_STATE',
+        payload: expectedSearchParams,
       })
     })
 
@@ -335,13 +346,13 @@ describe('<CategoriesModal/>', () => {
       expect(screen.getByText('Romans et littérature')).toBeOnTheScreen()
     })
 
-    it('should go back to native categories view', () => {
+    it('should go back to native categories view', async () => {
       renderCategories({
         filterBehaviour: FilterBehaviour.APPLY_WITHOUT_SEARCHING,
       })
 
       const goBackButton = screen.getByTestId('Revenir en arrière')
-      fireEvent.press(goBackButton)
+      await user.press(goBackButton)
 
       expect(screen.getByText('Livres')).toBeOnTheScreen()
     })
@@ -349,17 +360,15 @@ describe('<CategoriesModal/>', () => {
     it('should set search state when search button is pressed', async () => {
       renderCategories()
 
-      fireEvent.press(screen.getByText('Loisirs & Bien-être'))
-      fireEvent.press(screen.getByText('Cuisine'))
-      fireEvent.press(screen.getByText('Rechercher'))
+      await user.press(screen.getByText('Loisirs & Bien-être'))
+      await user.press(screen.getByText('Cuisine'))
+      await user.press(screen.getByText('Rechercher'))
 
       const expectedSearchParams: SearchState = BOOKS_WELLNESS_CATEGORY_SEARCH_STATE
 
-      await waitFor(() => {
-        expect(mockDispatch).toHaveBeenCalledWith({
-          type: 'SET_STATE',
-          payload: expectedSearchParams,
-        })
+      expect(mockDispatch).toHaveBeenCalledWith({
+        type: 'SET_STATE',
+        payload: expectedSearchParams,
       })
     })
 
@@ -369,12 +378,12 @@ describe('<CategoriesModal/>', () => {
       renderCategories()
 
       const goBackButton = screen.getByTestId('Revenir en arrière')
-      fireEvent.press(goBackButton)
+      await user.press(goBackButton)
 
-      fireEvent.press(await screen.findByText('Tout'))
+      await user.press(screen.getByText('Tout'))
 
       const button = screen.getByText('Rechercher')
-      fireEvent.press(button)
+      await user.press(button)
 
       const expectedSearchParams: SearchState = {
         ...mockSearchState,
@@ -384,20 +393,18 @@ describe('<CategoriesModal/>', () => {
         gtls: undefined,
       }
 
-      await waitFor(() => {
-        expect(mockDispatch).toHaveBeenCalledWith({
-          type: 'SET_STATE',
-          payload: expectedSearchParams,
-        })
+      expect(mockDispatch).toHaveBeenCalledWith({
+        type: 'SET_STATE',
+        payload: expectedSearchParams,
       })
     })
 
     it('should reset filters and come back on categories view', async () => {
       renderCategories()
 
-      fireEvent.press(screen.getByText('BD & Comics'))
+      await user.press(screen.getByText('BD & Comics'))
 
-      fireEvent.press(screen.getByText('Réinitialiser'))
+      await user.press(screen.getByText('Réinitialiser'))
 
       const defaultCategoryFilterCheckbox = await screen.findByText(ALL_CATEGORIES_LABEL)
 
@@ -408,12 +415,12 @@ describe('<CategoriesModal/>', () => {
       renderCategories()
 
       const button = screen.getByText('Réinitialiser')
-      fireEvent.press(button)
+      await user.press(button)
 
       const closeButton = screen.getByTestId('Fermer')
-      fireEvent.press(closeButton)
+      await user.press(closeButton)
 
-      expect(await screen.findByText('Livres papier')).toBeOnTheScreen()
+      expect(screen.getByText('Livres papier')).toBeOnTheScreen()
     })
 
     it('should filter on category, native category and genre/type then only on category with all native categories', async () => {
@@ -422,11 +429,11 @@ describe('<CategoriesModal/>', () => {
       renderCategories()
 
       const goBackButton = screen.getByTestId('Revenir en arrière')
-      fireEvent.press(goBackButton)
-      fireEvent.press(goBackButton)
+      await user.press(goBackButton)
+      await user.press(goBackButton)
 
-      fireEvent.press(screen.getByText('Jeux & jeux vidéos'))
-      fireEvent.press(screen.getByText('Rechercher'))
+      await user.press(screen.getByText('Jeux & jeux vidéos'))
+      await user.press(screen.getByText('Rechercher'))
 
       const expectedSearchParams: SearchState = {
         ...mockSearchState,
@@ -436,11 +443,9 @@ describe('<CategoriesModal/>', () => {
         gtls: [],
       }
 
-      await waitFor(() => {
-        expect(mockDispatch).toHaveBeenCalledWith({
-          type: 'SET_STATE',
-          payload: expectedSearchParams,
-        })
+      expect(mockDispatch).toHaveBeenCalledWith({
+        type: 'SET_STATE',
+        payload: expectedSearchParams,
       })
     })
   })
@@ -460,12 +465,12 @@ describe('<CategoriesModal/>', () => {
       renderCategories({
         filterBehaviour: FilterBehaviour.APPLY_WITHOUT_SEARCHING,
       })
-      fireEvent.press(screen.getByTestId('Revenir en arrière'))
-      fireEvent.press(screen.getByTestId('Revenir en arrière'))
-      fireEvent.press(screen.getByText('Jeux & jeux vidéos'))
+      await user.press(screen.getByTestId('Revenir en arrière'))
+      await user.press(screen.getByTestId('Revenir en arrière'))
+      await user.press(screen.getByText('Jeux & jeux vidéos'))
 
       const searchButton = screen.getByText('Appliquer le filtre')
-      fireEvent.press(searchButton)
+      await user.press(searchButton)
 
       const expectedSearchParams: SearchState = {
         ...searchState,
@@ -474,11 +479,9 @@ describe('<CategoriesModal/>', () => {
         offerGenreTypes: [],
       }
 
-      await waitFor(() => {
-        expect(mockDispatch).toHaveBeenCalledWith({
-          type: 'SET_STATE',
-          payload: expectedSearchParams,
-        })
+      expect(mockDispatch).toHaveBeenCalledWith({
+        type: 'SET_STATE',
+        payload: expectedSearchParams,
       })
     })
   })
@@ -501,18 +504,16 @@ describe('<CategoriesModal/>', () => {
       })
 
       const closeButton = screen.getByTestId('Fermer')
-      fireEvent.press(closeButton)
+      await user.press(closeButton)
 
-      await waitFor(() => {
-        expect(mockOnClose).toHaveBeenCalledTimes(1)
-      })
+      expect(mockOnClose).toHaveBeenCalledTimes(1)
     })
 
     it('should only close the modal when pressing close button when the modal is opening from search results', async () => {
       renderCategories()
 
       const closeButton = screen.getByTestId('Fermer')
-      fireEvent.press(closeButton)
+      await user.press(closeButton)
 
       expect(mockOnClose).not.toHaveBeenCalled()
     })

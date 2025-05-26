@@ -1,6 +1,6 @@
 import { openComposer } from 'react-native-email-link'
 
-import { EmailProvider } from './useContactSupportForDeletionProfile'
+import { EmailProvider } from './getContactSupportForDeletionProfile'
 
 export const nativeEmailProvider = (): EmailProvider => {
   return {

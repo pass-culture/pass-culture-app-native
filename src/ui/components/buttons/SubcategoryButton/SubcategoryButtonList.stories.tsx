@@ -8,8 +8,8 @@ import { theme } from 'theme'
 import { SubcategoryButtonList } from 'ui/components/buttons/SubcategoryButton/SubcategoryButtonList'
 
 const createSubcategoryButtonItem = (label: string, nativeCategory: NativeCategoryEnum) => ({
-  backgroundColor: theme.colors.aquamarine,
-  borderColor: theme.colors.aquamarineDark,
+  backgroundColor: theme.designSystem.color.background.decorative01,
+  borderColor: theme.designSystem.color.border.decorative01,
   label,
   nativeCategory,
   searchParams: initialSearchState,

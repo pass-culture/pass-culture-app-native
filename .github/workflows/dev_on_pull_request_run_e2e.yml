@@ -11,10 +11,7 @@ permissions:
 
 jobs:
   notify_test_launch:
-    if: |
-      github.event.label.name == 'e2e iOS' ||
-      github.event.label.name == 'e2e Android' ||
-      github.event.label.name == 'e2e'
+    if: ${{ startsWith(github.event.label.name, 'e2e') }}
     runs-on: ubuntu-latest
     steps:
       - name: Comment PR
@@ -23,6 +20,12 @@ jobs:
           script: |
             const label = context.payload.label.name;
             let platform = label.includes('iOS') ? 'iOS' : label.includes('Android') ? 'Android' : 'iOS et Android';
+            let scope = '';
+
+            if (label.includes(':')) {
+              scope = ` pour le scope ${label.split(':')[1]}`;
+            }
+
             let dashboardLinks = '';
 
             if (label === 'e2e' || label.includes('iOS')) {
@@ -36,7 +39,7 @@ jobs:
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: `🚀 Les tests E2E ${platform} ont été lancés !
+              body: `🚀 Les tests E2E ${platform}${scope} ont été lancés !
 
               Les résultats seront disponibles :
               - Dans le canal Slack #equipe-e2e-jeunes
@@ -45,9 +48,7 @@ jobs:
             })
 
   e2e-tests-ios:
-    if: |
-      github.event.label.name == 'e2e iOS' ||
-      github.event.label.name == 'e2e'
+    if: ${{ startsWith(github.event.label.name, 'e2e') && (contains(github.event.label.name, 'iOS') || !contains(github.event.label.name, 'Android')) }}
     needs: notify_test_launch
     concurrency:
       group: e2e-ios-${{ github.head_ref }}
@@ -55,14 +56,19 @@ jobs:
     uses: ./.github/workflows/dev_on_workflow_call_e2e_ios.yml
     with:
       upload_name_prefix: '[PR]'
+      test_tags: >-
+        ${{
+          contains(github.event.label.name, ':squad-activation') && 'squad-activation' ||
+          contains(github.event.label.name, ':squad-decouverte') && 'squad-decouverte' ||
+          contains(github.event.label.name, ':squad-conversion') && 'squad-conversion' ||
+          'nightlyIOS'
+        }}
     secrets:
       GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
       GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
 
   e2e-tests-android:
-    if: |
-      github.event.label.name == 'e2e Android' ||
-      github.event.label.name == 'e2e'
+    if: ${{ startsWith(github.event.label.name, 'e2e') && (contains(github.event.label.name, 'Android') || !contains(github.event.label.name, 'iOS')) }}
     needs: notify_test_launch
     concurrency:
       group: e2e-android-${{ github.head_ref }}
@@ -70,6 +76,13 @@ jobs:
     uses: ./.github/workflows/dev_on_workflow_call_e2e_android.yml
     with:
       upload_name_prefix: '[PR]'
+      test_tags: >-
+        ${{
+          contains(github.event.label.name, ':squad-activation') && 'squad-activation' ||
+          contains(github.event.label.name, ':squad-decouverte') && 'squad-decouverte' ||
+          contains(github.event.label.name, ':squad-conversion') && 'squad-conversion' ||
+          'nightlyAndroid'
+        }}
     secrets:
       GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
       GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}

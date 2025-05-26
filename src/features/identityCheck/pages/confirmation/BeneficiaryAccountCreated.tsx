@@ -4,11 +4,11 @@ import styled, { useTheme } from 'styled-components/native'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { creditActions } from 'features/identityCheck/api/useCreditStore'
 import { navigateToHome, navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
-import { useResetRecreditAmountToShow } from 'features/profile/api/useResetRecreditAmountToShow'
 import { isUserUnderageBeneficiary } from 'features/profile/helpers/isUserUnderageBeneficiary'
 import { useShareAppContext } from 'features/share/context/ShareAppWrapper'
 import { ShareAppModalType } from 'features/share/types'
 import { BatchEvent, BatchProfile } from 'libs/react-native-batch'
+import { useResetRecreditAmountToShowMutation } from 'queries/profile/useResetRecreditAmountToShowMutation'
 import { defaultCreditByAge } from 'shared/credits/defaultCreditByAge'
 import { useShouldShowCulturalSurveyForBeneficiaryUser } from 'shared/culturalSurvey/useShouldShowCulturalSurveyForBeneficiaryUser'
 import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
@@ -43,7 +43,7 @@ export function BeneficiaryAccountCreated() {
   )
   const subtitle = `${recreditAmount} viennent d’être crédités sur ton compte pass Culture`
 
-  const { mutate: resetRecreditAmountToShow } = useResetRecreditAmountToShow({
+  const { mutate: resetRecreditAmountToShow } = useResetRecreditAmountToShowMutation({
     onSuccess: () => {
       refetchUser()
     },

@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { ExpiredCreditModal } from 'features/profile/components/Modals/ExpiredCreditModal'
-import { fireEvent, render, screen } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 
 const hideModalMock = jest.fn()
 
@@ -10,6 +10,10 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
     return Component
   }
 })
+
+const user = userEvent.setup()
+
+jest.useFakeTimers()
 
 describe('<ExpiredCreditModal/>', () => {
   it('should render correctly', () => {
@@ -24,10 +28,10 @@ describe('<ExpiredCreditModal/>', () => {
     expect(screen.toJSON()).not.toBeOnTheScreen()
   })
 
-  it('should call hideModal function when clicking on Close icon', () => {
+  it('should call hideModal function when clicking on Close icon', async () => {
     render(<ExpiredCreditModal visible hideModal={hideModalMock} />)
     const rightIcon = screen.getByTestId('Fermer la modale')
-    fireEvent.press(rightIcon)
+    await user.press(rightIcon)
 
     expect(hideModalMock).toHaveBeenCalledTimes(1)
   })

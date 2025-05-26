@@ -21,7 +21,8 @@ jobs:
       status: ${{ steps.issue-check.outputs.status }}
       commit-hash: ${{ steps.get_commit_info.outputs.commit-hash }}
       commit-number: ${{ steps.get_commit_info.outputs.commit-number }}
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
     continue-on-error: true
     steps:
       - name: Checkout 🛎️
@@ -83,7 +84,8 @@ jobs:
 
   # run only if previous job issue-number has set his output to the issue number
   update-jira-issues:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
     needs: issue-number
     if: needs.issue-number.outputs.status != null
     continue-on-error: true

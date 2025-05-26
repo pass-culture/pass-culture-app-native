@@ -54,7 +54,7 @@ Access to the [Allure report](https://pass-culture.github.io/pass-culture-app-na
 
 ### Debugging
 
-We use [Flipper](https://fbflipper.com/) to debug the network logs, `react-query` usage, layout, perfs... More info [here](./doc/development/how-to/debugging.md).
+Starting in react-native 0.76, we use the [integrated dev tools](https://reactnative.dev/blog/2024/10/23/release-0.76-new-architecture#react-native-devtools)
 
 ### Standards
 

@@ -357,19 +357,11 @@ exports[`<OfferDuoModal/> should render modal correctly after animation and with
       >
         <View>
           <View
-            numberOfSpaces={6}
+            marginTop={24}
             style={
               [
                 {
-                  "height": 24,
-                },
-              ]
-            }
-          />
-          <View
-            style={
-              [
-                {
+                  "marginTop": 24,
                   "maxWidth": 500,
                   "width": "100%",
                 },
@@ -431,11 +423,11 @@ exports[`<OfferDuoModal/> should render modal correctly after animation and with
                 </Text>
               </View>
               <View
-                numberOfSpaces={2}
+                numberOfSpaces={6}
                 style={
                   [
                     {
-                      "width": 8,
+                      "width": 24,
                     },
                   ]
                 }
@@ -559,16 +551,6 @@ exports[`<OfferDuoModal/> should render modal correctly after animation and with
                 </View>
               </View>
             </View>
-            <View
-              numberOfSpaces={6}
-              style={
-                [
-                  {
-                    "height": 24,
-                  },
-                ]
-              }
-            />
           </View>
         </View>
       </RCTScrollView>
@@ -591,11 +573,13 @@ exports[`<OfferDuoModal/> should render modal correctly after animation and with
           }
         >
           <View
+            gap={4}
             isModal={true}
             style={
               [
                 {
                   "flexDirection": "row",
+                  "gap": 16,
                   "justifyContent": "center",
                   "paddingHorizontal": 24,
                   "paddingTop": 8,
@@ -609,7 +593,7 @@ exports[`<OfferDuoModal/> should render modal correctly after animation and with
                 {
                   "busy": undefined,
                   "checked": undefined,
-                  "disabled": undefined,
+                  "disabled": true,
                   "expanded": undefined,
                   "selected": undefined,
                 }
@@ -623,7 +607,7 @@ exports[`<OfferDuoModal/> should render modal correctly after animation and with
                 }
               }
               accessible={true}
-              focusable={true}
+              focusable={false}
               onClick={[Function]}
               onResponderGrant={[Function]}
               onResponderMove={[Function]}
@@ -652,7 +636,6 @@ exports[`<OfferDuoModal/> should render modal correctly after animation and with
                     },
                     {
                       "backgroundColor": "transparent",
-                      "marginRight": 16,
                       "width": "auto",
                     },
                   ],
@@ -709,7 +692,7 @@ exports[`<OfferDuoModal/> should render modal correctly after animation and with
                   style={
                     [
                       {
-                        "color": "#161617",
+                        "color": "#696A6F",
                         "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 12,
                         "lineHeight": 19.2,
@@ -722,16 +705,6 @@ exports[`<OfferDuoModal/> should render modal correctly after animation and with
                 </Text>
               </View>
             </View>
-            <View
-              numberOfSpaces={4}
-              style={
-                [
-                  {
-                    "height": 16,
-                  },
-                ]
-              }
-            />
             <View
               accessibilityLabel="Rechercher"
               accessibilityState={

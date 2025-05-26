@@ -12,7 +12,7 @@ import { availableReactionsSnap } from 'features/bookings/fixtures/availableReac
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { Bookings } from 'features/bookings/pages/Bookings/Bookings'
 import { beneficiaryUser } from 'fixtures/user'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { decodedTokenWithRemainingLifetime } from 'libs/jwt/fixtures'
 import { storage } from 'libs/storage'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'

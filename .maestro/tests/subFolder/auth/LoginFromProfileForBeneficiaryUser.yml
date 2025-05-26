@@ -4,7 +4,8 @@ appId: ${MAESTRO_APP_ID}
 - tapOn: 'Se connecter'
 
 - assertVisible: 'Connecte-toi'
-- tapOn: 'tonadresse@email.com'
+- tapOn:
+    id: 'Entrée pour l’email'
 - runFlow: InputEmail.yml
 - tapOn: 'Ton mot de passe'
 - inputText: ${MAESTRO_PASSWORD}
@@ -34,3 +35,9 @@ appId: ${MAESTRO_APP_ID}
       visible: 'Partager l’appli'
     commands:
       - tapOn: 'Non merci'
+
+- runFlow: # Si apparition de la modale native iOS de sauvegarde du mot de passe
+    when:
+      visible: 'Plus tard'
+    commands:
+      - tapOn: 'Plus tard'

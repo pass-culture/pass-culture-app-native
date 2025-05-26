@@ -7,7 +7,7 @@ import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import * as ongoingOrEndedBookingAPI from 'features/bookings/queries/useOngoingOrEndedBookingQuery'
 import { Booking } from 'features/bookings/types'
 import { withAsyncErrorBoundary } from 'features/errors/hocs/withAsyncErrorBoundary'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
@@ -19,7 +19,7 @@ import { BookingDetails as BookingDetailsDefault } from './BookingDetails'
 
 const BookingDetails = withAsyncErrorBoundary(BookingDetailsDefault)
 
-jest.mock('features/profile/api/useResetRecreditAmountToShow')
+jest.mock('queries/profile/useResetRecreditAmountToShowMutation')
 jest.mock('libs/itinerary/useItinerary')
 jest.mock('features/navigation/navigationRef')
 jest.mock('features/navigation/helpers/openUrl')

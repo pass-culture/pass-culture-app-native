@@ -1,6 +1,7 @@
 // Template last updated for 0.68.5
 
 apply plugin: "com.android.application"
+apply plugin: "org.jetbrains.kotlin.android"
 apply plugin: "com.google.firebase.firebase-perf"
 apply plugin: "com.facebook.react"
 
@@ -16,8 +17,6 @@ project.ext.envConfigFiles = [
         "": ".env.testing",                         // Default (must be the last in the list so as not to override others)
 ]
 apply from: project(':bam.tech_react-native-config').projectDir.getPath() + "/dotenv.gradle"
-
-import org.apache.tools.ant.taskdefs.condition.Os
 
 // Allows to read json (ie: package.json)
 import groovy.json.JsonSlurper
@@ -108,6 +107,7 @@ keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
 android {
     ndkVersion rootProject.ext.ndkVersion
 
+    buildToolsVersion rootProject.ext.buildToolsVersion
     compileSdkVersion rootProject.ext.compileSdkVersion
 
     namespace "com.passculture"
@@ -205,16 +205,10 @@ dependencies {
     implementation("com.facebook.react:react-android")
     implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.0.0")
 
-    // Flipper + plugins
-    debugImplementation("com.facebook.flipper:flipper:${FLIPPER_VERSION}")
-    debugImplementation("com.facebook.flipper:flipper-network-plugin:${FLIPPER_VERSION}") {
-        exclude group:'com.facebook.flipper'
-        exclude group:'com.squareup.okhttp3', module:'okhttp'
-    }
-    debugImplementation("com.facebook.flipper:flipper-fresco-plugin:${FLIPPER_VERSION}")
-
+    // Plugins
     implementation 'androidx.appcompat:appcompat:1.1.0-rc01' // @react-navigation
     implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.1.0-alpha02' // @react-navigation
+
     if (hermesEnabled.toBoolean()) {
         implementation("com.facebook.react:hermes-android")
     } else {

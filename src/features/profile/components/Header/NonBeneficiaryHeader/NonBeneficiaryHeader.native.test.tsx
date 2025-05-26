@@ -10,7 +10,7 @@ import {
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { subscriptionStepperFixture as mockStep } from 'features/identityCheck/fixtures/subscriptionStepperFixture'
 import { NonBeneficiaryHeader } from 'features/profile/components/Header/NonBeneficiaryHeader/NonBeneficiaryHeader'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { ILocationContext, useLocation } from 'libs/location'
 import { LocationMode } from 'libs/location/types'
@@ -24,7 +24,7 @@ jest.mock('libs/network/NetInfoWrapper')
 jest.mock('libs/jwt/jwt')
 jest.mock('features/auth/context/AuthContext')
 
-jest.mock('features/profile/api/usePatchProfile')
+jest.mock('queries/profile/usePatchProfileMutation')
 
 const mockedSubscriptionMessage = {
   popOverIcon: 'FILE',

@@ -2,6 +2,7 @@ import { useRoute } from '@react-navigation/native'
 import React, { createRef, RefObject, useRef } from 'react'
 import { ViewToken } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
+import { useTheme } from 'styled-components/native'
 
 import { OfferResponseV2, RecommendationApiParams } from 'api/gen'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
@@ -11,7 +12,7 @@ import { PlaylistType } from 'features/offer/enums'
 import { useLogPlaylist } from 'features/offer/helpers/useLogPlaylistVertical/useLogPlaylistVertical'
 import { useLogScrollHandler } from 'features/offer/helpers/useLogScrolHandler/useLogScrollHandler'
 import { analytics } from 'libs/analytics/provider'
-import { usePlaylistItemDimensionsFromLayout } from 'libs/contentful/usePlaylistItemDimensionsFromLayout'
+import { getPlaylistItemDimensionsFromLayout } from 'libs/contentful/getPlaylistItemDimensionsFromLayout'
 import {
   formatStartPrice,
   getDisplayedPrice,
@@ -45,6 +46,7 @@ export function OfferPlaylistList({
   apiRecoParamsOtherCategories,
   onPlaylistViewableItemsChanged,
 }: Readonly<OfferPlaylistListProps>) {
+  const theme = useTheme()
   const route = useRoute<UseRouteType<'Offer'>>()
   const fromOfferId = route.params?.fromOfferId
   const categoryMapping = useCategoryIdMapping()
@@ -79,7 +81,7 @@ export function OfferPlaylistList({
     analytics.logPlaylistHorizontalScroll(fromOfferId, playlistType, apiRecoParams)
   }
 
-  const { itemWidth, itemHeight } = usePlaylistItemDimensionsFromLayout('two-items')
+  const { itemWidth, itemHeight } = getPlaylistItemDimensionsFromLayout('two-items')
 
   const sameCategorySimilarOffersPlaylist: SimilarOfferPlaylist = {
     type: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
@@ -124,13 +126,21 @@ export function OfferPlaylistList({
   const shouldDisplayPlaylist =
     isArrayNotEmpty(sameCategorySimilarOffers) || isArrayNotEmpty(otherCategoriesSimilarOffers)
 
-  const handleViewableItemsChange = (playlist: SimilarOfferPlaylist, changed: ViewToken[]) => {
-    if (inViewPlaylists.current.includes(playlist.title)) {
-      onPlaylistViewableItemsChanged?.(
-        playlist.title,
-        changed.map((value) => value.key)
-      )
-    }
+  const viewableItemsHandlersRef = useRef<Record<string, (info: { changed: ViewToken[] }) => void>>(
+    {}
+  )
+
+  if (Object.keys(viewableItemsHandlersRef.current).length === 0) {
+    similarOffersPlaylist.forEach((playlist) => {
+      viewableItemsHandlersRef.current[playlist.type] = ({ changed }) => {
+        if (inViewPlaylists.current.includes(playlist.title)) {
+          onPlaylistViewableItemsChanged?.(
+            playlist.title,
+            changed.map((value) => value.key)
+          )
+        }
+      }
+    })
   }
 
   return (
@@ -169,11 +179,12 @@ export function OfferPlaylistList({
                       ? undefined
                       : formatStartPrice
                   ),
+                theme,
               })}
               title={playlist.title}
               onEndReached={() => trackingOnHorizontalScroll(playlist.type, playlist.apiRecoParams)}
               playlistType={playlist.type}
-              onViewableItemsChanged={({ changed }) => handleViewableItemsChange(playlist, changed)}
+              onViewableItemsChanged={viewableItemsHandlersRef.current[playlist.type]}
             />
           </IntersectionObserver>
         )

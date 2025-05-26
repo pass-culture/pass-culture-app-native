@@ -2,6 +2,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { useFocusEffect, useNavigation, useRoute } from '@react-navigation/native'
 import React, { useCallback, useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
+import styled from 'styled-components/native'
 
 import { AccountState, ResetPasswordResponse } from 'api/gen'
 import { useLoginRoutine } from 'features/auth/helpers/useLoginRoutine'
@@ -19,7 +20,7 @@ import { RightButtonText } from 'ui/components/headers/RightButtonText'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { LoadingPage } from 'ui/pages/LoadingPage'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
-import { Spacer, Typo } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type ReinitializePasswordFormData = {
@@ -120,36 +121,43 @@ export const ReinitializePassword = () => {
       title="Nouveau mot de passe"
       RightButton={<RightButtonText onClose={navigateToHome} wording="Quitter" />}>
       <Typo.Title3 {...getHeadingAttrs(2)}>Choisis un nouveau mot de passe</Typo.Title3>
-      <Spacer.Column numberOfSpaces={10} />
       <Form.MaxWidth>
-        <PasswordInputController
-          name="newPassword"
-          label="Mot de passe"
-          control={control}
-          autoFocus
-          isRequiredField
-          withSecurityRules
-          securityRulesAlwaysVisible
-          onSubmitEditing={handleSubmit(submitPassword)}
-        />
-        <Spacer.Column numberOfSpaces={10} />
-        <PasswordInputController
-          name="confirmedPassword"
-          label="Confirmer le mot de passe"
-          placeholder="Confirmer le mot de passe"
-          control={control}
-          isRequiredField
-          onSubmitEditing={handleSubmit(submitPassword)}
-        />
-        <Spacer.Column numberOfSpaces={10} />
-        <ButtonPrimary
-          wording="Se connecter"
-          onPress={handleSubmit(submitPassword)}
-          disabled={!isValid || isLoading}
-          isLoading={isLoading}
-          accessibilityLabel="Valider le nouveau mot de passe et se connecter"
-        />
+        <Container>
+          <PasswordInputController
+            name="newPassword"
+            label="Mot de passe"
+            control={control}
+            autoFocus
+            isRequiredField
+            withSecurityRules
+            securityRulesAlwaysVisible
+            onSubmitEditing={handleSubmit(submitPassword)}
+          />
+        </Container>
+        <Container>
+          <PasswordInputController
+            name="confirmedPassword"
+            label="Confirmer le mot de passe"
+            placeholder="Confirmer le mot de passe"
+            control={control}
+            isRequiredField
+            onSubmitEditing={handleSubmit(submitPassword)}
+          />
+        </Container>
+        <Container>
+          <ButtonPrimary
+            wording="Se connecter"
+            onPress={handleSubmit(submitPassword)}
+            disabled={!isValid || isLoading}
+            isLoading={isLoading}
+            accessibilityLabel="Valider le nouveau mot de passe et se connecter"
+          />
+        </Container>
       </Form.MaxWidth>
     </SecondaryPageWithBlurHeader>
   )
 }
+
+const Container = styled.View({
+  marginTop: getSpacing(10),
+})

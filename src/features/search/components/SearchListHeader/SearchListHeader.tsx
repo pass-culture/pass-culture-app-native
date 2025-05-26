@@ -20,13 +20,14 @@ import { GeolocationBanner } from 'shared/Banners/GeolocationBanner'
 import { Offer } from 'shared/offer/types'
 import { InfoBanner } from 'ui/components/banners/InfoBanner'
 import { Error } from 'ui/svg/icons/Error'
-import { Spacer, Typo, getSpacing } from 'ui/theme'
+import { Typo, getSpacing } from 'ui/theme'
 
 interface SearchListHeaderProps extends ScrollViewProps {
   nbHits: number
   userData: SearchResponse<Offer[]>['userData']
   venues?: SearchOfferHits['venues']
   venuesUserData: VenuesUserData
+  artistSection?: React.ReactNode
 }
 
 export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
@@ -34,6 +35,7 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
   userData,
   venues,
   venuesUserData,
+  artistSection,
 }) => {
   const { geolocPosition, showGeolocPermissionModal, selectedLocationMode } = useLocation()
   const { disabilities } = useAccessibilityFiltersContext()
@@ -79,17 +81,14 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
   return (
     <View testID="searchListHeader">
       {shouldDisplayGeolocationButton ? (
-        <React.Fragment>
-          <Spacer.Column numberOfSpaces={4} />
-          <GeolocationButtonContainer>
-            <GeolocationBanner
-              title="Géolocalise-toi"
-              subtitle="Pour trouver des offres autour de toi"
-              analyticsFrom="search"
-              onPress={onPress}
-            />
-          </GeolocationButtonContainer>
-        </React.Fragment>
+        <GeolocationButtonContainer>
+          <GeolocationBanner
+            title="Géolocalise-toi"
+            subtitle="Pour trouver des offres autour de toi"
+            analyticsFrom="search"
+            onPress={onPress}
+          />
+        </GeolocationButtonContainer>
       ) : null}
       {shouldDisplayAvailableUserDataMessage ? (
         <BannerOfferNotPresentContainer
@@ -99,17 +98,14 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
           <InfoBanner message={unavailableOfferMessage} icon={Error} />
         </BannerOfferNotPresentContainer>
       ) : null}
+      {artistSection}
       {shouldDisplayVenuesPlaylist ? (
-        <React.Fragment>
-          <Spacer.Column numberOfSpaces={4} />
-          <VenuePlaylist
-            venuePlaylistTitle={venuePlaylistTitle}
-            venues={venues}
-            isLocated={isLocated}
-          />
-        </React.Fragment>
+        <StyledVenuePlaylist
+          venuePlaylistTitle={venuePlaylistTitle}
+          venues={venues}
+          isLocated={isLocated}
+        />
       ) : null}
-      <Spacer.Column numberOfSpaces={4} />
       <Title>{offerTitle}</Title>
       <NumberOfResults nbHits={nbHits} />
     </View>
@@ -117,9 +113,9 @@ export const SearchListHeader: React.FC<SearchListHeaderProps> = ({
 }
 
 const GeolocationButtonContainer = styled.View(({ theme }) => ({
+  marginVertical: getSpacing(4),
   marginLeft: theme.contentPage.marginHorizontal,
   marginRight: theme.contentPage.marginHorizontal,
-  marginBottom: getSpacing(4),
 }))
 
 const BannerOfferNotPresentContainer = styled.View<{ nbHits: number }>(({ nbHits }) => ({
@@ -129,4 +125,9 @@ const BannerOfferNotPresentContainer = styled.View<{ nbHits: number }>(({ nbHits
 
 const Title = styled(Typo.Title3)({
   marginHorizontal: getSpacing(6),
+  marginTop: getSpacing(4),
+})
+
+const StyledVenuePlaylist = styled(VenuePlaylist)({
+  marginTop: getSpacing(4),
 })

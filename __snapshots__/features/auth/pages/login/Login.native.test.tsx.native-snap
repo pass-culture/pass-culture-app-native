@@ -220,30 +220,30 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
           ]
         }
       />
-      <Text
+      <View
         style={
           [
             {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 19,
-              "lineHeight": 30.4,
+              "marginBottom": 8,
             },
           ]
         }
       >
-        Connecte-toi
-      </Text>
-      <View
-        numberOfSpaces={2}
-        style={
-          [
-            {
-              "height": 8,
-            },
-          ]
-        }
-      />
+        <Text
+          style={
+            [
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 19,
+                "lineHeight": 30.4,
+              },
+            ]
+          }
+        >
+          Connecte-toi
+        </Text>
+      </View>
       <View
         style={
           [
@@ -255,55 +255,81 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
         }
       >
         <View
-          numberOfSpaces={7}
           style={
             [
               {
-                "height": 28,
-              },
-            ]
-          }
-        />
-        <View
-          style={
-            [
-              {
-                "alignItems": "flex-start",
-                "display": "flex",
-                "flexDirection": "column",
-                "maxWidth": 500,
-                "width": "100%",
+                "marginBottom": 24,
+                "marginTop": 28,
               },
             ]
           }
         >
-          <View>
-            <View
-              style={
-                [
-                  {
-                    "alignItems": "flex-end",
-                    "flexDirection": "row",
-                    "justifyContent": "space-between",
-                    "width": "100%",
-                  },
-                ]
-              }
-            >
-              <Text
+          <View
+            style={
+              [
+                {
+                  "alignItems": "flex-start",
+                  "display": "flex",
+                  "flexDirection": "column",
+                  "maxWidth": 500,
+                  "width": "100%",
+                },
+              ]
+            }
+          >
+            <View>
+              <View
                 style={
                   [
                     {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
+                      "alignItems": "flex-end",
+                      "flexDirection": "row",
+                      "justifyContent": "space-between",
+                      "marginBottom": 8,
+                      "width": "100%",
                     },
                   ]
                 }
               >
-                Adresse e-mail
-              </Text>
+                <Text
+                  style={
+                    [
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-Medium",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
+                      },
+                    ]
+                  }
+                >
+                  Adresse e-mail
+                </Text>
+                <Text
+                  style={
+                    [
+                      {
+                        "color": "#696a6f",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 19.2,
+                      },
+                    ]
+                  }
+                >
+                  Obligatoire
+                </Text>
+              </View>
+            </View>
+            <View
+              style={
+                [
+                  {
+                    "marginBottom": 8,
+                  },
+                ]
+              }
+            >
               <Text
                 style={
                   [
@@ -316,97 +342,77 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
                   ]
                 }
               >
-                Obligatoire
+                Exemple : tonadresse@email.com
               </Text>
             </View>
-          </View>
-          <View
-            numberOfSpaces={2}
-            style={
-              [
-                {
-                  "height": 8,
-                },
-              ]
-            }
-          />
-          <View
-            height="small"
-            isDisabled={false}
-            isError={false}
-            isFocus={false}
-            style={
-              [
-                {
-                  "alignItems": "center",
-                  "backgroundColor": "#ffffff",
-                  "borderColor": "#90949d",
-                  "borderRadius": 22,
-                  "borderStyle": "solid",
-                  "borderWidth": 1,
-                  "flexDirection": "row",
-                  "height": 40,
-                  "paddingBottom": 0,
-                  "paddingLeft": 17,
-                  "paddingRight": 17,
-                  "paddingTop": 0,
-                  "width": "100%",
-                },
-              ]
-            }
-            testID="styled-input-container"
-          >
-            <TextInput
-              accessibilityDescribedBy="testUuidV4"
-              accessibilityRequired={true}
-              autoCapitalize="none"
-              autoComplete="email"
-              editable={true}
-              isEmpty={true}
-              keyboardType="email-address"
-              maxLength={120}
-              multiline={false}
-              nativeID="testUuidV4"
-              onBlur={[Function]}
-              onChangeText={[Function]}
-              onFocus={[Function]}
-              placeholder="tonadresse@email.com"
-              placeholderTextColor="#696A6F"
-              returnKeyType="next"
+            <View
+              height="small"
+              isDisabled={false}
+              isError={false}
+              isFocus={false}
               style={
                 [
                   {
-                    "color": "#161617",
-                    "flexBasis": 0,
-                    "flexGrow": 1,
-                    "flexShrink": 1,
-                    "fontFamily": "Montserrat-MediumItalic",
-                    "fontSize": 16,
-                    "height": "100%",
+                    "alignItems": "center",
+                    "backgroundColor": "#ffffff",
+                    "borderColor": "#90949d",
+                    "borderRadius": 22,
+                    "borderStyle": "solid",
+                    "borderWidth": 1,
+                    "flexDirection": "row",
+                    "height": 40,
                     "paddingBottom": 0,
-                    "paddingLeft": 0,
-                    "paddingRight": 0,
+                    "paddingLeft": 17,
+                    "paddingRight": 17,
                     "paddingTop": 0,
+                    "width": "100%",
                   },
                 ]
               }
-              testID="Entrée pour l’email"
-              textAlignVertical="center"
-              textContentType="emailAddress"
-              value=""
-            />
+              testID="styled-input-container"
+            >
+              <TextInput
+                accessibilityDescribedBy="testUuidV4"
+                accessibilityRequired={true}
+                autoCapitalize="none"
+                autoComplete="email"
+                editable={true}
+                isEmpty={true}
+                keyboardType="email-address"
+                maxLength={120}
+                multiline={false}
+                nativeID="testUuidV4"
+                onBlur={[Function]}
+                onChangeText={[Function]}
+                onFocus={[Function]}
+                placeholder=""
+                placeholderTextColor="#696A6F"
+                returnKeyType="next"
+                style={
+                  [
+                    {
+                      "color": "#161617",
+                      "flexBasis": 0,
+                      "flexGrow": 1,
+                      "flexShrink": 1,
+                      "fontFamily": "Montserrat-MediumItalic",
+                      "fontSize": 16,
+                      "height": "100%",
+                      "paddingBottom": 0,
+                      "paddingLeft": 0,
+                      "paddingRight": 0,
+                      "paddingTop": 0,
+                    },
+                  ]
+                }
+                testID="Entrée pour l’email"
+                textAlignVertical="center"
+                textContentType="emailAddress"
+                value=""
+              />
+            </View>
           </View>
         </View>
-        <View
-          numberOfSpaces={6}
-          style={
-            [
-              {
-                "height": 24,
-              },
-            ]
-          }
-        />
         <View
           style={
             [
@@ -428,6 +434,7 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
                     "alignItems": "flex-end",
                     "flexDirection": "row",
                     "justifyContent": "space-between",
+                    "marginBottom": 8,
                     "width": "100%",
                   },
                 ]
@@ -463,16 +470,6 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
               </Text>
             </View>
           </View>
-          <View
-            numberOfSpaces={2}
-            style={
-              [
-                {
-                  "height": 8,
-                },
-              ]
-            }
-          />
           <View
             height="small"
             isDisabled={false}
@@ -538,88 +535,80 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
               value=""
             />
             <View
-              numberOfSpaces={2}
               style={
                 [
                   {
-                    "width": 8,
+                    "marginTop": 8,
                   },
                 ]
               }
-            />
-            <View
-              accessibilityLabel="Afficher le mot de passe"
-              accessibilityRole="button"
-              accessibilityState={
-                {
-                  "busy": undefined,
-                  "checked": undefined,
-                  "disabled": undefined,
-                  "expanded": undefined,
-                  "selected": undefined,
-                }
-              }
-              accessibilityValue={
-                {
-                  "max": undefined,
-                  "min": undefined,
-                  "now": undefined,
-                  "text": undefined,
-                }
-              }
-              accessible={true}
-              focusable={true}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                [
-                  [
-                    {
-                      "userSelect": "auto",
-                    },
-                    {
-                      "maxWidth": 60,
-                    },
-                  ],
-                  {
-                    "opacity": 1,
-                  },
-                ]
-              }
-              testID="Afficher le mot de passe"
             >
               <View
-                fill="#161617"
-                height={24}
-                width={24}
+                accessibilityLabel="Afficher le mot de passe"
+                accessibilityRole="button"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "maxWidth": 60,
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
+                }
+                testID="Afficher le mot de passe"
               >
-                <Text>
-                  undefined-SVG-Mock
-                </Text>
+                <View
+                  fill="#161617"
+                  height={24}
+                  width={24}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
               </View>
             </View>
           </View>
         </View>
         <View
-          numberOfSpaces={5}
-          style={
-            [
-              {
-                "height": 20,
-              },
-            ]
-          }
-        />
-        <View
           style={
             [
               {
                 "flexDirection": "row",
+                "marginBottom": 32,
+                "marginTop": 20,
                 "maxWidth": 500,
                 "width": "100%",
               },
@@ -747,16 +736,6 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
           </View>
         </View>
         <View
-          numberOfSpaces={8}
-          style={
-            [
-              {
-                "height": 32,
-              },
-            ]
-          }
-        />
-        <View
           accessibilityLabel="Se connecter"
           accessibilityState={
             {
@@ -843,142 +822,16 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
           </View>
         </View>
         <View
-          numberOfSpaces={4}
+          gap={4}
           style={
             [
               {
-                "height": 16,
+                "gap": 16,
+                "marginBottom": 40,
+                "marginTop": 16,
               },
             ]
           }
-        />
-        <View
-          style={
-            [
-              {
-                "alignItems": "center",
-                "flexDirection": "row",
-                "paddingHorizontal": 4,
-              },
-            ]
-          }
-        >
-          <View
-            backgroundColor="#cbcdd2"
-            style={
-              [
-                {
-                  "backgroundColor": "#cbcdd2",
-                  "flexBasis": 0,
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                  "height": 1,
-                  "width": "100%",
-                },
-              ]
-            }
-          />
-          <Text
-            style={
-              [
-                {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 12,
-                  "lineHeight": 19.2,
-                  "marginHorizontal": 10,
-                },
-              ]
-            }
-          >
-            ou
-          </Text>
-          <View
-            backgroundColor="#cbcdd2"
-            style={
-              [
-                {
-                  "backgroundColor": "#cbcdd2",
-                  "flexBasis": 0,
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                  "height": 1,
-                  "width": "100%",
-                },
-              ]
-            }
-          />
-        </View>
-        <View
-          numberOfSpaces={4}
-          style={
-            [
-              {
-                "height": 16,
-              },
-            ]
-          }
-        />
-        <View
-          accessibilityLabel="Se connecter avec Google"
-          accessibilityState={
-            {
-              "busy": undefined,
-              "checked": undefined,
-              "disabled": undefined,
-              "expanded": undefined,
-              "selected": undefined,
-            }
-          }
-          accessibilityValue={
-            {
-              "max": undefined,
-              "min": undefined,
-              "now": undefined,
-              "text": undefined,
-            }
-          }
-          accessible={true}
-          focusable={true}
-          onClick={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
-          style={
-            [
-              [
-                {
-                  "userSelect": "auto",
-                },
-                {
-                  "alignItems": "center",
-                  "backgroundColor": "transparent",
-                  "borderRadius": 24,
-                  "flexDirection": "row",
-                  "justifyContent": "center",
-                  "maxWidth": 500,
-                  "minHeight": 40,
-                  "paddingBottom": 2,
-                  "paddingLeft": 20,
-                  "paddingRight": 20,
-                  "paddingTop": 2,
-                  "width": "100%",
-                },
-                {
-                  "borderColor": "#cbcdd2",
-                  "borderStyle": "solid",
-                  "borderWidth": 2,
-                },
-              ],
-              {
-                "opacity": 1,
-              },
-            ]
-          }
-          testID="Se connecter avec Google"
         >
           <View
             style={
@@ -986,69 +839,178 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
                 {
                   "alignItems": "center",
                   "flexDirection": "row",
+                  "paddingHorizontal": 4,
                 },
               ]
             }
           >
             <View
+              backgroundColor="#cbcdd2"
               style={
                 [
                   {
-                    "flexDirection": "row",
-                    "flexShrink": 0,
+                    "backgroundColor": "#cbcdd2",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "height": 1,
+                    "width": "100%",
                   },
                 ]
               }
-            >
-              <View
-                height={20}
-                testID="button-icon-left"
-                width={20}
-              >
-                <Text>
-                  button-icon-left-SVG-Mock
-                </Text>
-              </View>
-              <View
-                numberOfSpaces={2}
-                style={
-                  [
-                    {
-                      "width": 8,
-                    },
-                  ]
-                }
-              />
-            </View>
+            />
             <Text
-              adjustsFontSizeToFit={false}
-              numberOfLines={1}
               style={
                 [
                   {
                     "color": "#161617",
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                    "maxWidth": "100%",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 12,
+                    "lineHeight": 19.2,
+                    "marginHorizontal": 10,
                   },
                 ]
               }
             >
-              Se connecter avec Google
+              ou
             </Text>
+            <View
+              backgroundColor="#cbcdd2"
+              style={
+                [
+                  {
+                    "backgroundColor": "#cbcdd2",
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                    "height": 1,
+                    "width": "100%",
+                  },
+                ]
+              }
+            />
+          </View>
+          <View
+            accessibilityLabel="Se connecter avec Google"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "alignItems": "center",
+                    "backgroundColor": "transparent",
+                    "borderRadius": 24,
+                    "flexDirection": "row",
+                    "justifyContent": "center",
+                    "maxWidth": 500,
+                    "minHeight": 40,
+                    "paddingBottom": 2,
+                    "paddingLeft": 20,
+                    "paddingRight": 20,
+                    "paddingTop": 2,
+                    "width": "100%",
+                  },
+                  {
+                    "borderColor": "#cbcdd2",
+                    "borderStyle": "solid",
+                    "borderWidth": 2,
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
+            }
+            testID="Se connecter avec Google"
+          >
+            <View
+              style={
+                [
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                  },
+                ]
+              }
+            >
+              <View
+                style={
+                  [
+                    {
+                      "flexDirection": "row",
+                      "flexShrink": 0,
+                    },
+                  ]
+                }
+              >
+                <View
+                  height={20}
+                  testID="button-icon-left"
+                  width={20}
+                >
+                  <Text>
+                    button-icon-left-SVG-Mock
+                  </Text>
+                </View>
+                <View
+                  numberOfSpaces={2}
+                  style={
+                    [
+                      {
+                        "width": 8,
+                      },
+                    ]
+                  }
+                />
+              </View>
+              <Text
+                adjustsFontSizeToFit={false}
+                numberOfLines={1}
+                style={
+                  [
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                      "maxWidth": "100%",
+                    },
+                  ]
+                }
+              >
+                Se connecter avec Google
+              </Text>
+            </View>
           </View>
         </View>
-        <View
-          numberOfSpaces={10}
-          style={
-            [
-              {
-                "height": 40,
-              },
-            ]
-          }
-        />
       </View>
       <View
         style={

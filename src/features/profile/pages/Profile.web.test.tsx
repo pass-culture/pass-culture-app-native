@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -43,6 +43,13 @@ describe('<Profile/>', () => {
     renderProfile()
 
     expect(screen.queryByText('Partage le pass Culture')).not.toBeInTheDocument()
+  })
+
+  // TODO(PC-35459): Remove this test when add dark theme button in DisplayPreference
+  it('should not display display preference', () => {
+    renderProfile()
+
+    expect(screen.queryByText('Préférences d’affichage')).not.toBeInTheDocument()
   })
 
   it('should render correctly on desktop', async () => {

@@ -609,7 +609,7 @@ exports[`<Achievements/> should match snapshot 1`] = `
             removeClippedSubviews={false}
             renderItem={[Function]}
             renderScrollComponent={[Function]}
-            scrollEventThrottle={50}
+            scrollEventThrottle={0.0001}
             stickyHeaderIndices={[]}
             viewabilityConfigCallbackPairs={[]}
             waitFor={
@@ -749,15 +749,6 @@ exports[`<Achievements/> should match snapshot 1`] = `
                       </Text>
                     </View>
                   </View>
-                  <Modal
-                    animationType="fade"
-                    hardwareAccelerated={false}
-                    onRequestClose={[Function]}
-                    statusBarTranslucent={true}
-                    testID="modal-achievement-details"
-                    transparent={true}
-                    visible={false}
-                  />
                   <View
                     accessibilityState={
                       {
@@ -866,15 +857,6 @@ exports[`<Achievements/> should match snapshot 1`] = `
                       </Text>
                     </View>
                   </View>
-                  <Modal
-                    animationType="fade"
-                    hardwareAccelerated={false}
-                    onRequestClose={[Function]}
-                    statusBarTranslucent={true}
-                    testID="modal-achievement-details"
-                    transparent={true}
-                    visible={false}
-                  />
                 </View>
               </View>
               <View
@@ -1002,15 +984,6 @@ exports[`<Achievements/> should match snapshot 1`] = `
                       </Text>
                     </View>
                   </View>
-                  <Modal
-                    animationType="fade"
-                    hardwareAccelerated={false}
-                    onRequestClose={[Function]}
-                    statusBarTranslucent={true}
-                    testID="modal-achievement-details"
-                    transparent={true}
-                    visible={false}
-                  />
                   <View
                     accessibilityState={
                       {
@@ -1119,15 +1092,6 @@ exports[`<Achievements/> should match snapshot 1`] = `
                       </Text>
                     </View>
                   </View>
-                  <Modal
-                    animationType="fade"
-                    hardwareAccelerated={false}
-                    onRequestClose={[Function]}
-                    statusBarTranslucent={true}
-                    testID="modal-achievement-details"
-                    transparent={true}
-                    visible={false}
-                  />
                 </View>
               </View>
               <View
@@ -1255,15 +1219,6 @@ exports[`<Achievements/> should match snapshot 1`] = `
                       </Text>
                     </View>
                   </View>
-                  <Modal
-                    animationType="fade"
-                    hardwareAccelerated={false}
-                    onRequestClose={[Function]}
-                    statusBarTranslucent={true}
-                    testID="modal-achievement-details"
-                    transparent={true}
-                    visible={false}
-                  />
                   <View
                     accessibilityState={
                       {
@@ -1372,15 +1327,6 @@ exports[`<Achievements/> should match snapshot 1`] = `
                       </Text>
                     </View>
                   </View>
-                  <Modal
-                    animationType="fade"
-                    hardwareAccelerated={false}
-                    onRequestClose={[Function]}
-                    statusBarTranslucent={true}
-                    testID="modal-achievement-details"
-                    transparent={true}
-                    visible={false}
-                  />
                 </View>
               </View>
               <View
@@ -1508,15 +1454,6 @@ exports[`<Achievements/> should match snapshot 1`] = `
                       </Text>
                     </View>
                   </View>
-                  <Modal
-                    animationType="fade"
-                    hardwareAccelerated={false}
-                    onRequestClose={[Function]}
-                    statusBarTranslucent={true}
-                    testID="modal-achievement-details"
-                    transparent={true}
-                    visible={false}
-                  />
                   <View
                     accessibilityState={
                       {
@@ -1625,15 +1562,6 @@ exports[`<Achievements/> should match snapshot 1`] = `
                       </Text>
                     </View>
                   </View>
-                  <Modal
-                    animationType="fade"
-                    hardwareAccelerated={false}
-                    onRequestClose={[Function]}
-                    statusBarTranslucent={true}
-                    testID="modal-achievement-details"
-                    transparent={true}
-                    visible={false}
-                  />
                 </View>
               </View>
               <View
@@ -1761,15 +1689,6 @@ exports[`<Achievements/> should match snapshot 1`] = `
                       </Text>
                     </View>
                   </View>
-                  <Modal
-                    animationType="fade"
-                    hardwareAccelerated={false}
-                    onRequestClose={[Function]}
-                    statusBarTranslucent={true}
-                    testID="modal-achievement-details"
-                    transparent={true}
-                    visible={false}
-                  />
                   <View
                     accessible={false}
                     style={

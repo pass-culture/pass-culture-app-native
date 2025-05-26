@@ -50,6 +50,8 @@ export default ({ mode }) => {
       },
     },
   }
+  const shouldUploadSourcemaps = process.env.UPLOAD_SOURCEMAPS_TO_SENTRY // Set to true in CI
+
   return defineConfig({
     define: {
       global: 'window',
@@ -95,13 +97,9 @@ export default ({ mode }) => {
       sentryVitePlugin({
         org: 'pass-culture',
         project: 'jeunes',
-        disable: !authToken,
+        disable: !authToken || !shouldUploadSourcemaps,
         authToken,
         release: {
-          uploadLegacySourcemaps: {
-            paths: ['./dist'],
-            ignore: ['node_modules'],
-          },
           finalize: env.ENV !== 'testing',
           cleanArtifacts: false,
           name: `${packageJson.version}-web`,
@@ -118,7 +116,7 @@ export default ({ mode }) => {
       extensions: allExtensions,
       alias: [
         {
-          find: /^((api|cheatcodes|features|fixtures|libs|queries|shared|theme|ui|tests|web).*)/, // if you change this line, check this doc https://github.com/pass-culture/pass-culture-app-native/blob/5ff5fba596244a759d60f8c9cdb67d56ac86a1a7/doc/development/alias.md
+          find: /^((api|cheatcodes|features|fixtures|libs|queries|shared|theme|ui|tests|web|store).*)/, // if you change this line, check this doc https://github.com/pass-culture/pass-culture-app-native/blob/5ff5fba596244a759d60f8c9cdb67d56ac86a1a7/doc/development/alias.md
           replacement: '/src/$1',
         },
         // if you add something below, it should also be added to storybook config file in modulesToAlias
@@ -152,7 +150,7 @@ export default ({ mode }) => {
       },
     },
     build: {
-      sourcemap: process.env.UPLOAD_SOURCEMAPS_TO_SENTRY, // Only set to true in CI
+      sourcemap: shouldUploadSourcemaps,
       commonjsOptions: {
         // https://github.com/rollup/plugins/tree/master/packages/commonjs
         // Here go the options to pass on to @rollup/plugin-commonjs:

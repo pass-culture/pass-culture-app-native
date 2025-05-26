@@ -140,6 +140,7 @@ exports[`Bookings should render correctly 1`] = `
         }
         accessible={false}
         focusable={true}
+        nativeID="En cours"
         onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
@@ -244,6 +245,7 @@ exports[`Bookings should render correctly 1`] = `
         }
         accessible={false}
         focusable={true}
+        nativeID="Terminées"
         onClick={[Function]}
         onResponderGrant={[Function]}
         onResponderMove={[Function]}
@@ -414,6 +416,7 @@ exports[`Bookings should render correctly 1`] = `
                       "longitude": 2.43884,
                     },
                     "id": 2185,
+                    "isOpenToPublic": true,
                     "name": "Maison de la Brique",
                     "postalCode": "93700",
                     "timezone": "Europe/Paris",
@@ -485,6 +488,7 @@ exports[`Bookings should render correctly 1`] = `
                       "longitude": 2.43884,
                     },
                     "id": 2185,
+                    "isOpenToPublic": true,
                     "name": "Maison de la Brique",
                     "postalCode": "93700",
                     "timezone": "Europe/Paris",
@@ -553,6 +557,7 @@ exports[`Bookings should render correctly 1`] = `
                       "longitude": 3.5217,
                     },
                     "id": 2185,
+                    "isOpenToPublic": true,
                     "name": "Libraire du Petit Prince",
                     "postalCode": "59300",
                     "timezone": "Europe/Paris",

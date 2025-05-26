@@ -4,7 +4,7 @@ import React from 'react'
 import { CurrencyEnum, UserProfileResponse, YoungStatusType } from 'api/gen'
 import { ProfileHeader } from 'features/profile/components/Header/ProfileHeader/ProfileHeader'
 import { domains_credit_v3 } from 'features/profile/fixtures/domainsCredit'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import { render, screen } from 'tests/utils/web'
@@ -38,7 +38,7 @@ const user: UserProfileResponse = {
   achievements: [],
 }
 
-jest.mock('features/profile/api/usePatchProfile')
+jest.mock('queries/profile/usePatchProfileMutation')
 
 const exBeneficiaryUser: UserProfileResponse = {
   ...user,
@@ -58,11 +58,7 @@ describe('ProfileHeader', () => {
   it('should display the BeneficiaryHeader if user is beneficiary', () => {
     render(
       <ProfileHeader
-        featureFlags={{
-          enableAchievements: false,
-          disableActivation: false,
-          enablePassForAll: false,
-        }}
+        featureFlags={{ disableActivation: false, enablePassForAll: false }}
         user={user}
       />
     )
@@ -73,15 +69,24 @@ describe('ProfileHeader', () => {
   it('should display the ExBeneficiary Header if credit is expired', () => {
     render(
       <ProfileHeader
-        featureFlags={{
-          enableAchievements: false,
-          disableActivation: false,
-          enablePassForAll: false,
-        }}
+        featureFlags={{ disableActivation: false, enablePassForAll: false }}
         user={exBeneficiaryUser}
       />
     )
 
     expect(screen.getByText('Ton crédit a expiré le')).toBeInTheDocument()
+  })
+
+  it('should not display achievement banner', () => {
+    render(
+      <ProfileHeader
+        featureFlags={{ disableActivation: false, enablePassForAll: false }}
+        user={user}
+      />
+    )
+
+    const achievementBannerTitle = screen.queryByText('Mes succès')
+
+    expect(achievementBannerTitle).not.toBeInTheDocument()
   })
 })

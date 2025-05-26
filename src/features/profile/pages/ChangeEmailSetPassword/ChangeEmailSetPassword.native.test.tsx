@@ -6,7 +6,7 @@ import { EmptyResponse } from 'libs/fetch'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render, screen } from 'tests/utils'
+import { act, fireEvent, render, screen, userEvent } from 'tests/utils'
 import * as SnackBarContextModule from 'ui/components/snackBar/SnackBarContext'
 
 const mockShowSuccessSnackBar = jest.fn()
@@ -27,6 +27,10 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
     return Component
   }
 })
+
+const user = userEvent.setup()
+
+jest.useFakeTimers()
 
 describe('<ChangeEmailSetPassword />', () => {
   it('should match snapshot', async () => {
@@ -98,8 +102,9 @@ describe('<ChangeEmailSetPassword />', () => {
     await act(async () => {
       fireEvent.changeText(passwordInput, 'user@AZERTY123')
       fireEvent.changeText(confirmationInput, 'user@AZERTY123')
-      fireEvent.press(await screen.findByLabelText('Créer mon mot de passe'))
     })
+
+    await user.press(screen.getByLabelText('Créer mon mot de passe'))
 
     expect(replace).toHaveBeenCalledWith('ProfileStackNavigator', {
       params: {
@@ -124,8 +129,9 @@ describe('<ChangeEmailSetPassword />', () => {
     await act(async () => {
       fireEvent.changeText(passwordInput, 'user@AZERTY123')
       fireEvent.changeText(confirmationInput, 'user@AZERTY123')
-      fireEvent.press(await screen.findByLabelText('Créer mon mot de passe'))
     })
+
+    await user.press(screen.getByLabelText('Créer mon mot de passe'))
 
     expect(mockShowSuccessSnackBar).toHaveBeenCalledWith({
       message: 'Ton mot de passe a bien été créé.',
@@ -154,8 +160,9 @@ describe('<ChangeEmailSetPassword />', () => {
     await act(async () => {
       fireEvent.changeText(passwordInput, 'user@AZERTY123')
       fireEvent.changeText(confirmationInput, 'user@AZERTY123')
-      fireEvent.press(await screen.findByLabelText('Créer mon mot de passe'))
     })
+
+    await user.press(screen.getByLabelText('Créer mon mot de passe'))
 
     expect(mockShowSuccessSnackBar).not.toHaveBeenCalledWith({
       message: 'Ton mot de passe a bien été créé.',
@@ -180,8 +187,9 @@ describe('<ChangeEmailSetPassword />', () => {
     await act(async () => {
       fireEvent.changeText(passwordInput, 'user@AZERTY123')
       fireEvent.changeText(confirmationInput, 'user@AZERTY123')
-      fireEvent.press(await screen.findByLabelText('Créer mon mot de passe'))
     })
+
+    await user.press(screen.getByLabelText('Créer mon mot de passe'))
 
     expect(mockShowErrorSnackBar).toHaveBeenCalledWith({
       message: 'Une erreur s’est produite lors de la création du mot de passe. Réessaie plus tard.',

@@ -53,7 +53,7 @@ export const FilterSwitchWithLabel: FunctionComponent<Props> = ({
       {isDesktopViewport ? null : (
         <React.Fragment>
           <TitleWrapper>{TitleWithSubtitle}</TitleWrapper>
-          <Spacer.Row numberOfSpaces={2} />
+          <Spacer.Row numberOfSpaces={6} />
         </React.Fragment>
       )}
       <SwitchWrapper>

@@ -2,7 +2,7 @@ import React, { FunctionComponent } from 'react'
 import { Text } from 'react-native'
 
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { OfferModal } from 'shared/offer/enums'
 import { OfferModalProps, useBookOfferModal } from 'shared/offer/helpers/useBookOfferModal'
@@ -15,7 +15,7 @@ jest.mock('features/bookOffer/pages/BookingOfferModal', () => ({
   BookingOfferModal: () => mockBookingOfferModal,
 }))
 
-jest.mock('ui/components/modals/useModal.ts', () => ({
+jest.mock('ui/components/modals/useModal', () => ({
   useModal: jest.fn().mockReturnValue({
     visible: true,
     showModal: jest.fn(),

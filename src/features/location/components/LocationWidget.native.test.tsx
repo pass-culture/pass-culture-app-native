@@ -58,7 +58,6 @@ describe('LocationWidget', () => {
   })
 
   it('should hide tooltip when pressing close button', async () => {
-    jest.useFakeTimers()
     renderLocationWidget()
 
     await act(async () => {

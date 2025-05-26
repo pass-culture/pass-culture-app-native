@@ -4,7 +4,7 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { initialSearchState } from 'features/search/context/reducer'
 import { ISearchContext } from 'features/search/context/SearchWrapper'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import { act, render, screen, waitFor } from 'tests/utils/web'

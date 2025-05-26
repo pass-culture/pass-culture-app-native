@@ -3,15 +3,21 @@ import { Share } from 'react-native'
 
 import { reset, useRoute } from '__mocks__/@react-navigation/native'
 import reactNativeInAppReview from '__mocks__/react-native-in-app-review'
+import { EligibilityType } from 'api/gen'
 import { useReviewInAppInformation } from 'features/bookOffer/helpers/useReviewInAppInformation'
+import { beneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics/provider'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { BatchProfile } from 'libs/react-native-batch'
+import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { act, render, screen, userEvent, waitFor } from 'tests/utils'
+import { LINE_BREAK } from 'ui/theme/constants'
 
 import { BookingConfirmation } from './BookingConfirmation'
 
-jest.mock('react-native/Libraries/Animated/animations/TimingAnimation.js')
+jest.mock('features/auth/context/AuthContext')
+
+jest.mock('react-native/Libraries/Animated/animations/TimingAnimation')
 
 jest.mock('queries/offer/useOfferQuery')
 
@@ -62,6 +68,33 @@ describe('<BookingConfirmation />', () => {
     render(<BookingConfirmation />)
 
     expect(screen).toMatchSnapshot()
+  })
+
+  it('should display correct amount left text', async () => {
+    render(<BookingConfirmation />)
+
+    const amountLeftText = await screen.findByText(
+      `Il te reste encore 20 € à dépenser sur le pass Culture.${LINE_BREAK}Tu peux retrouver toutes les informations concernant ta réservation sur l’application.`
+    )
+
+    expect(amountLeftText).toBeOnTheScreen()
+  })
+
+  it('should not display correct amount left text when free user status', async () => {
+    mockAuthContextWithUser({
+      ...beneficiaryUser,
+      eligibility: EligibilityType.free,
+    })
+
+    render(<BookingConfirmation />)
+
+    const amountLeftText = screen.queryByText(
+      `Il te reste encore 20 € à dépenser sur le pass Culture.${LINE_BREAK}Tu peux retrouver toutes les informations concernant ta réservation sur l’application.`
+    )
+
+    await screen.findByText('Réservation confirmée !')
+
+    expect(amountLeftText).not.toBeOnTheScreen()
   })
 
   describe('InAppReview', () => {

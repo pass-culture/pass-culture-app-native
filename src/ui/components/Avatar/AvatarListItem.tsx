@@ -8,12 +8,10 @@ import { DefaultAvatar } from 'ui/components/Avatar/DefaultAvatar'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { getSpacing, Typo } from 'ui/theme'
-import { AVATAR_LARGE } from 'ui/theme/constants'
 
 export type AvatarListItemProps = {
   id: number
   name: string
-  width: number
   onItemPress: (artistName: string) => void
   image?: string
 } & AvatarProps
@@ -22,7 +20,7 @@ export const AvatarListItem: FunctionComponent<AvatarListItemProps> = ({
   id,
   image,
   name,
-  width,
+  size,
   onItemPress,
   ...props
 }) => {
@@ -36,7 +34,7 @@ export const AvatarListItem: FunctionComponent<AvatarListItemProps> = ({
       }}
       onBeforeNavigate={() => onItemPress(name)}>
       <StyledView gap={2}>
-        <Avatar borderWidth={6} size={AVATAR_LARGE} {...props}>
+        <Avatar borderWidth={6} size={size} {...props}>
           {image ? (
             <StyledImage
               url={image}
@@ -48,7 +46,7 @@ export const AvatarListItem: FunctionComponent<AvatarListItemProps> = ({
           )}
         </Avatar>
 
-        <ArtistName numberOfLines={2} maxWidth={width}>
+        <ArtistName numberOfLines={2} maxWidth={size ?? 0}>
           {name}
         </ArtistName>
       </StyledView>

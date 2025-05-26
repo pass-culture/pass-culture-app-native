@@ -277,33 +277,20 @@ exports[`SetPhoneValidationCode should match snapshot 1`] = `
                 ]
               }
             >
-              <View
+              <Text
                 style={
                   [
                     {
-                      "alignItems": "center",
-                      "width": "100%",
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 19,
+                      "lineHeight": 30.4,
                     },
                   ]
                 }
               >
-                <Text
-                  nativeID="testUuidV4"
-                  style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 17,
-                        "lineHeight": 27.2,
-                        "textAlign": "center",
-                      },
-                    ]
-                  }
-                >
-                  Valide ton numéro de téléphone
-                </Text>
-              </View>
+                Valide ton numéro de téléphone
+              </Text>
               <View
                 numberOfSpaces={5}
                 style={
@@ -314,9 +301,7 @@ exports[`SetPhoneValidationCode should match snapshot 1`] = `
                   ]
                 }
               />
-              <View
-                accessibilityLabelledBy="testUuidV4"
-              >
+              <View>
                 <Text
                   style={
                     [
@@ -325,7 +310,6 @@ exports[`SetPhoneValidationCode should match snapshot 1`] = `
                         "fontFamily": "Montserrat-Medium",
                         "fontSize": 16,
                         "lineHeight": 25.6,
-                        "textAlign": "center",
                       },
                     ]
                   }
@@ -374,6 +358,7 @@ exports[`SetPhoneValidationCode should match snapshot 1`] = `
                               "alignItems": "flex-end",
                               "flexDirection": "row",
                               "justifyContent": "space-between",
+                              "marginBottom": 8,
                               "width": "100%",
                             },
                           ]
@@ -409,16 +394,6 @@ exports[`SetPhoneValidationCode should match snapshot 1`] = `
                         </Text>
                       </View>
                     </View>
-                    <View
-                      numberOfSpaces={2}
-                      style={
-                        [
-                          {
-                            "height": 8,
-                          },
-                        ]
-                      }
-                    />
                     <View
                       height="small"
                       isDisabled={false}
@@ -626,36 +601,6 @@ exports[`SetPhoneValidationCode should match snapshot 1`] = `
                     </View>
                   </View>
                 </View>
-                <Modal
-                  accessibilityLabelledBy="testUuidV4"
-                  accessibilityModal={true}
-                  animationType="none"
-                  deviceHeight={1334}
-                  deviceWidth={750}
-                  hardwareAccelerated={false}
-                  hideModalContentWhileAnimating={false}
-                  onBackdropPress={[Function]}
-                  onModalHide={[Function]}
-                  onModalWillHide={[Function]}
-                  onModalWillShow={[Function]}
-                  onRequestClose={[Function]}
-                  panResponderThreshold={4}
-                  scrollHorizontal={false}
-                  scrollOffset={0}
-                  scrollOffsetMax={0}
-                  scrollTo={null}
-                  statusBarTranslucent={true}
-                  supportedOrientations={
-                    [
-                      "portrait",
-                      "landscape",
-                    ]
-                  }
-                  swipeThreshold={100}
-                  testID="modal"
-                  transparent={true}
-                  visible={false}
-                />
               </View>
             </View>
           </View>

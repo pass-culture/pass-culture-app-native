@@ -1,11 +1,10 @@
 import { SearchResponse } from '@algolia/client-search'
 
-import { PlaylistOffersParams } from 'features/home/types'
 import { BuildLocationParameterParams } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildLocationParameter'
 import { offerAttributesToRetrieve } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/offerAttributesToRetrieve'
 import { fetchOffersByGTL } from 'libs/algolia/fetchAlgolia/fetchOffersByGTL'
 import * as multipleQueries from 'libs/algolia/fetchAlgolia/multipleQueries'
-import { LocationMode } from 'libs/algolia/types'
+import { LocationMode, PlaylistOffersParams } from 'libs/algolia/types'
 import { Offer } from 'shared/offer/types'
 
 describe('fetchOffersByGTL', () => {

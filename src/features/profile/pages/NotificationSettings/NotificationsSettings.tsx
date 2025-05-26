@@ -7,7 +7,6 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { getTabNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { PushNotificationsModal } from 'features/notifications/pages/PushNotificationsModal'
-import { usePatchProfile } from 'features/profile/api/usePatchProfile'
 import { SectionWithSwitch } from 'features/profile/components/SectionWithSwitch/SectionWithSwitch'
 import { UnsavedSettingsModal } from 'features/profile/pages/NotificationSettings/components/UnsavedSettingsModal'
 import {
@@ -15,6 +14,7 @@ import {
   hasUserChangedSubscriptions,
 } from 'features/profile/pages/NotificationSettings/helpers/hasUserChangedParameters'
 import { usePushPermission } from 'features/profile/pages/NotificationSettings/usePushPermission'
+import { NotificationsSettingsState } from 'features/profile/types'
 import { mapSubscriptionThemeToName } from 'features/subscription/helpers/mapSubscriptionThemeToName'
 import {
   SubscriptionTheme,
@@ -22,6 +22,7 @@ import {
   TOTAL_NUMBER_OF_THEME,
 } from 'features/subscription/types'
 import { analytics } from 'libs/analytics/provider'
+import { usePatchProfileMutation } from 'queries/profile/usePatchProfileMutation'
 import { InfoBanner } from 'ui/components/banners/InfoBanner'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
@@ -32,12 +33,6 @@ import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeade
 import { Info } from 'ui/svg/icons/Info'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
-
-export type NotificationsSettingsState = {
-  allowEmails?: boolean
-  allowPush?: boolean
-  themePreferences: SubscriptionTheme[]
-}
 
 export const NotificationsSettings = () => {
   const { isLoggedIn, user } = useAuthContext()
@@ -64,7 +59,7 @@ export const NotificationsSettings = () => {
 
   const { pushPermission } = usePushPermission(updatePushPermissionFromSettings)
 
-  const { mutate: patchProfile, isLoading: isUpdatingProfile } = usePatchProfile({
+  const { mutate: patchProfile, isLoading: isUpdatingProfile } = usePatchProfileMutation({
     onSuccess: () => {
       showSuccessSnackBar({
         message: 'Tes modifications ont été enregistrées\u00a0!',

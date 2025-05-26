@@ -1,5 +1,5 @@
 import React, { forwardRef, useCallback, useMemo, useRef, useState } from 'react'
-import { Animated, LayoutChangeEvent, View } from 'react-native'
+import { Animated, LayoutChangeEvent, useWindowDimensions, View } from 'react-native'
 import LinearGradient from 'react-native-linear-gradient'
 import { ListOnScrollProps, VariableSizeList } from 'react-window'
 import styled from 'styled-components/native'
@@ -27,8 +27,11 @@ import { getSpacing } from 'ui/theme'
 
 const BASE_HEADER_HEIGHT = 112
 const USER_DATA_MESSAGE_HEIGHT = 72
-const GEOLOCATION_BUTTON_HEIGHT = 102
-const VENUES_PLAYLIST_HEIGHT = 265
+const GEOLOCATION_BUTTON_HEIGHT_ONE_LINE = 106
+const GEOLOCATION_BUTTON_HEIGHT_TWO_LINE = 130
+const VENUES_PLAYLIST_HEIGHT = 297
+const BREAKING_POINT_GEOLOCATION_MODAL_HEIGHT = 465
+const ARTISTS_PLAYLIST_HEIGHT = 300
 
 const FOOTER_SIZE = 104
 const LOAD_MORE_THRESHOLD = 300
@@ -39,19 +42,33 @@ type GetHeaderSizeType = {
   userData: CustomUserData
   isGeolocated: boolean
   hasVenuesPlaylist: boolean
+  hasArtistsPlaylist: boolean
+  windowWidth: number
 }
 
-function getHeaderSize({ userData, isGeolocated, hasVenuesPlaylist }: GetHeaderSizeType) {
+export const getHeaderSize = ({
+  userData,
+  isGeolocated,
+  hasVenuesPlaylist,
+  hasArtistsPlaylist,
+  windowWidth,
+}: GetHeaderSizeType) => {
   let totalHeight = BASE_HEADER_HEIGHT
 
   if (userData?.[0]?.message) {
     totalHeight += USER_DATA_MESSAGE_HEIGHT
   } else if (!isGeolocated) {
-    totalHeight += GEOLOCATION_BUTTON_HEIGHT
+    totalHeight +=
+      windowWidth >= BREAKING_POINT_GEOLOCATION_MODAL_HEIGHT
+        ? GEOLOCATION_BUTTON_HEIGHT_ONE_LINE
+        : GEOLOCATION_BUTTON_HEIGHT_TWO_LINE
   }
 
   if (hasVenuesPlaylist) {
     totalHeight += VENUES_PLAYLIST_HEIGHT
+  }
+  if (hasArtistsPlaylist) {
+    totalHeight += ARTISTS_PLAYLIST_HEIGHT
   }
 
   return totalHeight
@@ -63,24 +80,34 @@ type GetItemSizeType = {
   itemsCount: number
   userData: CustomUserData
   hasVenuesPlaylist: boolean
+  hasArtistsPlaylist: boolean
+  windowWidth: number
 }
 
 /**
  * Function called to compute row size.
  * Since the list contains header and footer components, it needs computation.
  */
-function getItemSize({
+const getItemSize = ({
   index,
   isGeolocated,
   itemsCount,
   userData,
   hasVenuesPlaylist,
-}: GetItemSizeType) {
+  hasArtistsPlaylist,
+  windowWidth,
+}: GetItemSizeType) => {
   const isHeader = index === 0
   const isFooter = index === itemsCount - 1
 
   if (isHeader) {
-    return getHeaderSize({ userData, isGeolocated, hasVenuesPlaylist })
+    return getHeaderSize({
+      userData,
+      isGeolocated,
+      hasVenuesPlaylist,
+      hasArtistsPlaylist,
+      windowWidth,
+    })
   }
 
   if (isFooter) {
@@ -101,6 +128,7 @@ export const SearchList = forwardRef<never, SearchListProps>(
       onPress,
       userData,
       venuesUserData,
+      artistSection,
     },
     _ref
   ) => {
@@ -157,6 +185,7 @@ export const SearchList = forwardRef<never, SearchListProps>(
       nbHits,
       offers: hits.offers,
       venues: hits.venues,
+      artistSection,
       isFetchingNextPage,
       autoScrollEnabled,
       onPress,
@@ -176,6 +205,8 @@ export const SearchList = forwardRef<never, SearchListProps>(
       listRef.current?.scrollToItem(0)
     }, [])
 
+    const { width: windowWidth } = useWindowDimensions()
+
     const itemSizeFn = useCallback(
       (index: number) =>
         getItemSize({
@@ -184,8 +215,17 @@ export const SearchList = forwardRef<never, SearchListProps>(
           itemsCount: data.items.length,
           userData,
           hasVenuesPlaylist,
+          hasArtistsPlaylist: !!artistSection,
+          windowWidth,
         }),
-      [hasGeolocPosition, data.items.length, userData, hasVenuesPlaylist]
+      [
+        hasGeolocPosition,
+        data.items.length,
+        userData,
+        hasVenuesPlaylist,
+        artistSection,
+        windowWidth,
+      ]
     )
 
     return (

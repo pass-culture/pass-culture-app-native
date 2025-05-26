@@ -1,14 +1,13 @@
 import React, { FunctionComponent } from 'react'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { VenueMapLocationModal } from 'features/location/components/VenueMapLocationModal'
+import { ListCategoryButtonProps } from 'features/search/helpers/useSortedSearchCategories/useSortedSearchCategories'
 import { VenueMapBlock } from 'features/venueMap/components/VenueMapBlock/VenueMapBlock'
-import { CategoryButton, CategoryButtonProps } from 'shared/categoryButton/CategoryButton'
+import { CategoryButton } from 'shared/categoryButton/CategoryButton'
 import { getSpacing, Typo } from 'ui/theme'
 // eslint-disable-next-line no-restricted-imports
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
-
-export type ListCategoryButtonProps = CategoryButtonProps[]
 
 type Props = {
   sortedCategories: ListCategoryButtonProps
@@ -33,6 +32,7 @@ export const CategoriesListDumb: FunctionComponent<Props> = ({
   venueMapLocationModalVisible,
   hideVenueMapLocationModal,
 }) => {
+  const theme = useTheme()
   return (
     <StyledScrollView vertical showsHorizontalScrollIndicator={false} testID="categoriesButtons">
       {isMapWithoutPositionAndNotLocated || shouldDisplayVenueMap ? (
@@ -52,9 +52,16 @@ export const CategoriesListDumb: FunctionComponent<Props> = ({
       ) : null}
       <CategoriesTitleV2 />
       <CategoriesButtonsContainer>
-        {sortedCategories.map((item) => (
-          <StyledCategoryButton key={item.label} {...item} />
-        ))}
+        {sortedCategories.map((item) => {
+          return (
+            <StyledCategoryButton
+              key={item.label}
+              {...item}
+              fillColor={theme.designSystem.color.background[item.fillColor]}
+              borderColor={theme.designSystem.color.border[item.borderColor]}
+            />
+          )
+        })}
       </CategoriesButtonsContainer>
     </StyledScrollView>
   )

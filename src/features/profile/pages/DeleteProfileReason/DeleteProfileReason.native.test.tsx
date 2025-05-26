@@ -7,7 +7,7 @@ import { DeleteProfileReason } from 'features/profile/pages/DeleteProfileReason/
 import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics/provider'
 import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
-import { fireEvent, render, screen, waitFor } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 
 jest.mock('features/navigation/helpers/navigateToHome')
 jest.mock('features/navigation/navigationRef')
@@ -24,6 +24,8 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 })
 
 jest.mock('features/auth/context/AuthContext')
+
+const user = userEvent.setup()
 
 jest.useFakeTimers()
 
@@ -44,17 +46,15 @@ describe('<DeleteProfileReason />', () => {
     mockAuthContextWithUser(nonBeneficiaryUser)
     render(<DeleteProfileReason />)
 
-    fireEvent.press(
+    await user.press(
       screen.getByText('J’aimerais créer un compte avec une adresse e-mail différente')
     )
 
-    await waitFor(() => {
-      expect(navigate).toHaveBeenCalledWith('ProfileStackNavigator', {
-        params: {
-          showModal: true,
-        },
-        screen: 'ChangeEmail',
-      })
+    expect(navigate).toHaveBeenCalledWith('ProfileStackNavigator', {
+      params: {
+        showModal: true,
+      },
+      screen: 'ChangeEmail',
     })
   })
 
@@ -62,21 +62,19 @@ describe('<DeleteProfileReason />', () => {
     mockAuthContextWithUser(nonBeneficiaryUser)
     render(<DeleteProfileReason />)
 
-    fireEvent.press(screen.getByText('Autre'))
+    await user.press(screen.getByText('Autre'))
 
-    await waitFor(() => {
-      expect(navigate).toHaveBeenCalledWith('ProfileStackNavigator', {
-        params: undefined,
-        screen: 'DeleteProfileContactSupport',
-      })
+    expect(navigate).toHaveBeenCalledWith('ProfileStackNavigator', {
+      params: undefined,
+      screen: 'DeleteProfileContactSupport',
     })
   })
 
-  it('should log analytics when clicking on reasonButton', () => {
+  it('should log analytics when clicking on reasonButton', async () => {
     mockAuthContextWithUser(nonBeneficiaryUser)
     render(<DeleteProfileReason />)
 
-    fireEvent.press(screen.getByText('Autre'))
+    await user.press(screen.getByText('Autre'))
 
     expect(analytics.logSelectDeletionReason).toHaveBeenNthCalledWith(1, 'other')
   })
@@ -92,13 +90,11 @@ describe('<DeleteProfileReason />', () => {
       mockAuthContextWithUser(nonBeneficiaryUser)
       render(<DeleteProfileReason />)
 
-      fireEvent.press(screen.getByText(reason))
+      await user.press(screen.getByText(reason))
 
-      await waitFor(() => {
-        expect(navigate).toHaveBeenCalledWith('ProfileStackNavigator', {
-          params: undefined,
-          screen: 'DeleteProfileConfirmation',
-        })
+      expect(navigate).toHaveBeenCalledWith('ProfileStackNavigator', {
+        params: undefined,
+        screen: 'DeleteProfileConfirmation',
       })
     }
   )
@@ -115,13 +111,11 @@ describe('<DeleteProfileReason />', () => {
         mockAuthContextWithUser(beneficiaryUser)
         render(<DeleteProfileReason />)
 
-        fireEvent.press(screen.getByText(reason))
+        await user.press(screen.getByText(reason))
 
-        await waitFor(() => {
-          expect(navigate).toHaveBeenCalledWith('ProfileStackNavigator', {
-            params: undefined,
-            screen: 'DeleteProfileAccountNotDeletable',
-          })
+        expect(navigate).toHaveBeenCalledWith('ProfileStackNavigator', {
+          params: undefined,
+          screen: 'DeleteProfileAccountNotDeletable',
         })
       }
     )
@@ -141,13 +135,11 @@ describe('<DeleteProfileReason />', () => {
           mockAuthContextWithUser({ ...beneficiaryUser, birthDate })
           render(<DeleteProfileReason />)
 
-          fireEvent.press(screen.getByText('Je n’utilise plus l’application'))
+          await user.press(screen.getByText('Je n’utilise plus l’application'))
 
-          await waitFor(() => {
-            expect(navigate).toHaveBeenCalledWith('ProfileStackNavigator', {
-              params: undefined,
-              screen: expectedRedirect,
-            })
+          expect(navigate).toHaveBeenCalledWith('ProfileStackNavigator', {
+            params: undefined,
+            screen: expectedRedirect,
           })
         }
       )

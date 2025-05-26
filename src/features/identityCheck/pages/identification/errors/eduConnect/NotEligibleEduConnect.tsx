@@ -7,7 +7,7 @@ import { navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome
 import { analytics } from 'libs/analytics/provider'
 import { ScreenErrorProps } from 'libs/monitoring/errors'
 import { Helmet } from 'libs/react-helmet/Helmet'
-import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
+import { ButtonProps, GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { Typo } from 'ui/theme'
 
 export const NotEligibleEduConnect = ({
@@ -42,7 +42,7 @@ export const NotEligibleEduConnect = ({
 
   const helmetTitle = `Page erreur\u00a0: ${title} | pass Culture`
 
-  let buttonPrimary = undefined
+  let buttonPrimary: ButtonProps | undefined = undefined
   if (primaryButton) {
     if (primaryButton.navigateTo) {
       buttonPrimary = {
@@ -87,6 +87,6 @@ type TextBodyProps = TextProps & {
   textAlign?: Exclude<TextStyle['textAlign'], 'auto'>
 }
 
-const Body = styled(Typo.Body).attrs<TextBodyProps>((props) => props)<TextBodyProps>(
-  ({ textAlign }) => ({ textAlign })
-)
+const Body = styled(Typo.Body)<TextBodyProps>(({ textAlign }) => ({
+  textAlign,
+}))

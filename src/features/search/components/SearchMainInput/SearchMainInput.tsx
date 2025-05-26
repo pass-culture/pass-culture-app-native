@@ -83,6 +83,6 @@ const StyledSearchInput = styled(SearchInput).attrs({
 })({})
 
 const SearchIcon = styled(BicolorSearch).attrs(({ theme }) => ({
-  color: theme.colors.greyDark,
+  color: theme.designSystem.color.icon.subtle,
   size: theme.icons.sizes.smaller,
 }))``

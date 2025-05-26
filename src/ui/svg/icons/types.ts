@@ -1,10 +1,6 @@
 import { ViewStyle } from 'react-native'
 
-import type { ColorsType } from 'theme/types'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum, UniqueColors } from 'ui/theme/colors'
-
-export type ColorsTypeLegacy = ColorsEnum | UniqueColors | ColorsType
+import { ColorsTypeLegacy } from 'theme/types'
 
 interface AccessibleIconSharedProperties {
   color?: ColorsTypeLegacy

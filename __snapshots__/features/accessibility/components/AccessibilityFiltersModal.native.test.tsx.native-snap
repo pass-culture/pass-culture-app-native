@@ -418,20 +418,12 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
         >
           <View>
             <View
-              numberOfSpaces={6}
-              style={
-                [
-                  {
-                    "height": 24,
-                  },
-                ]
-              }
-            />
-            <View
+              gap={8}
               style={
                 [
                   {
                     "gap": 32,
+                    "marginTop": 24,
                   },
                 ]
               }
@@ -835,11 +827,13 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
             }
           >
             <View
+              gap={4}
               isModal={true}
               style={
                 [
                   {
                     "flexDirection": "row",
+                    "gap": 16,
                     "justifyContent": "center",
                     "paddingHorizontal": 24,
                     "paddingTop": 8,
@@ -853,7 +847,7 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
                   {
                     "busy": undefined,
                     "checked": undefined,
-                    "disabled": undefined,
+                    "disabled": true,
                     "expanded": undefined,
                     "selected": undefined,
                   }
@@ -867,7 +861,7 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
                   }
                 }
                 accessible={true}
-                focusable={true}
+                focusable={false}
                 onClick={[Function]}
                 onResponderGrant={[Function]}
                 onResponderMove={[Function]}
@@ -896,7 +890,6 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
                       },
                       {
                         "backgroundColor": "transparent",
-                        "marginRight": 16,
                         "width": "auto",
                       },
                     ],
@@ -953,7 +946,7 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
                     style={
                       [
                         {
-                          "color": "#161617",
+                          "color": "#696A6F",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 12,
                           "lineHeight": 19.2,
@@ -966,16 +959,6 @@ exports[`<AccessibilityFiltersModal /> should render modal correctly 1`] = `
                   </Text>
                 </View>
               </View>
-              <View
-                numberOfSpaces={4}
-                style={
-                  [
-                    {
-                      "height": 16,
-                    },
-                  ]
-                }
-              />
               <View
                 accessibilityLabel="Rechercher"
                 accessibilityState={

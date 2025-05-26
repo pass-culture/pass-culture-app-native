@@ -1,4 +1,7 @@
-import React, { useCallback, useEffect, useMemo } from 'react'
+import { useFocusEffect } from '@react-navigation/native'
+import React, { useCallback, useEffect, useMemo, useRef } from 'react'
+import { ViewToken } from 'react-native'
+import { FlatList } from 'react-native-gesture-handler'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useHomeRecommendedOffers } from 'features/home/api/useHomeRecommendedOffers'
@@ -11,10 +14,11 @@ import { getSearchNavConfig } from 'features/navigation/SearchStackNavigator/sea
 import { OfferTileWrapper } from 'features/offer/components/OfferTile/OfferTileWrapper'
 import { useAdaptOffersPlaylistParameters } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/helpers/useAdaptOffersPlaylistParameters'
 import { analytics } from 'libs/analytics/provider'
+import { getPlaylistItemDimensionsFromLayout } from 'libs/contentful/getPlaylistItemDimensionsFromLayout'
 import { ContentTypes } from 'libs/contentful/types'
-import { usePlaylistItemDimensionsFromLayout } from 'libs/contentful/usePlaylistItemDimensionsFromLayout'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { useLocation } from 'libs/location'
+import { IntersectionObserver } from 'shared/IntersectionObserver/IntersectionObserver'
 import { Offer } from 'shared/offer/types'
 import { PassPlaylist } from 'ui/components/PassPlaylist'
 import { CustomListRenderItem, ItemDimensions, RenderFooterItem } from 'ui/components/Playlist'
@@ -28,6 +32,7 @@ export type OffersModuleProps = {
   homeEntryId: string | undefined
   data: ModuleData | undefined
   recommendationParameters?: RecommendedOffersModule['recommendationParameters']
+  onViewableItemsChanged?: (items: Pick<ViewToken, 'key' | 'index'>[]) => void
 }
 
 const keyExtractor = (item: Offer) => item.objectID
@@ -41,10 +46,12 @@ export const OffersModule = (props: OffersModuleProps) => {
     homeEntryId,
     data,
     recommendationParameters,
+    onViewableItemsChanged,
   } = props
   const adaptedPlaylistParameters = useAdaptOffersPlaylistParameters()
   const { user } = useAuthContext()
   const { userLocation } = useLocation()
+  const isInView = useRef(false)
 
   const { offers: recommandationOffers, recommendationApiParams } = useHomeRecommendedOffers(
     userLocation,
@@ -58,12 +65,10 @@ export const OffersModule = (props: OffersModuleProps) => {
     nbPlaylistResults: 0,
   }
 
-  const [parameters] = offersModuleParameters
+  const [parameters = { title: '', hitsPerPage: 0 }] = offersModuleParameters
   // When we navigate to the search page, we want to show 20 results per page,
   // not what is configured in contentful
-  // eslint-disable-next-line react-hooks/exhaustive-deps
 
-  // @ts-expect-error: because of noUncheckedIndexedAccess
   const { offerParams, locationParams } = adaptedPlaylistParameters(parameters)
   const searchParams = {
     ...offerParams,
@@ -105,14 +110,15 @@ export const OffersModule = (props: OffersModuleProps) => {
           width={width}
           height={height}
           analyticsFrom="home"
+          hasSmallLayout={displayParameters.layout === 'three-items'}
         />
       )
     },
 
-    [moduleName, moduleId, homeEntryId]
+    [moduleName, moduleId, homeEntryId, displayParameters.layout]
   )
 
-  const { itemWidth, itemHeight } = usePlaylistItemDimensionsFromLayout(displayParameters.layout)
+  const { itemWidth, itemHeight } = getPlaylistItemDimensionsFromLayout(displayParameters.layout)
 
   const renderFooter: RenderFooterItem = useCallback(
     ({ width, height }: ItemDimensions) => {
@@ -171,22 +177,65 @@ export const OffersModule = (props: OffersModuleProps) => {
     shouldModuleBeDisplayed,
   ])
 
+  const listRef = useRef<FlatList>(null)
+  const lastViewableItems = useRef<ViewToken[]>([])
+
+  const handleIntersectionObserverChange = (value: boolean) => {
+    isInView.current = value
+    if (value) {
+      if (lastViewableItems.current?.length) {
+        handleViewableItemsChanged({
+          viewableItems: lastViewableItems.current,
+        })
+      } else {
+        listRef.current?.recordInteraction()
+      }
+    }
+  }
+
+  const handleViewableItemsChanged = useCallback(
+    ({ viewableItems }: { viewableItems: ViewToken[] }) => {
+      if (isInView.current) {
+        onViewableItemsChanged?.(viewableItems.map(({ key, index }) => ({ key, index })))
+        lastViewableItems.current = viewableItems
+      }
+    },
+    // We cannot change onViewableItemsChanged on the fly
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    []
+  )
+
+  useFocusEffect(
+    useCallback(() => {
+      if (lastViewableItems.current?.length) {
+        handleViewableItemsChanged({
+          viewableItems: lastViewableItems.current,
+        })
+      }
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+  )
+
   if (!shouldModuleBeDisplayed) return null
 
   return (
-    <PassPlaylist
-      testID="offersModuleList"
-      title={displayParameters.title}
-      subtitle={displayParameters.subtitle}
-      data={offersToDisplay}
-      itemHeight={itemHeight}
-      itemWidth={itemWidth}
-      onPressSeeMore={onPressSeeMore}
-      titleSeeMoreLink={{ ...searchTabConfig }}
-      renderItem={renderItem}
-      renderFooter={renderFooter}
-      keyExtractor={keyExtractor}
-      onEndReached={logHasSeenAllTilesOnce}
-    />
+    <IntersectionObserver onChange={handleIntersectionObserverChange}>
+      <PassPlaylist
+        title={displayParameters.title}
+        subtitle={displayParameters.subtitle}
+        data={offersToDisplay}
+        itemHeight={itemHeight}
+        itemWidth={itemWidth}
+        onPressSeeMore={onPressSeeMore}
+        titleSeeMoreLink={{ ...searchTabConfig }}
+        renderItem={renderItem}
+        renderFooter={renderFooter}
+        keyExtractor={keyExtractor}
+        onEndReached={logHasSeenAllTilesOnce}
+        playlistRef={listRef}
+        FlatListComponent={FlatList}
+        onViewableItemsChanged={handleViewableItemsChanged}
+      />
+    </IntersectionObserver>
   )
 }

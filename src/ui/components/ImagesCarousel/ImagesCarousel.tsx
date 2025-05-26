@@ -7,7 +7,7 @@ import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { PinchableBox } from 'features/offer/components/PinchableBox/PinchableBox'
-import { CarouselDot } from 'ui/CarouselDot/CarouselDot'
+import { CarouselDot } from 'ui/components/CarouselDot/CarouselDot'
 import { BlurFooter } from 'ui/components/headers/BlurFooter'
 import { BlurHeader } from 'ui/components/headers/BlurHeader'
 import {

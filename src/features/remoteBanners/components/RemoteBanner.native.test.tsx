@@ -8,7 +8,7 @@ import {
 } from 'features/remoteBanners/utils/remoteBannerSchema'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { analytics } from 'libs/analytics/provider'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { render, screen, userEvent } from 'tests/utils'
 

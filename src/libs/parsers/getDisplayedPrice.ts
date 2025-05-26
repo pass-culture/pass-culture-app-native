@@ -37,7 +37,7 @@ export const getDisplayedPrice = (
 }
 
 export const identityPrice = (price: string): string => price
-export const formatDuoPrice = (price: string): string => `${price} - Duo`
+export const formatDuoPrice = (price: string): string => `${price} • Duo`
 export const formatStartPrice = (price: string): string => `Dès ${price}`
 export const formatPrice = ({ isFixed, isDuo }: { isFixed: boolean; isDuo: boolean }) => {
   return compose([

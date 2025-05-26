@@ -1,11 +1,16 @@
-import { BookingsResponse, PaginatedFavoritesResponse, SubcategoriesResponseModelv2 } from 'api/gen'
+import {
+  BookingsResponse,
+  GetRemindersResponse,
+  PaginatedFavoritesResponse,
+  SubcategoriesResponseModelv2,
+} from 'api/gen'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
-import * as useSimilarOffers from 'features/offer/api/useSimilarOffers'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
-import { renderOfferPage } from 'features/offer/helpers/renderOfferPageTestUtil'
-import * as useArtistResults from 'features/offer/helpers/useArtistResults/useArtistResults'
+import * as useArtistResultsAPI from 'features/offer/queries/useArtistResultsQuery'
+import * as useSimilarOffersAPI from 'features/offer/queries/useSimilarOffersQuery'
+import { renderOfferPage } from 'features/offer/tests/renderOfferPageTestUtil'
 import { mockedAlgoliaOffersWithSameArtistResponse } from 'libs/algolia/fixtures/algoliaFixtures'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { mockServer } from 'tests/mswServer'
@@ -17,12 +22,12 @@ jest.unmock('react-native/Libraries/Animated/createAnimatedComponent')
 jest.mock('libs/jwt/jwt')
 
 jest
-  .spyOn(useSimilarOffers, 'useSimilarOffers')
+  .spyOn(useSimilarOffersAPI, 'useSimilarOffersQuery')
   .mockImplementation()
   .mockReturnValue({ similarOffers: undefined, apiRecoParams: undefined })
 
 jest
-  .spyOn(useArtistResults, 'useArtistResults')
+  .spyOn(useArtistResultsAPI, 'useArtistResultsQuery')
   .mockImplementation()
   .mockReturnValue({
     artistPlaylist: mockedAlgoliaOffersWithSameArtistResponse,
@@ -66,6 +71,7 @@ describe('<Offer />', () => {
     mockServer.getApi<BookingsResponse>('/v1/bookings', {})
     mockServer.getApi<PaginatedFavoritesResponse>('/v1/favorites', {})
     mockServer.getApi<PaginatedFavoritesResponse>('/v1/me/favorites', {})
+    mockServer.getApi<GetRemindersResponse>('/v1/me/reminders', {})
     setFeatureFlags()
     mockAuthContext()
   })

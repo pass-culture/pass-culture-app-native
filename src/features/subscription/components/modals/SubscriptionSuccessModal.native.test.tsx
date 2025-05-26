@@ -2,7 +2,7 @@ import React from 'react'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { SubscriptionTheme, SUSBCRIPTION_THEMES } from 'features/subscription/types'
-import { fireEvent, render, screen, waitFor } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 
 import { SubscriptionSuccessModal } from './SubscriptionSuccessModal'
 
@@ -11,6 +11,8 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
     return Component
   }
 })
+const user = userEvent.setup()
+jest.useFakeTimers()
 
 describe('<SubscriptionSuccessModal />', () => {
   it.each(SUSBCRIPTION_THEMES)('should render correctly for %s', (theme) => {
@@ -19,7 +21,7 @@ describe('<SubscriptionSuccessModal />', () => {
     expect(screen).toMatchSnapshot()
   })
 
-  it('should dismiss modal when user presses "Continuer sur l’app"', () => {
+  it('should dismiss modal when user presses "Continuer sur l’app"', async () => {
     const dismissModal = jest.fn()
     render(
       <SubscriptionSuccessModal
@@ -29,7 +31,7 @@ describe('<SubscriptionSuccessModal />', () => {
       />
     )
 
-    fireEvent.press(screen.getByText('Continuer sur l’app'))
+    await user.press(screen.getByText('Continuer sur l’app'))
 
     expect(dismissModal).toHaveBeenCalledTimes(1)
   })
@@ -39,17 +41,15 @@ describe('<SubscriptionSuccessModal />', () => {
       <SubscriptionSuccessModal visible theme={SubscriptionTheme.CINEMA} dismissModal={jest.fn()} />
     )
 
-    fireEvent.press(screen.getByText('Voir mes préférences'))
+    await user.press(screen.getByText('Voir mes préférences'))
 
-    await waitFor(() => {
-      expect(navigate).toHaveBeenCalledWith('ProfileStackNavigator', {
-        params: undefined,
-        screen: 'NotificationsSettings',
-      })
+    expect(navigate).toHaveBeenCalledWith('ProfileStackNavigator', {
+      params: undefined,
+      screen: 'NotificationsSettings',
     })
   })
 
-  it('should dismiss modal when navigating to notifications settings', () => {
+  it('should dismiss modal when navigating to notifications settings', async () => {
     const dismissModal = jest.fn()
     render(
       <SubscriptionSuccessModal
@@ -59,7 +59,7 @@ describe('<SubscriptionSuccessModal />', () => {
       />
     )
 
-    fireEvent.press(screen.getByText('Voir mes préférences'))
+    await user.press(screen.getByText('Voir mes préférences'))
 
     expect(dismissModal).toHaveBeenCalledTimes(1)
   })

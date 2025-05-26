@@ -5,8 +5,11 @@ import { CategoryListModule } from 'features/home/components/modules/categories/
 import { categoryBlockList } from 'features/home/fixtures/categoryBlockList.fixture'
 import { analytics } from 'libs/analytics/provider'
 import { ContentTypes } from 'libs/contentful/types'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
-import { act, fireEvent, render, screen } from 'tests/utils'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
+import { render, screen, userEvent } from 'tests/utils'
+
+const user = userEvent.setup()
+jest.useFakeTimers()
 
 describe('CategoryListModule', () => {
   describe('with FF enableAppV2CategoryBlock false', () => {
@@ -31,7 +34,7 @@ describe('CategoryListModule', () => {
       })
     })
 
-    it('should call analytics when a categoryBlock is clicked', () => {
+    it('should call analytics when a categoryBlock is clicked', async () => {
       render(
         <CategoryListModule
           id="123"
@@ -44,7 +47,7 @@ describe('CategoryListModule', () => {
 
       const bloc = screen.getByText('Toto au cinéma'.toUpperCase())
 
-      fireEvent.press(bloc)
+      await user.press(bloc)
 
       expect(analytics.logCategoryBlockClicked).toHaveBeenCalledWith({
         moduleId: '2',
@@ -67,9 +70,7 @@ describe('CategoryListModule', () => {
 
       const bloc = screen.getByText('Toto au cinéma'.toUpperCase())
 
-      await act(async () => {
-        fireEvent.press(bloc)
-      })
+      await user.press(bloc)
 
       expect(navigate).toHaveBeenCalledWith('ThematicHome', {
         homeId: '6DCThxvbPFKAo04SVRZtwY',

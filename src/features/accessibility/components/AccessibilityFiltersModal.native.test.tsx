@@ -4,7 +4,7 @@ import { Button } from 'react-native'
 import { AccessibilityFiltersWrapper } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { FilterBehaviour } from 'features/search/enums'
 import { MODAL_TO_SHOW_TIME } from 'tests/constants'
-import { fireEvent, render, screen } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 
 import { AccessibilityFiltersModal, AccessibilityModalProps } from './AccessibilityFiltersModal'
 
@@ -15,6 +15,9 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
     return Component
   }
 })
+
+const user = userEvent.setup()
+jest.useFakeTimers()
 
 describe('<AccessibilityFiltersModal />', () => {
   it('should render modal correctly', async () => {
@@ -32,29 +35,54 @@ describe('<AccessibilityFiltersModal />', () => {
     renderAccessibilityFiltersModal()
 
     const audioCheckbox = await screen.findByRole('checkbox', { name: 'Handicap auditif' })
-    fireEvent.press(audioCheckbox)
+    await user.press(audioCheckbox)
 
     const searchButton = await screen.findByText('Rechercher')
-    fireEvent.press(searchButton)
+    await user.press(searchButton)
 
     const openModalButton = await screen.findByText('Show modal')
-    fireEvent.press(openModalButton)
+    await user.press(openModalButton)
     jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
 
     expect(audioCheckbox).toHaveAccessibilityState({ checked: true })
+  })
+
+  it('should apply default disabilities when reset button is pressed', async () => {
+    renderAccessibilityFiltersModal()
+
+    const audioCheckbox = await screen.findByRole('checkbox', { name: 'Handicap auditif' })
+    await user.press(audioCheckbox)
+
+    const searchButton = await screen.findByText('Rechercher')
+    await user.press(searchButton)
+
+    const openModalButton = await screen.findByText('Show modal')
+    await user.press(openModalButton)
+    jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
+
+    const resetButton = await screen.findByText('Réinitialiser')
+    await user.press(resetButton)
+
+    const closeButton = await screen.findByTestId('icon-close')
+    user.press(closeButton)
+
+    await user.press(openModalButton)
+    jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
+
+    expect(audioCheckbox).toHaveAccessibilityState({ checked: false })
   })
 
   it('should not save modified disabilities when pressing close button', async () => {
     renderAccessibilityFiltersModal()
 
     const audioCheckbox = await screen.findByRole('checkbox', { name: 'Handicap visuel' })
-    fireEvent.press(audioCheckbox)
+    user.press(audioCheckbox)
 
     const closeButton = await screen.findByTestId('icon-close')
-    fireEvent.press(closeButton)
+    user.press(closeButton)
 
     const openModalButton = await screen.findByText('Show modal')
-    fireEvent.press(openModalButton)
+    user.press(openModalButton)
 
     jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
 

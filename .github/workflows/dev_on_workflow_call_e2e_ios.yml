@@ -8,6 +8,11 @@ on:
         required: false
         type: string
         default: '[MES]'
+      test_tags:
+        description: 'Tags to include in the test run (activation, decouverte, conversion, or nightlyIOS)'
+        required: false
+        type: string
+        default: 'nightlyIOS'
     secrets:
       GCP_EHP_SERVICE_ACCOUNT:
         required: true
@@ -22,6 +27,7 @@ jobs:
   build_e2e:
     name: 'Build E2E Staging'
     runs-on: macos-15
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
@@ -29,11 +35,6 @@ jobs:
           node-version-file: '.nvmrc'
       - name: Enable Corepack
         run: corepack enable
-      - name: Setup java
-        uses: actions/setup-java@v4
-        with:
-          java-version: '11'
-          distribution: 'temurin'
       - uses: pass-culture-github-actions/cache@v1.0.0
         id: yarn-modules-cache
         with:
@@ -112,7 +113,7 @@ jobs:
           fi
           echo "CUSTOM_NAME=$CUSTOM_NAME" >> $GITHUB_OUTPUT
       - name: Upload and run ios tests with Robin
-        uses: mobile-dev-inc/action-maestro-cloud@v1.9.6
+        uses: mobile-dev-inc/action-maestro-cloud@v1.9.8
         with:
           api-key: ${{ steps.secrets.outputs.ROBIN_API_KEY }}
           project-id: proj_01javz1ncreqb9dcshv3y4da44
@@ -120,8 +121,9 @@ jobs:
           name: ${{ steps.generate_name.outputs.CUSTOM_NAME }}
           workspace: .maestro/tests/
           device-locale: fr_FR
-          ios-version: 17
-          include-tags: nightlyIOS
+          device-os: iOS-17-5
+          device-model: iPhone-11
+          include-tags: ${{ inputs.test_tags }}
           env: |
             MAESTRO_APP_ID=app.passculture.staging
             MAESTRO_PASSWORD=${{ steps.secrets.outputs.MAESTRO_PASSWORD }}

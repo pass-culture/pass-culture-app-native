@@ -36,7 +36,6 @@ export const BookingButton: FunctionComponent<Props> = ({
           isLoggedIn={isLoggedIn}
         />
       </View>
-
       {bottomBannerText ? <BottomBanner text={bottomBannerText} /> : null}
     </React.Fragment>
   )

@@ -25,6 +25,7 @@ export const cheatcodesNavigationProfileButtons: [CheatcodesButtonsWithSubscreen
       getProfileNavConfig('FeedbackInApp'),
       getProfileNavConfig('NotificationsSettings'),
       getProfileNavConfig('SuspendAccountConfirmation'),
+      getProfileNavConfig('ProfileTutorialAgeInformationCredit'),
       getProfileNavConfig('SuspendAccountConfirmationWithoutAuthentication'),
       { ...getProfileNavConfig('ChangeEmailSetPassword'), navigationParams: { token: 'token' } },
     ],

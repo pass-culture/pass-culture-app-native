@@ -1,5 +1,5 @@
 import { UserProfileResponse } from 'api/gen'
-import { NotificationsSettingsState } from 'features/profile/pages/NotificationSettings/NotificationsSettings'
+import { NotificationsSettingsState } from 'features/profile/types'
 import { SubscriptionTheme } from 'features/subscription/types'
 
 export const hasUserChangedSubscriptions = ({

@@ -8,10 +8,10 @@ import {
   ELIGIBLE_AGE_DATE,
 } from 'features/auth/fixtures/fixtures'
 import { setSettings } from 'features/auth/tests/setSettings'
-import { NonEligible } from 'features/tutorial/enums'
+import { NonEligible } from 'features/onboarding/enums'
 import { formatDateToISOStringWithoutTime } from 'libs/parsers/formatDates'
 import { storage } from 'libs/storage'
-import { act, fireEvent, render, screen } from 'tests/utils'
+import { act, fireEvent, render, screen, userEvent } from 'tests/utils'
 
 import { SetBirthday } from './SetBirthday'
 
@@ -45,6 +45,10 @@ const GENERAL_PUBLIC_MESSAGE =
 const ELIGIBLE_MESSAGE =
   'Assure-toi que ta date de naissance est exacte. Elle ne pourra plus être modifiée par la suite et nous vérifions tes informations.'
 
+const user = userEvent.setup()
+
+jest.useFakeTimers()
+
 describe('<SetBirthday />', () => {
   beforeEach(async () => {
     mockdate.set(CURRENT_DATE)
@@ -76,7 +80,7 @@ describe('<SetBirthday />', () => {
     )
 
     const continueButton = screen.getByTestId('Continuer')
-    await act(() => fireEvent.press(continueButton))
+    await user.press(continueButton)
 
     expect(props.goToNextStep).toHaveBeenCalledWith({
       birthdate: formatDateToISOStringWithoutTime(ELIGIBLE_AGE_DATE),
