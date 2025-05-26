@@ -5,6 +5,8 @@ updates:
     open-pull-requests-limit: 2
     schedule:
       interval: 'weekly'
+    labels:
+      - 'e2e'
     ignore:
       - dependency-name: 'react-native'
       - dependency-name: 'react'
@@ -17,6 +19,8 @@ updates:
     open-pull-requests-limit: 2
     schedule:
       interval: 'weekly'
+    labels:
+      - 'e2e'
     commit-message:
       prefix: '(BSR) chore(deps):'
 
@@ -25,6 +29,8 @@ updates:
     open-pull-requests-limit: 2
     schedule:
       interval: 'weekly'
+    labels:
+      - 'e2e'
     commit-message:
       prefix: '(BSR) chore(ci):'
 
@@ -33,5 +39,7 @@ updates:
     open-pull-requests-limit: 2
     schedule:
       interval: 'weekly'
+    labels:
+      - 'e2e'
     commit-message:
       prefix: '(BSR) chore(deps):'

@@ -5,7 +5,11 @@ import { computeCredit } from 'features/profile/helpers/computeCredit'
 export type Credit = { amount: number; isExpired: boolean }
 
 export const hasOngoingCredit = (user: UserProfileResponse) => {
-  return user.depositExpirationDate ? new Date(user.depositExpirationDate) >= new Date() : false
+  const hasRemainingCredit = !!user.domainsCredit?.all.remaining
+  const hasDepositExpired = user.depositExpirationDate
+    ? new Date(user.depositExpirationDate) >= new Date()
+    : false
+  return hasRemainingCredit && hasDepositExpired
 }
 
 export const getAvailableCredit = (user: UserProfileResponse): Credit => {

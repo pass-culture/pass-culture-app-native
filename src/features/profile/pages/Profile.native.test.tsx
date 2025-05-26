@@ -15,6 +15,7 @@ import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 import { analytics } from 'libs/analytics/provider'
 import { env } from 'libs/environment/env'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import {
@@ -119,7 +120,10 @@ describe('Profile component', () => {
   })
 
   beforeEach(() => {
-    setFeatureFlags()
+    setFeatureFlags([
+      RemoteStoreFeatureFlags.ENABLE_DEBUG_SECTION,
+      RemoteStoreFeatureFlags.ENABLE_PASS_FOR_ALL,
+    ])
     mockServer.getApi<SubscriptionStepperResponseV2>(
       '/v2/subscription/stepper',
       subscriptionStepperFixture
@@ -154,6 +158,34 @@ describe('Profile component', () => {
     renderProfile()
 
     expect(await screen.findByText('Version\u00A01.10.5')).toBeOnTheScreen()
+  })
+
+  it('should display "Débuggage" button when user is logged in', async () => {
+    mockedUseAuthContext.mockImplementationOnce(() => ({ isLoggedIn: true }))
+    renderProfile()
+
+    const signoutButton = await screen.findByText('Débuggage')
+
+    expect(signoutButton).toBeOnTheScreen()
+  })
+
+  it('should NOT display "Débuggage" button when user is logged in BUT feature flag is disable', async () => {
+    setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PASS_FOR_ALL])
+    mockedUseAuthContext.mockImplementationOnce(() => ({ isLoggedIn: true }))
+    renderProfile()
+
+    const signoutButton = screen.queryByText('Débuggage')
+
+    expect(signoutButton).not.toBeOnTheScreen()
+  })
+
+  it('should NOT display "Débuggage" button when user is not logged in', () => {
+    mockedUseAuthContext.mockImplementationOnce(() => ({ isLoggedIn: false }))
+    renderProfile()
+
+    const signoutButton = screen.queryByText('Débuggage')
+
+    expect(signoutButton).not.toBeOnTheScreen()
   })
 
   describe('achievements banner', () => {

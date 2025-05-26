@@ -1,5 +1,4 @@
 import React, { useMemo } from 'react'
-import { ScrollViewProps, ViewStyle } from 'react-native'
 import { useTheme } from 'styled-components/native'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
@@ -16,13 +15,8 @@ import { getSearchParams } from 'ui/components/buttons/SubcategoryButton/helpers
 import { SubcategoryButtonItem } from 'ui/components/buttons/SubcategoryButton/SubcategoryButton'
 import { SubcategoryButtonList } from 'ui/components/buttons/SubcategoryButton/SubcategoryButtonList'
 
-type StyledScrollViewProps = ScrollViewProps & {
-  contentContainerStyle?: ViewStyle
-}
-
 type Props = {
   offerCategory: SearchGroupNameEnumv2
-  scrollViewProps?: StyledScrollViewProps
 }
 
 export const SubcategoryButtonListWrapper: React.FC<Props> = ({ offerCategory }) => {

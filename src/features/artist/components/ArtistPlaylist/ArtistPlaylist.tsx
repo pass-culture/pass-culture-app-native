@@ -6,7 +6,6 @@ import { OfferPlaylistItem } from 'features/offer/components/OfferPlaylistItem/O
 import { PlaylistType } from 'features/offer/enums'
 import { AlgoliaOfferWithArtistAndEan } from 'libs/algolia/types'
 import { getPlaylistItemDimensionsFromLayout } from 'libs/contentful/getPlaylistItemDimensionsFromLayout'
-import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import {
   formatStartPrice,
   getDisplayedPrice,
@@ -28,7 +27,6 @@ const keyExtractor = (item: Offer | AlgoliaOfferWithArtistAndEan) => item.object
 
 export const ArtistPlaylist: FunctionComponent<ArtistPlaylistProps> = ({ artistName, items }) => {
   const theme = useTheme()
-  const { minLikesValue } = useRemoteConfigQuery()
   const currency = useGetCurrencyToDisplay()
   const euroToPacificFrancRate = useGetPacificFrancToEuroRate()
   const categoryMapping = useCategoryIdMapping()
@@ -48,7 +46,6 @@ export const ArtistPlaylist: FunctionComponent<ArtistPlaylistProps> = ({ artistN
         euroToPacificFrancRate,
         analyticsFrom: 'artist',
         artistName,
-        minLikesValue,
         theme,
         hasSmallLayout: true,
         priceDisplay: (item: Offer) =>

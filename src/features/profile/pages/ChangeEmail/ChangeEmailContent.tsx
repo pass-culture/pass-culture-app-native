@@ -11,7 +11,7 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
 import { EmailInput } from 'ui/components/inputs/EmailInput/EmailInput'
 import { Info } from 'ui/svg/icons/Info'
-import { Spacer } from 'ui/theme'
+import { getSpacing } from 'ui/theme'
 
 export function ChangeEmailContent({
   hasCurrentEmailChange,
@@ -31,16 +31,15 @@ export function ChangeEmailContent({
 
   const isSubmitButtonDisabled = !user?.email || isLoading
   return (
-    <React.Fragment>
-      <Spacer.Column numberOfSpaces={6} />
+    <Container>
       {hasCurrentEmailChange ? (
-        <React.Fragment>
+        <DisclaimerContainer>
           <AlreadyChangedEmailDisclaimer />
-          <Spacer.Column numberOfSpaces={4} />
-        </React.Fragment>
+        </DisclaimerContainer>
       ) : null}
-      <ChangeEmailDisclaimer />
-      <Spacer.Column numberOfSpaces={4} />
+      <DisclaimerContainer>
+        <ChangeEmailDisclaimer />
+      </DisclaimerContainer>
       <CenteredContainer>
         <Form.MaxWidth flex={1}>
           <EmailInput
@@ -49,12 +48,12 @@ export function ChangeEmailContent({
             email={user?.email ?? ''}
             onEmailChange={() => undefined}
           />
-          <Spacer.Column numberOfSpaces={4} />
-          <InfoBanner
-            icon={Info}
-            message="Tu vas recevoir un lien de confirmation sur ton adresse e-mail actuelle. Ce lien est valable 24h."
-          />
-          <Spacer.Column numberOfSpaces={12} />
+          <InfoBannerContainer>
+            <InfoBanner
+              icon={Info}
+              message="Tu vas recevoir un lien de confirmation sur ton adresse e-mail actuelle. Ce lien est valable 24h."
+            />
+          </InfoBannerContainer>
           <ButtonContainer paddingBottom={bottom}>
             <ButtonPrimary
               wording="Envoyer la demande"
@@ -64,15 +63,15 @@ export function ChangeEmailContent({
             />
           </ButtonContainer>
         </Form.MaxWidth>
-        <Spacer.Column numberOfSpaces={6} />
       </CenteredContainer>
-    </React.Fragment>
+    </Container>
   )
 }
 
 const CenteredContainer = styled.View({
   flex: 1,
   alignItems: 'center',
+  marginBottom: getSpacing(6),
 })
 
 const ButtonContainer = styled.View<{ paddingBottom: number }>(({ paddingBottom }) => ({
@@ -80,3 +79,9 @@ const ButtonContainer = styled.View<{ paddingBottom: number }>(({ paddingBottom 
   alignItems: 'center',
   width: '100%',
 }))
+
+const DisclaimerContainer = styled.View({ marginBottom: getSpacing(4) })
+
+const InfoBannerContainer = styled.View({ marginTop: getSpacing(4), marginBottom: getSpacing(12) })
+
+const Container = styled.View({ marginTop: getSpacing(6) })

@@ -9,12 +9,13 @@ import { ColorsEnum } from 'ui/theme/colors'
 const ratio = 309 / 50
 const viewBox = '0 0 309 50'
 
-interface Props {
+type Props = {
   width: number
+  // eslint-disable-next-line react/no-unused-prop-types
   color?: ColorsEnum
 }
 
-function TicketFooterComponent(props: Props) {
+const TicketFooterComponent: React.FC<Props> = (props) => {
   const height = props.width / ratio
   const theme = useTheme()
 

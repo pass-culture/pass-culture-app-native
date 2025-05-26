@@ -2,6 +2,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { useNavigation, useRoute } from '@react-navigation/native'
 import React from 'react'
 import { useForm } from 'react-hook-form'
+import styled from 'styled-components/native'
 
 import { getProfileStackConfig } from 'features/navigation/ProfileStackNavigator/getProfileStackConfig'
 import { UseNavigationType, UseRouteType } from 'features/navigation/RootNavigator/types'
@@ -20,7 +21,7 @@ import {
 } from 'ui/components/snackBar/SnackBarContext'
 import { SecondaryPageWithBlurHeader } from 'ui/pages/SecondaryPageWithBlurHeader'
 import { Info } from 'ui/svg/icons/Info'
-import { Spacer } from 'ui/theme'
+import { getSpacing } from 'ui/theme'
 
 type FormValues = {
   newEmail: string
@@ -77,15 +78,14 @@ export const NewEmailSelection = () => {
           control={control}
           name="newEmail"
           label="Nouvelle adresse e-mail"
-          placeholder="email@exemple.com"
           autoFocus
         />
-        <Spacer.Column numberOfSpaces={4} />
-        <InfoBanner
-          icon={Info}
-          message="Tu vas recevoir un lien de confirmation sur ton adresse e-mail actuelle. Ce lien est valable 24h."
-        />
-        <Spacer.Column numberOfSpaces={10} />
+        <Container>
+          <InfoBanner
+            icon={Info}
+            message="Tu vas recevoir un lien de confirmation sur ton adresse e-mail actuelle. Ce lien est valable 24h."
+          />
+        </Container>
         <ButtonPrimary
           wording="Modifier mon adresse e-mail"
           disabled={!isValid || isLoading}
@@ -95,3 +95,5 @@ export const NewEmailSelection = () => {
     </SecondaryPageWithBlurHeader>
   )
 }
+
+const Container = styled.View({ marginTop: getSpacing(4), marginBottom: getSpacing(10) })

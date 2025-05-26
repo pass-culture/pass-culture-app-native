@@ -53,7 +53,7 @@ describe('<SetCity/>', () => {
     renderSetCity({ type: ProfileTypes.IDENTITY_CHECK })
 
     await act(async () => {
-      const input = screen.getByPlaceholderText('Ex\u00a0: 75017')
+      const input = screen.getByTestId('Entrée pour la ville')
       fireEvent.changeText(input, POSTAL_CODE)
     })
 
@@ -73,7 +73,7 @@ describe('<SetCity/>', () => {
     renderSetCity({ type: ProfileTypes.BOOKING_FREE_OFFER_15_16 })
 
     await act(async () => {
-      const input = screen.getByPlaceholderText('Ex\u00a0: 75017')
+      const input = screen.getByTestId('Entrée pour la ville')
       fireEvent.changeText(input, POSTAL_CODE)
     })
 
@@ -93,7 +93,7 @@ describe('<SetCity/>', () => {
     renderSetCity({ type: ProfileTypes.IDENTITY_CHECK })
 
     await act(async () => {
-      const input = screen.getByPlaceholderText('Ex\u00a0: 75017')
+      const input = screen.getByTestId('Entrée pour la ville')
       fireEvent.changeText(input, POSTAL_CODE)
     })
 
@@ -114,7 +114,7 @@ describe('<SetCity/>', () => {
     renderSetCity({ type: ProfileTypes.IDENTITY_CHECK })
 
     await act(async () => {
-      const input = screen.getByPlaceholderText('Ex\u00a0: 75017')
+      const input = screen.getByTestId('Entrée pour la ville')
       fireEvent.changeText(input, POSTAL_CODE)
     })
 

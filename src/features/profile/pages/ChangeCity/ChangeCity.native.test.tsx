@@ -59,7 +59,7 @@ describe('ChangeCity', () => {
 
     render(reactQueryProviderHOC(<ChangeCity />))
 
-    const input = screen.getByPlaceholderText('Ex\u00a0: 75017')
+    const input = screen.getByTestId('Entrée pour la ville')
     await act(async () => {
       fireEvent.changeText(input, POSTAL_CODE)
     })
@@ -81,7 +81,7 @@ describe('ChangeCity', () => {
 
     render(reactQueryProviderHOC(<ChangeCity />))
 
-    const input = screen.getByPlaceholderText('Ex\u00a0: 75017')
+    const input = screen.getByTestId('Entrée pour la ville')
     await act(async () => {
       fireEvent.changeText(input, POSTAL_CODE)
     })
@@ -102,7 +102,7 @@ describe('ChangeCity', () => {
 
     render(reactQueryProviderHOC(<ChangeCity />))
 
-    const input = screen.getByPlaceholderText('Ex\u00a0: 75017')
+    const input = screen.getByTestId('Entrée pour la ville')
     await act(async () => {
       fireEvent.changeText(input, POSTAL_CODE)
     })
@@ -123,7 +123,7 @@ describe('ChangeCity', () => {
 
     render(reactQueryProviderHOC(<ChangeCity />))
 
-    const input = screen.getByPlaceholderText('Ex\u00a0: 75017')
+    const input = screen.getByTestId('Entrée pour la ville')
     await act(async () => {
       fireEvent.changeText(input, POSTAL_CODE)
     })
@@ -147,7 +147,7 @@ describe('ChangeCity', () => {
     })
     render(reactQueryProviderHOC(<ChangeCity />))
 
-    const input = screen.getByPlaceholderText('Ex\u00a0: 75017')
+    const input = screen.getByTestId('Entrée pour la ville')
     await act(async () => {
       fireEvent.changeText(input, POSTAL_CODE)
     })

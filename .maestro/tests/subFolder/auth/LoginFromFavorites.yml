@@ -8,7 +8,8 @@ appId: ${MAESTRO_APP_ID}
     commands:
       - pressKey: back
 
-- tapOn: 'tonadresse@email.com'
+- tapOn:
+    id: 'Entrée pour l’email'
 - runFlow: InputEmail.yml
 - tapOn: 'Ton mot de passe'
 - inputText: ${MAESTRO_PASSWORD}

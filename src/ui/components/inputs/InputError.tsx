@@ -1,7 +1,7 @@
 import React, { FC } from 'react'
+import styled from 'styled-components/native'
 
 import { Error } from 'ui/svg/icons/Error'
-import { Spacer } from 'ui/theme'
 import { ErrorMessage } from 'ui/web/errors/ErrorMessage'
 
 import { InputRule } from './rules/InputRule'
@@ -18,8 +18,7 @@ export const InputError: FC<Props> = (props) => {
   return (
     <ErrorMessage relatedInputId={props.relatedInputId}>
       {props.visible && props.messageId ? (
-        <React.Fragment>
-          <Spacer.Column testID="input-error-top-spacer" numberOfSpaces={props.numberOfSpacesTop} />
+        <Container numberOfSpacesTop={props.numberOfSpacesTop}>
           <InputRule
             title={props.messageId}
             type="Error"
@@ -28,8 +27,12 @@ export const InputError: FC<Props> = (props) => {
             iconSize={16}
             noFullWidth={props.centered}
           />
-        </React.Fragment>
+        </Container>
       ) : null}
     </ErrorMessage>
   )
 }
+
+const Container = styled.View<{ numberOfSpacesTop: number }>(({ numberOfSpacesTop }) => ({
+  marginTop: numberOfSpacesTop,
+}))

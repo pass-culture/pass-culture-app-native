@@ -14,10 +14,7 @@ import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setF
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
 import { BatchProfile } from 'libs/react-native-batch'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
-import {
-  setPlaylistOfferViewTrackingFn,
-  logPlaylistOfferView,
-} from 'shared/analytics/logPlaylistOfferView'
+import { setViewOfferTrackingFn, logViewOffer } from 'shared/analytics/logViewOffer'
 import { setPageTrackingInfo } from 'store/tracking/offerPlaylistTrackingStore'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -38,7 +35,7 @@ const homeId = 'fake-id'
 const Header = <Typo.Title1>Header</Typo.Title1>
 
 jest.mock('libs/firebase/analytics/analytics')
-jest.mock('shared/analytics/logPlaylistOfferView')
+jest.mock('shared/analytics/logViewOffer')
 jest.mock('store/tracking/offerPlaylistTrackingStore')
 
 jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
@@ -166,9 +163,7 @@ describe('GenericHome page - Analytics', () => {
   it('[OfferView] should set tracking function at start', async () => {
     renderGenericHome({})
 
-    await waitFor(() =>
-      expect(setPlaylistOfferViewTrackingFn).toHaveBeenCalledWith(analytics.logPlaylistOfferView)
-    )
+    await waitFor(() => expect(setViewOfferTrackingFn).toHaveBeenCalledWith(analytics.logViewOffer))
   })
 
   it('[OfferView] should set page info in store', async () => {
@@ -178,7 +173,6 @@ describe('GenericHome page - Analytics', () => {
       expect(setPageTrackingInfo).toHaveBeenCalledWith({
         pageId: 'fake-id',
         pageLocation: 'Home',
-        playlists: [],
       })
     )
   })
@@ -191,7 +185,8 @@ describe('GenericHome page - Analytics', () => {
 
     // Because of the way useFocusEffect is mocked, it is called more than it should be.
     // Therefore we just test that the log method is called at least once.
-    await waitFor(() => expect(logPlaylistOfferView).toHaveBeenCalledWith(undefined))
+    // eslint-disable-next-line jest/prefer-called-with
+    await waitFor(() => expect(logViewOffer).toHaveBeenCalled())
   })
 
   it('should trigger logEvent "AllModulesSeen" when reaching the end', async () => {

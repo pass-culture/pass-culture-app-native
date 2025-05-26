@@ -31,7 +31,7 @@ import { useVenueOffersQuery } from 'queries/venue/useVenueOffersQuery'
 import { Offer } from 'shared/offer/types'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { render, screen, userEvent, waitFor } from 'tests/utils'
+import { act, render, screen, userEvent, waitFor } from 'tests/utils'
 import * as AnchorContextModule from 'ui/components/anchor/AnchorContext'
 
 const getItemSpy = jest.spyOn(AsyncStorage, 'getItem')
@@ -177,6 +177,8 @@ describe('<Venue />', () => {
 
       renderVenue(venueId)
 
+      await act(async () => {})
+
       expect(await screen.findByText('Rechercher une offre')).toBeOnTheScreen()
     })
 
@@ -187,6 +189,8 @@ describe('<Venue />', () => {
       })
 
       renderVenue(venueId)
+
+      await act(async () => {})
 
       expect(await screen.findByText('Rechercher une offre')).toBeOnTheScreen()
     })

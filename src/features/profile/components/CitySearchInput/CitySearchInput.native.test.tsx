@@ -32,7 +32,7 @@ describe('<CitySearchInput />', () => {
     mockServer.universalGet<CitiesResponse>(CITIES_API_URL, [])
     render(reactQueryProviderHOC(<CitySearchInput />))
 
-    const input = screen.getByPlaceholderText('Ex\u00a0: 75017')
+    const input = screen.getByTestId('Entrée pour la ville')
     await user.type(input, POSTAL_CODE)
 
     await waitForScreenToBeLoaded()
@@ -48,7 +48,7 @@ describe('<CitySearchInput />', () => {
     mockServer.universalGet<CitiesResponse>(CITIES_API_URL, mockedSuggestedCities)
     render(reactQueryProviderHOC(<CitySearchInput />))
 
-    const input = screen.getByPlaceholderText('Ex\u00a0: 75017')
+    const input = screen.getByTestId('Entrée pour la ville')
     await user.type(input, NEW_CALEDONIA_NORTHERN_PROVINCE_POSTAL_CODE)
 
     await waitForScreenToBeLoaded()
@@ -64,7 +64,7 @@ describe('<CitySearchInput />', () => {
     mockServer.universalGet<CitiesResponse>(CITIES_API_URL, mockedSuggestedCities)
     render(reactQueryProviderHOC(<CitySearchInput />))
 
-    const input = screen.getByPlaceholderText('Ex\u00a0: 75017')
+    const input = screen.getByTestId('Entrée pour la ville')
     await user.type(input, POSTAL_CODE)
 
     await waitForScreenToBeLoaded()
@@ -77,7 +77,7 @@ describe('<CitySearchInput />', () => {
     mockServer.universalGet<CitiesResponse>(CITIES_API_URL, mockedSuggestedCities)
     render(reactQueryProviderHOC(<CitySearchInput />))
 
-    const input = screen.getByPlaceholderText('Ex\u00a0: 75017')
+    const input = screen.getByTestId('Entrée pour la ville')
     await user.type(input, POSTAL_CODE)
 
     const resetIcon = screen.getByTestId('Réinitialiser la recherche')

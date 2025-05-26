@@ -2,8 +2,9 @@ import React from 'react'
 import { StyleProp, View, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { HeaderBackground } from 'ui/svg/HeaderBackground'
-import { Spacer, Typo, getSpacing } from 'ui/theme'
+import { Typo, getSpacing } from 'ui/theme'
 
 export const VideoErrorView: React.FC<{
   style: StyleProp<ViewStyle>
@@ -14,9 +15,8 @@ export const VideoErrorView: React.FC<{
   return (
     <VideoPlayerErrorViewContainer style={style}>
       <HeaderBackground />
-      <ErrorMessageContainer>
+      <ErrorMessageContainer gap={4}>
         <StyledTitle>{errorTitle}</StyledTitle>
-        <Spacer.Column numberOfSpaces={4} />
         <StyledBody>{errorMessage}</StyledBody>
       </ErrorMessageContainer>
     </VideoPlayerErrorViewContainer>
@@ -29,7 +29,7 @@ const VideoPlayerErrorViewContainer = styled(View)({
   overflow: 'hidden',
 })
 
-const ErrorMessageContainer = styled.View({
+const ErrorMessageContainer = styled(ViewGap)({
   flex: 1,
   alignItems: 'center',
   justifyContent: 'center',

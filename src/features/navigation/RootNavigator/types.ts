@@ -81,6 +81,7 @@ export type AccessibilityRootStackParamList = {
   AccessibilityDeclarationMobile?: undefined
   AccessibilityDeclarationWeb?: undefined
   AccessibilityEngagement?: undefined
+  SiteMapScreen?: undefined
   RecommendedPaths?: undefined
 }
 
@@ -144,6 +145,7 @@ export type SubscriptionRootStackParamList = {
   PhoneValidationTooManySMSSent: undefined
   NewSignup: undefined
   // Profile
+  ProfileInformationValidation: ProfileType
   SetEmail: undefined
   SetName: ProfileType
   SetCity: ProfileType

@@ -23,7 +23,6 @@ const WithRefEmailInput: React.ForwardRefRenderFunction<RNTextInput, EmailInputP
       label={label ?? 'Adresse e-mail'}
       onChangeText={onEmailChange}
       format="tonadresse@email.com"
-      placeholder="tonadresse@email.com"
       textContentType="emailAddress"
       value={email}
       maxLength={120}

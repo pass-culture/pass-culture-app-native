@@ -1,4 +1,4 @@
-import { PageTrackingInfo } from 'store/tracking/types'
+import { PageTrackingInfo, PlaylistTrackingInfo } from 'store/tracking/types'
 import { act, renderHook } from 'tests/utils'
 
 import {
@@ -38,11 +38,14 @@ describe('offerTileViewTrackingStore', () => {
   it('should set playlist', async () => {
     const { result } = renderHook(() => useOfferPlaylistTrackingStore())
 
-    const NEW_PLAYLIST = {
-      playlistId: 'az344',
+    const NEW_PLAYLIST: PlaylistTrackingInfo = {
+      moduleId: 'az344',
       callId: 'sdfdkjLKJ',
       index: 1,
-      offerIds: ['777', '999'],
+      items: [
+        { index: 0, key: '777' },
+        { index: 1, key: '999' },
+      ],
     }
 
     act(() => {
@@ -57,33 +60,51 @@ describe('offerTileViewTrackingStore', () => {
   it('should update playlist', async () => {
     const { result } = renderHook(() => useOfferPlaylistTrackingStore())
 
-    const NEW_PLAYLIST = {
-      playlistId: 'az344',
+    const NEW_PLAYLIST: PlaylistTrackingInfo = {
+      moduleId: 'az344',
       callId: 'sdfdkjLKJ',
       index: 1,
-      offerIds: ['777', '999'],
+      items: [
+        { index: 0, key: '777' },
+        { index: 1, key: '999' },
+      ],
     }
 
-    const SECOND_PLAYLIST = {
-      playlistId: '797tyu',
+    const SECOND_PLAYLIST: PlaylistTrackingInfo = {
+      moduleId: '797tyu',
       callId: 'sdfkjhOPL',
       index: 2,
-      offerIds: ['888', '111'],
+      items: [
+        { index: 0, key: '888' },
+        { index: 1, key: '111' },
+      ],
     }
 
     act(() => {
       setPageTrackingInfo(PAGE_TRACKING_INFO)
       setPlaylistTrackingInfo(NEW_PLAYLIST)
       setPlaylistTrackingInfo(SECOND_PLAYLIST)
-      setPlaylistTrackingInfo({ ...NEW_PLAYLIST, offerIds: ['777', '333', '555'] })
+      setPlaylistTrackingInfo({
+        ...NEW_PLAYLIST,
+        items: [
+          { index: 0, key: '777' },
+          { index: 2, key: '333' },
+          { index: 3, key: '555' },
+        ],
+      })
     })
 
     expect(result.current.playlists).toHaveLength(2)
     expect(
-      result.current.playlists.find((playlist) => playlist.playlistId === NEW_PLAYLIST.playlistId)
+      result.current.playlists.find((playlist) => playlist.moduleId === NEW_PLAYLIST.moduleId)
     ).toMatchObject({
       ...NEW_PLAYLIST,
-      offerIds: ['777', '999', '333', '555'],
+      items: [
+        { index: 0, key: '777' },
+        { index: 1, key: '999' },
+        { index: 2, key: '333' },
+        { index: 3, key: '555' },
+      ],
     })
   })
 })
@@ -93,7 +114,7 @@ it('should reset store to default state', async () => {
 
   act(() => {
     setPageTrackingInfo(PAGE_TRACKING_INFO)
-    setPlaylistTrackingInfo({ playlistId: 'yolo' })
+    setPlaylistTrackingInfo({ moduleId: 'yolo' })
     resetPageTrackingInfo()
   })
 

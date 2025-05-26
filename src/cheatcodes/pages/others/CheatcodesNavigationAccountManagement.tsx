@@ -17,6 +17,7 @@ export const cheatcodesNavigationAccountManagementButtons: [CheatcodesButtonsWit
         { screen: 'ResetPasswordExpiredLink' },
         { screen: 'ResetPasswordEmailSent', navigationParams: { email: 'jean.dupont@gmail.com' } },
         getProfileNavConfig('DeleteProfileReason'),
+        getProfileNavConfig('DebugScreen'),
         getProfileNavConfig('ConfirmDeleteProfile'),
         getProfileNavConfig('DeactivateProfileSuccess'),
         getProfileNavConfig('DeleteProfileSuccess'),

@@ -1006,10 +1006,10 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                 class="css-view-175oi2r r-backgroundColor-14a9t8x r-height-109y4c4 r-width-13qz1uu"
               />
               <div
-                class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-gap-e6ktq0 r-paddingBottom-11rk87y r-paddingTop-fd4yh7"
+                class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-gap-16pcm1t r-paddingVertical-tvv088"
               >
                 <div
-                  class="css-view-175oi2r r-width-cfp7ip"
+                  class="css-view-175oi2r r-width-1glkqn6"
                 >
                   <div
                     aria-label="pass culture"
@@ -1024,7 +1024,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                   </div>
                 </div>
                 <div
-                  class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz r-gap-1fdih9r"
+                  class="css-view-175oi2r r-alignItems-1awozwy r-flexBasis-1iusvr4 r-flexDirection-18u37iz r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-flexWrap-1w6e6rj r-gap-f4gmv6 r-justifyContent-1777fci r-marginHorizontal-1k86l4r"
                 >
                   <div
                     class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
@@ -1036,6 +1036,18 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                       dir="ltr"
                     >
                       Accessibilité : partiellement conforme
+                    </div>
+                  </div>
+                  <div
+                    class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
+                    style="transition-duration: 0s;"
+                    tabindex="0"
+                  >
+                    <div
+                      class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
+                      dir="ltr"
+                    >
+                      Plan du site
                     </div>
                   </div>
                   <div
@@ -1128,7 +1140,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                   </a>
                 </div>
                 <div
-                  class="css-view-175oi2r r-width-cfp7ip"
+                  class="css-view-175oi2r r-width-1glkqn6"
                 >
                   <div
                     aria-label="République Française - Liberté Égalité Fraternité"
@@ -1142,10 +1154,10 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                     </div>
                   </div>
                 </div>
-                <div
-                  class="css-view-175oi2r r-height-wy61xf"
-                />
               </div>
+              <div
+                class="css-view-175oi2r r-height-wy61xf"
+              />
             </div>
           </footer>
         </div>
@@ -2161,10 +2173,10 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                 class="css-view-175oi2r r-backgroundColor-14a9t8x r-height-109y4c4 r-width-13qz1uu"
               />
               <div
-                class="css-view-175oi2r r-flexDirection-eqz5dr r-gap-e6ktq0 r-paddingBottom-11rk87y r-paddingTop-1ygmrgt"
+                class="css-view-175oi2r r-flexDirection-eqz5dr r-gap-16pcm1t r-paddingVertical-tvv088"
               >
                 <div
-                  class="css-view-175oi2r r-width-cfp7ip"
+                  class="css-view-175oi2r r-width-1glkqn6"
                 >
                   <div
                     aria-label="pass culture"
@@ -2179,7 +2191,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                   </div>
                 </div>
                 <div
-                  class="css-view-175oi2r r-flexDirection-eqz5dr r-gap-e6ktq0"
+                  class="css-view-175oi2r r-flexDirection-eqz5dr r-flexWrap-1w6e6rj r-gap-f4gmv6 r-justifyContent-1777fci r-marginHorizontal-mvpalk"
                 >
                   <div
                     class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
@@ -2191,6 +2203,18 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                       dir="ltr"
                     >
                       Accessibilité : partiellement conforme
+                    </div>
+                  </div>
+                  <div
+                    class="css-view-175oi2r r-transitionProperty-1i6wzkk r-cursor-1loqt21 r-touchAction-1otgn73 r-userSelect-bj6uhd"
+                    style="transition-duration: 0s;"
+                    tabindex="0"
+                  >
+                    <div
+                      class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
+                      dir="ltr"
+                    >
+                      Plan du site
                     </div>
                   </div>
                   <div
@@ -2283,7 +2307,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                   </a>
                 </div>
                 <div
-                  class="css-view-175oi2r r-width-cfp7ip"
+                  class="css-view-175oi2r r-width-1glkqn6"
                 >
                   <div
                     aria-label="République Française - Liberté Égalité Fraternité"
@@ -2297,10 +2321,10 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                     </div>
                   </div>
                 </div>
-                <div
-                  class="css-view-175oi2r r-height-wy61xf"
-                />
               </div>
+              <div
+                class="css-view-175oi2r r-height-wy61xf"
+              />
             </div>
           </footer>
         </div>

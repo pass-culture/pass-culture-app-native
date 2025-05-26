@@ -42,7 +42,7 @@ describe('<NewEmailSelection />', () => {
   it('should enable submit button when email input is filled', async () => {
     render(reactQueryProviderHOC(<NewEmailSelection />))
 
-    const emailInput = screen.getByPlaceholderText('email@exemple.com')
+    const emailInput = screen.getByTestId('Entrée pour l’email')
     fireEvent.changeText(emailInput, 'john.doe@gmail.com')
 
     expect(await screen.findByLabelText('Modifier mon adresse e-mail')).toBeEnabled()
@@ -51,7 +51,7 @@ describe('<NewEmailSelection />', () => {
   it('should disable submit button when email input is invalid', async () => {
     render(reactQueryProviderHOC(<NewEmailSelection />))
 
-    const emailInput = screen.getByPlaceholderText('email@exemple.com')
+    const emailInput = screen.getByTestId('Entrée pour l’email')
     fireEvent.changeText(emailInput, 'john.doe')
 
     expect(await screen.findByLabelText('Modifier mon adresse e-mail')).toBeDisabled()
@@ -65,7 +65,7 @@ describe('<NewEmailSelection />', () => {
     })
     render(reactQueryProviderHOC(<NewEmailSelection />))
 
-    const emailInput = screen.getByPlaceholderText('email@exemple.com')
+    const emailInput = screen.getByTestId('Entrée pour l’email')
     await act(async () => {
       fireEvent.changeText(emailInput, 'john.doe@gmail.com')
     })
@@ -86,7 +86,7 @@ describe('<NewEmailSelection />', () => {
     })
     render(reactQueryProviderHOC(<NewEmailSelection />))
 
-    const emailInput = screen.getByPlaceholderText('email@exemple.com')
+    const emailInput = screen.getByTestId('Entrée pour l’email')
     await act(async () => {
       fireEvent.changeText(emailInput, 'john.doe@gmail.com')
     })
@@ -112,7 +112,7 @@ describe('<NewEmailSelection />', () => {
     })
     render(reactQueryProviderHOC(<NewEmailSelection />))
 
-    const emailInput = screen.getByPlaceholderText('email@exemple.com')
+    const emailInput = screen.getByTestId('Entrée pour l’email')
     await act(async () => {
       fireEvent.changeText(emailInput, 'john.doe@gmail.com')
     })
@@ -137,7 +137,7 @@ describe('<NewEmailSelection />', () => {
     })
     render(reactQueryProviderHOC(<NewEmailSelection />))
 
-    const emailInput = screen.getByPlaceholderText('email@exemple.com')
+    const emailInput = screen.getByTestId('Entrée pour l’email')
     await act(async () => {
       fireEvent.changeText(emailInput, 'john.doe@gmail.com')
     })
@@ -154,7 +154,7 @@ describe('<NewEmailSelection />', () => {
     it('should show email suggestion', async () => {
       render(reactQueryProviderHOC(<NewEmailSelection />))
 
-      const emailInput = screen.getByPlaceholderText('email@exemple.com')
+      const emailInput = screen.getByTestId('Entrée pour l’email')
       fireEvent.changeText(emailInput, 'john.doe@gmal.com')
       await act(() => jest.advanceTimersByTime(SUGGESTION_DELAY_IN_MS))
 
@@ -164,7 +164,7 @@ describe('<NewEmailSelection />', () => {
     it('should not display invalid email format when email format is valid', async () => {
       render(reactQueryProviderHOC(<NewEmailSelection />))
 
-      const emailInput = screen.getByPlaceholderText('email@exemple.com')
+      const emailInput = screen.getByTestId('Entrée pour l’email')
       await act(() => fireEvent.changeText(emailInput, 'john.doe@example.com'))
       await act(() => jest.advanceTimersByTime(SUGGESTION_DELAY_IN_MS))
 
@@ -178,7 +178,7 @@ describe('<NewEmailSelection />', () => {
     it('should display invalid email format when email format is invalid', async () => {
       render(reactQueryProviderHOC(<NewEmailSelection />))
 
-      const emailInput = screen.getByPlaceholderText('email@exemple.com')
+      const emailInput = screen.getByTestId('Entrée pour l’email')
       await act(() => fireEvent.changeText(emailInput, 'john.doe'))
       await act(() => jest.advanceTimersByTime(SUGGESTION_DELAY_IN_MS))
 

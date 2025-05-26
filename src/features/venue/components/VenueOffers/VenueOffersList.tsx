@@ -7,15 +7,13 @@ import styled, { useTheme } from 'styled-components/native'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { GtlPlaylist } from 'features/gtlPlaylist/components/GtlPlaylist'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
-import { getTagConfig } from 'features/offer/components/InteractionTag/getTagConfig'
-import { InteractionTag } from 'features/offer/components/InteractionTag/InteractionTag'
+import { renderInteractionTag } from 'features/offer/components/InteractionTag/InteractionTag'
 import { OfferTile } from 'features/offer/components/OfferTile/OfferTile'
 import { VenueOffersProps } from 'features/venue/components/VenueOffers/VenueOffers'
 import { useNavigateToSearchWithVenueOffers } from 'features/venue/helpers/useNavigateToSearchWithVenueOffers'
 import { analytics } from 'libs/analytics/provider'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { formatPlaylistDates, getTimeStampInMillis } from 'libs/parsers/formatDates'
 import {
   formatPrice,
@@ -30,7 +28,7 @@ import { PassPlaylist } from 'ui/components/PassPlaylist'
 import { CustomListRenderItem, RenderFooterItem } from 'ui/components/Playlist'
 import { SeeMore } from 'ui/components/SeeMore'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { getSpacing, LENGTH_M, RATIO_HOME_IMAGE, Typo } from 'ui/theme'
+import { LENGTH_M, RATIO_HOME_IMAGE, Typo, getSpacing } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 const keyExtractor = (item: Offer) => item.objectID
@@ -57,7 +55,6 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
   const theme = useTheme()
   const { user } = useAuthContext()
   const artistsPlaylistEnabled = useFeatureFlag(RemoteStoreFeatureFlags.WIP_VENUE_ARTISTS_PLAYLIST)
-  const { minLikesValue } = useRemoteConfigQuery()
   const { params: routeParams } = useRoute<UseRouteType<'Offer'>>()
   const searchNavConfig = useNavigateToSearchWithVenueOffers(venue)
 
@@ -78,12 +75,11 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
   )
   const renderItem: CustomListRenderItem<Offer> = ({ item, width, height }) => {
     const timestampsInMillis = item.offer.dates && getTimeStampInMillis(item.offer.dates)
-    const tagConfig = getTagConfig({
+    const tag = renderInteractionTag({
       theme,
-      minLikesValue,
       likesCount: item.offer.likes,
       chroniclesCount: item.offer.chroniclesCount,
-      headlineCount: item.offer.headlineCount,
+      headlinesCount: item.offer.headlineCount,
       isComingSoonOffer: item._tags?.includes('is_future'),
     })
 
@@ -112,7 +108,7 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
         width={width}
         height={height}
         searchId={routeParams?.searchId}
-        interactionTag={tagConfig ? <InteractionTag {...tagConfig} /> : undefined}
+        interactionTag={tag}
       />
     )
   }

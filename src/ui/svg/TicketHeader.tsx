@@ -1,4 +1,4 @@
-import React, { memo } from 'react'
+import React from 'react'
 import { Path } from 'react-native-svg'
 import styled, { useTheme } from 'styled-components/native'
 
@@ -9,12 +9,13 @@ import { ColorsEnum } from 'ui/theme/colors'
 const ratio = 309 / 50
 const viewBox = '0 0 309 50'
 
-interface Props {
+type Props = {
   width: number
+  // eslint-disable-next-line react/no-unused-prop-types
   color?: ColorsEnum
 }
 
-function TicketHeaderComponent(props: Props) {
+const TicketHeaderComponent: React.FC<Props> = (props) => {
   const theme = useTheme()
   const height = props.width / ratio
   return (
@@ -38,8 +39,6 @@ function TicketHeaderComponent(props: Props) {
   )
 }
 
-export const TicketHeader = memo(
-  styled(TicketHeaderComponent).attrs(({ color, theme }) => ({
-    color: color ?? theme.colors.white,
-  }))``
-)
+export const TicketHeader = styled(TicketHeaderComponent).attrs(({ color, theme }) => ({
+  color: color ?? theme.colors.white,
+}))``

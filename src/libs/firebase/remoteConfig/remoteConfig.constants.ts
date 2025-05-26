@@ -18,7 +18,6 @@ export const DEFAULT_REMOTE_CONFIG: CustomRemoteConfig = {
   homeEntryIdWithoutBooking_15_17: '',
   homeEntryId_18: '',
   homeEntryId_15_17: '',
-  minLikesValue: 0,
   reactionFakeDoorCategories: {
     categories: [],
   },

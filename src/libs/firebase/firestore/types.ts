@@ -45,6 +45,7 @@ export enum RemoteStoreFeatureFlags {
   DISABLE_ACTIVATION = 'disableActivation',
   ENABLE_BOOKING_FREE_OFFER_15_16 = 'enableBookingFreeOfferFifteenSixteen',
   ENABLE_CULTURAL_SURVEY_MANDATORY = 'enableCulturalSurveyMandatory',
+  ENABLE_DEBUG_SECTION = 'enableDebugSection',
   ENABLE_HIDE_TICKET = 'enableHideTicket',
   ENABLE_PACIFIC_FRANC_CURRENCY = 'enablePacificFrancCurrency',
   ENABLE_PASS_FOR_ALL = 'enablePassForAll',
