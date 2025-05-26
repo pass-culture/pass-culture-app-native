@@ -3,7 +3,7 @@ import { OnboardingStackRoute } from 'features/navigation/OnboardingStackNavigat
 
 export const onboardingRoutes: OnboardingStackRoute[] = [
   {
-    name: 'AgeSelectionFork',
+    name: 'OnboardingAgeSelectionFork',
     component: ComponentForPathConfig,
     path: 'selection-age/generique',
   },
@@ -31,10 +31,5 @@ export const onboardingRoutes: OnboardingStackRoute[] = [
     name: 'OnboardingWelcome',
     component: ComponentForPathConfig,
     path: 'bienvenue',
-  },
-  {
-    name: 'ProfileTutorialAgeInformationCredit',
-    component: ComponentForPathConfig,
-    path: 'tutoriel/selection-age/generique',
   },
 ]

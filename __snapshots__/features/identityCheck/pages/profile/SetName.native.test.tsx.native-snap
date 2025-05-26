@@ -396,6 +396,7 @@ exports[`<SetName/> should render correctly 1`] = `
                           "alignItems": "flex-end",
                           "flexDirection": "row",
                           "justifyContent": "space-between",
+                          "marginBottom": 8,
                           "width": "100%",
                         },
                       ]
@@ -431,16 +432,6 @@ exports[`<SetName/> should render correctly 1`] = `
                     </Text>
                   </View>
                 </View>
-                <View
-                  numberOfSpaces={2}
-                  style={
-                    [
-                      {
-                        "height": 8,
-                      },
-                    ]
-                  }
-                />
                 <View
                   height="small"
                   isDisabled={false}
@@ -536,6 +527,7 @@ exports[`<SetName/> should render correctly 1`] = `
                           "alignItems": "flex-end",
                           "flexDirection": "row",
                           "justifyContent": "space-between",
+                          "marginBottom": 8,
                           "width": "100%",
                         },
                       ]
@@ -571,16 +563,6 @@ exports[`<SetName/> should render correctly 1`] = `
                     </Text>
                   </View>
                 </View>
-                <View
-                  numberOfSpaces={2}
-                  style={
-                    [
-                      {
-                        "height": 8,
-                      },
-                    ]
-                  }
-                />
                 <View
                   height="small"
                   isDisabled={false}

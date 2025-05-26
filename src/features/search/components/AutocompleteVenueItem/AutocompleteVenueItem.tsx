@@ -4,7 +4,7 @@ import { Text } from 'react-native'
 import styled from 'styled-components/native'
 
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { Highlight } from 'features/search/components/Highlight/Highlight'
+import { VenueHitHighlight } from 'features/search/components/Highlight/Highlight'
 import { AlgoliaVenue } from 'libs/algolia/types'
 import { LocationBuildingFilled } from 'ui/svg/icons/LocationBuildingFilled'
 import { getSpacing, Typo } from 'ui/theme'
@@ -31,7 +31,7 @@ export function AutocompleteVenueItem({ hit, onPress }: AutocompleteVenueItemPro
         <LocationBuildingFilledIcon />
       </LocationBuildingIconContainer>
       <StyledText numberOfLines={2} ellipsizeMode="tail">
-        <Highlight venueHit={hit} attribute="name" />
+        <VenueHitHighlight venueHit={hit} />
         <Typo.Body>{city}</Typo.Body>
       </StyledText>
     </AutocompleteItemTouchable>

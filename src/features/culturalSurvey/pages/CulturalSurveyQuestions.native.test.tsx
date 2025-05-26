@@ -4,8 +4,8 @@ import React from 'react'
 import { push, reset } from '__mocks__/@react-navigation/native'
 import { CulturalSurveyQuestionEnum } from 'api/gen'
 import {
-  useCulturalSurveyContext,
   dispatch,
+  useCulturalSurveyContext,
 } from 'features/culturalSurvey/context/__mocks__/CulturalSurveyContextProvider'
 import * as CulturalSurveyContextProviderModule from 'features/culturalSurvey/context/CulturalSurveyContextProvider'
 import { CulturalSurveyQuestions } from 'features/culturalSurvey/pages/CulturalSurveyQuestions'
@@ -14,15 +14,15 @@ import { useCulturalSurveyAnswersMutation } from 'features/culturalSurvey/querie
 import { navigateToHome, navigateToHomeConfig } from 'features/navigation/helpers/navigateToHome'
 import { CulturalSurveyRootStackParamList } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import {
-  render,
-  screen,
+  bottomScrollEvent,
   fireEvent,
   middleScrollEvent,
-  bottomScrollEvent,
-  waitFor,
+  render,
+  screen,
+  userEvent,
 } from 'tests/utils'
 
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
@@ -77,6 +77,10 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 
 const { data: questionsFromMockedHook } = mockedUseCulturalSurveyQuestions()
 
+const user = userEvent.setup()
+
+jest.useFakeTimers()
+
 describe('CulturalSurveyQuestions page', () => {
   beforeEach(() => {
     setFeatureFlags()
@@ -91,8 +95,7 @@ describe('CulturalSurveyQuestions page', () => {
   it('should navigate to next page when pressing Continuer', async () => {
     render(<CulturalSurveyQuestions {...navigationProps} />)
 
-    const NextQuestionButton = screen.getByLabelText('Continuer vers l’étape suivante')
-    fireEvent.press(NextQuestionButton)
+    await user.press(screen.getByLabelText('Continuer vers l’étape suivante'))
 
     expect(push).toHaveBeenCalledWith('CulturalSurveyQuestions', {
       question: CulturalSurveyQuestionEnum.ACTIVITES,
@@ -106,12 +109,9 @@ describe('CulturalSurveyQuestions page', () => {
     }
     render(<CulturalSurveyQuestions {...navigationProps} />)
 
-    const NextQuestionButton = screen.getByLabelText('Valider le formulaire')
-    fireEvent.press(NextQuestionButton)
+    await user.press(screen.getByLabelText('Valider le formulaire'))
 
-    await waitFor(() => {
-      expect(mockRefetchUser).toHaveBeenCalledTimes(1)
-    })
+    expect(mockRefetchUser).toHaveBeenCalledTimes(1)
   })
 
   it('should flush answers if on lastQuestion and API call is successful', async () => {
@@ -121,12 +121,9 @@ describe('CulturalSurveyQuestions page', () => {
     }
     render(<CulturalSurveyQuestions {...navigationProps} />)
 
-    const NextQuestionButton = screen.getByLabelText('Valider le formulaire')
-    fireEvent.press(NextQuestionButton)
+    await user.press(screen.getByLabelText('Valider le formulaire'))
 
-    await waitFor(() => {
-      expect(dispatch).toHaveBeenCalledWith({ type: 'FLUSH_ANSWERS' })
-    })
+    expect(dispatch).toHaveBeenCalledWith({ type: 'FLUSH_ANSWERS' })
   })
 
   it('should navigate to Home if on lastQuestion and API call is successful and FF ENABLE_CULTURAL_SURVEY_MANDATORY is disabled', async () => {
@@ -136,14 +133,11 @@ describe('CulturalSurveyQuestions page', () => {
     }
     render(<CulturalSurveyQuestions {...navigationProps} />)
 
-    const NextQuestionButton = screen.getByLabelText('Valider le formulaire')
-    fireEvent.press(NextQuestionButton)
+    await user.press(screen.getByLabelText('Valider le formulaire'))
 
-    await waitFor(() => {
-      expect(reset).toHaveBeenCalledWith({
-        index: 1,
-        routes: [{ name: navigateToHomeConfig.screen }, { name: 'CulturalSurveyThanks' }],
-      })
+    expect(reset).toHaveBeenCalledWith({
+      index: 1,
+      routes: [{ name: navigateToHomeConfig.screen }, { name: 'CulturalSurveyThanks' }],
     })
   })
 
@@ -155,18 +149,15 @@ describe('CulturalSurveyQuestions page', () => {
     }
     render(<CulturalSurveyQuestions {...navigationProps} />)
 
-    const NextQuestionButton = screen.getByLabelText('Valider le formulaire')
-    fireEvent.press(NextQuestionButton)
+    await user.press(screen.getByLabelText('Valider le formulaire'))
 
-    await waitFor(() => {
-      expect(reset).toHaveBeenCalledWith({
-        index: 1,
-        routes: [{ name: 'Stepper' }, { name: 'CulturalSurveyThanks' }],
-      })
+    expect(reset).toHaveBeenCalledWith({
+      index: 1,
+      routes: [{ name: 'Stepper' }, { name: 'CulturalSurveyThanks' }],
     })
   })
 
-  it('should navigate to home if on lastQuestion and API call is unsuccessful', () => {
+  it('should navigate to home if on lastQuestion and API call is unsuccessful', async () => {
     mockUseGetNextQuestionReturnValue = {
       isCurrentQuestionLastQuestion: true,
       nextQuestion: CulturalSurveyQuestionEnum.SPECTACLES,
@@ -176,17 +167,15 @@ describe('CulturalSurveyQuestions page', () => {
 
     render(<CulturalSurveyQuestions {...navigationProps} />)
 
-    const NextQuestionButton = screen.getByLabelText('Valider le formulaire')
-    fireEvent.press(NextQuestionButton)
+    await user.press(screen.getByLabelText('Valider le formulaire'))
 
     expect(navigateToHome).toHaveBeenCalledTimes(1)
   })
 
-  it('should dispatch empty answers on go back', () => {
+  it('should dispatch empty answers on go back', async () => {
     render(<CulturalSurveyQuestions {...navigationProps} />)
 
-    const GoBackButton = screen.getByTestId('Revenir en arrière')
-    fireEvent.press(GoBackButton)
+    await user.press(screen.getByTestId('Revenir en arrière'))
 
     expect(dispatch).toHaveBeenNthCalledWith(1, {
       type: 'SET_ANSWERS',
@@ -197,11 +186,10 @@ describe('CulturalSurveyQuestions page', () => {
     })
   })
 
-  it('should dispatch default questions on go back when current question is "sorties"', () => {
+  it('should dispatch default questions on go back when current question is "sorties"', async () => {
     render(<CulturalSurveyQuestions {...navigationProps} />)
 
-    const GoBackButton = screen.getByTestId('Revenir en arrière')
-    fireEvent.press(GoBackButton)
+    await user.press(screen.getByTestId('Revenir en arrière'))
 
     expect(dispatch).toHaveBeenNthCalledWith(2, {
       type: 'SET_QUESTIONS',
@@ -213,14 +201,14 @@ describe('CulturalSurveyQuestions page', () => {
     })
   })
 
-  it('should updateQuestionsToDisplay on checkbox press if answer pressed has sub_question', () => {
+  it('should updateQuestionsToDisplay on checkbox press if answer pressed has sub_question', async () => {
     render(<CulturalSurveyQuestions {...navigationProps} />)
 
     const CulturalSurveyAnswerCheckbox = screen.getByText(
       // @ts-expect-error mocked Hook is defined
       questionsFromMockedHook.questions[0].answers[0].title
     )
-    fireEvent.press(CulturalSurveyAnswerCheckbox)
+    await user.press(CulturalSurveyAnswerCheckbox)
 
     expect(dispatch).toHaveBeenCalledWith({
       type: 'SET_QUESTIONS',
@@ -228,12 +216,12 @@ describe('CulturalSurveyQuestions page', () => {
     })
   })
 
-  it('should not updateQuestionsToDisplay on checkbox press if answer pressed has no sub_question', () => {
+  it('should not updateQuestionsToDisplay on checkbox press if answer pressed has no sub_question', async () => {
     render(<CulturalSurveyQuestions {...navigationProps} />)
 
     const thirdAnswerTitle = questionsFromMockedHook?.questions[0]?.answers[2]?.title as string
     const CulturalSurveyAnswerCheckbox = screen.getByText(thirdAnswerTitle)
-    fireEvent.press(CulturalSurveyAnswerCheckbox)
+    await user.press(CulturalSurveyAnswerCheckbox)
 
     expect(dispatch).not.toHaveBeenCalledWith({
       type: 'SET_QUESTIONS',

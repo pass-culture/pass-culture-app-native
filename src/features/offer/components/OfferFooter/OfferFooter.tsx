@@ -1,4 +1,5 @@
-import React, { FC, ReactNode } from 'react'
+import React, { FC, PropsWithChildren } from 'react'
+import { LayoutChangeEvent } from 'react-native'
 import { useTheme } from 'styled-components/native'
 
 import { OfferResponseV2 } from 'api/gen'
@@ -7,19 +8,20 @@ import { CineContentCTA } from 'features/offer/components/OfferCine/CineContentC
 import { useOfferCTA } from 'features/offer/components/OfferContent/OfferCTAProvider'
 import { StickyFooterContent } from 'features/offer/components/OfferContent/StickyFooterContent/StickyFooterContent'
 import { getIsAComingSoonOffer } from 'features/offer/helpers/getIsAComingSoonOffer'
-import { useAddReminderMutation } from 'features/offer/mutations/useAddReminderMutation'
-import { useDeleteReminderMutation } from 'features/offer/mutations/useDeleteReminderMutation'
 import { selectReminderByOfferId } from 'features/offer/queries/selectors/selectReminderByOfferId'
+import { useAddReminderMutation } from 'features/offer/queries/useAddReminderMutation'
+import { useDeleteReminderMutation } from 'features/offer/queries/useDeleteReminderMutation'
 import { useGetRemindersQuery } from 'features/offer/queries/useGetRemindersQuery'
 import { FavoriteProps } from 'features/offer/types'
 import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { useModal } from 'ui/components/modals/useModal'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
-export type OfferFooterProps = {
+export type OfferFooterProps = PropsWithChildren<{
   offer: OfferResponseV2
-  children: ReactNode
-} & FavoriteProps
+  onLayout?: (params: LayoutChangeEvent) => void
+}> &
+  FavoriteProps
 
 export const OfferFooter: FC<OfferFooterProps> = ({
   offer,
@@ -28,6 +30,7 @@ export const OfferFooter: FC<OfferFooterProps> = ({
   removeFavorite,
   isRemoveFavoriteLoading,
   favorite,
+  onLayout,
   children,
 }) => {
   const { showErrorSnackBar } = useSnackBarContext()
@@ -91,6 +94,7 @@ export const OfferFooter: FC<OfferFooterProps> = ({
         onPressReminderCTA={onPressReminderCTA}
         favoriteAuthModal={favoriteAuthModal}
         reminderAuthModal={reminderAuthModal}
+        onLayout={onLayout}
       />
     )
   }

@@ -4,7 +4,7 @@ import * as Permissions from 'react-native-permissions'
 
 import { analytics } from 'libs/analytics/provider'
 import { BatchPush } from 'libs/react-native-batch'
-import { fireEvent, render, screen, waitFor } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 
 import { AskNotificiationsModal } from './AskNotificationsModal'
 
@@ -20,6 +20,10 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
+const user = userEvent.setup()
+
+jest.useFakeTimers()
+
 describe('AskNotificationsModal', () => {
   it('should render properly', () => {
     render(<AskNotificiationsModal visible onHideModal={hideModal} />)
@@ -27,20 +31,20 @@ describe('AskNotificationsModal', () => {
     expect(screen).toMatchSnapshot()
   })
 
-  it('should log accepted notifications when press accept button', () => {
+  it('should log accepted notifications when press accept button', async () => {
     render(<AskNotificiationsModal visible onHideModal={hideModal} />)
 
     const button = screen.getByText('Activer les notifications')
-    fireEvent.press(button)
+    await user.press(button)
 
     expect(analytics.logAcceptNotifications).toHaveBeenCalledTimes(1)
   })
 
-  it('should request notification autorization accepted notifications when press accept button', () => {
+  it('should request notification autorization accepted notifications when press accept button', async () => {
     render(<AskNotificiationsModal visible onHideModal={hideModal} />)
 
     const button = screen.getByText('Activer les notifications')
-    fireEvent.press(button)
+    await user.press(button)
 
     expect(analytics.logAcceptNotifications).toHaveBeenCalledTimes(1)
   })
@@ -50,11 +54,9 @@ describe('AskNotificationsModal', () => {
     render(<AskNotificiationsModal visible onHideModal={hideModal} />)
 
     const button = screen.getByText('Activer les notifications')
-    fireEvent.press(button)
+    await user.press(button)
 
-    await waitFor(() => {
-      expect(hideModal).toHaveBeenCalledTimes(1)
-    })
+    expect(hideModal).toHaveBeenCalledTimes(1)
   })
 
   it('should hide modal when accept button is pressed and request notification is pressed and permissions are denied (first time asking)', async () => {
@@ -62,12 +64,10 @@ describe('AskNotificationsModal', () => {
     render(<AskNotificiationsModal visible onHideModal={hideModal} />)
 
     const button = screen.getByText('Activer les notifications')
-    fireEvent.press(button)
+    await user.press(button)
 
-    await waitFor(() => {
-      expect(BatchPush.requestNotificationAuthorization).toHaveBeenCalledTimes(1)
-      expect(hideModal).toHaveBeenCalledTimes(1)
-    })
+    expect(BatchPush.requestNotificationAuthorization).toHaveBeenCalledTimes(1)
+    expect(hideModal).toHaveBeenCalledTimes(1)
   })
 
   it.each<Permissions.PermissionStatus>([RESULTS.UNAVAILABLE, RESULTS.BLOCKED, RESULTS.LIMITED])(
@@ -77,12 +77,10 @@ describe('AskNotificationsModal', () => {
       render(<AskNotificiationsModal visible onHideModal={hideModal} />)
 
       const button = screen.getByText('Activer les notifications')
-      fireEvent.press(button)
+      await user.press(button)
 
-      await waitFor(() => {
-        expect(mockOpenSettings).toHaveBeenCalledTimes(1)
-        expect(hideModal).toHaveBeenCalledTimes(1)
-      })
+      expect(mockOpenSettings).toHaveBeenCalledTimes(1)
+      expect(hideModal).toHaveBeenCalledTimes(1)
     }
   )
 
@@ -90,11 +88,9 @@ describe('AskNotificationsModal', () => {
     render(<AskNotificiationsModal visible onHideModal={hideModal} />)
 
     const crossButton = screen.getByLabelText('Fermer la modale')
-    fireEvent.press(crossButton)
+    await user.press(crossButton)
 
-    await waitFor(() => {
-      expect(analytics.logDismissNotifications).toHaveBeenCalledTimes(1)
-      expect(hideModal).toHaveBeenCalledTimes(1)
-    })
+    expect(analytics.logDismissNotifications).toHaveBeenCalledTimes(1)
+    expect(hideModal).toHaveBeenCalledTimes(1)
   })
 })

@@ -2,7 +2,6 @@ import { SearchGroupNameEnumv2 } from 'api/gen'
 import { SearchCategoriesIllustrations } from 'features/search/enums'
 import { useAvailableCategories } from 'features/search/helpers/useAvailableCategories/useAvailableCategories'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
-import { theme } from 'theme'
 import { categoriesIcons } from 'ui/svg/icons/bicolor/exports/categoriesIcons'
 import { gradientColorsMapping } from 'ui/theme/gradientColorsMapping'
 
@@ -26,8 +25,8 @@ describe('useAvailableCategories', () => {
           facetFilter: SearchGroupNameEnumv2.CONCERTS_FESTIVALS,
           position: 1,
           gradients: gradientColorsMapping.Gold,
-          borderColor: theme.colors.goldLight200,
-          fillColor: theme.colors.goldLight100,
+          borderColor: 'decorative03',
+          fillColor: 'decorative03',
         },
         {
           icon: categoriesIcons.Cinema,
@@ -35,8 +34,8 @@ describe('useAvailableCategories', () => {
           facetFilter: SearchGroupNameEnumv2.CINEMA,
           position: 2,
           gradients: gradientColorsMapping.SkyBlue,
-          borderColor: theme.colors.skyBlue,
-          fillColor: theme.colors.skyBlueLight,
+          borderColor: 'decorative01',
+          fillColor: 'decorative01',
         },
         {
           icon: categoriesIcons.Cinema,
@@ -44,8 +43,8 @@ describe('useAvailableCategories', () => {
           facetFilter: SearchGroupNameEnumv2.FILMS_DOCUMENTAIRES_SERIES,
           position: 3,
           gradients: gradientColorsMapping.Lilac,
-          borderColor: theme.colors.lilac,
-          fillColor: theme.colors.lilacLight,
+          borderColor: 'decorative02',
+          fillColor: 'decorative02',
         },
         {
           icon: categoriesIcons.Book,
@@ -53,8 +52,8 @@ describe('useAvailableCategories', () => {
           facetFilter: SearchGroupNameEnumv2.LIVRES,
           position: 4,
           gradients: gradientColorsMapping.Gold,
-          borderColor: theme.colors.coral,
-          fillColor: theme.colors.coralLight,
+          borderColor: 'decorative05',
+          fillColor: 'decorative05',
         },
         {
           icon: categoriesIcons.Disk,
@@ -62,8 +61,8 @@ describe('useAvailableCategories', () => {
           facetFilter: SearchGroupNameEnumv2.MUSIQUE,
           position: 5,
           gradients: gradientColorsMapping.Coral,
-          borderColor: theme.colors.aquamarineDark,
-          fillColor: theme.colors.aquamarineLight,
+          borderColor: 'decorative04',
+          fillColor: 'decorative04',
         },
         {
           icon: categoriesIcons.Palette,
@@ -71,8 +70,8 @@ describe('useAvailableCategories', () => {
           facetFilter: SearchGroupNameEnumv2.ARTS_LOISIRS_CREATIFS,
           position: 6,
           gradients: gradientColorsMapping.DeepPink,
-          borderColor: theme.colors.deepPink,
-          fillColor: theme.colors.deepPinkLight,
+          borderColor: 'decorative03',
+          fillColor: 'decorative03',
         },
         {
           icon: categoriesIcons.Show,
@@ -80,8 +79,8 @@ describe('useAvailableCategories', () => {
           facetFilter: SearchGroupNameEnumv2.SPECTACLES,
           position: 7,
           gradients: gradientColorsMapping.Aquamarine,
-          borderColor: theme.colors.goldLight200,
-          fillColor: theme.colors.goldLight100,
+          borderColor: 'decorative01',
+          fillColor: 'decorative01',
         },
         {
           icon: categoriesIcons.Museum,
@@ -89,8 +88,8 @@ describe('useAvailableCategories', () => {
           facetFilter: SearchGroupNameEnumv2.MUSEES_VISITES_CULTURELLES,
           position: 8,
           gradients: gradientColorsMapping.SkyBlue,
-          borderColor: theme.colors.skyBlue,
-          fillColor: theme.colors.skyBlueLight,
+          borderColor: 'decorative02',
+          fillColor: 'decorative02',
         },
         {
           icon: categoriesIcons.VideoGame,
@@ -98,8 +97,8 @@ describe('useAvailableCategories', () => {
           facetFilter: SearchGroupNameEnumv2.JEUX_JEUX_VIDEOS,
           position: 9,
           gradients: gradientColorsMapping.Lilac,
-          borderColor: theme.colors.lilac,
-          fillColor: theme.colors.lilacLight,
+          borderColor: 'decorative05',
+          fillColor: 'decorative05',
         },
         {
           icon: categoriesIcons.Press,
@@ -107,8 +106,8 @@ describe('useAvailableCategories', () => {
           facetFilter: SearchGroupNameEnumv2.MEDIA_PRESSE,
           position: 10,
           gradients: gradientColorsMapping.Gold,
-          borderColor: theme.colors.coral,
-          fillColor: theme.colors.coralLight,
+          borderColor: 'decorative04',
+          fillColor: 'decorative04',
         },
         {
           icon: categoriesIcons.Card,
@@ -116,8 +115,8 @@ describe('useAvailableCategories', () => {
           facetFilter: SearchGroupNameEnumv2.CARTES_JEUNES,
           position: 11,
           gradients: gradientColorsMapping.Gold,
-          borderColor: theme.colors.aquamarineDark,
-          fillColor: theme.colors.aquamarineLight,
+          borderColor: 'decorative03',
+          fillColor: 'decorative03',
         },
         {
           icon: categoriesIcons.Microphone,
@@ -125,8 +124,8 @@ describe('useAvailableCategories', () => {
           facetFilter: SearchGroupNameEnumv2.RENCONTRES_CONFERENCES,
           position: 12,
           gradients: gradientColorsMapping.DeepPink,
-          borderColor: theme.colors.deepPink,
-          fillColor: theme.colors.deepPinkLight,
+          borderColor: 'decorative01',
+          fillColor: 'decorative01',
         },
         {
           icon: categoriesIcons.LiveEvent,
@@ -134,8 +133,8 @@ describe('useAvailableCategories', () => {
           position: 13,
           facetFilter: SearchGroupNameEnumv2.EVENEMENTS_EN_LIGNE,
           gradients: gradientColorsMapping.Gold,
-          borderColor: theme.colors.goldLight200,
-          fillColor: theme.colors.goldLight100,
+          borderColor: 'decorative02',
+          fillColor: 'decorative02',
         },
       ])
     )
@@ -158,8 +157,8 @@ describe('useAvailableCategories', () => {
         facetFilter: SearchGroupNameEnumv2.ARTS_LOISIRS_CREATIFS,
         position: 6,
         gradients: gradientColorsMapping.DeepPink,
-        borderColor: theme.colors.deepPink,
-        fillColor: theme.colors.deepPinkLight,
+        borderColor: 'decorative03',
+        fillColor: 'decorative03',
       },
       {
         icon: categoriesIcons.Card,
@@ -167,8 +166,8 @@ describe('useAvailableCategories', () => {
         facetFilter: SearchGroupNameEnumv2.CARTES_JEUNES,
         position: 11,
         gradients: gradientColorsMapping.Gold,
-        borderColor: theme.colors.aquamarineDark,
-        fillColor: theme.colors.aquamarineLight,
+        borderColor: 'decorative03',
+        fillColor: 'decorative03',
       },
     ])
   })

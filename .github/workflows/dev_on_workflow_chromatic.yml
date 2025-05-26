@@ -12,6 +12,7 @@ env:
 jobs:
   yarn_test_and_publish_storybook_with_chromatic:
     runs-on: ubuntu-24.04
+    timeout-minutes: 60
     steps:
       - name: Enable Corepack
         run: corepack enable

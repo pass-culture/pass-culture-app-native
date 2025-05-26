@@ -16,9 +16,8 @@ import { Booking } from 'features/bookings/types'
 import { withAsyncErrorBoundary } from 'features/errors/hocs/withAsyncErrorBoundary'
 import { openUrl } from 'features/navigation/helpers/openUrl'
 import { analytics } from 'libs/analytics/provider'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import * as OpenItinerary from 'libs/itinerary/useOpenItinerary'
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { mockServer } from 'tests/mswServer'
@@ -30,9 +29,7 @@ import { BookingDetails as BookingDetailsDefault } from './BookingDetails'
 
 const BookingDetails = withAsyncErrorBoundary(BookingDetailsDefault)
 
-jest.mock('libs/itinerary/useItinerary', () => ({
-  useItinerary: jest.fn(() => ({ availableApps: ['waze'], navigateTo: jest.fn() })),
-}))
+jest.mock('features/auth/context/AuthContext')
 
 jest.unmock('react-native/Libraries/Animated/createAnimatedComponent')
 jest.useFakeTimers()
@@ -499,10 +496,6 @@ describe('BookingDetails', () => {
         ['isEvent == true', { isEvent: true }],
         ['isPhysical == true', { isPhysical: true, isDigital: false }],
       ])('should render the itinerary button when %s', async (_testLabel, dataProvider) => {
-        const openItinerary = jest.spyOn(OpenItinerary, 'default').mockReturnValue({
-          openItinerary: jest.fn(),
-          canOpenItinerary: true,
-        })
         const getBookingProperties = jest
           .spyOn(bookingPropertiesAPI, 'getBookingProperties')
           .mockReturnValue(dataProvider)
@@ -515,7 +508,6 @@ describe('BookingDetails', () => {
 
         expect(itineraryButton).toBeOnTheScreen()
 
-        openItinerary.mockRestore()
         getBookingProperties.mockRestore()
       })
 
@@ -534,10 +526,6 @@ describe('BookingDetails', () => {
       ])(
         'should not render the itinerary button when %s',
         async (_testLabel, canOpenItinerary, dataProvider) => {
-          const openItinerary = jest.spyOn(OpenItinerary, 'default').mockReturnValue({
-            openItinerary: jest.fn(),
-            canOpenItinerary,
-          })
           const getBookingProperties = jest
             .spyOn(bookingPropertiesAPI, 'getBookingProperties')
             .mockReturnValue(dataProvider)
@@ -550,7 +538,6 @@ describe('BookingDetails', () => {
 
           expect(itineraryButton).not.toBeOnTheScreen()
 
-          openItinerary.mockRestore()
           getBookingProperties.mockRestore()
         }
       )
@@ -611,36 +598,31 @@ describe('BookingDetails', () => {
     it('should render BookingPageContent', async () => {
       renderBookingDetails(ongoingBookings)
 
-      await screen.findByText(ongoingBookings.stock.offer.name)
+      await screen.findAllByText(ongoingBookings.stock.offer.name)
 
       expect(screen.getByTestId('ticket-punched')).toBeOnTheScreen()
     })
 
     it('should render the itinerary button when offer is Event', async () => {
-      const openItinerary = jest.spyOn(OpenItinerary, 'default').mockReturnValue({
-        openItinerary: jest.fn(),
-        canOpenItinerary: true,
-      })
       const getBookingProperties = jest
         .spyOn(bookingPropertiesAPI, 'getBookingProperties')
         .mockReturnValue({ isEvent: true })
 
       renderBookingDetails(ongoingBookings)
 
-      await screen.findByText(ongoingBookings.stock.offer.name)
+      await screen.findAllByText(ongoingBookings.stock.offer.name)
 
       const itineraryButton = await screen.findByText('Voir l’itinéraire')
 
       expect(itineraryButton).toBeOnTheScreen()
 
-      openItinerary.mockRestore()
       getBookingProperties.mockRestore()
     })
 
     it('should display banner warning about disposal', async () => {
       renderBookingDetails(ongoingBookings)
 
-      await screen.findByText(ongoingBookings.stock.offer.name)
+      await screen.findAllByText(ongoingBookings.stock.offer.name)
 
       expect(
         screen.getByText('Tu n’as pas le droit de céder ou de revendre ton billet.')
@@ -661,7 +643,7 @@ describe('BookingDetails', () => {
         },
       })
 
-      await screen.findByText(ongoingBookings.stock.offer.name)
+      await screen.findAllByText(ongoingBookings.stock.offer.name)
 
       expect(screen.getByText(withdrawalDetails)).toBeOnTheScreen()
     })
@@ -679,7 +661,7 @@ describe('BookingDetails', () => {
         },
       })
 
-      await screen.findByText(ongoingBookings.stock.offer.name)
+      await screen.findAllByText(ongoingBookings.stock.offer.name)
 
       expect(screen.getByText(organizerEmail)).toBeOnTheScreen()
     })
@@ -697,7 +679,7 @@ describe('BookingDetails', () => {
         },
       })
 
-      await user.press(screen.getByText(organizerEmail))
+      await user.press(screen.getByText('Contacter l’organisateur'))
 
       expect(analytics.logClickEmailOrganizer).toHaveBeenCalledTimes(1)
 
@@ -743,9 +725,30 @@ describe('BookingDetails', () => {
       })
     })
 
-    it('should render correctly when withdrawal type is no ticket', async () => {
+    it('should render correctly when offer is not digital withdrawal type is no ticket', async () => {
       renderBookingDetails({
         ...ongoingBookings,
+        stock: {
+          ...ongoingBookings.stock,
+          offer: {
+            ...ongoingBookings.stock.offer,
+            withdrawalType: WithdrawalTypeEnum.no_ticket,
+            isDigital: false,
+          },
+        },
+      })
+
+      await screen.findAllByText(ongoingBookings.stock.offer.name)
+
+      expect(
+        screen.getByText('Tu n’as pas besoin de billet pour profiter de cette offre !')
+      ).toBeOnTheScreen()
+    })
+
+    it('should render error message with plural when booking is duo', async () => {
+      renderBookingDetails({
+        ...ongoingBookings,
+        quantity: 2,
         stock: {
           ...ongoingBookings.stock,
           offer: {
@@ -755,10 +758,31 @@ describe('BookingDetails', () => {
         },
       })
 
-      await screen.findByText(ongoingBookings.stock.offer.name)
+      await screen.findAllByText(ongoingBookings.stock.offer.name)
 
       expect(
-        screen.getByText('Tu n’as pas besoin de billet pour profiter de cette offre !')
+        screen.getByText('Tu n’as pas le droit de céder ou de revendre tes billets.')
+      ).toBeOnTheScreen()
+    })
+
+    it('should render error message singular when booking is not duo', async () => {
+      renderBookingDetails({
+        ...ongoingBookings,
+        quantity: 1,
+        stock: {
+          ...ongoingBookings.stock,
+          offer: {
+            ...ongoingBookings.stock.offer,
+            withdrawalType: WithdrawalTypeEnum.no_ticket,
+            isDigital: false,
+          },
+        },
+      })
+
+      await screen.findAllByText(ongoingBookings.stock.offer.name)
+
+      expect(
+        screen.getByText('Tu n’as pas le droit de céder ou de revendre ton billet.')
       ).toBeOnTheScreen()
     })
   })

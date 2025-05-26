@@ -13,11 +13,11 @@ import {
 } from 'features/profile/fixtures/domainsCredit'
 import * as ProfileUtils from 'features/profile/helpers/useIsUserUnderageBeneficiary'
 import { formatToSlashedFrenchDate, setDateOneDayEarlier } from 'libs/dates'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
-import { fireEvent, render, screen } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 
 jest.mock('queries/profile/useResetRecreditAmountToShowMutation')
 
@@ -35,6 +35,8 @@ const today = '2023-02-10T21:00:00'
 const tomorrow = '2023-02-11T21:00:00'
 
 jest.mock('libs/firebase/analytics/analytics')
+const user = userEvent.setup()
+jest.useFakeTimers()
 
 describe('CreditHeader', () => {
   beforeEach(() => {
@@ -99,10 +101,10 @@ describe('CreditHeader', () => {
       expect(screen.queryByText(/À venir pour tes/)).not.toBeOnTheScreen()
     })
 
-    it('should navigate to thematic home with remote config homeId on banner press', () => {
+    it('should navigate to thematic home with remote config homeId on banner press', async () => {
       renderCreditHeader({ domainsCredit: domains_exhausted_credit_v3, age: 18 })
 
-      fireEvent.press(screen.getByText('L’aventure continue !'))
+      await user.press(screen.getByText('L’aventure continue !'))
 
       expect(navigate).toHaveBeenCalledWith('ThematicHome', {
         homeId: 'homeEntryIdFreeOffers',

@@ -2,11 +2,13 @@ import React from 'react'
 
 import { useNavigationState, useRoute } from '__mocks__/@react-navigation/native'
 import { SubcategoriesResponseModelv2 } from 'api/gen'
+import { defaultDisabilitiesProperties } from 'features/accessibility/context/AccessibilityFiltersWrapper'
 import { DEFAULT_RADIUS } from 'features/search/constants'
 import { initialSearchState } from 'features/search/context/reducer'
 import { ISearchContext } from 'features/search/context/SearchWrapper'
 import { analytics } from 'libs/analytics/provider'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { GeoCoordinates } from 'libs/location'
 import { ILocationContext, LocationMode } from 'libs/location/types'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
@@ -65,6 +67,14 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
+const mockNavigateToSearch = jest.fn()
+jest.mock('features/search/helpers/useNavigateToSearch/useNavigateToSearch', () => ({
+  useNavigateToSearch: () => ({
+    navigateToSearch: mockNavigateToSearch,
+    replaceToSearch: jest.fn(),
+  }),
+}))
+
 const user = userEvent.setup()
 jest.useFakeTimers()
 
@@ -89,6 +99,29 @@ describe('<SearchFilter/>', () => {
     await waitFor(() => {
       expect(screen).toMatchSnapshot()
     })
+  })
+
+  it('should reset search when pressing reset button and use back button', async () => {
+    mockUseSearch.mockReturnValueOnce({
+      ...initialMockUseSearch,
+      searchState: {
+        ...initialSearchState,
+        locationFilter: { locationType: LocationMode.AROUND_ME, aroundRadius: DEFAULT_RADIUS },
+        minPrice: '5',
+        defaultMinPrice: '5',
+      },
+    })
+    renderSearchFilter()
+
+    await screen.findByText('Filtres')
+    await user.press(screen.getByText('Réinitialiser'))
+
+    await user.press(screen.getByTestId('Revenir en arrière'))
+
+    expect(mockNavigateToSearch).toHaveBeenCalledWith(
+      initialSearchState,
+      defaultDisabilitiesProperties
+    )
   })
 
   it('should setLocationMode to AROUND-ME in location context, when URI params contains AROUND-ME, and user has a geolocposition', async () => {
@@ -200,6 +233,20 @@ describe('<SearchFilter/>', () => {
     renderSearchFilter()
 
     expect(await screen.findByText('Accessibilité')).toBeOnTheScreen()
+  })
+
+  it('should display date and hour section when wipTimeFilterV2 FF deactivated', async () => {
+    renderSearchFilter()
+
+    expect(await screen.findByText('Dates & heures')).toBeOnTheScreen()
+  })
+
+  it('should display calendar section when wipTimeFilterV2 FF activated', async () => {
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_TIME_FILTER_V2])
+
+    renderSearchFilter()
+
+    expect(await screen.findByText('Dates')).toBeOnTheScreen()
   })
 })
 

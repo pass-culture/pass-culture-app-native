@@ -292,136 +292,151 @@ exports[`<SetAddress/> should render correctly 1`] = `
                 Quelle est ton adresse ?
               </Text>
               <View
-                numberOfSpaces={5}
-                style={
-                  [
-                    {
-                      "height": 20,
-                    },
-                  ]
-                }
-              />
-              <View
                 style={
                   [
                     {
                       "marginBottom": 8,
+                      "marginTop": 20,
                     },
                   ]
                 }
               >
-                <View>
-                  <View
-                    style={
-                      [
-                        {
-                          "alignItems": "flex-end",
-                          "flexDirection": "row",
-                          "justifyContent": "space-between",
-                          "width": "100%",
-                        },
-                      ]
-                    }
-                  >
-                    <Text
+                <View
+                  style={
+                    [
+                      {
+                        "marginBottom": 8,
+                      },
+                    ]
+                  }
+                >
+                  <View>
+                    <View
                       style={
                         [
                           {
-                            "color": "#161617",
-                            "fontFamily": "Montserrat-Medium",
-                            "fontSize": 16,
-                            "lineHeight": 25.6,
+                            "alignItems": "flex-end",
+                            "flexDirection": "row",
+                            "justifyContent": "space-between",
+                            "width": "100%",
                           },
                         ]
                       }
                     >
-                      Recherche et sélectionne ton adresse
-                    </Text>
+                      <Text
+                        style={
+                          [
+                            {
+                              "color": "#161617",
+                              "fontFamily": "Montserrat-Medium",
+                              "fontSize": 16,
+                              "lineHeight": 25.6,
+                            },
+                          ]
+                        }
+                      >
+                        Recherche et sélectionne ton adresse
+                      </Text>
+                    </View>
                   </View>
                 </View>
-              </View>
-              <View
-                height="small"
-                isDisabled={false}
-                isError={false}
-                isFocus={false}
-                style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "backgroundColor": "#ffffff",
-                      "borderColor": "#90949d",
-                      "borderRadius": 22,
-                      "borderStyle": "solid",
-                      "borderWidth": 1,
-                      "flexDirection": "row",
-                      "height": 40,
-                      "paddingBottom": 0,
-                      "paddingLeft": 17,
-                      "paddingRight": 17,
-                      "paddingTop": 0,
-                      "width": "100%",
-                    },
-                    {
-                      "borderRadius": 24,
-                      "outlineOffset": 0,
-                    },
-                  ]
-                }
-                testID="styled-input-container"
-              >
-                <TextInput
-                  accessibilityDescribedBy="testUuidV4"
-                  accessibilityHidden={false}
-                  autoComplete="street-address"
-                  autoCorrect={false}
-                  editable={true}
-                  enablesReturnKeyAutomatically={true}
-                  focusable={true}
-                  isEmpty={true}
-                  multiline={false}
-                  nativeID="testUuidV4"
-                  onBlur={[Function]}
-                  onChangeText={[Function]}
-                  onFocus={[Function]}
-                  placeholder="Ex : 34 avenue de l’Opéra"
-                  placeholderTextColor="#696A6F"
-                  returnKeyType="next"
-                  selectionColor="#696A6F"
+                <View
                   style={
                     [
                       {
-                        "color": "#161617",
-                        "flexBasis": 0,
-                        "flexGrow": 1,
-                        "flexShrink": 1,
-                        "fontFamily": "Montserrat-MediumItalic",
-                        "fontSize": 16,
-                        "height": "100%",
-                        "paddingBottom": 0,
-                        "paddingLeft": 0,
-                        "paddingRight": 0,
-                        "paddingTop": 0,
+                        "marginBottom": 8,
                       },
-                      {},
                     ]
                   }
-                  testID="Entrée pour l’adresse"
-                  textAlignVertical="center"
-                  textContentType="fullStreetAddress"
-                  value=""
-                />
+                >
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#696a6f",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 19.2,
+                        },
+                      ]
+                    }
+                  >
+                    Exemple : 34 avenue de l’Opéra
+                  </Text>
+                </View>
+                <View
+                  height="small"
+                  isDisabled={false}
+                  isError={false}
+                  isFocus={false}
+                  style={
+                    [
+                      {
+                        "alignItems": "center",
+                        "backgroundColor": "#ffffff",
+                        "borderColor": "#90949d",
+                        "borderRadius": 22,
+                        "borderStyle": "solid",
+                        "borderWidth": 1,
+                        "flexDirection": "row",
+                        "height": 40,
+                        "paddingBottom": 0,
+                        "paddingLeft": 17,
+                        "paddingRight": 17,
+                        "paddingTop": 0,
+                        "width": "100%",
+                      },
+                      {
+                        "borderRadius": 24,
+                        "outlineOffset": 0,
+                      },
+                    ]
+                  }
+                  testID="styled-input-container"
+                >
+                  <TextInput
+                    accessibilityDescribedBy="testUuidV4"
+                    accessibilityHidden={false}
+                    autoComplete="street-address"
+                    autoCorrect={false}
+                    editable={true}
+                    enablesReturnKeyAutomatically={true}
+                    focusable={true}
+                    isEmpty={true}
+                    multiline={false}
+                    nativeID="street-address-input"
+                    onBlur={[Function]}
+                    onChangeText={[Function]}
+                    onFocus={[Function]}
+                    placeholder=""
+                    placeholderTextColor="#696A6F"
+                    returnKeyType="next"
+                    selectionColor="#696A6F"
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                          "fontFamily": "Montserrat-MediumItalic",
+                          "fontSize": 16,
+                          "height": "100%",
+                          "paddingBottom": 0,
+                          "paddingLeft": 0,
+                          "paddingRight": 0,
+                          "paddingTop": 0,
+                        },
+                        {},
+                      ]
+                    }
+                    testID="Entrée pour l’adresse"
+                    textAlignVertical="center"
+                    textContentType="fullStreetAddress"
+                    value=""
+                  />
+                </View>
               </View>
-              <View
-                numberOfSpaces={2}
-                style={
-                  [
-                    {
-                      "height": 8,
-                    },
-                  ]
-                }
-              />
             </View>
             <View
               accessibilityRole="radiogroup"

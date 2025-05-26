@@ -7,7 +7,7 @@ import { mockOffer } from 'features/bookOffer/fixtures/offer'
 import { ReactionChoiceModal } from 'features/reactions/components/ReactionChoiceModal/ReactionChoiceModal'
 import { ReactionChoiceModalBodyEnum, ReactionFromEnum } from 'features/reactions/enum'
 import { analytics } from 'libs/analytics/provider'
-import { fireEvent, render, screen } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 
 const mockCloseModal = jest.fn()
 
@@ -19,6 +19,9 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
     return Component
   }
 })
+
+const user = userEvent.setup()
+jest.useFakeTimers()
 
 describe('ReactionChoiceModal', () => {
   it('should display body with validation when body type is validation', () => {
@@ -84,7 +87,7 @@ describe('ReactionChoiceModal', () => {
   })
 
   describe('With reaction validation', () => {
-    it('should activate J’aime button when pressing it and it is deactivated', () => {
+    it('should activate J’aime button when pressing it and it is deactivated', async () => {
       render(
         <ReactionChoiceModal
           offer={mockOffer}
@@ -96,13 +99,13 @@ describe('ReactionChoiceModal', () => {
         />
       )
 
-      fireEvent.press(screen.getByText('J’aime'))
+      await user.press(screen.getByText('J’aime'))
 
       expect(screen.queryByTestId('thumbUp')).not.toBeOnTheScreen()
       expect(screen.getByTestId('thumbUpFilled')).toBeOnTheScreen()
     })
 
-    it('should deactivate J’aime button when pressing it and it is activated', () => {
+    it('should deactivate J’aime button when pressing it and it is activated', async () => {
       render(
         <ReactionChoiceModal
           offer={mockOffer}
@@ -114,14 +117,14 @@ describe('ReactionChoiceModal', () => {
         />
       )
 
-      fireEvent.press(screen.getByText('J’aime'))
-      fireEvent.press(screen.getByText('J’aime'))
+      await user.press(screen.getByText('J’aime'))
+      await user.press(screen.getByText('J’aime'))
 
       expect(screen.getByTestId('thumbUp')).toBeOnTheScreen()
       expect(screen.queryByTestId('thumbUpFilled')).not.toBeOnTheScreen()
     })
 
-    it('should activate Je n’aime pas button when pressing it and it is deactivated', () => {
+    it('should activate Je n’aime pas button when pressing it and it is deactivated', async () => {
       render(
         <ReactionChoiceModal
           offer={mockOffer}
@@ -133,13 +136,13 @@ describe('ReactionChoiceModal', () => {
         />
       )
 
-      fireEvent.press(screen.getByText('Je n’aime pas'))
+      await user.press(screen.getByText('Je n’aime pas'))
 
       expect(screen.queryByTestId('thumbDown')).not.toBeOnTheScreen()
       expect(screen.getByTestId('thumbDownFilled')).toBeOnTheScreen()
     })
 
-    it('should deactivate Je n’aime pas button when pressing it and it is activated', () => {
+    it('should deactivate Je n’aime pas button when pressing it and it is activated', async () => {
       render(
         <ReactionChoiceModal
           offer={mockOffer}
@@ -151,14 +154,14 @@ describe('ReactionChoiceModal', () => {
         />
       )
 
-      fireEvent.press(screen.getByText('Je n’aime pas'))
-      fireEvent.press(screen.getByText('Je n’aime pas'))
+      await user.press(screen.getByText('Je n’aime pas'))
+      await user.press(screen.getByText('Je n’aime pas'))
 
       expect(screen.getByTestId('thumbDown')).toBeOnTheScreen()
       expect(screen.queryByTestId('thumbDownFilled')).not.toBeOnTheScreen()
     })
 
-    it('should reset the buttons when closing modal', () => {
+    it('should reset the buttons when closing modal', async () => {
       render(
         <ReactionChoiceModal
           offer={mockOffer}
@@ -170,14 +173,14 @@ describe('ReactionChoiceModal', () => {
         />
       )
 
-      fireEvent.press(screen.getByText('J’aime'))
+      await user.press(screen.getByText('J’aime'))
 
-      fireEvent.press(screen.getByTestId('Fermer la modale'))
+      await user.press(screen.getByTestId('Fermer la modale'))
 
       expect(screen.getByTestId('thumbDown')).toBeOnTheScreen()
     })
 
-    it('should close the modal when pressing close icon', () => {
+    it('should close the modal when pressing close icon', async () => {
       render(
         <ReactionChoiceModal
           offer={mockOffer}
@@ -189,12 +192,12 @@ describe('ReactionChoiceModal', () => {
         />
       )
 
-      fireEvent.press(screen.getByTestId('Fermer la modale'))
+      await user.press(screen.getByTestId('Fermer la modale'))
 
       expect(mockCloseModal).toHaveBeenCalledTimes(1)
     })
 
-    it('should save reaction when click on reaction button', () => {
+    it('should save reaction when click on reaction button', async () => {
       const mockHandleSave = jest.fn()
       render(
         <ReactionChoiceModal
@@ -208,8 +211,8 @@ describe('ReactionChoiceModal', () => {
         />
       )
 
-      fireEvent.press(screen.getByText('J’aime'))
-      fireEvent.press(screen.getByTestId('Valider la réaction'))
+      await user.press(screen.getByText('J’aime'))
+      await user.press(screen.getByTestId('Valider la réaction'))
 
       expect(mockHandleSave).toHaveBeenCalledWith({
         offerId: mockOffer.id,
@@ -217,7 +220,7 @@ describe('ReactionChoiceModal', () => {
       })
     })
 
-    it('should trigger ValidationReaction log when click on reaction button', () => {
+    it('should trigger ValidationReaction log when click on reaction button', async () => {
       const mockHandleSave = jest.fn()
       render(
         <ReactionChoiceModal
@@ -231,8 +234,8 @@ describe('ReactionChoiceModal', () => {
         />
       )
 
-      fireEvent.press(screen.getByText('J’aime'))
-      fireEvent.press(screen.getByTestId('Valider la réaction'))
+      await user.press(screen.getByText('J’aime'))
+      await user.press(screen.getByTestId('Valider la réaction'))
 
       expect(analytics.logValidateReaction).toHaveBeenCalledWith({
         offerId: mockOffer.id,
@@ -243,7 +246,7 @@ describe('ReactionChoiceModal', () => {
   })
 
   describe('With redirection', () => {
-    it('should close the modal when pressing close icon', () => {
+    it('should close the modal when pressing close icon', async () => {
       render(
         <ReactionChoiceModal
           offer={mockOffer}
@@ -255,12 +258,12 @@ describe('ReactionChoiceModal', () => {
         />
       )
 
-      fireEvent.press(screen.getByTestId('Fermer la modale'))
+      await user.press(screen.getByTestId('Fermer la modale'))
 
       expect(mockCloseModal).toHaveBeenCalledTimes(1)
     })
 
-    it('should close the modal when pressing "Plus tard" button', () => {
+    it('should close the modal when pressing "Plus tard" button', async () => {
       render(
         <ReactionChoiceModal
           offer={mockOffer}
@@ -272,12 +275,12 @@ describe('ReactionChoiceModal', () => {
         />
       )
 
-      fireEvent.press(screen.getByText('Plus tard'))
+      await user.press(screen.getByText('Plus tard'))
 
       expect(mockCloseModal).toHaveBeenCalledTimes(1)
     })
 
-    it('should redirect to ended bookings when pressing "Donner mon avis" button', () => {
+    it('should redirect to ended bookings when pressing "Donner mon avis" button', async () => {
       render(
         <ReactionChoiceModal
           offer={mockOffer}
@@ -289,14 +292,14 @@ describe('ReactionChoiceModal', () => {
         />
       )
 
-      fireEvent.press(screen.getByText('Donner mon avis'))
+      await user.press(screen.getByText('Donner mon avis'))
 
       expect(navigate).toHaveBeenNthCalledWith(1, 'Bookings', {
         activeTab: BookingsTab.COMPLETED,
       })
     })
 
-    it('should close the modal when pressing "Donner mon avis" button', () => {
+    it('should close the modal when pressing "Donner mon avis" button', async () => {
       render(
         <ReactionChoiceModal
           offer={mockOffer}
@@ -308,7 +311,7 @@ describe('ReactionChoiceModal', () => {
         />
       )
 
-      fireEvent.press(screen.getByText('Donner mon avis'))
+      await user.press(screen.getByText('Donner mon avis'))
 
       expect(mockCloseModal).toHaveBeenCalledTimes(1)
     })

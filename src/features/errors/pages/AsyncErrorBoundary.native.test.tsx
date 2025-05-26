@@ -8,9 +8,9 @@ import { MaintenanceErrorPage } from 'features/maintenance/pages/MaintenanceErro
 import * as useGoBack from 'features/navigation/useGoBack'
 import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
-import { AsyncError, MonitoringError, ScreenError, LogTypeEnum } from 'libs/monitoring/errors'
+import { AsyncError, LogTypeEnum, MonitoringError, ScreenError } from 'libs/monitoring/errors'
 import { eventMonitoring } from 'libs/monitoring/services'
-import { fireEvent, render, screen } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 
 jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/monitoring/services')
@@ -34,6 +34,9 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 jest.mock('features/maintenance/helpers/useMaintenance/useMaintenance')
 const mockUseMaintenance = useMaintenance as jest.Mock
 
+const user = userEvent.setup()
+jest.useFakeTimers()
+
 describe('AsyncErrorBoundary component', () => {
   it('should render', () => {
     render(<AsyncErrorBoundary error={new Error('error')} resetErrorBoundary={jest.fn()} />)
@@ -41,9 +44,9 @@ describe('AsyncErrorBoundary component', () => {
     expect(screen).toMatchSnapshot()
   })
 
-  it('should go back on back arrow press', () => {
+  it('should go back on back arrow press', async () => {
     render(<AsyncErrorBoundary error={new Error('error')} resetErrorBoundary={jest.fn()} />)
-    fireEvent.press(screen.getByTestId('Revenir en arrière'))
+    await user.press(screen.getByTestId('Revenir en arrière'))
 
     expect(mockGoBack).toHaveBeenCalledTimes(1)
   })
@@ -56,11 +59,10 @@ describe('AsyncErrorBoundary component', () => {
         resetErrorBoundary={jest.fn()}
       />
     )
-    const button = await screen.findByText('Réessayer')
 
     expect(retry).not.toHaveBeenCalled()
 
-    fireEvent.press(button)
+    await user.press(screen.getByText('Réessayer'))
 
     expect(retry).toHaveBeenCalledTimes(1)
   })

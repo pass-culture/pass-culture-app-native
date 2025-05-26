@@ -25,34 +25,32 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
     }
   >
     <View
-      customHeight={16}
-      enable={true}
       style={
         [
           {
-            "height": 16,
-          },
-        ]
-      }
-    />
-    <View
-      style={
-        [
-          {
-            "marginTop": 24,
-            "paddingHorizontal": 24,
-            "zIndex": 1,
+            "marginBottom": 8,
           },
         ]
       }
     >
       <View
+        customHeight={16}
+        enable={true}
         style={
           [
             {
-              "alignItems": "center",
-              "flexDirection": "row",
-              "paddingBottom": 16,
+              "height": 16,
+            },
+          ]
+        }
+      />
+      <View
+        style={
+          [
+            {
+              "marginTop": 24,
+              "paddingHorizontal": 24,
+              "zIndex": 1,
             },
           ]
         }
@@ -61,9 +59,9 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
           style={
             [
               {
+                "alignItems": "center",
                 "flexDirection": "row",
-                "justifyContent": "space-between",
-                "width": "100%",
+                "paddingBottom": 16,
               },
             ]
           }
@@ -72,79 +70,76 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
             style={
               [
                 {
-                  "flexShrink": 1,
+                  "flexDirection": "row",
+                  "justifyContent": "space-between",
                   "width": "100%",
                 },
               ]
             }
-            testID="SearchHeaderTitleContainer"
           >
             <View
               style={
                 [
                   {
-                    "alignItems": "flex-start",
-                    "flexDirection": "row",
-                    "justifyContent": "flex-start",
+                    "flexShrink": 1,
+                    "width": "100%",
                   },
                 ]
               }
+              testID="SearchHeaderTitleContainer"
             >
               <View
                 style={
                   [
                     {
-                      "alignItems": "center",
-                      "flexWrap": "wrap",
+                      "alignItems": "flex-start",
+                      "flexDirection": "row",
                       "justifyContent": "flex-start",
-                      "maxWidth": "75%",
                     },
                   ]
                 }
               >
-                <Text
-                  htmlFor="testUuidV4"
+                <View
                   style={
                     [
                       {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 28,
-                        "lineHeight": 44.8,
+                        "alignItems": "center",
+                        "flexWrap": "wrap",
+                        "justifyContent": "flex-start",
+                        "maxWidth": "75%",
                       },
                     ]
                   }
                 >
-                  Rechercher
-                </Text>
+                  <Text
+                    htmlFor="testUuidV4"
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Bold",
+                          "fontSize": 28,
+                          "lineHeight": 44.8,
+                        },
+                      ]
+                    }
+                  >
+                    Rechercher
+                  </Text>
+                </View>
               </View>
             </View>
+            <View
+              testID="InsideLocationWidget"
+            />
           </View>
-          <View
-            testID="InsideLocationWidget"
-          />
         </View>
-      </View>
-      <View>
-        <View
-          style={
-            [
-              {
-                "flexDirection": "row",
-              },
-            ]
-          }
-        >
+        <View>
           <View
             style={
               [
                 {
-                  "alignItems": "center",
-                  "flexBasis": 0,
                   "flexDirection": "row",
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                  "justifyContent": "center",
                 },
               ]
             }
@@ -158,6 +153,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                     "flexDirection": "row",
                     "flexGrow": 1,
                     "flexShrink": 1,
+                    "justifyContent": "center",
                   },
                 ]
               }
@@ -166,6 +162,7 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                 style={
                   [
                     {
+                      "alignItems": "center",
                       "flexBasis": 0,
                       "flexDirection": "row",
                       "flexGrow": 1,
@@ -175,149 +172,150 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                 }
               >
                 <View
-                  height="regular"
-                  isDisabled={false}
-                  isError={false}
-                  isFocus={false}
                   style={
                     [
                       {
-                        "alignItems": "center",
-                        "backgroundColor": "#ffffff",
-                        "borderColor": "#90949d",
-                        "borderRadius": 22,
-                        "borderStyle": "solid",
-                        "borderWidth": 1,
+                        "flexBasis": 0,
                         "flexDirection": "row",
-                        "height": 48,
-                        "paddingBottom": 0,
-                        "paddingLeft": 17,
-                        "paddingRight": 17,
-                        "paddingTop": 0,
-                        "width": "100%",
-                      },
-                      {
-                        "borderRadius": 24,
-                        "outlineOffset": 0,
-                      },
-                      {
-                        "flex": 1,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
                       },
                     ]
                   }
-                  testID="styled-input-container"
                 >
                   <View
+                    height="regular"
+                    isDisabled={false}
+                    isError={false}
+                    isFocus={false}
                     style={
                       [
                         {
-                          "flexShrink": 0,
-                          "marginRight": 8,
+                          "alignItems": "center",
+                          "backgroundColor": "#ffffff",
+                          "borderColor": "#90949d",
+                          "borderRadius": 22,
+                          "borderStyle": "solid",
+                          "borderWidth": 1,
+                          "flexDirection": "row",
+                          "height": 48,
+                          "paddingBottom": 0,
+                          "paddingLeft": 17,
+                          "paddingRight": 17,
+                          "paddingTop": 0,
+                          "width": "100%",
+                        },
+                        {
+                          "borderRadius": 24,
+                          "outlineOffset": 0,
+                        },
+                        {
+                          "flex": 1,
                         },
                       ]
                     }
+                    testID="styled-input-container"
                   >
                     <View
-                      height={20}
-                      width={20}
+                      style={
+                        [
+                          {
+                            "flexShrink": 0,
+                            "marginRight": 8,
+                          },
+                        ]
+                      }
                     >
-                      <Text>
-                        undefined-SVG-Mock
-                      </Text>
+                      <View
+                        height={20}
+                        width={20}
+                      >
+                        <Text>
+                          undefined-SVG-Mock
+                        </Text>
+                      </View>
                     </View>
+                    <TextInput
+                      accessibilityDescribedBy="testUuidV4"
+                      accessibilityHidden={true}
+                      autoCorrect={false}
+                      autoFocus={false}
+                      editable={true}
+                      enablesReturnKeyAutomatically={true}
+                      focusable={false}
+                      isEmpty={true}
+                      multiline={false}
+                      nativeID="testUuidV4"
+                      onBlur={[Function]}
+                      onChangeText={[Function]}
+                      onFocus={[Function]}
+                      onSubmitEditing={[Function]}
+                      placeholder="Offre, artiste, lieu culturel..."
+                      placeholderTextColor="#696A6F"
+                      returnKeyType="search"
+                      selectionColor="#696A6F"
+                      style={
+                        [
+                          {
+                            "color": "#161617",
+                            "flexBasis": 0,
+                            "flexGrow": 1,
+                            "flexShrink": 1,
+                            "fontFamily": "Montserrat-MediumItalic",
+                            "fontSize": 16,
+                            "height": "100%",
+                            "paddingBottom": 0,
+                            "paddingLeft": 0,
+                            "paddingRight": 0,
+                            "paddingTop": 0,
+                          },
+                          {},
+                        ]
+                      }
+                      testID="searchInput"
+                      textAlignVertical="center"
+                      value=""
+                    />
                   </View>
-                  <TextInput
-                    accessibilityDescribedBy="testUuidV4"
-                    accessibilityHidden={true}
-                    autoCorrect={false}
-                    autoFocus={false}
-                    editable={true}
-                    enablesReturnKeyAutomatically={true}
-                    focusable={false}
-                    isEmpty={true}
-                    multiline={false}
-                    nativeID="testUuidV4"
-                    onBlur={[Function]}
-                    onChangeText={[Function]}
-                    onFocus={[Function]}
-                    onSubmitEditing={[Function]}
-                    placeholder="Offre, artiste, lieu culturel..."
-                    placeholderTextColor="#696A6F"
-                    returnKeyType="search"
-                    selectionColor="#696A6F"
-                    style={
-                      [
-                        {
-                          "color": "#161617",
-                          "flexBasis": 0,
-                          "flexGrow": 1,
-                          "flexShrink": 1,
-                          "fontFamily": "Montserrat-MediumItalic",
-                          "fontSize": 16,
-                          "height": "100%",
-                          "paddingBottom": 0,
-                          "paddingLeft": 0,
-                          "paddingRight": 0,
-                          "paddingTop": 0,
-                        },
-                        {},
-                      ]
-                    }
-                    testID="searchInput"
-                    textAlignVertical="center"
-                    value=""
-                  />
                 </View>
               </View>
             </View>
+            <Text
+              nativeID="testUuidV4"
+              style={
+                [
+                  {
+                    "display": "none",
+                  },
+                ]
+              }
+            >
+              Indique le nom d’une offre ou d’un lieu puis lance la recherche à l’aide de la touche ”Entrée”
+            </Text>
           </View>
-          <Text
-            nativeID="testUuidV4"
-            style={
-              [
-                {
-                  "display": "none",
-                },
-              ]
-            }
-          >
-            Indique le nom d’une offre ou d’un lieu puis lance la recherche à l’aide de la touche ”Entrée”
-          </Text>
         </View>
       </View>
     </View>
-    <View
-      numberOfSpaces={2}
-      style={
-        [
-          {
-            "height": 8,
-          },
-        ]
-      }
-    />
     <View>
       <RCTScrollView
         horizontal={true}
         showsHorizontalScrollIndicator={false}
+        style={
+          [
+            {
+              "marginBottom": 8,
+            },
+          ]
+        }
       >
         <View>
-          <View
-            numberOfSpaces={5}
-            style={
-              [
-                {
-                  "width": 20,
-                },
-              ]
-            }
-          />
           <View
             accessibilityRole="list"
             style={
               [
                 {
                   "flexDirection": "row",
+                  "marginHorizontal": 20,
                   "paddingLeft": 0,
                 },
               ]
@@ -459,6 +457,93 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                     </Text>
                   </View>
                 </View>
+              </View>
+            </View>
+            <View
+              accessibilityRole="none"
+              style={
+                [
+                  {
+                    "display": "flex",
+                    "marginBottom": 4,
+                    "marginLeft": 4,
+                    "marginTop": 4,
+                  },
+                ]
+              }
+            >
+              <View
+                accessibilityLabel="Dates & heures"
+                accessibilityRole="button"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "alignItems": "center",
+                        "backgroundColor": "#ffffff",
+                        "borderColor": "#161617",
+                        "borderRadius": 24,
+                        "borderWidth": 1,
+                        "boxSizing": "border-box",
+                        "columnGap": 4,
+                        "flexDirection": "row-reverse",
+                        "height": 32,
+                        "justifyContent": "center",
+                        "paddingLeft": 16,
+                        "paddingRight": 16,
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
+                }
+                testID="Dates & heures"
+              >
+                <Text
+                  style={
+                    [
+                      {
+                        "color": "#161617",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 19.2,
+                      },
+                    ]
+                  }
+                  testID="datesHoursButtonLabel"
+                >
+                  Dates & heures
+                </Text>
               </View>
             </View>
             <View
@@ -757,93 +842,6 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                     "display": "flex",
                     "marginBottom": 4,
                     "marginLeft": 4,
-                    "marginTop": 4,
-                  },
-                ]
-              }
-            >
-              <View
-                accessibilityLabel="Dates & heures"
-                accessibilityRole="button"
-                accessibilityState={
-                  {
-                    "busy": undefined,
-                    "checked": undefined,
-                    "disabled": undefined,
-                    "expanded": undefined,
-                    "selected": undefined,
-                  }
-                }
-                accessibilityValue={
-                  {
-                    "max": undefined,
-                    "min": undefined,
-                    "now": undefined,
-                    "text": undefined,
-                  }
-                }
-                accessible={true}
-                focusable={true}
-                onClick={[Function]}
-                onResponderGrant={[Function]}
-                onResponderMove={[Function]}
-                onResponderRelease={[Function]}
-                onResponderTerminate={[Function]}
-                onResponderTerminationRequest={[Function]}
-                onStartShouldSetResponder={[Function]}
-                style={
-                  [
-                    [
-                      {
-                        "userSelect": "auto",
-                      },
-                      {
-                        "alignItems": "center",
-                        "backgroundColor": "#ffffff",
-                        "borderColor": "#161617",
-                        "borderRadius": 24,
-                        "borderWidth": 1,
-                        "boxSizing": "border-box",
-                        "columnGap": 4,
-                        "flexDirection": "row-reverse",
-                        "height": 32,
-                        "justifyContent": "center",
-                        "paddingLeft": 16,
-                        "paddingRight": 16,
-                      },
-                    ],
-                    {
-                      "opacity": 1,
-                    },
-                  ]
-                }
-                testID="Dates & heures"
-              >
-                <Text
-                  style={
-                    [
-                      {
-                        "color": "#161617",
-                        "fontFamily": "Montserrat-SemiBold",
-                        "fontSize": 12,
-                        "lineHeight": 19.2,
-                      },
-                    ]
-                  }
-                  testID="datesHoursButtonLabel"
-                >
-                  Dates & heures
-                </Text>
-              </View>
-            </View>
-            <View
-              accessibilityRole="none"
-              style={
-                [
-                  {
-                    "display": "flex",
-                    "marginBottom": 4,
-                    "marginLeft": 4,
                     "marginRight": 4,
                     "marginTop": 4,
                   },
@@ -925,28 +923,8 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
               </View>
             </View>
           </View>
-          <View
-            numberOfSpaces={5}
-            style={
-              [
-                {
-                  "width": 20,
-                },
-              ]
-            }
-          />
         </View>
       </RCTScrollView>
-      <View
-        numberOfSpaces={2}
-        style={
-          [
-            {
-              "height": 8,
-            },
-          ]
-        }
-      />
     </View>
     <View
       style={
@@ -962,205 +940,913 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
     >
       <View
         style={
-          [
-            {
-              "flexBasis": 0,
-              "flexDirection": "row",
-              "flexGrow": 1,
-              "flexShrink": 1,
-            },
-          ]
+          {
+            "flex": 1,
+            "overflow": "hidden",
+          }
         }
       >
-        <View
-          accessibilityRole="none"
-          style={
+        <RCTScrollView
+          ItemSeparatorComponent={
+            {
+              "$$typeof": Symbol(react.forward_ref),
+              "attrs": [],
+              "inlineStyle": InlineStyle {
+                "rules": [
+                  [Function],
+                ],
+              },
+              "render": [Function],
+              "shouldForwardProp": undefined,
+              "styledComponentId": "StyledNativeComponent",
+              "target": [Function],
+              "withComponent": [Function],
+            }
+          }
+          ListHeaderComponent={
+            <SearchListHeader
+              nbHits={4}
+              venues={
+                [
+                  {
+                    "_geoloc": {
+                      "lat": 48.94374,
+                      "lng": 2.48171,
+                    },
+                    "address": "1 rue de la paix",
+                    "city": "Paris",
+                    "id": 1,
+                    "name": "Lieu 1",
+                    "postalCode": "75000",
+                    "publicName": "Lieu 1",
+                  },
+                  {
+                    "_geoloc": {
+                      "lat": 48.91265,
+                      "lng": 2.4513,
+                    },
+                    "address": "2 rue de la paix",
+                    "city": "Paris",
+                    "id": 2,
+                    "name": "Lieu 2",
+                    "postalCode": "75000",
+                    "publicName": "Lieu 2",
+                  },
+                  {
+                    "_geoloc": {
+                      "lat": 4.90339,
+                      "lng": -52.31663,
+                    },
+                    "address": "3 rue de la paix",
+                    "city": "Paris",
+                    "id": 3,
+                    "name": "Lieu 3",
+                    "postalCode": "75000",
+                    "publicName": "Lieu 3",
+                  },
+                  {
+                    "_geoloc": {
+                      "lat": 4.90339,
+                      "lng": -52.31663,
+                    },
+                    "address": "4 rue de la paix",
+                    "city": "Paris",
+                    "id": 4,
+                    "name": "Lieu 4",
+                    "postalCode": "75000",
+                    "publicName": "Lieu 4",
+                  },
+                ]
+              }
+            />
+          }
+          applyWindowCorrection={[Function]}
+          canChangeSize={true}
+          contentContainerStyle={
+            {
+              "backgroundColor": undefined,
+              "minHeight": 1,
+              "minWidth": 1,
+              "paddingLeft": 0,
+              "paddingRight": 0,
+            }
+          }
+          contentHeight={0}
+          contentWidth={0}
+          data={
             [
               {
-                "alignItems": "center",
-                "flexBasis": 0,
-                "flexGrow": 1,
-                "flexShrink": 1,
-                "justifyContent": "center",
-                "marginHorizontal": 24,
+                "_geoloc": {
+                  "lat": 48.94374,
+                  "lng": 2.48171,
+                },
+                "artists": [
+                  {
+                    "id": "1",
+                    "name": "Artist 1",
+                  },
+                ],
+                "objectID": "102280",
+                "offer": {
+                  "dates": [],
+                  "isDigital": false,
+                  "isDuo": false,
+                  "name": "La nuit des temps",
+                  "prices": [
+                    2800,
+                  ],
+                  "subcategoryId": "LIVRE_PAPIER",
+                  "thumbUrl": "https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDNQ",
+                },
+                "venue": {
+                  "address": "1 rue de la paix",
+                  "city": "Paris",
+                  "id": 1,
+                  "name": "Lieu 1",
+                  "postalCode": "75000",
+                  "publicName": "Lieu 1",
+                },
+              },
+              {
+                "_geoloc": {
+                  "lat": 48.91265,
+                  "lng": 2.4513,
+                },
+                "artists": [
+                  {
+                    "id": "2",
+                    "name": "Artist 2",
+                  },
+                  {
+                    "id": "3",
+                    "name": "Artist 3",
+                  },
+                ],
+                "objectID": "102272",
+                "offer": {
+                  "dates": [],
+                  "isDigital": false,
+                  "isDuo": false,
+                  "name": "I want something more",
+                  "prices": [
+                    2300,
+                  ],
+                  "subcategoryId": "CONCERT",
+                  "thumbUrl": "https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDKQ",
+                },
+                "venue": {
+                  "address": "2 rue de la paix",
+                  "city": "Paris",
+                  "id": 2,
+                  "name": "Lieu 2",
+                  "postalCode": "75000",
+                  "publicName": "Lieu 2",
+                },
+              },
+              {
+                "_geoloc": {
+                  "lat": 4.90339,
+                  "lng": -52.31663,
+                },
+                "objectID": "102249",
+                "offer": {
+                  "dates": [
+                    1605643200,
+                  ],
+                  "isDigital": false,
+                  "isDuo": true,
+                  "name": "Un lit sous une rivière",
+                  "prices": [
+                    3400,
+                  ],
+                  "subcategoryId": "CONCERT",
+                  "thumbUrl": "https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDBA",
+                },
+                "venue": {
+                  "address": "3 rue de la paix",
+                  "city": "Paris",
+                  "id": 3,
+                  "name": "Lieu 3",
+                  "postalCode": "75000",
+                  "publicName": "Lieu 3",
+                },
+              },
+              {
+                "_geoloc": {
+                  "lat": 4.90339,
+                  "lng": -52.31663,
+                },
+                "artists": [
+                  {
+                    "id": "4",
+                    "name": "Artist 4",
+                  },
+                  {
+                    "id": "5",
+                    "name": "Artist 4",
+                  },
+                ],
+                "objectID": "102310",
+                "offer": {
+                  "dates": [],
+                  "isDigital": false,
+                  "isDuo": false,
+                  "name": "I want something more",
+                  "prices": [
+                    2800,
+                  ],
+                  "subcategoryId": "CONCERT",
+                  "thumbUrl": "https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDZQ",
+                },
+                "venue": {
+                  "address": "4 rue de la paix",
+                  "city": "Paris",
+                  "id": 4,
+                  "name": "Lieu 4",
+                  "postalCode": "75000",
+                  "publicName": "Lieu 4",
+                },
               },
             ]
           }
+          dataProvider={
+            DataProvider {
+              "_data": [
+                {
+                  "_geoloc": {
+                    "lat": 48.94374,
+                    "lng": 2.48171,
+                  },
+                  "artists": [
+                    {
+                      "id": "1",
+                      "name": "Artist 1",
+                    },
+                  ],
+                  "objectID": "102280",
+                  "offer": {
+                    "dates": [],
+                    "isDigital": false,
+                    "isDuo": false,
+                    "name": "La nuit des temps",
+                    "prices": [
+                      2800,
+                    ],
+                    "subcategoryId": "LIVRE_PAPIER",
+                    "thumbUrl": "https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDNQ",
+                  },
+                  "venue": {
+                    "address": "1 rue de la paix",
+                    "city": "Paris",
+                    "id": 1,
+                    "name": "Lieu 1",
+                    "postalCode": "75000",
+                    "publicName": "Lieu 1",
+                  },
+                },
+                {
+                  "_geoloc": {
+                    "lat": 48.91265,
+                    "lng": 2.4513,
+                  },
+                  "artists": [
+                    {
+                      "id": "2",
+                      "name": "Artist 2",
+                    },
+                    {
+                      "id": "3",
+                      "name": "Artist 3",
+                    },
+                  ],
+                  "objectID": "102272",
+                  "offer": {
+                    "dates": [],
+                    "isDigital": false,
+                    "isDuo": false,
+                    "name": "I want something more",
+                    "prices": [
+                      2300,
+                    ],
+                    "subcategoryId": "CONCERT",
+                    "thumbUrl": "https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDKQ",
+                  },
+                  "venue": {
+                    "address": "2 rue de la paix",
+                    "city": "Paris",
+                    "id": 2,
+                    "name": "Lieu 2",
+                    "postalCode": "75000",
+                    "publicName": "Lieu 2",
+                  },
+                },
+                {
+                  "_geoloc": {
+                    "lat": 4.90339,
+                    "lng": -52.31663,
+                  },
+                  "objectID": "102249",
+                  "offer": {
+                    "dates": [
+                      1605643200,
+                    ],
+                    "isDigital": false,
+                    "isDuo": true,
+                    "name": "Un lit sous une rivière",
+                    "prices": [
+                      3400,
+                    ],
+                    "subcategoryId": "CONCERT",
+                    "thumbUrl": "https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDBA",
+                  },
+                  "venue": {
+                    "address": "3 rue de la paix",
+                    "city": "Paris",
+                    "id": 3,
+                    "name": "Lieu 3",
+                    "postalCode": "75000",
+                    "publicName": "Lieu 3",
+                  },
+                },
+                {
+                  "_geoloc": {
+                    "lat": 4.90339,
+                    "lng": -52.31663,
+                  },
+                  "artists": [
+                    {
+                      "id": "4",
+                      "name": "Artist 4",
+                    },
+                    {
+                      "id": "5",
+                      "name": "Artist 4",
+                    },
+                  ],
+                  "objectID": "102310",
+                  "offer": {
+                    "dates": [],
+                    "isDigital": false,
+                    "isDuo": false,
+                    "name": "I want something more",
+                    "prices": [
+                      2800,
+                    ],
+                    "subcategoryId": "CONCERT",
+                    "thumbUrl": "https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDZQ",
+                  },
+                  "venue": {
+                    "address": "4 rue de la paix",
+                    "city": "Paris",
+                    "id": 4,
+                    "name": "Lieu 4",
+                    "postalCode": "75000",
+                    "publicName": "Lieu 4",
+                  },
+                },
+              ],
+              "_firstIndexToProcess": 0,
+              "_hasStableIds": true,
+              "_requiresDataChangeHandling": false,
+              "_size": 4,
+              "getStableId": [Function],
+              "rowHasChanged": [Function],
+            }
+          }
+          disableRecycling={false}
+          estimatedItemSize={130}
+          extendedState={{}}
+          externalScrollView={[Function]}
+          finalRenderAheadOffset={250}
+          forceNonDeterministicRendering={true}
+          horizontal={false}
+          initialOffset={0}
+          initialRenderIndex={0}
+          isHorizontal={false}
+          keyExtractor={[Function]}
+          keyboardDismissMode="on-drag"
+          keyboardShouldPersistTaps="handled"
+          layoutProvider={
+            GridLayoutProviderWithProps {
+              "_acceptableRelayoutDelta": 1,
+              "_getHeightOrWidth": [Function],
+              "_getLayoutTypeForIndex": [Function],
+              "_getSpan": [Function],
+              "_hasExpired": false,
+              "_maxSpan": 1,
+              "_setLayoutForType": [Function],
+              "_tempDim": {
+                "height": 0,
+                "width": 0,
+              },
+              "averageWindow": AverageWindow {
+                "currentAverage": 130,
+                "currentCount": 1,
+                "inputValues": [
+                  130,
+                ],
+                "nextIndex": 1,
+              },
+              "defaultEstimatedItemSize": 100,
+              "layoutObject": {
+                "size": undefined,
+                "span": undefined,
+              },
+              "props": {
+                "ItemSeparatorComponent": {
+                  "$$typeof": Symbol(react.forward_ref),
+                  "attrs": [],
+                  "inlineStyle": InlineStyle {
+                    "rules": [
+                      [Function],
+                    ],
+                  },
+                  "render": [Function],
+                  "shouldForwardProp": undefined,
+                  "styledComponentId": "StyledNativeComponent",
+                  "target": [Function],
+                  "withComponent": [Function],
+                },
+                "ListHeaderComponent": <SearchListHeader
+                  nbHits={4}
+                  venues={
+                    [
+                      {
+                        "_geoloc": {
+                          "lat": 48.94374,
+                          "lng": 2.48171,
+                        },
+                        "address": "1 rue de la paix",
+                        "city": "Paris",
+                        "id": 1,
+                        "name": "Lieu 1",
+                        "postalCode": "75000",
+                        "publicName": "Lieu 1",
+                      },
+                      {
+                        "_geoloc": {
+                          "lat": 48.91265,
+                          "lng": 2.4513,
+                        },
+                        "address": "2 rue de la paix",
+                        "city": "Paris",
+                        "id": 2,
+                        "name": "Lieu 2",
+                        "postalCode": "75000",
+                        "publicName": "Lieu 2",
+                      },
+                      {
+                        "_geoloc": {
+                          "lat": 4.90339,
+                          "lng": -52.31663,
+                        },
+                        "address": "3 rue de la paix",
+                        "city": "Paris",
+                        "id": 3,
+                        "name": "Lieu 3",
+                        "postalCode": "75000",
+                        "publicName": "Lieu 3",
+                      },
+                      {
+                        "_geoloc": {
+                          "lat": 4.90339,
+                          "lng": -52.31663,
+                        },
+                        "address": "4 rue de la paix",
+                        "city": "Paris",
+                        "id": 4,
+                        "name": "Lieu 4",
+                        "postalCode": "75000",
+                        "publicName": "Lieu 4",
+                      },
+                    ]
+                  }
+                />,
+                "contentContainerStyle": {
+                  "paddingBottom": 104,
+                },
+                "data": [
+                  {
+                    "_geoloc": {
+                      "lat": 48.94374,
+                      "lng": 2.48171,
+                    },
+                    "artists": [
+                      {
+                        "id": "1",
+                        "name": "Artist 1",
+                      },
+                    ],
+                    "objectID": "102280",
+                    "offer": {
+                      "dates": [],
+                      "isDigital": false,
+                      "isDuo": false,
+                      "name": "La nuit des temps",
+                      "prices": [
+                        2800,
+                      ],
+                      "subcategoryId": "LIVRE_PAPIER",
+                      "thumbUrl": "https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDNQ",
+                    },
+                    "venue": {
+                      "address": "1 rue de la paix",
+                      "city": "Paris",
+                      "id": 1,
+                      "name": "Lieu 1",
+                      "postalCode": "75000",
+                      "publicName": "Lieu 1",
+                    },
+                  },
+                  {
+                    "_geoloc": {
+                      "lat": 48.91265,
+                      "lng": 2.4513,
+                    },
+                    "artists": [
+                      {
+                        "id": "2",
+                        "name": "Artist 2",
+                      },
+                      {
+                        "id": "3",
+                        "name": "Artist 3",
+                      },
+                    ],
+                    "objectID": "102272",
+                    "offer": {
+                      "dates": [],
+                      "isDigital": false,
+                      "isDuo": false,
+                      "name": "I want something more",
+                      "prices": [
+                        2300,
+                      ],
+                      "subcategoryId": "CONCERT",
+                      "thumbUrl": "https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDKQ",
+                    },
+                    "venue": {
+                      "address": "2 rue de la paix",
+                      "city": "Paris",
+                      "id": 2,
+                      "name": "Lieu 2",
+                      "postalCode": "75000",
+                      "publicName": "Lieu 2",
+                    },
+                  },
+                  {
+                    "_geoloc": {
+                      "lat": 4.90339,
+                      "lng": -52.31663,
+                    },
+                    "objectID": "102249",
+                    "offer": {
+                      "dates": [
+                        1605643200,
+                      ],
+                      "isDigital": false,
+                      "isDuo": true,
+                      "name": "Un lit sous une rivière",
+                      "prices": [
+                        3400,
+                      ],
+                      "subcategoryId": "CONCERT",
+                      "thumbUrl": "https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDBA",
+                    },
+                    "venue": {
+                      "address": "3 rue de la paix",
+                      "city": "Paris",
+                      "id": 3,
+                      "name": "Lieu 3",
+                      "postalCode": "75000",
+                      "publicName": "Lieu 3",
+                    },
+                  },
+                  {
+                    "_geoloc": {
+                      "lat": 4.90339,
+                      "lng": -52.31663,
+                    },
+                    "artists": [
+                      {
+                        "id": "4",
+                        "name": "Artist 4",
+                      },
+                      {
+                        "id": "5",
+                        "name": "Artist 4",
+                      },
+                    ],
+                    "objectID": "102310",
+                    "offer": {
+                      "dates": [],
+                      "isDigital": false,
+                      "isDuo": false,
+                      "name": "I want something more",
+                      "prices": [
+                        2800,
+                      ],
+                      "subcategoryId": "CONCERT",
+                      "thumbUrl": "https://storage.googleapis.com/passculture-metier-prod-production-assets-fine-grained/thumbs/mediations/CDZQ",
+                    },
+                    "venue": {
+                      "address": "4 rue de la paix",
+                      "city": "Paris",
+                      "id": 4,
+                      "name": "Lieu 4",
+                      "postalCode": "75000",
+                      "publicName": "Lieu 4",
+                    },
+                  },
+                ],
+                "estimatedItemSize": 130,
+                "keyExtractor": [Function],
+                "keyboardDismissMode": "on-drag",
+                "keyboardShouldPersistTaps": "handled",
+                "numColumns": 1,
+                "onEndReached": [Function],
+                "onRefresh": [MockFunction] {
+                  "calls": [
+                    [],
+                  ],
+                  "results": [
+                    {
+                      "type": "return",
+                      "value": undefined,
+                    },
+                  ],
+                },
+                "onScroll": [Function],
+                "refreshing": false,
+                "renderItem": [Function],
+                "scrollEnabled": true,
+                "testID": "searchResultsFlashlist",
+              },
+              "renderWindowInsets": {
+                "height": 0,
+                "width": 0,
+              },
+              "shouldRefreshWithAnchoring": true,
+            }
+          }
+          maxRenderAhead={750}
+          numColumns={1}
+          onEndReached={[Function]}
+          onEndReachedThreshold={0}
+          onEndReachedThresholdRelative={0}
+          onItemLayout={[Function]}
+          onLayout={[Function]}
+          onRefresh={
+            [MockFunction] {
+              "calls": [
+                [],
+              ],
+              "results": [
+                {
+                  "type": "return",
+                  "value": undefined,
+                },
+              ],
+            }
+          }
+          onScroll={[Function]}
+          onScrollBeginDrag={[Function]}
+          onSizeChanged={[Function]}
+          onVisibleIndicesChanged={[Function]}
+          refreshControl={
+            <RefreshControlMock
+              onRefresh={
+                [MockFunction] {
+                  "calls": [
+                    [],
+                  ],
+                  "results": [
+                    {
+                      "type": "return",
+                      "value": undefined,
+                    },
+                  ],
+                }
+              }
+              refreshing={false}
+            />
+          }
+          refreshing={false}
+          removeClippedSubviews={false}
+          renderAheadOffset={0}
+          renderAheadStep={250}
+          renderContentContainer={[Function]}
+          renderItem={[Function]}
+          renderItemContainer={[Function]}
+          rowRenderer={[Function]}
+          scrollEnabled={true}
+          scrollEventThrottle={16}
+          scrollThrottle={16}
+          scrollViewProps={
+            {
+              "contentContainerStyle": {
+                "backgroundColor": undefined,
+                "minHeight": 1,
+                "minWidth": 1,
+                "paddingLeft": 0,
+                "paddingRight": 0,
+              },
+              "onLayout": [Function],
+              "onScrollBeginDrag": [Function],
+              "refreshControl": <RefreshControlMock
+                onRefresh={
+                  [MockFunction] {
+                    "calls": [
+                      [],
+                    ],
+                    "results": [
+                      {
+                        "type": "return",
+                        "value": undefined,
+                      },
+                    ],
+                  }
+                }
+                refreshing={false}
+              />,
+              "style": {
+                "minHeight": 1,
+                "minWidth": 1,
+              },
+            }
+          }
+          style={
+            {
+              "minHeight": 1,
+              "minWidth": 1,
+            }
+          }
+          suppressBoundedSizeException={true}
+          testID="searchResultsFlashlist"
+          windowCorrectionConfig={
+            {
+              "applyToInitialOffset": true,
+              "applyToItemScroll": true,
+              "value": {
+                "endCorrection": 0,
+                "startCorrection": 0,
+                "windowShift": -1,
+              },
+            }
+          }
         >
-          <View
+          <RCTRefreshControl />
+          <View>
+            <View
+              style={
+                {
+                  "flexDirection": "column",
+                }
+              }
+            >
+              <AutoLayoutView
+                enableInstrumentation={false}
+                horizontal={false}
+                onBlankAreaEvent={[Function]}
+                onLayout={[Function]}
+                renderAheadOffset={0}
+                scrollOffset={0}
+                style={
+                  {
+                    "height": 0,
+                    "width": 0,
+                  }
+                }
+                windowSize={0}
+              />
+            </View>
+          </View>
+        </RCTScrollView>
+      </View>
+    </View>
+    <View
+      style={
+        [
+          {
+            "alignSelf": "center",
+            "bottom": 88,
+            "position": "absolute",
+            "right": 28,
+            "zIndex": 1,
+          },
+        ]
+      }
+    >
+      <View
+        style={
+          {
+            "opacity": 0,
+          }
+        }
+      >
+        <View
+          accessibilityLabel="Revenir en haut"
+          accessibilityRole="button"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": true,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            [
+              [
+                {
+                  "userSelect": "auto",
+                },
+                {
+                  "overflow": "hidden",
+                },
+              ],
+              {
+                "opacity": 1,
+              },
+            ]
+          }
+          testID="Revenir en haut"
+        >
+          <BVLinearGradient
+            colors={
+              [
+                4293591125,
+                4281467030,
+              ]
+            }
+            endPoint={
+              {
+                "x": 0,
+                "y": 1,
+              }
+            }
+            locations={null}
+            startPoint={
+              {
+                "x": 0,
+                "y": 0,
+              }
+            }
             style={
               [
                 {
-                  "flexShrink": 0,
-                  "marginTop": -104,
+                  "alignItems": "center",
+                  "backgroundColor": "#eb0055",
+                  "borderRadius": 24,
+                  "height": 40,
+                  "justifyContent": "center",
+                  "overflow": "hidden",
+                  "width": 40,
                 },
               ]
             }
           >
             <View
-              height={109.2}
-              width={140}
+              fill="#ffffff"
+              height={24}
+              width={24}
             >
               <Text>
                 undefined-SVG-Mock
               </Text>
             </View>
-          </View>
-          <View
-            style={
-              [
-                {
-                  "alignItems": "center",
-                },
-              ]
-            }
-          >
-            <Text
-              style={
-                [
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-Bold",
-                    "fontSize": 17,
-                    "lineHeight": 27.2,
-                    "marginTop": 16,
-                  },
-                ]
-              }
-            >
-              Pas de résultat
-            </Text>
-            <Text
-              style={
-                [
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-Medium",
-                    "fontSize": 16,
-                    "lineHeight": 25.6,
-                    "marginTop": 24,
-                    "textAlign": "center",
-                  },
-                ]
-              }
-            >
-              <Text
-                accessibilityLiveRegion="assertive"
-                style={
-                  [
-                    {
-                      "color": "#696A6F",
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                    },
-                  ]
-                }
-              >
-                Vérifie ta localisation ou modifie tes filtres pour trouver plus de résultats.
-              </Text>
-            </Text>
-          </View>
-          <View
-            numberOfSpaces={6}
-            style={
-              [
-                {
-                  "height": 24,
-                },
-              ]
-            }
-          />
-          <View>
-            <View
-              accessibilityLabel="Modifier mes filtres"
-              accessibilityState={
-                {
-                  "busy": undefined,
-                  "checked": undefined,
-                  "disabled": undefined,
-                  "expanded": undefined,
-                  "selected": undefined,
-                }
-              }
-              accessibilityValue={
-                {
-                  "max": undefined,
-                  "min": undefined,
-                  "now": undefined,
-                  "text": undefined,
-                }
-              }
-              accessible={true}
-              focusable={true}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                [
-                  [
-                    {
-                      "userSelect": "auto",
-                    },
-                    {
-                      "alignItems": "center",
-                      "backgroundColor": "#eb0055",
-                      "borderRadius": 24,
-                      "flexDirection": "row",
-                      "justifyContent": "center",
-                      "maxWidth": 500,
-                      "minHeight": 40,
-                      "paddingBottom": 2,
-                      "paddingLeft": 20,
-                      "paddingRight": 20,
-                      "paddingTop": 2,
-                      "width": "100%",
-                    },
-                    {},
-                  ],
-                  {
-                    "opacity": 1,
-                  },
-                ]
-              }
-              testID="Modifier mes filtres"
-            >
-              <View
-                style={
-                  [
-                    {
-                      "alignItems": "center",
-                      "flexDirection": "row",
-                    },
-                  ]
-                }
-              >
-                <Text
-                  adjustsFontSizeToFit={false}
-                  numberOfLines={1}
-                  style={
-                    [
-                      {
-                        "color": "#ffffff",
-                        "fontFamily": "Montserrat-Bold",
-                        "fontSize": 16,
-                        "lineHeight": 25.6,
-                        "maxWidth": "100%",
-                      },
-                    ]
-                  }
-                >
-                  Modifier mes filtres
-                </Text>
-              </View>
-            </View>
-          </View>
+          </BVLinearGradient>
         </View>
       </View>
+      <View
+        customHeight={8}
+        enable={true}
+        style={
+          [
+            {
+              "height": 8,
+            },
+          ]
+        }
+      />
     </View>
   </View>
 </View>

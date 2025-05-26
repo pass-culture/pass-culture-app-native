@@ -1,7 +1,6 @@
 import { useRoute, useNavigation } from '@react-navigation/native'
 import React, { useEffect } from 'react'
 import { Platform } from 'react-native'
-import styled from 'styled-components/native'
 
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { getProfileStackConfig } from 'features/navigation/ProfileStackNavigator/getProfileStackConfig'
@@ -40,14 +39,3 @@ export function ChangeEmail() {
     </React.Fragment>
   )
 }
-
-export const CenteredContainer = styled.View({
-  flex: 1,
-  alignItems: 'center',
-})
-
-export const ButtonContainer = styled.View<{ paddingBottom: number }>(({ paddingBottom }) => ({
-  paddingBottom,
-  alignItems: 'center',
-  width: '100%',
-}))

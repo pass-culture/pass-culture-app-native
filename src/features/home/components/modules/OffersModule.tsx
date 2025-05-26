@@ -1,3 +1,4 @@
+import { useFocusEffect } from '@react-navigation/native'
 import React, { useCallback, useEffect, useMemo, useRef } from 'react'
 import { ViewToken } from 'react-native'
 import { FlatList } from 'react-native-gesture-handler'
@@ -13,8 +14,8 @@ import { getSearchNavConfig } from 'features/navigation/SearchStackNavigator/sea
 import { OfferTileWrapper } from 'features/offer/components/OfferTile/OfferTileWrapper'
 import { useAdaptOffersPlaylistParameters } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/helpers/useAdaptOffersPlaylistParameters'
 import { analytics } from 'libs/analytics/provider'
+import { getPlaylistItemDimensionsFromLayout } from 'libs/contentful/getPlaylistItemDimensionsFromLayout'
 import { ContentTypes } from 'libs/contentful/types'
-import { usePlaylistItemDimensionsFromLayout } from 'libs/contentful/usePlaylistItemDimensionsFromLayout'
 import useFunctionOnce from 'libs/hooks/useFunctionOnce'
 import { useLocation } from 'libs/location'
 import { IntersectionObserver } from 'shared/IntersectionObserver/IntersectionObserver'
@@ -31,7 +32,7 @@ export type OffersModuleProps = {
   homeEntryId: string | undefined
   data: ModuleData | undefined
   recommendationParameters?: RecommendedOffersModule['recommendationParameters']
-  onViewableItemsChanged?: (items: string[]) => void
+  onViewableItemsChanged?: (items: Pick<ViewToken, 'key' | 'index'>[]) => void
 }
 
 const keyExtractor = (item: Offer) => item.objectID
@@ -117,7 +118,7 @@ export const OffersModule = (props: OffersModuleProps) => {
     [moduleName, moduleId, homeEntryId, displayParameters.layout]
   )
 
-  const { itemWidth, itemHeight } = usePlaylistItemDimensionsFromLayout(displayParameters.layout)
+  const { itemWidth, itemHeight } = getPlaylistItemDimensionsFromLayout(displayParameters.layout)
 
   const renderFooter: RenderFooterItem = useCallback(
     ({ width, height }: ItemDimensions) => {
@@ -177,21 +178,43 @@ export const OffersModule = (props: OffersModuleProps) => {
   ])
 
   const listRef = useRef<FlatList>(null)
+  const lastViewableItems = useRef<ViewToken[]>([])
 
   const handleIntersectionObserverChange = (value: boolean) => {
     isInView.current = value
     if (value) {
-      listRef.current?.recordInteraction()
+      if (lastViewableItems.current?.length) {
+        handleViewableItemsChanged({
+          viewableItems: lastViewableItems.current,
+        })
+      } else {
+        listRef.current?.recordInteraction()
+      }
     }
   }
 
-  const handleViewableItemsChanged = useCallback(({ changed }: { changed: ViewToken[] }) => {
-    if (isInView.current) {
-      onViewableItemsChanged?.(changed.map((item) => item.key))
-    }
+  const handleViewableItemsChanged = useCallback(
+    ({ viewableItems }: { viewableItems: ViewToken[] }) => {
+      if (isInView.current) {
+        onViewableItemsChanged?.(viewableItems.map(({ key, index }) => ({ key, index })))
+        lastViewableItems.current = viewableItems
+      }
+    },
     // We cannot change onViewableItemsChanged on the fly
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+    []
+  )
+
+  useFocusEffect(
+    useCallback(() => {
+      if (lastViewableItems.current?.length) {
+        handleViewableItemsChanged({
+          viewableItems: lastViewableItems.current,
+        })
+      }
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+  )
 
   if (!shouldModuleBeDisplayed) return null
 

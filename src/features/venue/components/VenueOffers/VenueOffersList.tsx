@@ -7,16 +7,14 @@ import styled, { useTheme } from 'styled-components/native'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { GtlPlaylist } from 'features/gtlPlaylist/components/GtlPlaylist'
 import { UseRouteType } from 'features/navigation/RootNavigator/types'
-import { getTagConfig } from 'features/offer/components/InteractionTag/getTagConfig'
-import { InteractionTag } from 'features/offer/components/InteractionTag/InteractionTag'
+import { renderInteractionTag } from 'features/offer/components/InteractionTag/InteractionTag'
 import { OfferTile } from 'features/offer/components/OfferTile/OfferTile'
 import { VenueOffersProps } from 'features/venue/components/VenueOffers/VenueOffers'
 import { useNavigateToSearchWithVenueOffers } from 'features/venue/helpers/useNavigateToSearchWithVenueOffers'
 import { analytics } from 'libs/analytics/provider'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
-import { formatDates, getTimeStampInMillis } from 'libs/parsers/formatDates'
+import { formatPlaylistDates, getTimeStampInMillis } from 'libs/parsers/formatDates'
 import {
   formatPrice,
   getDisplayedPrice,
@@ -25,7 +23,7 @@ import {
 import { CategoryHomeLabelMapping, CategoryIdMapping } from 'libs/subcategories/types'
 import { Currency } from 'shared/currency/useGetCurrencyToDisplay'
 import { Offer } from 'shared/offer/types'
-import { AvatarsList } from 'ui/components/Avatar/AvatarList'
+import { AvatarList } from 'ui/components/Avatar/AvatarList'
 import { PassPlaylist } from 'ui/components/PassPlaylist'
 import { CustomListRenderItem, RenderFooterItem } from 'ui/components/Playlist'
 import { SeeMore } from 'ui/components/SeeMore'
@@ -57,7 +55,6 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
   const theme = useTheme()
   const { user } = useAuthContext()
   const artistsPlaylistEnabled = useFeatureFlag(RemoteStoreFeatureFlags.WIP_VENUE_ARTISTS_PLAYLIST)
-  const { minLikesValue } = useRemoteConfigQuery()
   const { params: routeParams } = useRoute<UseRouteType<'Offer'>>()
   const searchNavConfig = useNavigateToSearchWithVenueOffers(venue)
 
@@ -78,12 +75,12 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
   )
   const renderItem: CustomListRenderItem<Offer> = ({ item, width, height }) => {
     const timestampsInMillis = item.offer.dates && getTimeStampInMillis(item.offer.dates)
-    const tagConfig = getTagConfig({
+    const tag = renderInteractionTag({
       theme,
-      minLikesValue,
       likesCount: item.offer.likes,
       chroniclesCount: item.offer.chroniclesCount,
-      headlineCount: item.offer.headlineCount,
+      headlinesCount: item.offer.headlineCount,
+      isComingSoonOffer: item._tags?.includes('is_future'),
     })
 
     return (
@@ -95,7 +92,7 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
         subcategoryId={item.offer.subcategoryId}
         offerId={+item.objectID}
         name={item.offer.name}
-        date={formatDates(timestampsInMillis)}
+        date={formatPlaylistDates(timestampsInMillis)}
         isDuo={item.offer.isDuo}
         thumbUrl={item.offer.thumbUrl}
         price={getDisplayedPrice(
@@ -111,7 +108,7 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
         width={width}
         height={height}
         searchId={routeParams?.searchId}
-        interactionTag={tagConfig ? <InteractionTag {...tagConfig} /> : undefined}
+        interactionTag={tag}
       />
     )
   }
@@ -138,7 +135,7 @@ export const VenueOffersList: FunctionComponent<VenueOffersListProps> = ({
       {shouldDisplayArtistsPlaylist ? (
         <ArtistsPlaylistContainer gap={2}>
           <ArtistsPlaylistTitleText>Les artistes disponibles dans ce lieu</ArtistsPlaylistTitleText>
-          <AvatarsList data={artists} onItemPress={handleArtistsPlaylistPress} />
+          <AvatarList data={artists} onItemPress={handleArtistsPlaylistPress} />
         </ArtistsPlaylistContainer>
       ) : null}
       {playlists.length

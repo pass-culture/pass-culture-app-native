@@ -11,7 +11,7 @@ import * as PackageJson from 'libs/packageJson'
 import { storage } from 'libs/storage'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
@@ -54,7 +54,15 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
+const user = userEvent.setup()
+
+jest.useFakeTimers()
+
 describe('<ConsentSettings/>', () => {
+  beforeEach(() => {
+    mockdate.set(Today)
+  })
+
   it('should render correctly', async () => {
     renderConsentSettings()
 
@@ -71,10 +79,10 @@ describe('<ConsentSettings/>', () => {
     const performanceSwitch = screen.getByTestId(
       'Interrupteur Enregistrer des statistiques de navigation'
     )
-    fireEvent.press(performanceSwitch)
+    await user.press(performanceSwitch)
 
     const saveChoice = screen.getByText('Enregistrer mes choix')
-    fireEvent.press(saveChoice)
+    await user.press(saveChoice)
 
     const storageContent = {
       buildVersion,
@@ -86,9 +94,8 @@ describe('<ConsentSettings/>', () => {
         refused: [...COOKIES_BY_CATEGORY.customization, ...COOKIES_BY_CATEGORY.marketing],
       },
     }
-    await waitFor(async () => {
-      expect(await storage.readObject(COOKIES_CONSENT_KEY)).toEqual(storageContent)
-    })
+
+    expect(await storage.readObject(COOKIES_CONSENT_KEY)).toEqual(storageContent)
   })
 
   it('should call startTrackingAcceptedCookies with empty array if user refuses all cookies', async () => {
@@ -97,9 +104,7 @@ describe('<ConsentSettings/>', () => {
     renderConsentSettings()
 
     const saveChoice = screen.getByText('Enregistrer mes choix')
-    await act(async () => {
-      fireEvent.press(saveChoice)
-    })
+    await user.press(saveChoice)
 
     expect(mockStartTrackingAcceptedCookies).toHaveBeenCalledWith([])
   })
@@ -112,14 +117,10 @@ describe('<ConsentSettings/>', () => {
     const performanceSwitch = screen.getByTestId(
       'Interrupteur Enregistrer des statistiques de navigation'
     )
-    await act(async () => {
-      fireEvent.press(performanceSwitch)
-    })
+    await user.press(performanceSwitch)
 
     const saveChoice = screen.getByText('Enregistrer mes choix')
-    await act(async () => {
-      fireEvent.press(saveChoice)
-    })
+    await user.press(saveChoice)
 
     expect(mockStartTrackingAcceptedCookies).toHaveBeenCalledWith(COOKIES_BY_CATEGORY.performance)
   })
@@ -132,14 +133,10 @@ describe('<ConsentSettings/>', () => {
     const performanceSwitch = screen.getByTestId(
       'Interrupteur Enregistrer des statistiques de navigation'
     )
-    await act(async () => {
-      fireEvent.press(performanceSwitch)
-    })
+    await user.press(performanceSwitch)
 
     const saveChoice = screen.getByText('Enregistrer mes choix')
-    await act(async () => {
-      fireEvent.press(saveChoice)
-    })
+    await user.press(saveChoice)
 
     expect(analytics.logHasMadeAChoiceForCookies).toHaveBeenCalledWith({
       from: 'ConsentSettings',
@@ -153,9 +150,7 @@ describe('<ConsentSettings/>', () => {
     renderConsentSettings()
 
     const saveChoice = screen.getByText('Enregistrer mes choix')
-    await act(async () => {
-      fireEvent.press(saveChoice)
-    })
+    await user.press(saveChoice)
 
     expect(mockShowSuccessSnackBar).toHaveBeenCalledWith({
       message: 'Ton choix a bien été enregistré.',

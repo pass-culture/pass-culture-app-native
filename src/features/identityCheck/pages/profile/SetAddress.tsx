@@ -29,7 +29,7 @@ import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/S
 import { Spinner } from 'ui/components/Spinner'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
-import { Spacer, Typo } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 const snackbarMessage =
@@ -136,27 +136,28 @@ export const SetAddress: FunctionComponent<Props> = ({ route }: Props) => {
         <React.Fragment>
           <Form.MaxWidth>
             <Typo.Title3 {...getHeadingAttrs(2)}>{pageInfos.title}</Typo.Title3>
-            <Spacer.Column numberOfSpaces={5} />
-            <SearchInput
-              autoFocus
-              onChangeText={onChangeAddress}
-              value={query}
-              label={label}
-              placeholder="Ex&nbsp;: 34 avenue de l’Opéra"
-              autoComplete="street-address"
-              textContentType="fullStreetAddress"
-              accessibilityDescribedBy={addressInputErrorId}
-              onPressRightIcon={resetSearch}
-              returnKeyType="next"
-              testID="Entrée pour l’adresse"
-            />
-            <InputError
-              visible={hasError}
-              messageId="Ton adresse ne doit pas contenir de caractères spéciaux ou n’être composée que d’espaces."
-              numberOfSpacesTop={2}
-              relatedInputId={addressInputErrorId}
-            />
-            <Spacer.Column numberOfSpaces={2} />
+            <Container>
+              <SearchInput
+                autoFocus
+                onChangeText={onChangeAddress}
+                value={query}
+                label={label}
+                format="34 avenue de l’Opéra"
+                autoComplete="street-address"
+                textContentType="fullStreetAddress"
+                accessibilityDescribedBy={addressInputErrorId}
+                onPressRightIcon={resetSearch}
+                returnKeyType="next"
+                testID="Entrée pour l’adresse"
+                searchInputID="street-address-input"
+              />
+              <InputError
+                visible={hasError}
+                messageId="Ton adresse ne doit pas contenir de caractères spéciaux ou n’être composée que d’espaces."
+                numberOfSpacesTop={2}
+                relatedInputId={addressInputErrorId}
+              />
+            </Container>
           </Form.MaxWidth>
           {isLoading ? <Spinner /> : null}
           <AdressesContainer accessibilityRole={AccessibilityRole.RADIOGROUP}>
@@ -191,3 +192,5 @@ const AdressesContainer = styled.View({
   overflowY: 'scroll',
   ...(Platform.OS === 'web' ? { boxSizing: 'content-box' } : {}),
 })
+
+const Container = styled.View({ marginTop: getSpacing(5), marginBottom: getSpacing(2) })

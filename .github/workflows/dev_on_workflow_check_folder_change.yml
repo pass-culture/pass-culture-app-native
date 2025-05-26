@@ -21,6 +21,7 @@ jobs:
   check-folder-changes:
     name: Check folder changes
     runs-on: ubuntu-24.04
+    timeout-minutes: 60
     outputs:
       folder_changed: ${{ steps.folder-check-changed-files.outputs.any_modified }}
     steps:

@@ -27,7 +27,7 @@ const TicketCutoutLeftSvg: React.FunctionComponent<AccessibleIcon> = ({
   return (
     <AccessibleSvg width="54" height="86" testID={testID} accessibilityLabel={accessibilityLabel}>
       <G clipPath={clipPath}>
-        <G filter={filter} id="toto">
+        <G filter={filter}>
           <Path
             fill-rule="evenodd"
             clip-rule="evenodd"

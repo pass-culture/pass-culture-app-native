@@ -12,7 +12,7 @@ import { storage } from 'libs/storage'
 import { mockAuthContextWithUser } from 'tests/AuthContextUtils'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
+import { render, screen, userEvent, waitFor } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
 
@@ -40,6 +40,9 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
+const user = userEvent.setup()
+jest.useFakeTimers()
+
 describe('OnboardingSubscription', () => {
   beforeEach(() => {
     mockAuthContextWithUser(beneficiaryUser, { persist: true })
@@ -65,7 +68,7 @@ describe('OnboardingSubscription', () => {
   it('should go back when user presses "Non merci"', async () => {
     render(reactQueryProviderHOC(<OnboardingSubscription />))
 
-    fireEvent.press(await screen.findByLabelText('Ne pas suivre de thème'))
+    await user.press(await screen.findByLabelText('Ne pas suivre de thème'))
 
     expect(mockGoBack).toHaveBeenCalledTimes(1)
   })
@@ -73,12 +76,10 @@ describe('OnboardingSubscription', () => {
   it('should check theme when user presses a category button', async () => {
     render(reactQueryProviderHOC(<OnboardingSubscription />))
 
-    fireEvent.press(await screen.findByLabelText('Activités créatives'))
+    await user.press(await screen.findByLabelText('Activités créatives'))
 
-    await waitFor(() => {
-      expect(screen.getByLabelText('Activités créatives')).toHaveAccessibilityState({
-        checked: true,
-      })
+    expect(screen.getByLabelText('Activités créatives')).toHaveAccessibilityState({
+      checked: true,
     })
   })
 
@@ -107,19 +108,17 @@ describe('OnboardingSubscription', () => {
 
     render(reactQueryProviderHOC(<OnboardingSubscription />))
 
-    await act(async () => fireEvent.press(screen.getByLabelText('Activités créatives')))
+    await user.press(screen.getByLabelText('Activités créatives'))
 
-    await act(async () => fireEvent.press(screen.getByText('Suivre la sélection')))
+    await user.press(screen.getByText('Suivre la sélection'))
 
-    await waitFor(() => {
-      expect(patchProfileSpy).toHaveBeenCalledWith({
-        subscriptions: {
-          marketingEmail: true,
-          marketingPush: true,
-          subscribedThemes: [SubscriptionTheme.ACTIVITES],
-        },
-        origin: 'OnboardingSubscription',
-      })
+    expect(patchProfileSpy).toHaveBeenCalledWith({
+      subscriptions: {
+        marketingEmail: true,
+        marketingPush: true,
+        subscribedThemes: [SubscriptionTheme.ACTIVITES],
+      },
+      origin: 'OnboardingSubscription',
     })
   })
 
@@ -128,12 +127,10 @@ describe('OnboardingSubscription', () => {
 
     render(reactQueryProviderHOC(<OnboardingSubscription />))
 
-    fireEvent.press(await screen.findByLabelText('Activités créatives'))
-    fireEvent.press(screen.getByText('Suivre la sélection'))
+    await user.press(screen.getByLabelText('Activités créatives'))
+    await user.press(screen.getByText('Suivre la sélection'))
 
-    await waitFor(() => {
-      expect(replace).toHaveBeenCalledWith(...homeNavConfig)
-    })
+    expect(replace).toHaveBeenCalledWith(...homeNavConfig)
   })
 
   it('should show success snackbar on subscription success', async () => {
@@ -141,14 +138,12 @@ describe('OnboardingSubscription', () => {
 
     render(reactQueryProviderHOC(<OnboardingSubscription />))
 
-    fireEvent.press(await screen.findByLabelText('Activités créatives'))
-    fireEvent.press(screen.getByText('Suivre la sélection'))
+    await user.press(screen.getByLabelText('Activités créatives'))
+    await user.press(screen.getByText('Suivre la sélection'))
 
-    await waitFor(() => {
-      expect(mockShowSuccessSnackBar).toHaveBeenCalledWith({
-        message: 'Thèmes suivis\u00a0! Tu peux gérer tes alertes depuis ton profil.',
-        timeout: SNACK_BAR_TIME_OUT,
-      })
+    expect(mockShowSuccessSnackBar).toHaveBeenCalledWith({
+      message: 'Thèmes suivis\u00a0! Tu peux gérer tes alertes depuis ton profil.',
+      timeout: SNACK_BAR_TIME_OUT,
     })
   })
 
@@ -157,12 +152,10 @@ describe('OnboardingSubscription', () => {
 
     render(reactQueryProviderHOC(<OnboardingSubscription />))
 
-    fireEvent.press(await screen.findByLabelText('Activités créatives'))
-    fireEvent.press(screen.getByText('Suivre la sélection'))
+    await user.press(screen.getByLabelText('Activités créatives'))
+    await user.press(screen.getByText('Suivre la sélection'))
 
-    await waitFor(() => {
-      expect(analytics.logSubscriptionUpdate).toHaveBeenCalledWith({ type: 'update', from: 'home' })
-    })
+    expect(analytics.logSubscriptionUpdate).toHaveBeenCalledWith({ type: 'update', from: 'home' })
   })
 
   it('should show notifications settings modal when user has no notifications activated and click on subscribe button', async () => {
@@ -181,8 +174,8 @@ describe('OnboardingSubscription', () => {
 
     render(reactQueryProviderHOC(<OnboardingSubscription />))
 
-    fireEvent.press(await screen.findByLabelText('Activités créatives'))
-    fireEvent.press(screen.getByLabelText('Suivre la sélection'))
+    await user.press(screen.getByLabelText('Activités créatives'))
+    await user.press(screen.getByLabelText('Suivre la sélection'))
 
     expect(screen.getByText('Autoriser l’envoi d’e-mails')).toBeOnTheScreen()
   })
@@ -199,20 +192,18 @@ describe('OnboardingSubscription', () => {
 
     render(reactQueryProviderHOC(<OnboardingSubscription />))
 
-    fireEvent.press(await screen.findByLabelText('Activités créatives'))
-    fireEvent.press(screen.getByLabelText('Suivre la sélection'))
-    fireEvent.press(screen.getByTestId('Interrupteur Autoriser l’envoi d’e-mails'))
-    fireEvent.press(screen.getByLabelText('Valider'))
+    await user.press(screen.getByLabelText('Activités créatives'))
+    await user.press(screen.getByLabelText('Suivre la sélection'))
+    await user.press(screen.getByTestId('Interrupteur Autoriser l’envoi d’e-mails'))
+    await user.press(screen.getByLabelText('Valider'))
 
-    await waitFor(() => {
-      expect(patchProfileSpy).toHaveBeenCalledWith({
-        subscriptions: {
-          marketingEmail: true,
-          marketingPush: false,
-          subscribedThemes: [SubscriptionTheme.ACTIVITES],
-        },
-        origin: 'OnboardingSubscription',
-      })
+    expect(patchProfileSpy).toHaveBeenCalledWith({
+      subscriptions: {
+        marketingEmail: true,
+        marketingPush: false,
+        subscribedThemes: [SubscriptionTheme.ACTIVITES],
+      },
+      origin: 'OnboardingSubscription',
     })
   })
 })

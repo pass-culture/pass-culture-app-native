@@ -5,7 +5,8 @@ appId: ${MAESTRO_APP_ID}
 - assertVisible: 'Connecte-toi'
 - tapOn:
     id: 'Afficher le mot de passe'
-- tapOn: 'tonadresse@email.com'
+- tapOn:
+    id: 'Entrée pour l’email'
 - inputRandomEmail
 - tapOn: 'Ton mot de passe'
 - inputText: ${MAESTRO_PASSWORD}

@@ -10,7 +10,7 @@ import { ProfileStackParamList } from 'features/navigation/ProfileStackNavigator
 import { RootStackParamList } from 'features/navigation/RootNavigator/types'
 import * as useEmailUpdateStatus from 'features/profile/helpers/useEmailUpdateStatus'
 import { SuspendAccountConfirmation } from 'features/profile/pages/SuspendAccountConfirmation/SuspendAccountConfirmation'
-import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 
 type useEmailUpdateStatusMock = ReturnType<(typeof useEmailUpdateStatus)['useEmailUpdateStatus']>
 
@@ -62,6 +62,9 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
+const user = userEvent.setup()
+jest.useFakeTimers()
+
 describe('<SuspendAccountConfirmation />', () => {
   describe('should navigate to home', () => {
     it('When there is no email change', () => {
@@ -74,7 +77,7 @@ describe('<SuspendAccountConfirmation />', () => {
       expect(navigateToHome).toHaveBeenCalledTimes(1)
     })
 
-    it('When pressing "Ne pas suspendre mon compte" button', () => {
+    it('When pressing "Ne pas suspendre mon compte" button', async () => {
       useEmailUpdateStatusSpy.mockReturnValueOnce({
         data: {
           expired: false,
@@ -85,7 +88,7 @@ describe('<SuspendAccountConfirmation />', () => {
       } as useEmailUpdateStatusMock)
       renderSuspendAccountConfirmation()
 
-      fireEvent.press(screen.getByText('Ne pas suspendre mon compte'))
+      await user.press(screen.getByText('Ne pas suspendre mon compte'))
 
       expect(navigateToHome).toHaveBeenCalledTimes(1)
     })
@@ -94,9 +97,7 @@ describe('<SuspendAccountConfirmation />', () => {
       emailUpdateCancelSpy.mockRejectedValueOnce(new ApiError(500, 'API error'))
       renderSuspendAccountConfirmation()
 
-      await act(async () => {
-        fireEvent.press(screen.getByText('Oui, suspendre mon compte'))
-      })
+      await user.press(screen.getByText('Oui, suspendre mon compte'))
 
       expect(navigateToHome).toHaveBeenCalledTimes(1)
     })
@@ -120,13 +121,11 @@ describe('<SuspendAccountConfirmation />', () => {
 
   it('should navigate to email change tracking when pressing "Confirmer la demande" button and API response is success', async () => {
     renderSuspendAccountConfirmation()
-    fireEvent.press(screen.getByText('Oui, suspendre mon compte'))
+    await user.press(screen.getByText('Oui, suspendre mon compte'))
 
-    await waitFor(() => {
-      expect(navigation.navigate).toHaveBeenNthCalledWith(1, 'ProfileStackNavigator', {
-        params: undefined,
-        screen: 'TrackEmailChange',
-      })
+    expect(navigation.navigate).toHaveBeenNthCalledWith(1, 'ProfileStackNavigator', {
+      params: undefined,
+      screen: 'TrackEmailChange',
     })
   })
 
@@ -134,9 +133,7 @@ describe('<SuspendAccountConfirmation />', () => {
     emailUpdateCancelSpy.mockRejectedValueOnce(new ApiError(500, 'API error'))
     renderSuspendAccountConfirmation()
 
-    await act(async () => {
-      fireEvent.press(screen.getByText('Oui, suspendre mon compte'))
-    })
+    await user.press(screen.getByText('Oui, suspendre mon compte'))
 
     expect(mockShowErrorSnackbar).toHaveBeenCalledTimes(1)
   })
@@ -145,9 +142,7 @@ describe('<SuspendAccountConfirmation />', () => {
     emailUpdateCancelSpy.mockRejectedValueOnce(new ApiError(401, 'unauthorized'))
     renderSuspendAccountConfirmation()
 
-    await act(async () => {
-      fireEvent.press(screen.getByText('Oui, suspendre mon compte'))
-    })
+    await user.press(screen.getByText('Oui, suspendre mon compte'))
 
     expect(mockShowErrorSnackbar).not.toHaveBeenCalled()
   })
@@ -173,9 +168,7 @@ describe('<SuspendAccountConfirmation />', () => {
       emailUpdateCancelSpy.mockRejectedValueOnce(new ApiError(401, 'unauthorized'))
       renderSuspendAccountConfirmation()
 
-      await act(async () => {
-        fireEvent.press(screen.getByText('Oui, suspendre mon compte'))
-      })
+      await user.press(screen.getByText('Oui, suspendre mon compte'))
 
       expect(navigation.reset).toHaveBeenNthCalledWith(1, {
         routes: [{ name: 'ChangeEmailExpiredLink' }],

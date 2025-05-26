@@ -16,6 +16,7 @@ jobs:
   yarn-install:
     name: 'Install yarn dependencies'
     runs-on: ubuntu-24.04
+    timeout-minutes: 60
     steps:
       - name: Enable Corepack
         run: corepack enable
@@ -67,6 +68,7 @@ jobs:
   bundle-install:
     name: 'Install runtime environment'
     runs-on: ubuntu-24.04
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@v4
       - uses: ruby/setup-ruby@v1

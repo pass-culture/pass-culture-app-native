@@ -13,6 +13,7 @@ type Props = {
   isDisabled?: boolean
   externalNav?: ExternalNavigationProps['externalNav']
   navigateTo?: InternalNavigationProps['navigateTo']
+  onBeforeNavigate?: () => void
   isFreeDigitalOffer?: boolean
   isLoggedIn?: boolean
 }
@@ -25,12 +26,13 @@ export const CTAButton: FunctionComponent<Props> = ({
   navigateTo,
   isFreeDigitalOffer,
   isLoggedIn,
+  onBeforeNavigate,
 }) => {
   const { isDesktopViewport } = useTheme()
   const commonLinkProps = {
     as: ButtonWithLinearGradient,
     wording: wording,
-    onBeforeNavigate: onPress,
+    onBeforeNavigate: onBeforeNavigate ?? onPress,
     isDisabled: isDisabled,
     isOnPressDebounced: true,
   }

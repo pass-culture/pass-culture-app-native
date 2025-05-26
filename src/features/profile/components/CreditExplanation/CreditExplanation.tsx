@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
-import { getOnboardingNavConfig } from 'features/navigation/OnboardingStackNavigator/getOnboardingNavConfig'
+import { getProfileNavConfig } from 'features/navigation/ProfileStackNavigator/getProfileNavConfig'
 import { ExpiredCreditModal } from 'features/profile/components/Modals/ExpiredCreditModal'
 import { analytics } from 'libs/analytics/provider'
 import { ButtonQuaternaryBlack } from 'ui/components/buttons/ButtonQuaternaryBlack'
@@ -48,7 +48,7 @@ export const CreditExplanation: FunctionComponent<Props> = ({ age, isDepositExpi
         as={StyledButtonQuaternaryBlack}
         icon={Question}
         wording="Comment ça marche&nbsp;?"
-        navigateTo={getOnboardingNavConfig('ProfileTutorialAgeInformationCredit')}
+        navigateTo={getProfileNavConfig('ProfileTutorialAgeInformationCredit')}
         onBeforeNavigate={onTutorialClick}
       />
     </React.Fragment>

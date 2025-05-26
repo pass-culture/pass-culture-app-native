@@ -7,7 +7,7 @@ import * as logClickOnProductAPI from 'libs/algolia/analytics/logClickOnOffer'
 import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { analytics } from 'libs/analytics/provider'
 import { OfferAnalyticsParams } from 'libs/analytics/types'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { UserProps } from 'libs/location/getDistance'
 import { LocationMode, Position } from 'libs/location/types'
@@ -179,7 +179,6 @@ describe('HorizontalOfferTile component', () => {
   })
 
   describe('When offer is a `SEANCE_CINE`', () => {
-    const OCTOBER_5_2020 = 1601856000
     const NOVEMBER_1_2020 = new Date(2020, 10, 1) // This date is used as now
     const NOVEMBER_12_2020 = 1605139200
 
@@ -192,25 +191,6 @@ describe('HorizontalOfferTile component', () => {
 
     beforeEach(() => {
       mockdate.set(NOVEMBER_1_2020)
-    })
-
-    it('should format releaseDate when release date is before now', async () => {
-      const movieScreeningOfferWithValidReleaseDate = {
-        ...mockOffer,
-        offer: {
-          ...defaultMovieScreeningOffer,
-          releaseDate: OCTOBER_5_2020,
-        },
-      }
-
-      renderHorizontalOfferTile({
-        offer: movieScreeningOfferWithValidReleaseDate,
-        analyticsParams: mockAnalyticsParams,
-      })
-
-      await screen.findByText(defaultMovieName)
-
-      expect(await screen.findByText('Sorti le 5 octobre 2020')).toBeOnTheScreen()
     })
 
     it('should format releaseDate when release date is after now', async () => {
@@ -230,26 +210,6 @@ describe('HorizontalOfferTile component', () => {
       await screen.findByText(defaultMovieName)
 
       expect(await screen.findByText('Dès le 12 novembre 2020')).toBeOnTheScreen()
-    })
-
-    it('should not format releaseDate when an invalid one is given', async () => {
-      const invalidReleaseDate = '1601856000'
-      const movieScreeningOfferWithInvalidReleaseDate = {
-        ...mockOffer,
-        offer: {
-          ...defaultMovieScreeningOffer,
-          releaseDate: invalidReleaseDate,
-        },
-      }
-
-      renderHorizontalOfferTile({
-        offer: movieScreeningOfferWithInvalidReleaseDate,
-        analyticsParams: mockAnalyticsParams,
-      })
-
-      await screen.findByText(defaultMovieName)
-
-      expect(screen.queryByText('Sorti le 5 octobre 2020')).not.toBeOnTheScreen()
     })
 
     it('should format dates when no releaseDate is given', async () => {

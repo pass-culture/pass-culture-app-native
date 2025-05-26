@@ -12,8 +12,7 @@ import { PlaylistType } from 'features/offer/enums'
 import { useLogPlaylist } from 'features/offer/helpers/useLogPlaylistVertical/useLogPlaylistVertical'
 import { useLogScrollHandler } from 'features/offer/helpers/useLogScrolHandler/useLogScrollHandler'
 import { analytics } from 'libs/analytics/provider'
-import { usePlaylistItemDimensionsFromLayout } from 'libs/contentful/usePlaylistItemDimensionsFromLayout'
-import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
+import { getPlaylistItemDimensionsFromLayout } from 'libs/contentful/getPlaylistItemDimensionsFromLayout'
 import {
   formatStartPrice,
   getDisplayedPrice,
@@ -49,7 +48,6 @@ export function OfferPlaylistList({
 }: Readonly<OfferPlaylistListProps>) {
   const theme = useTheme()
   const route = useRoute<UseRouteType<'Offer'>>()
-  const { minLikesValue } = useRemoteConfigQuery()
   const fromOfferId = route.params?.fromOfferId
   const categoryMapping = useCategoryIdMapping()
   const labelMapping = useCategoryHomeLabelMapping()
@@ -83,7 +81,7 @@ export function OfferPlaylistList({
     analytics.logPlaylistHorizontalScroll(fromOfferId, playlistType, apiRecoParams)
   }
 
-  const { itemWidth, itemHeight } = usePlaylistItemDimensionsFromLayout('two-items')
+  const { itemWidth, itemHeight } = getPlaylistItemDimensionsFromLayout('two-items')
 
   const sameCategorySimilarOffersPlaylist: SimilarOfferPlaylist = {
     type: PlaylistType.SAME_CATEGORY_SIMILAR_OFFERS,
@@ -181,7 +179,6 @@ export function OfferPlaylistList({
                       ? undefined
                       : formatStartPrice
                   ),
-                minLikesValue,
                 theme,
               })}
               title={playlist.title}

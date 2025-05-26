@@ -1,8 +1,8 @@
 import mockdate from 'mockdate'
 import React from 'react'
 
-import { BookingReponse, SubcategoryIdEnum } from 'api/gen'
 import type { BookingsResponse } from 'api/gen'
+import { BookingReponse, SubcategoryIdEnum } from 'api/gen'
 import {
   BookingDetailsCancelButton,
   BookingDetailsCancelButtonProps,
@@ -10,7 +10,7 @@ import {
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { Booking } from 'features/bookings/types'
 import { isUserExBeneficiary } from 'features/profile/helpers/isUserExBeneficiary'
-import { fireEvent, render, screen } from 'tests/utils'
+import { fireEvent, render, screen, userEvent } from 'tests/utils'
 
 mockdate.set(new Date('2020-12-01T00:00:00Z'))
 
@@ -20,7 +20,13 @@ jest.mock('features/profile/helpers/isUserExBeneficiary')
 jest.mock('libs/subcategories/useSubcategory')
 const mockedIsUserExBeneficiary = jest.mocked(isUserExBeneficiary)
 
+const user = userEvent.setup()
+
 describe('<BookingDetailsCancelButton />', () => {
+  afterEach(() => {
+    jest.useRealTimers()
+  })
+
   it('should display the "Terminer" button for digital offers when booking has activation code', () => {
     const booking: BookingsResponse['ongoing_bookings'][number] = {
       ...bookingsSnap.ongoing_bookings[0],
@@ -70,7 +76,8 @@ describe('<BookingDetailsCancelButton />', () => {
     expect(screen.queryByTestId('Annuler ma réservation')).not.toBeOnTheScreen()
   })
 
-  it('should call onCancel', () => {
+  it('should call onCancel', async () => {
+    jest.useFakeTimers()
     const booking: BookingsResponse['ongoing_bookings'][number] = {
       ...bookingsSnap.ongoing_bookings[0],
     }
@@ -82,8 +89,8 @@ describe('<BookingDetailsCancelButton />', () => {
     renderBookingDetailsCancelButton(booking, {
       onCancel,
     })
-    const button = screen.getByTestId('Annuler ma réservation')
-    fireEvent.press(button)
+
+    await user.press(screen.getByTestId('Annuler ma réservation'))
 
     expect(onCancel).toHaveBeenCalledTimes(1)
   })
@@ -99,6 +106,9 @@ describe('<BookingDetailsCancelButton />', () => {
       onTerminate,
     })
     const button = screen.getByTestId('Terminer')
+
+    // userEvent.press is not working correctly here
+    // eslint-disable-next-line local-rules/no-fireEvent
     fireEvent.press(button)
 
     expect(onTerminate).toHaveBeenCalledTimes(1)

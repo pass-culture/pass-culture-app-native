@@ -21,6 +21,7 @@ on:
 jobs:
   web_deploy:
     runs-on: ubuntu-24.04
+    timeout-minutes: 60
     environment:
       name: ${{ inputs.ENV }}
     steps:
@@ -80,6 +81,7 @@ jobs:
           gsutil cp dist/index.html gs://${{ inputs.BUCKET_NAME }}
   slack_notify:
     runs-on: ubuntu-24.04
+    timeout-minutes: 60
     if: ${{ always() && (contains(needs.web_deploy.result, 'success') || contains(needs.web_deploy.result, 'failure'))}}
     needs: web_deploy
     steps:

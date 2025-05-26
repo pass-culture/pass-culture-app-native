@@ -5,7 +5,7 @@ import { CategoryListModule } from 'features/home/components/modules/categories/
 import { categoryBlockList } from 'features/home/fixtures/categoryBlockList.fixture'
 import { analytics } from 'libs/analytics/provider'
 import { ContentTypes } from 'libs/contentful/types'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { render, screen, userEvent } from 'tests/utils'
 
 const user = userEvent.setup()

@@ -5,9 +5,9 @@ import { SubcategoryIdEnum } from 'api/gen'
 import { ArtistBody } from 'features/artist/components/ArtistBody/ArtistBody'
 import { mockOffer } from 'features/bookOffer/fixtures/offer'
 import * as useGoBack from 'features/navigation/useGoBack'
-import * as useArtistResults from 'features/offer/helpers/useArtistResults/useArtistResults'
+import * as useArtistResultsAPI from 'features/offer/queries/useArtistResultsQuery'
 import { mockedAlgoliaOffersWithSameArtistResponse } from 'libs/algolia/fixtures/algoliaFixtures'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent, waitFor } from 'tests/utils'
 
@@ -41,7 +41,7 @@ useRoute.mockReturnValue({
   },
 })
 
-const spyUseArtistResults = jest.spyOn(useArtistResults, 'useArtistResults')
+const spyUseArtistResults = jest.spyOn(useArtistResultsAPI, 'useArtistResultsQuery')
 
 const mockArtist = {
   id: '1',

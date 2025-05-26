@@ -1,10 +1,11 @@
 import React from 'react'
 
 import { SearchList } from 'features/search/components/SearchList/SearchList'
+import { getHeaderSize } from 'features/search/components/SearchList/SearchList.web'
 import { initialSearchState } from 'features/search/context/reducer'
 import { SearchListProps } from 'features/search/types'
 import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { Offer } from 'shared/offer/types'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -33,7 +34,7 @@ const renderItem = jest.fn()
 
 const props: SearchListProps = {
   nbHits: mockNbHits,
-  hits: { offers: mockHits, venues: [], duplicatedOffers: mockHits },
+  hits: { offers: mockHits, venues: [], duplicatedOffers: mockHits, artists: [] },
   renderItem,
   autoScrollEnabled: true,
   refreshing: false,
@@ -45,6 +46,17 @@ const props: SearchListProps = {
   venuesUserData: [],
 }
 
+const WIDTH_MOCK = 465
+
+const mockUseWindowDimensions = jest.fn().mockReturnValue({
+  width: WIDTH_MOCK,
+  scale: 1,
+  fontScale: 1,
+})
+jest.mock('react-native/Libraries/Utilities/useWindowDimensions', () => ({
+  default: mockUseWindowDimensions,
+}))
+
 describe('<SearchList />', () => {
   beforeEach(() => {
     setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])
@@ -55,4 +67,30 @@ describe('<SearchList />', () => {
 
     expect(screen.getByTestId('searchListHeader')).toBeInTheDocument()
   })
+})
+
+describe('getHeaderSize', () => {
+  it.each`
+    userData                    | isGeolocated | hasVenuesPlaylist | windowWidth | hasArtistsPlaylist | expected
+    ${undefined}                | ${true}      | ${false}          | ${465}      | ${false}           | ${112}
+    ${undefined}                | ${false}     | ${false}          | ${465}      | ${false}           | ${218}
+    ${undefined}                | ${false}     | ${false}          | ${464}      | ${false}           | ${242}
+    ${undefined}                | ${false}     | ${true}           | ${464}      | ${false}           | ${539}
+    ${undefined}                | ${true}      | ${true}           | ${464}      | ${false}           | ${409}
+    ${[{ message: 'coucou ' }]} | ${false}     | ${false}          | ${464}      | ${false}           | ${184}
+    ${[{ message: 'coucou ' }]} | ${false}     | ${true}           | ${464}      | ${true}            | ${781}
+  `(
+    'getHeaderSize should render correct header size',
+    ({ userData, isGeolocated, hasVenuesPlaylist, windowWidth, hasArtistsPlaylist, expected }) => {
+      expect(
+        getHeaderSize({
+          userData,
+          isGeolocated,
+          hasVenuesPlaylist,
+          windowWidth,
+          hasArtistsPlaylist,
+        })
+      ).toBe(expected)
+    }
+  )
 })

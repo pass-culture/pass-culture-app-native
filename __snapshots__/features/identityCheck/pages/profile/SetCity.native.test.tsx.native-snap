@@ -350,6 +350,30 @@ exports[`<SetCity/> should render correctly 1`] = `
                   </View>
                 </View>
                 <View
+                  style={
+                    [
+                      {
+                        "marginBottom": 8,
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#696a6f",
+                          "fontFamily": "Montserrat-SemiBold",
+                          "fontSize": 12,
+                          "lineHeight": 19.2,
+                        },
+                      ]
+                    }
+                  >
+                    Exemple : 75017
+                  </Text>
+                </View>
+                <View
                   height="small"
                   isDisabled={false}
                   isError={false}
@@ -390,11 +414,11 @@ exports[`<SetCity/> should render correctly 1`] = `
                     isEmpty={true}
                     keyboardType="number-pad"
                     multiline={false}
-                    nativeID="testUuidV4"
+                    nativeID="postal-code-input"
                     onBlur={[Function]}
                     onChangeText={[Function]}
                     onFocus={[Function]}
-                    placeholder="Ex : 75017"
+                    placeholder=""
                     placeholderTextColor="#696A6F"
                     returnKeyType="search"
                     selectionColor="#696A6F"

@@ -6,8 +6,8 @@ import { v4 as uuidv4 } from 'uuid'
 import { CookiesAccordion } from 'features/cookies/components/CookiesAccordion'
 import { cookiesInfo } from 'features/cookies/components/cookiesInfo'
 import { CookieCategoriesEnum } from 'features/cookies/enums'
+import { getCookiesChoiceByCategory } from 'features/cookies/helpers/getCookiesChoiceByCategory'
 import { useCookies } from 'features/cookies/helpers/useCookies'
-import { useCookiesChoiceByCategory } from 'features/cookies/helpers/useCookiesChoiceByCategory'
 import { CookiesChoiceSettings } from 'features/cookies/types'
 import FilterSwitch from 'ui/components/FilterSwitch'
 import { InputLabel } from 'ui/components/InputLabel/InputLabel'
@@ -23,7 +23,7 @@ export const CookiesSettings = ({
   setSettingsCookiesChoice,
 }: CookiesChoiceSettings) => {
   const { cookiesConsent } = useCookies()
-  const cookiesChoiceByCategory = useCookiesChoiceByCategory(cookiesConsent)
+  const cookiesChoiceByCategory = getCookiesChoiceByCategory(cookiesConsent)
 
   useFocusEffect(
     useCallback(() => {

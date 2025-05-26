@@ -19,7 +19,7 @@ describe('<OfferImageContainer />', () => {
     )
 
     expect(screen.getByTestId('offerImageContainerCarousel')).toBeOnTheScreen()
-    expect(screen.queryByTestId('onlyDotsContainer')).not.toBeOnTheScreen()
+    expect(screen.queryByTestId('carousel-dot')).not.toBeOnTheScreen()
   })
 
   it('should not display carousel dots when offer has only one', () => {
@@ -32,7 +32,7 @@ describe('<OfferImageContainer />', () => {
       />
     )
 
-    expect(screen.queryByTestId('onlyDotsContainer')).not.toBeOnTheScreen()
+    expect(screen.queryByTestId('carousel-dot')).not.toBeOnTheScreen()
   })
 
   it('should display image inside carousel when offer has several images', async () => {
@@ -59,7 +59,7 @@ describe('<OfferImageContainer />', () => {
     )
     await screen.findByTestId('offerImageContainerCarousel')
 
-    expect(await screen.findByTestId('onlyDotsContainer')).toBeOnTheScreen()
+    expect(screen.getAllByTestId('carousel-dot')).toHaveLength(2)
   })
 
   it('should display image placeholder outside carousel when image url defined', () => {

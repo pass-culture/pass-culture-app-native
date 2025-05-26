@@ -12,8 +12,8 @@ jest.mock('features/search/context/SearchWrapper', () => ({
 
 const mockVenue: VenueResponse = venueDataTest
 
-jest.mock('features/venue/api/useVenue', () => ({
-  useVenue: jest.fn((venueId) => ({ data: venueId === mockVenue.id ? mockVenue : undefined })),
+jest.mock('features/venue/queries/useVenueQuery', () => ({
+  useVenueQuery: jest.fn((venueId) => ({ data: venueId === mockVenue.id ? mockVenue : undefined })),
 }))
 jest.mock('features/search/helpers/useMaxPrice/useMaxPrice', () => ({
   useMaxPrice: jest.fn(() => 300_00),

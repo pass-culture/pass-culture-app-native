@@ -4,7 +4,7 @@ import { openInbox } from 'react-native-email-link'
 
 import { navigate } from '__mocks__/@react-navigation/native'
 import { RootStackParamList, StepperOrigin } from 'features/navigation/RootNavigator/types'
-import { fireEvent, render, screen } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 
 import { ResetPasswordEmailSent } from './ResetPasswordEmailSent'
 
@@ -29,6 +29,10 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
+const user = userEvent.setup()
+
+jest.useFakeTimers()
+
 describe('<ResetPasswordEmailSent />', () => {
   beforeEach(() => {
     mockIsMailAppAvailable = true
@@ -44,7 +48,7 @@ describe('<ResetPasswordEmailSent />', () => {
     render(<ResetPasswordEmailSent route={routeMock} />)
 
     const quitButton = await screen.findByText('Quitter')
-    fireEvent.press(quitButton)
+    await user.press(quitButton)
 
     expect(navigate).toHaveBeenCalledWith('Login', {
       from: StepperOrigin.RESET_PASSWORD_EMAIL_SENT,
@@ -64,7 +68,7 @@ describe('<ResetPasswordEmailSent />', () => {
     render(<ResetPasswordEmailSent route={routeMock} />)
 
     const checkEmailsButton = await screen.findByText('Consulter mes e-mails')
-    fireEvent.press(checkEmailsButton)
+    await user.press(checkEmailsButton)
 
     expect(openInbox).toHaveBeenCalledTimes(1)
   })

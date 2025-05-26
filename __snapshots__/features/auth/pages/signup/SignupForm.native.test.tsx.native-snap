@@ -269,16 +269,7 @@ exports[`Signup Form For each step should render correctly for step 1/5 1`] = `
           [
             {
               "height": 65,
-            },
-          ]
-        }
-      />
-      <View
-        numberOfSpaces={8}
-        style={
-          [
-            {
-              "height": 32,
+              "marginBottom": 32,
             },
           ]
         }
@@ -308,240 +299,245 @@ exports[`Signup Form For each step should render correctly for step 1/5 1`] = `
           Crée-toi un compte
         </Text>
         <View
-          numberOfSpaces={10}
           style={
             [
               {
-                "height": 40,
-              },
-            ]
-          }
-        />
-        <View
-          style={
-            [
-              {
-                "alignItems": "flex-start",
-                "display": "flex",
-                "flexDirection": "column",
-                "maxWidth": 500,
-                "width": "100%",
+                "marginVertical": 40,
               },
             ]
           }
         >
-          <View>
+          <View
+            style={
+              [
+                {
+                  "marginBottom": 32,
+                },
+              ]
+            }
+          >
             <View
               style={
                 [
                   {
-                    "alignItems": "flex-end",
-                    "flexDirection": "row",
-                    "justifyContent": "space-between",
+                    "alignItems": "flex-start",
+                    "display": "flex",
+                    "flexDirection": "column",
+                    "maxWidth": 500,
                     "width": "100%",
                   },
                 ]
               }
             >
-              <Text
+              <View>
+                <View
+                  style={
+                    [
+                      {
+                        "alignItems": "flex-end",
+                        "flexDirection": "row",
+                        "justifyContent": "space-between",
+                        "marginBottom": 8,
+                        "width": "100%",
+                      },
+                    ]
+                  }
+                >
+                  <Text
+                    style={
+                      [
+                        {
+                          "color": "#161617",
+                          "fontFamily": "Montserrat-Medium",
+                          "fontSize": 16,
+                          "lineHeight": 25.6,
+                        },
+                      ]
+                    }
+                  >
+                    Adresse e-mail
+                  </Text>
+                </View>
+              </View>
+              <View
                 style={
                   [
                     {
-                      "color": "#161617",
-                      "fontFamily": "Montserrat-Medium",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
+                      "marginBottom": 8,
                     },
                   ]
                 }
               >
-                Adresse e-mail
-              </Text>
+                <Text
+                  style={
+                    [
+                      {
+                        "color": "#696a6f",
+                        "fontFamily": "Montserrat-SemiBold",
+                        "fontSize": 12,
+                        "lineHeight": 19.2,
+                      },
+                    ]
+                  }
+                >
+                  Exemple : tonadresse@email.com
+                </Text>
+              </View>
+              <View
+                height="small"
+                isDisabled={false}
+                isError={false}
+                isFocus={false}
+                style={
+                  [
+                    {
+                      "alignItems": "center",
+                      "backgroundColor": "#ffffff",
+                      "borderColor": "#90949d",
+                      "borderRadius": 22,
+                      "borderStyle": "solid",
+                      "borderWidth": 1,
+                      "flexDirection": "row",
+                      "height": 40,
+                      "paddingBottom": 0,
+                      "paddingLeft": 17,
+                      "paddingRight": 17,
+                      "paddingTop": 0,
+                      "width": "100%",
+                    },
+                  ]
+                }
+                testID="styled-input-container"
+              >
+                <TextInput
+                  accessibilityDescribedBy="testUuidV4"
+                  autoCapitalize="none"
+                  autoComplete="email"
+                  editable={true}
+                  isEmpty={true}
+                  keyboardType="email-address"
+                  maxLength={120}
+                  multiline={false}
+                  nativeID="testUuidV4"
+                  onBlur={[Function]}
+                  onChangeText={[Function]}
+                  onFocus={[Function]}
+                  placeholder=""
+                  placeholderTextColor="#696A6F"
+                  returnKeyType="next"
+                  style={
+                    [
+                      {
+                        "color": "#161617",
+                        "flexBasis": 0,
+                        "flexGrow": 1,
+                        "flexShrink": 1,
+                        "fontFamily": "Montserrat-MediumItalic",
+                        "fontSize": 16,
+                        "height": "100%",
+                        "paddingBottom": 0,
+                        "paddingLeft": 0,
+                        "paddingRight": 0,
+                        "paddingTop": 0,
+                      },
+                    ]
+                  }
+                  testID="Entrée pour l’email"
+                  textAlignVertical="center"
+                  textContentType="emailAddress"
+                  value=""
+                />
+              </View>
             </View>
           </View>
           <View
-            numberOfSpaces={2}
+            accessibilityLabel="J’accepte de recevoir les newsletters, bons plans et les recommandations personnalisées du pass Culture."
+            accessibilityRole="checkbox"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": false,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
             style={
               [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "alignItems": "center",
+                    "columnGap": 16,
+                    "cursor": "pointer",
+                    "display": "flex",
+                    "flexDirection": "row",
+                  },
+                ],
                 {
-                  "height": 8,
+                  "opacity": 1,
                 },
               ]
             }
-          />
-          <View
-            height="small"
-            isDisabled={false}
-            isError={false}
-            isFocus={false}
-            style={
-              [
-                {
-                  "alignItems": "center",
-                  "backgroundColor": "#ffffff",
-                  "borderColor": "#90949d",
-                  "borderRadius": 22,
-                  "borderStyle": "solid",
-                  "borderWidth": 1,
-                  "flexDirection": "row",
-                  "height": 40,
-                  "paddingBottom": 0,
-                  "paddingLeft": 17,
-                  "paddingRight": 17,
-                  "paddingTop": 0,
-                  "width": "100%",
-                },
-              ]
-            }
-            testID="styled-input-container"
+            testID="J’accepte de recevoir les newsletters, bons plans et les recommandations personnalisées du pass Culture."
           >
-            <TextInput
-              accessibilityDescribedBy="testUuidV4"
-              autoCapitalize="none"
-              autoComplete="email"
-              editable={true}
-              isEmpty={true}
-              keyboardType="email-address"
-              maxLength={120}
-              multiline={false}
-              nativeID="testUuidV4"
-              onBlur={[Function]}
-              onChangeText={[Function]}
-              onFocus={[Function]}
-              placeholder="tonadresse@email.com"
-              placeholderTextColor="#696A6F"
-              returnKeyType="next"
+            <View
+              isChecked={false}
               style={
                 [
                   {
+                    "alignItems": "center",
+                    "backgroundColor": "#ffffff",
+                    "borderColor": "#696A6F",
+                    "borderRadius": 4,
+                    "borderStyle": "solid",
+                    "borderWidth": 1,
+                    "height": 24,
+                    "justifyContent": "center",
+                    "width": 24,
+                  },
+                ]
+              }
+            />
+            <Text
+              style={
+                [
+                  {
+                    "alignSelf": "center",
                     "color": "#161617",
                     "flexBasis": 0,
                     "flexGrow": 1,
                     "flexShrink": 1,
-                    "fontFamily": "Montserrat-MediumItalic",
+                    "fontFamily": "Montserrat-Medium",
                     "fontSize": 16,
-                    "height": "100%",
-                    "paddingBottom": 0,
-                    "paddingLeft": 0,
-                    "paddingRight": 0,
-                    "paddingTop": 0,
+                    "lineHeight": 25.6,
                   },
                 ]
               }
-              testID="Entrée pour l’email"
-              textAlignVertical="center"
-              textContentType="emailAddress"
-              value=""
-            />
+            >
+              J’accepte de recevoir les newsletters, bons plans et les recommandations personnalisées du pass Culture.
+            </Text>
           </View>
         </View>
-        <View
-          numberOfSpaces={8}
-          style={
-            [
-              {
-                "height": 32,
-              },
-            ]
-          }
-        />
-        <View
-          accessibilityLabel="J’accepte de recevoir les newsletters, bons plans et les recommandations personnalisées du pass Culture."
-          accessibilityRole="checkbox"
-          accessibilityState={
-            {
-              "busy": undefined,
-              "checked": false,
-              "disabled": undefined,
-              "expanded": undefined,
-              "selected": undefined,
-            }
-          }
-          accessibilityValue={
-            {
-              "max": undefined,
-              "min": undefined,
-              "now": undefined,
-              "text": undefined,
-            }
-          }
-          accessible={true}
-          focusable={true}
-          onClick={[Function]}
-          onResponderGrant={[Function]}
-          onResponderMove={[Function]}
-          onResponderRelease={[Function]}
-          onResponderTerminate={[Function]}
-          onResponderTerminationRequest={[Function]}
-          onStartShouldSetResponder={[Function]}
-          style={
-            [
-              [
-                {
-                  "userSelect": "auto",
-                },
-                {
-                  "alignItems": "center",
-                  "columnGap": 16,
-                  "cursor": "pointer",
-                  "display": "flex",
-                  "flexDirection": "row",
-                },
-              ],
-              {
-                "opacity": 1,
-              },
-            ]
-          }
-          testID="J’accepte de recevoir les newsletters, bons plans et les recommandations personnalisées du pass Culture."
-        >
-          <View
-            isChecked={false}
-            style={
-              [
-                {
-                  "alignItems": "center",
-                  "backgroundColor": "#ffffff",
-                  "borderColor": "#696A6F",
-                  "borderRadius": 4,
-                  "borderStyle": "solid",
-                  "borderWidth": 1,
-                  "height": 24,
-                  "justifyContent": "center",
-                  "width": 24,
-                },
-              ]
-            }
-          />
-          <Text
-            style={
-              [
-                {
-                  "alignSelf": "center",
-                  "color": "#161617",
-                  "flexBasis": 0,
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
-                },
-              ]
-            }
-          >
-            J’accepte de recevoir les newsletters, bons plans et les recommandations personnalisées du pass Culture.
-          </Text>
-        </View>
-        <View
-          numberOfSpaces={10}
-          style={
-            [
-              {
-                "height": 40,
-              },
-            ]
-          }
-        />
         <View
           accessibilityLabel="Continuer vers l’étape Mot de passe"
           accessibilityState={
@@ -629,7 +625,6 @@ exports[`Signup Form For each step should render correctly for step 1/5 1`] = `
           </View>
         </View>
         <View
-          numberOfSpaces={8}
           style={
             [
               {
@@ -642,133 +637,133 @@ exports[`Signup Form For each step should render correctly for step 1/5 1`] = `
           style={
             [
               {
-                "alignItems": "center",
-                "flexDirection": "row",
-                "gap": 4,
-                "justifyContent": "center",
+                "marginBottom": 20,
               },
             ]
           }
         >
-          <Text
-            style={
-              [
-                {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-Medium",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
-                  "textAlign": "center",
-                },
-              ]
-            }
-          >
-            Déjà un compte ?
-          </Text>
           <View
-            accessibilityLabel="Se connecter"
-            accessibilityRole="link"
-            accessibilityState={
-              {
-                "busy": undefined,
-                "checked": undefined,
-                "disabled": undefined,
-                "expanded": undefined,
-                "selected": undefined,
-              }
-            }
-            accessibilityValue={
-              {
-                "max": undefined,
-                "min": undefined,
-                "now": undefined,
-                "text": undefined,
-              }
-            }
-            accessible={true}
-            focusable={true}
-            onClick={[Function]}
-            onResponderGrant={[Function]}
-            onResponderMove={[Function]}
-            onResponderRelease={[Function]}
-            onResponderTerminate={[Function]}
-            onResponderTerminationRequest={[Function]}
-            onStartShouldSetResponder={[Function]}
             style={
               [
-                [
-                  {
-                    "userSelect": "auto",
-                  },
-                ],
                 {
-                  "opacity": 1,
+                  "alignItems": "center",
+                  "flexDirection": "row",
+                  "gap": 4,
+                  "justifyContent": "center",
                 },
               ]
             }
-            testID="Se connecter"
           >
-            <View
-              paddingForIcon={0}
+            <Text
               style={
                 [
                   {
-                    "alignItems": "center",
-                    "flexDirection": "row",
-                    "top": 0,
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Medium",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                    "textAlign": "center",
                   },
                 ]
               }
             >
+              Déjà un compte ?
+            </Text>
+            <View
+              accessibilityLabel="Se connecter"
+              accessibilityRole="link"
+              accessibilityState={
+                {
+                  "busy": undefined,
+                  "checked": undefined,
+                  "disabled": undefined,
+                  "expanded": undefined,
+                  "selected": undefined,
+                }
+              }
+              accessibilityValue={
+                {
+                  "max": undefined,
+                  "min": undefined,
+                  "now": undefined,
+                  "text": undefined,
+                }
+              }
+              accessible={true}
+              focusable={true}
+              onClick={[Function]}
+              onResponderGrant={[Function]}
+              onResponderMove={[Function]}
+              onResponderRelease={[Function]}
+              onResponderTerminate={[Function]}
+              onResponderTerminationRequest={[Function]}
+              onStartShouldSetResponder={[Function]}
+              style={
+                [
+                  [
+                    {
+                      "userSelect": "auto",
+                    },
+                  ],
+                  {
+                    "opacity": 1,
+                  },
+                ]
+              }
+              testID="Se connecter"
+            >
               <View
-                fill="#320096"
-                height={20}
-                testID="button-icon"
-                width={20}
+                paddingForIcon={0}
+                style={
+                  [
+                    {
+                      "alignItems": "center",
+                      "flexDirection": "row",
+                      "top": 0,
+                    },
+                  ]
+                }
               >
-                <Text>
-                  button-icon-SVG-Mock
+                <View
+                  fill="#320096"
+                  height={20}
+                  testID="button-icon"
+                  width={20}
+                >
+                  <Text>
+                    button-icon-SVG-Mock
+                  </Text>
+                </View>
+                <View
+                  numberOfSpaces={1}
+                  style={
+                    [
+                      {
+                        "width": 4,
+                      },
+                    ]
+                  }
+                />
+                <Text
+                  color="#320096"
+                  style={
+                    [
+                      {
+                        "color": "#320096",
+                        "fontFamily": "Montserrat-Bold",
+                        "fontSize": 16,
+                        "lineHeight": 25.6,
+                      },
+                    ]
+                  }
+                  typography="Button"
+                >
+                  Se connecter
                 </Text>
               </View>
-              <View
-                numberOfSpaces={1}
-                style={
-                  [
-                    {
-                      "width": 4,
-                    },
-                  ]
-                }
-              />
-              <Text
-                color="#320096"
-                style={
-                  [
-                    {
-                      "color": "#320096",
-                      "fontFamily": "Montserrat-Bold",
-                      "fontSize": 16,
-                      "lineHeight": 25.6,
-                    },
-                  ]
-                }
-                typography="Button"
-              >
-                Se connecter
-              </Text>
             </View>
           </View>
         </View>
-        <View
-          numberOfSpaces={5}
-          style={
-            [
-              {
-                "height": 20,
-              },
-            ]
-          }
-        />
       </View>
     </View>
   </RCTScrollView>
@@ -1141,16 +1136,7 @@ exports[`Signup Form For each step should render correctly for step 2/5 1`] = `
           [
             {
               "height": 65,
-            },
-          ]
-        }
-      />
-      <View
-        numberOfSpaces={8}
-        style={
-          [
-            {
-              "height": 32,
+              "marginBottom": 32,
             },
           ]
         }
@@ -1210,6 +1196,7 @@ exports[`Signup Form For each step should render correctly for step 2/5 1`] = `
                     "alignItems": "flex-end",
                     "flexDirection": "row",
                     "justifyContent": "space-between",
+                    "marginBottom": 8,
                     "width": "100%",
                   },
                 ]
@@ -1231,16 +1218,6 @@ exports[`Signup Form For each step should render correctly for step 2/5 1`] = `
               </Text>
             </View>
           </View>
-          <View
-            numberOfSpaces={2}
-            style={
-              [
-                {
-                  "height": 8,
-                },
-              ]
-            }
-          />
           <View
             height="small"
             isDisabled={false}
@@ -1306,69 +1283,69 @@ exports[`Signup Form For each step should render correctly for step 2/5 1`] = `
               value=""
             />
             <View
-              numberOfSpaces={2}
               style={
                 [
                   {
-                    "width": 8,
+                    "marginTop": 8,
                   },
                 ]
               }
-            />
-            <View
-              accessibilityLabel="Afficher le mot de passe"
-              accessibilityRole="button"
-              accessibilityState={
-                {
-                  "busy": undefined,
-                  "checked": undefined,
-                  "disabled": undefined,
-                  "expanded": undefined,
-                  "selected": undefined,
-                }
-              }
-              accessibilityValue={
-                {
-                  "max": undefined,
-                  "min": undefined,
-                  "now": undefined,
-                  "text": undefined,
-                }
-              }
-              accessible={true}
-              focusable={true}
-              onClick={[Function]}
-              onResponderGrant={[Function]}
-              onResponderMove={[Function]}
-              onResponderRelease={[Function]}
-              onResponderTerminate={[Function]}
-              onResponderTerminationRequest={[Function]}
-              onStartShouldSetResponder={[Function]}
-              style={
-                [
-                  [
-                    {
-                      "userSelect": "auto",
-                    },
-                    {
-                      "maxWidth": 60,
-                    },
-                  ],
-                  {
-                    "opacity": 1,
-                  },
-                ]
-              }
-              testID="Afficher le mot de passe"
             >
               <View
-                fill="#161617"
-                height={24}
-                width={24}
+                accessibilityLabel="Afficher le mot de passe"
+                accessibilityRole="button"
+                accessibilityState={
+                  {
+                    "busy": undefined,
+                    "checked": undefined,
+                    "disabled": undefined,
+                    "expanded": undefined,
+                    "selected": undefined,
+                  }
+                }
+                accessibilityValue={
+                  {
+                    "max": undefined,
+                    "min": undefined,
+                    "now": undefined,
+                    "text": undefined,
+                  }
+                }
+                accessible={true}
+                focusable={true}
+                onClick={[Function]}
+                onResponderGrant={[Function]}
+                onResponderMove={[Function]}
+                onResponderRelease={[Function]}
+                onResponderTerminate={[Function]}
+                onResponderTerminationRequest={[Function]}
+                onStartShouldSetResponder={[Function]}
+                style={
+                  [
+                    [
+                      {
+                        "userSelect": "auto",
+                      },
+                      {
+                        "maxWidth": 60,
+                      },
+                    ],
+                    {
+                      "opacity": 1,
+                    },
+                  ]
+                }
+                testID="Afficher le mot de passe"
               >
-                <Text>
-                  undefined-SVG-Mock
-                </Text>
+                <View
+                  fill="#161617"
+                  height={24}
+                  width={24}
+                >
+                  <Text>
+                    undefined-SVG-Mock
+                  </Text>
+                </View>
               </View>
             </View>
           </View>
@@ -2235,16 +2212,7 @@ exports[`Signup Form For each step should render correctly for step 3/5 1`] = `
           [
             {
               "height": 65,
-            },
-          ]
-        }
-      />
-      <View
-        numberOfSpaces={8}
-        style={
-          [
-            {
-              "height": 32,
+              "marginBottom": 32,
             },
           ]
         }
@@ -2984,16 +2952,7 @@ exports[`Signup Form For each step should render correctly for step 4/5 1`] = `
           [
             {
               "height": 65,
-            },
-          ]
-        }
-      />
-      <View
-        numberOfSpaces={8}
-        style={
-          [
-            {
-              "height": 32,
+              "marginBottom": 32,
             },
           ]
         }

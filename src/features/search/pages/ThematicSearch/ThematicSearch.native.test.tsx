@@ -1,14 +1,16 @@
 import React from 'react'
+import { UseQueryResult } from 'react-query'
 
 import { navigate, useRoute } from '__mocks__/@react-navigation/native'
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { gtlPlaylistAlgoliaSnapshot } from 'features/gtlPlaylist/fixtures/gtlPlaylistAlgoliaSnapshot'
-import * as useGTLPlaylists from 'features/gtlPlaylist/hooks/useGTLPlaylists'
+import * as useGTLPlaylists from 'features/gtlPlaylist/queries/useGTLPlaylistsQuery'
+import { GtlPlaylistData } from 'features/gtlPlaylist/types'
 import { initialSearchState } from 'features/search/context/reducer'
 import { ISearchContext } from 'features/search/context/SearchWrapper'
 import { ThematicSearch } from 'features/search/pages/ThematicSearch/ThematicSearch'
 import { env } from 'libs/environment/env'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { LocationMode } from 'libs/location/types'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
@@ -48,12 +50,34 @@ jest.mock('libs/location/LocationWrapper', () => ({
   useLocation: () => mockUseLocation(),
 }))
 
-const mockUseGtlPlaylist = jest.spyOn(useGTLPlaylists, 'useGTLPlaylists')
-mockUseGtlPlaylist.mockReturnValue({
+const defaultResponse: UseQueryResult<GtlPlaylistData[], Error> = {
+  data: gtlPlaylistAlgoliaSnapshot,
   isLoading: false,
-  gtlPlaylists: gtlPlaylistAlgoliaSnapshot,
-})
+  error: null,
+  isSuccess: true,
+  isError: false,
+  isIdle: false,
+  refetch: jest.fn(),
+  status: 'success',
+  failureCount: 0,
+  isFetched: true,
+  isFetchedAfterMount: true,
+  isFetching: false,
+  isLoadingError: false,
+  isPlaceholderData: false,
+  isPreviousData: false,
+  isRefetchError: false,
+  isStale: false,
+  remove: jest.fn(),
+  dataUpdatedAt: Date.now(),
+  errorUpdatedAt: 0,
+  errorUpdateCount: 0,
+  isRefetching: false,
+}
 
+const mockUseGtlPlaylist = jest
+  .spyOn(useGTLPlaylists, 'useGTLPlaylistsQuery')
+  .mockReturnValue(defaultResponse)
 const mockSearchState = {
   ...initialSearchState,
 }
@@ -126,9 +150,9 @@ describe('<ThematicSearch/>', () => {
 
     it('should render skeleton when playlists are loading', async () => {
       mockUseGtlPlaylist.mockReturnValueOnce({
-        gtlPlaylists: [],
+        data: [],
         isLoading: true,
-      })
+      } as unknown as UseQueryResult<GtlPlaylistData[], Error>)
 
       render(reactQueryProviderHOC(<ThematicSearch />))
 
@@ -193,8 +217,14 @@ describe('<ThematicSearch/>', () => {
         await screen.findByText('Romans et littérature')
 
         expect(mockUseGtlPlaylist).toHaveBeenCalledWith({
+          adaptPlaylistParameters: expect.any(Function),
+          queryKey: 'THEMATIC_SEARCH_BOOKS_GTL_PLAYLISTS',
+          isUserUnderage: false,
           searchIndex: env.ALGOLIA_OFFERS_INDEX_NAME_B,
           searchGroupLabel: 'Livres',
+          selectedLocationMode: 'EVERYWHERE',
+          transformHits: expect.any(Function),
+          userLocation: undefined,
         })
       })
     })

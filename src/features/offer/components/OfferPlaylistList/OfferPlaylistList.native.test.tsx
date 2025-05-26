@@ -12,7 +12,7 @@ import {
   mockedAlgoliaResponse,
   moreHitsForSimilarOffersPlaylist,
 } from 'libs/algolia/fixtures/algoliaFixtures'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { userEvent, render, screen, waitFor, act, fireEvent } from 'tests/utils'
 

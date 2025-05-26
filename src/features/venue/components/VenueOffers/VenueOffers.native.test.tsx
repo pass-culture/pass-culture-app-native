@@ -8,7 +8,6 @@ import { gtlPlaylistAlgoliaSnapshot } from 'features/gtlPlaylist/fixtures/gtlPla
 import { mockLabelMapping, mockMapping } from 'features/headlineOffer/fixtures/mockMapping'
 import { OfferCTAProvider } from 'features/offer/components/OfferContent/OfferCTAProvider'
 import { initialSearchState } from 'features/search/context/reducer'
-import * as useVenueOffers from 'features/venue/api/useVenueOffers'
 import { VenueOffers } from 'features/venue/components/VenueOffers/VenueOffers'
 import { venueDataTest } from 'features/venue/fixtures/venueDataTest'
 import { VenueOffersArtistsResponseSnap } from 'features/venue/fixtures/venueOffersArtistsResponseSnap'
@@ -18,9 +17,10 @@ import {
 } from 'features/venue/fixtures/venueOffersResponseSnap'
 import type { VenueOffers as VenueOffersType } from 'features/venue/types'
 import { analytics } from 'libs/analytics/provider'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { LocationMode } from 'libs/location/types'
+import * as useVenueOffersQueryAPI from 'queries/venue/useVenueOffersQuery'
 import { Currency } from 'shared/currency/useGetCurrencyToDisplay'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, screen, userEvent } from 'tests/utils'
@@ -28,7 +28,7 @@ import { AnchorProvider } from 'ui/components/anchor/AnchorContext'
 
 const venueId = venueDataTest.id
 
-jest.spyOn(useVenueOffers, 'useVenueOffers').mockReturnValue({
+jest.spyOn(useVenueOffersQueryAPI, 'useVenueOffersQuery').mockReturnValue({
   isLoading: false,
   data: { hits: VenueOffersResponseSnap, nbHits: 10 },
 } as unknown as UseQueryResult<VenueOffersType, unknown>)
@@ -99,7 +99,7 @@ describe('<VenueOffers />', () => {
   })
 
   it('should display skeleton if offers are fetching', () => {
-    jest.spyOn(useVenueOffers, 'useVenueOffers').mockReturnValueOnce({
+    jest.spyOn(useVenueOffersQueryAPI, 'useVenueOffersQuery').mockReturnValueOnce({
       isLoading: true,
     } as UseQueryResult<VenueOffersType, unknown>)
     renderVenueOffers({})

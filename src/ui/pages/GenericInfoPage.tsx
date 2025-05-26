@@ -29,6 +29,7 @@ export type ButtonProps = {
   icon?: FunctionComponent<AccessibleIcon>
   disabled?: boolean
   isLoading?: boolean
+  accessibilityLabel?: string
 } & (
   | {
       onPress: () => void
@@ -127,6 +128,7 @@ export const GenericInfoPage: React.FunctionComponent<Props> = ({
               isLoading={buttonPrimary.isLoading}
               disabled={buttonPrimary.disabled}
               icon={buttonPrimary.icon}
+              accessibilityLabel={buttonPrimary.accessibilityLabel}
             />
           ) : null}
 
@@ -141,6 +143,7 @@ export const GenericInfoPage: React.FunctionComponent<Props> = ({
               isLoading={buttonPrimary.isLoading}
               disabled={buttonPrimary.disabled}
               icon={buttonPrimary.icon}
+              accessibilityLabel={buttonPrimary.accessibilityLabel}
             />
           ) : null}
 
@@ -155,6 +158,7 @@ export const GenericInfoPage: React.FunctionComponent<Props> = ({
               isLoading={buttonPrimary.isLoading}
               disabled={buttonPrimary.disabled}
               icon={ExternalSiteFilled}
+              accessibilityLabel={buttonPrimary.accessibilityLabel}
             />
           ) : null}
 
@@ -166,6 +170,7 @@ export const GenericInfoPage: React.FunctionComponent<Props> = ({
               isLoading={buttonSecondary.isLoading}
               disabled={buttonSecondary.disabled}
               icon={buttonSecondary.icon}
+              accessibilityLabel={buttonSecondary.accessibilityLabel}
             />
           ) : null}
 
@@ -180,6 +185,7 @@ export const GenericInfoPage: React.FunctionComponent<Props> = ({
               isLoading={buttonSecondary.isLoading}
               disabled={buttonSecondary.disabled}
               icon={buttonSecondary.icon}
+              accessibilityLabel={buttonSecondary.accessibilityLabel}
             />
           ) : null}
 
@@ -194,6 +200,7 @@ export const GenericInfoPage: React.FunctionComponent<Props> = ({
               isLoading={buttonSecondary.isLoading}
               disabled={buttonSecondary.disabled}
               icon={ExternalSiteFilled}
+              accessibilityLabel={buttonSecondary.accessibilityLabel}
             />
           ) : null}
 
@@ -205,6 +212,7 @@ export const GenericInfoPage: React.FunctionComponent<Props> = ({
               isLoading={buttonTertiary.isLoading}
               disabled={buttonTertiary.disabled}
               icon={buttonTertiary.icon}
+              accessibilityLabel={buttonTertiary.accessibilityLabel}
             />
           ) : null}
 
@@ -219,6 +227,7 @@ export const GenericInfoPage: React.FunctionComponent<Props> = ({
               isLoading={buttonTertiary.isLoading}
               disabled={buttonTertiary.disabled}
               icon={buttonTertiary.icon}
+              accessibilityLabel={buttonTertiary.accessibilityLabel}
             />
           ) : null}
 
@@ -233,6 +242,7 @@ export const GenericInfoPage: React.FunctionComponent<Props> = ({
               isLoading={buttonTertiary.isLoading}
               disabled={buttonTertiary.disabled}
               icon={ExternalSiteFilled}
+              accessibilityLabel={buttonTertiary.accessibilityLabel}
             />
           ) : null}
         </ButtonContainer>

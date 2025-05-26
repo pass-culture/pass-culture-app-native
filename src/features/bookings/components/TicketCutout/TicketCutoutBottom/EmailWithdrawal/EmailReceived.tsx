@@ -2,24 +2,29 @@ import React from 'react'
 import { openInbox } from 'react-native-email-link'
 import styled from 'styled-components/native'
 
+import { UserProfileResponse } from 'api/gen'
 import { useIsMailAppAvailable } from 'features/auth/helpers/useIsMailAppAvailable'
+import { getEmailReceivedWithdrawalMessage } from 'features/bookings/components/TicketCutout/TicketCutoutBottom/EmailWithdrawal/getEmailReceivedWithdrawalMessage'
 import { TicketText } from 'features/bookings/components/TicketCutout/TicketCutoutBottom/TicketText'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { Email } from 'ui/svg/icons/Email'
-import { LINE_BREAK } from 'ui/theme/constants'
 
-export const EmailReceived = ({ isEventDay }: { isEventDay: boolean }) => {
-  const emailMessage = isEventDay
-    ? 'C’est aujourd’hui\u00a0!' +
-      LINE_BREAK +
-      'Tu as dû recevoir ton billet par e-mail. Pense à vérifier tes spams.'
-    : 'Ton billet t’a été envoyé par e-mail. Pense à vérifier tes spams.'
+export const EmailReceived = ({
+  isEventDay,
+  isDuo,
+  userEmail,
+}: {
+  isEventDay: boolean
+  isDuo: boolean
+  userEmail: UserProfileResponse['email']
+}) => {
+  const emailMessage = getEmailReceivedWithdrawalMessage({ isEventDay, isDuo, userEmail })
 
   const isMailAppAvailable = useIsMailAppAvailable()
 
   return (
-    <TicketContainer testID="withdrawal-info-email">
-      <TicketText testID="withdrawal-info-email-msg">{emailMessage}</TicketText>
+    <TicketContainer testID="withdrawal-email-received">
+      <TicketText>{emailMessage}</TicketText>
       {isMailAppAvailable ? (
         <ButtonTertiaryBlack
           wording="Consulter mes e-mails"

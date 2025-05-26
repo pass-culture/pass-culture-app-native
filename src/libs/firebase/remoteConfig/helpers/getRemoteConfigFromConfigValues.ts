@@ -30,14 +30,11 @@ export const getRemoteConfigFromConfigValues = (
   reactionFakeDoorCategories: JSON.parse(
     getConfigValue(parameters.reactionFakeDoorCategories).asString()
   ),
-  maxLikesValue: getConfigValue(parameters.maxLikesValue).asNumber(),
-  minLikesValue: getConfigValue(parameters.minLikesValue).asNumber(),
   sameAuthorPlaylist: getConfigValue(parameters.sameAuthorPlaylist).asString(),
   shouldDisplayReassuranceMention: getConfigValue(
     parameters.shouldDisplayReassuranceMention
   ).asBoolean(),
   shouldLogInfo: getConfigValue(parameters.shouldLogInfo).asBoolean(),
-  displayAchievements: getConfigValue(parameters.displayAchievements).asBoolean(),
   displayInAppFeedback: getConfigValue(parameters.displayInAppFeedback).asBoolean(),
   subscriptionHomeEntryIds: JSON.parse(
     getConfigValue(parameters.subscriptionHomeEntryIds).asString()

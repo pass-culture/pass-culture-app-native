@@ -8,6 +8,11 @@ on:
         required: false
         type: string
         default: '[MES]'
+      test_tags:
+        description: 'Tags to include in the test run (activation, decouverte, conversion, or nightlyAndroid)'
+        required: false
+        type: string
+        default: 'nightlyAndroid'
     secrets:
       GCP_EHP_SERVICE_ACCOUNT:
         required: true
@@ -21,6 +26,7 @@ permissions:
 jobs:
   maestro-cloud:
     runs-on: ubuntu-24.04
+    timeout-minutes: 90
     steps:
       - name: Enable Corepack
         run: corepack enable
@@ -41,7 +47,7 @@ jobs:
         uses: android-actions/setup-android@v3
         with:
           cmdline-tools-version: 11076708 # correspond to cmdline-tools version 12.0
-
+          
       - name: Yarn install
         run: yarn install
 
@@ -103,7 +109,7 @@ jobs:
           echo "CUSTOM_NAME=$CUSTOM_NAME" >> $GITHUB_OUTPUT
 
       - name: Upload and run android tests with Robin
-        uses: mobile-dev-inc/action-maestro-cloud@v1.9.6
+        uses: mobile-dev-inc/action-maestro-cloud@v1.9.8
         with:
           api-key: ${{ steps.secrets.outputs.ROBIN_API_KEY }}
           project-id: proj_01javz1ncreqb9dcshv3y4da44
@@ -112,7 +118,7 @@ jobs:
           device-locale: fr_FR
           android-api-level: 34
           workspace: .maestro/tests/
-          include-tags: cloud
+          include-tags: ${{ inputs.test_tags }}
           env: |
             MAESTRO_APP_ID=app.passculture.staging
             MAESTRO_PASSWORD=${{ steps.secrets.outputs.MAESTRO_PASSWORD }}

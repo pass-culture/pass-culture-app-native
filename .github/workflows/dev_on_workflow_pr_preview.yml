@@ -35,6 +35,7 @@ defaults:
 jobs:
   deploy_on_firebase:
     runs-on: ubuntu-24.04
+    timeout-minutes: 60
     if: ${{ github.actor != 'dependabot[bot]' }}
     steps:
       - name: Enable Corepack

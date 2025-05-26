@@ -11,8 +11,6 @@ export {
   LENGTH_S,
   LENGTH_M,
   LENGTH_L,
-  LENGTH_XL,
   RATIO_BUSINESS,
   RATIO_HOME_IMAGE,
-  RATIO_EXCLU,
 } from 'ui/theme/grid'

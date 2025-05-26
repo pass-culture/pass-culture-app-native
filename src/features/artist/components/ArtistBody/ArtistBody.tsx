@@ -8,7 +8,7 @@ import { ArtistHeader } from 'features/artist/components/ArtistHeader/ArtistHead
 import { ArtistPlaylist } from 'features/artist/components/ArtistPlaylist/ArtistPlaylist'
 import { ArtistTopOffers } from 'features/artist/components/ArtistTopOffers/ArtistTopOffers'
 import { ArtistWebMetaHeader } from 'features/artist/components/ArtistWebMetaHeader'
-import { Artist } from 'features/artist/pages/Artist'
+import { ArtistType } from 'features/artist/types'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { AlgoliaOfferWithArtistAndEan } from 'libs/algolia/types'
@@ -25,7 +25,7 @@ const isWeb = Platform.OS === 'web'
 const NUMBER_OF_LINES_OF_DESCRIPTION_SECTION = 5
 
 type Props = {
-  artist: Artist
+  artist: ArtistType
   artistPlaylist: AlgoliaOfferWithArtistAndEan[]
   artistTopOffers: AlgoliaOfferWithArtistAndEan[]
 }

@@ -7,7 +7,7 @@ import * as useFilterCountAPI from 'features/search/helpers/useFilterCount/useFi
 import { SearchResults } from 'features/search/pages/SearchResults/SearchResults'
 import { useCenterOnLocation } from 'features/venueMap/hook/useCenterOnLocation'
 import { venuesFixture } from 'libs/algolia/fetchAlgolia/fetchVenues/fixtures/venuesFixture'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
@@ -67,7 +67,7 @@ jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 jest.mock('features/venueMap/hook/useCenterOnLocation')
 const mockUseCenterOnLocation = useCenterOnLocation as jest.Mock
 
-jest.mock('features/venue/api/useVenueOffers')
+jest.mock('queries/venue/useVenueOffersQuery')
 jest.mock('features/venueMap/helpers/zoomOutIfMapEmpty')
 jest.mock('features/navigation/TabBar/tabBarRoutes')
 

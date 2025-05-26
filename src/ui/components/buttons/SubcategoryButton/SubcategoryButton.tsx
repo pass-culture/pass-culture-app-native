@@ -6,6 +6,7 @@ import { getSearchNavConfig } from 'features/navigation/SearchStackNavigator/sea
 import { NativeCategoryEnum, SearchState } from 'features/search/types'
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { useHandleHover } from 'libs/hooks/useHandleHover'
+import { ColorsType } from 'theme/types'
 import { styledButton } from 'ui/components/buttons/styledButton'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { getShadow, Typo } from 'ui/theme'
@@ -24,8 +25,8 @@ export type SubcategoryButtonItem = SubcategoryButtonProps & {
 
 type SubcategoryButtonProps = {
   label: string
-  backgroundColor: ColorsEnum
-  borderColor: ColorsEnum
+  backgroundColor: ColorsType
+  borderColor: ColorsType
   position?: number
   searchParams: SearchState
   onBeforeNavigate: VoidFunction

@@ -51,19 +51,23 @@ export const buildDatePredicate = ({
   return undefined
 }
 
-export const buildHomepageDatePredicate = ({
-  beginningDatetime,
-  endingDatetime,
-}: Pick<SearchQueryParameters, 'beginningDatetime' | 'endingDatetime'>):
-  | undefined
-  | FiltersArray[0] => {
+export const buildHomepageDatePredicate = (
+  {
+    beginningDatetime,
+    endingDatetime,
+  }: Pick<SearchQueryParameters, 'beginningDatetime' | 'endingDatetime'>,
+  isUsedFromSearch?: boolean
+): undefined | FiltersArray[0] => {
   if (!(beginningDatetime || endingDatetime)) return undefined
   const formattedBeginningDatetime = beginningDatetime ? new Date(beginningDatetime) : undefined
   const formattedEndingDatetime = endingDatetime ? new Date(endingDatetime) : undefined
 
   if (formattedBeginningDatetime && !formattedEndingDatetime) {
     const beginningTimestamp = TIMESTAMP.getFromDate(formattedBeginningDatetime)
-    return [`${NUMERIC_FILTERS_ENUM.OFFER_DATES} >= ${beginningTimestamp}`]
+    const endOfBeginningTimestamp = TIMESTAMP.getLastOfDate(formattedBeginningDatetime)
+    return isUsedFromSearch
+      ? [`${NUMERIC_FILTERS_ENUM.OFFER_DATES}: ${beginningTimestamp} TO ${endOfBeginningTimestamp}`]
+      : [`${NUMERIC_FILTERS_ENUM.OFFER_DATES} >= ${beginningTimestamp}`]
   }
 
   if (!formattedBeginningDatetime && formattedEndingDatetime) {

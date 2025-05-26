@@ -1,4 +1,6 @@
+import { Hit } from '@algolia/client-search'
 import { useRoute } from '@react-navigation/native'
+import { uniqBy } from 'lodash'
 import React from 'react'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -8,27 +10,29 @@ import {
   defaultDisabilitiesProperties,
   useAccessibilityFiltersContext,
 } from 'features/accessibility/context/AccessibilityFiltersWrapper'
-import { SearchResultsContent } from 'features/search/components/SearchResultsContent/SearchResultsContent'
 import { initialSearchState } from 'features/search/context/reducer'
 import { MAX_RADIUS } from 'features/search/helpers/reducer.helpers'
-import { SearchState, UserData } from 'features/search/types'
+import { SearchState } from 'features/search/types'
 import * as useVenueMapStore from 'features/venueMap/store/venueMapStore'
 import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 import { venuesFixture } from 'libs/algolia/fetchAlgolia/fetchVenues/fixtures/venuesFixture'
+import { transformOfferHit } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
+import { AlgoliaOffer, AlgoliaVenue, FacetData } from 'libs/algolia/types'
 import { analytics } from 'libs/analytics/provider'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { GeolocPermissionState, Position } from 'libs/location'
 import { LocationMode } from 'libs/location/types'
 import { SuggestedPlace } from 'libs/place/types'
 import { mockedSuggestedVenue } from 'libs/venue/fixtures/mockedSuggestedVenues'
 import { useVenuesInRegionQuery } from 'queries/venueMap/useVenuesInRegionQuery'
-import { Offer } from 'shared/offer/types'
 import { mockAuthContextWithUser, mockAuthContextWithoutUser } from 'tests/AuthContextUtils'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, render, screen, userEvent } from 'tests/utils'
+import { fireEvent, render, screen, userEvent, waitFor } from 'tests/utils'
 import { theme } from 'theme'
+
+import { SearchResultsContent, SearchResultsContentProps } from './SearchResultsContent'
 
 const searchId = uuidv4()
 const mockSearchState: SearchState = { ...initialSearchState, searchId }
@@ -70,45 +74,10 @@ jest.mock('features/location/helpers/useLocationState', () => ({
   }),
 }))
 
-jest.mock('features/location/helpers/useLocationSubmit', () => ({
-  useLocationSubmit: () => ({
+jest.mock('features/location/helpers/getLocationSubmit', () => ({
+  getLocationSubmit: () => ({
     setTempAroundMeRadius: jest.fn(),
   }),
-}))
-
-const mockData = {
-  pages: [
-    {
-      offers: {
-        nbHits: 0,
-        hits: [],
-        page: 0,
-      },
-    },
-  ],
-}
-
-const mockHits: Offer[] = []
-const mockFetchNextPage = jest.fn()
-const mockRefetch = jest.fn()
-const mockUserData: UserData[] = []
-
-const initialSearchResults = {
-  data: mockData,
-  hits: mockHits,
-  nbHits: 0,
-  isFetching: false,
-  isLoading: false,
-  hasNextPage: true,
-  fetchNextPage: mockFetchNextPage,
-  isFetchingNextPage: false,
-  userData: mockUserData,
-  refetch: mockRefetch,
-}
-
-const mockUseSearchResults = jest.fn(() => initialSearchResults)
-jest.mock('features/search/api/useSearchResults/useSearchResults', () => ({
-  useSearchResults: () => mockUseSearchResults(),
 }))
 
 const mockedPlace: SuggestedPlace = {
@@ -180,22 +149,6 @@ jest.useFakeTimers()
 
 jest.mock('libs/firebase/analytics/analytics')
 
-jest.mock('@shopify/flash-list', () => {
-  const ActualFlashList = jest.requireActual('@shopify/flash-list').FlashList
-  class MockFlashList extends ActualFlashList {
-    componentDidMount() {
-      super.componentDidMount()
-      this.rlvRef?._scrollComponent?._scrollViewRef?.props?.onLayout({
-        nativeEvent: { layout: { height: 250, width: 800 } },
-      })
-    }
-  }
-  return {
-    ...jest.requireActual('@shopify/flash-list'),
-    FlashList: MockFlashList,
-  }
-})
-
 jest.mock('@gorhom/bottom-sheet', () => {
   const { View } = jest.requireActual('react-native')
 
@@ -217,15 +170,53 @@ jest.mock('@gorhom/bottom-sheet', () => {
   }
 })
 
-const mockUseSearchResultsQuery = (
-  params = {
-    ...initialSearchResults,
-    hits: [],
-    nbHits: 0,
-    userData: [],
-  }
+const mockOnEndReached = jest.fn()
+
+const DEFAULT_SEARCH_RESULT_CONTENT_PROPS = {
+  isFetching: false,
+  isLoading: false,
+  isFetchingNextPage: false,
+  userData: [],
+  onEndReached: mockOnEndReached,
+  onSearchResultsRefresh: jest.fn(),
+  venuesUserData: [],
+  facets: {} as FacetData,
+  offerVenues: [],
+  hits: {
+    offers: mockedAlgoliaResponse.hits.map(transformOfferHit('')),
+    artists: uniqBy(
+      mockedAlgoliaResponse.hits.flatMap((hit: Hit<AlgoliaOffer>) => hit.artists ?? []),
+      'name'
+    ),
+    duplicatedOffers: [],
+    venues: mockedAlgoliaResponse.hits.map((hit: Hit<AlgoliaOffer>) => ({
+      ...hit.venue,
+      _geoloc: hit._geoloc,
+    })) as AlgoliaVenue[],
+  },
+  nbHits: mockedAlgoliaResponse.hits.length,
+} satisfies SearchResultsContentProps
+
+const renderSearchResultContent = (
+  props: SearchResultsContentProps = DEFAULT_SEARCH_RESULT_CONTENT_PROPS
 ) => {
-  mockUseSearchResults.mockReturnValue(params)
+  const { rerender, ...otherProps } = render(
+    reactQueryProviderHOC(<SearchResultsContent {...props} />)
+  )
+  const customRerender = (newProps?: SearchResultsContentProps) =>
+    rerender(reactQueryProviderHOC(<SearchResultsContent {...(newProps ?? props)} />))
+
+  return { rerender: customRerender, ...otherProps }
+}
+
+const initSearchResultsFlashlist = async () => {
+  const flashList = await screen.findByTestId('searchResultsFlashlist')
+  fireEvent(flashList, 'layout', {
+    nativeEvent: {
+      layout: { height: 2000, width: 400 },
+    },
+  })
+  return flashList
 }
 
 describe('SearchResultsContent component', () => {
@@ -236,12 +227,10 @@ describe('SearchResultsContent component', () => {
   const user = userEvent.setup()
 
   beforeAll(() => {
-    mockUseSearchResultsQuery()
     mockUseVenuesInRegionQuery.mockReturnValue({ data: venuesFixture })
   })
 
   afterEach(() => {
-    mockUseSearchResultsQuery()
     mockUseSearch.mockReturnValue({
       searchState: mockSearchState,
       dispatch: mockDispatch,
@@ -256,61 +245,36 @@ describe('SearchResultsContent component', () => {
 
   it('should render correctly', async () => {
     jest.advanceTimersByTime(2000)
-    render(<SearchResultsContent />)
+    renderSearchResultContent()
 
     expect(await screen.findByText('Lieu culturel')).toBeOnTheScreen()
   })
 
-  it('should log SearchScrollToPage when hitting the bottom of the page', async () => {
-    mockUseSearchResults.mockReturnValueOnce({
-      ...initialSearchResults,
-      hits: mockedAlgoliaResponse.hits,
-      nbHits: mockedAlgoliaResponse.nbHits,
-      userData: [],
-    })
+  it('should trigger onEndReached', async () => {
+    renderSearchResultContent()
 
-    mockData.pages.push({
-      offers: {
-        nbHits: 0,
-        hits: [],
-        page: 1,
+    const flashList = await initSearchResultsFlashlist()
+
+    fireEvent.scroll(flashList, {
+      nativeEvent: {
+        layoutMeasurement: { height: 500 },
+        contentOffset: { y: 1500 },
+        contentSize: { height: 2000 },
       },
     })
 
-    render(<SearchResultsContent />)
-
-    const flashList = screen.getByTestId('searchResultsFlashlist')
-
-    await screen.findByText('Lieu culturel')
-
-    expect(mockFetchNextPage).toHaveBeenCalledTimes(1)
-    expect(analytics.logSearchScrollToPage).toHaveBeenCalledWith(1, searchId)
-
-    mockData.pages.push({
-      offers: {
-        nbHits: 0,
-        hits: [],
-        page: 2,
-      },
-    })
-
-    await act(async () => {
-      flashList.props.onEndReached()
-    })
-
-    expect(mockFetchNextPage).toHaveBeenCalledTimes(2)
-    expect(analytics.logSearchScrollToPage).toHaveBeenCalledWith(2, searchId)
+    await waitFor(() => expect(mockOnEndReached).toHaveBeenCalledTimes(1))
   })
 
   describe('Category filter', () => {
     it('should display category filter button', async () => {
-      render(<SearchResultsContent />)
+      renderSearchResultContent()
 
       expect(await screen.findByText('Catégories')).toBeOnTheScreen()
     })
 
     it('should open the categories filter modal when pressing the category button', async () => {
-      render(<SearchResultsContent />)
+      renderSearchResultContent()
       const categoryButton = await screen.findByText('Catégories')
 
       await user.press(categoryButton)
@@ -329,7 +293,7 @@ describe('SearchResultsContent component', () => {
         dispatch: mockDispatch,
       })
 
-      render(<SearchResultsContent />)
+      renderSearchResultContent()
 
       const categoryButtonIcon = await screen.findByTestId('categoryButtonIcon')
 
@@ -346,13 +310,13 @@ describe('SearchResultsContent component', () => {
 
   describe('Price filter', () => {
     it('should display price filter button', async () => {
-      render(<SearchResultsContent />)
+      renderSearchResultContent()
 
       expect(await screen.findByText('Prix')).toBeOnTheScreen()
     })
 
     it('should open the prices filter modal when pressing the prices filter button', async () => {
-      render(<SearchResultsContent />)
+      renderSearchResultContent()
       const priceButton = screen.getByTestId('Prix')
 
       await user.press(priceButton)
@@ -371,7 +335,7 @@ describe('SearchResultsContent component', () => {
         dispatch: mockDispatch,
       })
 
-      render(<SearchResultsContent />)
+      renderSearchResultContent()
 
       const priceButtonIcon = await screen.findByTestId('priceButtonIcon')
 
@@ -390,13 +354,13 @@ describe('SearchResultsContent component', () => {
       })
 
       it('should display Duo filter button', async () => {
-        render(<SearchResultsContent />)
+        renderSearchResultContent()
 
         expect(await screen.findByText('Duo')).toBeOnTheScreen()
       })
 
       it('should open the duo filter modal when pressing the duo filter button', async () => {
-        render(<SearchResultsContent />)
+        renderSearchResultContent()
         const duoButton = screen.getByTestId('Duo')
 
         await user.press(duoButton)
@@ -420,11 +384,11 @@ describe('SearchResultsContent component', () => {
       })
 
       it('should not display Duo filter button', async () => {
-        render(<SearchResultsContent />)
+        renderSearchResultContent()
 
         await screen.findByText('Lieu culturel')
 
-        expect(screen.queryByText('Duo')).not.toBeOnTheScreen()
+        await waitFor(() => expect(screen.queryByText('Duo')).not.toBeOnTheScreen())
       })
     })
 
@@ -434,7 +398,7 @@ describe('SearchResultsContent component', () => {
       })
 
       it('should not display Duo offer button', async () => {
-        render(<SearchResultsContent />)
+        renderSearchResultContent()
 
         await screen.findByText('Lieu culturel')
 
@@ -448,7 +412,7 @@ describe('SearchResultsContent component', () => {
       })
 
       it('should not display Duo offer button', async () => {
-        render(<SearchResultsContent />)
+        renderSearchResultContent()
 
         await screen.findByText('Lieu culturel')
 
@@ -459,7 +423,7 @@ describe('SearchResultsContent component', () => {
 
   describe('should not display geolocation incitation button', () => {
     it('when position is not null', async () => {
-      render(<SearchResultsContent />)
+      renderSearchResultContent()
 
       await screen.findByText('Lieu culturel')
 
@@ -477,7 +441,7 @@ describe('SearchResultsContent component', () => {
         dispatch: mockDispatch,
       })
 
-      render(<SearchResultsContent />)
+      renderSearchResultContent()
 
       await screen.findByText('Lieu culturel')
 
@@ -486,7 +450,7 @@ describe('SearchResultsContent component', () => {
 
     it('when position is null and no results search', async () => {
       mockUseLocation.mockReturnValueOnce(everywhereUseLocation)
-      render(<SearchResultsContent />)
+      renderSearchResultContent()
 
       await screen.findByText('Lieu culturel')
 
@@ -502,14 +466,14 @@ describe('SearchResultsContent component', () => {
       },
       dispatch: mockDispatch,
     })
-    render(<SearchResultsContent />)
+    renderSearchResultContent()
 
     expect(await screen.findByText(venue.label)).toBeOnTheScreen()
   })
 
   describe('Venue filter', () => {
     it('should open the venue modal when pressing the venue filter button', async () => {
-      render(<SearchResultsContent />)
+      renderSearchResultContent()
 
       const venueButton = screen.getByRole('button', { name: 'Lieu culturel' })
       await user.press(venueButton)
@@ -520,7 +484,7 @@ describe('SearchResultsContent component', () => {
     })
 
     it('should call set search state on press "Rechercher" in venue modal', async () => {
-      render(<SearchResultsContent />)
+      renderSearchResultContent()
 
       const venueButton = screen.getByRole('button', { name: 'Lieu culturel' })
       await user.press(venueButton)
@@ -537,7 +501,7 @@ describe('SearchResultsContent component', () => {
     })
 
     it('should display "Lieu culturel" in venue filter if no venue is selected', async () => {
-      render(<SearchResultsContent />)
+      renderSearchResultContent()
 
       expect(await screen.findByTestId('venueButtonLabel')).toHaveTextContent('Lieu culturel')
     })
@@ -550,7 +514,7 @@ describe('SearchResultsContent component', () => {
         },
         dispatch: mockDispatch,
       })
-      render(<SearchResultsContent />)
+      renderSearchResultContent()
 
       expect(await screen.findByTestId('venueButtonLabel')).toHaveTextContent(venue.label)
     })
@@ -564,7 +528,7 @@ describe('SearchResultsContent component', () => {
         dispatch: mockDispatch,
       })
 
-      render(<SearchResultsContent />)
+      renderSearchResultContent()
 
       expect(await screen.findByTestId('venueButtonLabel')).toHaveTextContent('Lieu culturel')
     })
@@ -577,7 +541,7 @@ describe('SearchResultsContent component', () => {
         },
         dispatch: mockDispatch,
       })
-      render(<SearchResultsContent />)
+      renderSearchResultContent()
 
       expect(await screen.findByTestId('venueButtonLabel')).toHaveTextContent('Lieu culturel')
     })
@@ -585,13 +549,13 @@ describe('SearchResultsContent component', () => {
 
   describe('Dates and hours filter', () => {
     it('should display dates and hours filter button', async () => {
-      render(<SearchResultsContent />)
+      renderSearchResultContent()
 
       expect(await screen.findByText('Dates & heures')).toBeOnTheScreen()
     })
 
     it('should open the type filter modal when pressing the type filter button', async () => {
-      render(<SearchResultsContent />)
+      renderSearchResultContent()
       const datesHoursButton = screen.getByTestId('Dates & heures')
 
       await user.press(datesHoursButton)
@@ -615,7 +579,7 @@ describe('SearchResultsContent component', () => {
           },
           dispatch: mockDispatch,
         })
-        render(<SearchResultsContent />)
+        renderSearchResultContent()
 
         const datesHoursButtonIcon = await screen.findByTestId('datesHoursButtonIcon')
 
@@ -633,14 +597,14 @@ describe('SearchResultsContent component', () => {
 
   describe('Accessibility filter', () => {
     it('should display accessibility filter button', async () => {
-      render(<SearchResultsContent />)
+      renderSearchResultContent()
       const accessibilityFilterButton = await screen.findByRole('button', { name: 'Accessibilité' })
 
       expect(accessibilityFilterButton).toBeOnTheScreen()
     })
 
     it('should open accessibility filters modal when accessibilityFiltersButton is pressed', async () => {
-      render(<SearchResultsContent />)
+      renderSearchResultContent()
       const accessibilityFilterButton = screen.getByRole('button', { name: 'Accessibilité' })
 
       await user.press(accessibilityFilterButton)
@@ -657,96 +621,57 @@ describe('SearchResultsContent component', () => {
       ...everywhereUseLocation,
       userLocation: null,
     })
-    mockUseSearchResults.mockReturnValueOnce({
-      ...initialSearchResults,
-      hits: mockedAlgoliaResponse.hits,
-      nbHits: mockedAlgoliaResponse.nbHits,
-      userData: [],
-    })
-    render(<SearchResultsContent />)
+    renderSearchResultContent()
 
-    await user.press(screen.getByText('Géolocalise-toi'))
+    await initSearchResultsFlashlist()
 
-    expect(mockShowGeolocPermissionModal).toHaveBeenCalledTimes(1)
-  })
+    await user.press(await screen.findByText('Géolocalise-toi'))
 
-  it('should refetch results when user position received in a second time', async () => {
-    mockUseLocation.mockReturnValueOnce(everywhereUseLocation)
-    render(<SearchResultsContent />)
-    await screen.findByText('Lieu culturel')
-
-    expect(mockRefetch).not.toHaveBeenCalled()
-
-    mockUseLocation.mockReturnValueOnce(aroundMeUseLocation)
-
-    screen.rerender(<SearchResultsContent />)
-
-    expect(mockRefetch).toHaveBeenCalledTimes(1)
-  })
-
-  it('should refetch results when user stop to share his position', async () => {
-    mockUseLocation.mockReturnValueOnce(aroundMeUseLocation)
-    render(<SearchResultsContent />)
-    await screen.findByText('Lieu culturel')
-
-    // previousGeolocPosition is empty in first rendering
-    expect(mockRefetch).toHaveBeenCalledTimes(1)
-
-    screen.rerender(<SearchResultsContent />)
-
-    expect(mockRefetch).toHaveBeenCalledTimes(1)
-
-    mockUseLocation.mockReturnValueOnce(everywhereUseLocation)
-    screen.rerender(<SearchResultsContent />)
-
-    expect(mockRefetch).toHaveBeenCalledTimes(1)
+    await waitFor(() => expect(mockShowGeolocPermissionModal).toHaveBeenCalledTimes(1))
   })
 
   it('should not log PerformSearch when there is not search query execution', async () => {
-    render(<SearchResultsContent />)
+    renderSearchResultContent()
     await screen.findByText('Lieu culturel')
 
     expect(analytics.logPerformSearch).not.toHaveBeenCalled()
   })
 
   it('should log PerformSearch only one time when there is search query execution and several re-render', async () => {
-    mockUseSearchResults.mockReturnValueOnce({ ...initialSearchResults, isLoading: true })
+    const { rerender } = renderSearchResultContent({
+      ...DEFAULT_SEARCH_RESULT_CONTENT_PROPS,
+      isLoading: true,
+    })
 
-    render(<SearchResultsContent />)
-
-    mockUseSearchResults.mockReturnValueOnce({ ...initialSearchResults, isLoading: false })
-
-    screen.rerender(<SearchResultsContent />)
-
-    screen.rerender(<SearchResultsContent />)
+    rerender({ ...DEFAULT_SEARCH_RESULT_CONTENT_PROPS, isLoading: false })
 
     expect(analytics.logPerformSearch).toHaveBeenCalledTimes(1)
   })
 
   it('should log PerformSearch with search result when there is search query execution', async () => {
-    mockUseSearchResults.mockReturnValueOnce({ ...initialSearchResults, isLoading: true })
-
-    render(<SearchResultsContent />)
-
-    mockUseSearchResults.mockReturnValueOnce({ ...initialSearchResults, isLoading: false })
+    const { rerender } = renderSearchResultContent({
+      ...DEFAULT_SEARCH_RESULT_CONTENT_PROPS,
+      isLoading: true,
+    })
 
     mockUseSearch.mockReturnValueOnce({
       searchState: mockSearchState,
       dispatch: mockDispatch,
     })
+
     const mockAccessibilityFilter = {
       isAudioDisabilityCompliant: undefined,
       isMentalDisabilityCompliant: undefined,
       isMotorDisabilityCompliant: undefined,
       isVisualDisabilityCompliant: undefined,
     }
-    screen.rerender(<SearchResultsContent />)
+    rerender({ ...DEFAULT_SEARCH_RESULT_CONTENT_PROPS, isLoading: false })
 
     expect(analytics.logPerformSearch).toHaveBeenNthCalledWith(
       1,
       mockSearchState,
       mockAccessibilityFilter,
-      0,
+      4,
       'SearchResults'
     )
   })
@@ -770,31 +695,38 @@ describe('SearchResultsContent component', () => {
         setDisabilities: () => jest.fn(),
       })
 
-    mockUseSearchResults.mockReturnValueOnce({ ...initialSearchResults, isLoading: true })
+    const { rerender } = renderSearchResultContent({
+      ...DEFAULT_SEARCH_RESULT_CONTENT_PROPS,
+      isLoading: true,
+    })
 
-    render(<SearchResultsContent />)
-
-    mockUseSearchResults.mockReturnValueOnce({ ...initialSearchResults, isLoading: false })
+    rerender({
+      ...DEFAULT_SEARCH_RESULT_CONTENT_PROPS,
+      isLoading: false,
+    })
 
     mockUseSearch.mockReturnValueOnce({
       searchState: mockSearchState,
       dispatch: mockDispatch,
     })
 
-    screen.rerender(<SearchResultsContent />)
+    rerender({
+      ...DEFAULT_SEARCH_RESULT_CONTENT_PROPS,
+      isLoading: false,
+    })
 
     expect(analytics.logPerformSearch).toHaveBeenNthCalledWith(
       1,
       mockSearchState,
       mockDisabilitesPropertiesTruthy,
-      0,
+      4,
       'SearchResults'
     )
   })
 
   describe('when search returns no results', () => {
     it('should render NoSearchResults component', async () => {
-      render(<SearchResultsContent />)
+      renderSearchResultContent({ ...DEFAULT_SEARCH_RESULT_CONTENT_PROPS, nbHits: 0 })
 
       expect(await screen.findByText(`Pas de résultat`)).toBeOnTheScreen()
       expect(
@@ -812,7 +744,7 @@ describe('SearchResultsContent component', () => {
         dispatch: mockDispatch,
       })
 
-      render(<SearchResultsContent />)
+      renderSearchResultContent({ ...DEFAULT_SEARCH_RESULT_CONTENT_PROPS, nbHits: 0 })
 
       expect(await screen.findByText(`pour "${query}"`)).toBeOnTheScreen()
       expect(
@@ -837,7 +769,7 @@ describe('SearchResultsContent component', () => {
         searchState: newSearchState,
         dispatch: mockDispatch,
       })
-      render(<SearchResultsContent />)
+      renderSearchResultContent({ ...DEFAULT_SEARCH_RESULT_CONTENT_PROPS, nbHits: 0 })
 
       expect(
         await screen.findByText('Élargis la zone de recherche pour plus de résultats.')
@@ -851,7 +783,7 @@ describe('SearchResultsContent component', () => {
         dispatch: mockDispatch,
       })
 
-      render(<SearchResultsContent />)
+      renderSearchResultContent({ ...DEFAULT_SEARCH_RESULT_CONTENT_PROPS, nbHits: 0 })
 
       const cta = await screen.findByText('Modifier mes filtres')
       await user.press(cta)
@@ -876,7 +808,7 @@ describe('SearchResultsContent component', () => {
         dispatch: mockDispatch,
       })
 
-      render(<SearchResultsContent />)
+      renderSearchResultContent({ ...DEFAULT_SEARCH_RESULT_CONTENT_PROPS, nbHits: 0 })
 
       const cta = await screen.findByText('Élargir la zone de recherche')
       await user.press(cta)
@@ -907,7 +839,7 @@ describe('SearchResultsContent component', () => {
         dispatch: mockDispatch,
       })
 
-      render(<SearchResultsContent />)
+      renderSearchResultContent({ ...DEFAULT_SEARCH_RESULT_CONTENT_PROPS, nbHits: 0 })
 
       const cta = await screen.findByText('Élargir la zone de recherche')
       await user.press(cta)
@@ -916,38 +848,43 @@ describe('SearchResultsContent component', () => {
     })
 
     it('should not log NoSearchResult when there is not search query execution', async () => {
-      render(<SearchResultsContent />)
+      renderSearchResultContent()
       await screen.findByText('Lieu culturel')
 
       expect(analytics.logNoSearchResult).not.toHaveBeenCalled()
     })
 
     it('should log NoSearchResult only one time when there is search query execution, nbHits = 0 and several re-render', async () => {
-      mockUseSearchResults.mockReturnValueOnce({ ...initialSearchResults, isLoading: true })
+      const { rerender } = renderSearchResultContent({
+        ...DEFAULT_SEARCH_RESULT_CONTENT_PROPS,
+        isLoading: true,
+      })
 
-      render(<SearchResultsContent />)
-
-      mockUseSearchResults.mockReturnValueOnce({ ...initialSearchResults, isLoading: false })
-
-      screen.rerender(<SearchResultsContent />)
-
-      screen.rerender(<SearchResultsContent />)
+      rerender({
+        ...DEFAULT_SEARCH_RESULT_CONTENT_PROPS,
+        isLoading: false,
+        nbHits: 0,
+      })
 
       expect(analytics.logNoSearchResult).toHaveBeenCalledTimes(1)
     })
 
     it('should log NoSearchResult with search result when there is search query execution and nbHits = 0', async () => {
-      mockUseSearchResults.mockReturnValueOnce({ ...initialSearchResults, isLoading: true })
-
-      render(<SearchResultsContent />)
-
-      mockUseSearchResults.mockReturnValueOnce({ ...initialSearchResults, isLoading: false })
+      const { rerender } = renderSearchResultContent({
+        ...DEFAULT_SEARCH_RESULT_CONTENT_PROPS,
+        isLoading: true,
+      })
 
       mockUseSearch.mockReturnValueOnce({
         searchState: mockSearchState,
         dispatch: mockDispatch,
       })
-      screen.rerender(<SearchResultsContent />)
+
+      rerender({
+        ...DEFAULT_SEARCH_RESULT_CONTENT_PROPS,
+        nbHits: 0,
+        isLoading: false,
+      })
 
       expect(analytics.logNoSearchResult).toHaveBeenNthCalledWith(1, '', searchId)
     })
@@ -958,14 +895,13 @@ describe('SearchResultsContent component', () => {
       ...everywhereUseLocation,
       userLocation: null,
     })
-    mockUseSearchResults.mockReturnValueOnce({
-      ...initialSearchResults,
-      hits: mockedAlgoliaResponse.hits,
-      nbHits: mockedAlgoliaResponse.nbHits,
-    })
-    render(<SearchResultsContent />)
 
-    await user.press(screen.getByText('Géolocalise-toi'))
+    renderSearchResultContent()
+    await initSearchResultsFlashlist()
+
+    await screen.findByTestId('searchListHeader')
+
+    await user.press(await screen.findByText('Géolocalise-toi'))
 
     expect(analytics.logActivateGeolocfromSearchResults).toHaveBeenCalledTimes(1)
   })
@@ -976,32 +912,22 @@ describe('SearchResultsContent component', () => {
         ...everywhereUseLocation,
         userLocation: null,
       })
-      mockUseSearchResults.mockReturnValueOnce({
-        ...initialSearchResults,
-        hits: mockedAlgoliaResponse.hits,
-        nbHits: mockedAlgoliaResponse.nbHits,
-      })
     })
 
     it('when position is null', async () => {
-      render(<SearchResultsContent />)
+      renderSearchResultContent()
+      await initSearchResultsFlashlist()
 
       expect(await screen.findByText('Géolocalise-toi')).toBeOnTheScreen()
     })
 
     it('when position is null and query is not an offer not present', async () => {
-      mockUseSearchResults.mockReturnValueOnce({
-        ...initialSearchResults,
-        hits: mockedAlgoliaResponse.hits,
-        nbHits: mockedAlgoliaResponse.nbHits,
-        userData: [{ message: 'n’est pas disponible sur le pass Culture.' }],
-      })
       mockUseSearch.mockReturnValueOnce({
         searchState: { ...mockSearchState, query: 'iPhone' },
         dispatch: mockDispatch,
       })
 
-      render(<SearchResultsContent />)
+      renderSearchResultContent()
       await screen.findByText('Lieu culturel')
 
       expect(screen.queryByText('Géolocalise-toi')).not.toBeOnTheScreen()
@@ -1010,34 +936,27 @@ describe('SearchResultsContent component', () => {
 
   describe('Offer unavailable message', () => {
     it('should display when query is an unavailable offer', async () => {
-      mockUseSearchResults.mockReturnValueOnce({
-        ...initialSearchResults,
-        hits: mockedAlgoliaResponse.hits,
-        nbHits: mockedAlgoliaResponse.nbHits,
-        userData: [{ message: 'Offre non disponible sur le pass Culture.' }],
-      })
-
       mockUseSearch.mockReturnValueOnce({
         searchState: { ...mockSearchState, query: 'iPhone' },
         dispatch: mockDispatch,
       })
-      render(<SearchResultsContent />)
+
+      renderSearchResultContent({
+        ...DEFAULT_SEARCH_RESULT_CONTENT_PROPS,
+        userData: [{ message: 'Offre non disponible sur le pass Culture.' }],
+      })
+
+      initSearchResultsFlashlist()
 
       expect(await screen.findByText('Offre non disponible sur le pass Culture.')).toBeOnTheScreen()
     })
 
     it('should not display when query is an available offer', async () => {
-      mockUseSearchResults.mockReturnValueOnce({
-        ...initialSearchResults,
-        hits: mockedAlgoliaResponse.hits,
-        nbHits: mockedAlgoliaResponse.nbHits,
-        userData: [],
-      })
       mockUseSearch.mockReturnValueOnce({
         searchState: { ...mockSearchState, query: 'Deezer' },
         dispatch: mockDispatch,
       })
-      render(<SearchResultsContent />)
+      renderSearchResultContent()
       await screen.findByText('Lieu culturel')
 
       expect(screen.queryByText('Offre non disponible sur le pass Culture.')).not.toBeOnTheScreen()
@@ -1051,7 +970,7 @@ describe('SearchResultsContent component', () => {
         dispatch: mockDispatch,
       })
 
-      render(<SearchResultsContent />)
+      renderSearchResultContent()
 
       const filterButton = await screen.findByLabelText(
         'Voir tous les filtres\u00a0: 2 filtres actifs'
@@ -1064,16 +983,11 @@ describe('SearchResultsContent component', () => {
 
   describe('when feature flag map in search desactivated', () => {
     beforeEach(() => {
-      mockUseSearchResults.mockReturnValue({
-        ...initialSearchResults,
-        hits: mockedAlgoliaResponse.hits,
-        nbHits: mockedAlgoliaResponse.nbHits,
-      })
       mockUseLocation.mockReturnValue(aroundMeUseLocation)
     })
 
     it('should not display tabs', async () => {
-      render(<SearchResultsContent />)
+      renderSearchResultContent()
 
       await screen.findByText('Prix')
 
@@ -1084,24 +998,19 @@ describe('SearchResultsContent component', () => {
 
   describe('when feature flag map in search activated', () => {
     beforeEach(() => {
-      mockUseSearchResults.mockReturnValue({
-        ...initialSearchResults,
-        hits: mockedAlgoliaResponse.hits,
-        nbHits: mockedAlgoliaResponse.nbHits,
-      })
       setFeatureFlags([RemoteStoreFeatureFlags.WIP_VENUE_MAP_IN_SEARCH])
       mockUseLocation.mockReturnValue(aroundMeUseLocation)
     })
 
     it('should display tabs', async () => {
-      render(<SearchResultsContent />)
+      renderSearchResultContent()
 
       expect(await screen.findByText('Carte')).toBeOnTheScreen()
       expect(await screen.findByText('Liste')).toBeOnTheScreen()
     })
 
     it('should log consult venue map when pressing map tab', async () => {
-      render(reactQueryProviderHOC(<SearchResultsContent />))
+      renderSearchResultContent()
 
       await user.press(await screen.findByText('Carte'))
       await screen.findByTestId('venue-map-view')
@@ -1113,7 +1022,7 @@ describe('SearchResultsContent component', () => {
     })
 
     it('should reset selected venue in store when pressing map tab', async () => {
-      render(reactQueryProviderHOC(<SearchResultsContent />))
+      renderSearchResultContent()
 
       await user.press(await screen.findByText('Carte'))
       await screen.findByTestId('venue-map-view')
@@ -1122,14 +1031,13 @@ describe('SearchResultsContent component', () => {
     })
 
     it('should display empty state view when there is no search result', async () => {
-      mockUseSearchResultsQuery()
-      render(<SearchResultsContent />)
+      renderSearchResultContent({ ...DEFAULT_SEARCH_RESULT_CONTENT_PROPS, nbHits: 0 })
 
       expect(await screen.findByText('Pas de résultat')).toBeOnTheScreen()
     })
 
     it('should not open venue map location modal when pressing map tab and user location selected is not everywhere', async () => {
-      render(reactQueryProviderHOC(<SearchResultsContent />))
+      renderSearchResultContent()
 
       await user.press(await screen.findByText('Carte'))
       await screen.findByTestId('venue-map-view')
@@ -1138,7 +1046,7 @@ describe('SearchResultsContent component', () => {
     })
 
     it('should display venue map when pressing map tab if user location selected is not everywhere', async () => {
-      render(reactQueryProviderHOC(<SearchResultsContent />))
+      renderSearchResultContent()
 
       await user.press(await screen.findByText('Carte'))
       await screen.findByTestId('venue-map-view')
@@ -1152,7 +1060,7 @@ describe('SearchResultsContent component', () => {
       })
 
       it('should open venue map location modal when pressing map tab', async () => {
-        render(reactQueryProviderHOC(<SearchResultsContent />))
+        renderSearchResultContent()
 
         await user.press(await screen.findByText('Carte'))
 
@@ -1160,11 +1068,70 @@ describe('SearchResultsContent component', () => {
       })
 
       it('should not display venue map when pressing map tab', async () => {
-        render(reactQueryProviderHOC(<SearchResultsContent />))
+        renderSearchResultContent()
 
         await user.press(await screen.findByText('Carte'))
 
         expect(screen.queryByTestId('venue-map-view')).not.toBeOnTheScreen()
+      })
+    })
+  })
+
+  describe('When calendar filter feature flag activated', () => {
+    beforeEach(() => {
+      setFeatureFlags([RemoteStoreFeatureFlags.WIP_TIME_FILTER_V2])
+      mockUseLocation.mockReturnValue(aroundMeUseLocation)
+    })
+
+    it('should display Dates in button filter', async () => {
+      renderSearchResultContent()
+
+      expect(await screen.findByText('Dates')).toBeOnTheScreen()
+    })
+
+    it('should open calendar modal', async () => {
+      renderSearchResultContent()
+
+      await user.press(await screen.findByText('Dates'))
+
+      expect(screen.getByTestId('calendar')).toBeOnTheScreen()
+    })
+  })
+
+  describe('Artists section', () => {
+    beforeEach(() => {
+      mockUseLocation.mockReturnValue(aroundMeUseLocation)
+    })
+
+    it('should display artists playlist when there are artists', async () => {
+      renderSearchResultContent()
+
+      await initSearchResultsFlashlist()
+
+      expect(await screen.findByText('Les artistes')).toBeOnTheScreen()
+    })
+
+    it('should not display artists playlist when there are not artists', async () => {
+      renderSearchResultContent({
+        ...DEFAULT_SEARCH_RESULT_CONTENT_PROPS,
+        hits: { ...DEFAULT_SEARCH_RESULT_CONTENT_PROPS.hits, artists: [] },
+      })
+
+      await initSearchResultsFlashlist()
+
+      expect(screen.queryByText('Les artistes')).not.toBeOnTheScreen()
+    })
+
+    it('should trigger consult artist log when pressing artists playlist item', async () => {
+      renderSearchResultContent()
+
+      await initSearchResultsFlashlist()
+
+      await user.press(screen.getByText('Artist 1'))
+
+      expect(analytics.logConsultArtist).toHaveBeenCalledWith({
+        artistName: 'Artist 1',
+        from: 'search',
       })
     })
   })

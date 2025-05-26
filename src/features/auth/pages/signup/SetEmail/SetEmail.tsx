@@ -2,8 +2,7 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { useRoute } from '@react-navigation/native'
 import React, { FunctionComponent, useCallback } from 'react'
 import { useForm } from 'react-hook-form'
-import styled from 'styled-components'
-import { useTheme } from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
 import { AuthenticationButton } from 'features/auth/components/AuthenticationButton/AuthenticationButton'
 import { SSOButton } from 'features/auth/components/SSOButton/SSOButton'
@@ -19,7 +18,8 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { Form } from 'ui/components/Form'
 import { SeparatorWithText } from 'ui/components/SeparatorWithText'
 import { SNACK_BAR_TIME_OUT_LONG, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
-import { Spacer, Typo } from 'ui/theme'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { getSpacing, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type FormValues = {
@@ -83,19 +83,20 @@ export const SetEmail: FunctionComponent<PreValidationSignupNormalStepProps> = (
   return (
     <Form.MaxWidth>
       <Typo.Title3 {...getHeadingAttrs(2)}>Crée-toi un compte</Typo.Title3>
-      <Spacer.Column numberOfSpaces={10} />
-      <EmailInputController
-        control={control}
-        name="email"
-        onSpellingHelpPress={onLogHasCorrectedEmail}
-      />
-      <Spacer.Column numberOfSpaces={8} />
-      <CheckboxController
-        control={control}
-        label="J’accepte de recevoir les newsletters, bons plans et les recommandations personnalisées du pass Culture."
-        name="marketingEmailSubscription"
-      />
-      <Spacer.Column numberOfSpaces={10} />
+      <ControllersContainer>
+        <EmailInputContainer>
+          <EmailInputController
+            control={control}
+            name="email"
+            onSpellingHelpPress={onLogHasCorrectedEmail}
+          />
+        </EmailInputContainer>
+        <CheckboxController
+          control={control}
+          label="J’accepte de recevoir les newsletters, bons plans et les recommandations personnalisées du pass Culture."
+          name="marketingEmailSubscription"
+        />
+      </ControllersContainer>
       <ButtonPrimary
         wording="Continuer"
         accessibilityLabel={accessibilityLabelForNextStep}
@@ -103,24 +104,23 @@ export const SetEmail: FunctionComponent<PreValidationSignupNormalStepProps> = (
         isLoading={false}
         disabled={watch('email').trim() === ''}
       />
+
       {enableGoogleSSO ? (
-        <React.Fragment>
-          <Spacer.Column numberOfSpaces={4} />
+        <SSOViewGap gap={4}>
           <StyledSeparatorWithText label="ou" />
-          <Spacer.Column numberOfSpaces={4} />
           <SSOButton type="signup" onSignInFailure={onSSOSignInFailure} />
-          <Spacer.Column numberOfSpaces={10} />
-        </React.Fragment>
+        </SSOViewGap>
       ) : (
-        <Spacer.Column numberOfSpaces={8} />
+        <EmptySpace />
       )}
-      <AuthenticationButton
-        type="login"
-        onAdditionalPress={onLogAnalytics}
-        linkColor={theme.colors.secondary}
-        params={{ from: StepperOrigin.SIGNUP, offerId: params?.offerId }}
-      />
-      <Spacer.Column numberOfSpaces={5} />
+      <AuthenticationButtonContainer>
+        <AuthenticationButton
+          type="login"
+          onAdditionalPress={onLogAnalytics}
+          linkColor={theme.colors.secondary}
+          params={{ from: StepperOrigin.SIGNUP, offerId: params?.offerId }}
+        />
+      </AuthenticationButtonContainer>
     </Form.MaxWidth>
   )
 }
@@ -128,3 +128,16 @@ export const SetEmail: FunctionComponent<PreValidationSignupNormalStepProps> = (
 const StyledSeparatorWithText = styled(SeparatorWithText).attrs(({ theme }) => ({
   backgroundColor: theme.colors.greyMedium,
 }))``
+
+const SSOViewGap = styled(ViewGap)({
+  marginTop: getSpacing(4),
+  marginBottom: getSpacing(10),
+})
+
+const ControllersContainer = styled.View({ marginVertical: getSpacing(10) })
+
+const AuthenticationButtonContainer = styled.View({ marginBottom: getSpacing(5) })
+
+const EmailInputContainer = styled.View({ marginBottom: getSpacing(8) })
+
+const EmptySpace = styled.View({ height: getSpacing(8) })

@@ -5,16 +5,19 @@ import { ActivityTypesResponse } from 'api/gen'
 import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
 import { ActivityTypesSnap } from 'features/identityCheck/pages/profile/fixtures/mockedActivityTypes'
 import { SubscriptionRootStackParamList } from 'features/navigation/RootNavigator/types'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { render, checkAccessibilityFor, act } from 'tests/utils/web'
 
 import { SetStatus } from './SetStatus'
 
+jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 jest.mock('features/identityCheck/context/SubscriptionContextProvider')
 
 describe('<SetStatus/>', () => {
   beforeEach(() => {
+    setFeatureFlags()
     mockServer.getApi<ActivityTypesResponse>('/v1/subscription/activity_types', ActivityTypesSnap)
   })
 

@@ -21,19 +21,19 @@ import { favoriteResponseSnap } from 'features/favorites/fixtures/favoriteRespon
 import * as useFavorite from 'features/favorites/hooks/useFavorite'
 import * as useGoBack from 'features/navigation/useGoBack'
 import { chroniclePreviewToChronicalCardData } from 'features/offer/adapters/chroniclePreviewToChronicleCardData'
-import * as useSimilarOffers from 'features/offer/api/useSimilarOffers'
 import { CineContentCTAID } from 'features/offer/components/OfferCine/CineContentCTA'
 import { PlaylistType } from 'features/offer/enums'
 import { mockSubcategory } from 'features/offer/fixtures/mockSubcategory'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
-import * as useArtistResults from 'features/offer/helpers/useArtistResults/useArtistResults'
+import * as useArtistResultsAPI from 'features/offer/queries/useArtistResultsQuery'
+import * as useSimilarOffersAPI from 'features/offer/queries/useSimilarOffersQuery'
 import { beneficiaryUser } from 'fixtures/user'
 import {
   mockedAlgoliaOffersWithSameArtistResponse,
   mockedAlgoliaResponse,
 } from 'libs/algolia/fixtures/algoliaFixtures'
 import { analytics } from 'libs/analytics/provider'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
@@ -60,6 +60,14 @@ const mockShowErrorSnackBar = jest.fn()
 jest.mock('ui/components/snackBar/SnackBarContext', () => ({
   useSnackBarContext: () => ({
     showErrorSnackBar: mockShowErrorSnackBar,
+  }),
+}))
+
+let mockComingSoonFooterHeight = 0
+jest.mock('ui/hooks/useLayout', () => ({
+  useLayout: () => ({
+    height: mockComingSoonFooterHeight,
+    onLayout: jest.fn(),
   }),
 }))
 
@@ -104,10 +112,10 @@ const apiRecoParams: RecommendationApiParams = {
 }
 
 const useSimilarOffersSpy = jest
-  .spyOn(useSimilarOffers, 'useSimilarOffers')
+  .spyOn(useSimilarOffersAPI, 'useSimilarOffersQuery')
   .mockReturnValue({ similarOffers: undefined, apiRecoParams: undefined })
 
-jest.spyOn(useArtistResults, 'useArtistResults').mockReturnValue({
+jest.spyOn(useArtistResultsAPI, 'useArtistResultsQuery').mockReturnValue({
   artistPlaylist: mockedAlgoliaOffersWithSameArtistResponse,
   artistTopOffers: mockedAlgoliaOffersWithSameArtistResponse.slice(0, 4),
 })
@@ -805,6 +813,28 @@ describe('<OfferContent />', () => {
       renderOfferContent({})
 
       expect(await screen.findByText('Passe le bon plan\u00a0!')).toBeOnTheScreen()
+    })
+  })
+
+  describe('coming soon footer', () => {
+    it('should render a footer offset when the coming soon footer has a height', async () => {
+      mockComingSoonFooterHeight = 100
+
+      renderOfferContent({})
+
+      await screen.findByTestId('offerHeaderName')
+
+      expect(await screen.findByTestId('coming-soon-footer-offset')).toBeOnTheScreen()
+    })
+
+    it('should not render a footer offset when the coming soon footer does not have a height', async () => {
+      mockComingSoonFooterHeight = 0
+
+      renderOfferContent({})
+
+      await screen.findByTestId('offerHeaderName')
+
+      expect(screen.queryByTestId('coming-soon-footer-offset')).not.toBeOnTheScreen()
     })
   })
 })

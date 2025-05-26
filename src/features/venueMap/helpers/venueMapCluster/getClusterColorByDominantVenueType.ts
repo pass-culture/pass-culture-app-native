@@ -26,8 +26,10 @@ const getClusterColorFromVenueType = (venueType?: VenueTypeCode): ClusterImageCo
   }
 }
 
-export const getClusterColorByDominantVenueType = (types: VenueTypeCode[]) => {
-  const occurenceMap = types.reduce<Record<ClusterImageColorName, number> | Record<string, never>>(
+export const getClusterColorByDominantVenueType = (
+  types: VenueTypeCode[]
+): ClusterImageColorName | undefined => {
+  const occurenceMap = types.reduce(
     (previous, current) => {
       const color = getClusterColorFromVenueType(current)
       if (previous[color]) {
@@ -37,8 +39,9 @@ export const getClusterColorByDominantVenueType = (types: VenueTypeCode[]) => {
       }
       return previous
     },
-    {}
+    {} as Record<ClusterImageColorName, number>
   )
+
   const colorsInCluster = Object.keys(occurenceMap)
     .filter((color): color is ClusterImageColorName => !!color)
     .sort((a, b) => a.localeCompare(b))

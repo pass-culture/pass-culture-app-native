@@ -36,6 +36,7 @@ export const cheatcodesNavigationIdentityCheckButtons: [CheatcodesButtonsWithSub
       { screen: 'SelectIDOrigin' },
       { screen: 'SelectIDStatus' },
       { screen: 'SelectPhoneStatus' },
+      { screen: 'ProfileInformationValidation' },
       { screen: 'SetAddress', navigationParams: { type: ProfileTypes.IDENTITY_CHECK } },
       { screen: 'SetCity', navigationParams: { type: ProfileTypes.IDENTITY_CHECK } },
       { screen: 'SetName', navigationParams: { type: ProfileTypes.IDENTITY_CHECK } },
@@ -52,6 +53,16 @@ export const cheatcodesNavigationIdentityCheckButtons: [CheatcodesButtonsWithSub
       { title: 'UserAgeNotValid Educonnect Error', showOnlyInSearch: true },
       { title: 'UserAgeNotValid18YearsOld Error', showOnlyInSearch: true },
       { title: 'UserTypeNotStudent Error', showOnlyInSearch: true },
+      {
+        screen: 'SetProfileBookingError',
+        title: 'SetProfileBookingError with offer',
+        navigationParams: { offerId: 1 },
+      },
+      {
+        screen: 'SetProfileBookingError',
+        title: 'SetProfileBookingError without offer',
+        navigationParams: { offerId: undefined },
+      },
       {
         screen: 'EduConnectValidation',
         navigationParams: {

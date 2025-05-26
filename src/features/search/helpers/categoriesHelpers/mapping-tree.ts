@@ -127,8 +127,7 @@ export function createMappingTree(data: SubcategoriesResponseModelv2, facetsData
   return data.searchGroups
     .filter(
       (searchGroup) =>
-        Object.keys(availableCategories).includes(searchGroup.name) &&
-        Object.keys(CATEGORY_CRITERIA).includes(searchGroup.name)
+        searchGroup.name in availableCategories && searchGroup.name in CATEGORY_CRITERIA
     )
     .sort((a, b) => {
       const positionA: number = CATEGORY_CRITERIA[a.name]?.position ?? 0

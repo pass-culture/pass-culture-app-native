@@ -1,6 +1,14 @@
 import { useNavigation, useRoute } from '@react-navigation/native'
-import React, { FunctionComponent, useCallback, useEffect, useMemo, useRef } from 'react'
+import React, {
+  FunctionComponent,
+  PropsWithChildren,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+} from 'react'
 import {
+  LayoutChangeEvent,
   NativeScrollEvent,
   NativeSyntheticEvent,
   ScrollView,
@@ -49,16 +57,18 @@ import { SectionWithDivider } from 'ui/components/SectionWithDivider'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { getSpacing } from 'ui/theme'
 
-type OfferContentBaseProps = OfferContentProps & {
-  BodyWrapper: FunctionComponent
-  onOfferPreviewPress: (index?: number) => void
-  chronicles?: ChronicleCardData[]
-  likesCount?: number
-  headlineOffersCount?: number
-  defaultReaction?: ReactionTypeEnum | null
-  onReactionButtonPress?: () => void
-  contentContainerStyle?: StyleProp<ViewStyle>
-}
+type OfferContentBaseProps = OfferContentProps &
+  PropsWithChildren<{
+    BodyWrapper: FunctionComponent
+    onOfferPreviewPress: (index?: number) => void
+    chronicles?: ChronicleCardData[]
+    likesCount?: number
+    headlineOffersCount?: number
+    defaultReaction?: ReactionTypeEnum | null
+    onReactionButtonPress?: () => void
+    contentContainerStyle?: StyleProp<ViewStyle>
+    onLayout?: (params: LayoutChangeEvent) => void
+  }>
 
 const DELAY_BEFORE_CONSIDERING_PAGE_SEEN = 5000
 
@@ -73,6 +83,8 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
   defaultReaction,
   onReactionButtonPress,
   BodyWrapper = React.Fragment,
+  onLayout,
+  children,
 }) => {
   const theme = useTheme()
 
@@ -294,8 +306,9 @@ export const OfferContentBase: FunctionComponent<OfferContentBaseProps> = ({
             otherCategoriesSimilarOffers={otherCategoriesSimilarOffers}
             apiRecoParamsOtherCategories={apiRecoParamsOtherCategories}
           />
+          {children}
         </ScrollViewContainer>
-        <OfferFooter offer={offer} {...favoriteButtonProps}>
+        <OfferFooter offer={offer} onLayout={onLayout} {...favoriteButtonProps}>
           {offerCtaButton}
         </OfferFooter>
       </AnchorProvider>

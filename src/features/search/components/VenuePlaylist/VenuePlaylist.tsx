@@ -1,6 +1,6 @@
 import { useNavigation } from '@react-navigation/native'
 import React, { useEffect } from 'react'
-import { Platform } from 'react-native'
+import { Platform, StyleProp, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
@@ -24,7 +24,7 @@ import { useModal } from 'ui/components/modals/useModal'
 import { Playlist } from 'ui/components/Playlist'
 import { Separator } from 'ui/components/Separator'
 import { Map } from 'ui/svg/icons/Map'
-import { getSpacing, LENGTH_XS, LENGTH_XXS, Spacer, Typo } from 'ui/theme'
+import { getSpacing, LENGTH_XS, LENGTH_XXS, Typo } from 'ui/theme'
 
 export const VENUE_ITEM_HEIGHT = LENGTH_XXS
 export const VENUE_ITEM_WIDTH = LENGTH_XS
@@ -38,6 +38,7 @@ type Props = {
   currentView?: keyof SearchStackParamList
   offerCategory?: SearchGroupNameEnumv2
   searchGroup?: SearchGroupNameEnumv2
+  style?: StyleProp<ViewStyle>
 }
 
 const renderVenueItem = (
@@ -72,6 +73,7 @@ export const VenuePlaylist: React.FC<Props> = ({
   offerCategory,
   shouldDisplaySeparator = true,
   searchGroup,
+  style,
 }) => {
   const { navigate } = useNavigation<UseNavigationType>()
   const {
@@ -123,11 +125,10 @@ export const VenuePlaylist: React.FC<Props> = ({
 
   return (
     <React.Fragment>
-      <Container>
-        <Title>{venuePlaylistTitle}</Title>
+      <Container style={style}>
+        <Title numberOfLines={isWeb ? 1 : undefined}>{venuePlaylistTitle}</Title>
         {shouldDisplaySeeOnMapButton ? (
           <ButtonContainer>
-            <Spacer.Column numberOfSpaces={1} />
             <ButtonTertiaryBlack
               icon={Map}
               wording="Voir sur la carte"
@@ -175,6 +176,7 @@ const StyledSeparator = styled(Separator.Horizontal)({
 
 const ButtonContainer = styled.View({
   marginLeft: getSpacing(6),
+  marginTop: getSpacing(1),
   alignSelf: 'flex-start',
 })
 

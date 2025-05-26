@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { OfferArtists } from 'features/offer/components/OfferArtists/OfferArtists'
-import { render, screen, fireEvent } from 'tests/utils'
+import { fireEvent, render, screen } from 'tests/utils'
 
 jest.mock('libs/firebase/analytics/analytics')
 
@@ -16,6 +16,7 @@ describe('<OfferArtists />', () => {
     const handlePressLink = jest.fn()
     render(<OfferArtists artists="Edith Piaf" onPressArtistLink={handlePressLink} />)
 
+    // userEvent.press not working correctly here
     fireEvent.press(screen.getByText('Edith Piaf'))
 
     expect(handlePressLink).toHaveBeenCalledWith()

@@ -5,9 +5,7 @@ import { SubcategoriesResponseModelv2 } from 'api/gen'
 import { useHighlightOffer } from 'features/home/api/useHighlightOffer'
 import { highlightOfferModuleFixture } from 'features/home/fixtures/highlightOfferModule.fixture'
 import {
-  formattedBusinessModule,
   formattedCategoryListModule,
-  formattedExclusivityModule,
   formattedNewBusinessModule,
   formattedOffersModule,
   formattedRecommendedOffersModule,
@@ -16,14 +14,14 @@ import {
 import { HomepageModule, ModuleData } from 'features/home/types'
 import { SimilarOffersResponse } from 'features/offer/types'
 import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { GeoCoordinates, Position } from 'libs/location'
 import { subcategoriesDataTest } from 'libs/subcategories/fixtures/subcategoriesResponse'
 import { offersFixture } from 'shared/offer/offer.fixture'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, checkAccessibilityFor, render, screen, waitFor } from 'tests/utils/web'
+import { act, checkAccessibilityFor, render, screen } from 'tests/utils/web'
 
 import { HomeModule } from './HomeModule'
 
@@ -53,8 +51,8 @@ jest.mock('libs/location/LocationWrapper', () => ({
   }),
 }))
 
-jest.mock('features/home/api/useAlgoliaRecommendedOffers', () => ({
-  useAlgoliaRecommendedOffers: jest.fn(() => mockedAlgoliaResponse.hits),
+jest.mock('queries/offer/useAlgoliaSimilarOffersQuery', () => ({
+  useAlgoliaSimilarOffersQuery: jest.fn(() => mockedAlgoliaResponse.hits),
 }))
 
 const defaultData: ModuleData = {
@@ -76,19 +74,7 @@ describe('<HomeModule />', () => {
   // Test a11y rules on each module instead of testing them on the whole page
   // because it's easier to test them one by one
   describe('Accessibility', () => {
-    it('OldBusiness module should not have basic accessibility issues', async () => {
-      const { container } = renderHomeModule(formattedBusinessModule)
-
-      expect(screen.getByText('Débloque ton crédit !')).toBeInTheDocument()
-
-      const results = await checkAccessibilityFor(container)
-
-      expect(results).toHaveNoViolations()
-    })
-
-    it('NewBusiness module should not have basic accessibility issues', async () => {
-      setFeatureFlags([RemoteStoreFeatureFlags.WIP_APP_V2_BUSINESS_BLOCK])
-
+    it('Business module should not have basic accessibility issues', async () => {
       const { container } = renderHomeModule(formattedNewBusinessModule)
 
       expect(screen.getByText('Rencontre d’arles participe à notre concours')).toBeInTheDocument()
@@ -113,14 +99,6 @@ describe('<HomeModule />', () => {
       const results = await checkAccessibilityFor(container)
 
       expect(results).toHaveNoViolations()
-    })
-
-    it('should not display old ExclusivityOfferModule', async () => {
-      renderHomeModule(formattedExclusivityModule)
-
-      await waitFor(() => {
-        expect(screen.queryByLabelText('Week-end FRAC')).not.toBeOnTheScreen()
-      })
     })
 
     it('CategoryList module should not have basic accessibility issues', async () => {

@@ -1,16 +1,17 @@
-name: '2 [pull/pr] Initiate workflow'
+name: "2 [pull/pr] Initiate workflow"
 
 on:
   push:
     branches:
       - master
     tags:
-      - '**'
+      - "**"
   pull_request:
 
 permissions:
-  contents: read
+  contents: write
   id-token: write
+  pages: write
 
 jobs:
   yarn-install:
@@ -73,14 +74,6 @@ jobs:
   check-deadcode:
     needs: yarn-install
     uses: ./.github/workflows/dev_on_workflow_check_deadcode.yml
-    with:
-      CACHE_BUCKET_NAME: passculture-infra-prod-github-runner-cache
-    secrets:
-      GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
-      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
-  yarn-ts-noUncheckedIndexedAccess:
-    needs: yarn-install
-    uses: ./.github/workflows/dev_on_workflow_ts_noUncheckedIndexedAccess.yml
     with:
       CACHE_BUCKET_NAME: passculture-infra-prod-github-runner-cache
     secrets:
@@ -215,7 +208,12 @@ jobs:
       GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
       GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
   deploy-web-proxy-staging:
-    needs: [check-server-folder-changes-staging, deploy-web-staging, check-proxy-version-staging]
+    needs:
+      [
+        check-server-folder-changes-staging,
+        deploy-web-staging,
+        check-proxy-version-staging,
+      ]
     if: needs.check-server-folder-changes-staging.outputs.folder_changed == 'true' && needs.check-proxy-version-staging.outputs.proxy_base_tag
     uses: ./.github/workflows/dev_on_workflow_web_proxy_deploy.yml
     with:

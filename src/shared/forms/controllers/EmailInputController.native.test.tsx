@@ -1,13 +1,15 @@
 import React from 'react'
-import { useForm, ErrorOption } from 'react-hook-form'
+import { ErrorOption, useForm } from 'react-hook-form'
 
 import { EmailInputController } from 'shared/forms/controllers/EmailInputController'
-import { act, fireEvent, render, screen } from 'tests/utils'
+import { act, fireEvent, render, screen, userEvent } from 'tests/utils'
 import { SUGGESTION_DELAY_IN_MS } from 'ui/components/inputs/EmailInputWithSpellingHelp/useEmailSpellingHelp'
 
 type EmailForm = {
   email: string
 }
+
+const user = userEvent.setup()
 
 jest.useFakeTimers()
 
@@ -29,7 +31,7 @@ describe('<EmailInputController />', () => {
   it('should not show spelling help when not asked', async () => {
     renderEmailInputController({ withSpellingHelp: false })
 
-    const input = screen.getByPlaceholderText('tonadresse@email.com')
+    const input = screen.getByTestId('Entrée pour l’email')
     fireEvent.changeText(input, 'firstname.lastname@gmal.com')
 
     await act(async () => {
@@ -44,7 +46,7 @@ describe('<EmailInputController />', () => {
   it('should show spelling help by default', async () => {
     renderEmailInputController({})
 
-    const input = screen.getByPlaceholderText('tonadresse@email.com')
+    const input = screen.getByTestId('Entrée pour l’email')
     fireEvent.changeText(input, 'firstname.lastname@gmal.com')
 
     await act(async () => {
@@ -61,13 +63,13 @@ describe('<EmailInputController />', () => {
       onSpellingHelpPress: mockOnSpellingHelpPress,
     })
 
-    const input = screen.getByPlaceholderText('tonadresse@email.com')
+    const input = screen.getByTestId('Entrée pour l’email')
     fireEvent.changeText(input, 'firstname.lastname@gmal.com')
 
     await screen.findByText('Veux-tu plutôt dire firstname.lastname@gmail.com ?')
 
     const suggestionButton = screen.getByText('Appliquer la modification')
-    fireEvent.press(suggestionButton)
+    await user.press(suggestionButton)
 
     expect(mockOnSpellingHelpPress).toHaveBeenCalledTimes(1)
   })

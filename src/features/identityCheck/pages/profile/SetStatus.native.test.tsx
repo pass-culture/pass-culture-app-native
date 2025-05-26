@@ -1,7 +1,8 @@
 import { StackScreenProps } from '@react-navigation/stack'
 import React from 'react'
 
-import { dispatch } from '__mocks__/@react-navigation/native'
+import { dispatch, reset } from '__mocks__/@react-navigation/native'
+import { ApiError } from 'api/ApiError'
 import { ActivityIdEnum } from 'api/gen'
 import { initialSubscriptionState as mockState } from 'features/identityCheck/context/reducer'
 import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
@@ -10,13 +11,28 @@ import { SetStatus } from 'features/identityCheck/pages/profile/SetStatus'
 import { useAddress } from 'features/identityCheck/pages/profile/store/addressStore'
 import { useCity } from 'features/identityCheck/pages/profile/store/cityStore'
 import { useName } from 'features/identityCheck/pages/profile/store/nameStore'
+import * as resetStores from 'features/identityCheck/pages/profile/store/resetProfileStores'
+import * as usePostProfileMutation from 'features/identityCheck/queries/usePostProfileMutation'
 import { SubscriptionRootStackParamList } from 'features/navigation/RootNavigator/types'
 import * as UnderageUserAPI from 'features/profile/helpers/useIsUserUnderage'
 import { analytics } from 'libs/analytics/provider'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { storage } from 'libs/storage'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
+import { render, screen, userEvent, waitFor } from 'tests/utils'
 import { SnackBarHelperSettings } from 'ui/components/snackBar/types'
+
+const usePostProfileMutationSpy = jest.spyOn(usePostProfileMutation, 'usePostProfileMutation')
+
+const mockUseMutationError = (error?: ApiError) => {
+  // @ts-ignore we don't use the other properties of UseMutationResult (such as failureCount)
+  usePostProfileMutationSpy.mockImplementation(({ onError }) => ({
+    // @ts-ignore it's a mock
+    mutateAsync: jest.fn(() => onError(error)),
+  }))
+}
 
 let mockStatus: ActivityIdEnum | null = null
 
@@ -42,6 +58,11 @@ jest.mock('features/identityCheck/pages/profile/store/cityStore')
 
 jest.mock('features/identityCheck/pages/profile/store/addressStore')
 ;(useAddress as jest.Mock).mockReturnValue(profile.address)
+
+let mockOfferId: number | null = 123456
+jest.mock('features/offer/store/freeOfferIdStore', () => ({
+  useFreeOfferId: () => mockOfferId,
+}))
 
 jest.mock('features/identityCheck/context/SubscriptionContextProvider', () => ({
   useSubscriptionContext: jest.fn(() => ({
@@ -89,8 +110,18 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
+const mockRefetchUser = jest.fn()
+jest.mock('features/auth/context/AuthContext', () => ({
+  useAuthContext: jest.fn(() => ({ refetchUser: mockRefetchUser })),
+}))
+
+const user = userEvent.setup()
+
+jest.useFakeTimers()
+
 describe('<SetStatus/>', () => {
   beforeEach(async () => {
+    setFeatureFlags()
     mockServer.postApi('/v1/subscription/profile', {})
   })
 
@@ -117,34 +148,129 @@ describe('<SetStatus/>', () => {
     mockStatus = ActivityTypesSnap.activities[2].id
     renderSetStatus({ type: ProfileTypes.IDENTITY_CHECK })
 
-    await act(async () => {
-      fireEvent.press(screen.getByText(ActivityTypesSnap.activities[2].label)) // select student status
-    })
+    await user.press(screen.getByText(ActivityTypesSnap.activities[2].label)) // select student status
 
-    await act(async () => {
-      fireEvent.press(screen.getByText('Continuer'))
-    })
+    await user.press(screen.getByText('Continuer'))
 
-    await waitFor(() => {
-      expect(dispatch).toHaveBeenCalledWith({
-        payload: { index: 1, routes: [{ name: 'TabNavigator' }, { name: 'Stepper' }] },
-        type: 'RESET',
-      })
+    expect(dispatch).toHaveBeenCalledWith({
+      payload: { index: 1, routes: [{ name: 'TabNavigator' }, { name: 'Stepper' }] },
+      type: 'RESET',
     })
   })
 
   it('should log analytics on press Continuer', async () => {
     renderSetStatus({ type: ProfileTypes.IDENTITY_CHECK })
 
-    await act(async () => {
-      fireEvent.press(screen.getByText(ActivityTypesSnap.activities[1].label))
+    await user.press(screen.getByText(ActivityTypesSnap.activities[1].label))
+    await user.press(screen.getByText('Continuer'))
+
+    expect(analytics.logSetStatusClicked).toHaveBeenCalledTimes(1)
+  })
+
+  it('should not navigate to Offer screen if booking free offer and offer ID exists but FF ENABLE_BOOKING_FREE_OFFER_15_16 is disable', async () => {
+    mockStatus = ActivityTypesSnap.activities[0].id
+
+    renderSetStatus({ type: ProfileTypes.BOOKING_FREE_OFFER_15_16 })
+
+    await user.press(screen.getByText(ActivityTypesSnap.activities[0].label))
+    await user.press(screen.getByText('Continuer'))
+
+    expect(reset).not.toHaveBeenCalled()
+  })
+
+  it('should navigate to Offer screen if booking free offer and offer ID exists when FF ENABLE_BOOKING_FREE_OFFER_15_16 is enable', async () => {
+    setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_BOOKING_FREE_OFFER_15_16])
+    mockStatus = ActivityTypesSnap.activities[0].id
+
+    renderSetStatus({ type: ProfileTypes.BOOKING_FREE_OFFER_15_16 })
+
+    await user.press(screen.getByText(ActivityTypesSnap.activities[0].label))
+    await user.press(screen.getByText('Continuer'))
+
+    expect(reset).toHaveBeenCalledWith({
+      routes: [{ name: 'Offer', params: { id: mockOfferId } }],
     })
-    await act(async () => {
-      fireEvent.press(screen.getByText('Continuer'))
-    })
+  })
+
+  it('should not navigate to Offer screen when booking free offer but no offer ID is stored with FF ENABLE_BOOKING_FREE_OFFER_15_16 is disable', async () => {
+    mockStatus = ActivityTypesSnap.activities[0].id
+    mockOfferId = null
+
+    renderSetStatus({ type: ProfileTypes.BOOKING_FREE_OFFER_15_16 })
+
+    await user.press(screen.getByText(ActivityTypesSnap.activities[0].label))
+    await user.press(screen.getByText('Continuer'))
+
+    expect(reset).not.toHaveBeenCalled()
+  })
+
+  it('should navigate to error screen when booking free offer but no offer ID is stored with FF ENABLE_BOOKING_FREE_OFFER_15_16 is enable', async () => {
+    setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_BOOKING_FREE_OFFER_15_16])
+    mockStatus = ActivityTypesSnap.activities[0].id
+    mockOfferId = null
+
+    renderSetStatus({ type: ProfileTypes.BOOKING_FREE_OFFER_15_16 })
+
+    await user.press(screen.getByText(ActivityTypesSnap.activities[0].label))
+    await user.press(screen.getByText('Continuer'))
+
+    expect(reset).toHaveBeenCalledWith({ routes: [{ name: 'SetProfileBookingError' }] })
+  })
+
+  it('should reset profile stores after submission succeeds', async () => {
+    const resetStoresSpy = jest.spyOn(resetStores, 'resetProfileStores')
+
+    renderSetStatus({ type: ProfileTypes.IDENTITY_CHECK })
+
+    await user.press(screen.getByText(ActivityTypesSnap.activities[1].label))
+    await user.press(screen.getByText('Continuer'))
 
     await waitFor(() => {
-      expect(analytics.logSetStatusClicked).toHaveBeenCalledTimes(1)
+      expect(resetStoresSpy).toHaveBeenCalledTimes(1)
+    })
+  })
+
+  it('should call refetchUser after submission succeeds', async () => {
+    renderSetStatus({ type: ProfileTypes.IDENTITY_CHECK })
+
+    await user.press(screen.getByText(ActivityTypesSnap.activities[1].label))
+    await user.press(screen.getByText('Continuer'))
+
+    await waitFor(() => {
+      expect(mockRefetchUser).toHaveBeenCalledTimes(1)
+    })
+  })
+
+  it('should navigate to error screen if posting profile fails', async () => {
+    mockUseMutationError({
+      content: {},
+      name: 'ApiError',
+      statusCode: 400,
+      message: 'erreur',
+    })
+    setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_BOOKING_FREE_OFFER_15_16])
+    mockStatus = ActivityTypesSnap.activities[0].id
+    mockOfferId = 1
+
+    renderSetStatus({ type: ProfileTypes.BOOKING_FREE_OFFER_15_16 })
+
+    await user.press(screen.getByText(ActivityTypesSnap.activities[0].label))
+    await user.press(screen.getByText('Continuer'))
+
+    expect(reset).toHaveBeenCalledWith({
+      routes: [{ name: 'SetProfileBookingError', params: { offerId: mockOfferId } }],
+    })
+  })
+
+  it('should save status in local storage when clicking on status', async () => {
+    renderSetStatus({ type: ProfileTypes.BOOKING_FREE_OFFER_15_16 })
+
+    await user.press(screen.getByText(ActivityTypesSnap.activities[1].label))
+
+    expect(await storage.readObject('profile-status')).toMatchObject({
+      state: {
+        status: ActivityTypesSnap.activities[1].id,
+      },
     })
   })
 })

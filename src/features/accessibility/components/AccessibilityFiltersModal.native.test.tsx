@@ -47,6 +47,31 @@ describe('<AccessibilityFiltersModal />', () => {
     expect(audioCheckbox).toHaveAccessibilityState({ checked: true })
   })
 
+  it('should apply default disabilities when reset button is pressed', async () => {
+    renderAccessibilityFiltersModal()
+
+    const audioCheckbox = await screen.findByRole('checkbox', { name: 'Handicap auditif' })
+    await user.press(audioCheckbox)
+
+    const searchButton = await screen.findByText('Rechercher')
+    await user.press(searchButton)
+
+    const openModalButton = await screen.findByText('Show modal')
+    await user.press(openModalButton)
+    jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
+
+    const resetButton = await screen.findByText('Réinitialiser')
+    await user.press(resetButton)
+
+    const closeButton = await screen.findByTestId('icon-close')
+    user.press(closeButton)
+
+    await user.press(openModalButton)
+    jest.advanceTimersByTime(MODAL_TO_SHOW_TIME)
+
+    expect(audioCheckbox).toHaveAccessibilityState({ checked: false })
+  })
+
   it('should not save modified disabilities when pressing close button', async () => {
     renderAccessibilityFiltersModal()
 

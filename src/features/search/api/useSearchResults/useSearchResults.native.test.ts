@@ -47,6 +47,7 @@ const mockDispatch = jest.fn()
 const mockFetchSearchResultsResponse = {
   offersResponse: { ...mockedAlgoliaResponse, nbHits: 0, userData: null },
   venuesResponse: mockedAlgoliaVenueResponse,
+  offerArtistsResponse: { ...mockedAlgoliaResponse, nbHits: 0, userData: null },
   facetsResponse: algoliaFacets,
   duplicatedOffersResponse: { ...mockedAlgoliaResponse, nbHits: 0, userData: null },
   redirectUrl: undefined,
@@ -122,6 +123,20 @@ describe('useSearchResults', () => {
             },
             query: '',
           },
+          {
+            indexName: 'algoliaOffersIndexName',
+            params: {
+              attributesToHighlight: [],
+              attributesToRetrieve: ['artists'],
+              clickAnalytics: true,
+              facetFilters: [['offer.isEducational:false']],
+              hitsPerPage: 100,
+              numericFilters: [['offer.prices: 0 TO 300']],
+              tagFilters: '["-is_future"]',
+              page: 0,
+            },
+            query: '',
+          },
         ])
       })
     })
@@ -133,6 +148,20 @@ describe('useSearchResults', () => {
       await waitFor(() => {
         expect(multipleQueries).toHaveBeenCalledTimes(1)
       })
+    })
+
+    it('should return artist list based on offers', async () => {
+      fetchSearchResultsSpy.mockResolvedValueOnce(mockFetchSearchResultsResponse)
+      const { result } = renderUseSearchResults()
+
+      await waitFor(() =>
+        expect(result.current.hits.artists).toStrictEqual([
+          { id: '1', name: 'Artist 1' },
+          { id: '2', name: 'Artist 2' },
+          { id: '3', name: 'Artist 3' },
+          { id: '4', name: 'Artist 4' },
+        ])
+      )
     })
 
     // because of an Algolia issue, sometimes nbHits is at 0 even when there is some hits, cf PC-28287

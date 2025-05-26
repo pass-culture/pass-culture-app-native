@@ -1,7 +1,8 @@
 appId: ${MAESTRO_APP_ID}
 tags:
-  - cloud
+  - nightlyAndroid
   - local
+  - squad-activation
 ---
 - runFlow: subFolder/commons/LaunchApp.yml
 - runFlow: subFolder/cookies/SelectOneCookie.yml

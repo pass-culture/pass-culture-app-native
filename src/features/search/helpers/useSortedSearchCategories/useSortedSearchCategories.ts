@@ -2,7 +2,6 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { SearchGroupNameEnumv2 } from 'api/gen'
 import { getSearchNavConfig } from 'features/navigation/SearchStackNavigator/searchStackHelpers'
-import { ListCategoryButtonProps } from 'features/search/components/CategoriesListDumb/CategoriesListDumb'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { isOnlyOnline } from 'features/search/helpers/categoriesHelpers/categoriesHelpers'
 import { useAvailableCategories } from 'features/search/helpers/useAvailableCategories/useAvailableCategories'
@@ -10,8 +9,18 @@ import { useHasAThematicPageList } from 'features/search/helpers/useHasAThematic
 import { useSearchGroupLabelMapping } from 'libs/subcategories/mappings'
 import { useSubcategories } from 'libs/subcategories/useSubcategories'
 import { CategoryButtonProps } from 'shared/categoryButton/CategoryButton'
+import { BackgroundColorKey, BorderColorKey } from 'theme/types'
 
-export type MappingOutput = CategoryButtonProps & { position: number | undefined }
+export type MappingOutput = Pick<
+  CategoryButtonProps,
+  'label' | 'navigateTo' | 'onBeforeNavigate' | 'height' | 'style'
+> & {
+  position: number | undefined
+  fillColor: BackgroundColorKey
+  borderColor: BorderColorKey
+}
+
+export type ListCategoryButtonProps = MappingOutput[]
 
 export function categoriesSortPredicate(a: MappingOutput, b: MappingOutput): number {
   const positionA: number = a?.position || 0

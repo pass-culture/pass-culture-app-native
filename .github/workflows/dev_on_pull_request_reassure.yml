@@ -7,6 +7,7 @@ on:
 jobs:
   test-performance:
     runs-on: ubuntu-24.04
+    timeout-minutes: 60
     steps:
       - name: Enable Corepack
         run: corepack enable

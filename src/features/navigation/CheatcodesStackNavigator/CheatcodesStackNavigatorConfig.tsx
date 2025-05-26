@@ -25,7 +25,7 @@ export const cheatcodesStackNavigatorConfig = {
       CheatcodesNavigationNewIdentificationFlow:
         'cheatcodes/identity-check/new-identification-flow',
       CheatcodesNavigationNotScreensPages: 'cheatcodes/other/not-screens-pages',
-      CheatcodesNavigationOnboarding: 'cheatcodes/tutorial/onboarding',
+      CheatcodesNavigationOnboarding: 'cheatcodes/onboarding',
       CheatcodesNavigationProfile: 'cheatcodes/profile',
       CheatcodesNavigationProfileTutorial: 'cheatcodes/tutorial/profile-tutorial',
       CheatcodesNavigationShare: 'cheatcodes/share',

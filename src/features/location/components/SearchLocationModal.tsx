@@ -1,10 +1,10 @@
 import React from 'react'
 
 import { LocationModal } from 'features/location/components/LocationModal'
+import { getLocationSubmit } from 'features/location/helpers/getLocationSubmit'
+import { getPlaceSelection } from 'features/location/helpers/getPlaceSelection'
 import { useLocationMode } from 'features/location/helpers/useLocationMode'
 import { useLocationState } from 'features/location/helpers/useLocationState'
-import { useLocationSubmit } from 'features/location/helpers/useLocationSubmit'
-import { usePlaceSelection } from 'features/location/helpers/usePlaceSelection'
 import { useRadiusChange } from 'features/location/helpers/useRadiusChange'
 import { useSearch } from 'features/search/context/SearchWrapper'
 import { LocationMode } from 'libs/location/types'
@@ -32,7 +32,7 @@ export const SearchLocationModal = ({ visible, dismissModal }: LocationModalProp
     tempAroundMeRadius,
   } = locationStateProps
 
-  const { onSubmit, onClose } = useLocationSubmit({
+  const { onSubmit, onClose } = getLocationSubmit({
     dismissModal,
     from: 'search',
     dispatch,
@@ -45,7 +45,7 @@ export const SearchLocationModal = ({ visible, dismissModal }: LocationModalProp
     visible,
     ...locationStateProps,
   })
-  const { onPlaceSelection: onSetSelectedPlace } = usePlaceSelection({
+  const { onPlaceSelection: onSetSelectedPlace } = getPlaceSelection({
     ...locationStateProps,
   })
   const { selectLocationMode } = useLocationMode({

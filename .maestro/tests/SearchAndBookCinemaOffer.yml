@@ -2,7 +2,8 @@ appId: ${MAESTRO_APP_ID}
 jsengine: graaljs
 tags:
   - local
-  - cloud
+  - nightlyAndroid
+  - squad-conversion
 ---
 - runFlow:
     when:

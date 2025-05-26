@@ -1,3 +1,6 @@
+const { softRules } = require('./eslint-soft-rules')
+const { boundariesRule, boundariesElements } = require('./eslint-custom-rules/boundaries-rule')
+
 module.exports = {
   root: true,
   plugins: [
@@ -8,6 +11,7 @@ module.exports = {
     'eslint-plugin-local-rules',
     'testing-library',
     'jest',
+    'boundaries',
   ],
   parser: '@typescript-eslint/parser', // Specifies the ESLint parser
   extends: [
@@ -19,6 +23,7 @@ module.exports = {
     'plugin:prettier/recommended', // Enables eslint-plugin-prettier and displays prettier errors as ESLint errors. Make sure this is always the last configuration in the extends array.
     'plugin:import/errors',
     'plugin:react-hooks/recommended',
+    'plugin:boundaries/recommended',
   ],
   parserOptions: {
     ecmaVersion: 2018, // Allows for the parsing of modern ECMAScript features
@@ -30,9 +35,10 @@ module.exports = {
     tsconfigRootDir: __dirname,
   },
   rules: {
-    'react-hooks/exhaustive-deps': 'error',
-    'react/no-unused-prop-types': 'off', // has false positives
     'react/no-unstable-nested-components': 'off', // TODO(PC-25291): enable when its issues are fixed
+    'react/no-unused-prop-types': 'error', // has false positives
+    'local-rules/no-useless-hook': 'error',
+    'react-hooks/exhaustive-deps': 'error',
     'local-rules/independent-mocks': 'error',
     'local-rules/no-direct-consult-offer-log': 'error',
     'local-rules/no-empty-arrow-function': 'off',
@@ -43,13 +49,11 @@ module.exports = {
     'local-rules/apostrophe-in-text': 'error',
     'local-rules/no-truthy-check-after-queryAll-matchers': 'error',
     'local-rules/todo-format': 'error',
+    'local-rules/mock-path-exists': 'error',
     'local-rules/use-the-right-test-utils': 'error',
     'local-rules/no-use-of-algolia-multiple-queries': 'error',
     'local-rules/no-currency-symbols': 'error',
-    'local-rules/no-useQuery-outside-query-files': 'off',
-    'local-rules/useQuery-only-in-use-query-functions': 'off',
-    'local-rules/queries-must-be-in-queries-folder': 'off',
-    'no-negated-condition': 'warn',
+    'no-negated-condition': 'error',
     '@typescript-eslint/no-explicit-any': 'error',
     '@typescript-eslint/no-non-null-assertion': 'error',
     '@typescript-eslint/switch-exhaustiveness-check': 'error',
@@ -72,7 +76,8 @@ module.exports = {
       { argsIgnorePattern: '^_', varsIgnorePattern: '^_' },
     ],
     '@typescript-eslint/explicit-module-boundary-types': 'off',
-    '@typescript-eslint/restrict-template-expressions': ['error',
+    '@typescript-eslint/restrict-template-expressions': [
+      'error',
       {
         allowAny: true,
       },
@@ -194,6 +199,11 @@ module.exports = {
             name: 'react-native-maps',
             message: 'react-native-maps is not supported on the web. Use libs/maps/maps instead',
           },
+          {
+            name: 'ui/theme',
+            importNames: ['theme'],
+            message: 'Use StyledComponent or import theme via the useTheme() hook instead of directly importing it',
+          }          
         ],
         patterns: [
           {
@@ -202,8 +212,9 @@ module.exports = {
           },
           {
             group: ['design-system/*'],
-            message: 'use useTheme() | styled(Component).attrs(({ theme }) => ({})`` | styled(Component)(({ theme }) => ({}) when you want yo use design tokens',
-          }
+            message:
+              'use useTheme() | styled(Component).attrs(({ theme }) => ({})`` | styled(Component)(({ theme }) => ({}) when you want yo use design tokens',
+          },
         ],
       },
     ],
@@ -290,11 +301,13 @@ module.exports = {
       },
     ],
     'sort-keys-fix/sort-keys-fix': 'off',
+    ...softRules,
   },
   settings: {
     react: {
       version: 'detect', // Tells eslint-plugin-react to automatically detect the version of React to use
     },
+    'boundaries/elements': boundariesElements,
     'import/resolver': {
       node: {
         extensions: [
@@ -316,7 +329,7 @@ module.exports = {
       },
       alias: {
         map: [
-           // if you change those lines, check this doc https://github.com/pass-culture/pass-culture-app-native/blob/5ff5fba596244a759d60f8c9cdb67d56ac86a1a7/doc/development/alias.md
+          // if you change those lines, check this doc https://github.com/pass-culture/pass-culture-app-native/blob/5ff5fba596244a759d60f8c9cdb67d56ac86a1a7/doc/development/alias.md
           ['__mocks__', './__mocks__'],
           ['api', './src/api'],
           ['cheatcodes', './src/cheatcodes'],
@@ -393,7 +406,7 @@ module.exports = {
         'local-rules/no-currency-symbols': 'off',
         'local-rules/no-empty-arrow-function': 'error',
         'react/jsx-no-constructed-context-values': 'off',
-        'jest/prefer-called-with': 'warn',
+        'jest/prefer-called-with': 'error',
         'jest/no-disabled-tests': 'warn',
         'jest/no-focused-tests': 'warn',
         'jest/no-identical-title': 'error',

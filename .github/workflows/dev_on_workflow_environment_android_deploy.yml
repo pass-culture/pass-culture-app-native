@@ -19,6 +19,7 @@ jobs:
   sentry_and_deploy:
     name: 'Install runtime environment and dependencies Android deploy'
     runs-on: ubuntu-24.04
+    timeout-minutes: 60
     steps:
       - name: Enable Corepack
         run: corepack enable
@@ -131,6 +132,7 @@ jobs:
 
   slack_notify:
     runs-on: ubuntu-24.04
+    timeout-minutes: 60
     if: ${{ always() && (contains(needs.sentry_and_deploy.result, 'success') || contains(needs.sentry_and_deploy.result, 'failure'))}}
     needs: sentry_and_deploy
     steps:

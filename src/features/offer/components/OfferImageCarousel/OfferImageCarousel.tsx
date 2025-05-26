@@ -1,17 +1,16 @@
-import React, { FunctionComponent, ReactElement, useCallback, useRef, useState } from 'react'
+import React, { ReactElement, useCallback, useRef, useState } from 'react'
 import { Platform, StyleProp, View, ViewStyle } from 'react-native'
 import Animated, { FadeIn, SharedValue } from 'react-native-reanimated'
 import Carousel, { ICarouselInstance } from 'react-native-reanimated-carousel'
 import styled, { useTheme } from 'styled-components/native'
 
 import { OfferImageCarouselItem } from 'features/offer/components/OfferImageCarousel/OfferImageCarouselItem'
-import { OfferImageCarouselPagination } from 'features/offer/components/OfferImageCarouselPagination/OfferImageCarouselPagination'
-import { calculateCarouselIndex } from 'features/offer/helpers/calculateCarouselIndex/calculateCarouselIndex'
 import { OfferImageContainerDimensions } from 'features/offer/types'
 import { ImageWithCredit } from 'shared/types'
+import { CarouselPagination } from 'ui/components/CarouselPagination/CarouselPagination'
 import { Typo, getSpacing } from 'ui/theme'
 
-type Props = {
+type OfferImageCarouselProps = {
   progressValue: SharedValue<number>
   offerImages: ImageWithCredit[]
   imageDimensions: OfferImageContainerDimensions
@@ -20,9 +19,7 @@ type Props = {
   style?: StyleProp<ViewStyle>
 }
 
-const isWeb = Platform.OS === 'web'
-
-export const OfferImageCarousel: FunctionComponent<Props> = ({
+export const OfferImageCarousel: React.FunctionComponent<OfferImageCarouselProps> = ({
   progressValue,
   offerImages,
   imageDimensions,
@@ -31,23 +28,13 @@ export const OfferImageCarousel: FunctionComponent<Props> = ({
   style,
 }) => {
   const { borderRadius } = useTheme()
-  const carouselRef = useRef<ICarouselInstance>(null)
   const carouselStyle = useRef({
     borderRadius: borderRadius.radius,
   }).current
   const imagesLoadedCount = useRef(0)
   const [currentIndex, setCurrentIndex] = useState(0)
 
-  // TODO(PC-000): this method should be excluded in a dedicated .web file
-  const handlePressButton = (direction: 1 | -1) => {
-    const newIndex = calculateCarouselIndex({
-      currentIndex: progressValue.value,
-      direction,
-      maxIndex: offerImages.length - 1,
-    })
-    progressValue.value = newIndex
-    carouselRef.current?.scrollTo({ index: newIndex, animated: true })
-  }
+  const carouselRef = useRef<ICarouselInstance>(null)
 
   const handleImageLoad = useCallback(() => {
     imagesLoadedCount.current += 1
@@ -74,7 +61,6 @@ export const OfferImageCarousel: FunctionComponent<Props> = ({
       [handleImageLoad, imageDimensions, onItemPress]
     )
 
-  const offerImagesUrl = offerImages.map((image) => image.url)
   const currentCredit = offerImages[Math.round(currentIndex)]?.credit
 
   return (
@@ -86,7 +72,7 @@ export const OfferImageCarousel: FunctionComponent<Props> = ({
         height={imageDimensions.imageStyle.height}
         width={imageDimensions.imageStyle.width}
         loop={false}
-        enabled={!isWeb && offerImages.length > 1}
+        enabled={Platform.select({ web: false, default: offerImages.length > 1 })}
         scrollAnimationDuration={500}
         onProgressChange={(_, absoluteProgress) => {
           progressValue.value = absoluteProgress
@@ -96,18 +82,17 @@ export const OfferImageCarousel: FunctionComponent<Props> = ({
         renderItem={renderItem}
         style={carouselStyle}
       />
-
       <Container>
         {currentCredit ? <CopyrightText numberOfLines={2}>© {currentCredit}</CopyrightText> : null}
       </Container>
-
       {offerImages.length > 1 && progressValue ? (
-        <OfferImageCarouselPagination
+        <CarouselPagination
           progressValue={progressValue}
-          offerImages={offerImagesUrl}
-          handlePressButton={handlePressButton}
+          elementsCount={offerImages.length}
+          gap={2}
+          carouselRef={carouselRef}
         />
-      ) : null}
+      ) : undefined}
     </View>
   )
 }

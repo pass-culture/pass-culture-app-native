@@ -12,10 +12,10 @@ import { Stepper } from 'features/identityCheck/pages/Stepper'
 import { DeprecatedIdentityCheckStep, IdentityCheckStep } from 'features/identityCheck/types'
 import { StepperOrigin } from 'features/navigation/RootNavigator/types'
 import { analytics } from 'libs/analytics/provider'
-import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/__tests__/setFeatureFlags'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { fireEvent, render, screen, waitFor } from 'tests/utils'
+import { render, screen, userEvent, waitFor } from 'tests/utils'
 import { StepButtonState } from 'ui/components/StepButton/types'
 
 jest.mock('libs/firebase/analytics/analytics')
@@ -81,10 +81,16 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
+const user = userEvent.setup()
+
 describe('Stepper navigation', () => {
   beforeEach(() => {
     setFeatureFlags()
     mockServer.getApi('/v1/subscription/profile', profile)
+  })
+
+  afterEach(() => {
+    jest.useRealTimers()
   })
 
   it('should render correctly', async () => {
@@ -184,11 +190,12 @@ describe('Stepper navigation', () => {
       eventName: string
       eventParam: { step: string }
     }) => {
+      jest.useFakeTimers()
       mockNextSubscriptionStep = {
         ...mockStep,
         nextSubscriptionStep: subscriptionStep,
       }
-      // We override all the stepState with a current state so the fireEvent.press actually triggers the stepper_clicked event
+      // We override all the stepState with a current state so the userEvent.press actually triggers the stepper_clicked event
       const stepsDetailsFixtureWithOnlyCurrentStates = stepsDetailsFixture.map((step) => ({
         ...step,
         stepState: StepButtonState.CURRENT,
@@ -210,7 +217,7 @@ describe('Stepper navigation', () => {
       await screen.findByText('Vas-y')
 
       const stepButton = screen.getByText(stepperLabel)
-      fireEvent.press(stepButton)
+      await user.press(stepButton)
 
       expect(analytics.logIdentityCheckStep).toHaveBeenNthCalledWith(1, eventParam)
     }

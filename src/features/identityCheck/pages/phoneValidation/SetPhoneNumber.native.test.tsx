@@ -8,7 +8,7 @@ import * as useGoBack from 'features/navigation/useGoBack'
 import { analytics } from 'libs/analytics/provider'
 import { MODAL_TO_SHOW_TIME } from 'tests/constants'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
+import { act, fireEvent, render, screen, userEvent, waitFor } from 'tests/utils'
 import { theme } from 'theme'
 import * as useModalAPI from 'ui/components/modals/useModal'
 
@@ -44,6 +44,10 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
     return Component
   }
 })
+
+const user = userEvent.setup()
+
+jest.useFakeTimers()
 
 describe('SetPhoneNumber', () => {
   it('should match snapshot without modal appearance', async () => {
@@ -133,14 +137,11 @@ describe('SetPhoneNumber', () => {
     it('should navigate to SetPhoneValidationCode on /send_phone_validation_code request success', async () => {
       renderSetPhoneNumber()
 
-      const continueButton = screen.getByTestId('Continuer vers l’étape suivante')
       const input = screen.getByTestId('Entrée pour le numéro de téléphone')
       fireEvent.changeText(input, '612345678')
-      fireEvent.press(continueButton)
+      await user.press(screen.getByTestId('Continuer vers l’étape suivante'))
 
-      await waitFor(() => {
-        expect(navigate).toHaveBeenNthCalledWith(1, 'SetPhoneValidationCode')
-      })
+      expect(navigate).toHaveBeenNthCalledWith(1, 'SetPhoneValidationCode')
     })
 
     it('should display input error message if validate phone number request fails', async () => {
@@ -152,15 +153,12 @@ describe('SetPhoneNumber', () => {
       )
       renderSetPhoneNumber()
 
-      const continueButton = screen.getByTestId('Continuer vers l’étape suivante')
       const input = screen.getByTestId('Entrée pour le numéro de téléphone')
       fireEvent.changeText(input, '600000000')
 
-      fireEvent.press(continueButton)
+      await user.press(screen.getByTestId('Continuer vers l’étape suivante'))
 
-      await waitFor(() => {
-        expect(screen.getByText('Le numéro est invalide.')).toBeOnTheScreen()
-      })
+      expect(screen.getByText('Le numéro est invalide.')).toBeOnTheScreen()
     })
 
     it('should navigate to SetPhoneNumberTooManySMSSent page if request fails with TOO_MANY_SMS_SENT code', async () => {
@@ -173,27 +171,23 @@ describe('SetPhoneNumber', () => {
 
       renderSetPhoneNumber()
 
-      const continueButton = screen.getByTestId('Continuer vers l’étape suivante')
       const input = screen.getByTestId('Entrée pour le numéro de téléphone')
       fireEvent.changeText(input, '612345678')
-      fireEvent.press(continueButton)
+      await user.press(screen.getByTestId('Continuer vers l’étape suivante'))
 
-      await waitFor(() => expect(navigate).toHaveBeenCalledWith('PhoneValidationTooManySMSSent'))
+      expect(navigate).toHaveBeenCalledWith('PhoneValidationTooManySMSSent')
     })
 
     it('should log event HasRequestedCode when pressing "Continuer" button', async () => {
       renderSetPhoneNumber()
 
-      const continueButton = screen.getByTestId('Continuer vers l’étape suivante')
       const input = screen.getByTestId('Entrée pour le numéro de téléphone')
 
       await act(async () => {
         fireEvent.changeText(input, '612345678')
       })
 
-      await act(async () => {
-        fireEvent.press(continueButton)
-      })
+      await user.press(screen.getByTestId('Continuer vers l’étape suivante'))
 
       expect(analytics.logHasRequestedCode).toHaveBeenCalledTimes(1)
     })
@@ -201,16 +195,13 @@ describe('SetPhoneNumber', () => {
     it('should log analytics when pressing "Continuer" button', async () => {
       renderSetPhoneNumber()
 
-      const continueButton = screen.getByTestId('Continuer vers l’étape suivante')
       const input = screen.getByTestId('Entrée pour le numéro de téléphone')
 
       await act(async () => {
         fireEvent.changeText(input, '612345678')
       })
 
-      await act(async () => {
-        fireEvent.press(continueButton)
-      })
+      await user.press(screen.getByTestId('Continuer vers l’étape suivante'))
 
       expect(analytics.logPhoneNumberClicked).toHaveBeenCalledTimes(1)
     })
