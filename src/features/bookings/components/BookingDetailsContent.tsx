@@ -1,44 +1,29 @@
-import { useNavigation } from '@react-navigation/native'
 import React from 'react'
 import { ScrollView, useWindowDimensions } from 'react-native'
-import styled from 'styled-components/native'
+import styled, { useTheme } from 'styled-components/native'
 
-import {
-  BookingOfferResponseAddress,
-  BookingReponse,
-  BookingVenueResponse,
-  UserProfileResponse,
-} from 'api/gen'
+import { BookingReponse, UserProfileResponse } from 'api/gen'
 import { ArchiveBookingModal } from 'features/bookings/components/ArchiveBookingModal'
 import { BookingDetailsCancelButton } from 'features/bookings/components/BookingDetailsCancelButton'
+import { BookingDetailsContentDesktop } from 'features/bookings/components/BookingDetailsContentDesktop'
+import { BookingDetailsContentMobile } from 'features/bookings/components/BookingDetailsContentMobile'
 import { BookingDetailsHeader } from 'features/bookings/components/BookingDetailsHeader'
 import { BookingPrecisions } from 'features/bookings/components/BookingPrecision'
 import { CancelBookingModal } from 'features/bookings/components/CancelBookingModal'
-import { TicketCutout } from 'features/bookings/components/TicketCutout/TicketCutout'
-import { TicketCutoutBottom } from 'features/bookings/components/TicketCutout/TicketCutoutBottom/TicketCutoutBottom'
-import { getBookingLabels } from 'features/bookings/helpers'
+import { TicketCutout } from 'features/bookings/components/TicketCutout'
 import { computeHeaderImageHeight } from 'features/bookings/helpers/computeHeaderImageHeight'
 import { BookingProperties } from 'features/bookings/types'
-import { UseNavigationType } from 'features/navigation/RootNavigator/types'
-import { VenueBlockAddress, VenueBlockVenue } from 'features/offer/components/OfferVenueBlock/type'
-import { VenueBlockWithItinerary } from 'features/offer/components/OfferVenueBlock/VenueBlockWithItinerary'
-import { getAddress } from 'features/offer/helpers/getVenueBlockProps'
 import { offerImageContainerMarginTop } from 'features/offer/helpers/useOfferImageContainerDimensions'
 import { isCloseToBottom } from 'libs/analytics'
 import { analytics } from 'libs/analytics/provider'
 import { useFunctionOnce } from 'libs/hooks'
 import { SubcategoriesMapping } from 'libs/subcategories/types'
-import { formatFullAddress } from 'shared/address/addressFormatter'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { ErrorBanner } from 'ui/components/banners/ErrorBanner'
-import { InfoBanner } from 'ui/components/banners/InfoBanner'
 import { HeaderWithImage } from 'ui/components/headers/HeaderWithImage'
 import { useModal } from 'ui/components/modals/useModal'
-import { Separator } from 'ui/components/Separator'
-import { IdCard } from 'ui/svg/icons/IdCard'
 import { getSpacing } from 'ui/theme'
 
-const VENUE_THUMBNAIL_SIZE = getSpacing(15)
 const scrollIndicatorInsets = { right: 1 }
 
 export const BookingDetailsContent = ({
@@ -52,6 +37,7 @@ export const BookingDetailsContent = ({
   mapping: SubcategoriesMapping
   user: UserProfileResponse
 }) => {
+  const { isDesktopViewport } = useTheme()
   const { height: windowHeight } = useWindowDimensions()
   const [topBlockHeight, setTopBlockHeight] = React.useState<number>(0)
 
@@ -59,29 +45,14 @@ export const BookingDetailsContent = ({
     topBlockHeight,
     windowHeight,
   })
-  const { navigate } = useNavigation<UseNavigationType>()
-  const { address } = booking?.stock.offer ?? {}
   const { visible: cancelModalVisible, showModal: showCancelModal, hideModal } = useModal(false)
   const {
     visible: archiveModalVisible,
     showModal: showArchiveModal,
     hideModal: hideArchiveModal,
   } = useModal(false)
-  const offerFullAddress = address
-    ? formatFullAddress(address.street, address.postalCode, address.city)
-    : undefined
 
   const { offer } = booking.stock
-
-  const { hourLabel, dayLabel } = getBookingLabels(booking, properties)
-
-  const onEmailPress = () => {
-    analytics.logClickEmailOrganizer()
-  }
-  const cancelBooking = () => {
-    showCancelModal()
-    analytics.logCancelBooking(offer.id)
-  }
 
   const logConsultWholeBooking = useFunctionOnce(
     () => offer.id && analytics.logBookingDetailsScrolledToBottom(offer.id)
@@ -93,14 +64,26 @@ export const BookingDetailsContent = ({
     },
   })
 
-  const venueBlockAddress = getAddress(offer.address)
+  const cancelBooking = () => {
+    showCancelModal()
+    analytics.logCancelBooking(offer.id)
+  }
 
-  const handleOnSeeVenuePress = () => {
-    analytics.logConsultVenue({ venueId: offer.venue.id, from: 'bookings' })
-    navigate('Venue', { id: offer.venue.id })
+  const onEmailPress = () => {
+    analytics.logClickEmailOrganizer()
   }
 
   const errorBannerMessage = `Tu n’as pas le droit de céder ou de revendre ${properties.isDuo ? 'tes billets' : 'ton billet'}.`
+
+  const ticketCutout = (
+    <TicketCutout
+      properties={properties}
+      booking={booking}
+      mapping={mapping}
+      user={user}
+      setTopBlockHeight={setTopBlockHeight}
+    />
+  )
 
   return user ? (
     <MainContainer>
@@ -116,58 +99,39 @@ export const BookingDetailsContent = ({
         testID="BookingDetailsScrollView"
         bounces={false}>
         <StyledHeaderWithImage imageHeight={headerImageHeight} imageUrl={offer.image?.url} />
-        <TicketCutout
-          hour={hourLabel == '' ? undefined : hourLabel}
-          day={dayLabel == '' ? undefined : dayLabel}
-          isDuo={properties.isDuo}
-          offer={offer}
-          mapping={mapping}
-          venueInfo={
-            <VenueBlockWithItinerary
-              properties={properties}
-              offerFullAddress={offerFullAddress}
-              venue={getVenueBlockVenue(booking.stock.offer.venue)}
-              address={getVenueBlockAddress(booking.stock.offer.address)}
-              offerId={offer.id}
-              thumbnailSize={VENUE_THUMBNAIL_SIZE}
-              addressLabel={venueBlockAddress?.label ?? undefined}
-              onSeeVenuePress={offer.venue.isOpenToPublic ? handleOnSeeVenuePress : undefined}
-            />
-          }
-          title={offer.name}
-          infoBanner={
-            <InfoBanner
-              message="Tu auras besoin de ta carte d’identité pour accéder à l’évènement."
-              icon={IdCard}
-            />
-          }
-          onTopBlockLayout={setTopBlockHeight}>
-          <TicketCutoutBottom offer={offer} booking={booking} userEmail={user?.email} />
-        </TicketCutout>
-        <ErrorBannerContainer>
-          <ErrorBanner message={errorBannerMessage} />
-        </ErrorBannerContainer>
-        {booking.stock.offer.bookingContact || offer.withdrawalDetails ? (
-          <React.Fragment>
-            <StyledSeparator height={getSpacing(8)} />
-            <Container>
-              <BookingPrecisions
-                bookingContactEmail={booking.stock.offer.bookingContact}
-                withdrawalDetails={offer.withdrawalDetails}
-                onEmailPress={onEmailPress}
-              />
-            </Container>
-          </React.Fragment>
-        ) : null}
-        <StyledSeparator height={getSpacing(8)} />
-        <BookingDetailsCancelButtonContainer>
-          <BookingDetailsCancelButton
-            booking={booking}
-            onCancel={cancelBooking}
-            onTerminate={showArchiveModal}
-            fullWidth
+        {isDesktopViewport ? (
+          <BookingDetailsContentDesktop
+            headerImageHeight={headerImageHeight}
+            leftBlock={ticketCutout}
+            rightBlock={
+              <React.Fragment>
+                <ErrorBanner message={errorBannerMessage} />
+                {booking.stock.offer.bookingContact || offer.withdrawalDetails ? (
+                  <BookingPrecisions
+                    bookingContactEmail={booking.stock.offer.bookingContact}
+                    withdrawalDetails={offer.withdrawalDetails}
+                    onEmailPress={onEmailPress}
+                  />
+                ) : null}
+                <BookingDetailsCancelButton
+                  booking={booking}
+                  onCancel={cancelBooking}
+                  onTerminate={showArchiveModal}
+                  fullWidth
+                />
+              </React.Fragment>
+            }
           />
-        </BookingDetailsCancelButtonContainer>
+        ) : (
+          <BookingDetailsContentMobile
+            topBlock={ticketCutout}
+            onEmailPress={onEmailPress}
+            booking={booking}
+            errorBannerMessage={errorBannerMessage}
+            cancelBooking={cancelBooking}
+            showArchiveModal={showArchiveModal}
+          />
+        )}
         <CancelBookingModal
           visible={cancelModalVisible}
           dismissModal={hideModal}
@@ -186,37 +150,12 @@ export const BookingDetailsContent = ({
   ) : null
 }
 
-function getVenueBlockVenue(venue: BookingVenueResponse): VenueBlockVenue {
-  return venue
-}
-
-function getVenueBlockAddress(
-  address: BookingOfferResponseAddress | null | undefined
-): VenueBlockAddress | undefined {
-  return address ?? undefined
-}
-
-const StyledSeparator = styled(Separator.Horizontal)({
-  marginVertical: getSpacing(8),
-  height: getSpacing(2),
-})
-
 const MainContainer = styled.View(({ theme }) => ({
   flex: 1,
-  backgroundColor: theme.colors.white,
+  backgroundColor: theme.designSystem.color.background.default,
+  width: '100%',
 }))
 
 const StyledHeaderWithImage = styled(HeaderWithImage)({
   marginBottom: getSpacing(offerImageContainerMarginTop),
-})
-
-const Container = styled.View({
-  marginHorizontal: getSpacing(6),
-})
-const ErrorBannerContainer = styled(Container)({
-  marginTop: getSpacing(8),
-})
-
-const BookingDetailsCancelButtonContainer = styled(Container)({
-  marginBottom: getSpacing(10),
 })
