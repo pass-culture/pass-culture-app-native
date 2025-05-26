@@ -600,7 +600,7 @@ describe('BookingDetails', () => {
 
       await screen.findAllByText(ongoingBookings.stock.offer.name)
 
-      expect(screen.getByTestId('ticket-punched')).toBeOnTheScreen()
+      expect(screen.getByTestId('booking-details-ticket')).toBeOnTheScreen()
     })
 
     it('should render the itinerary button when offer is Event', async () => {

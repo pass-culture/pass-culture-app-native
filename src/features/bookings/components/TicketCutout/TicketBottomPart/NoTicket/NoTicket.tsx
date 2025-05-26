@@ -1,8 +1,8 @@
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components/native'
 
-import { TicketText } from 'features/bookings/components/TicketCutout/TicketCutoutBottom/TicketText'
-import { TicketVisual } from 'features/bookings/components/TicketCutout/TicketCutoutBottom/TicketVisual'
+import { TicketText } from 'features/bookings/components/TicketCutout/TicketBottomPart/TicketText'
+import { TicketVisual } from 'features/bookings/components/TicketCutout/TicketBottomPart/TicketVisual'
 import { BicolorCircledCheck as InitialBicolorCircledCheck } from 'ui/svg/icons/BicolorCircledCheck'
 import { getSpacing } from 'ui/theme'
 

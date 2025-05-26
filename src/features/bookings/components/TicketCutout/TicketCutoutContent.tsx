@@ -26,10 +26,11 @@ type Props = {
   venueInfo?: React.JSX.Element
   offer: BookingOfferResponse
   mapping: SubcategoriesMapping
+  display: 'punched' | 'full'
   onTopBlockLayout?: (height: number) => void
 }
 
-export const TicketCutoutContent = ({
+export const TicketContent = ({
   day,
   hour,
   isDuo,
@@ -39,10 +40,11 @@ export const TicketCutoutContent = ({
   venueInfo,
   offer,
   mapping,
+  display,
   onTopBlockLayout,
 }: Props) => {
   return (
-    <View testID="ticket-punched">
+    <View testID="booking-details-ticket">
       <TopBlock
         onLayout={(e) => {
           const { height } = e.nativeEvent.layout
@@ -76,13 +78,21 @@ export const TicketCutoutContent = ({
           {venueInfo}
         </ViewGap>
       </TopBlock>
-      <MiddleBlock>
-        <TicketCutoutLeft />
-        <ContainerStrokedLine>
+
+      {display === 'punched' ? (
+        <MiddleBlock>
+          <TicketCutoutLeft />
+          <ContainerStrokedLine>
+            <StyledStrokedLine />
+          </ContainerStrokedLine>
+          <TicketCutoutRight />
+        </MiddleBlock>
+      ) : (
+        <FullContainerStrokedLine>
           <StyledStrokedLine />
-        </ContainerStrokedLine>
-        <TicketCutoutRight />
-      </MiddleBlock>
+        </FullContainerStrokedLine>
+      )}
+
       <BottomBlock>
         {infoBanner}
         {children}
@@ -91,9 +101,16 @@ export const TicketCutoutContent = ({
   )
 }
 
+const FullContainerStrokedLine = styled.View(({ theme }) => ({
+  width: '100%',
+  backgroundColor: theme.designSystem.color.background.default,
+  paddingVertical: getSpacing(4),
+  marginVertical: getSpacing(6),
+}))
+
 const ContainerStrokedLine = styled.View(({ theme }) => ({
   flex: 1,
-  backgroundColor: theme.colors.white,
+  backgroundColor: theme.designSystem.color.background.default,
 }))
 
 const StyledStrokedLine = styled(Stroke).attrs(({ theme }) => ({
