@@ -9,9 +9,9 @@ import { REM_TO_PX } from 'ui/theme/constants'
 
 // Use with Ul or VerticalUl to be accessible in web
 export const BulletListItem: React.FC<{
-  text?: string
+  text?: string | React.ReactNode
   spacing?: number
-  nestedListTexts?: string[]
+  nestedListTexts?: string[] | React.ReactNode[]
   children?: React.ReactNode
 }> = ({ text, spacing, nestedListTexts, children }) => {
   return (
