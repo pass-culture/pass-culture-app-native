@@ -7,19 +7,21 @@ import { checkAccessibilityFor, render, screen } from 'tests/utils/web'
 
 import { SiteMapScreen } from './SiteMapScreen'
 
+jest.mock('libs/firebase/analytics/analytics')
 jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
+jest.mock('libs/subcategories/useSubcategories')
 
 jest.mock('features/auth/context/AuthContext', () => ({
   useAuthContext: jest.fn(() => ({ isLoggedIn: true })),
 }))
 
-const mockSearchState = initialSearchState
+const mockUseSearch = jest.fn(() => ({
+  searchState: initialSearchState,
+  dispatch: jest.fn(),
+  hideSuggestions: jest.fn(),
+}))
 jest.mock('features/search/context/SearchWrapper', () => ({
-  useSearch: () => ({
-    searchState: mockSearchState,
-    dispatch: jest.fn(),
-    hideSuggestions: jest.fn(),
-  }),
+  useSearch: () => mockUseSearch(),
 }))
 
 describe('<SiteMapScreen />', () => {
