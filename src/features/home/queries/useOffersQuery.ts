@@ -6,14 +6,12 @@ import { OfferModuleQuery } from 'libs/algolia/types'
 import { QueryKeys } from 'libs/queryKeys'
 
 export const useOffersQuery = (moduleId: string, queries: OfferModuleQuery[]) => {
-  const offersQuery = async () => {
-    const offersResultList = await fetchCarouselVideoOffers(queries)
-    return offersResultList.filter(searchResponsePredicate)
-  }
-
   return useQuery({
     queryKey: [QueryKeys.VIDEO_CAROUSEL_OFFERS, moduleId],
-    queryFn: offersQuery,
+    queryFn: async () => fetchCarouselVideoOffers(queries),
     enabled: queries.length > 0,
+    select(offersResultList) {
+      return offersResultList.filter(searchResponsePredicate)
+    },
   })
 }
