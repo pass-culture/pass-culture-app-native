@@ -2,7 +2,7 @@ import React from 'react'
 import { Defs, LinearGradient, Stop } from 'react-native-svg'
 import { v1 as uuidv1 } from 'uuid'
 
-import { ColorsTypeLegacy } from 'ui/svg/icons/types'
+import { ColorsTypeLegacy } from 'theme/types'
 
 export const svgIdentifier = (prefix?: string, suffix?: string) => {
   const uuid = uuidv1()

@@ -11,7 +11,7 @@ import { ButtonInsideText } from 'ui/components/buttons/buttonInsideText/ButtonI
 import { Separator } from 'ui/components/Separator'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
 import { ExternalSiteFilled } from 'ui/svg/icons/ExternalSiteFilled'
-import { Spacer, Typo, getSpacing } from 'ui/theme'
+import { Typo, getSpacing } from 'ui/theme'
 
 const ConfigItem = ({ label, value }: { label: string; value: GenericRemoteConfig }) => (
   <React.Fragment>
@@ -86,13 +86,13 @@ export const CheatcodesScreenRemoteConfig = () => {
           externalNav={{ url: 'https://passculture.app/cheatcodes/other/remote-config' }}
         />
       ) : null}
-      <Spacer.Column numberOfSpaces={6} />
 
       <FlatList
         data={sortedRemoteConfigEntries}
         keyExtractor={([label]) => label}
         renderItem={renderConfigItem}
-        ItemSeparatorComponent={() => <StyledSeparator />}
+        ItemSeparatorComponent={ItemSeparator}
+        contentContainerStyle={{ marginTop: getSpacing(6) }}
       />
     </CheatcodesTemplateScreen>
   )
@@ -105,3 +105,5 @@ const StyledSeparator = styled(Separator.Horizontal)({
 const ButtonInsideTextBlack = styled(ButtonInsideText).attrs(({ theme }) => ({
   buttonColor: theme.colors.black,
 }))``
+
+const ItemSeparator = () => <StyledSeparator />

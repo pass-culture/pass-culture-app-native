@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { render, fireEvent, screen } from 'tests/utils'
+import { fireEvent, render, screen } from 'tests/utils'
 import { Close } from 'ui/svg/icons/Close'
 
 import { SectionRowContent } from './SectionRowContent'
@@ -13,6 +13,8 @@ describe('SectionRowContent', () => {
       <SectionRowContent type="clickable" title="Clickable title" icon={Close} onPress={onPress} />
     )
 
+    // userEvent.press not working correctly here
+    // eslint-disable-next-line local-rules/no-fireEvent
     fireEvent.press(screen.getByText('Clickable title'))
 
     expect(onPress).toHaveBeenCalledTimes(1)

@@ -1,4 +1,5 @@
 import { initialSearchState } from 'features/search/context/reducer'
+import { ISearchContext } from 'features/search/context/SearchWrapper'
 import { analytics } from 'libs/analytics/provider'
 import { mockedSuggestedVenue } from 'libs/venue/fixtures/mockedSuggestedVenues'
 import { act, renderHook } from 'tests/utils'
@@ -11,13 +12,15 @@ jest.useFakeTimers()
 jest.mock('ui/hooks/useDebounceValue', () => ({
   useDebounceValue: (value: string) => value,
 }))
-const mockSearchState = initialSearchState
+
 const mockStateDispatch = jest.fn()
+const initialMockUseSearch = {
+  searchState: initialSearchState,
+  dispatch: mockStateDispatch,
+}
+const mockUseSearch: jest.Mock<Partial<ISearchContext>> = jest.fn(() => initialMockUseSearch)
 jest.mock('features/search/context/SearchWrapper', () => ({
-  useSearch: () => ({
-    searchState: mockSearchState,
-    dispatch: mockStateDispatch,
-  }),
+  useSearch: () => mockUseSearch(),
 }))
 
 const dismissModal: VoidFunction = jest.fn()
@@ -42,146 +45,179 @@ const selectedState = {
 }
 
 describe('useVenueModal', () => {
-  it('when start it should return falsy state', () => {
-    const { result } = renderHook(useVenueModal, { initialProps: { dismissModal } })
-
-    const { isQueryProvided, shouldShowSuggestedVenues, isSearchButtonDisabled, venueQuery } =
-      result.current
-
-    expect({
-      isQueryProvided,
-      shouldShowSuggestedVenues,
-      isSearchButtonDisabled,
-      venueQuery,
-    }).toStrictEqual(falsyState)
-  })
-
-  it('when provide a query it should change state for the UI', async () => {
-    const { result } = renderHook(useVenueModal, {
-      initialProps: { dismissModal },
+  describe('In initial state', () => {
+    beforeEach(() => {
+      mockUseSearch.mockReturnValueOnce(initialMockUseSearch)
     })
 
-    await act(async () => {
-      result.current.doChangeVenue(venue.label)
+    it('when start it should return falsy state', () => {
+      const { result } = renderHook(useVenueModal, { initialProps: { dismissModal } })
+
+      const { isQueryProvided, shouldShowSuggestedVenues, isSearchButtonDisabled, venueQuery } =
+        result.current
+
+      expect({
+        isQueryProvided,
+        shouldShowSuggestedVenues,
+        isSearchButtonDisabled,
+        venueQuery,
+      }).toStrictEqual(falsyState)
     })
 
-    const { isQueryProvided, shouldShowSuggestedVenues, isSearchButtonDisabled, venueQuery } =
-      result.current
+    it('when provide a query it should change state for the UI', async () => {
+      const { result } = renderHook(useVenueModal, {
+        initialProps: { dismissModal },
+      })
 
-    expect({
-      isQueryProvided,
-      shouldShowSuggestedVenues,
-      isSearchButtonDisabled,
-      venueQuery,
-    }).toStrictEqual(inputState)
-  })
+      await act(async () => {
+        result.current.doChangeVenue(venue.label)
+      })
 
-  it('when select a venue it should change state for the UI', async () => {
-    const { result } = renderHook(useVenueModal, { initialProps: { dismissModal } })
+      const { isQueryProvided, shouldShowSuggestedVenues, isSearchButtonDisabled, venueQuery } =
+        result.current
 
-    await act(async () => {
-      result.current.doChangeVenue(venue.label)
-      result.current.doSetSelectedVenue(venue)
+      expect({
+        isQueryProvided,
+        shouldShowSuggestedVenues,
+        isSearchButtonDisabled,
+        venueQuery,
+      }).toStrictEqual(inputState)
     })
 
-    const { isQueryProvided, shouldShowSuggestedVenues, isSearchButtonDisabled, venueQuery } =
-      result.current
+    it('when select a venue it should change state for the UI', async () => {
+      const { result } = renderHook(useVenueModal, { initialProps: { dismissModal } })
 
-    expect({
-      isQueryProvided,
-      shouldShowSuggestedVenues,
-      isSearchButtonDisabled,
-      venueQuery,
-    }).toStrictEqual(selectedState)
-  })
+      await act(async () => {
+        result.current.doChangeVenue(venue.label)
+        result.current.doSetSelectedVenue(venue)
+      })
 
-  it('when select a venue and reset it should reset the UI', async () => {
-    const { result } = renderHook(useVenueModal, { initialProps: { dismissModal } })
+      const { isQueryProvided, shouldShowSuggestedVenues, isSearchButtonDisabled, venueQuery } =
+        result.current
 
-    await act(async () => {
-      result.current.doChangeVenue(venue.label)
-      result.current.doSetSelectedVenue(venue)
+      expect({
+        isQueryProvided,
+        shouldShowSuggestedVenues,
+        isSearchButtonDisabled,
+        venueQuery,
+      }).toStrictEqual(selectedState)
     })
 
-    await act(async () => {
-      result.current.doResetVenue()
+    it('when select a venue and reset it should reset the UI', async () => {
+      const { result } = renderHook(useVenueModal, { initialProps: { dismissModal } })
+
+      await act(async () => {
+        result.current.doChangeVenue(venue.label)
+        result.current.doSetSelectedVenue(venue)
+      })
+
+      await act(async () => {
+        result.current.doResetVenue()
+      })
+
+      const { isQueryProvided, shouldShowSuggestedVenues, isSearchButtonDisabled, venueQuery } =
+        result.current
+
+      expect({
+        isQueryProvided,
+        shouldShowSuggestedVenues,
+        isSearchButtonDisabled,
+        venueQuery,
+      }).toStrictEqual(falsyState)
     })
 
-    const { isQueryProvided, shouldShowSuggestedVenues, isSearchButtonDisabled, venueQuery } =
-      result.current
+    it('when select a venue and validate it should call the search hook and modal dismiss', async () => {
+      const { result } = renderHook(useVenueModal, { initialProps: { dismissModal } })
 
-    expect({
-      isQueryProvided,
-      shouldShowSuggestedVenues,
-      isSearchButtonDisabled,
-      venueQuery,
-    }).toStrictEqual(falsyState)
-  })
+      await act(async () => {
+        result.current.doChangeVenue(venue.label)
+        result.current.doSetSelectedVenue(venue)
+      })
 
-  it('when select a venue and validate it should call the search hook and modal dismiss', async () => {
-    const { result } = renderHook(useVenueModal, { initialProps: { dismissModal } })
+      await act(async () => {
+        result.current.doApplySearch()
+      })
 
-    await act(async () => {
-      result.current.doChangeVenue(venue.label)
-      result.current.doSetSelectedVenue(venue)
+      expect(dismissModal).toHaveBeenCalledWith()
     })
 
-    await act(async () => {
-      result.current.doApplySearch()
-    })
+    it('when select a venue and validate it should apply search to the context', async () => {
+      const { result } = renderHook(useVenueModal, { initialProps: { dismissModal } })
 
-    expect(dismissModal).toHaveBeenCalledWith()
-  })
+      await act(async () => {
+        result.current.doChangeVenue(venue.label)
+        result.current.doSetSelectedVenue(venue)
+      })
+      await act(async () => {
+        result.current.doApplySearch()
+      })
 
-  it('when select a venue and validate it should apply search to the context', async () => {
-    const { result } = renderHook(useVenueModal, { initialProps: { dismissModal } })
-
-    await act(async () => {
-      result.current.doChangeVenue(venue.label)
-      result.current.doSetSelectedVenue(venue)
-    })
-    await act(async () => {
-      result.current.doApplySearch()
-    })
-
-    expect(mockStateDispatch).toHaveBeenCalledWith({
-      type: 'SET_STATE',
-      payload: {
-        ...initialSearchState,
-        venue: venue,
-      },
-    })
-  })
-
-  it('when nothing is to be search then search cannot be done', async () => {
-    const { result } = renderHook(useVenueModal, { initialProps: { dismissModal } })
-
-    await act(async () => {
-      result.current.doApplySearch()
-    })
-
-    expect(mockStateDispatch).not.toHaveBeenCalledWith()
-  })
-
-  it('should trigger logEvent "logUserSetVenue" when doApplySearch', async () => {
-    const { result } = renderHook(({ dismissModal }) => useVenueModal({ dismissModal }), {
-      initialProps: {
-        dismissModal: dismissModal,
-      },
-    })
-
-    await act(() => {
-      result.current.doSetSelectedVenue({
-        label: 'venueLabel',
-        info: 'info',
-        venueId: 1234,
-        isOpenToPublic: true,
+      expect(mockStateDispatch).toHaveBeenCalledWith({
+        type: 'SET_STATE',
+        payload: {
+          ...initialSearchState,
+          venue: venue,
+        },
       })
     })
-    await act(() => {
-      result.current.doApplySearch()
+
+    it('when nothing is to be search then search cannot be done', async () => {
+      const { result } = renderHook(useVenueModal, { initialProps: { dismissModal } })
+
+      await act(async () => {
+        result.current.doApplySearch()
+      })
+
+      expect(mockStateDispatch).not.toHaveBeenCalledWith()
     })
 
-    expect(analytics.logUserSetVenue).toHaveBeenCalledWith({ venueLabel: 'venueLabel' })
+    it('should trigger logEvent "logUserSetVenue" when doApplySearch', async () => {
+      const { result } = renderHook(({ dismissModal }) => useVenueModal({ dismissModal }), {
+        initialProps: {
+          dismissModal: dismissModal,
+        },
+      })
+
+      await act(() => {
+        result.current.doSetSelectedVenue({
+          label: 'venueLabel',
+          info: 'info',
+          venueId: 1234,
+          isOpenToPublic: true,
+        })
+      })
+      await act(() => {
+        result.current.doApplySearch()
+      })
+
+      expect(analytics.logUserSetVenue).toHaveBeenCalledWith({ venueLabel: 'venueLabel' })
+    })
+
+    it('should reset search when pressing reset button', async () => {
+      mockUseSearch.mockReturnValueOnce({
+        ...initialMockUseSearch,
+        searchState: {
+          ...initialSearchState,
+          venue,
+        },
+      })
+
+      const { result } = renderHook(({ dismissModal }) => useVenueModal({ dismissModal }), {
+        initialProps: {
+          dismissModal: dismissModal,
+        },
+      })
+
+      await act(() => {
+        result.current.doResetVenue()
+      })
+
+      expect(mockStateDispatch).toHaveBeenCalledWith({
+        type: 'SET_STATE',
+        payload: expect.objectContaining({
+          venue: undefined,
+        }),
+      })
+    })
   })
 })

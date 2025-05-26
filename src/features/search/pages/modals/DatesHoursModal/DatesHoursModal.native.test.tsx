@@ -6,14 +6,14 @@ import { v4 as uuidv4 } from 'uuid'
 import { initialSearchState } from 'features/search/context/reducer'
 import { DATE_FILTER_OPTIONS, FilterBehaviour } from 'features/search/enums'
 import {
+  DATE_TYPES,
   DatesHoursModal,
   DatesHoursModalProps,
-  DATE_TYPES,
   RadioButtonDate,
 } from 'features/search/pages/modals/DatesHoursModal/DatesHoursModal'
 import { SearchState } from 'features/search/types'
 import { formatToCompleteFrenchDate } from 'libs/parsers/formatDates'
-import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
+import { act, fireEvent, render, screen, userEvent, waitFor } from 'tests/utils'
 
 const searchId = uuidv4()
 const searchState = { ...initialSearchState, searchId }
@@ -38,6 +38,10 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
     return Component
   }
 })
+
+const user = userEvent.setup()
+
+jest.useFakeTimers()
 
 describe('<DatesHoursModal/>', () => {
   beforeAll(() => {
@@ -64,9 +68,7 @@ describe('<DatesHoursModal/>', () => {
 
       expect(screen.queryByText('Choisis une date')).not.toBeOnTheScreen()
 
-      await act(async () => {
-        fireEvent.press(screen.getByText('Date précise'))
-      })
+      await user.press(screen.getByText('Date précise'))
 
       expect(screen.getByText('Choisis une date')).toBeOnTheScreen()
     })
@@ -77,9 +79,8 @@ describe('<DatesHoursModal/>', () => {
         date: { option: DATE_FILTER_OPTIONS.USER_PICK, selectedDate: TOMORROW.toISOString() },
       }
       renderDatesHoursModal()
-      await act(async () => {
-        expect(screen.getByText('Samedi 29 octobre 2022')).toBeOnTheScreen()
-      })
+
+      expect(await screen.findByText('Samedi 29 octobre 2022')).toBeOnTheScreen()
     })
 
     it('by default time range defined in search state', async () => {
@@ -89,9 +90,7 @@ describe('<DatesHoursModal/>', () => {
       }
       renderDatesHoursModal()
 
-      await act(async () => {
-        expect(screen.getByText(`18\u00a0h et 22\u00a0h`)).toBeOnTheScreen()
-      })
+      expect(await screen.findByText(`18\u00a0h et 22\u00a0h`)).toBeOnTheScreen()
     })
   })
 
@@ -106,15 +105,11 @@ describe('<DatesHoursModal/>', () => {
       `${RadioButtonDate.PRECISE_DATE} ${formatToCompleteFrenchDate(TODAY)}`
     )
 
-    await act(async () => {
-      fireEvent.press(radioButton)
-    })
+    await user.press(radioButton)
 
     expect(screen.getByText('Choisis une date')).toBeOnTheScreen()
 
-    await act(async () => {
-      fireEvent.press(radioButton)
-    })
+    await user.press(radioButton)
 
     expect(screen.getByText('Choisis une date')).toBeOnTheScreen()
   })
@@ -127,16 +122,12 @@ describe('<DatesHoursModal/>', () => {
       renderDatesHoursModal()
 
       const toggleDate = screen.getByTestId('Interrupteur date')
-      await act(async () => {
-        fireEvent.press(toggleDate)
-      })
+      await user.press(toggleDate)
 
       expect(toggleDate.props.accessibilityState.checked).toEqual(true)
 
       const resetButton = screen.getByText('Réinitialiser')
-      await act(async () => {
-        fireEvent.press(resetButton)
-      })
+      await user.press(resetButton)
 
       expect(toggleDate.props.accessibilityState.checked).toEqual(false)
     })
@@ -148,16 +139,12 @@ describe('<DatesHoursModal/>', () => {
       renderDatesHoursModal()
 
       const toggleHour = screen.getByTestId('Interrupteur hour')
-      await act(async () => {
-        fireEvent.press(toggleHour)
-      })
+      await user.press(toggleHour)
 
       expect(toggleHour.props.accessibilityState.checked).toEqual(true)
 
       const resetButton = screen.getByText('Réinitialiser')
-      await act(async () => {
-        fireEvent.press(resetButton)
-      })
+      await user.press(resetButton)
 
       expect(toggleHour.props.accessibilityState.checked).toEqual(false)
     })
@@ -173,20 +160,19 @@ describe('<DatesHoursModal/>', () => {
         renderDatesHoursModal()
 
         const toggleDate = screen.getByTestId('Interrupteur date')
-        await act(async () => {
-          fireEvent.press(toggleDate)
-        })
+        await user.press(toggleDate)
 
         const radioButton = screen.getByTestId(option)
-        await act(async () => {
-          fireEvent.press(radioButton)
-        })
+        await user.press(radioButton)
 
         expect(radioButton.props.accessibilityState).toEqual({ checked: true })
 
-        const resetButton = screen.getByText('Réinitialiser')
+        const resetButton = await screen.findByText('Réinitialiser')
         await act(async () => {
+          // userEvent.press not working correctly here
+          // eslint-disable-next-line local-rules/no-fireEvent
           fireEvent.press(resetButton)
+          // eslint-disable-next-line local-rules/no-fireEvent
           fireEvent.press(toggleDate)
         })
 
@@ -203,19 +189,18 @@ describe('<DatesHoursModal/>', () => {
         renderDatesHoursModal()
 
         const toggleDate = screen.getByTestId('Interrupteur date')
-        await act(async () => {
-          fireEvent.press(toggleDate)
-        })
+        await user.press(toggleDate)
 
         const radioButton = screen.getByTestId(option)
-        await act(async () => {
-          fireEvent.press(radioButton)
-        })
+        await user.press(radioButton)
 
         expect(radioButton.props.accessibilityState).toEqual({ checked: true })
 
         await act(async () => {
+          // userEvent.press not working correctly here
+          // eslint-disable-next-line local-rules/no-fireEvent
           fireEvent.press(toggleDate)
+          // eslint-disable-next-line local-rules/no-fireEvent
           fireEvent.press(toggleDate)
         })
 
@@ -230,9 +215,7 @@ describe('<DatesHoursModal/>', () => {
       renderDatesHoursModal()
 
       const toggleHour = screen.getByTestId('Interrupteur hour')
-      await act(async () => {
-        fireEvent.press(toggleHour)
-      })
+      await user.press(toggleHour)
 
       expect(toggleHour.props.accessibilityState.checked).toEqual(true)
 
@@ -244,12 +227,9 @@ describe('<DatesHoursModal/>', () => {
       expect(screen.getByText(`18\u00a0h et 23\u00a0h`)).toBeOnTheScreen()
 
       const resetButton = screen.getByText('Réinitialiser')
-      await act(async () => {
-        fireEvent.press(resetButton)
-      })
-      await act(async () => {
-        fireEvent.press(toggleHour)
-      })
+      await user.press(resetButton)
+
+      await user.press(toggleHour)
 
       expect(screen.getByText(`8\u00a0h et 22\u00a0h`)).toBeOnTheScreen()
     })
@@ -261,9 +241,7 @@ describe('<DatesHoursModal/>', () => {
       renderDatesHoursModal()
 
       const toggleHour = screen.getByTestId('Interrupteur hour')
-      await act(async () => {
-        fireEvent.press(toggleHour)
-      })
+      await user.press(toggleHour)
 
       await act(async () => {
         const slider = screen.getByTestId('slider').children[0] as ReactTestInstance
@@ -272,12 +250,8 @@ describe('<DatesHoursModal/>', () => {
 
       expect(screen.getByText(`18\u00a0h et 23\u00a0h`)).toBeOnTheScreen()
 
-      await act(async () => {
-        fireEvent.press(toggleHour)
-      })
-      await act(async () => {
-        fireEvent.press(toggleHour)
-      })
+      await user.press(toggleHour)
+      await user.press(toggleHour)
 
       expect(screen.getByText(`8\u00a0h et 22\u00a0h`)).toBeOnTheScreen()
     })
@@ -286,12 +260,10 @@ describe('<DatesHoursModal/>', () => {
   it('should close the modal when pressing previous button', async () => {
     renderDatesHoursModal()
 
-    await waitFor(() => {
-      expect(screen.getByLabelText('Rechercher')).toBeEnabled()
-    })
+    await screen.findByLabelText('Rechercher')
 
     const previousButton = screen.getByTestId('Fermer')
-    fireEvent.press(previousButton)
+    await user.press(previousButton)
 
     expect(mockHideModal).toHaveBeenCalledTimes(1)
   })
@@ -366,16 +338,20 @@ describe('<DatesHoursModal/>', () => {
 
       const toggleDate = screen.getByTestId('Interrupteur date')
       await act(async () => {
+        // With userEvent, test too long to execute for the CI
+        // eslint-disable-next-line local-rules/no-fireEvent
         fireEvent.press(toggleDate)
       })
 
       const radioButton = screen.getByText(RadioButtonDate.WEEK)
       await act(async () => {
+        // eslint-disable-next-line local-rules/no-fireEvent
         fireEvent.press(radioButton)
       })
 
       const searchButton = screen.getByText('Appliquer le filtre')
       await act(async () => {
+        // eslint-disable-next-line local-rules/no-fireEvent
         fireEvent.press(searchButton)
       })
 
@@ -402,13 +378,9 @@ describe('<DatesHoursModal/>', () => {
         }
         renderDatesHoursModal()
 
-        const searchButton = screen.getByLabelText('Rechercher')
-        await waitFor(() => {
-          expect(searchButton).toBeEnabled()
-        })
-        await act(async () => {
-          fireEvent.press(searchButton)
-        })
+        const searchButton = await screen.findByLabelText('Rechercher')
+
+        await user.press(searchButton)
 
         expect(mockDispatch).toHaveBeenCalledWith({
           type: 'SET_STATE',
@@ -426,16 +398,20 @@ describe('<DatesHoursModal/>', () => {
 
           const toggleDate = screen.getByTestId('Interrupteur date')
           await act(async () => {
+            // With userEvent, test too long to execute for the CI
+            // eslint-disable-next-line local-rules/no-fireEvent
             fireEvent.press(toggleDate)
           })
 
           const radioButton = screen.getByTestId(label)
           await act(async () => {
+            // eslint-disable-next-line local-rules/no-fireEvent
             fireEvent.press(radioButton)
           })
 
           const searchButton = screen.getByText('Rechercher')
           await act(async () => {
+            // eslint-disable-next-line local-rules/no-fireEvent
             fireEvent.press(searchButton)
           })
 
@@ -457,6 +433,8 @@ describe('<DatesHoursModal/>', () => {
 
         const toggleHour = screen.getByTestId('Interrupteur hour')
         await act(async () => {
+          // With userEvent, test too long to execute for the CI
+          // eslint-disable-next-line local-rules/no-fireEvent
           fireEvent.press(toggleHour)
         })
 
@@ -467,6 +445,7 @@ describe('<DatesHoursModal/>', () => {
 
         const searchButton = screen.getByText('Rechercher')
         await act(async () => {
+          // eslint-disable-next-line local-rules/no-fireEvent
           fireEvent.press(searchButton)
         })
 
@@ -487,13 +466,8 @@ describe('<DatesHoursModal/>', () => {
         }
         renderDatesHoursModal()
 
-        const searchButton = screen.getByLabelText('Rechercher')
-        await waitFor(() => {
-          expect(searchButton).toBeEnabled()
-        })
-        await act(async () => {
-          fireEvent.press(searchButton)
-        })
+        const searchButton = await screen.findByLabelText('Rechercher')
+        await user.press(searchButton)
 
         expect(mockDispatch).toHaveBeenCalledWith({
           type: 'SET_STATE',
@@ -514,12 +488,8 @@ describe('<DatesHoursModal/>', () => {
         onClose: mockOnClose,
       })
 
-      await waitFor(() => {
-        expect(screen.getByLabelText('Appliquer le filtre')).toBeEnabled()
-      })
-
       const closeButton = screen.getByTestId('Fermer')
-      fireEvent.press(closeButton)
+      await user.press(closeButton)
 
       expect(mockOnClose).toHaveBeenCalledTimes(1)
     })
@@ -527,12 +497,8 @@ describe('<DatesHoursModal/>', () => {
     it('should only close the modal when pressing close button when the modal is opening from search results', async () => {
       renderDatesHoursModal()
 
-      await waitFor(() => {
-        expect(screen.getByLabelText('Rechercher')).toBeEnabled()
-      })
-
       const closeButton = screen.getByTestId('Fermer')
-      fireEvent.press(closeButton)
+      await user.press(closeButton)
 
       expect(mockOnClose).not.toHaveBeenCalled()
     })

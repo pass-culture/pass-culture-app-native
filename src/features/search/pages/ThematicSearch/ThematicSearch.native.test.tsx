@@ -218,6 +218,7 @@ describe('<ThematicSearch/>', () => {
 
         expect(mockUseGtlPlaylist).toHaveBeenCalledWith({
           adaptPlaylistParameters: expect.any(Function),
+          queryKey: 'THEMATIC_SEARCH_BOOKS_GTL_PLAYLISTS',
           isUserUnderage: false,
           searchIndex: env.ALGOLIA_OFFERS_INDEX_NAME_B,
           searchGroupLabel: 'Livres',

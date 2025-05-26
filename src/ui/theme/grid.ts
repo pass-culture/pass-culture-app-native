@@ -15,14 +15,12 @@ export const GUTTER_DP = 16
 export const LENGTH_XXS = PixelRatio.roundToNearestPixel(4 * MARGIN_DP)
 export const LENGTH_XS = PixelRatio.roundToNearestPixel(6 * MARGIN_DP)
 export const LENGTH_S = PixelRatio.roundToNearestPixel(7 * MARGIN_DP)
-export const LENGTH_M = PixelRatio.roundToNearestPixel(9 * MARGIN_DP)
+export const LENGTH_M = PixelRatio.roundToNearestPixel(10 * MARGIN_DP)
 export const LENGTH_L = PixelRatio.roundToNearestPixel(12 * MARGIN_DP)
-export const LENGTH_XL = PixelRatio.roundToNearestPixel(15 * MARGIN_DP)
 
 // Ratios used for homepage modules (height / width). Source: Zeplin
 export const RATIO_BUSINESS = 1 / 3
 export const RATIO_HOME_IMAGE = 2 / 3
-export const RATIO_EXCLU = 5 / 6
 export const RATIO_MARKETING_BLOCK = 5 / 4
 
 /**

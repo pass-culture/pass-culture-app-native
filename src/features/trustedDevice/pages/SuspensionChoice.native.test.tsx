@@ -11,7 +11,7 @@ import { FetchError, MonitoringError } from 'libs/monitoring/errors'
 import { eventMonitoring } from 'libs/monitoring/services'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, fireEvent, render, screen, waitFor } from 'tests/utils'
+import { render, screen, userEvent } from 'tests/utils'
 import { SNACK_BAR_TIME_OUT } from 'ui/components/snackBar/SnackBarContext'
 
 import { SuspensionChoice } from './SuspensionChoice'
@@ -40,6 +40,9 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
   }
 })
 
+const user = userEvent.setup()
+jest.useFakeTimers()
+
 describe('<SuspensionChoice/>', () => {
   it('should match snapshot', async () => {
     renderSuspensionChoice()
@@ -54,11 +57,9 @@ describe('<SuspensionChoice/>', () => {
     renderSuspensionChoice()
 
     const acceptSuspensionButton = screen.getByText('Oui, suspendre mon compte')
-    fireEvent.press(acceptSuspensionButton)
+    await user.press(acceptSuspensionButton)
 
-    await waitFor(() => {
-      expect(navigate).toHaveBeenNthCalledWith(1, 'SuspiciousLoginSuspendedAccount')
-    })
+    expect(navigate).toHaveBeenNthCalledWith(1, 'SuspiciousLoginSuspendedAccount')
   })
 
   it('should show snackbar on suspension error', async () => {
@@ -66,14 +67,12 @@ describe('<SuspensionChoice/>', () => {
     renderSuspensionChoice()
 
     const acceptSuspensionButton = screen.getByText('Oui, suspendre mon compte')
-    fireEvent.press(acceptSuspensionButton)
+    await user.press(acceptSuspensionButton)
 
-    await waitFor(() => {
-      expect(mockShowErrorSnackBar).toHaveBeenCalledWith({
-        message:
-          'Une erreur est survenue. Pour suspendre ton compte, contacte le support par e-mail.',
-        timeout: SNACK_BAR_TIME_OUT,
-      })
+    expect(mockShowErrorSnackBar).toHaveBeenCalledWith({
+      message:
+        'Une erreur est survenue. Pour suspendre ton compte, contacte le support par e-mail.',
+      timeout: SNACK_BAR_TIME_OUT,
     })
   })
 
@@ -91,7 +90,7 @@ describe('<SuspensionChoice/>', () => {
 
       const acceptSuspensionButton = screen.getByText('Oui, suspendre mon compte')
 
-      await act(async () => fireEvent.press(acceptSuspensionButton))
+      await user.press(acceptSuspensionButton)
 
       expect(eventMonitoring.captureException).toHaveBeenCalledTimes(0)
     })
@@ -115,7 +114,7 @@ describe('<SuspensionChoice/>', () => {
 
       const acceptSuspensionButton = screen.getByText('Oui, suspendre mon compte')
 
-      await act(async () => fireEvent.press(acceptSuspensionButton))
+      await user.press(acceptSuspensionButton)
 
       expect(eventMonitoring.captureException).toHaveBeenNthCalledWith(
         1,
@@ -138,9 +137,7 @@ describe('<SuspensionChoice/>', () => {
     renderSuspensionChoice()
 
     const acceptSuspensionButton = screen.getByText('Oui, suspendre mon compte')
-    fireEvent.press(acceptSuspensionButton)
-
-    await act(async () => {})
+    await user.press(acceptSuspensionButton)
 
     expect(eventMonitoring.captureException).toHaveBeenCalledWith(error, undefined)
   })
@@ -149,31 +146,29 @@ describe('<SuspensionChoice/>', () => {
     renderSuspensionChoice()
 
     const contactSupportButton = screen.getByText('Contacter le service fraude')
-    fireEvent.press(contactSupportButton)
+    await user.press(contactSupportButton)
 
-    await waitFor(() => {
-      expect(openUrl).toHaveBeenCalledWith(
-        `mailto:service.fraude@test.passculture.app`,
-        undefined,
-        true
-      )
-    })
+    expect(openUrl).toHaveBeenCalledWith(
+      `mailto:service.fraude@test.passculture.app`,
+      undefined,
+      true
+    )
   })
 
-  it('should log analytics when clicking on "Contacter le service fraude" button', () => {
+  it('should log analytics when clicking on "Contacter le service fraude" button', async () => {
     renderSuspensionChoice()
 
     const contactSupportButton = screen.getByText('Contacter le service fraude')
-    fireEvent.press(contactSupportButton)
+    await user.press(contactSupportButton)
 
     expect(analytics.logContactFraudTeam).toHaveBeenCalledWith({ from: 'suspensionchoice' })
   })
 
-  it('should open CGU url when clicking on "conditions générales d’utilisation" button', () => {
+  it('should open CGU url when clicking on "conditions générales d’utilisation" button', async () => {
     renderSuspensionChoice()
 
     const cguButton = screen.getByText('conditions générales d’utilisation')
-    fireEvent.press(cguButton)
+    await user.press(cguButton)
 
     expect(openUrl).toHaveBeenNthCalledWith(1, env.CGU_LINK, undefined, true)
   })

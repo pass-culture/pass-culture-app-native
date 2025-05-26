@@ -260,6 +260,25 @@ describe('<CategoriesModal/>', () => {
       expect(defaultCategoryFilterCheckbox).toHaveProp('isSelected', true)
     })
 
+    it('should execute search when pressing reset button', async () => {
+      renderCategories()
+
+      const button = await screen.findByText('Réinitialiser')
+      await user.press(button)
+
+      const expectedSearchParams: SearchState = {
+        ...searchState,
+        offerCategories: [],
+        offerNativeCategories: [],
+        offerGenreTypes: [],
+      }
+
+      expect(mockDispatch).toHaveBeenCalledWith({
+        type: 'SET_STATE',
+        payload: expectedSearchParams,
+      })
+    })
+
     describe('When wipDisplaySearchNbFacetResults feature flag is activated', () => {
       beforeEach(() => {
         setFeatureFlags([RemoteStoreFeatureFlags.WIP_DISPLAY_SEARCH_NB_FACET_RESULTS])

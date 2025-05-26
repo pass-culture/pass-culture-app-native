@@ -494,14 +494,14 @@ exports[`VideoModal should render correctly if modal visible 1`] = `
                     },
                     {},
                     {
-                      "alignItems": "flex-start",
-                      "backgroundColor": "#ffffff",
-                      "borderColor": "#CBCDD2",
-                      "borderRadius": 8,
-                      "borderStyle": "solid",
-                      "borderWidth": 1,
-                      "height": 140,
-                      "overflow": "hidden",
+                      "borderRadius": 12,
+                      "shadowColor": "#161617",
+                      "shadowOffset": {
+                        "height": 12,
+                        "width": 0,
+                      },
+                      "shadowOpacity": 0.15,
+                      "shadowRadius": 48,
                     },
                   ],
                   {
@@ -512,11 +512,26 @@ exports[`VideoModal should render correctly if modal visible 1`] = `
               testID="videoMonoOfferTile"
             >
               <View
+                accessibilityLabel="Découvre l’offre exclusive "La nuit des temps" de la catégorie "Livre". Prix : 0,28 €."
+                shouldFixHeight={false}
                 style={
                   [
                     {
-                      "alignItems": "center",
+                      "backgroundColor": "#ffffff",
+                      "borderBottomLeftRadius": 12,
+                      "borderBottomRightRadius": 12,
+                      "borderColor": "#CBCDD2",
+                      "borderTopLeftRadius": 12,
+                      "borderTopRightRadius": 12,
+                      "borderWidth": 1,
                       "flexDirection": "row",
+                      "flexWrap": "wrap",
+                      "gap": 8,
+                      "height": "auto",
+                      "paddingBottom": 16,
+                      "paddingLeft": 16,
+                      "paddingRight": 16,
+                      "paddingTop": 16,
                     },
                   ]
                 }
@@ -525,22 +540,20 @@ exports[`VideoModal should render correctly if modal visible 1`] = `
                   style={
                     [
                       {
-                        "marginBottom": 16,
-                        "marginLeft": 16,
-                        "marginRight": 16,
-                        "marginTop": 16,
+                        "justifyContent": "center",
                       },
                     ]
                   }
                 >
                   <View
-                    size="medium"
+                    borderRadius={5}
+                    size="small"
                     style={
                       [
                         {
                           "backgroundColor": "#ffffff",
-                          "borderRadius": 4,
-                          "height": 112,
+                          "borderRadius": 5,
+                          "height": 96,
                           "shadowColor": "#696A6F",
                           "shadowOffset": {
                             "height": 4,
@@ -548,7 +561,7 @@ exports[`VideoModal should render correctly if modal visible 1`] = `
                           },
                           "shadowOpacity": 0.2,
                           "shadowRadius": 4,
-                          "width": 80,
+                          "width": 64,
                         },
                       ]
                     }
@@ -563,18 +576,21 @@ exports[`VideoModal should render correctly if modal visible 1`] = `
                           [
                             {
                               "backgroundColor": "#F1F1F4",
-                              "borderRadius": 4,
-                              "height": 112,
-                              "width": 80,
+                              "borderColor": "#696A6F",
+                              "borderRadius": 5,
+                              "borderWidth": 1,
+                              "height": 96,
+                              "width": 64,
                             },
                           ],
                         ]
                       }
                     >
                       <FastImageView
+                        borderRadius={5}
                         defaultSource={null}
                         resizeMode="cover"
-                        size="medium"
+                        size="small"
                         style={
                           {
                             "bottom": 0,
@@ -584,6 +600,7 @@ exports[`VideoModal should render correctly if modal visible 1`] = `
                             "top": 0,
                           }
                         }
+                        withStroke={true}
                       />
                     </View>
                   </View>
@@ -593,23 +610,25 @@ exports[`VideoModal should render correctly if modal visible 1`] = `
                     [
                       {
                         "flexBasis": 0,
+                        "flexDirection": "column",
                         "flexGrow": 1,
                         "flexShrink": 1,
-                        "marginRight": 16,
+                        "gap": 4,
+                        "justifyContent": "center",
+                        "textAlign": "left",
+                        "wordWrap": "break-word",
                       },
                     ]
                   }
                 >
                   <Text
-                    colorText="Aquamarine"
                     style={
                       [
                         {
-                          "color": "#0E8474",
+                          "color": "#161617",
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 12,
                           "lineHeight": 19.2,
-                          "marginBottom": 4,
                         },
                       ]
                     }
@@ -617,7 +636,7 @@ exports[`VideoModal should render correctly if modal visible 1`] = `
                     Livre
                   </Text>
                   <Text
-                    numberOfLines={2}
+                    numberOfLines={1}
                     style={
                       [
                         {
@@ -625,7 +644,6 @@ exports[`VideoModal should render correctly if modal visible 1`] = `
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 16,
                           "lineHeight": 25.6,
-                          "marginBottom": 4,
                         },
                       ]
                     }
@@ -640,7 +658,6 @@ exports[`VideoModal should render correctly if modal visible 1`] = `
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 12,
                           "lineHeight": 19.2,
-                          "marginBottom": 4,
                         },
                       ]
                     }
@@ -648,25 +665,27 @@ exports[`VideoModal should render correctly if modal visible 1`] = `
                     0,28 €
                   </Text>
                 </View>
-              </View>
-              <View
-                style={
-                  [
-                    {
-                      "bottom": 16,
-                      "position": "absolute",
-                      "right": 16,
-                    },
-                  ]
-                }
-              >
                 <View
-                  height={24}
-                  width={24}
+                  style={
+                    [
+                      {
+                        "alignItems": "flex-end",
+                        "marginVertical": 1,
+                      },
+                    ]
+                  }
                 >
-                  <Text>
-                    undefined-SVG-Mock
-                  </Text>
+                  <View
+                    style={
+                      [
+                        {
+                          "flexBasis": 0,
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        },
+                      ]
+                    }
+                  />
                 </View>
               </View>
             </View>

@@ -1,4 +1,5 @@
 const { softRules } = require('./eslint-soft-rules')
+const { boundariesRule, boundariesElements } = require('./eslint-custom-rules/boundaries-rule')
 
 module.exports = {
   root: true,
@@ -10,6 +11,7 @@ module.exports = {
     'eslint-plugin-local-rules',
     'testing-library',
     'jest',
+    'boundaries',
   ],
   parser: '@typescript-eslint/parser', // Specifies the ESLint parser
   extends: [
@@ -21,6 +23,7 @@ module.exports = {
     'plugin:prettier/recommended', // Enables eslint-plugin-prettier and displays prettier errors as ESLint errors. Make sure this is always the last configuration in the extends array.
     'plugin:import/errors',
     'plugin:react-hooks/recommended',
+    'plugin:boundaries/recommended',
   ],
   parserOptions: {
     ecmaVersion: 2018, // Allows for the parsing of modern ECMAScript features
@@ -33,7 +36,7 @@ module.exports = {
   },
   rules: {
     'react/no-unstable-nested-components': 'off', // TODO(PC-25291): enable when its issues are fixed
-    'react/no-unused-prop-types': 'off', // has false positives
+    'react/no-unused-prop-types': 'error', // has false positives
     'local-rules/no-useless-hook': 'error',
     'react-hooks/exhaustive-deps': 'error',
     'local-rules/independent-mocks': 'error',
@@ -46,6 +49,7 @@ module.exports = {
     'local-rules/apostrophe-in-text': 'error',
     'local-rules/no-truthy-check-after-queryAll-matchers': 'error',
     'local-rules/todo-format': 'error',
+    'local-rules/mock-path-exists': 'error',
     'local-rules/use-the-right-test-utils': 'error',
     'local-rules/no-use-of-algolia-multiple-queries': 'error',
     'local-rules/no-currency-symbols': 'error',
@@ -195,6 +199,11 @@ module.exports = {
             name: 'react-native-maps',
             message: 'react-native-maps is not supported on the web. Use libs/maps/maps instead',
           },
+          {
+            name: 'ui/theme',
+            importNames: ['theme'],
+            message: 'Use StyledComponent or import theme via the useTheme() hook instead of directly importing it',
+          }          
         ],
         patterns: [
           {
@@ -298,6 +307,7 @@ module.exports = {
     react: {
       version: 'detect', // Tells eslint-plugin-react to automatically detect the version of React to use
     },
+    'boundaries/elements': boundariesElements,
     'import/resolver': {
       node: {
         extensions: [
@@ -396,7 +406,7 @@ module.exports = {
         'local-rules/no-currency-symbols': 'off',
         'local-rules/no-empty-arrow-function': 'error',
         'react/jsx-no-constructed-context-values': 'off',
-        'jest/prefer-called-with': 'warn',
+        'jest/prefer-called-with': 'error',
         'jest/no-disabled-tests': 'warn',
         'jest/no-focused-tests': 'warn',
         'jest/no-identical-title': 'error',

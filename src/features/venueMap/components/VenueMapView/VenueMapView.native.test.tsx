@@ -20,6 +20,8 @@ const mockCurrentRegion = {
 
 const pressVenueMarker = (venue: GeolocatedVenue) => {
   return act(() => {
+    // userEvent.press not working correctly here
+    // eslint-disable-next-line local-rules/no-fireEvent
     fireEvent.press(screen.getByTestId(`marker-${venue.venueId}`), {
       stopPropagation: () => false,
       nativeEvent: {

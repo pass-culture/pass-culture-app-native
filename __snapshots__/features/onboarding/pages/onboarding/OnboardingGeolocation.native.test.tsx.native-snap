@@ -228,7 +228,7 @@ exports[`OnboardingGeolocation should render correctly 1`] = `
       }
     >
       <View
-        accessibilityLabel="Continuer"
+        accessibilityLabel="Continuer vers l’étape suivante"
         accessibilityState={
           {
             "busy": undefined,
@@ -282,7 +282,7 @@ exports[`OnboardingGeolocation should render correctly 1`] = `
             },
           ]
         }
-        testID="Continuer"
+        testID="Continuer vers l’étape suivante"
       >
         <View
           style={

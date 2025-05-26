@@ -548,8 +548,8 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                   {},
                   {
                     "alignItems": "center",
-                    "backgroundColor": "#FFDECC",
-                    "borderColor": "#F8733D",
+                    "backgroundColor": "#ffa5c0",
+                    "borderColor": "#eb0055",
                     "borderRadius": 8,
                     "borderStyle": "solid",
                     "borderWidth": 1.6,
@@ -633,8 +633,8 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                   {},
                   {
                     "alignItems": "center",
-                    "backgroundColor": "#FFDECC",
-                    "borderColor": "#F8733D",
+                    "backgroundColor": "#ffa5c0",
+                    "borderColor": "#eb0055",
                     "borderRadius": 8,
                     "borderStyle": "solid",
                     "borderWidth": 1.6,
@@ -718,8 +718,8 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                   {},
                   {
                     "alignItems": "center",
-                    "backgroundColor": "#FFDECC",
-                    "borderColor": "#F8733D",
+                    "backgroundColor": "#ffa5c0",
+                    "borderColor": "#eb0055",
                     "borderRadius": 8,
                     "borderStyle": "solid",
                     "borderWidth": 1.6,
@@ -803,8 +803,8 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                   {},
                   {
                     "alignItems": "center",
-                    "backgroundColor": "#FFDECC",
-                    "borderColor": "#F8733D",
+                    "backgroundColor": "#ffa5c0",
+                    "borderColor": "#eb0055",
                     "borderRadius": 8,
                     "borderStyle": "solid",
                     "borderWidth": 1.6,
@@ -888,8 +888,8 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                   {},
                   {
                     "alignItems": "center",
-                    "backgroundColor": "#FFDECC",
-                    "borderColor": "#F8733D",
+                    "backgroundColor": "#ffa5c0",
+                    "borderColor": "#eb0055",
                     "borderRadius": 8,
                     "borderStyle": "solid",
                     "borderWidth": 1.6,
@@ -973,8 +973,8 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                   {},
                   {
                     "alignItems": "center",
-                    "backgroundColor": "#FFDECC",
-                    "borderColor": "#F8733D",
+                    "backgroundColor": "#ffa5c0",
+                    "borderColor": "#eb0055",
                     "borderRadius": 8,
                     "borderStyle": "solid",
                     "borderWidth": 1.6,
@@ -1058,8 +1058,8 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                   {},
                   {
                     "alignItems": "center",
-                    "backgroundColor": "#FFDECC",
-                    "borderColor": "#F8733D",
+                    "backgroundColor": "#ffa5c0",
+                    "borderColor": "#eb0055",
                     "borderRadius": 8,
                     "borderStyle": "solid",
                     "borderWidth": 1.6,
@@ -1143,8 +1143,8 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                   {},
                   {
                     "alignItems": "center",
-                    "backgroundColor": "#FFDECC",
-                    "borderColor": "#F8733D",
+                    "backgroundColor": "#ffa5c0",
+                    "borderColor": "#eb0055",
                     "borderRadius": 8,
                     "borderStyle": "solid",
                     "borderWidth": 1.6,
@@ -1228,8 +1228,8 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                   {},
                   {
                     "alignItems": "center",
-                    "backgroundColor": "#FFDECC",
-                    "borderColor": "#F8733D",
+                    "backgroundColor": "#ffa5c0",
+                    "borderColor": "#eb0055",
                     "borderRadius": 8,
                     "borderStyle": "solid",
                     "borderWidth": 1.6,
@@ -1313,8 +1313,8 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                   {},
                   {
                     "alignItems": "center",
-                    "backgroundColor": "#FFDECC",
-                    "borderColor": "#F8733D",
+                    "backgroundColor": "#ffa5c0",
+                    "borderColor": "#eb0055",
                     "borderRadius": 8,
                     "borderStyle": "solid",
                     "borderWidth": 1.6,
@@ -1398,8 +1398,8 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                   {},
                   {
                     "alignItems": "center",
-                    "backgroundColor": "#FFDECC",
-                    "borderColor": "#F8733D",
+                    "backgroundColor": "#ffa5c0",
+                    "borderColor": "#eb0055",
                     "borderRadius": 8,
                     "borderStyle": "solid",
                     "borderWidth": 1.6,
@@ -1483,8 +1483,8 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                   {},
                   {
                     "alignItems": "center",
-                    "backgroundColor": "#FFDECC",
-                    "borderColor": "#F8733D",
+                    "backgroundColor": "#ffa5c0",
+                    "borderColor": "#eb0055",
                     "borderRadius": 8,
                     "borderStyle": "solid",
                     "borderWidth": 1.6,
@@ -1568,8 +1568,8 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                   {},
                   {
                     "alignItems": "center",
-                    "backgroundColor": "#FFDECC",
-                    "borderColor": "#F8733D",
+                    "backgroundColor": "#ffa5c0",
+                    "borderColor": "#eb0055",
                     "borderRadius": 8,
                     "borderStyle": "solid",
                     "borderWidth": 1.6,
@@ -2681,73 +2681,14 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                               </View>
                             </BVLinearGradient>
                           </View>
-                          <View
-                            backgroundColor="#F1F1F4"
-                            paddingHorizontal={4}
-                            style={
-                              [
-                                {
-                                  "alignItems": "center",
-                                  "alignSelf": "flex-start",
-                                  "backgroundColor": "#F1F1F4",
-                                  "borderRadius": 6,
-                                  "flexDirection": "row",
-                                  "paddingHorizontal": 4,
-                                  "paddingVertical": 4,
-                                },
-                              ]
-                            }
-                            testID="interaction-tag"
-                          >
-                            <View
-                              style={
-                                [
-                                  {
-                                    "marginRight": 4,
-                                  },
-                                ]
-                              }
-                            >
-                              <View
-                                height={16}
-                                testID="tagIcon"
-                                width={16}
-                              >
-                                <Text>
-                                  tagIcon-SVG-Mock
-                                </Text>
-                              </View>
-                            </View>
-                            <Text
-                              style={
-                                [
-                                  {
-                                    "color": "#161617",
-                                    "fontFamily": "Montserrat-SemiBold",
-                                    "fontSize": 12,
-                                    "lineHeight": 16,
-                                  },
-                                ]
-                              }
-                            />
-                          </View>
-                          <View
-                            gap={1}
-                            style={
-                              [
-                                {
-                                  "gap": 4,
-                                },
-                              ]
-                            }
-                          >
+                          <View>
                             <Text
                               numberOfLines={1}
                               style={
                                 [
                                   {
-                                    "color": "#696A6F",
-                                    "fontFamily": "Montserrat-SemiBold",
+                                    "color": "#696a6f",
+                                    "fontFamily": "Montserrat-Medium",
                                     "fontSize": 12,
                                     "lineHeight": 19.2,
                                   },
@@ -2756,36 +2697,36 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                             >
                               Livre
                             </Text>
-                            <View>
-                              <Text
-                                numberOfLines={2}
-                                style={
-                                  [
-                                    {
-                                      "color": "#161617",
-                                      "fontFamily": "Montserrat-SemiBold",
-                                      "fontSize": 12,
-                                      "lineHeight": 19.2,
-                                    },
-                                  ]
-                                }
-                              >
-                                Mon abonnement bibliothèque
-                              </Text>
-                              <Text
-                                style={
-                                  [
-                                    {
-                                      "color": "#161617",
-                                      "fontFamily": "Montserrat-SemiBold",
-                                      "fontSize": 12,
-                                      "lineHeight": 19.2,
-                                    },
-                                  ]
-                                }
-                                testID="priceIsDuo"
-                              />
-                            </View>
+                            <Text
+                              numberOfLines={2}
+                              style={
+                                [
+                                  {
+                                    "color": "#161617",
+                                    "fontFamily": "Montserrat-SemiBold",
+                                    "fontSize": 12,
+                                    "lineHeight": 19.2,
+                                  },
+                                ]
+                              }
+                            >
+                              Mon abonnement bibliothèque
+                            </Text>
+                          </View>
+                          <View>
+                            <Text
+                              style={
+                                [
+                                  {
+                                    "color": "#161617",
+                                    "fontFamily": "Montserrat-Medium",
+                                    "fontSize": 12,
+                                    "lineHeight": 19.2,
+                                  },
+                                ]
+                              }
+                              testID="priceIsDuo"
+                            />
                           </View>
                         </View>
                       </View>
@@ -3045,73 +2986,14 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                               </View>
                             </BVLinearGradient>
                           </View>
-                          <View
-                            backgroundColor="#F1F1F4"
-                            paddingHorizontal={4}
-                            style={
-                              [
-                                {
-                                  "alignItems": "center",
-                                  "alignSelf": "flex-start",
-                                  "backgroundColor": "#F1F1F4",
-                                  "borderRadius": 6,
-                                  "flexDirection": "row",
-                                  "paddingHorizontal": 4,
-                                  "paddingVertical": 4,
-                                },
-                              ]
-                            }
-                            testID="interaction-tag"
-                          >
-                            <View
-                              style={
-                                [
-                                  {
-                                    "marginRight": 4,
-                                  },
-                                ]
-                              }
-                            >
-                              <View
-                                height={16}
-                                testID="tagIcon"
-                                width={16}
-                              >
-                                <Text>
-                                  tagIcon-SVG-Mock
-                                </Text>
-                              </View>
-                            </View>
-                            <Text
-                              style={
-                                [
-                                  {
-                                    "color": "#161617",
-                                    "fontFamily": "Montserrat-SemiBold",
-                                    "fontSize": 12,
-                                    "lineHeight": 16,
-                                  },
-                                ]
-                              }
-                            />
-                          </View>
-                          <View
-                            gap={1}
-                            style={
-                              [
-                                {
-                                  "gap": 4,
-                                },
-                              ]
-                            }
-                          >
+                          <View>
                             <Text
                               numberOfLines={1}
                               style={
                                 [
                                   {
-                                    "color": "#696A6F",
-                                    "fontFamily": "Montserrat-SemiBold",
+                                    "color": "#696a6f",
+                                    "fontFamily": "Montserrat-Medium",
                                     "fontSize": 12,
                                     "lineHeight": 19.2,
                                   },
@@ -3120,36 +3002,36 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                             >
                               Films
                             </Text>
-                            <View>
-                              <Text
-                                numberOfLines={2}
-                                style={
-                                  [
-                                    {
-                                      "color": "#161617",
-                                      "fontFamily": "Montserrat-SemiBold",
-                                      "fontSize": 12,
-                                      "lineHeight": 19.2,
-                                    },
-                                  ]
-                                }
-                              >
-                                Mon abonnement médiathèque
-                              </Text>
-                              <Text
-                                style={
-                                  [
-                                    {
-                                      "color": "#161617",
-                                      "fontFamily": "Montserrat-SemiBold",
-                                      "fontSize": 12,
-                                      "lineHeight": 19.2,
-                                    },
-                                  ]
-                                }
-                                testID="priceIsDuo"
-                              />
-                            </View>
+                            <Text
+                              numberOfLines={2}
+                              style={
+                                [
+                                  {
+                                    "color": "#161617",
+                                    "fontFamily": "Montserrat-SemiBold",
+                                    "fontSize": 12,
+                                    "lineHeight": 19.2,
+                                  },
+                                ]
+                              }
+                            >
+                              Mon abonnement médiathèque
+                            </Text>
+                          </View>
+                          <View>
+                            <Text
+                              style={
+                                [
+                                  {
+                                    "color": "#161617",
+                                    "fontFamily": "Montserrat-Medium",
+                                    "fontSize": 12,
+                                    "lineHeight": 19.2,
+                                  },
+                                ]
+                              }
+                              testID="priceIsDuo"
+                            />
                           </View>
                         </View>
                       </View>
@@ -3409,73 +3291,14 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                               </View>
                             </BVLinearGradient>
                           </View>
-                          <View
-                            backgroundColor="#F1F1F4"
-                            paddingHorizontal={4}
-                            style={
-                              [
-                                {
-                                  "alignItems": "center",
-                                  "alignSelf": "flex-start",
-                                  "backgroundColor": "#F1F1F4",
-                                  "borderRadius": 6,
-                                  "flexDirection": "row",
-                                  "paddingHorizontal": 4,
-                                  "paddingVertical": 4,
-                                },
-                              ]
-                            }
-                            testID="interaction-tag"
-                          >
-                            <View
-                              style={
-                                [
-                                  {
-                                    "marginRight": 4,
-                                  },
-                                ]
-                              }
-                            >
-                              <View
-                                height={16}
-                                testID="tagIcon"
-                                width={16}
-                              >
-                                <Text>
-                                  tagIcon-SVG-Mock
-                                </Text>
-                              </View>
-                            </View>
-                            <Text
-                              style={
-                                [
-                                  {
-                                    "color": "#161617",
-                                    "fontFamily": "Montserrat-SemiBold",
-                                    "fontSize": 12,
-                                    "lineHeight": 16,
-                                  },
-                                ]
-                              }
-                            />
-                          </View>
-                          <View
-                            gap={1}
-                            style={
-                              [
-                                {
-                                  "gap": 4,
-                                },
-                              ]
-                            }
-                          >
+                          <View>
                             <Text
                               numberOfLines={1}
                               style={
                                 [
                                   {
-                                    "color": "#696A6F",
-                                    "fontFamily": "Montserrat-SemiBold",
+                                    "color": "#696a6f",
+                                    "fontFamily": "Montserrat-Medium",
                                     "fontSize": 12,
                                     "lineHeight": 19.2,
                                   },
@@ -3484,36 +3307,36 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                             >
                               Livre
                             </Text>
-                            <View>
-                              <Text
-                                numberOfLines={2}
-                                style={
-                                  [
-                                    {
-                                      "color": "#161617",
-                                      "fontFamily": "Montserrat-SemiBold",
-                                      "fontSize": 12,
-                                      "lineHeight": 19.2,
-                                    },
-                                  ]
-                                }
-                              >
-                                Mon abonnement livres numériques
-                              </Text>
-                              <Text
-                                style={
-                                  [
-                                    {
-                                      "color": "#161617",
-                                      "fontFamily": "Montserrat-SemiBold",
-                                      "fontSize": 12,
-                                      "lineHeight": 19.2,
-                                    },
-                                  ]
-                                }
-                                testID="priceIsDuo"
-                              />
-                            </View>
+                            <Text
+                              numberOfLines={2}
+                              style={
+                                [
+                                  {
+                                    "color": "#161617",
+                                    "fontFamily": "Montserrat-SemiBold",
+                                    "fontSize": 12,
+                                    "lineHeight": 19.2,
+                                  },
+                                ]
+                              }
+                            >
+                              Mon abonnement livres numériques
+                            </Text>
+                          </View>
+                          <View>
+                            <Text
+                              style={
+                                [
+                                  {
+                                    "color": "#161617",
+                                    "fontFamily": "Montserrat-Medium",
+                                    "fontSize": 12,
+                                    "lineHeight": 19.2,
+                                  },
+                                ]
+                              }
+                              testID="priceIsDuo"
+                            />
                           </View>
                         </View>
                       </View>
@@ -3773,73 +3596,14 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                               </View>
                             </BVLinearGradient>
                           </View>
-                          <View
-                            backgroundColor="#F1F1F4"
-                            paddingHorizontal={4}
-                            style={
-                              [
-                                {
-                                  "alignItems": "center",
-                                  "alignSelf": "flex-start",
-                                  "backgroundColor": "#F1F1F4",
-                                  "borderRadius": 6,
-                                  "flexDirection": "row",
-                                  "paddingHorizontal": 4,
-                                  "paddingVertical": 4,
-                                },
-                              ]
-                            }
-                            testID="interaction-tag"
-                          >
-                            <View
-                              style={
-                                [
-                                  {
-                                    "marginRight": 4,
-                                  },
-                                ]
-                              }
-                            >
-                              <View
-                                height={16}
-                                testID="tagIcon"
-                                width={16}
-                              >
-                                <Text>
-                                  tagIcon-SVG-Mock
-                                </Text>
-                              </View>
-                            </View>
-                            <Text
-                              style={
-                                [
-                                  {
-                                    "color": "#161617",
-                                    "fontFamily": "Montserrat-SemiBold",
-                                    "fontSize": 12,
-                                    "lineHeight": 16,
-                                  },
-                                ]
-                              }
-                            />
-                          </View>
-                          <View
-                            gap={1}
-                            style={
-                              [
-                                {
-                                  "gap": 4,
-                                },
-                              ]
-                            }
-                          >
+                          <View>
                             <Text
                               numberOfLines={1}
                               style={
                                 [
                                   {
-                                    "color": "#696A6F",
-                                    "fontFamily": "Montserrat-SemiBold",
+                                    "color": "#696a6f",
+                                    "fontFamily": "Montserrat-Medium",
                                     "fontSize": 12,
                                     "lineHeight": 19.2,
                                   },
@@ -3848,36 +3612,36 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                             >
                               Jeux
                             </Text>
-                            <View>
-                              <Text
-                                numberOfLines={2}
-                                style={
-                                  [
-                                    {
-                                      "color": "#161617",
-                                      "fontFamily": "Montserrat-SemiBold",
-                                      "fontSize": 12,
-                                      "lineHeight": 19.2,
-                                    },
-                                  ]
-                                }
-                              >
-                                Mon abonnement ludothèque
-                              </Text>
-                              <Text
-                                style={
-                                  [
-                                    {
-                                      "color": "#161617",
-                                      "fontFamily": "Montserrat-SemiBold",
-                                      "fontSize": 12,
-                                      "lineHeight": 19.2,
-                                    },
-                                  ]
-                                }
-                                testID="priceIsDuo"
-                              />
-                            </View>
+                            <Text
+                              numberOfLines={2}
+                              style={
+                                [
+                                  {
+                                    "color": "#161617",
+                                    "fontFamily": "Montserrat-SemiBold",
+                                    "fontSize": 12,
+                                    "lineHeight": 19.2,
+                                  },
+                                ]
+                              }
+                            >
+                              Mon abonnement ludothèque
+                            </Text>
+                          </View>
+                          <View>
+                            <Text
+                              style={
+                                [
+                                  {
+                                    "color": "#161617",
+                                    "fontFamily": "Montserrat-Medium",
+                                    "fontSize": 12,
+                                    "lineHeight": 19.2,
+                                  },
+                                ]
+                              }
+                              testID="priceIsDuo"
+                            />
                           </View>
                         </View>
                       </View>
@@ -4137,73 +3901,14 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                               </View>
                             </BVLinearGradient>
                           </View>
-                          <View
-                            backgroundColor="#F1F1F4"
-                            paddingHorizontal={4}
-                            style={
-                              [
-                                {
-                                  "alignItems": "center",
-                                  "alignSelf": "flex-start",
-                                  "backgroundColor": "#F1F1F4",
-                                  "borderRadius": 6,
-                                  "flexDirection": "row",
-                                  "paddingHorizontal": 4,
-                                  "paddingVertical": 4,
-                                },
-                              ]
-                            }
-                            testID="interaction-tag"
-                          >
-                            <View
-                              style={
-                                [
-                                  {
-                                    "marginRight": 4,
-                                  },
-                                ]
-                              }
-                            >
-                              <View
-                                height={16}
-                                testID="tagIcon"
-                                width={16}
-                              >
-                                <Text>
-                                  tagIcon-SVG-Mock
-                                </Text>
-                              </View>
-                            </View>
-                            <Text
-                              style={
-                                [
-                                  {
-                                    "color": "#161617",
-                                    "fontFamily": "Montserrat-SemiBold",
-                                    "fontSize": 12,
-                                    "lineHeight": 16,
-                                  },
-                                ]
-                              }
-                            />
-                          </View>
-                          <View
-                            gap={1}
-                            style={
-                              [
-                                {
-                                  "gap": 4,
-                                },
-                              ]
-                            }
-                          >
+                          <View>
                             <Text
                               numberOfLines={1}
                               style={
                                 [
                                   {
-                                    "color": "#696A6F",
-                                    "fontFamily": "Montserrat-SemiBold",
+                                    "color": "#696a6f",
+                                    "fontFamily": "Montserrat-Medium",
                                     "fontSize": 12,
                                     "lineHeight": 19.2,
                                   },
@@ -4212,36 +3917,36 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                             >
                               Concert
                             </Text>
-                            <View>
-                              <Text
-                                numberOfLines={2}
-                                style={
-                                  [
-                                    {
-                                      "color": "#161617",
-                                      "fontFamily": "Montserrat-SemiBold",
-                                      "fontSize": 12,
-                                      "lineHeight": 19.2,
-                                    },
-                                  ]
-                                }
-                              >
-                                Mon abonnement concert
-                              </Text>
-                              <Text
-                                style={
-                                  [
-                                    {
-                                      "color": "#161617",
-                                      "fontFamily": "Montserrat-SemiBold",
-                                      "fontSize": 12,
-                                      "lineHeight": 19.2,
-                                    },
-                                  ]
-                                }
-                                testID="priceIsDuo"
-                              />
-                            </View>
+                            <Text
+                              numberOfLines={2}
+                              style={
+                                [
+                                  {
+                                    "color": "#161617",
+                                    "fontFamily": "Montserrat-SemiBold",
+                                    "fontSize": 12,
+                                    "lineHeight": 19.2,
+                                  },
+                                ]
+                              }
+                            >
+                              Mon abonnement concert
+                            </Text>
+                          </View>
+                          <View>
+                            <Text
+                              style={
+                                [
+                                  {
+                                    "color": "#161617",
+                                    "fontFamily": "Montserrat-Medium",
+                                    "fontSize": 12,
+                                    "lineHeight": 19.2,
+                                  },
+                                ]
+                              }
+                              testID="priceIsDuo"
+                            />
                           </View>
                         </View>
                       </View>
@@ -4501,73 +4206,14 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                               </View>
                             </BVLinearGradient>
                           </View>
-                          <View
-                            backgroundColor="#F1F1F4"
-                            paddingHorizontal={4}
-                            style={
-                              [
-                                {
-                                  "alignItems": "center",
-                                  "alignSelf": "flex-start",
-                                  "backgroundColor": "#F1F1F4",
-                                  "borderRadius": 6,
-                                  "flexDirection": "row",
-                                  "paddingHorizontal": 4,
-                                  "paddingVertical": 4,
-                                },
-                              ]
-                            }
-                            testID="interaction-tag"
-                          >
-                            <View
-                              style={
-                                [
-                                  {
-                                    "marginRight": 4,
-                                  },
-                                ]
-                              }
-                            >
-                              <View
-                                height={16}
-                                testID="tagIcon"
-                                width={16}
-                              >
-                                <Text>
-                                  tagIcon-SVG-Mock
-                                </Text>
-                              </View>
-                            </View>
-                            <Text
-                              style={
-                                [
-                                  {
-                                    "color": "#161617",
-                                    "fontFamily": "Montserrat-SemiBold",
-                                    "fontSize": 12,
-                                    "lineHeight": 16,
-                                  },
-                                ]
-                              }
-                            />
-                          </View>
-                          <View
-                            gap={1}
-                            style={
-                              [
-                                {
-                                  "gap": 4,
-                                },
-                              ]
-                            }
-                          >
+                          <View>
                             <Text
                               numberOfLines={1}
                               style={
                                 [
                                   {
-                                    "color": "#696A6F",
-                                    "fontFamily": "Montserrat-SemiBold",
+                                    "color": "#696a6f",
+                                    "fontFamily": "Montserrat-Medium",
                                     "fontSize": 12,
                                     "lineHeight": 19.2,
                                   },
@@ -4576,36 +4222,36 @@ exports[`<ThematicSearch/> book offerCategory should render <ThematicSearch /> 1
                             >
                               Jeux
                             </Text>
-                            <View>
-                              <Text
-                                numberOfLines={2}
-                                style={
-                                  [
-                                    {
-                                      "color": "#161617",
-                                      "fontFamily": "Montserrat-SemiBold",
-                                      "fontSize": 12,
-                                      "lineHeight": 19.2,
-                                    },
-                                  ]
-                                }
-                              >
-                                Mon abonnement jeu vidéo
-                              </Text>
-                              <Text
-                                style={
-                                  [
-                                    {
-                                      "color": "#161617",
-                                      "fontFamily": "Montserrat-SemiBold",
-                                      "fontSize": 12,
-                                      "lineHeight": 19.2,
-                                    },
-                                  ]
-                                }
-                                testID="priceIsDuo"
-                              />
-                            </View>
+                            <Text
+                              numberOfLines={2}
+                              style={
+                                [
+                                  {
+                                    "color": "#161617",
+                                    "fontFamily": "Montserrat-SemiBold",
+                                    "fontSize": 12,
+                                    "lineHeight": 19.2,
+                                  },
+                                ]
+                              }
+                            >
+                              Mon abonnement jeu vidéo
+                            </Text>
+                          </View>
+                          <View>
+                            <Text
+                              style={
+                                [
+                                  {
+                                    "color": "#161617",
+                                    "fontFamily": "Montserrat-Medium",
+                                    "fontSize": 12,
+                                    "lineHeight": 19.2,
+                                  },
+                                ]
+                              }
+                              testID="priceIsDuo"
+                            />
                           </View>
                         </View>
                       </View>

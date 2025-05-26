@@ -3,6 +3,7 @@ import styled from 'styled-components/native'
 
 import { useHandleFocus } from 'libs/hooks/useHandleFocus'
 import { useHandleHover } from 'libs/hooks/useHandleHover'
+import { ColorsTypeLegacy } from 'theme/types'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import {
   InternalNavigationProps,
@@ -20,8 +21,8 @@ export type CategoryButtonProps = {
   onBeforeNavigate?: () => void
   height?: number
   style?: InternalTouchableLinkProps['style']
-  fillColor: ColorsEnum
-  borderColor: ColorsEnum
+  fillColor: ColorsTypeLegacy
+  borderColor: ColorsTypeLegacy
 }
 export const CategoryButton: FunctionComponent<CategoryButtonProps> = ({
   label,
@@ -83,5 +84,5 @@ const LabelContainer = styled.View({
 
 const Label = styled(Typo.BodyAccentS).attrs({ numberOfLines: 3 })(({ theme }) => ({
   textAlign: 'left',
-  color: theme.colors.black,
+  color: theme.designSystem.color.text.default,
 }))

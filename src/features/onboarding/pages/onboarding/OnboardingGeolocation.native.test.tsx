@@ -30,7 +30,7 @@ describe('OnboardingGeolocation', () => {
   it('should request geoloc permission when "Continuer" is clicked', async () => {
     render(<OnboardingGeolocation />)
 
-    const loginButton = screen.getByLabelText('Continuer')
+    const loginButton = screen.getByLabelText('Continuer vers l’étape suivante')
     await user.press(loginButton)
 
     expect(mockRequestGeolocPermission).toHaveBeenCalledTimes(1)
@@ -39,7 +39,7 @@ describe('OnboardingGeolocation', () => {
   it('should log analytics when "Continuer" is clicked', async () => {
     render(<OnboardingGeolocation />)
 
-    const loginButton = screen.getByLabelText('Continuer')
+    const loginButton = screen.getByLabelText('Continuer vers l’étape suivante')
     await user.press(loginButton)
 
     expect(analytics.logOnboardingGeolocationClicked).toHaveBeenNthCalledWith(1, {

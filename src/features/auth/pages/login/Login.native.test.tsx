@@ -131,6 +131,8 @@ describe('<Login/>', () => {
           deviceId: 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
           os: 'iOS',
           source: 'iPhone 13',
+          resolution: '750x1334',
+          screenZoomLevel: 2,
         },
       },
       { credentials: 'omit' }
@@ -157,6 +159,8 @@ describe('<Login/>', () => {
         deviceId: 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
         os: 'iOS',
         source: 'iPhone 13',
+        resolution: '750x1334',
+        screenZoomLevel: 2,
       },
     })
   })
@@ -211,7 +215,7 @@ describe('<Login/>', () => {
     renderLogin()
 
     await act(async () => {
-      const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
+      const emailInput = screen.getByTestId('Entrée pour l’email')
       fireEvent.changeText(emailInput, 'john.doe@gmal.com')
     })
 
@@ -423,7 +427,7 @@ describe('<Login/>', () => {
   it('should show email error message WHEN invalid e-mail format', async () => {
     renderLogin()
 
-    const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
+    const emailInput = screen.getByTestId('Entrée pour l’email')
 
     fireEvent.changeText(emailInput, 'not_valid_email@gmail')
     fireEvent(emailInput, 'onBlur')
@@ -687,6 +691,8 @@ describe('<Login/>', () => {
             deviceId: 'ad7b7b5a169641e27cadbdb35adad9c4ca23099a',
             os: 'unknown',
             source: 'none',
+            resolution: '750x1334',
+            screenZoomLevel: 2,
           },
         },
         { credentials: 'omit' }
@@ -799,7 +805,7 @@ describe('<Login/>', () => {
 })
 
 const fillInputs = async () => {
-  const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
+  const emailInput = screen.getByTestId('Entrée pour l’email')
   const passwordInput = screen.getByPlaceholderText('Ton mot de passe')
   fireEvent.changeText(emailInput, 'email@gmail.com')
   await act(async () => {

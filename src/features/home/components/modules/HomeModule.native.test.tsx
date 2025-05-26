@@ -4,12 +4,10 @@ import { InViewProps } from 'react-native-intersection-observer'
 
 import { SubcategoriesResponseModelv2 } from 'api/gen'
 import { useHighlightOffer } from 'features/home/api/useHighlightOffer'
-import { useVideoOffers } from 'features/home/api/useVideoOffers'
 import { highlightOfferModuleFixture } from 'features/home/fixtures/highlightOfferModule.fixture'
 import {
   formattedBusinessModule,
   formattedCategoryListModule,
-  formattedExclusivityModule,
   formattedOffersModule,
   formattedRecommendedOffersModule,
   formattedThematicHighlightModule,
@@ -17,6 +15,7 @@ import {
   formattedVenuesModule,
 } from 'features/home/fixtures/homepage.fixture'
 import { videoModuleFixture } from 'features/home/fixtures/videoModule.fixture'
+import { useVideoOffersQuery } from 'features/home/queries/useVideoOffersQuery'
 import { HomepageModule, ModuleData } from 'features/home/types'
 import { SimilarOffersResponse } from 'features/offer/types'
 import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
@@ -71,12 +70,12 @@ jest.mock('libs/location/LocationWrapper', () => ({
   useLocation: () => mockUseLocation(),
 }))
 
-jest.mock('features/home/api/useAlgoliaRecommendedOffers', () => ({
-  useAlgoliaRecommendedOffers: jest.fn(() => mockedAlgoliaResponse.hits),
+jest.mock('queries/offer/useAlgoliaSimilarOffersQuery', () => ({
+  useAlgoliaSimilarOffersQuery: jest.fn(() => mockedAlgoliaResponse.hits),
 }))
 
-jest.mock('features/home/api/useVideoOffers')
-const mockUseVideoOffers = useVideoOffers as jest.Mock
+jest.mock('features/home/queries/useVideoOffersQuery')
+const mockuseVideoOffersQuery = useVideoOffersQuery as jest.Mock
 
 const offerFixture = [
   {
@@ -193,20 +192,17 @@ describe('<HomeModule />', () => {
 
     await waitFor(() =>
       expect(mockModuleViewableItemsChanged).toHaveBeenCalledWith({
-        changedItemIds: ['102280', '102272', '102249', '102310'],
+        changedItems: [
+          { index: 0, key: '102280' },
+          { index: 1, key: '102272' },
+          { index: 2, key: '102249' },
+          { index: 3, key: '102310' },
+        ],
         homeEntryId: '7tfixfH64pd5TMZeEKfNQ',
         index: 1,
         moduleId: '2DYuR6KoSLElDuiMMjxx8g',
       })
     )
-  })
-
-  it('should not display old ExclusivityOfferModule', async () => {
-    renderHomeModule(formattedExclusivityModule)
-
-    await waitFor(() => {
-      expect(screen.queryByLabelText('Week-end FRAC')).not.toBeOnTheScreen()
-    })
   })
 
   it('should display BusinessModule', async () => {
@@ -244,8 +240,8 @@ describe('<HomeModule />', () => {
   })
 
   it('should display VideoModule', async () => {
-    mockUseVideoOffers.mockReturnValueOnce({ offers: [offerFixture[0]] })
-    mockUseVideoOffers.mockReturnValueOnce({ offers: [offerFixture[1]] })
+    mockuseVideoOffersQuery.mockReturnValueOnce({ offers: [offerFixture[0]] })
+    mockuseVideoOffersQuery.mockReturnValueOnce({ offers: [offerFixture[1]] })
 
     renderHomeModule(videoModuleFixture)
 

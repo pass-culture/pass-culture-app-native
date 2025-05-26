@@ -7,6 +7,7 @@ import {
 
 export type ProfileStackParamList = {
   NotificationsSettings: undefined
+  DebugScreen: undefined
   DeleteProfileAccountHacked: undefined
   DeleteProfileAccountNotDeletable: undefined
   DeleteProfileConfirmation: undefined

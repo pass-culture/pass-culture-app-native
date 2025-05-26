@@ -8,6 +8,13 @@ import { act, render } from 'tests/utils/web'
 
 import { onNavigationStateChange } from './services'
 
+class ResizeObserver {
+  observe() {}
+  unobserve() {}
+  disconnect() {}
+}
+global.ResizeObserver = ResizeObserver
+
 jest.unmock('@react-navigation/native')
 jest.unmock('@react-navigation/stack')
 jest.unmock('@react-navigation/bottom-tabs')

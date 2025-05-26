@@ -32,14 +32,6 @@ describe('VideoModal', () => {
     expect(await screen.findByText('Découvre Lujipeka')).toBeInTheDocument()
   })
 
-  it('should render correctly with FF on', async () => {
-    setFeatureFlags([RemoteStoreFeatureFlags.WIP_APP_V2_VIDEO_9_16])
-
-    renderVideoModal()
-
-    expect(await screen.findByText('Découvre Lujipeka')).toBeInTheDocument()
-  })
-
   it('should log HasDismissedModal when pressing close button', async () => {
     renderVideoModal()
 

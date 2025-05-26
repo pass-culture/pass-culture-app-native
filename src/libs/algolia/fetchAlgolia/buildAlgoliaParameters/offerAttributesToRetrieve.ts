@@ -20,4 +20,5 @@ export const offerAttributesToRetrieve = [
   'offer.likes',
   'offer.chroniclesCount',
   'offer.headlineCount',
+  '_tags',
 ]

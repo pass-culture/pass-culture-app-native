@@ -31,39 +31,61 @@ const user = userEvent.setup()
 jest.useFakeTimers()
 
 describe('CalendarModal', () => {
-  beforeEach(() => {
-    mockUseSearch.mockReturnValueOnce(initialMockUseSearch)
-  })
-
   beforeAll(() => {
     mockdate.set(TODAY)
   })
 
-  it('should display modal with title', async () => {
-    renderCalendarModal()
+  describe('In initial state', () => {
+    beforeEach(() => {
+      mockUseSearch.mockReturnValueOnce(initialMockUseSearch)
+    })
 
-    await act(() => {
-      expect(screen.getByText('Dates')).toBeOnTheScreen()
+    it('should display modal with title', async () => {
+      renderCalendarModal()
+
+      await act(() => {
+        expect(screen.getByText('Dates')).toBeOnTheScreen()
+      })
+    })
+
+    it('should close the modal when pressing close button', async () => {
+      renderCalendarModal()
+
+      await user.press(screen.getByLabelText('Fermer'))
+
+      expect(mockOnClose).toHaveBeenCalledWith()
+    })
+
+    it('should hide the modal when pressing close button', async () => {
+      renderCalendarModal()
+
+      await user.press(screen.getByLabelText('Fermer'))
+
+      expect(mockHideModal).toHaveBeenCalledWith()
+    })
+
+    it('should execute search with selected dates and close the modal when pressing search button', async () => {
+      renderCalendarModal()
+
+      await user.press(screen.getByLabelText(' Samedi 14 Juin 2025 '))
+      await user.press(screen.getByLabelText(' Mardi 17 Juin 2025 '))
+
+      await user.press(screen.getByText('Rechercher'))
+
+      expect(mockDispatch).toHaveBeenCalledWith(
+        expect.objectContaining({
+          type: 'SET_STATE',
+          payload: expect.objectContaining({
+            beginningDatetime: '2025-06-14T00:00:00.000Z',
+            endingDatetime: '2025-06-17T00:00:00.000Z',
+          }),
+        })
+      )
+      expect(mockHideModal).toHaveBeenCalledWith()
     })
   })
 
-  it('should close the modal when pressing close button', async () => {
-    renderCalendarModal()
-
-    await user.press(screen.getByLabelText('Fermer'))
-
-    expect(mockOnClose).toHaveBeenCalledWith()
-  })
-
-  it('should hide the modal when pressing close button', async () => {
-    renderCalendarModal()
-
-    await user.press(screen.getByLabelText('Fermer'))
-
-    expect(mockHideModal).toHaveBeenCalledWith()
-  })
-
-  it('should reset dates when pressing reset button and execute search after', async () => {
+  it('should reset search when pressing reset button', async () => {
     mockUseSearch.mockReturnValueOnce({
       ...initialMockUseSearch,
       searchState: {
@@ -77,37 +99,13 @@ describe('CalendarModal', () => {
 
     await user.press(screen.getByText('Réinitialiser'))
 
-    await user.press(screen.getByText('Rechercher'))
-
-    expect(mockDispatch).toHaveBeenCalledWith(
-      expect.objectContaining({
-        type: 'SET_STATE',
-        payload: expect.objectContaining({
-          beginningDatetime: undefined,
-          endingDatetime: undefined,
-        }),
-      })
-    )
-  })
-
-  it('should execute search with selected dates and close the modal when pressing search button', async () => {
-    renderCalendarModal()
-
-    await user.press(screen.getByLabelText(' Samedi 14 Juin 2025 '))
-    await user.press(screen.getByLabelText(' Mardi 17 Juin 2025 '))
-
-    await user.press(screen.getByText('Rechercher'))
-
-    expect(mockDispatch).toHaveBeenCalledWith(
-      expect.objectContaining({
-        type: 'SET_STATE',
-        payload: expect.objectContaining({
-          beginningDatetime: '2025-06-14T00:00:00.000Z',
-          endingDatetime: '2025-06-17T00:00:00.000Z',
-        }),
-      })
-    )
-    expect(mockHideModal).toHaveBeenCalledWith()
+    expect(mockDispatch).toHaveBeenCalledWith({
+      type: 'SET_STATE',
+      payload: expect.objectContaining({
+        beginningDatetime: undefined,
+        endingDatetime: undefined,
+      }),
+    })
   })
 })
 

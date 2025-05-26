@@ -9,8 +9,8 @@ import {
 } from 'api/gen'
 import { offerResponseSnap } from 'features/offer/fixtures/offerResponse'
 import * as GetInstalledAppsAPI from 'features/offer/helpers/getInstalledApps/getInstalledApps'
-import * as useArtistResults from 'features/offer/helpers/useArtistResults/useArtistResults'
 import { Offer } from 'features/offer/pages/Offer/Offer'
+import * as useArtistResultsAPI from 'features/offer/queries/useArtistResultsQuery'
 import {
   mockedAlgoliaOffersWithSameArtistResponse,
   mockedAlgoliaResponse,
@@ -31,7 +31,7 @@ jest.mock('react-native/Libraries/Alert/Alert', () => ({
 }))
 
 jest
-  .spyOn(useArtistResults, 'useArtistResults')
+  .spyOn(useArtistResultsAPI, 'useArtistResultsQuery')
   .mockImplementation()
   .mockReturnValue({
     artistPlaylist: mockedAlgoliaOffersWithSameArtistResponse,

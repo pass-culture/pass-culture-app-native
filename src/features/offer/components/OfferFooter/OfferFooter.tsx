@@ -1,4 +1,5 @@
-import React, { FC, ReactNode } from 'react'
+import React, { FC, PropsWithChildren } from 'react'
+import { LayoutChangeEvent } from 'react-native'
 import { useTheme } from 'styled-components/native'
 
 import { OfferResponseV2 } from 'api/gen'
@@ -16,10 +17,11 @@ import { useRemoteConfigQuery } from 'libs/firebase/remoteConfig/queries/useRemo
 import { useModal } from 'ui/components/modals/useModal'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 
-export type OfferFooterProps = {
+export type OfferFooterProps = PropsWithChildren<{
   offer: OfferResponseV2
-  children: ReactNode
-} & FavoriteProps
+  onLayout?: (params: LayoutChangeEvent) => void
+}> &
+  FavoriteProps
 
 export const OfferFooter: FC<OfferFooterProps> = ({
   offer,
@@ -28,6 +30,7 @@ export const OfferFooter: FC<OfferFooterProps> = ({
   removeFavorite,
   isRemoveFavoriteLoading,
   favorite,
+  onLayout,
   children,
 }) => {
   const { showErrorSnackBar } = useSnackBarContext()
@@ -91,6 +94,7 @@ export const OfferFooter: FC<OfferFooterProps> = ({
         onPressReminderCTA={onPressReminderCTA}
         favoriteAuthModal={favoriteAuthModal}
         reminderAuthModal={reminderAuthModal}
+        onLayout={onLayout}
       />
     )
   }

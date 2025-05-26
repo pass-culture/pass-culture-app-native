@@ -77,7 +77,7 @@ describe('useShowReview', () => {
     })
   })
 
-  it('should not update information if the review doesnt end successfully', async () => {
+  it('should not update information if the review does not end successfully', async () => {
     mockIsAvailable.mockReturnValueOnce(true)
     mockUseReviewInAppInformation.mockReturnValueOnce({
       shouldReviewBeRequested: true,
@@ -90,6 +90,41 @@ describe('useShowReview', () => {
     jest.advanceTimersByTime(3000)
 
     expect(mockUpdateInformationWhenReviewHasBeenRequested).not.toHaveBeenCalled()
+  })
+
+  it('should not update information if the review breaks before end', async () => {
+    mockIsAvailable.mockReturnValueOnce(true)
+    mockUseReviewInAppInformation.mockReturnValueOnce({
+      shouldReviewBeRequested: true,
+      updateInformationWhenReviewHasBeenRequested: mockUpdateInformationWhenReviewHasBeenRequested,
+    })
+    mockRequestInAppReview.mockResolvedValueOnce(undefined)
+
+    const { unmount } = renderHook(useShowReview)
+
+    jest.advanceTimersByTime(1000)
+    unmount()
+    jest.advanceTimersByTime(3000)
+
+    expect(mockRequestInAppReview).not.toHaveBeenCalled()
+    expect(mockUpdateInformationWhenReviewHasBeenRequested).not.toHaveBeenCalled()
+  })
+
+  it('should not call the review if something is wrong before timeout', async () => {
+    mockIsAvailable.mockReturnValueOnce(true)
+    mockUseReviewInAppInformation.mockReturnValueOnce({ shouldReviewBeRequested: true })
+    mockRequestInAppReview.mockResolvedValueOnce(undefined)
+    const { unmount } = renderHook(useShowReview)
+
+    jest.advanceTimersByTime(1000)
+
+    unmount()
+
+    expect(mockRequestInAppReview).not.toHaveBeenCalled()
+
+    jest.advanceTimersByTime(3000)
+
+    expect(mockRequestInAppReview).not.toHaveBeenCalled()
   })
 
   describe('FF disableStoreReview', () => {

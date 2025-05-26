@@ -18,6 +18,10 @@ import {
 } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
 import { useOngoingOrEndedBookingQuery } from 'features/bookings/queries'
+import {
+  ValidStoredProfileInfos,
+  useStoredProfileInfos,
+} from 'features/identityCheck/pages/helpers/useStoredProfileInfos'
 import { ProfileTypes } from 'features/identityCheck/pages/profile/enums'
 import { openUrl } from 'features/navigation/helpers/openUrl'
 import { Referrals, UseRouteType } from 'features/navigation/RootNavigator/types'
@@ -76,6 +80,7 @@ type Props = {
   isDepositExpired?: boolean
   apiRecoParams?: RecommendationApiParams
   playlistType?: PlaylistType
+  storedProfileInfos?: ValidStoredProfileInfos
   featureFlags: { enableBookingFreeOfferFifteenSixteen: boolean }
 }
 
@@ -110,6 +115,7 @@ export const getCtaWordingAndAction = ({
   isDepositExpired,
   apiRecoParams,
   playlistType,
+  storedProfileInfos,
   featureFlags,
 }: Props): ICTAWordingAndAction | undefined => {
   const { externalTicketOfficeUrl, subcategoryId } = offer
@@ -123,10 +129,10 @@ export const getCtaWordingAndAction = ({
   const enableBookingFreeOfferFifteenSixteen = featureFlags.enableBookingFreeOfferFifteenSixteen
   const isUserFreeStatus = user?.eligibility === EligibilityType.free
   const isFreeOffer = getIsFreeOffer(offer)
+  const isNotFreeOffer = !isFreeOffer
   const isProfileIncomplete = getIsProfileIncomplete(user)
 
-  const isEligibleFreeOffer15To16 =
-    enableBookingFreeOfferFifteenSixteen && isUserFreeStatus && isFreeOffer
+  const isEligibleFreeOffer15To16 = enableBookingFreeOfferFifteenSixteen && isUserFreeStatus
 
   if (!isLoggedIn) {
     return {
@@ -140,18 +146,39 @@ export const getCtaWordingAndAction = ({
 
   if (isEligibleFreeOffer15To16) {
     if (isProfileIncomplete) {
-      setFreeOfferId(offer.id)
+      if (isFreeOffer) {
+        setFreeOfferId(offer.id)
+        return {
+          wording: 'Réserver l’offre',
+          isDisabled: false,
+          navigateTo: {
+            screen: storedProfileInfos ? 'ProfileInformationValidation' : 'SetName',
+            params: { type: ProfileTypes.BOOKING_FREE_OFFER_15_16 },
+          },
+        }
+      }
+
       return {
         wording: 'Réserver l’offre',
-        isDisabled: false,
-        navigateTo: { screen: 'SetName', params: { type: ProfileTypes.BOOKING_FREE_OFFER_15_16 } },
+        isDisabled: true,
+        bottomBannerText:
+          'Entre tes 15 et 16 ans tu peux réserver uniquement des offres gratuites.',
       }
-    } else {
+    }
+
+    if (isNotFreeOffer) {
       return {
         wording: 'Réserver l’offre',
-        modalToDisplay: OfferModal.BOOKING,
-        isDisabled: false,
+        isDisabled: true,
+        bottomBannerText:
+          'Entre tes 15 et 16 ans tu peux réserver uniquement des offres gratuites.',
       }
+    }
+
+    return {
+      wording: 'Réserver l’offre',
+      modalToDisplay: OfferModal.BOOKING,
+      isDisabled: false,
     }
   }
 
@@ -353,6 +380,8 @@ export const useCtaWordingAndAction = (props: UseGetCtaWordingAndActionProps) =>
     RemoteStoreFeatureFlags.ENABLE_BOOKING_FREE_OFFER_15_16
   )
 
+  const storedProfileInfos = useStoredProfileInfos()
+
   const { offer, from, searchId, subcategory } = props
   const offerId = offer.id
 
@@ -436,5 +465,6 @@ export const useCtaWordingAndAction = (props: UseGetCtaWordingAndActionProps) =>
     apiRecoParams,
     playlistType,
     featureFlags: { enableBookingFreeOfferFifteenSixteen },
+    storedProfileInfos,
   })
 }
