@@ -29,7 +29,7 @@ type Props = {
   onTopBlockLayout?: (height: number) => void
 }
 
-export const TicketCutout = ({
+export const TicketCutoutContent = ({
   day,
   hour,
   isDuo,
@@ -153,6 +153,6 @@ const TopBlock = styled(ContentBlock)({
   paddingTop: getSpacing(6),
 })
 
-const Container = styled(View)({
+const Container = styled.View({
   marginLeft: getSpacing(1),
 })
