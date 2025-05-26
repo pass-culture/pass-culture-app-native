@@ -1,10 +1,8 @@
+import uniqBy from 'lodash/uniqBy'
 // eslint-disable-next-line no-restricted-imports
 import { create } from 'zustand'
 
 import { PageTrackingInfo, PlaylistTrackingInfo } from 'store/tracking/types'
-
-const mergeUniqueValues = (source: string[], target: string[]) =>
-  Array.from(new Set([...source, ...target]))
 
 const DEFAULT_STATE = {
   pageId: '',
@@ -15,44 +13,50 @@ const DEFAULT_STATE = {
 const updatePlaylistInfo = (
   playlist: PlaylistTrackingInfo,
   data: Partial<PlaylistTrackingInfo>
-) => {
+): PlaylistTrackingInfo => {
   return {
     ...playlist,
-    offerIds: mergeUniqueValues(playlist.offerIds, data?.offerIds ?? []),
+    items: uniqBy([...playlist.items, ...(data.items ?? [])], 'key'),
     callId: data.callId ?? playlist.callId,
     index: data.index === undefined || data.index === -1 ? playlist.index : data.index,
+    extra: data.extra ?? playlist.extra,
   }
 }
 
 export const useOfferPlaylistTrackingStore = create<PageTrackingInfo>()(() => DEFAULT_STATE)
 
 // Set page information
-export const setPageTrackingInfo = ({ pageId, pageLocation, playlists = [] }: PageTrackingInfo) =>
-  useOfferPlaylistTrackingStore.setState({ pageId, pageLocation, playlists })
+export const setPageTrackingInfo = ({
+  pageId,
+  pageLocation,
+}: Omit<PageTrackingInfo, 'playlists'>) =>
+  useOfferPlaylistTrackingStore.setState({ pageId, pageLocation })
 
 // Set playlist informations
 export const setPlaylistTrackingInfo = ({
-  playlistId,
+  moduleId,
   callId = '',
-  offerIds = [],
+  items = [],
   index = -1,
+  extra = {},
 }: Partial<PlaylistTrackingInfo>) => {
-  if (!playlistId) {
+  if (!moduleId) {
     return
   }
 
   const state = useOfferPlaylistTrackingStore.getState()
 
-  const playlist = state.playlists.find((item) => item.playlistId === playlistId) ?? {
-    playlistId,
+  const playlist = state.playlists.find((item) => item.moduleId === moduleId) ?? {
+    moduleId,
     callId,
-    offerIds,
+    items,
     index,
+    extra,
   }
-  const updatedPlaylist = updatePlaylistInfo(playlist, { callId, offerIds, index })
+  const updatedPlaylist = updatePlaylistInfo(playlist, { callId, items, index })
 
   const playlists = [
-    ...state.playlists.filter((item) => item.playlistId !== playlist.playlistId),
+    ...state.playlists.filter((item) => item.moduleId !== playlist.moduleId),
     updatedPlaylist,
   ]
 
