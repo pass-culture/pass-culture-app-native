@@ -81,7 +81,7 @@ jobs:
           echo '${{ steps.secrets.outputs.ANDROID_KEYSTORE }}' |  base64 --decode > android/keystores/staging.keystore
 
       - name: Setup android keystore properties for staging environment
-        uses: chuhlomin/render-template@v1.9
+        uses: chuhlomin/render-template@v1.10
         with:
           template: templates_github_ci/staging.keystore.properties
           vars: |
