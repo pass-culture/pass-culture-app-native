@@ -24,13 +24,13 @@ export const getVenueOffersArtists = (
       return []
     })
   )
-    .groupBy('id')
+    .groupBy((artist) => artist.name.trim().toLowerCase())
     .orderBy(
       [(artistList) => artistList.length, (artistList) => artistList[0]?.name],
       ['desc', 'asc']
     )
     .flatten()
-    .uniqBy('id')
+    .uniqBy((artist) => artist.name.trim().toLowerCase())
     .slice(0, 30)
     .value()
 
