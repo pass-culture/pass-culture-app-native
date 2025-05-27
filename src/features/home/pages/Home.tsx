@@ -1,7 +1,6 @@
 import { useRoute } from '@react-navigation/native'
 import { maxBy } from 'lodash'
 import React, { FunctionComponent, useEffect } from 'react'
-import PerformanceStats from 'react-native-performance-stats'
 import styled from 'styled-components/native'
 
 import { AchievementSuccessModal } from 'features/achievements/pages/AchievementSuccessModal'
@@ -71,20 +70,6 @@ export const Home: FunctionComponent = () => {
       analytics.logConsultHome({ homeEntryId: id })
     }
   }, [id])
-
-  useEffect(() => {
-    const listener = PerformanceStats.addListener((stats) => {
-      console.log(stats)
-    })
-
-    // you must call .start(true) to get CPU as well
-    PerformanceStats.start(true)
-
-    // ... at some later point you could call:
-    // PerformanceStats.stop();
-
-    return () => listener.remove()
-  }, [])
 
   // This effect was made for the use of the marketing team (internal usage)
   useEffect(() => {
