@@ -44,4 +44,7 @@
 
 Tester un POC de mise en place d'une logique pour l'invalidation des queries au changement de la localisation.
 
-Le message du dessus a été ajouté plus tot, ce fichier pourrait aussi en profiter src/features/home/api/useGetVenuesData.ts
+Le message du dessus a été ajouté plus tot, ces fichiers pourraient aussi en profiter :
+
+- src/features/home/api/useGetVenuesData.ts
+- src/features/home/api/useVideoCarouselData.ts
