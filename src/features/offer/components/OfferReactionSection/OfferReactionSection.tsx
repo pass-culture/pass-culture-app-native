@@ -50,11 +50,16 @@ const InfosCounterContainer = styled(ViewGap)({
 
 const ThumbUpIcon = styled(ThumbUpFilled).attrs(({ theme }) => ({
   size: theme.icons.sizes.small,
-  color: theme.colors.primary,
+  color: theme.designSystem.color.icon.brandPrimary,
 }))``
 
 const BookClubIcon = styled(BookClubCertification).attrs(({ theme }) => ({
+  color: theme.designSystem.color.icon.bookclub,
   size: theme.icons.sizes.small,
+}))``
+
+const StarIcon = styled(Star).attrs(({ theme }) => ({
+  color: theme.designSystem.color.icon.headline,
 }))``
 
 const LikesInfoCounter = styled(InfoCounter).attrs(() => ({
@@ -66,5 +71,5 @@ const ChroniclesInfoCounter = styled(InfoCounter).attrs(() => ({
 }))``
 
 const HeadlineOffersCount = styled(InfoCounter).attrs(() => ({
-  icon: <Star testID="headlineOffersCounterIcon" />,
+  icon: <StarIcon testID="headlineOffersCounterIcon" />,
 }))``
