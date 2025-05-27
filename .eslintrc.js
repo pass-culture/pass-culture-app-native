@@ -42,6 +42,7 @@ module.exports = {
     'local-rules/independent-mocks': 'error',
     'local-rules/no-direct-consult-offer-log': 'error',
     'local-rules/no-empty-arrow-function': 'off',
+    'local-rules/no-fireEvent': 'error',
     'local-rules/no-hardcoded-id-in-svg': 'error',
     'local-rules/no-raw-text': 'error',
     'local-rules/use-ternary-operator-in-jsx': 'error',
@@ -202,8 +203,9 @@ module.exports = {
           {
             name: 'ui/theme',
             importNames: ['theme'],
-            message: 'Use StyledComponent or import theme via the useTheme() hook instead of directly importing it',
-          }          
+            message:
+              'Use StyledComponent or import theme via the useTheme() hook instead of directly importing it',
+          },
         ],
         patterns: [
           {
