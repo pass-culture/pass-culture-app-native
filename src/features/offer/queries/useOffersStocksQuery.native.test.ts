@@ -22,6 +22,7 @@ describe('useOffersStocksQuery', () => {
     )
 
     await act(async () => {})
+    await act(async () => {})
 
     expect(JSON.stringify(result.current.data)).toEqual(JSON.stringify(offersStocksResponseSnap))
   })

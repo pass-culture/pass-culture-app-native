@@ -29,6 +29,7 @@ describe('useOAuthStateQuery', () => {
     const { result } = renderOAuthState()
 
     await act(async () => {})
+    await act(async () => {})
 
     expect(result.current.data).toEqual({
       oauthStateToken: 'oauth_state_token',

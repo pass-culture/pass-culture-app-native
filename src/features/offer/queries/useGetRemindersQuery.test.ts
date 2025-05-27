@@ -20,6 +20,7 @@ describe('useGetRemindersQuery', () => {
     expect(result.current.isFetching).toEqual(true)
 
     await act(async () => {})
+    await act(async () => {})
 
     expect(result.current.data?.reminders.length).toEqual(remindersResponse.reminders.length)
   })
@@ -29,6 +30,7 @@ describe('useGetRemindersQuery', () => {
       data.reminders.find((r) => r.id === remindersResponse.reminders[0]?.id)
     )
 
+    await act(async () => {})
     await act(async () => {})
 
     expect(result.current.data).toEqual(remindersResponse.reminders[0])

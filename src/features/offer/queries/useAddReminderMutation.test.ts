@@ -58,6 +58,8 @@ describe('useAddReminderMutation', () => {
 
     const updatedCache = queryClient.getQueryData<GetRemindersResponse>([QueryKeys.REMINDERS])
 
+    await act(async () => {})
+
     expect(updatedCache?.reminders).toEqual(expectedRemindersInCache)
   })
 
@@ -88,7 +90,11 @@ describe('useAddReminderMutation', () => {
       result.current.mutate(offerId)
     })
 
-    await act(async () => expect(result.current.isSuccess).toBe(true))
+    await act(async () => {})
+
+    expect(result.current.isSuccess).toBe(true)
+
+    await act(async () => {})
 
     expect(invalidateQueriesMock).toHaveBeenCalledWith([QueryKeys.REMINDERS])
   })
@@ -104,7 +110,11 @@ describe('useAddReminderMutation', () => {
       result.current.mutate(offerId)
     })
 
-    await act(async () => expect(result.current.isSuccess).toBe(false))
+    await act(async () => {})
+
+    expect(result.current.isSuccess).toBe(false)
+
+    await act(async () => {})
 
     expect(invalidateQueriesMock).toHaveBeenCalledWith([QueryKeys.REMINDERS])
   })
