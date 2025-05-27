@@ -16,6 +16,7 @@ import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { OnboardingSubscriptionModal } from 'features/subscription/components/modals/OnboardingSubscriptionModal'
 import { useOnboardingSubscriptionModal } from 'features/subscription/helpers/useOnboardingSubscriptionModal'
 import { analytics } from 'libs/analytics/provider'
+import { env } from 'libs/environment/env'
 import { useLocation } from 'libs/location'
 import { LocationMode } from 'libs/location/types'
 import { getAppVersion } from 'libs/packageJson'
@@ -73,6 +74,9 @@ export const Home: FunctionComponent = () => {
   }, [id])
 
   useEffect(() => {
+    const isPerf = env.LOG_PERF === 'all'
+    if (!isPerf) return
+
     const listener = PerformanceStats.addListener((stats) => {
       console.log(stats)
     })
