@@ -22,9 +22,6 @@ jest.mock('ui/components/snackBar/SnackBarContext', () => ({
   SNACK_BAR_TIME_OUT: 5000,
 }))
 
-jest.mock('libs/react-query/usePersistQuery', () => ({
-  usePersistQuery: jest.requireActual('react-query').useQuery,
-}))
 const onDismiss = jest.fn()
 const mockGoBack = jest.fn()
 jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
