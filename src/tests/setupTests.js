@@ -6,8 +6,15 @@ import * as consoleFailTestModule from 'console-fail-test'
 import { toHaveNoViolations } from 'jest-axe'
 import { configure } from 'reassure'
 
+import { queryCache, mutationCache } from './reactQueryProviderHOC'
+
 // Configuration for performance tests
 configure({ testingLibrary: 'react-native' })
+
+global.afterEach(async () => {
+  queryCache.clear()
+  mutationCache.clear()
+})
 
 global.expect.extend(toHaveNoViolations)
 global.TextEncoder = TextEncoder

@@ -4,7 +4,7 @@ import React from 'react'
 import { batch } from 'solid-js'
 
 export const queryCache = new QueryCache()
-const mutationCache = new MutationCache()
+export const mutationCache = new MutationCache()
 
 export const reactQueryProviderHOC = (
   component: React.ReactNode,
@@ -33,9 +33,3 @@ export const reactQueryProviderHOC = (
 
   return <QueryClientProvider client={queryClient}>{component}</QueryClientProvider>
 }
-
-// idéalement à extraire dans une fonction clearReactQueryCaches() et dans son propre fichier pour éviter d'avoir un global.beforeEach dans un module utilitaire
-global.afterEach(async () => {
-  queryCache.clear()
-  mutationCache.clear()
-})
