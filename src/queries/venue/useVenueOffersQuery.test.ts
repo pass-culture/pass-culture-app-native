@@ -141,11 +141,13 @@ describe('useVenueOffers', () => {
     )
     await waitFor(() => expect(mockFetchMultipleOffers).toHaveBeenCalledWith(EXPECTED_CALL_PARAM))
 
-    expect(result.current.data?.hits).toMatchObject(
-      FETCH_MULTIPLE_OFFERS_RESPONSE.slice(0, 2)
-        .flatMap((result) => result?.hits)
-        .filter(filterOfferHitWithImage)
-        .map(transformOfferHit())
+    await waitFor(() =>
+      expect(result.current.data?.hits).toMatchObject(
+        FETCH_MULTIPLE_OFFERS_RESPONSE.slice(0, 2)
+          .flatMap((result) => result?.hits)
+          .filter(filterOfferHitWithImage)
+          .map(transformOfferHit())
+      )
     )
 
     const headlineOffer = FETCH_MULTIPLE_OFFERS_RESPONSE.at(-1)?.hits[0]

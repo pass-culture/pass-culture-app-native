@@ -14,6 +14,8 @@ jest.mock('libs/jwt/jwt')
 
 jest.unmock('react-query')
 
+const onError = jest.fn()
+
 describe('useRemoveFavoriteMutation', () => {
   it('should remove favorite', async () => {
     const favorite = paginatedFavoritesResponseSnap.favorites[0]
@@ -24,17 +26,11 @@ describe('useRemoveFavoriteMutation', () => {
       hasRemoveFavoriteError: false,
     })
 
-    const onError = jest.fn()
-    const { result } = renderHook(() => useRemoveFavoriteMutation({ onError }), {
-      wrapper: (props) =>
-        reactQueryProviderHOC(
-          <FavoritesWrapper>
-            <View>{props.children}</View>
-          </FavoritesWrapper>
-        ),
-    })
+    const { result } = renderUseRemoveFavoriteMutation()
 
     expect(result.current.isLoading).toBeFalsy()
+
+    await act(async () => {})
 
     result.current.mutate(favoriteId)
 
@@ -52,15 +48,7 @@ describe('useRemoveFavoriteMutation', () => {
       hasRemoveFavoriteError: true,
     })
 
-    const onError = jest.fn()
-    const { result } = renderHook(() => useRemoveFavoriteMutation({ onError }), {
-      wrapper: (props) =>
-        reactQueryProviderHOC(
-          <FavoritesWrapper>
-            <View>{props.children}</View>
-          </FavoritesWrapper>
-        ),
-    })
+    const { result } = renderUseRemoveFavoriteMutation()
 
     expect(result.current.isLoading).toBeFalsy()
 
@@ -71,3 +59,14 @@ describe('useRemoveFavoriteMutation', () => {
     })
   })
 })
+
+const renderUseRemoveFavoriteMutation = () => {
+  return renderHook(() => useRemoveFavoriteMutation({ onError }), {
+    wrapper: (props) =>
+      reactQueryProviderHOC(
+        <FavoritesWrapper>
+          <View>{props.children}</View>
+        </FavoritesWrapper>
+      ),
+  })
+}

@@ -2,14 +2,9 @@ import '@testing-library/jest-native/extend-expect'
 
 import { TextEncoder } from 'util'
 
-import { notifyManager } from '@tanstack/query-core'
 import * as consoleFailTestModule from 'console-fail-test'
 import { toHaveNoViolations } from 'jest-axe'
 import { configure } from 'reassure'
-import { batch } from 'solid-js'
-
-// Configure React Query to batch updates with `act` in tests
-notifyManager.setBatchNotifyFunction(batch)
 
 // Configuration for performance tests
 configure({ testingLibrary: 'react-native' })

@@ -1,5 +1,4 @@
 import { UseQueryOptions, useQuery } from '@tanstack/react-query'
-import { useMemo } from 'react'
 
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { fetchOffersByIds } from 'libs/algolia/fetchAlgolia/fetchOffersByIds'
@@ -26,16 +25,12 @@ export const useAlgoliaSimilarOffersQuery = (
     { enabled: ids.length > 0 }
   )
 
-  return useMemo(() => {
-    if (!hits || hits.length === 0) return
+  if (!hits || hits.length === 0) return
 
-    if (shouldPreserveIdsOrder) {
-      const offers = getSimilarOrRecoOffersInOrder(ids, hits)
-      return (offers as AlgoliaOffer[])
-        .filter(filterOfferHitWithImage)
-        .map(transformHits) as Offer[]
-    }
+  if (shouldPreserveIdsOrder) {
+    const offers = getSimilarOrRecoOffersInOrder(ids, hits)
+    return (offers as AlgoliaOffer[]).filter(filterOfferHitWithImage).map(transformHits) as Offer[]
+  }
 
-    return (hits as AlgoliaOffer[]).filter(filterOfferHitWithImage).map(transformHits) as Offer[]
-  }, [hits, ids, shouldPreserveIdsOrder, transformHits])
+  return (hits as AlgoliaOffer[]).filter(filterOfferHitWithImage).map(transformHits) as Offer[]
 }
