@@ -1,5 +1,5 @@
+import { UseQueryResult } from '@tanstack/react-query'
 import mockdate from 'mockdate'
-import { UseQueryResult } from 'react-query'
 
 import { PlaylistResponse, SubcategoryIdEnumv2 } from 'api/gen'
 import {

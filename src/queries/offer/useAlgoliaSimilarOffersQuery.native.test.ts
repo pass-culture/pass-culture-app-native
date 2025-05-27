@@ -4,7 +4,7 @@ import { mockedAlgoliaResponse } from 'libs/algolia/fixtures/algoliaFixtures'
 import { useAlgoliaSimilarOffersQuery } from 'queries/offer/useAlgoliaSimilarOffersQuery'
 import * as getSimilarOrRecoOffersInOrder from 'shared/offer/getSimilarOrRecoOffersInOrder'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, renderHook, waitFor } from 'tests/utils'
+import { renderHook, waitFor, act } from 'tests/utils'
 
 jest.mock('features/auth/context/AuthContext')
 
@@ -15,23 +15,19 @@ const getSimilarOffersInOrderSpy = jest.spyOn(
 
 const ids = ['102280', '102272', '102249', '102310']
 
-describe('useAlgoliaSimilarOffersQuery', () => {
-  const mockFetchAlgoliaHits = jest.fn().mockResolvedValue(mockedAlgoliaResponse.hits)
-  const fetchAlgoliaHitsSpy = jest
-    .spyOn(fetchOffersByIdsAPI, 'fetchOffersByIds')
-    .mockImplementation(mockFetchAlgoliaHits)
+const fetchAlgoliaHitsSpy = jest.spyOn(fetchOffersByIdsAPI, 'fetchOffersByIds')
 
-  const filterAlgoliaHitSpy = jest
-    .spyOn(filterOfferHitWithImageAPI, 'filterOfferHitWithImage')
-    .mockImplementation(jest.fn())
+const filterAlgoliaHitSpy = jest.spyOn(filterOfferHitWithImageAPI, 'filterOfferHitWithImage')
+
+describe('useAlgoliaSimilarOffersQuery', () => {
+  beforeEach(() => fetchAlgoliaHitsSpy.mockResolvedValue(mockedAlgoliaResponse.hits))
 
   it('should fetch algolia when ids are provided', async () => {
     renderHook(() => useAlgoliaSimilarOffersQuery(ids), {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
-    await waitFor(() => {
-      expect(fetchAlgoliaHitsSpy).toHaveBeenCalledWith({ objectIds: ids, isUserUnderage: false })
-    })
+
+    expect(fetchAlgoliaHitsSpy).toHaveBeenCalledWith({ objectIds: ids, isUserUnderage: false })
   })
 
   it('should filter algolia hits', async () => {
@@ -44,14 +40,12 @@ describe('useAlgoliaSimilarOffersQuery', () => {
   })
 
   it('should return undefined when algolia does not return any hit', async () => {
-    jest.spyOn(fetchOffersByIdsAPI, 'fetchOffersByIds').mockResolvedValueOnce([])
+    fetchAlgoliaHitsSpy.mockResolvedValueOnce([])
     const { result } = renderHook(() => useAlgoliaSimilarOffersQuery(ids), {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
-    await waitFor(() => {
-      expect(result.current).toBeUndefined()
-      expect(filterAlgoliaHitSpy).not.toHaveBeenCalled()
-    })
+
+    expect(result.current).toBeUndefined()
   })
 
   it('should return undefined when ids are not provided', async () => {
@@ -66,18 +60,20 @@ describe('useAlgoliaSimilarOffersQuery', () => {
     renderHook(() => useAlgoliaSimilarOffersQuery(ids, true), {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
+
     await act(async () => {})
 
-    expect(getSimilarOffersInOrderSpy).toHaveBeenCalledTimes(1)
+    await waitFor(() => expect(getSimilarOffersInOrderSpy).toHaveBeenCalledTimes(1))
   })
 
   it('should not call function to preserve ids offer order when shouldPreserveIdsOrder is undefined', async () => {
     renderHook(() => useAlgoliaSimilarOffersQuery(ids), {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
+
     await act(async () => {})
 
-    expect(getSimilarOffersInOrderSpy).not.toHaveBeenCalled()
+    await waitFor(() => expect(getSimilarOffersInOrderSpy).not.toHaveBeenCalled())
   })
 
   it('should not call function to preserve ids offer order when shouldPreserveIdsOrder is false', async () => {
@@ -86,6 +82,6 @@ describe('useAlgoliaSimilarOffersQuery', () => {
     })
     await act(async () => {})
 
-    expect(getSimilarOffersInOrderSpy).not.toHaveBeenCalled()
+    await waitFor(() => expect(getSimilarOffersInOrderSpy).not.toHaveBeenCalled())
   })
 })

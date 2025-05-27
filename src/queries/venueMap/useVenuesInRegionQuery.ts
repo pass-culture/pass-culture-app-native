@@ -1,4 +1,4 @@
-import { useQuery } from 'react-query'
+import { useQuery } from '@tanstack/react-query'
 
 import { DEFAULT_RADIUS } from 'features/search/constants'
 import { Venue } from 'features/venue/types'
@@ -12,11 +12,11 @@ type Props = {
   radius?: number
 }
 
-export function useVenuesInRegionQuery<TData = Awaited<ReturnType<typeof fetchVenues>>>({
+export const useVenuesInRegionQuery = <TData = Awaited<ReturnType<typeof fetchVenues>>>({
   region,
   radius = DEFAULT_RADIUS,
   select,
-}: Props & { select?: (data?: Venue[]) => TData }) {
+}: Props & { select?: (data?: Venue[]) => TData }) => {
   return useQuery(
     [QueryKeys.VENUES, JSON.stringify(region), radius],
     () =>

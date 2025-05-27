@@ -3,10 +3,6 @@ import {
   formatFullAddressStartsWithPostalCode,
 } from 'shared/address/addressFormatter'
 
-jest.mock('libs/react-query/usePersistQuery', () => ({
-  usePersistQuery: jest.requireActual('react-query').useQuery,
-}))
-
 describe('formatFullAddress', () => {
   it.each`
     address               | postalCode   | city         | expected

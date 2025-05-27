@@ -76,6 +76,8 @@ describe('<ThematicSearch/>', () => {
 
     await screen.findByText('Musique')
 
+    await act(async () => {})
+
     expect(screen).toMatchSnapshot()
   })
 
@@ -101,6 +103,8 @@ describe('<ThematicSearch/>', () => {
 
     await screen.findByText('Musique')
 
+    await act(async () => {})
+
     const results = await checkAccessibilityFor(container)
 
     expect(results).toHaveNoViolations()
@@ -112,6 +116,8 @@ describe('<ThematicSearch/>', () => {
     const { container } = render(reactQueryProviderHOC(<ThematicSearch />))
 
     await screen.findByText('Musique')
+
+    await act(async () => {})
 
     const results = await checkAccessibilityFor(container)
 

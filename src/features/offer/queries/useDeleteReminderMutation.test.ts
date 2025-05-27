@@ -1,4 +1,4 @@
-import { QueryClient } from 'react-query'
+import { QueryClient } from '@tanstack/react-query'
 
 import { GetRemindersResponse } from 'api/gen'
 import { remindersResponse } from 'features/offer/fixtures/remindersResponse'
@@ -12,16 +12,13 @@ import { useDeleteReminderMutation } from './useDeleteReminderMutation'
 jest.mock('libs/jwt/jwt')
 
 const reminderId = 1
-
-const cancelQueriesMock = jest.fn()
-const invalidateQueriesMock = jest.fn()
-
 let queryClient: QueryClient
+
 const setupWithReminders = (client: QueryClient) => {
   queryClient = client
   queryClient.setQueryData([QueryKeys.REMINDERS], remindersResponse)
-  queryClient.cancelQueries = cancelQueriesMock
-  queryClient.invalidateQueries = invalidateQueriesMock
+  jest.spyOn(queryClient, 'cancelQueries')
+  jest.spyOn(queryClient, 'invalidateQueries')
 }
 
 describe('useDeleteReminderMutation', () => {
@@ -50,9 +47,11 @@ describe('useDeleteReminderMutation', () => {
       result.current.mutate(reminderId)
     })
 
-    expect(cancelQueriesMock).toHaveBeenCalledWith([QueryKeys.REMINDERS])
+    expect(queryClient.cancelQueries).toHaveBeenCalledWith([QueryKeys.REMINDERS])
 
     const updatedCache = queryClient.getQueryData<GetRemindersResponse>([QueryKeys.REMINDERS])
+
+    await act(async () => {})
 
     expect(updatedCache?.reminders).toEqual(expectedRemindersInCache)
   })
@@ -86,7 +85,7 @@ describe('useDeleteReminderMutation', () => {
 
     await act(async () => expect(result.current.isSuccess).toBe(true))
 
-    expect(invalidateQueriesMock).toHaveBeenCalledWith([QueryKeys.REMINDERS])
+    expect(queryClient.invalidateQueries).toHaveBeenCalledWith([QueryKeys.REMINDERS])
   })
 
   it('should invalidate reminders query after mutation fails', async () => {
@@ -102,7 +101,7 @@ describe('useDeleteReminderMutation', () => {
 
     await act(async () => expect(result.current.isSuccess).toBe(false))
 
-    expect(invalidateQueriesMock).toHaveBeenCalledWith([QueryKeys.REMINDERS])
+    expect(queryClient.invalidateQueries).toHaveBeenCalledWith([QueryKeys.REMINDERS])
   })
 })
 

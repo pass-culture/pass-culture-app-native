@@ -1,4 +1,4 @@
-import { useQuery } from 'react-query'
+import { useQuery } from '@tanstack/react-query'
 
 import { QueryKeys } from 'libs/queryKeys'
 import { Offer } from 'shared/offer/types'

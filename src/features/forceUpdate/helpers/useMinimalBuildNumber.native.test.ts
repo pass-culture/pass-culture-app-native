@@ -1,4 +1,4 @@
-import { onlineManager } from 'react-query'
+import { onlineManager } from '@tanstack/react-query'
 
 import { useMinimalBuildNumber } from 'features/forceUpdate/helpers/useMinimalBuildNumber'
 import { getMinimalBuildNumber } from 'libs/firebase/firestore/getMinimalBuildNumber/getMinimalBuildNumber'

@@ -6,10 +6,15 @@ import * as consoleFailTestModule from 'console-fail-test'
 import { toHaveNoViolations } from 'jest-axe'
 import { configure } from 'reassure'
 
-import { queryCache } from './reactQueryProviderHOC'
+import { queryCache, mutationCache } from './reactQueryProviderHOC'
 
 // Configuration for performance tests
 configure({ testingLibrary: 'react-native' })
+
+global.afterEach(async () => {
+  queryCache.clear()
+  mutationCache.clear()
+})
 
 global.expect.extend(toHaveNoViolations)
 global.TextEncoder = TextEncoder
@@ -23,10 +28,6 @@ consoleFailTestModule.cft({
     log: false,
     warn: false,
   },
-})
-
-global.afterEach(async () => {
-  queryCache.clear()
 })
 
 // AbortController needs to be mocked because it is not supported in our current version of Jest
@@ -51,6 +52,7 @@ const permissions = {
   query: jest.fn(async () => ({ state: 'granted' })),
 }
 const share = jest.fn()
+
 if (global.navigator) {
   global.navigator.geolocation = geolocation
   global.navigator.permissions = permissions

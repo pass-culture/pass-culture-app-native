@@ -4,11 +4,7 @@ import * as useNetInfoContextDefault from 'libs/network/NetInfoWrapper'
 import { useEndedBookingFromOfferIdQuery } from 'queries/bookings/useEndedBookingFromOfferIdQuery'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
-import { act, renderHook } from 'tests/utils'
-
-jest.mock('libs/react-query/usePersistQuery', () => ({
-  usePersistQuery: jest.requireActual('react-query').useQuery,
-}))
+import { renderHook, waitFor } from 'tests/utils'
 
 const mockUseNetInfoContext = jest.spyOn(useNetInfoContextDefault, 'useNetInfoContext') as jest.Mock
 mockUseNetInfoContext.mockReturnValue({ isConnected: true, isInternetReachable: true })
@@ -30,9 +26,8 @@ describe('useEndedBookingFromOfferIdQuery', () => {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
 
-    await act(async () => {})
+    await waitFor(() => expect(result.current?.data?.id).toEqual(booking.id))
 
-    expect(result.current?.data?.id).toEqual(booking.id)
     expect(result.current?.data?.stock.id).toEqual(booking.stock.id)
   })
 
@@ -41,8 +36,6 @@ describe('useEndedBookingFromOfferIdQuery', () => {
     const { result } = renderHook(() => useEndedBookingFromOfferIdQuery(unknownOfferId), {
       wrapper: ({ children }) => reactQueryProviderHOC(children),
     })
-    await act(async () => {})
-
-    expect(result.current?.data).toEqual(null)
+    await waitFor(() => expect(result.current?.data).toEqual(null))
   })
 })

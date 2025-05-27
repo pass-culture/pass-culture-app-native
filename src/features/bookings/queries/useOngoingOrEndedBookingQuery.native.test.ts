@@ -6,10 +6,6 @@ import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, waitFor } from 'tests/utils'
 
-jest.mock('libs/react-query/usePersistQuery', () => ({
-  usePersistQuery: jest.requireActual('react-query').useQuery,
-}))
-
 const mockUseNetInfoContext = jest.spyOn(useNetInfoContextDefault, 'useNetInfoContext') as jest.Mock
 
 mockUseNetInfoContext.mockReturnValue({ isConnected: true, isInternetReachable: true })
@@ -35,9 +31,7 @@ describe('useOngoingOrEndedBookingQuery', () => {
 
   it('should return ongoing_bookings when there is one', async () => {
     const booking = bookingsSnap.ongoing_bookings[0]
-    const { result } = renderHook(() => useOngoingOrEndedBookingQuery(booking.id), {
-      wrapper: ({ children }) => reactQueryProviderHOC(children),
-    })
+    const { result } = renderUseOngoingOrEndedBookingQuery(booking.id)
 
     await waitFor(() => {
       expect(result.current?.data?.id).toEqual(booking.id)
@@ -47,10 +41,7 @@ describe('useOngoingOrEndedBookingQuery', () => {
 
   it('should return ended_bookings when there is one', async () => {
     const booking = bookingsSnap.ended_bookings[0]
-    const { result } = renderHook(() => useOngoingOrEndedBookingQuery(booking.id), {
-      wrapper: ({ children }) => reactQueryProviderHOC(children),
-    })
-
+    const { result } = renderUseOngoingOrEndedBookingQuery(booking.id)
     await waitFor(() => {
       expect(result.current?.data?.id).toEqual(booking.id)
       expect(result.current?.data?.stock.id).toEqual(booking.stock.id)
@@ -59,12 +50,15 @@ describe('useOngoingOrEndedBookingQuery', () => {
 
   it('should return null if no ongoing nor ended booking can be found', async () => {
     const bookingId = 1230912039
-    const { result } = renderHook(() => useOngoingOrEndedBookingQuery(bookingId), {
-      wrapper: ({ children }) => reactQueryProviderHOC(children),
-    })
+    const { result } = renderUseOngoingOrEndedBookingQuery(bookingId)
 
     await waitFor(() => {
       expect(result.current.data).toBeNull()
     })
   })
 })
+
+const renderUseOngoingOrEndedBookingQuery = (bookingId: number) =>
+  renderHook(() => useOngoingOrEndedBookingQuery(bookingId), {
+    wrapper: ({ children }) => reactQueryProviderHOC(children),
+  })
