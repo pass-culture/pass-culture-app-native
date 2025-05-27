@@ -1,0 +1,81 @@
+name: '0 [on_workflow] Dev on workflow call e2e performance android'
+
+on:
+  workflow_call:
+    inputs:
+      upload_name_prefix:
+        description: 'Prefix to add to the upload name'
+        required: false
+        type: string
+        default: '[MES]'
+    secrets:
+      GCP_EHP_SERVICE_ACCOUNT:
+        required: true
+      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER:
+        required: true
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  performance-tests:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+
+    steps:
+      - name: Download APK artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: android-apk
+          path: ./android-apk
+
+      - name: Setup Java
+        uses: actions/setup-java@v4
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v3
+        with:
+          cmdline-tools-version: 11076708 # correspond to cmdline-tools version 12.0
+
+      - name: Authentification to Google
+        uses: 'google-github-actions/auth@v2'
+        with:
+          workload_identity_provider: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+          service_account: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+
+      - name: Get Secret
+        id: 'secrets'
+        uses: 'google-github-actions/get-secretmanager-secrets@v2'
+        with:
+          secrets: |
+            FLASHLIGHT_API_KEY:passculture-metier-ehp/passculture-app-native-e2e-flashlight-api-key
+
+      - name: Install Flashlight CLI
+        run: |
+          curl https://get.flashlight.dev/ | bash
+          echo "$HOME/.flashlight/bin" >> $GITHUB_PATH
+          export PATH="$HOME/.flashlight/bin:$PATH"
+
+      - name: Run Flashlight performance tests
+        run: |
+          curl -Ls "https://get.maestro.mobile.dev" | bash
+          export PATH="$PATH:$HOME/.maestro/bin"
+
+          echo "Démarrage des tests de performance avec Flashlight..."
+          flashlight cloud \
+            --app ./android-apk/app-staging-debug.apk \
+            --test SearchAndBookOffers.yml \
+            --apiKey "${{ steps.secrets.outputs.FLASHLIGHT_API_KEY }}" || \
+            echo "Les tests de performance ont échoué mais le workflow continue"
+
+      - name: Upload performance report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: performance-report
+          path: ./flashlight-report
+          retention-days: 7

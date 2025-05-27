@@ -86,3 +86,16 @@ jobs:
     secrets:
       GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
       GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
+
+  performance-tests-android:
+    if: ${{ startsWith(github.event.label.name, 'e2e') && (contains(github.event.label.name, 'Android') || !contains(github.event.label.name, 'iOS')) }}
+    needs: e2e-tests-android
+    concurrency:
+      group: perf-android-${{ github.head_ref }}
+      cancel-in-progress: false
+    uses: ./.github/workflows/dev_on_workflow_call_e2e_perf_android.yml
+    with:
+      upload_name_prefix: '[PR]'
+    secrets:
+      GCP_EHP_SERVICE_ACCOUNT: ${{ secrets.GCP_EHP_SERVICE_ACCOUNT }}
+      GCP_EHP_WORKLOAD_IDENTITY_PROVIDER: ${{ secrets.GCP_EHP_WORKLOAD_IDENTITY_PROVIDER }}
