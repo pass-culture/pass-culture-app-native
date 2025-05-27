@@ -17,6 +17,7 @@ describe('<OfferArtists />', () => {
     render(<OfferArtists artists="Edith Piaf" onPressArtistLink={handlePressLink} />)
 
     // userEvent.press not working correctly here
+    // eslint-disable-next-line local-rules/no-fireEvent
     fireEvent.press(screen.getByText('Edith Piaf'))
 
     expect(handlePressLink).toHaveBeenCalledWith()

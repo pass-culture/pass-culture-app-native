@@ -76,6 +76,7 @@ describe('HomeLocationModal', () => {
 
     const suggestedPlace = await screen.findByText(mockPlaces[0].label)
     // userEvent.press not working correctly here
+    // eslint-disable-next-line local-rules/no-fireEvent
     fireEvent.press(suggestedPlace)
 
     const validateButon = screen.getByText('Valider la localisation')
@@ -137,6 +138,7 @@ describe('HomeLocationModal', () => {
     hideModalMock.mockImplementationOnce(() => {
       // simulate the modal closing
       // userEvent.press not working correctly here
+      // eslint-disable-next-line local-rules/no-fireEvent
       fireEvent.press(screen.getByText('Close'))
     })
 

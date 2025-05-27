@@ -192,6 +192,7 @@ describe('<OfferCTAButton />', () => {
         })
 
         // userEvent.press not working correctly here
+        // eslint-disable-next-line local-rules/no-fireEvent
         fireEvent.press(screen.getByText('Accéder à l’offre en ligne'))
 
         await waitFor(() => {
@@ -224,6 +225,7 @@ describe('<OfferCTAButton />', () => {
         })
 
         // userEvent.press not working correctly here
+        // eslint-disable-next-line local-rules/no-fireEvent
         fireEvent.press(screen.getByText('Accéder à l’offre en ligne'))
 
         jest.advanceTimersByTime(500)

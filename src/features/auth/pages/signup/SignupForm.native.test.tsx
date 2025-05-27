@@ -915,5 +915,6 @@ const pressSSOButton = async () => {
     SSOButton = await screen.findByTestId('S’inscrire avec Google')
   })
   // userEvent.press is not working correctly with SSOButton :'(
+  // eslint-disable-next-line local-rules/no-fireEvent
   await act(async () => fireEvent.press(SSOButton))
 }
