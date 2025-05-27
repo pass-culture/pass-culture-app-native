@@ -1476,7 +1476,7 @@ PODS:
     - React-Core
   - react-native-orientation-locker (1.7.0):
     - React-Core
-  - react-native-performance (5.1.2):
+  - react-native-performance-stats (0.2.3):
     - React-Core
   - react-native-safe-area-context (3.4.1):
     - React-Core
@@ -2052,7 +2052,7 @@ DEPENDENCIES:
   - react-native-maps (from `../node_modules/react-native-maps`)
   - "react-native-netinfo (from `../node_modules/@react-native-community/netinfo`)"
   - react-native-orientation-locker (from `../node_modules/react-native-orientation-locker`)
-  - react-native-performance (from `../node_modules/react-native-performance`)
+  - react-native-performance-stats (from `../node_modules/react-native-performance-stats`)
   - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
   - react-native-tracking-transparency (from `../node_modules/react-native-tracking-transparency`)
   - react-native-webview (from `../node_modules/react-native-webview`)
@@ -2252,8 +2252,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/@react-native-community/netinfo"
   react-native-orientation-locker:
     :path: "../node_modules/react-native-orientation-locker"
-  react-native-performance:
-    :path: "../node_modules/react-native-performance"
+  react-native-performance-stats:
+    :path: "../node_modules/react-native-performance-stats"
   react-native-safe-area-context:
     :path: "../node_modules/react-native-safe-area-context"
   react-native-tracking-transparency:
@@ -2445,7 +2445,7 @@ SPEC CHECKSUMS:
   react-native-maps: a7783e616e0c3f2ee109ae315a15fb3c8608b1c3
   react-native-netinfo: 8fa5cbcb4a8e69e265ff685b9e54c175ef2bbd40
   react-native-orientation-locker: cc6f357b289a2e0dd2210fea0c52cb8e0727fdaa
-  react-native-performance: 125a96c145e29918b55b45ce25cbba54f1e24dcd
+  react-native-performance-stats: af019f6a0512de713999b91f038bf1041151666e
   react-native-safe-area-context: 667324e20fb3dd9c39c12d6036675ed90099bcd5
   react-native-tracking-transparency: 15eb319f2b982070eb9831582af27d87badfa624
   react-native-webview: ec195db71ebf55705d7b46a7da5f1b1746bb7efd
