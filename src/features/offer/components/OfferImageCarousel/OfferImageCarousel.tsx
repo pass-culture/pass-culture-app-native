@@ -86,7 +86,7 @@ export const OfferImageCarousel: React.FunctionComponent<OfferImageCarouselProps
         {currentCredit ? <CopyrightText numberOfLines={2}>© {currentCredit}</CopyrightText> : null}
       </Container>
       {offerImages.length > 1 && progressValue ? (
-        <CarouselPagination
+        <StyledCarouselPagination
           progressValue={progressValue}
           elementsCount={offerImages.length}
           gap={2}
@@ -104,7 +104,10 @@ const CopyrightText = styled(Typo.BodyAccentXs)(({ theme }) => ({
   textAlign: 'right',
 }))
 
-const Container = styled.View(({ theme }) => ({
-  marginBottom: theme.isDesktopViewport ? getSpacing(2) : 0,
+const Container = styled.View({
   flexDirection: 'row',
-}))
+})
+
+const StyledCarouselPagination = styled(CarouselPagination)({
+  marginTop: getSpacing(4),
+})

@@ -10,13 +10,14 @@ export const CarouselPaginationBase: FunctionComponent<CarouselPaginationProps> 
   progressValue,
   elementsCount,
   gap,
+  style,
 }) => {
   const carouselDotId = uuidv4()
 
   if (!progressValue) return null
 
   return (
-    <Container gap={gap}>
+    <Container gap={gap} style={style}>
       {Array.from({ length: elementsCount }).map((_, index) => (
         <CarouselDot animValue={progressValue} index={index} key={index + carouselDotId} />
       ))}
