@@ -82,6 +82,8 @@ describe('<BookingDetailsCancelButton />', () => {
       onCancel,
     })
     const button = screen.getByTestId('Annuler ma réservation')
+    // userEvent.press is not working correctly here
+    // eslint-disable-next-line local-rules/no-fireEvent
     fireEvent.press(button)
 
     expect(onCancel).toHaveBeenCalledTimes(1)
@@ -98,6 +100,8 @@ describe('<BookingDetailsCancelButton />', () => {
       onTerminate,
     })
     const button = screen.getByTestId('Terminer')
+    // userEvent.press is not working correctly here
+    // eslint-disable-next-line local-rules/no-fireEvent
     fireEvent.press(button)
 
     expect(onTerminate).toHaveBeenCalledTimes(1)

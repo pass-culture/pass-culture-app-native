@@ -44,6 +44,7 @@ describe('SubscribeButtonWithModals', () => {
     render(reactQueryProviderHOC(<SubscribeButtonWithModals homeId="fakeEntryId" />))
 
     // userEvent.press is not working correctly (MSW warning)
+    // eslint-disable-next-line local-rules/no-fireEvent
     await act(async () => fireEvent.press(screen.getByText('Suivre')))
 
     expect(screen.getByText('Identifie-toi pour t’abonner à un thème')).toBeOnTheScreen()
@@ -82,6 +83,8 @@ describe('SubscribeButtonWithModals', () => {
 
     render(reactQueryProviderHOC(<SubscribeButtonWithModals homeId="fakeEntryId" />))
 
+    // userEvent.press is not working correctly (MSW warning)
+    // eslint-disable-next-line local-rules/no-fireEvent
     await act(async () => fireEvent.press(screen.getByText('Suivre')))
 
     expect(screen.getByText('Autoriser l’envoi d’e-mails')).toBeOnTheScreen()
@@ -99,6 +102,8 @@ describe('SubscribeButtonWithModals', () => {
 
     render(reactQueryProviderHOC(<SubscribeButtonWithModals homeId="fakeEntryId" />))
 
+    // userEvent.press is not working correctly (MSW warning)
+    // eslint-disable-next-line local-rules/no-fireEvent
     await act(async () => fireEvent.press(screen.getByText('Déjà suivi')))
 
     expect(
@@ -112,6 +117,8 @@ describe('SubscribeButtonWithModals', () => {
     await storage.saveObject('times_user_subscribed_to_a_theme', 1)
     render(reactQueryProviderHOC(<SubscribeButtonWithModals homeId="fakeEntryId" />))
 
+    // userEvent.press is not working correctly (MSW warning)
+    // eslint-disable-next-line local-rules/no-fireEvent
     await act(async () => fireEvent.press(screen.getByText('Suivre')))
 
     expect(screen.getByText('Tu suis le thème "Cinéma"')).toBeOnTheScreen()
@@ -124,6 +131,8 @@ describe('SubscribeButtonWithModals', () => {
     await storage.saveObject('times_user_subscribed_to_a_theme', 3)
     render(reactQueryProviderHOC(<SubscribeButtonWithModals homeId="fakeEntryId" />))
 
+    // userEvent.press is not working correctly (MSW warning)
+    // eslint-disable-next-line local-rules/no-fireEvent
     await act(async () => fireEvent.press(screen.getByText('Suivre')))
 
     expect(mockShowSuccessSnackBar).toHaveBeenCalledWith({

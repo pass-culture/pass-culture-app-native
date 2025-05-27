@@ -131,6 +131,8 @@ describe.skip('<VideoCarouselModule />', () => {
     await screen.findByText(MOCKED_ALGOLIA_RESPONSE_OFFER.offer.name)
 
     const attachedOfferButton = screen.getByText(THEMATIC_HOME_TITLE)
+    // file skip for the moment
+    // eslint-disable-next-line local-rules/no-fireEvent
     fireEvent.press(attachedOfferButton)
 
     expect(navigate).toHaveBeenCalledWith('ThematicHome', {
@@ -151,6 +153,8 @@ describe.skip('<VideoCarouselModule />', () => {
     })
 
     const attachedOfferButton = await screen.findByText(OFFER_NAME)
+    // file skip for the moment
+    // eslint-disable-next-line local-rules/no-fireEvent
     await act(async () => fireEvent.press(attachedOfferButton))
 
     expect(navigate).toHaveBeenCalledWith('Offer', {
@@ -180,6 +184,8 @@ describe.skip('<VideoCarouselModule />', () => {
       const nextVideoButton = await screen.findByRole(AccessibilityRole.BUTTON, {
         name: VideoPlayerButtonsWording.NEXT_VIDEO,
       })
+      // file skip for the moment
+      // eslint-disable-next-line local-rules/no-fireEvent
       await act(async () => fireEvent.press(nextVideoButton))
 
       await waitFor(() => {
@@ -202,6 +208,8 @@ describe.skip('<VideoCarouselModule />', () => {
       })
 
       const attachedOfferButton = await screen.findByText(OFFER_NAME)
+      // file skip for the moment
+      // eslint-disable-next-line local-rules/no-fireEvent
       await act(async () => fireEvent.press(attachedOfferButton))
 
       expect(analytics.logConsultOffer).toHaveBeenNthCalledWith(1, {
