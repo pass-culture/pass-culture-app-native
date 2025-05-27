@@ -6,6 +6,8 @@ import { LogBox, Platform, StatusBar } from 'react-native'
 import CodePush from 'react-native-code-push'
 import 'react-native-gesture-handler' // @react-navigation
 import 'react-native-get-random-values' // required for `uuid` module to work
+// eslint-disable-next-line import/no-extraneous-dependencies
+import PerformanceStats from 'react-native-performance-stats'
 
 // if __DEV__ import if you want to debug
 // import './why-did-you-render'
@@ -81,6 +83,23 @@ const App: FunctionComponent = function () {
       iosClientId: env.GOOGLE_IOS_CLIENT_ID,
       offlineAccess: true,
     })
+  }, [])
+
+  useEffect(() => {
+    if (env.LOG_PERF !== 'all' || Platform.OS === 'web') return
+
+    const listener = PerformanceStats.addListener((stats) => {
+      // eslint-disable-next-line no-console
+      console.log(stats)
+    })
+
+    // you must call .start(true) to get CPU as well
+    PerformanceStats.start(true)
+
+    // ... at some later point you could call:
+    // PerformanceStats.stop();
+
+    return () => listener.remove()
   }, [])
 
   return (
