@@ -3,7 +3,7 @@ import React, { useCallback } from 'react'
 
 import { VenueResponse } from 'api/gen'
 import { GtlPlaylistProps } from 'features/gtlPlaylist/components/GtlPlaylist'
-import { UseRouteType } from 'features/navigation/RootNavigator/types'
+import { Referrals, UseRouteType } from 'features/navigation/RootNavigator/types'
 import { OfferTileWrapper } from 'features/offer/components/OfferTile/OfferTileWrapper'
 import { ThematicSearchPlaylist } from 'features/search/pages/ThematicSearch/ThematicSearchPlaylist'
 import { Offer } from 'shared/offer/types'
@@ -41,4 +41,25 @@ export const useRenderPassPlaylist = ({
     },
     [analyticsFrom, currentRoute.params?.searchId, venue?.id, entryId]
   )
+}
+
+export const renderPassPlaylist = (
+  entryId: string,
+  analyticsFrom: Referrals,
+  searchId: string | undefined,
+  venueId: number | undefined
+) => {
+  const RenderItem = ({ item, width, height, index }) => (
+    <OfferTileWrapper
+      height={height}
+      width={width}
+      item={item}
+      moduleId={entryId}
+      analyticsFrom={analyticsFrom}
+      searchId={searchId}
+      index={index}
+      venueId={venueId}
+    />
+  )
+  return RenderItem
 }
