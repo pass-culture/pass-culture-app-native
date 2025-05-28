@@ -3,6 +3,7 @@ import { storage, StorageKey } from 'libs/storage'
 import { act } from 'tests/utils'
 
 const someValue = 'some value'
+const keyColorScheme = 'colorScheme'
 
 describe('removeGeneratedStorageKey', () => {
   it('should clear optional key', async () => {
@@ -13,7 +14,7 @@ describe('removeGeneratedStorageKey', () => {
       removeGeneratedStorageKey(key)
     })
 
-    expect(await storage.getAllKeys()).toEqual([])
+    expect(await storage.getAllKeys()).toEqual([keyColorScheme])
   })
 
   it('should clear optional key with prefix', async () => {
@@ -25,11 +26,12 @@ describe('removeGeneratedStorageKey', () => {
       removeGeneratedStorageKey(prefix)
     })
 
-    expect(await storage.getAllKeys()).toEqual([])
+    expect(await storage.getAllKeys()).toEqual([keyColorScheme])
   })
 
   it('should not clear optional key with partial prefix', async () => {
     const keyWithPartialPrefix = 'algoliasear' as StorageKey
+
     storage.saveObject(keyWithPartialPrefix, someValue)
 
     const prefix = 'algoliasearch-client-js' as StorageKey
@@ -37,6 +39,6 @@ describe('removeGeneratedStorageKey', () => {
       removeGeneratedStorageKey(prefix)
     })
 
-    expect(await storage.getAllKeys()).toEqual([keyWithPartialPrefix])
+    expect(await storage.getAllKeys()).toEqual([keyColorScheme, keyWithPartialPrefix])
   })
 })
