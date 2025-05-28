@@ -356,7 +356,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                         "marginTop": 8,
                       },
                       {
-                        "borderColor": "#f1f1f4",
+                        "borderColor": "#cbcdd2",
                         "borderWidth": 2,
                         "minHeight": 88,
                         "paddingRight": 16,
@@ -879,7 +879,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                         "marginTop": 8,
                       },
                       {
-                        "borderColor": "#f1f1f4",
+                        "borderColor": "#cbcdd2",
                         "minHeight": 88,
                         "paddingRight": 16,
                         "paddingVertical": 16,
@@ -1605,7 +1605,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                         "marginTop": 8,
                       },
                       {
-                        "borderColor": "#f1f1f4",
+                        "borderColor": "#cbcdd2",
                         "minHeight": 88,
                         "paddingRight": 16,
                         "paddingVertical": 16,
@@ -1847,7 +1847,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                         "marginTop": 8,
                       },
                       {
-                        "borderColor": "#f1f1f4",
+                        "borderColor": "#cbcdd2",
                         "minHeight": 88,
                         "paddingRight": 16,
                         "paddingVertical": 16,
@@ -2274,7 +2274,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                         "marginTop": 8,
                       },
                       {
-                        "borderColor": "#f1f1f4",
+                        "borderColor": "#cbcdd2",
                         "borderWidth": 2,
                         "minHeight": 88,
                         "paddingRight": 16,
@@ -2509,7 +2509,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
                         "marginTop": 8,
                       },
                       {
-                        "borderColor": "#f1f1f4",
+                        "borderColor": "#cbcdd2",
                         "borderWidth": 2,
                         "minHeight": 88,
                         "paddingRight": 16,
@@ -3206,7 +3206,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                         "marginTop": 8,
                       },
                       {
-                        "borderColor": "#f1f1f4",
+                        "borderColor": "#cbcdd2",
                         "borderWidth": 2,
                         "minHeight": 88,
                         "paddingRight": 16,
@@ -3441,7 +3441,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                         "marginTop": 8,
                       },
                       {
-                        "borderColor": "#f1f1f4",
+                        "borderColor": "#cbcdd2",
                         "borderWidth": 2,
                         "minHeight": 88,
                         "paddingRight": 16,
@@ -3963,7 +3963,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                         "marginTop": 8,
                       },
                       {
-                        "borderColor": "#f1f1f4",
+                        "borderColor": "#cbcdd2",
                         "minHeight": 88,
                         "paddingRight": 16,
                         "paddingVertical": 16,
@@ -4689,7 +4689,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                         "marginTop": 8,
                       },
                       {
-                        "borderColor": "#f1f1f4",
+                        "borderColor": "#cbcdd2",
                         "minHeight": 88,
                         "paddingRight": 16,
                         "paddingVertical": 16,
@@ -4941,7 +4941,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                         "marginTop": 8,
                       },
                       {
-                        "borderColor": "#f1f1f4",
+                        "borderColor": "#cbcdd2",
                         "minHeight": 88,
                         "paddingRight": 16,
                         "paddingVertical": 16,
@@ -5183,7 +5183,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                         "marginTop": 8,
                       },
                       {
-                        "borderColor": "#f1f1f4",
+                        "borderColor": "#cbcdd2",
                         "minHeight": 88,
                         "paddingRight": 16,
                         "paddingVertical": 16,
@@ -5610,7 +5610,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                         "marginTop": 8,
                       },
                       {
-                        "borderColor": "#f1f1f4",
+                        "borderColor": "#cbcdd2",
                         "borderWidth": 2,
                         "minHeight": 88,
                         "paddingRight": 16,
@@ -6143,7 +6143,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                         "marginTop": 8,
                       },
                       {
-                        "borderColor": "#f1f1f4",
+                        "borderColor": "#cbcdd2",
                         "minHeight": 88,
                         "paddingRight": 16,
                         "paddingVertical": 16,
@@ -6385,7 +6385,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                         "marginTop": 8,
                       },
                       {
-                        "borderColor": "#f1f1f4",
+                        "borderColor": "#cbcdd2",
                         "minHeight": 88,
                         "paddingRight": 16,
                         "paddingVertical": 16,
@@ -6812,7 +6812,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                         "marginTop": 8,
                       },
                       {
-                        "borderColor": "#f1f1f4",
+                        "borderColor": "#cbcdd2",
                         "borderWidth": 2,
                         "minHeight": 88,
                         "paddingRight": 16,
@@ -7047,7 +7047,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                         "marginTop": 8,
                       },
                       {
-                        "borderColor": "#f1f1f4",
+                        "borderColor": "#cbcdd2",
                         "borderWidth": 2,
                         "minHeight": 88,
                         "paddingRight": 16,
@@ -7281,7 +7281,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
                         "marginTop": 8,
                       },
                       {
-                        "borderColor": "#f1f1f4",
+                        "borderColor": "#cbcdd2",
                         "borderWidth": 2,
                         "minHeight": 88,
                         "paddingRight": 16,

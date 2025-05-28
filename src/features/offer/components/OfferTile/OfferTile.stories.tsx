@@ -28,25 +28,25 @@ export default meta
 
 const ComingSoonTag = styled(Tag).attrs(({ theme }) => ({
   Icon: <ClockFilled color={theme.designSystem.color.icon.warning} size={16} />,
-  backgroundColor: theme.colors.greyLight,
+  backgroundColor: theme.designSystem.color.background.warning,
   paddingHorizontal: getSpacing(1),
 }))``
 
 const LikeTag = styled(Tag).attrs(({ theme }) => ({
   Icon: <ThumbUpFilled color={theme.colors.primary} size={16} />,
-  backgroundColor: theme.colors.greyLight,
+  backgroundColor: theme.designSystem.color.background.subtle,
   paddingHorizontal: getSpacing(1),
 }))``
 
 const HeadlineTag = styled(Tag).attrs(({ theme }) => ({
-  Icon: <Star size={16} />,
-  backgroundColor: theme.colors.goldLight100,
+  Icon: <Star color={theme.designSystem.color.icon.headline} size={16} />,
+  backgroundColor: theme.designSystem.color.background.headline,
   paddingHorizontal: getSpacing(1),
 }))``
 
 const ChronicleTag = styled(Tag).attrs(({ theme }) => ({
-  Icon: <BookClubCertification size={16} />,
-  backgroundColor: theme.colors.skyBlueLight,
+  Icon: <BookClubCertification color={theme.designSystem.color.icon.bookclub} size={16} />,
+  backgroundColor: theme.designSystem.color.background.bookclub,
   paddingHorizontal: getSpacing(1),
 }))``
 
