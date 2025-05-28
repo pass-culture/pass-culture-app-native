@@ -28,7 +28,7 @@ export default meta
 
 const ComingSoonTag = styled(Tag).attrs(({ theme }) => ({
   Icon: <ClockFilled color={theme.designSystem.color.icon.warning} size={16} />,
-  backgroundColor: theme.designSystem.color.background.info,
+  backgroundColor: theme.designSystem.color.background.warning,
   paddingHorizontal: getSpacing(1),
 }))``
 
@@ -39,13 +39,13 @@ const LikeTag = styled(Tag).attrs(({ theme }) => ({
 }))``
 
 const HeadlineTag = styled(Tag).attrs(({ theme }) => ({
-  Icon: <Star size={16} />,
+  Icon: <Star color={theme.designSystem.color.icon.headline} size={16} />,
   backgroundColor: theme.designSystem.color.background.headline,
   paddingHorizontal: getSpacing(1),
 }))``
 
 const ChronicleTag = styled(Tag).attrs(({ theme }) => ({
-  Icon: <BookClubCertification size={16} />,
+  Icon: <BookClubCertification color={theme.designSystem.color.icon.bookclub} size={16} />,
   backgroundColor: theme.designSystem.color.background.bookclub,
   paddingHorizontal: getSpacing(1),
 }))``
