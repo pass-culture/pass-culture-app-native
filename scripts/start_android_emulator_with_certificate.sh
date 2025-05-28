@@ -26,7 +26,7 @@ add_certificate_to_this_session() {
 	adb remount
 	adb push "$SSL_CERT_FILE" "/system/etc/security/cacerts/${CERTIFICATE_HASH}.0"
 	adb shell "mount -o remount,ro /system"
-	adb unroot
+	adb unroot || echo '`adb unroot` seems to fail on old Android image ; we try ignoring it'
 }
 
 if sh "$SCRIPT_FOLDER/is_proxy_enabled.sh"; then
