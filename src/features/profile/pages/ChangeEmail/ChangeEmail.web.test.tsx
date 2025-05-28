@@ -46,15 +46,23 @@ describe('<ChangeEmail/>', () => {
 
     it('should update the URL params when the modal is closed', async () => {
       useRoute.mockReturnValueOnce({ params: { showModal: true } })
-      render(reactQueryProviderHOC(<ChangeEmail />))
 
-      await screen.findByText('Modifier mon e-mail')
+      await act(async () => {
+        render(reactQueryProviderHOC(<ChangeEmail />))
+      })
 
-      const closeButton = screen.getByLabelText('Fermer la modale')
-      fireEvent.click(closeButton)
+      const modifyEmailText = await screen.findByText('Modifier mon e-mail')
+
+      expect(modifyEmailText).toBeInTheDocument()
+
+      const closeButton = await screen.findByLabelText('Fermer la modale')
+      await act(async () => {
+        fireEvent.click(closeButton)
+      })
 
       await waitFor(() => {
-        expect(replace).toHaveBeenNthCalledWith(1, 'ProfileStackNavigator', {
+        expect(replace).toHaveBeenCalledTimes(1)
+        expect(replace).toHaveBeenCalledWith('ProfileStackNavigator', {
           params: {
             showModal: false,
           },

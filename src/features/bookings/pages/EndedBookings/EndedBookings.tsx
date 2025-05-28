@@ -121,8 +121,6 @@ export const EndedBookings: FunctionComponent = () => {
   return (
     <React.Fragment>
       <FlatList
-        listAs="ul"
-        itemAs="li"
         contentContainerStyle={contentContainerStyle}
         data={bookings?.ended_bookings ?? []}
         keyExtractor={keyExtractor}

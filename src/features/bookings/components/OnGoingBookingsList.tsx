@@ -72,8 +72,6 @@ export const OnGoingBookingsList: FunctionComponent = () => {
 
   return (
     <FlatList
-      listAs="ul"
-      itemAs="li"
       testID="OnGoingBookingsList"
       keyExtractor={keyExtractor}
       data={ongoingBookings}

@@ -1,5 +1,5 @@
 import React, { useCallback, useRef, useState } from 'react'
-import { View } from 'react-native'
+import { FlatList, FlatListProps } from 'react-native'
 import Animated, { Easing, useAnimatedStyle, withTiming } from 'react-native-reanimated'
 
 export const ExpandingFlatList = <T,>({
@@ -10,24 +10,34 @@ export const ExpandingFlatList = <T,>({
   skeletonListLength = 3,
   animationDuration = 300,
   ...props
-}: Animated.FlatListPropsWithLayout<T> & {
+}: FlatListProps<T> & {
   animationDuration?: number
   isLoading?: boolean
   skeletonListLength?: number
-  renderSkeleton: Animated.FlatListPropsWithLayout<T>['renderItem']
+  renderSkeleton: FlatListProps<T>['renderItem']
 }) => {
   const { animatedStyle, onContentSizeChange } = useAnimatedHeight(animationDuration)
 
-  return (
-    <View>
-      <Animated.FlatList
+  if (isLoading) {
+    return (
+      <FlatList
         {...props}
-        data={isLoading ? Array(skeletonListLength).fill(undefined) : data}
-        renderItem={isLoading ? renderSkeleton : renderItem}
-        style={animatedStyle}
+        data={Array(skeletonListLength).fill(undefined)}
+        renderItem={renderSkeleton}
         onContentSizeChange={onContentSizeChange}
       />
-    </View>
+    )
+  }
+
+  return (
+    <Animated.View style={animatedStyle}>
+      <FlatList
+        {...props}
+        data={data}
+        renderItem={renderItem}
+        onContentSizeChange={onContentSizeChange}
+      />
+    </Animated.View>
   )
 }
 
