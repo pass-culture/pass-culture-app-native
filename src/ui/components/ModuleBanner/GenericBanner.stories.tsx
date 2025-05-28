@@ -1,10 +1,11 @@
 import type { Meta } from '@storybook/react'
 import React from 'react'
 
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 import { BicolorEverywhere } from 'ui/svg/icons/BicolorEverywhere'
 import { Bulb } from 'ui/svg/icons/Bulb'
-import { Spacer, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 import { GenericBanner } from './GenericBanner'
 
@@ -16,13 +17,12 @@ const meta: Meta<typeof GenericBanner> = {
 export default meta
 
 const textExample = ({ withSubtitle = true }) => (
-  <React.Fragment>
+  <ViewGap gap={1}>
     <Typo.Button>Géolocalise-toi</Typo.Button>
-    <Spacer.Column numberOfSpaces={1} />
     {withSubtitle ? (
       <Typo.Body numberOfLines={2}>Pour trouver des offres autour de toi.</Typo.Body>
     ) : null}
-  </React.Fragment>
+  </ViewGap>
 )
 
 const variantConfig: Variants<typeof GenericBanner> = [

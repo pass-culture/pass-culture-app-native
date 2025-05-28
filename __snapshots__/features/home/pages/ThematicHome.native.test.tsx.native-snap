@@ -733,22 +733,13 @@ exports[`ThematicHome should render correctly 1`] = `
                   "fontFamily": "Montserrat-Bold",
                   "fontSize": 17,
                   "lineHeight": 27.2,
+                  "marginBottom": 4,
                 },
               ]
             }
           >
             HeaderSubtitle
           </Text>
-          <View
-            numberOfSpaces={1}
-            style={
-              [
-                {
-                  "height": 4,
-                },
-              ]
-            }
-          />
           <Text
             numberOfLines={2}
             style={

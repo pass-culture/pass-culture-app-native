@@ -1,8 +1,9 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { AccessibleIcon } from 'ui/svg/icons/types'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 
 interface IconWithCaptionProps {
   Icon: React.FC<AccessibleIcon>
@@ -25,11 +26,10 @@ export const IconWithCaption = ({
   }))``
 
   return (
-    <Container>
+    <Container gap={2}>
       <IconContainer>
         <StyledIcon accessibilityLabel={accessibilityLabel} testID={testID} />
       </IconContainer>
-      <Spacer.Column numberOfSpaces={2} />
       <Caption testID={testID ? `caption-${testID}` : undefined} disabled={isDisabled}>
         {caption}
       </Caption>
@@ -37,7 +37,7 @@ export const IconWithCaption = ({
   )
 }
 
-const Container = styled.View({
+const Container = styled(ViewGap)({
   flex: 1,
   alignItems: 'center',
 })

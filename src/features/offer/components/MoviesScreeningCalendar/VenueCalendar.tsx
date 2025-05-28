@@ -10,7 +10,7 @@ import {
 import { MovieOfferTile } from 'features/offer/components/MoviesScreeningCalendar/MovieOfferTile'
 import { useOffersStocksQuery } from 'features/offer/queries/useOffersStocksQuery'
 import { VenueOffers } from 'features/venue/types'
-import { Spacer } from 'ui/theme'
+import { getSpacing } from 'ui/theme'
 
 type Props = {
   venueOffers: VenueOffers
@@ -39,7 +39,6 @@ export const VenueCalendar: FunctionComponent<Props> = ({ venueOffers, offerIds 
 
   return (
     <Container>
-      <Spacer.Column numberOfSpaces={4} />
       {venueMovieOffers?.map((movie, index) => (
         <MovieOfferTile
           key={movie.offer.id}
@@ -55,4 +54,5 @@ export const VenueCalendar: FunctionComponent<Props> = ({ venueOffers, offerIds 
 
 const Container = styled(View)(({ theme }) => ({
   marginHorizontal: theme.contentPage.marginHorizontal,
+  paddingTop: getSpacing(4),
 }))

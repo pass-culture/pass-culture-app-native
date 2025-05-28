@@ -6,7 +6,7 @@ import { v4 as uuidv4 } from 'uuid'
 import { DateInputDisplay } from 'ui/components/inputs/DateInput/atoms/DateInputDisplay'
 import { DatePickerProps } from 'ui/components/inputs/DateInput/DatePicker/types'
 import { InputError } from 'ui/components/inputs/InputError'
-import { getSpacing, Spacer } from 'ui/theme'
+import { getSpacing } from 'ui/theme'
 
 export const DatePickerSpinner: FunctionComponent<DatePickerProps> = ({
   date,
@@ -26,7 +26,6 @@ export const DatePickerSpinner: FunctionComponent<DatePickerProps> = ({
         numberOfSpacesTop={2}
         relatedInputId={birthdateInputErrorId}
       />
-      <Spacer.Column numberOfSpaces={5} />
       <SpinnerDatePicker
         testID="date-picker-spinner-native"
         date={date}
@@ -49,4 +48,5 @@ const SpinnerDatePicker = styled(DatePicker).attrs(({ theme }) => ({
 }))(({ theme }) => ({
   height: theme.isSmallScreen ? SMALL_SCREEN_SPINNER_HEIGHT : undefined,
   width: '100%',
+  marginTop: getSpacing(5),
 }))

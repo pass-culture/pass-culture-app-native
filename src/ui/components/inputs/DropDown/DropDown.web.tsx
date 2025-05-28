@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from 'uuid'
 import { InputLabel } from 'ui/components/InputLabel/InputLabel'
 import { ContainerWithMaxWidth } from 'ui/components/inputs/ContainerWithMaxWidth'
 import { ArrowDown } from 'ui/svg/icons/ArrowDown'
-import { getSpacingString, Spacer } from 'ui/theme'
+import { getSpacingString } from 'ui/theme'
 
 type Props = {
   label: string
@@ -41,9 +41,8 @@ export function DropDown({
   const dropDownInputID = uuidv4()
 
   return (
-    <ContainerWithMaxWidth>
+    <ContainerWithMaxWidth gap={2}>
       <InputLabel htmlFor={dropDownInputID}>{label}</InputLabel>
-      <Spacer.Column numberOfSpaces={2} />
       <SelectContainer>
         <StyledSelect
           aria-label={accessibilityLabel}

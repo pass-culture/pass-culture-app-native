@@ -189,10 +189,12 @@ exports[`ShareAppModal should match snapshot 1`] = `
         }
       >
         <View
+          gap={6}
           style={
             [
               {
                 "alignItems": "center",
+                "gap": 24,
                 "maxWidth": 500,
                 "paddingBottom": 32,
                 "paddingLeft": 24,
@@ -219,16 +221,6 @@ exports[`ShareAppModal should match snapshot 1`] = `
           >
             Fais tourner le bon plan !
           </Text>
-          <View
-            numberOfSpaces={6}
-            style={
-              [
-                {
-                  "height": 24,
-                },
-              ]
-            }
-          />
           <View
             gap={6}
             style={

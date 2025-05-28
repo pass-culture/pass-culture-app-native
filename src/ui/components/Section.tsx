@@ -1,7 +1,7 @@
 import React, { PropsWithChildren } from 'react'
 import styled from 'styled-components/native'
 
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 import { Separator } from './Separator'
@@ -14,8 +14,7 @@ export function Section(props: SectionProps) {
   return (
     <Container>
       {props.title ? <CaptionNeutralInfo>{props.title}</CaptionNeutralInfo> : null}
-      <Spacer.Column numberOfSpaces={2} />
-      <Separator.Horizontal />
+      <StyledSeparator />
       {props.children}
     </Container>
   )
@@ -23,6 +22,10 @@ export function Section(props: SectionProps) {
 
 const Container = styled.View({
   paddingTop: getSpacing(2),
+})
+
+const StyledSeparator = styled(Separator.Horizontal)({
+  marginTop: getSpacing(2),
 })
 
 const CaptionNeutralInfo = styled(Typo.BodyAccentXs).attrs(getHeadingAttrs(2))(({ theme }) => ({

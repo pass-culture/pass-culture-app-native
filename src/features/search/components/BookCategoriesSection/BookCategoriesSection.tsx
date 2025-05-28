@@ -12,7 +12,7 @@ import { Li } from 'ui/components/Li'
 import { RadioButton } from 'ui/components/radioButtons/RadioButton'
 import { Separator } from 'ui/components/Separator'
 import { VerticalUl } from 'ui/components/Ul'
-import { Spacer, Typo } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 
 export function BookCategoriesSection<
   T extends CategoriesMapping,
@@ -60,9 +60,7 @@ export function BookCategoriesSection<
           icon={handleGetIcon(SearchGroupNameEnumv2.NONE)}
         />
       </ListItem>
-      <Spacer.Column numberOfSpaces={3} />
       <Title>{'Livres papier'}</Title>
-      <Spacer.Column numberOfSpaces={3} />
       {bookCategoriesWithGenre.map(([k, item]) => (
         <CategoriesSectionItem
           key={k}
@@ -74,11 +72,8 @@ export function BookCategoriesSection<
           handleGetIcon={handleGetIcon}
         />
       ))}
-      <Spacer.Column numberOfSpaces={3} />
-      <Separator.Horizontal />
-      <Spacer.Column numberOfSpaces={6} />
+      <StyledSeparator />
       <Title>{'Autres'}</Title>
-      <Spacer.Column numberOfSpaces={3} />
       {otherBookCategories.map(([k, item]) => (
         <CategoriesSectionItem
           key={k}
@@ -94,8 +89,14 @@ export function BookCategoriesSection<
   )
 }
 
-const Title = styled(Typo.Title1)({})
+const Title = styled(Typo.Title1)({
+  marginVertical: getSpacing(3),
+})
 
 const ListItem = styled(Li)({
   display: 'flex',
+})
+
+const StyledSeparator = styled(Separator.Horizontal)({
+  marginVertical: getSpacing(3),
 })

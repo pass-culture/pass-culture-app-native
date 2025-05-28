@@ -1,6 +1,8 @@
 import styled from 'styled-components/native'
 
-export const ContainerWithMaxWidth = styled.View(({ theme }) => ({
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+
+export const ContainerWithMaxWidth = styled(ViewGap)(({ theme }) => ({
   display: 'flex',
   flexDirection: 'column',
   alignItems: 'flex-start',

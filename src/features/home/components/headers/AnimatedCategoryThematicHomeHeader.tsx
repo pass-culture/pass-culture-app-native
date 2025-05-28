@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 
 import { BlackBackground } from 'features/home/components/headers/BlackBackground'
 import { CategoryThematicHeader } from 'features/home/types'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 import { gradientImagesMapping } from 'ui/theme/gradientImagesMapping'
 
 export const MOBILE_HEADER_HEIGHT = 45
@@ -30,12 +30,7 @@ const AppHeader: FunctionComponent<AppHeaderProps> = ({
       />
       <TextContainer>
         <AnimatedBackground style={{ transform: [{ translateY: gradientTranslation }] }}>
-          {subtitle ? (
-            <React.Fragment>
-              <Subtitle numberOfLines={1}>{subtitle}</Subtitle>
-              <Spacer.Column numberOfSpaces={1} />
-            </React.Fragment>
-          ) : null}
+          {subtitle ? <Subtitle numberOfLines={1}>{subtitle}</Subtitle> : null}
           <Typo.Title1 numberOfLines={2}>{title}</Typo.Title1>
         </AnimatedBackground>
       </TextContainer>
@@ -93,6 +88,7 @@ const SubscribeButtonContainer = styled.View({
 
 const Subtitle = styled(Typo.Title4)(({ theme }) => ({
   color: theme.colors.white,
+  marginBottom: getSpacing(1),
 }))
 
 const AnimatedImage = Animated.createAnimatedComponent(StyledImage)

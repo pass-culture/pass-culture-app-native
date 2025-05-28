@@ -6,7 +6,7 @@ import { CloseButton } from 'ui/components/headers/CloseButton'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { VenueInfoHeader } from 'ui/components/VenueInfoHeader/VenueInfoHeader'
 import { InformationTags } from 'ui/InformationTags/InformationTags'
-import { getShadow, getSpacing, Spacer } from 'ui/theme'
+import { getShadow, getSpacing } from 'ui/theme'
 
 type Props = {
   venueName: string
@@ -39,8 +39,7 @@ export const VenueMapPreview: FunctionComponent<Props> = ({
         <StyledInformationTags tags={tags} />
         <StyledCloseButton onClose={onClose} size={iconSize} />
       </Row>
-      <Spacer.Column numberOfSpaces={2} />
-      <VenueInfoHeader
+      <StyledVenueInfoHeader
         title={venueName}
         subtitle={address}
         imageSize={VENUE_THUMBNAIL_SIZE}
@@ -70,6 +69,10 @@ const Container = styled(InternalTouchableLink)(({ theme }) => ({
 const Row = styled.View({
   flexDirection: 'row',
   justifyContent: 'space-between',
+})
+
+const StyledVenueInfoHeader = styled(VenueInfoHeader)({
+  marginTop: getSpacing(2),
 })
 
 const StyledCloseButton = styledButton(CloseButton)({

@@ -9,7 +9,6 @@ import success from 'ui/animations/achievements_success.json'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { AppInformationModal } from 'ui/components/modals/AppInformationModal'
-import { Spacer } from 'ui/components/spacer/Spacer'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
@@ -68,7 +67,6 @@ export const AchievementSuccessModal = ({ visible, hideModal, achievementsToShow
             ? 'Tu as débloqué plusieurs succès\u00a0!'
             : 'Tu as débloqué un succès\u00a0!'}
         </StyledTitle>
-        <Spacer.Column numberOfSpaces={6} />
 
         <InternalTouchableLink
           as={ButtonPrimary}
@@ -97,6 +95,7 @@ const StyledViewGap = styled(ViewGap)(({ theme }) => ({
 
 const StyledTitle = styled(Typo.Title3)({
   textAlign: 'center',
+  marginBottom: getSpacing(6),
 })
 
 const AchievementView = styled(LottieView)({

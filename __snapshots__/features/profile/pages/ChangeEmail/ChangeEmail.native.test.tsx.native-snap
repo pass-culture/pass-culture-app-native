@@ -238,65 +238,56 @@ exports[`<ChangeEmail/> should render correctly 1`] = `
             ]
           }
         >
-          <Text
+          <View
+            gap={4}
             style={
               [
                 {
-                  "color": "#696A6F",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 12,
-                  "lineHeight": 19.2,
+                  "gap": 16,
                 },
               ]
             }
           >
-            Pour modifier ton adresse e-mail, tu dois d’abord faire une demande de modification.
-          </Text>
-          <View
-            numberOfSpaces={4}
-            style={
-              [
-                {
-                  "height": 16,
-                },
-              ]
-            }
-          />
-          <Text
-            style={
-              [
-                {
-                  "color": "#696A6F",
-                  "fontFamily": "Montserrat-SemiBold",
-                  "fontSize": 12,
-                  "lineHeight": 19.2,
-                },
-              ]
-            }
-          >
-            Tu ne peux modifier ton adresse e-mail qu’une fois par jour.
-          </Text>
-          <View
-            numberOfSpaces={4}
-            style={
-              [
-                {
-                  "height": 16,
-                },
-              ]
-            }
-          />
-          <View
-            style={
-              [
-                {
-                  "backgroundColor": "#F1F1F4",
-                  "height": 1,
-                  "width": "100%",
-                },
-              ]
-            }
-          />
+            <Text
+              style={
+                [
+                  {
+                    "color": "#696A6F",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 12,
+                    "lineHeight": 19.2,
+                  },
+                ]
+              }
+            >
+              Pour modifier ton adresse e-mail, tu dois d’abord faire une demande de modification.
+            </Text>
+            <Text
+              style={
+                [
+                  {
+                    "color": "#696A6F",
+                    "fontFamily": "Montserrat-SemiBold",
+                    "fontSize": 12,
+                    "lineHeight": 19.2,
+                  },
+                ]
+              }
+            >
+              Tu ne peux modifier ton adresse e-mail qu’une fois par jour.
+            </Text>
+            <View
+              style={
+                [
+                  {
+                    "backgroundColor": "#F1F1F4",
+                    "height": 1,
+                    "width": "100%",
+                  },
+                ]
+              }
+            />
+          </View>
         </View>
         <View
           style={
@@ -326,12 +317,14 @@ exports[`<ChangeEmail/> should render correctly 1`] = `
             }
           >
             <View
+              gap={0}
               style={
                 [
                   {
                     "alignItems": "flex-start",
                     "display": "flex",
                     "flexDirection": "column",
+                    "gap": 0,
                     "maxWidth": 500,
                     "width": "100%",
                   },

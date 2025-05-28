@@ -19,7 +19,7 @@ import { AnimatedProgressBar } from 'ui/components/bars/AnimatedProgressBar'
 import { useEnterKeyAction } from 'ui/hooks/useEnterKeyAction'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { categoriesIcons } from 'ui/svg/icons/bicolor/exports/categoriesIcons'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { Typo, getSpacing } from 'ui/theme'
 import { getNoHeadingAttrs } from 'ui/theme/typographyAttrs/getNoHeadingAttrs'
 
 export function BeneficiaryAccountCreated() {
@@ -79,7 +79,6 @@ export function BeneficiaryAccountCreated() {
         />
         <Amount>{recreditAmount}</Amount>
       </ProgressBarContainer>
-      <Spacer.Column numberOfSpaces={4} />
       <StyledBody>Tu as jusqu’à la veille de tes 21 ans pour utiliser tout ton crédit.</StyledBody>
     </GenericInfoPage>
   )
@@ -87,6 +86,7 @@ export function BeneficiaryAccountCreated() {
 
 const StyledBody = styled(Typo.Body)({
   textAlign: 'center',
+  marginTop: getSpacing(4),
 })
 
 const ProgressBarContainer = styled.View({

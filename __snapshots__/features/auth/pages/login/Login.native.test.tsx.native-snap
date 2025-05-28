@@ -265,12 +265,14 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
           }
         >
           <View
+            gap={0}
             style={
               [
                 {
                   "alignItems": "flex-start",
                   "display": "flex",
                   "flexDirection": "column",
+                  "gap": 0,
                   "maxWidth": 500,
                   "width": "100%",
                 },
@@ -414,12 +416,14 @@ exports[`<Login/> should render correctly when feature flag is enabled 1`] = `
           </View>
         </View>
         <View
+          gap={0}
           style={
             [
               {
                 "alignItems": "flex-start",
                 "display": "flex",
                 "flexDirection": "column",
+                "gap": 0,
                 "maxWidth": 500,
                 "width": "100%",
               },

@@ -230,7 +230,7 @@ exports[`<SetBirthday /> no touch device should render correctly 1`] = `
           class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
         >
           <div
-            class="css-view-175oi2r r-alignItems-1habvwh r-display-6koalj r-flexDirection-eqz5dr r-maxWidth-1ik5qf4 r-width-13qz1uu"
+            class="css-view-175oi2r r-alignItems-1habvwh r-display-6koalj r-flexDirection-eqz5dr r-gap-1cmwbt1 r-maxWidth-1ik5qf4 r-width-13qz1uu"
           >
             <label
               class="c1"
@@ -238,9 +238,6 @@ exports[`<SetBirthday /> no touch device should render correctly 1`] = `
             >
               Jour
             </label>
-            <div
-              class="css-view-175oi2r r-height-3da1kt"
-            />
             <div
               class="c2"
             >
@@ -496,7 +493,7 @@ exports[`<SetBirthday /> no touch device should render correctly 1`] = `
           class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
         >
           <div
-            class="css-view-175oi2r r-alignItems-1habvwh r-display-6koalj r-flexDirection-eqz5dr r-maxWidth-1ik5qf4 r-width-13qz1uu"
+            class="css-view-175oi2r r-alignItems-1habvwh r-display-6koalj r-flexDirection-eqz5dr r-gap-1cmwbt1 r-maxWidth-1ik5qf4 r-width-13qz1uu"
           >
             <label
               class="c1"
@@ -504,9 +501,6 @@ exports[`<SetBirthday /> no touch device should render correctly 1`] = `
             >
               Mois
             </label>
-            <div
-              class="css-view-175oi2r r-height-3da1kt"
-            />
             <div
               class="c2"
             >
@@ -629,7 +623,7 @@ exports[`<SetBirthday /> no touch device should render correctly 1`] = `
           class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2"
         >
           <div
-            class="css-view-175oi2r r-alignItems-1habvwh r-display-6koalj r-flexDirection-eqz5dr r-maxWidth-1ik5qf4 r-width-13qz1uu"
+            class="css-view-175oi2r r-alignItems-1habvwh r-display-6koalj r-flexDirection-eqz5dr r-gap-1cmwbt1 r-maxWidth-1ik5qf4 r-width-13qz1uu"
           >
             <label
               class="c1"
@@ -637,9 +631,6 @@ exports[`<SetBirthday /> no touch device should render correctly 1`] = `
             >
               Année
             </label>
-            <div
-              class="css-view-175oi2r r-height-3da1kt"
-            />
             <div
               class="c2"
             >
@@ -1574,7 +1565,7 @@ exports[`<SetBirthday /> touch device should render correctly 1`] = `
         class="css-view-175oi2r r-height-eu3ka"
       />
       <div
-        class="css-view-175oi2r r-alignItems-1habvwh r-display-6koalj r-flexDirection-eqz5dr r-maxWidth-1ik5qf4 r-width-13qz1uu"
+        class="css-view-175oi2r r-alignItems-1habvwh r-display-6koalj r-flexDirection-eqz5dr r-gap-1cmwbt1 r-maxWidth-1ik5qf4 r-width-13qz1uu"
       >
         <div
           class="css-view-175oi2r r-alignItems-obd0qt r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-width-13qz1uu"
@@ -1586,9 +1577,6 @@ exports[`<SetBirthday /> touch device should render correctly 1`] = `
             Date de naissance
           </label>
         </div>
-        <div
-          class="css-view-175oi2r r-height-3da1kt"
-        />
         <div
           class="css-view-175oi2r r-alignItems-1awozwy r-backgroundColor-14lw9ot r-borderColor-w7parf r-borderRadius-16uyjmq r-borderStyle-1phboty r-borderWidth-rs99b7 r-flexDirection-18u37iz r-height-eu3ka r-paddingBottom-1mdbw0j r-paddingLeft-1937ghh r-paddingRight-145ew9a r-paddingTop-wk8lta r-width-13qz1uu"
           data-testid="styled-input-container"
@@ -1607,10 +1595,7 @@ exports[`<SetBirthday /> touch device should render correctly 1`] = `
         role="alert"
       />
       <div
-        class="css-view-175oi2r r-height-3da1kt"
-      />
-      <div
-        class="css-view-175oi2r r-alignSelf-1pz39u2 r-flexDirection-18u37iz r-fontFamily-yv33h5 r-maxWidth-1ik5qf4 r-userSelect-lrvibr r-width-13qz1uu"
+        class="css-view-175oi2r r-alignSelf-1pz39u2 r-flexDirection-18u37iz r-fontFamily-yv33h5 r-marginTop-knv0ih r-maxWidth-1ik5qf4 r-userSelect-lrvibr r-width-13qz1uu"
         data-testid="date-picker-spinner-touch"
       >
         <div

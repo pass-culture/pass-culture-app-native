@@ -3,6 +3,7 @@ import { StyleProp, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
 import { theme } from 'theme'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { BackgroundWithDefaultStatusBar } from 'ui/svg/Background'
 import { BicolorBrokenConnection } from 'ui/svg/BicolorBrokenConnection'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
@@ -24,9 +25,8 @@ export const VerticalVideoErrorView: React.FC<{
           size={theme.illustrations.sizes.fullPage}
         />
       </BrokenConnectionContainer>
-      <ErrorMessageContainer>
+      <ErrorMessageContainer gap={4}>
         <StyledErrorTitle>{ERROR_TITLE}</StyledErrorTitle>
-        <Spacer.Column numberOfSpaces={4} />
         <StyledErrorMessage>{ERROR_MESSAGE}</StyledErrorMessage>
       </ErrorMessageContainer>
     </Content>
@@ -45,7 +45,7 @@ const BrokenConnectionContainer = styled.View({
   justifyContent: 'flex-end',
 })
 
-const ErrorMessageContainer = styled.View({
+const ErrorMessageContainer = styled(ViewGap)({
   flex: 1,
   justifyContent: 'flex-start',
   paddingTop: getSpacing(6),

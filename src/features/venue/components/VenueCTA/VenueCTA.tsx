@@ -19,7 +19,6 @@ export const VenueCTA: FunctionComponent<Props> = ({ searchNavConfig, onBeforeNa
   return (
     <StickyBottomWrapper>
       <CallToActionContainer>
-        <Spacer.Column numberOfSpaces={6} />
         <InternalTouchableLink
           navigateTo={searchNavConfig}
           onBeforeNavigate={onBeforeNavigate}
@@ -28,7 +27,6 @@ export const VenueCTA: FunctionComponent<Props> = ({ searchNavConfig, onBeforeNa
           icon={SmallMagnifyingGlass}
           fullWidth
         />
-        <Spacer.Column numberOfSpaces={6} />
       </CallToActionContainer>
       <Spacer.BottomScreen />
     </StickyBottomWrapper>
@@ -44,7 +42,6 @@ const CallToActionContainer = styled.View(({ theme }) => ({
   alignSelf: 'center',
   paddingHorizontal: theme.contentPage.marginHorizontal,
   width: '100%',
-  ...(!theme.isMobileViewport && {
-    maxWidth: theme.contentPage.maxWidth,
-  }),
+  maxWidth: theme.isMobileViewport ? undefined : theme.contentPage.maxWidth,
+  paddingVertical: theme.contentPage.marginVertical,
 }))

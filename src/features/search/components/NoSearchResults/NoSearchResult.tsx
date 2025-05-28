@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { NoOffer } from 'ui/svg/icons/NoOffer'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type NoSearchResultProps = {
@@ -37,7 +37,6 @@ export const NoSearchResult: React.FC<NoSearchResultProps> = ({
           </ErrorDescription>
         </ErrorDescriptionContainer>
       </ContainerText>
-      <Spacer.Column numberOfSpaces={6} />
       <View>
         <ButtonPrimary wording={ctaWording} onPress={onPress} />
       </View>
@@ -66,11 +65,8 @@ const Container = styled.View(({ theme }) => ({
 
 const ContainerText = styled.View(({ theme }) => ({
   alignItems: 'center',
-  ...(theme.isDesktopViewport
-    ? {
-        maxWidth: theme.contentPage.maxWidth,
-      }
-    : {}),
+  marginBottom: getSpacing(6),
+  maxWidth: theme.isDesktopViewport ? theme.contentPage.maxWidth : undefined,
 }))
 
 const Title = styled(Typo.Title4).attrs({

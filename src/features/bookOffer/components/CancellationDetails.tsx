@@ -3,7 +3,8 @@ import React from 'react'
 import { useBookingOffer } from 'features/bookOffer/helpers/useBookingOffer'
 import { useBookingStock } from 'features/bookOffer/helpers/useBookingStock'
 import { formatDateTimezone } from 'libs/parsers/formatDates'
-import { Spacer, Typo } from 'ui/theme'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 const NOT_CANCELLABLE_MESSAGE =
@@ -30,10 +31,9 @@ export const CancellationDetails: React.FC = () => {
   }
 
   return (
-    <React.Fragment>
+    <ViewGap gap={2}>
       <Typo.Title4 {...getHeadingAttrs(2)}>Conditions d’annulation</Typo.Title4>
-      <Spacer.Column numberOfSpaces={2} />
       <Typo.BodyAccentXs>{message}</Typo.BodyAccentXs>
-    </React.Fragment>
+    </ViewGap>
   )
 }

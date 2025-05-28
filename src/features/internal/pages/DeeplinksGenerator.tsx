@@ -14,7 +14,7 @@ import {
   useGetHeaderHeight,
 } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
-import { getSpacing, Spacer } from 'ui/theme'
+import { getSpacing } from 'ui/theme'
 
 const linksInitialState: Array<GeneratedDeeplink> = []
 
@@ -64,7 +64,6 @@ export const DeeplinksGenerator = () => {
       />
       <Placeholder height={headerHeight} />
       <Container>
-        <Spacer.Column numberOfSpaces={6} />
         <Row>
           <Left>
             <DeeplinksGeneratorForm onCreate={onGenerate} />
@@ -80,7 +79,6 @@ export const DeeplinksGenerator = () => {
             />
           </Right>
         </Row>
-        <Spacer.Column numberOfSpaces={4} />
       </Container>
       <BlurHeader height={headerHeight} />
     </React.Fragment>
@@ -107,6 +105,8 @@ const Right = styled.View({
 
 const Container = styled.View({
   flex: 1,
+  paddingTop: getSpacing(6),
+  paddingBottom: getSpacing(4),
 })
 
 const Placeholder = styled.View<{ height: number }>(({ height }) => ({

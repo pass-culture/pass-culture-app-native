@@ -5,9 +5,10 @@ import { getSearchNavConfig } from 'features/navigation/SearchStackNavigator/sea
 import { useLogBeforeNavToSearchResults } from 'features/search/helpers/useLogBeforeNavToSearchResults/useLogBeforeNavToSearchResults'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { MagnifyingGlass } from 'ui/svg/icons/MagnifyingGlass'
 import { AccessibleIcon } from 'ui/svg/icons/types'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 
 type Props = {
   explanations: string
@@ -41,11 +42,9 @@ export const NoResultsView = ({
           <CaptionTitle>{title}</CaptionTitle>
         </Container>
       ) : null}
-      <ContentContainer {...props}>
+      <ContentContainer gap={4} {...props}>
         {Icon ? <Icon /> : null}
-        <Spacer.Column numberOfSpaces={4} />
         <StyledBody>{explanations}</StyledBody>
-        <Spacer.Column numberOfSpaces={4} />
         {offline ? null : (
           <ButtonContainer>
             <InternalTouchableLink
@@ -67,7 +66,7 @@ const Container = styled.View(({ theme }) => ({
   marginHorizontal: theme.contentPage.marginHorizontal,
 }))
 
-const ContentContainer = styled.View(({ theme }) => ({
+const ContentContainer = styled(ViewGap)(({ theme }) => ({
   height: '100%',
   justifyContent: 'center',
   alignItems: 'center',

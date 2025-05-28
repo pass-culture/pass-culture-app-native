@@ -7,7 +7,7 @@ import { Hour, hoursSchema } from 'features/search/helpers/schema/datesHoursSche
 import { useGetFullscreenModalSliderLength } from 'features/search/helpers/useGetFullscreenModalSliderLength'
 import { DEFAULT_TIME_VALUE } from 'features/search/pages/modals/DatesHoursModal/DatesHoursModal'
 import { Slider, ValuesType } from 'ui/components/inputs/Slider'
-import { Spacer, Typo } from 'ui/theme'
+import { Typo, getSpacing } from 'ui/theme'
 
 type HoursSliderProps = {
   value?: [Hour, Hour]
@@ -30,12 +30,10 @@ export function HoursSlider({ field }: Readonly<{ field: HoursSliderProps }>) {
 
   return (
     <View>
-      <Spacer.Column numberOfSpaces={3} />
       <LabelHoursContainer nativeID={hoursLabelId}>
         <Typo.Body>Sortir entre</Typo.Body>
         <Typo.BodyAccent>{`${minHour}\u00a0h et ${maxHour}\u00a0h`}</Typo.BodyAccent>
       </LabelHoursContainer>
-      <Spacer.Column numberOfSpaces={2} />
       <Slider
         showValues={false}
         values={value}
@@ -56,4 +54,6 @@ export function HoursSlider({ field }: Readonly<{ field: HoursSliderProps }>) {
 const LabelHoursContainer = styled.View({
   flexDirection: 'row',
   justifyContent: 'space-between',
+  marginTop: getSpacing(3),
+  marginBottom: getSpacing(2),
 })

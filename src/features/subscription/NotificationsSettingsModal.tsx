@@ -9,11 +9,12 @@ import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { ButtonTertiaryBlack } from 'ui/components/buttons/ButtonTertiaryBlack'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { useModal } from 'ui/components/modals/useModal'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { BellFilled } from 'ui/svg/icons/BellFilled'
 import { Close } from 'ui/svg/icons/Close'
 import { EmailFilled } from 'ui/svg/icons/EmailFilled'
 import { Invalidate } from 'ui/svg/icons/Invalidate'
-import { Spacer, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 interface Props {
   visible: boolean
@@ -73,10 +74,8 @@ export const NotificationsSettingsModal: FunctionComponent<Props> = ({
       rightIconAccessibilityLabel="Ne pas s’abonner"
       rightIcon={Close}
       onRightIconPress={onDismiss}>
-      <ModalContent>
+      <ModalContent gap={6}>
         <Typo.Body>{description}</Typo.Body>
-
-        <Spacer.Column numberOfSpaces={6} />
 
         <SectionWithSwitch
           title="Autoriser l’envoi d’e-mails"
@@ -87,22 +86,15 @@ export const NotificationsSettingsModal: FunctionComponent<Props> = ({
           }
         />
         {Platform.OS === 'web' ? null : (
-          <React.Fragment>
-            <Spacer.Column numberOfSpaces={6} />
-
-            <SectionWithSwitch
-              title="Autoriser les notifications"
-              icon={StyledBellFilled}
-              active={settings.allowPush}
-              toggle={togglePush}
-            />
-          </React.Fragment>
+          <SectionWithSwitch
+            title="Autoriser les notifications"
+            icon={StyledBellFilled}
+            active={settings.allowPush}
+            toggle={togglePush}
+          />
         )}
-        <Spacer.Column numberOfSpaces={6} />
 
         <StyledCaption>Tu pourras gérer tes alertes depuis ton profil.</StyledCaption>
-
-        <Spacer.Column numberOfSpaces={6} />
 
         <ButtonPrimary
           wording="Valider"
@@ -116,7 +108,6 @@ export const NotificationsSettingsModal: FunctionComponent<Props> = ({
             onPressSaveChanges(settings)
           }}
         />
-        <Spacer.Column numberOfSpaces={6} />
 
         <ButtonTertiaryBlack
           wording="Tout refuser et ne pas recevoir d’actus"
@@ -134,7 +125,7 @@ export const NotificationsSettingsModal: FunctionComponent<Props> = ({
   )
 }
 
-const ModalContent = styled.View({
+const ModalContent = styled(ViewGap)({
   width: '100%',
 })
 

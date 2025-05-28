@@ -4,9 +4,9 @@ import styled, { useTheme } from 'styled-components/native'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { IconColorKey, TextColorKey } from 'theme/types'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { AccessibleIcon } from 'ui/svg/icons/types'
-import { Spacer, Typo } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
+import { Typo, getSpacing } from 'ui/theme'
 
 interface LocationModalButtonProps {
   icon: FunctionComponent<AccessibleIcon>
@@ -26,26 +26,21 @@ export const LocationModalButton = ({
   const theme = useTheme()
   return (
     <TouchableOpacity onPress={onPress} accessibilityRole={AccessibilityRole.BUTTON}>
-      <TopContainer>
+      <TopContainer gap={2}>
         <Icon color={theme.designSystem.color.icon[color]} size={theme.icons.sizes.small} />
-        <Spacer.Row numberOfSpaces={2} />
         <Typo.Button color={color}>{title}</Typo.Button>
       </TopContainer>
-      {subtitle ? (
-        <React.Fragment>
-          <Spacer.Column numberOfSpaces={1} />
-          <StyledCaption>{subtitle}</StyledCaption>
-        </React.Fragment>
-      ) : null}
+      {subtitle ? <StyledCaption>{subtitle}</StyledCaption> : null}
     </TouchableOpacity>
   )
 }
 
-const TopContainer = styled.View({
+const TopContainer = styled(ViewGap)({
   flexDirection: 'row',
   alignItems: 'center',
 })
 
 const StyledCaption = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.colors.greyDark,
+  marginTop: getSpacing(1),
 }))

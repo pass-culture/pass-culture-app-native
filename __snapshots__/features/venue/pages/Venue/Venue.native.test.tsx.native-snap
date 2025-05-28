@@ -663,6 +663,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                           "flexGrow": 1,
                           "gap": 8,
                           "justifyContent": "center",
+                          "marginBottom": 8,
                         },
                       ]
                     }
@@ -685,16 +686,6 @@ exports[`<Venue /> should match snapshot 1`] = `
                       Offres disponibles
                     </Text>
                   </View>
-                  <View
-                    numberOfSpaces={2}
-                    style={
-                      [
-                        {
-                          "height": 8,
-                        },
-                      ]
-                    }
-                  />
                   <View
                     isSelected={true}
                     style={
@@ -761,6 +752,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                           "flexGrow": 1,
                           "gap": 8,
                           "justifyContent": "center",
+                          "marginBottom": 8,
                         },
                       ]
                     }
@@ -783,16 +775,6 @@ exports[`<Venue /> should match snapshot 1`] = `
                       Infos pratiques
                     </Text>
                   </View>
-                  <View
-                    numberOfSpaces={2}
-                    style={
-                      [
-                        {
-                          "height": 8,
-                        },
-                      ]
-                    }
-                  />
                   <View
                     isSelected={false}
                     style={
@@ -1850,22 +1832,13 @@ exports[`<Venue /> should match snapshot 1`] = `
                         "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 12,
                         "lineHeight": 19.2,
+                        "marginBottom": 8,
                       },
                     ]
                   }
                 >
                   Reçois nos recos lecture, nos jeux-concours et le meilleur de l’actu littéraire !
                 </Text>
-                <View
-                  numberOfSpaces={2}
-                  style={
-                    [
-                      {
-                        "height": 8,
-                      },
-                    ]
-                  }
-                />
                 <View
                   accessibilityLabel="Suivre le thème"
                   accessibilityRole="button"
@@ -2093,6 +2066,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                           }
                         >
                           <View
+                            gap={2}
                             style={
                               [
                                 {
@@ -2100,6 +2074,7 @@ exports[`<Venue /> should match snapshot 1`] = `
                                   "flexBasis": 0,
                                   "flexGrow": 1,
                                   "flexShrink": 1,
+                                  "gap": 8,
                                 },
                               ]
                             }
@@ -2125,16 +2100,6 @@ exports[`<Venue /> should match snapshot 1`] = `
                                 </Text>
                               </View>
                             </View>
-                            <View
-                              numberOfSpaces={2}
-                              style={
-                                [
-                                  {
-                                    "height": 8,
-                                  },
-                                ]
-                              }
-                            />
                             <Text
                               disabled={false}
                               style={
@@ -2212,6 +2177,7 @@ Instagram
                           }
                         >
                           <View
+                            gap={2}
                             style={
                               [
                                 {
@@ -2219,6 +2185,7 @@ Instagram
                                   "flexBasis": 0,
                                   "flexGrow": 1,
                                   "flexShrink": 1,
+                                  "gap": 8,
                                 },
                               ]
                             }
@@ -2244,16 +2211,6 @@ Instagram
                                 </Text>
                               </View>
                             </View>
-                            <View
-                              numberOfSpaces={2}
-                              style={
-                                [
-                                  {
-                                    "height": 8,
-                                  },
-                                ]
-                              }
-                            />
                             <Text
                               disabled={false}
                               style={
@@ -2331,6 +2288,7 @@ WhatsApp
                           }
                         >
                           <View
+                            gap={2}
                             style={
                               [
                                 {
@@ -2338,6 +2296,7 @@ WhatsApp
                                   "flexBasis": 0,
                                   "flexGrow": 1,
                                   "flexShrink": 1,
+                                  "gap": 8,
                                 },
                               ]
                             }
@@ -2363,16 +2322,6 @@ WhatsApp
                                 </Text>
                               </View>
                             </View>
-                            <View
-                              numberOfSpaces={2}
-                              style={
-                                [
-                                  {
-                                    "height": 8,
-                                  },
-                                ]
-                              }
-                            />
                             <Text
                               disabled={false}
                               style={
@@ -2450,6 +2399,7 @@ iMessage
                           }
                         >
                           <View
+                            gap={2}
                             style={
                               [
                                 {
@@ -2457,6 +2407,7 @@ iMessage
                                   "flexBasis": 0,
                                   "flexGrow": 1,
                                   "flexShrink": 1,
+                                  "gap": 8,
                                 },
                               ]
                             }
@@ -2498,16 +2449,6 @@ iMessage
                                 </View>
                               </View>
                             </View>
-                            <View
-                              numberOfSpaces={2}
-                              style={
-                                [
-                                  {
-                                    "height": 8,
-                                  },
-                                ]
-                              }
-                            />
                             <Text
                               disabled={false}
                               style={
@@ -2923,21 +2864,12 @@ d’options
             "alignItems": "center",
             "alignSelf": "center",
             "paddingHorizontal": 24,
+            "paddingVertical": 24,
             "width": "100%",
           },
         ]
       }
     >
-      <View
-        numberOfSpaces={6}
-        style={
-          [
-            {
-              "height": 24,
-            },
-          ]
-        }
-      />
       <View
         accessibilityLabel="Rechercher une offre"
         accessibilityState={
@@ -3046,16 +2978,6 @@ d’options
           </Text>
         </View>
       </View>
-      <View
-        numberOfSpaces={6}
-        style={
-          [
-            {
-              "height": 24,
-            },
-          ]
-        }
-      />
     </View>
     <View
       customHeight={8}
@@ -3735,6 +3657,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                           "flexGrow": 1,
                           "gap": 8,
                           "justifyContent": "center",
+                          "marginBottom": 8,
                         },
                       ]
                     }
@@ -3757,16 +3680,6 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                       Offres disponibles
                     </Text>
                   </View>
-                  <View
-                    numberOfSpaces={2}
-                    style={
-                      [
-                        {
-                          "height": 8,
-                        },
-                      ]
-                    }
-                  />
                   <View
                     isSelected={true}
                     style={
@@ -3833,6 +3746,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                           "flexGrow": 1,
                           "gap": 8,
                           "justifyContent": "center",
+                          "marginBottom": 8,
                         },
                       ]
                     }
@@ -3855,16 +3769,6 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                       Infos pratiques
                     </Text>
                   </View>
-                  <View
-                    numberOfSpaces={2}
-                    style={
-                      [
-                        {
-                          "height": 8,
-                        },
-                      ]
-                    }
-                  />
                   <View
                     isSelected={false}
                     style={
@@ -5248,22 +5152,13 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                         "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 12,
                         "lineHeight": 19.2,
+                        "marginBottom": 8,
                       },
                     ]
                   }
                 >
                   Reçois nos recos lecture, nos jeux-concours et le meilleur de l’actu littéraire !
                 </Text>
-                <View
-                  numberOfSpaces={2}
-                  style={
-                    [
-                      {
-                        "height": 8,
-                      },
-                    ]
-                  }
-                />
                 <View
                   accessibilityLabel="Suivre le thème"
                   accessibilityRole="button"
@@ -5491,6 +5386,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                           }
                         >
                           <View
+                            gap={2}
                             style={
                               [
                                 {
@@ -5498,6 +5394,7 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                   "flexBasis": 0,
                                   "flexGrow": 1,
                                   "flexShrink": 1,
+                                  "gap": 8,
                                 },
                               ]
                             }
@@ -5523,16 +5420,6 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                 </Text>
                               </View>
                             </View>
-                            <View
-                              numberOfSpaces={2}
-                              style={
-                                [
-                                  {
-                                    "height": 8,
-                                  },
-                                ]
-                              }
-                            />
                             <Text
                               disabled={false}
                               style={
@@ -5610,6 +5497,7 @@ Instagram
                           }
                         >
                           <View
+                            gap={2}
                             style={
                               [
                                 {
@@ -5617,6 +5505,7 @@ Instagram
                                   "flexBasis": 0,
                                   "flexGrow": 1,
                                   "flexShrink": 1,
+                                  "gap": 8,
                                 },
                               ]
                             }
@@ -5642,16 +5531,6 @@ Instagram
                                 </Text>
                               </View>
                             </View>
-                            <View
-                              numberOfSpaces={2}
-                              style={
-                                [
-                                  {
-                                    "height": 8,
-                                  },
-                                ]
-                              }
-                            />
                             <Text
                               disabled={false}
                               style={
@@ -5729,6 +5608,7 @@ WhatsApp
                           }
                         >
                           <View
+                            gap={2}
                             style={
                               [
                                 {
@@ -5736,6 +5616,7 @@ WhatsApp
                                   "flexBasis": 0,
                                   "flexGrow": 1,
                                   "flexShrink": 1,
+                                  "gap": 8,
                                 },
                               ]
                             }
@@ -5761,16 +5642,6 @@ WhatsApp
                                 </Text>
                               </View>
                             </View>
-                            <View
-                              numberOfSpaces={2}
-                              style={
-                                [
-                                  {
-                                    "height": 8,
-                                  },
-                                ]
-                              }
-                            />
                             <Text
                               disabled={false}
                               style={
@@ -5848,6 +5719,7 @@ iMessage
                           }
                         >
                           <View
+                            gap={2}
                             style={
                               [
                                 {
@@ -5855,6 +5727,7 @@ iMessage
                                   "flexBasis": 0,
                                   "flexGrow": 1,
                                   "flexShrink": 1,
+                                  "gap": 8,
                                 },
                               ]
                             }
@@ -5896,16 +5769,6 @@ iMessage
                                 </View>
                               </View>
                             </View>
-                            <View
-                              numberOfSpaces={2}
-                              style={
-                                [
-                                  {
-                                    "height": 8,
-                                  },
-                                ]
-                              }
-                            />
                             <Text
                               disabled={false}
                               style={
@@ -6321,21 +6184,12 @@ d’options
             "alignItems": "center",
             "alignSelf": "center",
             "paddingHorizontal": 24,
+            "paddingVertical": 24,
             "width": "100%",
           },
         ]
       }
     >
-      <View
-        numberOfSpaces={6}
-        style={
-          [
-            {
-              "height": 24,
-            },
-          ]
-        }
-      />
       <View
         accessibilityLabel="Rechercher une offre"
         accessibilityState={
@@ -6444,16 +6298,6 @@ d’options
           </Text>
         </View>
       </View>
-      <View
-        numberOfSpaces={6}
-        style={
-          [
-            {
-              "height": 24,
-            },
-          ]
-        }
-      />
     </View>
     <View
       customHeight={8}
@@ -7133,6 +6977,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                           "flexGrow": 1,
                           "gap": 8,
                           "justifyContent": "center",
+                          "marginBottom": 8,
                         },
                       ]
                     }
@@ -7155,16 +7000,6 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                       Offres disponibles
                     </Text>
                   </View>
-                  <View
-                    numberOfSpaces={2}
-                    style={
-                      [
-                        {
-                          "height": 8,
-                        },
-                      ]
-                    }
-                  />
                   <View
                     isSelected={false}
                     style={
@@ -7231,6 +7066,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                           "flexGrow": 1,
                           "gap": 8,
                           "justifyContent": "center",
+                          "marginBottom": 8,
                         },
                       ]
                     }
@@ -7253,16 +7089,6 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                       Infos pratiques
                     </Text>
                   </View>
-                  <View
-                    numberOfSpaces={2}
-                    style={
-                      [
-                        {
-                          "height": 8,
-                        },
-                      ]
-                    }
-                  />
                   <View
                     isSelected={true}
                     style={
@@ -7825,10 +7651,12 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                         <View
                           accessibilityLabel="Handicap visuel : Accessible"
                           accessibilityRole="image"
+                          gap={4}
                           style={
                             [
                               {
                                 "alignItems": "center",
+                                "gap": 16,
                               },
                             ]
                           }
@@ -7902,16 +7730,6 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                               </View>
                             </View>
                           </View>
-                          <View
-                            numberOfSpaces={4}
-                            style={
-                              [
-                                {
-                                  "height": 16,
-                                },
-                              ]
-                            }
-                          />
                           <Text
                             style={
                               [
@@ -7944,10 +7762,12 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                         <View
                           accessibilityLabel="Handicap psychique ou cognitif : Non accessible"
                           accessibilityRole="image"
+                          gap={4}
                           style={
                             [
                               {
                                 "alignItems": "center",
+                                "gap": 16,
                               },
                             ]
                           }
@@ -8022,16 +7842,6 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                               </View>
                             </View>
                           </View>
-                          <View
-                            numberOfSpaces={4}
-                            style={
-                              [
-                                {
-                                  "height": 16,
-                                },
-                              ]
-                            }
-                          />
                           <Text
                             style={
                               [
@@ -8064,10 +7874,12 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                         <View
                           accessibilityLabel="Handicap moteur : Non accessible"
                           accessibilityRole="image"
+                          gap={4}
                           style={
                             [
                               {
                                 "alignItems": "center",
+                                "gap": 16,
                               },
                             ]
                           }
@@ -8142,16 +7954,6 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                               </View>
                             </View>
                           </View>
-                          <View
-                            numberOfSpaces={4}
-                            style={
-                              [
-                                {
-                                  "height": 16,
-                                },
-                              ]
-                            }
-                          />
                           <Text
                             style={
                               [
@@ -8184,10 +7986,12 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                         <View
                           accessibilityLabel="Handicap auditif : Non accessible"
                           accessibilityRole="image"
+                          gap={4}
                           style={
                             [
                               {
                                 "alignItems": "center",
+                                "gap": 16,
                               },
                             ]
                           }
@@ -8262,16 +8066,6 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                               </View>
                             </View>
                           </View>
-                          <View
-                            numberOfSpaces={4}
-                            style={
-                              [
-                                {
-                                  "height": 16,
-                                },
-                              ]
-                            }
-                          />
                           <Text
                             style={
                               [
@@ -8780,22 +8574,13 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                         "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 12,
                         "lineHeight": 19.2,
+                        "marginBottom": 8,
                       },
                     ]
                   }
                 >
                   Reçois nos recos lecture, nos jeux-concours et le meilleur de l’actu littéraire !
                 </Text>
-                <View
-                  numberOfSpaces={2}
-                  style={
-                    [
-                      {
-                        "height": 8,
-                      },
-                    ]
-                  }
-                />
                 <View
                   accessibilityLabel="Suivre le thème"
                   accessibilityRole="button"
@@ -9023,6 +8808,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                           }
                         >
                           <View
+                            gap={2}
                             style={
                               [
                                 {
@@ -9030,6 +8816,7 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                                   "flexBasis": 0,
                                   "flexGrow": 1,
                                   "flexShrink": 1,
+                                  "gap": 8,
                                 },
                               ]
                             }
@@ -9055,16 +8842,6 @@ exports[`<Venue /> should match snapshot with practical information 1`] = `
                                 </Text>
                               </View>
                             </View>
-                            <View
-                              numberOfSpaces={2}
-                              style={
-                                [
-                                  {
-                                    "height": 8,
-                                  },
-                                ]
-                              }
-                            />
                             <Text
                               disabled={false}
                               style={
@@ -9142,6 +8919,7 @@ Instagram
                           }
                         >
                           <View
+                            gap={2}
                             style={
                               [
                                 {
@@ -9149,6 +8927,7 @@ Instagram
                                   "flexBasis": 0,
                                   "flexGrow": 1,
                                   "flexShrink": 1,
+                                  "gap": 8,
                                 },
                               ]
                             }
@@ -9174,16 +8953,6 @@ Instagram
                                 </Text>
                               </View>
                             </View>
-                            <View
-                              numberOfSpaces={2}
-                              style={
-                                [
-                                  {
-                                    "height": 8,
-                                  },
-                                ]
-                              }
-                            />
                             <Text
                               disabled={false}
                               style={
@@ -9261,6 +9030,7 @@ WhatsApp
                           }
                         >
                           <View
+                            gap={2}
                             style={
                               [
                                 {
@@ -9268,6 +9038,7 @@ WhatsApp
                                   "flexBasis": 0,
                                   "flexGrow": 1,
                                   "flexShrink": 1,
+                                  "gap": 8,
                                 },
                               ]
                             }
@@ -9293,16 +9064,6 @@ WhatsApp
                                 </Text>
                               </View>
                             </View>
-                            <View
-                              numberOfSpaces={2}
-                              style={
-                                [
-                                  {
-                                    "height": 8,
-                                  },
-                                ]
-                              }
-                            />
                             <Text
                               disabled={false}
                               style={
@@ -9380,6 +9141,7 @@ iMessage
                           }
                         >
                           <View
+                            gap={2}
                             style={
                               [
                                 {
@@ -9387,6 +9149,7 @@ iMessage
                                   "flexBasis": 0,
                                   "flexGrow": 1,
                                   "flexShrink": 1,
+                                  "gap": 8,
                                 },
                               ]
                             }
@@ -9428,16 +9191,6 @@ iMessage
                                 </View>
                               </View>
                             </View>
-                            <View
-                              numberOfSpaces={2}
-                              style={
-                                [
-                                  {
-                                    "height": 8,
-                                  },
-                                ]
-                              }
-                            />
                             <Text
                               disabled={false}
                               style={
@@ -9853,21 +9606,12 @@ d’options
             "alignItems": "center",
             "alignSelf": "center",
             "paddingHorizontal": 24,
+            "paddingVertical": 24,
             "width": "100%",
           },
         ]
       }
     >
-      <View
-        numberOfSpaces={6}
-        style={
-          [
-            {
-              "height": 24,
-            },
-          ]
-        }
-      />
       <View
         accessibilityLabel="Rechercher une offre"
         accessibilityState={
@@ -9976,16 +9720,6 @@ d’options
           </Text>
         </View>
       </View>
-      <View
-        numberOfSpaces={6}
-        style={
-          [
-            {
-              "height": 24,
-            },
-          ]
-        }
-      />
     </View>
     <View
       customHeight={8}

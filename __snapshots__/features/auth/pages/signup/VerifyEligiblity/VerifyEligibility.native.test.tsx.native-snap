@@ -183,22 +183,13 @@ exports[`<VerifyEligibility /> should show the correct deposit amount 1`] = `
                 "fontFamily": "Montserrat-Medium",
                 "fontSize": 16,
                 "lineHeight": 25.6,
+                "marginBottom": 16,
               },
             ]
           }
         >
           Nous avons besoin de vérifier ton identité. Si tu es éligible tu pourras bénéficier de l’aide financière de l’État.
         </Text>
-        <View
-          numberOfSpaces={4}
-          style={
-            [
-              {
-                "height": 16,
-              },
-            ]
-          }
-        />
         <Text
           style={
             [

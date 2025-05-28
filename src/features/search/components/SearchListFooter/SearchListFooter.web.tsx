@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 import { ButtonSecondary } from 'ui/components/buttons/ButtonSecondary'
 import { Li } from 'ui/components/Li'
 import { More } from 'ui/svg/icons/More'
-import { getSpacing, Spacer } from 'ui/theme'
+import { getSpacing } from 'ui/theme'
 
 export interface SearchListFooterProps {
   isFetchingNextPage: boolean
@@ -28,9 +28,7 @@ export const SearchListFooter = ({
 
   return isFetchingNextPage && nbLoadedHits < nbHits ? (
     <Li style={style}>
-      <Spacer.Column numberOfSpaces={4} />
-      <ActivityIndicator testID="activity-indicator" />
-      <Spacer.Column numberOfSpaces={4} />
+      <StyledActivityIndicator testID="activity-indicator" />
       <Footer testID="footer" />
     </Li>
   ) : (
@@ -63,3 +61,7 @@ const Separator = styled.View(({ theme }) => ({
   marginHorizontal: getSpacing(6),
   marginVertical: getSpacing(4),
 }))
+
+const StyledActivityIndicator = styled(ActivityIndicator)({
+  marginVertical: getSpacing(4),
+})

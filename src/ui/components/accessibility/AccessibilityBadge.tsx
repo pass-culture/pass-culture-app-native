@@ -3,7 +3,8 @@ import styled from 'styled-components/native'
 
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { AccessibilityFrame } from 'ui/components/accessibility/AccessibilityFrame'
-import { Spacer, Typo } from 'ui/theme'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Typo } from 'ui/theme'
 
 import {
   getAccessibilityCategoryAndIcon,
@@ -23,15 +24,15 @@ export const AccessibilityBadge: React.FC<Props> = ({ handicap, isAccessible }) 
     <Container
       accessibilityRole={AccessibilityRole.IMAGE}
       testID="accessibilityBadgeContainer"
-      accessibilityLabel={`${wording}\u00a0: ${isAccessibleLabel}`}>
+      accessibilityLabel={`${wording}\u00a0: ${isAccessibleLabel}`}
+      gap={4}>
       <AccessibilityFrame Icon={Icon} isAccessible={isAccessible} />
-      <Spacer.Column numberOfSpaces={4} />
       <StyledCaption>{wording}</StyledCaption>
     </Container>
   )
 }
 
-const Container = styled.View({
+const Container = styled(ViewGap)({
   alignItems: 'center',
 })
 

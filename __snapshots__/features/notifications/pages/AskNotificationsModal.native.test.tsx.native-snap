@@ -72,6 +72,7 @@ exports[`AskNotificationsModal should render properly 1`] = `
   />
   <View
     accessibilityLabelledBy="testUuidV4"
+    gap={6}
     style={
       [
         {
@@ -79,6 +80,7 @@ exports[`AskNotificationsModal should render properly 1`] = `
           "alignSelf": "center",
           "backgroundColor": "#ffffff",
           "borderRadius": 16,
+          "gap": 24,
           "paddingBottom": 32,
           "paddingLeft": 24,
           "paddingRight": 24,
@@ -223,16 +225,6 @@ exports[`AskNotificationsModal should render properly 1`] = `
         </View>
       </View>
     </View>
-    <View
-      numberOfSpaces={6}
-      style={
-        [
-          {
-            "height": 24,
-          },
-        ]
-      }
-    />
     <View
       style={
         [

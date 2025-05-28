@@ -4,7 +4,8 @@ import { v4 as uuidv4 } from 'uuid'
 
 import { useGetFullscreenModalSliderLength } from 'features/search/helpers/useGetFullscreenModalSliderLength'
 import { Slider } from 'ui/components/inputs/Slider'
-import { Spacer, Typo } from 'ui/theme'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Typo } from 'ui/theme'
 
 const MIN_RADIUS = 0
 const MAX_RADIUS = 100
@@ -24,12 +25,11 @@ export const LocationSearchFilters = ({
   const { sliderLength } = useGetFullscreenModalSliderLength(false)
 
   return (
-    <React.Fragment>
+    <ViewGap gap={2}>
       <LabelRadiusContainer nativeID={radiusLabelId}>
         <Typo.Body>{`Dans un rayon de\u00a0:`}</Typo.Body>
         <Typo.BodyAccent testID="value_radius">{`${aroundRadius}\u00a0km`}</Typo.BodyAccent>
       </LabelRadiusContainer>
-      <Spacer.Column numberOfSpaces={2} />
       <Slider
         showValues={false}
         values={[aroundRadius]}
@@ -43,7 +43,7 @@ export const LocationSearchFilters = ({
         sliderLength={sliderLength}
         accessibilityLabelledBy={radiusLabelId}
       />
-    </React.Fragment>
+    </ViewGap>
   )
 }
 
