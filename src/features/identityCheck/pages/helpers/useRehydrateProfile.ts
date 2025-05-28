@@ -1,11 +1,11 @@
 import { useEffect } from 'react'
 
-import { useProfileInfo } from 'features/identityCheck/api/useProfileInfo'
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
+import { useProfileInfoQuery } from 'features/identityCheck/queries/useProfileInfoQuery'
 
 // Specific for transi 17-18 : In case we already have some profile informations we rehydrate the context
 export const useRehydrateProfile = () => {
-  const { profileInfo } = useProfileInfo()
+  const { profileInfo } = useProfileInfoQuery()
   const { dispatch } = useSubscriptionContext()
 
   useEffect(() => {

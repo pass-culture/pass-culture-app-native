@@ -2,7 +2,7 @@ import { UseQueryResult } from 'react-query'
 
 import { BannerName, CurrencyEnum, SubscriptionStep, SubscriptionStepperResponseV2 } from 'api/gen'
 import { useAuthContext } from 'features/auth/context/AuthContext'
-import { useGetStepperInfo } from 'features/identityCheck/api/useGetStepperInfo'
+import { useGetStepperInfoQuery } from 'features/identityCheck/queries/useGetStepperInfoQuery'
 import { beneficiaryUser, nonBeneficiaryUser } from 'fixtures/user'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
@@ -42,9 +42,9 @@ mockUseAuthContext.mockReturnValue({
   },
 })
 
-jest.mock('features/identityCheck/api/useGetStepperInfo')
+jest.mock('features/identityCheck/queries/useGetStepperInfoQuery')
 const mockUseGetStepperInfo = (
-  useGetStepperInfo as jest.Mock<
+  useGetStepperInfoQuery as jest.Mock<
     Partial<UseQueryResult<Partial<SubscriptionStepperResponseV2>, unknown>>
   >
 ).mockReturnValue({

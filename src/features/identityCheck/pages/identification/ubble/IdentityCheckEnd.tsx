@@ -1,9 +1,9 @@
 import React, { FC, useEffect } from 'react'
 import styled from 'styled-components/native'
 
-import { useGetStepperInfo } from 'features/identityCheck/api/useGetStepperInfo'
 import { useNavigateForwardToStepper } from 'features/identityCheck/helpers/useNavigateForwardToStepper'
 import { useSaveStep } from 'features/identityCheck/pages/helpers/useSaveStep'
+import { useGetStepperInfoQuery } from 'features/identityCheck/queries/useGetStepperInfoQuery'
 import { IdentityCheckStep } from 'features/identityCheck/types'
 import { navigateToHome } from 'features/navigation/helpers/navigateToHome'
 import { getPrimaryIllustration } from 'shared/illustrations/getPrimaryIllustration'
@@ -15,7 +15,7 @@ import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 export const IdentityCheckEnd: FC = () => {
   const Illustration = getPrimaryIllustration(EmailSent)
 
-  const { data: subscription } = useGetStepperInfo()
+  const { data: subscription } = useGetStepperInfoQuery()
 
   const { navigateForwardToStepper } = useNavigateForwardToStepper()
   const saveStep = useSaveStep()

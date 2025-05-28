@@ -2,8 +2,8 @@ import { useFocusEffect } from '@react-navigation/native'
 import { useCallback, useState } from 'react'
 
 import { SubscriptionStep, SubscriptionStepperResponseV2 } from 'api/gen'
-import { useGetStepperInfo } from 'features/identityCheck/api/useGetStepperInfo'
 import { useSubscriptionContext } from 'features/identityCheck/context/SubscriptionContextProvider'
+import { useGetStepperInfoQuery } from 'features/identityCheck/queries/useGetStepperInfoQuery'
 import { DeprecatedIdentityCheckStep } from 'features/identityCheck/types'
 import { eventMonitoring } from 'libs/monitoring/services'
 
@@ -23,7 +23,7 @@ export const getIdentityCheckStep = (
 
 export const useSetSubscriptionStepAndMethod = () => {
   const context = useSubscriptionContext()
-  const { refetch } = useGetStepperInfo()
+  const { refetch } = useGetStepperInfoQuery()
   const [subscription, setSubscription] = useState<SubscriptionStepperResponseV2 | undefined>()
 
   const setCurrentStep = (susbcriptionResponse: SubscriptionStepperResponseV2 | undefined) => {
