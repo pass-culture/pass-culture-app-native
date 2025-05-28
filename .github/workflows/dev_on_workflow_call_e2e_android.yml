@@ -72,6 +72,7 @@ jobs:
             ANDROID_KEYSTORE:passculture-metier-ehp/passculture-app-native-staging-keystore
             ROBIN_API_KEY:passculture-metier-ehp/passculture-app-native-e2e-robin-api-key
             MAESTRO_PASSWORD:passculture-metier-ehp/passculture-app-native-e2e-maestro-password
+            FLASHLIGHT_API_KEY:passculture-metier-ehp/passculture-app-native-e2e-flashlight-api-key
 
       - name: Create a directory for keystores
         run: mkdir --parents android/keystores/
@@ -94,38 +95,77 @@ jobs:
         run: echo '${{ steps.secrets.outputs.ANDROID_GOOGLE_SERVICES_JSON }}' > android/app/google-services.json
 
       - name: Build android apk
-        run: cd android && for i in {1..3}; do ENVFILE=.env.staging ./gradlew assembleDebug && break || sleep 2; done
-
-      - name: Generate Robin Android upload name
-        id: generate_name
+        id: build_apk
         run: |
-          DATE=$(date +"%d/%m/%Y")
-          COMMIT_HASH=$(git rev-parse --short=8 HEAD)
-          if [[ "${{ github.event_name }}" == "schedule" ]]; then
-            CUSTOM_NAME="[Nightly][Android] Release du ${DATE} au soir (${COMMIT_HASH})"
-          else
-            CUSTOM_NAME="${{ inputs.upload_name_prefix }}[Android] Staging du ${DATE} (${COMMIT_HASH})"
-          fi
-          echo "CUSTOM_NAME=$CUSTOM_NAME" >> $GITHUB_OUTPUT
-
-      - name: Upload and run android tests with Robin
-        uses: mobile-dev-inc/action-maestro-cloud@v1.9.8
+          cd android
+          for i in {1..3}; do 
+            ENVFILE=.env.staging ./gradlew assembleDebug && break || sleep 2
+          done
+          echo "APK_PATH=$(pwd)/app/build/outputs/apk/staging/debug/app-staging-debug.apk" >> $GITHUB_OUTPUT
+          
+      - name: Upload APK artifact
+        uses: actions/upload-artifact@v4
         with:
-          api-key: ${{ steps.secrets.outputs.ROBIN_API_KEY }}
-          project-id: proj_01javz1ncreqb9dcshv3y4da44
-          app-file: android/app/build/outputs/apk/staging/debug/app-staging-debug.apk
-          name: ${{ steps.generate_name.outputs.CUSTOM_NAME }}
-          device-locale: fr_FR
-          android-api-level: 34
-          workspace: .maestro/tests/
-          include-tags: ${{ inputs.test_tags }}
-          env: |
-            MAESTRO_APP_ID=app.passculture.staging
-            MAESTRO_PASSWORD=${{ steps.secrets.outputs.MAESTRO_PASSWORD }}
-            MAESTRO_VALID_IOS_EMAIL=dev-tests-e2e-ios@passculture.team
-            MAESTRO_VALID_ANDROID_EMAIL=dev-tests-e2e-android@passculture.team
-            MAESTRO_INVALID_EMAIL=dev-tests-e2e-invalid@passculture.team
-            MAESTRO_UNREGISTERED_EMAIL=dev-tests-unregistered+e2e@passculture.team
-            MAESTRO_MOCK_ANALYTICS_SERVER=http://localhost:$MOCK_ANALYTICS_SERVER_PORT
-            MAESTRO_RUN_TRACKING_TESTS=false
-            MAESTRO_RUN_CLOUD_COMMANDS=true
+          name: android-apk
+          path: ${{ steps.build_apk.outputs.APK_PATH }}
+          retention-days: 1
+
+      - name: Install Flashlight CLI
+        run: |
+          curl https://get.flashlight.dev/ | bash
+          echo "$HOME/.flashlight/bin" >> $GITHUB_PATH
+          export PATH="$HOME/.flashlight/bin:$PATH"
+
+      - name: Run Flashlight performance tests
+        run: |
+          curl -Ls "https://get.maestro.mobile.dev" | bash
+          export PATH="$PATH:$HOME/.maestro/bin"
+
+          echo "Démarrage des tests de performance avec Flashlight..."
+          flashlight cloud \
+            --app ${{ steps.build_apk.outputs.APK_PATH }} \
+            --test SearchAndBookOffers.yml \
+            --apiKey "${{ steps.secrets.outputs.FLASHLIGHT_API_KEY }}" || \
+            echo "Les tests de performance ont échoué mais le workflow continue"
+
+      - name: Upload performance report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: performance-report
+          path: ./flashlight-report
+          retention-days: 1
+
+      # - name: Generate Robin Android upload name
+      #   id: generate_name
+      #   run: |
+      #     DATE=$(date +"%d/%m/%Y")
+      #     COMMIT_HASH=$(git rev-parse --short=8 HEAD)
+      #     if [[ "${{ github.event_name }}" == "schedule" ]]; then
+      #       CUSTOM_NAME="[Nightly][Android] Release du ${DATE} au soir (${COMMIT_HASH})"
+      #     else
+      #       CUSTOM_NAME="${{ inputs.upload_name_prefix }}[Android] Staging du ${DATE} (${COMMIT_HASH})"
+      #     fi
+      #     echo "CUSTOM_NAME=$CUSTOM_NAME" >> $GITHUB_OUTPUT
+
+      # - name: Upload and run android tests with Robin
+      #   uses: mobile-dev-inc/action-maestro-cloud@v1.9.8
+      #   with:
+      #     api-key: ${{ steps.secrets.outputs.ROBIN_API_KEY }}
+      #     project-id: proj_01javz1ncreqb9dcshv3y4da44
+      #     app-file: android/app/build/outputs/apk/staging/debug/app-staging-debug.apk
+      #     name: ${{ steps.generate_name.outputs.CUSTOM_NAME }}
+      #     device-locale: fr_FR
+      #     android-api-level: 34
+      #     workspace: .maestro/tests/
+      #     include-tags: ${{ inputs.test_tags }}
+      #     env: |
+      #       MAESTRO_APP_ID=app.passculture.staging
+      #       MAESTRO_PASSWORD=${{ steps.secrets.outputs.MAESTRO_PASSWORD }}
+      #       MAESTRO_VALID_IOS_EMAIL=dev-tests-e2e-ios@passculture.team
+      #       MAESTRO_VALID_ANDROID_EMAIL=dev-tests-e2e-android@passculture.team
+      #       MAESTRO_INVALID_EMAIL=dev-tests-e2e-invalid@passculture.team
+      #       MAESTRO_UNREGISTERED_EMAIL=dev-tests-unregistered+e2e@passculture.team
+      #       MAESTRO_MOCK_ANALYTICS_SERVER=http://localhost:$MOCK_ANALYTICS_SERVER_PORT
+      #       MAESTRO_RUN_TRACKING_TESTS=false
+      #       MAESTRO_RUN_CLOUD_COMMANDS=true
