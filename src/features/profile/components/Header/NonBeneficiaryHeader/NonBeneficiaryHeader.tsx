@@ -19,18 +19,20 @@ import { SystemBanner as GenericSystemBanner } from 'ui/components/ModuleBanner/
 import { BicolorUnlock } from 'ui/svg/icons/BicolorUnlock'
 import { BirthdayCake } from 'ui/svg/icons/BirthdayCake'
 import { AccessibleIcon } from 'ui/svg/icons/types'
-import { getSpacing } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 
 interface NonBeneficiaryHeaderProps {
   featureFlags: { disableActivation: boolean }
   eligibilityStartDatetime?: string
   eligibilityEndDatetime?: string
+  eligibilityEndDateInSystemBanner?: boolean
 }
 
 function NonBeneficiaryHeaderComponent({
   featureFlags,
   eligibilityEndDatetime,
   eligibilityStartDatetime,
+  eligibilityEndDateInSystemBanner,
 }: PropsWithChildren<NonBeneficiaryHeaderProps>) {
   return (
     <React.Fragment>
@@ -39,15 +41,17 @@ function NonBeneficiaryHeaderComponent({
         featureFlags={featureFlags}
         eligibilityEndDatetime={eligibilityEndDatetime}
         eligibilityStartDatetime={eligibilityStartDatetime}
+        eligibilityEndDateInSystemBanner={eligibilityEndDateInSystemBanner}
       />
     </React.Fragment>
   )
 }
 
-type BannerProps = {
+type SystemBannerProps = {
   homeBanner: Banner
   Icon: FunctionComponent<AccessibleIcon>
   formattedEligibilityEndDatetime?: string
+  eligibilityEndDateInSystemBanner?: boolean
 }
 
 const StyledBicolorUnlock = styled(BicolorUnlock).attrs(({ theme }) => ({
@@ -68,11 +72,39 @@ const systemBannerIcons: {
   [BannerName.transition_17_18_banner]: StyledBirthdayCake,
 }
 
-function SystemBanner({ homeBanner, Icon, formattedEligibilityEndDatetime }: BannerProps) {
+function SystemBanner({
+  homeBanner,
+  Icon,
+  formattedEligibilityEndDatetime,
+  eligibilityEndDateInSystemBanner = false,
+}: SystemBannerProps) {
   const { navigate } = useNavigation<UseNavigationType>()
 
   const onPress = () => {
     navigate('Stepper', { from: StepperOrigin.PROFILE })
+  }
+
+  const subtitle = formattedEligibilityEndDatetime ? (
+    <Typo.Body>
+      Tu es éligible jusqu’au <Typo.BodyAccent>{formattedEligibilityEndDatetime}</Typo.BodyAccent>
+    </Typo.Body>
+  ) : (
+    'Tu es éligible jusqu’à la veille de tes 19 ans'
+  )
+
+  if (eligibilityEndDateInSystemBanner) {
+    return (
+      <BannerContainer testID="eligibility-system-banner-container">
+        <GenericSystemBanner
+          leftIcon={Icon}
+          title={homeBanner.title}
+          subtitle={subtitle}
+          accessibilityLabel={homeBanner.text}
+          onPress={onPress}
+          analyticsParams={{ type: 'credit', from: 'profile' }}
+        />
+      </BannerContainer>
+    )
   }
 
   return (
@@ -92,10 +124,11 @@ function SystemBanner({ homeBanner, Icon, formattedEligibilityEndDatetime }: Ban
 
 export const NonBeneficiaryHeader = memo(NonBeneficiaryHeaderComponent)
 
-function NonBeneficiaryBanner({
+export function NonBeneficiaryBanner({
   featureFlags,
   eligibilityStartDatetime,
   eligibilityEndDatetime,
+  eligibilityEndDateInSystemBanner,
 }: Readonly<NonBeneficiaryHeaderProps>) {
   const today = new Date()
   const { data: subscription } = useGetStepperInfo()
@@ -155,6 +188,7 @@ function NonBeneficiaryBanner({
         Icon={systemBannerIcons[banner.name]}
         homeBanner={banner as Banner} // Use this as because API typing return Banner | null but it's never null
         formattedEligibilityEndDatetime={formattedEligibilityEndDatetime}
+        eligibilityEndDateInSystemBanner={eligibilityEndDateInSystemBanner}
       />
     )
   }

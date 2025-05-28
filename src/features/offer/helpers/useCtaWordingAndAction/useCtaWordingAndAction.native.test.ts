@@ -140,8 +140,7 @@ describe('getCtaWordingAndAction', () => {
       expect(result).toEqual({
         isDisabled: true,
         wording: 'Réserver l’offre',
-        bottomBannerText:
-          'Entre tes 15 et 16 ans tu peux réserver uniquement des offres gratuites.',
+        bottomBannerText: 'À 15 et 16 ans, tu peux réserver uniquement des offres gratuites.',
       })
     })
 
@@ -157,8 +156,7 @@ describe('getCtaWordingAndAction', () => {
       expect(result).toEqual({
         isDisabled: true,
         wording: 'Réserver l’offre',
-        bottomBannerText:
-          'Entre tes 15 et 16 ans tu peux réserver uniquement des offres gratuites.',
+        bottomBannerText: 'À 15 et 16 ans, tu peux réserver uniquement des offres gratuites.',
       })
     })
   })
