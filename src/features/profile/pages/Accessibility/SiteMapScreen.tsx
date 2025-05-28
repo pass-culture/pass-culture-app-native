@@ -32,7 +32,7 @@ export function SiteMapScreen() {
                   <InternalTouchableLink
                     as={ButtonInsideTextBlack}
                     wording={wording}
-                    navigateTo={{ screen: navigateTo[0], params: navigateTo[1] }}
+                    navigateTo={navigateTo}
                   />
                 }
                 nestedListTexts={filteredSubPages.map(({ wording, navigateTo }) => (
