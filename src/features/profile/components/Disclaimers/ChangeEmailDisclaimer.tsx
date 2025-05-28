@@ -2,21 +2,20 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { Separator } from 'ui/components/Separator'
-import { Spacer, Typo } from 'ui/theme'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Typo } from 'ui/theme'
 
 export function ChangeEmailDisclaimer() {
   return (
-    <React.Fragment>
+    <ViewGap gap={4}>
       <CaptionNeutralInfo>
         Pour modifier ton adresse e-mail, tu dois d’abord faire une demande de modification.
       </CaptionNeutralInfo>
-      <Spacer.Column numberOfSpaces={4} />
       <CaptionNeutralInfo>
         Tu ne peux modifier ton adresse e-mail qu’une fois par jour.
       </CaptionNeutralInfo>
-      <Spacer.Column numberOfSpaces={4} />
       <Separator.Horizontal />
-    </React.Fragment>
+    </ViewGap>
   )
 }
 

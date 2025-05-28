@@ -1,4 +1,5 @@
 import React, { FunctionComponent } from 'react'
+import { StyleProp, ViewStyle } from 'react-native'
 import styled, { useTheme } from 'styled-components/native'
 
 import { Image } from 'libs/resizing-image-on-demand/Image'
@@ -12,6 +13,7 @@ type VenueInfoHeaderProps = {
   subtitle?: string
   showArrow?: boolean
   imageURL?: string
+  style?: StyleProp<ViewStyle>
 }
 
 export const VenueInfoHeader: FunctionComponent<VenueInfoHeaderProps> = ({
@@ -20,6 +22,7 @@ export const VenueInfoHeader: FunctionComponent<VenueInfoHeaderProps> = ({
   subtitle,
   showArrow = false,
   imageURL,
+  style,
 }) => {
   const theme = useTheme()
   return (
@@ -41,6 +44,7 @@ export const VenueInfoHeader: FunctionComponent<VenueInfoHeaderProps> = ({
       }
       defaultThumbnailSize={imageSize}
       placeholderIcon={<LocationIcon testID="LocationIcon" />}
+      style={style}
     />
   )
 }

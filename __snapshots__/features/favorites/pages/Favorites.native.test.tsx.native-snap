@@ -38,10 +38,12 @@ exports[`<Favorites/> should render correctly 1`] = `
     }
   >
     <View
+      gap={1}
       style={
         [
           {
             "flexShrink": 1,
+            "gap": 4,
           },
         ]
       }
@@ -61,16 +63,6 @@ exports[`<Favorites/> should render correctly 1`] = `
       >
         Mes favoris
       </Text>
-      <View
-        numberOfSpaces={1}
-        style={
-          [
-            {
-              "height": 4,
-            },
-          ]
-        }
-      />
     </View>
   </View>
   <View

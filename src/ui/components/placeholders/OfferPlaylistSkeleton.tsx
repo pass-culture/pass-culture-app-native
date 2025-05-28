@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react'
-import { View, FlatList } from 'react-native'
+import { FlatList, StyleProp, View, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
 import { SkeletonTile } from 'ui/components/placeholders/SkeletonTile'
@@ -20,10 +20,11 @@ const mapTileSizeToDimensions = (size: TileSize): number => {
   }
 }
 
-export const OfferPlaylistSkeleton: React.FC<{ size: TileSize; numberOfTiles: number }> = ({
-  size,
-  numberOfTiles,
-}) => {
+export const OfferPlaylistSkeleton: React.FC<{
+  size: TileSize
+  numberOfTiles: number
+  style?: StyleProp<ViewStyle>
+}> = ({ size, numberOfTiles, style }) => {
   const data = new Array(numberOfTiles)
     .fill(null)
     .map((_, index: number) => ({ key: index.toString() }))
@@ -34,7 +35,7 @@ export const OfferPlaylistSkeleton: React.FC<{ size: TileSize; numberOfTiles: nu
   )
 
   return (
-    <Container testID="OfferPlaylistSkeleton">
+    <Container testID="OfferPlaylistSkeleton" style={style}>
       <ModuleTitlePlaceholder />
       <FlatList
         horizontal

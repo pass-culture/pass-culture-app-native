@@ -197,22 +197,13 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 17,
                 "lineHeight": 27.2,
+                "marginBottom": 8,
               },
             ]
           }
         >
           Comment ça marche ?
         </Text>
-        <View
-          numberOfSpaces={2}
-          style={
-            [
-              {
-                "height": 8,
-              },
-            ]
-          }
-        />
         <View
           style={
             [
@@ -661,16 +652,6 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                   >
                     150 €
                   </Text>
-                  <View
-                    numberOfSpaces={1}
-                    style={
-                      [
-                        {
-                          "height": 4,
-                        },
-                      ]
-                    }
-                  />
                   <Text
                     style={
                       [
@@ -679,6 +660,7 @@ exports[`OnboardingAgeInformation should render correctly for 17-year-old 1`] = 
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 10,
                           "lineHeight": 12,
+                          "marginTop": 4,
                         },
                       ]
                     }
@@ -1204,22 +1186,13 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
                 "fontFamily": "Montserrat-Bold",
                 "fontSize": 17,
                 "lineHeight": 27.2,
+                "marginBottom": 8,
               },
             ]
           }
         >
           Comment ça marche ?
         </Text>
-        <View
-          numberOfSpaces={2}
-          style={
-            [
-              {
-                "height": 8,
-              },
-            ]
-          }
-        />
         <View
           style={
             [
@@ -1655,16 +1628,6 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
                   >
                     150 €
                   </Text>
-                  <View
-                    numberOfSpaces={1}
-                    style={
-                      [
-                        {
-                          "height": 4,
-                        },
-                      ]
-                    }
-                  />
                   <Text
                     style={
                       [
@@ -1673,6 +1636,7 @@ exports[`OnboardingAgeInformation should render correctly for 18-year-old 1`] = 
                           "fontFamily": "Montserrat-SemiBold",
                           "fontSize": 10,
                           "lineHeight": 12,
+                          "marginTop": 4,
                         },
                       ]
                     }

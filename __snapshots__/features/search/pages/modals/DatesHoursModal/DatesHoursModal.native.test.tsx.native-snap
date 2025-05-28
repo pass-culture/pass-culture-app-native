@@ -357,20 +357,11 @@ exports[`<DatesHoursModal/> should render modal correctly after animation and wi
       >
         <View>
           <View
-            numberOfSpaces={6}
-            style={
-              [
-                {
-                  "height": 24,
-                },
-              ]
-            }
-          />
-          <View
             style={
               [
                 {
                   "alignItems": "center",
+                  "marginTop": 24,
                 },
               ]
             }
@@ -569,32 +560,13 @@ exports[`<DatesHoursModal/> should render modal correctly after animation and wi
                 </View>
               </View>
               <View
-                numberOfSpaces={6}
-                style={
-                  [
-                    {
-                      "height": 24,
-                    },
-                  ]
-                }
-              />
-              <View
                 style={
                   [
                     {
                       "backgroundColor": "#F1F1F4",
                       "height": 1,
+                      "marginVertical": 24,
                       "width": "100%",
-                    },
-                  ]
-                }
-              />
-              <View
-                numberOfSpaces={6}
-                style={
-                  [
-                    {
-                      "height": 24,
                     },
                   ]
                 }

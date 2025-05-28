@@ -24,7 +24,6 @@ export function TrackEmailChange() {
           <BackButton onGoBack={goBack} />
         </GoBackContainer>
       </HeaderContainer>
-      <Spacer.Column numberOfSpaces={6} />
       <StyledTitleText>Suivi de ton changement d’e-mail</StyledTitleText>
       <TrackEmailChangeContent />
     </StyledScrollViewContainer>
@@ -40,6 +39,7 @@ const HeaderContainer = styled.View(({ theme }) => ({
   width: '100%',
   position: 'absolute',
   top: 0,
+  marginBottom: getSpacing(6),
 }))
 
 const GoBackContainer = styled.View({

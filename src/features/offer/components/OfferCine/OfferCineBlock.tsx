@@ -1,5 +1,5 @@
 import React, { FC, useEffect } from 'react'
-import { View, ViewStyle } from 'react-native'
+import { ViewStyle } from 'react-native'
 import { InView } from 'react-native-intersection-observer'
 import styled, { useTheme } from 'styled-components/native'
 
@@ -11,7 +11,8 @@ import { getDates } from 'shared/date/getDates'
 import { AppThemeType } from 'theme'
 import { Anchor } from 'ui/components/anchor/Anchor'
 import { useScrollToAnchor } from 'ui/components/anchor/AnchorContext'
-import { Spacer, Typo, getSpacing } from 'ui/theme'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Typo, getSpacing } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type Props = {
@@ -40,7 +41,7 @@ export const OfferCineBlock: FC<Props> = ({ title, onSeeVenuePress, offer, dista
   const next15Dates = getDates(new Date(), 15)
 
   return (
-    <Container testID="offer-new-xp-cine-block">
+    <Container testID="offer-new-xp-cine-block" gap={4}>
       <Anchor name="offer-cine-availabilities">
         <InView
           onChange={(inView) => {
@@ -51,7 +52,6 @@ export const OfferCineBlock: FC<Props> = ({ title, onSeeVenuePress, offer, dista
           </TitleContainer>
         </InView>
       </Anchor>
-      <Spacer.Column numberOfSpaces={4} />
       <MovieCalendarProvider initialDates={next15Dates} containerStyle={getCalendarStyle(theme)}>
         <OfferCineContent offer={offer} onSeeVenuePress={onSeeVenuePress} distance={distance} />
       </MovieCalendarProvider>
@@ -63,7 +63,7 @@ const getCalendarStyle = (theme: AppThemeType): ViewStyle => ({
   marginRight: theme.isDesktopViewport ? -getSpacing(16) : 0,
 })
 
-const Container = styled(View)({
+const Container = styled(ViewGap)({
   marginVertical: 0,
 })
 

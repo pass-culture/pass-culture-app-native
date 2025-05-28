@@ -54,12 +54,9 @@ export const HomeHeader: FunctionComponent = function () {
             <TitleContainer>
               <Title testID="web-location-widget">
                 <TitleLabel numberOfLines={1}>{welcomeTitle}</TitleLabel>
-                <Spacer.Row numberOfSpaces={6} />
-                <Separator.Vertical height={getSpacing(6)} />
-                <Spacer.Row numberOfSpaces={4} />
+                <StyledSeparator height={getSpacing(6)} />
                 <LocationWidgetDesktop />
               </Title>
-              <Spacer.Column numberOfSpaces={1} />
               <Subtitle>{getSubtitle()}</Subtitle>
             </TitleContainer>
           </HeaderContainer>
@@ -88,6 +85,7 @@ const TitleContainer = styled.View({
 })
 const Subtitle = styled(Typo.BodyAccentXs)(({ theme }) => ({
   color: theme.colors.greyDark,
+  marginTop: getSpacing(1),
 }))
 
 const TitleLabel = styled(Typo.Title1)({
@@ -97,4 +95,9 @@ const TitleLabel = styled(Typo.Title1)({
 const Title = styled.View({
   flexDirection: 'row',
   alignItems: 'center',
+})
+
+const StyledSeparator = styled(Separator.Vertical)({
+  marginLeft: getSpacing(6),
+  marginRight: getSpacing(4),
 })

@@ -4,6 +4,7 @@ import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Close } from 'ui/svg/icons/Close'
 import { getSpacing, Spacer } from 'ui/theme'
 
@@ -37,7 +38,7 @@ export const AppInformationModal: FunctionComponent<Props> = ({
       onRequestClose={onCloseIconPress}>
       <ClickAwayArea onPress={onCloseIconPress} />
       <FlexSpacer />
-      <Container accessibilityLabelledBy={titleID}>
+      <Container accessibilityLabelledBy={titleID} gap={6}>
         <ModalHeader
           title={title}
           titleID={titleID}
@@ -46,7 +47,6 @@ export const AppInformationModal: FunctionComponent<Props> = ({
           onRightIconPress={onCloseIconPress}
           numberOfLines={numberOfLinesTitle}
         />
-        <Spacer.Column numberOfSpaces={6} />
         <Content>{children}</Content>
       </Container>
       <FlexSpacer />
@@ -64,7 +64,7 @@ const ClickAwayArea = styled(TouchableOpacity).attrs({ activeOpacity: 1 })(({ th
   backgroundColor: theme.uniqueColors.greyOverlay,
 }))
 
-const Container = styled.View(({ theme }) => ({
+const Container = styled(ViewGap)(({ theme }) => ({
   backgroundColor: theme.designSystem.color.background.default,
   alignItems: 'center',
   alignSelf: 'center',

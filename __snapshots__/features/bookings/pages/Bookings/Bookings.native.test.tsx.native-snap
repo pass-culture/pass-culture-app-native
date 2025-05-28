@@ -40,10 +40,12 @@ exports[`Bookings should render correctly 1`] = `
     }
   >
     <View
+      gap={1}
       style={
         [
           {
             "flexShrink": 1,
+            "gap": 4,
           },
         ]
       }
@@ -63,16 +65,6 @@ exports[`Bookings should render correctly 1`] = `
       >
         Mes réservations
       </Text>
-      <View
-        numberOfSpaces={1}
-        style={
-          [
-            {
-              "height": 4,
-            },
-          ]
-        }
-      />
     </View>
   </View>
   <View
@@ -177,6 +169,7 @@ exports[`Bookings should render correctly 1`] = `
                 "flexGrow": 1,
                 "gap": 8,
                 "justifyContent": "center",
+                "marginBottom": 8,
               },
             ]
           }
@@ -199,16 +192,6 @@ exports[`Bookings should render correctly 1`] = `
             En cours
           </Text>
         </View>
-        <View
-          numberOfSpaces={2}
-          style={
-            [
-              {
-                "height": 8,
-              },
-            ]
-          }
-        />
         <View
           isSelected={true}
           style={
@@ -282,6 +265,7 @@ exports[`Bookings should render correctly 1`] = `
                 "flexGrow": 1,
                 "gap": 8,
                 "justifyContent": "center",
+                "marginBottom": 8,
               },
             ]
           }
@@ -304,16 +288,6 @@ exports[`Bookings should render correctly 1`] = `
             Terminées
           </Text>
         </View>
-        <View
-          numberOfSpaces={2}
-          style={
-            [
-              {
-                "height": 8,
-              },
-            ]
-          }
-        />
         <View
           isSelected={false}
           style={

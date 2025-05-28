@@ -167,10 +167,12 @@ exports[`Home page should render correctly 1`] = `
                 }
               >
                 <View
+                  gap={1}
                   style={
                     [
                       {
                         "flexShrink": 1,
+                        "gap": 4,
                       },
                     ]
                   }
@@ -190,16 +192,6 @@ exports[`Home page should render correctly 1`] = `
                   >
                     Bienvenue !
                   </Text>
-                  <View
-                    numberOfSpaces={1}
-                    style={
-                      [
-                        {
-                          "height": 4,
-                        },
-                      ]
-                    }
-                  />
                   <Text
                     style={
                       [

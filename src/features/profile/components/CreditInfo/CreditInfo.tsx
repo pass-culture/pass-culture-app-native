@@ -1,5 +1,4 @@
 import React, { PropsWithChildren } from 'react'
-import { View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { DomainsCredit } from 'api/gen'
@@ -7,7 +6,7 @@ import { CreditProgressBar } from 'features/profile/components/CreditInfo/Credit
 import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
-import { Spacer } from 'ui/theme'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { Typo } from 'ui/theme/typography'
 
 type CreditInfoProps = {
@@ -24,11 +23,10 @@ export function CreditInfo({ totalCredit }: PropsWithChildren<CreditInfoProps>) 
   )
 
   return (
-    <View testID="credit-info">
+    <ViewGap gap={3} testID="credit-info">
       <Title>{totalCreditWithCurrency}</Title>
-      <Spacer.Column numberOfSpaces={3} />
       <CreditProgressBar progress={totalCredit.remaining / totalCredit.initial} />
-    </View>
+    </ViewGap>
   )
 }
 

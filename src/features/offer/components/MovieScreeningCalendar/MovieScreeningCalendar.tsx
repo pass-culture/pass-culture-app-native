@@ -9,7 +9,8 @@ import { useSelectedDateScreening } from 'features/offer/components/MovieScreeni
 import { useOfferCTAButton } from 'features/offer/components/OfferCTAButton/useOfferCTAButton'
 import { Subcategory } from 'libs/subcategories/types'
 import { EventCardList } from 'ui/components/eventCard/EventCardList'
-import { getSpacing, Spacer } from 'ui/theme'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { getSpacing } from 'ui/theme'
 
 type Props = {
   offer: OfferResponseV2
@@ -50,14 +51,13 @@ export const MovieScreeningCalendar: FunctionComponent<Props> = ({ offer, subcat
   }, [flatListRef, offerId, setSelectedDate]) // should be triggered by offerIdChange and not by movieScreeningDates
 
   return (
-    <MovieCalendarContainer>
+    <MovieCalendarContainer gap={4}>
       <MovieCalendar
         dates={movieScreeningDates}
         selectedDate={selectedDate}
         onTabChange={setSelectedDate}
         flatListRef={flatListRef}
       />
-      <Spacer.Column numberOfSpaces={4} />
       {eventCardData ? (
         <EventCardListContainer>
           <EventCardList data={eventCardData} />
@@ -68,7 +68,7 @@ export const MovieScreeningCalendar: FunctionComponent<Props> = ({ offer, subcat
   )
 }
 
-const MovieCalendarContainer = styled(View)(({ theme }) => ({
+const MovieCalendarContainer = styled(ViewGap)(({ theme }) => ({
   marginRight: theme.isDesktopViewport ? -getSpacing(16) : 0, // cancels padding of the parent container
 }))
 

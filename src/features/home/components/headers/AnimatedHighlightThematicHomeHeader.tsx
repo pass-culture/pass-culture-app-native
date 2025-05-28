@@ -7,7 +7,7 @@ import { HEADER_BLACK_BACKGROUND_HEIGHT } from 'features/home/components/constan
 import { BlackBackground } from 'features/home/components/headers/BlackBackground'
 import { computeDateRangeDisplay } from 'features/home/components/helpers/computeDateRangeDisplay'
 import { HighlightThematicHeader } from 'features/home/types'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 type HighlightThematicHeaderProps = Omit<HighlightThematicHeader, 'type'>
@@ -41,12 +41,7 @@ export const AnimatedHighlightThematicHomeHeader: FunctionComponent<
           style={{ transform: [{ translateY: gradientTranslation }] }}
         />
         <AnimatedBlackBackground style={{ transform: [{ translateY: gradientTranslation }] }}>
-          {subtitle ? (
-            <React.Fragment>
-              <Subtitle numberOfLines={1}>{subtitle}</Subtitle>
-              <Spacer.Column numberOfSpaces={1} />
-            </React.Fragment>
-          ) : null}
+          {subtitle ? <Subtitle numberOfLines={1}>{subtitle}</Subtitle> : null}
           <Title numberOfLines={2}>{title}</Title>
         </AnimatedBlackBackground>
       </TextContainer>
@@ -92,6 +87,7 @@ const TextContainer = styled.View({ position: 'absolute', bottom: 0, left: 0, ri
 
 const Subtitle = styled(Typo.Title4)(({ theme }) => ({
   color: theme.colors.white,
+  marginBottom: getSpacing(1),
 }))
 
 const Title = styled(Typo.Title1)(({ theme }) => ({

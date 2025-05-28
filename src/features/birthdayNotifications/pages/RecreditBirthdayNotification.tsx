@@ -13,7 +13,6 @@ import { useAvailableCredit } from 'shared/user/useAvailableCredit'
 import TutorialPassLogo from 'ui/animations/eighteen_birthday.json'
 import { AnimatedProgressBar } from 'ui/components/bars/AnimatedProgressBar'
 import { useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
-import { Spacer } from 'ui/components/spacer/Spacer'
 import { GenericInfoPage } from 'ui/pages/GenericInfoPage'
 import { categoriesIcons } from 'ui/svg/icons/bicolor/exports/categoriesIcons'
 import { getSpacing, Typo } from 'ui/theme'
@@ -74,7 +73,6 @@ export const RecreditBirthdayNotification = () => {
           />
           <Amount>{remainingCredit}</Amount>
         </ProgressBarContainer>
-        <Spacer.Column numberOfSpaces={4} />
         <StyledBody>
           Tu as jusqu’à la veille de tes 21 ans pour utiliser tout ton crédit.
         </StyledBody>
@@ -85,6 +83,7 @@ export const RecreditBirthdayNotification = () => {
 
 const StyledBody = styled(Typo.Body)({
   textAlign: 'center',
+  marginTop: getSpacing(4),
 })
 
 const ProgressBarContainer = styled.View({

@@ -15,8 +15,9 @@ import { CitySearchInput } from 'features/profile/components/CitySearchInput/Cit
 import { analytics } from 'libs/analytics/provider'
 import { SuggestedCity } from 'libs/place/types'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { PageWithHeader } from 'ui/pages/PageWithHeader'
-import { Spacer, Typo } from 'ui/theme'
+import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 export type CityForm = { city: SuggestedCity }
@@ -69,9 +70,8 @@ export const SetCity: FunctionComponent<Props> = ({ route }: Props) => {
     <PageWithHeader
       title={pageInfos.headerTitle}
       scrollChildren={
-        <React.Fragment>
+        <ViewGap gap={5}>
           <Typo.Title3 {...getHeadingAttrs(2)}>Renseigne ta ville de résidence</Typo.Title3>
-          <Spacer.Column numberOfSpaces={5} />
           <Controller
             control={control}
             name="city"
@@ -79,7 +79,7 @@ export const SetCity: FunctionComponent<Props> = ({ route }: Props) => {
               <CitySearchInput city={value} onCitySelected={onChange} />
             )}
           />
-        </React.Fragment>
+        </ViewGap>
       }
       fixedBottomChildren={
         <ButtonPrimary

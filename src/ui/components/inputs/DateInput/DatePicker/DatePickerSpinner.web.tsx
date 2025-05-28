@@ -10,7 +10,7 @@ import { DateInputDisplay } from 'ui/components/inputs/DateInput/atoms/DateInput
 import { DatePickerProps } from 'ui/components/inputs/DateInput/DatePicker/types'
 import { useDatePickerOptions } from 'ui/components/inputs/DateInput/hooks/useDatePickerOptions'
 import { InputError } from 'ui/components/inputs/InputError'
-import { getSpacing, Spacer } from 'ui/theme'
+import { getSpacing } from 'ui/theme'
 
 interface PickerProps extends ReactMobilePicker.ReactMobilePickerProps {
   accessibilityDescribedBy?: string
@@ -56,7 +56,6 @@ export const DatePickerSpinner: FunctionComponent<DatePickerProps> = ({
         numberOfSpacesTop={2}
         relatedInputId={birthdateInputErrorId}
       />
-      <Spacer.Column numberOfSpaces={2} />
       <SpinnerPickerWrapper testID="date-picker-spinner-touch">
         <StyledPicker
           valueGroups={date}
@@ -82,4 +81,5 @@ const SpinnerPickerWrapper = styled.View(({ theme }) => ({
   userSelect: 'none',
   width: '100%',
   maxWidth: theme.forms.maxWidth,
+  marginTop: getSpacing(2),
 }))

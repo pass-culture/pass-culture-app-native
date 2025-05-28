@@ -42,7 +42,7 @@ const WithRefTextInput: React.ForwardRefRenderFunction<RNTextInput, TextInputPro
   }
 
   return (
-    <ContainerWithMaxWidth>
+    <ContainerWithMaxWidth gap={0}>
       {customProps.label ? (
         <FlexInputLabel htmlFor={textInputID}>
           <StyledLabelContainer>

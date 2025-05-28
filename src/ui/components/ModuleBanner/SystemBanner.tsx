@@ -1,5 +1,5 @@
 import React, { FunctionComponent, useEffect } from 'react'
-import { View } from 'react-native'
+import { StyleProp, View, ViewStyle } from 'react-native'
 import styled from 'styled-components/native'
 
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
@@ -51,6 +51,7 @@ type Props = {
     from: 'home' | 'thematicHome' | 'offer' | 'profile' | 'search' | 'cheatcodes'
   }
   withBackground?: boolean
+  style?: StyleProp<ViewStyle>
 } & TouchableProps
 
 export const SystemBanner: FunctionComponent<Props> = ({
@@ -61,6 +62,7 @@ export const SystemBanner: FunctionComponent<Props> = ({
   accessibilityRole,
   analyticsParams: { type, from },
   withBackground = false,
+  style,
   ...touchableProps
 }) => {
   const focusProps = useHandleFocus()
@@ -96,7 +98,8 @@ export const SystemBanner: FunctionComponent<Props> = ({
       {...focusProps}
       accessibilityRole={accessibilityRole}
       accessibilityLabel={accessibilityLabel}
-      color={withBackground ? theme.colors.white : theme.colors.black}>
+      color={withBackground ? theme.colors.white : theme.colors.black}
+      style={style}>
       <Container backgroundColor={backgroundColor} borderColor={borderColor} testID="systemBanner">
         {StyledIcon ? (
           <IconContainer>

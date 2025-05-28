@@ -3,7 +3,8 @@ import styled from 'styled-components/native'
 
 import { analytics } from 'libs/analytics/provider'
 import { ExternalTouchableLink } from 'ui/components/touchableLink/ExternalTouchableLink'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { getSpacing, Typo } from 'ui/theme'
 
 import { SocialNetwork, SocialNetworkIconsMap } from './socials/types'
 
@@ -30,11 +31,10 @@ function SocialNetworkCardComponent(props: SocialNetworkCardProps) {
     <ExternalTouchableLink
       externalNav={{ url: link, params: { shouldLogEvent: false, fallbackUrl: fallbackLink } }}
       onBeforeNavigate={onBeforeNavigate}>
-      <Container>
+      <Container gap={1}>
         <NetworkIconBox>
           <StyledIcon />
         </NetworkIconBox>
-        <Spacer.Column numberOfSpaces={1} />
         <Typo.BodyAccentXs numberOfLines={2}>{name}</Typo.BodyAccentXs>
       </Container>
     </ExternalTouchableLink>
@@ -43,7 +43,7 @@ function SocialNetworkCardComponent(props: SocialNetworkCardProps) {
 
 export const SocialNetworkCard = memo(SocialNetworkCardComponent)
 
-const Container = styled.View({
+const Container = styled(ViewGap)({
   flexDirection: 'column',
   justifyContent: 'center',
   alignItems: 'center',

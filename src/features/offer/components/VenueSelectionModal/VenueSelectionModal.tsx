@@ -15,7 +15,7 @@ import { AppModal } from 'ui/components/modals/AppModal'
 import { ModalHeader } from 'ui/components/modals/ModalHeader'
 import { useModal } from 'ui/components/modals/useModal'
 import { Close } from 'ui/svg/icons/Close'
-import { Spacer, getSpacing } from 'ui/theme'
+import { getSpacing } from 'ui/theme'
 import { useCustomSafeInsets } from 'ui/theme/useCustomSafeInsets'
 
 type VenueSelectionModalProps = Pick<
@@ -104,7 +104,6 @@ export function VenueSelectionModal({
           rightIcon={Close}
           onRightIconPress={onClosePress}
         />
-        <Spacer.Column numberOfSpaces={6} />
       </ModalHeaderContainer>
     )
   }, [onClosePress, title, top])
@@ -173,4 +172,5 @@ const BottomWrapper = styled.View(({ theme }) => ({
 const ModalHeaderContainer = styled.View({
   width: '100%',
   paddingHorizontal: getSpacing(6),
+  marginBottom: getSpacing(6),
 })

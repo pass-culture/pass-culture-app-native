@@ -120,12 +120,14 @@ exports[`<SetBirthday /> should render correctly 1`] = `
       }
     />
     <View
+      gap={2}
       style={
         [
           {
             "alignItems": "flex-start",
             "display": "flex",
             "flexDirection": "column",
+            "gap": 8,
             "maxWidth": 500,
             "width": "100%",
           },
@@ -160,16 +162,6 @@ exports[`<SetBirthday /> should render correctly 1`] = `
           Date de naissance
         </Text>
       </View>
-      <View
-        numberOfSpaces={2}
-        style={
-          [
-            {
-              "height": 8,
-            },
-          ]
-        }
-      />
       <View
         height="small"
         isDisabled={false}
@@ -213,16 +205,6 @@ exports[`<SetBirthday /> should render correctly 1`] = `
         </Text>
       </View>
     </View>
-    <View
-      numberOfSpaces={5}
-      style={
-        [
-          {
-            "height": 20,
-          },
-        ]
-      }
-    />
     <RNDatePicker
       accessibilityDescribedBy="testUuidV4"
       androidVariant="nativeAndroid"
@@ -246,6 +228,7 @@ exports[`<SetBirthday /> should render correctly 1`] = `
           },
           [
             {
+              "marginTop": 20,
               "width": "100%",
             },
           ],
@@ -513,12 +496,14 @@ exports[`<SetBirthday /> should render correctly when account creation token and
       }
     />
     <View
+      gap={2}
       style={
         [
           {
             "alignItems": "flex-start",
             "display": "flex",
             "flexDirection": "column",
+            "gap": 8,
             "maxWidth": 500,
             "width": "100%",
           },
@@ -553,16 +538,6 @@ exports[`<SetBirthday /> should render correctly when account creation token and
           Date de naissance
         </Text>
       </View>
-      <View
-        numberOfSpaces={2}
-        style={
-          [
-            {
-              "height": 8,
-            },
-          ]
-        }
-      />
       <View
         height="small"
         isDisabled={false}
@@ -606,16 +581,6 @@ exports[`<SetBirthday /> should render correctly when account creation token and
         </Text>
       </View>
     </View>
-    <View
-      numberOfSpaces={5}
-      style={
-        [
-          {
-            "height": 20,
-          },
-        ]
-      }
-    />
     <RNDatePicker
       accessibilityDescribedBy="testUuidV4"
       androidVariant="nativeAndroid"
@@ -639,6 +604,7 @@ exports[`<SetBirthday /> should render correctly when account creation token and
           },
           [
             {
+              "marginTop": 20,
               "width": "100%",
             },
           ],
