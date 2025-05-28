@@ -6,7 +6,6 @@ import { useAuthContext } from 'features/auth/context/AuthContext'
 import { LocationWidget } from 'features/location/components/LocationWidget'
 import { LocationWidgetDesktop } from 'features/location/components/LocationWidgetDesktop'
 import { ScreenOrigin } from 'features/location/enums'
-import { isUserBeneficiary } from 'features/profile/helpers/isUserBeneficiary'
 import { formatCurrencyFromCents } from 'shared/currency/formatCurrencyFromCents'
 import { useGetCurrencyToDisplay } from 'shared/currency/useGetCurrencyToDisplay'
 import { useGetPacificFrancToEuroRate } from 'shared/exchangeRates/useGetPacificFrancToEuroRate'
@@ -28,14 +27,16 @@ export const HomeHeader: FunctionComponent = function () {
 
     const getSubtitle = () => {
       const shouldSeeDefaultSubtitle =
-        !isLoggedIn || !user || !isUserBeneficiary(user) || user.isEligibleForBeneficiaryUpgrade
+        !isLoggedIn ||
+        !user ||
+        !user.isBeneficiary ||
+        user.eligibility === EligibilityType.free ||
+        (!user.isBeneficiary && user.isEligibleForBeneficiaryUpgrade)
+
       if (shouldSeeDefaultSubtitle) return 'Toute la culture à portée de main'
 
-      const isUserFreeStatus = user.eligibility === EligibilityType.free
-      if (isUserFreeStatus) return ''
-
       const shouldSeeBeneficiarySubtitle =
-        isUserBeneficiary(user) && !!availableCredit && !availableCredit.isExpired
+        user.isBeneficiary && !!availableCredit && !availableCredit.isExpired
       if (shouldSeeBeneficiarySubtitle) {
         const credit = formatCurrencyFromCents(
           availableCredit.amount,

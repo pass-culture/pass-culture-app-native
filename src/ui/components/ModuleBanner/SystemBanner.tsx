@@ -43,7 +43,7 @@ type TouchableProps =
 type Props = {
   leftIcon: React.FunctionComponent<AccessibleIcon>
   title: string
-  subtitle: string
+  subtitle: string | React.ReactNode
   accessibilityLabel: string
   accessibilityRole?: AccessibilityRole
   analyticsParams: {
@@ -105,7 +105,11 @@ export const SystemBanner: FunctionComponent<Props> = ({
         ) : null}
         <DescriptionContainer gap={1}>
           <Typo.BodyAccent color={color}>{title}</Typo.BodyAccent>
-          <Typo.Body color={color}>{subtitle}</Typo.Body>
+          {React.isValidElement(subtitle) ? (
+            subtitle
+          ) : (
+            <Typo.Body color={color}>{subtitle}</Typo.Body>
+          )}
         </DescriptionContainer>
         <View>
           <StyledArrowNextIcon color={iconColor} />
