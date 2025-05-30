@@ -5,6 +5,7 @@ import styled from 'styled-components/native'
 
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
 import { useGetHeaderHeight } from 'ui/components/headers/PageHeaderWithoutPlaceholder'
+import { IconFactoryProvider } from 'ui/components/icons/IconFactoryProvider'
 import { Spacer, Typo } from 'ui/theme'
 
 import { ContentHeader } from './ContentHeader'
@@ -29,25 +30,28 @@ const StoryComponent = (props: React.ComponentProps<typeof ContentHeader>) => {
   const headerHeight = useGetHeaderHeight()
 
   return (
-    <Container>
-      <ScrollView onScroll={onScroll} scrollEventThrottle={16}>
-        <View style={{ height: headerHeight }} />
-        <Typo.Title3>{props.headerTitle}</Typo.Title3>
-        <Content />
-        <Spacer.Column numberOfSpaces={10} />
-        <Content />
-        <Spacer.Column numberOfSpaces={10} />
-        <Content />
-        <Spacer.Column numberOfSpaces={10} />
-        <Content />
-        <Spacer.Column numberOfSpaces={10} />
-      </ScrollView>
-      <ContentHeader {...props} headerTransition={headerTransition} />
-    </Container>
+    <IconFactoryProvider>
+      <Container>
+        <ScrollView onScroll={onScroll} scrollEventThrottle={16}>
+          <View style={{ height: headerHeight }} />
+          <Typo.Title3>{props.headerTitle}</Typo.Title3>
+          <Content />
+          <Spacer.Column numberOfSpaces={10} />
+          <Content />
+          <Spacer.Column numberOfSpaces={10} />
+          <Content />
+          <Spacer.Column numberOfSpaces={10} />
+          <Content />
+          <Spacer.Column numberOfSpaces={10} />
+        </ScrollView>
+        <ContentHeader {...props} headerTransition={headerTransition} />
+      </Container>
+    </IconFactoryProvider>
   )
 }
 
 export const Default: Story = {
+  name: 'ContentHeader',
   render: (props) => <StoryComponent {...props} />,
   args: {
     headerTitle: 'Titre',

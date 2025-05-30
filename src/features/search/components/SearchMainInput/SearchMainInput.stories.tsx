@@ -40,6 +40,7 @@ export const Focus: Story = {
 }
 
 export const WithSearch: Story = {
+  name: 'SearchMainInput',
   render: (args) => <SearchMainInput {...args} />,
   args: {
     ...baseProps,

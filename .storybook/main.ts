@@ -11,12 +11,7 @@ const config: StorybookConfig = {
     '@storybook/addon-interactions',
   ],
   framework: {
-    name:
-      // @storybook/react-native-web-vite should be used for both production and developpment
-      // doesn't work on dev
-      process.env.NODE_ENV === 'production'
-        ? '@storybook/react-native-web-vite'
-        : '@storybook/react-vite',
+    name: '@storybook/react-native-web-vite',
     options: {},
   },
   typescript: {

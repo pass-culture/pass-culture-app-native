@@ -9203,7 +9203,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@storybook/react-native-web-vite@npm:^8.6.4":
+"@storybook/react-native-web-vite@npm:8.6.4":
   version: 8.6.4
   resolution: "@storybook/react-native-web-vite@npm:8.6.4"
   dependencies:
@@ -10778,7 +10778,7 @@ __metadata:
     "@storybook/addon-interactions": ^8.6.4
     "@storybook/addon-links": ^8.6.4
     "@storybook/react": ^8.6.4
-    "@storybook/react-native-web-vite": ^8.6.4
+    "@storybook/react-native-web-vite": 8.6.4
     "@storybook/react-vite": ^8.6.4
     "@storybook/testing-library": ^0.2.2
     "@testing-library/jest-dom": ^6.4.2
