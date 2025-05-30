@@ -6,6 +6,8 @@ import { LogBox, Platform, StatusBar } from 'react-native'
 import CodePush from 'react-native-code-push'
 import 'react-native-gesture-handler' // @react-navigation
 import 'react-native-get-random-values' // required for `uuid` module to work
+import RNFS from 'react-native-fs'
+import { logger, fileAsyncTransport } from 'react-native-logs'
 // eslint-disable-next-line import/no-extraneous-dependencies
 import PerformanceStats from 'react-native-performance-stats'
 
@@ -86,11 +88,19 @@ const App: FunctionComponent = function () {
   }, [])
 
   useEffect(() => {
-    if (env.LOG_PERF !== 'all' || Platform.OS === 'web') return
+    const isPerf = true
+    if (!isPerf) return
+
+    const log = logger.createLogger({
+      transport: fileAsyncTransport,
+      transportOptions: {
+        FS: RNFS,
+        fileName: 'log.txt',
+      },
+    })
 
     const listener = PerformanceStats.addListener((stats) => {
-      // eslint-disable-next-line no-console
-      console.log(stats)
+      log.debug(stats)
     })
 
     // you must call .start(true) to get CPU as well
