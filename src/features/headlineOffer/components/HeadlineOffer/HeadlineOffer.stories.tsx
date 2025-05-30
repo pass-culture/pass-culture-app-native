@@ -41,5 +41,6 @@ const Template = (args: React.ComponentProps<typeof HeadlineOffer>) => (
 )
 
 export const AllVariants: Story = {
+  name: 'HeadlineOffer',
   render: Template,
 }
