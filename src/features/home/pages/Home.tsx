@@ -1,6 +1,8 @@
 import { useRoute } from '@react-navigation/native'
 import { maxBy } from 'lodash'
 import React, { FunctionComponent, useEffect } from 'react'
+import RNFS from 'react-native-fs'
+import { logger, fileAsyncTransport } from 'react-native-logs'
 import PerformanceStats from 'react-native-performance-stats'
 import styled from 'styled-components/native'
 
@@ -16,7 +18,6 @@ import { UseRouteType } from 'features/navigation/RootNavigator/types'
 import { OnboardingSubscriptionModal } from 'features/subscription/components/modals/OnboardingSubscriptionModal'
 import { useOnboardingSubscriptionModal } from 'features/subscription/helpers/useOnboardingSubscriptionModal'
 import { analytics } from 'libs/analytics/provider'
-import { env } from 'libs/environment/env'
 import { useLocation } from 'libs/location'
 import { LocationMode } from 'libs/location/types'
 import { getAppVersion } from 'libs/packageJson'
@@ -74,11 +75,19 @@ export const Home: FunctionComponent = () => {
   }, [id])
 
   useEffect(() => {
-    const isPerf = env.LOG_PERF === 'all'
+    const isPerf = true
     if (!isPerf) return
 
+    const log = logger.createLogger({
+      transport: fileAsyncTransport,
+      transportOptions: {
+        FS: RNFS,
+        fileName: 'log.txt',
+      },
+    })
+
     const listener = PerformanceStats.addListener((stats) => {
-      console.log(stats)
+      log.debug(stats)
     })
 
     // you must call .start(true) to get CPU as well
