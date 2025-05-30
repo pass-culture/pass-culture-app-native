@@ -77,7 +77,7 @@ jest.mock('react-native/Libraries/Animated/createAnimatedComponent', () => {
 const user = userEvent.setup()
 
 const gotoStep2 = async () => {
-  await user.type(await screen.findByPlaceholderText('tonadresse@email.com'), 'email@gmail.com')
+  await user.type(await screen.findByTestId('Entrée pour l’email'), 'email@gmail.com')
 
   await user.press(screen.getByLabelText('Continuer vers l’étape Mot de passe'))
   await screen.findByText('Étape 2 sur 5', { includeHiddenElements: true })
@@ -155,7 +155,7 @@ describe('Signup Form', () => {
     it('should open quit modal when pressing quit button on second step', async () => {
       renderSignupForm()
 
-      const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
+      const emailInput = screen.getByTestId('Entrée pour l’email')
       await user.type(emailInput, 'email@gmail.com')
       await user.press(screen.getByText('Continuer'))
 
@@ -202,7 +202,7 @@ describe('Signup Form', () => {
     it('should go to the previous step when go back icon is press from second step', async () => {
       renderSignupForm()
 
-      const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
+      const emailInput = screen.getByTestId('Entrée pour l’email')
       await user.type(emailInput, 'email@gmail.com')
 
       const continueButton = screen.getByText('Continuer')
@@ -222,7 +222,7 @@ describe('Signup Form', () => {
       simulateSignupSuccess()
       renderSignupForm()
 
-      const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
+      const emailInput = screen.getByTestId('Entrée pour l’email')
       await user.type(emailInput, 'email@gmail.com')
       await user.press(screen.getByText('Continuer'))
 
@@ -252,7 +252,7 @@ describe('Signup Form', () => {
     simulateSignupSuccess()
     renderSignupForm()
 
-    const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
+    const emailInput = screen.getByTestId('Entrée pour l’email')
     await user.type(emailInput, 'email@gmail.com')
     await user.press(screen.getByText('Continuer'))
 
@@ -289,7 +289,7 @@ describe('Signup Form', () => {
         undefined
       )
 
-      const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
+      const emailInput = screen.getByTestId('Entrée pour l’email')
       await user.type(emailInput, 'email@gmail.com')
 
       await user.press(screen.getByTestId('Continuer vers l’étape Mot de passe'))
@@ -345,7 +345,7 @@ describe('Signup Form', () => {
     it('should log analytics when clicking on close icon', async () => {
       renderSignupForm()
 
-      const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
+      const emailInput = screen.getByTestId('Entrée pour l’email')
       await user.type(emailInput, 'email@gmail.com')
 
       const continueButton = screen.getByText('Continuer')
@@ -362,7 +362,7 @@ describe('Signup Form', () => {
     it('should call logCancelSignup with Email when quitting after signup modal', async () => {
       renderSignupForm()
 
-      const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
+      const emailInput = screen.getByTestId('Entrée pour l’email')
       await user.type(emailInput, 'email@gmail.com')
       await user.press(screen.getByText('Continuer'))
 
@@ -389,7 +389,7 @@ describe('Signup Form', () => {
 
       renderSignupForm()
 
-      const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
+      const emailInput = screen.getByTestId('Entrée pour l’email')
       await user.type(emailInput, 'email@gmail.com')
 
       await user.press(screen.getByLabelText('Continuer vers l’étape Mot de passe'))
@@ -438,7 +438,7 @@ describe('Signup Form', () => {
 
       renderSignupForm()
 
-      const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
+      const emailInput = screen.getByTestId('Entrée pour l’email')
       await user.type(emailInput, 'email@gmail.com')
       await user.press(screen.getByTestId('Continuer vers l’étape Mot de passe'))
 
@@ -580,7 +580,7 @@ describe('Signup Form', () => {
 
       await user.press(screen.getByTestId('Revenir en arrière'))
 
-      const emailInput = screen.getByPlaceholderText('tonadresse@email.com')
+      const emailInput = screen.getByTestId('Entrée pour l’email')
       await user.type(emailInput, 'email@gmail.com')
       await user.press(screen.getByText('Continuer'))
 
@@ -915,5 +915,6 @@ const pressSSOButton = async () => {
     SSOButton = await screen.findByTestId('S’inscrire avec Google')
   })
   // userEvent.press is not working correctly with SSOButton :'(
+  // eslint-disable-next-line local-rules/no-fireEvent
   await act(async () => fireEvent.press(SSOButton))
 }

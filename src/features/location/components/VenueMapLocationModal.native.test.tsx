@@ -95,6 +95,7 @@ describe('VenueMapLocationModal', () => {
 
     const suggestedPlace = await screen.findByText(mockPlaces[0].label)
     // userEvent.press not working correctly here
+    // eslint-disable-next-line local-rules/no-fireEvent
     fireEvent.press(suggestedPlace)
 
     const validateButon = screen.getByText('Valider et voir sur la carte')
@@ -162,6 +163,7 @@ describe('VenueMapLocationModal', () => {
 
     const suggestedPlace = await screen.findByText(mockPlaces[0].label)
     // userEvent.press not working correctly here
+    // eslint-disable-next-line local-rules/no-fireEvent
     fireEvent.press(suggestedPlace)
 
     await act(async () => {
@@ -194,6 +196,7 @@ describe('VenueMapLocationModal', () => {
 
     const suggestedPlace = await screen.findByText(mockPlaces[0].label)
     // userEvent.press not working correctly here
+    // eslint-disable-next-line local-rules/no-fireEvent
     fireEvent.press(suggestedPlace)
 
     await act(async () => {
@@ -226,6 +229,7 @@ describe('VenueMapLocationModal', () => {
 
     const suggestedPlace = await screen.findByText(mockPlaces[0].label)
     // userEvent.press not working correctly here
+    // eslint-disable-next-line local-rules/no-fireEvent
     fireEvent.press(suggestedPlace)
 
     await act(async () => {
@@ -258,6 +262,7 @@ describe('VenueMapLocationModal', () => {
 
     const suggestedPlace = await screen.findByText(mockPlaces[0].label)
     // userEvent.press not working correctly here
+    // eslint-disable-next-line local-rules/no-fireEvent
     fireEvent.press(suggestedPlace)
 
     await act(async () => {
@@ -291,6 +296,7 @@ describe('VenueMapLocationModal', () => {
 
     const suggestedPlace = await screen.findByText(mockPlaces[0].label)
     // userEvent.press not working correctly here
+    // eslint-disable-next-line local-rules/no-fireEvent
     fireEvent.press(suggestedPlace)
 
     await act(async () => {
@@ -328,6 +334,7 @@ describe('VenueMapLocationModal', () => {
             <SearchLocationModal
               visible={visible}
               // userEvent.press not working correctly here
+              // eslint-disable-next-line local-rules/no-fireEvent
               dismissModal={() => fireEvent.press(screen.getByText('Close'))}
             />
             <Button title="Close" onPress={() => setVisible(false)} />
@@ -366,6 +373,7 @@ describe('VenueMapLocationModal', () => {
       await act(async () => {
         const suggestedPlace = await screen.findByText(mockPlaces[0].label)
         // userEvent.press not working correctly here
+        // eslint-disable-next-line local-rules/no-fireEvent
         fireEvent.press(suggestedPlace)
       })
 
@@ -394,6 +402,7 @@ describe('VenueMapLocationModal', () => {
 
       const suggestedPlace = await screen.findByText(mockPlaces[0].label)
       // userEvent.press not working correctly here
+      // eslint-disable-next-line local-rules/no-fireEvent
       fireEvent.press(suggestedPlace)
 
       expect(screen.getByText(radiusWithKm(DEFAULT_RADIUS))).toBeOnTheScreen()
@@ -435,6 +444,7 @@ describe('VenueMapLocationModal', () => {
 
       const suggestedPlace = await screen.findByText(mockPlaces[0].label)
       // userEvent.press not working correctly here
+      // eslint-disable-next-line local-rules/no-fireEvent
       fireEvent.press(suggestedPlace)
 
       await act(async () => {

@@ -340,7 +340,7 @@ exports[`<NewEmailSelection /> should match snapshot 1`] = `
               onBlur={[Function]}
               onChangeText={[Function]}
               onFocus={[Function]}
-              placeholder="email@exemple.com"
+              placeholder=""
               placeholderTextColor="#696A6F"
               returnKeyType="next"
               style={
@@ -368,89 +368,80 @@ exports[`<NewEmailSelection /> should match snapshot 1`] = `
           </View>
         </View>
         <View
-          numberOfSpaces={4}
           style={
             [
               {
-                "height": 16,
-              },
-            ]
-          }
-        />
-        <View
-          backgroundColor="#f3ecff"
-          style={
-            [
-              {
-                "alignItems": "center",
-                "backgroundColor": "#f3ecff",
-                "borderRadius": 8,
-                "flexDirection": "row",
-                "justifyContent": "space-between",
-                "paddingBottom": 16,
-                "paddingLeft": 16,
-                "paddingRight": 16,
-                "paddingTop": 16,
+                "marginBottom": 40,
+                "marginTop": 16,
               },
             ]
           }
         >
           <View
+            backgroundColor="#f3ecff"
             style={
               [
                 {
+                  "alignItems": "center",
+                  "backgroundColor": "#f3ecff",
+                  "borderRadius": 8,
+                  "flexDirection": "row",
+                  "justifyContent": "space-between",
+                  "paddingBottom": 16,
+                  "paddingLeft": 16,
                   "paddingRight": 16,
+                  "paddingTop": 16,
                 },
               ]
             }
           >
             <View
-              height={24}
-              width={24}
-            >
-              <Text>
-                undefined-SVG-Mock
-              </Text>
-            </View>
-          </View>
-          <View
-            style={
-              [
-                {
-                  "flexBasis": 0,
-                  "flexGrow": 1,
-                  "flexShrink": 1,
-                },
-              ]
-            }
-          >
-            <Text
               style={
                 [
                   {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 12,
-                    "lineHeight": 19.2,
+                    "paddingRight": 16,
                   },
                 ]
               }
-              textColor="#161617"
             >
-              Tu vas recevoir un lien de confirmation sur ton adresse e-mail actuelle. Ce lien est valable 24h.
-            </Text>
+              <View
+                height={24}
+                width={24}
+              >
+                <Text>
+                  undefined-SVG-Mock
+                </Text>
+              </View>
+            </View>
+            <View
+              style={
+                [
+                  {
+                    "flexBasis": 0,
+                    "flexGrow": 1,
+                    "flexShrink": 1,
+                  },
+                ]
+              }
+            >
+              <Text
+                style={
+                  [
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "lineHeight": 19.2,
+                    },
+                  ]
+                }
+                textColor="#161617"
+              >
+                Tu vas recevoir un lien de confirmation sur ton adresse e-mail actuelle. Ce lien est valable 24h.
+              </Text>
+            </View>
           </View>
         </View>
-        <View
-          numberOfSpaces={10}
-          style={
-            [
-              {
-                "height": 40,
-              },
-            ]
-          }
-        />
         <View
           accessibilityLabel="Modifier mon adresse e-mail"
           accessibilityState={

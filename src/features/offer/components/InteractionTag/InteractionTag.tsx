@@ -51,21 +51,21 @@ export const getTagProps = ({
   if (chroniclesCount > 0)
     return {
       label: hasSmallLayout ? 'Reco Club' : 'Reco du Club',
-      backgroundColor: theme.colors.skyBlueLight,
+      backgroundColor: theme.designSystem.color.background.bookclub,
       Icon: CustomBookClub,
     }
 
   if (headlinesCount > 0)
     return {
       label: hasSmallLayout ? 'Reco lieux' : 'Reco par les lieux',
-      backgroundColor: theme.colors.goldLight100,
+      backgroundColor: theme.designSystem.color.background.headline,
       Icon: CustomStar,
     }
 
   if (likesCount > 0)
     return {
       label: `${likesCount} j’aime`,
-      backgroundColor: theme.colors.greyLight,
+      backgroundColor: theme.designSystem.color.background.subtle,
       Icon: CustomThumbUp,
     }
 
@@ -74,18 +74,20 @@ export const getTagProps = ({
 
 const CustomThumbUp = styled(ThumbUpFilled).attrs(({ theme }) => ({
   size: theme.icons.sizes.extraSmall,
-  color: theme.colors.primary,
+  color: theme.designSystem.color.icon.brandPrimary,
 }))``
 
 const CustomBookClub = styled(BookClubCertification).attrs(({ theme }) => ({
   size: theme.icons.sizes.extraSmall,
+  color: theme.designSystem.color.icon.bookclub,
 }))``
 
 const CustomStar = styled(Star).attrs(({ theme }) => ({
   size: theme.icons.sizes.extraSmall,
+  color: theme.designSystem.color.icon.headline,
 }))``
 
 const CustomWait = styled(ClockFilled).attrs(({ theme }) => ({
-  color: theme.designSystem.color.icon.warning,
   size: theme.icons.sizes.extraSmall,
+  color: theme.designSystem.color.icon.warning,
 }))``

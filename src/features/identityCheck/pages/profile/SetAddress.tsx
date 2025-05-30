@@ -143,13 +143,13 @@ export const SetAddress: FunctionComponent<Props> = ({ route }: Props) => {
                 value={query}
                 label={label}
                 format="34 avenue de l’Opéra"
-                placeholder="Ex&nbsp;: 34 avenue de l’Opéra"
                 autoComplete="street-address"
                 textContentType="fullStreetAddress"
                 accessibilityDescribedBy={addressInputErrorId}
                 onPressRightIcon={resetSearch}
                 returnKeyType="next"
                 testID="Entrée pour l’adresse"
+                searchInputID="street-address-input"
               />
               <InputError
                 visible={hasError}

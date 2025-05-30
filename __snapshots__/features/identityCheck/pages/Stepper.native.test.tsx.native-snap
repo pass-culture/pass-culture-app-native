@@ -300,7 +300,7 @@ exports[`Stepper navigation should render correctly 1`] = `
                         "marginTop": 8,
                       },
                       {
-                        "borderColor": "#f1f1f4",
+                        "borderColor": "#cbcdd2",
                         "borderWidth": 2,
                         "minHeight": 88,
                         "paddingRight": 16,
@@ -843,7 +843,7 @@ exports[`Stepper navigation should render correctly 1`] = `
                         "marginTop": 8,
                       },
                       {
-                        "borderColor": "#f1f1f4",
+                        "borderColor": "#cbcdd2",
                         "minHeight": 88,
                         "paddingRight": 16,
                         "paddingVertical": 16,
@@ -1098,7 +1098,7 @@ exports[`Stepper navigation should render correctly 1`] = `
                         "marginTop": 8,
                       },
                       {
-                        "borderColor": "#f1f1f4",
+                        "borderColor": "#cbcdd2",
                         "minHeight": 88,
                         "paddingRight": 16,
                         "paddingVertical": 16,

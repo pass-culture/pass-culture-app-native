@@ -8025,6 +8025,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@react-native/normalize-colors@npm:^0.74.1":
+  version: 0.74.89
+  resolution: "@react-native/normalize-colors@npm:0.74.89"
+  checksum: df62772f029dd132d3061a8ee7f90b6aaf5c525bb7e33c22908249daffa42995cddd91adc790ec9ce701636c14eeafc1809a9d0d879e3f8c71c9f340145abfce
+  languageName: node
+  linkType: hard
+
 "@react-native/typescript-config@npm:0.73.1":
   version: 0.73.1
   resolution: "@react-native/typescript-config@npm:0.73.1"
@@ -10834,7 +10841,7 @@ __metadata:
     date-fns-tz: ^2.0.0
     deepmerge: ^4.2.2
     deprecated-react-native-prop-types: ^5.0.0
-    design-system: "https://github.com/pass-culture/design-system.git#v0.0.29"
+    design-system: "https://github.com/pass-culture/design-system.git#v0.0.34"
     dotenv: ^8.2.0
     dotenv-expand: ^5.1.0
     eslint: ^8.57.0
@@ -10883,7 +10890,7 @@ __metadata:
     msw: ^2.7.3
     patch-package: ^8.0.0
     playwright: ^1.28.1
-    prettier: ^3.2.5
+    prettier: ^3.5.3
     prop-types: ^15.7.2
     react: 18.2.0
     react-app-polyfill: ^2.0.0
@@ -10917,7 +10924,7 @@ __metadata:
     react-native-lottie-splash-screen: ^1.1.2
     react-native-map-clustering: ^3.4.2
     react-native-maps: ^1.11.3
-    react-native-modal: ^13.0.0
+    react-native-modal: 13.0.0
     react-native-orientation-locker: ^1.7.0
     react-native-permissions: ^3.8.0
     react-native-qrcode-svg: ^6.1.2
@@ -10930,7 +10937,7 @@ __metadata:
     react-native-svg-web: ^1.0.9
     react-native-tracking-transparency: ^0.1.2
     react-native-url-polyfill: ^1.3.0
-    react-native-web: ^0.18.10
+    react-native-web: ^0.19.13
     react-native-web-linear-gradient: ^1.1.2
     react-native-web-lottie: ^1.4.4
     react-native-web-swiper: 2.2.4
@@ -13731,16 +13738,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"create-react-class@npm:^15.7.0":
-  version: 15.7.0
-  resolution: "create-react-class@npm:15.7.0"
-  dependencies:
-    loose-envify: ^1.3.1
-    object-assign: ^4.1.1
-  checksum: 0c5f43da705fa9f67ec289051dd5780792652d440dfa17cd2c7d8423c1f604609596f895dabf46fda1960ddd93ee96fe1b61ef4d55a94fc4271b07d515486714
-  languageName: node
-  linkType: hard
-
 "create-require@npm:^1.1.0":
   version: 1.1.1
   resolution: "create-require@npm:1.1.1"
@@ -14404,10 +14401,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"design-system@https://github.com/pass-culture/design-system.git#v0.0.29":
-  version: 0.0.29
-  resolution: "design-system@https://github.com/pass-culture/design-system.git#commit=c6227fff19989caf297744f81dc0a658e7ca8064"
-  checksum: 042416c857a427be635692d974027b03e166518de5e6a5f74216ef4acb8ca2eaa5f7a66971279cd4981bf6acf8faf34344d13364c5b66350fa8b08fb3cbebec7
+"design-system@https://github.com/pass-culture/design-system.git#v0.0.34":
+  version: 0.0.34
+  resolution: "design-system@https://github.com/pass-culture/design-system.git#commit=879cb9a6e27fae94e87ace74342b5dd332fcc9fc"
+  checksum: fe75e4904bd1932a5cfd8db689d0236bd2825a9a6604fd030467de147289f5f2bba81f0dc043f670b8a61aabe691e52a9fa9dc6732c7151207b81d84684d297b
   languageName: node
   linkType: hard
 
@@ -21005,7 +21002,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"loose-envify@npm:^1.0.0, loose-envify@npm:^1.1.0, loose-envify@npm:^1.3.1, loose-envify@npm:^1.4.0":
+"loose-envify@npm:^1.0.0, loose-envify@npm:^1.1.0, loose-envify@npm:^1.4.0":
   version: 1.4.0
   resolution: "loose-envify@npm:1.4.0"
   dependencies:
@@ -21346,6 +21343,13 @@ __metadata:
   version: 5.2.1
   resolution: "memoize-one@npm:5.2.1"
   checksum: a3cba7b824ebcf24cdfcd234aa7f86f3ad6394b8d9be4c96ff756dafb8b51c7f71320785fbc2304f1af48a0467cbbd2a409efc9333025700ed523f254cb52e3d
+  languageName: node
+  linkType: hard
+
+"memoize-one@npm:^6.0.0":
+  version: 6.0.0
+  resolution: "memoize-one@npm:6.0.0"
+  checksum: f185ea69f7cceae5d1cb596266dcffccf545e8e7b4106ec6aa93b71ab9d16460dd118ac8b12982c55f6d6322fcc1485de139df07eacffaae94888b9b3ad7675f
   languageName: node
   linkType: hard
 
@@ -22625,13 +22629,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"normalize-css-color@npm:^1.0.2":
-  version: 1.0.2
-  resolution: "normalize-css-color@npm:1.0.2"
-  checksum: 7433dc995a8d27c9384059ef0b52ceef47f4fab1bab55f1f085058b27e7472466ce321f46391fc85b6851db5212b9bd2bf55f5dc361da01a8a8cf4c360f69dab
-  languageName: node
-  linkType: hard
-
 "normalize-path@npm:^3.0.0, normalize-path@npm:~3.0.0":
   version: 3.0.0
   resolution: "normalize-path@npm:3.0.0"
@@ -23808,12 +23805,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier@npm:^3.2.5":
-  version: 3.2.5
-  resolution: "prettier@npm:3.2.5"
+"prettier@npm:^3.5.3":
+  version: 3.5.3
+  resolution: "prettier@npm:3.5.3"
   bin:
     prettier: bin/prettier.cjs
-  checksum: 2ee4e1417572372afb7a13bb446b34f20f1bf1747db77cf6ccaf57a9be005f2f15c40f903d41a6b79eec3f57fff14d32a20fb6dee1f126da48908926fe43c311
+  checksum: 61e97bb8e71a95d8f9c71f1fd5229c9aaa9d1e184dedb12399f76aa802fb6fdc8954ecac9df25a7f82ee7311cf8ddbd06baf5507388fc98e5b44036cc6a88a1b
   languageName: node
   linkType: hard
 
@@ -24776,7 +24773,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-modal@npm:^13.0.0":
+"react-native-modal@npm:13.0.0":
   version: 13.0.0
   resolution: "react-native-modal@npm:13.0.0"
   dependencies:
@@ -24992,21 +24989,22 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-web@npm:^0.18.10":
-  version: 0.18.12
-  resolution: "react-native-web@npm:0.18.12"
+"react-native-web@npm:^0.19.13":
+  version: 0.19.13
+  resolution: "react-native-web@npm:0.19.13"
   dependencies:
     "@babel/runtime": ^7.18.6
-    create-react-class: ^15.7.0
+    "@react-native/normalize-colors": ^0.74.1
     fbjs: ^3.0.4
     inline-style-prefixer: ^6.0.1
-    normalize-css-color: ^1.0.2
+    memoize-one: ^6.0.0
+    nullthrows: ^1.1.1
     postcss-value-parser: ^4.2.0
-    styleq: ^0.1.2
+    styleq: ^0.1.3
   peerDependencies:
-    react: ^17.0.2 || ^18.0.0
-    react-dom: ^17.0.2 || ^18.0.0
-  checksum: 69f0ebafafc4b04b845105646d0efc0cee10ed378377c621ac67a487d5508bb0dbd1c0ff3ea8d17f5cff0c0fb8d6355916f52f19ad3dad842b99b75c65ff4973
+    react: ^18.0.0
+    react-dom: ^18.0.0
+  checksum: 15077f88204cb980203b8e3784c092c8c25c972bf281db43fd4ccc9696b603380a49f5289fb9a742daddd8e7599baab5798a1f1c857bdd634add827bc39fd8d8
   languageName: node
   linkType: hard
 
@@ -27165,7 +27163,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"styleq@npm:^0.1.2":
+"styleq@npm:^0.1.3":
   version: 0.1.3
   resolution: "styleq@npm:0.1.3"
   checksum: 14a8d23abd914166a9b4bd04ed753bd91363f0e029ee4a94ec2c7dc37d3213fe01fceee22dc655288da3ae89f5dc01cec42d5e2b58478b0dea33bf5bdf509be1

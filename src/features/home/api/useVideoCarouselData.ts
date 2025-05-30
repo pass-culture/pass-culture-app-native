@@ -1,21 +1,20 @@
 import { SearchResponse } from '@algolia/client-search'
 import { useEffect } from 'react'
-import { useQuery, UseQueryResult } from 'react-query'
+import { UseQueryResult } from 'react-query'
 
 import { VideoCarouselItem } from 'features/home/types'
 import { useIsUserUnderage } from 'features/profile/helpers/useIsUserUnderage'
 import { BuildLocationParameterParams } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildLocationParameter'
-import { fetchCarouselVideoOffers } from 'libs/algolia/fetchAlgolia/fetchCarouselVideoOffers'
 import { buildVideoCarouselOffersQueries } from 'libs/algolia/fetchAlgolia/fetchMultipleOffers/helpers/buildVideoCarouselOffersQueries'
-import { searchResponsePredicate } from 'libs/algolia/fetchAlgolia/searchResponsePredicate'
 import {
   filterOfferHitWithImage,
   useTransformOfferHits,
 } from 'libs/algolia/fetchAlgolia/transformOfferHit'
 import { AlgoliaOffer, OfferModuleQuery } from 'libs/algolia/types'
 import { useLocation } from 'libs/location'
-import { QueryKeys } from 'libs/queryKeys'
 import { Offer } from 'shared/offer/types'
+
+import { useOffersQuery } from '../queries/useOffersQuery'
 
 export enum RedirectionMode {
   OFFER = 'OFFER',
@@ -76,16 +75,7 @@ export const useVideoCarouselData = (
 
   const queriesWithoutUndefined = queries.filter(isOfferQuery)
 
-  const offersQuery = async () => {
-    const offersResultList = await fetchCarouselVideoOffers(queriesWithoutUndefined)
-    return offersResultList.filter(searchResponsePredicate)
-  }
-
-  const offersResultList = useQuery({
-    queryKey: [QueryKeys.VIDEO_CAROUSEL_OFFERS, moduleId],
-    queryFn: offersQuery,
-    enabled: queriesWithoutUndefined.length > 0,
-  })
+  const offersResultList = useOffersQuery(moduleId, queriesWithoutUndefined)
 
   useEffect(() => {
     // When we enable or disable the geolocation, we want to refetch the home modules

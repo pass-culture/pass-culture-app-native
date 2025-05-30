@@ -5,14 +5,12 @@ import styled, { useTheme } from 'styled-components/native'
 
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
 import { AnimatedRef, AnimatedView } from 'libs/react-native-animatable'
-import { TextColorKey } from 'theme/types'
+import { ColorsType, TextColorKey } from 'theme/types'
 import { SnackBarProgressBar } from 'ui/components/snackBar/SnackBarProgressBar'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { Close as DefaultClose } from 'ui/svg/icons/Close'
 import { AccessibleIcon } from 'ui/svg/icons/types'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
 
 export type SnackBarProps = {
   visible: boolean
@@ -20,8 +18,8 @@ export type SnackBarProps = {
   icon: FunctionComponent<AccessibleIcon> | undefined
   onClose?: () => void
   timeout?: number
-  backgroundColor: ColorsEnum
-  progressBarColor: ColorsEnum
+  backgroundColor: ColorsType
+  progressBarColor: ColorsType
   color: TextColorKey
   animationDuration?: number
   refresher: number
@@ -157,7 +155,7 @@ const RootContainer = styled.View(({ theme }) => ({
 }))
 
 // Troobleshoot Animated types issue with forwaded 'backgroundColor' prop
-const ColoredAnimatableView = styled(AnimatedView)<{ backgroundColor: ColorsEnum }>((props) => ({
+const ColoredAnimatableView = styled(AnimatedView)<{ backgroundColor: ColorsType }>((props) => ({
   backgroundColor: props.backgroundColor,
 }))
 

@@ -23,6 +23,7 @@ describe('VideoEndView', () => {
 
     const replayButton = await screen.findByText('Revoir')
     // userEvent.press is not working correctly
+    // eslint-disable-next-line local-rules/no-fireEvent
     fireEvent.press(replayButton)
 
     expect(mockReplay).toHaveBeenCalledTimes(1)
@@ -32,7 +33,8 @@ describe('VideoEndView', () => {
     renderVideoEndView()
 
     const seeOfferButton = await screen.findByText('Voir l’offre')
-
+    // userEvent.press is not working correctly
+    // eslint-disable-next-line local-rules/no-fireEvent
     fireEvent.press(seeOfferButton)
 
     expect(mockHideModal).toHaveBeenCalledTimes(1)
@@ -42,7 +44,8 @@ describe('VideoEndView', () => {
     renderVideoEndView()
 
     const seeOfferButton = await screen.findByText('Voir l’offre')
-
+    // userEvent.press is not working correctly
+    // eslint-disable-next-line local-rules/no-fireEvent
     fireEvent.press(seeOfferButton)
 
     expect(analytics.logConsultOffer).toHaveBeenNthCalledWith(1, {

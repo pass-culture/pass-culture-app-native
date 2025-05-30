@@ -1,12 +1,11 @@
 import { useEffect } from 'react'
-import { useQuery } from 'react-query'
 
 import { mapVenuesDataAndModules } from 'features/home/api/helpers/mapVenuesDataAndModules'
 import { VenuesModule, VenuesModuleParameters } from 'features/home/types'
 import { BuildLocationParameterParams } from 'libs/algolia/fetchAlgolia/buildAlgoliaParameters/buildLocationParameter'
-import { fetchVenuesModules } from 'libs/algolia/fetchAlgolia/fetchVenuesModules'
 import { useLocation } from 'libs/location'
-import { QueryKeys } from 'libs/queryKeys'
+
+import { useVenuesQuery } from '../queries/useVenuesQuery'
 
 export const useGetVenuesData = (modules: VenuesModule[]) => {
   const { userLocation, selectedLocationMode } = useLocation()
@@ -29,19 +28,7 @@ export const useGetVenuesData = (modules: VenuesModule[]) => {
     venuesModuleIds.push(module.id)
   })
 
-  const venuesQuery = async () => {
-    const result = await fetchVenuesModules(venuesParameters)
-    return {
-      hits: result,
-      moduleId: venuesModuleIds,
-    }
-  }
-
-  const venuesResultList = useQuery({
-    queryKey: [QueryKeys.HOME_VENUES_MODULE, venuesModuleIds],
-    queryFn: venuesQuery,
-    enabled: venuesParameters.length > 0,
-  })
+  const venuesResultList = useVenuesQuery(venuesParameters, venuesModuleIds)
 
   useEffect(() => {
     // When we enable or disable the geolocation, we want to refetch the home modules

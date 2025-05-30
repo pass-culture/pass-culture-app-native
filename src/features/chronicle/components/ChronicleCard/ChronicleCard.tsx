@@ -61,7 +61,7 @@ export const ChronicleCard: FunctionComponent<Props> = ({
         title={title}
         subtitle={subtitle}
         defaultThumbnailSize={CHRONICLE_THUMBNAIL_SIZE}
-        thumbnailComponent={<BookClubCertification />}
+        thumbnailComponent={<BookClubIcon />}
       />
       <Separator.Horizontal />
       <DescriptionContainer defaultHeight={defaultHeight} shouldTruncate={shouldTruncate}>
@@ -88,7 +88,7 @@ const Container = styled(ViewGap)<{ width?: number; shouldTruncate?: boolean }>(
     borderColor: theme.colors.greyMedium,
     ...(width === undefined ? undefined : { width }),
     height: shouldTruncate ? CHRONICLE_CARD_HEIGHT : undefined,
-    backgroundColor: theme.colors.white,
+    backgroundColor: theme.designSystem.color.background.default,
     ...getShadow({
       shadowOffset: { width: 0, height: getSpacing(1) },
       shadowRadius: getSpacing(1),
@@ -98,13 +98,17 @@ const Container = styled(ViewGap)<{ width?: number; shouldTruncate?: boolean }>(
   })
 )
 
+const BookClubIcon = styled(BookClubCertification).attrs(({ theme }) => ({
+  color: theme.designSystem.color.icon.bookclub,
+}))``
+
 const DescriptionContainer = styled.View<{ defaultHeight: number; shouldTruncate?: boolean }>(
   ({ defaultHeight, shouldTruncate }) =>
     shouldTruncate ? { maxHeight: MAX_LINES * defaultHeight, overflow: 'hidden' } : {}
 )
 
 const Description = styled(Typo.BodyAccentS)(({ theme }) => ({
-  color: theme.colors.greyDark,
+  color: theme.designSystem.color.text.subtle,
   flexGrow: 1,
 }))
 
@@ -114,6 +118,6 @@ const BottomCardContainer = styled.View({
 })
 
 const PublicationDate = styled(Typo.BodyAccentXs)(({ theme }) => ({
-  color: theme.colors.greyDark,
+  color: theme.designSystem.color.text.subtle,
   alignSelf: 'center',
 }))

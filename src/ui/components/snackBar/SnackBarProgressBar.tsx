@@ -2,8 +2,7 @@ import React, { useEffect, memo } from 'react'
 import { Animated, useWindowDimensions } from 'react-native'
 import styled from 'styled-components/native'
 
-// eslint-disable-next-line no-restricted-imports
-import { ColorsEnum } from 'ui/theme/colors'
+import { ColorsType } from 'theme/types'
 
 import { SnackBarProgressBarProps } from './SnackBarProgressBar.types'
 
@@ -39,7 +38,7 @@ const NotMemoizedProgressBar = (props: SnackBarProgressBarProps) => {
 export const SnackBarProgressBar = memo(NotMemoizedProgressBar)
 
 const StyledAnimatedView = styled(Animated.View)<{
-  backgroundColor: ColorsEnum
+  backgroundColor: ColorsType
   width: Animated.Value
 }>(({ backgroundColor, width }) => ({
   height: 4,

@@ -575,9 +575,7 @@ exports[`Bookings should render correctly 1`] = `
         }
         getItem={[Function]}
         getItemCount={[Function]}
-        itemAs="li"
         keyExtractor={[Function]}
-        listAs="ul"
         onContentSizeChange={[Function]}
         onLayout={[Function]}
         onMomentumScrollBegin={[Function]}

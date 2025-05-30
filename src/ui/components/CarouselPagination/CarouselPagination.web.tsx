@@ -12,6 +12,7 @@ export const CarouselPagination: FunctionComponent<CarouselPaginationProps> = ({
   elementsCount,
   gap,
   carouselRef,
+  style,
 }) => {
   const handlePressButton = (direction: 1 | -1) => {
     const newIndex = calculateCarouselIndex({
@@ -24,7 +25,7 @@ export const CarouselPagination: FunctionComponent<CarouselPaginationProps> = ({
   }
 
   return (
-    <Container gap={6}>
+    <Container gap={6} style={style}>
       <RoundedButton
         iconName="previous"
         onPress={() => handlePressButton(-1)}

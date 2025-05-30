@@ -161,14 +161,14 @@ exports[`ChangeCity should render correctly 1`] = `
                 data-testid="icon-back"
               >
                 <div
-                  class="css-text-1rynq56"
+                  class="css-text-146c3p1"
                   dir="ltr"
                 >
                   icon-back-SVG-Mock
                 </div>
               </div>
               <div
-                class="css-text-1rynq56 r-clipPath-129q975 r-height-109y4c4 r-overflow-1udh08x r-width-92ng3h"
+                class="css-text-146c3p1 r-clipPath-129q975 r-height-109y4c4 r-overflow-1udh08x r-width-92ng3h"
                 dir="ltr"
               >
                 Retour
@@ -177,7 +177,7 @@ exports[`ChangeCity should render correctly 1`] = `
           </div>
           <h1
             aria-level="1"
-            class="css-text-1rynq56 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-1wf0xld r-lineHeight-1ln193j r-textAlign-q4m81j"
+            class="css-text-146c3p1 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-1wf0xld r-lineHeight-1ln193j r-textAlign-q4m81j"
             dir="ltr"
             role="heading"
           >
@@ -200,7 +200,7 @@ exports[`ChangeCity should render correctly 1`] = `
           class="css-view-175oi2r r-flexBasis-1iusvr4 r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-maxWidth-1ik5qf4 r-width-13qz1uu"
         >
           <div
-            class="css-view-175oi2r r-WebkitOverflowScrolling-150rngu r-flexDirection-eqz5dr r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-overflowX-11yh6sk r-overflowY-1rnoaur r-transform-1sncvnh"
+            class="css-view-175oi2r r-WebkitOverflowScrolling-150rngu r-flexDirection-eqz5dr r-flexGrow-16y2uox r-flexShrink-1wbh5a2 r-overflowX-11yh6sk r-overflowY-1rnoaur r-transform-agouwx"
           >
             <div
               class="css-view-175oi2r"
@@ -215,7 +215,7 @@ exports[`ChangeCity should render correctly 1`] = `
               >
                 <h1
                   aria-level="1"
-                  class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-19e3y8m r-lineHeight-1w51ilw"
+                  class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-19e3y8m r-lineHeight-1w51ilw"
                   dir="ltr"
                   role="heading"
                 >
@@ -233,12 +233,13 @@ exports[`ChangeCity should render correctly 1`] = `
                   >
                     <label
                       class="c3 c4"
+                      for="postal-code-input"
                     >
                       <div
                         class="css-view-175oi2r r-alignItems-obd0qt r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-width-13qz1uu"
                       >
                         <div
-                          class="css-text-1rynq56 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm"
+                          class="css-text-146c3p1 r-color-1rmcaf9 r-fontFamily-g6644c r-fontSize-cygvgh r-lineHeight-u6qrkm"
                           dir="ltr"
                         >
                           Indique ton code postal et choisis ta ville
@@ -250,7 +251,7 @@ exports[`ChangeCity should render correctly 1`] = `
                     class="css-view-175oi2r r-marginBottom-5oul0u"
                   >
                     <div
-                      class="css-text-1rynq56 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
+                      class="css-text-146c3p1 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
                       dir="ltr"
                     >
                       Exemple : 75017
@@ -268,11 +269,14 @@ exports[`ChangeCity should render correctly 1`] = `
                       data-testid="Entrée pour la ville"
                       dir="ltr"
                       enterkeyhint="search"
+                      id="postal-code-input"
                       inputmode="numeric"
-                      placeholder="Ex : 75017"
+                      placeholder=""
+                      rows="1"
                       spellcheck="false"
                       style="--placeholderTextColor: #696A6F;"
                       value=""
+                      virtualkeyboardpolicy="auto"
                     />
                   </div>
                   <div
@@ -292,7 +296,7 @@ exports[`ChangeCity should render correctly 1`] = `
             </div>
           </div>
           <div
-            class="css-view-175oi2r r-backgroundColor-14lw9ot r-bottom-1p0dtai r-left-1d2f490 r-paddingBottom-k8qxaj r-paddingHorizontal-d9fdf6 r-paddingTop-ttdzmv r-position-u8s1d r-right-zchlnj"
+            class="css-view-175oi2r r-backgroundColor-14lw9ot r-bottom-1p0dtai r-left-1d2f490 r-paddingBottom-k8qxaj r-paddingInline-u9wvl5 r-paddingTop-ttdzmv r-position-u8s1d r-right-zchlnj"
           >
             <button
               aria-label="Valider ma ville de résidence"
@@ -305,7 +309,7 @@ exports[`ChangeCity should render correctly 1`] = `
                 class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-18u37iz"
               >
                 <div
-                  class="css-text-1rynq56 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-fontFamily-1gknse6 r-fontSize-cygvgh r-lineHeight-u6qrkm r-maxWidth-dnmrzs"
+                  class="css-text-146c3p1 r-overflow-1udh08x r-textOverflow-1udbk01 r-whiteSpace-3s2u2q r-wordWrap-1iln25a r-color-v2ubm6 r-fontFamily-1gknse6 r-fontSize-cygvgh r-lineHeight-u6qrkm r-maxWidth-dnmrzs"
                   dir="ltr"
                 >
                   Valider ma ville de résidence

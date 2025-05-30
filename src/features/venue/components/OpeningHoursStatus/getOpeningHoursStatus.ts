@@ -1,12 +1,12 @@
 import {
   addHours,
-  isWithinInterval,
-  isSameDay,
   addMilliseconds,
   differenceInMinutes,
   format,
+  isSameDay,
+  isWithinInterval,
 } from 'date-fns'
-import { zonedTimeToUtc, utcToZonedTime } from 'date-fns-tz'
+import { utcToZonedTime, zonedTimeToUtc } from 'date-fns-tz'
 
 import { OpeningHour, OpeningHours, OpeningHoursStatusState } from 'features/venue/types'
 
@@ -60,17 +60,24 @@ const getNextOpeningPeriod = (openingHours: OpeningHours, date: Date): Period | 
   return getFirstOpenPeriodAfterDate(openingHours, date)
 }
 
-const getFirstOpenPeriodAfterDate = (openingHours: OpeningHours, date: Date): Period => {
+const getFirstOpenPeriodAfterDate = (
+  openingHours: OpeningHours,
+  date: Date,
+  daysAheadChecked = 0
+): Period | undefined => {
   const openingPeriods = getOpeningPeriods(openingHours, date)
 
-  const nextOpenPeriod = openingPeriods.find((period) => period.openAt >= date)
-  if (nextOpenPeriod) {
+  const nextOpenPeriod = openingPeriods.find((period) => {
+    return period.openAt >= date
+  })
+  // Avoid infinite loop, 7 days maximum
+  if (nextOpenPeriod || daysAheadChecked >= 7) {
     return nextOpenPeriod
   }
 
   const nextDay = addHours(date, 24)
   nextDay.setHours(0, 0, 0)
-  return getFirstOpenPeriodAfterDate(openingHours, nextDay)
+  return getFirstOpenPeriodAfterDate(openingHours, nextDay, daysAheadChecked + 1)
 }
 
 const DAY_INDEX_TO_OPENING_HOURS_KEYS = {
