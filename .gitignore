@@ -151,3 +151,6 @@ scripts/dead_code_current.txt
 storybook-static
 
 .direnv/
+
+# Performance data
+perf_data/*

@@ -6,7 +6,9 @@ import { LogBox, Platform, StatusBar } from 'react-native'
 import CodePush from 'react-native-code-push'
 import 'react-native-gesture-handler' // @react-navigation
 import 'react-native-get-random-values' // required for `uuid` module to work
+// eslint-disable-next-line import/no-extraneous-dependencies
 import RNFS from 'react-native-fs'
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { logger, fileAsyncTransport } from 'react-native-logs'
 // eslint-disable-next-line import/no-extraneous-dependencies
 import PerformanceStats from 'react-native-performance-stats'
@@ -88,12 +90,12 @@ const App: FunctionComponent = function () {
   }, [])
 
   useEffect(() => {
-    const isPerf = true
-    if (!isPerf) return
+    if (env.LOG_PERF !== 'all' || Platform.OS === 'web') return
 
     const log = logger.createLogger({
       transport: fileAsyncTransport,
       transportOptions: {
+        //@ts-expect-error FS is missing the following properties from type 'RNFS': documentDirectory, writeAsStringAsync
         FS: RNFS,
         fileName: 'log.txt',
       },

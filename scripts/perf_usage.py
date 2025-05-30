@@ -1,4 +1,4 @@
-from pprint import pprint
+import datetime
 
 def read_log_file(filename):
     stats = {
@@ -7,7 +7,8 @@ def read_log_file(filename):
         "ram": [],
         "js_fps": [],
         "ui_fps": [],
-        "cpu": []
+        "cpu": [],
+        "time": []
     }
     with open(file=filename, mode='r') as fic:
         for line in fic:
@@ -29,6 +30,9 @@ def read_log_file(filename):
             if "usedCpu" in line:
                 val = line.split(':')[1].split(',')[0].strip(' ')
                 stats["cpu"].append(float(val))
+            if "DEBUG" in line:
+                val = line.split('|')[0].strip(' ')
+                stats["time"].append(datetime.datetime.strptime(val, "%H:%M:%S"))
 
     return stats
 
@@ -47,46 +51,31 @@ def calculate_stats(stats):
     }
 
 def print_stats(stats):
-    print(f'max view count: {stats["max_vc"]}, \
-        mean view count: {int(stats["mean_vc"])}, \
-        max visible view count: {stats["max_vvc"]}, \
-        mean visible view count: {int(stats["mean_vvc"])} \
-        mean js fps: {int(stats["mean_js_fps"])} \
-        mean ui fps: {int(stats["mean_ui_fps"])} \
-        max ram: {int(stats["max_ram"])} \
-        mean ram: {int(stats["mean_ram"])} \
-        max cpu: {int(stats["max_cpu"])} \
-        mean cpu: {int(stats["mean_cpu"])}'
+    print(f'max view count: {stats["max_vc"]}\t'
+        f'mean view count: {int(stats["mean_vc"])}\t' +
+        f'max visible view count: {stats["max_vvc"]}\t' +
+        f'mean visible view count: {int(stats["mean_vvc"])}\t' +
+        f'mean js fps: {int(stats["mean_js_fps"])}\t' +
+        f'mean ui fps: {int(stats["mean_ui_fps"])}\t' +
+        f'max ram: {int(stats["max_ram"])}\t' +
+        f'mean ram: {int(stats["mean_ram"])}\t' +
+        f'max cpu: {int(stats["max_cpu"])}\t' +
+        f'mean cpu: {int(stats["mean_cpu"])}'
     )
 
-
+def pprint_results(stats, stats_summary, name):
+    print("--------------------")
+    print(f"{name} - number of measurements: {len(stats["view_count"])} - total time: {(stats["time"][-1] - stats["time"][0]).total_seconds()}")
+    print_stats(stats_summary)
+    print("--------------------")
 
 if __name__ == '__main__':
-    flashlist_stats = read_log_file('./perf_data/log_flashlist.txt')
-    flatlist_optim_stats = read_log_file('./perf_data/log_optimize_flatlist.txt')
-    flatlist_optim_stats_2 = read_log_file('./perf_data/log_optimize_flatlist_2nd_run.txt')
-    flatlist_optim_stats_3 = read_log_file('./perf_data/log_optimize_flatlist_3nd_run.txt')
-    prod_stats = read_log_file('./perf_data/log_master.txt')
+    stats = [read_log_file('./perf_data/log.txt'), 
+             read_log_file('./perf_data/log_2nd_run.txt'), 
+             read_log_file('./perf_data/log_3nd_run.txt')
+            ]
 
-    flashlist_stats_summary = calculate_stats(flashlist_stats)
-    flatlist_optim_stats_summary = calculate_stats(flatlist_optim_stats)
-    flatlist_optim_stats_2_summary = calculate_stats(flatlist_optim_stats_2)
-    flatlist_optim_stats_3_summary = calculate_stats(flatlist_optim_stats_3)
-    prod_stats_summary = calculate_stats(prod_stats)
+    stats_summary = [calculate_stats(stats) for stats in stats]
 
-    print("--------------------")
-    print("FlashList stats" + f" - number of measurements: {len(flashlist_stats["view_count"])}")
-    print_stats(flashlist_stats_summary)
-    print("--------------------")
-    print("Flatlist Optimization stats" + f" - number of measurements: {len(flatlist_optim_stats["view_count"])}")
-    print_stats(flatlist_optim_stats_summary)
-    print("--------------------")
-    print("Flatlist Optimization stats run n°2" + f" - number of measurements: {len(flatlist_optim_stats_2["view_count"])}")
-    print_stats(flatlist_optim_stats_2_summary)
-    print("--------------------")
-    print("Flatlist Optimization stats run n°3" + f" - number of measurements: {len(flatlist_optim_stats_3["view_count"])}")
-    print_stats(flatlist_optim_stats_3_summary)
-    print("--------------------")
-    print("Prod stats" + f" - number of measurements: {len(prod_stats["view_count"])}")
-    print_stats(prod_stats_summary)
-    print("--------------------")
+    for i in range(len(stats)):
+        pprint_results(stats[i], stats_summary[i], f"Stats run n°{i+1}")
