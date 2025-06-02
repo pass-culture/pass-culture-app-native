@@ -1914,7 +1914,7 @@ SPEC CHECKSUMS:
   boost: d3f49c53809116a5d38da093a8aa78bf551aed09
   BVLinearGradient: cb006ba232a1f3e4f341bb62c42d1098c284da70
   CodePush: 8ba8ea6dbaf817d5e51dbbbd622e15150ba814dd
-  DoubleConversion: 5189b271737e1565bdce30deb4a08d647e3f5f54
+  DoubleConversion: 76ab83afb40bddeeee456813d9c04f67f78771b5
   FBLazyVector: 04dc972982abebd96d823752c3a426bbe6ac397f
   Firebase: 5f8193dff4b5b7c5d5ef72ae54bb76c08e2b841d
   FirebaseABTesting: 10cbce8db9985ae2e3847ea44e9947dd18f94e10
@@ -1927,7 +1927,7 @@ SPEC CHECKSUMS:
   FirebasePerformance: 66eb58c3e3568a0501a9be271c8ff424dea0ff34
   FirebaseRemoteConfig: 2d6e2cfdb49af79535c8af8a80a4a5009038ec2b
   fmt: 4c2741a687cc09f0634a2e2c72a838b99f1ff120
-  glog: 04b94705f318337d7ead9e6d17c019bd9b1f6b1b
+  glog: fdfdfe5479092de0c4bdbebedd9056951f092c4f
   GoogleAppMeasurement: 4c19f031220c72464d460c9daa1fb5d1acce958e
   GoogleDataTransport: 6c09b596d841063d76d4288cc2d2f42cc36e1e2a
   GoogleSignIn: d4281ab6cf21542b1cfaff85c191f230b399d2db
@@ -2035,6 +2035,6 @@ SPEC CHECKSUMS:
   SSZipArchive: 62d4947b08730e4cda640473b0066d209ff033c9
   Yoga: 9db4b2da1ed5d8e0c94158f9ac379c8b1b529f59
 
-PODFILE CHECKSUM: 080d424efd53eb461d680e80c0887582490dee61
+PODFILE CHECKSUM: 8f398c80e89374921351c9bb73554ae8d1a5afb9
 
 COCOAPODS: 1.14.3
