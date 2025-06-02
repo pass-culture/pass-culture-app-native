@@ -2,79 +2,34 @@ import React from 'react'
 import { View } from 'react-native'
 import styled from 'styled-components/native'
 
-import { BookingOfferResponse } from 'api/gen'
-import { LinkToOffer } from 'features/bookings/components/LinkToOffer'
-import { SubcategoriesMapping } from 'libs/subcategories/types'
-import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { CalendarS } from 'ui/svg/icons/CalendarS'
-import { ClockFilled } from 'ui/svg/icons/ClockFilled'
-import { Stock } from 'ui/svg/icons/Stock'
 import { Stroke } from 'ui/svg/Stroke'
 import { TicketCutoutLeft } from 'ui/svg/TicketCutoutLeft'
 import { TicketCutoutRight } from 'ui/svg/TicketCutoutRight'
-import { getShadow, getSpacing, Typo } from 'ui/theme'
+import { getShadow, getSpacing } from 'ui/theme'
 
 export const TICKET_SEPARATION_HEIGHT = getSpacing(21.5)
 
-type Props = {
-  title: string
-  hour?: string
-  day?: string
-  isDuo?: boolean
-  children: React.JSX.Element
+type TicketContentProps = {
   infoBanner?: React.JSX.Element
-  venueInfo?: React.JSX.Element
-  offer: BookingOfferResponse
-  mapping: SubcategoriesMapping
+  children: React.JSX.Element
+  topContent: React.JSX.Element
   onTopBlockLayout?: (height: number) => void
 }
 
 export const TicketDisplay = ({
-  day,
-  hour,
-  isDuo,
-  title,
   infoBanner,
   children,
-  venueInfo,
-  offer,
-  mapping,
+  topContent,
   onTopBlockLayout,
-}: Props) => {
+}: TicketContentProps) => {
   return (
-    <View testID="ticket-punched">
+    <View testID="booking-details-ticket">
       <TopBlock
         onLayout={(e) => {
           const { height } = e.nativeEvent.layout
           onTopBlockLayout?.(height)
         }}>
-        <ViewGap gap={6}>
-          <Typo.Title2>{title}</Typo.Title2>
-          <ViewGap gap={2}>
-            {day ? (
-              <Row>
-                <StyledCalendarS />
-                <Typo.Body>{day}</Typo.Body>
-              </Row>
-            ) : null}
-            {hour ? (
-              <Row>
-                <StyledClockFilled />
-                <Typo.Body>{hour}</Typo.Body>
-              </Row>
-            ) : null}
-            {isDuo ? (
-              <Row>
-                <StyledStock />
-                <Typo.Body>Pour deux personnes</Typo.Body>
-              </Row>
-            ) : null}
-            <Container>
-              <LinkToOffer offer={offer} mapping={mapping} />
-            </Container>
-          </ViewGap>
-          {venueInfo}
-        </ViewGap>
+        {topContent}
       </TopBlock>
       <MiddleBlock>
         <TicketCutoutLeft />
@@ -108,23 +63,6 @@ const MiddleBlock = styled.View({
   zIndex: 1,
 })
 
-const StyledClockFilled = styled(ClockFilled).attrs(({ theme }) => ({
-  size: theme.icons.sizes.small,
-}))({})
-const StyledCalendarS = styled(CalendarS).attrs(({ theme }) => ({
-  size: theme.icons.sizes.small,
-}))({})
-const StyledStock = styled(Stock).attrs(({ theme }) => ({
-  size: theme.icons.sizes.small,
-}))({})
-
-const Row = styled.View({
-  flexDirection: 'row',
-  gap: getSpacing(2),
-  alignContent: 'center',
-  justifyContent: 'flex-start',
-})
-
 const ContentBlock = styled.View(({ theme }) => ({
   marginHorizontal: getSpacing(6),
   backgroundColor: theme.designSystem.color.background.default,
@@ -151,8 +89,4 @@ const TopBlock = styled(ContentBlock)({
   borderTopLeftRadius: getSpacing(6),
   borderTopRightRadius: getSpacing(6),
   paddingTop: getSpacing(6),
-})
-
-const Container = styled.View({
-  marginLeft: getSpacing(1),
 })

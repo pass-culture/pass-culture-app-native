@@ -9,6 +9,7 @@ import {
 } from 'api/gen'
 import { TicketBottomPart } from 'features/bookings/components/Ticket/TicketBottomPart/TicketBottomPart'
 import { TicketDisplay } from 'features/bookings/components/Ticket/TicketDisplay'
+import { TicketTopPart } from 'features/bookings/components/Ticket/TicketTopPart'
 import { getBookingLabels } from 'features/bookings/helpers'
 import { BookingProperties } from 'features/bookings/types'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
@@ -54,26 +55,31 @@ export const Ticket = ({
     analytics.logConsultVenue({ venueId: offer.venue.id, from: 'bookings' })
     navigate('Venue', { id: offer.venue.id })
   }
+
   return (
     <TicketDisplay
-      hour={hourLabel == '' ? undefined : hourLabel}
-      day={dayLabel == '' ? undefined : dayLabel}
-      isDuo={properties.isDuo}
-      offer={offer}
-      mapping={mapping}
-      venueInfo={
-        <VenueBlockWithItinerary
-          properties={properties}
-          offerFullAddress={offerFullAddress}
-          venue={getVenueBlockVenue(booking.stock.offer.venue)}
-          address={getVenueBlockAddress(booking.stock.offer.address)}
-          offerId={offer.id}
-          thumbnailSize={VENUE_THUMBNAIL_SIZE}
-          addressLabel={venueBlockAddress?.label ?? undefined}
-          onSeeVenuePress={offer.venue.isOpenToPublic ? handleOnSeeVenuePress : undefined}
+      topContent={
+        <TicketTopPart
+          day={dayLabel == '' ? undefined : dayLabel}
+          hour={hourLabel == '' ? undefined : hourLabel}
+          isDuo={properties.isDuo}
+          title={offer.name}
+          offer={offer}
+          mapping={mapping}
+          venueInfo={
+            <VenueBlockWithItinerary
+              properties={properties}
+              offerFullAddress={offerFullAddress}
+              venue={getVenueBlockVenue(booking.stock.offer.venue)}
+              address={getVenueBlockAddress(booking.stock.offer.address)}
+              offerId={offer.id}
+              thumbnailSize={VENUE_THUMBNAIL_SIZE}
+              addressLabel={venueBlockAddress?.label ?? undefined}
+              onSeeVenuePress={offer.venue.isOpenToPublic ? handleOnSeeVenuePress : undefined}
+            />
+          }
         />
       }
-      title={offer.name}
       infoBanner={
         <InfoBanner
           message="Tu auras besoin de ta carte d’identité pour accéder à l’évènement."
