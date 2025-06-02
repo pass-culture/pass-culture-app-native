@@ -40,11 +40,14 @@ export const BookingDetailsContent = ({
   const { isDesktopViewport } = useTheme()
   const { height: windowHeight } = useWindowDimensions()
   const [topBlockHeight, setTopBlockHeight] = React.useState<number>(0)
+  const display = properties.isEvent === true ? 'punched' : 'full'
 
   const { headerImageHeight, scrollContentHeight } = computeHeaderImageHeight({
     topBlockHeight,
     windowHeight,
+    display,
   })
+
   const { visible: cancelModalVisible, showModal: showCancelModal, hideModal } = useModal(false)
   const {
     visible: archiveModalVisible,
@@ -81,6 +84,7 @@ export const BookingDetailsContent = ({
       booking={booking}
       mapping={mapping}
       user={user}
+      display={display}
       setTopBlockHeight={setTopBlockHeight}
     />
   )

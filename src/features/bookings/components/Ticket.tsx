@@ -25,19 +25,23 @@ import { getSpacing } from 'ui/theme'
 
 const VENUE_THUMBNAIL_SIZE = getSpacing(15)
 
+type TicketProps = {
+  properties: BookingProperties
+  booking: BookingReponse
+  mapping: SubcategoriesMapping
+  user: UserProfileResponse
+  display: 'punched' | 'full'
+  setTopBlockHeight: React.Dispatch<React.SetStateAction<number>>
+}
+
 export const Ticket = ({
   properties,
   booking,
   mapping,
   setTopBlockHeight,
   user,
-}: {
-  properties: BookingProperties
-  booking: BookingReponse
-  mapping: SubcategoriesMapping
-  user: UserProfileResponse
-  setTopBlockHeight: React.Dispatch<React.SetStateAction<number>>
-}) => {
+  display,
+}: TicketProps) => {
   const { navigate } = useNavigation<UseNavigationType>()
   const { address } = booking?.stock.offer ?? {}
 
@@ -58,6 +62,8 @@ export const Ticket = ({
 
   return (
     <TicketDisplay
+      onTopBlockLayout={setTopBlockHeight}
+      display={display}
       topContent={
         <TicketTopPart
           day={dayLabel == '' ? undefined : dayLabel}
@@ -87,7 +93,6 @@ export const Ticket = ({
           icon={IdCard}
         />
       }
-      onTopBlockLayout={setTopBlockHeight}
     />
   )
 }

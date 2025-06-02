@@ -8,11 +8,13 @@ import { TicketCutoutRight } from 'ui/svg/TicketCutoutRight'
 import { getShadow, getSpacing } from 'ui/theme'
 
 export const TICKET_SEPARATION_HEIGHT = getSpacing(21.5)
+const TICKET_FULL_MIDDLE_HEIGHT = getSpacing(8)
 
 type TicketContentProps = {
   bottomContent: React.JSX.Element
   topContent: React.JSX.Element
   infoBanner?: React.JSX.Element
+  display: 'punched' | 'full'
   onTopBlockLayout?: (height: number) => void
 }
 
@@ -20,10 +22,11 @@ export const TicketDisplay = ({
   infoBanner,
   bottomContent,
   topContent,
+  display,
   onTopBlockLayout,
 }: TicketContentProps) => {
-  return (
-    <View testID="booking-details-ticket">
+  return display === 'punched' ? (
+    <View testID="ticket-punched">
       <TopBlock
         onLayout={(e) => {
           const { height } = e.nativeEvent.layout
@@ -43,12 +46,32 @@ export const TicketDisplay = ({
         {bottomContent}
       </BottomBlock>
     </View>
+  ) : (
+    <FullBlock testID="ticket-full">
+      <View
+        onLayout={(e) => {
+          const { height } = e.nativeEvent.layout
+          onTopBlockLayout?.(height)
+        }}>
+        {topContent}
+      </View>
+      <FullContainerStrokedLine>
+        <StyledStrokedLine />
+      </FullContainerStrokedLine>
+      {infoBanner}
+      {bottomContent}
+    </FullBlock>
   )
 }
 
+const FullContainerStrokedLine = styled.View(({ theme }) => ({
+  height: TICKET_FULL_MIDDLE_HEIGHT,
+  backgroundColor: theme.designSystem.color.background.default,
+}))
+
 const ContainerStrokedLine = styled.View(({ theme }) => ({
   flex: 1,
-  backgroundColor: theme.colors.white,
+  backgroundColor: theme.designSystem.color.background.default,
 }))
 
 const StyledStrokedLine = styled(Stroke).attrs(({ theme }) => ({
@@ -78,6 +101,11 @@ const ContentBlock = styled.View(({ theme }) => ({
     shadowOpacity: 0.15,
   }),
 }))
+
+const FullBlock = styled(ContentBlock)({
+  borderRadius: getSpacing(6),
+  paddingVertical: getSpacing(6),
+})
 
 const BottomBlock = styled(ContentBlock)({
   borderBottomLeftRadius: getSpacing(6),

@@ -174,6 +174,18 @@ describe('<BookingDetailsContent />', () => {
 
     expect(analytics.logBookingDetailsScrolledToBottom).toHaveBeenCalledTimes(1)
   })
+
+  it('should display a punched ticket when offer is an event', async () => {
+    renderBookingDetailsContent({ properties: { ...mockProperties, isEvent: true }, booking })
+
+    expect(screen.getByTestId('ticket-punched')).toBeOnTheScreen()
+  })
+
+  it('should display a full ticket when offer is not an event', async () => {
+    renderBookingDetailsContent({ properties: { ...mockProperties, isEvent: false }, booking })
+
+    expect(screen.getByTestId('ticket-full')).toBeOnTheScreen()
+  })
 })
 
 const renderBookingDetailsContent = ({
