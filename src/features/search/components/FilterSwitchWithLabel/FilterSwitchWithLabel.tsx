@@ -15,6 +15,7 @@ type Props = {
   testID?: string
   subtitle?: string
   accessibilityLevel?: HeadingLevel
+  disabled?: boolean
 }
 
 export const FilterSwitchWithLabel: FunctionComponent<Props> = ({
@@ -24,6 +25,7 @@ export const FilterSwitchWithLabel: FunctionComponent<Props> = ({
   testID,
   subtitle,
   accessibilityLevel,
+  disabled,
 }) => {
   const checkboxID = useMemo(uuidv4, [])
   const labelID = useMemo(uuidv4, [])
@@ -64,6 +66,7 @@ export const FilterSwitchWithLabel: FunctionComponent<Props> = ({
           accessibilityLabelledBy={labelID}
           accessibilityDescribedBy={describedByID}
           testID={testID}
+          disabled={disabled}
         />
       </SwitchWrapper>
       {isDesktopViewport ? (
@@ -92,6 +95,7 @@ const SwitchWrapper = styled.View({
 
 const StyledInputLabel = styledInputLabel(InputLabel)(({ theme }) => ({
   ...theme.designSystem.typography.bodyAccent,
+  color: theme.designSystem.color.text.default,
 }))
 
 const Subtitle = styled(Typo.BodyAccentXs)(({ theme }) => ({

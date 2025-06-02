@@ -1,38 +1,82 @@
-import { ColorSchemeName, Appearance } from 'react-native'
+import { Appearance, ColorSchemeName } from 'react-native'
 
 import { createStore } from 'libs/store/createStore'
 
-export type ColorScheme = 'dark' | 'light'
+export enum ColorScheme {
+  LIGHT = 'light',
+  DARK = 'dark',
+  SYSTEM = 'system',
+}
 
-type State = { colorScheme: ColorScheme }
-
-const DEFAULT_COLOR_SCHEME = 'light'
-
-const defaultState: State = {
-  colorScheme: DEFAULT_COLOR_SCHEME,
+export enum ColorSchemeComputed {
+  LIGHT = 'light',
+  DARK = 'dark',
 }
 
 const colorSchemeStore = createStore({
   name: 'colorScheme',
-  defaultState,
+  defaultState: {
+    colorScheme: ColorSchemeComputed.LIGHT,
+    colorSchemeByUser: ColorScheme.LIGHT,
+    enableDarkMode: false,
+  },
   actions: (set) => ({
-    init: () => set({ colorScheme: Appearance.getColorScheme() || DEFAULT_COLOR_SCHEME }),
-    setColorScheme: ({ colorScheme }: { colorScheme: ColorSchemeName }) => {
-      set({ colorScheme: colorScheme || DEFAULT_COLOR_SCHEME })
+    setColorScheme: ({ colorScheme }: { colorScheme: ColorScheme }) => {
+      let toto: ColorSchemeComputed = ColorSchemeComputed.LIGHT
+
+      switch (colorScheme) {
+        case ColorScheme.SYSTEM:
+          if (Appearance.getColorScheme() === 'dark') toto = ColorSchemeComputed.DARK
+          break
+        case ColorScheme.DARK:
+          toto = ColorSchemeComputed.DARK
+          break
+        case ColorScheme.LIGHT:
+          toto = ColorSchemeComputed.LIGHT
+          break
+      }
+      set((state) =>
+        state.enableDarkMode
+          ? {
+              colorScheme: toto,
+              colorSchemeByUser: colorScheme,
+            }
+          : {
+              colorScheme: ColorSchemeComputed.LIGHT,
+              colorSchemeByUser: ColorScheme.LIGHT,
+            }
+      )
+    },
+    setColorSchemeAppearance: ({ colorScheme }: { colorScheme: ColorSchemeName }) => {
+      colorSchemeStore.actions.setColorScheme({
+        colorScheme: colorScheme
+          ? colorScheme === 'light'
+            ? ColorScheme.LIGHT
+            : ColorScheme.DARK
+          : ColorScheme.SYSTEM,
+      })
+    },
+    setEnableDarkMode: (enableDarkMode: boolean) => {
+      set({ enableDarkMode })
     },
   }),
   selectors: {
     selectColorScheme:
       () =>
-      (state): ColorScheme =>
+      (state): ColorSchemeComputed =>
         state.colorScheme,
+    selectColorSchemeByUser:
+      () =>
+      (state): ColorScheme =>
+        state.colorSchemeByUser,
   },
-  options: {
-    persist: true,
-  },
+  options: { persist: true },
 })
 
 export const colorSchemeActions = colorSchemeStore.actions
-export const { useColorScheme } = colorSchemeStore.hooks
+export const useStoredColorSchemeByUser: () => ColorScheme =
+  colorSchemeStore.hooks.useColorSchemeByUser
 
-Appearance.addChangeListener(colorSchemeStore.actions.setColorScheme)
+export const useColorScheme: () => ColorSchemeComputed = colorSchemeStore.hooks.useColorScheme
+
+Appearance.addChangeListener(colorSchemeStore.actions.setColorSchemeAppearance)
