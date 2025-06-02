@@ -12,7 +12,7 @@ import { getHoverStyle } from 'ui/theme/getHoverStyle/getHoverStyle'
 
 type ButtonStyles = InterpolationFunction<
   ThemedStyledProps<
-    TouchableOpacityProps & RefAttributes<RNTouchableOpacity> & TouchableOpacityButtonProps,
+    TouchableOpacityProps & RefAttributes<typeof RNTouchableOpacity> & TouchableOpacityButtonProps,
     DefaultTheme
   >
 >
