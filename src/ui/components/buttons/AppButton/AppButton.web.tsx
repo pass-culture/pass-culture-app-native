@@ -33,7 +33,7 @@ const _AppButton = <T extends AppButtonProps>({
   justifyContent,
   numberOfLines,
   style,
-  loadingIndicator: LoadingIndicator,
+  loadingIndicator: LoadingIndicator = DefaultLoadingIndicator,
   center,
   type = 'button',
   className,
@@ -111,10 +111,6 @@ const _AppButton = <T extends AppButtonProps>({
       />
     </ButtonComponent>
   )
-}
-
-_AppButton.defaultProps = {
-  loadingIndicator: DefaultLoadingIndicator,
 }
 
 // memo is used to avoid useless rendering while props remain unchanged
