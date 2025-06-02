@@ -13,6 +13,7 @@ import { subscriptionStepperFixture } from 'features/identityCheck/fixtures/subs
 import { ProfileHeader } from 'features/profile/components/Header/ProfileHeader/ProfileHeader'
 import { domains_credit_v3 } from 'features/profile/fixtures/domainsCredit'
 import { isUserUnderageBeneficiary } from 'features/profile/helpers/isUserUnderageBeneficiary'
+import { beneficiaryUser } from 'fixtures/user'
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { mockServer } from 'tests/mswServer'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
@@ -160,14 +161,34 @@ describe('ProfileHeader', () => {
     expect(await screen.findByText('Débloque tes 1000\u00a0€')).toBeOnTheScreen()
   })
 
-  it('should display the NonBeneficiaryHeader Header if user is eligible exunderage beneficiary', async () => {
+  it('should display the BeneficiaryAndEligibleForUpgradeHeader Header if user is eligible exunderage beneficiary', async () => {
     mockServer.getApi<BannerResponse>('/v1/banner', {})
     renderProfileHeader({
       featureFlags: { disableActivation: false, enablePassForAll: false },
       user: exUnderageBeneficiaryUser,
     })
 
-    expect(await screen.findByText('Mon profil')).toBeOnTheScreen()
+    expect(await screen.findByText('Jean 93 HNMM 2')).toBeOnTheScreen()
+    expect(await screen.findByText('Ton crédit a expiré le')).toBeOnTheScreen()
+  })
+
+  it('should display the BeneficiaryAndEligibleForUpgradeHeader Header if user is beneficiary and isEligibleForBeneficiaryUpgrade', async () => {
+    mockServer.getApi<BannerResponse>('/v1/banner', {
+      banner: {
+        name: BannerName.activation_banner,
+        text: 'à dépenser sur l’application',
+        title: 'Débloque tes 1000\u00a0€',
+      },
+    })
+
+    renderProfileHeader({
+      featureFlags: { disableActivation: false, enablePassForAll: false },
+      user: { ...beneficiaryUser, isEligibleForBeneficiaryUpgrade: true },
+    })
+
+    expect(await screen.findByText('Jean Dupond')).toBeOnTheScreen()
+    expect(await screen.findByText('Profite de ton crédit jusqu’au')).toBeOnTheScreen()
+    expect(await screen.findByText('Débloque tes 1000\u00a0€')).toBeOnTheScreen()
   })
 })
 
