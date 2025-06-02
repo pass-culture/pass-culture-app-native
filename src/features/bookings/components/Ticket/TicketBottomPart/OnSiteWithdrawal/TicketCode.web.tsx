@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { TicketCodeTitle } from 'features/bookings/components/TicketCutout/TicketCutoutBottom/TicketCodeTitle'
+import { TicketCodeTitle } from 'features/bookings/components/Ticket/TicketBottomPart/TicketCodeTitle'
 import { useCopyToClipboard } from 'libs/useCopyToClipboard/useCopyToClipboard'
 
 export function TicketCode({ code }: { code: string }) {

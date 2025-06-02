@@ -10,7 +10,7 @@ import { BookingDetailsContentMobile } from 'features/bookings/components/Bookin
 import { BookingDetailsHeader } from 'features/bookings/components/BookingDetailsHeader'
 import { BookingPrecisions } from 'features/bookings/components/BookingPrecision'
 import { CancelBookingModal } from 'features/bookings/components/CancelBookingModal'
-import { TicketCutout } from 'features/bookings/components/TicketCutout'
+import { Ticket } from 'features/bookings/components/Ticket'
 import { computeHeaderImageHeight } from 'features/bookings/helpers/computeHeaderImageHeight'
 import { BookingProperties } from 'features/bookings/types'
 import { offerImageContainerMarginTop } from 'features/offer/helpers/useOfferImageContainerDimensions'
@@ -75,8 +75,8 @@ export const BookingDetailsContent = ({
 
   const errorBannerMessage = `Tu n’as pas le droit de céder ou de revendre ${properties.isDuo ? 'tes billets' : 'ton billet'}.`
 
-  const ticketCutout = (
-    <TicketCutout
+  const ticket = (
+    <Ticket
       properties={properties}
       booking={booking}
       mapping={mapping}
@@ -102,7 +102,7 @@ export const BookingDetailsContent = ({
         {isDesktopViewport ? (
           <BookingDetailsContentDesktop
             headerImageHeight={headerImageHeight}
-            leftBlock={ticketCutout}
+            leftBlock={ticket}
             rightBlock={
               <React.Fragment>
                 <ErrorBanner message={errorBannerMessage} />
@@ -124,7 +124,7 @@ export const BookingDetailsContent = ({
           />
         ) : (
           <BookingDetailsContentMobile
-            topBlock={ticketCutout}
+            topBlock={ticket}
             onEmailPress={onEmailPress}
             booking={booking}
             errorBannerMessage={errorBannerMessage}

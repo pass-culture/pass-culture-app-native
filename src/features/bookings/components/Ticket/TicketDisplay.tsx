@@ -29,7 +29,7 @@ type Props = {
   onTopBlockLayout?: (height: number) => void
 }
 
-export const TicketCutoutContent = ({
+export const TicketDisplay = ({
   day,
   hour,
   isDuo,

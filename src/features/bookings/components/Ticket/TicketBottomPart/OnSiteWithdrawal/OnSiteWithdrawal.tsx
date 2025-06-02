@@ -1,8 +1,8 @@
 import React from 'react'
 
-import { TicketCode } from 'features/bookings/components/TicketCutout/TicketCutoutBottom/OnSiteWithdrawal/TicketCode'
-import { TicketText } from 'features/bookings/components/TicketCutout/TicketCutoutBottom/TicketText'
-import { TicketVisual } from 'features/bookings/components/TicketCutout/TicketCutoutBottom/TicketVisual'
+import { TicketCode } from 'features/bookings/components/Ticket/TicketBottomPart/OnSiteWithdrawal/TicketCode'
+import { TicketText } from 'features/bookings/components/Ticket/TicketBottomPart/TicketText'
+import { TicketVisual } from 'features/bookings/components/Ticket/TicketBottomPart/TicketVisual'
 import { getDelayMessage } from 'features/bookings/helpers/getDelayMessage'
 
 export const OnSiteWithdrawal = ({

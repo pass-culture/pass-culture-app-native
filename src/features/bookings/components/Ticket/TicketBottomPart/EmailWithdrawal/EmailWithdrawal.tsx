@@ -3,9 +3,9 @@ import React from 'react'
 import styled from 'styled-components/native'
 
 import { UserProfileResponse } from 'api/gen'
-import { EmailReceived } from 'features/bookings/components/TicketCutout/TicketCutoutBottom/EmailWithdrawal/EmailReceived'
-import { EmailWillBeSend } from 'features/bookings/components/TicketCutout/TicketCutoutBottom/EmailWithdrawal/EmailWillBeSend'
-import { TicketVisual } from 'features/bookings/components/TicketCutout/TicketCutoutBottom/TicketVisual'
+import { EmailReceived } from 'features/bookings/components/Ticket/TicketBottomPart/EmailWithdrawal/EmailReceived'
+import { EmailWillBeSend } from 'features/bookings/components/Ticket/TicketBottomPart/EmailWithdrawal/EmailWillBeSend'
+import { TicketVisual } from 'features/bookings/components/Ticket/TicketBottomPart/TicketVisual'
 import { EmailSent } from 'ui/svg/icons/EmailSent'
 import { getSpacing } from 'ui/theme'
 

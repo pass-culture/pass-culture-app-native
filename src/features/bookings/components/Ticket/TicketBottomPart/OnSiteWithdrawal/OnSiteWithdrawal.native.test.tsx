@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { OnSiteWithdrawal } from 'features/bookings/components/TicketCutout/TicketCutoutBottom/OnSiteWithdrawal/OnSiteWithdrawal'
+import { OnSiteWithdrawal } from 'features/bookings/components/Ticket/TicketBottomPart/OnSiteWithdrawal/OnSiteWithdrawal'
 import { render, screen } from 'tests/utils'
 
 describe('<OnSiteWithdrawal>', () => {

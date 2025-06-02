@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { TicketCutoutContent } from 'features/bookings/components/TicketCutout/TicketCutoutContent'
+import { TicketDisplay } from 'features/bookings/components/Ticket/TicketDisplay'
 import { bookingsSnap } from 'features/bookings/fixtures/bookingsSnap'
 import { subcategoriesMappingSnap } from 'libs/subcategories/fixtures/mappings'
 import { SubcategoriesMapping } from 'libs/subcategories/types'
@@ -10,43 +10,43 @@ import { Typo } from 'ui/theme'
 
 describe('TicketCutoutContent', () => {
   it('should display duo block when offer is duo', async () => {
-    renderTicketCutoutContent({ isDuo: true })
+    renderTicketDisplay({ isDuo: true })
 
     expect(screen.getByText('Pour deux personnes')).toBeOnTheScreen()
   })
 
   it('should not display duo block when offer is not duo', async () => {
-    renderTicketCutoutContent({})
+    renderTicketDisplay({})
 
     expect(screen.queryByText('Pour deux personnes')).not.toBeOnTheScreen()
   })
 
   it('should display day block when offer has a day', async () => {
-    renderTicketCutoutContent({ day: '20 mars 2025' })
+    renderTicketDisplay({ day: '20 mars 2025' })
 
     expect(screen.getByText('20 mars 2025')).toBeOnTheScreen()
   })
 
   it('should not display day block when offer has no day', async () => {
-    renderTicketCutoutContent({})
+    renderTicketDisplay({})
 
     expect(screen.queryByText('20 mars 2025')).not.toBeOnTheScreen()
   })
 
   it('should display hour block when offer has an hour', async () => {
-    renderTicketCutoutContent({ hour: '18h56' })
+    renderTicketDisplay({ hour: '18h56' })
 
     expect(screen.getByText('18h56')).toBeOnTheScreen()
   })
 
   it('should not display hour block when offer has no hour', async () => {
-    renderTicketCutoutContent({})
+    renderTicketDisplay({})
 
     expect(screen.queryByText('18h56')).not.toBeOnTheScreen()
   })
 })
 
-const renderTicketCutoutContent = ({
+const renderTicketDisplay = ({
   hour,
   day,
   isDuo,
@@ -57,7 +57,7 @@ const renderTicketCutoutContent = ({
 }) => {
   return render(
     reactQueryProviderHOC(
-      <TicketCutoutContent
+      <TicketDisplay
         title="Super spectacle"
         hour={hour}
         day={day}
@@ -65,7 +65,7 @@ const renderTicketCutoutContent = ({
         offer={bookingsSnap.ongoing_bookings[0].stock.offer}
         mapping={subcategoriesMappingSnap as SubcategoriesMapping}>
         <Typo.Body>Partie basse du ticket</Typo.Body>
-      </TicketCutoutContent>
+      </TicketDisplay>
     )
   )
 }

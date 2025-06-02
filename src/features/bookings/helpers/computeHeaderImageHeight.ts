@@ -1,4 +1,4 @@
-import { TICKET_SEPARATION_HEIGHT } from 'features/bookings/components/TicketCutout/TicketCutoutContent'
+import { TICKET_SEPARATION_HEIGHT } from 'features/bookings/components/Ticket/TicketDisplay'
 import {
   blurImageHeight,
   offerImageContainerMarginTop,

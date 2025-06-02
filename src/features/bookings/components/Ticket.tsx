@@ -7,8 +7,8 @@ import {
   BookingVenueResponse,
   UserProfileResponse,
 } from 'api/gen'
-import { TicketCutoutBottom } from 'features/bookings/components/TicketCutout/TicketCutoutBottom/TicketCutoutBottom'
-import { TicketCutoutContent } from 'features/bookings/components/TicketCutout/TicketCutoutContent'
+import { TicketBottomPart } from 'features/bookings/components/Ticket/TicketBottomPart/TicketBottomPart'
+import { TicketDisplay } from 'features/bookings/components/Ticket/TicketDisplay'
 import { getBookingLabels } from 'features/bookings/helpers'
 import { BookingProperties } from 'features/bookings/types'
 import { UseNavigationType } from 'features/navigation/RootNavigator/types'
@@ -24,7 +24,7 @@ import { getSpacing } from 'ui/theme'
 
 const VENUE_THUMBNAIL_SIZE = getSpacing(15)
 
-export const TicketCutout = ({
+export const Ticket = ({
   properties,
   booking,
   mapping,
@@ -55,7 +55,7 @@ export const TicketCutout = ({
     navigate('Venue', { id: offer.venue.id })
   }
   return (
-    <TicketCutoutContent
+    <TicketDisplay
       hour={hourLabel == '' ? undefined : hourLabel}
       day={dayLabel == '' ? undefined : dayLabel}
       isDuo={properties.isDuo}
@@ -81,8 +81,8 @@ export const TicketCutout = ({
         />
       }
       onTopBlockLayout={setTopBlockHeight}>
-      <TicketCutoutBottom offer={offer} booking={booking} userEmail={user?.email} />
-    </TicketCutoutContent>
+      <TicketBottomPart offer={offer} booking={booking} userEmail={user?.email} />
+    </TicketDisplay>
   )
 }
 
