@@ -45,7 +45,6 @@ exports[`Bookings should render correctly 1`] = `
         [
           {
             "flexShrink": 1,
-            "gap": 4,
           },
         ]
       }
@@ -59,6 +58,7 @@ exports[`Bookings should render correctly 1`] = `
               "fontFamily": "Montserrat-Bold",
               "fontSize": 28,
               "lineHeight": 44.8,
+              "marginBottom": 4,
             },
           ]
         }

@@ -10,8 +10,7 @@ import { CreditHeader } from 'features/profile/components/Header/CreditHeader/Cr
 import { LoggedOutHeader } from 'features/profile/components/Header/LoggedOutHeader/LoggedOutHeader'
 import { NonBeneficiaryHeader } from 'features/profile/components/Header/NonBeneficiaryHeader/NonBeneficiaryHeader'
 import { getAge } from 'shared/user/getAge'
-import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { getSpacing } from 'ui/theme'
+import { Spacer, getSpacing } from 'ui/theme'
 
 type ProfileHeaderProps = {
   featureFlags: {
@@ -45,7 +44,7 @@ export function ProfileHeader(props: ProfileHeaderProps) {
     }
 
     return (
-      <ViewGap gap={4}>
+      <React.Fragment>
         <CreditHeader
           firstName={user.firstName}
           lastName={user.lastName}
@@ -54,12 +53,13 @@ export function ProfileHeader(props: ProfileHeaderProps) {
           depositExpirationDate={user.depositExpirationDate ?? undefined}
           eligibility={user.eligibility}
         />
+        <Spacer.Column numberOfSpaces={4} />
         {shouldShowAchievementsBanner ? (
           <AchievementBannerContainer>
             <AchievementBanner />
           </AchievementBannerContainer>
         ) : null}
-      </ViewGap>
+      </React.Fragment>
     )
   }, [isLoggedIn, featureFlags, shouldShowAchievementsBanner, user])
 

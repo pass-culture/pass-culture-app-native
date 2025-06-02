@@ -1,7 +1,6 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 
 type Props = {
@@ -17,7 +16,7 @@ export const PageHeader = ({ title, numberOfLines = 1, subtitle, children }: Pro
       <Spacer.TopScreen />
       <HeaderContainer>
         <TitleContainer gap={1}>
-          <Typo.Title1 numberOfLines={numberOfLines}>{title}</Typo.Title1>
+          <TitleText numberOfLines={numberOfLines}>{title}</TitleText>
           {subtitle ? <CaptionSubtitle>{subtitle}</CaptionSubtitle> : null}
         </TitleContainer>
         {children}
@@ -34,8 +33,12 @@ const HeaderContainer = styled.View(({ theme }) => ({
   zIndex: theme.zIndex.header,
 }))
 
-const TitleContainer = styled(ViewGap)({
+const TitleContainer = styled.View({
   flexShrink: 1,
+})
+
+const TitleText = styled(Typo.Title1)({
+  marginBottom: getSpacing(1),
 })
 
 const CaptionSubtitle = styled(Typo.BodyAccentXs)(({ theme }) => ({

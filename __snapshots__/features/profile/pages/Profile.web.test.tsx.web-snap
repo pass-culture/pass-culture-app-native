@@ -213,11 +213,11 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
               class="css-view-175oi2r r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-marginInline-14mg64r r-marginTop-11c0sde r-zIndex-184en5c"
             >
               <div
-                class="css-view-175oi2r r-flexShrink-1wbh5a2 r-gap-9aw3ui"
+                class="css-view-175oi2r r-flexShrink-1wbh5a2"
               >
                 <h1
                   aria-level="1"
-                  class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-doghzh r-lineHeight-177es0j"
+                  class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-doghzh r-lineHeight-177es0j r-marginBottom-15zivkp"
                   dir="ltr"
                   role="heading"
                 >
@@ -1350,11 +1350,11 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
               class="css-view-175oi2r r-flexDirection-18u37iz r-justifyContent-1wtj0ep r-marginInline-14mg64r r-marginTop-11c0sde r-zIndex-184en5c"
             >
               <div
-                class="css-view-175oi2r r-flexShrink-1wbh5a2 r-gap-9aw3ui"
+                class="css-view-175oi2r r-flexShrink-1wbh5a2"
               >
                 <h1
                   aria-level="1"
-                  class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-doghzh r-lineHeight-177es0j"
+                  class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-doghzh r-lineHeight-177es0j r-marginBottom-15zivkp"
                   dir="ltr"
                   role="heading"
                 >
