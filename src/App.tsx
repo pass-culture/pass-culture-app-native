@@ -42,6 +42,7 @@ import { SafeAreaProvider } from 'libs/react-native-save-area-provider'
 import { ReactQueryClientProvider } from 'libs/react-query/ReactQueryClientProvider'
 import { SplashScreenProvider } from 'libs/splashscreen'
 import { ThemeWrapper } from 'libs/styled/ThemeWrapper'
+import { useLaunchPerformanceObserver } from 'performance/useLaunchPerformanceObserver'
 import { useOrientationLocked } from 'shared/hook/useOrientationLocked'
 import { SnackBarProvider } from 'ui/components/snackBar/SnackBarContext'
 
@@ -55,6 +56,8 @@ LogBox.ignoreLogs([
 ])
 
 const App: FunctionComponent = function () {
+  useLaunchPerformanceObserver()
+
   useOrientationLocked()
 
   useEffect(() => {

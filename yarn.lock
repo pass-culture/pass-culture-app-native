@@ -7743,6 +7743,7 @@ __metadata:
     react-native-maps: ^1.11.3
     react-native-modal: 13.0.0
     react-native-orientation-locker: ^1.7.0
+    react-native-performance: ^5.1.2
     react-native-permissions: ^3.8.0
     react-native-qrcode-svg: ^6.1.2
     react-native-reanimated: 3.9.0
@@ -19908,6 +19909,15 @@ __metadata:
     react-native-windows:
       optional: true
   checksum: 495010b3150adcbc1dcb24e0ca5c13838f02dbcee7c6ec391fe07bd47f9b75ac57b0ec1144aaab5d6ed62e7a354497e9fa5399359d896099ecbea439908817cf
+  languageName: node
+  linkType: hard
+
+"react-native-performance@npm:^5.1.2":
+  version: 5.1.2
+  resolution: "react-native-performance@npm:5.1.2"
+  peerDependencies:
+    react-native: "*"
+  checksum: e0ea6616ba75a13028271c8c5cd29a9eecb35c806db2b412baa160d6ce428c0ba8e9bc0c762856b4c8bebd92b5aea925532731a4dc19591ad15af575163cccd8
   languageName: node
   linkType: hard
 

@@ -24,6 +24,7 @@ module.exports = {
     '^features(.*)$': '<rootDir>/src/features$1',
     '^fixtures(.*)$': '<rootDir>/src/fixtures$1',
     '^libs(.*)$': '<rootDir>/src/libs$1',
+    '^performance(.*)$': '<rootDir>/src/performance$1',
     '^queries(.*)$': '<rootDir>/src/queries$1',
     '^shared(.*)$': '<rootDir>/src/shared$1',
     '^store(.*)$': '<rootDir>/src/store$1',
