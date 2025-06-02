@@ -40,7 +40,7 @@ export type HighlightThematicHeader = {
   type: ThematicHeaderType.Highlight
   title: string
   subtitle?: string
-  imageUrl: string
+  imageUrl?: string
   beginningDate: Date
   endingDate: Date
   introductionTitle?: string
@@ -53,7 +53,7 @@ export type CategoryThematicHeader = {
   type: ThematicHeaderType.Category
   title: string
   subtitle?: string
-  imageUrl: string
+  imageUrl?: string
   gradientTranslation?: Animated.AnimatedInterpolation<string | number>
   imageAnimatedHeight?: Animated.AnimatedInterpolation<string | number>
   color: Color
