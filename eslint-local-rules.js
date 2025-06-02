@@ -16,6 +16,7 @@ const queriesOnlyInUseQueryFunctions = require('./eslint-custom-rules/queries-on
 const queriesMustBeInQueriesFolder = require('./eslint-custom-rules/queries-must-be-in-queries-folder.js')
 const noFireEvent = require('./eslint-custom-rules/no-fireEvent')
 const noSpacer = require('./eslint-custom-rules/no-spacer')
+const noThemeColors = require('./eslint-custom-rules/no-theme-colors')
 const noTsExpectError = require('./eslint-custom-rules/no-ts-expect-error')
 const noUselessHook = require('./eslint-custom-rules/no-useless-hook')
 const mockPathExists = require('./eslint-custom-rules/mock-path-exists')
@@ -39,6 +40,7 @@ module.exports = {
   'queries-must-be-in-queries-folder': queriesMustBeInQueriesFolder,
   'no-fireEvent': noFireEvent,
   'no-spacer': noSpacer,
+  'no-theme-colors': noThemeColors,
   'no-ts-expect-error': noTsExpectError,
   'no-useless-hook': noUselessHook,
   'mock-path-exists': mockPathExists,
