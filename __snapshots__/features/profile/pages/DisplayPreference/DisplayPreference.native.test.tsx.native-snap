@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`debouncedLogChangeOrientationToggle should render correctly 1`] = `
+exports[`DisplayPreference should render correctly 1`] = `
 <View
   style={
     [
@@ -430,6 +430,555 @@ exports[`debouncedLogChangeOrientationToggle should render correctly 1`] = `
                           }
                         }
                       />
+                    </View>
+                  </View>
+                </View>
+              </View>
+            </View>
+            <View
+              style={
+                [
+                  {
+                    "marginVertical": 40,
+                  },
+                ]
+              }
+            >
+              <Text
+                style={
+                  [
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 14,
+                      "lineHeight": 22.4,
+                    },
+                  ]
+                }
+              >
+                Thème
+              </Text>
+              <View
+                backgroundColor="#cbcdd2"
+                style={
+                  [
+                    {
+                      "backgroundColor": "#F1F1F4",
+                      "height": 1,
+                      "width": "100%",
+                    },
+                  ]
+                }
+              />
+              <View
+                gap={5}
+                style={
+                  [
+                    {
+                      "gap": 20,
+                      "marginTop": 24,
+                    },
+                  ]
+                }
+              >
+                <View
+                  accessibilityLabel="Mode clair"
+                  accessibilityRole="radio"
+                  accessibilityState={
+                    {
+                      "busy": undefined,
+                      "checked": true,
+                      "disabled": undefined,
+                      "expanded": undefined,
+                      "selected": undefined,
+                    }
+                  }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
+                    }
+                  }
+                  accessible={true}
+                  collapsable={false}
+                  focusable={true}
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    {
+                      "alignItems": "center",
+                      "backgroundColor": "#ffffff",
+                      "borderColor": "#90949d",
+                      "borderRadius": 8,
+                      "borderStyle": "solid",
+                      "borderWidth": 2,
+                      "flexDirection": "row",
+                      "flexGrow": 1,
+                      "opacity": 1,
+                      "paddingBottom": 15,
+                      "paddingLeft": 15,
+                      "paddingRight": 15,
+                      "paddingTop": 15,
+                      "userSelect": "auto",
+                    }
+                  }
+                  testID="Mode clair"
+                >
+                  <View
+                    isSelected={true}
+                    style={
+                      [
+                        {
+                          "alignItems": "center",
+                          "borderColor": "#eb0055",
+                          "borderRadius": 8,
+                          "borderStyle": "solid",
+                          "borderWidth": 1,
+                          "height": 16,
+                          "justifyContent": "center",
+                          "marginRight": 16,
+                          "width": 16,
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      isSelected={true}
+                      style={
+                        [
+                          {
+                            "backgroundColor": "#eb0055",
+                            "borderRadius": 16,
+                            "height": 8,
+                            "width": 8,
+                          },
+                        ]
+                      }
+                    />
+                  </View>
+                  <View
+                    contentDirection="row"
+                    style={
+                      [
+                        {
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      gap={4}
+                      style={
+                        [
+                          {
+                            "alignItems": "center",
+                            "flexDirection": "row",
+                            "gap": 16,
+                          },
+                        ]
+                      }
+                    >
+                      <View
+                        style={
+                          [
+                            {
+                              "flexBasis": 0,
+                              "flexGrow": 1,
+                              "flexShrink": 1,
+                            },
+                          ]
+                        }
+                      >
+                        <Text
+                          isHover={false}
+                          style={
+                            [
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 16,
+                                "lineHeight": 25.6,
+                              },
+                            ]
+                          }
+                        >
+                          Mode clair
+                        </Text>
+                        <Text
+                          style={
+                            [
+                              {
+                                "color": "#696A6F",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 12,
+                                "lineHeight": 19.2,
+                                "marginTop": 4,
+                              },
+                            ]
+                          }
+                        >
+                          Affichage classique
+                        </Text>
+                      </View>
+                      <View
+                        style={
+                          [
+                            {},
+                          ]
+                        }
+                      >
+                        <View
+                          fill="none"
+                          height="108"
+                          width="62"
+                        >
+                          <Text>
+                            undefined-SVG-Mock
+                          </Text>
+                        </View>
+                      </View>
+                    </View>
+                  </View>
+                </View>
+                <View
+                  accessibilityLabel="Mode sombre"
+                  accessibilityRole="radio"
+                  accessibilityState={
+                    {
+                      "busy": undefined,
+                      "checked": false,
+                      "disabled": undefined,
+                      "expanded": undefined,
+                      "selected": undefined,
+                    }
+                  }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
+                    }
+                  }
+                  accessible={true}
+                  collapsable={false}
+                  focusable={true}
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    {
+                      "alignItems": "center",
+                      "backgroundColor": "#ffffff",
+                      "borderColor": "#cbcdd2",
+                      "borderRadius": 8,
+                      "borderStyle": "solid",
+                      "borderWidth": 1,
+                      "flexDirection": "row",
+                      "flexGrow": 1,
+                      "opacity": 1,
+                      "paddingBottom": 16,
+                      "paddingLeft": 16,
+                      "paddingRight": 16,
+                      "paddingTop": 16,
+                      "userSelect": "auto",
+                    }
+                  }
+                  testID="Mode sombre"
+                >
+                  <View
+                    isSelected={false}
+                    style={
+                      [
+                        {
+                          "alignItems": "center",
+                          "borderColor": "#cbcdd2",
+                          "borderRadius": 8,
+                          "borderStyle": "solid",
+                          "borderWidth": 1,
+                          "height": 16,
+                          "justifyContent": "center",
+                          "marginRight": 16,
+                          "width": 16,
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      isSelected={false}
+                      style={
+                        [
+                          {
+                            "backgroundColor": "transparent",
+                            "borderRadius": 16,
+                            "height": 8,
+                            "width": 8,
+                          },
+                        ]
+                      }
+                    />
+                  </View>
+                  <View
+                    contentDirection="row"
+                    style={
+                      [
+                        {
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      gap={4}
+                      style={
+                        [
+                          {
+                            "alignItems": "center",
+                            "flexDirection": "row",
+                            "gap": 16,
+                          },
+                        ]
+                      }
+                    >
+                      <View
+                        style={
+                          [
+                            {
+                              "flexBasis": 0,
+                              "flexGrow": 1,
+                              "flexShrink": 1,
+                            },
+                          ]
+                        }
+                      >
+                        <Text
+                          isHover={false}
+                          style={
+                            [
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 16,
+                                "lineHeight": 25.6,
+                              },
+                            ]
+                          }
+                        >
+                          Mode sombre
+                        </Text>
+                        <Text
+                          style={
+                            [
+                              {
+                                "color": "#696A6F",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 12,
+                                "lineHeight": 19.2,
+                                "marginTop": 4,
+                              },
+                            ]
+                          }
+                        >
+                          Réduit la fatigue visuelle
+                        </Text>
+                      </View>
+                      <View
+                        style={
+                          [
+                            {},
+                          ]
+                        }
+                      >
+                        <View
+                          fill="none"
+                          height="108"
+                          width="62"
+                        >
+                          <Text>
+                            undefined-SVG-Mock
+                          </Text>
+                        </View>
+                      </View>
+                    </View>
+                  </View>
+                </View>
+                <View
+                  accessibilityLabel="Réglages appareil"
+                  accessibilityRole="radio"
+                  accessibilityState={
+                    {
+                      "busy": undefined,
+                      "checked": false,
+                      "disabled": undefined,
+                      "expanded": undefined,
+                      "selected": undefined,
+                    }
+                  }
+                  accessibilityValue={
+                    {
+                      "max": undefined,
+                      "min": undefined,
+                      "now": undefined,
+                      "text": undefined,
+                    }
+                  }
+                  accessible={true}
+                  collapsable={false}
+                  focusable={true}
+                  onClick={[Function]}
+                  onResponderGrant={[Function]}
+                  onResponderMove={[Function]}
+                  onResponderRelease={[Function]}
+                  onResponderTerminate={[Function]}
+                  onResponderTerminationRequest={[Function]}
+                  onStartShouldSetResponder={[Function]}
+                  style={
+                    {
+                      "alignItems": "center",
+                      "backgroundColor": "#ffffff",
+                      "borderColor": "#cbcdd2",
+                      "borderRadius": 8,
+                      "borderStyle": "solid",
+                      "borderWidth": 1,
+                      "flexDirection": "row",
+                      "flexGrow": 1,
+                      "opacity": 1,
+                      "paddingBottom": 16,
+                      "paddingLeft": 16,
+                      "paddingRight": 16,
+                      "paddingTop": 16,
+                      "userSelect": "auto",
+                    }
+                  }
+                  testID="Réglages appareil"
+                >
+                  <View
+                    isSelected={false}
+                    style={
+                      [
+                        {
+                          "alignItems": "center",
+                          "borderColor": "#cbcdd2",
+                          "borderRadius": 8,
+                          "borderStyle": "solid",
+                          "borderWidth": 1,
+                          "height": 16,
+                          "justifyContent": "center",
+                          "marginRight": 16,
+                          "width": 16,
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      isSelected={false}
+                      style={
+                        [
+                          {
+                            "backgroundColor": "transparent",
+                            "borderRadius": 16,
+                            "height": 8,
+                            "width": 8,
+                          },
+                        ]
+                      }
+                    />
+                  </View>
+                  <View
+                    contentDirection="row"
+                    style={
+                      [
+                        {
+                          "flexGrow": 1,
+                          "flexShrink": 1,
+                        },
+                      ]
+                    }
+                  >
+                    <View
+                      gap={4}
+                      style={
+                        [
+                          {
+                            "alignItems": "center",
+                            "flexDirection": "row",
+                            "gap": 16,
+                          },
+                        ]
+                      }
+                    >
+                      <View
+                        style={
+                          [
+                            {
+                              "flexBasis": 0,
+                              "flexGrow": 1,
+                              "flexShrink": 1,
+                            },
+                          ]
+                        }
+                      >
+                        <Text
+                          isHover={false}
+                          style={
+                            [
+                              {
+                                "color": "#161617",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 16,
+                                "lineHeight": 25.6,
+                              },
+                            ]
+                          }
+                        >
+                          Réglages appareil
+                        </Text>
+                        <Text
+                          style={
+                            [
+                              {
+                                "color": "#696A6F",
+                                "fontFamily": "Montserrat-SemiBold",
+                                "fontSize": 12,
+                                "lineHeight": 19.2,
+                                "marginTop": 4,
+                              },
+                            ]
+                          }
+                        >
+                          Automatique selon les réglages de ton appareil
+                        </Text>
+                      </View>
+                      <View
+                        style={
+                          [
+                            {},
+                          ]
+                        }
+                      >
+                        <View
+                          fill="none"
+                          height="108"
+                          width="62"
+                        >
+                          <Text>
+                            undefined-SVG-Mock
+                          </Text>
+                        </View>
+                      </View>
                     </View>
                   </View>
                 </View>

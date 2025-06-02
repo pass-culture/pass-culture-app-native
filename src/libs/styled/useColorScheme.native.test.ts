@@ -1,80 +1,75 @@
-import { Appearance, ColorSchemeName } from 'react-native'
+import ReactNative from 'react-native'
 
-import { colorSchemeActions, useColorScheme } from 'libs/styled/useColorScheme'
-import { act, renderHook } from 'tests/utils'
+import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
+import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
+import { renderHook } from 'tests/utils'
 
-const mockCurrentColorScheme = jest.fn((): ColorSchemeName => 'light')
+import { useColorScheme, colorSchemeActions, ColorScheme } from './useColorScheme'
 
-jest.mock('react-native/Libraries/Utilities/Appearance', () => {
-  let mockListenerColorScheme = jest.fn()
-  return {
-    getColorScheme: jest.fn(() => mockCurrentColorScheme()),
-    addChangeListener: (listener) => {
-      mockListenerColorScheme = listener
-    },
-    setColorScheme: (colorScheme) => {
-      mockCurrentColorScheme.mockReturnValue(colorScheme)
-      mockListenerColorScheme({ colorScheme })
-    },
-  }
-})
+const useColorSchemeSpy = jest.spyOn(ReactNative, 'useColorScheme')
+useColorSchemeSpy.mockReturnValue(ColorScheme.LIGHT)
 
-describe('colorSchemeStore', () => {
+describe('useColorScheme', () => {
   beforeEach(() => {
-    mockCurrentColorScheme.mockReset()
+    setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_DARK_MODE])
   })
 
-  it('should initialize with system colorScheme default (light)', () => {
-    const { result } = renderHook(() => useColorScheme())
-
-    expect(result.current).toBe('light')
+  afterEach(() => {
+    jest.clearAllMocks()
   })
 
-  it('should initialize with system colorScheme when is available', () => {
-    mockCurrentColorScheme.mockReturnValueOnce('dark')
-    colorSchemeActions.init()
-    const { result } = renderHook(() => useColorScheme())
-
-    expect(result.current).toBe('dark')
-  })
-
-  it.each([null, undefined])(
-    'should default to light theme if no color scheme is detected (%s)',
-    (value) => {
-      mockCurrentColorScheme.mockReturnValueOnce(value)
-      colorSchemeActions.init()
+  describe('default', () => {
+    it('should return default to light mode', () => {
       const { result } = renderHook(() => useColorScheme())
 
-      expect(result.current).toBe('light')
-    }
-  )
-
-  it('should react to system color scheme change', async () => {
-    colorSchemeActions.init()
-    const { result } = renderHook(() => useColorScheme())
-
-    expect(result.current).toBe('light')
-
-    await act(async () => {
-      Appearance.setColorScheme('dark')
+      expect(result.current).toBe(ColorScheme.LIGHT)
     })
 
-    expect(result.current).toBe('dark')
-  })
-
-  it.each([null, undefined])(
-    'should default to light theme when system color scheme becomes unavailable (%s)',
-    async (value) => {
-      colorSchemeActions.init()
+    it('should return default to light mode when feature flag disable', () => {
+      setFeatureFlags()
       const { result } = renderHook(() => useColorScheme())
 
-      expect(result.current).toBe('light')
+      expect(result.current).toBe(ColorScheme.LIGHT)
+    })
+  })
 
-      await act(async () => {
-        Appearance.setColorScheme(value)
-      })
+  describe('user choice', () => {
+    it('should return dark mode when the user selects dark', () => {
+      colorSchemeActions.setColorScheme({ colorScheme: ColorScheme.DARK })
+      const { result } = renderHook(() => useColorScheme())
 
-      expect(result.current).toBe('light')
-    }
-  )
+      expect(result.current).toBe(ColorScheme.DARK)
+    })
+
+    it('should return light mode when the user selects light', () => {
+      colorSchemeActions.setColorScheme({ colorScheme: ColorScheme.LIGHT })
+      const { result } = renderHook(() => useColorScheme())
+
+      expect(result.current).toBe(ColorScheme.LIGHT)
+    })
+
+    it('should follows system theme when user selects system and system is light', () => {
+      colorSchemeActions.setColorScheme({ colorScheme: ColorScheme.SYSTEM })
+      const { result } = renderHook(() => useColorScheme())
+
+      expect(result.current).toBe(ColorScheme.LIGHT)
+    })
+
+    it('should follows system theme when user selects system and system is dark', () => {
+      useColorSchemeSpy.mockReturnValueOnce(ColorScheme.DARK)
+      colorSchemeActions.setColorScheme({ colorScheme: ColorScheme.SYSTEM })
+      const { result } = renderHook(() => useColorScheme())
+
+      expect(result.current).toBe(ColorScheme.DARK)
+    })
+
+    it('should return light mode when system is dark but feature flag is disable', () => {
+      setFeatureFlags()
+      useColorSchemeSpy.mockReturnValueOnce(ColorScheme.DARK)
+      colorSchemeActions.setColorScheme({ colorScheme: ColorScheme.SYSTEM })
+      const { result } = renderHook(() => useColorScheme())
+
+      expect(result.current).toBe(ColorScheme.LIGHT)
+    })
+  })
 })

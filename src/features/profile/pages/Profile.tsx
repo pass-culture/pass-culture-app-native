@@ -59,6 +59,7 @@ const isWeb = Platform.OS === 'web'
 const DEBOUNCE_TOGGLE_DELAY_MS = 5000
 
 const OnlineProfile: React.FC = () => {
+  const enableDarkMode = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_DARK_MODE)
   const disableActivation = useFeatureFlag(RemoteStoreFeatureFlags.DISABLE_ACTIVATION)
   const enablePassForAll = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_PASS_FOR_ALL)
   const enableDebugSection = useFeatureFlag(RemoteStoreFeatureFlags.ENABLE_DEBUG_SECTION)
@@ -146,6 +147,9 @@ const OnlineProfile: React.FC = () => {
     shareApp('profile_banner')
   }, [])
 
+  // If no dark mode and no rotation mode in web this section is empty
+  const hidePreferenceSection = !enableDarkMode && isWeb
+
   return (
     <Page>
       <ScrollView
@@ -228,8 +232,7 @@ const OnlineProfile: React.FC = () => {
               </Section>
               <Section title="Autres">
                 <VerticalUl>
-                  {/* TODO(PC-35459): Remove this condition when add dark theme button in DisplayPreference */}
-                  {isWeb ? null : (
+                  {hidePreferenceSection ? null : (
                     <Li>
                       <Row
                         title="Préférences d’affichage"

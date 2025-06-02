@@ -4,6 +4,7 @@ import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setF
 import * as useRemoteConfigQuery from 'libs/firebase/remoteConfig/queries/useRemoteConfigQuery'
 import { DEFAULT_REMOTE_CONFIG } from 'libs/firebase/remoteConfig/remoteConfig.constants'
 import { ThemeProvider } from 'libs/styled'
+import { ColorScheme } from 'libs/styled/useColorScheme'
 import { computedTheme } from 'tests/computedTheme'
 import { renderHook } from 'tests/utils'
 import { useGetFooterHeight } from 'ui/hooks/useGetFooterHeight/useGetFooterHeight'
@@ -20,7 +21,7 @@ describe('useGetFooterHeight', () => {
     const footerHeight = 40
     const { result } = renderHook(() => useGetFooterHeight(footerHeight), {
       wrapper: ({ children }) => (
-        <ThemeProvider theme={computedTheme} colorScheme="light">
+        <ThemeProvider theme={computedTheme} colorScheme={ColorScheme.LIGHT}>
           {children}
         </ThemeProvider>
       ),

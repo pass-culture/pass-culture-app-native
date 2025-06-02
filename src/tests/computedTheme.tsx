@@ -1,8 +1,9 @@
+import { ColorScheme } from 'libs/styled/useColorScheme'
 import { AppThemeType, theme } from 'theme'
 
 export const computedTheme: Readonly<AppThemeType> = {
   ...theme,
-  colorScheme: 'light',
+  colorScheme: ColorScheme.LIGHT,
   isMobileViewport: true,
   isTabletViewport: false,
   isDesktopViewport: false,
