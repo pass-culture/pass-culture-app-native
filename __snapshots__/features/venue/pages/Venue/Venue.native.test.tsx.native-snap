@@ -1183,6 +1183,11 @@ exports[`<Venue /> should match snapshot 1`] = `
                                     <FastImageView
                                       defaultSource={null}
                                       resizeMode="cover"
+                                      source={
+                                        {
+                                          "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
+                                        }
+                                      }
                                       style={
                                         {
                                           "bottom": 0,
@@ -1387,6 +1392,11 @@ exports[`<Venue /> should match snapshot 1`] = `
                                     <FastImageView
                                       defaultSource={null}
                                       resizeMode="cover"
+                                      source={
+                                        {
+                                          "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
+                                        }
+                                      }
                                       style={
                                         {
                                           "bottom": 0,
@@ -1591,6 +1601,11 @@ exports[`<Venue /> should match snapshot 1`] = `
                                     <FastImageView
                                       defaultSource={null}
                                       resizeMode="cover"
+                                      source={
+                                        {
+                                          "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMA",
+                                        }
+                                      }
                                       style={
                                         {
                                           "bottom": 0,
@@ -3867,6 +3882,11 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                       <FastImageView
                         defaultSource={null}
                         resizeMode="cover"
+                        source={
+                          {
+                            "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
+                          }
+                        }
                         style={
                           {
                             "bottom": 0,
@@ -4000,6 +4020,11 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                 defaultSource={null}
                                 resizeMode="cover"
                                 size="small"
+                                source={
+                                  {
+                                    "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
+                                  }
+                                }
                                 style={
                                   {
                                     "bottom": 0,
@@ -4493,6 +4518,11 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                     <FastImageView
                                       defaultSource={null}
                                       resizeMode="cover"
+                                      source={
+                                        {
+                                          "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
+                                        }
+                                      }
                                       style={
                                         {
                                           "bottom": 0,
@@ -4697,6 +4727,11 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                     <FastImageView
                                       defaultSource={null}
                                       resizeMode="cover"
+                                      source={
+                                        {
+                                          "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMG",
+                                        }
+                                      }
                                       style={
                                         {
                                           "bottom": 0,
@@ -4901,6 +4936,11 @@ exports[`<Venue /> should match snapshot with headline offer 1`] = `
                                     <FastImageView
                                       defaultSource={null}
                                       resizeMode="cover"
+                                      source={
+                                        {
+                                          "uri": "https://storage.googleapis.com/passculture-metier-ehp-testing-assets/thumbs/products/FARMA",
+                                        }
+                                      }
                                       style={
                                         {
                                           "bottom": 0,

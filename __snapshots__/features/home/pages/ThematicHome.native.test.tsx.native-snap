@@ -248,7 +248,7 @@ exports[`ThematicHome should render correctly 1`] = `
             }
             accessible={true}
             collapsable={false}
-            focusable={true}
+            focusable={false}
             onClick={[Function]}
             onResponderGrant={[Function]}
             onResponderMove={[Function]}
@@ -674,6 +674,7 @@ exports[`ThematicHome should render correctly 1`] = `
       <View
         fill="none"
         height={180}
+<<<<<<< HEAD
         testID="HomeGradient"
         width="100%"
       >
@@ -681,6 +682,27 @@ exports[`ThematicHome should render correctly 1`] = `
           HomeGradient-SVG-Mock
         </Text>
       </View>
+=======
+        resizeMode="stretch"
+        source={
+          {
+            "testUri": "../../../src/features/home/images/headerGradient/Lilac.png",
+          }
+        }
+        style={
+          [
+            {
+              "height": 180,
+              "left": 0,
+              "position": "absolute",
+              "right": 0,
+              "top": 0,
+              "width": "100%",
+            },
+          ]
+        }
+      />
+>>>>>>> a108b5d0e7e (fix: delete deprecated defaultProps)
       <View
         style={
           [

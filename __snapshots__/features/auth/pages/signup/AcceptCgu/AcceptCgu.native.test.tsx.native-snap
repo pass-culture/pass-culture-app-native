@@ -566,6 +566,7 @@ exports[`<AcceptCgu/> should render correctly 1`] = `
     }
   />
   <View
+    accessibilityHint="testUuidV4"
     accessibilityLabel="Accepter les conditions générales d’utilisation et la politique de confidentialité pour s’inscrire"
     accessibilityState={
       {
@@ -1395,6 +1396,7 @@ exports[`<AcceptCgu/> should render correctly for SSO subscription 1`] = `
     }
   />
   <View
+    accessibilityHint="testUuidV4"
     accessibilityLabel="Accepter les conditions générales d’utilisation et la politique de confidentialité pour s’inscrire"
     accessibilityState={
       {
