@@ -137,7 +137,7 @@ export enum AnalyticsEvent {
   PERFORM_SEARCH = 'PerformSearch',
   PIN_MAP_PRESSED = 'PinMapPressed',
   PLAYLIST_HORIZONTAL_SCROLL = 'PlaylistHorizontalScroll',
-  VIEW_OFFER = 'ViewOffer',
+  VIEW_ITEM = 'ViewItem',
   PLAYLIST_VERTICAL_SCROLL = 'PlaylistVerticalScroll',
   PROFIL_SCROLLED_TO_BOTTOM = 'ProfilScrolledToBottom',
   PROFIL_SIGN_UP = 'ProfilSignUp',

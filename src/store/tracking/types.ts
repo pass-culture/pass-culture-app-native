@@ -1,7 +1,9 @@
 export type PlaylistTrackingInfo = {
   moduleId: string
+  itemType: 'offer' | 'venue' | 'artist' | 'unknown'
   callId: string
   index: number
+  viewedAt: Date
   items: { key: string; index: number | null }[]
   extra?: Record<string, string | undefined>
 }

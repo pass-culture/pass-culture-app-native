@@ -35,6 +35,8 @@ export const setPageTrackingInfo = ({
 // Set playlist informations
 export const setPlaylistTrackingInfo = ({
   moduleId,
+  itemType = 'unknown',
+  viewedAt = new Date(),
   callId = '',
   items = [],
   index = -1,
@@ -48,12 +50,14 @@ export const setPlaylistTrackingInfo = ({
 
   const playlist = state.playlists.find((item) => item.moduleId === moduleId) ?? {
     moduleId,
+    itemType,
+    viewedAt,
     callId,
     items,
     index,
     extra,
   }
-  const updatedPlaylist = updatePlaylistInfo(playlist, { callId, items, index })
+  const updatedPlaylist = updatePlaylistInfo(playlist, { callId, items, index, extra })
 
   const playlists = [
     ...state.playlists.filter((item) => item.moduleId !== playlist.moduleId),

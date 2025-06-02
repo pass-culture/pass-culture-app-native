@@ -8,7 +8,6 @@ import {
   ScrollView,
   useWindowDimensions,
   View,
-  ViewToken,
 } from 'react-native'
 import {
   IOFlatList as IntersectionObserverFlatlist,
@@ -21,8 +20,8 @@ import { useGetVenuesData } from 'features/home/api/useGetVenuesData'
 import { useShowSkeleton } from 'features/home/api/useShowSkeleton'
 import { HomeBodyPlaceholder } from 'features/home/components/HomeBodyPlaceholder'
 import { HomeModule } from 'features/home/components/modules/HomeModule'
-import { OffersModuleProps } from 'features/home/components/modules/OffersModule'
 import { VideoCarouselModule } from 'features/home/components/modules/video/VideoCarouselModule'
+import { getItemTypeFromModuleType } from 'features/home/helpers/getItemTypeFromModuleType'
 import { useOnScroll } from 'features/home/pages/helpers/useOnScroll'
 import { useGetOffersDataQuery } from 'features/home/queries/useGetOffersDataQuery'
 import {
@@ -31,6 +30,7 @@ import {
   isOffersModule,
   isVenuesModule,
   isVideoCarouselModule,
+  ModuleViewableItemsChangedHandler,
   ThematicHeader,
 } from 'features/home/types'
 import { AccessibilityRole } from 'libs/accessibilityRole/accessibilityRole'
@@ -42,13 +42,13 @@ import { useNetInfoContext } from 'libs/network/NetInfoWrapper'
 import { OfflinePage } from 'libs/network/OfflinePage'
 import { BatchEvent, BatchEventAttributes, BatchProfile } from 'libs/react-native-batch'
 import { AccessibilityFooter } from 'shared/AccessibilityFooter/AccessibilityFooter'
-import { logViewOffer, setViewOfferTrackingFn } from 'shared/analytics/logViewOffer'
+import { logViewItem, setViewOfferTrackingFn } from 'shared/analytics/logViewItem'
 import {
   resetPageTrackingInfo,
   setPageTrackingInfo,
   setPlaylistTrackingInfo,
   useOfferPlaylistTrackingStore,
-} from 'store/tracking/offerPlaylistTrackingStore'
+} from 'store/tracking/playlistTrackingStore'
 import { ScrollToTopButton } from 'ui/components/ScrollToTopButton'
 import { Spinner } from 'ui/components/Spinner'
 import { Page } from 'ui/pages/Page'
@@ -71,18 +71,19 @@ type GenericHomeProps = {
 
 const keyExtractor = (item: HomepageModule) => item.id
 
-const handleViewableItemsChanged = ({
+const handleViewableItemsChanged: ModuleViewableItemsChangedHandler = ({
   index,
   moduleId,
-  changedItems,
+  moduleType,
+  viewableItems,
   homeEntryId,
-}: Pick<OffersModuleProps, 'homeEntryId' | 'index' | 'moduleId'> & {
-  changedItems: Pick<ViewToken, 'key' | 'index'>[]
 }) => {
   setPlaylistTrackingInfo({
     index,
     moduleId,
-    items: changedItems,
+    viewedAt: new Date(),
+    items: viewableItems,
+    itemType: getItemTypeFromModuleType(moduleType),
     extra: { homeEntryId },
     callId: '',
   })
@@ -263,7 +264,7 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = ({
   }, [modules.length, isLoading, maxIndex])
 
   useEffect(() => {
-    setViewOfferTrackingFn(analytics.logViewOffer)
+    setViewOfferTrackingFn(analytics.logViewItem)
   }, [])
 
   useFocusEffect(
@@ -278,12 +279,12 @@ const OnlineHome: FunctionComponent<GenericHomeProps> = ({
     }, [homeId, name])
   )
 
-  useAppStateChange(undefined, () => logViewOffer(useOfferPlaylistTrackingStore.getState()))
+  useAppStateChange(undefined, () => logViewItem(useOfferPlaylistTrackingStore.getState()))
 
   useFocusEffect(
     useCallback(() => {
       return () => {
-        logViewOffer(useOfferPlaylistTrackingStore.getState())
+        logViewItem(useOfferPlaylistTrackingStore.getState())
         resetPageTrackingInfo()
       }
     }, [])
