@@ -10913,6 +10913,7 @@ __metadata:
     react-native-devsettings: ^1.0.5
     react-native-email-link: ^1.10.0
     react-native-fast-image: ^8.6.3
+    react-native-fs: ^2.20.0
     react-native-geolocation-service: 5.3.1
     react-native-gesture-handler: 2.15.0
     react-native-get-random-values: ^1.5.1
@@ -10921,11 +10922,13 @@ __metadata:
     react-native-keychain: ^8.0.0
     react-native-launch-navigator: 1.0.9
     react-native-linear-gradient: ^2.8.3
+    react-native-logs: ^5.3.0
     react-native-lottie-splash-screen: ^1.1.2
     react-native-map-clustering: ^3.4.2
     react-native-maps: ^1.11.3
     react-native-modal: 13.0.0
     react-native-orientation-locker: ^1.7.0
+    react-native-performance-stats: ^0.2.3
     react-native-permissions: ^3.8.0
     react-native-qrcode-svg: ^6.1.2
     react-native-reanimated: 3.6.3
@@ -12207,6 +12210,13 @@ __metadata:
     bare-events:
       optional: true
   checksum: 6a3d4baf8ded0bdc465b7b0b65dfbb8e40f7520ee8899adcae5fd37949d5c520412164116659750ad841215b03ce761fe252a626cd4fe3ec9df0440c6fd07a96
+  languageName: node
+  linkType: hard
+
+"base-64@npm:^0.1.0":
+  version: 0.1.0
+  resolution: "base-64@npm:0.1.0"
+  checksum: 5a42938f82372ab5392cbacc85a5a78115cbbd9dbef9f7540fa47d78763a3a8bd7d598475f0d92341f66285afd377509851a9bb5c67bbecb89686e9255d5b3eb
   languageName: node
   linkType: hard
 
@@ -24656,6 +24666,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-native-fs@npm:^2.20.0":
+  version: 2.20.0
+  resolution: "react-native-fs@npm:2.20.0"
+  dependencies:
+    base-64: ^0.1.0
+    utf8: ^3.0.0
+  peerDependencies:
+    react-native: "*"
+    react-native-windows: "*"
+  peerDependenciesMeta:
+    react-native-windows:
+      optional: true
+  checksum: 0be9bb9a5c13b501d0a3006efc3aa5c0b5b211456ee04718297f4e522532f3527f1daa220bd67d3b82d819ed8fdab8f64b7d6e0d7b768c1fd1d8ec9122d94316
+  languageName: node
+  linkType: hard
+
 "react-native-geolocation-service@npm:5.3.1":
   version: 5.3.1
   resolution: "react-native-geolocation-service@npm:5.3.1"
@@ -24732,6 +24758,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"react-native-logs@npm:^5.3.0":
+  version: 5.3.0
+  resolution: "react-native-logs@npm:5.3.0"
+  checksum: b7fa58007e737fe337fbd664529054cfe71a1fa8f2f4cf50621ffca0f50b44f70dcb7d37f3222093c7b36a287a79b00f1b84d243fb15dc67650c72b6c514343a
+  languageName: node
+  linkType: hard
+
 "react-native-lottie-splash-screen@npm:^1.1.2":
   version: 1.1.2
   resolution: "react-native-lottie-splash-screen@npm:1.1.2"
@@ -24797,6 +24830,16 @@ __metadata:
     react-native-windows:
       optional: true
   checksum: 495010b3150adcbc1dcb24e0ca5c13838f02dbcee7c6ec391fe07bd47f9b75ac57b0ec1144aaab5d6ed62e7a354497e9fa5399359d896099ecbea439908817cf
+  languageName: node
+  linkType: hard
+
+"react-native-performance-stats@npm:^0.2.3":
+  version: 0.2.3
+  resolution: "react-native-performance-stats@npm:0.2.3"
+  peerDependencies:
+    react: "*"
+    react-native: "*"
+  checksum: dbe2fed4b2e62581abf78e169aaf89a6a786a34d333390c48d3f8aee4250fa6b8a25a7344de9ed3ee6b161c19dade93b1ea7280d5c6abd6a6b5f69926cface9c
   languageName: node
   linkType: hard
 
@@ -28326,6 +28369,13 @@ __metadata:
   peerDependencies:
     react: ^16.8.0 || ^17.0.0 || ^18.0.0
   checksum: 5c639e0f8da3521d605f59ce5be9e094ca772bd44a4ce7322b055a6f58eeed8dda3c94cabd90c7a41fb6fa852210092008afe48f7038792fd47501f33299116a
+  languageName: node
+  linkType: hard
+
+"utf8@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "utf8@npm:3.0.0"
+  checksum: cb89a69ad9ab393e3eae9b25305b3ff08bebca9adc839191a34f90777eb2942f86a96369d2839925fea58f8f722f7e27031d697f10f5f39690f8c5047303e62d
   languageName: node
   linkType: hard
 

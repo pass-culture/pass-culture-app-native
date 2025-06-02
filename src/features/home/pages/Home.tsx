@@ -1,6 +1,9 @@
 import { useRoute } from '@react-navigation/native'
 import { maxBy } from 'lodash'
 import React, { FunctionComponent, useEffect } from 'react'
+import RNFS from 'react-native-fs'
+import { logger, fileAsyncTransport } from 'react-native-logs'
+import PerformanceStats from 'react-native-performance-stats'
 import styled from 'styled-components/native'
 
 import { AchievementSuccessModal } from 'features/achievements/pages/AchievementSuccessModal'
@@ -70,6 +73,31 @@ export const Home: FunctionComponent = () => {
       analytics.logConsultHome({ homeEntryId: id })
     }
   }, [id])
+
+  useEffect(() => {
+    const isPerf = true
+    if (!isPerf) return
+
+    const log = logger.createLogger({
+      transport: fileAsyncTransport,
+      transportOptions: {
+        FS: RNFS,
+        fileName: 'log.txt',
+      },
+    })
+
+    const listener = PerformanceStats.addListener((stats) => {
+      log.debug(stats)
+    })
+
+    // you must call .start(true) to get CPU as well
+    PerformanceStats.start(true)
+
+    // ... at some later point you could call:
+    // PerformanceStats.stop();
+
+    return () => listener.remove()
+  }, [])
 
   // This effect was made for the use of the marketing team (internal usage)
   useEffect(() => {
