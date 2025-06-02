@@ -1,7 +1,5 @@
-import { useColorScheme as useSystemColorScheme } from 'react-native'
+import { Appearance, ColorSchemeName } from 'react-native'
 
-import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
-import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { createStore } from 'libs/store/createStore'
 
 export enum ColorScheme {
@@ -10,40 +8,75 @@ export enum ColorScheme {
   SYSTEM = 'system',
 }
 
-export type ColorSchemeType = ColorScheme.LIGHT | ColorScheme.DARK
+export enum ColorSchemeComputed {
+  LIGHT = 'light',
+  DARK = 'dark',
+}
 
 const colorSchemeStore = createStore({
   name: 'colorScheme',
-  defaultState: { colorScheme: ColorScheme.LIGHT },
+  defaultState: {
+    colorScheme: ColorSchemeComputed.LIGHT,
+    colorSchemeByUser: ColorScheme.LIGHT,
+    enableDarkMode: false,
+  },
   actions: (set) => ({
     setColorScheme: ({ colorScheme }: { colorScheme: ColorScheme }) => {
-      set({ colorScheme })
+      let toto: ColorSchemeComputed = ColorSchemeComputed.LIGHT
+
+      switch (colorScheme) {
+        case ColorScheme.SYSTEM:
+          if (Appearance.getColorScheme() === 'dark') toto = ColorSchemeComputed.DARK
+          break
+        case ColorScheme.DARK:
+          toto = ColorSchemeComputed.DARK
+          break
+        case ColorScheme.LIGHT:
+          toto = ColorSchemeComputed.LIGHT
+          break
+      }
+      set((state) =>
+        state.enableDarkMode
+          ? {
+              colorScheme: toto,
+              colorSchemeByUser: colorScheme,
+            }
+          : {
+              colorScheme: ColorSchemeComputed.LIGHT,
+              colorSchemeByUser: ColorScheme.LIGHT,
+            }
+      )
+    },
+    setColorSchemeAppearance: ({ colorScheme }: { colorScheme: ColorSchemeName }) => {
+      colorSchemeStore.actions.setColorScheme({
+        colorScheme: colorScheme
+          ? colorScheme === 'light'
+            ? ColorScheme.LIGHT
+            : ColorScheme.DARK
+          : ColorScheme.SYSTEM,
+      })
+    },
+    setEnableDarkMode: (enableDarkMode: boolean) => {
+      set({ enableDarkMode })
     },
   }),
   selectors: {
     selectColorScheme:
       () =>
-      (state): ColorScheme =>
+      (state): ColorSchemeComputed =>
         state.colorScheme,
+    selectColorSchemeByUser:
+      () =>
+      (state): ColorScheme =>
+        state.colorSchemeByUser,
   },
   options: { persist: true },
 })
 
 export const colorSchemeActions = colorSchemeStore.actions
-export const useStoredColorScheme: () => ColorScheme = colorSchemeStore.hooks.useColorScheme
+export const useStoredColorSchemeByUser: () => ColorScheme =
+  colorSchemeStore.hooks.useColorSchemeByUser
 
-export const useColorScheme = (): ColorSchemeType => {
-  const storedScheme = useStoredColorScheme()
-  const systemScheme = useSystemColorScheme()
-  const enableDarkMode = useFeatureFlag(RemoteStoreFeatureFlags.WIP_ENABLE_DARK_MODE)
+export const useColorScheme: () => ColorSchemeComputed = colorSchemeStore.hooks.useColorScheme
 
-  if (!enableDarkMode) {
-    return ColorScheme.LIGHT
-  }
-
-  if (storedScheme === ColorScheme.SYSTEM) {
-    return systemScheme === 'dark' ? ColorScheme.DARK : ColorScheme.LIGHT
-  }
-
-  return storedScheme
-}
+Appearance.addChangeListener(colorSchemeStore.actions.setColorSchemeAppearance)

@@ -8,7 +8,11 @@ import { FilterSwitchWithLabel } from 'features/search/components/FilterSwitchWi
 import { analytics } from 'libs/analytics/provider'
 import { useFeatureFlag } from 'libs/firebase/firestore/featureFlags/useFeatureFlag'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
-import { colorSchemeActions, ColorScheme, useStoredColorScheme } from 'libs/styled/useColorScheme'
+import {
+  colorSchemeActions,
+  ColorScheme,
+  useStoredColorSchemeByUser,
+} from 'libs/styled/useColorScheme'
 import { useOrientationLocked } from 'shared/hook/useOrientationLocked'
 import { RadioSelector } from 'ui/components/radioSelector/RadioSelector'
 import { Separator } from 'ui/components/Separator'
@@ -35,7 +39,7 @@ export const DisplayPreference = () => {
     DEBOUNCE_TOGGLE_DELAY_MS
   )
 
-  const selectedTheme = useStoredColorScheme()
+  const selectedTheme = useStoredColorSchemeByUser()
 
   return (
     <PageWithHeader
