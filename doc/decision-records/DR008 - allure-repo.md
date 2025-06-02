@@ -1,6 +1,6 @@
 # DR007 - Allure repo(rt)?
 
-> Status : Adopted or Replaced or Withdrawn
+> Status : Adopted
 
 ## Decision
 
