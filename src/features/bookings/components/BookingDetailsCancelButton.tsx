@@ -13,7 +13,7 @@ import { getCancelMessage } from 'features/bookings/helpers/getCancelMessage'
 import { Booking } from 'features/bookings/types'
 import { useSubcategory } from 'libs/subcategories'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { Typo, getSpacing } from 'ui/theme'
+import { Typo } from 'ui/theme'
 
 export type BookingDetailsCancelButtonProps = BookingDetailsButtonProps & {
   booking: Booking
@@ -48,7 +48,7 @@ export const BookingDetailsCancelButton = (props: BookingDetailsCancelButtonProp
     new Date(booking.confirmationDate) > new Date()
 
   return (
-    <StyledViewGap gap={4} testID="cancel-or-archive-section">
+    <ViewGap gap={4} testID="cancel-or-archive-section">
       {cancelMessage ? (
         <StyledCaption testID="cancel-or-archive-message">{cancelMessage}</StyledCaption>
       ) : null}
@@ -62,7 +62,7 @@ export const BookingDetailsCancelButton = (props: BookingDetailsCancelButtonProp
           onCancel={props.onCancel}
         />
       ) : null}
-    </StyledViewGap>
+    </ViewGap>
   )
 }
 
@@ -70,8 +70,3 @@ const StyledCaption = styled(Typo.BodyAccentXs)(({ theme }) => ({
   textAlign: 'center',
   color: theme.colors.greyDark,
 }))
-
-const StyledViewGap = styled(ViewGap)({
-  marginBottom: getSpacing(10),
-  marginHorizontal: getSpacing(6),
-})
