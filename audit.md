@@ -1,6 +1,6 @@
 # Audit Technique du Code
 
-Cet audit ne relève que les points d'amélioration
+Cet audit ce concentre uniquement sur les points d'améliorations
 
 ## Audit de différents parcours
 
@@ -413,6 +413,25 @@ flowchart LR
   App --> Secret["Secret Storage : Refresh token / Access token"]
   App --> Caméra["Caméra : identification"]
   App --> Orientation["Orientation"]
+```
+
+```mermaid
+architecture-beta
+  group api(cloud)[API]
+
+  service db(database)[Database] in api
+  service disk1(disk)[Storage] in api
+  service disk2(disk)[Storage] in api
+  service server(server)[Server] in api
+
+  db:L -- R:server
+  disk1:T -- B:server
+  disk2:T -- B:db
+  service localisation(cloud)[Localisation]
+  service local(cloud)[Local Storage]
+  service secret(cloud)['Secret StorageRefresh Refresh token Access token']
+  %% service caméra(cloud)["Caméra : identification"]
+  %% service orientation(cloud)["Orientation"]
 ```
 
 Android iOS permission
