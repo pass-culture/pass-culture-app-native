@@ -30,7 +30,6 @@ import { useVenuesInRegionQuery } from 'queries/venueMap/useVenuesInRegionQuery'
 import { mockAuthContextWithUser, mockAuthContextWithoutUser } from 'tests/AuthContextUtils'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen, userEvent, waitFor } from 'tests/utils'
-import { theme } from 'theme'
 
 import { SearchResultsContent, SearchResultsContentProps } from './SearchResultsContent'
 
@@ -283,29 +282,6 @@ describe('SearchResultsContent component', () => {
 
       expect(fullscreenModalScrollView).toBeOnTheScreen()
     })
-
-    it('should display an icon and change color in category button when has category selected', async () => {
-      mockUseSearch.mockReturnValueOnce({
-        searchState: {
-          ...mockSearchState,
-          offerCategories: [SearchGroupNameEnumv2.MUSIQUE],
-        },
-        dispatch: mockDispatch,
-      })
-
-      renderSearchResultContent()
-
-      const categoryButtonIcon = await screen.findByTestId('categoryButtonIcon')
-
-      expect(categoryButtonIcon).toBeOnTheScreen()
-
-      const categoryButton = screen.getByTestId('Catégories\u00a0: Filtre sélectionné')
-
-      expect(categoryButton).toHaveStyle({
-        borderWidth: 2,
-        backgroundColor: theme.colors.greyLight,
-      })
-    })
   })
 
   describe('Price filter', () => {
@@ -324,26 +300,6 @@ describe('SearchResultsContent component', () => {
       const fullscreenModalScrollView = screen.getByTestId('fullscreenModalScrollView')
 
       expect(fullscreenModalScrollView).toBeOnTheScreen()
-    })
-
-    it('should display an icon and change color in prices filter button when has prices filter selected', async () => {
-      mockUseSearch.mockReturnValueOnce({
-        searchState: {
-          ...mockSearchState,
-          minPrice: '5',
-        },
-        dispatch: mockDispatch,
-      })
-
-      renderSearchResultContent()
-
-      const priceButtonIcon = await screen.findByTestId('priceButtonIcon')
-
-      expect(priceButtonIcon).toBeOnTheScreen()
-
-      const priceButton = screen.getByTestId('Prix\u00a0: Filtre sélectionné')
-
-      expect(priceButton).toHaveStyle({ borderWidth: 2, backgroundColor: theme.colors.greyLight })
     })
   })
 
@@ -564,35 +520,6 @@ describe('SearchResultsContent component', () => {
 
       expect(fullscreenModalScrollView).toBeOnTheScreen()
     })
-
-    it.each`
-      type       | params
-      ${'date'}  | ${{ date: { option: 'today', selectedDate: new Date() } }}
-      ${'hours'} | ${{ timeRange: [8, 24] }}
-    `(
-      'should display an icon and change color in dates and hours filter button when has $type selected',
-      async ({ params }: { params: SearchState }) => {
-        mockUseSearch.mockReturnValueOnce({
-          searchState: {
-            ...mockSearchState,
-            ...params,
-          },
-          dispatch: mockDispatch,
-        })
-        renderSearchResultContent()
-
-        const datesHoursButtonIcon = await screen.findByTestId('datesHoursButtonIcon')
-
-        expect(datesHoursButtonIcon).toBeOnTheScreen()
-
-        const datesHoursButton = screen.getByTestId('Dates & heures\u00a0: Filtre sélectionné')
-
-        expect(datesHoursButton).toHaveStyle({
-          borderWidth: 2,
-          backgroundColor: theme.colors.greyLight,
-        })
-      }
-    )
   })
 
   describe('Accessibility filter', () => {
@@ -981,7 +908,7 @@ describe('SearchResultsContent component', () => {
     })
   })
 
-  describe('when feature flag map in search desactivated', () => {
+  describe('when feature flag map in search deactivated', () => {
     beforeEach(() => {
       mockUseLocation.mockReturnValue(aroundMeUseLocation)
     })

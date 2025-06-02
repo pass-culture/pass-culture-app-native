@@ -298,15 +298,14 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
     </View>
     <View>
       <RCTScrollView
+        contentContainerStyle={
+          {
+            "marginBottom": 8,
+            "paddingHorizontal": 20,
+          }
+        }
         horizontal={true}
         showsHorizontalScrollIndicator={false}
-        style={
-          [
-            {
-              "marginBottom": 8,
-            },
-          ]
-        }
       >
         <View>
           <View
@@ -315,7 +314,6 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
               [
                 {
                   "flexDirection": "row",
-                  "marginHorizontal": 20,
                   "paddingLeft": 0,
                 },
               ]
@@ -842,7 +840,6 @@ exports[`<SearchResults/> should render SearchResults 1`] = `
                     "display": "flex",
                     "marginBottom": 4,
                     "marginLeft": 4,
-                    "marginRight": 4,
                     "marginTop": 4,
                   },
                 ]
