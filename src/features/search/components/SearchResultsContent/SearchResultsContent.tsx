@@ -2,7 +2,7 @@ import { useFocusEffect, useIsFocused } from '@react-navigation/native'
 import { FlashList } from '@shopify/flash-list'
 import { debounce } from 'lodash'
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import { FlatList, Platform, ScrollView, useWindowDimensions, View } from 'react-native'
+import { FlatList, Platform, useWindowDimensions, View } from 'react-native'
 import styled from 'styled-components/native'
 
 import { AccessibilityFiltersModal } from 'features/accessibility/components/AccessibilityFiltersModal'
@@ -13,7 +13,6 @@ import { PlaylistType } from 'features/offer/enums'
 import { SearchOfferHits } from 'features/search/api/useSearchResults/useSearchResults'
 import { AutoScrollSwitch } from 'features/search/components/AutoScrollSwitch/AutoScrollSwitch'
 import { FilterButton } from 'features/search/components/Buttons/FilterButton/FilterButton'
-import { SingleFilterButton } from 'features/search/components/Buttons/SingleFilterButton/SingleFilterButton'
 import { NoSearchResult } from 'features/search/components/NoSearchResults/NoSearchResult'
 import { SearchList } from 'features/search/components/SearchList/SearchList'
 import { ArtistSection } from 'features/search/components/SearchListHeader/ArtistSection'
@@ -60,6 +59,7 @@ import { plural } from 'libs/plural'
 import { Offer } from 'shared/offer/types'
 import { ellipseString } from 'shared/string/ellipseString'
 import { useOpacityTransition } from 'ui/animations/helpers/useOpacityTransition'
+import { FilterButtonList, FilterButtonListItem } from 'ui/components/FilterButtonList'
 import { Li } from 'ui/components/Li'
 import { useModal } from 'ui/components/modals/useModal'
 import {
@@ -68,8 +68,6 @@ import {
 } from 'ui/components/placeholders/Placeholders'
 import { ScrollToTopButton } from 'ui/components/ScrollToTopButton'
 import { HorizontalOfferTile } from 'ui/components/tiles/HorizontalOfferTile'
-import { Ul } from 'ui/components/Ul'
-import { Check } from 'ui/svg/icons/Check'
 import { Map } from 'ui/svg/icons/Map'
 import { Sort } from 'ui/svg/icons/Sort'
 import { getSpacing, Spacer } from 'ui/theme'
@@ -448,6 +446,51 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
     return renderNoSearchResults()
   }
 
+  const filterButtonListItems: FilterButtonListItem[] = [
+    {
+      label: shouldDisplayCalendarModal ? 'Dates' : 'Dates & heures',
+      testID: 'datesHoursButton',
+      onPress: shouldDisplayCalendarModal ? showCalendarModal : showDatesHoursModal,
+      isApplied: appliedFilters.includes(FILTER_TYPES.DATES_HOURS),
+    },
+    {
+      label: searchState.venue
+        ? ellipseString(searchState.venue.label, MAX_VENUE_CHARACTERS)
+        : 'Lieu culturel',
+      testID: 'venueButton',
+      onPress: showVenueModal,
+      isApplied: isVenue,
+    },
+    {
+      label: 'Catégories',
+      testID: 'categoryButton',
+      onPress: showCategoriesModal,
+      isApplied: appliedFilters.includes(FILTER_TYPES.CATEGORIES),
+    },
+    {
+      label: 'Prix',
+      testID: 'priceButton',
+      onPress: showSearchPriceModal,
+      isApplied: appliedFilters.includes(FILTER_TYPES.PRICES),
+    },
+    ...(hasDuoOfferToggle
+      ? [
+          {
+            label: 'Duo',
+            testID: 'DuoButton',
+            onPress: showOfferDuoModal,
+            isApplied: appliedFilters.includes(FILTER_TYPES.OFFER_DUO),
+          },
+        ]
+      : []),
+    {
+      label: 'Accessibilité',
+      testID: 'lieuxAccessiblesButton',
+      onPress: showAccessibilityModal,
+      isApplied: appliedFilters.includes(FILTER_TYPES.ACCESSIBILITY),
+    },
+  ]
+
   return (
     <React.Fragment>
       {isFocused ? <Helmet title={helmetTitle} /> : null}
@@ -457,70 +500,16 @@ export const SearchResultsContent: React.FC<SearchResultsContentProps> = ({
         toggle={() => setAutoScrollEnabled((autoScroll) => !autoScroll)}
       />
       <View>
-        <FiltersScrollView horizontal showsHorizontalScrollIndicator={false}>
-          <StyledUl>
-            <StyledLi>
-              <FilterButton
-                activeFilters={activeFiltersCount}
-                navigateTo={{ screen: 'SearchFilter' }}
-              />
-            </StyledLi>
-            <StyledLi>
-              <StyledSingleFilterButton
-                label={shouldDisplayCalendarModal ? 'Dates' : 'Dates & heures'}
-                testID="datesHoursButton"
-                onPress={shouldDisplayCalendarModal ? showCalendarModal : showDatesHoursModal}
-                isSelected={appliedFilters.includes(FILTER_TYPES.DATES_HOURS)}
-              />
-            </StyledLi>
-            <StyledLi>
-              <StyledSingleFilterButton
-                label={
-                  searchState.venue
-                    ? ellipseString(searchState.venue.label, MAX_VENUE_CHARACTERS)
-                    : 'Lieu culturel'
-                }
-                testID="venueButton"
-                onPress={showVenueModal}
-                isSelected={isVenue}
-              />
-            </StyledLi>
-            <StyledLi>
-              <StyledSingleFilterButton
-                label="Catégories"
-                testID="categoryButton"
-                onPress={showCategoriesModal}
-                isSelected={appliedFilters.includes(FILTER_TYPES.CATEGORIES)}
-              />
-            </StyledLi>
-            <StyledLi>
-              <StyledSingleFilterButton
-                label="Prix"
-                testID="priceButton"
-                onPress={showSearchPriceModal}
-                isSelected={appliedFilters.includes(FILTER_TYPES.PRICES)}
-              />
-            </StyledLi>
-            {hasDuoOfferToggle ? (
-              <StyledLi>
-                <StyledSingleFilterButton
-                  label="Duo"
-                  testID="DuoButton"
-                  onPress={showOfferDuoModal}
-                  isSelected={appliedFilters.includes(FILTER_TYPES.OFFER_DUO)}
-                />
-              </StyledLi>
-            ) : null}
-            <StyledLastLi>
-              <StyledSingleFilterButton
-                label="Accessibilité"
-                testID="lieuxAccessiblesButton"
-                onPress={showAccessibilityModal}
-                isSelected={appliedFilters.includes(FILTER_TYPES.ACCESSIBILITY)}
-              />
-            </StyledLastLi>
-          </StyledUl>
-        </FiltersScrollView>
+        <FilterButtonList
+          items={filterButtonListItems}
+          contentContainerStyle={{ marginBottom: getSpacing(2), paddingHorizontal: getSpacing(5) }}>
+          <StyledLi>
+            <FilterButton
+              activeFilters={activeFiltersCount}
+              navigateTo={{ screen: 'SearchFilter' }}
+            />
+          </StyledLi>
+        </FilterButtonList>
       </View>
       <Container testID="searchResults">{renderSearchList()}</Container>
       {shouldRenderScrollToTopButton ? (
@@ -618,21 +607,6 @@ const StyledLi = styled(Li)({
   marginBottom: getSpacing(1),
 })
 
-const StyledLastLi = styled(StyledLi)({
-  marginRight: getSpacing(1),
-})
-
-const FilterSelectedIcon = styled(Check).attrs(({ theme }) => ({
-  size: theme.icons.sizes.extraSmall,
-  color: theme.colors.black,
-}))``
-
-const StyledSingleFilterButton = styled(SingleFilterButton).attrs((props) => ({
-  icon: props.isSelected ? (
-    <FilterSelectedIcon testID={props.testID ? `${props.testID}Icon` : 'filterButtonIcon'} />
-  ) : undefined,
-}))``
-
 const ScrollToTopContainer = styled.View(({ theme }) => ({
   alignSelf: 'center',
   position: 'absolute',
@@ -640,14 +614,6 @@ const ScrollToTopContainer = styled.View(({ theme }) => ({
   bottom: theme.tabBar.height + getSpacing(6),
   zIndex: theme.zIndex.floatingButton,
 }))
-
-const StyledUl = styled(Ul)({
-  marginHorizontal: getSpacing(5),
-})
-
-const FiltersScrollView = styled(ScrollView)({
-  marginBottom: getSpacing(2),
-})
 
 const StyledArtistSection = styled(ArtistSection)({
   marginTop: getSpacing(4),
