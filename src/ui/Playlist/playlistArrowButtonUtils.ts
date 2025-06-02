@@ -22,7 +22,7 @@ export type ScrollButtonForNotTouchDeviceProps = {
 
 type ScrollButtonForNotTouchDevicePropsStylesNative = InterpolationFunction<
   ThemedStyledProps<
-    TouchableOpacityProps & RefAttributes<RNTouchableOpacity> & ScrollButtonPropStyle,
+    TouchableOpacityProps & RefAttributes<typeof RNTouchableOpacity> & ScrollButtonPropStyle,
     DefaultTheme
   >
 >
