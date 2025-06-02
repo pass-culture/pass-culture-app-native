@@ -10,15 +10,15 @@ import { getShadow, getSpacing } from 'ui/theme'
 export const TICKET_SEPARATION_HEIGHT = getSpacing(21.5)
 
 type TicketContentProps = {
-  infoBanner?: React.JSX.Element
-  children: React.JSX.Element
+  bottomContent: React.JSX.Element
   topContent: React.JSX.Element
+  infoBanner?: React.JSX.Element
   onTopBlockLayout?: (height: number) => void
 }
 
 export const TicketDisplay = ({
   infoBanner,
-  children,
+  bottomContent,
   topContent,
   onTopBlockLayout,
 }: TicketContentProps) => {
@@ -40,7 +40,7 @@ export const TicketDisplay = ({
       </MiddleBlock>
       <BottomBlock>
         {infoBanner}
-        {children}
+        {bottomContent}
       </BottomBlock>
     </View>
   )

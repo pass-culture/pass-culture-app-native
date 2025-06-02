@@ -80,15 +80,15 @@ export const Ticket = ({
           }
         />
       }
+      bottomContent={<TicketBottomPart offer={offer} booking={booking} userEmail={user?.email} />}
       infoBanner={
         <InfoBanner
           message="Tu auras besoin de ta carte d’identité pour accéder à l’évènement."
           icon={IdCard}
         />
       }
-      onTopBlockLayout={setTopBlockHeight}>
-      <TicketBottomPart offer={offer} booking={booking} userEmail={user?.email} />
-    </TicketDisplay>
+      onTopBlockLayout={setTopBlockHeight}
+    />
   )
 }
 
