@@ -85,7 +85,7 @@ export const BookingDetailsContent = ({
     />
   )
 
-  return user ? (
+  return (
     <MainContainer>
       <ScrollView
         onScroll={onScroll}
@@ -147,7 +147,7 @@ export const BookingDetailsContent = ({
       {/* BookingDetailsHeader is called after Body to implement the BlurView for iOS */}
       <BookingDetailsHeader headerTransition={headerTransition} title={offer.name} />
     </MainContainer>
-  ) : null
+  )
 }
 
 const MainContainer = styled.View(({ theme }) => ({
