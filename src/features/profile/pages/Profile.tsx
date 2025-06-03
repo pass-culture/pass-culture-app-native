@@ -42,6 +42,7 @@ import { Page } from 'ui/pages/Page'
 import { Bell } from 'ui/svg/icons/Bell'
 import { ArtMaterial } from 'ui/svg/icons/bicolor/ArtMaterial'
 import { BicolorProfile } from 'ui/svg/icons/BicolorProfile'
+import { BicolorTrophy } from 'ui/svg/icons/BicolorTrophy'
 import { Bulb } from 'ui/svg/icons/Bulb'
 import { Confidentiality } from 'ui/svg/icons/Confidentiality'
 import { ExternalSite } from 'ui/svg/icons/ExternalSite'
@@ -149,6 +150,7 @@ const OnlineProfile: React.FC = () => {
 
   // If no dark mode and no rotation mode in web this section is empty
   const hidePreferenceSection = !enableDarkMode && isWeb
+  const shouldShowAchievementsSection = user?.isBeneficiary
 
   return (
     <Page>
@@ -232,6 +234,16 @@ const OnlineProfile: React.FC = () => {
               </Section>
               <Section title="Autres">
                 <VerticalUl>
+                  {shouldShowAchievementsSection ? (
+                    <Li>
+                      <Row
+                        title="Mes succès"
+                        type="navigable"
+                        navigateTo={{ screen: 'Achievements', params: { from: 'profile' } }}
+                        icon={BicolorTrophy}
+                      />
+                    </Li>
+                  ) : null}
                   {hidePreferenceSection ? null : (
                     <Li>
                       <Row

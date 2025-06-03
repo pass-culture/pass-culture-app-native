@@ -161,8 +161,7 @@ export const getCtaWordingAndAction = ({
       return {
         wording: 'Réserver l’offre',
         isDisabled: true,
-        bottomBannerText:
-          'Entre tes 15 et 16 ans tu peux réserver uniquement des offres gratuites.',
+        bottomBannerText: 'À 15 et 16 ans, tu peux réserver uniquement des offres gratuites.',
       }
     }
 
@@ -170,8 +169,7 @@ export const getCtaWordingAndAction = ({
       return {
         wording: 'Réserver l’offre',
         isDisabled: true,
-        bottomBannerText:
-          'Entre tes 15 et 16 ans tu peux réserver uniquement des offres gratuites.',
+        bottomBannerText: 'À 15 et 16 ans, tu peux réserver uniquement des offres gratuites.',
       }
     }
 
@@ -202,7 +200,7 @@ export const getCtaWordingAndAction = ({
     }
   }
 
-  if (userStatus.statusType === YoungStatusType.eligible) {
+  if (userStatus.statusType === YoungStatusType.eligible && !isBeneficiary) {
     const common = {
       wording: isMovieScreeningOffer ? undefined : 'Réserver l’offre',
       isDisabled: false,

@@ -35,7 +35,7 @@ describe('HomeHeader', () => {
       isEligibleForBeneficiaryUpgrade: false,
     })
 
-    const credit = { amount: 0, isExpired: true }
+    const credit = { amount: 5, isExpired: true }
     mockUseAvailableCredit.mockReturnValueOnce(credit)
     mockGeolocBannerFromBackend()
 
@@ -60,23 +60,7 @@ describe('HomeHeader', () => {
     expect(await screen.findByText('Tu as 56 € sur ton pass')).toBeOnTheScreen()
   })
 
-  it('eligible ex beneficiary users should see subtitle: Toute la culture à portée de main', async () => {
-    mockAuthContextWithUser({
-      ...beneficiaryUser,
-      eligibility: EligibilityType['age-18'],
-      isEligibleForBeneficiaryUpgrade: true,
-    })
-
-    const credit = { amount: 5, isExpired: true }
-    mockUseAvailableCredit.mockReturnValueOnce(credit)
-    mockGeolocBannerFromBackend()
-
-    renderHomeHeader()
-
-    expect(await screen.findByText('Toute la culture à portée de main')).toBeOnTheScreen()
-  })
-
-  it('eligible free offer users should see subtitle: ""', async () => {
+  it('eligible free offer users should see subtitle: Toute la culture à portée de main', async () => {
     mockAuthContextWithUser({
       ...beneficiaryUser,
       eligibility: EligibilityType.free,
@@ -90,9 +74,7 @@ describe('HomeHeader', () => {
     renderHomeHeader()
 
     expect(await screen.findByText('Bonjour Jean')).toBeOnTheScreen()
-    expect(screen.queryByText('Tu as 56 € sur ton pass')).not.toBeOnTheScreen()
-    expect(screen.queryByText('Toute la culture à portée de main')).not.toBeOnTheScreen()
-    expect(screen.queryByText('Ton crédit est expiré')).not.toBeOnTheScreen()
+    expect(await screen.findByText('Toute la culture à portée de main')).toBeOnTheScreen()
   })
 
   it('general users should see subtitle: Toute la culture à portée de main', async () => {

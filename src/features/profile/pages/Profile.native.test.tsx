@@ -36,7 +36,6 @@ import {
   render,
   screen,
   userEvent,
-  waitFor,
 } from 'tests/utils'
 import * as useVersion from 'ui/hooks/useVersion'
 
@@ -186,39 +185,6 @@ describe('Profile component', () => {
     const signoutButton = screen.queryByText('Débuggage')
 
     expect(signoutButton).not.toBeOnTheScreen()
-  })
-
-  describe('achievements banner', () => {
-    it('should show banner when user is a beneficiary', async () => {
-      mockedUseAuthContext.mockReturnValueOnce({ user: beneficiaryUser })
-      renderProfile()
-
-      await waitFor(() => {
-        // this banner is not shown if the force update banner is shown (which needs to wait for firestore, thus the achievement banner must wait for firestore as well).
-        expect(screen.getByText('Mes succès')).toBeOnTheScreen()
-      })
-    })
-
-    it('should not show banner if user is not a beneficiary', async () => {
-      renderProfile()
-      await screen.findByText('Mon profil')
-
-      await waitFor(() => {
-        // this banner is not shown if the force update banner is shown (which needs to wait for firestore, thus the achievement banner must wait for firestore as well).
-        expect(screen.queryByText('Mes succès')).not.toBeOnTheScreen()
-      })
-    })
-
-    it('should go to achievements when user clicks the banner', async () => {
-      mockedUseAuthContext.mockReturnValueOnce({ user: beneficiaryUser })
-
-      renderProfile()
-
-      const achievementBanner = await screen.findByText('Mes succès')
-      await user.press(achievementBanner)
-
-      expect(navigate).toHaveBeenCalledWith('Achievements', { from: 'profile' })
-    })
   })
 
   describe('user settings section', () => {
@@ -406,6 +372,38 @@ describe('Profile component', () => {
         params: undefined,
         screen: 'LegalNotices',
       })
+    })
+
+    it('should display achievement section when is beneficiary user', async () => {
+      mockedUseAuthContext.mockReturnValueOnce({ user: beneficiaryUser })
+      renderProfile()
+
+      await act(() => {})
+
+      const achievementSectionTitle = await screen.findByText('Mes succès')
+
+      expect(achievementSectionTitle).toBeOnTheScreen()
+    })
+
+    it('should go to achievements when user clicks the banner', async () => {
+      mockedUseAuthContext.mockReturnValueOnce({ user: beneficiaryUser })
+
+      renderProfile()
+
+      const achievementBanner = await screen.findByText('Mes succès')
+      await user.press(achievementBanner)
+
+      expect(navigate).toHaveBeenCalledWith('Achievements', { from: 'profile' })
+    })
+
+    it('should not display achievement section when is not beneficiary user', async () => {
+      renderProfile()
+
+      await screen.findByText('Mon profil')
+
+      const achievementSectionTitle = screen.queryByText('Mes succès')
+
+      expect(achievementSectionTitle).not.toBeOnTheScreen()
     })
 
     it('should navigate when the feed back row is clicked', async () => {
