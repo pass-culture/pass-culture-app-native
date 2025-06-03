@@ -62,7 +62,6 @@ jest.mock('uuid', () => ({
 }))
 
 jest.mock('libs/firebase/analytics/analytics')
-jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 jest.mock('features/venueMap/hook/useCenterOnLocation')
 const mockUseCenterOnLocation = useCenterOnLocation as jest.Mock

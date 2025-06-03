@@ -5,8 +5,6 @@ import { render, checkAccessibilityFor, screen } from 'tests/utils/web'
 
 import { BeneficiaryRequestSent } from './BeneficiaryRequestSent'
 
-jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
-
 jest.mock('features/auth/context/AuthContext')
 
 describe('<BeneficiaryRequestSent/>', () => {

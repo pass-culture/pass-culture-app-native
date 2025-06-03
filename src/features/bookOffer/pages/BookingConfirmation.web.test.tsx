@@ -12,7 +12,6 @@ jest.mock('shared/user/useAvailableCredit', () => ({
 }))
 
 jest.mock('libs/firebase/analytics/analytics')
-jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 describe('<BookingConfirmation />', () => {
   describe('Accessibility', () => {

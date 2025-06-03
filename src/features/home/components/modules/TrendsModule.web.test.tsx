@@ -12,8 +12,6 @@ const trackingProps = {
   moduleId: formattedTrendsModule.id,
 }
 
-jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
-
 describe('TrendsModule', () => {
   it('should redirect to thematic home when content type is venue map block', async () => {
     render(reactQueryProviderHOC(<TrendsModule {...trackingProps} {...formattedTrendsModule} />))

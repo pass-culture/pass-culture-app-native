@@ -9,8 +9,6 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { PLACEHOLDER_DATA } from 'libs/subcategories/placeholderData'
 import { renderHook } from 'tests/utils'
 
-jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
-
 const mockData: SubcategoriesResponseModelv2 | undefined = PLACEHOLDER_DATA
 jest.mock('libs/subcategories/useSubcategories', () => ({
   useSubcategories: () => ({

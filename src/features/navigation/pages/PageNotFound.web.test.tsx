@@ -5,7 +5,6 @@ import { render, checkAccessibilityFor } from 'tests/utils/web'
 import { PageNotFound } from './PageNotFound'
 
 jest.mock('libs/firebase/analytics/analytics')
-jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 describe('<PageNotFound/>', () => {
   describe('Accessibility', () => {

@@ -5,7 +5,6 @@ import { render, checkAccessibilityFor } from 'tests/utils/web'
 
 import { FeedbackInApp } from './FeedbackInApp'
 
-jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 jest.mock('libs/firebase/analytics/analytics')
 
 describe('<FeedbackInApp/>', () => {

@@ -5,7 +5,6 @@ import { checkAccessibilityFor, render } from 'tests/utils/web'
 import { ExpiredOrLostID } from './ExpiredOrLostID'
 
 jest.mock('libs/firebase/analytics/analytics')
-jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 describe('<ExpiredOrLostID/>', () => {
   describe('Accessibility', () => {

@@ -1,6 +1,5 @@
 import { onPressStoreLink } from './onPressStoreLink'
 
-jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 jest.mock('libs/firebase/analytics/analytics')
 
 const mockAssign = jest.fn()

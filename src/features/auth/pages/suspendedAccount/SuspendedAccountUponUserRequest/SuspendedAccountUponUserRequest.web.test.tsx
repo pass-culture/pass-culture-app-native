@@ -10,7 +10,6 @@ import { SuspendedAccountUponUserRequest } from './SuspendedAccountUponUserReque
 jest.mock('libs/jwt/jwt')
 
 jest.mock('libs/firebase/analytics/analytics')
-jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 describe('<SuspendedAccountUponUserRequest/>', () => {
   describe('Accessibility', () => {

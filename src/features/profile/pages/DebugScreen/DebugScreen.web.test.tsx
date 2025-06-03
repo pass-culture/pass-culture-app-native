@@ -5,7 +5,6 @@ import { render, checkAccessibilityFor } from 'tests/utils/web'
 import { DebugScreen } from './DebugScreen'
 
 jest.mock('libs/firebase/analytics/analytics')
-jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 jest.mock('features/auth/context/AuthContext', () => ({
   useAuthContext: () => ({ user: { id: '1234' } }),

@@ -12,8 +12,6 @@ import { checkAccessibilityFor, render, screen, act } from 'tests/utils/web'
 
 jest.setTimeout(20_000) // to avoid exceeded timeout
 
-jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
-
 const mockedOffer: Partial<OfferResponseV2> | undefined = offerResponseSnap
 jest.mock('queries/offer/useOfferQuery', () => ({
   useOfferQuery: () => ({
@@ -58,7 +56,6 @@ jest.mock('queries/searchVenuesOffer/useSearchVenueOffersInfiniteQuery', () => (
 }))
 
 jest.mock('libs/firebase/analytics/analytics')
-jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 describe('<Offer/>', () => {
   describe('Accessibility', () => {

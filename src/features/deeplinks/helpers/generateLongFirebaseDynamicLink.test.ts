@@ -3,8 +3,6 @@ import { env } from 'libs/environment/env'
 
 jest.mock('libs/firebase/analytics/analytics')
 
-jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
-
 describe('Formatting deeplink url', () => {
   afterAll(() => jest.resetAllMocks())
 

@@ -5,7 +5,6 @@ import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setF
 import { checkAccessibilityFor, render } from 'tests/utils/web'
 
 jest.mock('libs/firebase/analytics/analytics')
-jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 describe('<DisableActivation/>', () => {
   beforeEach(() => setFeatureFlags())

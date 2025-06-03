@@ -19,8 +19,6 @@ import * as useModalAPI from 'ui/components/modals/useModal'
 
 import { OfferContent } from './OfferContent.web'
 
-jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
-
 const mockShowModal = jest.fn()
 jest.spyOn(useModalAPI, 'useModal').mockReturnValue({
   visible: false,
@@ -58,7 +56,6 @@ jest
 jest.mock('features/auth/context/AuthContext')
 
 jest.mock('libs/firebase/analytics/analytics')
-jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 describe('<OfferContent />', () => {
   const user = userEvent.setup()

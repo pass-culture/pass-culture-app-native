@@ -6,7 +6,6 @@ import { render, checkAccessibilityFor } from 'tests/utils/web'
 import { QuitSignupModal } from './QuitSignupModal'
 
 jest.mock('libs/firebase/analytics/analytics')
-jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 describe('<QuitSignupModal/>', () => {
   describe('Accessibility', () => {

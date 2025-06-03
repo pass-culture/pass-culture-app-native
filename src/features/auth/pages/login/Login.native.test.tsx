@@ -38,8 +38,6 @@ import { SNACK_BAR_TIME_OUT_LONG } from 'ui/components/snackBar/SnackBarContext'
 
 import { Login } from './Login'
 
-jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
-
 jest.mock('libs/network/NetInfoWrapper')
 
 jest.mock('libs/monitoring/services')

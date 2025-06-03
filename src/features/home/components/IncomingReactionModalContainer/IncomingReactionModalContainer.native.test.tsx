@@ -12,7 +12,6 @@ import { act, render, screen, userEvent } from 'tests/utils'
 
 const TWENTY_FOUR_HOURS = 24 * 60 * 60 * 1000 // 24 hours in milliseconds
 
-jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 jest.mock('libs/firebase/analytics/analytics')
 
 const mockMutate = jest.fn()

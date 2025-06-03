@@ -6,7 +6,6 @@ import { render, checkAccessibilityFor } from 'tests/utils/web'
 import { BannedCountryError } from './BannedCountryError'
 
 jest.mock('libs/firebase/analytics/analytics')
-jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 describe('<BannedCountryError/>', () => {
   describe('Accessibility', () => {

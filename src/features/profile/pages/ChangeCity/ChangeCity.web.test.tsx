@@ -10,7 +10,7 @@ jest.mock('uuid', () => ({
 }))
 
 jest.mock('libs/firebase/analytics/analytics')
-jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
+
 jest.mock('ui/theme/customFocusOutline/customFocusOutline')
 
 describe('ChangeCity', () => {

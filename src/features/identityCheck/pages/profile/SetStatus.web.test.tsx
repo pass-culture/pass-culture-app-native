@@ -12,7 +12,6 @@ import { render, checkAccessibilityFor, act } from 'tests/utils/web'
 
 import { SetStatus } from './SetStatus'
 
-jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 jest.mock('features/identityCheck/context/SubscriptionContextProvider')
 
 describe('<SetStatus/>', () => {

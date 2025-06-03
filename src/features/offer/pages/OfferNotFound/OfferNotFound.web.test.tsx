@@ -7,7 +7,6 @@ const resetErrorBoundary = () => null
 const error = new Error('error')
 
 jest.mock('libs/firebase/analytics/analytics')
-jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 describe('<OfferNotFound/>', () => {
   describe('Accessibility', () => {

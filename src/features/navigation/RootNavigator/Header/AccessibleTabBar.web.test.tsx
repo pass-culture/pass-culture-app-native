@@ -24,7 +24,7 @@ import { fireEvent, render, screen } from 'tests/utils/web'
 import { AccessibleTabBar } from './AccessibleTabBar'
 
 jest.mock('libs/firebase/analytics/analytics')
-jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
+
 jest.mock('react-native-safe-area-context', () => ({
   useSafeAreaInsets: jest.fn(() => ({ bottom: 10 })),
 }))

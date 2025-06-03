@@ -43,7 +43,6 @@ const mockedFacets = undefined
 const tree = createMappingTree(subcategoriesDataTest, mockedFacets)
 
 jest.mock('libs/firebase/analytics/analytics')
-jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 let mockData: SubcategoriesResponseModelv2 | undefined = PLACEHOLDER_DATA
 jest.mock('libs/subcategories/useSubcategories', () => ({

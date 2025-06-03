@@ -9,8 +9,6 @@ import { renderHook } from 'tests/utils'
 
 import { useGetCurrencyToDisplay } from './useGetCurrencyToDisplay'
 
-jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
-
 jest.mock('libs/location')
 const mockUseGeolocation = jest.mocked(useLocation)
 const NOUMEA_DEFAULT_POSITION = { longitude: 166.445742, latitude: -22.26308 }
