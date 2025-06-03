@@ -1,13 +1,15 @@
-import React from 'react'
-import { useInfiniteHits, UseInfiniteHitsProps } from 'react-instantsearch-core'
-import styled from 'styled-components/native'
-
 import { SearchGroupNameEnumv2 } from 'api/gen'
-import { AutocompleteOfferItem } from 'features/search/components/AutocompleteOfferItem/AutocompleteOfferItem'
+import { useAlgoliaSimilarOffers } from 'features/offer/api/useAlgoliaSimilarOffers'
+import { Highlight } from 'features/search/components/Highlight/Highlight'
 import { CreateHistoryItem } from 'features/search/types'
 import { AlgoliaSuggestionHit } from 'libs/algolia/types'
+import React, { FunctionComponent } from 'react'
+import { UseInfiniteHitsProps } from 'react-instantsearch-core'
+import { Text } from 'react-native'
+import styled from 'styled-components/native'
 import { Li } from 'ui/components/Li'
 import { VerticalUl } from 'ui/components/Ul'
+import { MagnifyingGlassFilled } from 'ui/svg/icons/MagnifyingGlassFilled'
 import { getSpacing, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -22,26 +24,30 @@ export function AutocompleteOffer({
   offerCategories,
   ...props
 }: AutocompleteOfferProps) {
-  const { hits, sendEvent } = useInfiniteHits(props)
-
-  return hits.length > 0 ? (
+  const suggestedPrompts = [
+    'Concert de rap ce weekend à Marseille',
+    'Expo à Paris ce soir',
+    'Festival en Dordogne cet été',
+  ]
+  return (
     <React.Fragment>
       <AutocompleteOfferTitleText>Suggestions</AutocompleteOfferTitleText>
       <StyledVerticalUl>
-        {hits.map((item) => (
-          <Li key={item.objectID}>
-            <AutocompleteOfferItem
-              hit={item as unknown as AlgoliaSuggestionHit}
-              sendEvent={sendEvent}
-              addSearchHistory={addSearchHistory}
-              shouldShowCategory
-              offerCategories={offerCategories || []}
-            />
+        {suggestedPrompts.map((item) => (
+          <Li key={item}>
+            <AutocompleteItemTouchable testID={'testID'} onPress={() => {}}>
+              <MagnifyingGlassIconContainer>
+                <MagnifyingGlassFilledIcon />
+              </MagnifyingGlassIconContainer>
+              <StyledText numberOfLines={1} ellipsizeMode="tail">
+                <Typo.Body testID="highlightedText">{item}</Typo.Body>
+              </StyledText>
+            </AutocompleteItemTouchable>
           </Li>
         ))}
       </StyledVerticalUl>
     </React.Fragment>
-  ) : null
+  )
 }
 
 const StyledVerticalUl = styled(VerticalUl)({
@@ -53,3 +59,20 @@ const AutocompleteOfferTitleText = styled(Typo.BodyAccentXs).attrs(getHeadingAtt
     color: theme.colors.greyDark,
   })
 )
+
+const MagnifyingGlassIconContainer = styled.View({ flexShrink: 0 })
+
+const AutocompleteItemTouchable = styled.TouchableOpacity({
+  flexDirection: 'row',
+  alignItems: 'center',
+  paddingBottom: getSpacing(4),
+})
+
+const MagnifyingGlassFilledIcon = styled(MagnifyingGlassFilled).attrs(({ theme }) => ({
+  size: theme.icons.sizes.extraSmall,
+  color: theme.colors.greyDark,
+}))``
+
+const StyledText = styled(Text)({
+  marginLeft: getSpacing(2),
+})

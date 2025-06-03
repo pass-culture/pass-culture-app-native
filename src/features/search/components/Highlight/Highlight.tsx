@@ -55,6 +55,7 @@ export function Highlight({ suggestionHit, venueHit, historyItem, attribute }: H
   let attributeValue = ''
 
   if (suggestionHit) {
+    console.log(suggestionHit)
     const { value } = getPropertyByPath(suggestionHit._highlightResult, attribute)
     attributeValue = value?.toString()
   }
