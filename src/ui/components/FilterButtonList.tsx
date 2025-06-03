@@ -18,15 +18,21 @@ export type FilterButtonListItem = {
 type Props = {
   items: FilterButtonListItem[]
   contentContainerStyle?: StyleProp<ViewStyle>
+  horizontal?: boolean
 } & PropsWithChildren
 
-export const FilterButtonList: React.FC<Props> = ({ items, contentContainerStyle, children }) => {
+export const FilterButtonList: React.FC<Props> = ({
+  items,
+  contentContainerStyle,
+  children,
+  horizontal = true,
+}) => {
   return (
     <ScrollView
-      horizontal
+      horizontal={horizontal}
       showsHorizontalScrollIndicator={false}
       contentContainerStyle={contentContainerStyle}>
-      <Ul>
+      <StyledUl>
         {children}
         {items.map((item) => (
           <StyledLi key={item.testID ? `${item.testID}Li` : item.label}>
@@ -38,10 +44,17 @@ export const FilterButtonList: React.FC<Props> = ({ items, contentContainerStyle
             />
           </StyledLi>
         ))}
-      </Ul>
+      </StyledUl>
     </ScrollView>
   )
 }
+
+const StyledUl = styled(Ul)(({ theme }) => ({
+  flexDirection: 'row',
+  flexWrap: theme.isDesktopViewport ? 'wrap' : undefined,
+  maxWidth: theme.isDesktopViewport ? '100%' : undefined,
+  justifyContent: theme.isDesktopViewport ? 'center' : undefined,
+}))
 
 const StyledLi = styled(Li)({
   marginLeft: getSpacing(1),
