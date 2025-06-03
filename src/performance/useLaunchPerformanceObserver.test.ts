@@ -1,29 +1,49 @@
+import performance, { PerformanceObserver } from 'react-native-performance'
+import * as performanceAPI from 'react-native-performance'
+
+import { CustomMarks } from 'performance/CustomMarks'
 import { useLaunchPerformanceObserver } from 'performance/useLaunchPerformanceObserver'
 import { renderHook } from 'tests/utils'
 
-jest.mock('react-native-performance')
+const performanceObserverSpy = PerformanceObserver as jest.Mock
+
+const measureSpy = performance.measure as jest.Mock
+
+const getEntriesSpy = jest.spyOn(performanceAPI.default, 'getEntriesByName').mockReturnValue([
+  {
+    name: 'nativeLaunchStart',
+    entryType: 'react-native-mark',
+    startTime: 44947437,
+    duration: 0,
+  } as performanceAPI.PerformanceEntry,
+  {
+    name: 'screenInteractive',
+    entryType: 'mark',
+    duration: 0,
+    startTime: 10,
+  } as performanceAPI.PerformanceEntry,
+  {
+    name: 'timeToInteractive',
+    entryType: 'measure',
+    duration: 3500.5,
+    startTime: 10,
+  } as performanceAPI.PerformanceEntry,
+])
+console.log(getEntriesSpy.getEntriesByName)
+// jest.useFakeTimers()
 
 describe('useLaunchPerformanceObserver', () => {
-  beforeEach(() => {
-    jest.useFakeTimers()
+  it('should instantiate the observer', () => {
+    renderHook(() => useLaunchPerformanceObserver())
+
+    expect(performanceObserverSpy).toBeTruthy()
   })
 
-  it('should call performance measure to calculate tti', () => {
-    const { result } = renderHook(() => useLaunchPerformanceObserver())
-    jest.runAllTimers()
+  it('should call performance measure', () => {
+    renderHook(() => useLaunchPerformanceObserver())
 
-    expect(result).toEqual({})
-  })
+    performance.mark(CustomMarks.SCREEN_INTERACTIVE)
 
-  it('1', () => {
-    expect(true).toBeTruthy()
-  })
-
-  it('2', () => {
-    expect(true).toBeTruthy()
-  })
-
-  it('3', () => {
-    expect(true).toBeTruthy()
+    expect(measureSpy).toHaveBeenCalledTimes(1)
   })
 })
