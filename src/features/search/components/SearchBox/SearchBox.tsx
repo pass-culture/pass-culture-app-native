@@ -405,7 +405,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
               placeholder={placeholder}
             />
             <Dictaphone />
-            <Toto wording="Voice search" onPress={onSubmitVoiceSearchQuery} />
+            <Toto wording="Rechercher" onPress={onSubmitVoiceSearchQuery} />
           </FlexView>
         </SearchInputA11yContainer>
       </SearchInputContainer>
