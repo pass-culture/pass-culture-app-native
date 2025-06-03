@@ -1,5 +1,3 @@
-// import { getAI, getGenerativeModel, GoogleAIBackend } from '@firebase/ai'
-// import { ai } from 'libs/firebase/shims/ai/index.web'
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition'
 
 import { useRoute } from '@react-navigation/native'
@@ -34,6 +32,7 @@ import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/S
 import { getSpacing } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { useVertexAIMutation } from 'features/search/components/SearchBox/useVertexAIQuery'
 
 const SEARCH_DEBOUNCE_MS = 500
 
@@ -333,40 +332,39 @@ export const SearchBox: React.FunctionComponent<Props> = ({
     !isFocusOnSuggestions &&
     !isDesktopViewport
 
-  const onSubmitVoiceSearchQuery = () => {
+  const { mutate } = useVertexAIMutation({
+    onSuccess: (data) => {
+      const text = data.candidates[0].content.parts[0].text
+      const newVariable = text.replace(/```(json)?/g, '')
+      const newVariable2 = JSON.parse(newVariable)
+      console.log(newVariable2)
+      const searchId = uuidv4()
+      const partialSearchState: Partial<SearchState> = {
+        query: newVariable2.query,
+        locationFilter: searchState.locationFilter,
+        venue: searchState.venue,
+        offerCategories: [newVariable2.category],
+        offerNativeCategories: searchState.offerNativeCategories,
+        gtls: searchState.gtls,
+        maxPrice: (newVariable2.price && parseFloat(newVariable2.price)) || undefined,
+        searchId,
+        isAutocomplete: undefined,
+        isFromHistory: undefined,
+      }
+      pushWithVoiceSearch(partialSearchState, {})
+      hideSuggestions()
+    },
+  })
+  const onSubmitVoiceSearchQuery = async () => {
     const searchId = uuidv4()
-
-    const partialSearchState: Partial<SearchState> = {
-      query: transcript,
-      locationFilter: searchState.locationFilter,
-      venue: searchState.venue,
-      offerCategories: searchState.offerCategories,
-      offerNativeCategories: searchState.offerNativeCategories,
-      gtls: searchState.gtls,
-      priceRange: searchState.priceRange,
-      searchId,
-      isAutocomplete: undefined,
-      isFromHistory: undefined,
-    }
-    pushWithVoiceSearch(partialSearchState, {})
-    hideSuggestions()
+    // if (data) {
+    //   const text = data.candidates[0].content.parts[0].text
+    //   const newVariable = text.replace(/```(json)?/g, '')
+    //   console.log(JSON.parse(newVariable))
+    // }
+    mutate(transcript)
   }
 
-  // Create a `GenerativeModel` instance with a model that supports your use case
-  // const model = getGenerativeModel(ai, { model: 'gemini-2.0-flash' })
-  // async function run() {
-  //   // Provide a prompt that contains text
-  //   const prompt = 'Write a story about a magic backpack.'
-
-  //   // To generate text output, call generateContent with the text input
-  //   const result = await model.generateContent(prompt)
-
-  //   const response = result.response
-  //   const text = response.text()
-  //   console.log(text)
-  // }
-
-  // run()
   return (
     <RowContainer>
       {accessibleHiddenTitle ? (
