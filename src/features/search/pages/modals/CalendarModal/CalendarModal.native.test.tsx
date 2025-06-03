@@ -83,6 +83,76 @@ describe('CalendarModal', () => {
       )
       expect(mockHideModal).toHaveBeenCalledWith()
     })
+
+    describe('should execute search with filter when pressing filter and search button', () => {
+      it('With today filter', async () => {
+        renderCalendarModal()
+
+        await user.press(screen.getByText('Aujourd’hui'))
+
+        await user.press(screen.getByText('Rechercher'))
+
+        expect(mockDispatch).toHaveBeenCalledWith(
+          expect.objectContaining({
+            type: 'SET_STATE',
+            payload: expect.objectContaining({
+              calendarFilterId: 'today',
+            }),
+          })
+        )
+      })
+
+      it('With this week filter', async () => {
+        renderCalendarModal()
+
+        await user.press(screen.getByText('Cette semaine'))
+
+        await user.press(screen.getByText('Rechercher'))
+
+        expect(mockDispatch).toHaveBeenCalledWith(
+          expect.objectContaining({
+            type: 'SET_STATE',
+            payload: expect.objectContaining({
+              calendarFilterId: 'thisWeek',
+            }),
+          })
+        )
+      })
+
+      it('With this weekend filter', async () => {
+        renderCalendarModal()
+
+        await user.press(screen.getByText('Ce week-end'))
+
+        await user.press(screen.getByText('Rechercher'))
+
+        expect(mockDispatch).toHaveBeenCalledWith(
+          expect.objectContaining({
+            type: 'SET_STATE',
+            payload: expect.objectContaining({
+              calendarFilterId: 'thisWeekend',
+            }),
+          })
+        )
+      })
+
+      it('With this month filter', async () => {
+        renderCalendarModal()
+
+        await user.press(screen.getByText('Ce mois-ci'))
+
+        await user.press(screen.getByText('Rechercher'))
+
+        expect(mockDispatch).toHaveBeenCalledWith(
+          expect.objectContaining({
+            type: 'SET_STATE',
+            payload: expect.objectContaining({
+              calendarFilterId: 'thisMonth',
+            }),
+          })
+        )
+      })
+    })
   })
 
   it('should reset search when pressing reset button', async () => {
@@ -106,6 +176,54 @@ describe('CalendarModal', () => {
         endingDatetime: undefined,
       }),
     })
+  })
+
+  it('should display filter button as applied when filter applied', async () => {
+    mockUseSearch.mockReturnValueOnce({
+      ...initialMockUseSearch,
+      searchState: {
+        ...initialSearchState,
+        beginningDatetime: '2025-04-28',
+        calendarFilterId: 'today',
+      },
+    })
+
+    renderCalendarModal()
+
+    const filterButton = await screen.findByTestId('Aujourd’hui\u00a0: Filtre sélectionné')
+
+    expect(filterButton).toHaveStyle({
+      borderWidth: 2,
+      backgroundColor: '#F1F1F4',
+    })
+  })
+
+  it('should reset search when pressing applied filter and execute the search', async () => {
+    mockUseSearch.mockReturnValueOnce({
+      ...initialMockUseSearch,
+      searchState: {
+        ...initialSearchState,
+        beginningDatetime: '2025-04-28',
+        calendarFilterId: 'today',
+      },
+    })
+
+    renderCalendarModal()
+
+    await screen.findByTestId('Aujourd’hui\u00a0: Filtre sélectionné')
+
+    await user.press(screen.getByText('Aujourd’hui'))
+
+    await user.press(screen.getByText('Rechercher'))
+
+    expect(mockDispatch).toHaveBeenCalledWith(
+      expect.objectContaining({
+        type: 'SET_STATE',
+        payload: expect.objectContaining({
+          calendarFilterId: undefined,
+        }),
+      })
+    )
   })
 })
 

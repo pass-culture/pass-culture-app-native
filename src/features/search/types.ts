@@ -65,6 +65,7 @@ export interface SearchState {
   isFromHistory?: boolean
   venue?: Venue
   gtls?: GTL[]
+  calendarFilterId?: CalendarFilterId
 }
 
 export type DescriptionContext = {
@@ -141,4 +142,4 @@ export type CalendarModalFormData = {
   selectedEndDate?: Date
 }
 
-export type FilterId = 'today' | 'thisWeek' | 'thisWeekend' | 'thisMonth' | 'nextMonth'
+export type CalendarFilterId = 'today' | 'thisWeek' | 'thisWeekend' | 'thisMonth' | 'nextMonth'
