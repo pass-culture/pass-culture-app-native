@@ -11086,7 +11086,7 @@ __metadata:
     react-native: 0.74.7
     react-native-animatable: ^1.3.3
     react-native-appsflyer: ^6.15.3
-    react-native-calendars: 1.1284.0
+    react-native-calendars: ^1.1312.1
     react-native-code-push: ^8.3.1
     react-native-date-picker: ^4.3.5
     react-native-detector: ^0.2.3
@@ -17142,13 +17142,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fs@npm:^0.0.1-security":
-  version: 0.0.1-security
-  resolution: "fs@npm:0.0.1-security"
-  checksum: 53c6230e1faae9fa32c1df82c16a84b51b1243d20f3da2b64bd110bb472b73b9185169b703e008356e3cdc92d155088b617d9d39a63b5227a30b3621baad7f5d
-  languageName: node
-  linkType: hard
-
 "fsevents@npm:2.3.2, fsevents@npm:^2.3.2, fsevents@npm:~2.3.2":
   version: 2.3.2
   resolution: "fsevents@npm:2.3.2"
@@ -18484,13 +18477,6 @@ __metadata:
   version: 3.0.6
   resolution: "immediate@npm:3.0.6"
   checksum: f9b3486477555997657f70318cc8d3416159f208bec4cca3ff3442fd266bc23f50f0c9bd8547e1371a6b5e82b821ec9a7044a4f7b944798b25aa3cc6d5e63e62
-  languageName: node
-  linkType: hard
-
-"immutable@npm:^4.0.0-rc.12":
-  version: 4.3.7
-  resolution: "immutable@npm:4.3.7"
-  checksum: 1c50eb053bb300796551604afff554066f041aa8e15926cf98f6d11d9736b62ad12531c06515dd96375258653878b4736f8051cd20b640f5f976d09fa640e3ec
   languageName: node
   linkType: hard
 
@@ -22403,7 +22389,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"moment@npm:^2.24.0":
+"moment@npm:^2.29.4":
   version: 2.30.1
   resolution: "moment@npm:2.30.1"
   checksum: 859236bab1e88c3e5802afcf797fc801acdbd0ee509d34ea3df6eea21eb6bcc2abd4ae4e4e64aa7c986aa6cba563c6e62806218e6412a765010712e5fa121ba6
@@ -24732,24 +24718,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-native-calendars@npm:1.1284.0":
-  version: 1.1284.0
-  resolution: "react-native-calendars@npm:1.1284.0"
+"react-native-calendars@npm:^1.1312.1":
+  version: 1.1312.1
+  resolution: "react-native-calendars@npm:1.1312.1"
   dependencies:
-    fs: ^0.0.1-security
     hoist-non-react-statics: ^3.3.1
-    immutable: ^4.0.0-rc.12
     lodash: ^4.17.15
     memoize-one: ^5.2.1
-    moment: ^2.24.0
+    moment: ^2.29.4
     prop-types: ^15.5.10
+    react-native-safe-area-context: 4.5.0
     react-native-swipe-gestures: ^1.0.5
-    recyclerlistview: ^3.0.5
+    recyclerlistview: ^4.0.0
     xdate: ^0.8.0
   dependenciesMeta:
     moment:
       optional: true
-  checksum: f2e0168ccdca8be4299d200ae28c513ed34204a6b0147ef4c44f4b775a3dd8b9eb12b40184510651685457a08d3ad34173e1c20672b72413d48b376ced8f0e4f
+  checksum: fd9c1bcbffa5c497e0a6f0b1324a8c29545f2d5aff2cf663934b83090a52fc10d258e06b05aa99bb4086ad26af45b440b499ee0d04e1869f033dea9898e676e5
   languageName: node
   linkType: hard
 
@@ -25037,6 +25022,16 @@ __metadata:
     react: "*"
     react-native: "*"
   checksum: 86a0614c5bef60ff8e056cff3fd4200cc6d181653cb6c26992ab62061792474f4872d1f5d394234ec6da75ce8b2960c930f4d6a1b6af3b6579cf1c30b6d64bb5
+  languageName: node
+  linkType: hard
+
+"react-native-safe-area-context@npm:4.5.0":
+  version: 4.5.0
+  resolution: "react-native-safe-area-context@npm:4.5.0"
+  peerDependencies:
+    react: "*"
+    react-native: "*"
+  checksum: 958df1d20492aa89c23d746f88409a3a3bd1b0d397c80310a4b0bbec9888cbbeb7579c9c92dad46841e2e6536491806206228ba009b7c8af970670aef8273a30
   languageName: node
   linkType: hard
 
