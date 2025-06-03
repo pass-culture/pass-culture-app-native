@@ -16,6 +16,7 @@
         pkgs.mkShellNoCC {
           packages = [
             pkgs.devbox
+            pkgs.google-cloud-sdk
             pkgs.jdk17 # needed by Android
             pkgs.ios-deploy # needed to run the app on real iPhone
             pkgs.jq # needed by some scripts run in the pipeline

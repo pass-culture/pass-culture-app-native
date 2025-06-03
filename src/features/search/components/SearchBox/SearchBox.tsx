@@ -1,5 +1,3 @@
-import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition'
-
 import { useRoute } from '@react-navigation/native'
 import { debounce } from 'lodash'
 import React, { useCallback, useEffect, useRef, useState } from 'react'
@@ -11,6 +9,7 @@ import {
   TextInput as RNTextInput,
   TextInputSubmitEditingEventData,
 } from 'react-native'
+import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition'
 import styled, { useTheme } from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
@@ -20,19 +19,24 @@ import { useSettingsContext } from 'features/auth/context/SettingsContext'
 import { homeNavConfig } from 'features/navigation/TabBar/helpers'
 import { useGoBack } from 'features/navigation/useGoBack'
 import { HiddenSuggestionsButton } from 'features/search/components/Buttons/HiddenSuggestionsButton'
+import { useVertexAIMutation } from 'features/search/components/SearchBox/useVertexAIQuery'
 import { SearchMainInput } from 'features/search/components/SearchMainInput/SearchMainInput'
 import { initialSearchState } from 'features/search/context/reducer'
 import { useSearch } from 'features/search/context/SearchWrapper'
+import { DATE_FILTER_OPTIONS } from 'features/search/enums'
 import { useNavigateToSearch } from 'features/search/helpers/useNavigateToSearch/useNavigateToSearch'
 import { CreateHistoryItem, SearchView, SearchState } from 'features/search/types'
 import { analytics } from 'libs/analytics/provider'
+import LottieView from 'libs/lottie'
+import RecordingAnimation from 'ui/animations/recording.json'
+import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
+import { styledButton } from 'ui/components/buttons/styledButton'
 import { BackButton } from 'ui/components/headers/BackButton'
 import { HiddenAccessibleText } from 'ui/components/HiddenAccessibleText'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { getSpacing } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
-import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
-import { useVertexAIMutation } from 'features/search/components/SearchBox/useVertexAIQuery'
+import { Text } from 'react-native'
 
 const SEARCH_DEBOUNCE_MS = 500
 
@@ -337,33 +341,40 @@ export const SearchBox: React.FunctionComponent<Props> = ({
       const text = data.candidates[0].content.parts[0].text
       const newVariable = text.replace(/```(json)?/g, '')
       const newVariable2 = JSON.parse(newVariable)
+      // eslint-disable-next-line no-console
       console.log(newVariable2)
       const searchId = uuidv4()
       const partialSearchState: Partial<SearchState> = {
-        query: newVariable2.query,
+        query: newVariable2.query || '',
         locationFilter: searchState.locationFilter,
         venue: searchState.venue,
         offerCategories: [newVariable2.category],
         offerNativeCategories: searchState.offerNativeCategories,
         gtls: searchState.gtls,
-        maxPrice: (newVariable2.price && parseFloat(newVariable2.price)) || undefined,
+        priceRange: newVariable2.price ? [0, newVariable2.price] : undefined,
         searchId,
         isAutocomplete: undefined,
         isFromHistory: undefined,
+        date: newVariable2.date
+          ? {
+              option: DATE_FILTER_OPTIONS.USER_PICK,
+              selectedDate: newVariable2.date,
+            }
+          : null,
       }
       pushWithVoiceSearch(partialSearchState, {})
       hideSuggestions()
     },
   })
-  const onSubmitVoiceSearchQuery = async () => {
-    const searchId = uuidv4()
-    // if (data) {
-    //   const text = data.candidates[0].content.parts[0].text
-    //   const newVariable = text.replace(/```(json)?/g, '')
-    //   console.log(JSON.parse(newVariable))
-    // }
+  const onSubmitVoiceSearchQuery = () => {
+    // eslint-disable-next-line no-console
+    console.log(transcript)
     mutate(transcript)
   }
+
+  useEffect(() => {
+    setDisplayedQuery(transcript)
+  }, [transcript])
 
   return (
     <RowContainer>
@@ -393,7 +404,8 @@ export const SearchBox: React.FunctionComponent<Props> = ({
               disableInputClearButton={disableInputClearButton}
               placeholder={placeholder}
             />
-            <ButtonPrimary wording="Voice search" onPress={onSubmitVoiceSearchQuery} />
+            <Dictaphone />
+            <Toto wording="Voice search" onPress={onSubmitVoiceSearchQuery} />
           </FlexView>
         </SearchInputA11yContainer>
       </SearchInputContainer>
@@ -401,7 +413,6 @@ export const SearchBox: React.FunctionComponent<Props> = ({
         Indique le nom d’une offre ou d’un lieu puis lance la recherche à l’aide de la touche
         ”Entrée”
       </HiddenAccessibleText>
-      <Dictaphone />
     </RowContainer>
   )
 }
@@ -436,21 +447,42 @@ const FlexView = styled.View({
   flex: 1,
   flexDirection: 'row',
 })
+
+const Toto = styledButton(ButtonPrimary)({
+  width: 150
+})
+
 const Dictaphone = () => {
-  const { transcript, listening, resetTranscript, browserSupportsSpeechRecognition } =
-    useSpeechRecognition()
+  const { listening, resetTranscript, browserSupportsSpeechRecognition } = useSpeechRecognition()
 
   if (!browserSupportsSpeechRecognition) {
-    return <span>Browser doesn't support speech recognition.</span>
+    return <span>Browser doesn’t support speech recognition.</span>
   }
-  return (
-    <div>
-      <p>Microphone: {listening ? 'on' : 'off'}</p>
-      <button onClick={SpeechRecognition.startListening}>Start</button>
-      <button onClick={SpeechRecognition.stopListening}>Stop</button>
-      <button onClick={resetTranscript}>Reset</button>
-      <p>{transcript}</p>
-    </div>
+
+  return listening ? (
+    <Tutu onPress={SpeechRecognition.stopListening}>
+      {/* <Tutu onPress={resetTranscript}> */}
+      <StyledLottieView source={RecordingAnimation} autoPlay loop />
+    </Tutu>
+  ) : (
+    <Tutu onPress={SpeechRecognition.startListening}>
+      <Text>🎤</Text>
+    </Tutu>
   )
 }
-export default Dictaphone
+
+const Tutu = styled.TouchableHighlight(({ theme }) => ({
+  borderColor: theme.designSystem.color.border.brandPrimary,
+  borderWidth: 1,
+  borderStyle: 'solid',
+  borderRadius: '50%',
+  width: 48,
+  height: 48,
+  alignItems: 'center',
+  justifyContent: 'center',
+}))
+
+const StyledLottieView = styled(LottieView)({
+  width: 240,
+  height: 240,
+})

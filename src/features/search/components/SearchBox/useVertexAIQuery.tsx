@@ -1,6 +1,9 @@
 import { useMutation } from 'react-query'
 
-const ACCESS_TOKEN = 'nope'
+// gcloud auth print-access-token
+const ACCESS_TOKEN =
+  ''
+
 
 export const useVertexAIMutation = ({ onSuccess }) => {
   return useMutation({
@@ -43,12 +46,33 @@ const newFunction = (rawQuery: string) =>
   `
 Je voudrais analyser une phrase énoncée par un jeune âgé de 15 à 21 ans formulant une demande de recherche d'offre culturelle en France à la fois sur le territoire hexagonal et dans les territoires d'outre-mer.
 
-Extrais-moi la category d'offre culturelle et le price de la demande et toute information que tu juges essentielle dans un paramètre query.
-Si c'est un titre de film, ne mets que le titre dans la query.
+Extrais-moi de la demande\u00a0:
+- la category d'offre culturelle
+- le price
+- la date au format YYYY-MM-DD
+- et toute information que tu juges essentielle dans un paramètre query
+Si c'est un titre d'une oeuvre, ne mets que le titre dans la query.
 
-Donne-moi uniquement un dictionnaire JSON sans markdown avec ces trois paramètres. Si tu ne trouves pas un de ces trois paramètres, indique null.
+Donne-moi uniquement un dictionnaire JSON sans markdown avec ces trois paramètres.
+Si tu ne trouves pas un de ces paramètres, indique null.
 
-Voici la phrase du jeune : ${rawQuery}.
+Voici la phrase du jeune\u00a0: ${rawQuery}.
 
-Le paramètre category doit appartenir à un élément de la liste suivante : 'ARTS_LOISIRS_CREATIFS', 'CARTES_JEUNES', 'CONCERTS_FESTIVALS', 'EVENEMENTS_EN_LIGNE', 'CINEMA', 'FILMS_DOCUMENTAIRES_SERIES', 'JEUX_JEUX_VIDEOS', 'LIVRES', 'MEDIA_PRESSE', 'MUSEES_VISITES_CULTURELLES', 'MUSIQUE', 'NONE', 'RENCONTRES_CONFERENCES', 'SPECTACLES'
+Le paramètre category doit appartenir à un élément de la liste suivante\u00a0:
+- ARTS_LOISIRS_CREATIFS
+- CARTES_JEUNES
+- CONCERTS_FESTIVALS
+- EVENEMENTS_EN_LIGNE
+- CINEMA
+- FILMS_DOCUMENTAIRES_SERIES
+- JEUX_JEUX_VIDEOS
+- LIVRES
+- MEDIA_PRESSE
+- MUSEES_VISITES_CULTURELLES
+- MUSIQUE
+- NONE
+- RENCONTRES_CONFERENCES
+- SPECTACLES
+
+Aujourd'hui nous sommes le ${new Date().toDateString()}
 `
