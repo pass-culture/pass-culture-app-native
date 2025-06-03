@@ -12,15 +12,10 @@ async function getProfileInfo() {
   }
 }
 
-export const useProfileInfo = (): {
+export const useProfileInfoQuery = (): {
   profileInfo: RehydrationProfile | null
 } => {
   const { data } = useQuery([QueryKeys.SUBSCRIPTION_PROFILE_INFO], () => getProfileInfo())
 
-  if (data) {
-    // @ts-expect-error: because of noUncheckedIndexedAccess
-    return { profileInfo: data.profile }
-  }
-
-  return { profileInfo: null }
+  return { profileInfo: data?.profile ?? null }
 }
