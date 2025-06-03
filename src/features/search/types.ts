@@ -130,3 +130,15 @@ export enum BooksNativeCategoriesEnum {
 export type NativeCategoryEnum = NativeCategoryIdEnumv2 | BooksNativeCategoriesEnum
 
 export type MarkedDatesColors = { backgroundColor: ColorsType; textColor: ColorsType }
+
+export type CalendarModalFormData = {
+  isToday: boolean
+  isThisWeek: boolean
+  isThisWeekend: boolean
+  isThisMonth: boolean
+  isNextMonth: boolean
+  selectedStartDate?: Date
+  selectedEndDate?: Date
+}
+
+export type FilterId = 'today' | 'thisWeek' | 'thisWeekend' | 'thisMonth' | 'nextMonth'
