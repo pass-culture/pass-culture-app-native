@@ -1,10 +1,11 @@
 import type { Meta } from '@storybook/react'
 import React from 'react'
+import styled from 'styled-components/native'
 
 import { VariantsTemplate, type Variants, type VariantsStory } from 'ui/storybook/VariantsTemplate'
 import { BicolorEverywhere } from 'ui/svg/icons/BicolorEverywhere'
 import { Bulb } from 'ui/svg/icons/Bulb'
-import { Spacer, Typo } from 'ui/theme'
+import { Typo, getSpacing } from 'ui/theme'
 
 import { GenericBanner } from './GenericBanner'
 
@@ -15,10 +16,13 @@ const meta: Meta<typeof GenericBanner> = {
 
 export default meta
 
+const StyledText = styled(Typo.Button)({
+  marginBottom: getSpacing(1),
+})
+
 const textExample = ({ withSubtitle = true }) => (
   <React.Fragment>
-    <Typo.Button>Géolocalise-toi</Typo.Button>
-    <Spacer.Column numberOfSpaces={1} />
+    <StyledText>Géolocalise-toi</StyledText>
     {withSubtitle ? (
       <Typo.Body numberOfLines={2}>Pour trouver des offres autour de toi.</Typo.Body>
     ) : null}

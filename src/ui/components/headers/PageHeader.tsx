@@ -15,9 +15,8 @@ export const PageHeader = ({ title, numberOfLines = 1, subtitle, children }: Pro
     <React.Fragment>
       <Spacer.TopScreen />
       <HeaderContainer>
-        <TitleContainer>
-          <Typo.Title1 numberOfLines={numberOfLines}>{title}</Typo.Title1>
-          <Spacer.Column numberOfSpaces={1} />
+        <TitleContainer gap={1}>
+          <TitleText numberOfLines={numberOfLines}>{title}</TitleText>
           {subtitle ? <CaptionSubtitle>{subtitle}</CaptionSubtitle> : null}
         </TitleContainer>
         {children}
@@ -36,6 +35,10 @@ const HeaderContainer = styled.View(({ theme }) => ({
 
 const TitleContainer = styled.View({
   flexShrink: 1,
+})
+
+const TitleText = styled(Typo.Title1)({
+  marginBottom: getSpacing(1),
 })
 
 const CaptionSubtitle = styled(Typo.BodyAccentXs)(({ theme }) => ({

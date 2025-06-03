@@ -1,4 +1,5 @@
 import React from 'react'
+import styled from 'styled-components/native'
 
 import { SubcategoryIdEnum, VenueResponse } from 'api/gen'
 import { GtlPlaylistData } from 'features/gtlPlaylist/types'
@@ -15,7 +16,7 @@ import { CategoryHomeLabelMapping, CategoryIdMapping } from 'libs/subcategories/
 import { useVenueOffersQuery } from 'queries/venue/useVenueOffersQuery'
 import { Currency } from 'shared/currency/useGetCurrencyToDisplay'
 import { OfferPlaylistSkeleton, TileSize } from 'ui/components/placeholders/OfferPlaylistSkeleton'
-import { Spacer } from 'ui/theme'
+import { getSpacing } from 'ui/theme'
 
 export interface VenueOffersProps {
   venue: VenueResponse
@@ -30,10 +31,7 @@ export interface VenueOffersProps {
 }
 
 const LoadingState: React.FC = () => (
-  <React.Fragment>
-    <Spacer.Column numberOfSpaces={6} />
-    <OfferPlaylistSkeleton size={TileSize.MEDIUM} numberOfTiles={6} />
-  </React.Fragment>
+  <StyledOfferPlaylistSkeleton size={TileSize.MEDIUM} numberOfTiles={6} />
 )
 
 export function VenueOffers({
@@ -92,3 +90,7 @@ export function VenueOffers({
     />
   )
 }
+
+const StyledOfferPlaylistSkeleton = styled(OfferPlaylistSkeleton)({
+  marginTop: getSpacing(6),
+})

@@ -1,7 +1,8 @@
 import React from 'react'
 import styled from 'styled-components/native'
 
-import { Spacer, Typo, getSpacing } from 'ui/theme'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Typo, getSpacing } from 'ui/theme'
 
 interface Props {
   title: string
@@ -10,11 +11,10 @@ interface Props {
 
 export const InformationStepContent = ({ title, subtitle }: Props) => {
   return (
-    <React.Fragment>
+    <ViewGap gap={1}>
       <StyledButtonText>{title}</StyledButtonText>
-      <Spacer.Column numberOfSpaces={1} />
       <StyledCaption>{subtitle}</StyledCaption>
-    </React.Fragment>
+    </ViewGap>
   )
 }
 

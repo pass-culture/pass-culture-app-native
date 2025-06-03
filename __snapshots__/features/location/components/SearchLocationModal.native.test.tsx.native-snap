@@ -412,11 +412,13 @@ exports[`SearchLocationModal should render correctly if modal visible 1`] = `
                 }
               >
                 <View
+                  gap={2}
                   style={
                     [
                       {
                         "alignItems": "center",
                         "flexDirection": "row",
+                        "gap": 8,
                       },
                     ]
                   }
@@ -430,16 +432,6 @@ exports[`SearchLocationModal should render correctly if modal visible 1`] = `
                       undefined-SVG-Mock
                     </Text>
                   </View>
-                  <View
-                    numberOfSpaces={2}
-                    style={
-                      [
-                        {
-                          "width": 8,
-                        },
-                      ]
-                    }
-                  />
                   <Text
                     color="default"
                     style={
@@ -506,11 +498,13 @@ exports[`SearchLocationModal should render correctly if modal visible 1`] = `
                 }
               >
                 <View
+                  gap={2}
                   style={
                     [
                       {
                         "alignItems": "center",
                         "flexDirection": "row",
+                        "gap": 8,
                       },
                     ]
                   }
@@ -524,16 +518,6 @@ exports[`SearchLocationModal should render correctly if modal visible 1`] = `
                       undefined-SVG-Mock
                     </Text>
                   </View>
-                  <View
-                    numberOfSpaces={2}
-                    style={
-                      [
-                        {
-                          "width": 8,
-                        },
-                      ]
-                    }
-                  />
                   <Text
                     color="default"
                     style={
@@ -550,16 +534,6 @@ exports[`SearchLocationModal should render correctly if modal visible 1`] = `
                     Choisir une localisation
                   </Text>
                 </View>
-                <View
-                  numberOfSpaces={1}
-                  style={
-                    [
-                      {
-                        "height": 4,
-                      },
-                    ]
-                  }
-                />
                 <Text
                   style={
                     [
@@ -568,6 +542,7 @@ exports[`SearchLocationModal should render correctly if modal visible 1`] = `
                         "fontFamily": "Montserrat-SemiBold",
                         "fontSize": 12,
                         "lineHeight": 19.2,
+                        "marginTop": 4,
                       },
                     ]
                   }
@@ -633,11 +608,13 @@ exports[`SearchLocationModal should render correctly if modal visible 1`] = `
                   }
                 >
                   <View
+                    gap={2}
                     style={
                       [
                         {
                           "alignItems": "center",
                           "flexDirection": "row",
+                          "gap": 8,
                         },
                       ]
                     }
@@ -651,16 +628,6 @@ exports[`SearchLocationModal should render correctly if modal visible 1`] = `
                         undefined-SVG-Mock
                       </Text>
                     </View>
-                    <View
-                      numberOfSpaces={2}
-                      style={
-                        [
-                          {
-                            "width": 8,
-                          },
-                        ]
-                      }
-                    />
                     <Text
                       color="brandPrimary"
                       style={

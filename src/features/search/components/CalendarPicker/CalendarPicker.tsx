@@ -5,7 +5,7 @@ import styled from 'styled-components/native'
 import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 import { AppModal } from 'ui/components/modals/AppModal'
 import { Close } from 'ui/svg/icons/Close'
-import { getSpacing, Spacer } from 'ui/theme'
+import { getSpacing } from 'ui/theme'
 
 import { CalendarPickerProps } from './CalendarPickerProps'
 
@@ -40,7 +40,6 @@ export const CalendarPicker: React.FC<CalendarPickerProps> = ({
         locale="fr-FR"
         androidVariant="nativeAndroid"
       />
-      <Spacer.Column numberOfSpaces={5} />
       <ButtonPrimary wording="Valider la date" onPress={onValidate} />
     </AppModal>
   )
@@ -48,4 +47,4 @@ export const CalendarPicker: React.FC<CalendarPickerProps> = ({
 
 const StyledDatePicker = styled(DatePicker).attrs(({ theme }) => ({
   textColor: theme.colors.black,
-}))({ width: '100%', marginTop: -getSpacing(2) })
+}))({ width: '100%', marginTop: -getSpacing(2), marginBottom: getSpacing(5) })

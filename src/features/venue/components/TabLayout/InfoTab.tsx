@@ -6,7 +6,7 @@ import { PastilleType } from 'features/venue/types'
 import { useHandleHover } from 'libs/hooks/useHandleHover'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { AccessibleIcon } from 'ui/svg/icons/types'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 
 import { TouchableTab } from './TouchableTab'
 
@@ -51,7 +51,6 @@ export const InfoTab = <TabKeyType extends string>({
           </PastilleContainer>
         ) : null}
       </TabTitleContainer>
-      <Spacer.Column numberOfSpaces={2} />
       <BarOfSelectedTab isSelected={isSelected} />
     </StyledTouchableTab>
   )
@@ -67,6 +66,7 @@ const TabTitleContainer = styled(ViewGap)({
   justifyContent: 'center',
   alignItems: 'center',
   flexDirection: 'row',
+  marginBottom: getSpacing(2),
 })
 
 const TabTitle = styled(Typo.BodyAccent)<{ isSelected: boolean; isHover: boolean }>(

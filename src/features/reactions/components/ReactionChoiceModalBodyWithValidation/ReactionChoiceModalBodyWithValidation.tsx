@@ -10,7 +10,7 @@ import { HorizontalTile } from 'ui/components/tiles/HorizontalTile'
 import { OfferName } from 'ui/components/tiles/OfferName'
 import { ValidationMark } from 'ui/components/ValidationMark'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 
 type Props = {
   offer: OfferResponse | BookingOfferResponse
@@ -28,38 +28,39 @@ export const ReactionChoiceModalBodyWithValidation: FunctionComponent<Props> = (
   const { categoryId } = useSubcategory(offer.subcategoryId)
 
   return (
-    <React.Fragment>
-      <Spacer.Column numberOfSpaces={6} />
-      <ViewGap gap={6}>
-        <Typo.Title3>Partage-nous ton avis&nbsp;!</Typo.Title3>
-        <ViewGap gap={4}>
-          <Separator.Horizontal />
-          <HorizontalTileContainer gap={4}>
-            <HorizontalTile categoryId={categoryId} imageUrl={offer.image?.url}>
-              <Column flex={1}>
-                <Row>
-                  <OfferNameContainer>
-                    <OfferName title={offer.name} />
-                  </OfferNameContainer>
-                </Row>
-                <SubtitleContainer gap={1}>
-                  <ValidationMark isValid />
-                  <UsedText>Utilisé</UsedText>
-                  <DateUsedText>{dateUsed}</DateUsedText>
-                </SubtitleContainer>
-              </Column>
-            </HorizontalTile>
-          </HorizontalTileContainer>
-          <Separator.Horizontal />
-        </ViewGap>
-        <StyledReactionChoiceValidation
-          reactionStatus={reactionStatus}
-          handleOnPressReactionButton={handleOnPressReactionButton}
-        />
+    <Container gap={6}>
+      <Typo.Title3>Partage-nous ton avis&nbsp;!</Typo.Title3>
+      <ViewGap gap={4}>
+        <Separator.Horizontal />
+        <HorizontalTileContainer gap={4}>
+          <HorizontalTile categoryId={categoryId} imageUrl={offer.image?.url}>
+            <Column flex={1}>
+              <Row>
+                <OfferNameContainer>
+                  <OfferName title={offer.name} />
+                </OfferNameContainer>
+              </Row>
+              <SubtitleContainer gap={1}>
+                <ValidationMark isValid />
+                <UsedText>Utilisé</UsedText>
+                <DateUsedText>{dateUsed}</DateUsedText>
+              </SubtitleContainer>
+            </Column>
+          </HorizontalTile>
+        </HorizontalTileContainer>
+        <Separator.Horizontal />
       </ViewGap>
-    </React.Fragment>
+      <StyledReactionChoiceValidation
+        reactionStatus={reactionStatus}
+        handleOnPressReactionButton={handleOnPressReactionButton}
+      />
+    </Container>
   )
 }
+
+const Container = styled(ViewGap)({
+  marginTop: getSpacing(6),
+})
 
 const HorizontalTileContainer = styled(ViewGap)({
   flexDirection: 'row',

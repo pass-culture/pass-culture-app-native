@@ -26,7 +26,7 @@ import { RadioButton } from 'ui/components/radioButtons/RadioButton'
 import { Separator } from 'ui/components/Separator'
 import { VerticalUl } from 'ui/components/Ul'
 import { Close } from 'ui/svg/icons/Close'
-import { Spacer } from 'ui/theme'
+import { getSpacing } from 'ui/theme'
 
 export enum RadioButtonDate {
   TODAY = 'Aujourd’hui',
@@ -245,7 +245,6 @@ export const DatesHoursModal: FunctionComponent<DatesHoursModalProps> = ({
           filterBehaviour={filterBehaviour}
         />
       }>
-      <Spacer.Column numberOfSpaces={6} />
       <FormWrapper>
         <Form.MaxWidth>
           <Controller
@@ -286,9 +285,7 @@ export const DatesHoursModal: FunctionComponent<DatesHoursModalProps> = ({
                     )}
                   />
                 ) : null}
-                <Spacer.Column numberOfSpaces={6} />
-                <Separator.Horizontal />
-                <Spacer.Column numberOfSpaces={6} />
+                <StyledSepararator />
               </React.Fragment>
             )}
           />
@@ -324,8 +321,13 @@ export const DatesHoursModal: FunctionComponent<DatesHoursModalProps> = ({
 
 const FormWrapper = styled.View({
   alignItems: 'center',
+  marginTop: getSpacing(6),
 })
 
 const StyledVerticalUl = styled(VerticalUl)({
   overflow: 'hidden',
+})
+
+const StyledSepararator = styled(Separator.Horizontal)({
+  marginVertical: getSpacing(6),
 })

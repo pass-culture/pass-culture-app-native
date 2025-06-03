@@ -167,6 +167,7 @@ exports[`Home page should render correctly 1`] = `
                 }
               >
                 <View
+                  gap={1}
                   style={
                     [
                       {
@@ -184,22 +185,13 @@ exports[`Home page should render correctly 1`] = `
                           "fontFamily": "Montserrat-Bold",
                           "fontSize": 28,
                           "lineHeight": 44.8,
+                          "marginBottom": 4,
                         },
                       ]
                     }
                   >
                     Bienvenue !
                   </Text>
-                  <View
-                    numberOfSpaces={1}
-                    style={
-                      [
-                        {
-                          "height": 4,
-                        },
-                      ]
-                    }
-                  />
                   <Text
                     style={
                       [

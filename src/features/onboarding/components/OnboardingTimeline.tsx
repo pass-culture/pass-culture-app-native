@@ -3,7 +3,7 @@ import styled from 'styled-components/native'
 
 import { CreditComponentProps, CreditTimeline } from 'features/onboarding/components/CreditTimeline'
 import { useDepositAmountsByAge } from 'shared/user/useDepositAmountsByAge'
-import { Spacer, Typo, getSpacingString } from 'ui/theme'
+import { Typo, getSpacing, getSpacingString } from 'ui/theme'
 
 interface Props {
   age: 15 | 16 | 17 | 18
@@ -23,12 +23,7 @@ const CreditBlockContent: FunctionComponent<{ enableCreditV3: boolean }> = ({ en
     ? 'Tu as jusqu’à la veille de tes 21 ans pour utiliser tout ton crédit.'
     : `Tu auras 2 ans pour utiliser tes ${eighteenYearsOldDeposit}`
 
-  return (
-    <React.Fragment>
-      <Spacer.Column numberOfSpaces={1} />
-      <DescriptionText>{description}</DescriptionText>
-    </React.Fragment>
-  )
+  return <DescriptionText>{description}</DescriptionText>
 }
 
 const stepperPropsMapping = new Map<Props['age'], CreditComponentProps[]>([
@@ -52,4 +47,5 @@ const DescriptionText = styled(Typo.BodyAccentXs)(({ theme }) => ({
   fontSize: theme.tabBar.fontSize,
   lineHeight: getSpacingString(3),
   color: theme.colors.greyDark,
+  marginTop: getSpacing(1),
 }))

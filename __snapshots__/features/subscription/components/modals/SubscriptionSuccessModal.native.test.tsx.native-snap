@@ -342,10 +342,12 @@ exports[`<SubscriptionSuccessModal /> should render correctly for activites_crea
         >
           <View>
             <View
+              gap={6}
               style={
                 [
                   {
                     "alignItems": "center",
+                    "gap": 24,
                     "width": "100%",
                   },
                 ]
@@ -359,16 +361,6 @@ exports[`<SubscriptionSuccessModal /> should render correctly for activites_crea
                   undefined-SVG-Mock
                 </Text>
               </View>
-              <View
-                numberOfSpaces={6}
-                style={
-                  [
-                    {
-                      "height": 24,
-                    },
-                  ]
-                }
-              />
               <Text
                 style={
                   [
@@ -1004,10 +996,12 @@ exports[`<SubscriptionSuccessModal /> should render correctly for cinema 1`] = `
         >
           <View>
             <View
+              gap={6}
               style={
                 [
                   {
                     "alignItems": "center",
+                    "gap": 24,
                     "width": "100%",
                   },
                 ]
@@ -1021,16 +1015,6 @@ exports[`<SubscriptionSuccessModal /> should render correctly for cinema 1`] = `
                   undefined-SVG-Mock
                 </Text>
               </View>
-              <View
-                numberOfSpaces={6}
-                style={
-                  [
-                    {
-                      "height": 24,
-                    },
-                  ]
-                }
-              />
               <Text
                 style={
                   [
@@ -1666,10 +1650,12 @@ exports[`<SubscriptionSuccessModal /> should render correctly for lecture 1`] = 
         >
           <View>
             <View
+              gap={6}
               style={
                 [
                   {
                     "alignItems": "center",
+                    "gap": 24,
                     "width": "100%",
                   },
                 ]
@@ -1683,16 +1669,6 @@ exports[`<SubscriptionSuccessModal /> should render correctly for lecture 1`] = 
                   undefined-SVG-Mock
                 </Text>
               </View>
-              <View
-                numberOfSpaces={6}
-                style={
-                  [
-                    {
-                      "height": 24,
-                    },
-                  ]
-                }
-              />
               <Text
                 style={
                   [
@@ -2328,10 +2304,12 @@ exports[`<SubscriptionSuccessModal /> should render correctly for musique 1`] = 
         >
           <View>
             <View
+              gap={6}
               style={
                 [
                   {
                     "alignItems": "center",
+                    "gap": 24,
                     "width": "100%",
                   },
                 ]
@@ -2345,16 +2323,6 @@ exports[`<SubscriptionSuccessModal /> should render correctly for musique 1`] = 
                   undefined-SVG-Mock
                 </Text>
               </View>
-              <View
-                numberOfSpaces={6}
-                style={
-                  [
-                    {
-                      "height": 24,
-                    },
-                  ]
-                }
-              />
               <Text
                 style={
                   [
@@ -2990,10 +2958,12 @@ exports[`<SubscriptionSuccessModal /> should render correctly for spectacles 1`]
         >
           <View>
             <View
+              gap={6}
               style={
                 [
                   {
                     "alignItems": "center",
+                    "gap": 24,
                     "width": "100%",
                   },
                 ]
@@ -3007,16 +2977,6 @@ exports[`<SubscriptionSuccessModal /> should render correctly for spectacles 1`]
                   undefined-SVG-Mock
                 </Text>
               </View>
-              <View
-                numberOfSpaces={6}
-                style={
-                  [
-                    {
-                      "height": 24,
-                    },
-                  ]
-                }
-              />
               <Text
                 style={
                   [
@@ -3652,10 +3612,12 @@ exports[`<SubscriptionSuccessModal /> should render correctly for visites 1`] = 
         >
           <View>
             <View
+              gap={6}
               style={
                 [
                   {
                     "alignItems": "center",
+                    "gap": 24,
                     "width": "100%",
                   },
                 ]
@@ -3669,16 +3631,6 @@ exports[`<SubscriptionSuccessModal /> should render correctly for visites 1`] = 
                   undefined-SVG-Mock
                 </Text>
               </View>
-              <View
-                numberOfSpaces={6}
-                style={
-                  [
-                    {
-                      "height": 24,
-                    },
-                  ]
-                }
-              />
               <Text
                 style={
                   [

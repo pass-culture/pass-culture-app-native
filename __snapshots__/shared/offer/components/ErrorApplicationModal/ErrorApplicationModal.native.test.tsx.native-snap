@@ -343,10 +343,12 @@ ton crédit
         >
           <View>
             <View
+              gap={6}
               style={
                 [
                   {
                     "alignItems": "center",
+                    "gap": 24,
                     "width": "100%",
                   },
                 ]
@@ -360,16 +362,6 @@ ton crédit
                   undefined-SVG-Mock
                 </Text>
               </View>
-              <View
-                numberOfSpaces={6}
-                style={
-                  [
-                    {
-                      "height": 24,
-                    },
-                  ]
-                }
-              />
               <Text
                 style={
                   [

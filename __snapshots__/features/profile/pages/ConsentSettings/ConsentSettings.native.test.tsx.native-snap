@@ -283,22 +283,13 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
         À quoi servent tes cookies et tes données ?
       </Text>
       <View
-        numberOfSpaces={6}
-        style={
-          [
-            {
-              "height": 24,
-            },
-          ]
-        }
-      />
-      <View
         style={
           [
             {
               "alignItems": "center",
               "flexDirection": "row",
               "justifyContent": "space-between",
+              "marginTop": 24,
             },
           ]
         }
@@ -319,11 +310,13 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
           Je choisis mes cookies
         </Text>
         <View
+          gap={2}
           style={
             [
               {
                 "alignItems": "center",
                 "flexDirection": "row",
+                "gap": 8,
               },
             ]
           }
@@ -344,16 +337,6 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
           >
             Tout accepter
           </Text>
-          <View
-            numberOfSpaces={2}
-            style={
-              [
-                {
-                  "width": 8,
-                },
-              ]
-            }
-          />
           <View
             style={
               [
@@ -464,16 +447,6 @@ exports[`<ConsentSettings/> should render correctly 1`] = `
           </View>
         </View>
       </View>
-      <View
-        numberOfSpaces={4}
-        style={
-          [
-            {
-              "width": 16,
-            },
-          ]
-        }
-      />
       <View
         style={
           [

@@ -15,7 +15,7 @@ import { useSubcategories } from 'libs/subcategories/useSubcategories'
 import { Li } from 'ui/components/Li'
 import { RadioButton } from 'ui/components/radioButtons/RadioButton'
 import { AccessibleBicolorIcon } from 'ui/svg/icons/types'
-import { Spacer } from 'ui/theme'
+import { getSpacing } from 'ui/theme'
 
 type CategoriesMappingItem = {
   label: string
@@ -60,8 +60,7 @@ export const CategoriesSectionItem = <N,>({
           complement={displaySearchNbFacetResults ? nbResultsFacet : undefined}
         />
       ) : (
-        <React.Fragment>
-          <Spacer.Column numberOfSpaces={3} />
+        <FilterRowContainer>
           <FilterRow
             icon={handleGetIcon(k as SearchGroupNameEnumv2)}
             shouldColorIcon
@@ -71,8 +70,7 @@ export const CategoriesSectionItem = <N,>({
             captionId={k}
             complement={displaySearchNbFacetResults ? nbResultsFacet : undefined}
           />
-          <Spacer.Column numberOfSpaces={3} />
-        </React.Fragment>
+        </FilterRowContainer>
       )}
     </ListItem>
   )
@@ -80,4 +78,8 @@ export const CategoriesSectionItem = <N,>({
 
 const ListItem = styled(Li)({
   display: 'flex',
+})
+
+const FilterRowContainer = styled.View({
+  paddingVertical: getSpacing(3),
 })

@@ -221,525 +221,477 @@ exports[`<SignupConfirmationEmailSentPage /> should render correctly 1`] = `
         }
       />
       <View
+        gap={4}
         style={
           [
             {
-              "alignItems": "center",
-              "width": "100%",
+              "gap": 16,
             },
           ]
         }
-      >
-        <View
-          fill="none"
-          height={109.2}
-          width={140}
-        >
-          <Text>
-            undefined-SVG-Mock
-          </Text>
-        </View>
-      </View>
-      <View
-        numberOfSpaces={4}
-        style={
-          [
-            {
-              "height": 16,
-            },
-          ]
-        }
-      />
-      <Text
-        style={
-          [
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Bold",
-              "fontSize": 19,
-              "lineHeight": 30.4,
-            },
-          ]
-        }
-      >
-        Confirme ton adresse e-mail
-      </Text>
-      <View
-        numberOfSpaces={4}
-        style={
-          [
-            {
-              "height": 16,
-            },
-          ]
-        }
-      />
-      <Text
-        style={
-          [
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 16,
-              "lineHeight": 25.6,
-            },
-          ]
-        }
-      >
-        Tu as reçu un lien à l’adresse :
-      </Text>
-      <Text
-        style={
-          [
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 16,
-              "lineHeight": 25.6,
-            },
-          ]
-        }
-      >
-        john.doe@gmail.com
-      </Text>
-      <View
-        numberOfSpaces={4}
-        style={
-          [
-            {
-              "height": 16,
-            },
-          ]
-        }
-      />
-      <Text
-        style={
-          [
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 16,
-              "lineHeight": 25.6,
-            },
-          ]
-        }
-      >
-        L’e-mail peut prendre quelques minutes pour arriver.
-      </Text>
-      <View
-        numberOfSpaces={4}
-        style={
-          [
-            {
-              "height": 16,
-            },
-          ]
-        }
-      />
-      <View
-        style={
-          [
-            {
-              "backgroundColor": "#F1F1F4",
-              "height": 1,
-              "width": "100%",
-            },
-          ]
-        }
-      />
-      <View
-        numberOfSpaces={4}
-        style={
-          [
-            {
-              "height": 16,
-            },
-          ]
-        }
-      />
-      <Text
-        style={
-          [
-            {
-              "color": "#161617",
-              "fontFamily": "Montserrat-Medium",
-              "fontSize": 16,
-              "lineHeight": 25.6,
-            },
-          ]
-        }
-      >
-        Tu n‘as pas reçu de lien ? Tu peux :
-      </Text>
-      <View
-        numberOfSpaces={4}
-        style={
-          [
-            {
-              "height": 16,
-            },
-          ]
-        }
-      />
-      <View
-        accessibilityLabel="Consulter notre centre d’aide"
-        accessibilityState={
-          {
-            "busy": undefined,
-            "checked": undefined,
-            "disabled": undefined,
-            "expanded": undefined,
-            "selected": undefined,
-          }
-        }
-        accessibilityValue={
-          {
-            "max": undefined,
-            "min": undefined,
-            "now": undefined,
-            "text": undefined,
-          }
-        }
-        accessible={true}
-        focusable={true}
-        onClick={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          [
-            [
-              {
-                "userSelect": "auto",
-              },
-              {
-                "alignItems": "center",
-                "borderRadius": 24,
-                "flexDirection": "row",
-                "justifyContent": "flex-start",
-                "maxWidth": 500,
-                "minHeight": 40,
-                "paddingBottom": 2,
-                "paddingLeft": 0,
-                "paddingRight": 0,
-                "paddingTop": 2,
-                "width": "100%",
-              },
-              {
-                "backgroundColor": "#ffffff",
-              },
-            ],
-            {
-              "opacity": 1,
-            },
-          ]
-        }
-        testID="Consulter notre centre d’aide"
       >
         <View
           style={
             [
               {
                 "alignItems": "center",
-                "flexDirection": "row",
+                "width": "100%",
               },
             ]
           }
         >
           <View
-            style={
-              [
-                {
-                  "flexDirection": "row",
-                  "flexShrink": 0,
-                },
-              ]
-            }
+            fill="none"
+            height={109.2}
+            width={140}
           >
-            <View
-              accessibilityLabel="Nouvelle fenêtre"
-              height={20}
-              testID="button-icon-left"
-              width={20}
-            >
-              <Text>
-                button-icon-left-SVG-Mock
-              </Text>
-            </View>
-            <View
-              numberOfSpaces={2}
-              style={
-                [
-                  {
-                    "width": 8,
-                  },
-                ]
-              }
-            />
+            <Text>
+              undefined-SVG-Mock
+            </Text>
           </View>
-          <Text
-            adjustsFontSizeToFit={false}
-            numberOfLines={1}
-            style={
-              [
-                {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
-                  "maxWidth": "100%",
-                },
-              ]
-            }
-          >
-            Consulter notre centre d’aide
-          </Text>
         </View>
-      </View>
-      <View
-        accessibilityLabel="Recevoir un nouveau lien"
-        accessibilityState={
-          {
-            "busy": undefined,
-            "checked": undefined,
-            "disabled": undefined,
-            "expanded": undefined,
-            "selected": undefined,
-          }
-        }
-        accessibilityValue={
-          {
-            "max": undefined,
-            "min": undefined,
-            "now": undefined,
-            "text": undefined,
-          }
-        }
-        accessible={true}
-        focusable={true}
-        onClick={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          [
+        <Text
+          style={
             [
               {
-                "userSelect": "auto",
+                "color": "#161617",
+                "fontFamily": "Montserrat-Bold",
+                "fontSize": 19,
+                "lineHeight": 30.4,
               },
+            ]
+          }
+        >
+          Confirme ton adresse e-mail
+        </Text>
+        <Text
+          style={
+            [
               {
-                "alignItems": "center",
-                "borderRadius": 24,
-                "flexDirection": "row",
-                "justifyContent": "flex-start",
-                "maxWidth": 500,
-                "minHeight": 40,
-                "paddingBottom": 2,
-                "paddingLeft": 0,
-                "paddingRight": 0,
-                "paddingTop": 2,
-                "width": "100%",
+                "color": "#161617",
+                "fontFamily": "Montserrat-Medium",
+                "fontSize": 16,
+                "lineHeight": 25.6,
               },
+            ]
+          }
+        >
+          Tu as reçu un lien à l’adresse :
+        </Text>
+        <Text
+          style={
+            [
               {
-                "backgroundColor": "#ffffff",
+                "color": "#161617",
+                "fontFamily": "Montserrat-Medium",
+                "fontSize": 16,
+                "lineHeight": 25.6,
               },
-            ],
-            {
-              "opacity": 1,
-            },
-          ]
-        }
-        testID="Recevoir un nouveau lien"
-      >
+            ]
+          }
+        >
+          john.doe@gmail.com
+        </Text>
+        <Text
+          style={
+            [
+              {
+                "color": "#161617",
+                "fontFamily": "Montserrat-Medium",
+                "fontSize": 16,
+                "lineHeight": 25.6,
+              },
+            ]
+          }
+        >
+          L’e-mail peut prendre quelques minutes pour arriver.
+        </Text>
         <View
           style={
             [
               {
-                "alignItems": "center",
-                "flexDirection": "row",
+                "backgroundColor": "#F1F1F4",
+                "height": 1,
+                "width": "100%",
               },
             ]
           }
-        >
-          <View
-            style={
-              [
-                {
-                  "flexDirection": "row",
-                  "flexShrink": 0,
-                },
-              ]
-            }
-          >
-            <View
-              height={20}
-              testID="button-icon-left"
-              width={20}
-            >
-              <Text>
-                button-icon-left-SVG-Mock
-              </Text>
-            </View>
-            <View
-              numberOfSpaces={2}
-              style={
-                [
-                  {
-                    "width": 8,
-                  },
-                ]
-              }
-            />
-          </View>
-          <Text
-            adjustsFontSizeToFit={false}
-            numberOfLines={1}
-            style={
-              [
-                {
-                  "color": "#161617",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
-                  "maxWidth": "100%",
-                },
-              ]
-            }
-          >
-            Recevoir un nouveau lien
-          </Text>
-        </View>
-      </View>
-      <View
-        numberOfSpaces={6}
-        style={
-          [
-            {
-              "height": 24,
-            },
-          ]
-        }
-      />
-      <View
-        accessibilityLabel="Consulter mes e-mails"
-        accessibilityState={
-          {
-            "busy": undefined,
-            "checked": undefined,
-            "disabled": undefined,
-            "expanded": undefined,
-            "selected": undefined,
-          }
-        }
-        accessibilityValue={
-          {
-            "max": undefined,
-            "min": undefined,
-            "now": undefined,
-            "text": undefined,
-          }
-        }
-        accessible={true}
-        focusable={true}
-        onClick={[Function]}
-        onResponderGrant={[Function]}
-        onResponderMove={[Function]}
-        onResponderRelease={[Function]}
-        onResponderTerminate={[Function]}
-        onResponderTerminationRequest={[Function]}
-        onStartShouldSetResponder={[Function]}
-        style={
-          [
-            [
-              {
-                "userSelect": "auto",
-              },
-              {
-                "alignItems": "center",
-                "backgroundColor": "#eb0055",
-                "borderRadius": 24,
-                "flexDirection": "row",
-                "justifyContent": "center",
-                "maxWidth": 500,
-                "minHeight": 40,
-                "paddingBottom": 2,
-                "paddingLeft": 20,
-                "paddingRight": 20,
-                "paddingTop": 2,
-                "width": "100%",
-              },
-              {},
-            ],
-            {
-              "opacity": 1,
-            },
-          ]
-        }
-        testID="Consulter mes e-mails"
-      >
-        <View
+        />
+        <Text
           style={
             [
               {
-                "alignItems": "center",
-                "flexDirection": "row",
+                "color": "#161617",
+                "fontFamily": "Montserrat-Medium",
+                "fontSize": 16,
+                "lineHeight": 25.6,
               },
             ]
           }
+        >
+          Tu n‘as pas reçu de lien ? Tu peux :
+        </Text>
+        <View
+          accessibilityLabel="Consulter notre centre d’aide"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            [
+              [
+                {
+                  "userSelect": "auto",
+                },
+                {
+                  "alignItems": "center",
+                  "borderRadius": 24,
+                  "flexDirection": "row",
+                  "justifyContent": "flex-start",
+                  "maxWidth": 500,
+                  "minHeight": 40,
+                  "paddingBottom": 2,
+                  "paddingLeft": 0,
+                  "paddingRight": 0,
+                  "paddingTop": 2,
+                  "width": "100%",
+                },
+                {
+                  "backgroundColor": "#ffffff",
+                },
+              ],
+              {
+                "opacity": 1,
+              },
+            ]
+          }
+          testID="Consulter notre centre d’aide"
         >
           <View
             style={
               [
                 {
+                  "alignItems": "center",
                   "flexDirection": "row",
-                  "flexShrink": 0,
                 },
               ]
             }
           >
             <View
-              height={24}
-              testID="button-icon-left"
-              width={24}
-            >
-              <Text>
-                button-icon-left-SVG-Mock
-              </Text>
-            </View>
-            <View
-              numberOfSpaces={2}
               style={
                 [
                   {
-                    "width": 8,
+                    "flexDirection": "row",
+                    "flexShrink": 0,
                   },
                 ]
               }
-            />
+            >
+              <View
+                accessibilityLabel="Nouvelle fenêtre"
+                height={20}
+                testID="button-icon-left"
+                width={20}
+              >
+                <Text>
+                  button-icon-left-SVG-Mock
+                </Text>
+              </View>
+              <View
+                numberOfSpaces={2}
+                style={
+                  [
+                    {
+                      "width": 8,
+                    },
+                  ]
+                }
+              />
+            </View>
+            <Text
+              adjustsFontSizeToFit={false}
+              numberOfLines={1}
+              style={
+                [
+                  {
+                    "color": "#161617",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                    "maxWidth": "100%",
+                  },
+                ]
+              }
+            >
+              Consulter notre centre d’aide
+            </Text>
           </View>
-          <Text
-            adjustsFontSizeToFit={false}
-            numberOfLines={1}
+        </View>
+        <View
+          marginBottom={8}
+          style={
+            [
+              {
+                "marginBottom": 8,
+              },
+            ]
+          }
+        >
+          <View
+            accessibilityLabel="Recevoir un nouveau lien"
+            accessibilityState={
+              {
+                "busy": undefined,
+                "checked": undefined,
+                "disabled": undefined,
+                "expanded": undefined,
+                "selected": undefined,
+              }
+            }
+            accessibilityValue={
+              {
+                "max": undefined,
+                "min": undefined,
+                "now": undefined,
+                "text": undefined,
+              }
+            }
+            accessible={true}
+            focusable={true}
+            onClick={[Function]}
+            onResponderGrant={[Function]}
+            onResponderMove={[Function]}
+            onResponderRelease={[Function]}
+            onResponderTerminate={[Function]}
+            onResponderTerminationRequest={[Function]}
+            onStartShouldSetResponder={[Function]}
+            style={
+              [
+                [
+                  {
+                    "userSelect": "auto",
+                  },
+                  {
+                    "alignItems": "center",
+                    "borderRadius": 24,
+                    "flexDirection": "row",
+                    "justifyContent": "flex-start",
+                    "maxWidth": 500,
+                    "minHeight": 40,
+                    "paddingBottom": 2,
+                    "paddingLeft": 0,
+                    "paddingRight": 0,
+                    "paddingTop": 2,
+                    "width": "100%",
+                  },
+                  {
+                    "backgroundColor": "#ffffff",
+                  },
+                ],
+                {
+                  "opacity": 1,
+                },
+              ]
+            }
+            testID="Recevoir un nouveau lien"
+          >
+            <View
+              style={
+                [
+                  {
+                    "alignItems": "center",
+                    "flexDirection": "row",
+                  },
+                ]
+              }
+            >
+              <View
+                style={
+                  [
+                    {
+                      "flexDirection": "row",
+                      "flexShrink": 0,
+                    },
+                  ]
+                }
+              >
+                <View
+                  height={20}
+                  testID="button-icon-left"
+                  width={20}
+                >
+                  <Text>
+                    button-icon-left-SVG-Mock
+                  </Text>
+                </View>
+                <View
+                  numberOfSpaces={2}
+                  style={
+                    [
+                      {
+                        "width": 8,
+                      },
+                    ]
+                  }
+                />
+              </View>
+              <Text
+                adjustsFontSizeToFit={false}
+                numberOfLines={1}
+                style={
+                  [
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-Bold",
+                      "fontSize": 16,
+                      "lineHeight": 25.6,
+                      "maxWidth": "100%",
+                    },
+                  ]
+                }
+              >
+                Recevoir un nouveau lien
+              </Text>
+            </View>
+          </View>
+        </View>
+        <View
+          accessibilityLabel="Consulter mes e-mails"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            [
+              [
+                {
+                  "userSelect": "auto",
+                },
+                {
+                  "alignItems": "center",
+                  "backgroundColor": "#eb0055",
+                  "borderRadius": 24,
+                  "flexDirection": "row",
+                  "justifyContent": "center",
+                  "maxWidth": 500,
+                  "minHeight": 40,
+                  "paddingBottom": 2,
+                  "paddingLeft": 20,
+                  "paddingRight": 20,
+                  "paddingTop": 2,
+                  "width": "100%",
+                },
+                {},
+              ],
+              {
+                "opacity": 1,
+              },
+            ]
+          }
+          testID="Consulter mes e-mails"
+        >
+          <View
             style={
               [
                 {
-                  "color": "#ffffff",
-                  "fontFamily": "Montserrat-Bold",
-                  "fontSize": 16,
-                  "lineHeight": 25.6,
-                  "maxWidth": "100%",
+                  "alignItems": "center",
+                  "flexDirection": "row",
                 },
               ]
             }
           >
-            Consulter mes e-mails
-          </Text>
+            <View
+              style={
+                [
+                  {
+                    "flexDirection": "row",
+                    "flexShrink": 0,
+                  },
+                ]
+              }
+            >
+              <View
+                height={24}
+                testID="button-icon-left"
+                width={24}
+              >
+                <Text>
+                  button-icon-left-SVG-Mock
+                </Text>
+              </View>
+              <View
+                numberOfSpaces={2}
+                style={
+                  [
+                    {
+                      "width": 8,
+                    },
+                  ]
+                }
+              />
+            </View>
+            <Text
+              adjustsFontSizeToFit={false}
+              numberOfLines={1}
+              style={
+                [
+                  {
+                    "color": "#ffffff",
+                    "fontFamily": "Montserrat-Bold",
+                    "fontSize": 16,
+                    "lineHeight": 25.6,
+                    "maxWidth": "100%",
+                  },
+                ]
+              }
+            >
+              Consulter mes e-mails
+            </Text>
+          </View>
         </View>
       </View>
     </View>

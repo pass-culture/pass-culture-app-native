@@ -6,6 +6,7 @@ import styled from 'styled-components/native'
 import { v4 as uuidv4 } from 'uuid'
 
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { getSpacing, Spacer, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
@@ -44,11 +45,10 @@ export const MarketingModal: FunctionComponent<Props> = ({
           </FlexContainer>
           <Gradient />
           <FlexContainer>
-            <Content>
+            <Content gap={6}>
               <Title nativeID={titleID} numberOfLines={numberOfLinesTitle}>
                 {title}
               </Title>
-              <Spacer.Column numberOfSpaces={6} />
               {children}
             </Content>
           </FlexContainer>
@@ -119,7 +119,7 @@ const Container = styled.View(({ theme }) => {
   }
 })
 
-const Content = styled.View(({ theme }) => ({
+const Content = styled(ViewGap)(({ theme }) => ({
   width: '100%',
   alignItems: 'center',
   padding: getSpacing(6),

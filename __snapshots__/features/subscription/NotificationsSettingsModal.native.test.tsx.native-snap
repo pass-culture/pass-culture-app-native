@@ -342,9 +342,11 @@ exports[`<NotificationsSettingsModal /> should render correctly 1`] = `
         >
           <View>
             <View
+              gap={6}
               style={
                 [
                   {
+                    "gap": 24,
                     "width": "100%",
                   },
                 ]
@@ -364,16 +366,6 @@ exports[`<NotificationsSettingsModal /> should render correctly 1`] = `
               >
                 Pour recevoir toute l’actu de ce thème, tu dois, au choix :
               </Text>
-              <View
-                numberOfSpaces={6}
-                style={
-                  [
-                    {
-                      "height": 24,
-                    },
-                  ]
-                }
-              />
               <View
                 style={
                   [
@@ -578,16 +570,6 @@ exports[`<NotificationsSettingsModal /> should render correctly 1`] = `
                 </View>
               </View>
               <View
-                numberOfSpaces={6}
-                style={
-                  [
-                    {
-                      "height": 24,
-                    },
-                  ]
-                }
-              />
-              <View
                 style={
                   [
                     {
@@ -790,16 +772,6 @@ exports[`<NotificationsSettingsModal /> should render correctly 1`] = `
                   </View>
                 </View>
               </View>
-              <View
-                numberOfSpaces={6}
-                style={
-                  [
-                    {
-                      "height": 24,
-                    },
-                  ]
-                }
-              />
               <Text
                 style={
                   [
@@ -814,16 +786,6 @@ exports[`<NotificationsSettingsModal /> should render correctly 1`] = `
               >
                 Tu pourras gérer tes alertes depuis ton profil.
               </Text>
-              <View
-                numberOfSpaces={6}
-                style={
-                  [
-                    {
-                      "height": 24,
-                    },
-                  ]
-                }
-              />
               <View
                 accessibilityLabel="Valider"
                 accessibilityState={
@@ -910,16 +872,6 @@ exports[`<NotificationsSettingsModal /> should render correctly 1`] = `
                   </Text>
                 </View>
               </View>
-              <View
-                numberOfSpaces={6}
-                style={
-                  [
-                    {
-                      "height": 24,
-                    },
-                  ]
-                }
-              />
               <View
                 accessibilityLabel="Tout refuser et ne pas recevoir d’actus"
                 accessibilityState={

@@ -15,7 +15,8 @@ import { useBookingStock } from 'features/bookOffer/helpers/useBookingStock'
 import { formatHour, formatToKeyDate } from 'features/bookOffer/helpers/utils'
 import { useCreditForOffer } from 'features/offer/helpers/useHasEnoughCredit/useHasEnoughCredit'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
-import { Spacer, Typo } from 'ui/theme'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
+import { Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 function getHourChoiceForMultiplePrices(
@@ -168,12 +169,11 @@ export const BookHourChoice = () => {
     : ''
 
   return (
-    <React.Fragment>
+    <ViewGap gap={4}>
       <Typo.Title3 {...getHeadingAttrs(3)} testID="HourStep">
         Horaire
       </Typo.Title3>
 
-      <Spacer.Column numberOfSpaces={4} />
       {bookingState.step === Step.HOUR ? (
         <View>{filteredStocks}</View>
       ) : (
@@ -181,6 +181,6 @@ export const BookHourChoice = () => {
           <Typo.Button>{buttonTitle}</Typo.Button>
         </TouchableOpacity>
       )}
-    </React.Fragment>
+    </ViewGap>
   )
 }

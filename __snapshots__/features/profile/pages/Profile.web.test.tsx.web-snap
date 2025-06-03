@@ -217,15 +217,12 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
               >
                 <h1
                   aria-level="1"
-                  class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-doghzh r-lineHeight-177es0j"
+                  class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-doghzh r-lineHeight-177es0j r-marginBottom-15zivkp"
                   dir="ltr"
                   role="heading"
                 >
                   Mon profil
                 </h1>
-                <div
-                  class="css-view-175oi2r r-height-hdaws3"
-                />
               </div>
             </div>
             <div
@@ -335,10 +332,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                   Paramètres de l’application
                 </h2>
                 <div
-                  class="css-view-175oi2r r-height-3da1kt"
-                />
-                <div
-                  class="css-view-175oi2r r-backgroundColor-14a9t8x r-height-109y4c4 r-width-13qz1uu"
+                  class="css-view-175oi2r r-backgroundColor-14a9t8x r-height-109y4c4 r-marginTop-knv0ih r-width-13qz1uu"
                 />
                 <ul
                   class="css-view-175oi2r r-flexDirection-eqz5dr r-overflow-1dqxon3 r-paddingLeft-gy4na3"
@@ -498,10 +492,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                   Aides
                 </h2>
                 <div
-                  class="css-view-175oi2r r-height-3da1kt"
-                />
-                <div
-                  class="css-view-175oi2r r-backgroundColor-14a9t8x r-height-109y4c4 r-width-13qz1uu"
+                  class="css-view-175oi2r r-backgroundColor-14a9t8x r-height-109y4c4 r-marginTop-knv0ih r-width-13qz1uu"
                 />
                 <ul
                   class="css-view-175oi2r r-flexDirection-eqz5dr r-overflow-1dqxon3 r-paddingLeft-gy4na3"
@@ -617,10 +608,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                   Autres
                 </h2>
                 <div
-                  class="css-view-175oi2r r-height-3da1kt"
-                />
-                <div
-                  class="css-view-175oi2r r-backgroundColor-14a9t8x r-height-109y4c4 r-width-13qz1uu"
+                  class="css-view-175oi2r r-backgroundColor-14a9t8x r-height-109y4c4 r-marginTop-knv0ih r-width-13qz1uu"
                 />
                 <ul
                   class="css-view-175oi2r r-flexDirection-eqz5dr r-overflow-1dqxon3 r-paddingLeft-gy4na3"
@@ -805,10 +793,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                   Suivre le pass Culture
                 </h2>
                 <div
-                  class="css-view-175oi2r r-height-3da1kt"
-                />
-                <div
-                  class="css-view-175oi2r r-backgroundColor-14a9t8x r-height-109y4c4 r-width-13qz1uu"
+                  class="css-view-175oi2r r-backgroundColor-14a9t8x r-height-109y4c4 r-marginTop-knv0ih r-width-13qz1uu"
                 />
                 <div
                   class="css-view-175oi2r r-maxWidth-1ik5qf4 r-width-13qz1uu"
@@ -830,7 +815,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                           style="transition-duration: 0s;"
                         >
                           <div
-                            class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-eqz5dr r-justifyContent-1777fci r-maxWidth-1oa20y"
+                            class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-eqz5dr r-gap-9aw3ui r-justifyContent-1777fci r-maxWidth-1oa20y"
                           >
                             <div
                               class="css-view-175oi2r r-alignItems-1awozwy r-height-mabqd8 r-justifyContent-1777fci r-width-1yvhtrz"
@@ -846,9 +831,6 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                                 </div>
                               </div>
                             </div>
-                            <div
-                              class="css-view-175oi2r r-height-hdaws3"
-                            />
                             <div
                               class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
                               dir="ltr"
@@ -868,7 +850,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                           style="transition-duration: 0s;"
                         >
                           <div
-                            class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-eqz5dr r-justifyContent-1777fci r-maxWidth-1oa20y"
+                            class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-eqz5dr r-gap-9aw3ui r-justifyContent-1777fci r-maxWidth-1oa20y"
                           >
                             <div
                               class="css-view-175oi2r r-alignItems-1awozwy r-height-mabqd8 r-justifyContent-1777fci r-width-1yvhtrz"
@@ -884,9 +866,6 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                                 </div>
                               </div>
                             </div>
-                            <div
-                              class="css-view-175oi2r r-height-hdaws3"
-                            />
                             <div
                               class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
                               dir="ltr"
@@ -906,7 +885,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                           style="transition-duration: 0s;"
                         >
                           <div
-                            class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-eqz5dr r-justifyContent-1777fci r-maxWidth-1oa20y"
+                            class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-eqz5dr r-gap-9aw3ui r-justifyContent-1777fci r-maxWidth-1oa20y"
                           >
                             <div
                               class="css-view-175oi2r r-alignItems-1awozwy r-height-mabqd8 r-justifyContent-1777fci r-width-1yvhtrz"
@@ -922,9 +901,6 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                                 </div>
                               </div>
                             </div>
-                            <div
-                              class="css-view-175oi2r r-height-hdaws3"
-                            />
                             <div
                               class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
                               dir="ltr"
@@ -944,7 +920,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                           style="transition-duration: 0s;"
                         >
                           <div
-                            class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-eqz5dr r-justifyContent-1777fci r-maxWidth-1oa20y"
+                            class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-eqz5dr r-gap-9aw3ui r-justifyContent-1777fci r-maxWidth-1oa20y"
                           >
                             <div
                               class="css-view-175oi2r r-alignItems-1awozwy r-height-mabqd8 r-justifyContent-1777fci r-width-1yvhtrz"
@@ -960,9 +936,6 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                                 </div>
                               </div>
                             </div>
-                            <div
-                              class="css-view-175oi2r r-height-hdaws3"
-                            />
                             <div
                               class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
                               dir="ltr"
@@ -980,10 +953,7 @@ exports[`<Profile/> should render correctly on desktop 1`] = `
                 class="css-view-175oi2r r-paddingTop-tskmnb"
               >
                 <div
-                  class="css-view-175oi2r r-height-3da1kt"
-                />
-                <div
-                  class="css-view-175oi2r r-backgroundColor-14a9t8x r-height-109y4c4 r-width-13qz1uu"
+                  class="css-view-175oi2r r-backgroundColor-14a9t8x r-height-109y4c4 r-marginTop-knv0ih r-width-13qz1uu"
                 />
                 <div
                   class="css-text-146c3p1 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8 r-marginBlock-12kyg2d"
@@ -1384,15 +1354,12 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
               >
                 <h1
                   aria-level="1"
-                  class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-doghzh r-lineHeight-177es0j"
+                  class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-1gknse6 r-fontSize-doghzh r-lineHeight-177es0j r-marginBottom-15zivkp"
                   dir="ltr"
                   role="heading"
                 >
                   Mon profil
                 </h1>
-                <div
-                  class="css-view-175oi2r r-height-hdaws3"
-                />
               </div>
             </div>
             <div
@@ -1502,10 +1469,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                   Paramètres de l’application
                 </h2>
                 <div
-                  class="css-view-175oi2r r-height-3da1kt"
-                />
-                <div
-                  class="css-view-175oi2r r-backgroundColor-14a9t8x r-height-109y4c4 r-width-13qz1uu"
+                  class="css-view-175oi2r r-backgroundColor-14a9t8x r-height-109y4c4 r-marginTop-knv0ih r-width-13qz1uu"
                 />
                 <ul
                   class="css-view-175oi2r r-flexDirection-eqz5dr r-overflow-1dqxon3 r-paddingLeft-gy4na3"
@@ -1665,10 +1629,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                   Aides
                 </h2>
                 <div
-                  class="css-view-175oi2r r-height-3da1kt"
-                />
-                <div
-                  class="css-view-175oi2r r-backgroundColor-14a9t8x r-height-109y4c4 r-width-13qz1uu"
+                  class="css-view-175oi2r r-backgroundColor-14a9t8x r-height-109y4c4 r-marginTop-knv0ih r-width-13qz1uu"
                 />
                 <ul
                   class="css-view-175oi2r r-flexDirection-eqz5dr r-overflow-1dqxon3 r-paddingLeft-gy4na3"
@@ -1784,10 +1745,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                   Autres
                 </h2>
                 <div
-                  class="css-view-175oi2r r-height-3da1kt"
-                />
-                <div
-                  class="css-view-175oi2r r-backgroundColor-14a9t8x r-height-109y4c4 r-width-13qz1uu"
+                  class="css-view-175oi2r r-backgroundColor-14a9t8x r-height-109y4c4 r-marginTop-knv0ih r-width-13qz1uu"
                 />
                 <ul
                   class="css-view-175oi2r r-flexDirection-eqz5dr r-overflow-1dqxon3 r-paddingLeft-gy4na3"
@@ -1972,10 +1930,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                   Suivre le pass Culture
                 </h2>
                 <div
-                  class="css-view-175oi2r r-height-3da1kt"
-                />
-                <div
-                  class="css-view-175oi2r r-backgroundColor-14a9t8x r-height-109y4c4 r-width-13qz1uu"
+                  class="css-view-175oi2r r-backgroundColor-14a9t8x r-height-109y4c4 r-marginTop-knv0ih r-width-13qz1uu"
                 />
                 <div
                   class="css-view-175oi2r r-marginBottom-1qahzrx r-marginLeft-1jj8364 r-marginRight-lchren r-marginTop-1t01tom r-maxWidth-1ik5qf4 r-width-13qz1uu"
@@ -1997,7 +1952,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                           style="transition-duration: 0s;"
                         >
                           <div
-                            class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-eqz5dr r-justifyContent-1777fci r-maxWidth-1oa20y"
+                            class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-eqz5dr r-gap-9aw3ui r-justifyContent-1777fci r-maxWidth-1oa20y"
                           >
                             <div
                               class="css-view-175oi2r r-alignItems-1awozwy r-height-mabqd8 r-justifyContent-1777fci r-width-1yvhtrz"
@@ -2013,9 +1968,6 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                                 </div>
                               </div>
                             </div>
-                            <div
-                              class="css-view-175oi2r r-height-hdaws3"
-                            />
                             <div
                               class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
                               dir="ltr"
@@ -2035,7 +1987,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                           style="transition-duration: 0s;"
                         >
                           <div
-                            class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-eqz5dr r-justifyContent-1777fci r-maxWidth-1oa20y"
+                            class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-eqz5dr r-gap-9aw3ui r-justifyContent-1777fci r-maxWidth-1oa20y"
                           >
                             <div
                               class="css-view-175oi2r r-alignItems-1awozwy r-height-mabqd8 r-justifyContent-1777fci r-width-1yvhtrz"
@@ -2051,9 +2003,6 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                                 </div>
                               </div>
                             </div>
-                            <div
-                              class="css-view-175oi2r r-height-hdaws3"
-                            />
                             <div
                               class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
                               dir="ltr"
@@ -2073,7 +2022,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                           style="transition-duration: 0s;"
                         >
                           <div
-                            class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-eqz5dr r-justifyContent-1777fci r-maxWidth-1oa20y"
+                            class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-eqz5dr r-gap-9aw3ui r-justifyContent-1777fci r-maxWidth-1oa20y"
                           >
                             <div
                               class="css-view-175oi2r r-alignItems-1awozwy r-height-mabqd8 r-justifyContent-1777fci r-width-1yvhtrz"
@@ -2089,9 +2038,6 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                                 </div>
                               </div>
                             </div>
-                            <div
-                              class="css-view-175oi2r r-height-hdaws3"
-                            />
                             <div
                               class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
                               dir="ltr"
@@ -2111,7 +2057,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                           style="transition-duration: 0s;"
                         >
                           <div
-                            class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-eqz5dr r-justifyContent-1777fci r-maxWidth-1oa20y"
+                            class="css-view-175oi2r r-alignItems-1awozwy r-flexDirection-eqz5dr r-gap-9aw3ui r-justifyContent-1777fci r-maxWidth-1oa20y"
                           >
                             <div
                               class="css-view-175oi2r r-alignItems-1awozwy r-height-mabqd8 r-justifyContent-1777fci r-width-1yvhtrz"
@@ -2127,9 +2073,6 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                                 </div>
                               </div>
                             </div>
-                            <div
-                              class="css-view-175oi2r r-height-hdaws3"
-                            />
                             <div
                               class="css-text-146c3p1 r-WebkitBoxOrient-8akbws r-display-krxsd3 r-maxWidth-dnmrzs r-overflow-1udh08x r-textOverflow-1udbk01 r-color-1rmcaf9 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8"
                               dir="ltr"
@@ -2147,10 +2090,7 @@ exports[`<Profile/> should render correctly on mobile browser 1`] = `
                 class="css-view-175oi2r r-paddingTop-tskmnb"
               >
                 <div
-                  class="css-view-175oi2r r-height-3da1kt"
-                />
-                <div
-                  class="css-view-175oi2r r-backgroundColor-14a9t8x r-height-109y4c4 r-width-13qz1uu"
+                  class="css-view-175oi2r r-backgroundColor-14a9t8x r-height-109y4c4 r-marginTop-knv0ih r-width-13qz1uu"
                 />
                 <div
                   class="css-text-146c3p1 r-color-v2ubm6 r-fontFamily-aeuvnr r-fontSize-1r11ck1 r-lineHeight-66i6z8 r-marginBlock-12kyg2d"

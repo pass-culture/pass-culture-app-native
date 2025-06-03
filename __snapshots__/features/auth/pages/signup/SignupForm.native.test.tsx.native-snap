@@ -317,12 +317,14 @@ exports[`Signup Form For each step should render correctly for step 1/5 1`] = `
             }
           >
             <View
+              gap={0}
               style={
                 [
                   {
                     "alignItems": "flex-start",
                     "display": "flex",
                     "flexDirection": "column",
+                    "gap": 0,
                     "maxWidth": 500,
                     "width": "100%",
                   },
@@ -1176,12 +1178,14 @@ exports[`Signup Form For each step should render correctly for step 2/5 1`] = `
           }
         />
         <View
+          gap={0}
           style={
             [
               {
                 "alignItems": "flex-start",
                 "display": "flex",
                 "flexDirection": "column",
+                "gap": 0,
                 "maxWidth": 500,
                 "width": "100%",
               },
@@ -2336,12 +2340,14 @@ exports[`Signup Form For each step should render correctly for step 3/5 1`] = `
             }
           />
           <View
+            gap={2}
             style={
               [
                 {
                   "alignItems": "flex-start",
                   "display": "flex",
                   "flexDirection": "column",
+                  "gap": 8,
                   "maxWidth": 500,
                   "width": "100%",
                 },
@@ -2376,16 +2382,6 @@ exports[`Signup Form For each step should render correctly for step 3/5 1`] = `
                 Date de naissance
               </Text>
             </View>
-            <View
-              numberOfSpaces={2}
-              style={
-                [
-                  {
-                    "height": 8,
-                  },
-                ]
-              }
-            />
             <View
               height="small"
               isDisabled={false}
@@ -2429,16 +2425,6 @@ exports[`Signup Form For each step should render correctly for step 3/5 1`] = `
               </Text>
             </View>
           </View>
-          <View
-            numberOfSpaces={5}
-            style={
-              [
-                {
-                  "height": 20,
-                },
-              ]
-            }
-          />
           <RNDatePicker
             accessibilityDescribedBy="testUuidV4"
             androidVariant="nativeAndroid"
@@ -2462,6 +2448,7 @@ exports[`Signup Form For each step should render correctly for step 3/5 1`] = `
                 },
                 [
                   {
+                    "marginTop": 20,
                     "width": "100%",
                   },
                 ],

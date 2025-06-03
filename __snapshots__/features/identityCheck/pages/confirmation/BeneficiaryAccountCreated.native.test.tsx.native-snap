@@ -324,16 +324,6 @@ exports[`<BeneficiaryAccountCreated/> should render correctly for 18 year-old be
           150 €
         </Text>
       </View>
-      <View
-        numberOfSpaces={4}
-        style={
-          [
-            {
-              "height": 16,
-            },
-          ]
-        }
-      />
       <Text
         style={
           [
@@ -342,6 +332,7 @@ exports[`<BeneficiaryAccountCreated/> should render correctly for 18 year-old be
               "fontFamily": "Montserrat-Medium",
               "fontSize": 16,
               "lineHeight": 25.6,
+              "marginTop": 16,
               "textAlign": "center",
             },
           ]
@@ -788,16 +779,6 @@ exports[`<BeneficiaryAccountCreated/> should render correctly for underage benef
           50 €
         </Text>
       </View>
-      <View
-        numberOfSpaces={4}
-        style={
-          [
-            {
-              "height": 16,
-            },
-          ]
-        }
-      />
       <Text
         style={
           [
@@ -806,6 +787,7 @@ exports[`<BeneficiaryAccountCreated/> should render correctly for underage benef
               "fontFamily": "Montserrat-Medium",
               "fontSize": 16,
               "lineHeight": 25.6,
+              "marginTop": 16,
               "textAlign": "center",
             },
           ]

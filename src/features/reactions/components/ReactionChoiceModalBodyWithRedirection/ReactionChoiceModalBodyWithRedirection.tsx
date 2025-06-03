@@ -9,7 +9,7 @@ import thumbs from 'features/reactions/images/thumbs.png'
 import { OfferImageBasicProps } from 'features/reactions/types'
 import { OfferImage } from 'ui/components/tiles/OfferImage'
 import { ViewGap } from 'ui/components/ViewGap/ViewGap'
-import { getSpacing, Spacer, Typo } from 'ui/theme'
+import { getSpacing, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
 
 type Props = {
@@ -22,10 +22,9 @@ export const ReactionChoiceModalBodyWithRedirection: FunctionComponent<Props> = 
   const offerImagesWithUrl = offerImages.filter((offerImage) => offerImage.imageUrl !== '')
 
   return (
-    <React.Fragment>
+    <Container gap={6}>
       {offerImagesWithUrl.length > 0 ? (
         <GradientContainer>
-          <Spacer.Column numberOfSpaces={6} />
           {offerImagesWithUrl.length > 4 ? (
             <ImagesContainerGradient testID="offerImagesGradient" />
           ) : null}
@@ -47,17 +46,20 @@ export const ReactionChoiceModalBodyWithRedirection: FunctionComponent<Props> = 
         </ThumbsImageContainer>
       )}
 
-      <Spacer.Column numberOfSpaces={6} />
       <StyledTitle3 {...getHeadingAttrs(2)}>
         Qu’as-tu pensé de tes dernières réservations&nbsp;?
       </StyledTitle3>
-      <Spacer.Column numberOfSpaces={6} />
-    </React.Fragment>
+    </Container>
   )
 }
 
+const Container = styled(ViewGap)({
+  marginBottom: getSpacing(6),
+})
+
 const GradientContainer = styled.View({
   width: '100%',
+  marginTop: getSpacing(6),
 })
 
 const ImagesContainer = styled(ViewGap)({

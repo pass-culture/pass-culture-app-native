@@ -1095,49 +1095,50 @@ exports[`<ProfileTutorialAgeInformationCredit /> should render correctly 1`] = `
                 ]
               }
             />
-            <Text
-              numberOfLines={3}
-              style={
-                [
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 16,
-                    "justifyContent": "center",
-                    "lineHeight": 25.6,
-                    "marginLeft": 6,
-                  },
-                ]
-              }
-            >
-              Explore tout ce que la culture peut offrir, avec ou sans crédit !
-            </Text>
             <View
-              numberOfSpaces={1}
+              gap={1}
               style={
                 [
                   {
-                    "height": 4,
-                  },
-                ]
-              }
-            />
-            <Text
-              style={
-                [
-                  {
-                    "color": "#161617",
-                    "fontFamily": "Montserrat-SemiBold",
-                    "fontSize": 12,
-                    "justifyContent": "center",
-                    "lineHeight": 19.2,
-                    "marginLeft": 6,
+                    "gap": 4,
                   },
                 ]
               }
             >
-              Tu peux continuer à réserver des offres gratuites autour de chez toi.
-            </Text>
+              <Text
+                numberOfLines={3}
+                style={
+                  [
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 16,
+                      "justifyContent": "center",
+                      "lineHeight": 25.6,
+                      "marginLeft": 6,
+                    },
+                  ]
+                }
+              >
+                Explore tout ce que la culture peut offrir, avec ou sans crédit !
+              </Text>
+              <Text
+                style={
+                  [
+                    {
+                      "color": "#161617",
+                      "fontFamily": "Montserrat-SemiBold",
+                      "fontSize": 12,
+                      "justifyContent": "center",
+                      "lineHeight": 19.2,
+                      "marginLeft": 6,
+                    },
+                  ]
+                }
+              >
+                Tu peux continuer à réserver des offres gratuites autour de chez toi.
+              </Text>
+            </View>
             <View
               numberOfSpaces={3}
               style={

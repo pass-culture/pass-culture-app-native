@@ -6,7 +6,7 @@ import { AchievementDetailsModal } from 'features/achievements/pages/Achievement
 import { useModal } from 'ui/components/modals/useModal'
 import { TouchableOpacity } from 'ui/components/TouchableOpacity'
 import { AccessibleIcon } from 'ui/svg/icons/types'
-import { Spacer, Typo, getSpacing } from 'ui/theme'
+import { Typo, getSpacing } from 'ui/theme'
 
 type AchievementProps = {
   name: AchievementEnum
@@ -26,7 +26,6 @@ export const Achievement: FC<AchievementProps> = ({ Illustration, name, title, i
           <IllustrationContainer>
             <Illustration size={theme.illustrations.sizes.small} />
           </IllustrationContainer>
-          <Spacer.Column numberOfSpaces={2} />
           <TypoAchievementName numberOfLines={2} isCompleted={!!isCompleted}>
             {title}
           </TypoAchievementName>
@@ -63,4 +62,5 @@ const TypoAchievementName = styled(Typo.Button)<{ isCompleted: boolean }>(
 const IllustrationContainer = styled.View(({ theme }) => ({
   height: theme.illustrations.sizes.small,
   width: theme.illustrations.sizes.small,
+  marginBottom: getSpacing(2),
 }))

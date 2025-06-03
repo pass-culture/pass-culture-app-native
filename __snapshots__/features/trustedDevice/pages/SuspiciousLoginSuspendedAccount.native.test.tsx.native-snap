@@ -217,17 +217,8 @@ exports[`<SuspiciousLoginSuspendedAccount/> should match snapshot 1`] = `
       >
         En raison d’une activité suspicieuse, ton compte a été suspendu.
       </Text>
-      <View
-        numberOfSpaces={5}
-        style={
-          [
-            {
-              "height": 20,
-            },
-          ]
-        }
-      />
       <Text
+        marginTop={20}
         style={
           [
             {
@@ -235,6 +226,7 @@ exports[`<SuspiciousLoginSuspendedAccount/> should match snapshot 1`] = `
               "fontFamily": "Montserrat-Medium",
               "fontSize": 16,
               "lineHeight": 25.6,
+              "marginTop": 20,
               "textAlign": "center",
             },
           ]

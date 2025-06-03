@@ -32,6 +32,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
       style={
         [
           {
+            "marginBottom": 24,
             "position": "absolute",
             "top": 0,
             "width": "100%",
@@ -134,16 +135,6 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
         </View>
       </View>
     </View>
-    <View
-      numberOfSpaces={6}
-      style={
-        [
-          {
-            "height": 24,
-          },
-        ]
-      }
-    />
     <Text
       style={
         [
@@ -982,6 +973,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
       style={
         [
           {
+            "marginBottom": 24,
             "position": "absolute",
             "top": 0,
             "width": "100%",
@@ -1084,16 +1076,6 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
         </View>
       </View>
     </View>
-    <View
-      numberOfSpaces={6}
-      style={
-        [
-          {
-            "height": 24,
-          },
-        ]
-      }
-    />
     <Text
       style={
         [
@@ -1950,6 +1932,7 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
       style={
         [
           {
+            "marginBottom": 24,
             "position": "absolute",
             "top": 0,
             "width": "100%",
@@ -2052,16 +2035,6 @@ exports[`TrackEmailChange v2 account with password should render correctly when 
         </View>
       </View>
     </View>
-    <View
-      numberOfSpaces={6}
-      style={
-        [
-          {
-            "height": 24,
-          },
-        ]
-      }
-    />
     <Text
       style={
         [
@@ -2882,6 +2855,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
       style={
         [
           {
+            "marginBottom": 24,
             "position": "absolute",
             "top": 0,
             "width": "100%",
@@ -2984,16 +2958,6 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
         </View>
       </View>
     </View>
-    <View
-      numberOfSpaces={6}
-      style={
-        [
-          {
-            "height": 24,
-          },
-        ]
-      }
-    />
     <Text
       style={
         [
@@ -4066,6 +4030,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
       style={
         [
           {
+            "marginBottom": 24,
             "position": "absolute",
             "top": 0,
             "width": "100%",
@@ -4168,16 +4133,6 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
         </View>
       </View>
     </View>
-    <View
-      numberOfSpaces={6}
-      style={
-        [
-          {
-            "height": 24,
-          },
-        ]
-      }
-    />
     <Text
       style={
         [
@@ -5286,6 +5241,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
       style={
         [
           {
+            "marginBottom": 24,
             "position": "absolute",
             "top": 0,
             "width": "100%",
@@ -5388,16 +5344,6 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
         </View>
       </View>
     </View>
-    <View
-      numberOfSpaces={6}
-      style={
-        [
-          {
-            "height": 24,
-          },
-        ]
-      }
-    />
     <Text
       style={
         [
@@ -6488,6 +6434,7 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
       style={
         [
           {
+            "marginBottom": 24,
             "position": "absolute",
             "top": 0,
             "width": "100%",
@@ -6590,16 +6537,6 @@ exports[`TrackEmailChange v2 account without password (sso) should render correc
         </View>
       </View>
     </View>
-    <View
-      numberOfSpaces={6}
-      style={
-        [
-          {
-            "height": 24,
-          },
-        ]
-      }
-    />
     <Text
       style={
         [

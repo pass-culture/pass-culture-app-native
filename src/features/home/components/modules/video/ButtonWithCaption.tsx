@@ -5,8 +5,9 @@ import { styledButton } from 'ui/components/buttons/styledButton'
 import { Touchable } from 'ui/components/touchable/Touchable'
 import { InternalTouchableLink } from 'ui/components/touchableLink/InternalTouchableLink'
 import { InternalNavigationProps } from 'ui/components/touchableLink/types'
+import { ViewGap } from 'ui/components/ViewGap/ViewGap'
 import { AccessibleIcon } from 'ui/svg/icons/types'
-import { Spacer, Typo, getSpacing } from 'ui/theme'
+import { Typo, getSpacing } from 'ui/theme'
 
 type ButtonWithCaptionProps = {
   onPress: () => void
@@ -24,7 +25,7 @@ export const ButtonWithCaption: React.FC<ButtonWithCaptionProps> = ({
   navigateTo,
 }) => {
   return (
-    <ButtonWithCaptionContainer>
+    <ButtonWithCaptionContainer gap={1.5}>
       {navigateTo ? (
         <StyledTouchableLink
           navigateTo={navigateTo}
@@ -37,13 +38,12 @@ export const ButtonWithCaption: React.FC<ButtonWithCaptionProps> = ({
           <Icon />
         </StyledTouchable>
       )}
-      <Spacer.Column numberOfSpaces={1.5} />
       <ButtonCaption>{wording}</ButtonCaption>
     </ButtonWithCaptionContainer>
   )
 }
 
-const ButtonWithCaptionContainer = styled.View({
+const ButtonWithCaptionContainer = styled(ViewGap)({
   alignItems: 'center',
 })
 

@@ -166,6 +166,7 @@ exports[`Profile component should render correctly 1`] = `
             }
           >
             <View
+              gap={1}
               style={
                 [
                   {
@@ -183,22 +184,13 @@ exports[`Profile component should render correctly 1`] = `
                       "fontFamily": "Montserrat-Bold",
                       "fontSize": 28,
                       "lineHeight": 44.8,
+                      "marginBottom": 4,
                     },
                   ]
                 }
               >
                 Mon profil
               </Text>
-              <View
-                numberOfSpaces={1}
-                style={
-                  [
-                    {
-                      "height": 4,
-                    },
-                  ]
-                }
-              />
             </View>
           </View>
           <View
@@ -246,21 +238,12 @@ exports[`Profile component should render correctly 1`] = `
                 Paramètres du compte
               </Text>
               <View
-                numberOfSpaces={2}
-                style={
-                  [
-                    {
-                      "height": 8,
-                    },
-                  ]
-                }
-              />
-              <View
                 style={
                   [
                     {
                       "backgroundColor": "#F1F1F4",
                       "height": 1,
+                      "marginTop": 8,
                       "width": "100%",
                     },
                   ]
@@ -806,21 +789,12 @@ exports[`Profile component should render correctly 1`] = `
                 Aides
               </Text>
               <View
-                numberOfSpaces={2}
-                style={
-                  [
-                    {
-                      "height": 8,
-                    },
-                  ]
-                }
-              />
-              <View
                 style={
                   [
                     {
                       "backgroundColor": "#F1F1F4",
                       "height": 1,
+                      "marginTop": 8,
                       "width": "100%",
                     },
                   ]
@@ -1121,21 +1095,12 @@ exports[`Profile component should render correctly 1`] = `
                 Autres
               </Text>
               <View
-                numberOfSpaces={2}
-                style={
-                  [
-                    {
-                      "height": 8,
-                    },
-                  ]
-                }
-              />
-              <View
                 style={
                   [
                     {
                       "backgroundColor": "#F1F1F4",
                       "height": 1,
+                      "marginTop": 8,
                       "width": "100%",
                     },
                   ]
@@ -1869,21 +1834,12 @@ exports[`Profile component should render correctly 1`] = `
                 Partager le pass Culture
               </Text>
               <View
-                numberOfSpaces={2}
-                style={
-                  [
-                    {
-                      "height": 8,
-                    },
-                  ]
-                }
-              />
-              <View
                 style={
                   [
                     {
                       "backgroundColor": "#F1F1F4",
                       "height": 1,
+                      "marginTop": 8,
                       "width": "100%",
                     },
                   ]
@@ -2108,21 +2064,12 @@ exports[`Profile component should render correctly 1`] = `
                 Suivre le pass Culture
               </Text>
               <View
-                numberOfSpaces={2}
-                style={
-                  [
-                    {
-                      "height": 8,
-                    },
-                  ]
-                }
-              />
-              <View
                 style={
                   [
                     {
                       "backgroundColor": "#F1F1F4",
                       "height": 1,
+                      "marginTop": 8,
                       "width": "100%",
                     },
                   ]
@@ -2221,11 +2168,13 @@ exports[`Profile component should render correctly 1`] = `
                         }
                       >
                         <View
+                          gap={1}
                           style={
                             [
                               {
                                 "alignItems": "center",
                                 "flexDirection": "column",
+                                "gap": 4,
                                 "justifyContent": "center",
                                 "maxWidth": 80,
                               },
@@ -2253,16 +2202,6 @@ exports[`Profile component should render correctly 1`] = `
                               </Text>
                             </View>
                           </View>
-                          <View
-                            numberOfSpaces={1}
-                            style={
-                              [
-                                {
-                                  "height": 4,
-                                },
-                              ]
-                            }
-                          />
                           <Text
                             numberOfLines={2}
                             style={
@@ -2334,11 +2273,13 @@ exports[`Profile component should render correctly 1`] = `
                         }
                       >
                         <View
+                          gap={1}
                           style={
                             [
                               {
                                 "alignItems": "center",
                                 "flexDirection": "column",
+                                "gap": 4,
                                 "justifyContent": "center",
                                 "maxWidth": 80,
                               },
@@ -2366,16 +2307,6 @@ exports[`Profile component should render correctly 1`] = `
                               </Text>
                             </View>
                           </View>
-                          <View
-                            numberOfSpaces={1}
-                            style={
-                              [
-                                {
-                                  "height": 4,
-                                },
-                              ]
-                            }
-                          />
                           <Text
                             numberOfLines={2}
                             style={
@@ -2447,11 +2378,13 @@ exports[`Profile component should render correctly 1`] = `
                         }
                       >
                         <View
+                          gap={1}
                           style={
                             [
                               {
                                 "alignItems": "center",
                                 "flexDirection": "column",
+                                "gap": 4,
                                 "justifyContent": "center",
                                 "maxWidth": 80,
                               },
@@ -2479,16 +2412,6 @@ exports[`Profile component should render correctly 1`] = `
                               </Text>
                             </View>
                           </View>
-                          <View
-                            numberOfSpaces={1}
-                            style={
-                              [
-                                {
-                                  "height": 4,
-                                },
-                              ]
-                            }
-                          />
                           <Text
                             numberOfLines={2}
                             style={
@@ -2560,11 +2483,13 @@ exports[`Profile component should render correctly 1`] = `
                         }
                       >
                         <View
+                          gap={1}
                           style={
                             [
                               {
                                 "alignItems": "center",
                                 "flexDirection": "column",
+                                "gap": 4,
                                 "justifyContent": "center",
                                 "maxWidth": 80,
                               },
@@ -2592,16 +2517,6 @@ exports[`Profile component should render correctly 1`] = `
                               </Text>
                             </View>
                           </View>
-                          <View
-                            numberOfSpaces={1}
-                            style={
-                              [
-                                {
-                                  "height": 4,
-                                },
-                              ]
-                            }
-                          />
                           <Text
                             numberOfLines={2}
                             style={
@@ -2634,21 +2549,12 @@ exports[`Profile component should render correctly 1`] = `
               }
             >
               <View
-                numberOfSpaces={2}
-                style={
-                  [
-                    {
-                      "height": 8,
-                    },
-                  ]
-                }
-              />
-              <View
                 style={
                   [
                     {
                       "backgroundColor": "#F1F1F4",
                       "height": 1,
+                      "marginTop": 8,
                       "width": "100%",
                     },
                   ]
@@ -2778,21 +2684,12 @@ exports[`Profile component should render correctly 1`] = `
               }
             >
               <View
-                numberOfSpaces={2}
-                style={
-                  [
-                    {
-                      "height": 8,
-                    },
-                  ]
-                }
-              />
-              <View
                 style={
                   [
                     {
                       "backgroundColor": "#F1F1F4",
                       "height": 1,
+                      "marginTop": 8,
                       "width": "100%",
                     },
                   ]
