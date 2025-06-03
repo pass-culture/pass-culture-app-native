@@ -2,8 +2,6 @@ import { convertToMinutes } from 'features/offer/components/MovieScreeningCalend
 import { setFeatureFlags } from 'libs/firebase/firestore/featureFlags/tests/setFeatureFlags'
 import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 
-jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
-
 describe('convertToMinutes', () => {
   beforeEach(() => {
     setFeatureFlags([RemoteStoreFeatureFlags.ENABLE_PACIFIC_FRANC_CURRENCY])

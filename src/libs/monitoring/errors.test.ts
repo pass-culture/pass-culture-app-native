@@ -6,7 +6,6 @@ import { eventMonitoring } from 'libs/monitoring/services'
 import { LogTypeEnum, MonitoringError, OfferNotFoundError, VenueNotFoundError } from './errors'
 
 jest.mock('libs/firebase/analytics/analytics')
-jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 describe('MonitoringError', () => {
   it('should call eventMonitoring.captureException() on new MonitoringError instance', () => {

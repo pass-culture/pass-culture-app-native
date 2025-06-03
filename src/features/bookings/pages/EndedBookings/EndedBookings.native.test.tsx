@@ -14,8 +14,6 @@ import { render, screen, userEvent } from 'tests/utils'
 
 import { EndedBookings } from './EndedBookings'
 
-jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
-
 const mockGoBack = jest.fn()
 jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
   goBack: mockGoBack,

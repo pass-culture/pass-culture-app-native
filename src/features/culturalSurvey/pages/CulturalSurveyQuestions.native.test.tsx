@@ -25,8 +25,6 @@ import {
   userEvent,
 } from 'tests/utils'
 
-jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
-
 jest.mock('features/navigation/helpers/navigateToHome')
 jest.mock('features/navigation/helpers/isAppUrl')
 jest.mock('features/culturalSurvey/context/CulturalSurveyContextProvider')

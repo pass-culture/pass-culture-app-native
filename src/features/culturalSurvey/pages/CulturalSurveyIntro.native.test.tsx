@@ -10,8 +10,6 @@ import { RemoteStoreFeatureFlags } from 'libs/firebase/firestore/types'
 import { storage } from 'libs/storage'
 import { render, screen, userEvent, waitFor } from 'tests/utils'
 
-jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
-
 const mockGoBack = jest.fn()
 jest.spyOn(useGoBack, 'useGoBack').mockReturnValue({
   goBack: mockGoBack,

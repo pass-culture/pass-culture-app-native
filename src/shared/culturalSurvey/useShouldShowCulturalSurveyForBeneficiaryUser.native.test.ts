@@ -6,7 +6,6 @@ import { renderHook, act } from 'tests/utils'
 
 import { useShouldShowCulturalSurveyForBeneficiaryUser } from './useShouldShowCulturalSurveyForBeneficiaryUser'
 
-jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 const CULTURAL_SURVEY_DISPLAYS_STORAGE_KEY = 'times_cultural_survey_has_been_requested'
 
 describe('useShouldShowCulturalSurveyForBeneficiaryUser()', () => {

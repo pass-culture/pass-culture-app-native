@@ -19,7 +19,6 @@ import { render, screen, userEvent, waitFor } from 'tests/utils'
 import { StepButtonState } from 'ui/components/StepButton/types'
 
 jest.mock('libs/firebase/analytics/analytics')
-jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 let mockNextSubscriptionStep = mockStep
 const mockIdentityCheckDispatch = jest.fn()

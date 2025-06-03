@@ -13,8 +13,6 @@ import { render, screen, userEvent, waitFor } from 'tests/utils'
 
 import { PriceModal, PriceModalProps } from './PriceModal'
 
-jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
-
 const searchId = uuidv4()
 const searchState: SearchState = { ...initialSearchState, searchId }
 let mockSearchState = searchState

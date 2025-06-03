@@ -9,7 +9,6 @@ import { computedTheme } from 'tests/computedTheme'
 import { renderHook } from 'tests/utils'
 import { useGetFooterHeight } from 'ui/hooks/useGetFooterHeight/useGetFooterHeight'
 
-jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 jest.spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery').mockReturnValue(DEFAULT_REMOTE_CONFIG)
 
 describe('useGetFooterHeight', () => {

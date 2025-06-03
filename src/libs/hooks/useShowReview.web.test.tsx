@@ -11,7 +11,6 @@ const mockRequestInAppReview = InAppReview.RequestInAppReview as jest.Mock
 jest.mock('features/bookOffer/helpers/useReviewInAppInformation')
 const mockUseReviewInAppInformation = useReviewInAppInformation as jest.Mock
 
-jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 const TestReviewComponent = () => {
   useShowReview()
   return null

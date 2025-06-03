@@ -9,8 +9,6 @@ import { render, screen, userEvent } from 'tests/utils'
 
 let mockSearchState = initialSearchState
 
-jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
-
 jest.mock('features/search/context/SearchWrapper', () => ({
   useSearch: () => ({
     searchState: mockSearchState,

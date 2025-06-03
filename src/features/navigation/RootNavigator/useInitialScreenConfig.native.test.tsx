@@ -10,8 +10,6 @@ import { renderHook, waitFor } from 'tests/utils'
 
 import { useInitialScreen } from './useInitialScreenConfig'
 
-jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
-
 jest.mock('features/auth/context/AuthContext')
 jest.mock('libs/jwt/jwt')
 
