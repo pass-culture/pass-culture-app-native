@@ -5,7 +5,7 @@ import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { checkAccessibilityFor, render } from 'tests/utils/web'
 
 jest.mock('libs/firebase/analytics/analytics')
-jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
+
 jest.mock('ui/theme/customFocusOutline/customFocusOutline')
 jest.mock('features/auth/context/AuthContext')
 

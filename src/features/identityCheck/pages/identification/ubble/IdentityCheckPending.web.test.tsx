@@ -5,7 +5,6 @@ import { render, checkAccessibilityFor } from 'tests/utils/web'
 import { IdentityCheckPending } from './IdentityCheckPending'
 
 jest.mock('libs/firebase/analytics/analytics')
-jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 describe('<IdentityCheckPending/>', () => {
   describe('Accessibility', () => {

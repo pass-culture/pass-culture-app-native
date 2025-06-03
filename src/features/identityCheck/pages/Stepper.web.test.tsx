@@ -13,7 +13,6 @@ import { Stepper } from './Stepper'
 jest.mock('ui/theme/customFocusOutline/customFocusOutline')
 
 jest.mock('libs/firebase/analytics/analytics')
-jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 mockdate.set(new Date('2020-12-01T00:00:00.000Z'))
 

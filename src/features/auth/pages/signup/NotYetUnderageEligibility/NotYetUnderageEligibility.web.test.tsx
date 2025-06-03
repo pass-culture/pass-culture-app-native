@@ -11,7 +11,6 @@ const navigationProps = {
 } as StackScreenProps<RootStackParamList, 'NotYetUnderageEligibility'>
 
 jest.mock('libs/firebase/analytics/analytics')
-jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 describe('<NotYetUnderageEligibility/>', () => {
   describe('Accessibility', () => {

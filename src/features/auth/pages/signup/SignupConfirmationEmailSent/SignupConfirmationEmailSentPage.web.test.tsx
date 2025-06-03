@@ -14,7 +14,6 @@ const navigationProps = {
 } as StackScreenProps<RootStackParamList, 'SignupConfirmationEmailSent'>
 
 jest.mock('libs/firebase/analytics/analytics')
-jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 describe('<SignupConfirmationEmailSentPage/>', () => {
   describe('Accessibility', () => {

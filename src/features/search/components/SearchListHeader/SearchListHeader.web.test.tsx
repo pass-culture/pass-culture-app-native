@@ -41,7 +41,7 @@ const mockUseSearch = jest.fn(() => ({
 jest.mock('features/search/context/SearchWrapper', () => ({
   useSearch: () => mockUseSearch(),
 }))
-jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
+
 jest.mock('ui/theme/customFocusOutline/customFocusOutline')
 
 jest.mock('features/location/helpers/useLocationState', () => ({

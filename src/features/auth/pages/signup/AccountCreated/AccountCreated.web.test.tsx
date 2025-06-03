@@ -5,8 +5,6 @@ import { checkAccessibilityFor, render, screen } from 'tests/utils/web'
 
 import { AccountCreated } from './AccountCreated'
 
-jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
-
 jest.mock('libs/firebase/analytics/analytics')
 
 describe('<AccountCreated/>', () => {

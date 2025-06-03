@@ -8,7 +8,6 @@ import { checkAccessibilityFor, render, screen } from 'tests/utils/web'
 import { DisplayPreference } from './DisplayPreference'
 
 jest.mock('ui/theme/customFocusOutline/customFocusOutline')
-jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 describe('DisplayPreference', () => {
   beforeEach(() => setFeatureFlags([RemoteStoreFeatureFlags.WIP_ENABLE_DARK_MODE]))

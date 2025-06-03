@@ -3,8 +3,6 @@ import React from 'react'
 import { CategoriesListDumb } from 'features/search/components/CategoriesListDumb/CategoriesListDumb'
 import { render, screen } from 'tests/utils/web'
 
-jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
-
 describe('CategoriesListDumb', () => {
   it('should not display venue map block when is "web"', () => {
     render(

@@ -12,7 +12,6 @@ const navigationProps = {
 } as StackScreenProps<RootStackParamList, 'ResetPasswordExpiredLink'>
 
 jest.mock('libs/firebase/analytics/analytics')
-jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 describe('<ResetPasswordExpiredLink/>', () => {
   describe('Accessibility', () => {

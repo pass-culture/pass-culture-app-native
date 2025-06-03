@@ -10,7 +10,6 @@ jest.mock('features/auth/context/AuthContext', () => ({
 }))
 
 jest.mock('libs/firebase/analytics/analytics')
-jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 describe('<ConfirmDeleteProfile/>', () => {
   describe('Accessibility', () => {

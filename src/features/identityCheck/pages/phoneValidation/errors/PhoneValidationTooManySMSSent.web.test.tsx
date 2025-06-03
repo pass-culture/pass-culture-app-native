@@ -9,7 +9,6 @@ import { render, checkAccessibilityFor, act } from 'tests/utils/web'
 import { PhoneValidationTooManySMSSent } from './PhoneValidationTooManySMSSent'
 
 jest.mock('libs/firebase/analytics/analytics')
-jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 describe('<PhoneValidationTooManySMSSent/>', () => {
   beforeEach(() => {

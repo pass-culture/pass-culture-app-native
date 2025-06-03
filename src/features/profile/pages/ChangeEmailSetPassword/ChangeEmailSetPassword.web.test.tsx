@@ -15,7 +15,6 @@ jest.mock('uuid', () => {
   }
 })
 
-jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 jest.spyOn(useRemoteConfigQuery, 'useRemoteConfigQuery').mockReturnValue(DEFAULT_REMOTE_CONFIG)
 
 describe('<ChangeEmailSetPassword />', () => {

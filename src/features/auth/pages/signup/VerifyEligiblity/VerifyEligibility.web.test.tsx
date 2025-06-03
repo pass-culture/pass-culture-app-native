@@ -6,7 +6,6 @@ import { render, checkAccessibilityFor } from 'tests/utils/web'
 import { VerifyEligibility } from './VerifyEligibility'
 
 jest.mock('libs/firebase/analytics/analytics')
-jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 describe('<VerifyEligibility/>', () => {
   beforeEach(() => setFeatureFlags())

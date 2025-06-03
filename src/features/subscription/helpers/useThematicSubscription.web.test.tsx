@@ -8,8 +8,6 @@ import { beneficiaryUser } from 'fixtures/user'
 import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { renderHook, waitFor } from 'tests/utils/web'
 
-jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
-
 jest.mock('features/profile/pages/NotificationSettings/usePushPermission', () => ({
   usePushPermission: jest.fn(() => ({
     pushPermission: 'granted',

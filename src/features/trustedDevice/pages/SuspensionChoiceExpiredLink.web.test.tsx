@@ -4,7 +4,6 @@ import { SuspensionChoiceExpiredLink } from 'features/trustedDevice/pages/Suspen
 import { checkAccessibilityFor, render, screen } from 'tests/utils/web'
 
 jest.mock('libs/firebase/analytics/analytics')
-jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 describe('<SuspensionChoiceExpiredLink/>', () => {
   it('should match snapshot', () => {

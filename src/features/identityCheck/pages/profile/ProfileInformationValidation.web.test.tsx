@@ -16,7 +16,6 @@ import { checkAccessibilityFor, render, screen } from 'tests/utils/web'
 import { ProfileInformationValidation } from './ProfileInformationValidation'
 
 jest.mock('libs/firebase/analytics/analytics')
-jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 jest.mock('features/identityCheck/pages/profile/store/nameStore')
 const mockedUseName = useName as jest.Mock

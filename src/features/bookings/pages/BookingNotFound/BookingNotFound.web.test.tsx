@@ -5,8 +5,6 @@ import { render, checkAccessibilityFor } from 'tests/utils/web'
 
 import { BookingNotFound } from './BookingNotFound'
 
-jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
-
 describe('<BookingNotFound/>', () => {
   beforeEach(() => {
     setFeatureFlags()

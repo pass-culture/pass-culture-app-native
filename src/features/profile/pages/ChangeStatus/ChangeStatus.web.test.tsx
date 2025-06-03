@@ -9,7 +9,6 @@ import { render, checkAccessibilityFor, act } from 'tests/utils/web'
 
 jest.mock('features/identityCheck/context/SubscriptionContextProvider')
 jest.mock('libs/firebase/analytics/analytics')
-jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 describe('<ChangeStatus/>', () => {
   beforeEach(() => {

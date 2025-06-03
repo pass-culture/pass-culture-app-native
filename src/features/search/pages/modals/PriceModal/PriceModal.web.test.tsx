@@ -8,8 +8,6 @@ import { act, checkAccessibilityFor, render, screen } from 'tests/utils/web'
 
 import { PriceModal } from './PriceModal'
 
-jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
-
 jest.mock('features/auth/context/AuthContext')
 
 const mockSearchState = initialSearchState

@@ -4,8 +4,6 @@ import { render, checkAccessibilityFor } from 'tests/utils/web'
 
 import { ComeBackLater } from './ComeBackLater'
 
-jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
-
 describe('<ComeBackLater/>', () => {
   describe('Accessibility', () => {
     it('should not have basic accessibility issues', async () => {

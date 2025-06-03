@@ -47,7 +47,7 @@ jest.mock('features/search/context/SearchWrapper', () => ({
     searchState: mockSearchState,
   }),
 }))
-jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
+
 jest.mock('libs/firebase/analytics/analytics')
 
 describe('Header', () => {

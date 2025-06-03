@@ -5,7 +5,6 @@ import { LocationWidgetDesktop } from 'features/location/components/LocationWidg
 import { act, fireEvent, render, screen } from 'tests/utils/web'
 
 jest.unmock('@react-navigation/native')
-jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 describe('LocationWidgetDesktop', () => {
   afterEach(async () => {

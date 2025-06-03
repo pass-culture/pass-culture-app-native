@@ -5,8 +5,6 @@ import { OfferImageContainer } from 'features/offer/components/OfferImageContain
 import { mockOfferImageDimensions } from 'features/offer/fixtures/offerImageDimensions'
 import { render, screen } from 'tests/utils/web'
 
-jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
-
 const mockOnPress = jest.fn()
 
 describe('<OfferImageContainer />', () => {

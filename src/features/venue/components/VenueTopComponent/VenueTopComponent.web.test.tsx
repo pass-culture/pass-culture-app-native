@@ -8,7 +8,7 @@ import { reactQueryProviderHOC } from 'tests/reactQueryProviderHOC'
 import { fireEvent, render, screen } from 'tests/utils/web'
 
 jest.mock('libs/firebase/analytics/analytics')
-jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
+
 jest.mock('libs/location')
 jest.mocked(useLocation)
 jest.mock('@react-native-clipboard/clipboard')

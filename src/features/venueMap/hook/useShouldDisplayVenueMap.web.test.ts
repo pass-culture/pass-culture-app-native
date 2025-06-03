@@ -20,8 +20,6 @@ jest.mock('libs/location', () => ({
   useLocation: () => mockUseLocation(),
 }))
 
-jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
-
 describe('useShouldDisplayVenueMap', () => {
   it('should not render venue map on web', () => {
     setFeatureFlags([RemoteStoreFeatureFlags.WIP_VENUE_MAP])

@@ -22,8 +22,6 @@ jest.mock('react-native-safe-area-context', () => ({
   useSafeAreaInsets: () => ({ bottom: 16, right: 16, left: 16, top: 16 }),
 }))
 
-jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
-
 const mockData = PLACEHOLDER_DATA
 jest.mock('libs/subcategories/useSubcategories', () => ({
   useSubcategories: () => ({

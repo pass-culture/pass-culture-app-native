@@ -4,7 +4,6 @@ import { OnboardingAgeSelectionFork } from 'features/onboarding/pages/onboarding
 import { checkAccessibilityFor, render } from 'tests/utils/web'
 
 jest.mock('libs/firebase/analytics/analytics')
-jest.mock('libs/firebase/remoteConfig/remoteConfig.services')
 
 describe('OnboardingAgeSelectionFork', () => {
   it('should not have basic accessibility', async () => {
