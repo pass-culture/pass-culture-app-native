@@ -17,7 +17,7 @@ const FeatureList = [
     Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
     description: (
       <>
-       'Disposez d\'un résumé de vos tests unitaires et E2E, <code>docs</code>.''
+       'Disposez d'un résumé de vos tests unitaires et E2E, <code>docs</code>.''
       </>
     ),
   },

@@ -11,8 +11,8 @@ import {themes as prismThemes} from 'prism-react-renderer';
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'A Jamais Sans Ma Documentation',
-  tagline: 'Ici c\'est base de connaissance de nos tests Unitaires et E2E',
-  favicon: 'img/favicon.ico',
+  tagline: 'Ici c\'est la base de connaissance de nos tests Unitaires et E2E',
+  favicon: 'img/logo.jpeg',
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
@@ -79,11 +79,11 @@ const config = {
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
       // Replace with your project's social card
-      image: 'img/docusaurus-social-card.jpg',
+      image: 'img/logo.jpeg',
       navbar: {
         title: 'AJSMD',
         logo: {
-          alt: 'My Site Logo',
+          alt: 'AJSMD Logo',
           src: 'img/logo.jpeg',
         },
         items: [
@@ -91,19 +91,13 @@ const config = {
             type: 'docSidebar',
             sidebarId: 'tutorialSidebar',
             position: 'left',
-            label: 'Test Unitaires',
+            label: 'Introduction',
           },
           {
             type: 'docSidebar',
             sidebarId: 'tutorialSidebar',
             position: 'left',
-            label: 'Tests E2E',
-          },
-          {
-            type: 'docSidebar',
-            sidebarId: 'tutorialSidebar',
-            position: 'left',
-            label: 'Tutorial',
+            label: 'Tests',
           },
           {to: '/blog', label: 'Blog', position: 'left'},
           {
@@ -123,22 +117,23 @@ const config = {
                 label: 'Tutorial',
                 to: '/docs/intro',
               },
+
+              {
+                label: 'Dashboard Maestro',
+                href: 'https://app.maestro.dev/project/proj_01javz1ncreqb9dcshv3y4da44/dashboard',
+              },
             ],
           },
           {
-            title: 'Community',
+            title: 'Repository',
             items: [
               {
-                label: 'Stack Overflow',
-                href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+                label: 'Tests E2E',
+                href: 'https://github.com/pass-culture/pass-culture-app-native/tree/master/.maestro/tests',
               },
               {
-                label: 'Discord',
-                href: 'https://discordapp.com/invite/docusaurus',
-              },
-              {
-                label: 'X',
-                href: 'https://x.com/docusaurus',
+                label: 'Workspace Natif',
+                href: 'https://github.com/pass-culture/pass-culture-app-native',
               },
             ],
           },
@@ -149,14 +144,10 @@ const config = {
                 label: 'Blog',
                 to: '/blog',
               },
-              {
-                label: 'GitHub',
-                href: 'https://github.com/facebook/docusaurus',
-              },
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} My Project, Inc. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} AJSMD, Inc. Built with Docusaurus.`,
       },
       prism: {
         theme: prismThemes.github,
