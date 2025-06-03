@@ -35,6 +35,7 @@ export type Referrals =
   | 'highlightOffer'
   | 'home'
   | 'search'
+  | 'hackatonaisearch'
   | 'searchAutoComplete'
   | 'searchLanding'
   | 'searchPlaylist'

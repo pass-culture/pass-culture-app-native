@@ -7,6 +7,7 @@ import { SearchStack } from 'features/navigation/SearchStackNavigator/Stack'
 import { SearchView } from 'features/search/types'
 
 import { SearchStackRoute, SearchStackParamList, SearchStackRouteName } from './types'
+import { AISearchResults } from 'features/search/pages/AISearchResults/AISearchResults'
 
 const initialSearchStackRouteName: SearchStackRouteName = SearchView.Landing
 
@@ -42,12 +43,12 @@ const searchRoutes: SearchStackRoute[] = [
     options: { title: 'recherche dans les sous-catégories' },
   },
   {
-    name: SearchView.AISearch,
+    name: SearchView.AISearchResults,
     component: ComponentForPathConfig,
     pathConfig: {
-      path: 'recherche/inspirational',
-      parse: screenParamsParser[SearchView.AISearch],
-      stringify: screenParamsStringifier[SearchView.AISearch],
+      path: 'recherche/inspirationnelle',
+      parse: screenParamsParser[SearchView.AISearchResults],
+      stringify: screenParamsStringifier[SearchView.AISearchResults],
     },
     options: { title: 'recherche dans les sous-catégories' },
   },

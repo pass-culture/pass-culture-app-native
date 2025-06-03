@@ -33,6 +33,7 @@ export enum SearchView {
   Results = 'SearchResults',
   Thematic = 'ThematicSearch',
   AISearch = 'AISearch',
+  AISearchResults = 'AISearchResults',
 }
 
 export type OfferGenreType = { key: GenreType } & GenreTypeContentModel

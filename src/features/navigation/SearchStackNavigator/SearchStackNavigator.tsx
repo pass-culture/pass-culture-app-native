@@ -6,6 +6,8 @@ import { SearchLanding } from 'features/search/pages/SearchLanding/SearchLanding
 import { SearchResults } from 'features/search/pages/SearchResults/SearchResults'
 import { ThematicSearch } from 'features/search/pages/ThematicSearch/ThematicSearch'
 import { SearchView } from 'features/search/types'
+import { AISearchResults } from 'features/search/pages/AISearchResults/AISearchResults'
+import { AISearch } from 'features/search/pages/AISearch/AISearch'
 
 export const SearchStackNavigator = () => {
   return (
@@ -15,6 +17,8 @@ export const SearchStackNavigator = () => {
       <SearchStack.Screen name={SearchView.Landing} component={SearchLanding} />
       <SearchStack.Screen name={SearchView.Results} component={SearchResults} />
       <SearchStack.Screen name={SearchView.Thematic} component={ThematicSearch} />
+      <SearchStack.Screen name={SearchView.AISearch} component={AISearch} />
+      <SearchStack.Screen name={SearchView.AISearchResults} component={AISearchResults} />
     </SearchStack.Navigator>
   )
 }

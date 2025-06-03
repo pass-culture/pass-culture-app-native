@@ -17,11 +17,13 @@ import { OfflinePage } from 'libs/network/OfflinePage'
 import { Form } from 'ui/components/Form'
 import { Page } from 'ui/pages/Page'
 import { getSpacing } from 'ui/theme'
+import { useSearch } from 'features/search/context/SearchWrapper'
 
 const searchInputID = uuidv4()
 const suggestionsIndex = env.ALGOLIA_SUGGESTIONS_INDEX_NAME
 
 export const AISearch = () => {
+  const { searchState } = useSearch()
   const routes = useNavigationState((state) => state?.routes)
   const currentRoute = routes?.[routes?.length - 1]?.name
   useSync(currentRoute === 'SearchLanding')
@@ -58,13 +60,15 @@ export const AISearch = () => {
               searchInHistory={setQueryHistoryMemoized}
             />
           </Container>
-          <SearchSuggestions
-            queryHistory={queryHistory}
-            addToHistory={addToHistory}
-            removeFromHistory={removeFromHistory}
-            filteredHistory={filteredHistory}
-            shouldNavigateToSearchResults
-          />
+          {searchState.query.length === 0 ? (
+            <SearchSuggestions
+              queryHistory={queryHistory}
+              addToHistory={addToHistory}
+              removeFromHistory={removeFromHistory}
+              filteredHistory={filteredHistory}
+              shouldNavigateToSearchResults
+            />
+          ) : undefined}
         </InstantSearch>
       </Form.Flex>
     </Page>

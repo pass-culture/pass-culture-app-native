@@ -1,17 +1,16 @@
 import { SearchGroupNameEnumv2 } from 'api/gen'
-import { useAlgoliaSimilarOffers } from 'features/offer/api/useAlgoliaSimilarOffers'
-import { Highlight } from 'features/search/components/Highlight/Highlight'
 import { CreateHistoryItem } from 'features/search/types'
-import { AlgoliaSuggestionHit } from 'libs/algolia/types'
-import React, { FunctionComponent } from 'react'
+import React from 'react'
+import { Keyboard, Text } from 'react-native'
 import { UseInfiniteHitsProps } from 'react-instantsearch-core'
-import { Text } from 'react-native'
 import styled from 'styled-components/native'
 import { Li } from 'ui/components/Li'
 import { VerticalUl } from 'ui/components/Ul'
 import { MagnifyingGlassFilled } from 'ui/svg/icons/MagnifyingGlassFilled'
 import { getSpacing, Typo } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
+import { useNavigateToSearch } from 'features/search/helpers/useNavigateToSearch/useNavigateToSearch'
+import { useSearch } from 'features/search/context/SearchWrapper'
 
 type AutocompleteOfferProps = UseInfiniteHitsProps & {
   addSearchHistory: (item: CreateHistoryItem) => void
@@ -24,6 +23,12 @@ export function AutocompleteOffer({
   offerCategories,
   ...props
 }: AutocompleteOfferProps) {
+  const { searchState } = useSearch()
+  const { navigateToSearch } = useNavigateToSearch('AISearchResults')
+  const onPress = () => {
+    Keyboard.dismiss()
+    navigateToSearch(searchState)
+  }
   const suggestedPrompts = [
     'Concert de rap ce weekend à Marseille',
     'Expo à Paris ce soir',
@@ -35,7 +40,7 @@ export function AutocompleteOffer({
       <StyledVerticalUl>
         {suggestedPrompts.map((item) => (
           <Li key={item}>
-            <AutocompleteItemTouchable testID={'testID'} onPress={() => {}}>
+            <AutocompleteItemTouchable testID={'testID'} onPress={onPress}>
               <MagnifyingGlassIconContainer>
                 <MagnifyingGlassFilledIcon />
               </MagnifyingGlassIconContainer>
