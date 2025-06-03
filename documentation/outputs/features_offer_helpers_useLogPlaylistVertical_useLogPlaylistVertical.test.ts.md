@@ -1,0 +1,8 @@
+useLogPlaylistVertical
+ useLogPlaylist
+- should logSameCategoryPlaylistVerticalScroll correctly
+- should log only once logSameCategoryPlaylistVerticalScroll
+- should logOtherCategoriesPlaylistVerticalScroll correctly
+- should log only once logOtherCategoriesPlaylistVerticalScroll
+- should logPlaylistHorizontalScroll correctly
+

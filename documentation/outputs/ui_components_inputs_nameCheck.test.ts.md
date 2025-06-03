@@ -1,0 +1,3 @@
+nameCheck
+ isNameValid function
+

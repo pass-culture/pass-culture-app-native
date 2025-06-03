@@ -1,0 +1,3 @@
+emailCheck
+ isEmailValid function
+

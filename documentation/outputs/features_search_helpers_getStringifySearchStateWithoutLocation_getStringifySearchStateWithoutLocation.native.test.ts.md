@@ -1,0 +1,4 @@
+getStringifySearchStateWithoutLocation
+ getStringifySearchStateWithoutLocation
+- should return search state without location
+

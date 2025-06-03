@@ -1,0 +1,3 @@
+checkGeolocPermission.android
+ checkGeolocPermission()
+

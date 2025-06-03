@@ -1,0 +1,3 @@
+snakeCaseToUppercaseFirstLetter
+ formatSnakeCase
+

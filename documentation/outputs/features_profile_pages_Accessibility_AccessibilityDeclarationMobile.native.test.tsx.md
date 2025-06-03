@@ -1,0 +1,4 @@
+AccessibilityDeclarationMobile
+ AccessibilityDeclarationMobile
+- should render correctly
+

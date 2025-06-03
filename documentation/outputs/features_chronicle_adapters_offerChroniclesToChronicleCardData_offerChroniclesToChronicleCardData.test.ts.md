@@ -1,0 +1,4 @@
+offerChroniclesToChronicleCardData
+ transformOfferChroniclesToChronicleCardData
+- should transform offer chronicles to chronicle card data
+

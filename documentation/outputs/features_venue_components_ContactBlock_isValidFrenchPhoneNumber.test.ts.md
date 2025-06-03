@@ -1,0 +1,3 @@
+isValidFrenchPhoneNumber
+ isValidFrenchPhoneNumber function
+
