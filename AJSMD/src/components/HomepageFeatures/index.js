@@ -5,7 +5,7 @@ import styles from './styles.module.css';
 const FeatureList = [
   {
     title: 'Règles de gestions',
-    Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
+    Svg: require('@site/static/img/mountain.svg').default,
     description: (
       <>
         Comprendre la couverture des tests unitaires et E2E, les bonnes pratiques.
@@ -14,7 +14,7 @@ const FeatureList = [
   },
   {
     title: 'Résumé des tests',
-    Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
+    Svg: require('@site/static/img/tree.svg').default,
     description: (
       <>
        'Disposez d'un résumé de vos tests unitaires et E2E, <code>docs</code>.''
@@ -23,10 +23,10 @@ const FeatureList = [
   },
   {
     title: 'Base de connaissance',
-    Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
+    Svg: require('@site/static/img/react.svg').default,
     description: (
       <>
-        Fini les recherches compliquées, vous pouvez rechercher par fonctionnalité par parcours utilisateurs et même par mot clé.
+        Fini les recherches compliquées, vous pouvez rechercher par fonctionnalité par parcours utilisateurs et même par mot.
       </>
     ),
   },

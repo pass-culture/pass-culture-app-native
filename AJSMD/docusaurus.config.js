@@ -101,7 +101,7 @@ const config = {
           },
           {to: '/blog', label: 'Blog', position: 'left'},
           {
-            href: 'https://github.com/facebook/docusaurus',
+            href: 'https://github.com/pass-culture/pass-culture-app-native',
             label: 'GitHub',
             position: 'right',
           },
