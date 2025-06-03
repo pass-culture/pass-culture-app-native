@@ -1,3 +1,7 @@
+// import { getAI, getGenerativeModel, GoogleAIBackend } from '@firebase/ai'
+// import { ai } from 'libs/firebase/shims/ai/index.web'
+import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition'
+
 import { useRoute } from '@react-navigation/native'
 import { debounce } from 'lodash'
 import React, { useCallback, useEffect, useRef, useState } from 'react'
@@ -29,6 +33,7 @@ import { HiddenAccessibleText } from 'ui/components/HiddenAccessibleText'
 import { SNACK_BAR_TIME_OUT, useSnackBarContext } from 'ui/components/snackBar/SnackBarContext'
 import { getSpacing } from 'ui/theme'
 import { getHeadingAttrs } from 'ui/theme/typographyAttrs/getHeadingAttrs'
+import { ButtonPrimary } from 'ui/components/buttons/ButtonPrimary'
 
 const SEARCH_DEBOUNCE_MS = 500
 
@@ -55,6 +60,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
   placeholder,
   ...props
 }) => {
+  const { transcript } = useSpeechRecognition()
   const { isDesktopViewport } = useTheme()
   const { searchState, dispatch, isFocusOnSuggestions, hideSuggestions, showSuggestions } =
     useSearch()
@@ -114,7 +120,31 @@ export const SearchBox: React.FunctionComponent<Props> = ({
     },
     [dispatch, navigateToThematicSearch, navigateToSearchResults, searchState]
   )
+  const pushWithVoiceSearch = (
+    partialSearchState: Partial<SearchState>,
+    options: { reset?: boolean } = {},
+    hasSearchedForBookKeyword?: boolean,
+    hasSearchedForCinemaKeyword?: boolean
+  ) => {
+    const newSearchState = {
+      ...searchState,
+      ...(options.reset ? initialSearchState : {}),
+      ...partialSearchState,
+    }
 
+    dispatch({
+      type: 'SET_STATE',
+      payload: newSearchState,
+    })
+
+    if (hasSearchedForBookKeyword || hasSearchedForCinemaKeyword) {
+      return navigateToThematicSearch(newSearchState, defaultDisabilitiesProperties)
+    }
+
+    if (newSearchState.query !== '') {
+      navigateToSearchResults(newSearchState, defaultDisabilitiesProperties)
+    }
+  }
   const hasEditableSearchInput =
     isFocusOnSuggestions ||
     currentView === SearchView.Results ||
@@ -303,6 +333,40 @@ export const SearchBox: React.FunctionComponent<Props> = ({
     !isFocusOnSuggestions &&
     !isDesktopViewport
 
+  const onSubmitVoiceSearchQuery = () => {
+    const searchId = uuidv4()
+
+    const partialSearchState: Partial<SearchState> = {
+      query: transcript,
+      locationFilter: searchState.locationFilter,
+      venue: searchState.venue,
+      offerCategories: searchState.offerCategories,
+      offerNativeCategories: searchState.offerNativeCategories,
+      gtls: searchState.gtls,
+      priceRange: searchState.priceRange,
+      searchId,
+      isAutocomplete: undefined,
+      isFromHistory: undefined,
+    }
+    pushWithVoiceSearch(partialSearchState, {})
+    hideSuggestions()
+  }
+
+  // Create a `GenerativeModel` instance with a model that supports your use case
+  // const model = getGenerativeModel(ai, { model: 'gemini-2.0-flash' })
+  // async function run() {
+  //   // Provide a prompt that contains text
+  //   const prompt = 'Write a story about a magic backpack.'
+
+  //   // To generate text output, call generateContent with the text input
+  //   const result = await model.generateContent(prompt)
+
+  //   const response = result.response
+  //   const text = response.text()
+  //   console.log(text)
+  // }
+
+  // run()
   return (
     <RowContainer>
       {accessibleHiddenTitle ? (
@@ -331,6 +395,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
               disableInputClearButton={disableInputClearButton}
               placeholder={placeholder}
             />
+            <ButtonPrimary wording="Voice search" onPress={onSubmitVoiceSearchQuery} />
           </FlexView>
         </SearchInputA11yContainer>
       </SearchInputContainer>
@@ -338,6 +403,7 @@ export const SearchBox: React.FunctionComponent<Props> = ({
         Indique le nom d’une offre ou d’un lieu puis lance la recherche à l’aide de la touche
         ”Entrée”
       </HiddenAccessibleText>
+      <Dictaphone />
     </RowContainer>
   )
 }
@@ -372,3 +438,21 @@ const FlexView = styled.View({
   flex: 1,
   flexDirection: 'row',
 })
+const Dictaphone = () => {
+  const { transcript, listening, resetTranscript, browserSupportsSpeechRecognition } =
+    useSpeechRecognition()
+
+  if (!browserSupportsSpeechRecognition) {
+    return <span>Browser doesn't support speech recognition.</span>
+  }
+  return (
+    <div>
+      <p>Microphone: {listening ? 'on' : 'off'}</p>
+      <button onClick={SpeechRecognition.startListening}>Start</button>
+      <button onClick={SpeechRecognition.stopListening}>Stop</button>
+      <button onClick={resetTranscript}>Reset</button>
+      <p>{transcript}</p>
+    </div>
+  )
+}
+export default Dictaphone

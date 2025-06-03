@@ -8,3 +8,12 @@ export const FIREBASE_CONFIG = {
   messagingSenderId: env.FIREBASE_MESSAGINGSENDERID,
   appId: env.FIREBASE_APPID,
 }
+
+export const FIREBASE_CONFIG_VERTEX = {
+  apiKey: env.FIREBASE_API_PUBLIC_KEY,
+  authDomain: env.FIREBASE_AUTHDOMAIN,
+  projectId: env.FIREBASE_PROJECTID,
+  storageBucket: env.FIREBASE_STORAGEBUCKET,
+  messagingSenderId: env.FIREBASE_MESSAGINGSENDERID,
+  appId: env.FIREBASE_APPID,
+}
