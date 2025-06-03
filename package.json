@@ -152,7 +152,7 @@
     "react-native": "0.74.7",
     "react-native-animatable": "^1.3.3",
     "react-native-appsflyer": "^6.15.3",
-    "react-native-calendars": "^1.1312.1",
+    "react-native-calendars": "1.1312.1",
     "react-native-code-push": "^8.3.1",
     "react-native-date-picker": "^4.3.5",
     "react-native-detector": "^0.2.3",
