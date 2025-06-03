@@ -40,23 +40,26 @@ module.exports = {
   ],
   setupFilesAfterEnv: ['./src/tests/setupTests.js'],
   transform: {
-    '^.+\\.[jt]sx?$': 'babel-jest',
+    '^.+\\.(js|jsx|ts|tsx|mjs)$': 'babel-jest',
   },
   transformIgnorePatterns: [
-    'node_modules/(?!(jest-)?react-native' +
-      '|@react-navigation' +
-      '|@react-native' +
-      '|@ptomasroos/react-native-multi-slider' +
-      '|react-navigation' +
-      '|@react-native-firebase/analytics' +
-      '|@react-native-firebase/app' +
-      '|@react-native-firebase/remote-config' +
-      '|@sentry/react-native' +
-      '|react-native-geolocation-service' +
-      '|react-native-orientation-locker' +
-      '|instantsearch.js' +
-      '|design-system' +
-      '/(?!(lib)))',
+    '/node_modules/(?!' + // Start ignoring node_modules unless it's one of the following:
+      [
+        '(jest-)?react-native',
+        '@react-navigation',
+        '@react-native',
+        '@ptomasroos/react-native-multi-slider',
+        'react-navigation',
+        '@react-native-firebase/analytics',
+        '@react-native-firebase/app',
+        '@react-native-firebase/remote-config',
+        '@sentry/react-native',
+        'react-native-geolocation-service',
+        'instantsearch.js',
+        'design-system',
+        'search-insights',
+      ].join('|') +
+      ').+\\.(js|jsx|mjs|cjs|ts|tsx)$',
   ],
   testMatch: ['**/*(?<!.(web|perf)).(?:test|spec).[jt]s?(x)'],
   testPathIgnorePatterns: [
