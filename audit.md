@@ -521,3 +521,6 @@ graph TD;
 ```
 
 data format pas adatpé, calcul coté frontend
+
+internal touchable link
+et button
